@@ -41,6 +41,22 @@ The implementation choice must be explicit and documented.
 ### Notes
 Tray behavior on Linux depends on desktop environment and packaging choices. Linux tray support should be documented carefully and not assumed to behave identically to Windows.
 
+## macOS expectations
+
+### Required behavior
+- background services can be started in a documented macOS-native way
+- tray behavior is supported and documented
+- login/startup behavior is documented explicitly
+
+### Notes
+Exact implementation may later use:
+- LaunchAgent
+- LaunchDaemon
+- app login item integration
+- another documented macOS-native approach
+
+The implementation choice must be explicit and documented.
+
 ## Service separation
 
 The backend service should be treated as the primary background runtime.

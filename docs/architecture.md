@@ -68,6 +68,12 @@ Target behavior:
 - documented user service and/or system service units
 - tray support may depend on desktop environment and should be explicitly documented
 
+### macOS
+Target behavior:
+- tray support is expected
+- background services must have a documented macOS launch model
+- startup/login behavior must be explicit and separate from Windows and Linux assumptions
+
 ## Boundary rules
 
 ### Backend vs frontend

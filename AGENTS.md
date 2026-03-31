@@ -8,273 +8,328 @@ Agents are **proposal generators**, not authorities.
 
 All non-trivial work MUST flow through:
 
-1. explicit state loading,
-2. proposal emission,
-3. constraint checking,
-4. bounded execution,
-5. verification,
-6. ledger or handoff-style summary update.
-
-The goal is to prevent drift, preserve reproducibility, keep specs tied to implementation, and support long-running multi-session AI collaboration.
+1. explicit state loading
+2. proposal emission
+3. constraint checking
+4. bounded execution
+5. verification
+6. LEDGER update
 
 ---
 
 ## Core principle
 
-> Intelligence proposes. Constraints decide. Accepted state is the source of truth.
+> Intelligence proposes. Constraints decide. The ledger remembers.
 
-Prompts are not authority.  
-Plans are not authority.  
-Code is not authority by itself.  
-Accepted repository state and explicit specs are authority.
-
----
-
-## Repository mission
-
-Glossa Lab is an agentic research and engineering platform for decoding, translating, and modeling languages and scripts across ancient and modern systems.
-
-This repository is expected to support:
-
-- a Python backend,
-- a React frontend UI,
-- a tray application,
-- Windows startup and background-service support,
-- Linux background-service support via systemd,
-- macOS startup and background-service support,
-- structured research workflows,
-- explainable hypothesis testing,
-- cross-platform packaging and deployment.
+- Prompts are not authority  
+- Plans are not authority  
+- Code is not authority  
+- The **LEDGER.md + accepted repo state is authority**
 
 ---
 
-## Agent roles
+## REQUIRED: LEDGER.md
 
-### 1. Orchestrator Agent
-Responsible for:
-- loading current state,
-- selecting the next valid bounded task,
-- checking prerequisites,
-- refusing invalid or underspecified work.
+A file named `LEDGER.md` MUST exist at repo root.
 
-### 2. Research Agent
-Responsible for:
-- gathering evidence,
-- separating evidence from inference,
-- drafting bounded research outputs,
-- avoiding silent mutation of canonical specs.
+### Rules
 
-### 3. Spec Agent
-Responsible for:
-- maintaining architecture and workflow documents,
-- preserving terminology consistency,
-- keeping scope and acceptance criteria explicit.
+- Every meaningful task MUST be recorded
+- Every session MUST append an entry
+- All TODOs MUST live in the ledger
+- No work is considered complete without a ledger entry
 
-### 4. Build Agent
-Responsible for:
-- implementing approved changes,
-- running checks,
-- recording exact commands, outputs, and failures.
-
-### 5. Review Agent
-Responsible for:
-- checking proposal-to-output alignment,
-- checking constraint compliance,
-- checking cross-doc consistency,
-- deciding whether a change is acceptable or provisional.
-
-A single session MAY play multiple roles, but it MUST keep those roles explicit in its outputs.
-
----
-
-## Required startup sequence
-
-Before any non-trivial work, agents MUST read:
-
-1. `README.md`
-2. `docs/architecture.md`
-3. `docs/workflow.md`
-4. `docs/services.md`
-5. `AGENTS.md`
-
-If the session has prior context, the agent MUST also review the latest accepted project notes, issues, or handoff material before continuing.
-
----
-
-## Required output before non-trivial work
-
-Agents MUST emit:
-
-### State summary
-- current objective
-- in-scope files
-- out-of-scope work
-- blockers
-- assumptions
-- required checks
-
-### Proposal
-Use this exact structure:
+### Entry format
 
 ```md
-## Proposal
+## [YYYY-MM-DD] Entry — <short title>
+
 Objective:
-Scope:
-Inputs:
-Outputs:
-Files touched:
-Checks:
+What was done:
+Files changed:
+Checks run:
+Results:
+Open TODOs:
 Risks:
-Rollback:
-Decision request:
+Next step:
 ````
 
-No non-trivial implementation should begin until this proposal exists.
+---
+
+## SESSION LIFECYCLE
+
+Agents MUST follow structured session flows.
 
 ---
 
-## Hard rules
+## 🔵 NEW SESSION PROMPT
 
-### H1 — Requirement traceability
+When starting fresh:
 
-Every non-trivial task MUST map to at least one named objective, issue, requirement, or milestone.
+```text
+Load AGENTS.md, README.md, docs/architecture.md, docs/workflow.md, docs/services.md, and LEDGER.md.
 
-### H2 — No silent scope expansion
+Output:
+1. Current system understanding
+2. Current known state from ledger
+3. Open TODOs
+4. Suggested next task
 
-Agents MUST NOT edit unrelated files “while here” unless explicitly added to scope.
-
-### H3 — Spec-first mutation control
-
-Architecture, workflow, service, and platform assumptions MUST be documented when they materially change.
-
-### H4 — No unverifiable claims
-
-Agents MUST NOT claim:
-
-* completion,
-* correctness,
-* performance improvement,
-* production readiness,
-
-without evidence.
-
-### H5 — Cross-platform respect
-
-Changes affecting one platform MUST consider the others:
-
-* backend: Windows + Linux + macOS,
-* services: Windows + Linux + macOS,
-* tray behavior: Windows first-class, Linux and macOS documented explicitly.
-
-### H6 — Preserve uncertainty
-
-Unknowns must stay unknown until validated.
-
-### H7 — Bounded work only
-
-Prefer small, auditable tasks with explicit checks.
+Then produce a Proposal.
+```
 
 ---
 
-## Platform expectations
+## 🟡 RESUME SESSION PROMPT
+
+```text
+Load AGENTS.md and LEDGER.md.
+
+Summarize:
+- last completed task
+- current objective
+- open TODOs
+- risks
+
+Then propose next bounded task.
+```
+
+---
+
+## 🟢 SAVE SESSION PROMPT
+
+```text
+Prepare LEDGER.md entry for this session.
+
+Include:
+- what changed
+- what was verified
+- what remains incomplete
+- next recommended step
+
+Do not invent results.
+```
+
+---
+
+## 🔴 GIT COMMIT PROMPT
+
+```text
+Prepare commit summary:
+
+- what changed
+- why
+- files touched
+- checks performed
+
+Generate commit message.
+
+Then list commands to run:
+git add .
+git commit -m "<message>"
+git push
+```
+
+---
+
+## 🔵 GIT UPDATE PROMPT
+
+```text
+Update local repo safely:
+
+1. git status
+2. git pull
+3. summarize changes
+4. identify conflicts or risks
+```
+
+---
+
+## QUICK COMMANDS
+
+Agents should use these short commands:
+
+| Command  | Meaning             |
+| -------- | ------------------- |
+| `start`  | new session         |
+| `resume` | resume from ledger  |
+| `save`   | write ledger entry  |
+| `commit` | prepare git commit  |
+| `sync`   | pull latest changes |
+
+---
+
+## ENVIRONMENT REQUIREMENTS
+
+The project MUST be environment-controlled and system-agnostic.
+
+---
+
+## Python environment (required)
+
+* use virtual environment
+* do not rely on global Python
+* environment must be reproducible
+
+### Expected structure
+
+```text
+backend/
+  venv/
+```
+
+or
+
+```text
+.venv/
+```
+
+---
+
+## ENV BOOTSTRAP
+
+Environment setup must be split:
+
+### 1. Python-level
+
+* dependency install
+* environment config
+* runtime setup
+
+### 2. OS-level
+
+Scripts must exist for:
+
+* Windows (`.ps1`)
+* Linux/macOS (`.sh`)
+
+---
+
+## REQUIRED SCRIPTS
+
+```text
+scripts/
+  setup.ps1
+  setup.sh
+  run.ps1
+  run.sh
+```
+
+---
+
+## RUN CONTRACT
+
+There MUST be a single way to run the system:
+
+```bash
+# Linux/macOS
+./scripts/run.sh
+
+# Windows
+./scripts/run.ps1
+```
+
+This must:
+
+* start backend
+* optionally start frontend
+* prepare environment
+
+---
+
+## SHELL INVOCATION
+
+Scripts must:
+
+* activate environment
+* ensure dependencies installed
+* launch backend entrypoint
+
+---
+
+## HARD RULES
+
+### H1 — Ledger required
+
+No ledger entry = work not done.
+
+### H2 — Proposal required
+
+No proposal = no execution.
+
+### H3 — Cross-platform awareness
+
+All work must consider:
+
+* Windows
+* Linux
+* macOS
+
+### H4 — Environment isolation
+
+No system-dependent assumptions.
+
+### H5 — Explicit startup
+
+No hidden service logic.
+
+### H6 — No silent scope expansion
+
+---
+
+## PLATFORM EXPECTATIONS
 
 ### Backend
 
-* Python backend
+* Python
 * cross-platform
-* service-friendly
-* API-first where practical
+* service-compatible
 
 ### Frontend
 
-* React frontend UI
-* separate from backend runtime concerns
-* talks to backend over explicit interfaces
+* React
+* API-driven
 
 ### Tray
 
-* separate tray application layer
-* Windows tray starts automatically on login/startup
-* Windows tray can open or control background services
-* Linux tray behavior may vary by desktop environment and should be documented explicitly
-* macOS tray behavior and startup integration must be documented explicitly
+* control surface only
 
 ### Services
 
-* Windows support for background services
-* Linux support via systemd
-* macOS support via documented native startup/service mechanisms
-* startup flows must be documented
-* local development flows must not assume production service installation
-
-### macOS
-
-Target behavior:
-
-* tray support is a first-class desktop target
-* background services must have a documented macOS-native startup model
-* login/startup behavior must be documented explicitly
+* Windows + Linux + macOS support required
 
 ---
 
-## Default engineering constraints
+## VERIFICATION MINIMUM
 
-* prefer deterministic startup and shutdown behavior
-* prefer explicit config files over hidden state
-* prefer local-first developer workflows
-* prefer reproducible scripts over hand-run tribal commands
-* prefer structured logs
-* prefer explicit API contracts between backend and frontend
-* prefer tray-to-service communication through documented local IPC or HTTP interfaces
+Must record:
 
----
-
-## Verification minimum
-
-A task is incomplete unless it records:
-
-* what changed,
-* what was checked,
-* what passed,
-* what failed,
-* what remains uncertain.
-
-For code work, verification should include as applicable:
-
-* lint
-* tests
-* type checks
-* startup checks
-* platform-specific smoke tests
-
-For docs work, verification should include:
-
-* terminology consistency
-* architecture consistency
-* no contradictions across docs
+* what changed
+* what was tested
+* what passed/failed
+* what is unknown
 
 ---
 
-## Stop conditions
+## STOP CONDITIONS
 
-Agents MUST stop if:
+Stop if:
 
-* required inputs are missing,
-* platform behavior is being guessed,
-* service behavior is undocumented but being relied on,
-* a tray/service integration is proposed without a clear boundary,
-* a major architectural change is requested without spec updates.
+* missing inputs
+* unclear state
+* undocumented platform assumptions
+* no proposal
+* no ledger path
 
 ---
 
-## Acceptance standard
+## ACCEPTANCE STANDARD
 
-A task is acceptable only if:
+Work is accepted only if:
 
-* scope matched objective,
-* hard rules were respected,
-* outputs exist,
-* checks were run,
-* remaining uncertainty is called out explicitly.
+* proposal matched execution
+* checks were run
+* ledger updated
+* next step defined
 
-Otherwise the task result is provisional.
+Otherwise: provisional only.

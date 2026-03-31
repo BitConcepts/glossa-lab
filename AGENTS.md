@@ -23,9 +23,9 @@ The goal is to prevent drift, preserve reproducibility, keep specs tied to imple
 
 > Intelligence proposes. Constraints decide. Accepted state is the source of truth.
 
-Prompts are not authority.
-Plans are not authority.
-Code is not authority by itself.
+Prompts are not authority.  
+Plans are not authority.  
+Code is not authority by itself.  
 Accepted repository state and explicit specs are authority.
 
 ---
@@ -41,6 +41,7 @@ This repository is expected to support:
 - a tray application,
 - Windows startup and background-service support,
 - Linux background-service support via systemd,
+- macOS startup and background-service support,
 - structured research workflows,
 - explainable hypothesis testing,
 - cross-platform packaging and deployment.
@@ -154,15 +155,16 @@ Agents MUST NOT claim:
 * correctness,
 * performance improvement,
 * production readiness,
-  without evidence.
+
+without evidence.
 
 ### H5 — Cross-platform respect
 
 Changes affecting one platform MUST consider the others:
 
-* backend: Windows + Linux + macOS if possible,
-* services: Windows + Linux,
-* tray behavior: Windows first-class, Linux documented.
+* backend: Windows + Linux + macOS,
+* services: Windows + Linux + macOS,
+* tray behavior: Windows first-class, Linux and macOS documented explicitly.
 
 ### H6 — Preserve uncertainty
 
@@ -195,13 +197,23 @@ Prefer small, auditable tasks with explicit checks.
 * Windows tray starts automatically on login/startup
 * Windows tray can open or control background services
 * Linux tray behavior may vary by desktop environment and should be documented explicitly
+* macOS tray behavior and startup integration must be documented explicitly
 
 ### Services
 
 * Windows support for background services
 * Linux support via systemd
+* macOS support via documented native startup/service mechanisms
 * startup flows must be documented
 * local development flows must not assume production service installation
+
+### macOS
+
+Target behavior:
+
+* tray support is a first-class desktop target
+* background services must have a documented macOS-native startup model
+* login/startup behavior must be documented explicitly
 
 ---
 

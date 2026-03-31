@@ -11,6 +11,7 @@ Glossa Lab is intended to be a cross-platform platform with:
 - a **tray application**
 - **Windows startup + background-service support**
 - **Linux background-service support via systemd**
+- **macOS startup + background-service support**
 
 The project is designed to support both research and product-style workflows:
 - modern translation and language tooling,
@@ -56,6 +57,12 @@ Linux support is expected to include:
 - systemd-based service startup
 - documented user-service and/or system-service flows
 - explicit notes for desktop/tray differences
+
+### macOS behavior
+macOS support is expected to include:
+- tray support
+- documented startup/login behavior
+- documented background-service support
 
 ## Initial repository structure
 

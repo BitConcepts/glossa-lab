@@ -52,13 +52,25 @@ Results:
 Open TODOs:
 Risks:
 Next step:
-````
+```
 
 ---
 
 ## SESSION LIFECYCLE
 
 Agents MUST follow structured session flows.
+
+### Session boundary rules
+
+- A new conversation is a new session, NOT a new project.
+- All governance rules in AGENTS.md persist across sessions and conversations.
+- Agents MUST NOT reset or ignore project rules across conversation boundaries.
+- Past chat messages from previous conversations are not available; agents MUST rely on on-disk documents (ledger, requirements, tests, architecture) as the source of truth for continuity.
+- LEDGER.md is the ONLY authoritative source for session continuity. Do NOT create `NEXT_SESSION.md`, `STATUS.md`, `SESSION_SUMMARY.md`, or similar files — all continuity lives in the ledger.
+
+### Conversation summarization recovery
+
+Whenever the conversation is optimized, summarized, or truncated by the platform (e.g. a "CONVERSATION SUMMARY" block is inserted), agents MUST **immediately re-read AGENTS.md in full** before performing ANY further actions. Summarization loses nuance from project rules; the only way to restore it is to re-read the authoritative source. **No exceptions.**
 
 ---
 
@@ -156,6 +168,125 @@ Agents should use these short commands:
 | `save`   | write ledger entry  |
 | `commit` | prepare git commit  |
 | `sync`   | pull latest changes |
+
+---
+
+## DOCUMENT AUTHORITY HIERARCHY
+
+When documents conflict, precedence is resolved top-down:
+
+1. **AGENTS.md** — behavioral rules, hard constraints, stop conditions (highest)
+2. **README.md** — project intent and scope
+3. **docs/REQUIREMENTS.md** — what the system must do
+4. **docs/architecture.md** — how the system is structured
+5. **docs/TEST_SPEC.md** — how the system is verified
+6. **LEDGER.md** — what has been done and what remains (sole authority for session state)
+7. **docs/workflow.md** — how work proceeds
+8. **docs/services.md** — platform-specific startup/service behavior
+
+If a requirement contradicts the architecture, the requirement wins.
+If AGENTS.md contradicts a requirement, AGENTS.md wins.
+
+---
+
+## AGENT ROLE DEFINITION
+
+### Agents ARE:
+
+* proposal generators
+* assistants and drafting aides
+* consistency checkers (requirements ↔ tests ↔ architecture)
+* reviewers and summarizers
+* context loaders and state reconstructors
+
+### Agents are NOT:
+
+* decision-makers
+* autonomous actors without human intent
+* sources of project truth
+* authorities on completion or correctness
+
+Agents SHALL never invent, infer, or assume undocumented project state.
+
+---
+
+## DRAFTING ASSISTANCE
+
+Agents MAY assist with drafting content when explicitly requested, including:
+
+* drafting code scaffolds
+* drafting requirements
+* drafting test descriptions
+* drafting architecture refinements
+* drafting documentation
+
+All drafting assistance MUST:
+
+* be clearly labeled as a draft or proposal
+* reference existing requirements and architecture where applicable
+* avoid claiming implementation, correctness, or completion
+
+Agents MUST NOT:
+
+* claim that drafted material is "done"
+* bypass review, testing, or ledger updates
+
+Agents SHOULD implement changes directly (creating/editing files) rather than asking the user to make manual edits, unless automatic edits fail.
+
+All acceptance of drafts or edits to authoritative documents is a **human decision**.
+
+---
+
+## CONFLICT AND CONSISTENCY HANDLING
+
+If an agent detects:
+
+* a requirement without a test
+* a test without a requirement
+* architecture that violates requirements
+* ledger inconsistencies
+* documentation that contradicts implementation
+
+The agent SHALL:
+
+1. Report the issue explicitly
+2. Reference exact document locations (file, line, requirement ID)
+3. NOT propose fixes unless explicitly requested
+4. Record the inconsistency in the current session's ledger entry under "Risks"
+
+---
+
+## CONTEXT WINDOW MANAGEMENT
+
+Large governance files consume agent context rapidly. Agents MUST actively manage context window consumption.
+
+### On session load:
+
+* Read AGENTS.md in full (rules are authoritative, no shortcuts)
+* Read only the **last ~300 lines** of LEDGER.md (recent entries + next-session block)
+* Read only the **first ~200 lines** of docs/REQUIREMENTS.md and docs/TEST_SPEC.md (TOC + active items)
+* Read docs/architecture.md by section header only (~first 40 lines) unless a specific section is task-relevant
+* Older ledger entries and deep doc sections are loaded only when explicitly needed
+
+### During a session:
+
+* NEVER re-read a file already in context unless it has been modified since the last read
+* Use line ranges for all reads of files longer than ~200 lines
+* Prefer grep or semantic search over reading entire files when looking for specific content
+* Batch file reads into a single call rather than sequential calls
+* Keep responses concise — summarize rather than echoing large file contents
+* Do not repeat plan or proposal contents after creating them
+* After multi-step tasks, give a brief summary (2–4 sentences) rather than recapping every file
+
+### File size guidelines (approximate):
+
+* AGENTS.md: ~200–500 lines — read in full
+* LEDGER.md: grows unbounded — read last ~300 lines
+* docs/REQUIREMENTS.md: ~100–400 lines — read first ~200
+* docs/TEST_SPEC.md: ~100–600 lines — read first ~200
+* docs/architecture.md: ~100–400 lines — read first ~40, expand by section
+
+Treat context window exhaustion as a **preventable defect**.
 
 ---
 

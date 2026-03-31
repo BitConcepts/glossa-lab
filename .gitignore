@@ -58,6 +58,9 @@ backend/secrets/
 backend/.env
 backend/.env.*
 
+# ---- Node (root-level) ----
+node_modules/
+
 # ---- Frontend ----
 frontend/node_modules/
 frontend/dist/
@@ -131,10 +134,16 @@ junit.xml
 services/linux/*.service.local
 services/windows/*.local.json
 
+# ---- Dev mode data/config/logs ----
+data/
+config/
+logs/
+
 # ---- Keep placeholders ----
 !backend/.gitkeep
 !frontend/.gitkeep
 !tray/.gitkeep
 !services/windows/.gitkeep
 !services/linux/.gitkeep
+!services/macos/.gitkeep
 !scripts/.gitkeep

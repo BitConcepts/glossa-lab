@@ -1,0 +1,66 @@
+"""Glossa Lab backend application entrypoint."""
+
+import time
+from contextlib import asynccontextmanager
+
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from glossa_lab import __version__
+from glossa_lab.api.health import router as health_router
+from glossa_lab.config import get_settings
+from glossa_lab.logging import setup_logging
+
+_start_time: float = 0.0
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Application startup and shutdown lifecycle."""
+    global _start_time  # noqa: PLW0603
+    settings = get_settings()
+    setup_logging(settings)
+
+    _start_time = time.time()
+    yield
+    # Shutdown: flush logs, close connections
+    _start_time = 0.0
+
+
+def create_app() -> FastAPI:
+    """Create and configure the FastAPI application."""
+    settings = get_settings()
+
+    application = FastAPI(
+        title="Glossa Lab",
+        version=__version__,
+        lifespan=lifespan,
+    )
+
+    # CORS — allow localhost origins in development mode
+    if settings.dev_mode:
+        application.add_middleware(
+            CORSMiddleware,
+            allow_origins=[
+                "http://localhost:5173",
+                "http://localhost:3000",
+                "http://127.0.0.1:5173",
+                "http://127.0.0.1:3000",
+            ],
+            allow_credentials=True,
+            allow_methods=["*"],
+            allow_headers=["*"],
+        )
+
+    # Register routers
+    application.include_router(health_router, prefix="/api/v1")
+
+    return application
+
+
+def get_start_time() -> float:
+    """Return the application start timestamp."""
+    return _start_time
+
+
+app = create_app()

@@ -208,13 +208,15 @@ See `AGENTS.md` and `docs/workflow.md` for full rules.
 
 ## Status
 
-This repository is currently a scaffold.
+This repository has completed Milestone 1 (scaffold + governance) and Milestone 2 (backend + frontend scaffold).
 
-It is safe to:
+Current state:
 
-* clone
-* organize
-* stage architecture and workflow
-* begin bounded implementation
+* governance files complete (AGENTS.md, LEDGER.md, REQUIREMENTS.md, TEST_SPEC.md)
+* architecture extended with concrete interface specs and technology decisions
+* Python backend scaffold with FastAPI, health endpoint, config, structured logging
+* React frontend scaffold with Vite, TypeScript, health status display
+* Bootstrap scripts for Windows (.ps1) and Linux/macOS (.sh)
+* 25 formal requirements with linked test specifications
 
-Major runtime features are not yet implemented.
+Next milestones: run setup/tests, implement remaining API, tray scaffold, OS service integration.

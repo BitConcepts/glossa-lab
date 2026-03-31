@@ -10,16 +10,18 @@ The application must support:
 
 - foreground development mode
 - background service mode
-- cross-platform startup flows
+- cross-platform startup flows (Windows, Linux, macOS)
 - tray-aware local control
+
+---
 
 ## Windows expectations
 
 ### Required behavior
 - the tray starts automatically on Windows startup / user login
 - the tray can open the application UI
-- the tray can open, control, or ensure the background services are running
-- service status should be visible from the tray
+- the tray can start, stop, or ensure background services are running
+- service status is visible from the tray
 
 ### Notes
 Exact implementation may use:
@@ -29,59 +31,103 @@ Exact implementation may use:
 - Windows service model
 - another documented approach
 
-The implementation choice must be explicit and documented.
+The implementation choice MUST be explicit and documented.
+
+---
 
 ## Linux expectations
 
 ### Required behavior
 - background services can be started via systemd
-- service units are documented under `services/linux/`
+- service units are defined under `services/linux/`
 - user-service and/or system-service behavior is documented clearly
 
 ### Notes
-Tray behavior on Linux depends on desktop environment and packaging choices. Linux tray support should be documented carefully and not assumed to behave identically to Windows.
+- systemd user services are preferred for developer/local installs
+- system services may be used for system-wide installs
+- tray behavior depends on desktop environment and packaging
+- Linux tray support MUST be documented explicitly and not assumed equivalent to Windows
+
+---
 
 ## macOS expectations
 
 ### Required behavior
-- background services can be started in a documented macOS-native way
+- background services can be started using macOS-native mechanisms
 - tray behavior is supported and documented
-- login/startup behavior is documented explicitly
+- login/startup behavior is explicitly defined
+- service lifecycle is deterministic (start, stop, restart)
 
 ### Notes
-Exact implementation may later use:
-- LaunchAgent
-- LaunchDaemon
-- app login item integration
+Implementation may use:
+- LaunchAgent (user-level)
+- LaunchDaemon (system-level)
+- login item integration (for tray app)
 - another documented macOS-native approach
 
-The implementation choice must be explicit and documented.
+The implementation choice MUST be explicit and documented.
+
+---
 
 ## Service separation
 
-The backend service should be treated as the primary background runtime.
+The backend service is the **primary runtime authority**.
 
-The tray is not the backend.
-The frontend is not the backend.
-The service layer should remain explicit and inspectable.
+- the backend owns application logic and state
+- the tray is a controller and status surface
+- the frontend is a UI layer
+
+Rules:
+- the tray MUST NOT contain core backend logic
+- the frontend MUST NOT assume direct process ownership
+- service lifecycle must remain explicit and inspectable
+
+---
+
+## Tray ↔ Service interaction
+
+The tray interacts with services via **explicit interfaces only**, such as:
+
+- local HTTP API
+- IPC (named pipes, sockets, etc.)
+- CLI/service wrapper commands
+
+Implicit coupling (shared memory, hidden process assumptions) is not allowed.
+
+---
 
 ## Development mode vs installed mode
 
 ### Development mode
 - backend runs in foreground or dev-managed process
 - frontend runs from dev server or local build
-- tray may be optional during early development
+- tray may be optional
+- services are NOT required but should be emulatable
 
 ### Installed mode
 - backend runs in background service mode
 - tray starts at login where supported
-- frontend is reachable in a stable local form
-- logs and configuration locations are documented
+- frontend is reachable via stable local endpoint
+- logs and configuration locations are explicit and documented
+
+---
+
+## Observability requirements
+
+All service implementations MUST support:
+
+- clear startup success/failure signals
+- structured logs
+- deterministic shutdown behavior
+- inspectable status (via API or command)
+
+---
 
 ## To be decided later
 
 - exact Windows startup mechanism
-- exact tray framework
+- exact tray framework (Electron, Tauri, native, etc.)
 - exact Linux packaging format
+- exact macOS packaging format
 - exact service supervisor structure
-- exact backend/tray IPC mechanism
+- exact backend ↔ tray IPC mechanism

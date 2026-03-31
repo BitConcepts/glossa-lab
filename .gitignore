@@ -3,6 +3,9 @@
 Thumbs.db
 desktop.ini
 
+# ---- macOS app artifacts ----
+*.app
+
 # ---- Editors / IDEs ----
 .vscode/
 .idea/

@@ -1,0 +1,1 @@
+"""Glossa Lab API routes."""

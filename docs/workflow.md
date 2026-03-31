@@ -40,7 +40,7 @@ Each PR should state:
 Any work that affects startup, service control, file paths, packaging, or local runtime behavior must explicitly mention:
 - Windows impact
 - Linux impact
-- whether macOS is unaffected, unsupported, or future work
+- macOS impact
 
 ## Recommended milestones
 

@@ -347,3 +347,146 @@ The `version` field in the health endpoint response MUST match the version decla
 - **Testable:** yes
 - **Test:** TEST-INT-002
 - **Status:** draft
+
+---
+
+## Analysis Pipelines
+
+Components: `PIPE` — Pipeline/analysis engine
+
+### REQ-PIPE-001 — Block entropy pipeline
+
+The system MUST compute normalised block entropy H_N/ln(L) for block sizes N=1..6 on any uploaded text corpus. Results MUST include raw (nats) and normalised values.
+
+- **Priority:** P1
+- **Platform:** all
+- **Testable:** yes
+- **Test:** TEST-PIPE-001
+- **Status:** implemented
+- **Reference:** Rao et al. (2009), Science 324:1165
+
+### REQ-PIPE-002 — Character frequency pipeline
+
+The system MUST compute symbol frequencies, rank-frequency distribution, and Zipf exponent for any uploaded text corpus.
+
+- **Priority:** P1
+- **Platform:** all
+- **Testable:** yes
+- **Test:** TEST-PIPE-002
+- **Status:** implemented
+
+### REQ-PIPE-003 — Pipeline engine
+
+The system MUST process queued jobs asynchronously via a background engine. Jobs MUST transition through pending → running → completed/failed states. Results MUST be stored and retrievable.
+
+- **Priority:** P1
+- **Platform:** all
+- **Testable:** yes
+- **Test:** TEST-PIPE-003
+- **Status:** implemented
+
+---
+
+## Kandles Phonetic-Visual Analysis
+
+Components: `KDL` — Kandles system (per [REDACTED-PATENT-PUB], Merkur)
+
+### REQ-KDL-001 — Kandles phonetic mapping
+
+The system MUST implement the Kandles phonetic-to-color mapping: 7 consonant sound groups mapped to 7 colors (Yellow, Grey, Red, Blue, Green, Purple, Brown). Vowel-initial words MUST be mapped to a distinct group (group 0).
+
+- **Priority:** P1
+- **Platform:** all
+- **Testable:** yes
+- **Test:** TEST-KDL-001
+- **Status:** draft
+- **Patent:** [REDACTED-PATENT-PUB] [0109]-[0110]
+
+### REQ-KDL-002 — Kandles color-coded text
+
+The system MUST generate color-coded text output where each word is assigned a color based on the phonetic sound at the beginning of the word, per the Kandles mapping.
+
+- **Priority:** P1
+- **Platform:** all
+- **Testable:** yes
+- **Test:** TEST-KDL-002
+- **Status:** draft
+- **Patent:** [REDACTED-PATENT-PUB] [0007], [0117]
+
+### REQ-KDL-003 — Kandles color grid
+
+The system MUST generate a color-coded grid (equal rows and columns) from any text, where each cell corresponds to a word and is colored by the Kandles system. The grid MUST also encode the Kandles number (1-7).
+
+- **Priority:** P1
+- **Platform:** all
+- **Testable:** yes
+- **Test:** TEST-KDL-003
+- **Status:** draft
+- **Patent:** [REDACTED-PATENT-PUB] [0124]-[0125], FIG. 29 step 2916
+
+### REQ-KDL-004 — Cross-language Kandles comparison
+
+The system MUST be able to generate Kandles grids for texts in different languages/scripts and compare the resulting color patterns. The comparison MUST produce a similarity metric.
+
+- **Priority:** P2
+- **Platform:** all
+- **Testable:** yes
+- **Test:** TEST-KDL-004
+- **Status:** draft
+- **Patent:** [REDACTED-PATENT-PUB] [0110], FIG. 20
+
+---
+
+## Hierarchical Text Decomposition
+
+Components: `HTD` — Hierarchical text decomposition (per [REDACTED-PATENT-PUB], Merkur)
+
+### REQ-HTD-001 — Text decomposition into stories and slices
+
+The system MUST support organizing a written work into one or more stories, where each story is comprised of one or more slices. Each slice MUST be independently addressable.
+
+- **Priority:** P2
+- **Platform:** all
+- **Testable:** yes
+- **Test:** TEST-HTD-001
+- **Status:** draft
+- **Patent:** [REDACTED-PATENT-PUB] [0072], [0095], FIG. 29 steps 2902-2904
+
+### REQ-HTD-002 — Slice filtering by clusters and tags
+
+The system MUST support filtering slices by user-selected semantic clusters and/or manual tags. Multiple clusters MUST be combinable (AND/OR).
+
+- **Priority:** P2
+- **Platform:** all
+- **Testable:** yes
+- **Test:** TEST-HTD-002
+- **Status:** draft
+- **Patent:** [REDACTED-PATENT-PUB] [0095]-[0098], FIG. 29 step 2906
+
+---
+
+## Semantic Cluster Tagging
+
+Components: `SEM` — Semantic analysis
+
+### REQ-SEM-001 — Configurable semantic taxonomy
+
+The system MUST support a configurable taxonomy of semantic clusters. Default clusters MUST include at least: Culture, Nations, Nature, Religion, People, and Spiritual.
+
+- **Priority:** P2
+- **Platform:** all
+- **Testable:** yes
+- **Test:** TEST-SEM-001
+- **Status:** draft
+- **Patent:** [REDACTED-PATENT-PUB] [0010], [0080]
+
+### REQ-SEM-002 — Manual tagging
+
+The system MUST support manual tagging of text segments with user-defined labels.
+
+- **Priority:** P3
+- **Platform:** all
+- **Testable:** yes
+- **Test:** TEST-SEM-002
+- **Status:** draft
+- **Patent:** [REDACTED-PATENT-PUB] [0011], [0104]

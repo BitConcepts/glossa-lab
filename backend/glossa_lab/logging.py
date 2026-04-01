@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import logging
 import sys
+from logging.handlers import TimedRotatingFileHandler
 from pathlib import Path
 from typing import TYPE_CHECKING
 
@@ -14,7 +15,10 @@ if TYPE_CHECKING:
 
 
 def setup_logging(settings: Settings) -> None:
-    """Configure structured JSON logging to console and file."""
+    """Configure structured JSON logging to console and file.
+
+    File handler uses daily rotation, retaining 7 days of logs.
+    """
     log_level = getattr(logging, settings.log_level.upper(), logging.INFO)
 
     # JSON formatter
@@ -27,12 +31,19 @@ def setup_logging(settings: Settings) -> None:
     console_handler = logging.StreamHandler(sys.stdout)
     console_handler.setFormatter(formatter)
 
-    # File handler — create log directory if needed
+    # File handler with daily rotation, keep 7 days
     log_dir = Path(settings.log_dir)
     log_dir.mkdir(parents=True, exist_ok=True)
     log_file = log_dir / "glossa.log"
 
-    file_handler = logging.FileHandler(log_file, encoding="utf-8")
+    file_handler = TimedRotatingFileHandler(
+        log_file,
+        when="midnight",
+        interval=1,
+        backupCount=7,
+        encoding="utf-8",
+        utc=True,
+    )
     file_handler.setFormatter(formatter)
 
     # Configure root logger

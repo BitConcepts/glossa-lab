@@ -160,3 +160,101 @@ Risks:
 - Tray framework decision (DEC-005) still pending — blocks Milestone 3
 - All requirements still in draft status
 Next step: Create shell.sh POSIX wrapper, then implement remaining API endpoints and database initialization
+
+---
+
+## [2026-04-01] Entry — Complete all open TODOs: API, DB, logs, tray, services, CI
+
+Objective: Implement all remaining open TODOs in one pass. DEC-005 resolved as pystray.
+What was done:
+- Created shell.sh POSIX wrapper (mirrors shell.cmd)
+- Verified frontend npm install (119 packages, 0 vulnerabilities)
+- Implemented GET /api/v1/status with job counts and pipeline states (REQ-API-002)
+- Implemented Jobs CRUD: POST/GET/GET{id}/DELETE{id} /api/v1/jobs with Pydantic models
+- Implemented SQLite database layer (aiosqlite) with auto-init, schema, migration versioning (REQ-BE-004)
+- Wired database to lifespan (init on startup, close on shutdown)
+- Updated logging to use TimedRotatingFileHandler (daily rotation, 7-day retention)
+- Scaffolded tray application (pystray): icon + menu, health polling, browser launch, backend start via shell wrapper
+- Added tray command to shell.cmd and shell.sh
+- Created Windows startup integration: install.cmd/uninstall.cmd (Startup folder shortcut)
+- Created Linux systemd user service: glossa-lab.service, install.sh, uninstall.sh
+- Created macOS LaunchAgent: com.glossalab.backend.plist, install.sh, uninstall.sh
+- Created GitHub Actions CI pipeline (.github/workflows/ci.yml) with 3-OS matrix
+- Updated DEC-005 to accepted/pystray in architecture.md
+- Fixed REQ-XP-002 (.ps1 → .cmd) and TEST-XP-002 (setup.ps1 → setup.cmd)
+- Updated services.md with resolved decisions
+- Updated all service READMEs and tray README with implementation details
+- Removed .gitkeep placeholders from tray/, services/windows/, services/linux/, services/macos/
+- Refactored all tests to use conftest.py with session-scoped TestClient fixture
+- Added aiosqlite dependency to pyproject.toml
+- Committed (62723dc) and pushed to main
+
+Files changed:
+- shell.sh (created)
+- shell.cmd (modified — added tray command, tray deps in setup)
+- backend/glossa_lab/api/status.py (created)
+- backend/glossa_lab/api/jobs.py (created)
+- backend/glossa_lab/database.py (created)
+- backend/glossa_lab/main.py (modified — new routers, DB lifecycle)
+- backend/glossa_lab/logging.py (modified — TimedRotatingFileHandler)
+- backend/pyproject.toml (modified — added aiosqlite)
+- backend/tests/conftest.py (created)
+- backend/tests/test_status.py (created)
+- backend/tests/test_jobs.py (created)
+- backend/tests/test_database.py (created)
+- backend/tests/test_logging.py (created)
+- backend/tests/test_health.py (modified — use fixture)
+- tray/requirements.txt (created)
+- tray/glossa_tray/__init__.py (created)
+- tray/glossa_tray/__main__.py (created)
+- tray/glossa_tray/main.py (created)
+- tray/README.md (modified)
+- services/windows/install.cmd (created)
+- services/windows/uninstall.cmd (created)
+- services/windows/README.md (modified)
+- services/linux/glossa-lab.service (created)
+- services/linux/install.sh (created)
+- services/linux/uninstall.sh (created)
+- services/linux/README.md (modified)
+- services/macos/com.glossalab.backend.plist (created)
+- services/macos/install.sh (created)
+- services/macos/uninstall.sh (created)
+- services/macos/README.md (modified)
+- .github/workflows/ci.yml (created)
+- docs/architecture.md (modified — DEC-005 accepted)
+- docs/REQUIREMENTS.md (modified — REQ-XP-002 .cmd)
+- docs/TEST_SPEC.md (modified — TEST-XP-002 .cmd)
+- docs/services.md (modified — resolved decisions)
+- tray/.gitkeep, services/*/.gitkeep (deleted)
+
+Checks run:
+- `shell.cmd test backend\tests -v` — 18 passed, 0 failed (0.30s)
+- `shell.cmd lint backend\glossa_lab` — all checks passed
+- npm install — 119 packages, 0 vulnerabilities
+
+Results:
+- All 10 open TODOs from previous session completed
+- Milestones 3 (tray scaffold), 4 (Windows service), 5 (Linux systemd), 6 (macOS LaunchAgent) complete
+- CI pipeline ready (Milestone 7)
+- 18 tests covering health, status, jobs CRUD, database, logging
+- Backend has 6 API endpoints: health, status, jobs (CRUD x4)
+- DEC-005 resolved: pystray
+
+Open TODOs:
+- [ ] Promote requirements from draft to accepted (human review)
+- [ ] Verify CI pipeline passes on GitHub (first push triggers it)
+- [ ] Install pystray/Pillow and test tray app on Windows
+- [ ] Test service install/uninstall scripts on each platform
+- [ ] Implement backend shutdown endpoint for tray Stop Backend
+- [ ] Add more pipeline/job types beyond placeholder
+- [ ] Implement frontend build (production)
+- [ ] Add security tests (TEST-SEC-001, TEST-SEC-002)
+- [ ] Add CORS tests (TEST-API-004)
+
+Risks:
+- CI pipeline not yet verified (first run pending on GitHub)
+- Tray deps (pystray, Pillow) not installed in current venv — need `shell.cmd setup` to add them
+- All requirements still in draft status — need human review
+- Stop Backend tray action is a placeholder (no shutdown endpoint yet)
+
+Next step: Verify CI pipeline passes on GitHub, install tray deps, test tray app on Windows

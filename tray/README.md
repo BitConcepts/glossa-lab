@@ -75,17 +75,36 @@ The tray should support at least two modes:
 - reflects backend/service status
 - provides stable quick-access control surface for local users
 
-## Planned future additions
+## Implementation
 
-Expected future additions include:
+The tray uses **pystray** (DEC-005, accepted 2026-04-01).
 
-- tray application scaffold
-- backend status integration
-- service control integration
-- startup/login integration
-- platform-specific packaging notes
-- diagnostics/log access actions
-- tests or smoke checks where practical
+### Running
+
+```
+shell.cmd tray    # Windows
+./shell.sh tray   # Linux/macOS
+```
+
+### Menu items
+
+- **Open UI** — opens `http://localhost:5173` in the default browser
+- **Start Backend** — launches `shell.cmd run` / `shell.sh run` (detached)
+- **Stop Backend** — placeholder (future: shutdown endpoint)
+- **Quit** — exits the tray
+
+### Status polling
+
+Polls `GET /api/v1/health` every 5 seconds and updates the icon colour:
+- Green: healthy
+- Yellow: degraded
+- Red: backend stopped
+- Grey: unknown/starting
+
+### Dependencies
+
+Listed in `tray/requirements.txt`: `pystray`, `Pillow`.
+Installed automatically by `shell.cmd setup` / `shell.sh setup`.
 
 ## Boundary reminder
 

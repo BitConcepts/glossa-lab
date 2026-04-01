@@ -557,7 +557,7 @@ Test cases for Glossa Lab, linked to requirements in `docs/REQUIREMENTS.md`.
 - Clean clone, no virtual environment
 
 **Steps:**
-1. Run `scripts/setup.ps1` (Windows) or `scripts/setup.sh` (POSIX)
+1. Run `scripts/setup.cmd` (Windows) or `scripts/setup.sh` (POSIX)
 2. Verify virtual environment created
 3. Verify dependencies installed
 4. Run setup script again (idempotency check)

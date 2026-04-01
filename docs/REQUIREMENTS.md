@@ -306,7 +306,7 @@ The backend MUST run on Windows, Linux, and macOS without platform-specific code
 
 ### REQ-XP-002 — Bootstrap scripts
 
-Setup and run scripts MUST exist for both Windows (`.ps1`) and POSIX (`.sh`). Scripts MUST be idempotent and create virtual environments automatically.
+Setup and run scripts MUST exist for both Windows (`.cmd`) and POSIX (`.sh`). Scripts MUST be idempotent and create virtual environments automatically.
 
 - **Priority:** P1
 - **Platform:** all

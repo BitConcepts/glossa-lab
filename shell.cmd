@@ -25,6 +25,7 @@ if /i "%~1"=="format" goto do_format
 if /i "%~1"=="run"    goto do_run
 if /i "%~1"=="python" goto do_python
 if /i "%~1"=="setup"  goto do_setup
+if /i "%~1"=="tray"   goto do_tray
 goto do_default
 
 :do_test
@@ -53,9 +54,18 @@ shift
 "%VENV_PYTHON%" %1 %2 %3 %4 %5 %6 %7 %8 %9
 exit /b %ERRORLEVEL%
 
+:do_tray
+shift
+set "PYTHONPATH=%REPO_ROOT%\tray;%PYTHONPATH%"
+"%VENV_PYTHON%" -m glossa_tray %1 %2 %3 %4 %5 %6 %7 %8 %9
+exit /b %ERRORLEVEL%
+
 :do_setup
 "%VENV_PYTHON%" -m pip install --upgrade pip
 "%VENV_PYTHON%" -m pip install -e "%REPO_ROOT%\backend[dev]"
+if exist "%REPO_ROOT%\tray\requirements.txt" (
+    "%VENV_PYTHON%" -m pip install -r "%REPO_ROOT%\tray\requirements.txt"
+)
 if exist "%REPO_ROOT%\frontend\package.json" (
     pushd "%REPO_ROOT%\frontend"
     call npm install
@@ -78,4 +88,5 @@ echo   format [args]  ruff format
 echo   run [args]     uvicorn backend
 echo   python [args]  python in venv
 echo   setup          install/update deps
+echo   tray           start tray app
 exit /b 0

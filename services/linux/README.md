@@ -1,13 +1,34 @@
-# Linux Services
+# Linux Service Integration
 
-This directory will contain Linux-specific startup and service assets.
+## systemd User Service
 
-Planned contents:
-- systemd unit files
-- install/uninstall helpers
-- user-service and/or system-service documentation
-- environment/config examples
+The backend can be managed as a systemd user service.
 
-Required behavior:
-- backend can be started and managed with systemd
-- service expectations are documented explicitly
+### Install
+
+```bash
+chmod +x services/linux/install.sh
+./services/linux/install.sh
+```
+
+Installs `glossa-lab.service` into `~/.config/systemd/user/`.
+
+### Usage
+
+```bash
+systemctl --user start glossa-lab
+systemctl --user stop glossa-lab
+systemctl --user status glossa-lab
+```
+
+### Uninstall
+
+```bash
+./services/linux/uninstall.sh
+```
+
+## Notes
+
+- Uses user-level service (not system-level) for local development installs.
+- The service unit runs `shell.sh run` which uses `python -m uvicorn`.
+- Restarts on failure with a 5-second delay.

@@ -506,12 +506,12 @@ Glossa Lab is a **local-first application**. All communication is localhost-only
 * **Rationale:** zero-dependency, file-based, cross-platform, sufficient for local-first app
 * **Alternatives considered:** PostgreSQL (overkill), JSON files (no query support)
 
-### DEC-005 — Tray framework: TBD
+### DEC-005 — Tray framework: pystray
 
-* **Date:** 2026-03-31
-* **Status:** proposed — awaiting decision
-* **Candidates:** Tauri, Electron, pystray, native per-platform
-* **Notes:** decision deferred until Milestone 3
+* **Date:** 2026-04-01
+* **Status:** accepted
+* **Rationale:** pure Python, lightweight, stays in the Python ecosystem, sufficient for icon + menu control surface
+* **Alternatives considered:** Tauri (requires Rust toolchain), Electron (heavy), native per-platform (3× maintenance)
 
 ### DEC-006 — Package manager (frontend): npm
 

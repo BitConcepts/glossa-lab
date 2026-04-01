@@ -1,0 +1,16 @@
+[Unit]
+Description=Glossa Lab Backend
+After=network.target
+
+[Service]
+Type=simple
+# __REPO_ROOT__ is replaced by install.sh at install time
+ExecStart=__REPO_ROOT__/shell.sh run
+WorkingDirectory=__REPO_ROOT__
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

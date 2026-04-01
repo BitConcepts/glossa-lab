@@ -8,7 +8,10 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from glossa_lab import __version__
 from glossa_lab.api.health import router as health_router
+from glossa_lab.api.jobs import router as jobs_router
+from glossa_lab.api.status import router as status_router
 from glossa_lab.config import get_settings
+from glossa_lab.database import close_db, init_db
 from glossa_lab.logging import setup_logging
 
 _start_time: float = 0.0
@@ -21,9 +24,13 @@ async def lifespan(app: FastAPI):
     settings = get_settings()
     setup_logging(settings)
 
+    # Initialize database
+    await init_db(settings.data_dir)
+
     _start_time = time.time()
     yield
-    # Shutdown: flush logs, close connections
+    # Shutdown: close database, flush logs
+    await close_db()
     _start_time = 0.0
 
 
@@ -54,6 +61,8 @@ def create_app() -> FastAPI:
 
     # Register routers
     application.include_router(health_router, prefix="/api/v1")
+    application.include_router(status_router, prefix="/api/v1")
+    application.include_router(jobs_router, prefix="/api/v1")
 
     return application
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.glossalab.backend</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <!-- __REPO_ROOT__ is replaced by install.sh at install time -->
+        <string>__REPO_ROOT__/shell.sh</string>
+        <string>run</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>__REPO_ROOT__</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>__REPO_ROOT__/logs/backend-stdout.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>__REPO_ROOT__/logs/backend-stderr.log</string>
+</dict>
+</plist>

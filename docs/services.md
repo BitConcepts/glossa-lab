@@ -123,11 +123,16 @@ All service implementations MUST support:
 
 ---
 
-## To be decided later
+## Resolved decisions
 
-- exact Windows startup mechanism
-- exact tray framework (Electron, Tauri, native, etc.)
+- **Windows startup mechanism:** Startup folder shortcut via `services/windows/install.cmd`
+- **Tray framework:** pystray (DEC-005, accepted 2026-04-01)
+- **Linux service:** systemd user unit via `services/linux/install.sh`
+- **macOS service:** LaunchAgent plist via `services/macos/install.sh`
+- **Backend ↔ tray IPC:** HTTP REST API (health endpoint polling)
+
+## Still to be decided
+
 - exact Linux packaging format
 - exact macOS packaging format
-- exact service supervisor structure
-- exact backend ↔ tray IPC mechanism
+- exact service supervisor structure (for production deployments)

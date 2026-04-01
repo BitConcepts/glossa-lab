@@ -1,0 +1,110 @@
+PROGRAM MATRIX_MULTIPLY
+  IMPLICIT NONE
+  INTEGER, PARAMETER :: N = 100
+  REAL, DIMENSION(N,N) :: A, B, C
+  INTEGER :: I, J, K
+  REAL :: SUM_VAL, START_TIME, END_TIME
+
+  ! Initialize matrices
+  CALL RANDOM_SEED()
+  CALL RANDOM_NUMBER(A)
+  CALL RANDOM_NUMBER(B)
+
+  ! Matrix multiplication
+  CALL CPU_TIME(START_TIME)
+  DO I = 1, N
+    DO J = 1, N
+      SUM_VAL = 0.0
+      DO K = 1, N
+        SUM_VAL = SUM_VAL + A(I,K) * B(K,J)
+      END DO
+      C(I,J) = SUM_VAL
+    END DO
+  END DO
+  CALL CPU_TIME(END_TIME)
+
+  WRITE(*,*) 'Time elapsed: ', END_TIME - START_TIME, ' seconds'
+  WRITE(*,*) 'C(1,1) = ', C(1,1)
+  WRITE(*,*) 'C(N,N) = ', C(N,N)
+
+END PROGRAM MATRIX_MULTIPLY
+
+SUBROUTINE GAUSS_ELIMINATE(A, B, X, N)
+  IMPLICIT NONE
+  INTEGER, INTENT(IN) :: N
+  REAL, DIMENSION(N,N), INTENT(INOUT) :: A
+  REAL, DIMENSION(N), INTENT(INOUT) :: B
+  REAL, DIMENSION(N), INTENT(OUT) :: X
+  INTEGER :: I, J, K, PIVOT_ROW
+  REAL :: FACTOR, MAX_VAL, TEMP
+
+  ! Forward elimination with partial pivoting
+  DO K = 1, N-1
+    MAX_VAL = ABS(A(K,K))
+    PIVOT_ROW = K
+    DO I = K+1, N
+      IF (ABS(A(I,K)) > MAX_VAL) THEN
+        MAX_VAL = ABS(A(I,K))
+        PIVOT_ROW = I
+      END IF
+    END DO
+
+    IF (PIVOT_ROW /= K) THEN
+      DO J = K, N
+        TEMP = A(K,J)
+        A(K,J) = A(PIVOT_ROW,J)
+        A(PIVOT_ROW,J) = TEMP
+      END DO
+      TEMP = B(K)
+      B(K) = B(PIVOT_ROW)
+      B(PIVOT_ROW) = TEMP
+    END IF
+
+    DO I = K+1, N
+      FACTOR = A(I,K) / A(K,K)
+      DO J = K+1, N
+        A(I,J) = A(I,J) - FACTOR * A(K,J)
+      END DO
+      B(I) = B(I) - FACTOR * B(K)
+    END DO
+  END DO
+
+  ! Back substitution
+  X(N) = B(N) / A(N,N)
+  DO I = N-1, 1, -1
+    SUM_VAL = 0.0
+    DO J = I+1, N
+      SUM_VAL = SUM_VAL + A(I,J) * X(J)
+    END DO
+    X(I) = (B(I) - SUM_VAL) / A(I,I)
+  END DO
+
+END SUBROUTINE GAUSS_ELIMINATE
+
+FUNCTION DETERMINANT(A, N) RESULT(DET)
+  IMPLICIT NONE
+  INTEGER, INTENT(IN) :: N
+  REAL, DIMENSION(N,N), INTENT(IN) :: A
+  REAL :: DET
+  REAL, DIMENSION(N,N) :: TEMP
+  INTEGER :: I, J, K
+  REAL :: FACTOR
+
+  TEMP = A
+  DET = 1.0
+
+  DO K = 1, N
+    IF (ABS(TEMP(K,K)) < 1.0E-10) THEN
+      DET = 0.0
+      RETURN
+    END IF
+    DET = DET * TEMP(K,K)
+    DO I = K+1, N
+      FACTOR = TEMP(I,K) / TEMP(K,K)
+      DO J = K+1, N
+        TEMP(I,J) = TEMP(I,J) - FACTOR * TEMP(K,J)
+      END DO
+    END DO
+  END DO
+
+END FUNCTION DETERMINANT

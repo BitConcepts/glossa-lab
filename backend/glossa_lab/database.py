@@ -16,9 +16,9 @@ import aiosqlite
 
 logger = logging.getLogger(__name__)
 
-_SCHEMA_VERSION = 1
+_SCHEMA_VERSION = 2
 
-_SCHEMA_SQL = """
+_SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
     version INTEGER NOT NULL
 );
@@ -31,6 +31,26 @@ CREATE TABLE IF NOT EXISTS jobs (
     params     TEXT NOT NULL DEFAULT '{}',
     created_at TEXT NOT NULL,
     updated_at TEXT NOT NULL
+);
+"""
+
+_SCHEMA_V2 = """
+CREATE TABLE IF NOT EXISTS texts (
+    id            TEXT PRIMARY KEY,
+    name          TEXT NOT NULL,
+    corpus_type   TEXT NOT NULL DEFAULT 'linguistic',
+    content       TEXT NOT NULL,
+    alphabet_size INTEGER NOT NULL DEFAULT 0,
+    symbol_set    TEXT NOT NULL DEFAULT '[]',
+    metadata      TEXT NOT NULL DEFAULT '{}',
+    created_at    TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS job_results (
+    id         TEXT PRIMARY KEY,
+    job_id     TEXT NOT NULL REFERENCES jobs(id),
+    data       TEXT NOT NULL DEFAULT '{}',
+    created_at TEXT NOT NULL
 );
 """
 
@@ -68,16 +88,26 @@ class Database:
 
     async def _apply_schema(self) -> None:
         assert self._conn
-        await self._conn.executescript(_SCHEMA_SQL)
+        # Always apply v1 (uses IF NOT EXISTS)
+        await self._conn.executescript(_SCHEMA_V1)
 
         cursor = await self._conn.execute("SELECT version FROM _schema_version")
         row = await cursor.fetchone()
-        if row is None:
+        current_version = row["version"] if row else 0
+
+        if current_version < 1:
             await self._conn.execute(
-                "INSERT INTO _schema_version (version) VALUES (?)", (_SCHEMA_VERSION,)
+                "INSERT INTO _schema_version (version) VALUES (?)", (1,)
             )
-            await self._conn.commit()
-        # Future migrations would go here: if row["version"] < 2: ...
+            current_version = 1
+
+        if current_version < 2:
+            await self._conn.executescript(_SCHEMA_V2)
+            await self._conn.execute(
+                "UPDATE _schema_version SET version = ?", (2,)
+            )
+
+        await self._conn.commit()
 
     # ── Jobs ─────────────────────────────────────────────────────────
 
@@ -143,6 +173,102 @@ class Database:
                 counts[s] = c
             counts["total"] += c
         return counts
+
+    # ── Texts ─────────────────────────────────────────────────────────
+
+    async def create_text(
+        self,
+        *,
+        name: str,
+        corpus_type: str = "linguistic",
+        content: list[str],
+        metadata: dict[str, Any] | None = None,
+        created_at: str,
+    ) -> dict[str, Any]:
+        assert self._conn
+        text_id = uuid.uuid4().hex[:12]
+        symbol_set = sorted(set(content))
+        alphabet_size = len(symbol_set)
+        await self._conn.execute(
+            """INSERT INTO texts
+               (id, name, corpus_type, content, alphabet_size,
+                symbol_set, metadata, created_at)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
+            (
+                text_id, name, corpus_type,
+                json.dumps(content), alphabet_size,
+                json.dumps(symbol_set),
+                json.dumps(metadata or {}), created_at,
+            ),
+        )
+        await self._conn.commit()
+        return await self.get_text(text_id)  # type: ignore[return-value]
+
+    async def list_texts(self) -> list[dict[str, Any]]:
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM texts ORDER BY created_at DESC"
+        )
+        rows = await cursor.fetchall()
+        return [self._row_to_dict(r) for r in rows]
+
+    async def get_text(self, text_id: str) -> dict[str, Any] | None:
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM texts WHERE id = ?", (text_id,)
+        )
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    # ── Job results ──────────────────────────────────────────────────
+
+    async def store_result(
+        self, *, job_id: str, data: dict[str, Any], created_at: str,
+    ) -> dict[str, Any]:
+        assert self._conn
+        result_id = uuid.uuid4().hex[:12]
+        await self._conn.execute(
+            """INSERT INTO job_results (id, job_id, data, created_at)
+               VALUES (?, ?, ?, ?)""",
+            (result_id, job_id, json.dumps(data), created_at),
+        )
+        await self._conn.commit()
+        return {"id": result_id, "job_id": job_id, "data": data}
+
+    async def get_result_for_job(
+        self, job_id: str,
+    ) -> dict[str, Any] | None:
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM job_results WHERE job_id = ?", (job_id,)
+        )
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    async def update_job_status(
+        self, job_id: str, status: str,
+    ) -> None:
+        assert self._conn
+        await self._conn.execute(
+            "UPDATE jobs SET status = ?, updated_at = datetime('now') "
+            "WHERE id = ?",
+            (status, job_id),
+        )
+        await self._conn.commit()
+
+    async def claim_pending_job(self) -> dict[str, Any] | None:
+        """Atomically claim the oldest pending job."""
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM jobs WHERE status = 'pending' "
+            "ORDER BY created_at ASC LIMIT 1"
+        )
+        row = await cursor.fetchone()
+        if row is None:
+            return None
+        job = self._row_to_dict(row)
+        await self.update_job_status(job["id"], "running")
+        return job
 
     # ── Helpers ───────────────────────────────────────────────────────
 

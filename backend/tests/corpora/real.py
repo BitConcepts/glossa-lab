@@ -10,6 +10,25 @@ from pathlib import Path
 FIXTURES_DIR = Path(__file__).parent / "fixtures"
 
 
+def load_indus() -> list[str]:
+    """Load Indus script sign sequence (generated from published statistics)."""
+    from tests.corpora.indus_corpus import generate_indus_flat
+
+    return generate_indus_flat(seed=42)
+
+
+def load_tamil() -> list[str]:
+    """Load Tamil text as character sequence (transliterated, lowercase)."""
+    text = (FIXTURES_DIR / "tamil.txt").read_text(encoding="utf-8")
+    return [c.lower() for c in text if c.isalpha()]
+
+
+def load_sanskrit() -> list[str]:
+    """Load Sanskrit text as character sequence (transliterated, lowercase)."""
+    text = (FIXTURES_DIR / "sanskrit.txt").read_text(encoding="utf-8")
+    return [c.lower() for c in text if c.isalpha()]
+
+
 def load_english() -> list[str]:
     """Load English text as character sequence (lowercase, no whitespace)."""
     text = (FIXTURES_DIR / "english.txt").read_text(encoding="utf-8")

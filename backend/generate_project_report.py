@@ -117,7 +117,7 @@ def generate():
         "the known transliteration.", body))
     S.append(Paragraph(
         "<b>Result: 29 of 30 signs correctly identified (96.7% accuracy).</b> "
-        "The single miss (sign U30/\u015b2) is the rarest sign in the "
+        "The single miss (sign U30/s2) is the rarest sign in the "
         "Ugaritic alphabet, appearing zero times in our corpus. "
         "Top-5 most frequent signs: 5/5 correct. "
         "Kandles phonetic confidence: 1.000.", body))

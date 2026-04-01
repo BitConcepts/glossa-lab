@@ -331,50 +331,68 @@ Environment setup must be split:
 
 Scripts must exist for:
 
-* Windows (`.ps1`)
+* Windows (`.cmd`)
 * Linux/macOS (`.sh`)
 
 ---
 
-## REQUIRED SCRIPTS
+## SHELL WRAPPER (CRITICAL)
+
+All tool invocations MUST go through the unified shell wrapper:
+
+```text
+# Windows
+shell.cmd <command> [args]
+
+# Linux/macOS
+./shell.sh <command> [args]
+```
+
+### Available commands
+
+* `shell.cmd run` — start backend (dev mode, foreground)
+* `shell.cmd test [args]` — run pytest
+* `shell.cmd lint [args]` — run ruff check
+* `shell.cmd format [args]` — run ruff format
+* `shell.cmd setup` — re-run setup (install/update deps)
+* `shell.cmd python [args]` — run Python in venv
+
+### Why this exists
+
+On Windows, calling venv `Scripts/*.exe` files directly (e.g. `ruff.exe`, `pytest.exe`) **hangs the PTY**. PowerShell `.ps1` wrappers also hang. The `.cmd` shell wrapper routes all invocations through `python.exe -m <module>` which does not hang.
+
+### ABSOLUTELY FORBIDDEN
+
+* ❌ `backend\venv\Scripts\ruff.exe ...`
+* ❌ `backend\venv\Scripts\pytest.exe ...`
+* ❌ `backend\venv\Scripts\uvicorn.exe ...`
+* ❌ Any direct invocation of executables under `venv/Scripts/` or `venv/bin/`
+* ❌ Any `.ps1` PowerShell script for tool invocation (causes PTY hangs)
+
+### REQUIRED (safe, uses python -m)
+
+* ✅ `shell.cmd test`
+* ✅ `shell.cmd lint`
+* ✅ `shell.cmd run`
+* ✅ `shell.cmd python <script>`
+
+### Auto-bootstrap
+
+If the venv does not exist, `shell.cmd` / `shell.sh` will create it and install all dependencies automatically on first run.
+
+---
+
+## ADDITIONAL SCRIPTS
 
 ```text
 scripts/
-  setup.ps1
+  setup.cmd
   setup.sh
-  run.ps1
+  run.cmd
   run.sh
 ```
 
----
-
-## RUN CONTRACT
-
-There MUST be a single way to run the system:
-
-```bash
-# Linux/macOS
-./scripts/run.sh
-
-# Windows
-./scripts/run.ps1
-```
-
-This must:
-
-* start backend
-* optionally start frontend
-* prepare environment
-
----
-
-## SHELL INVOCATION
-
-Scripts must:
-
-* activate environment
-* ensure dependencies installed
-* launch backend entrypoint
+These are convenience wrappers. The canonical entry point is `shell.cmd` / `shell.sh` at the repo root.
 
 ---
 
@@ -405,6 +423,16 @@ No system-dependent assumptions.
 No hidden service logic.
 
 ### H6 — No silent scope expansion
+
+If the task grows beyond the proposal, stop and re-propose.
+
+### H7 — Shell wrapper required
+
+All tool invocations (pytest, ruff, uvicorn, python) MUST go through `shell.cmd` (Windows) or `shell.sh` (POSIX). Direct invocation of venv executables is **forbidden**. PowerShell `.ps1` scripts are also **forbidden** for tool invocation — they cause PTY hangs on Windows.
+
+### H8 — No silent commands
+
+If a command produces no output, it has failed. Do not retry it. Do not wait for it. Treat it as broken and fix the invocation or replace the command. Commands that are known to hang or produce no output are **forbidden**.
 
 ---
 

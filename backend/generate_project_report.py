@@ -105,32 +105,56 @@ def generate():
 
     # ═══════ 3. RESULTS ═══════
     S.append(Paragraph("3. Validated Results", h1))
-    S.append(Paragraph("3.1 Block Entropy Replication (Rao et al. 2009)", h2))
-    S.append(Paragraph(
-        "We replicated the block entropy analysis across 9 corpora "
-        "(English, Tamil, Sanskrit, Indus, DNA, Fortran, random, ordered, "
-        "Markov). Results confirm: Random &gt; DNA &gt; Indus/English/Tamil/"
-        "Sanskrit &gt; Fortran &gt; Ordered, consistent with the published "
-        "findings.", body))
 
-    S.append(Paragraph("3.2 Decipherment Engine Performance", h2))
+    S.append(Paragraph("3.1 Ugaritic Decipherment \u2014 Real Ancient Script (96.7%)", h2))
+    S.append(Paragraph(
+        "Our primary validation was on <b>real Ugaritic text</b> \u2014 the "
+        "Baal Cycle (KTU 1.1\u20131.6), a cuneiform alphabetic script from "
+        "c.\u00a01400\u20131190 BCE that was deciphered in the 1930s. We "
+        "encoded 83 lines of genuine Ugaritic inscriptions with opaque "
+        "sign IDs (U01\u2013U30) to simulate the undeciphered state, then "
+        "ran our decipherment engine against a language model built from "
+        "the known transliteration.", body))
+    S.append(Paragraph(
+        "<b>Result: 29 of 30 signs correctly identified (96.7% accuracy).</b> "
+        "The single miss (sign U30/\u015b2) is the rarest sign in the "
+        "Ugaritic alphabet, appearing zero times in our corpus. "
+        "Top-5 most frequent signs: 5/5 correct. "
+        "Kandles phonetic confidence: 1.000.", body))
+
+    S.append(Paragraph("3.2 Synthetic Cipher Benchmark (100%)", h2))
+    S.append(Paragraph(
+        "As a controlled baseline, we created a toy language (21 phonemes, "
+        "CVC words, 3 noun cases, 2 verb tenses, SOV word order) and "
+        "encrypted it with a random substitution cipher. The engine "
+        "recovered all 21 phoneme mappings: <b>100% accuracy</b>.", body))
 
     decipher_data = [
-        ["Test", "Accuracy", "Details"],
-        ["Synthetic cipher (21 phonemes)", "21/21 = 100%",
-         "Random substitution, 500 inscriptions, CVC grammar"],
-        ["Ugaritic Baal Cycle (30 signs)", "29/30 = 96.7%",
-         "Real ancient script, 83 lines, Kandles confidence 1.000"],
+        ["Test", "Data Type", "Accuracy", "Details"],
+        ["Ugaritic Baal Cycle", "REAL ancient text", "29/30 = 96.7%",
+         "83 lines, 30 cuneiform signs, c. 1400 BCE"],
+        ["Synthetic cipher", "Synthetic benchmark", "21/21 = 100%",
+         "21 phonemes, 500 inscriptions"],
     ]
-    S.append(_tbl(decipher_data, [1.8*inch, 1.2*inch, 3.2*inch]))
-    S.append(Paragraph("<b>Table 2.</b> Decipherment accuracy.", cap))
+    S.append(_tbl(decipher_data, [1.4*inch, 1.1*inch, 1.1*inch, 2.5*inch]))
+    S.append(Paragraph("<b>Table 2.</b> Decipherment accuracy on real and synthetic data.", cap))
 
-    S.append(Paragraph("3.3 Indus Script Hypothesis Test", h2))
+    S.append(Paragraph("3.3 Block Entropy \u2014 Real Multi-Language Corpora", h2))
+    S.append(Paragraph(
+        "We replicated the block entropy analysis from Rao et al. (2009) "
+        "across 9 corpora using <b>real text</b> for English (Melville), "
+        "Tamil (Thirukkural), Sanskrit (Rigveda), and DNA (human "
+        "beta-globin gene), plus synthetic baselines. Results confirm "
+        "the published entropy ordering: linguistic systems cluster "
+        "together, distinct from non-linguistic systems.", body))
+
+    S.append(Paragraph("3.4 Indus Script Hypothesis Test (Synthetic Corpus)", h2))
     S.append(Paragraph(
         "We tested proto-Dravidian vs Vedic Sanskrit as competing "
-        "target language hypotheses on a statistically representative "
-        "synthetic Indus corpus (6,823 signs, 417 unique, matching "
-        "published Zipf-Mandelbrot distributions from Yadav et al. 2010).", body))
+        "target language hypotheses on a <b>synthetic</b> Indus corpus "
+        "(6,823 signs, 417 unique) that reproduces published statistical "
+        "properties (Yadav et al. 2010). This is NOT the actual M77/ICIT "
+        "data \u2014 validation on real inscriptions is the critical next step.", body))
 
     hyp_data = [
         ["Hypothesis", "Score", "Word Matches", "Kandles"],
@@ -139,12 +163,8 @@ def generate():
     ]
     S.append(_tbl(hyp_data, [1.3*inch, 0.8*inch, 1.8*inch, 0.8*inch]))
     S.append(Paragraph(
-        "<b>Table 3.</b> Hypothesis engine results on synthetic Indus corpus. "
-        "Proto-Dravidian scores 4\u00d7 higher.", cap))
-    S.append(Paragraph(
-        "<b>Note:</b> These results are on a synthetic corpus that reproduces "
-        "published statistical properties, not the actual M77/ICIT data. "
-        "Validation on real inscriptions is the critical next step.", body))
+        "<b>Table 3.</b> Hypothesis engine results (synthetic Indus corpus). "
+        "Proto-Dravidian scores 4\u00d7 higher. Pending validation on real data.", cap))
 
     # ═══════ 4. DATA NEEDS ═══════
     S.append(PageBreak())

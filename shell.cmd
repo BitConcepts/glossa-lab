@@ -7,11 +7,18 @@ set "REPO_ROOT=%~dp0"
 set "REPO_ROOT=%REPO_ROOT:~0,-1%"
 set "VENV_PYTHON=%REPO_ROOT%\backend\venv\Scripts\python.exe"
 
+REM Detect Python command (must be outside if-block to avoid delayed expansion bug)
+set "PY=python"
+where python3 >nul 2>&1 && set "PY=python3"
+
 REM Bootstrap if venv missing
 if not exist "%VENV_PYTHON%" (
     echo [SETUP] Creating venv ...
-    where python3 >nul 2>&1 && (set "PY=python3") || (set "PY=python")
     %PY% -m venv "%REPO_ROOT%\backend\venv"
+    if errorlevel 1 (
+        echo [ERROR] Failed to create venv.
+        exit /b 1
+    )
     "%VENV_PYTHON%" -m pip install --quiet --upgrade pip
     "%VENV_PYTHON%" -m pip install --quiet -e "%REPO_ROOT%\backend[dev]"
     echo [SETUP] Done.

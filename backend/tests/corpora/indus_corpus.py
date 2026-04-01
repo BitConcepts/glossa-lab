@@ -53,14 +53,53 @@ _COMMON_BIGRAMS = [
 ]
 
 
+# ── Archaeological context ─────────────────────────────────────────
+
+# Findspot distribution (approximate, from Fuls 2023)
+_FINDSPOTS = [
+    ("Mohenjo-daro", 0.45),
+    ("Harappa", 0.30),
+    ("Lothal", 0.06),
+    ("Kalibangan", 0.04),
+    ("Dholavira", 0.03),
+    ("Chanhu-daro", 0.03),
+    ("Banawali", 0.02),
+    ("Other", 0.07),
+]
+
+# Object type distribution
+_OBJECT_TYPES = [
+    ("square_seal", 0.50),
+    ("rectangular_seal", 0.10),
+    ("tablet_incised", 0.15),
+    ("tablet_bas_relief", 0.10),
+    ("pottery", 0.08),
+    ("copper_plate", 0.03),
+    ("other", 0.04),
+]
+
+# Iconography (animal motifs on seals)
+_ICONOGRAPHY = [
+    ("unicorn_bull", 0.60),
+    ("short_horned_bull", 0.10),
+    ("water_buffalo", 0.05),
+    ("elephant", 0.04),
+    ("rhinoceros", 0.03),
+    ("tiger", 0.02),
+    ("none", 0.16),
+]
+
+
 def generate_indus_corpus(
     seed: int = 42,
     num_inscriptions: int = 1500,
     num_signs: int = 417,
+    include_metadata: bool = False,
 ) -> list[list[str]]:
     """Generate synthetic Indus inscriptions.
 
     Returns a list of inscriptions, each being a list of sign ID strings.
+    If include_metadata=True, returns list of dicts with signs + archaeological context.
     """
     rng = random.Random(seed)
 
@@ -109,7 +148,28 @@ def generate_indus_corpus(
 
             signs.append(chosen)
 
-        inscriptions.append([str(s) for s in signs])
+        insc_data = [str(s) for s in signs]
+        if include_metadata:
+            site = rng.choices(
+                [s for s, _ in _FINDSPOTS],
+                weights=[w for _, w in _FINDSPOTS],
+            )[0]
+            obj_type = rng.choices(
+                [t for t, _ in _OBJECT_TYPES],
+                weights=[w for _, w in _OBJECT_TYPES],
+            )[0]
+            icon = rng.choices(
+                [i for i, _ in _ICONOGRAPHY],
+                weights=[w for _, w in _ICONOGRAPHY],
+            )[0]
+            inscriptions.append({
+                "signs": insc_data,
+                "findspot": site,
+                "object_type": obj_type,
+                "iconography": icon,
+            })
+        else:
+            inscriptions.append(insc_data)
 
     return inscriptions
 

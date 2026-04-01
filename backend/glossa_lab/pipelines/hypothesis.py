@@ -437,19 +437,16 @@ async def run_hypothesis(params: dict[str, Any]) -> dict[str, Any]:
     target_models = {}
     vocabularies = {}
 
-    # Use proto-Dravidian and Vedic Sanskrit as competing hypotheses
-    # (In production, these would be proper language models from corpora)
-    dravidian_symbols = []
-    for word in PROTO_DRAVIDIAN_VOCAB:
-        dravidian_symbols.extend(list(word))
-    target_models["proto-dravidian"] = LanguageModel(dravidian_symbols * 10)
-    vocabularies["proto-dravidian"] = PROTO_DRAVIDIAN_VOCAB
+    # Build proper language models from expanded data modules
+    from glossa_lab.data import dravidian, sanskrit
 
-    sanskrit_symbols = []
-    for word in VEDIC_SANSKRIT_VOCAB:
-        sanskrit_symbols.extend(list(word))
-    target_models["vedic-sanskrit"] = LanguageModel(sanskrit_symbols * 10)
-    vocabularies["vedic-sanskrit"] = VEDIC_SANSKRIT_VOCAB
+    dravidian_syms = dravidian.get_corpus_symbols()
+    target_models["proto-dravidian"] = LanguageModel(dravidian_syms)
+    vocabularies["proto-dravidian"] = dravidian.get_vocabulary()
+
+    sanskrit_syms = sanskrit.get_corpus_symbols()
+    target_models["vedic-sanskrit"] = LanguageModel(sanskrit_syms)
+    vocabularies["vedic-sanskrit"] = sanskrit.get_vocabulary()
 
     # Create hypotheses
     hypotheses = [

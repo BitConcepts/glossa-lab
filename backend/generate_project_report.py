@@ -70,11 +70,13 @@ def generate():
     # ═══════ 1. OVERVIEW ═══════
     S.append(Paragraph("1. Project Overview", h1))
     S.append(Paragraph(
-        "Glossa Lab is an open-source, cross-platform research toolkit "
-        "for computational analysis and decipherment of ancient scripts. "
-        "Built in Python with a FastAPI backend, it combines statistical "
-        "analysis, structural pattern detection, and automated decipherment "
-        "in a single integrated platform.", body))
+        "Glossa Lab is a proprietary, cross-platform research toolkit "
+        "for computational analysis and decipherment of ancient scripts, "
+        "developed by BitConcepts. Built in Python with a FastAPI backend, "
+        "it combines statistical analysis, structural pattern detection, "
+        "and automated decipherment in a single integrated platform. "
+        "The toolkit incorporates patented technologies and is not "
+        "publicly available at this time.", body))
     S.append(Paragraph(
         "The toolkit was designed with the Indus script as its primary "
         "target, but has been validated on synthetic ciphers and the "
@@ -192,9 +194,10 @@ def generate():
     S.append(Paragraph("6. Technical Details", h1))
     S.append(Paragraph(
         "102 automated tests \u2022 Python 3.12 \u2022 FastAPI backend \u2022 "
-        "SQLite database \u2022 GitHub Actions CI (Windows/Linux/macOS) \u2022 "
-        "reportlab + matplotlib for PDF reports \u2022 "
-        "Cross-platform (shell.cmd/shell.sh wrappers)", body))
+        "SQLite database \u2022 CI on Windows/Linux/macOS \u2022 "
+        "PDF report generation \u2022 Cross-platform \u2022 "
+        "Proprietary \u2014 incorporates patented technologies "
+        "(US 2024/0248922 A1, US Provisional 63/980,251)", body))
 
     # ═══════ REFS ═══════
     S.append(Paragraph("References", h1))

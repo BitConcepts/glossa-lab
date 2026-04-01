@@ -104,6 +104,7 @@ def _ensure_pipelines_loaded() -> None:
         import glossa_lab.pipelines.decipher  # noqa: F401
         import glossa_lab.pipelines.hypothesis  # noqa: F401
         import glossa_lab.pipelines.kandles  # noqa: F401
+        import glossa_lab.pipelines.numerals  # noqa: F401
         import glossa_lab.pipelines.paradigm  # noqa: F401
         import glossa_lab.pipelines.positional  # noqa: F401
         import glossa_lab.pipelines.sign_cluster  # noqa: F401

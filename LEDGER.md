@@ -387,3 +387,59 @@ Risks:
 - All requirements still in draft status
 
 Next step: Acquire actual M77 corpus data, implement NSB estimator, build frontend visualization
+
+---
+
+## [2026-04-01] Entry — Complete decipherment toolkit build + Indus preparation
+
+Objective: Build the full decipherment pipeline from structural analysis to actual cipher cracking, integrate Merkur and CPSC patents, prepare for real Indus data.
+
+What was done (major session, ~10 hours):
+- Built 5 new analysis pipelines: Kandles (Merkur patent), positional, sign clustering, paradigm detection, co-occurrence networks
+- Built decipherment engine (hill climbing): 100% on synthetic cipher, 96.7% on Ugaritic (29/30 signs)
+- Improved decipher accuracy: trigram model, positional constraints, Kandles validation, expanded Ugaritic corpus
+- Built CPSC constraint-projection engine (separate module, clean IP boundary)
+- Built hypothesis engine: iterative hypothesize→test→score→learn loop
+- Ran hypothesis engine on synthetic Indus: Proto-Dravidian wins (score 297 vs Sanskrit 77, 28 vs 6 word matches)
+- Built Fuls corpus parser for ebook data ingestion
+- Built expanded language data: 120+ proto-Dravidian DEDR roots, 120+ Vedic Sanskrit roots, Old Tamil + Rigveda corpora
+- Built numeral identification pipeline
+- Added archaeological context to Indus corpus generator (findspot, object type, iconography)
+- Integrated Merkur patents ([REDACTED-PATENT-PUB]): Kandles, hierarchical decomposition, semantic clustering
+- Added DEC-007 to architecture, 10 new requirements, 12 new test specs
+- Generated PDF reports: block entropy analysis + decipherment results
+- Built synthetic cipher language + Ugaritic benchmark for decipherment validation
+- Contacted Dr. Andreas Fuls (TU Berlin) for ICIT database access
+
+Files changed: ~50 files created/modified across pipelines, data, tests, docs, reports
+
+Checks run:
+- 102 tests passing (was 38 at start of session)
+- Lint clean
+- Synthetic cipher: 21/21 = 100% decipherment accuracy
+- Ugaritic: 29/30 = 96.7% decipherment accuracy
+- Hypothesis engine: Dravidian 297 vs Sanskrit 77 on Indus
+
+Results:
+- 11 analysis pipelines operational
+- 3 decipherment engines (hill climbing, CPSC projection, hypothesis)
+- Toolkit proven on synthetic cipher (100%) and real ancient script (Ugaritic 96.7%)
+- Proto-Dravidian hypothesis scores 4x higher than Sanskrit on synthetic Indus corpus
+- Fuls parser ready to ingest real M77/ICIT data when available
+- CPSC integration with clean IP boundary (delete cpsc/ to remove)
+
+Open TODOs:
+- [ ] Acquire ICIT corpus from Dr. Fuls (email sent)
+- [ ] Load real Indus data and run full pipeline suite
+- [ ] Run hypothesis engine on real data (Dravidian vs Sanskrit)
+- [ ] Implement NSB Bayesian entropy estimator
+- [ ] Build frontend results visualization
+- [ ] Add Sumerian cuneiform corpus for broader comparison
+- [ ] Implement logosyllabic decipherment mode
+
+Risks:
+- All Indus analysis is on synthetic data — must validate on real corpus
+- Proto-Dravidian vocabulary is reconstructed, not attested — word matches are approximate
+- ICIT access depends on Dr. Fuls' response
+
+Next step: Follow up with Dr. Fuls (send project report), load real data when available, iterate hypothesis engine

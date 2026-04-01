@@ -628,3 +628,216 @@ Test cases for Glossa Lab, linked to requirements in `docs/REQUIREMENTS.md`.
 **Expected result:** Versions match exactly
 **Pass criteria:** Versions are identical strings
 **Fail criteria:** Version mismatch
+
+---
+
+## Analysis Pipelines
+
+### TEST-PIPE-001 — Block entropy pipeline produces valid output
+
+**Requirement:** REQ-PIPE-001
+**Type:** smoke
+**Platform:** all
+**Automated:** yes (test_study_synthetic.py, test_study_rao2009.py)
+
+**Steps:**
+1. Submit a text corpus to the block_entropy pipeline
+2. Verify result contains block_entropies array with N=1..6
+3. Verify each entry has raw_nats and normalized fields
+4. Verify normalized values are in plausible range [0, max_n]
+
+**Expected result:** Valid block entropy results
+**Pass criteria:** All fields present, values in range
+**Fail criteria:** Missing fields or out-of-range values
+
+### TEST-PIPE-002 — Character frequency pipeline produces valid output
+
+**Requirement:** REQ-PIPE-002
+**Type:** smoke
+**Platform:** all
+**Automated:** planned
+
+**Steps:**
+1. Submit a text corpus to the char_freq pipeline
+2. Verify result contains total_symbols, unique_symbols, frequencies, zipf_exponent
+3. Verify frequencies sum to total_symbols
+
+**Expected result:** Valid frequency results
+**Pass criteria:** All fields present, frequencies consistent
+**Fail criteria:** Missing fields or inconsistent counts
+
+### TEST-PIPE-003 — Pipeline engine processes jobs
+
+**Requirement:** REQ-PIPE-003
+**Type:** smoke
+**Platform:** all
+**Automated:** yes (test_jobs.py)
+
+**Steps:**
+1. Create a job with pipeline="block_entropy" and valid text_id
+2. Wait for engine to process
+3. Verify job status transitions to completed
+4. Verify results are retrievable via GET /api/v1/jobs/{id}/results
+
+**Expected result:** Job processed, results stored
+**Pass criteria:** Job completed, results accessible
+**Fail criteria:** Job stuck in pending/running, or no results
+
+---
+
+## Kandles Phonetic-Visual Analysis
+
+### TEST-KDL-001 — Kandles phonetic mapping is correct
+
+**Requirement:** REQ-KDL-001
+**Type:** unit
+**Platform:** all
+**Automated:** planned
+**Patent:** US 2024/0248922 A1
+
+**Steps:**
+1. Map the word "cat" → expect group 1 (K/G/J/Ch), color Yellow
+2. Map the word "moon" → expect group 2 (M/N), color Grey
+3. Map the word "tree" → expect group 3 (T/D/Th), color Red
+4. Map the word "river" → expect group 4 (R/L), color Blue
+5. Map the word "water" → expect group 5 (Y/W/H/Kh), color Green
+6. Map the word "fire" → expect group 6 (P/B/F/V), color Purple
+7. Map the word "sun" → expect group 7 (S/Z/Sh), color Brown
+8. Map the word "apple" → expect group 0 (vowel-initial)
+
+**Expected result:** Each word maps to the correct Kandles group
+**Pass criteria:** All 8 mappings correct
+**Fail criteria:** Any mapping incorrect
+
+### TEST-KDL-002 — Kandles color-coded text output
+
+**Requirement:** REQ-KDL-002
+**Type:** unit
+**Platform:** all
+**Automated:** planned
+**Patent:** US 2024/0248922 A1
+
+**Steps:**
+1. Input: "The cat sat on the mat"
+2. Generate Kandles color-coded output
+3. Verify "The" → Red (T group), "cat" → Yellow (K group), "sat" → Brown (S group), etc.
+4. Verify output includes both color name and hex code
+
+**Expected result:** Each word correctly color-coded
+**Pass criteria:** All words have correct color assignments
+**Fail criteria:** Any word miscolored
+
+### TEST-KDL-003 — Kandles grid generation
+
+**Requirement:** REQ-KDL-003
+**Type:** unit
+**Platform:** all
+**Automated:** planned
+**Patent:** US 2024/0248922 A1
+
+**Steps:**
+1. Input: a text of 36 words
+2. Generate Kandles grid
+3. Verify grid is 6x6 (equal rows and columns)
+4. Verify each cell has color, number (1-7), and original word
+5. Verify grid matches expected Kandles mapping for each word
+
+**Expected result:** Valid Kandles grid with correct dimensions and coloring
+**Pass criteria:** Grid dimensions correct, all cells properly mapped
+**Fail criteria:** Wrong dimensions or incorrect color assignments
+
+### TEST-KDL-004 — Cross-language Kandles comparison
+
+**Requirement:** REQ-KDL-004
+**Type:** integration
+**Platform:** all
+**Automated:** planned
+**Patent:** US 2024/0248922 A1
+
+**Steps:**
+1. Generate Kandles grid for an English text
+2. Generate Kandles grid for a transliterated Tamil text
+3. Compute similarity metric between the two grids
+4. Verify similarity metric is a number in [0, 1]
+
+**Expected result:** Valid cross-language comparison with similarity score
+**Pass criteria:** Similarity metric computed, in valid range
+**Fail criteria:** Comparison fails or metric out of range
+
+---
+
+## Hierarchical Text Decomposition
+
+### TEST-HTD-001 — Text decomposition into stories and slices
+
+**Requirement:** REQ-HTD-001
+**Type:** unit
+**Platform:** all
+**Automated:** planned
+**Patent:** US 2024/0248922 A1
+
+**Steps:**
+1. Upload a multi-section text
+2. Decompose into stories and slices
+3. Verify each slice is independently addressable (has unique ID)
+4. Verify slices can be retrieved individually
+
+**Expected result:** Text decomposed into navigable hierarchy
+**Pass criteria:** All slices addressable and retrievable
+**Fail criteria:** Slices not independently accessible
+
+### TEST-HTD-002 — Slice filtering by clusters and tags
+
+**Requirement:** REQ-HTD-002
+**Type:** unit
+**Platform:** all
+**Automated:** planned
+**Patent:** US 2024/0248922 A1
+
+**Steps:**
+1. Create slices with different cluster tags
+2. Filter by a single cluster → verify correct subset returned
+3. Filter by multiple clusters (AND) → verify intersection
+4. Filter by multiple clusters (OR) → verify union
+
+**Expected result:** Filtering returns correct subsets
+**Pass criteria:** All filter operations return expected slices
+**Fail criteria:** Incorrect filtering results
+
+---
+
+## Semantic Cluster Tagging
+
+### TEST-SEM-001 — Default semantic taxonomy exists
+
+**Requirement:** REQ-SEM-001
+**Type:** smoke
+**Platform:** all
+**Automated:** planned
+**Patent:** US 2024/0248922 A1
+
+**Steps:**
+1. Query the system for available semantic clusters
+2. Verify at least Culture, Nations, Nature, Religion, People, Spiritual are present
+
+**Expected result:** Default taxonomy available
+**Pass criteria:** All 6 default clusters present
+**Fail criteria:** Any default cluster missing
+
+### TEST-SEM-002 — Manual tagging
+
+**Requirement:** REQ-SEM-002
+**Type:** unit
+**Platform:** all
+**Automated:** planned
+**Patent:** US 2024/0248922 A1
+
+**Steps:**
+1. Upload a text segment
+2. Apply a manual tag "test-label"
+3. Retrieve the segment
+4. Verify the tag is present
+
+**Expected result:** Manual tag persisted and retrievable
+**Pass criteria:** Tag stored and returned correctly
+**Fail criteria:** Tag lost or incorrect

@@ -275,6 +275,59 @@ def _kandles_validate(
         return 0.0
 
 
+# ── Auto-dispatch: CPSC if available, hill climbing fallback ──────
+
+def _cpsc_available() -> bool:
+    """Check if the CPSC module is installed."""
+    try:
+        from glossa_lab.cpsc import CPSC_AVAILABLE
+        return CPSC_AVAILABLE
+    except ImportError:
+        return False
+
+
+def decipher_auto(
+    cipher_signs: list[str],
+    target_model: LanguageModel,
+    seed: int = 42,
+    max_iterations: int = 10000,
+    restarts: int = 5,
+    cipher_inscriptions: list[list[str]] | None = None,
+    engine: str = "auto",
+) -> dict[str, Any]:
+    """Decipher with automatic engine selection.
+
+    engine:
+      "auto" — use CPSC if available, hill climbing otherwise
+      "cpsc" — force CPSC (raises if not available)
+      "hillclimb" — force hill climbing
+    """
+    use_cpsc = False
+    if engine == "auto":
+        use_cpsc = _cpsc_available()
+    elif engine == "cpsc":
+        if not _cpsc_available():
+            raise RuntimeError(
+                "CPSC module not available. "
+                "Install glossa_lab.cpsc or use engine='hillclimb'."
+            )
+        use_cpsc = True
+
+    if use_cpsc:
+        from glossa_lab.cpsc.projection import cpsc_project
+        return cpsc_project(
+            cipher_signs, target_model,
+            seed=seed, max_epochs=max_iterations, restarts=restarts,
+        )
+
+    # Fallback: hill climbing
+    return decipher(
+        cipher_signs, target_model,
+        seed=seed, max_iterations=max_iterations, restarts=restarts,
+        cipher_inscriptions=cipher_inscriptions,
+    )
+
+
 def score_accuracy(
     proposed: dict[str, str],
     answer_key: dict[str, str],

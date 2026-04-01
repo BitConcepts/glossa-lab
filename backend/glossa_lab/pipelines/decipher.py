@@ -25,17 +25,21 @@ from __future__ import annotations
 
 import math
 import random
-from collections import Counter
+from collections import Counter, defaultdict
 from typing import Any
 
 from glossa_lab.engine import register_pipeline
 
-# ── Language model ────────────────────────────────────────────────
+# ── Language model ────────────────────────────────────────────────────
 
 class LanguageModel:
-    """Simple unigram + bigram language model from a corpus."""
+    """Unigram + bigram + trigram language model with positional stats."""
 
-    def __init__(self, symbols: list[str]) -> None:
+    def __init__(
+        self,
+        symbols: list[str],
+        inscriptions: list[list[str]] | None = None,
+    ) -> None:
         self.symbols = symbols
         total = len(symbols)
         self.alphabet = sorted(set(symbols))
@@ -46,7 +50,6 @@ class LanguageModel:
         self.unigram_freq: dict[str, float] = {
             s: c / total for s, c in counts.items()
         }
-        # Rank order (most frequent first)
         self.ranked = [s for s, _ in counts.most_common()]
 
         # Bigram frequencies
@@ -58,14 +61,55 @@ class LanguageModel:
             bg: c / bigram_total for bg, c in bigram_counts.items()
         }
 
-    def bigram_log_likelihood(self, text: list[str]) -> float:
-        """Compute bigram log-likelihood of a text under this model."""
-        ll = 0.0
+        # Trigram frequencies
+        trigram_counts: Counter[tuple[str, str, str]] = Counter()
+        for i in range(len(symbols) - 2):
+            trigram_counts[(symbols[i], symbols[i + 1], symbols[i + 2])] += 1
+        trigram_total = sum(trigram_counts.values()) or 1
+        self.trigram_freq: dict[tuple[str, str, str], float] = {
+            tg: c / trigram_total for tg, c in trigram_counts.items()
+        }
+
+        # Positional profiles (if inscriptions provided)
+        self.positional: dict[str, dict[str, float]] = {}
+        if inscriptions:
+            pos_counts: dict[str, dict[str, int]] = defaultdict(
+                lambda: {"initial": 0, "medial": 0, "terminal": 0}
+            )
+            for insc in inscriptions:
+                if len(insc) >= 2:
+                    pos_counts[insc[0]]["initial"] += 1
+                    pos_counts[insc[-1]]["terminal"] += 1
+                    for s in insc[1:-1]:
+                        pos_counts[s]["medial"] += 1
+            for sign, pc in pos_counts.items():
+                t = sum(pc.values()) or 1
+                self.positional[sign] = {
+                    k: v / t for k, v in pc.items()
+                }
+
+    def score_text(self, text: list[str]) -> float:
+        """Combined bigram + trigram log-likelihood.
+
+        Trigrams are only used when the corpus is large enough
+        for meaningful trigram statistics (>1000 symbols).
+        """
         smoothing = 1e-8
+        ll = 0.0
+        # Bigram component (always used)
         for i in range(len(text) - 1):
-            bg = (text[i], text[i + 1])
-            p = self.bigram_freq.get(bg, smoothing)
+            p = self.bigram_freq.get((text[i], text[i + 1]), smoothing)
             ll += math.log(p)
+        # Trigram component (only if corpus is large enough)
+        if len(self.symbols) >= 1000 and len(text) > 2:
+            tri_ll = 0.0
+            for i in range(len(text) - 2):
+                p = self.trigram_freq.get(
+                    (text[i], text[i + 1], text[i + 2]), smoothing,
+                )
+                tri_ll += math.log(p)
+            # Light blend: 90% bigram + 10% trigram
+            ll = 0.9 * ll + 0.1 * tri_ll
         return ll
 
 
@@ -77,6 +121,7 @@ def decipher(
     seed: int = 42,
     max_iterations: int = 5000,
     restarts: int = 3,
+    cipher_inscriptions: list[list[str]] | None = None,
 ) -> dict[str, Any]:
     """Crack a substitution cipher.
 
@@ -86,6 +131,8 @@ def decipher(
         seed: random seed for hill climbing.
         max_iterations: max swaps per restart.
         restarts: number of random restarts.
+        cipher_inscriptions: optional inscription-level structure for
+            positional constraint scoring.
 
     Returns:
         dict with proposed_mapping, deciphered_text, score, and stats.
@@ -95,9 +142,24 @@ def decipher(
     cipher_alphabet = sorted(set(cipher_signs))
     target_alphabet = target_model.ranked[: len(cipher_alphabet)]
 
-    # Pad if target has fewer symbols
     while len(target_alphabet) < len(cipher_alphabet):
         target_alphabet.append(f"?{len(target_alphabet)}")
+
+    # Build cipher positional profiles (if inscriptions provided)
+    cipher_positional: dict[str, dict[str, float]] = {}
+    if cipher_inscriptions:
+        pos_counts: dict[str, dict[str, int]] = defaultdict(
+            lambda: {"initial": 0, "medial": 0, "terminal": 0}
+        )
+        for insc in cipher_inscriptions:
+            if len(insc) >= 2:
+                pos_counts[insc[0]]["initial"] += 1
+                pos_counts[insc[-1]]["terminal"] += 1
+                for s in insc[1:-1]:
+                    pos_counts[s]["medial"] += 1
+        for sign, pc in pos_counts.items():
+            t = sum(pc.values()) or 1
+            cipher_positional[sign] = {k: v / t for k, v in pc.items()}
 
     # Stage 1: SEED — frequency-rank mapping
     cipher_counts = Counter(cipher_signs)
@@ -107,23 +169,21 @@ def decipher(
     best_score = float("-inf")
 
     for restart in range(restarts):
-        # Initial mapping: frequency-rank alignment
         if restart == 0:
             mapping = dict(zip(cipher_ranked, target_alphabet))
         else:
-            # Random permutation for diversity
             shuffled = list(target_alphabet)
             rng.shuffle(shuffled)
             mapping = dict(zip(cipher_ranked, shuffled))
 
-        # Stage 2: REFINE — hill climbing with bigram scoring
+        # Stage 2: REFINE — hill climbing with combined scoring
         current_score = _score_mapping(
             cipher_signs, mapping, target_model,
+            cipher_positional,
         )
 
         no_improve = 0
-        for iteration in range(max_iterations):
-            # Pick two random cipher signs and swap their mappings
+        for _iteration in range(max_iterations):
             i = rng.randint(0, len(cipher_ranked) - 1)
             j = rng.randint(0, len(cipher_ranked) - 1)
             if i == j:
@@ -134,13 +194,13 @@ def decipher(
 
             new_score = _score_mapping(
                 cipher_signs, mapping, target_model,
+                cipher_positional,
             )
 
             if new_score > current_score:
                 current_score = new_score
                 no_improve = 0
             else:
-                # Revert swap
                 mapping[a], mapping[b] = mapping[b], mapping[a]
                 no_improve += 1
 
@@ -151,13 +211,17 @@ def decipher(
             best_score = current_score
             best_mapping = dict(mapping)
 
-    # Stage 3: VALIDATE — apply best mapping
+    # Stage 3: VALIDATE — apply mapping + Kandles confidence
     deciphered = [best_mapping.get(s, "?") for s in cipher_signs]
+
+    # Kandles validation (Merkur patent)
+    kandles_confidence = _kandles_validate(deciphered, target_model.symbols)
 
     return {
         "proposed_mapping": best_mapping,
         "deciphered_text": deciphered,
         "score": round(best_score, 4),
+        "kandles_confidence": kandles_confidence,
         "cipher_alphabet_size": len(cipher_alphabet),
         "target_alphabet_size": target_model.size,
     }
@@ -167,10 +231,48 @@ def _score_mapping(
     cipher_signs: list[str],
     mapping: dict[str, str],
     target_model: LanguageModel,
+    cipher_positional: dict[str, dict[str, float]] | None = None,
 ) -> float:
-    """Score a mapping by bigram log-likelihood under the target model."""
+    """Score a mapping by trigram log-likelihood + positional match."""
     decoded = [mapping.get(s, "?") for s in cipher_signs]
-    return target_model.bigram_log_likelihood(decoded)
+    ll = target_model.score_text(decoded)
+
+    # Positional bonus: reward mappings where positional profiles match
+    if cipher_positional and target_model.positional:
+        pos_score = 0.0
+        for cipher_sign, cipher_pos in cipher_positional.items():
+            target_sign = mapping.get(cipher_sign)
+            if target_sign and target_sign in target_model.positional:
+                target_pos = target_model.positional[target_sign]
+                # Cosine-like dot product of positional vectors
+                for pos_key in ("initial", "medial", "terminal"):
+                    pos_score += (
+                        cipher_pos.get(pos_key, 0)
+                        * target_pos.get(pos_key, 0)
+                    )
+        # Very light positional bonus (avoid destabilizing hill climbing)
+        ll += pos_score * abs(ll) * 0.005
+
+    return ll
+
+
+def _kandles_validate(
+    deciphered: list[str], target_symbols: list[str],
+) -> float:
+    """Kandles cross-validation: compare phonetic color distributions.
+
+    Uses the Merkur patent Kandles system to compare the phonetic
+    fingerprint of the deciphered text against the target text.
+    Returns a confidence score in [0, 1].
+    """
+    try:
+        from glossa_lab.pipelines.kandles import compare_grids, generate_grid
+        grid_dec = generate_grid(deciphered[:200])
+        grid_tgt = generate_grid(target_symbols[:200])
+        result = compare_grids(grid_dec, grid_tgt)
+        return result["similarity"]
+    except Exception:
+        return 0.0
 
 
 def score_accuracy(

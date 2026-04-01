@@ -104,65 +104,60 @@ def test_crack_synthetic_high_accuracy():
 def test_crack_ugaritic():
     """Crack the Ugaritic Baal Cycle using the deciphered text as model.
 
-    We give the engine:
-      - The undeciphered sign sequence (opaque U01..U30)
-      - A language model built from the DECIPHERED text
-        (simulating: we know the language is Ugaritic/Semitic)
-
-    It should propose a mapping from opaque IDs to real sign values.
+    With trigram scoring, positional constraints, and expanded corpus,
+    accuracy should be significantly higher than the baseline.
     """
     undec = ugaritic_undeciphered()
     dec = ugaritic_deciphered()
     answer_key = ugaritic_answer_key()
 
-    # Build target model from deciphered text
-    target_model = LanguageModel(dec["flat_signs"])
+    # Build target model WITH inscriptions for positional scoring
+    target_model = LanguageModel(
+        dec["flat_signs"], inscriptions=dec["inscriptions"],
+    )
 
-    # Run decipherment
+    # Run decipherment with positional constraints
     result = decipher(
         undec["flat_signs"],
         target_model,
         seed=42,
-        max_iterations=10000,
-        restarts=5,
+        max_iterations=15000,
+        restarts=8,
+        cipher_inscriptions=undec["inscriptions"],
     )
 
-    # Score
     accuracy = score_accuracy(result["proposed_mapping"], answer_key)
 
-    print(f"\n=== UGARITIC CRACKING ===")
+    print(f"\n=== UGARITIC CRACKING (ENHANCED) ===")
     print(f"Accuracy: {accuracy['correct']}/{accuracy['total']} "
           f"= {accuracy['accuracy'] * 100:.1f}%")
+    print(f"Kandles confidence: {result.get('kandles_confidence', 0):.3f}")
     for d in sorted(accuracy["details"], key=lambda x: x["sign"]):
         mark = "✓" if d["correct"] else "✗"
         print(f"  {mark} {d['sign']} → proposed: {d['proposed']}, "
               f"true: {d['true']}")
 
-    # Ugaritic should be crackable with high accuracy because
-    # the opaque IDs are a simple 1:1 relabeling and the target
-    # model IS the same text. This is the easiest possible case.
-    assert accuracy["accuracy"] >= 0.70, (
+    assert accuracy["accuracy"] >= 0.75, (
         f"Only {accuracy['accuracy'] * 100:.1f}% accuracy on Ugaritic"
     )
 
 
 def test_crack_ugaritic_common_signs():
-    """At minimum, the most common signs should be correctly mapped.
-
-    The top 5 most frequent signs carry the most statistical weight,
-    so the engine should get these right even if rare signs are wrong.
-    """
+    """Top-5 most frequent signs should be correctly mapped."""
     undec = ugaritic_undeciphered()
     dec = ugaritic_deciphered()
     answer_key = ugaritic_answer_key()
 
-    target_model = LanguageModel(dec["flat_signs"])
+    target_model = LanguageModel(
+        dec["flat_signs"], inscriptions=dec["inscriptions"],
+    )
     result = decipher(
         undec["flat_signs"],
         target_model,
         seed=42,
-        max_iterations=10000,
-        restarts=5,
+        max_iterations=15000,
+        restarts=8,
+        cipher_inscriptions=undec["inscriptions"],
     )
 
     # Check top-5 most frequent cipher signs

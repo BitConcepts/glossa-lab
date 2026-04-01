@@ -17,7 +17,14 @@ produces results consistent with the published findings:
   - Ordered: collapses for N≥2
 """
 
-from tests.corpora.real import load_dna, load_english, load_fortran
+from tests.corpora.real import (
+    load_dna,
+    load_english,
+    load_fortran,
+    load_indus,
+    load_sanskrit,
+    load_tamil,
+)
 from tests.corpora.synthetic import generate_ordered, generate_random
 
 from glossa_lab.pipelines.block_entropy import compute_block_entropies
@@ -98,6 +105,47 @@ def test_fortran_h1_lower_than_english():
     assert fort_h1 < eng_h1, (
         f"Fortran H1_norm={fort_h1} should be < English H1_norm={eng_h1}"
     )
+
+
+# ── Indus script (target of original study) ────────────────────
+
+
+def test_indus_in_linguistic_range():
+    """Indus script entropy should fall in the linguistic range.
+
+    Rao et al. showed the Indus script's entropy is close to
+    natural languages and far from random or rigid sequences.
+    """
+    result = compute_block_entropies(load_indus(), max_n=3)
+    h1 = _get_norm(result, 1)
+    # Should be between random (~1.0) and very constrained (~0.5)
+    assert 0.60 <= h1 <= 0.95, f"Indus H1_norm={h1}, expected 0.60-0.95"
+
+
+def test_indus_sublinear_growth():
+    """Indus script should show sub-linear entropy growth."""
+    result = compute_block_entropies(load_indus(), max_n=3)
+    h1 = _get_norm(result, 1)
+    h2 = _get_norm(result, 2)
+    ratio = h2 / h1
+    assert ratio < 1.95, f"Indus H2/H1={ratio:.3f}, expected < 1.95"
+
+
+# ── Tamil and Sanskrit (additional linguistic systems) ──────────
+
+
+def test_tamil_linguistic_range():
+    """Tamil should fall in the linguistic entropy range."""
+    result = compute_block_entropies(load_tamil(), max_n=2)
+    h1 = _get_norm(result, 1)
+    assert 0.65 <= h1 <= 0.95, f"Tamil H1_norm={h1}, expected 0.65-0.95"
+
+
+def test_sanskrit_linguistic_range():
+    """Sanskrit should fall in the linguistic entropy range."""
+    result = compute_block_entropies(load_sanskrit(), max_n=2)
+    h1 = _get_norm(result, 1)
+    assert 0.65 <= h1 <= 0.95, f"Sanskrit H1_norm={h1}, expected 0.65-0.95"
 
 
 # ── Ordering: Random > DNA > English > Fortran > Ordered ─────────────

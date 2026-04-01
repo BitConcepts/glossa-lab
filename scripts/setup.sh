@@ -37,7 +37,7 @@ source "$VENV_PATH/bin/activate"
 
 if [ -f "$REPO_ROOT/backend/pyproject.toml" ]; then
     echo "[..] Installing backend dependencies ..."
-    pip install -e "$REPO_ROOT/backend" --quiet 2>&1
+    pip install -e "$REPO_ROOT/backend[dev]" --quiet 2>&1
     echo "[OK] Backend dependencies installed."
 else
     echo "[WARN] No backend/pyproject.toml found. Skipping backend deps."

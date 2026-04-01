@@ -258,3 +258,71 @@ Risks:
 - Stop Backend tray action is a placeholder (no shutdown endpoint yet)
 
 Next step: Verify CI pipeline passes on GitHub, install tray deps, test tray app on Windows
+
+---
+
+## [2026-04-01] Entry — Pipeline engine, block entropy analysis, Rao 2009 replication
+
+Objective: Build analysis capabilities so Glossa Lab can run real experiments on ancient texts.
+What was done:
+- Built async pipeline engine (engine.py): polls pending jobs, dispatches by pipeline name, stores results
+- Implemented block entropy pipeline (Rao et al. 2009 methodology): H_N for N=1..6, normalized by ln(L)
+- Implemented character frequency pipeline: symbol frequencies, rank-frequency, Zipf exponent
+- Schema v2 migration: added texts table (corpus storage) and job_results table
+- Added texts API: POST/GET /api/v1/texts, GET /api/v1/texts/{id}
+- Added results API: GET /api/v1/jobs/{id}/results
+- Wired engine to app lifespan (starts on boot, cancels on shutdown)
+- Created synthetic corpora (seed=42): random (max entropy), ordered (min entropy), Markov (linguistic-like)
+- Created real study fixtures: English (Moby Dick excerpt), DNA (human beta-globin), Fortran (numeric code)
+- Built synthetic regression test (7 tests): validates entropy computation against known ranges
+- Built Rao 2009 academic replication test (6 tests): validates entropy ordering Random > DNA > English > Fortran
+- Fixed shell.cmd delayed expansion bug (CI fix, separate commit acb429c)
+- CI passes on all 3 platforms
+- Committed (98acb6b) and pushed to main
+
+Files changed:
+- backend/glossa_lab/engine.py (created — pipeline executor)
+- backend/glossa_lab/pipelines/__init__.py (created)
+- backend/glossa_lab/pipelines/block_entropy.py (created — Rao et al. methodology)
+- backend/glossa_lab/pipelines/char_freq.py (created — frequency + Zipf)
+- backend/glossa_lab/api/texts.py (created — corpus CRUD)
+- backend/glossa_lab/api/results.py (created — job results)
+- backend/glossa_lab/database.py (modified — schema v2, texts/results/engine methods)
+- backend/glossa_lab/main.py (modified — new routers, engine lifecycle)
+- backend/tests/corpora/synthetic.py (created — deterministic generators)
+- backend/tests/corpora/real.py (created — fixture loaders)
+- backend/tests/corpora/fixtures/english.txt (created)
+- backend/tests/corpora/fixtures/dna.txt (created)
+- backend/tests/corpora/fixtures/fortran.txt (created)
+- backend/tests/test_study_synthetic.py (created — 7 regression tests)
+- backend/tests/test_study_rao2009.py (created — 6 academic replication tests)
+- shell.cmd (modified — delayed expansion fix)
+
+Checks run:
+- `shell.cmd test backend\tests -v` — 31 passed, 0 failed (0.58s)
+- `shell.cmd lint backend\glossa_lab` — all checks passed
+- CI green on all 3 platforms (ubuntu, windows, macos)
+
+Results:
+- Block entropy correctly separates linguistic from non-linguistic systems
+- Entropy ordering matches Rao et al. 2009: Random > DNA > English > Fortran
+- Synthetic baselines are deterministic (seed=42) and reproducible
+- Markov chain shows sub-linear entropy growth (linguistic signature)
+- System can now run real text analysis experiments
+
+Open TODOs:
+- [ ] Promote requirements from draft to accepted (human review)
+- [ ] Acquire Indus script corpus data for full Rao et al. replication
+- [ ] Add more linguistic corpora (Tamil, Sanskrit, Sumerian) for broader comparison
+- [ ] Add NSB Bayesian entropy estimator for small-sample accuracy
+- [ ] Implement frontend results visualization
+- [ ] Implement backend shutdown endpoint for tray
+- [ ] Add security tests, CORS tests
+- [ ] Install and test tray on Windows
+
+Risks:
+- Block entropy uses naive MLE (maximum likelihood) — may underestimate for small corpora. Rao et al. used NSB Bayesian estimator.
+- Indus script corpus not publicly available in machine-readable form — may need manual digitisation
+- All requirements still in draft status
+
+Next step: Acquire Indus script corpus, add more languages, implement NSB estimator for small-sample accuracy

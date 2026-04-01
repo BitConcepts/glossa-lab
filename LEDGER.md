@@ -113,3 +113,50 @@ Risks:
 - All requirements are in "draft" status — need human review to promote to "accepted"
 
 Next step: Run setup scripts to verify environment bootstrap, run backend tests, run frontend dev server — then promote requirements from draft to accepted
+
+---
+
+## [2026-04-01] Entry — Replace .ps1 with .cmd wrappers, verify shell.cmd
+
+Objective: Eliminate PTY-hanging .ps1 scripts, add shell.cmd unified entry point, verify tests and lint pass through it.
+What was done:
+- Verified shell.cmd test: `shell.cmd test backend\tests -v` — 3/3 tests passed (test_health_endpoint_returns_200, test_health_version_matches_package, test_versioned_routes_only)
+- Verified shell.cmd lint: `shell.cmd lint backend\glossa_lab` — all checks passed
+- Deleted all .ps1 files: shell.ps1, scripts/run.ps1, scripts/setup.ps1
+- Added .cmd wrappers: shell.cmd (repo root), scripts/run.cmd, scripts/setup.cmd
+- Updated AGENTS.md with H7 (shell wrapper required) and H8 (no silent commands), shell wrapper documentation, forbidden/required invocation patterns
+- Committed and pushed to main (d33f914)
+
+Files changed:
+- AGENTS.md (modified — added shell wrapper section, H7, H8)
+- shell.cmd (created — unified entry point)
+- scripts/run.cmd (created)
+- scripts/setup.cmd (created)
+- scripts/run.ps1 (deleted)
+- scripts/setup.ps1 (deleted)
+- shell.ps1 (deleted)
+- scripts/setup.sh (modified)
+- frontend/package-lock.json (added)
+
+Checks run:
+- `shell.cmd test backend\tests -v` — 3 passed, 0 failed (0.37s)
+- `shell.cmd lint backend\glossa_lab` — all checks passed
+- git status verified before commit — staged changes matched expectations
+
+Results: shell.cmd works correctly on Windows. PTY hang issue resolved by routing all invocations through `python -m`. All .ps1 files removed.
+Open TODOs:
+- [ ] Run npm install in frontend/ and verify dev server starts
+- [ ] Implement remaining API endpoints (GET /api/v1/status, jobs CRUD)
+- [ ] Implement database initialization (SQLite, migrations)
+- [ ] Implement log rotation
+- [ ] Begin tray scaffold (Milestone 3 — after framework decision DEC-005)
+- [ ] Create Windows service/startup integration (Milestone 4)
+- [ ] Create Linux systemd unit file (Milestone 5)
+- [ ] Create macOS LaunchAgent plist (Milestone 6)
+- [ ] Add CI pipeline with cross-platform test matrix
+- [ ] Create shell.sh POSIX equivalent of shell.cmd
+Risks:
+- shell.sh (POSIX equivalent) not yet created — Linux/macOS users cannot use the wrapper yet
+- Tray framework decision (DEC-005) still pending — blocks Milestone 3
+- All requirements still in draft status
+Next step: Create shell.sh POSIX wrapper, then implement remaining API endpoints and database initialization

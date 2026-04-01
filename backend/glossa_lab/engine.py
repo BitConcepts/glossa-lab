@@ -100,3 +100,8 @@ def _ensure_pipelines_loaded() -> None:
     if not _PIPELINES:
         import glossa_lab.pipelines.block_entropy  # noqa: F401
         import glossa_lab.pipelines.char_freq  # noqa: F401
+        import glossa_lab.pipelines.cooccurrence  # noqa: F401
+        import glossa_lab.pipelines.kandles  # noqa: F401
+        import glossa_lab.pipelines.paradigm  # noqa: F401
+        import glossa_lab.pipelines.positional  # noqa: F401
+        import glossa_lab.pipelines.sign_cluster  # noqa: F401

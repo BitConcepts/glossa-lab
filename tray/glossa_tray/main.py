@@ -35,9 +35,9 @@ except ImportError:
 
 # ── Constants ────────────────────────────────────────────────────────
 
-BACKEND_URL = "http://127.0.0.1:8000"
+BACKEND_URL = "http://127.0.0.1:8001"
 HEALTH_URL = f"{BACKEND_URL}/api/v1/health"
-FRONTEND_URL = "http://localhost:5173"
+FRONTEND_URL = "http://localhost:5174"
 POLL_INTERVAL = 5  # seconds
 
 # Determine repo root and shell wrapper

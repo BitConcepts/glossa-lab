@@ -33,6 +33,8 @@ if /i "%~1"=="run"    goto do_run
 if /i "%~1"=="python" goto do_python
 if /i "%~1"=="setup"  goto do_setup
 if /i "%~1"=="tray"   goto do_tray
+if /i "%~1"=="svc"    goto do_svc
+if /i "%~1"=="e2e"    goto do_e2e
 goto do_default
 
 :do_test
@@ -67,6 +69,19 @@ set "PYTHONPATH=%REPO_ROOT%\tray;%PYTHONPATH%"
 "%VENV_PYTHON%" -m glossa_tray %1 %2 %3 %4 %5 %6 %7 %8 %9
 exit /b %ERRORLEVEL%
 
+:do_svc
+shift
+call "%REPO_ROOT%\setup-os.cmd" %1 %2 %3 %4 %5 %6 %7 %8 %9
+exit /b %ERRORLEVEL%
+
+:do_e2e
+shift
+pushd "%REPO_ROOT%\frontend"
+call npx playwright test %1 %2 %3 %4 %5 %6 %7 %8 %9
+set E2E_EXIT=%ERRORLEVEL%
+popd
+exit /b %E2E_EXIT%
+
 :do_setup
 "%VENV_PYTHON%" -m pip install --upgrade pip
 "%VENV_PYTHON%" -m pip install -e "%REPO_ROOT%\backend[dev]"
@@ -96,4 +111,6 @@ echo   run [args]     uvicorn backend
 echo   python [args]  python in venv
 echo   setup          install/update deps
 echo   tray           start tray app
+echo   svc [cmd]      OS service integration (delegates to setup-os.cmd)
+echo   e2e [args]     run Playwright tests (from frontend/)
 exit /b 0

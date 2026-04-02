@@ -718,3 +718,79 @@ Risks:
 - Hurrian and Luwian language models are minimal; may underestimate those hypotheses
 
 Next step: Build fuller language models for Hurrian/Luwian/Semitic to strengthen hypothesis discrimination
+
+---
+
+## [2026-04-02] Entry — Linear A anti-circularity experiment suite (7 experiments)
+
+Objective: Determine whether the Greek-dominant result in the real-corpus Linear A analysis survives when the circularity objection is systematically tested.
+
+What was done:
+- Fetched phase1_corpus_manifest.csv and phase1_corpus_provenance_links.csv from tylerlengyel.com (5,379 sign tokens from actual tablet transcriptions, per-artifact with site IDs)
+- Added load_raw_tablet_corpus() to linear_a_real_corpus.py with site partitioning (HT/KH/ZA/PH/KN/ARKH/etc.) and logogram exclusion
+- Created backend/glossa_lab/experiments/__init__.py
+- Created backend/glossa_lab/experiments/stats.py: bootstrap_ci(), empirical_p_value(), z_score(), effect_size(), summarise()
+- Created backend/glossa_lab/experiments/linear_a_circularity.py: run_all_experiments() + 7 individual experiment functions + mapping variant generators + null corpus generators
+- Created backend/run_circularity_experiments.py + backend/generate_report_linear_a_circularity.py
+- Ran all 7 experiments (30 MC trials each) → saved to reports/circularity_results.json
+- Generated reports/linear_a_circularity_analysis.pdf
+
+Files changed:
+- backend/tests/corpora/linear_a_real_corpus.py (modified — added load_raw_tablet_corpus())
+- backend/tests/corpora/fixtures/linear_a_real/phase1_corpus_manifest.csv (created)
+- backend/tests/corpora/fixtures/linear_a_real/phase1_corpus_provenance_links.csv (created)
+- backend/tests/corpora/fixtures/linear_a_real/phase1_normalization_mapping_log.csv (created)
+- backend/glossa_lab/experiments/__init__.py (created)
+- backend/glossa_lab/experiments/stats.py (created)
+- backend/glossa_lab/experiments/linear_a_circularity.py (created)
+- backend/run_circularity_experiments.py (created)
+- backend/generate_report_linear_a_circularity.py (created)
+- reports/circularity_results.json (generated)
+- reports/linear_a_circularity_analysis.pdf (generated)
+
+Checks run:
+- `shell.cmd lint backend\glossa_lab` — all checks passed
+- All 7 experiments ran without error
+- Report generated successfully
+
+EXPERIMENT RESULTS (critical):
+
+Exp 1 - Raw tablet sequences (full scoring):
+- ALL (5379 tokens): Greek=56.90, margin=39.92, WINNER: Greek
+- HT (3328 tokens): Greek=56.92, margin=40.03, WINNER: Greek
+- KH (480 tokens): Greek=23.46, margin=7.78, WINNER: Greek
+- ZA (673 tokens): Greek=25.87, margin=8.93, WINNER: Greek
+- PH (272), KN (158): Greek wins on both
+- ARKH/MA/TY (<200 tokens each): no clear winner (noise level)
+
+Exp 5 - Scoring mode comparison (MOST IMPORTANT):
+- Full scoring: Greek=56.90, others ~17 — Greek wins by 40 points
+- No-vocab (bigram+Kandles): Greek=16.90 LAST; Luwian=16.99 wins
+- Kandles only: Greek=9.52 LAST; Luwian=9.94 wins
+
+Exp 4 - Null distribution:
+- Real mapping vs random/permuted: p≈0.40, z≈0.29
+- Real LB correspondence mapping NOT distinguishable from random under no-vocab
+
+Exp 7 - Null corpus:
+- Shuffled/unigram corpora produce HIGHER Greek scores than real corpus
+- ~16.9 baseline is noise-level, not signal
+
+EXPERIMENT CONCLUSION:
+- Greek wins in full scoring → driven by vocabulary matching (circular)
+- Greek loses without vocabulary → Luwian wins on bigram+Kandles
+- Kandles fingerprint marginally favours Luwian (9.94 vs 9.52)
+- Vocabulary-independent phonological signal does not support Greek
+- Greek advantage is NOT reducible to mapping structure (Exp 4: p=0.40)
+- Greek advantage IS reducible to circular vocabulary evidence (Exp 5)
+
+Open TODOs:
+- [ ] Build fuller Hurrian/Luwian language models for stronger comparison
+- [ ] Identify independent vocabulary source (not derived from LB phonetic values)
+- [ ] Acquire ICIT corpus from Dr. Fuls for full sign inventory validation
+
+Risks:
+- Current Luwian/Hurrian/Semitic models are minimal; may underestimate those hypotheses
+- Kandles Luwian>Greek margin is small and needs null-model assessment
+
+Next step: Build richer Luwian language model to test whether Luwian advantage strengthens with better data

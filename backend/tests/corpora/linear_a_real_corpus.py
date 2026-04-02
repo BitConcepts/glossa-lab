@@ -305,6 +305,106 @@ KNOWN_LINEAR_A_WORDS: dict[str, str] = {
     "didero":    "einkorn wheat? (di-de-ro; Younger 2000)",
 }
 
+# ── Raw tablet corpus from corpus_manifest.csv ───────────────────────
+
+#: Site prefix map for partitioning.
+#: HT = Haghia Triada, KH = Khania, ZA = Zakros, PH = Pyrgos/Phaistos,
+#: ARKH = Arkhanes, KN = Knossos, MA = Malia, ZE = Zernos, TY = Tylissos
+SITE_PREFIXES: dict[str, str] = {
+    "HT":   "Haghia Triada",
+    "KH":   "Khania",
+    "ZA":   "Zakros",
+    "PH":   "Pyrgos/Phaistos",
+    "ARKH": "Arkhanes",
+    "KN":   "Knossos",
+    "MA":   "Malia",
+    "TY":   "Tylissos",
+    "GO":   "Gournies",
+    "PE":   "Petras",
+    "PK":   "Palaikastro",
+    "PS":   "Pseira",
+    "SY":   "Sklavokampos",
+}
+
+
+def load_raw_tablet_corpus(
+    sites: list[str] | None = None,
+    exclude_logograms: bool = True,
+) -> tuple[list[str], dict[str, list[str]]]:
+    """Load actual tablet sign sequences from corpus_manifest.csv.
+
+    Parses the canonical_sequence column (actual transcription order per
+    inscription entry) grouped by artifact_id, then concatenated.
+
+    Args:
+        sites: List of site prefixes to include (e.g. ['HT', 'KH']).
+               If None, include all sites.
+        exclude_logograms: If True, skip rows tagged as logograms
+                           (younger_table_logogram or similar).
+
+    Returns:
+        (flat_sequence, site_dict) where:
+          flat_sequence: all signs concatenated in tablet order
+          site_dict:     {site_prefix: [signs]} for separate analysis
+    """
+    manifest = _DATA_DIR / "phase1_corpus_manifest.csv"
+    if not manifest.exists():
+        # Fallback: use Markov chain if manifest not available
+        return generate_real_linear_a_sequence(), {}
+
+    site_signs: dict[str, list[str]] = {}
+    all_signs: list[str] = []
+
+    with open(manifest, encoding="utf-8-sig") as fh:
+        reader = csv.DictReader(fh)
+        for row in reader:
+            artifact = row.get("artifact_id", "").strip()
+            sequence = row.get("canonical_sequence", "").strip()
+            notes    = row.get("notes", "").lower()
+
+            # Skip if this entry is a logogram row
+            if exclude_logograms and "logogram" in notes:
+                continue
+
+            # Determine site prefix
+            site = None
+            for prefix in SITE_PREFIXES:
+                if artifact.startswith(prefix):
+                    site = prefix
+                    break
+            if site is None:
+                site = artifact.split()[0] if artifact else "OTHER"
+
+            # Filter by requested sites
+            if sites and site not in sites:
+                continue
+
+            # Parse sign tokens from sequence
+            tokens = []
+            for tok in sequence.split():
+                t = tok.strip()
+                if not t:
+                    continue
+                # Skip leading ] damage markers and [[..]] restoration brackets
+                t_clean = t.lstrip("]")
+                if t_clean.startswith("[[") or t_clean.endswith("]]"):
+                    continue
+                if t_clean in _SKIP_SIGNS:
+                    continue
+                if t_clean.startswith("[") and t_clean != t_clean.rstrip("]"):
+                    continue  # skip [?] etc.
+                if "[?" in t_clean:
+                    continue
+                if t_clean:
+                    tokens.append(t_clean)
+
+            if tokens:
+                all_signs.extend(tokens)
+                site_signs.setdefault(site, []).extend(tokens)
+
+    return all_signs, site_signs
+
+
 # ── Loaders for real.py ───────────────────────────────────────────────
 
 def load_real_linear_a_signs(seed: int = 42) -> list[str]:

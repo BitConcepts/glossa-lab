@@ -3,9 +3,15 @@
 import asyncio
 import time
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+
+# Repo root is two levels above this file (backend/glossa_lab/main.py)
+_REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+_FRONTEND_DIST = _REPO_ROOT / "frontend" / "dist"
 
 from glossa_lab import __version__
 from glossa_lab.api.health import router as health_router
@@ -72,13 +78,22 @@ def create_app() -> FastAPI:
             allow_headers=["*"],
         )
 
-    # Register routers
+    # Register routers (must come before static-file mount so API takes priority)
     application.include_router(health_router, prefix="/api/v1")
     application.include_router(status_router, prefix="/api/v1")
     application.include_router(jobs_router, prefix="/api/v1")
     application.include_router(results_router, prefix="/api/v1")
     application.include_router(texts_router, prefix="/api/v1")
     application.include_router(shutdown_router, prefix="/api/v1")
+
+    # Serve built frontend at "/" — run 'npm run build' in frontend/ to populate.
+    # Skipped silently in dev if the dist directory does not yet exist.
+    if _FRONTEND_DIST.exists():
+        application.mount(
+            "/",
+            StaticFiles(directory=str(_FRONTEND_DIST), html=True),
+            name="frontend",
+        )
 
     return application
 

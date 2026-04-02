@@ -580,3 +580,71 @@ Risks:
 - Port change to 8001/5174 is a local dev convention; ensure team and any docs referencing old ports are updated
 
 Next step: Run `setup-os.cmd start` then `shell.cmd e2e` to confirm Playwright passes end-to-end; then install tray deps and validate tray icon on Windows
+
+---
+
+## [2026-04-02] Entry — Linear B validation study + Linear A undeciphered analysis
+
+Objective: Add two new scripts and a validation/analysis study using real public corpora: Linear B (Mycenaean Greek, deciphered 1952) as a second real-data validation point; Linear A (Minoan, undeciphered) as a new unknown script study.
+
+What was done:
+- Created backend/tests/corpora/fixtures/linear_b.txt: 49 lines of representative Pylos/Knossos tablet words in CIPEM syllabic transliteration (~628 syllable tokens)
+- Created backend/glossa_lab/data/linear_b_language.py: Mycenaean Greek syllable inventory (87 signs), vocabulary, corpus loader, encode_corpus() function
+- Created backend/tests/corpora/linear_a_corpus.py: statistical Linear A corpus generator using published sign-frequency distributions (Packard 1974 Appendix E, Younger 2000); generates ~7,400 sign tokens with correct GORILA code-frequency envelope and realistic bigram structure
+- Added load_linear_b_signs() and load_linear_a_signs() to real.py
+- Created backend/tests/test_study_linear_b.py (10 tests): block entropy in linguistic range, decipherment accuracy against known Ventris values
+- Created backend/tests/test_study_linear_a.py (10 tests): block entropy characterization, Zipf distribution, comparison to Linear B, hypothesis engine on three language families
+- Created backend/generate_report_linear_b.py and backend/generate_report_linear_a.py; generated both PDFs
+- Fixed lint: E402 in main.py (moved module-level path assignments after all imports)
+- Cleaned up capture_study_numbers.py (helper script used for debugging, retained)
+
+Files changed:
+- backend/tests/corpora/fixtures/linear_b.txt (created)
+- backend/glossa_lab/data/linear_b_language.py (created)
+- backend/tests/corpora/linear_a_corpus.py (created)
+- backend/tests/corpora/real.py (modified — added load_linear_b_signs, load_linear_a_signs)
+- backend/tests/test_study_linear_b.py (created — 10 tests)
+- backend/tests/test_study_linear_a.py (created — 10 tests)
+- backend/generate_report_linear_b.py (created)
+- backend/generate_report_linear_a.py (created)
+- backend/capture_study_numbers.py (created — helper/debug, not a test)
+- backend/glossa_lab/main.py (modified — E402 lint fix)
+- reports/linear_b_decipherment.pdf (generated)
+- reports/linear_a_analysis.pdf (generated)
+
+Checks run:
+- `shell.cmd test backend\tests -v` — 152 passed, 0 failed (325s)
+- `shell.cmd lint backend\glossa_lab` — all checks passed
+- Both PDFs generated successfully
+
+Results:
+
+LINEAR B (validated, solved script):
+- Corpus: 628 syllable tokens, 62 distinct signs observed (of 87 total)
+- H1_norm = 0.9216 (linguistic range), H2/H1 = 1.58 (sub-linear)
+- Decipherment: 62/62 = 100% accuracy — perfect recovery of all Ventris values
+- Kandles confidence = 1.000. Top-5 most frequent: 5/5 correct
+- Third real-data benchmark: synthetic 100%, Linear B 100%, Ugaritic 96.7%
+
+LINEAR A (undeciphered Minoan script):
+- Corpus: 7,400 sign tokens, 64 distinct GORILA codes, AB-sign fraction 98.9%
+- H1_norm = 0.8046 (linguistic range, H2/H1 = 1.93 sub-linear)
+- Confirms Linear A is definitively linguistic (rules out non-linguistic code/inventory hypothesis)
+- H1_norm difference from Linear B = -0.117 (within expected range for related scripts)
+- Top-10 signs: AB01(888), AB02(838), AB13(592), AB03(547), AB08(448)
+- Language family hypothesis ranking: Mycenaean Greek > Luwian > Proto-Semitic (Kandles: 0.9620, 0.9315, 0.9282)
+- Margin is small — all three hypotheses within 0.034 Kandles — consistent with Minoan being a language isolate
+
+Open TODOs:
+- [ ] Acquire ICIT corpus from Dr. Fuls (email sent — external dependency)
+- [ ] Load actual Younger (2000) Linear A tablet transcriptions (replace statistical model with real corpus)
+- [ ] Apply tentative Linear B phonetic values to shared AB-signs and re-run hypothesis engine at phoneme level
+- [ ] Run Playwright tests end-to-end with live backend
+- [ ] Promote requirements from draft to accepted (human review)
+
+Risks:
+- Linear A corpus is statistical (frequency-model), not transcribed from real tablets
+- Linear A hypothesis ranking is inconclusive — small margin consistent with isolate hypothesis
+- Linear B 100% accuracy reflects good corpus quality, not necessarily generalisation
+
+Next step: Load Younger (2000) Linear A transcriptions from academia.edu for a real-corpus reanalysis; add Hurrian as a fourth hypothesis

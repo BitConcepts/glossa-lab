@@ -9,10 +9,6 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-# Repo root is two levels above this file (backend/glossa_lab/main.py)
-_REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-_FRONTEND_DIST = _REPO_ROOT / "frontend" / "dist"
-
 from glossa_lab import __version__
 from glossa_lab.api.health import router as health_router
 from glossa_lab.api.jobs import router as jobs_router
@@ -24,6 +20,10 @@ from glossa_lab.config import get_settings
 from glossa_lab.database import close_db, init_db
 from glossa_lab.engine import run_engine_loop
 from glossa_lab.logging import setup_logging
+
+# Repo root is two levels above this file (backend/glossa_lab/main.py)
+_REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+_FRONTEND_DIST = _REPO_ROOT / "frontend" / "dist"
 
 _start_time: float = 0.0
 

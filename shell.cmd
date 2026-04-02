@@ -91,6 +91,7 @@ if exist "%REPO_ROOT%\tray\requirements.txt" (
 if exist "%REPO_ROOT%\frontend\package.json" (
     pushd "%REPO_ROOT%\frontend"
     call npm install
+    call npm run build
     popd
 )
 echo [OK] Dependencies updated.

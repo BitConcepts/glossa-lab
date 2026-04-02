@@ -40,7 +40,7 @@ _AUTOSTART_NAME = "GlossaLabTray"
 
 BACKEND_URL = "http://127.0.0.1:8001"
 HEALTH_URL = f"{BACKEND_URL}/api/v1/health"
-FRONTEND_URL = "http://localhost:5174"
+FRONTEND_URL = "http://localhost:8001"  # backend serves built frontend
 POLL_INTERVAL = 5  # seconds
 
 # Determine repo root and shell wrapper
@@ -133,14 +133,52 @@ def _open_ui(_icon=None, _item=None):
     webbrowser.open(FRONTEND_URL)
 
 
-def _start_backend(_icon=None, _item=None):
-    """Start the backend via shell wrapper (detached)."""
+# Windows process-creation flags (no console window, detached, new group)
+_WIN_DETACHED     = 0x00000008  # DETACHED_PROCESS
+_WIN_NO_WINDOW    = 0x08000000  # CREATE_NO_WINDOW — suppresses any cmd flash
+_WIN_NEW_PG       = 0x00000200  # CREATE_NEW_PROCESS_GROUP
+_WIN_HIDDEN       = _WIN_DETACHED | _WIN_NO_WINDOW | _WIN_NEW_PG
+
+_BACKEND_REG_NAME = "GlossaLabBackend"
+_BACKEND_SVC      = str(_REPO_ROOT / "scripts" / "run-backend-svc.cmd")
+
+
+def _ensure_backend_registered() -> None:
+    """Register backend HKCU Run entry if not already set (idempotent)."""
+    if platform.system() != "Windows":
+        return
+    try:
+        import winreg
+        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, _AUTOSTART_REG_KEY) as k:
+            winreg.QueryValueEx(k, _BACKEND_REG_NAME)
+    except (FileNotFoundError, OSError):
+        try:
+            import winreg
+            with winreg.OpenKey(
+                winreg.HKEY_CURRENT_USER, _AUTOSTART_REG_KEY, 0, winreg.KEY_SET_VALUE
+            ) as k:
+                winreg.SetValueEx(
+                    k, _BACKEND_REG_NAME, 0, winreg.REG_SZ, f'"{_BACKEND_SVC}"'
+                )
+        except OSError:
+            pass
+
+
+def _start_backend(_icon=None, _item=None) -> None:
+    """Start the backend service — fully hidden, no console window.
+
+    Registers the boot Run entry if missing, then launches the service
+    wrapper. On Windows CREATE_NO_WINDOW prevents any cmd shell from
+    appearing. Output goes to logs/backend.log.
+    """
+    _ensure_backend_registered()
     if platform.system() == "Windows":
         subprocess.Popen(
-            [_SHELL, "run"],
-            creationflags=subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.DETACHED_PROCESS,
+            ["cmd.exe", "/c", _BACKEND_SVC],
+            creationflags=_WIN_HIDDEN,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
+            stdin=subprocess.DEVNULL,
         )
     else:
         subprocess.Popen(
@@ -148,6 +186,7 @@ def _start_backend(_icon=None, _item=None):
             start_new_session=True,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
+            stdin=subprocess.DEVNULL,
         )
 
 

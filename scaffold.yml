@@ -1,0 +1,28 @@
+extends: ''
+name: glossa-lab
+type: backend-frontend-tray
+platforms:
+- windows
+- linux
+- macos
+language: python
+spec_version: 0.1.3
+description: Imported project (119 files detected)
+services: false
+shell_wrappers: false
+exec_shims: true
+git_init: false
+vcs_platform: github
+branching_strategy: gitflow
+default_branch: main
+develop_branch: develop
+require_pr_reviews: true
+required_approvals: 1
+require_ci_pass: true
+allow_force_push: false
+use_remote_rules: false
+verification_tools: {}
+detected_build_system: pyproject
+detected_test_framework: pytest
+integrations:
+- agents-md

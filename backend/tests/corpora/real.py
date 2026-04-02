@@ -29,6 +29,17 @@ def load_sanskrit() -> list[str]:
     return [c.lower() for c in text if c.isalpha()]
 
 
+def load_sumerian() -> list[str]:
+    """Load Sumerian text as character sequence (transliterated, lowercase).
+
+    Corpus is based on Ur III administrative tablet transliterations.
+    Characters are extracted alphabetically; numerals and hyphens discarded,
+    consistent with the treatment applied to Tamil and Sanskrit fixtures.
+    """
+    text = (FIXTURES_DIR / "sumerian.txt").read_text(encoding="utf-8")
+    return [c.lower() for c in text if c.isalpha()]
+
+
 def load_english() -> list[str]:
     """Load English text as character sequence (lowercase, no whitespace)."""
     text = (FIXTURES_DIR / "english.txt").read_text(encoding="utf-8")

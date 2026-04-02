@@ -29,7 +29,7 @@ set "VENV_PYTHON=%REPO_ROOT%\backend\venv\Scripts\python.exe"
 set "BACKEND_SVC=%REPO_ROOT%\scripts\run-backend-svc.cmd"
 set "TRAY_SVC=%REPO_ROOT%\scripts\run-tray-svc.cmd"
 set "LOG_DIR=%REPO_ROOT%\logs"
-set "HEALTH_URL=http://localhost:8000/api/v1/health"
+set "HEALTH_URL=http://localhost:8001/api/v1/health"
 
 set "BACKEND_TASK=GlossaLabBackend"
 set "TRAY_TASK=GlossaLabTray"
@@ -61,7 +61,18 @@ REM 2. Ensure logs directory exists
 if not exist "%LOG_DIR%" mkdir "%LOG_DIR%"
 echo [2/4] Log directory: %LOG_DIR%
 
-REM 3. Register backend in HKCU Run (starts at user login, no admin required)
+REM 2b. Build frontend (static files served by backend)
+echo [2b] Building frontend...
+pushd "%REPO_ROOT%\frontend"
+call npm run build >nul 2>&1
+popd
+if exist "%REPO_ROOT%\frontend\dist\index.html" (
+    echo [OK] Frontend built.
+) else (
+    echo [WARN] Frontend build failed -- UI will not be available at http://localhost:8001
+)
+
+REM 3. Register backend in HKCU Run
 echo [3/4] Registering backend autostart (HKCU Run)...
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "%BACKEND_TASK%" /t REG_SZ /d "\"%BACKEND_SVC%\"" /f >nul
 if errorlevel 1 ( echo [ERROR] Failed to register backend autostart. & exit /b 1 )

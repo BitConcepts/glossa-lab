@@ -1,62 +1,75 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { StatusView } from "./components/StatusView";
+import { CorporaView } from "./components/CorporaView";
+import { JobsView } from "./components/JobsView";
 
-interface HealthStatus {
-  status: "healthy" | "degraded" | "down";
-  version: string;
-  uptime_seconds: number;
-}
+type Tab = "status" | "corpora" | "jobs";
+
+const TABS: { id: Tab; label: string }[] = [
+  { id: "status", label: "Status" },
+  { id: "corpora", label: "Corpora" },
+  { id: "jobs", label: "Jobs" },
+];
 
 export function App() {
-  const [health, setHealth] = useState<HealthStatus | null>(null);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchHealth = async () => {
-      try {
-        const res = await fetch("/api/v1/health");
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data: HealthStatus = await res.json();
-        setHealth(data);
-        setError(null);
-      } catch (err) {
-        setHealth(null);
-        setError(err instanceof Error ? err.message : "Connection failed");
-      }
-    };
-
-    fetchHealth();
-    const interval = setInterval(fetchHealth, 5000);
-    return () => clearInterval(interval);
-  }, []);
+  const [tab, setTab] = useState<Tab>("status");
 
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", padding: "2rem" }}>
-      <h1>Glossa Lab</h1>
-      <p>
-        Agentic research lab for decoding, translating, and modeling languages
-        and scripts.
-      </p>
+    <div
+      style={{
+        fontFamily: "system-ui, sans-serif",
+        maxWidth: 960,
+        margin: "0 auto",
+        padding: "1.5rem 2rem",
+      }}
+    >
+      {/* Header */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "baseline",
+          gap: "1.5rem",
+          marginBottom: "1.5rem",
+          borderBottom: "2px solid #e5e7eb",
+          paddingBottom: "0.75rem",
+        }}
+      >
+        <h1 style={{ margin: 0, fontSize: "1.4rem", fontWeight: 700 }}>
+          Glossa Lab
+        </h1>
+        <span style={{ color: "#6b7280", fontSize: 13 }}>
+          Ancient &amp; modern language analysis
+        </span>
+      </div>
 
-      <h2>Backend Status</h2>
-      {error ? (
-        <p style={{ color: "#dc2626" }}>
-          <strong>Disconnected:</strong> {error}
-        </p>
-      ) : health ? (
-        <ul>
-          <li>
-            <strong>Status:</strong> {health.status}
-          </li>
-          <li>
-            <strong>Version:</strong> {health.version}
-          </li>
-          <li>
-            <strong>Uptime:</strong> {Math.round(health.uptime_seconds)}s
-          </li>
-        </ul>
-      ) : (
-        <p>Loading...</p>
-      )}
+      {/* Tab bar */}
+      <nav style={{ display: "flex", gap: 4, marginBottom: "1.5rem" }}>
+        {TABS.map((t) => (
+          <button
+            key={t.id}
+            onClick={() => setTab(t.id)}
+            style={{
+              padding: "6px 16px",
+              border: "none",
+              borderRadius: 4,
+              cursor: "pointer",
+              fontSize: 14,
+              fontWeight: tab === t.id ? 600 : 400,
+              background: tab === t.id ? "#2563eb" : "#f3f4f6",
+              color: tab === t.id ? "#fff" : "#374151",
+            }}
+          >
+            {t.label}
+          </button>
+        ))}
+      </nav>
+
+      {/* View */}
+      <main>
+        {tab === "status" && <StatusView />}
+        {tab === "corpora" && <CorporaView />}
+        {tab === "jobs" && <JobsView />}
+      </main>
     </div>
   );
 }

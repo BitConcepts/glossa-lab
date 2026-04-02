@@ -29,6 +29,26 @@ def load_sanskrit() -> list[str]:
     return [c.lower() for c in text if c.isalpha()]
 
 
+def load_linear_b_signs() -> list[str]:
+    """Load Linear B syllable-level tokens from the Pylos/Knossos fixture.
+
+    Each token is one syllable (e.g. 'wa', 'na', 'ka' from wa-na-ka).
+    Returns ~700-900 syllable tokens from the representative tablet corpus.
+    """
+    from glossa_lab.data.linear_b_language import get_corpus_symbols
+    return get_corpus_symbols()
+
+
+def load_linear_a_signs(seed: int = 42) -> list[str]:
+    """Load Linear A sign tokens (GORILA codes) from the statistical corpus.
+
+    Returns ~7,400 sign tokens following published sign-frequency
+    distributions (Packard 1974, Younger 2000).
+    """
+    from tests.corpora.linear_a_corpus import generate_linear_a_flat
+    return generate_linear_a_flat(seed=seed)
+
+
 def load_sumerian() -> list[str]:
     """Load Sumerian text as character sequence (transliterated, lowercase).
 

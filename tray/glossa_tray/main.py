@@ -33,7 +33,10 @@ try:
 except ImportError:
     pass  # stdlib, always available
 
-# ── Constants ────────────────────────────────────────────────────────
+# ── Constants ────────────────────────────────────
+
+_AUTOSTART_REG_KEY = r"Software\Microsoft\Windows\CurrentVersion\Run"
+_AUTOSTART_NAME = "GlossaLabTray"
 
 BACKEND_URL = "http://127.0.0.1:8001"
 HEALTH_URL = f"{BACKEND_URL}/api/v1/health"
@@ -61,7 +64,53 @@ def _create_icon_image(colour: str = "green") -> Image.Image:
     return img
 
 
-# ── Backend interaction (HTTP only — no backend logic) ───────────────
+# ── Autostart management ───────────────────────────────────────
+
+def _is_autostart_enabled() -> bool:
+    """Check if tray autostart is registered in HKCU Run (Windows only)."""
+    if platform.system() != "Windows":
+        return False
+    try:
+        import winreg
+        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, _AUTOSTART_REG_KEY) as key:
+            winreg.QueryValueEx(key, _AUTOSTART_NAME)
+            return True
+    except (FileNotFoundError, OSError):
+        return False
+
+
+def _set_autostart(enabled: bool) -> None:
+    """Add or remove the tray HKCU Run entry (Windows only)."""
+    if platform.system() != "Windows":
+        return
+    tray_svc = str(_REPO_ROOT / "scripts" / "run-tray-svc.cmd")
+    try:
+        import winreg
+        if enabled:
+            with winreg.OpenKey(
+                winreg.HKEY_CURRENT_USER, _AUTOSTART_REG_KEY,
+                0, winreg.KEY_SET_VALUE,
+            ) as key:
+                winreg.SetValueEx(
+                    key, _AUTOSTART_NAME, 0, winreg.REG_SZ,
+                    f'"{tray_svc}"',
+                )
+        else:
+            with winreg.OpenKey(
+                winreg.HKEY_CURRENT_USER, _AUTOSTART_REG_KEY,
+                0, winreg.KEY_SET_VALUE,
+            ) as key:
+                winreg.DeleteValue(key, _AUTOSTART_NAME)
+    except OSError:
+        pass
+
+
+def _toggle_autostart(_icon=None, _item=None) -> None:
+    """Toggle the Start on login setting."""
+    _set_autostart(not _is_autostart_enabled())
+
+
+# ── Backend interaction (HTTP only — no backend logic) ───────────
 
 def _check_health() -> dict | None:
     """Poll the backend health endpoint. Returns JSON dict or None on failure."""
@@ -103,11 +152,15 @@ def _start_backend(_icon=None, _item=None):
 
 
 def _stop_backend(_icon=None, _item=None):
-    """Request the backend to shut down by sending a shutdown signal."""
-    # The simplest cross-platform approach: kill the uvicorn process
-    # For now, we just inform the user; a proper /api/v1/shutdown endpoint
-    # could be added later.
-    pass
+    """Request a clean backend shutdown via the /api/v1/shutdown endpoint."""
+    try:
+        import urllib.request
+        req = urllib.request.Request(
+            f"{BACKEND_URL}/api/v1/shutdown", method="POST"
+        )
+        urllib.request.urlopen(req, timeout=3)
+    except Exception:
+        pass
 
 
 def _quit(icon, _item=None):
@@ -146,6 +199,12 @@ def main():
         pystray.MenuItem("Start Backend", _start_backend),
         pystray.MenuItem("Stop Backend", _stop_backend),
         pystray.Menu.SEPARATOR,
+        pystray.MenuItem(
+            "Start on login",
+            _toggle_autostart,
+            checked=lambda item: _is_autostart_enabled(),
+        ),
+        pystray.Menu.SEPARATOR,
         pystray.MenuItem("Quit", _quit),
     )
 
@@ -155,6 +214,10 @@ def main():
         title="Glossa Lab — Starting...",
         menu=menu,
     )
+
+    # Ensure autostart is registered on first launch (idempotent)
+    if not _is_autostart_enabled():
+        _set_autostart(True)
 
     # Start poller thread
     poller = threading.Thread(target=_status_poller, args=(icon,), daemon=True)

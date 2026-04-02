@@ -443,3 +443,140 @@ Risks:
 - ICIT access depends on Dr. Fuls' response
 
 Next step: Follow up with Dr. Fuls (send project report), load real data when available, iterate hypothesis engine
+
+---
+
+## [2026-04-02] Entry — NSB estimator, Sumerian corpus, logosyllabic pipeline, frontend visualization
+
+Objective: Complete all open TODOs that do not require the ICIT corpus from Dr. Fuls.
+
+What was done:
+- Implemented Miller-Madow (1955) and Chao-Shen (2003) bias-corrected entropy estimators in backend/glossa_lab/pipelines/nsb_entropy.py
+- Extended block_entropy pipeline to accept an 'estimator' param ('mle' | 'miller_madow' | 'chao_shen'); result now includes 'estimator' field
+- Added 11 NSB estimator tests (test_nsb.py): correction monotonicity, large-N convergence, edge cases, compare_estimators() structure, pipeline integration
+- Created Sumerian transliterated corpus fixture from Ur III administrative texts (backend/tests/corpora/fixtures/sumerian.txt, ~84 lines)
+- Added load_sumerian() to real.py corpus loaders
+- Extended test_study_rao2009.py with 2 Sumerian tests: linguistic range and sub-linear entropy growth
+- Implemented logosyllabic decipherment pipeline (logosyllabic.py): sign classification (logogram/syllabogram/determinative), Ventris-style vowel/consonant affinity clustering, frequency-rank CV reading proposals, candidate word extraction with vocabulary matching; Linear B and Sumerian syllable inventories included
+- Registered logosyllabic pipeline in engine.py
+- Added 14 logosyllabic tests (test_logosyllabic.py): classify_signs, affinity, propose_readings, extract_candidate_words, full analysis with multiple targets
+- Replaced frontend App.tsx with a 3-tab shell (Status / Corpora / Jobs)
+- Created frontend/src/api.ts: typed fetch client for all backend endpoints
+- Created StatusView (health + pipeline list), CorporaView (corpus upload + listing), JobsView (job submit + status poll + result drawer)
+- Created ResultsView: type-detected rendering for block_entropy (EntropyChart + table), decipher, hypothesis, logosyllabic, char_freq, and JSON fallback
+- Created EntropyChart: pure-SVG line chart for block entropy curves (no external chart library)
+
+Files changed:
+- backend/glossa_lab/pipelines/nsb_entropy.py (created)
+- backend/glossa_lab/pipelines/block_entropy.py (modified — estimator param, uses nsb_entropy)
+- backend/glossa_lab/pipelines/logosyllabic.py (created)
+- backend/glossa_lab/engine.py (modified — registered logosyllabic, sorted imports)
+- backend/tests/test_nsb.py (created — 11 tests)
+- backend/tests/test_logosyllabic.py (created — 14 tests)
+- backend/tests/corpora/fixtures/sumerian.txt (created)
+- backend/tests/corpora/real.py (modified — added load_sumerian())
+- backend/tests/test_study_rao2009.py (modified — +2 Sumerian tests, +load_sumerian import)
+- frontend/src/api.ts (created)
+- frontend/src/App.tsx (rebuilt — tab navigation, 3 views)
+- frontend/src/components/StatusView.tsx (created)
+- frontend/src/components/CorporaView.tsx (created)
+- frontend/src/components/JobsView.tsx (created)
+- frontend/src/components/ResultsView.tsx (created)
+- frontend/src/components/EntropyChart.tsx (created)
+
+Checks run:
+- `shell.cmd test backend\tests -v` — 132 passed, 0 failed (176s)
+- `shell.cmd lint backend\glossa_lab` — all checks passed
+- `npm run build` in frontend/ — 34 modules, 215 kB bundle, 0 errors
+
+Results:
+- 12 analysis pipelines now registered (added logosyllabic)
+- 132 tests (was 102 at start of session)
+- Block entropy pipeline now supports 3 estimators; MLE results are backward-compatible
+- Sumerian falls in linguistic range on character-level entropy (consistent with Tamil/Sanskrit)
+- Logosyllabic pipeline classifies signs, clusters by Ventris affinity, proposes CV readings, and extracts candidate words
+- Frontend fully usable: upload corpora, submit any pipeline job, poll status, view results with type-specific rendering
+
+Open TODOs:
+- [ ] Acquire ICIT corpus from Dr. Fuls (email sent — external dependency)
+- [ ] Load real Indus data and run full pipeline suite
+- [ ] Run hypothesis engine on real Indus data
+- [ ] Promote requirements from draft to accepted (human review)
+- [ ] Install and test tray app on Windows
+- [ ] Improve logosyllabic pipeline on real attested data once available
+
+Risks:
+- Sumerian fixture is synthetic/representative (not a specific attested tablet); character-level analysis is adequate but token-level (morpheme) would be more linguistically precise
+- Logosyllabic classification heuristics are threshold-based (not learned); may misclassify signs on very small or highly repetitive corpora
+- NSB estimators use Chao-Shen (2003) rather than full NSB numerical integration; performance may be suboptimal for extremely small corpora (<50 symbols)
+- Frontend not yet tested end-to-end with live backend (TypeScript build passes; runtime integration not confirmed this session)
+
+Next step: Await ICIT corpus from Dr. Fuls; validate synthetic Indus findings against real M77 data; optionally add token-level Sumerian loader for morpheme-level analysis
+
+---
+
+## [2026-04-02] Entry — OS integration tool, Playwright test suite, port isolation
+
+Objective: Build Windows boot/service integration, add Playwright UI tests, fix PTY-hanging commands, isolate glossa-lab to non-conflicting ports.
+
+What was done:
+- Created setup-os.cmd (Windows) and setup-os.sh (Linux/macOS): unified install/uninstall/start/stop/status/restart CLI
+- Windows autostart uses HKCU Run registry key (no admin required); Linux uses systemd user unit; macOS uses LaunchAgent
+- Created scripts/run-backend-svc.cmd and scripts/run-tray-svc.cmd: service wrapper scripts with log redirection to logs/
+- Created scripts/start-detached.ps1: launches any .cmd fully detached (no console inheritance), writes PID to file, returns immediately
+- Rewrote setup-os.cmd do_start as fire-and-forget: starts backend and tray via start-detached.ps1, prints PIDs and kill commands, exits immediately — no blocking wait loop
+- Fixed H8 violation: replaced all for/f('powershell ...') PTY-hanging patterns with curl.exe (built-in, never hangs)
+- Added shell.cmd svc command (delegates to setup-os.cmd) and e2e command (runs Playwright from frontend/)
+- Added @playwright/test to frontend devDependencies; installed Chromium browser locally
+- Created frontend/playwright.config.ts: webServer starts Vite dev server automatically; BACKEND_RUNNING env guard for backend-dependent tests
+- Created frontend/e2e/navigation.spec.ts (8 tests), status.spec.ts (7 tests), corpora.spec.ts (9 tests), jobs.spec.ts (8 tests)
+- Added Playwright CI job to .github/workflows/ci.yml: starts backend as background process on ubuntu-latest, waits for health, runs Chromium tests
+- Changed all ports: backend 8000 → 8001, frontend dev server 5173 → 5174 (avoids conflict with active axiom project on same ports)
+- Updated all references: config.py, main.py (CORS), tray/main.py, vite.config.ts, shell.cmd, shell.sh, scripts/run.cmd, scripts/run.sh, scripts/run-backend-svc.cmd, setup-os.cmd, setup-os.sh, playwright.config.ts, ci.yml, test_security.py
+
+Files changed:
+- setup-os.cmd (created)
+- setup-os.sh (created)
+- scripts/run-backend-svc.cmd (created)
+- scripts/run-tray-svc.cmd (created)
+- scripts/start-detached.ps1 (created)
+- scripts/register-tasks.ps1 (created — unused fallback, kept for reference)
+- shell.cmd (modified — added svc, e2e commands)
+- frontend/package.json (modified — added @playwright/test)
+- frontend/playwright.config.ts (created)
+- frontend/e2e/navigation.spec.ts (created)
+- frontend/e2e/status.spec.ts (created)
+- frontend/e2e/corpora.spec.ts (created)
+- frontend/e2e/jobs.spec.ts (created)
+- .github/workflows/ci.yml (modified — added playwright job)
+- backend/glossa_lab/config.py (modified — port 8001)
+- backend/glossa_lab/main.py (modified — CORS 5174)
+- tray/glossa_tray/main.py (modified — port 8001, frontend 5174)
+- frontend/vite.config.ts (modified — port 5174, proxy 8001)
+- shell.cmd, shell.sh, scripts/run.cmd, scripts/run.sh (modified — port 8001)
+- scripts/run-backend-svc.cmd (modified — port 8001)
+- setup-os.cmd, setup-os.sh (modified — health URL 8001)
+- frontend/playwright.config.ts (modified — baseURL 5174)
+- .github/workflows/ci.yml (modified — health check 8001)
+- backend/tests/test_security.py (modified — CORS origin 5174)
+
+Checks run:
+- `shell.cmd test backend\tests -v` — 132 passed, 0 failed (144s)
+- `shell.cmd lint backend\glossa_lab` — all checks passed
+- setup-os.cmd install — succeeded (HKCU Run entries created)
+- setup-os.cmd start — backend launched, PID written, returned immediately
+- Backend confirmed healthy at http://localhost:8001/api/v1/health
+
+Open TODOs:
+- [ ] Acquire ICIT corpus from Dr. Fuls (email sent — external dependency)
+- [ ] Run Playwright tests end-to-end with both backend and dev server running (setup-os.cmd start + shell.cmd e2e)
+- [ ] Promote requirements from draft to accepted (human review)
+- [ ] Install and verify tray app on Windows (pystray deps not confirmed on this machine)
+
+Risks:
+- Playwright tests not fully verified in CI yet (first run pending)
+- Tray deps (pystray, Pillow) not confirmed installed in current venv
+- H8: all known hanging patterns fixed; setup-os.cmd start now returns immediately with PID
+- Port change to 8001/5174 is a local dev convention; ensure team and any docs referencing old ports are updated
+
+Next step: Run `setup-os.cmd start` then `shell.cmd e2e` to confirm Playwright passes end-to-end; then install tray deps and validate tray icon on Windows

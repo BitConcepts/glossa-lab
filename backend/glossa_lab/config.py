@@ -23,7 +23,7 @@ class Settings:
 
     # Core
     host: str = "127.0.0.1"
-    port: int = 8000
+    port: int = 8001
     dev_mode: bool = True
     log_level: str = "DEBUG"
 

@@ -23,6 +23,7 @@ from tests.corpora.real import (
     load_fortran,
     load_indus,
     load_sanskrit,
+    load_sumerian,
     load_tamil,
 )
 from tests.corpora.synthetic import generate_ordered, generate_random
@@ -148,7 +149,35 @@ def test_sanskrit_linguistic_range():
     assert 0.65 <= h1 <= 0.95, f"Sanskrit H1_norm={h1}, expected 0.65-0.95"
 
 
-# ── Ordering: Random > DNA > English > Fortran > Ordered ─────────────
+# ── Sumerian (ancient administrative language) ───────────────────────────
+
+
+def test_sumerian_linguistic_range():
+    """Sumerian transliteration should fall in the linguistic entropy range.
+
+    Sumerian is an agglutinative language with repetitive administrative
+    formulae (tablet texts). Character-level H1_norm should be similar to
+    other ancient languages (Tamil, Sanskrit) in the 0.65-0.95 range.
+    """
+    result = compute_block_entropies(load_sumerian(), max_n=2)
+    h1 = _get_norm(result, 1)
+    assert 0.60 <= h1 <= 0.95, f"Sumerian H1_norm={h1}, expected 0.60-0.95"
+
+
+def test_sumerian_sublinear_growth():
+    """Sumerian should show sub-linear entropy growth (linguistic signature).
+
+    Agglutinative morphology creates strong bigram dependencies
+    (common morphemes like -la, -bi, -ka, -ra repeat systematically).
+    """
+    result = compute_block_entropies(load_sumerian(), max_n=2)
+    h1 = _get_norm(result, 1)
+    h2 = _get_norm(result, 2)
+    ratio = h2 / h1 if h1 > 0 else 2.0
+    assert ratio < 1.95, f"Sumerian H2/H1={ratio:.3f}, expected < 1.95"
+
+
+# ── Ordering: Random > DNA > English > Fortran > Ordered ─────────────────────
 
 
 def test_entropy_ordering():

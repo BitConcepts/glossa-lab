@@ -22,7 +22,7 @@ def test_cors_preflight_in_dev_mode(client):
     response = client.options(
         "/api/v1/health",
         headers={
-            "Origin": "http://localhost:5173",
+            "Origin": "http://localhost:5174",
             "Access-Control-Request-Method": "GET",
         },
     )

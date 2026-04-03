@@ -3,13 +3,16 @@
 Async background worker that polls for pending jobs, dispatches them
 to the correct pipeline, and stores results.
 """
-
 from __future__ import annotations
 
+import ast
 import asyncio
+import importlib
 import logging
+import pkgutil
 import traceback
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any
 
 from glossa_lab.database import get_db
@@ -18,6 +21,7 @@ logger = logging.getLogger(__name__)
 
 # Pipeline registry — maps pipeline name to callable
 _PIPELINES: dict[str, Any] = {}
+_PIPELINE_MODULES_LOADED = False
 
 
 def register_pipeline(name: str):
@@ -29,7 +33,20 @@ def register_pipeline(name: str):
 
 
 def get_registered_pipelines() -> list[str]:
-    return list(_PIPELINES.keys())
+    _ensure_pipelines_loaded()
+    return sorted(_PIPELINES.keys())
+
+
+def get_registered_pipeline_info() -> list[dict[str, str]]:
+    """Return registered pipelines with module metadata."""
+    _ensure_pipelines_loaded()
+    return [
+        {
+            "name": name,
+            "module": getattr(fn, "__module__", "unknown"),
+        }
+        for name, fn in sorted(_PIPELINES.items())
+    ]
 
 
 async def _run_job(job: dict[str, Any]) -> dict[str, Any]:
@@ -97,16 +114,43 @@ async def run_once() -> bool:
 
 def _ensure_pipelines_loaded() -> None:
     """Import pipeline modules to trigger registration."""
-    if not _PIPELINES:
-        import glossa_lab.pipelines.block_entropy  # noqa: F401,I001
-        import glossa_lab.pipelines.char_freq  # noqa: F401
-        import glossa_lab.pipelines.cooccurrence  # noqa: F401
-        import glossa_lab.pipelines.decipher  # noqa: F401
-        import glossa_lab.pipelines.distributional_decipherment  # noqa: F401
-        import glossa_lab.pipelines.hypothesis  # noqa: F401
-        import glossa_lab.pipelines.kandles  # noqa: F401
-        import glossa_lab.pipelines.logosyllabic  # noqa: F401
-        import glossa_lab.pipelines.numerals  # noqa: F401
-        import glossa_lab.pipelines.paradigm  # noqa: F401
-        import glossa_lab.pipelines.sign_cluster  # noqa: F401
-        import glossa_lab.pipelines.word_structure_hypothesis  # noqa: F401
+    global _PIPELINE_MODULES_LOADED  # noqa: PLW0603
+    if _PIPELINE_MODULES_LOADED:
+        return
+
+    import glossa_lab.pipelines as pipeline_package
+
+    for module_name in _discover_pipeline_modules(pipeline_package.__path__[0]):
+        importlib.import_module(f"{pipeline_package.__name__}.{module_name}")
+
+    _PIPELINE_MODULES_LOADED = True
+
+
+def _discover_pipeline_modules(package_dir: str) -> list[str]:
+    """Find pipeline modules by scanning for register_pipeline decorators."""
+    discovered: list[str] = []
+    package_path = Path(package_dir)
+    for module_info in pkgutil.iter_modules([str(package_path)]):
+        if module_info.name.startswith("_"):
+            continue
+        module_path = package_path / f"{module_info.name}.py"
+        if module_path.exists() and _module_registers_pipeline(module_path):
+            discovered.append(module_info.name)
+    return sorted(discovered)
+
+
+def _module_registers_pipeline(module_path: Path) -> bool:
+    """Return True if the module contains a register_pipeline call."""
+    try:
+        module_ast = ast.parse(module_path.read_text(encoding="utf-8"))
+    except (OSError, SyntaxError, UnicodeDecodeError):
+        return False
+
+    for node in ast.walk(module_ast):
+        if not isinstance(node, ast.Call):
+            continue
+        if isinstance(node.func, ast.Name) and node.func.id == "register_pipeline":
+            return True
+        if isinstance(node.func, ast.Attribute) and node.func.attr == "register_pipeline":
+            return True
+    return False

@@ -1,39 +1,22 @@
 import { useEffect, useState, useCallback } from "react";
 import {
   cancelJob,
+  clearJobs,
   createJob,
   getJobResults,
+  getPipelineCatalog,
   listJobs,
+  CatalogPipeline,
   JobResponse,
 } from "../api";
 import { ResultsView } from "./ResultsView";
-
-const PIPELINES = [
-  // Statistical — no language model required
-  "block_entropy",
-  "char_freq",
-  "positional",
-  "sign_cluster",
-  "cooccurrence",
-  "paradigm",
-  "sign_polyvalence",
-  "nwsp",
-  "sign_function_estimator",
-  "structural_fingerprint",
-  "word_structure_hypothesis",
-  "distributional_decipherment",
-  "logosyllabic",
-  "numerals",
-  // Language model required
-  "kandles",
-  "decipher",
-  "hypothesis",
-];
 
 export function JobsView() {
   const [jobs, setJobs] = useState<JobResponse[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [pipelines, setPipelines] = useState<CatalogPipeline[]>([]);
+  const [clearing, setClearing] = useState(false);
 
   // Submit form
   const [jobName, setJobName] = useState("");
@@ -61,8 +44,15 @@ export function JobsView() {
   useEffect(() => {
     load();
     const id = setInterval(load, 3000);
+    getPipelineCatalog().then(setPipelines).catch(() => {});
     return () => clearInterval(id);
   }, [load]);
+
+  const handleClearJobs = async () => {
+    if (!confirm("Delete all jobs and results?")) return;
+    setClearing(true);
+    try { await clearJobs(); await load(); } finally { setClearing(false); }
+  };
 
   const handleSubmit = async () => {
     if (!jobName.trim()) {
@@ -116,7 +106,16 @@ export function JobsView() {
 
   return (
     <div>
-      <h2>Jobs</h2>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+        <h2 style={{ margin: 0 }}>Jobs</h2>
+        <button
+          onClick={handleClearJobs}
+          disabled={clearing || jobs.length === 0}
+          style={{ ...btnStyle, background: "#6b7280", fontSize: 12, padding: "4px 12px" }}
+        >
+          {clearing ? "Clearing…" : "Clear all"}
+        </button>
+      </div>
 
       {/* Submit panel */}
       <details style={{ marginBottom: "1.5rem" }}>
@@ -145,14 +144,13 @@ export function JobsView() {
               value={pipeline}
               onChange={(e) => {
                 setPipeline(e.target.value);
-                setParamsText('{"text_id": ""}');
+                const meta = pipelines.find((p) => p.id === e.target.value);
+                setParamsText(meta ? JSON.stringify(meta.default_params, null, 2) : '{"text_id": ""}');
               }}
               style={inputStyle}
             >
-              {PIPELINES.map((p) => (
-                <option key={p} value={p}>
-                  {p}
-                </option>
+              {(pipelines.length > 0 ? pipelines.map((p) => p.id) : [pipeline]).map((p) => (
+                <option key={p} value={p}>{p}</option>
               ))}
             </select>
           </Field>

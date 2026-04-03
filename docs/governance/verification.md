@@ -1,32 +1,43 @@
-# Verification
+# Verification and Acceptance Standards
 
-## Conflict And Consistency Handling
+## Verification minimum
+Every meaningful task must record:
+- What changed
+- What was tested
+- What passed
+- What failed
+- What is unknown
 
+"Not tested" is acceptable. "Tested" without evidence is not.
+
+## Project Verification Tools
+**Lint:** ruff check, eslint
+**Typecheck:** mypy, tsc
+**Test:** pytest, vitest
+**Security:** pip-audit, npm audit
+**Format:** ruff format, prettier
+
+Run these tools before marking any task as complete. Record tool output in the ledger.
+
+## Acceptance standard
+Work is accepted ONLY if:
+- Proposal matched execution (no scope creep)
+- Checks were run and results recorded
+- Ledger was updated
+- Next step was defined
+
+If any condition is not met, the work is **provisional only** and must be marked as such in the ledger.
+
+## Conflict and consistency handling
 If an agent detects:
-
-* a requirement without a test
-* a test without a requirement
-* architecture that violates requirements
-* ledger inconsistencies
-* documentation that contradicts implementation
+- A requirement without a corresponding test
+- A test without a corresponding requirement
+- Architecture that contradicts requirements
+- Ledger inconsistencies
+- Documentation that contradicts implementation
 
 The agent SHALL:
-
 1. Report the issue explicitly
-2. Reference exact document locations (file, line, requirement ID)
-3. NOT propose fixes unless explicitly requested
-4. Record the inconsistency in the current session's ledger entry under "Risks"
-
----
-
-## Verification Minimum
-
-Must record:
-
-* what changed
-* what was tested
-* what passed/failed
-* what is unknown
-
----
-
+2. Reference exact document locations
+3. NOT propose fixes unless requested by the human
+4. Record the inconsistency in the ledger under "Risks"

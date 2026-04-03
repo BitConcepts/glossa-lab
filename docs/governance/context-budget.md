@@ -1,36 +1,61 @@
-# Context Budget
+# Context Window Management and Credit Optimization
 
-## Context Window Management
+## Core principle
+Treat unnecessary credit consumption as a process defect.
 
-Large governance files consume agent context rapidly. Agents MUST actively manage context window consumption.
+## Session load protocol (lazy loading)
+On session start, load only:
+- `AGENTS.md` (in full)
+- `docs/governance/RULES.md`
+- `docs/governance/CONTEXT-BUDGET.md`
+- Last ~300 lines of `LEDGER.md`
 
-### On session load:
+Load on demand:
+- `docs/governance/WORKFLOW.md` — when preparing proposals or ledger entries
+- `docs/governance/ROLES.md` — when role boundaries are relevant
+- `docs/governance/VERIFICATION.md` — when testing or accepting work
+- `docs/governance/DRIFT-METRICS.md` — when running `audit`
+- `docs/REQUIREMENTS.md` — first ~200 lines, expand by section
+- `docs/TEST_SPEC.md` — first ~200 lines, expand by section
+- `docs/ARCHITECTURE.md` — first ~40 lines, expand by section
 
-* Read AGENTS.md in full (rules are authoritative, no shortcuts)
-* Read only the **last ~300 lines** of LEDGER.md (recent entries + next-session block)
-* Read only the **first ~200 lines** of docs/REQUIREMENTS.md and docs/TEST_SPEC.md (TOC + active items)
-* Read docs/architecture.md by section header only (~first 40 lines) unless a specific section is task-relevant
-* Older ledger entries and deep doc sections are loaded only when explicitly needed
+## During a session
+- NEVER re-read a file already in context unless modified since last read
+- Use line ranges for files > ~200 lines
+- Prefer grep/semantic search over reading entire files
+- Batch file reads into a single call
+- Summarize rather than echo file contents
+- Do not repeat proposals after creating them
 
-### During a session:
+## Conversation summarization recovery
+If the conversation is summarized or truncated, re-read AGENTS.md in full before any further actions.
 
-* NEVER re-read a file already in context unless it has been modified since the last read
-* Use line ranges for all reads of files longer than ~200 lines
-* Prefer grep or semantic search over reading entire files when looking for specific content
-* Batch file reads into a single call rather than sequential calls
-* Keep responses concise — summarize rather than echoing large file contents
-* Do not repeat plan or proposal contents after creating them
-* After multi-step tasks, give a brief summary (2–4 sentences) rather than recapping every file
+## Response economy
+- No echoing file contents back
+- No repeating proposal content after creation
+- No "status theater" messages that add no information
+- Provide only evidence needed to support conclusions
 
-### File size guidelines (approximate):
+## Efficient verification order
+1. Static validation / lint / syntax (cheapest)
+2. Type checks / unit tests
+3. Integration tests
+4. Expensive builds / hardware flows (most expensive)
 
-* AGENTS.md: ~200–500 lines — read in full
-* LEDGER.md: grows unbounded — read last ~300 lines
-* docs/REQUIREMENTS.md: ~100–400 lines — read first ~200
-* docs/TEST_SPEC.md: ~100–600 lines — read first ~200
-* docs/architecture.md: ~100–400 lines — read first ~40, expand by section
+If a cheaper check fails, fix that before running more expensive checks.
 
-Treat context window exhaustion as a **preventable defect**.
+## Cost tiers
+- **low** — docs-only, single-file edits, small scaffolds
+- **medium** — multi-file implementation, routine refactors, standard test runs
+- **high** — architecture changes, large builds, broad audits
 
----
+## Credit tracking
 
+This project tracks AI credit spend automatically. At the end of each session:
+
+1. Record usage: `governance-tool credits record --model <model> --provider <provider> --tokens-in <N> --tokens-out <N> --task "<description>"`
+2. Check budget: `governance-tool credits summary`
+3. If budget alerts appear, review with: `governance-tool credits analyze`
+
+Budget configuration: `governance-tool credits budget --cap <USD> --alert-pct 80`
+Credit data stored in `.specsmith/credits.json` (gitignored).

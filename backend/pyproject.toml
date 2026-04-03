@@ -14,6 +14,7 @@ dependencies = [
     "aiosqlite>=0.20,<1",
     "reportlab>=4,<5",
     "matplotlib>=3.9,<4",
+    "numpy>=1.26,<3",
 ]
 
 [project.optional-dependencies]
@@ -21,6 +22,21 @@ dev = [
     "pytest>=8,<9",
     "httpx>=0.28,<1",
     "ruff>=0.9,<1",
+]
+gpu = [
+    # CUDA-accelerated batch ops (Tier 3 acceleration).
+    # Install ONE of these depending on your CUDA version:
+    #   pip install glossa-lab[torch-cuda12]  (recommended for RTX 40xx / A100)
+    #   pip install glossa-lab[cupy]
+]
+torch-cuda12 = [
+    "torch>=2.2,<3",
+]
+torch-cuda11 = [
+    "torch>=2.0,<3",
+]
+cupy = [
+    "cupy-cuda12x>=13,<14",
 ]
 
 [tool.hatch.build.targets.wheel]

@@ -71,3 +71,14 @@ def test_create_job_with_params(client):
     data = response.json()
     assert data["pipeline"] == "analysis"
     assert data["params"] == {"lang": "en"}
+
+
+def test_clear_jobs(client):
+    """DELETE /api/v1/jobs clears stored jobs/results."""
+    client.post("/api/v1/jobs", json={"name": "clear-one"})
+    client.post("/api/v1/jobs", json={"name": "clear-two"})
+
+    response = client.delete("/api/v1/jobs")
+    assert response.status_code == 200
+    assert response.json()["cleared"] >= 2
+    assert client.get("/api/v1/jobs").json() == []

@@ -350,12 +350,38 @@ shell.cmd <command> [args]
 
 ### Available commands
 
-* `shell.cmd run` — start backend (dev mode, foreground)
 * `shell.cmd test [args]` — run pytest
 * `shell.cmd lint [args]` — run ruff check
 * `shell.cmd format [args]` — run ruff format
 * `shell.cmd setup` — re-run setup (install/update deps)
 * `shell.cmd python [args]` — run Python in venv
+* `shell.cmd run` — start backend in foreground (dev/debug only — BLOCKS terminal)
+* `shell.cmd tray` — start tray in foreground (dev/debug only — BLOCKS terminal)
+
+### Service startup — THE ONLY CORRECT WAY
+
+To start the backend and tray as background processes use `setup-os.cmd`, never `shell.cmd run` or `shell.cmd tray`:
+
+```text
+# First-time install (registers HKCU Run autostart, installs deps, builds frontend)
+setup-os.cmd install
+
+# Start both backend and tray now (fire-and-forget, returns immediately)
+setup-os.cmd start
+
+# Stop
+setup-os.cmd stop
+
+# Restart
+setup-os.cmd restart
+
+# Check health + autostart registration
+setup-os.cmd status
+```
+
+**NEVER** call `shell.cmd run` or `shell.cmd tray` as a service. They block the terminal and will hang the agent session.
+
+**NEVER** open any program that must stay open by running it inline in a wait-mode tool call. Use `setup-os.cmd start` which is fire-and-forget.
 
 ### Why this exists
 
@@ -368,13 +394,16 @@ On Windows, calling venv `Scripts/*.exe` files directly (e.g. `ruff.exe`, `pytes
 * ❌ `backend\venv\Scripts\uvicorn.exe ...`
 * ❌ Any direct invocation of executables under `venv/Scripts/` or `venv/bin/`
 * ❌ Any `.ps1` PowerShell script for tool invocation (causes PTY hangs)
+* ❌ `shell.cmd run` or `shell.cmd tray` as a background/service invocation
+* ❌ Running any long-lived program inline in a wait-mode command (it will block or hang)
 
 ### REQUIRED (safe, uses python -m)
 
 * ✅ `shell.cmd test`
 * ✅ `shell.cmd lint`
-* ✅ `shell.cmd run`
 * ✅ `shell.cmd python <script>`
+* ✅ `setup-os.cmd start` — start backend + tray as detached background processes
+* ✅ `setup-os.cmd stop` / `restart` / `status`
 
 ### Auto-bootstrap
 
@@ -429,6 +458,8 @@ If the task grows beyond the proposal, stop and re-propose.
 ### H7 — Shell wrapper required
 
 All tool invocations (pytest, ruff, uvicorn, python) MUST go through `shell.cmd` (Windows) or `shell.sh` (POSIX). Direct invocation of venv executables is **forbidden**. PowerShell `.ps1` scripts are also **forbidden** for tool invocation — they cause PTY hangs on Windows.
+
+To start the backend and tray as background services, use `setup-os.cmd start` (fire-and-forget). NEVER run `shell.cmd run` or `shell.cmd tray` as background processes — they are foreground-only and will block or hang the session.
 
 ### H8 — No silent commands
 

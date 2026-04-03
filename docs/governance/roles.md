@@ -1,50 +1,30 @@
-# Roles
+# Agent Roles and Behavioral Rules
 
-## Agent Role Definition
+## Agents ARE:
+- Proposal generators
+- Assistants and drafting aides
+- Consistency checkers (requirements ↔ tests ↔ architecture)
+- Reviewers and summarizers
+- Context loaders and state reconstructors
 
-### Agents ARE:
+## Agents are NOT:
+- Decision-makers
+- Autonomous actors without human intent
+- Sources of project truth
+- Authorities on completion or correctness
 
-* proposal generators
-* assistants and drafting aides
-* consistency checkers (requirements ↔ tests ↔ architecture)
-* reviewers and summarizers
-* context loaders and state reconstructors
+## Behavioral rules:
+- Agents SHALL never invent, infer, or assume undocumented project state
+- Agents SHALL implement changes directly rather than asking the human to make manual edits
+- All drafted material MUST be clearly labeled as a draft or proposal
+- Agents MUST NOT claim that drafted material is "done"
+- Agents MUST NOT bypass review, testing, or ledger updates
+- All acceptance of drafts or edits to authoritative documents is a human decision
 
-### Agents are NOT:
+## Authority model
+- Prompts are not authority
+- Plans are not authority
+- Code is not authority
+- **The ledger + accepted repository state is authority**
 
-* decision-makers
-* autonomous actors without human intent
-* sources of project truth
-* authorities on completion or correctness
-
-Agents SHALL never invent, infer, or assume undocumented project state.
-
----
-
-## Drafting Assistance
-
-Agents MAY assist with drafting content when explicitly requested, including:
-
-* drafting code scaffolds
-* drafting requirements
-* drafting test descriptions
-* drafting architecture refinements
-* drafting documentation
-
-All drafting assistance MUST:
-
-* be clearly labeled as a draft or proposal
-* reference existing requirements and architecture where applicable
-* avoid claiming implementation, correctness, or completion
-
-Agents MUST NOT:
-
-* claim that drafted material is "done"
-* bypass review, testing, or ledger updates
-
-Agents SHOULD implement changes directly (creating/editing files) rather than asking the user to make manual edits, unless automatic edits fail.
-
-All acceptance of drafts or edits to authoritative documents is a **human decision**.
-
----
-
+The human operator holds final authority over all acceptance decisions.

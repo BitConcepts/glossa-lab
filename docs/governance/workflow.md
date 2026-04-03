@@ -1,132 +1,80 @@
-# Workflow
+# Session Lifecycle, Proposal Format, and Ledger Format
 
-## Required: Ledger.Md
+## Session Types
 
-A file named `LEDGER.md` MUST exist at repo root.
+### NEW SESSION (start)
+Load AGENTS.md, governance docs (per load timing), and recent LEDGER.md.
+Output: system understanding, ledger state, open TODOs, suggested next task. Then produce a Proposal.
 
-### Rules
+### RESUME SESSION (resume)
+Load AGENTS.md and LEDGER.md. Summarize last task, current objective, open TODOs, risks. Propose next bounded task.
 
-- Every meaningful task MUST be recorded
-- Every session MUST append an entry
-- All TODOs MUST live in the ledger
-- No work is considered complete without a ledger entry
+### SAVE SESSION (save)
+Prepare LEDGER.md entry: what changed, what was verified, what remains, next step. Do not invent results.
 
-### Entry format
+### GIT COMMIT (commit)
+Prepare commit summary: what changed, why, files touched, checks performed. Generate commit message.
 
-```md
+### GIT UPDATE (sync)
+Check status, pull changes, summarize, identify conflicts.
 
-## Session Lifecycle
-
-Agents MUST follow structured session flows.
+### AUDIT (audit)
+Run all drift/health checks from drift-metrics.md. Report pass/fail per signal with recommendations.
 
 ### Session boundary rules
-
-- A new conversation is a new session, NOT a new project.
-- All governance rules in AGENTS.md persist across sessions and conversations.
-- Agents MUST NOT reset or ignore project rules across conversation boundaries.
-- Past chat messages from previous conversations are not available; agents MUST rely on on-disk documents (ledger, requirements, tests, architecture) as the source of truth for continuity.
-- LEDGER.md is the ONLY authoritative source for session continuity. Do NOT create `NEXT_SESSION.md`, `STATUS.md`, `SESSION_SUMMARY.md`, or similar files — all continuity lives in the ledger.
-
-### Conversation summarization recovery
-
-Whenever the conversation is optimized, summarized, or truncated by the platform (e.g. a "CONVERSATION SUMMARY" block is inserted), agents MUST **immediately re-read AGENTS.md in full** before performing ANY further actions. Summarization loses nuance from project rules; the only way to restore it is to re-read the authoritative source. **No exceptions.**
+- A new conversation is a new session, NOT a new project
+- All governance rules persist across sessions
+- Agents rely on on-disk documents, not past chat messages
 
 ---
 
-## 🔵 New Session Prompt
+## Proposal Format
 
-When starting fresh:
+Before any non-trivial work, produce a proposal using exactly this structure:
 
-```text
-Load AGENTS.md, README.md, docs/architecture.md, docs/workflow.md, docs/services.md, and LEDGER.md.
+```
+## Proposal
 
-Output:
-1. Current system understanding
-2. Current known state from ledger
-3. Open TODOs
-4. Suggested next task
-
-Then produce a Proposal.
+Objective:      <what this task accomplishes>
+Scope:          <included and excluded>
+Inputs:         <context, files, or state this depends on>
+Outputs:        <files, artifacts, or state changes>
+Files touched:  <explicit list>
+Checks:         <what verification will be performed>
+Risks:          <what could go wrong>
+Rollback:       <how to undo>
+Estimated cost: <low | medium | high>
+Decision request: <what the human must approve>
 ```
 
+Rules:
+- No non-trivial work without a proposal
+- No execution without human approval
+- Proposals must be bounded to one task
+- If scope changes during execution, stop and re-propose
+
 ---
 
-## 🟡 Resume Session Prompt
+## Ledger Entry Format
 
-```text
-Load AGENTS.md and LEDGER.md.
+```markdown
+## [YYYY-MM-DD] Entry — <short title>
 
-Summarize:
-- last completed task
-- current objective
-- open TODOs
-- risks
-
-Then propose next bounded task.
+Objective:
+What was done:
+Files changed:
+Checks run:
+Results:
+Token estimate: <low | medium | high>
+Open TODOs:
+Risks:
+Next step:
 ```
 
----
-
-## 🟢 Save Session Prompt
-
-```text
-Prepare LEDGER.md entry for this session.
-
-Include:
-- what changed
-- what was verified
-- what remains incomplete
-- next recommended step
-
-Do not invent results.
-```
-
----
-
-## 🔴 Git Commit Prompt
-
-```text
-Prepare commit summary:
-
-- what changed
-- why
-- files touched
-- checks performed
-
-Generate commit message.
-
-Then list commands to run:
-git add .
-git commit -m "<message>"
-git push
-```
-
----
-
-## 🔵 Git Update Prompt
-
-```text
-Update local repo safely:
-
-1. git status
-2. git pull
-3. summarize changes
-4. identify conflicts or risks
-```
-
----
-
-## Quick Commands
-
-Agents should use these short commands:
-
-| Command  | Meaning             |
-| -------- | ------------------- |
-| `start`  | new session         |
-| `resume` | resume from ledger  |
-| `save`   | write ledger entry  |
-| `commit` | prepare git commit  |
-| `sync`   | pull latest changes |
-
----
-
+Rules:
+- Entries are append-only
+- "What was done" = actual outcomes only
+- "Checks run" = actual checks or explicitly "none"
+- "Results" = pass/fail/unknown — never claim success without evidence
+- "Open TODOs" = complete canonical list. Use `- [ ]` / `- [x]`
+- "Next step" = recommended starting point for next session

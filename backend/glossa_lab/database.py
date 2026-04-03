@@ -156,6 +156,17 @@ class Database:
         await self._conn.commit()
         return await self.get_job(job_id)
 
+    async def clear_jobs(self) -> int:
+        """Delete all jobs and job results, returning the number of jobs removed."""
+        assert self._conn
+        cursor = await self._conn.execute("SELECT COUNT(*) AS cnt FROM jobs")
+        row = await cursor.fetchone()
+        cleared = int(row["cnt"]) if row else 0
+        await self._conn.execute("DELETE FROM job_results")
+        await self._conn.execute("DELETE FROM jobs")
+        await self._conn.commit()
+        return cleared
+
     async def get_job_counts(self) -> dict[str, int]:
         assert self._conn
         cursor = await self._conn.execute(
@@ -220,6 +231,56 @@ class Database:
         row = await cursor.fetchone()
         return self._row_to_dict(row) if row else None
 
+    async def update_text(
+        self,
+        text_id: str,
+        *,
+        name: str | None = None,
+        corpus_type: str | None = None,
+        content: list[str] | None = None,
+        metadata: dict[str, Any] | None = None,
+    ) -> dict[str, Any] | None:
+        """Update a text corpus and recompute derived fields when content changes."""
+        assert self._conn
+        existing = await self.get_text(text_id)
+        if existing is None:
+            return None
+
+        next_name = name if name is not None else existing["name"]
+        next_corpus_type = corpus_type if corpus_type is not None else existing["corpus_type"]
+        next_content = content if content is not None else existing["content"]
+        next_metadata = metadata if metadata is not None else existing["metadata"]
+        next_symbol_set = sorted(set(next_content))
+        next_alphabet_size = len(next_symbol_set)
+
+        await self._conn.execute(
+            """UPDATE texts
+               SET name = ?, corpus_type = ?, content = ?, alphabet_size = ?,
+                   symbol_set = ?, metadata = ?
+               WHERE id = ?""",
+            (
+                next_name,
+                next_corpus_type,
+                json.dumps(next_content),
+                next_alphabet_size,
+                json.dumps(next_symbol_set),
+                json.dumps(next_metadata),
+                text_id,
+            ),
+        )
+        await self._conn.commit()
+        return await self.get_text(text_id)
+
+    async def delete_text(self, text_id: str) -> dict[str, Any] | None:
+        """Delete a text corpus and return the deleted record."""
+        assert self._conn
+        existing = await self.get_text(text_id)
+        if existing is None:
+            return None
+        await self._conn.execute("DELETE FROM texts WHERE id = ?", (text_id,))
+        await self._conn.commit()
+        return existing
+
     # ── Job results ──────────────────────────────────────────────────
 
     async def store_result(
@@ -275,9 +336,10 @@ class Database:
     @staticmethod
     def _row_to_dict(row: aiosqlite.Row) -> dict[str, Any]:
         d = dict(row)
-        # Deserialise JSON params
-        if "params" in d and isinstance(d["params"], str):
-            d["params"] = json.loads(d["params"])
+        # Deserialise JSON columns
+        for field in ("params", "content", "symbol_set", "metadata", "data"):
+            if field in d and isinstance(d[field], str):
+                d[field] = json.loads(d[field])
         return d
 
 

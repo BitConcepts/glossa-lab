@@ -98,14 +98,15 @@ async def run_once() -> bool:
 def _ensure_pipelines_loaded() -> None:
     """Import pipeline modules to trigger registration."""
     if not _PIPELINES:
-        import glossa_lab.pipelines.block_entropy  # noqa: F401
+        import glossa_lab.pipelines.block_entropy  # noqa: F401,I001
         import glossa_lab.pipelines.char_freq  # noqa: F401
         import glossa_lab.pipelines.cooccurrence  # noqa: F401
         import glossa_lab.pipelines.decipher  # noqa: F401
+        import glossa_lab.pipelines.distributional_decipherment  # noqa: F401
         import glossa_lab.pipelines.hypothesis  # noqa: F401
         import glossa_lab.pipelines.kandles  # noqa: F401
         import glossa_lab.pipelines.logosyllabic  # noqa: F401
         import glossa_lab.pipelines.numerals  # noqa: F401
         import glossa_lab.pipelines.paradigm  # noqa: F401
-        import glossa_lab.pipelines.positional  # noqa: F401
         import glossa_lab.pipelines.sign_cluster  # noqa: F401
+        import glossa_lab.pipelines.word_structure_hypothesis  # noqa: F401

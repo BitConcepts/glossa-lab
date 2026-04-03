@@ -1,0 +1,478 @@
+{
+  "system": "Ugaritic Baal Cycle (KTU 1.1\u20131.6)",
+  "timestamp": "2026-04-03T13:56:28Z",
+  "\u00a71_corpus": {
+    "total_tokens": 945,
+    "n_inscriptions": 82,
+    "distinct_signs": 29,
+    "type_token_ratio": 0.0307,
+    "hapax_count": 1,
+    "hapax_fraction": 0.034,
+    "rare5_fraction": 0.276,
+    "avg_inscription_length": 11.52,
+    "max_inscription_length": 17
+  },
+  "\u00a72_entropy": [
+    {
+      "n": 1,
+      "raw_nats": 2.887876,
+      "normalized": 0.857625
+    },
+    {
+      "n": 2,
+      "raw_nats": 4.938381,
+      "normalized": 1.466572
+    },
+    {
+      "n": 3,
+      "raw_nats": 5.8997,
+      "normalized": 1.752059
+    },
+    {
+      "n": 4,
+      "raw_nats": 6.346682,
+      "normalized": 1.884801
+    }
+  ],
+  "\u00a73_freq": {
+    "zipf_exponent": 1.3967,
+    "top_10": [
+      {
+        "rank": 1,
+        "symbol": "U14",
+        "count": 133,
+        "freq": 0.140741
+      },
+      {
+        "rank": 2,
+        "symbol": "U02",
+        "count": 88,
+        "freq": 0.093122
+      },
+      {
+        "rank": 3,
+        "symbol": "U15",
+        "count": 78,
+        "freq": 0.08254
+      },
+      {
+        "rank": 4,
+        "symbol": "U27",
+        "count": 76,
+        "freq": 0.080423
+      },
+      {
+        "rank": 5,
+        "symbol": "U20",
+        "count": 70,
+        "freq": 0.074074
+      },
+      {
+        "rank": 6,
+        "symbol": "U11",
+        "count": 64,
+        "freq": 0.067725
+      },
+      {
+        "rank": 7,
+        "symbol": "U17",
+        "count": 61,
+        "freq": 0.06455
+      },
+      {
+        "rank": 8,
+        "symbol": "U13",
+        "count": 45,
+        "freq": 0.047619
+      },
+      {
+        "rank": 9,
+        "symbol": "U12",
+        "count": 44,
+        "freq": 0.046561
+      },
+      {
+        "rank": 10,
+        "symbol": "U01",
+        "count": 43,
+        "freq": 0.045503
+      }
+    ]
+  },
+  "\u00a74_positional": {
+    "initial_dominant_signs": 1,
+    "terminal_dominant_signs": 1,
+    "top_initial": [
+      "U07"
+    ],
+    "top_terminal": [
+      "U06"
+    ]
+  },
+  "\u00a75_clusters": {
+    "n_clusters": 1,
+    "clustered_signs": 20,
+    "clusters": [
+      {
+        "cluster_id": 0,
+        "signs": [
+          "U01",
+          "U02",
+          "U04",
+          "U05",
+          "U06",
+          "U07",
+          "U09",
+          "U11",
+          "U12",
+          "U13",
+          "U14",
+          "U15",
+          "U17",
+          "U19",
+          "U20",
+          "U21",
+          "U23",
+          "U24",
+          "U27",
+          "U28"
+        ],
+        "size": 20
+      }
+    ]
+  },
+  "\u00a76_cooccurrence": {
+    "nodes": 27,
+    "edges": 184,
+    "communities": 1
+  },
+  "\u00a77_paradigms": {
+    "paradigm_count": 2,
+    "top_paradigms": [
+      {
+        "stem_template": [
+          "_",
+          "U11",
+          "U24",
+          "U05",
+          "U02",
+          "U20",
+          "U14",
+          "U02",
+          "U01",
+          "U24",
+          "U13"
+        ],
+        "length": 11,
+        "slot_position": 0,
+        "variant_count": 2,
+        "occurrence_count": 2,
+        "variants": [
+          "U07",
+          "U12"
+        ],
+        "examples": [
+          [
+            "U12",
+            "U11",
+            "U24",
+            "U05",
+            "U02",
+            "U20",
+            "U14",
+            "U02",
+            "U01",
+            "U24",
+            "U13"
+          ],
+          [
+            "U07",
+            "U11",
+            "U24",
+            "U05",
+            "U02",
+            "U20",
+            "U14",
+            "U02",
+            "U01",
+            "U24",
+            "U13"
+          ]
+        ]
+      },
+      {
+        "stem_template": [
+          "U27",
+          "U20",
+          "U05",
+          "U02",
+          "_",
+          "U02",
+          "U09",
+          "U14",
+          "U28",
+          "U14",
+          "U15"
+        ],
+        "length": 11,
+        "slot_position": 4,
+        "variant_count": 2,
+        "occurrence_count": 2,
+        "variants": [
+          "U05",
+          "U18"
+        ],
+        "examples": [
+          [
+            "U27",
+            "U20",
+            "U05",
+            "U02",
+            "U05",
+            "U02",
+            "U09",
+            "U14",
+            "U28",
+            "U14",
+            "U15"
+          ],
+          [
+            "U27",
+            "U20",
+            "U05",
+            "U02",
+            "U18",
+            "U02",
+            "U09",
+            "U14",
+            "U28",
+            "U14",
+            "U15"
+          ]
+        ]
+      }
+    ]
+  },
+  "\u00a78_polyvalence": {
+    "candidates": 23,
+    "fraction": 0.852,
+    "top_5": [
+      {
+        "sign": "U06",
+        "score": 0.8947
+      },
+      {
+        "sign": "U13",
+        "score": 0.6667
+      },
+      {
+        "sign": "U07",
+        "score": 0.5714
+      },
+      {
+        "sign": "U27",
+        "score": 0.5658
+      },
+      {
+        "sign": "U10",
+        "score": 0.5556
+      }
+    ]
+  },
+  "\u00a79_sign_functions": {
+    "system_summary": {
+      "phonetic": 0.963,
+      "numeral": 0.037
+    },
+    "type_counts": {
+      "phonetic": 26,
+      "numeral": 1
+    },
+    "phonetic_inventory_estimate": 26,
+    "likely_phonetics": [
+      "U03",
+      "U04",
+      "U16",
+      "U08",
+      "U09",
+      "U19",
+      "U21",
+      "U23",
+      "U25",
+      "U26"
+    ],
+    "likely_determinatives": [],
+    "interpretation": "The corpus is dominated by phonetic signs (96%). This profile resembles an abjad or syllabary. Estimated phonetic sign inventory: ~26 signs."
+  },
+  "\u00a710_fingerprint": {
+    "vector": [
+      0.8576,
+      0.8393,
+      1.3967,
+      0.0307,
+      0.0345,
+      0.7532,
+      0.852,
+      11.52,
+      0.0332,
+      0.0039
+    ],
+    "dimensions": {
+      "H1_norm": 0.8576,
+      "H2H1_ratio": 0.8393,
+      "zipf_exponent": 1.3967,
+      "type_token_ratio": 0.0307,
+      "hapax_fraction": 0.0345,
+      "mean_positional_entropy": 0.7532,
+      "polyvalence_fraction": 0.852,
+      "mean_inscription_length": 11.52,
+      "boundary_bias_variance": 0.0332,
+      "paradigmatic_rate": 0.0039
+    },
+    "notes": [
+      "Low V/N and hapax \u2192 abjad or small alphabet profile",
+      "High polyvalence (85%) \u2192 many signs with dual function"
+    ],
+    "nearest_known": [
+      {
+        "system": "Ugaritic (abjad, 30 signs)",
+        "writing_type": "abjad",
+        "distance": 1.3424,
+        "similarity": 0.4269,
+        "notes": [
+          "Computed from Baal Cycle KTU 1.1-1.6 (82 lines / 945 tokens)"
+        ]
+      },
+      {
+        "system": "Old Hebrew (abjad, 22 signs)",
+        "writing_type": "abjad",
+        "distance": 1.4369,
+        "similarity": 0.4104,
+        "notes": [
+          "Computed from Genesis/Psalms/Proverbs consonantal corpus"
+        ]
+      },
+      {
+        "system": "Mycenaean Linear B (syllabary, ~87 signs)",
+        "writing_type": "syllabary",
+        "distance": 1.5188,
+        "similarity": 0.397,
+        "notes": [
+          "Computed from Pylos tablets Linear B fixture (628 tokens)"
+        ]
+      }
+    ]
+  },
+  "\u00a711_tier": {
+    "decipher_difficulty": "LOW \u2014 alphabet/abjad; robust statistical signal",
+    "type_token_ratio": 0.0307,
+    "hapax_fraction": 0.034
+  },
+  "\u00a712_kandles": {
+    "colour_distribution": {
+      "White": 200
+    },
+    "profile": "default"
+  },
+  "\u00a713_ventris": {
+    "n_syllabograms": 29,
+    "n_logograms": 0,
+    "n_determinatives": 0,
+    "vowel_affinity_groups": 0,
+    "consonant_affinity_groups": 0,
+    "sign_classification_sample": {
+      "U11": {
+        "type": "syllabogram",
+        "frequency": 64,
+        "relative_frequency": 0.06772,
+        "boundary_bias": 0.188,
+        "isolation_rate": 0.0,
+        "evidence": "predominantly medial position"
+      },
+      "U15": {
+        "type": "syllabogram",
+        "frequency": 78,
+        "relative_frequency": 0.08254,
+        "boundary_bias": 0.205,
+        "isolation_rate": 0.0,
+        "evidence": "predominantly medial position"
+      },
+      "U14": {
+        "type": "syllabogram",
+        "frequency": 133,
+        "relative_frequency": 0.14074,
+        "boundary_bias": 0.135,
+        "isolation_rate": 0.0,
+        "evidence": "predominantly medial position"
+      },
+      "U12": {
+        "type": "syllabogram",
+        "frequency": 44,
+        "relative_frequency": 0.04656,
+        "boundary_bias": 0.25,
+        "isolation_rate": 0.0,
+        "evidence": "predominantly medial position"
+      },
+      "U02": {
+        "type": "syllabogram",
+        "frequency": 88,
+        "relative_frequency": 0.09312,
+        "boundary_bias": 0.091,
+        "isolation_rate": 0.0,
+        "evidence": "predominantly medial position"
+      },
+      "U20": {
+        "type": "syllabogram",
+        "frequency": 70,
+        "relative_frequency": 0.07407,
+        "boundary_bias": 0.014,
+        "isolation_rate": 0.0,
+        "evidence": "predominantly medial position"
+      },
+      "U07": {
+        "type": "syllabogram",
+        "frequency": 21,
+        "relative_frequency": 0.02222,
+        "boundary_bias": 0.619,
+        "isolation_rate": 0.0,
+        "evidence": "mixed position \u2014 likely syllabic"
+      },
+      "U17": {
+        "type": "syllabogram",
+        "frequency": 61,
+        "relative_frequency": 0.06455,
+        "boundary_bias": 0.131,
+        "isolation_rate": 0.0,
+        "evidence": "predominantly medial position"
+      },
+      "U01": {
+        "type": "syllabogram",
+        "frequency": 43,
+        "relative_frequency": 0.0455,
+        "boundary_bias": 0.256,
+        "isolation_rate": 0.0,
+        "evidence": "predominantly medial position"
+      },
+      "U28": {
+        "type": "syllabogram",
+        "frequency": 39,
+        "relative_frequency": 0.04127,
+        "boundary_bias": 0.051,
+        "isolation_rate": 0.0,
+        "evidence": "predominantly medial position"
+      }
+    }
+  },
+  "\u00a714_word_structure": {
+    "ranking": [],
+    "best_match": {}
+  },
+  "\u00a715_conclusions": [
+    "Small corpus (N=945): statistical signals are weak. More data needed.",
+    "Block entropy H1_norm=0.858: firmly in linguistic range.",
+    "Structural fingerprint: most similar to 'Ugaritic (abjad, 30 signs)' (abjad, dist=1.342).",
+    "Estimated sign functions: phonetic 96%, logographic 0%, determinative 0%.",
+    "Estimated phonetic sign inventory: ~26 signs.",
+    "High polyvalence fraction (85%): significant proportion of signs serve dual positional roles. Consistent with logo-syllabic script."
+  ]
+}

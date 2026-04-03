@@ -188,23 +188,40 @@ def _tier1_abjad_phoenician_synthetic() -> dict[str, Any]:
 
 
 def _tier2_alphabet_linear_b() -> dict[str, Any]:
-    """Tier 2→4 bridge: Linear B (syllabary, ~87 signs).
+    """Tier 4: Linear B (syllabary, ~87 signs).
 
-    Linear B is technically a syllabary (Tier 4) but deciphered using
-    Greek (an alphabet), making it the key bridge case.
+    Linear B is technically a syllabary but deciphered using Greek,
+    making it the key bridge case between syllabary and alphabet.
+
+    Inscriptions = words (each hyphen-delimited syllable sequence is
+    one word-inscription).  This is the correct unit for positional
+    analysis: does a syllable prefer word-initial vs word-final position?
     """
     try:
-        from glossa_lab.data.linear_b_language import get_corpus_symbols
-        flat = get_corpus_symbols()
-        # Treat each word as an inscription (approximate)
-        inscriptions = [[s] for s in flat]
+        from pathlib import Path
+        fixture = (
+            Path(__file__).resolve().parent.parent.parent
+            / "tests" / "corpora" / "fixtures" / "linear_b.txt"
+        )
+        text = fixture.read_text(encoding="utf-8")
+        inscriptions: list[list[str]] = []
+        for line in text.splitlines():
+            for word in line.strip().split():
+                parts = word.replace("3", "").split("-")
+                signs = [
+                    p.strip().lower()
+                    for p in parts
+                    if p.strip() and p.strip().replace("*", "").replace("2", "").isalpha()
+                ]
+                if len(signs) >= 2:
+                    inscriptions.append(signs)
         return corpus_statistics(
             inscriptions,
             system_name="Mycenaean Linear B",
             writing_type="syllabary",
             sign_count=87,
         )
-    except ImportError:
+    except Exception:
         return {"system": "Linear B", "error": "corpus not available"}
 
 

@@ -411,19 +411,25 @@ def run_full_analysis(
     _print("§14 Word-structure typology...", end=" ", flush=True)
     try:
         from glossa_lab.pipelines.word_structure_hypothesis import rank_language_families
-        wsh = rank_language_families(flat)
+        # Use inscription-level analysis (each inscription = one word/entry)
+        wsh = rank_language_families(inscriptions)
+        ranked = wsh.get("ranked_hypotheses", [])
         report["§14_word_structure"] = {
-            "ranking": wsh.get("ranked_families", [])[:5],
-            "best_match": wsh.get("ranked_families", [{}])[0] if wsh.get("ranked_families") else {},
+            "winner":       wsh.get("winner", "?"),
+            "margin":       wsh.get("margin_vs_second", 0.0),
+            "ranking":      ranked[:5],
+            "best_match":   ranked[0] if ranked else {},
         }
-        if wsh.get("ranked_families"):
-            top = wsh["ranked_families"][0]
-            _print(f"best_match={top.get('family', '?')} (KL={top.get('kl_divergence', '?'):.4f})")
+        if ranked:
+            top = ranked[0]
+            _print(f"winner={top.get('profile', '?')} "
+                   f"compat={top.get('compatibility', '?'):.4f} "
+                   f"KL={top.get('word_length_kl', '?'):.4f}")
         else:
             _print("no result")
     except Exception as e:
         report["§14_word_structure"] = {"error": str(e)}
-        _print(f"SKIP ({e})")
+        _print(f"SKIP ({e})")  # noqa: BLE001
 
     # §15 Conclusions
     _print("\n§15 Conclusions:")
@@ -509,10 +515,12 @@ def _generate_conclusions(report: dict[str, Any], system_name: str) -> list[str]
     # Word-structure match
     wsh = report.get("§14_word_structure", {})
     best = wsh.get("best_match", {})
-    if best.get("family"):
+    winner = wsh.get("winner", best.get("profile"))
+    if winner and winner != "?":
+        kl = best.get("word_length_kl", best.get("kl_divergence", 0))
         conclusions.append(
-            f"Word-length typology best matches: {best['family']} "
-            f"(KL={best.get('kl_divergence', '?'):.4f})."
+            f"Word-length typology best matches: {winner} "
+            f"(KL={kl:.4f})."
         )
 
     if not conclusions:
@@ -574,6 +582,7 @@ def save_report(
 ) -> None:
     """Save report as JSON and human-readable text."""
     base = output_path.replace(".json", "")
+    os.makedirs(os.path.dirname(os.path.abspath(base)), exist_ok=True)
 
     # JSON
     json_path = base + ".json"

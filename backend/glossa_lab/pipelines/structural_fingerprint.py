@@ -416,6 +416,9 @@ def compare_scripts(
 ) -> list[dict[str, Any]]:
     """Rank all known scripts by structural similarity to the target.
 
+    Uses GPU-accelerated batch distance computation (gpu_fingerprint_compare)
+    when torch/cupy+CUDA is available, falling back to numpy then Python.
+
     Args:
         target_fp: Fingerprint dict from compute_fingerprint().
         db:        Script fingerprint database (default: known_fingerprints_db()).
@@ -429,26 +432,47 @@ def compare_scripts(
         db = known_fingerprints_db()
 
     target_vec = target_fp["vector"]
-    results: list[dict[str, Any]] = []
+    target_sys = target_fp.get("system", "")
 
-    for name, known in db.items():
-        if name == target_fp.get("system"):
-            continue  # don't compare script to itself
-        known_vec = known["vector"]
-        if metric == "cosine":
-            sim = cosine_similarity(target_vec, known_vec)
-            dist = 1.0 - sim
-        else:
-            dist = euclidean_distance(target_vec, known_vec)
-            sim = 1.0 / (1.0 + dist)
+    # Filter out self-comparison
+    names  = [n for n in db if n != target_sys]
+    knowns = [db[n] for n in names]
+    db_vecs = [k["vector"] for k in knowns]
 
-        results.append({
-            "system":       name,
-            "writing_type": known.get("writing_type", "?"),
-            "distance":     round(dist, 4),
-            "similarity":   round(sim, 4),
-            "notes":        known.get("notes", []),
-        })
+    if metric == "euclidean":
+        # GPU-accelerated batch Euclidean distance
+        from glossa_lab.accelerate import gpu_fingerprint_compare
+        normalised_target = _normalise(target_vec)
+        normalised_db     = [_normalise(v) for v in db_vecs]
+        distances = gpu_fingerprint_compare(
+            normalised_target, normalised_db, weights=_WEIGHTS,
+        )
+        results: list[dict[str, Any]] = []
+        for i, name in enumerate(names):
+            dist = round(distances[i], 4)
+            results.append({
+                "system":       name,
+                "writing_type": knowns[i].get("writing_type", "?"),
+                "distance":     dist,
+                "similarity":   round(1.0 / (1.0 + dist), 4),
+                "notes":        knowns[i].get("notes", []),
+            })
+    else:
+        # Cosine: use batch_cosine_similarity_matrix
+        from glossa_lab.accelerate import batch_cosine_similarity_matrix
+        all_vecs = [target_vec] + db_vecs
+        sim_mat  = batch_cosine_similarity_matrix(all_vecs)
+        results = []
+        for i, name in enumerate(names):
+            sim  = round(float(sim_mat[0][i + 1]), 4)
+            dist = round(1.0 - sim, 4)
+            results.append({
+                "system":       name,
+                "writing_type": knowns[i].get("writing_type", "?"),
+                "distance":     dist,
+                "similarity":   sim,
+                "notes":        knowns[i].get("notes", []),
+            })
 
     results.sort(key=lambda r: r["distance"])
     return results

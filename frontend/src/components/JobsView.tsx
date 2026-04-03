@@ -9,17 +9,25 @@ import {
 import { ResultsView } from "./ResultsView";
 
 const PIPELINES = [
+  // Statistical — no language model required
   "block_entropy",
   "char_freq",
-  "decipher",
-  "hypothesis",
-  "kandles",
-  "logosyllabic",
-  "cooccurrence",
-  "paradigm",
   "positional",
   "sign_cluster",
+  "cooccurrence",
+  "paradigm",
+  "sign_polyvalence",
+  "nwsp",
+  "sign_function_estimator",
+  "structural_fingerprint",
+  "word_structure_hypothesis",
+  "distributional_decipherment",
+  "logosyllabic",
   "numerals",
+  // Language model required
+  "kandles",
+  "decipher",
+  "hypothesis",
 ];
 
 export function JobsView() {

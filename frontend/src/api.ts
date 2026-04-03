@@ -109,3 +109,24 @@ export const cancelJob = (id: string): Promise<JobResponse> =>
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getJobResults = (jobId: string): Promise<Record<string, any>> =>
   request("GET", `/jobs/${jobId}/results`);
+
+// ── Settings ──────────────────────────────────────────────────────────
+
+export interface KeyStatus {
+  set: boolean;
+  source: "env" | "stored" | null;
+  masked: string;
+}
+
+export interface SettingsResponse {
+  keys: Record<string, KeyStatus>;
+  data_dir: string;
+}
+
+export const getSettings = (): Promise<SettingsResponse> =>
+  request("GET", "/settings").catch(() =>
+    request("GET", "/api/v1/settings")
+  ) as Promise<SettingsResponse>;
+
+export const updateSettings = (body: Record<string, string>): Promise<{ updated: string[]; message: string }> =>
+  request("PUT", "/api/v1/settings", body);

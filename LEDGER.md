@@ -862,3 +862,79 @@ Risks:
 - Luwian advantage is small; richer language models could reverse or confirm it
 
 Next step: Build richer Luwian language model using ETCSL/Hittite corpus texts to confirm or challenge the structural Luwian advantage
+
+---
+
+## [2026-04-03] Entry — Rate-limit pacing, admin dashboard backend, and frontend CRUD expansion
+
+Objective: (1) Add a shared AI model rate-limit pacing layer with pre-dispatch budgeting and 429 recovery. (2) Expand the backend with a live pipeline registry, catalog API, richer CRUD, and provider preferences. (3) Upgrade the frontend API client and Jobs view. (4) Open a Specsmith GitHub issue for the same pacing feature.
+
+What was done:
+- Created backend/glossa_lab/ai_pacing.py: AIModelPacer with rolling 60s RPM/TPM window, pre-dispatch token estimation, 429 retry-after parsing, exponential backoff+jitter, dynamic concurrency reduction, and EMA utilization tracking
+- Wired ai_pacing into ocr_mahadevan.py (the only live model dispatch path): up to 6 retries, acquire/release around each call, rate-limit error detection, env-driven per-model limits
+- Fixed engine.py: replaced static pipeline import list with AST-based auto-discovery of all modules containing register_pipeline(); now registers all 17+ pipelines correctly
+- Fixed api/status.py: now returns live pipeline_count, pipeline list, and catalog_counts instead of hardcoded empty list
+- Created backend/glossa_lab/catalog.py: list_pipeline_catalog(), list_experiment_catalog(), list_provider_catalog(), list_report_catalog(), get_catalog_summary() — curated metadata for all admin surfaces
+- Created backend/glossa_lab/api/catalog.py: GET /catalog, /catalog/pipelines, /catalog/experiments, /catalog/reports, /catalog/providers
+- Added database.py helpers: clear_jobs(), update_text(), delete_text()
+- Added api/jobs.py: DELETE /jobs (bulk clear-all)
+- Added api/texts.py: PUT /texts/{id}, DELETE /texts/{id}
+- Created backend/glossa_lab/api/reports.py: GET /reports, GET /reports/{name} with indus alias, DELETE /reports/{name}
+- Updated api/settings.py: added google_api_key, provider enable/model-selection preferences stored under _provider_prefs key
+- Created backend/glossa_lab/preset_store.py: JSON-backed add/duplicate/delete for pipeline and experiment presets
+- Created backend/glossa_lab/api/presets.py: CRUD endpoints for /presets/pipelines and /presets/experiments
+- Updated main.py: registered catalog, reports, and presets routers
+- Extended frontend/src/api.ts: typed CatalogPipeline/Provider/Report/Experiment, updateText, deleteText, clearJobs, catalog/report/preset methods
+- Updated frontend/src/components/JobsView.tsx: clear-all button, live pipeline catalog from backend, auto-prefill params on pipeline select
+- Created governance-tool GitHub issue #59: proactive per-model rate-limit pacing across all provider APIs (with concrete OpenAI TPM failure example)
+- Updated github issue #58: added Windows .cmd script preference for multi-step automation
+
+Files changed:
+- ocr_mahadevan.py (modified)
+- backend/glossa_lab/ai_pacing.py (created)
+- backend/glossa_lab/catalog.py (created)
+- backend/glossa_lab/preset_store.py (created)
+- backend/glossa_lab/engine.py (modified)
+- backend/glossa_lab/database.py (modified)
+- backend/glossa_lab/api/catalog.py (created)
+- backend/glossa_lab/api/jobs.py (modified)
+- backend/glossa_lab/api/texts.py (modified)
+- backend/glossa_lab/api/reports.py (created)
+- backend/glossa_lab/api/presets.py (created)
+- backend/glossa_lab/api/settings.py (modified)
+- backend/glossa_lab/main.py (modified)
+- backend/tests/test_ai_pacing.py (created)
+- backend/tests/test_status.py (modified)
+- backend/tests/test_catalog.py (created)
+- backend/tests/test_jobs.py (modified)
+- backend/tests/test_texts_crud.py (created)
+- frontend/src/api.ts (modified)
+- frontend/src/components/JobsView.tsx (modified)
+
+Checks run:
+- shell.cmd test backend\tests\test_status.py backend\tests\test_catalog.py backend\tests\test_jobs.py backend\tests\test_texts_crud.py backend\tests\test_ai_pacing.py — 19 passed
+- shell.cmd lint (all changed backend files) — all checks passed
+- npm run build (frontend) — built successfully, 0 TypeScript errors
+
+Results:
+- Backend now registers all 17 pipelines and reports the count accurately
+- /api/v1/catalog/* exposes live pipeline, experiment, report, and provider metadata
+- Clear-jobs, text update/delete, and report CRUD all working
+- Provider preferences (enable/model) persist to .keys.json
+- Preset add/duplicate/delete working for pipelines and experiments
+- Jobs view now has clear-all button and live pipeline selector with auto-filled params
+- OCR rate limiting active: pre-dispatch TPM/RPM budgeting, retry-after parsing from provider error messages, exponential backoff
+
+Open TODOs:
+- [ ] Acquire ICIT corpus from Dr. Fuls (external dependency)
+- [ ] Build richer Luwian language model
+- [ ] Build richer Hurrian language model
+- [ ] Run Playwright end-to-end tests with live backend
+- [ ] Upgrade CorporaView, SettingsView (provider toggles + model selector), PipelinesView, ExperimentsView to consume live catalog data
+- [ ] Add report generation/import/export UI
+
+Risks:
+- Frontend view upgrades (SettingsView provider toggles, CorporaView CRUD, report dashboard) are still using hardcoded data — catalog API is ready but views not yet wired
+- Preset management has no UI yet — API exists but no frontend view added
+
+Next step: Wire remaining frontend views (Settings provider toggles, Corpora CRUD, report dashboard) to live catalog/provider/report backend endpoints

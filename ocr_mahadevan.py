@@ -9,7 +9,7 @@ Available on Internet Archive (public domain):
   https://archive.org/details/TheIndusScript.TextConcordanceAndTablesIravathanMahadevan
 
 Priority targets:
-  1. Pages 39-162:  "Texts in the Indus Script" - actual sign sequences  
+  1. Pages 39-162:  "Texts in the Indus Script" - actual sign sequences
   2. Pages 724-745: Table II - Pairwise Combinations (BIGRAM FREQUENCIES)
   3. Pages 717-723: Table I  - Frequency and Positional Distribution
   4. Pages 746-775: Tables III-V - Site / Object type distributions
@@ -33,16 +33,36 @@ import os
 import re
 import sys
 import time
+from functools import lru_cache
 from pathlib import Path
 
 # ── Paths ─────────────────────────────────────────────────────────────
 _BASE    = Path(__file__).parent
+_BACKEND = _BASE / "backend"
+if str(_BACKEND) not in sys.path:
+    sys.path.insert(0, str(_BACKEND))
 _OUTDIR  = _BASE / "data-import" / "mahadevan_ocr"
 _OUTDIR.mkdir(parents=True, exist_ok=True)
 
 OUTPUT_BIGRAMS  = _BASE / "reports" / "mahadevan_bigrams.json"
 OUTPUT_TEXTS    = _BASE / "reports" / "mahadevan_texts.json"
 OUTPUT_FREQS    = _BASE / "reports" / "mahadevan_frequencies.json"
+
+MODEL_NAME = "pixtral-12b-2409"
+
+
+@lru_cache(maxsize=1)
+def get_model_pacer():
+    from glossa_lab.ai_pacing import AIModelPacer, ModelLimit
+
+    return AIModelPacer({
+        MODEL_NAME: ModelLimit(
+            rpm_limit=int(os.environ.get("MISTRAL_PIXTRAL_RPM_LIMIT", "60")),
+            tpm_limit=int(os.environ.get("MISTRAL_PIXTRAL_TPM_LIMIT", "120000")),
+            utilization_target=float(os.environ.get("AI_UTILIZATION_TARGET", "0.70")),
+            max_concurrency=int(os.environ.get("MISTRAL_PIXTRAL_MAX_CONCURRENCY", "2")),
+        )
+    })
 
 # ── Archive.org URLs ──────────────────────────────────────────────────
 _ITEM_ID   = "TheIndusScript.TextConcordanceAndTablesIravathanMahadevan"
@@ -64,7 +84,8 @@ PAGE_RANGES = {
 
 # ── Prompts tuned for each section ────────────────────────────────────
 
-PROMPT_TEXTS = """This is a page from Mahadevan's 'The Indus Script: Texts, Concordance and Tables' (1977).
+PROMPT_TEXTS = """This is a page from Mahadevan's
+'The Indus Script: Texts, Concordance and Tables' (1977).
 
 You are looking at the 'TEXTS IN THE INDUS SCRIPT' section.
 Each Indus inscription is shown as a sequence of sign drawings followed by a reference number.
@@ -104,7 +125,8 @@ Frequencies are positive integers.
 
 Return ONLY the pair data in the format above. Nothing else."""
 
-PROMPT_FREQ_TABLE = """This is a page from TABLE I 'FREQUENCY AND POSITIONAL DISTRIBUTION OF SIGNS' section of
+PROMPT_FREQ_TABLE = """This is a page from TABLE I
+'FREQUENCY AND POSITIONAL DISTRIBUTION OF SIGNS' section of
 Mahadevan (1977) 'The Indus Script'.
 
 This table shows for each sign (3-digit code 001-417):
@@ -184,34 +206,48 @@ def ocr_page(client, page_num: int, prompt: str, section: str) -> str | None:
 
     # Convert JP2 to base64
     b64 = base64.b64encode(img_data).decode("utf-8")
+    messages = [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "image_url",
+                    "image_url": {"url": f"data:image/jp2;base64,{b64}"},
+                },
+                {"type": "text", "text": prompt},
+            ],
+        }
+    ]
+    pacer = get_model_pacer()
+    reserved_tokens = pacer.estimate_request_tokens(
+        model=MODEL_NAME,
+        messages=messages,
+        max_output_tokens=4096,
+    )
 
     print(f"    OCR page {page_num}...", end=" ", flush=True)
-    try:
-        response = client.chat.complete(
-            model="pixtral-12b-2409",
-            messages=[
-                {
-                    "role": "user",
-                    "content": [
-                        {
-                            "type": "image_url",
-                            "image_url": {"url": f"data:image/jp2;base64,{b64}"},
-                        },
-                        {"type": "text", "text": prompt},
-                    ],
-                }
-            ],
-            max_tokens=4096,
-            temperature=0.0,
-        )
-        result = response.choices[0].message.content
-        cache_path.write_text(result, encoding="utf-8")
-        print(f"OK ({len(result)} chars)")
-        time.sleep(0.5)  # rate limit courtesy
-        return result
-    except Exception as e:
-        print(f"FAILED: {e}")
-        return None
+    for attempt in range(6):
+        pacer.acquire(MODEL_NAME, reserved_tokens)
+        try:
+            response = client.chat.complete(
+                model=MODEL_NAME,
+                messages=messages,
+                max_tokens=4096,
+                temperature=0.0,
+            )
+            result = response.choices[0].message.content
+            cache_path.write_text(result, encoding="utf-8")
+            print(f"OK ({len(result)} chars)")
+            return result
+        except Exception as e:
+            if not pacer.is_rate_limit_error(e) or attempt == 5:
+                print(f"FAILED: {e}")
+                return None
+            delay = pacer.on_rate_limit(MODEL_NAME, e, attempt)
+            print(f"RATE-LIMIT ({delay:.1f}s backoff)", end=" ", flush=True)
+            time.sleep(delay)
+        finally:
+            pacer.release(MODEL_NAME)
 
 
 # ── Result parsers ────────────────────────────────────────────────────
@@ -360,7 +396,7 @@ def convert_signs_m77_to_fuls(
 
 # ── Main runner ────────────────────────────────────────────────────────
 
-def run_ocr(target: str = "tables", max_pages: int | None = None, 
+def run_ocr(target: str = "tables", max_pages: int | None = None,
             api_key: str | None = None) -> dict:
     """Run OCR on the target section and save results."""
     if api_key:

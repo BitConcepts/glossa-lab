@@ -10,8 +10,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from glossa_lab import __version__
+from glossa_lab.api.catalog import router as catalog_router
 from glossa_lab.api.health import router as health_router
 from glossa_lab.api.jobs import router as jobs_router
+from glossa_lab.api.presets import router as presets_router
+from glossa_lab.api.reports import router as reports_router
 from glossa_lab.api.results import router as results_router
 from glossa_lab.api.settings import router as settings_router
 from glossa_lab.api.shutdown import router as shutdown_router
@@ -38,6 +41,13 @@ async def lifespan(app: FastAPI):
 
     # Initialize database
     await init_db(settings.data_dir)
+
+    # Seed built-in corpora (runs only if DB is empty or missing corpora)
+    from glossa_lab.corpus_seeder import seed_corpora  # noqa: I001
+    from glossa_lab.database import get_db
+    _db = get_db()
+    if _db:
+        await seed_corpora(_db)
 
     # Start pipeline engine in background
     engine_task = asyncio.create_task(run_engine_loop())
@@ -81,10 +91,13 @@ def create_app() -> FastAPI:
 
     # Register routers (must come before static-file mount so API takes priority)
     application.include_router(health_router, prefix="/api/v1")
+    application.include_router(catalog_router, prefix="/api/v1")
     application.include_router(status_router, prefix="/api/v1")
     application.include_router(jobs_router, prefix="/api/v1")
     application.include_router(results_router, prefix="/api/v1")
     application.include_router(texts_router, prefix="/api/v1")
+    application.include_router(presets_router, prefix="/api/v1")
+    application.include_router(reports_router, prefix="/api/v1")
     application.include_router(settings_router)
     application.include_router(shutdown_router, prefix="/api/v1")
 

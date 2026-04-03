@@ -33,8 +33,62 @@ export interface HealthResponse {
 
 export interface StatusResponse {
   status: string;
+  jobs: Record<string, number>;
   job_counts: Record<string, number>;
   pipelines: string[];
+  pipeline_count: number;
+  catalog_counts: Record<string, number>;
+}
+
+export interface CatalogPipeline {
+  id: string;
+  label: string;
+  group: string;
+  description: string;
+  inputs: string;
+  outputs: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  default_params: Record<string, any>;
+  needs_lm: boolean;
+  registered: boolean;
+  module: string;
+}
+
+export interface CatalogProvider {
+  id: string;
+  label: string;
+  api_key_setting: string;
+  supports_live_model_discovery: boolean;
+  recommended_models: string[];
+  ocr_preferred_models: string[];
+}
+
+export interface CatalogReport {
+  id: string;
+  name: string;
+  kind: string;
+  relative_path: string;
+  size_bytes: number;
+  updated_at: string;
+}
+
+export interface CatalogExperiment {
+  id: string;
+  name: string;
+  category: string;
+  description: string;
+  command: string;
+  results_file?: string;
+  requires_key?: string;
+  estimated_time: string;
+}
+
+export interface CatalogResponse {
+  counts: Record<string, number>;
+  pipelines: CatalogPipeline[];
+  experiments: CatalogExperiment[];
+  reports: CatalogReport[];
+  providers: CatalogProvider[];
 }
 
 export interface TextCreate {
@@ -90,6 +144,12 @@ export const getText = (id: string): Promise<TextResponse> =>
 export const createText = (body: TextCreate): Promise<TextResponse> =>
   request("POST", "/texts", body);
 
+export const updateText = (id: string, body: Partial<TextCreate>): Promise<TextResponse> =>
+  request("PUT", `/texts/${id}`, body);
+
+export const deleteText = (id: string): Promise<TextResponse> =>
+  request("DELETE", `/texts/${id}`);
+
 // ── Jobs ──────────────────────────────────────────────────────────────
 
 export const listJobs = (): Promise<JobResponse[]> =>
@@ -103,6 +163,9 @@ export const createJob = (body: JobCreate): Promise<JobResponse> =>
 
 export const cancelJob = (id: string): Promise<JobResponse> =>
   request("DELETE", `/jobs/${id}`);
+
+export const clearJobs = (): Promise<{ cleared: number }> =>
+  request("DELETE", "/jobs");
 
 // ── Results ───────────────────────────────────────────────────────────
 
@@ -123,10 +186,91 @@ export interface SettingsResponse {
   data_dir: string;
 }
 
-export const getSettings = (): Promise<SettingsResponse> =>
-  request("GET", "/settings").catch(() =>
-    request("GET", "/api/v1/settings")
-  ) as Promise<SettingsResponse>;
+// Keys that are stored client-side in localStorage (never sent as plaintext to server display)
+const LS_KEY = "glossa_lab_api_keys";
 
-export const updateSettings = (body: Record<string, string>): Promise<{ updated: string[]; message: string }> =>
-  request("PUT", "/api/v1/settings", body);
+export function getLocalKeys(): Record<string, string> {
+  try { return JSON.parse(localStorage.getItem(LS_KEY) ?? "{}"); }
+  catch { return {}; }
+}
+
+export function setLocalKey(name: string, value: string): void {
+  const existing = getLocalKeys();
+  if (value) existing[name] = value;
+  else delete existing[name];
+  localStorage.setItem(LS_KEY, JSON.stringify(existing));
+}
+
+export function clearLocalKey(name: string): void {
+  setLocalKey(name, "");
+}
+
+export function isLocalKeySet(name: string): boolean {
+  return Boolean(getLocalKeys()[name]);
+}
+
+// Also persists to backend for terminal scripts (ocr_mahadevan.py, etc.)
+export const getSettings = (): Promise<SettingsResponse> =>
+  request("GET", "/settings");
+
+export const updateSettings = (
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  body: Record<string, any>
+): Promise<{ updated: string[]; updated_providers: string[]; message: string }> =>
+  request("PUT", "/settings", body);
+
+// ── Catalog ───────────────────────────────────────────────────────────
+
+export const getCatalog = (): Promise<CatalogResponse> =>
+  request("GET", "/catalog");
+
+export const getPipelineCatalog = (): Promise<CatalogPipeline[]> =>
+  request("GET", "/catalog/pipelines");
+
+export const getProviderCatalog = (): Promise<CatalogProvider[]> =>
+  request("GET", "/catalog/providers");
+
+export const getReportCatalog = (): Promise<CatalogReport[]> =>
+  request("GET", "/catalog/reports");
+
+// ── Reports ───────────────────────────────────────────────────────────
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getReport = (name: string): Promise<Record<string, any>> =>
+  request("GET", `/reports/${name}`);
+
+export const listReports = (): Promise<CatalogReport[]> =>
+  request("GET", "/reports");
+
+export const deleteReport = (name: string): Promise<{ deleted: boolean; relative_path: string }> =>
+  request("DELETE", `/reports/${name}`);
+
+// ── Presets ───────────────────────────────────────────────────────────
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const listPipelinePresets = (): Promise<Record<string, any>[]> =>
+  request("GET", "/presets/pipelines");
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const createPipelinePreset = (body: Record<string, any>): Promise<Record<string, any>> =>
+  request("POST", "/presets/pipelines", body);
+
+export const duplicatePipelinePreset = (id: string) =>
+  request("POST", `/presets/pipelines/${id}/duplicate`);
+
+export const deletePipelinePreset = (id: string) =>
+  request("DELETE", `/presets/pipelines/${id}`);
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const listExperimentPresets = (): Promise<Record<string, any>[]> =>
+  request("GET", "/presets/experiments");
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const createExperimentPreset = (body: Record<string, any>): Promise<Record<string, any>> =>
+  request("POST", "/presets/experiments", body);
+
+export const duplicateExperimentPreset = (id: string) =>
+  request("POST", `/presets/experiments/${id}/duplicate`);
+
+export const deleteExperimentPreset = (id: string) =>
+  request("DELETE", `/presets/experiments/${id}`);

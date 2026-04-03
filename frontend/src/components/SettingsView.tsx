@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
-import { getSettings, updateSettings, KeyStatus } from "../api";
+import {
+  getSettings, updateSettings,
+  setLocalKey, clearLocalKey, isLocalKeySet,
+  KeyStatus,
+} from "../api";
 
-const KEY_LABELS: Record<string, { label: string; hint: string }> = {
+const KEY_LABELS: Record<string, { label: string; hint: string; priority?: boolean }> = {
   mistral_api_key: {
     label: "Mistral API Key",
-    hint: "Required for OCR of Mahadevan corpus (pixtral-12b). Get at console.mistral.ai",
+    hint: "Required for OCR of Mahadevan (1977) corpus via pixtral-12b. Get yours at console.mistral.ai",
+    priority: true,
   },
   openai_api_key: {
     label: "OpenAI API Key",
-    hint: "Optional. For future GPT-4 vision tasks.",
+    hint: "Optional. For future GPT-4 vision or embedding tasks.",
   },
   anthropic_api_key: {
     label: "Anthropic API Key",
@@ -17,58 +22,60 @@ const KEY_LABELS: Record<string, { label: string; hint: string }> = {
 };
 
 export function SettingsView() {
-  const [keys, setKeys] = useState<Record<string, KeyStatus>>({});
+  const [backendKeys, setBackendKeys] = useState<Record<string, KeyStatus>>({});
   const [dataDir, setDataDir] = useState("");
   const [drafts, setDrafts] = useState<Record<string, string>>({});
-  const [showKey, setShowKey] = useState<Record<string, boolean>>({});
   const [saving, setSaving] = useState(false);
-  const [savedMsg, setSavedMsg] = useState("");
+  const [savedMsg, setSavedMsg] = useState<Record<string, string>>({});
   const [error, setError] = useState("");
 
   const load = async () => {
     try {
       const s = await getSettings();
-      setKeys(s.keys);
+      setBackendKeys(s.keys);
       setDataDir(s.data_dir);
       setError("");
-    } catch (e) {
-      setError("Backend not reachable — start the backend service first.");
+    } catch {
+      // Backend might not be available; localStorage still works
     }
   };
 
   useEffect(() => { load(); }, []);
 
-  const handleSave = async () => {
-    const payload: Record<string, string> = {};
-    Object.entries(drafts).forEach(([k, v]) => {
-      if (v !== undefined) payload[k] = v;
-    });
-    if (Object.keys(payload).length === 0) return;
+  // A key is "set" if it's in localStorage OR in backend env/storage
+  const isSet = (key: string) => isLocalKeySet(key) || (backendKeys[key]?.set ?? false);
+  const source = (key: string): string => {
+    if (isLocalKeySet(key)) return "browser";
+    if (backendKeys[key]?.source === "env") return "env";
+    if (backendKeys[key]?.set) return "backend";
+    return "";
+  };
+
+  const handleSave = async (key: string) => {
+    const val = drafts[key]?.trim() ?? "";
+    if (!val) return;
+    // 1. Store in localStorage immediately (masked after save)
+    setLocalKey(key, val);
+    // 2. Also sync to backend so terminal scripts can use it
     try {
       setSaving(true);
-      await updateSettings(payload);
-      setDrafts({});
-      await load();
-      setSavedMsg("Saved successfully");
-      setTimeout(() => setSavedMsg(""), 3000);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Save failed");
-    } finally {
-      setSaving(false);
-    }
+      await updateSettings({ [key]: val });
+    } catch { /* backend optional */ }
+    finally { setSaving(false); }
+    setDrafts((d) => { const n = { ...d }; delete n[key]; return n; });
+    setSavedMsg((m) => ({ ...m, [key]: "Saved" }));
+    setTimeout(() => setSavedMsg((m) => { const n = { ...m }; delete n[key]; return n; }), 2500);
+    await load();
   };
 
   const handleClear = async (key: string) => {
     if (!window.confirm(`Clear ${KEY_LABELS[key]?.label ?? key}?`)) return;
-    try {
-      await updateSettings({ [key]: "" });
-      await load();
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Clear failed");
-    }
+    clearLocalKey(key);
+    try { await updateSettings({ [key]: "" }); } catch { /* optional */ }
+    setDrafts((d) => { const n = { ...d }; delete n[key]; return n; });
+    await load();
   };
 
-  const hasDrafts = Object.values(drafts).some((v) => v !== undefined);
 
   return (
     <div style={{ maxWidth: 640 }}>
@@ -79,95 +86,77 @@ export function SettingsView() {
           {error}
         </div>
       )}
-      {savedMsg && (
-        <div style={{ ...alertStyle, background: "#f0fdf4", borderColor: "#86efac", color: "#166534" }}>
-          ✓ {savedMsg}
-        </div>
-      )}
 
       {/* AI API Keys */}
       <section style={sectionStyle}>
         <h3 style={sectionTitleStyle}>AI API Keys</h3>
         <p style={hintTextStyle}>
-          Keys are stored securely in the backend data directory and never exposed
-          in the UI. Environment variables take precedence over stored keys.
+          Paste a key and click Save. The key is hidden immediately and stored in your browser.
+          It is also synced to the backend so terminal scripts (OCR, experiments) can use it.
         </p>
 
-        {Object.entries(KEY_LABELS).map(([key, { label, hint }]) => {
-          const status = keys[key];
-          const isSet = status?.set ?? false;
-          const source = status?.source;
-          const isDraft = drafts[key] !== undefined;
-          const show = showKey[key] ?? false;
+        {Object.entries(KEY_LABELS).map(([key, { label, hint, priority }]) => {
+          const keyIsSet = isSet(key);
+          const keySrc = source(key);
+          const envOnly = keySrc === "env";
+          const draft = drafts[key] ?? "";
+          const msg = savedMsg[key];
 
           return (
-            <div key={key} style={fieldGroupStyle}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-                <label style={labelStyle}>{label}</label>
+            <div key={key} style={{
+              ...fieldGroupStyle,
+              borderLeft: priority ? "3px solid #2563eb" : undefined,
+              paddingLeft: priority ? 12 : undefined,
+            }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
+                <label style={labelStyle}>
+                  {label}
+                  {priority && <span style={{ fontSize: 10, color: "#2563eb", marginLeft: 6, fontWeight: 700 }}>REQUIRED</span>}
+                </label>
                 <span style={{
-                  fontSize: 11,
-                  padding: "1px 7px",
-                  borderRadius: 10,
-                  background: isSet ? "#dcfce7" : "#f3f4f6",
-                  color: isSet ? "#166534" : "#6b7280",
-                  fontWeight: 500,
+                  fontSize: 11, padding: "1px 8px", borderRadius: 10, fontWeight: 600,
+                  background: keyIsSet ? "#dcfce7" : "#f3f4f6",
+                  color: keyIsSet ? "#166534" : "#6b7280",
                 }}>
-                  {isSet ? `Set (${source})` : "Not set"}
+                  {keyIsSet ? `Set (${keySrc})` : "Not set"}
                 </span>
               </div>
-              <p style={{ ...hintTextStyle, marginTop: 2, marginBottom: 6 }}>{hint}</p>
-              <div style={{ display: "flex", gap: 6 }}>
-                <input
-                  type={show ? "text" : "password"}
-                  placeholder={isSet ? "••••••••  (enter new value to replace)" : "Paste API key here…"}
-                  value={drafts[key] ?? ""}
-                  onChange={(e) => setDrafts((d) => ({ ...d, [key]: e.target.value }))}
-                  disabled={source === "env"}
-                  style={{
-                    ...inputStyle,
-                    flex: 1,
-                    fontFamily: "monospace",
-                    opacity: source === "env" ? 0.6 : 1,
-                  }}
-                />
-                <button
-                  onClick={() => setShowKey((s) => ({ ...s, [key]: !s[key] }))}
-                  style={iconBtnStyle}
-                  title={show ? "Hide" : "Show"}
-                >
-                  {show ? "🙈" : "👁"}
-                </button>
-                {isSet && source !== "env" && (
-                  <button onClick={() => handleClear(key)} style={{ ...iconBtnStyle, color: "#dc2626" }} title="Clear key">
-                    ✕
+              <p style={{ ...hintTextStyle, marginBottom: 8 }}>{hint}</p>
+
+              {envOnly ? (
+                <p style={{ ...hintTextStyle, color: "#d97706" }}>Set via environment variable — managed outside the app.</p>
+              ) : (
+                <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+                  <input
+                    type="password"
+                    placeholder={keyIsSet ? "●●●●●●●●  (paste new key to replace)" : "Paste API key here…"}
+                    value={draft}
+                    onChange={(e) => setDrafts((d) => ({ ...d, [key]: e.target.value }))}
+                    onKeyDown={(e) => { if (e.key === "Enter" && draft) handleSave(key); }}
+                    style={{ ...inputStyle, flex: 1, fontFamily: "monospace" }}
+                    autoComplete="off"
+                    spellCheck={false}
+                  />
+                  <button
+                    onClick={() => handleSave(key)}
+                    disabled={saving || !draft}
+                    style={{ ...btnStyle, padding: "6px 14px", opacity: draft ? 1 : 0.4 }}
+                  >
+                    {saving ? "…" : "Save"}
                   </button>
-                )}
-              </div>
-              {source === "env" && (
-                <p style={{ ...hintTextStyle, color: "#d97706", marginTop: 4 }}>
-                  Set via environment variable — cannot be overridden here.
-                </p>
+                  {keyIsSet && (
+                    <button onClick={() => handleClear(key)} style={{ ...iconBtnStyle, color: "#dc2626" }} title="Clear">
+                      ✕
+                    </button>
+                  )}
+                </div>
               )}
-              {isDraft && (
-                <p style={{ ...hintTextStyle, color: "#2563eb", marginTop: 4 }}>
-                  Unsaved change — click Save below.
-                </p>
+              {msg && (
+                <p style={{ ...hintTextStyle, color: "#16a34a", marginTop: 4, fontWeight: 600 }}>✓ {msg}</p>
               )}
             </div>
           );
         })}
-
-        <button
-          onClick={handleSave}
-          disabled={saving || !hasDrafts}
-          style={{
-            ...btnStyle,
-            marginTop: "0.75rem",
-            opacity: hasDrafts ? 1 : 0.4,
-          }}
-        >
-          {saving ? "Saving…" : "Save API Keys"}
-        </button>
       </section>
 
       {/* System info */}

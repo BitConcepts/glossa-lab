@@ -35,6 +35,15 @@ class TextResponse(BaseModel):
     created_at: str
 
 
+class TextUpdate(BaseModel):
+    """Request body for updating corpus metadata/content."""
+
+    name: str | None = None
+    corpus_type: str | None = None
+    content: list[str] | None = None
+    metadata: dict[str, Any] | None = None
+
+
 @router.post("/texts", status_code=201)
 async def create_text(body: TextCreate) -> TextResponse:
     """Upload a new text corpus."""
@@ -72,6 +81,38 @@ async def get_text(text_id: str) -> TextResponse:
         raise HTTPException(status_code=503, detail="Database not available")
 
     text = await db.get_text(text_id)
+    if text is None:
+        raise HTTPException(status_code=404, detail="Text not found")
+    return TextResponse(**text)
+
+
+@router.put("/texts/{text_id}")
+async def update_text(text_id: str, body: TextUpdate) -> TextResponse:
+    """Update a text corpus."""
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+
+    text = await db.update_text(
+        text_id,
+        name=body.name,
+        corpus_type=body.corpus_type,
+        content=body.content,
+        metadata=body.metadata,
+    )
+    if text is None:
+        raise HTTPException(status_code=404, detail="Text not found")
+    return TextResponse(**text)
+
+
+@router.delete("/texts/{text_id}")
+async def delete_text(text_id: str) -> TextResponse:
+    """Delete a text corpus."""
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+
+    text = await db.delete_text(text_id)
     if text is None:
         raise HTTPException(status_code=404, detail="Text not found")
     return TextResponse(**text)

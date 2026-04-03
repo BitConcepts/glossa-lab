@@ -187,88 +187,139 @@ def compute_affinity(
     inscriptions: list[list[str]],
     syllabograms: list[str],
     top_n: int = 30,
+    window: int = 2,
+    threshold: float | None = None,
 ) -> dict[str, Any]:
     """Ventris-style vowel/consonant affinity clustering.
 
-    Signs sharing a vowel class appear in similar left-contexts.
-    Signs sharing a consonant class appear before similar right-contexts.
+    Uses GPU-accelerated cosine similarity on context frequency vectors,
+    replacing the previous binary Jaccard metric which was too sparse.
+
+    Algorithm (Ventris 1953 / Chadwick 1967, computational formulation):
+      LEFT-context similarity  → VOWEL affinity  (row in CV grid)
+        Signs sharing the same vowel appear after similar predecessor signs.
+      RIGHT-context similarity → CONSONANT affinity (column in CV grid)
+        Signs sharing the same consonant appear before similar successor signs.
+
+    GPU path: N×N cosine matrix via torch/cupy tensor matmul.
+    Numpy path: vectorised N×N matmul.
+    Fallback: pairwise Python computation.
 
     Args:
         inscriptions: inscription-level sequences.
-        syllabograms: list of signs classified as syllabograms.
-        top_n: number of top-frequency syllabograms to analyse.
+        syllabograms:  list of signs classified as syllabograms.
+        top_n:         number of top-frequency syllabograms to analyse.
+        window:        context window size in signs (default 2).
+        threshold:     cosine similarity threshold for clustering
+                       (auto-scaled by corpus size if None).
 
     Returns:
-        dict with 'left_context_matrix', 'right_context_matrix',
-        'vowel_groups' (clusters sharing left context),
-        'consonant_groups' (clusters sharing right context).
+        dict with vowel_groups, consonant_groups, similarity matrices,
+        syllabograms_analysed, and acceleration tier used.
     """
+    from glossa_lab.accelerate import gpu_info, ventris_affinity_gpu  # noqa: I001
+
     syl_set = set(syllabograms)
 
-    # Build context co-occurrence: for each sign, which signs follow/precede it
-    left_contexts: dict[str, Counter] = defaultdict(Counter)
-    right_contexts: dict[str, Counter] = defaultdict(Counter)
-
-    for insc in inscriptions:
-        syls = [s for s in insc if s in syl_set]
-        for i, sign in enumerate(syls):
-            if i > 0:
-                left_contexts[sign][syls[i - 1]] += 1
-            if i < len(syls) - 1:
-                right_contexts[sign][syls[i + 1]] += 1
-
     # Select top-N syllabograms by frequency
-    all_freq: Counter = Counter()
-    for insc in inscriptions:
-        for s in insc:
-            if s in syl_set:
-                all_freq[s] += 1
-    top_syls = [s for s, _ in all_freq.most_common(top_n)]
-
-    if len(top_syls) < 2:
+    all_freq: Counter = Counter(
+        s for insc in inscriptions for s in insc if s in syl_set
+    )
+    if len(all_freq) < 2:
         return {
-            "vowel_groups": [],
-            "consonant_groups": [],
-            "note": "insufficient syllabogram data for affinity analysis",
+            "vowel_groups": [], "consonant_groups": [],
+            "note": "insufficient syllabogram data",
         }
 
-    # Compute pairwise left-context similarity (→ vowel affinity)
-    # Simple Jaccard similarity over shared left-context signs
-    def jaccard(c1: Counter, c2: Counter) -> float:
-        k1 = set(c1.keys())
-        k2 = set(c2.keys())
-        inter = len(k1 & k2)
-        union = len(k1 | k2)
-        return inter / union if union > 0 else 0.0
+    top_syls = [s for s, _ in all_freq.most_common(top_n)]
+    n = len(top_syls)
 
-    # Single-linkage clustering for vowel groups (left context)
-    vowel_groups = _single_linkage_cluster(
-        top_syls,
-        lambda a, b: jaccard(left_contexts[a], left_contexts[b]),
-        threshold=0.25,
-    )
+    # Adaptive threshold: smaller corpora need lower threshold
+    total_tokens = sum(len(i) for i in inscriptions)
+    if threshold is None:
+        if total_tokens < 500:
+            threshold = 0.05
+        elif total_tokens < 2000:
+            threshold = 0.10
+        else:
+            threshold = 0.15
 
-    # Single-linkage clustering for consonant groups (right context)
-    consonant_groups = _single_linkage_cluster(
-        top_syls,
-        lambda a, b: jaccard(right_contexts[a], right_contexts[b]),
-        threshold=0.25,
-    )
+    # GPU-backed cosine similarity matrices
+    # left_sim[i,j]  = cosine sim of left-context vectors  → vowel affinity
+    # right_sim[i,j] = cosine sim of right-context vectors → consonant affinity
+    left_sim, right_sim = ventris_affinity_gpu(inscriptions, top_syls, window=window)
+
+    accel = gpu_info()
+    tier = accel.get("tier_name", "cpu")
+
+    # Clustering using similarity matrix (index-based, avoids re-computing)
+    vowel_groups    = _cluster_by_sim_matrix(n, left_sim,  threshold, linkage="complete")
+    consonant_groups = _cluster_by_sim_matrix(n, right_sim, threshold, linkage="complete")
+
+    # Reconstruct sign-name groups
+    def _idx_to_signs(groups: list[list[int]]) -> list[list[str]]:
+        return [[top_syls[i] for i in g] for g in groups if len(g) > 1]
+
+    # Return similarity matrix as nested list for serialisation
+    def _to_list(mat: Any) -> list[list[float]]:
+        try:
+            return [[round(float(mat[i][j]), 4) for j in range(n)] for i in range(n)]
+        except Exception:
+            return []
+
+    # Also extract top-N most similar pairs (useful without needing perfect clustering)
+    def _top_pairs(sim_mat: Any, signs: list[str], top_n: int = 20) -> list[dict]:
+        pairs: list[dict] = []
+        for i in range(len(signs)):
+            for j in range(i + 1, len(signs)):
+                s = float(sim_mat[i][j])
+                if s > 0.01:
+                    pairs.append({"a": signs[i], "b": signs[j], "sim": round(s, 4)})
+        pairs.sort(key=lambda p: p["sim"], reverse=True)
+        return pairs[:top_n]
 
     return {
-        "vowel_groups": [g for g in vowel_groups if len(g) > 1],
-        "consonant_groups": [g for g in consonant_groups if len(g) > 1],
+        "vowel_groups":          _idx_to_signs(vowel_groups),
+        "consonant_groups":      _idx_to_signs(consonant_groups),
+        "top_vowel_pairs":       _top_pairs(left_sim,  top_syls, top_n=20),
+        "top_consonant_pairs":   _top_pairs(right_sim, top_syls, top_n=20),
         "syllabograms_analysed": top_syls,
+        "n_syllabograms":        n,
+        "threshold_used":        threshold,
+        "acceleration":          tier,
+        "vowel_sim_matrix":      _to_list(left_sim),
+        "consonant_sim_matrix":  _to_list(right_sim),
     }
 
 
-def _single_linkage_cluster(
-    items: list[str],
-    similarity_fn,
+def _cluster_by_sim_matrix(
+    n: int,
+    sim_matrix: Any,
     threshold: float,
-) -> list[list[str]]:
-    """Simple single-linkage agglomerative clustering."""
-    clusters: list[list[str]] = [[item] for item in items]
+    max_cluster_size: int = 12,
+    linkage: str = "complete",
+) -> list[list[int]]:
+    """Agglomerative clustering on a pre-computed N×N cosine similarity matrix.
+
+    Uses COMPLETE-LINKAGE by default (avoids the single-linkage chaining
+    problem that merges all signs into one giant cluster).
+
+    Complete linkage: two clusters merge only if the MINIMUM pairwise
+    similarity between them exceeds the threshold (strictest requirement).
+    This produces compact, well-separated clusters suitable for the
+    Ventris grid (row/column groupings of 3-12 signs).
+
+    Args:
+        n:                Number of signs.
+        sim_matrix:       N×N cosine similarity matrix.
+        threshold:        Minimum similarity to merge clusters.
+        max_cluster_size: Don't merge if result would exceed this size.
+        linkage:          'complete' (default), 'single', or 'average'.
+
+    Returns:
+        List of clusters, each a list of sign indices.
+    """
+    clusters: list[list[int]] = [[i] for i in range(n)]
 
     changed = True
     while changed:
@@ -276,17 +327,27 @@ def _single_linkage_cluster(
         best_sim = threshold
         best_i, best_j = -1, -1
 
-        for i in range(len(clusters)):
-            for j in range(i + 1, len(clusters)):
-                # Single linkage: max pairwise similarity between clusters
-                sim = max(
-                    similarity_fn(a, b)
-                    for a in clusters[i]
-                    for b in clusters[j]
-                )
+        for ci in range(len(clusters)):
+            for cj in range(ci + 1, len(clusters)):
+                if len(clusters[ci]) + len(clusters[cj]) > max_cluster_size:
+                    continue  # skip merges that would create over-large clusters
+
+                pairs = [
+                    float(sim_matrix[a][b])
+                    for a in clusters[ci]
+                    for b in clusters[cj]
+                ]
+
+                if linkage == "complete":
+                    sim = min(pairs)       # all pairs must exceed threshold
+                elif linkage == "average":
+                    sim = sum(pairs) / len(pairs)
+                else:                      # single
+                    sim = max(pairs)
+
                 if sim > best_sim:
                     best_sim = sim
-                    best_i, best_j = i, j
+                    best_i, best_j = ci, cj
 
         if best_i >= 0:
             merged = clusters[best_i] + clusters[best_j]

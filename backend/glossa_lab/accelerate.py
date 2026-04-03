@@ -434,6 +434,216 @@ def fast_kandles_validate(
         return 0.0
 
 
+# ── GPU batch context-vector cosine similarity (Ventris / fingerprint) ───
+
+def build_context_vectors(
+    inscriptions: list[list[str]],
+    signs: list[str],
+    window: int = 2,
+) -> tuple["Any", "Any"]:
+    """Build left- and right-context frequency matrices for a set of signs.
+
+    Returns two numpy arrays of shape (len(signs), len(signs)):
+      left_matrix[i, j]  = frequency sign j appears within `window` positions
+                           BEFORE sign i across all inscriptions.
+      right_matrix[i, j] = frequency sign j appears within `window` positions
+                           AFTER sign i.
+
+    Falls back to pure-Python dicts if numpy is not available.
+    """
+    sign_to_idx = {s: i for i, s in enumerate(signs)}
+    n = len(signs)
+
+    if _NUMPY_OK:
+        import numpy as np
+        left  = np.zeros((n, n), dtype=np.float32)
+        right = np.zeros((n, n), dtype=np.float32)
+        for insc in inscriptions:
+            for pos, sign in enumerate(insc):
+                if sign not in sign_to_idx:
+                    continue
+                si = sign_to_idx[sign]
+                for d in range(1, window + 1):
+                    if pos - d >= 0 and insc[pos - d] in sign_to_idx:
+                        left[si, sign_to_idx[insc[pos - d]]] += 1
+                    if pos + d < len(insc) and insc[pos + d] in sign_to_idx:
+                        right[si, sign_to_idx[insc[pos + d]]] += 1
+        return left, right
+
+    # Pure-Python fallback
+    from collections import defaultdict
+    left_d:  dict[int, dict[int, float]] = defaultdict(lambda: defaultdict(float))
+    right_d: dict[int, dict[int, float]] = defaultdict(lambda: defaultdict(float))
+    for insc in inscriptions:
+        for pos, sign in enumerate(insc):
+            if sign not in sign_to_idx:
+                continue
+            si = sign_to_idx[sign]
+            for d in range(1, window + 1):
+                if pos - d >= 0 and insc[pos - d] in sign_to_idx:
+                    left_d[si][sign_to_idx[insc[pos - d]]] += 1
+                if pos + d < len(insc) and insc[pos + d] in sign_to_idx:
+                    right_d[si][sign_to_idx[insc[pos + d]]] += 1
+    return left_d, right_d  # type: ignore[return-value]
+
+
+def batch_cosine_similarity_matrix(
+    vectors: "Any",
+) -> "Any":
+    """Compute an N×N cosine similarity matrix from an N×M feature matrix.
+
+    Uses GPU (torch/cupy) when available, numpy otherwise.
+    This is the core operation for the Ventris affinity grid:
+      sim[i, j] = cosine_similarity(vectors[i], vectors[j])
+
+    Args:
+        vectors: N×M array (numpy, torch, or cupy).
+
+    Returns:
+        N×N cosine similarity matrix as numpy array.
+    """
+    if _TORCH_OK and _CUDA_AVAILABLE:
+        import torch
+        if not isinstance(vectors, torch.Tensor):
+            import numpy as np
+            V = torch.tensor(vectors, dtype=torch.float32, device="cuda")
+        else:
+            V = vectors.to("cuda").float()
+        norms = V.norm(dim=1, keepdim=True).clamp(min=1e-8)
+        V_norm = V / norms
+        sim = (V_norm @ V_norm.T).cpu().numpy()
+        return sim
+
+    if _CUPY_OK and _CUDA_AVAILABLE:
+        import cupy as cp
+        V = cp.array(vectors, dtype=cp.float32)
+        norms = cp.linalg.norm(V, axis=1, keepdims=True).clip(min=1e-8)
+        V_norm = V / norms
+        sim = cp.asnumpy(V_norm @ V_norm.T)
+        return sim
+
+    if _NUMPY_OK:
+        import numpy as np
+        V = np.asarray(vectors, dtype=np.float32)
+        norms = np.linalg.norm(V, axis=1, keepdims=True).clip(min=1e-8)
+        V_norm = V / norms
+        return (V_norm @ V_norm.T).astype(np.float64)
+
+    # Pure-Python O(N^3) fallback
+    import math
+    n = len(vectors)
+    sim = [[0.0] * n for _ in range(n)]
+    for i in range(n):
+        for j in range(i, n):
+            vi = list(vectors[i]) if not isinstance(vectors[i], list) else vectors[i]
+            vj = list(vectors[j]) if not isinstance(vectors[j], list) else vectors[j]
+            dot = sum(a * b for a, b in zip(vi, vj))
+            mag_i = math.sqrt(sum(a * a for a in vi))
+            mag_j = math.sqrt(sum(b * b for b in vj))
+            s = dot / (mag_i * mag_j) if mag_i > 0 and mag_j > 0 else 0.0
+            sim[i][j] = sim[j][i] = s
+    return sim
+
+
+def ventris_affinity_gpu(
+    inscriptions: list[list[str]],
+    signs: list[str],
+    window: int = 2,
+) -> tuple["Any", "Any"]:
+    """Compute Ventris vowel+consonant affinity matrices using GPU.
+
+    Returns:
+        (vowel_sim, consonant_sim): two N×N cosine similarity matrices.
+        vowel_sim[i,j]     = similarity of RIGHT context → consonant affinity
+        consonant_sim[i,j] = similarity of LEFT context  → vowel affinity
+
+    NOTE on semantics (Ventris 1953):
+      - Signs sharing the same VOWEL appear after similar consonants
+        → similar LEFT context → left_matrix cosine → 'vowel affinity' (rows)
+      - Signs sharing the same CONSONANT appear before similar vowels
+        → similar RIGHT context → right_matrix cosine → 'consonant affinity' (cols)
+    """
+    left_mat, right_mat = build_context_vectors(inscriptions, signs, window)
+
+    if _NUMPY_OK:
+        import numpy as np
+        if not hasattr(left_mat, 'shape'):
+            # Convert dicts to array
+            n = len(signs)
+            left_arr  = np.zeros((n, n), dtype=np.float32)
+            right_arr = np.zeros((n, n), dtype=np.float32)
+            for i, row in left_mat.items():  # type: ignore[union-attr]
+                for j, v in row.items():
+                    left_arr[i, j] = v
+            for i, row in right_mat.items():  # type: ignore[union-attr]
+                for j, v in row.items():
+                    right_arr[i, j] = v
+            left_mat  = left_arr
+            right_mat = right_arr
+
+    vowel_sim     = batch_cosine_similarity_matrix(left_mat)
+    consonant_sim = batch_cosine_similarity_matrix(right_mat)
+    return vowel_sim, consonant_sim
+
+
+def gpu_fingerprint_compare(
+    target_vector: list[float],
+    database_vectors: list[list[float]],
+    weights: list[float] | None = None,
+) -> list[float]:
+    """Compute weighted Euclidean distances from target to all database vectors.
+
+    Uses GPU batch subtraction + reduction when available.
+
+    Args:
+        target_vector:    Single fingerprint vector (length D).
+        database_vectors: K fingerprint vectors (K × D).
+        weights:          Optional D-length weight vector.
+
+    Returns:
+        K distances in same order as database_vectors.
+    """
+    if not database_vectors:
+        return []
+
+    D = len(target_vector)
+    W = weights or [1.0] * D
+
+    if _TORCH_OK and _CUDA_AVAILABLE:
+        import torch
+        t = torch.tensor(target_vector, dtype=torch.float32, device="cuda")
+        db = torch.tensor(database_vectors, dtype=torch.float32, device="cuda")
+        w  = torch.tensor(W, dtype=torch.float32, device="cuda")
+        diff = db - t.unsqueeze(0)           # K × D
+        dist = torch.sqrt((diff ** 2 * w).sum(dim=1))  # K
+        return dist.cpu().tolist()
+
+    if _CUPY_OK and _CUDA_AVAILABLE:
+        import cupy as cp
+        t  = cp.array(target_vector, dtype=cp.float32)
+        db = cp.array(database_vectors, dtype=cp.float32)
+        w  = cp.array(W, dtype=cp.float32)
+        diff = db - t[None, :]
+        dist = cp.sqrt((diff ** 2 * w).sum(axis=1))
+        return cp.asnumpy(dist).tolist()
+
+    if _NUMPY_OK:
+        import numpy as np
+        t  = np.array(target_vector, dtype=np.float64)
+        db = np.array(database_vectors, dtype=np.float64)
+        w  = np.array(W, dtype=np.float64)
+        diff = db - t[None, :]
+        dist = np.sqrt((diff ** 2 * w).sum(axis=1))
+        return dist.tolist()
+
+    # Pure-Python fallback
+    import math
+    return [
+        math.sqrt(sum(W[d] * (db_v[d] - target_vector[d]) ** 2 for d in range(D)))
+        for db_v in database_vectors
+    ]
+
+
 # ── Progress reporter for long experiments ────────────────────────────
 
 class ProgressCounter:

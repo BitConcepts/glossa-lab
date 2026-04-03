@@ -14,16 +14,23 @@ Kandles groups (derived from extended Soundex):
   5: Y, W, H, Kh                         → Green  (Tree)
   6: P, B, F, V                          → Purple (Flower)
   7: S, Z, Sh                            → Brown  (Soil)
+
+Language-specific bias profiles are defined in kandles_profiles.py.
+Pass a KandlesProfile (or profile name string) to any function to use
+a language-appropriate phoneme→colour mapping instead of the default.
 """
 
 from __future__ import annotations
 
 import math
 from collections import Counter
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from glossa_lab.database import get_db
 from glossa_lab.engine import register_pipeline
+
+if TYPE_CHECKING:
+    from glossa_lab.pipelines.kandles_profiles import KandlesProfile
 
 # ── Kandles mapping ───────────────────────────────────────────────
 
@@ -59,50 +66,100 @@ for gnum, ginfo in KANDLES_GROUPS.items():
         _DIGRAPH_TO_GROUP[dg] = gnum
 
 
-def classify_word(word: str) -> dict[str, Any]:
-    """Classify a word into its Kandles group based on initial sound."""
+def _resolve_profile(
+    profile: "KandlesProfile | str | None",
+) -> "KandlesProfile | None":
+    """Resolve profile argument to a KandlesProfile object (or None for default)."""
+    if profile is None:
+        return None
+    if isinstance(profile, str):
+        if profile in ("default", "greek", "mycenaean"):
+            return None  # use built-in globals for the default case
+        from glossa_lab.pipelines.kandles_profiles import get_profile
+        return get_profile(profile)
+    return profile  # already a KandlesProfile
+
+
+def classify_word(
+    word: str,
+    profile: "KandlesProfile | str | None" = None,
+) -> dict[str, Any]:
+    """Classify a word into its Kandles group based on initial sound.
+
+    Args:
+        word:    The word/syllable to classify.
+        profile: Optional language-specific bias profile. When None the
+                 default Greek/English Kandles mapping is used.
+    """
     if not word:
         return {"group": -1, "color": "None", "hex": "#000000"}
 
+    p = _resolve_profile(profile)
+    letter_to_group = p.letter_to_group if p else _LETTER_TO_GROUP
+    digraph_to_group = p.digraph_to_group if p else _DIGRAPH_TO_GROUP
+    groups_map = p.groups if p else KANDLES_GROUPS
+
     upper = word.upper()
 
-    # Check digraphs first (CH, TH, SH, KH)
+    # Check digraphs first (CH, TH, SH, KH, KW, NG, …)
     if len(upper) >= 2:
         digraph = upper[:2]
-        if digraph in _DIGRAPH_TO_GROUP:
-            gnum = _DIGRAPH_TO_GROUP[digraph]
-            g = KANDLES_GROUPS[gnum]
+        if digraph in digraph_to_group:
+            gnum = digraph_to_group[digraph]
+            g = groups_map.get(gnum, {})
             return {
-                "group": gnum, "color": g["color"], "hex": g["hex"],
-                "nature": g["nature"], "word": word,
+                "group": gnum,
+                "color": g.get("color", f"Group{gnum}"),
+                "hex":   KANDLES_GROUPS.get(gnum, {}).get("hex", "#888888"),
+                "nature": g.get("nature", ""),
+                "word": word,
             }
 
     # Single letter lookup
     first = upper[0]
-    gnum = _LETTER_TO_GROUP.get(first, -1)
+    gnum = letter_to_group.get(first, -1)
     if gnum >= 0:
-        g = KANDLES_GROUPS[gnum]
+        g = groups_map.get(gnum, {})
         return {
-            "group": gnum, "color": g["color"], "hex": g["hex"],
-            "nature": g["nature"], "word": word,
+            "group": gnum,
+            "color": g.get("color", f"Group{gnum}"),
+            "hex":   KANDLES_GROUPS.get(gnum, {}).get("hex", "#888888"),
+            "nature": g.get("nature", ""),
+            "word": word,
         }
 
     return {"group": -1, "color": "Unknown", "hex": "#666666",
             "nature": "Unknown", "word": word}
 
 
-def color_code_text(words: list[str]) -> list[dict[str, Any]]:
-    """Color-code a list of words using the Kandles system."""
-    return [classify_word(w) for w in words]
+def color_code_text(
+    words: list[str],
+    profile: "KandlesProfile | str | None" = None,
+) -> list[dict[str, Any]]:
+    """Color-code a list of words using the Kandles system.
+
+    Args:
+        words:   List of word/syllable strings.
+        profile: Optional language-specific bias profile.
+    """
+    p = _resolve_profile(profile)  # resolve once, reuse
+    return [classify_word(w, profile=p) for w in words]
 
 
 def generate_grid(
-    words: list[str], size: int | None = None,
+    words: list[str],
+    size: int | None = None,
+    profile: "KandlesProfile | str | None" = None,
 ) -> dict[str, Any]:
     """Generate a Kandles color-coded grid.
 
     Grid has equal rows and columns. Words are laid out left-to-right,
     top-to-bottom. Empty cells are padded.
+
+    Args:
+        words:   Words/syllables to lay out.
+        size:    Force grid size (auto-computed if None).
+        profile: Optional language-specific bias profile.
     """
     n = len(words)
     if size is None:
@@ -110,7 +167,9 @@ def generate_grid(
     if size < 1:
         size = 1
 
-    coded = color_code_text(words)
+    p = _resolve_profile(profile)
+    coded = color_code_text(words, profile=p)
+    groups_map = p.groups if p else KANDLES_GROUPS
 
     rows = []
     for r in range(size):
@@ -133,7 +192,7 @@ def generate_grid(
     dist = Counter(c["group"] for c in coded if c["group"] >= 0)
     color_dist = {}
     for gnum, count in sorted(dist.items()):
-        g = KANDLES_GROUPS.get(gnum, {})
+        g = groups_map.get(gnum, {})
         color_dist[g.get("color", f"Group {gnum}")] = count
 
     return {
@@ -141,20 +200,24 @@ def generate_grid(
         "total_words": n,
         "grid": rows,
         "color_distribution": color_dist,
+        "profile": (p.name if p else "default"),
     }
 
 
 def compare_grids(
-    grid_a: dict[str, Any], grid_b: dict[str, Any],
+    grid_a: dict[str, Any],
+    grid_b: dict[str, Any],
 ) -> dict[str, Any]:
     """Compare two Kandles grids by color distribution similarity.
 
     Uses cosine similarity on the 8-dimensional color distribution vectors.
+    Both grids must have been generated with the SAME profile for the
+    comparison to be linguistically meaningful.
     """
     groups = list(range(8))
 
     def to_vec(grid_result: dict) -> list[float]:
-        dist = {}
+        dist: dict[int, int] = {}
         for row in grid_result["grid"]:
             for cell in row:
                 g = cell.get("group", -1)
@@ -171,14 +234,14 @@ def compare_grids(
     mag_b = math.sqrt(sum(b * b for b in vb))
     similarity = dot / (mag_a * mag_b) if mag_a > 0 and mag_b > 0 else 0.0
 
+    # Use label from grid_a's profile (both should match)
+    profile_name = grid_a.get("profile", "default")
+
     return {
         "similarity": round(similarity, 4),
-        "distribution_a": {
-            KANDLES_GROUPS[g]["color"]: round(va[g], 4) for g in groups
-        },
-        "distribution_b": {
-            KANDLES_GROUPS[g]["color"]: round(vb[g], 4) for g in groups
-        },
+        "profile": profile_name,
+        "distribution_a": {f"G{g}": round(va[g], 4) for g in groups},
+        "distribution_b": {f"G{g}": round(vb[g], 4) for g in groups},
     }
 
 

@@ -113,6 +113,20 @@ _HYPOTHESES = [
     Hypothesis(id="semitic", name="Proto-Semitic",     target_language="semitic"),
 ]
 
+# Hypotheses with language-appropriate Kandles bias profiles.
+# Each hypothesis uses the phonological categories of its own language family
+# when computing the Kandles colour-fingerprint similarity score.
+_HYPOTHESES_BIASED = [
+    Hypothesis(id="greek",   name="Mycenaean Greek",  target_language="greek",
+               kandles_profile="default"),
+    Hypothesis(id="hurrian", name="Hurrian",           target_language="hurrian",
+               kandles_profile="hurrian"),
+    Hypothesis(id="luwian",  name="Luwian/Anatolian",  target_language="luwian",
+               kandles_profile="luwian"),
+    Hypothesis(id="semitic", name="Proto-Semitic",     target_language="semitic",
+               kandles_profile="semitic"),
+]
+
 def _known_vocab():
     from tests.corpora.linear_a_real_corpus import KNOWN_LINEAR_A_WORDS
     return KNOWN_LINEAR_A_WORDS
@@ -124,16 +138,21 @@ def run_one_trial(
     models: dict[str, LanguageModel] | None = None,
     max_iter: int = 500,
     restarts: int = 2,
+    use_kandles_bias: bool = False,
 ) -> dict[str, float]:
     """Score all four hypotheses on the given corpus+mapping.
 
     Args:
-        corpus:       Raw sign sequence (GORILA codes or mixed).
-        mapping:      Sign → phoneme assignment.
-        scoring_mode: 'full', 'no_vocab', or 'kandles_only'.
-        models:       Pre-built language models (built if None).
-        max_iter:     Hill-climbing iterations per trial.
-        restarts:     Number of random restarts.
+        corpus:            Raw sign sequence (GORILA codes or mixed).
+        mapping:           Sign → phoneme assignment.
+        scoring_mode:      'full', 'no_vocab', or 'kandles_only'.
+        models:            Pre-built language models (built if None).
+        max_iter:          Hill-climbing iterations per trial.
+        restarts:          Number of random restarts.
+        use_kandles_bias:  When True each hypothesis uses its own language’s
+                           Kandles phonological profile (luwian→luwian profile,
+                           semitic→semitic profile, etc.) instead of the default
+                           Greek/English mapping for all.
 
     Returns:
         {hypothesis_id: total_score} for all four hypotheses.
@@ -145,14 +164,15 @@ def run_one_trial(
     phonemes = [mapping.get(s, s) for s in corpus]
     phonemes = [p for p in phonemes if not p.startswith("?")]
 
+    hyps = _HYPOTHESES_BIASED if use_kandles_bias else _HYPOTHESES
     if len(phonemes) < 20:
-        return {h.id: 0.0 for h in _HYPOTHESES}
+        return {h.id: 0.0 for h in hyps}
 
     vocab = _known_vocab() if scoring_mode == "full" else {}
 
     engine = HypothesisEngine(cipher_signs=phonemes)
     results = engine.run_iteration(
-        _HYPOTHESES,
+        hyps,
         models,
         {"greek": vocab, "hurrian": {}, "luwian": {}, "semitic": {}},
         max_iterations=max_iter,
@@ -309,9 +329,11 @@ def make_unigram_corpus(corpus: list[str], seed: int = 42) -> list[str]:
 
 def exp1_raw_tablet_replication(
     models: dict[str, LanguageModel] | None = None,
+    use_kandles_bias: bool = False,
 ) -> dict[str, Any]:
     """Run hypothesis engine on actual tablet sequences partitioned by site."""
-    print("[Exp1] Raw tablet sequence replication...")
+    tag = " [BIASED]" if use_kandles_bias else ""
+    print(f"[Exp1] Raw tablet sequence replication{tag}...")
     flat, site_dict = _load_raw_corpus()
     mapping = _get_gorila_map()
     models = models or _get_language_models()
@@ -324,7 +346,8 @@ def exp1_raw_tablet_replication(
     for split_name, corpus in splits.items():
         if len(corpus) < 50:
             continue
-        scores = run_one_trial(corpus, mapping, "full", models)
+        scores = run_one_trial(corpus, mapping, "full", models,
+                               use_kandles_bias=use_kandles_bias)
         ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)
         best_id, best_score = ranked[0]
         second_score = ranked[1][1] if len(ranked) > 1 else 0.0
@@ -493,9 +516,11 @@ def exp4_random_mapping_controls(
 
 def exp5_scoring_mode_comparison(
     models: dict[str, LanguageModel] | None = None,
+    use_kandles_bias: bool = False,
 ) -> dict[str, Any]:
     """Run all three scoring modes and compare rankings."""
-    print("[Exp5] Scoring mode comparison...")
+    tag = " [BIASED]" if use_kandles_bias else ""
+    print(f"[Exp5] Scoring mode comparison{tag}...")
     flat, _ = _load_raw_corpus()
     corpus = flat if len(flat) > 100 else _load_markov_corpus()
     mapping = _get_gorila_map()
@@ -504,7 +529,8 @@ def exp5_scoring_mode_comparison(
     results: dict[str, Any] = {}
 
     for mode in SCORING_MODES:
-        scores = run_one_trial(corpus, mapping, mode, models)
+        scores = run_one_trial(corpus, mapping, mode, models,
+                               use_kandles_bias=use_kandles_bias)
         ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)
         winner = ranked[0][0]
         greek_rank = next(i + 1 for i, (k, _) in enumerate(ranked) if k == "greek")
@@ -607,12 +633,15 @@ def exp7_null_corpus_controls(
 def run_all_experiments(
     n_mc_trials: int = 30,
     verbose: bool = True,
+    use_kandles_bias: bool = False,
 ) -> dict[str, Any]:
     """Run all 7 anti-circularity experiments and return combined results.
 
     Args:
-        n_mc_trials: Number of Monte Carlo trials for stochastic experiments.
-        verbose:     Print progress.
+        n_mc_trials:       Number of Monte Carlo trials for stochastic experiments.
+        verbose:           Print progress.
+        use_kandles_bias:  When True each hypothesis uses its own language’s
+                           Kandles phonological profile.
 
     Returns:
         dict with keys exp1..exp7, each containing that experiment's results.
@@ -630,15 +659,19 @@ def run_all_experiments(
 
     with ctx:
         print(f"\n{'='*60}")
-        print("Linear A Anti-Circularity Experiment Suite")
+        bias_label = (
+            "BIASED (language-specific Kandles)" if use_kandles_bias
+            else "UNBIASED (default Kandles)"
+        )
+        print(f"Linear A Anti-Circularity Experiment Suite  [{bias_label}]")
         print(f"MC trials per experiment: {n_mc_trials}")
         print(f"{'='*60}\n")
 
-        r1 = exp1_raw_tablet_replication(models=models)
+        r1 = exp1_raw_tablet_replication(models=models, use_kandles_bias=use_kandles_bias)
         r2 = exp2_mapping_ablation(n_trials=n_mc_trials, models=models)
         r3 = exp3_mapping_perturbation(n_trials=n_mc_trials, models=models)
         r4 = exp4_random_mapping_controls(n_trials=n_mc_trials, models=models)
-        r5 = exp5_scoring_mode_comparison(models=models)
+        r5 = exp5_scoring_mode_comparison(models=models, use_kandles_bias=use_kandles_bias)
         r6 = exp6_language_model_fairness(models=models)
         r7 = exp7_null_corpus_controls(n_trials=n_mc_trials, models=models)
 
@@ -651,4 +684,5 @@ def run_all_experiments(
         "exp6_fairness":         r6,
         "exp7_null_corpus":      r7,
         "n_mc_trials":           n_mc_trials,
+        "use_kandles_bias":      use_kandles_bias,
     }

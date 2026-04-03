@@ -122,17 +122,20 @@ def decipher(
     max_iterations: int = 5000,
     restarts: int = 3,
     cipher_inscriptions: list[list[str]] | None = None,
+    kandles_profile: str | None = None,
 ) -> dict[str, Any]:
     """Crack a substitution cipher.
 
     Args:
-        cipher_signs: the encrypted symbol sequence.
-        target_model: language model of the target (known) language.
-        seed: random seed for hill climbing.
-        max_iterations: max swaps per restart.
-        restarts: number of random restarts.
+        cipher_signs:     the encrypted symbol sequence.
+        target_model:     language model of the target (known) language.
+        seed:             random seed for hill climbing.
+        max_iterations:   max swaps per restart.
+        restarts:         number of random restarts.
         cipher_inscriptions: optional inscription-level structure for
             positional constraint scoring.
+        kandles_profile:  optional language-specific bias profile name
+            (e.g. 'luwian', 'hurrian'). Passed to Kandles validation.
 
     Returns:
         dict with proposed_mapping, deciphered_text, score, and stats.
@@ -215,7 +218,9 @@ def decipher(
     deciphered = [best_mapping.get(s, "?") for s in cipher_signs]
 
     # Kandles validation (Merkur patent)
-    kandles_confidence = _kandles_validate(deciphered, target_model.symbols)
+    kandles_confidence = _kandles_validate(
+        deciphered, target_model.symbols, kandles_profile=kandles_profile,
+    )
 
     return {
         "proposed_mapping": best_mapping,
@@ -257,18 +262,26 @@ def _score_mapping(
 
 
 def _kandles_validate(
-    deciphered: list[str], target_symbols: list[str],
+    deciphered: list[str],
+    target_symbols: list[str],
+    kandles_profile: str | None = None,
 ) -> float:
     """Kandles cross-validation: compare phonetic color distributions.
 
     Uses the Merkur patent Kandles system to compare the phonetic
     fingerprint of the deciphered text against the target text.
     Returns a confidence score in [0, 1].
+
+    Args:
+        deciphered:      Proposed decipherment as a list of phoneme strings.
+        target_symbols:  Target language corpus symbols.
+        kandles_profile: Language-specific bias profile name (e.g. 'luwian',
+                         'hurrian'). None uses the default Greek mapping.
     """
     try:
         from glossa_lab.pipelines.kandles import compare_grids, generate_grid
-        grid_dec = generate_grid(deciphered[:200])
-        grid_tgt = generate_grid(target_symbols[:200])
+        grid_dec = generate_grid(deciphered[:200], profile=kandles_profile)
+        grid_tgt = generate_grid(target_symbols[:200], profile=kandles_profile)
         result = compare_grids(grid_dec, grid_tgt)
         return result["similarity"]
     except Exception:
@@ -294,6 +307,7 @@ def decipher_auto(
     restarts: int = 5,
     cipher_inscriptions: list[list[str]] | None = None,
     engine: str = "auto",
+    kandles_profile: str | None = None,
 ) -> dict[str, Any]:
     """Decipher with automatic engine selection.
 
@@ -325,6 +339,7 @@ def decipher_auto(
         cipher_signs, target_model,
         seed=seed, max_iterations=max_iterations, restarts=restarts,
         cipher_inscriptions=cipher_inscriptions,
+        kandles_profile=kandles_profile,
     )
 
 

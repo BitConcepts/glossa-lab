@@ -1,65 +1,64 @@
-# Rules
+# Hard Rules and Stop Conditions
 
 ## Hard Rules
 
-### H1 — Ledger required
+These rules are non-negotiable. Violation of any hard rule is a stop condition.
 
+### H1 — Ledger required
 No ledger entry = work not done.
 
 ### H2 — Proposal required
-
 No proposal = no execution.
 
 ### H3 — Cross-platform awareness
-
-All work must consider:
-
-* Windows
-* Linux
-* macOS
+All work must consider every target platform (Windows, Linux, macOS). If a platform is unsupported or deferred, that must be stated explicitly.
 
 ### H4 — Environment isolation
-
-No system-dependent assumptions.
+No system-dependent assumptions. Virtual environments required. No reliance on global interpreters or system packages.
 
 ### H5 — Explicit startup
-
-No hidden service logic.
+No hidden service logic. All startup behavior must be documented and inspectable.
 
 ### H6 — No silent scope expansion
-
 If the task grows beyond the proposal, stop and re-propose.
 
-### H7 — Shell wrapper required
+### H7 — No undocumented state changes
+Every file creation, modification, or deletion must be traceable to a proposal and recorded in the ledger.
 
-All tool invocations (pytest, ruff, uvicorn, python) MUST go through `shell.cmd` (Windows) or `shell.sh` (POSIX). Direct invocation of venv executables is **forbidden**. PowerShell `.ps1` scripts are also **forbidden** for tool invocation — they cause PTY hangs on Windows.
+### H8 — Documentation is implementation
+Architecture-affecting changes MUST update relevant docs in the same work cycle.
 
-### H8 — No silent commands
+### H9 — Execution timeout required
+All agent-invoked commands MUST have a timeout. No command may run indefinitely. If a command hangs, it must be killed, recorded in the ledger, and escalated after one retry.
 
-If a command produces no output, it has failed. Do not retry it. Do not wait for it. Treat it as broken and fix the invocation or replace the command. Commands that are known to hang or produce no output are **forbidden**.
+### H10 — No hardcoded versions
+Version strings MUST NOT be hardcoded in documentation, tests, or source code outside of `pyproject.toml`. Use `importlib.metadata.version()` at runtime. Use `{{ version }}` placeholders in documentation resolved at build time.
+
+### H11 — No unbounded loops or blocking I/O without a deadline
+Every loop or blocking wait in agent-written scripts and automation MUST have:
+
+- An explicit deadline or iteration cap (e.g. a `deadline` timestamp, a `max_attempts` counter, or a `timeout` parameter).
+- A fallback exit path that executes when the deadline is reached.
+- A diagnostic message emitted if the timeout fires (self-diagnosing failures).
+
+Examples of violating patterns: `while True:` / `while ($true)` / `for (;;)` with no deadline guard; serial-port or I/O polling loops with no deadline; `sleep` inside a loop with no termination condition. `specsmith validate` checks scripts under `scripts/` for these patterns.
+
+### H12 — Windows multi-step automation via .cmd files
+On Windows, multi-step or heavily-quoted automation sequences MUST be written to a temporary `.cmd` file and executed from there. Do NOT emit these as inline shell invocations or as `.ps1` files unless there is a concrete PowerShell-only requirement. Inline multi-line quoting on Windows is fragile and causes avoidable hangs.
 
 ---
 
 ## Stop Conditions
 
-Stop if:
+Agents MUST stop and request clarification if ANY of the following are true:
 
-* missing inputs
-* unclear state
-* undocumented platform assumptions
-* no proposal
-* no ledger path
-
----
-
-## Acceptance Standard
-
-Work is accepted only if:
-
-* proposal matched execution
-* checks were run
-* ledger updated
-* next step defined
-
-Otherwise: provisional only.
-
+- Missing inputs (files, context, or dependencies not available)
+- Unclear state (ledger is inconsistent or missing)
+- Undocumented platform assumptions
+- No proposal has been approved
+- No ledger path exists (LEDGER.md missing or unwritable)
+- Requirement-without-test detected
+- Test-without-requirement detected
+- Architecture contradicts requirements
+- Proposed work would violate a hard rule
+- Proposed work would silently expand scope

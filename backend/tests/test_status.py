@@ -24,3 +24,14 @@ def test_status_jobs_counts_structure(client):
     for key in ("total", "pending", "running", "completed", "failed", "cancelled"):
         assert key in jobs
         assert isinstance(jobs[key], int)
+
+
+def test_status_reports_live_pipeline_count(client):
+    """Status should expose the live registered pipeline list and counts."""
+    response = client.get("/api/v1/status")
+    data = response.json()
+
+    assert data["pipeline_count"] == len(data["pipelines"])
+    assert data["pipeline_count"] >= 17
+    assert "catalog_counts" in data
+    assert data["catalog_counts"]["pipelines"] == data["pipeline_count"]

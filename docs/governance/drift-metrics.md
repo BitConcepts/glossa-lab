@@ -1,131 +1,54 @@
-# Environment & Platform
+# Drift Detection and Feedback Loops
 
-## Environment Requirements
+## Health Signals
+Evaluate on `audit` command. Optionally evaluate at session start.
 
-The project MUST be environment-controlled and system-agnostic.
+### Consistency score
+- Every requirement has at least one test
+- Every test maps to at least one requirement
+- Architecture supports all accepted requirements
+- Target: **100%**
 
----
+### Ledger health
+- Every entry has all required fields
+- Open TODOs are accurate
+- Stale TODOs identified (open > 5 sessions)
+- No completed TODO listed as open
 
-## Python Environment (Required)
+### Documentation currency
+- Architecture reflects implementation
+- README reflects current structure and status
+- Requirements/tests reflect accepted architecture
 
-* use virtual environment
-* do not rely on global Python
-* environment must be reproducible
+### Governance size health
+- AGENTS.md within ~100-150 lines
+- Governance docs remain focused
+- LEDGER.md under ~500 lines or archived
 
-### Expected structure
+### Rule compliance
+Check last 5 ledger entries:
+- Proposal present?
+- Verification recorded?
+- Next step recorded?
+- Scope respected?
 
-```text
-backend/
-  venv/
-```
+## Drift Response Protocol
+If a health signal fails:
+1. Report the failure explicitly
+2. Reference exact files/sections
+3. Record in ledger under Risks
+4. Recommend smallest bounded corrective task
 
-or
+## Ledger Compression
+When LEDGER.md > ~500 lines:
+- Archive older entries to `docs/ledger-archive.md`
+- Keep summary block + recent entries + active TODOs in LEDGER.md
+- Archive preserves full history — no information deleted
 
-```text
-.venv/
-```
-
----
-
-## Env Bootstrap
-
-Environment setup must be split:
-
-### 1. Python-level
-
-* dependency install
-* environment config
-* runtime setup
-
-### 2. OS-level
-
-Scripts must exist for:
-
-* Windows (`.cmd`)
-* Linux/macOS (`.sh`)
-
----
-
-## Shell Wrapper (Critical)
-
-All tool invocations MUST go through the unified shell wrapper:
-
-```text
-# Windows
-shell.cmd <command> [args]
-
-# Linux/macOS
-./shell.sh <command> [args]
-```
-
-### Available commands
-
-* `shell.cmd run` — start backend (dev mode, foreground)
-* `shell.cmd test [args]` — run pytest
-* `shell.cmd lint [args]` — run ruff check
-* `shell.cmd format [args]` — run ruff format
-* `shell.cmd setup` — re-run setup (install/update deps)
-* `shell.cmd python [args]` — run Python in venv
-
-### Why this exists
-
-On Windows, calling venv `Scripts/*.exe` files directly (e.g. `ruff.exe`, `pytest.exe`) **hangs the PTY**. PowerShell `.ps1` wrappers also hang. The `.cmd` shell wrapper routes all invocations through `python.exe -m <module>` which does not hang.
-
-### ABSOLUTELY FORBIDDEN
-
-* ❌ `backend\venv\Scripts\ruff.exe ...`
-* ❌ `backend\venv\Scripts\pytest.exe ...`
-* ❌ `backend\venv\Scripts\uvicorn.exe ...`
-* ❌ Any direct invocation of executables under `venv/Scripts/` or `venv/bin/`
-* ❌ Any `.ps1` PowerShell script for tool invocation (causes PTY hangs)
-
-### REQUIRED (safe, uses python -m)
-
-* ✅ `shell.cmd test`
-* ✅ `shell.cmd lint`
-* ✅ `shell.cmd run`
-* ✅ `shell.cmd python <script>`
-
-### Auto-bootstrap
-
-If the venv does not exist, `shell.cmd` / `shell.sh` will create it and install all dependencies automatically on first run.
-
----
-
-## Additional Scripts
-
-```text
-scripts/
-  setup.cmd
-  setup.sh
-  run.cmd
-  run.sh
-```
-
-These are convenience wrappers. The canonical entry point is `shell.cmd` / `shell.sh` at the repo root.
-
----
-
-## Platform Expectations
-
-### Backend
-
-* Python
-* cross-platform
-* service-compatible
-
-### Frontend
-
-* React
-* API-driven
-
-### Tray
-
-* control surface only
-
-### Services
-
-* Windows + Linux + macOS support required
-
----
-
+## Feedback Loop Priority
+Correct cheapest root cause first:
+1. Compress/optimize context
+2. Update stale docs
+3. Split oversized governance files
+4. Strengthen rules or load order
+5. Revise workflow if same failure repeats

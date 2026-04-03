@@ -23,7 +23,11 @@ KNOWN_KEYS = [
     "mistral_api_key",
     "openai_api_key",
     "anthropic_api_key",
+    "google_api_key",
 ]
+
+KNOWN_PROVIDERS = ["openai", "anthropic", "google", "mistral"]
+_PROVIDERS_KEY = "_provider_prefs"
 
 
 def _keys_file() -> Path:
@@ -76,14 +80,16 @@ async def read_settings() -> dict[str, Any]:
         else:
             keys_status[k] = {"set": False, "source": None, "masked": ""}
 
+    stored_providers = stored.get(_PROVIDERS_KEY, {})
     return {
         "keys": keys_status,
+        "providers": stored_providers,
         "data_dir": str(get_settings().data_dir),
     }
 
 
 @router.put("")
-async def update_settings(body: dict[str, str]) -> dict[str, Any]:
+async def update_settings(body: dict[str, Any]) -> dict[str, Any]:
     """Update stored settings. Pass empty string to clear a key."""
     stored = _load_keys()
     updated: list[str] = []
@@ -102,6 +108,20 @@ async def update_settings(body: dict[str, str]) -> dict[str, Any]:
                 os.environ.pop(k.upper(), None)
                 updated.append(k)
 
+    # Provider preferences (enable/model-selection state)
+    updated_providers: list[str] = []
+    if "providers" in body and isinstance(body.get("providers"), dict):
+        prefs = stored.get(_PROVIDERS_KEY, {})
+        for pid, pdata in body["providers"].items():
+            if pid in KNOWN_PROVIDERS and isinstance(pdata, dict):
+                prefs[pid] = pdata
+                updated_providers.append(pid)
+        stored[_PROVIDERS_KEY] = prefs
+
     _save_keys(stored)
 
-    return {"updated": updated, "message": f"{len(updated)} key(s) updated"}
+    return {
+        "updated": updated,
+        "updated_providers": updated_providers,
+        "message": f"{len(updated)} key(s) and {len(updated_providers)} provider(s) updated",
+    }

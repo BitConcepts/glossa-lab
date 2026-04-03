@@ -33,6 +33,12 @@ class JobResponse(BaseModel):
     updated_at: str
 
 
+class ClearJobsResponse(BaseModel):
+    """Response body for bulk clearing jobs."""
+
+    cleared: int
+
+
 @router.post("/jobs", status_code=201)
 async def create_job(body: JobCreate) -> JobResponse:
     """Submit a new job."""
@@ -72,6 +78,16 @@ async def get_job(job_id: str) -> JobResponse:
     if job is None:
         raise HTTPException(status_code=404, detail="Job not found")
     return JobResponse(**job)
+
+
+@router.delete("/jobs", status_code=200)
+async def clear_jobs() -> ClearJobsResponse:
+    """Delete all stored jobs and results."""
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+
+    return ClearJobsResponse(cleared=await db.clear_jobs())
 
 
 @router.delete("/jobs/{job_id}", status_code=200)

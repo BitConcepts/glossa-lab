@@ -7,10 +7,10 @@ This is the primary tool for demonstrating what Glossa Lab will do on
 Dr. Fuls' ICIT corpus the day database access is granted.
 
 USAGE:
-    # Analyse a corpus file in Fuls +sign-sign-sign+ notation:
+    # Analyze a corpus file in Fuls +sign-sign-sign+ notation:
     python -m glossa_lab.analyze_script corpus.txt --format fuls
 
-    # Analyse a simple one-sign-per-token flat file:
+    # Analyze a simple one-sign-per-token flat file:
     python -m glossa_lab.analyze_script corpus.txt --format flat
 
     # Run on our built-in prototype corpora:
@@ -27,7 +27,7 @@ OUTPUT FILES:
 
 REPORT SECTIONS:
   §1  Corpus statistics (N, V, V/N, hapax, inscription length)
-  §2  Block entropy profile (H1-H4, normalised, bias-corrected)
+  §2  Block entropy profile (H1-H4, normalized, bias-corrected)
   §3  Character/sign frequency distribution (Zipf exponent)
   §4  Positional analysis (initial/medial/terminal preferences)
   §5  Sign cluster analysis (distributional clusters)
@@ -37,7 +37,7 @@ REPORT SECTIONS:
   §9  Sign function estimation (numeral/determinative/logogram/phonetic)
   §10 Structural fingerprint (10-dim vector + comparison to known scripts)
   §11 Writing system tier classification
-  §12 Kandles colour fingerprint
+  §12 Kandles color fingerprint
   §13 Ventris grid analysis (vowel/consonant affinity)
   §14 Word-structure typology match
   §15 Conclusions and open questions
@@ -361,13 +361,13 @@ def run_full_analysis(
         report["§11_tier"] = {"error": str(e)}
         _print(f"SKIP ({e})")
 
-    # §12 Kandles colour fingerprint
-    _print("§12 Kandles colour fingerprint...", end=" ", flush=True)
+    # §12 Kandles color fingerprint
+    _print("§12 Kandles color fingerprint...", end=" ", flush=True)
     try:
         from glossa_lab.pipelines.kandles import generate_grid
         kg = generate_grid(flat[:200])
         report["§12_kandles"] = {
-            "colour_distribution": kg.get("color_distribution", {}),
+            "color_distribution": kg.get("color_distribution", {}),
             "profile": kg.get("profile", "default"),
         }
         dist = kg.get("color_distribution", {})
@@ -623,7 +623,7 @@ def main() -> None:
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  Analyse built-in demo corpora:
+  Analyze built-in demo corpora:
     python -m glossa_lab.analyze_script --demo ugaritic
     python -m glossa_lab.analyze_script --demo linear_b
     python -m glossa_lab.analyze_script --demo indus
@@ -631,11 +631,11 @@ Examples:
   Compare multiple corpora:
     python -m glossa_lab.analyze_script --compare ugaritic,linear_b,indus
 
-  Analyse a corpus file:
+  Analyze a corpus file:
     python -m glossa_lab.analyze_script corpus.txt --format fuls
 """,
     )
-    parser.add_argument("file", nargs="?", help="Corpus file to analyse")
+    parser.add_argument("file", nargs="?", help="Corpus file to analyze")
     parser.add_argument(
         "--format", choices=["fuls", "flat"], default="fuls",
         help="Input format (default: fuls)",

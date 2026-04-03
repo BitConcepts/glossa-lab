@@ -208,14 +208,14 @@ def compute_affinity(
     Args:
         inscriptions: inscription-level sequences.
         syllabograms:  list of signs classified as syllabograms.
-        top_n:         number of top-frequency syllabograms to analyse.
+        top_n:         number of top-frequency syllabograms to analyze.
         window:        context window size in signs (default 2).
         threshold:     cosine similarity threshold for clustering
                        (auto-scaled by corpus size if None).
 
     Returns:
         dict with vowel_groups, consonant_groups, similarity matrices,
-        syllabograms_analysed, and acceleration tier used.
+        syllabograms_analyzed, and acceleration tier used.
     """
     from glossa_lab.accelerate import gpu_info, ventris_affinity_gpu  # noqa: I001
 
@@ -283,7 +283,7 @@ def compute_affinity(
         "consonant_groups":      _idx_to_signs(consonant_groups),
         "top_vowel_pairs":       _top_pairs(left_sim,  top_syls, top_n=20),
         "top_consonant_pairs":   _top_pairs(right_sim, top_syls, top_n=20),
-        "syllabograms_analysed": top_syls,
+        "syllabograms_analyzed": top_syls,
         "n_syllabograms":        n,
         "threshold_used":        threshold,
         "acceleration":          tier,
@@ -505,7 +505,7 @@ def _emit_candidate(
 # ── Main analysis function ────────────────────────────────────────────
 
 
-def analyse_logosyllabic(
+def analyze_logosyllabic(
     inscriptions: list[list[str]],
     target_language: str = "generic",
     max_word_length: int = 6,
@@ -651,7 +651,7 @@ async def run_logosyllabic(params: dict[str, Any]) -> dict[str, Any]:
             if content[i: i + chunk_size]
         ]
 
-    result = analyse_logosyllabic(
+    result = analyze_logosyllabic(
         inscriptions,
         target_language=target_language,
         max_word_length=max_word_length,

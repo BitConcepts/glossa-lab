@@ -12,7 +12,7 @@ Validates:
 from __future__ import annotations
 
 from glossa_lab.pipelines.logosyllabic import (
-    analyse_logosyllabic,
+    analyze_logosyllabic,
     classify_signs,
     compute_affinity,
     extract_candidate_words,
@@ -233,9 +233,9 @@ def test_extract_candidate_words_structure():
 # ── Full analysis tests ───────────────────────────────────────────────
 
 
-def test_analyse_logosyllabic_output_keys():
+def test_analyze_logosyllabic_output_keys():
     """Full analysis must return all required top-level keys."""
-    result = analyse_logosyllabic(_INSCRIPTIONS_RICH, target_language="sumerian")
+    result = analyze_logosyllabic(_INSCRIPTIONS_RICH, target_language="sumerian")
     required_keys = {
         "target_language", "sign_count", "unique_signs", "inscription_count",
         "sign_classification", "summary", "affinity", "proposed_readings",
@@ -245,9 +245,9 @@ def test_analyse_logosyllabic_output_keys():
     assert not missing, f"Missing keys: {missing}"
 
 
-def test_analyse_logosyllabic_summary_counts():
+def test_analyze_logosyllabic_summary_counts():
     """Summary counts must be non-negative and add up to unique_signs."""
-    result = analyse_logosyllabic(_INSCRIPTIONS_RICH, target_language="generic")
+    result = analyze_logosyllabic(_INSCRIPTIONS_RICH, target_language="generic")
     s = result["summary"]
     assert s["logograms"] >= 0
     assert s["syllabograms"] >= 0
@@ -258,7 +258,7 @@ def test_analyse_logosyllabic_summary_counts():
     )
 
 
-def test_analyse_logosyllabic_vocabulary_matching():
+def test_analyze_logosyllabic_vocabulary_matching():
     """With a matching vocabulary entry, the match count should be > 0."""
     # Construct a vocabulary that should match at least one candidate
     from glossa_lab.pipelines.logosyllabic import _SUMERIAN_SYLLABLES
@@ -268,7 +268,7 @@ def test_analyse_logosyllabic_vocabulary_matching():
     # and 'ii' (rank 2 twice) to ensure at least one match is plausible.
     vocab = {"ae": "sky", "ii": "water", "aei": "fire"}
 
-    result = analyse_logosyllabic(
+    result = analyze_logosyllabic(
         _INSCRIPTIONS_RICH,
         target_language="generic",
         vocabulary=vocab,
@@ -277,23 +277,23 @@ def test_analyse_logosyllabic_vocabulary_matching():
     assert result["vocabulary_match_count"] >= 0
 
 
-def test_analyse_logosyllabic_empty_input():
+def test_analyze_logosyllabic_empty_input():
     """Empty inscription list should return an error dict, not raise."""
-    result = analyse_logosyllabic([], target_language="generic")
+    result = analyze_logosyllabic([], target_language="generic")
     assert "error" in result
     assert result["sign_count"] == 0
 
 
-def test_analyse_logosyllabic_sign_count():
+def test_analyze_logosyllabic_sign_count():
     """sign_count must equal total signs across all inscriptions."""
     flat = _flat(_INSCRIPTIONS_RICH)
-    result = analyse_logosyllabic(_INSCRIPTIONS_RICH)
+    result = analyze_logosyllabic(_INSCRIPTIONS_RICH)
     assert result["sign_count"] == len(flat)
 
 
-def test_analyse_logosyllabic_linear_b_target():
+def test_analyze_logosyllabic_linear_b_target():
     """Linear B target language should use the Linear B syllable inventory."""
-    result = analyse_logosyllabic(_INSCRIPTIONS_RICH, target_language="linear_b")
+    result = analyze_logosyllabic(_INSCRIPTIONS_RICH, target_language="linear_b")
     assert result["target_language"] == "linear_b"
     # Readings should include Linear B CV values
     any_linear_b = any(

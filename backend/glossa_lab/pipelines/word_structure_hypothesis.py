@@ -151,7 +151,7 @@ def compute_corpus_profile(
     max_len = max(lengths)
     mean_len = sum(lengths) / total
 
-    # Word-length distribution (normalised)
+    # Word-length distribution (normalized)
     len_count = Counter(lengths)
     len_dist = {k: v / total for k, v in len_count.items()}
 

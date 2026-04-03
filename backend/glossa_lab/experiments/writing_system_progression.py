@@ -106,8 +106,8 @@ def corpus_statistics(
         "hapax_fraction":  round(hapax / V, 3) if V else 0,
         "rare5_fraction":  round(rare5 / V, 3) if V else 0,
         "avg_inscription_length": round(avg_len, 2),
-        "h1_normalised":   round(h1["normalized"], 4) if h1 else None,
-        "h2_normalised":   round(h2["normalized"], 4) if h2 else None,
+        "h1_normalized":   round(h1["normalized"], 4) if h1 else None,
+        "h2_normalized":   round(h2["normalized"], 4) if h2 else None,
         "polyvalence_candidates": poly_summary["polyvalence_candidates"],
         "polyvalence_fraction":   poly_summary["candidate_fraction"],
         "top_polyvalent": [
@@ -376,7 +376,7 @@ def run_all_tiers(verbose: bool = True) -> dict[str, Any]:
             for k in (
                 "writing_type", "N_tokens", "V_types", "theoretical_V",
                 "type_token_ratio", "hapax_fraction", "polyvalence_candidates",
-                "polyvalence_fraction", "h1_normalised", "decipher_difficulty",
+                "polyvalence_fraction", "h1_normalized", "decipher_difficulty",
             )
         }
         for s in systems

@@ -45,7 +45,7 @@ class LanguageModel:
         self.alphabet = sorted(set(symbols))
         self.size = len(self.alphabet)
 
-        # Unigram frequencies (normalised)
+        # Unigram frequencies (normalized)
         counts = Counter(symbols)
         self.unigram_freq: dict[str, float] = {
             s: c / total for s, c in counts.items()

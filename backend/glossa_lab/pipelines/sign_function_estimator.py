@@ -34,8 +34,8 @@ ALGORITHM:
     f2: initial_rate            — appears at inscription start
     f3: terminal_rate           — appears at inscription end
     f4: boundary_bias           — f2 + f3 (total edge concentration)
-    f5: log_frequency           — log of total count (normalised)
-    f6: bigram_diversity        — number of distinct left + right neighbours
+    f5: log_frequency           — log of total count (normalized)
+    f6: bigram_diversity        — number of distinct left + right neighbors
     f7: positional_entropy      — entropy of positional distribution
     f8: same_context_rate       — appears in same contexts as other signs
     f9: polyvalence_score       — bimodality of positional distribution
@@ -83,7 +83,7 @@ def _extract_features(
     alone_c:    Counter[str] = Counter()
     insc_c:     Counter[str] = Counter()  # inscriptions containing this sign
 
-    # Left and right neighbours
+    # Left and right neighbors
     left_nbrs:  dict[str, set[str]] = defaultdict(set)
     right_nbrs: dict[str, set[str]] = defaultdict(set)
 
@@ -179,7 +179,7 @@ def _extract_features(
 # ── Probability scoring functions ──────────────────────────────────────
 # These scoring functions are calibrated heuristics based on patterns
 # observed in deciphered scripts (Linear B, Ugaritic, Sumerian).
-# Each outputs a raw score in [0,∞]; these are normalised to probabilities.
+# Each outputs a raw score in [0,∞]; these are normalized to probabilities.
 
 def _score_numeral(f: dict[str, float]) -> float:
     """Numerals: high frequency, very specific positional context, low diversity."""
@@ -229,7 +229,7 @@ def _score_logogram(f: dict[str, float]) -> float:
     # Not strongly tied to one position
     if 0.30 < f["positional_entropy"] < 0.75:
         score += 0.2
-    # Moderate bigram diversity (appears with varied neighbours but not hugely)
+    # Moderate bigram diversity (appears with varied neighbors but not hugely)
     if 0.15 < f["bigram_diversity"] < 0.60:
         score += 0.2
     return score
@@ -241,7 +241,7 @@ def _score_phonetic(f: dict[str, float]) -> float:
     # Low boundary bias (appears throughout words)
     if f["boundary_bias"] < 0.35:
         score += 0.3
-    # High bigram diversity (appears with many different neighbours)
+    # High bigram diversity (appears with many different neighbors)
     if f["bigram_diversity"] > 0.40:
         score += 0.3
     # High positional entropy (not stuck at one position)
@@ -268,7 +268,7 @@ def _score_boundary_marker(f: dict[str, float]) -> float:
     return score
 
 
-def _normalise_scores(scores: dict[str, float]) -> dict[str, float]:
+def _normalize_scores(scores: dict[str, float]) -> dict[str, float]:
     """Convert raw scores to a probability distribution."""
     total = sum(scores.values())
     if total <= 0:
@@ -315,7 +315,7 @@ def estimate_sign_functions(
             "phonetic":         _score_phonetic(feats),
             "boundary_marker":  _score_boundary_marker(feats),
         }
-        probs = _normalise_scores(raw)
+        probs = _normalize_scores(raw)
         dominant_type = max(probs, key=lambda k: probs[k])
         confidence = probs[dominant_type]
 
@@ -421,7 +421,7 @@ async def run_sign_function_estimator(params: dict[str, Any]) -> dict[str, Any]:
     """Pipeline entry point.
 
     Params:
-        text_id:   corpus to analyse
+        text_id:   corpus to analyze
         min_freq:  minimum sign frequency (default 3)
     """
     from glossa_lab.database import get_db

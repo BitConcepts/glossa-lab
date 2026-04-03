@@ -62,7 +62,7 @@ def _fractional_positions(inscriptions: list[list[str]]) -> dict[str, list[float
 
 
 def _positional_histogram(positions: list[float], bins: int = 10) -> list[float]:
-    """Convert fractional positions to a normalised histogram.
+    """Convert fractional positions to a normalized histogram.
 
     bins: number of equal-width bins over [0, 1].
     Returns a list of `bins` floats summing to 1.0.
@@ -114,7 +114,7 @@ def _bimodality_score(peaks: list[int], hist: list[float]) -> float:
     if len(peaks) < 2:
         return 0.0
     prominences = [hist[p] for p in peaks]
-    # Weight by spread: distance between outer peaks normalised to [0,1]
+    # Weight by spread: distance between outer peaks normalized to [0,1]
     spread = (max(peaks) - min(peaks)) / max(len(hist) - 1, 1)
     return sum(prominences) * spread
 
@@ -146,7 +146,7 @@ def detect_polyvalent_signs(
 
     Args:
         inscriptions:      List of inscriptions, each a list of sign strings.
-        min_freq:          Minimum total occurrences to analyse a sign.
+        min_freq:          Minimum total occurrences to analyze a sign.
         bins:              Histogram bin count (finer = more sensitive).
         min_prominence:    Minimum peak prominence to count as a true peak.
         bimodal_threshold: Minimum bimodality score to flag as candidate.
@@ -176,7 +176,7 @@ def detect_polyvalent_signs(
         # Entropy of the positional distribution (higher → more spread)
         pos_entropy = -sum(
             p * math.log2(p) for p in hist if p > 0
-        ) / math.log2(bins)  # normalised to [0,1]
+        ) / math.log2(bins)  # normalized to [0,1]
 
         entry: dict[str, Any] = {
             "sign":          sign,
@@ -204,7 +204,7 @@ def detect_polyvalent_signs(
         "candidates":    candidates,
         "all_signs":     all_signs,
         "summary": {
-            "total_signs_analysed": total_signs,
+            "total_signs_analyzed": total_signs,
             "polyvalence_candidates": n_candidates,
             "candidate_fraction": round(n_candidates / total_signs, 3) if total_signs else 0,
             "parameters": {
@@ -242,7 +242,7 @@ def compare_across_systems(
             "type_token_ratio":    round(len(freq) / max(sum(freq.values()), 1), 4),
             "hapax_count":         sum(1 for v in freq.values() if v == 1),
             "polyvalence_candidates": result["summary"]["polyvalence_candidates"],
-            "total_analysed":      result["summary"]["total_signs_analysed"],
+            "total_analyzed":      result["summary"]["total_signs_analyzed"],
             "candidate_fraction":  result["summary"]["candidate_fraction"],
             "top_candidates":      [
                 {"sign": c["sign"], "score": c["bimodality_score"]}
@@ -259,7 +259,7 @@ async def run_sign_polyvalence(params: dict[str, Any]) -> dict[str, Any]:
     """Pipeline entry point.
 
     Params:
-        text_id:          corpus to analyse
+        text_id:          corpus to analyze
         min_freq:         minimum sign frequency (default 5)
         bins:             histogram bins (default 10)
         min_prominence:   peak prominence threshold (default 0.05)

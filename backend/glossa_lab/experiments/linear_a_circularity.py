@@ -115,7 +115,7 @@ _HYPOTHESES = [
 
 # Hypotheses with language-appropriate Kandles bias profiles.
 # Each hypothesis uses the phonological categories of its own language family
-# when computing the Kandles colour-fingerprint similarity score.
+# when computing the Kandles color-fingerprint similarity score.
 _HYPOTHESES_BIASED = [
     Hypothesis(id="greek",   name="Mycenaean Greek",  target_language="greek",
                kandles_profile="default"),

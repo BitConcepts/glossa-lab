@@ -32,7 +32,7 @@ THE ALGORITHM:
   The final histogram sums weighted positions over all occurrences of a sign:
     histogram[nwp] += L   for each occurrence of sign at position p in text of length L
 
-  The histogram is then normalised by dividing by the total weight (sum of
+  The histogram is then normalized by dividing by the total weight (sum of
   all L values across all occurrences).
 
 SIGN CLASSIFICATION (Fuls 2015, Chapter 3.3):
@@ -151,10 +151,10 @@ def compute_nwsp(
         w_hist = hist_weighted[sign]
         tw = total_weight[sign]
 
-        # Normalise weighted histogram to sum to 1.0
+        # Normalize weighted histogram to sum to 1.0
         norm_hist = [v / tw for v in w_hist] if tw > 0 else [1.0 / n_bins] * n_bins
 
-        # Compute mean and variance of normalised weighted position
+        # Compute mean and variance of normalized weighted position
         bin_centers = [(i + 0.5) / n_bins * 9.0 + 1.0 for i in range(n_bins)]
         mean_pos = sum(norm_hist[i] * bin_centers[i] for i in range(n_bins))
         variance  = sum(norm_hist[i] * (bin_centers[i] - mean_pos) ** 2 for i in range(n_bins))
@@ -188,13 +188,13 @@ def compute_nwsp(
             "n_inscriptions":  len(inscriptions),
             "n_tokens":        len(flat),
             "n_distinct_signs": len(freq),
-            "signs_analysed":  len(signs_result),
+            "signs_analyzed":  len(signs_result),
         },
     }
 
 
 def _classify_nwsp(norm_hist: list[float], n_bins: int = 10) -> str:
-    """Classify a sign based on its normalised NWSP histogram shape.
+    """Classify a sign based on its normalized NWSP histogram shape.
 
     Follows Fuls (2015) Chapter 3.3 classification scheme.
 
@@ -315,7 +315,7 @@ async def run_nwsp(params: dict[str, Any]) -> dict[str, Any]:
     """Pipeline entry point.
 
     Params:
-        text_id:           corpus to analyse
+        text_id:           corpus to analyze
         min_occurrences:   minimum sign occurrences (default 4)
         compare_icit:      if True, map results to ICIT codes (default True)
     """

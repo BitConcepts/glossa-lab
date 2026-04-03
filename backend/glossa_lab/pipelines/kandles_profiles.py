@@ -1,12 +1,12 @@
-"""Language-specific Kandles phoneme-colour profiles.
+"""Language-specific Kandles phoneme-color profiles.
 
 The default Kandles system ([REDACTED-PATENT-PUB]) uses a single
-Greek/English-calibrated phoneme→colour mapping for all comparisons.
+Greek/English-calibrated phoneme→color mapping for all comparisons.
 This is appropriate when both corpora are transcribed in the same
 phonological system, but introduces a systematic bias when comparing
 deciphered texts from different language families.
 
-Each profile redefines the 8 Kandles colour groups using the phonological
+Each profile redefines the 8 Kandles color groups using the phonological
 categories natural to that language family. The 8 groups remain fixed
 (they are the Kandles patent categories), but which phonemes fall into
 which group changes according to the target language's phonology.
@@ -42,9 +42,9 @@ from typing import Any
 
 @dataclass
 class KandlesProfile:
-    """A language-specific Kandles phoneme→colour mapping.
+    """A language-specific Kandles phoneme→color mapping.
 
-    The 8 colour groups retain their Kandles semantics (Yellow=Sun, Grey=Moon,
+    The 8 color groups retain their Kandles semantics (Yellow=Sun, Grey=Moon,
     etc.) but the phoneme assignments differ per language family.
     """
 
@@ -408,7 +408,7 @@ def get_profile(name: str) -> KandlesProfile:
         KandlesProfile for the requested language.
 
     Raises:
-        ValueError: If the profile name is not recognised.
+        ValueError: If the profile name is not recognized.
     """
     key = name.lower().strip()
 

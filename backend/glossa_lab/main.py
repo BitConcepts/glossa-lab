@@ -13,6 +13,7 @@ from glossa_lab import __version__
 from glossa_lab.api.health import router as health_router
 from glossa_lab.api.jobs import router as jobs_router
 from glossa_lab.api.results import router as results_router
+from glossa_lab.api.settings import router as settings_router
 from glossa_lab.api.shutdown import router as shutdown_router
 from glossa_lab.api.status import router as status_router
 from glossa_lab.api.texts import router as texts_router
@@ -84,6 +85,7 @@ def create_app() -> FastAPI:
     application.include_router(jobs_router, prefix="/api/v1")
     application.include_router(results_router, prefix="/api/v1")
     application.include_router(texts_router, prefix="/api/v1")
+    application.include_router(settings_router)
     application.include_router(shutdown_router, prefix="/api/v1")
 
     # Serve built frontend at "/" — run 'npm run build' in frontend/ to populate.

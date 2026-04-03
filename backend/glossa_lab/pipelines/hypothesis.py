@@ -36,6 +36,7 @@ class Hypothesis:
     locked_mappings: dict[str, str] = field(default_factory=dict)
     notes: str = ""
     parent_id: str | None = None  # hypothesis this was derived from
+    kandles_profile: str = "default"  # language-specific Kandles bias profile
 
 
 @dataclass
@@ -192,6 +193,21 @@ class HypothesisEngine:
         # Apply locked mappings: remove locked signs from the search
         locked = {**self.confident_mappings, **hypothesis.locked_mappings}
 
+        # Resolve Kandles profile: explicit field takes precedence, then auto-map
+        kandles_profile: str | None = None
+        raw_profile = hypothesis.kandles_profile
+        if raw_profile and raw_profile not in ("default", "greek", "mycenaean"):
+            kandles_profile = raw_profile
+        elif raw_profile == "default":
+            # Auto-map target language to its own profile
+            try:
+                from glossa_lab.pipelines.kandles_profiles import LANGUAGE_TO_PROFILE
+                mapped = LANGUAGE_TO_PROFILE.get(hypothesis.target_language.lower())
+                if mapped and mapped not in ("default",):
+                    kandles_profile = mapped
+            except ImportError:
+                pass
+
         # Run decipherment
         result = decipher(
             self.cipher_signs,
@@ -200,6 +216,7 @@ class HypothesisEngine:
             max_iterations=max_iterations,
             restarts=restarts,
             cipher_inscriptions=self.cipher_inscriptions,
+            kandles_profile=kandles_profile,
         )
 
         mapping = result["proposed_mapping"]

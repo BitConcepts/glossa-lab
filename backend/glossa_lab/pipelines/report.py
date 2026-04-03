@@ -76,7 +76,7 @@ def _make_entropy_plot(results, max_n, tmpdir):
                 linewidth=1.0, linestyle="--", color="#888",
                 alpha=0.6, label=pub_name)
     ax.set_xlabel("Block size N", fontsize=11)
-    ax.set_ylabel("Normalised block entropy  H_N / ln(L)", fontsize=11)
+    ax.set_ylabel("Normalized block entropy  H_N / ln(L)", fontsize=11)
     ax.set_title(
         "Block Entropy Scaling of Symbol Systems\n"
         "(solid = this study, dashed grey = Rao et al.)", fontsize=12)
@@ -199,7 +199,7 @@ def generate_report(corpora, output_path, max_n=6):
         "undeciphered Indus script, two non-linguistic systems (DNA, "
         "Fortran code), and three synthetic baselines (random, ordered, "
         "Markov) \u2014 replicating the methodology of Rao et al. (2009). "
-        "We compute normalised block entropy H<sub>N</sub>/ln(L) for "
+        "We compute normalized block entropy H<sub>N</sub>/ln(L) for "
         "N=1\u20136, compare against published values, and perform Zipf "
         "rank-frequency analysis. Our findings confirm the central "
         "result: the Indus script clusters with natural languages and "
@@ -244,7 +244,7 @@ def generate_report(corpora, output_path, max_n=6):
                         spaceAfter=6)))
     S.append(Paragraph(
         "where p<sub>i</sub><sup>(N)</sup> is the MLE probability of "
-        "the i-th N-gram. We normalise by ln(L) for cross-script "
+        "the i-th N-gram. We normalize by ln(L) for cross-script "
         "comparison. Sub-linear growth (H<sub>2</sub> &lt; 2\u00d7"
         "H<sub>1</sub>) indicates sequential correlations [6, 7]. "
         "We use plug-in estimation; Rao et al. used NSB Bayesian "
@@ -252,7 +252,7 @@ def generate_report(corpora, output_path, max_n=6):
     S.append(Spacer(1, 0.1 * inch))
 
     # ═══════════ 3. CORPORA ═══════════
-    S.append(Paragraph("3. Corpora Analysed", h1))
+    S.append(Paragraph("3. Corpora Analyzed", h1))
     cd = [["#", "Corpus", "Type", "Symbols", "Alphabet", "Description"]]
     for i, (n, r) in enumerate(results.items(), 1):
         cd.append([str(i), n, r["corpus_type"], f"{r['symbol_count']:,}",
@@ -260,7 +260,7 @@ def generate_report(corpora, output_path, max_n=6):
     S.append(_tbl(cd, [.3*inch, .9*inch, .7*inch, .6*inch, .5*inch,
                        3.2*inch]))
     S.append(Paragraph(
-        "<b>Table 1.</b> Corpora analysed. Symbols = total tokens; "
+        "<b>Table 1.</b> Corpora analyzed. Symbols = total tokens; "
         "Alphabet = unique types.", cap))
 
     # Sample inscriptions
@@ -281,7 +281,7 @@ def generate_report(corpora, output_path, max_n=6):
     S.append(Paragraph("4. Block Entropy Results", h1))
     S.append(Image(entropy_plot, width=6.5*inch, height=4.3*inch))
     S.append(Paragraph(
-        "<b>Figure 1.</b> Normalised block entropy H<sub>N</sub>/ln(L) "
+        "<b>Figure 1.</b> Normalized block entropy H<sub>N</sub>/ln(L) "
         "vs block size N. Solid: this study. Dashed grey: Rao et al. "
         "published values. Linguistic systems (blue) and the Indus "
         "script (red) cluster together. DNA (green dashed) is higher; "
@@ -295,7 +295,7 @@ def generate_report(corpora, output_path, max_n=6):
             row.append(f"{e['normalized']:.4f}")
         ed.append(row)
     S.append(_tbl(ed, [.9*inch, .7*inch]+[.63*inch]*max_n))
-    S.append(Paragraph("<b>Table 2.</b> Normalised block entropy values.",
+    S.append(Paragraph("<b>Table 2.</b> Normalized block entropy values.",
                         cap))
 
     # ═══════════ 5. PUBLISHED COMPARISON ═══════════

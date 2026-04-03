@@ -121,7 +121,7 @@ def identify_numerals(
     ]
 
     return {
-        "total_signs_analysed": len(freq),
+        "total_signs_analyzed": len(freq),
         "likely_numerals": likely_numerals[:20],
         "possible_numerals": possible_numerals[:20],
         "candidates": candidates[:30],

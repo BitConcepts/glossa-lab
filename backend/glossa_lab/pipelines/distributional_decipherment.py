@@ -145,7 +145,7 @@ def cluster_by_vowel_class(
     Args:
         left_ctx:  Left-context distributions.
         threshold: JS-divergence threshold for merging clusters (lower = tighter).
-        top_n:     Number of highest-frequency signs to analyse.
+        top_n:     Number of highest-frequency signs to analyze.
         freq:      Frequency dict for ranking (optional).
 
     Returns:
@@ -165,11 +165,11 @@ def cluster_by_vowel_class(
         return [[s] for s in candidates]
 
     # Convert counters to probability dicts
-    def normalise(c: Counter) -> dict[str, float]:
+    def normalize(c: Counter) -> dict[str, float]:
         total = sum(c.values()) or 1.0
         return {k: v / total for k, v in c.items()}
 
-    profiles = {s: normalise(left_ctx[s]) for s in candidates}
+    profiles = {s: normalize(left_ctx[s]) for s in candidates}
 
     # Single-linkage agglomerative clustering on JS-divergence
     clusters: list[list[str]] = [[s] for s in candidates]
@@ -429,7 +429,7 @@ def cross_script_align(
 
 # ── Full analysis pipeline ────────────────────────────────────────────
 
-def analyse_distributional(
+def analyze_distributional(
     inscriptions: list[list[str]],
     min_sign_count: int = 3,
     cluster_threshold: float = 0.30,
@@ -442,7 +442,7 @@ def analyse_distributional(
         inscriptions:            List of sign sequences.
         min_sign_count:          Minimum occurrences to include a sign.
         cluster_threshold:       JS-divergence threshold for clustering.
-        top_n:                   Signs to analyse for clustering.
+        top_n:                   Signs to analyze for clustering.
         reference_inscriptions:  Second corpus for cross-script alignment.
 
     Returns:
@@ -522,7 +522,7 @@ async def run_distributional_decipherment(params: dict[str, Any]) -> dict[str, A
         reference_text_id:  optional second corpus for cross-script alignment
         min_sign_count:     minimum occurrences (default 3)
         cluster_threshold:  JS-divergence threshold (default 0.30)
-        top_n:              signs to analyse (default 40)
+        top_n:              signs to analyze (default 40)
     """
     from glossa_lab.database import get_db
 
@@ -563,7 +563,7 @@ async def run_distributional_decipherment(params: dict[str, Any]) -> dict[str, A
                 if ref_content[i: i + chunk_size]
             ]
 
-    result = analyse_distributional(
+    result = analyze_distributional(
         inscriptions,
         min_sign_count=params.get("min_sign_count", 3),
         cluster_threshold=params.get("cluster_threshold", 0.30),

@@ -178,7 +178,7 @@ def run_indus_atlas(verbose: bool = True) -> dict[str, Any]:
         "summary": summary,
         "top_candidates": candidates,
     }
-    _print(f"  Signs analysed:       {summary['total_signs_analysed']}")
+    _print(f"  Signs analyzed:       {summary['total_signs_analyzed']}")
     _print(f"  Polyvalent candidates:{summary['polyvalence_candidates']} "
            f"({summary['candidate_fraction']:.0%})")
     _print("\n  TOP POLYVALENT SIGNS (bimodal positional = probable dual function):")
@@ -292,8 +292,8 @@ def run_indus_atlas(verbose: bool = True) -> dict[str, Any]:
     # ── §10  Kandles fingerprint ───────────────────────────────────────────────
     _print("§10 KANDLES COLOUR FINGERPRINT")
     _print("─"*50)
-    _print("  NOTE: Kandles colour-coding requires letter-based phonemic transliteration.")
-    _print("  With numeric sign IDs (001-676), the Kandles system cannot assign colours")
+    _print("  NOTE: Kandles color-coding requires letter-based phonemic transliteration.")
+    _print("  With numeric sign IDs (001-676), the Kandles system cannot assign colors")
     _print("  until sign values are known. Kandles analysis will be the PRIMARY OUTPUT")
     _print("  once ICIT access is granted and signs are partially decoded via the")
     _print("  progression benchmark (abjad → syllabary → Indus).")

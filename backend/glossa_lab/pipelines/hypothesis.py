@@ -273,7 +273,7 @@ class HypothesisEngine:
             + scores.get("paradigm_regularity", 0) * 3.0
             + scores.get("kandles", 0) * 2.0
         )
-        # Normalise bigram_ll contribution
+        # Normalize bigram_ll contribution
         if scores["bigram_ll"] != 0:
             total += min(10.0, -scores["bigram_ll"] / 1000.0)
 

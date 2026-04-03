@@ -405,7 +405,7 @@ def fast_kandles_validate(
 ) -> float:
     """Accelerated Kandles validation using numpy batch ops.
 
-    Computes the cosine similarity of the 8-dim Kandles colour
+    Computes the cosine similarity of the 8-dim Kandles color
     distribution vectors. Falls back to the standard kandles module
     if numpy is not available.
     """

@@ -17,7 +17,7 @@ Kandles groups (derived from extended Soundex):
 
 Language-specific bias profiles are defined in kandles_profiles.py.
 Pass a KandlesProfile (or profile name string) to any function to use
-a language-appropriate phoneme→colour mapping instead of the default.
+a language-appropriate phoneme→color mapping instead of the default.
 """
 
 from __future__ import annotations

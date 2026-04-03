@@ -1,7 +1,7 @@
 """Kandles biased experiment runner.
 
 Runs the Linear A anti-circularity suite twice — once with the default
-Greek/English Kandles phoneme→colour mapping, and once with each hypothesis
+Greek/English Kandles phoneme→color mapping, and once with each hypothesis
 using its own language-specific Kandles profile.
 
 Scientific rationale:

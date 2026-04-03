@@ -21,9 +21,9 @@ RELATIONSHIP TO ICIT:
   Our NWSP implementation uses the SAME algorithm described in Fuls (2013)
   and documented in the ICIT online database:
     "The similarity is measured by the weighted Euclidean distances between
-    normalised sign pair frequency curves."
+    normalized sign pair frequency curves."
   Our GPU cosine similarity matrix is mathematically equivalent (cosine
-  similarity on frequency vectors = normalised weighted Euclidean distance
+  similarity on frequency vectors = normalized weighted Euclidean distance
   on the same vectors after L2 normalisation).
 
   The ICIT sign function codes (ITM, TMK, NUM, FSH, SYL, LOG) used in our

@@ -11,7 +11,7 @@ THE SCIENTIFIC QUESTION THIS ANSWERS:
    logo-syllabic system like Sumerian cuneiform?"
 
 THE 10 DIMENSIONS:
-  1.  H1_norm                 : Normalised unigram entropy [0,1]
+  1.  H1_norm                 : Normalized unigram entropy [0,1]
                                 High = rich sign distribution; low = dominated by few signs.
   2.  H2H1_ratio              : Bigram/unigram entropy ratio
                                 < 1 means sequences are constrained (grammatical structure);
@@ -379,30 +379,30 @@ _WEIGHTS: list[float] = [
 ]
 
 
-def _normalise(vector: list[float]) -> list[float]:
-    """Normalise fingerprint vector to [0,1] per dimension."""
-    normalised = []
+def _normalize(vector: list[float]) -> list[float]:
+    """Normalize fingerprint vector to [0,1] per dimension."""
+    normalized = []
     for v, (lo, hi) in zip(vector, _NORM_RANGES):
         if hi == lo:
-            normalised.append(0.0)
+            normalized.append(0.0)
         else:
-            normalised.append(max(0.0, min(1.0, (v - lo) / (hi - lo))))
-    return normalised
+            normalized.append(max(0.0, min(1.0, (v - lo) / (hi - lo))))
+    return normalized
 
 
 def euclidean_distance(fp_a: list[float], fp_b: list[float]) -> float:
-    """Weighted Euclidean distance between two normalised fingerprints."""
-    na = _normalise(fp_a)
-    nb = _normalise(fp_b)
+    """Weighted Euclidean distance between two normalized fingerprints."""
+    na = _normalize(fp_a)
+    nb = _normalize(fp_b)
     return math.sqrt(
         sum(_WEIGHTS[i] * (na[i] - nb[i]) ** 2 for i in range(len(na)))
     )
 
 
 def cosine_similarity(fp_a: list[float], fp_b: list[float]) -> float:
-    """Cosine similarity between two weighted normalised fingerprints."""
-    na = [_WEIGHTS[i] * v for i, v in enumerate(_normalise(fp_a))]
-    nb = [_WEIGHTS[i] * v for i, v in enumerate(_normalise(fp_b))]
+    """Cosine similarity between two weighted normalized fingerprints."""
+    na = [_WEIGHTS[i] * v for i, v in enumerate(_normalize(fp_a))]
+    nb = [_WEIGHTS[i] * v for i, v in enumerate(_normalize(fp_b))]
     dot = sum(a * b for a, b in zip(na, nb))
     mag_a = math.sqrt(sum(a * a for a in na))
     mag_b = math.sqrt(sum(b * b for b in nb))
@@ -442,10 +442,10 @@ def compare_scripts(
     if metric == "euclidean":
         # GPU-accelerated batch Euclidean distance
         from glossa_lab.accelerate import gpu_fingerprint_compare
-        normalised_target = _normalise(target_vec)
-        normalised_db     = [_normalise(v) for v in db_vecs]
+        normalized_target = _normalize(target_vec)
+        normalized_db     = [_normalize(v) for v in db_vecs]
         distances = gpu_fingerprint_compare(
-            normalised_target, normalised_db, weights=_WEIGHTS,
+            normalized_target, normalized_db, weights=_WEIGHTS,
         )
         results: list[dict[str, Any]] = []
         for i, name in enumerate(names):

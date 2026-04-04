@@ -80,61 +80,56 @@ from typing import Any
 # Format: (sign_id, rough_frequency_weight, bias_type)
 _SIGN_CATALOG: list[tuple[str, float, str]] = [
     # Numeral signs (high frequency, specific positional context)
-    ("017", 180.0, "numeral"),   # single stroke
-    ("018", 120.0, "numeral"),   # double stroke
-    ("019",  90.0, "numeral"),   # triple stroke
-    ("020",  60.0, "numeral"),   # circle
-    ("021",  40.0, "numeral"),   # double circle
-
+    ("017", 180.0, "numeral"),  # single stroke
+    ("018", 120.0, "numeral"),  # double stroke
+    ("019", 90.0, "numeral"),  # triple stroke
+    ("020", 60.0, "numeral"),  # circle
+    ("021", 40.0, "numeral"),  # double circle
     # "Fish" complex — strong terminal bias (Parpola 1994)
     ("159", 160.0, "terminal"),  # fish: most common terminal
     ("070", 110.0, "terminal"),  # fish variant
-    ("071",  70.0, "terminal"),  # fish variant 2
-    ("072",  50.0, "terminal"),  # fish + stroke
-
+    ("071", 70.0, "terminal"),  # fish variant 2
+    ("072", 50.0, "terminal"),  # fish + stroke
     # "Jar" sign — very common, terminal-biased
     ("342", 200.0, "terminal"),  # jar sign (most common terminal)
-    ("343",  80.0, "terminal"),  # jar variant
-
+    ("343", 80.0, "terminal"),  # jar variant
     # Anthropomorphic initial signs
-    ("411", 140.0, "initial"),   # main initial sign
-    ("412",  95.0, "initial"),   # initial variant 1
-    ("413",  65.0, "initial"),   # initial variant 2
-    ("400",  55.0, "initial"),   # initial cluster sign
-
+    ("411", 140.0, "initial"),  # main initial sign
+    ("412", 95.0, "initial"),  # initial variant 1
+    ("413", 65.0, "initial"),  # initial variant 2
+    ("400", 55.0, "initial"),  # initial cluster sign
     # Polyvalent sign (Fuls 2014 sign 550)
-    ("550",  85.0, "bimodal"),   # bimodal: appears both initial and terminal
-
+    ("550", 85.0, "bimodal"),  # bimodal: appears both initial and terminal
     # High-frequency composite signs (phonetic-like, medial)
     ("100", 130.0, "medial"),
-    ("101",  90.0, "medial"),
-    ("102",  75.0, "medial"),
-    ("103",  60.0, "medial"),
-    ("110",  55.0, "medial"),
-    ("111",  45.0, "medial"),
-    ("120",  70.0, "medial"),
-    ("121",  55.0, "medial"),
-    ("122",  40.0, "medial"),
-    ("200",  50.0, "medial"),
-    ("201",  40.0, "medial"),
-    ("202",  35.0, "medial"),
-    ("300",  60.0, "medial"),
-    ("301",  45.0, "medial"),
-    ("302",  35.0, "medial"),
-    ("303",  30.0, "medial"),
-    ("310",  40.0, "medial"),
-    ("320",  35.0, "medial"),
-    ("321",  30.0, "medial"),
-    ("500",  25.0, "medial"),
-    ("501",  20.0, "medial"),
-    ("502",  18.0, "medial"),
-    ("510",  15.0, "medial"),
+    ("101", 90.0, "medial"),
+    ("102", 75.0, "medial"),
+    ("103", 60.0, "medial"),
+    ("110", 55.0, "medial"),
+    ("111", 45.0, "medial"),
+    ("120", 70.0, "medial"),
+    ("121", 55.0, "medial"),
+    ("122", 40.0, "medial"),
+    ("200", 50.0, "medial"),
+    ("201", 40.0, "medial"),
+    ("202", 35.0, "medial"),
+    ("300", 60.0, "medial"),
+    ("301", 45.0, "medial"),
+    ("302", 35.0, "medial"),
+    ("303", 30.0, "medial"),
+    ("310", 40.0, "medial"),
+    ("320", 35.0, "medial"),
+    ("321", 30.0, "medial"),
+    ("500", 25.0, "medial"),
+    ("501", 20.0, "medial"),
+    ("502", 18.0, "medial"),
+    ("510", 15.0, "medial"),
 ]
 
 # Extend with rarer signs following Zipf-Mandelbrot distribution
 # These represent the long tail of hapax and near-hapax signs
 _RARE_SIGN_BASE = 50  # starting sign number for generated rare signs
-_N_RARE_SIGNS = 360   # to reach ~400 total signs
+_N_RARE_SIGNS = 360  # to reach ~400 total signs
 
 
 def _build_sign_frequency_table(seed: int = 42) -> dict[str, float]:
@@ -170,11 +165,13 @@ def _build_sign_frequency_table(seed: int = 42) -> dict[str, float]:
 
 # ── Positional bias helpers ────────────────────────────────────────────
 
+
 def _is_terminal_biased(sign_id: str) -> bool:
     for sid, _, bias in _SIGN_CATALOG:
         if sid == sign_id:
             return bias in ("terminal",)
     return False
+
 
 def _is_initial_biased(sign_id: str) -> bool:
     for sid, _, bias in _SIGN_CATALOG:
@@ -182,11 +179,13 @@ def _is_initial_biased(sign_id: str) -> bool:
             return bias in ("initial",)
     return False
 
+
 def _is_bimodal(sign_id: str) -> bool:
     for sid, _, bias in _SIGN_CATALOG:
         if sid == sign_id:
             return bias == "bimodal"
     return False
+
 
 def _is_numeral(sign_id: str) -> bool:
     for sid, _, bias in _SIGN_CATALOG:
@@ -196,6 +195,7 @@ def _is_numeral(sign_id: str) -> bool:
 
 
 # ── Inscription generator ──────────────────────────────────────────────
+
 
 def _inscription_length_sample(rng: random.Random) -> int:
     """Sample inscription length from Parpola 1994 / Yadav 2010 distribution.
@@ -236,15 +236,19 @@ def generate_corpus(
 
     # Separate sign pools by positional bias
     terminal_pool = [s for s in all_signs if _is_terminal_biased(s)]
-    initial_pool  = [s for s in all_signs if _is_initial_biased(s)]
-    numeral_pool  = [s for s in all_signs if _is_numeral(s)]
-    bimodal_pool  = [s for s in all_signs if _is_bimodal(s)]
-    medial_pool   = [s for s in all_signs if not (  # noqa: F841
-        _is_terminal_biased(s) or _is_initial_biased(s) or _is_numeral(s)
-    )]
+    initial_pool = [s for s in all_signs if _is_initial_biased(s)]
+    numeral_pool = [s for s in all_signs if _is_numeral(s)]
+    bimodal_pool = [s for s in all_signs if _is_bimodal(s)]
+    medial_pool = [
+        s
+        for s in all_signs
+        if not (  # noqa: F841
+            _is_terminal_biased(s) or _is_initial_biased(s) or _is_numeral(s)
+        )
+    ]
 
     terminal_weights = [freq_table[s] for s in terminal_pool]
-    initial_weights  = [freq_table[s] for s in initial_pool]
+    initial_weights = [freq_table[s] for s in initial_pool]
 
     inscriptions: list[list[str]] = []
     total = 0
@@ -256,7 +260,7 @@ def generate_corpus(
 
         for pos in range(length):
             is_first = pos == 0
-            is_last  = pos == length - 1
+            is_last = pos == length - 1
             is_second_to_last = pos == length - 2
 
             # Positional selection
@@ -298,6 +302,7 @@ def generate_corpus(
 
 # ── Corpus statistics ──────────────────────────────────────────────────
 
+
 def get_corpus_inscriptions(seed: int = 42) -> list[list[str]]:
     """Return synthetic Indus corpus as list of inscriptions.
 
@@ -321,18 +326,18 @@ def corpus_statistics(seed: int = 42) -> dict[str, Any]:
     freq = Counter(flat)
     lengths = [len(i) for i in inscriptions]
     return {
-        "status":                 "SYNTHETIC — matches published statistics",
-        "sources":                ["Yadav 2010", "Rao 2009", "Parpola 1994", "Fuls 2014"],
-        "total_tokens":           len(flat),
-        "n_inscriptions":         len(inscriptions),
-        "distinct_signs":         len(freq),
-        "type_token_ratio":       round(len(freq) / len(flat), 4) if flat else 0,
-        "hapax_count":            sum(1 for v in freq.values() if v == 1),
-        "hapax_fraction":         round(sum(1 for v in freq.values() if v == 1) / len(freq), 3),
-        "rare5_count":            sum(1 for v in freq.values() if v <= 5),
-        "rare5_fraction":         round(sum(1 for v in freq.values() if v <= 5) / len(freq), 3),
+        "status": "SYNTHETIC — matches published statistics",
+        "sources": ["Yadav 2010", "Rao 2009", "Parpola 1994", "Fuls 2014"],
+        "total_tokens": len(flat),
+        "n_inscriptions": len(inscriptions),
+        "distinct_signs": len(freq),
+        "type_token_ratio": round(len(freq) / len(flat), 4) if flat else 0,
+        "hapax_count": sum(1 for v in freq.values() if v == 1),
+        "hapax_fraction": round(sum(1 for v in freq.values() if v == 1) / len(freq), 3),
+        "rare5_count": sum(1 for v in freq.values() if v <= 5),
+        "rare5_fraction": round(sum(1 for v in freq.values() if v <= 5) / len(freq), 3),
         "avg_inscription_length": round(sum(lengths) / len(lengths), 2) if lengths else 0,
         "max_inscription_length": max(lengths) if lengths else 0,
-        "top_signs":              freq.most_common(10),
-        "sign_numbering":         "Fuls (2014) catalog, 001-676",
+        "top_signs": freq.most_common(10),
+        "sign_numbering": "Fuls (2014) catalog, 001-676",
     }

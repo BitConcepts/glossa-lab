@@ -53,150 +53,177 @@ from typing import Any
 
 _UR3_SIGN_FREQUENCIES: dict[str, int] = {
     # Determinatives (unpronounced classifiers)
-    "d":      212388,  # divine determinative (DINGIR)
-    "ki":     157033,  # place/city determinative
-    "gesz":    42059,  # wood/tree determinative
-    "u2":      13024,  # plant determinative
-    "muszen":   9812,  # bird determinative
-    "ku6":      6234,  # fish determinative
+    "d": 212388,  # divine determinative (DINGIR)
+    "ki": 157033,  # place/city determinative
+    "gesz": 42059,  # wood/tree determinative
+    "u2": 13024,  # plant determinative
+    "muszen": 9812,  # bird determinative
+    "ku6": 6234,  # fish determinative
     # Numerals
     "1(disz)": 140647,  # 1 (small unit)
-    "2(disz)":  92295,  # 2
-    "3(disz)":  68962,  # 3
-    "5(disz)":  76856,  # 5
-    "1(u)":     66370,  # 10
-    "2(u)":     35049,  # 20
-    "4(disz)":  34706,  # 4
-    "6(disz)":  24981,  # 6
-    "1(asz)":   24012,  # 1 large unit
-    "7(disz)":  23108,  # 7
-    "8(disz)":  19021,  # 8
-    "9(disz)":  16234,  # 9
-    "3(u)":     15672,  # 30
-    "4(u)":     11891,  # 40
+    "2(disz)": 92295,  # 2
+    "3(disz)": 68962,  # 3
+    "5(disz)": 76856,  # 5
+    "1(u)": 66370,  # 10
+    "2(u)": 35049,  # 20
+    "4(disz)": 34706,  # 4
+    "6(disz)": 24981,  # 6
+    "1(asz)": 24012,  # 1 large unit
+    "7(disz)": 23108,  # 7
+    "8(disz)": 19021,  # 8
+    "9(disz)": 16234,  # 9
+    "3(u)": 15672,  # 30
+    "4(u)": 11891,  # 40
     # Common administrative words / logograms
-    "ba":      154180,  # give/allocate
-    "a":       145665,  # water / to (preposition)
-    "mu":      124352,  # year / name / of (genitive)
-    "sila3":   107781,  # liter (capacity measure)
-    "ta":       93131,  # from/since (ablative)
-    "ur":       91012,  # dog / servant / person name element
-    "lugal":    82182,  # king
-    "i3":       67804,  # fat/oil
-    "lu2":      67283,  # man/person
-    "na":       66252,  # stone / not
-    "gin2":     65291,  # shekel (weight unit)
-    "iti":      63063,  # month
-    "ga":       62945,  # milk / go
-    "dumu":     61009,  # son/child
-    "szu":      59240,  # hand / receive
-    "ma":       54749,  # boat / 60 (unit)
-    "da":       54692,  # side/beside
-    "sze":      54369,  # barley (main commodity)
-    "gur":      52511,  # large capacity unit
-    "u4":       51044,  # day / sun
-    "sze3":     44188,  # to/toward
-    "udu":      44081,  # sheep
-    "sza3":     44076,  # heart/interior
-    "ra":       42950,  # beat / go
-    "la":       41558,  # hang/minus
-    "kam":      41419,  # ordinal marker
-    "e2":       39999,  # house/temple
-    "bi":       39019,  # its/their
-    "kasz":     37842,  # beer
-    "zi":       36848,  # life/true
-    "en":       36479,  # lord/priest
-    "szunigin":  36107,  # total/grand total
-    "la2":      36091,  # weigh/minus
-    "nin":      33804,  # lady/queen
-    "sar":      32919,  # garden/write
-    "ninda":    32698,  # bread/food
-    "kiszib3":  32583,  # seal impression
-    "gu4":      32289,  # bull/ox
-    "gi":       31485,  # reed/return
-    "ma2":      29847,  # boat
-    "ku3":      29234,  # silver/pure
-    "ab":       28901,  # cow/sea
-    "nu":       28456,  # not/craftsman
-    "ga2":      27891,  # storehouse
-    "si":       27234,  # fill/horn
-    "sum":      26789,  # give/onion
-    "igi":      26456,  # eye/before
-    "gal":      25678,  # great/large
-    "du":       25234,  # go/build
-    "de3":      24892,  # pour/carry
-    "tur":      24567,  # small/child
-    "an":       23891,  # sky/heaven (AN/DINGIR)
-    "ud":       23456,  # day (variant)
-    "im":       22987,  # clay/wind
-    "tug2":     22456,  # garment/cloth
-    "masz":     21987,  # kid/goat
-    "li":       21456,  # juniper
-    "ti":       21234,  # rib/life/arrow
-    "al":       20987,  # hoe/desire
-    "en3":      20456,  # how/where
-    "gu7":      19876,  # eat/grass
-    "zu":       19234,  # know/tooth
-    "ni2":      18987,  # self/fear
-    "bu":       18456,  # dig/pluck
-    "igi3":     17987,  # fat (variant)
-    "dug4":     17456,  # speak/do
-    "sag":      17234,  # head/chief
-    "kin":      16897,  # work/send
-    "mi":       16456,  # dark/woman
-    "di4":      15987,  # small (variant)
-    "u3":       15456,  # and/sleep
-    "ku":       14987,  # fish/enter
-    "gi4":      14456,  # return/reed
-    "mu7":      13987,  # incantation
-    "su":       13456,  # body/replace
-    "ag2":      12987,  # love/make
-    "in":       12456,  # straw
-    "ib2":      11987,  # waist
-    "ru":       11456,  # give/stand
-    "pa":       10987,  # wing/branch
-    "me":       10456,  # be/power
-    "er2":       9987,  # tear
-    "bad3":      9456,  # open/wall
-    "ne":        8987,  # fire/that
-    "ub":        8456,  # corner
-    "za":        7987,  # stone (lapis)
-    "ze2":       7456,  # bile/you
+    "ba": 154180,  # give/allocate
+    "a": 145665,  # water / to (preposition)
+    "mu": 124352,  # year / name / of (genitive)
+    "sila3": 107781,  # liter (capacity measure)
+    "ta": 93131,  # from/since (ablative)
+    "ur": 91012,  # dog / servant / person name element
+    "lugal": 82182,  # king
+    "i3": 67804,  # fat/oil
+    "lu2": 67283,  # man/person
+    "na": 66252,  # stone / not
+    "gin2": 65291,  # shekel (weight unit)
+    "iti": 63063,  # month
+    "ga": 62945,  # milk / go
+    "dumu": 61009,  # son/child
+    "szu": 59240,  # hand / receive
+    "ma": 54749,  # boat / 60 (unit)
+    "da": 54692,  # side/beside
+    "sze": 54369,  # barley (main commodity)
+    "gur": 52511,  # large capacity unit
+    "u4": 51044,  # day / sun
+    "sze3": 44188,  # to/toward
+    "udu": 44081,  # sheep
+    "sza3": 44076,  # heart/interior
+    "ra": 42950,  # beat / go
+    "la": 41558,  # hang/minus
+    "kam": 41419,  # ordinal marker
+    "e2": 39999,  # house/temple
+    "bi": 39019,  # its/their
+    "kasz": 37842,  # beer
+    "zi": 36848,  # life/true
+    "en": 36479,  # lord/priest
+    "szunigin": 36107,  # total/grand total
+    "la2": 36091,  # weigh/minus
+    "nin": 33804,  # lady/queen
+    "sar": 32919,  # garden/write
+    "ninda": 32698,  # bread/food
+    "kiszib3": 32583,  # seal impression
+    "gu4": 32289,  # bull/ox
+    "gi": 31485,  # reed/return
+    "ma2": 29847,  # boat
+    "ku3": 29234,  # silver/pure
+    "ab": 28901,  # cow/sea
+    "nu": 28456,  # not/craftsman
+    "ga2": 27891,  # storehouse
+    "si": 27234,  # fill/horn
+    "sum": 26789,  # give/onion
+    "igi": 26456,  # eye/before
+    "gal": 25678,  # great/large
+    "du": 25234,  # go/build
+    "de3": 24892,  # pour/carry
+    "tur": 24567,  # small/child
+    "an": 23891,  # sky/heaven (AN/DINGIR)
+    "ud": 23456,  # day (variant)
+    "im": 22987,  # clay/wind
+    "tug2": 22456,  # garment/cloth
+    "masz": 21987,  # kid/goat
+    "li": 21456,  # juniper
+    "ti": 21234,  # rib/life/arrow
+    "al": 20987,  # hoe/desire
+    "en3": 20456,  # how/where
+    "gu7": 19876,  # eat/grass
+    "zu": 19234,  # know/tooth
+    "ni2": 18987,  # self/fear
+    "bu": 18456,  # dig/pluck
+    "igi3": 17987,  # fat (variant)
+    "dug4": 17456,  # speak/do
+    "sag": 17234,  # head/chief
+    "kin": 16897,  # work/send
+    "mi": 16456,  # dark/woman
+    "di4": 15987,  # small (variant)
+    "u3": 15456,  # and/sleep
+    "ku": 14987,  # fish/enter
+    "gi4": 14456,  # return/reed
+    "mu7": 13987,  # incantation
+    "su": 13456,  # body/replace
+    "ag2": 12987,  # love/make
+    "in": 12456,  # straw
+    "ib2": 11987,  # waist
+    "ru": 11456,  # give/stand
+    "pa": 10987,  # wing/branch
+    "me": 10456,  # be/power
+    "er2": 9987,  # tear
+    "bad3": 9456,  # open/wall
+    "ne": 8987,  # fire/that
+    "ub": 8456,  # corner
+    "za": 7987,  # stone (lapis)
+    "ze2": 7456,  # bile/you
 }
 
 # Sign functional types (for NWSP validation)
 # Follows Fuls' ICIT function code taxonomy
 _UR3_SIGN_FUNCTIONS: dict[str, str] = {
-    "d":       "ITM",   # determinative (initial position)
-    "ki":      "ITM",   # place determinative (terminal)
-    "gesz":    "ITM",   # wood determinative (initial)
-    "u2":      "ITM",
-    "1(disz)": "NUM", "2(disz)": "NUM", "3(disz)": "NUM",
-    "4(disz)": "NUM", "5(disz)": "NUM", "6(disz)": "NUM",
-    "7(disz)": "NUM", "8(disz)": "NUM", "9(disz)": "NUM",
-    "1(u)":    "NUM", "2(u)":    "NUM", "3(u)":    "NUM",
-    "1(asz)":  "NUM",
-    "lugal":   "LOG",   # logogram: king
-    "nin":     "LOG",   # logogram: queen/lady
-    "dumu":    "LOG",   # logogram: son
-    "udu":     "LOG",   # logogram: sheep
-    "ninda":   "LOG",   # logogram: bread
-    "sze":     "LOG",   # logogram: barley
-    "e2":      "LOG",   # logogram: house
-    "gu4":     "LOG",   # logogram: ox
+    "d": "ITM",  # determinative (initial position)
+    "ki": "ITM",  # place determinative (terminal)
+    "gesz": "ITM",  # wood determinative (initial)
+    "u2": "ITM",
+    "1(disz)": "NUM",
+    "2(disz)": "NUM",
+    "3(disz)": "NUM",
+    "4(disz)": "NUM",
+    "5(disz)": "NUM",
+    "6(disz)": "NUM",
+    "7(disz)": "NUM",
+    "8(disz)": "NUM",
+    "9(disz)": "NUM",
+    "1(u)": "NUM",
+    "2(u)": "NUM",
+    "3(u)": "NUM",
+    "1(asz)": "NUM",
+    "lugal": "LOG",  # logogram: king
+    "nin": "LOG",  # logogram: queen/lady
+    "dumu": "LOG",  # logogram: son
+    "udu": "LOG",  # logogram: sheep
+    "ninda": "LOG",  # logogram: bread
+    "sze": "LOG",  # logogram: barley
+    "e2": "LOG",  # logogram: house
+    "gu4": "LOG",  # logogram: ox
     "szunigin": "TMK",  # terminal marker: total/sum
-    "kiszib3":  "TMK",  # terminal marker: seal
+    "kiszib3": "TMK",  # terminal marker: seal
     # Syllabograms (phonetic signs)
-    "ba": "SYL", "ta": "SYL", "na": "SYL", "ga": "SYL",
-    "ma": "SYL", "da": "SYL", "ra": "SYL", "la": "SYL",
-    "bi": "SYL", "zi": "SYL", "si": "SYL", "du": "SYL",
-    "ti": "SYL", "li": "SYL", "bu": "SYL", "ru": "SYL",
-    "pa": "SYL", "me": "SYL", "ne": "SYL", "nu": "SYL",
-    "ku": "SYL", "gi": "SYL", "su": "SYL", "za": "SYL",
+    "ba": "SYL",
+    "ta": "SYL",
+    "na": "SYL",
+    "ga": "SYL",
+    "ma": "SYL",
+    "da": "SYL",
+    "ra": "SYL",
+    "la": "SYL",
+    "bi": "SYL",
+    "zi": "SYL",
+    "si": "SYL",
+    "du": "SYL",
+    "ti": "SYL",
+    "li": "SYL",
+    "bu": "SYL",
+    "ru": "SYL",
+    "pa": "SYL",
+    "me": "SYL",
+    "ne": "SYL",
+    "nu": "SYL",
+    "ku": "SYL",
+    "gi": "SYL",
+    "su": "SYL",
+    "za": "SYL",
 }
 
 
 # ── Corpus generation ─────────────────────────────────────────────────
+
 
 def _build_frequency_table() -> dict[str, float]:
     """Return relative frequency table for corpus generation."""
@@ -227,14 +254,16 @@ def generate_corpus(
     weights = list(freq_table.values())
 
     # Separate sign pools by functional role for realistic positioning
-    numerals    = [s for s in signs if _UR3_SIGN_FUNCTIONS.get(s) == "NUM"]
-    logograms   = [s for s in signs if _UR3_SIGN_FUNCTIONS.get(s) == "LOG"]
+    numerals = [s for s in signs if _UR3_SIGN_FUNCTIONS.get(s) == "NUM"]
+    logograms = [s for s in signs if _UR3_SIGN_FUNCTIONS.get(s) == "LOG"]
     determinatives = [s for s in signs if _UR3_SIGN_FUNCTIONS.get(s) == "ITM"]
-    terminal_m  = [s for s in signs if _UR3_SIGN_FUNCTIONS.get(s) == "TMK"]
+    terminal_m = [s for s in signs if _UR3_SIGN_FUNCTIONS.get(s) == "TMK"]
     syllabograms = [s for s in signs if _UR3_SIGN_FUNCTIONS.get(s) == "SYL"]
-    general     = [s for s in signs if s not in (
-        numerals + logograms + determinatives + terminal_m + syllabograms
-    )]
+    general = [
+        s
+        for s in signs
+        if s not in (numerals + logograms + determinatives + terminal_m + syllabograms)
+    ]
 
     # Simplified Ur III tablet structure:
     # [det.][commodity][number][unit] [person-name] [verb] [month] [year]
@@ -251,7 +280,7 @@ def generate_corpus(
 
         for pos in range(length):
             is_first = pos == 0
-            is_last  = pos == length - 1
+            is_last = pos == length - 1
             is_second = pos == 1
 
             if is_first and determinatives and rng.random() < 0.55:
@@ -263,8 +292,8 @@ def generate_corpus(
             elif is_last and rng.random() < 0.40:
                 # Terminal marker or year/month formula
                 sign = rng.choice(
-                    (terminal_m if terminal_m else []) +
-                    (["mu", "iti", "u4"] if rng.random() < 0.5 else [])
+                    (terminal_m if terminal_m else [])
+                    + (["mu", "iti", "u4"] if rng.random() < 0.5 else [])
                     or general[:5]
                 )
             else:
@@ -299,25 +328,25 @@ def get_sign_functions() -> dict[str, str]:
 def corpus_statistics(seed: int = 42) -> dict[str, Any]:
     """Return key statistics about the Ur III corpus."""
     inscs = get_corpus_inscriptions(seed)
-    flat  = get_corpus_symbols(seed)
-    freq  = Counter(flat)
+    flat = get_corpus_symbols(seed)
+    freq = Counter(flat)
     lengths = [len(i) for i in inscs]
     return {
-        "source":          "CDLI Ur III sign statistics (cdli.earth, 2025)",
+        "source": "CDLI Ur III sign statistics (cdli.earth, 2025)",
         "real_cdli_stats": {
-            "n_inscriptions":  83741,
-            "n_tokens":        6097614,
-            "distinct_signs":  4793,
+            "n_inscriptions": 83741,
+            "n_tokens": 6097614,
+            "distinct_signs": 4793,
         },
         "synthetic_corpus": {
-            "n_inscriptions":  len(inscs),
-            "n_tokens":        len(flat),
-            "distinct_signs":  len(freq),
+            "n_inscriptions": len(inscs),
+            "n_tokens": len(flat),
+            "distinct_signs": len(freq),
             "type_token_ratio": round(len(freq) / len(flat), 4) if flat else 0,
-            "hapax_count":     sum(1 for v in freq.values() if v == 1),
-            "avg_length":      round(sum(lengths) / len(lengths), 2) if lengths else 0,
+            "hapax_count": sum(1 for v in freq.values() if v == 1),
+            "avg_length": round(sum(lengths) / len(lengths), 2) if lengths else 0,
         },
-        "top_signs":       freq.most_common(10),
-        "writing_type":    "logo-syllabic (Tier 5)",
+        "top_signs": freq.most_common(10),
+        "writing_type": "logo-syllabic (Tier 5)",
         "known_functions": len(_UR3_SIGN_FUNCTIONS),
     }

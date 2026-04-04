@@ -8,15 +8,14 @@ Verifies:
   5. CPSC and hill climbing both crack the synthetic cipher
 """
 
-from tests.corpora.cipher_language import generate_cipher_test_data
-
 from glossa_lab.pipelines.decipher import (
     LanguageModel,
+    _cpsc_available,
     decipher,
     decipher_auto,
     score_accuracy,
-    _cpsc_available,
 )
+from tests.corpora.cipher_language import generate_cipher_test_data
 
 
 def _data():

@@ -17,6 +17,7 @@ produces results consistent with the published findings:
   - Ordered: collapses for N≥2
 """
 
+from glossa_lab.pipelines.block_entropy import compute_block_entropies
 from tests.corpora.real import (
     load_dna,
     load_english,
@@ -27,8 +28,6 @@ from tests.corpora.real import (
     load_tamil,
 )
 from tests.corpora.synthetic import generate_ordered, generate_random
-
-from glossa_lab.pipelines.block_entropy import compute_block_entropies
 
 
 def _get_norm(result: dict, n: int) -> float:

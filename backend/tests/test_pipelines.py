@@ -1,16 +1,15 @@
 """Tests for Kandles, positional, sign clustering, paradigm, and co-occurrence pipelines."""
 
+from glossa_lab.pipelines.cooccurrence import build_cooccurrence_network
 from glossa_lab.pipelines.kandles import (
     classify_word,
     color_code_text,
     compare_grids,
     generate_grid,
 )
+from glossa_lab.pipelines.paradigm import detect_paradigms
 from glossa_lab.pipelines.positional import compute_positional_freq
 from glossa_lab.pipelines.sign_cluster import compute_sign_clusters
-from glossa_lab.pipelines.paradigm import detect_paradigms
-from glossa_lab.pipelines.cooccurrence import build_cooccurrence_network
-
 
 # ── Kandles ───────────────────────────────────────────────────────
 

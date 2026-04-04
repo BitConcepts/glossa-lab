@@ -20,7 +20,6 @@ from glossa_lab.pipelines.nsb_entropy import (
 )
 from tests.corpora.synthetic import generate_random
 
-
 # ── Unit tests ────────────────────────────────────────────────────────
 
 

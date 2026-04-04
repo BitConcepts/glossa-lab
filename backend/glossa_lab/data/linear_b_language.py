@@ -190,10 +190,6 @@ def build_answer_key(opaque_sequence: list[str]) -> dict[str, str]:
     The opaque IDs are in the form 'LB_01', 'LB_02', etc., assigned in
     the order the syllables appear in the corpus (most frequent first).
     """
-    from collections import Counter
-
-    counts = Counter(opaque_sequence)
-    # Map by frequency rank — LB_01 = most frequent sign
     # Reverse-lookup: opaque_id → true_syllable
     # This is built when the corpus is encoded
     return {}  # populated by encode_corpus()

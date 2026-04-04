@@ -1,0 +1,35 @@
+{
+  "luwian_vocabulary_size": 88,
+  "luwian_corpus_tokens": 24240,
+  "luwian_phoneme_inventory_size": 17,
+  "luwian_phoneme_inventory": [
+    "a",
+    "b",
+    "d",
+    "h",
+    "i",
+    "k",
+    "l",
+    "m",
+    "n",
+    "p",
+    "r",
+    "s",
+    "t",
+    "u",
+    "w",
+    "y",
+    "z"
+  ],
+  "greek_phoneme_inventory_size": 18,
+  "linear_a_test_tokens": 7400,
+  "luwian_log_likelihood_per_token": -4.605170185987772,
+  "greek_log_likelihood_per_token": -4.605170185987772,
+  "luwian_advantage": 0.0,
+  "interpretation": "Richer Luwian model does NOT strengthen advantage",
+  "model_sources": [
+    "Melchert (1994) Anatolian Historical Phonology",
+    "Yakubovich (2010) Sociolinguistics of the Luvian Language",
+    "Hawkins (2000) Corpus of Hieroglyphic Luwian Inscriptions (CHLI)"
+  ]
+}

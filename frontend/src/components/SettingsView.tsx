@@ -1,23 +1,28 @@
 import { useEffect, useState } from "react";
 import {
   getSettings, updateSettings,
+  getProviderCatalog,
   setLocalKey, clearLocalKey, isLocalKeySet,
-  KeyStatus,
+  KeyStatus, CatalogProvider,
 } from "../api";
 
 const KEY_LABELS: Record<string, { label: string; hint: string; priority?: boolean }> = {
   mistral_api_key: {
     label: "Mistral API Key",
-    hint: "Required for OCR of Mahadevan (1977) corpus via pixtral-12b. Get yours at console.mistral.ai",
+    hint: "Required for OCR via pixtral-12b. Get yours at console.mistral.ai",
     priority: true,
   },
   openai_api_key: {
     label: "OpenAI API Key",
-    hint: "Optional. For future GPT-4 vision or embedding tasks.",
+    hint: "For GPT-4 vision, embeddings, and agentic tasks.",
   },
   anthropic_api_key: {
     label: "Anthropic API Key",
-    hint: "Optional. For future Claude vision tasks.",
+    hint: "For Claude vision and reasoning tasks.",
+  },
+  google_api_key: {
+    label: "Google API Key",
+    hint: "For Gemini vision and multimodal tasks.",
   },
 };
 
@@ -28,19 +33,36 @@ export function SettingsView() {
   const [saving, setSaving] = useState(false);
   const [savedMsg, setSavedMsg] = useState<Record<string, string>>({});
   const [error, setError] = useState("");
+  const [providers, setProviders] = useState<CatalogProvider[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [providerPrefs, setProviderPrefs] = useState<Record<string, any>>({});
 
   const load = async () => {
     try {
       const s = await getSettings();
       setBackendKeys(s.keys);
       setDataDir(s.data_dir);
+      setProviderPrefs((s as unknown as Record<string, unknown>).providers as Record<string, unknown> ?? {});
       setError("");
     } catch {
       // Backend might not be available; localStorage still works
     }
+    getProviderCatalog().then(setProviders).catch(() => {});
   };
 
   useEffect(() => { load(); }, []);
+
+  const handleProviderToggle = async (pid: string, enabled: boolean) => {
+    const updated = { ...providerPrefs, [pid]: { ...(providerPrefs[pid] ?? {}), enabled } };
+    setProviderPrefs(updated);
+    try { await updateSettings({ providers: { [pid]: { ...(providerPrefs[pid] ?? {}), enabled } } }); } catch { /* optional */ }
+  };
+
+  const handleModelSelect = async (pid: string, model: string) => {
+    const updated = { ...providerPrefs, [pid]: { ...(providerPrefs[pid] ?? {}), selected_model: model } };
+    setProviderPrefs(updated);
+    try { await updateSettings({ providers: { [pid]: { ...(providerPrefs[pid] ?? {}), selected_model: model } } }); } catch { /* optional */ }
+  };
 
   // A key is "set" if it's in localStorage OR in backend env/storage
   const isSet = (key: string) => isLocalKeySet(key) || (backendKeys[key]?.set ?? false);
@@ -158,6 +180,38 @@ export function SettingsView() {
           );
         })}
       </section>
+
+      {/* Provider toggles */}
+      {providers.length > 0 && (
+        <section style={sectionStyle}>
+          <h3 style={sectionTitleStyle}>Provider Enable / Model Selection</h3>
+          <p style={hintTextStyle}>Enable providers and select the model to use for each. OCR-capable providers are highlighted.</p>
+          <div style={{ display: "grid", gap: "0.75rem", marginTop: "0.75rem" }}>
+            {providers.map((p) => {
+              const pref = providerPrefs[p.id] ?? {};
+              const enabled = pref.enabled ?? false;
+              const selectedModel = pref.selected_model ?? p.recommended_models[0] ?? "";
+              const keySet = backendKeys[p.api_key_setting]?.set || isLocalKeySet(p.api_key_setting);
+              return (
+                <div key={p.id} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 12px", border: "1px solid #e5e7eb", borderRadius: 8, background: enabled ? "#f0fdf4" : "#fafafa" }}>
+                  <input type="checkbox" checked={enabled} onChange={(e) => handleProviderToggle(p.id, e.target.checked)} style={{ width: 16, height: 16, cursor: "pointer" }} />
+                  <span style={{ fontWeight: 600, fontSize: 13, minWidth: 80 }}>{p.label}</span>
+                  {p.ocr_preferred_models.length > 0 && <span style={{ fontSize: 10, color: "#7c3aed", background: "#ede9fe", padding: "1px 6px", borderRadius: 8, fontWeight: 600 }}>OCR</span>}
+                  {!keySet && <span style={{ fontSize: 10, color: "#d97706", background: "#fef3c7", padding: "1px 6px", borderRadius: 8 }}>No key</span>}
+                  <select
+                    value={selectedModel}
+                    onChange={(e) => handleModelSelect(p.id, e.target.value)}
+                    disabled={!enabled}
+                    style={{ marginLeft: "auto", fontSize: 12, padding: "3px 6px", borderRadius: 4, border: "1px solid #d1d5db", background: enabled ? "#fff" : "#f9fafb", cursor: enabled ? "pointer" : "default" }}
+                  >
+                    {p.recommended_models.map((m) => <option key={m} value={m}>{m}</option>)}
+                  </select>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       {/* System info */}
       <section style={sectionStyle}>

@@ -1,9 +1,9 @@
 /**
- * Experiments View — launch and monitor analysis experiments.
- * Shows status of each experiment and links to results.
+ * Experiments View — launch and monitor analysis experiments (live from catalog).
  */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getCatalog, isLocalKeySet } from "../api";
 
 interface Experiment {
   id: string;
@@ -140,11 +140,36 @@ const CATEGORY_COLORS: Record<string, string> = {
 
 export function ExperimentsView() {
   const [filter, setFilter] = useState<string>("all");
-  const categories = ["all", ...Array.from(new Set(EXPERIMENTS.map((e) => e.category)))];
+  const [experiments, setExperiments] = useState(EXPERIMENTS);
+
+  useEffect(() => {
+    getCatalog().then((cat) => {
+  const merged = cat.experiments.map((e) => ({
+        id: e.id,
+        name: e.name,
+        category: e.category,
+        description: e.description,
+        command: e.command,
+        resultsFile: e.results_file,
+        requiresKey: e.requires_key,
+        estimatedTime: e.estimated_time,
+        status: (
+          e.requires_key && !isLocalKeySet(e.requires_key)
+            ? "needs_key"
+            : cat.reports.some((r) => r.relative_path === e.results_file)
+              ? "ran"
+              : "ready"
+        ) as "ready" | "needs_key" | "ran",
+      }));
+      if (merged.length > 0) setExperiments(merged);
+    }).catch(() => {});
+  }, []);
+
+  const categories = ["all", ...Array.from(new Set(experiments.map((e) => e.category)))];
 
   const visible = filter === "all"
-    ? EXPERIMENTS
-    : EXPERIMENTS.filter((e) => e.category === filter);
+    ? experiments
+    : experiments.filter((e) => e.category === filter);
 
   return (
     <div>

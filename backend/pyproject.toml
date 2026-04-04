@@ -49,5 +49,8 @@ line-length = 100
 [tool.ruff.lint]
 select = ["E", "F", "I", "W"]
 
+[tool.ruff.lint.isort]
+known-first-party = ["glossa_lab", "tests"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]

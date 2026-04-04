@@ -9,19 +9,17 @@ This tests whether Glossa Lab's toolkit would have been useful to
 scholars attempting to decipher Ugaritic in the 1930s.
 """
 
+from glossa_lab.pipelines.block_entropy import compute_block_entropies
+from glossa_lab.pipelines.char_freq import compute_char_freq
+from glossa_lab.pipelines.cooccurrence import build_cooccurrence_network
+from glossa_lab.pipelines.positional import compute_positional_freq
+from glossa_lab.pipelines.sign_cluster import compute_sign_clusters
 from tests.corpora.ugaritic import (
     KNOWN_PROPERTIES,
     get_answer_key,
     get_deciphered_corpus,
     get_undeciphered_corpus,
 )
-
-from glossa_lab.pipelines.block_entropy import compute_block_entropies
-from glossa_lab.pipelines.char_freq import compute_char_freq
-from glossa_lab.pipelines.cooccurrence import build_cooccurrence_network
-from glossa_lab.pipelines.positional import compute_positional_freq
-from glossa_lab.pipelines.sign_cluster import compute_sign_clusters
-
 
 # ── 1. Entropy: confirm it's linguistic ───────────────────────────
 

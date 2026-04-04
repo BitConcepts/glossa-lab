@@ -27,10 +27,8 @@ from collections import Counter
 
 from glossa_lab.pipelines.block_entropy import compute_block_entropies
 from glossa_lab.pipelines.decipher import LanguageModel
-from glossa_lab.pipelines.hypothesis import HypothesisEngine, Hypothesis
+from glossa_lab.pipelines.hypothesis import Hypothesis, HypothesisEngine
 from tests.corpora.real import load_linear_a_signs, load_linear_b_signs
-from tests.corpora.linear_a_corpus import get_sign_frequencies, get_sign_inventory
-
 
 # ── Helpers ───────────────────────────────────────────────────────────
 
@@ -74,7 +72,7 @@ _LUWIAN_VOCAB: dict[str, str] = {
     "kuwa":   "where",
     "nu":     "and / then",
     "apa":    "that (pronoun)",
-    "asi":    "he/she (demonstrative)",
+    "ziti":   "he/she (demonstrative)",
     "immari": "name",
 }
 

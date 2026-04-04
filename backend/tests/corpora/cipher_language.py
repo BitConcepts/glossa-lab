@@ -72,7 +72,6 @@ def generate_language_corpus(
     """
     rng = random.Random(seed)
     inscriptions = []
-    cases = list(CASES.keys())
     tenses = list(TENSES.keys())
 
     for _ in range(num_inscriptions):

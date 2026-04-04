@@ -18,7 +18,6 @@ Ugaritic alphabet (30 signs, North Semitic order):
 
 from __future__ import annotations
 
-import random
 from typing import Any
 
 # ── Ugaritic sign inventory ────────────────────────────────────────

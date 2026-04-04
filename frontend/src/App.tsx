@@ -6,8 +6,9 @@ import { StudiesView } from "./components/StudiesView";
 import { ExperimentsView } from "./components/ExperimentsView";
 import { PipelinesView } from "./components/PipelinesView";
 import { SettingsView } from "./components/SettingsView";
+import { ReportsView } from "./components/ReportsView";
 
-type Tab = "status" | "studies" | "experiments" | "pipelines" | "corpora" | "jobs" | "settings";
+type Tab = "status" | "studies" | "experiments" | "pipelines" | "corpora" | "jobs" | "reports" | "settings";
 
 const TABS: { id: Tab; label: string; badge?: string }[] = [
   { id: "status",      label: "Status" },
@@ -16,6 +17,7 @@ const TABS: { id: Tab; label: string; badge?: string }[] = [
   { id: "pipelines",   label: "Pipelines",      badge: "17" },
   { id: "corpora",     label: "Corpora" },
   { id: "jobs",        label: "Jobs" },
+  { id: "reports",     label: "Reports" },
   { id: "settings",    label: "Settings" },
 ];
 
@@ -76,6 +78,7 @@ export function App() {
         {tab === "pipelines"   && <PipelinesView />}
         {tab === "corpora"     && <CorporaView />}
         {tab === "jobs"        && <JobsView />}
+        {tab === "reports"     && <ReportsView />}
         {tab === "settings"    && <SettingsView />}
       </main>
     </div>

@@ -5,9 +5,8 @@ properties. Expected entropy ranges are fixed; any drift indicates a
 bug in the entropy computation.
 """
 
-from tests.corpora.synthetic import generate_markov, generate_ordered, generate_random
-
 from glossa_lab.pipelines.block_entropy import compute_block_entropies
+from tests.corpora.synthetic import generate_markov, generate_ordered, generate_random
 
 
 def _get_norm(result: dict, n: int) -> float:

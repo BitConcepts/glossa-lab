@@ -74,7 +74,8 @@ def _load_corpus(corpus_id: str) -> dict | None:
     """Load a built-in corpus and return {content, corpus_type, metadata}."""
     try:
         if corpus_id == "ugaritic":
-            import sys, os
+            import os
+            import sys
             _tests = os.path.join(
                 os.path.dirname(os.path.dirname(__file__)), "tests"
             )
@@ -96,6 +97,7 @@ def _load_corpus(corpus_id: str) -> dict | None:
 
         elif corpus_id == "linear_b":
             from pathlib import Path
+
             from glossa_lab.data.linear_b_language import get_corpus_symbols
             flat = get_corpus_symbols()
             fixture = (
@@ -108,8 +110,11 @@ def _load_corpus(corpus_id: str) -> dict | None:
                 for line in fixture.read_text(encoding="utf-8").splitlines():
                     for word in line.strip().split():
                         parts = word.replace("3", "").split("-")
-                        signs = [p.strip().lower() for p in parts
-                                 if p.strip() and p.strip().replace("*","").replace("2","").isalpha()]
+                        signs = [
+                            p.strip().lower() for p in parts
+                            if p.strip()
+                            and p.strip().replace("*", "").replace("2", "").isalpha()
+                        ]
                         if len(signs) >= 2:
                             inscriptions.append(signs)
             return {
@@ -125,7 +130,7 @@ def _load_corpus(corpus_id: str) -> dict | None:
             }
 
         elif corpus_id == "hebrew":
-            from glossa_lab.data.old_hebrew import get_corpus_symbols, get_corpus_inscriptions
+            from glossa_lab.data.old_hebrew import get_corpus_inscriptions, get_corpus_symbols
             flat = get_corpus_symbols()
             inscs = get_corpus_inscriptions()
             return {
@@ -141,7 +146,7 @@ def _load_corpus(corpus_id: str) -> dict | None:
             }
 
         elif corpus_id == "indus_synthetic":
-            from glossa_lab.data.indus_public_corpus import get_corpus_symbols, corpus_statistics
+            from glossa_lab.data.indus_public_corpus import corpus_statistics, get_corpus_symbols
             flat = get_corpus_symbols()
             stats = corpus_statistics()
             return {
@@ -158,7 +163,7 @@ def _load_corpus(corpus_id: str) -> dict | None:
             }
 
         elif corpus_id == "sumerian_ur3":
-            from glossa_lab.data.sumerian_ur3 import get_corpus_symbols, corpus_statistics
+            from glossa_lab.data.sumerian_ur3 import corpus_statistics, get_corpus_symbols
             flat = get_corpus_symbols()
             stats = corpus_statistics()
             return {

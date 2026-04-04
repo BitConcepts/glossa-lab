@@ -99,7 +99,8 @@ def _load_sign_frequencies() -> dict[str, float]:
         reader = csv.DictReader(fh)
         for row in reader:
             sign = row["sign"].strip()
-            if sign and sign not in _SKIP_SIGNS and not sign.startswith("]") and not sign.startswith("[["):
+            if (sign and sign not in _SKIP_SIGNS
+                    and not sign.startswith("]") and not sign.startswith("[[")):
                 try:
                     freqs[sign] = float(row["relative_frequency"])
                 except (ValueError, KeyError):

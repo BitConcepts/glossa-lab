@@ -123,7 +123,9 @@ def run() -> dict:
     print("Top 15 signs by second-position rate:")
     print(f"  {'Sign':>6}  {'TMK':>4}  {'As-2nd':>8}  {'As-1st':>8}  {'Rate':>6}")
     for r in results[:15]:
-        print(f"  {r['sign']:>6}  {'✓' if r['is_tmk'] else '':>4}  {r['as_second']:>8,}  {r['as_first']:>8,}  {r['second_rate']:>6.3f}")
+        tmk_mark = '\u2713' if r['is_tmk'] else ''
+        s, a2, a1, sr = r['sign'], r['as_second'], r['as_first'], r['second_rate']
+        print(f"  {s:>6}  {tmk_mark:>4}  {a2:>8,}  {a1:>8,}  {sr:>6.3f}")
 
     return output
 

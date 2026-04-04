@@ -54,8 +54,8 @@ exit /b %ERRORLEVEL%
 
 :do_run
 shift
-echo [OK] Backend running on http://localhost:8000 (Ctrl+C to stop)
-"%VENV_PYTHON%" -m uvicorn glossa_lab.main:app --host 127.0.0.1 --port 8000 --reload --app-dir "%REPO_ROOT%\backend" %1 %2 %3 %4 %5 %6 %7 %8 %9
+echo [OK] Backend running on http://localhost:8001 (Ctrl+C to stop)
+"%VENV_PYTHON%" -m uvicorn glossa_lab.main:app --host ********* --port 8001 --reload --app-dir "%REPO_ROOT%\backend" %1 %2 %3 %4 %5 %6 %7 %8 %9
 exit /b %ERRORLEVEL%
 
 :do_python

@@ -87,7 +87,7 @@ def parse_corpus_entry(text_block: str) -> dict[str, Any] | None:
 
     This parser extracts what it can from free-text entries.
     """
-    lines = [l.strip() for l in text_block.strip().splitlines() if l.strip()]
+    lines = [line.strip() for line in text_block.strip().splitlines() if line.strip()]
     if not lines:
         return None
 
@@ -102,9 +102,16 @@ def parse_corpus_entry(text_block: str) -> dict[str, Any] | None:
 
         # Look for site names
         for site in [
-            "Mohenjo-daro", "Harappa", "Lothal", "Kalibangan",
-            "Dholavira", "Chanhu-daro", "Banawali", "Surkotada",
-            "Balakot", "Shortughai",
+            "Mohenjo-daro",
+            "Harappa",
+            "Lothal",
+            "Kalibangan",
+            "Dholavira",
+            "Chanhu-daro",
+            "Banawali",
+            "Surkotada",
+            "Balakot",
+            "Shortughai",
         ]:
             if site.lower() in line.lower():
                 entry["findspot"] = site
@@ -257,8 +264,14 @@ def entries_to_glossa_format(
         inscription_lengths.append(len(clean_signs))
 
         meta = {}
-        for key in ("findspot", "object_type", "iconography",
-                     "reading_direction", "icit_id", "cisi_id"):
+        for key in (
+            "findspot",
+            "object_type",
+            "iconography",
+            "reading_direction",
+            "icit_id",
+            "cisi_id",
+        ):
             if key in entry:
                 meta[key] = entry[key]
         metadata_entries.append(meta)

@@ -65,13 +65,42 @@ def get_model_pacer():
     })
 
 # ── Archive.org URLs ──────────────────────────────────────────────────
+# Archive.org now serves JP2 pages through the BookReader API.
+# The direct JP2 URLs (pre-2025) now return 404; we use BookReaderImages.php instead.
 _ITEM_ID   = "TheIndusScript.TextConcordanceAndTablesIravathanMahadevan"
-_BOOK_NAME = "The%20Indus%20Script.%20Text%2C%20Concordance%20and%20Tables%20-Iravathan%20Mahadevan"
-_BASE_URL  = f"https://archive.org/download/{_ITEM_ID}/{_BOOK_NAME}_jp2"
+_BOOK_NAME = "The Indus Script. Text, Concordance and Tables -Iravathan Mahadevan"
+_IA_SERVER = "ia800704.us.archive.org"
+_IA_DIR    = "/19/items/TheIndusScript.TextConcordanceAndTablesIravathanMahadevan"
+
+
+def _resolve_ia_server() -> tuple[str, str]:
+    """Fetch the current server and dir from Archive.org metadata (cached at module load)."""
+    import json
+    import urllib.request
+    try:
+        with urllib.request.urlopen(
+            f"https://archive.org/metadata/{_ITEM_ID}", timeout=10
+        ) as r:
+            d = json.loads(r.read())
+        return d.get("server", _IA_SERVER), d.get("dir", _IA_DIR)
+    except Exception:
+        return _IA_SERVER, _IA_DIR
+
+
+_SERVER, _DIR = _resolve_ia_server()
+
 
 def page_url(n: int) -> str:
-    """Return the Archive.org JP2 URL for page n."""
-    return f"{_BASE_URL}/{_BOOK_NAME}_{n:04d}.jp2"
+    """Return the Archive.org BookReader URL for page n."""
+    import urllib.parse
+    zip_path  = f"{_DIR}/{_BOOK_NAME}_jp2.zip"
+    file_path = f"{_BOOK_NAME}_jp2/{_BOOK_NAME}_{n:04d}.jp2"
+    return (
+        f"https://{_SERVER}/BookReader/BookReaderImages.php"
+        f"?zip={urllib.parse.quote(zip_path, safe='/')}"
+        f"&file={urllib.parse.quote(file_path, safe='')}"
+        f"&id={_ITEM_ID}&scale=1&rotate=0"
+    )
 
 # Page ranges for each target section
 PAGE_RANGES = {
@@ -172,17 +201,19 @@ def get_client():
 
 
 def download_page_image(page_num: int) -> bytes | None:
-    """Download a JP2 page image from Archive.org."""
+    """Download a page image from Archive.org BookReader API."""
     import urllib.request
     url = page_url(page_num)
-    cache_path = _OUTDIR / f"page_{page_num:04d}.jp2"
+    # BookReader returns JPEG; cache with .jpg extension
+    cache_path = _OUTDIR / f"page_{page_num:04d}.jpg"
 
     if cache_path.exists():
         return cache_path.read_bytes()
 
     print(f"    Downloading page {page_num}...", end=" ", flush=True)
     try:
-        with urllib.request.urlopen(url, timeout=30) as resp:
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=60) as resp:
             data = resp.read()
         cache_path.write_bytes(data)
         print(f"OK ({len(data)//1024}KB)")
@@ -204,7 +235,7 @@ def ocr_page(client, page_num: int, prompt: str, section: str) -> str | None:
     if img_data is None:
         return None
 
-    # Convert JP2 to base64
+    # Encode image as base64 (BookReader returns JPEG)
     b64 = base64.b64encode(img_data).decode("utf-8")
     messages = [
         {
@@ -212,7 +243,7 @@ def ocr_page(client, page_num: int, prompt: str, section: str) -> str | None:
             "content": [
                 {
                     "type": "image_url",
-                    "image_url": {"url": f"data:image/jp2;base64,{b64}"},
+                    "image_url": {"url": f"data:image/jpeg;base64,{b64}"},
                 },
                 {"type": "text", "text": prompt},
             ],

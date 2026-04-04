@@ -173,8 +173,7 @@ def test_sign_cluster_similarity():
     # A and B appear in identical contexts → should be similar
     pairs = result["similarity_pairs"]
     ab_pair = next(
-        (p for p in pairs
-         if {p["sign_a"], p["sign_b"]} == {"A", "B"}),
+        (p for p in pairs if {p["sign_a"], p["sign_b"]} == {"A", "B"}),
         None,
     )
     assert ab_pair is not None
@@ -219,7 +218,10 @@ def test_cooccurrence_basic():
     """Co-occurrence network produces nodes and edges."""
     symbols = ["A", "B", "C", "A", "B", "C", "A", "B"] * 10
     result = build_cooccurrence_network(
-        symbols, window=2, min_freq=2, min_edge_weight=2,
+        symbols,
+        window=2,
+        min_freq=2,
+        min_edge_weight=2,
     )
     assert result["node_count"] > 0
     assert result["edge_count"] > 0
@@ -228,11 +230,12 @@ def test_cooccurrence_basic():
 def test_cooccurrence_communities():
     """Community detection groups co-occurring signs."""
     # Two clusters: (A,B,C) co-occur together, (X,Y,Z) co-occur together
-    symbols = (
-        ["A", "B", "C"] * 20 + ["X", "Y", "Z"] * 20
-    )
+    symbols = ["A", "B", "C"] * 20 + ["X", "Y", "Z"] * 20
     result = build_cooccurrence_network(
-        symbols, window=2, min_freq=2, min_edge_weight=2,
+        symbols,
+        window=2,
+        min_freq=2,
+        min_edge_weight=2,
     )
     assert result["community_count"] >= 2
 
@@ -241,16 +244,17 @@ def test_cooccurrence_edge_weights():
     """More frequent co-occurrences have higher edge weights."""
     symbols = ["A", "B"] * 50 + ["A", "C"] * 5
     result = build_cooccurrence_network(
-        symbols, window=2, min_freq=2, min_edge_weight=2,
+        symbols,
+        window=2,
+        min_freq=2,
+        min_edge_weight=2,
     )
     ab_edge = next(
-        (e for e in result["edges"]
-         if {e["source"], e["target"]} == {"A", "B"}),
+        (e for e in result["edges"] if {e["source"], e["target"]} == {"A", "B"}),
         None,
     )
     ac_edge = next(
-        (e for e in result["edges"]
-         if {e["source"], e["target"]} == {"A", "C"}),
+        (e for e in result["edges"] if {e["source"], e["target"]} == {"A", "C"}),
         None,
     )
     if ab_edge and ac_edge:

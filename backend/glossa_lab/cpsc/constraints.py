@@ -110,6 +110,7 @@ class KandlesConstraint(Constraint):
                 compare_grids,
                 generate_grid,
             )
+
             dec = [mapping.get(s, "?") for s in cipher_signs[:200]]
             tgt = target.symbols[:200]
             result = compare_grids(generate_grid(dec), generate_grid(tgt))

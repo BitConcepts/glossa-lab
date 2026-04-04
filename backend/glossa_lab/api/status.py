@@ -24,9 +24,18 @@ async def status():
     uptime = time.time() - start if start > 0 else 0.0
 
     db = get_db()
-    job_counts = await db.get_job_counts() if db else {
-        "total": 0, "pending": 0, "running": 0, "completed": 0, "failed": 0, "cancelled": 0,
-    }
+    job_counts = (
+        await db.get_job_counts()
+        if db
+        else {
+            "total": 0,
+            "pending": 0,
+            "running": 0,
+            "completed": 0,
+            "failed": 0,
+            "cancelled": 0,
+        }
+    )
     pipelines = get_registered_pipelines()
 
     return {

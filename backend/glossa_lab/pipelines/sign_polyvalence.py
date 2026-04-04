@@ -44,6 +44,7 @@ from glossa_lab.engine import register_pipeline
 
 # ── Core algorithm ────────────────────────────────────────────────────
 
+
 def _fractional_positions(inscriptions: list[list[str]]) -> dict[str, list[float]]:
     """For each sign, collect fractional within-inscription positions.
 
@@ -121,17 +122,19 @@ def _bimodality_score(peaks: list[int], hist: list[float]) -> float:
 
 def _coarse_positional(positions: list[float]) -> dict[str, float]:
     """3-bin coarse histogram: initial (0-0.25), medial (0.25-0.75), terminal (0.75-1)."""
-    initial  = sum(1 for p in positions if p <= 0.25)
+    initial = sum(1 for p in positions if p <= 0.25)
     terminal = sum(1 for p in positions if p >= 0.75)
-    medial   = len(positions) - initial - terminal
+    medial = len(positions) - initial - terminal
     total = len(positions) or 1
     return {
-        "initial_pct":  round(initial  / total, 4),
-        "medial_pct":   round(medial   / total, 4),
+        "initial_pct": round(initial / total, 4),
+        "medial_pct": round(medial / total, 4),
         "terminal_pct": round(terminal / total, 4),
-        "dominant":     "initial"  if initial > medial and initial > terminal
-                        else "terminal" if terminal > medial
-                        else "medial",
+        "dominant": "initial"
+        if initial > medial and initial > terminal
+        else "terminal"
+        if terminal > medial
+        else "medial",
     }
 
 
@@ -157,9 +160,7 @@ def detect_polyvalent_signs(
         summary:      High-level counts and corpus statistics.
     """
     frac_positions = _fractional_positions(inscriptions)
-    freq: Counter[str] = Counter(
-        sign for insc in inscriptions for sign in insc
-    )
+    freq: Counter[str] = Counter(sign for insc in inscriptions for sign in insc)
 
     candidates: list[dict[str, Any]] = []
     all_signs: list[dict[str, Any]] = []
@@ -174,18 +175,18 @@ def detect_polyvalent_signs(
         coarse = _coarse_positional(positions)
 
         # Entropy of the positional distribution (higher → more spread)
-        pos_entropy = -sum(
-            p * math.log2(p) for p in hist if p > 0
-        ) / math.log2(bins)  # normalized to [0,1]
+        pos_entropy = -sum(p * math.log2(p) for p in hist if p > 0) / math.log2(
+            bins
+        )  # normalized to [0,1]
 
         entry: dict[str, Any] = {
-            "sign":          sign,
-            "frequency":     freq[sign],
-            "peak_count":    len(peaks),
+            "sign": sign,
+            "frequency": freq[sign],
+            "peak_count": len(peaks),
             "bimodality_score": round(b_score, 4),
             "positional_entropy": round(pos_entropy, 4),
-            "histogram":     [round(v, 4) for v in hist],
-            "peaks":         peaks,
+            "histogram": [round(v, 4) for v in hist],
+            "peaks": peaks,
             **coarse,
         }
         all_signs.append(entry)
@@ -201,16 +202,16 @@ def detect_polyvalent_signs(
     n_candidates = len(candidates)
 
     return {
-        "candidates":    candidates,
-        "all_signs":     all_signs,
+        "candidates": candidates,
+        "all_signs": all_signs,
         "summary": {
             "total_signs_analyzed": total_signs,
             "polyvalence_candidates": n_candidates,
             "candidate_fraction": round(n_candidates / total_signs, 3) if total_signs else 0,
             "parameters": {
-                "min_freq":          min_freq,
-                "bins":              bins,
-                "min_prominence":    min_prominence,
+                "min_freq": min_freq,
+                "bins": bins,
+                "min_prominence": min_prominence,
                 "bimodal_threshold": bimodal_threshold,
             },
         },
@@ -233,18 +234,16 @@ def compare_across_systems(
     comparison: dict[str, Any] = {}
     for name, inscriptions in systems.items():
         result = detect_polyvalent_signs(inscriptions, min_freq=min_freq)
-        freq: Counter[str] = Counter(
-            s for insc in inscriptions for s in insc
-        )
+        freq: Counter[str] = Counter(s for insc in inscriptions for s in insc)
         comparison[name] = {
-            "total_tokens":        sum(freq.values()),
-            "distinct_signs":      len(freq),
-            "type_token_ratio":    round(len(freq) / max(sum(freq.values()), 1), 4),
-            "hapax_count":         sum(1 for v in freq.values() if v == 1),
+            "total_tokens": sum(freq.values()),
+            "distinct_signs": len(freq),
+            "type_token_ratio": round(len(freq) / max(sum(freq.values()), 1), 4),
+            "hapax_count": sum(1 for v in freq.values() if v == 1),
             "polyvalence_candidates": result["summary"]["polyvalence_candidates"],
-            "total_analyzed":      result["summary"]["total_signs_analyzed"],
-            "candidate_fraction":  result["summary"]["candidate_fraction"],
-            "top_candidates":      [
+            "total_analyzed": result["summary"]["total_signs_analyzed"],
+            "candidate_fraction": result["summary"]["candidate_fraction"],
+            "top_candidates": [
                 {"sign": c["sign"], "score": c["bimodality_score"]}
                 for c in result["candidates"][:5]
             ],
@@ -253,6 +252,7 @@ def compare_across_systems(
 
 
 # ── Pipeline entry point ──────────────────────────────────────────────
+
 
 @register_pipeline("sign_polyvalence")
 async def run_sign_polyvalence(params: dict[str, Any]) -> dict[str, Any]:

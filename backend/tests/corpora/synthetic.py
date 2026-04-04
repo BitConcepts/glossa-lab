@@ -40,10 +40,26 @@ def generate_markov(seed: int = 42, size: int = SIZE) -> list[str]:
 
     # Common English bigram pairs (source → target index)
     common_bigrams = [
-        ("T", "H"), ("H", "E"), ("E", "R"), ("R", "E"), ("I", "N"),
-        ("A", "N"), ("N", "D"), ("E", "D"), ("S", "T"), ("T", "O"),
-        ("O", "F"), ("O", "N"), ("A", "T"), ("I", "S"), ("E", "S"),
-        ("N", "G"), ("A", "L"), ("I", "T"), ("T", "I"), ("E", "N"),
+        ("T", "H"),
+        ("H", "E"),
+        ("E", "R"),
+        ("R", "E"),
+        ("I", "N"),
+        ("A", "N"),
+        ("N", "D"),
+        ("E", "D"),
+        ("S", "T"),
+        ("T", "O"),
+        ("O", "F"),
+        ("O", "N"),
+        ("A", "T"),
+        ("I", "S"),
+        ("E", "S"),
+        ("N", "G"),
+        ("A", "L"),
+        ("I", "T"),
+        ("T", "I"),
+        ("E", "N"),
     ]
 
     for src, tgt in common_bigrams:

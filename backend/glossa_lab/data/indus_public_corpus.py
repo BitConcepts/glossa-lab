@@ -239,7 +239,7 @@ def generate_corpus(
     initial_pool = [s for s in all_signs if _is_initial_biased(s)]
     numeral_pool = [s for s in all_signs if _is_numeral(s)]
     bimodal_pool = [s for s in all_signs if _is_bimodal(s)]
-    terminal_weights
+    terminal_weights = [freq_table[s] for s in terminal_pool]
     initial_weights = [freq_table[s] for s in initial_pool]
 
     inscriptions: list[list[str]] = []

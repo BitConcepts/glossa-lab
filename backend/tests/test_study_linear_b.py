@@ -24,6 +24,7 @@ from tests.corpora.real import load_linear_b_signs
 
 # ── Helpers ───────────────────────────────────────────────────────────
 
+
 def _get_norm(result: dict, n: int) -> float:
     for entry in result["block_entropies"]:
         if entry["n"] == n:
@@ -43,9 +44,7 @@ def test_linear_b_in_linguistic_range():
     symbols = load_linear_b_signs()
     result = compute_block_entropies(symbols, max_n=3)
     h1 = _get_norm(result, 1)
-    assert 0.60 <= h1 <= 0.95, (
-        f"Linear B H1_norm={h1:.4f}, expected in linguistic range 0.60–0.95"
-    )
+    assert 0.60 <= h1 <= 0.95, f"Linear B H1_norm={h1:.4f}, expected in linguistic range 0.60–0.95"
 
 
 def test_linear_b_sublinear_entropy_growth():
@@ -59,9 +58,7 @@ def test_linear_b_sublinear_entropy_growth():
     h1 = _get_norm(result, 1)
     h2 = _get_norm(result, 2)
     ratio = h2 / h1 if h1 > 0 else 2.0
-    assert ratio < 1.95, (
-        f"Linear B H2/H1={ratio:.3f}: should be sub-linear (< 1.95)"
-    )
+    assert ratio < 1.95, f"Linear B H2/H1={ratio:.3f}: should be sub-linear (< 1.95)"
 
 
 def test_linear_b_alphabet_size():
@@ -80,9 +77,7 @@ def test_linear_b_alphabet_size():
 def test_linear_b_corpus_size():
     """Linear B fixture should produce a meaningful number of syllable tokens."""
     symbols = load_linear_b_signs()
-    assert len(symbols) >= 400, (
-        f"Linear B corpus too small: {len(symbols)} tokens"
-    )
+    assert len(symbols) >= 400, f"Linear B corpus too small: {len(symbols)} tokens"
 
 
 # ── Decipherment accuracy tests ───────────────────────────────────────
@@ -151,10 +146,7 @@ def test_linear_b_top5_most_frequent_correct():
     result = decipher(opaque, target_model, seed=42, max_iterations=8000, restarts=5)
     mapping = result["proposed_mapping"]
 
-    correct = sum(
-        1 for s in top5_opaque
-        if mapping.get(s) == answer_key.get(s)
-    )
+    correct = sum(1 for s in top5_opaque if mapping.get(s) == answer_key.get(s))
     assert correct >= 3, (
         f"Top-5 correct: {correct}/5 — frequency seeding should nail most common signs"
     )

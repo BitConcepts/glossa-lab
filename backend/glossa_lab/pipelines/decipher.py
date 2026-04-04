@@ -32,6 +32,7 @@ from glossa_lab.engine import register_pipeline
 
 # ── Language model ────────────────────────────────────────────────────
 
+
 class LanguageModel:
     """Unigram + bigram + trigram language model with positional stats."""
 
@@ -47,9 +48,7 @@ class LanguageModel:
 
         # Unigram frequencies (normalized)
         counts = Counter(symbols)
-        self.unigram_freq: dict[str, float] = {
-            s: c / total for s, c in counts.items()
-        }
+        self.unigram_freq: dict[str, float] = {s: c / total for s, c in counts.items()}
         self.ranked = [s for s, _ in counts.most_common()]
 
         # Bigram frequencies
@@ -84,9 +83,7 @@ class LanguageModel:
                         pos_counts[s]["medial"] += 1
             for sign, pc in pos_counts.items():
                 t = sum(pc.values()) or 1
-                self.positional[sign] = {
-                    k: v / t for k, v in pc.items()
-                }
+                self.positional[sign] = {k: v / t for k, v in pc.items()}
 
     def score_text(self, text: list[str]) -> float:
         """Combined bigram + trigram log-likelihood.
@@ -105,7 +102,8 @@ class LanguageModel:
             tri_ll = 0.0
             for i in range(len(text) - 2):
                 p = self.trigram_freq.get(
-                    (text[i], text[i + 1], text[i + 2]), smoothing,
+                    (text[i], text[i + 1], text[i + 2]),
+                    smoothing,
                 )
                 tri_ll += math.log(p)
             # Light blend: 90% bigram + 10% trigram
@@ -114,6 +112,7 @@ class LanguageModel:
 
 
 # ── Decipherment engine ──────────────────────────────────────────
+
 
 def decipher(
     cipher_signs: list[str],
@@ -181,7 +180,9 @@ def decipher(
 
         # Stage 2: REFINE — hill climbing with combined scoring
         current_score = _score_mapping(
-            cipher_signs, mapping, target_model,
+            cipher_signs,
+            mapping,
+            target_model,
             cipher_positional,
         )
 
@@ -196,7 +197,9 @@ def decipher(
             mapping[a], mapping[b] = mapping[b], mapping[a]
 
             new_score = _score_mapping(
-                cipher_signs, mapping, target_model,
+                cipher_signs,
+                mapping,
+                target_model,
                 cipher_positional,
             )
 
@@ -219,7 +222,9 @@ def decipher(
 
     # Kandles validation (Merkur patent)
     kandles_confidence = _kandles_validate(
-        deciphered, target_model.symbols, kandles_profile=kandles_profile,
+        deciphered,
+        target_model.symbols,
+        kandles_profile=kandles_profile,
     )
 
     return {
@@ -251,10 +256,7 @@ def _score_mapping(
                 target_pos = target_model.positional[target_sign]
                 # Cosine-like dot product of positional vectors
                 for pos_key in ("initial", "medial", "terminal"):
-                    pos_score += (
-                        cipher_pos.get(pos_key, 0)
-                        * target_pos.get(pos_key, 0)
-                    )
+                    pos_score += cipher_pos.get(pos_key, 0) * target_pos.get(pos_key, 0)
         # Very light positional bonus (avoid destabilizing hill climbing)
         ll += pos_score * abs(ll) * 0.005
 
@@ -280,6 +282,7 @@ def _kandles_validate(
     """
     try:
         from glossa_lab.pipelines.kandles import compare_grids, generate_grid
+
         grid_dec = generate_grid(deciphered[:200], profile=kandles_profile)
         grid_tgt = generate_grid(target_symbols[:200], profile=kandles_profile)
         result = compare_grids(grid_dec, grid_tgt)
@@ -290,10 +293,12 @@ def _kandles_validate(
 
 # ── Auto-dispatch: CPSC if available, hill climbing fallback ──────
 
+
 def _cpsc_available() -> bool:
     """Check if the CPSC module is installed."""
     try:
         from glossa_lab.cpsc import CPSC_AVAILABLE
+
         return CPSC_AVAILABLE
     except ImportError:
         return False
@@ -322,22 +327,28 @@ def decipher_auto(
     elif engine == "cpsc":
         if not _cpsc_available():
             raise RuntimeError(
-                "CPSC module not available. "
-                "Install glossa_lab.cpsc or use engine='hillclimb'."
+                "CPSC module not available. Install glossa_lab.cpsc or use engine='hillclimb'."
             )
         use_cpsc = True
 
     if use_cpsc:
         from glossa_lab.cpsc.projection import cpsc_project
+
         return cpsc_project(
-            cipher_signs, target_model,
-            seed=seed, max_epochs=max_iterations, restarts=restarts,
+            cipher_signs,
+            target_model,
+            seed=seed,
+            max_epochs=max_iterations,
+            restarts=restarts,
         )
 
     # Fallback: hill climbing
     return decipher(
-        cipher_signs, target_model,
-        seed=seed, max_iterations=max_iterations, restarts=restarts,
+        cipher_signs,
+        target_model,
+        seed=seed,
+        max_iterations=max_iterations,
+        restarts=restarts,
         cipher_inscriptions=cipher_inscriptions,
         kandles_profile=kandles_profile,
     )
@@ -361,10 +372,14 @@ def score_accuracy(
         if match:
             correct += 1
         total += 1
-        details.append({
-            "sign": sign, "true": true_val,
-            "proposed": proposed_val, "correct": match,
-        })
+        details.append(
+            {
+                "sign": sign,
+                "true": true_val,
+                "proposed": proposed_val,
+                "correct": match,
+            }
+        )
 
     return {
         "correct": correct,

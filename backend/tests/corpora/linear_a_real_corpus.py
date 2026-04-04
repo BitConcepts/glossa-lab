@@ -45,45 +45,204 @@ _DATA_DIR = Path(__file__).parent / "fixtures" / "linear_a_real"
 # Based on Linear B homomorphic sign correspondences (Ventris / Younger 2000).
 # Only signs with reasonable consensus are listed; uncertain mappings omitted.
 GORILA_TO_PHONEME: dict[str, str] = {
-    "AB01": "da",  "AB02": "ro",  "AB03": "pa",  "AB04": "te",
-    "AB06": "na",  "AB07": "di",  "AB08": "a",   "AB09": "se",
-    "AB10": "u",   "AB13": "me",  "AB16": "qa",  "AB17": "za",
-    "AB22": "mi2", "AB23": "mu",  "AB24": "ne",  "AB25": "a2",
-    "AB26": "ru2", "AB27": "re",  "AB28": "i",   "AB29": "pu2",
-    "AB30": "ni",  "AB31": "sa",  "AB34": "a3",  "AB37": "ti",
-    "AB38": "e",   "AB40": "wi",  "AB41": "si",  "AB45": "de",
-    "AB46": "je",  "AB47": "twe", "AB48": "nwa", "AB49": "du2",
-    "AB50": "pu",  "AB51": "du",  "AB53": "ri",  "AB54": "wa",
-    "AB55": "nu",  "AB56": "pa3", "AB57": "ja",  "AB58": "su",
-    "AB59": "ta2", "AB60": "ra",  "AB61": "o",   "AB65": "ju",
-    "AB66": "ta2v","AB67": "ki",  "AB68": "ro2", "AB70": "ko",
-    "AB73": "mi3", "AB77": "ka",  "AB78": "qe",  "AB79": "zu",
-    "AB80": "ma",  "AB81": "?81", "AB86": "a2v",
+    "AB01": "da",
+    "AB02": "ro",
+    "AB03": "pa",
+    "AB04": "te",
+    "AB06": "na",
+    "AB07": "di",
+    "AB08": "a",
+    "AB09": "se",
+    "AB10": "u",
+    "AB13": "me",
+    "AB16": "qa",
+    "AB17": "za",
+    "AB22": "mi2",
+    "AB23": "mu",
+    "AB24": "ne",
+    "AB25": "a2",
+    "AB26": "ru2",
+    "AB27": "re",
+    "AB28": "i",
+    "AB29": "pu2",
+    "AB30": "ni",
+    "AB31": "sa",
+    "AB34": "a3",
+    "AB37": "ti",
+    "AB38": "e",
+    "AB40": "wi",
+    "AB41": "si",
+    "AB45": "de",
+    "AB46": "je",
+    "AB47": "twe",
+    "AB48": "nwa",
+    "AB49": "du2",
+    "AB50": "pu",
+    "AB51": "du",
+    "AB53": "ri",
+    "AB54": "wa",
+    "AB55": "nu",
+    "AB56": "pa3",
+    "AB57": "ja",
+    "AB58": "su",
+    "AB59": "ta2",
+    "AB60": "ra",
+    "AB61": "o",
+    "AB65": "ju",
+    "AB66": "ta2v",
+    "AB67": "ki",
+    "AB68": "ro2",
+    "AB70": "ko",
+    "AB73": "mi3",
+    "AB77": "ka",
+    "AB78": "qe",
+    "AB79": "zu",
+    "AB80": "ma",
+    "AB81": "?81",
+    "AB86": "a2v",
 }
 
 # Signs already written as phonetic values — normalise to lowercase
 _ALREADY_PHONETIC = {
-    "KU", "DA", "PA", "RE", "TA", "RA", "RA2", "MA", "NA", "SA",
-    "KI", "MI", "KA", "SI", "TE", "RO", "TI", "TU", "I", "U", "A",
-    "DU", "JA", "DI", "RI", "SE", "ME", "ZA", "NI", "NU", "SU", "PI",
-    "PU", "QA", "DE", "ZU", "NE", "WA", "WI", "JU", "QE", "MU", "KO",
-    "PO", "TO", "JE", "TA2", "PA3", "RA2", "PU2", "NWA", "ZE", "KE",
-    "NO", "SO", "DO", "GO", "WO",
+    "KU",
+    "DA",
+    "PA",
+    "RE",
+    "TA",
+    "RA",
+    "RA2",
+    "MA",
+    "NA",
+    "SA",
+    "KI",
+    "MI",
+    "KA",
+    "SI",
+    "TE",
+    "RO",
+    "TI",
+    "TU",
+    "I",
+    "U",
+    "A",
+    "DU",
+    "JA",
+    "DI",
+    "RI",
+    "SE",
+    "ME",
+    "ZA",
+    "NI",
+    "NU",
+    "SU",
+    "PI",
+    "PU",
+    "QA",
+    "DE",
+    "ZU",
+    "NE",
+    "WA",
+    "WI",
+    "JU",
+    "QE",
+    "MU",
+    "KO",
+    "PO",
+    "TO",
+    "JE",
+    "TA2",
+    "PA3",
+    "RA2",
+    "PU2",
+    "NWA",
+    "ZE",
+    "KE",
+    "NO",
+    "SO",
+    "DO",
+    "GO",
+    "WO",
 }
 
 # Signs to discard (logograms, numerals, damage markers, editorial notes)
 _SKIP_SIGNS = {
-    "[?]", "GRA", "OLE", "OLIV", "FIC", "VIR", "VINA", "VINB", "VINC",
-    "VIN", "FIC", "OVIS", "OVISF", "OVISM", "BOSM", "BOS", "SUS",
-    "TELA", "CAPM", "VAS", "BOSM", "DESUNT", "B", "F", "D", "K", "L2",
-    "L3L3", "CF", "IB", "HT", "ZB", "[NAME", "IMPRESSION",
-    "*411VASB", "*401VAS", "*164D", "*164A", "*164B", "*164C",
-    "UNIT", "EACH", "IMMEDIATELY", "AFTER", "BEFORE", "SAME", "AS",
-    "IF", "ARE", "THEY", "BE", "MIGHT", "PEOPLE", "CHILDREN?",
-    "NOT", "PRESERVED", "DISC", "PAPYRUS", "MOTIF", "VESTIGIA",
-    "GRAFFITO", "NEW", "WINE", "FIGS", "RATIO", "IS", "TIMES",
-    "WHERE", "THIS", "AMOUNT", "3RD", "10TH", "20TH",
-    "ASARA2", "MAIMI", "TARA", "OFIMPRESSIONS",
+    "[?]",
+    "GRA",
+    "OLE",
+    "OLIV",
+    "FIC",
+    "VIR",
+    "VINA",
+    "VINB",
+    "VINC",
+    "VIN",
+    "FIC",
+    "OVIS",
+    "OVISF",
+    "OVISM",
+    "BOSM",
+    "BOS",
+    "SUS",
+    "TELA",
+    "CAPM",
+    "VAS",
+    "BOSM",
+    "DESUNT",
+    "B",
+    "F",
+    "D",
+    "K",
+    "L2",
+    "L3L3",
+    "CF",
+    "IB",
+    "HT",
+    "ZB",
+    "[NAME",
+    "IMPRESSION",
+    "*411VASB",
+    "*401VAS",
+    "*164D",
+    "*164A",
+    "*164B",
+    "*164C",
+    "UNIT",
+    "EACH",
+    "IMMEDIATELY",
+    "AFTER",
+    "BEFORE",
+    "SAME",
+    "AS",
+    "IF",
+    "ARE",
+    "THEY",
+    "BE",
+    "MIGHT",
+    "PEOPLE",
+    "CHILDREN?",
+    "NOT",
+    "PRESERVED",
+    "DISC",
+    "PAPYRUS",
+    "MOTIF",
+    "VESTIGIA",
+    "GRAFFITO",
+    "NEW",
+    "WINE",
+    "FIGS",
+    "RATIO",
+    "IS",
+    "TIMES",
+    "WHERE",
+    "THIS",
+    "AMOUNT",
+    "3RD",
+    "10TH",
+    "20TH",
+    "ASARA2",
+    "MAIMI",
+    "TARA",
+    "OFIMPRESSIONS",
 }
 
 # ── Corpus building ───────────────────────────────────────────────────
@@ -99,8 +258,12 @@ def _load_sign_frequencies() -> dict[str, float]:
         reader = csv.DictReader(fh)
         for row in reader:
             sign = row["sign"].strip()
-            if (sign and sign not in _SKIP_SIGNS
-                    and not sign.startswith("]") and not sign.startswith("[[")):
+            if (
+                sign
+                and sign not in _SKIP_SIGNS
+                and not sign.startswith("]")
+                and not sign.startswith("[[")
+            ):
                 try:
                     freqs[sign] = float(row["relative_frequency"])
                 except (ValueError, KeyError):
@@ -123,9 +286,14 @@ def _load_bigrams() -> list[tuple[str, str, float]]:
                 s1, s2 = parts
                 s1, s2 = s1.strip(), s2.strip()
                 # Skip if either sign is a logogram / noise
-                if (s1 in _SKIP_SIGNS or s2 in _SKIP_SIGNS or
-                        s1.startswith("]") or s2.startswith("]") or
-                        s1.startswith("[[") or s2.startswith("[[")):
+                if (
+                    s1 in _SKIP_SIGNS
+                    or s2 in _SKIP_SIGNS
+                    or s1.startswith("]")
+                    or s2.startswith("]")
+                    or s1.startswith("[[")
+                    or s2.startswith("[[")
+                ):
                     continue
                 if "[?" in s1 or "[?" in s2:
                     continue
@@ -254,10 +422,7 @@ def extract_phoneme_only_words(
     for sign in sequence:
         phoneme = _translate_sign(sign)
         # Check if sign was translated (phoneme differs from sign code)
-        is_known = (
-            sign in _ALREADY_PHONETIC
-            or sign in GORILA_TO_PHONEME
-        )
+        is_known = sign in _ALREADY_PHONETIC or sign in GORILA_TO_PHONEME
         if is_known and not phoneme.startswith("?"):
             run.append(phoneme)
             if len(run) >= max_word_len:
@@ -280,30 +445,30 @@ def extract_phoneme_only_words(
 # Words identified or strongly hypothesised by scholars.
 # Source: Younger (2000, 2024), Packard (1974), Hooker (1980)
 KNOWN_LINEAR_A_WORDS: dict[str, str] = {
-    "kuro":      "total (administrative formula; cf. ku-ro ~25× in corpus)",
-    "kirota":    "barley? (cf. Greek krithe; Younger 2000)",
-    "kireta":    "barley / grain allocation (tentative reading of ki-re-ta2)",
-    "sara":      "flax? (sa-ra2 very frequent at HT; Younger 2000)",
-    "sara2":     "flax (most frequent content word at Haghia Triada)",
-    "saro":      "flax (variant reading)",
-    "adu":       "product? contribution? (uncertain)",
-    "adaro":     "unknown (common pattern)",
-    "mija":      "unknown (personal name or occupational title?)",
-    "mijaruma":  "unknown (recurring 3-syllable form)",
-    "dame":      "community? (cf. Linear B damo)",
-    "damesi":    "of the community? (tentative)",
-    "damesina":  "conjunction? (da-me-si-na, possibly 'and')",
-    "tana":      "unknown (frequent pattern)",
-    "tanati":    "unknown (recurring)",
-    "qaqaru":    "unknown (qa-qa-ru, appears in accounts)",
-    "pata":      "unknown (pa-ta, short formula)",
-    "paja":      "unknown (pa-ja)",
-    "ruma":      "unknown",
-    "ruta":      "unknown",
-    "nipa":      "unknown (ni-pa, possibly a product name)",
-    "pajare":    "unknown (pa-ja-re)",
-    "kunisu":    "emmer wheat? (ku-ni-su; Younger 2000)",
-    "didero":    "einkorn wheat? (di-de-ro; Younger 2000)",
+    "kuro": "total (administrative formula; cf. ku-ro ~25× in corpus)",
+    "kirota": "barley? (cf. Greek krithe; Younger 2000)",
+    "kireta": "barley / grain allocation (tentative reading of ki-re-ta2)",
+    "sara": "flax? (sa-ra2 very frequent at HT; Younger 2000)",
+    "sara2": "flax (most frequent content word at Haghia Triada)",
+    "saro": "flax (variant reading)",
+    "adu": "product? contribution? (uncertain)",
+    "adaro": "unknown (common pattern)",
+    "mija": "unknown (personal name or occupational title?)",
+    "mijaruma": "unknown (recurring 3-syllable form)",
+    "dame": "community? (cf. Linear B damo)",
+    "damesi": "of the community? (tentative)",
+    "damesina": "conjunction? (da-me-si-na, possibly 'and')",
+    "tana": "unknown (frequent pattern)",
+    "tanati": "unknown (recurring)",
+    "qaqaru": "unknown (qa-qa-ru, appears in accounts)",
+    "pata": "unknown (pa-ta, short formula)",
+    "paja": "unknown (pa-ja)",
+    "ruma": "unknown",
+    "ruta": "unknown",
+    "nipa": "unknown (ni-pa, possibly a product name)",
+    "pajare": "unknown (pa-ja-re)",
+    "kunisu": "emmer wheat? (ku-ni-su; Younger 2000)",
+    "didero": "einkorn wheat? (di-de-ro; Younger 2000)",
 }
 
 # ── Raw tablet corpus from corpus_manifest.csv ───────────────────────
@@ -312,19 +477,19 @@ KNOWN_LINEAR_A_WORDS: dict[str, str] = {
 #: HT = Haghia Triada, KH = Khania, ZA = Zakros, PH = Pyrgos/Phaistos,
 #: ARKH = Arkhanes, KN = Knossos, MA = Malia, ZE = Zernos, TY = Tylissos
 SITE_PREFIXES: dict[str, str] = {
-    "HT":   "Haghia Triada",
-    "KH":   "Khania",
-    "ZA":   "Zakros",
-    "PH":   "Pyrgos/Phaistos",
+    "HT": "Haghia Triada",
+    "KH": "Khania",
+    "ZA": "Zakros",
+    "PH": "Pyrgos/Phaistos",
     "ARKH": "Arkhanes",
-    "KN":   "Knossos",
-    "MA":   "Malia",
-    "TY":   "Tylissos",
-    "GO":   "Gournies",
-    "PE":   "Petras",
-    "PK":   "Palaikastro",
-    "PS":   "Pseira",
-    "SY":   "Sklavokampos",
+    "KN": "Knossos",
+    "MA": "Malia",
+    "TY": "Tylissos",
+    "GO": "Gournies",
+    "PE": "Petras",
+    "PK": "Palaikastro",
+    "PS": "Pseira",
+    "SY": "Sklavokampos",
 }
 
 
@@ -361,7 +526,7 @@ def load_raw_tablet_corpus(
         for row in reader:
             artifact = row.get("artifact_id", "").strip()
             sequence = row.get("canonical_sequence", "").strip()
-            notes    = row.get("notes", "").lower()
+            notes = row.get("notes", "").lower()
 
             # Skip if this entry is a logogram row
             if exclude_logograms and "logogram" in notes:
@@ -407,6 +572,7 @@ def load_raw_tablet_corpus(
 
 
 # ── Loaders for real.py ───────────────────────────────────────────────
+
 
 def load_real_linear_a_signs(seed: int = 42) -> list[str]:
     """Load a sign sequence from the real bigram-based corpus."""

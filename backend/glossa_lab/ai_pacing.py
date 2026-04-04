@@ -146,7 +146,7 @@ class AIModelPacer:
             state.dynamic_concurrency = max(limit.min_concurrency, state.dynamic_concurrency - 1)
             state.reduced_until = now + 120.0
             retry_after = self.parse_retry_after_seconds(str(error))
-            base = retry_after if retry_after is not None else min(30.0, 2 ** attempt)
+            base = retry_after if retry_after is not None else min(30.0, 2**attempt)
             jitter = random.uniform(0.0, max(0.25, base * 0.25))
             delay = base + jitter
             self._condition.notify_all()
@@ -260,17 +260,13 @@ class AIModelPacer:
             wait_candidates.append(0.25)
 
         if len(state.records) + 1 > rpm_budget and state.records:
-            wait_candidates.append(
-                max(0.05, WINDOW_SECONDS - (now - state.records[0].timestamp))
-            )
+            wait_candidates.append(max(0.05, WINDOW_SECONDS - (now - state.records[0].timestamp)))
 
         running_tokens = 0
         for record in state.records:
             running_tokens += record.reserved_tokens
             if running_tokens + reserved_tokens > tpm_budget:
-                wait_candidates.append(
-                    max(0.05, WINDOW_SECONDS - (now - record.timestamp))
-                )
+                wait_candidates.append(max(0.05, WINDOW_SECONDS - (now - record.timestamp)))
                 break
 
         return max(wait_candidates) if wait_candidates else 0.05
@@ -287,12 +283,8 @@ class AIModelPacer:
         rpm_util = rpm_used / max(limit.rpm_limit, 1)
         tpm_util = tpm_used / max(limit.tpm_limit, 1)
         state.rpm_ema = (
-            rpm_util
-            if state.rpm_ema == 0
-            else alpha * rpm_util + (1 - alpha) * state.rpm_ema
+            rpm_util if state.rpm_ema == 0 else alpha * rpm_util + (1 - alpha) * state.rpm_ema
         )
         state.tpm_ema = (
-            tpm_util
-            if state.tpm_ema == 0
-            else alpha * tpm_util + (1 - alpha) * state.tpm_ema
+            tpm_util if state.tpm_ema == 0 else alpha * tpm_util + (1 - alpha) * state.tpm_ema
         )

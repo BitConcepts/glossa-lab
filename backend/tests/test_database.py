@@ -35,9 +35,7 @@ def test_schema_tables_exist(tmp_db_path: Path):
         import aiosqlite
 
         async with aiosqlite.connect(str(tmp_db_path)) as conn:
-            cursor = await conn.execute(
-                "SELECT name FROM sqlite_master WHERE type='table'"
-            )
+            cursor = await conn.execute("SELECT name FROM sqlite_master WHERE type='table'")
             tables = {row[0] for row in await cursor.fetchall()}
         assert "_schema_version" in tables
         assert "jobs" in tables

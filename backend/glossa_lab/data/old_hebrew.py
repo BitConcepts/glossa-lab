@@ -80,36 +80,36 @@ HEBREW_SIGNS: list[str] = [
 # Based on Northwest Semitic phonological correspondences
 # (Segert 1984; Tropper 2000; Huehnergard 2012)
 UGARITIC_TO_HEBREW_MAP: dict[str, str] = {
-    "a":  "'",   # aleph₁ → aleph
-    "I":  "'",   # aleph₂ → aleph (Ugaritic distinguishes three alephs)
-    "U":  "'",   # aleph₃ → aleph
-    "b":  "b",   # bet → bet
-    "g":  "g",   # gimel → gimel
-    "x":  "H",   # khet → het (Ugaritic x is the emphatic kh)
-    "d":  "d",   # dalet → dalet
-    "h":  "h",   # he → he
-    "w":  "w",   # waw → waw
-    "z":  "z",   # zayin → zayin
-    "H":  "H",   # het → het
-    "T":  "T",   # tet → tet
-    "y":  "y",   # yod → yod
-    "k":  "k",   # kaf → kaf
-    "S":  "k",   # kaph variant → kaf (Ugaritic has aspirated/non-aspirated)
-    "l":  "l",   # lamed → lamed
-    "m":  "m",   # mem → mem
-    "D":  "d",   # dalet variant → dalet (Ugaritic distinguishes emphatic d)
-    "n":  "n",   # nun → nun
-    "Z":  "C",   # tsade variant → tsade
-    "s":  "s",   # samek → samek
-    "E":  "E",   # ayin → ayin
-    "p":  "p",   # pe → pe
-    "C":  "C",   # tsade → tsade
-    "q":  "q",   # qof → qof
-    "r":  "r",   # resh → resh
-    "V":  "G",   # shin/ghayin → shin (Ugaritic V = g with dot)
-    "G":  "G",   # shin → shin
-    "t":  "t",   # tav → tav
-    "s2": "G",   # shin₂ → shin (Ugaritic s2 merged with shin in Hebrew)
+    "a": "'",  # aleph₁ → aleph
+    "I": "'",  # aleph₂ → aleph (Ugaritic distinguishes three alephs)
+    "U": "'",  # aleph₃ → aleph
+    "b": "b",  # bet → bet
+    "g": "g",  # gimel → gimel
+    "x": "H",  # khet → het (Ugaritic x is the emphatic kh)
+    "d": "d",  # dalet → dalet
+    "h": "h",  # he → he
+    "w": "w",  # waw → waw
+    "z": "z",  # zayin → zayin
+    "H": "H",  # het → het
+    "T": "T",  # tet → tet
+    "y": "y",  # yod → yod
+    "k": "k",  # kaf → kaf
+    "S": "k",  # kaph variant → kaf (Ugaritic has aspirated/non-aspirated)
+    "l": "l",  # lamed → lamed
+    "m": "m",  # mem → mem
+    "D": "d",  # dalet variant → dalet (Ugaritic distinguishes emphatic d)
+    "n": "n",  # nun → nun
+    "Z": "C",  # tsade variant → tsade
+    "s": "s",  # samek → samek
+    "E": "E",  # ayin → ayin
+    "p": "p",  # pe → pe
+    "C": "C",  # tsade → tsade
+    "q": "q",  # qof → qof
+    "r": "r",  # resh → resh
+    "V": "G",  # shin/ghayin → shin (Ugaritic V = g with dot)
+    "G": "G",  # shin → shin
+    "t": "t",  # tav → tav
+    "s2": "G",  # shin₂ → shin (Ugaritic s2 merged with shin in Hebrew)
 }
 
 # ── Corpus: consonantal Hebrew text ──────────────────────────────────
@@ -195,6 +195,7 @@ _HEBREW_LINES: list[str] = [
 
 # ── Corpus functions ──────────────────────────────────────────────────
 
+
 def get_corpus_inscriptions() -> list[list[str]]:
     """Return Hebrew corpus as list of inscriptions (one per verse).
 
@@ -223,34 +224,34 @@ def get_vocabulary() -> dict[str, str]:
     Keys are consonantal word forms; values are English glosses.
     """
     return {
-        "brGyt":   "in the beginning",
-        "br'":     "he created",
-        "'lhym":   "God",
-        "hGmym":   "the heavens",
-        "h'rC":    "the earth",
-        "'wr":     "light",
-        "Hk":      "darkness",
-        "ywm":     "day",
-        "lylh":    "night",
-        "mymt":    "water",
-        "mlk":     "king",
-        "bn":      "son",
-        "bt":      "daughter / house",
-        "db":      "word",
-        "yGr'":    "fear of",
-        "yhwh":    "the LORD",
-        "H m":     "wisdom",
-        "lbb":     "heart",
-        "'rC":     "land / earth",
-        "gym":     "nations",
-        "mGpT":    "judgment",
-        "Cdq":     "righteousness",
-        "r'h":     "he saw",
-        "'mr":     "he said",
-        "hyh":     "he was",
-        "E m":     "people",
-        "nG":      "soul / breath",
-        "rwH":     "spirit / wind",
+        "brGyt": "in the beginning",
+        "br'": "he created",
+        "'lhym": "God",
+        "hGmym": "the heavens",
+        "h'rC": "the earth",
+        "'wr": "light",
+        "Hk": "darkness",
+        "ywm": "day",
+        "lylh": "night",
+        "mymt": "water",
+        "mlk": "king",
+        "bn": "son",
+        "bt": "daughter / house",
+        "db": "word",
+        "yGr'": "fear of",
+        "yhwh": "the LORD",
+        "H m": "wisdom",
+        "lbb": "heart",
+        "'rC": "land / earth",
+        "gym": "nations",
+        "mGpT": "judgment",
+        "Cdq": "righteousness",
+        "r'h": "he saw",
+        "'mr": "he said",
+        "hyh": "he was",
+        "E m": "people",
+        "nG": "soul / breath",
+        "rwH": "spirit / wind",
     }
 
 
@@ -275,12 +276,13 @@ def get_ugaritic_to_hebrew_map() -> dict[str, str]:
 def corpus_statistics() -> dict[str, Any]:
     """Return statistics about the Hebrew corpus."""
     from collections import Counter
+
     flat = get_corpus_symbols()
     freq = Counter(flat)
     inscriptions = get_corpus_inscriptions()
     lengths = [len(i) for i in inscriptions]
     return {
-        "total_tokens":   len(flat),
+        "total_tokens": len(flat),
         "distinct_signs": len(freq),
         "type_token_ratio": round(len(freq) / len(flat), 4) if flat else 0,
         "n_inscriptions": len(inscriptions),

@@ -47,9 +47,7 @@ def test_file_handler_is_timed_rotating(tmp_path: Path):
     setup_logging(settings)
 
     root = logging.getLogger()
-    rotating_handlers = [
-        h for h in root.handlers if isinstance(h, TimedRotatingFileHandler)
-    ]
+    rotating_handlers = [h for h in root.handlers if isinstance(h, TimedRotatingFileHandler)]
     assert len(rotating_handlers) == 1
     handler = rotating_handlers[0]
     assert handler.when == "MIDNIGHT"

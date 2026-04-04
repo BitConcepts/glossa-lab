@@ -47,9 +47,7 @@ def test_miller_madow_converges_large():
     mm = estimate_entropy(symbols, n=1, estimator="miller_madow")
     # Relative difference should be < 1%
     diff = abs(mm - mle) / max(abs(mle), 1e-8)
-    assert diff < 0.01, (
-        f"With N=10000, MM-MLE relative diff={diff:.4f} should be < 0.01"
-    )
+    assert diff < 0.01, f"With N=10000, MM-MLE relative diff={diff:.4f} should be < 0.01"
 
 
 def test_chao_shen_converges_large():
@@ -58,9 +56,7 @@ def test_chao_shen_converges_large():
     mle = estimate_entropy(symbols, n=1, estimator="mle")
     cs = estimate_entropy(symbols, n=1, estimator="chao_shen")
     diff = abs(cs - mle) / max(abs(mle), 1e-8)
-    assert diff < 0.02, (
-        f"With N=10000, CS-MLE relative diff={diff:.4f} should be < 0.02"
-    )
+    assert diff < 0.02, f"With N=10000, CS-MLE relative diff={diff:.4f} should be < 0.02"
 
 
 def test_estimate_entropy_empty():

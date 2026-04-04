@@ -44,15 +44,16 @@ import time
 from typing import Any
 
 # ── Path setup (allows running as script without `python -m`) ─────────
-_HERE    = os.path.dirname(os.path.abspath(__file__))
+_HERE = os.path.dirname(os.path.abspath(__file__))
 _BACKEND = os.path.dirname(os.path.dirname(_HERE))
-_TESTS   = os.path.join(_BACKEND, "tests")
+_TESTS = os.path.join(_BACKEND, "tests")
 for _p in (_BACKEND, _TESTS):
     if _p not in sys.path:
         sys.path.insert(0, _p)
 
 # ── Top-level picklable trial functions (required for ProcessPoolExecutor) ──
 # These must be defined at module level so pickle can serialise them.
+
 
 def _ablation_trial(
     seed: int,
@@ -67,9 +68,9 @@ def _ablation_trial(
         make_ablated_mapping,
         run_one_trial,
     )
+
     m = make_ablated_mapping(base_mapping, corpus, n_signs, seed=seed)
-    return run_one_trial(corpus, m, "no_vocab", models,
-                         use_kandles_bias=use_kandles_bias)
+    return run_one_trial(corpus, m, "no_vocab", models, use_kandles_bias=use_kandles_bias)
 
 
 def _perturbation_trial(
@@ -85,12 +86,13 @@ def _perturbation_trial(
         make_perturbed_mapping,
         run_one_trial,
     )
+
     if noise == 0.0:
-        return run_one_trial(corpus, base_mapping, "no_vocab", models,
-                             use_kandles_bias=use_kandles_bias)
+        return run_one_trial(
+            corpus, base_mapping, "no_vocab", models, use_kandles_bias=use_kandles_bias
+        )
     m = make_perturbed_mapping(base_mapping, noise, seed=seed * 100)
-    return run_one_trial(corpus, m, "no_vocab", models,
-                         use_kandles_bias=use_kandles_bias)
+    return run_one_trial(corpus, m, "no_vocab", models, use_kandles_bias=use_kandles_bias)
 
 
 def _null_mapping_trial(
@@ -107,16 +109,18 @@ def _null_mapping_trial(
         make_random_mapping,
         run_one_trial,
     )
+
     if null_type == "frequency_matched_random":
-        m = make_random_mapping(base_mapping, corpus,
-                                seed=seed * 7 + 13, preserve_cv_structure=False)
+        m = make_random_mapping(
+            base_mapping, corpus, seed=seed * 7 + 13, preserve_cv_structure=False
+        )
     elif null_type == "cv_structure_preserving":
-        m = make_random_mapping(base_mapping, corpus,
-                                seed=seed * 7 + 13, preserve_cv_structure=True)
+        m = make_random_mapping(
+            base_mapping, corpus, seed=seed * 7 + 13, preserve_cv_structure=True
+        )
     else:  # permuted_lb_correspondences
         m = make_permuted_mapping(base_mapping, seed=seed * 7 + 13)
-    return run_one_trial(corpus, m, "no_vocab", models,
-                         use_kandles_bias=use_kandles_bias)
+    return run_one_trial(corpus, m, "no_vocab", models, use_kandles_bias=use_kandles_bias)
 
 
 def _null_corpus_trial(
@@ -133,17 +137,18 @@ def _null_corpus_trial(
         make_unigram_corpus,
         run_one_trial,
     )
+
     if null_type == "real":
         c = corpus
     elif null_type == "shuffled":
         c = make_shuffled_corpus(corpus, seed)
     else:  # unigram_only
         c = make_unigram_corpus(corpus, seed)
-    return run_one_trial(c, base_mapping, "no_vocab", models,
-                         use_kandles_bias=use_kandles_bias)
+    return run_one_trial(c, base_mapping, "no_vocab", models, use_kandles_bias=use_kandles_bias)
 
 
 # ── Parallel MC wrappers ───────────────────────────────────────────────
+
 
 def _run_ablation_parallel(
     corpus: list[str],
@@ -155,10 +160,15 @@ def _run_ablation_parallel(
     n_workers: int | None = None,
 ) -> list[dict[str, float]]:
     from glossa_lab.accelerate import parallel_mc_trials
+
     return parallel_mc_trials(
         _ablation_trial,
         list(range(n_trials)),
-        corpus, base_mapping, n_signs, models, use_kandles_bias,
+        corpus,
+        base_mapping,
+        n_signs,
+        models,
+        use_kandles_bias,
         n_workers=n_workers,
     )
 
@@ -173,10 +183,15 @@ def _run_perturbation_parallel(
     n_workers: int | None = None,
 ) -> list[dict[str, float]]:
     from glossa_lab.accelerate import parallel_mc_trials
+
     return parallel_mc_trials(
         _perturbation_trial,
         list(range(n_trials)),
-        corpus, base_mapping, noise, models, use_kandles_bias,
+        corpus,
+        base_mapping,
+        noise,
+        models,
+        use_kandles_bias,
         n_workers=n_workers,
     )
 
@@ -191,10 +206,15 @@ def _run_null_mapping_parallel(
     n_workers: int | None = None,
 ) -> list[dict[str, float]]:
     from glossa_lab.accelerate import parallel_mc_trials
+
     return parallel_mc_trials(
         _null_mapping_trial,
         list(range(n_trials)),
-        corpus, base_mapping, null_type, models, use_kandles_bias,
+        corpus,
+        base_mapping,
+        null_type,
+        models,
+        use_kandles_bias,
         n_workers=n_workers,
     )
 
@@ -209,23 +229,31 @@ def _run_null_corpus_parallel(
     n_workers: int | None = None,
 ) -> list[dict[str, float]]:
     from glossa_lab.accelerate import parallel_mc_trials
+
     return parallel_mc_trials(
         _null_corpus_trial,
         list(range(n_trials)),
-        corpus, base_mapping, null_type, models, use_kandles_bias,
+        corpus,
+        base_mapping,
+        null_type,
+        models,
+        use_kandles_bias,
         n_workers=n_workers,
     )
 
 
 # ── Shared stat helpers ────────────────────────────────────────────────
 
+
 def _mean(vals: list[float]) -> float:
     return sum(vals) / len(vals) if vals else 0.0
+
 
 def _ci(vals: list[float]) -> tuple[float, float, float]:
     """Bootstrap-style 95% CI (uses stats module if available)."""
     try:
         from glossa_lab.experiments.stats import bootstrap_ci
+
         return bootstrap_ci(vals)
     except Exception:
         m = _mean(vals)
@@ -242,11 +270,11 @@ def _summarise_scores(
     if not vals:
         return {"mean": 0.0, "ci_lo": 0.0, "ci_hi": 0.0, "n": 0}
     m, lo, hi = _ci(vals)
-    return {"mean": round(m, 3), "ci_lo": round(lo, 3),
-            "ci_hi": round(hi, 3), "n": len(vals)}
+    return {"mean": round(m, 3), "ci_lo": round(lo, 3), "ci_hi": round(hi, 3), "n": len(vals)}
 
 
 # ── Full parallel experiment suite ────────────────────────────────────
+
 
 def run_parallel_experiments(
     n_mc_trials: int = 30,
@@ -284,10 +312,10 @@ def run_parallel_experiments(
         if verbose:
             print(*a, **kw)
 
-    _print(f"\n{'='*65}")
+    _print(f"\n{'=' * 65}")
     _print(f"  Linear A Anti-Circularity Suite  [{bias_label}]")
     _print(f"  MC trials: {n_mc_trials}  |  Workers: {n_workers or 'auto'}")
-    _print(f"{'='*65}\n")
+    _print(f"{'=' * 65}\n")
 
     flat, site_dict = _load_raw_corpus()
     corpus = flat if len(flat) > 100 else _load_markov_corpus()
@@ -305,8 +333,9 @@ def run_parallel_experiments(
     for split_name, split_corpus in splits.items():
         if len(split_corpus) < 50:
             continue
-        scores = run_one_trial(split_corpus, base_mapping, "full", models,
-                               use_kandles_bias=use_kandles_bias)
+        scores = run_one_trial(
+            split_corpus, base_mapping, "full", models, use_kandles_bias=use_kandles_bias
+        )
         ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)
         best_id, best_score = ranked[0]
         second_score = ranked[1][1] if len(ranked) > 1 else 0.0
@@ -318,31 +347,40 @@ def run_parallel_experiments(
             "greek_rank": next(i + 1 for i, (k, _) in enumerate(ranked) if k == "greek"),
             "margin_vs_second": round(best_score - second_score, 3),
         }
-        _print(f"  {split_name:8} n={len(split_corpus):4}  "
-               f"greek={scores.get('greek', 0):.2f}  "
-               f"winner={best_id}  margin={best_score - second_score:.2f}")
+        _print(
+            f"  {split_name:8} n={len(split_corpus):4}  "
+            f"greek={scores.get('greek', 0):.2f}  "
+            f"winner={best_id}  margin={best_score - second_score:.2f}"
+        )
     results["exp1_raw_tablet"] = r1
 
     # ── Exp 2: Mapping ablation (parallel) ─────────────────────────────
     _print("[Exp2] Mapping ablation (parallel)...")
     from collections import Counter as _Counter
+
     all_mapped = [s for s in base_mapping if s in _Counter(corpus)]
     total_mapped = len(all_mapped)
     ablation_levels = [n for n in [10, 20, 30, 40, total_mapped] if n <= total_mapped]
     r2: dict[str, Any] = {}
     for n_signs in ablation_levels:
         trials = _run_ablation_parallel(
-            corpus, base_mapping, n_signs, models,
-            n_mc_trials, use_kandles_bias, n_workers,
+            corpus,
+            base_mapping,
+            n_signs,
+            models,
+            n_mc_trials,
+            use_kandles_bias,
+            n_workers,
         )
         g_stats = _summarise_scores(trials, "greek", n_mc_trials)
         h_stats = _summarise_scores(trials, "hurrian", n_mc_trials)
         lw_stats = _summarise_scores(trials, "luwian", n_mc_trials)
         greek_wins = sum(
-            1 for t in trials
-            if t and t.get("greek", 0) >= max(
-                t.get("hurrian", 0), t.get("luwian", 0), t.get("semitic", 0)
-            )
+            1
+            for t in trials
+            if t
+            and t.get("greek", 0)
+            >= max(t.get("hurrian", 0), t.get("luwian", 0), t.get("semitic", 0))
         )
         r2[str(n_signs)] = {
             "n_signs": n_signs,
@@ -352,8 +390,10 @@ def run_parallel_experiments(
             "luwian": lw_stats,
             "greek_rank_1_fraction": round(greek_wins / n_mc_trials, 3),
         }
-        _print(f"  n={n_signs:3}  greek={g_stats['mean']:.2f}  "
-               f"luwian={lw_stats['mean']:.2f}  greek#1={greek_wins}/{n_mc_trials}")
+        _print(
+            f"  n={n_signs:3}  greek={g_stats['mean']:.2f}  "
+            f"luwian={lw_stats['mean']:.2f}  greek#1={greek_wins}/{n_mc_trials}"
+        )
     results["exp2_mapping_ablation"] = r2
 
     # ── Exp 3: Mapping perturbation (parallel) ─────────────────────────
@@ -362,8 +402,13 @@ def run_parallel_experiments(
     r3: dict[str, Any] = {}
     for noise in noise_levels:
         trials = _run_perturbation_parallel(
-            corpus, base_mapping, noise, models,
-            n_mc_trials, use_kandles_bias, n_workers,
+            corpus,
+            base_mapping,
+            noise,
+            models,
+            n_mc_trials,
+            use_kandles_bias,
+            n_workers,
         )
         g_stats = _summarise_scores(trials, "greek", n_mc_trials)
         r3[str(noise)] = {
@@ -371,14 +416,17 @@ def run_parallel_experiments(
             "trials": n_mc_trials,
             "greek": g_stats,
         }
-        _print(f"  noise={noise:.0%}  greek={g_stats['mean']:.2f} "
-               f"[{g_stats['ci_lo']:.2f},{g_stats['ci_hi']:.2f}]")
+        _print(
+            f"  noise={noise:.0%}  greek={g_stats['mean']:.2f} "
+            f"[{g_stats['ci_lo']:.2f},{g_stats['ci_hi']:.2f}]"
+        )
     results["exp3_perturbation"] = r3
 
     # ── Exp 4: Null distribution (parallel) ────────────────────────────
     _print("[Exp4] Random mapping controls (parallel)...")
-    real_scores = run_one_trial(corpus, base_mapping, "no_vocab", models,
-                                use_kandles_bias=use_kandles_bias)
+    real_scores = run_one_trial(
+        corpus, base_mapping, "no_vocab", models, use_kandles_bias=use_kandles_bias
+    )
     real_greek = real_scores.get("greek", 0.0)
     _print(f"  Real mapping: greek={real_greek:.2f}")
     null_types = [
@@ -389,8 +437,13 @@ def run_parallel_experiments(
     r4: dict[str, Any] = {"real_greek": real_greek, "nulls": {}}
     for nt in null_types:
         trials = _run_null_mapping_parallel(
-            corpus, base_mapping, nt, models,
-            n_mc_trials, use_kandles_bias, n_workers,
+            corpus,
+            base_mapping,
+            nt,
+            models,
+            n_mc_trials,
+            use_kandles_bias,
+            n_workers,
         )
         null_vals = [t.get("greek", 0.0) for t in trials if t]
         p_val = empirical_p_value(real_greek, null_vals)
@@ -414,8 +467,9 @@ def run_parallel_experiments(
     _print("[Exp5] Scoring mode comparison...")
     r5: dict[str, Any] = {}
     for mode in SCORING_MODES:
-        scores = run_one_trial(corpus, base_mapping, mode, models,
-                               use_kandles_bias=use_kandles_bias)
+        scores = run_one_trial(
+            corpus, base_mapping, mode, models, use_kandles_bias=use_kandles_bias
+        )
         ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)
         winner = ranked[0][0]
         greek_rank = next(i + 1 for i, (k, _) in enumerate(ranked) if k == "greek")
@@ -431,20 +485,25 @@ def run_parallel_experiments(
             "no_vocab": "No vocab (bigram+Kandles)",
             "kandles_only": "Kandles only",
         }
-        _print(f"  {mode_labels[mode]}: "
-               f"greek={scores.get('greek', 0):.2f}  "
-               f"luwian={scores.get('luwian', 0):.2f}  "
-               f"rank=#{greek_rank}  winner={winner}")
+        _print(
+            f"  {mode_labels[mode]}: "
+            f"greek={scores.get('greek', 0):.2f}  "
+            f"luwian={scores.get('luwian', 0):.2f}  "
+            f"rank=#{greek_rank}  winner={winner}"
+        )
     results["exp5_scoring_modes"] = r5
 
     # ── Exp 6: Language model fairness ─────────────────────────────────
     _print("[Exp6] Language model fairness (equalized corpus sizes)...")
     from glossa_lab.experiments.linear_a_circularity import _get_language_models
+
     eq_models = _get_language_models(size=2000)
-    scores_base = run_one_trial(corpus, base_mapping, "no_vocab", models,
-                                use_kandles_bias=use_kandles_bias)
-    scores_eq = run_one_trial(corpus, base_mapping, "no_vocab", eq_models,
-                              use_kandles_bias=use_kandles_bias)
+    scores_base = run_one_trial(
+        corpus, base_mapping, "no_vocab", models, use_kandles_bias=use_kandles_bias
+    )
+    scores_eq = run_one_trial(
+        corpus, base_mapping, "no_vocab", eq_models, use_kandles_bias=use_kandles_bias
+    )
     ranked_base = sorted(scores_base.items(), key=lambda x: x[1], reverse=True)
     ranked_eq = sorted(scores_eq.items(), key=lambda x: x[1], reverse=True)
     _print(f"  Baseline:  greek={scores_base.get('greek', 0):.2f}  winner={ranked_base[0][0]}")
@@ -452,11 +511,13 @@ def run_parallel_experiments(
     results["exp6_fairness"] = {
         "equalized_size": 2000,
         "baseline": {
-            "scores": scores_base, "winner": ranked_base[0][0],
+            "scores": scores_base,
+            "winner": ranked_base[0][0],
             "greek_rank": next(i + 1 for i, (k, _) in enumerate(ranked_base) if k == "greek"),
         },
         "equalized": {
-            "scores": scores_eq, "winner": ranked_eq[0][0],
+            "scores": scores_eq,
+            "winner": ranked_eq[0][0],
             "greek_rank": next(i + 1 for i, (k, _) in enumerate(ranked_eq) if k == "greek"),
         },
     }
@@ -467,8 +528,13 @@ def run_parallel_experiments(
     r7: dict[str, Any] = {}
     for nct in null_corpus_types:
         trials = _run_null_corpus_parallel(
-            corpus, base_mapping, nct, models,
-            n_mc_trials, use_kandles_bias, n_workers,
+            corpus,
+            base_mapping,
+            nct,
+            models,
+            n_mc_trials,
+            use_kandles_bias,
+            n_workers,
         )
         g_stats = _summarise_scores(trials, "greek", n_mc_trials)
         lw_stats = _summarise_scores(trials, "luwian", n_mc_trials)
@@ -486,6 +552,7 @@ def run_parallel_experiments(
 
 
 # ── Bias comparison ────────────────────────────────────────────────────
+
 
 def run_bias_comparison(
     n_mc_trials: int = 30,
@@ -511,15 +578,17 @@ def run_bias_comparison(
         if verbose:
             print(*a, **kw)
 
-    _print("\n" + "="*65)
+    _print("\n" + "=" * 65)
     _print("  KANDLES BIAS COMPARISON")
-    _print("="*65)
+    _print("=" * 65)
 
     accel = gpu_info()
-    _print(f"  Acceleration: {accel['tier_name']}  "
-           f"({accel['cpu_cores']} cores"
-           + (f"  GPU: {accel.get('gpu_name', '')}" if accel["cuda"] else "")
-           + ")")
+    _print(
+        f"  Acceleration: {accel['tier_name']}  "
+        f"({accel['cpu_cores']} cores"
+        + (f"  GPU: {accel.get('gpu_name', '')}" if accel["cuda"] else "")
+        + ")"
+    )
 
     flat, _ = _load_raw_corpus()
     corpus = flat if len(flat) > 100 else _load_markov_corpus()
@@ -537,8 +606,7 @@ def run_bias_comparison(
         _print(f"\n  -- Exp5 [{label.upper()}] scoring mode comparison --")
         mode_results: dict[str, Any] = {}
         for mode in SCORING_MODES:
-            scores = run_one_trial(corpus, base_mapping, mode, models,
-                                   use_kandles_bias=bias)
+            scores = run_one_trial(corpus, base_mapping, mode, models, use_kandles_bias=bias)
             ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)
             winner = ranked[0][0]
             greek_rank = next(i + 1 for i, (k, _) in enumerate(ranked) if k == "greek")
@@ -546,24 +614,22 @@ def run_bias_comparison(
                 "scores": scores,
                 "winner": winner,
                 "greek_rank": greek_rank,
-                "luwian_rank": next(
-                    i + 1 for i, (k, _) in enumerate(ranked) if k == "luwian"
-                ),
+                "luwian_rank": next(i + 1 for i, (k, _) in enumerate(ranked) if k == "luwian"),
             }
-            _print(f"    {mode:12}  greek={scores.get('greek', 0):.2f}  "
-                   f"luwian={scores.get('luwian', 0):.2f}  "
-                   f"hurrian={scores.get('hurrian', 0):.2f}  "
-                   f"winner={winner}")
+            _print(
+                f"    {mode:12}  greek={scores.get('greek', 0):.2f}  "
+                f"luwian={scores.get('luwian', 0):.2f}  "
+                f"hurrian={scores.get('hurrian', 0):.2f}  "
+                f"winner={winner}"
+            )
         comparison[f"exp5_{label}"] = mode_results
 
     # Delta analysis
     _print("\n  -- Kandles-only bias delta (biased - unbiased) --")
     deltas: dict[str, float] = {}
     for hyp_id in ("greek", "luwian", "hurrian", "semitic"):
-        unb = comparison["exp5_unbiased"].get("kandles_only", {}).get(
-            "scores", {}).get(hyp_id, 0.0)
-        bi  = comparison["exp5_biased"].get("kandles_only", {}).get(
-            "scores", {}).get(hyp_id, 0.0)
+        unb = comparison["exp5_unbiased"].get("kandles_only", {}).get("scores", {}).get(hyp_id, 0.0)
+        bi = comparison["exp5_biased"].get("kandles_only", {}).get("scores", {}).get(hyp_id, 0.0)
         delta = round(bi - unb, 4)
         deltas[hyp_id] = delta
         dir_label = "▲" if delta > 0 else ("▼" if delta < 0 else "=")
@@ -599,31 +665,40 @@ def _interpret_deltas(deltas: dict[str, float]) -> str:
 
 # ── CLI entry point ────────────────────────────────────────────────────
 
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Run Kandles bias comparison and full anti-circularity suite."
     )
     parser.add_argument(
-        "--trials", type=int, default=30,
+        "--trials",
+        type=int,
+        default=30,
         help="MC trials per stochastic experiment (default: 30)",
     )
     parser.add_argument(
-        "--workers", type=int, default=None,
+        "--workers",
+        type=int,
+        default=None,
         help="Parallel worker processes (default: cpu_count-1)",
     )
     parser.add_argument(
-        "--quiet", action="store_true",
+        "--quiet",
+        action="store_true",
         help="Suppress progress output",
     )
     parser.add_argument(
-        "--bias-only", action="store_true",
+        "--bias-only",
+        action="store_true",
         help="Only run the fast bias comparison (Exp1+Exp5), skip full suite",
     )
     parser.add_argument(
-        "--output", type=str,
+        "--output",
+        type=str,
         default=os.path.join(
             os.path.dirname(os.path.dirname(os.path.dirname(_HERE))),
-            "reports", "kandles_biased_results.json",
+            "reports",
+            "kandles_biased_results.json",
         ),
         help="Output JSON path (default: reports/kandles_biased_results.json)",
     )
@@ -633,6 +708,7 @@ def main() -> None:
     t_start = time.time()
 
     from glossa_lab.accelerate import gpu_info
+
     accel = gpu_info()
     if verbose:
         print("\nGlossa Lab — Kandles Bias Experiment Runner")
@@ -661,7 +737,7 @@ def main() -> None:
     if not args.bias_only:
         # 2. Full suite unbiased
         if verbose:
-            print("\n" + "─"*65)
+            print("\n" + "─" * 65)
             print("Running FULL SUITE (unbiased) ...")
         all_results["suite_unbiased"] = run_parallel_experiments(
             n_mc_trials=args.trials,
@@ -672,7 +748,7 @@ def main() -> None:
 
         # 3. Full suite biased
         if verbose:
-            print("\n" + "─"*65)
+            print("\n" + "─" * 65)
             print("Running FULL SUITE (biased) ...")
         all_results["suite_biased"] = run_parallel_experiments(
             n_mc_trials=args.trials,
@@ -714,61 +790,64 @@ def _build_summary(
 
     for mode in ("full", "no_vocab", "kandles_only"):
         unb = _exp5_scores(unbiased, mode)
-        bi  = _exp5_scores(biased, mode)
+        bi = _exp5_scores(biased, mode)
         summary[f"exp5_{mode}"] = {
             hyp: {
                 "unbiased": round(unb.get(hyp, 0), 4),
-                "biased":   round(bi.get(hyp, 0), 4),
-                "delta":    round(bi.get(hyp, 0) - unb.get(hyp, 0), 4),
+                "biased": round(bi.get(hyp, 0), 4),
+                "delta": round(bi.get(hyp, 0) - unb.get(hyp, 0), 4),
             }
             for hyp in ("greek", "luwian", "hurrian", "semitic")
         }
 
     # Exp1 ALL split winner comparison
     unb_exp1 = unbiased.get("exp1_raw_tablet", {}).get("ALL", {})
-    bi_exp1  = biased.get("exp1_raw_tablet", {}).get("ALL", {})
+    bi_exp1 = biased.get("exp1_raw_tablet", {}).get("ALL", {})
     summary["exp1_ALL"] = {
         "unbiased_winner": unb_exp1.get("winner"),
-        "biased_winner":   bi_exp1.get("winner"),
-        "unbiased_greek":  unb_exp1.get("greek_score"),
-        "biased_greek":    bi_exp1.get("greek_score"),
+        "biased_winner": bi_exp1.get("winner"),
+        "unbiased_greek": unb_exp1.get("greek_score"),
+        "biased_greek": bi_exp1.get("greek_score"),
         "unbiased_luwian": unb_exp1.get("scores", {}).get("luwian"),
-        "biased_luwian":   bi_exp1.get("scores", {}).get("luwian"),
+        "biased_luwian": bi_exp1.get("scores", {}).get("luwian"),
     }
     return summary
 
 
 def _print_summary(summary: dict[str, Any]) -> None:
-    print("\n" + "="*65)
+    print("\n" + "=" * 65)
     print("  SUMMARY: Unbiased vs Biased Kandles scores")
-    print("="*65)
+    print("=" * 65)
     print(f"  {'Hyp':10}  {'Unbiased':>10}  {'Biased':>10}  {'Delta':>8}")
-    print("  " + "-"*50)
+    print("  " + "-" * 50)
 
     for mode in ("full", "no_vocab", "kandles_only"):
         key = f"exp5_{mode}"
         if key not in summary:
             continue
-        mode_label = {"full": "Full", "no_vocab": "No-vocab",
-                      "kandles_only": "Kandles-only"}[mode]
+        mode_label = {"full": "Full", "no_vocab": "No-vocab", "kandles_only": "Kandles-only"}[mode]
         print(f"\n  [Exp5 — {mode_label}]")
         for hyp in ("greek", "luwian", "hurrian", "semitic"):
             d = summary[key].get(hyp, {})
             delta = d.get("delta", 0)
             arrow = "▲" if delta > 0.001 else ("▼" if delta < -0.001 else "=")
-            print(f"  {hyp:10}  {d.get('unbiased', 0):>10.4f}  "
-                  f"{d.get('biased', 0):>10.4f}  {delta:>+8.4f} {arrow}")
+            print(
+                f"  {hyp:10}  {d.get('unbiased', 0):>10.4f}  "
+                f"{d.get('biased', 0):>10.4f}  {delta:>+8.4f} {arrow}"
+            )
 
     print()
     exp1 = summary.get("exp1_ALL", {})
     if exp1:
-        print(f"  [Exp1 ALL]  "
-              f"Unbiased winner: {exp1.get('unbiased_winner')}  "
-              f"Biased winner: {exp1.get('biased_winner')}")
-        ug = exp1.get('unbiased_greek', 0) or 0
-        bg = exp1.get('biased_greek', 0) or 0
-        ul = exp1.get('unbiased_luwian', 0) or 0
-        bl = exp1.get('biased_luwian', 0) or 0
+        print(
+            f"  [Exp1 ALL]  "
+            f"Unbiased winner: {exp1.get('unbiased_winner')}  "
+            f"Biased winner: {exp1.get('biased_winner')}"
+        )
+        ug = exp1.get("unbiased_greek", 0) or 0
+        bg = exp1.get("biased_greek", 0) or 0
+        ul = exp1.get("unbiased_luwian", 0) or 0
+        bl = exp1.get("biased_luwian", 0) or 0
         print(f"    Greek:  {ug:.2f} \u2192 {bg:.2f}")
         print(f"    Luwian: {ul:.2f} \u2192 {bl:.2f}")
 
@@ -776,5 +855,6 @@ def _print_summary(summary: dict[str, Any]) -> None:
 if __name__ == "__main__":
     # Required guard for Windows multiprocessing
     import multiprocessing
+
     multiprocessing.freeze_support()
     main()

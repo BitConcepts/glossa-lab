@@ -75,13 +75,15 @@ def build_cooccurrence_network(
     for n in nodes:
         degree = len(adj.get(n, {}))
         strength = sum(adj.get(n, {}).values())
-        node_list.append({
-            "sign": n,
-            "frequency": freq[n],
-            "degree": degree,
-            "strength": strength,
-            "community": communities.get(n, -1),
-        })
+        node_list.append(
+            {
+                "sign": n,
+                "frequency": freq[n],
+                "degree": degree,
+                "strength": strength,
+                "community": communities.get(n, -1),
+            }
+        )
 
     # Group by community
     comm_groups: dict[int, list[str]] = defaultdict(list)

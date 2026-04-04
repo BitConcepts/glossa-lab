@@ -37,10 +37,36 @@ TENSES = {"pres": "ka", "past": "ti"}
 
 # Root vocabulary: (root, part_of_speech)
 ROOTS = [
-    "bal", "kin", "mar", "sur", "den", "pol", "hir", "vam",
-    "zel", "tuk", "fas", "gim", "nar", "bes", "dul", "rem",
-    "fol", "kaz", "mil", "pun", "sil", "var", "hep", "zon",
-    "bet", "gal", "lim", "rav", "dak", "jom",
+    "bal",
+    "kin",
+    "mar",
+    "sur",
+    "den",
+    "pol",
+    "hir",
+    "vam",
+    "zel",
+    "tuk",
+    "fas",
+    "gim",
+    "nar",
+    "bes",
+    "dul",
+    "rem",
+    "fol",
+    "kaz",
+    "mil",
+    "pun",
+    "sil",
+    "var",
+    "hep",
+    "zon",
+    "bet",
+    "gal",
+    "lim",
+    "rav",
+    "dak",
+    "jom",
 ]
 
 NOUN_ROOTS = ROOTS[:20]
@@ -140,7 +166,7 @@ def apply_cipher(
         for word in insc:
             # Split into sign IDs (every 3 chars = one sign)
             for i in range(0, len(word), 3):
-                flat_signs.append(word[i:i + 3])
+                flat_signs.append(word[i : i + 3])
 
     return {
         "ciphered_inscriptions": ciphered_inscriptions,

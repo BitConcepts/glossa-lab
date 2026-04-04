@@ -30,7 +30,7 @@ from typing import Any
 # Path setup for running standalone — must precede glossa_lab imports.
 _HERE = os.path.dirname(__file__)
 _BACKEND = os.path.dirname(os.path.dirname(_HERE))
-_TESTS   = os.path.join(_BACKEND, "tests")
+_TESTS = os.path.join(_BACKEND, "tests")
 for _p in (_BACKEND, _TESTS):
     if _p not in sys.path:
         sys.path.insert(0, _p)
@@ -41,27 +41,37 @@ from glossa_lab.pipelines.hypothesis import Hypothesis, HypothesisEngine  # noqa
 
 # ── Lazy imports (avoid import-time costs) ────────────────────────────
 
+
 def _get_lb_model():
     from glossa_lab.data.linear_b_language import get_corpus_symbols
+
     return LanguageModel(get_corpus_symbols())
+
 
 def _get_gorila_map():
     from tests.corpora.linear_a_real_corpus import (  # noqa: I001
-        _ALREADY_PHONETIC, GORILA_TO_PHONEME,
+        _ALREADY_PHONETIC,
+        GORILA_TO_PHONEME,
     )
+
     mapping = dict(GORILA_TO_PHONEME)
     for s in _ALREADY_PHONETIC:
         mapping[s] = s.lower()
     return mapping
 
+
 def _load_raw_corpus():
     from tests.corpora.linear_a_real_corpus import load_raw_tablet_corpus
+
     flat, site_dict = load_raw_tablet_corpus()
     return flat, site_dict
 
+
 def _load_markov_corpus(seed=42):
     from tests.corpora.linear_a_real_corpus import generate_real_linear_a_sequence
+
     return generate_real_linear_a_sequence(seed=seed)
+
 
 def _translate(seq, mapping):
     result = []
@@ -76,11 +86,12 @@ def _translate(seq, mapping):
 
 _LANGUAGE_MODELS: dict[str, LanguageModel] | None = None
 
+
 def _get_language_models(size: int | None = None) -> dict[str, LanguageModel]:
     """Build / cache language models. If size given, equalise corpus sizes."""
     global _LANGUAGE_MODELS  # noqa: PLW0603
 
-    LUWIAN  = list("atimimitatiwawatarruszidandaparananturapiariwalaasiisaparamanani" * 30)
+    LUWIAN = list("atimimitatiwawatarruszidandaparananturapiariwalaasiisaparamanani" * 30)
     SEMITIC = list("abuummuahubanukalbu" * 30)
     HURRIAN = list("eniattianevretiurihifattimannikketmennakiagallammewuriurihewuri" * 30)
 
@@ -90,14 +101,14 @@ def _get_language_models(size: int | None = None) -> dict[str, LanguageModel]:
         # Equalise to `size` characters
         lb_syms = lb_syms[:size] if len(lb_syms) >= size else lb_syms * (size // len(lb_syms) + 1)
         lb_syms = lb_syms[:size]
-        LUWIAN  = (LUWIAN  * (size // len(LUWIAN)  + 1))[:size]
+        LUWIAN = (LUWIAN * (size // len(LUWIAN) + 1))[:size]
         SEMITIC = (SEMITIC * (size // len(SEMITIC) + 1))[:size]
         HURRIAN = (HURRIAN * (size // len(HURRIAN) + 1))[:size]
 
     return {
-        "greek":   LanguageModel(lb_syms),
+        "greek": LanguageModel(lb_syms),
         "hurrian": LanguageModel(HURRIAN),
-        "luwian":  LanguageModel(LUWIAN),
+        "luwian": LanguageModel(LUWIAN),
         "semitic": LanguageModel(SEMITIC),
     }
 
@@ -107,29 +118,34 @@ def _get_language_models(size: int | None = None) -> dict[str, LanguageModel]:
 SCORING_MODES = ("full", "no_vocab", "kandles_only")
 
 _HYPOTHESES = [
-    Hypothesis(id="greek",   name="Mycenaean Greek",  target_language="greek"),
-    Hypothesis(id="hurrian", name="Hurrian",           target_language="hurrian"),
-    Hypothesis(id="luwian",  name="Luwian/Anatolian",  target_language="luwian"),
-    Hypothesis(id="semitic", name="Proto-Semitic",     target_language="semitic"),
+    Hypothesis(id="greek", name="Mycenaean Greek", target_language="greek"),
+    Hypothesis(id="hurrian", name="Hurrian", target_language="hurrian"),
+    Hypothesis(id="luwian", name="Luwian/Anatolian", target_language="luwian"),
+    Hypothesis(id="semitic", name="Proto-Semitic", target_language="semitic"),
 ]
 
 # Hypotheses with language-appropriate Kandles bias profiles.
 # Each hypothesis uses the phonological categories of its own language family
 # when computing the Kandles color-fingerprint similarity score.
 _HYPOTHESES_BIASED = [
-    Hypothesis(id="greek",   name="Mycenaean Greek",  target_language="greek",
-               kandles_profile="default"),
-    Hypothesis(id="hurrian", name="Hurrian",           target_language="hurrian",
-               kandles_profile="hurrian"),
-    Hypothesis(id="luwian",  name="Luwian/Anatolian",  target_language="luwian",
-               kandles_profile="luwian"),
-    Hypothesis(id="semitic", name="Proto-Semitic",     target_language="semitic",
-               kandles_profile="semitic"),
+    Hypothesis(
+        id="greek", name="Mycenaean Greek", target_language="greek", kandles_profile="default"
+    ),
+    Hypothesis(id="hurrian", name="Hurrian", target_language="hurrian", kandles_profile="hurrian"),
+    Hypothesis(
+        id="luwian", name="Luwian/Anatolian", target_language="luwian", kandles_profile="luwian"
+    ),
+    Hypothesis(
+        id="semitic", name="Proto-Semitic", target_language="semitic", kandles_profile="semitic"
+    ),
 ]
+
 
 def _known_vocab():
     from tests.corpora.linear_a_real_corpus import KNOWN_LINEAR_A_WORDS
+
     return KNOWN_LINEAR_A_WORDS
+
 
 def run_one_trial(
     corpus: list[str],
@@ -194,6 +210,7 @@ def run_one_trial(
 
 # ── Mapping variant generators ────────────────────────────────────────
 
+
 def make_ablated_mapping(
     base_mapping: dict[str, str],
     corpus: list[str],
@@ -255,9 +272,9 @@ def make_random_mapping(
     if preserve_cv_structure:
         # Separate CV from pure-V values
         cv_values = [v for v in phoneme_pool if len(v) > 1 and not v.startswith("?")]
-        v_values  = [v for v in phoneme_pool if len(v) == 1 and v.isalpha()]
-        cv_signs  = [s for s in signs if len(base_mapping[s]) > 1]
-        v_signs   = [s for s in signs if len(base_mapping[s]) == 1]
+        v_values = [v for v in phoneme_pool if len(v) == 1 and v.isalpha()]
+        cv_signs = [s for s in signs if len(base_mapping[s]) > 1]
+        v_signs = [s for s in signs if len(base_mapping[s]) == 1]
 
         rng.shuffle(cv_values)
         rng.shuffle(v_values)
@@ -290,6 +307,7 @@ def make_permuted_mapping(
 
 
 # ── Null corpus generators ────────────────────────────────────────────
+
 
 def make_shuffled_corpus(corpus: list[str], seed: int = 42) -> list[str]:
     """Shuffle the sign sequence — destroys sequential structure."""
@@ -327,6 +345,7 @@ def make_unigram_corpus(corpus: list[str], seed: int = 42) -> list[str]:
 
 # ── Experiment 1: Raw tablet sequence replication ─────────────────────
 
+
 def exp1_raw_tablet_replication(
     models: dict[str, LanguageModel] | None = None,
     use_kandles_bias: bool = False,
@@ -346,8 +365,7 @@ def exp1_raw_tablet_replication(
     for split_name, corpus in splits.items():
         if len(corpus) < 50:
             continue
-        scores = run_one_trial(corpus, mapping, "full", models,
-                               use_kandles_bias=use_kandles_bias)
+        scores = run_one_trial(corpus, mapping, "full", models, use_kandles_bias=use_kandles_bias)
         ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)
         best_id, best_score = ranked[0]
         second_score = ranked[1][1] if len(ranked) > 1 else 0.0
@@ -360,13 +378,16 @@ def exp1_raw_tablet_replication(
             "margin_vs_second": round(best_score - second_score, 3),
         }
         margin = best_score - second_score
-        print(f"  {split_name:8} n={len(corpus):4} "
-              f"greek={scores.get('greek',0):.2f} winner={best_id} margin={margin:.2f}")
+        print(
+            f"  {split_name:8} n={len(corpus):4} "
+            f"greek={scores.get('greek', 0):.2f} winner={best_id} margin={margin:.2f}"
+        )
 
     return results
 
 
 # ── Experiment 2: Mapping ablation ────────────────────────────────────
+
 
 def exp2_mapping_ablation(
     n_trials: int = 30,
@@ -404,13 +425,16 @@ def exp2_mapping_ablation(
             "hurrian_mean": round(h_mean, 3),
             "greek_rank_1_fraction": round(greek_wins / n_trials, 3),
         }
-        print(f"  n={n:3}  greek={g_mean:.2f} [{g_lo:.2f},{g_hi:.2f}]  "  # noqa: E501
-              f"hurrian={h_mean:.2f}  greek#1={greek_wins}/{n_trials}")
+        print(
+            f"  n={n:3}  greek={g_mean:.2f} [{g_lo:.2f},{g_hi:.2f}]  "  # noqa: E501
+            f"hurrian={h_mean:.2f}  greek#1={greek_wins}/{n_trials}"
+        )
 
     return results
 
 
 # ── Experiment 3: Mapping perturbation ───────────────────────────────
+
 
 def exp3_mapping_perturbation(
     n_trials: int = 30,
@@ -451,6 +475,7 @@ def exp3_mapping_perturbation(
 
 # ── Experiment 4: Random mapping null distribution ────────────────────
 
+
 def exp4_random_mapping_controls(
     n_trials: int = 100,
     models: dict[str, LanguageModel] | None = None,
@@ -464,7 +489,7 @@ def exp4_random_mapping_controls(
 
     # Real mapping score (single run as reference)
     real_scores = run_one_trial(corpus, base_mapping, "no_vocab", models)
-    real_greek  = real_scores.get("greek", 0.0)
+    real_greek = real_scores.get("greek", 0.0)
     print(f"  Real mapping: greek={real_greek:.2f}")
 
     def _rand_map(seed: int) -> dict[str, str]:
@@ -477,8 +502,8 @@ def exp4_random_mapping_controls(
         return make_permuted_mapping(base_mapping, seed=seed)
 
     null_types = {
-        "frequency_matched_random":   _rand_map,
-        "cv_structure_preserving":    _cv_map,
+        "frequency_matched_random": _rand_map,
+        "cv_structure_preserving": _cv_map,
         "permuted_lb_correspondences": _perm_map,
     }
 
@@ -491,20 +516,20 @@ def exp4_random_mapping_controls(
             s = run_one_trial(corpus, m, "no_vocab", models)
             null_greek_scores.append(s.get("greek", 0.0))
 
-        p_val  = empirical_p_value(real_greek, null_greek_scores)
-        z      = z_score(real_greek, null_greek_scores)
+        p_val = empirical_p_value(real_greek, null_greek_scores)
+        z = z_score(real_greek, null_greek_scores)
         g_mean, g_lo, g_hi = bootstrap_ci(null_greek_scores)
-        pct    = sum(1 for s in null_greek_scores if s >= real_greek) / n_trials * 100
+        pct = sum(1 for s in null_greek_scores if s >= real_greek) / n_trials * 100
 
         results["nulls"][null_name] = {
             "trials": n_trials,
             "null_mean": round(g_mean, 3),
-            "null_std":  round(bootstrap_ci(null_greek_scores)[0], 3),
+            "null_std": round(bootstrap_ci(null_greek_scores)[0], 3),
             "null_ci_lo": round(g_lo, 3),
             "null_ci_hi": round(g_hi, 3),
             "real_score": real_greek,
-            "p_value":    round(p_val, 4),
-            "z_score":    round(z, 3),
+            "p_value": round(p_val, 4),
+            "z_score": round(z, 3),
             "pct_exceeding_real": round(pct, 1),
         }
         print(f"  {null_name}: mean={g_mean:.2f}  p={p_val:.4f}  z={z:.2f}")
@@ -513,6 +538,7 @@ def exp4_random_mapping_controls(
 
 
 # ── Experiment 5: Scoring mode comparison ────────────────────────────
+
 
 def exp5_scoring_mode_comparison(
     models: dict[str, LanguageModel] | None = None,
@@ -529,8 +555,7 @@ def exp5_scoring_mode_comparison(
     results: dict[str, Any] = {}
 
     for mode in SCORING_MODES:
-        scores = run_one_trial(corpus, mapping, mode, models,
-                               use_kandles_bias=use_kandles_bias)
+        scores = run_one_trial(corpus, mapping, mode, models, use_kandles_bias=use_kandles_bias)
         ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)
         winner = ranked[0][0]
         greek_rank = next(i + 1 for i, (k, _) in enumerate(ranked) if k == "greek")
@@ -541,17 +566,18 @@ def exp5_scoring_mode_comparison(
             "greek_score": scores.get("greek", 0.0),
         }
         labels = {
-            "full":          "Full (bigram+Kandles+vocab)",
-            "no_vocab":      "No vocab (bigram+Kandles)",
-            "kandles_only":  "Kandles only",
+            "full": "Full (bigram+Kandles+vocab)",
+            "no_vocab": "No vocab (bigram+Kandles)",
+            "kandles_only": "Kandles only",
         }
         label = labels[mode]
-        print(f"  {label}: greek={scores.get('greek',0):.2f}  rank=#{greek_rank}  winner={winner}")
+        print(f"  {label}: greek={scores.get('greek', 0):.2f}  rank=#{greek_rank}  winner={winner}")
 
     return results
 
 
 # ── Experiment 6: Language model fairness ────────────────────────────
+
 
 def exp6_language_model_fairness(
     equalized_size: int = 2000,
@@ -563,32 +589,35 @@ def exp6_language_model_fairness(
     corpus = flat if len(flat) > 100 else _load_markov_corpus()
     mapping = _get_gorila_map()
 
-    eq_models  = _get_language_models(size=equalized_size)
+    eq_models = _get_language_models(size=equalized_size)
     base_models = _get_language_models()
 
     scores_base = run_one_trial(corpus, mapping, "no_vocab", base_models)
-    scores_eq   = run_one_trial(corpus, mapping, "no_vocab", eq_models)
+    scores_eq = run_one_trial(corpus, mapping, "no_vocab", eq_models)
 
     ranked_base = sorted(scores_base.items(), key=lambda x: x[1], reverse=True)
-    ranked_eq   = sorted(scores_eq.items(),   key=lambda x: x[1], reverse=True)
+    ranked_eq = sorted(scores_eq.items(), key=lambda x: x[1], reverse=True)
 
-    print(f"  Baseline:  greek={scores_base.get('greek',0):.2f}  winner={ranked_base[0][0]}")
-    print(f"  Equalized: greek={scores_eq.get('greek',0):.2f}  winner={ranked_eq[0][0]}")
+    print(f"  Baseline:  greek={scores_base.get('greek', 0):.2f}  winner={ranked_base[0][0]}")
+    print(f"  Equalized: greek={scores_eq.get('greek', 0):.2f}  winner={ranked_eq[0][0]}")
 
     return {
         "equalized_size": equalized_size,
-        "baseline":  {
-            "scores": scores_base, "winner": ranked_base[0][0],
+        "baseline": {
+            "scores": scores_base,
+            "winner": ranked_base[0][0],
             "greek_rank": next(i + 1 for i, (k, _) in enumerate(ranked_base) if k == "greek"),
         },
         "equalized": {
-            "scores": scores_eq, "winner": ranked_eq[0][0],
+            "scores": scores_eq,
+            "winner": ranked_eq[0][0],
             "greek_rank": next(i + 1 for i, (k, _) in enumerate(ranked_eq) if k == "greek"),
         },
     }
 
 
 # ── Experiment 7: Null corpus controls ───────────────────────────────
+
 
 def exp7_null_corpus_controls(
     n_trials: int = 30,
@@ -602,9 +631,9 @@ def exp7_null_corpus_controls(
     models = models or _get_language_models()
 
     null_corpora = {
-        "real":              lambda seed: corpus,
-        "shuffled":          lambda seed: make_shuffled_corpus(corpus, seed),
-        "unigram_only":      lambda seed: make_unigram_corpus(corpus, seed),
+        "real": lambda seed: corpus,
+        "shuffled": lambda seed: make_shuffled_corpus(corpus, seed),
+        "unigram_only": lambda seed: make_unigram_corpus(corpus, seed),
     }
 
     results: dict[str, Any] = {}
@@ -630,6 +659,7 @@ def exp7_null_corpus_controls(
 
 # ── Master runner ─────────────────────────────────────────────────────
 
+
 def run_all_experiments(
     n_mc_trials: int = 30,
     verbose: bool = True,
@@ -648,6 +678,7 @@ def run_all_experiments(
     """
     import contextlib
     import io
+
     if not verbose:
         _f = io.StringIO()
         ctx: Any = contextlib.redirect_stdout(_f)
@@ -658,14 +689,15 @@ def run_all_experiments(
     models = _get_language_models()
 
     with ctx:
-        print(f"\n{'='*60}")
+        print(f"\n{'=' * 60}")
         bias_label = (
-            "BIASED (language-specific Kandles)" if use_kandles_bias
+            "BIASED (language-specific Kandles)"
+            if use_kandles_bias
             else "UNBIASED (default Kandles)"
         )
         print(f"Linear A Anti-Circularity Experiment Suite  [{bias_label}]")
         print(f"MC trials per experiment: {n_mc_trials}")
-        print(f"{'='*60}\n")
+        print(f"{'=' * 60}\n")
 
         r1 = exp1_raw_tablet_replication(models=models, use_kandles_bias=use_kandles_bias)
         r2 = exp2_mapping_ablation(n_trials=n_mc_trials, models=models)
@@ -676,13 +708,13 @@ def run_all_experiments(
         r7 = exp7_null_corpus_controls(n_trials=n_mc_trials, models=models)
 
     return {
-        "exp1_raw_tablet":       r1,
+        "exp1_raw_tablet": r1,
         "exp2_mapping_ablation": r2,
-        "exp3_perturbation":     r3,
-        "exp4_null_distribution":r4,
-        "exp5_scoring_modes":    r5,
-        "exp6_fairness":         r6,
-        "exp7_null_corpus":      r7,
-        "n_mc_trials":           n_mc_trials,
-        "use_kandles_bias":      use_kandles_bias,
+        "exp3_perturbation": r3,
+        "exp4_null_distribution": r4,
+        "exp5_scoring_modes": r5,
+        "exp6_fairness": r6,
+        "exp7_null_corpus": r7,
+        "n_mc_trials": n_mc_trials,
+        "use_kandles_bias": use_kandles_bias,
     }

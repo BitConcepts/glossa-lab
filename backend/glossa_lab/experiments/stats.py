@@ -80,7 +80,7 @@ def empirical_p_value(
         count = sum(1 for s in null_scores if s <= real_score)
     else:
         right = sum(1 for s in null_scores if s >= real_score)
-        left  = sum(1 for s in null_scores if s <= real_score)
+        left = sum(1 for s in null_scores if s <= real_score)
         count = 2 * min(right, left)
 
     return count / n
@@ -133,8 +133,8 @@ def summarise(
         "label": label,
         "n": n,
         "mean": round(mean, 4),
-        "std":  round(std, 4),
-        "min":  round(min(scores), 4),
-        "max":  round(max(scores), 4),
+        "std": round(std, 4),
+        "min": round(min(scores), 4),
+        "max": round(max(scores), 4),
         "median": round(median, 4),
     }

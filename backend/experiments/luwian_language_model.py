@@ -24,43 +24,100 @@ _OUTPUT_PATH = _REPO_ROOT / "reports" / "luwian_model_validation.json"
 # Sources: Melchert (1994), Yakubovich (2010), Hawkins (2000)
 _LUWIAN_EXTENDED: dict[str, str] = {
     # Basic nouns
-    "ati": "father", "imi": "mother", "tati": "father (Luwian)", "nani": "brother",
-    "sara": "up / above", "ura": "great / big", "zid": "this (animate)",
-    "za": "this", "anda": "in / into", "paran": "before / ahead",
-    "antu": "and", "pi": "give", "du": "make / do", "ari": "come",
-    "wala": "die / perish", "asi": "mouth / word", "tuwati": "eye",
-    "isa": "mouth", "mana": "mina (unit)", "hantis": "front / first",
-    "alati": "tongue", "pati": "foot", "waras": "field / land",
-    "kuis": "who", "kuwa": "where", "nu": "and / then",
+    "ati": "father",
+    "imi": "mother",
+    "tati": "father (Luwian)",
+    "nani": "brother",
+    "sara": "up / above",
+    "ura": "great / big",
+    "zid": "this (animate)",
+    "za": "this",
+    "anda": "in / into",
+    "paran": "before / ahead",
+    "antu": "and",
+    "pi": "give",
+    "du": "make / do",
+    "ari": "come",
+    "wala": "die / perish",
+    "asi": "mouth / word",
+    "tuwati": "eye",
+    "isa": "mouth",
+    "mana": "mina (unit)",
+    "hantis": "front / first",
+    "alati": "tongue",
+    "pati": "foot",
+    "waras": "field / land",
+    "kuis": "who",
+    "kuwa": "where",
+    "nu": "and / then",
     # Verbs (Luwian)
-    "tiya": "step / place", "arha": "away", "hant": "be in front",
-    "waliya": "perish", "piya": "give", "la": "take", "au": "see",
-    "tara": "conquer", "ziya": "go", "iya": "make",
+    "tiya": "step / place",
+    "arha": "away",
+    "hant": "be in front",
+    "waliya": "perish",
+    "piya": "give",
+    "la": "take",
+    "au": "see",
+    "tara": "conquer",
+    "ziya": "go",
+    "iya": "make",
     # Administrative terms
-    "wasu": "good", "nawi": "not yet", "mawa": "and indeed",
-    "apa": "that / he", "amu": "I / me", "tu": "and",
-    "hiti": "immediately", "ziti": "person / man", "atri": "send",
+    "wasu": "good",
+    "nawi": "not yet",
+    "mawa": "and indeed",
+    "apa": "that / he",
+    "amu": "I / me",
+    "tu": "and",
+    "hiti": "immediately",
+    "ziti": "person / man",
+    "atri": "send",
     # Hieroglyphic Luwian specific (Hawkins 2000)
-    "runta": "storm god", "tarhunza": "storm god", "kubaba": "Kubaba",
-    "karhuha": "Karhuha (deity)", "sarruma": "Sharruma",
-    "wasusarma": "good king", "urawana": "great", "masana": "deity",
-    "sarku": "high / exalted", "tattamaru": "scribe",
-    "paskuwati": "satiate", "lali": "tongue", "mati": "name",
-    "tarhu": "conquer", "ziyi": "go / move", "tami": "other",
-    "hila": "courtyard", "hara": "eagle",
+    "runta": "storm god",
+    "tarhunza": "storm god",
+    "kubaba": "Kubaba",
+    "karhuha": "Karhuha (deity)",
+    "sarruma": "Sharruma",
+    "wasusarma": "good king",
+    "urawana": "great",
+    "masana": "deity",
+    "sarku": "high / exalted",
+    "tattamaru": "scribe",
+    "paskuwati": "satiate",
+    "lali": "tongue",
+    "mati": "name",
+    "tarhu": "conquer",
+    "ziyi": "go / move",
+    "tami": "other",
+    "hila": "courtyard",
+    "hara": "eagle",
     # Numbers and common functors
-    "ima": "this / now", "nawa": "not",
-    "wati": "and", "ki": "this", "ha": "take",
+    "ima": "this / now",
+    "nawa": "not",
+    "wati": "and",
+    "ki": "this",
+    "ha": "take",
     # Suffixes (Luwian morphology — agglutinative)
-    "ta": "-then", "mu": "-me/my", "wa": "quotative particle",
+    "ta": "-then",
+    "mu": "-me/my",
+    "wa": "quotative particle",
     # More extended vocabulary
-    "ariyati": "consult (oracle)", "halwati": "wall / fortification",
-    "tarwana": "judge", "hawis": "sheep", "immara": "field",
-    "aniyan": "made / worked", "asuwattis": "good", "masanalli": "divine",
-    "pihassassi": "lightning", "tiwad": "sun / day",
-    "huha": "grandfather", "hanna": "grandmother",
-    "arawa": "free / exempt", "damnasara": "domestic",
-    "walwala": "lion", "zurki": "blood", "halki": "grain",
+    "ariyati": "consult (oracle)",
+    "halwati": "wall / fortification",
+    "tarwana": "judge",
+    "hawis": "sheep",
+    "immara": "field",
+    "aniyan": "made / worked",
+    "asuwattis": "good",
+    "masanalli": "divine",
+    "pihassassi": "lightning",
+    "tiwad": "sun / day",
+    "huha": "grandfather",
+    "hanna": "grandmother",
+    "arawa": "free / exempt",
+    "damnasara": "domestic",
+    "walwala": "lion",
+    "zurki": "blood",
+    "halki": "grain",
 }
 
 
@@ -75,6 +132,7 @@ def build_luwian_corpus(repeat: int = 50) -> list[str]:
 def compute_bigram_profile(phonemes: list[str]) -> dict[str, dict[str, float]]:
     """Build normalised bigram transition probabilities."""
     from collections import defaultdict
+
     counts: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
     for i in range(len(phonemes) - 1):
         counts[phonemes[i]][phonemes[i + 1]] += 1
@@ -92,6 +150,7 @@ def score_corpus_against_model(
 ) -> float:
     """Log-likelihood of test corpus under bigram model (smoothed)."""
     import math
+
     log_prob = 0.0
     n = 0
     for i in range(len(test_corpus) - 1):
@@ -105,6 +164,7 @@ def score_corpus_against_model(
 def run() -> dict:
     """Build richer Luwian model and validate against Linear A corpus."""
     import sys
+
     tests_path = _REPO_ROOT / "backend" / "tests"
     if str(tests_path) not in sys.path:
         sys.path.insert(0, str(tests_path))
@@ -117,20 +177,48 @@ def run() -> dict:
 
     # Build Greek comparison model from LB phonetic values
     _GREEK_VOCAB = {
-        "ka": "and", "to": "the", "te": "and", "me": "not",
-        "de": "but", "ei": "if", "en": "in", "ek": "from",
-        "pa": "father", "ma": "mother", "ti": "honor",
-        "ke": "and (Myc.)", "we": "and (Myc.)", "jo": "rel.pron.",
-        "ko": "village", "no": "temple", "po": "city",
-        "ro": "worker", "so": "wine", "do": "gift",
-        "pe": "near", "ra": "women", "sa": "linen",
-        "ta": "the (pl.)", "na": "temple", "ni": "fig",
-        "ku": "total", "re": "linen (type)", "ri": "fig (type)",
-        "wi": "wine (type)", "wa": "sheep", "ze": "pair",
-        "di": "Zeus", "mi": "mina", "pu": "foal",
-        "su": "pig", "za": "barley", "du": "slave",
-        "pi": "more", "si": "figs",
-        "jo-do-so-si": "they give", "a-pi-qo-ro": "amphipoloi",
+        "ka": "and",
+        "to": "the",
+        "te": "and",
+        "me": "not",
+        "de": "but",
+        "ei": "if",
+        "en": "in",
+        "ek": "from",
+        "pa": "father",
+        "ma": "mother",
+        "ti": "honor",
+        "ke": "and (Myc.)",
+        "we": "and (Myc.)",
+        "jo": "rel.pron.",
+        "ko": "village",
+        "no": "temple",
+        "po": "city",
+        "ro": "worker",
+        "so": "wine",
+        "do": "gift",
+        "pe": "near",
+        "ra": "women",
+        "sa": "linen",
+        "ta": "the (pl.)",
+        "na": "temple",
+        "ni": "fig",
+        "ku": "total",
+        "re": "linen (type)",
+        "ri": "fig (type)",
+        "wi": "wine (type)",
+        "wa": "sheep",
+        "ze": "pair",
+        "di": "Zeus",
+        "mi": "mina",
+        "pu": "foal",
+        "su": "pig",
+        "za": "barley",
+        "du": "slave",
+        "pi": "more",
+        "si": "figs",
+        "jo-do-so-si": "they give",
+        "a-pi-qo-ro": "amphipoloi",
     }
     greek_corpus = []
     for word in _GREEK_VOCAB:
@@ -141,6 +229,7 @@ def run() -> dict:
     # Try to load real Linear A corpus for scoring
     try:
         from tests.corpora.real import load_linear_a_signs
+
         la_corpus = load_linear_a_signs()
     except Exception:
         la_corpus = []

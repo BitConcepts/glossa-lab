@@ -101,24 +101,23 @@ def identify_numerals(
             numeral_score += 0.2
 
         if numeral_score >= 0.3:
-            candidates.append({
-                "sign": sign,
-                "frequency": count,
-                "numeral_score": round(numeral_score, 2),
-                "avg_position": round(avg_pos, 3),
-                "position_std": round(pos_std, 3),
-                "distinct_neighbors": len(adj),
-                "evidence": evidence,
-            })
+            candidates.append(
+                {
+                    "sign": sign,
+                    "frequency": count,
+                    "numeral_score": round(numeral_score, 2),
+                    "avg_position": round(avg_pos, 3),
+                    "position_std": round(pos_std, 3),
+                    "distinct_neighbors": len(adj),
+                    "evidence": evidence,
+                }
+            )
 
     candidates.sort(key=lambda c: c["numeral_score"], reverse=True)
 
     # Classify top candidates
     likely_numerals = [c["sign"] for c in candidates if c["numeral_score"] >= 0.5]
-    possible_numerals = [
-        c["sign"] for c in candidates
-        if 0.3 <= c["numeral_score"] < 0.5
-    ]
+    possible_numerals = [c["sign"] for c in candidates if 0.3 <= c["numeral_score"] < 0.5]
 
     return {
         "total_signs_analyzed": len(freq),
@@ -153,7 +152,7 @@ async def run_numerals(params: dict[str, Any]) -> dict[str, Any]:
         inscriptions = []
         idx = 0
         for length in metadata["inscription_lengths"]:
-            inscriptions.append(symbols[idx:idx + length])
+            inscriptions.append(symbols[idx : idx + length])
             idx += length
     else:
         inscriptions = [symbols]

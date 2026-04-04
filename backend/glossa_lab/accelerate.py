@@ -46,19 +46,21 @@ T = TypeVar("T")
 
 # ── Device detection ──────────────────────────────────────────────────
 
-_NUMPY_OK  = False
-_TORCH_OK  = False
-_CUPY_OK   = False
+_NUMPY_OK = False
+_TORCH_OK = False
+_CUPY_OK = False
 _CUDA_AVAILABLE = False
 
 try:
     import numpy as _np  # type: ignore[import]
+
     _NUMPY_OK = True
 except ImportError:
     _np = None  # type: ignore[assignment]
 
 try:
     import torch as _torch  # type: ignore[import]
+
     _TORCH_OK = True
     _CUDA_AVAILABLE = _torch.cuda.is_available()
 except ImportError:
@@ -67,6 +69,7 @@ except ImportError:
 if not _CUDA_AVAILABLE:
     try:
         import cupy as _cp  # type: ignore[import]
+
         _CUPY_OK = True
         _CUDA_AVAILABLE = True
     except ImportError:
@@ -76,13 +79,13 @@ if not _CUDA_AVAILABLE:
 def gpu_info() -> dict[str, Any]:
     """Return a summary of available acceleration resources."""
     info: dict[str, Any] = {
-        "numpy":         _NUMPY_OK,
-        "torch":         _TORCH_OK,
-        "cupy":          _CUPY_OK,
-        "cuda":          _CUDA_AVAILABLE,
-        "cpu_cores":     multiprocessing.cpu_count(),
-        "tier":          1,
-        "tier_name":     "multi-process CPU",
+        "numpy": _NUMPY_OK,
+        "torch": _TORCH_OK,
+        "cupy": _CUPY_OK,
+        "cuda": _CUDA_AVAILABLE,
+        "cpu_cores": multiprocessing.cpu_count(),
+        "tier": 1,
+        "tier_name": "multi-process CPU",
     }
     if _NUMPY_OK:
         info["tier"] = 2
@@ -93,9 +96,7 @@ def gpu_info() -> dict[str, Any]:
 
     if _TORCH_OK and _CUDA_AVAILABLE:
         info["gpu_name"] = _torch.cuda.get_device_name(0)
-        info["gpu_mem_gb"] = round(
-            _torch.cuda.get_device_properties(0).total_memory / 1e9, 2
-        )
+        info["gpu_mem_gb"] = round(_torch.cuda.get_device_properties(0).total_memory / 1e9, 2)
     elif _CUPY_OK and _CUDA_AVAILABLE:
         device = _cp.cuda.Device(0)
         info["gpu_name"] = f"CUDA device {device.id}"
@@ -104,6 +105,7 @@ def gpu_info() -> dict[str, Any]:
 
 
 # ── Tier 1: Multi-process MC trial parallelism ────────────────────────
+
 
 def _n_workers() -> int:
     """Number of worker processes to use (leave 1 core for main thread)."""
@@ -167,6 +169,7 @@ def parallel_mc_trials(
 
 # ── Tier 2: NumPy-vectorised language model scoring ───────────────────
 
+
 class FastScorer:
     """NumPy-backed bigram log-likelihood scorer.
 
@@ -180,7 +183,7 @@ class FastScorer:
 
     def __init__(
         self,
-        bigram_matrix: Any,       # np.ndarray shape (V, V) float32
+        bigram_matrix: Any,  # np.ndarray shape (V, V) float32
         symbol_to_idx: dict[str, int],
         smoothing: float = 1e-8,
     ) -> None:
@@ -193,6 +196,7 @@ class FastScorer:
     def _ensure_log_mat(self) -> None:
         if self._log_mat is None and _NUMPY_OK:
             import numpy as np
+
             mat = self._mat.copy()
             mat[mat == 0] = 1e-8
             self._log_mat = np.log(mat, dtype=np.float64)
@@ -203,6 +207,7 @@ class FastScorer:
             return self._score_text_python(text)
 
         import numpy as np
+
         self._ensure_log_mat()
 
         V = self._V
@@ -251,6 +256,7 @@ def make_fast_scorer(language_model: Any) -> "FastScorer | None":
 
 # ── Tier 3: GPU batch Kandles cosine similarity ───────────────────────
 
+
 def kandles_batch_compare(
     distributions_a: list[list[float]],
     distributions_b: list[list[float]],
@@ -284,11 +290,13 @@ def kandles_batch_compare(
 
 
 def _kandles_batch_numpy(
-    a: list[list[float]], b: list[list[float]],
+    a: list[list[float]],
+    b: list[list[float]],
 ) -> list[float]:
     import numpy as np
-    A = np.array(a, dtype=np.float32)   # (N, 8)
-    B = np.array(b, dtype=np.float32)   # (N, 8)
+
+    A = np.array(a, dtype=np.float32)  # (N, 8)
+    B = np.array(b, dtype=np.float32)  # (N, 8)
     dots = (A * B).sum(axis=1)
     mag_a = np.linalg.norm(A, axis=1)
     mag_b = np.linalg.norm(B, axis=1)
@@ -298,9 +306,11 @@ def _kandles_batch_numpy(
 
 
 def _kandles_batch_torch(
-    a: list[list[float]], b: list[list[float]],
+    a: list[list[float]],
+    b: list[list[float]],
 ) -> list[float]:
     import torch
+
     A = torch.tensor(a, dtype=torch.float32, device="cuda")  # (N, 8)
     B = torch.tensor(b, dtype=torch.float32, device="cuda")  # (N, 8)
     sims = torch.nn.functional.cosine_similarity(A, B, dim=1)
@@ -308,9 +318,11 @@ def _kandles_batch_torch(
 
 
 def _kandles_batch_cupy(
-    a: list[list[float]], b: list[list[float]],
+    a: list[list[float]],
+    b: list[list[float]],
 ) -> list[float]:
     import cupy as cp
+
     A = cp.array(a, dtype=cp.float32)
     B = cp.array(b, dtype=cp.float32)
     dots = (A * B).sum(axis=1)
@@ -322,7 +334,8 @@ def _kandles_batch_cupy(
 
 
 def _kandles_batch_python(
-    a: list[list[float]], b: list[list[float]],
+    a: list[list[float]],
+    b: list[list[float]],
 ) -> list[float]:
     results = []
     for va, vb in zip(a, b):
@@ -335,6 +348,7 @@ def _kandles_batch_python(
 
 
 # ── Tier 3: Batch bigram scoring (GPU matrix multiply) ────────────────
+
 
 def batch_hypothesis_score(
     phoneme_sequences: list[list[str]],
@@ -373,6 +387,7 @@ def _batch_score_torch(
 
     # Build bigram matrix on GPU
     import numpy as np
+
     mat = np.zeros((V, V), dtype=np.float32)
     for (a, b), freq in language_model.bigram_freq.items():
         ia = sym_to_idx.get(a, V - 1)
@@ -388,7 +403,8 @@ def _batch_score_torch(
             continue
         idxs = torch.tensor(
             [sym_to_idx.get(s, V - 1) for s in seq],
-            dtype=torch.long, device="cuda",
+            dtype=torch.long,
+            device="cuda",
         )
         log_probs = log_mat[idxs[:-1], idxs[1:]]
         scores.append(float(log_probs.sum().cpu().item()))
@@ -397,6 +413,7 @@ def _batch_score_torch(
 
 
 # ── NumPy-accelerated Kandles grid comparison ─────────────────────────
+
 
 def fast_kandles_validate(
     deciphered: list[str],
@@ -411,6 +428,7 @@ def fast_kandles_validate(
     """
     try:
         from glossa_lab.pipelines.kandles import generate_grid
+
         grid_dec = generate_grid(deciphered[:200], profile=kandles_profile)
         grid_tgt = generate_grid(target_symbols[:200], profile=kandles_profile)
 
@@ -436,6 +454,7 @@ def fast_kandles_validate(
 
 # ── GPU batch context-vector cosine similarity (Ventris / fingerprint) ───
 
+
 def build_context_vectors(
     inscriptions: list[list[str]],
     signs: list[str],
@@ -456,7 +475,8 @@ def build_context_vectors(
 
     if _NUMPY_OK:
         import numpy as np
-        left  = np.zeros((n, n), dtype=np.float32)
+
+        left = np.zeros((n, n), dtype=np.float32)
         right = np.zeros((n, n), dtype=np.float32)
         for insc in inscriptions:
             for pos, sign in enumerate(insc):
@@ -472,7 +492,8 @@ def build_context_vectors(
 
     # Pure-Python fallback
     from collections import defaultdict
-    left_d:  dict[int, dict[int, float]] = defaultdict(lambda: defaultdict(float))
+
+    left_d: dict[int, dict[int, float]] = defaultdict(lambda: defaultdict(float))
     right_d: dict[int, dict[int, float]] = defaultdict(lambda: defaultdict(float))
     for insc in inscriptions:
         for pos, sign in enumerate(insc):
@@ -504,8 +525,10 @@ def batch_cosine_similarity_matrix(
     """
     if _TORCH_OK and _CUDA_AVAILABLE:
         import torch
+
         if not isinstance(vectors, torch.Tensor):
             import numpy as np
+
             V = torch.tensor(vectors, dtype=torch.float32, device="cuda")
         else:
             V = vectors.to("cuda").float()
@@ -516,6 +539,7 @@ def batch_cosine_similarity_matrix(
 
     if _CUPY_OK and _CUDA_AVAILABLE:
         import cupy as cp
+
         V = cp.array(vectors, dtype=cp.float32)
         norms = cp.linalg.norm(V, axis=1, keepdims=True).clip(min=1e-8)
         V_norm = V / norms
@@ -524,6 +548,7 @@ def batch_cosine_similarity_matrix(
 
     if _NUMPY_OK:
         import numpy as np
+
         V = np.asarray(vectors, dtype=np.float32)
         norms = np.linalg.norm(V, axis=1, keepdims=True).clip(min=1e-8)
         V_norm = V / norms
@@ -531,6 +556,7 @@ def batch_cosine_similarity_matrix(
 
     # Pure-Python O(N^3) fallback
     import math
+
     n = len(vectors)
     sim = [[0.0] * n for _ in range(n)]
     for i in range(n):
@@ -567,10 +593,11 @@ def ventris_affinity_gpu(
 
     if _NUMPY_OK:
         import numpy as np
-        if not hasattr(left_mat, 'shape'):
+
+        if not hasattr(left_mat, "shape"):
             # Convert dicts to array
             n = len(signs)
-            left_arr  = np.zeros((n, n), dtype=np.float32)
+            left_arr = np.zeros((n, n), dtype=np.float32)
             right_arr = np.zeros((n, n), dtype=np.float32)
             for i, row in left_mat.items():  # type: ignore[union-attr]
                 for j, v in row.items():
@@ -578,10 +605,10 @@ def ventris_affinity_gpu(
             for i, row in right_mat.items():  # type: ignore[union-attr]
                 for j, v in row.items():
                     right_arr[i, j] = v
-            left_mat  = left_arr
+            left_mat = left_arr
             right_mat = right_arr
 
-    vowel_sim     = batch_cosine_similarity_matrix(left_mat)
+    vowel_sim = batch_cosine_similarity_matrix(left_mat)
     consonant_sim = batch_cosine_similarity_matrix(right_mat)
     return vowel_sim, consonant_sim
 
@@ -611,33 +638,37 @@ def gpu_fingerprint_compare(
 
     if _TORCH_OK and _CUDA_AVAILABLE:
         import torch
+
         t = torch.tensor(target_vector, dtype=torch.float32, device="cuda")
         db = torch.tensor(database_vectors, dtype=torch.float32, device="cuda")
-        w  = torch.tensor(W, dtype=torch.float32, device="cuda")
-        diff = db - t.unsqueeze(0)           # K × D
-        dist = torch.sqrt((diff ** 2 * w).sum(dim=1))  # K
+        w = torch.tensor(W, dtype=torch.float32, device="cuda")
+        diff = db - t.unsqueeze(0)  # K × D
+        dist = torch.sqrt((diff**2 * w).sum(dim=1))  # K
         return dist.cpu().tolist()
 
     if _CUPY_OK and _CUDA_AVAILABLE:
         import cupy as cp
-        t  = cp.array(target_vector, dtype=cp.float32)
+
+        t = cp.array(target_vector, dtype=cp.float32)
         db = cp.array(database_vectors, dtype=cp.float32)
-        w  = cp.array(W, dtype=cp.float32)
+        w = cp.array(W, dtype=cp.float32)
         diff = db - t[None, :]
-        dist = cp.sqrt((diff ** 2 * w).sum(axis=1))
+        dist = cp.sqrt((diff**2 * w).sum(axis=1))
         return cp.asnumpy(dist).tolist()
 
     if _NUMPY_OK:
         import numpy as np
-        t  = np.array(target_vector, dtype=np.float64)
+
+        t = np.array(target_vector, dtype=np.float64)
         db = np.array(database_vectors, dtype=np.float64)
-        w  = np.array(W, dtype=np.float64)
+        w = np.array(W, dtype=np.float64)
         diff = db - t[None, :]
-        dist = np.sqrt((diff ** 2 * w).sum(axis=1))
+        dist = np.sqrt((diff**2 * w).sum(axis=1))
         return dist.tolist()
 
     # Pure-Python fallback
     import math
+
     return [
         math.sqrt(sum(W[d] * (db_v[d] - target_vector[d]) ** 2 for d in range(D)))
         for db_v in database_vectors
@@ -645,6 +676,7 @@ def gpu_fingerprint_compare(
 
 
 # ── Progress reporter for long experiments ────────────────────────────
+
 
 class ProgressCounter:
     """Thread-safe progress counter for parallel experiment runs."""
@@ -660,9 +692,7 @@ class ProgressCounter:
             n = self._count.value
         pct = n / self.total * 100
         bar = "#" * int(pct // 5)
-        sys.stdout.write(
-            f"\r  [{bar:<20}] {n}/{self.total} {self.desc} ({pct:.0f}%)"
-        )
+        sys.stdout.write(f"\r  [{bar:<20}] {n}/{self.total} {self.desc} ({pct:.0f}%)")
         sys.stdout.flush()
         if n >= self.total:
             sys.stdout.write("\n")

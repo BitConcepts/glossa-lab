@@ -76,9 +76,7 @@ def test_dna_h1_higher_than_english():
     dna = compute_block_entropies(load_dna(), max_n=2)
     eng_h1 = _get_norm(eng, 1)
     dna_h1 = _get_norm(dna, 1)
-    assert dna_h1 > eng_h1, (
-        f"DNA H1_norm={dna_h1} should be > English H1_norm={eng_h1}"
-    )
+    assert dna_h1 > eng_h1, f"DNA H1_norm={dna_h1} should be > English H1_norm={eng_h1}"
 
 
 def test_dna_near_maximum():
@@ -102,9 +100,7 @@ def test_fortran_h1_lower_than_english():
     fort = compute_block_entropies(load_fortran(), max_n=2)
     eng_h1 = _get_norm(eng, 1)
     fort_h1 = _get_norm(fort, 1)
-    assert fort_h1 < eng_h1, (
-        f"Fortran H1_norm={fort_h1} should be < English H1_norm={eng_h1}"
-    )
+    assert fort_h1 < eng_h1, f"Fortran H1_norm={fort_h1} should be < English H1_norm={eng_h1}"
 
 
 # ── Indus script (target of original study) ────────────────────

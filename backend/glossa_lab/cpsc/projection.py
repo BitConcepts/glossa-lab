@@ -47,7 +47,7 @@ def cpsc_project(
     cs = constraints or DEFAULT_CONSTRAINTS
 
     cipher_alphabet = sorted(set(cipher_signs))
-    target_alphabet = target_model.ranked[:len(cipher_alphabet)]
+    target_alphabet = target_model.ranked[: len(cipher_alphabet)]
     while len(target_alphabet) < len(cipher_alphabet):
         target_alphabet.append(f"?{len(target_alphabet)}")
 
@@ -71,10 +71,7 @@ def cpsc_project(
 
         for _epoch in range(max_epochs):
             # EVALUATE all constraints
-            total_v = sum(
-                c.violation(mapping, cipher_signs, target_model) * c.weight
-                for c in cs
-            )
+            total_v = sum(c.violation(mapping, cipher_signs, target_model) * c.weight for c in cs)
             history.append(total_v)
 
             # CONVERGENCE check
@@ -102,9 +99,7 @@ def cpsc_project(
                 mapping[a], mapping[b] = mapping[b], mapping[a]
 
                 swap_v = sum(
-                    c.violation(mapping, cipher_signs, target_model)
-                    * c.weight
-                    for c in cs
+                    c.violation(mapping, cipher_signs, target_model) * c.weight for c in cs
                 )
 
                 if swap_v < best_swap_v:
@@ -122,10 +117,7 @@ def cpsc_project(
                 if no_improve > 200:
                     break
 
-        final_v = sum(
-            c.violation(mapping, cipher_signs, target_model) * c.weight
-            for c in cs
-        )
+        final_v = sum(c.violation(mapping, cipher_signs, target_model) * c.weight for c in cs)
         if final_v < best_total_v:
             best_total_v = final_v
             best_mapping = dict(mapping)
@@ -134,7 +126,8 @@ def cpsc_project(
     # Final constraint report
     final_violations = {
         c.name: round(
-            c.violation(best_mapping, cipher_signs, target_model), 4,
+            c.violation(best_mapping, cipher_signs, target_model),
+            4,
         )
         for c in cs
     }

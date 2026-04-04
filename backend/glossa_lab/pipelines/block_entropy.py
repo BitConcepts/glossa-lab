@@ -68,11 +68,13 @@ def compute_block_entropies(
     for n in range(1, max_n + 1):
         raw = compute_block_entropy(symbols, n, estimator=estimator)
         normalized = raw / ln_L if ln_L > 0 else 0.0
-        entries.append({
-            "n": n,
-            "raw_nats": round(raw, 6),
-            "normalized": round(normalized, 6),
-        })
+        entries.append(
+            {
+                "n": n,
+                "raw_nats": round(raw, 6),
+                "normalized": round(normalized, 6),
+            }
+        )
 
     return {
         "alphabet_size": L,

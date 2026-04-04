@@ -56,45 +56,38 @@ def detect_paradigms(
         # For each possible varying position
         for slot in range(length):
             # Build stem templates: replace slot with wildcard
-            stems: dict[tuple[str, ...], list[dict[str, Any]]] = defaultdict(
-                list
-            )
+            stems: dict[tuple[str, ...], list[dict[str, Any]]] = defaultdict(list)
             for insc in group:
-                stem = tuple(
-                    "_" if i == slot else insc[i] for i in range(length)
+                stem = tuple("_" if i == slot else insc[i] for i in range(length))
+                stems[stem].append(
+                    {
+                        "inscription": insc,
+                        "variant_sign": insc[slot],
+                    }
                 )
-                stems[stem].append({
-                    "inscription": insc,
-                    "variant_sign": insc[slot],
-                })
 
             # Find stems with multiple variants
             for stem, variants in stems.items():
                 unique_variants = set(v["variant_sign"] for v in variants)
-                if (
-                    len(variants) >= min_stem_freq
-                    and len(unique_variants) >= min_variants
-                ):
-                    paradigms.append({
-                        "stem_template": list(stem),
-                        "length": length,
-                        "slot_position": slot,
-                        "variant_count": len(unique_variants),
-                        "occurrence_count": len(variants),
-                        "variants": sorted(unique_variants),
-                        "examples": [
-                            v["inscription"] for v in variants[:10]
-                        ],
-                    })
+                if len(variants) >= min_stem_freq and len(unique_variants) >= min_variants:
+                    paradigms.append(
+                        {
+                            "stem_template": list(stem),
+                            "length": length,
+                            "slot_position": slot,
+                            "variant_count": len(unique_variants),
+                            "occurrence_count": len(variants),
+                            "variants": sorted(unique_variants),
+                            "examples": [v["inscription"] for v in variants[:10]],
+                        }
+                    )
 
     # Sort by number of variants (most interesting first)
     paradigms.sort(key=lambda p: p["variant_count"], reverse=True)
 
     return {
         "total_inscriptions": sum(len(g) for g in by_length.values()),
-        "length_distribution": {
-            str(k): len(v) for k, v in sorted(by_length.items())
-        },
+        "length_distribution": {str(k): len(v) for k, v in sorted(by_length.items())},
         "paradigm_count": len(paradigms),
         "paradigms": paradigms[:50],  # Top 50
     }

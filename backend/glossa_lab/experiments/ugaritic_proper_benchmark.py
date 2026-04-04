@@ -30,9 +30,9 @@ import sys
 from collections import Counter
 from typing import Any
 
-_HERE    = os.path.dirname(os.path.abspath(__file__))
+_HERE = os.path.dirname(os.path.abspath(__file__))
 _BACKEND = os.path.dirname(os.path.dirname(_HERE))
-_TESTS   = os.path.join(_BACKEND, "tests")
+_TESTS = os.path.join(_BACKEND, "tests")
 for _p in (_BACKEND, _TESTS):
     if _p not in sys.path:
         sys.path.insert(0, _p)
@@ -61,18 +61,15 @@ def run_ugaritic_benchmark(verbose: bool = True) -> dict[str, Any]:
         return [ch for ch in line.split() if ch != "."]
 
     decoded_lines = [_parse_line(ln) for ln in _BAAL_CYCLE_LINES]
-    encoded_lines = [
-        [_SIGN_TO_ID.get(s, s) for s in line]
-        for line in decoded_lines
-    ]
+    encoded_lines = [[_SIGN_TO_ID.get(s, s) for s in line] for line in decoded_lines]
     answer_key = get_answer_key()  # opaque_id → real_sign
 
     n_lines = len(decoded_lines)
     split_idx = int(n_lines * 0.75)  # 75% train, 25% test
 
-    _print("\n" + "="*65)
+    _print("\n" + "=" * 65)
     _print("  Ugaritic Benchmark: Circular vs Proper Train/Test Split")
-    _print("="*65)
+    _print("=" * 65)
     _print(f"  Total lines:   {n_lines}")
     _print(f"  Train lines:   {split_idx}  (decoded — used for language model only)")
     _print(f"  Test  lines:   {n_lines - split_idx}  (encoded — presented as cipher)")
@@ -92,9 +89,11 @@ def run_ugaritic_benchmark(verbose: bool = True) -> dict[str, Any]:
         "most_frequent": freq_all.most_common(5),
     }
     _print("  Corpus statistics:")
-    _print(f"    N={corpus_stats['total_tokens']}  V={corpus_stats['distinct_signs']}  "
-           f"V/N={corpus_stats['type_token_ratio']}  "
-           f"hapax={corpus_stats['hapax_count']}")
+    _print(
+        f"    N={corpus_stats['total_tokens']}  V={corpus_stats['distinct_signs']}  "
+        f"V/N={corpus_stats['type_token_ratio']}  "
+        f"hapax={corpus_stats['hapax_count']}"
+    )
 
     # ── EXPERIMENT A: Circular (train == test) ────────────────────────
     _print("\n  [A] CIRCULAR benchmark (train == test — the problematic approach):")
@@ -104,32 +103,42 @@ def run_ugaritic_benchmark(verbose: bool = True) -> dict[str, Any]:
 
     model_circ = LanguageModel(circ_train_flat, inscriptions=decoded_lines)
     result_circ = decipher(
-        circ_test_encoded, model_circ,
-        seed=42, max_iterations=5000, restarts=3,
+        circ_test_encoded,
+        model_circ,
+        seed=42,
+        max_iterations=5000,
+        restarts=3,
         cipher_inscriptions=circ_test_inscr,
     )
     acc_circ = score_accuracy(result_circ["proposed_mapping"], answer_key)
-    _print(f"    Accuracy: {acc_circ['correct']}/{acc_circ['total']} = "
-           f"{acc_circ['accuracy']*100:.1f}%")
+    _print(
+        f"    Accuracy: {acc_circ['correct']}/{acc_circ['total']} = "
+        f"{acc_circ['accuracy'] * 100:.1f}%"
+    )
     _print(f"    Kandles confidence: {result_circ['kandles_confidence']:.4f}")
     _print("    NOTE: This inflates accuracy — the LM and cipher use the same text.")
 
     # ── EXPERIMENT B: Proper train/test split ─────────────────────────
     _print("\n  [B] PROPER benchmark (75% train, 25% test — no data leakage):")
     train_decoded = [s for line in decoded_lines[:split_idx] for s in line]
-    train_inscr   = decoded_lines[:split_idx]
-    test_encoded  = [s for line in encoded_lines[split_idx:] for s in line]
-    test_inscr    = encoded_lines[split_idx:]
+    train_inscr = decoded_lines[:split_idx]
+    test_encoded = [s for line in encoded_lines[split_idx:] for s in line]
+    test_inscr = encoded_lines[split_idx:]
 
     model_proper = LanguageModel(train_decoded, inscriptions=train_inscr)
     result_proper = decipher(
-        test_encoded, model_proper,
-        seed=42, max_iterations=5000, restarts=3,
+        test_encoded,
+        model_proper,
+        seed=42,
+        max_iterations=5000,
+        restarts=3,
         cipher_inscriptions=test_inscr,
     )
     acc_proper = score_accuracy(result_proper["proposed_mapping"], answer_key)
-    _print(f"    Accuracy: {acc_proper['correct']}/{acc_proper['total']} = "
-           f"{acc_proper['accuracy']*100:.1f}%")
+    _print(
+        f"    Accuracy: {acc_proper['correct']}/{acc_proper['total']} = "
+        f"{acc_proper['accuracy'] * 100:.1f}%"
+    )
     _print(f"    Kandles confidence: {result_proper['kandles_confidence']:.4f}")
     _print("    NOTE: This is the scientifically valid measurement.")
 
@@ -137,7 +146,7 @@ def run_ugaritic_benchmark(verbose: bool = True) -> dict[str, Any]:
     # Approximate section split: first ~30 lines = KTU 1.1-1.2, next ~20 = 1.3-1.4
     ktu_split = 49  # approximate KTU 1.1-1.3 boundary
     _print("\n  [C] CROSS-SECTION benchmark (KTU 1.1\u20131.3 train, 1.4\u20131.6 test):")
-    _print(f"    Train: lines 0-{ktu_split-1}  Test: lines {ktu_split}-{n_lines-1}")
+    _print(f"    Train: lines 0-{ktu_split - 1}  Test: lines {ktu_split}-{n_lines - 1}")
     train_ktu_flat = [s for line in decoded_lines[:ktu_split] for s in line]
     train_ktu_inscr = decoded_lines[:ktu_split]
     test_ktu_encoded = [s for line in encoded_lines[ktu_split:] for s in line]
@@ -145,22 +154,26 @@ def run_ugaritic_benchmark(verbose: bool = True) -> dict[str, Any]:
 
     model_ktu = LanguageModel(train_ktu_flat, inscriptions=train_ktu_inscr)
     result_ktu = decipher(
-        test_ktu_encoded, model_ktu,
-        seed=42, max_iterations=5000, restarts=3,
+        test_ktu_encoded,
+        model_ktu,
+        seed=42,
+        max_iterations=5000,
+        restarts=3,
         cipher_inscriptions=test_ktu_inscr,
     )
     acc_ktu = score_accuracy(result_ktu["proposed_mapping"], answer_key)
-    _print(f"    Accuracy: {acc_ktu['correct']}/{acc_ktu['total']} = "
-           f"{acc_ktu['accuracy']*100:.1f}%")
+    _print(
+        f"    Accuracy: {acc_ktu['correct']}/{acc_ktu['total']} = {acc_ktu['accuracy'] * 100:.1f}%"
+    )
     _print(f"    Kandles confidence: {result_ktu['kandles_confidence']:.4f}")
 
     # ── Summary ───────────────────────────────────────────────────────
     _print("\n  Summary:")
-    _print(f"    Circular (train=test):      {acc_circ['accuracy']*100:.1f}%")
-    _print(f"    Proper (75/25 split):       {acc_proper['accuracy']*100:.1f}%")
-    _print(f"    Cross-section (KTU split):  {acc_ktu['accuracy']*100:.1f}%")
-    delta = acc_circ['accuracy'] - acc_proper['accuracy']
-    _print(f"    Circularity inflation:      +{delta*100:.1f} percentage points")
+    _print(f"    Circular (train=test):      {acc_circ['accuracy'] * 100:.1f}%")
+    _print(f"    Proper (75/25 split):       {acc_proper['accuracy'] * 100:.1f}%")
+    _print(f"    Cross-section (KTU split):  {acc_ktu['accuracy'] * 100:.1f}%")
+    delta = acc_circ["accuracy"] - acc_proper["accuracy"]
+    _print(f"    Circularity inflation:      +{delta * 100:.1f} percentage points")
     _print()
     _print("  IMPORTANT: The 'proper' and 'cross-section' figures are the only")
     _print("  scientifically valid accuracy claims for submission to Dr. Fuls.")

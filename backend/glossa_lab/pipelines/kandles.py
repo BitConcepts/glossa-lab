@@ -35,22 +35,69 @@ if TYPE_CHECKING:
 # ── Kandles mapping ───────────────────────────────────────────────
 
 KANDLES_GROUPS: dict[int, dict[str, Any]] = {
-    0: {"letters": set("AEIOU"), "color": "White", "hex": "#FFFFFF",
-        "nature": "Vowel", "kanji": ""},
-    1: {"letters": {"K", "G", "J", "C", "Q"}, "color": "Yellow", "hex": "#EAB308",
-        "nature": "Sun", "kanji": "日", "digraphs": {"CH"}},
-    2: {"letters": {"M", "N"}, "color": "Grey", "hex": "#9CA3AF",
-        "nature": "Moon", "kanji": "月", "digraphs": set()},
-    3: {"letters": {"T", "D"}, "color": "Red", "hex": "#DC2626",
-        "nature": "Fire", "kanji": "火", "digraphs": {"TH"}},
-    4: {"letters": {"R", "L"}, "color": "Blue", "hex": "#2563EB",
-        "nature": "Water", "kanji": "水", "digraphs": set()},
-    5: {"letters": {"Y", "W", "H"}, "color": "Green", "hex": "#16A34A",
-        "nature": "Tree", "kanji": "木", "digraphs": {"KH"}},
-    6: {"letters": {"P", "B", "F", "V"}, "color": "Purple", "hex": "#9333EA",
-        "nature": "Flower", "kanji": "花", "digraphs": set()},
-    7: {"letters": {"S", "Z", "X"}, "color": "Brown", "hex": "#92400E",
-        "nature": "Soil", "kanji": "土", "digraphs": {"SH"}},
+    0: {
+        "letters": set("AEIOU"),
+        "color": "White",
+        "hex": "#FFFFFF",
+        "nature": "Vowel",
+        "kanji": "",
+    },
+    1: {
+        "letters": {"K", "G", "J", "C", "Q"},
+        "color": "Yellow",
+        "hex": "#EAB308",
+        "nature": "Sun",
+        "kanji": "日",
+        "digraphs": {"CH"},
+    },
+    2: {
+        "letters": {"M", "N"},
+        "color": "Grey",
+        "hex": "#9CA3AF",
+        "nature": "Moon",
+        "kanji": "月",
+        "digraphs": set(),
+    },
+    3: {
+        "letters": {"T", "D"},
+        "color": "Red",
+        "hex": "#DC2626",
+        "nature": "Fire",
+        "kanji": "火",
+        "digraphs": {"TH"},
+    },
+    4: {
+        "letters": {"R", "L"},
+        "color": "Blue",
+        "hex": "#2563EB",
+        "nature": "Water",
+        "kanji": "水",
+        "digraphs": set(),
+    },
+    5: {
+        "letters": {"Y", "W", "H"},
+        "color": "Green",
+        "hex": "#16A34A",
+        "nature": "Tree",
+        "kanji": "木",
+        "digraphs": {"KH"},
+    },
+    6: {
+        "letters": {"P", "B", "F", "V"},
+        "color": "Purple",
+        "hex": "#9333EA",
+        "nature": "Flower",
+        "kanji": "花",
+        "digraphs": set(),
+    },
+    7: {
+        "letters": {"S", "Z", "X"},
+        "color": "Brown",
+        "hex": "#92400E",
+        "nature": "Soil",
+        "kanji": "土",
+        "digraphs": {"SH"},
+    },
 }
 
 # Build fast lookup: letter → group number
@@ -76,6 +123,7 @@ def _resolve_profile(
         if profile in ("default", "greek", "mycenaean"):
             return None  # use built-in globals for the default case
         from glossa_lab.pipelines.kandles_profiles import get_profile
+
         return get_profile(profile)
     return profile  # already a KandlesProfile
 
@@ -110,7 +158,7 @@ def classify_word(
             return {
                 "group": gnum,
                 "color": g.get("color", f"Group{gnum}"),
-                "hex":   KANDLES_GROUPS.get(gnum, {}).get("hex", "#888888"),
+                "hex": KANDLES_GROUPS.get(gnum, {}).get("hex", "#888888"),
                 "nature": g.get("nature", ""),
                 "word": word,
             }
@@ -123,13 +171,12 @@ def classify_word(
         return {
             "group": gnum,
             "color": g.get("color", f"Group{gnum}"),
-            "hex":   KANDLES_GROUPS.get(gnum, {}).get("hex", "#888888"),
+            "hex": KANDLES_GROUPS.get(gnum, {}).get("hex", "#888888"),
             "nature": g.get("nature", ""),
             "word": word,
         }
 
-    return {"group": -1, "color": "Unknown", "hex": "#666666",
-            "nature": "Unknown", "word": word}
+    return {"group": -1, "color": "Unknown", "hex": "#666666", "nature": "Unknown", "word": word}
 
 
 def color_code_text(
@@ -182,8 +229,13 @@ def generate_grid(
                 cell["col"] = c
             else:
                 cell = {
-                    "group": -1, "color": "Empty", "hex": "#000000",
-                    "nature": "Empty", "word": "", "row": r, "col": c,
+                    "group": -1,
+                    "color": "Empty",
+                    "hex": "#000000",
+                    "nature": "Empty",
+                    "word": "",
+                    "row": r,
+                    "col": c,
                 }
             row.append(cell)
         rows.append(row)
@@ -269,13 +321,11 @@ async def run_kandles(params: dict[str, Any]) -> dict[str, Any]:
 
     if mode == "color_code":
         coded = color_code_text(words)
-        return {"text_id": text_id, "text_name": text["name"],
-                "mode": mode, "coded_words": coded}
+        return {"text_id": text_id, "text_name": text["name"], "mode": mode, "coded_words": coded}
 
     if mode == "grid":
         grid = generate_grid(words)
-        return {"text_id": text_id, "text_name": text["name"],
-                "mode": mode, **grid}
+        return {"text_id": text_id, "text_name": text["name"], "mode": mode, **grid}
 
     if mode == "compare":
         text_id_b = params.get("text_id_b")
@@ -288,7 +338,6 @@ async def run_kandles(params: dict[str, Any]) -> dict[str, Any]:
         grid_a = generate_grid(words)
         grid_b = generate_grid(text_b["content"])
         comparison = compare_grids(grid_a, grid_b)
-        return {"text_id_a": text_id, "text_id_b": text_id_b,
-                "mode": mode, **comparison}
+        return {"text_id_a": text_id, "text_id_b": text_id_b, "mode": mode, **comparison}
 
     raise ValueError(f"Unknown mode: {mode}")

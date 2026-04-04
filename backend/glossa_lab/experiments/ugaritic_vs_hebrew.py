@@ -35,9 +35,9 @@ import os
 import sys
 from typing import Any
 
-_HERE    = os.path.dirname(os.path.abspath(__file__))
+_HERE = os.path.dirname(os.path.abspath(__file__))
 _BACKEND = os.path.dirname(os.path.dirname(_HERE))
-_TESTS   = os.path.join(_BACKEND, "tests")
+_TESTS = os.path.join(_BACKEND, "tests")
 for _p in (_BACKEND, _TESTS):
     if _p not in sys.path:
         sys.path.insert(0, _p)
@@ -77,42 +77,45 @@ def run_ugaritic_vs_hebrew_benchmark(
         if verbose:
             print(*a, **kw)
 
-    _print("\n" + "="*65)
+    _print("\n" + "=" * 65)
     _print("  Ugaritic vs Hebrew Benchmark (Snyder 2010 / Luo 2019 protocol)")
-    _print("="*65)
+    _print("=" * 65)
 
     # ── Hebrew language model (training data) ────────────────────────
     heb_flat = heb_symbols()
     heb_inscr = heb_inscriptions()
     heb_stat = heb_stats()
 
-    _print(f"\n  Hebrew LM corpus:  {heb_stat['total_tokens']} tokens  "
-           f"V={heb_stat['distinct_signs']}  "
-           f"V/N={heb_stat['type_token_ratio']}")
-    _print(f"  Hebrew inscriptions: {heb_stat['n_inscriptions']}  "
-           f"avg length: {heb_stat['avg_inscription_length']}")
+    _print(
+        f"\n  Hebrew LM corpus:  {heb_stat['total_tokens']} tokens  "
+        f"V={heb_stat['distinct_signs']}  "
+        f"V/N={heb_stat['type_token_ratio']}"
+    )
+    _print(
+        f"  Hebrew inscriptions: {heb_stat['n_inscriptions']}  "
+        f"avg length: {heb_stat['avg_inscription_length']}"
+    )
 
     # ── Ugaritic cipher text (test data) ────────────────────────────
     def _parse_line(line: str) -> list[str]:
         return [ch for ch in line.split() if ch != "."]
 
     decoded_lines = [_parse_line(ln) for ln in _BAAL_CYCLE_LINES]
-    encoded_lines = [
-        [_SIGN_TO_ID.get(s, s) for s in line]
-        for line in decoded_lines
-    ]
+    encoded_lines = [[_SIGN_TO_ID.get(s, s) for s in line] for line in decoded_lines]
     cipher_flat = [s for line in encoded_lines for s in line]
     cipher_inscr = encoded_lines
 
-    _print(f"\n  Ugaritic cipher:   {len(cipher_flat)} tokens  "
-           f"V={len(set(cipher_flat))}  "
-           f"({len(_BAAL_CYCLE_LINES)} lines)")
+    _print(
+        f"\n  Ugaritic cipher:   {len(cipher_flat)} tokens  "
+        f"V={len(set(cipher_flat))}  "
+        f"({len(_BAAL_CYCLE_LINES)} lines)"
+    )
 
     # The answer key maps opaque IDs → Ugaritic signs
     # We need to ALSO translate Ugaritic signs → Hebrew signs using known
     # phonological correspondences (this is the 'ground truth')
-    ug_to_ug_answer = get_answer_key()           # opaque_id → ugaritic_sign
-    ug_to_heb_map = get_ugaritic_to_hebrew_map() # ugaritic_sign → hebrew_sign
+    ug_to_ug_answer = get_answer_key()  # opaque_id → ugaritic_sign
+    ug_to_heb_map = get_ugaritic_to_hebrew_map()  # ugaritic_sign → hebrew_sign
 
     # Combined ground truth: opaque_id → hebrew_sign
     ground_truth: dict[str, str] = {}
@@ -121,19 +124,26 @@ def run_ugaritic_vs_hebrew_benchmark(
         if heb_sign:
             ground_truth[opaque_id] = heb_sign
 
-    _print(f"\n  Ground truth mappings: {len(ground_truth)}/{len(ug_to_ug_answer)} "
-           f"Ugaritic signs have Hebrew equivalents")
+    _print(
+        f"\n  Ground truth mappings: {len(ground_truth)}/{len(ug_to_ug_answer)} "
+        f"Ugaritic signs have Hebrew equivalents"
+    )
 
     # ── Build language model from HEBREW corpus ──────────────────────
     model = LanguageModel(heb_flat, inscriptions=heb_inscr)
-    _print(f"\n  Language model: {len(model.alphabet)} Hebrew consonant types, "
-           f"{len(model.bigram_freq)} bigrams")
+    _print(
+        f"\n  Language model: {len(model.alphabet)} Hebrew consonant types, "
+        f"{len(model.bigram_freq)} bigrams"
+    )
 
     # ── Run decipherment: Ugaritic cipher → Hebrew mapping ───────────
     _print(f"\n  Running decipherment (max_iter={max_iterations}, restarts={restarts})...")
     result = decipher(
-        cipher_flat, model,
-        seed=seed, max_iterations=max_iterations, restarts=restarts,
+        cipher_flat,
+        model,
+        seed=seed,
+        max_iterations=max_iterations,
+        restarts=restarts,
         cipher_inscriptions=cipher_inscr,
     )
 
@@ -141,8 +151,10 @@ def run_ugaritic_vs_hebrew_benchmark(
     acc = score_accuracy(result["proposed_mapping"], ground_truth)
 
     _print("\n  Results:")
-    _print(f"    Sign mapping accuracy:  {acc['correct']}/{acc['total']} = "
-           f"{acc['accuracy']*100:.1f}%")
+    _print(
+        f"    Sign mapping accuracy:  {acc['correct']}/{acc['total']} = "
+        f"{acc['accuracy'] * 100:.1f}%"
+    )
     _print(f"    Kandles confidence:     {result['kandles_confidence']:.4f}")
 
     # Compare to literature baselines
@@ -150,12 +162,14 @@ def run_ugaritic_vs_hebrew_benchmark(
     _print("    HMM baseline (Knight & Yamada 1999):   23/30 = 76.7%")
     _print("    Snyder et al. 2010 (Bayesian):         28/30 = 93.3%")
     _print("    Luo et al. 2019 (neural MCF):          29/30 = 96.7%")
-    _print(f"    Our system (hill-climbing bigram):     "
-           f"{acc['correct']}/{acc['total']} = {acc['accuracy']*100:.1f}%")
+    _print(
+        f"    Our system (hill-climbing bigram):     "
+        f"{acc['correct']}/{acc['total']} = {acc['accuracy'] * 100:.1f}%"
+    )
 
     # Report correct and incorrect mappings
     correct_signs = [d for d in acc["details"] if d["correct"]]
-    wrong_signs   = [d for d in acc["details"] if not d["correct"]]
+    wrong_signs = [d for d in acc["details"] if not d["correct"]]
 
     _print(f"\n  Correctly mapped ({len(correct_signs)}):")
     for d in correct_signs[:10]:
@@ -166,8 +180,7 @@ def run_ugaritic_vs_hebrew_benchmark(
         _print(f"\n  Incorrectly mapped ({len(wrong_signs)}):")
         for d in wrong_signs[:10]:
             ug_sign = ug_to_ug_answer.get(d["sign"], d["sign"])
-            _print(f"    {d['sign']} (Ug:{ug_sign:3}) → {d['proposed']:3} "
-                   f"(expected {d['true']})")
+            _print(f"    {d['sign']} (Ug:{ug_sign:3}) → {d['proposed']:3} (expected {d['true']})")
 
     _print("\n  Limitations of our approach vs Snyder/Luo:")
     _print("    1. Hebrew corpus is much smaller (~700 tokens vs ~20k in Snyder)")
@@ -179,25 +192,28 @@ def run_ugaritic_vs_hebrew_benchmark(
 
     return {
         "protocol": "standard_cross_language (Snyder 2010 / Luo 2019)",
-        "cipher_corpus":  "Ugaritic Baal Cycle 82 lines / 945 tokens",
+        "cipher_corpus": "Ugaritic Baal Cycle 82 lines / 945 tokens",
         "language_model": f"Old Hebrew consonant corpus {heb_stat['total_tokens']} tokens",
         "accuracy": acc["accuracy"],
-        "correct":  acc["correct"],
-        "total":    acc["total"],
-        "kandles":  result["kandles_confidence"],
+        "correct": acc["correct"],
+        "total": acc["total"],
+        "kandles": result["kandles_confidence"],
         "literature_comparison": {
-            "heuristic_hm_1999":   {"correct": 23, "total": 30, "accuracy": 0.767},
-            "snyder_bayesian_2010":{"correct": 28, "total": 30, "accuracy": 0.933},
-            "luo_neural_2019":     {"correct": 29, "total": 30, "accuracy": 0.967},
-            "our_hillclimb":       {"correct": acc["correct"], "total": acc["total"],
-                                    "accuracy": acc["accuracy"]},
+            "heuristic_hm_1999": {"correct": 23, "total": 30, "accuracy": 0.767},
+            "snyder_bayesian_2010": {"correct": 28, "total": 30, "accuracy": 0.933},
+            "luo_neural_2019": {"correct": 29, "total": 30, "accuracy": 0.967},
+            "our_hillclimb": {
+                "correct": acc["correct"],
+                "total": acc["total"],
+                "accuracy": acc["accuracy"],
+            },
         },
         "wrong_mappings": [
             {
-                "opaque":    d["sign"],
-                "ugaritic":  ug_to_ug_answer.get(d["sign"], "?"),
-                "proposed":  d["proposed"],
-                "expected":  d["true"],
+                "opaque": d["sign"],
+                "ugaritic": ug_to_ug_answer.get(d["sign"], "?"),
+                "proposed": d["proposed"],
+                "expected": d["true"],
             }
             for d in wrong_signs
         ],

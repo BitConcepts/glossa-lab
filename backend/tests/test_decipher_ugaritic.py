@@ -54,9 +54,7 @@ def test_ugaritic_frequency_distribution():
     cf = compute_char_freq(corpus["flat_signs"])
     # Not all signs equally frequent
     freqs = list(cf["frequencies"].values())
-    assert max(freqs) > 3 * min(freqs), (
-        "Frequency distribution too uniform for a real language"
-    )
+    assert max(freqs) > 3 * min(freqs), "Frequency distribution too uniform for a real language"
 
 
 def test_ugaritic_most_frequent_signs_match():
@@ -77,8 +75,7 @@ def test_ugaritic_most_frequent_signs_match():
     known_frequent = set(KNOWN_PROPERTIES["most_frequent_signs"])
     overlap = set(top5_decoded) & known_frequent
     assert len(overlap) >= 3, (
-        f"Top 5 decoded: {top5_decoded}, "
-        f"expected ≥3 overlap with known frequent: {known_frequent}"
+        f"Top 5 decoded: {top5_decoded}, expected ≥3 overlap with known frequent: {known_frequent}"
     )
 
 
@@ -113,8 +110,7 @@ def test_ugaritic_positional_matches_known():
     initial_signs = [
         answer_key.get(p["sign"], p["sign"])
         for p in result["profiles"]
-        if p.get("dominant_position") == "initial"
-        and p["total"] >= 3
+        if p.get("dominant_position") == "initial" and p["total"] >= 3
     ]
 
     known_initial = set(KNOWN_PROPERTIES["common_initial"])
@@ -122,8 +118,7 @@ def test_ugaritic_positional_matches_known():
         overlap = set(initial_signs) & known_initial
         # At least some should match
         assert len(overlap) >= 1 or len(initial_signs) > 0, (
-            f"Initial signs decoded: {initial_signs}, "
-            f"expected overlap with: {known_initial}"
+            f"Initial signs decoded: {initial_signs}, expected overlap with: {known_initial}"
         )
 
 
@@ -154,7 +149,9 @@ def test_ugaritic_cooccurrence_network():
     corpus = get_undeciphered_corpus()
     result = build_cooccurrence_network(
         corpus["flat_signs"],
-        window=2, min_freq=2, min_edge_weight=2,
+        window=2,
+        min_freq=2,
+        min_edge_weight=2,
     )
     assert result["node_count"] > 5
     assert result["edge_count"] > 3
@@ -178,6 +175,5 @@ def test_ugaritic_entropy_preserved():
 
     for ed, eu in zip(r_dec["block_entropies"], r_undec["block_entropies"]):
         assert abs(ed["raw_nats"] - eu["raw_nats"]) < 0.01, (
-            f"Entropy mismatch at N={ed['n']}: "
-            f"dec={ed['raw_nats']}, undec={eu['raw_nats']}"
+            f"Entropy mismatch at N={ed['n']}: dec={ed['raw_nats']}, undec={eu['raw_nats']}"
         )

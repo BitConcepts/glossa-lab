@@ -3,6 +3,7 @@
 Async background worker that polls for pending jobs, dispatches them
 to the correct pipeline, and stores results.
 """
+
 from __future__ import annotations
 
 import ast
@@ -26,9 +27,11 @@ _PIPELINE_MODULES_LOADED = False
 
 def register_pipeline(name: str):
     """Decorator to register a pipeline function."""
+
     def decorator(fn):
         _PIPELINES[name] = fn
         return fn
+
     return decorator
 
 

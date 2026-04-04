@@ -64,41 +64,32 @@ ALLOGRAPH_PAIRS: list[tuple[str, str]] = [
     # ── 23 MIRRORED pairs (Daggumati-Revesz 2021, Table 1) ────────────
     # These are signs where the mirror image is a "different" sign in some
     # sign lists but positional analysis shows they are allographs.
-
     # Fish complex (large group of mirrored fish-variants)
     ("159", "160"),  # fish → mirrored fish
     ("070", "073"),  # fish + stroke → mirrored fish + stroke
     ("071", "074"),  # fish variant → mirrored fish variant
     ("072", "075"),  # fish + 2 strokes → mirrored
-
     # Man / anthropomorphic signs
     ("411", "412"),  # man raising arms → mirrored
     ("400", "401"),  # standing man → mirrored
-
     # Pot / jar variants
     ("342", "343"),  # jar → mirrored jar variant
     ("344", "345"),  # jar + element → mirrored
-
     # Intersection / cross signs
     ("100", "101"),  # cross → mirrored cross
     ("102", "103"),  # cross variant → mirrored
-
     # Arrow / direction signs
     ("200", "201"),  # arrow → mirrored arrow
     ("202", "203"),  # arrow variant → mirrored
-
     # Plant / branch signs
     ("300", "301"),  # branch → mirrored
     ("302", "303"),  # branch variant → mirrored
-
     # Compound signs with directional elements
     ("550", "551"),  # the polyvalent sign → its mirror
     ("500", "501"),  # compound sign → mirrored
     ("510", "511"),  # compound variant → mirrored
-
     # Numeral-adjacent signs
     ("017", "018_m"),  # stroke → mirrored stroke (context-dependent)
-
     # Rare / disputed pairs
     ("600", "601"),
     ("610", "611"),
@@ -109,8 +100,7 @@ ALLOGRAPH_PAIRS: list[tuple[str, str]] = [
 
 # Build fast lookup: allograph → canonical
 _ALLOGRAPH_TO_CANONICAL: dict[str, str] = {
-    allograph: canonical
-    for canonical, allograph in ALLOGRAPH_PAIRS
+    allograph: canonical for canonical, allograph in ALLOGRAPH_PAIRS
 }
 
 
@@ -137,10 +127,7 @@ def reduce_allographs(
     Returns:
         New inscription list with allographs replaced by canonical forms.
     """
-    return [
-        [normalize_sign(s) for s in insc]
-        for insc in inscriptions
-    ]
+    return [[normalize_sign(s) for s in insc] for insc in inscriptions]
 
 
 def allograph_reduction_stats(
@@ -161,23 +148,20 @@ def allograph_reduction_stats(
     flat_after = [s for insc in reduced for s in insc]
     freq_after = Counter(flat_after)
 
-    n_merges = sum(
-        1 for s in flat_before
-        if s in _ALLOGRAPH_TO_CANONICAL
-    )
+    n_merges = sum(1 for s in flat_before if s in _ALLOGRAPH_TO_CANONICAL)
 
     return {
-        "signs_before":      len(freq_before),
-        "signs_after":       len(freq_after),
-        "signs_reduced_by":  len(freq_before) - len(freq_after),
-        "tokens_before":     len(flat_before),
-        "tokens_after":      len(flat_after),
-        "allograph_merges":  n_merges,
-        "merge_fraction":    round(n_merges / max(len(flat_before), 1), 4),
-        "vn_before":         round(len(freq_before) / max(len(flat_before), 1), 4),
-        "vn_after":          round(len(freq_after)  / max(len(flat_after),  1), 4),
-        "hapax_before":      sum(1 for v in freq_before.values() if v == 1),
-        "hapax_after":       sum(1 for v in freq_after.values()  if v == 1),
+        "signs_before": len(freq_before),
+        "signs_after": len(freq_after),
+        "signs_reduced_by": len(freq_before) - len(freq_after),
+        "tokens_before": len(flat_before),
+        "tokens_after": len(flat_after),
+        "allograph_merges": n_merges,
+        "merge_fraction": round(n_merges / max(len(flat_before), 1), 4),
+        "vn_before": round(len(freq_before) / max(len(flat_before), 1), 4),
+        "vn_after": round(len(freq_after) / max(len(flat_after), 1), 4),
+        "hapax_before": sum(1 for v in freq_before.values() if v == 1),
+        "hapax_after": sum(1 for v in freq_after.values() if v == 1),
         "allograph_pairs_applied": len(ALLOGRAPH_PAIRS),
         "note": (
             "Allograph pairs from Daggumati & Revesz (2021). "

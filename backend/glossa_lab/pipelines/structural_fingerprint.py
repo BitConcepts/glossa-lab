@@ -58,6 +58,7 @@ from glossa_lab.engine import register_pipeline  # noqa: I001
 
 # ── Fingerprint computation ────────────────────────────────────────────
 
+
 def compute_fingerprint(
     inscriptions: list[list[str]],
     system_name: str = "unknown",
@@ -131,6 +132,7 @@ def compute_fingerprint(
         _fractional_positions,
         _positional_histogram,
     )
+
     frac_pos = _fractional_positions(inscriptions)
     pos_entropies: list[float] = []
     bins = 10
@@ -145,6 +147,7 @@ def compute_fingerprint(
 
     # ── Dim 7: Polyvalence fraction ───────────────────────────────────
     from glossa_lab.pipelines.sign_polyvalence import detect_polyvalent_signs
+
     poly_result = detect_polyvalent_signs(inscriptions, min_freq=3)
     poly_frac = poly_result["summary"]["candidate_fraction"]
 
@@ -213,16 +216,16 @@ def compute_fingerprint(
     ]
 
     dimensions = {
-        "H1_norm":                  vector[0],
-        "H2H1_ratio":               vector[1],
-        "zipf_exponent":            vector[2],
-        "type_token_ratio":         vector[3],
-        "hapax_fraction":           vector[4],
-        "mean_positional_entropy":  vector[5],
-        "polyvalence_fraction":     vector[6],
-        "mean_inscription_length":  vector[7],
-        "boundary_bias_variance":   vector[8],
-        "paradigmatic_rate":        vector[9],
+        "H1_norm": vector[0],
+        "H2H1_ratio": vector[1],
+        "zipf_exponent": vector[2],
+        "type_token_ratio": vector[3],
+        "hapax_fraction": vector[4],
+        "mean_positional_entropy": vector[5],
+        "polyvalence_fraction": vector[6],
+        "mean_inscription_length": vector[7],
+        "boundary_bias_variance": vector[8],
+        "paradigmatic_rate": vector[9],
     }
 
     # ── Interpretation ────────────────────────────────────────────────
@@ -242,13 +245,13 @@ def compute_fingerprint(
         notes.append("Strong sequential constraint (H2/H1 < 0.80) → rich morphological structure")
 
     return {
-        "system":       system_name,
+        "system": system_name,
         "writing_type": writing_type,
-        "N_tokens":     N,
-        "V_types":      V,
-        "vector":       vector,
-        "dimensions":   dimensions,
-        "notes":        notes,
+        "N_tokens": N,
+        "V_types": V,
+        "vector": vector,
+        "dimensions": dimensions,
+        "notes": notes,
     }
 
 
@@ -350,16 +353,16 @@ def known_fingerprints_db(
 # Normalisation ranges for each dimension (estimated from known scripts).
 # Used to bring all dimensions to comparable [0, 1] scale before distance.
 _NORM_RANGES: list[tuple[float, float]] = [
-    (0.60, 1.00),   # H1_norm
-    (0.70, 1.00),   # H2H1_ratio
-    (0.50, 2.00),   # zipf_exponent
-    (0.02, 0.25),   # type_token_ratio
-    (0.00, 0.80),   # hapax_fraction
-    (0.25, 0.70),   # mean_positional_entropy
-    (0.00, 0.30),   # polyvalence_fraction
-    (2.00, 15.0),   # mean_inscription_length
-    (0.00, 0.20),   # boundary_bias_variance
-    (0.00, 0.60),   # paradigmatic_rate
+    (0.60, 1.00),  # H1_norm
+    (0.70, 1.00),  # H2H1_ratio
+    (0.50, 2.00),  # zipf_exponent
+    (0.02, 0.25),  # type_token_ratio
+    (0.00, 0.80),  # hapax_fraction
+    (0.25, 0.70),  # mean_positional_entropy
+    (0.00, 0.30),  # polyvalence_fraction
+    (2.00, 15.0),  # mean_inscription_length
+    (0.00, 0.20),  # boundary_bias_variance
+    (0.00, 0.60),  # paradigmatic_rate
 ]
 
 # Dimension weights: emphasise the most diagnostic dimensions for
@@ -394,9 +397,7 @@ def euclidean_distance(fp_a: list[float], fp_b: list[float]) -> float:
     """Weighted Euclidean distance between two normalized fingerprints."""
     na = _normalize(fp_a)
     nb = _normalize(fp_b)
-    return math.sqrt(
-        sum(_WEIGHTS[i] * (na[i] - nb[i]) ** 2 for i in range(len(na)))
-    )
+    return math.sqrt(sum(_WEIGHTS[i] * (na[i] - nb[i]) ** 2 for i in range(len(na))))
 
 
 def cosine_similarity(fp_a: list[float], fp_b: list[float]) -> float:
@@ -435,44 +436,52 @@ def compare_scripts(
     target_sys = target_fp.get("system", "")
 
     # Filter out self-comparison
-    names  = [n for n in db if n != target_sys]
+    names = [n for n in db if n != target_sys]
     knowns = [db[n] for n in names]
     db_vecs = [k["vector"] for k in knowns]
 
     if metric == "euclidean":
         # GPU-accelerated batch Euclidean distance
         from glossa_lab.accelerate import gpu_fingerprint_compare
+
         normalized_target = _normalize(target_vec)
-        normalized_db     = [_normalize(v) for v in db_vecs]
+        normalized_db = [_normalize(v) for v in db_vecs]
         distances = gpu_fingerprint_compare(
-            normalized_target, normalized_db, weights=_WEIGHTS,
+            normalized_target,
+            normalized_db,
+            weights=_WEIGHTS,
         )
         results: list[dict[str, Any]] = []
         for i, name in enumerate(names):
             dist = round(distances[i], 4)
-            results.append({
-                "system":       name,
-                "writing_type": knowns[i].get("writing_type", "?"),
-                "distance":     dist,
-                "similarity":   round(1.0 / (1.0 + dist), 4),
-                "notes":        knowns[i].get("notes", []),
-            })
+            results.append(
+                {
+                    "system": name,
+                    "writing_type": knowns[i].get("writing_type", "?"),
+                    "distance": dist,
+                    "similarity": round(1.0 / (1.0 + dist), 4),
+                    "notes": knowns[i].get("notes", []),
+                }
+            )
     else:
         # Cosine: use batch_cosine_similarity_matrix
         from glossa_lab.accelerate import batch_cosine_similarity_matrix
+
         all_vecs = [target_vec] + db_vecs
-        sim_mat  = batch_cosine_similarity_matrix(all_vecs)
+        sim_mat = batch_cosine_similarity_matrix(all_vecs)
         results = []
         for i, name in enumerate(names):
-            sim  = round(float(sim_mat[0][i + 1]), 4)
+            sim = round(float(sim_mat[0][i + 1]), 4)
             dist = round(1.0 - sim, 4)
-            results.append({
-                "system":       name,
-                "writing_type": knowns[i].get("writing_type", "?"),
-                "distance":     dist,
-                "similarity":   sim,
-                "notes":        knowns[i].get("notes", []),
-            })
+            results.append(
+                {
+                    "system": name,
+                    "writing_type": knowns[i].get("writing_type", "?"),
+                    "distance": dist,
+                    "similarity": sim,
+                    "notes": knowns[i].get("notes", []),
+                }
+            )
 
     results.sort(key=lambda r: r["distance"])
     return results
@@ -492,15 +501,22 @@ def dimension_comparison_table(
     rows = []
     for fp in scripts:
         row: dict[str, Any] = {
-            "system":       fp.get("system", "?"),
+            "system": fp.get("system", "?"),
             "writing_type": fp.get("writing_type", "?"),
         }
         dims = fp.get("dimensions") or {}
         vec = fp.get("vector", [0.0] * 10)
         dim_names = [
-            "H1_norm", "H2H1_ratio", "zipf_exponent", "type_token_ratio",
-            "hapax_fraction", "mean_positional_entropy", "polyvalence_fraction",
-            "mean_inscription_length", "boundary_bias_variance", "paradigmatic_rate",
+            "H1_norm",
+            "H2H1_ratio",
+            "zipf_exponent",
+            "type_token_ratio",
+            "hapax_fraction",
+            "mean_positional_entropy",
+            "polyvalence_fraction",
+            "mean_inscription_length",
+            "boundary_bias_variance",
+            "paradigmatic_rate",
         ]
         for i, dim in enumerate(dim_names):
             row[dim] = dims.get(dim, vec[i] if i < len(vec) else 0.0)
@@ -509,6 +525,7 @@ def dimension_comparison_table(
 
 
 # ── Pipeline entry point ──────────────────────────────────────────────
+
 
 @register_pipeline("structural_fingerprint")
 async def run_structural_fingerprint(params: dict[str, Any]) -> dict[str, Any]:

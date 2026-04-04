@@ -55,47 +55,151 @@ from glossa_lab.engine import register_pipeline
 # Sumerian cuneiform syllable inventory (common CV patterns in
 # Ur III administrative texts)
 _SUMERIAN_SYLLABLES = [
-    "a", "e", "i", "u",
-    "ba", "bi", "bu", "be",
-    "da", "di", "du",
-    "ga", "gi", "gu",
-    "ka", "ki", "ku",
-    "la", "li", "lu",
-    "ma", "mi", "mu",
-    "na", "ni", "nu",
-    "ra", "ri", "ru",
-    "sa", "si", "su",
-    "ta", "ti", "tu",
-    "za", "zi", "zu",
-    "ab", "ib", "ub",
-    "ag", "ig", "ug",
-    "ak", "ik", "uk",
-    "al", "il", "ul",
-    "am", "im", "um",
-    "an", "in", "un",
-    "ar", "ir", "ur",
-    "as", "is", "us",
-    "at", "it", "ut",
-    "az", "iz", "uz",
-    "lugal", "dumu", "nita", "munus", "iti", "nam", "dub", "sar",
-    "ninda", "udu", "kug", "gal", "tur", "mah",
+    "a",
+    "e",
+    "i",
+    "u",
+    "ba",
+    "bi",
+    "bu",
+    "be",
+    "da",
+    "di",
+    "du",
+    "ga",
+    "gi",
+    "gu",
+    "ka",
+    "ki",
+    "ku",
+    "la",
+    "li",
+    "lu",
+    "ma",
+    "mi",
+    "mu",
+    "na",
+    "ni",
+    "nu",
+    "ra",
+    "ri",
+    "ru",
+    "sa",
+    "si",
+    "su",
+    "ta",
+    "ti",
+    "tu",
+    "za",
+    "zi",
+    "zu",
+    "ab",
+    "ib",
+    "ub",
+    "ag",
+    "ig",
+    "ug",
+    "ak",
+    "ik",
+    "uk",
+    "al",
+    "il",
+    "ul",
+    "am",
+    "im",
+    "um",
+    "an",
+    "in",
+    "un",
+    "ar",
+    "ir",
+    "ur",
+    "as",
+    "is",
+    "us",
+    "at",
+    "it",
+    "ut",
+    "az",
+    "iz",
+    "uz",
+    "lugal",
+    "dumu",
+    "nita",
+    "munus",
+    "iti",
+    "nam",
+    "dub",
+    "sar",
+    "ninda",
+    "udu",
+    "kug",
+    "gal",
+    "tur",
+    "mah",
 ]
 
 # Linear B syllable inventory (Mycenaean Greek)
 _LINEAR_B_SYLLABLES = [
-    "a", "e", "i", "o", "u",
-    "da", "de", "di", "do", "du",
-    "ja", "je", "jo",
-    "ka", "ke", "ki", "ko", "ku",
-    "ma", "me", "mi", "mo", "mu",
-    "na", "ne", "ni", "no", "nu",
-    "pa", "pe", "pi", "po", "pu",
-    "qa", "qe", "qi", "qo",
-    "ra", "re", "ri", "ro", "ru",
-    "sa", "se", "si", "so", "su",
-    "ta", "te", "ti", "to", "tu",
-    "wa", "we", "wi", "wo",
-    "za", "ze", "zo",
+    "a",
+    "e",
+    "i",
+    "o",
+    "u",
+    "da",
+    "de",
+    "di",
+    "do",
+    "du",
+    "ja",
+    "je",
+    "jo",
+    "ka",
+    "ke",
+    "ki",
+    "ko",
+    "ku",
+    "ma",
+    "me",
+    "mi",
+    "mo",
+    "mu",
+    "na",
+    "ne",
+    "ni",
+    "no",
+    "nu",
+    "pa",
+    "pe",
+    "pi",
+    "po",
+    "pu",
+    "qa",
+    "qe",
+    "qi",
+    "qo",
+    "ra",
+    "re",
+    "ri",
+    "ro",
+    "ru",
+    "sa",
+    "se",
+    "si",
+    "so",
+    "su",
+    "ta",
+    "te",
+    "ti",
+    "to",
+    "tu",
+    "wa",
+    "we",
+    "wi",
+    "wo",
+    "za",
+    "ze",
+    "zo",
 ]
 
 _SYLLABLE_INVENTORIES: dict[str, list[str]] = {
@@ -222,12 +326,11 @@ def compute_affinity(
     syl_set = set(syllabograms)
 
     # Select top-N syllabograms by frequency
-    all_freq: Counter = Counter(
-        s for insc in inscriptions for s in insc if s in syl_set
-    )
+    all_freq: Counter = Counter(s for insc in inscriptions for s in insc if s in syl_set)
     if len(all_freq) < 2:
         return {
-            "vowel_groups": [], "consonant_groups": [],
+            "vowel_groups": [],
+            "consonant_groups": [],
             "note": "insufficient syllabogram data",
         }
 
@@ -253,7 +356,7 @@ def compute_affinity(
     tier = accel.get("tier_name", "cpu")
 
     # Clustering using similarity matrix (index-based, avoids re-computing)
-    vowel_groups    = _cluster_by_sim_matrix(n, left_sim,  threshold, linkage="complete")
+    vowel_groups = _cluster_by_sim_matrix(n, left_sim, threshold, linkage="complete")
     consonant_groups = _cluster_by_sim_matrix(n, right_sim, threshold, linkage="complete")
 
     # Reconstruct sign-name groups
@@ -279,16 +382,16 @@ def compute_affinity(
         return pairs[:top_n]
 
     return {
-        "vowel_groups":          _idx_to_signs(vowel_groups),
-        "consonant_groups":      _idx_to_signs(consonant_groups),
-        "top_vowel_pairs":       _top_pairs(left_sim,  top_syls, top_n=20),
-        "top_consonant_pairs":   _top_pairs(right_sim, top_syls, top_n=20),
+        "vowel_groups": _idx_to_signs(vowel_groups),
+        "consonant_groups": _idx_to_signs(consonant_groups),
+        "top_vowel_pairs": _top_pairs(left_sim, top_syls, top_n=20),
+        "top_consonant_pairs": _top_pairs(right_sim, top_syls, top_n=20),
         "syllabograms_analyzed": top_syls,
-        "n_syllabograms":        n,
-        "threshold_used":        threshold,
-        "acceleration":          tier,
-        "vowel_sim_matrix":      _to_list(left_sim),
-        "consonant_sim_matrix":  _to_list(right_sim),
+        "n_syllabograms": n,
+        "threshold_used": threshold,
+        "acceleration": tier,
+        "vowel_sim_matrix": _to_list(left_sim),
+        "consonant_sim_matrix": _to_list(right_sim),
     }
 
 
@@ -332,17 +435,13 @@ def _cluster_by_sim_matrix(
                 if len(clusters[ci]) + len(clusters[cj]) > max_cluster_size:
                     continue  # skip merges that would create over-large clusters
 
-                pairs = [
-                    float(sim_matrix[a][b])
-                    for a in clusters[ci]
-                    for b in clusters[cj]
-                ]
+                pairs = [float(sim_matrix[a][b]) for a in clusters[ci] for b in clusters[cj]]
 
                 if linkage == "complete":
-                    sim = min(pairs)       # all pairs must exceed threshold
+                    sim = min(pairs)  # all pairs must exceed threshold
                 elif linkage == "average":
                     sim = sum(pairs) / len(pairs)
-                else:                      # single
+                else:  # single
                     sim = max(pairs)
 
                 if sim > best_sim:
@@ -351,10 +450,7 @@ def _cluster_by_sim_matrix(
 
         if best_i >= 0:
             merged = clusters[best_i] + clusters[best_j]
-            clusters = [
-                c for k, c in enumerate(clusters)
-                if k != best_i and k != best_j
-            ]
+            clusters = [c for k, c in enumerate(clusters) if k != best_i and k != best_j]
             clusters.append(merged)
             changed = True
 
@@ -490,16 +586,18 @@ def _emit_candidate(
     meaning = vocab.get(combined, "")
     score = avg_conf * (2.0 if match else 1.0)
 
-    out.append({
-        "signs": run,
-        "readings": parts,
-        "combined_reading": combined,
-        "word_length": len(run),
-        "avg_confidence": round(avg_conf, 3),
-        "score": round(score, 3),
-        "vocabulary_match": match,
-        "meaning": meaning,
-    })
+    out.append(
+        {
+            "signs": run,
+            "readings": parts,
+            "combined_reading": combined,
+            "word_length": len(run),
+            "avg_confidence": round(avg_conf, 3),
+            "score": round(score, 3),
+            "vocabulary_match": match,
+            "meaning": meaning,
+        }
+    )
 
 
 # ── Main analysis function ────────────────────────────────────────────
@@ -538,30 +636,26 @@ def analyze_logosyllabic(
     # 1. Classify signs
     classification = classify_signs(inscriptions, flat)
 
-    syllabograms = [
-        s for s, info in classification.items()
-        if info["type"] == "syllabogram"
-    ]
-    logograms = [
-        s for s, info in classification.items()
-        if info["type"] == "logogram"
-    ]
-    determinatives = [
-        s for s, info in classification.items()
-        if info["type"] == "determinative"
-    ]
+    syllabograms = [s for s, info in classification.items() if info["type"] == "syllabogram"]
+    logograms = [s for s, info in classification.items() if info["type"] == "logogram"]
+    determinatives = [s for s, info in classification.items() if info["type"] == "determinative"]
 
     # 2. Affinity analysis
     affinity = compute_affinity(inscriptions, syllabograms)
 
     # 3. Propose readings
     readings = propose_readings(
-        classification, affinity, syllable_inventory, inscriptions,
+        classification,
+        affinity,
+        syllable_inventory,
+        inscriptions,
     )
 
     # 4. Candidate words
     candidates = extract_candidate_words(
-        inscriptions, classification, readings,
+        inscriptions,
+        classification,
+        readings,
         vocabulary=vocabulary,
         max_length=max_word_length,
     )
@@ -646,9 +740,9 @@ async def run_logosyllabic(params: dict[str, Any]) -> dict[str, Any]:
         # For practical analysis, chunk into segments of 3-8 signs
         chunk_size = params.get("chunk_size", 5)
         inscriptions = [
-            content[i: i + chunk_size]
+            content[i : i + chunk_size]
             for i in range(0, len(content), chunk_size)
-            if content[i: i + chunk_size]
+            if content[i : i + chunk_size]
         ]
 
     result = analyze_logosyllabic(

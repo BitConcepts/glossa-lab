@@ -32,9 +32,7 @@ async def seed_corpora(db: "Database") -> None:
     except Exception:
         return  # DB not ready
 
-    if len(existing) > 0 and all(
-        _corpus_name(c) in existing_names for c in BUILT_IN_CORPORA
-    ):
+    if len(existing) > 0 and all(_corpus_name(c) in existing_names for c in BUILT_IN_CORPORA):
         return  # Already seeded
 
     log.info("Seeding built-in corpora...")
@@ -62,11 +60,11 @@ async def seed_corpora(db: "Database") -> None:
 
 def _corpus_name(corpus_id: str) -> str:
     return {
-        "ugaritic":        "Ugaritic Baal Cycle (KTU 1.1-1.6)",
-        "linear_b":        "Mycenaean Linear B (Pylos tablets)",
-        "hebrew":          "Old Hebrew (Gen-Prov, consonantal)",
+        "ugaritic": "Ugaritic Baal Cycle (KTU 1.1-1.6)",
+        "linear_b": "Mycenaean Linear B (Pylos tablets)",
+        "hebrew": "Old Hebrew (Gen-Prov, consonantal)",
         "indus_synthetic": "Indus Script (synthetic, Yadav 2010 / Fuls 2014)",
-        "sumerian_ur3":    "Sumerian Ur III (CDLI statistics)",
+        "sumerian_ur3": "Sumerian Ur III (CDLI statistics)",
     }.get(corpus_id, corpus_id)
 
 
@@ -76,12 +74,12 @@ def _load_corpus(corpus_id: str) -> dict | None:
         if corpus_id == "ugaritic":
             import os
             import sys
-            _tests = os.path.join(
-                os.path.dirname(os.path.dirname(__file__)), "tests"
-            )
+
+            _tests = os.path.join(os.path.dirname(os.path.dirname(__file__)), "tests")
             if _tests not in sys.path:
                 sys.path.insert(0, _tests)
             from corpora.ugaritic import get_undeciphered_corpus  # noqa: I001
+
             c = get_undeciphered_corpus()
             flat = c["flat_signs"]
             return {
@@ -99,10 +97,14 @@ def _load_corpus(corpus_id: str) -> dict | None:
             from pathlib import Path
 
             from glossa_lab.data.linear_b_language import get_corpus_symbols
+
             flat = get_corpus_symbols()
             fixture = (
                 Path(__file__).resolve().parent.parent
-                / "tests" / "corpora" / "fixtures" / "linear_b.txt"
+                / "tests"
+                / "corpora"
+                / "fixtures"
+                / "linear_b.txt"
             )
             # Also store word-level inscriptions as metadata
             inscriptions: list[list[str]] = []
@@ -111,9 +113,9 @@ def _load_corpus(corpus_id: str) -> dict | None:
                     for word in line.strip().split():
                         parts = word.replace("3", "").split("-")
                         signs = [
-                            p.strip().lower() for p in parts
-                            if p.strip()
-                            and p.strip().replace("*", "").replace("2", "").isalpha()
+                            p.strip().lower()
+                            for p in parts
+                            if p.strip() and p.strip().replace("*", "").replace("2", "").isalpha()
                         ]
                         if len(signs) >= 2:
                             inscriptions.append(signs)
@@ -131,6 +133,7 @@ def _load_corpus(corpus_id: str) -> dict | None:
 
         elif corpus_id == "hebrew":
             from glossa_lab.data.old_hebrew import get_corpus_inscriptions, get_corpus_symbols
+
             flat = get_corpus_symbols()
             inscs = get_corpus_inscriptions()
             return {
@@ -147,6 +150,7 @@ def _load_corpus(corpus_id: str) -> dict | None:
 
         elif corpus_id == "indus_synthetic":
             from glossa_lab.data.indus_public_corpus import corpus_statistics, get_corpus_symbols
+
             flat = get_corpus_symbols()
             stats = corpus_statistics()
             return {
@@ -164,6 +168,7 @@ def _load_corpus(corpus_id: str) -> dict | None:
 
         elif corpus_id == "sumerian_ur3":
             from glossa_lab.data.sumerian_ur3 import corpus_statistics, get_corpus_symbols
+
             flat = get_corpus_symbols()
             stats = corpus_statistics()
             return {

@@ -8,7 +8,6 @@ from __future__ import annotations
 import random
 import string
 
-
 ALPHABET = list(string.ascii_uppercase)  # A-Z, 26 symbols
 SIZE = 10_000
 

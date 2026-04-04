@@ -261,7 +261,6 @@ def test_analyze_logosyllabic_summary_counts():
 def test_analyze_logosyllabic_vocabulary_matching():
     """With a matching vocabulary entry, the match count should be > 0."""
     # Construct a vocabulary that should match at least one candidate
-    from glossa_lab.pipelines.logosyllabic import _SUMERIAN_SYLLABLES
     # The most frequent syllabograms will be mapped to the top of the inventory
     # which starts with 'a', 'e', 'i', 'u', 'ba', ...
     # Synthesize a vocabulary entry for 'ae' (rank 0 + rank 1 = 'a' + 'e')

@@ -1,7 +1,5 @@
 """Tests for the hypothesis-driven decipherment engine."""
 
-from tests.corpora.cipher_language import generate_cipher_test_data
-
 from glossa_lab.pipelines.decipher import LanguageModel
 from glossa_lab.pipelines.hypothesis import (
     Hypothesis,
@@ -10,6 +8,7 @@ from glossa_lab.pipelines.hypothesis import (
     score_paradigm_regularity,
     score_word_matches,
 )
+from tests.corpora.cipher_language import generate_cipher_test_data
 
 
 def _data():

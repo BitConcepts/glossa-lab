@@ -1,9 +1,9 @@
 /**
- * Pipelines View — gallery of all 17 registered pipelines.
- * Grouped by capability. Each card shows description and quick-launch.
+ * Pipelines View — gallery of registered pipelines (live from backend catalog).
  */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getPipelineCatalog } from "../api";
 
 interface Pipeline {
   id: string;
@@ -14,9 +14,12 @@ interface Pipeline {
   outputs: string;
   defaultParams: string;
   needsLM: boolean;
+  default_params?: Record<string, unknown>;
+  registered?: boolean;
+  module?: string;
 }
 
-const PIPELINES: Pipeline[] = [
+const PIPELINES_FALLBACK: Pipeline[] = [
   // Pure statistical — no language model
   {
     id: "block_entropy",
@@ -243,15 +246,25 @@ const GROUP_COLORS: Record<string, string> = {
 export function PipelinesView() {
   const [filter, setFilter] = useState<string>("all");
   const [selected, setSelected] = useState<string | null>(null);
-  const groups = ["all", "Statistical (no LM)", "Language Model Required"];
+  const [pipelines, setPipelines] = useState<Pipeline[]>(PIPELINES_FALLBACK);
 
-  const visible = filter === "all" ? PIPELINES : PIPELINES.filter((p) => p.group === filter);
+  useEffect(() => {
+    getPipelineCatalog()
+      .then((entries) => setPipelines(entries.map((e) => {
+        const { needs_lm, ...rest } = e;
+        return { ...rest, needsLM: needs_lm, defaultParams: JSON.stringify(e.default_params, null, 2) };
+      })))
+      .catch(() => {});
+  }, []);
+
+  const groups = ["all", ...Array.from(new Set(pipelines.map((p) => p.group)))];
+  const visible = filter === "all" ? pipelines : pipelines.filter((p) => p.group === filter);
 
   return (
     <div>
       <h2 style={{ marginTop: 0 }}>Pipelines</h2>
       <p style={{ fontSize: 13, color: "#6b7280", marginTop: 0, marginBottom: "1.25rem" }}>
-        17 registered analysis pipelines. Statistical pipelines require no language model —
+        {pipelines.length} registered analysis pipelines. Statistical pipelines require no language model —
         all results are vocabulary-free and circularity-free. Select a pipeline to launch
         a job from the Jobs tab.
       </p>
@@ -268,7 +281,7 @@ export function PipelinesView() {
               borderColor: filter === g ? color : "#d1d5db",
               color: filter === g ? "#fff" : "#374151",
             }}>
-              {g === "all" ? "All (17)" : `${g} (${PIPELINES.filter(p => p.group === g).length})`}
+          {g === "all" ? `All (${pipelines.length})` : `${g} (${pipelines.filter(p => p.group === g).length})`}
             </button>
           );
         })}

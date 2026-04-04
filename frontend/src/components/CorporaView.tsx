@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { createText, listTexts, TextResponse } from "../api";
+import { createText, deleteText, listTexts, TextResponse } from "../api";
 
 interface Props {
   /** Called when user selects a corpus for analysis */
@@ -152,10 +152,10 @@ export function CorporaView({ onSelect }: Props) {
         <table style={{ borderCollapse: "collapse", width: "100%", maxWidth: 760 }}>
           <thead>
             <tr>
-              {["Name", "Type", "Symbols", "Alphabet", "Created"].map((h) => (
+  {["Name", "Type", "Symbols", "Alphabet", "Created", ""].map((h) => (
                 <Th key={h}>{h}</Th>
               ))}
-              {onSelect && <Th>Action</Th>}
+              {onSelect && <Th>Select</Th>}
             </tr>
           </thead>
           <tbody>
@@ -172,14 +172,18 @@ export function CorporaView({ onSelect }: Props) {
                 <Td>{t.content.length.toLocaleString()}</Td>
                 <Td>{t.alphabet_size}</Td>
                 <Td>{t.created_at.slice(0, 10)}</Td>
+                <Td>
+                  <button
+                    style={{ background: "none", border: "1px solid #fca5a5", borderRadius: 4, color: "#dc2626", fontSize: 11, padding: "2px 8px", cursor: "pointer" }}
+                    onClick={async () => {
+                      if (!confirm(`Delete "${t.name}"?`)) return;
+                      try { await deleteText(t.id); await load(); } catch { alert("Delete failed"); }
+                    }}
+                  >Delete</button>
+                </Td>
                 {onSelect && (
                   <Td>
-                    <button
-                      style={{ ...btnStyle, padding: "2px 10px", fontSize: 12 }}
-                      onClick={() => onSelect(t.id, t.name)}
-                    >
-                      Select
-                    </button>
+                    <button style={{ ...btnStyle, padding: "2px 10px", fontSize: 12 }} onClick={() => onSelect(t.id, t.name)}>Select</button>
                   </Td>
                 )}
               </tr>

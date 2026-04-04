@@ -28,7 +28,6 @@ from __future__ import annotations
 
 import random
 
-
 # ── Published sign-frequency data ────────────────────────────────────
 # Source: Packard (1974) Appendix E: Linear A sign frequencies
 # from Haghia Triada tablets + other sites (Younger 2000 update).

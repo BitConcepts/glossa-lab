@@ -8,19 +8,21 @@ The answer key is used ONLY for scoring — the engine does NOT
 see it during decipherment.
 """
 
-from tests.corpora.cipher_language import generate_cipher_test_data
-from tests.corpora.ugaritic import (
-    get_answer_key as ugaritic_answer_key,
-    get_deciphered_corpus as ugaritic_deciphered,
-    get_undeciphered_corpus as ugaritic_undeciphered,
-)
-
 from glossa_lab.pipelines.decipher import (
     LanguageModel,
     decipher,
     score_accuracy,
 )
-
+from tests.corpora.cipher_language import generate_cipher_test_data
+from tests.corpora.ugaritic import (
+    get_answer_key as ugaritic_answer_key,
+)
+from tests.corpora.ugaritic import (
+    get_deciphered_corpus as ugaritic_deciphered,
+)
+from tests.corpora.ugaritic import (
+    get_undeciphered_corpus as ugaritic_undeciphered,
+)
 
 # ══════════════════════════════════════════════════════════════════
 # 1. CRACK THE SYNTHETIC CIPHER
@@ -59,7 +61,7 @@ def test_crack_synthetic_cipher():
 
     accuracy = score_accuracy(result["proposed_mapping"], reverse_key)
 
-    print(f"\n=== SYNTHETIC CIPHER CRACKING ===")
+    print("\n=== SYNTHETIC CIPHER CRACKING ===")
     print(f"Accuracy: {accuracy['correct']}/{accuracy['total']} "
           f"= {accuracy['accuracy'] * 100:.1f}%")
     for d in accuracy["details"]:
@@ -128,7 +130,7 @@ def test_crack_ugaritic():
 
     accuracy = score_accuracy(result["proposed_mapping"], answer_key)
 
-    print(f"\n=== UGARITIC CRACKING (ENHANCED) ===")
+    print("\n=== UGARITIC CRACKING (ENHANCED) ===")
     print(f"Accuracy: {accuracy['correct']}/{accuracy['total']} "
           f"= {accuracy['accuracy'] * 100:.1f}%")
     print(f"Kandles confidence: {result.get('kandles_confidence', 0):.3f}")

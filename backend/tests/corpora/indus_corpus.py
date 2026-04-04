@@ -27,7 +27,6 @@ from __future__ import annotations
 
 import random
 
-
 # Top-40 most frequent signs with approximate relative frequencies
 # derived from published rank-frequency plots (Yadav et al. 2010, Fig 2-3)
 _TOP_SIGNS = [
@@ -192,7 +191,6 @@ def save_indus_fixture(path: str, seed: int = 42) -> None:
 
 
 if __name__ == "__main__":
-    import sys
     from pathlib import Path
 
     out = Path(__file__).parent / "fixtures" / "indus.txt"

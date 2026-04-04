@@ -140,6 +140,7 @@ config/
 logs/
 
 # ---- Keep placeholders ----
+!backend/glossa_lab/data/
 !backend/.gitkeep
 !frontend/.gitkeep
 !tray/.gitkeep

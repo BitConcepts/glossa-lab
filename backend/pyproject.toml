@@ -18,6 +18,10 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+ocr = [
+    # Required for ocr_mahadevan.py Pixtral OCR pipeline
+    "mistralai>=1,<2",
+]
 dev = [
     "pytest>=8,<9",
     "httpx>=0.28,<1",

@@ -68,29 +68,56 @@ class KandlesProfile:
 # The original Kandles mapping from [REDACTED-PATENT-PUB].
 # Calibrated for Greek/English phonological categories.
 _DEFAULT_GROUPS: dict[int, dict[str, Any]] = {
-    0: {"letters": set("AEIOU"), "color": "White",
-        "nature": "Vowel", "description": "All vowels"},
-    1: {"letters": {"K", "G", "J", "C", "Q"}, "color": "Yellow",
-        "nature": "Sun", "digraphs": {"CH"},
-        "description": "Velars and palatals"},
-    2: {"letters": {"M", "N"}, "color": "Grey",
-        "nature": "Moon", "digraphs": set(),
-        "description": "Nasals"},
-    3: {"letters": {"T", "D"}, "color": "Red",
-        "nature": "Fire", "digraphs": {"TH"},
-        "description": "Dentals"},
-    4: {"letters": {"R", "L"}, "color": "Blue",
-        "nature": "Water", "digraphs": set(),
-        "description": "Liquids"},
-    5: {"letters": {"Y", "W", "H"}, "color": "Green",
-        "nature": "Tree", "digraphs": {"KH"},
-        "description": "Semivowels and laryngeals"},
-    6: {"letters": {"P", "B", "F", "V"}, "color": "Purple",
-        "nature": "Flower", "digraphs": set(),
-        "description": "Labials"},
-    7: {"letters": {"S", "Z", "X"}, "color": "Brown",
-        "nature": "Soil", "digraphs": {"SH"},
-        "description": "Sibilants"},
+    0: {"letters": set("AEIOU"), "color": "White", "nature": "Vowel", "description": "All vowels"},
+    1: {
+        "letters": {"K", "G", "J", "C", "Q"},
+        "color": "Yellow",
+        "nature": "Sun",
+        "digraphs": {"CH"},
+        "description": "Velars and palatals",
+    },
+    2: {
+        "letters": {"M", "N"},
+        "color": "Grey",
+        "nature": "Moon",
+        "digraphs": set(),
+        "description": "Nasals",
+    },
+    3: {
+        "letters": {"T", "D"},
+        "color": "Red",
+        "nature": "Fire",
+        "digraphs": {"TH"},
+        "description": "Dentals",
+    },
+    4: {
+        "letters": {"R", "L"},
+        "color": "Blue",
+        "nature": "Water",
+        "digraphs": set(),
+        "description": "Liquids",
+    },
+    5: {
+        "letters": {"Y", "W", "H"},
+        "color": "Green",
+        "nature": "Tree",
+        "digraphs": {"KH"},
+        "description": "Semivowels and laryngeals",
+    },
+    6: {
+        "letters": {"P", "B", "F", "V"},
+        "color": "Purple",
+        "nature": "Flower",
+        "digraphs": set(),
+        "description": "Labials",
+    },
+    7: {
+        "letters": {"S", "Z", "X"},
+        "color": "Brown",
+        "nature": "Soil",
+        "digraphs": {"SH"},
+        "description": "Sibilants",
+    },
 }
 
 PROFILE_DEFAULT = KandlesProfile(
@@ -117,29 +144,56 @@ PROFILE_DEFAULT = KandlesProfile(
 #   Gr5 (Green/Tree): laryngeals and their reflexes (H, HH/KH)
 
 _LUWIAN_GROUPS: dict[int, dict[str, Any]] = {
-    0: {"letters": set("AEIOU"), "color": "White",
-        "nature": "Vowel", "description": "Vowels"},
-    1: {"letters": {"K", "G", "Q"}, "color": "Yellow",
-        "nature": "Sun", "digraphs": {"KW", "GW"},
-        "description": "Velars + labialized velars (kw/gw) — key Anatolian class"},
-    2: {"letters": {"M", "N"}, "color": "Grey",
-        "nature": "Moon", "digraphs": {"NN"},
-        "description": "Nasals (including geminate NN common in Luwian)"},
-    3: {"letters": {"T", "D"}, "color": "Red",
-        "nature": "Fire", "digraphs": {"TT", "DD", "TS"},
-        "description": "Dentals (geminates TT/DD common in Luwian)"},
-    4: {"letters": {"R", "L"}, "color": "Blue",
-        "nature": "Water", "digraphs": {"LL", "RR"},
-        "description": "Liquids (geminates LL/RR also occur)"},
-    5: {"letters": {"H", "Y"}, "color": "Green",
-        "nature": "Tree", "digraphs": {"HH", "KH", "HW"},
-        "description": "Laryngeals h₁/h₂/h₃ reflexes — major Anatolian category"},
-    6: {"letters": {"P", "B", "V", "W"}, "color": "Purple",
-        "nature": "Flower", "digraphs": {"PP"},
-        "description": "Labials + W (labiodental class in Anatolian)"},
-    7: {"letters": {"S", "Z"}, "color": "Brown",
-        "nature": "Soil", "digraphs": {"SS", "SH", "ZZ"},
-        "description": "Sibilants (Luwian has s/z contrast, geminates)"},
+    0: {"letters": set("AEIOU"), "color": "White", "nature": "Vowel", "description": "Vowels"},
+    1: {
+        "letters": {"K", "G", "Q"},
+        "color": "Yellow",
+        "nature": "Sun",
+        "digraphs": {"KW", "GW"},
+        "description": "Velars + labialized velars (kw/gw) — key Anatolian class",
+    },
+    2: {
+        "letters": {"M", "N"},
+        "color": "Grey",
+        "nature": "Moon",
+        "digraphs": {"NN"},
+        "description": "Nasals (including geminate NN common in Luwian)",
+    },
+    3: {
+        "letters": {"T", "D"},
+        "color": "Red",
+        "nature": "Fire",
+        "digraphs": {"TT", "DD", "TS"},
+        "description": "Dentals (geminates TT/DD common in Luwian)",
+    },
+    4: {
+        "letters": {"R", "L"},
+        "color": "Blue",
+        "nature": "Water",
+        "digraphs": {"LL", "RR"},
+        "description": "Liquids (geminates LL/RR also occur)",
+    },
+    5: {
+        "letters": {"H", "Y"},
+        "color": "Green",
+        "nature": "Tree",
+        "digraphs": {"HH", "KH", "HW"},
+        "description": "Laryngeals h₁/h₂/h₃ reflexes — major Anatolian category",
+    },
+    6: {
+        "letters": {"P", "B", "V", "W"},
+        "color": "Purple",
+        "nature": "Flower",
+        "digraphs": {"PP"},
+        "description": "Labials + W (labiodental class in Anatolian)",
+    },
+    7: {
+        "letters": {"S", "Z"},
+        "color": "Brown",
+        "nature": "Soil",
+        "digraphs": {"SS", "SH", "ZZ"},
+        "description": "Sibilants (Luwian has s/z contrast, geminates)",
+    },
 }
 
 PROFILE_LUWIAN = KandlesProfile(
@@ -167,29 +221,61 @@ PROFILE_LUWIAN = KandlesProfile(
 #   Gr5: H (pharyngeal fricative) gets its own group with Y
 
 _HURRIAN_GROUPS: dict[int, dict[str, Any]] = {
-    0: {"letters": set("AEIOUEI"), "color": "White",
-        "nature": "Vowel", "description": "Vowels (a/e/i/o/u)"},
-    1: {"letters": {"K", "G"}, "color": "Yellow",
-        "nature": "Sun", "digraphs": {"KK"},
-        "description": "Velars k/g (uvular Q is separate)"},
-    2: {"letters": {"M", "N"}, "color": "Grey",
-        "nature": "Moon", "digraphs": {"NN"},
-        "description": "Nasals"},
-    3: {"letters": {"T", "D"}, "color": "Red",
-        "nature": "Fire", "digraphs": {"TT", "TS"},
-        "description": "Dentals and affricates"},
-    4: {"letters": {"R", "L"}, "color": "Blue",
-        "nature": "Water", "digraphs": {"LL"},
-        "description": "Liquids"},
-    5: {"letters": {"H", "Q", "X"}, "color": "Green",
-        "nature": "Tree", "digraphs": {"KH"},
-        "description": "Uvular q + pharyngeal h — major Hurrian phonological category"},
-    6: {"letters": {"P", "B", "W"}, "color": "Purple",
-        "nature": "Flower", "digraphs": {"PP"},
-        "description": "Labials (no f/v in Hurrian; W is labial semivowel)"},
-    7: {"letters": {"S", "Z", "SH", "ZH", "J"}, "color": "Brown",
-        "nature": "Soil", "digraphs": {"SH", "ZZ", "SS"},
-        "description": "Sibilants and affricates (rich in Hurrian)"},
+    0: {
+        "letters": set("AEIOUEI"),
+        "color": "White",
+        "nature": "Vowel",
+        "description": "Vowels (a/e/i/o/u)",
+    },
+    1: {
+        "letters": {"K", "G"},
+        "color": "Yellow",
+        "nature": "Sun",
+        "digraphs": {"KK"},
+        "description": "Velars k/g (uvular Q is separate)",
+    },
+    2: {
+        "letters": {"M", "N"},
+        "color": "Grey",
+        "nature": "Moon",
+        "digraphs": {"NN"},
+        "description": "Nasals",
+    },
+    3: {
+        "letters": {"T", "D"},
+        "color": "Red",
+        "nature": "Fire",
+        "digraphs": {"TT", "TS"},
+        "description": "Dentals and affricates",
+    },
+    4: {
+        "letters": {"R", "L"},
+        "color": "Blue",
+        "nature": "Water",
+        "digraphs": {"LL"},
+        "description": "Liquids",
+    },
+    5: {
+        "letters": {"H", "Q", "X"},
+        "color": "Green",
+        "nature": "Tree",
+        "digraphs": {"KH"},
+        "description": "Uvular q + pharyngeal h — major Hurrian phonological category",
+    },
+    6: {
+        "letters": {"P", "B", "W"},
+        "color": "Purple",
+        "nature": "Flower",
+        "digraphs": {"PP"},
+        "description": "Labials (no f/v in Hurrian; W is labial semivowel)",
+    },
+    7: {
+        "letters": {"S", "Z", "SH", "ZH", "J"},
+        "color": "Brown",
+        "nature": "Soil",
+        "digraphs": {"SH", "ZZ", "SS"},
+        "description": "Sibilants and affricates (rich in Hurrian)",
+    },
 }
 
 PROFILE_HURRIAN = KandlesProfile(
@@ -218,30 +304,44 @@ PROFILE_HURRIAN = KandlesProfile(
 #   New "emphatic" class grouped with dentals in Red
 
 _SEMITIC_GROUPS: dict[int, dict[str, Any]] = {
-    0: {"letters": set("AEIOU"), "color": "White",
-        "nature": "Vowel", "description": "Vowels"},
-    1: {"letters": {"K", "G", "Q", "C"}, "color": "Yellow",
-        "nature": "Sun", "digraphs": {"KH"},
-        "description": "Velars + uvular Q (qoph) — all dorsal stops"},
-    2: {"letters": {"M", "N"}, "color": "Grey",
-        "nature": "Moon",
-        "description": "Nasals"},
-    3: {"letters": {"T", "D"}, "color": "Red",
-        "nature": "Fire", "digraphs": {"TH", "DH", "TS"},
-        "description": "Dentals + dental emphatics (ṭ, ḍ grouped here)"},
-    4: {"letters": {"R", "L"}, "color": "Blue",
-        "nature": "Water",
-        "description": "Liquids"},
-    5: {"letters": {"H", "Y", "W"}, "color": "Green",
-        "nature": "Tree", "digraphs": {"GH", "KH"},
+    0: {"letters": set("AEIOU"), "color": "White", "nature": "Vowel", "description": "Vowels"},
+    1: {
+        "letters": {"K", "G", "Q", "C"},
+        "color": "Yellow",
+        "nature": "Sun",
+        "digraphs": {"KH"},
+        "description": "Velars + uvular Q (qoph) — all dorsal stops",
+    },
+    2: {"letters": {"M", "N"}, "color": "Grey", "nature": "Moon", "description": "Nasals"},
+    3: {
+        "letters": {"T", "D"},
+        "color": "Red",
+        "nature": "Fire",
+        "digraphs": {"TH", "DH", "TS"},
+        "description": "Dentals + dental emphatics (ṭ, ḍ grouped here)",
+    },
+    4: {"letters": {"R", "L"}, "color": "Blue", "nature": "Water", "description": "Liquids"},
+    5: {
+        "letters": {"H", "Y", "W"},
+        "color": "Green",
+        "nature": "Tree",
+        "digraphs": {"GH", "KH"},
         "description": "PHARYNGEALS + laryngeals — critical Semitic category "
-                       "(ʿ/ayin, ħ/ḥet, ʾ/aleph all map here)"},
-    6: {"letters": {"P", "B", "F", "V"}, "color": "Purple",
+        "(ʿ/ayin, ħ/ḥet, ʾ/aleph all map here)",
+    },
+    6: {
+        "letters": {"P", "B", "F", "V"},
+        "color": "Purple",
         "nature": "Flower",
-        "description": "Labials"},
-    7: {"letters": {"S", "Z", "X", "J"}, "color": "Brown",
-        "nature": "Soil", "digraphs": {"SH", "TS"},
-        "description": "Sibilants + emphatic sibilant ṣ — rich Semitic sibilant system"},
+        "description": "Labials",
+    },
+    7: {
+        "letters": {"S", "Z", "X", "J"},
+        "color": "Brown",
+        "nature": "Soil",
+        "digraphs": {"SH", "TS"},
+        "description": "Sibilants + emphatic sibilant ṣ — rich Semitic sibilant system",
+    },
 }
 
 PROFILE_SEMITIC = KandlesProfile(
@@ -270,32 +370,62 @@ PROFILE_SEMITIC = KandlesProfile(
 #   Gr1 (Yellow): K group includes K/G only (no uvular Q which is not native)
 
 _DRAVIDIAN_GROUPS: dict[int, dict[str, Any]] = {
-    0: {"letters": set("AEIOU"), "color": "White",
-        "nature": "Vowel", "description": "Vowels (Tamil: a, ā, i, ī, u, ū, e, ē, o, ō)"},
-    1: {"letters": {"K", "G", "C"}, "color": "Yellow",
-        "nature": "Sun", "digraphs": {"CH"},
-        "description": "Velars and palatal K/G — dorsal stops"},
-    2: {"letters": {"M", "N"}, "color": "Grey",
-        "nature": "Moon", "digraphs": {"NN", "NY"},
-        "description": "Nasals (dental n + palatal ny/ñ in Dravidian)"},
-    3: {"letters": {"T", "D"}, "color": "Red",
-        "nature": "Fire", "digraphs": {"TT", "DD"},
+    0: {
+        "letters": set("AEIOU"),
+        "color": "White",
+        "nature": "Vowel",
+        "description": "Vowels (Tamil: a, ā, i, ī, u, ū, e, ē, o, ō)",
+    },
+    1: {
+        "letters": {"K", "G", "C"},
+        "color": "Yellow",
+        "nature": "Sun",
+        "digraphs": {"CH"},
+        "description": "Velars and palatal K/G — dorsal stops",
+    },
+    2: {
+        "letters": {"M", "N"},
+        "color": "Grey",
+        "nature": "Moon",
+        "digraphs": {"NN", "NY"},
+        "description": "Nasals (dental n + palatal ny/ñ in Dravidian)",
+    },
+    3: {
+        "letters": {"T", "D"},
+        "color": "Red",
+        "nature": "Fire",
+        "digraphs": {"TT", "DD"},
         "description": "DENTAL and RETROFLEX stops — critical Dravidian class "
-                       "(dental ṯ vs retroflex ṭ vs alveolar t all grouped here)"},
-    4: {"letters": {"R", "L", "V"}, "color": "Blue",
-        "nature": "Water", "digraphs": {"RR", "LL", "ZH"},
+        "(dental ṯ vs retroflex ṭ vs alveolar t all grouped here)",
+    },
+    4: {
+        "letters": {"R", "L", "V"},
+        "color": "Blue",
+        "nature": "Water",
+        "digraphs": {"RR", "LL", "ZH"},
         "description": "RETROFLEX liquids — critical Dravidian class: "
-                       "r, ṟ (alveolar trill), ṛ (retroflex), l, ḷ (retroflex), "
-                       "ḻ (approximant zha in Tamil)"},
-    5: {"letters": {"Y", "W", "H"}, "color": "Green",
+        "r, ṟ (alveolar trill), ṛ (retroflex), l, ḷ (retroflex), "
+        "ḻ (approximant zha in Tamil)",
+    },
+    5: {
+        "letters": {"Y", "W", "H"},
+        "color": "Green",
         "nature": "Tree",
-        "description": "Semivowels and fricative H (rare in native Dravidian words)"},
-    6: {"letters": {"P", "B", "F"}, "color": "Purple",
+        "description": "Semivowels and fricative H (rare in native Dravidian words)",
+    },
+    6: {
+        "letters": {"P", "B", "F"},
+        "color": "Purple",
         "nature": "Flower",
-        "description": "Labials (no native aspirates ph/bh in Proto-Dravidian)"},
-    7: {"letters": {"S", "Z", "J", "X"}, "color": "Brown",
-        "nature": "Soil", "digraphs": {"SH"},
-        "description": "Sibilants + affricates (c/ch in Tamil)"},
+        "description": "Labials (no native aspirates ph/bh in Proto-Dravidian)",
+    },
+    7: {
+        "letters": {"S", "Z", "J", "X"},
+        "color": "Brown",
+        "nature": "Soil",
+        "digraphs": {"SH"},
+        "description": "Sibilants + affricates (c/ch in Tamil)",
+    },
 }
 
 PROFILE_DRAVIDIAN = KandlesProfile(
@@ -325,29 +455,61 @@ PROFILE_DRAVIDIAN = KandlesProfile(
 #   Gr1 (Yellow/Sun): K/G (velars without ŋ)
 
 _SUMERIAN_GROUPS: dict[int, dict[str, Any]] = {
-    0: {"letters": set("AEIOU"), "color": "White",
-        "nature": "Vowel", "description": "Vowels (a, e, i, u in Sumerian)"},
-    1: {"letters": {"K", "G", "Q"}, "color": "Yellow",
-        "nature": "Sun", "digraphs": {"KK"},
-        "description": "Velars k/g (not including velar nasal ŋ)"},
-    2: {"letters": {"M", "N"}, "color": "Grey",
-        "nature": "Moon", "digraphs": {"NG", "NN"},
-        "description": "Nasals including VELAR NASAL ŋ (NG/G₂) — important Sumerian class"},
-    3: {"letters": {"T", "D"}, "color": "Red",
-        "nature": "Fire", "digraphs": {"TT"},
-        "description": "Dentals t/d"},
-    4: {"letters": {"R", "L"}, "color": "Blue",
-        "nature": "Water", "digraphs": {"LL"},
-        "description": "Liquids r/l"},
-    5: {"letters": {"H", "Y", "W"}, "color": "Green",
-        "nature": "Tree", "digraphs": {"KH"},
-        "description": "Laryngeals and semivowels (H possibly pharyngeal in Sumerian)"},
-    6: {"letters": {"P", "B"}, "color": "Purple",
-        "nature": "Flower", "digraphs": {"PP"},
-        "description": "Labials p/b (no f/v in native Sumerian)"},
-    7: {"letters": {"S", "Z", "J", "X"}, "color": "Brown",
-        "nature": "Soil", "digraphs": {"SH", "ZZ"},
-        "description": "Sibilants s/z/sh"},
+    0: {
+        "letters": set("AEIOU"),
+        "color": "White",
+        "nature": "Vowel",
+        "description": "Vowels (a, e, i, u in Sumerian)",
+    },
+    1: {
+        "letters": {"K", "G", "Q"},
+        "color": "Yellow",
+        "nature": "Sun",
+        "digraphs": {"KK"},
+        "description": "Velars k/g (not including velar nasal ŋ)",
+    },
+    2: {
+        "letters": {"M", "N"},
+        "color": "Grey",
+        "nature": "Moon",
+        "digraphs": {"NG", "NN"},
+        "description": "Nasals including VELAR NASAL ŋ (NG/G₂) — important Sumerian class",
+    },
+    3: {
+        "letters": {"T", "D"},
+        "color": "Red",
+        "nature": "Fire",
+        "digraphs": {"TT"},
+        "description": "Dentals t/d",
+    },
+    4: {
+        "letters": {"R", "L"},
+        "color": "Blue",
+        "nature": "Water",
+        "digraphs": {"LL"},
+        "description": "Liquids r/l",
+    },
+    5: {
+        "letters": {"H", "Y", "W"},
+        "color": "Green",
+        "nature": "Tree",
+        "digraphs": {"KH"},
+        "description": "Laryngeals and semivowels (H possibly pharyngeal in Sumerian)",
+    },
+    6: {
+        "letters": {"P", "B"},
+        "color": "Purple",
+        "nature": "Flower",
+        "digraphs": {"PP"},
+        "description": "Labials p/b (no f/v in native Sumerian)",
+    },
+    7: {
+        "letters": {"S", "Z", "J", "X"},
+        "color": "Brown",
+        "nature": "Soil",
+        "digraphs": {"SH", "ZZ"},
+        "description": "Sibilants s/z/sh",
+    },
 }
 
 PROFILE_SUMERIAN = KandlesProfile(
@@ -364,15 +526,15 @@ PROFILE_SUMERIAN = KandlesProfile(
 # ── Profile registry ──────────────────────────────────────────────────
 
 ALL_PROFILES: dict[str, KandlesProfile] = {
-    "default":   PROFILE_DEFAULT,
-    "greek":     PROFILE_DEFAULT,   # alias
-    "mycenaean": PROFILE_DEFAULT,   # alias
-    "luwian":    PROFILE_LUWIAN,
-    "anatolian": PROFILE_LUWIAN,    # alias
-    "hurrian":   PROFILE_HURRIAN,
-    "semitic":   PROFILE_SEMITIC,
+    "default": PROFILE_DEFAULT,
+    "greek": PROFILE_DEFAULT,  # alias
+    "mycenaean": PROFILE_DEFAULT,  # alias
+    "luwian": PROFILE_LUWIAN,
+    "anatolian": PROFILE_LUWIAN,  # alias
+    "hurrian": PROFILE_HURRIAN,
+    "semitic": PROFILE_SEMITIC,
     "dravidian": PROFILE_DRAVIDIAN,
-    "sumerian":  PROFILE_SUMERIAN,
+    "sumerian": PROFILE_SUMERIAN,
 }
 
 PROFILE_NAMES = list(ALL_PROFILES.keys())
@@ -380,20 +542,20 @@ PROFILE_NAMES = list(ALL_PROFILES.keys())
 # Auto-mapping from hypothesis language IDs to profiles
 LANGUAGE_TO_PROFILE: dict[str, str] = {
     # exact hypothesis IDs
-    "greek":           "default",
+    "greek": "default",
     "mycenaean-greek": "default",
-    "mycenaean":       "default",
-    "luwian":          "luwian",
-    "luwian-anatolian":"luwian",
-    "anatolian":       "luwian",
-    "hurrian":         "hurrian",
-    "semitic":         "semitic",
-    "proto-semitic":   "semitic",
-    "dravidian":       "dravidian",
+    "mycenaean": "default",
+    "luwian": "luwian",
+    "luwian-anatolian": "luwian",
+    "anatolian": "luwian",
+    "hurrian": "hurrian",
+    "semitic": "semitic",
+    "proto-semitic": "semitic",
+    "dravidian": "dravidian",
     "proto-dravidian": "dravidian",
-    "sumerian":        "sumerian",
+    "sumerian": "sumerian",
     # fallback
-    "default":         "default",
+    "default": "default",
 }
 
 
@@ -420,10 +582,7 @@ def get_profile(name: str) -> KandlesProfile:
     if key in LANGUAGE_TO_PROFILE:
         return ALL_PROFILES[LANGUAGE_TO_PROFILE[key]]
 
-    raise ValueError(
-        f"Unknown Kandles profile: {name!r}. "
-        f"Available: {sorted(ALL_PROFILES)}"
-    )
+    raise ValueError(f"Unknown Kandles profile: {name!r}. Available: {sorted(ALL_PROFILES)}")
 
 
 def describe_profiles() -> list[dict[str, str]]:
@@ -433,11 +592,13 @@ def describe_profiles() -> list[dict[str, str]]:
     for name, profile in ALL_PROFILES.items():
         if profile.name not in seen:
             seen.add(profile.name)
-            result.append({
-                "name": profile.name,
-                "description": profile.description,
-                "aliases": [k for k, p in ALL_PROFILES.items() if p.name == profile.name],
-            })
+            result.append(
+                {
+                    "name": profile.name,
+                    "description": profile.description,
+                    "aliases": [k for k, p in ALL_PROFILES.items() if p.name == profile.name],
+                }
+            )
     return result
 
 
@@ -457,11 +618,13 @@ def profile_diff(
         if ga != gb:
             color_a = profile_a.groups.get(ga, {}).get("color", "Unassigned")
             color_b = profile_b.groups.get(gb, {}).get("color", "Unassigned")
-            diffs.append({
-                "phoneme":       letter,
-                f"{profile_a.name}_group": str(ga),
-                f"{profile_a.name}_color": color_a,
-                f"{profile_b.name}_group": str(gb),
-                f"{profile_b.name}_color": color_b,
-            })
+            diffs.append(
+                {
+                    "phoneme": letter,
+                    f"{profile_a.name}_group": str(ga),
+                    f"{profile_a.name}_color": color_a,
+                    f"{profile_b.name}_group": str(gb),
+                    f"{profile_b.name}_color": color_b,
+                }
+            )
     return diffs

@@ -26,6 +26,7 @@ from glossa_lab.pipelines.decipher import LanguageModel, decipher
 
 # ── Data structures ───────────────────────────────────────────────
 
+
 @dataclass
 class Hypothesis:
     """A decipherment hypothesis to test."""
@@ -54,6 +55,7 @@ class HypothesisResult:
 
 # ── Scoring functions ─────────────────────────────────────────────
 
+
 def score_word_matches(
     deciphered_signs: list[str],
     vocabulary: dict[str, str],
@@ -74,23 +76,25 @@ def score_word_matches(
             # Also check sub-sequences of length 2-5
             for wlen in range(2, min(6, len(insc) + 1)):
                 for start in range(len(insc) - wlen + 1):
-                    sub = "".join(insc[start:start + wlen])
+                    sub = "".join(insc[start : start + wlen])
                     deciphered_words.append(sub)
     else:
         # Sliding window over flat sequence
         text = "".join(deciphered_signs)
         for wlen in range(2, 8):
             for start in range(len(text) - wlen + 1):
-                deciphered_words.append(text[start:start + wlen])
+                deciphered_words.append(text[start : start + wlen])
 
     matches = []
     for word in set(deciphered_words):
         if word in vocabulary:
-            matches.append({
-                "deciphered": word,
-                "meaning": vocabulary[word],
-                "length": len(word),
-            })
+            matches.append(
+                {
+                    "deciphered": word,
+                    "meaning": vocabulary[word],
+                    "length": len(word),
+                }
+            )
 
     return {
         "match_count": len(matches),
@@ -121,9 +125,7 @@ def score_internal_consistency(
         decoded_sequences.setdefault(cipher_key, set()).add(decoded)
 
     # All repeated inscriptions should decode identically
-    consistent = sum(
-        1 for v in decoded_sequences.values() if len(v) == 1
-    )
+    consistent = sum(1 for v in decoded_sequences.values() if len(v) == 1)
     return consistent / max(len(decoded_sequences), 1)
 
 
@@ -153,6 +155,7 @@ def score_paradigm_regularity(
 
 
 # ── Hypothesis Engine ─────────────────────────────────────────────
+
 
 class HypothesisEngine:
     """Iterative hypothesis-driven decipherment engine.
@@ -202,6 +205,7 @@ class HypothesisEngine:
             # Auto-map target language to its own profile
             try:
                 from glossa_lab.pipelines.kandles_profiles import LANGUAGE_TO_PROFILE
+
                 mapped = LANGUAGE_TO_PROFILE.get(hypothesis.target_language.lower())
                 if mapped and mapped not in ("default",):
                     kandles_profile = mapped
@@ -238,11 +242,12 @@ class HypothesisEngine:
             decoded_inscs = None
             if self.cipher_inscriptions:
                 decoded_inscs = [
-                    [mapping.get(s, "?") for s in insc]
-                    for insc in self.cipher_inscriptions
+                    [mapping.get(s, "?") for s in insc] for insc in self.cipher_inscriptions
                 ]
             word_result = score_word_matches(
-                decoded, vocabulary, decoded_inscs,
+                decoded,
+                vocabulary,
+                decoded_inscs,
             )
         scores["word_matches"] = float(word_result["match_count"])
         scores["word_coverage"] = word_result.get("coverage", 0.0)
@@ -251,16 +256,18 @@ class HypothesisEngine:
         decoded_inscs = None
         if self.cipher_inscriptions:
             decoded_inscs = [
-                [mapping.get(s, "?") for s in insc]
-                for insc in self.cipher_inscriptions
+                [mapping.get(s, "?") for s in insc] for insc in self.cipher_inscriptions
             ]
         scores["consistency"] = score_internal_consistency(
-            mapping, self.cipher_signs, self.cipher_inscriptions,
+            mapping,
+            self.cipher_signs,
+            self.cipher_inscriptions,
         )
 
         # 4. Paradigm regularity
         scores["paradigm_regularity"] = score_paradigm_regularity(
-            mapping, self.cipher_signs,
+            mapping,
+            self.cipher_signs,
         )
 
         # 5. Kandles confidence
@@ -293,18 +300,14 @@ class HypothesisEngine:
                 f"mappings and refine remaining signs"
             )
         if scores.get("paradigm_regularity", 0) > 0.5:
-            suggestions.append(
-                "Good paradigm regularity — try testing verb prefix hypotheses"
-            )
+            suggestions.append("Good paradigm regularity — try testing verb prefix hypotheses")
         if scores.get("consistency", 0) < 0.8:
             suggestions.append(
                 "Low consistency — some inscriptions decode differently. "
                 "Consider whether the script is logosyllabic (not alphabetic)"
             )
         if not suggestions:
-            suggestions.append(
-                "Try a different target language hypothesis"
-            )
+            suggestions.append("Try a different target language hypothesis")
 
         # Record in history
         entry = {
@@ -352,7 +355,10 @@ class HypothesisEngine:
                 continue
             vocab = (vocabularies or {}).get(hyp.target_language, {})
             result = self.test_hypothesis(
-                hyp, model, vocab, max_iterations=max_iterations,
+                hyp,
+                model,
+                vocab,
+                max_iterations=max_iterations,
             )
             results.append(result)
 
@@ -483,7 +489,9 @@ async def run_hypothesis(params: dict[str, Any]) -> dict[str, Any]:
 
     engine = HypothesisEngine(symbols)
     results = engine.run_iteration(
-        hypotheses, target_models, vocabularies,
+        hypotheses,
+        target_models,
+        vocabularies,
         max_iterations=params.get("max_iterations", 5000),
     )
 

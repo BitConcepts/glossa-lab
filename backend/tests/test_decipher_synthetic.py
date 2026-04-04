@@ -61,9 +61,7 @@ def test_cipher_zipf():
     cf = compute_char_freq(data["cipher"]["flat_signs"])
     assert cf["zipf_exponent"] is not None
     # Zipf exponent should be positive (power law)
-    assert cf["zipf_exponent"] > 0.3, (
-        f"Zipf α={cf['zipf_exponent']}, expected > 0.3"
-    )
+    assert cf["zipf_exponent"] > 0.3, f"Zipf α={cf['zipf_exponent']}, expected > 0.3"
 
 
 # ── 3. Positional: case suffixes create terminal patterns ─────────
@@ -83,7 +81,7 @@ def test_cipher_positional_patterns():
     for insc in inscriptions:
         for word in insc:
             # Split ciphered word into individual sign IDs
-            signs = [word[i:i + 3] for i in range(0, len(word), 3)]
+            signs = [word[i : i + 3] for i in range(0, len(word), 3)]
             if signs:
                 word_as_inscriptions.append(signs)
 
@@ -92,14 +90,14 @@ def test_cipher_positional_patterns():
     assert result["total_inscriptions"] > 100
     # Some signs should be predominantly terminal (case suffixes)
     terminal_dominant = [
-        p for p in result["profiles"]
+        p
+        for p in result["profiles"]
         if p.get("dominant_position") == "terminal"
         and p.get("dominant_pct", 0) > 0.5
         and p["total"] >= 10
     ]
     assert len(terminal_dominant) >= 1, (
-        f"Expected ≥1 terminally-dominant signs (case suffixes), "
-        f"found {len(terminal_dominant)}"
+        f"Expected ≥1 terminally-dominant signs (case suffixes), found {len(terminal_dominant)}"
     )
 
 
@@ -120,21 +118,21 @@ def test_cipher_paradigm_detection():
     word_inscriptions = []
     for insc in inscriptions:
         for word in insc:
-            signs = [word[i:i + 3] for i in range(0, len(word), 3)]
+            signs = [word[i : i + 3] for i in range(0, len(word), 3)]
             if len(signs) >= 2:
                 word_inscriptions.append(signs)
 
     result = detect_paradigms(
-        word_inscriptions, min_stem_freq=3, min_variants=2,
+        word_inscriptions,
+        min_stem_freq=3,
+        min_variants=2,
     )
     # Should find paradigms (noun case inflections)
     assert result["paradigm_count"] > 0, "No paradigms found!"
 
     # At least one paradigm should have 3 variants (3 cases)
     max_variants = max(p["variant_count"] for p in result["paradigms"])
-    assert max_variants >= 2, (
-        f"Max variants={max_variants}, expected ≥2 (case inflections)"
-    )
+    assert max_variants >= 2, f"Max variants={max_variants}, expected ≥2 (case inflections)"
 
 
 # ── 5. Clustering: signs with similar function group together ─────
@@ -156,9 +154,7 @@ def test_cipher_sign_clusters():
     )
     assert result["clustered_signs"] > 0
     # Should form multiple clusters
-    multi_sign_clusters = [
-        c for c in result["clusters"] if c["size"] > 1
-    ]
+    multi_sign_clusters = [c for c in result["clusters"] if c["size"] > 1]
     assert len(multi_sign_clusters) >= 1, "No multi-sign clusters found!"
 
 
@@ -170,7 +166,9 @@ def test_cipher_cooccurrence():
     data = _data()
     result = build_cooccurrence_network(
         data["cipher"]["flat_signs"],
-        window=2, min_freq=5, min_edge_weight=3,
+        window=2,
+        min_freq=5,
+        min_edge_weight=3,
     )
     assert result["node_count"] > 5
     assert result["edge_count"] > 5

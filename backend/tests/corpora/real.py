@@ -36,6 +36,7 @@ def load_linear_b_signs() -> list[str]:
     Returns ~700-900 syllable tokens from the representative tablet corpus.
     """
     from glossa_lab.data.linear_b_language import get_corpus_symbols
+
     return get_corpus_symbols()
 
 
@@ -46,6 +47,7 @@ def load_linear_a_signs(seed: int = 42) -> list[str]:
     distributions (Packard 1974, Younger 2000).
     """
     from tests.corpora.linear_a_corpus import generate_linear_a_flat
+
     return generate_linear_a_flat(seed=seed)
 
 
@@ -75,18 +77,75 @@ def load_dna() -> list[str]:
 
 # Fortran keywords — tokens NOT in this set are mapped to "ID"
 _FORTRAN_KEYWORDS = {
-    "PROGRAM", "END", "SUBROUTINE", "FUNCTION", "MODULE", "USE",
-    "IMPLICIT", "NONE", "INTEGER", "REAL", "DOUBLE", "PRECISION",
-    "CHARACTER", "LOGICAL", "COMPLEX", "PARAMETER", "DIMENSION",
-    "INTENT", "IN", "OUT", "INOUT", "ALLOCATABLE", "SAVE",
-    "DATA", "COMMON", "EQUIVALENCE", "EXTERNAL", "INTRINSIC",
-    "IF", "THEN", "ELSE", "ELSEIF", "ENDIF", "DO", "WHILE",
-    "ENDDO", "CONTINUE", "GOTO", "RETURN", "STOP", "EXIT", "CYCLE",
-    "SELECT", "CASE", "DEFAULT", "ENDSELECT",
-    "CALL", "WRITE", "READ", "PRINT", "OPEN", "CLOSE", "FORMAT",
-    "RESULT", "CONTAINS", "RECURSIVE", "PURE", "ELEMENTAL",
-    "ABS", "MOD", "MAX", "MIN", "SQRT", "SIN", "COS", "LOG",
-    "NOT", "AND", "OR",
+    "PROGRAM",
+    "END",
+    "SUBROUTINE",
+    "FUNCTION",
+    "MODULE",
+    "USE",
+    "IMPLICIT",
+    "NONE",
+    "INTEGER",
+    "REAL",
+    "DOUBLE",
+    "PRECISION",
+    "CHARACTER",
+    "LOGICAL",
+    "COMPLEX",
+    "PARAMETER",
+    "DIMENSION",
+    "INTENT",
+    "IN",
+    "OUT",
+    "INOUT",
+    "ALLOCATABLE",
+    "SAVE",
+    "DATA",
+    "COMMON",
+    "EQUIVALENCE",
+    "EXTERNAL",
+    "INTRINSIC",
+    "IF",
+    "THEN",
+    "ELSE",
+    "ELSEIF",
+    "ENDIF",
+    "DO",
+    "WHILE",
+    "ENDDO",
+    "CONTINUE",
+    "GOTO",
+    "RETURN",
+    "STOP",
+    "EXIT",
+    "CYCLE",
+    "SELECT",
+    "CASE",
+    "DEFAULT",
+    "ENDSELECT",
+    "CALL",
+    "WRITE",
+    "READ",
+    "PRINT",
+    "OPEN",
+    "CLOSE",
+    "FORMAT",
+    "RESULT",
+    "CONTAINS",
+    "RECURSIVE",
+    "PURE",
+    "ELEMENTAL",
+    "ABS",
+    "MOD",
+    "MAX",
+    "MIN",
+    "SQRT",
+    "SIN",
+    "COS",
+    "LOG",
+    "NOT",
+    "AND",
+    "OR",
 }
 
 

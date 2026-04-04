@@ -32,6 +32,7 @@ from tests.corpora.real import load_linear_a_signs, load_linear_b_signs
 
 # ── Helpers ───────────────────────────────────────────────────────────
 
+
 def _get_norm(result: dict, n: int) -> float:
     for entry in result["block_entropies"]:
         if entry["n"] == n:
@@ -44,35 +45,35 @@ def _get_norm(result: dict, n: int) -> float:
 # Luwian (Anatolian, Bronze Age, c. 1400–1200 BCE)
 # Source: Melchert (1994) Anatolian Historical Phonology; Yakubovich (2010)
 _LUWIAN_VOCAB: dict[str, str] = {
-    "ati":    "father",
-    "imi":    "mother / name",
-    "tati":   "father (luwian)",
-    "wawa":   "bull / cattle",
+    "ati": "father",
+    "imi": "mother / name",
+    "tati": "father (luwian)",
+    "wawa": "bull / cattle",
     "tarrus": "just / right",
-    "zid":    "this (animate)",
-    "za":     "this",
-    "anda":   "in / into",
-    "paran":  "before / ahead",
-    "antu":   "and",
-    "ura":    "great",
-    "pi":     "give",
-    "du":     "make / do",
-    "ari":    "come",
-    "wala":   "die / perish",
-    "asi":    "mouth / word",
+    "zid": "this (animate)",
+    "za": "this",
+    "anda": "in / into",
+    "paran": "before / ahead",
+    "antu": "and",
+    "ura": "great",
+    "pi": "give",
+    "du": "make / do",
+    "ari": "come",
+    "wala": "die / perish",
+    "asi": "mouth / word",
     "tuwati": "eye",
-    "isa":    "mouth",
-    "mana":   "mina (unit)",
-    "nani":   "brother",
+    "isa": "mouth",
+    "mana": "mina (unit)",
+    "nani": "brother",
     "hantis": "front / first",
-    "alati":  "tongue",
-    "pati":   "foot",
-    "waras":  "field / land",
-    "kuis":   "who",
-    "kuwa":   "where",
-    "nu":     "and / then",
-    "apa":    "that (pronoun)",
-    "ziti":   "he/she (demonstrative)",
+    "alati": "tongue",
+    "pati": "foot",
+    "waras": "field / land",
+    "kuis": "who",
+    "kuwa": "where",
+    "nu": "and / then",
+    "apa": "that (pronoun)",
+    "ziti": "he/she (demonstrative)",
     "immari": "name",
 }
 
@@ -87,36 +88,36 @@ _LUWIAN_CORPUS = _LUWIAN_CORPUS * 30
 # Proto-Semitic / Old Canaanite (c. 1800–1200 BCE)
 # Source: Huehnergard (2005) Proto-Semitic Language; Fox (2003)
 _SEMITIC_VOCAB: dict[str, str] = {
-    "abu":    "father",
-    "ummu":   "mother",
-    "ahu":    "brother",
-    "banu":   "build / son",
-    "kalbu":  "dog",
-    "yamu":   "sea",
-    "naru":   "river",
+    "abu": "father",
+    "ummu": "mother",
+    "ahu": "brother",
+    "banu": "build / son",
+    "kalbu": "dog",
+    "yamu": "sea",
+    "naru": "river",
     "sharru": "king",
-    "balu":   "lord / Baal",
-    "ilu":    "god / El",
-    "malku":  "king (variant)",
-    "baitu":  "house",
-    "ardu":   "servant",
-    "sapru":  "letter / book",
-    "yadu":   "hand",
+    "balu": "lord / Baal",
+    "ilu": "god / El",
+    "malku": "king (variant)",
+    "baitu": "house",
+    "ardu": "servant",
+    "sapru": "letter / book",
+    "yadu": "hand",
     "nafshu": "soul / life",
-    "damu":   "blood",
-    "mawtu":  "death",
-    "hayyu":  "alive",
-    "kulu":   "all / whole",
-    "rashi":  "head",
-    "aynu":   "eye",
-    "udnu":   "ear",
-    "libu":   "heart / mind",
-    "kammu":  "totality",
-    "arru":   "light",
-    "lailu":  "night",
-    "yawmu":  "day",
-    "shanu":  "year",
-    "arhu":   "month",
+    "damu": "blood",
+    "mawtu": "death",
+    "hayyu": "alive",
+    "kulu": "all / whole",
+    "rashi": "head",
+    "aynu": "eye",
+    "udnu": "ear",
+    "libu": "heart / mind",
+    "kammu": "totality",
+    "arru": "light",
+    "lailu": "night",
+    "yawmu": "day",
+    "shanu": "year",
+    "arhu": "month",
 }
 
 _SEMITIC_CORPUS: list[str] = []
@@ -131,9 +132,7 @@ _SEMITIC_CORPUS = _SEMITIC_CORPUS * 30
 def test_linear_a_corpus_size():
     """Linear A corpus generator should produce ~7,400 sign tokens."""
     signs = load_linear_a_signs()
-    assert 7000 <= len(signs) <= 7800, (
-        f"Linear A corpus size {len(signs)} outside expected range"
-    )
+    assert 7000 <= len(signs) <= 7800, f"Linear A corpus size {len(signs)} outside expected range"
 
 
 def test_linear_a_in_linguistic_range():
@@ -147,9 +146,7 @@ def test_linear_a_in_linguistic_range():
     signs = load_linear_a_signs()
     result = compute_block_entropies(signs, max_n=3)
     h1 = _get_norm(result, 1)
-    assert 0.60 <= h1 <= 0.95, (
-        f"Linear A H1_norm={h1:.4f}: should be in linguistic range 0.60–0.95"
-    )
+    assert 0.60 <= h1 <= 0.95, f"Linear A H1_norm={h1:.4f}: should be in linguistic range 0.60–0.95"
 
 
 def test_linear_a_sublinear_entropy_growth():
@@ -165,9 +162,7 @@ def test_linear_a_sublinear_entropy_growth():
     h1 = _get_norm(result, 1)
     h2 = _get_norm(result, 2)
     ratio = h2 / h1 if h1 > 0 else 2.0
-    assert ratio < 1.95, (
-        f"Linear A H2/H1={ratio:.3f}: sub-linear growth expected"
-    )
+    assert ratio < 1.95, f"Linear A H2/H1={ratio:.3f}: sub-linear growth expected"
 
 
 def test_linear_a_more_entropy_than_fortran():
@@ -177,13 +172,12 @@ def test_linear_a_more_entropy_than_fortran():
     languages. This distinguishes Minoan from a constructed code.
     """
     from tests.corpora.real import load_fortran
+
     lin_a = compute_block_entropies(load_linear_a_signs(), max_n=2)
-    fort  = compute_block_entropies(load_fortran(), max_n=2)
+    fort = compute_block_entropies(load_fortran(), max_n=2)
     h1_la = _get_norm(lin_a, 1)
     h1_ft = _get_norm(fort, 1)
-    assert h1_la > h1_ft, (
-        f"Linear A H1_norm={h1_la:.4f} should exceed Fortran H1_norm={h1_ft:.4f}"
-    )
+    assert h1_la > h1_ft, f"Linear A H1_norm={h1_la:.4f} should exceed Fortran H1_norm={h1_ft:.4f}"
 
 
 def test_linear_a_sign_frequency_follows_zipf():
@@ -252,12 +246,20 @@ def _run_linear_a_hypothesis_engine() -> dict:
     }
 
     # Vocabularies for word matching
-    lb_vocab = {word.replace("-", ""): meaning
-                for word, meaning in {
-                    "wanaka": "king", "damo": "people", "koronade": "land",
-                    "akoroqo": "field", "doero": "slave", "epiqota": "follower",
-                    "para": "from", "epi": "on", "toso": "so-much",
-                }.items()}
+    lb_vocab = {
+        word.replace("-", ""): meaning
+        for word, meaning in {
+            "wanaka": "king",
+            "damo": "people",
+            "koronade": "land",
+            "akoroqo": "field",
+            "doero": "slave",
+            "epiqota": "follower",
+            "para": "from",
+            "epi": "on",
+            "toso": "so-much",
+        }.items()
+    }
 
     vocabularies = {
         "mycenaean-greek": lb_vocab,
@@ -280,8 +282,7 @@ def _run_linear_a_hypothesis_engine() -> dict:
             name="Luwian/Anatolian hypothesis",
             target_language="luwian-anatolian",
             notes=(
-                "Palmer (1958): Linear A encodes an Anatolian language "
-                "related to Luwian/Hittite"
+                "Palmer (1958): Linear A encodes an Anatolian language related to Luwian/Hittite"
             ),
         ),
         Hypothesis(

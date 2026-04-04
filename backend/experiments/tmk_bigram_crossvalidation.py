@@ -57,14 +57,16 @@ def run() -> dict:
             continue
         second_rate = second / total
         is_tmk = sign in tmk_signs
-        results.append({
-            "sign": sign,
-            "is_tmk": is_tmk,
-            "as_first": first,
-            "as_second": second,
-            "total_bigram_appearances": total,
-            "second_rate": round(second_rate, 4),
-        })
+        results.append(
+            {
+                "sign": sign,
+                "is_tmk": is_tmk,
+                "as_first": first,
+                "as_second": second,
+                "total_bigram_appearances": total,
+                "second_rate": round(second_rate, 4),
+            }
+        )
 
     results.sort(key=lambda r: -r["second_rate"])
 
@@ -123,8 +125,8 @@ def run() -> dict:
     print("Top 15 signs by second-position rate:")
     print(f"  {'Sign':>6}  {'TMK':>4}  {'As-2nd':>8}  {'As-1st':>8}  {'Rate':>6}")
     for r in results[:15]:
-        tmk_mark = '\u2713' if r['is_tmk'] else ''
-        s, a2, a1, sr = r['sign'], r['as_second'], r['as_first'], r['second_rate']
+        tmk_mark = "\u2713" if r["is_tmk"] else ""
+        s, a2, a1, sr = r["sign"], r["as_second"], r["as_first"], r["second_rate"]
         print(f"  {s:>6}  {tmk_mark:>4}  {a2:>8,}  {a1:>8,}  {sr:>6.3f}")
 
     return output

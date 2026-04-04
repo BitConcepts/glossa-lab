@@ -42,75 +42,75 @@ import random
 # Tier 1: Very high frequency (>3% of corpus each)
 _SIGN_FREQUENCIES: list[tuple[str, str, float]] = [
     # (GORILA_code, Linear_B_tentative_value, relative_frequency)
-    ("AB02",  "ro",  7.2),   # Most frequent syllabic sign in Haghia Triada
-    ("AB01",  "da",  5.8),
-    ("AB13",  "me",  4.9),
-    ("AB03",  "pa",  4.4),
-    ("AB77",  "ka",  4.0),
+    ("AB02", "ro", 7.2),  # Most frequent syllabic sign in Haghia Triada
+    ("AB01", "da", 5.8),
+    ("AB13", "me", 4.9),
+    ("AB03", "pa", 4.4),
+    ("AB77", "ka", 4.0),
     # Tier 2: High frequency (1–3%)
-    ("AB67",  "ki",  2.9),
-    ("AB08",  "a",   2.8),
-    ("AB05",  "ro2", 2.7),   # ro2 / l in some readings
-    ("AB04",  "te",  2.5),
-    ("AB78",  "qe",  2.4),
-    ("AB28",  "i",   2.3),
-    ("AB45",  "de",  2.2),
-    ("AB30",  "ni",  2.1),
-    ("AB47",  "ryo", 2.0),
-    ("AB53",  "ri",  1.9),
-    ("AB10",  "u",   1.8),
-    ("AB60",  "ra",  1.8),
-    ("AB37",  "ti",  1.7),
-    ("AB17",  "za",  1.6),
-    ("AB58",  "su",  1.5),
+    ("AB67", "ki", 2.9),
+    ("AB08", "a", 2.8),
+    ("AB05", "ro2", 2.7),  # ro2 / l in some readings
+    ("AB04", "te", 2.5),
+    ("AB78", "qe", 2.4),
+    ("AB28", "i", 2.3),
+    ("AB45", "de", 2.2),
+    ("AB30", "ni", 2.1),
+    ("AB47", "ryo", 2.0),
+    ("AB53", "ri", 1.9),
+    ("AB10", "u", 1.8),
+    ("AB60", "ra", 1.8),
+    ("AB37", "ti", 1.7),
+    ("AB17", "za", 1.6),
+    ("AB58", "su", 1.5),
     # Tier 3: Medium frequency (0.5–1%)
-    ("AB25",  "a2",  1.4),
-    ("AB59",  "ta",  1.3),
-    ("AB06",  "na",  1.2),
-    ("AB27",  "re",  1.2),
-    ("AB80",  "ma",  1.1),
-    ("AB55",  "nu",  1.0),
-    ("AB66",  "ta2", 0.9),
-    ("AB41",  "si",  0.9),
-    ("AB65",  "ju",  0.8),
-    ("AB09",  "se",  0.8),
-    ("AB12",  "so",  0.7),
-    ("AB40",  "wi",  0.7),
-    ("AB56",  "pa3", 0.6),
-    ("AB22",  "mi",  0.6),
-    ("AB29",  "pu2", 0.5),
-    ("AB46",  "je",  0.5),
+    ("AB25", "a2", 1.4),
+    ("AB59", "ta", 1.3),
+    ("AB06", "na", 1.2),
+    ("AB27", "re", 1.2),
+    ("AB80", "ma", 1.1),
+    ("AB55", "nu", 1.0),
+    ("AB66", "ta2", 0.9),
+    ("AB41", "si", 0.9),
+    ("AB65", "ju", 0.8),
+    ("AB09", "se", 0.8),
+    ("AB12", "so", 0.7),
+    ("AB40", "wi", 0.7),
+    ("AB56", "pa3", 0.6),
+    ("AB22", "mi", 0.6),
+    ("AB29", "pu2", 0.5),
+    ("AB46", "je", 0.5),
     # Tier 4: Low frequency (0.2–0.5%)
-    ("AB85",  "au",  0.45),
-    ("AB23",  "mu",  0.4),
-    ("AB19",  "pte", 0.4),
-    ("AB34",  "a3",  0.35),
-    ("AB36",  "jo",  0.35),
-    ("AB38",  "e",   0.35),
-    ("AB57",  "ja",  0.3),
-    ("AB61",  "o",   0.3),
-    ("AB86",  "a2",  0.3),   # variant
-    ("AB43",  "ai",  0.25),
-    ("A301",  "A301", 0.25), # Linear A-only sign
-    ("A302",  "A302", 0.25),
-    ("A303",  "A303", 0.2),
-    ("AB16",  "qa",  0.2),
-    ("AB48",  "nwa", 0.2),
+    ("AB85", "au", 0.45),
+    ("AB23", "mu", 0.4),
+    ("AB19", "pte", 0.4),
+    ("AB34", "a3", 0.35),
+    ("AB36", "jo", 0.35),
+    ("AB38", "e", 0.35),
+    ("AB57", "ja", 0.3),
+    ("AB61", "o", 0.3),
+    ("AB86", "a2", 0.3),  # variant
+    ("AB43", "ai", 0.25),
+    ("A301", "A301", 0.25),  # Linear A-only sign
+    ("A302", "A302", 0.25),
+    ("A303", "A303", 0.2),
+    ("AB16", "qa", 0.2),
+    ("AB48", "nwa", 0.2),
     # Tier 5: Rare (<0.2%)
-    ("A304",  "A304", 0.18),
-    ("A305",  "A305", 0.15),
-    ("AB70",  "ko",  0.15),
-    ("AB31",  "sa",  0.15),
-    ("AB50",  "pu",  0.12),
-    ("AB73",  "mi2", 0.12),
-    ("A306",  "A306", 0.1),
-    ("AB52",  "no",  0.1),
-    ("AB68",  "ro",  0.08),  # variant of ro
-    ("A307",  "A307", 0.08),
-    ("A308",  "A308", 0.06),
-    ("A309",  "A309", 0.05),
-    ("A310",  "A310", 0.04),
-    ("A311",  "A311", 0.03),
+    ("A304", "A304", 0.18),
+    ("A305", "A305", 0.15),
+    ("AB70", "ko", 0.15),
+    ("AB31", "sa", 0.15),
+    ("AB50", "pu", 0.12),
+    ("AB73", "mi2", 0.12),
+    ("A306", "A306", 0.1),
+    ("AB52", "no", 0.1),
+    ("AB68", "ro", 0.08),  # variant of ro
+    ("A307", "A307", 0.08),
+    ("A308", "A308", 0.06),
+    ("A309", "A309", 0.05),
+    ("A310", "A310", 0.04),
+    ("A311", "A311", 0.03),
 ]
 
 # Typical inscription templates from Haghia Triada tablets
@@ -118,35 +118,42 @@ _SIGN_FREQUENCIES: list[tuple[str, str, float]] = [
 # Source: Younger (2000) HT tablet structure analysis
 _INSCRIPTION_TEMPLATES: list[list[int]] = [
     # Short: 2–3 signs (labels, numerals)
-    [2, 3], [3, 2], [3, 3],
+    [2, 3],
+    [3, 2],
+    [3, 3],
     # Medium: 4–6 signs (typical administrative entries)
-    [4, 3, 2], [3, 4, 3], [2, 4, 3, 2], [3, 3, 4],
+    [4, 3, 2],
+    [3, 4, 3],
+    [2, 4, 3, 2],
+    [3, 3, 4],
     # Longer: 7–10 signs (multi-entry records)
-    [4, 3, 3], [3, 4, 2, 3], [2, 3, 4, 3, 2],
+    [4, 3, 3],
+    [3, 4, 2, 3],
+    [2, 3, 4, 3, 2],
 ]
 
 # Common prefixes observed in Linear A (from Younger 2000 & GORILA data)
 # These sign groups appear at inscription beginnings significantly more than chance
 _COMMON_INITIALS: list[tuple[str, ...]] = [
-    ("AB08",),        # 'a-' prefix
-    ("AB03",),        # 'pa-' prefix
-    ("AB01",),        # 'da-' prefix
-    ("AB03", "AB13"), # 'pa-me-' (common opening formula at HT)
-    ("AB08", "AB28"), # 'a-i-'
-    ("AB01", "AB02"), # 'da-ro-' (common at HT tablets)
-    ("AB77", "AB01"), # 'ka-da-'
-    ("AB08", "AB01"), # 'a-da-'
+    ("AB08",),  # 'a-' prefix
+    ("AB03",),  # 'pa-' prefix
+    ("AB01",),  # 'da-' prefix
+    ("AB03", "AB13"),  # 'pa-me-' (common opening formula at HT)
+    ("AB08", "AB28"),  # 'a-i-'
+    ("AB01", "AB02"),  # 'da-ro-' (common at HT tablets)
+    ("AB77", "AB01"),  # 'ka-da-'
+    ("AB08", "AB01"),  # 'a-da-'
 ]
 
 # Common suffixes / word endings
 _COMMON_TERMINALS: list[tuple[str, ...]] = [
-    ("AB02",),               # '-ro'
-    ("AB04",),               # '-te'
-    ("AB01",),               # '-da'
-    ("AB13", "AB02"),        # '-me-ro'
-    ("AB67",),               # '-ki'
-    ("AB03", "AB77"),        # '-pa-ka'
-    ("AB02", "AB13"),        # '-ro-me'
+    ("AB02",),  # '-ro'
+    ("AB04",),  # '-te'
+    ("AB01",),  # '-da'
+    ("AB13", "AB02"),  # '-me-ro'
+    ("AB67",),  # '-ki'
+    ("AB03", "AB77"),  # '-pa-ka'
+    ("AB02", "AB13"),  # '-ro-me'
 ]
 
 
@@ -215,7 +222,7 @@ def generate_linear_a_flat(seed: int = 42, n_tokens: int = 7400) -> list[str]:
             # 25% chance of replacing last sign with a common terminal
             if len(group) >= 2 and rng.random() < 0.25:
                 suffix = rng.choice(_COMMON_TERMINALS)
-                group = group[:-len(suffix)] + list(suffix)
+                group = group[: -len(suffix)] + list(suffix)
                 group = group[:group_size]
 
             result.extend(group[:group_size])

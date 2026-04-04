@@ -62,17 +62,16 @@ def test_crack_synthetic_cipher():
     accuracy = score_accuracy(result["proposed_mapping"], reverse_key)
 
     print("\n=== SYNTHETIC CIPHER CRACKING ===")
-    print(f"Accuracy: {accuracy['correct']}/{accuracy['total']} "
-          f"= {accuracy['accuracy'] * 100:.1f}%")
+    print(
+        f"Accuracy: {accuracy['correct']}/{accuracy['total']} = {accuracy['accuracy'] * 100:.1f}%"
+    )
     for d in accuracy["details"]:
         mark = "✓" if d["correct"] else "✗"
-        print(f"  {mark} {d['sign']} → proposed: {d['proposed']}, "
-              f"true: {d['true']}")
+        print(f"  {mark} {d['sign']} → proposed: {d['proposed']}, true: {d['true']}")
 
     # We should get at least 70% correct
     assert accuracy["accuracy"] >= 0.70, (
-        f"Only {accuracy['accuracy'] * 100:.1f}% accuracy — "
-        f"expected ≥70%"
+        f"Only {accuracy['accuracy'] * 100:.1f}% accuracy — expected ≥70%"
     )
 
 
@@ -115,7 +114,8 @@ def test_crack_ugaritic():
 
     # Build target model WITH inscriptions for positional scoring
     target_model = LanguageModel(
-        dec["flat_signs"], inscriptions=dec["inscriptions"],
+        dec["flat_signs"],
+        inscriptions=dec["inscriptions"],
     )
 
     # Run decipherment with positional constraints
@@ -131,13 +131,13 @@ def test_crack_ugaritic():
     accuracy = score_accuracy(result["proposed_mapping"], answer_key)
 
     print("\n=== UGARITIC CRACKING (ENHANCED) ===")
-    print(f"Accuracy: {accuracy['correct']}/{accuracy['total']} "
-          f"= {accuracy['accuracy'] * 100:.1f}%")
+    print(
+        f"Accuracy: {accuracy['correct']}/{accuracy['total']} = {accuracy['accuracy'] * 100:.1f}%"
+    )
     print(f"Kandles confidence: {result.get('kandles_confidence', 0):.3f}")
     for d in sorted(accuracy["details"], key=lambda x: x["sign"]):
         mark = "✓" if d["correct"] else "✗"
-        print(f"  {mark} {d['sign']} → proposed: {d['proposed']}, "
-              f"true: {d['true']}")
+        print(f"  {mark} {d['sign']} → proposed: {d['proposed']}, true: {d['true']}")
 
     assert accuracy["accuracy"] >= 0.75, (
         f"Only {accuracy['accuracy'] * 100:.1f}% accuracy on Ugaritic"
@@ -151,7 +151,8 @@ def test_crack_ugaritic_common_signs():
     answer_key = ugaritic_answer_key()
 
     target_model = LanguageModel(
-        dec["flat_signs"], inscriptions=dec["inscriptions"],
+        dec["flat_signs"],
+        inscriptions=dec["inscriptions"],
     )
     result = decipher(
         undec["flat_signs"],
@@ -164,15 +165,11 @@ def test_crack_ugaritic_common_signs():
 
     # Check top-5 most frequent cipher signs
     from collections import Counter
+
     freq = Counter(undec["flat_signs"])
     top5 = [s for s, _ in freq.most_common(5)]
 
-    correct_top5 = sum(
-        1 for s in top5
-        if result["proposed_mapping"].get(s) == answer_key.get(s)
-    )
+    correct_top5 = sum(1 for s in top5 if result["proposed_mapping"].get(s) == answer_key.get(s))
 
     print(f"\nTop-5 accuracy: {correct_top5}/5")
-    assert correct_top5 >= 3, (
-        f"Only {correct_top5}/5 top signs correct"
-    )
+    assert correct_top5 >= 3, f"Only {correct_top5}/5 top signs correct"

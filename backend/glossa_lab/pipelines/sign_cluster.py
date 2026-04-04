@@ -97,13 +97,16 @@ def compute_sign_clusters(
     # Compute pairwise similarities
     sim_pairs = []
     for i, s1 in enumerate(eligible):
-        for s2 in eligible[i + 1:]:
+        for s2 in eligible[i + 1 :]:
             sim = _cosine_sim(vectors[s1], vectors[s2])
             if sim > 0.1:  # Only store meaningful similarities
-                sim_pairs.append({
-                    "sign_a": s1, "sign_b": s2,
-                    "similarity": round(sim, 4),
-                })
+                sim_pairs.append(
+                    {
+                        "sign_a": s1,
+                        "sign_b": s2,
+                        "similarity": round(sim, 4),
+                    }
+                )
 
     sim_pairs.sort(key=lambda x: x["similarity"], reverse=True)
 
@@ -139,8 +142,7 @@ def compute_sign_clusters(
             clusters.append({sign})
 
     cluster_list = [
-        {"cluster_id": i, "signs": sorted(c), "size": len(c)}
-        for i, c in enumerate(clusters)
+        {"cluster_id": i, "signs": sorted(c), "size": len(c)} for i, c in enumerate(clusters)
     ]
     cluster_list.sort(key=lambda x: x["size"], reverse=True)
 
@@ -149,9 +151,12 @@ def compute_sign_clusters(
         "unique_signs": len(freq),
         "clustered_signs": len(eligible),
         "signs": [
-            {"sign": s, "frequency": freq[s],
-             "left_context_size": len(left_ctx[s]),
-             "right_context_size": len(right_ctx[s])}
+            {
+                "sign": s,
+                "frequency": freq[s],
+                "left_context_size": len(left_ctx[s]),
+                "right_context_size": len(right_ctx[s]),
+            }
             for s in eligible
         ],
         "similarity_pairs": sim_pairs[:100],  # Top 100

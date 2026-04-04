@@ -146,8 +146,7 @@ def estimate_entropy(
         return chao_shen_entropy(counts)
     else:
         raise ValueError(
-            f"Unknown estimator: {estimator!r}. "
-            "Choose from: 'mle', 'miller_madow', 'chao_shen'."
+            f"Unknown estimator: {estimator!r}. Choose from: 'mle', 'miller_madow', 'chao_shen'."
         )
 
 
@@ -180,11 +179,13 @@ def compare_estimators(
         for n in range(1, max_n + 1):
             raw = estimate_entropy(symbols, n=n, estimator=name)
             normalized = raw / ln_L if ln_L > 0 else 0.0
-            entries.append({
-                "n": n,
-                "raw_nats": round(raw, 6),
-                "normalized": round(normalized, 6),
-            })
+            entries.append(
+                {
+                    "n": n,
+                    "raw_nats": round(raw, 6),
+                    "normalized": round(normalized, 6),
+                }
+            )
         result[name] = entries
 
     return result

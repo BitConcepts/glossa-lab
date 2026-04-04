@@ -45,6 +45,7 @@ from glossa_lab.engine import register_pipeline
 
 # ── Jensen-Shannon divergence ─────────────────────────────────────────
 
+
 def _js_divergence(p: dict[str, float], q: dict[str, float]) -> float:
     """Jensen-Shannon divergence between two probability distributions.
 
@@ -78,13 +79,14 @@ def _cosine_similarity(v1: dict[str, float], v2: dict[str, float]) -> float:
     common = set(v1) & set(v2)
     if not common:
         return 0.0
-    dot  = sum(v1[k] * v2[k] for k in common)
-    mag1 = math.sqrt(sum(x*x for x in v1.values()))
-    mag2 = math.sqrt(sum(x*x for x in v2.values()))
+    dot = sum(v1[k] * v2[k] for k in common)
+    mag1 = math.sqrt(sum(x * x for x in v1.values()))
+    mag2 = math.sqrt(sum(x * x for x in v2.values()))
     return dot / (mag1 * mag2) if mag1 * mag2 > 0 else 0.0
 
 
 # ── Context extraction ────────────────────────────────────────────────
+
 
 def _build_context_profiles(
     inscriptions: list[list[str]],
@@ -105,7 +107,7 @@ def _build_context_profiles(
           right_ctx[sign] = Counter of signs appearing after sign
           frequencies[sign] = total count
     """
-    left_ctx:  dict[str, Counter] = defaultdict(Counter)
+    left_ctx: dict[str, Counter] = defaultdict(Counter)
     right_ctx: dict[str, Counter] = defaultdict(Counter)
     freq: Counter = Counter()
 
@@ -121,13 +123,14 @@ def _build_context_profiles(
 
     # Filter to signs meeting minimum count
     active = {s for s, c in freq.items() if c >= min_count}
-    left_ctx  = {s: v for s, v in left_ctx.items()  if s in active}
+    left_ctx = {s: v for s, v in left_ctx.items() if s in active}
     right_ctx = {s: v for s, v in right_ctx.items() if s in active}
 
     return left_ctx, right_ctx, {s: freq[s] for s in active}
 
 
 # ── Vowel and consonant clustering ───────────────────────────────────
+
 
 def cluster_by_vowel_class(
     left_ctx: dict[str, Counter],
@@ -156,8 +159,9 @@ def cluster_by_vowel_class(
 
     # Select top-N signs by frequency
     if freq:
-        candidates = [s for s, _ in sorted(freq.items(), key=lambda x: -x[1])
-                      if s in left_ctx][:top_n]
+        candidates = [s for s, _ in sorted(freq.items(), key=lambda x: -x[1]) if s in left_ctx][
+            :top_n
+        ]
     else:
         candidates = sorted(left_ctx.keys())[:top_n]
 
@@ -192,8 +196,7 @@ def cluster_by_vowel_class(
 
         if best_i >= 0:
             merged = clusters[best_i] + clusters[best_j]
-            clusters = [c for k, c in enumerate(clusters)
-                        if k != best_i and k != best_j]
+            clusters = [c for k, c in enumerate(clusters) if k != best_i and k != best_j]
             clusters.append(merged)
             changed = True
 
@@ -211,11 +214,11 @@ def cluster_by_consonant_class(
     Signs that appear before the same set of following signs likely share
     a consonant (they belong to the same vowel row but different columns).
     """
-    return cluster_by_vowel_class(right_ctx, threshold=threshold,
-                                   top_n=top_n, freq=freq)
+    return cluster_by_vowel_class(right_ctx, threshold=threshold, top_n=top_n, freq=freq)
 
 
 # ── Phonological grid construction ───────────────────────────────────
+
 
 def build_phonological_grid(
     vowel_clusters: list[list[str]],
@@ -258,24 +261,25 @@ def build_phonological_grid(
             grid[(row, col)].append(sign)
 
     # Signs in only one dimension
-    vowel_only    = [s for s in sign_to_vowel if s not in sign_to_consonant]
-    consonant_only= [s for s in sign_to_consonant if s not in sign_to_vowel]
-    unclustered   = [s for s in all_signs if s not in sign_to_vowel and s not in sign_to_consonant]
+    vowel_only = [s for s in sign_to_vowel if s not in sign_to_consonant]
+    consonant_only = [s for s in sign_to_consonant if s not in sign_to_vowel]
+    unclustered = [s for s in all_signs if s not in sign_to_vowel and s not in sign_to_consonant]
 
     return {
-        "grid":              {f"row{r}_col{c}": signs for (r,c), signs in grid.items()},
-        "vowel_clusters":    vowel_clusters,
-        "consonant_clusters":consonant_clusters,
-        "vowel_only_signs":  vowel_only,
+        "grid": {f"row{r}_col{c}": signs for (r, c), signs in grid.items()},
+        "vowel_clusters": vowel_clusters,
+        "consonant_clusters": consonant_clusters,
+        "vowel_only_signs": vowel_only,
         "consonant_only_signs": consonant_only,
-        "unclustered":       unclustered,
-        "n_cells":           len(grid),
-        "n_filled_cells":    sum(1 for v in grid.values() if v),
-        "grid_density":      len(grid) / max((len(vowel_clusters) * len(consonant_clusters)), 1),
+        "unclustered": unclustered,
+        "n_cells": len(grid),
+        "n_filled_cells": sum(1 for v in grid.values() if v),
+        "grid_density": len(grid) / max((len(vowel_clusters) * len(consonant_clusters)), 1),
     }
 
 
 # ── Word structure analysis ───────────────────────────────────────────
+
 
 def infer_word_structure(
     inscriptions: list[list[str]],
@@ -307,15 +311,15 @@ def infer_word_structure(
     terminal_bias: dict[str, float] = {}
 
     for sign, count in freq.items():
-        left_total  = sum(left_ctx.get(sign, Counter()).values())
+        left_total = sum(left_ctx.get(sign, Counter()).values())
         right_total = sum(right_ctx.get(sign, Counter()).values())
         total = max(count, 1)
 
         # Fraction of occurrences that are word-initial (no left context)
-        initial_frac  = 1.0 - (left_total / total)
+        initial_frac = 1.0 - (left_total / total)
         terminal_frac = 1.0 - (right_total / total)
 
-        initial_bias[sign]  = round(initial_frac,  3)
+        initial_bias[sign] = round(initial_frac, 3)
         terminal_bias[sign] = round(terminal_frac, 3)
 
     # Top likely prefixes (high initial bias, appearing in ≥5 inscriptions)
@@ -345,18 +349,19 @@ def infer_word_structure(
 
     return {
         "word_length_distribution": dict(sorted(length_dist.items())),
-        "mean_word_length":    round(mean_len, 2),
-        "max_word_length":     max_len,
-        "corpus_size":         len(all_signs),
-        "unique_signs":        len(freq),
-        "type_token_ratio":    round(ttr, 4),
+        "mean_word_length": round(mean_len, 2),
+        "max_word_length": max_len,
+        "corpus_size": len(all_signs),
+        "unique_signs": len(freq),
+        "type_token_ratio": round(ttr, 4),
         "unique_inscription_ratio": round(unique_ratio, 4),
-        "likely_prefixes":     likely_prefixes,
-        "likely_suffixes":     likely_suffixes,
+        "likely_prefixes": likely_prefixes,
+        "likely_suffixes": likely_suffixes,
     }
 
 
 # ── Cross-script alignment ────────────────────────────────────────────
+
 
 def cross_script_align(
     corpus_a_inscriptions: list[list[str]],
@@ -381,6 +386,7 @@ def cross_script_align(
     Returns:
         dict with structural alignment statistics.
     """
+
     def _get_patterns(  # noqa: E501
         inscriptions: list[list[str]],
         top_n: int = top_patterns,
@@ -419,15 +425,16 @@ def cross_script_align(
         "corpus_b_top_patterns": b_patterns[:10],
         "word_length_kl_divergence": round(kl_ab, 4),
         "corpus_a_mean_length": round(
-            sum(len(i) for i in corpus_a_inscriptions if i)
-            / max(len(corpus_a_inscriptions), 1), 2),
+            sum(len(i) for i in corpus_a_inscriptions if i) / max(len(corpus_a_inscriptions), 1), 2
+        ),
         "corpus_b_mean_length": round(
-            sum(len(i) for i in corpus_b_inscriptions if i)
-            / max(len(corpus_b_inscriptions), 1), 2),
+            sum(len(i) for i in corpus_b_inscriptions if i) / max(len(corpus_b_inscriptions), 1), 2
+        ),
     }
 
 
 # ── Full analysis pipeline ────────────────────────────────────────────
+
 
 def analyze_distributional(
     inscriptions: list[list[str]],
@@ -451,17 +458,18 @@ def analyze_distributional(
     if not inscriptions:
         return {"error": "Empty corpus"}
 
-    left_ctx, right_ctx, freq = _build_context_profiles(
-        inscriptions, min_count=min_sign_count)
+    left_ctx, right_ctx, freq = _build_context_profiles(inscriptions, min_count=min_sign_count)
 
     if not freq:
         return {"error": "No signs met minimum count threshold"}
 
     # Vowel and consonant clusters
-    vowel_clusters    = cluster_by_vowel_class(
-        left_ctx, threshold=cluster_threshold, top_n=top_n, freq=freq)
-    consonant_clusters= cluster_by_consonant_class(
-        right_ctx, threshold=cluster_threshold, top_n=top_n, freq=freq)
+    vowel_clusters = cluster_by_vowel_class(
+        left_ctx, threshold=cluster_threshold, top_n=top_n, freq=freq
+    )
+    consonant_clusters = cluster_by_consonant_class(
+        right_ctx, threshold=cluster_threshold, top_n=top_n, freq=freq
+    )
 
     # Phonological grid
     grid = build_phonological_grid(vowel_clusters, consonant_clusters)
@@ -496,22 +504,23 @@ def analyze_distributional(
     ]
 
     return {
-        "corpus_size":          sum(freq.values()),
-        "unique_signs":         len(freq),
-        "n_inscriptions":       len(inscriptions),
-        "vowel_clusters":       vowel_clusters,
-        "consonant_clusters":   consonant_clusters,
-        "n_vowel_clusters":     len(vowel_clusters),
+        "corpus_size": sum(freq.values()),
+        "unique_signs": len(freq),
+        "n_inscriptions": len(inscriptions),
+        "vowel_clusters": vowel_clusters,
+        "consonant_clusters": consonant_clusters,
+        "n_vowel_clusters": len(vowel_clusters),
         "n_consonant_clusters": len(consonant_clusters),
-        "phonological_grid":    grid,
-        "word_structure":       word_struct,
+        "phonological_grid": grid,
+        "word_structure": word_struct,
         "cross_script_alignment": cross_align,
-        "top_signs":            top_signs,
-        "cluster_threshold":    cluster_threshold,
+        "top_signs": top_signs,
+        "cluster_threshold": cluster_threshold,
     }
 
 
 # ── Pipeline entry point ──────────────────────────────────────────────
+
 
 @register_pipeline("distributional_decipherment")
 async def run_distributional_decipherment(params: dict[str, Any]) -> dict[str, Any]:
@@ -545,9 +554,9 @@ async def run_distributional_decipherment(params: dict[str, Any]) -> dict[str, A
     # Segment flat sequence into inscriptions by chunk
     chunk_size = params.get("chunk_size", 5)
     inscriptions = [
-        content[i: i + chunk_size]
+        content[i : i + chunk_size]
         for i in range(0, len(content), chunk_size)
-        if content[i: i + chunk_size]
+        if content[i : i + chunk_size]
     ]
 
     # Load reference corpus if provided
@@ -558,9 +567,9 @@ async def run_distributional_decipherment(params: dict[str, Any]) -> dict[str, A
         if ref_text:
             ref_content = ref_text["content"]
             ref_inscriptions = [
-                ref_content[i: i + chunk_size]
+                ref_content[i : i + chunk_size]
                 for i in range(0, len(ref_content), chunk_size)
-                if ref_content[i: i + chunk_size]
+                if ref_content[i : i + chunk_size]
             ]
 
     result = analyze_distributional(
@@ -571,7 +580,7 @@ async def run_distributional_decipherment(params: dict[str, Any]) -> dict[str, A
         reference_inscriptions=ref_inscriptions,
     )
 
-    result["text_id"]    = text_id
-    result["text_name"]  = text.get("name", "")
-    result["corpus_type"]= text.get("corpus_type", "")
+    result["text_id"] = text_id
+    result["text_name"] = text.get("name", "")
+    result["corpus_type"] = text.get("corpus_type", "")
     return result

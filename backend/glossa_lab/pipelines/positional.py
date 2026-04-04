@@ -33,7 +33,10 @@ def compute_positional_freq(
         lambda: {"initial": 0, "medial": 0, "terminal": 0, "singleton": 0}
     )
     total_by_position: dict[str, int] = {
-        "initial": 0, "medial": 0, "terminal": 0, "singleton": 0,
+        "initial": 0,
+        "medial": 0,
+        "terminal": 0,
+        "singleton": 0,
     }
     total_signs = 0
     total_inscriptions = len(inscriptions)
@@ -75,10 +78,7 @@ def compute_positional_freq(
             "singleton": pos_counts["singleton"],
         }
         # Classify dominant position
-        active = {
-            k: v for k, v in pos_counts.items()
-            if k != "singleton" and v > 0
-        }
+        active = {k: v for k, v in pos_counts.items() if k != "singleton" and v > 0}
         if active:
             dom_pos = max(active, key=active.get)  # type: ignore[arg-type]
             dom_pct = active[dom_pos] / total if total > 0 else 0
@@ -94,14 +94,14 @@ def compute_positional_freq(
 
     # Find exclusively positional signs
     exclusively_initial = [
-        p["sign"] for p in profiles
-        if p.get("exclusive") and p.get("dominant_position") == "initial"
-        and p["total"] >= 3
+        p["sign"]
+        for p in profiles
+        if p.get("exclusive") and p.get("dominant_position") == "initial" and p["total"] >= 3
     ]
     exclusively_terminal = [
-        p["sign"] for p in profiles
-        if p.get("exclusive") and p.get("dominant_position") == "terminal"
-        and p["total"] >= 3
+        p["sign"]
+        for p in profiles
+        if p.get("exclusive") and p.get("dominant_position") == "terminal" and p["total"] >= 3
     ]
 
     return {

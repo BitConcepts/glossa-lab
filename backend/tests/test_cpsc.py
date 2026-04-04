@@ -34,7 +34,9 @@ def test_auto_uses_cpsc_by_default():
     result = decipher_auto(
         data["cipher"]["flat_signs"],
         target_model,
-        seed=42, max_iterations=5000, restarts=3,
+        seed=42,
+        max_iterations=5000,
+        restarts=3,
     )
     assert result.get("engine") == "cpsc"
 
@@ -46,7 +48,9 @@ def test_hillclimb_when_forced():
     result = decipher_auto(
         data["cipher"]["flat_signs"],
         target_model,
-        seed=42, max_iterations=5000, restarts=3,
+        seed=42,
+        max_iterations=5000,
+        restarts=3,
         engine="hillclimb",
     )
     # Hill climbing result doesn't have 'engine' key
@@ -66,7 +70,9 @@ def test_cpsc_cracks_synthetic():
     result = decipher_auto(
         data["cipher"]["flat_signs"],
         target_model,
-        seed=42, max_iterations=10000, restarts=5,
+        seed=42,
+        max_iterations=10000,
+        restarts=5,
         engine="cpsc",
     )
     # CPSC should produce a mapping and reduce violations
@@ -76,7 +82,7 @@ def test_cpsc_cracks_synthetic():
     reverse_key = data["cipher"]["reverse_map"]
     accuracy = score_accuracy(result["proposed_mapping"], reverse_key)
     assert accuracy["accuracy"] > 0.10, (
-        f"CPSC accuracy {accuracy['accuracy']*100:.1f}% — worse than random"
+        f"CPSC accuracy {accuracy['accuracy'] * 100:.1f}% — worse than random"
     )
 
 
@@ -87,7 +93,9 @@ def test_cpsc_returns_constraint_violations():
     result = decipher_auto(
         data["cipher"]["flat_signs"],
         target_model,
-        seed=42, max_iterations=3000, restarts=2,
+        seed=42,
+        max_iterations=3000,
+        restarts=2,
         engine="cpsc",
     )
     assert "constraint_violations" in result
@@ -104,7 +112,9 @@ def test_hillclimb_still_works():
     result = decipher(
         data["cipher"]["flat_signs"],
         target_model,
-        seed=42, max_iterations=10000, restarts=5,
+        seed=42,
+        max_iterations=10000,
+        restarts=5,
     )
     reverse_key = data["cipher"]["reverse_map"]
     accuracy = score_accuracy(result["proposed_mapping"], reverse_key)

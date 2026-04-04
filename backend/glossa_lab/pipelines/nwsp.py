@@ -81,6 +81,7 @@ from glossa_lab.engine import register_pipeline  # noqa: I001
 
 # ── Core NWSP computation ─────────────────────────────────────────────
 
+
 def _nwp(position_1indexed: int, text_length: int) -> float:
     """Compute Normalized Weighted Position.
 
@@ -123,8 +124,8 @@ def compute_nwsp(
     # Accumulate weighted position histograms
     # hist[sign][bin_0..bin_9] = sum of weights for that bin
     hist_weighted: dict[str, list[float]] = defaultdict(lambda: [0.0] * n_bins)
-    hist_raw:      dict[str, list[int]]   = defaultdict(lambda: [0] * n_bins)
-    total_weight:  dict[str, float] = defaultdict(float)
+    hist_raw: dict[str, list[int]] = defaultdict(lambda: [0] * n_bins)
+    total_weight: dict[str, float] = defaultdict(float)
     occurrence_count: Counter[str] = Counter()
 
     for insc in inscriptions:
@@ -135,10 +136,10 @@ def compute_nwsp(
             nwp = _nwp(pos, L)
             # Bin index: NWP in [1,10] → bins [0,9]
             bin_idx = min(int((nwp - 1.0) / 9.0 * n_bins), n_bins - 1)
-            hist_weighted[sign][bin_idx] += L      # weight = text length
-            hist_raw[sign][bin_idx]      += 1      # unweighted count
-            total_weight[sign]           += L
-            occurrence_count[sign]       += 1
+            hist_weighted[sign][bin_idx] += L  # weight = text length
+            hist_raw[sign][bin_idx] += 1  # unweighted count
+            total_weight[sign] += L
+            occurrence_count[sign] += 1
 
     # Build per-sign analysis
     signs_result: dict[str, dict[str, Any]] = {}
@@ -157,38 +158,36 @@ def compute_nwsp(
         # Compute mean and variance of normalized weighted position
         bin_centers = [(i + 0.5) / n_bins * 9.0 + 1.0 for i in range(n_bins)]
         mean_pos = sum(norm_hist[i] * bin_centers[i] for i in range(n_bins))
-        variance  = sum(norm_hist[i] * (bin_centers[i] - mean_pos) ** 2 for i in range(n_bins))
+        variance = sum(norm_hist[i] * (bin_centers[i] - mean_pos) ** 2 for i in range(n_bins))
 
         # Classification
         classification = _classify_nwsp(norm_hist, n_bins)
 
         signs_result[sign] = {
-            "histogram":      [round(v, 4) for v in norm_hist],
-            "raw_histogram":  raw,
+            "histogram": [round(v, 4) for v in norm_hist],
+            "raw_histogram": raw,
             "classification": classification,
-            "mean_position":  round(mean_pos, 3),
-            "variance":       round(variance, 3),
-            "total_weight":   round(tw, 1),
+            "mean_position": round(mean_pos, 3),
+            "variance": round(variance, 3),
+            "total_weight": round(tw, 1),
             "occurrence_count": occ,
         }
 
     # Summary counts
-    summary: Counter[str] = Counter(
-        v["classification"] for v in signs_result.values()
-    )
+    summary: Counter[str] = Counter(v["classification"] for v in signs_result.values())
 
     # Corpus statistics
     flat = [s for insc in inscriptions for s in insc]
     freq = Counter(flat)
 
     return {
-        "signs":       signs_result,
-        "summary":     dict(summary),
+        "signs": signs_result,
+        "summary": dict(summary),
         "corpus_stats": {
-            "n_inscriptions":  len(inscriptions),
-            "n_tokens":        len(flat),
+            "n_inscriptions": len(inscriptions),
+            "n_tokens": len(flat),
             "n_distinct_signs": len(freq),
-            "signs_analyzed":  len(signs_result),
+            "signs_analyzed": len(signs_result),
         },
     }
 
@@ -202,10 +201,10 @@ def _classify_nwsp(norm_hist: list[float], n_bins: int = 10) -> str:
     """
     # Peak detection by region
     # Bin indices 0-1 = initial (NWP 1-3), 8-9 = terminal (NWP 8-10)
-    initial_mass  = sum(norm_hist[:2])    # bins 0-1: NWP 1-3
-    terminal_mass = sum(norm_hist[-2:])   # bins 8-9: NWP 8-10
-    medial_mass   = sum(norm_hist[2:8])   # bins 2-7: NWP 3-8
-    pre_term_mass = sum(norm_hist[5:8])   # bins 5-7: NWP 6-8 (numeral zone)
+    initial_mass = sum(norm_hist[:2])  # bins 0-1: NWP 1-3
+    terminal_mass = sum(norm_hist[-2:])  # bins 8-9: NWP 8-10
+    medial_mass = sum(norm_hist[2:8])  # bins 2-7: NWP 3-8
+    pre_term_mass = sum(norm_hist[5:8])  # bins 5-7: NWP 6-8 (numeral zone)
 
     # Entropy of histogram (low = peaked, high = uniform)
     entropy = -sum(p * math.log(p) for p in norm_hist if p > 0)
@@ -245,13 +244,13 @@ def _classify_nwsp(norm_hist: list[float], n_bins: int = 10) -> str:
 # These codes appear in the ICIT database alongside sign numbers.
 
 NWSP_TO_ICIT: dict[str, str] = {
-    "ITM":     "ITM",   # Initial Cluster Terminal Marker
-    "TMK":     "TMK",   # Terminal Marker
-    "PTM":     "PTM",   # Post-Terminal Marker
-    "INITIAL": "ITM",   # In ICIT, strong initials are part of ITM cluster
-    "NUM":     "NUM",   # Numeral
-    "CON":     "SYL",   # Constant distribution → likely syllabic (SYL in ICIT)
-    "MED":     "SYL",   # Medial distribution → likely syllabic
+    "ITM": "ITM",  # Initial Cluster Terminal Marker
+    "TMK": "TMK",  # Terminal Marker
+    "PTM": "PTM",  # Post-Terminal Marker
+    "INITIAL": "ITM",  # In ICIT, strong initials are part of ITM cluster
+    "NUM": "NUM",  # Numeral
+    "CON": "SYL",  # Constant distribution → likely syllabic (SYL in ICIT)
+    "MED": "SYL",  # Medial distribution → likely syllabic
 }
 
 
@@ -282,15 +281,15 @@ def compare_with_icit_functions(
         icit_summary[mapped_icit] += 1
 
         entry: dict[str, Any] = {
-            "sign":       sign,
+            "sign": sign,
             "nwsp_class": nwsp_class,
-            "icit_code":  mapped_icit,
+            "icit_code": mapped_icit,
         }
 
         if icit_labels and sign in icit_labels:
             true_icit = icit_labels[sign]
             entry["icit_true"] = true_icit
-            entry["match"]     = mapped_icit == true_icit
+            entry["match"] = mapped_icit == true_icit
 
         mapped[sign] = entry
 
@@ -309,6 +308,7 @@ def compare_with_icit_functions(
 
 
 # ── Pipeline entry point ──────────────────────────────────────────────
+
 
 @register_pipeline("nwsp")
 async def run_nwsp(params: dict[str, Any]) -> dict[str, Any]:
@@ -347,6 +347,6 @@ async def run_nwsp(params: dict[str, Any]) -> dict[str, Any]:
     if params.get("compare_icit", True):
         result["icit_mapping"] = compare_with_icit_functions(result)
 
-    result["text_id"]   = text_id
+    result["text_id"] = text_id
     result["text_name"] = text.get("name", text_id)
     return result

@@ -68,6 +68,7 @@ from glossa_lab.engine import register_pipeline  # noqa: I001
 
 # ── Feature extraction ─────────────────────────────────────────────────
 
+
 def _extract_features(
     inscriptions: list[list[str]],
     flat: list[str],
@@ -80,11 +81,11 @@ def _extract_features(
 
     initial_c: Counter[str] = Counter()
     terminal_c: Counter[str] = Counter()
-    alone_c:    Counter[str] = Counter()
-    insc_c:     Counter[str] = Counter()  # inscriptions containing this sign
+    alone_c: Counter[str] = Counter()
+    insc_c: Counter[str] = Counter()  # inscriptions containing this sign
 
     # Left and right neighbors
-    left_nbrs:  dict[str, set[str]] = defaultdict(set)
+    left_nbrs: dict[str, set[str]] = defaultdict(set)
     right_nbrs: dict[str, set[str]] = defaultdict(set)
 
     for insc in inscriptions:
@@ -112,6 +113,7 @@ def _extract_features(
         _fractional_positions,
         _positional_histogram,
     )
+
     frac_pos = _fractional_positions(inscriptions)
     pos_entropy: dict[str, float] = {}
     bins = 10
@@ -129,6 +131,7 @@ def _extract_features(
         _bimodality_score,
         _detect_peaks,
     )
+
     poly_score: dict[str, float] = {}
     for sign, positions in frac_pos.items():
         if len(positions) < 3:
@@ -144,33 +147,33 @@ def _extract_features(
 
     for sign, count in freq.items():
         occ = max(insc_c.get(sign, 1), 1)
-        isolation  = alone_c.get(sign, 0) / occ
-        init_rate  = initial_c.get(sign, 0) / occ
-        term_rate  = terminal_c.get(sign, 0) / occ
-        boundary   = init_rate + term_rate
-        log_freq   = math.log(count) / log_max if log_max > 0 else 0.0
-        bigram_div = (len(left_nbrs.get(sign, set())) +
-                      len(right_nbrs.get(sign, set()))) / max(2 * (count ** 0.5), 1)
-        pos_ent    = pos_entropy.get(sign, 0.5)
+        isolation = alone_c.get(sign, 0) / occ
+        init_rate = initial_c.get(sign, 0) / occ
+        term_rate = terminal_c.get(sign, 0) / occ
+        boundary = init_rate + term_rate
+        log_freq = math.log(count) / log_max if log_max > 0 else 0.0
+        bigram_div = (len(left_nbrs.get(sign, set())) + len(right_nbrs.get(sign, set()))) / max(
+            2 * (count**0.5), 1
+        )
+        pos_ent = pos_entropy.get(sign, 0.5)
         # "same context rate" = fraction of inscriptions where this sign
         # co-occurs with the most frequent sign (proxy for semantic grouping)
         most_freq_sign = freq.most_common(1)[0][0]
-        same_ctx = sum(
-            1 for insc in inscriptions
-            if sign in insc and most_freq_sign in insc
-        ) / max(insc_c.get(sign, 1), 1)
-        poly       = min(poly_score.get(sign, 0.0), 1.0)
+        same_ctx = sum(1 for insc in inscriptions if sign in insc and most_freq_sign in insc) / max(
+            insc_c.get(sign, 1), 1
+        )
+        poly = min(poly_score.get(sign, 0.0), 1.0)
 
         features[sign] = {
-            "isolation_rate":   round(isolation, 4),
-            "initial_rate":     round(init_rate, 4),
-            "terminal_rate":    round(term_rate, 4),
-            "boundary_bias":    round(boundary, 4),
-            "log_frequency":    round(log_freq, 4),
+            "isolation_rate": round(isolation, 4),
+            "initial_rate": round(init_rate, 4),
+            "terminal_rate": round(term_rate, 4),
+            "boundary_bias": round(boundary, 4),
+            "log_frequency": round(log_freq, 4),
             "bigram_diversity": round(min(bigram_div, 1.0), 4),
             "positional_entropy": round(pos_ent, 4),
-            "same_context_rate":  round(same_ctx, 4),
-            "polyvalence_score":  round(poly, 4),
+            "same_context_rate": round(same_ctx, 4),
+            "polyvalence_score": round(poly, 4),
         }
 
     return features
@@ -180,6 +183,7 @@ def _extract_features(
 # These scoring functions are calibrated heuristics based on patterns
 # observed in deciphered scripts (Linear B, Ugaritic, Sumerian).
 # Each outputs a raw score in [0,∞]; these are normalized to probabilities.
+
 
 def _score_numeral(f: dict[str, float]) -> float:
     """Numerals: high frequency, very specific positional context, low diversity."""
@@ -279,6 +283,7 @@ def _normalize_scores(scores: dict[str, float]) -> dict[str, float]:
 
 # ── Main estimator ─────────────────────────────────────────────────────
 
+
 def estimate_sign_functions(
     inscriptions: list[list[str]],
     min_freq: int = 3,
@@ -309,11 +314,11 @@ def estimate_sign_functions(
             continue
 
         raw = {
-            "numeral":          _score_numeral(feats),
-            "determinative":    _score_determinative(feats),
-            "logogram":         _score_logogram(feats),
-            "phonetic":         _score_phonetic(feats),
-            "boundary_marker":  _score_boundary_marker(feats),
+            "numeral": _score_numeral(feats),
+            "determinative": _score_determinative(feats),
+            "logogram": _score_logogram(feats),
+            "phonetic": _score_phonetic(feats),
+            "boundary_marker": _score_boundary_marker(feats),
         }
         probs = _normalize_scores(raw)
         dominant_type = max(probs, key=lambda k: probs[k])
@@ -322,35 +327,35 @@ def estimate_sign_functions(
         type_accumulator[dominant_type] += 1
 
         entry: dict[str, Any] = {
-            "sign":          sign,
-            "frequency":     freq[sign],
+            "sign": sign,
+            "frequency": freq[sign],
             "dominant_type": dominant_type,
-            "confidence":    confidence,
+            "confidence": confidence,
             "probabilities": probs,
-            "features":      {k: round(v, 3) for k, v in feats.items()},
+            "features": {k: round(v, 3) for k, v in feats.items()},
         }
         signs.append(entry)
 
     signs.sort(key=lambda s: s["confidence"], reverse=True)
 
     total_classified = sum(type_accumulator.values()) or 1
-    system_summary = {
-        t: round(c / total_classified, 3)
-        for t, c in type_accumulator.most_common()
-    }
+    system_summary = {t: round(c / total_classified, 3) for t, c in type_accumulator.most_common()}
 
     high_confidence = [s for s in signs if s["confidence"] >= 0.60]
-    likely_phonetics     = sorted(
+    likely_phonetics = sorted(
         [s for s in signs if s["dominant_type"] == "phonetic"],
-        key=lambda s: s["probabilities"]["phonetic"], reverse=True,
+        key=lambda s: s["probabilities"]["phonetic"],
+        reverse=True,
     )
     likely_determinatives = sorted(
         [s for s in signs if s["dominant_type"] == "determinative"],
-        key=lambda s: s["probabilities"]["determinative"], reverse=True,
+        key=lambda s: s["probabilities"]["determinative"],
+        reverse=True,
     )
-    likely_numerals      = sorted(
+    likely_numerals = sorted(
         [s for s in signs if s["dominant_type"] == "numeral"],
-        key=lambda s: s["probabilities"]["numeral"], reverse=True,
+        key=lambda s: s["probabilities"]["numeral"],
+        reverse=True,
     )
 
     # Estimated phonetic sign inventory (for a syllabary: usually 40-90 unique CV values)
@@ -415,6 +420,7 @@ def _interpret(
 
 
 # ── Pipeline entry point ──────────────────────────────────────────────
+
 
 @register_pipeline("sign_function_estimator")
 async def run_sign_function_estimator(params: dict[str, Any]) -> dict[str, Any]:

@@ -45,6 +45,7 @@ async def lifespan(app: FastAPI):
     # Seed built-in corpora (runs only if DB is empty or missing corpora)
     from glossa_lab.corpus_seeder import seed_corpora  # noqa: I001
     from glossa_lab.database import get_db
+
     _db = get_db()
     if _db:
         await seed_corpora(_db)

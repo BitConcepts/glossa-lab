@@ -77,9 +77,7 @@ def test_classify_signs_types_are_valid():
     result = classify_signs(_INSCRIPTIONS_RICH, flat)
     valid_types = {"logogram", "syllabogram", "determinative"}
     for sign, info in result.items():
-        assert info["type"] in valid_types, (
-            f"Sign '{sign}' has invalid type '{info['type']}'"
-        )
+        assert info["type"] in valid_types, f"Sign '{sign}' has invalid type '{info['type']}'"
 
 
 def test_classify_signs_logogram_detected():
@@ -106,8 +104,14 @@ def test_classify_signs_fields_complete():
     """Each classification entry must have all required fields."""
     flat = _flat(_INSCRIPTIONS_RICH)
     result = classify_signs(_INSCRIPTIONS_RICH, flat)
-    required_fields = {"type", "frequency", "relative_frequency",
-                       "boundary_bias", "isolation_rate", "evidence"}
+    required_fields = {
+        "type",
+        "frequency",
+        "relative_frequency",
+        "boundary_bias",
+        "isolation_rate",
+        "evidence",
+    }
     for sign, info in result.items():
         missing = required_fields - set(info.keys())
         assert not missing, f"Sign '{sign}' missing fields: {missing}"
@@ -150,13 +154,16 @@ def test_propose_readings_covers_all_syllabograms():
     """Every syllabogram in the corpus should get a proposed reading."""
     flat = _flat(_INSCRIPTIONS_RICH)
     classification = classify_signs(_INSCRIPTIONS_RICH, flat)
-    syllabograms = [s for s, info in classification.items()
-                    if info["type"] == "syllabogram"]
+    syllabograms = [s for s, info in classification.items() if info["type"] == "syllabogram"]
     affinity = compute_affinity(_INSCRIPTIONS_RICH, syllabograms)
 
     from glossa_lab.pipelines.logosyllabic import _SUMERIAN_SYLLABLES
+
     readings = propose_readings(
-        classification, affinity, _SUMERIAN_SYLLABLES, _INSCRIPTIONS_RICH,
+        classification,
+        affinity,
+        _SUMERIAN_SYLLABLES,
+        _INSCRIPTIONS_RICH,
     )
 
     for sign in syllabograms:
@@ -169,13 +176,16 @@ def test_propose_readings_confidence_range():
     """Confidence values must be in [0, 1]."""
     flat = _flat(_INSCRIPTIONS_RICH)
     classification = classify_signs(_INSCRIPTIONS_RICH, flat)
-    syllabograms = [s for s, info in classification.items()
-                    if info["type"] == "syllabogram"]
+    syllabograms = [s for s, info in classification.items() if info["type"] == "syllabogram"]
     affinity = compute_affinity(_INSCRIPTIONS_RICH, syllabograms)
 
     from glossa_lab.pipelines.logosyllabic import _SUMERIAN_SYLLABLES
+
     readings = propose_readings(
-        classification, affinity, _SUMERIAN_SYLLABLES, _INSCRIPTIONS_RICH,
+        classification,
+        affinity,
+        _SUMERIAN_SYLLABLES,
+        _INSCRIPTIONS_RICH,
     )
 
     for sign, info in readings.items():
@@ -191,17 +201,22 @@ def test_extract_candidate_words_returns_list():
     """Candidate word extraction should return a list."""
     flat = _flat(_INSCRIPTIONS_RICH)
     classification = classify_signs(_INSCRIPTIONS_RICH, flat)
-    syllabograms = [s for s, info in classification.items()
-                    if info["type"] == "syllabogram"]
+    syllabograms = [s for s, info in classification.items() if info["type"] == "syllabogram"]
     affinity = compute_affinity(_INSCRIPTIONS_RICH, syllabograms)
 
     from glossa_lab.pipelines.logosyllabic import _SUMERIAN_SYLLABLES
+
     readings = propose_readings(
-        classification, affinity, _SUMERIAN_SYLLABLES, _INSCRIPTIONS_RICH,
+        classification,
+        affinity,
+        _SUMERIAN_SYLLABLES,
+        _INSCRIPTIONS_RICH,
     )
 
     candidates = extract_candidate_words(
-        _INSCRIPTIONS_RICH, classification, readings,
+        _INSCRIPTIONS_RICH,
+        classification,
+        readings,
     )
     assert isinstance(candidates, list)
 
@@ -210,21 +225,33 @@ def test_extract_candidate_words_structure():
     """Each candidate word must have required fields."""
     flat = _flat(_INSCRIPTIONS_RICH)
     classification = classify_signs(_INSCRIPTIONS_RICH, flat)
-    syllabograms = [s for s, info in classification.items()
-                    if info["type"] == "syllabogram"]
+    syllabograms = [s for s, info in classification.items() if info["type"] == "syllabogram"]
     affinity = compute_affinity(_INSCRIPTIONS_RICH, syllabograms)
 
     from glossa_lab.pipelines.logosyllabic import _SUMERIAN_SYLLABLES
+
     readings = propose_readings(
-        classification, affinity, _SUMERIAN_SYLLABLES, _INSCRIPTIONS_RICH,
+        classification,
+        affinity,
+        _SUMERIAN_SYLLABLES,
+        _INSCRIPTIONS_RICH,
     )
 
     candidates = extract_candidate_words(
-        _INSCRIPTIONS_RICH, classification, readings,
+        _INSCRIPTIONS_RICH,
+        classification,
+        readings,
     )
 
-    required = {"signs", "readings", "combined_reading", "word_length",
-                "avg_confidence", "score", "vocabulary_match"}
+    required = {
+        "signs",
+        "readings",
+        "combined_reading",
+        "word_length",
+        "avg_confidence",
+        "score",
+        "vocabulary_match",
+    }
     for cand in candidates:
         missing = required - set(cand.keys())
         assert not missing, f"Candidate missing fields: {missing}"
@@ -237,9 +264,16 @@ def test_analyze_logosyllabic_output_keys():
     """Full analysis must return all required top-level keys."""
     result = analyze_logosyllabic(_INSCRIPTIONS_RICH, target_language="sumerian")
     required_keys = {
-        "target_language", "sign_count", "unique_signs", "inscription_count",
-        "sign_classification", "summary", "affinity", "proposed_readings",
-        "candidate_words", "vocabulary_match_count",
+        "target_language",
+        "sign_count",
+        "unique_signs",
+        "inscription_count",
+        "sign_classification",
+        "summary",
+        "affinity",
+        "proposed_readings",
+        "candidate_words",
+        "vocabulary_match_count",
     }
     missing = required_keys - set(result.keys())
     assert not missing, f"Missing keys: {missing}"

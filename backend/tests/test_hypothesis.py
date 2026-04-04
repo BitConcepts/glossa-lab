@@ -28,7 +28,10 @@ def test_hypothesis_engine_runs():
     )
 
     result = engine.test_hypothesis(
-        hyp, target_model, max_iterations=3000, restarts=2,
+        hyp,
+        target_model,
+        max_iterations=3000,
+        restarts=2,
     )
     assert result.hypothesis_id == "test-h1"
     assert result.total_score > 0
@@ -64,8 +67,11 @@ def test_hypothesis_with_vocabulary():
 
     hyp = Hypothesis(id="h-vocab", name="Vocab test", target_language="test")
     result = engine.test_hypothesis(
-        hyp, target_model, vocabulary=vocab,
-        max_iterations=5000, restarts=3,
+        hyp,
+        target_model,
+        vocabulary=vocab,
+        max_iterations=5000,
+        restarts=3,
     )
 
     # Should have word match score
@@ -80,7 +86,10 @@ def test_hypothesis_suggests_next():
 
     hyp = Hypothesis(id="h-suggest", name="Suggest test", target_language="test")
     result = engine.test_hypothesis(
-        hyp, target_model, max_iterations=3000, restarts=2,
+        hyp,
+        target_model,
+        max_iterations=3000,
+        restarts=2,
     )
     assert len(result.suggested_next) > 0
 

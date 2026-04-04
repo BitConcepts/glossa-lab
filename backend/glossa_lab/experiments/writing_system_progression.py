@@ -44,15 +44,16 @@ import sys
 from collections import Counter
 from typing import Any
 
-_HERE    = os.path.dirname(os.path.abspath(__file__))
+_HERE = os.path.dirname(os.path.abspath(__file__))
 _BACKEND = os.path.dirname(os.path.dirname(_HERE))
-_TESTS   = os.path.join(_BACKEND, "tests")
+_TESTS = os.path.join(_BACKEND, "tests")
 for _p in (_BACKEND, _TESTS):
     if _p not in sys.path:
         sys.path.insert(0, _p)
 
 
 # ── Corpus statistics helper ──────────────────────────────────────────
+
 
 def corpus_statistics(
     inscriptions: list[list[str]],
@@ -95,21 +96,21 @@ def corpus_statistics(
     avg_len = sum(lengths) / len(lengths) if lengths else 0.0
 
     return {
-        "system":          system_name,
-        "writing_type":    writing_type,
-        "n_inscriptions":  len(inscriptions),
-        "N_tokens":        N,
-        "V_types":         V,
-        "theoretical_V":   sign_count,
+        "system": system_name,
+        "writing_type": writing_type,
+        "n_inscriptions": len(inscriptions),
+        "N_tokens": N,
+        "V_types": V,
+        "theoretical_V": sign_count,
         "type_token_ratio": round(V / N, 4) if N else 0,
-        "hapax_count":     hapax,
-        "hapax_fraction":  round(hapax / V, 3) if V else 0,
-        "rare5_fraction":  round(rare5 / V, 3) if V else 0,
+        "hapax_count": hapax,
+        "hapax_fraction": round(hapax / V, 3) if V else 0,
+        "rare5_fraction": round(rare5 / V, 3) if V else 0,
         "avg_inscription_length": round(avg_len, 2),
-        "h1_normalized":   round(h1["normalized"], 4) if h1 else None,
-        "h2_normalized":   round(h2["normalized"], 4) if h2 else None,
+        "h1_normalized": round(h1["normalized"], 4) if h1 else None,
+        "h2_normalized": round(h2["normalized"], 4) if h2 else None,
         "polyvalence_candidates": poly_summary["polyvalence_candidates"],
-        "polyvalence_fraction":   poly_summary["candidate_fraction"],
+        "polyvalence_fraction": poly_summary["candidate_fraction"],
         "top_polyvalent": [
             {"sign": c["sign"], "score": c["bimodality_score"]}
             for c in poly_result["candidates"][:3]
@@ -135,9 +136,11 @@ def _difficulty_estimate(V: int, vn_ratio: float, hapax_frac: float) -> str:
 
 # ── Tier corpora ──────────────────────────────────────────────────────
 
+
 def _tier1_abjad_ugaritic() -> dict[str, Any]:
     """Tier 1: Ugaritic (abjad, 30 consonantal signs)."""
     from corpora.ugaritic import get_undeciphered_corpus  # noqa: I001
+
     corpus = get_undeciphered_corpus()
     # Use inscriptions as individual lines
     inscriptions = corpus["inscriptions"]
@@ -160,13 +163,31 @@ def _tier1_abjad_phoenician_synthetic() -> dict[str, Any]:
     # Frequency weights based on published Phoenician corpus statistics
     # Approximate bigram weights for realistic Phoenician
     _FREQ_WEIGHTS = {
-        "l": 0.110, "b": 0.085, "m": 0.080, "E": 0.075, "n": 0.070,
-        "k": 0.065, "t": 0.060, "r": 0.055, "s": 0.050, "H": 0.045,
-        "h": 0.040, "y": 0.040, "p": 0.035, "d": 0.030, "S": 0.030,
-        "q": 0.025, "z": 0.020, "g": 0.018, "T": 0.015, "w": 0.012,
-        "U": 0.010, "G": 0.005,
+        "l": 0.110,
+        "b": 0.085,
+        "m": 0.080,
+        "E": 0.075,
+        "n": 0.070,
+        "k": 0.065,
+        "t": 0.060,
+        "r": 0.055,
+        "s": 0.050,
+        "H": 0.045,
+        "h": 0.040,
+        "y": 0.040,
+        "p": 0.035,
+        "d": 0.030,
+        "S": 0.030,
+        "q": 0.025,
+        "z": 0.020,
+        "g": 0.018,
+        "T": 0.015,
+        "w": 0.012,
+        "U": 0.010,
+        "G": 0.005,
     }
     import random
+
     rng = random.Random(42)
     signs = list(_FREQ_WEIGHTS.keys())
     weights = list(_FREQ_WEIGHTS.values())
@@ -199,9 +220,13 @@ def _tier2_alphabet_linear_b() -> dict[str, Any]:
     """
     try:
         from pathlib import Path
+
         fixture = (
             Path(__file__).resolve().parent.parent.parent
-            / "tests" / "corpora" / "fixtures" / "linear_b.txt"
+            / "tests"
+            / "corpora"
+            / "fixtures"
+            / "linear_b.txt"
         )
         text = fixture.read_text(encoding="utf-8")
         inscriptions: list[list[str]] = []
@@ -235,6 +260,7 @@ def _tier4_syllabary_synthetic(
     Simulates a corpus matching published Linear B type/token ratios.
     """
     import random
+
     rng = random.Random(seed)
     # Zipf-distributed frequencies for n_signs signs
     weights = [1.0 / (i + 1) ** 0.8 for i in range(n_signs)]
@@ -271,6 +297,7 @@ def _tier5_logo_syllabic_synthetic(
       - High hapax rate (>50% of signs appear ≤ 5 times)
     """
     import random
+
     rng = random.Random(seed)
     # Steep Zipf distribution: most signs are rare
     weights = [1.0 / (i + 1) ** 1.5 for i in range(n_signs)]
@@ -282,9 +309,9 @@ def _tier5_logo_syllabic_synthetic(
     generated = 0
     while generated < n_tokens:
         # Biased toward short inscriptions (most Indus inscriptions are seals)
-        length = rng.choices(range(2, 17), weights=[
-            20, 25, 20, 12, 8, 5, 3, 2, 1.5, 1, 0.8, 0.6, 0.4, 0.3, 0.2
-        ])[0]
+        length = rng.choices(
+            range(2, 17), weights=[20, 25, 20, 12, 8, 5, 3, 2, 1.5, 1, 0.8, 0.6, 0.4, 0.3, 0.2]
+        )[0]
         insc = rng.choices(signs, weights=weights, k=length)
         inscriptions.append(insc)
         generated += length
@@ -297,6 +324,7 @@ def _tier5_logo_syllabic_synthetic(
 
 
 # ── Master runner ─────────────────────────────────────────────────────
+
 
 def run_all_tiers(verbose: bool = True) -> dict[str, Any]:
     """Run the full Fuls progression benchmark and return comparative report.
@@ -312,10 +340,10 @@ def run_all_tiers(verbose: bool = True) -> dict[str, Any]:
         if verbose:
             print(*a, **kw)
 
-    _print("\n" + "="*70)
+    _print("\n" + "=" * 70)
     _print("  Fuls Writing System Progression Benchmark")
     _print("  (abjad → alphabet → abugida → syllabary → logo-syllabic)")
-    _print("="*70)
+    _print("=" * 70)
 
     systems: list[dict[str, Any]] = []
 
@@ -323,9 +351,11 @@ def run_all_tiers(verbose: bool = True) -> dict[str, Any]:
     try:
         r = _tier1_abjad_ugaritic()
         systems.append(r)
-        _print(f"  N={r['N_tokens']}  V={r['V_types']}  V/N={r['type_token_ratio']}  "
-               f"hapax={r['hapax_fraction']:.0%}  "
-               f"polyvalent={r['polyvalence_candidates']}")
+        _print(
+            f"  N={r['N_tokens']}  V={r['V_types']}  V/N={r['type_token_ratio']}  "
+            f"hapax={r['hapax_fraction']:.0%}  "
+            f"polyvalent={r['polyvalence_candidates']}"
+        )
     except Exception as e:
         _print(f"  SKIP: {e}")
 
@@ -333,9 +363,11 @@ def run_all_tiers(verbose: bool = True) -> dict[str, Any]:
     try:
         r = _tier1_abjad_phoenician_synthetic()
         systems.append(r)
-        _print(f"  N={r['N_tokens']}  V={r['V_types']}  V/N={r['type_token_ratio']}  "
-               f"hapax={r['hapax_fraction']:.0%}  "
-               f"polyvalent={r['polyvalence_candidates']}")
+        _print(
+            f"  N={r['N_tokens']}  V={r['V_types']}  V/N={r['type_token_ratio']}  "
+            f"hapax={r['hapax_fraction']:.0%}  "
+            f"polyvalent={r['polyvalence_candidates']}"
+        )
     except Exception as e:
         _print(f"  SKIP: {e}")
 
@@ -343,9 +375,11 @@ def run_all_tiers(verbose: bool = True) -> dict[str, Any]:
     try:
         r = _tier2_alphabet_linear_b()
         systems.append(r)
-        _print(f"  N={r['N_tokens']}  V={r['V_types']}  V/N={r['type_token_ratio']}  "
-               f"hapax={r['hapax_fraction']:.0%}  "
-               f"polyvalent={r['polyvalence_candidates']}")
+        _print(
+            f"  N={r['N_tokens']}  V={r['V_types']}  V/N={r['type_token_ratio']}  "
+            f"hapax={r['hapax_fraction']:.0%}  "
+            f"polyvalent={r['polyvalence_candidates']}"
+        )
     except Exception as e:
         _print(f"  SKIP (Linear B not loaded): {e}")
 
@@ -353,9 +387,11 @@ def run_all_tiers(verbose: bool = True) -> dict[str, Any]:
     try:
         r = _tier4_syllabary_synthetic(n_signs=87, n_tokens=2000)
         systems.append(r)
-        _print(f"  N={r['N_tokens']}  V={r['V_types']}  V/N={r['type_token_ratio']}  "
-               f"hapax={r['hapax_fraction']:.0%}  "
-               f"polyvalent={r['polyvalence_candidates']}")
+        _print(
+            f"  N={r['N_tokens']}  V={r['V_types']}  V/N={r['type_token_ratio']}  "
+            f"hapax={r['hapax_fraction']:.0%}  "
+            f"polyvalent={r['polyvalence_candidates']}"
+        )
     except Exception as e:
         _print(f"  SKIP: {e}")
 
@@ -363,9 +399,11 @@ def run_all_tiers(verbose: bool = True) -> dict[str, Any]:
     try:
         r = _tier5_logo_syllabic_synthetic(n_signs=400, n_tokens=4500)
         systems.append(r)
-        _print(f"  N={r['N_tokens']}  V={r['V_types']}  V/N={r['type_token_ratio']}  "
-               f"hapax={r['hapax_fraction']:.0%}  "
-               f"polyvalent={r['polyvalence_candidates']}")
+        _print(
+            f"  N={r['N_tokens']}  V={r['V_types']}  V/N={r['type_token_ratio']}  "
+            f"hapax={r['hapax_fraction']:.0%}  "
+            f"polyvalent={r['polyvalence_candidates']}"
+        )
     except Exception as e:
         _print(f"  SKIP: {e}")
 
@@ -374,18 +412,25 @@ def run_all_tiers(verbose: bool = True) -> dict[str, Any]:
         s["system"]: {
             k: s.get(k)
             for k in (
-                "writing_type", "N_tokens", "V_types", "theoretical_V",
-                "type_token_ratio", "hapax_fraction", "polyvalence_candidates",
-                "polyvalence_fraction", "h1_normalized", "decipher_difficulty",
+                "writing_type",
+                "N_tokens",
+                "V_types",
+                "theoretical_V",
+                "type_token_ratio",
+                "hapax_fraction",
+                "polyvalence_candidates",
+                "polyvalence_fraction",
+                "h1_normalized",
+                "decipher_difficulty",
             )
         }
         for s in systems
     }
 
     if verbose:
-        _print("\n" + "-"*70)
+        _print("\n" + "-" * 70)
         _print(f"  {'System':35}  {'V':>5}  {'N':>6}  {'V/N':>6}  {'Hapax%':>7}  {'PolyV':>5}")
-        _print("  " + "-"*70)
+        _print("  " + "-" * 70)
         for s in systems:
             _print(
                 f"  {s['system'][:35]:35}  {s['V_types']:>5}  "

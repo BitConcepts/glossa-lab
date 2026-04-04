@@ -40,9 +40,7 @@ def _platform_paths(mode: str) -> dict[str, Path]:
 
     if sys.platform == "win32":
         appdata = Path(os.environ.get("APPDATA", Path.home() / "AppData" / "Roaming"))
-        localappdata = Path(
-            os.environ.get("LOCALAPPDATA", Path.home() / "AppData" / "Local")
-        )
+        localappdata = Path(os.environ.get("LOCALAPPDATA", Path.home() / "AppData" / "Local"))
         return {
             "config_dir": appdata / "GlossaLab",
             "log_dir": localappdata / "GlossaLab" / "logs",
@@ -58,12 +56,8 @@ def _platform_paths(mode: str) -> dict[str, Path]:
     else:
         # Linux / other POSIX — follow XDG
         config_home = Path(os.environ.get("XDG_CONFIG_HOME", Path.home() / ".config"))
-        state_home = Path(
-            os.environ.get("XDG_STATE_HOME", Path.home() / ".local" / "state")
-        )
-        data_home = Path(
-            os.environ.get("XDG_DATA_HOME", Path.home() / ".local" / "share")
-        )
+        state_home = Path(os.environ.get("XDG_STATE_HOME", Path.home() / ".local" / "state"))
+        data_home = Path(os.environ.get("XDG_DATA_HOME", Path.home() / ".local" / "share"))
         return {
             "config_dir": config_home / "glossa-lab",
             "log_dir": state_home / "glossa-lab" / "logs",
@@ -83,11 +77,7 @@ def _load_toml(config_dir: Path) -> dict:
 def _env_overrides() -> dict[str, str]:
     """Collect GLOSSA_ prefixed environment variables."""
     prefix = "GLOSSA_"
-    return {
-        k[len(prefix) :].lower(): v
-        for k, v in os.environ.items()
-        if k.startswith(prefix)
-    }
+    return {k[len(prefix) :].lower(): v for k, v in os.environ.items() if k.startswith(prefix)}
 
 
 @lru_cache

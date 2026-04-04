@@ -96,16 +96,12 @@ class Database:
         current_version = row["version"] if row else 0
 
         if current_version < 1:
-            await self._conn.execute(
-                "INSERT INTO _schema_version (version) VALUES (?)", (1,)
-            )
+            await self._conn.execute("INSERT INTO _schema_version (version) VALUES (?)", (1,))
             current_version = 1
 
         if current_version < 2:
             await self._conn.executescript(_SCHEMA_V2)
-            await self._conn.execute(
-                "UPDATE _schema_version SET version = ?", (2,)
-            )
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (2,))
 
         await self._conn.commit()
 
@@ -132,9 +128,7 @@ class Database:
 
     async def list_jobs(self) -> list[dict[str, Any]]:
         assert self._conn
-        cursor = await self._conn.execute(
-            "SELECT * FROM jobs ORDER BY created_at DESC"
-        )
+        cursor = await self._conn.execute("SELECT * FROM jobs ORDER BY created_at DESC")
         rows = await cursor.fetchall()
         return [self._row_to_dict(r) for r in rows]
 
@@ -174,8 +168,12 @@ class Database:
         )
         rows = await cursor.fetchall()
         counts = {
-            "total": 0, "pending": 0, "running": 0,
-            "completed": 0, "failed": 0, "cancelled": 0,
+            "total": 0,
+            "pending": 0,
+            "running": 0,
+            "completed": 0,
+            "failed": 0,
+            "cancelled": 0,
         }
         for row in rows:
             s = row["status"]
@@ -206,10 +204,14 @@ class Database:
                 symbol_set, metadata, created_at)
                VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
             (
-                text_id, name, corpus_type,
-                json.dumps(content), alphabet_size,
+                text_id,
+                name,
+                corpus_type,
+                json.dumps(content),
+                alphabet_size,
                 json.dumps(symbol_set),
-                json.dumps(metadata or {}), created_at,
+                json.dumps(metadata or {}),
+                created_at,
             ),
         )
         await self._conn.commit()
@@ -217,17 +219,13 @@ class Database:
 
     async def list_texts(self) -> list[dict[str, Any]]:
         assert self._conn
-        cursor = await self._conn.execute(
-            "SELECT * FROM texts ORDER BY created_at DESC"
-        )
+        cursor = await self._conn.execute("SELECT * FROM texts ORDER BY created_at DESC")
         rows = await cursor.fetchall()
         return [self._row_to_dict(r) for r in rows]
 
     async def get_text(self, text_id: str) -> dict[str, Any] | None:
         assert self._conn
-        cursor = await self._conn.execute(
-            "SELECT * FROM texts WHERE id = ?", (text_id,)
-        )
+        cursor = await self._conn.execute("SELECT * FROM texts WHERE id = ?", (text_id,))
         row = await cursor.fetchone()
         return self._row_to_dict(row) if row else None
 
@@ -284,7 +282,11 @@ class Database:
     # ── Job results ──────────────────────────────────────────────────
 
     async def store_result(
-        self, *, job_id: str, data: dict[str, Any], created_at: str,
+        self,
+        *,
+        job_id: str,
+        data: dict[str, Any],
+        created_at: str,
     ) -> dict[str, Any]:
         assert self._conn
         result_id = uuid.uuid4().hex[:12]
@@ -297,22 +299,22 @@ class Database:
         return {"id": result_id, "job_id": job_id, "data": data}
 
     async def get_result_for_job(
-        self, job_id: str,
+        self,
+        job_id: str,
     ) -> dict[str, Any] | None:
         assert self._conn
-        cursor = await self._conn.execute(
-            "SELECT * FROM job_results WHERE job_id = ?", (job_id,)
-        )
+        cursor = await self._conn.execute("SELECT * FROM job_results WHERE job_id = ?", (job_id,))
         row = await cursor.fetchone()
         return self._row_to_dict(row) if row else None
 
     async def update_job_status(
-        self, job_id: str, status: str,
+        self,
+        job_id: str,
+        status: str,
     ) -> None:
         assert self._conn
         await self._conn.execute(
-            "UPDATE jobs SET status = ?, updated_at = datetime('now') "
-            "WHERE id = ?",
+            "UPDATE jobs SET status = ?, updated_at = datetime('now') WHERE id = ?",
             (status, job_id),
         )
         await self._conn.commit()
@@ -321,8 +323,7 @@ class Database:
         """Atomically claim the oldest pending job."""
         assert self._conn
         cursor = await self._conn.execute(
-            "SELECT * FROM jobs WHERE status = 'pending' "
-            "ORDER BY created_at ASC LIMIT 1"
+            "SELECT * FROM jobs WHERE status = 'pending' ORDER BY created_at ASC LIMIT 1"
         )
         row = await cursor.fetchone()
         if row is None:

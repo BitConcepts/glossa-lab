@@ -55,9 +55,9 @@ import sys
 from collections import Counter
 from typing import Any
 
-_HERE    = os.path.dirname(os.path.abspath(__file__))
+_HERE = os.path.dirname(os.path.abspath(__file__))
 _BACKEND = os.path.dirname(os.path.dirname(_HERE))
-_TESTS   = os.path.join(_BACKEND, "tests")
+_TESTS = os.path.join(_BACKEND, "tests")
 for _p in (_BACKEND, _TESTS):
     if _p not in sys.path:
         sys.path.insert(0, _p)
@@ -66,11 +66,11 @@ for _p in (_BACKEND, _TESTS):
 
 # ROW = same vowel (same ending)
 _TRUE_ROWS: list[list[str]] = [
-    ["a",  "da", "ja",  "ka",  "ma",  "na",  "pa",  "ra",  "sa",  "ta",  "wa",  "za"],
-    ["e",  "de",        "ke",  "me",  "ne",  "pe",  "re",  "se",  "te",  "we",  "ze"],
-    ["i",  "di",        "ki",  "mi",  "ni",  "pi",  "ri",  "si",  "ti",  "wi"],
-    ["o",  "do", "jo",  "ko",  "mo",  "no",  "po",  "ro",  "so",  "to",  "wo",  "zo"],
-    ["u",  "du",        "ku",  "mu",  "nu",  "pu",  "ru",  "su",  "tu"],
+    ["a", "da", "ja", "ka", "ma", "na", "pa", "ra", "sa", "ta", "wa", "za"],
+    ["e", "de", "ke", "me", "ne", "pe", "re", "se", "te", "we", "ze"],
+    ["i", "di", "ki", "mi", "ni", "pi", "ri", "si", "ti", "wi"],
+    ["o", "do", "jo", "ko", "mo", "no", "po", "ro", "so", "to", "wo", "zo"],
+    ["u", "du", "ku", "mu", "nu", "pu", "ru", "su", "tu"],
 ]
 
 # COLUMN = same consonant (same onset)
@@ -96,6 +96,7 @@ def _sign_to_row() -> dict[str, int]:
             m[s] = row_idx
     return m
 
+
 def _sign_to_col() -> dict[str, int]:
     m = {}
     for col_idx, col in enumerate(_TRUE_COLS):
@@ -105,6 +106,7 @@ def _sign_to_col() -> dict[str, int]:
 
 
 # ── Precision/recall scoring ──────────────────────────────────────────
+
 
 def _score_clusters(
     predicted: list[list[str]],
@@ -127,6 +129,7 @@ def _score_clusters(
         pass
     # Group signs by their ground truth class
     from collections import defaultdict
+
     gt_groups: dict[int, set[str]] = defaultdict(set)
     for sign, gidx in ground_truth_map.items():
         gt_groups[gidx].add(sign)
@@ -149,12 +152,14 @@ def _score_clusters(
     fn = len(gt_same - pred_pairs)
 
     precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
-    recall    = tp / (tp + fn) if (tp + fn) > 0 else 0.0
-    f1        = 2 * precision * recall / (precision + recall) if (precision + recall) > 0 else 0.0
+    recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+    f1 = 2 * precision * recall / (precision + recall) if (precision + recall) > 0 else 0.0
 
     if verbose:
-        print(f"  [{label}] pairs TP={tp} FP={fp} FN={fn}  "
-              f"P={precision:.3f} R={recall:.3f} F1={f1:.3f}")
+        print(
+            f"  [{label}] pairs TP={tp} FP={fp} FN={fn}  "
+            f"P={precision:.3f} R={recall:.3f} F1={f1:.3f}"
+        )
 
         # Show best correct clusters
         print(f"  [{label}] predicted groups (multi-sign only):")
@@ -167,16 +172,17 @@ def _score_clusters(
                 print(f"    {tag} {sorted(g)}")
 
     return {
-        "precision":   round(precision, 4),
-        "recall":      round(recall, 4),
-        "f1":          round(f1, 4),
-        "true_pairs":  len(gt_same),
-        "pred_pairs":  len(pred_pairs),
+        "precision": round(precision, 4),
+        "recall": round(recall, 4),
+        "f1": round(f1, 4),
+        "true_pairs": len(gt_same),
+        "pred_pairs": len(pred_pairs),
         "true_positives": tp,
     }
 
 
 # ── Main validation ───────────────────────────────────────────────────
+
 
 def run_ventris_validation(verbose: bool = True) -> dict[str, Any]:
     """Load Linear B corpus, run affinity analysis, score against ground truth."""
@@ -188,18 +194,19 @@ def run_ventris_validation(verbose: bool = True) -> dict[str, Any]:
         if verbose:
             print(*a, **kw)
 
-    _print("\n" + "="*70)
+    _print("\n" + "=" * 70)
     _print("  Ventris Grid Validation — Linear B")
-    _print("="*70)
+    _print("=" * 70)
 
     accel = gpu_info()
-    _print(f"  Acceleration: {accel['tier_name']}  ({accel['cpu_cores']} cores"
-           + (f"  GPU: {accel.get('gpu_name', '')}" if accel["cuda"] else "") + ")")
+    _print(
+        f"  Acceleration: {accel['tier_name']}  ({accel['cpu_cores']} cores"
+        + (f"  GPU: {accel.get('gpu_name', '')}" if accel["cuda"] else "")
+        + ")"
+    )
 
     # Load Linear B word-level corpus
-    fixture = (
-        Path(_BACKEND) / "tests" / "corpora" / "fixtures" / "linear_b.txt"
-    )
+    fixture = Path(_BACKEND) / "tests" / "corpora" / "fixtures" / "linear_b.txt"
     text = fixture.read_text(encoding="utf-8")
     inscriptions: list[list[str]] = []
     for line in text.splitlines():
@@ -216,8 +223,7 @@ def run_ventris_validation(verbose: bool = True) -> dict[str, Any]:
     flat = [s for insc in inscriptions for s in insc]
     freq = Counter(flat)
 
-    _print(f"\n  Corpus: {len(inscriptions)} words  {len(flat)} tokens  "
-           f"{len(freq)} distinct signs")
+    _print(f"\n  Corpus: {len(inscriptions)} words  {len(flat)} tokens  {len(freq)} distinct signs")
     _print(f"  Top 15 signs: {[s for s, _ in freq.most_common(15)]}")
 
     # All signs that appear in the ground truth
@@ -231,21 +237,22 @@ def run_ventris_validation(verbose: bool = True) -> dict[str, Any]:
 
     # Classify signs
     sign_class = classify_signs(inscriptions, flat)
-    syllabograms = [
-        s for s, info in sign_class.items()
-        if info["type"] == "syllabogram"
-    ]
-    _print(f"\n  Sign classification: {len(syllabograms)} syllabograms  "
-           f"{sum(1 for i in sign_class.values() if i['type']=='logogram')} logograms")
+    syllabograms = [s for s, info in sign_class.items() if info["type"] == "syllabogram"]
+    _print(
+        f"\n  Sign classification: {len(syllabograms)} syllabograms  "
+        f"{sum(1 for i in sign_class.values() if i['type'] == 'logogram')} logograms"
+    )
 
     # Run affinity analysis (GPU-backed)
     _print("\n  Running GPU-backed Ventris affinity analysis...")
     affinity = compute_affinity(
-        inscriptions, syllabograms,
-        top_n=40, window=2,
+        inscriptions,
+        syllabograms,
+        top_n=40,
+        window=2,
     )
 
-    vowel_groups    = affinity.get("vowel_groups", [])
+    vowel_groups = affinity.get("vowel_groups", [])
     consonant_groups = affinity.get("consonant_groups", [])
     _print(f"  Threshold used: {affinity.get('threshold_used', '?')}")
     _print(f"  Acceleration:   {affinity.get('acceleration', '?')}")
@@ -258,21 +265,31 @@ def run_ventris_validation(verbose: bool = True) -> dict[str, Any]:
 
     _print("\n  Scoring vowel (row) groups...")
     row_score = _score_clusters(
-        vowel_groups, sign_to_row, "row", verbose=verbose,
+        vowel_groups,
+        sign_to_row,
+        "row",
+        verbose=verbose,
     )
 
     _print("\n  Scoring consonant (column) groups...")
     col_score = _score_clusters(
-        consonant_groups, sign_to_col, "col", verbose=verbose,
+        consonant_groups,
+        sign_to_col,
+        "col",
+        verbose=verbose,
     )
 
     # Overall summary
     f1_avg = (row_score["f1"] + col_score["f1"]) / 2
     _print(f"\n  OVERALL F1 (row+col avg): {f1_avg:.3f}")
-    _print(f"  Vowel row  F1: {row_score['f1']:.3f}  "
-           f"({row_score['true_positives']}/{row_score['true_pairs']} pairs)")
-    _print(f"  Consonant  F1: {col_score['f1']:.3f}  "
-           f"({col_score['true_positives']}/{col_score['true_pairs']} pairs)")
+    _print(
+        f"  Vowel row  F1: {row_score['f1']:.3f}  "
+        f"({row_score['true_positives']}/{row_score['true_pairs']} pairs)"
+    )
+    _print(
+        f"  Consonant  F1: {col_score['f1']:.3f}  "
+        f"({col_score['true_positives']}/{col_score['true_pairs']} pairs)"
+    )
 
     # Interpretation
     if f1_avg > 0.5:
@@ -306,14 +323,14 @@ def run_ventris_validation(verbose: bool = True) -> dict[str, Any]:
             "gt_signs_in_corpus": len(known_in_corpus),
         },
         "affinity": {
-            "n_vowel_groups":    len(vowel_groups),
+            "n_vowel_groups": len(vowel_groups),
             "n_consonant_groups": len(consonant_groups),
-            "threshold":         affinity.get("threshold_used"),
-            "acceleration":      affinity.get("acceleration"),
+            "threshold": affinity.get("threshold_used"),
+            "acceleration": affinity.get("acceleration"),
         },
-        "row_score":    row_score,
-        "col_score":    col_score,
-        "f1_average":   round(f1_avg, 4),
+        "row_score": row_score,
+        "col_score": col_score,
+        "f1_average": round(f1_avg, 4),
         "interpretation": interp,
     }
 

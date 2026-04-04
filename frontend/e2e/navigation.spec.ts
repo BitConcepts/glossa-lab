@@ -8,7 +8,8 @@ import { test, expect } from "@playwright/test";
 test.describe("App shell", () => {
   test("loads the page and shows the Glossa Lab title", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("heading", { name: "Glossa Lab" })).toBeVisible();
+    // Title is in the header as h1
+    await expect(page.locator("h1").filter({ hasText: "Glossa Lab" })).toBeVisible();
   });
 
   test("shows the subtitle text", async ({ page }) => {
@@ -25,12 +26,16 @@ test.describe("App shell", () => {
 });
 
 test.describe("Tab switching", () => {
-  test("default tab shows Indus Studies view", async ({ page }) => {
+  test("default tab shows Indus Studies heading", async ({ page }) => {
     await page.goto("/");
-    // Default tab is Studies; Status is also always present
-    await expect(
-      page.getByRole("button", { name: "Status" })
-    ).toBeVisible();
+    // Default tab is 'studies'
+    await expect(page.getByRole("heading", { name: "Indus Studies" })).toBeVisible();
+  });
+
+  test("clicking Status tab shows System Status view", async ({ page }) => {
+    await page.goto("/");
+    await page.getByRole("button", { name: "Status" }).click();
+    await expect(page.getByRole("heading", { name: "System Status" })).toBeVisible();
   });
 
   test("clicking Corpora tab shows Corpora view", async ({ page }) => {
@@ -42,26 +47,18 @@ test.describe("Tab switching", () => {
   test("clicking Jobs tab shows Jobs view", async ({ page }) => {
     await page.goto("/");
     await page.getByRole("button", { name: "Jobs" }).click();
-    await expect(page.getByRole("heading", { name: "Jobs" })).toBeVisible();
-  });
-
-  test("clicking back to Status shows Status view again", async ({ page }) => {
-    await page.goto("/");
-    await page.getByRole("button", { name: "Jobs" }).click();
-    await page.getByRole("button", { name: "Status" }).click();
-    await expect(page.getByRole("heading", { name: "System Status" })).toBeVisible();
+    await expect(page.locator("h2").filter({ hasText: "Jobs" })).toBeVisible();
   });
 
   test("selected tab has a distinct visual style", async ({ page }) => {
     await page.goto("/");
+    // "Indus Studies" is selected by default
+    const studiesBtn = page.getByRole("button", { name: "Indus Studies" });
     const statusBtn = page.getByRole("button", { name: "Status" });
-    const corporaBtn = page.getByRole("button", { name: "Corpora" });
-
-    // Status is selected by default — should have blue background
-    const activeBg = await statusBtn.evaluate((el) =>
+    const activeBg = await studiesBtn.evaluate((el) =>
       window.getComputedStyle(el).backgroundColor
     );
-    const inactiveBg = await corporaBtn.evaluate((el) =>
+    const inactiveBg = await statusBtn.evaluate((el) =>
       window.getComputedStyle(el).backgroundColor
     );
     expect(activeBg).not.toBe(inactiveBg);

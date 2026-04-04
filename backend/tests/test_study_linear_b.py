@@ -17,10 +17,7 @@ Corpus: Pylos (PY) and Knossos (KN) tablets via DĀMOS (University of Oslo).
 
 from __future__ import annotations
 
-from glossa_lab.data.linear_b_language import (
-    encode_corpus,
-    get_corpus_symbols,
-)
+from glossa_lab.data.linear_b_language import encode_corpus, get_corpus_symbols
 from glossa_lab.pipelines.block_entropy import compute_block_entropies
 from glossa_lab.pipelines.decipher import LanguageModel, decipher, score_accuracy
 from tests.corpora.real import load_linear_b_signs

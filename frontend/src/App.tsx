@@ -7,8 +7,9 @@ import { ExperimentsView } from "./components/ExperimentsView";
 import { PipelinesView } from "./components/PipelinesView";
 import { SettingsView } from "./components/SettingsView";
 import { ReportsView } from "./components/ReportsView";
+import { PresetsView } from "./components/PresetsView";
 
-type Tab = "status" | "studies" | "experiments" | "pipelines" | "corpora" | "jobs" | "reports" | "settings";
+type Tab = "status" | "studies" | "experiments" | "pipelines" | "corpora" | "jobs" | "reports" | "presets" | "settings";
 
 const TABS: { id: Tab; label: string; badge?: string }[] = [
   { id: "status",      label: "Status" },
@@ -18,6 +19,7 @@ const TABS: { id: Tab; label: string; badge?: string }[] = [
   { id: "corpora",     label: "Corpora" },
   { id: "jobs",        label: "Jobs" },
   { id: "reports",     label: "Reports" },
+  { id: "presets",     label: "Presets" },
   { id: "settings",    label: "Settings" },
 ];
 
@@ -79,6 +81,7 @@ export function App() {
         {tab === "corpora"     && <CorporaView />}
         {tab === "jobs"        && <JobsView />}
         {tab === "reports"     && <ReportsView />}
+        {tab === "presets"     && <PresetsView />}
         {tab === "settings"    && <SettingsView />}
       </main>
     </div>

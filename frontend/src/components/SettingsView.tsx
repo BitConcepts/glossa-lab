@@ -145,34 +145,33 @@ export function SettingsView() {
               </div>
               <p style={{ ...hintTextStyle, marginBottom: 8 }}>{hint}</p>
 
-              {envOnly ? (
-                <p style={{ ...hintTextStyle, color: "#d97706" }}>Set via environment variable — managed outside the app.</p>
-              ) : (
-                <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
-                  <input
-                    type="password"
-                    placeholder={keyIsSet ? "●●●●●●●●  (paste new key to replace)" : "Paste API key here…"}
-                    value={draft}
-                    onChange={(e) => setDrafts((d) => ({ ...d, [key]: e.target.value }))}
-                    onKeyDown={(e) => { if (e.key === "Enter" && draft) handleSave(key); }}
-                    style={{ ...inputStyle, flex: 1, fontFamily: "monospace" }}
-                    autoComplete="off"
-                    spellCheck={false}
-                  />
-                  <button
-                    onClick={() => handleSave(key)}
-                    disabled={saving || !draft}
-                    style={{ ...btnStyle, padding: "6px 14px", opacity: draft ? 1 : 0.4 }}
-                  >
-                    {saving ? "…" : "Save"}
-                  </button>
-                  {keyIsSet && (
-                    <button onClick={() => handleClear(key)} style={{ ...iconBtnStyle, color: "#dc2626" }} title="Clear">
-                      ✕
-                    </button>
-                  )}
-                </div>
+              {envOnly && (
+                <p style={{ ...hintTextStyle, color: "#d97706", marginBottom: 6 }}>Currently set via environment variable. Paste a new key below to override it.</p>
               )}
+              <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+                <input
+                  type="password"
+                  placeholder={keyIsSet ? "●●●●●●●●  (paste new key to replace)" : "Paste API key here…"}
+                  value={draft}
+                  onChange={(e) => setDrafts((d) => ({ ...d, [key]: e.target.value }))}
+                  onKeyDown={(e) => { if (e.key === "Enter" && draft) handleSave(key); }}
+                  style={{ ...inputStyle, flex: 1, fontFamily: "monospace" }}
+                  autoComplete="off"
+                  spellCheck={false}
+                />
+                <button
+                  onClick={() => handleSave(key)}
+                  disabled={saving || !draft}
+                  style={{ ...btnStyle, padding: "6px 14px", opacity: draft ? 1 : 0.4 }}
+                >
+                  {saving ? "…" : "Save"}
+                </button>
+                {keyIsSet && (
+                  <button onClick={() => handleClear(key)} style={{ ...iconBtnStyle, color: "#dc2626" }} title="Clear">
+                    ✕
+                  </button>
+                )}
+              </div>
               {msg && (
                 <p style={{ ...hintTextStyle, color: "#16a34a", marginTop: 4, fontWeight: 600 }}>✓ {msg}</p>
               )}

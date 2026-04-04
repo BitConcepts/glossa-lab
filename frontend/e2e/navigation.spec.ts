@@ -13,21 +13,24 @@ test.describe("App shell", () => {
 
   test("shows the subtitle text", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByText("Ancient & modern language analysis")).toBeVisible();
+    await expect(page.getByText(/Indus Script Analysis/i)).toBeVisible();
   });
 
-  test("renders all three navigation tabs", async ({ page }) => {
+  test("renders core navigation tabs", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("button", { name: "Status" })).toBeVisible();
-    await expect(page.getByRole("button", { name: "Corpora" })).toBeVisible();
-    await expect(page.getByRole("button", { name: "Jobs" })).toBeVisible();
+    for (const label of ["Status", "Corpora", "Jobs", "Reports", "Presets", "Settings"]) {
+      await expect(page.getByRole("button", { name: label })).toBeVisible();
+    }
   });
 });
 
 test.describe("Tab switching", () => {
-  test("Status tab is active by default", async ({ page }) => {
+  test("default tab shows Indus Studies view", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("heading", { name: "System Status" })).toBeVisible();
+    // Default tab is Studies; Status is also always present
+    await expect(
+      page.getByRole("button", { name: "Status" })
+    ).toBeVisible();
   });
 
   test("clicking Corpora tab shows Corpora view", async ({ page }) => {

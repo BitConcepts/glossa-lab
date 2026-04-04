@@ -2,13 +2,16 @@ import { useEffect, useState } from "react";
 import {
   getHealth,
   getStatus,
+  getCatalog,
   HealthResponse,
   StatusResponse,
+  CatalogResponse,
 } from "../api";
 
 export function StatusView() {
   const [health, setHealth] = useState<HealthResponse | null>(null);
   const [status, setStatus] = useState<StatusResponse | null>(null);
+  const [catalog, setCatalog] = useState<CatalogResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const refresh = async () => {
@@ -17,6 +20,7 @@ export function StatusView() {
       setHealth(h);
       setStatus(s);
       setError(null);
+      getCatalog().then(setCatalog).catch(() => {});
     } catch (e) {
       setError(e instanceof Error ? e.message : "Connection failed");
     }
@@ -78,11 +82,17 @@ export function StatusView() {
           </tr>
           {status && (
             <>
-              <tr>
+          <tr>
                 <Td>Pipelines</Td>
-                <Td>{status.pipelines?.length ?? "—"} registered</Td>
+                <Td>{status.pipeline_count ?? status.pipelines?.length ?? "—"} registered</Td>
               </tr>
-              {Object.entries(status.job_counts ?? {}).map(([k, v]) => (
+              {catalog && Object.entries(catalog.counts).map(([k, v]) => (
+                <tr key={k}>
+                  <Td>Catalog ({k})</Td>
+                  <Td>{v}</Td>
+                </tr>
+              ))}
+              {Object.entries(status.jobs ?? status.job_counts ?? {}).map(([k, v]) => (
                 <tr key={k}>
                   <Td>Jobs ({k})</Td>
                   <Td>{v}</Td>

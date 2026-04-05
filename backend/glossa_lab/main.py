@@ -11,8 +11,10 @@ from fastapi.staticfiles import StaticFiles
 
 from glossa_lab import __version__
 from glossa_lab.api.catalog import router as catalog_router
+from glossa_lab.api.experiments import router as experiments_router
 from glossa_lab.api.health import router as health_router
 from glossa_lab.api.jobs import router as jobs_router
+from glossa_lab.api.pipelines import router as pipelines_router
 from glossa_lab.api.presets import router as presets_router
 from glossa_lab.api.reports import router as reports_router
 from glossa_lab.api.results import router as results_router
@@ -93,6 +95,8 @@ def create_app() -> FastAPI:
     # Register routers (must come before static-file mount so API takes priority)
     application.include_router(health_router, prefix="/api/v1")
     application.include_router(catalog_router, prefix="/api/v1")
+    application.include_router(experiments_router, prefix="/api/v1")
+    application.include_router(pipelines_router, prefix="/api/v1")
     application.include_router(status_router, prefix="/api/v1")
     application.include_router(jobs_router, prefix="/api/v1")
     application.include_router(results_router, prefix="/api/v1")

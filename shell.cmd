@@ -10,6 +10,8 @@ set "VENV_PYTHON=%REPO_ROOT%\backend\venv\Scripts\python.exe"
 REM Detect Python command (must be outside if-block to avoid delayed expansion bug)
 set "PY=python"
 where python3 >nul 2>&1 && set "PY=python3"
+REM Prefer the concrete scoop Python if the shims are broken
+if exist "C:\Users\trist\scoop\apps\python312\3.12.10\python.exe" set "PY=C:\Users\trist\scoop\apps\python312\3.12.10\python.exe"
 
 REM Bootstrap if venv missing
 if not exist "%VENV_PYTHON%" (

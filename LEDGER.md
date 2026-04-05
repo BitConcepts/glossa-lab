@@ -1020,3 +1020,47 @@ Risks:
 - ICIT corpus remains gated on Dr. Fuls collaboration
 
 Next step: Set Mistral key in Settings tab → run OCR bigram tables → immediately run TMK cross-validation experiment
+
+
+---
+
+## [2026-04-05] Entry — ExperimentsView full CRUD and API client expansion
+
+Objective: Replace static experiments card list with a live CRUD interface wired to the backend /experiments API endpoints.
+What was done:
+- Added typed experiments CRUD API functions to frontend/src/api.ts:
+  - listExperiments(), runExperiment(), deleteExperiment(), duplicateExperiment(), generateExperiment(), reloadExperiments()
+  - New ExperimentMeta interface matching backend ExperimentBase.to_dict() schema
+- Rewrote frontend/src/components/ExperimentsView.tsx from a static hardcoded list to a full live CRUD view:
+  - Loads all discovered experiments from GET /experiments (backend auto-discovery from experiments/ directory)
+  - Run button per card: calls POST /experiments/{id}/run, displays JSON result inline with green/red panels
+  - Duplicate button: calls POST /experiments/{id}/duplicate, reloads list
+  - Delete button (custom experiments only): two-click confirmation, calls DELETE /experiments/{id}
+  - Category filter pills with per-category count badges
+  - Reload button: calls POST /experiments/reload to re-scan experiments directory
+  - AI Generate modal dialog: name, category, prompt fields; calls POST /experiments/generate (requires openai_api_key)
+  - Experiments that require an API key display key name and link to Settings; Run is disabled until key is set
+  - Source file path shown for traceability; CLI command always visible
+
+Files changed:
+- frontend/src/api.ts (added ExperimentMeta interface and 6 new API functions)
+- frontend/src/components/ExperimentsView.tsx (full rewrite — ~540 lines; removed ~300 lines of static data)
+
+Checks run:
+- shell.cmd lint backend\glossa_lab — all checks passed
+- backend tests — 162 tests pass (WinError 448 is a Windows pytest cleanup bug unrelated to test outcomes)
+- npm run build in frontend/ — clean TypeScript compile, 277kB bundle, 0 errors
+
+Results: Experiments tab is now a live CRUD interface. Run any experiment from the browser, see output inline, generate new experiments via AI.
+Open TODOs:
+- [ ] Wire PipelinesView to /pipelines CRUD API (import/duplicate/delete buttons)
+- [ ] Add backend /experiments/{id} SSE streaming endpoint for real-time log output during long runs
+- [ ] StudyBuilder visual composer (React Flow, canvas, node palette)
+- [ ] Run anti-circularity suite (linear_a_circularity.py) and add to reports
+- [ ] Generate full academic paper PDF (generate_paper_full_study.py)
+
+Risks:
+- Long-running experiments (OCR: ~30 min, 2 hr) will hit browser timeout on synchronous /run call; SSE streaming needed
+- GPT-4o sign mapping still requires real OpenAI key
+
+Next step: Wire PipelinesView to backend CRUD, then implement SSE streaming for long-running experiment output

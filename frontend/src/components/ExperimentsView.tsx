@@ -153,6 +153,8 @@ interface CardProps {
 function ExperimentCard({ exp, onDeleted, onDuplicated }: CardProps) {
   const [expanded, setExpanded] = useState(false);
   const [running, setRunning] = useState(false);
+  const [streaming, setStreaming] = useState(false);
+  const [streamLines, setStreamLines] = useState<string[]>([]);
   const [runResult, setRunResult] = useState<unknown | null>(null);
   const [runError, setRunError] = useState<string | null>(null);
   const [deleting, setDeleting] = useState(false);
@@ -188,6 +190,47 @@ function ExperimentCard({ exp, onDeleted, onDuplicated }: CardProps) {
       setDeleting(false);
       setConfirmDelete(false);
     }
+  };
+
+  const handleStream = () => {
+    if (streaming) return;
+    setStreaming(true);
+    setStreamLines(["Starting…"]);
+    setRunResult(null);
+    setRunError(null);
+    if (!expanded) setExpanded(true);
+    const url = `/api/v1/experiments/${exp.id}/stream`;
+    const es = new EventSource(url);
+    es.addEventListener("started", () => {
+      setStreamLines((l) => [...l, "▶ Running…"]);
+    });
+    es.addEventListener("heartbeat", (ev) => {
+      const d = JSON.parse(ev.data) as { elapsed_s: number };
+      setStreamLines((l) => [...l, `⏳ Elapsed: ${d.elapsed_s}s`]);
+    });
+    es.addEventListener("complete", (ev) => {
+      const d = JSON.parse(ev.data) as { result: unknown };
+      setRunResult(d.result);
+      setStreamLines((l) => [...l, "✓ Complete"]);
+      setStreaming(false);
+      es.close();
+    });
+    es.addEventListener("error", (ev) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const data = (ev as any).data as string | undefined;
+      const msg = data ? (JSON.parse(data) as { message: string }).message : "Connection error";
+      setRunError(msg);
+      setStreamLines((l) => [...l, `✗ Error: ${msg}`]);
+      setStreaming(false);
+      es.close();
+    });
+    es.onerror = () => {
+      if (streaming) {
+        setRunError("SSE connection lost");
+        setStreaming(false);
+        es.close();
+      }
+    };
   };
 
   const handleDuplicate = async () => {
@@ -240,17 +283,31 @@ function ExperimentCard({ exp, onDeleted, onDuplicated }: CardProps) {
 
         <button
           onClick={handleRun}
-          disabled={running || needsKey}
-          title={needsKey ? `Requires ${exp.requires_key}` : "Run experiment"}
+          disabled={running || streaming || needsKey}
+          title={needsKey ? `Requires ${exp.requires_key}` : "Run (waits for full result)"}
           style={{
             ...btnSmall,
             background: needsKey ? "#f3f4f6" : running ? "#e0e7ff" : "#1e3a5f",
             color: needsKey ? "#9ca3af" : running ? "#4338ca" : "#fff",
             cursor: needsKey ? "not-allowed" : "pointer",
-            minWidth: 62,
+            minWidth: 52,
           }}
         >
           {running ? "Running…" : "▶ Run"}
+        </button>
+        <button
+          onClick={handleStream}
+          disabled={running || streaming || needsKey}
+          title={needsKey ? `Requires ${exp.requires_key}` : "Stream (live heartbeat output — use for long runs)"}
+          style={{
+            ...btnSmall,
+            background: needsKey ? "#f3f4f6" : streaming ? "#fef3c7" : "#f3f4f6",
+            color: needsKey ? "#9ca3af" : streaming ? "#d97706" : "#374151",
+            cursor: needsKey ? "not-allowed" : "pointer",
+            minWidth: 52,
+          }}
+        >
+          {streaming ? "Streaming…" : "↯ Stream"}
         </button>
 
         <button
@@ -327,6 +384,26 @@ function ExperimentCard({ exp, onDeleted, onDuplicated }: CardProps) {
                 margin: 0, overflowX: "auto", lineHeight: 1.7,
               }}>
                 {exp.command}
+              </pre>
+            </div>
+          )}
+
+          {streaming && streamLines.length > 0 && (
+            <div style={{
+              marginTop: "0.75rem",
+              border: "1px solid #fcd34d",
+              borderRadius: 6, overflow: "hidden",
+            }}>
+              <div style={{ background: "#fef3c7", padding: "6px 12px", fontSize: 12, fontWeight: 600, color: "#d97706" }}>
+                Streaming output
+              </div>
+              <pre style={{
+                background: "#1e293b", color: "#e2e8f0",
+                margin: 0, padding: "10px 14px",
+                fontSize: 11, fontFamily: "monospace",
+                maxHeight: 200, overflowY: "auto", lineHeight: 1.6,
+              }}>
+                {streamLines.join("\n")}
               </pre>
             </div>
           )}

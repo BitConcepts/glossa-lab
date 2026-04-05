@@ -1,0 +1,129 @@
+{
+  "data_format": "raw_ocr",
+  "note": "Bigrams are in raw OCR format (sign drawings as opaque tokens). Cannot map to Fuls sign numbers without visual sign recognition. Second-position TMK test requires numeric sign IDs.",
+  "total_bigram_tokens": 9035,
+  "unique_pair_tokens": 410,
+  "top_30_most_frequent_pairs": [
+    {
+      "pair_token": "$\\pi$",
+      "freq": 674
+    },
+    {
+      "pair_token": "\ud83d\udeb2",
+      "freq": 525
+    },
+    {
+      "pair_token": "'''",
+      "freq": 335
+    },
+    {
+      "pair_token": "\u201c\u25c7",
+      "freq": 312
+    },
+    {
+      "pair_token": "\u2610",
+      "freq": 300
+    },
+    {
+      "pair_token": "\u537dW",
+      "freq": 247
+    },
+    {
+      "pair_token": "\u2191",
+      "freq": 244
+    },
+    {
+      "pair_token": "E U",
+      "freq": 184
+    },
+    {
+      "pair_token": "\u706b\u5927\u6bd4",
+      "freq": 177
+    },
+    {
+      "pair_token": "\u222a",
+      "freq": 177
+    },
+    {
+      "pair_token": "\u2657)",
+      "freq": 174
+    },
+    {
+      "pair_token": "\u2207\u56de",
+      "freq": 164
+    },
+    {
+      "pair_token": "\u2207\u00d7",
+      "freq": 141
+    },
+    {
+      "pair_token": "\u2460",
+      "freq": 124
+    },
+    {
+      "pair_token": "$\\mathbb{R}$",
+      "freq": 123
+    },
+    {
+      "pair_token": "\u76ee\u5927",
+      "freq": 119
+    },
+    {
+      "pair_token": "\u00d7",
+      "freq": 119
+    },
+    {
+      "pair_token": "\u2205",
+      "freq": 109
+    },
+    {
+      "pair_token": "\u537dU",
+      "freq": 109
+    },
+    {
+      "pair_token": "\u25a0",
+      "freq": 107
+    },
+    {
+      "pair_token": "\u5927\u4e2b",
+      "freq": 102
+    },
+    {
+      "pair_token": "\u65e5H",
+      "freq": 101
+    },
+    {
+      "pair_token": "\u6b20\u56de",
+      "freq": 100
+    },
+    {
+      "pair_token": "\u4ea5U",
+      "freq": 95
+    },
+    {
+      "pair_token": "\u17f6",
+      "freq": 95
+    },
+    {
+      "pair_token": "$\\mathbb{U}$",
+      "freq": 94
+    },
+    {
+      "pair_token": "\u56de\u56de",
+      "freq": 88
+    },
+    {
+      "pair_token": "\u2655)",
+      "freq": 79
+    },
+    {
+      "pair_token": "U",
+      "freq": 77
+    },
+    {
+      "pair_token": "\u2657\u25c7",
+      "freq": 75
+    }
+  ],
+  "interpretation": "Cannot directly test TMK second-position hypothesis from raw OCR data. The frequency data is preserved. Next step: map sign drawings to Fuls numbers using visual sign recognition or manual review."
+}

@@ -341,7 +341,10 @@ def null_entropy_controls(corpus: dict[str, Any]) -> dict[str, Any]:
         "conclusion": (
             "Real corpus has LOWER H1 than controls -- structure confirmed"
             if real_h1 < h1(shuffled) - 0.01
-            else "H1 difference from controls is SMALL -- minimal positional structure above unigram"
+            else (
+                "H1 difference from controls is SMALL"
+                " -- minimal positional structure above unigram"
+            )
         ),
     }
 
@@ -483,7 +486,11 @@ def terminal_morphology(corpus: dict[str, Any]) -> dict[str, Any]:
     attachment: dict[str, dict] = {}
     for sign, pred_counts in preceding.items():
         pred_total = sum(pred_counts.values())
-        h = -sum(c / pred_total * math.log2(c / pred_total) for c in pred_counts.values()) if pred_total > 1 else 0.0
+        h = (
+            -sum(c / pred_total * math.log2(c / pred_total)
+                 for c in pred_counts.values())
+            if pred_total > 1 else 0.0
+        )
         attachment[sign] = {
             "distinct_preceding": len(pred_counts),
             "total_occurrences": final_signs[sign],
@@ -691,7 +698,8 @@ def predictive_validation(
             "top1_unigram_baseline": round(top1_baseline / n_test, 4),
         })
 
-    avg = lambda key: round(sum(r[key] for r in all_results) / len(all_results), 4)
+    def avg(key: str) -> float:
+        return round(sum(r[key] for r in all_results) / len(all_results), 4)
     return {
         "n_splits": n_splits,
         "avg_top1_model": avg("top1_model"),
@@ -886,7 +894,10 @@ def convergence_assessment(
 
     if escalate:
         claim_level = 3
-        claim = "Level 3 -- Interpretive model: candidate internal grammar/sign-function model emerging"
+        claim = (
+            "Level 3 -- Interpretive model: candidate internal"
+            " grammar/sign-function model emerging"
+        )
     elif n_strong >= 3:
         claim_level = 2
         claim = "Level 2 -- Morphological narrowing: stable stem/ending system identified"
@@ -951,7 +962,8 @@ def run(icit_path: str | None = None) -> dict[str, Any]:
     ent = entropy_analysis(corpus)
     _save("entropy_results.json", ent)
     print(f"  H1 = {ent.get('H1', '?'):.4f}  H1_norm = {ent.get('H1_normalised', '?'):.4f}")
-    print(f"  H2/H1 = {ent.get('H2_H1_ratio', '?'):.4f}  -> {ent.get('linguistic_classification', '?')}")
+    lc = ent.get('linguistic_classification', '?')
+    print(f"  H2/H1 = {ent.get('H2_H1_ratio', '?'):.4f}  -> {lc}")
 
     null_ent = null_entropy_controls(corpus)
     _save("entropy_null_comparison.json", null_ent)
@@ -962,13 +974,15 @@ def run(icit_path: str | None = None) -> dict[str, Any]:
     aff = affinity_grid(corpus, pos)
     _save("grid_clusters.json", aff)
     print(f"  Candidates: {aff['n_candidates']}")
-    print(f"  Vowel clusters: {aff['n_vowel_clusters']}  Consonant clusters: {aff['n_consonant_clusters']}")
+    print(f"  Vowel clusters: {aff['n_vowel_clusters']}"
+          f"  Consonant clusters: {aff['n_consonant_clusters']}")
 
     # Step 6: Terminal morphology
     print("[6/9] Terminal morphology analysis...")
     term = terminal_morphology(corpus)
     _save("terminal_markers.json", term)
-    print(f"  Top terminal sign: {term['top_terminal_signs'][0] if term['top_terminal_signs'] else '?'}")
+    top_t = term['top_terminal_signs']
+    print(f"  Top terminal sign: {top_t[0] if top_t else '?'}")
     print(f"  Productive suffixes: {len(term.get('productive_suffixes', []))}")
 
     # Step 7: Word-structure hypothesis
@@ -1111,8 +1125,8 @@ def _write_summary(
         "",
         "## Structural Channels",
         "",
-        f"| Channel | Score |",
-        f"|---------|-------|",
+        "| Channel | Score |",
+        "|---------|-------|",
     ]
     for ch, sc in conv["channel_scores"].items():
         lines.append(f"| {ch.replace('_', ' ').title()} | {sc.upper()} |")
@@ -1126,8 +1140,10 @@ def _write_summary(
         f"- H1 = {ent.get('H1', 0):.4f} (normalised {ent.get('H1_normalised', 0):.4f})",
         f"- H2/H1 = {ent.get('H2_H1_ratio', 0):.4f} -> {ent.get('linguistic_classification', '?')}",
         f"- TMK signs: {pos['class_counts'].get('TMK', 0)}",
-        f"- Word-structure winner: {ws['winner']} (KL={ws['winner_kl']:.4f}, margin={ws['margin']:.4f})",
-        f"- Predictive top-1: {pred.get('avg_top1_model', 0):.3f} vs baseline {pred.get('avg_top1_freq_baseline', 0):.3f}",
+        f"- Word-structure winner: {ws['winner']}"
+        f" (KL={ws['winner_kl']:.4f}, margin={ws['margin']:.4f})",
+        f"- Predictive top-1: {pred.get('avg_top1_model', 0):.3f}"
+        f" vs baseline {pred.get('avg_top1_freq_baseline', 0):.3f}",
         f"- Adversarial controls: {adv.get('conclusion', '')[:80]}",
         "",
         "## Escalation Gate",

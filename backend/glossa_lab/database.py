@@ -16,7 +16,7 @@ import aiosqlite
 
 logger = logging.getLogger(__name__)
 
-_SCHEMA_VERSION = 2
+_SCHEMA_VERSION = 3
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -51,6 +51,17 @@ CREATE TABLE IF NOT EXISTS job_results (
     job_id     TEXT NOT NULL REFERENCES jobs(id),
     data       TEXT NOT NULL DEFAULT '{}',
     created_at TEXT NOT NULL
+);
+"""
+
+_SCHEMA_V3 = """
+CREATE TABLE IF NOT EXISTS studies (
+    id          TEXT PRIMARY KEY,
+    name        TEXT NOT NULL,
+    description TEXT NOT NULL DEFAULT '',
+    graph_json  TEXT NOT NULL DEFAULT '{"nodes":[],"edges":[]}',
+    created_at  TEXT NOT NULL,
+    updated_at  TEXT NOT NULL
 );
 """
 
@@ -102,6 +113,11 @@ class Database:
         if current_version < 2:
             await self._conn.executescript(_SCHEMA_V2)
             await self._conn.execute("UPDATE _schema_version SET version = ?", (2,))
+            current_version = 2
+
+        if current_version < 3:
+            await self._conn.executescript(_SCHEMA_V3)
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (3,))
 
         await self._conn.commit()
 
@@ -332,7 +348,74 @@ class Database:
         await self.update_job_status(job["id"], "running")
         return job
 
-    # ── Helpers ───────────────────────────────────────────────────────
+    # ── Studies ────────────────────────────────────────────────
+
+    async def create_study(
+        self,
+        *,
+        name: str,
+        description: str = "",
+        graph: dict[str, Any] | None = None,
+        created_at: str,
+    ) -> dict[str, Any]:
+        assert self._conn
+        study_id = uuid.uuid4().hex[:12]
+        graph_json = json.dumps(graph or {"nodes": [], "edges": []})
+        await self._conn.execute(
+            """INSERT INTO studies (id, name, description, graph_json, created_at, updated_at)
+               VALUES (?, ?, ?, ?, ?, ?)""",
+            (study_id, name, description, graph_json, created_at, created_at),
+        )
+        await self._conn.commit()
+        return await self.get_study(study_id)  # type: ignore[return-value]
+
+    async def list_studies(self) -> list[dict[str, Any]]:
+        assert self._conn
+        cursor = await self._conn.execute("SELECT * FROM studies ORDER BY updated_at DESC")
+        rows = await cursor.fetchall()
+        return [self._row_to_dict(r) for r in rows]
+
+    async def get_study(self, study_id: str) -> dict[str, Any] | None:
+        assert self._conn
+        cursor = await self._conn.execute("SELECT * FROM studies WHERE id = ?", (study_id,))
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    async def update_study(
+        self,
+        study_id: str,
+        *,
+        name: str | None = None,
+        description: str | None = None,
+        graph: dict[str, Any] | None = None,
+    ) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_study(study_id)
+        if existing is None:
+            return None
+        next_name = name if name is not None else existing["name"]
+        next_desc = description if description is not None else existing["description"]
+        next_graph = json.dumps(graph) if graph is not None else json.dumps(existing["graph"])
+        await self._conn.execute(
+            """UPDATE studies
+               SET name = ?, description = ?, graph_json = ?,
+                   updated_at = datetime('now')
+               WHERE id = ?""",
+            (next_name, next_desc, next_graph, study_id),
+        )
+        await self._conn.commit()
+        return await self.get_study(study_id)
+
+    async def delete_study(self, study_id: str) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_study(study_id)
+        if existing is None:
+            return None
+        await self._conn.execute("DELETE FROM studies WHERE id = ?", (study_id,))
+        await self._conn.commit()
+        return existing
+
+    # ── Helpers ────────────────────────────────────────────────
 
     @staticmethod
     def _row_to_dict(row: aiosqlite.Row) -> dict[str, Any]:
@@ -341,6 +424,10 @@ class Database:
         for field in ("params", "content", "symbol_set", "metadata", "data"):
             if field in d and isinstance(d[field], str):
                 d[field] = json.loads(d[field])
+        # graph_json → graph (studies)
+        if "graph_json" in d and isinstance(d["graph_json"], str):
+            d["graph"] = json.loads(d["graph_json"])
+            del d["graph_json"]
         return d
 
 

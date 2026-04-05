@@ -1,0 +1,44 @@
+{
+  "dholavira": {
+    "n_inscriptions": 154,
+    "avg_length": 5.091,
+    "winner": "Vedic Sanskrit",
+    "winner_kl": 0.7211,
+    "margin": 0.133
+  },
+  "harappa": {
+    "n_inscriptions": 154,
+    "avg_length": 5.286,
+    "winner": "Vedic Sanskrit",
+    "winner_kl": 0.7156,
+    "margin": 0.1288
+  },
+  "kalibangan": {
+    "n_inscriptions": 154,
+    "avg_length": 4.708,
+    "winner": "Vedic Sanskrit",
+    "winner_kl": 0.5574,
+    "margin": 0.135
+  },
+  "lothal": {
+    "n_inscriptions": 154,
+    "avg_length": 4.753,
+    "winner": "Vedic Sanskrit",
+    "winner_kl": 0.6155,
+    "margin": 0.1234
+  },
+  "mohenjo-daro": {
+    "n_inscriptions": 154,
+    "avg_length": 4.747,
+    "winner": "Vedic Sanskrit",
+    "winner_kl": 0.5636,
+    "margin": 0.1105
+  },
+  "other": {
+    "n_inscriptions": 153,
+    "avg_length": 4.752,
+    "winner": "Vedic Sanskrit",
+    "winner_kl": 0.5185,
+    "margin": 0.1358
+  }
+}

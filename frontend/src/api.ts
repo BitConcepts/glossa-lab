@@ -245,6 +245,9 @@ export const listReports = (): Promise<CatalogReport[]> =>
 export const deleteReport = (name: string): Promise<{ deleted: boolean; relative_path: string }> =>
   request("DELETE", `/reports/${name}`);
 
+export const getReportDownloadUrl = (name: string): string =>
+  `/api/v1/reports/${name}/download`;
+
 // ── Presets ───────────────────────────────────────────────────────────
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

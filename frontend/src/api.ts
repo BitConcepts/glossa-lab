@@ -255,6 +255,79 @@ export const deleteReport = (name: string): Promise<{ deleted: boolean; relative
 export const getReportDownloadUrl = (name: string): string =>
   `/api/v1/reports/${name}/download`;
 
+// ── Pipelines (CRUD additions) ───────────────────────────────────────────
+
+export const duplicatePipeline = (
+  id: string,
+  newId?: string
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+): Promise<Record<string, any>> =>
+  request("POST", `/pipelines/${id}/duplicate`, { new_id: newId });
+
+export const deletePipeline = (
+  id: string
+): Promise<{ deleted: boolean; file: string }> =>
+  request("DELETE", `/pipelines/${id}`);
+
+export const importPipeline = (
+  sourcePath: string
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+): Promise<Record<string, any>> =>
+  request("POST", "/pipelines/import", { source_path: sourcePath });
+
+// ── Studies ─────────────────────────────────────────────────────────────────
+
+export interface StudyNode {
+  id: string;
+  type: "experiment" | "pipeline" | "note";
+  ref_id: string;  // experiment id or pipeline id
+  label: string;
+  params: Record<string, unknown>;
+  position: { x: number; y: number };
+}
+
+export interface StudyEdge {
+  id: string;
+  source: string;
+  target: string;
+}
+
+export interface StudyGraph {
+  nodes: StudyNode[];
+  edges: StudyEdge[];
+}
+
+export interface StudyResponse {
+  id: string;
+  name: string;
+  description: string;
+  graph: StudyGraph;
+  created_at: string;
+  updated_at: string;
+}
+
+export const listStudies = (): Promise<StudyResponse[]> =>
+  request("GET", "/studies");
+
+export const getStudy = (id: string): Promise<StudyResponse> =>
+  request("GET", `/studies/${id}`);
+
+export const createStudy = (body: {
+  name: string;
+  description?: string;
+  graph?: StudyGraph;
+}): Promise<StudyResponse> =>
+  request("POST", "/studies", body);
+
+export const updateStudy = (
+  id: string,
+  body: { name?: string; description?: string; graph?: StudyGraph }
+): Promise<StudyResponse> =>
+  request("PUT", `/studies/${id}`, body);
+
+export const deleteStudy = (id: string): Promise<{ deleted: boolean }> =>
+  request("DELETE", `/studies/${id}`);
+
 // ── Experiments (live CRUD) ───────────────────────────────────────────
 
 export interface ExperimentMeta {

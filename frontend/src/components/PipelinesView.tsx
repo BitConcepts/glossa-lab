@@ -7,6 +7,7 @@ import {
   deletePipeline,
   duplicatePipeline,
   getPipelineCatalog,
+  importPipeline,
   type CatalogPipeline,
 } from "../api";
 
@@ -253,8 +254,28 @@ export function PipelinesView() {
   const [filter, setFilter] = useState<string>("all");
   const [selected, setSelected] = useState<string | null>(null);
   const [pipelines, setPipelines] = useState<Pipeline[]>(PIPELINES_FALLBACK);
+  const [importPath, setImportPath] = useState("");
+  const [importing, setImporting] = useState(false);
+  const [importMsg, setImportMsg] = useState<{ ok: boolean; text: string } | null>(null);
+  const [showImport, setShowImport] = useState(false);
 
   const handleDeleted = (id: string) => setPipelines((p) => p.filter((x) => x.id !== id));
+
+  const handleImport = async () => {
+    if (!importPath.trim()) return;
+    setImporting(true);
+    setImportMsg(null);
+    try {
+      const res = await importPipeline(importPath.trim()) as { imported?: boolean; file?: string };
+      setImportMsg({ ok: true, text: `Imported: ${res.file ?? importPath}` });
+      setImportPath("");
+      load();
+    } catch (e: unknown) {
+      setImportMsg({ ok: false, text: e instanceof Error ? e.message : String(e) });
+    } finally {
+      setImporting(false);
+    }
+  };
 
   const load = () => {
     getPipelineCatalog()
@@ -274,7 +295,57 @@ export function PipelinesView() {
 
   return (
     <div>
-      <h2 style={{ marginTop: 0 }}>Pipelines</h2>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.25rem" }}>
+        <h2 style={{ marginTop: 0 }}>Pipelines</h2>
+        <button
+          onClick={() => { setShowImport((x) => !x); setImportMsg(null); }}
+          style={{ padding: "5px 12px", border: "1px solid #d1d5db", borderRadius: 5, cursor: "pointer", fontSize: 12, background: showImport ? "#f3f4f6" : "#fff", color: "#374151" }}
+        >
+          {showImport ? "× Cancel" : "+ Import"}
+        </button>
+      </div>
+
+      {showImport && (
+        <div style={{
+          background: "#f8fafc", border: "1px solid #e5e7eb",
+          borderRadius: 8, padding: "12px 16px", marginBottom: "1rem",
+        }}>
+          <p style={{ margin: "0 0 8px", fontSize: 13, color: "#374151" }}>
+            Enter the absolute path of a Python file that defines a class inheriting
+            from <code>PipelineBase</code>. It will be copied into the pipelines directory.
+          </p>
+          <div style={{ display: "flex", gap: 8 }}>
+            <input
+              value={importPath}
+              onChange={(e) => setImportPath(e.target.value)}
+              onKeyDown={(e) => { if (e.key === "Enter") void handleImport(); }}
+              placeholder="C:\path\to\my_pipeline.py"
+              style={{
+                flex: 1, padding: "7px 10px", border: "1px solid #d1d5db",
+                borderRadius: 5, fontSize: 12, outline: "none", fontFamily: "monospace",
+              }}
+            />
+            <button
+              onClick={() => void handleImport()}
+              disabled={importing || !importPath.trim()}
+              style={{ padding: "7px 16px", border: "none", borderRadius: 5, cursor: "pointer", fontSize: 12, fontWeight: 600, background: "#1e3a5f", color: "#fff" }}
+            >
+              {importing ? "Importing…" : "Import"}
+            </button>
+          </div>
+          {importMsg && (
+            <div style={{
+              marginTop: 8, fontSize: 12, padding: "6px 10px", borderRadius: 5,
+              background: importMsg.ok ? "#f0fdf4" : "#fef2f2",
+              color: importMsg.ok ? "#16a34a" : "#b91c1c",
+              border: `1px solid ${importMsg.ok ? "#86efac" : "#fca5a5"}`,
+            }}>
+              {importMsg.text}
+            </div>
+          )}
+        </div>
+      )}
+
       <p style={{ fontSize: 13, color: "#6b7280", marginTop: 0, marginBottom: "1.25rem" }}>
         {pipelines.length} registered analysis pipelines. Statistical pipelines require no language model —
         all results are vocabulary-free and circularity-free. Select a pipeline to launch

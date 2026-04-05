@@ -319,7 +319,7 @@ export function StudyBuilderView() {
   );
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100%", minHeight: 600 }}>
+    <div style={{ display: "flex", flexDirection: "column", minHeight: 660 }}>
       {/* Header */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
         <h2 style={{ margin: 0 }}>Study Builder</h2>
@@ -356,7 +356,7 @@ export function StudyBuilderView() {
         </div>
       </div>
 
-      <div style={{ display: "flex", gap: 0, flex: 1, border: "1px solid #e5e7eb", borderRadius: 8, overflow: "hidden", minHeight: 560 }}>
+      <div style={{ display: "flex", gap: 0, border: "1px solid #e5e7eb", borderRadius: 8, overflow: "hidden", height: 560 }}>
         {/* ── Left: study list + palette ── */}
         <div style={{ width: 220, borderRight: "1px solid #e5e7eb", display: "flex", flexDirection: "column", background: "#fafafa" }}>
           {/* Studies list */}

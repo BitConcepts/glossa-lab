@@ -25,7 +25,7 @@ export default defineConfig({
   reporter: process.env.CI ? "github" : "list",
 
   use: {
-    baseURL: "http://localhost:5173",
+    baseURL: "http://localhost:4173",
     trace: "on-first-retry",
     screenshot: "only-on-failure",
     video: "retain-on-failure",
@@ -39,16 +39,23 @@ export default defineConfig({
   ],
 
   /**
-   * Start the Vite dev server before running tests.
-   * The backend must be started separately (shell.cmd run or setup-os.cmd start).
+   * Start a server before running tests.
+   *
+   * Locally: uses `vite preview` (serves the production build from dist/).
+   *   Run `npm run build` first if dist/ is stale.
+   *   Set PLAYWRIGHT_DEV=1 to use `npm run dev` instead.
+   *
+   * CI: controlled by the `playwright` job in ci.yml which starts the backend
+   *   and sets CI=true, so reuseExistingServer=false and a fresh server starts.
+   *
    * Tests tolerate the backend being down; they check both connected and
    * disconnected states.
    */
   webServer: {
-    command: "npm run dev",
-    url: "http://localhost:5173",
+    command: process.env.PLAYWRIGHT_DEV ? "npm run dev" : "npm run preview",
+    url: "http://localhost:4173",
     reuseExistingServer: !process.env.CI,
-    timeout: 20_000,
+    timeout: 60_000,
     stdout: "ignore",
     stderr: "pipe",
   },

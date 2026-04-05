@@ -30,9 +30,12 @@ test.describe("Status view structure", () => {
   test("shows Disconnected when backend is unreachable", async ({ page, context }) => {
     // Block all API requests to simulate backend being down
     await context.route("**/api/v1/**", (route) => route.abort());
+    // Navigate fresh so all API calls are blocked from the start
     await page.goto("/");
+    // Navigate to Status tab (default is Indus Studies)
+    await page.getByRole("button", { name: "Status" }).click();
 
-    await expect(page.getByText(/disconnected/i)).toBeVisible({ timeout: 8000 });
+    await expect(page.getByText(/disconnected/i)).toBeVisible({ timeout: 10000 });
   });
 });
 

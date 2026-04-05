@@ -254,6 +254,129 @@ _EXPERIMENT_CATALOG: list[dict[str, Any]] = [
     },
 ]
 
+# Per-model descriptions tuned to Glossa Lab use cases.
+# Each entry: (model_id, description, tags)
+_MODEL_DESCRIPTIONS: dict[str, dict[str, str]] = {
+    # OpenAI
+    "gpt-5.4": {
+        "description": "Best all-round reasoning model. Use for complex decipherment analysis, "
+                       "hypothesis generation, sign mapping disambiguation, and long-context "
+                       "synthesis tasks.",
+        "use_for": "Hypothesis engine, complex analysis, agentic sessions",
+    },
+    "gpt-5.4-mini": {
+        "description": "Faster, cheaper variant of gpt-5.4. Use for batch experiment runs, "
+                       "automated pipelines, and text classification tasks where "
+                       "full reasoning depth is not required.",
+        "use_for": "Batch analysis, fast pipelines, classification",
+    },
+    "gpt-5.4-pro": {
+        "description": "Most capable OpenAI model. Use for the most demanding tasks: "
+                       "full decipherment hypothesis synthesis, academic report writing, "
+                       "and multi-document corpus analysis.",
+        "use_for": "Full decipherment synthesis, academic writing",
+    },
+    # Anthropic
+    "claude-opus-4-6": {
+        "description": "Anthropic's most capable model. Excellent at long-form academic "
+                       "text analysis, multi-step corpus comparison, and nuanced "
+                       "linguistic reasoning. Strong alternative to gpt-5.4-pro.",
+        "use_for": "Deep linguistic analysis, academic synthesis",
+    },
+    "claude-sonnet-4-6": {
+        "description": "Balanced capability and speed. Use for iterative experiment "
+                       "pipelines, script analysis, and generating experiment summaries. "
+                       "Good cost-performance for agentic sessions.",
+        "use_for": "Pipelines, summaries, agentic sessions",
+    },
+    "claude-haiku-4-5": {
+        "description": "Fastest and cheapest Claude. Use for high-volume tasks: "
+                       "classifying many sign sequences, filtering corpus data, "
+                       "or checking format validity.",
+        "use_for": "High-volume classification, format checking",
+    },
+    # Google
+    "gemini-3.1-pro-preview": {
+        "description": "Google's most capable model. Strong multimodal reasoning. "
+                       "Use for cross-script visual comparison, sign image analysis, "
+                       "and complex reasoning tasks requiring long context.",
+        "use_for": "Visual analysis, cross-script comparison",
+    },
+    "gemini-3-flash-preview": {
+        "description": "Fast, efficient Gemini model. Use for quick structural analysis, "
+                       "batch sign classification, and experiment runs where "
+                       "latency matters.",
+        "use_for": "Fast batch analysis, experiment runs",
+    },
+    "gemini-3.1-flash-lite-preview": {
+        "description": "Lightest Gemini variant. Use for high-volume preprocessing, "
+                       "corpus filtering, and format conversion tasks.",
+        "use_for": "Preprocessing, corpus filtering",
+    },
+    "gemini-2.5-pro": {
+        "description": "Stable Gemini Pro. Reliable for mixed text+image tasks. "
+                       "Good choice when you need consistent results across "
+                       "long analysis sessions.",
+        "use_for": "Stable mixed-modality analysis",
+    },
+    # Mistral
+    "mistral-ocr-latest": {
+        "description": "REQUIRED for Mahadevan OCR. Purpose-built document OCR model -- "
+                       "extracts text from scanned book pages significantly better than "
+                       "general vision models. No rate limits seen in practice for this "
+                       "project's page volumes.",
+        "use_for": "Mahadevan OCR (primary), any scanned document extraction",
+    },
+    "mistral-ocr-2512": {
+        "description": "Stable Mistral OCR model (Dec 2025). Same as mistral-ocr-latest. "
+                       "Use when you need version pinning for reproducibility.",
+        "use_for": "OCR with version pinning",
+    },
+    "mistral-ocr-2505": {
+        "description": "Earlier Mistral OCR build (May 2025). Fallback if later versions "
+                       "are unavailable.",
+        "use_for": "OCR fallback",
+    },
+    "mistral-large-2512": {
+        "description": "Mistral's large language model. Use for text analysis, "
+                       "sign sequence interpretation, and linguistic hypothesis scoring "
+                       "when you prefer Mistral's output style.",
+        "use_for": "Text analysis, linguistic reasoning",
+    },
+    "devstral-2512": {
+        "description": "Mistral coding model. Use for generating experiment code, "
+                       "writing parsing scripts, and automating pipeline logic. "
+                       "Strong at Python and JSON manipulation.",
+        "use_for": "Experiment code generation, pipeline scripting",
+    },
+    "pixtral-large-latest": {
+        "description": "Large Mistral vision model. Fallback if mistral-ocr is unavailable. "
+                       "Also useful for analysing sign drawings and comparing "
+                       "visual inscription layouts.",
+        "use_for": "Vision fallback, sign drawing analysis",
+    },
+    "pixtral-large-2411": {
+        "description": "Stable Pixtral Large (Nov 2024). Version-pinned alternative to "
+                       "pixtral-large-latest for reproducible vision tasks.",
+        "use_for": "Version-pinned vision tasks",
+    },
+    "pixtral-12b-2409": {
+        "description": "Earlier 12B Pixtral model. Superseded by mistral-ocr-latest for "
+                       "document OCR. Retained for backward compatibility.",
+        "use_for": "Legacy OCR tasks only",
+    },
+}
+
+
+def _enrich_model(model_id: str) -> dict[str, str]:
+    meta = _MODEL_DESCRIPTIONS.get(model_id, {})
+    return {
+        "id": model_id,
+        "description": meta.get("description", ""),
+        "use_for": meta.get("use_for", ""),
+    }
+
+
 _PROVIDER_CATALOG: list[dict[str, Any]] = [
     {
         "id": "openai",
@@ -261,6 +384,7 @@ _PROVIDER_CATALOG: list[dict[str, Any]] = [
         "api_key_setting": "openai_api_key",
         "supports_live_model_discovery": True,
         "recommended_models": ["gpt-5.4", "gpt-5.4-mini", "gpt-5.4-pro"],
+        "model_details": [_enrich_model(m) for m in ["gpt-5.4", "gpt-5.4-mini", "gpt-5.4-pro"]],
         "ocr_preferred_models": [],
     },
     {
@@ -269,6 +393,8 @@ _PROVIDER_CATALOG: list[dict[str, Any]] = [
         "api_key_setting": "anthropic_api_key",
         "supports_live_model_discovery": True,
         "recommended_models": ["claude-opus-4-6", "claude-sonnet-4-6", "claude-haiku-4-5"],
+        "model_details": [_enrich_model(m) for m in
+                          ["claude-opus-4-6", "claude-sonnet-4-6", "claude-haiku-4-5"]],
         "ocr_preferred_models": [],
     },
     {
@@ -282,6 +408,10 @@ _PROVIDER_CATALOG: list[dict[str, Any]] = [
             "gemini-3.1-flash-lite-preview",
             "gemini-2.5-pro",
         ],
+        "model_details": [_enrich_model(m) for m in [
+            "gemini-3.1-pro-preview", "gemini-3-flash-preview",
+            "gemini-3.1-flash-lite-preview", "gemini-2.5-pro",
+        ]],
         "ocr_preferred_models": [],
     },
     {
@@ -290,12 +420,19 @@ _PROVIDER_CATALOG: list[dict[str, Any]] = [
         "api_key_setting": "mistral_api_key",
         "supports_live_model_discovery": True,
         "recommended_models": [
+            "mistral-ocr-latest",
             "mistral-ocr-2512",
             "mistral-large-2512",
             "devstral-2512",
+            "pixtral-large-latest",
             "pixtral-12b-2409",
         ],
-        "ocr_preferred_models": ["mistral-ocr-2512", "pixtral-12b-2409"],
+        "model_details": [_enrich_model(m) for m in [
+            "mistral-ocr-latest", "mistral-ocr-2512",
+            "mistral-large-2512", "devstral-2512",
+            "pixtral-large-latest", "pixtral-12b-2409",
+        ]],
+        "ocr_preferred_models": ["mistral-ocr-latest", "mistral-ocr-2512"],
     },
 ]
 

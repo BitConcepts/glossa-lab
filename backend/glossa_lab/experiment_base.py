@@ -40,7 +40,7 @@ class ExperimentBase:
     description: ClassVar[str] = ""
     estimated_time: ClassVar[str] = "unknown"
     requires_key: ClassVar[str | None] = None
-    command: ClassVar[str] = ""          # CLI equivalent for reference
+    command: ClassVar[str] = ""  # CLI equivalent for reference
     results_file: ClassVar[str | None] = None
     report_schema: ClassVar[dict | None] = None  # JSON Schema for the output
 
@@ -108,11 +108,7 @@ def discover_experiments() -> dict[str, type[ExperimentBase]]:
                 mod = sys.modules[module_name]
 
             for _name, obj in inspect.getmembers(mod, inspect.isclass):
-                if (
-                    issubclass(obj, ExperimentBase)
-                    and obj is not ExperimentBase
-                    and obj.id
-                ):
+                if issubclass(obj, ExperimentBase) and obj is not ExperimentBase and obj.id:
                     _registry[obj.id] = obj
         except Exception:
             pass  # Skip files that fail to import
@@ -172,6 +168,7 @@ def duplicate_experiment_file(
 ) -> dict[str, Any]:
     """Duplicate an experiment file with a new id."""
     import re
+
     cls = get_experiment(experiment_id)
     if cls is None:
         raise KeyError(f"Experiment not found: {experiment_id}")
@@ -253,6 +250,7 @@ if __name__ == "__main__":
 
     try:
         from openai import OpenAI
+
         client = OpenAI(api_key=api_key)
         response = client.chat.completions.create(
             model="gpt-4o",

@@ -77,6 +77,7 @@ def import_pipeline_file(source_path: str) -> dict[str, Any]:
 def delete_pipeline_file(pipeline_id: str) -> dict[str, Any]:
     """Delete a pipeline file (only user-added ones, not built-in)."""
     from glossa_lab.engine import _PIPELINES, _ensure_pipelines_loaded
+
     _ensure_pipelines_loaded()
     fn = _PIPELINES.get(pipeline_id)
     if fn is None:
@@ -101,6 +102,7 @@ def duplicate_pipeline_file(
     import re
 
     from glossa_lab.engine import _PIPELINES, _ensure_pipelines_loaded
+
     _ensure_pipelines_loaded()
     fn = _PIPELINES.get(pipeline_id)
     if fn is None:
@@ -128,6 +130,7 @@ def _invalidate_engine_cache() -> None:
     """Force the engine to re-discover pipelines."""
     try:
         import glossa_lab.engine as eng
+
         eng._PIPELINE_MODULES_LOADED = False
         eng._PIPELINES.clear()
         # Remove cached modules so they're re-imported

@@ -169,9 +169,7 @@ def _topological_sort(
             in_degree[tgt] += 1
             successors[src].append(tgt)
 
-    queue: deque[str] = deque(
-        node_id for node_id, deg in in_degree.items() if deg == 0
-    )
+    queue: deque[str] = deque(node_id for node_id, deg in in_degree.items() if deg == 0)
     order: list[dict[str, Any]] = []
     while queue:
         nid = queue.popleft()
@@ -258,19 +256,13 @@ async def run_study(study_id: str) -> dict[str, Any]:
     for node in ordered:
         nid = node["id"]
         # Collect results from all immediate predecessors
-        predecessors = [
-            e.get("source", "")
-            for e in edges
-            if e.get("target", "") == nid
-        ]
+        predecessors = [e.get("source", "") for e in edges if e.get("target", "") == nid]
         upstream: dict[str, Any] = {
             pred: node_results[pred].get("result")
             for pred in predecessors
             if pred in node_results and node_results[pred].get("status") == "complete"
         }
-        node_results[nid] = await loop.run_in_executor(
-            None, _run_node, node, upstream
-        )
+        node_results[nid] = await loop.run_in_executor(None, _run_node, node, upstream)
 
     completed = sum(1 for r in node_results.values() if r["status"] == "complete")
     skipped = sum(1 for r in node_results.values() if r["status"] == "skipped")

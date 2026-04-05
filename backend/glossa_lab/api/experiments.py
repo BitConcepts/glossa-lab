@@ -73,7 +73,7 @@ async def run_experiment(experiment_id: str, body: RunRequest) -> dict[str, Any]
         raise HTTPException(
             status_code=501,
             detail=f"Experiment '{experiment_id}' has no run() implementation. "
-                   "Use the CLI command instead.",
+            "Use the CLI command instead.",
         )
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc))
@@ -124,6 +124,7 @@ class GenerateRequest(BaseModel):
 async def generate_experiment(body: GenerateRequest) -> dict[str, Any]:
     """Use AI to generate a new experiment from a natural language prompt."""
     import os
+
     api_key = os.environ.get("OPENAI_API_KEY")
     try:
         result = create_experiment_from_prompt(
@@ -150,6 +151,7 @@ async def reload_experiments() -> dict[str, Any]:
 
 
 # ── SSE streaming run ──────────────────────────────────────────────
+
 
 def _sse(event: str, data: dict[str, Any]) -> str:
     """Format a Server-Sent Events message."""

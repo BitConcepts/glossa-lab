@@ -1,0 +1,48 @@
+{
+  "n_splits": 5,
+  "avg_top1_model": 0.1578,
+  "avg_top3_model": 0.3816,
+  "avg_top1_freq_baseline": 0.2151,
+  "avg_top1_unigram_baseline": 0.0043,
+  "model_vs_freq_delta": -0.0573,
+  "model_vs_unigram_delta": 0.1535,
+  "beats_frequency_baseline": false,
+  "beats_unigram_baseline": true,
+  "splits": [
+    {
+      "split": 0,
+      "top1_model": 0.1243,
+      "top3_model": 0.3351,
+      "top1_freq_baseline": 0.2108,
+      "top1_unigram_baseline": 0.0
+    },
+    {
+      "split": 1,
+      "top1_model": 0.1946,
+      "top3_model": 0.3784,
+      "top1_freq_baseline": 0.227,
+      "top1_unigram_baseline": 0.0054
+    },
+    {
+      "split": 2,
+      "top1_model": 0.1622,
+      "top3_model": 0.4,
+      "top1_freq_baseline": 0.2108,
+      "top1_unigram_baseline": 0.0
+    },
+    {
+      "split": 3,
+      "top1_model": 0.1405,
+      "top3_model": 0.3784,
+      "top1_freq_baseline": 0.1946,
+      "top1_unigram_baseline": 0.0108
+    },
+    {
+      "split": 4,
+      "top1_model": 0.1676,
+      "top3_model": 0.4162,
+      "top1_freq_baseline": 0.2324,
+      "top1_unigram_baseline": 0.0054
+    }
+  ]
+}

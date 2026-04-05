@@ -1,0 +1,27 @@
+{
+  "channel_scores": {
+    "entropy_linguistic": "strong",
+    "terminal_marker_system": "moderate",
+    "word_structure_family": "moderate",
+    "affinity_grid": "weak",
+    "predictive_validation": "none",
+    "null_controls": "weak"
+  },
+  "overall_convergence": "weak",
+  "n_strong": 1,
+  "n_moderate_plus": 3,
+  "total_strength": 9,
+  "escalation_triggers": {
+    "A_strong_convergence": false,
+    "B_predictive_success": false,
+    "C_replication": true,
+    "D_null_failure": false,
+    "E_emergent_segmentation": true,
+    "F_structural_interpretability": false
+  },
+  "triggers_met": 2,
+  "escalate_to_phase2": false,
+  "claim_level": 0,
+  "claim": "Level 0 -- No decipherment signal beyond general linguistic behaviour",
+  "winner_family": "Vedic Sanskrit"
+}

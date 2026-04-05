@@ -534,20 +534,34 @@ def run_ocr(target: str = "tables", max_pages: int | None = None,
                 print(f"      Extracted {len(parsed)} bigrams from page {pg}")
                 bigrams_all.extend(parsed)
 
-        # Convert M77 to Fuls and deduplicate
+        # Convert M77 to Fuls where numeric codes are available.
+        # When mistral-ocr returns sign drawings as opaque tokens (sign_a_raw),
+        # store them directly without M77 mapping -- they still carry frequency info.
         bigrams_fuls: dict[tuple, int] = {}
+        bigrams_raw: list[dict] = []
         for b in bigrams_all:
-            fa = m77_to_fuls.get(b["sign_a_m77"], [])
-            fb = m77_to_fuls.get(b["sign_b_m77"], [])
-            if fa and fb:
-                key = (fa[0], fb[0])
-                bigrams_fuls[key] = bigrams_fuls.get(key, 0) + b["freq"]
+            if "sign_a_m77" in b and "sign_b_m77" in b:
+                fa = m77_to_fuls.get(b["sign_a_m77"], [])
+                fb = m77_to_fuls.get(b["sign_b_m77"], [])
+                if fa and fb:
+                    key = (fa[0], fb[0])
+                    bigrams_fuls[key] = bigrams_fuls.get(key, 0) + b["freq"]
+            elif "sign_a_raw" in b:
+                # Raw OCR representation (e.g. CJK character for sign drawing)
+                bigrams_raw.append(b)
 
         bigrams_out = [
-            {"sign_a_fuls": a, "sign_b_fuls": b, "freq": f,
+            {"sign_a_fuls": a, "sign_b_fuls": b2, "freq": f,
              "significance": "extracted by Mistral OCR from Mahadevan (1977) Table II"}
-            for (a, b), f in sorted(bigrams_fuls.items(), key=lambda x: -x[1])
+            for (a, b2), f in sorted(bigrams_fuls.items(), key=lambda x: -x[1])
         ]
+        # Also save raw bigrams (with opaque sign tokens) for downstream processing
+        if bigrams_raw and not bigrams_out:
+            bigrams_out = [
+                {"sign_a_raw": b["sign_a_raw"], "sign_b_raw": b["sign_b_raw"],
+                 "freq": b["freq"], "significance": "raw OCR -- sign drawings not yet mapped"}
+                for b in bigrams_raw
+            ]
         results["bigrams"] = bigrams_out
         OUTPUT_BIGRAMS.parent.mkdir(parents=True, exist_ok=True)
         OUTPUT_BIGRAMS.write_text(json.dumps(bigrams_out, indent=2), encoding="utf-8")

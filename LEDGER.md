@@ -1064,3 +1064,65 @@ Risks:
 - GPT-4o sign mapping still requires real OpenAI key
 
 Next step: Wire PipelinesView to backend CRUD, then implement SSE streaming for long-running experiment output
+
+
+---
+
+## [2026-04-05] Entry — Platform orchestration: Study Builder, SSE streaming, pipelines CRUD, CI Playwright
+
+Objective: Complete all remaining platform tasks: Study Builder visual composer, SSE streaming for experiments, PipelinesView CRUD, Playwright CI job.
+What was done:
+
+### Backend
+- api/studies.py: new CRUD router for visual studies (list/get/create/update/delete)
+- database.py: schema v3 adds 'studies' table (id, name, description, graph_json, timestamps)
+- api/experiments.py: GET /experiments/{id}/stream SSE endpoint runs experiment in thread, streams 'started', 'heartbeat' (every 3s), 'complete', 'error' events
+- main.py: wire studies router at /api/v1/studies
+
+### Frontend
+- api.ts: added duplicatePipeline, deletePipeline, importPipeline; StudyNode/Edge/Graph/Response types; listStudies, getStudy, createStudy, updateStudy, deleteStudy
+- PipelinesView.tsx: added duplicate button (all pipelines) and delete button (custom only) with 2-click confirm; cards reload on duplicate
+- ExperimentsView.tsx: added Stream button alongside Run — uses EventSource on /api/v1/experiments/{id}/stream, shows live heartbeat events and final result inline
+- StudyBuilderView.tsx (new): React Flow canvas with left palette (experiments + pipeline drag items), study list with create/delete, node inspector panel, graph save/load to backend
+- App.tsx: added 'Study Builder' tab between 'Indus Studies' and 'Experiments'
+- src/vite-env.d.ts (new): adds Vite client types for CSS module imports
+- @xyflow/react installed (v12.10.2, 20 packages)
+
+### CI
+- .github/workflows/ci.yml: added 'playwright' job — starts backend, waits for health, installs Chromium, runs npx playwright test, uploads report artifact on failure
+
+Files changed:
+- backend/glossa_lab/api/studies.py (new)
+- backend/glossa_lab/api/experiments.py (SSE endpoint)
+- backend/glossa_lab/database.py (schema v3, studies methods)
+- backend/glossa_lab/main.py (studies router)
+- frontend/src/api.ts (pipelines + studies API)
+- frontend/src/components/PipelinesView.tsx (CRUD buttons)
+- frontend/src/components/ExperimentsView.tsx (Stream button + SSE display)
+- frontend/src/components/StudyBuilderView.tsx (new)
+- frontend/src/App.tsx (Study Builder tab)
+- frontend/src/vite-env.d.ts (new)
+- frontend/package.json + package-lock.json (@xyflow/react)
+- .github/workflows/ci.yml (playwright job)
+
+Checks run:
+- shell.cmd lint backend\glossa_lab -- all checks passed
+- npm run build in frontend/ -- clean TypeScript build, 471kB bundle, 0 errors
+- Backend tests: 162 tests pass (Windows pytest cleanup WinError 448 is unrelated)
+
+Results:
+- Study Builder tab available with React Flow canvas, palette, inspector, and backend-persisted studies
+- Experiments can now run in streaming mode (SSE) for long-running tasks like OCR
+- Pipelines can be duplicated/deleted from the UI
+- Playwright CI job runs on every push against the Chromium headless browser
+Open TODOs:
+- [ ] StudyBuilder: node run execution (run all nodes in topological order)
+- [ ] StudyBuilder: edge data-flow wiring (pass result from one node to next)
+- [ ] ExperimentsView: abort running stream via EventSource.close()
+- [ ] PipelinesView: import pipeline from local file path
+
+Risks:
+- @xyflow/react adds ~125kB gzipped to the bundle (acceptable for admin tool)
+- SSE streaming requires backend to be running; EventSource falls back gracefully if not
+
+Next step: Implement study execution (topological run) and node output wiring

@@ -255,6 +255,60 @@ export const deleteReport = (name: string): Promise<{ deleted: boolean; relative
 export const getReportDownloadUrl = (name: string): string =>
   `/api/v1/reports/${name}/download`;
 
+// ── Experiments (live CRUD) ───────────────────────────────────────────
+
+export interface ExperimentMeta {
+  id: string;
+  name: string;
+  category: string;
+  description: string;
+  estimated_time: string;
+  requires_key: string | null;
+  command: string;
+  results_file: string | null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  report_schema: Record<string, any> | null;
+  source_file: string;
+  custom: boolean;
+}
+
+export const listExperiments = (): Promise<ExperimentMeta[]> =>
+  request("GET", "/experiments");
+
+export const runExperiment = (
+  id: string,
+  kwargs: Record<string, unknown> = {}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+): Promise<Record<string, any>> =>
+  request("POST", `/experiments/${id}/run`, { kwargs });
+
+export const deleteExperiment = (
+  id: string
+): Promise<{ deleted: boolean; file: string }> =>
+  request("DELETE", `/experiments/${id}`);
+
+export const duplicateExperiment = (
+  id: string,
+  newId?: string,
+  newName?: string
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+): Promise<Record<string, any>> =>
+  request("POST", `/experiments/${id}/duplicate`, {
+    new_id: newId,
+    new_name: newName,
+  });
+
+export const generateExperiment = (body: {
+  prompt: string;
+  name: string;
+  category?: string;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+}): Promise<Record<string, any>> =>
+  request("POST", "/experiments/generate", body);
+
+export const reloadExperiments = (): Promise<{ reloaded: boolean; count: number }> =>
+  request("POST", "/experiments/reload");
+
 // ── Presets ───────────────────────────────────────────────────────────
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -37,8 +37,65 @@ def run() -> dict:
     sign_as_second: dict[str, int] = {}
     sign_total_bigram: dict[str, int] = {}
 
+    # Detect data format: Fuls-mapped vs raw OCR (CJK sign drawings)
+    has_fuls = bigrams and "sign_a_fuls" in bigrams[0]
+    has_raw = bigrams and "sign_a_raw" in bigrams[0]
+
+    if not has_fuls and not has_raw:
+        print("[ERROR] Unrecognised bigram format.")
+        return {}
+
+    # For raw OCR bigrams: the 'pair' token is a compound glyph (sign_A + sign_B
+    # drawn together).  We cannot separate A from B, so we treat each token
+    # as a proxy for the PAIR frequency.  The second-position analysis uses the
+    # Fuls catalog TMK data directly instead.
+    if has_raw and not has_fuls:
+        # Statistical approach: rank pairs by total frequency.
+        # The most frequent pairs should be those ending in TMK signs
+        # (since TMK signs appear in ~22% of terminal positions in 72/713 class).
+        # We report the frequency distribution and compare expected vs observed.
+        pair_freq: dict[str, int] = {}
+        for b in bigrams:
+            tok = b["sign_a_raw"]  # compound pair token
+            freq = b["freq"]
+            pair_freq[tok] = pair_freq.get(tok, 0) + freq
+
+        total_bigram_tokens = sum(pair_freq.values())
+        top_pairs = sorted(pair_freq.items(), key=lambda x: -x[1])[:30]
+
+        summary = {
+            "data_format": "raw_ocr",
+            "note": (
+                "Bigrams are in raw OCR format (sign drawings as opaque tokens). "
+                "Cannot map to Fuls sign numbers without visual sign recognition. "
+                "Second-position TMK test requires numeric sign IDs."
+            ),
+            "total_bigram_tokens": total_bigram_tokens,
+            "unique_pair_tokens": len(pair_freq),
+            "top_30_most_frequent_pairs": [
+                {"pair_token": t, "freq": f} for t, f in top_pairs
+            ],
+            "interpretation": (
+                "Cannot directly test TMK second-position hypothesis from raw OCR data. "
+                "The frequency data is preserved. Next step: map sign drawings to Fuls numbers "
+                "using visual sign recognition or manual review."
+            ),
+        }
+        _OUTPUT_PATH.write_text(json.dumps(summary, indent=2), encoding="utf-8")
+        print("\n── TMK Bigram Cross-Validation (raw OCR format) ────────────")
+        print(f"  Total pair tokens: {total_bigram_tokens:,}")
+        print(f"  Unique pair types: {len(pair_freq)}")
+        print(f"  → {summary['interpretation'][:80]}")
+        print(f"  Saved: {_OUTPUT_PATH}")
+        print("────────────────────────────────────────────────────────────\n")
+        return summary
+
     for b in bigrams:
-        a, s, freq = b["sign_a_fuls"], b["sign_b_fuls"], b["freq"]
+        a = b.get("sign_a_fuls", "")
+        s = b.get("sign_b_fuls", "")
+        freq = b["freq"]
+        if not a or not s:
+            continue
         all_signs.update([a, s])
         sign_as_first[a] = sign_as_first.get(a, 0) + freq
         sign_as_second[s] = sign_as_second.get(s, 0) + freq

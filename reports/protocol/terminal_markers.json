@@ -1,0 +1,397 @@
+{
+  "top_terminal_signs": [
+    {
+      "sign": "342",
+      "count": 201,
+      "rate": 0.2178
+    },
+    {
+      "sign": "159",
+      "count": 146,
+      "rate": 0.1582
+    },
+    {
+      "sign": "070",
+      "count": 123,
+      "rate": 0.1333
+    },
+    {
+      "sign": "343",
+      "count": 95,
+      "rate": 0.1029
+    },
+    {
+      "sign": "550",
+      "count": 94,
+      "rate": 0.1018
+    },
+    {
+      "sign": "071",
+      "count": 74,
+      "rate": 0.0802
+    },
+    {
+      "sign": "072",
+      "count": 49,
+      "rate": 0.0531
+    },
+    {
+      "sign": "101",
+      "count": 11,
+      "rate": 0.0119
+    },
+    {
+      "sign": "019",
+      "count": 8,
+      "rate": 0.0087
+    },
+    {
+      "sign": "018",
+      "count": 8,
+      "rate": 0.0087
+    },
+    {
+      "sign": "017",
+      "count": 7,
+      "rate": 0.0076
+    },
+    {
+      "sign": "100",
+      "count": 6,
+      "rate": 0.0065
+    },
+    {
+      "sign": "201",
+      "count": 4,
+      "rate": 0.0043
+    },
+    {
+      "sign": "120",
+      "count": 4,
+      "rate": 0.0043
+    },
+    {
+      "sign": "413",
+      "count": 4,
+      "rate": 0.0043
+    },
+    {
+      "sign": "110",
+      "count": 4,
+      "rate": 0.0043
+    },
+    {
+      "sign": "411",
+      "count": 4,
+      "rate": 0.0043
+    },
+    {
+      "sign": "121",
+      "count": 3,
+      "rate": 0.0033
+    },
+    {
+      "sign": "164",
+      "count": 3,
+      "rate": 0.0033
+    },
+    {
+      "sign": "321",
+      "count": 3,
+      "rate": 0.0033
+    }
+  ],
+  "top_terminal_bigrams": [
+    {
+      "bigram": "017+342",
+      "count": 15
+    },
+    {
+      "bigram": "019+159",
+      "count": 11
+    },
+    {
+      "bigram": "019+342",
+      "count": 10
+    },
+    {
+      "bigram": "411+342",
+      "count": 10
+    },
+    {
+      "bigram": "100+342",
+      "count": 10
+    },
+    {
+      "bigram": "020+342",
+      "count": 10
+    },
+    {
+      "bigram": "018+159",
+      "count": 10
+    },
+    {
+      "bigram": "018+070",
+      "count": 9
+    },
+    {
+      "bigram": "342+070",
+      "count": 9
+    },
+    {
+      "bigram": "342+342",
+      "count": 8
+    },
+    {
+      "bigram": "018+071",
+      "count": 8
+    },
+    {
+      "bigram": "411+550",
+      "count": 8
+    },
+    {
+      "bigram": "342+159",
+      "count": 8
+    },
+    {
+      "bigram": "411+159",
+      "count": 8
+    },
+    {
+      "bigram": "018+342",
+      "count": 7
+    }
+  ],
+  "top_terminal_trigrams": [
+    {
+      "trigram": "017+020+342",
+      "count": 3
+    },
+    {
+      "trigram": "411+017+342",
+      "count": 3
+    },
+    {
+      "trigram": "412+017+072",
+      "count": 2
+    },
+    {
+      "trigram": "070+017+342",
+      "count": 2
+    },
+    {
+      "trigram": "550+103+342",
+      "count": 2
+    },
+    {
+      "trigram": "413+343+159",
+      "count": 2
+    },
+    {
+      "trigram": "021+100+342",
+      "count": 2
+    },
+    {
+      "trigram": "411+019+550",
+      "count": 2
+    },
+    {
+      "trigram": "413+412+070",
+      "count": 2
+    },
+    {
+      "trigram": "159+159+342",
+      "count": 2
+    }
+  ],
+  "attachment_profiles": {
+    "342": {
+      "distinct_preceding": 79,
+      "total_occurrences": 201,
+      "attachment_entropy": 5.7174,
+      "terminal_rate": 0.2178,
+      "selectivity": 0.607,
+      "class": "productive_suffix"
+    },
+    "159": {
+      "distinct_preceding": 59,
+      "total_occurrences": 146,
+      "attachment_entropy": 5.3423,
+      "terminal_rate": 0.1582,
+      "selectivity": 0.5959,
+      "class": "productive_suffix"
+    },
+    "070": {
+      "distinct_preceding": 55,
+      "total_occurrences": 123,
+      "attachment_entropy": 5.3284,
+      "terminal_rate": 0.1333,
+      "selectivity": 0.5528,
+      "class": "productive_suffix"
+    },
+    "343": {
+      "distinct_preceding": 54,
+      "total_occurrences": 95,
+      "attachment_entropy": 5.4321,
+      "terminal_rate": 0.1029,
+      "selectivity": 0.4316,
+      "class": "productive_suffix"
+    },
+    "550": {
+      "distinct_preceding": 53,
+      "total_occurrences": 94,
+      "attachment_entropy": 5.394,
+      "terminal_rate": 0.1018,
+      "selectivity": 0.4362,
+      "class": "productive_suffix"
+    },
+    "071": {
+      "distinct_preceding": 44,
+      "total_occurrences": 74,
+      "attachment_entropy": 5.1469,
+      "terminal_rate": 0.0802,
+      "selectivity": 0.4054,
+      "class": "productive_suffix"
+    },
+    "072": {
+      "distinct_preceding": 34,
+      "total_occurrences": 49,
+      "attachment_entropy": 4.8826,
+      "terminal_rate": 0.0531,
+      "selectivity": 0.3061,
+      "class": "productive_suffix"
+    },
+    "101": {
+      "distinct_preceding": 10,
+      "total_occurrences": 11,
+      "attachment_entropy": 3.2776,
+      "terminal_rate": 0.0119,
+      "selectivity": 0.0909,
+      "class": "productive_suffix"
+    },
+    "019": {
+      "distinct_preceding": 7,
+      "total_occurrences": 8,
+      "attachment_entropy": 2.75,
+      "terminal_rate": 0.0087,
+      "selectivity": 0.125,
+      "class": "productive_suffix"
+    },
+    "018": {
+      "distinct_preceding": 6,
+      "total_occurrences": 8,
+      "attachment_entropy": 2.5,
+      "terminal_rate": 0.0087,
+      "selectivity": 0.25,
+      "class": "productive_suffix"
+    },
+    "017": {
+      "distinct_preceding": 7,
+      "total_occurrences": 7,
+      "attachment_entropy": 2.8074,
+      "terminal_rate": 0.0076,
+      "selectivity": 0.0,
+      "class": "productive_suffix"
+    },
+    "100": {
+      "distinct_preceding": 6,
+      "total_occurrences": 6,
+      "attachment_entropy": 2.585,
+      "terminal_rate": 0.0065,
+      "selectivity": 0.0,
+      "class": "productive_suffix"
+    },
+    "201": {
+      "distinct_preceding": 4,
+      "total_occurrences": 4,
+      "attachment_entropy": 2.0,
+      "terminal_rate": 0.0043,
+      "selectivity": 0.0,
+      "class": "formula_ending"
+    },
+    "120": {
+      "distinct_preceding": 4,
+      "total_occurrences": 4,
+      "attachment_entropy": 2.0,
+      "terminal_rate": 0.0043,
+      "selectivity": 0.0,
+      "class": "formula_ending"
+    },
+    "413": {
+      "distinct_preceding": 4,
+      "total_occurrences": 4,
+      "attachment_entropy": 2.0,
+      "terminal_rate": 0.0043,
+      "selectivity": 0.0,
+      "class": "formula_ending"
+    },
+    "110": {
+      "distinct_preceding": 4,
+      "total_occurrences": 4,
+      "attachment_entropy": 2.0,
+      "terminal_rate": 0.0043,
+      "selectivity": 0.0,
+      "class": "formula_ending"
+    },
+    "411": {
+      "distinct_preceding": 4,
+      "total_occurrences": 4,
+      "attachment_entropy": 2.0,
+      "terminal_rate": 0.0043,
+      "selectivity": 0.0,
+      "class": "formula_ending"
+    },
+    "121": {
+      "distinct_preceding": 3,
+      "total_occurrences": 3,
+      "attachment_entropy": 1.585,
+      "terminal_rate": 0.0033,
+      "selectivity": 0.0,
+      "class": "formula_ending"
+    },
+    "164": {
+      "distinct_preceding": 3,
+      "total_occurrences": 3,
+      "attachment_entropy": 1.585,
+      "terminal_rate": 0.0033,
+      "selectivity": 0.0,
+      "class": "formula_ending"
+    },
+    "321": {
+      "distinct_preceding": 3,
+      "total_occurrences": 3,
+      "attachment_entropy": 1.585,
+      "terminal_rate": 0.0033,
+      "selectivity": 0.0,
+      "class": "formula_ending"
+    }
+  },
+  "productive_suffixes": [
+    "071",
+    "072",
+    "070",
+    "342",
+    "159",
+    "550",
+    "343",
+    "017",
+    "101",
+    "019",
+    "018",
+    "100"
+  ],
+  "formula_endings": [
+    "201",
+    "121",
+    "164",
+    "321",
+    "120",
+    "413",
+    "110",
+    "411",
+    "103",
+    "400",
+    "202"
+  ]
+}

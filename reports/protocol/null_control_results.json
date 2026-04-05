@@ -1,0 +1,26 @@
+{
+  "real": {
+    "winner": "Vedic Sanskrit",
+    "winner_kl": 0.5697,
+    "H1": 5.946726
+  },
+  "global_shuffle": {
+    "winner": "Vedic Sanskrit",
+    "winner_kl": 0.5697,
+    "H1": 5.946726,
+    "H1_normalised": 0.715363
+  },
+  "within_shuffle": {
+    "winner": "Vedic Sanskrit",
+    "winner_kl": 0.5697,
+    "H1": 5.946726,
+    "H1_normalised": 0.715363
+  },
+  "unigram_synthetic": {
+    "winner": "Vedic Sanskrit",
+    "winner_kl": 0.5697,
+    "H1": 5.919843,
+    "H1_normalised": 0.730077
+  },
+  "conclusion": "FAIL: Null controls produce same winner -- structure may not exceed noise"
+}

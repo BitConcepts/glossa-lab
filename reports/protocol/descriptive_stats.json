@@ -1,0 +1,157 @@
+{
+  "source": "Fuls (2023) catalog -- pseudo-sequences from positional statistics",
+  "has_real_sequences": false,
+  "commit": "8cca43b",
+  "generated_at": "2026-04-05T15:35:10.101558+00:00",
+  "n_inscriptions": 923,
+  "n_tokens": 4513,
+  "distinct_sign_types": 318,
+  "type_token_ratio": 0.070463,
+  "avg_inscription_length": 4.889,
+  "median_inscription_length": 4,
+  "max_inscription_length": 16,
+  "min_inscription_length": 2,
+  "hapax_count": 96,
+  "hapax_fraction": 0.3019,
+  "rare5_count": 249,
+  "rare5_fraction": 0.783,
+  "length_histogram": {
+    "2": 24,
+    "3": 164,
+    "4": 300,
+    "5": 182,
+    "6": 126,
+    "7": 60,
+    "8": 23,
+    "9": 12,
+    "10": 6,
+    "11": 9,
+    "12": 5,
+    "13": 2,
+    "14": 2,
+    "15": 6,
+    "16": 2
+  },
+  "top30_signs": [
+    {
+      "sign": "411",
+      "count": 342
+    },
+    {
+      "sign": "342",
+      "count": 328
+    },
+    {
+      "sign": "550",
+      "count": 280
+    },
+    {
+      "sign": "159",
+      "count": 274
+    },
+    {
+      "sign": "070",
+      "count": 209
+    },
+    {
+      "sign": "412",
+      "count": 201
+    },
+    {
+      "sign": "343",
+      "count": 165
+    },
+    {
+      "sign": "413",
+      "count": 153
+    },
+    {
+      "sign": "017",
+      "count": 142
+    },
+    {
+      "sign": "400",
+      "count": 141
+    },
+    {
+      "sign": "071",
+      "count": 124
+    },
+    {
+      "sign": "018",
+      "count": 123
+    },
+    {
+      "sign": "019",
+      "count": 111
+    },
+    {
+      "sign": "100",
+      "count": 102
+    },
+    {
+      "sign": "020",
+      "count": 91
+    },
+    {
+      "sign": "072",
+      "count": 86
+    },
+    {
+      "sign": "101",
+      "count": 77
+    },
+    {
+      "sign": "102",
+      "count": 65
+    },
+    {
+      "sign": "120",
+      "count": 60
+    },
+    {
+      "sign": "021",
+      "count": 49
+    },
+    {
+      "sign": "103",
+      "count": 49
+    },
+    {
+      "sign": "110",
+      "count": 47
+    },
+    {
+      "sign": "121",
+      "count": 45
+    },
+    {
+      "sign": "300",
+      "count": 45
+    },
+    {
+      "sign": "201",
+      "count": 39
+    },
+    {
+      "sign": "301",
+      "count": 39
+    },
+    {
+      "sign": "202",
+      "count": 37
+    },
+    {
+      "sign": "321",
+      "count": 37
+    },
+    {
+      "sign": "111",
+      "count": 34
+    },
+    {
+      "sign": "200",
+      "count": 33
+    }
+  ]
+}

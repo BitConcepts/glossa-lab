@@ -3,7 +3,12 @@
  */
 
 import { useEffect, useState } from "react";
-import { getPipelineCatalog } from "../api";
+import {
+  deletePipeline,
+  duplicatePipeline,
+  getPipelineCatalog,
+  type CatalogPipeline,
+} from "../api";
 
 interface Pipeline {
   id: string;
@@ -17,6 +22,7 @@ interface Pipeline {
   default_params?: Record<string, unknown>;
   registered?: boolean;
   module?: string;
+  custom?: boolean;
 }
 
 const PIPELINES_FALLBACK: Pipeline[] = [
@@ -248,14 +254,20 @@ export function PipelinesView() {
   const [selected, setSelected] = useState<string | null>(null);
   const [pipelines, setPipelines] = useState<Pipeline[]>(PIPELINES_FALLBACK);
 
-  useEffect(() => {
+  const handleDeleted = (id: string) => setPipelines((p) => p.filter((x) => x.id !== id));
+
+  const load = () => {
     getPipelineCatalog()
-      .then((entries) => setPipelines(entries.map((e) => {
-        const { needs_lm, ...rest } = e;
-        return { ...rest, needsLM: needs_lm, defaultParams: JSON.stringify(e.default_params, null, 2) };
-      })))
+      .then((entries: CatalogPipeline[]) => setPipelines(entries.map((e) => ({
+        ...e,
+        needsLM: e.needs_lm,
+        defaultParams: JSON.stringify(e.default_params, null, 2),
+        custom: !e.registered,
+      }))))
       .catch(() => {});
-  }, []);
+  };
+
+  useEffect(() => { load(); }, []);
 
   const groups = ["all", ...Array.from(new Set(pipelines.map((p) => p.group)))];
   const visible = filter === "all" ? pipelines : pipelines.filter((p) => p.group === filter);
@@ -294,6 +306,8 @@ export function PipelinesView() {
             pipeline={p}
             expanded={selected === p.id}
             onToggle={() => setSelected(selected === p.id ? null : p.id)}
+            onDeleted={handleDeleted}
+            onDuplicated={load}
           />
         ))}
       </div>
@@ -313,40 +327,93 @@ function PipelineCard({
   pipeline: p,
   expanded,
   onToggle,
+  onDeleted,
+  onDuplicated,
 }: {
   pipeline: Pipeline;
   expanded: boolean;
   onToggle: () => void;
+  onDeleted: (id: string) => void;
+  onDuplicated: () => void;
 }) {
   const groupColor = GROUP_COLORS[p.group] ?? "#6b7280";
+  const [duplicating, setDuplicating] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+  const [confirmDel, setConfirmDel] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleDuplicate = async (ev: React.MouseEvent) => {
+    ev.stopPropagation();
+    setDuplicating(true);
+    try { await duplicatePipeline(p.id); onDuplicated(); }
+    catch (e: unknown) { setError(e instanceof Error ? e.message : String(e)); }
+    finally { setDuplicating(false); }
+  };
+
+  const handleDelete = async (ev: React.MouseEvent) => {
+    ev.stopPropagation();
+    if (!confirmDel) { setConfirmDel(true); return; }
+    setDeleting(true);
+    try { await deletePipeline(p.id); onDeleted(p.id); }
+    catch (e: unknown) { setError(e instanceof Error ? e.message : String(e)); setDeleting(false); setConfirmDel(false); }
+  };
 
   return (
     <div style={{
       border: `1px solid ${expanded ? groupColor : "#e5e7eb"}`,
-      borderRadius: 8,
-      overflow: "hidden",
-      cursor: "pointer",
+      borderRadius: 8, overflow: "hidden",
       transition: "border-color 0.15s",
     }}>
       <div
-        style={{ padding: "12px 14px", background: expanded ? groupColor + "08" : "#fff" }}
+        style={{ padding: "12px 14px", background: expanded ? groupColor + "08" : "#fff", cursor: "pointer" }}
         onClick={onToggle}
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 4 }}>
           <code style={{ fontSize: 13, fontWeight: 700, color: "#1e3a5f" }}>{p.id}</code>
-          <span style={{
-            fontSize: 10, padding: "1px 6px", borderRadius: 8,
-            background: groupColor + "20", color: groupColor, fontWeight: 600,
-            whiteSpace: "nowrap", marginLeft: 6,
-          }}>
-            {p.needsLM ? "LM" : "No LM"}
-          </span>
+          <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
+            {p.custom && (
+              <span style={{
+                fontSize: 9, padding: "1px 5px", borderRadius: 6,
+                background: "#f3f4f6", color: "#6b7280", fontWeight: 600,
+              }}>custom</span>
+            )}
+            <span style={{
+              fontSize: 10, padding: "1px 6px", borderRadius: 8,
+              background: groupColor + "20", color: groupColor, fontWeight: 600, whiteSpace: "nowrap",
+            }}>
+              {p.needsLM ? "LM" : "No LM"}
+            </span>
+            <button
+              onClick={handleDuplicate}
+              disabled={duplicating}
+              title="Duplicate pipeline"
+              style={btnMicro}
+            >{duplicating ? "…" : "⎘"}</button>
+            {p.custom && (
+              <button
+                onClick={handleDelete}
+                disabled={deleting}
+                title={confirmDel ? "Click again to confirm" : "Delete pipeline"}
+                style={{
+                  ...btnMicro,
+                  background: confirmDel ? "#fef2f2" : undefined,
+                  color: confirmDel ? "#b91c1c" : undefined,
+                }}
+              >{deleting ? "…" : confirmDel ? "Confirm?" : "🗑"}</button>
+            )}
+          </div>
         </div>
         <div style={{ fontSize: 13, fontWeight: 600, color: "#111827", marginBottom: 4 }}>{p.label}</div>
         <p style={{ margin: 0, fontSize: 12, color: "#6b7280", lineHeight: 1.5 }}>
           {expanded ? p.description : p.description.slice(0, 100) + (p.description.length > 100 ? "…" : "")}
         </p>
       </div>
+
+      {error && (
+        <div style={{ padding: "6px 14px", fontSize: 12, color: "#b91c1c", background: "#fef2f2" }}>
+          {error}
+        </div>
+      )}
 
       {expanded && (
         <div style={{ padding: "0 14px 14px", borderTop: `1px solid ${groupColor}30`, marginTop: 8 }}>
@@ -358,7 +425,7 @@ function PipelineCard({
             <span style={metaLabel}>Outputs:</span>
             <span style={{ fontSize: 12, color: "#374151" }}>{p.outputs}</span>
           </div>
-          <div>
+          <div style={{ marginBottom: 10 }}>
             <span style={metaLabel}>Default params:</span>
             <pre style={{
               background: "#1e293b", color: "#e2e8f0", padding: "6px 10px",
@@ -368,17 +435,9 @@ function PipelineCard({
               {p.defaultParams}
             </pre>
           </div>
-          <a
-            href="#"
-            style={{ fontSize: 12, color: groupColor, marginTop: 8, display: "inline-block" }}
-            onClick={(e) => {
-              e.preventDefault();
-              // Navigate to jobs tab with pre-filled params would go here
-              alert(`Go to the Jobs tab, select pipeline "${p.id}", and use params:\n${p.defaultParams}`);
-            }}
-          >
-            → Launch in Jobs tab
-          </a>
+          {p.module && (
+            <div style={{ fontSize: 11, color: "#9ca3af", marginBottom: 8 }}>Module: <code>{p.module}</code></div>
+          )}
         </div>
       )}
     </div>
@@ -392,4 +451,10 @@ const metaLabel: React.CSSProperties = {
 
 const metaValue: React.CSSProperties = {
   fontSize: 11, color: "#374151", fontFamily: "monospace",
+};
+
+const btnMicro: React.CSSProperties = {
+  padding: "2px 7px", border: "1px solid #e5e7eb", borderRadius: 4,
+  cursor: "pointer", fontSize: 11, fontWeight: 600,
+  background: "#fff", color: "#374151",
 };

@@ -3,7 +3,8 @@
 Endpoints:
   GET  /experiments              -- list all discovered experiments
   GET  /experiments/{id}         -- get experiment metadata
-  POST /experiments/{id}/run     -- run an experiment
+  POST /experiments/{id}/run     -- run synchronously, return JSON result
+  GET  /experiments/{id}/stream  -- SSE: run with heartbeat + final result
   POST /experiments/import       -- import a .py file
   POST /experiments/{id}/duplicate -- duplicate an experiment
   DELETE /experiments/{id}       -- delete an experiment file
@@ -13,9 +14,14 @@ Endpoints:
 from __future__ import annotations
 
 import asyncio
+import json
+import threading
+import time
+from collections.abc import AsyncGenerator
 from typing import Any
 
 from fastapi import APIRouter, HTTPException
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
 from glossa_lab.experiment_base import (
@@ -141,3 +147,83 @@ async def reload_experiments() -> dict[str, Any]:
     invalidate_cache()
     experiments = list_discovered_experiments()
     return {"reloaded": True, "count": len(experiments)}
+
+
+# ── SSE streaming run ──────────────────────────────────────────────
+
+def _sse(event: str, data: dict[str, Any]) -> str:
+    """Format a Server-Sent Events message."""
+    return f"event: {event}\ndata: {json.dumps(data)}\n\n"
+
+
+async def _stream_experiment(
+    experiment_id: str,
+    kwargs: dict[str, Any],
+) -> AsyncGenerator[str, None]:
+    """Run an experiment in a thread and stream SSE events.
+
+    Events:
+      started   -- experiment is running
+      heartbeat -- still running (every 3 s)
+      complete  -- finished successfully; data includes result
+      error     -- failed; data includes message
+    """
+    cls = get_experiment(experiment_id)
+    if cls is None:
+        yield _sse("error", {"message": f"Experiment '{experiment_id}' not found"})
+        return
+
+    result_holder: dict[str, Any] = {}
+    error_holder: dict[str, str] = {}
+    done_event = threading.Event()
+
+    def _run() -> None:
+        try:
+            instance = cls()
+            result_holder["result"] = instance.run(**kwargs)
+        except NotImplementedError:
+            error_holder["message"] = (
+                f"Experiment '{experiment_id}' has no run() implementation. "
+                "Use the CLI command instead."
+            )
+        except Exception as exc:  # noqa: BLE001
+            error_holder["message"] = str(exc)
+        finally:
+            done_event.set()
+
+    thread = threading.Thread(target=_run, daemon=True)
+    thread.start()
+    yield _sse("started", {"experiment_id": experiment_id, "timestamp": time.time()})
+
+    # Stream heartbeats until done
+    loop = asyncio.get_event_loop()
+    while not done_event.is_set():
+        await loop.run_in_executor(None, done_event.wait, 3.0)
+        if not done_event.is_set():
+            yield _sse("heartbeat", {"elapsed_s": round(time.time(), 1)})
+
+    thread.join(timeout=5)
+
+    if error_holder:
+        yield _sse("error", {"message": error_holder["message"]})
+    else:
+        yield _sse(
+            "complete",
+            {"experiment_id": experiment_id, "result": result_holder.get("result")},
+        )
+
+
+@router.get("/experiments/{experiment_id}/stream")
+async def stream_experiment(experiment_id: str) -> StreamingResponse:
+    """SSE endpoint: run experiment and stream progress events.
+
+    Use with EventSource in the browser. Events: started, heartbeat, complete, error.
+    """
+    return StreamingResponse(
+        _stream_experiment(experiment_id, {}),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "X-Accel-Buffering": "no",
+        },
+    )

@@ -8,12 +8,14 @@ import { PipelinesView } from "./components/PipelinesView";
 import { SettingsView } from "./components/SettingsView";
 import { ReportsView } from "./components/ReportsView";
 import { PresetsView } from "./components/PresetsView";
+import { StudyBuilderView } from "./components/StudyBuilderView";
 
-type Tab = "status" | "studies" | "experiments" | "pipelines" | "corpora" | "jobs" | "reports" | "presets" | "settings";
+type Tab = "status" | "studies" | "builder" | "experiments" | "pipelines" | "corpora" | "jobs" | "reports" | "presets" | "settings";
 
 const TABS: { id: Tab; label: string; badge?: string }[] = [
   { id: "status",      label: "Status" },
   { id: "studies",     label: "Indus Studies",  badge: "NEW" },
+  { id: "builder",     label: "Study Builder" },
   { id: "experiments", label: "Experiments" },
   { id: "pipelines",   label: "Pipelines",      badge: "17" },
   { id: "corpora",     label: "Corpora" },
@@ -76,6 +78,7 @@ export function App() {
       <main>
         {tab === "status"      && <StatusView />}
         {tab === "studies"     && <StudiesView />}
+        {tab === "builder"     && <StudyBuilderView />}
         {tab === "experiments" && <ExperimentsView />}
         {tab === "pipelines"   && <PipelinesView />}
         {tab === "corpora"     && <CorporaView />}

@@ -19,7 +19,11 @@ test.describe("App shell", () => {
 
   test("renders core navigation tabs", async ({ page }) => {
     await page.goto("/");
-    for (const label of ["Status", "Corpora", "Jobs", "Reports", "Presets", "Settings"]) {
+    for (const label of [
+      "Status", "Indus Studies", "Study Builder",
+      "Experiments", "Pipelines",
+      "Corpora", "Jobs", "Reports", "Presets", "Settings",
+    ]) {
       await expect(page.getByRole("button", { name: label })).toBeVisible();
     }
   });
@@ -48,6 +52,18 @@ test.describe("Tab switching", () => {
     await page.goto("/");
     await page.getByRole("button", { name: "Jobs" }).click();
     await expect(page.locator("h2").filter({ hasText: "Jobs" })).toBeVisible();
+  });
+
+  test("clicking Study Builder tab shows Study Builder heading", async ({ page }) => {
+    await page.goto("/");
+    await page.getByRole("button", { name: "Study Builder" }).click();
+    await expect(page.getByRole("heading", { name: "Study Builder" })).toBeVisible();
+  });
+
+  test("clicking Experiments tab shows Experiments heading", async ({ page }) => {
+    await page.goto("/");
+    await page.getByRole("button", { name: "Experiments" }).click();
+    await expect(page.getByRole("heading", { name: "Experiments" })).toBeVisible();
   });
 
   test("selected tab has a distinct visual style", async ({ page }) => {

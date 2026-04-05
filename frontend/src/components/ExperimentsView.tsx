@@ -8,7 +8,7 @@
  *  - AI-generate a new experiment from a natural-language prompt
  */
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import {
   deleteExperiment,
   duplicateExperiment,
@@ -155,6 +155,7 @@ function ExperimentCard({ exp, onDeleted, onDuplicated }: CardProps) {
   const [running, setRunning] = useState(false);
   const [streaming, setStreaming] = useState(false);
   const [streamLines, setStreamLines] = useState<string[]>([]);
+  const esRef = useRef<EventSource | null>(null);
   const [runResult, setRunResult] = useState<unknown | null>(null);
   const [runError, setRunError] = useState<string | null>(null);
   const [deleting, setDeleting] = useState(false);
@@ -192,6 +193,15 @@ function ExperimentCard({ exp, onDeleted, onDuplicated }: CardProps) {
     }
   };
 
+  const stopStream = useCallback(() => {
+    if (esRef.current) {
+      esRef.current.close();
+      esRef.current = null;
+    }
+    setStreaming(false);
+    setStreamLines((l) => [...l, "⏹ Stopped"]);
+  }, []);
+
   const handleStream = () => {
     if (streaming) return;
     setStreaming(true);
@@ -201,6 +211,7 @@ function ExperimentCard({ exp, onDeleted, onDuplicated }: CardProps) {
     if (!expanded) setExpanded(true);
     const url = `/api/v1/experiments/${exp.id}/stream`;
     const es = new EventSource(url);
+    esRef.current = es;
     es.addEventListener("started", () => {
       setStreamLines((l) => [...l, "▶ Running…"]);
     });
@@ -214,6 +225,7 @@ function ExperimentCard({ exp, onDeleted, onDuplicated }: CardProps) {
       setStreamLines((l) => [...l, "✓ Complete"]);
       setStreaming(false);
       es.close();
+      esRef.current = null;
     });
     es.addEventListener("error", (ev) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -223,12 +235,14 @@ function ExperimentCard({ exp, onDeleted, onDuplicated }: CardProps) {
       setStreamLines((l) => [...l, `✗ Error: ${msg}`]);
       setStreaming(false);
       es.close();
+      esRef.current = null;
     });
     es.onerror = () => {
-      if (streaming) {
+      if (esRef.current) {
         setRunError("SSE connection lost");
         setStreaming(false);
         es.close();
+        esRef.current = null;
       }
     };
   };
@@ -295,20 +309,36 @@ function ExperimentCard({ exp, onDeleted, onDuplicated }: CardProps) {
         >
           {running ? "Running…" : "▶ Run"}
         </button>
-        <button
-          onClick={handleStream}
-          disabled={running || streaming || needsKey}
-          title={needsKey ? `Requires ${exp.requires_key}` : "Stream (live heartbeat output — use for long runs)"}
-          style={{
-            ...btnSmall,
-            background: needsKey ? "#f3f4f6" : streaming ? "#fef3c7" : "#f3f4f6",
-            color: needsKey ? "#9ca3af" : streaming ? "#d97706" : "#374151",
-            cursor: needsKey ? "not-allowed" : "pointer",
-            minWidth: 52,
-          }}
-        >
-          {streaming ? "Streaming…" : "↯ Stream"}
-        </button>
+        {streaming ? (
+          <button
+            onClick={stopStream}
+            title="Stop streaming"
+            style={{
+              ...btnSmall,
+              background: "#fef2f2",
+              color: "#b91c1c",
+              border: "1px solid #fca5a5",
+              minWidth: 52,
+            }}
+          >
+            ⏹ Stop
+          </button>
+        ) : (
+          <button
+            onClick={handleStream}
+            disabled={running || needsKey}
+            title={needsKey ? `Requires ${exp.requires_key}` : "Stream — live heartbeat output, use for long runs"}
+            style={{
+              ...btnSmall,
+              background: needsKey ? "#f3f4f6" : "#f3f4f6",
+              color: needsKey ? "#9ca3af" : "#374151",
+              cursor: needsKey ? "not-allowed" : "pointer",
+              minWidth: 52,
+            }}
+          >
+            ↯ Stream
+          </button>
+        )}
 
         <button
           onClick={handleDuplicate}

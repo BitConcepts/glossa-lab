@@ -328,6 +328,23 @@ export const updateStudy = (
 export const deleteStudy = (id: string): Promise<{ deleted: boolean }> =>
   request("DELETE", `/studies/${id}`);
 
+export interface StudyRunResult {
+  study_id: string;
+  node_count: number;
+  completed: number;
+  skipped: number;
+  errors: number;
+  results: Record<string, {
+    status: "complete" | "skipped" | "error";
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    result?: Record<string, any>;
+    reason?: string;
+  }>;
+}
+
+export const runStudy = (id: string): Promise<StudyRunResult> =>
+  request("POST", `/studies/${id}/run`);
+
 // ── Experiments (live CRUD) ───────────────────────────────────────────
 
 export interface ExperimentMeta {

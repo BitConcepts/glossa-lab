@@ -3,15 +3,17 @@ import {
   getHealth,
   getStatus,
   getCatalog,
-  HealthResponse,
-  StatusResponse,
-  CatalogResponse,
+  listStudies,
+  type HealthResponse,
+  type StatusResponse,
+  type CatalogResponse,
 } from "../api";
 
 export function StatusView() {
   const [health, setHealth] = useState<HealthResponse | null>(null);
   const [status, setStatus] = useState<StatusResponse | null>(null);
   const [catalog, setCatalog] = useState<CatalogResponse | null>(null);
+  const [studyCount, setStudyCount] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const refresh = async () => {
@@ -21,6 +23,7 @@ export function StatusView() {
       setStatus(s);
       setError(null);
       getCatalog().then(setCatalog).catch(() => {});
+      listStudies().then((s) => setStudyCount(s.length)).catch(() => {});
     } catch (e) {
       setError(e instanceof Error ? e.message : "Connection failed");
     }
@@ -92,6 +95,12 @@ export function StatusView() {
                   <Td>{v}</Td>
                 </tr>
               ))}
+              {studyCount !== null && (
+                <tr>
+                  <Td>Studies</Td>
+                  <Td>{studyCount}</Td>
+                </tr>
+              )}
               {Object.entries(status.jobs ?? status.job_counts ?? {}).map(([k, v]) => (
                 <tr key={k}>
                   <Td>Jobs ({k})</Td>

@@ -54,12 +54,19 @@ export interface CatalogPipeline {
   module: string;
 }
 
+export interface ModelDetail {
+  id: string;
+  description: string;
+  use_for: string;
+}
+
 export interface CatalogProvider {
   id: string;
   label: string;
   api_key_setting: string;
   supports_live_model_discovery: boolean;
   recommended_models: string[];
+  model_details: ModelDetail[];
   ocr_preferred_models: string[];
 }
 

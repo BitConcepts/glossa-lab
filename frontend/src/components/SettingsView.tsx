@@ -3,7 +3,7 @@ import {
   getSettings, updateSettings,
   getProviderCatalog,
   setLocalKey, clearLocalKey, isLocalKeySet,
-  KeyStatus, CatalogProvider,
+  KeyStatus, CatalogProvider, ModelDetail,
 } from "../api";
 
 const KEY_LABELS: Record<string, { label: string; hint: string; priority?: boolean }> = {
@@ -191,20 +191,53 @@ export function SettingsView() {
               const enabled = pref.enabled ?? false;
               const selectedModel = pref.selected_model ?? p.recommended_models[0] ?? "";
               const keySet = backendKeys[p.api_key_setting]?.set || isLocalKeySet(p.api_key_setting);
+              const details: ModelDetail[] = p.model_details ?? [];
+              const selectedDetail = details.find((d) => d.id === selectedModel);
               return (
-                <div key={p.id} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 12px", border: "1px solid #e5e7eb", borderRadius: 8, background: enabled ? "#f0fdf4" : "#fafafa" }}>
-                  <input type="checkbox" checked={enabled} onChange={(e) => handleProviderToggle(p.id, e.target.checked)} style={{ width: 16, height: 16, cursor: "pointer" }} />
-                  <span style={{ fontWeight: 600, fontSize: 13, minWidth: 80 }}>{p.label}</span>
-                  {p.ocr_preferred_models.length > 0 && <span style={{ fontSize: 10, color: "#7c3aed", background: "#ede9fe", padding: "1px 6px", borderRadius: 8, fontWeight: 600 }}>OCR</span>}
-                  {!keySet && <span style={{ fontSize: 10, color: "#d97706", background: "#fef3c7", padding: "1px 6px", borderRadius: 8 }}>No key</span>}
-                  <select
-                    value={selectedModel}
-                    onChange={(e) => handleModelSelect(p.id, e.target.value)}
-                    disabled={!enabled}
-                    style={{ marginLeft: "auto", fontSize: 12, padding: "3px 6px", borderRadius: 4, border: "1px solid #d1d5db", background: enabled ? "#fff" : "#f9fafb", cursor: enabled ? "pointer" : "default" }}
-                  >
-                    {p.recommended_models.map((m) => <option key={m} value={m}>{m}</option>)}
-                  </select>
+                <div key={p.id} style={{ border: "1px solid #e5e7eb", borderRadius: 8,
+                  background: enabled ? "#f0fdf4" : "#fafafa", overflow: "hidden" }}>
+                  {/* Header row */}
+                  <div style={{ display: "flex", alignItems: "center", gap: 10,
+                    padding: "10px 12px" }}>
+                    <input type="checkbox" checked={enabled}
+                      onChange={(e) => handleProviderToggle(p.id, e.target.checked)}
+                      style={{ width: 16, height: 16, cursor: "pointer" }} />
+                    <span style={{ fontWeight: 600, fontSize: 13, minWidth: 80 }}>{p.label}</span>
+                    {p.ocr_preferred_models.length > 0 && (
+                      <span style={{ fontSize: 10, color: "#7c3aed", background: "#ede9fe",
+                        padding: "1px 6px", borderRadius: 8, fontWeight: 600 }}>OCR</span>
+                    )}
+                    {!keySet && (
+                      <span style={{ fontSize: 10, color: "#d97706", background: "#fef3c7",
+                        padding: "1px 6px", borderRadius: 8 }}>No key</span>
+                    )}
+                    <select
+                      value={selectedModel}
+                      onChange={(e) => handleModelSelect(p.id, e.target.value)}
+                      disabled={!enabled}
+                      style={{ marginLeft: "auto", fontSize: 12, padding: "3px 6px",
+                        borderRadius: 4, border: "1px solid #d1d5db",
+                        background: enabled ? "#fff" : "#f9fafb",
+                        cursor: enabled ? "pointer" : "default", maxWidth: 220 }}
+                    >
+                      {(details.length > 0 ? details.map((d) => d.id) : p.recommended_models).map(
+                        (m) => <option key={m} value={m}>{m}</option>
+                      )}
+                    </select>
+                  </div>
+                  {/* Model description */}
+                  {enabled && selectedDetail && (
+                    <div style={{ padding: "6px 12px 10px 38px",
+                      borderTop: "1px solid #e5e7eb", background: "#f8fafc" }}>
+                      <p style={{ margin: 0, fontSize: 11, color: "#374151",
+                        lineHeight: 1.5 }}>{selectedDetail.description}</p>
+                      {selectedDetail.use_for && (
+                        <p style={{ margin: "4px 0 0", fontSize: 11, color: "#6b7280" }}>
+                          <strong>Best for:</strong> {selectedDetail.use_for}
+                        </p>
+                      )}
+                    </div>
+                  )}
                 </div>
               );
             })}

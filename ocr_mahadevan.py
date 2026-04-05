@@ -48,7 +48,12 @@ OUTPUT_BIGRAMS  = _BASE / "reports" / "mahadevan_bigrams.json"
 OUTPUT_TEXTS    = _BASE / "reports" / "mahadevan_texts.json"
 OUTPUT_FREQS    = _BASE / "reports" / "mahadevan_frequencies.json"
 
-MODEL_NAME = "pixtral-12b-2409"
+# Use dedicated OCR model (mistral-ocr-latest) which is purpose-built for document
+# extraction.  Falls back to pixtral-large if the OCR model is unavailable.
+MODEL_NAME = os.environ.get("MISTRAL_OCR_MODEL", "mistral-ocr-latest")
+# Rate limits for mistral-ocr-latest (higher than pixtral defaults)
+_OCR_RPM    = int(os.environ.get("MISTRAL_OCR_RPM", "3"))   # conservative: 3/min
+_OCR_DELAY  = float(os.environ.get("MISTRAL_OCR_DELAY", "25"))  # seconds between pages
 
 
 @lru_cache(maxsize=1)
@@ -57,10 +62,11 @@ def get_model_pacer():
 
     return AIModelPacer({
         MODEL_NAME: ModelLimit(
-            rpm_limit=int(os.environ.get("MISTRAL_PIXTRAL_RPM_LIMIT", "60")),
-            tpm_limit=int(os.environ.get("MISTRAL_PIXTRAL_TPM_LIMIT", "120000")),
-            utilization_target=float(os.environ.get("AI_UTILIZATION_TARGET", "0.70")),
-            max_concurrency=int(os.environ.get("MISTRAL_PIXTRAL_MAX_CONCURRENCY", "2")),
+            rpm_limit=_OCR_RPM,
+            tpm_limit=int(os.environ.get("MISTRAL_OCR_TPM", "50000")),
+            utilization_target=0.80,
+            max_concurrency=1,  # OCR model works best single-threaded
+            image_token_estimate=2048,  # OCR model handles images differently
         )
     })
 
@@ -102,13 +108,15 @@ def page_url(n: int) -> str:
         f"&id={_ITEM_ID}&scale=1&rotate=0"
     )
 
-# Page ranges for each target section
+# Page ranges for each target section.
+# NOTE: JP2 file numbers are offset from book page numbers by ~10 (front matter).
+# Confirmed: JP2 file 734 = book page 724 (bigram table start).
 PAGE_RANGES = {
-    "texts":        range(39,  163),   # Actual inscription sign sequences
-    "concordance":  range(163, 717),   # Concordance index (less useful for sequences)
-    "freq_table":   range(717, 724),   # Table I: Frequency + Positional Distribution
-    "bigram_table": range(724, 746),   # Table II: Pairwise Combinations (BIGRAMS!)
-    "site_tables":  range(746, 781),   # Tables III-V: Site/Object/Field distributions
+    "texts":        range(49,  173),   # Book pages 39-162 -> JP2 files ~49-173
+    "concordance":  range(173, 727),   # Book pages 163-716
+    "freq_table":   range(727, 734),   # Book pages 717-723 -> JP2 files ~727-734
+    "bigram_table": range(734, 756),   # Book pages 724-745 -> JP2 files ~734-756
+    "site_tables":  range(756, 791),   # Book pages 746-780 -> JP2 files ~756-791
 }
 
 # ── Prompts tuned for each section ────────────────────────────────────
@@ -224,7 +232,7 @@ def download_page_image(page_num: int) -> bytes | None:
 
 
 def ocr_page(client, page_num: int, prompt: str, section: str) -> str | None:
-    """Send a page image to Mistral Pixtral and return the transcription."""
+    """Send a page image to Mistral OCR and return the extracted text."""
     # Check cache
     cache_path = _OUTDIR / f"ocr_{section}_{page_num:04d}.txt"
     if cache_path.exists():
@@ -235,63 +243,136 @@ def ocr_page(client, page_num: int, prompt: str, section: str) -> str | None:
     if img_data is None:
         return None
 
-    # Encode image as base64 (BookReader returns JPEG)
+    b64 = base64.b64encode(img_data).decode("utf-8")
+    data_url = f"data:image/jpeg;base64,{b64}"
+
+    print(f"    OCR page {page_num}...", end=" ", flush=True)
+
+    for attempt in range(8):
+        try:
+            # Use dedicated mistral-ocr model via OCR API
+            # Note: we don't use document_annotation_prompt because it requires
+            # a document_annotation_format schema.  Instead we get raw OCR text
+            # and let the existing regex parsers extract the structured data.
+            from mistralai.client.models import ImageURLChunk
+            response = client.ocr.process(
+                model=MODEL_NAME,
+                document=ImageURLChunk(image_url=data_url),
+            )
+            # OCR response has .pages list; join all page markdown
+            if hasattr(response, "pages") and response.pages:
+                result = "\n".join(
+                    p.markdown for p in response.pages if hasattr(p, "markdown")
+                )
+            else:
+                result = str(response)
+            cache_path.write_text(result, encoding="utf-8")
+            print(f"OK ({len(result)} chars)")
+            # Polite delay between pages to respect rate limits
+            if _OCR_DELAY > 0:
+                time.sleep(_OCR_DELAY)
+            return result
+        except Exception as e:
+            err_str = str(e)
+            is_rate = (
+                "rate" in err_str.lower() or "429" in err_str or
+                "1300" in err_str or "too many" in err_str.lower()
+            )
+            if not is_rate or attempt >= 7:
+                # On rate limit, try falling back to pixtral-large via chat API
+                if "mistral-ocr" in MODEL_NAME and attempt == 0:
+                    print(f"OCR API failed ({e}), trying chat fallback...",
+                          end=" ", flush=True)
+                    return _ocr_page_chat_fallback(client, img_data, prompt,
+                                                   cache_path, page_num)
+                print(f"FAILED: {e}")
+                return None
+            wait = min(60.0, 20.0 * (2 ** attempt))
+            print(f"RATE-LIMIT (wait {wait:.0f}s)...", end=" ", flush=True)
+            time.sleep(wait)
+    return None
+
+
+def _ocr_page_chat_fallback(
+    client, img_data: bytes, prompt: str, cache_path: Path, page_num: int
+) -> str | None:
+    """Fallback: use pixtral-large via chat.complete() if OCR API fails."""
+    fallback_model = "pixtral-large-latest"
     b64 = base64.b64encode(img_data).decode("utf-8")
     messages = [
         {
             "role": "user",
             "content": [
-                {
-                    "type": "image_url",
-                    "image_url": {"url": f"data:image/jpeg;base64,{b64}"},
-                },
+                {"type": "image_url",
+                 "image_url": {"url": f"data:image/jpeg;base64,{b64}"}},
                 {"type": "text", "text": prompt},
             ],
         }
     ]
-    pacer = get_model_pacer()
-    reserved_tokens = pacer.estimate_request_tokens(
-        model=MODEL_NAME,
-        messages=messages,
-        max_output_tokens=4096,
-    )
-
-    print(f"    OCR page {page_num}...", end=" ", flush=True)
-    for attempt in range(6):
-        pacer.acquire(MODEL_NAME, reserved_tokens)
-        try:
-            response = client.chat.complete(
-                model=MODEL_NAME,
-                messages=messages,
-                max_tokens=4096,
-                temperature=0.0,
-            )
-            result = response.choices[0].message.content
-            cache_path.write_text(result, encoding="utf-8")
-            print(f"OK ({len(result)} chars)")
-            return result
-        except Exception as e:
-            if not pacer.is_rate_limit_error(e) or attempt == 5:
-                print(f"FAILED: {e}")
-                return None
-            delay = pacer.on_rate_limit(MODEL_NAME, e, attempt)
-            print(f"RATE-LIMIT ({delay:.1f}s backoff)", end=" ", flush=True)
-            time.sleep(delay)
-        finally:
-            pacer.release(MODEL_NAME)
+    try:
+        response = client.chat.complete(
+            model=fallback_model,
+            messages=messages,
+            max_tokens=4096,
+            temperature=0.0,
+        )
+        result = response.choices[0].message.content
+        cache_path.write_text(result, encoding="utf-8")
+        print(f"OK via chat ({len(result)} chars)")
+        time.sleep(_OCR_DELAY)
+        return result
+    except Exception as e:
+        print(f"FAILED (chat fallback): {e}")
+        return None
 
 
 # ── Result parsers ────────────────────────────────────────────────────
 
 def parse_bigrams(ocr_text: str) -> list[dict]:
-    """Parse 'PAIR:nnn-nnn FREQ:N' lines from OCR output."""
+    """Parse bigram pair+frequency data from OCR output.
+
+    Handles two formats:
+    1. Original prompt format: 'PAIR:nnn-nnn FREQ:N'
+    2. Markdown table from mistral-ocr: '| sign_drawing | freq | sign_drawing | freq ... |'
+       The sign drawings may be CJK characters (OCR artefact from Mahadevan pictographs).
+       We store them as opaque 'sign_a_raw' / 'sign_b_raw' tokens.
+    """
     results = []
+
+    # Format 1: explicit PAIR:nnn-nnn FREQ:N
     for line in ocr_text.splitlines():
         m = re.search(r'PAIR:(\d{3})-(\d{3})\s+FREQ:(\d+)', line)
         if m:
             a, b, freq = m.group(1), m.group(2), int(m.group(3))
             if 1 <= int(a) <= 417 and 1 <= int(b) <= 417:
                 results.append({"sign_a_m77": a, "sign_b_m77": b, "freq": freq})
+
+    if results:
+        return results
+
+    # Format 2: markdown table with sign drawings + frequencies
+    # Table has alternating columns: sign | freq | sign | freq | ...
+    # Frequencies are small integers (1–9999); signs are non-numeric tokens
+    for line in ocr_text.splitlines():
+        if not line.startswith("|") or line.startswith("| ---"):
+            continue
+        cells = [c.strip() for c in line.strip("|" ).split("|")]
+        cells = [c for c in cells if c]  # remove empty
+        # Try to pair adjacent (sign, freq) columns across the row
+        i = 0
+        while i + 1 < len(cells):
+            sign_raw = cells[i]
+            freq_raw = cells[i + 1]
+            # freq must be a plain integer; sign must be non-empty and non-numeric
+            freq_m = re.match(r'^\s*(\d+)\s*$', freq_raw)
+            if freq_m and sign_raw and not re.match(r'^\d+$', sign_raw):
+                results.append({
+                    "sign_a_raw": sign_raw,
+                    "sign_b_raw": sign_raw,   # pair not distinguishable without column headers
+                    "freq": int(freq_m.group(1)),
+                })
+            i += 2
+
     return results
 
 

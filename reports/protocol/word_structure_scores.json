@@ -1,0 +1,52 @@
+{
+  "corpus_mean_length": 4.889,
+  "ranking": [
+    {
+      "profile": "Vedic Sanskrit",
+      "word_length_kl": 0.5697,
+      "mean_length_diff": 1.3795,
+      "rank": 1
+    },
+    {
+      "profile": "Proto-Dravidian",
+      "word_length_kl": 0.6975,
+      "mean_length_diff": 1.5595,
+      "rank": 2
+    },
+    {
+      "profile": "Hurrian",
+      "word_length_kl": 0.8012,
+      "mean_length_diff": 1.6995,
+      "rank": 3
+    },
+    {
+      "profile": "Proto-Semitic",
+      "word_length_kl": 0.8546,
+      "mean_length_diff": 1.7495,
+      "rank": 4
+    },
+    {
+      "profile": "Luwian/Anatolian",
+      "word_length_kl": 0.9018,
+      "mean_length_diff": 1.8295,
+      "rank": 5
+    },
+    {
+      "profile": "Elamite",
+      "word_length_kl": 1.1716,
+      "mean_length_diff": 2.0795,
+      "rank": 6
+    },
+    {
+      "profile": "Sumerian",
+      "word_length_kl": 1.3271,
+      "mean_length_diff": 2.1995,
+      "rank": 7
+    }
+  ],
+  "winner": "Vedic Sanskrit",
+  "winner_kl": 0.5697,
+  "runner_up": "Proto-Dravidian",
+  "runner_up_kl": 0.6975,
+  "margin": 0.1278
+}

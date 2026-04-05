@@ -1,0 +1,7 @@
+{
+  "real_H1": 5.946726,
+  "shuffled_global_H1": 5.946726,
+  "shuffled_within_H1": 5.946726,
+  "unigram_synthetic_H1": 5.919843,
+  "conclusion": "H1 difference from controls is SMALL -- minimal positional structure above unigram"
+}

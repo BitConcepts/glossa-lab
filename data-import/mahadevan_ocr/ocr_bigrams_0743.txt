@@ -1,0 +1,38 @@
+TABLE II: FREQUENCY OF PAIRWISE COMBINATIONS
+
+|  PAIR | FREQ | PAIR | FREQ | PAIR | FREQ | PAIR | FREQ  |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+|  $\overline{X}$ | 1 | $\mathbb{R}$ | 1 | $\overline{U}$ | 2 | $\overline{U}$ | 23  |
+|  $\overline{X}$ | 5 | $\mathbb{R}$ | 1 | $\overline{U}$ | 7 | $\overline{U}$ | 5  |
+|  $\overline{4}$ | 3 | $\mathbb{R}$ | 1 | $\overline{U}$ | 1 | $\overline{U}$ | 1  |
+|  $\Delta$ | 1 | $\mathbb{R}$ | 30 | $\overline{O}$ | 2 | $\mathbb{V}$ | 1  |
+|  $\mathbb{X}$ | 1 | $\mathbb{X}$ | 1 | $\mathbb{X}$ | 1 | $\mathbb{A}$ | 1  |
+|  $\mathbb{X}$ | 1 | $\mathbb{R}$ | 1 | $\mathbb{Y}$ | 1 | $\mathbb{R}$ | 9  |
+|  $\mathbb{X}$ | 1 | $\mathbb{U}$ | 16 | $\mathbb{U}$ | 6 | $\mathbb{R}$ | 1  |
+|  $\mathbb{X}$ | 1 | $\mathbb{U}$ | 1 | $\mathbb{I}$ | 1 | $\mathbb{O}$ | 1  |
+|  $\mathbb{X}$ | 2 | $\mathbb{R}$ | 4 | $\mathbb{R}$ | 2 | $\mathbb{C}$ | 2  |
+|  $\mathbb{M}$ | 1 | $\mathbb{A}$ | 13 | $\mathbb{R}$ | 1 | $\mathbb{U}$ | 1  |
+|  $\mathbb{R}$ | 1 | $\mathbb{R}$ | 1 | $\mathbb{I}$ | 1 | $\mathbb{R}$ | 1  |
+|  $\mathbb{O}$ | 1 | $\mathbb{E}$ | 1 | $\mathbb{R}$ | 8 | $\mathbb{R}$ | 1  |
+|  $\mathbb{I}$ | 1 | $\mathbb{E}$ | 1 | $\mathbb{R}$ | 1 | $\mathbb{T}$ | 2  |
+|  $\mathbb{X}$ | 1 | $\mathbb{U}$ | 1 | $\mathbb{X}$ | 1 | $\mathbb{O}$ | 1  |
+|  $\mathbb{E}$ | 1 | $\mathbb{R}$ | 1 | $\mathbb{I}$ | 1 | $\mathbb{D}$ | 9  |
+|  $\mathbb{X}$ | 1 | $\mathbb{R}$ | 1 | $\mathbb{R}$ | 1 | $\mathbb{O}$ | 1  |
+|  $\mathbb{U}$ | 1 | $\mathbb{R}$ | 1 | $\mathbb{X}$ | 1 | $\mathbb{U}$ | 1  |
+|  $\mathbb{U}$ | 3 | $\mathbb{R}$ | 1 | $\mathbb{X}$ | 39 | $\mathbb{A}$ | 1  |
+|  $\mathbb{U}$ | 3 | $\mathbb{R}$ | 1 | $\mathbb{E}$ | 2 | $\mathbb{E}$ | 2  |
+|  $\mathbb{U}$ | 30 | $\mathbb{R}$ | 1 | $\mathbb{U}$ | 1 | $\mathbb{R}$ | 1  |
+|  $\mathbb{U}$ | 8 | $\mathbb{R}$ | 2 | $\mathbb{U}$ | 1 | $\mathbb{U}$ | 1  |
+|  $\mathbb{U}$ | 4 | $\mathbb{R}$ | 1 | $\mathbb{R}$ | 1 | $\mathbb{R}$ | 1  |
+|  $\mathbb{R}$ | 1 | $\mathbb{R}$ | 1 | $\mathbb{R}$ | 1 | $\mathbb{R}$ | 1  |
+|  $\mathbb{O}$ | 1 | $\mathbb{R}$ | 2 | $\mathbb{U}$ | 1 | $\mathbb{U}$ | 1  |
+|  $\mathbb{E}$ | 5 | $\mathbb{R}$ | 1 | $\mathbb{X}$ | 1 | $\mathbb{X}$ | 5  |
+|  $\mathbb{E}$ | 3 | $\mathbb{R}$ | 1 | $\mathbb{R}$ | 1 | $\mathbb{X}$ | 2  |
+|  $\mathbb{R}$ | 1 | $\mathbb{R}$ | 1 | $\mathbb{R}$ | 7 | $\mathbb{R}$ | 1  |
+|  $\mathbb{R}$ | 1 | $\mathbb{O}$ | 2 | $\mathbb{R}$ | 1 | $\mathbb{E}$ | 1  |
+|  $\mathbb{R}$ | 6 | $\mathbb{R}$ | 1 | $\mathbb{R}$ | 4 | $\mathbb{R}$ | 1  |
+|  $\mathbb{R}$ | 10 | $\mathbb{U}$ | 9 | $\mathbb{X}$ | 1 | $\mathbb{U}$ | 1  |
+|  $\mathbb{R}$ | 1 | $\mathbb{U}$ | 2 | $\mathbb{H}$ | 1 | $\mathbb{O}$ | 1  |
+|  $\mathbb{R}$ | 2 | $\mathbb{U}$ | 1 | $\mathbb{A}$ | 1 | $\mathbb{U}$ | 1  |
+
+(Contd.)

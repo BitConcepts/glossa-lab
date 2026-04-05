@@ -1,0 +1,861 @@
+{
+  "corpus": {
+    "source": "Fuls (2023) catalog -- pseudo-sequences from positional statistics",
+    "has_real_sequences": false,
+    "n_inscriptions": 923,
+    "n_tokens": 4513,
+    "distinct_signs": 318,
+    "commit": "8cca43b"
+  },
+  "stats": {
+    "source": "Fuls (2023) catalog -- pseudo-sequences from positional statistics",
+    "has_real_sequences": false,
+    "commit": "8cca43b",
+    "generated_at": "2026-04-05T15:35:10.101558+00:00",
+    "n_inscriptions": 923,
+    "n_tokens": 4513,
+    "distinct_sign_types": 318,
+    "type_token_ratio": 0.070463,
+    "avg_inscription_length": 4.889,
+    "median_inscription_length": 4,
+    "max_inscription_length": 16,
+    "min_inscription_length": 2,
+    "hapax_count": 96,
+    "hapax_fraction": 0.3019,
+    "rare5_count": 249,
+    "rare5_fraction": 0.783,
+    "length_histogram": {
+      "2": 24,
+      "3": 164,
+      "4": 300,
+      "5": 182,
+      "6": 126,
+      "7": 60,
+      "8": 23,
+      "9": 12,
+      "10": 6,
+      "11": 9,
+      "12": 5,
+      "13": 2,
+      "14": 2,
+      "15": 6,
+      "16": 2
+    },
+    "top30_signs": [
+      {
+        "sign": "411",
+        "count": 342
+      },
+      {
+        "sign": "342",
+        "count": 328
+      },
+      {
+        "sign": "550",
+        "count": 280
+      },
+      {
+        "sign": "159",
+        "count": 274
+      },
+      {
+        "sign": "070",
+        "count": 209
+      },
+      {
+        "sign": "412",
+        "count": 201
+      },
+      {
+        "sign": "343",
+        "count": 165
+      },
+      {
+        "sign": "413",
+        "count": 153
+      },
+      {
+        "sign": "017",
+        "count": 142
+      },
+      {
+        "sign": "400",
+        "count": 141
+      },
+      {
+        "sign": "071",
+        "count": 124
+      },
+      {
+        "sign": "018",
+        "count": 123
+      },
+      {
+        "sign": "019",
+        "count": 111
+      },
+      {
+        "sign": "100",
+        "count": 102
+      },
+      {
+        "sign": "020",
+        "count": 91
+      },
+      {
+        "sign": "072",
+        "count": 86
+      },
+      {
+        "sign": "101",
+        "count": 77
+      },
+      {
+        "sign": "102",
+        "count": 65
+      },
+      {
+        "sign": "120",
+        "count": 60
+      },
+      {
+        "sign": "021",
+        "count": 49
+      },
+      {
+        "sign": "103",
+        "count": 49
+      },
+      {
+        "sign": "110",
+        "count": 47
+      },
+      {
+        "sign": "121",
+        "count": 45
+      },
+      {
+        "sign": "300",
+        "count": 45
+      },
+      {
+        "sign": "201",
+        "count": 39
+      },
+      {
+        "sign": "301",
+        "count": 39
+      },
+      {
+        "sign": "202",
+        "count": 37
+      },
+      {
+        "sign": "321",
+        "count": 37
+      },
+      {
+        "sign": "111",
+        "count": 34
+      },
+      {
+        "sign": "200",
+        "count": 33
+      }
+    ]
+  },
+  "entropy": {
+    "H1": 5.946726,
+    "H1_normalised": 0.715363,
+    "H1_types": 318,
+    "H2": 10.359067,
+    "H2_normalised": 0.93166,
+    "H2_types": 2224,
+    "H3": 11.971378,
+    "H3_normalised": 0.99573,
+    "H3_types": 4161,
+    "H4": 12.133147,
+    "H4_normalised": 0.999868,
+    "H4_types": 4497,
+    "H2_H1_ratio": 1.741978,
+    "linguistic_classification": "linguistic"
+  },
+  "null_entropy": {
+    "real_H1": 5.946726,
+    "shuffled_global_H1": 5.946726,
+    "shuffled_within_H1": 5.946726,
+    "unigram_synthetic_H1": 5.919843,
+    "conclusion": "H1 difference from controls is SMALL -- minimal positional structure above unigram"
+  },
+  "affinity": {
+    "candidate_signs": [
+      "017",
+      "018",
+      "019",
+      "020",
+      "021",
+      "100",
+      "101",
+      "102",
+      "103",
+      "110",
+      "111",
+      "120",
+      "121",
+      "122",
+      "150",
+      "151",
+      "152",
+      "153",
+      "154",
+      "155",
+      "156",
+      "157",
+      "159",
+      "160",
+      "161",
+      "163",
+      "164",
+      "165",
+      "166",
+      "168"
+    ],
+    "n_candidates": 30,
+    "vowel_clusters": [
+      [
+        "017",
+        "018",
+        "019",
+        "020",
+        "100",
+        "101",
+        "102",
+        "103",
+        "110",
+        "120",
+        "121",
+        "122",
+        "159"
+      ],
+      [
+        "165",
+        "168"
+      ]
+    ],
+    "consonant_clusters": [
+      [
+        "017",
+        "018",
+        "019",
+        "020",
+        "021",
+        "100",
+        "101",
+        "102",
+        "103",
+        "110",
+        "111",
+        "120",
+        "121",
+        "159"
+      ]
+    ],
+    "n_vowel_clusters": 2,
+    "n_consonant_clusters": 1,
+    "note": "Clusters represent probable shared-vowel (left-context) and shared-consonant (right-context) groupings per Ventris method"
+  },
+  "terminal": {
+    "top_terminal_signs": [
+      {
+        "sign": "342",
+        "count": 201,
+        "rate": 0.2178
+      },
+      {
+        "sign": "159",
+        "count": 146,
+        "rate": 0.1582
+      },
+      {
+        "sign": "070",
+        "count": 123,
+        "rate": 0.1333
+      },
+      {
+        "sign": "343",
+        "count": 95,
+        "rate": 0.1029
+      },
+      {
+        "sign": "550",
+        "count": 94,
+        "rate": 0.1018
+      },
+      {
+        "sign": "071",
+        "count": 74,
+        "rate": 0.0802
+      },
+      {
+        "sign": "072",
+        "count": 49,
+        "rate": 0.0531
+      },
+      {
+        "sign": "101",
+        "count": 11,
+        "rate": 0.0119
+      },
+      {
+        "sign": "019",
+        "count": 8,
+        "rate": 0.0087
+      },
+      {
+        "sign": "018",
+        "count": 8,
+        "rate": 0.0087
+      },
+      {
+        "sign": "017",
+        "count": 7,
+        "rate": 0.0076
+      },
+      {
+        "sign": "100",
+        "count": 6,
+        "rate": 0.0065
+      },
+      {
+        "sign": "201",
+        "count": 4,
+        "rate": 0.0043
+      },
+      {
+        "sign": "120",
+        "count": 4,
+        "rate": 0.0043
+      },
+      {
+        "sign": "413",
+        "count": 4,
+        "rate": 0.0043
+      },
+      {
+        "sign": "110",
+        "count": 4,
+        "rate": 0.0043
+      },
+      {
+        "sign": "411",
+        "count": 4,
+        "rate": 0.0043
+      },
+      {
+        "sign": "121",
+        "count": 3,
+        "rate": 0.0033
+      },
+      {
+        "sign": "164",
+        "count": 3,
+        "rate": 0.0033
+      },
+      {
+        "sign": "321",
+        "count": 3,
+        "rate": 0.0033
+      }
+    ],
+    "top_terminal_bigrams": [
+      {
+        "bigram": "017+342",
+        "count": 15
+      },
+      {
+        "bigram": "019+159",
+        "count": 11
+      },
+      {
+        "bigram": "019+342",
+        "count": 10
+      },
+      {
+        "bigram": "411+342",
+        "count": 10
+      },
+      {
+        "bigram": "100+342",
+        "count": 10
+      },
+      {
+        "bigram": "020+342",
+        "count": 10
+      },
+      {
+        "bigram": "018+159",
+        "count": 10
+      },
+      {
+        "bigram": "018+070",
+        "count": 9
+      },
+      {
+        "bigram": "342+070",
+        "count": 9
+      },
+      {
+        "bigram": "342+342",
+        "count": 8
+      },
+      {
+        "bigram": "018+071",
+        "count": 8
+      },
+      {
+        "bigram": "411+550",
+        "count": 8
+      },
+      {
+        "bigram": "342+159",
+        "count": 8
+      },
+      {
+        "bigram": "411+159",
+        "count": 8
+      },
+      {
+        "bigram": "018+342",
+        "count": 7
+      }
+    ],
+    "top_terminal_trigrams": [
+      {
+        "trigram": "017+020+342",
+        "count": 3
+      },
+      {
+        "trigram": "411+017+342",
+        "count": 3
+      },
+      {
+        "trigram": "412+017+072",
+        "count": 2
+      },
+      {
+        "trigram": "070+017+342",
+        "count": 2
+      },
+      {
+        "trigram": "550+103+342",
+        "count": 2
+      },
+      {
+        "trigram": "413+343+159",
+        "count": 2
+      },
+      {
+        "trigram": "021+100+342",
+        "count": 2
+      },
+      {
+        "trigram": "411+019+550",
+        "count": 2
+      },
+      {
+        "trigram": "413+412+070",
+        "count": 2
+      },
+      {
+        "trigram": "159+159+342",
+        "count": 2
+      }
+    ],
+    "attachment_profiles": {
+      "342": {
+        "distinct_preceding": 79,
+        "total_occurrences": 201,
+        "attachment_entropy": 5.7174,
+        "terminal_rate": 0.2178,
+        "selectivity": 0.607,
+        "class": "productive_suffix"
+      },
+      "159": {
+        "distinct_preceding": 59,
+        "total_occurrences": 146,
+        "attachment_entropy": 5.3423,
+        "terminal_rate": 0.1582,
+        "selectivity": 0.5959,
+        "class": "productive_suffix"
+      },
+      "070": {
+        "distinct_preceding": 55,
+        "total_occurrences": 123,
+        "attachment_entropy": 5.3284,
+        "terminal_rate": 0.1333,
+        "selectivity": 0.5528,
+        "class": "productive_suffix"
+      },
+      "343": {
+        "distinct_preceding": 54,
+        "total_occurrences": 95,
+        "attachment_entropy": 5.4321,
+        "terminal_rate": 0.1029,
+        "selectivity": 0.4316,
+        "class": "productive_suffix"
+      },
+      "550": {
+        "distinct_preceding": 53,
+        "total_occurrences": 94,
+        "attachment_entropy": 5.394,
+        "terminal_rate": 0.1018,
+        "selectivity": 0.4362,
+        "class": "productive_suffix"
+      },
+      "071": {
+        "distinct_preceding": 44,
+        "total_occurrences": 74,
+        "attachment_entropy": 5.1469,
+        "terminal_rate": 0.0802,
+        "selectivity": 0.4054,
+        "class": "productive_suffix"
+      },
+      "072": {
+        "distinct_preceding": 34,
+        "total_occurrences": 49,
+        "attachment_entropy": 4.8826,
+        "terminal_rate": 0.0531,
+        "selectivity": 0.3061,
+        "class": "productive_suffix"
+      },
+      "101": {
+        "distinct_preceding": 10,
+        "total_occurrences": 11,
+        "attachment_entropy": 3.2776,
+        "terminal_rate": 0.0119,
+        "selectivity": 0.0909,
+        "class": "productive_suffix"
+      },
+      "019": {
+        "distinct_preceding": 7,
+        "total_occurrences": 8,
+        "attachment_entropy": 2.75,
+        "terminal_rate": 0.0087,
+        "selectivity": 0.125,
+        "class": "productive_suffix"
+      },
+      "018": {
+        "distinct_preceding": 6,
+        "total_occurrences": 8,
+        "attachment_entropy": 2.5,
+        "terminal_rate": 0.0087,
+        "selectivity": 0.25,
+        "class": "productive_suffix"
+      },
+      "017": {
+        "distinct_preceding": 7,
+        "total_occurrences": 7,
+        "attachment_entropy": 2.8074,
+        "terminal_rate": 0.0076,
+        "selectivity": 0.0,
+        "class": "productive_suffix"
+      },
+      "100": {
+        "distinct_preceding": 6,
+        "total_occurrences": 6,
+        "attachment_entropy": 2.585,
+        "terminal_rate": 0.0065,
+        "selectivity": 0.0,
+        "class": "productive_suffix"
+      },
+      "201": {
+        "distinct_preceding": 4,
+        "total_occurrences": 4,
+        "attachment_entropy": 2.0,
+        "terminal_rate": 0.0043,
+        "selectivity": 0.0,
+        "class": "formula_ending"
+      },
+      "120": {
+        "distinct_preceding": 4,
+        "total_occurrences": 4,
+        "attachment_entropy": 2.0,
+        "terminal_rate": 0.0043,
+        "selectivity": 0.0,
+        "class": "formula_ending"
+      },
+      "413": {
+        "distinct_preceding": 4,
+        "total_occurrences": 4,
+        "attachment_entropy": 2.0,
+        "terminal_rate": 0.0043,
+        "selectivity": 0.0,
+        "class": "formula_ending"
+      },
+      "110": {
+        "distinct_preceding": 4,
+        "total_occurrences": 4,
+        "attachment_entropy": 2.0,
+        "terminal_rate": 0.0043,
+        "selectivity": 0.0,
+        "class": "formula_ending"
+      },
+      "411": {
+        "distinct_preceding": 4,
+        "total_occurrences": 4,
+        "attachment_entropy": 2.0,
+        "terminal_rate": 0.0043,
+        "selectivity": 0.0,
+        "class": "formula_ending"
+      },
+      "121": {
+        "distinct_preceding": 3,
+        "total_occurrences": 3,
+        "attachment_entropy": 1.585,
+        "terminal_rate": 0.0033,
+        "selectivity": 0.0,
+        "class": "formula_ending"
+      },
+      "164": {
+        "distinct_preceding": 3,
+        "total_occurrences": 3,
+        "attachment_entropy": 1.585,
+        "terminal_rate": 0.0033,
+        "selectivity": 0.0,
+        "class": "formula_ending"
+      },
+      "321": {
+        "distinct_preceding": 3,
+        "total_occurrences": 3,
+        "attachment_entropy": 1.585,
+        "terminal_rate": 0.0033,
+        "selectivity": 0.0,
+        "class": "formula_ending"
+      }
+    },
+    "productive_suffixes": [
+      "071",
+      "072",
+      "070",
+      "342",
+      "159",
+      "550",
+      "343",
+      "017",
+      "101",
+      "019",
+      "018",
+      "100"
+    ],
+    "formula_endings": [
+      "201",
+      "121",
+      "164",
+      "321",
+      "120",
+      "413",
+      "110",
+      "411",
+      "103",
+      "400",
+      "202"
+    ]
+  },
+  "word_structure": {
+    "corpus_mean_length": 4.889,
+    "ranking": [
+      {
+        "profile": "Vedic Sanskrit",
+        "word_length_kl": 0.5697,
+        "mean_length_diff": 1.3795,
+        "rank": 1
+      },
+      {
+        "profile": "Proto-Dravidian",
+        "word_length_kl": 0.6975,
+        "mean_length_diff": 1.5595,
+        "rank": 2
+      },
+      {
+        "profile": "Hurrian",
+        "word_length_kl": 0.8012,
+        "mean_length_diff": 1.6995,
+        "rank": 3
+      },
+      {
+        "profile": "Proto-Semitic",
+        "word_length_kl": 0.8546,
+        "mean_length_diff": 1.7495,
+        "rank": 4
+      },
+      {
+        "profile": "Luwian/Anatolian",
+        "word_length_kl": 0.9018,
+        "mean_length_diff": 1.8295,
+        "rank": 5
+      },
+      {
+        "profile": "Elamite",
+        "word_length_kl": 1.1716,
+        "mean_length_diff": 2.0795,
+        "rank": 6
+      },
+      {
+        "profile": "Sumerian",
+        "word_length_kl": 1.3271,
+        "mean_length_diff": 2.1995,
+        "rank": 7
+      }
+    ],
+    "winner": "Vedic Sanskrit",
+    "winner_kl": 0.5697,
+    "runner_up": "Proto-Dravidian",
+    "runner_up_kl": 0.6975,
+    "margin": 0.1278
+  },
+  "site_replication": {
+    "dholavira": {
+      "n_inscriptions": 154,
+      "avg_length": 5.091,
+      "winner": "Vedic Sanskrit",
+      "winner_kl": 0.7211,
+      "margin": 0.133
+    },
+    "harappa": {
+      "n_inscriptions": 154,
+      "avg_length": 5.286,
+      "winner": "Vedic Sanskrit",
+      "winner_kl": 0.7156,
+      "margin": 0.1288
+    },
+    "kalibangan": {
+      "n_inscriptions": 154,
+      "avg_length": 4.708,
+      "winner": "Vedic Sanskrit",
+      "winner_kl": 0.5574,
+      "margin": 0.135
+    },
+    "lothal": {
+      "n_inscriptions": 154,
+      "avg_length": 4.753,
+      "winner": "Vedic Sanskrit",
+      "winner_kl": 0.6155,
+      "margin": 0.1234
+    },
+    "mohenjo-daro": {
+      "n_inscriptions": 154,
+      "avg_length": 4.747,
+      "winner": "Vedic Sanskrit",
+      "winner_kl": 0.5636,
+      "margin": 0.1105
+    },
+    "other": {
+      "n_inscriptions": 153,
+      "avg_length": 4.752,
+      "winner": "Vedic Sanskrit",
+      "winner_kl": 0.5185,
+      "margin": 0.1358
+    }
+  },
+  "predictive": {
+    "n_splits": 5,
+    "avg_top1_model": 0.1578,
+    "avg_top3_model": 0.3816,
+    "avg_top1_freq_baseline": 0.2151,
+    "avg_top1_unigram_baseline": 0.0043,
+    "model_vs_freq_delta": -0.0573,
+    "model_vs_unigram_delta": 0.1535,
+    "beats_frequency_baseline": false,
+    "beats_unigram_baseline": true,
+    "splits": [
+      {
+        "split": 0,
+        "top1_model": 0.1243,
+        "top3_model": 0.3351,
+        "top1_freq_baseline": 0.2108,
+        "top1_unigram_baseline": 0.0
+      },
+      {
+        "split": 1,
+        "top1_model": 0.1946,
+        "top3_model": 0.3784,
+        "top1_freq_baseline": 0.227,
+        "top1_unigram_baseline": 0.0054
+      },
+      {
+        "split": 2,
+        "top1_model": 0.1622,
+        "top3_model": 0.4,
+        "top1_freq_baseline": 0.2108,
+        "top1_unigram_baseline": 0.0
+      },
+      {
+        "split": 3,
+        "top1_model": 0.1405,
+        "top3_model": 0.3784,
+        "top1_freq_baseline": 0.1946,
+        "top1_unigram_baseline": 0.0108
+      },
+      {
+        "split": 4,
+        "top1_model": 0.1676,
+        "top3_model": 0.4162,
+        "top1_freq_baseline": 0.2324,
+        "top1_unigram_baseline": 0.0054
+      }
+    ]
+  },
+  "adversarial": {
+    "real": {
+      "winner": "Vedic Sanskrit",
+      "winner_kl": 0.5697,
+      "H1": 5.946726
+    },
+    "global_shuffle": {
+      "winner": "Vedic Sanskrit",
+      "winner_kl": 0.5697,
+      "H1": 5.946726,
+      "H1_normalised": 0.715363
+    },
+    "within_shuffle": {
+      "winner": "Vedic Sanskrit",
+      "winner_kl": 0.5697,
+      "H1": 5.946726,
+      "H1_normalised": 0.715363
+    },
+    "unigram_synthetic": {
+      "winner": "Vedic Sanskrit",
+      "winner_kl": 0.5697,
+      "H1": 5.919843,
+      "H1_normalised": 0.730077
+    },
+    "conclusion": "FAIL: Null controls produce same winner -- structure may not exceed noise"
+  },
+  "convergence": {
+    "channel_scores": {
+      "entropy_linguistic": "strong",
+      "terminal_marker_system": "moderate",
+      "word_structure_family": "moderate",
+      "affinity_grid": "weak",
+      "predictive_validation": "none",
+      "null_controls": "weak"
+    },
+    "overall_convergence": "weak",
+    "n_strong": 1,
+    "n_moderate_plus": 3,
+    "total_strength": 9,
+    "escalation_triggers": {
+      "A_strong_convergence": false,
+      "B_predictive_success": false,
+      "C_replication": true,
+      "D_null_failure": false,
+      "E_emergent_segmentation": true,
+      "F_structural_interpretability": false
+    },
+    "triggers_met": 2,
+    "escalate_to_phase2": false,
+    "claim_level": 0,
+    "claim": "Level 0 -- No decipherment signal beyond general linguistic behaviour",
+    "winner_family": "Vedic Sanskrit"
+  }
+}

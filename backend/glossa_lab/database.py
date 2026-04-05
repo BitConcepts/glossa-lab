@@ -16,6 +16,8 @@ import aiosqlite
 
 logger = logging.getLogger(__name__)
 
+# Increment this when adding a new _SCHEMA_Vn block below.
+# _apply_schema will raise if the DB is somehow ahead of the code.
 _SCHEMA_VERSION = 3
 
 _SCHEMA_V1 = """
@@ -119,6 +121,12 @@ class Database:
             await self._conn.executescript(_SCHEMA_V3)
             await self._conn.execute("UPDATE _schema_version SET version = ?", (3,))
 
+        if current_version > _SCHEMA_VERSION:
+            logger.warning(
+                "DB schema version %s is ahead of code version %s",
+                current_version,
+                _SCHEMA_VERSION,
+            )
         await self._conn.commit()
 
     # ── Jobs ─────────────────────────────────────────────────────────

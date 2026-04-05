@@ -34,11 +34,13 @@ import {
   listExperiments,
   listStudies,
   getPipelineCatalog,
+  runStudy,
   updateStudy,
   type ExperimentMeta,
   type CatalogPipeline,
   type StudyResponse,
   type StudyGraph,
+  type StudyRunResult,
 } from "../api";
 
 // ── Node data shape ────────────────────────────────────────────────────
@@ -143,6 +145,9 @@ export function StudyBuilderView() {
   const [selectedNode, setSelectedNode] = useState<Node<NodeData> | null>(null);
   const [saving, setSaving] = useState(false);
   const [saveMsg, setSaveMsg] = useState<string | null>(null);
+  const [running, setRunning] = useState(false);
+  const [runResult, setRunResult] = useState<StudyRunResult | null>(null);
+  const [runError, setRunError] = useState<string | null>(null);
   const [newStudyName, setNewStudyName] = useState("");
   const [palFilter, setPalFilter] = useState<"all" | "experiment" | "pipeline">("all");
   const [palSearch, setPalSearch] = useState("");
@@ -220,6 +225,21 @@ export function StudyBuilderView() {
       setSaveMsg("Save failed");
     } finally {
       setSaving(false);
+    }
+  };
+
+  const handleRun = async () => {
+    if (!activeStudy) return;
+    setRunning(true);
+    setRunResult(null);
+    setRunError(null);
+    try {
+      const res = await runStudy(activeStudy.id);
+      setRunResult(res);
+    } catch (e: unknown) {
+      setRunError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setRunning(false);
     }
   };
 
@@ -314,6 +334,18 @@ export function StudyBuilderView() {
               {saveMsg}
             </span>
           )}
+          <button
+            onClick={() => void handleRun()}
+            disabled={running || !activeStudy || !nodes.length}
+            title="Run all experiment nodes in topological order"
+            style={{
+              ...btnPrimary,
+              background: running ? "#7c3aed" : "#16a34a",
+              marginRight: 4,
+            }}
+          >
+            {running ? "Running…" : "▶ Run Study"}
+          </button>
           <button
             onClick={handleSave}
             disabled={saving || !activeStudy}
@@ -468,6 +500,80 @@ export function StudyBuilderView() {
           onClose={() => setSelectedNode(null)}
         />
       </div>
+
+      {runError && (
+        <div style={{
+          marginTop: 8, padding: "10px 14px",
+          background: "#fef2f2", border: "1px solid #fca5a5",
+          borderRadius: 6, fontSize: 12, color: "#b91c1c",
+        }}>
+          Run failed: {runError}
+        </div>
+      )}
+
+      {runResult && (
+        <div style={{
+          marginTop: 8, border: "1px solid #e5e7eb",
+          borderRadius: 8, overflow: "hidden",
+        }}>
+          <div style={{
+            background: "#f0fdf4", padding: "8px 14px",
+            borderBottom: "1px solid #e5e7eb",
+            display: "flex", gap: 16, alignItems: "center",
+          }}>
+            <span style={{ fontSize: 12, fontWeight: 700, color: "#15803d" }}>Study Run Results</span>
+            <span style={{ fontSize: 11, color: "#6b7280" }}>
+              {runResult.completed} completed · {runResult.skipped} skipped · {runResult.errors} errors
+              {" "}· {runResult.node_count} total nodes
+            </span>
+            <button
+              onClick={() => setRunResult(null)}
+              style={{ marginLeft: "auto", border: "none", background: "none", cursor: "pointer", fontSize: 12, color: "#9ca3af" }}
+            >× dismiss</button>
+          </div>
+          <div style={{ overflowX: "auto" }}>
+            {Object.entries(runResult.results).map(([nodeId, res]) => {
+              const statusColor = res.status === "complete" ? "#16a34a" : res.status === "error" ? "#b91c1c" : "#d97706";
+              const statusBg = res.status === "complete" ? "#f0fdf4" : res.status === "error" ? "#fef2f2" : "#fef3c7";
+              // Find the node label from the canvas
+              const nodeLabel = nodes.find((n) => n.id === nodeId)?.data?.label as string | undefined;
+              return (
+                <div key={nodeId} style={{
+                  display: "flex", alignItems: "flex-start", gap: 10,
+                  padding: "8px 14px", borderBottom: "1px solid #f3f4f6",
+                }}>
+                  <span style={{
+                    fontSize: 10, padding: "2px 7px", borderRadius: 8,
+                    background: statusBg, color: statusColor, fontWeight: 700,
+                    whiteSpace: "nowrap", marginTop: 1,
+                  }}>
+                    {res.status}
+                  </span>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 12, fontWeight: 600, color: "#374151", marginBottom: 2 }}>
+                      {nodeLabel ?? nodeId}
+                    </div>
+                    {res.reason && (
+                      <div style={{ fontSize: 11, color: "#6b7280" }}>{res.reason}</div>
+                    )}
+                    {res.status === "complete" && res.result && (
+                      <pre style={{
+                        background: "#1e293b", color: "#e2e8f0",
+                        margin: "4px 0 0", padding: "6px 10px",
+                        fontSize: 10, fontFamily: "monospace",
+                        borderRadius: 4, overflowX: "auto",
+                        maxHeight: 120,
+                      }}>
+                        {JSON.stringify(res.result, null, 2)}
+                      </pre>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       <p style={{ fontSize: 12, color: "#9ca3af", marginTop: 8, marginBottom: 0 }}>
         Drag items from the palette onto the canvas. Connect nodes by dragging between handles. Click a node to inspect it. Save stores the graph to the backend.

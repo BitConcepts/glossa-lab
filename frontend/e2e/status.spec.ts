@@ -11,7 +11,9 @@ import { test, expect } from "@playwright/test";
 test.describe("Status view structure", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
-    // Status is the default tab, no click needed
+    // Default tab is 'Indus Studies' — navigate to Status first
+    await page.getByRole("button", { name: "Status" }).click();
+    await expect(page.getByRole("heading", { name: "System Status" })).toBeVisible();
   });
 
   test("shows System Status heading", async ({ page }) => {
@@ -43,6 +45,7 @@ test.describe("Status view with backend", () => {
 
   test("shows healthy status when backend is running", async ({ page }) => {
     await page.goto("/");
+    await page.getByRole("button", { name: "Status" }).click();
     await expect(page.getByText(/healthy/i)).toBeVisible({ timeout: 8000 });
   });
 

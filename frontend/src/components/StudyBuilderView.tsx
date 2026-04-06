@@ -243,7 +243,16 @@ export function StudyBuilderView() {
     }
   };
 
-  const handleDeleteStudy = async (id: string) => {
+  const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+
+  const handleDeleteStudy = async (id: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (deleteConfirm !== id) {
+      setDeleteConfirm(id);
+      setTimeout(() => setDeleteConfirm(null), 3000); // auto-cancel after 3s
+      return;
+    }
+    setDeleteConfirm(null);
     await deleteStudy(id);
     setStudies((prev) => prev.filter((s) => s.id !== id));
     if (activeStudy?.id === id) {
@@ -375,10 +384,15 @@ export function StudyBuilderView() {
               >
                 <span style={{ fontSize: 12, fontWeight: 500, flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{s.name}</span>
                 <button
-                  onClick={(e) => { e.stopPropagation(); void handleDeleteStudy(s.id); }}
-                  style={{ border: "none", background: "none", cursor: "pointer", fontSize: 11, color: activeStudy?.id === s.id ? "#fff" : "#9ca3af", padding: "0 2px" }}
-                  title="Delete study"
-                >✕</button>
+                  onClick={(e) => void handleDeleteStudy(s.id, e)}
+                  style={{
+                    border: deleteConfirm === s.id ? "1px solid #fca5a5" : "none",
+                    background: deleteConfirm === s.id ? "#fef2f2" : "none",
+                    color: deleteConfirm === s.id ? "#b91c1c" : (activeStudy?.id === s.id ? "#fff" : "#9ca3af"),
+                    cursor: "pointer", fontSize: 11, borderRadius: 3, padding: "0 4px",
+                  }}
+                  title={deleteConfirm === s.id ? "Click again to confirm" : "Delete study"}
+                >{deleteConfirm === s.id ? "Sure?" : "✕"}</button>
               </div>
             ))}
             <div style={{ display: "flex", gap: 5, marginTop: 6 }}>

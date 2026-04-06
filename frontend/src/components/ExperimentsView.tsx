@@ -349,23 +349,19 @@ function ExperimentCard({ exp, onDeleted, onDuplicated }: CardProps) {
           {duplicating ? "…" : "⎆"}
         </button>
 
-        {exp.custom ? (
-          <button
-            onClick={handleDelete}
-            disabled={deleting}
-            title={confirmDelete ? "Click again to confirm" : "Delete experiment"}
-            style={{
-              ...btnSmall,
-              background: confirmDelete ? "#fef2f2" : "#f3f4f6",
-              color: confirmDelete ? "#b91c1c" : "#374151",
-              border: confirmDelete ? "1px solid #fca5a5" : "1px solid transparent",
-            }}
-          >
-            {deleting ? "…" : confirmDelete ? "Confirm?" : "🗑"}
-          </button>
-        ) : (
-          <span style={{ width: 32 }} />
-        )}
+        <button
+          onClick={handleDelete}
+          disabled={deleting}
+          title={confirmDelete ? "Click again to confirm delete" : exp.custom ? "Delete experiment" : "Delete experiment (built-in — will remove from disk)"}
+          style={{
+            ...btnSmall,
+            background: confirmDelete ? "#fef2f2" : "#f3f4f6",
+            color: confirmDelete ? "#b91c1c" : "#6b7280",
+            border: confirmDelete ? "1px solid #fca5a5" : "1px solid #e5e7eb",
+          }}
+        >
+          {deleting ? "…" : confirmDelete ? "Confirm?" : "🗑"}
+        </button>
 
         <span
           style={{ fontSize: 14, color: "#9ca3af", cursor: "pointer", userSelect: "none" }}

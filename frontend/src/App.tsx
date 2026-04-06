@@ -7,21 +7,19 @@ import { ExperimentsView } from "./components/ExperimentsView";
 import { PipelinesView } from "./components/PipelinesView";
 import { SettingsView } from "./components/SettingsView";
 import { ReportsView } from "./components/ReportsView";
-import { PresetsView } from "./components/PresetsView";
 import { StudyBuilderView } from "./components/StudyBuilderView";
 
-type Tab = "status" | "studies" | "builder" | "experiments" | "pipelines" | "corpora" | "jobs" | "reports" | "presets" | "settings";
+type Tab = "status" | "studies" | "builder" | "experiments" | "pipelines" | "corpora" | "jobs" | "reports" | "settings";
 
 const TABS: { id: Tab; label: string; badge?: string }[] = [
   { id: "status",      label: "Status" },
-  { id: "studies",     label: "Indus Studies",  badge: "NEW" },
+  { id: "studies",     label: "Indus Studies" },
   { id: "builder",     label: "Study Builder" },
   { id: "experiments", label: "Experiments" },
-  { id: "pipelines",   label: "Pipelines",      badge: "17" },
+  { id: "pipelines",   label: "Pipelines" },
   { id: "corpora",     label: "Corpora" },
   { id: "jobs",        label: "Jobs" },
   { id: "reports",     label: "Reports" },
-  { id: "presets",     label: "Presets" },
   { id: "settings",    label: "Settings" },
 ];
 
@@ -84,7 +82,6 @@ export function App() {
         {tab === "corpora"     && <CorporaView />}
         {tab === "jobs"        && <JobsView />}
         {tab === "reports"     && <ReportsView />}
-        {tab === "presets"     && <PresetsView />}
         {tab === "settings"    && <SettingsView />}
       </main>
     </div>

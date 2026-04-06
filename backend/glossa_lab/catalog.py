@@ -176,12 +176,15 @@ _PIPELINE_METADATA: dict[str, dict[str, Any]] = {
     },
 }
 
+# Catalog only contains experiments NOT yet registered as ExperimentBase subclasses.
+# All other experiments (structural atlas, Kandles bias, Ventris, etc.) are
+# auto-discovered from backend/glossa_lab/experiments/ via ExperimentBase.
 _EXPERIMENT_CATALOG: list[dict[str, Any]] = [
     {
         "id": "ocr_tables",
         "name": "OCR — Bigram & Frequency Tables",
         "category": "Data Extraction",
-        "description": "OCR Mahadevan table pages and convert extracted signs to Fuls numbering.",
+        "description": "Mistral OCR on Mahadevan (1977) table pages. Extracts bigram matrix.",
         "command": "python ocr_mahadevan.py --target tables",
         "results_file": "reports/mahadevan_bigrams.json",
         "requires_key": "mistral_api_key",
@@ -189,68 +192,13 @@ _EXPERIMENT_CATALOG: list[dict[str, Any]] = [
     },
     {
         "id": "ocr_texts",
-        "name": "OCR — Inscription Sequences",
+        "name": "OCR — Inscription Sequences (2906 texts)",
         "category": "Data Extraction",
-        "description": "OCR Mahadevan inscription pages to extract sequence-level corpora.",
+        "description": "Mistral OCR on Mahadevan (1977) inscription pages. Extracts sign sequences",
         "command": "python ocr_mahadevan.py --target texts",
         "results_file": "reports/mahadevan_texts.json",
         "requires_key": "mistral_api_key",
         "estimated_time": "~2 hours",
-    },
-    {
-        "id": "progression",
-        "name": "Fuls Progression Benchmark",
-        "category": "Validation",
-        "description": "Runs the progression benchmark across the writing-system tiers.",
-        "command": "python -m glossa_lab.experiments.progression_report",
-        "results_file": "reports/progression.json",
-        "estimated_time": "~1 min",
-    },
-    {
-        "id": "indus_atlas",
-        "name": "Indus Structural Atlas",
-        "category": "Analysis",
-        "description": "Generates the full structural atlas over Indus statistics and comparisons.",
-        "command": "python -m glossa_lab.experiments.indus_structural_atlas",
-        "results_file": "reports/indus_structural_atlas.json",
-        "estimated_time": "~1 min",
-    },
-    {
-        "id": "real_catalog",
-        "name": "Real Catalog Analysis",
-        "category": "Analysis",
-        "description": "Analyzes real positional data extracted from the Fuls catalog.",
-        "command": "python analyze_fuls_ebooks.py",
-        "results_file": "reports/real_indus_catalog_analysis.json",
-        "estimated_time": "~1 min",
-    },
-    {
-        "id": "kandles_bias",
-        "name": "Kandles Bias Comparison",
-        "category": "Experiments",
-        "description": "Compares Kandles scores with and without language-specific bias profiles.",
-        "command": "python -m glossa_lab.experiments.run_kandles_biased_experiments --trials 30",
-        "results_file": "reports/kandles_biased_results.json",
-        "estimated_time": "~5 min",
-    },
-    {
-        "id": "ventris_validation",
-        "name": "Ventris Grid Validation (Linear B)",
-        "category": "Validation",
-        "description": "Validates the Ventris-style affinity workflow against Linear B.",
-        "command": "python -m glossa_lab.experiments.ventris_validation",
-        "estimated_time": "~10 sec",
-    },
-    {
-        "id": "markov_model",
-        "name": "Markov Model (Rao 2009 replication)",
-        "category": "Analysis",
-        "description": (
-            "Builds the bigram Markov model once OCR-derived sequence data is available."
-        ),
-        "command": "python ocr_mahadevan.py --target texts",
-        "requires_key": "mistral_api_key",
-        "estimated_time": "After OCR",
     },
 ]
 

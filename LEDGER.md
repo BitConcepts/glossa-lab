@@ -1171,3 +1171,39 @@ Open TODOs:
 Risks: All current results use Fuls (2023) catalog pseudo-sequences or Linear A real data. Real Mahadevan M77 sequences would substantially improve the confidence level of all findings.
 
 Next step: Set API keys in Settings tab, then run OCR experiments from the Experiments tab
+
+
+---
+
+## [2026-04-06] Entry — Full-day session: OCR, real ICIT corpus, UI overhaul, platform work
+
+### Research
+- Kandles bias study (30 MC trials): confirmed Luwian wins Kandles-only (9.94 vs Greek 9.52)
+  with 0.000 delta from bias profiles. Greek wins ONLY with circular vocabulary component.
+- Real ICIT corpus extracted from Fuls (2023) Kindle TXT files:
+  4,325 inscriptions, 15,168 tokens, mean 3.51 signs, H1=0.751 (published: 0.739)
+  Sites: Harappa 1774, Mohenjo-Daro 1710, Dholavira 183, Lothal 170, Kalibangan 143
+  Word-structure typology: Greek wins on length distribution (short administrative texts)
+- Both Kindle PDFs confirmed image-only (no text layer); TXT-based reconstruction is best available
+- Mistral API key verified valid via new verify-key endpoint
+- Mahadevan OCR (inscription sequences) launched in background: 94 / 124 pages done
+
+### Platform / UI
+- Experiments tab: fixed _EXPERIMENTS_DIR path bug (was scanning nonexistent directory)
+  All 8 experiments now auto-discovered; OCR experiments added as ExperimentBase
+- Study Builder: 6 pre-built study seeds seeded on startup; delete with 2-click confirm
+- API key Verify button: tests stored key live against provider API; green/red inline feedback
+- Reports: sortable columns (name/kind/size/updated), kind filter dropdown, View opens popup
+  Popup-blocked detection with red banner + 'Open in new tab' fallback
+- Jobs: Refresh button with last-updated timestamp
+- Presets tab removed (redundant with Study Builder)
+- catalog.py cleaned: _EXPERIMENT_CATALOG trimmed to OCR-only entries
+- setup-os.cmd: fixed restart, pythonw.exe windowless launch, single GlossaLab HKCU entry
+- Tray: start/stop uses service commands; status shows live backend health + uptime
+
+### Future work (recorded as TODOs)
+- Corpora management enhancements (versioning, internet acquisition)
+- Custom dashboard with reporting widgets
+- Visual no-code Study Builder with typed connections and parameter panels
+
+Open: mahadevan_texts.json (OCR completing ~16:00 UTC); run M77 corpus experiments after

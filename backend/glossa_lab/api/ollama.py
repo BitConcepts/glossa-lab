@@ -21,10 +21,61 @@ from typing import Any
 
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
+from pydantic import BaseModel
 
 router = APIRouter(prefix="/ollama", tags=["ollama"])
 
 OLLAMA_BASE = "http://localhost:11434"
+
+# ── Context length recommendations by VRAM tier ────────────────────────────────
+
+_CTX_TIERS: list[dict[str, Any]] = [
+    {
+        "min_vram_gb": 0,
+        "max_vram_gb": 0,
+        "label": "CPU-only",
+        "ctx": 2048,
+        "note": "Limited RAM; keep context small",
+    },
+    {
+        "min_vram_gb": 0,
+        "max_vram_gb": 4,
+        "label": "2-4 GB VRAM",
+        "ctx": 4096,
+        "note": "Suitable for short conversations",
+    },
+    {
+        "min_vram_gb": 4,
+        "max_vram_gb": 8,
+        "label": "4-8 GB VRAM",
+        "ctx": 8192,
+        "note": "Good balance of speed and context",
+    },
+    {
+        "min_vram_gb": 8,
+        "max_vram_gb": 16,
+        "label": "8-16 GB VRAM",
+        "ctx": 16384,
+        "note": "Full document analysis possible",
+    },
+    {
+        "min_vram_gb": 16,
+        "max_vram_gb": 24,
+        "label": "16-24 GB VRAM",
+        "ctx": 32768,
+        "note": "Large research documents",
+    },
+    {
+        "min_vram_gb": 24,
+        "max_vram_gb": 999,
+        "label": "24+ GB VRAM",
+        "ctx": 65536,
+        "note": "Full corpus context possible",
+    },
+]
+
+# Session context length — stored in memory, updated via API
+_session_ctx_length: int = 4096
 
 
 # ── Curated model library ─────────────────────────────────────────────────────
@@ -186,6 +237,43 @@ def _is_running() -> bool:
 # ── Endpoints ──────────────────────────────────────────────────────────────────
 
 
+def _recommended_ctx(vram_gb: float) -> dict[str, Any]:
+    """Return context-length recommendation for the given VRAM amount."""
+    for tier in reversed(_CTX_TIERS):
+        if vram_gb >= tier["min_vram_gb"] or (
+            vram_gb == 0 and tier["min_vram_gb"] == 0 and tier["max_vram_gb"] == 0
+        ):
+            return tier
+    return _CTX_TIERS[0]  # fallback: CPU-only
+
+
+class ContextConfigRequest(BaseModel):
+    ctx_length: int
+
+
+@router.get("/context-config")
+async def get_context_config() -> dict[str, Any]:
+    """Return current session context length and all available tiers."""
+    return {
+        "session_ctx_length": _session_ctx_length,
+        "tiers": _CTX_TIERS,
+        "all_options": [512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072],
+    }
+
+
+@router.post("/context-config")
+async def set_context_config(body: ContextConfigRequest) -> dict[str, Any]:
+    """Set the session context length. Stored in memory until restart."""
+    global _session_ctx_length  # noqa: PLW0603
+    valid = [512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072]
+    if body.ctx_length not in valid:
+        from fastapi import HTTPException
+
+        raise HTTPException(status_code=400, detail=f"ctx_length must be one of: {valid}")
+    _session_ctx_length = body.ctx_length
+    return {"session_ctx_length": _session_ctx_length, "updated": True}
+
+
 @router.get("/status")
 async def ollama_status() -> dict[str, Any]:
     """Check if Ollama is running locally."""
@@ -292,6 +380,7 @@ async def recommend_model() -> dict[str, Any]:
         tier = "high_vram"
         tier_desc = f"{gpu_name} ({vram_gb:.1f} GB VRAM). Large models supported."
 
+    ctx_rec = _recommended_ctx(vram_gb)
     return {
         "gpu_name": gpu_name or "Not detected",
         "vram_gb": round(vram_gb, 1),
@@ -299,6 +388,10 @@ async def recommend_model() -> dict[str, Any]:
         "tier_description": tier_desc,
         "recommended": top_pick,
         "all_fitting": [m["name"] for m in fitting[:5]],
+        "recommended_ctx_length": ctx_rec["ctx"],
+        "ctx_tier_label": ctx_rec["label"],
+        "ctx_tier_note": ctx_rec["note"],
+        "ctx_tiers": _CTX_TIERS,
         "glossa_note": (
             "Mistral NeMo 12B or Mistral 7B are best for Glossa Lab — "
             "they produce clean structured JSON for AI summaries, hypothesis generation, "
@@ -410,10 +503,11 @@ async def _pull_stream(model_name: str) -> AsyncGenerator[str, None]:
         yield f"data: {json.dumps({'status': 'error', 'error': str(exc)})}\n\n"
 
 
-@router.post("/pull/{model_name:path}")
+@router.get("/pull/{model_name:path}")
 async def pull_model(model_name: str) -> StreamingResponse:
-    """Start downloading a model. Returns SSE stream of download progress.
+    """Start downloading a model via SSE stream.
 
+    Uses GET so browsers can use EventSource.
     Each event: {status, digest, total, completed} or {status: 'success'} at end.
     """
     if not _is_running():

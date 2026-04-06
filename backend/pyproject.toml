@@ -70,6 +70,7 @@ known-first-party = ["glossa_lab", "tests"]
 "glossa_lab/api/analysis.py" = ["E501"]
 "glossa_lab/api/ollama.py" = ["E501"]
 "glossa_lab/api/system.py" = ["E501"]
+"glossa_lab/api/terminal.py" = ["E501"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

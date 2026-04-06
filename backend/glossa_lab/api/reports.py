@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import platform
+import subprocess
 from pathlib import Path
 from typing import Any
 
@@ -58,6 +60,26 @@ async def download_report(report_name: str) -> FileResponse:
         filename=path.name,
         headers={"Content-Disposition": f'inline; filename="{path.name}"'},
     )
+
+
+@router.post("/reports/{report_name}/open-folder")
+async def open_report_folder(report_name: str) -> dict[str, Any]:
+    """Open the folder containing the report in the OS file manager."""
+    path = _resolve(report_name)
+    if path is None:
+        raise HTTPException(status_code=404, detail="Report not found")
+    folder = str(path.parent)
+    system = platform.system()
+    try:
+        if system == "Windows":
+            subprocess.Popen(["explorer", folder])
+        elif system == "Darwin":
+            subprocess.Popen(["open", folder])
+        else:
+            subprocess.Popen(["xdg-open", folder])
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+    return {"opened": True, "folder": folder}
 
 
 @router.delete("/reports/{report_name}")

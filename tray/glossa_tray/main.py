@@ -51,6 +51,13 @@ if platform.system() == "Windows":
 else:
     _SHELL = str(_REPO_ROOT / "shell.sh")
 
+_BACKEND_SVC = str(_REPO_ROOT / "scripts" / "run-backend-svc.cmd")
+_BACKEND_LOG = _REPO_ROOT / "logs" / "backend.log"
+
+# Updated by the status poller; read by the dynamic menu item.
+_status_text = "Checking..."
+_status_error = False
+
 
 # ── Icon generation ──────────────────────────────────────────────────
 
@@ -163,38 +170,51 @@ def _run_silent(*cmd: str) -> None:
 
 
 def _start_backend(_icon=None, _item=None) -> None:
-    """Start the backend via the OS service manager — no cmd window.
+    """Start the backend service with no visible window.
 
-    Windows: schtasks /run /tn GlossaLabBackend (Task Scheduler task).
+    Windows: cmd.exe /c run-backend-svc.cmd with CREATE_NO_WINDOW.
     Linux:   systemctl --user start glossa-lab-backend.
     """
     if platform.system() == "Windows":
-        _run_silent("schtasks", "/run", "/tn", "GlossaLabBackend")
+        _run_silent("cmd.exe", "/c", _BACKEND_SVC)
     else:
         _run_silent("systemctl", "--user", "start", "glossa-lab-backend")
 
 
 def _stop_backend(_icon=None, _item=None) -> None:
-    """Stop the backend via the OS service manager — no cmd window.
+    """Stop the backend gracefully via HTTP, then kill if still running.
 
-    Attempts a graceful HTTP shutdown first (lets uvicorn drain in-flight
-    requests), then tells the service manager to end the task/unit.
-
-    Windows: schtasks /end /tn GlossaLabBackend.
-    Linux:   systemctl --user stop glossa-lab-backend.
+    Linux: also tells systemd to stop the unit.
     """
-    # Graceful: ask uvicorn to shut itself down cleanly
     try:
         req = urllib.request.Request(f"{BACKEND_URL}/api/v1/shutdown", method="POST")
         urllib.request.urlopen(req, timeout=3)
     except Exception:
         pass
-
-    # Service manager stop (ensures the task is marked stopped)
-    if platform.system() == "Windows":
-        _run_silent("schtasks", "/end", "/tn", "GlossaLabBackend")
-    else:
+    if platform.system() != "Windows":
         _run_silent("systemctl", "--user", "stop", "glossa-lab-backend")
+
+
+def _open_log(_icon=None, _item=None) -> None:
+    """Open the backend log file in the default text editor."""
+    log = _BACKEND_LOG
+    if not log.exists():
+        return
+    try:
+        if platform.system() == "Windows":
+            os.startfile(str(log))  # type: ignore[attr-defined]
+        elif platform.system() == "Darwin":
+            subprocess.Popen(["open", str(log)])
+        else:
+            subprocess.Popen(["xdg-open", str(log)])
+    except Exception:
+        pass
+
+
+def _on_status_click(_icon=None, _item=None) -> None:
+    """Click the status item: open log when backend is stopped/errored."""
+    if _status_error:
+        _open_log()
 
 
 def _quit(icon, _item=None):
@@ -205,21 +225,32 @@ def _quit(icon, _item=None):
 # ── Status polling thread ────────────────────────────────────────────
 
 def _status_poller(icon: pystray.Icon):
-    """Background thread that polls backend health and updates the icon."""
+    """Background thread that polls backend health and updates the icon and status text."""
+    global _status_text, _status_error  # noqa: PLW0603
     while icon.visible:
         health = _check_health()
         if health is None:
             icon.icon = _create_icon_image("red")
             icon.title = "Glossa Lab — Backend stopped"
+            _status_text = "Backend: Stopped  (click to view log)"
+            _status_error = True
         elif health.get("status") == "healthy":
             icon.icon = _create_icon_image("green")
-            icon.title = f"Glossa Lab — Healthy (v{health.get('version', '?')})"
+            ver = health.get('version', '?')
+            uptime = int(health.get('uptime_seconds', 0))
+            icon.title = f"Glossa Lab — Healthy (v{ver})"
+            _status_text = f"Backend: Healthy  v{ver}  up {uptime}s"
+            _status_error = False
         elif health.get("status") == "degraded":
             icon.icon = _create_icon_image("yellow")
             icon.title = "Glossa Lab — Degraded"
+            _status_text = "Backend: Degraded  (click to view log)"
+            _status_error = True
         else:
             icon.icon = _create_icon_image("grey")
             icon.title = "Glossa Lab — Unknown"
+            _status_text = "Backend: Unknown  (click to view log)"
+            _status_error = True
         time.sleep(POLL_INTERVAL)
 
 
@@ -230,8 +261,11 @@ def main():
     menu = pystray.Menu(
         pystray.MenuItem("Open UI", _open_ui, default=True),
         pystray.Menu.SEPARATOR,
+        pystray.MenuItem(lambda _: _status_text, _on_status_click),
+        pystray.Menu.SEPARATOR,
         pystray.MenuItem("Start Backend", _start_backend),
         pystray.MenuItem("Stop Backend", _stop_backend),
+        pystray.MenuItem("View Backend Log", _open_log),
         pystray.Menu.SEPARATOR,
         pystray.MenuItem(
             "Start on login",

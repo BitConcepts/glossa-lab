@@ -218,11 +218,19 @@ export function SettingsView() {
                       style={{ marginLeft: "auto", fontSize: 12, padding: "3px 6px",
                         borderRadius: 4, border: "1px solid #d1d5db",
                         background: enabled ? "#fff" : "#f9fafb",
-                        cursor: enabled ? "pointer" : "default", maxWidth: 220 }}
+                        cursor: enabled ? "pointer" : "default",
+                        minWidth: 260, maxWidth: 480 }}
                     >
-                      {(details.length > 0 ? details.map((d) => d.id) : p.recommended_models).map(
-                        (m) => <option key={m} value={m}>{m}</option>
-                      )}
+                      {details.length > 0
+                        ? details.map((d) => (
+                            <option key={d.id} value={d.id}>
+                              {d.id}{d.use_for ? ` — ${d.use_for}` : ""}
+                            </option>
+                          ))
+                        : p.recommended_models.map((m) => (
+                            <option key={m} value={m}>{m}</option>
+                          ))
+                      }
                     </select>
                   </div>
                   {/* Model description */}

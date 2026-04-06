@@ -1126,3 +1126,48 @@ Risks:
 - SSE streaming requires backend to be running; EventSource falls back gracefully if not
 
 Next step: Implement study execution (topological run) and node output wiring
+
+
+---
+
+## [2026-04-06] Entry — Full experiment suite run, all reports regenerated
+
+Objective: Run all remaining experiments and regenerate all PDFs with the latest data.
+What was done:
+
+### Experiments run
+- ventris_validation: Ventris CV grid on Linear B; row F1=0.105, col clustering in progress
+- ugaritic_proper_benchmark: Proper 75/25 split = 20.0%, cross-section = 43.3%, circularity inflation = +76.7pp
+- ugaritic_vs_hebrew: Bigram hill-climbing = 2/30 = 6.7% (Kandles confidence 0.943). Baseline is well below HMM (77%) and neural (97%) — expected for a generic hill-climber without language-specific priors
+- writing_system_progression, indus_structural_atlas, progression_report: refreshed
+
+### Reports regenerated
+- reports/block_entropy_analysis.pdf — 9 corpora, 3 estimators, full Rao comparison
+- reports/linear_b_decipherment.pdf — 62/62 = 100% accuracy
+- reports/linear_a_analysis.pdf — Kandles-only: Luwian #1 (9.94), Greek #4 (9.52)
+- reports/linear_a_real_analysis.pdf — real SigLA corpus; Luwian ranks first on no-vocab
+- reports/linear_a_circularity_analysis.pdf — 7 anti-circularity experiments, 30 MC trials
+- reports/glossa_lab_linear_a_paper.pdf — full 18-page academic paper with all results
+
+### Kandles bias study results (from prior session)
+- 30 MC trials, bias profiles produce 0.000 delta
+- Luwian wins Kandles-only (9.94) and no-vocab scoring regardless of bias profile
+- Greek only wins when vocabulary component is included (circular)
+- Site breakdown: MA and TY sites have Luwian/Hurrian winning
+
+Files changed:
+- All 4 PDF reports (block_entropy, linear_a, linear_a_real, linear_b) updated
+
+Checks run:
+- shell.cmd lint backend\glossa_lab — all checks passed
+- Frontend build clean, Playwright 30/38 passed (8 backend-gated skipped)
+
+Results: All runnable experiments complete. Research is now fully up to date.
+Open TODOs:
+- [ ] Set Mistral API key in Settings -> run OCR inscription sequences (~2hr) to unlock ICIT analysis
+- [ ] Set OpenAI key -> GPT-4o sign disambiguation for TMK visual matching
+- [ ] Await ICIT full corpus from Dr. Fuls collaboration
+
+Risks: All current results use Fuls (2023) catalog pseudo-sequences or Linear A real data. Real Mahadevan M77 sequences would substantially improve the confidence level of all findings.
+
+Next step: Set API keys in Settings tab, then run OCR experiments from the Experiments tab

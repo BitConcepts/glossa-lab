@@ -49,22 +49,15 @@ if not exist "%VENV_PYTHONW%" (
 )
 if not exist "%LOG_DIR%" mkdir "%LOG_DIR%"
 
-REM Create (or replace) the single scheduled task.
-REM Runs at user logon with a 10-second delay to let the desktop settle.
-REM No admin required — runs as current user (LIMITED token).
-schtasks /create ^
-  /tn "%TASK_NAME%" ^
-  /tr "\"%VENV_PYTHONW%\" \"%ENTRY_POINT%\"" ^
-  /sc ONLOGON ^
-  /delay 0000:10 ^
-  /rl LIMITED ^
-  /f >nul
+REM Register in HKCU Run: pythonw.exe + .pyw entry point, no cmd.exe wrapper.
+REM pythonw.exe is GUI subsystem — zero console window.
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "%TASK_NAME%" /t REG_SZ /d "\"%VENV_PYTHONW%\" \"%ENTRY_POINT%\"" /f >nul
 if errorlevel 1 (
-    echo [ERROR] Failed to create scheduled task. Try running as administrator once.
+    echo [ERROR] Failed to register autostart entry.
     exit /b 1
 )
 
-echo [OK] Task '%TASK_NAME%' registered — runs at next login.
+echo [OK] '%TASK_NAME%' registered in HKCU Run — starts at next login.
 echo.
 echo To start immediately: setup-os.cmd start
 echo.
@@ -76,7 +69,7 @@ REM ─────────────────────────�
 echo [UNINSTALL] Removing GlossaLab scheduled task...
 call :do_stop_silent
 schtasks /delete /tn "%TASK_NAME%" /f >nul 2>&1
-REM Remove legacy HKCU Run entries if present
+reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "%TASK_NAME%" /f >nul 2>&1
 reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "GlossaLabBackend" /f >nul 2>&1
 reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "GlossaLabTray" /f >nul 2>&1
 echo [OK] Uninstalled.
@@ -85,15 +78,15 @@ exit /b 0
 REM ─────────────────────────────────────────────────────────────
 :do_start
 REM ─────────────────────────────────────────────────────────────
-REM schtasks /run starts a task silently through Task Scheduler service.
-REM No console window because: (a) Task Scheduler creates the process
-REM outside any console session, (b) pythonw.exe is GUI subsystem.
-schtasks /run /tn "%TASK_NAME%" >nul 2>&1
+REM Start-Process -WindowStyle Hidden fires pythonw.exe in the background
+REM and returns immediately — non-blocking, zero console window.
+powershell -NoProfile -ExecutionPolicy Bypass -Command ^
+  "Start-Process -FilePath '%VENV_PYTHONW%' -ArgumentList '"%ENTRY_POINT%"' -WindowStyle Hidden"
 if errorlevel 1 (
-    echo [WARN] Task not registered. Run 'setup-os.cmd install' first.
+    echo [ERROR] Failed to start GlossaLab.
     exit /b 1
 )
-echo [OK] GlossaLab task started. Tray will appear shortly.
+echo [OK] GlossaLab started. Tray will appear shortly.
 exit /b 0
 
 REM ─────────────────────────────────────────────────────────────
@@ -106,8 +99,10 @@ exit /b 0
 :do_stop_silent
 REM 1. Graceful backend shutdown via HTTP (curl — never hangs PTY)
 curl.exe -sf --max-time 3 -X POST "http://localhost:8001/api/v1/shutdown" >nul 2>&1
-REM 2. End the scheduled task (kills the tray pythonw.exe process)
-schtasks /end /tn "%TASK_NAME%" >nul 2>&1
+REM 2. Kill the tray pythonw.exe (search by entry-point path in command line)
+for /f "tokens=2" %%p in ('tasklist /fi "IMAGENAME eq pythonw.exe" /fo csv /nh 2^>nul') do (
+    taskkill /F /PID %%~p >nul 2>&1
+)
 REM 3. Force-kill any leftover pythonw.exe on the backend port just in case
 for /f "tokens=5" %%p in ('netstat -ano 2^>nul ^| findstr ":8001.*LISTENING"') do (
     taskkill /F /PID %%p >nul 2>&1
@@ -128,7 +123,12 @@ REM ─────────────────────────�
 REM ─────────────────────────────────────────────────────────────
 echo.
 echo ── GlossaLab Status ──────────────────────────────────────
-schtasks /query /tn "%TASK_NAME%" /fo LIST 2>nul | findstr /i "TaskName Status Last Run"
+reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "%TASK_NAME%" >nul 2>&1
+if not errorlevel 1 (
+    echo   Autostart: registered in HKCU Run
+) else (
+    echo   Autostart: NOT registered  (run: setup-os.cmd install)
+)
 echo.
 call :check_health
 if "%HEALTH_OK%"=="1" (

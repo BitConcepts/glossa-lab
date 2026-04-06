@@ -1,7 +1,8 @@
 /**
- * Lightweight toast notification system.
+ * Lightweight toast notification system + persistent notification history.
  * Usage: const { toast } = useToast();
  *        toast("Saved!", "success");
+ * Notifications are also stored in a persistent history accessible via useNotifications().
  */
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 
@@ -13,16 +14,37 @@ export interface Toast {
   type: ToastType;
 }
 
-interface ToastCtx {
-  toast: (message: string, type?: ToastType, duration?: number) => void;
+export interface Notification {
+  id: number;
+  message: string;
+  type: ToastType;
+  timestamp: number;
+  read: boolean;
 }
 
-const ToastContext = createContext<ToastCtx>({ toast: () => {} });
+interface ToastCtx {
+  toast: (message: string, type?: ToastType, duration?: number) => void;
+  notifications: Notification[];
+  unreadCount: number;
+  markAllRead: () => void;
+  clearNotification: (id: number) => void;
+  clearAllNotifications: () => void;
+}
+
+const ToastContext = createContext<ToastCtx>({
+  toast: () => {},
+  notifications: [],
+  unreadCount: 0,
+  markAllRead: () => {},
+  clearNotification: () => {},
+  clearAllNotifications: () => {},
+});
 
 let _counter = 0;
 
 export function ToastProvider({ children }: { children: React.ReactNode }) {
   const [toasts, setToasts] = useState<Toast[]>([]);
+  const [notifications, setNotifications] = useState<Notification[]>([]);
   const timers = useRef<Map<number, ReturnType<typeof setTimeout>>>(new Map());
 
   const dismiss = useCallback((id: number) => {
@@ -34,9 +56,24 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
   const toast = useCallback((message: string, type: ToastType = "info", duration = 3500) => {
     const id = ++_counter;
     setToasts((prev) => [...prev.slice(-5), { id, message, type }]);
+    // Also persist to notification history
+    setNotifications((prev) => [
+      { id, message, type, timestamp: Date.now(), read: false },
+      ...prev.slice(0, 99), // keep max 100
+    ]);
     const timer = setTimeout(() => dismiss(id), duration);
     timers.current.set(id, timer);
   }, [dismiss]);
+
+  const markAllRead = useCallback(() =>
+    setNotifications((prev) => prev.map((n) => ({ ...n, read: true }))), []);
+
+  const clearNotification = useCallback((id: number) =>
+    setNotifications((prev) => prev.filter((n) => n.id !== id)), []);
+
+  const clearAllNotifications = useCallback(() => setNotifications([]), []);
+
+  const unreadCount = notifications.filter((n) => !n.read).length;
 
   useEffect(() => () => { timers.current.forEach(clearTimeout); }, []);
 
@@ -45,7 +82,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <ToastContext.Provider value={{ toast }}>
+    <ToastContext.Provider value={{ toast, notifications, unreadCount, markAllRead, clearNotification, clearAllNotifications }}>
       {children}
       <div style={{
         position: "fixed", bottom: 20, right: 20, display: "flex",

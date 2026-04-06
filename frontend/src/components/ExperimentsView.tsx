@@ -17,10 +17,9 @@ import {
   listExperiments,
   reloadExperiments,
   runExperiment,
-  summarizeExperiment,
-  type AISummaryResult,
   type ExperimentMeta,
 } from "../api";
+import { useAIChat } from "../hooks/useAIChat";
 
 const CATEGORY_COLORS: Record<string, string> = {
   "Data Extraction": "#7c3aed",
@@ -144,116 +143,6 @@ function GenerateDialog({ onClose, onCreated }: GenerateDialogProps) {
   );
 }
 
-// ── AI summary panel ─────────────────────────────────────────────────────────
-
-function SummaryPanel({
-  summary,
-  onClose,
-  onCreateStudy,
-  onGenerateExperiment,
-}: {
-  summary: AISummaryResult;
-  onClose: () => void;
-  onCreateStudy?: (hint: string) => void;
-  onGenerateExperiment?: (hint: string) => void;
-}) {
-  return (
-    <div style={{
-      marginTop: "1rem",
-      border: "1px solid #a78bfa",
-      borderRadius: 8,
-      overflow: "hidden",
-      background: "#faf5ff",
-    }}>
-      {/* Header */}
-      <div style={{
-        display: "flex", justifyContent: "space-between", alignItems: "center",
-        background: "#7c3aed", padding: "8px 14px",
-      }}>
-        <span style={{ color: "#fff", fontWeight: 700, fontSize: 13 }}>✨ AI Summary</span>
-        <button
-          onClick={onClose}
-          style={{ border: "none", background: "none", color: "rgba(255,255,255,0.8)", cursor: "pointer", fontSize: 16, padding: 0 }}
-        >✕</button>
-      </div>
-
-      <div style={{ padding: "14px 16px", display: "flex", flexDirection: "column", gap: 12 }}>
-        {/* Abstract */}
-        <div>
-          <div style={{ fontSize: 11, fontWeight: 700, color: "#7c3aed", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 4 }}>Abstract</div>
-          <p style={{ margin: 0, fontSize: 13, lineHeight: 1.6, color: "#1f2937" }}>{summary.abstract}</p>
-        </div>
-
-        {/* Hypothesis */}
-        {summary.hypothesis && (
-          <div>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#7c3aed", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 4 }}>Hypothesis</div>
-            <p style={{ margin: 0, fontSize: 13, lineHeight: 1.6, color: "#374151", fontStyle: "italic" }}>{summary.hypothesis}</p>
-          </div>
-        )}
-
-        {/* Highlights */}
-        {summary.highlights?.length > 0 && (
-          <div>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#7c3aed", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 6 }}>Key Highlights</div>
-            <ul style={{ margin: 0, paddingLeft: 20, display: "flex", flexDirection: "column", gap: 3 }}>
-              {summary.highlights.map((h, i) => (
-                <li key={i} style={{ fontSize: 13, lineHeight: 1.5, color: "#1f2937" }}>{h}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {/* Insights */}
-        {summary.insights && (
-          <div>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#7c3aed", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 4 }}>Insights & Implications</div>
-            <p style={{ margin: 0, fontSize: 13, lineHeight: 1.6, color: "#374151" }}>{summary.insights}</p>
-          </div>
-        )}
-
-        {/* Next Steps */}
-        {summary.next_steps?.length > 0 && (
-          <div>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#7c3aed", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 6 }}>Next Steps</div>
-            <ul style={{ margin: 0, paddingLeft: 20, display: "flex", flexDirection: "column", gap: 3 }}>
-              {summary.next_steps.map((s, i) => (
-                <li key={i} style={{ fontSize: 13, lineHeight: 1.5, color: "#374151" }}>{s}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {/* Suggested Actions */}
-        {summary.suggested_actions?.length > 0 && (
-          <div>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#7c3aed", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 6 }}>Suggested Actions</div>
-            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-              {summary.suggested_actions.map((a, i) => (
-                <button
-                  key={i}
-                  title={a.hint}
-                  onClick={() => {
-                    if (a.action === "create_study" && onCreateStudy) onCreateStudy(a.hint);
-                    if (a.action === "generate_experiment" && onGenerateExperiment) onGenerateExperiment(a.hint);
-                  }}
-                  style={{
-                    padding: "6px 14px", borderRadius: 6, border: "1px solid #7c3aed",
-                    background: "#7c3aed", color: "#fff", cursor: "pointer",
-                    fontSize: 12, fontWeight: 600,
-                  }}
-                >
-                  {a.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
 // ── Experiment card ───────────────────────────────────────────────────────────
 
 interface CardProps {
@@ -273,9 +162,7 @@ function ExperimentCard({ exp, onDeleted, onDuplicated }: CardProps) {
   const [deleting, setDeleting] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [duplicating, setDuplicating] = useState(false);
-  const [summarizing, setSummarizing] = useState(false);
-  const [summary, setSummary] = useState<AISummaryResult | null>(null);
-  const [summarizeError, setSummarizeError] = useState<string | null>(null);
+  const { openChat } = useAIChat();
 
   const color = catColor(exp.category);
   const needsKey = Boolean(exp.requires_key && !isLocalKeySet(exp.requires_key));
@@ -374,19 +261,13 @@ function ExperimentCard({ exp, onDeleted, onDuplicated }: CardProps) {
     }
   };
 
-  const handleSummarize = async () => {
-    setSummarizing(true);
-    setSummarizeError(null);
-    setSummary(null);
-    if (!expanded) setExpanded(true);
-    try {
-      const result = await summarizeExperiment(exp.id);
-      setSummary(result);
-    } catch (e: unknown) {
-      setSummarizeError(e instanceof Error ? e.message : String(e));
-    } finally {
-      setSummarizing(false);
-    }
+  const handleSummarize = () => {
+    openChat({
+      contextType: "experiment",
+      contextId: exp.id,
+      contextLabel: exp.name,
+      initialPrompt: `Please summarize the experiment "${exp.name}" (${exp.category}): ${exp.description}\n\nProvide: abstract, hypothesis, key highlights, insights, and next research steps.`,
+    });
   };
 
   return (
@@ -472,15 +353,10 @@ function ExperimentCard({ exp, onDeleted, onDuplicated }: CardProps) {
 
         <button
           onClick={handleSummarize}
-          disabled={summarizing}
-          title="AI summary — abstract, hypothesis, highlights, insights, next steps"
-          style={{
-            ...btnSmall,
-            background: summarizing ? "#f3e8ff" : "#f3f4f6",
-            color: summarizing ? "#7c3aed" : "#374151",
-          }}
+          title="Open AI Chat with this experiment as context"
+          style={{ ...btnSmall, background: "#f3f4f6", color: "#374151" }}
         >
-          {summarizing ? "✨…" : "✨ AI"}
+          ✨ AI
         </button>
 
         <button
@@ -575,24 +451,6 @@ function ExperimentCard({ exp, onDeleted, onDuplicated }: CardProps) {
                 {streamLines.join("\n")}
               </pre>
             </div>
-          )}
-
-          {summarizeError && (
-            <div style={{
-              marginTop: "0.75rem",
-              padding: "8px 12px", background: "#fef2f2",
-              border: "1px solid #fca5a5", borderRadius: 6,
-              fontSize: 12, color: "#b91c1c",
-            }}>
-              AI error: {summarizeError}
-            </div>
-          )}
-
-          {summary && (
-            <SummaryPanel
-              summary={summary}
-              onClose={() => setSummary(null)}
-            />
           )}
 
           {(runResult !== null || runError !== null) && (

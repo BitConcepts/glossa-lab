@@ -45,6 +45,7 @@ import {
   type StudyGraph,
   type StudyRunResult,
 } from "../api";
+import { useAIChat } from "../hooks/useAIChat";
 
 // ── Node data shape ────────────────────────────────────────────────────
 
@@ -293,6 +294,7 @@ export function StudyBuilderView() {
   const [palFilter, setPalFilter] = useState<"all" | "experiment" | "pipeline">("all");
   const [palSearch, setPalSearch] = useState("");
   const [showDesign, setShowDesign] = useState(false);
+  const { openChat } = useAIChat();
   const [studySummarizing, setStudySummarizing] = useState(false);
   const [studySummary, setStudySummary] = useState<AISummaryResult | null>(null);
   const [studySummaryError, setStudySummaryError] = useState<string | null>(null);
@@ -517,8 +519,15 @@ export function StudyBuilderView() {
             {studySummarizing ? "✨…" : "✨ AI"}
           </button>
           <button
-            onClick={() => setShowDesign(true)}
-            title="AI Design Study — generate a study graph from a description"
+            onClick={() => openChat({
+              contextType: activeStudy ? "study" : "",
+              contextId: activeStudy?.id ?? "",
+              contextLabel: activeStudy?.name,
+              initialPrompt: activeStudy
+                ? `Please help me improve this study called "${activeStudy.name}". Suggest additional experiments, identify gaps, and describe what insights we could gain.`
+                : "I want to design a new research study for Glossa Lab. Please help me choose a good name and a clear research goal, then I'll describe what I want to investigate.",
+            })}
+            title="AI Design Study — opens AI Chat with study context"
             style={{ ...btnPrimary, background: "#7c3aed" }}
           >
             ✨ Design

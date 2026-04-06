@@ -11,19 +11,22 @@ import { StudyBuilderView } from "./components/StudyBuilderView";
 import { EntropyDashboard } from "./components/EntropyDashboard";
 import { HypothesisTracker } from "./components/HypothesisTracker";
 import { ResearchNotebook } from "./components/ResearchNotebook";
-import { AIChatView } from "./components/AIChatView";
 import { AIToolsView } from "./components/AIToolsView";
 import { SignDictionary } from "./components/SignDictionary";
 import { TimelineView } from "./components/TimelineView";
 import { CitationManager } from "./components/CitationManager";
 import { CommandPalette, type PaletteCommand } from "./components/CommandPalette";
+import { AIChatBubble, AIChatWindow } from "./components/AIChatWindow";
+import { BottomPanel } from "./components/BottomPanel";
+import { NotificationBell, NotificationDrawer } from "./components/NotificationDrawer";
 import { ToastProvider } from "./hooks/useToast";
+import { AIChatProvider } from "./hooks/useAIChat";
 import { getHealth } from "./api";
 
 type Tab =
   | "status" | "studies" | "builder" | "experiments" | "pipelines"
   | "corpora" | "jobs" | "reports" | "settings"
-  | "entropy" | "hypotheses" | "notebooks" | "ai-chat" | "ai-tools"
+  | "entropy" | "hypotheses" | "notebooks" | "ai-tools"
   | "signs" | "timeline" | "citations";
 
 interface TabDef { id: Tab; label: string; icon: string; group: string; }
@@ -41,7 +44,6 @@ const TABS: TabDef[] = [
   { id: "hypotheses",  label: "Hypotheses",   icon: "💡", group: "research" },
   { id: "notebooks",   label: "Notebooks",    icon: "📓", group: "research" },
   { id: "citations",   label: "Citations",    icon: "📖", group: "research" },
-  { id: "ai-chat",     label: "AI Chat",      icon: "✨", group: "ai" },
   { id: "ai-tools",    label: "AI Tools",     icon: "🔬", group: "ai" },
   { id: "pipelines",   label: "Pipelines",    icon: "⚙️", group: "infra" },
   { id: "jobs",        label: "Jobs",         icon: "📦", group: "infra" },
@@ -52,6 +54,9 @@ const GROUP_ORDER = ["core", "analysis", "research", "ai", "infra"];
 const GROUP_LABELS: Record<string, string> = {
   core: "Core", analysis: "Analysis", research: "Research", ai: "AI", infra: "System",
 };
+
+const DEFAULT_PANEL_HEIGHT = 220;
+type PanelTab = "logs" | "jobs" | "terminal" | "chat";
 
 function HealthBadge() {
   const [status, setStatus] = useState<"healthy" | "degraded" | "down">("down");
@@ -75,9 +80,18 @@ function AppContent() {
   const [tab, setTab] = useState<Tab>("studies");
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("glossa_dark") === "1");
   const [paletteOpen, setPaletteOpen] = useState(false);
+  const [notifOpen, setNotifOpen] = useState(false);
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({
     analysis: false, research: false, ai: false, infra: true,
   });
+
+  // Bottom panel state
+  const [panelHeight, setPanelHeight] = useState(DEFAULT_PANEL_HEIGHT);
+  const [panelMinimized, setPanelMinimized] = useState(false);
+  const [panelTab, setPanelTab] = useState<PanelTab>("logs");
+  const [panelVisible, setPanelVisible] = useState(true);
+
+  const effectivePanelH = panelVisible ? (panelMinimized ? 30 : panelHeight) : 0;
 
   useEffect(() => {
     document.body.style.background = darkMode ? "#0f172a" : "#fff";
@@ -88,6 +102,7 @@ function AppContent() {
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") { e.preventDefault(); setPaletteOpen(p => !p); }
+      if ((e.metaKey || e.ctrlKey) && e.key === "j") { e.preventDefault(); setPanelVisible(v => !v); }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
@@ -99,6 +114,10 @@ function AppContent() {
       action: () => setTab(t.id),
     })),
     { id: "dark-mode", label: "Toggle Dark Mode", icon: darkMode ? "☀️" : "🌙", action: () => setDarkMode(d => !d) },
+    { id: "panel-toggle", label: "Toggle Bottom Panel", icon: "⊟", description: "Ctrl+J", action: () => setPanelVisible(v => !v) },
+    { id: "panel-logs", label: "Open Logs Panel", icon: "📋", action: () => { setPanelVisible(true); setPanelMinimized(false); setPanelTab("logs"); } },
+    { id: "panel-terminal", label: "Open Terminal Panel", icon: ">_", action: () => { setPanelVisible(true); setPanelMinimized(false); setPanelTab("terminal"); } },
+    { id: "panel-jobs", label: "Open Jobs Panel", icon: "📦", action: () => { setPanelVisible(true); setPanelMinimized(false); setPanelTab("jobs"); } },
   ];
 
   const bg = darkMode ? "#0f172a" : "#fff";
@@ -108,7 +127,7 @@ function AppContent() {
   const muted = darkMode ? "#94a3b8" : "#6b7280";
 
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", maxWidth: 1100, margin: "0 auto", padding: "1.25rem 2rem", background: bg, minHeight: "100vh", color: fg }}>
+    <div style={{ fontFamily: "system-ui, sans-serif", maxWidth: 1100, margin: "0 auto", padding: "1.25rem 2rem", background: bg, minHeight: "100vh", color: fg, paddingBottom: effectivePanelH + 32 }}>
       {/* Header */}
       <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: "1rem", borderBottom: `2px solid ${border}`, paddingBottom: "0.75rem" }}>
         <div style={{ width: 32, height: 32, borderRadius: 8, background: "linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 800, fontSize: 14, flexShrink: 0 }}>G</div>
@@ -117,9 +136,14 @@ function AppContent() {
           <span style={{ color: muted, fontSize: 11 }}>Indus Script Analysis — Dr. A. Fuls, TU Berlin</span>
         </div>
         <HealthBadge />
+        <NotificationBell onClick={() => setNotifOpen(o => !o)} />
         <button onClick={() => setPaletteOpen(true)} title="Command palette (Cmd+K)"
           style={{ padding: "4px 10px", border: `1px solid ${border}`, borderRadius: 6, background: cardBg, cursor: "pointer", fontSize: 12, color: muted }}>
           ⌘K
+        </button>
+        <button onClick={() => setPanelVisible(v => !v)} title="Toggle panel (Ctrl+J)"
+          style={{ padding: "4px 10px", border: `1px solid ${border}`, borderRadius: 6, background: cardBg, cursor: "pointer", fontSize: 12, color: panelVisible ? "#2563eb" : muted }}>
+          ⊟
         </button>
         <button onClick={() => setDarkMode(d => !d)} title="Toggle dark mode"
           style={{ padding: "4px 10px", border: `1px solid ${border}`, borderRadius: 6, background: cardBg, cursor: "pointer", fontSize: 14 }}>
@@ -187,14 +211,33 @@ function AppContent() {
         {tab === "entropy"     && <EntropyDashboard />}
         {tab === "hypotheses"  && <HypothesisTracker />}
         {tab === "notebooks"   && <ResearchNotebook />}
-        {tab === "ai-chat"     && <AIChatView />}
         {tab === "ai-tools"    && <AIToolsView />}
         {tab === "signs"       && <SignDictionary />}
         {tab === "timeline"    && <TimelineView onNavigate={(t) => setTab(t as Tab)} />}
         {tab === "citations"   && <CitationManager />}
       </main>
 
+      {/* Command palette */}
       {paletteOpen && <CommandPalette commands={paletteCommands} onClose={() => setPaletteOpen(false)} />}
+
+      {/* Notification drawer */}
+      <NotificationDrawer open={notifOpen} onClose={() => setNotifOpen(false)} />
+
+      {/* Bottom IDE panel */}
+      {panelVisible && (
+        <BottomPanel
+          height={panelHeight}
+          onHeightChange={setPanelHeight}
+          minimized={panelMinimized}
+          onMinimizedChange={setPanelMinimized}
+          activeTab={panelTab}
+          onTabChange={setPanelTab}
+        />
+      )}
+
+      {/* Floating AI Chat */}
+      <AIChatWindow />
+      <AIChatBubble />
 
       <style>{`
         @keyframes healthPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
@@ -206,7 +249,9 @@ function AppContent() {
 export function App() {
   return (
     <ToastProvider>
-      <AppContent />
+      <AIChatProvider>
+        <AppContent />
+      </AIChatProvider>
     </ToastProvider>
   );
 }

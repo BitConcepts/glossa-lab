@@ -139,42 +139,14 @@ _WIN_NO_WINDOW    = 0x08000000  # CREATE_NO_WINDOW — suppresses any cmd flash
 _WIN_NEW_PG       = 0x00000200  # CREATE_NEW_PROCESS_GROUP
 _WIN_HIDDEN       = _WIN_DETACHED | _WIN_NO_WINDOW | _WIN_NEW_PG
 
-_BACKEND_REG_NAME = "GlossaLabBackend"
-_BACKEND_SVC      = str(_REPO_ROOT / "scripts" / "run-backend-svc.cmd")
 
 
-def _ensure_backend_registered() -> None:
-    """Register backend HKCU Run entry if not already set (idempotent)."""
-    if platform.system() != "Windows":
-        return
-    try:
-        import winreg
-        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, _AUTOSTART_REG_KEY) as k:
-            winreg.QueryValueEx(k, _BACKEND_REG_NAME)
-    except (FileNotFoundError, OSError):
-        try:
-            import winreg
-            with winreg.OpenKey(
-                winreg.HKEY_CURRENT_USER, _AUTOSTART_REG_KEY, 0, winreg.KEY_SET_VALUE
-            ) as k:
-                winreg.SetValueEx(
-                    k, _BACKEND_REG_NAME, 0, winreg.REG_SZ, f'"{_BACKEND_SVC}"'
-                )
-        except OSError:
-            pass
-
-
-def _start_backend(_icon=None, _item=None) -> None:
-    """Start the backend service — fully hidden, no console window.
-
-    Registers the boot Run entry if missing, then launches the service
-    wrapper. On Windows CREATE_NO_WINDOW prevents any cmd shell from
-    appearing. Output goes to logs/backend.log.
-    """
-    _ensure_backend_registered()
+def _run_silent(*cmd: str) -> None:
+    """Run a command fully detached with no visible window (Windows) or in
+    a new session (Linux/macOS). Used for service management only."""
     if platform.system() == "Windows":
         subprocess.Popen(
-            ["cmd.exe", "/c", _BACKEND_SVC],
+            list(cmd),
             creationflags=_WIN_HIDDEN,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
@@ -182,7 +154,7 @@ def _start_backend(_icon=None, _item=None) -> None:
         )
     else:
         subprocess.Popen(
-            [_SHELL, "run"],
+            list(cmd),
             start_new_session=True,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
@@ -190,16 +162,39 @@ def _start_backend(_icon=None, _item=None) -> None:
         )
 
 
-def _stop_backend(_icon=None, _item=None):
-    """Request a clean backend shutdown via the /api/v1/shutdown endpoint."""
+def _start_backend(_icon=None, _item=None) -> None:
+    """Start the backend via the OS service manager — no cmd window.
+
+    Windows: schtasks /run /tn GlossaLabBackend (Task Scheduler task).
+    Linux:   systemctl --user start glossa-lab-backend.
+    """
+    if platform.system() == "Windows":
+        _run_silent("schtasks", "/run", "/tn", "GlossaLabBackend")
+    else:
+        _run_silent("systemctl", "--user", "start", "glossa-lab-backend")
+
+
+def _stop_backend(_icon=None, _item=None) -> None:
+    """Stop the backend via the OS service manager — no cmd window.
+
+    Attempts a graceful HTTP shutdown first (lets uvicorn drain in-flight
+    requests), then tells the service manager to end the task/unit.
+
+    Windows: schtasks /end /tn GlossaLabBackend.
+    Linux:   systemctl --user stop glossa-lab-backend.
+    """
+    # Graceful: ask uvicorn to shut itself down cleanly
     try:
-        import urllib.request
-        req = urllib.request.Request(
-            f"{BACKEND_URL}/api/v1/shutdown", method="POST"
-        )
+        req = urllib.request.Request(f"{BACKEND_URL}/api/v1/shutdown", method="POST")
         urllib.request.urlopen(req, timeout=3)
     except Exception:
         pass
+
+    # Service manager stop (ensures the task is marked stopped)
+    if platform.system() == "Windows":
+        _run_silent("schtasks", "/end", "/tn", "GlossaLabBackend")
+    else:
+        _run_silent("systemctl", "--user", "stop", "glossa-lab-backend")
 
 
 def _quit(icon, _item=None):

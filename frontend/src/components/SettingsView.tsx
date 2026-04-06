@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import {
   deleteOllamaModel,
+  getLocalCtxLength, setLocalCtxLength,
   getOllamaLibrary,
   getOllamaPullUrl,
   getOllamaRecommendation,
@@ -9,6 +10,7 @@ import {
   getSettings,
   isLocalKeySet, clearLocalKey, getLocalKeys, setLocalKey,
   listOllamaInstalled,
+  setOllamaContextLength,
   updateSettings,
   verifyKey,
   type CatalogProvider, type KeyStatus, type ModelDetail,
@@ -37,6 +39,80 @@ const KEY_LABELS: Record<string, { label: string; hint: string; priority?: boole
   },
 };
 
+// ── Context Length Panel ───────────────────────────────────────────────────
+
+function ContextLengthPanel({ recommendation }: { recommendation: OllamaRecommendation }) {
+  const { toast } = useToast();
+  const [ctx, setCtx] = useState(getLocalCtxLength);
+  const [saving, setSaving] = useState(false);
+
+  const recommended = recommendation.recommended_ctx_length;
+  const options = [512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072];
+
+  const apply = async (val: number) => {
+    setCtx(val);
+    setLocalCtxLength(val);
+    setSaving(true);
+    try {
+      await setOllamaContextLength(val);
+      toast(`Context length set to ${val.toLocaleString()} tokens`, "success");
+    } catch { toast("Failed to update session context length", "error"); }
+    finally { setSaving(false); }
+  };
+
+  return (
+    <div style={{ borderTop: "1px solid #bae6fd", paddingTop: 10, marginTop: 2 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+        <div>
+          <div style={{ fontSize: 11, fontWeight: 700, color: "#0284c7", textTransform: "uppercase", letterSpacing: 0.5 }}>Context Length</div>
+          <div style={{ fontSize: 11, color: "#6b7280" }}>{recommendation.ctx_tier_note}</div>
+        </div>
+        <div style={{ textAlign: "right" }}>
+          <div style={{ fontSize: 18, fontWeight: 800, color: "#0284c7", fontFamily: "monospace", lineHeight: 1 }}>
+            {ctx.toLocaleString()}
+          </div>
+          <div style={{ fontSize: 10, color: "#9ca3af" }}>tokens</div>
+        </div>
+      </div>
+
+      {/* Slider */}
+      <input
+        type="range"
+        min={0} max={options.length - 1} step={1}
+        value={options.indexOf(ctx) === -1 ? 3 : options.indexOf(ctx)}
+        onChange={(e) => apply(options[parseInt(e.target.value)])}
+        style={{ width: "100%", accentColor: "#0284c7", marginBottom: 6 }}
+      />
+
+      {/* Quick presets */}
+      <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
+        {options.map((o) => (
+          <button
+            key={o}
+            onClick={() => apply(o)}
+            title={o === recommended ? "Auto-detected recommendation for your GPU" : ""}
+            style={{
+              padding: "2px 7px", borderRadius: 4, border: "1px solid",
+              cursor: "pointer", fontSize: 10, fontFamily: "monospace",
+              background: ctx === o ? "#0284c7" : o === recommended ? "#e0f2fe" : "#fff",
+              borderColor: ctx === o ? "#0284c7" : o === recommended ? "#7dd3fc" : "#d1d5db",
+              color: ctx === o ? "#fff" : o === recommended ? "#0369a1" : "#374151",
+              fontWeight: (ctx === o || o === recommended) ? 700 : 400,
+            }}
+          >
+            {o >= 1024 ? `${o / 1024}K` : o}
+            {o === recommended && " ★"}
+          </button>
+        ))}
+      </div>
+      <div style={{ fontSize: 10, color: "#9ca3af", marginTop: 6 }}>
+        ★ = auto-detected for your {recommendation.ctx_tier_label}
+        {saving && <span style={{ marginLeft: 8, color: "#0284c7" }}>Saving…</span>}
+      </div>
+    </div>
+  );
+}
+
 // ── Ollama Section ────────────────────────────────────────────────────────────
 
 function OllamaSection() {
@@ -49,8 +125,8 @@ function OllamaSection() {
   const [pulling, setPulling] = useState<Record<string, { progress: number; status: string; total: number; completed: number }>>({});
   const [pullCancelled, setPullCancelled] = useState<Set<string>>(new Set());
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
-  const [libFilter, setLibFilter] = useState<"all" | "installed" | "compatible">("all");
-  const esRefs = useRef<Record<string, EventSource>>({});
+  const [libFilter, setLibFilter] = useState<"all" | "compatible">("compatible");
+  const esRefs = useRef<Record<string, EventSource>>({})
 
   const refresh = async () => {
     setLoading(true);
@@ -126,7 +202,6 @@ function OllamaSection() {
   const familyColors: Record<string, string> = { mistral: "#f59e0b", llama: "#3b82f6", gemma: "#10b981", qwen: "#8b5cf6", deepseek: "#06b6d4", phi: "#ec4899" };
 
   const visibleLib = library.filter(m => {
-    if (libFilter === "installed") return m.installed;
     if (libFilter === "compatible") return recommendation && m.min_vram_gb <= (recommendation.vram_gb + 2);
     return true;
   });
@@ -152,17 +227,28 @@ function OllamaSection() {
         </div>
       )}
 
+      <div style={{ padding: "8px 12px", background: "#fefce8", border: "1px solid #fde68a", borderRadius: 6, marginBottom: 14, fontSize: 11, display: "flex", gap: 8, alignItems: "flex-start" }}>
+        <span style={{ flexShrink: 0, fontSize: 14 }}>⚠️</span>
+        <span style={{ color: "#78350f", lineHeight: 1.5 }}>
+          <strong>Shared model store:</strong> Ollama stores all models in a single system-wide location
+          (<code>~/.ollama/models</code>). Models shown here are shared across all applications on this machine.
+          Deleting a model removes it for all apps — not just Glossa Lab. Be careful before deleting.
+        </span>
+      </div>
+
       {/* GPU + Recommendation */}
       {recommendation && (
         <div style={{ padding: "12px 14px", background: "#f0f9ff", border: "1px solid #bae6fd", borderRadius: 8, marginBottom: 14 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: "#0284c7", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 6 }}>GPU / Hardware Recommendation</div>
+          <div style={{ fontSize: 11, fontWeight: 700, color: "#0284c7", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 6 }}>GPU / Hardware</div>
           <p style={{ margin: "0 0 6px", fontSize: 13, color: "#374151" }}>{recommendation.tier_description}</p>
           <p style={{ margin: "0 0 8px", fontSize: 12, color: "#6b7280" }}>{recommendation.glossa_note}</p>
-          <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+          <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 10 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: "#0284c7" }}>Top pick:</span>
             <span style={{ fontSize: 11, padding: "2px 8px", background: "#7c3aed", color: "#fff", borderRadius: 4, fontWeight: 600 }}>{recommendation.recommended.display}</span>
             <span style={{ fontSize: 11, color: "#6b7280" }}>{recommendation.recommended.size_gb} GB · score {recommendation.recommended.glossa_score}/10</span>
           </div>
+          {/* Context length config */}
+          <ContextLengthPanel recommendation={recommendation} />
         </div>
       )}
 
@@ -192,15 +278,20 @@ function OllamaSection() {
       <div>
         <div style={{ display: "flex", gap: 6, marginBottom: 10, alignItems: "center" }}>
           <div style={{ fontSize: 11, fontWeight: 700, color: "#374151", textTransform: "uppercase", letterSpacing: 0.5 }}>Model Library</div>
-          {(["all", "compatible", "installed"] as const).map((f) => (
+          {(["all", "compatible"] as const).map((f) => (
             <button key={f} onClick={() => setLibFilter(f)}
               style={{ padding: "2px 8px", borderRadius: 4, border: "1px solid", cursor: "pointer", fontSize: 11,
                 background: libFilter === f ? "#1e3a5f" : "#fff",
                 borderColor: libFilter === f ? "#1e3a5f" : "#d1d5db",
                 color: libFilter === f ? "#fff" : "#374151" }}>
-              {f}
+              {f === "compatible" ? "Compatible with my GPU" : "All models"}
             </button>
           ))}
+          {recommendation && libFilter === "compatible" && (
+            <span style={{ fontSize: 10, color: "#9ca3af", marginLeft: 2 }}>
+              ({visibleLib.length} of {library.length} models)
+            </span>
+          )}
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
           {visibleLib.map((m) => {

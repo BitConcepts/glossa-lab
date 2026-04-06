@@ -5,12 +5,13 @@
  */
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
-  analyzeCorpus, critiqueCorpus, createText, deleteText, detectCorpusAnomalies,
+  createText, deleteText,
   getCorpusConcordance, getCorpusEntropy, getCorpusExportUrl, getCorpusNgrams,
   listTexts, updateText,
   type ConcordanceResult, type EntropyResult, type NgramEntry, type TextResponse,
 } from "../api";
 import { ContextMenuOverlay, copyItems, useContextMenu } from "../hooks/useContextMenu";
+import { useAIChat } from "../hooks/useAIChat";
 import { useToast } from "../hooks/useToast";
 
 const CORPUS_TYPES = ["linguistic", "ancient", "dna", "code", "random", "other"];
@@ -66,49 +67,6 @@ function StatBadge({ label, value, color = "#374151" }: { label: string; value: 
   );
 }
 
-function AIResultPanel({ result, onClose }: { result: Record<string, unknown>; onClose: () => void }) {
-  const skip = new Set(["text_id", "name", "stats"]);
-  return (
-    <div style={{ marginTop: 10, border: "1px solid #a78bfa", borderRadius: 8, overflow: "hidden" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", background: "#7c3aed", padding: "7px 12px" }}>
-        <span style={{ color: "#fff", fontWeight: 700, fontSize: 12 }}>✨ AI Result</span>
-        <button onClick={onClose} style={{ border: "none", background: "none", color: "#fff", cursor: "pointer", fontSize: 14 }}>×</button>
-      </div>
-      <div style={{ padding: "12px 14px", background: "#faf5ff", display: "flex", flexDirection: "column", gap: 10 }}>
-        {Object.entries(result).filter(([k]) => !skip.has(k)).map(([k, v]) => {
-          const label = k.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
-          if (Array.isArray(v)) return (
-            <div key={k}>
-              <div style={sLabel}>{label}</div>
-              <ul style={{ margin: 0, paddingLeft: 18 }}>
-                {(v as unknown[]).map((item, i) => (
-                  <li key={i} style={{ fontSize: 12, lineHeight: 1.5, color: "#374151" }}>
-                    {typeof item === "object" ? JSON.stringify(item) : String(item)}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          );
-          if (typeof v === "object" && v !== null) return (
-            <div key={k}>
-              <div style={sLabel}>{label}</div>
-              <pre style={{ margin: 0, fontSize: 10, background: "#1e293b", color: "#e2e8f0", padding: "6px 10px", borderRadius: 4, overflowX: "auto" }}>
-                {JSON.stringify(v, null, 2)}
-              </pre>
-            </div>
-          );
-          return (
-            <div key={k}>
-              <div style={sLabel}>{label}</div>
-              <p style={{ margin: 0, fontSize: 12, color: "#374151", lineHeight: 1.6 }}>{String(v)}</p>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
 function CorpusCard({ text, onUpdated, onDeleted, allTexts }: {
   text: TextResponse;
   onUpdated: (t: TextResponse) => void;
@@ -140,8 +98,6 @@ function CorpusCard({ text, onUpdated, onDeleted, allTexts }: {
   const [entropyLoading, setEntropyLoading] = useState(false);
 
   const [aiMode, setAiMode] = useState<"analyze" | "anomalies" | "critique">("analyze");
-  const [aiResult, setAiResult] = useState<Record<string, unknown> | null>(null);
-  const [aiLoading, setAiLoading] = useState(false);
 
   const [compareId, setCompareId] = useState<string>("");
   const [compareEntropy, setCompareEntropy] = useState<EntropyResult | null>(null);
@@ -151,6 +107,7 @@ function CorpusCard({ text, onUpdated, onDeleted, allTexts }: {
   const fileRef = useRef<HTMLInputElement>(null);
 
   const { menu: ctxMenu, show: showCtx, close: closeCtx } = useContextMenu();
+  const { openChat } = useAIChat();
 
   const filtered = search ? text.content.filter((t) => t.toLowerCase().includes(search.toLowerCase())) : text.content;
   const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
@@ -212,13 +169,18 @@ function CorpusCard({ text, onUpdated, onDeleted, allTexts }: {
     finally { setEntropyLoading(false); }
   }, [entropy, text.id, toast]);
 
-  const handleAI = async () => {
-    setAiLoading(true); setAiResult(null);
-    try {
-      const fn = aiMode === "analyze" ? analyzeCorpus : aiMode === "anomalies" ? detectCorpusAnomalies : critiqueCorpus;
-      setAiResult(await fn(text.id) as Record<string, unknown>);
-    } catch (e) { toast(e instanceof Error ? e.message : "AI error", "error"); }
-    finally { setAiLoading(false); }
+  const handleAI = () => {
+    const prompts: Record<string, string> = {
+      analyze: `Please analyze the corpus "${text.name}" (${text.corpus_type}, ${text.content.length.toLocaleString()} tokens, alphabet ${text.alphabet_size}). Provide: summary, linguistic characteristics, Indus Script relevance, key insights, and suggested experiments.`,
+      anomalies: `Please detect anomalies in the corpus "${text.name}" (${text.corpus_type}, ${text.content.length.toLocaleString()} tokens). Look for statistical anomalies, unusual patterns, structural breaks, and data quality issues.`,
+      critique: `Please critique the corpus "${text.name}" (${text.corpus_type}, ${text.content.length.toLocaleString()} tokens, alphabet ${text.alphabet_size}) for research use. Evaluate coverage, bias, completeness, and suitability for Indus Script entropy analysis.`,
+    };
+    openChat({
+      contextType: "corpus",
+      contextId: text.id,
+      contextLabel: text.name,
+      initialPrompt: prompts[aiMode],
+    });
   };
 
   const handleCompare = async () => {
@@ -405,16 +367,15 @@ function CorpusCard({ text, onUpdated, onDeleted, allTexts }: {
               <div>
                 <div style={{ display: "flex", gap: 6, marginBottom: 12, flexWrap: "wrap" }}>
                   {(["analyze", "anomalies", "critique"] as const).map((m) => (
-                    <button key={m} onClick={() => { setAiMode(m); setAiResult(null); }}
+                    <button key={m} onClick={() => setAiMode(m)}
                       style={{ ...btnSmall, background: aiMode === m ? "#7c3aed" : "#f3f4f6", color: aiMode === m ? "#fff" : "#374151" }}>
                       {m === "analyze" ? "Corpus Analysis" : m === "anomalies" ? "Anomaly Detection" : "Critique"}
                     </button>
                   ))}
-                  <button onClick={handleAI} disabled={aiLoading} style={{ ...btnPrimary, background: "#7c3aed", marginLeft: "auto" }}>
-                    {aiLoading ? "✨ Thinking…" : "✨ Run AI"}
+                  <button onClick={handleAI} style={{ ...btnPrimary, background: "#7c3aed", marginLeft: "auto" }}>
+                    ✨ Ask AI
                   </button>
                 </div>
-                {aiResult && <AIResultPanel result={aiResult} onClose={() => setAiResult(null)} />}
               </div>
             )}
 

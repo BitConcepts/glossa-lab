@@ -51,12 +51,24 @@ if platform.system() == "Windows":
 else:
     _SHELL = str(_REPO_ROOT / "shell.sh")
 
-_BACKEND_SVC = str(_REPO_ROOT / "scripts" / "run-backend-svc.cmd")
 _BACKEND_LOG = _REPO_ROOT / "logs" / "backend.log"
+_BACKEND_DIR = str(_REPO_ROOT / "backend")
+_VENV_PYTHON = str(
+    _REPO_ROOT / "backend" / "venv" / "Scripts" / "python.exe"
+    if platform.system() == "Windows"
+    else _REPO_ROOT / "backend" / "venv" / "bin" / "python"
+)
 
 # Updated by the status poller; read by the dynamic menu item.
-_status_text = "Checking..."
+_status_text = "Backend: Checking..."
 _status_error = False
+
+# Label for the autostart toggle, varies by OS
+_AUTOSTART_LABEL = (
+    "Run at Windows startup" if platform.system() == "Windows"
+    else "Start at login" if platform.system() == "Darwin"
+    else "Enable autostart"
+)
 
 
 # ── Icon generation ──────────────────────────────────────────────────
@@ -170,13 +182,31 @@ def _run_silent(*cmd: str) -> None:
 
 
 def _start_backend(_icon=None, _item=None) -> None:
-    """Start the backend service with no visible window.
+    """Start the backend by launching Python directly — zero visible windows.
 
-    Windows: cmd.exe /c run-backend-svc.cmd with CREATE_NO_WINDOW.
-    Linux:   systemctl --user start glossa-lab-backend.
+    Spawns the venv Python executable with CREATE_NO_WINDOW | DETACHED_PROCESS
+    so no cmd shell or console ever appears. uvicorn stdout/stderr are appended
+    to logs/backend.log alongside the app’s structured logs.
     """
     if platform.system() == "Windows":
-        _run_silent("cmd.exe", "/c", _BACKEND_SVC)
+        _BACKEND_LOG.parent.mkdir(parents=True, exist_ok=True)
+        log_fh = open(str(_BACKEND_LOG), "ab")  # noqa: SIM115
+        env = os.environ.copy()
+        env["PYTHONPATH"] = _BACKEND_DIR
+        subprocess.Popen(
+            [
+                _VENV_PYTHON, "-m", "uvicorn", "glossa_lab.main:app",
+                "--host", "0.0.0.0", "--port", "8001",
+                "--app-dir", _BACKEND_DIR,
+            ],
+            cwd=_BACKEND_DIR,
+            creationflags=_WIN_HIDDEN,
+            env=env,
+            stdout=log_fh,
+            stderr=log_fh,
+            stdin=subprocess.DEVNULL,
+        )
+        log_fh.close()  # parent closes; child keeps its inherited fd
     else:
         _run_silent("systemctl", "--user", "start", "glossa-lab-backend")
 
@@ -225,9 +255,13 @@ def _quit(icon, _item=None):
 # ── Status polling thread ────────────────────────────────────────────
 
 def _status_poller(icon: pystray.Icon):
-    """Background thread that polls backend health and updates the icon and status text."""
+    """Background thread: polls health every POLL_INTERVAL seconds.
+
+    Started via icon.run(setup=…) so icon.visible is already True.
+    Runs as a daemon thread and is killed automatically on exit.
+    """
     global _status_text, _status_error  # noqa: PLW0603
-    while icon.visible:
+    while True:
         health = _check_health()
         if health is None:
             icon.icon = _create_icon_image("red")
@@ -268,7 +302,7 @@ def main():
         pystray.MenuItem("View Backend Log", _open_log),
         pystray.Menu.SEPARATOR,
         pystray.MenuItem(
-            "Start on login",
+            _AUTOSTART_LABEL,
             _toggle_autostart,
             checked=lambda item: _is_autostart_enabled(),
         ),
@@ -287,11 +321,15 @@ def main():
     if not _is_autostart_enabled():
         _set_autostart(True)
 
-    # Start poller thread
-    poller = threading.Thread(target=_status_poller, args=(icon,), daemon=True)
-    poller.start()
+    def _on_setup(ic: pystray.Icon) -> None:
+        """Called by pystray after the icon is displayed and the event loop running.
+        Only here is ic.visible reliably True and the menu repaint safe.
+        """
+        ic.visible = True
+        poller = threading.Thread(target=_status_poller, args=(ic,), daemon=True)
+        poller.start()
 
-    icon.run()
+    icon.run(setup=_on_setup)
 
 
 if __name__ == "__main__":

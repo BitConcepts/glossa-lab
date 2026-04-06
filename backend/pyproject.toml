@@ -15,6 +15,7 @@ dependencies = [
     "reportlab>=4,<5",
     "matplotlib>=3.9,<4",
     "numpy>=1.26,<3",
+    "psutil>=6,<8",
 ]
 
 [project.optional-dependencies]
@@ -64,9 +65,11 @@ known-first-party = ["glossa_lab", "tests"]
 [tool.ruff.lint.per-file-ignores]
 # Vocabulary dictionaries intentionally group synonyms under shared keys
 "glossa_lab/data/*.py" = ["F601"]
-# AI API files have intentionally long system prompt strings
+# AI API files have intentionally long system prompt strings and data literals
 "glossa_lab/api/ai_tools.py" = ["E501"]
 "glossa_lab/api/analysis.py" = ["E501"]
+"glossa_lab/api/ollama.py" = ["E501"]
+"glossa_lab/api/system.py" = ["E501"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

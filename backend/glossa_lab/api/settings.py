@@ -8,10 +8,13 @@ from __future__ import annotations
 
 import json
 import os
+import urllib.error
+import urllib.request
 from pathlib import Path
 from typing import Any
 
 from fastapi import APIRouter
+from pydantic import BaseModel
 
 from glossa_lab.config import get_settings
 
@@ -63,6 +66,114 @@ def get_key(key_name: str) -> str | None:
     if env_val:
         return env_val
     return _load_keys().get(key_name)
+
+
+# ── Verification ─────────────────────────────────────────────────────
+
+_VERIFY_ENDPOINTS: dict[str, dict[str, Any]] = {
+    "mistral_api_key": {
+        "provider": "Mistral",
+        "url": "https://api.mistral.ai/v1/models",
+        "auth_header": "Authorization",
+        "auth_prefix": "Bearer ",
+        "extra_headers": {},
+    },
+    "openai_api_key": {
+        "provider": "OpenAI",
+        "url": "https://api.openai.com/v1/models",
+        "auth_header": "Authorization",
+        "auth_prefix": "Bearer ",
+        "extra_headers": {},
+    },
+    "anthropic_api_key": {
+        "provider": "Anthropic",
+        "url": "https://api.anthropic.com/v1/models",
+        "auth_header": "x-api-key",
+        "auth_prefix": "",
+        "extra_headers": {"anthropic-version": "2023-06-01"},
+    },
+    "google_api_key": {
+        "provider": "Google",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models",
+        "auth_header": None,  # key goes in query param
+        "auth_prefix": "",
+        "extra_headers": {},
+    },
+}
+
+
+class VerifyRequest(BaseModel):
+    key_name: str
+    key_value: str | None = None  # if provided, verifies this value instead of stored
+
+
+@router.post("/verify-key")
+async def verify_key(body: VerifyRequest) -> dict[str, Any]:
+    """Test an API key against the provider's models endpoint.
+
+    Uses the stored key unless key_value is supplied directly.
+    Returns {valid, provider, message}.
+    """
+    key_name = body.key_name
+    if key_name not in KNOWN_KEYS:
+        return {"valid": False, "provider": "", "message": f"Unknown key: {key_name}"}
+
+    ep = _VERIFY_ENDPOINTS.get(key_name)
+    if not ep:
+        return {"valid": False, "provider": "", "message": "No verification endpoint configured"}
+
+    # Resolve the key value
+    key_val = body.key_value or get_key(key_name)
+    if not key_val:
+        return {
+            "valid": False,
+            "provider": ep["provider"],
+            "message": "Key is not set. Enter and save the key first.",
+        }
+
+    # Build the request
+    url = ep["url"]
+    if ep["auth_header"] is None:  # Google: key in query param
+        url = f"{url}?key={key_val}"
+
+    headers: dict[str, str] = {"Accept": "application/json"}
+    if ep["auth_header"]:
+        headers[ep["auth_header"]] = ep["auth_prefix"] + key_val
+    headers.update(ep.get("extra_headers", {}))
+
+    try:
+        req = urllib.request.Request(url, headers=headers, method="GET")
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            status = resp.status
+        if status == 200:
+            return {
+                "valid": True,
+                "provider": ep["provider"],
+                "message": f"{ep['provider']} key is valid.",
+            }
+        return {
+            "valid": False,
+            "provider": ep["provider"],
+            "message": f"Unexpected status {status}.",
+        }
+    except urllib.error.HTTPError as exc:
+        if exc.code in (401, 403):
+            return {
+                "valid": False,
+                "provider": ep["provider"],
+                "message": f"Invalid key (HTTP {exc.code}: Unauthorized).",
+            }
+        return {
+            "valid": False,
+            "provider": ep["provider"],
+            "message": f"HTTP error {exc.code}: {exc.reason}.",
+        }
+    except Exception as exc:  # noqa: BLE001
+        return {
+            "valid": False,
+            "provider": ep["provider"],
+            "message": f"Connection error: {exc}",
+        }
 
 
 @router.get("")

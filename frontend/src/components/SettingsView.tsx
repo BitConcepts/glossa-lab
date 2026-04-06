@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import {
   getSettings, updateSettings,
   getProviderCatalog,
-  setLocalKey, clearLocalKey, isLocalKeySet,
-  KeyStatus, CatalogProvider, ModelDetail,
+  setLocalKey, clearLocalKey, isLocalKeySet, getLocalKeys,
+  verifyKey,
+  type KeyStatus, type CatalogProvider, type ModelDetail, type VerifyKeyResult,
 } from "../api";
 
 const KEY_LABELS: Record<string, { label: string; hint: string; priority?: boolean }> = {
@@ -33,6 +34,8 @@ export function SettingsView() {
   const [saving, setSaving] = useState(false);
   const [savedMsg, setSavedMsg] = useState<Record<string, string>>({});
   const [error, setError] = useState("");
+  const [verifying, setVerifying] = useState<Record<string, boolean>>({});
+  const [verifyResult, setVerifyResult] = useState<Record<string, VerifyKeyResult>>({});
   const [providers, setProviders] = useState<CatalogProvider[]>([]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [providerPrefs, setProviderPrefs] = useState<Record<string, any>>({});
@@ -95,7 +98,29 @@ export function SettingsView() {
     clearLocalKey(key);
     try { await updateSettings({ [key]: "" }); } catch { /* optional */ }
     setDrafts((d) => { const n = { ...d }; delete n[key]; return n; });
+    setVerifyResult((r) => { const n = { ...r }; delete n[key]; return n; });
     await load();
+  };
+
+  const handleVerify = async (key: string) => {
+    setVerifying((v) => ({ ...v, [key]: true }));
+    setVerifyResult((r) => { const n = { ...r }; delete n[key]; return n; });
+    // If there's an unsaved draft, verify that value directly so user gets
+    // instant feedback before committing. Otherwise use the stored backend key.
+    const draft = drafts[key]?.trim();
+    // Also check localStorage in case it was saved client-side only
+    const localVal = getLocalKeys()[key];
+    try {
+      const result = await verifyKey(key, draft || localVal || undefined);
+      setVerifyResult((r) => ({ ...r, [key]: result }));
+    } catch (e: unknown) {
+      setVerifyResult((r) => ({
+        ...r,
+        [key]: { valid: false, provider: "", message: e instanceof Error ? e.message : "Request failed" },
+      }));
+    } finally {
+      setVerifying((v) => ({ ...v, [key]: false }));
+    }
   };
 
 
@@ -166,12 +191,40 @@ export function SettingsView() {
                 >
                   {saving ? "…" : "Save"}
                 </button>
+                <button
+                  onClick={() => handleVerify(key)}
+                  disabled={verifying[key] || (!keyIsSet && !draft)}
+                  title={(keyIsSet || draft) ? "Test this key against the provider API" : "Save a key first"}
+                  style={{
+                    ...btnStyle,
+                    padding: "6px 14px",
+                    background: "#6b7280",
+                    opacity: (keyIsSet || draft) ? 1 : 0.4,
+                  }}
+                >
+                  {verifying[key] ? "Testing…" : "Verify"}
+                </button>
                 {keyIsSet && (
                   <button onClick={() => handleClear(key)} style={{ ...iconBtnStyle, color: "#dc2626" }} title="Clear">
                     ✕
                   </button>
                 )}
               </div>
+
+              {/* Verification result */}
+              {verifyResult[key] && (
+                <div style={{
+                  display: "flex", alignItems: "center", gap: 6, marginTop: 6,
+                  padding: "7px 12px", borderRadius: 6, fontSize: 12,
+                  background: verifyResult[key].valid ? "#f0fdf4" : "#fef2f2",
+                  border: `1px solid ${verifyResult[key].valid ? "#86efac" : "#fca5a5"}`,
+                  color: verifyResult[key].valid ? "#15803d" : "#b91c1c",
+                }}>
+                  <span style={{ fontSize: 14 }}>{verifyResult[key].valid ? "✓" : "✗"}</span>
+                  <span><strong>{verifyResult[key].provider || KEY_LABELS[key]?.label}:</strong> {verifyResult[key].message}</span>
+                </div>
+              )}
+
               {msg && (
                 <p style={{ ...hintTextStyle, color: "#16a34a", marginTop: 4, fontWeight: 600 }}>✓ {msg}</p>
               )}

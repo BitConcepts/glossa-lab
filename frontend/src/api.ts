@@ -415,6 +415,44 @@ export const generateExperiment = (body: {
 export const reloadExperiments = (): Promise<{ reloaded: boolean; count: number }> =>
   request("POST", "/experiments/reload");
 
+// ── AI summarization ──────────────────────────────────────────────────
+
+export interface SuggestedAction {
+  label: string;
+  action: "create_study" | "generate_experiment" | string;
+  hint: string;
+}
+
+export interface AISummaryResult {
+  abstract: string;
+  hypothesis: string | null;
+  highlights: string[];
+  insights: string;
+  next_steps: string[];
+  suggested_actions: SuggestedAction[];
+  // experiment-level extras
+  experiment_id?: string;
+  // study-level extras
+  study_id?: string;
+  node_count?: number;
+  // shared
+  name?: string;
+  category?: string;
+  description?: string;
+}
+
+export const summarizeExperiment = (id: string): Promise<AISummaryResult> =>
+  request("POST", `/experiments/${id}/summarize`);
+
+export const summarizeStudy = (id: string): Promise<AISummaryResult> =>
+  request("POST", `/studies/${id}/summarize`);
+
+export const generateStudy = (body: {
+  prompt: string;
+  name: string;
+}): Promise<StudyResponse> =>
+  request("POST", "/studies/generate", body);
+
 // ── Presets ───────────────────────────────────────────────────────────
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

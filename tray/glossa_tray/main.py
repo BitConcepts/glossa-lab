@@ -41,7 +41,7 @@ _AUTOSTART_NAME = "GlossaLabTray"
 BACKEND_URL = "http://127.0.0.1:8001"
 HEALTH_URL = f"{BACKEND_URL}/api/v1/health"
 FRONTEND_URL = "http://localhost:8001"  # backend serves built frontend
-POLL_INTERVAL = 5  # seconds
+POLL_INTERVAL = 3  # seconds — fast enough to feel live
 
 # Determine repo root and shell wrapper
 _TRAY_DIR = Path(__file__).resolve().parent
@@ -53,8 +53,12 @@ else:
 
 _BACKEND_LOG = _REPO_ROOT / "logs" / "backend.log"
 _BACKEND_DIR = str(_REPO_ROOT / "backend")
+
+# Use pythonw.exe on Windows: it is the *windowless* Python launcher —
+# identical to python.exe but compiled as a GUI subsystem app, so Windows
+# never allocates a console window for it under any circumstances.
 _VENV_PYTHON = str(
-    _REPO_ROOT / "backend" / "venv" / "Scripts" / "python.exe"
+    _REPO_ROOT / "backend" / "venv" / "Scripts" / "pythonw.exe"
     if platform.system() == "Windows"
     else _REPO_ROOT / "backend" / "venv" / "bin" / "python"
 )
@@ -285,6 +289,10 @@ def _status_poller(icon: pystray.Icon):
             icon.title = "Glossa Lab — Unknown"
             _status_text = "Backend: Unknown  (click to view log)"
             _status_error = True
+        try:
+            icon.update_menu()  # Force pystray to re-evaluate dynamic labels
+        except Exception:  # noqa: BLE001
+            pass
         time.sleep(POLL_INTERVAL)
 
 

@@ -1,11 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
-  getSettings, updateSettings,
+  deleteOllamaModel,
+  getOllamaLibrary,
+  getOllamaPullUrl,
+  getOllamaRecommendation,
+  getOllamaStatus,
   getProviderCatalog,
-  setLocalKey, clearLocalKey, isLocalKeySet, getLocalKeys,
+  getSettings,
+  isLocalKeySet, clearLocalKey, getLocalKeys, setLocalKey,
+  listOllamaInstalled,
+  updateSettings,
   verifyKey,
-  type KeyStatus, type CatalogProvider, type ModelDetail, type VerifyKeyResult,
+  type CatalogProvider, type KeyStatus, type ModelDetail,
+  type OllamaInstalledModel, type OllamaLibraryEntry, type OllamaRecommendation,
+  type VerifyKeyResult,
 } from "../api";
+import { useToast } from "../hooks/useToast";
 
 const KEY_LABELS: Record<string, { label: string; hint: string; priority?: boolean }> = {
   mistral_api_key: {
@@ -26,6 +36,232 @@ const KEY_LABELS: Record<string, { label: string; hint: string; priority?: boole
     hint: "For Gemini vision and multimodal tasks.",
   },
 };
+
+// ── Ollama Section ────────────────────────────────────────────────────────────
+
+function OllamaSection() {
+  const { toast } = useToast();
+  const [status, setStatus] = useState<{ running: boolean; message: string } | null>(null);
+  const [installed, setInstalled] = useState<OllamaInstalledModel[]>([]);
+  const [library, setLibrary] = useState<OllamaLibraryEntry[]>([]);
+  const [recommendation, setRecommendation] = useState<OllamaRecommendation | null>(null);
+  const [, setLoading] = useState(true);
+  const [pulling, setPulling] = useState<Record<string, { progress: number; status: string; total: number; completed: number }>>({});
+  const [pullCancelled, setPullCancelled] = useState<Set<string>>(new Set());
+  const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+  const [libFilter, setLibFilter] = useState<"all" | "installed" | "compatible">("all");
+  const esRefs = useRef<Record<string, EventSource>>({});
+
+  const refresh = async () => {
+    setLoading(true);
+    try {
+      const [st, inst, lib, rec] = await Promise.all([
+        getOllamaStatus(), listOllamaInstalled(), getOllamaLibrary(), getOllamaRecommendation(),
+      ]);
+      setStatus(st);
+      setInstalled(inst.models ?? []);
+      setLibrary(lib.models ?? []);
+      setRecommendation(rec);
+    } catch { setStatus({ running: false, message: "Could not connect to backend" }); }
+    finally { setLoading(false); }
+  };
+
+  useEffect(() => { refresh(); return () => { Object.values(esRefs.current).forEach(es => es.close()); }; }, []);
+
+  const startPull = (modelName: string) => {
+    if (pulling[modelName]) return;
+    const es = new EventSource(getOllamaPullUrl(modelName));
+    esRefs.current[modelName] = es;
+    setPulling(p => ({ ...p, [modelName]: { progress: 0, status: "Starting…", total: 0, completed: 0 } }));
+    setPullCancelled(c => { const n = new Set(c); n.delete(modelName); return n; });
+
+    es.onmessage = (ev) => {
+      try {
+        const d = JSON.parse(ev.data);
+        const total = d.total ?? 0;
+        const completed = d.completed ?? 0;
+        const pct = total > 0 ? Math.round((completed / total) * 100) : 0;
+        setPulling(p => ({ ...p, [modelName]: { progress: pct, status: d.status ?? "Downloading…", total, completed } }));
+        if (d.status === "success") {
+          es.close(); delete esRefs.current[modelName];
+          setPulling(p => { const n = { ...p }; delete n[modelName]; return n; });
+          toast(`${modelName} downloaded`, "success");
+          refresh();
+        } else if (d.status === "error") {
+          es.close(); delete esRefs.current[modelName];
+          setPulling(p => { const n = { ...p }; delete n[modelName]; return n; });
+          toast(`Download failed: ${d.error ?? "unknown error"}`, "error");
+        }
+      } catch { /* ignore */ }
+    };
+    es.onerror = () => {
+      es.close(); delete esRefs.current[modelName];
+      if (!pullCancelled.has(modelName)) {
+        setPulling(p => { const n = { ...p }; delete n[modelName]; return n; });
+        toast(`Connection lost during download of ${modelName}`, "error");
+      }
+    };
+  };
+
+  const cancelPull = (modelName: string) => {
+    const es = esRefs.current[modelName];
+    if (es) { es.close(); delete esRefs.current[modelName]; }
+    setPullCancelled(c => new Set([...c, modelName]));
+    setPulling(p => { const n = { ...p }; delete n[modelName]; return n; });
+    toast(`Download cancelled`, "info");
+  };
+
+  const handleDelete = async (modelName: string) => {
+    if (deleteConfirm !== modelName) { setDeleteConfirm(modelName); return; }
+    setDeleteConfirm(null);
+    try {
+      await deleteOllamaModel(modelName);
+      setInstalled(prev => prev.filter(m => m.name !== modelName));
+      setLibrary(prev => prev.map(m => m.name === modelName ? { ...m, installed: false } : m));
+      toast(`${modelName} deleted`, "info");
+    } catch (e) { toast(e instanceof Error ? e.message : "Delete failed", "error"); }
+  };
+
+  const qualityColors: Record<string, string> = { good: "#6b7280", great: "#2563eb", excellent: "#7c3aed" };
+  const familyColors: Record<string, string> = { mistral: "#f59e0b", llama: "#3b82f6", gemma: "#10b981", qwen: "#8b5cf6", deepseek: "#06b6d4", phi: "#ec4899" };
+
+  const visibleLib = library.filter(m => {
+    if (libFilter === "installed") return m.installed;
+    if (libFilter === "compatible") return recommendation && m.min_vram_gb <= (recommendation.vram_gb + 2);
+    return true;
+  });
+
+  return (
+    <section style={ollamaSection}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" }}>
+        <div>
+          <h3 style={{ margin: "0 0 2px", fontSize: 15, fontWeight: 600, color: "#111827" }}>🦙 Ollama — Local AI Models</h3>
+          {status && (
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <span style={{ width: 7, height: 7, borderRadius: "50%", background: status.running ? "#16a34a" : "#9ca3af", display: "inline-block" }} />
+              <span style={{ fontSize: 12, color: status.running ? "#16a34a" : "#6b7280" }}>{status.message}</span>
+            </div>
+          )}
+        </div>
+        <button onClick={refresh} style={{ padding: "4px 10px", border: "1px solid #e5e7eb", borderRadius: 4, background: "#f9fafb", cursor: "pointer", fontSize: 12, color: "#6b7280" }}>⟳ Refresh</button>
+      </div>
+
+      {!status?.running && (
+        <div style={{ padding: "12px 14px", background: "#fef3c7", border: "1px solid #fcd34d", borderRadius: 6, marginBottom: 12, fontSize: 12 }}>
+          Ollama is not running. <a href="https://ollama.com" target="_blank" rel="noopener noreferrer" style={{ color: "#2563eb" }}>Download Ollama</a>, install it, then run <code>ollama serve</code>.
+        </div>
+      )}
+
+      {/* GPU + Recommendation */}
+      {recommendation && (
+        <div style={{ padding: "12px 14px", background: "#f0f9ff", border: "1px solid #bae6fd", borderRadius: 8, marginBottom: 14 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: "#0284c7", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 6 }}>GPU / Hardware Recommendation</div>
+          <p style={{ margin: "0 0 6px", fontSize: 13, color: "#374151" }}>{recommendation.tier_description}</p>
+          <p style={{ margin: "0 0 8px", fontSize: 12, color: "#6b7280" }}>{recommendation.glossa_note}</p>
+          <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+            <span style={{ fontSize: 11, fontWeight: 700, color: "#0284c7" }}>Top pick:</span>
+            <span style={{ fontSize: 11, padding: "2px 8px", background: "#7c3aed", color: "#fff", borderRadius: 4, fontWeight: 600 }}>{recommendation.recommended.display}</span>
+            <span style={{ fontSize: 11, color: "#6b7280" }}>{recommendation.recommended.size_gb} GB · score {recommendation.recommended.glossa_score}/10</span>
+          </div>
+        </div>
+      )}
+
+      {/* Installed models */}
+      {installed.length > 0 && (
+        <div style={{ marginBottom: 14 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: "#374151", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 6 }}>Installed ({installed.length})</div>
+          {installed.map((m) => (
+            <div key={m.name} style={{ display: "flex", gap: 8, alignItems: "center", padding: "7px 10px", border: "1px solid #e5e7eb", borderRadius: 6, marginBottom: 4, background: "#f0fdf4" }}>
+              <span style={{ fontSize: 11, padding: "1px 6px", borderRadius: 4, background: (familyColors[m.family] ?? "#6b7280") + "20", color: familyColors[m.family] ?? "#6b7280", fontWeight: 700, flexShrink: 0 }}>{m.family}</span>
+              <span style={{ flex: 1, fontWeight: 600, fontSize: 13 }}>{m.display || m.name}</span>
+              <span style={{ fontSize: 11, color: "#6b7280" }}>{m.size_gb} GB</span>
+              {m.glossa_score && <span style={{ fontSize: 10, padding: "1px 5px", background: "#7c3aed20", color: "#7c3aed", borderRadius: 4 }}>⭐ {m.glossa_score}/10</span>}
+              <button
+                onClick={() => handleDelete(m.name)}
+                style={{ padding: "2px 8px", border: "1px solid", borderRadius: 4, cursor: "pointer", fontSize: 10, fontWeight: 600,
+                  borderColor: deleteConfirm === m.name ? "#dc2626" : "#fca5a5",
+                  background: deleteConfirm === m.name ? "#fef2f2" : "none",
+                  color: "#dc2626" }}
+              >{deleteConfirm === m.name ? "Confirm delete?" : "Delete"}</button>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Library browser */}
+      <div>
+        <div style={{ display: "flex", gap: 6, marginBottom: 10, alignItems: "center" }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: "#374151", textTransform: "uppercase", letterSpacing: 0.5 }}>Model Library</div>
+          {(["all", "compatible", "installed"] as const).map((f) => (
+            <button key={f} onClick={() => setLibFilter(f)}
+              style={{ padding: "2px 8px", borderRadius: 4, border: "1px solid", cursor: "pointer", fontSize: 11,
+                background: libFilter === f ? "#1e3a5f" : "#fff",
+                borderColor: libFilter === f ? "#1e3a5f" : "#d1d5db",
+                color: libFilter === f ? "#fff" : "#374151" }}>
+              {f}
+            </button>
+          ))}
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          {visibleLib.map((m) => {
+            const isPulling = !!pulling[m.name];
+            const pullState = pulling[m.name];
+            const qualColor = qualityColors[m.quality] ?? "#6b7280";
+            const famColor = familyColors[m.family] ?? "#6b7280";
+            return (
+              <div key={m.name} style={{ border: `1px solid ${m.installed ? "#bbf7d0" : "#e5e7eb"}`, borderRadius: 6, overflow: "hidden", background: m.installed ? "#f0fdf4" : "#fafafa" }}>
+                <div style={{ display: "flex", gap: 8, padding: "8px 12px", alignItems: "center" }}>
+                  <span style={{ fontSize: 10, padding: "1px 5px", borderRadius: 3, background: famColor + "20", color: famColor, fontWeight: 700, flexShrink: 0 }}>{m.family}</span>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+                      <span style={{ fontWeight: 600, fontSize: 13 }}>{m.display}</span>
+                      {m.tags.includes("top-pick") && <span style={{ fontSize: 9, padding: "1px 5px", background: "#7c3aed", color: "#fff", borderRadius: 3, fontWeight: 700 }}>TOP PICK</span>}
+                      {m.tags.includes("recommended") && <span style={{ fontSize: 9, padding: "1px 5px", background: "#2563eb", color: "#fff", borderRadius: 3, fontWeight: 700 }}>FOR GLOSSA</span>}
+                    </div>
+                    <div style={{ fontSize: 11, color: "#6b7280", marginTop: 1 }}>{m.desc}</div>
+                  </div>
+                  <div style={{ display: "flex", gap: 4, flexShrink: 0, alignItems: "center" }}>
+                    <span style={{ fontSize: 10, color: "#9ca3af" }}>{m.size_gb} GB</span>
+                    {m.min_vram_gb > 0 && <span style={{ fontSize: 10, color: "#9ca3af" }}>·</span>}
+                    {m.min_vram_gb > 0 && <span style={{ fontSize: 10, color: "#9ca3af" }}>{m.min_vram_gb}+ GB VRAM</span>}
+                    <span style={{ fontSize: 10, padding: "1px 5px", borderRadius: 3, background: qualColor + "20", color: qualColor, fontWeight: 700 }}>{m.quality}</span>
+                    <span style={{ fontSize: 10, padding: "1px 5px", background: "#7c3aed10", color: "#7c3aed", borderRadius: 3 }}>⭐{m.glossa_score}</span>
+                  </div>
+                  {m.installed ? (
+                    <span style={{ fontSize: 11, color: "#16a34a", fontWeight: 700, flexShrink: 0 }}>✓ Installed</span>
+                  ) : isPulling ? (
+                    <button onClick={() => cancelPull(m.name)}
+                      style={{ padding: "3px 10px", border: "1px solid #fca5a5", borderRadius: 4, background: "#fef2f2", cursor: "pointer", fontSize: 11, color: "#dc2626", flexShrink: 0 }}>
+                      Cancel
+                    </button>
+                  ) : (
+                    <button onClick={() => startPull(m.name)} disabled={!status?.running}
+                      style={{ padding: "3px 10px", border: "none", borderRadius: 4, background: status?.running ? "#2563eb" : "#e5e7eb", cursor: status?.running ? "pointer" : "not-allowed", fontSize: 11, color: status?.running ? "#fff" : "#9ca3af", flexShrink: 0, fontWeight: 600 }}>
+                      ↓ Download
+                    </button>
+                  )}
+                </div>
+                {isPulling && (
+                  <div style={{ padding: "6px 12px 10px", borderTop: "1px solid #e5e7eb", background: "#fff" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "#6b7280", marginBottom: 4 }}>
+                      <span>{pullState.status}</span>
+                      <span>{pullState.progress}% · {(pullState.completed / 1_000_000).toFixed(0)} / {(pullState.total / 1_000_000).toFixed(0)} MB</span>
+                    </div>
+                    <div style={{ height: 4, background: "#f3f4f6", borderRadius: 2 }}>
+                      <div style={{ height: "100%", width: `${pullState.progress}%`, background: "#2563eb", borderRadius: 2, transition: "width 0.3s" }} />
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Main SettingsView ─────────────────────────────────────────────────────────
 
 export function SettingsView() {
   const [backendKeys, setBackendKeys] = useState<Record<string, KeyStatus>>({});
@@ -306,6 +542,9 @@ export function SettingsView() {
         </section>
       )}
 
+      {/* Ollama */}
+      <OllamaSection />
+
       {/* System info */}
       <section style={sectionStyle}>
         <h3 style={sectionTitleStyle}>System</h3>
@@ -428,6 +667,14 @@ const alertStyle: React.CSSProperties = {
   border: "1px solid",
   marginBottom: "1rem",
   fontSize: 13,
+};
+
+const ollamaSection: React.CSSProperties = {
+  marginBottom: "2rem",
+  padding: "1.25rem",
+  border: "1px solid #d1fae5",
+  borderRadius: 8,
+  background: "#fafffe",
 };
 
 const codeStyle: React.CSSProperties = {

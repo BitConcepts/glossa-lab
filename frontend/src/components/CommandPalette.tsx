@@ -1,8 +1,9 @@
 /**
  * CommandPalette — Cmd+K / Ctrl+K command palette.
  * Fuzzy search over all tabs and common actions.
+ * Draggable with screen boundary constraints.
  */
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export interface PaletteCommand {
   id: string;
@@ -21,6 +22,34 @@ export function CommandPalette({ commands, onClose }: Props) {
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
+  const dragging = useRef(false);
+  const dragOffset = useRef({ x: 0, y: 0 });
+  const palRef = useRef<HTMLDivElement>(null);
+
+  // Drag handlers
+  const onDragStart = useCallback((e: React.MouseEvent) => {
+    if (!palRef.current) return;
+    dragging.current = true;
+    const rect = palRef.current.getBoundingClientRect();
+    dragOffset.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    e.preventDefault();
+  }, []);
+
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => {
+      if (!dragging.current || !palRef.current) return;
+      const pw = palRef.current.offsetWidth;
+      const ph = palRef.current.offsetHeight;
+      const x = Math.max(0, Math.min(window.innerWidth - pw, e.clientX - dragOffset.current.x));
+      const y = Math.max(0, Math.min(window.innerHeight - ph, e.clientY - dragOffset.current.y));
+      setPos({ x, y });
+    };
+    const onUp = () => { dragging.current = false; };
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mouseup", onUp);
+    return () => { window.removeEventListener("mousemove", onMove); window.removeEventListener("mouseup", onUp); };
+  }, []);
 
   const filtered = commands.filter((c) =>
     !query || c.label.toLowerCase().includes(query.toLowerCase()) ||
@@ -48,21 +77,26 @@ export function CommandPalette({ commands, onClose }: Props) {
     if (e.key === "Escape") onClose();
   };
 
+  const palStyle: React.CSSProperties = pos
+    ? { position: "fixed", left: pos.x, top: pos.y, zIndex: 9001, width: 580, maxWidth: "95vw", background: "#fff", borderRadius: 12, boxShadow: "0 25px 60px rgba(0,0,0,0.25)", overflow: "hidden" }
+    : { width: 580, maxWidth: "95vw", background: "#fff", borderRadius: 12, boxShadow: "0 25px 60px rgba(0,0,0,0.25)", overflow: "hidden" };
+
   return (
     <div
       style={{
-        position: "fixed", inset: 0, background: "rgba(0,0,0,0.5)",
-        display: "flex", alignItems: "flex-start", justifyContent: "center",
-        paddingTop: "15vh", zIndex: 9000,
+        position: "fixed", inset: 0, background: pos ? "transparent" : "rgba(0,0,0,0.5)",
+        display: pos ? "block" : "flex", alignItems: "flex-start", justifyContent: "center",
+        paddingTop: pos ? 0 : "15vh", zIndex: 9000,
+        pointerEvents: pos ? "none" : "auto",
       }}
-      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+      onClick={(e) => { if (!pos && e.target === e.currentTarget) onClose(); }}
     >
-      <div style={{
-        width: 580, maxWidth: "95vw", background: "#fff", borderRadius: 12,
-        boxShadow: "0 25px 60px rgba(0,0,0,0.25)", overflow: "hidden",
-      }}>
-        <div style={{ padding: "12px 16px", borderBottom: "1px solid #f3f4f6", display: "flex", alignItems: "center", gap: 8 }}>
-          <span style={{ color: "#9ca3af", fontSize: 16 }}>⌘</span>
+      <div ref={palRef} style={{ ...palStyle, pointerEvents: "auto" }}>
+        <div
+          style={{ padding: "12px 16px", borderBottom: "1px solid #f3f4f6", display: "flex", alignItems: "center", gap: 8, cursor: "grab", userSelect: "none" }}
+          onMouseDown={onDragStart}
+        >
+          <span style={{ color: "#9ca3af", fontSize: 16, flexShrink: 0 }}>⌘</span>
           <input
             ref={inputRef}
             value={query}

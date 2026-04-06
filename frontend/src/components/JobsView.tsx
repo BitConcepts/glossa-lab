@@ -14,6 +14,8 @@ import { ResultsView } from "./ResultsView";
 export function JobsView() {
   const [jobs, setJobs] = useState<JobResponse[]>([]);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [pipelines, setPipelines] = useState<CatalogPipeline[]>([]);
   const [clearing, setClearing] = useState(false);
@@ -29,15 +31,18 @@ export function JobsView() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [viewResult, setViewResult] = useState<{ name: string; data: Record<string, any> } | null>(null);
 
-  const load = useCallback(async () => {
+  const load = useCallback(async (manual = false) => {
+    if (manual) setRefreshing(true);
     try {
       const j = await listJobs();
       setJobs(j.sort((a, b) => b.created_at.localeCompare(a.created_at)));
+      setLastUpdated(new Date());
       setError(null);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to load jobs");
     } finally {
       setLoading(false);
+      if (manual) setRefreshing(false);
     }
   }, []);
 
@@ -107,14 +112,31 @@ export function JobsView() {
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
-        <h2 style={{ margin: 0 }}>Jobs</h2>
-        <button
-          onClick={handleClearJobs}
-          disabled={clearing || jobs.length === 0}
-          style={{ ...btnStyle, background: "#6b7280", fontSize: 12, padding: "4px 12px" }}
-        >
-          {clearing ? "Clearing…" : "Clear all"}
-        </button>
+        <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
+          <h2 style={{ margin: 0 }}>Jobs</h2>
+          {lastUpdated && (
+            <span style={{ fontSize: 11, color: "#9ca3af" }}>
+              updated {lastUpdated.toLocaleTimeString()}
+            </span>
+          )}
+        </div>
+        <div style={{ display: "flex", gap: 6 }}>
+          <button
+            onClick={() => load(true)}
+            disabled={refreshing}
+            style={{ ...btnStyle, background: "#f3f4f6", color: "#374151", fontSize: 12, padding: "4px 12px" }}
+            title="Manually refresh the job list"
+          >
+            {refreshing ? "Refreshing…" : "⟳ Refresh"}
+          </button>
+          <button
+            onClick={handleClearJobs}
+            disabled={clearing || jobs.length === 0}
+            style={{ ...btnStyle, background: "#6b7280", fontSize: 12, padding: "4px 12px" }}
+          >
+            {clearing ? "Clearing…" : "Clear all"}
+          </button>
+        </div>
       </div>
 
       {/* Submit panel */}

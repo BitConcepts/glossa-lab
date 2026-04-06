@@ -429,11 +429,24 @@ def list_provider_catalog() -> list[dict[str, Any]]:
     return list(_PROVIDER_CATALOG)
 
 
+def _build_report_experiment_map() -> dict[str, str]:
+    """Return {report_stem: experiment_id} for experiments with results_file."""
+    from glossa_lab.experiment_base import discover_experiments
+    mapping: dict[str, str] = {}
+    for exp_id, cls in discover_experiments().items():
+        rf = getattr(cls, "results_file", None)
+        if rf:
+            stem = Path(rf).stem
+            mapping[stem] = exp_id
+    return mapping
+
+
 def list_report_catalog() -> list[dict[str, Any]]:
-    """Return discovered report artifacts from the reports directory."""
+    """Return discovered report artifacts enriched with experiment_id where known."""
     if not _REPORTS_DIR.exists():
         return []
 
+    exp_map = _build_report_experiment_map()
     entries: list[dict[str, Any]] = []
     for path in sorted(_REPORTS_DIR.rglob("*")):
         if not path.is_file():
@@ -451,6 +464,7 @@ def list_report_catalog() -> list[dict[str, Any]]:
                     stat.st_mtime,
                     tz=timezone.utc,
                 ).isoformat(),
+                "experiment_id": exp_map.get(path.stem, ""),
             }
         )
     return entries

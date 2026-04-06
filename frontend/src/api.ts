@@ -220,6 +220,18 @@ export function isLocalKeySet(name: string): boolean {
 export const getSettings = (): Promise<SettingsResponse> =>
   request("GET", "/settings");
 
+export interface VerifyKeyResult {
+  valid: boolean;
+  provider: string;
+  message: string;
+}
+
+export const verifyKey = (
+  keyName: string,
+  keyValue?: string
+): Promise<VerifyKeyResult> =>
+  request("POST", "/settings/verify-key", { key_name: keyName, key_value: keyValue ?? null });
+
 export const updateSettings = (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   body: Record<string, any>

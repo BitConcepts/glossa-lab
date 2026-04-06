@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Increment this when adding a new _SCHEMA_Vn block below.
 # _apply_schema will raise if the DB is somehow ahead of the code.
-_SCHEMA_VERSION = 3
+_SCHEMA_VERSION = 4
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -64,6 +64,46 @@ CREATE TABLE IF NOT EXISTS studies (
     graph_json  TEXT NOT NULL DEFAULT '{"nodes":[],"edges":[]}',
     created_at  TEXT NOT NULL,
     updated_at  TEXT NOT NULL
+);
+"""
+
+_SCHEMA_V4 = """
+CREATE TABLE IF NOT EXISTS hypotheses (
+    id           TEXT PRIMARY KEY,
+    title        TEXT NOT NULL,
+    statement    TEXT NOT NULL DEFAULT '',
+    status       TEXT NOT NULL DEFAULT 'active',
+    evidence     TEXT NOT NULL DEFAULT '[]',
+    study_ids    TEXT NOT NULL DEFAULT '[]',
+    exp_ids      TEXT NOT NULL DEFAULT '[]',
+    created_at   TEXT NOT NULL,
+    updated_at   TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS notebooks (
+    id           TEXT PRIMARY KEY,
+    title        TEXT NOT NULL,
+    content      TEXT NOT NULL DEFAULT '',
+    study_id     TEXT,
+    tags         TEXT NOT NULL DEFAULT '[]',
+    created_at   TEXT NOT NULL,
+    updated_at   TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS citations (
+    id           TEXT PRIMARY KEY,
+    key          TEXT NOT NULL UNIQUE,
+    title        TEXT NOT NULL DEFAULT '',
+    authors      TEXT NOT NULL DEFAULT '',
+    year         TEXT NOT NULL DEFAULT '',
+    venue        TEXT NOT NULL DEFAULT '',
+    doi          TEXT NOT NULL DEFAULT '',
+    url          TEXT NOT NULL DEFAULT '',
+    bibtex       TEXT NOT NULL DEFAULT '',
+    exp_ids      TEXT NOT NULL DEFAULT '[]',
+    study_ids    TEXT NOT NULL DEFAULT '[]',
+    notes        TEXT NOT NULL DEFAULT '',
+    created_at   TEXT NOT NULL
 );
 """
 
@@ -120,6 +160,11 @@ class Database:
         if current_version < 3:
             await self._conn.executescript(_SCHEMA_V3)
             await self._conn.execute("UPDATE _schema_version SET version = ?", (3,))
+            current_version = 3
+
+        if current_version < 4:
+            await self._conn.executescript(_SCHEMA_V4)
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (4,))
 
         if current_version > _SCHEMA_VERSION:
             logger.warning(
@@ -423,13 +468,253 @@ class Database:
         await self._conn.commit()
         return existing
 
-    # ── Helpers ────────────────────────────────────────────────
+    # ── Hypotheses ─────────────────────────────────────────────────
+
+    async def create_hypothesis(
+        self,
+        *,
+        title: str,
+        statement: str = "",
+        status: str = "active",
+        created_at: str,
+    ) -> dict[str, Any]:
+        assert self._conn
+        hid = uuid.uuid4().hex[:12]
+        await self._conn.execute(  # noqa: E501
+            """INSERT INTO hypotheses
+               (id,title,statement,status,evidence,study_ids,exp_ids,created_at,updated_at)
+               VALUES (?,?,?,?,?,?,?,?,?)""",
+            (hid, title, statement, status, "[]", "[]", "[]", created_at, created_at),
+        )
+        await self._conn.commit()
+        return await self.get_hypothesis(hid)  # type: ignore[return-value]
+
+    async def list_hypotheses(self) -> list[dict[str, Any]]:
+        assert self._conn
+        cursor = await self._conn.execute("SELECT * FROM hypotheses ORDER BY updated_at DESC")
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    async def get_hypothesis(self, hid: str) -> dict[str, Any] | None:
+        assert self._conn
+        cursor = await self._conn.execute("SELECT * FROM hypotheses WHERE id=?", (hid,))
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    async def update_hypothesis(self, hid: str, **fields: Any) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_hypothesis(hid)
+        if existing is None:
+            return None
+        title = fields.get("title", existing["title"])
+        statement = fields.get("statement", existing["statement"])
+        status = fields.get("status", existing["status"])
+        evidence = (
+            json.dumps(fields["evidence"])
+            if "evidence" in fields
+            else json.dumps(existing["evidence"])
+        )
+        study_ids = (
+            json.dumps(fields["study_ids"])
+            if "study_ids" in fields
+            else json.dumps(existing["study_ids"])
+        )
+        exp_ids = (
+            json.dumps(fields["exp_ids"])
+            if "exp_ids" in fields
+            else json.dumps(existing["exp_ids"])
+        )
+        await self._conn.execute(
+            """UPDATE hypotheses SET title=?,statement=?,status=?,evidence=?,study_ids=?,exp_ids=?,
+               updated_at=datetime('now') WHERE id=?""",
+            (title, statement, status, evidence, study_ids, exp_ids, hid),
+        )
+        await self._conn.commit()
+        return await self.get_hypothesis(hid)
+
+    async def delete_hypothesis(self, hid: str) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_hypothesis(hid)
+        if existing is None:
+            return None
+        await self._conn.execute("DELETE FROM hypotheses WHERE id=?", (hid,))
+        await self._conn.commit()
+        return existing
+
+    # ── Notebooks ─────────────────────────────────────────────────
+
+    async def create_notebook(
+        self,
+        *,
+        title: str,
+        content: str = "",
+        study_id: str | None = None,
+        tags: list[str] | None = None,
+        created_at: str,
+    ) -> dict[str, Any]:
+        assert self._conn
+        nid = uuid.uuid4().hex[:12]
+        await self._conn.execute(
+            """INSERT INTO notebooks (id,title,content,study_id,tags,created_at,updated_at)
+               VALUES (?,?,?,?,?,?,?)""",
+            (nid, title, content, study_id, json.dumps(tags or []), created_at, created_at),
+        )
+        await self._conn.commit()
+        return await self.get_notebook(nid)  # type: ignore[return-value]
+
+    async def list_notebooks(self) -> list[dict[str, Any]]:
+        assert self._conn
+        cursor = await self._conn.execute("SELECT * FROM notebooks ORDER BY updated_at DESC")
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    async def get_notebook(self, nid: str) -> dict[str, Any] | None:
+        assert self._conn
+        cursor = await self._conn.execute("SELECT * FROM notebooks WHERE id=?", (nid,))
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    async def update_notebook(self, nid: str, **fields: Any) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_notebook(nid)
+        if existing is None:
+            return None
+        title = fields.get("title", existing["title"])
+        content = fields.get("content", existing["content"])
+        study_id = fields.get("study_id", existing.get("study_id"))
+        tags = (
+            json.dumps(fields["tags"]) if "tags" in fields else json.dumps(existing.get("tags", []))
+        )
+        await self._conn.execute(
+            """UPDATE notebooks SET title=?,content=?,study_id=?,tags=?,
+               updated_at=datetime('now') WHERE id=?""",
+            (title, content, study_id, tags, nid),
+        )
+        await self._conn.commit()
+        return await self.get_notebook(nid)
+
+    async def delete_notebook(self, nid: str) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_notebook(nid)
+        if existing is None:
+            return None
+        await self._conn.execute("DELETE FROM notebooks WHERE id=?", (nid,))
+        await self._conn.commit()
+        return existing
+
+    # ── Citations ─────────────────────────────────────────────────
+
+    async def create_citation(
+        self,
+        *,
+        key: str,
+        title: str = "",
+        authors: str = "",
+        year: str = "",
+        venue: str = "",
+        doi: str = "",
+        url: str = "",
+        bibtex: str = "",
+        notes: str = "",
+        created_at: str,
+    ) -> dict[str, Any]:
+        assert self._conn
+        cid = uuid.uuid4().hex[:12]
+        await self._conn.execute(
+            """INSERT INTO citations
+               (id,key,title,authors,year,venue,doi,url,bibtex,exp_ids,study_ids,notes,created_at)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+            (
+                cid,
+                key,
+                title,
+                authors,
+                year,
+                venue,
+                doi,
+                url,
+                bibtex,
+                "[]",
+                "[]",
+                notes,
+                created_at,
+            ),
+        )
+        await self._conn.commit()
+        return await self.get_citation(cid)  # type: ignore[return-value]
+
+    async def list_citations(self) -> list[dict[str, Any]]:
+        assert self._conn
+        cursor = await self._conn.execute("SELECT * FROM citations ORDER BY year DESC, key ASC")
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    async def get_citation(self, cid: str) -> dict[str, Any] | None:
+        assert self._conn
+        cursor = await self._conn.execute("SELECT * FROM citations WHERE id=?", (cid,))
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    async def update_citation(self, cid: str, **fields: Any) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_citation(cid)
+        if existing is None:
+            return None
+        for f in ("title", "authors", "year", "venue", "doi", "url", "bibtex", "notes"):
+            existing[f] = fields.get(f, existing[f])
+        exp_ids = (
+            json.dumps(fields["exp_ids"])
+            if "exp_ids" in fields
+            else json.dumps(existing["exp_ids"])
+        )
+        study_ids = (
+            json.dumps(fields["study_ids"])
+            if "study_ids" in fields
+            else json.dumps(existing["study_ids"])
+        )
+        await self._conn.execute(
+            """UPDATE citations SET title=?,authors=?,year=?,venue=?,doi=?,url=?,bibtex=?,
+               exp_ids=?,study_ids=?,notes=? WHERE id=?""",
+            (
+                existing["title"],
+                existing["authors"],
+                existing["year"],
+                existing["venue"],
+                existing["doi"],
+                existing["url"],
+                existing["bibtex"],
+                exp_ids,
+                study_ids,
+                existing["notes"],
+                cid,
+            ),
+        )
+        await self._conn.commit()
+        return await self.get_citation(cid)
+
+    async def delete_citation(self, cid: str) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_citation(cid)
+        if existing is None:
+            return None
+        await self._conn.execute("DELETE FROM citations WHERE id=?", (cid,))
+        await self._conn.commit()
+        return existing
+
+    # ── Helpers ──────────────────────────────────────────────────────
 
     @staticmethod
     def _row_to_dict(row: aiosqlite.Row) -> dict[str, Any]:
         d = dict(row)
         # Deserialise JSON columns
-        for field in ("params", "content", "symbol_set", "metadata", "data"):
+        for field in (
+            "params",
+            "content",
+            "symbol_set",
+            "metadata",
+            "data",
+            "evidence",
+            "study_ids",
+            "exp_ids",
+            "tags",
+        ):
             if field in d and isinstance(d[field], str):
                 d[field] = json.loads(d[field])
         # graph_json → graph (studies)

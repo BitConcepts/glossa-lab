@@ -209,3 +209,20 @@ def run_ugaritic_benchmark(verbose: bool = True) -> dict[str, Any]:
 
 if __name__ == "__main__":
     result = run_ugaritic_benchmark(verbose=True)
+
+try:
+    from glossa_lab.experiment_base import ExperimentBase as _EB
+except ImportError:
+    _EB = object
+
+
+class UgariticProperBenchmark(_EB):
+    id = "ugaritic_proper_benchmark"
+    name = "Ugaritic Proper Benchmark (Anti-Circularity)"
+    category = "Validation"
+    description = "Proper 75/25 split benchmark. Circularity inflation: +76.7pp."
+    estimated_time = "~30 sec"
+    command = "python -m glossa_lab.experiments.ugaritic_proper_benchmark"
+
+    def run(self, **kwargs):
+        return run_ugaritic_benchmark(verbose=False)

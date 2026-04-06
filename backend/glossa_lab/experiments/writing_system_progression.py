@@ -447,3 +447,20 @@ def run_all_tiers(verbose: bool = True) -> dict[str, Any]:
 
 if __name__ == "__main__":
     results = run_all_tiers(verbose=True)
+
+try:
+    from glossa_lab.experiment_base import ExperimentBase as _EB
+except ImportError:
+    _EB = object
+
+
+class WritingSystemProgression(_EB):
+    id = "writing_system_progression"
+    name = "Writing System Progression"
+    category = "Validation"
+    description = "5-tier writing system analysis: alphabetic to logo-syllabic to undeciphered."
+    estimated_time = "~2 min"
+    command = "python -m glossa_lab.experiments.writing_system_progression"
+
+    def run(self, **kwargs):
+        return run_all_tiers(verbose=False)

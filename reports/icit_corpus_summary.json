@@ -1,0 +1,42 @@
+{
+  "n_inscriptions": 4325,
+  "total_sign_tokens": 15168,
+  "n_signs": 713,
+  "mean_inscription_length": 3.51,
+  "max_inscription_length": 17,
+  "sites": {
+    "Harappa": 1774,
+    "Mohenjo-Daro": 1710,
+    "Dholavira": 183,
+    "Lothal": 170,
+    "Kalibangan": 143,
+    "Chanhu-Daro": 61,
+    "Unknown": 36,
+    "Banawali": 22,
+    "Nausharo": 22,
+    "Nindowari-Damb": 20,
+    "Tigrana": 15,
+    "Altyn Depe": 14,
+    "Lakhanjo-Daro": 14,
+    "Baror": 13,
+    "Rappwala Ther": 13,
+    "Karzakan": 13,
+    "Farmana": 12,
+    "Kanmer": 12,
+    "Naru-Waro-Dharo": 11,
+    "Salut": 11
+  },
+  "object_types": {
+    "SEAL:S": 1655,
+    "": 884,
+    "TAB:B": 674,
+    "TAB:I": 477,
+    "SEAL:R": 368,
+    "TAB:C": 186,
+    "MISC": 42,
+    "SEAL:C": 28,
+    "SEAL:CY": 7,
+    "POT:M": 3
+  },
+  "method": "Sequences reconstructed from Catalog ICIT_ID lists. Sign ordering is probabilistic (initial_rate -> first, terminal_rate -> last). True ordering requires the full Corpus text layer (PDF recommended)."
+}

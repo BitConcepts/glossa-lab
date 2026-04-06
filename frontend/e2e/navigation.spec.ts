@@ -1,82 +1,108 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
 /**
- * Navigation tests — basic app shell and tab switching.
- * These tests do NOT require the backend to be running.
+ * Navigation tests — app shell, grouped tab bar, header features.
+ * Runs against vite preview (port 4173) without requiring the backend.
  */
 
 test.describe("App shell", () => {
-  test("loads the page and shows the Glossa Lab title", async ({ page }) => {
+  test("loads and shows Glossa Lab title", async ({ page }) => {
     await page.goto("/");
-    // Title is in the header as h1
     await expect(page.locator("h1").filter({ hasText: "Glossa Lab" })).toBeVisible();
   });
 
-  test("shows the subtitle text", async ({ page }) => {
+  test("shows collaboration subtitle", async ({ page }) => {
     await page.goto("/");
     await expect(page.getByText(/Indus Script Analysis/i)).toBeVisible();
   });
 
-  test("renders core navigation tabs", async ({ page }) => {
+  test("shows health badge in header", async ({ page }) => {
     await page.goto("/");
-    for (const label of [
-      "Status", "Indus Studies", "Study Builder",
-      "Experiments", "Pipelines",
-      "Corpora", "Jobs", "Reports", "Presets", "Settings",
-    ]) {
-      await expect(page.getByRole("button", { name: label })).toBeVisible();
-    }
+    // Health badge contains "Healthy", "Degraded", or "Offline"
+    await expect(page.locator("div").filter({ hasText: /Healthy|Degraded|Offline/ }).first()).toBeVisible();
+  });
+
+  test("shows Cmd+K button in header", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.getByTitle(/Command palette/i)).toBeVisible();
+  });
+
+  test("shows dark mode toggle in header", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.getByTitle(/Toggle dark mode/i)).toBeVisible();
   });
 });
 
-test.describe("Tab switching", () => {
-  test("default tab shows Indus Studies heading", async ({ page }) => {
+test.describe("Grouped tab navigation", () => {
+  test("Core group is visible and expanded by default", async ({ page }) => {
     await page.goto("/");
-    // Default tab is 'studies'
-    await expect(page.getByRole("heading", { name: "Indus Studies" })).toBeVisible();
+    await expect(page.getByRole("button", { name: /Status/i })).toBeVisible();
+    await expect(page.getByRole("button", { name: /Studies/i })).toBeVisible();
+    await expect(page.getByRole("button", { name: /Experiments/i })).toBeVisible();
+    await expect(page.getByRole("button", { name: /Corpora/i })).toBeVisible();
+    await expect(page.getByRole("button", { name: /Reports/i })).toBeVisible();
   });
 
-  test("clicking Status tab shows System Status view", async ({ page }) => {
+  test("default tab renders Studies view", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: "Status" }).click();
+    await expect(page.getByRole("heading", { name: /Studies/ })).toBeVisible();
+  });
+
+  test("clicking Status tab shows System Status", async ({ page }) => {
+    await page.goto("/");
+    await page.getByRole("button", { name: /^Status$/ }).first().click();
     await expect(page.getByRole("heading", { name: "System Status" })).toBeVisible();
+  });
+
+  test("clicking Experiments tab shows Experiments view", async ({ page }) => {
+    await page.goto("/");
+    await page.getByRole("button", { name: /^Experiments$/ }).first().click();
+    await expect(page.getByRole("heading", { name: "Experiments" })).toBeVisible();
   });
 
   test("clicking Corpora tab shows Corpora view", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: "Corpora" }).click();
+    await page.getByRole("button", { name: /^Corpora$/ }).first().click();
     await expect(page.getByRole("heading", { name: "Corpora" })).toBeVisible();
   });
 
-  test("clicking Jobs tab shows Jobs view", async ({ page }) => {
+  test("AI group tabs are visible", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: "Jobs" }).click();
-    await expect(page.locator("h2").filter({ hasText: "Jobs" })).toBeVisible();
+    await expect(page.getByRole("button", { name: /AI Chat/i })).toBeVisible();
+    await expect(page.getByRole("button", { name: /AI Tools/i })).toBeVisible();
   });
 
-  test("clicking Study Builder tab shows Study Builder heading", async ({ page }) => {
+  test("Research group tabs are visible", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: "Study Builder" }).click();
-    await expect(page.getByRole("heading", { name: "Study Builder" })).toBeVisible();
+    await expect(page.getByRole("button", { name: /Hypotheses/i })).toBeVisible();
+    await expect(page.getByRole("button", { name: /Notebooks/i })).toBeVisible();
+    await expect(page.getByRole("button", { name: /Citations/i })).toBeVisible();
   });
 
-  test("clicking Experiments tab shows Experiments heading", async ({ page }) => {
+  test("Analysis group tabs are visible", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: "Experiments" }).click();
-    await expect(page.getByRole("heading", { name: "Experiments" })).toBeVisible();
+    await expect(page.getByRole("button", { name: /Entropy/i })).toBeVisible();
+    await expect(page.getByRole("button", { name: /Timeline/i })).toBeVisible();
+  });
+});
+
+test.describe("Dark mode", () => {
+  test("toggling dark mode changes body background", async ({ page }) => {
+    await page.goto("/");
+    const before = await page.evaluate(() => document.body.style.background);
+    await page.getByTitle(/Toggle dark mode/i).click();
+    const after = await page.evaluate(() => document.body.style.background);
+    expect(before).not.toBe(after);
   });
 
-  test("selected tab has a distinct visual style", async ({ page }) => {
+  test("dark mode preference persists via localStorage", async ({ page }) => {
     await page.goto("/");
-    // "Indus Studies" is selected by default
-    const studiesBtn = page.getByRole("button", { name: "Indus Studies" });
-    const statusBtn = page.getByRole("button", { name: "Status" });
-    const activeBg = await studiesBtn.evaluate((el) =>
-      window.getComputedStyle(el).backgroundColor
-    );
-    const inactiveBg = await statusBtn.evaluate((el) =>
-      window.getComputedStyle(el).backgroundColor
-    );
-    expect(activeBg).not.toBe(inactiveBg);
+    await page.getByTitle(/Toggle dark mode/i).click();
+    const stored = await page.evaluate(() => localStorage.getItem("glossa_dark"));
+    expect(stored).toBe("1");
+    // Toggle back
+    await page.getByTitle(/Toggle dark mode/i).click();
+    const stored2 = await page.evaluate(() => localStorage.getItem("glossa_dark"));
+    expect(stored2).toBe("0");
   });
 });

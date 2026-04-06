@@ -641,3 +641,124 @@ export const aiSynthesize = (body: { study_ids: string[]; question?: string }): 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const aiSignReading = (body: { sign_ids: string[]; theory?: string; context?: string }): Promise<Record<string, any>> =>
   request("POST", "/ai/sign-reading", body);
+
+// ── System Metrics ───────────────────────────────────────────────
+
+export interface GpuInfo {
+  name: string;
+  memory_total_mb: number;
+  memory_used_mb: number;
+  memory_free_mb: number;
+  utilization_pct: number;
+  memory_utilization_pct: number;
+  temperature_c: number | null;
+}
+
+export interface SystemMetrics {
+  timestamp: number;
+  cpu: {
+    percent: number;
+    count_logical: number;
+    count_physical: number;
+    freq_mhz: number | null;
+    freq_max_mhz: number | null;
+    per_core_pct: number[];
+    peak_pct: number;
+  };
+  ram: {
+    total_gb: number;
+    used_gb: number;
+    available_gb: number;
+    percent: number;
+    peak_pct: number;
+    swap_total_gb: number;
+    swap_used_gb: number;
+  };
+  gpu: GpuInfo[];
+  gpu_peaks: { utilization_pct: number; memory_utilization_pct: number };
+  disk: {
+    total_gb: number;
+    used_gb: number;
+    free_gb: number;
+    percent: number;
+    read_mbps: number;
+    write_mbps: number;
+    peak_read_mbps: number;
+    peak_write_mbps: number;
+  };
+  network: {
+    send_mbps: number;
+    recv_mbps: number;
+    peak_send_mbps: number;
+    peak_recv_mbps: number;
+    total_sent_gb: number;
+    total_recv_gb: number;
+  };
+  peaks: Record<string, number>;
+}
+
+export const getSystemMetrics = (): Promise<SystemMetrics> =>
+  request("GET", "/system/metrics");
+
+export const getSystemGpu = (): Promise<GpuInfo[]> =>
+  request("GET", "/system/gpu");
+
+export const clearPeaks = (): Promise<{ cleared: boolean; peaks: Record<string, number> }> =>
+  request("POST", "/system/peaks/clear");
+
+export const getSystemMetricsStreamUrl = (): string => `/api/v1/system/metrics/stream`;
+
+// ── Ollama ─────────────────────────────────────────────────────────
+
+export interface OllamaInstalledModel {
+  name: string;
+  size_gb: number;
+  modified_at: string;
+  digest: string;
+  family: string;
+  display: string;
+  glossa_score: number | null;
+  tags: string[];
+}
+
+export interface OllamaLibraryEntry {
+  name: string;
+  display: string;
+  family: string;
+  size_gb: number;
+  min_vram_gb: number;
+  param_b: number;
+  desc: string;
+  quality: string;
+  glossa_score: number;
+  tags: string[];
+  installed: boolean;
+}
+
+export interface OllamaRecommendation {
+  gpu_name: string;
+  vram_gb: number;
+  tier: string;
+  tier_description: string;
+  recommended: OllamaLibraryEntry;
+  all_fitting: string[];
+  glossa_note: string;
+}
+
+export const getOllamaStatus = (): Promise<{ running: boolean; base_url: string; message: string }> =>
+  request("GET", "/ollama/status");
+
+export const listOllamaInstalled = (): Promise<{ running: boolean; models: OllamaInstalledModel[]; count?: number }> =>
+  request("GET", "/ollama/installed");
+
+export const getOllamaLibrary = (): Promise<{ running: boolean; models: OllamaLibraryEntry[]; installed_names: string[] }> =>
+  request("GET", "/ollama/library");
+
+export const getOllamaRecommendation = (): Promise<OllamaRecommendation> =>
+  request("GET", "/ollama/recommend");
+
+export const deleteOllamaModel = (name: string): Promise<{ deleted: boolean; model: string }> =>
+  request("DELETE", `/ollama/models/${encodeURIComponent(name)}`);
+
+export const getOllamaPullUrl = (modelName: string): string =>
+  `/api/v1/ollama/pull/${encodeURIComponent(modelName)}`;

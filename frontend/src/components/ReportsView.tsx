@@ -5,7 +5,7 @@
 
 import { useEffect, useState } from "react";
 import {
-  listReports, deleteReport, getReport, getReportDownloadUrl, CatalogReport
+  listReports, deleteReport, getReport, getReportDownloadUrl, openReportFolder, type CatalogReport,
 } from "../api";
 
 type ViewMode = { kind: "json"; name: string; data: unknown } | { kind: "pdf"; name: string; url: string } | null;
@@ -15,7 +15,6 @@ export function ReportsView() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [viewing, setViewing] = useState<ViewMode>(null);
-  const [viewLoading, setViewLoading] = useState(false);
   const [search, setSearch] = useState("");
 
   const load = async () => {
@@ -37,14 +36,11 @@ export function ReportsView() {
       setViewing({ kind: "pdf", name: r.name, url: getReportDownloadUrl(r.id) });
       return;
     }
-    setViewLoading(true);
     try {
       const data = await getReport(r.id);
       setViewing({ kind: "json", name: r.name, data });
     } catch (e) {
       alert(e instanceof Error ? e.message : "Failed to load report");
-    } finally {
-      setViewLoading(false);
     }
   };
 
@@ -124,10 +120,11 @@ export function ReportsView() {
                   <td style={tdStyle}>{r.updated_at.slice(0, 16).replace("T", " ")}</td>
                   <td style={tdStyle} onClick={(e) => e.stopPropagation()}>
                     <span style={{ display: "flex", gap: 4 }}>
-                      {canView && (
-                        <button onClick={() => handleView(r)} disabled={viewLoading}
-                          style={{ ...btnStyle, padding: "2px 10px", fontSize: 11 }}>View</button>
-                      )}
+                      <button
+                        onClick={() => openReportFolder(r.id).catch(() => {})}
+                        title="Open containing folder in Explorer"
+                        style={{ ...btnStyle, padding: "2px 10px", fontSize: 11, background: "#6b7280" }}
+                      >Open Folder</button>
                       <a href={getReportDownloadUrl(r.id)} target="_blank" rel="noopener noreferrer"
                         style={{ ...btnStyle, padding: "2px 10px", fontSize: 11, background: "#7c3aed", textDecoration: "none", display: "inline-block" }}>
                         Open

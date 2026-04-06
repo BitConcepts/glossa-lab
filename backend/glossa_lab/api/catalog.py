@@ -46,6 +46,14 @@ class ExperimentCatalogEntry(BaseModel):
     estimated_time: str
 
 
+class ModelDetailEntry(BaseModel):
+    """Per-model description and use-case tag."""
+
+    id: str
+    description: str = ""
+    use_for: str = ""
+
+
 class ProviderCatalogEntry(BaseModel):
     """Provider catalog entry."""
 
@@ -54,6 +62,7 @@ class ProviderCatalogEntry(BaseModel):
     api_key_setting: str
     supports_live_model_discovery: bool
     recommended_models: list[str]
+    model_details: list[ModelDetailEntry] = []
     ocr_preferred_models: list[str]
 
 
@@ -86,7 +95,17 @@ async def get_catalog() -> CatalogResponse:
         pipelines=[PipelineCatalogEntry(**entry) for entry in list_pipeline_catalog()],
         experiments=[ExperimentCatalogEntry(**entry) for entry in list_experiment_catalog()],
         reports=[ReportCatalogEntry(**entry) for entry in list_report_catalog()],
-        providers=[ProviderCatalogEntry(**entry) for entry in list_provider_catalog()],
+        providers=[
+            ProviderCatalogEntry(
+                **{
+                    **entry,
+                    "model_details": [
+                        ModelDetailEntry(**m) for m in entry.get("model_details", [])
+                    ],
+                }
+            )
+            for entry in list_provider_catalog()
+        ],
     )
 
 
@@ -111,4 +130,14 @@ async def get_report_catalog() -> list[ReportCatalogEntry]:
 @router.get("/catalog/providers")
 async def get_provider_catalog() -> list[ProviderCatalogEntry]:
     """Return provider metadata."""
-    return [ProviderCatalogEntry(**entry) for entry in list_provider_catalog()]
+    return [
+        ProviderCatalogEntry(
+            **{
+                **entry,
+                "model_details": [
+                    ModelDetailEntry(**m) for m in entry.get("model_details", [])
+                ],
+            }
+        )
+        for entry in list_provider_catalog()
+    ]

@@ -255,6 +255,9 @@ export const deleteReport = (name: string): Promise<{ deleted: boolean; relative
 export const getReportDownloadUrl = (name: string): string =>
   `/api/v1/reports/${name}/download`;
 
+export const openReportFolder = (name: string): Promise<{ opened: boolean; folder: string }> =>
+  request("POST", `/reports/${name}/open-folder`);
+
 // ── Pipelines (CRUD additions) ───────────────────────────────────────────
 
 export const duplicatePipeline = (

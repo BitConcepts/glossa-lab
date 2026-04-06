@@ -19,6 +19,7 @@ export function ReportsView() {
   const [kindFilter, setKindFilter] = useState("all");
   const [sortKey, setSortKey] = useState<SortKey>("updated_at");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
+  const [popupBlocked, setPopupBlocked] = useState<string | null>(null); // blocked URL
 
   const load = async () => {
     setLoading(true);
@@ -35,8 +36,20 @@ export function ReportsView() {
   useEffect(() => { load(); }, []);
 
   const handleView = (r: CatalogReport) => {
-    // Always open in a new window/tab — no inline panel
-    window.open(getReportDownloadUrl(r.id), "_blank", "noopener,noreferrer");
+    const url = getReportDownloadUrl(r.id);
+    // Open as a popup so it stays near the app; detect if blocked
+    const popup = window.open(
+      url,
+      `glossa_report_${r.id}`,
+      "width=1100,height=800,menubar=no,toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes"
+    );
+    if (!popup || popup.closed || typeof popup.closed === "undefined") {
+      // Popup blocked — show inline fallback
+      setPopupBlocked(url);
+    } else {
+      popup.focus();
+      setPopupBlocked(null);
+    }
   };
 
   const handleDelete = async (r: CatalogReport) => {
@@ -106,6 +119,38 @@ export function ReportsView() {
           {sorted.length} / {reports.length} reports
         </span>
       </div>
+
+      {/* Popup-blocked warning */}
+      {popupBlocked && (
+        <div style={{
+          display: "flex", alignItems: "flex-start", gap: 12,
+          padding: "12px 16px", marginBottom: "1rem",
+          background: "#fef2f2", border: "1px solid #fca5a5", borderRadius: 8,
+        }}>
+          <span style={{ fontSize: 20, lineHeight: 1, flexShrink: 0 }}>&#128683;</span>
+          <div style={{ flex: 1 }}>
+            <p style={{ margin: "0 0 6px", fontWeight: 700, color: "#b91c1c", fontSize: 13 }}>
+              Popups are blocked by your browser.
+            </p>
+            <p style={{ margin: "0 0 8px", fontSize: 12, color: "#7f1d1d" }}>
+              Allow popups for <strong>localhost:8001</strong> in your browser settings, then click View again.
+              Or open the file directly:
+            </p>
+            <a
+              href={popupBlocked}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ fontSize: 12, color: "#2563eb", fontWeight: 600 }}
+            >
+              Open in new tab instead →
+            </a>
+          </div>
+          <button
+            onClick={() => setPopupBlocked(null)}
+            style={{ border: "none", background: "none", cursor: "pointer", fontSize: 18, color: "#9ca3af", padding: 0, flexShrink: 0 }}
+          >×</button>
+        </div>
+      )}
 
       {loading && <p style={{ color: "#6b7280" }}>Loading reports…</p>}
       {error && (

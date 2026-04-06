@@ -22,6 +22,11 @@ ocr = [
     # Required for ocr_mahadevan.py Pixtral OCR pipeline
     "mistralai>=1,<2",
 ]
+tray = [
+    # Required for the system tray icon (tray/glossa_tray/)
+    "pystray>=0.19,<1",
+    "Pillow>=10,<12",
+]
 dev = [
     "pytest>=8,<9",
     "httpx>=0.28,<1",

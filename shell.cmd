@@ -86,7 +86,7 @@ exit /b %E2E_EXIT%
 
 :do_setup
 "%VENV_PYTHON%" -m pip install --upgrade pip
-"%VENV_PYTHON%" -m pip install -e "%REPO_ROOT%\backend[dev]"
+"%VENV_PYTHON%" -m pip install -e "%REPO_ROOT%\backend[dev,tray]"
 if exist "%REPO_ROOT%\tray\requirements.txt" (
     "%VENV_PYTHON%" -m pip install -r "%REPO_ROOT%\tray\requirements.txt"
 )

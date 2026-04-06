@@ -10,6 +10,7 @@ import {
   listTexts, updateText,
   type ConcordanceResult, type EntropyResult, type NgramEntry, type TextResponse,
 } from "../api";
+import { ContextMenuOverlay, copyItems, useContextMenu } from "../hooks/useContextMenu";
 import { useToast } from "../hooks/useToast";
 
 const CORPUS_TYPES = ["linguistic", "ancient", "dna", "code", "random", "other"];
@@ -149,6 +150,8 @@ function CorpusCard({ text, onUpdated, onDeleted, allTexts }: {
 
   const fileRef = useRef<HTMLInputElement>(null);
 
+  const { menu: ctxMenu, show: showCtx, close: closeCtx } = useContextMenu();
+
   const filtered = search ? text.content.filter((t) => t.toLowerCase().includes(search.toLowerCase())) : text.content;
   const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
   const paginated = filtered.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
@@ -280,9 +283,16 @@ function CorpusCard({ text, onUpdated, onDeleted, allTexts }: {
                   <input placeholder="Search tokens…" value={search} onChange={(e) => { setSearch(e.target.value); setPage(0); }} style={{ ...inputStyle, flex: 1 }} />
                   <span style={{ fontSize: 11, color: "#9ca3af", whiteSpace: "nowrap" }}>{filtered.length.toLocaleString()} / {text.content.length.toLocaleString()}</span>
                 </div>
-                <pre style={{ background: "#1e293b", color: "#e2e8f0", borderRadius: 6, padding: "10px 14px", fontSize: 11, overflowX: "auto", maxHeight: 220, margin: 0, lineHeight: 1.8 }}>
+                <pre
+                  style={{ background: "#1e293b", color: "#e2e8f0", borderRadius: 6, padding: "10px 14px", fontSize: 11, overflowX: "auto", maxHeight: 220, margin: 0, lineHeight: 1.8, cursor: "context-menu" }}
+                  onContextMenu={(e) => showCtx(e, [
+                    ...copyItems(paginated.join(" "), "Copy page"),
+                    { label: "Copy all tokens", icon: "📄", action: () => navigator.clipboard.writeText(text.content.join(" ")).catch(() => {}) },
+                  ])}
+                >
                   {paginated.join("  ")}
                 </pre>
+                <ContextMenuOverlay menu={ctxMenu} onClose={closeCtx} />
                 {totalPages > 1 && (
                   <div style={{ display: "flex", gap: 6, marginTop: 8, alignItems: "center" }}>
                     <button onClick={() => setPage(p => Math.max(0, p - 1))} disabled={page === 0} style={btnSmall}>← Prev</button>

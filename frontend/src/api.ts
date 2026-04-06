@@ -735,6 +735,14 @@ export interface OllamaLibraryEntry {
   installed: boolean;
 }
 
+export interface OllamaCtxTier {
+  min_vram_gb: number;
+  max_vram_gb: number;
+  label: string;
+  ctx: number;
+  note: string;
+}
+
 export interface OllamaRecommendation {
   gpu_name: string;
   vram_gb: number;
@@ -742,7 +750,17 @@ export interface OllamaRecommendation {
   tier_description: string;
   recommended: OllamaLibraryEntry;
   all_fitting: string[];
+  recommended_ctx_length: number;
+  ctx_tier_label: string;
+  ctx_tier_note: string;
+  ctx_tiers: OllamaCtxTier[];
   glossa_note: string;
+}
+
+export interface OllamaContextConfig {
+  session_ctx_length: number;
+  tiers: OllamaCtxTier[];
+  all_options: number[];
 }
 
 export const getOllamaStatus = (): Promise<{ running: boolean; base_url: string; message: string }> =>
@@ -760,5 +778,36 @@ export const getOllamaRecommendation = (): Promise<OllamaRecommendation> =>
 export const deleteOllamaModel = (name: string): Promise<{ deleted: boolean; model: string }> =>
   request("DELETE", `/ollama/models/${encodeURIComponent(name)}`);
 
+export const getOllamaContextConfig = (): Promise<OllamaContextConfig> =>
+  request("GET", "/ollama/context-config");
+
+export const setOllamaContextLength = (ctx_length: number): Promise<{ session_ctx_length: number; updated: boolean }> =>
+  request("POST", "/ollama/context-config", { ctx_length });
+
+// localStorage key for persisting context length between sessions
+const CTX_LS_KEY = "glossa_ollama_ctx";
+export const getLocalCtxLength = (): number =>
+  parseInt(localStorage.getItem(CTX_LS_KEY) ?? "4096", 10) || 4096;
+export const setLocalCtxLength = (n: number): void =>
+  { localStorage.setItem(CTX_LS_KEY, String(n)); };
+
+// Note: do NOT encodeURIComponent here — EventSource sends the URL as-is and
+// FastAPI's path param decoder handles the colon in model names like "mistral:7b"
 export const getOllamaPullUrl = (modelName: string): string =>
-  `/api/v1/ollama/pull/${encodeURIComponent(modelName)}`;
+  `/api/v1/ollama/pull/${modelName}`;
+
+// ── Terminal + Logs ─────────────────────────────────────────────────
+
+export const getLogStreamUrl = (): string => `/api/v1/terminal/log/stream`;
+
+export const getLog = (lines = 200): Promise<{ lines: string[]; total_lines?: number; exists: boolean }> =>
+  request("GET", `/terminal/log?lines=${lines}`);
+
+export const runTerminalCommand = (command: string, cwd?: string): Promise<Response> =>
+  fetch(`${BASE}/terminal/run`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ command, cwd, use_venv: true }),
+  });
+
+// listJobs and cancelJob are defined in the Jobs section above

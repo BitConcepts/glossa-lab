@@ -75,6 +75,7 @@ class ReportCatalogEntry(BaseModel):
     relative_path: str
     size_bytes: int
     updated_at: str
+    experiment_id: str = ""
 
 
 class CatalogResponse(BaseModel):

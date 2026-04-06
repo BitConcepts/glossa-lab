@@ -16,9 +16,11 @@ export function ReportsView() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [search, setSearch] = useState("");
-  const [kindFilter, setKindFilter] = useState("all");
+  const [kindFilter, setKindFilter] = useState<Set<string>>(new Set());
+  const [expFilter, setExpFilter] = useState<Set<string>>(new Set());
   const [sortKey, setSortKey] = useState<SortKey>("updated_at");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
+  const [groupByExp, setGroupByExp] = useState(false);
   const [popupBlocked, setPopupBlocked] = useState<string | null>(null); // blocked URL
 
   const load = async () => {
@@ -75,11 +77,20 @@ export function ReportsView() {
     json_report: "#2563eb", document: "#7c3aed", table: "#16a34a", pdf: "#dc2626", artifact: "#6b7280",
   };
 
-  const kinds = ["all", ...Array.from(new Set(reports.map((r) => r.kind)))];
+  const allKinds = Array.from(new Set(reports.map((r) => r.kind)));
+  const allExps  = Array.from(new Set(reports.map((r) => r.experiment_id).filter(Boolean)));
+
+  const toggleKind = (k: string) => setKindFilter((prev) => {
+    const s = new Set(prev); s.has(k) ? s.delete(k) : s.add(k); return s;
+  });
+  const toggleExp = (e: string) => setExpFilter((prev) => {
+    const s = new Set(prev); s.has(e) ? s.delete(e) : s.add(e); return s;
+  });
 
   const sorted = [...reports]
     .filter((r) => (!search || r.name.toLowerCase().includes(search.toLowerCase()))
-                && (kindFilter === "all" || r.kind === kindFilter))
+                && (kindFilter.size === 0 || kindFilter.has(r.kind))
+                && (expFilter.size === 0 || expFilter.has(r.experiment_id)))
     .sort((a, b) => {
       const av = a[sortKey as keyof CatalogReport] as string | number;
       const bv = b[sortKey as keyof CatalogReport] as string | number;
@@ -96,29 +107,72 @@ export function ReportsView() {
         </button>
       </div>
 
-      {/* Filters */}
-      <div style={{ display: "flex", gap: 8, marginBottom: "1rem", flexWrap: "wrap", alignItems: "center" }}>
+      {/* Search */}
+      <div style={{ display: "flex", gap: 8, marginBottom: "0.75rem", alignItems: "center", flexWrap: "wrap" }}>
         <input
           placeholder="Search by name…"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          style={{ padding: "4px 10px", border: "1px solid #d1d5db", borderRadius: 4, fontSize: 13, width: 220 }}
+          style={{ padding: "4px 10px", border: "1px solid #d1d5db", borderRadius: 4, fontSize: 13, width: 240 }}
         />
-        <select
-          value={kindFilter}
-          onChange={(e) => setKindFilter(e.target.value)}
-          style={{ padding: "4px 8px", border: "1px solid #d1d5db", borderRadius: 4, fontSize: 12, cursor: "pointer" }}
-        >
-          {kinds.map((k) => (
-            <option key={k} value={k}>
-              {k === "all" ? "All types" : k.replace("_", " ")}
-            </option>
-          ))}
-        </select>
-        <span style={{ fontSize: 12, color: "#9ca3af", marginLeft: 4 }}>
+        <label style={{ fontSize: 12, color: "#6b7280", display: "flex", alignItems: "center", gap: 5, cursor: "pointer" }}>
+          <input type="checkbox" checked={groupByExp} onChange={(e) => setGroupByExp(e.target.checked)} />
+          Group by experiment
+        </label>
+        <span style={{ fontSize: 12, color: "#9ca3af", marginLeft: "auto" }}>
           {sorted.length} / {reports.length} reports
         </span>
       </div>
+
+      {/* Kind multi-select pills */}
+      {allKinds.length > 0 && (
+        <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginBottom: "0.5rem", alignItems: "center" }}>
+          <span style={{ fontSize: 11, color: "#9ca3af", marginRight: 2 }}>Type:</span>
+          {allKinds.map((k) => (
+            <button
+              key={k}
+              onClick={() => toggleKind(k)}
+              style={{
+                padding: "2px 10px", border: "1px solid", borderRadius: 10, cursor: "pointer",
+                fontSize: 11, fontWeight: kindFilter.has(k) ? 700 : 400,
+                background: kindFilter.has(k) ? (kindColor[k] ?? "#1e3a5f") : "#fff",
+                borderColor: kindFilter.has(k) ? (kindColor[k] ?? "#1e3a5f") : "#d1d5db",
+                color: kindFilter.has(k) ? "#fff" : "#374151",
+              }}
+            >
+              {k.replace("_", " ")}
+            </button>
+          ))}
+          {kindFilter.size > 0 && (
+            <button onClick={() => setKindFilter(new Set())} style={{ fontSize: 11, background: "none", border: "none", color: "#6b7280", cursor: "pointer" }}>clear</button>
+          )}
+        </div>
+      )}
+
+      {/* Experiment multi-select pills */}
+      {allExps.length > 0 && (
+        <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginBottom: "1rem", alignItems: "center" }}>
+          <span style={{ fontSize: 11, color: "#9ca3af", marginRight: 2 }}>Experiment:</span>
+          {allExps.map((e) => (
+            <button
+              key={e}
+              onClick={() => toggleExp(e)}
+              style={{
+                padding: "2px 10px", border: "1px solid", borderRadius: 10, cursor: "pointer",
+                fontSize: 11, fontWeight: expFilter.has(e) ? 700 : 400,
+                background: expFilter.has(e) ? "#1e3a5f" : "#fff",
+                borderColor: expFilter.has(e) ? "#1e3a5f" : "#d1d5db",
+                color: expFilter.has(e) ? "#fff" : "#374151",
+              }}
+            >
+              {e.replace(/_/g, " ")}
+            </button>
+          ))}
+          {expFilter.size > 0 && (
+            <button onClick={() => setExpFilter(new Set())} style={{ fontSize: 11, background: "none", border: "none", color: "#6b7280", cursor: "pointer" }}>clear</button>
+          )}
+        </div>
+      )}
 
       {/* Popup-blocked warning */}
       {popupBlocked && (
@@ -194,6 +248,11 @@ export function ReportsView() {
                 >
                   <td style={tdStyle}>
                     <span style={{ fontWeight: 500, color: "#1e3a5f" }}>{r.name}</span>
+                    {r.experiment_id && (
+                      <span style={{ marginLeft: 6, fontSize: 10, padding: "1px 6px", borderRadius: 8, background: "#eff6ff", color: "#2563eb", fontWeight: 600 }}>
+                        {r.experiment_id.replace(/_/g, " ")}
+                      </span>
+                    )}
                     <br /><span style={{ fontSize: 11, color: "#9ca3af" }}>{r.relative_path}</span>
                   </td>
                   <td style={tdStyle}>

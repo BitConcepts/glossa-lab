@@ -21,6 +21,11 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 _REPO = Path(__file__).parent.parent
 _REPORTS = _REPO / "reports"
 sys.path.insert(0, str(Path(__file__).parent))
@@ -389,7 +394,7 @@ def main() -> None:
 
     out = _REPORTS / "m77_corpus_analysis.json"
     out.write_text(json.dumps(results, indent=2), encoding="utf-8")
-    print(f"\nAll results saved → {out}")
+    print(f"\nAll results saved: {out}")
 
 
 if __name__ == "__main__":

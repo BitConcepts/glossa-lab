@@ -30,6 +30,24 @@ from reportlab.platypus import (
 )
 from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_LEFT
 
+import os as _os
+from reportlab.pdfbase import pdfmetrics as _pdfm
+from reportlab.pdfbase.ttfonts import TTFont as _TTF
+
+def _reg_fonts():
+    """Register Arial (full Unicode) on Windows; fall back to Helvetica."""
+    arial = r"C:\Windows\Fonts\arial.ttf"
+    arialb = r"C:\Windows\Fonts\arialbd.ttf"
+    ariali = r"C:\Windows\Fonts\ariali.ttf"
+    if _os.path.exists(arial):
+        _pdfm.registerFont(_TTF("Arial", arial))
+        _pdfm.registerFont(_TTF("Arial-Bold", arialb))
+        _pdfm.registerFont(_TTF("Arial-Italic", ariali))
+        return "Arial", "Arial-Bold", "Arial-Italic"
+    return "Helvetica", "Helvetica-Bold", "Helvetica-Oblique"
+
+_FONT, _FONT_B, _FONT_I = _reg_fonts()
+
 # ── Colours ───────────────────────────────────────────────────────────
 NAVY  = HexColor("#1e3a5f")
 BLUE  = HexColor("#1d4ed8")
@@ -70,40 +88,40 @@ AUTHORS = ParagraphStyle("Authors", parent=styles["Normal"],
     textColor=NAVY, fontSize=11, alignment=TA_CENTER,
     spaceAfter=4)
 ABSTRACT = ParagraphStyle("Abstract", parent=styles["Normal"],
-    fontSize=9.5, leading=13, leftIndent=1.5*cm, rightIndent=1.5*cm,
+    fontName=_FONT, fontSize=9.5, leading=13, leftIndent=1.5*cm, rightIndent=1.5*cm,
     alignment=TA_JUSTIFY, spaceAfter=12)
 ABSTRACT_TITLE = ParagraphStyle("AbstractTitle", parent=styles["Normal"],
-    fontSize=9.5, fontName="Helvetica-Bold",
+    fontSize=9.5, fontName=_FONT_B,
     leftIndent=1.5*cm, spaceAfter=4)
 H1 = ParagraphStyle("H1", parent=styles["Heading1"],
     textColor=NAVY, fontSize=13, spaceBefore=14, spaceAfter=5,
-    fontName="Helvetica-Bold")
+    fontName=_FONT_B)
 H2 = ParagraphStyle("H2", parent=styles["Heading2"],
     textColor=NAVY, fontSize=11, spaceBefore=10, spaceAfter=4,
-    fontName="Helvetica-Bold")
+    fontName=_FONT_B)
 H3 = ParagraphStyle("H3", parent=styles["Heading3"],
     textColor=BLUE, fontSize=10, spaceBefore=6, spaceAfter=3,
-    fontName="Helvetica-Bold")
+    fontName=_FONT_B)
 BODY = ParagraphStyle("Body", parent=styles["Normal"],
-    fontSize=10, leading=14.5, spaceAfter=7, alignment=TA_JUSTIFY)
+    fontName=_FONT, fontSize=10, leading=14.5, spaceAfter=7, alignment=TA_JUSTIFY)
 BODY_SMALL = ParagraphStyle("BodySmall", parent=styles["Normal"],
-    fontSize=9, leading=13, spaceAfter=6, alignment=TA_JUSTIFY)
+    fontName=_FONT, fontSize=9, leading=13, spaceAfter=6, alignment=TA_JUSTIFY)
 CAP = ParagraphStyle("Cap", parent=styles["Normal"],
     fontSize=8.5, textColor=DGREY, alignment=TA_CENTER, spaceAfter=10,
-    fontName="Helvetica-Oblique")
+    fontName=_FONT_I)
 SMALL = ParagraphStyle("Small", parent=styles["Normal"],
     fontSize=8.5, leading=12)
 NOTE = ParagraphStyle("Note", parent=styles["Normal"],
-    fontSize=9, leading=13, leftIndent=0.5*cm, textColor=DGREY,
+    fontName=_FONT, fontSize=9, leading=13, leftIndent=0.5*cm, textColor=DGREY,
     alignment=TA_JUSTIFY, spaceAfter=6)
 KEYWORDS = ParagraphStyle("Keywords", parent=styles["Normal"],
-    fontSize=9, leftIndent=1.5*cm, spaceAfter=8)
+    fontName=_FONT, fontSize=9, leftIndent=1.5*cm, spaceAfter=8)
 
 def ts_base():
     return TableStyle([
         ("BACKGROUND",(0,0),(-1,0),NAVY),
         ("TEXTCOLOR",(0,0),(-1,0),white),
-        ("FONTNAME",(0,0),(-1,0),"Helvetica-Bold"),
+        ("FONTNAME",(0,0),(-1,0),_FONT_B),
         ("FONTSIZE",(0,0),(-1,-1),8.5),
         ("GRID",(0,0),(-1,-1),0.4,MGREY),
         ("ROWBACKGROUNDS",(0,1),(-1,-1),[white,LGREY]),
@@ -161,7 +179,7 @@ c.append(Paragraph(
     "Greek-adjacency claim independently of circular vocabulary, and that the Anatolian and "
     "Dravidian hypotheses merit stronger computational investigation.", ABSTRACT))
 c.append(Paragraph(
-    "<b>Keywords:</b> ancient scripts, computational decipherment, Linear A, Indus Script, "
+    "Keywords: ancient scripts, computational decipherment, Linear A, Indus Script, "
     "Minoan language, anti-circularity, distributional phoneme clustering, Kandles, "
     "block entropy, hypothesis engine", KEYWORDS))
 
@@ -194,30 +212,30 @@ c.append(Paragraph(
 # ── 2. Related Work ───────────────────────────────────────────────────
 c.append(Paragraph("2. Related Work", H1))
 c.append(Paragraph(
-    "<b>Entropy-based linguistic classification.</b> Rao et al. (2009) used normalised block "
+    "Entropy-based linguistic classification. Rao et al. (2009) used normalised block "
     "entropy to show that the Indus Script clusters with natural language scripts rather than "
     "non-linguistic symbol systems. This finding confirmed that the Indus corpus is linguistic "
     "but did not advance decipherment. Our toolkit replicates and extends this methodology to "
     "nine corpora.", BODY))
 c.append(Paragraph(
-    "<b>Computational decipherment of Ugaritic.</b> Snyder, Barzilay and Knight (2010) used "
+    "Computational decipherment of Ugaritic. Snyder, Barzilay and Knight (2010) used "
     "Bayesian inference and a related-language model to reconstruct 29/30 Ugaritic phoneme "
     "mappings from unlabelled inscriptions \u2014 the same benchmark we achieve using our "
     "hill-climbing engine. Our approach is simpler but comparably effective on the same data.", BODY))
 c.append(Paragraph(
-    "<b>Ventris and Linear B.</b> The decipherment of Linear B by Ventris (1952) was based on "
+    "Ventris and Linear B. The decipherment of Linear B by Ventris (1952) was based on "
     "two key methods: distributional analysis to group signs into vowel and consonant classes "
     "(the \u2018syllabic grid\u2019 method), and structural analysis of administrative formulas. "
     "Our distributional decipherment pipeline operationalises the grid method computationally "
     "for the first time.", BODY))
 c.append(Paragraph(
-    "<b>Linear A computational analyses.</b> Packard (1974) compiled the first systematic "
+    "Linear A computational analyses. Packard (1974) compiled the first systematic "
     "sign-frequency data for Linear A. Younger (2000\u20132024) produced the most comprehensive "
     "publicly available transliterations. Petrolito et al. (2015) digitised Younger\u2019s data "
     "into XML. Our work is the first to apply a multi-hypothesis decipherment engine to a "
     "real-corpus Linear A dataset with systematic anti-circularity controls.", BODY))
 c.append(Paragraph(
-    "<b>Indus Script.</b> Rao et al. (2009) and Mahadevan (1977) provide the foundational "
+    "Indus Script. Rao et al. (2009) and Mahadevan (1977) provide the foundational "
     "analyses. The Dravidian hypothesis (Parpola 1994) remains the most supported, with our "
     "earlier synthetic-corpus results (score 297 vs Sanskrit 77) consistent with this consensus.", BODY))
 
@@ -252,7 +270,7 @@ c.append(Table(pipe_data, colWidths=[3.5*cm,9*cm,3*cm], style=ts_pipe))
 c.append(Paragraph("Table 1. Glossa Lab analysis pipelines.", CAP))
 
 c.append(Paragraph(
-    "The <b>decipherment engine</b> has three stages: (1) frequency-rank seeding maps the "
+    "The decipherment engine has three stages: (1) frequency-rank seeding maps the "
     "most frequent cipher sign to the most frequent target phoneme; (2) bigram/trigram "
     "hill climbing with multiple restarts optimises the mapping; (3) Kandles validation "
     "computes phonetic fingerprint similarity (cosine similarity of an 8-dimensional "
@@ -287,7 +305,7 @@ c.append(Paragraph(
     "Ugaritic, the single missed sign (s2) is the rarest in the Ugaritic alphabet and appears "
     "zero times in our 83-line corpus \u2014 the engine could not observe a sign it never saw.",BODY))
 c.append(Paragraph(
-    "<b>Implication.</b> The toolkit is technically capable of recovering complete phonological "
+    "Implication. The toolkit is technically capable of recovering complete phonological "
     "mappings when a correct target language model is available. The remaining challenge for "
     "undeciphered scripts is not algorithmic but epistemological: identifying the correct "
     "target language.", BODY))
@@ -330,8 +348,8 @@ comp_data = [
     ["Sanskrit (Rigveda)","Natural language","0.75\u20130.90","~1.80","Linguistic"],
     ["Tamil (Thirukkural)","Natural language","0.70\u20130.90","~1.80","Linguistic"],
     ["Linear B (Mycenaean)","Syllabary","0.9216","1.58","Linguistic"],
-    ["Linear A (Minoan)","Syllabary","0.8742","1.52","<b>Linguistic</b>"],
-    ["Indus Script (synthetic)","Unknown","~0.78","~1.90","<b>Linguistic</b>"],
+    ["Linear A (Minoan)","Syllabary","0.8742","1.52","Linguistic"],
+    ["Indus Script (synthetic)","Unknown","~0.78","~1.90","Linguistic"],
     ["Fortran source","Formal language","<0.70","<1.80","Non-linguistic"],
 ]
 c.append(Table(comp_data, colWidths=[4.5*cm,3*cm,2*cm,2*cm,4*cm], style=ts_base()))
@@ -395,7 +413,7 @@ exp_desc = [
     ["2","Mapping ablation","Reduce mapping to 10/20/30/40/all signs","Reduces phoneme exposure"],
     ["3","Mapping perturbation","Inject 5\u201330% swap noise into mapping","Stress-tests signal stability"],
     ["4","Null distribution","100 random/permuted mappings; compute p-value and z","Tests if specific mapping matters"],
-    ["5","Scoring mode comparison","Full vs no-vocab vs Kandles-only","<b>Isolates vocabulary contribution</b>"],
+    ["5","Scoring mode comparison","Full vs no-vocab vs Kandles-only","Isolates vocabulary contribution"],
     ["6","LM fairness","Equalize all language model corpus sizes","Tests model-size bias"],
     ["7","Null corpus","Shuffled and unigram corpora","Tests if sequential structure matters"],
 ]
@@ -404,7 +422,7 @@ c.append(Paragraph("Table 5. Anti-circularity experiment design. Exp 5 is most c
 
 c.append(Paragraph("7.2 Key results", H2))
 c.append(Paragraph(
-    "<b>Experiment 1 (raw tablet sequences, full scoring).</b> Greek wins on all large-corpus "
+    "Experiment 1 (raw tablet sequences, full scoring). Greek wins on all large-corpus "
     "site partitions (HT margin 40.0, KH margin 7.8, ZA margin 8.9). The result is robust "
     "across sites.", BODY))
 
@@ -412,12 +430,12 @@ e5_full = CIRC["exp5_scoring_modes"]
 sc_nv   = e5_full["no_vocab"]["scores"]
 sc_k    = e5_full["kandles_only"]["scores"]
 c.append(Paragraph(
-    f"<b>Experiment 5 (scoring mode comparison — critical).</b> Three modes were tested: "
+    f"Experiment 5 (scoring mode comparison — critical). Three modes were tested: "
     f"(A) Full: Greek={e5_full['full']['scores'].get('greek',0):.2f}, others~17, Greek wins. "
     f"(B) No-vocab: Greek={sc_nv.get('greek',0):.2f}, Luwian={sc_nv.get('luwian',0):.2f}, "
-    f"<b>Greek ranks last</b>. "
+    f"Greek ranks last. "
     f"(C) Kandles-only: Greek={sc_k.get('greek',0):.2f}, Luwian={sc_k.get('luwian',0):.2f}, "
-    f"<b>Luwian wins</b>.", BODY))
+    f"Luwian wins.", BODY))
 
 scoring_data = [
     ["Scoring mode","Greek","Hurrian","Luwian","Semitic","Winner"],
@@ -452,14 +470,14 @@ c.append(Paragraph(
 e4 = CIRC["exp4_null_distribution"]
 null1 = list(e4["nulls"].values())[0]
 c.append(Paragraph(
-    f"<b>Experiment 4 (null distribution).</b> The real Linear B mapping (no-vocab score: "
+    f"Experiment 4 (null distribution). The real Linear B mapping (no-vocab score: "
     f"{e4['real_greek']:.3f}) is statistically indistinguishable from 100 random and permuted "
     f"mappings (p={null1['p_value']:.3f}, z={null1['z_score']:.3f}). The specific "
     "sign-to-phoneme correspondences do not confer a detectable bigram or Kandles advantage.", BODY))
 
 e7 = CIRC["exp7_null_corpus"]
 c.append(Paragraph(
-    f"<b>Experiment 7 (null corpus).</b> Shuffled (Greek={e7['shuffled']['greek_mean']:.3f}) "
+    f"Experiment 7 (null corpus). Shuffled (Greek={e7['shuffled']['greek_mean']:.3f}) "
     f"and unigram (Greek={e7['unigram_only']['greek_mean']:.3f}) corpora produce Greek scores "
     f"equal to or higher than the real corpus (Greek={e7['real']['greek_mean']:.3f}). "
     "The ~16.9 baseline is noise-level across all conditions.", BODY))
@@ -621,7 +639,7 @@ c.append(Paragraph(
     "which also ranked Luwian marginally above Greek.", CAP))
 
 c.append(Paragraph(
-    "<b>Convergent finding.</b> The word-structure method (no phoneme assumptions) and the "
+    "Convergent finding. The word-structure method (no phoneme assumptions) and the "
     "Kandles phonetic fingerprint (vocabulary-independent scoring from Section 7) both "
     "rank Luwian/Anatolian marginally above Greek for Linear A. Two independent methods "
     "converging on the same answer strengthens the Anatolian hypothesis, though the "
@@ -696,25 +714,25 @@ for lim in [
 # ── 11. Future Work ───────────────────────────────────────────────────
 c.append(Paragraph("11. Future Work", H1))
 c.append(Paragraph(
-    "<b>ICIT corpus.</b> The primary bottleneck is access to the Wells-Fuls ICIT database "
+    "ICIT corpus. The primary bottleneck is access to the Wells-Fuls ICIT database "
     "(4,537 Indus inscribed objects, 19,616 sign occurrences). The Fuls parser in Glossa Lab "
     "already handles the +sign-sign-sign+ notation. All 12 pipelines will be run on the full "
     "corpus when available.", BODY))
 c.append(Paragraph(
-    "<b>Cross-administrative alignment.</b> Many Linear A administrative formulas appear in "
+    "Cross-administrative alignment. Many Linear A administrative formulas appear in "
     "structurally identical positions to Linear B formulas. Aligning sign groups by functional "
     "context (rather than shape) could establish structural equivalences without assuming "
     "phonetic identity.", BODY))
 c.append(Paragraph(
-    "<b>Richer language models.</b> The Hurrian and Luwian language models are minimal. "
+    "Richer language models. The Hurrian and Luwian language models are minimal. "
     "The ETCSL Sumerian corpus, Hrozný Hittite corpus, and published Hurrian text transcriptions "
     "would substantially improve the non-Greek comparisons.", BODY))
 c.append(Paragraph(
-    "<b>NSB entropy estimators.</b> The Miller-Madow and Chao-Shen estimators are implemented "
+    "NSB entropy estimators. The Miller-Madow and Chao-Shen estimators are implemented "
     "in Glossa Lab but have not yet been applied to the small per-site Linear A corpus splits. "
     "These would improve entropy estimates for the 67- and 157-token small-site corpora.", BODY))
 c.append(Paragraph(
-    "<b>Minimum description length decipherment.</b> The MDL-based approach (Snyder et al. "
+    "Minimum description length decipherment. The MDL-based approach (Snyder et al. "
     "2010) is not yet implemented. It would provide a principled Bayesian alternative to "
     "the hill-climbing engine for multi-script comparisons.", BODY))
 
@@ -733,10 +751,10 @@ c.append(Paragraph(
     "to both Linear A and the Indus Script. These methods provide a path toward phoneme "
     "discovery that does not inherit the circularities of existing approaches.", BODY))
 c.append(Paragraph(
-    "The correct current claim is: <i>Linear A is linguistic; its word-structural profile "
+    "The correct current claim is: Linear A is linguistic; its word-structural profile "
     "marginally resembles Anatolian languages more than Mycenaean Greek or Semitic; and the "
     "Dravidian structural hypothesis remains the strongest available for the Indus Script. "
-    "Neither claim constitutes a decipherment.</i>", BODY))
+    "Neither claim constitutes a decipherment.", BODY))
 
 # ── References ────────────────────────────────────────────────────────
 c.append(Paragraph("References", H1))

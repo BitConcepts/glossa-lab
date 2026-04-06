@@ -77,6 +77,7 @@ export interface CatalogReport {
   relative_path: string;
   size_bytes: number;
   updated_at: string;
+  experiment_id: string;  // set when this report is produced by a known experiment
 }
 
 export interface CatalogExperiment {

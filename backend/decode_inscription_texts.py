@@ -22,6 +22,11 @@ import sys
 from collections import Counter
 from pathlib import Path
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 _REPO = Path(__file__).parent.parent
 _OCR_DIR = _REPO / "data-import" / "mahadevan_ocr"
 _REPORTS = _REPO / "reports"
@@ -82,20 +87,36 @@ def build_glyph_freq(entries: list[dict]) -> Counter:
 
 
 def load_fuls_sign_freq() -> list[tuple[str, int]]:
-    """Return [(fuls_sign_id, frequency), ...] sorted by frequency desc."""
+    """Return Fuls catalog sign frequencies sorted by frequency desc.
+
+    Uses real_indus_catalog_analysis.json (correct total counts per sign)
+    combined with sign data from mahadevan_bigrams_mapped.json.
+    icit_sign_stats.json is NOT used for ranking because ICIT IDs were
+    truncated in the Kindle TXT export, giving incorrect relative frequencies.
+    """
     p = _REPORTS / "real_indus_catalog_analysis.json"
-    if not p.exists():
-        return []
-    data = json.loads(p.read_text(encoding="utf-8"))
-    # The catalog has top TMK signs by total count — use those as anchor
-    signs = []
-    # Use sign stats if available; fall back to TMK list
-    for entry in data.get("tmk_signs", []):
-        signs.append((str(entry["sign"]), entry["total"]))
-    for entry in data.get("initial_signs", []):
-        if not any(s[0] == str(entry["sign"]) for s in signs):
-            signs.append((str(entry["sign"]), entry["total"]))
-    return sorted(signs, key=lambda x: -x[1])
+    signs: dict[str, int] = {}
+    if p.exists():
+        data = json.loads(p.read_text(encoding="utf-8"))
+        for key in ("tmk_signs", "initial_signs", "itm_signs"):
+            for entry in data.get(key, []):
+                sid = str(entry["sign"])
+                signs[sid] = entry.get("total", 1)
+
+    # Extend with signs from the mapped bigram data (real Fuls codes)
+    bm_p = _REPORTS / "mahadevan_bigrams_mapped.json"
+    if bm_p.exists():
+        bm = json.loads(bm_p.read_text(encoding="utf-8"))
+        for entry in bm:
+            if not isinstance(entry, dict):
+                continue
+            freq = int(entry.get("freq", 1))
+            for field in ("sign_a_fuls", "sign_b_fuls"):
+                sid = entry.get(field, "")
+                if sid and sid != "?" and sid.isdigit():
+                    signs[sid] = signs.get(sid, 0) + freq
+
+    return sorted(signs.items(), key=lambda x: -x[1])
 
 
 # ── Step 4: Load existing CJK-to-Fuls mapping ────────────────────────

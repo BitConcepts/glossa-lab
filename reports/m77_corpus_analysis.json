@@ -1,0 +1,576 @@
+{
+  "corpus": {
+    "n_inscriptions": 1215,
+    "n_tokens": 4054,
+    "source": "Mahadevan (1977) OCR + rank-corr glyph mapping"
+  },
+  "block_entropy": {
+    "alphabet_size": 36,
+    "n_tokens": 4054,
+    "h1_norm": 0.8745,
+    "h2_norm": 1.2775,
+    "h2_h1_ratio": 1.4608,
+    "block_entropies": {
+      "1": {
+        "raw_nats": 3.1337,
+        "normalized": 0.8745
+      },
+      "2": {
+        "raw_nats": 4.5779,
+        "normalized": 1.2775
+      },
+      "3": {
+        "raw_nats": 5.4976,
+        "normalized": 1.5341
+      },
+      "4": {
+        "raw_nats": 5.98,
+        "normalized": 1.6688
+      }
+    },
+    "linguistic_confirmation": true
+  },
+  "nwsp": {
+    "nwsp": {
+      "TMK": 2,
+      "INITIAL": 0,
+      "ITM": 2,
+      "MED": 12,
+      "CON": 18
+    },
+    "top_tmk": [
+      {
+        "sign": "074",
+        "terminal_rate": 0.7111,
+        "total": 45
+      },
+      {
+        "sign": "868",
+        "terminal_rate": 0.6667,
+        "total": 3
+      }
+    ],
+    "top_initial": [],
+    "sign_stats": {
+      "047": {
+        "total": 541,
+        "terminal": 43,
+        "initial": 223,
+        "medial": 116,
+        "solo": 159,
+        "terminal_rate": 0.0795,
+        "initial_rate": 0.4122
+      },
+      "820": {
+        "total": 121,
+        "terminal": 27,
+        "initial": 27,
+        "medial": 65,
+        "solo": 2,
+        "terminal_rate": 0.2231,
+        "initial_rate": 0.2231
+      },
+      "520": {
+        "total": 196,
+        "terminal": 21,
+        "initial": 13,
+        "medial": 158,
+        "solo": 4,
+        "terminal_rate": 0.1071,
+        "initial_rate": 0.0663
+      },
+      "151": {
+        "total": 80,
+        "terminal": 32,
+        "initial": 9,
+        "medial": 34,
+        "solo": 5,
+        "terminal_rate": 0.4,
+        "initial_rate": 0.1125
+      },
+      "307": {
+        "total": 14,
+        "terminal": 3,
+        "initial": 0,
+        "medial": 11,
+        "solo": 0,
+        "terminal_rate": 0.2143,
+        "initial_rate": 0.0
+      },
+      "461": {
+        "total": 56,
+        "terminal": 18,
+        "initial": 6,
+        "medial": 29,
+        "solo": 3,
+        "terminal_rate": 0.3214,
+        "initial_rate": 0.1071
+      },
+      "527": {
+        "total": 73,
+        "terminal": 21,
+        "initial": 21,
+        "medial": 10,
+        "solo": 21,
+        "terminal_rate": 0.2877,
+        "initial_rate": 0.2877
+      },
+      "427": {
+        "total": 147,
+        "terminal": 48,
+        "initial": 16,
+        "medial": 62,
+        "solo": 21,
+        "terminal_rate": 0.3265,
+        "initial_rate": 0.1088
+      },
+      "817": {
+        "total": 107,
+        "terminal": 33,
+        "initial": 18,
+        "medial": 53,
+        "solo": 3,
+        "terminal_rate": 0.3084,
+        "initial_rate": 0.1682
+      },
+      "858": {
+        "total": 105,
+        "terminal": 26,
+        "initial": 25,
+        "medial": 44,
+        "solo": 10,
+        "terminal_rate": 0.2476,
+        "initial_rate": 0.2381
+      },
+      "237": {
+        "total": 41,
+        "terminal": 21,
+        "initial": 11,
+        "medial": 9,
+        "solo": 0,
+        "terminal_rate": 0.5122,
+        "initial_rate": 0.2683
+      },
+      "874": {
+        "total": 219,
+        "terminal": 45,
+        "initial": 38,
+        "medial": 130,
+        "solo": 6,
+        "terminal_rate": 0.2055,
+        "initial_rate": 0.1735
+      },
+      "400": {
+        "total": 211,
+        "terminal": 44,
+        "initial": 27,
+        "medial": 100,
+        "solo": 40,
+        "terminal_rate": 0.2085,
+        "initial_rate": 0.128
+      },
+      "692": {
+        "total": 171,
+        "terminal": 30,
+        "initial": 66,
+        "medial": 62,
+        "solo": 13,
+        "terminal_rate": 0.1754,
+        "initial_rate": 0.386
+      },
+      "861": {
+        "total": 138,
+        "terminal": 43,
+        "initial": 6,
+        "medial": 61,
+        "solo": 28,
+        "terminal_rate": 0.3116,
+        "initial_rate": 0.0435
+      },
+      "920": {
+        "total": 92,
+        "terminal": 21,
+        "initial": 21,
+        "medial": 46,
+        "solo": 4,
+        "terminal_rate": 0.2283,
+        "initial_rate": 0.2283
+      },
+      "147": {
+        "total": 5,
+        "terminal": 0,
+        "initial": 1,
+        "medial": 0,
+        "solo": 4,
+        "terminal_rate": 0.0,
+        "initial_rate": 0.2
+      },
+      "106": {
+        "total": 39,
+        "terminal": 17,
+        "initial": 4,
+        "medial": 16,
+        "solo": 2,
+        "terminal_rate": 0.4359,
+        "initial_rate": 0.1026
+      },
+      "781": {
+        "total": 1,
+        "terminal": 0,
+        "initial": 0,
+        "medial": 0,
+        "solo": 1,
+        "terminal_rate": 0.0,
+        "initial_rate": 0.0
+      },
+      "413": {
+        "total": 73,
+        "terminal": 28,
+        "initial": 33,
+        "medial": 1,
+        "solo": 11,
+        "terminal_rate": 0.3836,
+        "initial_rate": 0.4521
+      },
+      "074": {
+        "total": 45,
+        "terminal": 32,
+        "initial": 7,
+        "medial": 2,
+        "solo": 4,
+        "terminal_rate": 0.7111,
+        "initial_rate": 0.1556
+      },
+      "129": {
+        "total": 40,
+        "terminal": 17,
+        "initial": 3,
+        "medial": 17,
+        "solo": 3,
+        "terminal_rate": 0.425,
+        "initial_rate": 0.075
+      },
+      "157": {
+        "total": 35,
+        "terminal": 10,
+        "initial": 8,
+        "medial": 17,
+        "solo": 0,
+        "terminal_rate": 0.2857,
+        "initial_rate": 0.2286
+      },
+      "003": {
+        "total": 124,
+        "terminal": 38,
+        "initial": 19,
+        "medial": 53,
+        "solo": 14,
+        "terminal_rate": 0.3065,
+        "initial_rate": 0.1532
+      },
+      "481": {
+        "total": 179,
+        "terminal": 6,
+        "initial": 59,
+        "medial": 85,
+        "solo": 29,
+        "terminal_rate": 0.0335,
+        "initial_rate": 0.3296
+      },
+      "748": {
+        "total": 2,
+        "terminal": 0,
+        "initial": 1,
+        "medial": 0,
+        "solo": 1,
+        "terminal_rate": 0.0,
+        "initial_rate": 0.5
+      },
+      "173": {
+        "total": 61,
+        "terminal": 20,
+        "initial": 10,
+        "medial": 24,
+        "solo": 7,
+        "terminal_rate": 0.3279,
+        "initial_rate": 0.1639
+      },
+      "090": {
+        "total": 102,
+        "terminal": 31,
+        "initial": 31,
+        "medial": 39,
+        "solo": 1,
+        "terminal_rate": 0.3039,
+        "initial_rate": 0.3039
+      },
+      "868": {
+        "total": 3,
+        "terminal": 2,
+        "initial": 0,
+        "medial": 1,
+        "solo": 0,
+        "terminal_rate": 0.6667,
+        "initial_rate": 0.0
+      },
+      "718": {
+        "total": 19,
+        "terminal": 6,
+        "initial": 1,
+        "medial": 11,
+        "solo": 1,
+        "terminal_rate": 0.3158,
+        "initial_rate": 0.0526
+      },
+      "176": {
+        "total": 16,
+        "terminal": 3,
+        "initial": 6,
+        "medial": 4,
+        "solo": 3,
+        "terminal_rate": 0.1875,
+        "initial_rate": 0.375
+      },
+      "503": {
+        "total": 76,
+        "terminal": 7,
+        "initial": 14,
+        "medial": 27,
+        "solo": 28,
+        "terminal_rate": 0.0921,
+        "initial_rate": 0.1842
+      },
+      "430": {
+        "total": 50,
+        "terminal": 17,
+        "initial": 9,
+        "medial": 19,
+        "solo": 5,
+        "terminal_rate": 0.34,
+        "initial_rate": 0.18
+      },
+      "156": {
+        "total": 85,
+        "terminal": 11,
+        "initial": 8,
+        "medial": 65,
+        "solo": 1,
+        "terminal_rate": 0.1294,
+        "initial_rate": 0.0941
+      },
+      "700": {
+        "total": 355,
+        "terminal": 38,
+        "initial": 28,
+        "medial": 287,
+        "solo": 2,
+        "terminal_rate": 0.107,
+        "initial_rate": 0.0789
+      },
+      "740": {
+        "total": 432,
+        "terminal": 19,
+        "initial": 9,
+        "medial": 403,
+        "solo": 1,
+        "terminal_rate": 0.044,
+        "initial_rate": 0.0208
+      }
+    }
+  },
+  "tmk_bigram_validation": {
+    "total_bigrams": 2839,
+    "tmk_second_rate": 0.013,
+    "baseline": 0.0556,
+    "tmk_advantage_pp": -4.25,
+    "tmk_in_top10_second": 0,
+    "interpretation": "Weak signal"
+  },
+  "markov_model": {
+    "total_bigrams": 2839,
+    "unique_bigram_types": 293,
+    "bigram_entropy_nats": 4.1797,
+    "top_15_transitions": [
+      {
+        "pair": "740->740",
+        "count": 412,
+        "cond_prob": 0.954
+      },
+      {
+        "pair": "700->700",
+        "count": 310,
+        "cond_prob": 0.873
+      },
+      {
+        "pair": "520->520",
+        "count": 145,
+        "cond_prob": 0.74
+      },
+      {
+        "pair": "874->874",
+        "count": 115,
+        "cond_prob": 0.525
+      },
+      {
+        "pair": "400->400",
+        "count": 98,
+        "cond_prob": 0.464
+      },
+      {
+        "pair": "820->820",
+        "count": 86,
+        "cond_prob": 0.711
+      },
+      {
+        "pair": "481->481",
+        "count": 81,
+        "cond_prob": 0.453
+      },
+      {
+        "pair": "090->090",
+        "count": 70,
+        "cond_prob": 0.686
+      },
+      {
+        "pair": "156->156",
+        "count": 68,
+        "cond_prob": 0.8
+      },
+      {
+        "pair": "920->920",
+        "count": 67,
+        "cond_prob": 0.728
+      },
+      {
+        "pair": "692->692",
+        "count": 56,
+        "cond_prob": 0.327
+      },
+      {
+        "pair": "003->003",
+        "count": 54,
+        "cond_prob": 0.435
+      },
+      {
+        "pair": "047->047",
+        "count": 48,
+        "cond_prob": 0.089
+      },
+      {
+        "pair": "692->861",
+        "count": 45,
+        "cond_prob": 0.263
+      },
+      {
+        "pair": "861->861",
+        "count": 38,
+        "cond_prob": 0.275
+      }
+    ],
+    "note": "Markov model built from decoded M77 sequences (rank-corr mapped)"
+  },
+  "ventris_clustering": {
+    "signs_analyzed": 20,
+    "threshold": 0.4,
+    "vowel_clusters": [
+      [
+        "047",
+        "481",
+        "427",
+        "817",
+        "858",
+        "151",
+        "503"
+      ],
+      [
+        "692",
+        "861"
+      ]
+    ],
+    "consonant_clusters": [
+      [
+        "047",
+        "427",
+        "817",
+        "858",
+        "151"
+      ],
+      [
+        "692",
+        "861"
+      ]
+    ],
+    "n_vowel_clusters": 2,
+    "n_consonant_clusters": 2,
+    "note": "Simplified Ventris on decoded M77 sequences. Signs grouped by left (vowel) and right (consonant) co-occurrence contexts."
+  },
+  "word_structure_typology": {
+    "mean_length": 3.337,
+    "length_distribution": {
+      "1": 0.3597,
+      "2": 0.1802,
+      "3": 0.1827,
+      "4": 0.1078,
+      "5": 0.0642,
+      "6": 0.0444,
+      "7": 0.0206,
+      "8": 0.0082,
+      "9": 0.0041,
+      "10": 0.0049,
+      "11": 0.0016,
+      "13": 0.0008,
+      "14": 0.0008,
+      "16": 0.0016,
+      "17": 0.0008,
+      "18": 0.0008,
+      "19": 0.0016,
+      "20": 0.0016,
+      "22": 0.0008,
+      "23": 0.0008,
+      "24": 0.0016,
+      "43": 0.0008,
+      "47": 0.0008,
+      "50": 0.0008,
+      "51": 0.0016,
+      "52": 0.0033,
+      "53": 0.0016,
+      "72": 0.0008
+    },
+    "kl_divergences": {
+      "Proto-Dravidian": 0.5021,
+      "Vedic Sanskrit": 0.3358,
+      "Luwian/Anatolian": 0.28,
+      "Mycenaean Greek": 0.2124,
+      "Proto-Semitic": 0.35,
+      "Sumerian": 0.4678
+    },
+    "ranking": [
+      {
+        "language": "Mycenaean Greek",
+        "kl": 0.2124
+      },
+      {
+        "language": "Luwian/Anatolian",
+        "kl": 0.28
+      },
+      {
+        "language": "Vedic Sanskrit",
+        "kl": 0.3358
+      },
+      {
+        "language": "Proto-Semitic",
+        "kl": 0.35
+      },
+      {
+        "language": "Sumerian",
+        "kl": 0.4678
+      },
+      {
+        "language": "Proto-Dravidian",
+        "kl": 0.5021
+      }
+    ],
+    "winner": "Mycenaean Greek",
+    "data_source": "Decoded M77 OCR sequences (rank-correlation mapped)"
+  }
+}

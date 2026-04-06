@@ -9,6 +9,7 @@ Endpoints:
   POST /experiments/{id}/duplicate -- duplicate an experiment
   DELETE /experiments/{id}       -- delete an experiment file
   POST /experiments/generate     -- AI-generate a new experiment
+  POST /experiments/{id}/summarize -- AI-generate a structured summary
 """
 
 from __future__ import annotations
@@ -140,6 +141,67 @@ async def generate_experiment(body: GenerateRequest) -> dict[str, Any]:
         raise HTTPException(status_code=501, detail=str(e))
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc))
+
+
+@router.post("/experiments/{experiment_id}/summarize")
+async def summarize_experiment(experiment_id: str) -> dict[str, Any]:
+    """Use AI to generate a structured summary of an experiment.
+
+    Returns {abstract, hypothesis, highlights, insights, next_steps, suggested_actions,
+    experiment_id, name, category, description}.
+    """
+    import asyncio
+    import json
+
+    from glossa_lab.ai_utils import call_llm
+
+    cls = get_experiment(experiment_id)
+    if cls is None:
+        raise HTTPException(status_code=404, detail=f"Experiment '{experiment_id}' not found")
+
+    meta = cls.to_dict()
+
+    system = (
+        "You are a research assistant summarizing scientific experiments on the Indus Script "
+        "and ancient script analysis. Return ONLY valid JSON with these exact fields:\n"
+        '{"abstract": "2-3 sentence summary", '
+        '"hypothesis": "the hypothesis being tested or null", '
+        '"highlights": ["key finding 1", "key finding 2"], '
+        '"insights": "what results mean for Indus Script research", '
+        '"next_steps": ["recommended follow-up 1", "recommended follow-up 2"], '
+        '"suggested_actions": [{"label": "Create Follow-up Study", '
+        '"action": "create_study", "hint": "brief description"}, '
+        '{"label": "Generate Experiment", "action": "generate_experiment", '
+        '"hint": "brief description"}]}'
+    )
+    user = (
+        f"Experiment: {meta.get('name')}\n"
+        f"Category: {meta.get('category')}\n"
+        f"Description: {meta.get('description')}\n"
+        f"Estimated time: {meta.get('estimated_time')}\n"
+        f"Results file: {meta.get('results_file', 'N/A')}\n\n"
+        "Summarize this experiment and suggest research next steps."
+    )
+
+    try:
+        loop = asyncio.get_event_loop()
+        raw = await loop.run_in_executor(
+            None,
+            lambda: call_llm(
+                [{"role": "system", "content": system}, {"role": "user", "content": user}],
+                json_mode=True,
+            ),
+        )
+        result: dict[str, Any] = json.loads(raw)
+        result["experiment_id"] = experiment_id
+        result["name"] = meta.get("name")
+        result["category"] = meta.get("category")
+        result["description"] = meta.get("description")
+        return result
+    except ValueError as e:
+        raise HTTPException(status_code=503, detail=str(e)) from e
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
 
 
 @router.post("/experiments/reload")

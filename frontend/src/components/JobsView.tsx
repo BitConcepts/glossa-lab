@@ -198,7 +198,23 @@ export function JobsView() {
       {loading && <p>Loading…</p>}
       {error && <p style={{ color: "#dc2626" }}>{error}</p>}
       {!loading && jobs.length === 0 && (
-        <p style={{ color: "#6b7280" }}>No jobs yet.</p>
+        <div style={{
+          padding: "1.25rem 1.5rem", background: "#f8fafc",
+          border: "1px solid #e2e8f0", borderRadius: 8, maxWidth: 560,
+        }}>
+          <p style={{ margin: "0 0 8px", fontWeight: 600, color: "#374151", fontSize: 13 }}>
+            No pipeline jobs yet
+          </p>
+          <p style={{ margin: "0 0 6px", fontSize: 12, color: "#6b7280", lineHeight: 1.6 }}>
+            This tab tracks analysis pipelines submitted through the
+            <strong> Submit new job</strong> panel above. Pipeline jobs run corpus analysis
+            (block entropy, NWSP, hypothesis engine, etc.) on corpora you upload to the Corpora tab.
+          </p>
+          <p style={{ margin: 0, fontSize: 12, color: "#6b7280", lineHeight: 1.6 }}>
+            <strong>Note:</strong> background scripts like OCR run separately and do not appear
+            here — check the <strong>Experiments</strong> tab to run or stream those.
+          </p>
+        </div>
       )}
       {jobs.length > 0 && (
         <table style={{ borderCollapse: "collapse", width: "100%", maxWidth: 900 }}>

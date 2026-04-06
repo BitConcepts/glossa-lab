@@ -31,11 +31,14 @@ import "@xyflow/react/dist/style.css";
 import {
   createStudy,
   deleteStudy,
+  generateStudy,
   listExperiments,
   listStudies,
   getPipelineCatalog,
   runStudy,
+  summarizeStudy,
   updateStudy,
+  type AISummaryResult,
   type ExperimentMeta,
   type CatalogPipeline,
   type StudyResponse,
@@ -130,7 +133,145 @@ function Inspector({
   );
 }
 
-// ── Main StudyBuilderView ──────────────────────────────────────────────
+// ── AI Design Study dialog ───────────────────────────────────────────────────
+
+function DesignStudyDialog({
+  onClose,
+  onCreated,
+}: {
+  onClose: () => void;
+  onCreated: (study: StudyResponse) => void;
+}) {
+  const [name, setName] = useState("");
+  const [prompt, setPrompt] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const backdropRef = useRef<HTMLDivElement>(null);
+
+  const handle = async () => {
+    if (!name.trim() || !prompt.trim()) { setError("Name and description are required."); return; }
+    setBusy(true); setError(null);
+    try {
+      const study = await generateStudy({ name: name.trim(), prompt: prompt.trim() });
+      onCreated(study);
+      onClose();
+    } catch (e: unknown) {
+      setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <div
+      ref={backdropRef}
+      onClick={(ev) => { if (ev.target === backdropRef.current) onClose(); }}
+      style={{
+        position: "fixed", inset: 0, background: "rgba(0,0,0,0.45)",
+        display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000,
+      }}
+    >
+      <div style={{
+        background: "#fff", borderRadius: 12, padding: "1.75rem 2rem",
+        width: 520, maxWidth: "95vw", boxShadow: "0 20px 60px rgba(0,0,0,0.2)",
+      }}>
+        <h3 style={{ margin: "0 0 1.25rem", color: "#111827", fontSize: 16 }}>✨ AI Design Study</h3>
+        <label style={dlgLabelStyle}>Study name</label>
+        <input
+          style={dlgInputStyle}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="e.g. Linguistic Entropy Deep-Dive"
+          autoFocus
+        />
+        <label style={dlgLabelStyle}>Describe the research goal</label>
+        <textarea
+          style={{ ...dlgInputStyle, height: 90, resize: "vertical", fontFamily: "inherit" }}
+          value={prompt}
+          onChange={(e) => setPrompt(e.target.value)}
+          placeholder="Explore entropy metrics across different script corpora and compare with control languages…"
+        />
+        {error && (
+          <div style={{ background: "#fef2f2", border: "1px solid #fca5a5", borderRadius: 6, padding: "8px 12px", marginBottom: 12, fontSize: 12, color: "#b91c1c" }}>
+            {error}
+          </div>
+        )}
+        <div style={{ display: "flex", gap: 8, justifyContent: "flex-end", marginTop: 8 }}>
+          <button onClick={onClose} style={dlgBtnSecondary} disabled={busy}>Cancel</button>
+          <button onClick={() => void handle()} style={dlgBtnPrimary} disabled={busy}>
+            {busy ? "Designing…" : "Design Study"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Study Summary panel ──────────────────────────────────────────────────
+
+function StudySummaryPanel({ summary, onClose }: { summary: AISummaryResult; onClose: () => void }) {
+  return (
+    <div style={{ marginTop: 8, border: "1px solid #a78bfa", borderRadius: 8, overflow: "hidden", background: "#faf5ff" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", background: "#7c3aed", padding: "8px 14px" }}>
+        <span style={{ color: "#fff", fontWeight: 700, fontSize: 13 }}>✨ AI Study Summary</span>
+        <button onClick={onClose} style={{ border: "none", background: "none", color: "rgba(255,255,255,0.8)", cursor: "pointer", fontSize: 16, padding: 0 }}>✕</button>
+      </div>
+      <div style={{ padding: "14px 16px", display: "flex", flexDirection: "column", gap: 12 }}>
+        <div>
+          <div style={sectionLabel}>Abstract</div>
+          <p style={{ margin: 0, fontSize: 13, lineHeight: 1.6, color: "#1f2937" }}>{summary.abstract}</p>
+        </div>
+        {summary.hypothesis && (
+          <div>
+            <div style={sectionLabel}>Hypothesis</div>
+            <p style={{ margin: 0, fontSize: 13, lineHeight: 1.6, color: "#374151", fontStyle: "italic" }}>{summary.hypothesis}</p>
+          </div>
+        )}
+        {(summary.highlights?.length ?? 0) > 0 && (
+          <div>
+            <div style={sectionLabel}>Key Highlights</div>
+            <ul style={{ margin: 0, paddingLeft: 20, display: "flex", flexDirection: "column", gap: 3 }}>
+              {summary.highlights.map((h, i) => <li key={i} style={{ fontSize: 13, lineHeight: 1.5, color: "#1f2937" }}>{h}</li>)}
+            </ul>
+          </div>
+        )}
+        {summary.insights && (
+          <div>
+            <div style={sectionLabel}>Insights</div>
+            <p style={{ margin: 0, fontSize: 13, lineHeight: 1.6, color: "#374151" }}>{summary.insights}</p>
+          </div>
+        )}
+        {(summary.next_steps?.length ?? 0) > 0 && (
+          <div>
+            <div style={sectionLabel}>Next Steps</div>
+            <ul style={{ margin: 0, paddingLeft: 20, display: "flex", flexDirection: "column", gap: 3 }}>
+              {summary.next_steps.map((s, i) => <li key={i} style={{ fontSize: 13, lineHeight: 1.5, color: "#374151" }}>{s}</li>)}
+            </ul>
+          </div>
+        )}
+        {(summary.suggested_actions?.length ?? 0) > 0 && (
+          <div>
+            <div style={sectionLabel}>Suggested Actions</div>
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              {summary.suggested_actions.map((a, i) => (
+                <button key={i} title={a.hint} style={{ padding: "6px 14px", borderRadius: 6, border: "1px solid #7c3aed", background: "#7c3aed", color: "#fff", cursor: "pointer", fontSize: 12, fontWeight: 600 }}>
+                  {a.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+const sectionLabel: React.CSSProperties = {
+  fontSize: 11, fontWeight: 700, color: "#7c3aed",
+  textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 4,
+};
+
+// ── Main StudyBuilderView ───────────────────────────────────────────────────────────
 
 let _nodeIdCounter = 0;
 function nextNodeId() { return `node_${Date.now()}_${_nodeIdCounter++}`; }
@@ -151,6 +292,10 @@ export function StudyBuilderView() {
   const [newStudyName, setNewStudyName] = useState("");
   const [palFilter, setPalFilter] = useState<"all" | "experiment" | "pipeline">("all");
   const [palSearch, setPalSearch] = useState("");
+  const [showDesign, setShowDesign] = useState(false);
+  const [studySummarizing, setStudySummarizing] = useState(false);
+  const [studySummary, setStudySummary] = useState<AISummaryResult | null>(null);
+  const [studySummaryError, setStudySummaryError] = useState<string | null>(null);
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
 
   // dragged item ref (set in dragStart, read in drop)
@@ -225,6 +370,21 @@ export function StudyBuilderView() {
       setSaveMsg("Save failed");
     } finally {
       setSaving(false);
+    }
+  };
+
+  const handleSummarizeStudy = async () => {
+    if (!activeStudy) return;
+    setStudySummarizing(true);
+    setStudySummaryError(null);
+    setStudySummary(null);
+    try {
+      const result = await summarizeStudy(activeStudy.id);
+      setStudySummary(result);
+    } catch (e: unknown) {
+      setStudySummaryError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setStudySummarizing(false);
     }
   };
 
@@ -344,13 +504,32 @@ export function StudyBuilderView() {
             </span>
           )}
           <button
+            onClick={() => void handleSummarizeStudy()}
+            disabled={studySummarizing || !activeStudy}
+            title="AI summary of this study"
+            style={{
+              ...btnPrimary,
+              background: studySummarizing ? "#f3e8ff" : "#f3f4f6",
+              color: studySummarizing ? "#7c3aed" : "#374151",
+              marginRight: 0,
+            }}
+          >
+            {studySummarizing ? "✨…" : "✨ AI"}
+          </button>
+          <button
+            onClick={() => setShowDesign(true)}
+            title="AI Design Study — generate a study graph from a description"
+            style={{ ...btnPrimary, background: "#7c3aed" }}
+          >
+            ✨ Design
+          </button>
+          <button
             onClick={() => void handleRun()}
             disabled={running || !activeStudy || !nodes.length}
             title="Run all experiment nodes in topological order"
             style={{
               ...btnPrimary,
               background: running ? "#7c3aed" : "#16a34a",
-              marginRight: 4,
             }}
           >
             {running ? "Running…" : "▶ Run Study"}
@@ -589,17 +768,59 @@ export function StudyBuilderView() {
         </div>
       )}
 
+      {studySummaryError && (
+        <div style={{ marginTop: 8, padding: "8px 12px", background: "#fef2f2", border: "1px solid #fca5a5", borderRadius: 6, fontSize: 12, color: "#b91c1c" }}>
+          AI error: {studySummaryError}
+        </div>
+      )}
+
+      {studySummary && (
+        <StudySummaryPanel summary={studySummary} onClose={() => setStudySummary(null)} />
+      )}
+
       <p style={{ fontSize: 12, color: "#9ca3af", marginTop: 8, marginBottom: 0 }}>
         Drag items from the palette onto the canvas. Connect nodes by dragging between handles. Click a node to inspect it. Save stores the graph to the backend.
       </p>
+
+      {showDesign && (
+        <DesignStudyDialog
+          onClose={() => setShowDesign(false)}
+          onCreated={(study) => {
+            setStudies((prev) => [study, ...prev]);
+            loadStudy(study);
+          }}
+        />
+      )}
     </div>
   );
 }
 
-// ── Shared styles ──────────────────────────────────────────────────────
+// ── Shared styles ──────────────────────────────────────────────────
 
 const btnPrimary: React.CSSProperties = {
   padding: "6px 14px", border: "none", borderRadius: 6,
   cursor: "pointer", fontSize: 12, fontWeight: 600,
   background: "#1e3a5f", color: "#fff",
+};
+
+const dlgInputStyle: React.CSSProperties = {
+  display: "block", width: "100%", boxSizing: "border-box",
+  padding: "7px 10px", border: "1px solid #d1d5db", borderRadius: 6,
+  fontSize: 13, marginBottom: 12, outline: "none",
+};
+
+const dlgLabelStyle: React.CSSProperties = {
+  display: "block", fontSize: 12, fontWeight: 600, color: "#374151", marginBottom: 4,
+};
+
+const dlgBtnPrimary: React.CSSProperties = {
+  padding: "7px 18px", border: "none", borderRadius: 6,
+  cursor: "pointer", fontSize: 13, fontWeight: 600,
+  background: "#7c3aed", color: "#fff",
+};
+
+const dlgBtnSecondary: React.CSSProperties = {
+  padding: "7px 18px", border: "1px solid #d1d5db", borderRadius: 6,
+  cursor: "pointer", fontSize: 13, fontWeight: 400,
+  background: "#fff", color: "#374151",
 };

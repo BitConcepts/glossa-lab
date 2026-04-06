@@ -432,6 +432,7 @@ def list_provider_catalog() -> list[dict[str, Any]]:
 def _build_report_experiment_map() -> dict[str, str]:
     """Return {report_stem: experiment_id} for experiments with results_file."""
     from glossa_lab.experiment_base import discover_experiments
+
     mapping: dict[str, str] = {}
     for exp_id, cls in discover_experiments().items():
         rf = getattr(cls, "results_file", None)

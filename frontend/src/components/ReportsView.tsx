@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import {
   listReports, deleteReport, getReportDownloadUrl, openReportFolder, type CatalogReport,
 } from "../api";
+import { fmtDateTimeCompact } from "../dateFormat";
 
 type SortKey = "name" | "kind" | "size_bytes" | "updated_at";
 type SortDir = "asc" | "desc";
@@ -261,7 +262,7 @@ export function ReportsView() {
                     </span>
                   </td>
                   <td style={{ ...tdStyle, whiteSpace: "nowrap" }}>{fmtSize(r.size_bytes)}</td>
-                  <td style={{ ...tdStyle, whiteSpace: "nowrap" }}>{r.updated_at.slice(0, 16).replace("T", " ")}</td>
+                  <td style={{ ...tdStyle, whiteSpace: "nowrap" }}>{fmtDateTimeCompact(r.updated_at)}</td>
                   <td style={tdStyle} onClick={(e) => e.stopPropagation()}>
                     <span style={{ display: "flex", gap: 4 }}>
                       <button

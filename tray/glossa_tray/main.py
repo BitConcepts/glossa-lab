@@ -65,6 +65,7 @@ _VENV_PYTHON = str(
 # Updated by the status poller; read by the dynamic menu item.
 _status_text = "Backend: Checking..."
 _status_error = False
+_backend_starting = False  # set True while start is in progress, cleared by poller
 
 # Label for the autostart toggle, varies by OS
 _AUTOSTART_LABEL = (
@@ -168,6 +169,40 @@ def _run_silent(*cmd: str) -> None:
         )
 
 
+def _start_or_stop_service(_icon=None, _item=None) -> None:
+    """Single toggle: starts the backend if stopped, stops it if running."""
+    global _backend_starting  # noqa: PLW0603
+    if _backend_running():
+        _stop_backend()
+    else:
+        _backend_starting = True
+        _start_backend()
+
+
+def _service_label(_item) -> str:
+    return "Stop Service" if _backend_running() else "Start Service"
+
+
+def _service_enabled(_item) -> bool:
+    """Gray out while a start is in flight (backend not yet up)."""
+    return not _backend_starting or _backend_running()
+
+
+def _restart_service(_icon=None, _item=None) -> None:
+    """Stop the backend then restart it. Runs in a background thread."""
+    def _do() -> None:
+        global _backend_starting  # noqa: PLW0603
+        _stop_backend()
+        for _ in range(20):  # wait up to 10 s for shutdown
+            time.sleep(0.5)
+            if not _backend_running():
+                break
+        time.sleep(0.5)
+        _backend_starting = True
+        _start_backend()
+    threading.Thread(target=_do, daemon=True).start()
+
+
 def _start_backend(_icon=None, _item=None) -> None:
     """Start the backend by launching Python directly — zero visible windows.
 
@@ -253,7 +288,7 @@ def _status_poller(icon: pystray.Icon):
     Started via icon.run(setup=…) so icon.visible is already True.
     Runs as a daemon thread and is killed automatically on exit.
     """
-    global _status_text, _status_error  # noqa: PLW0603
+    global _status_text, _status_error, _backend_starting  # noqa: PLW0603
     while True:
         health = _check_health()
         if health is None:
@@ -261,18 +296,20 @@ def _status_poller(icon: pystray.Icon):
             icon.title = "Glossa Lab — Backend stopped"
             _status_text = "Backend: Stopped  (click to view log)"
             _status_error = True
-        elif health.get("status") == "healthy":
-            icon.icon = _create_icon_image("green")
-            ver = health.get('version', '?')
-            uptime = int(health.get('uptime_seconds', 0))
-            icon.title = f"Glossa Lab — Healthy (v{ver})"
-            _status_text = f"Backend: Healthy  v{ver}  up {uptime}s"
-            _status_error = False
-        elif health.get("status") == "degraded":
-            icon.icon = _create_icon_image("yellow")
-            icon.title = "Glossa Lab — Degraded"
-            _status_text = "Backend: Degraded  (click to view log)"
-            _status_error = True
+        elif health.get("status") in ("healthy", "degraded"):
+            _backend_starting = False  # clear the starting flag once we see it's up
+            if health.get("status") == "healthy":
+                icon.icon = _create_icon_image("green")
+                ver = health.get('version', '?')
+                uptime = int(health.get('uptime_seconds', 0))
+                icon.title = f"Glossa Lab — Healthy (v{ver})"
+                _status_text = f"Backend: Healthy  v{ver}  up {uptime}s"
+                _status_error = False
+            else:
+                icon.icon = _create_icon_image("yellow")
+                icon.title = "Glossa Lab — Degraded"
+                _status_text = "Backend: Degraded  (click to view log)"
+                _status_error = True
         else:
             icon.icon = _create_icon_image("grey")
             icon.title = "Glossa Lab — Unknown"
@@ -294,9 +331,9 @@ def main():
         pystray.Menu.SEPARATOR,
         pystray.MenuItem(lambda _: _status_text, _on_status_click),
         pystray.Menu.SEPARATOR,
-        pystray.MenuItem("Start Backend", _start_backend),
-        pystray.MenuItem("Stop Backend", _stop_backend),
-        pystray.MenuItem("View Backend Log", _open_log),
+        pystray.MenuItem(_service_label, _start_or_stop_service, enabled=_service_enabled),
+        pystray.MenuItem("Restart Service", _restart_service),
+        pystray.MenuItem("View Log", _open_log),
         pystray.Menu.SEPARATOR,
         pystray.MenuItem(
             _AUTOSTART_LABEL,

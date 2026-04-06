@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
+import { fmtTime, fmtDateTimeCompact } from "../dateFormat";
 import {
   cancelJob,
   clearJobs,
@@ -116,7 +117,7 @@ export function JobsView() {
           <h2 style={{ margin: 0 }}>Jobs</h2>
           {lastUpdated && (
             <span style={{ fontSize: 11, color: "#9ca3af" }}>
-              updated {lastUpdated.toLocaleTimeString()}
+              updated {fmtTime(lastUpdated)}
             </span>
           )}
         </div>
@@ -226,7 +227,7 @@ export function JobsView() {
                     {j.status}
                   </span>
                 </Td>
-                <Td>{j.created_at.slice(0, 16).replace("T", " ")}</Td>
+                <Td>{fmtDateTimeCompact(j.created_at)}</Td>
                 <Td>
                   <span style={{ display: "flex", gap: 6 }}>
                     {j.status === "completed" && (

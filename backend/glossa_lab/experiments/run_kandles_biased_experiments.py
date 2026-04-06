@@ -858,3 +858,23 @@ if __name__ == "__main__":
 
     multiprocessing.freeze_support()
     main()
+
+try:
+    from glossa_lab.experiment_base import ExperimentBase as _EB
+except ImportError:
+    _EB = object
+
+
+class KandlesBiasExperiment(_EB):
+    id = "kandles_bias"
+    name = "Kandles Bias Comparison (30 MC trials)"
+    category = "Experiments"
+    description = "30 MC trials: Luwian Kandles bias check. Result: 0.000 delta."
+    estimated_time = "~25 min"
+    command = "python -m glossa_lab.experiments.run_kandles_biased_experiments --trials 30"
+    results_file = "reports/kandles_biased_results.json"
+
+    def run(self, **kwargs):
+        raise NotImplementedError(
+            "Kandles bias suite takes ~25 min with multiprocessing. Use the CLI command."
+        )

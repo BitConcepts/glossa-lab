@@ -222,3 +222,20 @@ def run_ugaritic_vs_hebrew_benchmark(
 
 if __name__ == "__main__":
     result = run_ugaritic_vs_hebrew_benchmark(verbose=True)
+
+try:
+    from glossa_lab.experiment_base import ExperimentBase as _EB
+except ImportError:
+    _EB = object
+
+
+class UgariticVsHebrew(_EB):
+    id = "ugaritic_vs_hebrew"
+    name = "Ugaritic vs Hebrew (Bigram Hill-Climbing)"
+    category = "Validation"
+    description = "Hill-climbing bigram baseline: 6.7% vs HMM (77%) and neural (97%)."
+    estimated_time = "~30 sec"
+    command = "python -m glossa_lab.experiments.ugaritic_vs_hebrew"
+
+    def run(self, **kwargs):
+        return run_ugaritic_vs_hebrew_benchmark(verbose=False)

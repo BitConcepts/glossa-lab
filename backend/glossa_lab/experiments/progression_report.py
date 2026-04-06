@@ -436,3 +436,21 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+try:
+    from glossa_lab.experiment_base import ExperimentBase as _EB
+except ImportError:
+    _EB = object
+
+
+class ProgressionReport(_EB):
+    id = "progression"
+    name = "Fuls Progression Benchmark"
+    category = "Validation"
+    description = "5-tier progression benchmark: Ugaritic to Linear B to Sumerian to Indus."
+    estimated_time = "~1 min"
+    command = "python -m glossa_lab.experiments.progression_report"
+    results_file = "reports/progression.json"
+
+    def run(self, **kwargs):
+        return main()

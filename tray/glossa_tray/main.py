@@ -35,8 +35,7 @@ except ImportError:
 
 # ── Constants ────────────────────────────────────
 
-_AUTOSTART_REG_KEY = r"Software\Microsoft\Windows\CurrentVersion\Run"
-_AUTOSTART_NAME = "GlossaLabTray"
+_SCHTASK_NAME = "GlossaLab"  # single task that owns tray + backend
 
 BACKEND_URL = "http://127.0.0.1:8001"
 HEALTH_URL = f"{BACKEND_URL}/api/v1/health"
@@ -90,46 +89,30 @@ def _create_icon_image(colour: str = "green") -> Image.Image:
 # ── Autostart management ───────────────────────────────────────
 
 def _is_autostart_enabled() -> bool:
-    """Check if tray autostart is registered in HKCU Run (Windows only)."""
-    if platform.system() != "Windows":
-        return False
-    try:
-        import winreg
-        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, _AUTOSTART_REG_KEY) as key:
-            winreg.QueryValueEx(key, _AUTOSTART_NAME)
-            return True
-    except (FileNotFoundError, OSError):
-        return False
+    """Check if the GlossaLab scheduled task exists (Windows) or launchd entry (macOS)."""
+    if platform.system() == "Windows":
+        result = subprocess.run(
+            ["schtasks", "/query", "/tn", _SCHTASK_NAME],
+            capture_output=True, creationflags=_WIN_HIDDEN,
+        )
+        return result.returncode == 0
+    return False
 
 
 def _set_autostart(enabled: bool) -> None:
-    """Add or remove the tray HKCU Run entry (Windows only)."""
-    if platform.system() != "Windows":
-        return
-    tray_svc = str(_REPO_ROOT / "scripts" / "run-tray-svc.cmd")
-    try:
-        import winreg
-        if enabled:
-            with winreg.OpenKey(
-                winreg.HKEY_CURRENT_USER, _AUTOSTART_REG_KEY,
-                0, winreg.KEY_SET_VALUE,
-            ) as key:
-                winreg.SetValueEx(
-                    key, _AUTOSTART_NAME, 0, winreg.REG_SZ,
-                    f'"{tray_svc}"',
-                )
-        else:
-            with winreg.OpenKey(
-                winreg.HKEY_CURRENT_USER, _AUTOSTART_REG_KEY,
-                0, winreg.KEY_SET_VALUE,
-            ) as key:
-                winreg.DeleteValue(key, _AUTOSTART_NAME)
-    except OSError:
-        pass
+    """Install or remove the GlossaLab scheduled task."""
+    setup = str(_REPO_ROOT / "setup-os.cmd")
+    if platform.system() == "Windows":
+        cmd = "install" if enabled else "uninstall"
+        subprocess.run(
+            ["cmd.exe", "/c", setup, cmd],
+            capture_output=True,
+            creationflags=_WIN_HIDDEN,
+        )
 
 
 def _toggle_autostart(_icon=None, _item=None) -> None:
-    """Toggle the Start on login setting."""
+    """Toggle the Windows startup task."""
     _set_autostart(not _is_autostart_enabled())
 
 
@@ -251,6 +234,12 @@ def _on_status_click(_icon=None, _item=None) -> None:
         _open_log()
 
 
+def _ensure_backend_running() -> None:
+    """Start the backend if it is not already responding. Called at tray startup."""
+    if not _backend_running():
+        _start_backend()
+
+
 def _quit(icon, _item=None):
     """Exit the tray application."""
     icon.stop()
@@ -324,6 +313,9 @@ def main():
         title="Glossa Lab — Starting...",
         menu=menu,
     )
+
+    # Start backend immediately if not running — tray is the single entry point
+    _ensure_backend_running()
 
     # Ensure autostart is registered on first launch (idempotent)
     if not _is_autostart_enabled():

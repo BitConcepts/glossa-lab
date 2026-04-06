@@ -482,3 +482,162 @@ export const duplicateExperimentPreset = (id: string) =>
 
 export const deleteExperimentPreset = (id: string) =>
   request("DELETE", `/presets/experiments/${id}`);
+
+// ── Corpus Analysis ──────────────────────────────────────────────────
+
+export interface EntropyResult {
+  h1: number;
+  h2_joint: number;
+  conditional_h: number;
+  h2_h1_ratio: number | null;
+  type_token_ratio: number;
+  zipf_correlation: number;
+  token_count: number;
+  type_count: number;
+  hapax_count: number;
+  zipf_table: Array<{ rank: number; token: string; freq: number; log_rank: number; log_freq: number }>;
+}
+
+export interface NgramEntry { ngram: string; count: number; tokens: string[]; }
+export interface ConcordanceHit { position: number; left: string[]; match: string; right: string[]; }
+export interface ConcordanceResult { query: string; hits: ConcordanceHit[]; total: number; }
+
+export const getCorpusEntropy = (id: string): Promise<EntropyResult> =>
+  request("GET", `/texts/${id}/entropy`);
+
+export const getCorpusNgrams = (id: string, n = 2, limit = 50): Promise<NgramEntry[]> =>
+  request("GET", `/texts/${id}/ngrams?n=${n}&limit=${limit}`);
+
+export const getCorpusConcordance = (id: string, q: string, w = 5): Promise<ConcordanceResult> =>
+  request("GET", `/texts/${id}/concordance?q=${encodeURIComponent(q)}&w=${w}`);
+
+export const getCorpusExportUrl = (id: string, fmt: "txt" | "csv" | "json"): string =>
+  `/api/v1/texts/${id}/export?fmt=${fmt}`;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const analyzeCorpus = (id: string): Promise<Record<string, any>> =>
+  request("POST", `/texts/${id}/analyze`);
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const detectCorpusAnomalies = (id: string): Promise<Record<string, any>> =>
+  request("POST", `/texts/${id}/anomalies`);
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const critiqueCorpus = (id: string): Promise<Record<string, any>> =>
+  request("POST", `/texts/${id}/critique`);
+
+// ── Research: Hypotheses ────────────────────────────────────────────
+
+export interface Hypothesis {
+  id: string;
+  title: string;
+  statement: string;
+  status: "active" | "confirmed" | "refuted" | "paused" | string;
+  evidence: string[];
+  study_ids: string[];
+  exp_ids: string[];
+  created_at: string;
+  updated_at: string;
+}
+
+export const listHypotheses = (): Promise<Hypothesis[]> =>
+  request("GET", "/hypotheses");
+
+export const createHypothesis = (body: { title: string; statement?: string; status?: string }): Promise<Hypothesis> =>
+  request("POST", "/hypotheses", body);
+
+export const updateHypothesis = (id: string, body: Partial<Hypothesis>): Promise<Hypothesis> =>
+  request("PUT", `/hypotheses/${id}`, body);
+
+export const deleteHypothesis = (id: string): Promise<Hypothesis> =>
+  request("DELETE", `/hypotheses/${id}`);
+
+// ── Research: Notebooks ─────────────────────────────────────────────
+
+export interface Notebook {
+  id: string;
+  title: string;
+  content: string;
+  study_id: string | null;
+  tags: string[];
+  created_at: string;
+  updated_at: string;
+}
+
+export const listNotebooks = (): Promise<Notebook[]> =>
+  request("GET", "/notebooks");
+
+export const createNotebook = (body: { title: string; content?: string; study_id?: string; tags?: string[] }): Promise<Notebook> =>
+  request("POST", "/notebooks", body);
+
+export const updateNotebook = (id: string, body: Partial<Notebook>): Promise<Notebook> =>
+  request("PUT", `/notebooks/${id}`, body);
+
+export const deleteNotebook = (id: string): Promise<Notebook> =>
+  request("DELETE", `/notebooks/${id}`);
+
+// ── Research: Citations ─────────────────────────────────────────────
+
+export interface Citation {
+  id: string;
+  key: string;
+  title: string;
+  authors: string;
+  year: string;
+  venue: string;
+  doi: string;
+  url: string;
+  bibtex: string;
+  exp_ids: string[];
+  study_ids: string[];
+  notes: string;
+  created_at: string;
+}
+
+export const listCitations = (): Promise<Citation[]> =>
+  request("GET", "/citations");
+
+export const createCitation = (body: Omit<Citation, "id" | "exp_ids" | "study_ids" | "created_at">): Promise<Citation> =>
+  request("POST", "/citations", body);
+
+export const updateCitation = (id: string, body: Partial<Citation>): Promise<Citation> =>
+  request("PUT", `/citations/${id}`, body);
+
+export const deleteCitation = (id: string): Promise<Citation> =>
+  request("DELETE", `/citations/${id}`);
+
+// ── AI Tools ─────────────────────────────────────────────────────
+
+export interface ChatMessage { role: string; content: string; }
+
+export const aiChat = (body: {
+  messages: ChatMessage[];
+  context_type?: string | null;
+  context_id?: string | null;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+}): Promise<Record<string, any>> =>
+  request("POST", "/ai/chat", body);
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const aiDecipher = (body: { sign_sequence: string[]; theory?: string; corpus_id?: string }): Promise<Record<string, any>> =>
+  request("POST", "/ai/decipher", body);
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const aiDraftSection = (body: { experiment_id: string; section_type?: string; result_json?: Record<string, any> }): Promise<Record<string, any>> =>
+  request("POST", "/ai/draft-section", body);
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const aiGenerateHypotheses = (body: { study_id?: string; context?: string }): Promise<Record<string, any>> =>
+  request("POST", "/ai/hypotheses/generate", body);
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const aiExperimentChain = (body: { hypothesis: string; available_experiment_ids?: string[] }): Promise<Record<string, any>> =>
+  request("POST", "/ai/experiment-chain", body);
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const aiSynthesize = (body: { study_ids: string[]; question?: string }): Promise<Record<string, any>> =>
+  request("POST", "/ai/synthesize", body);
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const aiSignReading = (body: { sign_ids: string[]; theory?: string; context?: string }): Promise<Record<string, any>> =>
+  request("POST", "/ai/sign-reading", body);

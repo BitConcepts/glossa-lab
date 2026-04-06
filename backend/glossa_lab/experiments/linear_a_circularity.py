@@ -718,3 +718,24 @@ def run_all_experiments(
         "n_mc_trials": n_mc_trials,
         "use_kandles_bias": use_kandles_bias,
     }
+
+
+try:
+    from glossa_lab.experiment_base import ExperimentBase as _EB
+except ImportError:
+    _EB = object
+
+
+class LinearACircularity(_EB):
+    id = "linear_a_circularity"
+    name = "Linear A Anti-Circularity Suite (7 experiments)"
+    category = "Experiments"
+    description = "7-experiment anti-circularity suite for Linear A phoneme hypothesis testing."
+    estimated_time = "~10 min"
+    command = "python backend/generate_report_linear_a_circularity.py"
+    results_file = "reports/circularity_results.json"
+
+    def run(self, **kwargs):
+        raise NotImplementedError(
+            "Linear A circularity suite requires ~10 min. Use the CLI command or Stream mode."
+        )

@@ -337,3 +337,20 @@ def run_ventris_validation(verbose: bool = True) -> dict[str, Any]:
 
 if __name__ == "__main__":
     result = run_ventris_validation(verbose=True)
+
+try:
+    from glossa_lab.experiment_base import ExperimentBase as _EB
+except ImportError:
+    _EB = object
+
+
+class VentrisValidation(_EB):
+    id = "ventris_validation"
+    name = "Ventris Grid Validation (Linear B)"
+    category = "Validation"
+    description = "Ventris affinity vs known Linear B CV grid. F1 for vowel/consonant groups."
+    estimated_time = "~10 sec"
+    command = "python -m glossa_lab.experiments.ventris_validation"
+
+    def run(self, **kwargs):
+        return run_ventris_validation(verbose=False)

@@ -408,3 +408,21 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+try:
+    from glossa_lab.experiment_base import ExperimentBase as _EB
+except ImportError:
+    _EB = object
+
+
+class IndusStructuralAtlas(_EB):
+    id = "indus_structural_atlas"
+    name = "Indus Structural Atlas"
+    category = "Analysis"
+    description = "Fuls (2023) structural analysis: entropy, Zipf, NWSP, fingerprint, typology."
+    estimated_time = "~1 min"
+    command = "python -m glossa_lab.experiments.indus_structural_atlas"
+    results_file = "reports/indus_structural_atlas.json"
+
+    def run(self, **kwargs):
+        return main(verbose=False) if "verbose" in main.__code__.co_varnames else main()

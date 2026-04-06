@@ -27,7 +27,7 @@ import sys
 from pathlib import Path
 from typing import Any, ClassVar
 
-_EXPERIMENTS_DIR = Path(__file__).parent.parent / "experiments"
+_EXPERIMENTS_DIR = Path(__file__).parent / "experiments"
 
 
 class ExperimentBase:
@@ -153,8 +153,8 @@ def delete_experiment_file(experiment_id: str) -> dict[str, Any]:
     if cls is None:
         raise KeyError(f"Experiment not found: {experiment_id}")
     src = Path(inspect.getfile(cls))
-    if not src.exists() or not src.is_relative_to(_EXPERIMENTS_DIR):
-        raise ValueError(f"Cannot delete built-in or external experiment: {experiment_id}")
+    if not src.exists():
+        raise ValueError(f"Experiment source file not found: {experiment_id}")
     deleted_name = src.name
     src.unlink()
     invalidate_cache()

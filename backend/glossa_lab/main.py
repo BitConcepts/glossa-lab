@@ -45,13 +45,15 @@ async def lifespan(app: FastAPI):
     # Initialize database
     await init_db(settings.data_dir)
 
-    # Seed built-in corpora (runs only if DB is empty or missing corpora)
+    # Seed built-in corpora and pre-built studies on first run
     from glossa_lab.corpus_seeder import seed_corpora  # noqa: I001
+    from glossa_lab.study_seeds import seed_studies  # noqa: I001
     from glossa_lab.database import get_db
 
     _db = get_db()
     if _db:
         await seed_corpora(_db)
+        await seed_studies(_db)
 
     # Start pipeline engine in background
     engine_task = asyncio.create_task(run_engine_loop())

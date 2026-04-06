@@ -53,9 +53,9 @@ _SEEDS: list[dict[str, Any]] = [
         ),
         "graph": {
             "nodes": [
-                _node("n1", "real_catalog",   "Real Catalog Analysis",    100, 100),
-                _node("n2", "indus_atlas",    "Indus Structural Atlas",   400, 100),
-                _node("n3", "kandles_bias",   "Kandles Bias Comparison",  700, 100),
+                _node("n1", "real_catalog", "Real Catalog Analysis", 100, 100),
+                _node("n2", "indus_atlas", "Indus Structural Atlas", 400, 100),
+                _node("n3", "kandles_bias", "Kandles Bias Comparison", 700, 100),
             ],
             "edges": [
                 _edge("e1", "n1", "n2"),
@@ -72,8 +72,8 @@ _SEEDS: list[dict[str, Any]] = [
         ),
         "graph": {
             "nodes": [
-                _node("n1", "ugaritic_vs_hebrew",       "Ugaritic vs Hebrew",          100, 100),
-                _node("n2", "ugaritic_proper_benchmark", "Ugaritic Proper Benchmark",   450, 100),
+                _node("n1", "ugaritic_vs_hebrew", "Ugaritic vs Hebrew", 100, 100),
+                _node("n2", "ugaritic_proper_benchmark", "Ugaritic Proper Benchmark", 450, 100),
             ],
             "edges": [
                 _edge("e1", "n1", "n2"),
@@ -103,9 +103,9 @@ _SEEDS: list[dict[str, Any]] = [
         ),
         "graph": {
             "nodes": [
-                _node("n1", "progression",               "Fuls Progression Benchmark", 100, 100),
-                _node("n2", "writing_system_progression", "Writing System Progression",  450, 100),
-                _node("n3", "ventris_validation",         "Ventris Grid (Linear B)",      800, 100),
+                _node("n1", "progression", "Fuls Progression Benchmark", 100, 100),
+                _node("n2", "writing_system_progression", "Writing System Progression", 450, 100),
+                _node("n3", "ventris_validation", "Ventris Grid (Linear B)", 800, 100),
             ],
             "edges": [
                 _edge("e1", "n1", "n2"),
@@ -122,8 +122,8 @@ _SEEDS: list[dict[str, Any]] = [
         ),
         "graph": {
             "nodes": [
-                _node("n1", "indus_atlas",    "Structural Atlas",          100,  80),
-                _node("n2", "kandles_bias",   "Kandles Bias (30 trials)",  500,  80),
+                _node("n1", "indus_atlas", "Structural Atlas", 100, 80),
+                _node("n2", "kandles_bias", "Kandles Bias (30 trials)", 500, 80),
             ],
             "edges": [
                 _edge("e1", "n1", "n2"),
@@ -139,8 +139,8 @@ _SEEDS: list[dict[str, Any]] = [
         "graph": {
             "nodes": [
                 _node("n1", "ocr_tables", "OCR — Bigram & Frequency Tables", 100, 100),
-                _node("n2", "ocr_texts",  "OCR — Inscription Sequences",     100, 280),
-                _node("n3", "real_catalog", "Real Catalog Analysis",          450, 190),
+                _node("n2", "ocr_texts", "OCR — Inscription Sequences", 100, 280),
+                _node("n3", "real_catalog", "Real Catalog Analysis", 450, 190),
             ],
             "edges": [
                 _edge("e1", "n1", "n3"),
@@ -184,4 +184,5 @@ async def seed_studies(db: Any) -> None:  # noqa: ANN401
 def _slug(name: str) -> str:
     """Turn a study name into a stable short ID."""
     import re
+
     return re.sub(r"[^a-z0-9]+", "_", name.lower())[:20].strip("_")

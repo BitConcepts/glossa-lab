@@ -135,9 +135,7 @@ async def get_provider_catalog() -> list[ProviderCatalogEntry]:
         ProviderCatalogEntry(
             **{
                 **entry,
-                "model_details": [
-                    ModelDetailEntry(**m) for m in entry.get("model_details", [])
-                ],
+                "model_details": [ModelDetailEntry(**m) for m in entry.get("model_details", [])],
             }
         )
         for entry in list_provider_catalog()

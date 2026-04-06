@@ -26,8 +26,9 @@ REM Remove trailing backslash
 if "%REPO_ROOT:~-1%"=="\" set "REPO_ROOT=%REPO_ROOT:~0,-1%"
 
 set "VENV_PYTHON=%REPO_ROOT%\backend\venv\Scripts\python.exe"
-set "BACKEND_SVC=%REPO_ROOT%\scripts\run-backend-svc.cmd"
-set "TRAY_SVC=%REPO_ROOT%\scripts\run-tray-svc.cmd"
+set "VENV_PYTHONW=%REPO_ROOT%\backend\venv\Scripts\pythonw.exe"
+set "BACKEND_DIR=%REPO_ROOT%\backend"
+set "TRAY_DIR=%REPO_ROOT%\tray"
 set "LOG_DIR=%REPO_ROOT%\logs"
 set "HEALTH_URL=http://localhost:8001/api/v1/health"
 
@@ -143,7 +144,17 @@ if "%HEALTH_OK%"=="1" (
 )
 
 echo [START] Launching backend (detached)...
-powershell -NoProfile -ExecutionPolicy Bypass -File "%REPO_ROOT%\scripts\start-detached.ps1" -Script "%BACKEND_SVC%" -PidFile "%LOG_DIR%\backend.pid"
+REM Use pythonw.exe directly via PowerShell ProcessStartInfo -- zero cmd.exe in the chain.
+REM ProcessStartInfo.CreateNoWindow + pythonw.exe (GUI subsystem) = guaranteed no visible window.
+powershell -NoProfile -ExecutionPolicy Bypass -Command ^
+  "$psi=[System.Diagnostics.ProcessStartInfo]::new('%VENV_PYTHONW%');" ^
+  "$psi.Arguments='-m uvicorn glossa_lab.main:app --host 0.0.0.0 --port 8001 --app-dir \'%BACKEND_DIR%\'';" ^
+  "$psi.WorkingDirectory='%BACKEND_DIR%';" ^
+  "$psi.UseShellExecute=$false;$psi.CreateNoWindow=$true;" ^
+  "$psi.EnvironmentVariables['PYTHONPATH']='%BACKEND_DIR%';" ^
+  "$p=[System.Diagnostics.Process]::Start($psi);" ^
+  "$p.Id | Set-Content -Encoding ASCII '%LOG_DIR%\backend.pid';" ^
+  "Write-Host $p.Id"
 if errorlevel 1 ( echo [ERROR] Failed to launch backend. & exit /b 1 )
 set /p BACKEND_PID=<"%LOG_DIR%\backend.pid"
 echo [OK] Backend launched.
@@ -152,9 +163,18 @@ echo      Log  : %LOG_DIR%\backend.log
 echo      Kill : taskkill /F /PID %BACKEND_PID%
 
 :do_start_tray
-REM ── Tray ─────────────────────────────────────────────────────
+REM ── Tray ────────────────────────────────────────────────────────────────
 echo [START] Launching tray (detached)...
-powershell -NoProfile -ExecutionPolicy Bypass -File "%REPO_ROOT%\scripts\start-detached.ps1" -Script "%TRAY_SVC%" -PidFile "%LOG_DIR%\tray.pid"
+REM Same approach: pythonw.exe directly, no cmd.exe.
+powershell -NoProfile -ExecutionPolicy Bypass -Command ^
+  "$psi=[System.Diagnostics.ProcessStartInfo]::new('%VENV_PYTHONW%');" ^
+  "$psi.Arguments='-m glossa_tray';" ^
+  "$psi.WorkingDirectory='%REPO_ROOT%';" ^
+  "$psi.UseShellExecute=$false;$psi.CreateNoWindow=$true;" ^
+  "$psi.EnvironmentVariables['PYTHONPATH']='%TRAY_DIR%';" ^
+  "$p=[System.Diagnostics.Process]::Start($psi);" ^
+  "$p.Id | Set-Content -Encoding ASCII '%LOG_DIR%\tray.pid';" ^
+  "Write-Host $p.Id"
 if errorlevel 1 ( echo [WARN] Tray may not have started. & goto do_start_done )
 set /p TRAY_PID=<"%LOG_DIR%\tray.pid"
 echo [OK] Tray launched.

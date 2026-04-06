@@ -5,7 +5,9 @@
 
 import { useEffect, useState } from "react";
 import {
-  listReports, deleteReport, getReportDownloadUrl, openReportFolder, type CatalogReport,
+  listReports, deleteReport, getReportDownloadUrl, openReportFolder,
+  listStudies,
+  type CatalogReport, type StudyResponse,
 } from "../api";
 import { fmtDateTimeCompact } from "../dateFormat";
 
@@ -19,10 +21,12 @@ export function ReportsView() {
   const [search, setSearch] = useState("");
   const [kindFilter, setKindFilter] = useState<Set<string>>(new Set());
   const [expFilter, setExpFilter] = useState<Set<string>>(new Set());
+  const [studyFilter, setStudyFilter] = useState<Set<string>>(new Set());
   const [sortKey, setSortKey] = useState<SortKey>("updated_at");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
-  const [groupByExp, setGroupByExp] = useState(false);
-  const [popupBlocked, setPopupBlocked] = useState<string | null>(null); // blocked URL
+  const [groupByExp, setGroupByExp] = useState(true); // default on
+  const [studies, setStudies] = useState<StudyResponse[]>([]);
+  const [popupBlocked, setPopupBlocked] = useState<string | null>(null);
 
   const load = async () => {
     setLoading(true);
@@ -36,7 +40,10 @@ export function ReportsView() {
     }
   };
 
-  useEffect(() => { load(); }, []);
+  useEffect(() => {
+    load();
+    listStudies().then(setStudies).catch(() => {});
+  }, []);
 
   const handleView = (r: CatalogReport) => {
     const url = getReportDownloadUrl(r.id);
@@ -87,11 +94,26 @@ export function ReportsView() {
   const toggleExp = (e: string) => setExpFilter((prev) => {
     const s = new Set(prev); s.has(e) ? s.delete(e) : s.add(e); return s;
   });
+  const toggleStudy = (sid: string) => setStudyFilter((prev) => {
+    const s = new Set(prev); s.has(sid) ? s.delete(sid) : s.add(sid); return s;
+  });
+
+  // Build study->experiments mapping from study graph nodes
+  const studyExpMap: Record<string, Set<string>> = {};
+  for (const st of studies) {
+    const exps = new Set((st.graph?.nodes ?? []).map((n: {ref_id: string}) => n.ref_id).filter(Boolean));
+    studyExpMap[st.id] = exps;
+  }
+
+  // Resolve which experiment IDs belong to the selected studies
+  const studyExpIds = studyFilter.size === 0 ? null :
+    new Set([...studyFilter].flatMap((sid) => [...(studyExpMap[sid] ?? new Set())]));
 
   const sorted = [...reports]
     .filter((r) => (!search || r.name.toLowerCase().includes(search.toLowerCase()))
                 && (kindFilter.size === 0 || kindFilter.has(r.kind))
-                && (expFilter.size === 0 || expFilter.has(r.experiment_id)))
+                && (expFilter.size === 0 || expFilter.has(r.experiment_id))
+                && (studyExpIds === null || (r.experiment_id && studyExpIds.has(r.experiment_id))))
     .sort((a, b) => {
       const av = a[sortKey as keyof CatalogReport] as string | number;
       const bv = b[sortKey as keyof CatalogReport] as string | number;
@@ -125,53 +147,51 @@ export function ReportsView() {
         </span>
       </div>
 
-      {/* Kind multi-select pills */}
+      {/* Kind filter */}
       {allKinds.length > 0 && (
         <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginBottom: "0.5rem", alignItems: "center" }}>
           <span style={{ fontSize: 11, color: "#9ca3af", marginRight: 2 }}>Type:</span>
+          <button onClick={() => setKindFilter(new Set())} style={pillStyle(kindFilter.size === 0, "#1e3a5f")}>
+            All
+          </button>
           {allKinds.map((k) => (
-            <button
-              key={k}
-              onClick={() => toggleKind(k)}
-              style={{
-                padding: "2px 10px", border: "1px solid", borderRadius: 10, cursor: "pointer",
-                fontSize: 11, fontWeight: kindFilter.has(k) ? 700 : 400,
-                background: kindFilter.has(k) ? (kindColor[k] ?? "#1e3a5f") : "#fff",
-                borderColor: kindFilter.has(k) ? (kindColor[k] ?? "#1e3a5f") : "#d1d5db",
-                color: kindFilter.has(k) ? "#fff" : "#374151",
-              }}
-            >
+            <button key={k} onClick={() => toggleKind(k)}
+              style={pillStyle(kindFilter.has(k), kindColor[k] ?? "#1e3a5f")}>
               {k.replace("_", " ")}
             </button>
           ))}
-          {kindFilter.size > 0 && (
-            <button onClick={() => setKindFilter(new Set())} style={{ fontSize: 11, background: "none", border: "none", color: "#6b7280", cursor: "pointer" }}>clear</button>
-          )}
         </div>
       )}
 
-      {/* Experiment multi-select pills */}
+      {/* Experiment filter */}
       {allExps.length > 0 && (
-        <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginBottom: "1rem", alignItems: "center" }}>
+        <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginBottom: "0.5rem", alignItems: "center" }}>
           <span style={{ fontSize: 11, color: "#9ca3af", marginRight: 2 }}>Experiment:</span>
+          <button onClick={() => setExpFilter(new Set())} style={pillStyle(expFilter.size === 0, "#1e3a5f")}>
+            All
+          </button>
           {allExps.map((e) => (
-            <button
-              key={e}
-              onClick={() => toggleExp(e)}
-              style={{
-                padding: "2px 10px", border: "1px solid", borderRadius: 10, cursor: "pointer",
-                fontSize: 11, fontWeight: expFilter.has(e) ? 700 : 400,
-                background: expFilter.has(e) ? "#1e3a5f" : "#fff",
-                borderColor: expFilter.has(e) ? "#1e3a5f" : "#d1d5db",
-                color: expFilter.has(e) ? "#fff" : "#374151",
-              }}
-            >
+            <button key={e} onClick={() => toggleExp(e)}
+              style={pillStyle(expFilter.has(e), "#1e3a5f")}>
               {e.replace(/_/g, " ")}
             </button>
           ))}
-          {expFilter.size > 0 && (
-            <button onClick={() => setExpFilter(new Set())} style={{ fontSize: 11, background: "none", border: "none", color: "#6b7280", cursor: "pointer" }}>clear</button>
-          )}
+        </div>
+      )}
+
+      {/* Study filter */}
+      {studies.length > 0 && (
+        <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginBottom: "1rem", alignItems: "center" }}>
+          <span style={{ fontSize: 11, color: "#9ca3af", marginRight: 2 }}>Study:</span>
+          <button onClick={() => setStudyFilter(new Set())} style={pillStyle(studyFilter.size === 0, "#7c3aed")}>
+            All
+          </button>
+          {studies.map((st) => (
+            <button key={st.id} onClick={() => toggleStudy(st.id)}
+              style={pillStyle(studyFilter.has(st.id), "#7c3aed")}>
+              {st.name}
+            </button>
+          ))}
         </div>
       )}
 
@@ -290,6 +310,14 @@ export function ReportsView() {
     </div>
   );
 }
+
+const pillStyle = (active: boolean, color: string): React.CSSProperties => ({
+  padding: "2px 10px", border: `1px solid ${active ? color : "#d1d5db"}`,
+  borderRadius: 10, cursor: "pointer", fontSize: 11,
+  fontWeight: active ? 700 : 400,
+  background: active ? color : "#fff",
+  color: active ? "#fff" : "#374151",
+});
 
 const thStyle: React.CSSProperties = {
   textAlign: "left", padding: "6px 14px 6px 0",

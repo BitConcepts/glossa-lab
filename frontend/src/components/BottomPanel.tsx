@@ -301,9 +301,10 @@ interface BottomPanelProps {
   onMinimizedChange: (v: boolean) => void;
   activeTab: PanelTab;
   onTabChange: (t: PanelTab) => void;
+  leftOffset?: number;
 }
 
-export function BottomPanel({ height, onHeightChange, minimized, onMinimizedChange, activeTab, onTabChange }: BottomPanelProps) {
+export function BottomPanel({ height, onHeightChange, minimized, onMinimizedChange, activeTab, onTabChange, leftOffset = 0 }: BottomPanelProps) {
   const [maximized, setMaximized] = useState(false);
   const dragging = useRef(false);
   const dragStartY = useRef(0);
@@ -345,7 +346,7 @@ export function BottomPanel({ height, onHeightChange, minimized, onMinimizedChan
 
   return (
     <div style={{
-      position: "fixed", bottom: 0, left: 0, right: 0,
+      position: "fixed", bottom: 0, left: leftOffset, right: 0,
       height: panelH, background: "#0f172a", borderTop: "1px solid #1e293b",
       display: "flex", flexDirection: "column", zIndex: 5000, userSelect: "none",
     }}>

@@ -289,7 +289,12 @@ def _build_settings_context() -> str:
     return "\n".join(lines)
 
 
-_ACTION_RE = re.compile(r"%%ACTIONS%%(.*?)%%END_ACTIONS%%", re.DOTALL)
+_ACTION_RE = re.compile(
+    r"%%(?:ACTIONS|CREATE_HYPOTHESIS|CREATE_NOTEBOOK|RUN_EXPERIMENT|PROPOSED_ACTIONS)%%"
+    r"(.*?)"
+    r"%%(?:END_ACTIONS|END_HYPOTHESIS|END_NOTEBOOK|END_EXPERIMENT|END)%%",
+    re.DOTALL,
+)
 
 
 _PARAM_FIELDS_CLI = frozenset({"title", "statement", "id", "key", "value", "view",

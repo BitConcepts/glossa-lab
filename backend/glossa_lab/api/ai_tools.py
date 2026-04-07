@@ -26,7 +26,14 @@ router = APIRouter(prefix="/ai", tags=["ai-tools"])
 
 # ── Action helpers ─────────────────────────────────────────────────────────────
 
-_ACTION_RE = re.compile(r"%%ACTIONS%%(.*?)%%END_ACTIONS%%", re.DOTALL)
+# Primary: %%ACTIONS%%...%%END_ACTIONS%%
+# Also match common model mistakes: %%CREATE_*%%, %%RUN_*%%, %%PROPOSED_*%%...%%END_*%%
+_ACTION_RE = re.compile(
+    r"%%(?:ACTIONS|CREATE_HYPOTHESIS|CREATE_NOTEBOOK|RUN_EXPERIMENT|PROPOSED_ACTIONS)%%"
+    r"(.*?)"
+    r"%%(?:END_ACTIONS|END_HYPOTHESIS|END_NOTEBOOK|END_EXPERIMENT|END)%%",
+    re.DOTALL,
+)
 
 
 # Fields that belong inside params{} but models sometimes emit at top-level
@@ -271,6 +278,23 @@ M77 profiles (inline in scripts as needed):
    "M029": (0.030,0.101,0.869,"Comb/rake"), "M005": (0.000,0.019,0.981,"Six strokes")}
 
 Script output: save JSON to Path(__file__).parent.parent / "reports" / "<name>.json"
+
+CRITICAL: total_c[sign] returns an INTEGER (count), NOT a tuple.
+T/I/M rates MUST be computed from 4 SEPARATE Counter objects.
+CORRECT loop pattern:
+  for sign in total_c:
+      n = total_c[sign]              # int - count of occurrences
+      if n < 20: continue
+      t = terminal_c[sign] / n       # float - T-rate  (separate Counter!)
+      i = initial_c[sign] / n        # float - I-rate  (separate Counter!)
+      m = medial_c[sign] / n         # float - M-rate  (separate Counter!)
+      # now (t, i, m) is the sign's profile - compare against M77
+
+WRONG (never do this):
+  for sign, (t, i, m) in total_c.items():  # BROKEN - Counter values are ints
+  t, i, m = total_c[sign]                  # BROKEN - can't unpack int
+
+ALL 12 M77 profiles must always be included in scripts, not just 2.
 DO NOT invent T-rates/counts not in context; say 'run a script to obtain this'.
 === END SCRIPTING PATTERNS ===""")
 

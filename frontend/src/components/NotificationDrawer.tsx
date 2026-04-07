@@ -126,7 +126,7 @@ export function NotificationCenter() {
             width: 380, maxHeight: 460,
             background: "#fff", borderRadius: 10,
             boxShadow: "0 8px 32px rgba(0,0,0,0.14), 0 0 0 1px rgba(0,0,0,0.06)",
-            zIndex: 7000, display: "flex", flexDirection: "column",
+            zIndex: 9500, display: "flex", flexDirection: "column",
             animation: "notifFadeIn 0.14s ease",
           }}
         >

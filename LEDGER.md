@@ -2212,3 +2212,77 @@ Next step: Set API keys in Settings tab, then run OCR experiments from the Exper
 - Visual no-code Study Builder with typed connections and parameter panels
 
 Open: mahadevan_texts.json (OCR completing ~16:00 UTC); run M77 corpus experiments after
+
+---
+
+## [2026-04-08] Entry — Left sidebar nav, AI bubble positioning, GlossaShell, Ollama default model
+
+Objective: (1) Replace confusing collapsible group-toggle navigation with a fixed left sidebar. (2) Fix AI bubble so it stays above the bottom panel and never goes off-screen. (3) Eliminate Windows console window flash on terminal commands. (4) Add Ollama default model setting.
+
+What was done:
+
+### Navigation overhaul (App.tsx)
+- Removed collapsible group-toggle tab nav; replaced with fixed 220px left sidebar
+- NAV_SECTIONS: Workspace (Studies, Builder, Experiments, Corpora, Reports), Analysis (Entropy, Signs, Timeline), Research (Hypotheses, Notebooks, Citations), AI (AI Tools)
+- SYSTEM_ITEMS pinned at sidebar bottom: Status, Pipelines, Jobs, Settings
+- Active item: left blue accent border + highlighted background
+- Top bar inside content area: breadcrumb + ⌘K + panel toggle + dark mode toggle
+- `allItems` declared before `paletteCommands` (fixed TS hoisting)
+- Passes `panelHeight` to both `AIChatWindow` and `AIChatBubble`
+
+### AI bubble and chat window (AIChatWindow.tsx)
+- AIChatBubble: removed all drag logic; now `position:fixed bottom:(panelHeight+16) right:24`
+- AIChatWindow: default position bottom-right above panel (`defaultLeft = innerWidth-440-84`, `defaultTop = innerHeight-580-(panelHeight+82)`)
+- Resets `pos=null` on close (via `useEffect([isOpen])`) so window opens fresh bottom-right each time
+- Viewport clamping on drag via `clamp()` callback; resize listener reclamps pos
+- Never allows window or bubble to go off-screen, even on window resize
+
+### GlossaShell — platform-agnostic virtual shell (backend/glossa_lab/glossa_shell.py)
+- New `GlossaShell` class with Python-native builtins: ls/ll/dir, cat/type, head/tail, pwd, cd, echo, mkdir, rm/rmdir, cp/copy, mv/move, find, grep/findstr, wc, env/set, which/where, clear, help
+- `cd` sandboxed to `_REPO_ROOT`; cannot escape the repo directory tree
+- Subprocess fallback uses `CREATE_NO_WINDOW` (Windows) — no console window ever appears
+- `python`/`python3` automatically redirected to venv Python
+- Tokenises with `shlex.split(posix=True)` for consistent cross-platform behaviour
+
+### terminal.py rewrite (backend/glossa_lab/api/terminal.py)
+- Replaced raw `cmd.exe`/`sh` subprocess with `GlossaShell`
+- `_stream_command`: creates `GlossaShell(cwd=cwd)`, iterates `shell.run(command)` in daemon thread + queue
+- No visible window on Windows for any command
+- `cwd` defaults to `_REPO_ROOT` (previously `_BACKEND_DIR`)
+- Removed `use_venv` parameter (GlossaShell handles Python resolution)
+
+### Ollama default model setting (committed separately)
+- `ai_utils.py`: full provider resolution chain (Ollama → Mistral → OpenAI → Anthropic)
+- `_call_ollama()`: calls `http://localhost:11434/api/chat` with `stream: false`
+- `SettingsView.tsx`: "Set as default AI" button per installed model; 🤖 green badge on active model; "Clear default" link
+- Preferences saved to `_provider_prefs.ollama = {enabled: true, selected_model: "..."}`
+
+Files changed:
+- backend/glossa_lab/glossa_shell.py (created)
+- backend/glossa_lab/api/terminal.py (rewritten)
+- frontend/src/App.tsx (sidebar nav overhaul)
+- frontend/src/components/AIChatWindow.tsx (bubble + window positioning)
+
+Checks run:
+- npm run build — 0 TypeScript errors ✓
+- Backend restarted via setup-os.cmd restart ✓
+- Committed (50ce380) and pushed to main
+
+Results:
+- Navigation is now a persistent sidebar researchers expect (no expand/collapse confusion)
+- AI bubble always visible above the bottom panel, never obscured or off-screen
+- Terminal commands produce no Windows console window flash
+- All shell commands (ls, cat, grep, find, python scripts) run natively in-process
+
+Open TODOs:
+- [ ] Contact zone analysis (Mesopotamian Indus inscriptions)
+- [ ] Improve Luwian scoring (word-length KL or morpheme-level)
+- [ ] Fix stale Playwright UI locators (~40 tests, tab nav refactor)
+- [ ] Run M77 corpus experiments after Mahadevan OCR completes
+- [ ] Raise token coverage from 22.4% to 30%+ by assigning more signs
+
+Risks:
+- GlossaShell subprocess fallback still spawns cmd.exe for unknown commands on Windows — only builtins are truly windowless
+- AI bubble bottom offset assumes panelHeight is 0 when panel is collapsed; may need verification on all collapse states
+
+Next step: Assign values to top unknown TMK signs (845, 832, 501) to push token coverage toward 30%; run Playwright E2E with live backend

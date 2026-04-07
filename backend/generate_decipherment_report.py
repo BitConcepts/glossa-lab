@@ -62,12 +62,12 @@ def build_pdf() -> None:
 
     # Title
     story += [
-        psub("COMPUTATIONAL LINGUISTICS -- GLOSSA LAB | APRIL 2026"),
+        psub("COMPUTATIONAL LINGUISTICS -- GLOSSA LAB | APRIL 2026  (v2 -- Corrected)"),
         ptitle("<b>Towards Phonetic Value Assignment for the Indus Script:<br/>"
-               "Ventris Grid, Proto-Dravidian Hypothesis Testing,<br/>"
-               "and the First Validated Sign Assignment</b>"),
+               "Ventris Grid, Fish Sign Anchoring (M064/M070),<br/>"
+               "and First Multi-Sign Inscription Readings</b>"),
         pcap("ICIT Corpus: Fuls (2023) PDF OCR  |  4,410 inscriptions  |"
-             "  14,213 tokens  |  713 sign types"),
+             "  14,213 tokens  |  713 sign types  |  10 inscriptions read"),
         hr(), sp(),
     ]
 
@@ -171,38 +171,46 @@ def build_pdf() -> None:
         safe_tbl([
             ["Sign", "Value", "Romanised Tamil", "T-rate", "Conf.", "Evidence"],
             ["817", "-um", "[-um]\n(additive)", "0.853", "HIGH",
-             "84 unique pred.; 9.1% stacking; P1 validated"],
+             "84 unique pred.; 9.1% stacking; P1 validated; M77 012 (small circle)"],
             ["920", "-e/-ee", "[-e]\n(accusative)", "high", "MED",
              "2nd most common suffix chain (132 occ.)"],
             ["760", "-il", "[-il]\n(locative)", "high", "MED",
-             "SERIES-D; Tamil 'in/at'"],
+             "SERIES-D; Tamil locative"],
             ["798", "-ku", "[-ku]\n(dative)", "0.616", "MED",
-             "Tamil 'to/for'; trade documents"],
+             "Tamil dative; trade documents"],
             ["752", "-in", "[-in]\n(genitive)", "mod.", "MED",
-             "SERIES-A; [503,752]=genitive compound (P5)"],
+             "SERIES-A; [503,752]=genitive compound"],
             ["806", "-al", "[-al]", "high", "LOW", "NWSP-T only"],
-            ["900", "-an", "[-an]", "high", "LOW", "Masculine suffix on seals"],
+            ["900", "-an", "[-an]", "high", "LOW", "Masculine suffix"],
             ["904", "-ai", "[-ai]", "high", "LOW", "Accusative"],
         ], _W6S, highlight_rows={1: C_GREEN}),
-        sp(), pcap("Table 4. Case suffix assignments (green row = HIGH confidence)."),
+        sp(), pcap("Table 4. Case suffix assignments (green = HIGH confidence)."),
     ]
 
-    story += [ph2("5.2 Initial Signs and Syllabic Assignments")]
+    story += [ph2("5.2 Fish Signs and Other Assignments (CORRECTED)")]
     story += [
+        pb("<b>Critical corrections from profile-distance matching against expanded "
+           "M77 fish variant table (M059-M070):</b>"),
         safe_tbl([
-            ["Sign", "Value", "Function", "Conf.", "Notes"],
-            ["400", "A- (initial vowel)", "phonetic/det.", "MED",
-             "P3: followed by KA-series 32/33/34; VOWEL-A member"],
-            ["520", "TITLE-DET or A-", "det./syllable", "MED",
-             "I-rate=0.768; strongest initial-preference sign"],
-            ["32/33/34", "KA / KE / KI", "CV series", "MED",
-             "Equiv Class 1; allograph triplet; most frequent group"],
-            ["220", "VA or MA", "phonetic syl.", "LOW",
-             "2nd most frequent (462 occ.); medial distribution"],
-            ["465-472", "PA/PE/PI/PO", "CV series", "MED",
-             "SERIES-A; best Ventris group coh=0.896"],
-        ], _W5I),
-        sp(), pcap("Table 5. Initial sign and syllabic assignments."),
+            ["Sign", "Value", "M77", "M77 Desc", "Dist", "Conf.", "Notes"],
+            ["72",  "meen", "064", "Fish variant D",       "0.047", "MED",
+             "BEST fish match in entire corpus; n=14; consecutive with 70"],
+            ["70",  "meen", "070", "Fish+two tail strokes", "0.065", "MED",
+             "2nd best; n=39; appears at Lothal (coastal)"],
+            ["100", "meen-var", "070", "Fish variant",      "0.242", "LOW",
+             "Fish-family M-rate=0.684; n=133"],
+            ["220", "maram/tree?", "500", "Plant/tree sign", "~0.3",  "LOW",
+             "2nd most frequent (462 occ.); REVISED: tree, not fish"],
+            ["32",  "ka/stroke", "342", "Short stroke",     "0.221", "MED",
+             "Most frequent (527); short stroke medial; NOT fish"],
+            ["400", "a-/bull", "200", "Bull head",          "~0.4",  "MED",
+             "General initial sign; bull head motif on seals"],
+            ["520", "a-",    "028", "Arrow (initial)",      "~0.4",  "MED",
+             "Strongest initial preference (I-rate=0.768)"],
+            ["465-472", "PA/PE/PI/PO", "CV", "CV family",  "N/A",  "MED",
+             "SERIES-A Ventris group coh=0.896; consecutive Fuls"],
+        ], [1.5*cm, 2.5*cm, 1.5*cm, 4*cm, 1.5*cm, 1.5*cm, BODY_WIDTH-12.5*cm]),
+        sp(), pcap("Table 5. Corrected sign assignments with M77 cross-reference."),
     ]
 
     # 6. Validated Predictions
@@ -227,6 +235,48 @@ def build_pdf() -> None:
              "Genitive construction; 752 = '-in' supported"],
         ], _W3P),
         sp(), pcap("Table 6. Prediction validation summary."),
+    ]
+
+    # 6b. First inscription readings
+    story += [ph1("6b. FIRST INSCRIPTION READINGS"), hr(), sp()]
+    story += [
+        pb("Using sign 817=-um (HIGH), signs 70/72=meen (MED), 520=a- (MED), "
+           "400=bull/a- (MED), 32=ka (MED), 920=-e/-ee (MED), 752=-in (MED): "
+           "10 inscriptions have all signs covered. 384 inscriptions have "
+           "50%+ known signs."),
+        pb("<b>Candidate readings (illustrative -- not claimed decipherment):</b>"),
+        safe_tbl([
+            ["Pattern", "Candidate reading", "Tamil gloss", "Notes"],
+            ["[72][817]",
+             "meen + -um",
+             "fish + enclitic",
+             "'(also) fish' OR name 'Meen-um'"],
+            ["[70][817]",
+             "meen + -um",
+             "fish + enclitic",
+             "Allograph of [72][817]"],
+            ["[520][817]",
+             "a- + -um",
+             "initial + enclitic",
+             "Possible syllable 'a-um'"],
+            ["[400][32][817]",
+             "bull/a- + ka + -um",
+             "??? + ka + enclitic",
+             "If 400=a: 'a-ka-um' cf. Tamil akam"],
+            ["[32][817]",
+             "ka + -um",
+             "consonant + enclitic",
+             "Phonetic syllable + suffix"],
+            ["[72][752]",
+             "meen + -in",
+             "fish + genitive",
+             "'of the fish' = possessive"],
+        ], [3*cm, 3.5*cm, 3*cm, BODY_WIDTH - 9.5*cm]),
+        sp(), pcap("Table 6b. Candidate readings (all hypothetical)."),
+        pb("<b>Note:</b> These readings assume the Dravidian rebus principle and "
+           "the sign assignments above. All are hypothesis-level proposals "
+           "requiring external validation."),
+        sp(),
     ]
 
     # 7. Discussion

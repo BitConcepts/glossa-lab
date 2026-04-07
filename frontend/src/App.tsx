@@ -18,7 +18,7 @@ import { CitationManager } from "./components/CitationManager";
 import { CommandPalette, type PaletteCommand } from "./components/CommandPalette";
 import { AIChatBubble, AIChatWindow } from "./components/AIChatWindow";
 import { BottomPanel } from "./components/BottomPanel";
-import { NotificationBell, NotificationDrawer } from "./components/NotificationDrawer";
+import { NotificationCenter } from "./components/NotificationDrawer";
 import { ToastProvider } from "./hooks/useToast";
 import { AIChatProvider, useAIChat } from "./hooks/useAIChat";
 import { getHealth } from "./api";
@@ -102,7 +102,7 @@ function AppContent() {
   const [tab, setTab] = useState<Tab>("studies");
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("glossa_dark") === "1");
   const [paletteOpen, setPaletteOpen] = useState(false);
-  const [notifOpen, setNotifOpen] = useState(false);
+  // notifOpen removed — NotificationCenter is now self-contained
 
   // Bottom panel state
   const [panelHeight, setPanelHeight] = useState(DEFAULT_PANEL_HEIGHT);
@@ -277,7 +277,7 @@ function AppContent() {
 
           <div style={{ flex: 1 }} />
 
-          <NotificationBell onClick={() => setNotifOpen((o) => !o)} />
+          <NotificationCenter />
           <button
             onClick={() => setPaletteOpen(true)}
             title="Command palette (Cmd+K)"
@@ -331,8 +331,7 @@ function AppContent() {
       {/* Command palette */}
       {paletteOpen && <CommandPalette commands={paletteCommands} onClose={() => setPaletteOpen(false)} />}
 
-      {/* Notification drawer */}
-      <NotificationDrawer open={notifOpen} onClose={() => setNotifOpen(false)} />
+      {/* NotificationDrawer removed — NotificationCenter is self-contained */}
 
       {/* Bottom IDE panel */}
       {panelVisible && (

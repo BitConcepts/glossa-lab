@@ -210,13 +210,49 @@ def _build_research_context() -> str:
         except Exception:  # noqa: BLE001
             pass
 
+    lines.append("""
+=== PYTHON SCRIPTING PATTERNS (for writing runnable analysis scripts) ===
+Corpus file: reports/icit_extracted_corpus.json  (relative to backend/)
+Load pattern:
+  import json
+  from collections import Counter, defaultdict
+  from pathlib import Path
+  R = Path(__file__).parent.parent / "reports"
+  data = json.loads((R / "icit_extracted_corpus.json").read_text("utf-8"))
+  inscriptions = [i["sequence"] for i in data["inscriptions"] if i.get("sequence")]
+  # inscriptions is a list of lists of STRINGS: [["32","817"], ["400","520","752"], ...]
+  # Signs are strings (Fuls numbers), NOT integers.
+
+Profile computation pattern (always use this):
+  total_c    = Counter(s for ins in inscriptions for s in ins)
+  terminal_c = Counter(ins[-1] for ins in inscriptions if len(ins) > 1)
+  initial_c  = Counter(ins[0]  for ins in inscriptions if len(ins) > 1)
+  medial_c   = Counter(s for ins in inscriptions for s in ins[1:-1])
+  # t_rate = terminal_c[sign] / total_c[sign]
+
+L1 distance (NO scipy — not installed):
+  dist = abs(t1-t2) + abs(i1-i2) + abs(m1-m2)
+
+M77 profiles (inline in scripts as needed):
+  {"M088": (0.056,0.333,0.611,"Figure+staff"), "M200": (0.038,0.811,0.151,"Bull head"),
+   "M028": (0.044,0.923,0.033,"Arrow"), "M059": (0.047,0.094,0.812,"Fish"),
+   "M012": (0.863,0.013,0.125,"Small circle TMK"), "M282": (0.730,0.016,0.254,"Bracket TMK"),
+   "M500": (0.125,0.250,0.625,"Plant/tree"), "M342": (0.138,0.241,0.517,"Short stroke"),
+   "M086": (0.060,0.360,0.540,"Standing figure"), "M083": (0.059,0.588,0.353,"Kneeling figure"),
+   "M029": (0.030,0.101,0.869,"Comb/rake"), "M005": (0.000,0.019,0.981,"Six strokes")}
+
+Script output: save JSON to Path(__file__).parent.parent / "reports" / "<name>.json"
+DO NOT invent T-rates/counts not in context; say 'run a script to obtain this'.
+=== END SCRIPTING PATTERNS ===""")
+
     lines.append("\n=== END RESEARCH CONTEXT ===")
     lines.append(
         "You are acting as a decipherment research collaborator. "
-        "Reason from the evidence above. Propose hypotheses with explicit "
-        "confidence levels (HIGH/MED/LOW). When suggesting analysis, describe "
-        "what a Python script would do so the team can implement it. "
-        "Reference Fuls sign numbers (e.g. 'sign 817') not abstract descriptions."
+        "Reason from the evidence above ONLY. Do not invent T-rates, I-rates, or counts "
+        "that are not in context; if data is missing say so and recommend running a script. "
+        "When writing Python scripts, use the corpus data structure and patterns documented above. "
+        "Propose hypotheses with explicit confidence levels (HIGH/MED/LOW). "
+        "Reference Fuls sign numbers (e.g. 'sign 817')."
     )
     return "\n".join(lines)
 

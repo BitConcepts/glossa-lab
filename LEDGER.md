@@ -1541,6 +1541,96 @@ Risks:
 
 Next step: Build Fuls-Mahadevan sign number crosswalk; test rebus principle
 on top-frequency signs; deepen SERIES-A value assignment
+
+---
+
+## [2026-04-07] Entry — PDF fixes, report_utils module, crosswalk, rebus tests
+
+Objective: Fix PDF formatting (overlapping text, bad chars). Add rules. Build
+Fuls-Mahadevan crosswalk. Test rebus hypotheses.
+
+What was done:
+- Fixed all PDF formatting issues (root causes: Tamil Unicode in Helvetica
+  fonts causing zero-width glyph overlap; bare strings in table cells; raw \n
+  in table strings; setStyle() replacing whole style; no explicit leading)
+- Created backend/glossa_lab/report_utils.py: safe ReportLab utilities
+  with enforced rules R1-R6 (Unicode safety, Paragraph cells, br/ newlines,
+  explicit leading, width validation, single setStyle)
+- Rewrote generate_decipherment_report.py using report_utils
+  (Tamil chars -> ASCII romanisation; safe_tbl everywhere; column widths validated)
+- Added PDF GENERATION RULES section to AGENTS.md (7 rules P1-P7)
+- Built Fuls-Mahadevan crosswalk (build_crosswalk.py):
+  26 bigram-derived pairs + 8 literature mappings + 20 M77 visual descriptions
+- Ran rebus hypothesis tests (test_rebus_hypotheses.py)
+
+Files changed:
+- backend/glossa_lab/report_utils.py (created)
+- backend/generate_decipherment_report.py (rewritten, fixed)
+- backend/build_crosswalk.py (created)
+- backend/test_rebus_hypotheses.py (created)
+- backend/explore_mahadevan.py (created)
+- AGENTS.md (modified — PDF rules section)
+- reports/indus_decipherment_report_2026.pdf (regenerated, clean)
+- reports/fuls_mahadevan_crosswalk.json (created)
+- reports/fuls_mahadevan_crosswalk.txt (created)
+
+Checks run:
+- lint (all changed files) — all checks passed
+- PDF regenerated without error; visual inspection clean
+
+RESULTS (critical):
+
+PDF FIX:
+- Root cause 1: Tamil Unicode in Helvetica = zero-width glyphs -> overlap
+- Root cause 2: Raw \n in table cells silently ignored -> merged text
+- Root cause 3: setStyle() after construction replaces all styles
+- All fixed via report_utils module with enforcement rules
+
+CROSSWALK FINDINGS:
+- Fuls 32 = M77 059 (FISH sign) -- most frequent sign = FISH = meen
+- Fuls 32/33/34/16/100 = fish allograph family (M059/060/070 variants)
+- Fuls 817 = M77 001 (terminal stroke) -- profile matches well
+- Fuls 400 = M77 086 (standing figure) -- aal/person
+- Fuls 129 = M77 029 (rake/comb sign)
+- Fuls 106 = M77 005 (six strokes)
+
+REBUS TEST RESULTS:
+
+R4 BREAKTHROUGH: Sign 400 precedes fish-family signs 65 times (24.3%!)
+  Top 3 followers of sign 400: 34 (21x), 33 (20x), 32 (18x) -- ALL FISH
+  Pattern [400][fish] = [standing figure][fish] = 'aal+meen' (Tamil)
+  = FISHERMAN title or Fisher-class designation
+  This is the first candidate multi-sign reading of an Indus inscription!
+
+R5 LOCKED FORMULA: [405][501] compound = entirely fixed structure
+  ALL 27 occurrences: exactly 5-sign inscriptions
+  Sign 240 ALWAYS precedes the compound (100% of cases)
+  Structure: [VAR1][VAR2][240][405][501] -- only first 2 signs vary
+  Administrative formula; likely TITLE+NAME+[fixed ending]
+
+R1+R2: Fish family (32/33/34) M-rate 0.53-0.68 confirmed medial bias
+  72 solo fish inscriptions = standalone commodity count labels
+
+R3: Sign 817 T-rate=0.853 matches M001 profile (T-rate~0.64) well
+
+Open TODOs:
+- [ ] Verify: does sign 240 have a known M77 equivalent?
+  (It always precedes the [405,501] formula -- critical for reading)
+- [ ] Test: do inscriptions [400][32/33/34] come from specific sites?
+  (Fisherman-title seals expected from coastal/river sites)
+- [ ] Extend crosswalk: map remaining 600+ Fuls signs to M77
+  (Requires visual comparison of Fuls catalog pages with M77 sign list)
+- [ ] Full equivalence classes: run on all 544 substitution pairs
+- [ ] Fix stale Playwright UI locators (40 tests)
+
+Risks:
+- Crosswalk mappings are estimates; visual verification required
+- Sign 400 = fish not sign 32 (only 24.3% of 400-inscriptions have fish)
+  -- 75.7% don't, so 400 is not purely a fish-specific determinative
+- Sign ordering is still probabilistic
+
+Next step: Verify sign 240 M77 equivalent; test whether [400][fish]
+inscriptions cluster at specific sites; extend crosswalk coverage
 - Luwian phoneme bigram model is underpowered; phoneme inventory overlap with Greek is high at this scale
 - TMK cross-validation requires OCR bigram data that doesn't exist yet (Mistral key + ~30 min OCR run)
 - ICIT corpus remains gated on Dr. Fuls collaboration

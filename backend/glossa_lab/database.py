@@ -703,7 +703,8 @@ class Database:
     @staticmethod
     def _row_to_dict(row: aiosqlite.Row) -> dict[str, Any]:
         d = dict(row)
-        # Deserialise JSON columns
+        # Deserialise JSON columns — use try/except so plain-text fields
+        # (e.g. notebooks.content = markdown) pass through unchanged.
         for field in (
             "params",
             "content",
@@ -716,7 +717,10 @@ class Database:
             "tags",
         ):
             if field in d and isinstance(d[field], str):
-                d[field] = json.loads(d[field])
+                try:
+                    d[field] = json.loads(d[field])
+                except (json.JSONDecodeError, ValueError):
+                    pass  # plain-text field — keep as-is
         # graph_json → graph (studies)
         if "graph_json" in d and isinstance(d["graph_json"], str):
             d["graph"] = json.loads(d["graph_json"])

@@ -196,15 +196,20 @@ function ActionCard({ action, status, onApprove, onCancel }: {
   action: AIAction; status: string;
   onApprove: () => void; onCancel: () => void;
 }) {
+  // Guard: if action has no type, don't render anything (prevents 'undefined' errors)
+  if (!action?.type) return null;
+  const label = action.label
+    || (action.params as Record<string, string>)?.title
+    || action.type.replace(/_/g, " ");
   const base: React.CSSProperties = { borderRadius: 6, padding: "8px 10px", margin: "5px 0", fontSize: 11, border: "1px solid" };
-  if (status === "cancelled") return <div style={{ ...base, borderColor: "#374151", background: "#1a2332", color: "#6b7280" }}>✗ {action.label} — cancelled</div>;
-  if (status === "done")      return <div style={{ ...base, borderColor: "#14532d", background: "#052e16", color: "#86efac" }}>✓ {action.label} — done</div>;
-  if (status === "failed")    return <div style={{ ...base, borderColor: "#7f1d1d", background: "#1a0505", color: "#f87171" }}>⚠ {action.label} — failed</div>;
+  if (status === "cancelled") return <div style={{ ...base, borderColor: "#374151", background: "#1a2332", color: "#6b7280" }}>✗ {label} — cancelled</div>;
+  if (status === "done")      return <div style={{ ...base, borderColor: "#14532d", background: "#052e16", color: "#86efac" }}>✓ {label} — done</div>;
+  if (status === "failed")    return <div style={{ ...base, borderColor: "#7f1d1d", background: "#1a0505", color: "#f87171" }}>⚠ {label} — failed</div>;
   return (
     <div style={{ ...base, borderColor: "#1d4ed8", background: "#eff6ff" }}>
       <div style={{ display: "flex", alignItems: "center", gap: 5, marginBottom: 4 }}>
         <span>{ACTION_ICONS[action.type] || "⚡"}</span>
-        <strong style={{ color: "#1e40af" }}>{action.label}</strong>
+        <strong style={{ color: "#1e40af" }}>{label}</strong>
       </div>
       <div style={{ color: "#374151", marginBottom: 8, lineHeight: 1.5 }}>{action.description}</div>
       {status === "executing"
@@ -247,27 +252,14 @@ export function AIChatWindow({ panelHeight = 0 }: { panelHeight?: number }) {
   const [studies, setStudies] = useState<StudyResponse[]>([]);
   const [researchSummary, setResearchSummary] = useState<{ n_assigned_signs: number; token_coverage_pct: number; next_steps: string[] } | null>(null);
 
-  // Window position
-  const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
+  // Window is fixed — no drag
   const size = { w: 460, h: 600 };
-  const dragging = useRef(false);
-  const dragOffset = useRef({ x: 0, y: 0 });
   const winRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const clamp = useCallback((x: number, y: number) => ({
-    x: Math.max(0, Math.min(window.innerWidth  - size.w, x)),
-    y: Math.max(0, Math.min(window.innerHeight - size.h, y)),
-  }), [size.w, size.h]);
-
-  useEffect(() => { if (!isOpen) setPos(null); }, [isOpen]);
-  useEffect(() => {
-    const h = () => setPos(p => p ? clamp(p.x, p.y) : null);
-    window.addEventListener("resize", h);
-    return () => window.removeEventListener("resize", h);
-  }, [clamp]);
+  // No clamp/drag needed — window is always fixed bottom-right
 
   const maxCtx = getLocalCtxLength();
   const usedTokens = estimateTokens(messages);
@@ -293,20 +285,7 @@ export function AIChatWindow({ panelHeight = 0 }: { panelHeight?: number }) {
 
   useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: "smooth" }); }, [messages]);
 
-  const onDragStart = useCallback((e: React.MouseEvent) => {
-    if (!winRef.current) return;
-    dragging.current = true;
-    const r = winRef.current.getBoundingClientRect();
-    dragOffset.current = { x: e.clientX - r.left, y: e.clientY - r.top };
-    e.preventDefault();
-  }, []);
-  useEffect(() => {
-    const mv = (e: MouseEvent) => { if (dragging.current) setPos(clamp(e.clientX - dragOffset.current.x, e.clientY - dragOffset.current.y)); };
-    const up = () => { dragging.current = false; };
-    window.addEventListener("mousemove", mv);
-    window.addEventListener("mouseup", up);
-    return () => { window.removeEventListener("mousemove", mv); window.removeEventListener("mouseup", up); };
-  }, [clamp]);
+  // Drag removed — window is fixed at bottom-right above panel
 
   // Model pref helpers
   const saveModelPref = useCallback((p: ModelPref) => { setModelPref(p); localStorage.setItem(MODEL_PREF_KEY, JSON.stringify(p)); setModelPickerOpen(false); }, []);
@@ -475,11 +454,17 @@ export function AIChatWindow({ panelHeight = 0 }: { panelHeight?: number }) {
 
   if (!isOpen || isDocked) return null;
 
-  const defaultLeft = Math.max(0, window.innerWidth  - size.w - 84);
-  const defaultTop  = Math.max(0, window.innerHeight - size.h - (panelHeight + 82));
-  const winStyle: React.CSSProperties = pos
-    ? { position: "fixed", left: pos.x, top: pos.y, width: size.w, height: size.h, zIndex: 8500 }
-    : { position: "fixed", left: defaultLeft, top: defaultTop, width: size.w, height: size.h, zIndex: 8500 };
+  // Fixed position — always bottom-right above panel + bubble
+  const right  = 84;   // leave space for bubble
+  const bottom = panelHeight + 82;
+  const winStyle: React.CSSProperties = {
+    position: "fixed",
+    right,
+    bottom,
+    width: size.w,
+    height: size.h,
+    zIndex: 8500,
+  };
 
   const ctxLabel = () => {
     if (contextType === "research") return "Research";
@@ -490,8 +475,8 @@ export function AIChatWindow({ panelHeight = 0 }: { panelHeight?: number }) {
   return (
     <div ref={winRef} style={{ ...winStyle, background: "#fff", borderRadius: 10, boxShadow: "0 20px 60px rgba(0,0,0,0.22),0 0 0 1px rgba(0,0,0,0.08)", display: "flex", flexDirection: "column", overflow: "hidden" }}>
 
-      {/* Header */}
-      <div onMouseDown={onDragStart} style={{ background: "#1e3a5f", padding: "8px 10px", cursor: "grab", display: "flex", alignItems: "center", gap: 6, userSelect: "none", flexShrink: 0 }}>
+      {/* Header — no drag handle */}
+      <div style={{ background: "#1e3a5f", padding: "8px 10px", display: "flex", alignItems: "center", gap: 6, userSelect: "none", flexShrink: 0 }}>
         <span style={{ fontSize: 14 }}>✨</span>
         <span style={{ fontWeight: 700, fontSize: 13, color: "#fff", flex: 1 }}>Glossa AI</span>
 
@@ -650,18 +635,20 @@ export function AIChatWindow({ panelHeight = 0 }: { panelHeight?: number }) {
           <textarea
             ref={textareaRef}
             value={input}
-            onChange={e => {
-              setInput(e.target.value);
-              // Auto-grow: reset then set to scrollHeight
-              const el = e.target;
-              el.style.height = "auto";
-              el.style.height = Math.min(el.scrollHeight, 180) + "px";
-            }}
             onKeyDown={e => {
               if (e.key === "Enter" && !e.shiftKey) {
                 e.preventDefault();
                 send();
               }
+            }}
+            onChange={e => {
+              setInput(e.target.value);
+              // Auto-grow; show scrollbar when at max height
+              const el = e.target;
+              el.style.height = "auto";
+              const newH = Math.min(el.scrollHeight, 180);
+              el.style.height = newH + "px";
+              el.style.overflowY = el.scrollHeight >= 180 ? "auto" : "hidden";
             }}
             placeholder="Message Glossa AI…"
             autoFocus
@@ -832,15 +819,21 @@ export function ChatInline() {
 export function AIChatBubble({ panelHeight = 0 }: { panelHeight?: number }) {
   const { toggleChat, isOpen } = useAIChat();
   return (
-    <button onClick={toggleChat} title={isOpen ? "Close AI Chat" : "Open AI Chat ✨"}
+    <button onClick={toggleChat} title={isOpen ? "Close AI Chat" : "Open AI Chat"}
       style={{
         position: "fixed", right: 24, bottom: panelHeight + 16,
         width: 48, height: 48, borderRadius: "50%",
-        background: isOpen ? "#1e3a5f" : "linear-gradient(135deg,#7c3aed,#1e3a5f)",
-        border: "2px solid rgba(255,255,255,0.15)", cursor: "pointer",
-        boxShadow: "0 4px 20px rgba(124,58,237,0.45),0 2px 8px rgba(0,0,0,0.2)",
+        background: isOpen
+          ? "#dc2626"   // bright red when open — clearly a close button
+          : "linear-gradient(135deg,#7c3aed,#1e3a5f)",
+        border: isOpen ? "2px solid #fca5a5" : "2px solid rgba(255,255,255,0.15)",
+        cursor: "pointer",
+        boxShadow: isOpen
+          ? "0 4px 16px rgba(220,38,38,0.4)"
+          : "0 4px 20px rgba(124,58,237,0.45),0 2px 8px rgba(0,0,0,0.2)",
         display: "flex", alignItems: "center", justifyContent: "center",
-        fontSize: 20, zIndex: 8400, transition: "bottom 0.2s",
+        fontSize: isOpen ? 22 : 20, fontWeight: 700,
+        color: "#fff", zIndex: 8400, transition: "bottom 0.2s, background 0.15s",
       }}>
       {isOpen ? "×" : "✨"}
     </button>

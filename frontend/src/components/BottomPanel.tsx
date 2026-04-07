@@ -7,7 +7,7 @@
  * - AI Chat tab appears when docked
  */
 import { useCallback, useEffect, useRef, useState } from "react";
-import { cancelJob, clearJobs, getLogStreamUrl, listJobs, runTerminalCommand, type JobResponse } from "../api";
+import { cancelJob, clearJobs, getEnvStatus, getLogStreamUrl, listJobs, runTerminalCommand, type EnvStatus, type JobResponse } from "../api";
 import { ChatInline } from "./AIChatWindow";
 import { useAIChat } from "../hooks/useAIChat";
 import { useToast } from "../hooks/useToast";
@@ -188,14 +188,35 @@ const BUILTINS = [
   "ls", "ll", "la", "dir", "cat", "type", "head", "tail",
   "pwd", "cd", "echo", "mkdir", "rm", "rmdir", "cp", "mv",
   "find", "grep", "wc", "env", "which", "clear", "help",
-  "python", "python3",
+  "python", "python3", "pip", "pip3", "setup",
 ];
 
 function TerminalPanel() {
+  const [, setEnvStatus] = useState<EnvStatus | null>(null);
   const [history, setHistory] = useState<{ text: string; type: "input" | "output" | "error" | "info" }[]>([
-    { text: "Glossa Lab Terminal — builtins: ls cat head tail grep find python… | Tab: autocomplete | help: list commands", type: "info" },
+    { text: "Glossa Lab Terminal — Tab: autocomplete | pip/pip3: venv pip | setup: env status | help", type: "info" },
     { text: "─────────────────────────────────────────────────────────────────────────────", type: "info" },
   ]);
+
+  // Load venv status on mount and add banner line
+  useEffect(() => {
+    getEnvStatus().then(s => {
+      setEnvStatus(s);
+      if (s.venv_exists) {
+        setHistory(h => [...h, {
+          text: `\u25cf venv active  Python ${s.python_version ?? "?"}  \u00b7  ${s.pkg_count} packages`,
+          type: "info",
+        }]);
+      } else {
+        setHistory(h => [
+          ...h,
+          { text: "\u26a0 No virtual environment found.", type: "error" },
+          { text: "  Run 'setup' here or go to Settings \u2192 Python Environment.", type: "info" },
+        ]);
+      }
+    }).catch(() => {});
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const [input, setInput] = useState("");
   const [cmdHistory, setCmdHistory] = useState<string[]>([]);
   const [cmdIdx, setCmdIdx] = useState(-1);

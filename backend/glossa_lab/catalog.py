@@ -420,8 +420,30 @@ def list_pipeline_catalog() -> list[dict[str, Any]]:
 
 
 def list_experiment_catalog() -> list[dict[str, Any]]:
-    """Return curated experiment metadata."""
-    return sorted(_EXPERIMENT_CATALOG, key=lambda item: (item["category"], item["name"]))
+    """Return experiment metadata: static catalog + auto-discovered ExperimentBase subclasses."""
+    from glossa_lab.experiment_base import discover_experiments
+
+    entries: list[dict[str, Any]] = list(_EXPERIMENT_CATALOG)
+    seen_ids = {e["id"] for e in entries}
+
+    for exp_id, cls in discover_experiments().items():
+        if exp_id in seen_ids:
+            continue  # static entry takes precedence
+        entries.append(
+            {
+                "id": exp_id,
+                "name": getattr(cls, "name", exp_id),
+                "category": getattr(cls, "category", "Research"),
+                "description": getattr(cls, "description", ""),
+                "command": getattr(cls, "command", ""),
+                "results_file": getattr(cls, "results_file", ""),
+                "requires_key": getattr(cls, "requires_key", None),
+                "estimated_time": getattr(cls, "estimated_time", ""),
+            }
+        )
+        seen_ids.add(exp_id)
+
+    return sorted(entries, key=lambda item: (item["category"], item["name"]))
 
 
 def list_provider_catalog() -> list[dict[str, Any]]:

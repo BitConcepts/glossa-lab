@@ -34,6 +34,7 @@ from glossa_lab.api.studies import router as studies_router
 from glossa_lab.api.system import router as system_router
 from glossa_lab.api.terminal import router as terminal_router
 from glossa_lab.api.texts import router as texts_router
+from glossa_lab.node_registry import router as node_registry_router
 from glossa_lab.config import get_settings
 from glossa_lab.database import close_db, init_db
 from glossa_lab.engine import run_engine_loop
@@ -180,6 +181,7 @@ def create_app() -> FastAPI:
     application.include_router(settings_router)
     application.include_router(shutdown_router, prefix="/api/v1")
     application.include_router(env_router, prefix="/api/v1")
+    application.include_router(node_registry_router, prefix="/api/v1")
 
     # Serve built frontend at "/" — run 'npm run build' in frontend/ to populate.
     # Skipped silently in dev if the dist directory does not yet exist.

@@ -62,12 +62,12 @@ def build_pdf() -> None:
 
     # Title
     story += [
-        psub("COMPUTATIONAL LINGUISTICS -- GLOSSA LAB | APRIL 2026  (v2 -- Corrected)"),
+        psub("COMPUTATIONAL LINGUISTICS -- GLOSSA LAB | APRIL 2026  (v3)"),
         ptitle("<b>Towards Phonetic Value Assignment for the Indus Script:<br/>"
-               "Ventris Grid, Fish Sign Anchoring (M064/M070),<br/>"
-               "and First Multi-Sign Inscription Readings</b>"),
-        pcap("ICIT Corpus: Fuls (2023) PDF OCR  |  4,410 inscriptions  |"
-             "  14,213 tokens  |  713 sign types  |  10 inscriptions read"),
+               "Ventris Grid, M77 Sign Anchoring, Fish Phonetic Use,<br/>"
+               "Administrative Titles and First Inscription Readings</b>"),
+        pcap("ICIT Corpus: Fuls 2023 PDF OCR  |  4,410 inscriptions  |"
+             "  14,213 tokens  |  713 sign types  |  22.4% token coverage"),
         hr(), sp(),
     ]
 
@@ -187,7 +187,7 @@ def build_pdf() -> None:
         sp(), pcap("Table 4. Case suffix assignments (green = HIGH confidence)."),
     ]
 
-    story += [ph2("5.2 Fish Signs and Other Assignments (CORRECTED)")]
+    story += [ph2("5.2 Key Sign Assignments (CORRECTED + EXPANDED)")]
     story += [
         pb("<b>Critical corrections from profile-distance matching against expanded "
            "M77 fish variant table (M059-M070):</b>"),
@@ -209,6 +209,14 @@ def build_pdf() -> None:
              "Strongest initial preference (I-rate=0.768)"],
             ["465-472", "PA/PE/PI/PO", "CV", "CV family",  "N/A",  "MED",
              "SERIES-A Ventris group coh=0.896; consecutive Fuls"],
+            ["503", "official?", "088", "Figure+staff",   "0.056", "LOW",
+             "Best M77 match; likely administrative title"],
+            ["615", "a-/bull-2", "200", "Bull head var",   "0.064", "LOW",
+             "Bull head initial variant; cf. sign 400"],
+            ["48",  "title?",    "400", "Figure raised arms","0.125","LOW",
+             "Figure sign; initial/medial context"],
+            ["220", "maa",       "500", "Plant/tree",       "~0.3", "LOW",
+             "REVISED: maa (great/prefix); 10.5% freq too high for tree"],
         ], [1.5*cm, 2.5*cm, 1.5*cm, 4*cm, 1.5*cm, 1.5*cm, BODY_WIDTH-12.5*cm]),
         sp(), pcap("Table 5. Corrected sign assignments with M77 cross-reference."),
     ]

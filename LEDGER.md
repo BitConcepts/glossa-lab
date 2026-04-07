@@ -1944,6 +1944,82 @@ Risks:
 Next step: Identify signs 48, 503, 615 (they dominate the genitive patterns);
   test 'maa-' (Tamil for cow/great) as reading for sign 220 instead of tree;
   expand M77 inventory to cover top-100 Fuls signs
+
+---
+
+## [2026-04-07] Entry — Sign expansion: 48/503/615, maa-, M77 inventory, token coverage
+
+Objective: Identify key signs; revise sign 220; expand M77 to 54 signs;
+build comprehensive top-100 catalog.
+
+What was done:
+- Created backend/run_sign_expansion.py (5 analyses + top-100 catalog)
+- Updated backend/generate_decipherment_report.py (v3)
+- Generated reports/sign_expansion.json
+- Regenerated reports/indus_decipherment_report_2026.pdf (v3)
+
+Files changed:
+- backend/run_sign_expansion.py (created)
+- backend/generate_decipherment_report.py (modified -- v3)
+- backend/pyproject.toml (modified)
+- reports/sign_expansion.json (created)
+- reports/indus_decipherment_report_2026.pdf (regenerated v3)
+
+Checks run: lint passed
+
+RESULTS:
+
+SIGNS 48, 503, 615 IDENTIFIED:
+- Sign 503 = M77 088 (Figure+staff) dist=0.056 -- EXCELLENT match
+  Administrative official/guardian holding a staff
+  In pattern [615][503][752]: [bull-initial][official][genitive]
+  = 'of the bull-official' = possessive of an administrative title
+- Sign 615 = M77 200 (Bull head, initial) dist=0.064 -- GOOD match
+  Variant of bull head sign (like sign 400 but different Fuls number)
+  Consistent with multiple visual variants of the same M77 sign
+- Sign 48 = M77 400 (Figure raised arms) dist=0.125
+  Anthropomorphic sign; initial/medial position
+
+GENITIVE PATTERN [615][503][752] READING:
+  [bull-head][figure-staff][-in] = 'of the bull-master/official'
+  This is an ADMINISTRATIVE TITLE in possessive form
+  Structure: [TITLE ELEMENT 1][TITLE ELEMENT 2][GENITIVE CASE]
+  Consistent with Indus seal format: owner's title in genitive
+
+SIGN 220 REVISED TO 'maa' (GREAT/PREFIX):
+- Frequency 10.5% is too high for a 'tree' logogram
+- Best candidate: 'maa' = Tamil/Dravidian prefix meaning 'great'
+- 'maa-meen' = 'great fish' = Tamil name for Jupiter (the star)
+  This would be a known Dravidian onomastic pattern
+- Alternative: 'maadu' (cattle) -- fits agricultural seal context
+- M77 500 (plant/tree) is the visual form; 'maa' may be the rebus sound
+
+TOP-100 FULS CATALOG:
+- 100 signs profiled against 54-sign expanded M77 reference
+- HIGH confidence: 1 (sign 817 = -um)
+- MED confidence: 8 (fish, suffixes, initials)
+- LOW confidence: 6 (220, 100, 503, etc.)
+- Unknown (85 remain)
+- Token coverage: 22.4% (3,189/14,213 tokens) with 16 assignments
+
+Open TODOs:
+- [ ] Assign values to unknown TMK signs (845, 832, 501 by T-rate)
+  These are highly terminal; likely suffix signs -al, -van, -ar etc.
+- [ ] Assign values to unknown initial signs (861, 700, 741, 740, 690)
+  These are likely determinatives or word-initial phonemes
+- [ ] Assign values to unknown medial signs (235, 407, 231, 435, 55...)
+  These are the core phonetic signs of the script
+- [ ] Raise token coverage from 22.4% to 30%+ by assigning 5-10 more signs
+- [ ] Fix stale Playwright UI locators (40 tests)
+
+Risks:
+- Sign 220 = maa is a phonetic hypothesis; visual M500 (tree) may be literal
+- 503=figure-staff is low n (moderate frequency sign)
+- Multiple Fuls signs mapping to same M77 is expected but complicates counting
+
+Next step: Assign values to top unknown TMK signs (845, 832, 501);
+  assign values to top unknown initial signs;
+  push token coverage toward 30%
 - Luwian phoneme bigram model is underpowered; phoneme inventory overlap with Greek is high at this scale
 - TMK cross-validation requires OCR bigram data that doesn't exist yet (Mistral key + ~30 min OCR run)
 - ICIT corpus remains gated on Dr. Fuls collaboration

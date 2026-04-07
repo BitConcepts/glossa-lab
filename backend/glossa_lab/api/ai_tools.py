@@ -264,6 +264,45 @@ class SignReadingRequest(BaseModel):
 # ── Shared helper ─────────────────────────────────────────────────────────────
 
 
+def _build_system_prompt(
+    base: str,
+    context_block: str,
+    settings_ctx: str,
+    action_addendum: str,
+    style: str,
+) -> str:
+    """Assemble the system prompt in the style best suited to the model."""
+    if style == "xml":
+        # Claude responds well to explicit XML structure
+        return (
+            f"<role>\n{base}\n</role>\n"
+            f"<context>{context_block}{settings_ctx}\n</context>\n"
+            "<instructions>\n"
+            "Be concise, precise, and scientifically rigorous. "
+            "Cite specific numbers. Say so when uncertain."
+            f"\n{action_addendum}\n</instructions>"
+        )
+    if style == "sections":
+        # Mistral / Qwen / Llama prefer clear section headers
+        return (
+            f"### Role\n{base}\n\n"
+            f"### Context{context_block}{settings_ctx}\n\n"
+            "### Instructions\n"
+            "Be concise, precise, and scientifically rigorous. "
+            "Cite specific numbers. Say so when uncertain."
+            f"{action_addendum}"
+        )
+    # "plain" — single paragraph (smallest models, o1)
+    return (
+        f"{base}"
+        f"{context_block}"
+        f"{settings_ctx}\n\n"
+        "Be concise, precise, and scientifically rigorous. "
+        "Cite specific numbers. When uncertain, say so."
+        f"{action_addendum}"
+    )
+
+
 async def _run_llm(
     messages: list[dict[str, str]],
     json_mode: bool = False,
@@ -271,13 +310,22 @@ async def _run_llm(
     model: str | None = None,
 ) -> str:
     from glossa_lab.ai_utils import call_llm  # noqa: PLC0415
+    from glossa_lab.model_profiles import get_profile, trim_history  # noqa: PLC0415
+
+    profile = get_profile(model)
+    # Trim history to model's context budget (chars = tokens * 4)
+    messages = trim_history(messages, budget_chars=profile["ctx_budget"] * 4)
 
     loop = asyncio.get_event_loop()
     return await loop.run_in_executor(
         None,
         lambda: call_llm(
-            messages, json_mode=json_mode, max_tokens=2500,
-            provider_override=provider, model_override=model,
+            messages,
+            json_mode=json_mode,
+            max_tokens=profile["max_tokens"],
+            temperature=profile["temperature"],
+            provider_override=provider,
+            model_override=model,
         ),
     )
 
@@ -330,18 +378,26 @@ async def ai_chat(body: ChatRequest) -> dict[str, Any]:
                     f"\n\n[Active experiment: {m['name']} ({m['category']}) — {m['description']}]"
                 )
 
+    from glossa_lab.model_profiles import get_profile  # noqa: PLC0415
+
+    profile = get_profile(body.model)
     settings_ctx = _build_settings_context()
-    system = (
+    action_addendum = _ACTION_SYSTEM_ADDENDUM if profile["action_capable"] else ""
+
+    base_role = (
         "You are Glossa, an expert AI research assistant for Glossa Lab — a computational "
         "linguistics platform studying the Indus Script. You have deep knowledge of "
         "information theory, computational linguistics, ancient scripts, and the specific "
         "methodology used at Glossa Lab (entropy analysis, n-gram statistics, Zipf law, "
         "comparative linguistics with Sumerian, Proto-Elamite, Luwian, Linear A, etc.)."
-        f"{context_block}"
-        f"{settings_ctx}\n\n"
-        "Be concise, precise, and scientifically rigorous. When you reference specific numbers "
-        "cite what you know. When uncertain, say so."
-        f"{_ACTION_SYSTEM_ADDENDUM}"
+    )
+
+    system = _build_system_prompt(
+        base=base_role,
+        context_block=context_block,
+        settings_ctx=settings_ctx,
+        action_addendum=action_addendum,
+        style=profile["prompt_style"],
     )
 
     messages = [{"role": "system", "content": system}] + [

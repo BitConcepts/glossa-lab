@@ -69,6 +69,8 @@ known-first-party = ["glossa_lab", "tests"]
 [tool.ruff.lint.per-file-ignores]
 # Vocabulary dictionaries intentionally group synonyms under shared keys
 "glossa_lab/data/*.py" = ["F601"]
+# Model capability profiles: intentionally wide data table (key = model name prefix)
+"glossa_lab/model_profiles.py" = ["E501"]
 # AI API files have intentionally long system prompt strings and data literals
 "glossa_lab/api/ai_tools.py" = ["E501"]
 "glossa_lab/api/analysis.py" = ["E501"]

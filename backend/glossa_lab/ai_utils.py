@@ -140,16 +140,23 @@ def call_llm(
                 response_path=["content", 0, "text"],
             )
 
+    # Apply model-specific profile for the default resolution chain too,
+    # but only override params that are still at their default values
+    # (explicit caller values take precedence).
+    from glossa_lab.model_profiles import get_profile  # noqa: PLC0415
+
     prefs = _get_provider_prefs()
     ollama_pref = prefs.get("ollama", {})
 
     # ── 1. Ollama (local) ──────────────────────────────────────────────────────
     if ollama_pref.get("enabled") and ollama_pref.get("selected_model"):
+        sel = ollama_pref["selected_model"]
+        p = get_profile(sel)
         return _call_ollama(
-            model=ollama_pref["selected_model"],
+            model=sel,
             messages=messages,
-            max_tokens=max_tokens,
-            temperature=temperature,
+            max_tokens=max_tokens if max_tokens != 2000 else p["max_tokens"],
+            temperature=temperature if temperature != 0.3 else p["temperature"],
         )
 
     # ── 2. Mistral ─────────────────────────────────────────────────────────────

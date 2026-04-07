@@ -125,28 +125,7 @@ class GlossaShell:
         """Execute *command* and yield output lines."""
         command = command.strip()
         if not command or command.startswith("#"):
-            # On the very first empty run we still want to emit the venv banner
             return
-
-        # Emit venv status banner on first real command
-        if not self._greeted:
-            self._greeted = True
-            if self._venv_ok:
-                # Get Python version quickly
-                try:
-                    import subprocess as _sp  # noqa: PLC0415
-                    r = _sp.run(
-                        [str(self._venv_py), "--version"],
-                        capture_output=True, text=True, timeout=3,
-                        **_POPEN_FLAGS,
-                    )
-                    ver = (r.stdout or r.stderr).strip().replace("Python ", "")
-                    yield f"\x1b[32m● venv active\x1b[0m  Python {ver}  ·  {self._venv_py.parent}"
-                except Exception:  # noqa: BLE001
-                    yield "\x1b[32m● venv active\x1b[0m"
-            else:
-                yield "\x1b[33m⚠ No virtual environment found.\x1b[0m"
-                yield "  Run 'setup' here or go to Settings → Python Environment to create it."
 
         # Tokenise (POSIX-style on all platforms for consistency)
         try:
@@ -444,13 +423,11 @@ class GlossaShell:
         yield "python <script>  →  runs the Glossa Lab venv Python automatically."
 
     def _pip(self, args: list[str]) -> Iterator[str]:
-        """Route pip commands to the venv Python -m pip."""
+        """Route pip commands to the venv Python -m pip (runs as list, no quoting issues)."""
         if not self._venv_ok:
             yield "pip: no virtual environment found — run 'setup' first"
             return
-        # Build the real command: venv/python -m pip <args>
-        pip_cmd = f'"{self._venv_py}" -m pip {" ".join(args)}'
-        yield from self._subprocess(pip_cmd)
+        yield from self._run_direct([str(self._venv_py), "-m", "pip"] + args)
 
     def _setup_hint(self) -> Iterator[str]:
         """Hint user toward the Settings > Python Environment panel."""
@@ -464,24 +441,48 @@ class GlossaShell:
 
     # ── Subprocess fallback (no visible window) ───────────────────────────────────────────────
 
+    def _run_direct(self, args: list[str]) -> Iterator[str]:
+        """Run a command as a list of args — no shell, no quoting issues."""
+        try:
+            proc = subprocess.Popen(  # noqa: S603
+                args,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                cwd=str(self.cwd),
+                env=self.env,
+                **_POPEN_FLAGS,
+            )
+            assert proc.stdout is not None
+            for raw_line in proc.stdout:
+                yield raw_line.decode(errors="replace").rstrip("\r\n")
+            proc.wait()
+        except FileNotFoundError:
+            yield f"command not found: {args[0]}"
+        except Exception as exc:  # noqa: BLE001
+            yield f"error: {exc}"
+
     def _subprocess(self, command: str) -> Iterator[str]:
-        """Execute command via OS shell with no visible window on Windows."""
-        # Replace bare `python` / `python3` with the venv Python.
-        # Use a lambda so the replacement string is never processed for backslash
-        # escapes — Windows paths contain \U which re.sub() would treat as a
-        # Unicode escape and crash with 'bad escape \U at position N'.
-        venv_py = _venv_python()
-        cmd = re.sub(
-            r"^python3?\b",
-            lambda _: f'"{venv_py}"',
-            command,
-            flags=re.IGNORECASE,
-        )
+        """Execute command via OS shell with no visible window on Windows.
+
+        python/python3 prefix is intercepted and run as a direct list to avoid
+        Windows quoting issues with paths containing backslashes (cmd.exe /c
+        does not reliably handle quoted executable paths as first argument).
+        """
+        # Intercept python/python3: run venv Python directly as a list
+        py_match = re.match(r"^python3?\s*", command, re.IGNORECASE)
+        if py_match:
+            rest = command[py_match.end():].strip()
+            try:
+                extra = shlex.split(rest, posix=False) if rest else []
+            except ValueError:
+                extra = rest.split() if rest else []
+            yield from self._run_direct([str(self._venv_py)] + extra)
+            return
 
         if _IS_WIN:
-            shell_args: list[str] = ["cmd.exe", "/c", cmd]
+            shell_args: list[str] = ["cmd.exe", "/c", command]
         else:
-            shell_args = ["/bin/sh", "-c", cmd]
+            shell_args = ["/bin/sh", "-c", command]
 
         try:
             proc = subprocess.Popen(  # noqa: S603
@@ -490,14 +491,12 @@ class GlossaShell:
                 stderr=subprocess.STDOUT,
                 cwd=str(self.cwd),
                 env=self.env,
-                **_POPEN_FLAGS,   # CREATE_NO_WINDOW on Windows
+                **_POPEN_FLAGS,
             )
             assert proc.stdout is not None
             for raw_line in proc.stdout:
                 yield raw_line.decode(errors="replace").rstrip("\r\n")
             proc.wait()
-            # Do not print exit codes — real terminals don't display them.
-            # Non-zero exit is visible to the user from the command output itself.
         except FileNotFoundError:
             yield f"command not found: {command.split()[0]}"
         except Exception as exc:  # noqa: BLE001

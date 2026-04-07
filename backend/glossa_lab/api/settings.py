@@ -29,7 +29,7 @@ KNOWN_KEYS = [
     "google_api_key",
 ]
 
-KNOWN_PROVIDERS = ["openai", "anthropic", "google", "mistral"]
+KNOWN_PROVIDERS = ["openai", "anthropic", "google", "mistral", "ollama"]
 _PROVIDERS_KEY = "_provider_prefs"
 
 

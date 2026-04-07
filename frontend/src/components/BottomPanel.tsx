@@ -7,7 +7,8 @@
  * - AI Chat tab appears when docked
  */
 import { useCallback, useEffect, useRef, useState } from "react";
-import { cancelJob, getLogStreamUrl, listJobs, runTerminalCommand, type JobResponse } from "../api";
+import { cancelJob, clearJobs, getLogStreamUrl, listJobs, runTerminalCommand, type JobResponse } from "../api";
+import { ChatInline } from "./AIChatWindow";
 import { useAIChat } from "../hooks/useAIChat";
 import { useToast } from "../hooks/useToast";
 
@@ -116,6 +117,11 @@ function JobsPanel() {
     finally { setCancelling((s) => { const n = new Set(s); n.delete(id); return n; }); }
   };
 
+  const handleClearAll = async () => {
+    try { await clearJobs(); await load(); toast("Jobs cleared", "info"); }
+    catch { toast("Clear failed", "error"); }
+  };
+
   const statusColor: Record<string, string> = {
     pending: "#d97706", running: "#2563eb", completed: "#16a34a", failed: "#dc2626", cancelled: "#6b7280",
   };
@@ -124,7 +130,12 @@ function JobsPanel() {
     <div style={{ display: "flex", flexDirection: "column", height: "100%", overflowY: "auto" }}>
       <div style={{ padding: "6px 10px", borderBottom: "1px solid #1e293b", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <span style={{ fontSize: 11, color: "#94a3b8" }}>{jobs.length} jobs</span>
-        <button onClick={load} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#94a3b8", cursor: "pointer", fontSize: 10 }}>⟳ Refresh</button>
+        <div style={{ display: "flex", gap: 4 }}>
+          <button onClick={load} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#94a3b8", cursor: "pointer", fontSize: 10 }}>⟳</button>
+          {jobs.length > 0 && (
+            <button onClick={handleClearAll} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#ef4444", cursor: "pointer", fontSize: 10 }}>Delete All</button>
+          )}
+        </div>
       </div>
       {loading && <div style={{ padding: 10, color: "#64748b", fontSize: 12 }}>Loading…</div>}
       {!loading && jobs.length === 0 && (
@@ -385,6 +396,7 @@ export function BottomPanel({ height, onHeightChange, minimized, onMinimizedChan
           {activeTab === "logs" && <LogPanel />}
           {activeTab === "jobs" && <JobsPanel />}
           {activeTab === "terminal" && <TerminalPanel />}
+          {activeTab === "chat" && <ChatInline />}
         </div>
       )}
       <style>{`@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }`}</style>

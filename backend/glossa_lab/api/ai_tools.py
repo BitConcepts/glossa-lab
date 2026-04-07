@@ -29,12 +29,40 @@ router = APIRouter(prefix="/ai", tags=["ai-tools"])
 _ACTION_RE = re.compile(r"%%ACTIONS%%(.*?)%%END_ACTIONS%%", re.DOTALL)
 
 
+# Fields that belong inside params{} but models sometimes emit at top-level
+_PARAM_FIELDS = frozenset({
+    "title", "statement", "id", "key", "value", "view",
+    "pipeline", "script", "name", "content", "query",
+})
+_TOP_LEVEL_FIELDS = frozenset({"type", "label", "description", "requires_approval"})
+
+
+def _normalize_action(raw: dict[str, Any]) -> dict[str, Any]:
+    """If the model put params at the top level instead of in params{}, fix it.
+
+    Example bad format: {"type":"create_hypothesis", "title":"...", "statement":"..."}
+    Fixed format:       {"type":"create_hypothesis", "params":{"title":"...", "statement":"..."}}
+    """
+    if raw.get("params"):  # already has a populated params dict
+        return raw
+    elevated: dict[str, Any] = {}
+    for key, val in raw.items():
+        if key not in _TOP_LEVEL_FIELDS and key != "params":
+            if key in _PARAM_FIELDS:
+                elevated[key] = val
+    if elevated:
+        return {**{k: v for k, v in raw.items() if k in _TOP_LEVEL_FIELDS},
+                "params": {**raw.get("params", {}), **elevated}}
+    return {**raw, "params": raw.get("params") or {}}
+
+
 def _parse_actions(text: str) -> tuple[str, list[dict[str, Any]]]:
     """Extract %%ACTIONS%%...%%END_ACTIONS%% block from LLM response.
 
     Handles models that emit multiple separate [...] arrays instead of one.
     Filters to only items that are dicts with a 'type' key (action objects),
     so sign-sequence numbers like [520] in the text never cause parse errors.
+    Normalises flat param keys into params{} when models forget the nesting.
     Returns (clean_text, actions_list).
     """
     match = _ACTION_RE.search(text)
@@ -50,14 +78,15 @@ def _parse_actions(text: str) -> tuple[str, list[dict[str, Any]]]:
             if isinstance(parsed, list):
                 for item in parsed:
                     if isinstance(item, dict) and "type" in item:
-                        actions.append(item)
+                        actions.append(_normalize_action(item))
         except (json.JSONDecodeError, ValueError):
             pass
     if not actions:
         try:
             parsed_whole = json.loads(raw)
             if isinstance(parsed_whole, list):
-                actions = [a for a in parsed_whole if isinstance(a, dict) and "type" in a]
+                actions = [_normalize_action(a) for a in parsed_whole
+                           if isinstance(a, dict) and "type" in a]
         except (json.JSONDecodeError, ValueError):
             return text, []
     return text[: match.start()].rstrip(), actions
@@ -101,15 +130,15 @@ propose one or more actions include a block formatted EXACTLY as shown:
 [{"type": "run_experiment", "params": {"id": "contact_zone_analysis"}, "label": "Run Contact Zone Analysis", "description": "Runs KL divergence on contact-zone vs heartland sites (~30 seconds)."}]
 %%END_ACTIONS%%
 
-Available action types and their params:
-  run_experiment      {"id": "<experiment_id>"}              — requires approval
-  run_pipeline        {"pipeline": "<id>", "params": {}, "name": "<job_name>"}  — requires approval
-  change_setting      {"key": "<setting_key>", "value": "<value>"}  — requires approval; never suggest actual key values
-  generate_report     {"script": "<script_name.py>"}         — requires approval
-  create_hypothesis   {"title": "...", "statement": "..."}   — no approval needed
-  create_notebook     {"title": "...", "content": "..."}     — no approval needed
-  open_view           {"view": "<view_id>"}                  — no approval; navigates to a view
-  clear_jobs          {}                                      — requires approval
+Available action types — title/statement/id/etc. go INSIDE params{}, not at the top level:
+  run_experiment:    {"type":"run_experiment", "params":{"id":"<exp_id>"}, "label":"...", "description":"..."}
+  run_pipeline:      {"type":"run_pipeline",   "params":{"pipeline":"<id>","params":{},"name":"..."},      "label":"...", "description":"..."}
+  change_setting:    {"type":"change_setting", "params":{"key":"<key>","value":"<val>"},                  "label":"...", "description":"..."}
+  generate_report:   {"type":"generate_report","params":{"script":"<script.py>"},                        "label":"...", "description":"..."}
+  create_hypothesis: {"type":"create_hypothesis","params":{"title":"...","statement":"..."},             "label":"...", "description":"..."}
+  create_notebook:   {"type":"create_notebook", "params":{"title":"...","content":"..."},                "label":"...", "description":"..."}
+  open_view:         {"type":"open_view",       "params":{"view":"<view_id>"},                           "label":"...", "description":"..."}
+  clear_jobs:        {"type":"clear_jobs",      "params":{},                                              "label":"...", "description":"..."}
 
 View IDs for open_view: studies, builder, experiments, corpora, reports, entropy, signs,
   timeline, hypotheses, notebooks, citations, ai-tools, status, pipelines, jobs, settings

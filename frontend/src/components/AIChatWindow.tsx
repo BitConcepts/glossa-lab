@@ -179,8 +179,8 @@ let _msgId = 0;
 
 // ── Main component ────────────────────────────────────────────────────────────
 
-export function AIChatWindow() {
-const { isOpen, request, closeChat, setDocked, isDocked } = useAIChat();
+export function AIChatWindow({ panelHeight = 0 }: { panelHeight?: number }) {
+  const { isOpen, request, closeChat, setDocked, isDocked } = useAIChat();
   const { toast } = useToast();
 
   const [messages, setMessages] = useState<MsgUI[]>([]);
@@ -191,12 +191,12 @@ const { isOpen, request, closeChat, setDocked, isDocked } = useAIChat();
   // Context
   const [contextType, setContextType] = useState<"" | "corpus" | "experiment" | "study" | "research">("");
   const [contextId, setContextId] = useState("");
-  const [researchSummary, setResearchSummary] = useState<{
-    n_assigned_signs: number; token_coverage_pct: number; next_steps: string[];
-  } | null>(null);
   const [corpora, setCorpora] = useState<TextResponse[]>([]);
   const [experiments, setExperiments] = useState<ExperimentMeta[]>([]);
   const [studies, setStudies] = useState<StudyResponse[]>([]);
+  const [researchSummary, setResearchSummary] = useState<{
+    n_assigned_signs: number; token_coverage_pct: number; next_steps: string[];
+  } | null>(null);
 
   // Window position (drag)
   const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
@@ -207,6 +207,29 @@ const { isOpen, request, closeChat, setDocked, isDocked } = useAIChat();
   const bottomRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  /** Clamp a proposed {x,y} so the window stays fully inside the viewport. */
+  const clamp = useCallback((x: number, y: number) => ({
+    x: Math.max(0, Math.min(window.innerWidth  - size.w, x)),
+    y: Math.max(0, Math.min(window.innerHeight - size.h, y)),
+  }), [size.w, size.h]);
+
+  // Reset position to default (bottom-right near bubble) when chat is closed
+  useEffect(() => {
+    if (!isOpen) setPos(null);
+  }, [isOpen]);
+
+  // Reclamp on viewport resize so window can never drift off-screen
+  useEffect(() => {
+    const onResize = () => {
+      setPos((prev) => {
+        if (!prev) return null;
+        return clamp(prev.x, prev.y);
+      });
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [clamp]);
 
   // Token tracking
   const maxCtx = getLocalCtxLength();
@@ -247,18 +270,17 @@ const { isOpen, request, closeChat, setDocked, isDocked } = useAIChat();
 
   useEffect(() => {
     const onMove = (e: MouseEvent) => {
-      if (!dragging.current || !winRef.current) return;
-      const w = winRef.current.offsetWidth;
-      const h = winRef.current.offsetHeight;
-      const x = Math.max(0, Math.min(window.innerWidth - w, e.clientX - dragOffset.current.x));
-      const y = Math.max(0, Math.min(window.innerHeight - h, e.clientY - dragOffset.current.y));
-      setPos({ x, y });
+      if (!dragging.current) return;
+      setPos(clamp(
+        e.clientX - dragOffset.current.x,
+        e.clientY - dragOffset.current.y,
+      ));
     };
     const onUp = () => { dragging.current = false; };
     window.addEventListener("mousemove", onMove);
     window.addEventListener("mouseup", onUp);
     return () => { window.removeEventListener("mousemove", onMove); window.removeEventListener("mouseup", onUp); };
-  }, []);
+  }, [clamp]);
 
   // ── Auto-compress ─────────────────────────────────────────────────────────
 
@@ -377,11 +399,16 @@ const { isOpen, request, closeChat, setDocked, isDocked } = useAIChat();
   // When docked, render via BottomPanel instead
   if (!isOpen || isDocked) return null;
 
+  // Default position: bottom-right, above the panel + bubble
+  // Clamped so it can never overflow the viewport even at first render.
+  const defaultRight = 84;                                   // leave room for bubble (width 48 + margin)
+  const defaultBottom = panelHeight + 82;                    // above panel + bubble (height 48 + gap)
+  const defaultLeft = Math.max(0, window.innerWidth  - size.w - defaultRight);
+  const defaultTop  = Math.max(0, window.innerHeight - size.h - defaultBottom);
+
   const winStyle: React.CSSProperties = pos
     ? { position: "fixed", left: pos.x, top: pos.y, width: size.w, height: size.h, zIndex: 8500 }
-    : {
-      position: "fixed", bottom: 80, right: 24, width: size.w, height: size.h, zIndex: 8500,
-    };
+    : { position: "fixed", left: defaultLeft, top: defaultTop, width: size.w, height: size.h, zIndex: 8500 };
 
   return (
     <div ref={winRef} style={{
@@ -741,58 +768,37 @@ export function ChatInline() {
 
 // ── Floating bubble ───────────────────────────────────────────────────────────
 
-export function AIChatBubble() {
+/**
+ * AIChatBubble — fixed bottom-right, always above the bottom panel.
+ *
+ * No dragging — its position is determined entirely by panelHeight so it
+ * stays anchored above the logs/jobs/terminal panel at all times.
+ */
+export function AIChatBubble({ panelHeight = 0 }: { panelHeight?: number }) {
   const { toggleChat, isOpen } = useAIChat();
-  // Default: right side, 60% down — well above the bottom panel
-  const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
-  const dragging = useRef(false);
-  const hasDragged = useRef(false);
-  const dragOffset = useRef({ x: 0, y: 0 });
-  const btnRef = useRef<HTMLButtonElement>(null);
   const SIZE = 48;
-
-  const onDragStart = useCallback((e: React.MouseEvent) => {
-    dragging.current = true;
-    hasDragged.current = false;
-    dragOffset.current = { x: e.clientX - (pos?.x ?? (window.innerWidth - 80)), y: e.clientY - (pos?.y ?? Math.floor(window.innerHeight * 0.55)) };
-    e.preventDefault();
-  }, [pos]);
-
-  useEffect(() => {
-    const onMove = (e: MouseEvent) => {
-      if (!dragging.current) return;
-      hasDragged.current = true;
-      const x = Math.max(0, Math.min(window.innerWidth - SIZE, e.clientX - dragOffset.current.x));
-      const y = Math.max(0, Math.min(window.innerHeight - SIZE, e.clientY - dragOffset.current.y));
-      setPos({ x, y });
-    };
-    const onUp = () => { dragging.current = false; };
-    window.addEventListener("mousemove", onMove);
-    window.addEventListener("mouseup", onUp);
-    return () => { window.removeEventListener("mousemove", onMove); window.removeEventListener("mouseup", onUp); };
-  }, []);
-
-  const bubbleStyle: React.CSSProperties = pos
-    ? { position: "fixed", left: pos.x, top: pos.y, zIndex: 8400 }
-    : { position: "fixed", right: 24, top: "55%", transform: "translateY(-50%)", zIndex: 8400 };
 
   return (
     <button
-      ref={btnRef}
-      onMouseDown={onDragStart}
-      onClick={() => { if (!hasDragged.current) toggleChat(); }}
-      title={isOpen ? "Close AI Chat (drag to move)" : "Open AI Chat ✨ (drag to move)"}
+      onClick={toggleChat}
+      title={isOpen ? "Close AI Chat" : "Open AI Chat ✨"}
       style={{
-        ...bubbleStyle,
-        width: SIZE, height: SIZE, borderRadius: "50%",
+        position: "fixed",
+        right: 24,
+        bottom: panelHeight + 16,   // always above the bottom panel
+        width: SIZE, height: SIZE,
+        borderRadius: "50%",
         background: isOpen ? "#1e3a5f" : "linear-gradient(135deg,#7c3aed,#1e3a5f)",
-        border: "2px solid rgba(255,255,255,0.15)", cursor: "grab",
+        border: "2px solid rgba(255,255,255,0.15)",
+        cursor: "pointer",
         boxShadow: "0 4px 20px rgba(124,58,237,0.45), 0 2px 8px rgba(0,0,0,0.2)",
         display: "flex", alignItems: "center", justifyContent: "center",
         fontSize: 20,
+        zIndex: 8400,
+        transition: "bottom 0.2s",   // smooth slide when panel resizes
       }}
     >
-      {isOpen ? "✕" : "✨"}
+      {isOpen ? "\u2715" : "\u2728"}
     </button>
   );
 }

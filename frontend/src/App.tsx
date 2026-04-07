@@ -29,32 +29,54 @@ type Tab =
   | "entropy" | "hypotheses" | "notebooks" | "ai-tools"
   | "signs" | "timeline" | "citations";
 
-interface TabDef { id: Tab; label: string; icon: string; group: string; }
+interface NavItem { id: Tab; label: string; icon: string; }
+interface NavSection { title: string; items: NavItem[]; }
 
-const TABS: TabDef[] = [
-  { id: "status",      label: "Status",       icon: "⚡", group: "core" },
-  { id: "studies",     label: "Studies",      icon: "📋", group: "core" },
-  { id: "builder",     label: "Builder",      icon: "🔧", group: "core" },
-  { id: "experiments", label: "Experiments",  icon: "🧪", group: "core" },
-  { id: "corpora",     label: "Corpora",      icon: "📚", group: "core" },
-  { id: "reports",     label: "Reports",      icon: "📄", group: "core" },
-  { id: "entropy",     label: "Entropy",      icon: "📊", group: "analysis" },
-  { id: "signs",       label: "Signs",        icon: "𓀀", group: "analysis" },
-  { id: "timeline",    label: "Timeline",     icon: "📅", group: "analysis" },
-  { id: "hypotheses",  label: "Hypotheses",   icon: "💡", group: "research" },
-  { id: "notebooks",   label: "Notebooks",    icon: "📓", group: "research" },
-  { id: "citations",   label: "Citations",    icon: "📖", group: "research" },
-  { id: "ai-tools",    label: "AI Tools",     icon: "🔬", group: "ai" },
-  { id: "pipelines",   label: "Pipelines",    icon: "⚙️", group: "infra" },
-  { id: "jobs",        label: "Jobs",         icon: "📦", group: "infra" },
-  { id: "settings",    label: "Settings",     icon: "⚙️", group: "infra" },
+// Navigation organised as always-visible sections (no collapsing)
+const NAV_SECTIONS: NavSection[] = [
+  {
+    title: "Workspace",
+    items: [
+      { id: "studies",     label: "Studies",      icon: "📋" },
+      { id: "builder",     label: "Study Builder", icon: "🔧" },
+      { id: "experiments", label: "Experiments",   icon: "🧪" },
+      { id: "corpora",     label: "Corpora",       icon: "📚" },
+      { id: "reports",     label: "Reports",       icon: "📄" },
+    ],
+  },
+  {
+    title: "Analysis",
+    items: [
+      { id: "entropy",    label: "Entropy",    icon: "📊" },
+      { id: "signs",      label: "Signs",      icon: "𓀀" },
+      { id: "timeline",   label: "Timeline",   icon: "📅" },
+    ],
+  },
+  {
+    title: "Research",
+    items: [
+      { id: "hypotheses", label: "Hypotheses", icon: "💡" },
+      { id: "notebooks",  label: "Notebooks",  icon: "📓" },
+      { id: "citations",  label: "Citations",  icon: "📖" },
+    ],
+  },
+  {
+    title: "AI",
+    items: [
+      { id: "ai-tools",   label: "AI Tools",   icon: "🔬" },
+    ],
+  },
 ];
 
-const GROUP_ORDER = ["core", "analysis", "research", "ai", "infra"];
-const GROUP_LABELS: Record<string, string> = {
-  core: "Core", analysis: "Analysis", research: "Research", ai: "AI", infra: "System",
-};
+// System items shown at the bottom of the sidebar (separated by a divider)
+const SYSTEM_ITEMS: NavItem[] = [
+  { id: "status",    label: "Status",    icon: "⚡" },
+  { id: "pipelines", label: "Pipelines", icon: "⚙️" },
+  { id: "jobs",      label: "Jobs",      icon: "📦" },
+  { id: "settings",  label: "Settings",  icon: "🔧" },
+];
 
+const SIDEBAR_W = 220;
 const DEFAULT_PANEL_HEIGHT = 220;
 type PanelTab = "logs" | "jobs" | "terminal" | "chat";
 
@@ -81,9 +103,6 @@ function AppContent() {
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("glossa_dark") === "1");
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [notifOpen, setNotifOpen] = useState(false);
-  const [collapsed, setCollapsed] = useState<Record<string, boolean>>({
-    analysis: false, research: false, ai: false, infra: true,
-  });
 
   // Bottom panel state
   const [panelHeight, setPanelHeight] = useState(DEFAULT_PANEL_HEIGHT);
@@ -114,9 +133,15 @@ function AppContent() {
     return () => window.removeEventListener("keydown", handler);
   }, []);
 
+  // All nav items flattened — must be declared before paletteCommands
+  const allItems: NavItem[] = [
+    ...NAV_SECTIONS.flatMap((s) => s.items),
+    ...SYSTEM_ITEMS,
+  ];
+
   const paletteCommands: PaletteCommand[] = [
-    ...TABS.map((t) => ({
-      id: t.id, label: `Go to ${t.label}`, description: `Open the ${t.label} tab`, icon: t.icon,
+    ...allItems.map((t) => ({
+      id: t.id, label: `Go to ${t.label}`, description: `Open the ${t.label} view`, icon: t.icon,
       action: () => setTab(t.id),
     })),
     { id: "dark-mode", label: "Toggle Dark Mode", icon: darkMode ? "☀️" : "🌙", action: () => setDarkMode(d => !d) },
@@ -126,102 +151,170 @@ function AppContent() {
     { id: "panel-jobs", label: "Open Jobs Panel", icon: "📦", action: () => { setPanelVisible(true); setPanelMinimized(false); setPanelTab("jobs"); } },
   ];
 
-  const bg = darkMode ? "#0f172a" : "#fff";
-  const cardBg = darkMode ? "#1e293b" : "#fafafa";
-  const border = darkMode ? "#334155" : "#e5e7eb";
-  const fg = darkMode ? "#e2e8f0" : "#111827";
-  const muted = darkMode ? "#94a3b8" : "#6b7280";
+  // ── Derived colours ─────────────────────────────────────────────────────────
+  const bg       = darkMode ? "#0f172a" : "#f8fafc";
+  const sideBg   = darkMode ? "#0d1526" : "#1e3a5f";
+  const sideText = "#c7d8f0";
+  const sideHdr  = "#7a9bbf";
+  const activeBg = darkMode ? "rgba(37,99,235,0.25)" : "rgba(96,165,250,0.22)";
+  const fg       = darkMode ? "#e2e8f0" : "#111827";
+  const border   = darkMode ? "#334155" : "#e5e7eb";
+  const cardBg   = darkMode ? "#1e293b" : "#fff";
+  const muted    = darkMode ? "#94a3b8" : "#6b7280";
+
+  const currentLabel = allItems.find((i) => i.id === tab)?.label ?? tab;
+
+  // ── Sidebar nav item renderer ─────────────────────────────────────────────
+  const NavBtn = ({ item }: { item: NavItem }) => {
+    const active = tab === item.id;
+    return (
+      <button
+        onClick={() => setTab(item.id)}
+        title={item.label}
+        style={{
+          display: "flex", alignItems: "center", gap: 9,
+          width: "100%", padding: "7px 14px",
+          border: "none", borderRadius: 0,
+          background: active ? activeBg : "none",
+          borderLeft: active ? "3px solid #60a5fa" : "3px solid transparent",
+          cursor: "pointer",
+          color: active ? "#fff" : sideText,
+          fontSize: 13,
+          fontWeight: active ? 600 : 400,
+          textAlign: "left",
+          transition: "background 0.12s",
+        }}
+      >
+        <span style={{ fontSize: 14, lineHeight: 1, flexShrink: 0 }}>{item.icon}</span>
+        <span>{item.label}</span>
+      </button>
+    );
+  };
 
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", maxWidth: 1100, margin: "0 auto", padding: "1.25rem 2rem", background: bg, minHeight: "100vh", color: fg, paddingBottom: effectivePanelH + 32 }}>
-      {/* Header */}
-      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: "1rem", borderBottom: `2px solid ${border}`, paddingBottom: "0.75rem" }}>
-        <div style={{ width: 32, height: 32, borderRadius: 8, background: "linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 800, fontSize: 14, flexShrink: 0 }}>G</div>
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <h1 style={{ margin: 0, fontSize: "1.15rem", fontWeight: 700, color: fg, lineHeight: 1.2 }}>Glossa Lab</h1>
-          <span style={{ color: muted, fontSize: 11 }}>Indus Script Analysis — Dr. A. Fuls, TU Berlin</span>
-        </div>
-        <HealthBadge />
-        <NotificationBell onClick={() => setNotifOpen(o => !o)} />
-        <button onClick={() => setPaletteOpen(true)} title="Command palette (Cmd+K)"
-          style={{ padding: "4px 10px", border: `1px solid ${border}`, borderRadius: 6, background: cardBg, cursor: "pointer", fontSize: 12, color: muted }}>
-          ⌘K
-        </button>
-        <button onClick={() => setPanelVisible(v => !v)} title="Toggle panel (Ctrl+J)"
-          style={{ padding: "4px 10px", border: `1px solid ${border}`, borderRadius: 6, background: cardBg, cursor: "pointer", fontSize: 12, color: panelVisible ? "#2563eb" : muted }}>
-          ⊟
-        </button>
-        <button onClick={() => setDarkMode(d => !d)} title="Toggle dark mode"
-          style={{ padding: "4px 10px", border: `1px solid ${border}`, borderRadius: 6, background: cardBg, cursor: "pointer", fontSize: 14 }}>
-          {darkMode ? "☀️" : "🌙"}
-        </button>
-      </div>
+    <div style={{ display: "flex", minHeight: "100vh", fontFamily: "system-ui, sans-serif", background: bg }}>
 
-      {/* Tab nav — grouped */}
-      <nav style={{ display: "flex", flexWrap: "wrap", gap: 3, marginBottom: "1.5rem", alignItems: "center" }}>
-        {GROUP_ORDER.map((group) => {
-          const groupTabs = TABS.filter((t) => t.group === group);
-          const isCollapsed = collapsed[group];
-          const activeInGroup = groupTabs.some((t) => t.id === tab);
-          return (
-            <div key={group} style={{ display: "flex", alignItems: "center", gap: 2, marginRight: 4 }}>
-              <button
-                onClick={() => setCollapsed(prev => ({ ...prev, [group]: !prev[group] }))}
-                style={{ padding: "3px 6px", border: "none", background: "none", cursor: "pointer", fontSize: 10, color: muted, display: "flex", alignItems: "center", gap: 2 }}
-                title={`${isCollapsed ? "Expand" : "Collapse"} ${GROUP_LABELS[group]}`}
-              >
-                <span style={{ fontSize: 9 }}>{isCollapsed ? "▶" : "▾"}</span>
-                <span style={{ textTransform: "uppercase", letterSpacing: 0.5, fontWeight: 600 }}>{GROUP_LABELS[group]}</span>
-              </button>
-              {!isCollapsed && groupTabs.map((t) => (
-                <button
-                  key={t.id}
-                  onClick={() => setTab(t.id)}
-                  style={{
-                    padding: "5px 10px", border: "none", borderRadius: 4, cursor: "pointer",
-                    fontSize: 12, fontWeight: tab === t.id ? 600 : 400,
-                    background: tab === t.id ? "#1e3a5f" : (darkMode ? "#1e293b" : "#f3f4f6"),
-                    color: tab === t.id ? "#fff" : (darkMode ? "#94a3b8" : "#374151"),
-                    display: "flex", alignItems: "center", gap: 3,
-                  }}
-                >
-                  <span style={{ fontSize: 11 }}>{t.icon}</span>
-                  {t.label}
-                </button>
-              ))}
-              {isCollapsed && activeInGroup && (
-                <button
-                  onClick={() => setCollapsed(prev => ({ ...prev, [group]: false }))}
-                  style={{ padding: "5px 10px", border: "none", borderRadius: 4, cursor: "pointer", fontSize: 12, fontWeight: 600, background: "#1e3a5f", color: "#fff", display: "flex", alignItems: "center", gap: 3 }}
-                >
-                  <span style={{ fontSize: 11 }}>{groupTabs.find(t => t.id === tab)?.icon}</span>
-                  {groupTabs.find(t => t.id === tab)?.label}
-                </button>
-              )}
+      {/* ── Left sidebar ──────────────────────────────────────────────────────── */}
+      <aside style={{
+        position: "fixed", top: 0, left: 0, bottom: 0,
+        width: SIDEBAR_W,
+        background: sideBg,
+        display: "flex", flexDirection: "column",
+        overflow: "hidden",
+        zIndex: 200,
+        boxShadow: "2px 0 8px rgba(0,0,0,0.15)",
+      }}>
+
+        {/* Logo + title */}
+        <div style={{ padding: "18px 14px 14px", borderBottom: "1px solid rgba(255,255,255,0.08)", flexShrink: 0 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 9, marginBottom: 8 }}>
+            <div style={{ width: 30, height: 30, borderRadius: 7, background: "linear-gradient(135deg,#2563eb,#60a5fa)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 800, fontSize: 14, flexShrink: 0 }}>G</div>
+            <div style={{ minWidth: 0 }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: "#fff", lineHeight: 1.2 }}>Glossa Lab</div>
+              <div style={{ fontSize: 9, color: sideHdr, lineHeight: 1.4 }}>Indus Script Analysis</div>
             </div>
-          );
-        })}
-      </nav>
+          </div>
+          <HealthBadge />
+        </div>
 
-      {/* View */}
-      <main>
-        {tab === "status"      && <StatusView />}
-        {tab === "studies"     && <StudiesView />}
-        {tab === "builder"     && <StudyBuilderView />}
-        {tab === "experiments" && <ExperimentsView />}
-        {tab === "pipelines"   && <PipelinesView />}
-        {tab === "corpora"     && <CorporaView />}
-        {tab === "jobs"        && <JobsView />}
-        {tab === "reports"     && <ReportsView />}
-        {tab === "settings"    && <SettingsView />}
-        {tab === "entropy"     && <EntropyDashboard />}
-        {tab === "hypotheses"  && <HypothesisTracker />}
-        {tab === "notebooks"   && <ResearchNotebook />}
-        {tab === "ai-tools"    && <AIToolsView />}
-        {tab === "signs"       && <SignDictionary />}
-        {tab === "timeline"    && <TimelineView onNavigate={(t) => setTab(t as Tab)} />}
-        {tab === "citations"   && <CitationManager />}
-      </main>
+        {/* Scrollable nav */}
+        <div style={{ flex: 1, overflowY: "auto", paddingTop: 6, paddingBottom: 6 }}>
+          {NAV_SECTIONS.map((section) => (
+            <div key={section.title} style={{ marginBottom: 4 }}>
+              <div style={{
+                padding: "8px 14px 4px",
+                fontSize: 10, fontWeight: 700,
+                color: sideHdr,
+                textTransform: "uppercase",
+                letterSpacing: 1,
+              }}>
+                {section.title}
+              </div>
+              {section.items.map((item) => <NavBtn key={item.id} item={item} />)}
+            </div>
+          ))}
+        </div>
+
+        {/* System items at bottom */}
+        <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 4, paddingBottom: 4 }}>
+          {SYSTEM_ITEMS.map((item) => <NavBtn key={item.id} item={item} />)}
+        </div>
+      </aside>
+
+      {/* ── Main content area ─────────────────────────────────────────────────── */}
+      <div style={{
+        marginLeft: SIDEBAR_W,
+        flex: 1, minWidth: 0,
+        display: "flex", flexDirection: "column",
+        minHeight: "100vh",
+      }}>
+
+        {/* Top bar */}
+        <div style={{
+          display: "flex", alignItems: "center", gap: 8,
+          padding: "10px 24px",
+          borderBottom: `1px solid ${border}`,
+          background: cardBg,
+          flexShrink: 0,
+          position: "sticky", top: 0, zIndex: 100,
+        }}>
+          {/* Breadcrumb */}
+          <span style={{ fontSize: 13, color: muted }}>Glossa Lab</span>
+          <span style={{ color: border, fontSize: 13 }}>/</span>
+          <span style={{ fontSize: 13, fontWeight: 600, color: fg }}>{currentLabel}</span>
+
+          <div style={{ flex: 1 }} />
+
+          <NotificationBell onClick={() => setNotifOpen((o) => !o)} />
+          <button
+            onClick={() => setPaletteOpen(true)}
+            title="Command palette (Cmd+K)"
+            style={{ padding: "4px 10px", border: `1px solid ${border}`, borderRadius: 6, background: "none", cursor: "pointer", fontSize: 12, color: muted }}
+          >
+            ⌘K
+          </button>
+          <button
+            onClick={() => setPanelVisible((v) => !v)}
+            title="Toggle panel (Ctrl+J)"
+            style={{ padding: "4px 10px", border: `1px solid ${border}`, borderRadius: 6, background: "none", cursor: "pointer", fontSize: 12, color: panelVisible ? "#2563eb" : muted }}
+          >
+            ⊟
+          </button>
+          <button
+            onClick={() => setDarkMode((d) => !d)}
+            title="Toggle dark mode"
+            style={{ padding: "4px 8px", border: `1px solid ${border}`, borderRadius: 6, background: "none", cursor: "pointer", fontSize: 14 }}
+          >
+            {darkMode ? "☀️" : "🌙"}
+          </button>
+        </div>
+
+        {/* Page content */}
+        <main style={{
+          flex: 1,
+          padding: "24px",
+          paddingBottom: effectivePanelH + 32,
+          color: fg,
+          maxWidth: 960,
+        }}>
+          {tab === "status"      && <StatusView />}
+          {tab === "studies"     && <StudiesView />}
+          {tab === "builder"     && <StudyBuilderView />}
+          {tab === "experiments" && <ExperimentsView />}
+          {tab === "pipelines"   && <PipelinesView />}
+          {tab === "corpora"     && <CorporaView />}
+          {tab === "jobs"        && <JobsView />}
+          {tab === "reports"     && <ReportsView />}
+          {tab === "settings"    && <SettingsView />}
+          {tab === "entropy"     && <EntropyDashboard />}
+          {tab === "hypotheses"  && <HypothesisTracker />}
+          {tab === "notebooks"   && <ResearchNotebook />}
+          {tab === "ai-tools"    && <AIToolsView />}
+          {tab === "signs"       && <SignDictionary />}
+          {tab === "timeline"    && <TimelineView onNavigate={(t) => setTab(t as Tab)} />}
+          {tab === "citations"   && <CitationManager />}
+        </main>
+      </div>
 
       {/* Command palette */}
       {paletteOpen && <CommandPalette commands={paletteCommands} onClose={() => setPaletteOpen(false)} />}
@@ -242,11 +335,15 @@ function AppContent() {
       )}
 
       {/* Floating AI Chat */}
-      <AIChatWindow />
-      <AIChatBubble />
+      <AIChatWindow panelHeight={panelVisible && !panelMinimized ? panelHeight : 0} />
+      <AIChatBubble panelHeight={panelVisible && !panelMinimized ? panelHeight : 0} />
 
       <style>{`
         @keyframes healthPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        aside::-webkit-scrollbar { width: 4px; }
+        aside::-webkit-scrollbar-track { background: transparent; }
+        aside::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+        aside button:hover { background: rgba(255,255,255,0.08) !important; }
       `}</style>
     </div>
   );

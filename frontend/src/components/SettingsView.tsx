@@ -8,6 +8,7 @@ import {
   getOllamaStatus,
   getProviderCatalog,
   getSettings,
+  getStatus,
   isLocalKeySet, clearLocalKey, getLocalKeys, setLocalKey,
   listOllamaInstalled,
   setOllamaContextLength,
@@ -118,6 +119,7 @@ function ContextLengthPanel({ recommendation }: { recommendation: OllamaRecommen
 function OllamaSection() {
   const { toast } = useToast();
   const [status, setStatus] = useState<{ running: boolean; message: string } | null>(null);
+  const [ollamaInstalled, setOllamaInstalled] = useState<boolean | null>(null);
   const [installed, setInstalled] = useState<OllamaInstalledModel[]>([]);
   const [library, setLibrary] = useState<OllamaLibraryEntry[]>([]);
   const [recommendation, setRecommendation] = useState<OllamaRecommendation | null>(null);
@@ -132,11 +134,12 @@ function OllamaSection() {
   const refresh = async () => {
     setLoading(true);
     try {
-      const [st, inst, lib, rec, settings] = await Promise.all([
+      const [st, inst, lib, rec, settings, sysStatus] = await Promise.all([
         getOllamaStatus(), listOllamaInstalled(), getOllamaLibrary(),
-        getOllamaRecommendation(), getSettings(),
+        getOllamaRecommendation(), getSettings(), getStatus(),
       ]);
       setStatus(st);
+      setOllamaInstalled(sysStatus.ollama_installed ?? null);
       setInstalled(inst.models ?? []);
       setLibrary(lib.models ?? []);
       setRecommendation(rec);
@@ -239,9 +242,35 @@ function OllamaSection() {
         <button onClick={refresh} style={{ padding: "4px 10px", border: "1px solid #e5e7eb", borderRadius: 4, background: "#f9fafb", cursor: "pointer", fontSize: 12, color: "#6b7280" }}>⟳ Refresh</button>
       </div>
 
-      {!status?.running && (
-        <div style={{ padding: "12px 14px", background: "#fef3c7", border: "1px solid #fcd34d", borderRadius: 6, marginBottom: 12, fontSize: 12 }}>
-          Ollama is not running. <a href="https://ollama.com" target="_blank" rel="noopener noreferrer" style={{ color: "#2563eb" }}>Download Ollama</a>, install it, then run <code>ollama serve</code>.
+      {ollamaInstalled === false && (
+        <div style={{ padding: "14px 16px", background: "#fff7ed", border: "1px solid #fed7aa", borderRadius: 8, marginBottom: 14 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+            <span style={{ fontSize: 20 }}>📦</span>
+            <div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: "#92400e" }}>Ollama not installed</div>
+              <div style={{ fontSize: 11, color: "#b45309" }}>Install Ollama to run AI models locally, for free, with full privacy.</div>
+            </div>
+          </div>
+          <div style={{ display: "flex", gap: 8 }}>
+            <a href="https://ollama.com/download" target="_blank" rel="noopener noreferrer"
+              style={{ display: "inline-block", padding: "6px 16px", background: "#ea580c", color: "#fff", borderRadius: 5, fontSize: 12, fontWeight: 700, textDecoration: "none" }}>
+              ↓ Download Ollama
+            </a>
+            <button onClick={refresh}
+              style={{ padding: "6px 14px", border: "1px solid #fed7aa", borderRadius: 5, background: "#fff", cursor: "pointer", fontSize: 12, color: "#92400e" }}>
+              ⟳ I installed it — check again
+            </button>
+          </div>
+          <div style={{ marginTop: 8, fontSize: 11, color: "#b45309" }}>
+            After installing: Glossa Lab will start Ollama automatically on next launch.
+            Currently on Windows? Run the Ollama installer, then click "check again" above.
+          </div>
+        </div>
+      )}
+      {ollamaInstalled === true && !status?.running && (
+        <div style={{ padding: "10px 14px", background: "#fef3c7", border: "1px solid #fcd34d", borderRadius: 6, marginBottom: 12, fontSize: 12 }}>
+          Ollama is installed but not responding at localhost:11434.
+          <button onClick={refresh} style={{ marginLeft: 10, padding: "2px 10px", border: "1px solid #fcd34d", borderRadius: 4, background: "none", cursor: "pointer", fontSize: 11, color: "#92400e" }}>⟳ Retry</button>
         </div>
       )}
 
@@ -293,52 +322,55 @@ function OllamaSection() {
         </div>
       )}
 
-      {/* Installed models */}
+      {/* Installed models — 2-row card matching library layout */}
       {installed.length > 0 && (
         <div style={{ marginBottom: 14 }}>
           <div style={{ fontSize: 11, fontWeight: 700, color: "#374151", textTransform: "uppercase",
             letterSpacing: 0.5, marginBottom: 6 }}>Installed ({installed.length})</div>
           {installed.map((m) => {
             const isDefault = m.name === defaultModel;
+            const famColor = familyColors[m.family] ?? "#6b7280";
+            // Try to find library entry for description
+            const libEntry = library.find(l => l.name === m.name);
             return (
-              <div key={m.name} style={{ display: "flex", gap: 8, alignItems: "center",
-                padding: "7px 10px", marginBottom: 4, borderRadius: 6,
-                border: `1px solid ${isDefault ? "#86efac" : "#e5e7eb"}`,
+              <div key={m.name} style={{ border: `1px solid ${isDefault ? "#86efac" : "#e5e7eb"}`,
+                borderRadius: 6, overflow: "hidden", marginBottom: 6,
                 background: isDefault ? "#f0fdf4" : "#fafafa" }}>
-                <span style={{ fontSize: 11, padding: "1px 6px", borderRadius: 4,
-                  background: (familyColors[m.family] ?? "#6b7280") + "20",
-                  color: familyColors[m.family] ?? "#6b7280", fontWeight: 700,
-                  flexShrink: 0 }}>{m.family}</span>
-                <span style={{ flex: 1, fontWeight: 600, fontSize: 13 }}>{m.display || m.name}</span>
-                {isDefault && (
-                  <span style={{ fontSize: 10, padding: "2px 7px", background: "#15803d",
-                    color: "#fff", borderRadius: 4, fontWeight: 700, flexShrink: 0 }}>
-                    🤖 Default AI
-                  </span>
-                )}
-                <span style={{ fontSize: 11, color: "#6b7280" }}>{m.size_gb} GB</span>
-                {m.glossa_score && (
-                  <span style={{ fontSize: 10, padding: "1px 5px", background: "#7c3aed20",
-                    color: "#7c3aed", borderRadius: 4 }}>⭐ {m.glossa_score}/10</span>
-                )}
-                {!isDefault && (
-                  <button
-                    onClick={() => setAsDefault(m.name)}
-                    style={{ padding: "2px 8px", border: "1px solid #86efac", borderRadius: 4,
-                      cursor: "pointer", fontSize: 10, fontWeight: 600,
-                      background: "#f0fdf4", color: "#15803d", flexShrink: 0 }}
-                  >
-                    Set as default AI
-                  </button>
-                )}
-                <button
-                  onClick={() => handleDelete(m.name)}
-                  style={{ padding: "2px 8px", border: "1px solid", borderRadius: 4,
-                    cursor: "pointer", fontSize: 10, fontWeight: 600, flexShrink: 0,
-                    borderColor: deleteConfirm === m.name ? "#dc2626" : "#fca5a5",
-                    background: deleteConfirm === m.name ? "#fef2f2" : "none",
-                    color: "#dc2626" }}
-                >{deleteConfirm === m.name ? "Confirm delete?" : "Delete"}</button>
+                {/* Row 1: name + actions */}
+                <div style={{ display: "flex", gap: 8, padding: "8px 12px", alignItems: "center" }}>
+                  <span style={{ fontSize: 10, padding: "1px 6px", borderRadius: 4,
+                    background: famColor + "20", color: famColor, fontWeight: 700,
+                    flexShrink: 0 }}>{m.family}</span>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontWeight: 600, fontSize: 13, lineHeight: 1.3 }}>{m.display || m.name}</div>
+                    {libEntry?.desc && <div style={{ fontSize: 11, color: "#6b7280", marginTop: 1 }}>{libEntry.desc}</div>}
+                    {!libEntry?.desc && <div style={{ fontSize: 11, color: "#9ca3af" }}>{m.name}</div>}
+                  </div>
+                  {/* Aligned metadata column */}
+                  <div style={{ display: "flex", gap: 6, alignItems: "center", flexShrink: 0 }}>
+                    <span style={{ fontSize: 11, color: "#6b7280", minWidth: 50, textAlign: "right" }}>{m.size_gb} GB</span>
+                    {m.glossa_score != null && (
+                      <span style={{ fontSize: 10, padding: "1px 5px", background: "#7c3aed20",
+                        color: "#7c3aed", borderRadius: 4, minWidth: 42, textAlign: "center" }}>⭐ {m.glossa_score}/10</span>
+                    )}
+                    {isDefault
+                      ? <span style={{ fontSize: 10, padding: "2px 7px", background: "#15803d",
+                          color: "#fff", borderRadius: 4, fontWeight: 700, whiteSpace: "nowrap" }}>🤖 Default AI</span>
+                      : <button onClick={() => setAsDefault(m.name)}
+                          style={{ padding: "2px 8px", border: "1px solid #86efac", borderRadius: 4,
+                            cursor: "pointer", fontSize: 10, fontWeight: 600,
+                            background: "#f0fdf4", color: "#15803d", whiteSpace: "nowrap" }}>Set default</button>
+                    }
+                    <button onClick={() => handleDelete(m.name)}
+                      style={{ padding: "2px 8px", border: "1px solid",
+                        borderRadius: 4, cursor: "pointer", fontSize: 10, fontWeight: 600,
+                        borderColor: deleteConfirm === m.name ? "#dc2626" : "#fca5a5",
+                        background: deleteConfirm === m.name ? "#fef2f2" : "none",
+                        color: "#dc2626", whiteSpace: "nowrap" }}>
+                      {deleteConfirm === m.name ? "Confirm?" : "Delete"}
+                    </button>
+                  </div>
+                </div>
               </div>
             );
           })}

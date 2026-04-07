@@ -38,6 +38,8 @@ export interface StatusResponse {
   pipelines: string[];
   pipeline_count: number;
   catalog_counts: Record<string, number>;
+  ollama_installed?: boolean;
+  ollama_running?: boolean;
 }
 
 export interface CatalogPipeline {

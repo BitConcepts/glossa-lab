@@ -415,11 +415,14 @@ class GlossaShell:
 
     def _subprocess(self, command: str) -> Iterator[str]:
         """Execute command via OS shell with no visible window on Windows."""
-        # Replace bare `python` / `python3` with the venv Python
+        # Replace bare `python` / `python3` with the venv Python.
+        # Use a lambda so the replacement string is never processed for backslash
+        # escapes — Windows paths contain \U which re.sub() would treat as a
+        # Unicode escape and crash with 'bad escape \U at position N'.
         venv_py = _venv_python()
         cmd = re.sub(
             r"^python3?\b",
-            f'"{venv_py}"',
+            lambda _: f'"{venv_py}"',
             command,
             flags=re.IGNORECASE,
         )
@@ -442,8 +445,8 @@ class GlossaShell:
             for raw_line in proc.stdout:
                 yield raw_line.decode(errors="replace").rstrip("\r\n")
             proc.wait()
-            if proc.returncode != 0:
-                yield f"[exit code {proc.returncode}]"
+            # Do not print exit codes — real terminals don't display them.
+            # Non-zero exit is visible to the user from the command output itself.
         except FileNotFoundError:
             yield f"command not found: {command.split()[0]}"
         except Exception as exc:  # noqa: BLE001

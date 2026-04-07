@@ -320,8 +320,54 @@ function TerminalPanel() {
     input: "#86efac", output: "#e2e8f0", error: "#f87171", info: "#94a3b8",
   };
 
+  // ── Right-click context menu ──────────────────────────────────────
+  const [ctxMenu, setCtxMenu] = useState<{ x: number; y: number } | null>(null);
+  const outputDivRef = useRef<HTMLDivElement>(null);
+
+  const handleContextMenu = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setCtxMenu({ x: e.clientX, y: e.clientY });
+  };
+
+  useEffect(() => {
+    const close = () => setCtxMenu(null);
+    document.addEventListener("click", close);
+    document.addEventListener("keydown", close);
+    return () => { document.removeEventListener("click", close); document.removeEventListener("keydown", close); };
+  }, []);
+
+  const ctxCopy = () => {
+    const sel = window.getSelection()?.toString();
+    if (sel) navigator.clipboard.writeText(sel);
+    setCtxMenu(null);
+  };
+  const ctxCopyAll = () => {
+    const text = history.map(l => l.text).join("\n");
+    navigator.clipboard.writeText(text);
+    setCtxMenu(null);
+  };
+  const ctxPaste = async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      setInput(prev => prev + text);
+      inputRef.current?.focus();
+    } catch { /* clipboard permission denied */ }
+    setCtxMenu(null);
+  };
+  const ctxSelectAll = () => {
+    if (outputDivRef.current) {
+      const range = document.createRange();
+      range.selectNodeContents(outputDivRef.current);
+      const sel = window.getSelection();
+      sel?.removeAllRanges();
+      sel?.addRange(range);
+    }
+    setCtxMenu(null);
+  };
+
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100%" }} onClick={() => inputRef.current?.focus()}>
+    <div style={{ display: "flex", flexDirection: "column", height: "100%", position: "relative" }}
+      onClick={() => { if (!ctxMenu) inputRef.current?.focus(); }}>
       {/* Toolbar */}
       <div style={{ display: "flex", gap: 4, padding: "2px 8px", borderBottom: "1px solid #0f172a", alignItems: "center", flexShrink: 0 }}>
         <button onClick={() => { setInput("help"); setTimeout(() => run(), 0); }}
@@ -336,16 +382,51 @@ function TerminalPanel() {
             title="Ask Glossa AI about this command and output"
             style={{ ...tBtn, color: "#c4b5fd" }}>✨ Ask AI</button>
         )}
+        <div style={{ flex: 1 }} />
+        <span style={{ fontSize: 9, color: "#334155" }}>Right-click to copy</span>
       </div>
 
-      {/* Output */}
-      <div style={{ flex: 1, overflowY: "auto", fontFamily: "monospace", fontSize: 11, padding: "4px 8px", lineHeight: 1.6 }}>
+      {/* Output — userSelect:text so text is selectable */}
+      <div
+        ref={outputDivRef}
+        onContextMenu={handleContextMenu}
+        style={{ flex: 1, overflowY: "auto", fontFamily: "monospace", fontSize: 11,
+          padding: "4px 8px", lineHeight: 1.6, userSelect: "text", cursor: "text" }}>
         {history.map((item, i) => (
           <div key={i} style={{ color: lineColor[item.type], whiteSpace: "pre-wrap", wordBreak: "break-all" }}>{item.text}</div>
         ))}
         {running && <div style={{ color: "#d97706" }}>▌ running…</div>}
         <div ref={bottomRef} />
       </div>
+
+      {/* Context menu */}
+      {ctxMenu && (
+        <div
+          style={{ position: "fixed", left: ctxMenu.x, top: ctxMenu.y, zIndex: 9999,
+            background: "#1e293b", border: "1px solid #334155", borderRadius: 5,
+            boxShadow: "0 4px 16px rgba(0,0,0,0.4)", minWidth: 160, overflow: "hidden" }}
+          onClick={e => e.stopPropagation()}>
+          {([
+            { label: "⧸ Copy selection", action: ctxCopy },
+            { label: "⧹ Copy all output", action: ctxCopyAll },
+            { label: "⋮ Paste into input", action: ctxPaste },
+            { label: "Select all output", action: ctxSelectAll },
+            null,
+            { label: "✕ Clear terminal", action: () => { setHistory([]); setSuggestions([]); setCtxMenu(null); } },
+          ] as ({ label: string; action: () => void } | null)[]).map((item, i) =>
+            item === null
+              ? <div key={i} style={{ height: 1, background: "#334155", margin: "2px 0" }} />
+              : <button key={i} onClick={item.action}
+                  style={{ display: "block", width: "100%", padding: "6px 12px", border: "none",
+                    background: "none", color: "#e2e8f0", cursor: "pointer", fontSize: 11,
+                    textAlign: "left" }}
+                  onMouseEnter={e => (e.currentTarget.style.background = "rgba(96,165,250,0.15)")}
+                  onMouseLeave={e => (e.currentTarget.style.background = "none")}>
+                  {item.label}
+                </button>
+          )}
+        </div>
+      )}
 
       {/* Suggestion bar */}
       {suggestions.length > 0 && (
@@ -479,13 +560,13 @@ export function BottomPanel({ height, onHeightChange, minimized, onMinimizedChan
         </button>
       </div>
 
-      {/* Content */}
+      {/* Content — always mount all tabs to preserve state; hide inactive with display:none */}
       {!minimized && (
-        <div style={{ flex: 1, overflow: "hidden", userSelect: "text" }}>
-          {activeTab === "logs" && <LogPanel />}
-          {activeTab === "jobs" && <JobsPanel />}
-          {activeTab === "terminal" && <TerminalPanel />}
-          {activeTab === "chat" && <ChatInline />}
+        <div style={{ flex: 1, overflow: "hidden", position: "relative" }}>
+          <div style={{ display: activeTab === "logs"     ? "flex" : "none", flexDirection: "column", height: "100%", userSelect: "text" }}><LogPanel /></div>
+          <div style={{ display: activeTab === "jobs"     ? "flex" : "none", flexDirection: "column", height: "100%", userSelect: "text" }}><JobsPanel /></div>
+          <div style={{ display: activeTab === "terminal" ? "flex" : "none", flexDirection: "column", height: "100%" }}><TerminalPanel /></div>
+          <div style={{ display: activeTab === "chat"     ? "flex" : "none", flexDirection: "column", height: "100%", userSelect: "text" }}><ChatInline /></div>
         </div>
       )}
       <style>{`@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }`}</style>

@@ -228,6 +228,7 @@ export function AIChatWindow({ panelHeight = 0 }: { panelHeight?: number }) {
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
   const [compressing, setCompressing] = useState(false);
+  const abortCtrl = useRef<AbortController | null>(null);
 
   // Model picker
   const [modelPref, setModelPref] = useState<ModelPref | null>(() => {
@@ -406,6 +407,11 @@ export function AIChatWindow({ panelHeight = 0 }: { panelHeight?: number }) {
     const loadingMsg: MsgUI = { id: ++_msgId, role: "assistant", content: "", timestamp: Date.now(), loading: true };
     setMessages(prev => [...prev, userMsg, loadingMsg]);
     setBusy(true);
+
+    // Create a fresh AbortController for this request
+    const ctrl = new AbortController();
+    abortCtrl.current = ctrl;
+
     try {
       const history = [...messages, userMsg].filter(m => !m.loading).map(({ role, content }) => ({ role, content }));
       const result: AIChatResponse = await aiChat({
@@ -414,7 +420,7 @@ export function AIChatWindow({ panelHeight = 0 }: { panelHeight?: number }) {
         context_id: contextId || null,
         provider: modelPref?.provider ?? null,
         model: modelPref?.model ?? null,
-      });
+      }, ctrl.signal);
       const newMsg: MsgUI = {
         id: loadingMsg.id, role: "assistant", content: result.content,
         actions: result.actions ?? [],
@@ -425,10 +431,15 @@ export function AIChatWindow({ panelHeight = 0 }: { panelHeight?: number }) {
       if ((result.actions ?? []).some(a => AUTO_EXEC.has(a.type) && !a.requires_approval))
         setTimeout(() => autoExec(newMsg), 50);
     } catch (e) {
+      const aborted = e instanceof Error && e.name === "AbortError";
       setMessages(prev => prev.map(m => m.id === loadingMsg.id
-        ? { ...m, content: `Error: ${e instanceof Error ? e.message : "AI error"}`, loading: false, error: true, timestamp: Date.now() }
+        ? { ...m,
+            content: aborted ? "[Request stopped]" : `Error: ${e instanceof Error ? e.message : "AI error"}`,
+            loading: false,
+            error: !aborted,
+            timestamp: Date.now() }
         : m));
-    } finally { setBusy(false); }
+    } finally { setBusy(false); abortCtrl.current = null; }
   }, [input, busy, messages, contextType, contextId, modelPref, compress, exportMd, exportPdf, autoExec, toast]);
 
   // File upload
@@ -637,10 +648,17 @@ export function AIChatWindow({ panelHeight = 0 }: { panelHeight?: number }) {
             rows={2}
             style={{ flex: 1, padding: "6px 9px", border: "1px solid #d1d5db", borderRadius: 6, fontSize: 12, resize: "none", fontFamily: "inherit", outline: "none" }}
             disabled={busy || compressing} />
-          <button onClick={() => send()} disabled={busy || compressing || !input.trim()}
-            style={{ padding: "0 14px", background: "#7c3aed", color: "#fff", border: "none", borderRadius: 6, cursor: busy ? "not-allowed" : "pointer", fontSize: 12, fontWeight: 600, opacity: input.trim() ? 1 : 0.5 }}>
-            {busy ? "…" : "Send"}
-          </button>
+          {busy
+            ? <button onClick={() => abortCtrl.current?.abort()}
+                title="Stop generation"
+                style={{ padding: "0 14px", background: "#dc2626", color: "#fff", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 12, fontWeight: 600 }}>
+                ■ Stop
+              </button>
+            : <button onClick={() => send()} disabled={compressing || !input.trim()}
+                style={{ padding: "0 14px", background: "#7c3aed", color: "#fff", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 12, fontWeight: 600, opacity: input.trim() ? 1 : 0.5 }}>
+                Send
+              </button>
+          }
         </div>
       </div>
     </div>

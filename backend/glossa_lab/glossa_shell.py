@@ -114,8 +114,9 @@ class GlossaShell:
             self.cwd = self.sandbox_root
         self.env = {**os.environ}
         # Track venv state once on init (cheap path-existence check)
-        self._venv_py = _venv_python()
-        self._venv_ok = self._venv_py.exists()
+        # _venv_python() returns str — wrap in Path so .exists() / .parent work
+        self._venv_py: Path = Path(_venv_python())
+        self._venv_ok: bool = self._venv_py.exists()
         self._greeted = False
 
     # ── Public entry point ────────────────────────────────────────────────────

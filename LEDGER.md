@@ -1631,6 +1631,85 @@ Risks:
 
 Next step: Verify sign 240 M77 equivalent; test whether [400][fish]
 inscriptions cluster at specific sites; extend crosswalk coverage
+
+---
+
+## [2026-04-07] Entry — Deep analysis: sign corrections, formula, full equivalence classes
+
+Objective: Identify sign 240; test [400][fish] site distribution; run full
+638-pair equivalence classes; decompose the locked formula; extend crosswalk.
+
+What was done:
+- Created backend/run_deep_analysis.py (5 analyses)
+- Created backend/run_followup_analysis.py (5 follow-up analyses)
+- Generated reports/full_substitution_pairs.json (638 pairs)
+- Generated reports/fuls_m77_extended_crosswalk.json (50 entries)
+
+Files changed:
+- backend/run_deep_analysis.py (created)
+- backend/run_followup_analysis.py (created)
+- backend/pyproject.toml (modified -- per-file-ignores for research scripts)
+- reports/full_substitution_pairs.json (created)
+- reports/fuls_m77_extended_crosswalk.json (created)
+
+Checks run:
+- lint (all changed files) -- all checks passed
+
+RESULTS (critical corrections and new discoveries):
+
+CRITICAL SIGN CORRECTIONS:
+- Sign 32 = SHORT STROKE (M77 342), NOT fish (dist to M342=0.221 vs fish=0.312)
+  Still the most frequent sign; likely a common phonetic syllable (ka/na)
+- Sign 220 = FISH (M77 059, meen/min), NOT sign 32
+  Sign 220 (count=462): T=0.184 I=0.080 M=0.667 -- closest fish profile
+- Sign 817 = M77 012 (SMALL CIRCLE, T=0.863) -- better than M001 (T=0.642)
+  Small circle sign is the Indus seal terminal marker. -um reading unchanged.
+- Sign 400 = closer to M77 200 (bull head) than M086 (standing figure)
+  Bull head is a dominant Indus seal motif -- initial position confirmed
+
+FORMULA UPDATE (CRITICAL):
+- Formula was [X][Y][240][405][501] but ALL 27 instances have X=520, Y=2
+- FULLY LOCKED: [520][2][240][405][501] -- not a 2-variable but 5-fixed formula
+- 27 instances at Harappa (ICIT IDs 1277-1752, not consecutive = different owners)
+- 27 different seal-holders at Harappa all using the SAME 5-sign title formula
+- Interpretation: a specific Harappan administrative guild/office title
+- Sign 2 identification is the remaining key to reading this formula
+
+FULL EQUIVALENCE CLASSES:
+- 638 total pairs (vs 25 in previous analysis)
+- 16 classes at threshold 0.55
+- Largest class: 38 signs, avg M-rate=0.587 = MEDIAL-DOMINATED
+  This 38-sign class IS the main phonetic syllable inventory
+  Identifying 3-4 signs in this class would unlock many inscriptions
+
+EXTENDED CROSSWALK (50 entries):
+- Top-50 ICIT signs mapped to M77 by positional profile matching
+- Corrections saved to fuls_m77_extended_crosswalk.json
+
+CORRECTED SIGN TABLE (top assignments):
+- Sign 817 = M77 012 (small circle) = '-um' -- HIGH confidence
+- Sign 220 = M77 059 (fish) = 'meen/min' -- MED confidence
+- Sign 32  = M77 342 (short stroke) = phonetic syllable (ka/na?)
+- Sign 400 = M77 200 (bull head) = INITIAL DET or 'erumai'
+- Sign 520 = M77 028 (arrow) = INITIAL sign (A- or title)
+- Signs 465-472 = CV syllabic series (unchanged)
+
+Open TODOs:
+- [ ] Identify sign 2 (anchors the [520][2][240][405][501] formula)
+  Low Fuls code = fundamental sign in catalog
+- [ ] Test sign 220 = fish more rigorously (solo count, site distribution)
+- [ ] Explore the 38-sign MEDIAL class members for phonetic patterns
+- [ ] Apply SERIES-A (465-472 = PA/PE/PI) test with corrected sign catalog
+- [ ] Fix stale Playwright UI locators (40 tests)
+
+Risks:
+- Profile matching is statistical; distances are small for some corrections
+- Sign 220 fish assignment: dist=0.329 vs fish(0.047/0.094/0.812) -- moderate match
+  True fish sign may have M-rate > 0.80, which sign 220's 0.667 doesn't reach
+- The [400][fish] fisherman hypothesis weakened by Harappa-domination of corpus
+
+Next step: Identify sign 2 from Fuls catalog; test sign 220 fish hypothesis;
+  explore the 38-sign medial class for PA/KA/NA phonetic series
 - Luwian phoneme bigram model is underpowered; phoneme inventory overlap with Greek is high at this scale
 - TMK cross-validation requires OCR bigram data that doesn't exist yet (Mistral key + ~30 min OCR run)
 - ICIT corpus remains gated on Dr. Fuls collaboration

@@ -1,0 +1,40 @@
+FULS-MAHADEVAN SIGN CROSSWALK
+Fuls (2023) ICIT codes <-> Mahadevan (1977) M77 codes
+======================================================================
+
+  Fuls    M77       Class  Desc / Rebus Candidate                              Src
+------------------------------------------------------------------------------------------
+    32    059      MEDIAL  Fish sign (standard fish shape)      meen/min (fish) = star =   lit
+    33    060      MEDIAL  Fish with arrow through tail         meen+suffix OR composite   lit
+    34    070      MEDIAL  Fish with two strokes                meen variant               lit
+   045    091           ?  Unknown                                                         big
+   106    005         TMK  Six short strokes                    aaru (six)                 lit
+   129    029      MEDIAL  Rake or comb (horizontal lines with  vasam (comb) or chisel     lit
+   157    015           ?  Unknown                                                         big
+   169    408           ?  Unknown                                                         big
+   173    127           ?  Unknown                                                         big
+   203    413           ?  Unknown                                                         big
+   256    052           ?  Unknown                                                         big
+   282    282         TMK  Inscription ending bracket/jar (ter  suffix -il OR terminal ca  lit
+   307    180           ?  Unknown                                                         big
+   375    401           ?  Unknown                                                         big
+   387    326           ?  Unknown                                                         big
+   394    166           ?  Unknown                                                         big
+   400    086     INITIAL  Human figure (anthropomorph, standi  aal (person/man) = determ  lit
+   427    190           ?  Unknown                                                         big
+   430    190           ?  Unknown                                                         big
+   461    231           ?  Unknown                                                         big
+   465    342      MEDIAL  Short horizontal stroke (the most c  oru (one) = numeral OR co  lit
+   481    316           ?  Unknown                                                         big
+   506    207           ?  Unknown                                                         big
+   520    028      MEDIAL  Arrow or single vertical stroke      ambpu (arrow) = am         lit
+   526    254           ?  Unknown                                                         big
+   692    150           ?  Unknown                                                         big
+   718    341           ?  Unknown                                                         big
+   719    339           ?  Unknown                                                         big
+   782    363           ?  Unknown                                                         big
+   817    001         TMK  Short vertical stroke (terminal mar  -pu (flower, suffix) OR t  lit
+   841    405           ?  Unknown                                                         big
+   858    266           ?  Unknown                                                         big
+   866    274           ?  Unknown                                                         big
+   874    282         TMK  Inscription ending bracket/jar (ter  suffix -il OR terminal ca  lit

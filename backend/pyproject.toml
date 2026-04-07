@@ -84,6 +84,7 @@ known-first-party = ["glossa_lab", "tests"]
 "run_sign_identification.py" = ["E501", "W293"]
 "verify_fish_signs.py" = ["E501", "W293"]
 "run_decipherment_synthesis.py" = ["E501"]
+"run_decipherment_deepdive.py" = ["E501", "W293"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

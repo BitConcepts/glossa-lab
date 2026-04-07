@@ -4,6 +4,7 @@
  * Familiar GitHub/LinkedIn-style pattern; appropriate for researchers.
  */
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { type ToastType, useToast } from "../hooks/useToast";
 
 const TYPE_ICONS: Record<ToastType, string> = {
@@ -117,8 +118,9 @@ export function NotificationCenter() {
         )}
       </button>
 
-      {/* Dropdown */}
-      {open && (
+      {/* Dropdown — rendered via portal at document.body so z-9500 is never
+           bounded by the sticky header's stacking context (z-100) */}
+      {open && createPortal(
         <div
           ref={dropRef}
           style={{
@@ -181,7 +183,7 @@ export function NotificationCenter() {
             })}
           </div>
         </div>
-      )}
+      , document.body)}
       <style>{`@keyframes notifFadeIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }`}</style>
     </>
   );

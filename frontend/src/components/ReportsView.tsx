@@ -27,6 +27,42 @@ export function ReportsView() {
   const [groupByExp, setGroupByExp] = useState(true); // default on
   const [studies, setStudies] = useState<StudyResponse[]>([]);
   const [popupBlocked, setPopupBlocked] = useState<string | null>(null);
+  // ── Compose mode ──────────────────────────────────────────────
+  const [composeMode, setComposeMode] = useState(false);
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+
+  const toggleSelected = (id: string) =>
+    setSelected((prev) => { const s = new Set(prev); s.has(id) ? s.delete(id) : s.add(id); return s; });
+
+  const exportComposedPdf = () => {
+    const picked = reports.filter((r) => selected.has(r.id));
+    if (!picked.length) return;
+    const sections = picked.map((r) => {
+      const url = getReportDownloadUrl(r.id);
+      return (
+        `<section style="margin-bottom:32px;page-break-inside:avoid">` +
+        `<h2 style="font-size:15px;margin:0 0 4px;color:#1e3a5f">${r.name}</h2>` +
+        `<p style="font-size:11px;color:#9ca3af;margin:0 0 8px">` +
+          `${r.kind.replace('_', ' ')} &ensp;·&ensp; ${r.relative_path}` +
+        `</p>` +
+        `<a href="${url}" target="_blank" style="font-size:12px;color:#2563eb">Open source file →</a>` +
+        `</section>`
+      );
+    }).join("<hr style='border:none;border-top:1px solid #e5e7eb;margin:20px 0'>\n");
+    const win = window.open("", "_blank", "width=860,height=940");
+    if (!win) { alert("Allow popups to export PDF"); return; }
+    win.document.write(
+      `<!DOCTYPE html><html><head><title>Glossa Lab — Composed Report</title>` +
+      `<style>body{font-family:system-ui,sans-serif;max-width:740px;margin:40px auto;font-size:13px;line-height:1.65;color:#111}` +
+      `@media print{body{margin:0}}</style></head><body>` +
+      `<h1 style="font-size:18px;margin-bottom:4px">Glossa Lab — Composed Report</h1>` +
+      `<p style="color:#9ca3af;font-size:11px;margin-top:0">Generated ${new Date().toLocaleString()} · ${picked.length} report${picked.length !== 1 ? 's' : ''}</p>` +
+      `<hr style="border:none;border-top:2px solid #e5e7eb;margin-bottom:20px">` +
+      sections +
+      `<script>setTimeout(()=>window.print(),400)</script></body></html>`
+    );
+    win.document.close();
+  };
 
   const load = async () => {
     setLoading(true);
@@ -125,10 +161,52 @@ export function ReportsView() {
     <div>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" }}>
         <h2 style={{ margin: 0 }}>Reports</h2>
-        <button onClick={load} style={{ ...btnStyle, padding: "4px 12px", fontSize: 12, background: "#6b7280" }}>
-          ⟳ Refresh
-        </button>
+        <div style={{ display: "flex", gap: 6 }}>
+          <button
+            onClick={() => { setComposeMode((m) => !m); setSelected(new Set()); }}
+            style={{ ...btnStyle, padding: "4px 12px", fontSize: 12,
+              background: composeMode ? "#7c3aed" : "#f3f4f6",
+              color: composeMode ? "#fff" : "#374151",
+              border: composeMode ? "none" : "1px solid #d1d5db" }}
+          >
+            {composeMode ? "✕ Cancel Compose" : "📊 Compose"}
+          </button>
+          <button onClick={load} style={{ ...btnStyle, padding: "4px 12px", fontSize: 12, background: "#6b7280" }}>
+            ⟳ Refresh
+          </button>
+        </div>
       </div>
+
+      {/* Compose toolbar */}
+      {composeMode && (
+        <div style={{
+          display: "flex", alignItems: "center", gap: 10,
+          padding: "10px 14px", background: "#f3e8ff",
+          border: "1px solid #a78bfa", borderRadius: 8, marginBottom: "0.75rem",
+        }}>
+          <span style={{ fontSize: 12, color: "#7c3aed", fontWeight: 600 }}>
+            📊 Compose mode &mdash; select reports to include
+          </span>
+          <span style={{ fontSize: 12, color: "#9ca3af" }}>
+            {selected.size} selected
+          </span>
+          <button onClick={() => setSelected(new Set(sorted.map((r) => r.id)))}
+            style={{ padding: "3px 10px", border: "1px solid #a78bfa", borderRadius: 4, background: "#fff", fontSize: 11, cursor: "pointer", color: "#7c3aed" }}>
+            Select all
+          </button>
+          <button onClick={() => setSelected(new Set())}
+            style={{ padding: "3px 10px", border: "1px solid #d1d5db", borderRadius: 4, background: "#fff", fontSize: 11, cursor: "pointer", color: "#6b7280" }}>
+            Clear
+          </button>
+          <div style={{ flex: 1 }} />
+          <button
+            onClick={exportComposedPdf}
+            disabled={selected.size === 0}
+            style={{ ...btnStyle, padding: "5px 16px", fontSize: 12, background: selected.size > 0 ? "#7c3aed" : "#d1d5db", cursor: selected.size > 0 ? "pointer" : "not-allowed" }}>
+            📄 Export PDF ({selected.size})
+          </button>
+        </div>
+      )}
 
       {/* Search */}
       <div style={{ display: "flex", gap: 8, marginBottom: "0.75rem", alignItems: "center", flexWrap: "wrap" }}>
@@ -241,6 +319,9 @@ export function ReportsView() {
         <table style={{ borderCollapse: "collapse", width: "100%" }}>
           <thead>
             <tr>
+              {composeMode && (
+                <th style={{ ...thStyle, width: 32, cursor: "default" }}></th>
+              )}
               {([
                 ["name", "Name"],
                 ["kind", "Kind"],
@@ -261,14 +342,21 @@ export function ReportsView() {
           <tbody>
             {sorted.map((r) => {
               const color = kindColor[r.kind] ?? "#6b7280";
+              const isSel = selected.has(r.id);
               return (
                 <tr
                   key={r.relative_path}
-                  style={{ cursor: "pointer" }}
-                  onClick={() => handleView(r)}
+                  style={{ cursor: "pointer", background: isSel ? "#f3e8ff" : undefined }}
+                  onClick={() => composeMode ? toggleSelected(r.id) : handleView(r)}
                 >
+                  {composeMode && (
+                    <td style={{ ...tdStyle, width: 32 }} onClick={(e) => { e.stopPropagation(); toggleSelected(r.id); }}>
+                      <input type="checkbox" checked={isSel} onChange={() => toggleSelected(r.id)}
+                        style={{ cursor: "pointer", width: 14, height: 14 }} />
+                    </td>
+                  )}
                   <td style={tdStyle}>
-                    <span style={{ fontWeight: 500, color: "#1e3a5f" }}>{r.name}</span>
+                    <span style={{ fontWeight: 500, color: isSel ? "#7c3aed" : "#1e3a5f" }}>{r.name}</span>
                     {r.experiment_id && (
                       <span style={{ marginLeft: 6, fontSize: 10, padding: "1px 6px", borderRadius: 8, background: "#eff6ff", color: "#2563eb", fontWeight: 600 }}>
                         {r.experiment_id.replace(/_/g, " ")}

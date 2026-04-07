@@ -42,7 +42,8 @@ class ExperimentBase:
     requires_key: ClassVar[str | None] = None
     command: ClassVar[str] = ""  # CLI equivalent for reference
     results_file: ClassVar[str | None] = None
-    report_schema: ClassVar[dict | None] = None  # JSON Schema for the output
+    report_schema: ClassVar[dict | None] = None   # JSON Schema for the output
+    params_schema: ClassVar[dict | None] = None   # JSON Schema for run() kwargs
 
     def run(self, **kwargs: Any) -> dict[str, Any]:
         """Execute the experiment. Override in subclasses."""
@@ -61,6 +62,7 @@ class ExperimentBase:
             "command": cls.command,
             "results_file": cls.results_file,
             "report_schema": cls.report_schema,
+            "params_schema": cls.params_schema,
             "source_file": _source_file(cls),
             "custom": False,
         }

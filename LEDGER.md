@@ -2286,3 +2286,144 @@ Risks:
 - AI bubble bottom offset assumes panelHeight is 0 when panel is collapsed; may need verification on all collapse states
 
 Next step: Assign values to top unknown TMK signs (845, 832, 501) to push token coverage toward 30%; run Playwright E2E with live backend
+
+---
+
+## [2026-04-08] Entry — Full platform session: AI action system, model profiles, terminal fixes, governance loop, Indus formula discovery
+
+Objective: (1) Complete AI action system so Glossa AI can propose and execute actions. (2) Model capability profiles for per-model optimisation. (3) Fix terminal bugs and UX. (4) Add Ollama auto-start. (5) Formalise Glossa AI governance loop. (6) Advance Indus decipherment via glossa_chat.py.
+
+### Platform changes
+
+**AI Action System (AIChatWindow.tsx, ai_tools.py, api.ts)**
+- Backend: `/ai/chat` now returns `{content, actions[]}` where actions are parsed from `%%ACTIONS%%...%%END_ACTIONS%%` blocks
+- `/ai/execute-action` endpoint dispatches: run_experiment, run_pipeline, change_setting, generate_report, create_hypothesis, create_notebook, clear_jobs, open_view
+- Frontend: `ActionCard` component with Approve/Cancel inline in chat; auto-execute for open_view/create_hypothesis/create_notebook
+- `glossa:navigate` CustomEvent wires AI `open_view` action to sidebar tab switching
+- Action parser: robust multi-array merging + type filtering (prevents `[520]` sign sequences from being parsed as actions)
+
+**Model capability profiles (model_profiles.py)**
+- 35+ model profiles: max_tokens, temperature, ctx_budget, action_capable, prompt_style
+- get_profile() matches by name prefix (longest first): e.g. qwen2.5:14b → temp=0.15, max=4096, ctx=12000
+- _build_system_prompt() emits plain/sections/xml style based on model profile
+- call_llm() auto-applies profile for default Ollama selected model
+- History trimmed to ctx_budget before sending (prevents context overflow)
+- Mistral Nemo 12B: temp=0.15, max_tokens=4096, ctx=24000, sections prompt style
+
+**Model picker in AI chat header**
+- Dropdown: Ollama installed (green dot + GB), cloud providers grayed if no key
+- Selection persisted to localStorage; passed as provider+model to backend
+- Auto closes on outside click
+
+**Compress/Export/Slash commands**
+- ⊟ compact button next to ctx% bar in header
+- /compress /summarize /clear /export md /export pdf slash commands
+- Export MD: Blob download; Export PDF: styled print window
+- Warning banner at 75%, auto-compress at 90%
+
+**Terminal improvements (BottomPanel.tsx)**
+- BUILTINS autocomplete on Tab key; cycles; suggestion bar on multi-match
+- Toolbar: ? help, ✕ clear, ✨ Ask AI (sends last cmd+output to AI chat)
+- Fixed: `python --version` crash — `re.sub()` lambda prevents `\U` in Windows paths being treated as Unicode escape
+- Fixed: exit codes no longer shown (real terminals don't display them)
+
+**Ollama auto-start (main.py)**
+- `_try_start_ollama()` on startup: checks `shutil.which('ollama')` + Windows path
+- Starts `ollama serve` windowlessly if not running; tracks installed/started state
+- `/api/v1/status` now includes `ollama_installed` + `ollama_running`
+- Settings: prominent install card with ↓ Download button when not installed; retry prompt when installed but not running
+- Installed model cards: 2-row layout matching library cards (description from catalog, aligned metadata)
+
+**AI Settings/context**
+- AI always sees current settings (provider keys, Ollama models) in system prompt
+- `_build_settings_context()` in ai_tools.py included in every /ai/chat call
+
+**glossa_chat.py — backend CLI for Glossa AI testing**
+- REPL + single-shot + test-suite modes
+- Loads full research context (sign_expansion.json, decipherment_synthesis.json, LEDGER)
+- Computes real T/I/M profiles for top-20 unassigned signs from corpus at startup
+- Corpus data structure documented in context (Python patterns for Counter-based analysis)
+- Action parsing + display; /r reload, /clear, /save, /actions, /quit
+- `--test --save` runs 6 Indus study prompts, saves results to reports/chat_test_*.json
+
+### Governance
+
+**AGENTS.md H9 — AI does the research**
+- Formalised the Glossa AI governance loop as a hard rule
+- Oz role: prompt engineering, context maintenance, quality evaluation, infrastructure fixes
+- Glossa AI role: all research analysis, hypothesis generation, Python script authoring
+- Failure mode table: hallucinated numbers → add real data; wrong M77 types → add crosswalk; etc.
+- `glossa_chat.py --test --save` is the standard verification step after every research update
+
+### Indus decipherment findings
+
+**Sign 845 analysis (from glossa_chat.py governance loop)**
+- Initially hypothesised as case suffix (T=0.796 at token level = 0.691 at inscription level)
+- Real corpus query revealed: stacking=18.2% (far above any case suffix: 6-9%), only 14 unique predecessors
+- Conclusion: sign 845 is NOT a grammatical suffix — it is a logographic OFFICE/CATEGORY MARKER
+- It appears as part of fixed administrative formulas, not as a free-attaching morpheme
+
+**Formula structure confirmed (run_formula_preamble_analysis.py)**
+- Full formula: [PREAMBLE][407=title][CASE MARKER][845=category][900=seal]
+- Three most common instances:
+  - [235][321][407][705][845] × 12 — institutional formula type A
+  - [850][61][407][806][845][900] × 10 — institutional formula type B
+  - [61][240][407][798=-ku][845] × 6 — institutional formula type C
+- Structural comparison: [QUALIFIER/NAME][TITLE][GRAMMATICAL RELATION][OFFICE CLASS][SEAL MARK]
+  matches Sumerian administrative seal format: [NAME][TITLE][CASE][CLASSIFIER][SEAL MARK]
+
+**Preamble sign profiles (confirmed with real corpus data)**
+- Sign 321: M=1.000, n=15 — ALWAYS in [235][321][407]; fixed grammatical connector (HIGH confidence)
+- Sign 850: I=0.818, n=55 — pure INITIAL, always precedes 61; seal class B opener (MED confidence)
+- Sign 61:  MIXED I=0.287 M=0.606, n=94 — bridge from 850 to 407; name/title start (MED confidence)
+- Sign 235: MEDIAL M=0.708, n=250 — most frequent preamble element; right=240(58x) and 321(14x)
+- Sign 240: MEDIAL M=0.689, n=354 — very common; follows 235, precedes 405/482/255
+- Sign 415: MIXED, left=407(14x) — appears AFTER 407 (post-title modifier or secondary case)
+- Sign 585: MIXED, left=407(14x), right=705(8x)/817(4x) — also follows 407 in some formulas
+
+**Hypotheses proposed by Glossa AI (to be created in database)**
+- Sign 407 (HIGH): Key administrative term in the standard Harappan seal formula, encoding TITLE/RANK/ROLE. Comparable to LUGAL (king) or ENSI (governor) in Sumerian seal formulas.
+- Sign 845 (MED): Office/category classifier (post-determinative); appears after case-marked titles to indicate institutional category
+- Sign 900 (HIGH): Seal authority mark — extreme terminal (T=0.955), closes administrative formulas
+- Sign 321 (HIGH): Fixed grammatical connector; always in [235][321][407]; may be a genitive linker or compound marker
+- Sign 850 (MED): Initial class marker opening seal type B; analogous to initial determinatives 400/520
+
+Files changed:
+- backend/glossa_lab/api/ai_tools.py (action system, model profiles, settings context)
+- backend/glossa_lab/api/status.py (ollama_installed, ollama_running)
+- backend/glossa_lab/api/terminal.py (GlossaShell)
+- backend/glossa_lab/glossa_shell.py (\U regex fix, exit code removal)
+- backend/glossa_lab/main.py (Ollama auto-start)
+- backend/glossa_lab/model_profiles.py (created — 35+ model profiles)
+- backend/glossa_lab/ai_utils.py (provider/model override)
+- backend/glossa_chat.py (created — research CLI)
+- backend/run_formula_preamble_analysis.py (created — authored by Glossa AI)
+- frontend/src/App.tsx (sidebar fixes, glossa:navigate listener)
+- frontend/src/components/AIChatWindow.tsx (action cards, model picker, compress, export)
+- frontend/src/components/BottomPanel.tsx (terminal autocomplete, help, Ask AI, exit code fix)
+- frontend/src/components/SettingsView.tsx (model card alignment, install button)
+- frontend/src/api.ts (AIAction, AIChatResponse, executeAiAction, model params)
+- AGENTS.md (H9 — Glossa AI governance loop)
+- reports/formula_preamble_analysis.json (generated)
+- reports/chat_test_*.json (test suite results)
+
+Checks run:
+- npm run build — 0 TypeScript errors ✓
+- shell.cmd lint (all changed backend files) — all checks passed ✓
+- glossa_chat.py --test: 6/6 tests passed ✓
+- setup-os.cmd restart ✓
+
+Open TODOs:
+- [ ] M77 profile matching for preamble signs 850, 321, 235, 61, 240 → Dravidian phonetic values
+- [ ] Create hypothesis entries in database (407, 845, 900, 321, 850) — approved by Glossa AI
+- [ ] Push token coverage from 22.4% toward 30%+
+- [ ] Fix stale Playwright UI locators (~40 tests, tab nav refactor)
+- [ ] Contact zone analysis (Mesopotamian Indus inscriptions)
+- [ ] Run glossa_chat.py --test --save after context refresh to verify AI quality
+
+Risks:
+- Glossa AI can still hallucinate M77 visual type names (M034, etc.) — crosswalk table not yet in context
+- Script authoring: AI wrote one script with a naming collision bug that required a tooling fix — need to add more code examples to context
+- Formula sign ordering is still probabilistic (ICIT corpus); true sequences would sharpen all results
+
+Next step: Run next Glossa AI prompt — M77 matching for preamble signs 850/321/235/61/240 → propose phonetic values → write run_preamble_value_assignment.py

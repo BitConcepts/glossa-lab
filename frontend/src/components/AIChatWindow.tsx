@@ -17,6 +17,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import {
   aiChat,
   getLocalCtxLength,
+  getResearchContext,
   listExperiments,
   listStudies,
   listTexts,
@@ -188,8 +189,11 @@ const { isOpen, request, closeChat, setDocked, isDocked } = useAIChat();
   const [compressing, setCompressing] = useState(false);
 
   // Context
-  const [contextType, setContextType] = useState<"" | "corpus" | "experiment" | "study">("");
+  const [contextType, setContextType] = useState<"" | "corpus" | "experiment" | "study" | "research">("");
   const [contextId, setContextId] = useState("");
+  const [researchSummary, setResearchSummary] = useState<{
+    n_assigned_signs: number; token_coverage_pct: number; next_steps: string[];
+  } | null>(null);
   const [corpora, setCorpora] = useState<TextResponse[]>([]);
   const [experiments, setExperiments] = useState<ExperimentMeta[]>([]);
   const [studies, setStudies] = useState<StudyResponse[]>([]);
@@ -349,6 +353,7 @@ const { isOpen, request, closeChat, setDocked, isDocked } = useAIChat();
   }, [toast]);
 
   const contextLabel = () => {
+    if (contextType === "research") return "Research";
     if (!contextType || !contextId) return null;
     const map: Record<string, string | undefined> = {
       corpus: corpora.find(c => c.id === contextId)?.name,
@@ -357,6 +362,17 @@ const { isOpen, request, closeChat, setDocked, isDocked } = useAIChat();
     };
     return map[contextType];
   };
+
+  const loadResearchContext = useCallback(async () => {
+    setContextType("research");
+    setContextId("");
+    setResearchSummary(null);
+    try {
+      const data = await getResearchContext();
+      setResearchSummary(data.summary);
+      toast("Research context loaded", "info");
+    } catch { toast("Could not load research context", "error"); }
+  }, [toast]);
 
   // When docked, render via BottomPanel instead
   if (!isOpen || isDocked) return null;
@@ -412,7 +428,7 @@ const { isOpen, request, closeChat, setDocked, isDocked } = useAIChat();
       <div style={{ padding: "6px 10px", borderBottom: "1px solid #f3f4f6", background: "#fafafa", display: "flex", gap: 4, flexWrap: "wrap", alignItems: "center", flexShrink: 0 }}>
         <span style={{ fontSize: 10, color: "#9ca3af", flexShrink: 0 }}>Context:</span>
         {(["", "corpus", "experiment", "study"] as const).map((ct) => (
-          <button key={ct || "none"} onClick={() => { setContextType(ct); setContextId(""); }}
+          <button key={ct || "none"} onClick={() => { setContextType(ct); setContextId(""); setResearchSummary(null); }}
             style={{ padding: "2px 7px", borderRadius: 4, border: "1px solid", cursor: "pointer", fontSize: 10,
               background: contextType === ct ? "#1e3a5f" : "#fff",
               borderColor: contextType === ct ? "#1e3a5f" : "#e5e7eb",
@@ -420,6 +436,16 @@ const { isOpen, request, closeChat, setDocked, isDocked } = useAIChat();
             {ct || "Global"}
           </button>
         ))}
+        {/* Research context button */}
+        <button
+          onClick={loadResearchContext}
+          title="Load current decipherment state (sign assignments, LEDGER, reports)"
+          style={{ padding: "2px 7px", borderRadius: 4, border: "1px solid", cursor: "pointer", fontSize: 10,
+            background: contextType === "research" ? "#7c3aed" : "#fff",
+            borderColor: contextType === "research" ? "#7c3aed" : "#e5e7eb",
+            color: contextType === "research" ? "#fff" : "#6b7280" }}>
+          🔬 Research
+        </button>
         {contextType === "corpus" && (
           <select value={contextId} onChange={e => setContextId(e.target.value)} style={selectSt}>
             <option value="">— corpus —</option>
@@ -438,10 +464,21 @@ const { isOpen, request, closeChat, setDocked, isDocked } = useAIChat();
             {studies.map(s => <option key={s.id} value={s.id}>{s.name.slice(0, 25)}</option>)}
           </select>
         )}
-        {contextLabel() && (
+        {contextLabel() && contextType !== "research" && (
           <span style={{ fontSize: 10, padding: "1px 6px", background: "#eff6ff", color: "#2563eb", borderRadius: 4, fontWeight: 600 }}>
             📎 {contextLabel()?.slice(0, 20)}
           </span>
+        )}
+        {contextType === "research" && researchSummary && (
+          <span style={{ fontSize: 9, padding: "2px 7px", background: "#f3e8ff", color: "#7c3aed",
+            borderRadius: 4, fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}
+            title={researchSummary.next_steps[0] ?? ""}
+          >
+            🔬 {researchSummary.n_assigned_signs} signs · {researchSummary.token_coverage_pct}% coverage
+          </span>
+        )}
+        {contextType === "research" && !researchSummary && (
+          <span style={{ fontSize: 9, color: "#9ca3af" }}>loading…</span>
         )}
       </div>
 
@@ -449,13 +486,34 @@ const { isOpen, request, closeChat, setDocked, isDocked } = useAIChat();
       <div style={{ flex: 1, overflowY: "auto", padding: "10px 12px", display: "flex", flexDirection: "column", gap: 8 }}>
         {messages.length === 0 && (
           <div style={{ textAlign: "center", padding: "2rem 1rem", color: "#9ca3af" }}>
-            <div style={{ fontSize: 28, marginBottom: 8 }}>✨</div>
-            <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 6, color: "#374151" }}>Glossa AI</div>
-            <div style={{ fontSize: 12, lineHeight: 1.6, maxWidth: 300, margin: "0 auto" }}>
-              Ask about Indus Script, entropy analysis, experiment design, or anything research-related.
+            <div style={{ fontSize: 28, marginBottom: 8 }}>{contextType === "research" ? "🔬" : "✨"}</div>
+            <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 6, color: "#374151" }}>
+              {contextType === "research" ? "Research Mode" : "Glossa AI"}
             </div>
+            {contextType === "research" && researchSummary ? (
+              <div style={{ fontSize: 11, lineHeight: 1.7, maxWidth: 360, margin: "0 auto", color: "#374151", textAlign: "left" }}>
+                <div>📊 <strong>{researchSummary.n_assigned_signs} signs assigned</strong> · {researchSummary.token_coverage_pct}% token coverage</div>
+                {researchSummary.next_steps[0] && (
+                  <div style={{ marginTop: 6, padding: "6px 8px", background: "#f3e8ff", borderRadius: 5, fontSize: 10 }}>
+                    Next: {researchSummary.next_steps[0].slice(0, 120)}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div style={{ fontSize: 12, lineHeight: 1.6, maxWidth: 300, margin: "0 auto" }}>
+                Ask about Indus Script, entropy analysis, experiment design, or anything research-related.
+              </div>
+            )}
             <div style={{ display: "flex", gap: 4, justifyContent: "center", flexWrap: "wrap", marginTop: 12 }}>
-              {["What is H2/H1 for natural language?", "Suggest experiments for entropy analysis", "Explain the Ventris method"].map(s => (
+              {(contextType === "research" ? [
+                "What should we work on next?",
+                "Assign values to the unknown TMK signs",
+                "Analyse the genitive pattern [615][503][752]",
+              ] : [
+                "What is H2/H1 for natural language?",
+                "Suggest experiments for entropy analysis",
+                "Explain the Ventris method",
+              ]).map(s => (
                 <button key={s} onClick={() => send(s)} style={{ padding: "4px 8px", border: "1px solid #e5e7eb", borderRadius: 5, background: "#fff", fontSize: 10, cursor: "pointer", color: "#374151" }}>{s}</button>
               ))}
             </div>

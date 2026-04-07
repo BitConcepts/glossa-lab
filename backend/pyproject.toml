@@ -77,6 +77,8 @@ known-first-party = ["glossa_lab", "tests"]
 "glossa_lab/api/ollama.py" = ["E501"]
 "glossa_lab/api/system.py" = ["E501"]
 "glossa_lab/api/terminal.py" = ["E501"]
+# CLI chat tool has long inline strings
+"glossa_chat.py" = ["E501"]
 # Research/decipherment scripts have long Tamil Unicode literals and reference strings
 "run_value_assignment.py" = ["E501"]
 "generate_decipherment_report.py" = ["E501"]

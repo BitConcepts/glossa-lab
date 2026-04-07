@@ -642,6 +642,21 @@ export const aiSynthesize = (body: { study_ids: string[]; question?: string }): 
 export const aiSignReading = (body: { sign_ids: string[]; theory?: string; context?: string }): Promise<Record<string, any>> =>
   request("POST", "/ai/sign-reading", body);
 
+export interface ResearchContextSummary {
+  n_assigned_signs: number;
+  token_coverage_pct: number;
+  next_steps: string[];
+  context_chars: number;
+}
+
+export interface ResearchContextResponse {
+  context: string;
+  summary: ResearchContextSummary;
+}
+
+export const getResearchContext = (): Promise<ResearchContextResponse> =>
+  request("GET", "/ai/research-context");
+
 // ── System Metrics ───────────────────────────────────────────────
 
 export interface GpuInfo {

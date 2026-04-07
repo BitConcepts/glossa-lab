@@ -14,12 +14,111 @@ from __future__ import annotations
 
 import asyncio
 import json
+from pathlib import Path
 from typing import Any
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
 router = APIRouter(prefix="/ai", tags=["ai-tools"])
+
+_REPORTS = Path(__file__).resolve().parent.parent.parent.parent / "reports"
+_LEDGER  = Path(__file__).resolve().parent.parent.parent.parent / "LEDGER.md"
+
+
+def _build_research_context() -> str:
+    """Assemble current Indus decipherment research state into a compact context block.
+
+    Loads from reports/sign_expansion.json and the last ~80 lines of LEDGER.md
+    so any AI model has the full current state without needing file uploads.
+    """
+    lines: list[str] = []
+    lines.append("=== GLOSSA LAB — INDUS SCRIPT DECIPHERMENT RESEARCH CONTEXT ===")
+
+    # ---- Sign assignments from sign_expansion.json --------------------------
+    catalog_path = _REPORTS / "sign_expansion.json"
+    if catalog_path.exists():
+        try:
+            data = json.loads(catalog_path.read_text(encoding="utf-8"))
+            cov = data.get("token_coverage", {})
+            lines.append(
+                "\nCorpus: 4,410 inscriptions | 14,213 tokens | 713 sign types"
+            )
+            lines.append(
+                f"Token coverage: {cov.get('pct', '?')}% "
+                f"({cov.get('known_tokens','?')}/{cov.get('total_tokens','?')}) "
+                "with current assignments"
+            )
+
+            # Sign catalog table
+            top100 = data.get("top100_catalog", [])
+            assigned = [r for r in top100 if r.get("confidence") in ("HIGH","MED","LOW")]
+            lines.append("\nSIGN ASSIGNMENTS (current session):")
+            lines.append("  Fuls  Count   T    I    M   M77  Conf   Value       Description")
+            for r in sorted(assigned, key=lambda x: x.get("rank", 999)):
+                lines.append(
+                    f"  {r['fuls']:>4}  {r['count']:>5}  "
+                    f"{r['t_rate']:.2f}  {r['i_rate']:.2f}  {r['m_rate']:.2f}  "
+                    f"{r['best_m77']:>4}  {r['confidence']:>4}  "
+                    f"{r['known_value']:>10}  {r.get('m77_desc','')[:20]}"
+                )
+        except Exception:  # noqa: BLE001
+            lines.append("(sign catalog unavailable)")
+
+    # ---- Key findings from decipherment_synthesis.json ----------------------
+    synth_path = _REPORTS / "decipherment_synthesis.json"
+    if synth_path.exists():
+        try:
+            d = json.loads(synth_path.read_text(encoding="utf-8"))
+            fish = d.get("fish_ranking", [])
+            if fish:
+                lines.append("\nFISH SIGN RANKING (M77 profile distance):")
+                for f in fish:
+                    lines.append(
+                        f"  Fuls {f['fuls']:>3} → M059 dist={f['m77_dist']:.3f}  "
+                        f"M-rate={f['m_rate']:.3f}  n={f['total']}"
+                    )
+            patts = d.get("readable_inscriptions", {})
+            lines.append(
+                f"\nReadable inscriptions: "
+                f"{patts.get('total_100pct',0)} fully known, "
+                f"{patts.get('total_50pct',0)} at >50%"
+            )
+            top = patts.get("top_patterns", [])[:8]
+            if top:
+                lines.append("Top patterns:")
+                for p in top:
+                    lines.append(
+                        f"  {' '.join(p['pattern'])} ({p['count']}x) = {p['reading']}"
+                    )
+        except Exception:  # noqa: BLE001
+            pass
+
+    # ---- Last LEDGER entry (open TODOs + next step) -------------------------
+    if _LEDGER.exists():
+        try:
+            ledger_text = _LEDGER.read_text(encoding="utf-8", errors="replace")
+            ledger_lines = ledger_text.splitlines()
+            # Find the last '## [' heading
+            last_entry_idx = max(
+                (i for i, ln in enumerate(ledger_lines) if ln.startswith("## [")),
+                default=max(0, len(ledger_lines) - 80),
+            )
+            snippet = "\n".join(ledger_lines[last_entry_idx:][-80:])
+            lines.append("\n=== LAST LEDGER ENTRY (current state + open TODOs) ===")
+            lines.append(snippet)
+        except Exception:  # noqa: BLE001
+            pass
+
+    lines.append("\n=== END RESEARCH CONTEXT ===")
+    lines.append(
+        "You are acting as a decipherment research collaborator. "
+        "Reason from the evidence above. Propose hypotheses with explicit "
+        "confidence levels (HIGH/MED/LOW). When suggesting analysis, describe "
+        "what a Python script would do so the team can implement it. "
+        "Reference Fuls sign numbers (e.g. 'sign 817') not abstract descriptions."
+    )
+    return "\n".join(lines)
 
 
 # ── Request models ─────────────────────────────────────────────────────────────
@@ -32,7 +131,7 @@ class ChatMessage(BaseModel):
 
 class ChatRequest(BaseModel):
     messages: list[ChatMessage]
-    context_type: str | None = None  # "corpus" | "experiment" | "study"
+    context_type: str | None = None  # "corpus" | "experiment" | "study" | "research"
     context_id: str | None = None
     stream: bool = False
 
@@ -96,7 +195,12 @@ async def ai_chat(body: ChatRequest) -> dict[str, Any]:
     from glossa_lab.experiment_base import get_experiment
 
     context_block = ""
-    if body.context_type and body.context_id:
+
+    # ── Research context: load full decipherment state from reports + LEDGER ──
+    if body.context_type == "research":
+        context_block = "\n\n" + _build_research_context()
+
+    elif body.context_type and body.context_id:
         db = get_db()
         if db:
             if body.context_type == "corpus":
@@ -415,3 +519,49 @@ async def ai_sign_reading(body: SignReadingRequest) -> dict[str, Any]:
         raise HTTPException(status_code=503, detail=str(e)) from e
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc)) from exc
+
+
+@router.get("/research-context")
+async def get_research_context() -> dict[str, Any]:
+    """Return the current Indus decipherment research context as a plain-text block.
+
+    The frontend uses this to show a preview and to inject research state
+    into the AI chat when context_type='research' is selected.
+    """
+    context = _build_research_context()
+    # Count how many sign assignments are loaded
+    catalog_path = _REPORTS / "sign_expansion.json"
+    n_assigned = 0
+    coverage_pct = 0.0
+    next_steps: list[str] = []
+    if catalog_path.exists():
+        try:
+            data = json.loads(catalog_path.read_text(encoding="utf-8"))
+            top100 = data.get("top100_catalog", [])
+            n_assigned = sum(
+                1 for r in top100 if r.get("confidence") in ("HIGH", "MED", "LOW")
+            )
+            cov = data.get("token_coverage", {})
+            coverage_pct = cov.get("pct", 0.0)
+        except Exception:  # noqa: BLE001
+            pass
+    # Pull next step from LEDGER
+    if _LEDGER.exists():
+        try:
+            text = _LEDGER.read_text(encoding="utf-8", errors="replace")
+            for line in reversed(text.splitlines()):
+                line = line.strip()
+                if line.startswith("Next step:"):
+                    next_steps = [line[len("Next step:"):].strip()]
+                    break
+        except Exception:  # noqa: BLE001
+            pass
+    return {
+        "context": context,
+        "summary": {
+            "n_assigned_signs": n_assigned,
+            "token_coverage_pct": coverage_pct,
+            "next_steps": next_steps,
+            "context_chars": len(context),
+        },
+    }

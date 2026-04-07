@@ -526,6 +526,86 @@ Otherwise: provisional only.
 
 ---
 
+## GLOSSA AI GOVERNANCE LOOP (REQUIRED PRACTICE)
+
+This governs how decipherment research and AI-driven analysis proceeds in Glossa Lab.
+Violating this loop produces unreliable research and untestable AI behaviour.
+
+### The Loop
+
+```
+  Oz proposes prompt
+       ↓
+  glossa_chat.py sends to Glossa AI
+       ↓
+  Glossa AI responds (text + optional %%ACTIONS%% block)
+       ↓
+  Oz evaluates response quality
+       ├── GOOD: record findings, approve actions, continue
+       └── BAD: fix context/system-prompt/profiles, re-run
+```
+
+### Role split — MANDATORY
+
+| Role | Responsibility |
+|---|---|
+| **Oz (this agent)** | Prompt engineering, context maintenance, quality evaluation, infrastructure fixes |
+| **Glossa AI** | Research analysis, hypothesis generation, Python script authoring, corpus interpretation |
+
+**Oz MUST NOT directly write analysis code or compute research results.**  
+All corpus analysis, sign assignment, and script authoring flows through Glossa AI.
+Oz intervenes ONLY to fix the infrastructure when Glossa AI fails.
+
+### When to run the test suite
+
+```
+# After every major research update or context change:
+cd backend
+venv\Scripts\python.exe glossa_chat.py --test --save
+```
+
+Results are saved to `reports/chat_test_<timestamp>.json`. Review them for:
+- Hallucinated T-rates / counts not present in the research context → add real data via `_load_unassigned_profiles()`
+- Wrong M77 visual type assignments → add explicit crosswalk to the context
+- AI telling user to do something vs doing it itself → update `_ACTION_ADDENDUM`
+- AI inventing values for unassigned signs → strengthen "cite context only" instruction
+
+### When Glossa AI responses are bad
+
+| Failure mode | Fix |
+|---|---|
+| Hallucinated numbers | Add real corpus profiles to `_load_unassigned_profiles()` in `glossa_chat.py` |
+| Wrong M77 types | Add visual crosswalk table to research context |
+| Action format errors | Tighten `_ACTION_ADDENDUM` instructions, fix parser |
+| No action when expected | Check `action_capable` in `model_profiles.py` for the active model |
+| AI too vague / no hypothesis | Add confidence-level requirement to system prompt instructions |
+
+### Glossa AI capabilities — what it MUST be able to do
+
+- Read and interpret all research context (sign assignments, corpus stats, LEDGER)
+- Propose and write Python analysis scripts as code in responses
+- Propose actions via `%%ACTIONS%%` blocks (run experiments, create hypotheses, run scripts)
+- Make testable, falsifiable hypotheses with explicit confidence levels (HIGH/MED/LOW)
+- Reject questions where the data is not in context: "I don't have X — run Y to get it"
+
+### Research script lifecycle
+
+1. Oz asks Glossa AI to design an analysis
+2. Glossa AI writes Python code in its response
+3. Oz saves the script to `backend/` (or AI proposes a `run_terminal` action)
+4. Script is executed; results saved to `reports/`
+5. Research context is refreshed (`/r` in REPL or re-run `--test`)
+6. LEDGER entry records findings
+
+### Hard rule H9 — AI does the research
+
+All corpus queries, sign profile computations, hypothesis scoring, and
+decipherment analysis MUST be initiated through Glossa AI prompts.
+Oz writing analysis code directly is a governance violation unless
+the purpose is to fix Glossa AI's context or tooling.
+
+---
+
 ## PDF GENERATION RULES
 
 All PDF reports generated via ReportLab MUST comply with the following rules.

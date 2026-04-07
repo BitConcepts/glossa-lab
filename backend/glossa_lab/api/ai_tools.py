@@ -249,7 +249,7 @@ def _build_research_context() -> str:
     lines.append("""
 === PYTHON SCRIPTING PATTERNS (for writing runnable analysis scripts) ===
 Corpus file: reports/icit_extracted_corpus.json  (relative to backend/)
-Load pattern:
+Load pattern — ALWAYS use this EXACT pattern:
   import json
   from collections import Counter, defaultdict
   from pathlib import Path
@@ -258,6 +258,10 @@ Load pattern:
   inscriptions = [i["sequence"] for i in data["inscriptions"] if i.get("sequence")]
   # inscriptions is a list of lists of STRINGS: [["32","817"], ["400","520","752"], ...]
   # Signs are strings (Fuls numbers), NOT integers.
+
+WRONG load (do NOT do this):
+  inscriptions = json.load(f)              # WRONG: loads a dict, not a list
+  inscriptions = data["inscriptions"]      # WRONG: items have 'sequence' key, must extract
 
 Profile computation pattern (always use this):
   total_c    = Counter(s for ins in inscriptions for s in ins)

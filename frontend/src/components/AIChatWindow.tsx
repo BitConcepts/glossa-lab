@@ -392,6 +392,8 @@ export function AIChatWindow({ panelHeight = 0 }: { panelHeight?: number }) {
     const text = (overrideText ?? input).trim();
     if (!text || busy) return;
     setInput("");
+    // Collapse textarea back to 1 line
+    if (textareaRef.current) textareaRef.current.style.height = "auto";
 
     // Slash commands
     if (text.startsWith("/")) {
@@ -655,17 +657,26 @@ export function AIChatWindow({ panelHeight = 0 }: { panelHeight?: number }) {
               el.style.height = "auto";
               el.style.height = Math.min(el.scrollHeight, 180) + "px";
             }}
-            onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); } }}
-            placeholder="Ask anything… Enter=send · Shift+Enter=newline · /help"
+            onKeyDown={e => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                send();
+              }
+            }}
+            placeholder="Message Glossa AI…"
+            autoFocus
             style={{
               width: "100%", boxSizing: "border-box",
-              minHeight: "32px", maxHeight: "180px",
-              padding: "6px 44px 6px 9px",  // right padding leaves room for button
-              border: "1px solid #d1d5db", borderRadius: 6,
-              fontSize: 12, resize: "vertical", fontFamily: "inherit",
-              outline: "none", lineHeight: 1.5, overflowY: "auto",
+              minHeight: "38px", maxHeight: "180px", height: "38px",
+              padding: "8px 44px 8px 10px",
+              border: "1px solid #e5e7eb", borderRadius: 8,
+              fontSize: 13, resize: "none", fontFamily: "inherit",
+              outline: "none", lineHeight: 1.5, overflowY: "hidden",
+              background: "#fafafa",
             }}
             disabled={busy || compressing}
+            onFocus={e => { e.target.style.borderColor = "#a78bfa"; e.target.style.background = "#fff"; e.target.style.boxShadow = "0 0 0 2px rgba(124,58,237,0.08)"; }}
+            onBlur={e => { e.target.style.borderColor = "#e5e7eb"; e.target.style.background = "#fafafa"; e.target.style.boxShadow = "none"; }}
           />
           {/* Embedded send / stop button */}
           {busy

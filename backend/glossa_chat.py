@@ -240,8 +240,18 @@ Left/right context:
 
 M77 profile matching: use L1 distance on (t_rate, i_rate, m_rate) triplets.
 The M77_FULL dict with profiles is defined in backend/run_sign_expansion.py.
+DO NOT use scipy or any non-stdlib library. Compute L1 distance with standard Python:
+  dist = abs(sign_t - m77_t) + abs(sign_i - m77_i) + abs(sign_m - m77_m)
 
 Results output: save JSON to ../reports/<name>.json
+
+Common mistakes to avoid:
+- Never use scipy.spatial.distance (not installed)
+- Always define total_c, terminal_c, initial_c, medial_c at module level before calling functions that use them
+- M77 dict values must be checked by key name, not by value content
+- A sign with M=1.000 is a CONNECTOR particle, not a suffix (-um etc. are terminal signs with T>0.8)
+  Pure medial connectors in Dravidian are: '-ākku-' (causative), '-in-' (genitive before another suffix),
+  compound linkers, or verbal participle markers like '-a-' (gerund connector)
 === END CORPUS DATA STRUCTURE ===""")
 
     lines.append("\n=== END RESEARCH CONTEXT ===")

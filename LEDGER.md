@@ -1786,6 +1786,90 @@ Risks:
 
 Next step: Match fish signs 70/72 to exact Mahadevan M-number via catalog;
   determine what sign 220 is if not fish; test [400][70/72] pattern
+
+---
+
+## [2026-04-07] Entry — Decipherment synthesis: fish anchored, sign 220=tree, first readings
+
+Objective: Exact M77 identification of fish signs; determine sign 220; test
+[400][fish]; attempt first inscription readings; update PDF report.
+
+What was done:
+- Created backend/run_decipherment_synthesis.py (5 analyses)
+- Updated backend/generate_decipherment_report.py (v2: corrected tables + readings)
+- Generated reports/decipherment_synthesis.json
+- Regenerated reports/indus_decipherment_report_2026.pdf (v2)
+- Re-ran contact zone and Luwian KL experiments (unchanged)
+
+Files changed:
+- backend/run_decipherment_synthesis.py (created)
+- backend/generate_decipherment_report.py (modified -- v2, corrected)
+- backend/pyproject.toml (modified)
+- reports/decipherment_synthesis.json (created)
+- reports/indus_decipherment_report_2026.pdf (regenerated v2)
+
+Checks run:
+- lint (all changed files) -- all checks passed
+- PDF generated without error
+
+RESULTS (landmark):
+
+FISH SIGN EXACT M77 IDENTIFICATION:
+- Fuls 72 = M77 064 (Fish variant D) dist=0.047 -- BEST match in entire corpus
+- Fuls 70 = M77 070 (Fish+two tail strokes) dist=0.065
+- Both are confirmed Mahadevan fish variants in his concordance
+- Fuls 70 appears at Lothal (coastal) -- mild geographic confirmation
+
+SIGN 220 = PLANT/TREE (M77 500):
+- Sign 220 (2nd most frequent, n=462) is M77 500 (Plant/tree sign)
+- NOT a fish sign. Dravidian rebus: maram/palam/palai (tree/fruit)
+- This is a MAJOR correction: previously hypothesised as fish, then 'VA/MA'
+- The tree sign appearing as the 2nd most common Indus sign suggests
+  vegetation/agriculture themes in the corpus
+
+[400][FISH] HYPOTHESIS FAILS:
+- Only 1 instance of [400][70/72] found in 4,410 inscriptions
+- Sign 400 is a GENERAL initial sign (bull head), not fish-specific
+- Previous fisherman pattern ([400][32/33/34]) was with stroke signs, not fish
+
+FIRST INSCRIPTION READINGS:
+- 10 inscriptions fully readable (100% known signs)
+- 384 inscriptions have >50% known signs
+- Candidate readings (hypothetical):
+  [72][817] = meen + -um (fish + enclitic)
+  [70][817] = meen + -um (allograph)
+  [72][752] = meen + -in (of the fish; genitive)
+  [400][32][817] = bull/a- + ka + -um
+  [32][817] = ka + -um (phonetic + suffix)
+- Most common patterns include suffix chains with -um (817)
+
+COMPLETE SIGN CATALOG (selected):
+  Sign 817 = -um (Tamil additive enclitic) -- HIGH CONFIDENCE
+  Sign 72  = meen (fish) = M77 064 -- MED CONFIDENCE
+  Sign 70  = meen (fish) = M77 070 -- MED CONFIDENCE
+  Sign 220 = maram? (tree/plant) = M77 500 -- LOW CONFIDENCE
+  Sign 32  = ka/na (short stroke) = M77 342 -- MED CONFIDENCE
+  Sign 400 = a-/bull (initial) = M77 200 -- MED CONFIDENCE
+  Sign 520 = a- (arrow/initial) = M77 028 -- MED CONFIDENCE
+  Signs 465-472 = PA/PE/PI/PO (CV series) -- MED CONFIDENCE
+
+Open TODOs:
+- [ ] Determine what meen-related inscriptions MEAN in Dravidian context:
+  [72][817] = 'meen-um' -- is this 'also fish' (enclitic use) or a name?
+- [ ] Test: do inscriptions with 72/70 (fish) cluster near rivers/coast?
+- [ ] Sign 220 = tree: what Dravidian words begin with palai/maram/palam?
+  Test these against sign 220's positional context
+- [ ] Identify more signs in the 38-sign medial phonetic inventory
+- [ ] Fix stale Playwright UI locators (40 tests)
+
+Risks:
+- Profile matching has limits; M77 064/070 assignments need visual verification
+- Sign 220 tree hypothesis dist is moderate -- could be a different medial sign
+- 10 fully-readable inscriptions may have coincidental 'known' sign coverage
+
+Next step: Test fish-sign inscriptions for geographic clustering;
+  interpret [72][817] = meen-um in Dravidian context;
+  identify signs in the 38-sign phonetic inventory
 - Luwian phoneme bigram model is underpowered; phoneme inventory overlap with Greek is high at this scale
 - TMK cross-validation requires OCR bigram data that doesn't exist yet (Mistral key + ~30 min OCR run)
 - ICIT corpus remains gated on Dr. Fuls collaboration

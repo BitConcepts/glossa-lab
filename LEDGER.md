@@ -1466,6 +1466,81 @@ Risks:
 - Dravidian hypothesis score is strong but does not exclude Luwian
 
 Next step: Assign tentative phonetic values to Ventris groups using Dravidian+Luwian syllable inventories
+
+---
+
+## [2026-04-07] Entry — Sign value assignment, prediction validation, academic PDF
+
+Objective: Assign tentative Dravidian phonetic values to Ventris groups; validate predictions; publish academic report.
+
+What was done:
+- Built and ran dump_phono_results.py to load full Ventris/equivalence data
+- Created run_value_assignment.py: full phonetic value assignment framework
+  - 28 sign hypotheses (1 HIGH, 12 MED, 15 LOW)
+  - Proto-Dravidian case suffix inventory mapped to TMK signs
+  - Ventris SERIES-A/B/C/D + VOWEL-A/B documented with hypothetical values
+  - 10 allograph families from equivalence classes
+  - 5 key testable predictions defined
+  - P1 validation inline: sign 817 = '-um' (84 unique predecessors, 9.1% stacking)
+- Created validate_hypotheses.py: formal P3/P4/P5 validation
+- Created generate_decipherment_report.py: 8-section academic PDF
+- Saved reports/indus_sign_hypothesis_matrix.json and indus_decipherment_report_2026.pdf
+- Added per-file-ignores for research scripts in pyproject.toml
+
+Files changed:
+- backend/run_value_assignment.py (created)
+- backend/validate_hypotheses.py (created)
+- backend/generate_decipherment_report.py (created)
+- backend/dump_phono_results.py (created)
+- backend/pyproject.toml (modified — per-file-ignores for research scripts)
+- reports/indus_sign_hypothesis_matrix.json (created)
+- reports/indus_decipherment_report_2026.pdf (created)
+
+Checks run:
+- lint (all changed files) — all checks passed
+- All scripts ran without error
+
+RESULTS:
+
+SIGN VALUE ASSIGNMENTS (selected HIGH/MED confidence):
+- Sign 817 = Tamil '-um' (additive enclitic) --- HIGH CONFIDENCE
+  Evidence: 84 unique predecessor roots, 9.1% co-TMK stacking, most common suffix
+- Sign 920 = '-e/-ē' (accusative/vocative) --- MED
+- Sign 760 = '-il' (locative, 'in/at') --- MED (SERIES-D member)
+- Sign 798 = '-ku' (dative, 'to/for') --- MED
+- Sign 752 = '-in' (genitive/oblique) --- MED (SERIES-A; compound [503,752])
+- Sign 400 = 'A-' initial vowel --- MED (REVISED: was PERSON-DET; P3 showed neutral length)
+- Signs 32/33/34 = KA/KE/KI series --- MED (Equiv Class 1 allograph triplet)
+- Signs 465/467/468/472 = PA/PE/PI/PO --- MED (SERIES-A, coh=0.896, consecutive Fuls)
+
+VALIDATED PREDICTIONS:
+- P1 (817 = -um): SUPPORTED — 9.1% stacking, 84 unique predecessors
+- P2 (465-472 = CV family): STRUCTURAL — consecutive Fuls confirms allograph family
+- P3 (400 = PERSON-DET): NEUTRAL — +0.02 length diff; REVISED to initial vowel 'A-'
+- P4 (contact signs + numerals): INCONCLUSIVE — contact = identity markers
+- P5 ([503,752] = genitive): PARTIAL — 97% in 2nd half of inscriptions
+
+KEY INSIGHT (P3 revision): Sign 400 is most often followed by signs 32/33/34
+(the KA/KE/KI allograph triplet). This means 400+32 = 'A-KA' = 'aka' (Tamil:
+akam = interior/home) or similar 'a-initial' words. This is consistent with
+400 being an initial vowel sign, not a determinative.
+
+Open TODOs:
+- [ ] Fuls–Mahadevan crosswalk (CRITICAL): map Fuls sign numbers to visual
+  descriptions (fish, jar, man, arrow) for rebus principle application
+- [ ] Full equivalence classes: run union-find on all 544 substitution pairs
+- [ ] Deep analysis of compound [405, 501] (PMI=4.800, likely title formula)
+- [ ] Test SERIES-A (465-472 = PA/PE/PI/PO): do P-initial Tamil word stems
+  match positional distributions in the corpus?
+- [ ] Fix stale Playwright UI locators (40 tests)
+
+Risks:
+- Sign value assignments are hypotheses; no bilingual anchor exists
+- Sign ordering is probabilistic; true sequences would sharpen all results
+- 400 = 'A-' revision needs further testing (P3 was neutral, not refuting)
+
+Next step: Build Fuls-Mahadevan sign number crosswalk; test rebus principle
+on top-frequency signs; deepen SERIES-A value assignment
 - Luwian phoneme bigram model is underpowered; phoneme inventory overlap with Greek is high at this scale
 - TMK cross-validation requires OCR bigram data that doesn't exist yet (Mistral key + ~30 min OCR run)
 - ICIT corpus remains gated on Dr. Fuls collaboration

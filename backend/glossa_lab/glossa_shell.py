@@ -99,6 +99,8 @@ class GlossaShell:
         "which", "where",
         "clear", "cls",
         "help",
+        "pip", "pip3",
+        "setup",
     })
 
     def __init__(
@@ -111,6 +113,10 @@ class GlossaShell:
         if not self.cwd.is_relative_to(self.sandbox_root):
             self.cwd = self.sandbox_root
         self.env = {**os.environ}
+        # Track venv state once on init (cheap path-existence check)
+        self._venv_py = _venv_python()
+        self._venv_ok = self._venv_py.exists()
+        self._greeted = False
 
     # ── Public entry point ────────────────────────────────────────────────────
 
@@ -118,7 +124,28 @@ class GlossaShell:
         """Execute *command* and yield output lines."""
         command = command.strip()
         if not command or command.startswith("#"):
+            # On the very first empty run we still want to emit the venv banner
             return
+
+        # Emit venv status banner on first real command
+        if not self._greeted:
+            self._greeted = True
+            if self._venv_ok:
+                # Get Python version quickly
+                try:
+                    import subprocess as _sp  # noqa: PLC0415
+                    r = _sp.run(
+                        [str(self._venv_py), "--version"],
+                        capture_output=True, text=True, timeout=3,
+                        **_POPEN_FLAGS,
+                    )
+                    ver = (r.stdout or r.stderr).strip().replace("Python ", "")
+                    yield f"\x1b[32m● venv active\x1b[0m  Python {ver}  ·  {self._venv_py.parent}"
+                except Exception:  # noqa: BLE001
+                    yield "\x1b[32m● venv active\x1b[0m"
+            else:
+                yield "\x1b[33m⚠ No virtual environment found.\x1b[0m"
+                yield "  Run 'setup' here or go to Settings → Python Environment to create it."
 
         # Tokenise (POSIX-style on all platforms for consistency)
         try:
@@ -170,6 +197,10 @@ class GlossaShell:
             yield "\x1b[2J\x1b[H"   # ANSI clear — frontend strips ANSI anyway
         elif cmd == "help":
             yield from self._help()
+        elif cmd in ("pip", "pip3"):
+            yield from self._pip(args)
+        elif cmd == "setup":
+            yield from self._setup_hint()
         else:
             yield from self._subprocess(command)
 
@@ -411,7 +442,26 @@ class GlossaShell:
         yield "Anything else is forwarded to the OS shell (no visible window on Windows)."
         yield "python <script>  →  runs the Glossa Lab venv Python automatically."
 
-    # ── Subprocess fallback (no visible window) ───────────────────────────────
+    def _pip(self, args: list[str]) -> Iterator[str]:
+        """Route pip commands to the venv Python -m pip."""
+        if not self._venv_ok:
+            yield "pip: no virtual environment found — run 'setup' first"
+            return
+        # Build the real command: venv/python -m pip <args>
+        pip_cmd = f'"{self._venv_py}" -m pip {" ".join(args)}'
+        yield from self._subprocess(pip_cmd)
+
+    def _setup_hint(self) -> Iterator[str]:
+        """Hint user toward the Settings > Python Environment panel."""
+        if self._venv_ok:
+            yield "\x1b[32m\u25cf venv is already active\x1b[0m  — nothing to set up."
+            yield "  To rebuild: Settings \u2192 Python Environment \u2192 Rebuild venv"
+        else:
+            yield "\x1b[33m\u26a0 No virtual environment found.\x1b[0m"
+            yield "  Go to  Settings \u2192 Python Environment \u2192 Setup venv"
+            yield "  Or run from the repo root:  shell.cmd setup"
+
+    # ── Subprocess fallback (no visible window) ───────────────────────────────────────────────
 
     def _subprocess(self, command: str) -> Iterator[str]:
         """Execute command via OS shell with no visible window on Windows."""

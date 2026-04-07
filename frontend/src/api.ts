@@ -838,6 +838,38 @@ export const setLocalCtxLength = (n: number): void =>
 export const getOllamaPullUrl = (modelName: string): string =>
   `/api/v1/ollama/pull/${modelName}`;
 
+// ── Python Environment ─────────────────────────────────────────────
+
+export interface EnvStatus {
+  venv_exists: boolean;
+  venv_path: string;
+  python_path: string | null;
+  python_version: string | null;
+  pkg_count: number;
+  backend_dir: string;
+}
+
+export interface EnvPackage {
+  name: string;
+  version: string;
+}
+
+export const getEnvStatus = (): Promise<EnvStatus> =>
+  request("GET", "/env/status");
+
+export const getEnvPackages = (): Promise<{ packages: EnvPackage[]; count: number; venv_exists: boolean }> =>
+  request("GET", "/env/packages");
+
+// SSE streams — return the URL; caller opens EventSource
+export const getEnvSetupUrl  = (): string => `/api/v1/env/setup`;
+export const getEnvRebuildUrl = (): string => `/api/v1/env/rebuild`;
+export const getEnvUpgradeUrl = (): string => `/api/v1/env/upgrade`;
+
+// POST wrappers that return a raw Response (SSE body)
+export const runEnvSetup   = (): Promise<Response> => fetch(`${BASE}/env/setup`,   { method: "POST" });
+export const runEnvRebuild = (): Promise<Response> => fetch(`${BASE}/env/rebuild`, { method: "POST" });
+export const runEnvUpgrade = (): Promise<Response> => fetch(`${BASE}/env/upgrade`, { method: "POST" });
+
 // ── Terminal + Logs ─────────────────────────────────────────────────
 
 export const getLogStreamUrl = (): string => `/api/v1/terminal/log/stream`;

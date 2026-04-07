@@ -16,6 +16,7 @@ from fastapi.staticfiles import StaticFiles
 from glossa_lab import __version__
 from glossa_lab.api.ai_tools import router as ai_tools_router
 from glossa_lab.api.analysis import router as analysis_router
+from glossa_lab.api.env import router as env_router
 from glossa_lab.api.catalog import router as catalog_router
 from glossa_lab.api.experiments import router as experiments_router
 from glossa_lab.api.health import router as health_router
@@ -178,6 +179,7 @@ def create_app() -> FastAPI:
     application.include_router(terminal_router, prefix="/api/v1")
     application.include_router(settings_router)
     application.include_router(shutdown_router, prefix="/api/v1")
+    application.include_router(env_router, prefix="/api/v1")
 
     # Serve built frontend at "/" — run 'npm run build' in frontend/ to populate.
     # Skipped silently in dev if the dist directory does not yet exist.

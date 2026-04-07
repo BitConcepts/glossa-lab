@@ -64,6 +64,83 @@ def purple(t: str) -> str: return _c("35", t)
 
 # ── Context builders (mirrored from ai_tools.py) ──────────────────────────────
 
+_ACTION_ADDENDUM = """
+
+=== GLOSSA LAB ACTIONS ===
+When asked to run/execute something, YOU (the AI assistant) must include this block
+IN YOUR OWN RESPONSE (not instruct the user to include it):
+
+%%ACTIONS%%
+[{"type": "run_experiment", "params": {"id": "contact_zone_analysis"}, "label": "Run Contact Zone Analysis", "description": "Runs KL divergence on contact vs heartland sites (~30s)."}]
+%%END_ACTIONS%%
+
+Rules:
+- The JSON inside must be a SINGLE array [ ] containing one or more action objects.
+- Do NOT emit multiple separate [ ] arrays — combine into one.
+- Valid types: run_experiment {id}, run_pipeline {pipeline,params,name},
+  change_setting {key,value}, create_hypothesis {title,statement},
+  create_notebook {title,content}, open_view {view}, clear_jobs {}.
+- Only emit actions when user explicitly asks you to DO something.
+- Always explain your reasoning BEFORE the %%ACTIONS%% block.
+=== END GLOSSA LAB ACTIONS ==="""
+
+
+def _load_unassigned_profiles() -> str:
+    """Compute positional profiles for top unassigned signs directly from corpus."""
+    corpus_path = _REPORTS / "icit_extracted_corpus.json"
+    catalog_path = _REPORTS / "sign_expansion.json"
+    if not corpus_path.exists() or not catalog_path.exists():
+        return ""
+    try:
+        from collections import Counter, defaultdict  # noqa: PLC0415
+        corpus_data = json.loads(corpus_path.read_text("utf-8"))
+        inscriptions = [i["sequence"] for i in corpus_data["inscriptions"] if i.get("sequence")]
+
+        total_c: Counter = Counter()
+        terminal_c: Counter = Counter()
+        initial_c: Counter = Counter()
+        medial_c: Counter = Counter()
+        for ins in inscriptions:
+            total_c.update(ins)
+            if len(ins) == 1:
+                pass
+            else:
+                initial_c[ins[0]] += 1
+                terminal_c[ins[-1]] += 1
+                for s in ins[1:-1]:
+                    medial_c[s] += 1
+
+        # Load already-assigned signs to identify unassigned ones
+        catalog = json.loads(catalog_path.read_text("utf-8"))
+        top100 = catalog.get("top100_catalog", [])
+        assigned_fuls = {r["fuls"] for r in top100 if r.get("confidence") in ("HIGH", "MED", "LOW")}
+
+        # Top unassigned by frequency
+        unassigned = [
+            (sign, count) for sign, count in total_c.most_common()
+            if sign not in assigned_fuls
+        ][:20]
+
+        lines = ["\nTOP UNASSIGNED SIGNS (real corpus profiles, for analysis):",
+                 "  Fuls  Count   T-rate  I-rate  M-rate  category"]
+        for sign, n in unassigned:
+            t = round(terminal_c.get(sign, 0) / n, 3) if n else 0
+            i = round(initial_c.get(sign, 0) / n, 3) if n else 0
+            m = round(medial_c.get(sign, 0) / n, 3) if n else 0
+            if t >= 0.60:
+                cat = "TMK (suffix candidate)"
+            elif i >= 0.50:
+                cat = "INITIAL (det/phonetic)"
+            elif m >= 0.65:
+                cat = "MEDIAL (phonetic)"
+            else:
+                cat = "mixed"
+            lines.append(f"  {sign:>4}  {n:>5}   {t:.3f}   {i:.3f}   {m:.3f}  {cat}")
+        return "\n".join(lines)
+    except Exception as exc:  # noqa: BLE001
+        return f"\n(unassigned profiles unavailable: {exc})"
+
+
 def _build_research_context() -> str:
     lines: list[str] = []
     lines.append("=== GLOSSA LAB — INDUS SCRIPT DECIPHERMENT RESEARCH CONTEXT ===")
@@ -132,13 +209,16 @@ def _build_research_context() -> str:
         except Exception:
             pass
 
+    # Include real profiles for top unassigned signs
+    lines.append(_load_unassigned_profiles())
+
     lines.append("\n=== END RESEARCH CONTEXT ===")
     lines.append(
         "You are acting as a decipherment research collaborator. "
-        "Reason from the evidence above. Propose hypotheses with explicit "
-        "confidence levels (HIGH/MED/LOW). When suggesting analysis, describe "
-        "what a Python script would do so the team can implement it. "
-        "Reference Fuls sign numbers (e.g. 'sign 817') not abstract descriptions."
+        "Reason from the evidence above ONLY — do not invent T-rates, I-rates, or counts "
+        "that are not in the context; if data is missing say so and recommend running "
+        "the relevant script. Propose hypotheses with explicit confidence levels "
+        "(HIGH/MED/LOW). Reference Fuls sign numbers (e.g. 'sign 817')."
     )
     return "\n".join(lines)
 
@@ -172,11 +252,31 @@ def _parse_actions(text: str) -> tuple[str, list[dict]]:
     m = _ACTION_RE.search(text)
     if not m:
         return text, []
-    try:
-        actions = json.loads(m.group(1).strip())
-        return text[: m.start()].rstrip(), actions if isinstance(actions, list) else []
-    except Exception:
-        return text, []
+    raw = m.group(1).strip()
+    # Model sometimes emits multiple separate arrays instead of one combined array.
+    # Find all [...] blocks and collect only those whose items are dicts (action objects).
+    # This avoids accidentally collecting sign sequences like [520] or [2] from the text.
+    arrays = re.findall(r"\[.*?\]", raw, re.DOTALL)
+    actions: list[dict] = []
+    for arr in arrays:
+        try:
+            parsed = json.loads(arr)
+            if isinstance(parsed, list):
+                for item in parsed:
+                    if isinstance(item, dict) and "type" in item:
+                        actions.append(item)
+        except Exception:
+            pass
+    if not actions:
+        # Last resort: try the whole block as a single JSON array
+        try:
+            parsed_whole = json.loads(raw)
+            if isinstance(parsed_whole, list):
+                actions = [a for a in parsed_whole if isinstance(a, dict) and "type" in a]
+        except Exception:
+            return text, []
+    clean = text[: m.start()].rstrip()
+    return clean, actions
 
 
 # ── Core chat function ────────────────────────────────────────────────────────
@@ -208,21 +308,26 @@ def build_system(use_research: bool = True, model: str | None = None) -> str:
     profile = get_profile(model)
     research_ctx = ("\n\n" + _build_research_context()) if use_research else ""
     settings_ctx = _build_settings_context()
+    action_addendum = _ACTION_ADDENDUM if profile["action_capable"] else ""
     base = (
         "You are Glossa, an expert AI research assistant for Glossa Lab — a computational "
         "linguistics platform studying the Indus Script. You have deep knowledge of "
         "information theory, computational linguistics, ancient scripts, and the specific "
         "methodology used at Glossa Lab."
     )
+    instruct = (
+        "Be concise and scientifically rigorous. Cite specific numbers from the context only. "
+        "When data is not in context, say so explicitly rather than estimating. "
+        "Reference Fuls sign numbers."
+    )
     if profile["prompt_style"] == "sections":
         return (
             f"### Role\n{base}\n\n"
             f"### Context{research_ctx}{settings_ctx}\n\n"
-            "### Instructions\n"
-            "Be concise and scientifically rigorous. Cite specific numbers. "
-            "When uncertain, say so. Reference Fuls sign numbers."
+            f"### Instructions\n{instruct}"
+            f"{action_addendum}"
         )
-    return f"{base}{research_ctx}{settings_ctx}\n\nBe concise and rigorous."
+    return f"{base}{research_ctx}{settings_ctx}\n\n{instruct}{action_addendum}"
 
 
 # ── Output helpers ────────────────────────────────────────────────────────────

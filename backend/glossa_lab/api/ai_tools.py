@@ -32,20 +32,35 @@ _ACTION_RE = re.compile(r"%%ACTIONS%%(.*?)%%END_ACTIONS%%", re.DOTALL)
 def _parse_actions(text: str) -> tuple[str, list[dict[str, Any]]]:
     """Extract %%ACTIONS%%...%%END_ACTIONS%% block from LLM response.
 
-    Returns (clean_text, actions_list).  Any parse failure leaves the text
-    unchanged and returns an empty actions list.
+    Handles models that emit multiple separate [...] arrays instead of one.
+    Filters to only items that are dicts with a 'type' key (action objects),
+    so sign-sequence numbers like [520] in the text never cause parse errors.
+    Returns (clean_text, actions_list).
     """
     match = _ACTION_RE.search(text)
     if not match:
         return text, []
-    try:
-        actions: list[dict[str, Any]] = json.loads(match.group(1).strip())
-        if not isinstance(actions, list):
+    raw = match.group(1).strip()
+    # Collect all [...] array blocks, keep only dict items with 'type'
+    arrays = re.findall(r"\[.*?\]", raw, re.DOTALL)
+    actions: list[dict[str, Any]] = []
+    for arr in arrays:
+        try:
+            parsed = json.loads(arr)
+            if isinstance(parsed, list):
+                for item in parsed:
+                    if isinstance(item, dict) and "type" in item:
+                        actions.append(item)
+        except (json.JSONDecodeError, ValueError):
+            pass
+    if not actions:
+        try:
+            parsed_whole = json.loads(raw)
+            if isinstance(parsed_whole, list):
+                actions = [a for a in parsed_whole if isinstance(a, dict) and "type" in a]
+        except (json.JSONDecodeError, ValueError):
             return text, []
-        clean = text[: match.start()].rstrip()
-        return clean, actions
-    except (json.JSONDecodeError, ValueError):
-        return text, []
+    return text[: match.start()].rstrip(), actions
 
 
 def _build_settings_context() -> str:

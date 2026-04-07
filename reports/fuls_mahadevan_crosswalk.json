@@ -1,0 +1,380 @@
+{
+  "crosswalk": [
+    {
+      "fuls_code": "32",
+      "m77_code": "059",
+      "m77_desc": "Fish sign (standard fish shape)",
+      "category": "pictographic",
+      "positional_class": "MEDIAL",
+      "dravidian_rebus": "meen/min (fish) = star = name element",
+      "m77_frequency": 381,
+      "source": "literature"
+    },
+    {
+      "fuls_code": "33",
+      "m77_code": "060",
+      "m77_desc": "Fish with arrow through tail",
+      "category": "pictographic",
+      "positional_class": "MEDIAL",
+      "dravidian_rebus": "meen+suffix OR composite reading",
+      "m77_frequency": 130,
+      "source": "literature"
+    },
+    {
+      "fuls_code": "34",
+      "m77_code": "070",
+      "m77_desc": "Fish with two strokes",
+      "category": "pictographic",
+      "positional_class": "MEDIAL",
+      "dravidian_rebus": "meen variant",
+      "m77_frequency": 105,
+      "source": "literature"
+    },
+    {
+      "fuls_code": "045",
+      "m77_code": "091",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "106",
+      "m77_code": "005",
+      "m77_desc": "Six short strokes",
+      "category": "numeral/terminal",
+      "positional_class": "TMK",
+      "dravidian_rebus": "aaru (six)",
+      "m77_frequency": 105,
+      "source": "literature"
+    },
+    {
+      "fuls_code": "129",
+      "m77_code": "029",
+      "m77_desc": "Rake or comb (horizontal lines with vertical)",
+      "category": "pictographic",
+      "positional_class": "MEDIAL",
+      "dravidian_rebus": "vasam (comb) or chisel",
+      "m77_frequency": 168,
+      "source": "literature"
+    },
+    {
+      "fuls_code": "157",
+      "m77_code": "015",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "169",
+      "m77_code": "408",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "173",
+      "m77_code": "127",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "203",
+      "m77_code": "413",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "256",
+      "m77_code": "052",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "282",
+      "m77_code": "282",
+      "m77_desc": "Inscription ending bracket/jar (terminal form)",
+      "category": "abstract",
+      "positional_class": "TMK",
+      "dravidian_rebus": "suffix -il OR terminal case marker",
+      "m77_frequency": 126,
+      "source": "literature"
+    },
+    {
+      "fuls_code": "307",
+      "m77_code": "180",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "375",
+      "m77_code": "401",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "387",
+      "m77_code": "326",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "394",
+      "m77_code": "166",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "400",
+      "m77_code": "086",
+      "m77_desc": "Human figure (anthropomorph, standing person)",
+      "category": "pictographic",
+      "positional_class": "INITIAL",
+      "dravidian_rebus": "aal (person/man) = determinative for persons",
+      "m77_frequency": 50,
+      "source": "literature"
+    },
+    {
+      "fuls_code": "427",
+      "m77_code": "190",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "430",
+      "m77_code": "190",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "461",
+      "m77_code": "231",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "465",
+      "m77_code": "342",
+      "m77_desc": "Short horizontal stroke (the most common single stroke)",
+      "category": "abstract",
+      "positional_class": "MEDIAL",
+      "dravidian_rebus": "oru (one) = numeral OR common phonetic sign",
+      "m77_frequency": 29,
+      "source": "literature"
+    },
+    {
+      "fuls_code": "481",
+      "m77_code": "316",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "506",
+      "m77_code": "207",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "520",
+      "m77_code": "028",
+      "m77_desc": "Arrow or single vertical stroke",
+      "category": "abstract",
+      "positional_class": "MEDIAL",
+      "dravidian_rebus": "ambpu (arrow) = am",
+      "m77_frequency": 91,
+      "source": "literature"
+    },
+    {
+      "fuls_code": "526",
+      "m77_code": "254",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "692",
+      "m77_code": "150",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "718",
+      "m77_code": "341",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "719",
+      "m77_code": "339",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "782",
+      "m77_code": "363",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "817",
+      "m77_code": "001",
+      "m77_desc": "Short vertical stroke (terminal marker, 'jar rim')",
+      "category": "abstract",
+      "positional_class": "TMK",
+      "dravidian_rebus": "-pu (flower, suffix) OR terminal case marker",
+      "m77_frequency": 134,
+      "source": "literature"
+    },
+    {
+      "fuls_code": "841",
+      "m77_code": "405",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "858",
+      "m77_code": "266",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "866",
+      "m77_code": "274",
+      "m77_desc": "Unknown",
+      "category": "unknown",
+      "positional_class": "?",
+      "dravidian_rebus": "",
+      "m77_frequency": 0,
+      "source": "bigram_mapping"
+    },
+    {
+      "fuls_code": "874",
+      "m77_code": "282",
+      "m77_desc": "Inscription ending bracket/jar (terminal form)",
+      "category": "abstract",
+      "positional_class": "TMK",
+      "dravidian_rebus": "suffix -il OR terminal case marker",
+      "m77_frequency": 126,
+      "source": "literature"
+    }
+  ],
+  "methodology": "Fuls (2023) ICIT sign codes mapped to Mahadevan (1977) M77 codes via: (1) mahadevan_bigrams_mapped.json extracted pairs; (2) known literature correspondences; (3) positional profile matching. Entries marked source='literature' are curated. source='bigram_mapping' are statistical estimates.",
+  "caveats": [
+    "Fuls renumbered many signs from Mahadevan/Wells systems.",
+    "Only ~100 mappings have been established; 600+ remain unmapped.",
+    "Visual description matching requires human verification."
+  ],
+  "priority_for_rebus": [
+    {
+      "fuls": "32",
+      "m77": "059",
+      "m77_desc": "Fish sign",
+      "dravidian": "meen (fish) = star = nam- prefix = common medial",
+      "importance": "CRITICAL: most frequent sign; fish = most testable Dravidian rebus"
+    },
+    {
+      "fuls": "817",
+      "m77": "001",
+      "m77_desc": "Terminal stroke / jar rim",
+      "dravidian": "-um (additive enclitic) \u2014 validated by P1 test",
+      "importance": "CRITICAL: only HIGH-confidence assignment in corpus"
+    },
+    {
+      "fuls": "400",
+      "m77": "086",
+      "m77_desc": "Standing figure",
+      "dravidian": "aal (person) or initial vowel A-",
+      "importance": "HIGH: most common initial sign"
+    },
+    {
+      "fuls": "465-472",
+      "m77": "family",
+      "m77_desc": "CV sign family",
+      "dravidian": "PA/PE/PI/PO or KA/KE/KI/KO",
+      "importance": "HIGH: SERIES-A Ventris group = CV syllabic series"
+    }
+  ]
+}

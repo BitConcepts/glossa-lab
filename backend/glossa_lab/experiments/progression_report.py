@@ -452,5 +452,6 @@ class ProgressionReport(_EB):
     command = "python -m glossa_lab.experiments.progression_report"
     results_file = "reports/progression.json"
 
-    def run(self, **kwargs):
-        return main()
+    def run(self, **kwargs) -> dict:
+        """Run the full progression benchmark and return the result dict."""
+        return run_progression_report(verbose=False)

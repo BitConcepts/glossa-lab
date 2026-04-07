@@ -424,5 +424,6 @@ class IndusStructuralAtlas(_EB):
     command = "python -m glossa_lab.experiments.indus_structural_atlas"
     results_file = "reports/indus_structural_atlas.json"
 
-    def run(self, **kwargs):
-        return main(verbose=False) if "verbose" in main.__code__.co_varnames else main()
+    def run(self, **kwargs) -> dict:
+        """Run the full Indus structural analysis and return the report dict."""
+        return run_indus_atlas(verbose=False)

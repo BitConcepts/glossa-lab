@@ -18,7 +18,7 @@ async def status():
 
     Satisfies REQ-API-002.
     """
-    from glossa_lab.main import get_start_time
+    from glossa_lab.main import get_ollama_state, get_start_time  # noqa: PLC0415
 
     start = get_start_time()
     uptime = time.time() - start if start > 0 else 0.0
@@ -38,6 +38,7 @@ async def status():
     )
     pipelines = get_registered_pipelines()
 
+    ollama = get_ollama_state()
     return {
         "status": "healthy",
         "version": __version__,
@@ -47,4 +48,6 @@ async def status():
         "pipelines": pipelines,
         "pipeline_count": len(pipelines),
         "catalog_counts": get_catalog_summary(),
+        "ollama_installed": ollama["installed"],
+        "ollama_running": ollama["started"],
     }

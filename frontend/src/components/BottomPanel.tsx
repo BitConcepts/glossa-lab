@@ -245,8 +245,8 @@ function TerminalPanel() {
                   setHistory((h) => [...h, { text: line, type: "output" }]);
                   lastOutputRef.current = [...lastOutputRef.current.slice(-29), line];
                 }
-                if (d.return_code !== undefined)
-                  setHistory((h) => [...h, { text: `Exit code: ${d.return_code}`, type: d.return_code === 0 ? "info" : "error" }]);
+                // Never show exit code — real terminals don't display them.
+                // Only surface actual error messages from the shell.
                 if (d.message)
                   setHistory((h) => [...h, { text: `Error: ${d.message}`, type: "error" }]);
               } catch { /* ignore */ }

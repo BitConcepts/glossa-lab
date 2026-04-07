@@ -1,7 +1,11 @@
 """Glossa Lab backend application entrypoint."""
 
 import asyncio
+import shutil
+import subprocess
+import sys
 import time
+import urllib.request
 from contextlib import asynccontextmanager
 from pathlib import Path
 
@@ -12,13 +16,11 @@ from fastapi.staticfiles import StaticFiles
 from glossa_lab import __version__
 from glossa_lab.api.ai_tools import router as ai_tools_router
 from glossa_lab.api.analysis import router as analysis_router
-from glossa_lab.api.terminal import router as terminal_router
-from glossa_lab.api.ollama import router as ollama_router
-from glossa_lab.api.system import router as system_router
 from glossa_lab.api.catalog import router as catalog_router
 from glossa_lab.api.experiments import router as experiments_router
 from glossa_lab.api.health import router as health_router
 from glossa_lab.api.jobs import router as jobs_router
+from glossa_lab.api.ollama import router as ollama_router
 from glossa_lab.api.pipelines import router as pipelines_router
 from glossa_lab.api.presets import router as presets_router
 from glossa_lab.api.reports import router as reports_router
@@ -28,6 +30,8 @@ from glossa_lab.api.settings import router as settings_router
 from glossa_lab.api.shutdown import router as shutdown_router
 from glossa_lab.api.status import router as status_router
 from glossa_lab.api.studies import router as studies_router
+from glossa_lab.api.system import router as system_router
+from glossa_lab.api.terminal import router as terminal_router
 from glossa_lab.api.texts import router as texts_router
 from glossa_lab.config import get_settings
 from glossa_lab.database import close_db, init_db
@@ -37,6 +41,56 @@ from glossa_lab.logging import setup_logging
 # Repo root is two levels above this file (backend/glossa_lab/main.py)
 _REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 _FRONTEND_DIST = _REPO_ROOT / "frontend" / "dist"
+
+# ── Ollama lifecycle state ——————————————————————————————————————
+_ollama_installed: bool = False
+_ollama_started: bool = False
+
+
+def get_ollama_state() -> dict[str, bool]:
+    return {"installed": _ollama_installed, "started": _ollama_started}
+
+
+def _try_start_ollama() -> None:
+    """Start `ollama serve` in the background if Ollama is installed."""
+    global _ollama_installed, _ollama_started  # noqa: PLW0603
+
+    exe = shutil.which("ollama")
+    if exe is None:
+        # Also check common Windows install path
+        win_path = Path.home() / "AppData" / "Local" / "Programs" / "Ollama" / "ollama.exe"
+        if win_path.exists():
+            exe = str(win_path)
+
+    if exe is None:
+        _ollama_installed = False
+        return
+
+    _ollama_installed = True
+
+    # Check if already running (quick probe)
+    try:
+        urllib.request.urlopen("http://localhost:11434/api/tags", timeout=1)  # noqa: S310
+        _ollama_started = True
+        return  # already serving
+    except Exception:  # noqa: BLE001
+        pass
+
+    # Not running — start it
+    flags: dict = {}
+    if sys.platform == "win32":
+        flags["creationflags"] = subprocess.CREATE_NO_WINDOW  # type: ignore[attr-defined]
+
+    try:
+        subprocess.Popen(  # noqa: S603
+            [exe, "serve"],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            **flags,
+        )
+        _ollama_started = True
+    except Exception:  # noqa: BLE001
+        _ollama_started = False
 
 _start_time: float = 0.0
 
@@ -60,6 +114,9 @@ async def lifespan(app: FastAPI):
     if _db:
         await seed_corpora(_db)
         await seed_studies(_db)
+
+    # Start Ollama in the background (no-op if not installed or already running)
+    await asyncio.get_event_loop().run_in_executor(None, _try_start_ollama)
 
     # Start pipeline engine in background
     engine_task = asyncio.create_task(run_engine_loop())

@@ -79,6 +79,8 @@ known-first-party = ["glossa_lab", "tests"]
 "run_value_assignment.py" = ["E501"]
 "generate_decipherment_report.py" = ["E501"]
 "validate_hypotheses.py" = ["E501"]
+"run_deep_analysis.py" = ["E501"]
+"run_followup_analysis.py" = ["E501"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

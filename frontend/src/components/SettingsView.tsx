@@ -126,20 +126,38 @@ function OllamaSection() {
   const [pullCancelled, setPullCancelled] = useState<Set<string>>(new Set());
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
   const [libFilter, setLibFilter] = useState<"all" | "compatible">("compatible");
+  const [defaultModel, setDefaultModel] = useState<string | null>(null);
   const esRefs = useRef<Record<string, EventSource>>({})
 
   const refresh = async () => {
     setLoading(true);
     try {
-      const [st, inst, lib, rec] = await Promise.all([
-        getOllamaStatus(), listOllamaInstalled(), getOllamaLibrary(), getOllamaRecommendation(),
+      const [st, inst, lib, rec, settings] = await Promise.all([
+        getOllamaStatus(), listOllamaInstalled(), getOllamaLibrary(),
+        getOllamaRecommendation(), getSettings(),
       ]);
       setStatus(st);
       setInstalled(inst.models ?? []);
       setLibrary(lib.models ?? []);
       setRecommendation(rec);
+      // Load saved default model from provider prefs
+      const prefs = (settings as unknown as Record<string, unknown>).providers as Record<string, unknown> ?? {};
+      const ollamaPref = prefs.ollama as Record<string, unknown> | undefined;
+      if (ollamaPref?.enabled && ollamaPref?.selected_model) {
+        setDefaultModel(ollamaPref.selected_model as string);
+      } else {
+        setDefaultModel(null);
+      }
     } catch { setStatus({ running: false, message: "Could not connect to backend" }); }
     finally { setLoading(false); }
+  };
+
+  const setAsDefault = async (modelName: string) => {
+    try {
+      await updateSettings({ providers: { ollama: { enabled: true, selected_model: modelName } } });
+      setDefaultModel(modelName);
+      toast(`${modelName} set as default AI model`, "success");
+    } catch { toast("Failed to set default model", "error"); }
   };
 
   useEffect(() => { refresh(); return () => { Object.values(esRefs.current).forEach(es => es.close()); }; }, []);
@@ -252,25 +270,78 @@ function OllamaSection() {
         </div>
       )}
 
+      {/* Default model indicator */}
+      {defaultModel && (
+        <div style={{ padding: "8px 12px", background: "#f0fdf4", border: "1px solid #86efac",
+          borderRadius: 6, marginBottom: 10, display: "flex", alignItems: "center", gap: 8 }}>
+          <span style={{ fontSize: 12 }}>🤖</span>
+          <span style={{ fontSize: 12, color: "#15803d" }}>
+            <strong>Default AI:</strong> {defaultModel}
+          </span>
+          <button
+            onClick={async () => {
+              await updateSettings({ providers: { ollama: { enabled: false, selected_model: defaultModel } } });
+              setDefaultModel(null);
+              toast("Ollama disabled as default AI", "info");
+            }}
+            style={{ marginLeft: "auto", padding: "2px 8px", border: "1px solid #86efac",
+              borderRadius: 4, background: "none", cursor: "pointer", fontSize: 10,
+              color: "#15803d" }}
+          >
+            Clear default
+          </button>
+        </div>
+      )}
+
       {/* Installed models */}
       {installed.length > 0 && (
         <div style={{ marginBottom: 14 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: "#374151", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 6 }}>Installed ({installed.length})</div>
-          {installed.map((m) => (
-            <div key={m.name} style={{ display: "flex", gap: 8, alignItems: "center", padding: "7px 10px", border: "1px solid #e5e7eb", borderRadius: 6, marginBottom: 4, background: "#f0fdf4" }}>
-              <span style={{ fontSize: 11, padding: "1px 6px", borderRadius: 4, background: (familyColors[m.family] ?? "#6b7280") + "20", color: familyColors[m.family] ?? "#6b7280", fontWeight: 700, flexShrink: 0 }}>{m.family}</span>
-              <span style={{ flex: 1, fontWeight: 600, fontSize: 13 }}>{m.display || m.name}</span>
-              <span style={{ fontSize: 11, color: "#6b7280" }}>{m.size_gb} GB</span>
-              {m.glossa_score && <span style={{ fontSize: 10, padding: "1px 5px", background: "#7c3aed20", color: "#7c3aed", borderRadius: 4 }}>⭐ {m.glossa_score}/10</span>}
-              <button
-                onClick={() => handleDelete(m.name)}
-                style={{ padding: "2px 8px", border: "1px solid", borderRadius: 4, cursor: "pointer", fontSize: 10, fontWeight: 600,
-                  borderColor: deleteConfirm === m.name ? "#dc2626" : "#fca5a5",
-                  background: deleteConfirm === m.name ? "#fef2f2" : "none",
-                  color: "#dc2626" }}
-              >{deleteConfirm === m.name ? "Confirm delete?" : "Delete"}</button>
-            </div>
-          ))}
+          <div style={{ fontSize: 11, fontWeight: 700, color: "#374151", textTransform: "uppercase",
+            letterSpacing: 0.5, marginBottom: 6 }}>Installed ({installed.length})</div>
+          {installed.map((m) => {
+            const isDefault = m.name === defaultModel;
+            return (
+              <div key={m.name} style={{ display: "flex", gap: 8, alignItems: "center",
+                padding: "7px 10px", marginBottom: 4, borderRadius: 6,
+                border: `1px solid ${isDefault ? "#86efac" : "#e5e7eb"}`,
+                background: isDefault ? "#f0fdf4" : "#fafafa" }}>
+                <span style={{ fontSize: 11, padding: "1px 6px", borderRadius: 4,
+                  background: (familyColors[m.family] ?? "#6b7280") + "20",
+                  color: familyColors[m.family] ?? "#6b7280", fontWeight: 700,
+                  flexShrink: 0 }}>{m.family}</span>
+                <span style={{ flex: 1, fontWeight: 600, fontSize: 13 }}>{m.display || m.name}</span>
+                {isDefault && (
+                  <span style={{ fontSize: 10, padding: "2px 7px", background: "#15803d",
+                    color: "#fff", borderRadius: 4, fontWeight: 700, flexShrink: 0 }}>
+                    🤖 Default AI
+                  </span>
+                )}
+                <span style={{ fontSize: 11, color: "#6b7280" }}>{m.size_gb} GB</span>
+                {m.glossa_score && (
+                  <span style={{ fontSize: 10, padding: "1px 5px", background: "#7c3aed20",
+                    color: "#7c3aed", borderRadius: 4 }}>⭐ {m.glossa_score}/10</span>
+                )}
+                {!isDefault && (
+                  <button
+                    onClick={() => setAsDefault(m.name)}
+                    style={{ padding: "2px 8px", border: "1px solid #86efac", borderRadius: 4,
+                      cursor: "pointer", fontSize: 10, fontWeight: 600,
+                      background: "#f0fdf4", color: "#15803d", flexShrink: 0 }}
+                  >
+                    Set as default AI
+                  </button>
+                )}
+                <button
+                  onClick={() => handleDelete(m.name)}
+                  style={{ padding: "2px 8px", border: "1px solid", borderRadius: 4,
+                    cursor: "pointer", fontSize: 10, fontWeight: 600, flexShrink: 0,
+                    borderColor: deleteConfirm === m.name ? "#dc2626" : "#fca5a5",
+                    background: deleteConfirm === m.name ? "#fef2f2" : "none",
+                    color: "#dc2626" }}
+                >{deleteConfirm === m.name ? "Confirm delete?" : "Delete"}</button>
+              </div>
+            );
+          })}
         </div>
       )}
 

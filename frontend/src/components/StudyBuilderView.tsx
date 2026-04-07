@@ -47,6 +47,21 @@ import {
 } from "../api";
 import { useAIChat } from "../hooks/useAIChat";
 
+// ── Param schema helpers ───────────────────────────────────────────────
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function schemaFromPipelineDefaults(defaults: Record<string, any>): Record<string, any> {
+  const props: Record<string, Record<string, unknown>> = {};
+  for (const [key, val] of Object.entries(defaults)) {
+    const title = key.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+    if (typeof val === "boolean") props[key] = { type: "boolean", title, default: val };
+    else if (typeof val === "number" && Number.isInteger(val)) props[key] = { type: "integer", title, default: val, minimum: 0 };
+    else if (typeof val === "number") props[key] = { type: "number", title, default: val };
+    else props[key] = { type: "string", title, default: val ?? "" };
+  }
+  return { type: "object", properties: props };
+}
+
 // ── Node data shape ────────────────────────────────────────────────────
 
 interface NodeData extends Record<string, unknown> {
@@ -98,37 +113,148 @@ function PaletteItem({
 
 // ── Inspector panel ────────────────────────────────────────────────────
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function ParamField({ fieldKey, def, value, onChange }: {
+  fieldKey: string;
+  def: Record<string, any>;
+  value: unknown;
+  onChange: (v: unknown) => void;
+}) {
+  const label = (def.title as string) ?? fieldKey;
+  const desc = def.description as string | undefined;
+  const type = def.type as string;
+
+  const inputStyle: React.CSSProperties = {
+    width: "100%", boxSizing: "border-box",
+    padding: "4px 7px", border: "1px solid #d1d5db",
+    borderRadius: 4, fontSize: 11, outline: "none",
+    background: "#fff",
+  };
+
+  let control: React.ReactNode;
+  if (type === "boolean") {
+    control = (
+      <div style={{ display: "flex", alignItems: "center", gap: 5, marginTop: 3 }}>
+        <input type="checkbox" checked={!!value}
+          onChange={(e) => onChange(e.target.checked)}
+          style={{ cursor: "pointer", width: 14, height: 14 }} />
+        <span style={{ fontSize: 11, color: "#374151" }}>{value ? "Yes" : "No"}</span>
+      </div>
+    );
+  } else if (type === "integer" || type === "number") {
+    control = (
+      <input type="number" value={(value as number) ?? (def.default as number) ?? ""}
+        step={type === "integer" ? 1 : "any"}
+        min={def.minimum as number | undefined}
+        max={def.maximum as number | undefined}
+        onChange={(e) => onChange(
+          type === "integer" ? (parseInt(e.target.value, 10) || 0) : (parseFloat(e.target.value) || 0)
+        )}
+        style={inputStyle} />
+    );
+  } else {
+    control = (
+      <input type="text" value={(value as string) ?? (def.default as string) ?? ""}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={def.default as string ?? ""}
+        style={inputStyle} />
+    );
+  }
+
+  return (
+    <div style={{ marginBottom: 9 }}>
+      <div style={{ fontSize: 11, fontWeight: 600, color: "#374151", marginBottom: 2 }}>{label}</div>
+      {desc && <div style={{ fontSize: 10, color: "#9ca3af", marginBottom: 3, lineHeight: 1.4 }}>{desc}</div>}
+      {control}
+    </div>
+  );
+}
+
 function Inspector({
   node,
+  experiments,
+  pipelines,
   onClose,
+  onParamChange,
 }: {
   node: Node<NodeData> | null;
+  experiments: ExperimentMeta[];
+  pipelines: CatalogPipeline[];
   onClose: () => void;
+  onParamChange: (nodeId: string, params: Record<string, unknown>) => void;
 }) {
   if (!node) return null;
   const color = node.data.nodeType === "experiment" ? "#7c3aed" : "#2563eb";
+  const params = (node.data.params ?? {}) as Record<string, unknown>;
+
+  // Resolve the params schema: use experiment's params_schema or derive from pipeline defaults
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let schema: Record<string, Record<string, any>> = {};
+  if (node.data.nodeType === "experiment") {
+    const exp = experiments.find((e) => e.id === node.data.refId);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    schema = ((exp?.params_schema as Record<string, any> | null)?.properties as Record<string, Record<string, any>> | undefined) ?? {};
+  } else {
+    const pipe = pipelines.find((p) => p.id === node.data.refId);
+    if (pipe?.default_params && Object.keys(pipe.default_params).length > 0) {
+      schema = schemaFromPipelineDefaults(pipe.default_params).properties ?? {};
+    }
+  }
+
+  const handleChange = (key: string, val: unknown) => {
+    onParamChange(node.id, { ...params, [key]: val });
+  };
+
   return (
     <div style={{
-      width: 240, borderLeft: "1px solid #e5e7eb", padding: "14px 16px",
+      width: 260, borderLeft: "1px solid #e5e7eb", padding: "14px 16px",
       background: "#fafafa", overflowY: "auto", flexShrink: 0,
     }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+      {/* Header */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
         <span style={{ fontSize: 12, fontWeight: 700, color }}>
-          {node.data.nodeType === "experiment" ? "Experiment" : "Pipeline"}
+          {node.data.nodeType === "experiment" ? "🧪 Experiment" : "⚙️ Pipeline"}
         </span>
         <button onClick={onClose} style={{ border: "none", background: "none", cursor: "pointer", fontSize: 14, color: "#9ca3af" }}>✕</button>
       </div>
-      <div style={{ fontSize: 13, fontWeight: 600, color: "#111827", marginBottom: 6 }}>{node.data.label}</div>
+
+      {/* Node label */}
+      <div style={{ fontSize: 13, fontWeight: 600, color: "#111827", marginBottom: 4 }}>{node.data.label}</div>
       {node.data.description && (
-        <p style={{ fontSize: 12, color: "#6b7280", lineHeight: 1.5, margin: "0 0 10px" }}>
-          {node.data.description}
+        <p style={{ fontSize: 11, color: "#6b7280", lineHeight: 1.45, margin: "0 0 10px" }}>
+          {(node.data.description as string).slice(0, 140)}{(node.data.description as string).length > 140 ? "…" : ""}
         </p>
       )}
-      <div style={{ fontSize: 11, color: "#9ca3af" }}>
-        Node ID: <code style={{ fontSize: 11 }}>{node.id}</code>
-      </div>
-      <div style={{ fontSize: 11, color: "#9ca3af", marginTop: 4 }}>
-        Ref: <code style={{ fontSize: 11 }}>{node.data.refId}</code>
+
+      {/* Editable params */}
+      {Object.keys(schema).length > 0 ? (
+        <div>
+          <div style={{ fontSize: 10, fontWeight: 700, color: "#9ca3af", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 8, borderTop: "1px solid #e5e7eb", paddingTop: 8 }}>
+            Parameters
+          </div>
+          {Object.entries(schema).map(([key, def]) => (
+            <ParamField
+              key={key}
+              fieldKey={key}
+              def={def}
+              value={params[key] ?? def.default}
+              onChange={(v) => handleChange(key, v)}
+            />
+          ))}
+          <div style={{ fontSize: 10, color: "#9ca3af", marginTop: 6 }}>
+            Params are saved with the study graph.
+          </div>
+        </div>
+      ) : (
+        <div style={{ fontSize: 11, color: "#d1d5db", fontStyle: "italic", marginTop: 6 }}>
+          No configurable parameters.
+        </div>
+      )}
+
+      {/* Meta */}
+      <div style={{ marginTop: 12, paddingTop: 8, borderTop: "1px solid #f3f4f6" }}>
+        <div style={{ fontSize: 10, color: "#d1d5db" }}>Node: <code style={{ fontSize: 10 }}>{node.id.slice(0, 16)}…</code></div>
+        <div style={{ fontSize: 10, color: "#d1d5db", marginTop: 2 }}>Ref: <code style={{ fontSize: 10 }}>{node.data.refId}</code></div>
       </div>
     </div>
   );
@@ -699,7 +825,20 @@ export function StudyBuilderView() {
         {/* ── Right: Inspector ── */}
         <Inspector
           node={selectedNode}
+          experiments={experiments}
+          pipelines={pipelines}
           onClose={() => setSelectedNode(null)}
+          onParamChange={(nodeId, newParams) => {
+            setNodes((prev) =>
+              prev.map((n) =>
+                n.id === nodeId ? { ...n, data: { ...n.data, params: newParams } } : n
+              )
+            );
+            // Keep selectedNode in sync so the form re-renders immediately
+            setSelectedNode((prev) =>
+              prev?.id === nodeId ? { ...prev, data: { ...prev.data, params: newParams } } : prev
+            );
+          }}
         />
       </div>
 

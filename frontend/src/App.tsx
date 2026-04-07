@@ -277,7 +277,6 @@ function AppContent() {
 
           <div style={{ flex: 1 }} />
 
-          <NotificationCenter />
           <button
             onClick={() => setPaletteOpen(true)}
             title="Command palette (Cmd+K)"
@@ -292,6 +291,8 @@ function AppContent() {
           >
             ⊟
           </button>
+          {/* Bell portal-based dropdown — z-9500 escapes sticky header stacking context */}
+          <NotificationCenter />
           <button
             onClick={() => setDarkMode((d) => !d)}
             title="Toggle dark mode"
@@ -346,9 +347,9 @@ function AppContent() {
         />
       )}
 
-      {/* Floating AI Chat */}
-      <AIChatWindow panelHeight={panelVisible && !panelMinimized ? panelHeight : 0} />
-      <AIChatBubble panelHeight={panelVisible && !panelMinimized ? panelHeight : 0} />
+      {/* Floating AI Chat — fixed position, overlaps panel */}
+      <AIChatWindow />
+      <AIChatBubble />
 
       <style>{`
         @keyframes healthPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }

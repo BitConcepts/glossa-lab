@@ -378,9 +378,15 @@ export interface ExperimentMeta {
   results_file: string | null;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   report_schema: Record<string, any> | null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  params_schema: Record<string, any> | null;
   source_file: string;
   custom: boolean;
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getNodeSchema = (nodeType: string, refId: string): Promise<Record<string, any>> =>
+  request("GET", `/node-registry/${nodeType}/${refId}`);
 
 export const listExperiments = (): Promise<ExperimentMeta[]> =>
   request("GET", "/experiments");

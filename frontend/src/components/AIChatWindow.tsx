@@ -81,7 +81,7 @@ let _msgId = 0;
 // ── Main component ────────────────────────────────────────────────────────────
 
 export function AIChatWindow() {
-  const { isOpen, request, closeChat, setDocked } = useAIChat();
+const { isOpen, request, closeChat, setDocked, isDocked } = useAIChat();
   const { toast } = useToast();
 
   const [messages, setMessages] = useState<MsgUI[]>([]);
@@ -260,7 +260,8 @@ export function AIChatWindow() {
     return map[contextType];
   };
 
-  if (!isOpen) return null;
+  // When docked, render via BottomPanel instead
+  if (!isOpen || isDocked) return null;
 
   const winStyle: React.CSSProperties = pos
     ? { position: "fixed", left: pos.x, top: pos.y, width: size.w, height: size.h, zIndex: 8500 }
@@ -461,25 +462,179 @@ export function AIChatWindow() {
   );
 }
 
+// ── Inline docked chat (for BottomPanel) ─────────────────────────────────────────────
+
+/**
+ * ChatInline renders the AI chat inside the bottom panel (when docked).
+ * Same logic as AIChatWindow but without the floating window chrome.
+ */
+export function ChatInline() {
+  const { setDocked } = useAIChat();
+  useToast(); // keep provider subscription for future
+
+  const [messages, setMessages] = useState<MsgUI[]>([]);
+  const [input, setInput] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [contextType, setContextType] = useState<"" | "corpus" | "experiment" | "study">("");
+  const [contextId, setContextId] = useState("");
+  const [corpora, setCorpora] = useState<TextResponse[]>([]);
+  const [experiments, setExperiments] = useState<ExperimentMeta[]>([]);
+  const [studies, setStudies] = useState<StudyResponse[]>([]);
+  const bottomRef = useRef<HTMLDivElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const maxCtx = getLocalCtxLength();
+  const usedTokens = estimateTokens(messages);
+  const ctxPct = Math.min(100, Math.round((usedTokens / maxCtx) * 100));
+
+  useEffect(() => {
+    listTexts().then(setCorpora).catch(() => {});
+    listExperiments().then(setExperiments).catch(() => {});
+    listStudies().then(setStudies).catch(() => {});
+  }, []);
+
+  useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: "smooth" }); }, [messages]);
+
+  const send = useCallback(async (overrideText?: string) => {
+    const text = (overrideText ?? input).trim();
+    if (!text || busy) return;
+    setInput("");
+    const userMsg: MsgUI = { id: ++_msgId, role: "user", content: text, timestamp: Date.now() };
+    const loadingMsg: MsgUI = { id: ++_msgId, role: "assistant", content: "", timestamp: Date.now(), loading: true };
+    setMessages(prev => [...prev, userMsg, loadingMsg]);
+    setBusy(true);
+    try {
+      const history = [...messages, userMsg].filter(m => !m.loading).map(({ role, content }) => ({ role, content }));
+      const result = await aiChat({ messages: history, context_type: contextType || null, context_id: contextId || null });
+      setMessages(prev => prev.map(m => m.id === loadingMsg.id ? { ...m, content: result.content as string, loading: false, timestamp: Date.now() } : m));
+    } catch (e) {
+      setMessages(prev => prev.map(m => m.id === loadingMsg.id ? { ...m, content: `Error: ${e instanceof Error ? e.message : "AI error"}`, loading: false, error: true, timestamp: Date.now() } : m));
+    } finally { setBusy(false); }
+  }, [input, busy, messages, contextType, contextId]);
+
+  const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]; if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      const content = ev.target?.result as string;
+      setInput(prev => `${prev}\n\n[File: ${file.name}]\n\`\`\`\n${content.slice(0, 2000)}\n\`\`\``);
+    };
+    reader.readAsText(file); e.target.value = "";
+  };
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", height: "100%", background: "#0f172a" }}>
+      {/* Mini header */}
+      <div style={{ display: "flex", gap: 6, padding: "3px 8px", borderBottom: "1px solid #1e293b", alignItems: "center", flexShrink: 0 }}>
+        <span style={{ color: "#94a3b8", fontSize: 10 }}>Context:</span>
+        {(["", "corpus", "experiment", "study"] as const).map((ct) => (
+          <button key={ct || "g"} onClick={() => { setContextType(ct); setContextId(""); }}
+            style={{ padding: "1px 5px", border: "none", borderRadius: 3, cursor: "pointer", fontSize: 9, background: contextType === ct ? "#2563eb" : "#1e293b", color: contextType === ct ? "#fff" : "#64748b" }}>
+            {ct || "Global"}
+          </button>
+        ))}
+        {contextType === "corpus" && <select value={contextId} onChange={e => setContextId(e.target.value)} style={{ fontSize: 9, background: "#1e293b", color: "#e2e8f0", border: "none", borderRadius: 3 }}><option value="">corpus…</option>{corpora.map(c => <option key={c.id} value={c.id}>{c.name.slice(0, 18)}</option>)}</select>}
+        {contextType === "experiment" && <select value={contextId} onChange={e => setContextId(e.target.value)} style={{ fontSize: 9, background: "#1e293b", color: "#e2e8f0", border: "none", borderRadius: 3 }}><option value="">exp…</option>{experiments.map(ex => <option key={ex.id} value={ex.id}>{ex.name.slice(0, 18)}</option>)}</select>}
+        {contextType === "study" && <select value={contextId} onChange={e => setContextId(e.target.value)} style={{ fontSize: 9, background: "#1e293b", color: "#e2e8f0", border: "none", borderRadius: 3 }}><option value="">study…</option>{studies.map(s => <option key={s.id} value={s.id}>{s.name.slice(0, 18)}</option>)}</select>}
+        <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 4 }}>
+          <div style={{ width: 40, height: 3, background: "#1e293b", borderRadius: 2 }}>
+            <div style={{ height: "100%", width: `${ctxPct}%`, background: ctxPct > 90 ? "#ef4444" : ctxPct > 75 ? "#f59e0b" : "#34d399", borderRadius: 2 }} />
+          </div>
+          <button onClick={() => setMessages([])} style={{ border: "none", background: "none", color: "#64748b", cursor: "pointer", fontSize: 10 }}>🗑</button>
+          <button onClick={() => setDocked(false)} title="Undock" style={{ border: "none", background: "none", color: "#64748b", cursor: "pointer", fontSize: 10 }}>⊞</button>
+        </div>
+      </div>
+
+      {/* Messages */}
+      <div style={{ flex: 1, overflowY: "auto", padding: "4px 8px", display: "flex", flexDirection: "column", gap: 5 }}>
+        {messages.length === 0 && <div style={{ color: "#475569", fontSize: 10, fontStyle: "italic", padding: "8px 0" }}>Ask Glossa AI anything…</div>}
+        {messages.map((msg) => (
+          <div key={msg.id} style={{ display: "flex", gap: 4, alignItems: "flex-start", flexDirection: msg.role === "user" ? "row-reverse" : "row" }}>
+            <div style={{ padding: "4px 8px", borderRadius: 5, fontSize: 11, lineHeight: 1.5, maxWidth: "82%",
+              background: msg.role === "user" ? "#1e3a5f" : msg.error ? "#450a0a" : "#1e293b",
+              color: msg.role === "user" ? "#e2e8f0" : msg.error ? "#fca5a5" : "#cbd5e1" }}>
+              {msg.loading ? <span style={{ color: "#475569" }}>✨…</span>
+                : msg.role === "user" ? <span style={{ whiteSpace: "pre-wrap" }}>{msg.content}</span>
+                : <div dangerouslySetInnerHTML={{ __html: renderMd(msg.content) }} />}
+            </div>
+          </div>
+        ))}
+        <div ref={bottomRef} />
+      </div>
+
+      {/* Input */}
+      <div style={{ display: "flex", gap: 4, padding: "4px 8px", borderTop: "1px solid #1e293b", flexShrink: 0 }}>
+        <button onClick={() => fileInputRef.current?.click()} style={{ background: "#1e293b", border: "none", color: "#64748b", cursor: "pointer", fontSize: 11, padding: "0 4px", borderRadius: 3 }}>📎</button>
+        <input ref={fileInputRef} type="file" accept=".txt,.md,.csv,.json,.py" style={{ display: "none" }} onChange={handleFile} />
+        <input
+          value={input}
+          onChange={e => setInput(e.target.value)}
+          onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); } }}
+          placeholder="Ask anything… (Enter)"
+          style={{ flex: 1, background: "#1e293b", border: "none", color: "#e2e8f0", fontSize: 11, padding: "3px 6px", borderRadius: 3, outline: "none" }}
+          disabled={busy}
+        />
+        <button onClick={() => send()} disabled={busy || !input.trim()}
+          style={{ padding: "2px 8px", background: "#7c3aed", border: "none", borderRadius: 3, color: "#fff", cursor: "pointer", fontSize: 10 }}>
+          {busy ? "…" : "Send"}
+        </button>
+      </div>
+    </div>
+  );
+}
+
 // ── Floating bubble ───────────────────────────────────────────────────────────
 
 export function AIChatBubble() {
   const { toggleChat, isOpen } = useAIChat();
+  // Default: right side, 60% down — well above the bottom panel
+  const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
+  const dragging = useRef(false);
+  const hasDragged = useRef(false);
+  const dragOffset = useRef({ x: 0, y: 0 });
+  const btnRef = useRef<HTMLButtonElement>(null);
+  const SIZE = 48;
+
+  const onDragStart = useCallback((e: React.MouseEvent) => {
+    dragging.current = true;
+    hasDragged.current = false;
+    dragOffset.current = { x: e.clientX - (pos?.x ?? (window.innerWidth - 80)), y: e.clientY - (pos?.y ?? Math.floor(window.innerHeight * 0.55)) };
+    e.preventDefault();
+  }, [pos]);
+
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => {
+      if (!dragging.current) return;
+      hasDragged.current = true;
+      const x = Math.max(0, Math.min(window.innerWidth - SIZE, e.clientX - dragOffset.current.x));
+      const y = Math.max(0, Math.min(window.innerHeight - SIZE, e.clientY - dragOffset.current.y));
+      setPos({ x, y });
+    };
+    const onUp = () => { dragging.current = false; };
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mouseup", onUp);
+    return () => { window.removeEventListener("mousemove", onMove); window.removeEventListener("mouseup", onUp); };
+  }, []);
+
+  const bubbleStyle: React.CSSProperties = pos
+    ? { position: "fixed", left: pos.x, top: pos.y, zIndex: 8400 }
+    : { position: "fixed", right: 24, top: "55%", transform: "translateY(-50%)", zIndex: 8400 };
+
   return (
     <button
-      onClick={toggleChat}
-      title={isOpen ? "Close AI Chat" : "Open AI Chat (✨ Glossa AI)"}
+      ref={btnRef}
+      onMouseDown={onDragStart}
+      onClick={() => { if (!hasDragged.current) toggleChat(); }}
+      title={isOpen ? "Close AI Chat (drag to move)" : "Open AI Chat ✨ (drag to move)"}
       style={{
-        position: "fixed", bottom: 24, right: 24, zIndex: 8400,
-        width: 48, height: 48, borderRadius: "50%",
+        ...bubbleStyle,
+        width: SIZE, height: SIZE, borderRadius: "50%",
         background: isOpen ? "#1e3a5f" : "linear-gradient(135deg,#7c3aed,#1e3a5f)",
-        border: "none", cursor: "pointer",
-        boxShadow: "0 4px 20px rgba(124,58,237,0.4)",
+        border: "2px solid rgba(255,255,255,0.15)", cursor: "grab",
+        boxShadow: "0 4px 20px rgba(124,58,237,0.45), 0 2px 8px rgba(0,0,0,0.2)",
         display: "flex", alignItems: "center", justifyContent: "center",
-        fontSize: 20, transition: "transform 0.15s",
+        fontSize: 20,
       }}
-      onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.transform = "scale(1.1)"; }}
-      onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)"; }}
     >
       {isOpen ? "✕" : "✨"}
     </button>

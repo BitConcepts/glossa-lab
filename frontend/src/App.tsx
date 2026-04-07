@@ -20,7 +20,7 @@ import { AIChatBubble, AIChatWindow } from "./components/AIChatWindow";
 import { BottomPanel } from "./components/BottomPanel";
 import { NotificationBell, NotificationDrawer } from "./components/NotificationDrawer";
 import { ToastProvider } from "./hooks/useToast";
-import { AIChatProvider } from "./hooks/useAIChat";
+import { AIChatProvider, useAIChat } from "./hooks/useAIChat";
 import { getHealth } from "./api";
 
 type Tab =
@@ -90,6 +90,12 @@ function AppContent() {
   const [panelMinimized, setPanelMinimized] = useState(false);
   const [panelTab, setPanelTab] = useState<PanelTab>("logs");
   const [panelVisible, setPanelVisible] = useState(true);
+
+  // Open panel to Chat tab whenever AI chat is docked
+  const { isDocked } = useAIChat();
+  useEffect(() => {
+    if (isDocked) { setPanelVisible(true); setPanelMinimized(false); setPanelTab("chat"); }
+  }, [isDocked]);
 
   const effectivePanelH = panelVisible ? (panelMinimized ? 30 : panelHeight) : 0;
 

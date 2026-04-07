@@ -11,7 +11,10 @@ from __future__ import annotations
 import asyncio
 import json
 import os
+import queue
+import subprocess
 import sys
+import threading
 from collections.abc import AsyncGenerator
 from pathlib import Path
 from typing import Any
@@ -48,29 +51,61 @@ class RunRequest(BaseModel):
 
 
 async def _stream_command(command: str, cwd: Path) -> AsyncGenerator[str, None]:
-    """Run a shell command and yield stdout/stderr lines as SSE events."""
+    """Run a shell command in a daemon thread and stream output lines as SSE.
+
+    Uses cmd.exe on Windows and /bin/sh on Unix/macOS.
+    This avoids asyncio subprocess issues on Windows (ProactorEventLoop required).
+    """
     yield _sse("started", {"command": command, "cwd": str(cwd)})
+
+    env = os.environ.copy()
+    env["PYTHONPATH"] = str(_BACKEND_DIR)
+
+    # cmd.exe on Windows, sh on Unix
+    if sys.platform == "win32":
+        shell_args = ["cmd.exe", "/c", command]
+    else:
+        shell_args = ["/bin/sh", "-c", command]
+
+    q: queue.Queue[tuple[str, Any] | None] = queue.Queue()
+
+    def _run() -> None:
+        try:
+            proc = subprocess.Popen(
+                shell_args,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                cwd=str(cwd),
+                env=env,
+            )
+            assert proc.stdout is not None
+            for raw_line in proc.stdout:
+                q.put(("line", raw_line.decode(errors="replace").rstrip("\r\n")))
+            proc.wait()
+            q.put(("done", proc.returncode))
+        except Exception as exc:  # noqa: BLE001
+            q.put(("error", str(exc)))
+        finally:
+            q.put(None)  # sentinel
+
+    t = threading.Thread(target=_run, daemon=True)
+    t.start()
+
+    loop = asyncio.get_event_loop()
     try:
-        env = os.environ.copy()
-        env["PYTHONPATH"] = str(_BACKEND_DIR)
-        # On Windows use shell=True so PATH resolves correctly
-        proc = await asyncio.create_subprocess_shell(
-            command,
-            stdout=asyncio.subprocess.PIPE,
-            stderr=asyncio.subprocess.STDOUT,
-            cwd=str(cwd),
-            env=env,
-        )
-        assert proc.stdout is not None
-
-        async for line in proc.stdout:
-            text = line.decode(errors="replace").rstrip("\r\n")
-            yield _sse("line", {"text": text})
-
-        return_code = await proc.wait()
-        yield _sse("done", {"return_code": return_code})
-    except Exception as exc:  # noqa: BLE001
-        yield _sse("error", {"message": str(exc)})
+        while True:
+            item = await loop.run_in_executor(None, q.get)
+            if item is None:
+                break
+            event_type, data = item
+            if event_type == "line":
+                yield _sse("line", {"text": data})
+            elif event_type == "done":
+                yield _sse("done", {"return_code": data})
+            elif event_type == "error":
+                yield _sse("error", {"message": data})
+    except asyncio.CancelledError:
+        return
 
 
 @router.post("/run")

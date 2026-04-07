@@ -33,6 +33,24 @@ _REPO_ROOT = Path(__file__).resolve().parent.parent.parent.parent  # repo root
 _BACKEND_DIR = _REPO_ROOT / "backend"
 _LOG_FILE = _BACKEND_DIR / "logs" / "backend.log"
 
+# ── Persistent shell singleton ───────────────────────────────────────────
+# Reusing one GlossaShell means:
+# • Banner is shown once (on terminal open), not on every command
+# • `cd` state persists across commands (real shell behaviour)
+# • No per-request construction overhead
+
+_shell: GlossaShell | None = None
+_shell_lock = threading.Lock()
+
+
+def _get_shell() -> GlossaShell:
+    """Return the process-wide GlossaShell, creating it on first call."""
+    global _shell  # noqa: PLW0603
+    with _shell_lock:
+        if _shell is None:
+            _shell = GlossaShell(cwd=_REPO_ROOT, sandbox_root=_REPO_ROOT)
+        return _shell
+
 
 def _sse(event: str, data: Any) -> str:
     return f"event: {event}\ndata: {json.dumps(data)}\n\n"
@@ -61,7 +79,7 @@ async def _stream_command(command: str, cwd: Path) -> AsyncGenerator[str, None]:
 
     def _run() -> None:
         try:
-            shell = GlossaShell(cwd=cwd, sandbox_root=_REPO_ROOT)
+            shell = _get_shell()
             for line in shell.run(command):
                 q.put(("line", line))
             q.put(("done", 0))
@@ -101,7 +119,7 @@ async def run_command(body: RunRequest) -> StreamingResponse:
         raise HTTPException(status_code=400, detail=f"Directory not found: {cwd}")
 
     return StreamingResponse(
-        _stream_command(body.command, cwd),
+        _stream_command(body.command, cwd),  # cwd arg kept for compat; shell owns cwd
         media_type="text/event-stream",
         headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
     )

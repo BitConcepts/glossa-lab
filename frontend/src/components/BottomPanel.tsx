@@ -367,7 +367,10 @@ function TerminalPanel() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", position: "relative" }}
-      onClick={() => { if (!ctxMenu) inputRef.current?.focus(); }}>
+      onClick={() => {
+        // Don't steal focus (and thus clear selection) when the user has text selected
+        if (!ctxMenu && !window.getSelection()?.toString()) inputRef.current?.focus();
+      }}>
       {/* Toolbar */}
       <div style={{ display: "flex", gap: 4, padding: "2px 8px", borderBottom: "1px solid #0f172a", alignItems: "center", flexShrink: 0 }}>
         <button onClick={() => { setInput("help"); setTimeout(() => run(), 0); }}

@@ -370,7 +370,9 @@ export function AIChatWindow({ panelHeight = 0 }: { panelHeight?: number }) {
     if (!approve) { updateActionState(msg.id, idx, "cancelled"); return; }
     updateActionState(msg.id, idx, "executing");
     try {
-      const result = await executeAiAction({ type: action.type, params: action.params });
+      // Ensure params is always an object, never undefined/null
+      const params = action.params && typeof action.params === "object" ? action.params : {};
+      const result = await executeAiAction({ type: action.type, params });
       updateActionState(msg.id, idx, "done");
       if (action.type === "open_view" && result.navigate)
         window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: result.navigate } }));
@@ -632,30 +634,56 @@ export function AIChatWindow({ panelHeight = 0 }: { panelHeight?: number }) {
         </div>
       )}
 
-      {/* Input */}
+      {/* Input area */}
       <div style={{ padding: "7px 10px", borderTop: "1px solid #e5e7eb", flexShrink: 0, display: "flex", flexDirection: "column", gap: 5 }}>
         <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
           <button onClick={() => fileInputRef.current?.click()} style={attBtn}>📎 File</button>
           <button onClick={handleUrlPaste} style={attBtn}>🔗 URL</button>
-          <span style={{ fontSize: 9, color: "#d1d5db", marginLeft: 2 }}>/help for commands</span>
+          <span style={{ fontSize: 9, color: "#d1d5db", marginLeft: 2 }}>/help</span>
           {messages.length > 0 && <button onClick={() => setMessages([])} style={{ ...attBtn, marginLeft: "auto", color: "#dc2626" }}>🗑 Clear</button>}
         </div>
         <input ref={fileInputRef} type="file" accept=".txt,.md,.csv,.json,.py" style={{ display: "none" }} onChange={handleFile} />
-        <div style={{ display: "flex", gap: 6 }}>
-          <textarea ref={textareaRef} value={input} onChange={e => setInput(e.target.value)}
+        {/* Auto-grow textarea with embedded send/stop button */}
+        <div style={{ position: "relative" }}>
+          <textarea
+            ref={textareaRef}
+            value={input}
+            onChange={e => {
+              setInput(e.target.value);
+              // Auto-grow: reset then set to scrollHeight
+              const el = e.target;
+              el.style.height = "auto";
+              el.style.height = Math.min(el.scrollHeight, 180) + "px";
+            }}
             onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); } }}
-            placeholder="Ask anything… Enter to send · Shift+Enter newline · /help"
-            rows={2}
-            style={{ flex: 1, padding: "6px 9px", border: "1px solid #d1d5db", borderRadius: 6, fontSize: 12, resize: "none", fontFamily: "inherit", outline: "none" }}
-            disabled={busy || compressing} />
+            placeholder="Ask anything… Enter=send · Shift+Enter=newline · /help"
+            style={{
+              width: "100%", boxSizing: "border-box",
+              minHeight: "32px", maxHeight: "180px",
+              padding: "6px 44px 6px 9px",  // right padding leaves room for button
+              border: "1px solid #d1d5db", borderRadius: 6,
+              fontSize: 12, resize: "vertical", fontFamily: "inherit",
+              outline: "none", lineHeight: 1.5, overflowY: "auto",
+            }}
+            disabled={busy || compressing}
+          />
+          {/* Embedded send / stop button */}
           {busy
             ? <button onClick={() => abortCtrl.current?.abort()}
-                title="Stop generation"
-                style={{ padding: "0 14px", background: "#dc2626", color: "#fff", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 12, fontWeight: 600 }}>
+                title="Stop generation (Escape)"
+                style={{ position: "absolute", right: 6, bottom: 6,
+                  padding: "3px 8px", background: "#dc2626", color: "#fff",
+                  border: "none", borderRadius: 5, cursor: "pointer",
+                  fontSize: 11, fontWeight: 700, lineHeight: 1.4 }}>
                 ■ Stop
               </button>
             : <button onClick={() => send()} disabled={compressing || !input.trim()}
-                style={{ padding: "0 14px", background: "#7c3aed", color: "#fff", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 12, fontWeight: 600, opacity: input.trim() ? 1 : 0.5 }}>
+                title="Send (Enter)"
+                style={{ position: "absolute", right: 6, bottom: 6,
+                  padding: "3px 10px", background: input.trim() ? "#7c3aed" : "#e5e7eb",
+                  color: input.trim() ? "#fff" : "#9ca3af",
+                  border: "none", borderRadius: 5, cursor: input.trim() ? "pointer" : "not-allowed",
+                  fontSize: 11, fontWeight: 600, lineHeight: 1.4 }}>
                 Send
               </button>
           }

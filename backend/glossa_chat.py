@@ -92,7 +92,7 @@ def _load_unassigned_profiles() -> str:
     if not corpus_path.exists() or not catalog_path.exists():
         return ""
     try:
-        from collections import Counter, defaultdict  # noqa: PLC0415
+        from collections import Counter  # noqa: PLC0415
         corpus_data = json.loads(corpus_path.read_text("utf-8"))
         inscriptions = [i["sequence"] for i in corpus_data["inscriptions"] if i.get("sequence")]
 
@@ -151,7 +151,7 @@ def _build_research_context() -> str:
             data = json.loads(catalog_path.read_text("utf-8"))
             cov = data.get("token_coverage", {})
             lines.append(
-                f"\nCorpus: 4,410 inscriptions | 14,213 tokens | 713 sign types"
+                "\nCorpus: 4,410 inscriptions | 14,213 tokens | 713 sign types"
             )
             lines.append(
                 f"Token coverage: {cov.get('pct', '?')}% "
@@ -292,14 +292,27 @@ def _build_settings_context() -> str:
 _ACTION_RE = re.compile(r"%%ACTIONS%%(.*?)%%END_ACTIONS%%", re.DOTALL)
 
 
+_PARAM_FIELDS_CLI = frozenset({"title", "statement", "id", "key", "value", "view",
+                               "pipeline", "script", "name", "content", "query"})
+_TOP_LEVEL_CLI = frozenset({"type", "label", "description", "requires_approval"})
+
+
+def _normalize_action(raw: dict) -> dict:
+    if raw.get("params"):
+        return raw
+    elevated = {k: v for k, v in raw.items()
+                if k not in _TOP_LEVEL_CLI and k != "params" and k in _PARAM_FIELDS_CLI}
+    if elevated:
+        return {**{k: v for k, v in raw.items() if k in _TOP_LEVEL_CLI},
+                "params": {**raw.get("params", {}), **elevated}}
+    return {**raw, "params": raw.get("params") or {}}
+
+
 def _parse_actions(text: str) -> tuple[str, list[dict]]:
     m = _ACTION_RE.search(text)
     if not m:
         return text, []
     raw = m.group(1).strip()
-    # Model sometimes emits multiple separate arrays instead of one combined array.
-    # Find all [...] blocks and collect only those whose items are dicts (action objects).
-    # This avoids accidentally collecting sign sequences like [520] or [2] from the text.
     arrays = re.findall(r"\[.*?\]", raw, re.DOTALL)
     actions: list[dict] = []
     for arr in arrays:
@@ -308,19 +321,18 @@ def _parse_actions(text: str) -> tuple[str, list[dict]]:
             if isinstance(parsed, list):
                 for item in parsed:
                     if isinstance(item, dict) and "type" in item:
-                        actions.append(item)
+                        actions.append(_normalize_action(item))
         except Exception:
             pass
     if not actions:
-        # Last resort: try the whole block as a single JSON array
         try:
             parsed_whole = json.loads(raw)
             if isinstance(parsed_whole, list):
-                actions = [a for a in parsed_whole if isinstance(a, dict) and "type" in a]
+                actions = [_normalize_action(a) for a in parsed_whole
+                           if isinstance(a, dict) and "type" in a]
         except Exception:
             return text, []
-    clean = text[: m.start()].rstrip()
-    return clean, actions
+    return text[: m.start()].rstrip(), actions
 
 
 # ── Core chat function ────────────────────────────────────────────────────────

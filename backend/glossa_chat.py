@@ -212,13 +212,47 @@ def _build_research_context() -> str:
     # Include real profiles for top unassigned signs
     lines.append(_load_unassigned_profiles())
 
+    lines.append("""
+=== CORPUS DATA STRUCTURE (for writing Python scripts) ===
+Corpus file: ../reports/icit_extracted_corpus.json
+Structure:
+  data = json.loads(path.read_text('utf-8'))
+  inscriptions = [i['sequence'] for i in data['inscriptions'] if i.get('sequence')]
+  # inscriptions is a list of lists of strings: [['32', '817'], ['400', '520', '752'], ...]
+  # Each sign is a STRING (Fuls number), not an integer
+
+Correct profile computation pattern:
+  from collections import Counter
+  total_c    = Counter(s for ins in inscriptions for s in ins)
+  terminal_c = Counter(ins[-1] for ins in inscriptions if len(ins) > 1)
+  initial_c  = Counter(ins[0]  for ins in inscriptions if len(ins) > 1)
+  medial_c   = Counter(s for ins in inscriptions for s in ins[1:-1])
+  # For sign '407': t_rate = terminal_c['407'] / total_c['407']
+
+Left/right context:
+  from collections import defaultdict
+  left_ctx  = defaultdict(Counter)  # left_ctx[sign][preceding_sign] = count
+  right_ctx = defaultdict(Counter)  # right_ctx[sign][following_sign] = count
+  for ins in inscriptions:
+      for j, s in enumerate(ins):
+          if j > 0: left_ctx[s][ins[j-1]] += 1
+          if j < len(ins)-1: right_ctx[s][ins[j+1]] += 1
+
+M77 profile matching: use L1 distance on (t_rate, i_rate, m_rate) triplets.
+The M77_FULL dict with profiles is defined in backend/run_sign_expansion.py.
+
+Results output: save JSON to ../reports/<name>.json
+=== END CORPUS DATA STRUCTURE ===""")
+
     lines.append("\n=== END RESEARCH CONTEXT ===")
     lines.append(
         "You are acting as a decipherment research collaborator. "
         "Reason from the evidence above ONLY — do not invent T-rates, I-rates, or counts "
         "that are not in the context; if data is missing say so and recommend running "
-        "the relevant script. Propose hypotheses with explicit confidence levels "
-        "(HIGH/MED/LOW). Reference Fuls sign numbers (e.g. 'sign 817')."
+        "the relevant script. "
+        "Propose hypotheses with explicit confidence levels (HIGH/MED/LOW) — ALWAYS include the level. "
+        "Reference Fuls sign numbers (e.g. 'sign 817'). "
+        "When writing Python scripts, use the corpus data structure documented above."
     )
     return "\n".join(lines)
 

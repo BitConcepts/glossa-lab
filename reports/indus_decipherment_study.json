@@ -1,0 +1,4679 @@
+{
+  "char_freq": {
+    "n_tokens": 14213,
+    "n_types": 713,
+    "type_token_ratio": 0.0502,
+    "zipf_exponent": 1.5036,
+    "top_30": [
+      {
+        "sign": "32",
+        "count": 527,
+        "freq": 0.03708
+      },
+      {
+        "sign": "220",
+        "count": 462,
+        "freq": 0.03251
+      },
+      {
+        "sign": "400",
+        "count": 429,
+        "freq": 0.03018
+      },
+      {
+        "sign": "240",
+        "count": 354,
+        "freq": 0.02491
+      },
+      {
+        "sign": "520",
+        "count": 315,
+        "freq": 0.02216
+      },
+      {
+        "sign": "861",
+        "count": 266,
+        "freq": 0.01872
+      },
+      {
+        "sign": "2",
+        "count": 265,
+        "freq": 0.01864
+      },
+      {
+        "sign": "235",
+        "count": 250,
+        "freq": 0.01759
+      },
+      {
+        "sign": "31",
+        "count": 240,
+        "freq": 0.01689
+      },
+      {
+        "sign": "820",
+        "count": 235,
+        "freq": 0.01653
+      },
+      {
+        "sign": "700",
+        "count": 233,
+        "freq": 0.01639
+      },
+      {
+        "sign": "3",
+        "count": 232,
+        "freq": 0.01632
+      },
+      {
+        "sign": "1",
+        "count": 227,
+        "freq": 0.01597
+      },
+      {
+        "sign": "590",
+        "count": 226,
+        "freq": 0.0159
+      },
+      {
+        "sign": "33",
+        "count": 226,
+        "freq": 0.0159
+      },
+      {
+        "sign": "60",
+        "count": 218,
+        "freq": 0.01534
+      },
+      {
+        "sign": "817",
+        "count": 217,
+        "freq": 0.01527
+      },
+      {
+        "sign": "741",
+        "count": 216,
+        "freq": 0.0152
+      },
+      {
+        "sign": "176",
+        "count": 216,
+        "freq": 0.0152
+      },
+      {
+        "sign": "705",
+        "count": 212,
+        "freq": 0.01492
+      },
+      {
+        "sign": "90",
+        "count": 194,
+        "freq": 0.01365
+      },
+      {
+        "sign": "233",
+        "count": 190,
+        "freq": 0.01337
+      },
+      {
+        "sign": "34",
+        "count": 183,
+        "freq": 0.01288
+      },
+      {
+        "sign": "798",
+        "count": 151,
+        "freq": 0.01062
+      },
+      {
+        "sign": "920",
+        "count": 148,
+        "freq": 0.01041
+      },
+      {
+        "sign": "415",
+        "count": 147,
+        "freq": 0.01034
+      },
+      {
+        "sign": "390",
+        "count": 136,
+        "freq": 0.00957
+      },
+      {
+        "sign": "255",
+        "count": 136,
+        "freq": 0.00957
+      },
+      {
+        "sign": "100",
+        "count": 133,
+        "freq": 0.00936
+      },
+      {
+        "sign": "806",
+        "count": 133,
+        "freq": 0.00936
+      }
+    ],
+    "hapax": 218,
+    "hapax_fraction": 0.3058
+  },
+  "positional": {
+    "class_counts": {
+      "MEDIAL": 101,
+      "RARE": 386,
+      "CONNECTOR": 129,
+      "INITIAL": 28,
+      "TMK": 67,
+      "ITM": 2
+    },
+    "top_tmk": [
+      {
+        "sign": "817",
+        "total": 217,
+        "terminal": 185,
+        "initial": 3,
+        "medial": 17,
+        "solo": 12,
+        "terminal_rate": 0.8525,
+        "initial_rate": 0.0138,
+        "medial_rate": 0.0783,
+        "class": "TMK"
+      },
+      {
+        "sign": "798",
+        "total": 151,
+        "terminal": 93,
+        "initial": 1,
+        "medial": 49,
+        "solo": 8,
+        "terminal_rate": 0.6159,
+        "initial_rate": 0.0066,
+        "medial_rate": 0.3245,
+        "class": "TMK"
+      },
+      {
+        "sign": "920",
+        "total": 148,
+        "terminal": 140,
+        "initial": 0,
+        "medial": 4,
+        "solo": 4,
+        "terminal_rate": 0.9459,
+        "initial_rate": 0.0,
+        "medial_rate": 0.027,
+        "class": "TMK"
+      },
+      {
+        "sign": "806",
+        "total": 133,
+        "terminal": 91,
+        "initial": 1,
+        "medial": 38,
+        "solo": 3,
+        "terminal_rate": 0.6842,
+        "initial_rate": 0.0075,
+        "medial_rate": 0.2857,
+        "class": "TMK"
+      },
+      {
+        "sign": "760",
+        "total": 132,
+        "terminal": 85,
+        "initial": 2,
+        "medial": 31,
+        "solo": 14,
+        "terminal_rate": 0.6439,
+        "initial_rate": 0.0152,
+        "medial_rate": 0.2348,
+        "class": "TMK"
+      },
+      {
+        "sign": "900",
+        "total": 111,
+        "terminal": 106,
+        "initial": 0,
+        "medial": 3,
+        "solo": 2,
+        "terminal_rate": 0.955,
+        "initial_rate": 0.0,
+        "medial_rate": 0.027,
+        "class": "TMK"
+      },
+      {
+        "sign": "904",
+        "total": 61,
+        "terminal": 56,
+        "initial": 0,
+        "medial": 4,
+        "solo": 1,
+        "terminal_rate": 0.918,
+        "initial_rate": 0.0,
+        "medial_rate": 0.0656,
+        "class": "TMK"
+      },
+      {
+        "sign": "717",
+        "total": 55,
+        "terminal": 33,
+        "initial": 1,
+        "medial": 16,
+        "solo": 5,
+        "terminal_rate": 0.6,
+        "initial_rate": 0.0182,
+        "medial_rate": 0.2909,
+        "class": "TMK"
+      },
+      {
+        "sign": "845",
+        "total": 55,
+        "terminal": 38,
+        "initial": 0,
+        "medial": 17,
+        "solo": 0,
+        "terminal_rate": 0.6909,
+        "initial_rate": 0.0,
+        "medial_rate": 0.3091,
+        "class": "TMK"
+      },
+      {
+        "sign": "752",
+        "total": 52,
+        "terminal": 43,
+        "initial": 0,
+        "medial": 7,
+        "solo": 2,
+        "terminal_rate": 0.8269,
+        "initial_rate": 0.0,
+        "medial_rate": 0.1346,
+        "class": "TMK"
+      },
+      {
+        "sign": "832",
+        "total": 44,
+        "terminal": 29,
+        "initial": 1,
+        "medial": 10,
+        "solo": 4,
+        "terminal_rate": 0.6591,
+        "initial_rate": 0.0227,
+        "medial_rate": 0.2273,
+        "class": "TMK"
+      },
+      {
+        "sign": "501",
+        "total": 27,
+        "terminal": 27,
+        "initial": 0,
+        "medial": 0,
+        "solo": 0,
+        "terminal_rate": 1.0,
+        "initial_rate": 0.0,
+        "medial_rate": 0.0,
+        "class": "TMK"
+      },
+      {
+        "sign": "645",
+        "total": 25,
+        "terminal": 16,
+        "initial": 0,
+        "medial": 5,
+        "solo": 4,
+        "terminal_rate": 0.64,
+        "initial_rate": 0.0,
+        "medial_rate": 0.2,
+        "class": "TMK"
+      },
+      {
+        "sign": "877",
+        "total": 21,
+        "terminal": 18,
+        "initial": 0,
+        "medial": 2,
+        "solo": 1,
+        "terminal_rate": 0.8571,
+        "initial_rate": 0.0,
+        "medial_rate": 0.0952,
+        "class": "TMK"
+      },
+      {
+        "sign": "838",
+        "total": 19,
+        "terminal": 13,
+        "initial": 0,
+        "medial": 4,
+        "solo": 2,
+        "terminal_rate": 0.6842,
+        "initial_rate": 0.0,
+        "medial_rate": 0.2105,
+        "class": "TMK"
+      }
+    ],
+    "top_initial": [
+      {
+        "sign": "400",
+        "total": 429,
+        "terminal": 20,
+        "initial": 247,
+        "medial": 142,
+        "solo": 20,
+        "terminal_rate": 0.0466,
+        "initial_rate": 0.5758,
+        "medial_rate": 0.331,
+        "class": "INITIAL"
+      },
+      {
+        "sign": "520",
+        "total": 315,
+        "terminal": 1,
+        "initial": 242,
+        "medial": 63,
+        "solo": 9,
+        "terminal_rate": 0.0032,
+        "initial_rate": 0.7683,
+        "medial_rate": 0.2,
+        "class": "INITIAL"
+      },
+      {
+        "sign": "861",
+        "total": 266,
+        "terminal": 0,
+        "initial": 206,
+        "medial": 42,
+        "solo": 18,
+        "terminal_rate": 0.0,
+        "initial_rate": 0.7744,
+        "medial_rate": 0.1579,
+        "class": "INITIAL"
+      },
+      {
+        "sign": "700",
+        "total": 233,
+        "terminal": 1,
+        "initial": 197,
+        "medial": 15,
+        "solo": 20,
+        "terminal_rate": 0.0043,
+        "initial_rate": 0.8455,
+        "medial_rate": 0.0644,
+        "class": "INITIAL"
+      },
+      {
+        "sign": "741",
+        "total": 216,
+        "terminal": 0,
+        "initial": 175,
+        "medial": 35,
+        "solo": 6,
+        "terminal_rate": 0.0,
+        "initial_rate": 0.8102,
+        "medial_rate": 0.162,
+        "class": "INITIAL"
+      },
+      {
+        "sign": "740",
+        "total": 114,
+        "terminal": 0,
+        "initial": 107,
+        "medial": 0,
+        "solo": 7,
+        "terminal_rate": 0.0,
+        "initial_rate": 0.9386,
+        "medial_rate": 0.0,
+        "class": "INITIAL"
+      },
+      {
+        "sign": "690",
+        "total": 114,
+        "terminal": 0,
+        "initial": 91,
+        "medial": 17,
+        "solo": 6,
+        "terminal_rate": 0.0,
+        "initial_rate": 0.7982,
+        "medial_rate": 0.1491,
+        "class": "INITIAL"
+      },
+      {
+        "sign": "156",
+        "total": 106,
+        "terminal": 0,
+        "initial": 77,
+        "medial": 23,
+        "solo": 6,
+        "terminal_rate": 0.0,
+        "initial_rate": 0.7264,
+        "medial_rate": 0.217,
+        "class": "INITIAL"
+      },
+      {
+        "sign": "550",
+        "total": 102,
+        "terminal": 0,
+        "initial": 86,
+        "medial": 8,
+        "solo": 8,
+        "terminal_rate": 0.0,
+        "initial_rate": 0.8431,
+        "medial_rate": 0.0784,
+        "class": "INITIAL"
+      },
+      {
+        "sign": "615",
+        "total": 71,
+        "terminal": 0,
+        "initial": 56,
+        "medial": 11,
+        "solo": 4,
+        "terminal_rate": 0.0,
+        "initial_rate": 0.7887,
+        "medial_rate": 0.1549,
+        "class": "INITIAL"
+      }
+    ],
+    "top_medial": [
+      {
+        "sign": "32",
+        "total": 527,
+        "terminal": 39,
+        "initial": 94,
+        "medial": 322,
+        "solo": 72,
+        "terminal_rate": 0.074,
+        "initial_rate": 0.1784,
+        "medial_rate": 0.611,
+        "class": "MEDIAL"
+      },
+      {
+        "sign": "220",
+        "total": 462,
+        "terminal": 85,
+        "initial": 37,
+        "medial": 308,
+        "solo": 32,
+        "terminal_rate": 0.184,
+        "initial_rate": 0.0801,
+        "medial_rate": 0.6667,
+        "class": "MEDIAL"
+      },
+      {
+        "sign": "240",
+        "total": 354,
+        "terminal": 85,
+        "initial": 16,
+        "medial": 244,
+        "solo": 9,
+        "terminal_rate": 0.2401,
+        "initial_rate": 0.0452,
+        "medial_rate": 0.6893,
+        "class": "MEDIAL"
+      },
+      {
+        "sign": "2",
+        "total": 265,
+        "terminal": 8,
+        "initial": 64,
+        "medial": 180,
+        "solo": 13,
+        "terminal_rate": 0.0302,
+        "initial_rate": 0.2415,
+        "medial_rate": 0.6792,
+        "class": "MEDIAL"
+      },
+      {
+        "sign": "235",
+        "total": 250,
+        "terminal": 39,
+        "initial": 28,
+        "medial": 177,
+        "solo": 6,
+        "terminal_rate": 0.156,
+        "initial_rate": 0.112,
+        "medial_rate": 0.708,
+        "class": "MEDIAL"
+      },
+      {
+        "sign": "1",
+        "total": 227,
+        "terminal": 7,
+        "initial": 61,
+        "medial": 155,
+        "solo": 4,
+        "terminal_rate": 0.0308,
+        "initial_rate": 0.2687,
+        "medial_rate": 0.6828,
+        "class": "MEDIAL"
+      },
+      {
+        "sign": "33",
+        "total": 226,
+        "terminal": 27,
+        "initial": 31,
+        "medial": 145,
+        "solo": 23,
+        "terminal_rate": 0.1195,
+        "initial_rate": 0.1372,
+        "medial_rate": 0.6416,
+        "class": "MEDIAL"
+      },
+      {
+        "sign": "233",
+        "total": 190,
+        "terminal": 39,
+        "initial": 21,
+        "medial": 129,
+        "solo": 1,
+        "terminal_rate": 0.2053,
+        "initial_rate": 0.1105,
+        "medial_rate": 0.6789,
+        "class": "MEDIAL"
+      },
+      {
+        "sign": "255",
+        "total": 136,
+        "terminal": 43,
+        "initial": 5,
+        "medial": 86,
+        "solo": 2,
+        "terminal_rate": 0.3162,
+        "initial_rate": 0.0368,
+        "medial_rate": 0.6324,
+        "class": "MEDIAL"
+      },
+      {
+        "sign": "100",
+        "total": 133,
+        "terminal": 8,
+        "initial": 26,
+        "medial": 91,
+        "solo": 8,
+        "terminal_rate": 0.0602,
+        "initial_rate": 0.1955,
+        "medial_rate": 0.6842,
+        "class": "MEDIAL"
+      }
+    ]
+  },
+  "bigrams": {
+    "n_bigram_types": 4108,
+    "n_trigram_types": 4696,
+    "top_30_frequent_bigrams": [
+      {
+        "pair": [
+          "32",
+          "220"
+        ],
+        "count": 67
+      },
+      {
+        "pair": [
+          "235",
+          "240"
+        ],
+        "count": 58
+      },
+      {
+        "pair": [
+          "220",
+          "415"
+        ],
+        "count": 57
+      },
+      {
+        "pair": [
+          "700",
+          "400"
+        ],
+        "count": 57
+      },
+      {
+        "pair": [
+          "520",
+          "2"
+        ],
+        "count": 42
+      },
+      {
+        "pair": [
+          "861",
+          "2"
+        ],
+        "count": 39
+      },
+      {
+        "pair": [
+          "741",
+          "60"
+        ],
+        "count": 38
+      },
+      {
+        "pair": [
+          "220",
+          "235"
+        ],
+        "count": 38
+      },
+      {
+        "pair": [
+          "615",
+          "503"
+        ],
+        "count": 38
+      },
+      {
+        "pair": [
+          "400",
+          "32"
+        ],
+        "count": 37
+      },
+      {
+        "pair": [
+          "400",
+          "34"
+        ],
+        "count": 34
+      },
+      {
+        "pair": [
+          "2",
+          "32"
+        ],
+        "count": 33
+      },
+      {
+        "pair": [
+          "31",
+          "32"
+        ],
+        "count": 33
+      },
+      {
+        "pair": [
+          "2",
+          "240"
+        ],
+        "count": 33
+      },
+      {
+        "pair": [
+          "861",
+          "3"
+        ],
+        "count": 33
+      },
+      {
+        "pair": [
+          "520",
+          "220"
+        ],
+        "count": 32
+      },
+      {
+        "pair": [
+          "400",
+          "33"
+        ],
+        "count": 31
+      },
+      {
+        "pair": [
+          "820",
+          "2"
+        ],
+        "count": 30
+      },
+      {
+        "pair": [
+          "233",
+          "235"
+        ],
+        "count": 30
+      },
+      {
+        "pair": [
+          "240",
+          "405"
+        ],
+        "count": 30
+      },
+      {
+        "pair": [
+          "503",
+          "752"
+        ],
+        "count": 30
+      },
+      {
+        "pair": [
+          "820",
+          "1"
+        ],
+        "count": 29
+      },
+      {
+        "pair": [
+          "220",
+          "240"
+        ],
+        "count": 27
+      },
+      {
+        "pair": [
+          "233",
+          "240"
+        ],
+        "count": 27
+      },
+      {
+        "pair": [
+          "405",
+          "501"
+        ],
+        "count": 27
+      },
+      {
+        "pair": [
+          "176",
+          "220"
+        ],
+        "count": 26
+      },
+      {
+        "pair": [
+          "741",
+          "90"
+        ],
+        "count": 26
+      },
+      {
+        "pair": [
+          "690",
+          "435"
+        ],
+        "count": 26
+      },
+      {
+        "pair": [
+          "820",
+          "32"
+        ],
+        "count": 23
+      },
+      {
+        "pair": [
+          "156",
+          "861"
+        ],
+        "count": 23
+      }
+    ],
+    "top_30_pmi_bigrams": [
+      {
+        "pair": [
+          "405",
+          "501"
+        ],
+        "pmi": 4.8
+      },
+      {
+        "pair": [
+          "321",
+          "407"
+        ],
+        "pmi": 4.657
+      },
+      {
+        "pair": [
+          "503",
+          "752"
+        ],
+        "pmi": 4.605
+      },
+      {
+        "pair": [
+          "318",
+          "407"
+        ],
+        "pmi": 4.559
+      },
+      {
+        "pair": [
+          "690",
+          "436"
+        ],
+        "pmi": 4.557
+      },
+      {
+        "pair": [
+          "615",
+          "503"
+        ],
+        "pmi": 4.53
+      },
+      {
+        "pair": [
+          "255",
+          "318"
+        ],
+        "pmi": 4.482
+      },
+      {
+        "pair": [
+          "97",
+          "151"
+        ],
+        "pmi": 4.347
+      },
+      {
+        "pair": [
+          "605",
+          "760"
+        ],
+        "pmi": 4.104
+      },
+      {
+        "pair": [
+          "176",
+          "347"
+        ],
+        "pmi": 4.081
+      },
+      {
+        "pair": [
+          "235",
+          "321"
+        ],
+        "pmi": 3.971
+      },
+      {
+        "pair": [
+          "48",
+          "817"
+        ],
+        "pmi": 3.777
+      },
+      {
+        "pair": [
+          "690",
+          "435"
+        ],
+        "pmi": 3.766
+      },
+      {
+        "pair": [
+          "436",
+          "590"
+        ],
+        "pmi": 3.706
+      },
+      {
+        "pair": [
+          "850",
+          "61"
+        ],
+        "pmi": 3.65
+      },
+      {
+        "pair": [
+          "550",
+          "527"
+        ],
+        "pmi": 3.627
+      },
+      {
+        "pair": [
+          "17",
+          "585"
+        ],
+        "pmi": 3.6
+      },
+      {
+        "pair": [
+          "845",
+          "900"
+        ],
+        "pmi": 3.553
+      },
+      {
+        "pair": [
+          "500",
+          "705"
+        ],
+        "pmi": 3.512
+      },
+      {
+        "pair": [
+          "806",
+          "845"
+        ],
+        "pmi": 3.497
+      },
+      {
+        "pair": [
+          "705",
+          "711"
+        ],
+        "pmi": 3.407
+      },
+      {
+        "pair": [
+          "407",
+          "585"
+        ],
+        "pmi": 3.287
+      },
+      {
+        "pair": [
+          "503",
+          "17"
+        ],
+        "pmi": 3.184
+      },
+      {
+        "pair": [
+          "617",
+          "142"
+        ],
+        "pmi": 3.126
+      },
+      {
+        "pair": [
+          "235",
+          "555"
+        ],
+        "pmi": 3.06
+      },
+      {
+        "pair": [
+          "460",
+          "798"
+        ],
+        "pmi": 3.053
+      },
+      {
+        "pair": [
+          "61",
+          "142"
+        ],
+        "pmi": 3.034
+      },
+      {
+        "pair": [
+          "61",
+          "407"
+        ],
+        "pmi": 3.016
+      },
+      {
+        "pair": [
+          "335",
+          "33"
+        ],
+        "pmi": 2.993
+      },
+      {
+        "pair": [
+          "435",
+          "255"
+        ],
+        "pmi": 2.897
+      }
+    ],
+    "compound_candidates": [
+      {
+        "pair": [
+          "405",
+          "501"
+        ],
+        "pmi": 4.8
+      },
+      {
+        "pair": [
+          "321",
+          "407"
+        ],
+        "pmi": 4.657
+      },
+      {
+        "pair": [
+          "503",
+          "752"
+        ],
+        "pmi": 4.605
+      },
+      {
+        "pair": [
+          "318",
+          "407"
+        ],
+        "pmi": 4.559
+      },
+      {
+        "pair": [
+          "690",
+          "436"
+        ],
+        "pmi": 4.557
+      },
+      {
+        "pair": [
+          "615",
+          "503"
+        ],
+        "pmi": 4.53
+      },
+      {
+        "pair": [
+          "255",
+          "318"
+        ],
+        "pmi": 4.482
+      },
+      {
+        "pair": [
+          "97",
+          "151"
+        ],
+        "pmi": 4.347
+      },
+      {
+        "pair": [
+          "605",
+          "760"
+        ],
+        "pmi": 4.104
+      },
+      {
+        "pair": [
+          "176",
+          "347"
+        ],
+        "pmi": 4.081
+      },
+      {
+        "pair": [
+          "235",
+          "321"
+        ],
+        "pmi": 3.971
+      },
+      {
+        "pair": [
+          "48",
+          "817"
+        ],
+        "pmi": 3.777
+      },
+      {
+        "pair": [
+          "690",
+          "435"
+        ],
+        "pmi": 3.766
+      },
+      {
+        "pair": [
+          "436",
+          "590"
+        ],
+        "pmi": 3.706
+      },
+      {
+        "pair": [
+          "850",
+          "61"
+        ],
+        "pmi": 3.65
+      }
+    ]
+  },
+  "paradigm": {
+    "n_substitution_pairs": 544,
+    "top_substitution_pairs": [
+      {
+        "sign_a": "435",
+        "sign_b": "436",
+        "left_similarity": 0.897,
+        "right_similarity": 0.758,
+        "combined_similarity": 0.828,
+        "count_a": 75,
+        "count_b": 17
+      },
+      {
+        "sign_a": "158",
+        "sign_b": "491",
+        "left_similarity": 1.0,
+        "right_similarity": 0.634,
+        "combined_similarity": 0.817,
+        "count_a": 39,
+        "count_b": 18
+      },
+      {
+        "sign_a": "645",
+        "sign_b": "772",
+        "left_similarity": 0.757,
+        "right_similarity": 0.862,
+        "combined_similarity": 0.809,
+        "count_a": 25,
+        "count_b": 10
+      },
+      {
+        "sign_a": "519",
+        "sign_b": "525",
+        "left_similarity": 0.716,
+        "right_similarity": 0.899,
+        "combined_similarity": 0.808,
+        "count_a": 17,
+        "count_b": 11
+      },
+      {
+        "sign_a": "460",
+        "sign_b": "463",
+        "left_similarity": 0.699,
+        "right_similarity": 0.867,
+        "combined_similarity": 0.783,
+        "count_a": 40,
+        "count_b": 26
+      },
+      {
+        "sign_a": "33",
+        "sign_b": "34",
+        "left_similarity": 0.839,
+        "right_similarity": 0.715,
+        "combined_similarity": 0.777,
+        "count_a": 226,
+        "count_b": 183
+      },
+      {
+        "sign_a": "158",
+        "sign_b": "824",
+        "left_similarity": 0.962,
+        "right_similarity": 0.56,
+        "combined_similarity": 0.761,
+        "count_a": 39,
+        "count_b": 31
+      },
+      {
+        "sign_a": "125",
+        "sign_b": "60",
+        "left_similarity": 0.807,
+        "right_similarity": 0.678,
+        "combined_similarity": 0.743,
+        "count_a": 59,
+        "count_b": 218
+      },
+      {
+        "sign_a": "156",
+        "sign_b": "154",
+        "left_similarity": 0.999,
+        "right_similarity": 0.476,
+        "combined_similarity": 0.738,
+        "count_a": 106,
+        "count_b": 44
+      },
+      {
+        "sign_a": "158",
+        "sign_b": "154",
+        "left_similarity": 1.0,
+        "right_similarity": 0.473,
+        "combined_similarity": 0.737,
+        "count_a": 39,
+        "count_b": 44
+      },
+      {
+        "sign_a": "156",
+        "sign_b": "491",
+        "left_similarity": 0.999,
+        "right_similarity": 0.454,
+        "combined_similarity": 0.726,
+        "count_a": 106,
+        "count_b": 18
+      },
+      {
+        "sign_a": "156",
+        "sign_b": "158",
+        "left_similarity": 0.999,
+        "right_similarity": 0.446,
+        "combined_similarity": 0.722,
+        "count_a": 106,
+        "count_b": 39
+      },
+      {
+        "sign_a": "154",
+        "sign_b": "491",
+        "left_similarity": 1.0,
+        "right_similarity": 0.426,
+        "combined_similarity": 0.713,
+        "count_a": 44,
+        "count_b": 18
+      },
+      {
+        "sign_a": "72",
+        "sign_b": "70",
+        "left_similarity": 0.886,
+        "right_similarity": 0.539,
+        "combined_similarity": 0.712,
+        "count_a": 14,
+        "count_b": 39
+      },
+      {
+        "sign_a": "233",
+        "sign_b": "231",
+        "left_similarity": 0.689,
+        "right_similarity": 0.711,
+        "combined_similarity": 0.7,
+        "count_a": 190,
+        "count_b": 93
+      },
+      {
+        "sign_a": "125",
+        "sign_b": "90",
+        "left_similarity": 0.901,
+        "right_similarity": 0.489,
+        "combined_similarity": 0.695,
+        "count_a": 59,
+        "count_b": 194
+      },
+      {
+        "sign_a": "824",
+        "sign_b": "491",
+        "left_similarity": 0.962,
+        "right_similarity": 0.407,
+        "combined_similarity": 0.684,
+        "count_a": 31,
+        "count_b": 18
+      },
+      {
+        "sign_a": "702",
+        "sign_b": "772",
+        "left_similarity": 0.538,
+        "right_similarity": 0.816,
+        "combined_similarity": 0.677,
+        "count_a": 10,
+        "count_b": 10
+      },
+      {
+        "sign_a": "527",
+        "sign_b": "526",
+        "left_similarity": 0.89,
+        "right_similarity": 0.457,
+        "combined_similarity": 0.674,
+        "count_a": 63,
+        "count_b": 13
+      },
+      {
+        "sign_a": "416",
+        "sign_b": "382",
+        "left_similarity": 0.646,
+        "right_similarity": 0.7,
+        "combined_similarity": 0.673,
+        "count_a": 57,
+        "count_b": 18
+      },
+      {
+        "sign_a": "32",
+        "sign_b": "16",
+        "left_similarity": 0.56,
+        "right_similarity": 0.772,
+        "combined_similarity": 0.666,
+        "count_a": 527,
+        "count_b": 48
+      },
+      {
+        "sign_a": "33",
+        "sign_b": "32",
+        "left_similarity": 0.67,
+        "right_similarity": 0.655,
+        "combined_similarity": 0.662,
+        "count_a": 226,
+        "count_b": 527
+      },
+      {
+        "sign_a": "90",
+        "sign_b": "617",
+        "left_similarity": 0.722,
+        "right_similarity": 0.597,
+        "combined_similarity": 0.66,
+        "count_a": 194,
+        "count_b": 78
+      },
+      {
+        "sign_a": "34",
+        "sign_b": "100",
+        "left_similarity": 0.667,
+        "right_similarity": 0.648,
+        "combined_similarity": 0.658,
+        "count_a": 183,
+        "count_b": 133
+      },
+      {
+        "sign_a": "220",
+        "sign_b": "226",
+        "left_similarity": 0.774,
+        "right_similarity": 0.532,
+        "combined_similarity": 0.653,
+        "count_a": 462,
+        "count_b": 40
+      }
+    ],
+    "interpretation": "High-similarity pairs may represent allophonic variants, inflectional alternations, or signs with similar functional roles. These are prime candidates for phonetic value assignment via the comparative method."
+  },
+  "sign_function": {
+    "all_signs": [
+      {
+        "sign": "32",
+        "count": 527,
+        "class": "MEDIAL",
+        "terminal_rate": 0.074,
+        "initial_rate": 0.178,
+        "medial_rate": 0.611,
+        "solo_rate": 0.137,
+        "probable_function": "phonetic",
+        "confidence": 0.911,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.911
+        }
+      },
+      {
+        "sign": "220",
+        "count": 462,
+        "class": "MEDIAL",
+        "terminal_rate": 0.184,
+        "initial_rate": 0.08,
+        "medial_rate": 0.667,
+        "solo_rate": 0.069,
+        "probable_function": "phonetic",
+        "confidence": 0.967,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.967
+        }
+      },
+      {
+        "sign": "400",
+        "count": 429,
+        "class": "INITIAL",
+        "terminal_rate": 0.047,
+        "initial_rate": 0.576,
+        "medial_rate": 0.331,
+        "solo_rate": 0.047,
+        "probable_function": "determinative",
+        "confidence": 0.576,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.576,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "240",
+        "count": 354,
+        "class": "MEDIAL",
+        "terminal_rate": 0.24,
+        "initial_rate": 0.045,
+        "medial_rate": 0.689,
+        "solo_rate": 0.025,
+        "probable_function": "phonetic",
+        "confidence": 0.689,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.689
+        }
+      },
+      {
+        "sign": "520",
+        "count": 315,
+        "class": "INITIAL",
+        "terminal_rate": 0.003,
+        "initial_rate": 0.768,
+        "medial_rate": 0.2,
+        "solo_rate": 0.029,
+        "probable_function": "determinative",
+        "confidence": 0.768,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.768,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "861",
+        "count": 266,
+        "class": "INITIAL",
+        "terminal_rate": 0.0,
+        "initial_rate": 0.774,
+        "medial_rate": 0.158,
+        "solo_rate": 0.068,
+        "probable_function": "determinative",
+        "confidence": 0.774,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.774,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "2",
+        "count": 265,
+        "class": "MEDIAL",
+        "terminal_rate": 0.03,
+        "initial_rate": 0.241,
+        "medial_rate": 0.679,
+        "solo_rate": 0.049,
+        "probable_function": "phonetic",
+        "confidence": 0.679,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.679
+        }
+      },
+      {
+        "sign": "235",
+        "count": 250,
+        "class": "MEDIAL",
+        "terminal_rate": 0.156,
+        "initial_rate": 0.112,
+        "medial_rate": 0.708,
+        "solo_rate": 0.024,
+        "probable_function": "phonetic",
+        "confidence": 1.008,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 1.008
+        }
+      },
+      {
+        "sign": "31",
+        "count": 240,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.138,
+        "initial_rate": 0.221,
+        "medial_rate": 0.567,
+        "solo_rate": 0.075,
+        "probable_function": "phonetic",
+        "confidence": 0.867,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.867
+        }
+      },
+      {
+        "sign": "820",
+        "count": 235,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.06,
+        "initial_rate": 0.408,
+        "medial_rate": 0.43,
+        "solo_rate": 0.102,
+        "probable_function": "numeral",
+        "confidence": 0.0,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "700",
+        "count": 233,
+        "class": "INITIAL",
+        "terminal_rate": 0.004,
+        "initial_rate": 0.846,
+        "medial_rate": 0.064,
+        "solo_rate": 0.086,
+        "probable_function": "determinative",
+        "confidence": 0.846,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.846,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "3",
+        "count": 232,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.125,
+        "initial_rate": 0.246,
+        "medial_rate": 0.556,
+        "solo_rate": 0.073,
+        "probable_function": "phonetic",
+        "confidence": 0.856,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.856
+        }
+      },
+      {
+        "sign": "1",
+        "count": 227,
+        "class": "MEDIAL",
+        "terminal_rate": 0.031,
+        "initial_rate": 0.269,
+        "medial_rate": 0.683,
+        "solo_rate": 0.018,
+        "probable_function": "phonetic",
+        "confidence": 0.683,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.683
+        }
+      },
+      {
+        "sign": "590",
+        "count": 226,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.031,
+        "initial_rate": 0.367,
+        "medial_rate": 0.562,
+        "solo_rate": 0.04,
+        "probable_function": "numeral",
+        "confidence": 0.0,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "33",
+        "count": 226,
+        "class": "MEDIAL",
+        "terminal_rate": 0.119,
+        "initial_rate": 0.137,
+        "medial_rate": 0.642,
+        "solo_rate": 0.102,
+        "probable_function": "phonetic",
+        "confidence": 0.942,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.942
+        }
+      },
+      {
+        "sign": "60",
+        "count": 218,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.009,
+        "initial_rate": 0.459,
+        "medial_rate": 0.527,
+        "solo_rate": 0.005,
+        "probable_function": "numeral",
+        "confidence": 0.0,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "817",
+        "count": 217,
+        "class": "TMK",
+        "terminal_rate": 0.853,
+        "initial_rate": 0.014,
+        "medial_rate": 0.078,
+        "solo_rate": 0.055,
+        "probable_function": "suffix",
+        "confidence": 1.705,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 1.705,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "741",
+        "count": 216,
+        "class": "INITIAL",
+        "terminal_rate": 0.0,
+        "initial_rate": 0.81,
+        "medial_rate": 0.162,
+        "solo_rate": 0.028,
+        "probable_function": "determinative",
+        "confidence": 0.81,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.81,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "176",
+        "count": 216,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.324,
+        "initial_rate": 0.111,
+        "medial_rate": 0.449,
+        "solo_rate": 0.116,
+        "probable_function": "numeral",
+        "confidence": 0.0,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "705",
+        "count": 212,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.509,
+        "initial_rate": 0.019,
+        "medial_rate": 0.42,
+        "solo_rate": 0.052,
+        "probable_function": "suffix",
+        "confidence": 0.509,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.509,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "90",
+        "count": 194,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.062,
+        "initial_rate": 0.474,
+        "medial_rate": 0.402,
+        "solo_rate": 0.062,
+        "probable_function": "numeral",
+        "confidence": 0.0,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "233",
+        "count": 190,
+        "class": "MEDIAL",
+        "terminal_rate": 0.205,
+        "initial_rate": 0.111,
+        "medial_rate": 0.679,
+        "solo_rate": 0.005,
+        "probable_function": "phonetic",
+        "confidence": 0.979,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.979
+        }
+      },
+      {
+        "sign": "34",
+        "count": 183,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.262,
+        "initial_rate": 0.104,
+        "medial_rate": 0.525,
+        "solo_rate": 0.109,
+        "probable_function": "phonetic",
+        "confidence": 0.525,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.525
+        }
+      },
+      {
+        "sign": "798",
+        "count": 151,
+        "class": "TMK",
+        "terminal_rate": 0.616,
+        "initial_rate": 0.007,
+        "medial_rate": 0.325,
+        "solo_rate": 0.053,
+        "probable_function": "suffix",
+        "confidence": 1.232,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 1.232,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "920",
+        "count": 148,
+        "class": "TMK",
+        "terminal_rate": 0.946,
+        "initial_rate": 0.0,
+        "medial_rate": 0.027,
+        "solo_rate": 0.027,
+        "probable_function": "suffix",
+        "confidence": 1.892,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 1.892,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "415",
+        "count": 147,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.388,
+        "initial_rate": 0.007,
+        "medial_rate": 0.578,
+        "solo_rate": 0.027,
+        "probable_function": "numeral",
+        "confidence": 0.0,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "390",
+        "count": 136,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.522,
+        "initial_rate": 0.022,
+        "medial_rate": 0.397,
+        "solo_rate": 0.059,
+        "probable_function": "suffix",
+        "confidence": 0.522,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.522,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "255",
+        "count": 136,
+        "class": "MEDIAL",
+        "terminal_rate": 0.316,
+        "initial_rate": 0.037,
+        "medial_rate": 0.632,
+        "solo_rate": 0.015,
+        "probable_function": "numeral",
+        "confidence": 0.0,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "100",
+        "count": 133,
+        "class": "MEDIAL",
+        "terminal_rate": 0.06,
+        "initial_rate": 0.196,
+        "medial_rate": 0.684,
+        "solo_rate": 0.06,
+        "probable_function": "phonetic",
+        "confidence": 0.984,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.984
+        }
+      },
+      {
+        "sign": "806",
+        "count": 133,
+        "class": "TMK",
+        "terminal_rate": 0.684,
+        "initial_rate": 0.007,
+        "medial_rate": 0.286,
+        "solo_rate": 0.023,
+        "probable_function": "suffix",
+        "confidence": 1.368,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 1.368,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "760",
+        "count": 132,
+        "class": "TMK",
+        "terminal_rate": 0.644,
+        "initial_rate": 0.015,
+        "medial_rate": 0.235,
+        "solo_rate": 0.106,
+        "probable_function": "suffix",
+        "confidence": 1.288,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 1.288,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "407",
+        "count": 126,
+        "class": "MEDIAL",
+        "terminal_rate": 0.198,
+        "initial_rate": 0.008,
+        "medial_rate": 0.778,
+        "solo_rate": 0.016,
+        "probable_function": "phonetic",
+        "confidence": 0.778,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.778
+        }
+      },
+      {
+        "sign": "405",
+        "count": 117,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.342,
+        "initial_rate": 0.026,
+        "medial_rate": 0.598,
+        "solo_rate": 0.034,
+        "probable_function": "numeral",
+        "confidence": 0.0,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "368",
+        "count": 115,
+        "class": "MEDIAL",
+        "terminal_rate": 0.278,
+        "initial_rate": 0.096,
+        "medial_rate": 0.609,
+        "solo_rate": 0.017,
+        "probable_function": "phonetic",
+        "confidence": 0.609,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.609
+        }
+      },
+      {
+        "sign": "740",
+        "count": 114,
+        "class": "INITIAL",
+        "terminal_rate": 0.0,
+        "initial_rate": 0.939,
+        "medial_rate": 0.0,
+        "solo_rate": 0.061,
+        "probable_function": "determinative",
+        "confidence": 0.939,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.939,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "690",
+        "count": 114,
+        "class": "INITIAL",
+        "terminal_rate": 0.0,
+        "initial_rate": 0.798,
+        "medial_rate": 0.149,
+        "solo_rate": 0.053,
+        "probable_function": "determinative",
+        "confidence": 0.798,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.798,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "900",
+        "count": 111,
+        "class": "TMK",
+        "terminal_rate": 0.955,
+        "initial_rate": 0.0,
+        "medial_rate": 0.027,
+        "solo_rate": 0.018,
+        "probable_function": "suffix",
+        "confidence": 1.91,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 1.91,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "140",
+        "count": 110,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.255,
+        "initial_rate": 0.164,
+        "medial_rate": 0.536,
+        "solo_rate": 0.045,
+        "probable_function": "phonetic",
+        "confidence": 0.836,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.836
+        }
+      },
+      {
+        "sign": "156",
+        "count": 106,
+        "class": "INITIAL",
+        "terminal_rate": 0.0,
+        "initial_rate": 0.726,
+        "medial_rate": 0.217,
+        "solo_rate": 0.057,
+        "probable_function": "determinative",
+        "confidence": 0.726,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.726,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "550",
+        "count": 102,
+        "class": "INITIAL",
+        "terminal_rate": 0.0,
+        "initial_rate": 0.843,
+        "medial_rate": 0.078,
+        "solo_rate": 0.078,
+        "probable_function": "determinative",
+        "confidence": 0.843,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.843,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "706",
+        "count": 101,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.554,
+        "initial_rate": 0.01,
+        "medial_rate": 0.406,
+        "solo_rate": 0.03,
+        "probable_function": "suffix",
+        "confidence": 0.554,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.554,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "4",
+        "count": 98,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.092,
+        "initial_rate": 0.296,
+        "medial_rate": 0.51,
+        "solo_rate": 0.102,
+        "probable_function": "phonetic",
+        "confidence": 0.51,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.51
+        }
+      },
+      {
+        "sign": "61",
+        "count": 94,
+        "class": "MEDIAL",
+        "terminal_rate": 0.064,
+        "initial_rate": 0.287,
+        "medial_rate": 0.606,
+        "solo_rate": 0.043,
+        "probable_function": "phonetic",
+        "confidence": 0.606,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.606
+        }
+      },
+      {
+        "sign": "231",
+        "count": 93,
+        "class": "MEDIAL",
+        "terminal_rate": 0.129,
+        "initial_rate": 0.054,
+        "medial_rate": 0.796,
+        "solo_rate": 0.022,
+        "probable_function": "phonetic",
+        "confidence": 1.096,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 1.096
+        }
+      },
+      {
+        "sign": "151",
+        "count": 92,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.272,
+        "initial_rate": 0.152,
+        "medial_rate": 0.435,
+        "solo_rate": 0.141,
+        "probable_function": "phonetic",
+        "confidence": 0.3,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.3
+        }
+      },
+      {
+        "sign": "892",
+        "count": 90,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.033,
+        "initial_rate": 0.378,
+        "medial_rate": 0.467,
+        "solo_rate": 0.122,
+        "probable_function": "numeral",
+        "confidence": 0.0,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "803",
+        "count": 86,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.581,
+        "initial_rate": 0.0,
+        "medial_rate": 0.395,
+        "solo_rate": 0.023,
+        "probable_function": "suffix",
+        "confidence": 0.581,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.581,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "503",
+        "count": 82,
+        "class": "MEDIAL",
+        "terminal_rate": 0.061,
+        "initial_rate": 0.293,
+        "medial_rate": 0.622,
+        "solo_rate": 0.024,
+        "probable_function": "phonetic",
+        "confidence": 0.622,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.622
+        }
+      },
+      {
+        "sign": "142",
+        "count": 80,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.388,
+        "initial_rate": 0.062,
+        "medial_rate": 0.525,
+        "solo_rate": 0.025,
+        "probable_function": "numeral",
+        "confidence": 0.0,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "17",
+        "count": 79,
+        "class": "MEDIAL",
+        "terminal_rate": 0.114,
+        "initial_rate": 0.24,
+        "medial_rate": 0.633,
+        "solo_rate": 0.013,
+        "probable_function": "phonetic",
+        "confidence": 0.933,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.933
+        }
+      },
+      {
+        "sign": "617",
+        "count": 78,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.0,
+        "initial_rate": 0.449,
+        "medial_rate": 0.5,
+        "solo_rate": 0.051,
+        "probable_function": "numeral",
+        "confidence": 0.0,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "575",
+        "count": 76,
+        "class": "MEDIAL",
+        "terminal_rate": 0.303,
+        "initial_rate": 0.0,
+        "medial_rate": 0.658,
+        "solo_rate": 0.039,
+        "probable_function": "numeral",
+        "confidence": 0.0,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "692",
+        "count": 75,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.573,
+        "initial_rate": 0.04,
+        "medial_rate": 0.36,
+        "solo_rate": 0.027,
+        "probable_function": "suffix",
+        "confidence": 0.573,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.573,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "435",
+        "count": 75,
+        "class": "MEDIAL",
+        "terminal_rate": 0.04,
+        "initial_rate": 0.16,
+        "medial_rate": 0.787,
+        "solo_rate": 0.013,
+        "probable_function": "phonetic",
+        "confidence": 1.087,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 1.087
+        }
+      },
+      {
+        "sign": "615",
+        "count": 71,
+        "class": "INITIAL",
+        "terminal_rate": 0.0,
+        "initial_rate": 0.789,
+        "medial_rate": 0.155,
+        "solo_rate": 0.056,
+        "probable_function": "determinative",
+        "confidence": 0.789,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.789,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "527",
+        "count": 63,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.095,
+        "initial_rate": 0.444,
+        "medial_rate": 0.429,
+        "solo_rate": 0.032,
+        "probable_function": "numeral",
+        "confidence": 0.0,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "55",
+        "count": 62,
+        "class": "MEDIAL",
+        "terminal_rate": 0.097,
+        "initial_rate": 0.161,
+        "medial_rate": 0.71,
+        "solo_rate": 0.032,
+        "probable_function": "phonetic",
+        "confidence": 1.01,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 1.01
+        }
+      },
+      {
+        "sign": "904",
+        "count": 61,
+        "class": "TMK",
+        "terminal_rate": 0.918,
+        "initial_rate": 0.0,
+        "medial_rate": 0.066,
+        "solo_rate": 0.016,
+        "probable_function": "suffix",
+        "confidence": 1.836,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 1.836,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "125",
+        "count": 59,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.034,
+        "initial_rate": 0.508,
+        "medial_rate": 0.441,
+        "solo_rate": 0.017,
+        "probable_function": "numeral",
+        "confidence": 0.0,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "388",
+        "count": 59,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.051,
+        "initial_rate": 0.475,
+        "medial_rate": 0.407,
+        "solo_rate": 0.068,
+        "probable_function": "numeral",
+        "confidence": 0.0,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "585",
+        "count": 59,
+        "class": "MEDIAL",
+        "terminal_rate": 0.288,
+        "initial_rate": 0.017,
+        "medial_rate": 0.644,
+        "solo_rate": 0.051,
+        "probable_function": "phonetic",
+        "confidence": 0.644,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.644
+        }
+      },
+      {
+        "sign": "440",
+        "count": 57,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.368,
+        "initial_rate": 0.035,
+        "medial_rate": 0.386,
+        "solo_rate": 0.211,
+        "probable_function": "numeral",
+        "confidence": 0.0,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "416",
+        "count": 57,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.404,
+        "initial_rate": 0.035,
+        "medial_rate": 0.351,
+        "solo_rate": 0.211,
+        "probable_function": "suffix",
+        "confidence": 0.404,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.404,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "717",
+        "count": 55,
+        "class": "TMK",
+        "terminal_rate": 0.6,
+        "initial_rate": 0.018,
+        "medial_rate": 0.291,
+        "solo_rate": 0.091,
+        "probable_function": "suffix",
+        "confidence": 1.2,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 1.2,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "850",
+        "count": 55,
+        "class": "INITIAL",
+        "terminal_rate": 0.018,
+        "initial_rate": 0.818,
+        "medial_rate": 0.073,
+        "solo_rate": 0.091,
+        "probable_function": "determinative",
+        "confidence": 0.818,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.818,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "790",
+        "count": 55,
+        "class": "INITIAL",
+        "terminal_rate": 0.0,
+        "initial_rate": 0.727,
+        "medial_rate": 0.091,
+        "solo_rate": 0.182,
+        "probable_function": "determinative",
+        "confidence": 0.727,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.727,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "845",
+        "count": 55,
+        "class": "TMK",
+        "terminal_rate": 0.691,
+        "initial_rate": 0.0,
+        "medial_rate": 0.309,
+        "solo_rate": 0.0,
+        "probable_function": "suffix",
+        "confidence": 1.382,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 1.382,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "752",
+        "count": 52,
+        "class": "TMK",
+        "terminal_rate": 0.827,
+        "initial_rate": 0.0,
+        "medial_rate": 0.135,
+        "solo_rate": 0.038,
+        "probable_function": "suffix",
+        "confidence": 1.654,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 1.654,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "742",
+        "count": 51,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.078,
+        "initial_rate": 0.431,
+        "medial_rate": 0.372,
+        "solo_rate": 0.118,
+        "probable_function": "numeral",
+        "confidence": 0.0,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "350",
+        "count": 48,
+        "class": "MEDIAL",
+        "terminal_rate": 0.208,
+        "initial_rate": 0.042,
+        "medial_rate": 0.729,
+        "solo_rate": 0.021,
+        "probable_function": "phonetic",
+        "confidence": 0.729,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.729
+        }
+      },
+      {
+        "sign": "16",
+        "count": 48,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.167,
+        "initial_rate": 0.208,
+        "medial_rate": 0.5,
+        "solo_rate": 0.125,
+        "probable_function": "phonetic",
+        "confidence": 0.8,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.8
+        }
+      },
+      {
+        "sign": "5",
+        "count": 48,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.083,
+        "initial_rate": 0.5,
+        "medial_rate": 0.396,
+        "solo_rate": 0.021,
+        "probable_function": "numeral",
+        "confidence": 0.0,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "595",
+        "count": 47,
+        "class": "INITIAL",
+        "terminal_rate": 0.0,
+        "initial_rate": 0.702,
+        "medial_rate": 0.277,
+        "solo_rate": 0.021,
+        "probable_function": "determinative",
+        "confidence": 0.702,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.702,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "923",
+        "count": 45,
+        "class": "INITIAL",
+        "terminal_rate": 0.0,
+        "initial_rate": 0.578,
+        "medial_rate": 0.289,
+        "solo_rate": 0.133,
+        "probable_function": "determinative",
+        "confidence": 0.578,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.578,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "455",
+        "count": 44,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.455,
+        "initial_rate": 0.045,
+        "medial_rate": 0.432,
+        "solo_rate": 0.068,
+        "probable_function": "suffix",
+        "confidence": 0.455,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.455,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "154",
+        "count": 44,
+        "class": "INITIAL",
+        "terminal_rate": 0.0,
+        "initial_rate": 0.932,
+        "medial_rate": 0.068,
+        "solo_rate": 0.0,
+        "probable_function": "determinative",
+        "confidence": 0.932,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.932,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "832",
+        "count": 44,
+        "class": "TMK",
+        "terminal_rate": 0.659,
+        "initial_rate": 0.023,
+        "medial_rate": 0.227,
+        "solo_rate": 0.091,
+        "probable_function": "suffix",
+        "confidence": 1.318,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 1.318,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "335",
+        "count": 41,
+        "class": "MEDIAL",
+        "terminal_rate": 0.0,
+        "initial_rate": 0.244,
+        "medial_rate": 0.707,
+        "solo_rate": 0.049,
+        "probable_function": "phonetic",
+        "confidence": 0.707,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.707
+        }
+      },
+      {
+        "sign": "460",
+        "count": 40,
+        "class": "MEDIAL",
+        "terminal_rate": 0.3,
+        "initial_rate": 0.1,
+        "medial_rate": 0.6,
+        "solo_rate": 0.0,
+        "probable_function": "numeral",
+        "confidence": 0.0,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      },
+      {
+        "sign": "226",
+        "count": 40,
+        "class": "CONNECTOR",
+        "terminal_rate": 0.325,
+        "initial_rate": 0.125,
+        "medial_rate": 0.425,
+        "solo_rate": 0.125,
+        "probable_function": "numeral",
+        "confidence": 0.0,
+        "scores": {
+          "numeral": 0.0,
+          "logogram": 0.0,
+          "determinative": 0.0,
+          "suffix": 0.0,
+          "phonetic": 0.0
+        }
+      }
+    ],
+    "by_function": {
+      "phonetic": [
+        {
+          "sign": "32",
+          "count": 527,
+          "class": "MEDIAL",
+          "terminal_rate": 0.074,
+          "initial_rate": 0.178,
+          "medial_rate": 0.611,
+          "solo_rate": 0.137,
+          "probable_function": "phonetic",
+          "confidence": 0.911,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.911
+          }
+        },
+        {
+          "sign": "220",
+          "count": 462,
+          "class": "MEDIAL",
+          "terminal_rate": 0.184,
+          "initial_rate": 0.08,
+          "medial_rate": 0.667,
+          "solo_rate": 0.069,
+          "probable_function": "phonetic",
+          "confidence": 0.967,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.967
+          }
+        },
+        {
+          "sign": "240",
+          "count": 354,
+          "class": "MEDIAL",
+          "terminal_rate": 0.24,
+          "initial_rate": 0.045,
+          "medial_rate": 0.689,
+          "solo_rate": 0.025,
+          "probable_function": "phonetic",
+          "confidence": 0.689,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.689
+          }
+        },
+        {
+          "sign": "2",
+          "count": 265,
+          "class": "MEDIAL",
+          "terminal_rate": 0.03,
+          "initial_rate": 0.241,
+          "medial_rate": 0.679,
+          "solo_rate": 0.049,
+          "probable_function": "phonetic",
+          "confidence": 0.679,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.679
+          }
+        },
+        {
+          "sign": "235",
+          "count": 250,
+          "class": "MEDIAL",
+          "terminal_rate": 0.156,
+          "initial_rate": 0.112,
+          "medial_rate": 0.708,
+          "solo_rate": 0.024,
+          "probable_function": "phonetic",
+          "confidence": 1.008,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 1.008
+          }
+        },
+        {
+          "sign": "31",
+          "count": 240,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.138,
+          "initial_rate": 0.221,
+          "medial_rate": 0.567,
+          "solo_rate": 0.075,
+          "probable_function": "phonetic",
+          "confidence": 0.867,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.867
+          }
+        },
+        {
+          "sign": "3",
+          "count": 232,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.125,
+          "initial_rate": 0.246,
+          "medial_rate": 0.556,
+          "solo_rate": 0.073,
+          "probable_function": "phonetic",
+          "confidence": 0.856,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.856
+          }
+        },
+        {
+          "sign": "1",
+          "count": 227,
+          "class": "MEDIAL",
+          "terminal_rate": 0.031,
+          "initial_rate": 0.269,
+          "medial_rate": 0.683,
+          "solo_rate": 0.018,
+          "probable_function": "phonetic",
+          "confidence": 0.683,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.683
+          }
+        },
+        {
+          "sign": "33",
+          "count": 226,
+          "class": "MEDIAL",
+          "terminal_rate": 0.119,
+          "initial_rate": 0.137,
+          "medial_rate": 0.642,
+          "solo_rate": 0.102,
+          "probable_function": "phonetic",
+          "confidence": 0.942,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.942
+          }
+        },
+        {
+          "sign": "233",
+          "count": 190,
+          "class": "MEDIAL",
+          "terminal_rate": 0.205,
+          "initial_rate": 0.111,
+          "medial_rate": 0.679,
+          "solo_rate": 0.005,
+          "probable_function": "phonetic",
+          "confidence": 0.979,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.979
+          }
+        },
+        {
+          "sign": "34",
+          "count": 183,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.262,
+          "initial_rate": 0.104,
+          "medial_rate": 0.525,
+          "solo_rate": 0.109,
+          "probable_function": "phonetic",
+          "confidence": 0.525,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.525
+          }
+        },
+        {
+          "sign": "100",
+          "count": 133,
+          "class": "MEDIAL",
+          "terminal_rate": 0.06,
+          "initial_rate": 0.196,
+          "medial_rate": 0.684,
+          "solo_rate": 0.06,
+          "probable_function": "phonetic",
+          "confidence": 0.984,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.984
+          }
+        },
+        {
+          "sign": "407",
+          "count": 126,
+          "class": "MEDIAL",
+          "terminal_rate": 0.198,
+          "initial_rate": 0.008,
+          "medial_rate": 0.778,
+          "solo_rate": 0.016,
+          "probable_function": "phonetic",
+          "confidence": 0.778,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.778
+          }
+        },
+        {
+          "sign": "368",
+          "count": 115,
+          "class": "MEDIAL",
+          "terminal_rate": 0.278,
+          "initial_rate": 0.096,
+          "medial_rate": 0.609,
+          "solo_rate": 0.017,
+          "probable_function": "phonetic",
+          "confidence": 0.609,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.609
+          }
+        },
+        {
+          "sign": "140",
+          "count": 110,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.255,
+          "initial_rate": 0.164,
+          "medial_rate": 0.536,
+          "solo_rate": 0.045,
+          "probable_function": "phonetic",
+          "confidence": 0.836,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.836
+          }
+        }
+      ],
+      "determinative": [
+        {
+          "sign": "400",
+          "count": 429,
+          "class": "INITIAL",
+          "terminal_rate": 0.047,
+          "initial_rate": 0.576,
+          "medial_rate": 0.331,
+          "solo_rate": 0.047,
+          "probable_function": "determinative",
+          "confidence": 0.576,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.576,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "520",
+          "count": 315,
+          "class": "INITIAL",
+          "terminal_rate": 0.003,
+          "initial_rate": 0.768,
+          "medial_rate": 0.2,
+          "solo_rate": 0.029,
+          "probable_function": "determinative",
+          "confidence": 0.768,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.768,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "861",
+          "count": 266,
+          "class": "INITIAL",
+          "terminal_rate": 0.0,
+          "initial_rate": 0.774,
+          "medial_rate": 0.158,
+          "solo_rate": 0.068,
+          "probable_function": "determinative",
+          "confidence": 0.774,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.774,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "700",
+          "count": 233,
+          "class": "INITIAL",
+          "terminal_rate": 0.004,
+          "initial_rate": 0.846,
+          "medial_rate": 0.064,
+          "solo_rate": 0.086,
+          "probable_function": "determinative",
+          "confidence": 0.846,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.846,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "741",
+          "count": 216,
+          "class": "INITIAL",
+          "terminal_rate": 0.0,
+          "initial_rate": 0.81,
+          "medial_rate": 0.162,
+          "solo_rate": 0.028,
+          "probable_function": "determinative",
+          "confidence": 0.81,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.81,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "740",
+          "count": 114,
+          "class": "INITIAL",
+          "terminal_rate": 0.0,
+          "initial_rate": 0.939,
+          "medial_rate": 0.0,
+          "solo_rate": 0.061,
+          "probable_function": "determinative",
+          "confidence": 0.939,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.939,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "690",
+          "count": 114,
+          "class": "INITIAL",
+          "terminal_rate": 0.0,
+          "initial_rate": 0.798,
+          "medial_rate": 0.149,
+          "solo_rate": 0.053,
+          "probable_function": "determinative",
+          "confidence": 0.798,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.798,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "156",
+          "count": 106,
+          "class": "INITIAL",
+          "terminal_rate": 0.0,
+          "initial_rate": 0.726,
+          "medial_rate": 0.217,
+          "solo_rate": 0.057,
+          "probable_function": "determinative",
+          "confidence": 0.726,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.726,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "550",
+          "count": 102,
+          "class": "INITIAL",
+          "terminal_rate": 0.0,
+          "initial_rate": 0.843,
+          "medial_rate": 0.078,
+          "solo_rate": 0.078,
+          "probable_function": "determinative",
+          "confidence": 0.843,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.843,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "615",
+          "count": 71,
+          "class": "INITIAL",
+          "terminal_rate": 0.0,
+          "initial_rate": 0.789,
+          "medial_rate": 0.155,
+          "solo_rate": 0.056,
+          "probable_function": "determinative",
+          "confidence": 0.789,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.789,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "850",
+          "count": 55,
+          "class": "INITIAL",
+          "terminal_rate": 0.018,
+          "initial_rate": 0.818,
+          "medial_rate": 0.073,
+          "solo_rate": 0.091,
+          "probable_function": "determinative",
+          "confidence": 0.818,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.818,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "790",
+          "count": 55,
+          "class": "INITIAL",
+          "terminal_rate": 0.0,
+          "initial_rate": 0.727,
+          "medial_rate": 0.091,
+          "solo_rate": 0.182,
+          "probable_function": "determinative",
+          "confidence": 0.727,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.727,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "595",
+          "count": 47,
+          "class": "INITIAL",
+          "terminal_rate": 0.0,
+          "initial_rate": 0.702,
+          "medial_rate": 0.277,
+          "solo_rate": 0.021,
+          "probable_function": "determinative",
+          "confidence": 0.702,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.702,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "923",
+          "count": 45,
+          "class": "INITIAL",
+          "terminal_rate": 0.0,
+          "initial_rate": 0.578,
+          "medial_rate": 0.289,
+          "solo_rate": 0.133,
+          "probable_function": "determinative",
+          "confidence": 0.578,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.578,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "154",
+          "count": 44,
+          "class": "INITIAL",
+          "terminal_rate": 0.0,
+          "initial_rate": 0.932,
+          "medial_rate": 0.068,
+          "solo_rate": 0.0,
+          "probable_function": "determinative",
+          "confidence": 0.932,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.932,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        }
+      ],
+      "numeral": [
+        {
+          "sign": "820",
+          "count": 235,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.06,
+          "initial_rate": 0.408,
+          "medial_rate": 0.43,
+          "solo_rate": 0.102,
+          "probable_function": "numeral",
+          "confidence": 0.0,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "590",
+          "count": 226,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.031,
+          "initial_rate": 0.367,
+          "medial_rate": 0.562,
+          "solo_rate": 0.04,
+          "probable_function": "numeral",
+          "confidence": 0.0,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "60",
+          "count": 218,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.009,
+          "initial_rate": 0.459,
+          "medial_rate": 0.527,
+          "solo_rate": 0.005,
+          "probable_function": "numeral",
+          "confidence": 0.0,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "176",
+          "count": 216,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.324,
+          "initial_rate": 0.111,
+          "medial_rate": 0.449,
+          "solo_rate": 0.116,
+          "probable_function": "numeral",
+          "confidence": 0.0,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "90",
+          "count": 194,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.062,
+          "initial_rate": 0.474,
+          "medial_rate": 0.402,
+          "solo_rate": 0.062,
+          "probable_function": "numeral",
+          "confidence": 0.0,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "415",
+          "count": 147,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.388,
+          "initial_rate": 0.007,
+          "medial_rate": 0.578,
+          "solo_rate": 0.027,
+          "probable_function": "numeral",
+          "confidence": 0.0,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "255",
+          "count": 136,
+          "class": "MEDIAL",
+          "terminal_rate": 0.316,
+          "initial_rate": 0.037,
+          "medial_rate": 0.632,
+          "solo_rate": 0.015,
+          "probable_function": "numeral",
+          "confidence": 0.0,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "405",
+          "count": 117,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.342,
+          "initial_rate": 0.026,
+          "medial_rate": 0.598,
+          "solo_rate": 0.034,
+          "probable_function": "numeral",
+          "confidence": 0.0,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "892",
+          "count": 90,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.033,
+          "initial_rate": 0.378,
+          "medial_rate": 0.467,
+          "solo_rate": 0.122,
+          "probable_function": "numeral",
+          "confidence": 0.0,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "142",
+          "count": 80,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.388,
+          "initial_rate": 0.062,
+          "medial_rate": 0.525,
+          "solo_rate": 0.025,
+          "probable_function": "numeral",
+          "confidence": 0.0,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "617",
+          "count": 78,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.0,
+          "initial_rate": 0.449,
+          "medial_rate": 0.5,
+          "solo_rate": 0.051,
+          "probable_function": "numeral",
+          "confidence": 0.0,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "575",
+          "count": 76,
+          "class": "MEDIAL",
+          "terminal_rate": 0.303,
+          "initial_rate": 0.0,
+          "medial_rate": 0.658,
+          "solo_rate": 0.039,
+          "probable_function": "numeral",
+          "confidence": 0.0,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "527",
+          "count": 63,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.095,
+          "initial_rate": 0.444,
+          "medial_rate": 0.429,
+          "solo_rate": 0.032,
+          "probable_function": "numeral",
+          "confidence": 0.0,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "125",
+          "count": 59,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.034,
+          "initial_rate": 0.508,
+          "medial_rate": 0.441,
+          "solo_rate": 0.017,
+          "probable_function": "numeral",
+          "confidence": 0.0,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "388",
+          "count": 59,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.051,
+          "initial_rate": 0.475,
+          "medial_rate": 0.407,
+          "solo_rate": 0.068,
+          "probable_function": "numeral",
+          "confidence": 0.0,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        }
+      ],
+      "suffix": [
+        {
+          "sign": "817",
+          "count": 217,
+          "class": "TMK",
+          "terminal_rate": 0.853,
+          "initial_rate": 0.014,
+          "medial_rate": 0.078,
+          "solo_rate": 0.055,
+          "probable_function": "suffix",
+          "confidence": 1.705,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 1.705,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "705",
+          "count": 212,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.509,
+          "initial_rate": 0.019,
+          "medial_rate": 0.42,
+          "solo_rate": 0.052,
+          "probable_function": "suffix",
+          "confidence": 0.509,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.509,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "798",
+          "count": 151,
+          "class": "TMK",
+          "terminal_rate": 0.616,
+          "initial_rate": 0.007,
+          "medial_rate": 0.325,
+          "solo_rate": 0.053,
+          "probable_function": "suffix",
+          "confidence": 1.232,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 1.232,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "920",
+          "count": 148,
+          "class": "TMK",
+          "terminal_rate": 0.946,
+          "initial_rate": 0.0,
+          "medial_rate": 0.027,
+          "solo_rate": 0.027,
+          "probable_function": "suffix",
+          "confidence": 1.892,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 1.892,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "390",
+          "count": 136,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.522,
+          "initial_rate": 0.022,
+          "medial_rate": 0.397,
+          "solo_rate": 0.059,
+          "probable_function": "suffix",
+          "confidence": 0.522,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.522,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "806",
+          "count": 133,
+          "class": "TMK",
+          "terminal_rate": 0.684,
+          "initial_rate": 0.007,
+          "medial_rate": 0.286,
+          "solo_rate": 0.023,
+          "probable_function": "suffix",
+          "confidence": 1.368,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 1.368,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "760",
+          "count": 132,
+          "class": "TMK",
+          "terminal_rate": 0.644,
+          "initial_rate": 0.015,
+          "medial_rate": 0.235,
+          "solo_rate": 0.106,
+          "probable_function": "suffix",
+          "confidence": 1.288,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 1.288,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "900",
+          "count": 111,
+          "class": "TMK",
+          "terminal_rate": 0.955,
+          "initial_rate": 0.0,
+          "medial_rate": 0.027,
+          "solo_rate": 0.018,
+          "probable_function": "suffix",
+          "confidence": 1.91,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 1.91,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "706",
+          "count": 101,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.554,
+          "initial_rate": 0.01,
+          "medial_rate": 0.406,
+          "solo_rate": 0.03,
+          "probable_function": "suffix",
+          "confidence": 0.554,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.554,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "803",
+          "count": 86,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.581,
+          "initial_rate": 0.0,
+          "medial_rate": 0.395,
+          "solo_rate": 0.023,
+          "probable_function": "suffix",
+          "confidence": 0.581,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.581,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "692",
+          "count": 75,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.573,
+          "initial_rate": 0.04,
+          "medial_rate": 0.36,
+          "solo_rate": 0.027,
+          "probable_function": "suffix",
+          "confidence": 0.573,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.573,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "904",
+          "count": 61,
+          "class": "TMK",
+          "terminal_rate": 0.918,
+          "initial_rate": 0.0,
+          "medial_rate": 0.066,
+          "solo_rate": 0.016,
+          "probable_function": "suffix",
+          "confidence": 1.836,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 1.836,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "416",
+          "count": 57,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.404,
+          "initial_rate": 0.035,
+          "medial_rate": 0.351,
+          "solo_rate": 0.211,
+          "probable_function": "suffix",
+          "confidence": 0.404,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 0.404,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "717",
+          "count": 55,
+          "class": "TMK",
+          "terminal_rate": 0.6,
+          "initial_rate": 0.018,
+          "medial_rate": 0.291,
+          "solo_rate": 0.091,
+          "probable_function": "suffix",
+          "confidence": 1.2,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 1.2,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "845",
+          "count": 55,
+          "class": "TMK",
+          "terminal_rate": 0.691,
+          "initial_rate": 0.0,
+          "medial_rate": 0.309,
+          "solo_rate": 0.0,
+          "probable_function": "suffix",
+          "confidence": 1.382,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.0,
+            "determinative": 0.0,
+            "suffix": 1.382,
+            "phonetic": 0.0
+          }
+        }
+      ],
+      "logogram": [
+        {
+          "sign": "630",
+          "count": 39,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.41,
+          "initial_rate": 0.051,
+          "medial_rate": 0.205,
+          "solo_rate": 0.333,
+          "probable_function": "logogram",
+          "confidence": 0.667,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.667,
+            "determinative": 0.0,
+            "suffix": 0.41,
+            "phonetic": 0.0
+          }
+        },
+        {
+          "sign": "13",
+          "count": 33,
+          "class": "CONNECTOR",
+          "terminal_rate": 0.091,
+          "initial_rate": 0.242,
+          "medial_rate": 0.303,
+          "solo_rate": 0.364,
+          "probable_function": "logogram",
+          "confidence": 0.727,
+          "scores": {
+            "numeral": 0.0,
+            "logogram": 0.727,
+            "determinative": 0.0,
+            "suffix": 0.0,
+            "phonetic": 0.0
+          }
+        }
+      ]
+    },
+    "summary": {
+      "phonetic": 127,
+      "determinative": 29,
+      "numeral": 75,
+      "suffix": 154,
+      "logogram": 2
+    }
+  },
+  "ventris_grid": {
+    "n_candidates": 263,
+    "right_context_groups": [
+      [
+        "390",
+        "368",
+        "776",
+        "760",
+        "808",
+        "48",
+        "645",
+        "772",
+        "621"
+      ],
+      [
+        "590",
+        "388",
+        "4",
+        "520",
+        "1",
+        "90",
+        "820"
+      ],
+      [
+        "33",
+        "34",
+        "32",
+        "176",
+        "140",
+        "63",
+        "165"
+      ],
+      [
+        "72",
+        "14",
+        "55",
+        "16",
+        "93",
+        "110",
+        "65"
+      ],
+      [
+        "752",
+        "467",
+        "468",
+        "472",
+        "465",
+        "777",
+        "749"
+      ],
+      [
+        "17",
+        "840",
+        "13",
+        "2",
+        "31",
+        "27"
+      ],
+      [
+        "235",
+        "66",
+        "636",
+        "232",
+        "745",
+        "70"
+      ],
+      [
+        "705",
+        "415",
+        "798",
+        "706",
+        "806",
+        "555"
+      ],
+      [
+        "220",
+        "233",
+        "100",
+        "231",
+        "171"
+      ],
+      [
+        "904",
+        "803",
+        "791",
+        "320",
+        "504"
+      ],
+      [
+        "460",
+        "463",
+        "746",
+        "626",
+        "346"
+      ],
+      [
+        "440",
+        "552",
+        "416",
+        "382",
+        "605"
+      ],
+      [
+        "380",
+        "167",
+        "575",
+        "360",
+        "585"
+      ],
+      [
+        "484",
+        "703",
+        "845",
+        "423",
+        "853"
+      ],
+      [
+        "61",
+        "365",
+        "318",
+        "321"
+      ],
+      [
+        "554",
+        "500",
+        "603",
+        "642"
+      ],
+      [
+        "158",
+        "700",
+        "824",
+        "491"
+      ],
+      [
+        "413",
+        "519",
+        "525"
+      ],
+      [
+        "821",
+        "154",
+        "204"
+      ],
+      [
+        "125",
+        "60"
+      ]
+    ],
+    "left_context_groups": [
+      [
+        "220",
+        "33",
+        "72",
+        "142",
+        "226",
+        "233",
+        "100",
+        "592",
+        "176",
+        "55",
+        "140",
+        "232",
+        "95",
+        "165",
+        "382",
+        "70",
+        "175",
+        "337",
+        "190"
+      ],
+      [
+        "405",
+        "455",
+        "413",
+        "482",
+        "255",
+        "320",
+        "603",
+        "642",
+        "645",
+        "326",
+        "772",
+        "263"
+      ],
+      [
+        "590",
+        "125",
+        "90",
+        "820",
+        "384",
+        "617",
+        "923",
+        "335"
+      ],
+      [
+        "156",
+        "158",
+        "690",
+        "400",
+        "154",
+        "824",
+        "491",
+        "204"
+      ],
+      [
+        "4",
+        "32",
+        "31",
+        "15",
+        "5",
+        "467",
+        "18",
+        "159"
+      ],
+      [
+        "235",
+        "415",
+        "297",
+        "236",
+        "240",
+        "500",
+        "804"
+      ],
+      [
+        "741",
+        "520",
+        "550",
+        "850",
+        "790",
+        "315"
+      ],
+      [
+        "17",
+        "7",
+        "6",
+        "16",
+        "752"
+      ],
+      [
+        "2",
+        "3",
+        "1",
+        "110",
+        "408"
+      ],
+      [
+        "742",
+        "745",
+        "111",
+        "511",
+        "323"
+      ],
+      [
+        "840",
+        "700",
+        "892",
+        "98"
+      ],
+      [
+        "167",
+        "221",
+        "371",
+        "136"
+      ],
+      [
+        "679",
+        "435",
+        "436",
+        "921"
+      ],
+      [
+        "555",
+        "242",
+        "321",
+        "927"
+      ],
+      [
+        "66",
+        "101",
+        "35"
+      ],
+      [
+        "717",
+        "803",
+        "868"
+      ],
+      [
+        "60",
+        "161",
+        "615"
+      ],
+      [
+        "426",
+        "552",
+        "64"
+      ],
+      [
+        "317",
+        "698",
+        "336"
+      ],
+      [
+        "390",
+        "621"
+      ]
+    ],
+    "n_right_groups": 44,
+    "n_left_groups": 39,
+    "interpretation": "Right-context groups: signs that appear before the SAME signs \u2192 may share a vowel value (Ventris column logic). Left-context groups: signs that appear after the SAME signs \u2192 may share a consonant value (Ventris row logic)."
+  },
+  "structural_comparison": {
+    "n_tokens": 14213,
+    "n_sign_types": 713,
+    "mean_inscription_length": 3.22,
+    "h1_normalized": 0.778,
+    "entropy_profile_h1_h4": [
+      0.7780197831768842,
+      0.9287,
+      0.9714,
+      0.9765
+    ],
+    "type_token_ratio": 0.0502,
+    "hapax_rate": 0.3058,
+    "script_benchmarks": {
+      "Indus (this corpus)": 0.778,
+      "Linear B (Mycenaean)": 0.72,
+      "Ugaritic (alphabet)": 0.83,
+      "Sumerian (logosyllabic)": 0.68,
+      "Chinese (logographic)": 0.58,
+      "Finnish (alphabet)": 0.88
+    },
+    "interpretation": "Large sign inventory (713) suggests logographic or logosyllabic. Short mean inscription length (3.2) suggests administrative labels, names, or short religious/commodity inscriptions."
+  },
+  "compounds": {
+    "initial_determinative_candidates": [
+      {
+        "sign": "400",
+        "initial_rate": 0.5758,
+        "total": 429
+      },
+      {
+        "sign": "520",
+        "initial_rate": 0.7683,
+        "total": 315
+      },
+      {
+        "sign": "861",
+        "initial_rate": 0.7744,
+        "total": 266
+      },
+      {
+        "sign": "700",
+        "initial_rate": 0.8455,
+        "total": 233
+      },
+      {
+        "sign": "741",
+        "initial_rate": 0.8102,
+        "total": 216
+      },
+      {
+        "sign": "740",
+        "initial_rate": 0.9386,
+        "total": 114
+      },
+      {
+        "sign": "690",
+        "initial_rate": 0.7982,
+        "total": 114
+      },
+      {
+        "sign": "550",
+        "initial_rate": 0.8431,
+        "total": 102
+      },
+      {
+        "sign": "156",
+        "initial_rate": 0.7264,
+        "total": 106
+      },
+      {
+        "sign": "615",
+        "initial_rate": 0.7887,
+        "total": 71
+      }
+    ],
+    "terminal_classifier_candidates": [
+      {
+        "sign": "817",
+        "terminal_rate": 0.8525,
+        "total": 217
+      },
+      {
+        "sign": "920",
+        "terminal_rate": 0.9459,
+        "total": 148
+      },
+      {
+        "sign": "900",
+        "terminal_rate": 0.955,
+        "total": 111
+      },
+      {
+        "sign": "806",
+        "terminal_rate": 0.6842,
+        "total": 133
+      },
+      {
+        "sign": "904",
+        "terminal_rate": 0.918,
+        "total": 61
+      },
+      {
+        "sign": "752",
+        "terminal_rate": 0.8269,
+        "total": 52
+      },
+      {
+        "sign": "845",
+        "terminal_rate": 0.6909,
+        "total": 55
+      },
+      {
+        "sign": "832",
+        "terminal_rate": 0.6591,
+        "total": 44
+      },
+      {
+        "sign": "501",
+        "terminal_rate": 1.0,
+        "total": 27
+      },
+      {
+        "sign": "877",
+        "terminal_rate": 0.8571,
+        "total": 21
+      }
+    ],
+    "compound_candidates": [
+      {
+        "pair": [
+          "405",
+          "501"
+        ],
+        "pmi": 4.8
+      },
+      {
+        "pair": [
+          "321",
+          "407"
+        ],
+        "pmi": 4.657
+      },
+      {
+        "pair": [
+          "503",
+          "752"
+        ],
+        "pmi": 4.605
+      },
+      {
+        "pair": [
+          "318",
+          "407"
+        ],
+        "pmi": 4.559
+      },
+      {
+        "pair": [
+          "690",
+          "436"
+        ],
+        "pmi": 4.557
+      },
+      {
+        "pair": [
+          "615",
+          "503"
+        ],
+        "pmi": 4.53
+      },
+      {
+        "pair": [
+          "255",
+          "318"
+        ],
+        "pmi": 4.482
+      },
+      {
+        "pair": [
+          "97",
+          "151"
+        ],
+        "pmi": 4.347
+      },
+      {
+        "pair": [
+          "605",
+          "760"
+        ],
+        "pmi": 4.104
+      },
+      {
+        "pair": [
+          "176",
+          "347"
+        ],
+        "pmi": 4.081
+      },
+      {
+        "pair": [
+          "235",
+          "321"
+        ],
+        "pmi": 3.971
+      },
+      {
+        "pair": [
+          "48",
+          "817"
+        ],
+        "pmi": 3.777
+      },
+      {
+        "pair": [
+          "690",
+          "435"
+        ],
+        "pmi": 3.766
+      },
+      {
+        "pair": [
+          "436",
+          "590"
+        ],
+        "pmi": 3.706
+      },
+      {
+        "pair": [
+          "850",
+          "61"
+        ],
+        "pmi": 3.65
+      }
+    ],
+    "versatile_logograms": [
+      {
+        "sign": "97",
+        "initial_rate": 0.3,
+        "terminal_rate": 0.35,
+        "total": 20
+      },
+      {
+        "sign": "222",
+        "initial_rate": 0.2353,
+        "terminal_rate": 0.2353,
+        "total": 17
+      }
+    ]
+  },
+  "synthesis": {
+    "script_type": {
+      "best_hypothesis": "logosyllabic",
+      "confidence_scores": {
+        "logosyllabic": 0.5,
+        "syllabary": 0.1,
+        "alphabet": 0.0,
+        "logographic": 0.5
+      },
+      "evidence": "713 sign types, H1_norm=0.778, mean_length=3.2, TTR=0.0502. Consistent with logosyllabic."
+    },
+    "language_hypothesis": {
+      "ranked_1": {
+        "language": "Mycenaean Greek",
+        "kl": 0.1074
+      },
+      "ranked_2": {
+        "language": "Hieroglyphic Luwian",
+        "kl": 0.113
+      },
+      "margin": 0.0056,
+      "assessment": "Word-length KL-divergence marginally favours Mycenaean Greek over Hieroglyphic Luwian (margin=0.0056 \u2014 effectively tied). Both are consistent with the inscription-length distribution."
+    },
+    "sign_categories": {
+      "tmk_terminal_markers": [
+        "817",
+        "798",
+        "920",
+        "806",
+        "760",
+        "900",
+        "904",
+        "717",
+        "845",
+        "752"
+      ],
+      "probable_numerals": [
+        "820",
+        "590",
+        "60",
+        "176",
+        "90"
+      ],
+      "initial_determinatives": [
+        "400",
+        "520",
+        "861",
+        "700",
+        "741"
+      ],
+      "terminal_classifiers": [
+        "817",
+        "920",
+        "900",
+        "806",
+        "904"
+      ],
+      "compound_units": [
+        [
+          "405",
+          "501"
+        ],
+        [
+          "321",
+          "407"
+        ],
+        [
+          "503",
+          "752"
+        ],
+        [
+          "318",
+          "407"
+        ],
+        [
+          "690",
+          "436"
+        ]
+      ],
+      "total_tmk": 67,
+      "total_initial": 28,
+      "total_medial": 101
+    },
+    "paradigmatic_alternations": [
+      "435 \u2194 436 (sim=0.828)",
+      "158 \u2194 491 (sim=0.817)",
+      "645 \u2194 772 (sim=0.809)",
+      "519 \u2194 525 (sim=0.808)",
+      "460 \u2194 463 (sim=0.783)",
+      "33 \u2194 34 (sim=0.777)",
+      "158 \u2194 824 (sim=0.761)",
+      "125 \u2194 60 (sim=0.743)"
+    ],
+    "ventris_groups": {
+      "right_context_groups": [
+        [
+          "390",
+          "368",
+          "776",
+          "760",
+          "808",
+          "48",
+          "645",
+          "772",
+          "621"
+        ],
+        [
+          "590",
+          "388",
+          "4",
+          "520",
+          "1",
+          "90",
+          "820"
+        ],
+        [
+          "33",
+          "34",
+          "32",
+          "176",
+          "140",
+          "63",
+          "165"
+        ],
+        [
+          "72",
+          "14",
+          "55",
+          "16",
+          "93",
+          "110",
+          "65"
+        ],
+        [
+          "752",
+          "467",
+          "468",
+          "472",
+          "465",
+          "777",
+          "749"
+        ]
+      ],
+      "interpretation": "Right-context groups: signs that appear before the SAME signs \u2192 may share a vowel value (Ventris column logic). Left-context groups: signs that appear after the SAME signs \u2192 may share a consonant value (Ventris row logic)."
+    },
+    "contact_zone": {
+      "kl_contact_heartland": 0.6004,
+      "exclusive_contact_signs": [
+        "148",
+        "166",
+        "513",
+        "514",
+        "547",
+        "616",
+        "629",
+        "647",
+        "701",
+        "719",
+        "778",
+        "837",
+        "839"
+      ],
+      "assessment": "KL(contact||heartland)=0.600. HIGH divergence \u2014 trade-site inscriptions use different signs. Contact-exclusive signs are candidates for trade-specific logograms (commodity labels, trader names, origin markers)."
+    },
+    "decipherment_roadmap": [
+      "1. SCRIPT TYPE: Likely logosyllabic (mixed logograms + phonetic signs), consistent with administrative seal/tablet context.",
+      "2. LANGUAGE: Mycenaean Greek marginally best fit by word-length KL; Hieroglyphic Luwian essentially tied. Proto-Dravidian also viable.",
+      "3. TMK SIGNS: The 67 terminal-dominant signs (e.g. top: 817, 798, 920, 806, 760) are prime candidates for grammatical suffixes or postpositional classifiers.",
+      "4. COMPOUNDS: High-PMI bigrams represent fixed compound words or determinative+head noun pairs.",
+      "5. NUMERALS: Signs with high solo-inscription rate are candidate numeral signs or standalone logogram labels.",
+      "6. VENTRIS GRID: 44 right-context groups and 39 left-context groups identified. These constrain possible phonetic value assignments.",
+      "7. CONTACT ZONE: 13 signs exclusive to coastal trade sites suggest commodity-specific logograms. These should be prioritised for external comparison.",
+      "8. NEXT DECIPHERMENT STEP: Cross-reference TMK signs and compound pairs with Proto-Dravidian and Luwian word-ending inventories. The Ventris groups constrain which signs could share phonetic values."
+    ]
+  }
+}

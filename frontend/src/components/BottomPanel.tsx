@@ -184,18 +184,29 @@ function JobsPanel() {
 
 // ── Terminal Panel ────────────────────────────────────────────────────────────
 
+const BUILTINS = [
+  "ls", "ll", "la", "dir", "cat", "type", "head", "tail",
+  "pwd", "cd", "echo", "mkdir", "rm", "rmdir", "cp", "mv",
+  "find", "grep", "wc", "env", "which", "clear", "help",
+  "python", "python3",
+];
+
 function TerminalPanel() {
   const [history, setHistory] = useState<{ text: string; type: "input" | "output" | "error" | "info" }[]>([
-    { text: "Glossa Lab Terminal — type a command and press Enter", type: "info" },
-    { text: "python --version  |  python run_m77_corpus_analyses.py  |  dir reports/", type: "info" },
+    { text: "Glossa Lab Terminal — builtins: ls cat head tail grep find python… | Tab: autocomplete | help: list commands", type: "info" },
     { text: "─────────────────────────────────────────────────────────────────────────────", type: "info" },
   ]);
   const [input, setInput] = useState("");
   const [cmdHistory, setCmdHistory] = useState<string[]>([]);
   const [cmdIdx, setCmdIdx] = useState(-1);
   const [running, setRunning] = useState(false);
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+  // Track last command + output for Ask AI
+  const [lastCmd, setLastCmd] = useState("");
+  const lastOutputRef = useRef<string[]>([]);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { openChat } = useAIChat();
 
   useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: "auto" }); }, [history]);
 
@@ -206,6 +217,9 @@ function TerminalPanel() {
     setCmdHistory((h) => [cmd, ...h.slice(0, 49)]);
     setCmdIdx(-1);
     setInput("");
+    setSuggestions([]);
+    setLastCmd(cmd);
+    lastOutputRef.current = [];
     setRunning(true);
 
     try {
@@ -226,8 +240,11 @@ function TerminalPanel() {
             if (ln.startsWith("data: ")) {
               try {
                 const d = JSON.parse(ln.slice(6)) as { text?: string; return_code?: number; message?: string };
-                if (d.text !== undefined)
-                  setHistory((h) => [...h, { text: stripAnsi(d.text!), type: "output" }]);
+                if (d.text !== undefined) {
+                  const line = stripAnsi(d.text!);
+                  setHistory((h) => [...h, { text: line, type: "output" }]);
+                  lastOutputRef.current = [...lastOutputRef.current.slice(-29), line];
+                }
                 if (d.return_code !== undefined)
                   setHistory((h) => [...h, { text: `Exit code: ${d.return_code}`, type: d.return_code === 0 ? "info" : "error" }]);
                 if (d.message)
@@ -247,6 +264,23 @@ function TerminalPanel() {
 
   const handleKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") { run(); return; }
+    if (e.key === "Tab") {
+      e.preventDefault();
+      const prefix = input.trim();
+      // Build unique candidate list: builtins + cmd history that start with prefix
+      const all = [...BUILTINS, ...cmdHistory].filter(
+        (c, i, arr) => c.startsWith(prefix) && arr.indexOf(c) === i
+      );
+      if (all.length === 0) return;
+      if (all.length === 1) { setInput(all[0] + " "); setSuggestions([]); return; }
+      setSuggestions(all);
+      // Cycle: each Tab press advances through matches
+      const cur = suggestions.indexOf(input);
+      setInput(all[(cur + 1) % all.length]);
+      return;
+    }
+    // Any other key clears suggestions
+    if (e.key !== "ArrowUp" && e.key !== "ArrowDown") setSuggestions([]);
     if (e.key === "ArrowUp") {
       e.preventDefault();
       const idx = Math.min(cmdIdx + 1, cmdHistory.length - 1);
@@ -267,6 +301,23 @@ function TerminalPanel() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%" }} onClick={() => inputRef.current?.focus()}>
+      {/* Toolbar */}
+      <div style={{ display: "flex", gap: 4, padding: "2px 8px", borderBottom: "1px solid #0f172a", alignItems: "center", flexShrink: 0 }}>
+        <button onClick={() => { setInput("help"); setTimeout(() => run(), 0); }}
+          title="Show available commands"
+          style={tBtn}>? help</button>
+        <button onClick={() => { setHistory([]); setSuggestions([]); }}
+          title="Clear terminal"
+          style={tBtn}>✕ clear</button>
+        {lastCmd && !running && (
+          <button
+            onClick={() => openChat({ initialPrompt: `I ran this terminal command:\n\`${lastCmd}\`\n\nOutput:\n\`\`\`\n${lastOutputRef.current.slice(0, 25).join("\n")}\n\`\`\`\n\nCan you help me understand or debug this?` })}
+            title="Ask Glossa AI about this command and output"
+            style={{ ...tBtn, color: "#c4b5fd" }}>✨ Ask AI</button>
+        )}
+      </div>
+
+      {/* Output */}
       <div style={{ flex: 1, overflowY: "auto", fontFamily: "monospace", fontSize: 11, padding: "4px 8px", lineHeight: 1.6 }}>
         {history.map((item, i) => (
           <div key={i} style={{ color: lineColor[item.type], whiteSpace: "pre-wrap", wordBreak: "break-all" }}>{item.text}</div>
@@ -274,15 +325,29 @@ function TerminalPanel() {
         {running && <div style={{ color: "#d97706" }}>▌ running…</div>}
         <div ref={bottomRef} />
       </div>
+
+      {/* Suggestion bar */}
+      {suggestions.length > 0 && (
+        <div style={{ display: "flex", gap: 4, padding: "2px 8px", flexWrap: "wrap", borderTop: "1px solid #1e293b", background: "#0f172a" }}>
+          {suggestions.map(s => (
+            <button key={s} onClick={() => { setInput(s + " "); setSuggestions([]); inputRef.current?.focus(); }}
+              style={{ padding: "0 5px", background: "#1e293b", border: "none", borderRadius: 3, color: s === input ? "#60a5fa" : "#94a3b8", cursor: "pointer", fontSize: 10, fontFamily: "monospace" }}>
+              {s}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* Input row */}
       <div style={{ display: "flex", alignItems: "center", padding: "4px 8px", borderTop: "1px solid #1e293b", gap: 4 }}>
         <span style={{ color: "#86efac", fontSize: 11, fontFamily: "monospace" }}>$</span>
         <input
           ref={inputRef}
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={(e) => { setInput(e.target.value); if (suggestions.length) setSuggestions([]); }}
           onKeyDown={handleKey}
           disabled={running}
-          placeholder="Enter command…"
+          placeholder="Enter command… (Tab: autocomplete)"
           style={{ flex: 1, background: "transparent", border: "none", outline: "none", color: "#e2e8f0", fontSize: 11, fontFamily: "monospace", caretColor: "#86efac" }}
           autoFocus
         />
@@ -291,6 +356,8 @@ function TerminalPanel() {
     </div>
   );
 }
+
+const tBtn: React.CSSProperties = { padding: "1px 6px", background: "none", border: "1px solid #1e293b", borderRadius: 3, color: "#64748b", cursor: "pointer", fontSize: 10, fontFamily: "monospace" };
 
 // ── Main BottomPanel ──────────────────────────────────────────────────────────
 

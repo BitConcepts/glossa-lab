@@ -75,9 +75,12 @@ reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "GlossaLabTra
 echo [OK] Uninstalled.
 exit /b 0
 
-REM ─────────────────────────────────────────────────────────────
+REM ────────────────────────────────────────────────────────────
 :do_start
-REM ─────────────────────────────────────────────────────────────
+REM ────────────────────────────────────────────────────────────
+REM Always stop existing instances first to prevent tray stacking.
+call :do_stop_silent
+timeout /t 1 /nobreak >nul
 REM Start-Process -WindowStyle Hidden fires pythonw.exe in the background
 REM and returns immediately — non-blocking, zero console window.
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^

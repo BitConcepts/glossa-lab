@@ -1,0 +1,217 @@
+{
+  "321": {
+    "profile": {
+      "t": 0.0,
+      "i": 0.0,
+      "m": 1.0
+    },
+    "formula_role": "CONNECTOR — always in [235][321][407], never initial or terminal",
+    "top5_m77": [
+      {
+        "code": "M005",
+        "dist": 0.038,
+        "desc": "Six strokes (pure medial)",
+        "rebus": "ā? (six=āru in Tamil)"
+      },
+      {
+        "code": "M029",
+        "dist": 0.262,
+        "desc": "Comb/rake (medial)",
+        "rebus": "ma?/pa? (rake=poral/muzha)"
+      },
+      {
+        "code": "M059",
+        "dist": 0.329,
+        "desc": "Fish (medial)",
+        "rebus": "meen (fish=meen in Tamil)"
+      },
+      {
+        "code": "M500",
+        "dist": 0.75,
+        "desc": "Plant/tree",
+        "rebus": "maa (great) or maram (tree)"
+      },
+      {
+        "code": "M088",
+        "dist": 0.778,
+        "desc": "Figure+staff",
+        "rebus": "admin official"
+      }
+    ],
+    "best_m77": "M005",
+    "best_dist": 0.038,
+    "proposed_value": "ā? (six=āru in Tamil)"
+  },
+  "850": {
+    "profile": {
+      "t": 0.018,
+      "i": 0.818,
+      "m": 0.073
+    },
+    "formula_role": "INITIAL opener of seal type B: [850][61][407][806][845][900]",
+    "top5_m77": [
+      {
+        "code": "M200",
+        "dist": 0.105,
+        "desc": "Bull head (initial)",
+        "rebus": "a-  (bull=erumai, but phonetic a-)"
+      },
+      {
+        "code": "M028",
+        "dist": 0.171,
+        "desc": "Arrow (strong initial)",
+        "rebus": "a-  (arrow=vil? or initial vowel)"
+      },
+      {
+        "code": "M083",
+        "dist": 0.551,
+        "desc": "Kneeling figure (initial)",
+        "rebus": "initial person/name marker"
+      },
+      {
+        "code": "M086",
+        "dist": 0.967,
+        "desc": "Standing figure",
+        "rebus": "aal (person)"
+      },
+      {
+        "code": "M002",
+        "dist": 1.06,
+        "desc": "Two strokes",
+        "rebus": "iru? (two)"
+      }
+    ],
+    "best_m77": "M200",
+    "best_dist": 0.105,
+    "proposed_value": "a-  (bull=erumai, but phonetic a-)"
+  },
+  "61": {
+    "profile": {
+      "t": 0.064,
+      "i": 0.287,
+      "m": 0.606
+    },
+    "formula_role": "BRIDGE from initial 850 to title sign 407",
+    "top5_m77": [
+      {
+        "code": "M088",
+        "dist": 0.059,
+        "desc": "Figure+staff",
+        "rebus": "admin official"
+      },
+      {
+        "code": "M500",
+        "dist": 0.117,
+        "desc": "Plant/tree",
+        "rebus": "maa (great) or maram (tree)"
+      },
+      {
+        "code": "M086",
+        "dist": 0.143,
+        "desc": "Standing figure",
+        "rebus": "aal (person)"
+      },
+      {
+        "code": "M342",
+        "dist": 0.209,
+        "desc": "Short stroke medial",
+        "rebus": "ka/na?"
+      },
+      {
+        "code": "M059",
+        "dist": 0.416,
+        "desc": "Fish (medial)",
+        "rebus": "meen (fish=meen in Tamil)"
+      }
+    ],
+    "best_m77": "M088",
+    "best_dist": 0.059,
+    "proposed_value": "admin official"
+  },
+  "235": {
+    "profile": {
+      "t": 0.156,
+      "i": 0.112,
+      "m": 0.708
+    },
+    "formula_role": "PRIMARY preamble element; precedes both 240 and 321",
+    "top5_m77": [
+      {
+        "code": "M059",
+        "dist": 0.231,
+        "desc": "Fish (medial)",
+        "rebus": "meen (fish=meen in Tamil)"
+      },
+      {
+        "code": "M500",
+        "dist": 0.252,
+        "desc": "Plant/tree",
+        "rebus": "maa (great) or maram (tree)"
+      },
+      {
+        "code": "M029",
+        "dist": 0.298,
+        "desc": "Comb/rake (medial)",
+        "rebus": "ma?/pa? (rake=poral/muzha)"
+      },
+      {
+        "code": "M342",
+        "dist": 0.338,
+        "desc": "Short stroke medial",
+        "rebus": "ka/na?"
+      },
+      {
+        "code": "M088",
+        "dist": 0.418,
+        "desc": "Figure+staff",
+        "rebus": "admin official"
+      }
+    ],
+    "best_m77": "M059",
+    "best_dist": 0.231,
+    "proposed_value": "meen (fish=meen in Tamil)"
+  },
+  "240": {
+    "profile": {
+      "t": 0.24,
+      "i": 0.045,
+      "m": 0.689
+    },
+    "formula_role": "SECONDARY preamble element; follows 235 in many inscriptions",
+    "top5_m77": [
+      {
+        "code": "M059",
+        "dist": 0.365,
+        "desc": "Fish (medial)",
+        "rebus": "meen (fish=meen in Tamil)"
+      },
+      {
+        "code": "M500",
+        "dist": 0.384,
+        "desc": "Plant/tree",
+        "rebus": "maa (great) or maram (tree)"
+      },
+      {
+        "code": "M029",
+        "dist": 0.446,
+        "desc": "Comb/rake (medial)",
+        "rebus": "ma?/pa? (rake=poral/muzha)"
+      },
+      {
+        "code": "M342",
+        "dist": 0.47,
+        "desc": "Short stroke medial",
+        "rebus": "ka/na?"
+      },
+      {
+        "code": "M088",
+        "dist": 0.55,
+        "desc": "Figure+staff",
+        "rebus": "admin official"
+      }
+    ],
+    "best_m77": "M059",
+    "best_dist": 0.365,
+    "proposed_value": "meen (fish=meen in Tamil)"
+  }
+}

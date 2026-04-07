@@ -1,9 +1,9 @@
 /**
- * NotificationDrawer — persisted notification center.
- * Bell icon in header with unread badge. Slide-in drawer from right.
- * All notifications saved until cleared. Integrates with ToastProvider.
+ * NotificationCenter — compact dropdown anchored to the bell button.
+ * Does NOT cover the AI chat bubble or take over the screen.
+ * Familiar GitHub/LinkedIn-style pattern; appropriate for researchers.
  */
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { type ToastType, useToast } from "../hooks/useToast";
 
 const TYPE_ICONS: Record<ToastType, string> = {
@@ -32,100 +32,9 @@ function fmtTime(ts: number): string {
     d.toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" });
 }
 
-interface Props {
-  open: boolean;
-  onClose: () => void;
-}
-
-export function NotificationDrawer({ open, onClose }: Props) {
-  const { notifications, unreadCount: _uc, markAllRead, clearNotification, clearAllNotifications } = useToast();
-  const drawerRef = useRef<HTMLDivElement>(null);
-
-  // Mark as read when opened
-  useEffect(() => {
-    if (open) markAllRead();
-  }, [open, markAllRead]);
-
-  // Click-outside to close
-  useEffect(() => {
-    if (!open) return;
-    const handler = (e: MouseEvent) => {
-      if (drawerRef.current && !drawerRef.current.contains(e.target as Node)) {
-        onClose();
-      }
-    };
-    const timer = setTimeout(() => window.addEventListener("mousedown", handler), 50);
-    return () => { clearTimeout(timer); window.removeEventListener("mousedown", handler); };
-  }, [open, onClose]);
-
-  if (!open) return null;
-
-  return (
-    <div
-      ref={drawerRef}
-      style={{
-        position: "fixed", top: 0, right: 0, bottom: 0,
-        width: 360, background: "#fff",
-        boxShadow: "-4px 0 24px rgba(0,0,0,0.12)",
-        zIndex: 7000, display: "flex", flexDirection: "column",
-        borderLeft: "1px solid #e5e7eb",
-        animation: "slideInRight 0.18s ease",
-      }}
-    >
-      {/* Header */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "14px 16px", borderBottom: "1px solid #e5e7eb", background: "#fafafa" }}>
-        <div>
-          <div style={{ fontWeight: 700, fontSize: 14, color: "#111827" }}>Notifications</div>
-          <div style={{ fontSize: 11, color: "#9ca3af" }}>{notifications.length} total</div>
-        </div>
-        <div style={{ display: "flex", gap: 6 }}>
-          {notifications.length > 0 && (
-            <button onClick={clearAllNotifications} style={{ padding: "3px 10px", border: "1px solid #e5e7eb", borderRadius: 4, background: "#fff", cursor: "pointer", fontSize: 11, color: "#6b7280" }}>
-              Clear All
-            </button>
-          )}
-          <button onClick={onClose} style={{ border: "none", background: "none", cursor: "pointer", fontSize: 18, color: "#9ca3af", padding: "0 4px" }}>×</button>
-        </div>
-      </div>
-
-      {/* List */}
-      <div style={{ flex: 1, overflowY: "auto" }}>
-        {notifications.length === 0 && (
-          <div style={{ textAlign: "center", padding: "3rem 1rem", color: "#9ca3af" }}>
-            <div style={{ fontSize: 28, marginBottom: 8 }}>🔔</div>
-            <div style={{ fontSize: 13 }}>No notifications yet</div>
-          </div>
-        )}
-        {notifications.map((n) => {
-          const c = TYPE_COLORS[n.type] ?? TYPE_COLORS.info;
-          return (
-            <div
-              key={n.id}
-              style={{
-                display: "flex", gap: 10, padding: "11px 14px",
-                borderBottom: "1px solid #f3f4f6",
-                background: n.read ? "#fff" : "#f8f9ff",
-                alignItems: "flex-start",
-              }}
-            >
-              <div style={{ width: 24, height: 24, borderRadius: "50%", background: c.bg, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 12, fontWeight: 700, color: c.text }}>
-                {TYPE_ICONS[n.type]}
-              </div>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontSize: 13, color: "#111827", lineHeight: 1.4, wordBreak: "break-word" }}>{n.message}</div>
-                <div style={{ fontSize: 10, color: "#9ca3af", marginTop: 3 }}>{fmtTime(n.timestamp)}</div>
-              </div>
-              <button onClick={() => clearNotification(n.id)} style={{ border: "none", background: "none", cursor: "pointer", color: "#9ca3af", fontSize: 14, flexShrink: 0, padding: "0 2px" }}>×</button>
-            </div>
-          );
-        })}
-      </div>
-      <style>{`@keyframes slideInRight { from { transform: translateX(100%); } to { transform: translateX(0); } }`}</style>
-    </div>
-  );
-}
-
-// ── Bell button (rendered in header) ─────────────────────────────────────────
+// ── Self-contained NotificationCenter (bell + dropdown) ──────────────────────
+// Replaces the old full-side-panel drawer with a compact GitHub/LinkedIn-style
+// dropdown. Does not cover the AI chat bubble (z-index 7000 < bubble 8400).
 
 export function NotificationBell({ onClick }: { onClick: () => void }) {
   const { unreadCount } = useToast();
@@ -133,21 +42,147 @@ export function NotificationBell({ onClick }: { onClick: () => void }) {
     <button
       onClick={onClick}
       title={`Notifications${unreadCount > 0 ? ` (${unreadCount} unread)` : ""}`}
-      style={{ position: "relative", padding: "4px 10px", border: "1px solid #e5e7eb", borderRadius: 6, background: "#f9fafb", cursor: "pointer", fontSize: 15, color: "#6b7280" }}
+      style={{ position: "relative", padding: "4px 10px", border: "1px solid #e5e7eb",
+        borderRadius: 6, background: "#f9fafb", cursor: "pointer", fontSize: 15, color: "#6b7280" }}
     >
       🔔
       {unreadCount > 0 && (
-        <span style={{
-          position: "absolute", top: -4, right: -4,
-          minWidth: 16, height: 16, borderRadius: 8,
-          background: "#dc2626", color: "#fff",
-          fontSize: 9, fontWeight: 700,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          padding: "0 3px",
-        }}>
+        <span style={{ position: "absolute", top: -4, right: -4, minWidth: 16, height: 16,
+          borderRadius: 8, background: "#dc2626", color: "#fff", fontSize: 9, fontWeight: 700,
+          display: "flex", alignItems: "center", justifyContent: "center", padding: "0 3px" }}>
           {unreadCount > 99 ? "99+" : unreadCount}
         </span>
       )}
     </button>
+  );
+}
+
+/** @deprecated no longer used */
+export function NotificationDrawer(_: { open: boolean; onClose: () => void }) {
+  return null;
+}
+
+/**
+ * NotificationCenter — drop this anywhere in the tree once.
+ * Renders its own bell + dropdown; no props needed from parent.
+ */
+export function NotificationCenter() {
+  const { notifications, unreadCount, markAllRead, clearNotification, clearAllNotifications } = useToast();
+  const [open, setOpen] = useState(false);
+  const bellRef = useRef<HTMLButtonElement>(null);
+  const dropRef = useRef<HTMLDivElement>(null);
+  const [pos, setPos] = useState({ top: 48, right: 12 });
+
+  const openDropdown = useCallback(() => {
+    if (bellRef.current) {
+      const r = bellRef.current.getBoundingClientRect();
+      // Anchor below the bell, aligned to its right edge
+      setPos({ top: r.bottom + 8, right: window.innerWidth - r.right });
+    }
+    setOpen(true);
+  }, []);
+
+  useEffect(() => { if (open) markAllRead(); }, [open, markAllRead]);
+
+  useEffect(() => {
+    if (!open) return;
+    const h = (e: MouseEvent) => {
+      if (dropRef.current && !dropRef.current.contains(e.target as Node) &&
+          bellRef.current && !bellRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    const t = setTimeout(() => document.addEventListener("mousedown", h), 50);
+    return () => { clearTimeout(t); document.removeEventListener("mousedown", h); };
+  }, [open]);
+
+  return (
+    <>
+      {/* Bell button */}
+      <button
+        ref={bellRef}
+        onClick={() => open ? setOpen(false) : openDropdown()}
+        title={`Notifications${unreadCount > 0 ? ` (${unreadCount} unread)` : ""}`}
+        style={{ position: "relative", padding: "4px 10px", border: "1px solid #e5e7eb",
+          borderRadius: 6, background: open ? "#eff6ff" : "#f9fafb",
+          cursor: "pointer", fontSize: 15, color: open ? "#2563eb" : "#6b7280" }}
+      >
+        🔔
+        {unreadCount > 0 && (
+          <span style={{ position: "absolute", top: -4, right: -4, minWidth: 16, height: 16,
+            borderRadius: 8, background: "#dc2626", color: "#fff", fontSize: 9, fontWeight: 700,
+            display: "flex", alignItems: "center", justifyContent: "center", padding: "0 3px" }}>
+            {unreadCount > 99 ? "99+" : unreadCount}
+          </span>
+        )}
+      </button>
+
+      {/* Dropdown */}
+      {open && (
+        <div
+          ref={dropRef}
+          style={{
+            position: "fixed", top: pos.top, right: pos.right,
+            width: 380, maxHeight: 460,
+            background: "#fff", borderRadius: 10,
+            boxShadow: "0 8px 32px rgba(0,0,0,0.14), 0 0 0 1px rgba(0,0,0,0.06)",
+            zIndex: 7000, display: "flex", flexDirection: "column",
+            animation: "notifFadeIn 0.14s ease",
+          }}
+        >
+          {/* Header row */}
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center",
+            padding: "12px 14px 10px", borderBottom: "1px solid #f3f4f6" }}>
+            <span style={{ fontWeight: 700, fontSize: 13, color: "#111827" }}>Notifications</span>
+            <div style={{ display: "flex", gap: 6 }}>
+              {notifications.length > 0 && (
+                <button onClick={clearAllNotifications}
+                  style={{ padding: "2px 8px", border: "1px solid #e5e7eb", borderRadius: 4,
+                    background: "none", cursor: "pointer", fontSize: 10, color: "#6b7280" }}>
+                  Clear all
+                </button>
+              )}
+              <button onClick={() => setOpen(false)}
+                style={{ border: "none", background: "none", cursor: "pointer",
+                  fontSize: 16, color: "#9ca3af", padding: "0 2px", lineHeight: 1 }}>×</button>
+            </div>
+          </div>
+
+          {/* Notification list */}
+          <div style={{ flex: 1, overflowY: "auto" }}>
+            {notifications.length === 0 && (
+              <div style={{ textAlign: "center", padding: "2rem 1rem", color: "#9ca3af" }}>
+                <div style={{ fontSize: 24, marginBottom: 6 }}>🔔</div>
+                <div style={{ fontSize: 12 }}>No notifications</div>
+              </div>
+            )}
+            {notifications.map((n) => {
+              const c = TYPE_COLORS[n.type] ?? TYPE_COLORS.info;
+              return (
+                <div key={n.id} style={{ display: "flex", gap: 10, padding: "10px 14px",
+                  borderBottom: "1px solid #f9fafb",
+                  background: n.read ? "#fff" : "#f8f9ff", alignItems: "flex-start" }}>
+                  <div style={{ width: 22, height: 22, borderRadius: "50%", background: c.bg,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    flexShrink: 0, fontSize: 11, fontWeight: 700, color: c.text, marginTop: 1 }}>
+                    {TYPE_ICONS[n.type]}
+                  </div>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 12, color: "#111827", lineHeight: 1.45,
+                      wordBreak: "break-word", fontWeight: n.read ? 400 : 500 }}>{n.message}</div>
+                    <div style={{ fontSize: 10, color: "#9ca3af", marginTop: 2 }}>{fmtTime(n.timestamp)}</div>
+                  </div>
+                  <button onClick={() => clearNotification(n.id)}
+                    style={{ border: "none", background: "none", cursor: "pointer",
+                      color: "#d1d5db", fontSize: 13, flexShrink: 0, padding: "0 2px",
+                      lineHeight: 1 }}>×</button>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+      <style>{`@keyframes notifFadeIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }`}</style>
+    </>
   );
 }

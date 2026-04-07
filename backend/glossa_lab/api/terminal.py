@@ -1,19 +1,21 @@
 """Terminal and log streaming API for the Glossa Lab IDE panel.
 
 Endpoints:
-  POST /terminal/run         -- run a command in the Glossa-Lab venv, stream output via SSE
+  POST /terminal/run         -- run a command via GlossaShell, stream output via SSE
   GET  /terminal/log/stream  -- SSE: tail the backend log file in real time
   GET  /terminal/log         -- return last N lines of the backend log
+
+GlossaShell handles cross-platform command dispatch with no visible window:
+  - Common commands (ls, cat, grep, find, ...) run as Python builtins
+  - Unknown commands fall back to OS subprocess with CREATE_NO_WINDOW
+  - 'python' is automatically redirected to the Glossa Lab venv
 """
 
 from __future__ import annotations
 
 import asyncio
 import json
-import os
 import queue
-import subprocess
-import sys
 import threading
 from collections.abc import AsyncGenerator
 from pathlib import Path
@@ -23,66 +25,46 @@ from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
+from glossa_lab.glossa_shell import GlossaShell
+
 router = APIRouter(prefix="/terminal", tags=["terminal"])
 
-_REPO_ROOT = (
-    Path(__file__).resolve().parent.parent.parent.parent
-)  # backend/glossa_lab/api -> repo root
+_REPO_ROOT = Path(__file__).resolve().parent.parent.parent.parent  # repo root
 _BACKEND_DIR = _REPO_ROOT / "backend"
 _LOG_FILE = _BACKEND_DIR / "logs" / "backend.log"
-_VENV_PYTHON = str(
-    _BACKEND_DIR / "venv" / "Scripts" / "python.exe"
-    if sys.platform == "win32"
-    else _BACKEND_DIR / "venv" / "bin" / "python"
-)
 
 
 def _sse(event: str, data: Any) -> str:
     return f"event: {event}\ndata: {json.dumps(data)}\n\n"
 
 
-# ── Command execution ─────────────────────────────────────────────────────────
+# ── Command execution via GlossaShell ─────────────────────────────────────────
 
 
 class RunRequest(BaseModel):
-    command: str  # shell command to run
-    cwd: str | None = None  # working dir relative to repo root; None = backend/
-    use_venv: bool = True  # if True, prepend venv python path
+    command: str       # shell command to run
+    cwd: str | None = None  # working dir relative to repo root; None = repo root
+    use_venv: bool = True   # kept for API compatibility; GlossaShell handles this
 
 
 async def _stream_command(command: str, cwd: Path) -> AsyncGenerator[str, None]:
-    """Run a shell command in a daemon thread and stream output lines as SSE.
+    """Run *command* via GlossaShell in a daemon thread and stream SSE lines.
 
-    Uses cmd.exe on Windows and /bin/sh on Unix/macOS.
-    This avoids asyncio subprocess issues on Windows (ProactorEventLoop required).
+    GlossaShell handles all platform differences internally:
+      - Common commands run as Python builtins (no subprocess at all)
+      - Subprocess fallback uses CREATE_NO_WINDOW on Windows
+      - 'python' is resolved to the venv Python automatically
     """
     yield _sse("started", {"command": command, "cwd": str(cwd)})
-
-    env = os.environ.copy()
-    env["PYTHONPATH"] = str(_BACKEND_DIR)
-
-    # cmd.exe on Windows, sh on Unix
-    if sys.platform == "win32":
-        shell_args = ["cmd.exe", "/c", command]
-    else:
-        shell_args = ["/bin/sh", "-c", command]
 
     q: queue.Queue[tuple[str, Any] | None] = queue.Queue()
 
     def _run() -> None:
         try:
-            proc = subprocess.Popen(
-                shell_args,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                cwd=str(cwd),
-                env=env,
-            )
-            assert proc.stdout is not None
-            for raw_line in proc.stdout:
-                q.put(("line", raw_line.decode(errors="replace").rstrip("\r\n")))
-            proc.wait()
-            q.put(("done", proc.returncode))
+            shell = GlossaShell(cwd=cwd, sandbox_root=_REPO_ROOT)
+            for line in shell.run(command):
+                q.put(("line", line))
+            q.put(("done", 0))
         except Exception as exc:  # noqa: BLE001
             q.put(("error", str(exc)))
         finally:
@@ -110,27 +92,16 @@ async def _stream_command(command: str, cwd: Path) -> AsyncGenerator[str, None]:
 
 @router.post("/run")
 async def run_command(body: RunRequest) -> StreamingResponse:
-    """Execute a command in the Glossa-Lab environment and stream output.
+    """Execute a command via GlossaShell and stream output as SSE.
 
-    Output is streamed as SSE events: started, line (per line), done / error.
+    Output events: started, line (per line), done / error.
     """
-    # Determine working directory
-    if body.cwd:
-        cwd = _REPO_ROOT / body.cwd
-    else:
-        cwd = _BACKEND_DIR
-
+    cwd = (_REPO_ROOT / body.cwd) if body.cwd else _REPO_ROOT
     if not cwd.exists():
-        raise HTTPException(status_code=400, detail=f"Working directory not found: {cwd}")
-
-    command = body.command
-
-    # Prefix 'python' commands with the venv python path for convenience
-    if body.use_venv and (command.startswith("python ") or command == "python"):
-        command = f'"{_VENV_PYTHON}" {command[7:]}'
+        raise HTTPException(status_code=400, detail=f"Directory not found: {cwd}")
 
     return StreamingResponse(
-        _stream_command(command, cwd),
+        _stream_command(body.command, cwd),
         media_type="text/event-stream",
         headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
     )

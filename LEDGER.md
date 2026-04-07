@@ -1710,6 +1710,82 @@ Risks:
 
 Next step: Identify sign 2 from Fuls catalog; test sign 220 fish hypothesis;
   explore the 38-sign medial class for PA/KA/NA phonetic series
+
+---
+
+## [2026-04-07] Entry — AI chat table fix + sign identification session
+
+Objective: Fix markdown tables in AI chat. Identify sign 2. Test fish hypothesis.
+Break down 38-sign medial class.
+
+What was done:
+- Fixed markdown table rendering in AIChatWindow (renderMd)
+  Root causes: no table support; line-by-line substitutions corrupted multi-line tables
+  Fix: renderTableBlock() + placeholder extraction in renderMd pre-pass
+- Created run_sign_identification.py and verify_fish_signs.py
+
+Files changed:
+- frontend/src/components/AIChatWindow.tsx (modified -- table rendering)
+- backend/run_sign_identification.py (created)
+- backend/verify_fish_signs.py (created)
+- backend/pyproject.toml (modified)
+
+Checks run:
+- npm run build -- 0 TypeScript errors
+- lint (all changed files) -- all checks passed
+
+RESULTS:
+
+SIGN 2 IDENTIFICATION:
+- Profile: T=0.030 I=0.242 M=0.679, count=265
+- Best M77 match: M77 342 (short stroke medial) dist=0.153
+- Sign 2 appears in 265 inscriptions (not exclusively the formula)
+- Formula [520][2][240][405][501] = [arrow/initial][short stroke][medial][X][Y]
+- Sign 2 appears widely; it is a common medial phonetic sign, not a rare marker
+
+DEFINITIVE FISH SIGN IDENTIFICATION:
+- Fuls 72 = M077 059 (fish) -- BEST match: dist=0.092 (lowest in corpus!)
+- Fuls 70 = M077 059 -- second best: dist=0.158
+- Signs 70/72 are consecutive Fuls numbers = confirmed allographs = primary fish
+- Sign 70 appears at Lothal (coastal trade city) = mild coastal enrichment
+- Sign 220 = secondary or different medial (dist=0.296 to fish)
+- Sign 32 = short stroke (dist=0.312 to fish, 0.221 to stroke) = confirmed stroke
+
+FISH FAMILY RANKING:
+  1. Fuls 72 (dist=0.092) M=0.857 n=14 -- PRIMARY fish form (allograph A)
+  2. Fuls 70 (dist=0.158) M=0.872 n=39 -- PRIMARY fish form (allograph B)
+  3. Fuls 220 (dist=0.296) M=0.667 n=462 -- SECONDARY / different medial
+  4. Fuls 100 (dist=0.242) M=0.684 n=133 -- fish variant or related
+
+38-SIGN MEDIAL CLASS:
+- 2 sub-groups at threshold 0.70:
+  Sub-A [70,72]: avg M=0.865 -- PHONETIC MEDIAL = fish family
+  Sub-B [33,34]: avg M=0.584 -- CONNECTOR role
+- The 38-sign class is diverse; needs even higher threshold (0.80?) to
+  find tighter CV series families within it
+
+AI CHAT TABLE FIX:
+- renderTableBlock(): parses | header | sep | rows | into HTML table
+- renderMd() pre-pass: extracts tables as %%TBLn%% placeholders before
+  line-by-line substitutions, then restores rendered HTML
+- parseRow() uses slice(1,-1) for clean column parsing
+- Applies to both floating window and docked ChatInline
+
+Open TODOs:
+- [ ] Fish sign 70/72 -- match to Mahadevan sign number via visual catalog
+  (signs 70/72 in Fuls numbering = what M-number exactly?)
+- [ ] Sign 220 -- what is it if not fish? Profile M=0.667 = a common medial phoneme
+- [ ] Apply corrected fish (70/72) to revisit [400][fish] patterns
+  Pattern [400][70] = [initial][fish] = different from [400][32]
+- [ ] Fix stale Playwright UI locators (40 tests)
+
+Risks:
+- Profile distances are estimates; visual verification still required
+- Sign 72 has only 14 total occurrences -- small sample size
+- Sign 70 coastal enrichment (Lothal=3/39=7.7%) -- too small to be definitive
+
+Next step: Match fish signs 70/72 to exact Mahadevan M-number via catalog;
+  determine what sign 220 is if not fish; test [400][70/72] pattern
 - Luwian phoneme bigram model is underpowered; phoneme inventory overlap with Greek is high at this scale
 - TMK cross-validation requires OCR bigram data that doesn't exist yet (Mistral key + ~30 min OCR run)
 - ICIT corpus remains gated on Dr. Fuls collaboration

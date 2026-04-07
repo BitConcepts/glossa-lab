@@ -279,7 +279,8 @@ function TerminalPanel() {
       setHistory((h) => [...h, { text: `Error: ${e instanceof Error ? e.message : String(e)}`, type: "error" }]);
     } finally {
       setRunning(false);
-      inputRef.current?.focus();
+      // setTimeout lets React finish re-rendering (disabled→enabled) before focus
+      setTimeout(() => inputRef.current?.focus(), 0);
     }
   }, [input]);
 

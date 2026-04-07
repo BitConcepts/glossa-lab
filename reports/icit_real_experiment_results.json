@@ -1,324 +1,396 @@
 {
   "corpus_stats": {
-    "n_inscriptions": 4325,
-    "n_tokens": 15168,
-    "n_types": 698,
-    "type_token_ratio": 0.046,
+    "n_inscriptions": 4410,
+    "n_tokens": 14213,
+    "n_types": 713,
+    "type_token_ratio": 0.0502,
     "hapax_count": 218,
-    "hapax_fraction": 0.3123,
-    "h1_nats": 4.9155,
-    "h1_normalized": 0.7507,
-    "zipf_exponent": 1.5191,
-    "mean_inscription_length": 3.507,
+    "hapax_fraction": 0.3058,
+    "h1_nats": 5.1112,
+    "h1_normalized": 0.778,
+    "zipf_exponent": 1.5036,
+    "mean_inscription_length": 3.223,
     "max_inscription_length": 17,
     "top_10_signs": [
       [
         "32",
-        876
+        527
       ],
       [
         "220",
-        602
-      ],
-      [
-        "2",
-        477
+        462
       ],
       [
         "400",
-        450
+        429
       ],
       [
         "240",
-        446
+        354
       ],
       [
-        "1",
-        368
+        "520",
+        315
       ],
       [
-        "33",
-        359
+        "861",
+        266
       ],
       [
-        "60",
-        352
-      ],
-      [
-        "31",
-        333
+        "2",
+        265
       ],
       [
         "235",
-        325
+        250
+      ],
+      [
+        "31",
+        240
+      ],
+      [
+        "820",
+        235
       ]
     ]
   },
   "positional_analysis": {
     "nwsp_classification": {
-      "TMK": 3,
-      "INITIAL": 2,
-      "ITM": 9,
-      "MED": 242,
-      "CON": 61
+      "TMK": 67,
+      "INITIAL": 28,
+      "ITM": 2,
+      "MED": 100,
+      "CON": 130
     },
     "top_tmk_signs": [
       {
-        "sign": "96",
-        "terminal_rate": 0.75,
-        "total": 4
+        "sign": "501",
+        "terminal_rate": 1.0,
+        "total": 27
       },
       {
-        "sign": "19",
-        "terminal_rate": 0.6667,
+        "sign": "906",
+        "terminal_rate": 1.0,
+        "total": 16
+      },
+      {
+        "sign": "905",
+        "terminal_rate": 1.0,
+        "total": 13
+      },
+      {
+        "sign": "924",
+        "terminal_rate": 1.0,
+        "total": 10
+      },
+      {
+        "sign": "869",
+        "terminal_rate": 1.0,
         "total": 6
       },
       {
         "sign": "710",
-        "terminal_rate": 0.6,
+        "terminal_rate": 1.0,
         "total": 5
+      },
+      {
+        "sign": "797",
+        "terminal_rate": 1.0,
+        "total": 4
+      },
+      {
+        "sign": "879",
+        "terminal_rate": 1.0,
+        "total": 4
+      },
+      {
+        "sign": "893",
+        "terminal_rate": 1.0,
+        "total": 4
+      },
+      {
+        "sign": "828",
+        "terminal_rate": 1.0,
+        "total": 4
       }
     ],
     "top_initial_signs": [
       {
-        "sign": "752",
-        "initial_rate": 0.5962,
-        "total": 52
+        "sign": "880",
+        "initial_rate": 1.0,
+        "total": 11
+      },
+      {
+        "sign": "29",
+        "initial_rate": 1.0,
+        "total": 4
       },
       {
         "sign": "158",
-        "initial_rate": 0.5686,
-        "total": 51
+        "initial_rate": 0.9744,
+        "total": 39
+      },
+      {
+        "sign": "740",
+        "initial_rate": 0.9386,
+        "total": 114
+      },
+      {
+        "sign": "154",
+        "initial_rate": 0.9318,
+        "total": 44
+      },
+      {
+        "sign": "700",
+        "initial_rate": 0.8455,
+        "total": 233
+      },
+      {
+        "sign": "550",
+        "initial_rate": 0.8431,
+        "total": 102
+      },
+      {
+        "sign": "850",
+        "initial_rate": 0.8182,
+        "total": 55
       }
     ]
   },
   "tmk_bigram_validation": {
-    "total_bigrams": 10843,
-    "tmk_in_second_position": 84,
-    "tmk_second_rate": 0.0077,
-    "expected_by_chance": 0.021,
-    "tmk_advantage": -0.0133,
-    "top10_second_signs_are_tmk": 0,
-    "interpretation": "DOES NOT SUPPORT suffix hypothesis"
+    "total_bigrams": 9803,
+    "tmk_in_second_position": 1916,
+    "tmk_second_rate": 0.1955,
+    "expected_by_chance": 0.1318,
+    "tmk_advantage": 0.0636,
+    "top10_second_signs_are_tmk": 1,
+    "interpretation": "WEAK SUPPORT for suffix hypothesis"
   },
   "word_structure_typology": {
     "observed_length_distribution": {
-      "1": 0.2436994219653179,
-      "2": 0.22751445086705202,
-      "3": 0.022890173410404623,
-      "4": 0.18658959537572253,
-      "5": 0.12208092485549132,
-      "6": 0.09895953757225434,
-      "7": 0.05086705202312139,
-      "8": 0.020346820809248555,
-      "9": 0.013872832369942197,
-      "10": 0.006242774566473989,
-      "11": 0.004393063583815029,
-      "12": 0.0006936416184971098,
-      "13": 0.0009248554913294797,
-      "15": 0.0006936416184971098,
-      "17": 0.00023121387283236994
+      "1": 0.2145124716553288,
+      "2": 0.21587301587301588,
+      "3": 0.19160997732426305,
+      "4": 0.14104308390022677,
+      "5": 0.11700680272108843,
+      "6": 0.055782312925170066,
+      "7": 0.031292517006802724,
+      "8": 0.015419501133786848,
+      "9": 0.00816326530612245,
+      "10": 0.0058956916099773245,
+      "11": 0.0013605442176870747,
+      "12": 0.0006802721088435374,
+      "13": 0.00045351473922902497,
+      "15": 0.0006802721088435374,
+      "17": 0.00022675736961451248
     },
-    "mean_length": 3.507,
+    "mean_length": 3.223,
     "kl_divergences": {
-      "Proto-Dravidian": 0.5544,
-      "Vedic Sanskrit": 0.4024,
-      "Luwian/Anatolian": 0.4692,
-      "Mycenaean Greek": 0.3783,
-      "Proto-Semitic": 0.4302,
-      "Sumerian": 0.442
+      "Proto-Dravidian": 0.2485,
+      "Vedic Sanskrit": 0.1456,
+      "Luwian/Anatolian": 0.1561,
+      "Mycenaean Greek": 0.1074,
+      "Proto-Semitic": 0.1634,
+      "Sumerian": 0.2238
     },
     "ranking": [
       {
         "language": "Mycenaean Greek",
-        "kl_divergence": 0.3783
+        "kl_divergence": 0.1074
       },
       {
         "language": "Vedic Sanskrit",
-        "kl_divergence": 0.4024
-      },
-      {
-        "language": "Proto-Semitic",
-        "kl_divergence": 0.4302
-      },
-      {
-        "language": "Sumerian",
-        "kl_divergence": 0.442
+        "kl_divergence": 0.1456
       },
       {
         "language": "Luwian/Anatolian",
-        "kl_divergence": 0.4692
+        "kl_divergence": 0.1561
+      },
+      {
+        "language": "Proto-Semitic",
+        "kl_divergence": 0.1634
+      },
+      {
+        "language": "Sumerian",
+        "kl_divergence": 0.2238
       },
       {
         "language": "Proto-Dravidian",
-        "kl_divergence": 0.5544
+        "kl_divergence": 0.2485
       }
     ],
     "winner": "Mycenaean Greek",
-    "winner_kl": 0.3783,
+    "winner_kl": 0.1074,
     "method": "KL-divergence of inscription-length distribution vs language profiles"
   },
   "site_breakdown": {
     "Harappa": {
-      "n_inscriptions": 1774,
-      "n_tokens": 6264,
-      "n_sign_types": 418,
-      "mean_length": 3.53,
-      "h1_normalized": 0.7473
+      "n_inscriptions": 1718,
+      "n_tokens": 5465,
+      "n_sign_types": 422,
+      "mean_length": 3.18,
+      "h1_normalized": 0.7819
     },
     "Mohenjo-Daro": {
-      "n_inscriptions": 1710,
-      "n_tokens": 6416,
-      "n_sign_types": 524,
-      "mean_length": 3.75,
-      "h1_normalized": 0.7826
-    },
-    "Dholavira": {
-      "n_inscriptions": 183,
-      "n_tokens": 468,
-      "n_sign_types": 144,
-      "mean_length": 2.56,
-      "h1_normalized": 0.886
-    },
-    "Lothal": {
-      "n_inscriptions": 170,
-      "n_tokens": 553,
-      "n_sign_types": 142,
-      "mean_length": 3.25,
-      "h1_normalized": 0.8657
-    },
-    "Kalibangan": {
-      "n_inscriptions": 143,
-      "n_tokens": 375,
-      "n_sign_types": 142,
-      "mean_length": 2.62,
-      "h1_normalized": 0.8965
-    },
-    "Chanhu-Daro": {
-      "n_inscriptions": 61,
-      "n_tokens": 289,
-      "n_sign_types": 101,
-      "mean_length": 4.74,
-      "h1_normalized": 0.8467
+      "n_inscriptions": 1551,
+      "n_tokens": 5246,
+      "n_sign_types": 509,
+      "mean_length": 3.38,
+      "h1_normalized": 0.8139
     },
     "Unknown": {
-      "n_inscriptions": 36,
-      "n_tokens": 130,
-      "n_sign_types": 80,
-      "mean_length": 3.61,
-      "h1_normalized": 0.9603
+      "n_inscriptions": 369,
+      "n_tokens": 1448,
+      "n_sign_types": 280,
+      "mean_length": 3.92,
+      "h1_normalized": 0.8711
+    },
+    "Dholavira": {
+      "n_inscriptions": 189,
+      "n_tokens": 432,
+      "n_sign_types": 143,
+      "mean_length": 2.29,
+      "h1_normalized": 0.909
+    },
+    "Lothal": {
+      "n_inscriptions": 159,
+      "n_tokens": 486,
+      "n_sign_types": 146,
+      "mean_length": 3.06,
+      "h1_normalized": 0.9009
+    },
+    "Kalibangan": {
+      "n_inscriptions": 133,
+      "n_tokens": 296,
+      "n_sign_types": 133,
+      "mean_length": 2.23,
+      "h1_normalized": 0.9257
+    },
+    "Chanhu-Daro": {
+      "n_inscriptions": 44,
+      "n_tokens": 204,
+      "n_sign_types": 86,
+      "mean_length": 4.64,
+      "h1_normalized": 0.8853
     },
     "Banawali": {
+      "n_inscriptions": 23,
+      "n_tokens": 59,
+      "n_sign_types": 44,
+      "mean_length": 2.57,
+      "h1_normalized": 0.9564
+    },
+    "Tigrana": {
       "n_inscriptions": 22,
-      "n_tokens": 52,
-      "n_sign_types": 39,
-      "mean_length": 2.36,
-      "h1_normalized": 0.9448
+      "n_tokens": 75,
+      "n_sign_types": 57,
+      "mean_length": 3.41,
+      "h1_normalized": 0.9676
     },
     "Nausharo": {
       "n_inscriptions": 22,
-      "n_tokens": 56,
-      "n_sign_types": 38,
-      "mean_length": 2.55,
-      "h1_normalized": 0.9529
+      "n_tokens": 54,
+      "n_sign_types": 39,
+      "mean_length": 2.45,
+      "h1_normalized": 0.9591
     },
     "Nindowari-Damb": {
       "n_inscriptions": 20,
-      "n_tokens": 55,
-      "n_sign_types": 36,
-      "mean_length": 2.75,
-      "h1_normalized": 0.9446
-    },
-    "Tigrana": {
-      "n_inscriptions": 15,
-      "n_tokens": 54,
-      "n_sign_types": 39,
-      "mean_length": 3.6,
-      "h1_normalized": 0.9548
-    },
-    "Altyn Depe": {
-      "n_inscriptions": 14,
-      "n_tokens": 47,
-      "n_sign_types": 33,
-      "mean_length": 3.36,
-      "h1_normalized": 0.9377
-    },
-    "Lakhanjo-Daro": {
-      "n_inscriptions": 14,
-      "n_tokens": 24,
-      "n_sign_types": 18,
-      "mean_length": 1.71,
-      "h1_normalized": 0.9596
+      "n_tokens": 51,
+      "n_sign_types": 38,
+      "mean_length": 2.55,
+      "h1_normalized": 0.9725
     },
     "Baror": {
-      "n_inscriptions": 13,
-      "n_tokens": 28,
-      "n_sign_types": 19,
-      "mean_length": 2.15,
-      "h1_normalized": 0.9509
+      "n_inscriptions": 14,
+      "n_tokens": 31,
+      "n_sign_types": 22,
+      "mean_length": 2.21,
+      "h1_normalized": 0.9698
     },
-    "Rappwala Ther": {
+    "Farmana": {
       "n_inscriptions": 13,
       "n_tokens": 34,
-      "n_sign_types": 25,
+      "n_sign_types": 27,
       "mean_length": 2.62,
-      "h1_normalized": 0.972
+      "h1_normalized": 0.971
+    },
+    "Kanmer": {
+      "n_inscriptions": 13,
+      "n_tokens": 21,
+      "n_sign_types": 14,
+      "mean_length": 1.62,
+      "h1_normalized": 0.9346
     },
     "Karzakan": {
       "n_inscriptions": 13,
-      "n_tokens": 54,
-      "n_sign_types": 38,
-      "mean_length": 4.15,
-      "h1_normalized": 0.9545
+      "n_tokens": 50,
+      "n_sign_types": 39,
+      "mean_length": 3.85,
+      "h1_normalized": 0.9694
     },
-    "Farmana": {
+    "Lakhanjo-Daro": {
+      "n_inscriptions": 13,
+      "n_tokens": 21,
+      "n_sign_types": 17,
+      "mean_length": 1.62,
+      "h1_normalized": 0.9581
+    },
+    "Susa": {
+      "n_inscriptions": 13,
+      "n_tokens": 30,
+      "n_sign_types": 24,
+      "mean_length": 2.31,
+      "h1_normalized": 0.9775
+    },
+    "Rappwala Ther": {
       "n_inscriptions": 12,
       "n_tokens": 29,
-      "n_sign_types": 23,
+      "n_sign_types": 25,
       "mean_length": 2.42,
-      "h1_normalized": 0.9825
+      "h1_normalized": 0.9867
     },
-    "Kanmer": {
-      "n_inscriptions": 12,
-      "n_tokens": 21,
-      "n_sign_types": 14,
-      "mean_length": 1.75,
-      "h1_normalized": 0.9002
+    "Altyn Depe": {
+      "n_inscriptions": 11,
+      "n_tokens": 33,
+      "n_sign_types": 26,
+      "mean_length": 3.0,
+      "h1_normalized": 0.9732
+    },
+    "Gonur Depe": {
+      "n_inscriptions": 11,
+      "n_tokens": 35,
+      "n_sign_types": 32,
+      "mean_length": 3.18,
+      "h1_normalized": 0.9916
     },
     "Naru-Waro-Dharo": {
       "n_inscriptions": 11,
-      "n_tokens": 26,
-      "n_sign_types": 20,
-      "mean_length": 2.36,
-      "h1_normalized": 0.9563
+      "n_tokens": 27,
+      "n_sign_types": 23,
+      "mean_length": 2.45,
+      "h1_normalized": 0.9856
     },
     "Salut": {
       "n_inscriptions": 11,
-      "n_tokens": 27,
+      "n_tokens": 25,
       "n_sign_types": 20,
-      "mean_length": 2.45,
-      "h1_normalized": 0.9673
+      "mean_length": 2.27,
+      "h1_normalized": 0.9749
     },
-    "Susa": {
-      "n_inscriptions": 11,
-      "n_tokens": 30,
-      "n_sign_types": 22,
-      "mean_length": 2.73,
-      "h1_normalized": 0.9602
-    },
-    "Gonur Depe": {
+    "Daimabad": {
       "n_inscriptions": 10,
-      "n_tokens": 36,
-      "n_sign_types": 29,
-      "mean_length": 3.6,
-      "h1_normalized": 0.9755
+      "n_tokens": 19,
+      "n_sign_types": 16,
+      "mean_length": 1.9,
+      "h1_normalized": 0.983
     }
   },
   "notes": {
     "data_source": "Reconstructed from Fuls (2023) Kindle TXT exports",
     "sign_ordering": "Probabilistic (initial_rate->first, terminal_rate->last)",
-    "n_inscriptions": 4325,
-    "n_tokens": 15168,
+    "n_inscriptions": 4410,
+    "n_tokens": 14213,
     "caveat": "True ordering requires PDF version or direct ICIT database access"
   }
 }

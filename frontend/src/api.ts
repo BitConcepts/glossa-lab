@@ -8,11 +8,13 @@ const BASE = "/api/v1";
 async function request<T>(
   method: string,
   path: string,
-  body?: unknown
+  body?: unknown,
+  signal?: AbortSignal,
 ): Promise<T> {
   const opts: RequestInit = {
     method,
     headers: { "Content-Type": "application/json" },
+    signal,
   };
   if (body !== undefined) opts.body = JSON.stringify(body);
   const res = await fetch(`${BASE}${path}`, opts);
@@ -629,14 +631,17 @@ export interface AIChatResponse {
   context_id?: string | null;
 }
 
-export const aiChat = (body: {
-  messages: ChatMessage[];
-  context_type?: string | null;
-  context_id?: string | null;
-  provider?: string | null;   // "ollama" | "mistral" | "openai" | "anthropic"
-  model?: string | null;      // model name override
-}): Promise<AIChatResponse> =>
-  request("POST", "/ai/chat", body);
+export const aiChat = (
+  body: {
+    messages: ChatMessage[];
+    context_type?: string | null;
+    context_id?: string | null;
+    provider?: string | null;
+    model?: string | null;
+  },
+  signal?: AbortSignal,
+): Promise<AIChatResponse> =>
+  request("POST", "/ai/chat", body, signal);
 
 export const executeAiAction = (body: {
   type: string;

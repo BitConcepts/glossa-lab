@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -21,6 +22,90 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
 router = APIRouter(prefix="/ai", tags=["ai-tools"])
+
+
+# ── Action helpers ─────────────────────────────────────────────────────────────
+
+_ACTION_RE = re.compile(r"%%ACTIONS%%(.*?)%%END_ACTIONS%%", re.DOTALL)
+
+
+def _parse_actions(text: str) -> tuple[str, list[dict[str, Any]]]:
+    """Extract %%ACTIONS%%...%%END_ACTIONS%% block from LLM response.
+
+    Returns (clean_text, actions_list).  Any parse failure leaves the text
+    unchanged and returns an empty actions list.
+    """
+    match = _ACTION_RE.search(text)
+    if not match:
+        return text, []
+    try:
+        actions: list[dict[str, Any]] = json.loads(match.group(1).strip())
+        if not isinstance(actions, list):
+            return text, []
+        clean = text[: match.start()].rstrip()
+        return clean, actions
+    except (json.JSONDecodeError, ValueError):
+        return text, []
+
+
+def _build_settings_context() -> str:
+    """Return a compact summary of current AI provider / key status."""
+    from glossa_lab.api.settings import get_key  # noqa: PLC0415
+
+    lines = ["\n=== CURRENT SETTINGS ==="]
+    providers = [
+        ("mistral_api_key",   "Mistral"),
+        ("openai_api_key",    "OpenAI"),
+        ("anthropic_api_key", "Anthropic"),
+        ("google_api_key",    "Google"),
+    ]
+    for key_name, label in providers:
+        val = get_key(key_name)
+        status = f"set ({val[:4]}…)" if val else "not set"
+        lines.append(f"  {label}: {status}")
+    # Ollama installed models
+    try:
+        import urllib.request  # noqa: PLC0415
+        with urllib.request.urlopen("http://localhost:11434/api/tags", timeout=2) as r:
+            data = json.loads(r.read())
+        names = [m["name"] for m in data.get("models", [])]
+        lines.append(f"  Ollama models installed: {', '.join(names) or 'none'}")
+    except Exception:  # noqa: BLE001
+        lines.append("  Ollama: not reachable")
+    lines.append("=== END SETTINGS ===")
+    return "\n".join(lines)
+
+
+_ACTION_SYSTEM_ADDENDUM = """
+
+=== GLOSSA LAB ACTIONS ===
+You can propose actions for the user to approve. After your response text, if you want to
+propose one or more actions include a block formatted EXACTLY as shown:
+
+%%ACTIONS%%
+[{"type": "run_experiment", "params": {"id": "contact_zone_analysis"}, "label": "Run Contact Zone Analysis", "description": "Runs KL divergence on contact-zone vs heartland sites (~30 seconds)."}]
+%%END_ACTIONS%%
+
+Available action types and their params:
+  run_experiment      {"id": "<experiment_id>"}              — requires approval
+  run_pipeline        {"pipeline": "<id>", "params": {}, "name": "<job_name>"}  — requires approval
+  change_setting      {"key": "<setting_key>", "value": "<value>"}  — requires approval; never suggest actual key values
+  generate_report     {"script": "<script_name.py>"}         — requires approval
+  create_hypothesis   {"title": "...", "statement": "..."}   — no approval needed
+  create_notebook     {"title": "...", "content": "..."}     — no approval needed
+  open_view           {"view": "<view_id>"}                  — no approval; navigates to a view
+  clear_jobs          {}                                      — requires approval
+
+View IDs for open_view: studies, builder, experiments, corpora, reports, entropy, signs,
+  timeline, hypotheses, notebooks, citations, ai-tools, status, pipelines, jobs, settings
+
+Rules:
+- Only propose actions when the user explicitly asks you to DO something.
+- NEVER propose actions unsolicited.
+- Always explain what you're proposing and why, BEFORE the %%ACTIONS%% block.
+- One %%ACTIONS%% block per response, containing a JSON array (even for a single action).
+- NEVER ask for or suggest API key values in change_setting actions.
+=== END GLOSSA LAB ACTIONS ==="""
 
 _REPORTS = Path(__file__).resolve().parent.parent.parent.parent / "reports"
 _LEDGER  = Path(__file__).resolve().parent.parent.parent.parent / "LEDGER.md"
@@ -134,6 +219,13 @@ class ChatRequest(BaseModel):
     context_type: str | None = None  # "corpus" | "experiment" | "study" | "research"
     context_id: str | None = None
     stream: bool = False
+    provider: str | None = None   # model picker override: "ollama"|"mistral"|"openai"|"anthropic"
+    model: str | None = None      # model name override
+
+
+class ActionExecuteRequest(BaseModel):
+    type: str
+    params: dict[str, Any] = {}
 
 
 class DecipherRequest(BaseModel):
@@ -172,13 +264,21 @@ class SignReadingRequest(BaseModel):
 # ── Shared helper ─────────────────────────────────────────────────────────────
 
 
-async def _run_llm(messages: list[dict[str, str]], json_mode: bool = False) -> str:
-    from glossa_lab.ai_utils import call_llm
+async def _run_llm(
+    messages: list[dict[str, str]],
+    json_mode: bool = False,
+    provider: str | None = None,
+    model: str | None = None,
+) -> str:
+    from glossa_lab.ai_utils import call_llm  # noqa: PLC0415
 
     loop = asyncio.get_event_loop()
     return await loop.run_in_executor(
         None,
-        lambda: call_llm(messages, json_mode=json_mode, max_tokens=2500),
+        lambda: call_llm(
+            messages, json_mode=json_mode, max_tokens=2500,
+            provider_override=provider, model_override=model,
+        ),
     )
 
 
@@ -230,15 +330,18 @@ async def ai_chat(body: ChatRequest) -> dict[str, Any]:
                     f"\n\n[Active experiment: {m['name']} ({m['category']}) — {m['description']}]"
                 )
 
+    settings_ctx = _build_settings_context()
     system = (
         "You are Glossa, an expert AI research assistant for Glossa Lab — a computational "
         "linguistics platform studying the Indus Script. You have deep knowledge of "
         "information theory, computational linguistics, ancient scripts, and the specific "
         "methodology used at Glossa Lab (entropy analysis, n-gram statistics, Zipf law, "
         "comparative linguistics with Sumerian, Proto-Elamite, Luwian, Linear A, etc.)."
-        f"{context_block}\n\n"
+        f"{context_block}"
+        f"{settings_ctx}\n\n"
         "Be concise, precise, and scientifically rigorous. When you reference specific numbers "
         "cite what you know. When uncertain, say so."
+        f"{_ACTION_SYSTEM_ADDENDUM}"
     )
 
     messages = [{"role": "system", "content": system}] + [
@@ -246,10 +349,12 @@ async def ai_chat(body: ChatRequest) -> dict[str, Any]:
     ]
 
     try:
-        reply = await _run_llm(messages)
+        raw_reply = await _run_llm(messages, provider=body.provider, model=body.model)
+        clean_reply, actions = _parse_actions(raw_reply)
         return {
             "role": "assistant",
-            "content": reply,
+            "content": clean_reply,
+            "actions": actions,
             "context_type": body.context_type,
             "context_id": body.context_id,
         }
@@ -257,6 +362,109 @@ async def ai_chat(body: ChatRequest) -> dict[str, Any]:
         raise HTTPException(status_code=503, detail=str(e)) from e
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc)) from exc
+
+
+@router.post("/execute-action")
+async def execute_action(body: ActionExecuteRequest) -> dict[str, Any]:
+    """Execute an AI-proposed action that the user has approved."""
+    t = body.type
+    p = body.params
+
+    # ── open_view — client-side navigation, nothing to do on server ────────────
+    if t == "open_view":
+        return {"ok": True, "navigate": p.get("view"), "summary": f"Navigating to {p.get('view', '?')}"}
+
+    # ── run_experiment ──────────────────────────────────────────────────────────
+    if t == "run_experiment":
+        from glossa_lab.experiment_base import get_experiment  # noqa: PLC0415
+        exp_id = p.get("id", "")
+        cls = get_experiment(exp_id)
+        if cls is None:
+            raise HTTPException(404, f"Experiment '{exp_id}' not found")
+        loop = asyncio.get_event_loop()
+        result = await loop.run_in_executor(None, cls().run)
+        n = len(result) if isinstance(result, dict) else "?"
+        return {"ok": True, "summary": f"Experiment '{exp_id}' completed ({n} result keys).", "result": result}
+
+    # ── run_pipeline ────────────────────────────────────────────────────────────
+    if t == "run_pipeline":
+        from glossa_lab.database import get_db  # noqa: PLC0415
+        db = get_db()
+        if db is None:
+            raise HTTPException(503, "Database unavailable")
+        job = await db.create_job({
+            "name": p.get("name", p.get("pipeline", "ai-job")),
+            "pipeline": p.get("pipeline", ""),
+            "params": p.get("params", {}),
+            "status": "pending",
+        })
+        return {"ok": True, "summary": f"Pipeline job queued (id={job['id']}).", "job_id": job["id"]}
+
+    # ── change_setting ──────────────────────────────────────────────────────────
+    if t == "change_setting":
+        from glossa_lab.api.settings import set_key  # noqa: PLC0415
+        key = p.get("key", "")
+        value = p.get("value", "")
+        if not key:
+            raise HTTPException(400, "Missing setting key")
+        set_key(key, str(value))
+        return {"ok": True, "summary": f"Setting '{key}' updated."}
+
+    # ── generate_report ─────────────────────────────────────────────────────────
+    if t == "generate_report":
+        script = p.get("script", "")
+        if not script:
+            raise HTTPException(400, "Missing script name")
+        import subprocess  # noqa: PLC0415, S404
+        import sys
+        backend_dir = Path(__file__).resolve().parent.parent.parent
+        script_path = backend_dir / script
+        if not script_path.exists():
+            raise HTTPException(404, f"Script {script} not found")
+        proc = subprocess.run(  # noqa: S603
+            [sys.executable, str(script_path)],
+            capture_output=True, text=True, timeout=300,
+        )
+        ok = proc.returncode == 0
+        return {"ok": ok, "summary": f"Report script finished (exit {proc.returncode}).",
+                "stdout": proc.stdout[-500:], "stderr": proc.stderr[-200:]}
+
+    # ── create_hypothesis ───────────────────────────────────────────────────────
+    if t == "create_hypothesis":
+        from glossa_lab.database import get_db  # noqa: PLC0415
+        db = get_db()
+        if db is None:
+            raise HTTPException(503, "Database unavailable")
+        h = await db.create_hypothesis({
+            "title": p.get("title", "AI-generated hypothesis"),
+            "statement": p.get("statement", ""),
+            "status": "active", "evidence": [], "study_ids": [], "exp_ids": [],
+        })
+        return {"ok": True, "summary": f"Hypothesis '{h['title']}' created.", "id": h["id"]}
+
+    # ── create_notebook ─────────────────────────────────────────────────────────
+    if t == "create_notebook":
+        from glossa_lab.database import get_db  # noqa: PLC0415
+        db = get_db()
+        if db is None:
+            raise HTTPException(503, "Database unavailable")
+        nb = await db.create_notebook({
+            "title": p.get("title", "AI note"),
+            "content": p.get("content", ""),
+            "study_id": None, "tags": ["ai-generated"],
+        })
+        return {"ok": True, "summary": f"Notebook entry '{nb['title']}' created.", "id": nb["id"]}
+
+    # ── clear_jobs ──────────────────────────────────────────────────────────────
+    if t == "clear_jobs":
+        from glossa_lab.database import get_db  # noqa: PLC0415
+        db = get_db()
+        if db is None:
+            raise HTTPException(503, "Database unavailable")
+        n = await db.clear_jobs()
+        return {"ok": True, "summary": f"Cleared {n} jobs."}
+
+    raise HTTPException(400, f"Unknown action type: '{t}'")
 
 
 @router.post("/decipher")

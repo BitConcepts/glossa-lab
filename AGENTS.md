@@ -523,3 +523,62 @@ Work is accepted only if:
 * next step defined
 
 Otherwise: provisional only.
+
+---
+
+## PDF GENERATION RULES
+
+All PDF reports generated via ReportLab MUST comply with the following rules.
+Violations cause overlapping text, garbled characters, and unreadable output.
+
+### P1 — Latin-1 fonts only
+
+ReportLab's built-in fonts (Helvetica, Times-Roman, Courier) only support
+Latin-1 encoding. **Never** embed Tamil, Arabic, Devanagari, CJK, or any
+non-Latin-1 Unicode character in a Paragraph or table cell.
+Use ASCII romanisation instead (e.g. `-um` not `உம்`).
+
+The module `glossa_lab.report_utils` provides `safe_text()` which strips
+unsafe characters automatically. Always call it or use `safe_tbl()` / `sp_text()`.
+
+### P2 — Paragraph objects in all table cells
+
+Bare strings in ReportLab tables do not wrap and cannot render markup.
+All table cells MUST be `Paragraph` objects. Use `safe_tbl()` from
+`glossa_lab.report_utils` which converts cells automatically.
+
+### P3 — No raw newlines in strings passed to ReportLab
+
+Raw `\n` characters inside Paragraph text are silently ignored, causing
+text to merge on one line. Use `<br/>` for line breaks inside Paragraph
+markup. `safe_tbl()` converts `\n` to `<br/>` automatically.
+
+### P4 — Explicit `leading` on every ParagraphStyle
+
+Leading = line height in points. Omitting it causes ReportLab to compute
+a default that can be incorrect when styles are nested or inherited.
+Minimum: `leading = fontSize * 1.4`. All styles in `make_styles()` from
+`glossa_lab.report_utils` include explicit leading.
+
+### P5 — Column widths must fit the page body
+
+For A4 with 2.5 cm margins: `sum(colWidths) <= 16.0 cm (453 pt)`.
+`safe_tbl()` raises `ValueError` if widths overflow.
+Use the pre-computed width constants from `report_utils`: `_W3A`, `_W5V`, etc.
+
+### P6 — Consolidate all TableStyle commands in one call
+
+`t.setStyle()` **replaces** the existing style, not merges. If you call
+`tbl()` and then `t.setStyle()` to add a highlight, the original style is
+lost. Pass all style commands in a single `TableStyle([...])` call.
+`safe_tbl(highlight_rows={...})` handles this correctly.
+
+### P7 — Always use `glossa_lab.report_utils`
+
+New report generators MUST import from `glossa_lab.report_utils` and use:
+* `make_styles()` for all paragraph styles
+* `safe_tbl()` for all tables
+* `safe_text()` for all strings that may contain non-Latin characters
+* `BODY_WIDTH` to compute column widths
+
+Do not re-implement these helpers inline.

@@ -76,25 +76,29 @@ def _parse_actions(text: str) -> tuple[str, list[dict[str, Any]]]:
     if not match:
         return text, []
     raw = match.group(1).strip()
+
+    def _try_parse(s: str) -> list[dict[str, Any]]:
+        """Try json.loads; on failure, strip trailing junk chars and retry."""
+        for attempt in (s, re.sub(r"[}\]]+$", "", s).rstrip() + "]"):
+            try:
+                parsed = json.loads(attempt)
+                if isinstance(parsed, list):
+                    return [_normalize_action(a) for a in parsed
+                            if isinstance(a, dict) and "type" in a]
+            except (json.JSONDecodeError, ValueError):
+                pass
+        return []
+
     # Collect all [...] array blocks, keep only dict items with 'type'
     arrays = re.findall(r"\[.*?\]", raw, re.DOTALL)
     actions: list[dict[str, Any]] = []
     for arr in arrays:
-        try:
-            parsed = json.loads(arr)
-            if isinstance(parsed, list):
-                for item in parsed:
-                    if isinstance(item, dict) and "type" in item:
-                        actions.append(_normalize_action(item))
-        except (json.JSONDecodeError, ValueError):
-            pass
+        actions.extend(_try_parse(arr))
+
     if not actions:
-        try:
-            parsed_whole = json.loads(raw)
-            if isinstance(parsed_whole, list):
-                actions = [_normalize_action(a) for a in parsed_whole
-                           if isinstance(a, dict) and "type" in a]
-        except (json.JSONDecodeError, ValueError):
+        # Try the whole block as a single array (with junk-tolerance)
+        actions = _try_parse(raw)
+        if not actions:
             return text, []
     return text[: match.start()].rstrip(), actions
 

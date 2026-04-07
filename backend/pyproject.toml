@@ -22,6 +22,10 @@ dependencies = [
 ocr = [
     # Required for ocr_mahadevan.py Pixtral OCR pipeline
     "mistralai>=1,<2",
+    # Required for ocr_icit_corpus.py Tesseract OCR pipeline
+    "pymupdf>=1.24,<2",
+    "pdfplumber>=0.11,<1",
+    "pytesseract>=0.3,<1",
 ]
 tray = [
     # Required for the system tray icon (tray/glossa_tray/)

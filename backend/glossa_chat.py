@@ -318,24 +318,24 @@ def _parse_actions(text: str) -> tuple[str, list[dict]]:
     if not m:
         return text, []
     raw = m.group(1).strip()
+    def _try(s: str) -> list[dict]:
+        for attempt in (s, re.sub(r"[}\]]+$", "", s).rstrip() + "]"):
+            try:
+                p = json.loads(attempt)
+                if isinstance(p, list):
+                    return [_normalize_action(a) for a in p
+                            if isinstance(a, dict) and "type" in a]
+            except Exception:
+                pass
+        return []
+
     arrays = re.findall(r"\[.*?\]", raw, re.DOTALL)
     actions: list[dict] = []
     for arr in arrays:
-        try:
-            parsed = json.loads(arr)
-            if isinstance(parsed, list):
-                for item in parsed:
-                    if isinstance(item, dict) and "type" in item:
-                        actions.append(_normalize_action(item))
-        except Exception:
-            pass
+        actions.extend(_try(arr))
     if not actions:
-        try:
-            parsed_whole = json.loads(raw)
-            if isinstance(parsed_whole, list):
-                actions = [_normalize_action(a) for a in parsed_whole
-                           if isinstance(a, dict) and "type" in a]
-        except Exception:
+        actions = _try(raw)
+        if not actions:
             return text, []
     return text[: m.start()].rstrip(), actions
 

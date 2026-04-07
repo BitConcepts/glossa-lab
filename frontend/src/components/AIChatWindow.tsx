@@ -225,7 +225,7 @@ function ActionCard({ action, status, onApprove, onCancel }: {
 
 // ── Main component ────────────────────────────────────────────────────────────
 
-export function AIChatWindow({ panelHeight = 0 }: { panelHeight?: number }) {
+export function AIChatWindow() {
   const { isOpen, request, closeChat, setDocked, isDocked } = useAIChat();
   const { toast } = useToast();
 
@@ -454,14 +454,14 @@ export function AIChatWindow({ panelHeight = 0 }: { panelHeight?: number }) {
 
   if (!isOpen || isDocked) return null;
 
-  // Fixed position — always bottom-right above panel + bubble
-  const right  = 84;   // leave space for bubble
-  const bottom = panelHeight + 82;
+  // Fixed position — bottom-right corner, overlaps panel
+  // maxHeight ensures window never goes off the top of the screen
   const winStyle: React.CSSProperties = {
     position: "fixed",
-    right,
-    bottom,
+    right: 84,
+    bottom: 82,
     width: size.w,
+    maxHeight: "calc(100vh - 100px)",
     height: size.h,
     zIndex: 8500,
   };
@@ -816,12 +816,12 @@ export function ChatInline() {
 
 // ── Floating bubble ───────────────────────────────────────────────────────────
 
-export function AIChatBubble({ panelHeight = 0 }: { panelHeight?: number }) {
+export function AIChatBubble() {
   const { toggleChat, isOpen } = useAIChat();
   return (
     <button onClick={toggleChat} title={isOpen ? "Close AI Chat" : "Open AI Chat"}
       style={{
-        position: "fixed", right: 24, bottom: panelHeight + 16,
+        position: "fixed", right: 16, bottom: 16,
         width: 48, height: 48, borderRadius: "50%",
         background: isOpen
           ? "#dc2626"   // bright red when open — clearly a close button

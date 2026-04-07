@@ -30,32 +30,130 @@ import { useToast } from "../hooks/useToast";
 
 // ── Markdown renderer ─────────────────────────────────────────────────────────
 
+/** Render a single markdown table block to HTML. */
+function renderTableBlock(block: string): string {
+  // Each line should start with '|'
+  const lines = block.split("\n").map(l => l.trim()).filter(l => l.startsWith("|"));
+  if (lines.length < 3) return block;
+
+  // Parse a row: split on | and drop first/last empty segments.
+  // "| A | B | C |" → ["A", "B", "C"]
+  const parseRow = (line: string): string[] =>
+    line.split("|").slice(1, -1).map(c => c.trim());
+
+  const headers = parseRow(lines[0]);
+  // lines[1] is the separator row — skip it
+  const rows = lines.slice(2).filter(l => l.trim()).map(parseRow);
+
+  const thStyle = [
+    "background:#1e3a5f",
+    "color:#e2e8f0",
+    "padding:5px 8px",
+    "text-align:left",
+    "font-size:11px",
+    "font-weight:600",
+    "white-space:nowrap",
+    "border:1px solid #334155",
+  ].join(";");
+
+  const tdStyleBase = [
+    "padding:4px 8px",
+    "font-size:11px",
+    "border:1px solid #e5e7eb",
+    "vertical-align:top",
+  ].join(";");
+
+  const thead = `<thead><tr>${headers
+    .map(h => `<th style='${thStyle}'>${h}</th>`)
+    .join("")}</tr></thead>`;
+
+  const tbody = `<tbody>${rows
+    .map((cells, ri) => {
+      const rowBg = ri % 2 === 0 ? "" : "background:#f8fafc;";
+      const tds = headers.map((_, ci) => {
+        const cell = cells[ci] ?? "";
+        return `<td style='${tdStyleBase};${rowBg}'>${cell}</td>`;
+      }).join("");
+      return `<tr>${tds}</tr>`;
+    })
+    .join("")}</tbody>`;
+
+  return [
+    "<div style='overflow-x:auto;margin:8px 0;border-radius:5px;border:1px solid #e5e7eb'>",
+    "<table style='border-collapse:collapse;width:100%;font-size:11px'>",
+    thead,
+    tbody,
+    "</table></div>",
+  ].join("");
+}
+
+/**
+ * Render markdown to HTML.
+ * Tables are extracted first (placeholder technique) so that the line-by-line
+ * substitutions do not corrupt multi-line table blocks.
+ */
 function renderMd(raw: string): string {
-  return raw
-    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
-    // Code blocks (```...```)
-    .replace(/```[\w]*\n?([\s\S]*?)```/g, "<pre style='background:#1e293b;color:#e2e8f0;padding:8px 12px;border-radius:5px;font-size:11px;overflow-x:auto;margin:6px 0'>$1</pre>")
+  // 1. HTML-escape user content.
+  let html = raw
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
+  // 2. Extract table blocks before any other substitution.
+  //    A table = header row | separator row (|---|) | 1+ data rows.
+  //    All lines start with '|'.
+  const tables: string[] = [];
+  html = html.replace(
+    /(\|[^\n]+\n\|[ \t|:^-]+\n(?:\|[^\n]+\n?)+)/g,
+    (match) => {
+      tables.push(renderTableBlock(match));
+      return `%%TBL${tables.length - 1}%%`;
+    }
+  );
+
+  // 3. Apply all other markdown transformations.
+  html = html
+    // Code blocks
+    .replace(
+      /```[\w]*\n?([\s\S]*?)```/g,
+      "<pre style='background:#1e293b;color:#e2e8f0;padding:8px 12px;" +
+      "border-radius:5px;font-size:11px;overflow-x:auto;margin:6px 0'>$1</pre>"
+    )
     // Inline code
-    .replace(/`([^`]+)`/g, "<code style='background:#f1f5f9;padding:1px 4px;border-radius:3px;font-size:12px;font-family:monospace'>$1</code>")
+    .replace(
+      /`([^`]+)`/g,
+      "<code style='background:#f1f5f9;padding:1px 4px;border-radius:3px;" +
+      "font-size:12px;font-family:monospace'>$1</code>"
+    )
     // Headers
     .replace(/^### (.+)$/gm, "<div style='font-size:13px;font-weight:700;margin:10px 0 4px'>$1</div>")
-    .replace(/^## (.+)$/gm, "<div style='font-size:14px;font-weight:700;margin:12px 0 5px'>$1</div>")
-    .replace(/^# (.+)$/gm, "<div style='font-size:15px;font-weight:800;margin:14px 0 6px'>$1</div>")
+    .replace(/^## (.+)$/gm,  "<div style='font-size:14px;font-weight:700;margin:12px 0 5px'>$1</div>")
+    .replace(/^# (.+)$/gm,   "<div style='font-size:15px;font-weight:800;margin:14px 0 6px'>$1</div>")
     // Bold / italic
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-    .replace(/\*(.+?)\*/g, "<em>$1</em>")
+    .replace(/\*(.+?)\*/g,     "<em>$1</em>")
     // Links
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "<a href='$2' target='_blank' rel='noopener noreferrer' style='color:#2563eb'>$1</a>")
+    .replace(
+      /\[([^\]]+)\]\(([^)]+)\)/g,
+      "<a href='$2' target='_blank' rel='noopener noreferrer' style='color:#2563eb'>$1</a>"
+    )
     // Unordered list items
     .replace(/^[-*] (.+)$/gm, "<li style='margin:2px 0;margin-left:16px'>$1</li>")
     // Numbered list items
     .replace(/^\d+\. (.+)$/gm, "<li style='margin:2px 0;margin-left:16px;list-style-type:decimal'>$1</li>")
     // Horizontal rule
     .replace(/^---$/gm, "<hr style='border:none;border-top:1px solid #e5e7eb;margin:10px 0'>")
-    // Paragraph breaks
+    // Paragraph breaks / line breaks
     .replace(/\n\n/g, "</p><p style='margin:5px 0'>")
     .replace(/\n/g, "<br>")
     .replace(/^/, "<p style='margin:0'>").replace(/$/, "</p>");
+
+  // 4. Restore extracted tables (they survive the substitutions as %%TBLn%%).
+  tables.forEach((t, i) => {
+    html = html.replace(`%%TBL${i}%%`, t);
+  });
+
+  return html;
 }
 
 function fmtTime(ts: number): string {

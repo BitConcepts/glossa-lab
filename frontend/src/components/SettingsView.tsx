@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import {
   deleteOllamaModel,
+  getEnvPackages,
+  getEnvStatus,
   getLocalCtxLength, setLocalCtxLength,
   getOllamaLibrary,
   getOllamaPullUrl,
@@ -11,10 +13,11 @@ import {
   getStatus,
   isLocalKeySet, clearLocalKey, getLocalKeys, setLocalKey,
   listOllamaInstalled,
+  runEnvRebuild, runEnvSetup, runEnvUpgrade,
   setOllamaContextLength,
   updateSettings,
   verifyKey,
-  type CatalogProvider, type KeyStatus, type ModelDetail,
+  type CatalogProvider, type EnvPackage, type EnvStatus, type KeyStatus, type ModelDetail,
   type OllamaInstalledModel, type OllamaLibraryEntry, type OllamaRecommendation,
   type VerifyKeyResult,
 } from "../api";
@@ -114,7 +117,157 @@ function ContextLengthPanel({ recommendation }: { recommendation: OllamaRecommen
   );
 }
 
-// ── Ollama Section ────────────────────────────────────────────────────────────
+// ── Python Environment Section ─────────────────────────────────────────────────────────
+
+function PythonEnvSection() {
+  const { toast } = useToast();
+  const [status, setStatus] = useState<EnvStatus | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [running, setRunning] = useState(false);
+  const [output, setOutput] = useState<{ text: string; type: string }[]>([]);
+  const [packages, setPackages] = useState<EnvPackage[] | null>(null);
+  const outputRef = useRef<HTMLDivElement>(null);
+
+  const refresh = async () => {
+    setLoading(true);
+    try { setStatus(await getEnvStatus()); } catch { /* ignore */ }
+    finally { setLoading(false); }
+  };
+
+  useEffect(() => { refresh(); }, []);
+  useEffect(() => { outputRef.current?.scrollIntoView({ behavior: "auto" }); }, [output]);
+
+  const runStream = async (fetcher: () => Promise<Response>, label: string) => {
+    setRunning(true);
+    setOutput([{ text: `Running: ${label}…`, type: "info" }]);
+    try {
+      const resp = await fetcher();
+      if (!resp.body) { setOutput(o => [...o, { text: "No response body", type: "error" }]); return; }
+      const reader = resp.body.getReader();
+      const dec = new TextDecoder();
+      let buf = "";
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buf += dec.decode(value, { stream: true });
+        const parts = buf.split("\n\n"); buf = parts.pop() ?? "";
+        for (const part of parts) {
+          for (const ln of part.split("\n")) {
+            if (ln.startsWith("data: ")) {
+              try {
+                const d = JSON.parse(ln.slice(6)) as { text?: string };
+                if (d.text) {
+                  const isErr = d.text.toLowerCase().includes("error") || d.text.startsWith("⚠");
+                  const isDone = d.text.startsWith("✓");
+                  setOutput(o => [...o, { text: d.text!, type: isErr ? "error" : isDone ? "success" : "output" }]);
+                }
+              } catch { /* ignore */ }
+            } else if (ln.startsWith("event: done") || ln.startsWith("event: error")) {
+              // handled via data
+            }
+          }
+        }
+      }
+      await refresh();
+      toast(`${label} complete`, "success");
+    } catch (e) {
+      setOutput(o => [...o, { text: `Failed: ${e instanceof Error ? e.message : String(e)}`, type: "error" }]);
+      toast(`${label} failed`, "error");
+    } finally {
+      setRunning(false);
+    }
+  };
+
+  const loadPackages = async () => {
+    const r = await getEnvPackages();
+    setPackages(r.packages);
+  };
+
+  const active = status?.venv_exists;
+  const dotColor = loading ? "#9ca3af" : active ? "#16a34a" : "#ef4444";
+  const dotLabel = loading ? "checking…" : active ? `Active \u00b7 Python ${status?.python_version ?? "?"}` : "Not found";
+
+  const btnSt = (color: string, disabled: boolean): React.CSSProperties => ({
+    padding: "5px 12px", border: "none", borderRadius: 5,
+    background: disabled ? "#e5e7eb" : color, color: disabled ? "#9ca3af" : "#fff",
+    cursor: disabled ? "not-allowed" : "pointer", fontSize: 12, fontWeight: 600,
+  });
+
+  return (
+    <section style={ollamaSection}>
+      <h3 style={{ margin: "0 0 10px", fontSize: 15, fontWeight: 600, color: "#111827" }}>🐍 Python Environment</h3>
+
+      {/* Status row */}
+      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12, padding: "10px 14px",
+        background: active ? "#f0fdf4" : "#fef2f2",
+        border: `1px solid ${active ? "#86efac" : "#fca5a5"}`, borderRadius: 7 }}>
+        <span style={{ width: 9, height: 9, borderRadius: "50%", background: dotColor, flexShrink: 0 }} />
+        <div style={{ flex: 1 }}>
+          <div style={{ fontSize: 13, fontWeight: 600, color: "#111827" }}>{dotLabel}</div>
+          {status?.venv_path && <div style={{ fontSize: 10, color: "#6b7280", fontFamily: "monospace", marginTop: 1 }}>{status.venv_path}</div>}
+          {active && <div style={{ fontSize: 11, color: "#6b7280", marginTop: 2 }}>{status?.pkg_count ?? 0} packages installed</div>}
+        </div>
+        <button onClick={refresh} style={{ padding: "3px 8px", border: "1px solid #d1d5db", borderRadius: 4, background: "#fff", cursor: "pointer", fontSize: 11, color: "#6b7280" }}>⟳</button>
+      </div>
+
+      {/* Warning if no venv */}
+      {!active && !loading && (
+        <div style={{ padding: "12px 14px", background: "#fef3c7", border: "1px solid #fcd34d", borderRadius: 6, marginBottom: 12, fontSize: 12, color: "#92400e" }}>
+          No virtual environment found. Click <strong>Setup venv</strong> to create one and install all dependencies.
+        </div>
+      )}
+
+      {/* Action buttons */}
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
+        <button onClick={() => runStream(runEnvSetup, "Setup venv")} disabled={running}
+          style={btnSt("#16a34a", running)}>
+          ⬇ Setup venv
+        </button>
+        <button onClick={() => runStream(runEnvRebuild, "Rebuild venv")} disabled={running}
+          style={btnSt("#ea580c", running)}>
+          ↺ Rebuild venv
+        </button>
+        <button onClick={() => runStream(runEnvUpgrade, "Upgrade deps")} disabled={running || !active}
+          style={btnSt("#2563eb", running || !active)}>
+          ↑ Upgrade deps
+        </button>
+        <button onClick={loadPackages} disabled={!active}
+          style={btnSt("#7c3aed", !active)}>
+          📦 Show packages
+        </button>
+      </div>
+
+      {/* Output stream */}
+      {output.length > 0 && (
+        <div style={{ background: "#0f172a", borderRadius: 5, padding: "8px 10px",
+          maxHeight: 200, overflowY: "auto", fontFamily: "monospace", fontSize: 11, marginBottom: 10 }}>
+          {output.map((l, i) => (
+            <div key={i} style={{ color: l.type === "error" ? "#f87171" : l.type === "success" ? "#86efac" : "#e2e8f0", lineHeight: 1.6 }}>{l.text}</div>
+          ))}
+          <div ref={outputRef} />
+        </div>
+      )}
+
+      {/* Package list */}
+      {packages && (
+        <div>
+          <div style={{ fontSize: 11, fontWeight: 700, color: "#374151", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 6 }}>
+            Installed packages ({packages.length})
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "2px 8px", maxHeight: 140, overflowY: "auto" }}>
+            {packages.map(p => (
+              <span key={p.name} style={{ fontSize: 10, fontFamily: "monospace", color: "#374151" }}>
+                {p.name} <span style={{ color: "#9ca3af" }}>{p.version}</span>
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
+// ── Ollama Section ──────────────────────────────────────────────────────────────
 
 function OllamaSection() {
   const { toast } = useToast();
@@ -563,6 +716,8 @@ export function SettingsView() {
           {error}
         </div>
       )}
+
+      <PythonEnvSection />
 
       {/* AI API Keys */}
       <section style={sectionStyle}>

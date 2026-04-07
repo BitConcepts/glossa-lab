@@ -331,6 +331,7 @@ function AppContent() {
           onMinimizedChange={setPanelMinimized}
           activeTab={panelTab}
           onTabChange={setPanelTab}
+          leftOffset={SIDEBAR_W}
         />
       )}
 

@@ -610,13 +610,38 @@ export const deleteCitation = (id: string): Promise<Citation> =>
 
 export interface ChatMessage { role: string; content: string; }
 
+export interface AIAction {
+  type: string;        // run_experiment | run_pipeline | change_setting | generate_report |
+                       // create_hypothesis | create_notebook | open_view | clear_jobs
+  params: Record<string, unknown>;
+  label: string;       // short human-readable label
+  description: string; // longer explanation shown in the approval card
+  requires_approval?: boolean; // if falsy, auto-execute without showing card
+}
+
+export interface AIChatResponse {
+  role: string;
+  content: string;
+  actions?: AIAction[];
+  context_type?: string | null;
+  context_id?: string | null;
+}
+
 export const aiChat = (body: {
   messages: ChatMessage[];
   context_type?: string | null;
   context_id?: string | null;
+  provider?: string | null;   // "ollama" | "mistral" | "openai" | "anthropic"
+  model?: string | null;      // model name override
+}): Promise<AIChatResponse> =>
+  request("POST", "/ai/chat", body);
+
+export const executeAiAction = (body: {
+  type: string;
+  params: Record<string, unknown>;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }): Promise<Record<string, any>> =>
-  request("POST", "/ai/chat", body);
+  request("POST", "/ai/execute-action", body);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const aiDecipher = (body: { sign_sequence: string[]; theory?: string; corpus_id?: string }): Promise<Record<string, any>> =>

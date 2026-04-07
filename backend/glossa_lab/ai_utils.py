@@ -70,10 +70,15 @@ def call_llm(
     json_mode: bool = False,
     max_tokens: int = 2000,
     temperature: float = 0.3,
+    provider_override: str | None = None,
+    model_override: str | None = None,
 ) -> str:
     """Call the configured LLM and return the assistant message text.
 
-    Resolution order:
+    If provider_override + model_override are both supplied they take precedence
+    over the stored provider-preference chain.
+
+    Resolution order (no overrides):
       1. Ollama (if enabled in provider prefs + model selected)
       2. Mistral (if mistral_api_key set)
       3. OpenAI  (if openai_api_key set)
@@ -82,6 +87,59 @@ def call_llm(
     Raises ValueError if no provider is available.
     Raises RuntimeError on API/network error.
     """
+    # ── 0. Explicit override (from AI chat model picker) ───────────────────────
+    if provider_override and model_override:
+        if provider_override == "ollama":
+            return _call_ollama(
+                model=model_override,
+                messages=messages,
+                max_tokens=max_tokens,
+                temperature=temperature,
+            )
+        if provider_override == "mistral":
+            key = get_key("mistral_api_key")
+            if not key:
+                raise ValueError("Mistral API key not set")
+            payload: dict[str, Any] = {
+                "model": model_override, "messages": messages,
+                "max_tokens": max_tokens, "temperature": temperature,
+            }
+            if json_mode:
+                payload["response_format"] = {"type": "json_object"}
+            return _call_remote(
+                "https://api.mistral.ai/v1/chat/completions",
+                payload, auth_header=f"Bearer {key}",
+            )
+        if provider_override == "openai":
+            key = get_key("openai_api_key")
+            if not key:
+                raise ValueError("OpenAI API key not set")
+            payload = {
+                "model": model_override, "messages": messages,
+                "max_tokens": max_tokens, "temperature": temperature,
+            }
+            if json_mode:
+                payload["response_format"] = {"type": "json_object"}
+            return _call_remote(
+                "https://api.openai.com/v1/chat/completions",
+                payload, auth_header=f"Bearer {key}",
+            )
+        if provider_override == "anthropic":
+            key = get_key("anthropic_api_key")
+            if not key:
+                raise ValueError("Anthropic API key not set")
+            sys_msgs = [m for m in messages if m["role"] == "system"]
+            usr_msgs = [m for m in messages if m["role"] != "system"]
+            payload = {"model": model_override, "max_tokens": max_tokens, "messages": usr_msgs}
+            if sys_msgs:
+                payload["system"] = " ".join(m["content"] for m in sys_msgs)
+            return _call_remote(
+                "https://api.anthropic.com/v1/messages", payload,
+                auth_header=key, auth_header_name="x-api-key",
+                extra_headers={"anthropic-version": "2023-06-01"},
+                response_path=["content", 0, "text"],
+            )
+
     prefs = _get_provider_prefs()
     ollama_pref = prefs.get("ollama", {})
 

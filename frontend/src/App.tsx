@@ -133,6 +133,18 @@ function AppContent() {
     return () => window.removeEventListener("keydown", handler);
   }, []);
 
+  // Listen for AI-initiated navigation (open_view action)
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const view = (e as CustomEvent<{ view: string }>).detail?.view as Tab | undefined;
+      if (view && allItems.some(i => i.id === view)) setTab(view);
+    };
+    window.addEventListener("glossa:navigate", handler);
+    return () => window.removeEventListener("glossa:navigate", handler);
+  // allItems is stable (built from constants)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // All nav items flattened — must be declared before paletteCommands
   const allItems: NavItem[] = [
     ...NAV_SECTIONS.flatMap((s) => s.items),
@@ -235,8 +247,8 @@ function AppContent() {
           ))}
         </div>
 
-        {/* System items at bottom */}
-        <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 4, paddingBottom: 4 }}>
+        {/* System items at bottom — flexShrink:0 ensures they never get hidden */}
+        <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 4, paddingBottom: 4, flexShrink: 0 }}>
           {SYSTEM_ITEMS.map((item) => <NavBtn key={item.id} item={item} />)}
         </div>
       </aside>

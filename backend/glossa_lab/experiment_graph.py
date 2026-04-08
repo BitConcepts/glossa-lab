@@ -275,7 +275,12 @@ for _d in [
     AtomicNodeDef("FreqCounter","Frequency Counter","Transforms",
         "Count symbol occurrences across all sequences.",
         inputs=[{"name":"sequences","type":"sequences","required":True}],
-        outputs=[{"name":"freq_map","type":"freq_map"},{"name":"total_tokens","type":"number"},{"name":"distinct_symbols","type":"number"}],
+        outputs=[
+            {"name":"freq_map","type":"freq_map"},
+            {"name":"total_tokens","type":"number"},
+            {"name":"distinct_symbols","type":"number"},
+            {"name":"top_10","type":"json"},
+        ],
         params_schema={"type":"object","properties":{"min_count":{"type":"integer","title":"Min Count","default":1,"minimum":1},"top_n":{"type":"integer","title":"Top N (0=all)","default":0,"minimum":0}}},
         fn=_freq_counter),
     AtomicNodeDef("PositionalProfiler","Positional Profiler","Analysis",

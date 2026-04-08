@@ -112,6 +112,7 @@ const NODE_CFG: Record<StudyNodeType, NodeTypeCfg> = {
   corpus:      { color: "#059669", icon: "📚", defaultLabel: "Corpus",        executable: false, description: "Data source — corpus_id forwarded to downstream" },
   rag_query:   { color: "#6d28d9", icon: "🔍", defaultLabel: "RAG Query",     executable: true,  description: "Retrieves chunks from the knowledge base" },
   ai_analysis: { color: "#4f46e5", icon: "✨", defaultLabel: "AI Analysis",   executable: true,  description: "Sends upstream context to Glossa AI" },
+  compare:     { color: "#ea580c", icon: "↔️", defaultLabel: "Compare",       executable: true,  description: "AI-powered comparison of two upstream results with structured insights" },
   note:        { color: "#d97706", icon: "📝", defaultLabel: "Note",          executable: false, description: "Annotation — no execution" },
   report:      { color: "#0d9488", icon: "📄", defaultLabel: "Report",        executable: false, description: "Output artifact reference" },
   hypothesis:  { color: "#e11d48", icon: "💡", defaultLabel: "Hypothesis",    executable: false, description: "Links to a Hypothesis record" },
@@ -266,11 +267,13 @@ const PaletteItem = ({ label, nodeType, description, refId, onDragStart }:
 // ── ParamField ──────────────────────────────────────────────────────────────
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const ParamField = ({ fieldKey, def, value, onChange }: { fieldKey: string; def: Record<string, any>; value: unknown; onChange: (v: unknown) => void }) => {
+const ParamField = ({ fieldKey, def, value, onChange, darkMode = true }: { fieldKey: string; def: Record<string, any>; value: unknown; onChange: (v: unknown) => void; darkMode?: boolean }) => {
   const label = (def.title as string) ?? fieldKey;
   const desc  = def.description as string | undefined;
   const type  = def.type as string;
-  const iStyle: React.CSSProperties = { width: "100%", boxSizing: "border-box", padding: "4px 7px", border: "1px solid #334155", borderRadius: 4, fontSize: 11, outline: "none", background: "#1e293b", color: "#e2e8f0" };
+  const iStyle: React.CSSProperties = { width: "100%", boxSizing: "border-box", padding: "4px 7px",
+    border: `1px solid ${darkMode ? "#334155" : "#d1d5db"}`, borderRadius: 4, fontSize: 11, outline: "none",
+    background: darkMode ? "#1e293b" : "#ffffff", color: darkMode ? "#e2e8f0" : "#1e293b" };
   let ctrl: React.ReactNode;
   if (type === "boolean") {
     ctrl = <div style={{ display: "flex", alignItems: "center", gap: 5, marginTop: 3 }}><input type="checkbox" checked={!!value} onChange={e => onChange(e.target.checked)} style={{ cursor: "pointer", width: 14, height: 14 }} /><span style={{ fontSize: 11, color: "#94a3b8" }}>{value ? "Yes" : "No"}</span></div>;
@@ -281,14 +284,14 @@ const ParamField = ({ fieldKey, def, value, onChange }: { fieldKey: string; def:
   }
   return (
     <div style={{ marginBottom: 9 }}>
-      <div style={{ fontSize: 11, fontWeight: 600, color: "#cbd5e1", marginBottom: 2 }}>{label}</div>
-      {desc && <div style={{ fontSize: 10, color: "#64748b", marginBottom: 3, lineHeight: 1.4 }}>{desc}</div>}
+      <div style={{ fontSize: 11, fontWeight: 600, color: darkMode ? "#cbd5e1" : "#1e293b", marginBottom: 2 }}>{label}</div>
+      {desc && <div style={{ fontSize: 10, color: darkMode ? "#64748b" : "#9ca3af", marginBottom: 3, lineHeight: 1.4 }}>{desc}</div>}
       {ctrl}
     </div>
   );
 };
 
-// ── Inspector ────────────────────────────────────────────────────────────────
+// ── Inspector
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function schemaFromDefaults(defaults: Record<string, any>): Record<string, any> {
@@ -315,12 +318,17 @@ const BUILTIN_SCHEMAS: Record<string, Record<string, Record<string, unknown>>> =
                  context_summary: { type: "boolean", title: "Include Context Summary", default: true } },
 };
 
-function Inspector({ node, experiments, pipelines, onClose, onParamChange }:
+function Inspector({ node, experiments, pipelines, onClose, onParamChange, darkMode = true }:
   { node: Node<NodeData> | null; experiments: ExperimentMeta[]; pipelines: CatalogPipeline[];
-    onClose: () => void; onParamChange: (nodeId: string, params: Record<string, unknown>) => void }) {
+    onClose: () => void; onParamChange: (nodeId: string, params: Record<string, unknown>) => void; darkMode?: boolean }) {
   if (!node) return null;
   const cfg = NODE_CFG[node.data.nodeType] ?? NODE_CFG.experiment;
   const params = (node.data.params ?? {}) as Record<string, unknown>;
+  // Theme-aware inspector colors
+  const iBg    = darkMode ? "#0f172a" : "#f8fafc";
+  const iBdr   = darkMode ? "#1e293b" : "#e2e8f0";
+  const iText  = darkMode ? "#e2e8f0" : "#1e293b";
+  const iMuted = darkMode ? "#64748b" : "#9ca3af";
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let schema: Record<string, Record<string, any>> = {};
@@ -337,32 +345,32 @@ function Inspector({ node, experiments, pipelines, onClose, onParamChange }:
   }
 
   return (
-    <div style={{ width: 252, borderLeft: "1px solid #1e293b", padding: "11px 12px", background: "#090d18", overflowY: "auto", flexShrink: 0 }}>
+    <div style={{ width: 252, borderLeft: `1px solid ${iBdr}`, padding: "11px 12px", background: iBg, overflowY: "auto", flexShrink: 0 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
         <span style={{ fontSize: 12, fontWeight: 700, color: cfg.color }}>{cfg.icon} {node.data.nodeType.replace(/_/g, " ")}</span>
-        <button onClick={onClose} style={{ border: "none", background: "none", cursor: "pointer", fontSize: 14, color: "#334155" }}>✕</button>
+        <button onClick={onClose} style={{ border: "none", background: "none", cursor: "pointer", fontSize: 14, color: iMuted }}>✕</button>
       </div>
-      <div style={{ fontSize: 12, fontWeight: 600, color: "#e2e8f0", marginBottom: 4 }}>{node.data.label}</div>
+      <div style={{ fontSize: 12, fontWeight: 600, color: iText, marginBottom: 4 }}>{node.data.label}</div>
       {node.data.description && (
-        <p style={{ fontSize: 10, color: "#475569", lineHeight: 1.45, margin: "0 0 10px" }}>
+        <p style={{ fontSize: 10, color: iMuted, lineHeight: 1.45, margin: "0 0 10px" }}>
           {(node.data.description as string).slice(0, 110)}
         </p>
       )}
       {Object.keys(schema).length > 0 ? (
         <div>
-          <div style={{ fontSize: 9, fontWeight: 700, color: "#334155", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 8, borderTop: "1px solid #1e293b", paddingTop: 8 }}>Parameters</div>
+          <div style={{ fontSize: 9, fontWeight: 700, color: iMuted, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 8, borderTop: `1px solid ${iBdr}`, paddingTop: 8 }}>Parameters</div>
           {Object.entries(schema).map(([k, def]) => (
-            <ParamField key={k} fieldKey={k} def={def} value={params[k] ?? def.default}
+            <ParamField key={k} fieldKey={k} def={def} value={params[k] ?? def.default} darkMode={darkMode}
               onChange={v => onParamChange(node.id, { ...params, [k]: v })} />
           ))}
-          <div style={{ fontSize: 9, color: "#1e293b" }}>Saved with study graph.</div>
+          <div style={{ fontSize: 9, color: iMuted }}>Saved with study graph.</div>
         </div>
       ) : (
-        <div style={{ fontSize: 10, color: "#334155", fontStyle: "italic", marginTop: 6 }}>No configurable parameters.</div>
+        <div style={{ fontSize: 10, color: iMuted, fontStyle: "italic", marginTop: 6 }}>No configurable parameters.</div>
       )}
-      <div style={{ marginTop: 10, paddingTop: 8, borderTop: "1px solid #1e293b" }}>
-        {node.data.refId && <div style={{ fontSize: 9, color: "#334155", fontFamily: "monospace" }}>ref: {node.data.refId}</div>}
-        <div style={{ fontSize: 9, color: "#1e293b", marginTop: 1 }}>id: {node.id.slice(0, 18)}</div>
+      <div style={{ marginTop: 10, paddingTop: 8, borderTop: `1px solid ${iBdr}` }}>
+        {node.data.refId && <div style={{ fontSize: 9, color: iMuted, fontFamily: "monospace" }}>ref: {node.data.refId}</div>}
+        <div style={{ fontSize: 9, color: iMuted, marginTop: 1 }}>id: {node.id.slice(0, 18)}</div>
       </div>
     </div>
   );
@@ -429,7 +437,10 @@ function StudySummaryPanel({ summary, onClose }: { summary: AISummaryResult; onC
 let _nid = 0;
 function nextNodeId() { return `n_${Date.now()}_${_nid++}`; }
 
-const SPECIAL_TYPES: StudyNodeType[] = ["corpus", "rag_query", "ai_analysis", "note", "report", "hypothesis"];
+const SPECIAL_TYPES: StudyNodeType[] = ["corpus", "rag_query", "ai_analysis", "compare", "note", "report", "hypothesis"];
+
+// Snap a coordinate to the 15px grid
+const snap15 = (n: number) => Math.round(n / 15) * 15;
 
 export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
   const th = sbTheme(darkMode);
@@ -487,16 +498,31 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
   useEffect(() => { localStorage.setItem("gsb_lw", String(leftW)); }, [leftW]);
   useEffect(() => { localStorage.setItem("gsb_dock", dockL ? "left" : "right"); }, [dockL]);
 
-  // Load study into graph
+  // Draft auto-save
+  // isDirty: tracks whether current canvas has unsaved changes (also stored as localStorage draft)
+  const [, setIsDirty] = useState(false);
+  useEffect(() => {
+    if (!activeStudy || nodes.length === 0) return;
+    const draft = { studyId: activeStudy.id, studyName: activeStudy.name,
+      nodes: nodes.map(n => ({ id: n.id, type: n.data.nodeType, ref_id: n.data.refId, label: n.data.label, params: n.data.params, position: n.position })),
+      edges: edges.map(e => ({ id: e.id, source: e.source, target: e.target })) };
+    localStorage.setItem("glossa_study_draft", JSON.stringify(draft));
+    setIsDirty(true);
+    window.dispatchEvent(new CustomEvent("glossa:dirty", { detail: { builder: "study", dirty: true } }));
+  }, [nodes, edges, activeStudy]);
+
+  // Load study into graph — snap positions to 15px grid
   const loadStudy = useCallback((s: StudyResponse) => {
-    setActiveStudy(s); setSelectedNode(null); setRunResult(null); setSummary(null);
+    setActiveStudy(s); setSelectedNode(null); setRunResult(null); setSummary(null); setIsDirty(false);
+    window.dispatchEvent(new CustomEvent("glossa:dirty", { detail: { builder: "study", dirty: false } }));
+    localStorage.removeItem("glossa_study_draft");
     setNodes((s.graph.nodes ?? []).map(n => ({
       id: n.id, type: "glossaNode",
-      position: n.position ?? { x: 80, y: 80 },
+      position: { x: snap15((n.position ?? { x: 80, y: 80 }).x), y: snap15((n.position ?? { x: 80, y: 80 }).y) },
       data: { label: n.label, nodeType: n.type as StudyNodeType, refId: n.ref_id, params: n.params ?? {}, noteText: n.note_text, color: n.color, runStatus: "idle", darkMode } as NodeData,
     })));
-    setEdges((s.graph.edges ?? []).map(e => ({ id: e.id, source: e.source, target: e.target, reconnectable: true, style: { stroke: "#334155", strokeWidth: 2 } })));
-  }, []);
+    setEdges((s.graph.edges ?? []).map(e => ({ id: e.id, source: e.source, target: e.target, reconnectable: true, style: { stroke: th.edgeDef, strokeWidth: 2 } })));
+  }, [darkMode, th.edgeDef]);
 
   // Save
   const doSave = useCallback(async () => {
@@ -543,7 +569,12 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
   }, [deleteConfirm, activeStudy]);
 
   const dupStudy = useCallback(async (s: StudyResponse) => {
-    const c = await createStudy({ name: `${s.name} (copy)`, description: s.description, graph: s.graph });
+    // Snap positions when duplicating too
+    const snappedGraph = {
+      ...s.graph,
+      nodes: (s.graph.nodes ?? []).map(n => ({ ...n, position: { x: snap15(n.position.x), y: snap15(n.position.y) } })),
+    };
+    const c = await createStudy({ name: `${s.name} (copy)`, description: s.description, graph: snappedGraph });
     setStudies(prev => [c, ...prev]); loadStudy(c);
   }, [loadStudy]);
 
@@ -572,12 +603,12 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
   const onReconnect = useCallback((old: Edge, conn: Connection) => { reconnectOk.current = true; setEdges(es => reconnectEdge(old, conn, es)); }, []);
   const onReconnectEnd = useCallback((_: unknown, edge: Edge) => { if (!reconnectOk.current) setEdges(es => es.filter(e => e.id !== edge.id)); reconnectOk.current = false; }, []);
 
-  // Drop
+  // Drop — position at cursor (no arbitrary offset)
   const onDrop = useCallback((ev: React.DragEvent<HTMLDivElement>) => {
     ev.preventDefault();
     if (!draggedRef.current || !reactFlowWrapper.current) return;
     const rect = reactFlowWrapper.current.getBoundingClientRect();
-    const pos = { x: Math.round((ev.clientX - rect.left - 75) / 15) * 15, y: Math.round((ev.clientY - rect.top - 30) / 15) * 15 };
+    const pos = { x: snap15(ev.clientX - rect.left - 8), y: snap15(ev.clientY - rect.top - 8) };
     const { nodeType, refId, label } = draggedRef.current;
     const desc = nodeType === "experiment" ? (experiments.find(e => e.id === refId)?.description ?? "")
                : nodeType === "pipeline"   ? (pipelines.find(p => p.id === refId)?.description ?? "")
@@ -614,7 +645,7 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
   const addNodeAt = useCallback((nt: StudyNodeType, x: number, y: number) => {
     if (!reactFlowWrapper.current) return;
     const rect = reactFlowWrapper.current.getBoundingClientRect();
-    const pos = { x: Math.round((x - rect.left) / 15) * 15, y: Math.round((y - rect.top) / 15) * 15 };
+    const pos = { x: snap15(x - rect.left - 8), y: snap15(y - rect.top - 8) };
     setNodes(n => [...n, { id: nextNodeId(), type: "glossaNode", position: pos, data: mkNodeData({ label: NODE_CFG[nt].defaultLabel, nodeType: nt, refId: "", params: {}, runStatus: "idle" }) }]);
   }, [mkNodeData]);
 
@@ -646,6 +677,7 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
     { icon: "📝", label: "Add Note", action: () => addNodeAt("note", x, y) },
     { icon: "📄", label: "Add Report Link", action: () => addNodeAt("report", x, y) },
     { icon: "💡", label: "Add Hypothesis", action: () => addNodeAt("hypothesis", x, y) },
+    { icon: "↔️", label: "Add Compare", action: () => addNodeAt("compare", x, y) },
     { divider: true },
     { icon: "⊞", label: "Select all", action: () => setNodes(n => n.map(node => ({ ...node, selected: true }))) },
     { icon: "🗑", label: "Clear canvas", danger: true, action: () => { setNodes([]); setEdges([]); setSelectedNode(null); } },
@@ -704,8 +736,8 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
             })}
           </div>
 
-          {/* Palette */}
-          <div style={{ flex: 1, overflowY: "auto", padding: "7px 7px" }}>
+          {/* Palette — minHeight:0 is critical so flex overflow scrollbar works */}
+          <div style={{ flex: 1, overflowY: "auto", minHeight: 0, padding: "7px 7px" }}>
             <div style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 5 }}>Palette</div>
             <input value={palSearch} onChange={e => setPalSearch(e.target.value)} placeholder="Search…"
               style={{ width: "100%", boxSizing: "border-box", padding: "5px 8px", fontSize: 11, border: `1px solid ${th.inputBdr}`, borderRadius: 5, marginBottom: 5, outline: "none", background: th.inputBg, color: th.inputText }} />
@@ -720,10 +752,19 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
                 {SPECIAL_TYPES.map(nt => <PaletteItem key={nt} label={NODE_CFG[nt].defaultLabel} nodeType={nt} description={NODE_CFG[nt].description} refId="" onDragStart={onDragStart} />)}
               </div>
             )}
-            {fExps.length > 0 && (
+            {/* User graph experiments first (promoted to top) */}
+            {fExps.filter(e => e.category === "Graph Experiments").length > 0 && (
               <div style={{ marginBottom: 8 }}>
-                <div style={{ fontSize: 9, fontWeight: 700, color: "#7c3aed", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 4 }}>Experiments</div>
-                {fExps.map(e => <PaletteItem key={e.id} label={e.name} nodeType="experiment" description={e.description} refId={e.id} onDragStart={onDragStart} />)}
+                <div style={{ fontSize: 9, fontWeight: 700, color: "#7c3aed", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 3 }}>User Experiments</div>
+                <div style={{ fontSize: 8, color: th.textFaint, marginBottom: 4 }}>← created in Exp. Builder</div>
+                {fExps.filter(e => e.category === "Graph Experiments").map(e => <PaletteItem key={e.id} label={e.name.replace(/^\ud83d\udd00 /, "")} nodeType="experiment" description={e.description} refId={e.id} onDragStart={onDragStart} />)}
+              </div>
+            )}
+            {fExps.filter(e => e.category !== "Graph Experiments").length > 0 && (
+              <div style={{ marginBottom: 8 }}>
+                <div style={{ fontSize: 9, fontWeight: 700, color: "#6b7280", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 3 }}>Primitive Experiments</div>
+                <div style={{ fontSize: 8, color: th.textFaint, marginBottom: 4 }}>Tip: wrap in Exp. Builder → promotes to User Experiment</div>
+                {fExps.filter(e => e.category !== "Graph Experiments").map(e => <PaletteItem key={e.id} label={e.name} nodeType="experiment" description={e.description} refId={e.id} onDragStart={onDragStart} />)}
               </div>
             )}
             {fPipes.length > 0 && (
@@ -746,7 +787,7 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
     />);
 
   const Right = !inspectorOff && selectedNode ? (
-    <Inspector node={selectedNode} experiments={experiments} pipelines={pipelines}
+    <Inspector node={selectedNode} experiments={experiments} pipelines={pipelines} darkMode={darkMode}
       onClose={() => setInspectorOff(true)} onParamChange={onParamChange} />
   ) : null;
 
@@ -796,11 +837,21 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
         <div ref={reactFlowWrapper} style={{ flex: 1, minWidth: 0, background: th.canvasBg }}
           onDrop={onDrop} onDragOver={onDragOver}
           onContextMenu={onPaneCtxMenu}>
+          {/* No-study overlay */}
           {!activeStudy && (
             <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 10, zIndex: 5, pointerEvents: "none" }}>
-              <div style={{ fontSize: 44 }}>📐</div>
-              <div style={{ fontSize: 15, color: th.textMuted, fontWeight: 600 }}>Select or create a study to start</div>
-              <div style={{ fontSize: 12, color: th.textFaint }}>Drag nodes from the palette · Right-click canvas to add any node type</div>
+              <div style={{ fontSize: 40 }}>📐</div>
+              <div style={{ fontSize: 14, color: th.textMuted, fontWeight: 600 }}>Select or create a study to start</div>
+              <div style={{ fontSize: 11, color: th.textFaint }}>Use the panel on the left</div>
+            </div>
+          )}
+          {/* Empty canvas hint — shown only when a study is active but has no nodes */}
+          {activeStudy && nodes.length === 0 && (
+            <div style={{ position: "absolute", bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 5, pointerEvents: "none",
+              background: th.panelBg2, border: `1px solid ${th.border}`, borderRadius: 8, padding: "8px 16px",
+              fontSize: 12, color: th.textMuted, textAlign: "center", whiteSpace: "nowrap",
+              boxShadow: "0 2px 12px rgba(0,0,0,0.15)" }}>
+              Drag from palette · Right-click canvas to add nodes
             </div>
           )}
           <ReactFlow

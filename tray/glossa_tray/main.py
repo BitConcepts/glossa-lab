@@ -50,8 +50,10 @@ if platform.system() == "Windows":
 else:
     _SHELL = str(_REPO_ROOT / "shell.sh")
 
-_BACKEND_LOG = _REPO_ROOT / "logs" / "backend.log"
-_BACKEND_DIR = str(_REPO_ROOT / "backend")
+_BACKEND_LOG     = _REPO_ROOT / "logs" / "backend.log"
+_BACKEND_DIR     = str(_REPO_ROOT / "backend")
+_MAX_LOG_BYTES   = 10 * 1024 * 1024   # 10 MB per file
+_LOG_BACKUPS     = 3                   # keep 3 rotated copies alongside the current log
 
 # Use pythonw.exe on Windows: it is the *windowless* Python launcher —
 # identical to python.exe but compiled as a GUI subsystem app, so Windows
@@ -203,13 +205,43 @@ def _restart_service(_icon=None, _item=None) -> None:
     threading.Thread(target=_do, daemon=True).start()
 
 
+def _rotate_backend_log() -> None:
+    """Rotate backend.log when it exceeds _MAX_LOG_BYTES.
+
+    Keeps at most _LOG_BACKUPS numbered copies alongside the current log
+    so total disk usage stays bounded (default: 4 × 10 MB = 40 MB max).
+    """
+    if not _BACKEND_LOG.exists():
+        return
+    try:
+        if _BACKEND_LOG.stat().st_size < _MAX_LOG_BYTES:
+            return
+    except OSError:
+        return
+    # Shift existing numbered backups: .3.log is dropped, .2 → .3, .1 → .2
+    for n in range(_LOG_BACKUPS, 0, -1):
+        src = _BACKEND_LOG.with_suffix(f".{n}.log")
+        dst = _BACKEND_LOG.with_suffix(f".{n + 1}.log")
+        try:
+            if src.exists():
+                src.replace(dst)
+        except OSError:
+            pass
+    # Move current log to .1.log
+    try:
+        _BACKEND_LOG.replace(_BACKEND_LOG.with_suffix(".1.log"))
+    except OSError:
+        pass  # File may be locked — continue appending to it
+
+
 def _start_backend(_icon=None, _item=None) -> None:
     """Start the backend by launching Python directly — zero visible windows.
 
     Spawns the venv Python executable with CREATE_NO_WINDOW | DETACHED_PROCESS
     so no cmd shell or console ever appears. uvicorn stdout/stderr are appended
-    to logs/backend.log alongside the app’s structured logs.
+    to logs/backend.log alongside the app's structured logs.
     """
+    _rotate_backend_log()   # ensure log file stays bounded before appending
     if platform.system() == "Windows":
         _BACKEND_LOG.parent.mkdir(parents=True, exist_ok=True)
         log_fh = open(str(_BACKEND_LOG), "ab")  # noqa: SIM115

@@ -372,62 +372,119 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
 
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   const draggedNodeType  = useRef<string | null>(null);
+
+  // pendingAction: parsed from localStorage on mount, executed once catalog is ready
+  const [pendingAction, setPendingAction] = useState<{ action: string; id?: string } | null>(null);
+  // Stable ref so the pendingAction effect can call loadExp without a forward-reference error
+  const loadExpRef = useRef<(id: string) => Promise<void>>(() => Promise.resolve());
+
   useEffect(() => {
     void getAtomicNodeCatalog().then(setCatalog).catch(() => {});
     void listGraphExperiments().then(setSavedExps).catch(() => {});
     void listExperiments().then(setExperiments).catch(() => {});
   }, []);
 
-  // Handle pending action dispatched from ExperimentsView or elsewhere via localStorage
+  // Parse pending action from localStorage ONCE on mount
   useEffect(() => {
     const pending = localStorage.getItem("glossa_exp_builder_open");
     if (!pending) return;
     localStorage.removeItem("glossa_exp_builder_open");
     try {
-      const { action, id } = JSON.parse(pending) as { action: string; id?: string };
-      if (action === "load" && id) {
-        // Delay slightly so catalog is loaded first
-        const load = async () => {
-          await new Promise(r => setTimeout(r, 200));
-          void loadExp(id);
-        };
-        void load();
-      } else if (action === "new") {
-        setTimeout(() => setShowNew(true), 100);
-      } else if (action === "dup" && id) {
-        const dup = async () => {
-          await new Promise(r => setTimeout(r, 200));
-          try {
-            const d = await getGraphExperiment(id);
-            const copy = await createGraphExperiment({
-              ...d, id: undefined as unknown as string, name: `${d.name} (copy)`,
-            });
-            setSavedExps(prev => [{ id: copy.id!, name: copy.name, description: copy.description, node_count: copy.nodes.length, edge_count: copy.edges.length }, ...prev]);
-            void loadExp(copy.id!);
-          } catch { /* ignore */ }
-        };
-        void dup();
+      const parsed = JSON.parse(pending) as { action: string; id?: string };
+      if (parsed.action === "new") {
+        // "new" doesn’t need the catalog — open dialog immediately
+        setTimeout(() => setShowNew(true), 50);
+      } else {
+        // "load" and "dup" need the catalog; defer until catalog is populated
+        setPendingAction(parsed);
       }
     } catch { /* ignore parse errors */ }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);  // run once on mount only
 
-  // Load saved experiment
+  // Execute pending "load" / "dup" action AFTER catalog is populated.
+  // Uses loadExpRef to avoid forward-reference TypeScript error.
+  useEffect(() => {
+    if (!pendingAction || catalog.length === 0) return;
+    const { action, id } = pendingAction;
+    setPendingAction(null);
+
+    if (action === "load" && id) {
+      void loadExpRef.current(id);
+    } else if (action === "dup" && id) {
+      const dup = async () => {
+        try {
+          const d = await getGraphExperiment(id);
+          const copy = await createGraphExperiment({
+            ...d, id: undefined as unknown as string, name: `${d.name} (copy)`,
+          });
+          setSavedExps(prev => [
+            { id: copy.id!, name: copy.name, description: copy.description,
+              node_count: copy.nodes.length, edge_count: copy.edges.length },
+            ...prev,
+          ]);
+          void loadExpRef.current(copy.id!);
+        } catch { /* ignore */ }
+      };
+      void dup();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pendingAction, catalog]);  // loadExpRef is stable; no need in deps
+
+  // Load saved experiment — snap positions + restore handle IDs from port names
+  const snap15e = (n: number) => Math.round(n / 15) * 15;
   const loadExp = useCallback(async (id: string) => {
     try {
       const d = await getGraphExperiment(id);
       setActiveExp(d);
       setSelectedNode(null);
+
       setNodes((d.nodes as Node<ExpNodeData>[]).map(n => {
-        const def = catalog.find(c => c.id === (n.data as ExpNodeData).atomicId);
+        const atomicId = (n.data as ExpNodeData).atomicId;
+        // Find the atomic node definition; for ExperimentWrapper look up via experiment_id
+        let def = catalog.find(c => c.id === atomicId);
+        if (!def && atomicId === "ExperimentWrapper") {
+          // Build a minimal def so the handles render correctly
+          def = {
+            id: "ExperimentWrapper", name: (n.data as ExpNodeData).label, category: "Experiments",
+            description: "",
+            inputs:  [{ name: "upstream", type: "any",  required: false }],
+            outputs: [{ name: "result",   type: "json" }],
+            params_schema: { type: "object", properties: {
+              experiment_id: { type: "string", title: "Experiment ID" },
+              corpus_id:     { type: "string", title: "Corpus ID" },
+            }},
+          };
+        }
+        const rawPos = (n.position as { x?: number; y?: number } | undefined) ?? { x: 80, y: 80 };
         return {
           ...n, type: "expNode",
-          data: { ...n.data as ExpNodeData, inputs: def?.inputs ?? [], outputs: def?.outputs ?? [], params_schema: def?.params_schema ?? {} },
+          position: { x: snap15e(rawPos.x ?? 80), y: snap15e(rawPos.y ?? 80) },
+          data: { ...n.data as ExpNodeData, darkMode,
+            inputs:       def?.inputs       ?? [],
+            outputs:      def?.outputs      ?? [],
+            params_schema:def?.params_schema ?? {} },
         };
       }));
-      setEdges((d.edges as Edge[]).map(e => ({ ...e, style: { stroke: PORT_CLR.any, strokeWidth: 2 } })));
+
+      // Restore React Flow sourceHandle / targetHandle from stored sourcePort / targetPort
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      setEdges((d.edges as any[]).map(e => {
+        const sp = (e as Record<string, string>).sourcePort;
+        const tp = (e as Record<string, string>).targetPort;
+        const color = sp ? (PORT_CLR[sp] ?? PORT_CLR.any) : PORT_CLR.any;
+        return {
+          ...e,
+          sourceHandle: sp ? `out__${sp}` : undefined,
+          targetHandle: tp ? `in__${tp}`  : undefined,
+          style: { stroke: color, strokeWidth: 2 },
+        };
+      }));
     } catch { /* ignore */ }
-  }, [catalog]);
+  }, [catalog, darkMode]);
+
+  // Keep loadExpRef in sync so the pendingAction effect can call loadExp correctly
+  useEffect(() => { loadExpRef.current = loadExp; }, [loadExp]);
 
   // Save
   const doSave = useCallback(async () => {

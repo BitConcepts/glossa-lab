@@ -8,6 +8,7 @@ import { PipelinesView } from "./components/PipelinesView";
 import { SettingsView } from "./components/SettingsView";
 import { ReportsView } from "./components/ReportsView";
 import { StudyBuilderView } from "./components/StudyBuilderView";
+import { ExperimentBuilderView } from "./components/ExperimentBuilderView";
 import { EntropyDashboard } from "./components/EntropyDashboard";
 import { HypothesisTracker } from "./components/HypothesisTracker";
 import { ResearchNotebook } from "./components/ResearchNotebook";
@@ -27,7 +28,8 @@ type Tab =
   | "status" | "studies" | "builder" | "experiments" | "pipelines"
   | "corpora" | "jobs" | "reports" | "settings"
   | "entropy" | "hypotheses" | "notebooks" | "ai-tools"
-  | "signs" | "timeline" | "citations";
+  | "signs" | "timeline" | "citations"
+  | "exp-builder";
 
 interface NavItem { id: Tab; label: string; icon: string; }
 interface NavSection { title: string; items: NavItem[]; }
@@ -38,12 +40,13 @@ const NAV_SECTIONS: NavSection[] = [
   {
     title: "Workflow",
     items: [
-      { id: "corpora",     label: "Corpora",       icon: "📚" },  // 1. Upload data
-      { id: "experiments", label: "Experiments",   icon: "🧪" },  // 2. Browse analyses
-      { id: "pipelines",   label: "Pipelines",     icon: "⚙️" },  // 3. Browse jobs
-      { id: "builder",     label: "Study Builder", icon: "🔧" },  // 4. Compose + run
-      { id: "reports",     label: "Reports",       icon: "📄" },  // 5. View results
-      { id: "studies",     label: "Studies",       icon: "📋" },  // Manage saved studies
+      { id: "corpora",     label: "Corpora",         icon: "📚" },  // 1. Upload data
+      { id: "experiments", label: "Experiments",     icon: "🧪" },  // 2. Browse analyses
+      { id: "exp-builder", label: "Exp. Builder",   icon: "🔀" },  // 3. Build custom experiments
+      { id: "pipelines",   label: "Pipelines",       icon: "⚙️" },  // 4. Browse async jobs
+      { id: "builder",     label: "Study Builder",   icon: "🔧" },  // 5. Compose + run
+      { id: "reports",     label: "Reports",         icon: "📄" },  // 6. View results
+      { id: "studies",     label: "Studies",         icon: "📋" },  // Manage saved studies
     ],
   },
   {
@@ -254,7 +257,8 @@ function AppContent() {
         marginLeft: SIDEBAR_W,
         flex: 1, minWidth: 0,
         display: "flex", flexDirection: "column",
-        minHeight: "100vh",
+        height: "100vh",
+        overflow: "hidden",
       }}>
 
         {/* Top bar */}
@@ -298,31 +302,44 @@ function AppContent() {
           </button>
         </div>
 
-        {/* Page content */}
-        <main style={{
-          flex: 1,
-          padding: "24px",
-          paddingBottom: effectivePanelH + 32,
-          color: fg,
-          maxWidth: 960,
-        }}>
-          {tab === "status"      && <StatusView />}
-          {tab === "studies"     && <StudiesView />}
-          {tab === "builder"     && <StudyBuilderView />}
-          {tab === "experiments" && <ExperimentsView />}
-          {tab === "pipelines"   && <PipelinesView />}
-          {tab === "corpora"     && <CorporaView />}
-          {tab === "jobs"        && <JobsView />}
-          {tab === "reports"     && <ReportsView />}
-          {tab === "settings"    && <SettingsView />}
-          {tab === "entropy"     && <EntropyDashboard />}
-          {tab === "hypotheses"  && <HypothesisTracker />}
-          {tab === "notebooks"   && <ResearchNotebook />}
-          {tab === "ai-tools"    && <AIToolsView />}
-          {tab === "signs"       && <SignDictionary />}
-          {tab === "timeline"    && <TimelineView onNavigate={(t) => setTab(t as Tab)} />}
-          {tab === "citations"   && <CitationManager />}
-        </main>
+        {/* Page content
+             Canvas views (builder, exp-builder) get the full remaining height,
+             zero padding, no maxWidth, and marginBottom to sit above the bottom panel.
+             All other views get the standard padded, scrollable layout. */}
+        {(() => {
+          const isCanvas = tab === "builder" || tab === "exp-builder";
+          return (
+            <main style={{
+              flex: 1,
+              minHeight: 0,
+              display: "flex", flexDirection: "column",
+              padding:      isCanvas ? 0 : "24px",
+              paddingBottom: isCanvas ? 0 : 32,
+              marginBottom:  effectivePanelH,
+              color: fg,
+              maxWidth: isCanvas ? "none" : 960,
+              overflow: isCanvas ? "hidden" : "auto",
+            }}>
+              {tab === "status"      && <StatusView />}
+              {tab === "studies"     && <StudiesView />}
+              {tab === "builder"     && <StudyBuilderView darkMode={darkMode} />}
+              {tab === "exp-builder" && <ExperimentBuilderView darkMode={darkMode} />}
+              {tab === "experiments" && <ExperimentsView />}
+              {tab === "pipelines"   && <PipelinesView />}
+              {tab === "corpora"     && <CorporaView />}
+              {tab === "jobs"        && <JobsView />}
+              {tab === "reports"     && <ReportsView />}
+              {tab === "settings"    && <SettingsView />}
+              {tab === "entropy"     && <EntropyDashboard />}
+              {tab === "hypotheses"  && <HypothesisTracker />}
+              {tab === "notebooks"   && <ResearchNotebook />}
+              {tab === "ai-tools"    && <AIToolsView />}
+              {tab === "signs"       && <SignDictionary />}
+              {tab === "timeline"    && <TimelineView onNavigate={(t) => setTab(t as Tab)} />}
+              {tab === "citations"   && <CitationManager />}
+            </main>
+          );
+        })()}
       </div>
 
       {/* Command palette */}

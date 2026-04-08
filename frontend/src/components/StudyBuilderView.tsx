@@ -82,16 +82,17 @@ function sbTheme(dark: boolean) {
     inputBdr:   dark ? "#334155" : "#d1d5db",
     btnBg:      dark ? "#1e293b" : "#f3f4f6",
     btnText:    dark ? "#94a3b8" : "#374151",
-    // Canvas (always dark — graph editors are universally dark)
-    canvasBg:   "#0a0f1e",
-    canvasGrid: "#1a2235",
-    edgeDef:    "#334155",
+    // Canvas — light mode uses a light slate; dark stays deep navy
+    canvasBg:   dark ? "#0a0f1e" : "#f1f5f9",
+    canvasGrid: dark ? "#1a2235" : "#e2e8f0",
+    edgeDef:    dark ? "#334155" : "#94a3b8",
     edgeRun:    "#7c3aed",
-    // Nodes (always dark canvas, but border adapts to selection)
-    nodeBg:     "#111827",
-    nodeText:   "#cbd5e1",
-    nodeRef:    "#94a3b8",
-    nodeDesc:   "#64748b",
+    // Nodes adapt to theme
+    nodeBg:     dark ? "#111827" : "#ffffff",
+    nodeText:   dark ? "#cbd5e1" : "#1e293b",
+    nodeRef:    dark ? "#94a3b8" : "#64748b",
+    nodeDesc:   dark ? "#64748b" : "#94a3b8",
+    nodeHndBrd: dark ? "#111827" : "#ffffff",
   };
 }
 
@@ -143,6 +144,16 @@ const GlossaNode = ({ data, id, selected }: NodeProps) => {
   const hdr = nd.color ?? cfg.color;
   const runStatus = nd.runStatus;
   const filledParams = Object.entries(nd.params ?? {}).filter(([, v]) => v !== "" && v !== undefined).length;
+  // Theme-aware node colors: passed via data.darkMode (set when loading/creating nodes)
+  const isDark = (nd as Record<string, unknown>).darkMode !== false;
+  const nodeBg    = isDark ? "#111827" : "#ffffff";
+  const nodeText  = isDark ? "#cbd5e1" : "#1e293b";
+  const nodeRef   = isDark ? "#94a3b8" : "#64748b";
+  const nodeDesc  = isDark ? "#64748b" : "#94a3b8";
+  const hndBrd    = isDark ? "#111827" : "#ffffff";
+  const shadow    = isDark
+    ? (selected ? `0 0 0 2px #60a5fa40, 0 4px 20px rgba(0,0,0,0.6)` : "0 2px 12px rgba(0,0,0,0.5)")
+    : (selected ? `0 0 0 2px #60a5fa60, 0 4px 12px rgba(0,0,0,0.15)` : "0 1px 6px rgba(0,0,0,0.12)");
 
   const onDelete = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -152,14 +163,14 @@ const GlossaNode = ({ data, id, selected }: NodeProps) => {
 
   return (
     <div style={{
-      background: "#111827",
+      background: nodeBg,
       border: `2px solid ${selected ? "#60a5fa" : hdr + "66"}`,
       borderRadius: 8, minWidth: 155, maxWidth: 230,
-      boxShadow: selected ? `0 0 0 2px #60a5fa40, 0 4px 20px rgba(0,0,0,0.6)` : "0 2px 12px rgba(0,0,0,0.5)",
+      boxShadow: shadow,
       fontFamily: "system-ui, sans-serif",
     }}>
       <Handle type="target" position={Position.Left}
-        style={{ width: 11, height: 11, background: hdr, border: "2px solid #111827", left: -6 }} />
+        style={{ width: 11, height: 11, background: hdr, border: `2px solid ${hndBrd}`, left: -6 }} />
 
       {/* Header */}
       <div style={{ background: hdr, borderRadius: "6px 6px 0 0", padding: "6px 8px", display: "flex", alignItems: "center", gap: 5 }}>
@@ -174,12 +185,12 @@ const GlossaNode = ({ data, id, selected }: NodeProps) => {
       </div>
 
       {/* Body */}
-      <div style={{ padding: "6px 9px 7px", fontSize: 11, color: "#cbd5e1", lineHeight: 1.45 }}>
+      <div style={{ padding: "6px 9px 7px", fontSize: 11, color: nodeText, lineHeight: 1.45 }}>
         {nd.nodeType === "note" && nd.noteText
-          ? <em style={{ color: "#fbbf24", fontSize: 10 }}>{String(nd.noteText).slice(0, 75)}</em>
+          ? <em style={{ color: "#d97706", fontSize: 10 }}>{String(nd.noteText).slice(0, 75)}</em>
           : nd.refId
-            ? <span style={{ color: "#94a3b8", fontFamily: "monospace", fontSize: 10 }}>{nd.refId.slice(0, 24)}</span>
-            : <span style={{ color: "#64748b", fontSize: 10 }}>{cfg.description.slice(0, 55)}</span>
+            ? <span style={{ color: nodeRef, fontFamily: "monospace", fontSize: 10 }}>{nd.refId.slice(0, 24)}</span>
+            : <span style={{ color: nodeDesc, fontSize: 10 }}>{cfg.description.slice(0, 55)}</span>
         }
         {(filledParams > 0 || (runStatus && runStatus !== "idle")) && (
           <div style={{ marginTop: 5, display: "flex", gap: 4, flexWrap: "wrap", alignItems: "center" }}>
@@ -198,7 +209,7 @@ const GlossaNode = ({ data, id, selected }: NodeProps) => {
       </div>
 
       <Handle type="source" position={Position.Right}
-        style={{ width: 11, height: 11, background: hdr, border: "2px solid #111827", right: -6 }} />
+        style={{ width: 11, height: 11, background: hdr, border: `2px solid ${hndBrd}`, right: -6 }} />
     </div>
   );
 };
@@ -422,6 +433,8 @@ const SPECIAL_TYPES: StudyNodeType[] = ["corpus", "rag_query", "ai_analysis", "n
 
 export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
   const th = sbTheme(darkMode);
+  // Shared helper to create node data with darkMode baked in
+  const mkNodeData = useCallback((base: NodeData): NodeData => ({ ...base, darkMode } as NodeData & { darkMode: boolean }), [darkMode]);
   const [experiments, setExperiments] = useState<ExperimentMeta[]>([]);
   const [pipelines, setPipelines]     = useState<CatalogPipeline[]>([]);
   const [studies, setStudies]         = useState<StudyResponse[]>([]);
@@ -480,7 +493,7 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
     setNodes((s.graph.nodes ?? []).map(n => ({
       id: n.id, type: "glossaNode",
       position: n.position ?? { x: 80, y: 80 },
-      data: { label: n.label, nodeType: n.type as StudyNodeType, refId: n.ref_id, params: n.params ?? {}, noteText: n.note_text, color: n.color, runStatus: "idle" } as NodeData,
+      data: { label: n.label, nodeType: n.type as StudyNodeType, refId: n.ref_id, params: n.params ?? {}, noteText: n.note_text, color: n.color, runStatus: "idle", darkMode } as NodeData,
     })));
     setEdges((s.graph.edges ?? []).map(e => ({ id: e.id, source: e.source, target: e.target, reconnectable: true, style: { stroke: "#334155", strokeWidth: 2 } })));
   }, []);
@@ -569,9 +582,9 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
     const desc = nodeType === "experiment" ? (experiments.find(e => e.id === refId)?.description ?? "")
                : nodeType === "pipeline"   ? (pipelines.find(p => p.id === refId)?.description ?? "")
                : NODE_CFG[nodeType]?.description ?? "";
-    setNodes(n => [...n, { id: nextNodeId(), type: "glossaNode", position: pos, data: { label, nodeType, refId, description: desc, params: {}, runStatus: "idle" } as NodeData }]);
+    setNodes(n => [...n, { id: nextNodeId(), type: "glossaNode", position: pos, data: mkNodeData({ label, nodeType, refId, description: desc, params: {}, runStatus: "idle" }) }]);
     draggedRef.current = null;
-  }, [experiments, pipelines]);
+  }, [experiments, pipelines, mkNodeData]);
 
   const onDragOver = (ev: React.DragEvent) => { ev.preventDefault(); ev.dataTransfer.dropEffect = "move"; };
   const onDragStart = useCallback((nt: StudyNodeType, refId: string, label: string) => { draggedRef.current = { nodeType: nt, refId, label }; }, []);
@@ -582,20 +595,28 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
     setSelectedNode(prev => prev?.id === nodeId ? { ...prev, data: { ...prev.data, params: p } } : prev);
   }, []);
 
-  // Context menus — use `any` to satisfy React Flow's overloaded event types
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onNodeCtx = useCallback((ev: any, n: Node) => { ev?.preventDefault?.(); ev?.stopPropagation?.(); setCtxMenu({ x: ev.clientX, y: ev.clientY, type: "node", nodeId: n.id }); setSelectedNode(n as Node<NodeData>); }, []);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onEdgeCtx = useCallback((ev: any, edge: Edge) => { ev?.preventDefault?.(); ev?.stopPropagation?.(); setCtxMenu({ x: ev.clientX, y: ev.clientY, type: "edge", edgeId: edge.id }); }, []);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onPaneCtx = useCallback((ev: any) => { ev?.preventDefault?.(); setCtxMenu({ x: ev.clientX, y: ev.clientY, type: "pane" }); }, []);
+  // Context menus — properly typed handlers
+  const onNodeCtx = useCallback((ev: React.MouseEvent, n: Node) => {
+    ev.preventDefault(); ev.stopPropagation();
+    setCtxMenu({ x: ev.clientX, y: ev.clientY, type: "node", nodeId: n.id });
+    setSelectedNode(n as Node<NodeData>);
+  }, []);
+  const onEdgeCtx = useCallback((ev: React.MouseEvent, edge: Edge) => {
+    ev.preventDefault(); ev.stopPropagation();
+    setCtxMenu({ x: ev.clientX, y: ev.clientY, type: "edge", edgeId: edge.id });
+  }, []);
+  // Pane right-click is handled via direct onContextMenu on the wrapper div (more reliable)
+  const onPaneCtxMenu = useCallback((ev: React.MouseEvent<HTMLDivElement>) => {
+    ev.preventDefault();
+    setCtxMenu({ x: ev.clientX, y: ev.clientY, type: "pane" });
+  }, []);
 
   const addNodeAt = useCallback((nt: StudyNodeType, x: number, y: number) => {
     if (!reactFlowWrapper.current) return;
     const rect = reactFlowWrapper.current.getBoundingClientRect();
     const pos = { x: Math.round((x - rect.left) / 15) * 15, y: Math.round((y - rect.top) / 15) * 15 };
-    setNodes(n => [...n, { id: nextNodeId(), type: "glossaNode", position: pos, data: { label: NODE_CFG[nt].defaultLabel, nodeType: nt, refId: "", params: {}, runStatus: "idle" } as NodeData }]);
-  }, []);
+    setNodes(n => [...n, { id: nextNodeId(), type: "glossaNode", position: pos, data: mkNodeData({ label: NODE_CFG[nt].defaultLabel, nodeType: nt, refId: "", params: {}, runStatus: "idle" }) }]);
+  }, [mkNodeData]);
 
   const nodeCtxItems = useCallback((nodeId: string): CtxItem[] => {
     const nd = nodes.find(n => n.id === nodeId);
@@ -729,32 +750,42 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
       onClose={() => setInspectorOff(true)} onParamChange={onParamChange} />
   ) : null;
 
+  const importStudyRef = useRef<HTMLInputElement>(null);
+  const onImportStudy = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const f = e.target.files?.[0]; if (!f) return;
+    try { const d = JSON.parse(await f.text()); const s = await createStudy({ name: d.name || f.name, description: d.description || "", graph: d.graph }); setStudies(prev => [s, ...prev]); loadStudy(s); }
+    catch { alert("Invalid study file."); }
+    e.target.value = "";
+  }, [loadStudy]);
+
   return (
     <div style={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0, overflow: "hidden" }}>
-      {/* Toolbar — theme-aware */}
-      <div style={{ display: "flex", alignItems: "center", gap: 5, padding: "6px 12px", background: th.panelBg2, borderBottom: `1px solid ${th.border}`, flexShrink: 0, flexWrap: "wrap" }}>
-        <span style={{ fontSize: 12, fontWeight: 700, color: th.text, marginRight: 4 }}>Study Builder</span>
-        {activeStudy && <span style={{ fontSize: 11, color: th.textMuted, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", maxWidth: 220 }}>{activeStudy.name}</span>}
-        {saveMsg && <span style={{ fontSize: 11, color: saveMsg === "Saved" ? "#22c55e" : "#ef4444", fontWeight: 600 }}>{saveMsg}</span>}
+      {/* Toolbar — condensed, single row */}
+      <div style={{ display: "flex", alignItems: "center", gap: 4, padding: "3px 8px", background: th.panelBg2, borderBottom: `1px solid ${th.border}`, flexShrink: 0 }}>
+        <span style={{ fontSize: 11, fontWeight: 700, color: th.text, marginRight: 2, flexShrink: 0 }}>Study Builder</span>
+        {activeStudy && <span style={{ fontSize: 10, color: th.textMuted, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", maxWidth: 180 }}>{activeStudy.name}</span>}
+        {saveMsg && <span style={{ fontSize: 10, color: saveMsg === "Saved" ? "#22c55e" : "#ef4444", fontWeight: 600, flexShrink: 0 }}>{saveMsg}</span>}
         <div style={{ flex: 1 }} />
         <button onClick={async () => { if (!ragReady) { setRagBuilding(true); try { const r = await rebuildRagIndex(); setRagReady(r.ready); } finally { setRagBuilding(false); } } }}
-          title={ragReady ? "RAG ready" : "Build RAG index"}
-          style={{ border: "1px solid", borderRadius: 4, padding: "2px 7px", cursor: ragReady ? "default" : "pointer", fontSize: 10, fontWeight: 600, background: "none",
-            color: ragBuilding ? "#f59e0b" : ragReady ? "#22c55e" : "#334155", borderColor: ragBuilding ? "#f59e0b40" : ragReady ? "#22c55e30" : "#1e293b" }}>
-          {ragBuilding ? "⏳" : ragReady ? "🔍✓" : "🔍 RAG"}
+          title={ragReady ? "RAG ready — click to rebuild" : "Build RAG index"}
+          style={{ border: "1px solid", borderRadius: 4, padding: "2px 6px", cursor: "pointer", fontSize: 9, fontWeight: 600, background: "none",
+            color: ragBuilding ? "#f59e0b" : ragReady ? "#22c55e" : th.textFaint, borderColor: ragBuilding ? "#f59e0b40" : ragReady ? "#22c55e30" : th.border }}>
+          {ragBuilding ? "⏳" : ragReady ? "🔍✓" : "🔍"}
         </button>
         {[
-          { label: summarizing ? "✨…" : "✨ AI", disabled: summarizing || !activeStudy, action: () => void (async () => { setSummarizing(true); setSummary(null); try { setSummary(await summarizeStudy(activeStudy!.id)); } finally { setSummarizing(false); } })() },
-          { label: "✨ Design", disabled: false, action: () => openChat({ contextType: activeStudy ? "study" : "", contextId: activeStudy?.id ?? "", initialPrompt: activeStudy ? `Help me improve "${activeStudy.name}".` : undefined }) },
-          { label: "↓ Export", disabled: !activeStudy, action: exportStudy },
-          { label: running ? "⏳ Running…" : "▶ Run", disabled: running || !activeStudy || !nodes.length, action: () => void doRun(), green: true },
-          { label: saving ? "…" : "💾 Save", disabled: saving || !activeStudy, action: () => void doSave() },
-        ].map(({ label, disabled, action, green }) => (
-          <button key={label} onClick={action} disabled={disabled}
-            style={{ ...tBtn, opacity: disabled ? 0.4 : 1, cursor: disabled ? "not-allowed" : "pointer", color: green ? "#22c55e" : tBtn.color, border: `1px solid ${green ? "#15803d30" : "#1e293b"}` }}>
+          { label: "✨", title: summarizing ? "Summarizing…" : "AI Summary",  disabled: summarizing || !activeStudy, action: () => void (async () => { setSummarizing(true); setSummary(null); try { setSummary(await summarizeStudy(activeStudy!.id)); } finally { setSummarizing(false); } })() },
+          { label: "✨ Design", title: "AI Design", disabled: false, action: () => openChat({ contextType: activeStudy ? "study" : "", contextId: activeStudy?.id ?? "", initialPrompt: activeStudy ? `Help me improve "${activeStudy.name}".` : undefined }) },
+          { label: "↑ Import", title: "Import study from JSON", disabled: false, action: () => importStudyRef.current?.click() },
+          { label: "↓ Export", title: "Export study as JSON", disabled: !activeStudy, action: exportStudy },
+          { label: running ? "⏳" : "▶ Run", title: running ? "Running…" : "Run study", disabled: running || !activeStudy || !nodes.length, action: () => void doRun(), green: true },
+          { label: saving ? "…" : "💾", title: "Save", disabled: saving || !activeStudy, action: () => void doSave() },
+        ].map(({ label, title, disabled, action, green }) => (
+          <button key={label} onClick={action} disabled={disabled} title={title}
+            style={{ ...tBtn, padding: "3px 8px", fontSize: 10, opacity: disabled ? 0.4 : 1, cursor: disabled ? "not-allowed" : "pointer", color: green ? "#22c55e" : th.textMuted, border: `1px solid ${green ? "#15803d30" : th.border}` }}>
             {label}
           </button>
         ))}
+        <input ref={importStudyRef} type="file" accept=".json" style={{ display: "none" }} onChange={onImportStudy} />
       </div>
 
       {/* Main canvas area */}
@@ -762,12 +793,14 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
         {LeftPanel}
         {!leftOff && Divider}
 
-        <div ref={reactFlowWrapper} style={{ flex: 1, minWidth: 0, background: th.canvasBg }} onDrop={onDrop} onDragOver={onDragOver}>
+        <div ref={reactFlowWrapper} style={{ flex: 1, minWidth: 0, background: th.canvasBg }}
+          onDrop={onDrop} onDragOver={onDragOver}
+          onContextMenu={onPaneCtxMenu}>
           {!activeStudy && (
             <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 10, zIndex: 5, pointerEvents: "none" }}>
               <div style={{ fontSize: 44 }}>📐</div>
-              <div style={{ fontSize: 15, color: "#475569", fontWeight: 600 }}>Select or create a study to start</div>
-              <div style={{ fontSize: 12, color: "#334155" }}>Drag nodes from the palette · Right-click canvas to add any node type</div>
+              <div style={{ fontSize: 15, color: th.textMuted, fontWeight: 600 }}>Select or create a study to start</div>
+              <div style={{ fontSize: 12, color: th.textFaint }}>Drag nodes from the palette · Right-click canvas to add any node type</div>
             </div>
           )}
           <ReactFlow
@@ -778,7 +811,6 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
             onNodeClick={onNodeClick} onPaneClick={onPaneClick}
             onNodeContextMenu={onNodeCtx}
             onEdgeContextMenu={onEdgeCtx}
-            onPaneContextMenu={onPaneCtx}
             onReconnectStart={onReconnectStart}
             onReconnect={onReconnect}
             onReconnectEnd={onReconnectEnd}
@@ -803,8 +835,8 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
         )}
       </div>
 
-      {/* Below-canvas panels — theme-aware */}
-      <div style={{ flexShrink: 0, padding: "0 0 4px 0", background: th.panelBg }}>
+      {/* Below-canvas panels — theme-aware, capped height to avoid pushing canvas */}
+      <div style={{ flexShrink: 0, maxHeight: 220, overflow: "auto", background: th.panelBg }}>
         {runError && <div style={{ margin: "5px 0", padding: "7px 12px", background: "#450a0a", border: "1px solid #7f1d1d", borderRadius: 5, fontSize: 12, color: "#fca5a5" }}>{runError}</div>}
 
         {runResult && (

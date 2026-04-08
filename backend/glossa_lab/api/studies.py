@@ -56,10 +56,12 @@ class NodePos(BaseModel):
 
 class StudyNodeIn(BaseModel):
     id: str
-    type: str = "experiment"
+    type: str = "experiment"   # experiment|pipeline|corpus|note|report|hypothesis|rag_query|ai_analysis
     ref_id: str = ""
     label: str = ""
     params: dict[str, Any] = {}
+    note_text: str = ""        # text content for note nodes
+    color: str = ""            # optional custom hex color override
     position: NodePos = NodePos()
 
 
@@ -339,17 +341,19 @@ def _topological_sort(
     return order
 
 
-def _run_node(
+# ── Node type helpers ────────────────────────────────────────────────────────
+
+# Annotation-only node types: just pass through without execution
+_ANNOTATION_TYPES = frozenset({"note", "report", "hypothesis"})
+
+
+def _run_experiment_node(
     node: dict[str, Any],
     upstream_results: dict[str, Any],
 ) -> dict[str, Any]:
-    """Execute a single node synchronously. Returns a result dict."""
-    node_type = node.get("type", "")
+    """Execute an experiment node synchronously (runs in a thread executor)."""
     ref_id = node.get("ref_id", "")
     node_params = node.get("params") or {}
-
-    if node_type != "experiment":
-        return {"status": "skipped", "reason": "pipeline nodes require job submission"}
 
     cls = get_experiment(ref_id)
     if cls is None:
@@ -369,14 +373,168 @@ def _run_node(
         return {"status": "error", "reason": str(exc)}
 
 
+async def _run_pipeline_node(
+    node: dict[str, Any],
+    upstream_results: dict[str, Any],
+    db: Any,
+    timeout: float = 120.0,
+) -> dict[str, Any]:
+    """Submit a pipeline as a background Job and poll until complete.
+
+    Returns the job result if it completes within ``timeout`` seconds,
+    or a ``pending`` status dict if it times out.
+    """
+    import asyncio  # noqa: PLC0415
+
+    ref_id = node.get("ref_id", "")
+    node_params = node.get("params") or {}
+
+    if not ref_id:
+        return {"status": "skipped", "reason": "Pipeline node has no ref_id set"}
+
+    # Merge upstream corpus_id into params when present
+    corpus_id = node_params.get("corpus_id") or (
+        next((r.get("corpus_id") for r in upstream_results.values()
+              if isinstance(r, dict) and r.get("corpus_id")), None)
+    )
+    if corpus_id:
+        node_params = {**node_params, "corpus_id": corpus_id}
+        node_params.setdefault("text_id", corpus_id)  # some pipelines use text_id
+
+    try:
+        job = await db.create_job(
+            name=f"Study: {node.get('label', ref_id)}",
+            pipeline=ref_id,
+            params=node_params,
+            created_at=_now_iso(),
+        )
+        job_id = job["id"]
+    except Exception as exc:  # noqa: BLE001
+        return {"status": "error", "reason": f"Failed to submit pipeline job: {exc}"}
+
+    # Poll for completion
+    deadline = asyncio.get_event_loop().time() + timeout
+    while asyncio.get_event_loop().time() < deadline:
+        await asyncio.sleep(1.5)
+        try:
+            job = await db.get_job(job_id)
+            if job is None:
+                return {"status": "error", "reason": f"Job {job_id} disappeared"}
+            status = job["status"]
+            if status == "completed":
+                result_row = await db.get_result_for_job(job_id)
+                result_data = result_row["data"] if result_row else {}
+                return {"status": "complete", "result": result_data, "job_id": job_id}
+            if status == "failed":
+                result_row = await db.get_result_for_job(job_id)
+                err = (result_row or {}).get("data", {}).get("error", "job failed")
+                return {"status": "error", "reason": err, "job_id": job_id}
+        except Exception:  # noqa: BLE001
+            pass
+
+    return {
+        "status": "pending",
+        "reason": f"Pipeline job {job_id} timed out after {timeout:.0f}s. Re-run study when complete.",
+        "job_id": job_id,
+    }
+
+
+async def _run_rag_node(
+    node: dict[str, Any],
+    upstream_results: dict[str, Any],
+) -> dict[str, Any]:
+    """Query the RAG index using upstream context or a param override."""
+    from glossa_lab.rag import build_index, index_size, query as rag_query  # noqa: PLC0415
+    from glossa_lab.database import get_db  # noqa: PLC0415
+
+    node_params = node.get("params") or {}
+    query_override = str(node_params.get("query_override", "")).strip()
+    top_k = int(node_params.get("top_k", 5))
+
+    # Build query text from upstream results if no override given
+    if not query_override:
+        parts = []
+        for r in upstream_results.values():
+            if isinstance(r, dict):
+                # Pull a compact text summary from upstream result
+                for key in ("interpretation", "winner_kl", "summary", "title"):
+                    if key in r:
+                        parts.append(str(r[key])[:200])
+                        break
+        query_override = " ".join(parts) or node.get("label", "research context")
+
+    # Auto-build index if needed
+    if index_size() == 0:
+        db = get_db()
+        await build_index(db)
+
+    chunks = rag_query(query_override, top_k=top_k)
+    retrieved_text = "\n\n".join(
+        f"[{c['source_type']}:{c['source']}]\n{c['text']}"
+        for c in chunks
+    )
+    return {
+        "status": "complete",
+        "result": {
+            "query": query_override,
+            "chunks": chunks,
+            "retrieved_text": retrieved_text,
+        },
+    }
+
+
+async def _run_ai_analysis_node(
+    node: dict[str, Any],
+    upstream_results: dict[str, Any],
+) -> dict[str, Any]:
+    """Pass upstream results to Glossa AI for interpretation."""
+    from glossa_lab.ai_utils import call_llm  # noqa: PLC0415
+
+    node_params = node.get("params") or {}
+    custom_prompt = str(node_params.get("prompt", "")).strip()
+    include_summary = bool(node_params.get("context_summary", True))
+
+    # Build context from upstream
+    ctx_parts = []
+    for nid, result in upstream_results.items():
+        if isinstance(result, dict):
+            ctx_parts.append(f"From {nid}: {json.dumps(result)[:600]}")
+
+    context = "\n\n".join(ctx_parts) or "(no upstream results)"
+    prompt_text = custom_prompt or "Interpret the following analysis results and provide key findings:"
+
+    system = (
+        "You are Glossa, a computational linguistics research assistant. "
+        "Analyse the provided data and return concise, scientifically grounded findings."
+    )
+    user = f"{prompt_text}\n\n{context}"
+
+    loop = asyncio.get_event_loop()
+    try:
+        response = await loop.run_in_executor(
+            None,
+            lambda: call_llm(
+                [{"role": "system", "content": system}, {"role": "user", "content": user}],
+                max_tokens=800,
+                temperature=0.3,
+            ),
+        )
+        return {"status": "complete", "result": {"analysis": response, "prompt": prompt_text}}
+    except Exception as exc:  # noqa: BLE001
+        return {"status": "error", "reason": f"AI analysis failed: {exc}"}
+
+
 @router.post("/studies/{study_id}/run")
 async def run_study(study_id: str) -> dict[str, Any]:
-    """Execute all experiment nodes in topological order.
+    """Execute all nodes in topological order.
 
-    Passes each completed node’s result to its downstream nodes as
-    ``upstream_results`` in the experiment kwargs.
-
-    Pipeline nodes are skipped (they require a job with a corpus ID).
+    Node type execution model:
+      experiment  → synchronous in-process via ExperimentBase.run()
+      pipeline    → submit Job + poll until complete (timeout=120s)
+      corpus      → passthrough: exposes corpus_id to downstream nodes
+      rag_query   → TF-IDF semantic search against the RAG index
+      ai_analysis → sends upstream results to Glossa AI for interpretation
+      note / report / hypothesis → annotation; skipped with status 'annotation'
     """
     db = get_db()
     if db is None:
@@ -393,37 +551,61 @@ async def run_study(study_id: str) -> dict[str, Any]:
         return {"study_id": study_id, "node_count": 0, "results": {}}
 
     ordered = _topological_sort(nodes, edges)
-
-    # Build successor map for result forwarding
-    successors: dict[str, list[str]] = {n["id"]: [] for n in nodes}
-    for edge in edges:
-        src = edge.get("source", "")
-        if src in successors:
-            successors[src].append(edge.get("target", ""))
-
-    node_results: dict[str, Any] = {}  # node_id → result dict
     loop = asyncio.get_event_loop()
+    node_results: dict[str, Any] = {}
 
     for node in ordered:
         nid = node["id"]
-        # Collect results from all immediate predecessors
+        node_type = node.get("type", "experiment")
+
+        # Collect upstream complete results
         predecessors = [e.get("source", "") for e in edges if e.get("target", "") == nid]
         upstream: dict[str, Any] = {
             pred: node_results[pred].get("result")
             for pred in predecessors
-            if pred in node_results and node_results[pred].get("status") == "complete"
+            if pred in node_results and node_results[pred].get("status") in ("complete", "corpus")
         }
-        node_results[nid] = await loop.run_in_executor(None, _run_node, node, upstream)
 
-    completed = sum(1 for r in node_results.values() if r["status"] == "complete")
-    skipped = sum(1 for r in node_results.values() if r["status"] == "skipped")
-    errors = sum(1 for r in node_results.values() if r["status"] == "error")
+        # Dispatch based on node type
+        if node_type in _ANNOTATION_TYPES:
+            node_results[nid] = {
+                "status": "annotation",
+                "reason": f"{node_type} node — visual annotation only",
+            }
+
+        elif node_type == "corpus":
+            corpus_id = (node.get("params") or {}).get("corpus_id", "")
+            node_results[nid] = {
+                "status": "corpus",
+                "result": {"corpus_id": corpus_id, "label": node.get("label", "")},
+                "reason": "Corpus data-source node — corpus_id forwarded to downstream nodes",
+            }
+
+        elif node_type == "pipeline":
+            node_results[nid] = await _run_pipeline_node(node, upstream, db)
+
+        elif node_type == "rag_query":
+            node_results[nid] = await _run_rag_node(node, upstream)
+
+        elif node_type == "ai_analysis":
+            node_results[nid] = await _run_ai_analysis_node(node, upstream)
+
+        else:  # experiment (default)
+            node_results[nid] = await loop.run_in_executor(
+                None, _run_experiment_node, node, upstream
+            )
+
+    completed   = sum(1 for r in node_results.values() if r["status"] == "complete")
+    skipped     = sum(1 for r in node_results.values() if r["status"] in ("skipped", "pending"))
+    annotations = sum(1 for r in node_results.values() if r["status"] in ("annotation", "corpus"))
+    errors      = sum(1 for r in node_results.values() if r["status"] == "error")
 
     return {
         "study_id": study_id,
         "node_count": len(nodes),
         "completed": completed,
         "skipped": skipped,
+        "annotations": annotations,
         "errors": errors,
         "results": node_results,
     }

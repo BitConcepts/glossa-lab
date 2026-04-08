@@ -22,10 +22,10 @@ class Settings:
     """Application settings with platform-aware defaults."""
 
     # Core
-    host: str = "127.0.0.1"
+    host: str = "*********"
     port: int = 8001
     dev_mode: bool = True
-    log_level: str = "DEBUG"
+    log_level: str = "INFO"   # DEBUG generates massive aiosqlite spam; use GLOSSA_LOG_LEVEL=DEBUG to override
 
     # Paths (set dynamically based on platform and mode)
     config_dir: Path = field(default_factory=lambda: Path("./config"))

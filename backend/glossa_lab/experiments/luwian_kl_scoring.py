@@ -237,20 +237,80 @@ class LuwianKLScoring(_EB):
     category = "Research"
     description = (
         "Compares inscription-length distribution against language profiles "
-        "using KL and JS divergence. Tests whether the Luwian advantage from "
-        "the TXT corpus persists on the larger PDF OCR corpus."
+        "using KL and JS divergence. Accepts any corpus via corpus_id; "
+        "falls back to the ICIT corpus when corpus_id is blank."
     )
     estimated_time = "< 5 sec"
     requires_key = None
     results_file = "reports/luwian_kl_results.json"
     params_schema = {
         "type": "object",
-        "properties": {},
-        "$comment": "Loads icit_extracted_corpus.json automatically and scores against built-in language profiles.",
+        "properties": {
+            "corpus_id": {
+                "type": "string",
+                "title": "Corpus ID",
+                "description": "DB corpus to analyse. Blank = use ICIT extracted corpus.",
+            },
+        },
     }
 
     def run(self, **kwargs) -> dict:  # type: ignore[override]
-        result = run_luwian_kl_scoring(verbose=False)
+        corpus_id: str | None = kwargs.get("corpus_id") or None
+
+        if corpus_id:
+            # Load from the Glossa Lab corpus DB and compute lengths from sequences
+            import asyncio  # noqa: PLC0415
+            from glossa_lab.database import get_db  # noqa: PLC0415
+
+            db = get_db()
+            if db is None:
+                return {"error": "Database not available."}
+            loop = asyncio.get_event_loop()
+            text = loop.run_until_complete(db.get_text(corpus_id))
+            if not text or not text.get("content"):
+                return {"error": f"Corpus '{corpus_id}' not found or has no content."}
+            raw = text["content"]
+            # content is list[list[str]] or list[str]
+            if raw and isinstance(raw[0], list):
+                seqs = raw
+            else:
+                seqs = [raw]  # single sequence treated as one inscription
+            n = len(seqs)
+            if n == 0:
+                return {"error": "Corpus has no sequences."}
+            lengths = [len(s) for s in seqs if len(s) > 0]
+            if not lengths:
+                return {"error": "All sequences are empty."}
+
+            import math  # noqa: PLC0415
+            from collections import Counter  # noqa: PLC0415
+            from glossa_lab.experiments.luwian_kl_scoring import (  # noqa: PLC0415
+                LANGUAGE_PROFILES, kl_divergence, js_divergence,
+            )
+            length_counter = Counter(lengths)
+            observed = {k: v / n for k, v in length_counter.items()}
+            mean_len = sum(lengths) / n
+
+            kl_scores = {lang: round(kl_divergence(observed, prof), 4) for lang, prof in LANGUAGE_PROFILES.items()}
+            js_scores = {lang: round(js_divergence(observed, prof), 4) for lang, prof in LANGUAGE_PROFILES.items()}
+            kl_ranking = sorted(kl_scores.items(), key=lambda x: x[1])
+            js_ranking = sorted(js_scores.items(), key=lambda x: x[1])
+            winner_kl, winner_js = kl_ranking[0][0], js_ranking[0][0]
+            result: dict = {
+                "corpus_id": corpus_id,
+                "corpus_name": text.get("name", corpus_id),
+                "n_inscriptions": n,
+                "mean_length": round(mean_len, 3),
+                "kl_ranking": [{"rank": i+1, "language": lang, "kl_divergence": score} for i, (lang, score) in enumerate(kl_ranking)],
+                "js_ranking": [{"rank": i+1, "language": lang, "js_divergence": score} for i, (lang, score) in enumerate(js_ranking)],
+                "winner_kl": winner_kl, "winner_kl_score": kl_scores[winner_kl],
+                "winner_js": winner_js, "winner_js_score": js_scores[winner_js],
+                "interpretation": f"KL winner: {winner_kl} (KL={kl_scores[winner_kl]:.4f}). JS winner: {winner_js} (JS={js_scores[winner_js]:.4f}).",
+            }
+        else:
+            # Fall back to ICIT corpus (default Indus research)
+            result = run_luwian_kl_scoring(verbose=False)
+
         out = _REPORTS / "luwian_kl_results.json"
         out.write_text(json.dumps(result, indent=2), encoding="utf-8")
         return result

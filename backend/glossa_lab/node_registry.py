@@ -40,12 +40,101 @@ def _schema_from_defaults(defaults: dict[str, Any]) -> dict[str, Any]:
     return {"type": "object", "properties": props}
 
 
+# ── Built-in schemas for non-experiment/pipeline node types ───────────────────────
+
+_BUILTIN_SCHEMAS: dict[str, dict[str, Any]] = {
+    "corpus": {
+        "type": "object",
+        "properties": {
+            "corpus_id": {
+                "type": "string",
+                "title": "Corpus ID",
+                "description": "UUID of the corpus in the Corpora tab. Downstream nodes receive this as corpus_id.",
+            },
+        },
+    },
+    "note": {
+        "type": "object",
+        "properties": {
+            "note_text": {
+                "type": "string",
+                "title": "Note Text",
+                "description": "Annotation text shown on the graph node.",
+            },
+        },
+    },
+    "report": {
+        "type": "object",
+        "properties": {
+            "report_name": {
+                "type": "string",
+                "title": "Report File",
+                "description": "Name of the report file in reports/ (e.g. positional_profile_analysis.json).",
+            },
+        },
+    },
+    "hypothesis": {
+        "type": "object",
+        "properties": {
+            "hypothesis_id": {
+                "type": "string",
+                "title": "Hypothesis ID",
+                "description": "Optional ID of an existing Hypothesis record to link to this node.",
+            },
+            "title": {
+                "type": "string",
+                "title": "Hypothesis Title",
+                "description": "Short title if creating a new hypothesis.",
+            },
+        },
+    },
+    "rag_query": {
+        "type": "object",
+        "properties": {
+            "query_override": {
+                "type": "string",
+                "title": "Query Override",
+                "description": "Custom search query. Leave blank to auto-generate from upstream results.",
+            },
+            "top_k": {
+                "type": "integer",
+                "title": "Top K Results",
+                "default": 5,
+                "minimum": 1,
+                "maximum": 20,
+                "description": "Maximum number of retrieved chunks to pass downstream.",
+            },
+        },
+    },
+    "ai_analysis": {
+        "type": "object",
+        "properties": {
+            "prompt": {
+                "type": "string",
+                "title": "Prompt",
+                "description": "Optional custom instruction to guide the AI analysis. Leave blank for default interpretation.",
+            },
+            "context_summary": {
+                "type": "boolean",
+                "title": "Include Context Summary",
+                "default": True,
+                "description": "Prepend a summary of all upstream results to the AI prompt.",
+            },
+        },
+    },
+}
+
+
 def get_node_params_schema(node_type: str, ref_id: str) -> dict[str, Any] | None:
     """Return the JSON Schema describing a node's run() parameters.
 
     Returns ``None`` if the node type / ref_id is unknown.
     Returns an empty schema dict if the node is known but declares no params.
     """
+    # Built-in node types with fixed schemas
+    if node_type in _BUILTIN_SCHEMAS:
+        return _BUILTIN_SCHEMAS[node_type]
+
     if node_type == "experiment":
         from glossa_lab.experiment_base import get_experiment  # noqa: PLC0415
 

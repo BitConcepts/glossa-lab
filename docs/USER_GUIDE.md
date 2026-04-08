@@ -36,26 +36,46 @@ for any corpus of symbol sequences.
 
 ### Core capabilities
 
-- Upload and manage symbol-sequence corpora
+- Upload and manage symbol-sequence **corpora**
 - Run statistical analysis **experiments** (positional profiles, entropy, Zipf, NWSP, clustering…)
-- Compose experiments into **study graphs** with data-flow edges
-- Run complete studies and inspect results per-node
-- View, filter, and compose **reports** from experiment output
-- Ask **Glossa AI** to interpret results, suggest next steps, or navigate the UI
+- Submit long-running **pipelines** as async background Jobs that integrate into study graphs
+- Compose any asset into a **study graph** with typed data-flow edges and 8 node types
+- **RAG-enhanced AI Chat** that retrieves relevant artifacts before answering
+- View, filter, and compose **reports** into unified PDFs
+- Track **hypotheses**, write **notebooks**, and cite **references**
 
-### Architecture at a glance
+### Complete workflow architecture
 
 ```
-Corpus (symbol sequences)
-    ↓
-Experiment (statistical analysis, parametric)
-    ↓  ↑ upstream_results propagated through graph edges
-Study (DAG of experiments + pipelines, saved to DB)
-    ↓
-Reports (JSON output files, composable)
-    ↓
-AI Chat / Hypothesis Tracker (interpretation layer)
+┌───────────────────────────────────────────────────────────────────┐
+│                      STUDY GRAPH (DAG)                            │
+│                                                                   │
+│ [Corpus]──→[Experiment]──→[Pipeline]──→[RAG Query]──→[AI Analysis]│
+│  📚 pass     🧪 sync       ⚙️ async+     🔍 search    ✨ interpret │
+│ corpus_id    in-process    poll          knowledge    upstream ctx │
+│                                                                   │
+│ [Note] [Report] [Hypothesis]  ← annotation nodes, no execution    │
+└────────────────────────┬──────────────────────────────────────────┘
+                         │ results / reports
+              ┌──────────┴───────────┐
+              │      Reports         │
+              │  (JSON in reports/)  │
+              └──────────┬───────────┘
+                         │
+         ┌───────────────┼───────────────┐
+   [AI Chat]      [Hypotheses]    [Notebooks]
+   + RAG inject    Tracker         Citations
 ```
+
+### Execution model: Experiments vs Pipelines
+
+| Node type | Execution | Result available |
+|-----------|-----------|------------------|
+| **experiment** | Synchronous, in-process | Immediately during Run Study |
+| **pipeline** | Async Job submitted + polled | After job completes (120s timeout) |
+| **rag_query** | TF-IDF search of the index | Immediately during Run Study |
+| **ai_analysis** | Calls Glossa AI with upstream context | Within seconds during Run Study |
+| **corpus / note / report / hypothesis** | Annotation only | Instant passthrough |
 
 ---
 
@@ -90,13 +110,14 @@ The tray icon provides Start / Stop / Restart controls.
 
 ### Sidebar sections
 
-| Section    | Items |
-|------------|-------|
-| Workspace  | Studies · Study Builder · Experiments · Corpora · Reports |
-| Analysis   | Entropy · Signs · Timeline |
-| Research   | Hypotheses · Notebooks · Citations |
-| AI         | AI Tools |
-| System     | Status · Pipelines · Jobs · Settings |
+The navigation follows the deliberate workflow order:
+
+| Section | Items |
+|---------|-------|
+| **Workflow** | Corpora → Experiments → Pipelines → Study Builder → Reports → Studies |
+| **Analysis** | Entropy · Signs · Timeline |
+| **Research** | Hypotheses · Notebooks · Citations · AI Tools |
+| **System** | Status · Jobs · Settings |
 
 ### Header toolbar
 
@@ -283,29 +304,53 @@ flow from upstream nodes to downstream nodes.
 Or use **✨ AI Design** to describe a research goal and have the AI compose a
 study graph automatically.
 
+### Node types in the palette
+
+The palette has four groups:
+- **Data & Analysis**: corpus, rag_query, ai_analysis, note, report, hypothesis
+- **Experiments**: all ExperimentBase subclasses
+- **Pipelines**: all registered pipeline functions
+
+Search by name or filter by group using the pill buttons.
+
 ### Building the graph
 
-1. **Drag** an item from the Palette onto the canvas.
+1. **Drag** an item from the Palette, or **right-click the canvas** to add a node at the cursor.
 2. **Click** a node to select it — the Inspector panel appears on the right.
-3. **Set parameters** in the Inspector. For experiments with configurable params
-   (e.g. `corpus_id`, `min_count`), typed form fields appear.
-4. **Connect nodes** by dragging from one node's handle to another to create
-   a data-flow edge. The upstream node's result is passed to the downstream
-   node as `upstream_results`.
-5. **Save** (💾 button or Ctrl+S equivalent) to persist the graph to the database.
+3. **Set parameters** in the Inspector. Typed form fields appear for each configurable param.
+4. **Connect nodes** by dragging from the **right-side handle** of one node to the **left-side handle** of another.
+5. **Reconnect a connection** by dragging an edge endpoint to a different node handle.
+6. **Delete a connection**: right-click the edge → Delete connection, or select + Delete key.
+7. **Delete a node**: × button on the node, right-click → Delete node, or select + Delete key.
+8. **Save** (💾) to persist the graph. **Run** auto-saves before executing.
+
+### Typical node workflow
+
+```
+[Corpus] ──→ [Experiment] ──→ [Pipeline] ──→ [RAG Query] ──→ [AI Analysis]
+   Set            Set            Set ref        (auto-builds    (interprets
+ corpus_id      exp ref_id    pipeline ref     query from       upstream)
+   param          + params       + params       upstream)
+```
 
 ### Running a study
 
-Click **▶ Run Study**. The backend:
-1. Topologically sorts nodes (Kahn's algorithm)
-2. Executes each experiment node's `run(**params, upstream_results=...)` in order
-3. Passes successful results downstream via edges
-4. Pipeline nodes are skipped (they require async job submission)
+Click **▶ Run**. The backend:
+1. Topologically sorts nodes
+2. For each node in order:
+   - **experiment**: runs `ExperimentBase.run(**params, upstream_results=...)`
+   - **pipeline**: submits a Job and polls until complete (120s timeout)
+   - **corpus**: passes `corpus_id` downstream as a result
+   - **rag_query**: queries the RAG knowledge base with upstream context
+   - **ai_analysis**: sends upstream context to Glossa AI for interpretation
+   - **note/report/hypothesis**: annotation — no execution
+3. Results shown per-node with colored status badges.
 
-Results appear inline below the canvas with per-node status:
-- ✅ **complete** — ran successfully; JSON result shown
-- ⚠ **skipped** — CLI-only experiment or pipeline node
-- ❌ **error** — exception raised; error message shown
+Node status colors:
+- 🟢 **complete** — ran successfully
+- 🔴 **error** — exception or job failure
+- 🟡 **skipped / pending** — CLI-only or job timed out
+- ⬛ **annotation / corpus** — passthrough nodes
 
 ### Inspector — editing node parameters
 
@@ -345,6 +390,55 @@ their own stable IDs, never overwriting user-created studies.
 |--------|--------|
 | **✨ AI** | AI summarizes the current study: abstract, hypothesis, highlights, next steps |
 | **✨ Design** | Opens AI Chat with the study as context; AI suggests experiments and improvements |
+| **↓ Export** | Download the current study as a `.glossa-study.json` file |
+| **↑ Import** (studies panel) | Open a JSON file to import a study into the database |
+| **⎘** (studies panel) | Duplicate a study with one click |
+
+### Study management
+
+- **Create**: click **+** in the studies panel header to open the New Study dialog.
+- **Import**: click **↑** to open a file picker and import a `.glossa-study.json` file.
+- **Export**: click **↓ Export** in the toolbar to download the current study.
+- **Duplicate**: click **⎘** next to any study in the list.
+- **Delete**: click **×** (confirm with a second click).
+- **Dock side**: click **⇄** to move the panel to the other side of the screen.
+- **Collapse**: click **◀** to collapse the panel and get more canvas space.
+
+---
+
+## 7b. RAG (Retrieval-Augmented Generation)
+
+Glossa Lab maintains a semantic knowledge base built from your research artifacts.
+
+### What gets indexed
+
+- All JSON files in `reports/`
+- Hypothesis statements and evidence
+- Notebook content
+- Corpus metadata
+- Experiment descriptions and param documentation
+
+### How to use RAG
+
+**Automatic**: In AI Chat Research or Study mode, the AI automatically retrieves
+relevant chunks before answering. A `=== RETRIEVED RESEARCH ARTIFACTS ===` section
+appears in the context (invisible to you but visible to the AI).
+
+**In Study Builder**: Add a **RAG Query** node (🔍). It runs a semantic search
+using upstream results as the query and passes retrieved chunks to downstream
+**AI Analysis** nodes.
+
+**Rebuild the index**: click the **🔍 RAG** button in the Study Builder toolbar
+(it shows 🔍✓ when ready). Or call `POST /api/v1/rag/index`.
+
+**Query directly**: `POST /api/v1/rag/query` with `{"query": "...", "top_k": 5}`.
+
+### When to rebuild
+
+The index is built automatically on startup. Rebuild after:
+- Running new experiments (new report files)
+- Adding notebooks or hypotheses
+- Uploading new corpora
 
 ---
 
@@ -460,10 +554,13 @@ Click the **✨ bubble** (bottom-right corner) to open the floating AI chat.
 | Mode | What AI knows |
 |------|---------------|
 | **Global** | General Glossa Lab knowledge |
-| **Corpus** | Select a corpus — AI has access to its metadata |
-| **Experiment** | Select an experiment — AI can discuss its results |
-| **Study** | Select a study — AI can discuss its graph and findings |
-| **🔬 Research** | Full Indus research context: sign profiles, formula structure, corpus statistics, next steps |
+| **Corpus** | Corpus metadata + top tokens |
+| **Experiment** | Experiment description and params |
+| **Study** | Study graph + related RAG artifacts (auto-retrieved) |
+| **🔬 Research** | Full Indus decipherment context + sign profiles + LEDGER + RAG-retrieved artifacts |
+
+In Research and Study modes, the AI automatically retrieves semantically relevant
+chunks from the RAG knowledge base and prepends them to the context.
 
 ### Model picker
 

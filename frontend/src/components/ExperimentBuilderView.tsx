@@ -693,14 +693,19 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
         }
       }
     } catch (e) {
-      if (!(e instanceof DOMException && e.name === "AbortError")) {
+      const status = (e instanceof DOMException && e.name === "AbortError") ? "fail" : "fail";
+      if (status === "fail" && !(e instanceof DOMException && e.name === "AbortError")) {
         setRunResult(`Error: ${e instanceof Error ? e.message : "run failed"}`);
       }
-    } finally {
       setActiveRuns(prev => { const n = { ...prev }; delete n[exp.id!]; return n; });
-      window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "exp", running: false, id: exp.id } }));
+      window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "exp", running: false, id: exp.id, status: "fail" } }));
+      return;
     }
-  }, [activeExp, doSave]);
+    setActiveRuns(prev => { const n = { ...prev }; delete n[exp.id!]; return n; });
+    // Determine success from runResult string (set by run_complete handler)
+    const isSuccess = runResult?.startsWith("complete") ?? true;
+    window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "exp", running: false, id: exp.id, status: isSuccess ? "success" : "fail" } }));
+  }, [activeExp, doSave, runResult]);
 
   const stopAll = useCallback(() => {
     Object.values(activeRunsRef.current).forEach(r => r.controller.abort());
@@ -895,6 +900,9 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
           <div style={{ padding: "7px 7px 4px", borderBottom: `1px solid ${th.border}`, flexShrink: 0, height: expsH, overflowY: "auto", boxSizing: "border-box" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 3, marginBottom: 5 }}>
               <span style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: "uppercase", letterSpacing: 0.5, flex: 1 }}>Graph Experiments</span>
+              <button onClick={() => savedExps.filter(e => e.id && !activeRuns[e.id]).forEach(e => void doRun({ id: e.id!, name: e.name, description: e.description ?? "", nodes: [], edges: [] }))}
+                title="Run all experiments in parallel" disabled={savedExps.length === 0 || hasActiveRuns}
+                style={{ ...ebm, color: "#22c55e", borderColor: "#15803d40", opacity: savedExps.length === 0 || hasActiveRuns ? 0.4 : 1 }}>▶▶</button>
               <button onClick={() => setShowNew(true)} title="New graph experiment" style={{ ...ebm }}>+</button>
               <button onClick={() => importRef.current?.click()} title="Import" style={{ ...ebm }}>↑</button>
             </div>
@@ -1038,17 +1046,17 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
               Drag atomic nodes or experiments · Right-click to add
             </div>
           )}
-          {/* Floating run/stop button */}
+          {/* Floating run/stop button — top-center of canvas */}
           {activeExp?.id && nodes.length > 0 && (
-            <div style={{ position: "absolute", bottom: 60, right: 16, zIndex: 20 }}>
+            <div style={{ position: "absolute", top: 12, left: "50%", transform: "translateX(-50%)", zIndex: 20 }}>
               {activeRuns[activeExp.id] ? (
                 <button onClick={() => activeRuns[activeExp.id!]?.controller.abort()} title="Stop run"
-                  style={{ padding: "8px 16px", border: "2px solid #ef4444", borderRadius: 24, background: "#450a0a", color: "#f87171", cursor: "pointer", fontSize: 12, fontWeight: 700, boxShadow: "0 4px 16px rgba(0,0,0,0.5)" }}>
+                  style={{ padding: "6px 16px", border: "2px solid #ef4444", borderRadius: 20, background: "rgba(69,10,10,0.9)", color: "#f87171", cursor: "pointer", fontSize: 12, fontWeight: 700, boxShadow: "0 2px 12px rgba(0,0,0,0.5)", whiteSpace: "nowrap", backdropFilter: "blur(4px)" }}>
                   ⏹ Stop
                 </button>
               ) : (
                 <button onClick={() => void doRun()} title="Run experiment"
-                  style={{ padding: "8px 20px", border: "none", borderRadius: 24, background: "linear-gradient(135deg,#7c3aed,#4f46e5)", color: "#fff", cursor: "pointer", fontSize: 12, fontWeight: 700, boxShadow: "0 4px 16px rgba(0,0,0,0.4)" }}>
+                  style={{ padding: "6px 18px", border: "none", borderRadius: 20, background: "linear-gradient(135deg,#7c3aed,#4f46e5)", color: "#fff", cursor: "pointer", fontSize: 12, fontWeight: 700, boxShadow: "0 2px 12px rgba(0,0,0,0.4)", whiteSpace: "nowrap" }}>
                   ▶ Run
                 </button>
               )}

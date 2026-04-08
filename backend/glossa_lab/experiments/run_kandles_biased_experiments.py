@@ -873,6 +873,25 @@ class KandlesBiasExperiment(_EB):
     estimated_time = "~25 min"
     command = "python -m glossa_lab.experiments.run_kandles_biased_experiments --trials 30"
     results_file = "reports/kandles_biased_results.json"
+    params_schema = {
+        "type": "object",
+        "$comment": "CLI-only experiment. Use the command above; run() raises NotImplementedError.",
+        "properties": {
+            "n_mc_trials": {
+                "type": "integer",
+                "title": "MC Trials",
+                "default": 30,
+                "minimum": 1,
+                "description": "Monte Carlo trials (informational only — passed via CLI flag --trials).",
+            },
+            "use_kandles_bias": {
+                "type": "boolean",
+                "title": "Use Language-Specific Profiles",
+                "default": False,
+                "description": "Use per-language Kandles profiles instead of default Greek mapping.",
+            },
+        },
+    }
 
     def run(self, **kwargs):
         raise NotImplementedError(

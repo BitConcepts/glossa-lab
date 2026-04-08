@@ -236,6 +236,11 @@ class UgariticVsHebrew(_EB):
     description = "Hill-climbing bigram baseline: 6.7% vs HMM (77%) and neural (97%)."
     estimated_time = "~30 sec"
     command = "python -m glossa_lab.experiments.ugaritic_vs_hebrew"
+    params_schema = {
+        "type": "object",
+        "properties": {},
+        "$comment": "Uses built-in Ugaritic Baal Cycle and Old Hebrew corpus. No user params required.",
+    }
 
     def run(self, **kwargs):
         return run_ugaritic_vs_hebrew_benchmark(verbose=False)

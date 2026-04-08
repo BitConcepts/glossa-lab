@@ -1,7 +1,8 @@
 {
   "id": "luwian_kl_scoring",
   "name": "Word-Length KL Scoring (Luwian vs Greek)",
-  "description": "Compares inscription-length distribution against language profiles using KL and JS divergence. Tests whether the Luwian advantage from the TXT corpus persists on the larger PDF OCR corpus.",
+  "description": "Frequency distribution and Zipf-Mandelbrot exponent. Compares sign-frequency distribution against Yadav (2010) parameters.",
+  "auto_migrated": true,
   "nodes": [
     {
       "id": "corpus",
@@ -13,23 +14,33 @@
       },
       "position": {
         "x": 60,
-        "y": 80
+        "y": 100
       }
     },
     {
-      "id": "wrap",
+      "id": "freq",
       "type": "expNode",
       "data": {
-        "atomicId": "ExperimentWrapper",
-        "label": "Word-Length KL Scoring (Luwian vs Greek)",
-        "params": {
-          "experiment_id": "luwian_kl_scoring",
-          "corpus_id": ""
-        }
+        "atomicId": "FreqCounter",
+        "label": "Frequency Counter",
+        "params": {}
       },
       "position": {
-        "x": 320,
-        "y": 80
+        "x": 300,
+        "y": 100
+      }
+    },
+    {
+      "id": "zipf",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ZipfFitter",
+        "label": "Zipf Fitter",
+        "params": {}
+      },
+      "position": {
+        "x": 540,
+        "y": 100
       }
     },
     {
@@ -41,8 +52,8 @@
         "params": {}
       },
       "position": {
-        "x": 570,
-        "y": 80
+        "x": 780,
+        "y": 100
       }
     }
   ],
@@ -50,16 +61,30 @@
     {
       "id": "e1",
       "source": "corpus",
-      "target": "wrap",
+      "target": "freq",
       "sourcePort": "sequences",
-      "targetPort": "upstream"
+      "targetPort": "sequences"
     },
     {
       "id": "e2",
-      "source": "wrap",
+      "source": "freq",
+      "target": "zipf",
+      "sourcePort": "freq_map",
+      "targetPort": "freq_map"
+    },
+    {
+      "id": "e3",
+      "source": "zipf",
       "target": "out",
-      "sourcePort": "result",
-      "targetPort": "data"
+      "sourcePort": "",
+      "targetPort": ""
+    },
+    {
+      "id": "e4",
+      "source": "freq",
+      "target": "out",
+      "sourcePort": "top_10",
+      "targetPort": "top_signs"
     }
   ]
 }

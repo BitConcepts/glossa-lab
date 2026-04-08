@@ -157,6 +157,12 @@ const GlossaNode = ({ data, id, selected }: NodeProps) => {
   const shadow    = isDark
     ? (selected ? `0 0 0 2px #60a5fa40, 0 4px 20px rgba(0,0,0,0.6)` : "0 2px 12px rgba(0,0,0,0.5)")
     : (selected ? `0 0 0 2px #60a5fa60, 0 4px 12px rgba(0,0,0,0.15)` : "0 1px 6px rgba(0,0,0,0.12)");
+  const isRunningNode = runStatus === "running";
+  const nodeBorderColor = isRunningNode ? "#60a5fa" : selected ? "#60a5fa" : hdr + "66";
+  const nodeBorderWidth = isRunningNode ? 3 : 2;
+  const nodeBoxShadow   = isRunningNode
+    ? "0 0 0 3px rgba(96,165,250,0.35), 0 4px 24px rgba(96,165,250,0.3)"
+    : shadow;
 
   const onDelete = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -165,13 +171,15 @@ const GlossaNode = ({ data, id, selected }: NodeProps) => {
   };
 
   return (
-    <div style={{
-      background: nodeBg,
-      border: `2px solid ${selected ? "#60a5fa" : hdr + "66"}`,
-      borderRadius: 8, minWidth: 155, maxWidth: 230,
-      boxShadow: shadow,
-      fontFamily: "system-ui, sans-serif",
-    }}>
+    <div
+      className={isRunningNode ? "glossa-node-running" : undefined}
+      style={{
+        background: nodeBg,
+        border: `${nodeBorderWidth}px solid ${nodeBorderColor}`,
+        borderRadius: 8, minWidth: 155, maxWidth: 230,
+        boxShadow: nodeBoxShadow,
+        fontFamily: "system-ui, sans-serif",
+      }}>
       <Handle type="target" position={Position.Left}
         style={{ width: 11, height: 11, background: hdr, border: `2px solid ${hndBrd}`, left: -6 }} />
 
@@ -474,6 +482,28 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
   const [saving, setSaving]     = useState(false);
   const [saveMsg, setSaveMsg]   = useState<string | null>(null);
 
+  // Elapsed timer — counts up in seconds while a run is in flight
+  const [elapsed, setElapsed] = useState(0);
+  useEffect(() => {
+    if (!running) { setElapsed(0); return; }
+    const t = setInterval(() => setElapsed(s => s + 1), 1000);
+    return () => clearInterval(t);
+  }, [running]);
+
+  // Per-study run result cache — persisted across navigation via localStorage
+  type RunCacheEntry = { completed: number; errors: number; ts: number; nodeCount: number };
+  const [runCache, setRunCache] = useState<Record<string, RunCacheEntry>>(() => {
+    try { return JSON.parse(localStorage.getItem("gsb_run_cache") ?? "{}") as Record<string, RunCacheEntry>; }
+    catch { return {}; }
+  });
+  const saveToRunCache = useCallback((studyId: string, entry: RunCacheEntry) => {
+    setRunCache(prev => {
+      const next = { ...prev, [studyId]: entry };
+      localStorage.setItem("gsb_run_cache", JSON.stringify(next));
+      return next;
+    });
+  }, []);
+
   const [summarizing, setSummarizing] = useState(false);
   const [summary, setSummary]         = useState<AISummaryResult | null>(null);
 
@@ -509,6 +539,9 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
 
   // Auto-arrange fit trigger
   const [fitTrigger, setFitTrigger] = useState(0);
+
+  // Left panel tab: palette vs collaboration
+  const [leftTab, setLeftTab] = useState<"palette" | "collab">("palette");
 
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   const draggedRef = useRef<{ nodeType: StudyNodeType; refId: string; label: string } | null>(null);
@@ -609,21 +642,29 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
   }, [activeStudy, loadStudy]);
 
   // Run
-  const doRun = useCallback(async () => {
-    if (!activeStudy) return;
+  const doRun = useCallback(async (studyOverride?: typeof activeStudy) => {
+    const target = studyOverride ?? activeStudy;
+    if (!target) return;
+    // If running a different study, switch to it first
+    if (studyOverride && studyOverride.id !== activeStudy?.id) loadStudy(studyOverride);
     await doSave();
     setRunning(true); setRunResult(null); setRunError(null);
     setNodes(prev => prev.map(n => ({ ...n, data: { ...n.data, runStatus: "running" } })));
     try {
-      const res = await runStudy(activeStudy.id);
+      const res = await runStudy(target.id);
       setRunResult(res);
+      saveToRunCache(target.id, { completed: res.completed, errors: res.errors, nodeCount: res.node_count, ts: Date.now() });
       setNodes(prev => prev.map(n => {
         const r = res.results[n.id];
         return { ...n, data: { ...n.data, runStatus: (r?.status as NodeData["runStatus"]) ?? "idle" } };
       }));
-    } catch (e) { setRunError(e instanceof Error ? e.message : "Run failed"); setNodes(prev => prev.map(n => ({ ...n, data: { ...n.data, runStatus: "idle" } }))); }
+    } catch (e) {
+      setRunError(e instanceof Error ? e.message : "Run failed");
+      if (target.id) saveToRunCache(target.id, { completed: 0, errors: 1, nodeCount: nodes.length, ts: Date.now() });
+      setNodes(prev => prev.map(n => ({ ...n, data: { ...n.data, runStatus: "idle" } })));
+    }
     finally { setRunning(false); }
-  }, [activeStudy, doSave]);
+  }, [activeStudy, doSave, loadStudy, nodes.length, saveToRunCache]);
 
   // Delete / duplicate / export / import study
   const delStudy = useCallback(async (id: string, e: React.MouseEvent) => {
@@ -809,17 +850,31 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
             {studies.map(s => {
               const active   = activeStudy?.id === s.id;
               const modified = active && isDirty;
+              const isRunning = running && active;
+              const cached   = runCache[s.id];
+              const runBadge = isRunning
+                ? { label: `⏳ ${elapsed}s`, color: "#60a5fa" }
+                : cached
+                  ? cached.errors > 0
+                    ? { label: `✗ ${cached.completed}/${cached.nodeCount}`, color: "#ef4444" }
+                    : { label: `✓ ${cached.completed}/${cached.nodeCount}`, color: "#22c55e" }
+                  : null;
               return (
                 <div key={s.id} onClick={() => loadStudy(s)}
                   style={{ display: "flex", alignItems: "center", gap: 3, padding: "5px 6px", borderRadius: 5, marginBottom: 2, cursor: "pointer",
                     background: active ? th.activeBg : "transparent",
-                    border: `1px solid ${active ? "#2563eb40" : "transparent"}` }}>
+                    border: `1px solid ${isRunning ? "#60a5fa40" : active ? "#2563eb40" : "transparent"}` }}>
                   <span style={{ flex: 1, fontSize: 11, fontWeight: active ? 600 : 400, color: active ? th.activeText : th.text, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{s.name}</span>
-                  {modified && (
+                  {modified && !isRunning && (
                     <span title="Unsaved changes" style={{ width: 6, height: 6, borderRadius: "50%", background: "#f59e0b", flexShrink: 0, display: "inline-block", boxShadow: "0 0 4px #f59e0b" }} />
                   )}
-                  <span style={{ fontSize: 9, color: th.textFaint, flexShrink: 0 }}>{s.graph?.nodes?.length ?? 0}</span>
-                  <button onClick={e => { e.stopPropagation(); void dupStudy(s); }} title="Dup" style={{ ...bm, color: th.textMuted, borderColor: th.border }}>⍘</button>
+                  {runBadge && (
+                    <span style={{ fontSize: 8, color: runBadge.color, fontWeight: 700, flexShrink: 0, whiteSpace: "nowrap" }}>{runBadge.label}</span>
+                  )}
+                  {!isRunning && (
+                    <button onClick={e => { e.stopPropagation(); void doRun(s); }} title="Run study" style={{ ...bm, color: "#22c55e", borderColor: "#15803d40", background: "none", padding: "0 3px" }}>▶</button>
+                  )}
+                  <button onClick={e => { e.stopPropagation(); void dupStudy(s); }} title="Dup" style={{ ...bm, color: th.textMuted, borderColor: th.border }}>⥘</button>
                   <button onClick={e => void delStudy(s.id, e)} title={deleteConfirm === s.id ? "Confirm?" : "Delete"}
                     style={{ ...bm, color: deleteConfirm === s.id ? "#f87171" : th.textMuted, background: deleteConfirm === s.id ? "#450a0a" : "none", borderColor: th.border }}>
                     {deleteConfirm === s.id ? "!" : "×"}
@@ -829,7 +884,7 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
             })}
           </div>
 
-          {/* Inner drag divider — resize studies list vs palette */}
+          {/* Inner drag divider — resize studies list vs palette+collab */}
           <div
             onMouseDown={onInnerDivDown}
             title="Drag to resize"
@@ -839,7 +894,19 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
             onMouseLeave={e => (e.currentTarget.style.background = th.border)}
           />
 
-          {/* Palette — minHeight:0 is critical so flex overflow scrollbar works */}
+          {/* Tab bar: Palette | Collab */}
+          <div style={{ display: "flex", borderBottom: `1px solid ${th.border}`, flexShrink: 0 }}>
+            {(["palette", "collab"] as const).map(tab => (
+              <button key={tab} onClick={() => setLeftTab(tab)}
+                style={{ flex: 1, padding: "4px 0", border: "none", background: leftTab === tab ? th.activeBg : "transparent",
+                  color: leftTab === tab ? th.activeText : th.textMuted, fontSize: 10, fontWeight: 600, cursor: "pointer",
+                  borderBottom: `2px solid ${leftTab === tab ? "#2563eb" : "transparent"}` }}>
+                {tab === "collab" ? "💬 Collab" : "🏳️ Palette"}
+              </button>
+            ))}
+          </div>
+
+          {leftTab === "palette" && (
           <div style={{ flex: 1, overflowY: "auto", minHeight: 0, padding: "7px 7px" }}>
             <div style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 5 }}>Palette</div>
             <input value={palSearch} onChange={e => setPalSearch(e.target.value)} placeholder="Search…"
@@ -878,13 +945,18 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
             )}
           </div>
 
-          {/* Collaboration panel — embedded at bottom of left panel, starts collapsed */}
-          <CollaborationPanel
-            studyId={activeStudy?.id ?? null}
-            studyName={activeStudy?.name}
-            darkMode={darkMode}
-            initialCollapsed
-          />
+          )}
+
+          {leftTab === "collab" && (
+            <div style={{ flex: 1, overflowY: "auto", minHeight: 0 }}>
+              <CollaborationPanel
+                studyId={activeStudy?.id ?? null}
+                studyName={activeStudy?.name}
+                darkMode={darkMode}
+                initialCollapsed={false}
+              />
+            </div>
+          )}
         </>
       )}
     </div>
@@ -955,7 +1027,7 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
           { label: saving ? "…" : "💾 Save", title: "Save", disabled: saving || !activeStudy, action: () => void doSave() },
           { label: "⬦ Arrange", title: "Auto-arrange nodes", disabled: !activeStudy || nodes.length === 0, action: doArrange },
           { label: "↩ Revert", title: isDirty ? "Discard changes and revert to last saved" : "No unsaved changes", disabled: !isDirty || !activeStudy, action: doRevert, warn: true },
-          { label: running ? "⏳" : "▶ Run", title: running ? "Running…" : "Run study", disabled: running || !activeStudy || !nodes.length, action: () => void doRun(), green: true },
+          { label: running ? `⏳ ${elapsed}s…` : "▶ Run", title: running ? `Running… (${elapsed}s elapsed)` : "Run study", disabled: running || !activeStudy || !nodes.length, action: () => void doRun(), green: true },
         ].map(({ label, title, disabled, action, green, warn }) => (
           <button key={label} onClick={action} disabled={disabled} title={title}
             style={{ ...tBtn, padding: "3px 8px", fontSize: 10, opacity: disabled ? 0.4 : 1, cursor: disabled ? "not-allowed" : "pointer", color: green ? "#22c55e" : (warn as boolean | undefined) ? "#f59e0b" : th.textMuted, border: `1px solid ${green ? "#15803d30" : (warn as boolean | undefined) ? "#f59e0b40" : th.border}` }}>
@@ -1070,11 +1142,19 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
         <NewStudyDialog onClose={() => setShowNewStudy(false)} onCreated={s => { setStudies(prev => [s, ...prev]); loadStudy(s); }} />
       )}
 
+      {/* CSS animations for running nodes */}
+      <style>{`
+        @keyframes glossaNodePulse {
+          0%, 100% { box-shadow: 0 0 0 3px rgba(96,165,250,0.35), 0 4px 24px rgba(96,165,250,0.3); }
+          50%       { box-shadow: 0 0 0 5px rgba(96,165,250,0.6),  0 4px 32px rgba(96,165,250,0.55); }
+        }
+        .glossa-node-running { animation: glossaNodePulse 1s ease-in-out infinite; }
+      `}</style>
     </div>
   );
 }
 
-// ── Shared styles ─────────────────────────────────────────────────────────────
+// ── Shared styles ─────────────────────────────────────────────────────
 
 // These are module-level fallbacks — actual values are derived from th in the component
 const tBtn: React.CSSProperties = { padding: "4px 10px", border: "1px solid #334155", borderRadius: 5, cursor: "pointer", fontSize: 11, fontWeight: 600, background: "transparent", color: "#94a3b8" };

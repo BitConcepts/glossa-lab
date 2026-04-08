@@ -344,7 +344,8 @@ def _topological_sort(
 # ── Node type helpers ────────────────────────────────────────────────────────
 
 # Annotation-only node types: just pass through without execution
-_ANNOTATION_TYPES = frozenset({"note", "report", "hypothesis"})
+_ANNOTATION_TYPES = frozenset({"note", "hypothesis"})
+# note: "report" is now executable (saves compiled upstream results to file)
 
 
 def _run_experiment_node(
@@ -480,6 +481,43 @@ async def _run_rag_node(
             "chunks": chunks,
             "retrieved_text": retrieved_text,
         },
+    }
+
+
+def _run_report_node(
+    node: dict[str, Any],
+    upstream_results: dict[str, Any],
+) -> dict[str, Any]:
+    """Compile all upstream results and save to a named JSON file in reports/.
+
+    The report_name param controls the filename (defaults to slugified label).
+    Upstream results are stored under a 'results' key alongside metadata.
+    """
+    import json as _json  # noqa: PLC0415
+    import re  # noqa: PLC0415
+    from pathlib import Path  # noqa: PLC0415
+
+    node_params = node.get("params") or {}
+    report_name = str(node_params.get("report_name", "")).strip()
+    if not report_name:
+        label = node.get("label", "study_report")
+        report_name = re.sub(r"[^a-z0-9_]+", "_", label.lower()).strip("_") + ".json"
+    if not report_name.endswith(".json"):
+        report_name += ".json"
+
+    rep_dir = Path(__file__).resolve().parent.parent.parent.parent / "reports"
+    rep_dir.mkdir(exist_ok=True)
+    out_path = rep_dir / report_name
+
+    compiled = {
+        "report": node.get("label", "Study Report"),
+        "generated": _now_iso(),
+        "results": {k: v.get("result") for k, v in upstream_results.items() if isinstance(v, dict)},
+    }
+    out_path.write_text(_json.dumps(compiled, indent=2, default=str), encoding="utf-8")
+    return {
+        "status": "complete",
+        "result": {"saved": True, "path": str(out_path), "filename": report_name},
     }
 
 
@@ -646,6 +684,11 @@ async def run_study(study_id: str) -> dict[str, Any]:
 
         elif node_type == "ai_analysis":
             node_results[nid] = await _run_ai_analysis_node(node, upstream)
+
+        elif node_type == "report":
+            node_results[nid] = await loop.run_in_executor(
+                None, _run_report_node, node, upstream
+            )
 
         else:  # experiment (default)
             node_results[nid] = await loop.run_in_executor(

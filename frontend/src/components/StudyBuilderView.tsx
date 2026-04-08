@@ -114,7 +114,7 @@ const NODE_CFG: Record<StudyNodeType, NodeTypeCfg> = {
   ai_analysis: { color: "#4f46e5", icon: "✨", defaultLabel: "AI Analysis",   executable: true,  description: "Sends upstream context to Glossa AI" },
   compare:     { color: "#ea580c", icon: "↔️", defaultLabel: "Compare",       executable: true,  description: "AI-powered comparison of two upstream results with structured insights" },
   note:        { color: "#d97706", icon: "📝", defaultLabel: "Note",          executable: false, description: "Annotation — no execution" },
-  report:      { color: "#0d9488", icon: "📄", defaultLabel: "Report",        executable: false, description: "Output artifact reference" },
+  report:      { color: "#0d9488", icon: "📄", defaultLabel: "Report",        executable: true,  description: "Compile upstream results and save to a report file" },
   hypothesis:  { color: "#e11d48", icon: "💡", defaultLabel: "Hypothesis",    executable: false, description: "Links to a Hypothesis record" },
 };
 
@@ -464,6 +464,11 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
   const [summarizing, setSummarizing] = useState(false);
   const [summary, setSummary]         = useState<AISummaryResult | null>(null);
 
+  // Dirty tracking — compare canonical save form to last-saved reference
+  const [isDirty, setIsDirty]       = useState(false);
+  const savedGraphJson = useRef<string>("");  // canonical JSON of last-saved state
+  const justLoaded     = useRef(false);       // suppress dirty on initial load
+
   const [palSearch, setPalSearch] = useState("");
   const [palFilter, setPalFilter] = useState<"all" | "experiment" | "pipeline" | "special">("all");
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
@@ -471,13 +476,16 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
   const [inspectorOff, setInspectorOff]  = useState(false);
   const [ctxMenu, setCtxMenu] = useState<{ x: number; y: number; type: "pane" | "node" | "edge"; nodeId?: string; edgeId?: string } | null>(null);
 
-  // Panel layout
-  const [leftW, setLeftW] = useState<number>(() => parseInt(localStorage.getItem("gsb_lw") ?? "238", 10));
+  // Panel layout — outer left-panel width + inner studies/palette split
+  const [leftW, setLeftW] = useState<number>(() => parseInt(localStorage.getItem("gsb_lw")  ?? "238", 10));
+  const [studiesH, setStudiesH] = useState<number>(() => parseInt(localStorage.getItem("gsb_sh") ?? "180", 10));
   const [leftOff, setLeftOff] = useState(false);
   const [dockL, setDockL]    = useState<boolean>(() => localStorage.getItem("gsb_dock") !== "right");
-  const isDragging = useRef(false);
-  const dragStart  = useRef(0);
-  const dragW0     = useRef(leftW);
+  const isDragging     = useRef(false);
+  const dragStart      = useRef(0);
+  const dragW0         = useRef(leftW);
+  const innerDivStart  = useRef(0);
+  const innerDivH0     = useRef(studiesH);
 
   // RAG
   const [ragReady, setRagReady]     = useState(false);
@@ -496,29 +504,58 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
     void getRagStatus().then(s => setRagReady(s.ready)).catch(() => {});
   }, []);
   useEffect(() => { localStorage.setItem("gsb_lw", String(leftW)); }, [leftW]);
+  useEffect(() => { localStorage.setItem("gsb_sh", String(studiesH)); }, [studiesH]);
   useEffect(() => { localStorage.setItem("gsb_dock", dockL ? "left" : "right"); }, [dockL]);
 
-  // Draft auto-save
-  // isDirty: tracks whether current canvas has unsaved changes (also stored as localStorage draft)
-  const [, setIsDirty] = useState(false);
-  useEffect(() => {
-    if (!activeStudy || nodes.length === 0) return;
-    const draft = { studyId: activeStudy.id, studyName: activeStudy.name,
-      nodes: nodes.map(n => ({ id: n.id, type: n.data.nodeType, ref_id: n.data.refId, label: n.data.label, params: n.data.params, position: n.position })),
-      edges: edges.map(e => ({ id: e.id, source: e.source, target: e.target })) };
-    localStorage.setItem("glossa_study_draft", JSON.stringify(draft));
-    setIsDirty(true);
-    window.dispatchEvent(new CustomEvent("glossa:dirty", { detail: { builder: "study", dirty: true } }));
-  }, [nodes, edges, activeStudy]);
+  // ── Dirty tracking ──────────────────────────────────────────────────────────
+  // Canonical helper — same field set as doSave so comparisons are valid
+  // (position is included so moving nodes also triggers the dirty flag).
+  const canonNodes = useCallback(() =>
+    nodes.map(n => ({
+      id: n.id, type: n.data.nodeType, ref_id: n.data.refId ?? "",
+      label: n.data.label ?? "", params: n.data.params ?? {},
+      note_text: n.data.noteText ?? "", color: n.data.color ?? "",
+      position: n.position,
+    })), [nodes]);
+  const canonEdges = useCallback(() =>
+    edges.map(e => ({ id: e.id, source: e.source, target: e.target })), [edges]);
 
-  // Load study into graph — snap positions to 15px grid
+  useEffect(() => {
+    // Skip the very first render after loadStudy — the initial node/edge state
+    // reflects the saved graph, not a user change.
+    if (justLoaded.current) { justLoaded.current = false; return; }
+    if (!activeStudy) return;
+    const currentJson = JSON.stringify({ nodes: canonNodes(), edges: canonEdges() });
+    const dirty = currentJson !== savedGraphJson.current;
+    setIsDirty(dirty);
+    if (dirty) {
+      localStorage.setItem("glossa_study_draft", currentJson);
+      window.dispatchEvent(new CustomEvent("glossa:dirty", { detail: { builder: "study", dirty: true } }));
+    } else {
+      localStorage.removeItem("glossa_study_draft");
+      window.dispatchEvent(new CustomEvent("glossa:dirty", { detail: { builder: "study", dirty: false } }));
+    }
+  }, [nodes, edges, activeStudy]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Load study into graph — snap positions to 15px grid and reset dirty state
   const loadStudy = useCallback((s: StudyResponse) => {
-    setActiveStudy(s); setSelectedNode(null); setRunResult(null); setSummary(null); setIsDirty(false);
-    window.dispatchEvent(new CustomEvent("glossa:dirty", { detail: { builder: "study", dirty: false } }));
+    justLoaded.current = true;   // next effect run is the initial load — don't mark dirty
+    // Compute normalised saved-state reference (with snapped positions + default fields)
+    const snNodes = (s.graph.nodes ?? []).map(n => ({
+      id: n.id, type: n.type, ref_id: n.ref_id ?? "",
+      label: n.label ?? "", params: n.params ?? {},
+      note_text: n.note_text ?? "", color: n.color ?? "",
+      position: { x: snap15((n.position?.x ?? 80)), y: snap15((n.position?.y ?? 80)) },
+    }));
+    const snEdges = (s.graph.edges ?? []).map(e => ({ id: e.id, source: e.source, target: e.target }));
+    savedGraphJson.current = JSON.stringify({ nodes: snNodes, edges: snEdges });
+    setIsDirty(false);
     localStorage.removeItem("glossa_study_draft");
+    window.dispatchEvent(new CustomEvent("glossa:dirty", { detail: { builder: "study", dirty: false } }));
+    setActiveStudy(s); setSelectedNode(null); setRunResult(null); setSummary(null);
     setNodes((s.graph.nodes ?? []).map(n => ({
       id: n.id, type: "glossaNode",
-      position: { x: snap15((n.position ?? { x: 80, y: 80 }).x), y: snap15((n.position ?? { x: 80, y: 80 }).y) },
+      position: { x: snap15((n.position?.x ?? 80)), y: snap15((n.position?.y ?? 80)) },
       data: { label: n.label, nodeType: n.type as StudyNodeType, refId: n.ref_id, params: n.params ?? {}, noteText: n.note_text, color: n.color, runStatus: "idle", darkMode } as NodeData,
     })));
     setEdges((s.graph.edges ?? []).map(e => ({ id: e.id, source: e.source, target: e.target, reconnectable: true, style: { stroke: th.edgeDef, strokeWidth: 2 } })));
@@ -534,12 +571,23 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
         edges: edges.map(e => ({ id: e.id, source: e.source, target: e.target })),
       };
       const updated = await updateStudy(activeStudy.id, { graph });
+      // Update the saved-state reference so dirty clears immediately
+      savedGraphJson.current = JSON.stringify({ nodes: canonNodes(), edges: canonEdges() });
+      setIsDirty(false);
+      localStorage.removeItem("glossa_study_draft");
+      window.dispatchEvent(new CustomEvent("glossa:dirty", { detail: { builder: "study", dirty: false } }));
       setActiveStudy(updated);
       setStudies(prev => prev.map(s => s.id === updated.id ? updated : s));
       setSaveMsg("Saved"); setTimeout(() => setSaveMsg(null), 2000);
     } catch { setSaveMsg("Failed"); }
     finally { setSaving(false); }
-  }, [activeStudy, nodes, edges]);
+  }, [activeStudy, nodes, edges, canonNodes, canonEdges]);
+
+  // Revert — discard all unsaved changes and reload last-saved state
+  const doRevert = useCallback(() => {
+    if (!activeStudy) return;
+    loadStudy(activeStudy);  // activeStudy always holds the last-saved graph
+  }, [activeStudy, loadStudy]);
 
   // Run
   const doRun = useCallback(async () => {
@@ -690,13 +738,22 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
     ];
   }, [activeStudy, addNodeAt]);
 
-  // Divider drag
+  // Outer panel divider drag (width)
   const onDividerDown = useCallback((e: React.MouseEvent) => {
     isDragging.current = true; dragStart.current = e.clientX; dragW0.current = leftW;
     const onMove = (me: MouseEvent) => { if (!isDragging.current) return; const dx = dockL ? me.clientX - dragStart.current : dragStart.current - me.clientX; setLeftW(Math.max(160, Math.min(420, dragW0.current + dx))); };
     const onUp   = () => { isDragging.current = false; document.removeEventListener("mousemove", onMove); document.removeEventListener("mouseup", onUp); };
     document.addEventListener("mousemove", onMove); document.addEventListener("mouseup", onUp);
   }, [leftW, dockL]);
+
+  // Inner panel divider drag (studies-list height vs palette)
+  const onInnerDivDown = useCallback((e: React.MouseEvent) => {
+    innerDivStart.current = e.clientY; innerDivH0.current = studiesH;
+    e.preventDefault(); e.stopPropagation();
+    const onMove = (me: MouseEvent) => { setStudiesH(Math.max(60, Math.min(400, innerDivH0.current + me.clientY - innerDivStart.current))); };
+    const onUp   = () => { document.removeEventListener("mousemove", onMove); document.removeEventListener("mouseup", onUp); };
+    document.addEventListener("mousemove", onMove); document.addEventListener("mouseup", onUp);
+  }, [studiesH]);
 
   // Filtered palette
   const fExps  = experiments.filter(e => (palFilter === "all" || palFilter === "experiment") && (!palSearch || e.name.toLowerCase().includes(palSearch.toLowerCase())));
@@ -715,8 +772,8 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
 
       {!leftOff && (
         <>
-          {/* Studies list */}
-          <div style={{ padding: "7px 7px 4px", borderBottom: `1px solid ${th.border}`, flexShrink: 0, maxHeight: 220, overflowY: "auto" }}>
+      {/* Studies list — height controlled by inner resize divider */}
+          <div style={{ padding: "7px 7px 4px", borderBottom: `1px solid ${th.border}`, flexShrink: 0, height: studiesH, overflowY: "auto", boxSizing: "border-box" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 3, marginBottom: 5 }}>
               <span style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: "uppercase", letterSpacing: 0.5, flex: 1 }}>Studies</span>
               <button onClick={() => setShowNewStudy(true)} title="New study" style={{ ...bm, color: th.textMuted, borderColor: th.border }}>+</button>
@@ -725,13 +782,17 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
             </div>
             {studies.length === 0 && <div style={{ fontSize: 10, color: th.textFaint, fontStyle: "italic", padding: "4px 2px" }}>No studies yet. Click + to create one.</div>}
             {studies.map(s => {
-              const active = activeStudy?.id === s.id;
+              const active   = activeStudy?.id === s.id;
+              const modified = active && isDirty;
               return (
                 <div key={s.id} onClick={() => loadStudy(s)}
                   style={{ display: "flex", alignItems: "center", gap: 3, padding: "5px 6px", borderRadius: 5, marginBottom: 2, cursor: "pointer",
                     background: active ? th.activeBg : "transparent",
                     border: `1px solid ${active ? "#2563eb40" : "transparent"}` }}>
                   <span style={{ flex: 1, fontSize: 11, fontWeight: active ? 600 : 400, color: active ? th.activeText : th.text, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{s.name}</span>
+                  {modified && (
+                    <span title="Unsaved changes" style={{ width: 6, height: 6, borderRadius: "50%", background: "#f59e0b", flexShrink: 0, display: "inline-block", boxShadow: "0 0 4px #f59e0b" }} />
+                  )}
                   <span style={{ fontSize: 9, color: th.textFaint, flexShrink: 0 }}>{s.graph?.nodes?.length ?? 0}</span>
                   <button onClick={e => { e.stopPropagation(); void dupStudy(s); }} title="Dup" style={{ ...bm, color: th.textMuted, borderColor: th.border }}>⍘</button>
                   <button onClick={e => void delStudy(s.id, e)} title={deleteConfirm === s.id ? "Confirm?" : "Delete"}
@@ -742,6 +803,16 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
               );
             })}
           </div>
+
+          {/* Inner drag divider — resize studies list vs palette */}
+          <div
+            onMouseDown={onInnerDivDown}
+            title="Drag to resize"
+            style={{ height: 5, cursor: "row-resize", flexShrink: 0, background: th.border,
+              borderTop: `1px solid ${th.borderHov}`, transition: "background 0.1s" }}
+            onMouseEnter={e => (e.currentTarget.style.background = th.borderHov)}
+            onMouseLeave={e => (e.currentTarget.style.background = th.border)}
+          />
 
           {/* Palette — minHeight:0 is critical so flex overflow scrollbar works */}
           <div style={{ flex: 1, overflowY: "auto", minHeight: 0, padding: "7px 7px" }}>
@@ -825,11 +896,12 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
           { label: "✨ Design", title: "AI Design", disabled: false, action: () => openChat({ contextType: activeStudy ? "study" : "", contextId: activeStudy?.id ?? "", initialPrompt: activeStudy ? `Help me improve "${activeStudy.name}".` : undefined }) },
           { label: "↑ Import", title: "Import study from JSON", disabled: false, action: () => importStudyRef.current?.click() },
           { label: "↓ Export", title: "Export study as JSON", disabled: !activeStudy, action: exportStudy },
+          { label: "↩ Revert", title: isDirty ? "Discard changes and revert to last saved" : "No unsaved changes", disabled: !isDirty || !activeStudy, action: doRevert, warn: true },
           { label: running ? "⏳" : "▶ Run", title: running ? "Running…" : "Run study", disabled: running || !activeStudy || !nodes.length, action: () => void doRun(), green: true },
           { label: saving ? "…" : "💾", title: "Save", disabled: saving || !activeStudy, action: () => void doSave() },
-        ].map(({ label, title, disabled, action, green }) => (
+        ].map(({ label, title, disabled, action, green, warn }) => (
           <button key={label} onClick={action} disabled={disabled} title={title}
-            style={{ ...tBtn, padding: "3px 8px", fontSize: 10, opacity: disabled ? 0.4 : 1, cursor: disabled ? "not-allowed" : "pointer", color: green ? "#22c55e" : th.textMuted, border: `1px solid ${green ? "#15803d30" : th.border}` }}>
+            style={{ ...tBtn, padding: "3px 8px", fontSize: 10, opacity: disabled ? 0.4 : 1, cursor: disabled ? "not-allowed" : "pointer", color: green ? "#22c55e" : warn ? "#f59e0b" : th.textMuted, border: `1px solid ${green ? "#15803d30" : warn ? "#f59e0b40" : th.border}` }}>
             {label}
           </button>
         ))}

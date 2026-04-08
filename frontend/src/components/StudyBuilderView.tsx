@@ -606,6 +606,7 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
   // Drop — position at cursor (no arbitrary offset)
   const onDrop = useCallback((ev: React.DragEvent<HTMLDivElement>) => {
     ev.preventDefault();
+    if (!activeStudy) return;  // guard: no project open, ignore drop
     if (!draggedRef.current || !reactFlowWrapper.current) return;
     const rect = reactFlowWrapper.current.getBoundingClientRect();
     const pos = { x: snap15(ev.clientX - rect.left - 8), y: snap15(ev.clientY - rect.top - 8) };
@@ -617,7 +618,10 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
     draggedRef.current = null;
   }, [experiments, pipelines, mkNodeData]);
 
-  const onDragOver = (ev: React.DragEvent) => { ev.preventDefault(); ev.dataTransfer.dropEffect = "move"; };
+  const onDragOver = (ev: React.DragEvent) => {
+    if (!activeStudy) return;  // no drop target when no project
+    ev.preventDefault(); ev.dataTransfer.dropEffect = "move";
+  };
   const onDragStart = useCallback((nt: StudyNodeType, refId: string, label: string) => { draggedRef.current = { nodeType: nt, refId, label }; }, []);
 
   // Param change
@@ -666,7 +670,9 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
     { icon: "↔", label: "Reverse direction", action: () => setEdges(e => e.map(ed => ed.id === edgeId ? { ...ed, source: ed.target, target: ed.source } : ed)) },
   ], []);
 
-  const paneCtxItems = useCallback((x: number, y: number): CtxItem[] => [
+  const paneCtxItems = useCallback((x: number, y: number): CtxItem[] => {
+    if (!activeStudy) return [];  // no add-node menu when no project is open
+    return [
     { icon: "🧪", label: "Add Experiment", action: () => addNodeAt("experiment", x, y) },
     { icon: "⚙️", label: "Add Pipeline", action: () => addNodeAt("pipeline", x, y) },
     { icon: "📚", label: "Add Corpus", action: () => addNodeAt("corpus", x, y) },
@@ -680,8 +686,9 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
     { icon: "↔️", label: "Add Compare", action: () => addNodeAt("compare", x, y) },
     { divider: true },
     { icon: "⊞", label: "Select all", action: () => setNodes(n => n.map(node => ({ ...node, selected: true }))) },
-    { icon: "🗑", label: "Clear canvas", danger: true, action: () => { setNodes([]); setEdges([]); setSelectedNode(null); } },
-  ], [addNodeAt]);
+    { icon: "✖", label: "Clear canvas", danger: true, action: () => { setNodes([]); setEdges([]); setSelectedNode(null); } },
+    ];
+  }, [activeStudy, addNodeAt]);
 
   // Divider drag
   const onDividerDown = useCallback((e: React.MouseEvent) => {

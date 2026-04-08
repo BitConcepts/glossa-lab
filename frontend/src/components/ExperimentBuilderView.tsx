@@ -373,10 +373,9 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   const draggedNodeType  = useRef<string | null>(null);
 
-  // pendingAction: parsed from localStorage on mount, executed once catalog is ready
+  // pendingAction: parsed from localStorage on mount.
+  // Execution is deferred until AFTER loadExp is defined and catalog is populated.
   const [pendingAction, setPendingAction] = useState<{ action: string; id?: string } | null>(null);
-  // Stable ref so the pendingAction effect can call loadExp without a forward-reference error
-  const loadExpRef = useRef<(id: string) => Promise<void>>(() => Promise.resolve());
 
   useEffect(() => {
     void getAtomicNodeCatalog().then(setCatalog).catch(() => {});
@@ -384,7 +383,8 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     void listExperiments().then(setExperiments).catch(() => {});
   }, []);
 
-  // Parse pending action from localStorage ONCE on mount
+  // Parse pending action from localStorage ONCE on mount.
+  // "new" is immediate; "load"/"dup" wait for catalog (handled after loadExp below).
   useEffect(() => {
     const pending = localStorage.getItem("glossa_exp_builder_open");
     if (!pending) return;
@@ -392,44 +392,15 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     try {
       const parsed = JSON.parse(pending) as { action: string; id?: string };
       if (parsed.action === "new") {
-        // "new" doesn’t need the catalog — open dialog immediately
         setTimeout(() => setShowNew(true), 50);
       } else {
-        // "load" and "dup" need the catalog; defer until catalog is populated
         setPendingAction(parsed);
       }
-    } catch { /* ignore parse errors */ }
+    } catch { /* ignore */ }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);  // run once on mount only
-
-  // Execute pending "load" / "dup" action AFTER catalog is populated.
-  // Uses loadExpRef to avoid forward-reference TypeScript error.
-  useEffect(() => {
-    if (!pendingAction || catalog.length === 0) return;
-    const { action, id } = pendingAction;
-    setPendingAction(null);
-
-    if (action === "load" && id) {
-      void loadExpRef.current(id);
-    } else if (action === "dup" && id) {
-      const dup = async () => {
-        try {
-          const d = await getGraphExperiment(id);
-          const copy = await createGraphExperiment({
-            ...d, id: undefined as unknown as string, name: `${d.name} (copy)`,
-          });
-          setSavedExps(prev => [
-            { id: copy.id!, name: copy.name, description: copy.description,
-              node_count: copy.nodes.length, edge_count: copy.edges.length },
-            ...prev,
-          ]);
-          void loadExpRef.current(copy.id!);
-        } catch { /* ignore */ }
-      };
-      void dup();
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pendingAction, catalog]);  // loadExpRef is stable; no need in deps
+  }, []);
+  // NOTE: the execution effect for pendingAction is placed AFTER loadExp
+  // so that loadExp can be directly included in its deps (no forward-reference).
 
   // Load saved experiment — snap positions + restore handle IDs from port names
   const snap15e = (n: number) => Math.round(n / 15) * 15;
@@ -483,8 +454,34 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     } catch { /* ignore */ }
   }, [catalog, darkMode]);
 
-  // Keep loadExpRef in sync so the pendingAction effect can call loadExp correctly
-  useEffect(() => { loadExpRef.current = loadExp; }, [loadExp]);
+  // Execute pending "load" / "dup" action AFTER catalog is populated.
+  // loadExp is directly in deps here (no forward-reference because we are AFTER its definition).
+  // This guarantees loadExp closes over the freshly-populated catalog.
+  useEffect(() => {
+    if (!pendingAction || catalog.length === 0) return;
+    const { action, id } = pendingAction;
+    setPendingAction(null);
+
+    if (action === "load" && id) {
+      void loadExp(id);
+    } else if (action === "dup" && id) {
+      const dup = async () => {
+        try {
+          const d = await getGraphExperiment(id);
+          const copy = await createGraphExperiment({
+            ...d, id: undefined as unknown as string, name: `${d.name} (copy)`,
+          });
+          setSavedExps(prev => [
+            { id: copy.id!, name: copy.name, description: copy.description,
+              node_count: copy.nodes.length, edge_count: copy.edges.length },
+            ...prev,
+          ]);
+          void loadExp(copy.id!);
+        } catch { /* ignore */ }
+      };
+      void dup();
+    }
+  }, [pendingAction, catalog, loadExp]);  // loadExp is defined above — no forward-reference
 
   // Save
   const doSave = useCallback(async () => {

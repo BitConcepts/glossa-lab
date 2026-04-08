@@ -9,25 +9,12 @@
       "type": "expNode",
       "data": {
         "atomicId": "CorpusReader",
-        "label": "Corpus (context)",
+        "label": "Load Corpus",
         "params": {}
       },
       "position": {
         "x": 60,
-        "y": 140
-      }
-    },
-    {
-      "id": "freq",
-      "type": "expNode",
-      "data": {
-        "atomicId": "FreqCounter",
-        "label": "Frequency Counter",
-        "params": {}
-      },
-      "position": {
-        "x": 300,
-        "y": 80
+        "y": 100
       }
     },
     {
@@ -40,7 +27,7 @@
       },
       "position": {
         "x": 300,
-        "y": 200
+        "y": 100
       }
     },
     {
@@ -55,8 +42,8 @@
         }
       },
       "position": {
-        "x": 570,
-        "y": 140
+        "x": 560,
+        "y": 100
       }
     },
     {
@@ -68,8 +55,8 @@
         "params": {}
       },
       "position": {
-        "x": 830,
-        "y": 140
+        "x": 820,
+        "y": 100
       }
     }
   ],
@@ -77,26 +64,19 @@
     {
       "id": "e1",
       "source": "corpus",
-      "target": "freq",
-      "sourcePort": "sequences",
-      "targetPort": "sequences"
-    },
-    {
-      "id": "e2",
-      "source": "corpus",
       "target": "profiler",
       "sourcePort": "sequences",
       "targetPort": "sequences"
     },
     {
-      "id": "e3",
+      "id": "e2",
       "source": "profiler",
       "target": "run",
       "sourcePort": "profiles",
       "targetPort": "upstream"
     },
     {
-      "id": "e4",
+      "id": "e3",
       "source": "run",
       "target": "out",
       "sourcePort": "result",

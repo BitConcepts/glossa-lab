@@ -997,3 +997,36 @@ export const runTerminalCommand = (command: string, cwd?: string): Promise<Respo
   });
 
 // listJobs and cancelJob are defined in the Jobs section above
+
+// ── Collaboration Messages ────────────────────────────────────────────────
+
+export interface CollabMessage {
+  id: string;
+  study_id: string;
+  author: string;
+  message: string;
+  pinned: number;   // 0 | 1
+  created_at: string;
+}
+
+export const listCollabMessages = (studyId: string): Promise<CollabMessage[]> =>
+  request("GET", `/studies/${studyId}/messages`);
+
+export const createCollabMessage = (
+  studyId: string,
+  body: { author?: string; message: string }
+): Promise<CollabMessage> =>
+  request("POST", `/studies/${studyId}/messages`, body);
+
+export const updateCollabMessage = (
+  studyId: string,
+  msgId: string,
+  body: { pinned?: number; message?: string; author?: string }
+): Promise<CollabMessage> =>
+  request("PATCH", `/studies/${studyId}/messages/${msgId}`, body);
+
+export const deleteCollabMessage = (
+  studyId: string,
+  msgId: string
+): Promise<{ deleted: boolean; id: string }> =>
+  request("DELETE", `/studies/${studyId}/messages/${msgId}`);

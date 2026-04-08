@@ -483,6 +483,60 @@ async def _run_rag_node(
     }
 
 
+async def _run_compare_node(
+    node: dict[str, Any],
+    upstream_results: dict[str, Any],
+) -> dict[str, Any]:
+    """Compare two upstream results using Glossa AI with a structured template."""
+    from glossa_lab.ai_utils import call_llm  # noqa: PLC0415
+
+    node_params = node.get("params") or {}
+    custom_prompt = str(node_params.get("comparison_prompt", "")).strip()
+    aspects = str(node_params.get("comparison_aspects", "accuracy, patterns, key differences")).strip()
+
+    keys = list(upstream_results.keys())
+    a_key = keys[0] if keys else "A"
+    b_key = keys[1] if len(keys) > 1 else "B"
+    a_val = upstream_results.get(a_key, {})
+    b_val = upstream_results.get(b_key, {})
+
+    system = (
+        "You are a scientific comparator. Analyse two research results and produce a structured comparison. "
+        "Return ONLY valid JSON in this exact format: "
+        '{"summary": "1-2 sentence overall comparison", '
+        '"a_strengths": ["..."], "b_strengths": ["..."], '
+        '"key_differences": ["..."], "recommendation": "which approach to prefer and why", '
+        '"insights": "deeper analytical insight for the research question"}'
+    )
+    prompt = custom_prompt or f"Compare these two research results across: {aspects}"
+    user = (
+        f"{prompt}\n\n"
+        f"Result A ({a_key}):\n{json.dumps(a_val)[:1200]}\n\n"
+        f"Result B ({b_key}):\n{json.dumps(b_val)[:1200]}"
+    )
+
+    loop = asyncio.get_event_loop()
+    try:
+        raw = await loop.run_in_executor(
+            None,
+            lambda: call_llm(
+                [{"role": "system", "content": system}, {"role": "user", "content": user}],
+                json_mode=True, max_tokens=800, temperature=0.3,
+            ),
+        )
+        comparison = json.loads(raw)
+        return {
+            "status": "complete",
+            "result": {
+                "comparison": comparison,
+                "a_key": a_key, "b_key": b_key,
+                "prompt_used": prompt,
+            },
+        }
+    except Exception as exc:  # noqa: BLE001
+        return {"status": "error", "reason": f"Compare failed: {exc}"}
+
+
 async def _run_ai_analysis_node(
     node: dict[str, Any],
     upstream_results: dict[str, Any],
@@ -586,6 +640,9 @@ async def run_study(study_id: str) -> dict[str, Any]:
 
         elif node_type == "rag_query":
             node_results[nid] = await _run_rag_node(node, upstream)
+
+        elif node_type == "compare":
+            node_results[nid] = await _run_compare_node(node, upstream)
 
         elif node_type == "ai_analysis":
             node_results[nid] = await _run_ai_analysis_node(node, upstream)

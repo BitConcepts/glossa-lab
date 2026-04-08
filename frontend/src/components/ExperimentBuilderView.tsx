@@ -263,37 +263,45 @@ function NewExpDialog({ onClose, onCreate }: { onClose: () => void; onCreate: (n
 
 // ── Inspector ─────────────────────────────────────────────────────────────────
 
-function Inspector({ node, onClose, onParamChange }: {
+function Inspector({ node, onClose, onParamChange, darkMode = true }: {
   node: Node<ExpNodeData> | null;
   onClose: () => void;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onParamChange: (nodeId: string, params: Record<string, any>) => void;
+  darkMode?: boolean;
 }) {
   if (!node) return null;
   const nd = node.data;
   const headerColor = (nd.outputs?.[0] ? PORT_CLR[nd.outputs[0].type] : null) ?? "#334155";
   const schema = nd.params_schema?.properties ?? {};
   const params = nd.params ?? {};
+  const iBg    = darkMode ? "#0f172a" : "#f8fafc";
+  const iBdr   = darkMode ? "#1e293b" : "#e2e8f0";
+  const iText  = darkMode ? "#e2e8f0" : "#1e293b";
+  const iMuted = darkMode ? "#64748b" : "#9ca3af";
+  const iInpBg = darkMode ? "#1e293b" : "#ffffff";
+  const iInpClr= darkMode ? "#e2e8f0" : "#1e293b";
+  const iInpBdr= darkMode ? "#334155" : "#d1d5db";
 
   return (
-    <div style={{ width: 240, borderLeft: "1px solid #1e293b", padding: "11px 12px", background: "#090d18", overflowY: "auto", flexShrink: 0 }}>
+    <div style={{ width: 240, borderLeft: `1px solid ${iBdr}`, padding: "11px 12px", background: iBg, overflowY: "auto", flexShrink: 0 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
         <span style={{ fontSize: 12, fontWeight: 700, color: headerColor }}>{nd.label}</span>
-        <button onClick={onClose} style={{ border: "none", background: "none", cursor: "pointer", fontSize: 14, color: "#334155" }}>✕</button>
+        <button onClick={onClose} style={{ border: "none", background: "none", cursor: "pointer", fontSize: 14, color: iMuted }}>✕</button>
       </div>
 
       {/* Port legend */}
       <div style={{ marginBottom: 10, display: "flex", gap: 8, flexWrap: "wrap" }}>
         {nd.inputs.map(p => (
           <span key={p.name} style={{ fontSize: 9, display: "flex", alignItems: "center", gap: 3, color: PORT_CLR[p.type] ?? PORT_CLR.any }}>
-            <span style={{ width: 6, height: 6, borderRadius: 1, background: PORT_CLR[p.type] ?? PORT_CLR.any, display: "inline-block" }} />
+            <span style={{ width: 6, height: 6, borderRadius: "50%", background: PORT_CLR[p.type] ?? PORT_CLR.any, display: "inline-block" }} />
             IN:{p.name}
           </span>
         ))}
         {nd.outputs.map(p => (
           <span key={p.name} style={{ fontSize: 9, display: "flex", alignItems: "center", gap: 3, color: PORT_CLR[p.type] ?? PORT_CLR.any }}>
             OUT:{p.name}
-            <span style={{ width: 6, height: 6, borderRadius: 1, background: PORT_CLR[p.type] ?? PORT_CLR.any, display: "inline-block" }} />
+            <span style={{ width: 6, height: 6, borderRadius: "50%", background: PORT_CLR[p.type] ?? PORT_CLR.any, display: "inline-block" }} />
           </span>
         ))}
       </div>
@@ -301,17 +309,19 @@ function Inspector({ node, onClose, onParamChange }: {
       {/* Params */}
       {Object.keys(schema).length > 0 ? (
         <div>
-          <div style={{ fontSize: 9, fontWeight: 700, color: "#475569", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 8, borderTop: "1px solid #1e293b", paddingTop: 8 }}>Parameters</div>
+          <div style={{ fontSize: 9, fontWeight: 700, color: iMuted, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 8, borderTop: `1px solid ${iBdr}`, paddingTop: 8 }}>Parameters</div>
           {Object.entries(schema).map(([k, def]) => {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const d = def as Record<string, any>;
             const type = d.type as string;
             const label = (d.title as string) ?? k;
-            const iStyle: React.CSSProperties = { width: "100%", boxSizing: "border-box", padding: "4px 7px", border: "1px solid #334155", borderRadius: 4, fontSize: 11, outline: "none", background: "#1e293b", color: "#e2e8f0" };
+            const iStyle: React.CSSProperties = { width: "100%", boxSizing: "border-box", padding: "4px 7px",
+              border: `1px solid ${iInpBdr}`, borderRadius: 4, fontSize: 11, outline: "none",
+              background: iInpBg, color: iInpClr };
             return (
               <div key={k} style={{ marginBottom: 9 }}>
-                <div style={{ fontSize: 11, fontWeight: 600, color: "#cbd5e1", marginBottom: 2 }}>{label}</div>
-                {d.description && <div style={{ fontSize: 10, color: "#64748b", marginBottom: 3 }}>{d.description as string}</div>}
+                <div style={{ fontSize: 11, fontWeight: 600, color: iText, marginBottom: 2 }}>{label}</div>
+                {d.description && <div style={{ fontSize: 10, color: iMuted, marginBottom: 3 }}>{d.description as string}</div>}
                 {type === "boolean"
                   ? <input type="checkbox" checked={!!(params[k])} onChange={e => onParamChange(node.id, { ...params, [k]: e.target.checked })} />
                   : type === "integer" || type === "number"
@@ -321,10 +331,10 @@ function Inspector({ node, onClose, onParamChange }: {
               </div>
             );
           })}
-          <div style={{ fontSize: 9, color: "#1e293b" }}>Saved with experiment.</div>
+          <div style={{ fontSize: 9, color: iMuted }}>Saved with experiment.</div>
         </div>
       ) : (
-        <div style={{ fontSize: 10, color: "#334155", fontStyle: "italic", marginTop: 6 }}>No parameters for this node.</div>
+        <div style={{ fontSize: 10, color: iMuted, fontStyle: "italic", marginTop: 6 }}>No parameters for this node.</div>
       )}
     </div>
   );
@@ -606,8 +616,8 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
             ))}
           </div>
 
-          {/* Atomic + Experiment palette */}
-          <div style={{ flex: 1, overflowY: "auto", padding: "7px 8px" }}>
+          {/* Atomic + Experiment palette — minHeight:0 enables overflow scroll */}
+          <div style={{ flex: 1, overflowY: "auto", minHeight: 0, padding: "7px 8px" }}>
             <div style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 5 }}>Node Palette</div>
             <input value={palSearch} onChange={e => setPalSearch(e.target.value)} placeholder="Search nodes…"
               style={{ width: "100%", boxSizing: "border-box", padding: "4px 7px", fontSize: 10, border: `1px solid ${th.inputBdr}`, borderRadius: 5, marginBottom: 6, outline: "none", background: th.inputBg, color: th.inputText }} />
@@ -653,9 +663,16 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
           onDrop={onDrop} onDragOver={onDragOver} onContextMenu={onPaneCtxMenu}>
           {!activeExp && (
             <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 10, zIndex: 5, pointerEvents: "none" }}>
-              <div style={{ fontSize: 44 }}>🔀</div>
-              <div style={{ fontSize: 15, color: th.textMuted, fontWeight: 600 }}>Create or select a graph experiment</div>
-              <div style={{ fontSize: 12, color: th.textFaint }}>Click ＋ New · Drag nodes onto canvas · Wire typed ports together</div>
+              <div style={{ fontSize: 40 }}>🔀</div>
+              <div style={{ fontSize: 14, color: th.textMuted, fontWeight: 600 }}>Create or select a graph experiment</div>
+              <div style={{ fontSize: 11, color: th.textFaint }}>Use the panel on the left</div>
+            </div>
+          )}
+          {activeExp && nodes.length === 0 && (
+            <div style={{ position: "absolute", bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 5, pointerEvents: "none",
+              background: th.panelBg2, border: `1px solid ${th.border}`, borderRadius: 8, padding: "8px 16px",
+              fontSize: 12, color: th.textMuted, textAlign: "center", whiteSpace: "nowrap", boxShadow: "0 2px 12px rgba(0,0,0,0.15)" }}>
+              Drag atomic nodes or experiments · Right-click to add
             </div>
           )}
           <ReactFlow
@@ -681,7 +698,7 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
 
         {/* Right Inspector */}
         {!inspectorOff && selectedNode && (
-          <Inspector node={selectedNode} onClose={() => setInspectorOff(true)} onParamChange={onParamChange} />
+          <Inspector node={selectedNode} onClose={() => setInspectorOff(true)} onParamChange={onParamChange} darkMode={darkMode} />
         )}
         {selectedNode && inspectorOff && (
           <button onClick={() => setInspectorOff(false)}

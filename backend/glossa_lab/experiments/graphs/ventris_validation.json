@@ -1,7 +1,8 @@
 {
   "id": "ventris_validation",
   "name": "Ventris Grid Validation (Linear B)",
-  "description": "Ventris affinity vs known Linear B CV grid. F1 for vowel/consonant groups.",
+  "description": "Validates sign-pair affinity clustering against the known Ventris grid. F1 scoring for vowel (row) and consonant (column) groups.",
+  "auto_migrated": true,
   "nodes": [
     {
       "id": "corpus",
@@ -13,23 +14,48 @@
       },
       "position": {
         "x": 60,
+        "y": 160
+      }
+    },
+    {
+      "id": "freq",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FreqCounter",
+        "label": "Frequency Counter",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
         "y": 80
       }
     },
     {
-      "id": "wrap",
+      "id": "profiler",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PositionalProfiler",
+        "label": "Positional Profiler",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
+        "y": 240
+      }
+    },
+    {
+      "id": "run",
       "type": "expNode",
       "data": {
         "atomicId": "ExperimentWrapper",
-        "label": "Ventris Grid Validation (Linear B)",
+        "label": "Run Ventris Validation",
         "params": {
-          "experiment_id": "ventris_validation",
-          "corpus_id": ""
+          "experiment_id": "ventris_validation"
         }
       },
       "position": {
-        "x": 320,
-        "y": 80
+        "x": 570,
+        "y": 160
       }
     },
     {
@@ -41,8 +67,8 @@
         "params": {}
       },
       "position": {
-        "x": 570,
-        "y": 80
+        "x": 830,
+        "y": 160
       }
     }
   ],
@@ -50,16 +76,30 @@
     {
       "id": "e1",
       "source": "corpus",
-      "target": "wrap",
+      "target": "freq",
       "sourcePort": "sequences",
-      "targetPort": "upstream"
+      "targetPort": "sequences"
     },
     {
       "id": "e2",
-      "source": "wrap",
+      "source": "corpus",
+      "target": "profiler",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "profiler",
+      "target": "run",
+      "sourcePort": "profiles",
+      "targetPort": "upstream"
+    },
+    {
+      "id": "e4",
+      "source": "run",
       "target": "out",
-      "sourcePort": "result",
-      "targetPort": "data"
+      "sourcePort": "",
+      "targetPort": ""
     }
   ]
 }

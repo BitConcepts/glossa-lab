@@ -1,7 +1,8 @@
 {
   "id": "indus_structural_atlas",
   "name": "Indus Structural Atlas",
-  "description": "Fuls (2023) structural analysis: entropy, Zipf, NWSP, fingerprint, typology.",
+  "description": "Full Fuls (2023) structural analysis: block entropy (Rao 2009), Zipf-Mandelbrot (Yadav 2010), NWSP positional profiling (Fuls 2013), and symbol clustering. Multi-branch pipeline over the Indus corpus.",
+  "auto_migrated": true,
   "nodes": [
     {
       "id": "corpus",
@@ -13,36 +14,102 @@
       },
       "position": {
         "x": 60,
-        "y": 80
+        "y": 280
       }
     },
     {
-      "id": "wrap",
+      "id": "freq",
       "type": "expNode",
       "data": {
-        "atomicId": "ExperimentWrapper",
-        "label": "Indus Structural Atlas",
-        "params": {
-          "experiment_id": "indus_structural_atlas",
-          "corpus_id": ""
-        }
-      },
-      "position": {
-        "x": 320,
-        "y": 80
-      }
-    },
-    {
-      "id": "out",
-      "type": "expNode",
-      "data": {
-        "atomicId": "PassResult",
-        "label": "Output",
+        "atomicId": "FreqCounter",
+        "label": "Frequency Counter",
         "params": {}
       },
       "position": {
-        "x": 570,
+        "x": 300,
         "y": 80
+      }
+    },
+    {
+      "id": "entropy",
+      "type": "expNode",
+      "data": {
+        "atomicId": "EntropyCalc",
+        "label": "Entropy H1 (Rao 2009)",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
+        "y": 240
+      }
+    },
+    {
+      "id": "profiler",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PositionalProfiler",
+        "label": "NWSP Positional Profiler",
+        "params": {
+          "min_count": 3
+        }
+      },
+      "position": {
+        "x": 300,
+        "y": 420
+      }
+    },
+    {
+      "id": "zipf",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ZipfFitter",
+        "label": "Zipf Fitter (Yadav 2010)",
+        "params": {}
+      },
+      "position": {
+        "x": 560,
+        "y": 80
+      }
+    },
+    {
+      "id": "cluster",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Clusterer",
+        "label": "Symbol Clusterer (NWSP)",
+        "params": {}
+      },
+      "position": {
+        "x": 560,
+        "y": 420
+      }
+    },
+    {
+      "id": "merger",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge Atlas Results",
+        "params": {}
+      },
+      "position": {
+        "x": 820,
+        "y": 240
+      }
+    },
+    {
+      "id": "export",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Atlas",
+        "params": {
+          "filename": "indus_structural_atlas.json"
+        }
+      },
+      "position": {
+        "x": 1080,
+        "y": 240
       }
     }
   ],
@@ -50,15 +117,78 @@
     {
       "id": "e1",
       "source": "corpus",
-      "target": "wrap",
+      "target": "freq",
       "sourcePort": "sequences",
-      "targetPort": "upstream"
+      "targetPort": "sequences"
     },
     {
       "id": "e2",
-      "source": "wrap",
-      "target": "out",
-      "sourcePort": "result",
+      "source": "corpus",
+      "target": "profiler",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "freq",
+      "target": "entropy",
+      "sourcePort": "freq_map",
+      "targetPort": "freq_map"
+    },
+    {
+      "id": "e4",
+      "source": "freq",
+      "target": "zipf",
+      "sourcePort": "freq_map",
+      "targetPort": "freq_map"
+    },
+    {
+      "id": "e5",
+      "source": "profiler",
+      "target": "cluster",
+      "sourcePort": "profiles",
+      "targetPort": "profiles"
+    },
+    {
+      "id": "e6",
+      "source": "entropy",
+      "target": "merger",
+      "sourcePort": "h1_normalized",
+      "targetPort": "entropy_h1"
+    },
+    {
+      "id": "e7",
+      "source": "zipf",
+      "target": "merger",
+      "sourcePort": "zipf_exponent",
+      "targetPort": "zipf_alpha"
+    },
+    {
+      "id": "e8",
+      "source": "profiler",
+      "target": "merger",
+      "sourcePort": "class_summary",
+      "targetPort": "positions"
+    },
+    {
+      "id": "e9",
+      "source": "cluster",
+      "target": "merger",
+      "sourcePort": "clusters",
+      "targetPort": "clusters"
+    },
+    {
+      "id": "e10",
+      "source": "freq",
+      "target": "merger",
+      "sourcePort": "top_10",
+      "targetPort": "freq_top10"
+    },
+    {
+      "id": "e11",
+      "source": "merger",
+      "target": "export",
+      "sourcePort": "json",
       "targetPort": "data"
     }
   ]

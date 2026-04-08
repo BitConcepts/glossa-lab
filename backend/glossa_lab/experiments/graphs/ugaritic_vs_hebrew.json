@@ -1,7 +1,8 @@
 {
   "id": "ugaritic_vs_hebrew",
   "name": "Ugaritic vs Hebrew (Bigram Hill-Climbing)",
-  "description": "Hill-climbing bigram baseline: 6.7% vs HMM (77%) and neural (97%).",
+  "description": "Hill-climbing bigram baseline for Ugaritic\u2192Hebrew decipherment. 6.7% accuracy vs HMM (77%) and neural (97%). Demonstrates the baseline gap.",
+  "auto_migrated": true,
   "nodes": [
     {
       "id": "corpus",
@@ -13,23 +14,35 @@
       },
       "position": {
         "x": 60,
-        "y": 80
+        "y": 100
       }
     },
     {
-      "id": "wrap",
+      "id": "freq",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FreqCounter",
+        "label": "Frequency Counter",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
+        "y": 100
+      }
+    },
+    {
+      "id": "run",
       "type": "expNode",
       "data": {
         "atomicId": "ExperimentWrapper",
-        "label": "Ugaritic vs Hebrew (Bigram Hill-Climbing)",
+        "label": "Run Ugaritic vs Hebrew",
         "params": {
-          "experiment_id": "ugaritic_vs_hebrew",
-          "corpus_id": ""
+          "experiment_id": "ugaritic_vs_hebrew"
         }
       },
       "position": {
-        "x": 320,
-        "y": 80
+        "x": 560,
+        "y": 100
       }
     },
     {
@@ -41,8 +54,8 @@
         "params": {}
       },
       "position": {
-        "x": 570,
-        "y": 80
+        "x": 820,
+        "y": 100
       }
     }
   ],
@@ -50,16 +63,23 @@
     {
       "id": "e1",
       "source": "corpus",
-      "target": "wrap",
+      "target": "freq",
       "sourcePort": "sequences",
-      "targetPort": "upstream"
+      "targetPort": "sequences"
     },
     {
       "id": "e2",
-      "source": "wrap",
+      "source": "freq",
+      "target": "run",
+      "sourcePort": "freq_map",
+      "targetPort": "upstream"
+    },
+    {
+      "id": "e3",
+      "source": "run",
       "target": "out",
-      "sourcePort": "result",
-      "targetPort": "data"
+      "sourcePort": "",
+      "targetPort": ""
     }
   ]
 }

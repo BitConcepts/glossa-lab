@@ -1,0 +1,65 @@
+{
+  "id": "ugaritic_proper_benchmark",
+  "name": "Ugaritic Proper Benchmark (Anti-Circularity)",
+  "description": "Proper 75/25 split benchmark. Circularity inflation: +76.7pp.",
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CorpusReader",
+        "label": "Load Corpus",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 80
+      }
+    },
+    {
+      "id": "wrap",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ExperimentWrapper",
+        "label": "Ugaritic Proper Benchmark (Anti-Circularity)",
+        "params": {
+          "experiment_id": "ugaritic_proper_benchmark",
+          "corpus_id": ""
+        }
+      },
+      "position": {
+        "x": 320,
+        "y": 80
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PassResult",
+        "label": "Output",
+        "params": {}
+      },
+      "position": {
+        "x": 570,
+        "y": 80
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "wrap",
+      "sourcePort": "sequences",
+      "targetPort": "upstream"
+    },
+    {
+      "id": "e2",
+      "source": "wrap",
+      "target": "out",
+      "sourcePort": "result",
+      "targetPort": "data"
+    }
+  ]
+}

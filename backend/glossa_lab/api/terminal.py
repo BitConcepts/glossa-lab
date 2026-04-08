@@ -29,9 +29,33 @@ from glossa_lab.glossa_shell import GlossaShell
 
 router = APIRouter(prefix="/terminal", tags=["terminal"])
 
-_REPO_ROOT = Path(__file__).resolve().parent.parent.parent.parent  # repo root
+_REPO_ROOT   = Path(__file__).resolve().parent.parent.parent.parent  # repo root
 _BACKEND_DIR = _REPO_ROOT / "backend"
-_LOG_FILE = _BACKEND_DIR / "logs" / "backend.log"
+
+
+def _active_log_file() -> Path:
+    """Return the most-recently-written glossa.log we can find.
+
+    Search order (highest precedence first):
+      1. settings.log_dir / glossa.log        — Python logging output (primary)
+      2. {repo_root}/logs / glossa.log         — installed / tray mode
+      3. {backend_dir}/logs / glossa.log       — dev mode launched from backend/
+      4. {backend_dir}/logs / backend.log      — legacy stdout-redirect file
+    """
+    from glossa_lab.config import get_settings  # late import avoids circular dep
+
+    candidates = [
+        get_settings().log_dir / "glossa.log",
+        _REPO_ROOT / "logs" / "glossa.log",
+        _BACKEND_DIR / "logs" / "glossa.log",
+        _BACKEND_DIR / "logs" / "backend.log",
+    ]
+    # Pick the largest existing file (most content = most likely the active one)
+    existing = [(c.stat().st_size, c) for c in candidates if c.exists()]
+    if existing:
+        return max(existing)[1]
+    # Nothing exists yet — return the settings path so it auto-picks up when created
+    return candidates[0]
 
 # ── Persistent shell singleton ───────────────────────────────────────────
 # Reusing one GlossaShell means:
@@ -131,44 +155,50 @@ async def run_command(body: RunRequest) -> StreamingResponse:
 @router.get("/log")
 async def get_log(lines: int = 200) -> dict[str, Any]:
     """Return the last N lines of the backend log file."""
-    if not _LOG_FILE.exists():
-        return {"lines": [], "file": str(_LOG_FILE), "exists": False}
+    log_file = _active_log_file()
+    if not log_file.exists():
+        return {"lines": [], "file": str(log_file), "exists": False}
     try:
-        text = _LOG_FILE.read_text(encoding="utf-8", errors="replace")
+        text = log_file.read_text(encoding="utf-8", errors="replace")
         all_lines = text.splitlines()
         tail = all_lines[-lines:] if len(all_lines) > lines else all_lines
         return {
             "lines": tail,
-            "file": str(_LOG_FILE),
+            "file": str(log_file),
             "exists": True,
             "total_lines": len(all_lines),
         }
     except Exception as exc:  # noqa: BLE001
-        return {"lines": [], "file": str(_LOG_FILE), "exists": True, "error": str(exc)}
+        return {"lines": [], "file": str(log_file), "exists": True, "error": str(exc)}
 
 
 async def _tail_log() -> AsyncGenerator[str, None]:
     """Yield new log lines as SSE events, then stream new additions in real time."""
-    # First: send last 100 lines
-    if _LOG_FILE.exists():
+    log_file = _active_log_file()
+
+    # First: send last 100 lines (backfill)
+    if log_file.exists():
         try:
-            text = _LOG_FILE.read_text(encoding="utf-8", errors="replace")
+            text = log_file.read_text(encoding="utf-8", errors="replace")
             for line in text.splitlines()[-100:]:
-                yield f"data: {json.dumps({'text': line, 'backfill': True})}\n\n"
+                if line.strip():
+                    yield f"data: {json.dumps({'text': line, 'backfill': True})}\n\n"
         except Exception:  # noqa: BLE001
             pass
 
-    # Then: watch for new content
-    offset = _LOG_FILE.stat().st_size if _LOG_FILE.exists() else 0
+    # Then: watch for new content; also re-check log file path in case backend restarts
+    offset = log_file.stat().st_size if log_file.exists() else 0
     try:
         while True:
             await asyncio.sleep(0.5)
-            if not _LOG_FILE.exists():
+            # Re-resolve the active log file each iteration (handles rotation / restart)
+            log_file = _active_log_file()
+            if not log_file.exists():
                 continue
-            size = _LOG_FILE.stat().st_size
+            size = log_file.stat().st_size
             if size > offset:
                 try:
-                    with open(str(_LOG_FILE), encoding="utf-8", errors="replace") as f:
+                    with open(str(log_file), encoding="utf-8", errors="replace") as f:
                         f.seek(offset)
                         new_text = f.read()
                     offset = size
@@ -177,6 +207,9 @@ async def _tail_log() -> AsyncGenerator[str, None]:
                             yield f"data: {json.dumps({'text': line, 'backfill': False})}\n\n"
                 except Exception:  # noqa: BLE001
                     pass
+            elif size < offset:
+                # Log was rotated — restart from beginning of new file
+                offset = 0
     except asyncio.CancelledError:
         return
 

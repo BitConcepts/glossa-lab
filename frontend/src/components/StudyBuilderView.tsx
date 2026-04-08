@@ -64,6 +64,7 @@ import {
   type NodeRunStatus,
 } from "../api";
 import { useAIChat } from "../hooks/useAIChat";
+import { CorpusSelector } from "./CorpusSelector";
 
 // ── Theme helpers ────────────────────────────────────────────────────────
 
@@ -285,7 +286,10 @@ const ParamField = ({ fieldKey, def, value, onChange, darkMode = true }: { field
     border: `1px solid ${darkMode ? "#334155" : "#d1d5db"}`, borderRadius: 4, fontSize: 11, outline: "none",
     background: darkMode ? "#1e293b" : "#ffffff", color: darkMode ? "#e2e8f0" : "#1e293b" };
   let ctrl: React.ReactNode;
-  if (type === "boolean") {
+  // corpus_id params always get a corpus dropdown (not a text input)
+  if (type === "corpus_selector" || fieldKey === "corpus_id") {
+    ctrl = <CorpusSelector value={(value as string) ?? ""} onChange={v => onChange(v)} darkMode={darkMode} />;
+  } else if (type === "boolean") {
     ctrl = <div style={{ display: "flex", alignItems: "center", gap: 5, marginTop: 3 }}><input type="checkbox" checked={!!value} onChange={e => onChange(e.target.checked)} style={{ cursor: "pointer", width: 14, height: 14 }} /><span style={{ fontSize: 11, color: "#94a3b8" }}>{value ? "Yes" : "No"}</span></div>;
   } else if (type === "integer" || type === "number") {
     ctrl = <input type="number" value={(value as number) ?? (def.default as number) ?? ""} step={type === "integer" ? 1 : "any"} min={def.minimum as number | undefined} max={def.maximum as number | undefined} onChange={e => onChange(type === "integer" ? (parseInt(e.target.value, 10) || 0) : (parseFloat(e.target.value) || 0))} style={iStyle} />;
@@ -317,7 +321,8 @@ function schemaFromDefaults(defaults: Record<string, any>): Record<string, any> 
 }
 
 const BUILTIN_SCHEMAS: Record<string, Record<string, Record<string, unknown>>> = {
-  corpus:      { corpus_id:       { type: "string", title: "Corpus ID", description: "UUID from the Corpora tab." } },
+  corpus:      { corpus_id:       { type: "corpus_selector", title: "Select Corpus",
+                                    description: "Which corpus to load. Blank = default Indus (ICIT). Connected experiments will receive this corpus automatically." } },
   note:        { note_text:       { type: "string", title: "Note Text", description: "Annotation shown on the node." } },
   report:      { report_name:     { type: "string", title: "Report File", description: "Filename in reports/." } },
   hypothesis:  { title:           { type: "string", title: "Hypothesis Title" },
@@ -559,6 +564,14 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
   const draggedRef = useRef<{ nodeType: StudyNodeType; refId: string; label: string } | null>(null);
   const reconnectOk = useRef(false);
   const { openChat } = useAIChat();
+
+  // On mount: clear any stale draft left from a previous session so the
+  // nav sidebar never shows an incorrect orange dot on startup.
+  useEffect(() => {
+    localStorage.removeItem("glossa_study_draft");
+    window.dispatchEvent(new CustomEvent("glossa:dirty", { detail: { builder: "study", dirty: false } }));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Load
   useEffect(() => {

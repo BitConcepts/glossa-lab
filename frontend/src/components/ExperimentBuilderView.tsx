@@ -15,6 +15,7 @@ import React, {
   useCallback, useEffect, useMemo, useRef, useState,
 } from "react";
 import { autoArrange as autoArrangeNodes } from "../utils/autoArrange";
+import { runGraphExperimentStream } from "../api";
 import {
   ReactFlow,
   addEdge,
@@ -43,7 +44,6 @@ import {
   createGraphExperiment,
   updateGraphExperiment,
   deleteGraphExperiment,
-  runGraphExperiment,
   PORT_COLORS,
   type AtomicNodeDef,
   type AtomicPort,
@@ -473,13 +473,29 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   // UI
   const [saving, setSaving]     = useState(false);
   const [saveMsg, setSaveMsg]   = useState<string | null>(null);
-  const [running, setRunning]   = useState(false);
   const [runResult, setRunResult] = useState<string | null>(null);
   const [showNew, setShowNew]   = useState(false);
   const [palSearch, setPalSearch] = useState("");
   const [ctxMenu, setCtxMenu]   = useState<{ x: number; y: number; type: "pane" | "node"; nodeId?: string } | null>(null);
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
   const [fitTrigger, setFitTrigger] = useState(0);
+
+  // Multi-run state
+  type ExpRun = { controller: AbortController; startTime: number; currentLabel: string; idx: number; total: number };
+  const [activeRuns, setActiveRuns] = useState<Record<string, ExpRun>>({});
+  const activeRunsRef = useRef<Record<string, ExpRun>>({});
+  useEffect(() => { activeRunsRef.current = activeRuns; }, [activeRuns]);
+  const [, setTick] = useState(0);
+  const hasActiveRuns = Object.keys(activeRuns).length > 0;
+  useEffect(() => {
+    if (!hasActiveRuns) return;
+    const t = setInterval(() => setTick(n => n + 1), 1000);
+    return () => clearInterval(t);
+  }, [hasActiveRuns]);
+  const getElapsed = (id: string) => {
+    const r = activeRuns[id]; if (!r) return 0;
+    return Math.floor((Date.now() - r.startTime) / 1000);
+  };
 
   // Panel layout — outer left-panel width + inner experiments/palette split
   const [leftW,   setLeftW]   = useState<number>(() => parseInt(localStorage.getItem("geb_lw")  ?? "250", 10));
@@ -642,22 +658,54 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     finally { setSaving(false); }
   }, [activeExp, nodes, edges]);
 
-  // Run preview
-  const doRun = useCallback(async () => {
-    if (!activeExp?.id) return;
+  // Run (streaming, multiple concurrent)
+  const doRun = useCallback(async (targetExp?: typeof activeExp) => {
+    const exp = targetExp ?? activeExp;
+    if (!exp?.id) return;
+    if (activeRunsRef.current[exp.id]) return;  // already running
     await doSave();
-    setRunning(true); setRunResult(null);
-    setNodes(prev => prev.map(n => ({ ...n, data: { ...n.data, runStatus: "running" } as ExpNodeData })));
+    const controller = new AbortController();
+    setActiveRuns(prev => ({ ...prev, [exp.id!]: { controller, startTime: Date.now(), currentLabel: "", idx: 0, total: 0 } }));
+    setRunResult(null);
+    window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "exp", running: true, id: exp.id, name: exp.name } }));
     try {
-      const r = await runGraphExperiment(activeExp.id);
-      const summary = Object.keys(r.result || {}).slice(0, 3).join(", ");
-      setRunResult(`${r.status}: ${summary}`);
-      setNodes(prev => prev.map(n => ({ ...n, data: { ...n.data, runStatus: "complete", runResult: summary } as ExpNodeData })));
+      for await (const ev of runGraphExperimentStream(exp.id!, {}, controller.signal)) {
+        if (ev.event === "started") {
+          setActiveRuns(prev => ({ ...prev, [exp.id!]: { ...prev[exp.id!], total: ev.node_count ?? 0 } }));
+        } else if (ev.event === "node_start" && ev.nid) {
+          setActiveRuns(prev => ({ ...prev, [exp.id!]: { ...prev[exp.id!], currentLabel: ev.label ?? "", idx: ev.idx ?? 0, total: ev.total ?? 0 } }));
+          if (activeExp?.id === exp.id) {
+            setNodes(prev => prev.map(n => ({ ...n, data: { ...n.data, runStatus: n.id === ev.nid ? "running" : (n.data.runStatus === "running" ? "idle" : n.data.runStatus) } as ExpNodeData })));
+          }
+        } else if (ev.event === "node_end" && ev.nid) {
+          const st = ev.status === "error" ? "error" : "complete";
+          if (activeExp?.id === exp.id) {
+            setNodes(prev => prev.map(n => n.id === ev.nid ? { ...n, data: { ...n.data, runStatus: st } as ExpNodeData } : n));
+          }
+        } else if (ev.event === "run_complete") {
+          const keys = Object.keys(ev.result || {}).slice(0, 4).join(", ");
+          setRunResult(`complete: ${keys || "done"}`);
+        } else if (ev.event === "run_error") {
+          setRunResult(`Error: ${ev.message ?? "run failed"}`);
+          if (activeExp?.id === exp.id) {
+            setNodes(prev => prev.map(n => ({ ...n, data: { ...n.data, runStatus: "error" } as ExpNodeData })));
+          }
+        }
+      }
     } catch (e) {
-      setRunResult(`Error: ${e instanceof Error ? e.message : "run failed"}`);
-      setNodes(prev => prev.map(n => ({ ...n, data: { ...n.data, runStatus: "error" } as ExpNodeData })));
-    } finally { setRunning(false); }
+      if (!(e instanceof DOMException && e.name === "AbortError")) {
+        setRunResult(`Error: ${e instanceof Error ? e.message : "run failed"}`);
+      }
+    } finally {
+      setActiveRuns(prev => { const n = { ...prev }; delete n[exp.id!]; return n; });
+      window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "exp", running: false, id: exp.id } }));
+    }
   }, [activeExp, doSave]);
+
+  const stopAll = useCallback(() => {
+    Object.values(activeRunsRef.current).forEach(r => r.controller.abort());
+  }, []);
+
 
   // Delete saved experiment
   const doDeleteExp = useCallback(async (id: string) => {
@@ -853,13 +901,20 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
             {savedExps.length === 0 && <div style={{ fontSize: 10, color: th.textFaint, fontStyle: "italic", padding: "4px 2px" }}>No graph experiments yet.</div>}
             {savedExps.map(e => {
               const active = activeExp?.id === e.id;
+              const isRunning = !!activeRuns[e.id];
+              const run = activeRuns[e.id];
               return (
                 <div key={e.id} onClick={() => void loadExp(e.id)}
                   style={{ display: "flex", alignItems: "center", gap: 3, padding: "5px 6px", borderRadius: 5, marginBottom: 2, cursor: "pointer",
                     background: active ? th.activeBg : "transparent",
-                    border: `1px solid ${active ? "#7c3aed40" : "transparent"}` }}>
+                    border: `1px solid ${isRunning ? "#60a5fa40" : active ? "#7c3aed40" : "transparent"}` }}>
                   <span style={{ flex: 1, fontSize: 11, fontWeight: active ? 600 : 400, color: active ? th.activeText : th.text, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>🔀 {e.name}</span>
+                  {isRunning && run && <span style={{ fontSize: 8, color: "#60a5fa", fontWeight: 700, flexShrink: 0, whiteSpace: "nowrap" }}>⏳{getElapsed(e.id)}s</span>}
                   <span style={{ fontSize: 9, color: th.textFaint, flexShrink: 0 }}>{e.node_count}n</span>
+                  {!isRunning && e.id && (
+                    <button onClick={ev => { ev.stopPropagation(); void doRun({ id: e.id, name: e.name, description: e.description ?? "", nodes: [], edges: [] }); }}
+                      title="Run" style={{ border: "none", background: "none", color: "#22c55e", cursor: "pointer", fontSize: 10, padding: "0 2px", lineHeight: "18px", borderRadius: 3, flexShrink: 0 }}>▶</button>
+                  )}
                   <button onClick={ev => { ev.stopPropagation(); void doDeleteExp(e.id); }} title={deleteConfirm === e.id ? "Confirm?" : "Delete"}
                     style={{ border: "none", background: "none", color: deleteConfirm === e.id ? "#f87171" : th.textMuted, cursor: "pointer", fontSize: 10, padding: "0 3px", lineHeight: "18px", borderRadius: 3, flexShrink: 0 }}>
                     {deleteConfirm === e.id ? "!" : "×"}
@@ -934,16 +989,27 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
         {activeExp && <span style={{ fontSize: 10, color: th.textMuted, maxWidth: 180, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{activeExp.name}</span>}
         {saveMsg && <span style={{ fontSize: 10, color: saveMsg === "Saved" ? "#22c55e" : "#ef4444", fontWeight: 600, flexShrink: 0 }}>{saveMsg}</span>}
         <div style={{ flex: 1 }} />
+        {/* Progress + Stop All */}
+        {activeExp?.id && activeRuns[activeExp.id] && (() => { const r = activeRuns[activeExp.id]; return (
+          <span style={{ fontSize: 10, color: "#60a5fa", fontWeight: 600, flexShrink: 0, whiteSpace: "nowrap" }}>
+            ⏳ {getElapsed(activeExp.id!)}s · {r.currentLabel.slice(0,18) || `${r.idx + 1}/${r.total}`}
+          </span>
+        ); })()}
+        {hasActiveRuns && (
+          <button onClick={stopAll} title="Stop all running experiments"
+            style={{ padding: "3px 8px", border: "1px solid #ef444430", borderRadius: 5, cursor: "pointer", fontSize: 10, fontWeight: 600, background: "transparent", color: "#ef4444" }}>
+            ⏹ Stop All
+          </button>
+        )}
         {[
           { label: "＋ New",    title: "New experiment",      action: () => setShowNew(true) },
           { label: "↑ Import",  title: "Import from JSON",    action: () => importRef.current?.click() },
           { label: "↓ Export",  title: "Export to JSON",      disabled: !activeExp,             action: exportExp },
           { label: saving ? "…" : "💾 Save", title: "Save",           disabled: saving || !activeExp,   action: () => void doSave() },
           { label: "⬦ Arrange", title: "Auto-arrange nodes",  disabled: !activeExp || nodes.length === 0, action: doArrange },
-          { label: running ? "⏳" : "▶ Run", title: running ? "Running…" : "Run preview", disabled: running || !activeExp?.id, action: () => void doRun(), green: true },
-        ].map(({ label, title, action, disabled, green }) => (
+        ].map(({ label, title, action, disabled }) => (
           <button key={label} onClick={action} disabled={disabled} title={title}
-            style={{ padding: "3px 8px", border: `1px solid ${th.border}`, borderRadius: 5, cursor: disabled ? "not-allowed" : "pointer", fontSize: 10, fontWeight: 600, background: "transparent", color: green ? "#22c55e" : th.textMuted, opacity: disabled ? 0.4 : 1 }}>
+            style={{ padding: "3px 8px", border: `1px solid ${th.border}`, borderRadius: 5, cursor: disabled ? "not-allowed" : "pointer", fontSize: 10, fontWeight: 600, background: "transparent", color: th.textMuted, opacity: disabled ? 0.4 : 1 }}>
             {label}
           </button>
         ))}
@@ -970,6 +1036,22 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
               background: th.panelBg2, border: `1px solid ${th.border}`, borderRadius: 8, padding: "8px 16px",
               fontSize: 12, color: th.textMuted, textAlign: "center", whiteSpace: "nowrap", boxShadow: "0 2px 12px rgba(0,0,0,0.15)" }}>
               Drag atomic nodes or experiments · Right-click to add
+            </div>
+          )}
+          {/* Floating run/stop button */}
+          {activeExp?.id && nodes.length > 0 && (
+            <div style={{ position: "absolute", bottom: 60, right: 16, zIndex: 20 }}>
+              {activeRuns[activeExp.id] ? (
+                <button onClick={() => activeRuns[activeExp.id!]?.controller.abort()} title="Stop run"
+                  style={{ padding: "8px 16px", border: "2px solid #ef4444", borderRadius: 24, background: "#450a0a", color: "#f87171", cursor: "pointer", fontSize: 12, fontWeight: 700, boxShadow: "0 4px 16px rgba(0,0,0,0.5)" }}>
+                  ⏹ Stop
+                </button>
+              ) : (
+                <button onClick={() => void doRun()} title="Run experiment"
+                  style={{ padding: "8px 20px", border: "none", borderRadius: 24, background: "linear-gradient(135deg,#7c3aed,#4f46e5)", color: "#fff", cursor: "pointer", fontSize: 12, fontWeight: 700, boxShadow: "0 4px 16px rgba(0,0,0,0.4)" }}>
+                  ▶ Run
+                </button>
+              )}
             </div>
           )}
           <ReactFlow

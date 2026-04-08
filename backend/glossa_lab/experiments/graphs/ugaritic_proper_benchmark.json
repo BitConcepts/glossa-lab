@@ -1,7 +1,8 @@
 {
   "id": "ugaritic_proper_benchmark",
   "name": "Ugaritic Proper Benchmark (Anti-Circularity)",
-  "description": "Proper 75/25 split benchmark. Circularity inflation: +76.7pp.",
+  "description": "Proper 75/25 train/test split benchmark on Ugaritic Baal Cycle. Demonstrates circularity inflation of +76.7 percentage points.",
+  "auto_migrated": true,
   "nodes": [
     {
       "id": "corpus",
@@ -13,23 +14,48 @@
       },
       "position": {
         "x": 60,
+        "y": 140
+      }
+    },
+    {
+      "id": "freq",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FreqCounter",
+        "label": "Frequency Counter",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
         "y": 80
       }
     },
     {
-      "id": "wrap",
+      "id": "entropy",
+      "type": "expNode",
+      "data": {
+        "atomicId": "EntropyCalc",
+        "label": "Entropy H1",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
+        "y": 200
+      }
+    },
+    {
+      "id": "run",
       "type": "expNode",
       "data": {
         "atomicId": "ExperimentWrapper",
-        "label": "Ugaritic Proper Benchmark (Anti-Circularity)",
+        "label": "Run Anti-Circularity Benchmark",
         "params": {
-          "experiment_id": "ugaritic_proper_benchmark",
-          "corpus_id": ""
+          "experiment_id": "ugaritic_proper_benchmark"
         }
       },
       "position": {
-        "x": 320,
-        "y": 80
+        "x": 570,
+        "y": 140
       }
     },
     {
@@ -41,8 +67,8 @@
         "params": {}
       },
       "position": {
-        "x": 570,
-        "y": 80
+        "x": 830,
+        "y": 140
       }
     }
   ],
@@ -50,16 +76,30 @@
     {
       "id": "e1",
       "source": "corpus",
-      "target": "wrap",
+      "target": "freq",
       "sourcePort": "sequences",
-      "targetPort": "upstream"
+      "targetPort": "sequences"
     },
     {
       "id": "e2",
-      "source": "wrap",
+      "source": "freq",
+      "target": "entropy",
+      "sourcePort": "freq_map",
+      "targetPort": "freq_map"
+    },
+    {
+      "id": "e3",
+      "source": "entropy",
+      "target": "run",
+      "sourcePort": "h1_normalized",
+      "targetPort": "upstream"
+    },
+    {
+      "id": "e4",
+      "source": "run",
       "target": "out",
-      "sourcePort": "result",
-      "targetPort": "data"
+      "sourcePort": "",
+      "targetPort": ""
     }
   ]
 }

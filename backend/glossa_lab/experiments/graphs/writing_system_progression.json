@@ -1,35 +1,61 @@
 {
   "id": "writing_system_progression",
   "name": "Writing System Progression",
-  "description": "5-tier writing system analysis: alphabetic to logo-syllabic to undeciphered.",
+  "description": "5-tier writing system analysis from alphabetic (22 signs) to logo-syllabic (400+ signs). Compares V/N ratios, hapax fractions, and polyvalence across script tiers.",
+  "auto_migrated": true,
   "nodes": [
     {
       "id": "corpus",
       "type": "expNode",
       "data": {
         "atomicId": "CorpusReader",
-        "label": "Load Corpus",
+        "label": "Indus Corpus (context)",
         "params": {}
       },
       "position": {
         "x": 60,
+        "y": 140
+      }
+    },
+    {
+      "id": "freq",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FreqCounter",
+        "label": "Frequency Counter",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
         "y": 80
       }
     },
     {
-      "id": "wrap",
+      "id": "zipf",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ZipfFitter",
+        "label": "Zipf Exponent",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
+        "y": 200
+      }
+    },
+    {
+      "id": "run",
       "type": "expNode",
       "data": {
         "atomicId": "ExperimentWrapper",
-        "label": "Writing System Progression",
+        "label": "Run Writing System Tiers",
         "params": {
-          "experiment_id": "writing_system_progression",
-          "corpus_id": ""
+          "experiment_id": "writing_system_progression"
         }
       },
       "position": {
-        "x": 320,
-        "y": 80
+        "x": 570,
+        "y": 140
       }
     },
     {
@@ -41,8 +67,8 @@
         "params": {}
       },
       "position": {
-        "x": 570,
-        "y": 80
+        "x": 830,
+        "y": 140
       }
     }
   ],
@@ -50,16 +76,30 @@
     {
       "id": "e1",
       "source": "corpus",
-      "target": "wrap",
+      "target": "freq",
       "sourcePort": "sequences",
-      "targetPort": "upstream"
+      "targetPort": "sequences"
     },
     {
       "id": "e2",
-      "source": "wrap",
+      "source": "freq",
+      "target": "zipf",
+      "sourcePort": "freq_map",
+      "targetPort": "freq_map"
+    },
+    {
+      "id": "e3",
+      "source": "zipf",
+      "target": "run",
+      "sourcePort": "zipf_exponent",
+      "targetPort": "upstream"
+    },
+    {
+      "id": "e4",
+      "source": "run",
       "target": "out",
-      "sourcePort": "result",
-      "targetPort": "data"
+      "sourcePort": "",
+      "targetPort": ""
     }
   ]
 }

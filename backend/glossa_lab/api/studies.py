@@ -17,12 +17,15 @@ Endpoints:
 from __future__ import annotations
 
 import asyncio
+import json
 import logging
 from collections import deque
+from collections.abc import AsyncGenerator
 from datetime import datetime, timezone
 from typing import Any
 
 from fastapi import APIRouter, HTTPException
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
 from glossa_lab.database import get_db
@@ -30,6 +33,12 @@ from glossa_lab.experiment_base import get_experiment
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
+
+_SSE_HEADERS = {"Cache-Control": "no-cache", "X-Accel-Buffering": "no"}
+
+
+def _sse(data: dict[str, Any]) -> str:
+    return f"data: {json.dumps(data)}\n\n"
 
 
 def _now_iso() -> str:
@@ -619,16 +628,10 @@ async def _run_ai_analysis_node(
 
 
 @router.post("/studies/{study_id}/run")
-async def run_study(study_id: str) -> dict[str, Any]:  # noqa: PLR0912
-    """Execute all nodes in topological order.
+async def run_study(study_id: str) -> StreamingResponse:  # noqa: PLR0912
+    """Stream study execution as Server-Sent Events.
 
-    Node type execution model:
-      experiment  → synchronous in-process via ExperimentBase.run()
-      pipeline    → submit Job + poll until complete (timeout=120s)
-      corpus      → passthrough: exposes corpus_id to downstream nodes
-      rag_query   → TF-IDF semantic search against the RAG index
-      ai_analysis → sends upstream results to Glossa AI for interpretation
-      note / report / hypothesis → annotation; skipped with status 'annotation'
+    Events: started | node_start | node_end | run_complete | run_error
     """
     db = get_db()
     if db is None:
@@ -641,126 +644,115 @@ async def run_study(study_id: str) -> dict[str, Any]:  # noqa: PLR0912
     nodes: list[dict[str, Any]] = graph.get("nodes", [])
     edges: list[dict[str, Any]] = graph.get("edges", [])
 
-    if not nodes:
-        logger.info("Study '%s' has no nodes — nothing to run", study["name"])
-        return {"study_id": study_id, "node_count": 0, "results": {}, "job_id": None}
+    async def _stream() -> AsyncGenerator[str, None]:  # noqa: PLR0912
+        # ── Create job record ─────────────────────────────────────────────────
+        job_id: str | None = None
+        if not nodes:
+            yield _sse({"event": "run_complete", "study_id": study_id,
+                        "node_count": 0, "completed": 0, "errors": 0,
+                        "skipped": 0, "annotations": 0, "results": {}, "job_id": None})
+            return
 
-    # ── Create a Job record so the run appears in the Jobs panel ────────────────
-    job_id: str | None = None
-    try:
-        job = await db.create_job(
-            name=f"Study run: {study['name']}",
-            pipeline="study_run",
-            params={"study_id": study_id, "node_count": len(nodes)},
-            created_at=_now_iso(),
-        )
-        job_id = job["id"]
-        await db.update_job_status(job_id, "running")
-        logger.info(
-            "Starting study run '%s' (%d nodes) — job %s",
-            study["name"], len(nodes), job_id,
-        )
-    except Exception as je:  # noqa: BLE001
-        logger.warning("Could not create job record for study run: %s", je)
-
-    ordered = _topological_sort(nodes, edges)
-    loop = asyncio.get_event_loop()
-    node_results: dict[str, Any] = {}
-
-    for node_idx, node in enumerate(ordered):
-        nid = node["id"]
-        node_label = node.get("label") or nid
-        node_type = node.get("type", "experiment")
-        logger.info(
-            "[%s] Node %d/%d — %s (%s)",
-            study["name"], node_idx + 1, len(ordered), node_label, node_type,
-        )
-
-        # Collect upstream complete results
-        predecessors = [e.get("source", "") for e in edges if e.get("target", "") == nid]
-        upstream: dict[str, Any] = {
-            pred: node_results[pred].get("result")
-            for pred in predecessors
-            if pred in node_results and node_results[pred].get("status") in ("complete", "corpus")
-        }
-
-        # Dispatch based on node type
-        if node_type in _ANNOTATION_TYPES:
-            node_results[nid] = {
-                "status": "annotation",
-                "reason": f"{node_type} node — visual annotation only",
-            }
-
-        elif node_type == "corpus":
-            corpus_id = (node.get("params") or {}).get("corpus_id", "")
-            node_results[nid] = {
-                "status": "corpus",
-                "result": {"corpus_id": corpus_id, "label": node.get("label", "")},
-                "reason": "Corpus data-source node — corpus_id forwarded to downstream nodes",
-            }
-
-        elif node_type == "pipeline":
-            node_results[nid] = await _run_pipeline_node(node, upstream, db)
-
-        elif node_type == "rag_query":
-            node_results[nid] = await _run_rag_node(node, upstream)
-
-        elif node_type == "compare":
-            node_results[nid] = await _run_compare_node(node, upstream)
-
-        elif node_type == "ai_analysis":
-            node_results[nid] = await _run_ai_analysis_node(node, upstream)
-
-        elif node_type == "report":
-            node_results[nid] = await loop.run_in_executor(
-                None, _run_report_node, node, upstream
-            )
-
-        else:  # experiment (default)
-            node_results[nid] = await loop.run_in_executor(
-                None, _run_experiment_node, node, upstream
-            )
-
-    completed   = sum(1 for r in node_results.values() if r["status"] == "complete")
-    skipped     = sum(1 for r in node_results.values() if r["status"] in ("skipped", "pending"))
-    annotations = sum(1 for r in node_results.values() if r["status"] in ("annotation", "corpus"))
-    errors      = sum(1 for r in node_results.values() if r["status"] == "error")
-
-    final_status = "failed" if errors else "completed"
-    logger.info(
-        "Study run '%s' finished — %d complete, %d errors (job %s)",
-        study["name"], completed, errors, job_id,
-    )
-
-    # Update the job record with run outcome
-    if job_id:
         try:
-            await db.update_job_status(job_id, final_status)
-            # Store node summary in job params (for display in Jobs panel)
-            await db._conn.execute(  # noqa: SLF001
-                "UPDATE jobs SET params = ? WHERE id = ?",
-                (
-                    __import__('json').dumps({
-                        "study_id": study_id,
-                        "node_count": len(nodes),
-                        "completed": completed,
-                        "errors": errors,
-                        "annotations": annotations,
-                    }),
-                    job_id,
-                ),
+            job = await db.create_job(
+                name=f"Study run: {study['name']}",
+                pipeline="study_run",
+                params={"study_id": study_id, "node_count": len(nodes)},
+                created_at=_now_iso(),
             )
-            await db._conn.commit()  # noqa: SLF001
+            job_id = job["id"]
+            await db.update_job_status(job_id, "running")
         except Exception as je:  # noqa: BLE001
-            logger.warning("Could not update job record: %s", je)
+            logger.warning("Could not create job record: %s", je)
 
-    return {
-        "study_id": study_id,
-        "job_id": job_id,
-        "node_count": len(nodes),
-        "completed": completed,
-        "skipped": skipped,
-        "annotations": annotations,
-        "errors": errors,
-        "results": node_results,
-    }
+        ordered = _topological_sort(nodes, edges)
+        loop = asyncio.get_event_loop()
+        node_results: dict[str, Any] = {}
+
+        yield _sse({"event": "started", "study_id": study_id,
+                    "study_name": study["name"],
+                    "node_count": len(ordered), "job_id": job_id})
+        logger.info("Starting study run '%s' (%d nodes) — job %s",
+                    study["name"], len(ordered), job_id)
+
+        try:
+            for node_idx, node in enumerate(ordered):
+                nid = node["id"]
+                node_label = node.get("label") or nid
+                node_type  = node.get("type", "experiment")
+
+                yield _sse({"event": "node_start", "nid": nid, "label": node_label,
+                            "type": node_type, "idx": node_idx, "total": len(ordered)})
+                logger.info("[%s] Node %d/%d — %s (%s)",
+                            study["name"], node_idx + 1, len(ordered), node_label, node_type)
+
+                # Collect upstream results
+                predecessors = [e.get("source", "") for e in edges if e.get("target", "") == nid]
+                upstream: dict[str, Any] = {
+                    pred: node_results[pred].get("result")
+                    for pred in predecessors
+                    if pred in node_results and node_results[pred].get("status") in ("complete", "corpus")
+                }
+
+                # Execute node
+                if node_type in _ANNOTATION_TYPES:
+                    result: dict[str, Any] = {"status": "annotation", "reason": f"{node_type} node"}
+                elif node_type == "corpus":
+                    corpus_id = (node.get("params") or {}).get("corpus_id", "")
+                    result = {"status": "corpus", "result": {"corpus_id": corpus_id}, "reason": "Corpus source"}
+                elif node_type == "pipeline":
+                    result = await _run_pipeline_node(node, upstream, db)
+                elif node_type == "rag_query":
+                    result = await _run_rag_node(node, upstream)
+                elif node_type == "compare":
+                    result = await _run_compare_node(node, upstream)
+                elif node_type == "ai_analysis":
+                    result = await _run_ai_analysis_node(node, upstream)
+                elif node_type == "report":
+                    result = await loop.run_in_executor(None, _run_report_node, node, upstream)
+                else:
+                    result = await loop.run_in_executor(None, _run_experiment_node, node, upstream)
+
+                node_results[nid] = result
+                yield _sse({"event": "node_end", "nid": nid,
+                            "status": result["status"],
+                            "reason": result.get("reason", "")})
+
+        except Exception as exc:  # noqa: BLE001
+            logger.error("Study run '%s' crashed: %s", study["name"], exc)
+            yield _sse({"event": "run_error", "message": str(exc)})
+            if job_id:
+                try:
+                    await db.update_job_status(job_id, "failed")
+                except Exception:  # noqa: BLE001
+                    pass
+            return
+
+        # ── Summary ───────────────────────────────────────────────────────
+        completed   = sum(1 for r in node_results.values() if r["status"] == "complete")
+        skipped     = sum(1 for r in node_results.values() if r["status"] in ("skipped", "pending"))
+        annotations = sum(1 for r in node_results.values() if r["status"] in ("annotation", "corpus"))
+        errors      = sum(1 for r in node_results.values() if r["status"] == "error")
+        final_status = "failed" if errors else "completed"
+
+        logger.info("Study run '%s' done — %d complete, %d errors",
+                    study["name"], completed, errors)
+
+        if job_id:
+            try:
+                await db.update_job_status(job_id, final_status)
+                await db._conn.execute(  # noqa: SLF001
+                    "UPDATE jobs SET params = ? WHERE id = ?",
+                    (json.dumps({"study_id": study_id, "node_count": len(ordered),
+                                 "completed": completed, "errors": errors}), job_id),
+                )
+                await db._conn.commit()  # noqa: SLF001
+            except Exception as je:  # noqa: BLE001
+                logger.warning("Could not update job record: %s", je)
+
+        yield _sse({"event": "run_complete", "study_id": study_id, "job_id": job_id,
+                    "node_count": len(ordered), "completed": completed,
+                    "skipped": skipped, "annotations": annotations, "errors": errors,
+                    "results": node_results})
+
+    return StreamingResponse(_stream(), media_type="text/event-stream", headers=_SSE_HEADERS)

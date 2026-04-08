@@ -734,6 +734,25 @@ class LinearACircularity(_EB):
     estimated_time = "~10 min"
     command = "python backend/generate_report_linear_a_circularity.py"
     results_file = "reports/circularity_results.json"
+    params_schema = {
+        "type": "object",
+        "$comment": "CLI-only (~10 min). Use the command above; run() raises NotImplementedError.",
+        "properties": {
+            "n_mc_trials": {
+                "type": "integer",
+                "title": "MC Trials",
+                "default": 30,
+                "minimum": 1,
+                "description": "Monte Carlo trials per stochastic experiment (CLI only).",
+            },
+            "use_kandles_bias": {
+                "type": "boolean",
+                "title": "Language-Specific Kandles",
+                "default": False,
+                "description": "Use per-language Kandles phonological profiles.",
+            },
+        },
+    }
 
     def run(self, **kwargs):
         raise NotImplementedError(

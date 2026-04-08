@@ -580,20 +580,20 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   // NOTE: the execution effect for pendingAction is placed AFTER loadExp
   // so that loadExp can be directly included in its deps (no forward-reference).
 
-  // Load saved experiment — snap positions + restore handle IDs from port names
-  const snap15e = (n: number) => Math.round(n / 15) * 15;
+  // Load saved experiment — snap positions, restore handles, then auto-arrange.
   const loadExp = useCallback(async (id: string) => {
     try {
       const d = await getGraphExperiment(id);
       setActiveExp(d);
       setSelectedNode(null);
 
-      setNodes((d.nodes as Node<ExpNodeData>[]).map(n => {
+      const snap15e = (n: number) => Math.round(n / 15) * 15;
+
+      const mappedNodes = (d.nodes as Node<ExpNodeData>[]).map(n => {
         const atomicId = (n.data as ExpNodeData).atomicId;
-        // Find the atomic node definition; for ExperimentWrapper look up via experiment_id
+        // Find the atomic node definition; fall back to a minimal ExperimentWrapper def
         let def = catalog.find(c => c.id === atomicId);
         if (!def && atomicId === "ExperimentWrapper") {
-          // Build a minimal def so the handles render correctly
           def = {
             id: "ExperimentWrapper", name: (n.data as ExpNodeData).label, category: "Experiments",
             description: "",
@@ -614,21 +614,30 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
             outputs:      def?.outputs      ?? [],
             params_schema:def?.params_schema ?? {} },
         };
-      }));
+      });
 
-      // Restore React Flow sourceHandle / targetHandle from stored sourcePort / targetPort
+      // Restore React Flow sourceHandle / targetHandle from stored sourcePort / targetPort.
+      // Edge colour is derived from the source port type.
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      setEdges((d.edges as any[]).map(e => {
+      const mappedEdges = (d.edges as any[]).map(e => {
         const sp = (e as Record<string, string>).sourcePort;
         const tp = (e as Record<string, string>).targetPort;
-        const color = sp ? (PORT_CLR[sp] ?? PORT_CLR.any) : PORT_CLR.any;
+        // Look up colour via the source node's output port type
+        const srcNode = mappedNodes.find(n => n.id === e.source);
+        const srcPortType = (srcNode?.data as ExpNodeData)?.outputs?.find(p => p.name === sp)?.type;
+        const color = srcPortType ? (PORT_CLR[srcPortType] ?? PORT_CLR.any) : PORT_CLR.any;
         return {
           ...e,
           sourceHandle: sp ? `out__${sp}` : undefined,
           targetHandle: tp ? `in__${tp}`  : undefined,
           style: { stroke: color, strokeWidth: 2 },
         };
-      }));
+      });
+
+      // Auto-arrange on load so the graph is always presented in a clean layout
+      setNodes(autoArrange(mappedNodes as Node[], mappedEdges) as Node<ExpNodeData>[]);
+      setEdges(mappedEdges);
+      setFitTrigger(t => t + 1);
     } catch { /* ignore */ }
   }, [catalog, darkMode]);
 

@@ -310,7 +310,13 @@ for _d in [
         fn=_filter_seqs),
     AtomicNodeDef("Merger","Result Merger","Transforms",
         "Merge two or more upstream results into one JSON dict.",
-        inputs=[{"name":"a","type":"any","required":True},{"name":"b","type":"any","required":False}],
+        inputs=[
+            {"name":"a","type":"any","required":True},
+            {"name":"b","type":"any","required":False},
+            {"name":"c","type":"any","required":False},
+            {"name":"d","type":"any","required":False},
+            {"name":"e","type":"any","required":False},
+        ],
         outputs=[{"name":"json","type":"json"}],
         params_schema={"type":"object","properties":{}},
         fn=_merger),
@@ -588,11 +594,9 @@ def _build_proper_graph_specs() -> dict[str, dict]:
             N("out",   "PassResult",  "Output",            {}, 780, 100),
         ],
         "edges": [
-            E("e1", "corpus","freq", "sequences","sequences"),
-            E("e2", "freq",  "zipf", "freq_map", "freq_map"),
-            # pass all zipf outputs + freq top-10 to PassResult
-            E("e3", "zipf", "out",  "",        ""),
-            E("e4", "freq", "out",  "top_10",  "top_signs"),
+            E("e1", "corpus","freq", "sequences",     "sequences"),
+            E("e2", "freq",  "zipf", "freq_map",      "freq_map"),
+            E("e3", "zipf",  "out",  "zipf_exponent", "data"),
         ],
     }
 
@@ -647,11 +651,11 @@ def _build_proper_graph_specs() -> dict[str, dict]:
             E("e3",  "freq",    "entropy", "freq_map",     "freq_map"),
             E("e4",  "freq",    "zipf",    "freq_map",     "freq_map"),
             E("e5",  "profiler","cluster", "profiles",     "profiles"),
-            E("e6",  "entropy", "merger",  "h1_normalized","entropy_h1"),
-            E("e7",  "zipf",    "merger",  "zipf_exponent","zipf_alpha"),
-            E("e8",  "profiler","merger",  "class_summary","positions"),
-            E("e9",  "cluster", "merger",  "clusters",     "clusters"),
-            E("e10", "freq",    "merger",  "top_10",       "freq_top10"),
+            E("e6",  "entropy", "merger",  "h1_normalized","a"),
+            E("e7",  "zipf",    "merger",  "zipf_exponent","b"),
+            E("e8",  "profiler","merger",  "class_summary","c"),
+            E("e9",  "cluster", "merger",  "clusters",     "d"),
+            E("e10", "freq",    "merger",  "top_10",       "e"),
             E("e11", "merger",  "export",  "json",         "data"),
         ],
     }
@@ -681,7 +685,7 @@ def _build_proper_graph_specs() -> dict[str, dict]:
             E("e1", "corpus", "freq",    "sequences",    "sequences"),
             E("e2", "freq",   "entropy", "freq_map",     "freq_map"),
             E("e3", "entropy","run",     "h1_normalized","upstream"),
-            E("e4", "run",    "out",     "",             ""),
+            E("e4", "run",    "out",     "result",        "data"),
         ],
     }
 
@@ -706,7 +710,7 @@ def _build_proper_graph_specs() -> dict[str, dict]:
             E("e1", "corpus","freq", "sequences",    "sequences"),
             E("e2", "freq",  "zipf", "freq_map",     "freq_map"),
             E("e3", "zipf",  "run",  "zipf_exponent","upstream"),
-            E("e4", "run",   "out",  "",             ""),
+            E("e4", "run",   "out",  "result",       "data"),
         ],
     }
 
@@ -730,7 +734,7 @@ def _build_proper_graph_specs() -> dict[str, dict]:
             E("e1", "corpus",  "freq",    "sequences","sequences"),
             E("e2", "corpus",  "profiler","sequences","sequences"),
             E("e3", "profiler","run",     "profiles", "upstream"),
-            E("e4", "run",     "out",     "",         ""),
+            E("e4", "run",     "out",     "result",   "data"),
         ],
     }
 
@@ -754,7 +758,7 @@ def _build_proper_graph_specs() -> dict[str, dict]:
             E("e1", "corpus",  "freq",    "sequences",    "sequences"),
             E("e2", "freq",    "entropy", "freq_map",     "freq_map"),
             E("e3", "entropy", "run",     "h1_normalized","upstream"),
-            E("e4", "run",     "out",     "",             ""),
+            E("e4", "run",     "out",     "result",        "data"),
         ],
     }
 
@@ -776,7 +780,7 @@ def _build_proper_graph_specs() -> dict[str, dict]:
         "edges": [
             E("e1", "corpus","freq","sequences","sequences"),
             E("e2", "freq",  "run", "freq_map", "upstream"),
-            E("e3", "run",   "out", "",         ""),
+            E("e3", "run",   "out", "result",   "data"),
         ],
     }
 
@@ -809,8 +813,8 @@ def _build_proper_graph_specs() -> dict[str, dict]:
             N("out",  "PassResult",        "Output",                    {},  640, 100),
         ],
         "edges": [
-            E("e1", "note","run", "text",""),
-            E("e2", "run", "out", "",    ""),
+            E("e1", "note","run", "text",   "upstream"),
+            E("e2", "run", "out", "result", "data"),
         ],
     }
 
@@ -834,8 +838,8 @@ def _build_proper_graph_specs() -> dict[str, dict]:
             N("out",  "PassResult",        "Output",                    {},  640, 100),
         ],
         "edges": [
-            E("e1", "note","run", "text",""),
-            E("e2", "run", "out", "",    ""),
+            E("e1", "note","run", "text",   "upstream"),
+            E("e2", "run", "out", "result", "data"),
         ],
     }
 
@@ -859,8 +863,8 @@ def _build_proper_graph_specs() -> dict[str, dict]:
             N("out",  "PassResult",        "Output",                    {},  640, 100),
         ],
         "edges": [
-            E("e1", "note","run", "text",""),
-            E("e2", "run", "out", "",    ""),
+            E("e1", "note","run", "text",   "upstream"),
+            E("e2", "run", "out", "result", "data"),
         ],
     }
 
@@ -884,8 +888,8 @@ def _build_proper_graph_specs() -> dict[str, dict]:
             N("out",  "PassResult",        "Output",                    {},  640, 100),
         ],
         "edges": [
-            E("e1", "note","run", "text",""),
-            E("e2", "run", "out", "",    ""),
+            E("e1", "note","run", "text",   "upstream"),
+            E("e2", "run", "out", "result", "data"),
         ],
     }
 

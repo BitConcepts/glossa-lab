@@ -78,8 +78,8 @@
       "id": "e3",
       "source": "run",
       "target": "out",
-      "sourcePort": "",
-      "targetPort": ""
+      "sourcePort": "result",
+      "targetPort": "data"
     }
   ]
 }

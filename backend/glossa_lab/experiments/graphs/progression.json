@@ -98,8 +98,8 @@
       "id": "e4",
       "source": "run",
       "target": "out",
-      "sourcePort": "",
-      "targetPort": ""
+      "sourcePort": "result",
+      "targetPort": "data"
     }
   ]
 }

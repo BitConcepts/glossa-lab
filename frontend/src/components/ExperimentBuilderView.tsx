@@ -481,6 +481,17 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
   const [fitTrigger, setFitTrigger] = useState(0);
 
+  // Panel layout — outer left-panel width + inner experiments/palette split
+  const [leftW,   setLeftW]   = useState<number>(() => parseInt(localStorage.getItem("geb_lw")  ?? "250", 10));
+  const [expsH,   setExpsH]   = useState<number>(() => parseInt(localStorage.getItem("geb_exh") ?? "180", 10));
+  const [leftOff, setLeftOff] = useState(false);
+  const [dockL,   setDockL]   = useState<boolean>(() => localStorage.getItem("geb_dock") !== "right");
+  const isDragging    = useRef(false);
+  const dragStart     = useRef(0);
+  const dragW0        = useRef(leftW);
+  const innerDivStart = useRef(0);
+  const innerDivH0    = useRef(expsH);
+
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   const draggedNodeType  = useRef<string | null>(null);
 
@@ -493,6 +504,9 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     void listGraphExperiments().then(setSavedExps).catch(() => {});
     void listExperiments().then(setExperiments).catch(() => {});
   }, []);
+  useEffect(() => { localStorage.setItem("geb_lw",   String(leftW)); }, [leftW]);
+  useEffect(() => { localStorage.setItem("geb_exh",  String(expsH)); }, [expsH]);
+  useEffect(() => { localStorage.setItem("geb_dock", dockL ? "left" : "right"); }, [dockL]);
 
   // Parse pending action from localStorage ONCE on mount.
   // "new" is immediate; "load"/"dup" wait for catalog (handled after loadExp below).
@@ -751,6 +765,27 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     ]);
   }, [catalog, darkMode]);
 
+  // Outer panel divider (width)
+  const onDividerDown = useCallback((e: React.MouseEvent) => {
+    isDragging.current = true; dragStart.current = e.clientX; dragW0.current = leftW;
+    const onMove = (me: MouseEvent) => {
+      if (!isDragging.current) return;
+      const dx = dockL ? me.clientX - dragStart.current : dragStart.current - me.clientX;
+      setLeftW(Math.max(160, Math.min(480, dragW0.current + dx)));
+    };
+    const onUp = () => { isDragging.current = false; document.removeEventListener("mousemove", onMove); document.removeEventListener("mouseup", onUp); };
+    document.addEventListener("mousemove", onMove); document.addEventListener("mouseup", onUp);
+  }, [leftW, dockL]);
+
+  // Inner panel divider (experiments list height vs palette)
+  const onInnerDivDown = useCallback((e: React.MouseEvent) => {
+    innerDivStart.current = e.clientY; innerDivH0.current = expsH;
+    e.preventDefault(); e.stopPropagation();
+    const onMove = (me: MouseEvent) => { setExpsH(Math.max(60, Math.min(400, innerDivH0.current + me.clientY - innerDivStart.current))); };
+    const onUp   = () => { document.removeEventListener("mousemove", onMove); document.removeEventListener("mouseup", onUp); };
+    document.addEventListener("mousemove", onMove); document.addEventListener("mouseup", onUp);
+  }, [expsH]);
+
   // Auto-arrange
   const doArrange = useCallback(() => {
     setNodes(prev => autoArrangeNodes(prev, edges) as Node<ExpNodeData>[]);
@@ -790,6 +825,106 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     experiments.filter(e => !palSearch || e.name.toLowerCase().includes(palSearch.toLowerCase()))
   , [experiments, palSearch]);
   const catColors: Record<string, string> = { Sources: "#059669", Transforms: "#2563eb", Analysis: "#7c3aed", Outputs: "#0d9488" };
+  const ebm: React.CSSProperties = { border: `1px solid ${th.border}`, borderRadius: 3, background: "none", color: th.textMuted, cursor: "pointer", fontSize: 10, padding: "0 4px", lineHeight: "18px" };
+
+  // ── Left panel (resizable + collapsible + dockable) ────────────────────
+  const LeftPanel = (
+    <div style={{ width: leftOff ? 32 : leftW, background: th.panelBg, [dockL ? "borderRight" : "borderLeft"]: `1px solid ${th.border}`, display: "flex", flexDirection: "column", flexShrink: 0, overflow: "hidden", transition: "width 0.12s" }}>
+      {/* Header row */}
+      <div style={{ padding: "6px 5px", borderBottom: `1px solid ${th.border}`, display: "flex", alignItems: "center", gap: 3, flexShrink: 0 }}>
+        <button onClick={() => setLeftOff(c => !c)} title={leftOff ? "Expand" : "Collapse"} style={{ border: "none", background: "none", color: th.textMuted, cursor: "pointer", fontSize: 13, padding: "2px 4px", borderRadius: 3 }}>{leftOff ? "▶" : "◀"}</button>
+        {!leftOff && (
+          <>
+            <span style={{ fontSize: 10, fontWeight: 700, color: th.textFaint, flex: 1, textTransform: "uppercase", letterSpacing: 0.5 }}>Workspace</span>
+            <button onClick={() => setDockL(d => !d)} title="Switch dock side" style={{ border: "none", background: "none", color: th.textFaint, cursor: "pointer", fontSize: 12 }}>⇄</button>
+          </>
+        )}
+      </div>
+
+      {!leftOff && (
+        <>
+          {/* Graph Experiments list */}
+          <div style={{ padding: "7px 7px 4px", borderBottom: `1px solid ${th.border}`, flexShrink: 0, height: expsH, overflowY: "auto", boxSizing: "border-box" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 3, marginBottom: 5 }}>
+              <span style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: "uppercase", letterSpacing: 0.5, flex: 1 }}>Graph Experiments</span>
+              <button onClick={() => setShowNew(true)} title="New graph experiment" style={{ ...ebm }}>+</button>
+              <button onClick={() => importRef.current?.click()} title="Import" style={{ ...ebm }}>↑</button>
+            </div>
+            {savedExps.length === 0 && <div style={{ fontSize: 10, color: th.textFaint, fontStyle: "italic", padding: "4px 2px" }}>No graph experiments yet.</div>}
+            {savedExps.map(e => {
+              const active = activeExp?.id === e.id;
+              return (
+                <div key={e.id} onClick={() => void loadExp(e.id)}
+                  style={{ display: "flex", alignItems: "center", gap: 3, padding: "5px 6px", borderRadius: 5, marginBottom: 2, cursor: "pointer",
+                    background: active ? th.activeBg : "transparent",
+                    border: `1px solid ${active ? "#7c3aed40" : "transparent"}` }}>
+                  <span style={{ flex: 1, fontSize: 11, fontWeight: active ? 600 : 400, color: active ? th.activeText : th.text, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>🔀 {e.name}</span>
+                  <span style={{ fontSize: 9, color: th.textFaint, flexShrink: 0 }}>{e.node_count}n</span>
+                  <button onClick={ev => { ev.stopPropagation(); void doDeleteExp(e.id); }} title={deleteConfirm === e.id ? "Confirm?" : "Delete"}
+                    style={{ border: "none", background: "none", color: deleteConfirm === e.id ? "#f87171" : th.textMuted, cursor: "pointer", fontSize: 10, padding: "0 3px", lineHeight: "18px", borderRadius: 3, flexShrink: 0 }}>
+                    {deleteConfirm === e.id ? "!" : "×"}
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Inner resize divider — drag to adjust experiments list vs palette height */}
+          <div onMouseDown={onInnerDivDown}
+            style={{ height: 4, cursor: "row-resize", background: th.panelBg, flexShrink: 0, borderTop: `1px solid ${th.border}`, transition: "border-color 0.1s" }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderTopColor = th.borderHov; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderTopColor = th.border; }}
+          />
+
+          {/* Atomic + Experiment palette */}
+          <div style={{ flex: 1, overflowY: "auto", minHeight: 0, padding: "7px 8px" }}>
+            <div style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 5 }}>Node Palette</div>
+            <input value={palSearch} onChange={e => setPalSearch(e.target.value)} placeholder="Search nodes…"
+              style={{ width: "100%", boxSizing: "border-box", padding: "4px 7px", fontSize: 10, border: `1px solid ${th.inputBdr}`, borderRadius: 5, marginBottom: 6, outline: "none", background: th.inputBg, color: th.inputText }} />
+            {Object.entries(categories).map(([cat, defs]) => (
+              <div key={cat} style={{ marginBottom: 8 }}>
+                <div style={{ fontSize: 9, fontWeight: 700, color: catColors[cat] ?? "#64748b", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 3 }}>{cat}</div>
+                {defs.map(def => {
+                  const hdrClr = def.outputs[0] ? PORT_CLR[def.outputs[0].type] : "#334155";
+                  return (
+                    <div key={def.id} draggable onDragStart={() => { draggedNodeType.current = def.id; draggedExpId.current = null; }}
+                      title={def.description}
+                      style={{ padding: "4px 7px", marginBottom: 3, cursor: "grab", border: `1px solid ${hdrClr}40`, borderRadius: 5, background: hdrClr + "0d" }}>
+                      <div style={{ fontSize: 10, fontWeight: 600, color: hdrClr }}>{def.name}</div>
+                      <div style={{ display: "flex", gap: 3, marginTop: 2, flexWrap: "wrap" }}>
+                        {def.inputs.map(p  => <span key={p.name} style={{ fontSize: 8, padding: "0 3px", borderRadius: 2, background: PORT_CLR[p.type] + "25", color: PORT_CLR[p.type] ?? PORT_CLR.any }}>↓{p.name}</span>)}
+                        {def.outputs.map(p => <span key={p.name} style={{ fontSize: 8, padding: "0 3px", borderRadius: 2, background: PORT_CLR[p.type] + "25", color: PORT_CLR[p.type] ?? PORT_CLR.any }}>↑{p.name}</span>)}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
+            {filteredExps.length > 0 && (
+              <div style={{ marginBottom: 8 }}>
+                <div style={{ fontSize: 9, fontWeight: 700, color: "#7c3aed", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 3 }}>Experiments</div>
+                {filteredExps.map(exp => (
+                  <div key={exp.id} draggable onDragStart={() => { draggedExpId.current = exp.id; draggedNodeType.current = null; }}
+                    title={exp.description}
+                    style={{ padding: "4px 7px", marginBottom: 3, cursor: "grab", border: "1px solid #7c3aed40", borderRadius: 5, background: "#7c3aed0d" }}>
+                    <div style={{ fontSize: 10, fontWeight: 600, color: "#7c3aed" }}>{exp.name.replace(/^\ud83d\udd00 /, "")}</div>
+                    <div style={{ fontSize: 8, color: th.textFaint, marginTop: 1 }}>{exp.category} · {exp.estimated_time}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </>
+      )}
+    </div>
+  );
+
+  const Divider = (
+    <div onMouseDown={onDividerDown}
+      style={{ width: 4, cursor: "col-resize", background: th.panelBg, flexShrink: 0, borderLeft: `1px solid ${th.border}`, transition: "border-color 0.1s" }}
+      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderLeftColor = th.borderHov; }}
+      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderLeftColor = th.border; }}
+    />);
 
   return (
     <div style={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0, overflow: "hidden" }}>
@@ -815,68 +950,10 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
         <input ref={importRef} type="file" accept=".json" style={{ display: "none" }} onChange={onImportExp} />
       </div>
 
-      {/* Main area */}
-      <div style={{ flex: 1, display: "flex", minHeight: 0 }}>
-        {/* Left: saved experiments + palette */}
-        <div style={{ width: 230, background: th.panelBg, borderRight: `1px solid ${th.border}`, display: "flex", flexDirection: "column", flexShrink: 0, overflow: "hidden" }}>
-          {/* Saved experiments */}
-          <div style={{ padding: "7px 8px", borderBottom: `1px solid ${th.border}`, flexShrink: 0, maxHeight: 180, overflowY: "auto" }}>
-            <div style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 5 }}>Saved Graph Experiments</div>
-            {savedExps.length === 0 && <div style={{ fontSize: 10, color: th.textFaint, fontStyle: "italic" }}>None yet. Click ＋ New to start.</div>}
-            {savedExps.map(e => (
-              <div key={e.id} onClick={() => void loadExp(e.id)}
-                style={{ display: "flex", alignItems: "center", gap: 3, padding: "5px 5px", borderRadius: 4, marginBottom: 2, cursor: "pointer", background: activeExp?.id === e.id ? th.activeBg : "transparent" }}>
-                <span style={{ flex: 1, fontSize: 11, fontWeight: activeExp?.id === e.id ? 600 : 400, color: activeExp?.id === e.id ? th.activeText : th.text, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>🔀 {e.name}</span>
-                <span style={{ fontSize: 9, color: th.textFaint }}>{e.node_count}n</span>
-                <button onClick={ev => { ev.stopPropagation(); void doDeleteExp(e.id); }} title={deleteConfirm === e.id ? "Confirm?" : "Delete"}
-                  style={{ border: "none", background: "none", color: deleteConfirm === e.id ? "#f87171" : th.textFaint, cursor: "pointer", fontSize: 10, padding: "0 3px" }}>
-                  {deleteConfirm === e.id ? "!" : "×"}
-                </button>
-              </div>
-            ))}
-          </div>
-
-          {/* Atomic + Experiment palette — minHeight:0 enables overflow scroll */}
-          <div style={{ flex: 1, overflowY: "auto", minHeight: 0, padding: "7px 8px" }}>
-            <div style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 5 }}>Node Palette</div>
-            <input value={palSearch} onChange={e => setPalSearch(e.target.value)} placeholder="Search nodes…"
-              style={{ width: "100%", boxSizing: "border-box", padding: "4px 7px", fontSize: 10, border: `1px solid ${th.inputBdr}`, borderRadius: 5, marginBottom: 6, outline: "none", background: th.inputBg, color: th.inputText }} />
-            {/* Atomic nodes by category */}
-            {Object.entries(categories).map(([cat, defs]) => (
-              <div key={cat} style={{ marginBottom: 8 }}>
-                <div style={{ fontSize: 9, fontWeight: 700, color: catColors[cat] ?? "#64748b", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 3 }}>{cat}</div>
-                {defs.map(def => {
-                  const hdrClr = def.outputs[0] ? PORT_CLR[def.outputs[0].type] : "#334155";
-                  return (
-                    <div key={def.id} draggable onDragStart={() => { draggedNodeType.current = def.id; draggedExpId.current = null; }}
-                      title={def.description}
-                      style={{ padding: "4px 7px", marginBottom: 3, cursor: "grab", border: `1px solid ${hdrClr}40`, borderRadius: 5, background: hdrClr + "0d" }}>
-                      <div style={{ fontSize: 10, fontWeight: 600, color: hdrClr }}>{def.name}</div>
-                      <div style={{ display: "flex", gap: 3, marginTop: 2, flexWrap: "wrap" }}>
-                        {def.inputs.map(p => <span key={p.name} style={{ fontSize: 8, padding: "0 3px", borderRadius: 2, background: PORT_CLR[p.type] + "25", color: PORT_CLR[p.type] ?? PORT_CLR.any }}>↓{p.name}</span>)}
-                        {def.outputs.map(p => <span key={p.name} style={{ fontSize: 8, padding: "0 3px", borderRadius: 2, background: PORT_CLR[p.type] + "25", color: PORT_CLR[p.type] ?? PORT_CLR.any }}>↑{p.name}</span>)}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            ))}
-            {/* All registered experiments as wrapper nodes */}
-            {filteredExps.length > 0 && (
-              <div style={{ marginBottom: 8 }}>
-                <div style={{ fontSize: 9, fontWeight: 700, color: "#7c3aed", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 3 }}>Experiments</div>
-                {filteredExps.map(exp => (
-                  <div key={exp.id} draggable onDragStart={() => { draggedExpId.current = exp.id; draggedNodeType.current = null; }}
-                    title={exp.description}
-                    style={{ padding: "4px 7px", marginBottom: 3, cursor: "grab", border: "1px solid #7c3aed40", borderRadius: 5, background: "#7c3aed0d" }}>
-                    <div style={{ fontSize: 10, fontWeight: 600, color: "#7c3aed" }}>{exp.name.replace(/^\ud83d\udd00 /, "")}</div>
-                    <div style={{ fontSize: 8, color: th.textFaint, marginTop: 1 }}>{exp.category} · {exp.estimated_time}</div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
+      {/* Main area — flexDirection respects dock side */}
+      <div style={{ flex: 1, display: "flex", minHeight: 0, flexDirection: dockL ? "row" : "row-reverse", position: "relative" }}>
+        {LeftPanel}
+        {!leftOff && Divider}
 
         {/* Canvas — onContextMenu on wrapper handles pane right-click reliably */}
         <div ref={reactFlowWrapper} style={{ flex: 1, minWidth: 0, background: th.canvasBg }}

@@ -1,492 +1,159 @@
-# Requirements
+# Glossa Lab — Functional Requirements
 
-Formal, numbered requirements for Glossa Lab. Each requirement is testable and traceable to the architecture.
-
-**Naming convention:** `REQ-<COMPONENT>-<NUMBER>`
-
-Components:
-- `BE` — Backend
-- `FE` — Frontend
-- `TRAY` — Tray application
-- `SVC` — Service/startup layer
-- `API` — API boundary
-- `CFG` — Configuration
-- `LOG` — Logging/diagnostics
-- `SEC` — Security
-- `XP` — Cross-platform
-- `INT` — Integration/boundary
-
-**Status values:** `draft` → `accepted` → `implemented` → `verified`
+> Last updated: 2026-04-08
+> Covers the April 2026 development cycle.  Keep this in sync with every feature change.
 
 ---
 
-## Backend
+## R1 — Study Builder
 
-### REQ-BE-001 — Backend starts in foreground mode
+### R1.1 Layout
+- SB-L1: Study Builder fills the full content area with no vertical scrollbars.
+- SB-L2: Canvas must not be obscured by the bottom IDE panel (use `marginBottom: effectivePanelH`).
+- SB-L3: Toolbar must be a single row with no wrapping.
 
-The backend MUST be runnable in foreground mode for development. It MUST start an HTTP server, initialize logging, and report health within 10 seconds.
+### R1.2 Theme
+- SB-T1: Light mode: panels use `#f8fafc` bg, `#1e293b` text.
+- SB-T2: Light mode: canvas uses `#f1f5f9` background (not dark `#0a0f1e`).
+- SB-T3: Nodes use white bg in light mode, `#111827` in dark mode.
 
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-BE-001
-- **Status:** draft
+### R1.3 Node types (8 total)
+- SB-N1: `experiment`, `pipeline`, `corpus`, `rag_query`, `ai_analysis`, `note`, `report`, `hypothesis`.
+- SB-N2: Every node has a left target handle and right source handle.
+- SB-N3: Every node has a header `x` delete button.
+- SB-N4: Run-status dot appears on nodes during study execution.
 
-### REQ-BE-002 — Backend starts in background/service mode
+### R1.4 Edges
+- SB-E1: Edges are reconnectable by dragging an endpoint to a different handle.
+- SB-E2: Dropping an endpoint without a target deletes the edge.
+- SB-E3: Delete/Backspace deletes selected edges.
+- SB-E4: Right-click edge shows Delete + Reverse direction menu.
 
-The backend MUST be runnable in background mode for installed deployments. Behavior must be identical to foreground mode except for process detachment and log routing.
+### R1.5 Context menus
+- SB-C1: Right-click on canvas shows add-node submenu for all 8 node types. Browser default context menu suppressed.
+- SB-C2: Right-click on node shows Duplicate / Rename / Disconnect all / Delete.
+- SB-C3: Menu items must execute on click (close handler must not race the click).
 
-- **Priority:** P2
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-BE-002
-- **Status:** draft
+### R1.6 Grid / canvas
+- SB-G1: 15px snap to grid.
+- SB-G2: Dot grid visible in canvas background.
+- SB-G3: Animated edges (purple) during run.
 
-### REQ-BE-003 — Backend clean shutdown
+### R1.7 Study management
+- SB-S1: Node count shown per study in the list.
+- SB-S2: One-click duplicate.
+- SB-S3: Export to `<name>.glossa-study.json` via toolbar.
+- SB-S4: Import from JSON file via toolbar.
+- SB-S5: Left panel is drag-resizable.
+- SB-S6: Left panel is collapsible.
+- SB-S7: Left panel dockable left or right.
 
-The backend MUST shut down cleanly on SIGTERM/SIGINT (POSIX) or CTRL_C_EVENT (Windows). Shutdown MUST complete within 60 seconds, finishing in-progress jobs, closing database connections, and flushing logs.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-BE-003
-- **Status:** draft
-
-### REQ-BE-004 — Backend database initialization
-
-The backend MUST create the SQLite database file and run migrations automatically on first startup if the database does not exist. State paths MUST be created automatically.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-BE-004
-- **Status:** draft
-
----
-
-## API
-
-### REQ-API-001 — Health endpoint
-
-The backend MUST expose `GET /api/v1/health` returning JSON with `status`, `version`, and `uptime_seconds`. Response MUST arrive within 1 second. HTTP 200 for healthy/degraded, HTTP 503 only when unresponsive.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-API-001
-- **Status:** draft
-
-### REQ-API-002 — Status endpoint
-
-The backend MUST expose `GET /api/v1/status` returning detailed system status including job counts and pipeline states.
-
-- **Priority:** P2
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-API-002
-- **Status:** draft
-
-### REQ-API-003 — API versioning
-
-All API endpoints MUST be prefixed with `/api/v1/`. Version bumps MUST follow a documented migration path.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-API-003
-- **Status:** draft
-
-### REQ-API-004 — CORS for development
-
-The backend MUST enable CORS for `localhost` origins when running in development mode to support the frontend dev server.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-API-004
-- **Status:** draft
+### R1.8 Execution model
+- SB-X1: `experiment` → sync in-process via `ExperimentBase.run()`.
+- SB-X2: `pipeline` → submit Job + poll (120s timeout).
+- SB-X3: `corpus` → passes `corpus_id` downstream.
+- SB-X4: `rag_query` → TF-IDF search, passes retrieved chunks downstream.
+- SB-X5: `ai_analysis` → sends upstream context to Glossa AI.
+- SB-X6: `note`/`report`/`hypothesis` → annotation only, status `annotation`.
 
 ---
 
-## Configuration
+## R2 — Experiment Builder
 
-### REQ-CFG-001 — TOML configuration file
+### R2.1 Layout
+- EB-L1: Fills full content area, no vertical scrollbars.
+- EB-L2: Single-row toolbar.
 
-The backend MUST load configuration from a TOML file at the platform-specific path. Missing config file MUST result in safe defaults, not a crash.
+### R2.2 Theme
+- EB-T1: Light mode canvas `#f1f5f9`, nodes white. Dark mode canvas `#080d18`, nodes `#111827`.
 
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-CFG-001
-- **Status:** draft
+### R2.3 Typed port system
+- EB-P1: Every atomic node declares named input/output ports with explicit types.
+- EB-P2: Types: `sequences`(green), `freq_map`(blue), `profiles`(purple), `clusters`(amber), `number`(red), `text`(teal), `json`(indigo), `any`(gray).
+- EB-P3: Port colour consistent across handles, palette badges, and edges.
+- EB-P4: Incompatible connections show amber edge + "⚠ type mismatch" label.
 
-### REQ-CFG-002 — Environment variable overrides
+### R2.4 Palette completeness
+- EB-A1: 11 built-in atomic nodes in palette (Sources, Transforms, Analysis, Outputs categories).
+- EB-A2: ALL registered ExperimentBase subclasses appear in palette under "Experiments".
+- EB-A3: Dragging a registered experiment creates an `ExperimentWrapper` node; no experiments are hardcoded.
 
-Configuration values MUST be overridable by environment variables prefixed with `GLOSSA_`.
+### R2.5 Context menus
+- EB-C1: Right-click canvas shows add-node menu by category.
+- EB-C2: Right-click node shows Duplicate / Disconnect all / Delete.
 
-- **Priority:** P2
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-CFG-002
-- **Status:** draft
+### R2.6 Import/export (consistent with Study Builder)
+- EB-E1: `↑ Import` button in toolbar imports `.glossa-exp.json`.
+- EB-E2: `↓ Export` button downloads current experiment as JSON.
 
-### REQ-CFG-003 — Platform-specific config paths
-
-Config file paths MUST follow platform conventions: `%APPDATA%` on Windows, `$XDG_CONFIG_HOME` on Linux, `~/Library/Application Support/` on macOS. Development mode MUST use `./config/glossa.toml`.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-CFG-003
-- **Status:** draft
-
----
-
-## Logging
-
-### REQ-LOG-001 — Structured JSON logging
-
-The backend MUST produce structured JSON log output to both console and file. Logs MUST include timestamp, level, module, and message.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-LOG-001
-- **Status:** draft
-
-### REQ-LOG-002 — Platform-specific log paths
-
-Log file paths MUST follow platform conventions: `%LOCALAPPDATA%` on Windows, `$XDG_STATE_HOME` on Linux, `~/Library/Logs/` on macOS. Development mode MUST use `./logs/glossa.log`.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-LOG-002
-- **Status:** draft
-
-### REQ-LOG-003 — No secrets in logs
-
-Logs MUST NOT contain secrets, API keys, tokens, or passwords under any circumstances.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-LOG-003
-- **Status:** draft
+### R2.7 Save and run
+- EB-R1: Save persists to `backend/glossa_lab/experiments/graphs/<id>.json`.
+- EB-R2: Run Preview executes graph and displays result.
+- EB-R3: Saved graph experiments appear in Study Builder palette as `🔀`.
 
 ---
 
-## Security
+## R3 — RAG
 
-### REQ-SEC-001 — Localhost binding only
-
-The backend MUST bind to `127.0.0.1` only. Binding to `0.0.0.0` or any external interface requires explicit opt-in configuration.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-SEC-001
-- **Status:** draft
-
-### REQ-SEC-002 — No secrets in API responses
-
-API responses MUST NOT contain secrets, API keys, tokens, or passwords. The `/api/v1/config` endpoint MUST return configuration without secret values.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-SEC-002
-- **Status:** draft
+- RAG-I1: Index auto-builds on server startup (background task).
+- RAG-I2: Index covers reports, notebooks, hypotheses, experiment descriptions.
+- RAG-I3: Rebuild via `POST /api/v1/rag/index`.
+- RAG-Q1: `POST /api/v1/rag/query` returns top-k chunks with `text`, `source`, `source_type`, `score`.
+- RAG-AI1: Research + Study AI context modes prepend retrieved chunks to the LLM system prompt.
+- RAG-G1: `rag_query` study node executes RAG search during `Run Study`.
 
 ---
 
-## Frontend
+## R4 — Node Registry
 
-### REQ-FE-001 — Frontend connects to backend API
-
-The frontend MUST connect to the backend via the documented HTTP REST API at `http://localhost:8000/api/v1/`. It MUST NOT contain core application logic.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-FE-001
-- **Status:** draft
-
-### REQ-FE-002 — Frontend displays health status
-
-The frontend MUST display the backend health status (healthy/degraded/down) obtained from the health endpoint.
-
-- **Priority:** P2
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-FE-002
-- **Status:** draft
-
-### REQ-FE-003 — Frontend dev server
-
-The frontend MUST be runnable via a local development server that supports hot reload and proxies API requests to the backend.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-FE-003
-- **Status:** draft
+- NR-1: `GET /api/v1/node-registry/{type}/{ref_id}` returns JSON Schema for the node's params.
+- NR-2: Supports all 8 Study Builder node types and all registered experiment/pipeline IDs.
+- NR-3: Inspector uses the schema to render typed form fields.
 
 ---
 
-## Tray
+## R5 — Navigation
 
-### REQ-TRAY-001 — Tray displays backend status
-
-The tray application MUST display the current backend status (running/stopped/error) obtained from the health API.
-
-- **Priority:** P2
-- **Platform:** windows, macos
-- **Testable:** yes
-- **Test:** TEST-TRAY-001
-- **Status:** draft
-
-### REQ-TRAY-002 — Tray does not contain backend logic
-
-The tray application MUST NOT contain core backend logic. It MUST communicate with the backend only through HTTP API or CLI commands.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-TRAY-002
-- **Status:** draft
+- NAV-1: Workflow section order: Corpora → Experiments → Exp. Builder → Pipelines → Study Builder → Reports → Studies.
+- NAV-2: Main column is `height: 100vh; overflow: hidden`.
+- NAV-3: Canvas views get zero padding, no maxWidth, correct marginBottom.
 
 ---
 
-## Service/Startup
+## R6 — Context Menu (general)
 
-### REQ-SVC-001 — Windows startup
-
-On Windows, the tray MUST start automatically at user login via a documented mechanism (Startup folder, registry, or scheduled task).
-
-- **Priority:** P2
-- **Platform:** windows
-- **Testable:** yes
-- **Test:** TEST-SVC-001
-- **Status:** draft
-
-### REQ-SVC-002 — Linux systemd service
-
-On Linux, the backend MUST be manageable via a systemd user service unit. The unit file MUST be provided under `services/linux/`.
-
-- **Priority:** P2
-- **Platform:** linux
-- **Testable:** yes
-- **Test:** TEST-SVC-002
-- **Status:** draft
-
-### REQ-SVC-003 — macOS LaunchAgent
-
-On macOS, the backend MUST be manageable via a LaunchAgent plist. The plist MUST be provided under `services/macos/`.
-
-- **Priority:** P2
-- **Platform:** macos
-- **Testable:** yes
-- **Test:** TEST-SVC-003
-- **Status:** draft
+- CTX-1: All context menus render via a floating `<div>` at `z-index: 99999` so they appear above React Flow nodes.
+- CTX-2: Browser default context menu must be suppressed via `preventDefault()` in all right-click handlers.
+- CTX-3: The close handler listens for `mousedown` on elements outside the menu (using `setTimeout(0)` to avoid catching the opening click).
+- CTX-4: The pane right-click is attached via `onContextMenu` directly on the React Flow wrapper `<div>` (more reliable than React Flow's `onPaneContextMenu` prop).
 
 ---
 
-## Cross-Platform
+## R7 — AI Chat
 
-### REQ-XP-001 — Cross-platform backend
-
-The backend MUST run on Windows, Linux, and macOS without platform-specific code in the core application. Platform-specific behavior MUST be isolated to configuration and service layers.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-XP-001
-- **Status:** draft
-
-### REQ-XP-002 — Bootstrap scripts
-
-Setup and run scripts MUST exist for both Windows (`.cmd`) and POSIX (`.sh`). Scripts MUST be idempotent and create virtual environments automatically.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-XP-002
-- **Status:** draft
-
-### REQ-XP-003 — Environment isolation
-
-The project MUST use a Python virtual environment. It MUST NOT depend on globally installed Python packages. The environment MUST be reproducible from a clean clone.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-XP-003
-- **Status:** draft
+- CHAT-1: Floating chat window is `position: fixed`.
+- CHAT-2: Context modes: Global, Corpus, Experiment, Study, Research.
+- CHAT-3: Research + Study modes inject RAG chunks.
+- CHAT-4: Slash commands: `/compress`, `/clear`, `/export md`, `/export pdf`, `/help`.
+- CHAT-5: Major action cards require explicit user approval.
 
 ---
 
-## Integration/Boundary
+## R8 — Experiment Execution (Studies)
 
-### REQ-INT-001 — Frontend does not manage services
-
-The frontend MUST NOT directly start, stop, or manage backend processes. Service lifecycle is the responsibility of the tray, service layer, or explicit CLI commands.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-INT-001
-- **Status:** draft
-
-### REQ-INT-002 — Version consistency
-
-The `version` field in the health endpoint response MUST match the version declared in `backend/pyproject.toml`.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-INT-002
-- **Status:** draft
+- EXEC-1: Upstream results propagated to downstream nodes via `upstream_results` kwarg.
+- EXEC-2: Topological sort (Kahn's) determines execution order.
+- EXEC-3: CLI-only experiments marked `skipped` with message.
+- EXEC-4: Graph experiments (from Experiment Builder) are discoverable and runnable in studies.
 
 ---
 
-## Analysis Pipelines
+## Test Coverage Targets
 
-Components: `PIPE` — Pipeline/analysis engine
-
-### REQ-PIPE-001 — Block entropy pipeline
-
-The system MUST compute normalised block entropy H_N/ln(L) for block sizes N=1..6 on any uploaded text corpus. Results MUST include raw (nats) and normalised values.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-PIPE-001
-- **Status:** implemented
-- **Reference:** Rao et al. (2009), Science 324:1165
-
-### REQ-PIPE-002 — Character frequency pipeline
-
-The system MUST compute symbol frequencies, rank-frequency distribution, and Zipf exponent for any uploaded text corpus.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-PIPE-002
-- **Status:** implemented
-
-### REQ-PIPE-003 — Pipeline engine
-
-The system MUST process queued jobs asynchronously via a background engine. Jobs MUST transition through pending → running → completed/failed states. Results MUST be stored and retrievable.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-PIPE-003
-- **Status:** implemented
-
----
-
-## Kandles Phonetic-Visual Analysis
-
-Components: `KDL` — Kandles system (per US 2024/0248922 A1, Merkur)
-
-### REQ-KDL-001 — Kandles phonetic mapping
-
-The system MUST implement the Kandles phonetic-to-color mapping: 7 consonant sound groups mapped to 7 colors (Yellow, Grey, Red, Blue, Green, Purple, Brown). Vowel-initial words MUST be mapped to a distinct group (group 0).
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-KDL-001
-- **Status:** draft
-- **Patent:** US 2024/0248922 A1 [0109]-[0110]
-
-### REQ-KDL-002 — Kandles color-coded text
-
-The system MUST generate color-coded text output where each word is assigned a color based on the phonetic sound at the beginning of the word, per the Kandles mapping.
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-KDL-002
-- **Status:** draft
-- **Patent:** US 2024/0248922 A1 [0007], [0117]
-
-### REQ-KDL-003 — Kandles color grid
-
-The system MUST generate a color-coded grid (equal rows and columns) from any text, where each cell corresponds to a word and is colored by the Kandles system. The grid MUST also encode the Kandles number (1-7).
-
-- **Priority:** P1
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-KDL-003
-- **Status:** draft
-- **Patent:** US 2024/0248922 A1 [0124]-[0125], FIG. 29 step 2916
-
-### REQ-KDL-004 — Cross-language Kandles comparison
-
-The system MUST be able to generate Kandles grids for texts in different languages/scripts and compare the resulting color patterns. The comparison MUST produce a similarity metric.
-
-- **Priority:** P2
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-KDL-004
-- **Status:** draft
-- **Patent:** US 2024/0248922 A1 [0110], FIG. 20
-
----
-
-## Hierarchical Text Decomposition
-
-Components: `HTD` — Hierarchical text decomposition (per US 2024/0248922 A1, Merkur)
-
-### REQ-HTD-001 — Text decomposition into stories and slices
-
-The system MUST support organizing a written work into one or more stories, where each story is comprised of one or more slices. Each slice MUST be independently addressable.
-
-- **Priority:** P2
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-HTD-001
-- **Status:** draft
-- **Patent:** US 2024/0248922 A1 [0072], [0095], FIG. 29 steps 2902-2904
-
-### REQ-HTD-002 — Slice filtering by clusters and tags
-
-The system MUST support filtering slices by user-selected semantic clusters and/or manual tags. Multiple clusters MUST be combinable (AND/OR).
-
-- **Priority:** P2
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-HTD-002
-- **Status:** draft
-- **Patent:** US 2024/0248922 A1 [0095]-[0098], FIG. 29 step 2906
-
----
-
-## Semantic Cluster Tagging
-
-Components: `SEM` — Semantic analysis
-
-### REQ-SEM-001 — Configurable semantic taxonomy
-
-The system MUST support a configurable taxonomy of semantic clusters. Default clusters MUST include at least: Culture, Nations, Nature, Religion, People, and Spiritual.
-
-- **Priority:** P2
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-SEM-001
-- **Status:** draft
-- **Patent:** US 2024/0248922 A1 [0010], [0080]
-
-### REQ-SEM-002 — Manual tagging
-
-The system MUST support manual tagging of text segments with user-defined labels.
-
-- **Priority:** P3
-- **Platform:** all
-- **Testable:** yes
-- **Test:** TEST-SEM-002
-- **Status:** draft
-- **Patent:** US 2024/0248922 A1 [0011], [0104]
+| Area | Min Coverage |
+|------|-------------|
+| `experiment_graph.py` — atomic node functions | 80% |
+| `experiment_graph.py` — `execute_graph()` | 90% |
+| `rag.py` — `build_index()` + `query()` | 75% |
+| `api/studies.py` — `run_study()` | 70% |
+| Frontend component tests (React Testing Library) | Key interactions per builder |

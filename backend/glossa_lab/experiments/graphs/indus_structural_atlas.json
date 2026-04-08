@@ -2,114 +2,113 @@
   "id": "indus_structural_atlas",
   "name": "Indus Structural Atlas",
   "description": "Full Fuls (2023) structural analysis: block entropy (Rao 2009), Zipf-Mandelbrot (Yadav 2010), NWSP positional profiling (Fuls 2013), and symbol clustering. Multi-branch pipeline over the Indus corpus.",
-  "auto_migrated": true,
   "nodes": [
     {
       "id": "corpus",
       "type": "expNode",
+      "position": {
+        "x": 60,
+        "y": 210
+      },
       "data": {
         "atomicId": "CorpusReader",
         "label": "Load Corpus",
         "params": {}
-      },
-      "position": {
-        "x": 60,
-        "y": 280
       }
     },
     {
       "id": "freq",
       "type": "expNode",
+      "position": {
+        "x": 315,
+        "y": 135
+      },
       "data": {
         "atomicId": "FreqCounter",
         "label": "Frequency Counter",
         "params": {}
-      },
-      "position": {
-        "x": 300,
-        "y": 80
       }
     },
     {
       "id": "entropy",
       "type": "expNode",
+      "position": {
+        "x": 570,
+        "y": 60
+      },
       "data": {
         "atomicId": "EntropyCalc",
         "label": "Entropy H1 (Rao 2009)",
         "params": {}
-      },
-      "position": {
-        "x": 300,
-        "y": 240
       }
     },
     {
       "id": "profiler",
       "type": "expNode",
+      "position": {
+        "x": 315,
+        "y": 285
+      },
       "data": {
         "atomicId": "PositionalProfiler",
         "label": "NWSP Positional Profiler",
         "params": {
           "min_count": 3
         }
-      },
-      "position": {
-        "x": 300,
-        "y": 420
       }
     },
     {
       "id": "zipf",
       "type": "expNode",
+      "position": {
+        "x": 570,
+        "y": 210
+      },
       "data": {
         "atomicId": "ZipfFitter",
         "label": "Zipf Fitter (Yadav 2010)",
         "params": {}
-      },
-      "position": {
-        "x": 560,
-        "y": 80
       }
     },
     {
       "id": "cluster",
       "type": "expNode",
+      "position": {
+        "x": 570,
+        "y": 360
+      },
       "data": {
         "atomicId": "Clusterer",
         "label": "Symbol Clusterer (NWSP)",
         "params": {}
-      },
-      "position": {
-        "x": 560,
-        "y": 420
       }
     },
     {
       "id": "merger",
       "type": "expNode",
+      "position": {
+        "x": 825,
+        "y": 210
+      },
       "data": {
         "atomicId": "Merger",
         "label": "Merge Atlas Results",
         "params": {}
-      },
-      "position": {
-        "x": 820,
-        "y": 240
       }
     },
     {
       "id": "export",
       "type": "expNode",
+      "position": {
+        "x": 1080,
+        "y": 210
+      },
       "data": {
         "atomicId": "JSONExport",
         "label": "Save Atlas",
         "params": {
           "filename": "indus_structural_atlas.json"
         }
-      },
-      "position": {
-        "x": 1080,
-        "y": 240
       }
     }
   ],

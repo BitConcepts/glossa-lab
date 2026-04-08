@@ -76,15 +76,8 @@
       "id": "e3",
       "source": "zipf",
       "target": "out",
-      "sourcePort": "",
-      "targetPort": ""
-    },
-    {
-      "id": "e4",
-      "source": "freq",
-      "target": "out",
-      "sourcePort": "top_10",
-      "targetPort": "top_signs"
+      "sourcePort": "zipf_exponent",
+      "targetPort": "data"
     }
   ]
 }

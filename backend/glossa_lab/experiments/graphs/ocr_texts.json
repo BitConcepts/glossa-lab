@@ -54,14 +54,14 @@
       "source": "note",
       "target": "run",
       "sourcePort": "text",
-      "targetPort": ""
+      "targetPort": "upstream"
     },
     {
       "id": "e2",
       "source": "run",
       "target": "out",
-      "sourcePort": "",
-      "targetPort": ""
+      "sourcePort": "result",
+      "targetPort": "data"
     }
   ]
 }

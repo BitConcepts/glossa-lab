@@ -1,12 +1,12 @@
 {
   "data": {
-    "entropy_h1": 0.778,
-    "zipf_alpha": 1.5036,
-    "positions__TERMINAL": 91,
-    "positions__INITIAL": 35,
-    "positions__MEDIAL": 100,
-    "positions__MIXED": 161,
-    "clusters": [
+    "a": 0.778,
+    "b": 1.5036,
+    "c__TERMINAL": 91,
+    "c__INITIAL": 35,
+    "c__MEDIAL": 100,
+    "c__MIXED": 161,
+    "d": [
       {
         "label": "MIXED",
         "count": 161,
@@ -132,7 +132,7 @@
         ]
       }
     ],
-    "freq_top10": [
+    "e": [
       {
         "symbol": "32",
         "count": 527

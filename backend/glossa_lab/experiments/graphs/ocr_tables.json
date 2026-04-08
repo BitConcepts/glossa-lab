@@ -1,35 +1,37 @@
 {
   "id": "ocr_tables",
   "name": "OCR \u2014 Bigram & Frequency Tables",
-  "description": "Mistral OCR on Mahadevan (1977) table pages. Extracts bigram matrix.",
+  "description": "CLI-only (~30 min). Mistral OCR on Mahadevan (1977) table pages. Requires mistral_api_key in Settings.",
+  "auto_migrated": true,
   "nodes": [
     {
-      "id": "corpus",
+      "id": "note",
       "type": "expNode",
       "data": {
-        "atomicId": "CorpusReader",
-        "label": "Load Corpus",
-        "params": {}
-      },
-      "position": {
-        "x": 60,
-        "y": 80
-      }
-    },
-    {
-      "id": "wrap",
-      "type": "expNode",
-      "data": {
-        "atomicId": "ExperimentWrapper",
-        "label": "OCR \u2014 Bigram & Frequency Tables",
+        "atomicId": "StaticValue",
+        "label": "CLI Command",
         "params": {
-          "experiment_id": "ocr_tables",
-          "corpus_id": ""
+          "value": "python ocr_mahadevan.py --target tables\n\nRequires Mistral API key in Settings. This experiment cannot run in the Experiment Builder. Use the CLI command shown in this node's value param, or open a terminal."
         }
       },
       "position": {
-        "x": 320,
-        "y": 80
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "run",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ExperimentWrapper",
+        "label": "OCR Tables Extraction (CLI-only)",
+        "params": {
+          "experiment_id": "ocr_tables"
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 100
       }
     },
     {
@@ -41,25 +43,25 @@
         "params": {}
       },
       "position": {
-        "x": 570,
-        "y": 80
+        "x": 640,
+        "y": 100
       }
     }
   ],
   "edges": [
     {
       "id": "e1",
-      "source": "corpus",
-      "target": "wrap",
-      "sourcePort": "sequences",
-      "targetPort": "upstream"
+      "source": "note",
+      "target": "run",
+      "sourcePort": "text",
+      "targetPort": ""
     },
     {
       "id": "e2",
-      "source": "wrap",
+      "source": "run",
       "target": "out",
-      "sourcePort": "result",
-      "targetPort": "data"
+      "sourcePort": "",
+      "targetPort": ""
     }
   ]
 }

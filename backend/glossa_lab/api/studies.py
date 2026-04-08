@@ -17,6 +17,7 @@ Endpoints:
 from __future__ import annotations
 
 import asyncio
+import logging
 from collections import deque
 from datetime import datetime, timezone
 from typing import Any
@@ -27,6 +28,7 @@ from pydantic import BaseModel
 from glossa_lab.database import get_db
 from glossa_lab.experiment_base import get_experiment
 
+logger = logging.getLogger(__name__)
 router = APIRouter()
 
 
@@ -617,7 +619,7 @@ async def _run_ai_analysis_node(
 
 
 @router.post("/studies/{study_id}/run")
-async def run_study(study_id: str) -> dict[str, Any]:
+async def run_study(study_id: str) -> dict[str, Any]:  # noqa: PLR0912
     """Execute all nodes in topological order.
 
     Node type execution model:
@@ -640,15 +642,39 @@ async def run_study(study_id: str) -> dict[str, Any]:
     edges: list[dict[str, Any]] = graph.get("edges", [])
 
     if not nodes:
-        return {"study_id": study_id, "node_count": 0, "results": {}}
+        logger.info("Study '%s' has no nodes — nothing to run", study["name"])
+        return {"study_id": study_id, "node_count": 0, "results": {}, "job_id": None}
+
+    # ── Create a Job record so the run appears in the Jobs panel ────────────────
+    job_id: str | None = None
+    try:
+        job = await db.create_job(
+            name=f"Study run: {study['name']}",
+            pipeline="study_run",
+            params={"study_id": study_id, "node_count": len(nodes)},
+            created_at=_now_iso(),
+        )
+        job_id = job["id"]
+        await db.update_job_status(job_id, "running")
+        logger.info(
+            "Starting study run '%s' (%d nodes) — job %s",
+            study["name"], len(nodes), job_id,
+        )
+    except Exception as je:  # noqa: BLE001
+        logger.warning("Could not create job record for study run: %s", je)
 
     ordered = _topological_sort(nodes, edges)
     loop = asyncio.get_event_loop()
     node_results: dict[str, Any] = {}
 
-    for node in ordered:
+    for node_idx, node in enumerate(ordered):
         nid = node["id"]
+        node_label = node.get("label") or nid
         node_type = node.get("type", "experiment")
+        logger.info(
+            "[%s] Node %d/%d — %s (%s)",
+            study["name"], node_idx + 1, len(ordered), node_label, node_type,
+        )
 
         # Collect upstream complete results
         predecessors = [e.get("source", "") for e in edges if e.get("target", "") == nid]
@@ -700,8 +726,37 @@ async def run_study(study_id: str) -> dict[str, Any]:
     annotations = sum(1 for r in node_results.values() if r["status"] in ("annotation", "corpus"))
     errors      = sum(1 for r in node_results.values() if r["status"] == "error")
 
+    final_status = "failed" if errors else "completed"
+    logger.info(
+        "Study run '%s' finished — %d complete, %d errors (job %s)",
+        study["name"], completed, errors, job_id,
+    )
+
+    # Update the job record with run outcome
+    if job_id:
+        try:
+            await db.update_job_status(job_id, final_status)
+            # Store node summary in job params (for display in Jobs panel)
+            await db._conn.execute(  # noqa: SLF001
+                "UPDATE jobs SET params = ? WHERE id = ?",
+                (
+                    __import__('json').dumps({
+                        "study_id": study_id,
+                        "node_count": len(nodes),
+                        "completed": completed,
+                        "errors": errors,
+                        "annotations": annotations,
+                    }),
+                    job_id,
+                ),
+            )
+            await db._conn.commit()  # noqa: SLF001
+        except Exception as je:  # noqa: BLE001
+            logger.warning("Could not update job record: %s", je)
+
     return {
         "study_id": study_id,
+        "job_id": job_id,
         "node_count": len(nodes),
         "completed": completed,
         "skipped": skipped,

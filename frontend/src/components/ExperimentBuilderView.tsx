@@ -14,6 +14,7 @@
 import React, {
   useCallback, useEffect, useMemo, useRef, useState,
 } from "react";
+import { autoArrange as autoArrangeNodes } from "../utils/autoArrange";
 import {
   ReactFlow,
   addEdge,
@@ -78,75 +79,7 @@ const PORT_CLR = PORT_COLORS;
 const PORT_ROW_H = 22;  // px — height of each input/output port row
 const HEADER_H   = 26;  // px — height of the title bar
 
-// ── Auto-arrange: layered topological layout ─────────────────────────────────
-
-function autoArrange(nodes: Node[], edges: Edge[]): Node[] {
-  if (nodes.length === 0) return nodes;
-
-  const children: Record<string, string[]> = {};
-  const parents:  Record<string, string[]> = {};
-  for (const n of nodes) { children[n.id] = []; parents[n.id] = []; }
-  for (const e of edges) {
-    if (e.source in children && e.target in parents) {
-      if (!children[e.source].includes(e.target)) children[e.source].push(e.target);
-      if (!parents[e.target].includes(e.source))  parents[e.target].push(e.source);
-    }
-  }
-
-  // Kahn topological sort
-  const inDeg: Record<string, number> = {};
-  for (const n of nodes) inDeg[n.id] = parents[n.id].length;
-  const queue   = nodes.filter(n => inDeg[n.id] === 0).map(n => n.id);
-  const visited = new Set(queue);
-  const topo: string[] = [];
-  let qi = 0;
-  while (qi < queue.length) {
-    const nid = queue[qi++];
-    topo.push(nid);
-    for (const c of children[nid]) {
-      inDeg[c]--;
-      if (inDeg[c] === 0 && !visited.has(c)) { visited.add(c); queue.push(c); }
-    }
-  }
-  for (const n of nodes) if (!visited.has(n.id)) topo.push(n.id); // cycles
-
-  // Longest-path layer assignment
-  const layer: Record<string, number> = {};
-  for (const nid of topo) {
-    layer[nid] = 0;
-    for (const par of parents[nid])
-      if (par in layer) layer[nid] = Math.max(layer[nid], layer[par] + 1);
-  }
-
-  // Group by layer
-  const byLayer: Record<number, string[]> = {};
-  for (const nid of topo) {
-    const l = layer[nid] ?? 0;
-    (byLayer[l] = byLayer[l] ?? []).push(nid);
-  }
-
-  const SNAP  = 15;
-  const COL_W = 255;   // horizontal spacing between layers
-  const ROW_H = 150;   // vertical spacing within a layer
-  const OX    = 60;
-  const OY    = 60;
-  const maxCol = Math.max(...Object.values(byLayer).map(g => g.length), 1);
-  const totalH = (maxCol - 1) * ROW_H;
-
-  const posMap: Record<string, { x: number; y: number }> = {};
-  for (const [lStr, group] of Object.entries(byLayer)) {
-    const l = Number(lStr);
-    const colH    = (group.length - 1) * ROW_H;
-    const startY  = OY + (totalH - colH) / 2;
-    group.forEach((nid, idx) => {
-      posMap[nid] = {
-        x: Math.round((OX + l * COL_W) / SNAP) * SNAP,
-        y: Math.round((startY + idx * ROW_H) / SNAP) * SNAP,
-      };
-    });
-  }
-  return nodes.map(n => ({ ...n, position: posMap[n.id] ?? n.position }));
-}
+// (autoArrange is imported from ../utils/autoArrange)
 
 // ── ExpNode — ComfyUI-style node with per-row port handles ───────────────────
 
@@ -635,7 +568,7 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
       });
 
       // Auto-arrange on load so the graph is always presented in a clean layout
-      setNodes(autoArrange(mappedNodes as Node[], mappedEdges) as Node<ExpNodeData>[]);
+      setNodes(autoArrangeNodes(mappedNodes as Node[], mappedEdges) as Node<ExpNodeData>[]);
       setEdges(mappedEdges);
       setFitTrigger(t => t + 1);
     } catch { /* ignore */ }
@@ -820,7 +753,7 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
 
   // Auto-arrange
   const doArrange = useCallback(() => {
-    setNodes(prev => autoArrange(prev, edges) as Node<ExpNodeData>[]);
+    setNodes(prev => autoArrangeNodes(prev, edges) as Node<ExpNodeData>[]);
     setFitTrigger(t => t + 1);
   }, [edges]);
 
@@ -870,9 +803,9 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
           { label: "＋ New",    title: "New experiment",      action: () => setShowNew(true) },
           { label: "↑ Import",  title: "Import from JSON",    action: () => importRef.current?.click() },
           { label: "↓ Export",  title: "Export to JSON",      disabled: !activeExp,             action: exportExp },
+          { label: saving ? "…" : "💾 Save", title: "Save",           disabled: saving || !activeExp,   action: () => void doSave() },
           { label: "⬦ Arrange", title: "Auto-arrange nodes",  disabled: !activeExp || nodes.length === 0, action: doArrange },
           { label: running ? "⏳" : "▶ Run", title: running ? "Running…" : "Run preview", disabled: running || !activeExp?.id, action: () => void doRun(), green: true },
-          { label: saving ? "…" : "💾",    title: "Save",              disabled: saving || !activeExp,   action: () => void doSave() },
         ].map(({ label, title, action, disabled, green }) => (
           <button key={label} onClick={action} disabled={disabled} title={title}
             style={{ padding: "3px 8px", border: `1px solid ${th.border}`, borderRadius: 5, cursor: disabled ? "not-allowed" : "pointer", fontSize: 10, fontWeight: 600, background: "transparent", color: green ? "#22c55e" : th.textMuted, opacity: disabled ? 0.4 : 1 }}>
@@ -880,11 +813,6 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
           </button>
         ))}
         <input ref={importRef} type="file" accept=".json" style={{ display: "none" }} onChange={onImportExp} />
-        {/* AI hint */}
-        <span style={{ fontSize: 9, color: th.textFaint, borderLeft: `1px solid ${th.border}`, paddingLeft: 6, whiteSpace: "nowrap" }}
-          title="Open AI Chat and ask it to add/suggest nodes for your experiment">
-          ✨ AI builds nodes
-        </span>
       </div>
 
       {/* Main area */}

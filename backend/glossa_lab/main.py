@@ -37,6 +37,7 @@ from glossa_lab.api.texts import router as texts_router
 from glossa_lab.node_registry import router as node_registry_router
 from glossa_lab.api.rag import router as rag_router
 from glossa_lab.api.experiment_graphs import router as experiment_graphs_router
+from glossa_lab.api.collab import router as collab_router
 from glossa_lab.config import get_settings
 from glossa_lab.database import close_db, init_db
 from glossa_lab.engine import run_engine_loop
@@ -187,6 +188,7 @@ def create_app() -> FastAPI:
     application.include_router(presets_router, prefix="/api/v1")
     application.include_router(reports_router, prefix="/api/v1")
     application.include_router(studies_router, prefix="/api/v1")
+    application.include_router(collab_router, prefix="/api/v1")
     application.include_router(analysis_router, prefix="/api/v1")
     application.include_router(research_router, prefix="/api/v1")
     application.include_router(ai_tools_router, prefix="/api/v1")

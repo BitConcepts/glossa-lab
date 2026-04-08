@@ -524,12 +524,19 @@ def test_auto_migrate_creates_proper_graphs(tmp_path, monkeypatch):
     atomic_ids = [n["data"]["atomicId"] for n in data2["nodes"]]
     assert "ExperimentWrapper" not in atomic_ids
 
-    # CLI-only experiments use StaticValue + ExperimentWrapper
-    p3 = tmp_path / "kandles_bias.json"
+    # CLI-only OCR experiments use StaticValue + ExperimentWrapper
+    p3 = tmp_path / "ocr_tables.json"
     data3 = json.loads(p3.read_text("utf-8"))
     aids = [n["data"]["atomicId"] for n in data3["nodes"]]
     assert "StaticValue" in aids
     assert "ExperimentWrapper" in aids
+
+    # kandles_bias is now a runnable graph (not CLI-only)
+    p4 = tmp_path / "kandles_bias.json"
+    data4 = json.loads(p4.read_text("utf-8"))
+    aids4 = [n["data"]["atomicId"] for n in data4["nodes"]]
+    assert "ExperimentWrapper" in aids4
+    assert "CorpusReader" in aids4
 
 
 def test_auto_migrate_preserves_user_graphs(tmp_path, monkeypatch):

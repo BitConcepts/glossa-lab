@@ -577,6 +577,7 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   const draggedExpId = useRef<string | null>(null);
   const onDrop = useCallback((ev: React.DragEvent<HTMLDivElement>) => {
     ev.preventDefault();
+    if (!activeExp) return;  // guard: no experiment open, ignore drop
     if (!reactFlowWrapper.current) return;
     const rect = reactFlowWrapper.current.getBoundingClientRect();
     const pos = { x: Math.round((ev.clientX - rect.left - 80) / 15) * 15, y: Math.round((ev.clientY - rect.top - 30) / 15) * 15 };
@@ -601,7 +602,10 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
       data: { atomicId: def.id, label: def.name, inputs: def.inputs, outputs: def.outputs, params: defaultParams, params_schema: def.params_schema, runStatus: "idle", darkMode } as ExpNodeData }]);
     draggedNodeType.current = null;
   }, [catalog, experiments, darkMode]);
-  const onDragOver = (ev: React.DragEvent) => { ev.preventDefault(); ev.dataTransfer.dropEffect = "move"; };
+  const onDragOver = (ev: React.DragEvent) => {
+    if (!activeExp) return;  // no drop target when no experiment open
+    ev.preventDefault(); ev.dataTransfer.dropEffect = "move";
+  };
 
   const nodeCtxItems = useCallback((nodeId: string): CtxItem[] => {
     const nd = nodes.find(n => n.id === nodeId);
@@ -615,6 +619,7 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   }, [nodes, selectedNode]);
 
   const paneCtxItems = useCallback((x: number, y: number): CtxItem[] => {
+    if (!activeExp) return [];  // no add-node menu when no experiment is open
     if (!reactFlowWrapper.current) return [];
     const rect = reactFlowWrapper.current.getBoundingClientRect();
     const pos = { x: Math.round((x - rect.left - 80) / 15) * 15, y: Math.round((y - rect.top - 30) / 15) * 15 };

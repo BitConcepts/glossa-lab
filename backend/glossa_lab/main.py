@@ -127,8 +127,13 @@ async def lifespan(app: FastAPI):
     asyncio.create_task(_rag_build(_db))  # fire and forget
 
     # Register graph experiments into the ExperimentBase discovery registry
-    from glossa_lab.experiment_graph import register_graph_experiments  # noqa: PLC0415
+    from glossa_lab.experiment_graph import (  # noqa: PLC0415
+        auto_migrate_hardcoded_experiments,
+        register_graph_experiments,
+    )
     register_graph_experiments()
+    # Migrate any Python experiments not yet represented as graph files (idempotent)
+    auto_migrate_hardcoded_experiments()
 
     # Start pipeline engine in background
     engine_task = asyncio.create_task(run_engine_loop())

@@ -584,49 +584,59 @@ def _build_proper_graph_specs() -> dict[str, dict]:
         ],
     }
 
+    # luwian_kl_scoring: uses ExperimentWrapper so the graph matches the
+    # Python LuwianKLScoring class (KL divergence against language profiles).
+    # The CorpusReader + FreqCounter + ZipfFitter nodes provide representative
+    # Zipf context that flows to the Python experiment as upstream data.
     s["luwian_kl_scoring"] = {
         "id": "luwian_kl_scoring",
         "name": "Word-Length KL Scoring (Luwian vs Greek)",
         "description": (
-            "Frequency distribution and Zipf-Mandelbrot exponent. "
-            "Compares sign-frequency distribution against Yadav (2010) parameters."
+            "KL and JS divergence of inscription-length distribution vs language profiles. "
+            "Corpus node sets corpus_id; ExperimentWrapper calls the Python KL analysis."
         ),
         "auto_migrated": True,
         "nodes": [
-            N("corpus","CorpusReader","Load Corpus",     {}, 60,  100),
-            N("freq",  "FreqCounter", "Frequency Counter",{}, 300, 100),
-            N("zipf",  "ZipfFitter",  "Zipf Fitter",      {}, 540, 100),
-            N("out",   "PassResult",  "Output",            {}, 780, 100),
+            N("corpus",  "CorpusReader",      "Load Corpus",          {},  60, 100),
+            N("freq",    "FreqCounter",        "Frequency Counter",    {},  300, 80),
+            N("zipf",    "ZipfFitter",         "Zipf Exponent",        {},  300, 200),
+            N("run",     "ExperimentWrapper",  "KL Scoring (Luwian/Greek)",
+              {"experiment_id": "luwian_kl_scoring"},               560, 140),
+            N("out",     "PassResult",          "Output",              {},  820, 140),
         ],
         "edges": [
-            E("e1", "corpus","freq", "sequences",     "sequences"),
-            E("e2", "freq",  "zipf", "freq_map",      "freq_map"),
-            E("e3", "zipf",  "out",  "zipf_exponent", "data"),
+            E("e1", "corpus", "freq",  "sequences",    "sequences"),
+            E("e2", "freq",   "zipf",  "freq_map",     "freq_map"),
+            E("e3", "zipf",   "run",   "zipf_exponent","upstream"),
+            E("e4", "run",    "out",   "result",       "data"),
         ],
     }
 
+    # contact_zone: ExperimentWrapper calls the Python ContactZoneAnalysis class,
+    # which performs KL/Jaccard analysis of ICIT sites grouped by contact-zone
+    # classification. Requires icit_extracted_corpus.json in reports/.
+    # The StaticValue note explains the corpus requirement in the Exp Builder.
     s["contact_zone"] = {
         "id": "contact_zone",
         "name": "Contact Zone Analysis",
         "description": (
-            "Compares sign usage between Mesopotamian contact-zone sites "
-            "(Lothal, Dholavira, Sutkagen-Dor) and heartland sites (Harappa, Mohenjo-daro)."
+            "Compares sign usage between Mesopotamian trade-contact sites "
+            "(Lothal, Dholavira) and heartland sites (Harappa, Mohenjo-daro). "
+            "Requires icit_extracted_corpus.json in reports/."
         ),
         "auto_migrated": True,
         "nodes": [
-            N("corpus",  "CorpusReader",      "Load Corpus",         {},  60,  200),
-            N("freq",    "FreqCounter",        "Frequency Counter",   {},  300,  80),
-            N("profiler","PositionalProfiler", "Positional Profiler", {},  300, 320),
-            N("merger",  "Merger",             "Merge Results",       {},  560, 200),
-            N("export",  "JSONExport",         "Save Report",
-              {"filename": "contact_zone_results.json"},                    820, 200),
+            N("note",  "StaticValue",      "Data requirement",
+              {"value": "Requires icit_extracted_corpus.json in reports/. Run OCR pipeline or extract from TXT corpus first."},
+              60, 60),
+            N("run",   "ExperimentWrapper","Contact Zone Analysis (ICIT)",
+              {"experiment_id": "contact_zone"},                    360, 100),
+            N("out",   "JSONExport",        "Save Report",
+              {"filename": "contact_zone_results.json"},             640, 100),
         ],
         "edges": [
-            E("e1", "corpus",  "freq",    "sequences",    "sequences"),
-            E("e2", "corpus",  "profiler","sequences",    "sequences"),
-            E("e3", "freq",    "merger",  "freq_map",     "a"),
-            E("e4", "profiler","merger",  "class_summary","b"),
-            E("e5", "merger",  "export",  "json",         "data"),
+            E("e1", "note", "run", "text",   "upstream"),
+            E("e2", "run",  "out", "result", "data"),
         ],
     }
 

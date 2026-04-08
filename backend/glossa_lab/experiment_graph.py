@@ -669,8 +669,12 @@ def _build_proper_graph_specs() -> dict[str, dict]:
     # Prep stages (FreqCounter, EntropyCalc, etc.) provide representative context;
     # ExperimentWrapper executes the specialised algorithm with its own internal data.
 
-    s["progression"] = {
-        "id": "progression",
+    # progression, writing_system_progression, ventris_validation,
+    # ugaritic_proper_benchmark, ugaritic_vs_hebrew are methodology validators
+    # for non-Indus scripts. They remain available as Python experiments for
+    # study execution but are no longer auto-migrated as graph experiment files.
+
+    s["_SKIP_progression"] = {"id": "progression",
         "name": "Fuls Progression Benchmark",
         "description": (
             "5-tier benchmark: Ugaritic (abjad) → Linear B (syllabary) → "
@@ -694,7 +698,7 @@ def _build_proper_graph_specs() -> dict[str, dict]:
         ],
     }
 
-    s["writing_system_progression"] = {
+    s["_SKIP_writing_system_progression"] = {
         "id": "writing_system_progression",
         "name": "Writing System Progression",
         "description": (
@@ -719,7 +723,7 @@ def _build_proper_graph_specs() -> dict[str, dict]:
         ],
     }
 
-    s["ventris_validation"] = {
+    s["_SKIP_ventris_validation"] = {
         "id": "ventris_validation",
         "name": "Ventris Grid Validation (Linear B)",
         "description": (
@@ -743,7 +747,7 @@ def _build_proper_graph_specs() -> dict[str, dict]:
         ],
     }
 
-    s["ugaritic_proper_benchmark"] = {
+    s["_SKIP_ugaritic_proper_benchmark"] = {
         "id": "ugaritic_proper_benchmark",
         "name": "Ugaritic Proper Benchmark (Anti-Circularity)",
         "description": (
@@ -767,7 +771,7 @@ def _build_proper_graph_specs() -> dict[str, dict]:
         ],
     }
 
-    s["ugaritic_vs_hebrew"] = {
+    s["_SKIP_ugaritic_vs_hebrew"] = {
         "id": "ugaritic_vs_hebrew",
         "name": "Ugaritic vs Hebrew (Bigram Hill-Climbing)",
         "description": (
@@ -824,7 +828,9 @@ def _build_proper_graph_specs() -> dict[str, dict]:
         ],
     }
 
-    # ── linear_a_circularity — now runnable in graph mode (sequential, n_mc_trials=3 default)
+    # ── linear_a_circularity — validation suite (3 MC trials in graph mode)
+    # The FreqCounter dead-end was removed; the experiment only needs
+    # positional profiles as upstream context.
     s["linear_a_circularity"] = {
         "id": "linear_a_circularity",
         "name": "Linear A Anti-Circularity Suite (7 experiments)",
@@ -835,18 +841,16 @@ def _build_proper_graph_specs() -> dict[str, dict]:
         ),
         "auto_migrated": True,
         "nodes": [
-            N("corpus",  "CorpusReader",      "Corpus (context)",            {},  60,  140),
-            N("freq",    "FreqCounter",        "Frequency Counter",           {},  300,  80),
-            N("profiler","PositionalProfiler", "Positional Profiler",         {},  300, 200),
+            N("corpus",  "CorpusReader",      "Load Corpus",                 {},  60,  100),
+            N("profiler","PositionalProfiler", "Positional Profiler",         {},  300, 100),
             N("run",     "ExperimentWrapper",  "Linear A Circularity Suite",
-              {"experiment_id": "linear_a_circularity", "n_mc_trials": 3},    570, 140),
-            N("out",     "PassResult",          "Output",                    {},  830, 140),
+              {"experiment_id": "linear_a_circularity", "n_mc_trials": 3},    560, 100),
+            N("out",     "PassResult",          "Output",                    {},  820, 100),
         ],
         "edges": [
-            E("e1", "corpus",  "freq",    "sequences",  "sequences"),
-            E("e2", "corpus",  "profiler","sequences",  "sequences"),
-            E("e3", "profiler","run",     "profiles",   "upstream"),
-            E("e4", "run",     "out",     "result",      "data"),
+            E("e1", "corpus",  "profiler","sequences","sequences"),
+            E("e2", "profiler","run",     "profiles", "upstream"),
+            E("e3", "run",     "out",     "result",   "data"),
         ],
     }
 
@@ -903,7 +907,8 @@ def _build_proper_graph_specs() -> dict[str, dict]:
         ],
     }
 
-    return s
+    # Filter out _SKIP_* placeholder entries
+    return {k: v for k, v in s.items() if not k.startswith("_SKIP_")}
 
 
 def _is_old_migration(data: dict, exp_id: str) -> bool:
@@ -932,6 +937,23 @@ def auto_migrate_hardcoded_experiments() -> int:
     """
     specs = _build_proper_graph_specs()
     written = 0
+
+    # IDs that were once auto-migrated but are no longer part of the active graph set.
+    # Delete their JSON files if they still exist as auto-migrated files.
+    _RETIRED = {
+        "progression", "writing_system_progression", "ventris_validation",
+        "ugaritic_proper_benchmark", "ugaritic_vs_hebrew",
+    }
+    for retired_id in _RETIRED:
+        stale = _GRAPHS_DIR / f"{retired_id}.json"
+        if stale.exists():
+            try:
+                existing = json.loads(stale.read_text("utf-8"))
+                if existing.get("auto_migrated"):
+                    stale.unlink()
+                    logger.info("Removed retired graph experiment: %s.json", retired_id)
+            except Exception:  # noqa: BLE001
+                pass
 
     for spec in specs.values():
         exp_id = spec["id"]

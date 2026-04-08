@@ -3,7 +3,6 @@ import { StatusView } from "./components/StatusView";
 import { CorporaView } from "./components/CorporaView";
 import { JobsView } from "./components/JobsView";
 import { StudiesView } from "./components/StudiesView";
-import { ExperimentsView } from "./components/ExperimentsView";
 import { PipelinesView } from "./components/PipelinesView";
 import { SettingsView } from "./components/SettingsView";
 import { ReportsView } from "./components/ReportsView";
@@ -25,36 +24,37 @@ import { AIChatProvider, useAIChat } from "./hooks/useAIChat";
 import { getHealth } from "./api";
 
 type Tab =
-  | "status" | "studies" | "builder" | "experiments" | "pipelines"
+  | "status" | "indus-data" | "builder" | "experiments" | "pipelines"
   | "corpora" | "jobs" | "reports" | "settings"
   | "entropy" | "hypotheses" | "notebooks" | "ai-tools"
   | "signs" | "timeline" | "citations"
-  | "exp-builder";
+  | "exp-builder"; // legacy alias — still handled but not in nav
 
 interface NavItem { id: Tab; label: string; icon: string; }
 interface NavSection { title: string; items: NavItem[]; }
 
 // Navigation organised as always-visible sections (no collapsing)
-// Order reflects the deliberate workflow: Corpus → Experiments → Pipelines → Study Builder → Reports
+// Order reflects the deliberate workflow: Corpus → Experiments → Pipelines → Studies → Reports
+// "Experiments" is now the full canvas workspace (Exp Builder + gallery).
+// "Studies" is the full canvas workspace (Study Builder + study list).
 const NAV_SECTIONS: NavSection[] = [
   {
     title: "Workflow",
     items: [
-      { id: "corpora",     label: "Corpora",         icon: "📚" },  // 1. Upload data
-      { id: "experiments", label: "Experiments",     icon: "🧪" },  // 2. Browse analyses
-      { id: "exp-builder", label: "Exp. Builder",   icon: "🔀" },  // 3. Build custom experiments
-      { id: "pipelines",   label: "Pipelines",       icon: "⚙️" },  // 4. Browse async jobs
-      { id: "builder",     label: "Study Builder",   icon: "🔧" },  // 5. Compose + run
-      { id: "reports",     label: "Reports",         icon: "📄" },  // 6. View results
-      { id: "studies",     label: "Studies",         icon: "📋" },  // Manage saved studies
+      { id: "corpora",     label: "Corpora",      icon: "📚" },  // 1. Upload data
+      { id: "experiments", label: "Experiments",  icon: "🔀" },  // 2. Build + browse graph experiments
+      { id: "pipelines",   label: "Pipelines",    icon: "⚙️" },  // 3. Async jobs
+      { id: "builder",     label: "Studies",      icon: "📐" },  // 4. Compose + run studies
+      { id: "reports",     label: "Reports",      icon: "📄" },  // 5. View results
     ],
   },
   {
     title: "Analysis",
     items: [
-      { id: "entropy",    label: "Entropy",    icon: "📊" },
-      { id: "signs",      label: "Signs",      icon: "𓀀" },
-      { id: "timeline",   label: "Timeline",   icon: "📅" },
+      { id: "entropy",    label: "Entropy",     icon: "📊" },
+      { id: "signs",      label: "Signs",       icon: "𔰀" },
+      { id: "timeline",   label: "Timeline",    icon: "📅" },
+      { id: "indus-data", label: "Indus Data",  icon: "📋" },
     ],
   },
   {
@@ -98,7 +98,7 @@ function HealthBadge() {
 }
 
 function AppContent() {
-  const [tab, setTab] = useState<Tab>("studies");
+  const [tab, setTab] = useState<Tab>("builder");
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("glossa_dark") === "1");
   const [paletteOpen, setPaletteOpen] = useState(false);
   // Dirty badges — shown when builders have unsaved local changes
@@ -108,11 +108,16 @@ function AppContent() {
     const h = (e: Event) => {
       const { builder, dirty } = (e as CustomEvent<{ builder: string; dirty: boolean }>).detail;
       if (builder === "study") setStudyDirty(dirty);
-      if (builder === "exp") setExpDirty(dirty);
+      if (builder === "exp")   setExpDirty(dirty);
     };
     window.addEventListener("glossa:dirty", h);
     return () => window.removeEventListener("glossa:dirty", h);
   }, []);
+
+  // Redirect legacy exp-builder navigations to experiments
+  useEffect(() => {
+    if (tab === "exp-builder") setTab("experiments");
+  }, [tab]);
   // notifOpen removed — NotificationCenter is now self-contained
 
   // Bottom panel state
@@ -147,8 +152,12 @@ function AppContent() {
   // Listen for AI-initiated navigation (open_view action)
   useEffect(() => {
     const handler = (e: Event) => {
-      const view = (e as CustomEvent<{ view: string }>).detail?.view as Tab | undefined;
-      if (view && allItems.some(i => i.id === view)) setTab(view);
+      let view = (e as CustomEvent<{ view: string }>).detail?.view as Tab | undefined;
+      // Redirect legacy exp-builder links to the unified experiments canvas
+      if (view === "exp-builder") view = "experiments";
+      // Redirect old "studies" (Indus data) to new id
+      if ((view as string) === "studies") view = "indus-data";
+      if (view && (allItems.some(i => i.id === view) || view === "indus-data" || view === "experiments")) setTab(view);
     };
     window.addEventListener("glossa:navigate", handler);
     return () => window.removeEventListener("glossa:navigate", handler);
@@ -190,7 +199,7 @@ function AppContent() {
   // ── Sidebar nav item renderer ─────────────────────────────────────────────
   const NavBtn = ({ item }: { item: NavItem }) => {
     const active = tab === item.id;
-    const dirty = (item.id === "builder" && studyDirty) || (item.id === "exp-builder" && expDirty);
+    const dirty = (item.id === "builder" && studyDirty) || (item.id === "experiments" && expDirty);
     return (
       <button
         onClick={() => setTab(item.id)}
@@ -317,11 +326,11 @@ function AppContent() {
         </div>
 
         {/* Page content
-             Canvas views (builder, exp-builder) get the full remaining height,
+             Canvas views (builder, experiments) get the full remaining height,
              zero padding, no maxWidth, and marginBottom to sit above the bottom panel.
              All other views get the standard padded, scrollable layout. */}
         {(() => {
-          const isCanvas = tab === "builder" || tab === "exp-builder";
+          const isCanvas = tab === "builder" || tab === "experiments" || tab === "exp-builder";
           return (
             <main style={{
               flex: 1,
@@ -335,10 +344,9 @@ function AppContent() {
               overflow: isCanvas ? "hidden" : "auto",
             }}>
               {tab === "status"      && <StatusView />}
-              {tab === "studies"     && <StudiesView />}
-              {tab === "builder"     && <StudyBuilderView darkMode={darkMode} />}
-              {tab === "exp-builder" && <ExperimentBuilderView darkMode={darkMode} />}
-              {tab === "experiments" && <ExperimentsView />}
+              {tab === "indus-data"   && <StudiesView />}
+              {tab === "builder"      && <StudyBuilderView darkMode={darkMode} />}
+              {(tab === "experiments" || tab === "exp-builder") && <ExperimentBuilderView darkMode={darkMode} />}
               {tab === "pipelines"   && <PipelinesView />}
               {tab === "corpora"     && <CorporaView />}
               {tab === "jobs"        && <JobsView />}

@@ -41,6 +41,7 @@ import {
   useReactFlow,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
+import { autoArrange } from "../utils/autoArrange";
 
 import {
   createStudy,
@@ -62,6 +63,7 @@ import {
   type StudyRunResult,
 } from "../api";
 import { useAIChat } from "../hooks/useAIChat";
+import { CollaborationPanel } from "./CollaborationPanel";
 
 // ── Theme helpers ────────────────────────────────────────────────────────
 
@@ -432,6 +434,17 @@ function StudySummaryPanel({ summary, onClose }: { summary: AISummaryResult; onC
   );
 }
 
+// ── AutoFitView — must live inside ReactFlow provider ───────────────────────
+
+function AutoFitView({ trigger }: { trigger: number }) {
+  const { fitView } = useReactFlow();
+  useEffect(() => {
+    if (trigger > 0) setTimeout(() => fitView({ padding: 0.2 }), 80);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [trigger]);
+  return null;
+}
+
 // ── Main: StudyBuilderView ──────────────────────────────────────────────────
 
 let _nid = 0;
@@ -490,6 +503,12 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
   // RAG
   const [ragReady, setRagReady]     = useState(false);
   const [ragBuilding, setRagBuilding] = useState(false);
+
+  // AI menu dropdown
+  const [aiMenuOpen, setAiMenuOpen] = useState(false);
+
+  // Auto-arrange fit trigger
+  const [fitTrigger, setFitTrigger] = useState(0);
 
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   const draggedRef = useRef<{ nodeType: StudyNodeType; refId: string; label: string } | null>(null);
@@ -671,6 +690,12 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
     ev.preventDefault(); ev.dataTransfer.dropEffect = "move";
   };
   const onDragStart = useCallback((nt: StudyNodeType, refId: string, label: string) => { draggedRef.current = { nodeType: nt, refId, label }; }, []);
+
+  // Auto-arrange
+  const doArrange = useCallback(() => {
+    setNodes(prev => autoArrange(prev, edges) as Node<NodeData>[]);
+    setFitTrigger(t => t + 1);
+  }, [edges]);
 
   // Param change
   const onParamChange = useCallback((nodeId: string, p: Record<string, unknown>) => {
@@ -891,17 +916,41 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
             color: ragBuilding ? "#f59e0b" : ragReady ? "#22c55e" : th.textFaint, borderColor: ragBuilding ? "#f59e0b40" : ragReady ? "#22c55e30" : th.border }}>
           {ragBuilding ? "⏳" : ragReady ? "🔍✓" : "🔍"}
         </button>
+
+        {/* AI dropdown */}
+        <div style={{ position: "relative" }}>
+          <button onClick={() => setAiMenuOpen(v => !v)} disabled={summarizing}
+            title="AI tools" style={{ ...tBtn, padding: "3px 8px", fontSize: 10, cursor: summarizing ? "not-allowed" : "pointer", opacity: summarizing ? 0.5 : 1, color: th.textMuted, border: `1px solid ${th.border}` }}>
+            {summarizing ? "⏳" : "✨ AI"} ▾
+          </button>
+          {aiMenuOpen && (
+            <div style={{ position: "absolute", top: "100%", left: 0, zIndex: 9000, background: "#1e293b", border: "1px solid #334155", borderRadius: 7, minWidth: 150, padding: "3px 0", boxShadow: "0 8px 32px rgba(0,0,0,0.6)", marginTop: 2 }}
+              onMouseLeave={() => setAiMenuOpen(false)}>
+              {[
+                { label: "✨ Summary", action: () => { setAiMenuOpen(false); void (async () => { setSummarizing(true); setSummary(null); try { setSummary(await summarizeStudy(activeStudy!.id)); } finally { setSummarizing(false); } })(); }, disabled: !activeStudy },
+                { label: "✨ Design", action: () => { setAiMenuOpen(false); openChat({ contextType: activeStudy ? "study" : "", contextId: activeStudy?.id ?? "", initialPrompt: activeStudy ? `Help me improve "${activeStudy.name}".` : undefined }); }, disabled: false },
+              ].map(({ label, action, disabled }) => (
+                <button key={label} onClick={action} disabled={disabled}
+                  style={{ display: "flex", alignItems: "center", gap: 7, width: "100%", padding: "6px 12px", border: "none", background: "none", color: disabled ? "#64748b" : "#e2e8f0", cursor: disabled ? "not-allowed" : "pointer", fontSize: 12 }}
+                  onMouseEnter={e => { if (!disabled) (e.currentTarget as HTMLElement).style.background = "#334155"; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "none"; }}>
+                  {label}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
         {[
-          { label: "✨", title: summarizing ? "Summarizing…" : "AI Summary",  disabled: summarizing || !activeStudy, action: () => void (async () => { setSummarizing(true); setSummary(null); try { setSummary(await summarizeStudy(activeStudy!.id)); } finally { setSummarizing(false); } })() },
-          { label: "✨ Design", title: "AI Design", disabled: false, action: () => openChat({ contextType: activeStudy ? "study" : "", contextId: activeStudy?.id ?? "", initialPrompt: activeStudy ? `Help me improve "${activeStudy.name}".` : undefined }) },
           { label: "↑ Import", title: "Import study from JSON", disabled: false, action: () => importStudyRef.current?.click() },
           { label: "↓ Export", title: "Export study as JSON", disabled: !activeStudy, action: exportStudy },
+          { label: saving ? "…" : "💾 Save", title: "Save", disabled: saving || !activeStudy, action: () => void doSave() },
+          { label: "⬦ Arrange", title: "Auto-arrange nodes", disabled: !activeStudy || nodes.length === 0, action: doArrange },
           { label: "↩ Revert", title: isDirty ? "Discard changes and revert to last saved" : "No unsaved changes", disabled: !isDirty || !activeStudy, action: doRevert, warn: true },
           { label: running ? "⏳" : "▶ Run", title: running ? "Running…" : "Run study", disabled: running || !activeStudy || !nodes.length, action: () => void doRun(), green: true },
-          { label: saving ? "…" : "💾", title: "Save", disabled: saving || !activeStudy, action: () => void doSave() },
         ].map(({ label, title, disabled, action, green, warn }) => (
           <button key={label} onClick={action} disabled={disabled} title={title}
-            style={{ ...tBtn, padding: "3px 8px", fontSize: 10, opacity: disabled ? 0.4 : 1, cursor: disabled ? "not-allowed" : "pointer", color: green ? "#22c55e" : warn ? "#f59e0b" : th.textMuted, border: `1px solid ${green ? "#15803d30" : warn ? "#f59e0b40" : th.border}` }}>
+            style={{ ...tBtn, padding: "3px 8px", fontSize: 10, opacity: disabled ? 0.4 : 1, cursor: disabled ? "not-allowed" : "pointer", color: green ? "#22c55e" : (warn as boolean | undefined) ? "#f59e0b" : th.textMuted, border: `1px solid ${green ? "#15803d30" : (warn as boolean | undefined) ? "#f59e0b40" : th.border}` }}>
             {label}
           </button>
         ))}
@@ -955,6 +1004,7 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
             <Controls style={{ background: darkMode ? "#1e293b" : "#ffffff", border: `1px solid ${th.border}` }} />
             <MiniMap style={{ background: th.canvasBg }} nodeColor={n => NODE_CFG[(n.data as NodeData)?.nodeType]?.color ?? "#334155"} />
             <Background variant={BackgroundVariant.Dots} gap={15} size={1} color={th.canvasGrid} />
+            <AutoFitView trigger={fitTrigger} />
           </ReactFlow>
         </div>
 
@@ -1011,6 +1061,13 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
       {showNewStudy && (
         <NewStudyDialog onClose={() => setShowNewStudy(false)} onCreated={s => { setStudies(prev => [s, ...prev]); loadStudy(s); }} />
       )}
+
+      {/* Collaboration panel — always visible at the bottom, collapses when not needed */}
+      <CollaborationPanel
+        studyId={activeStudy?.id ?? null}
+        studyName={activeStudy?.name}
+        darkMode={darkMode}
+      />
     </div>
   );
 }

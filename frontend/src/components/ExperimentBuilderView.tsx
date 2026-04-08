@@ -74,7 +74,81 @@ function ebTheme(dark: boolean) {
 
 const PORT_CLR = PORT_COLORS;
 
-// ── ExpNode — custom node with typed multi-port handles ──────────────────────
+// ── Layout constants (shared by ExpNode and auto-arrange) ─────────────────────
+const PORT_ROW_H = 22;  // px — height of each input/output port row
+const HEADER_H   = 26;  // px — height of the title bar
+
+// ── Auto-arrange: layered topological layout ─────────────────────────────────
+
+function autoArrange(nodes: Node[], edges: Edge[]): Node[] {
+  if (nodes.length === 0) return nodes;
+
+  const children: Record<string, string[]> = {};
+  const parents:  Record<string, string[]> = {};
+  for (const n of nodes) { children[n.id] = []; parents[n.id] = []; }
+  for (const e of edges) {
+    if (e.source in children && e.target in parents) {
+      if (!children[e.source].includes(e.target)) children[e.source].push(e.target);
+      if (!parents[e.target].includes(e.source))  parents[e.target].push(e.source);
+    }
+  }
+
+  // Kahn topological sort
+  const inDeg: Record<string, number> = {};
+  for (const n of nodes) inDeg[n.id] = parents[n.id].length;
+  const queue   = nodes.filter(n => inDeg[n.id] === 0).map(n => n.id);
+  const visited = new Set(queue);
+  const topo: string[] = [];
+  let qi = 0;
+  while (qi < queue.length) {
+    const nid = queue[qi++];
+    topo.push(nid);
+    for (const c of children[nid]) {
+      inDeg[c]--;
+      if (inDeg[c] === 0 && !visited.has(c)) { visited.add(c); queue.push(c); }
+    }
+  }
+  for (const n of nodes) if (!visited.has(n.id)) topo.push(n.id); // cycles
+
+  // Longest-path layer assignment
+  const layer: Record<string, number> = {};
+  for (const nid of topo) {
+    layer[nid] = 0;
+    for (const par of parents[nid])
+      if (par in layer) layer[nid] = Math.max(layer[nid], layer[par] + 1);
+  }
+
+  // Group by layer
+  const byLayer: Record<number, string[]> = {};
+  for (const nid of topo) {
+    const l = layer[nid] ?? 0;
+    (byLayer[l] = byLayer[l] ?? []).push(nid);
+  }
+
+  const SNAP  = 15;
+  const COL_W = 255;   // horizontal spacing between layers
+  const ROW_H = 150;   // vertical spacing within a layer
+  const OX    = 60;
+  const OY    = 60;
+  const maxCol = Math.max(...Object.values(byLayer).map(g => g.length), 1);
+  const totalH = (maxCol - 1) * ROW_H;
+
+  const posMap: Record<string, { x: number; y: number }> = {};
+  for (const [lStr, group] of Object.entries(byLayer)) {
+    const l = Number(lStr);
+    const colH    = (group.length - 1) * ROW_H;
+    const startY  = OY + (totalH - colH) / 2;
+    group.forEach((nid, idx) => {
+      posMap[nid] = {
+        x: Math.round((OX + l * COL_W) / SNAP) * SNAP,
+        y: Math.round((startY + idx * ROW_H) / SNAP) * SNAP,
+      };
+    });
+  }
+  return nodes.map(n => ({ ...n, position: posMap[n.id] ?? n.position }));
+}
+
+// ── ExpNode — ComfyUI-style node with per-row port handles ───────────────────
 
 interface ExpNodeData extends Record<string, unknown> {
   atomicId: string;
@@ -88,121 +162,224 @@ interface ExpNodeData extends Record<string, unknown> {
   runResult?: string;
 }
 
-function PortHandle({ port, side, index, total }: {
-  port: AtomicPort; side: "left" | "right"; index: number; total: number;
-}) {
-  const color = PORT_CLR[port.type] ?? PORT_CLR.any;
-  // Evenly space handles along the node height
-  const topPct = total === 1 ? 50 : 20 + (index / (total - 1)) * 60;
-  return (
-    <Handle
-      type={side === "left" ? "target" : "source"}
-      position={side === "left" ? Position.Left : Position.Right}
-      id={`${side === "left" ? "in" : "out"}__${port.name}`}
-      style={{
-        width: 10, height: 10,
-        background: color,
-        border: "2px solid #111827",
-        borderRadius: 3,
-        [side === "left" ? "left" : "right"]: -6,
-        top: `${topPct}%`,
-        transform: "translateY(-50%)",
-      }}
-      title={`${port.name} : ${port.type}${port.required ? " (required)" : ""}`}
-    />
-  );
-}
-
 const ExpNode = ({ data, id, selected }: NodeProps) => {
   const nd = data as ExpNodeData;
   const { setNodes, setEdges } = useReactFlow();
-  const runStatus = nd.runStatus;
+
+  const isDark     = (nd as Record<string, unknown>).darkMode !== false;
+  const nodeBg     = isDark ? "#111827" : "#ffffff";
+  const portBg     = isDark ? "#0d1424" : "#f8fafc";
+  const portRowBdr = isDark ? "#1a2535" : "#e8edf2";
+  const paramBg    = isDark ? "#0a1020" : "#f1f5f9";
+  const paramLbl   = isDark ? "#475569" : "#9ca3af";
+  const paramVal   = isDark ? "#94a3b8" : "#64748b";
+  const runStatus  = nd.runStatus;
   const runClrMap: Record<string, string> = { complete: "#22c55e", error: "#ef4444", running: "#60a5fa" };
-  const runClr = runStatus ? (runClrMap[runStatus] ?? "") : "";
-  // Theme: passed via data.darkMode
-  const isDark = (nd as Record<string, unknown>).darkMode !== false;
-  const nodeBg = isDark ? "#111827" : "#ffffff";
+  const runClr     = runStatus ? (runClrMap[runStatus] ?? "") : "";
+  const headerColor = (nd.outputs?.[0] ? PORT_CLR[nd.outputs[0].type] : null) ?? "#334155";
   const shadow = isDark
     ? (selected ? "0 0 0 2px #60a5fa40, 0 4px 20px rgba(0,0,0,0.6)" : "0 2px 14px rgba(0,0,0,0.5)")
     : (selected ? "0 0 0 2px #60a5fa60, 0 4px 12px rgba(0,0,0,0.15)" : "0 1px 6px rgba(0,0,0,0.12)");
-  const portDivBdr = isDark ? "#1e293b" : "#e2e8f0";
-  const paramText = isDark ? "#94a3b8" : "#64748b";
+
+  const maxRows  = Math.max(nd.inputs.length, nd.outputs.length);
+  const paramEntries = Object.entries(nd.params_schema?.properties ?? {});
 
   const onDelete = (e: React.MouseEvent) => {
     e.stopPropagation();
     setNodes(n => n.filter(node => node.id !== id));
-    setEdges(e => e.filter(ed => ed.source !== id && ed.target !== id));
+    setEdges(ed => ed.filter(edge => edge.source !== id && edge.target !== id));
   };
 
-  const headerColor = (nd.outputs?.[0] ? PORT_CLR[nd.outputs[0].type] : null) ?? "#334155";
-
   return (
-    <div style={{
-      background: nodeBg,
-      border: `2px solid ${selected ? "#60a5fa" : headerColor + "66"}`,
-      borderRadius: 8,
-      minWidth: 175, maxWidth: 240,
-      boxShadow: shadow,
-      fontFamily: "system-ui, sans-serif",
-      position: "relative",
-    }}>
-      {/* Input handles — left side */}
-      {nd.inputs.map((p, i) => (
-        <PortHandle key={`in_${p.name}`} port={p} side="left" index={i} total={nd.inputs.length} />
-      ))}
-
-      {/* Header */}
-      <div style={{ background: headerColor, borderRadius: "6px 6px 0 0", padding: "5px 7px", display: "flex", alignItems: "center", gap: 5 }}>
-        <span style={{ color: "#fff", fontSize: 11, fontWeight: 700, flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", textShadow: "0 1px 2px rgba(0,0,0,0.4)" }}>
+    <div
+      data-testid="exp-node"
+      style={{
+        background: nodeBg,
+        border: `2px solid ${selected ? "#60a5fa" : headerColor + "66"}`,
+        borderRadius: 8,
+        minWidth: 220, maxWidth: 280,
+        boxShadow: shadow,
+        fontFamily: "system-ui, sans-serif",
+        overflow: "visible",
+      }}
+    >
+      {/* ── Title bar ── */}
+      <div
+        data-testid="exp-node-header"
+        style={{
+          background: headerColor,
+          borderRadius: "6px 6px 0 0",
+          height: HEADER_H,
+          padding: "0 8px",
+          display: "flex", alignItems: "center", gap: 5,
+        }}
+      >
+        <span style={{
+          color: "#fff", fontSize: 11, fontWeight: 700, flex: 1,
+          overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
+          textShadow: "0 1px 2px rgba(0,0,0,0.4)",
+        }}>
           {nd.label}
         </span>
         {runStatus && runStatus !== "idle" && (
-          <span style={{ width: 6, height: 6, borderRadius: "50%", background: runClr, display: "inline-block", boxShadow: `0 0 4px ${runClr}` }} />
+          <span style={{ width: 6, height: 6, borderRadius: "50%", background: runClr, flexShrink: 0,
+            display: "inline-block", boxShadow: `0 0 4px ${runClr}` }} />
         )}
-        <button onMouseDown={onDelete} style={{ border: "none", background: "rgba(0,0,0,0.3)", color: "#fff", cursor: "pointer", fontSize: 12, lineHeight: 1, borderRadius: 3, padding: "1px 4px", flexShrink: 0 }}>×</button>
+        <button
+          onMouseDown={onDelete}
+          data-testid="exp-node-delete"
+          style={{ border: "none", background: "rgba(0,0,0,0.3)", color: "#fff",
+            cursor: "pointer", fontSize: 12, lineHeight: 1, borderRadius: 3, padding: "1px 4px", flexShrink: 0 }}
+        >×</button>
       </div>
 
-      {/* Port type legend row */}
-      <div style={{ padding: "3px 7px", display: "flex", gap: 5, flexWrap: "wrap", borderBottom: `1px solid ${portDivBdr}` }}>
-        {nd.inputs.map(p => (
-          <span key={p.name} style={{ fontSize: 9, color: PORT_CLR[p.type] ?? PORT_CLR.any, display: "flex", alignItems: "center", gap: 2 }}>
-            <span style={{ width: 5, height: 5, borderRadius: 1, background: PORT_CLR[p.type] ?? PORT_CLR.any, display: "inline-block" }} />
-            {p.name}
-          </span>
-        ))}
-        {nd.inputs.length > 0 && nd.outputs.length > 0 && <span style={{ color: "#334155", fontSize: 9 }}>→</span>}
-        {nd.outputs.map(p => (
-          <span key={p.name} style={{ fontSize: 9, color: PORT_CLR[p.type] ?? PORT_CLR.any, display: "flex", alignItems: "center", gap: 2 }}>
-            {p.name}
-            <span style={{ width: 5, height: 5, borderRadius: 1, background: PORT_CLR[p.type] ?? PORT_CLR.any, display: "inline-block" }} />
-          </span>
-        ))}
-      </div>
+      {/* ── Port rows: inputs (left) + outputs (right), zipper pattern ── */}
+      {maxRows > 0 && (
+        <div
+          data-testid="exp-node-ports"
+          style={{ background: portBg, borderBottom: maxRows > 0 ? `1px solid ${portRowBdr}` : undefined }}
+        >
+          {Array.from({ length: maxRows }, (_, i) => {
+            const inp = nd.inputs[i];
+            const out = nd.outputs[i];
+            return (
+              <div
+                key={i}
+                style={{
+                  display: "flex", alignItems: "center",
+                  height: PORT_ROW_H,
+                  borderBottom: i < maxRows - 1 ? `1px solid ${portRowBdr}` : undefined,
+                }}
+              >
+                {/* Input port label + visual square */}
+                <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 4, paddingLeft: 10, minWidth: 0 }}>
+                  {inp && (
+                    <>
+                      <span
+                        data-testid="port-square-in"
+                        style={{
+                          width: 7, height: 7, borderRadius: 2, flexShrink: 0,
+                          background: PORT_CLR[inp.type] ?? PORT_CLR.any,
+                          border: "1.5px solid rgba(0,0,0,0.35)",
+                        }}
+                      />
+                      <span style={{
+                        fontSize: 9.5, color: PORT_CLR[inp.type] ?? PORT_CLR.any,
+                        whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
+                        fontWeight: 500,
+                      }}>{inp.name}</span>
+                    </>
+                  )}
+                </div>
 
-      {/* Params summary */}
-      <div style={{ padding: "3px 7px 4px", fontSize: 10, color: paramText }}>
-        {Object.keys(nd.params_schema?.properties ?? {}).length === 0
-          ? <span style={{ color: "#334155", fontSize: 9 }}>No params</span>
-          : Object.entries(nd.params).filter(([, v]) => v !== "" && v !== undefined).map(([k, v]) => (
-            <div key={k} style={{ color: "#94a3b8", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-              <span style={{ color: "#64748b" }}>{k}: </span>{String(v).slice(0, 20)}
-            </div>
-          ))
-        }
-        {runStatus === "complete" && nd.runResult && (
-          <div style={{ fontSize: 9, color: "#22c55e", marginTop: 2 }}>✓ {nd.runResult.slice(0, 40)}</div>
-        )}
-      </div>
+                {/* Output port label + visual square */}
+                <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 4, paddingRight: 10, minWidth: 0 }}>
+                  {out && (
+                    <>
+                      <span style={{
+                        fontSize: 9.5, color: PORT_CLR[out.type] ?? PORT_CLR.any,
+                        whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
+                        fontWeight: 500, textAlign: "right",
+                      }}>{out.name}</span>
+                      <span
+                        data-testid="port-square-out"
+                        style={{
+                          width: 7, height: 7, borderRadius: 2, flexShrink: 0,
+                          background: PORT_CLR[out.type] ?? PORT_CLR.any,
+                          border: "1.5px solid rgba(0,0,0,0.35)",
+                        }}
+                      />
+                    </>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
 
-      {/* Output handles */}
+      {/* ── Params section ── */}
+      {paramEntries.length > 0 && (
+        <div
+          data-testid="exp-node-params"
+          style={{ background: paramBg, borderRadius: "0 0 6px 6px", padding: "4px 8px" }}
+        >
+          {Object.entries(nd.params)
+            .filter(([, v]) => v !== "" && v !== undefined)
+            .map(([k, v]) => (
+              <div key={k} style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 1 }}>
+                <span style={{ fontSize: 9, color: paramLbl, flexShrink: 0, marginRight: 4 }}>{k}</span>
+                <span style={{ fontSize: 9, color: paramVal, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", maxWidth: 130 }}>
+                  {String(v).slice(0, 28)}
+                </span>
+              </div>
+            ))
+          }
+          {runStatus === "complete" && nd.runResult && (
+            <div style={{ fontSize: 9, color: "#22c55e", marginTop: 2 }}>✓ {nd.runResult.slice(0, 40)}</div>
+          )}
+        </div>
+      )}
+      {paramEntries.length === 0 && runStatus === "complete" && nd.runResult && (
+        <div style={{ padding: "2px 8px 4px", borderRadius: "0 0 6px 6px", fontSize: 9, color: "#22c55e" }}>
+          ✓ {nd.runResult.slice(0, 40)}
+        </div>
+      )}
+
+      {/* ── React Flow Handles — positioned at row centres ── */}
+      {nd.inputs.map((p, i) => (
+        <Handle
+          key={`in_${p.name}`}
+          type="target"
+          position={Position.Left}
+          id={`in__${p.name}`}
+          style={{
+            width: 10, height: 10,
+            background: PORT_CLR[p.type] ?? PORT_CLR.any,
+            border: "2px solid rgba(0,0,0,0.5)",
+            borderRadius: 3,
+            left: -6,
+            top: HEADER_H + (i + 0.5) * PORT_ROW_H,
+            transform: "translateY(-50%)",
+            position: "absolute",
+          }}
+          title={`${p.name} : ${p.type}${p.required ? " (required)" : ""}`}
+        />
+      ))}
       {nd.outputs.map((p, i) => (
-        <PortHandle key={`out_${p.name}`} port={p} side="right" index={i} total={nd.outputs.length} />
+        <Handle
+          key={`out_${p.name}`}
+          type="source"
+          position={Position.Right}
+          id={`out__${p.name}`}
+          style={{
+            width: 10, height: 10,
+            background: PORT_CLR[p.type] ?? PORT_CLR.any,
+            border: "2px solid rgba(0,0,0,0.5)",
+            borderRadius: 3,
+            right: -6,
+            top: HEADER_H + (i + 0.5) * PORT_ROW_H,
+            transform: "translateY(-50%)",
+            position: "absolute",
+          }}
+          title={`${p.name} : ${p.type}`}
+        />
       ))}
     </div>
   );
 };
 
 const EXP_NODE_TYPES = { expNode: ExpNode };
+
+// Helper rendered inside ReactFlow to call fitView programmatically
+function AutoFitView({ trigger }: { trigger: number }) {
+  const { fitView } = useReactFlow();
+  useEffect(() => {
+    if (trigger > 0) setTimeout(() => fitView({ padding: 0.2 }), 80);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [trigger]);
+  return null;
+}
 
 // ── Context menu ─────────────────────────────────────────────────────────────
 
@@ -369,6 +546,7 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   const [palSearch, setPalSearch] = useState("");
   const [ctxMenu, setCtxMenu]   = useState<{ x: number; y: number; type: "pane" | "node"; nodeId?: string } | null>(null);
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+  const [fitTrigger, setFitTrigger] = useState(0);
 
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   const draggedNodeType  = useRef<string | null>(null);
@@ -631,6 +809,12 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     ]);
   }, [catalog, darkMode]);
 
+  // Auto-arrange
+  const doArrange = useCallback(() => {
+    setNodes(prev => autoArrange(prev, edges) as Node<ExpNodeData>[]);
+    setFitTrigger(t => t + 1);
+  }, [edges]);
+
   // Import/export helpers
   const importRef = useRef<HTMLInputElement>(null);
   const onImportExp = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -674,11 +858,12 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
         {saveMsg && <span style={{ fontSize: 10, color: saveMsg === "Saved" ? "#22c55e" : "#ef4444", fontWeight: 600, flexShrink: 0 }}>{saveMsg}</span>}
         <div style={{ flex: 1 }} />
         {[
-          { label: "＋ New", title: "New experiment", action: () => setShowNew(true) },
-          { label: "↑ Import", title: "Import from JSON", action: () => importRef.current?.click() },
-          { label: "↓ Export", title: "Export to JSON", disabled: !activeExp, action: exportExp },
+          { label: "＋ New",    title: "New experiment",      action: () => setShowNew(true) },
+          { label: "↑ Import",  title: "Import from JSON",    action: () => importRef.current?.click() },
+          { label: "↓ Export",  title: "Export to JSON",      disabled: !activeExp,             action: exportExp },
+          { label: "⬦ Arrange", title: "Auto-arrange nodes",  disabled: !activeExp || nodes.length === 0, action: doArrange },
           { label: running ? "⏳" : "▶ Run", title: running ? "Running…" : "Run preview", disabled: running || !activeExp?.id, action: () => void doRun(), green: true },
-          { label: saving ? "…" : "💾", title: "Save", disabled: saving || !activeExp, action: () => void doSave() },
+          { label: saving ? "…" : "💾",    title: "Save",              disabled: saving || !activeExp,   action: () => void doSave() },
         ].map(({ label, title, action, disabled, green }) => (
           <button key={label} onClick={action} disabled={disabled} title={title}
             style={{ padding: "3px 8px", border: `1px solid ${th.border}`, borderRadius: 5, cursor: disabled ? "not-allowed" : "pointer", fontSize: 10, fontWeight: 600, background: "transparent", color: green ? "#22c55e" : th.textMuted, opacity: disabled ? 0.4 : 1 }}>
@@ -791,6 +976,7 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
             <Controls style={{ background: darkMode ? "#1e293b" : "#fff", border: `1px solid ${th.border}` }} />
             <MiniMap style={{ background: th.canvasBg }} nodeColor={n => (n.data as ExpNodeData)?.outputs?.[0] ? PORT_CLR[(n.data as ExpNodeData).outputs[0].type] : "#334155"} />
             <Background variant={BackgroundVariant.Dots} gap={15} size={1} color={th.canvasGrid} />
+            <AutoFitView trigger={fitTrigger} />
           </ReactFlow>
         </div>
 

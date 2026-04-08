@@ -16,12 +16,14 @@ import asyncio
 import json
 import logging
 from collections.abc import AsyncGenerator
+from datetime import UTC, datetime
 from typing import Any
 
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
+from glossa_lab import database as _db_mod
 from glossa_lab.experiment_graph import (
     ATOMIC_NODES,
     PORT_COLORS,
@@ -119,18 +121,37 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
     kwargs = body.kwargs or {}
 
     async def _stream() -> AsyncGenerator[str, None]:
+        # ── Create a Job record so the run appears in the Jobs panel ────────────
+        job_id: str | None = None
+        db = _db_mod.get_db()
+        if db is not None:
+            try:
+                job = await db.create_job(
+                    name=f"Exp run: {d.get('name', exp_id)}",
+                    pipeline="exp_run",
+                    params={"exp_id": exp_id, "node_count": len(nodes)},
+                    created_at=datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z"),
+                )
+                job_id = job["id"]
+                await db.update_job_status(job_id, "running")
+            except Exception as _je:  # noqa: BLE001
+                logger.warning("Could not create job record for exp run: %s", _je)
+
         if not nodes:
+            if job_id and db:
+                try: await db.update_job_status(job_id, "completed")
+                except Exception: pass  # noqa: BLE001
             yield _sse({"event": "run_complete", "exp_id": exp_id,
-                        "node_count": 0, "status": "complete", "result": {}})
+                        "node_count": 0, "status": "complete", "result": {}, "job_id": job_id})
             return
 
         ordered = _topo_sort(nodes, edges)
         loop = asyncio.get_event_loop()
         res: dict[str, dict[str, Any]] = {}
 
-        yield _sse({"event": "started", "exp_id": exp_id,
+        yield _sse({"event": "started", "exp_id": exp_id, "job_id": job_id,
                     "exp_name": d.get("name", exp_id), "node_count": len(ordered)})
-        logger.info("Experiment run '%s' starting (%d nodes)", d.get("name"), len(ordered))
+        logger.info("Experiment run '%s' starting (%d nodes) — job %s", d.get("name"), len(ordered), job_id)
 
         try:
             for node_idx, node in enumerate(ordered):
@@ -174,6 +195,9 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
         except Exception as exc:  # noqa: BLE001
             logger.error("Experiment run '%s' crashed: %s", d.get("name"), exc)
             yield _sse({"event": "run_error", "message": str(exc)})
+            if job_id and db:
+                try: await db.update_job_status(job_id, "failed")
+                except Exception: pass  # noqa: BLE001
             return
 
         # Collect outputs (Output-category nodes)
@@ -190,8 +214,20 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
             # If no Output nodes, return last node result
             merged = res[list(res.keys())[-1]]
 
-        logger.info("Experiment run '%s' complete", d.get("name"))
-        yield _sse({"event": "run_complete", "exp_id": exp_id,
+        had_errors = any("error" in v for v in res.values())
+        final_status = "failed" if had_errors else "completed"
+        logger.info("Experiment run '%s' complete (%s)", d.get("name"), final_status)
+        if job_id and db:
+            try:
+                await db.update_job_status(job_id, final_status)
+                await db._conn.execute(  # noqa: SLF001
+                    "UPDATE jobs SET params = ? WHERE id = ?",
+                    (json.dumps({"exp_id": exp_id, "node_count": len(ordered), "errors": int(had_errors)}), job_id),
+                )
+                await db._conn.commit()  # noqa: SLF001
+            except Exception as _je:  # noqa: BLE001
+                logger.warning("Could not update job record: %s", _je)
+        yield _sse({"event": "run_complete", "exp_id": exp_id, "job_id": job_id,
                     "node_count": len(ordered), "status": "complete",
                     "result": merged, "node_results": res})
 

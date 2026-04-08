@@ -104,9 +104,10 @@ function AppContent() {
   // Dirty badges — shown when builders have unsaved local changes
   const [studyDirty, setStudyDirty] = useState(() => !!localStorage.getItem("glossa_study_draft"));
   const [expDirty, setExpDirty] = useState(false);
-  // Running badges — shown when any study / experiment run is in progress
-  const [studyRunning, setStudyRunning] = useState(false);
-  const [expRunning, setExpRunning]     = useState(false);
+  // Run indicators: count active runs + track last result
+  type RunState = { count: number; lastStatus: "none" | "success" | "fail" };
+  const [studyRunState, setStudyRunState] = useState<RunState>({ count: 0, lastStatus: "none" });
+  const [expRunState,   setExpRunState]   = useState<RunState>({ count: 0, lastStatus: "none" });
   useEffect(() => {
     const hDirty = (e: Event) => {
       const { builder, dirty } = (e as CustomEvent<{ builder: string; dirty: boolean }>).detail;
@@ -114,9 +115,16 @@ function AppContent() {
       if (builder === "exp")   setExpDirty(dirty);
     };
     const hRun = (e: Event) => {
-      const { builder, running } = (e as CustomEvent<{ builder: string; running: boolean }>).detail;
-      if (builder === "study") setStudyRunning(running);
-      if (builder === "exp")   setExpRunning(running);
+      const d = (e as CustomEvent<{ builder: string; running: boolean; status?: string }>).detail;
+      const setState = d.builder === "study" ? setStudyRunState : setExpRunState;
+      if (d.running) {
+        // Run started — increment count
+        setState(prev => ({ count: prev.count + 1, lastStatus: prev.lastStatus }));
+      } else {
+        // Run finished — decrement count, record status
+        const newStatus: RunState["lastStatus"] = d.status === "fail" ? "fail" : "success";
+        setState(prev => ({ count: Math.max(0, prev.count - 1), lastStatus: newStatus }));
+      }
     };
     window.addEventListener("glossa:dirty",   hDirty);
     window.addEventListener("glossa:running", hRun);
@@ -211,8 +219,10 @@ function AppContent() {
   // ── Sidebar nav item renderer ─────────────────────────────────────────────
   const NavBtn = ({ item }: { item: NavItem }) => {
     const active = tab === item.id;
-    const dirty   = (item.id === "builder" && studyDirty)   || (item.id === "experiments" && expDirty);
-    const running = (item.id === "builder" && studyRunning) || (item.id === "experiments" && expRunning);
+    const dirty    = (item.id === "builder" && studyDirty)  || (item.id === "experiments" && expDirty);
+    const runState = item.id === "builder" ? studyRunState : item.id === "experiments" ? expRunState : { count: 0, lastStatus: "none" as const };
+    const running  = runState.count > 0;
+    const lastSt   = runState.lastStatus;
     return (
       <button
         onClick={() => setTab(item.id)}
@@ -233,8 +243,22 @@ function AppContent() {
       >
         <span style={{ fontSize: 14, lineHeight: 1, flexShrink: 0 }}>{item.icon}</span>
         <span style={{ flex: 1 }}>{item.label}</span>
-        {dirty   && !running && <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#f59e0b", flexShrink: 0, boxShadow: "0 0 4px #f59e0b" }} title="Unsaved changes" />}
-        {running && <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#22c55e", flexShrink: 0, boxShadow: "0 0 6px #22c55e", animation: "healthPulse 1s infinite" }} title="Running" />}
+        {/* Unsaved: amber dot (only when idle and no last-run indicator) */}
+        {dirty && !running && lastSt === "none" && (
+          <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#f59e0b", flexShrink: 0, boxShadow: "0 0 4px #f59e0b" }} title="Unsaved changes" />
+        )}
+        {/* Running: pulsing green dot */}
+        {running && (
+          <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#22c55e", flexShrink: 0, boxShadow: "0 0 6px #22c55e", animation: "healthPulse 0.7s ease-in-out infinite" }} title="Running" />
+        )}
+        {/* Completed: solid green dot */}
+        {!running && lastSt === "success" && (
+          <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#22c55e", flexShrink: 0, boxShadow: "0 0 4px #22c55e" }} title="Last run succeeded" />
+        )}
+        {/* Failed: solid red dot */}
+        {!running && lastSt === "fail" && (
+          <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#ef4444", flexShrink: 0, boxShadow: "0 0 4px #ef4444" }} title="Last run failed" />
+        )}
       </button>
     );
   };

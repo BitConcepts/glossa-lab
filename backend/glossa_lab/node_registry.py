@@ -122,6 +122,22 @@ _BUILTIN_SCHEMAS: dict[str, dict[str, Any]] = {
             },
         },
     },
+    "compare": {
+        "type": "object",
+        "properties": {
+            "comparison_prompt": {
+                "type": "string",
+                "title": "Comparison Prompt",
+                "description": "Guide the AI comparison. Leave blank for default (accuracy, patterns, key differences).",
+            },
+            "comparison_aspects": {
+                "type": "string",
+                "title": "Comparison Aspects",
+                "default": "accuracy, patterns, key differences",
+                "description": "Comma-separated list of aspects to compare.",
+            },
+        },
+    },
 }
 
 

@@ -373,7 +373,7 @@ export const importPipeline = (
 
 export type StudyNodeType =
   | "experiment" | "pipeline" | "corpus"
-  | "rag_query" | "ai_analysis"
+  | "rag_query" | "ai_analysis" | "compare"
   | "note" | "report" | "hypothesis";
 
 export interface StudyNode {

@@ -217,7 +217,7 @@ function AppContent() {
   };
 
   return (
-    <div style={{ display: "flex", minHeight: "100vh", fontFamily: "system-ui, sans-serif", background: bg }}>
+    <div style={{ display: "flex", height: "100vh", overflow: "hidden", fontFamily: "system-ui, sans-serif", background: bg }}>
 
       {/* ── Left sidebar ──────────────────────────────────────────────────────── */}
       <aside style={{

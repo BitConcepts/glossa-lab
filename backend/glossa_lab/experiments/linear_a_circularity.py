@@ -755,6 +755,12 @@ class LinearACircularity(_EB):
     }
 
     def run(self, **kwargs):
-        raise NotImplementedError(
-            "Linear A circularity suite requires ~10 min. Use the CLI command or Stream mode."
-        )
+        """Run all 7 anti-circularity experiments.
+
+        In graph mode the default is ``n_mc_trials=3`` for a ~30-second quick run.
+        For the full scientifically-valid 30-trial analysis use the CLI command::
+
+            python backend/generate_report_linear_a_circularity.py
+        """
+        n = max(1, int(kwargs.get("n_mc_trials") or 3))
+        return run_all_experiments(n_mc_trials=n, verbose=False)

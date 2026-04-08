@@ -877,6 +877,14 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
               </div>
             )}
           </div>
+
+          {/* Collaboration panel — embedded at bottom of left panel, starts collapsed */}
+          <CollaborationPanel
+            studyId={activeStudy?.id ?? null}
+            studyName={activeStudy?.name}
+            darkMode={darkMode}
+            initialCollapsed
+          />
         </>
       )}
     </div>
@@ -1062,12 +1070,6 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
         <NewStudyDialog onClose={() => setShowNewStudy(false)} onCreated={s => { setStudies(prev => [s, ...prev]); loadStudy(s); }} />
       )}
 
-      {/* Collaboration panel — always visible at the bottom, collapses when not needed */}
-      <CollaborationPanel
-        studyId={activeStudy?.id ?? null}
-        studyName={activeStudy?.name}
-        darkMode={darkMode}
-      />
     </div>
   );
 }

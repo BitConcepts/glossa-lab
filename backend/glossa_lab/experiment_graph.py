@@ -213,6 +213,26 @@ def _pass_result(inputs: dict, params: dict) -> dict:
     return dict(inputs)
 
 
+def _comparator_ai(inputs: dict, params: dict) -> dict:
+    """Compare two upstream result dicts using Glossa AI."""
+    from glossa_lab.ai_utils import call_llm  # noqa: PLC0415
+    import json as _json  # noqa: PLC0415
+
+    a = inputs.get("a") or inputs.get(list(inputs.keys())[0] if inputs else "a", {})
+    b = inputs.get("b") or (list(inputs.values())[1] if len(inputs) > 1 else {})
+    prompt = params.get("comparison_prompt", "Compare these two analysis results and highlight key differences, insights, and which approach is preferable.")
+
+    try:
+        raw = call_llm(
+            [{"role": "system", "content": "You are a scientific comparator. Return a concise comparison as a JSON dict with keys: summary, a_strengths, b_strengths, key_differences, recommendation."},
+             {"role": "user", "content": f"{prompt}\n\nResult A:\n{_json.dumps(a)[:800]}\n\nResult B:\n{_json.dumps(b)[:800]}"}],
+            json_mode=True, max_tokens=600, temperature=0.3,
+        )
+        return {"comparison": _json.loads(raw), "a_summarized": str(a)[:200], "b_summarized": str(b)[:200]}
+    except Exception as exc:  # noqa: BLE001
+        return {"error": str(exc), "comparison": {}}
+
+
 def _experiment_wrapper(inputs: dict, params: dict) -> dict:
     """Delegate to any registered ExperimentBase subclass."""
     from glossa_lab.experiment_base import get_experiment  # noqa: PLC0415
@@ -306,6 +326,15 @@ for _d in [
         outputs=[{"name":"result","type":"json"}],
         params_schema={"type":"object","properties":{}},
         fn=_pass_result),
+    # ── AI comparator ────────────────────────────────────────────────────
+    AtomicNodeDef("Comparator","AI Comparator","Analysis",
+        "Use Glossa AI to compare two upstream results and generate structured insights.",
+        inputs=[{"name":"a","type":"json","required":True},{"name":"b","type":"json","required":True}],
+        outputs=[{"name":"comparison","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "comparison_prompt":{"type":"string","title":"Comparison Prompt","description":"Guide the AI comparison. Leave blank for default."},
+        }},
+        fn=_comparator_ai),
     # ── Dynamic experiment wrapper ───────────────────────────────────────────
     AtomicNodeDef("ExperimentWrapper","Experiment","Experiments",
         "Run any registered ExperimentBase subclass with upstream inputs merged as kwargs.",

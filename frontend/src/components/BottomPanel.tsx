@@ -17,10 +17,34 @@ type PanelTab = "logs" | "jobs" | "terminal" | "chat";
 const MIN_HEIGHT = 100;
 const MAX_HEIGHT_RATIO = 0.65;
 
-// ── Markdown-like ANSI stripping for log lines ────────────────────────────────
+// ── Log line parsing + formatting ──────────────────────────────────────────────────────────────
 function stripAnsi(s: string): string {
   // eslint-disable-next-line no-control-regex
   return s.replace(/\x1b\[[0-9;]*[mGKHF]/g, "");
+}
+
+/**
+ * Parse a structured JSON log line like:
+ *   {"timestamp":"2026-04-08 16:32:21,111","level":"INFO","module":"glossa_lab.database","message":"Database ready","path":"data/glossa.db"}
+ * and return a human-readable string like:
+ *   16:32:21 INFO  [glossa_lab.database] Database ready  path=data/glossa.db
+ */
+function formatLogLine(raw: string): string {
+  try {
+    const d = JSON.parse(raw) as Record<string, unknown>;
+    if (typeof d.message !== "string") return raw;
+    const ts  = typeof d.timestamp === "string" ? d.timestamp.slice(11, 19) : "";
+    const lvl = typeof d.level   === "string" ? d.level.padEnd(5) : "     ";
+    const mod = typeof d.module  === "string" ? `[${d.module}]` : "";
+    const msg = d.message;
+    const extras = Object.entries(d)
+      .filter(([k]) => !["timestamp", "level", "module", "message"].includes(k))
+      .map(([k, v]) => `${k}=${JSON.stringify(v)}`)
+      .join("  ");
+    return `${ts} ${lvl} ${mod} ${msg}${extras ? "  " + extras : ""}`;
+  } catch {
+    return stripAnsi(raw);
+  }
 }
 
 function logLineColor(line: string): string {
@@ -49,7 +73,7 @@ function LogPanel() {
     es.onmessage = (ev) => {
       try {
         const d = JSON.parse(ev.data) as { text: string };
-        setLines((prev) => [...prev.slice(-499), stripAnsi(d.text)]);
+        setLines((prev) => [...prev.slice(-499), formatLogLine(d.text)]);
       } catch { /* ignore */ }
     };
     es.onerror = () => { setStreaming(false); };

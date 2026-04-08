@@ -51,7 +51,7 @@ import {
   listExperiments,
   listStudies,
   getPipelineCatalog,
-  runStudy,
+  runStudyStream,
   summarizeStudy,
   updateStudy,
   type AISummaryResult,
@@ -61,9 +61,9 @@ import {
   type StudyResponse,
   type StudyGraph,
   type StudyRunResult,
+  type NodeRunStatus,
 } from "../api";
 import { useAIChat } from "../hooks/useAIChat";
-import { CollaborationPanel } from "./CollaborationPanel";
 
 // ── Theme helpers ────────────────────────────────────────────────────────
 
@@ -476,21 +476,31 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
   const [edges, setEdges] = useState<Edge[]>([]);
   const [selectedNode, setSelectedNode] = useState<Node<NodeData> | null>(null);
 
-  const [running, setRunning]   = useState(false);
-  const [runResult, setRunResult] = useState<StudyRunResult | null>(null);
-  const [runError, setRunError] = useState<string | null>(null);
-  const [saving, setSaving]     = useState(false);
-  const [saveMsg, setSaveMsg]   = useState<string | null>(null);
-
-  // Elapsed timer — counts up in seconds while a run is in flight
-  const [elapsed, setElapsed] = useState(0);
+  // ── Multi-run state (one entry per running study) ─────────────────────
+  type ActiveRun = {
+    controller: AbortController;
+    startTime: number;
+    nodeStatuses: Record<string, string>;  // nodeId → status
+    currentNodeLabel: string;
+    currentNodeIdx: number;
+    totalNodes: number;
+  };
+  const [activeRuns, setActiveRuns] = useState<Record<string, ActiveRun>>({});
+  const activeRunsRef = useRef<Record<string, ActiveRun>>({});
+  useEffect(() => { activeRunsRef.current = activeRuns; }, [activeRuns]);
+  const [, setTick] = useState(0);  // force re-render for elapsed display
+  const hasActiveRuns = Object.keys(activeRuns).length > 0;
   useEffect(() => {
-    if (!running) { setElapsed(0); return; }
-    const t = setInterval(() => setElapsed(s => s + 1), 1000);
+    if (!hasActiveRuns) return;
+    const t = setInterval(() => setTick(n => n + 1), 1000);
     return () => clearInterval(t);
-  }, [running]);
+  }, [hasActiveRuns]);
+  const getElapsed = (studyId: string) => {
+    const r = activeRuns[studyId]; if (!r) return 0;
+    return Math.floor((Date.now() - r.startTime) / 1000);
+  };
 
-  // Per-study run result cache — persisted across navigation via localStorage
+  // Per-study run result cache — persisted across navigation
   type RunCacheEntry = { completed: number; errors: number; ts: number; nodeCount: number };
   const [runCache, setRunCache] = useState<Record<string, RunCacheEntry>>(() => {
     try { return JSON.parse(localStorage.getItem("gsb_run_cache") ?? "{}") as Record<string, RunCacheEntry>; }
@@ -503,6 +513,11 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
       return next;
     });
   }, []);
+
+  const [runResult, setRunResult] = useState<StudyRunResult | null>(null);
+  const [runError, setRunError]   = useState<string | null>(null);
+  const [saving, setSaving]       = useState(false);
+  const [saveMsg, setSaveMsg]     = useState<string | null>(null);
 
   const [summarizing, setSummarizing] = useState(false);
   const [summary, setSummary]         = useState<AISummaryResult | null>(null);
@@ -539,9 +554,6 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
 
   // Auto-arrange fit trigger
   const [fitTrigger, setFitTrigger] = useState(0);
-
-  // Left panel tab: palette vs collaboration
-  const [leftTab, setLeftTab] = useState<"palette" | "collab">("palette");
 
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   const draggedRef = useRef<{ nodeType: StudyNodeType; refId: string; label: string } | null>(null);
@@ -592,7 +604,6 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
   // Load study into graph — snap positions to 15px grid and reset dirty state
   const loadStudy = useCallback((s: StudyResponse) => {
     justLoaded.current = true;   // next effect run is the initial load — don't mark dirty
-    // Compute normalised saved-state reference (with snapped positions + default fields)
     const snNodes = (s.graph.nodes ?? []).map(n => ({
       id: n.id, type: n.type, ref_id: n.ref_id ?? "",
       label: n.label ?? "", params: n.params ?? {},
@@ -604,11 +615,15 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
     setIsDirty(false);
     localStorage.removeItem("glossa_study_draft");
     window.dispatchEvent(new CustomEvent("glossa:dirty", { detail: { builder: "study", dirty: false } }));
-    setActiveStudy(s); setSelectedNode(null); setRunResult(null); setSummary(null);
+    setActiveStudy(s); setSelectedNode(null); setSummary(null);
+    // Build nodes — if a run is currently active for this study, restore its node statuses
+    const currentRun = activeRunsRef.current[s.id];
     setNodes((s.graph.nodes ?? []).map(n => ({
       id: n.id, type: "glossaNode",
       position: { x: snap15((n.position?.x ?? 80)), y: snap15((n.position?.y ?? 80)) },
-      data: { label: n.label, nodeType: n.type as StudyNodeType, refId: n.ref_id, params: n.params ?? {}, noteText: n.note_text, color: n.color, runStatus: "idle", darkMode } as NodeData,
+      data: { label: n.label, nodeType: n.type as StudyNodeType, refId: n.ref_id, params: n.params ?? {}, noteText: n.note_text, color: n.color,
+              runStatus: (currentRun ? (currentRun.nodeStatuses[n.id] ?? "idle") : "idle") as NodeData["runStatus"],
+              darkMode } as NodeData,
     })));
     setEdges((s.graph.edges ?? []).map(e => ({ id: e.id, source: e.source, target: e.target, reconnectable: true, style: { stroke: th.edgeDef, strokeWidth: 2 } })));
   }, [darkMode, th.edgeDef]);
@@ -641,30 +656,72 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
     loadStudy(activeStudy);  // activeStudy always holds the last-saved graph
   }, [activeStudy, loadStudy]);
 
-  // Run
-  const doRun = useCallback(async (studyOverride?: typeof activeStudy) => {
-    const target = studyOverride ?? activeStudy;
-    if (!target) return;
-    // If running a different study, switch to it first
-    if (studyOverride && studyOverride.id !== activeStudy?.id) loadStudy(studyOverride);
-    await doSave();
-    setRunning(true); setRunResult(null); setRunError(null);
-    setNodes(prev => prev.map(n => ({ ...n, data: { ...n.data, runStatus: "running" } })));
-    try {
-      const res = await runStudy(target.id);
-      setRunResult(res);
-      saveToRunCache(target.id, { completed: res.completed, errors: res.errors, nodeCount: res.node_count, ts: Date.now() });
-      setNodes(prev => prev.map(n => {
-        const r = res.results[n.id];
-        return { ...n, data: { ...n.data, runStatus: (r?.status as NodeData["runStatus"]) ?? "idle" } };
-      }));
-    } catch (e) {
-      setRunError(e instanceof Error ? e.message : "Run failed");
-      if (target.id) saveToRunCache(target.id, { completed: 0, errors: 1, nodeCount: nodes.length, ts: Date.now() });
-      setNodes(prev => prev.map(n => ({ ...n, data: { ...n.data, runStatus: "idle" } })));
+  // ── Run (streaming, supports multiple concurrent) ──────────────────────
+  const doRun = useCallback(async (target: StudyResponse) => {
+    if (activeRunsRef.current[target.id]) return;  // already running
+    setRunError(null);
+    if (target.id === activeStudy?.id) {
+      await doSave();
     }
-    finally { setRunning(false); }
-  }, [activeStudy, doSave, loadStudy, nodes.length, saveToRunCache]);
+    const controller = new AbortController();
+    const startTime = Date.now();
+    const initRun: ActiveRun = { controller, startTime, nodeStatuses: {}, currentNodeLabel: "", currentNodeIdx: 0, totalNodes: 0 };
+    setActiveRuns(prev => ({ ...prev, [target.id]: initRun }));
+    window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "study", running: true, id: target.id, name: target.name } }));
+
+    try {
+      for await (const ev of runStudyStream(target.id, controller.signal)) {
+        if (ev.event === "started") {
+          setActiveRuns(prev => ({ ...prev, [target.id]: { ...prev[target.id], totalNodes: ev.node_count ?? 0 } }));
+        } else if (ev.event === "node_start" && ev.nid) {
+          const nid = ev.nid;
+          setActiveRuns(prev => ({
+            ...prev, [target.id]: { ...prev[target.id],
+              currentNodeLabel: ev.label ?? "", currentNodeIdx: ev.idx ?? 0,
+              totalNodes: ev.total ?? prev[target.id]?.totalNodes ?? 0,
+              nodeStatuses: { ...prev[target.id]?.nodeStatuses, [nid]: "running" },
+            }
+          }));
+          // Update canvas if this is the active study
+          if (activeStudy?.id === target.id || !activeStudy) {
+            setNodes(prev => prev.map(n => ({
+              ...n, data: { ...n.data,
+                runStatus: n.id === nid ? "running" : (n.data.runStatus === "running" ? "idle" : n.data.runStatus) }
+            })));
+          }
+        } else if (ev.event === "node_end" && ev.nid) {
+          const nid = ev.nid; const st = (ev.status ?? "idle") as NodeRunStatus;
+          setActiveRuns(prev => ({
+            ...prev, [target.id]: { ...prev[target.id],
+              nodeStatuses: { ...prev[target.id]?.nodeStatuses, [nid]: st } }
+          }));
+          if (activeStudy?.id === target.id || !activeStudy) {
+            setNodes(prev => prev.map(n => n.id === nid ? { ...n, data: { ...n.data, runStatus: st } } : n));
+          }
+        } else if (ev.event === "run_complete") {
+          saveToRunCache(target.id, { completed: ev.completed ?? 0, errors: ev.errors ?? 0, nodeCount: ev.node_count ?? 0, ts: Date.now() });
+          if (activeStudy?.id === target.id || !activeStudy) {
+            setRunResult(ev as unknown as StudyRunResult);
+          }
+        } else if (ev.event === "run_error") {
+          setRunError(ev.message ?? "Run failed");
+          saveToRunCache(target.id, { completed: 0, errors: 1, nodeCount: 0, ts: Date.now() });
+        }
+      }
+    } catch (e) {
+      if (!(e instanceof DOMException && e.name === "AbortError")) {
+        setRunError(e instanceof Error ? e.message : "Run failed");
+        saveToRunCache(target.id, { completed: 0, errors: 1, nodeCount: 0, ts: Date.now() });
+      }
+    } finally {
+      setActiveRuns(prev => { const n = { ...prev }; delete n[target.id]; return n; });
+      window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "study", running: false, id: target.id } }));
+    }
+  }, [activeStudy, doSave, saveToRunCache]);
+
+  const stopAll = useCallback(() => {
+    Object.values(activeRunsRef.current).forEach(r => r.controller.abort());
+  }, []);
 
   // Delete / duplicate / export / import study
   const delStudy = useCallback(async (id: string, e: React.MouseEvent) => {
@@ -825,8 +882,9 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
   const fExps  = experiments.filter(e => (palFilter === "all" || palFilter === "experiment") && (!palSearch || e.name.toLowerCase().includes(palSearch.toLowerCase())));
   const fPipes = pipelines.filter(p => (palFilter === "all" || palFilter === "pipeline") && (!palSearch || (p.label ?? p.id).toLowerCase().includes(palSearch.toLowerCase())));
 
-  // Animated edges
-  const animEdges = useMemo(() => edges.map(e => ({ ...e, animated: running, style: { stroke: running ? "#7c3aed" : "#334155", strokeWidth: 2 } })), [edges, running]);
+  // Animated edges — animate when the active study is running
+  const activeStudyRunning = activeStudy ? !!activeRuns[activeStudy.id] : false;
+  const animEdges = useMemo(() => edges.map(e => ({ ...e, animated: activeStudyRunning, style: { stroke: activeStudyRunning ? "#7c3aed" : th.edgeDef, strokeWidth: 2 } })), [edges, activeStudyRunning, th.edgeDef]);
 
   // ── Left panel — theme-aware ──
   const LeftPanel = (
@@ -850,10 +908,11 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
             {studies.map(s => {
               const active   = activeStudy?.id === s.id;
               const modified = active && isDirty;
-              const isRunning = running && active;
+              const isRunning = !!activeRuns[s.id];
+              const run = activeRuns[s.id];
               const cached   = runCache[s.id];
-              const runBadge = isRunning
-                ? { label: `⏳ ${elapsed}s`, color: "#60a5fa" }
+              const runBadge = isRunning && run
+                ? { label: `⏳ ${getElapsed(s.id)}s · ${run.currentNodeLabel.slice(0,16) || `${run.currentNodeIdx + 1}/${run.totalNodes}`}`, color: "#60a5fa" }
                 : cached
                   ? cached.errors > 0
                     ? { label: `✗ ${cached.completed}/${cached.nodeCount}`, color: "#ef4444" }
@@ -884,7 +943,7 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
             })}
           </div>
 
-          {/* Inner drag divider — resize studies list vs palette+collab */}
+          {/* Inner drag divider — resize studies list vs palette */}
           <div
             onMouseDown={onInnerDivDown}
             title="Drag to resize"
@@ -894,19 +953,6 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
             onMouseLeave={e => (e.currentTarget.style.background = th.border)}
           />
 
-          {/* Tab bar: Palette | Collab */}
-          <div style={{ display: "flex", borderBottom: `1px solid ${th.border}`, flexShrink: 0 }}>
-            {(["palette", "collab"] as const).map(tab => (
-              <button key={tab} onClick={() => setLeftTab(tab)}
-                style={{ flex: 1, padding: "4px 0", border: "none", background: leftTab === tab ? th.activeBg : "transparent",
-                  color: leftTab === tab ? th.activeText : th.textMuted, fontSize: 10, fontWeight: 600, cursor: "pointer",
-                  borderBottom: `2px solid ${leftTab === tab ? "#2563eb" : "transparent"}` }}>
-                {tab === "collab" ? "💬 Collab" : "🏳️ Palette"}
-              </button>
-            ))}
-          </div>
-
-          {leftTab === "palette" && (
           <div style={{ flex: 1, overflowY: "auto", minHeight: 0, padding: "7px 7px" }}>
             <div style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 5 }}>Palette</div>
             <input value={palSearch} onChange={e => setPalSearch(e.target.value)} placeholder="Search…"
@@ -944,19 +990,6 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
               </div>
             )}
           </div>
-
-          )}
-
-          {leftTab === "collab" && (
-            <div style={{ flex: 1, overflowY: "auto", minHeight: 0 }}>
-              <CollaborationPanel
-                studyId={activeStudy?.id ?? null}
-                studyName={activeStudy?.name}
-                darkMode={darkMode}
-                initialCollapsed={false}
-              />
-            </div>
-          )}
         </>
       )}
     </div>
@@ -1021,16 +1054,30 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
           )}
         </div>
 
+        {/* Running status badge for active study */}
+        {activeStudyRunning && activeStudy && (() => {
+          const run = activeRuns[activeStudy.id];
+          return (
+            <span style={{ fontSize: 10, color: "#60a5fa", fontWeight: 600, flexShrink: 0, whiteSpace: "nowrap" }}>
+              ⏳ {getElapsed(activeStudy.id)}s · {run?.currentNodeLabel.slice(0, 20) || "running…"} ({(run?.currentNodeIdx ?? 0) + 1}/{run?.totalNodes ?? "?"})
+            </span>
+          );
+        })()}
+        {hasActiveRuns && (
+          <button onClick={stopAll} title="Stop all running studies"
+            style={{ ...tBtn, padding: "3px 8px", fontSize: 10, color: "#ef4444", border: "1px solid #ef444430", cursor: "pointer" }}>
+            ⏹ Stop All
+          </button>
+        )}
         {[
           { label: "↑ Import", title: "Import study from JSON", disabled: false, action: () => importStudyRef.current?.click() },
           { label: "↓ Export", title: "Export study as JSON", disabled: !activeStudy, action: exportStudy },
           { label: saving ? "…" : "💾 Save", title: "Save", disabled: saving || !activeStudy, action: () => void doSave() },
           { label: "⬦ Arrange", title: "Auto-arrange nodes", disabled: !activeStudy || nodes.length === 0, action: doArrange },
           { label: "↩ Revert", title: isDirty ? "Discard changes and revert to last saved" : "No unsaved changes", disabled: !isDirty || !activeStudy, action: doRevert, warn: true },
-          { label: running ? `⏳ ${elapsed}s…` : "▶ Run", title: running ? `Running… (${elapsed}s elapsed)` : "Run study", disabled: running || !activeStudy || !nodes.length, action: () => void doRun(), green: true },
-        ].map(({ label, title, disabled, action, green, warn }) => (
+        ].map(({ label, title, disabled, action, warn }) => (
           <button key={label} onClick={action} disabled={disabled} title={title}
-            style={{ ...tBtn, padding: "3px 8px", fontSize: 10, opacity: disabled ? 0.4 : 1, cursor: disabled ? "not-allowed" : "pointer", color: green ? "#22c55e" : (warn as boolean | undefined) ? "#f59e0b" : th.textMuted, border: `1px solid ${green ? "#15803d30" : (warn as boolean | undefined) ? "#f59e0b40" : th.border}` }}>
+            style={{ ...tBtn, padding: "3px 8px", fontSize: 10, opacity: disabled ? 0.4 : 1, cursor: disabled ? "not-allowed" : "pointer", color: (warn as boolean | undefined) ? "#f59e0b" : th.textMuted, border: `1px solid ${(warn as boolean | undefined) ? "#f59e0b40" : th.border}` }}>
             {label}
           </button>
         ))}
@@ -1053,13 +1100,32 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
               <div style={{ fontSize: 11, color: th.textFaint }}>Use the panel on the left</div>
             </div>
           )}
-          {/* Empty canvas hint — shown only when a study is active but has no nodes */}
+          {/* Empty canvas hint */}
           {activeStudy && nodes.length === 0 && (
             <div style={{ position: "absolute", bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 5, pointerEvents: "none",
               background: th.panelBg2, border: `1px solid ${th.border}`, borderRadius: 8, padding: "8px 16px",
               fontSize: 12, color: th.textMuted, textAlign: "center", whiteSpace: "nowrap",
               boxShadow: "0 2px 12px rgba(0,0,0,0.15)" }}>
               Drag from palette · Right-click canvas to add nodes
+            </div>
+          )}
+
+          {/* Floating run/stop button — bottom-right of canvas */}
+          {activeStudy && nodes.length > 0 && (
+            <div style={{ position: "absolute", bottom: 60, right: 16, zIndex: 20, display: "flex", flexDirection: "column", gap: 6 }}>
+              {activeStudyRunning ? (
+                <button onClick={() => activeRuns[activeStudy.id]?.controller.abort()}
+                  title="Stop this study run"
+                  style={{ padding: "8px 16px", border: "2px solid #ef4444", borderRadius: 24, background: "#450a0a", color: "#f87171", cursor: "pointer", fontSize: 12, fontWeight: 700, boxShadow: "0 4px 16px rgba(0,0,0,0.5)", whiteSpace: "nowrap" }}>
+                  ⏹ Stop
+                </button>
+              ) : (
+                <button onClick={() => void doRun(activeStudy)}
+                  title="Run this study"
+                  style={{ padding: "8px 20px", border: "none", borderRadius: 24, background: "linear-gradient(135deg,#16a34a,#22c55e)", color: "#fff", cursor: "pointer", fontSize: 12, fontWeight: 700, boxShadow: "0 4px 16px rgba(0,0,0,0.4)", whiteSpace: "nowrap" }}>
+                  ▶ Run Study
+                </button>
+              )}
             </div>
           )}
           <ReactFlow

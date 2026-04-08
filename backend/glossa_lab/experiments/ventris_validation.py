@@ -351,6 +351,11 @@ class VentrisValidation(_EB):
     description = "Ventris affinity vs known Linear B CV grid. F1 for vowel/consonant groups."
     estimated_time = "~10 sec"
     command = "python -m glossa_lab.experiments.ventris_validation"
+    params_schema = {
+        "type": "object",
+        "properties": {},
+        "$comment": "Uses the built-in Linear B corpus. Fully automated validation against known CV grid.",
+    }
 
     def run(self, **kwargs):
         return run_ventris_validation(verbose=False)

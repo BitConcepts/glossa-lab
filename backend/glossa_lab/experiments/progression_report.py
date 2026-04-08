@@ -451,6 +451,11 @@ class ProgressionReport(_EB):
     estimated_time = "~1 min"
     command = "python -m glossa_lab.experiments.progression_report"
     results_file = "reports/progression.json"
+    params_schema = {
+        "type": "object",
+        "properties": {},
+        "$comment": "Runs all 5 tiers automatically using built-in corpora. No user params required.",
+    }
 
     def run(self, **kwargs) -> dict:
         """Run the full progression benchmark and return the result dict."""

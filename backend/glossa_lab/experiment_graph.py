@@ -486,71 +486,439 @@ def _make_cls(gd: dict[str, Any]) -> type:
     })
 
 
-def auto_migrate_hardcoded_experiments() -> int:
-    """Convert every registered Python ExperimentBase subclass into a graph experiment JSON.
+def _build_proper_graph_specs() -> dict[str, dict]:
+    """Return canonical multi-node atomic graph specs for all standard experiments.
 
-    Each Python experiment gets a minimal editable graph:
-      [CorpusReader] → [ExperimentWrapper] → [PassResult]
-
-    This makes all experiments visible and composable in the Experiment Builder.
-    Only creates files that do not already exist (fully idempotent).
-    Returns the number of new files created.
+    Category A – Pure atomic pipelines (no ExperimentWrapper).
+    Category B – Built-in-corpus experiments with representative prep stages +
+                 ExperimentWrapper for the specialised algorithm.
+    Category C – CLI-only experiments: StaticValue (CLI note) + ExperimentWrapper.
     """
-    from glossa_lab.experiment_base import discover_experiments  # noqa: PLC0415
 
-    existing_ids = {p.stem for p in _GRAPHS_DIR.glob("*.json")}
-    created = 0
-
-    for exp_id, cls in discover_experiments().items():
-        if exp_id in existing_ids:
-            continue  # already has a graph experiment file
-        if cls.category == "Graph Experiments":
-            continue  # already IS a graph experiment; skip
-
-        clean_name = cls.name.replace("\ud83d\udd00 ", "")
-        graph_data: dict = {
-            "id": exp_id,
-            "name": clean_name,
-            "description": cls.description or f"Graph wrapper for {clean_name}.",
-            "nodes": [
-                {
-                    "id": "corpus", "type": "expNode",
-                    "data": {"atomicId": "CorpusReader", "label": "Load Corpus", "params": {}},
-                    "position": {"x": 60, "y": 80},
-                },
-                {
-                    "id": "wrap", "type": "expNode",
-                    "data": {
-                        "atomicId": "ExperimentWrapper",
-                        "label": clean_name,
-                        "params": {"experiment_id": exp_id, "corpus_id": ""},
-                    },
-                    "position": {"x": 320, "y": 80},
-                },
-                {
-                    "id": "out", "type": "expNode",
-                    "data": {"atomicId": "PassResult", "label": "Output", "params": {}},
-                    "position": {"x": 570, "y": 80},
-                },
-            ],
-            "edges": [
-                {"id": "e1", "source": "corpus", "target": "wrap",
-                 "sourcePort": "sequences", "targetPort": "upstream"},
-                {"id": "e2", "source": "wrap", "target": "out",
-                 "sourcePort": "result", "targetPort": "data"},
-            ],
+    def N(nid: str, atomic: str, label: str, params: dict, x: int, y: int) -> dict:
+        return {
+            "id": nid, "type": "expNode",
+            "data": {"atomicId": atomic, "label": label, "params": params},
+            "position": {"x": x, "y": y},
         }
-        # Write directly (bypass save_graph_experiment to avoid cache invalidation per file)
+
+    def E(eid: str, src: str, tgt: str, sp: str = "", tp: str = "") -> dict:
+        return {"id": eid, "source": src, "target": tgt,
+                "sourcePort": sp, "targetPort": tp}
+
+    s: dict[str, dict] = {}
+
+    # ── Category A: Pure atomic node pipelines ────────────────────────────────
+
+    s["positional_profile_analysis"] = {
+        "id": "positional_profile_analysis",
+        "name": "Positional Profile Analysis",
+        "description": (
+            "Computes I/M/T position rates per symbol using the Fuls (2013) NWSP method. "
+            "Works on any corpus — unknown scripts, languages, DNA, or any tokenised system."
+        ),
+        "auto_migrated": True,
+        "nodes": [
+            N("corpus",  "CorpusReader",      "Load Corpus",         {},              60,  100),
+            N("profiler","PositionalProfiler", "Positional Profiler", {"min_count": 3}, 300, 100),
+            N("out",     "PassResult",         "Output",              {},              540, 100),
+        ],
+        "edges": [
+            E("e1", "corpus",   "profiler", "sequences", "sequences"),
+            E("e2", "profiler", "out",      "profiles",  "data"),
+        ],
+    }
+
+    s["symbol_clustering"] = {
+        "id": "symbol_clustering",
+        "name": "Symbol Clustering",
+        "description": (
+            "Groups symbols by positional profile similarity (L1 distance on T/I/M rates). "
+            "Works on any symbol corpus."
+        ),
+        "auto_migrated": True,
+        "nodes": [
+            N("corpus",  "CorpusReader",      "Load Corpus",         {},              60,  100),
+            N("profiler","PositionalProfiler", "Positional Profiler", {"min_count": 5}, 300, 100),
+            N("cluster", "Clusterer",          "Symbol Clusterer",    {},              540, 100),
+            N("out",     "PassResult",          "Output",              {},              780, 100),
+        ],
+        "edges": [
+            E("e1", "corpus",  "profiler", "sequences", "sequences"),
+            E("e2", "profiler","cluster",  "profiles",  "profiles"),
+            E("e3", "cluster", "out",      "clusters",  "data"),
+        ],
+    }
+
+    s["luwian_kl_scoring"] = {
+        "id": "luwian_kl_scoring",
+        "name": "Word-Length KL Scoring (Luwian vs Greek)",
+        "description": (
+            "Frequency distribution and Zipf-Mandelbrot exponent. "
+            "Compares sign-frequency distribution against Yadav (2010) parameters."
+        ),
+        "auto_migrated": True,
+        "nodes": [
+            N("corpus","CorpusReader","Load Corpus",     {}, 60,  100),
+            N("freq",  "FreqCounter", "Frequency Counter",{}, 300, 100),
+            N("zipf",  "ZipfFitter",  "Zipf Fitter",      {}, 540, 100),
+            N("out",   "PassResult",  "Output",            {}, 780, 100),
+        ],
+        "edges": [
+            E("e1", "corpus","freq", "sequences","sequences"),
+            E("e2", "freq",  "zipf", "freq_map", "freq_map"),
+            # pass all zipf outputs + freq top-10 to PassResult
+            E("e3", "zipf", "out",  "",        ""),
+            E("e4", "freq", "out",  "top_10",  "top_signs"),
+        ],
+    }
+
+    s["contact_zone"] = {
+        "id": "contact_zone",
+        "name": "Contact Zone Analysis",
+        "description": (
+            "Compares sign usage between Mesopotamian contact-zone sites "
+            "(Lothal, Dholavira, Sutkagen-Dor) and heartland sites (Harappa, Mohenjo-daro)."
+        ),
+        "auto_migrated": True,
+        "nodes": [
+            N("corpus",  "CorpusReader",      "Load Corpus",         {},  60,  200),
+            N("freq",    "FreqCounter",        "Frequency Counter",   {},  300,  80),
+            N("profiler","PositionalProfiler", "Positional Profiler", {},  300, 320),
+            N("merger",  "Merger",             "Merge Results",       {},  560, 200),
+            N("export",  "JSONExport",         "Save Report",
+              {"filename": "contact_zone_results.json"},                    820, 200),
+        ],
+        "edges": [
+            E("e1", "corpus",  "freq",    "sequences",    "sequences"),
+            E("e2", "corpus",  "profiler","sequences",    "sequences"),
+            E("e3", "freq",    "merger",  "freq_map",     "a"),
+            E("e4", "profiler","merger",  "class_summary","b"),
+            E("e5", "merger",  "export",  "json",         "data"),
+        ],
+    }
+
+    s["indus_structural_atlas"] = {
+        "id": "indus_structural_atlas",
+        "name": "Indus Structural Atlas",
+        "description": (
+            "Full Fuls (2023) structural analysis: block entropy (Rao 2009), "
+            "Zipf-Mandelbrot (Yadav 2010), NWSP positional profiling (Fuls 2013), "
+            "and symbol clustering. Multi-branch pipeline over the Indus corpus."
+        ),
+        "auto_migrated": True,
+        "nodes": [
+            N("corpus",  "CorpusReader",      "Load Corpus",               {},              60,  280),
+            N("freq",    "FreqCounter",        "Frequency Counter",         {},              300,  80),
+            N("entropy", "EntropyCalc",        "Entropy H1 (Rao 2009)",     {},              300, 240),
+            N("profiler","PositionalProfiler", "NWSP Positional Profiler",  {"min_count": 3}, 300, 420),
+            N("zipf",    "ZipfFitter",         "Zipf Fitter (Yadav 2010)",  {},              560,  80),
+            N("cluster", "Clusterer",          "Symbol Clusterer (NWSP)",   {},              560, 420),
+            N("merger",  "Merger",             "Merge Atlas Results",        {},              820, 240),
+            N("export",  "JSONExport",         "Save Atlas",
+              {"filename": "indus_structural_atlas.json"},                                   1080, 240),
+        ],
+        "edges": [
+            E("e1",  "corpus",  "freq",    "sequences",    "sequences"),
+            E("e2",  "corpus",  "profiler","sequences",    "sequences"),
+            E("e3",  "freq",    "entropy", "freq_map",     "freq_map"),
+            E("e4",  "freq",    "zipf",    "freq_map",     "freq_map"),
+            E("e5",  "profiler","cluster", "profiles",     "profiles"),
+            E("e6",  "entropy", "merger",  "h1_normalized","entropy_h1"),
+            E("e7",  "zipf",    "merger",  "zipf_exponent","zipf_alpha"),
+            E("e8",  "profiler","merger",  "class_summary","positions"),
+            E("e9",  "cluster", "merger",  "clusters",     "clusters"),
+            E("e10", "freq",    "merger",  "top_10",       "freq_top10"),
+            E("e11", "merger",  "export",  "json",         "data"),
+        ],
+    }
+
+    # ── Category B: Built-in-corpus experiments ───────────────────────────────
+    # Prep stages (FreqCounter, EntropyCalc, etc.) provide representative context;
+    # ExperimentWrapper executes the specialised algorithm with its own internal data.
+
+    s["progression"] = {
+        "id": "progression",
+        "name": "Fuls Progression Benchmark",
+        "description": (
+            "5-tier benchmark: Ugaritic (abjad) → Linear B (syllabary) → "
+            "Sumerian (logo-syllabic) → Indus (unknown). "
+            "Validates the statistical pipeline on known scripts."
+        ),
+        "auto_migrated": True,
+        "nodes": [
+            N("corpus",  "CorpusReader",      "Indus Corpus (context)",     {},  60,  140),
+            N("freq",    "FreqCounter",        "Frequency Analysis",         {},  300,  80),
+            N("entropy", "EntropyCalc",        "Entropy H1",                 {},  300, 200),
+            N("run",     "ExperimentWrapper",  "Run 5-Tier Benchmark",
+              {"experiment_id": "progression"},                              570, 140),
+            N("out",     "PassResult",          "Output",                    {},  830, 140),
+        ],
+        "edges": [
+            E("e1", "corpus", "freq",    "sequences",    "sequences"),
+            E("e2", "freq",   "entropy", "freq_map",     "freq_map"),
+            E("e3", "entropy","run",     "h1_normalized","upstream"),
+            E("e4", "run",    "out",     "",             ""),
+        ],
+    }
+
+    s["writing_system_progression"] = {
+        "id": "writing_system_progression",
+        "name": "Writing System Progression",
+        "description": (
+            "5-tier writing system analysis from alphabetic (22 signs) to "
+            "logo-syllabic (400+ signs). Compares V/N ratios, hapax fractions, "
+            "and polyvalence across script tiers."
+        ),
+        "auto_migrated": True,
+        "nodes": [
+            N("corpus","CorpusReader",     "Indus Corpus (context)",{},  60,  140),
+            N("freq",  "FreqCounter",      "Frequency Counter",     {},  300,  80),
+            N("zipf",  "ZipfFitter",       "Zipf Exponent",         {},  300, 200),
+            N("run",   "ExperimentWrapper","Run Writing System Tiers",
+              {"experiment_id": "writing_system_progression"},        570, 140),
+            N("out",   "PassResult",       "Output",                {},  830, 140),
+        ],
+        "edges": [
+            E("e1", "corpus","freq", "sequences",    "sequences"),
+            E("e2", "freq",  "zipf", "freq_map",     "freq_map"),
+            E("e3", "zipf",  "run",  "zipf_exponent","upstream"),
+            E("e4", "run",   "out",  "",             ""),
+        ],
+    }
+
+    s["ventris_validation"] = {
+        "id": "ventris_validation",
+        "name": "Ventris Grid Validation (Linear B)",
+        "description": (
+            "Validates sign-pair affinity clustering against the known Ventris grid. "
+            "F1 scoring for vowel (row) and consonant (column) groups."
+        ),
+        "auto_migrated": True,
+        "nodes": [
+            N("corpus",  "CorpusReader",      "Load Corpus",          {},  60,  160),
+            N("freq",    "FreqCounter",        "Frequency Counter",    {},  300,  80),
+            N("profiler","PositionalProfiler", "Positional Profiler",  {},  300, 240),
+            N("run",     "ExperimentWrapper",  "Run Ventris Validation",
+              {"experiment_id": "ventris_validation"},                  570, 160),
+            N("out",     "PassResult",          "Output",              {},  830, 160),
+        ],
+        "edges": [
+            E("e1", "corpus",  "freq",    "sequences","sequences"),
+            E("e2", "corpus",  "profiler","sequences","sequences"),
+            E("e3", "profiler","run",     "profiles", "upstream"),
+            E("e4", "run",     "out",     "",         ""),
+        ],
+    }
+
+    s["ugaritic_proper_benchmark"] = {
+        "id": "ugaritic_proper_benchmark",
+        "name": "Ugaritic Proper Benchmark (Anti-Circularity)",
+        "description": (
+            "Proper 75/25 train/test split benchmark on Ugaritic Baal Cycle. "
+            "Demonstrates circularity inflation of +76.7 percentage points."
+        ),
+        "auto_migrated": True,
+        "nodes": [
+            N("corpus",  "CorpusReader",     "Load Corpus",                   {},  60,  140),
+            N("freq",    "FreqCounter",      "Frequency Counter",             {},  300,  80),
+            N("entropy", "EntropyCalc",      "Entropy H1",                    {},  300, 200),
+            N("run",     "ExperimentWrapper","Run Anti-Circularity Benchmark",
+              {"experiment_id": "ugaritic_proper_benchmark"},                  570, 140),
+            N("out",     "PassResult",       "Output",                        {},  830, 140),
+        ],
+        "edges": [
+            E("e1", "corpus",  "freq",    "sequences",    "sequences"),
+            E("e2", "freq",    "entropy", "freq_map",     "freq_map"),
+            E("e3", "entropy", "run",     "h1_normalized","upstream"),
+            E("e4", "run",     "out",     "",             ""),
+        ],
+    }
+
+    s["ugaritic_vs_hebrew"] = {
+        "id": "ugaritic_vs_hebrew",
+        "name": "Ugaritic vs Hebrew (Bigram Hill-Climbing)",
+        "description": (
+            "Hill-climbing bigram baseline for Ugaritic→Hebrew decipherment. "
+            "6.7% accuracy vs HMM (77%) and neural (97%). Demonstrates the baseline gap."
+        ),
+        "auto_migrated": True,
+        "nodes": [
+            N("corpus","CorpusReader",     "Load Corpus",              {},  60,  100),
+            N("freq",  "FreqCounter",      "Frequency Counter",        {},  300, 100),
+            N("run",   "ExperimentWrapper","Run Ugaritic vs Hebrew",
+              {"experiment_id": "ugaritic_vs_hebrew"},                  560, 100),
+            N("out",   "PassResult",       "Output",                   {},  820, 100),
+        ],
+        "edges": [
+            E("e1", "corpus","freq","sequences","sequences"),
+            E("e2", "freq",  "run", "freq_map", "upstream"),
+            E("e3", "run",   "out", "",         ""),
+        ],
+    }
+
+    # ── Category C: CLI-only experiments ─────────────────────────────────────
+    # StaticValue documents the CLI command; ExperimentWrapper returns the
+    # cli_only error message so the user knows to use the terminal.
+
+    _CLI_NOTE = (
+        "This experiment cannot run in the Experiment Builder. "
+        "Use the CLI command shown in this node's value param, or open a terminal."
+    )
+
+    s["kandles_bias"] = {
+        "id": "kandles_bias",
+        "name": "Kandles Bias Comparison (30 MC trials)",
+        "description": (
+            "CLI-only (~25 min). Compares biased vs unbiased Kandles phonological profiles "
+            "across 30 Monte Carlo trials. Result: 0.000 delta."
+        ),
+        "auto_migrated": True,
+        "nodes": [
+            N("note", "StaticValue",     "CLI Command",
+              {"value": (
+                  "python -m glossa_lab.experiments.run_kandles_biased_experiments --trials 30\n\n"
+                  + _CLI_NOTE
+              )},
+              60, 100),
+            N("run",  "ExperimentWrapper","Kandles Bias Suite (CLI-only)",
+              {"experiment_id": "kandles_bias"},                         360, 100),
+            N("out",  "PassResult",        "Output",                    {},  640, 100),
+        ],
+        "edges": [
+            E("e1", "note","run", "text",""),
+            E("e2", "run", "out", "",    ""),
+        ],
+    }
+
+    s["linear_a_circularity"] = {
+        "id": "linear_a_circularity",
+        "name": "Linear A Anti-Circularity Suite (7 experiments)",
+        "description": (
+            "CLI-only (~10 min). 7-experiment anti-circularity suite for Linear A phoneme "
+            "hypothesis testing using Monte Carlo trials."
+        ),
+        "auto_migrated": True,
+        "nodes": [
+            N("note", "StaticValue",     "CLI Command",
+              {"value": (
+                  "python backend/generate_report_linear_a_circularity.py\n\n"
+                  + _CLI_NOTE
+              )},
+              60, 100),
+            N("run",  "ExperimentWrapper","Linear A Circularity Suite (CLI-only)",
+              {"experiment_id": "linear_a_circularity"},                  360, 100),
+            N("out",  "PassResult",        "Output",                    {},  640, 100),
+        ],
+        "edges": [
+            E("e1", "note","run", "text",""),
+            E("e2", "run", "out", "",    ""),
+        ],
+    }
+
+    s["ocr_tables"] = {
+        "id": "ocr_tables",
+        "name": "OCR \u2014 Bigram & Frequency Tables",
+        "description": (
+            "CLI-only (~30 min). Mistral OCR on Mahadevan (1977) table pages. "
+            "Requires mistral_api_key in Settings."
+        ),
+        "auto_migrated": True,
+        "nodes": [
+            N("note", "StaticValue",     "CLI Command",
+              {"value": (
+                  "python ocr_mahadevan.py --target tables\n\n"
+                  "Requires Mistral API key in Settings. " + _CLI_NOTE
+              )},
+              60, 100),
+            N("run",  "ExperimentWrapper","OCR Tables Extraction (CLI-only)",
+              {"experiment_id": "ocr_tables"},                           360, 100),
+            N("out",  "PassResult",        "Output",                    {},  640, 100),
+        ],
+        "edges": [
+            E("e1", "note","run", "text",""),
+            E("e2", "run", "out", "",    ""),
+        ],
+    }
+
+    s["ocr_texts"] = {
+        "id": "ocr_texts",
+        "name": "OCR \u2014 Inscription Sequences (2906 texts)",
+        "description": (
+            "CLI-only (~2 hours). Mistral OCR on Mahadevan (1977) inscription pages. "
+            "Requires mistral_api_key in Settings."
+        ),
+        "auto_migrated": True,
+        "nodes": [
+            N("note", "StaticValue",     "CLI Command",
+              {"value": (
+                  "python ocr_mahadevan.py --target texts\n\n"
+                  "Requires Mistral API key in Settings. " + _CLI_NOTE
+              )},
+              60, 100),
+            N("run",  "ExperimentWrapper","OCR Inscription Texts (CLI-only)",
+              {"experiment_id": "ocr_texts"},                            360, 100),
+            N("out",  "PassResult",        "Output",                    {},  640, 100),
+        ],
+        "edges": [
+            E("e1", "note","run", "text",""),
+            E("e2", "run", "out", "",    ""),
+        ],
+    }
+
+    return s
+
+
+def _is_old_migration(data: dict, exp_id: str) -> bool:
+    """Detect files created by the old 3-node ExperimentWrapper migration."""
+    nodes = data.get("nodes", [])
+    if len(nodes) != 3:
+        return False
+    for n in nodes:
+        nd = n.get("data", {})
+        if (nd.get("atomicId") == "ExperimentWrapper"
+                and nd.get("params", {}).get("experiment_id") == exp_id):
+            return True
+    return False
+
+
+def auto_migrate_hardcoded_experiments() -> int:
+    """Create / update proper multi-node graph experiments on server startup.
+
+    For each ID in _build_proper_graph_specs():
+      - File does not exist → create it.
+      - File exists with ``"auto_migrated": true`` → overwrite with latest spec.
+      - File exists as the old 3-node ExperimentWrapper pattern → overwrite.
+      - File exists without those markers → skip (user-saved customisation).
+
+    Returns the number of files written.
+    """
+    specs = _build_proper_graph_specs()
+    written = 0
+
+    for spec in specs.values():
+        exp_id = spec["id"]
         dest = _GRAPHS_DIR / f"{exp_id}.json"
-        dest.write_text(__import__("json").dumps(graph_data, indent=2), encoding="utf-8")
-        existing_ids.add(exp_id)
-        created += 1
+        if dest.exists():
+            try:
+                existing = json.loads(dest.read_text("utf-8"))
+                # Keep user-saved customisations; only replace auto-generated files
+                if not existing.get("auto_migrated") and not _is_old_migration(existing, exp_id):
+                    continue
+            except Exception:  # noqa: BLE001
+                pass  # if unreadable, overwrite
 
-    if created > 0:
+        dest.write_text(json.dumps(spec, indent=2), encoding="utf-8")
+        written += 1
+
+    if written > 0:
         _invalidate()
-        logger.info("Migrated %d hardcoded experiments to graph experiment files", created)
+        logger.info(
+            "Auto-migrated %d experiment graph(s) to proper multi-node atomic specs.",
+            written,
+        )
 
-    return created
+    return written
 
 
 def register_graph_experiments() -> None:

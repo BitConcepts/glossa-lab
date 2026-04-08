@@ -423,6 +423,11 @@ class IndusStructuralAtlas(_EB):
     estimated_time = "~1 min"
     command = "python -m glossa_lab.experiments.indus_structural_atlas"
     results_file = "reports/indus_structural_atlas.json"
+    params_schema = {
+        "type": "object",
+        "properties": {},
+        "$comment": "Uses the built-in synthetic Indus corpus (calibrated to Yadav 2010). No user params required.",
+    }
 
     def run(self, **kwargs) -> dict:
         """Run the full Indus structural analysis and return the report dict."""

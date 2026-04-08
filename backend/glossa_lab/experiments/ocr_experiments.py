@@ -22,6 +22,11 @@ class OcrBigramTables(_EB):
     requires_key = "mistral_api_key"
     command = "python ocr_mahadevan.py --target tables"
     results_file = "reports/mahadevan_bigrams.json"
+    params_schema = {
+        "type": "object",
+        "properties": {},
+        "$comment": "CLI-only. Requires mistral_api_key in Settings. run() raises NotImplementedError.",
+    }
 
     def run(self, **kwargs):  # type: ignore[override]
         raise NotImplementedError(
@@ -38,6 +43,11 @@ class OcrInscriptionTexts(_EB):
     requires_key = "mistral_api_key"
     command = "python ocr_mahadevan.py --target texts"
     results_file = "reports/mahadevan_texts.json"
+    params_schema = {
+        "type": "object",
+        "properties": {},
+        "$comment": "CLI-only (~2 hours). Requires mistral_api_key in Settings. run() raises NotImplementedError.",
+    }
 
     def run(self, **kwargs):  # type: ignore[override]
         raise NotImplementedError(

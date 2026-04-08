@@ -461,6 +461,11 @@ class WritingSystemProgression(_EB):
     description = "5-tier writing system analysis: alphabetic to logo-syllabic to undeciphered."
     estimated_time = "~2 min"
     command = "python -m glossa_lab.experiments.writing_system_progression"
+    params_schema = {
+        "type": "object",
+        "properties": {},
+        "$comment": "Runs all tiers automatically using built-in Ugaritic, Linear B, Sumerian, and Indus synthetic corpora.",
+    }
 
     def run(self, **kwargs):
         return run_all_tiers(verbose=False)

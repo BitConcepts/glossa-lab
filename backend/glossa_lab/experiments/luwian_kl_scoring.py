@@ -243,6 +243,11 @@ class LuwianKLScoring(_EB):
     estimated_time = "< 5 sec"
     requires_key = None
     results_file = "reports/luwian_kl_results.json"
+    params_schema = {
+        "type": "object",
+        "properties": {},
+        "$comment": "Loads icit_extracted_corpus.json automatically and scores against built-in language profiles.",
+    }
 
     def run(self, **kwargs) -> dict:  # type: ignore[override]
         result = run_luwian_kl_scoring(verbose=False)

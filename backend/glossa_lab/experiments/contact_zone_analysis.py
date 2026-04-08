@@ -317,6 +317,11 @@ class ContactZoneAnalysis(_EB):
     estimated_time = "< 1 min"
     requires_key = None
     results_file = "reports/contact_zone_results.json"
+    params_schema = {
+        "type": "object",
+        "properties": {},
+        "$comment": "Loads icit_extracted_corpus.json automatically. No user params required.",
+    }
 
     def run(self, **kwargs) -> dict:  # type: ignore[override]
         result = run_contact_zone_analysis(verbose=False)

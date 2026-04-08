@@ -429,6 +429,8 @@ export const updateStudy = (
 export const deleteStudy = (id: string): Promise<{ deleted: boolean }> =>
   request("DELETE", `/studies/${id}`);
 
+export type NodeRunStatus = "idle" | "running" | "complete" | "error" | "skipped" | "annotation" | "corpus" | "pending";
+
 export interface StudyRunResult {
   study_id: string;
   node_count: number;
@@ -436,8 +438,9 @@ export interface StudyRunResult {
   skipped: number;
   annotations: number;
   errors: number;
+  job_id?: string | null;
   results: Record<string, {
-    status: "complete" | "skipped" | "error" | "annotation" | "corpus" | "pending";
+    status: NodeRunStatus;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     result?: Record<string, any>;
     reason?: string;
@@ -445,8 +448,102 @@ export interface StudyRunResult {
   }>;
 }
 
-export const runStudy = (id: string): Promise<StudyRunResult> =>
-  request("POST", `/studies/${id}/run`);
+/** SSE events emitted during a streaming study run. */
+export interface StudyRunEvent {
+  event: "started" | "node_start" | "node_end" | "run_complete" | "run_error";
+  // started
+  study_id?: string;
+  study_name?: string;
+  node_count?: number;
+  job_id?: string | null;
+  // node_start / node_end
+  nid?: string;
+  label?: string;
+  type?: string;
+  idx?: number;
+  total?: number;
+  status?: NodeRunStatus;
+  reason?: string;
+  // run_complete
+  completed?: number;
+  skipped?: number;
+  annotations?: number;
+  errors?: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  results?: Record<string, any>;
+  // run_error
+  message?: string;
+}
+
+/** SSE events emitted during a streaming experiment graph run. */
+export interface ExpRunEvent {
+  event: "started" | "node_start" | "node_end" | "run_complete" | "run_error";
+  exp_id?: string;
+  exp_name?: string;
+  node_count?: number;
+  nid?: string;
+  label?: string;
+  type?: string;
+  idx?: number;
+  total?: number;
+  status?: "complete" | "error";
+  error?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  result?: Record<string, any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  node_results?: Record<string, any>;
+  message?: string;
+}
+
+/** Shared SSE line reader — parses a fetch ReadableStream into typed events. */
+async function* _sseStream<T>(response: Response, signal?: AbortSignal): AsyncGenerator<T> {
+  if (!response.ok) {
+    const text = await response.text().catch(() => response.statusText);
+    throw new Error(`HTTP ${response.status}: ${text}`);
+  }
+  const reader = response.body!.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+  try {
+    while (true) {
+      if (signal?.aborted) break;
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split("\n");
+      buffer = lines.pop() ?? "";
+      for (const line of lines) {
+        if (line.startsWith("data: ") && line.length > 6) {
+          try { yield JSON.parse(line.slice(6)) as T; } catch { /* skip malformed */ }
+        }
+      }
+    }
+  } finally {
+    reader.releaseLock();
+  }
+}
+
+export async function* runStudyStream(
+  studyId: string,
+  signal?: AbortSignal,
+): AsyncGenerator<StudyRunEvent> {
+  const res = await fetch(`${BASE}/studies/${studyId}/run`, { method: "POST", signal });
+  yield* _sseStream<StudyRunEvent>(res, signal);
+}
+
+export async function* runGraphExperimentStream(
+  expId: string,
+  kwargs: Record<string, unknown> = {},
+  signal?: AbortSignal,
+): AsyncGenerator<ExpRunEvent> {
+  const res = await fetch(`${BASE}/experiment-graphs/${expId}/run`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ kwargs }),
+    signal,
+  });
+  yield* _sseStream<ExpRunEvent>(res, signal);
+}
 
 // ── Experiments (live CRUD) ───────────────────────────────────────────
 

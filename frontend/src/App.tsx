@@ -104,14 +104,26 @@ function AppContent() {
   // Dirty badges — shown when builders have unsaved local changes
   const [studyDirty, setStudyDirty] = useState(() => !!localStorage.getItem("glossa_study_draft"));
   const [expDirty, setExpDirty] = useState(false);
+  // Running badges — shown when any study / experiment run is in progress
+  const [studyRunning, setStudyRunning] = useState(false);
+  const [expRunning, setExpRunning]     = useState(false);
   useEffect(() => {
-    const h = (e: Event) => {
+    const hDirty = (e: Event) => {
       const { builder, dirty } = (e as CustomEvent<{ builder: string; dirty: boolean }>).detail;
       if (builder === "study") setStudyDirty(dirty);
       if (builder === "exp")   setExpDirty(dirty);
     };
-    window.addEventListener("glossa:dirty", h);
-    return () => window.removeEventListener("glossa:dirty", h);
+    const hRun = (e: Event) => {
+      const { builder, running } = (e as CustomEvent<{ builder: string; running: boolean }>).detail;
+      if (builder === "study") setStudyRunning(running);
+      if (builder === "exp")   setExpRunning(running);
+    };
+    window.addEventListener("glossa:dirty",   hDirty);
+    window.addEventListener("glossa:running", hRun);
+    return () => {
+      window.removeEventListener("glossa:dirty",   hDirty);
+      window.removeEventListener("glossa:running", hRun);
+    };
   }, []);
 
   // Redirect legacy exp-builder navigations to experiments
@@ -199,7 +211,8 @@ function AppContent() {
   // ── Sidebar nav item renderer ─────────────────────────────────────────────
   const NavBtn = ({ item }: { item: NavItem }) => {
     const active = tab === item.id;
-    const dirty = (item.id === "builder" && studyDirty) || (item.id === "experiments" && expDirty);
+    const dirty   = (item.id === "builder" && studyDirty)   || (item.id === "experiments" && expDirty);
+    const running = (item.id === "builder" && studyRunning) || (item.id === "experiments" && expRunning);
     return (
       <button
         onClick={() => setTab(item.id)}
@@ -220,7 +233,8 @@ function AppContent() {
       >
         <span style={{ fontSize: 14, lineHeight: 1, flexShrink: 0 }}>{item.icon}</span>
         <span style={{ flex: 1 }}>{item.label}</span>
-        {dirty && <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#f59e0b", flexShrink: 0, boxShadow: "0 0 4px #f59e0b" }} title="Unsaved changes" />}
+        {dirty   && !running && <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#f59e0b", flexShrink: 0, boxShadow: "0 0 4px #f59e0b" }} title="Unsaved changes" />}
+        {running && <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#22c55e", flexShrink: 0, boxShadow: "0 0 6px #22c55e", animation: "healthPulse 1s infinite" }} title="Running" />}
       </button>
     );
   };

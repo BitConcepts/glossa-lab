@@ -137,6 +137,80 @@ export interface JobResponse {
   updated_at: string;
 }
 
+// ── Experiment Graph types ───────────────────────────────────────────
+
+export interface AtomicPort {
+  name: string;
+  type: string;       // "sequences" | "freq_map" | "profiles" | "clusters" | "number" | "text" | "json" | "any"
+  required?: boolean;
+}
+
+export interface AtomicNodeDef {
+  id: string;
+  name: string;
+  category: string;
+  description: string;
+  inputs: AtomicPort[];
+  outputs: AtomicPort[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  params_schema: Record<string, any>;
+}
+
+export interface GraphExperiment {
+  id?: string;
+  name: string;
+  description: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  nodes: Record<string, any>[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  edges: Record<string, any>[];
+}
+
+export interface GraphExperimentMeta {
+  id: string;
+  name: string;
+  description: string;
+  node_count: number;
+  edge_count: number;
+}
+
+// Port type → hex colour (mirrors backend PORT_COLORS)
+export const PORT_COLORS: Record<string, string> = {
+  sequences: "#059669",
+  freq_map:  "#2563eb",
+  profiles:  "#7c3aed",
+  clusters:  "#d97706",
+  number:    "#dc2626",
+  text:      "#0d9488",
+  json:      "#4f46e5",
+  any:       "#64748b",
+};
+
+export const getAtomicNodeCatalog = (): Promise<AtomicNodeDef[]> =>
+  request("GET", "/experiment-graphs/catalog");
+
+export const listGraphExperiments = (): Promise<GraphExperimentMeta[]> =>
+  request("GET", "/experiment-graphs");
+
+export const getGraphExperiment = (id: string): Promise<GraphExperiment> =>
+  request("GET", `/experiment-graphs/${id}`);
+
+export const createGraphExperiment = (body: GraphExperiment): Promise<GraphExperiment> =>
+  request("POST", "/experiment-graphs", body);
+
+export const updateGraphExperiment = (id: string, body: GraphExperiment): Promise<GraphExperiment> =>
+  request("PUT", `/experiment-graphs/${id}`, body);
+
+export const deleteGraphExperiment = (id: string): Promise<{ deleted: boolean }> =>
+  request("DELETE", `/experiment-graphs/${id}`);
+
+export const runGraphExperiment = (
+  id: string,
+  kwargs: Record<string, unknown> = {}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+): Promise<{ status: string; result: Record<string, any> }> =>
+  request("POST", `/experiment-graphs/${id}/run`, { kwargs });
+
 // ── Health & Status ───────────────────────────────────────────────────
 
 export const getHealth = (): Promise<HealthResponse> =>

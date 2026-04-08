@@ -101,6 +101,18 @@ function AppContent() {
   const [tab, setTab] = useState<Tab>("studies");
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("glossa_dark") === "1");
   const [paletteOpen, setPaletteOpen] = useState(false);
+  // Dirty badges — shown when builders have unsaved local changes
+  const [studyDirty, setStudyDirty] = useState(() => !!localStorage.getItem("glossa_study_draft"));
+  const [expDirty, setExpDirty] = useState(false);
+  useEffect(() => {
+    const h = (e: Event) => {
+      const { builder, dirty } = (e as CustomEvent<{ builder: string; dirty: boolean }>).detail;
+      if (builder === "study") setStudyDirty(dirty);
+      if (builder === "exp") setExpDirty(dirty);
+    };
+    window.addEventListener("glossa:dirty", h);
+    return () => window.removeEventListener("glossa:dirty", h);
+  }, []);
   // notifOpen removed — NotificationCenter is now self-contained
 
   // Bottom panel state
@@ -178,10 +190,11 @@ function AppContent() {
   // ── Sidebar nav item renderer ─────────────────────────────────────────────
   const NavBtn = ({ item }: { item: NavItem }) => {
     const active = tab === item.id;
+    const dirty = (item.id === "builder" && studyDirty) || (item.id === "exp-builder" && expDirty);
     return (
       <button
         onClick={() => setTab(item.id)}
-        title={item.label}
+        title={item.label + (dirty ? " (unsaved changes)" : "")}
         style={{
           display: "flex", alignItems: "center", gap: 9,
           width: "100%", padding: "7px 14px",
@@ -197,7 +210,8 @@ function AppContent() {
         }}
       >
         <span style={{ fontSize: 14, lineHeight: 1, flexShrink: 0 }}>{item.icon}</span>
-        <span>{item.label}</span>
+        <span style={{ flex: 1 }}>{item.label}</span>
+        {dirty && <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#f59e0b", flexShrink: 0, boxShadow: "0 0 4px #f59e0b" }} title="Unsaved changes" />}
       </button>
     );
   };

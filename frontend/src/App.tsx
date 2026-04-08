@@ -33,15 +33,17 @@ interface NavItem { id: Tab; label: string; icon: string; }
 interface NavSection { title: string; items: NavItem[]; }
 
 // Navigation organised as always-visible sections (no collapsing)
+// Order reflects the deliberate workflow: Corpus → Experiments → Pipelines → Study Builder → Reports
 const NAV_SECTIONS: NavSection[] = [
   {
-    title: "Workspace",
+    title: "Workflow",
     items: [
-      { id: "studies",     label: "Studies",      icon: "📋" },
-      { id: "builder",     label: "Study Builder", icon: "🔧" },
-      { id: "experiments", label: "Experiments",   icon: "🧪" },
-      { id: "corpora",     label: "Corpora",       icon: "📚" },
-      { id: "reports",     label: "Reports",       icon: "📄" },
+      { id: "corpora",     label: "Corpora",       icon: "📚" },  // 1. Upload data
+      { id: "experiments", label: "Experiments",   icon: "🧪" },  // 2. Browse analyses
+      { id: "pipelines",   label: "Pipelines",     icon: "⚙️" },  // 3. Browse jobs
+      { id: "builder",     label: "Study Builder", icon: "🔧" },  // 4. Compose + run
+      { id: "reports",     label: "Reports",       icon: "📄" },  // 5. View results
+      { id: "studies",     label: "Studies",       icon: "📋" },  // Manage saved studies
     ],
   },
   {
@@ -58,11 +60,6 @@ const NAV_SECTIONS: NavSection[] = [
       { id: "hypotheses", label: "Hypotheses", icon: "💡" },
       { id: "notebooks",  label: "Notebooks",  icon: "📓" },
       { id: "citations",  label: "Citations",  icon: "📖" },
-    ],
-  },
-  {
-    title: "AI",
-    items: [
       { id: "ai-tools",   label: "AI Tools",   icon: "🔬" },
     ],
   },
@@ -71,7 +68,6 @@ const NAV_SECTIONS: NavSection[] = [
 // System items shown at the bottom of the sidebar (separated by a divider)
 const SYSTEM_ITEMS: NavItem[] = [
   { id: "status",    label: "Status",    icon: "⚡" },
-  { id: "pipelines", label: "Pipelines", icon: "⚙️" },
   { id: "jobs",      label: "Jobs",      icon: "📦" },
   { id: "settings",  label: "Settings",  icon: "🔧" },
 ];

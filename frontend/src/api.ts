@@ -297,12 +297,19 @@ export const importPipeline = (
 
 // ── Studies ─────────────────────────────────────────────────────────────────
 
+export type StudyNodeType =
+  | "experiment" | "pipeline" | "corpus"
+  | "rag_query" | "ai_analysis"
+  | "note" | "report" | "hypothesis";
+
 export interface StudyNode {
   id: string;
-  type: "experiment" | "pipeline" | "note";
-  ref_id: string;  // experiment id or pipeline id
+  type: StudyNodeType;
+  ref_id: string;       // experiment / pipeline id; empty for corpus/note/rag/ai/report/hypothesis
   label: string;
   params: Record<string, unknown>;
+  note_text?: string;   // text content for note nodes
+  color?: string;       // optional custom hex color override
   position: { x: number; y: number };
 }
 
@@ -353,12 +360,14 @@ export interface StudyRunResult {
   node_count: number;
   completed: number;
   skipped: number;
+  annotations: number;
   errors: number;
   results: Record<string, {
-    status: "complete" | "skipped" | "error";
+    status: "complete" | "skipped" | "error" | "annotation" | "corpus" | "pending";
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     result?: Record<string, any>;
     reason?: string;
+    job_id?: string;
   }>;
 }
 
@@ -463,7 +472,25 @@ export const generateStudy = (body: {
 }): Promise<StudyResponse> =>
   request("POST", "/studies/generate", body);
 
-// ── Presets ───────────────────────────────────────────────────────────
+// ── RAG ──────────────────────────────────────────────────────────────────────
+
+export interface RagChunk {
+  text: string;
+  source: string;
+  source_type: string;
+  score: number;
+}
+
+export const getRagStatus = (): Promise<{ index_size: number; index_age_seconds: number; ready: boolean }> =>
+  request("GET", "/rag/status");
+
+export const rebuildRagIndex = (): Promise<{ indexed_chunks: number; ready: boolean }> =>
+  request("POST", "/rag/index");
+
+export const queryRag = (query: string, topK = 5): Promise<{ query: string; results: RagChunk[]; total: number }> =>
+  request("POST", "/rag/query", { query, top_k: topK });
+
+// ── Presets
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const listPipelinePresets = (): Promise<Record<string, any>[]> =>

@@ -459,6 +459,22 @@ async def ai_chat(body: ChatRequest) -> dict[str, Any]:
     # ── Research context: load full decipherment state from reports + LEDGER ──
     if body.context_type == "research":
         context_block = "\n\n" + _build_research_context()
+        # Augment with RAG-retrieved chunks relevant to the latest user message
+        try:
+            from glossa_lab.rag import query as rag_query, index_size  # noqa: PLC0415
+            last_user = next(
+                (m.content for m in reversed(body.messages) if m.role == "user"), ""
+            )
+            if last_user and index_size() > 0:
+                rag_chunks = rag_query(last_user, top_k=3)
+                if rag_chunks:
+                    rag_section = "\n\n=== RETRIEVED RESEARCH ARTIFACTS (RAG) ==="
+                    for ch in rag_chunks:
+                        rag_section += f"\n[{ch['source_type']}:{ch['source']} score={ch['score']:.2f}]\n{ch['text'][:400]}"
+                    rag_section += "\n=== END RAG ==="
+                    context_block += rag_section
+        except Exception:  # noqa: BLE001
+            pass
 
     elif body.context_type and body.context_id:
         db = get_db()
@@ -478,10 +494,24 @@ async def ai_chat(body: ChatRequest) -> dict[str, Any]:
             elif body.context_type == "study":
                 study = await db.get_study(body.context_id)
                 if study:
+                    nodes_in_study = study.get('graph', {}).get('nodes', [])
                     context_block = (
                         f"\n\n[Active study: {study['name']} — {study.get('description', '')} | "
-                        f"{len(study.get('graph', {}).get('nodes', []))} experiments]"
+                        f"{len(nodes_in_study)} nodes]"
                     )
+                    # Augment with RAG chunks relevant to the study description
+                    try:
+                        from glossa_lab.rag import query as rag_query, index_size  # noqa: PLC0415
+                        if index_size() > 0:
+                            study_query = study.get('description', '') or study['name']
+                            rag_chunks = rag_query(study_query, top_k=2)
+                            if rag_chunks:
+                                context_block += "\n\n[Related artifacts: " + " | ".join(
+                                    f"{c['source']} ({c['score']:.2f})"
+                                    for c in rag_chunks
+                                ) + "]"  
+                    except Exception:  # noqa: BLE001
+                        pass
         if body.context_type == "experiment" and body.context_id:
             cls = get_experiment(body.context_id)
             if cls:

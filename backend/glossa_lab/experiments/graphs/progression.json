@@ -1,0 +1,65 @@
+{
+  "id": "progression",
+  "name": "Fuls Progression Benchmark",
+  "description": "5-tier progression benchmark: Ugaritic to Linear B to Sumerian to Indus.",
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CorpusReader",
+        "label": "Load Corpus",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 80
+      }
+    },
+    {
+      "id": "wrap",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ExperimentWrapper",
+        "label": "Fuls Progression Benchmark",
+        "params": {
+          "experiment_id": "progression",
+          "corpus_id": ""
+        }
+      },
+      "position": {
+        "x": 320,
+        "y": 80
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PassResult",
+        "label": "Output",
+        "params": {}
+      },
+      "position": {
+        "x": 570,
+        "y": 80
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "wrap",
+      "sourcePort": "sequences",
+      "targetPort": "upstream"
+    },
+    {
+      "id": "e2",
+      "source": "wrap",
+      "target": "out",
+      "sourcePort": "result",
+      "targetPort": "data"
+    }
+  ]
+}

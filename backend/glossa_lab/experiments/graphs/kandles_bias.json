@@ -1,0 +1,65 @@
+{
+  "id": "kandles_bias",
+  "name": "Kandles Bias Comparison (30 MC trials)",
+  "description": "30 MC trials: Luwian Kandles bias check. Result: 0.000 delta.",
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CorpusReader",
+        "label": "Load Corpus",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 80
+      }
+    },
+    {
+      "id": "wrap",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ExperimentWrapper",
+        "label": "Kandles Bias Comparison (30 MC trials)",
+        "params": {
+          "experiment_id": "kandles_bias",
+          "corpus_id": ""
+        }
+      },
+      "position": {
+        "x": 320,
+        "y": 80
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PassResult",
+        "label": "Output",
+        "params": {}
+      },
+      "position": {
+        "x": 570,
+        "y": 80
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "wrap",
+      "sourcePort": "sequences",
+      "targetPort": "upstream"
+    },
+    {
+      "id": "e2",
+      "source": "wrap",
+      "target": "out",
+      "sourcePort": "result",
+      "targetPort": "data"
+    }
+  ]
+}

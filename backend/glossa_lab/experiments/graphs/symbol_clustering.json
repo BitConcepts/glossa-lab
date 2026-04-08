@@ -1,0 +1,65 @@
+{
+  "id": "symbol_clustering",
+  "name": "Symbol Clustering",
+  "description": "Groups symbols by the similarity of their positional profiles (initial / medial / terminal rates) using L1 distance. Works on any corpus \u2014 upload any symbol sequence data and discover structural symbol classes automatically. Optionally supply reference_profiles to match against known archetypes.",
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CorpusReader",
+        "label": "Load Corpus",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 80
+      }
+    },
+    {
+      "id": "wrap",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ExperimentWrapper",
+        "label": "Symbol Clustering",
+        "params": {
+          "experiment_id": "symbol_clustering",
+          "corpus_id": ""
+        }
+      },
+      "position": {
+        "x": 320,
+        "y": 80
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PassResult",
+        "label": "Output",
+        "params": {}
+      },
+      "position": {
+        "x": 570,
+        "y": 80
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "wrap",
+      "sourcePort": "sequences",
+      "targetPort": "upstream"
+    },
+    {
+      "id": "e2",
+      "source": "wrap",
+      "target": "out",
+      "sourcePort": "result",
+      "targetPort": "data"
+    }
+  ]
+}

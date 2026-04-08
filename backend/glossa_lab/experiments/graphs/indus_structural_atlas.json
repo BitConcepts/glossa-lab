@@ -1,0 +1,65 @@
+{
+  "id": "indus_structural_atlas",
+  "name": "Indus Structural Atlas",
+  "description": "Fuls (2023) structural analysis: entropy, Zipf, NWSP, fingerprint, typology.",
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CorpusReader",
+        "label": "Load Corpus",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 80
+      }
+    },
+    {
+      "id": "wrap",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ExperimentWrapper",
+        "label": "Indus Structural Atlas",
+        "params": {
+          "experiment_id": "indus_structural_atlas",
+          "corpus_id": ""
+        }
+      },
+      "position": {
+        "x": 320,
+        "y": 80
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PassResult",
+        "label": "Output",
+        "params": {}
+      },
+      "position": {
+        "x": 570,
+        "y": 80
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "wrap",
+      "sourcePort": "sequences",
+      "targetPort": "upstream"
+    },
+    {
+      "id": "e2",
+      "source": "wrap",
+      "target": "out",
+      "sourcePort": "result",
+      "targetPort": "data"
+    }
+  ]
+}

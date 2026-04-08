@@ -1,7 +1,8 @@
 {
   "id": "contact_zone",
   "name": "Contact Zone Analysis",
-  "description": "Compares sign usage between Mesopotamian trade-contact sites (Lothal, Dholavira, Sutkagen-Dor) and heartland sites (Harappa, Mohenjo-daro). Tests for script specialisation at trade interfaces.",
+  "description": "Compares sign usage between Mesopotamian contact-zone sites (Lothal, Dholavira, Sutkagen-Dor) and heartland sites (Harappa, Mohenjo-daro).",
+  "auto_migrated": true,
   "nodes": [
     {
       "id": "corpus",
@@ -13,36 +14,61 @@
       },
       "position": {
         "x": 60,
-        "y": 80
+        "y": 200
       }
     },
     {
-      "id": "wrap",
+      "id": "freq",
       "type": "expNode",
       "data": {
-        "atomicId": "ExperimentWrapper",
-        "label": "Contact Zone Analysis",
-        "params": {
-          "experiment_id": "contact_zone",
-          "corpus_id": ""
-        }
-      },
-      "position": {
-        "x": 320,
-        "y": 80
-      }
-    },
-    {
-      "id": "out",
-      "type": "expNode",
-      "data": {
-        "atomicId": "PassResult",
-        "label": "Output",
+        "atomicId": "FreqCounter",
+        "label": "Frequency Counter",
         "params": {}
       },
       "position": {
-        "x": 570,
+        "x": 300,
         "y": 80
+      }
+    },
+    {
+      "id": "profiler",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PositionalProfiler",
+        "label": "Positional Profiler",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
+        "y": 320
+      }
+    },
+    {
+      "id": "merger",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge Results",
+        "params": {}
+      },
+      "position": {
+        "x": 560,
+        "y": 200
+      }
+    },
+    {
+      "id": "export",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Report",
+        "params": {
+          "filename": "contact_zone_results.json"
+        }
+      },
+      "position": {
+        "x": 820,
+        "y": 200
       }
     }
   ],
@@ -50,15 +76,36 @@
     {
       "id": "e1",
       "source": "corpus",
-      "target": "wrap",
+      "target": "freq",
       "sourcePort": "sequences",
-      "targetPort": "upstream"
+      "targetPort": "sequences"
     },
     {
       "id": "e2",
-      "source": "wrap",
-      "target": "out",
-      "sourcePort": "result",
+      "source": "corpus",
+      "target": "profiler",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "freq",
+      "target": "merger",
+      "sourcePort": "freq_map",
+      "targetPort": "a"
+    },
+    {
+      "id": "e4",
+      "source": "profiler",
+      "target": "merger",
+      "sourcePort": "class_summary",
+      "targetPort": "b"
+    },
+    {
+      "id": "e5",
+      "source": "merger",
+      "target": "export",
+      "sourcePort": "json",
       "targetPort": "data"
     }
   ]

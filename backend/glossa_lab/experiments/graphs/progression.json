@@ -1,35 +1,61 @@
 {
   "id": "progression",
   "name": "Fuls Progression Benchmark",
-  "description": "5-tier progression benchmark: Ugaritic to Linear B to Sumerian to Indus.",
+  "description": "5-tier benchmark: Ugaritic (abjad) \u2192 Linear B (syllabary) \u2192 Sumerian (logo-syllabic) \u2192 Indus (unknown). Validates the statistical pipeline on known scripts.",
+  "auto_migrated": true,
   "nodes": [
     {
       "id": "corpus",
       "type": "expNode",
       "data": {
         "atomicId": "CorpusReader",
-        "label": "Load Corpus",
+        "label": "Indus Corpus (context)",
         "params": {}
       },
       "position": {
         "x": 60,
+        "y": 140
+      }
+    },
+    {
+      "id": "freq",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FreqCounter",
+        "label": "Frequency Analysis",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
         "y": 80
       }
     },
     {
-      "id": "wrap",
+      "id": "entropy",
+      "type": "expNode",
+      "data": {
+        "atomicId": "EntropyCalc",
+        "label": "Entropy H1",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
+        "y": 200
+      }
+    },
+    {
+      "id": "run",
       "type": "expNode",
       "data": {
         "atomicId": "ExperimentWrapper",
-        "label": "Fuls Progression Benchmark",
+        "label": "Run 5-Tier Benchmark",
         "params": {
-          "experiment_id": "progression",
-          "corpus_id": ""
+          "experiment_id": "progression"
         }
       },
       "position": {
-        "x": 320,
-        "y": 80
+        "x": 570,
+        "y": 140
       }
     },
     {
@@ -41,8 +67,8 @@
         "params": {}
       },
       "position": {
-        "x": 570,
-        "y": 80
+        "x": 830,
+        "y": 140
       }
     }
   ],
@@ -50,16 +76,30 @@
     {
       "id": "e1",
       "source": "corpus",
-      "target": "wrap",
+      "target": "freq",
       "sourcePort": "sequences",
-      "targetPort": "upstream"
+      "targetPort": "sequences"
     },
     {
       "id": "e2",
-      "source": "wrap",
+      "source": "freq",
+      "target": "entropy",
+      "sourcePort": "freq_map",
+      "targetPort": "freq_map"
+    },
+    {
+      "id": "e3",
+      "source": "entropy",
+      "target": "run",
+      "sourcePort": "h1_normalized",
+      "targetPort": "upstream"
+    },
+    {
+      "id": "e4",
+      "source": "run",
       "target": "out",
-      "sourcePort": "result",
-      "targetPort": "data"
+      "sourcePort": "",
+      "targetPort": ""
     }
   ]
 }

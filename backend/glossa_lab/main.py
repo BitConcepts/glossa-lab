@@ -35,6 +35,7 @@ from glossa_lab.api.system import router as system_router
 from glossa_lab.api.terminal import router as terminal_router
 from glossa_lab.api.texts import router as texts_router
 from glossa_lab.node_registry import router as node_registry_router
+from glossa_lab.api.rag import router as rag_router
 from glossa_lab.config import get_settings
 from glossa_lab.database import close_db, init_db
 from glossa_lab.engine import run_engine_loop
@@ -120,6 +121,10 @@ async def lifespan(app: FastAPI):
     # Start Ollama in the background (no-op if not installed or already running)
     await asyncio.get_event_loop().run_in_executor(None, _try_start_ollama)
 
+    # Build RAG index in the background (non-blocking — completes while app starts)
+    from glossa_lab.rag import build_index as _rag_build  # noqa: PLC0415
+    asyncio.create_task(_rag_build(_db))  # fire and forget
+
     # Start pipeline engine in background
     engine_task = asyncio.create_task(run_engine_loop())
 
@@ -182,6 +187,7 @@ def create_app() -> FastAPI:
     application.include_router(shutdown_router, prefix="/api/v1")
     application.include_router(env_router, prefix="/api/v1")
     application.include_router(node_registry_router, prefix="/api/v1")
+    application.include_router(rag_router, prefix="/api/v1")
 
     # Serve built frontend at "/" — run 'npm run build' in frontend/ to populate.
     # Skipped silently in dev if the dist directory does not yet exist.

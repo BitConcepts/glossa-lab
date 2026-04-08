@@ -63,7 +63,39 @@ import {
 } from "../api";
 import { useAIChat } from "../hooks/useAIChat";
 
-// ── Node type configuration ─────────────────────────────────────────────────
+// ── Theme helpers ────────────────────────────────────────────────────────
+
+function sbTheme(dark: boolean) {
+  return {
+    // Side panels + toolbar
+    panelBg:    dark ? "#0f172a" : "#f8fafc",
+    panelBg2:   dark ? "#1e293b" : "#ffffff",
+    text:       dark ? "#e2e8f0" : "#1e293b",
+    textMuted:  dark ? "#94a3b8" : "#64748b",
+    textFaint:  dark ? "#64748b" : "#94a3b8",
+    border:     dark ? "#1e293b" : "#e2e8f0",
+    borderHov:  dark ? "#334155" : "#cbd5e1",
+    activeBg:   dark ? "#1e3a5f" : "#dbeafe",
+    activeText: dark ? "#ffffff" : "#1e40af",
+    inputBg:    dark ? "#0f172a" : "#ffffff",
+    inputText:  dark ? "#e2e8f0" : "#1e293b",
+    inputBdr:   dark ? "#334155" : "#d1d5db",
+    btnBg:      dark ? "#1e293b" : "#f3f4f6",
+    btnText:    dark ? "#94a3b8" : "#374151",
+    // Canvas (always dark — graph editors are universally dark)
+    canvasBg:   "#0a0f1e",
+    canvasGrid: "#1a2235",
+    edgeDef:    "#334155",
+    edgeRun:    "#7c3aed",
+    // Nodes (always dark canvas, but border adapts to selection)
+    nodeBg:     "#111827",
+    nodeText:   "#cbd5e1",
+    nodeRef:    "#94a3b8",
+    nodeDesc:   "#64748b",
+  };
+}
+
+// ── Node type configuration
 
 interface NodeTypeCfg {
   color: string;
@@ -120,44 +152,44 @@ const GlossaNode = ({ data, id, selected }: NodeProps) => {
 
   return (
     <div style={{
-      background: "#0f172a",
-      border: `2px solid ${selected ? "#60a5fa" : hdr + "55"}`,
-      borderRadius: 8, minWidth: 150, maxWidth: 220,
-      boxShadow: selected ? `0 0 0 2px #60a5fa30, 0 4px 16px rgba(0,0,0,0.5)` : "0 2px 12px rgba(0,0,0,0.4)",
+      background: "#111827",
+      border: `2px solid ${selected ? "#60a5fa" : hdr + "66"}`,
+      borderRadius: 8, minWidth: 155, maxWidth: 230,
+      boxShadow: selected ? `0 0 0 2px #60a5fa40, 0 4px 20px rgba(0,0,0,0.6)` : "0 2px 12px rgba(0,0,0,0.5)",
       fontFamily: "system-ui, sans-serif",
     }}>
       <Handle type="target" position={Position.Left}
-        style={{ width: 10, height: 10, background: hdr, border: "2px solid #0f172a", left: -6 }} />
+        style={{ width: 11, height: 11, background: hdr, border: "2px solid #111827", left: -6 }} />
 
       {/* Header */}
-      <div style={{ background: hdr, borderRadius: "6px 6px 0 0", padding: "5px 7px", display: "flex", alignItems: "center", gap: 5 }}>
-        <span style={{ fontSize: 12, lineHeight: 1, flexShrink: 0 }}>{cfg.icon}</span>
-        <span style={{ color: "#fff", fontSize: 11, fontWeight: 700, flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+      <div style={{ background: hdr, borderRadius: "6px 6px 0 0", padding: "6px 8px", display: "flex", alignItems: "center", gap: 5 }}>
+        <span style={{ fontSize: 13, lineHeight: 1, flexShrink: 0 }}>{cfg.icon}</span>
+        <span style={{ color: "#fff", fontSize: 12, fontWeight: 700, flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", textShadow: "0 1px 2px rgba(0,0,0,0.3)" }}>
           {nd.label}
         </span>
         {runStatus && runStatus !== "idle" && (
-          <span style={{ width: 7, height: 7, borderRadius: "50%", background: RUN_CLR[runStatus] ?? "#64748b", display: "inline-block", flexShrink: 0, boxShadow: `0 0 4px ${RUN_CLR[runStatus] ?? "#64748b"}` }} />
+          <span style={{ width: 7, height: 7, borderRadius: "50%", background: RUN_CLR[runStatus] ?? "#64748b", display: "inline-block", flexShrink: 0, boxShadow: `0 0 5px ${RUN_CLR[runStatus] ?? "#64748b"}` }} />
         )}
-        <button onMouseDown={onDelete} title="Delete" style={{ border: "none", background: "rgba(0,0,0,0.25)", color: "#fff", cursor: "pointer", fontSize: 13, lineHeight: 1, borderRadius: 3, padding: "1px 4px", flexShrink: 0, opacity: 0.75 }}>×</button>
+        <button onMouseDown={onDelete} title="Delete" style={{ border: "none", background: "rgba(0,0,0,0.3)", color: "#fff", cursor: "pointer", fontSize: 13, lineHeight: 1, borderRadius: 3, padding: "2px 5px", flexShrink: 0 }}>×</button>
       </div>
 
       {/* Body */}
-      <div style={{ padding: "5px 8px 6px", fontSize: 10, color: "#94a3b8", lineHeight: 1.4 }}>
+      <div style={{ padding: "6px 9px 7px", fontSize: 11, color: "#cbd5e1", lineHeight: 1.45 }}>
         {nd.nodeType === "note" && nd.noteText
-          ? <em style={{ color: "#fbbf24" }}>{String(nd.noteText).slice(0, 75)}</em>
+          ? <em style={{ color: "#fbbf24", fontSize: 10 }}>{String(nd.noteText).slice(0, 75)}</em>
           : nd.refId
-            ? <span style={{ color: "#475569", fontFamily: "monospace" }}>{nd.refId.slice(0, 22)}</span>
-            : <span style={{ color: "#334155" }}>{cfg.description.slice(0, 52)}</span>
+            ? <span style={{ color: "#94a3b8", fontFamily: "monospace", fontSize: 10 }}>{nd.refId.slice(0, 24)}</span>
+            : <span style={{ color: "#64748b", fontSize: 10 }}>{cfg.description.slice(0, 55)}</span>
         }
-        {(filledParams > 0 || runStatus) && (
-          <div style={{ marginTop: 4, display: "flex", gap: 4, flexWrap: "wrap", alignItems: "center" }}>
+        {(filledParams > 0 || (runStatus && runStatus !== "idle")) && (
+          <div style={{ marginTop: 5, display: "flex", gap: 4, flexWrap: "wrap", alignItems: "center" }}>
             {filledParams > 0 && (
-              <span style={{ background: hdr + "20", color: hdr, padding: "1px 5px", borderRadius: 3, fontSize: 9, fontWeight: 600 }}>
-                {filledParams}p
+              <span style={{ background: hdr + "25", color: hdr, padding: "1px 6px", borderRadius: 3, fontSize: 9, fontWeight: 700 }}>
+                {filledParams} param{filledParams > 1 ? "s" : ""}
               </span>
             )}
             {runStatus && runStatus !== "idle" && (
-              <span style={{ fontSize: 9, color: RUN_CLR[runStatus] ?? "#64748b", fontWeight: 700, textTransform: "uppercase" }}>
+              <span style={{ fontSize: 9, color: RUN_CLR[runStatus] ?? "#64748b", fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5 }}>
                 {runStatus}
               </span>
             )}
@@ -166,7 +198,7 @@ const GlossaNode = ({ data, id, selected }: NodeProps) => {
       </div>
 
       <Handle type="source" position={Position.Right}
-        style={{ width: 10, height: 10, background: hdr, border: "2px solid #0f172a", right: -6 }} />
+        style={{ width: 11, height: 11, background: hdr, border: "2px solid #111827", right: -6 }} />
     </div>
   );
 };
@@ -388,7 +420,8 @@ function nextNodeId() { return `n_${Date.now()}_${_nid++}`; }
 
 const SPECIAL_TYPES: StudyNodeType[] = ["corpus", "rag_query", "ai_analysis", "note", "report", "hypothesis"];
 
-export function StudyBuilderView() {
+export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
+  const th = sbTheme(darkMode);
   const [experiments, setExperiments] = useState<ExperimentMeta[]>([]);
   const [pipelines, setPipelines]     = useState<CatalogPipeline[]>([]);
   const [studies, setStudies]         = useState<StudyResponse[]>([]);
@@ -612,34 +645,39 @@ export function StudyBuilderView() {
   // Animated edges
   const animEdges = useMemo(() => edges.map(e => ({ ...e, animated: running, style: { stroke: running ? "#7c3aed" : "#334155", strokeWidth: 2 } })), [edges, running]);
 
-  // ── Left panel ──
+  // ── Left panel — theme-aware ──
   const LeftPanel = (
-    <div style={{ width: leftOff ? 32 : leftW, background: "#090d18", [dockL ? "borderRight" : "borderLeft"]: "1px solid #1e293b", display: "flex", flexDirection: "column", flexShrink: 0, overflow: "hidden", transition: "width 0.12s" }}>
-      <div style={{ padding: "6px 5px", borderBottom: "1px solid #1e293b", display: "flex", alignItems: "center", gap: 3, flexShrink: 0 }}>
-        <button onClick={() => setLeftOff(c => !c)} title={leftOff ? "Expand" : "Collapse"} style={{ border: "none", background: "none", color: "#475569", cursor: "pointer", fontSize: 13, padding: "2px 4px", borderRadius: 3 }}>{leftOff ? "▶" : "◀"}</button>
-        {!leftOff && <><span style={{ fontSize: 10, fontWeight: 700, color: "#334155", flex: 1, textTransform: "uppercase" }}>Workspace</span><button onClick={() => setDockL(d => !d)} title="Switch dock side" style={{ border: "none", background: "none", color: "#1e293b", cursor: "pointer", fontSize: 12 }}>⇄</button></>}
+    <div style={{ width: leftOff ? 32 : leftW, background: th.panelBg, [dockL ? "borderRight" : "borderLeft"]: `1px solid ${th.border}`, display: "flex", flexDirection: "column", flexShrink: 0, overflow: "hidden", transition: "width 0.12s" }}>
+      <div style={{ padding: "6px 5px", borderBottom: `1px solid ${th.border}`, display: "flex", alignItems: "center", gap: 3, flexShrink: 0 }}>
+        <button onClick={() => setLeftOff(c => !c)} title={leftOff ? "Expand" : "Collapse"} style={{ border: "none", background: "none", color: th.textMuted, cursor: "pointer", fontSize: 13, padding: "2px 4px", borderRadius: 3 }}>{leftOff ? "▶" : "◀"}</button>
+        {!leftOff && <><span style={{ fontSize: 10, fontWeight: 700, color: th.textFaint, flex: 1, textTransform: "uppercase", letterSpacing: 0.5 }}>Workspace</span><button onClick={() => setDockL(d => !d)} title="Switch dock side" style={{ border: "none", background: "none", color: th.textFaint, cursor: "pointer", fontSize: 12 }}>⇄</button></>}
       </div>
 
       {!leftOff && (
         <>
           {/* Studies list */}
-          <div style={{ padding: "7px 7px 4px", borderBottom: "1px solid #1e293b", flexShrink: 0, maxHeight: 210, overflowY: "auto" }}>
+          <div style={{ padding: "7px 7px 4px", borderBottom: `1px solid ${th.border}`, flexShrink: 0, maxHeight: 220, overflowY: "auto" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 3, marginBottom: 5 }}>
-              <span style={{ fontSize: 9, fontWeight: 700, color: "#334155", textTransform: "uppercase", flex: 1 }}>Studies</span>
-              <button onClick={() => setShowNewStudy(true)} title="New study" style={bm}>+</button>
-              <button onClick={() => importRef.current?.click()} title="Import" style={bm}>↑</button>
+              <span style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: "uppercase", letterSpacing: 0.5, flex: 1 }}>Studies</span>
+              <button onClick={() => setShowNewStudy(true)} title="New study" style={{ ...bm, color: th.textMuted, borderColor: th.border }}>+</button>
+              <button onClick={() => importRef.current?.click()} title="Import" style={{ ...bm, color: th.textMuted, borderColor: th.border }}>↑</button>
               <input ref={importRef} type="file" accept=".json" style={{ display: "none" }} onChange={onImport} />
             </div>
-            {studies.length === 0 && <div style={{ fontSize: 9, color: "#1e293b", fontStyle: "italic", padding: "4px 0" }}>No studies yet.</div>}
+            {studies.length === 0 && <div style={{ fontSize: 10, color: th.textFaint, fontStyle: "italic", padding: "4px 2px" }}>No studies yet. Click + to create one.</div>}
             {studies.map(s => {
               const active = activeStudy?.id === s.id;
               return (
                 <div key={s.id} onClick={() => loadStudy(s)}
-                  style={{ display: "flex", alignItems: "center", gap: 3, padding: "5px 5px", borderRadius: 4, marginBottom: 2, cursor: "pointer", background: active ? "#1e3a5f" : "transparent", border: active ? "1px solid #2563eb30" : "1px solid transparent" }}>
-                  <span style={{ flex: 1, fontSize: 11, fontWeight: active ? 600 : 400, color: active ? "#fff" : "#94a3b8", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{s.name}</span>
-                  <span style={{ fontSize: 9, color: "#334155", flexShrink: 0 }}>{s.graph?.nodes?.length ?? 0}</span>
-                  <button onClick={e => { e.stopPropagation(); void dupStudy(s); }} title="Dup" style={bm}>⎘</button>
-                  <button onClick={e => void delStudy(s.id, e)} title={deleteConfirm === s.id ? "Confirm?" : "Delete"} style={{ ...bm, color: deleteConfirm === s.id ? "#f87171" : "#334155", background: deleteConfirm === s.id ? "#450a0a" : "none" }}>{deleteConfirm === s.id ? "!" : "×"}</button>
+                  style={{ display: "flex", alignItems: "center", gap: 3, padding: "5px 6px", borderRadius: 5, marginBottom: 2, cursor: "pointer",
+                    background: active ? th.activeBg : "transparent",
+                    border: `1px solid ${active ? "#2563eb40" : "transparent"}` }}>
+                  <span style={{ flex: 1, fontSize: 11, fontWeight: active ? 600 : 400, color: active ? th.activeText : th.text, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{s.name}</span>
+                  <span style={{ fontSize: 9, color: th.textFaint, flexShrink: 0 }}>{s.graph?.nodes?.length ?? 0}</span>
+                  <button onClick={e => { e.stopPropagation(); void dupStudy(s); }} title="Dup" style={{ ...bm, color: th.textMuted, borderColor: th.border }}>⍘</button>
+                  <button onClick={e => void delStudy(s.id, e)} title={deleteConfirm === s.id ? "Confirm?" : "Delete"}
+                    style={{ ...bm, color: deleteConfirm === s.id ? "#f87171" : th.textMuted, background: deleteConfirm === s.id ? "#450a0a" : "none", borderColor: th.border }}>
+                    {deleteConfirm === s.id ? "!" : "×"}
+                  </button>
                 </div>
               );
             })}
@@ -647,28 +685,44 @@ export function StudyBuilderView() {
 
           {/* Palette */}
           <div style={{ flex: 1, overflowY: "auto", padding: "7px 7px" }}>
-            <div style={{ fontSize: 9, fontWeight: 700, color: "#334155", textTransform: "uppercase", marginBottom: 5 }}>Palette</div>
-            <input value={palSearch} onChange={e => setPalSearch(e.target.value)} placeholder="Search…" style={{ width: "100%", boxSizing: "border-box", padding: "4px 7px", fontSize: 10, border: "1px solid #1e293b", borderRadius: 4, marginBottom: 4, outline: "none", background: "#0f172a", color: "#e2e8f0" }} />
-            <div style={{ display: "flex", gap: 2, marginBottom: 6, flexWrap: "wrap" }}>
+            <div style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 5 }}>Palette</div>
+            <input value={palSearch} onChange={e => setPalSearch(e.target.value)} placeholder="Search…"
+              style={{ width: "100%", boxSizing: "border-box", padding: "5px 8px", fontSize: 11, border: `1px solid ${th.inputBdr}`, borderRadius: 5, marginBottom: 5, outline: "none", background: th.inputBg, color: th.inputText }} />
+            <div style={{ display: "flex", gap: 2, marginBottom: 7, flexWrap: "wrap" }}>
               {(["all", "experiment", "pipeline", "special"] as const).map(f => (
-                <button key={f} onClick={() => setPalFilter(f)} style={{ padding: "2px 6px", border: "1px solid", borderRadius: 8, cursor: "pointer", fontSize: 9, background: palFilter === f ? "#334155" : "none", borderColor: palFilter === f ? "#475569" : "#1e293b", color: palFilter === f ? "#e2e8f0" : "#334155" }}>{f}</button>
+                <button key={f} onClick={() => setPalFilter(f)} style={{ padding: "2px 7px", border: `1px solid ${palFilter === f ? "#475569" : th.border}`, borderRadius: 8, cursor: "pointer", fontSize: 9, background: palFilter === f ? (darkMode ? "#334155" : "#1e293b") : "transparent", color: palFilter === f ? "#e2e8f0" : th.textMuted }}>{f}</button>
               ))}
             </div>
             {(palFilter === "all" || palFilter === "special") && (
-              <div style={{ marginBottom: 7 }}>
-                <div style={{ fontSize: 9, fontWeight: 700, color: "#334155", textTransform: "uppercase", marginBottom: 4 }}>Data &amp; Analysis</div>
+              <div style={{ marginBottom: 8 }}>
+                <div style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 4 }}>Data &amp; Analysis</div>
                 {SPECIAL_TYPES.map(nt => <PaletteItem key={nt} label={NODE_CFG[nt].defaultLabel} nodeType={nt} description={NODE_CFG[nt].description} refId="" onDragStart={onDragStart} />)}
               </div>
             )}
-            {fExps.length > 0 && <><div style={{ fontSize: 9, fontWeight: 700, color: "#7c3aed", textTransform: "uppercase", marginBottom: 3 }}>Experiments</div>{fExps.map(e => <PaletteItem key={e.id} label={e.name} nodeType="experiment" description={e.description} refId={e.id} onDragStart={onDragStart} />)}</>}
-            {fPipes.length > 0 && <div style={{ marginTop: 7 }}><div style={{ fontSize: 9, fontWeight: 700, color: "#2563eb", textTransform: "uppercase", marginBottom: 3 }}>Pipelines</div>{fPipes.map(p => <PaletteItem key={p.id} label={p.label ?? p.id} nodeType="pipeline" description={p.description ?? ""} refId={p.id} onDragStart={onDragStart} />)}</div>}
+            {fExps.length > 0 && (
+              <div style={{ marginBottom: 8 }}>
+                <div style={{ fontSize: 9, fontWeight: 700, color: "#7c3aed", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 4 }}>Experiments</div>
+                {fExps.map(e => <PaletteItem key={e.id} label={e.name} nodeType="experiment" description={e.description} refId={e.id} onDragStart={onDragStart} />)}
+              </div>
+            )}
+            {fPipes.length > 0 && (
+              <div style={{ marginTop: 4 }}>
+                <div style={{ fontSize: 9, fontWeight: 700, color: "#2563eb", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 4 }}>Pipelines</div>
+                {fPipes.map(p => <PaletteItem key={p.id} label={p.label ?? p.id} nodeType="pipeline" description={p.description ?? ""} refId={p.id} onDragStart={onDragStart} />)}
+              </div>
+            )}
           </div>
         </>
       )}
     </div>
   );
 
-  const Divider = <div onMouseDown={onDividerDown} style={{ width: 5, cursor: "col-resize", background: "#090d18", flexShrink: 0, borderLeft: "1px solid #1e293b" }} onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderLeftColor = "#334155"; }} onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderLeftColor = "#1e293b"; }} />;
+  const Divider = (
+    <div onMouseDown={onDividerDown}
+      style={{ width: 4, cursor: "col-resize", background: th.panelBg, flexShrink: 0, borderLeft: `1px solid ${th.border}`, transition: "border-color 0.1s" }}
+      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderLeftColor = th.borderHov; }}
+      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderLeftColor = th.border; }}
+    />);
 
   const Right = !inspectorOff && selectedNode ? (
     <Inspector node={selectedNode} experiments={experiments} pipelines={pipelines}
@@ -676,11 +730,11 @@ export function StudyBuilderView() {
   ) : null;
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "calc(100vh - 52px)", overflow: "hidden" }}>
-      {/* Toolbar */}
-      <div style={{ display: "flex", alignItems: "center", gap: 5, padding: "5px 10px", background: "#090d18", borderBottom: "1px solid #1e293b", flexShrink: 0, flexWrap: "wrap" }}>
-        <span style={{ fontSize: 12, fontWeight: 700, color: "#94a3b8", marginRight: 4 }}>Study Builder</span>
-        {activeStudy && <span style={{ fontSize: 11, color: "#475569", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", maxWidth: 200 }}>{activeStudy.name}</span>}
+    <div style={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0, overflow: "hidden" }}>
+      {/* Toolbar — theme-aware */}
+      <div style={{ display: "flex", alignItems: "center", gap: 5, padding: "6px 12px", background: th.panelBg2, borderBottom: `1px solid ${th.border}`, flexShrink: 0, flexWrap: "wrap" }}>
+        <span style={{ fontSize: 12, fontWeight: 700, color: th.text, marginRight: 4 }}>Study Builder</span>
+        {activeStudy && <span style={{ fontSize: 11, color: th.textMuted, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", maxWidth: 220 }}>{activeStudy.name}</span>}
         {saveMsg && <span style={{ fontSize: 11, color: saveMsg === "Saved" ? "#22c55e" : "#ef4444", fontWeight: 600 }}>{saveMsg}</span>}
         <div style={{ flex: 1 }} />
         <button onClick={async () => { if (!ragReady) { setRagBuilding(true); try { const r = await rebuildRagIndex(); setRagReady(r.ready); } finally { setRagBuilding(false); } } }}
@@ -708,12 +762,12 @@ export function StudyBuilderView() {
         {LeftPanel}
         {!leftOff && Divider}
 
-        <div ref={reactFlowWrapper} style={{ flex: 1, minWidth: 0, background: "#060a14" }} onDrop={onDrop} onDragOver={onDragOver}>
+        <div ref={reactFlowWrapper} style={{ flex: 1, minWidth: 0, background: th.canvasBg }} onDrop={onDrop} onDragOver={onDragOver}>
           {!activeStudy && (
-            <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 8, color: "#1e293b", zIndex: 5, pointerEvents: "none" }}>
-              <div style={{ fontSize: 40 }}>📐</div>
-              <div style={{ fontSize: 14, color: "#334155" }}>Select or create a study to start</div>
-              <div style={{ fontSize: 11, color: "#1e293b" }}>Drag nodes from the palette · Right-click canvas to add</div>
+            <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 10, zIndex: 5, pointerEvents: "none" }}>
+              <div style={{ fontSize: 44 }}>📐</div>
+              <div style={{ fontSize: 15, color: "#475569", fontWeight: 600 }}>Select or create a study to start</div>
+              <div style={{ fontSize: 12, color: "#334155" }}>Drag nodes from the palette · Right-click canvas to add any node type</div>
             </div>
           )}
           <ReactFlow
@@ -733,12 +787,12 @@ export function StudyBuilderView() {
             fitView fitViewOptions={{ padding: 0.2 }}
             minZoom={0.15} maxZoom={2.5}
             proOptions={{ hideAttribution: true }}
-            style={{ background: "#060a14" }}
-            defaultEdgeOptions={{ reconnectable: true, style: { stroke: "#334155", strokeWidth: 2 } }}
+            style={{ background: th.canvasBg }}
+            defaultEdgeOptions={{ reconnectable: true, style: { stroke: th.edgeDef, strokeWidth: 2 } }}
           >
-            <Controls style={{ background: "#1e293b", border: "1px solid #334155" }} />
-            <MiniMap style={{ background: "#090d18" }} nodeColor={n => NODE_CFG[(n.data as NodeData)?.nodeType]?.color ?? "#334155"} />
-            <Background variant={BackgroundVariant.Dots} gap={15} size={1} color="#1a2235" />
+            <Controls style={{ background: darkMode ? "#1e293b" : "#ffffff", border: `1px solid ${th.border}` }} />
+            <MiniMap style={{ background: th.canvasBg }} nodeColor={n => NODE_CFG[(n.data as NodeData)?.nodeType]?.color ?? "#334155"} />
+            <Background variant={BackgroundVariant.Dots} gap={15} size={1} color={th.canvasGrid} />
           </ReactFlow>
         </div>
 
@@ -749,30 +803,30 @@ export function StudyBuilderView() {
         )}
       </div>
 
-      {/* Below-canvas panels */}
-      <div style={{ flexShrink: 0, padding: "0 0 4px 0" }}>
+      {/* Below-canvas panels — theme-aware */}
+      <div style={{ flexShrink: 0, padding: "0 0 4px 0", background: th.panelBg }}>
         {runError && <div style={{ margin: "5px 0", padding: "7px 12px", background: "#450a0a", border: "1px solid #7f1d1d", borderRadius: 5, fontSize: 12, color: "#fca5a5" }}>{runError}</div>}
 
         {runResult && (
-          <div style={{ background: "#090d18", border: "1px solid #1e293b", borderRadius: 6, overflow: "hidden", marginTop: 4 }}>
-            <div style={{ background: "#0f172a", padding: "6px 12px", display: "flex", gap: 12, alignItems: "center", borderBottom: "1px solid #1e293b" }}>
+          <div style={{ background: th.panelBg, border: `1px solid ${th.border}`, borderRadius: 6, overflow: "hidden", marginTop: 4 }}>
+            <div style={{ background: th.panelBg2, padding: "6px 12px", display: "flex", gap: 12, alignItems: "center", borderBottom: `1px solid ${th.border}` }}>
               <span style={{ fontSize: 11, fontWeight: 700, color: "#22c55e" }}>Run Results</span>
-              <span style={{ fontSize: 10, color: "#475569" }}>{runResult.completed} complete · {runResult.skipped} skipped · {runResult.annotations ?? 0} annotations · {runResult.errors} errors</span>
-              <button onClick={() => setRunResult(null)} style={{ marginLeft: "auto", border: "none", background: "none", cursor: "pointer", fontSize: 11, color: "#334155" }}>× dismiss</button>
+              <span style={{ fontSize: 10, color: th.textMuted }}>{runResult.completed} complete · {runResult.skipped} skipped · {runResult.annotations ?? 0} annotations · {runResult.errors} errors</span>
+              <button onClick={() => setRunResult(null)} style={{ marginLeft: "auto", border: "none", background: "none", cursor: "pointer", fontSize: 11, color: th.textFaint }}>× dismiss</button>
             </div>
             <div style={{ overflowX: "auto", maxHeight: 160, overflowY: "auto" }}>
               {Object.entries(runResult.results).map(([nid, res]) => {
                 const sc = ({ complete: "#22c55e", error: "#ef4444", skipped: "#f59e0b", annotation: "#64748b", corpus: "#059669", pending: "#f59e0b" } as Record<string, string>)[res.status] ?? "#64748b";
                 const lbl = nodes.find(n => n.id === nid)?.data?.label as string | undefined;
                 return (
-                  <div key={nid} style={{ display: "flex", gap: 8, padding: "5px 12px", borderBottom: "1px solid #0f172a", alignItems: "flex-start" }}>
+                  <div key={nid} style={{ display: "flex", gap: 8, padding: "6px 12px", borderBottom: `1px solid ${th.border}`, alignItems: "flex-start" }}>
                     <span style={{ fontSize: 9, padding: "1px 6px", borderRadius: 6, background: sc + "20", color: sc, fontWeight: 700, whiteSpace: "nowrap", marginTop: 1 }}>{res.status}</span>
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ fontSize: 11, fontWeight: 500, color: "#94a3b8" }}>{lbl ?? nid}</div>
-                      {res.reason && <div style={{ fontSize: 10, color: "#475569" }}>{res.reason}</div>}
+                      <div style={{ fontSize: 11, fontWeight: 500, color: th.text }}>{lbl ?? nid}</div>
+                      {res.reason && <div style={{ fontSize: 10, color: th.textMuted }}>{res.reason}</div>}
                       {res.status === "complete" && res.result && (
-                        <pre style={{ background: "#1e293b", color: "#64748b", margin: "3px 0 0", padding: "3px 8px", fontSize: 9, borderRadius: 3, maxHeight: 70, overflowY: "auto" }}>
-                          {JSON.stringify(res.result, null, 2).slice(0, 350)}
+                        <pre style={{ background: darkMode ? "#1e293b" : "#f1f5f9", color: th.textMuted, margin: "3px 0 0", padding: "4px 8px", fontSize: 9, borderRadius: 3, maxHeight: 70, overflowY: "auto" }}>
+                          {JSON.stringify(res.result, null, 2).slice(0, 400)}
                         </pre>
                       )}
                     </div>
@@ -801,5 +855,6 @@ export function StudyBuilderView() {
 
 // ── Shared styles ─────────────────────────────────────────────────────────────
 
-const tBtn: React.CSSProperties = { padding: "4px 10px", border: "1px solid #1e293b", borderRadius: 5, cursor: "pointer", fontSize: 11, fontWeight: 600, background: "#0f172a", color: "#64748b" };
-const bm:   React.CSSProperties = { border: "1px solid #1e293b", borderRadius: 3, background: "none", color: "#334155", cursor: "pointer", fontSize: 10, padding: "0 4px", lineHeight: "16px" };
+// These are module-level fallbacks — actual values are derived from th in the component
+const tBtn: React.CSSProperties = { padding: "4px 10px", border: "1px solid #334155", borderRadius: 5, cursor: "pointer", fontSize: 11, fontWeight: 600, background: "transparent", color: "#94a3b8" };
+const bm:   React.CSSProperties = { border: "1px solid #334155", borderRadius: 3, background: "none", color: "#94a3b8", cursor: "pointer", fontSize: 10, padding: "0 4px", lineHeight: "18px" };

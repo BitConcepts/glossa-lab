@@ -109,15 +109,17 @@ interface Props {
   studyId: string | null;
   studyName?: string;
   darkMode?: boolean;
+  /** Start the panel collapsed. Default false (open). */
+  initialCollapsed?: boolean;
 }
 
-export function CollaborationPanel({ studyId, studyName, darkMode = true }: Props) {
+export function CollaborationPanel({ studyId, studyName, darkMode = true, initialCollapsed = false }: Props) {
   const [messages, setMessages] = useState<CollabMessage[]>([]);
   const [loading, setLoading]   = useState(false);
   const [newAuthor, setNewAuthor] = useState(() => localStorage.getItem("glossa_collab_author") ?? "");
   const [newMsg, setNewMsg]     = useState("");
   const [sending, setSending]   = useState(false);
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(initialCollapsed);
   const listRef = useRef<HTMLDivElement>(null);
   const { openChat } = useAIChat();
 
@@ -188,33 +190,33 @@ export function CollaborationPanel({ studyId, studyName, darkMode = true }: Prop
   };
 
   const pinnedCount = messages.filter(m => m.pinned).length;
+  const totalCount  = messages.length;
 
   return (
     <div style={{
       background: sBg, borderTop: `1px solid ${sBdr}`,
       display: "flex", flexDirection: "column", flexShrink: 0,
-      maxHeight: collapsed ? 32 : 320,
-      transition: "max-height 0.15s",
+      maxHeight: collapsed ? 28 : 320,
+      transition: "max-height 0.2s ease",
       overflow: "hidden",
     }}>
       {/* Header */}
-      <div style={{ display: "flex", alignItems: "center", gap: 5, padding: "4px 8px", background: sBg2, borderBottom: `1px solid ${sBdr}`, flexShrink: 0 }}>
-        <button onClick={() => setCollapsed(v => !v)} style={{ border: "none", background: "none", color: sMuted, cursor: "pointer", fontSize: 12, padding: "0 2px" }}>
-          {collapsed ? "▶" : "▼"}
-        </button>
+      <div style={{ display: "flex", alignItems: "center", gap: 5, padding: "3px 8px", background: sBg2, borderBottom: collapsed ? "none" : `1px solid ${sBdr}`, flexShrink: 0, cursor: "pointer" }}
+        onClick={() => setCollapsed(v => !v)}>
+        <span style={{ fontSize: 11, color: sMuted }}>{collapsed ? "▶" : "▼"}</span>
         <span style={{ fontSize: 10, fontWeight: 700, color: sMuted, textTransform: "uppercase", letterSpacing: 0.5, flex: 1 }}>
-          Collaboration {pinnedCount > 0 ? `· ${pinnedCount} pinned` : ""}
+          💬 Collaboration{totalCount > 0 ? ` (${totalCount})` : ""}{pinnedCount > 0 ? ` · ${pinnedCount} 📌` : ""}
         </span>
         {!collapsed && messages.length > 0 && (
           <button
-            onClick={suggestNextSteps}
+            onClick={e => { e.stopPropagation(); suggestNextSteps(); }}
             title="Ask AI to suggest next steps based on pinned messages"
             style={{ border: `1px solid ${sBdr}`, borderRadius: 4, background: "none", color: sMuted, cursor: "pointer", fontSize: 9, padding: "1px 5px", fontWeight: 600 }}>
             ✨ Next Steps
           </button>
         )}
         {!collapsed && (
-          <button onClick={() => void load()} title="Reload messages" style={{ border: "none", background: "none", color: sFaint, cursor: "pointer", fontSize: 11, padding: "0 2px" }}>⟳</button>
+          <button onClick={e => { e.stopPropagation(); void load(); }} title="Reload messages" style={{ border: "none", background: "none", color: sFaint, cursor: "pointer", fontSize: 11, padding: "0 2px" }}>⟳</button>
         )}
       </div>
 

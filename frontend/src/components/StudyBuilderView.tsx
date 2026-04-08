@@ -712,12 +712,20 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
       if (!(e instanceof DOMException && e.name === "AbortError")) {
         setRunError(e instanceof Error ? e.message : "Run failed");
         saveToRunCache(target.id, { completed: 0, errors: 1, nodeCount: 0, ts: Date.now() });
+        window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "study", running: false, id: target.id, status: "fail" } }));
+      } else {
+        // Aborted by user — treat as failure so indicator shows red
+        window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "study", running: false, id: target.id, status: "fail" } }));
       }
+      return;
     } finally {
       setActiveRuns(prev => { const n = { ...prev }; delete n[target.id]; return n; });
-      window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "study", running: false, id: target.id } }));
     }
-  }, [activeStudy, doSave, saveToRunCache]);
+    // Normal completion (no exception): status comes from run_complete event errors field
+    const cached = runCache[target.id];
+    const wasSuccess = !cached || cached.errors === 0;
+    window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "study", running: false, id: target.id, status: wasSuccess ? "success" : "fail" } }));
+  }, [activeStudy, doSave, saveToRunCache, runCache]);
 
   const stopAll = useCallback(() => {
     Object.values(activeRunsRef.current).forEach(r => r.controller.abort());
@@ -900,6 +908,9 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
           <div style={{ padding: "7px 7px 4px", borderBottom: `1px solid ${th.border}`, flexShrink: 0, height: studiesH, overflowY: "auto", boxSizing: "border-box" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 3, marginBottom: 5 }}>
               <span style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: "uppercase", letterSpacing: 0.5, flex: 1 }}>Studies</span>
+              <button onClick={() => studies.filter(s => !activeRuns[s.id]).forEach(s => void doRun(s))}
+                title="Run all studies in parallel" disabled={studies.length === 0 || hasActiveRuns}
+                style={{ ...bm, color: "#22c55e", borderColor: "#15803d40", padding: "0 4px", opacity: studies.length === 0 || hasActiveRuns ? 0.4 : 1 }}>▶▶</button>
               <button onClick={() => setShowNewStudy(true)} title="New study" style={{ ...bm, color: th.textMuted, borderColor: th.border }}>+</button>
               <button onClick={() => importRef.current?.click()} title="Import" style={{ ...bm, color: th.textMuted, borderColor: th.border }}>↑</button>
               <input ref={importRef} type="file" accept=".json" style={{ display: "none" }} onChange={onImport} />
@@ -1110,19 +1121,19 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
             </div>
           )}
 
-          {/* Floating run/stop button — bottom-right of canvas */}
+          {/* Floating run/stop button — top-center of canvas */}
           {activeStudy && nodes.length > 0 && (
-            <div style={{ position: "absolute", bottom: 60, right: 16, zIndex: 20, display: "flex", flexDirection: "column", gap: 6 }}>
+            <div style={{ position: "absolute", top: 12, left: "50%", transform: "translateX(-50%)", zIndex: 20 }}>
               {activeStudyRunning ? (
                 <button onClick={() => activeRuns[activeStudy.id]?.controller.abort()}
                   title="Stop this study run"
-                  style={{ padding: "8px 16px", border: "2px solid #ef4444", borderRadius: 24, background: "#450a0a", color: "#f87171", cursor: "pointer", fontSize: 12, fontWeight: 700, boxShadow: "0 4px 16px rgba(0,0,0,0.5)", whiteSpace: "nowrap" }}>
+                  style={{ padding: "6px 16px", border: "2px solid #ef4444", borderRadius: 20, background: "rgba(69,10,10,0.9)", color: "#f87171", cursor: "pointer", fontSize: 12, fontWeight: 700, boxShadow: "0 2px 12px rgba(0,0,0,0.5)", whiteSpace: "nowrap", backdropFilter: "blur(4px)" }}>
                   ⏹ Stop
                 </button>
               ) : (
                 <button onClick={() => void doRun(activeStudy)}
                   title="Run this study"
-                  style={{ padding: "8px 20px", border: "none", borderRadius: 24, background: "linear-gradient(135deg,#16a34a,#22c55e)", color: "#fff", cursor: "pointer", fontSize: 12, fontWeight: 700, boxShadow: "0 4px 16px rgba(0,0,0,0.4)", whiteSpace: "nowrap" }}>
+                  style={{ padding: "6px 18px", border: "none", borderRadius: 20, background: "linear-gradient(135deg,#16a34a,#22c55e)", color: "#fff", cursor: "pointer", fontSize: 12, fontWeight: 700, boxShadow: "0 2px 12px rgba(0,0,0,0.4)", whiteSpace: "nowrap" }}>
                   ▶ Run Study
                 </button>
               )}

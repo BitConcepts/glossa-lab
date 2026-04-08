@@ -1,7 +1,8 @@
 {
   "id": "positional_profile_analysis",
   "name": "Positional Profile Analysis",
-  "description": "Computes initial / medial / terminal position rates for every symbol in a corpus. Works on any symbol system \u2014 unknown scripts, languages, DNA sequences, or any tokenised corpus. Symbols with high T-rate cluster at sequence endings (suffix candidates). High I-rate symbols are sequence openers (determinatives / prefixes). High M-rate symbols are interior elements (phonetic medials).",
+  "description": "Computes I/M/T position rates per symbol using the Fuls (2013) NWSP method. Works on any corpus \u2014 unknown scripts, languages, DNA, or any tokenised system.",
+  "auto_migrated": true,
   "nodes": [
     {
       "id": "corpus",
@@ -13,23 +14,22 @@
       },
       "position": {
         "x": 60,
-        "y": 80
+        "y": 100
       }
     },
     {
-      "id": "wrap",
+      "id": "profiler",
       "type": "expNode",
       "data": {
-        "atomicId": "ExperimentWrapper",
-        "label": "Positional Profile Analysis",
+        "atomicId": "PositionalProfiler",
+        "label": "Positional Profiler",
         "params": {
-          "experiment_id": "positional_profile_analysis",
-          "corpus_id": ""
+          "min_count": 3
         }
       },
       "position": {
-        "x": 320,
-        "y": 80
+        "x": 300,
+        "y": 100
       }
     },
     {
@@ -41,8 +41,8 @@
         "params": {}
       },
       "position": {
-        "x": 570,
-        "y": 80
+        "x": 540,
+        "y": 100
       }
     }
   ],
@@ -50,15 +50,15 @@
     {
       "id": "e1",
       "source": "corpus",
-      "target": "wrap",
+      "target": "profiler",
       "sourcePort": "sequences",
-      "targetPort": "upstream"
+      "targetPort": "sequences"
     },
     {
       "id": "e2",
-      "source": "wrap",
+      "source": "profiler",
       "target": "out",
-      "sourcePort": "result",
+      "sourcePort": "profiles",
       "targetPort": "data"
     }
   ]

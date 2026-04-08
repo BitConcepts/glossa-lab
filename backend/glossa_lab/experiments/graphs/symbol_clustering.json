@@ -1,7 +1,8 @@
 {
   "id": "symbol_clustering",
   "name": "Symbol Clustering",
-  "description": "Groups symbols by the similarity of their positional profiles (initial / medial / terminal rates) using L1 distance. Works on any corpus \u2014 upload any symbol sequence data and discover structural symbol classes automatically. Optionally supply reference_profiles to match against known archetypes.",
+  "description": "Groups symbols by positional profile similarity (L1 distance on T/I/M rates). Works on any symbol corpus.",
+  "auto_migrated": true,
   "nodes": [
     {
       "id": "corpus",
@@ -13,23 +14,35 @@
       },
       "position": {
         "x": 60,
-        "y": 80
+        "y": 100
       }
     },
     {
-      "id": "wrap",
+      "id": "profiler",
       "type": "expNode",
       "data": {
-        "atomicId": "ExperimentWrapper",
-        "label": "Symbol Clustering",
+        "atomicId": "PositionalProfiler",
+        "label": "Positional Profiler",
         "params": {
-          "experiment_id": "symbol_clustering",
-          "corpus_id": ""
+          "min_count": 5
         }
       },
       "position": {
-        "x": 320,
-        "y": 80
+        "x": 300,
+        "y": 100
+      }
+    },
+    {
+      "id": "cluster",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Clusterer",
+        "label": "Symbol Clusterer",
+        "params": {}
+      },
+      "position": {
+        "x": 540,
+        "y": 100
       }
     },
     {
@@ -41,8 +54,8 @@
         "params": {}
       },
       "position": {
-        "x": 570,
-        "y": 80
+        "x": 780,
+        "y": 100
       }
     }
   ],
@@ -50,15 +63,22 @@
     {
       "id": "e1",
       "source": "corpus",
-      "target": "wrap",
+      "target": "profiler",
       "sourcePort": "sequences",
-      "targetPort": "upstream"
+      "targetPort": "sequences"
     },
     {
       "id": "e2",
-      "source": "wrap",
+      "source": "profiler",
+      "target": "cluster",
+      "sourcePort": "profiles",
+      "targetPort": "profiles"
+    },
+    {
+      "id": "e3",
+      "source": "cluster",
       "target": "out",
-      "sourcePort": "result",
+      "sourcePort": "clusters",
       "targetPort": "data"
     }
   ]

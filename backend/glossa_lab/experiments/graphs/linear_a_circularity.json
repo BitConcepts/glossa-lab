@@ -1,22 +1,46 @@
 {
   "id": "linear_a_circularity",
   "name": "Linear A Anti-Circularity Suite (7 experiments)",
-  "description": "CLI-only (~10 min). 7-experiment anti-circularity suite for Linear A phoneme hypothesis testing using Monte Carlo trials.",
+  "description": "7-experiment anti-circularity suite for Linear A phoneme hypothesis testing. Graph mode: sequential, 3 trials (~30 s). Full 30-trial analysis: use CLI command.",
   "auto_migrated": true,
   "nodes": [
     {
-      "id": "note",
+      "id": "corpus",
       "type": "expNode",
       "data": {
-        "atomicId": "StaticValue",
-        "label": "CLI Command",
-        "params": {
-          "value": "python backend/generate_report_linear_a_circularity.py\n\nThis experiment cannot run in the Experiment Builder. Use the CLI command shown in this node's value param, or open a terminal."
-        }
+        "atomicId": "CorpusReader",
+        "label": "Corpus (context)",
+        "params": {}
       },
       "position": {
         "x": 60,
-        "y": 100
+        "y": 140
+      }
+    },
+    {
+      "id": "freq",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FreqCounter",
+        "label": "Frequency Counter",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
+        "y": 80
+      }
+    },
+    {
+      "id": "profiler",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PositionalProfiler",
+        "label": "Positional Profiler",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
+        "y": 200
       }
     },
     {
@@ -24,14 +48,15 @@
       "type": "expNode",
       "data": {
         "atomicId": "ExperimentWrapper",
-        "label": "Linear A Circularity Suite (CLI-only)",
+        "label": "Linear A Circularity Suite",
         "params": {
-          "experiment_id": "linear_a_circularity"
+          "experiment_id": "linear_a_circularity",
+          "n_mc_trials": 3
         }
       },
       "position": {
-        "x": 360,
-        "y": 100
+        "x": 570,
+        "y": 140
       }
     },
     {
@@ -43,21 +68,35 @@
         "params": {}
       },
       "position": {
-        "x": 640,
-        "y": 100
+        "x": 830,
+        "y": 140
       }
     }
   ],
   "edges": [
     {
       "id": "e1",
-      "source": "note",
-      "target": "run",
-      "sourcePort": "text",
-      "targetPort": "upstream"
+      "source": "corpus",
+      "target": "freq",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
     },
     {
       "id": "e2",
+      "source": "corpus",
+      "target": "profiler",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "profiler",
+      "target": "run",
+      "sourcePort": "profiles",
+      "targetPort": "upstream"
+    },
+    {
+      "id": "e4",
       "source": "run",
       "target": "out",
       "sourcePort": "result",

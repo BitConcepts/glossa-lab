@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Increment this when adding a new _SCHEMA_Vn block below.
 # _apply_schema will raise if the DB is somehow ahead of the code.
-_SCHEMA_VERSION = 4
+_SCHEMA_VERSION = 5
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -107,6 +107,17 @@ CREATE TABLE IF NOT EXISTS citations (
 );
 """
 
+_SCHEMA_V5 = """
+CREATE TABLE IF NOT EXISTS collab_messages (
+    id         TEXT PRIMARY KEY,
+    study_id   TEXT NOT NULL,
+    author     TEXT NOT NULL DEFAULT '',
+    message    TEXT NOT NULL,
+    pinned     INTEGER NOT NULL DEFAULT 0,
+    created_at TEXT NOT NULL
+);
+"""
+
 # Module-level singleton
 _db: Database | None = None
 
@@ -165,6 +176,11 @@ class Database:
         if current_version < 4:
             await self._conn.executescript(_SCHEMA_V4)
             await self._conn.execute("UPDATE _schema_version SET version = ?", (4,))
+            current_version = 4
+
+        if current_version < 5:
+            await self._conn.executescript(_SCHEMA_V5)
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (5,))
 
         if current_version > _SCHEMA_VERSION:
             logger.warning(
@@ -698,7 +714,67 @@ class Database:
         await self._conn.commit()
         return existing
 
-    # ── Helpers ──────────────────────────────────────────────────────
+    # ── Collaboration Messages ────────────────────────────────────────────
+
+    async def list_collab_messages(self, study_id: str) -> list[dict[str, Any]]:
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM collab_messages WHERE study_id=? ORDER BY pinned DESC, created_at ASC",
+            (study_id,),
+        )
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    async def create_collab_message(
+        self,
+        *,
+        study_id: str,
+        author: str = "",
+        message: str,
+        created_at: str,
+    ) -> dict[str, Any]:
+        assert self._conn
+        mid = uuid.uuid4().hex[:12]
+        await self._conn.execute(
+            """INSERT INTO collab_messages (id,study_id,author,message,pinned,created_at)
+               VALUES (?,?,?,?,0,?)""",
+            (mid, study_id, author, message, created_at),
+        )
+        await self._conn.commit()
+        return await self.get_collab_message(mid)  # type: ignore[return-value]
+
+    async def get_collab_message(self, mid: str) -> dict[str, Any] | None:
+        assert self._conn
+        cursor = await self._conn.execute("SELECT * FROM collab_messages WHERE id=?", (mid,))
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    async def update_collab_message(
+        self, mid: str, *, pinned: int | None = None, message: str | None = None, author: str | None = None
+    ) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_collab_message(mid)
+        if existing is None:
+            return None
+        next_pinned  = pinned  if pinned  is not None else existing["pinned"]
+        next_message = message if message is not None else existing["message"]
+        next_author  = author  if author  is not None else existing["author"]
+        await self._conn.execute(
+            "UPDATE collab_messages SET pinned=?,message=?,author=? WHERE id=?",
+            (next_pinned, next_message, next_author, mid),
+        )
+        await self._conn.commit()
+        return await self.get_collab_message(mid)
+
+    async def delete_collab_message(self, mid: str) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_collab_message(mid)
+        if existing is None:
+            return None
+        await self._conn.execute("DELETE FROM collab_messages WHERE id=?", (mid,))
+        await self._conn.commit()
+        return existing
+
+    # ── Helpers ──────────────────────────────────────────────────
 
     @staticmethod
     def _row_to_dict(row: aiosqlite.Row) -> dict[str, Any]:

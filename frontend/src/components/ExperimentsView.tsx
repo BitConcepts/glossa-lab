@@ -1,661 +1,264 @@
 /**
- * Experiments View — live CRUD for all discovered experiments.
+ * Experiments View — gallery of graph experiments.
  *
- * Features:
- *  - Lists experiments auto-discovered from backend/experiments/
- *  - Run an experiment in-place with live result display
- *  - Duplicate, delete experiments
- *  - AI-generate a new experiment from a natural-language prompt
+ * Every experiment is a composable graph built in the Experiment Builder.
+ * Actions here (Open, Duplicate, Delete, New) all navigate to the
+ * Experiment Builder so users work visually, not via code.
+ *
+ * To generate experiment structure using AI:
+ *   → Open an experiment in the Builder → use AI Chat ✨ to add/suggest nodes.
  */
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import {
-  deleteExperiment,
-  duplicateExperiment,
-  generateExperiment,
-  isLocalKeySet,
-  listExperiments,
-  reloadExperiments,
-  runExperiment,
-  type ExperimentMeta,
+  createGraphExperiment,
+  deleteGraphExperiment,
+  getGraphExperiment,
+  listGraphExperiments,
+  runGraphExperiment,
+  type GraphExperimentMeta,
 } from "../api";
 import { useAIChat } from "../hooks/useAIChat";
 
-const CATEGORY_COLORS: Record<string, string> = {
-  "Data Extraction": "#7c3aed",
-  Validation: "#16a34a",
-  Analysis: "#2563eb",
-  Experiments: "#d97706",
-  Custom: "#6b7280",
-};
+// ── Helpers ─────────────────────────────────────────────────────────────────
 
-function catColor(cat: string) {
-  return CATEGORY_COLORS[cat] ?? "#6b7280";
-}
-
-// ── Generate dialog ────────────────────────────────────────────────────────────────
-
-interface GenerateDialogProps {
-  onClose: () => void;
-  onCreated: () => void;
-}
-
-function GenerateDialog({ onClose, onCreated }: GenerateDialogProps) {
-  const [name, setName] = useState("");
-  const [category, setCategory] = useState("Analysis");
-  const [prompt, setPrompt] = useState("");
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  const handleGenerate = async () => {
-    if (!name.trim() || !prompt.trim()) {
-      setError("Name and description are required.");
-      return;
-    }
-    setBusy(true);
-    setError(null);
-    try {
-      await generateExperiment({ name: name.trim(), category, prompt: prompt.trim() });
-      await reloadExperiments();
-      onCreated();
-      onClose();
-    } catch (e: unknown) {
-      setError(e instanceof Error ? e.message : String(e));
-    } finally {
-      setBusy(false);
-    }
-  };
-
-  const backdropRef = useRef<HTMLDivElement>(null);
-
-  return (
-    <div
-      ref={backdropRef}
-      onClick={(ev) => { if (ev.target === backdropRef.current) onClose(); }}
-      style={{
-        position: "fixed", inset: 0, background: "rgba(0,0,0,0.45)",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        zIndex: 1000,
-      }}
-    >
-      <div style={{
-        background: "#fff", borderRadius: 12, padding: "1.75rem 2rem",
-        width: 540, maxWidth: "95vw", boxShadow: "0 20px 60px rgba(0,0,0,0.2)",
-      }}>
-        <h3 style={{ margin: "0 0 1.25rem 0", color: "#111827", fontSize: 16 }}>
-          ✨ AI-Generate Experiment
-        </h3>
-
-        <label style={labelStyle}>Experiment name</label>
-        <input
-          style={inputStyle}
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="e.g. Markov Chain Analysis"
-          autoFocus
-        />
-
-        <label style={labelStyle}>Category</label>
-        <select
-          style={{ ...inputStyle, cursor: "pointer" }}
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        >
-          {["Analysis", "Validation", "Data Extraction", "Experiments", "Custom"].map((c) => (
-            <option key={c}>{c}</option>
-          ))}
-        </select>
-
-        <label style={labelStyle}>Describe what the experiment should do</label>
-        <textarea
-          style={{ ...inputStyle, height: 100, resize: "vertical", fontFamily: "inherit" }}
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Analyse bigram frequency distributions in the Fuls catalog and produce a heatmap JSON report…"
-        />
-
-        {!isLocalKeySet("openai_api_key") && (
-          <div style={{
-            background: "#fef3c7", border: "1px solid #fcd34d",
-            borderRadius: 6, padding: "8px 12px", marginBottom: 12, fontSize: 12,
-          }}>
-            Requires <strong>openai_api_key</strong> — set it in the Settings tab first.
-          </div>
-        )}
-
-        {error && (
-          <div style={{
-            background: "#fef2f2", border: "1px solid #fca5a5",
-            borderRadius: 6, padding: "8px 12px", marginBottom: 12, fontSize: 12, color: "#b91c1c",
-          }}>
-            {error}
-          </div>
-        )}
-
-        <div style={{ display: "flex", gap: 8, justifyContent: "flex-end", marginTop: 8 }}>
-          <button onClick={onClose} style={btnSecondary} disabled={busy}>Cancel</button>
-          <button onClick={handleGenerate} style={btnPrimary} disabled={busy}>
-            {busy ? "Generating…" : "Generate"}
-          </button>
-        </div>
-      </div>
-    </div>
+/** Navigate to Experiment Builder and set a pending action via localStorage. */
+function openInBuilder(action: "load" | "new" | "dup", id?: string) {
+  localStorage.setItem(
+    "glossa_exp_builder_open",
+    JSON.stringify({ action, id: id ?? null })
+  );
+  window.dispatchEvent(
+    new CustomEvent("glossa:navigate", { detail: { view: "exp-builder" } })
   );
 }
 
-// ── Experiment card ───────────────────────────────────────────────────────────
+// ── Experiment card ──────────────────────────────────────────────────────────
 
 interface CardProps {
-  exp: ExperimentMeta;
+  exp: GraphExperimentMeta;
   onDeleted: (id: string) => void;
-  onDuplicated: () => void;
+  onRefresh: () => void;
 }
 
-function ExperimentCard({ exp, onDeleted, onDuplicated }: CardProps) {
-  const [expanded, setExpanded] = useState(false);
+function ExpCard({ exp, onDeleted, onRefresh }: CardProps) {
   const [running, setRunning] = useState(false);
-  const [streaming, setStreaming] = useState(false);
-  const [streamLines, setStreamLines] = useState<string[]>([]);
-  const esRef = useRef<EventSource | null>(null);
-  const [runResult, setRunResult] = useState<unknown | null>(null);
+  const [runResult, setRunResult] = useState<string | null>(null);
   const [runError, setRunError] = useState<string | null>(null);
+  const [confirmDel, setConfirmDel] = useState(false);
   const [deleting, setDeleting] = useState(false);
-  const [confirmDelete, setConfirmDelete] = useState(false);
-  const [duplicating, setDuplicating] = useState(false);
+  const [duping, setDuping] = useState(false);
   const { openChat } = useAIChat();
 
-  const color = catColor(exp.category);
-  const needsKey = Boolean(exp.requires_key && !isLocalKeySet(exp.requires_key));
+  const handleOpen = () => openInBuilder("load", exp.id);
 
   const handleRun = async () => {
-    setRunning(true);
-    setRunResult(null);
-    setRunError(null);
-    if (!expanded) setExpanded(true);
+    setRunning(true); setRunResult(null); setRunError(null);
     try {
-      const res = await runExperiment(exp.id);
-      setRunResult(res);
-    } catch (e: unknown) {
-      setRunError(e instanceof Error ? e.message : String(e));
-    } finally {
-      setRunning(false);
-    }
+      const r = await runGraphExperiment(exp.id);
+      const keys = Object.keys(r.result ?? {}).slice(0, 4).join(", ");
+      setRunResult(r.status === "complete" ? `✓ ${keys || "done"}` : r.status);
+    } catch (e) { setRunError(e instanceof Error ? e.message : "run failed"); }
+    finally { setRunning(false); }
+  };
+
+  const handleDup = async () => {
+    setDuping(true);
+    try {
+      const d = await getGraphExperiment(exp.id);
+      // Create copy then open in builder
+      const copy = await createGraphExperiment({
+        ...d, id: undefined, name: `${d.name} (copy)`,
+      } as Parameters<typeof createGraphExperiment>[0]);
+      onRefresh();
+      openInBuilder("load", copy.id);
+    } catch { /* ignore */ }
+    finally { setDuping(false); }
   };
 
   const handleDelete = async () => {
-    if (!confirmDelete) { setConfirmDelete(true); return; }
+    if (!confirmDel) { setConfirmDel(true); setTimeout(() => setConfirmDel(false), 3000); return; }
     setDeleting(true);
-    try {
-      await deleteExperiment(exp.id);
-      onDeleted(exp.id);
-    } catch (e: unknown) {
-      setRunError(e instanceof Error ? e.message : String(e));
-      setDeleting(false);
-      setConfirmDelete(false);
-    }
-  };
-
-  const stopStream = useCallback(() => {
-    if (esRef.current) {
-      esRef.current.close();
-      esRef.current = null;
-    }
-    setStreaming(false);
-    setStreamLines((l) => [...l, "⏹ Stopped"]);
-  }, []);
-
-  const handleStream = () => {
-    if (streaming) return;
-    setStreaming(true);
-    setStreamLines(["Starting…"]);
-    setRunResult(null);
-    setRunError(null);
-    if (!expanded) setExpanded(true);
-    const url = `/api/v1/experiments/${exp.id}/stream`;
-    const es = new EventSource(url);
-    esRef.current = es;
-    es.addEventListener("started", () => {
-      setStreamLines((l) => [...l, "▶ Running…"]);
-    });
-    es.addEventListener("heartbeat", (ev) => {
-      const d = JSON.parse(ev.data) as { elapsed_s: number };
-      setStreamLines((l) => [...l, `⏳ Elapsed: ${d.elapsed_s}s`]);
-    });
-    es.addEventListener("complete", (ev) => {
-      const d = JSON.parse(ev.data) as { result: unknown };
-      setRunResult(d.result);
-      setStreamLines((l) => [...l, "✓ Complete"]);
-      setStreaming(false);
-      es.close();
-      esRef.current = null;
-    });
-    es.addEventListener("error", (ev) => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const data = (ev as any).data as string | undefined;
-      const msg = data ? (JSON.parse(data) as { message: string }).message : "Connection error";
-      setRunError(msg);
-      setStreamLines((l) => [...l, `✗ Error: ${msg}`]);
-      setStreaming(false);
-      es.close();
-      esRef.current = null;
-    });
-    es.onerror = () => {
-      if (esRef.current) {
-        setRunError("SSE connection lost");
-        setStreaming(false);
-        es.close();
-        esRef.current = null;
-      }
-    };
-  };
-
-  const handleDuplicate = async () => {
-    setDuplicating(true);
-    try {
-      await duplicateExperiment(exp.id);
-      onDuplicated();
-    } catch (e: unknown) {
-      setRunError(e instanceof Error ? e.message : String(e));
-    } finally {
-      setDuplicating(false);
-    }
-  };
-
-  const handleSummarize = () => {
-    openChat({
-      contextType: "experiment",
-      contextId: exp.id,
-      contextLabel: exp.name,
-      initialPrompt: `Please summarize the experiment "${exp.name}" (${exp.category}): ${exp.description}\n\nProvide: abstract, hypothesis, key highlights, insights, and next research steps.`,
-    });
+    try { await deleteGraphExperiment(exp.id); onDeleted(exp.id); }
+    catch { setDeleting(false); setConfirmDel(false); }
   };
 
   return (
     <div style={{
-      border: "1px solid #e5e7eb", borderRadius: 8, overflow: "hidden",
-      boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
-    }}>
-      {/* Header row */}
-      <div style={{
-        display: "flex", alignItems: "center", gap: 10, padding: "11px 14px",
-        background: "#fafafa",
-        borderBottom: expanded ? "1px solid #e5e7eb" : "none",
-      }}>
-        <span
-          style={{ fontSize: 13, flex: 1, fontWeight: 600, cursor: "pointer", userSelect: "none" }}
-          onClick={() => setExpanded((x) => !x)}
-        >
-          {exp.name}
-        </span>
+      border: "1px solid #e5e7eb", borderRadius: 10, overflow: "hidden",
+      boxShadow: "0 1px 4px rgba(0,0,0,0.04)", background: "#fff",
+      transition: "box-shadow 0.15s",
+    }}
+      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 16px rgba(0,0,0,0.1)"; }}
+      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = "0 1px 4px rgba(0,0,0,0.04)"; }}
+    >
+      {/* Left accent bar */}
+      <div style={{ height: 4, background: "linear-gradient(90deg, #7c3aed, #4f46e5)" }} />
 
-        <span style={{
-          fontSize: 11, padding: "2px 7px", borderRadius: 10,
-          background: color + "20", color, fontWeight: 600, whiteSpace: "nowrap",
-        }}>
-          {exp.category}
-        </span>
-
-        {exp.custom && (
-          <span style={{
-            fontSize: 10, padding: "1px 6px", borderRadius: 8,
-            background: "#f3f4f6", color: "#6b7280", fontWeight: 600,
-          }}>custom</span>
-        )}
-
-        <span style={{ fontSize: 11, color: "#9ca3af", whiteSpace: "nowrap" }}>
-          {exp.estimated_time}
-        </span>
-
-        <button
-          onClick={handleRun}
-          disabled={running || streaming || needsKey}
-          title={needsKey ? `Requires ${exp.requires_key}` : "Run (waits for full result)"}
-          style={{
-            ...btnSmall,
-            background: needsKey ? "#f3f4f6" : running ? "#e0e7ff" : "#1e3a5f",
-            color: needsKey ? "#9ca3af" : running ? "#4338ca" : "#fff",
-            cursor: needsKey ? "not-allowed" : "pointer",
-            minWidth: 52,
-          }}
-        >
-          {running ? "Running…" : "▶ Run"}
-        </button>
-        {streaming ? (
-          <button
-            onClick={stopStream}
-            title="Stop streaming"
-            style={{
-              ...btnSmall,
-              background: "#fef2f2",
-              color: "#b91c1c",
-              border: "1px solid #fca5a5",
-              minWidth: 52,
-            }}
-          >
-            ⏹ Stop
-          </button>
-        ) : (
-          <button
-            onClick={handleStream}
-            disabled={running || needsKey}
-            title={needsKey ? `Requires ${exp.requires_key}` : "Stream — live heartbeat output, use for long runs"}
-            style={{
-              ...btnSmall,
-              background: needsKey ? "#f3f4f6" : "#f3f4f6",
-              color: needsKey ? "#9ca3af" : "#374151",
-              cursor: needsKey ? "not-allowed" : "pointer",
-              minWidth: 52,
-            }}
-          >
-            ↯ Stream
-          </button>
-        )}
-
-        <button
-          onClick={handleSummarize}
-          title="Open AI Chat with this experiment as context"
-          style={{ ...btnSmall, background: "#f3f4f6", color: "#374151" }}
-        >
-          ✨ AI
-        </button>
-
-        <button
-          onClick={handleDuplicate}
-          disabled={duplicating}
-          title="Duplicate experiment"
-          style={{ ...btnSmall, background: "#f3f4f6", color: "#374151" }}
-        >
-          {duplicating ? "…" : "⎆"}
-        </button>
-
-        <button
-          onClick={handleDelete}
-          disabled={deleting}
-          title={confirmDelete ? "Click again to confirm delete" : exp.custom ? "Delete experiment" : "Delete experiment (built-in — will remove from disk)"}
-          style={{
-            ...btnSmall,
-            background: confirmDelete ? "#fef2f2" : "#f3f4f6",
-            color: confirmDelete ? "#b91c1c" : "#6b7280",
-            border: confirmDelete ? "1px solid #fca5a5" : "1px solid #e5e7eb",
-          }}
-        >
-          {deleting ? "…" : confirmDelete ? "Confirm?" : "🗑"}
-        </button>
-
-        <span
-          style={{ fontSize: 14, color: "#9ca3af", cursor: "pointer", userSelect: "none" }}
-          onClick={() => setExpanded((x) => !x)}
-        >
-          {expanded ? "▲" : "▼"}
-        </span>
-      </div>
-
-      {/* Expanded body */}
-      {expanded && (
-        <div style={{ padding: "14px 16px" }}>
-          <p style={{ margin: "0 0 0.75rem", fontSize: 13, color: "#374151", lineHeight: 1.6 }}>
-            {exp.description}
-          </p>
-
-          {needsKey && (
-            <div style={{
-              background: "#fef3c7", border: "1px solid #fcd34d",
-              borderRadius: 6, padding: "8px 12px", marginBottom: "0.75rem", fontSize: 12,
-            }}>
-              Requires API key: <strong>{exp.requires_key}</strong> — set it in the Settings tab.
+      <div style={{ padding: "12px 14px" }}>
+        {/* Name + meta */}
+        <div style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 6 }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontSize: 13, fontWeight: 700, color: "#111827", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+              {exp.name}
             </div>
-          )}
-
-          {exp.results_file && (
-            <div style={{ fontSize: 12, color: "#6b7280", marginBottom: "0.75rem" }}>
-              Results file: <code>{exp.results_file}</code>
-            </div>
-          )}
-
-          {exp.source_file && (
-            <div style={{ fontSize: 11, color: "#9ca3af", marginBottom: "0.75rem" }}>
-              Source: <code>{exp.source_file}</code>
-            </div>
-          )}
-
-          {exp.command && (
-            <div style={{ marginBottom: "0.75rem" }}>
-              <div style={{ fontSize: 12, fontWeight: 600, color: "#374151", marginBottom: 4 }}>
-                CLI command (run from repo root):
+            {exp.description && (
+              <div style={{ fontSize: 11, color: "#6b7280", marginTop: 2, lineHeight: 1.4,
+                overflow: "hidden", textOverflow: "ellipsis",
+                display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" }}>
+                {exp.description}
               </div>
-              <pre style={{
-                background: "#1e293b", color: "#e2e8f0", padding: "9px 13px",
-                borderRadius: 6, fontSize: 12, fontFamily: "monospace",
-                margin: 0, overflowX: "auto", lineHeight: 1.7,
-              }}>
-                {exp.command}
-              </pre>
-            </div>
-          )}
-
-          {streaming && streamLines.length > 0 && (
-            <div style={{
-              marginTop: "0.75rem",
-              border: "1px solid #fcd34d",
-              borderRadius: 6, overflow: "hidden",
-            }}>
-              <div style={{ background: "#fef3c7", padding: "6px 12px", fontSize: 12, fontWeight: 600, color: "#d97706" }}>
-                Streaming output
-              </div>
-              <pre style={{
-                background: "#1e293b", color: "#e2e8f0",
-                margin: 0, padding: "10px 14px",
-                fontSize: 11, fontFamily: "monospace",
-                maxHeight: 200, overflowY: "auto", lineHeight: 1.6,
-              }}>
-                {streamLines.join("\n")}
-              </pre>
-            </div>
-          )}
-
-          {(runResult !== null || runError !== null) && (
-            <div style={{
-              marginTop: "0.75rem",
-              border: `1px solid ${runError ? "#fca5a5" : "#86efac"}`,
-              borderRadius: 6, overflow: "hidden",
-            }}>
-              <div style={{
-                background: runError ? "#fef2f2" : "#f0fdf4",
-                padding: "6px 12px", fontSize: 12, fontWeight: 600,
-                color: runError ? "#b91c1c" : "#15803d",
-              }}>
-                {runError ? "Run failed" : "Run result"}
-              </div>
-              {runError ? (
-                <div style={{ padding: "8px 12px", fontSize: 12, color: "#b91c1c" }}>{runError}</div>
-              ) : (
-                <pre style={{
-                  background: "#1e293b", color: "#e2e8f0",
-                  margin: 0, padding: "10px 14px",
-                  fontSize: 11, fontFamily: "monospace",
-                  maxHeight: 300, overflowY: "auto", overflowX: "auto",
-                  lineHeight: 1.6,
-                }}>
-                  {JSON.stringify(runResult, null, 2)}
-                </pre>
-              )}
-            </div>
-          )}
+            )}
+          </div>
+          <div style={{ display: "flex", gap: 4, flexShrink: 0, flexWrap: "wrap", justifyContent: "flex-end" }}>
+            <span style={{ fontSize: 10, padding: "2px 6px", borderRadius: 8, background: "#7c3aed20", color: "#7c3aed", fontWeight: 600, whiteSpace: "nowrap" }}>
+              {exp.node_count}n · {exp.edge_count}e
+            </span>
+          </div>
         </div>
-      )}
+
+        {/* Run result */}
+        {(runResult || runError) && (
+          <div style={{ fontSize: 11, padding: "4px 8px", borderRadius: 5, marginBottom: 8,
+            background: runError ? "#fef2f2" : "#f0fdf4",
+            color: runError ? "#b91c1c" : "#15803d",
+            border: `1px solid ${runError ? "#fca5a5" : "#86efac"}` }}>
+            {runError ?? runResult}
+          </div>
+        )}
+
+        {/* Actions */}
+        <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginTop: 4 }}>
+          <button onClick={handleOpen} style={btnPrimary}>
+            🔀 Open in Builder
+          </button>
+          <button onClick={() => void handleRun()} disabled={running}
+            style={{ ...btnSecondary, opacity: running ? 0.5 : 1, cursor: running ? "not-allowed" : "pointer" }}>
+            {running ? "⏳" : "▶ Run"}
+          </button>
+          <button onClick={() => openChat({ contextType: "", contextId: "", initialPrompt: `Help me improve the experiment "${exp.name}": ${exp.description ?? ""}` })}
+            style={btnSecondary} title="Open AI Chat for this experiment">
+            ✨ AI
+          </button>
+          <button onClick={() => void handleDup()} disabled={duping} style={btnSecondary} title="Duplicate">
+            {duping ? "…" : "⎘ Dup"}
+          </button>
+          <button onClick={() => void handleDelete()} disabled={deleting}
+            style={{ ...btnSecondary, background: confirmDel ? "#fef2f2" : undefined, color: confirmDel ? "#b91c1c" : undefined, borderColor: confirmDel ? "#fca5a5" : undefined }}
+            title={confirmDel ? "Click again to confirm" : "Delete"}>
+            {deleting ? "…" : confirmDel ? "Sure?" : "🗑"}
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
 
-// ── Main view ──────────────────────────────────────────────────────────────────
+// ── Main view ────────────────────────────────────────────────────────────────
 
 export function ExperimentsView() {
-  const [experiments, setExperiments] = useState<ExperimentMeta[]>([]);
+  const [exps, setExps] = useState<GraphExperimentMeta[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [filter, setFilter] = useState("all");
-  const [showGenerate, setShowGenerate] = useState(false);
-  const [reloading, setReloading] = useState(false);
+  const [search, setSearch] = useState("");
 
-  const load = async () => {
-    setError(null);
-    try {
-      const exps = await listExperiments();
-      setExperiments(exps);
-    } catch (e: unknown) {
-      setError(e instanceof Error ? e.message : String(e));
-    } finally {
-      setLoading(false);
-    }
-  };
+  const load = useCallback(async () => {
+    setError(null); setLoading(true);
+    try { setExps(await listGraphExperiments()); }
+    catch (e) { setError(e instanceof Error ? e.message : "Failed to load experiments"); }
+    finally { setLoading(false); }
+  }, []);
 
-  useEffect(() => { void load(); }, []);
+  useEffect(() => { void load(); }, [load]);
 
-  const handleReload = async () => {
-    setReloading(true);
-    try {
-      await reloadExperiments();
-      await load();
-    } finally {
-      setReloading(false);
-    }
-  };
+  const filtered = exps.filter(e =>
+    !search || e.name.toLowerCase().includes(search.toLowerCase()) ||
+               e.description.toLowerCase().includes(search.toLowerCase())
+  );
 
-  const handleDeleted = (id: string) =>
-    setExperiments((prev) => prev.filter((e) => e.id !== id));
-
-  const categories = ["all", ...Array.from(new Set(experiments.map((e) => e.category)))];
-
-  const visible =
-    filter === "all" ? experiments : experiments.filter((e) => e.category === filter);
+  const handleDeleted = useCallback((id: string) => setExps(prev => prev.filter(e => e.id !== id)), []);
 
   return (
     <div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.25rem" }}>
-        <h2 style={{ marginTop: 0 }}>Experiments</h2>
+      {/* Header */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+        <h2 style={{ margin: 0, fontSize: 20, color: "#111827" }}>Experiments</h2>
         <div style={{ display: "flex", gap: 6 }}>
-          <button
-            onClick={handleReload}
-            disabled={reloading}
-            style={{ ...btnSmall, background: "#f3f4f6", color: "#374151", fontSize: 12 }}
-            title="Re-scan experiments directory"
-          >
-            {reloading ? "Scanning…" : "⟳ Reload"}
+          <button onClick={load} style={{ ...btnSecondary, fontSize: 12 }} title="Reload from server">
+            ⟳ Reload
           </button>
           <button
-            onClick={() => setShowGenerate(true)}
-            style={{ ...btnSmall, background: "#1e3a5f", color: "#fff", fontSize: 12 }}
+            onClick={() => openInBuilder("new")}
+            style={{ padding: "6px 14px", border: "none", borderRadius: 6, cursor: "pointer", fontSize: 12, fontWeight: 700, background: "linear-gradient(135deg, #7c3aed, #4f46e5)", color: "#fff" }}
           >
-            ✨ Generate
+            + New Experiment
           </button>
         </div>
       </div>
 
-      <p style={{ margin: "0 0 1.25rem", fontSize: 13, color: "#6b7280" }}>
-        {experiments.length} experiment{experiments.length !== 1 ? "s" : ""} discovered.
-        Run any experiment directly from the browser, or copy the CLI command below each card.
-        Custom experiments (marked <strong>custom</strong>) can be deleted.
-      </p>
+      {/* Description */}
+      <div style={{ fontSize: 13, color: "#6b7280", marginBottom: 14, lineHeight: 1.6, background: "#f8fafc", border: "1px solid #e5e7eb", borderRadius: 8, padding: "10px 14px" }}>
+        <strong style={{ color: "#374151" }}>Every experiment is a composable graph</strong> built in the{" "}
+        <button onClick={() => openInBuilder("new")} style={{ background: "none", border: "none", color: "#7c3aed", cursor: "pointer", fontWeight: 600, padding: 0, fontSize: 13 }}>
+          🔀 Experiment Builder
+        </button>
+        {" "}— drag atomic nodes, wire typed ports, and let <strong>AI Chat ✨</strong> suggest nodes right inside the builder.
+        Experiments can be added to Studies for full research workflows.
+      </div>
 
-      <nav style={{ display: "flex", gap: 6, marginBottom: "1.25rem", flexWrap: "wrap" }}>
-        {categories.map((c) => {
-          const color = c === "all" ? "#1e3a5f" : (catColor(c) ?? "#1e3a5f");
-          const active = filter === c;
-          return (
-            <button
-              key={c}
-              onClick={() => setFilter(c)}
-              style={{
-                padding: "4px 14px", border: "1px solid", borderRadius: 20,
-                cursor: "pointer", fontSize: 12, fontWeight: active ? 600 : 400,
-                background: active ? color : "#fff",
-                borderColor: active ? color : "#d1d5db",
-                color: active ? "#fff" : "#374151",
-              }}
-            >
-              {c.charAt(0).toUpperCase() + c.slice(1)}
-              {c !== "all" && (
-                <span style={{
-                  marginLeft: 5, fontSize: 10,
-                  background: active ? "rgba(255,255,255,0.3)" : "#f3f4f6",
-                  color: active ? "#fff" : "#6b7280",
-                  padding: "0 4px", borderRadius: 6, fontWeight: 700,
-                }}>
-                  {experiments.filter((e) => e.category === c).length}
-                </span>
-              )}
-            </button>
-          );
-        })}
-      </nav>
+      {/* Search */}
+      <input
+        value={search}
+        onChange={e => setSearch(e.target.value)}
+        placeholder={`Search ${exps.length} experiment${exps.length !== 1 ? "s" : ""}…`}
+        style={{ width: "100%", boxSizing: "border-box", padding: "8px 12px", border: "1px solid #d1d5db", borderRadius: 7, fontSize: 13, marginBottom: 14, outline: "none" }}
+      />
 
-      {loading && (
-        <div style={{ color: "#6b7280", fontSize: 13 }}>Loading experiments…</div>
-      )}
-
+      {loading && <div style={{ color: "#6b7280", fontSize: 13 }}>Loading experiments…</div>}
       {error && (
-        <div style={{
-          background: "#fef2f2", border: "1px solid #fca5a5", borderRadius: 8,
-          padding: "12px 16px", fontSize: 13, color: "#b91c1c", marginBottom: "1rem",
-        }}>
-          Could not load experiments: {error}
+        <div style={{ background: "#fef2f2", border: "1px solid #fca5a5", borderRadius: 7, padding: "10px 14px", fontSize: 13, color: "#b91c1c", marginBottom: 12 }}>
+          {error}
         </div>
       )}
 
-      {!loading && !error && visible.length === 0 && (
-        <div style={{ color: "#6b7280", fontSize: 13 }}>
-          No experiments found. Use <strong>✨ Generate</strong> to create one.
+      {!loading && !error && filtered.length === 0 && (
+        <div style={{ textAlign: "center", padding: "2rem", color: "#9ca3af" }}>
+          <div style={{ fontSize: 32, marginBottom: 8 }}>🔀</div>
+          <div style={{ fontSize: 14, fontWeight: 600, color: "#374151", marginBottom: 6 }}>
+            {search ? "No experiments match your search" : "No experiments yet"}
+          </div>
+          <div style={{ fontSize: 12, marginBottom: 16 }}>
+            {search ? "Try a different search term" : "Create your first experiment in the Experiment Builder"}
+          </div>
+          {!search && (
+            <button onClick={() => openInBuilder("new")}
+              style={{ padding: "8px 20px", border: "none", borderRadius: 7, cursor: "pointer", fontSize: 13, fontWeight: 700, background: "#7c3aed", color: "#fff" }}>
+              + New Experiment
+            </button>
+          )}
         </div>
       )}
 
-      <div style={{ display: "grid", gap: "0.75rem" }}>
-        {visible.map((exp) => (
-          <ExperimentCard
-            key={exp.id}
-            exp={exp}
-            onDeleted={handleDeleted}
-            onDuplicated={load}
-          />
+      {/* Card grid */}
+      <div style={{ display: "grid", gap: "0.75rem", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))" }}>
+        {filtered.map(exp => (
+          <ExpCard key={exp.id} exp={exp} onDeleted={handleDeleted} onRefresh={load} />
         ))}
       </div>
-
-      {showGenerate && (
-        <GenerateDialog
-          onClose={() => setShowGenerate(false)}
-          onCreated={load}
-        />
-      )}
     </div>
   );
 }
 
-// ── Shared micro-styles ─────────────────────────────────────────────────────────────────
-
-const inputStyle: React.CSSProperties = {
-  display: "block", width: "100%", boxSizing: "border-box",
-  padding: "7px 10px", border: "1px solid #d1d5db", borderRadius: 6,
-  fontSize: 13, marginBottom: 12, outline: "none",
-};
-
-const labelStyle: React.CSSProperties = {
-  display: "block", fontSize: 12, fontWeight: 600, color: "#374151", marginBottom: 4,
-};
-
-const btnSmall: React.CSSProperties = {
-  padding: "4px 10px", border: "1px solid transparent", borderRadius: 5,
-  cursor: "pointer", fontSize: 12, fontWeight: 600,
-  background: "#f3f4f6", color: "#374151",
-};
+// ── Shared styles ────────────────────────────────────────────────────────────
 
 const btnPrimary: React.CSSProperties = {
-  padding: "7px 18px", border: "none", borderRadius: 6,
-  cursor: "pointer", fontSize: 13, fontWeight: 600,
+  padding: "5px 12px", border: "none", borderRadius: 5,
+  cursor: "pointer", fontSize: 12, fontWeight: 700,
   background: "#1e3a5f", color: "#fff",
 };
 
 const btnSecondary: React.CSSProperties = {
-  padding: "7px 18px", border: "1px solid #d1d5db", borderRadius: 6,
-  cursor: "pointer", fontSize: 13, fontWeight: 400,
-  background: "#fff", color: "#374151",
+  padding: "5px 10px", border: "1px solid #e5e7eb", borderRadius: 5,
+  cursor: "pointer", fontSize: 12, fontWeight: 500,
+  background: "#f9fafb", color: "#374151",
 };
-

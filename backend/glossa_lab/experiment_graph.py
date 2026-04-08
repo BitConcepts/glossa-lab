@@ -213,6 +213,28 @@ def _pass_result(inputs: dict, params: dict) -> dict:
     return dict(inputs)
 
 
+def _experiment_wrapper(inputs: dict, params: dict) -> dict:
+    """Delegate to any registered ExperimentBase subclass."""
+    from glossa_lab.experiment_base import get_experiment  # noqa: PLC0415
+    exp_id = params.get("experiment_id", "")
+    cls = get_experiment(exp_id)
+    if cls is None:
+        return {"error": f"Experiment '{exp_id}' not found"}
+    # Merge node params (minus meta) + upstream inputs as kwargs
+    kwargs = {**inputs}
+    for k, v in params.items():
+        if k not in ("experiment_id",):
+            kwargs[k] = v
+    try:
+        instance = cls()
+        result = instance.run(**kwargs)
+        return result if isinstance(result, dict) else {"result": result}
+    except NotImplementedError:
+        return {"error": f"'{exp_id}' is CLI-only; use the terminal command.", "cli_only": True}
+    except Exception as exc:  # noqa: BLE001
+        return {"error": str(exc)}
+
+
 # ── Registry ────────────────────────────────────────────────────────────────
 
 ATOMIC_NODES: dict[str, AtomicNodeDef] = {}
@@ -284,6 +306,16 @@ for _d in [
         outputs=[{"name":"result","type":"json"}],
         params_schema={"type":"object","properties":{}},
         fn=_pass_result),
+    # ── Dynamic experiment wrapper ───────────────────────────────────────────
+    AtomicNodeDef("ExperimentWrapper","Experiment","Experiments",
+        "Run any registered ExperimentBase subclass with upstream inputs merged as kwargs.",
+        inputs=[{"name":"upstream","type":"any","required":False}],
+        outputs=[{"name":"result","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "experiment_id":{"type":"string","title":"Experiment ID","description":"ID of the registered experiment to run (e.g. positional_profile_analysis)."},
+            "corpus_id":{"type":"string","title":"Corpus ID","description":"Optional corpus override for experiments that accept corpus_id."},
+        }},
+        fn=_experiment_wrapper),
 ]:
     ATOMIC_NODES[_d.id] = _d
 

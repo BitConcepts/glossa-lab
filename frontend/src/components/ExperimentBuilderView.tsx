@@ -36,6 +36,7 @@ import "@xyflow/react/dist/style.css";
 
 import {
   getAtomicNodeCatalog,
+  listExperiments,
   listGraphExperiments,
   getGraphExperiment,
   createGraphExperiment,
@@ -45,6 +46,7 @@ import {
   PORT_COLORS,
   type AtomicNodeDef,
   type AtomicPort,
+  type ExperimentMeta,
   type GraphExperiment,
   type GraphExperimentMeta,
 } from "../api";
@@ -65,8 +67,8 @@ function ebTheme(dark: boolean) {
     inputBg:   dark ? "#0f172a" : "#ffffff",
     inputText: dark ? "#e2e8f0" : "#1e293b",
     inputBdr:  dark ? "#334155" : "#d1d5db",
-    canvasBg:  "#080d18",
-    canvasGrid:"#161e2e",
+    canvasBg:  dark ? "#080d18" : "#f1f5f9",
+    canvasGrid:dark ? "#161e2e" : "#e2e8f0",
   };
 }
 
@@ -117,6 +119,14 @@ const ExpNode = ({ data, id, selected }: NodeProps) => {
   const runStatus = nd.runStatus;
   const runClrMap: Record<string, string> = { complete: "#22c55e", error: "#ef4444", running: "#60a5fa" };
   const runClr = runStatus ? (runClrMap[runStatus] ?? "") : "";
+  // Theme: passed via data.darkMode
+  const isDark = (nd as Record<string, unknown>).darkMode !== false;
+  const nodeBg = isDark ? "#111827" : "#ffffff";
+  const shadow = isDark
+    ? (selected ? "0 0 0 2px #60a5fa40, 0 4px 20px rgba(0,0,0,0.6)" : "0 2px 14px rgba(0,0,0,0.5)")
+    : (selected ? "0 0 0 2px #60a5fa60, 0 4px 12px rgba(0,0,0,0.15)" : "0 1px 6px rgba(0,0,0,0.12)");
+  const portDivBdr = isDark ? "#1e293b" : "#e2e8f0";
+  const paramText = isDark ? "#94a3b8" : "#64748b";
 
   const onDelete = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -124,16 +134,15 @@ const ExpNode = ({ data, id, selected }: NodeProps) => {
     setEdges(e => e.filter(ed => ed.source !== id && ed.target !== id));
   };
 
-  // Derive a header colour from the first output port type
   const headerColor = (nd.outputs?.[0] ? PORT_CLR[nd.outputs[0].type] : null) ?? "#334155";
 
   return (
     <div style={{
-      background: "#111827",
+      background: nodeBg,
       border: `2px solid ${selected ? "#60a5fa" : headerColor + "66"}`,
       borderRadius: 8,
       minWidth: 175, maxWidth: 240,
-      boxShadow: selected ? "0 0 0 2px #60a5fa40, 0 4px 20px rgba(0,0,0,0.6)" : "0 2px 14px rgba(0,0,0,0.5)",
+      boxShadow: shadow,
       fontFamily: "system-ui, sans-serif",
       position: "relative",
     }}>
@@ -143,18 +152,18 @@ const ExpNode = ({ data, id, selected }: NodeProps) => {
       ))}
 
       {/* Header */}
-      <div style={{ background: headerColor, borderRadius: "6px 6px 0 0", padding: "6px 8px", display: "flex", alignItems: "center", gap: 5 }}>
-        <span style={{ color: "#fff", fontSize: 12, fontWeight: 700, flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", textShadow: "0 1px 2px rgba(0,0,0,0.4)" }}>
+      <div style={{ background: headerColor, borderRadius: "6px 6px 0 0", padding: "5px 7px", display: "flex", alignItems: "center", gap: 5 }}>
+        <span style={{ color: "#fff", fontSize: 11, fontWeight: 700, flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", textShadow: "0 1px 2px rgba(0,0,0,0.4)" }}>
           {nd.label}
         </span>
         {runStatus && runStatus !== "idle" && (
-          <span style={{ width: 7, height: 7, borderRadius: "50%", background: runClr, display: "inline-block", boxShadow: `0 0 5px ${runClr}` }} />
+          <span style={{ width: 6, height: 6, borderRadius: "50%", background: runClr, display: "inline-block", boxShadow: `0 0 4px ${runClr}` }} />
         )}
-        <button onMouseDown={onDelete} style={{ border: "none", background: "rgba(0,0,0,0.3)", color: "#fff", cursor: "pointer", fontSize: 13, lineHeight: 1, borderRadius: 3, padding: "2px 5px", flexShrink: 0 }}>×</button>
+        <button onMouseDown={onDelete} style={{ border: "none", background: "rgba(0,0,0,0.3)", color: "#fff", cursor: "pointer", fontSize: 12, lineHeight: 1, borderRadius: 3, padding: "1px 4px", flexShrink: 0 }}>×</button>
       </div>
 
       {/* Port type legend row */}
-      <div style={{ padding: "4px 8px", display: "flex", gap: 6, flexWrap: "wrap", borderBottom: "1px solid #1e293b" }}>
+      <div style={{ padding: "3px 7px", display: "flex", gap: 5, flexWrap: "wrap", borderBottom: `1px solid ${portDivBdr}` }}>
         {nd.inputs.map(p => (
           <span key={p.name} style={{ fontSize: 9, color: PORT_CLR[p.type] ?? PORT_CLR.any, display: "flex", alignItems: "center", gap: 2 }}>
             <span style={{ width: 5, height: 5, borderRadius: 1, background: PORT_CLR[p.type] ?? PORT_CLR.any, display: "inline-block" }} />
@@ -171,7 +180,7 @@ const ExpNode = ({ data, id, selected }: NodeProps) => {
       </div>
 
       {/* Params summary */}
-      <div style={{ padding: "4px 8px 5px", fontSize: 10, color: "#64748b" }}>
+      <div style={{ padding: "3px 7px 4px", fontSize: 10, color: paramText }}>
         {Object.keys(nd.params_schema?.properties ?? {}).length === 0
           ? <span style={{ color: "#334155", fontSize: 9 }}>No params</span>
           : Object.entries(nd.params).filter(([, v]) => v !== "" && v !== undefined).map(([k, v]) => (
@@ -185,7 +194,7 @@ const ExpNode = ({ data, id, selected }: NodeProps) => {
         )}
       </div>
 
-      {/* Output handles — right side */}
+      {/* Output handles */}
       {nd.outputs.map((p, i) => (
         <PortHandle key={`out_${p.name}`} port={p} side="right" index={i} total={nd.outputs.length} />
       ))}
@@ -330,7 +339,8 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   const th = ebTheme(darkMode);
 
   // Data
-  const [catalog, setCatalog]   = useState<AtomicNodeDef[]>([]);
+  const [catalog, setCatalog]     = useState<AtomicNodeDef[]>([]);
+  const [experiments, setExperiments] = useState<ExperimentMeta[]>([]);
   const [savedExps, setSavedExps] = useState<GraphExperimentMeta[]>([]);
   const [activeExp, setActiveExp] = useState<GraphExperiment | null>(null);
 
@@ -355,6 +365,7 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   useEffect(() => {
     void getAtomicNodeCatalog().then(setCatalog).catch(() => {});
     void listGraphExperiments().then(setSavedExps).catch(() => {});
+    void listExperiments().then(setExperiments).catch(() => {});
   }, []);
 
   // Load saved experiment
@@ -443,10 +454,16 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   const onNodeClick = useCallback((_: React.MouseEvent, n: Node) => { setSelectedNode(n as Node<ExpNodeData>); setInspectorOff(false); setCtxMenu(null); }, []);
   const onPaneClick = useCallback(() => { setSelectedNode(null); setCtxMenu(null); }, []);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onNodeCtx = useCallback((ev: any, n: Node) => { ev?.preventDefault?.(); ev?.stopPropagation?.(); setCtxMenu({ x: ev.clientX, y: ev.clientY, type: "node", nodeId: n.id }); setSelectedNode(n as Node<ExpNodeData>); }, []);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onPaneCtx = useCallback((ev: any) => { ev?.preventDefault?.(); setCtxMenu({ x: ev.clientX, y: ev.clientY, type: "pane" }); }, []);
+  // Context menus — properly typed so preventDefault works reliably
+  const onNodeCtx = useCallback((ev: React.MouseEvent, n: Node) => {
+    ev.preventDefault(); ev.stopPropagation();
+    setCtxMenu({ x: ev.clientX, y: ev.clientY, type: "node", nodeId: n.id });
+    setSelectedNode(n as Node<ExpNodeData>);
+  }, []);
+  const onPaneCtxMenu = useCallback((ev: React.MouseEvent<HTMLDivElement>) => {
+    ev.preventDefault();
+    setCtxMenu({ x: ev.clientX, y: ev.clientY, type: "pane" });
+  }, []);
 
   // Param change
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -455,30 +472,40 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     setSelectedNode(prev => prev?.id === nodeId ? { ...prev, data: { ...prev.data, params } as ExpNodeData } : prev);
   }, []);
 
-  // Drop from palette
+  // Drop from palette — supports both atomic nodes and experiment wrappers
+  const draggedExpId = useRef<string | null>(null);
   const onDrop = useCallback((ev: React.DragEvent<HTMLDivElement>) => {
     ev.preventDefault();
-    if (!draggedNodeType.current || !reactFlowWrapper.current) return;
-    const def = catalog.find(d => d.id === draggedNodeType.current);
-    if (!def) return;
+    if (!reactFlowWrapper.current) return;
     const rect = reactFlowWrapper.current.getBoundingClientRect();
     const pos = { x: Math.round((ev.clientX - rect.left - 80) / 15) * 15, y: Math.round((ev.clientY - rect.top - 30) / 15) * 15 };
-    const defaultParams = Object.fromEntries(
-      Object.entries(def.params_schema.properties ?? {}).map(([k, v]) => [k, (v as Record<string, unknown>).default ?? ""])
-    );
-    setNodes(n => [...n, {
-      id: nextId(), type: "expNode", position: pos,
-      data: { atomicId: def.id, label: def.name, inputs: def.inputs, outputs: def.outputs, params: defaultParams, params_schema: def.params_schema, runStatus: "idle" } as ExpNodeData,
-    }]);
+    if (draggedExpId.current) {
+      // Experiment wrapper node
+      const exp = experiments.find(e => e.id === draggedExpId.current);
+      if (exp) {
+        const wrapperInputs  = [{ name: "upstream", type: "any", required: false }];
+        const wrapperOutputs = [{ name: "result",   type: "json" }];
+        const wrapperSchema = { type: "object", properties: { experiment_id: { type: "string", title: "Experiment ID", default: exp.id }, ...(exp.params_schema?.properties ?? {}) } };
+        const params = { experiment_id: exp.id, ...Object.fromEntries(Object.entries(wrapperSchema.properties).filter(([k]) => k !== "experiment_id").map(([k, v]) => [k, (v as Record<string, unknown>).default ?? ""])) };
+        setNodes(n => [...n, { id: nextId(), type: "expNode", position: pos,
+          data: { atomicId: "ExperimentWrapper", label: exp.name.replace(/^\ud83d\udd00 /, ""), inputs: wrapperInputs, outputs: wrapperOutputs, params, params_schema: wrapperSchema, runStatus: "idle", darkMode } as ExpNodeData }]);
+      }
+      draggedExpId.current = null; draggedNodeType.current = null; return;
+    }
+    if (!draggedNodeType.current) return;
+    const def = catalog.find(d => d.id === draggedNodeType.current);
+    if (!def) return;
+    const defaultParams = Object.fromEntries(Object.entries(def.params_schema.properties ?? {}).map(([k, v]) => [k, (v as Record<string, unknown>).default ?? ""]));
+    setNodes(n => [...n, { id: nextId(), type: "expNode", position: pos,
+      data: { atomicId: def.id, label: def.name, inputs: def.inputs, outputs: def.outputs, params: defaultParams, params_schema: def.params_schema, runStatus: "idle", darkMode } as ExpNodeData }]);
     draggedNodeType.current = null;
-  }, [catalog]);
+  }, [catalog, experiments, darkMode]);
   const onDragOver = (ev: React.DragEvent) => { ev.preventDefault(); ev.dataTransfer.dropEffect = "move"; };
 
-  // Node context items
   const nodeCtxItems = useCallback((nodeId: string): CtxItem[] => {
     const nd = nodes.find(n => n.id === nodeId);
     return [
-      { icon: "⎘", label: "Duplicate", action: () => { if (!nd) return; setNodes(n => [...n, { id: nextId(), type: "expNode", position: { x: nd.position.x + 20, y: nd.position.y + 20 }, data: { ...nd.data, runStatus: "idle" } as ExpNodeData }]); }},
+      { icon: "⍘", label: "Duplicate", action: () => { if (!nd) return; setNodes(n => [...n, { id: nextId(), type: "expNode", position: { x: nd.position.x + 20, y: nd.position.y + 20 }, data: { ...nd.data, runStatus: "idle" } as ExpNodeData }]); }},
       { divider: true },
       { icon: "🔗", label: "Disconnect all", action: () => setEdges(e => e.filter(ed => ed.source !== nodeId && ed.target !== nodeId)) },
       { divider: true },
@@ -487,56 +514,75 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   }, [nodes, selectedNode]);
 
   const paneCtxItems = useCallback((x: number, y: number): CtxItem[] => {
-    const cats = [...new Set(catalog.map(d => d.category))];
+    if (!reactFlowWrapper.current) return [];
+    const rect = reactFlowWrapper.current.getBoundingClientRect();
+    const pos = { x: Math.round((x - rect.left - 80) / 15) * 15, y: Math.round((y - rect.top - 30) / 15) * 15 };
+    const addNode = (d: AtomicNodeDef) => {
+      const dp = Object.fromEntries(Object.entries(d.params_schema.properties ?? {}).map(([k, v]) => [k, (v as Record<string, unknown>).default ?? ""]));
+      setNodes(n => [...n, { id: nextId(), type: "expNode", position: pos, data: { atomicId: d.id, label: d.name, inputs: d.inputs, outputs: d.outputs, params: dp, params_schema: d.params_schema, runStatus: "idle", darkMode } as ExpNodeData }]);
+    };
+    const cats = [...new Set(catalog.filter(d => d.id !== "ExperimentWrapper").map(d => d.category))];
     return cats.flatMap((cat, ci) => [
       ...(ci > 0 ? [{ divider: true }] : []),
-      ...catalog.filter(d => d.category === cat).map(d => ({
-        icon: "◆",
-        label: `${cat}: ${d.name}`,
-        action: () => {
-          if (!reactFlowWrapper.current) return;
-          const rect = reactFlowWrapper.current.getBoundingClientRect();
-          const pos = { x: Math.round((x - rect.left - 80) / 15) * 15, y: Math.round((y - rect.top - 30) / 15) * 15 };
-          const dp = Object.fromEntries(Object.entries(d.params_schema.properties ?? {}).map(([k, v]) => [k, (v as Record<string, unknown>).default ?? ""]));
-          setNodes(n => [...n, { id: nextId(), type: "expNode", position: pos, data: { atomicId: d.id, label: d.name, inputs: d.inputs, outputs: d.outputs, params: dp, params_schema: d.params_schema, runStatus: "idle" } as ExpNodeData }]);
-        },
-      })),
+      ...catalog.filter(d => d.category === cat && d.id !== "ExperimentWrapper").map(d => ({ icon: "◆", label: `${cat}: ${d.name}`, action: () => addNode(d) })),
     ]);
-  }, [catalog]);
+  }, [catalog, darkMode]);
 
-  // Grouped palette
+  // Import/export helpers
+  const importRef = useRef<HTMLInputElement>(null);
+  const onImportExp = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const f = e.target.files?.[0]; if (!f) return;
+    try {
+      const d = JSON.parse(await f.text());
+      const saved = await createGraphExperiment(d);
+      setActiveExp(saved);
+      setSavedExps(prev => [{ id: saved.id!, name: saved.name, description: saved.description, node_count: saved.nodes.length, edge_count: saved.edges.length }, ...prev]);
+    } catch { alert("Invalid experiment file."); }
+    e.target.value = "";
+  }, []);
+  const exportExp = useCallback(() => {
+    if (!activeExp) return;
+    const blob = new Blob([JSON.stringify(activeExp, null, 2)], { type: "application/json" });
+    const a = Object.assign(document.createElement("a"), { href: URL.createObjectURL(blob), download: `${(activeExp.name || "exp").replace(/\s+/g, "_")}.glossa-exp.json` });
+    a.click(); URL.revokeObjectURL(a.href);
+  }, [activeExp]);
+
+  // Grouped atomic palette (ExperimentWrapper shown separately)
   const categories = useMemo(() => {
     const cats: Record<string, AtomicNodeDef[]> = {};
     for (const d of catalog) {
+      if (d.id === "ExperimentWrapper") continue;
       if (palSearch && !d.name.toLowerCase().includes(palSearch.toLowerCase())) continue;
       (cats[d.category] = cats[d.category] || []).push(d);
     }
     return cats;
   }, [catalog, palSearch]);
-
+  const filteredExps = useMemo(() =>
+    experiments.filter(e => !palSearch || e.name.toLowerCase().includes(palSearch.toLowerCase()))
+  , [experiments, palSearch]);
   const catColors: Record<string, string> = { Sources: "#059669", Transforms: "#2563eb", Analysis: "#7c3aed", Outputs: "#0d9488" };
 
   return (
     <div style={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0, overflow: "hidden" }}>
-      {/* Toolbar */}
-      <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "6px 12px", background: th.panelBg2, borderBottom: `1px solid ${th.border}`, flexShrink: 0, flexWrap: "wrap" }}>
-        <span style={{ fontSize: 13, fontWeight: 700, color: th.text }}>🔀 Experiment Builder</span>
-        {activeExp && <span style={{ fontSize: 11, color: th.textMuted, maxWidth: 200, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{activeExp.name}</span>}
-        {saveMsg && <span style={{ fontSize: 11, color: saveMsg === "Saved" ? "#22c55e" : "#ef4444", fontWeight: 600 }}>{saveMsg}</span>}
+      {/* Toolbar — condensed single row */}
+      <div style={{ display: "flex", alignItems: "center", gap: 4, padding: "3px 8px", background: th.panelBg2, borderBottom: `1px solid ${th.border}`, flexShrink: 0 }}>
+        <span style={{ fontSize: 11, fontWeight: 700, color: th.text, flexShrink: 0 }}>🔀 Experiment Builder</span>
+        {activeExp && <span style={{ fontSize: 10, color: th.textMuted, maxWidth: 180, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{activeExp.name}</span>}
+        {saveMsg && <span style={{ fontSize: 10, color: saveMsg === "Saved" ? "#22c55e" : "#ef4444", fontWeight: 600, flexShrink: 0 }}>{saveMsg}</span>}
         <div style={{ flex: 1 }} />
-        <span style={{ fontSize: 10, color: th.textFaint, border: `1px solid ${th.border}`, borderRadius: 4, padding: "2px 6px" }}>
-          Experiment Builder — compose typed nodes into a reusable experiment
-        </span>
         {[
-          { label: "＋ New", action: () => setShowNew(true) },
-          { label: running ? "⏳…" : "▶ Run Preview", action: () => void doRun(), disabled: running || !activeExp?.id, green: true },
-          { label: saving ? "…" : "💾 Save", action: () => void doSave(), disabled: saving || !activeExp },
-        ].map(({ label, action, disabled, green }) => (
-          <button key={label} onClick={action} disabled={disabled}
-            style={{ padding: "4px 10px", border: `1px solid ${th.border}`, borderRadius: 5, cursor: disabled ? "not-allowed" : "pointer", fontSize: 11, fontWeight: 600, background: "transparent", color: green ? "#22c55e" : th.textMuted, opacity: disabled ? 0.4 : 1 }}>
+          { label: "＋ New", title: "New experiment", action: () => setShowNew(true) },
+          { label: "↑ Import", title: "Import from JSON", action: () => importRef.current?.click() },
+          { label: "↓ Export", title: "Export to JSON", disabled: !activeExp, action: exportExp },
+          { label: running ? "⏳" : "▶ Run", title: running ? "Running…" : "Run preview", disabled: running || !activeExp?.id, action: () => void doRun(), green: true },
+          { label: saving ? "…" : "💾", title: "Save", disabled: saving || !activeExp, action: () => void doSave() },
+        ].map(({ label, title, action, disabled, green }) => (
+          <button key={label} onClick={action} disabled={disabled} title={title}
+            style={{ padding: "3px 8px", border: `1px solid ${th.border}`, borderRadius: 5, cursor: disabled ? "not-allowed" : "pointer", fontSize: 10, fontWeight: 600, background: "transparent", color: green ? "#22c55e" : th.textMuted, opacity: disabled ? 0.4 : 1 }}>
             {label}
           </button>
         ))}
+        <input ref={importRef} type="file" accept=".json" style={{ display: "none" }} onChange={onImportExp} />
       </div>
 
       {/* Main area */}
@@ -560,41 +606,56 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
             ))}
           </div>
 
-          {/* Atomic node palette */}
+          {/* Atomic + Experiment palette */}
           <div style={{ flex: 1, overflowY: "auto", padding: "7px 8px" }}>
             <div style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 5 }}>Node Palette</div>
             <input value={palSearch} onChange={e => setPalSearch(e.target.value)} placeholder="Search nodes…"
-              style={{ width: "100%", boxSizing: "border-box", padding: "5px 8px", fontSize: 10, border: `1px solid ${th.inputBdr}`, borderRadius: 5, marginBottom: 7, outline: "none", background: th.inputBg, color: th.inputText }} />
+              style={{ width: "100%", boxSizing: "border-box", padding: "4px 7px", fontSize: 10, border: `1px solid ${th.inputBdr}`, borderRadius: 5, marginBottom: 6, outline: "none", background: th.inputBg, color: th.inputText }} />
+            {/* Atomic nodes by category */}
             {Object.entries(categories).map(([cat, defs]) => (
-              <div key={cat} style={{ marginBottom: 10 }}>
-                <div style={{ fontSize: 9, fontWeight: 700, color: catColors[cat] ?? "#64748b", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 4 }}>{cat}</div>
+              <div key={cat} style={{ marginBottom: 8 }}>
+                <div style={{ fontSize: 9, fontWeight: 700, color: catColors[cat] ?? "#64748b", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 3 }}>{cat}</div>
                 {defs.map(def => {
-                    const hdrClr = def.outputs[0] ? PORT_CLR[def.outputs[0].type] : "#334155";
-                    return (
-                      <div key={def.id} draggable onDragStart={() => { draggedNodeType.current = def.id; }}
-                        title={def.description}
-                        style={{ padding: "5px 7px", marginBottom: 3, cursor: "grab", border: `1px solid ${hdrClr}40`, borderRadius: 5, background: hdrClr + "0d" }}>
-                      <div style={{ fontSize: 11, fontWeight: 600, color: hdrClr }}>{def.name}</div>
-                      {/* Port summary */}
-                      <div style={{ display: "flex", gap: 4, marginTop: 3, flexWrap: "wrap" }}>
-                        {def.inputs.map(p => <span key={p.name} style={{ fontSize: 8, padding: "0 4px", borderRadius: 2, background: PORT_CLR[p.type] + "25", color: PORT_CLR[p.type] ?? PORT_CLR.any }}>↓{p.name}</span>)}
-                        {def.outputs.map(p => <span key={p.name} style={{ fontSize: 8, padding: "0 4px", borderRadius: 2, background: PORT_CLR[p.type] + "25", color: PORT_CLR[p.type] ?? PORT_CLR.any }}>↑{p.name}</span>)}
+                  const hdrClr = def.outputs[0] ? PORT_CLR[def.outputs[0].type] : "#334155";
+                  return (
+                    <div key={def.id} draggable onDragStart={() => { draggedNodeType.current = def.id; draggedExpId.current = null; }}
+                      title={def.description}
+                      style={{ padding: "4px 7px", marginBottom: 3, cursor: "grab", border: `1px solid ${hdrClr}40`, borderRadius: 5, background: hdrClr + "0d" }}>
+                      <div style={{ fontSize: 10, fontWeight: 600, color: hdrClr }}>{def.name}</div>
+                      <div style={{ display: "flex", gap: 3, marginTop: 2, flexWrap: "wrap" }}>
+                        {def.inputs.map(p => <span key={p.name} style={{ fontSize: 8, padding: "0 3px", borderRadius: 2, background: PORT_CLR[p.type] + "25", color: PORT_CLR[p.type] ?? PORT_CLR.any }}>↓{p.name}</span>)}
+                        {def.outputs.map(p => <span key={p.name} style={{ fontSize: 8, padding: "0 3px", borderRadius: 2, background: PORT_CLR[p.type] + "25", color: PORT_CLR[p.type] ?? PORT_CLR.any }}>↑{p.name}</span>)}
                       </div>
                     </div>
                   );
                 })}
               </div>
             ))}
+            {/* All registered experiments as wrapper nodes */}
+            {filteredExps.length > 0 && (
+              <div style={{ marginBottom: 8 }}>
+                <div style={{ fontSize: 9, fontWeight: 700, color: "#7c3aed", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 3 }}>Experiments</div>
+                {filteredExps.map(exp => (
+                  <div key={exp.id} draggable onDragStart={() => { draggedExpId.current = exp.id; draggedNodeType.current = null; }}
+                    title={exp.description}
+                    style={{ padding: "4px 7px", marginBottom: 3, cursor: "grab", border: "1px solid #7c3aed40", borderRadius: 5, background: "#7c3aed0d" }}>
+                    <div style={{ fontSize: 10, fontWeight: 600, color: "#7c3aed" }}>{exp.name.replace(/^\ud83d\udd00 /, "")}</div>
+                    <div style={{ fontSize: 8, color: th.textFaint, marginTop: 1 }}>{exp.category} · {exp.estimated_time}</div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Canvas */}
-        <div ref={reactFlowWrapper} style={{ flex: 1, minWidth: 0, background: th.canvasBg }} onDrop={onDrop} onDragOver={onDragOver}>
+        {/* Canvas — onContextMenu on wrapper handles pane right-click reliably */}
+        <div ref={reactFlowWrapper} style={{ flex: 1, minWidth: 0, background: th.canvasBg }}
+          onDrop={onDrop} onDragOver={onDragOver} onContextMenu={onPaneCtxMenu}>
           {!activeExp && (
             <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 10, zIndex: 5, pointerEvents: "none" }}>
               <div style={{ fontSize: 44 }}>🔀</div>
-              <div style={{ fontSize: 15, color: "#475569", fontWeight: 600 }}>Create or select a graph experiment</div>
-              <div style={{ fontSize: 12, color: "#334155" }}>Click ＋ New · Drag atomic nodes onto the canvas · Wire typed ports together</div>
+              <div style={{ fontSize: 15, color: th.textMuted, fontWeight: 600 }}>Create or select a graph experiment</div>
+              <div style={{ fontSize: 12, color: th.textFaint }}>Click ＋ New · Drag nodes onto canvas · Wire typed ports together</div>
             </div>
           )}
           <ReactFlow
@@ -604,7 +665,6 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
             onConnect={onConnect}
             onNodeClick={onNodeClick} onPaneClick={onPaneClick}
             onNodeContextMenu={onNodeCtx}
-            onPaneContextMenu={onPaneCtx}
             snapToGrid snapGrid={[15, 15]}
             deleteKeyCode={["Backspace", "Delete"]}
             fitView fitViewOptions={{ padding: 0.2 }}

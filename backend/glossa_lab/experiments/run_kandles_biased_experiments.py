@@ -893,7 +893,45 @@ class KandlesBiasExperiment(_EB):
         },
     }
 
-    def run(self, **kwargs):
-        raise NotImplementedError(
-            "Kandles bias suite takes ~25 min with multiprocessing. Use the CLI command."
+    def run(self, **kwargs) -> dict:  # type: ignore[override]
+        """Run a sequential biased-vs-unbiased comparison.
+
+        Runs two passes of the 7-experiment Linear A suite back-to-back using
+        the sequential runner (no ``multiprocessing``), so it works safely from
+        the graph builder.  Default ``n_mc_trials=3`` takes ~30-60 seconds.
+
+        For the full 30-trial parallel analysis use the CLI command::
+
+            python -m glossa_lab.experiments.run_kandles_biased_experiments --trials 30
+        """
+        from glossa_lab.experiments.linear_a_circularity import (  # noqa: PLC0415
+            run_all_experiments as _run,
         )
+        n = max(1, int(kwargs.get("n_mc_trials") or 3))
+        unbiased = _run(n_mc_trials=n, use_kandles_bias=False, verbose=False)
+        biased   = _run(n_mc_trials=n, use_kandles_bias=True,  verbose=False)
+
+        # Build a per-hypothesis delta table across the three scoring modes
+        deltas: dict[str, dict[str, float]] = {}
+        for smode in ("full", "no_vocab", "kandles_only"):
+            u = unbiased.get("exp5_scoring_modes", {}).get(smode, {}).get("scores", {})
+            b = biased.get(  "exp5_scoring_modes", {}).get(smode, {}).get("scores", {})
+            deltas[smode] = {
+                hyp: round(b.get(hyp, 0) - u.get(hyp, 0), 4)
+                for hyp in ("greek", "luwian", "hurrian", "semitic")
+            }
+
+        return {
+            "n_mc_trials": n,
+            "exp1_winner_unbiased": unbiased.get("exp1_raw_tablet", {})
+                .get("ALL", {}).get("winner"),
+            "exp1_winner_biased":   biased.get("exp1_raw_tablet", {})
+                .get("ALL", {}).get("winner"),
+            "deltas_by_scoring_mode": deltas,
+            "unbiased_exp5": unbiased.get("exp5_scoring_modes", {}),
+            "biased_exp5":   biased.get(  "exp5_scoring_modes", {}),
+            "note": (
+                f"Graph quick mode ({n} trial{'s' if n > 1 else ''}).  "
+                "Run CLI with --trials 30 for the full scientifically-valid analysis."
+            ),
+        }

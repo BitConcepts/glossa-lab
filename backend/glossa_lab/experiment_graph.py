@@ -798,78 +798,86 @@ def _build_proper_graph_specs() -> dict[str, dict]:
         "Use the CLI command shown in this node's value param, or open a terminal."
     )
 
+    # ── kandles_bias — now runnable in graph mode (sequential, n_mc_trials=3 default)
     s["kandles_bias"] = {
         "id": "kandles_bias",
         "name": "Kandles Bias Comparison (30 MC trials)",
         "description": (
-            "CLI-only (~25 min). Compares biased vs unbiased Kandles phonological profiles "
-            "across 30 Monte Carlo trials. Result: 0.000 delta."
+            "Biased-vs-unbiased Kandles phonological profile comparison. "
+            "Graph mode: sequential, 3 trials (~1 min). "
+            "Full 30-trial parallel analysis: use CLI command."
         ),
         "auto_migrated": True,
         "nodes": [
-            N("note", "StaticValue",     "CLI Command",
-              {"value": (
-                  "python -m glossa_lab.experiments.run_kandles_biased_experiments --trials 30\n\n"
-                  + _CLI_NOTE
-              )},
-              60, 100),
-            N("run",  "ExperimentWrapper","Kandles Bias Suite (CLI-only)",
-              {"experiment_id": "kandles_bias"},                         360, 100),
-            N("out",  "PassResult",        "Output",                    {},  640, 100),
+            N("corpus",  "CorpusReader",      "Indus Corpus (context)",     {},  60,  140),
+            N("freq",    "FreqCounter",        "Frequency Analysis",         {},  300,  80),
+            N("entropy", "EntropyCalc",        "Entropy H1",                 {},  300, 200),
+            N("run",     "ExperimentWrapper",  "Kandles Bias Comparison",
+              {"experiment_id": "kandles_bias", "n_mc_trials": 3},          570, 140),
+            N("out",     "PassResult",          "Output",                    {},  830, 140),
         ],
         "edges": [
-            E("e1", "note","run", "text",   "upstream"),
-            E("e2", "run", "out", "result", "data"),
+            E("e1", "corpus",  "freq",    "sequences",    "sequences"),
+            E("e2", "freq",    "entropy", "freq_map",     "freq_map"),
+            E("e3", "entropy", "run",     "h1_normalized","upstream"),
+            E("e4", "run",     "out",     "result",        "data"),
         ],
     }
 
+    # ── linear_a_circularity — now runnable in graph mode (sequential, n_mc_trials=3 default)
     s["linear_a_circularity"] = {
         "id": "linear_a_circularity",
         "name": "Linear A Anti-Circularity Suite (7 experiments)",
         "description": (
-            "CLI-only (~10 min). 7-experiment anti-circularity suite for Linear A phoneme "
-            "hypothesis testing using Monte Carlo trials."
+            "7-experiment anti-circularity suite for Linear A phoneme hypothesis testing. "
+            "Graph mode: sequential, 3 trials (~30 s). "
+            "Full 30-trial analysis: use CLI command."
         ),
         "auto_migrated": True,
         "nodes": [
-            N("note", "StaticValue",     "CLI Command",
-              {"value": (
-                  "python backend/generate_report_linear_a_circularity.py\n\n"
-                  + _CLI_NOTE
-              )},
-              60, 100),
-            N("run",  "ExperimentWrapper","Linear A Circularity Suite (CLI-only)",
-              {"experiment_id": "linear_a_circularity"},                  360, 100),
-            N("out",  "PassResult",        "Output",                    {},  640, 100),
+            N("corpus",  "CorpusReader",      "Corpus (context)",            {},  60,  140),
+            N("freq",    "FreqCounter",        "Frequency Counter",           {},  300,  80),
+            N("profiler","PositionalProfiler", "Positional Profiler",         {},  300, 200),
+            N("run",     "ExperimentWrapper",  "Linear A Circularity Suite",
+              {"experiment_id": "linear_a_circularity", "n_mc_trials": 3},    570, 140),
+            N("out",     "PassResult",          "Output",                    {},  830, 140),
         ],
         "edges": [
-            E("e1", "note","run", "text",   "upstream"),
-            E("e2", "run", "out", "result", "data"),
+            E("e1", "corpus",  "freq",    "sequences",  "sequences"),
+            E("e2", "corpus",  "profiler","sequences",  "sequences"),
+            E("e3", "profiler","run",     "profiles",   "upstream"),
+            E("e4", "run",     "out",     "result",      "data"),
         ],
     }
+
+    # ── OCR experiments: genuinely CLI-only because they need Mahadevan PDF files + API key
+    _OCR_WHY = (
+        "Cannot run in the Experiment Builder because it requires:\n"
+        "  1. Mahadevan (1977) PDF scan files on disk\n"
+        "  2. Mistral API key set in Settings\n"
+        "  3. Very long runtime (see estimated time above)\n\n"
+        "Use the CLI command shown below:"
+    )
 
     s["ocr_tables"] = {
         "id": "ocr_tables",
         "name": "OCR \u2014 Bigram & Frequency Tables",
         "description": (
-            "CLI-only (~30 min). Mistral OCR on Mahadevan (1977) table pages. "
-            "Requires mistral_api_key in Settings."
+            "Mistral OCR on Mahadevan (1977) table pages. ~30 min. "
+            "Requires mistral_api_key in Settings AND Mahadevan PDF files on disk."
         ),
         "auto_migrated": True,
         "nodes": [
-            N("note", "StaticValue",     "CLI Command",
-              {"value": (
-                  "python ocr_mahadevan.py --target tables\n\n"
-                  "Requires Mistral API key in Settings. " + _CLI_NOTE
-              )},
+            N("note", "StaticValue", "Why CLI-only + command",
+              {"value": _OCR_WHY + "\n\npython ocr_mahadevan.py --target tables"},
               60, 100),
-            N("run",  "ExperimentWrapper","OCR Tables Extraction (CLI-only)",
-              {"experiment_id": "ocr_tables"},                           360, 100),
-            N("out",  "PassResult",        "Output",                    {},  640, 100),
+            N("run",  "ExperimentWrapper", "OCR Tables (needs PDF + API key)",
+              {"experiment_id": "ocr_tables"}, 360, 100),
+            N("out",  "PassResult", "Output", {}, 640, 100),
         ],
         "edges": [
-            E("e1", "note","run", "text",   "upstream"),
-            E("e2", "run", "out", "result", "data"),
+            E("e1", "note", "run", "text",   "upstream"),
+            E("e2", "run",  "out", "result", "data"),
         ],
     }
 
@@ -877,24 +885,21 @@ def _build_proper_graph_specs() -> dict[str, dict]:
         "id": "ocr_texts",
         "name": "OCR \u2014 Inscription Sequences (2906 texts)",
         "description": (
-            "CLI-only (~2 hours). Mistral OCR on Mahadevan (1977) inscription pages. "
-            "Requires mistral_api_key in Settings."
+            "Mistral OCR on Mahadevan (1977) inscription pages. ~2 hours. "
+            "Requires mistral_api_key in Settings AND Mahadevan PDF files on disk."
         ),
         "auto_migrated": True,
         "nodes": [
-            N("note", "StaticValue",     "CLI Command",
-              {"value": (
-                  "python ocr_mahadevan.py --target texts\n\n"
-                  "Requires Mistral API key in Settings. " + _CLI_NOTE
-              )},
+            N("note", "StaticValue", "Why CLI-only + command",
+              {"value": _OCR_WHY + "\n\npython ocr_mahadevan.py --target texts"},
               60, 100),
-            N("run",  "ExperimentWrapper","OCR Inscription Texts (CLI-only)",
-              {"experiment_id": "ocr_texts"},                            360, 100),
-            N("out",  "PassResult",        "Output",                    {},  640, 100),
+            N("run",  "ExperimentWrapper", "OCR Texts (needs PDF + API key)",
+              {"experiment_id": "ocr_texts"}, 360, 100),
+            N("out",  "PassResult", "Output", {}, 640, 100),
         ],
         "edges": [
-            E("e1", "note","run", "text",   "upstream"),
-            E("e2", "run", "out", "result", "data"),
+            E("e1", "note", "run", "text",   "upstream"),
+            E("e2", "run",  "out", "result", "data"),
         ],
     }
 

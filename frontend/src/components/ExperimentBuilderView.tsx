@@ -1,0 +1,656 @@
+/**
+ * Experiment Builder — ComfyUI-like visual composer for custom experiments.
+ *
+ * Users wire typed atomic computation nodes (CorpusReader → FreqCounter →
+ * PositionalProfiler → JSONExport …) with coloured typed ports.  The resulting
+ * graph is saved as a GraphExperiment that appears in the Study Builder palette.
+ *
+ * Port type colours (matches backend PORT_COLORS):
+ *   sequences  #059669   freq_map  #2563eb   profiles  #7c3aed
+ *   clusters   #d97706   number    #dc2626   text      #0d9488
+ *   json       #4f46e5   any       #64748b
+ */
+
+import React, {
+  useCallback, useEffect, useMemo, useRef, useState,
+} from "react";
+import {
+  ReactFlow,
+  addEdge,
+  Background, BackgroundVariant,
+  Controls,
+  Handle,
+  MiniMap,
+  Position,
+  type Connection,
+  type Edge,
+  type Node,
+  type NodeChange,
+  type EdgeChange,
+  type NodeProps,
+  applyNodeChanges,
+  applyEdgeChanges,
+  useReactFlow,
+} from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+
+import {
+  getAtomicNodeCatalog,
+  listGraphExperiments,
+  getGraphExperiment,
+  createGraphExperiment,
+  updateGraphExperiment,
+  deleteGraphExperiment,
+  runGraphExperiment,
+  PORT_COLORS,
+  type AtomicNodeDef,
+  type AtomicPort,
+  type GraphExperiment,
+  type GraphExperimentMeta,
+} from "../api";
+
+// ── Theme (same helper as StudyBuilderView) ─────────────────────────────────
+
+function ebTheme(dark: boolean) {
+  return {
+    panelBg:   dark ? "#0f172a" : "#f8fafc",
+    panelBg2:  dark ? "#1e293b" : "#ffffff",
+    text:      dark ? "#e2e8f0" : "#1e293b",
+    textMuted: dark ? "#94a3b8" : "#64748b",
+    textFaint: dark ? "#64748b" : "#94a3b8",
+    border:    dark ? "#1e293b" : "#e2e8f0",
+    borderHov: dark ? "#334155" : "#cbd5e1",
+    activeBg:  dark ? "#1e3a5f" : "#dbeafe",
+    activeText:dark ? "#ffffff" : "#1e40af",
+    inputBg:   dark ? "#0f172a" : "#ffffff",
+    inputText: dark ? "#e2e8f0" : "#1e293b",
+    inputBdr:  dark ? "#334155" : "#d1d5db",
+    canvasBg:  "#080d18",
+    canvasGrid:"#161e2e",
+  };
+}
+
+const PORT_CLR = PORT_COLORS;
+
+// ── ExpNode — custom node with typed multi-port handles ──────────────────────
+
+interface ExpNodeData extends Record<string, unknown> {
+  atomicId: string;
+  label: string;
+  inputs:  AtomicPort[];
+  outputs: AtomicPort[];
+  params: Record<string, unknown>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  params_schema: Record<string, any>;
+  runStatus?: "idle" | "running" | "complete" | "error";
+  runResult?: string;
+}
+
+function PortHandle({ port, side, index, total }: {
+  port: AtomicPort; side: "left" | "right"; index: number; total: number;
+}) {
+  const color = PORT_CLR[port.type] ?? PORT_CLR.any;
+  // Evenly space handles along the node height
+  const topPct = total === 1 ? 50 : 20 + (index / (total - 1)) * 60;
+  return (
+    <Handle
+      type={side === "left" ? "target" : "source"}
+      position={side === "left" ? Position.Left : Position.Right}
+      id={`${side === "left" ? "in" : "out"}__${port.name}`}
+      style={{
+        width: 10, height: 10,
+        background: color,
+        border: "2px solid #111827",
+        borderRadius: 3,
+        [side === "left" ? "left" : "right"]: -6,
+        top: `${topPct}%`,
+        transform: "translateY(-50%)",
+      }}
+      title={`${port.name} : ${port.type}${port.required ? " (required)" : ""}`}
+    />
+  );
+}
+
+const ExpNode = ({ data, id, selected }: NodeProps) => {
+  const nd = data as ExpNodeData;
+  const { setNodes, setEdges } = useReactFlow();
+  const runStatus = nd.runStatus;
+  const runClrMap: Record<string, string> = { complete: "#22c55e", error: "#ef4444", running: "#60a5fa" };
+  const runClr = runStatus ? (runClrMap[runStatus] ?? "") : "";
+
+  const onDelete = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setNodes(n => n.filter(node => node.id !== id));
+    setEdges(e => e.filter(ed => ed.source !== id && ed.target !== id));
+  };
+
+  // Derive a header colour from the first output port type
+  const headerColor = (nd.outputs?.[0] ? PORT_CLR[nd.outputs[0].type] : null) ?? "#334155";
+
+  return (
+    <div style={{
+      background: "#111827",
+      border: `2px solid ${selected ? "#60a5fa" : headerColor + "66"}`,
+      borderRadius: 8,
+      minWidth: 175, maxWidth: 240,
+      boxShadow: selected ? "0 0 0 2px #60a5fa40, 0 4px 20px rgba(0,0,0,0.6)" : "0 2px 14px rgba(0,0,0,0.5)",
+      fontFamily: "system-ui, sans-serif",
+      position: "relative",
+    }}>
+      {/* Input handles — left side */}
+      {nd.inputs.map((p, i) => (
+        <PortHandle key={`in_${p.name}`} port={p} side="left" index={i} total={nd.inputs.length} />
+      ))}
+
+      {/* Header */}
+      <div style={{ background: headerColor, borderRadius: "6px 6px 0 0", padding: "6px 8px", display: "flex", alignItems: "center", gap: 5 }}>
+        <span style={{ color: "#fff", fontSize: 12, fontWeight: 700, flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", textShadow: "0 1px 2px rgba(0,0,0,0.4)" }}>
+          {nd.label}
+        </span>
+        {runStatus && runStatus !== "idle" && (
+          <span style={{ width: 7, height: 7, borderRadius: "50%", background: runClr, display: "inline-block", boxShadow: `0 0 5px ${runClr}` }} />
+        )}
+        <button onMouseDown={onDelete} style={{ border: "none", background: "rgba(0,0,0,0.3)", color: "#fff", cursor: "pointer", fontSize: 13, lineHeight: 1, borderRadius: 3, padding: "2px 5px", flexShrink: 0 }}>×</button>
+      </div>
+
+      {/* Port type legend row */}
+      <div style={{ padding: "4px 8px", display: "flex", gap: 6, flexWrap: "wrap", borderBottom: "1px solid #1e293b" }}>
+        {nd.inputs.map(p => (
+          <span key={p.name} style={{ fontSize: 9, color: PORT_CLR[p.type] ?? PORT_CLR.any, display: "flex", alignItems: "center", gap: 2 }}>
+            <span style={{ width: 5, height: 5, borderRadius: 1, background: PORT_CLR[p.type] ?? PORT_CLR.any, display: "inline-block" }} />
+            {p.name}
+          </span>
+        ))}
+        {nd.inputs.length > 0 && nd.outputs.length > 0 && <span style={{ color: "#334155", fontSize: 9 }}>→</span>}
+        {nd.outputs.map(p => (
+          <span key={p.name} style={{ fontSize: 9, color: PORT_CLR[p.type] ?? PORT_CLR.any, display: "flex", alignItems: "center", gap: 2 }}>
+            {p.name}
+            <span style={{ width: 5, height: 5, borderRadius: 1, background: PORT_CLR[p.type] ?? PORT_CLR.any, display: "inline-block" }} />
+          </span>
+        ))}
+      </div>
+
+      {/* Params summary */}
+      <div style={{ padding: "4px 8px 5px", fontSize: 10, color: "#64748b" }}>
+        {Object.keys(nd.params_schema?.properties ?? {}).length === 0
+          ? <span style={{ color: "#334155", fontSize: 9 }}>No params</span>
+          : Object.entries(nd.params).filter(([, v]) => v !== "" && v !== undefined).map(([k, v]) => (
+            <div key={k} style={{ color: "#94a3b8", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+              <span style={{ color: "#64748b" }}>{k}: </span>{String(v).slice(0, 20)}
+            </div>
+          ))
+        }
+        {runStatus === "complete" && nd.runResult && (
+          <div style={{ fontSize: 9, color: "#22c55e", marginTop: 2 }}>✓ {nd.runResult.slice(0, 40)}</div>
+        )}
+      </div>
+
+      {/* Output handles — right side */}
+      {nd.outputs.map((p, i) => (
+        <PortHandle key={`out_${p.name}`} port={p} side="right" index={i} total={nd.outputs.length} />
+      ))}
+    </div>
+  );
+};
+
+const EXP_NODE_TYPES = { expNode: ExpNode };
+
+// ── Context menu ─────────────────────────────────────────────────────────────
+
+interface CtxItem { label?: string; icon?: string; danger?: boolean; divider?: boolean; action?: () => void; }
+
+const ContextMenu = ({ x, y, items, onClose }: { x: number; y: number; items: CtxItem[]; onClose: () => void }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const h = (e: MouseEvent) => { if (ref.current && !ref.current.contains(e.target as HTMLElement)) onClose(); };
+    setTimeout(() => document.addEventListener("mousedown", h), 0);
+    return () => document.removeEventListener("mousedown", h);
+  }, [onClose]);
+  const left = Math.min(x, window.innerWidth - 185);
+  const top  = Math.min(y, window.innerHeight - items.length * 30 - 16);
+  return (
+    <div ref={ref} style={{ position: "fixed", left, top, background: "#1e293b", border: "1px solid #334155", borderRadius: 7, zIndex: 99999, minWidth: 172, padding: "3px 0", boxShadow: "0 8px 32px rgba(0,0,0,0.6)" }}>
+      {items.map((it, i) =>
+        it.divider ? <div key={i} style={{ height: 1, background: "#334155", margin: "3px 0" }} /> : (
+          <button key={i} onClick={() => { it.action?.(); onClose(); }}
+            style={{ display: "flex", alignItems: "center", gap: 7, width: "100%", padding: "6px 12px", border: "none", background: "none", color: it.danger ? "#f87171" : "#e2e8f0", cursor: "pointer", fontSize: 12 }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "#334155"; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "none"; }}>
+            {it.icon && <span style={{ fontSize: 13, width: 16, textAlign: "center" }}>{it.icon}</span>}
+            {it.label}
+          </button>
+        )
+      )}
+    </div>
+  );
+};
+
+// ── New Experiment Dialog ─────────────────────────────────────────────────────
+
+function NewExpDialog({ onClose, onCreate }: { onClose: () => void; onCreate: (name: string, desc: string) => void }) {
+  const [name, setName] = useState(""); const [desc, setDesc] = useState("");
+  const bdRef = useRef<HTMLDivElement>(null);
+  const inp: React.CSSProperties = { display: "block", width: "100%", boxSizing: "border-box", padding: "7px 10px", border: "1px solid #334155", borderRadius: 6, fontSize: 13, marginBottom: 10, outline: "none", background: "#0f172a", color: "#e2e8f0" };
+  return (
+    <div ref={bdRef} onClick={e => { if (e.target === bdRef.current) onClose(); }}
+      style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.65)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 10000 }}>
+      <div style={{ background: "#1e293b", border: "1px solid #334155", borderRadius: 10, padding: "1.5rem", width: 440, maxWidth: "95vw", boxShadow: "0 20px 60px rgba(0,0,0,0.6)" }}>
+        <h3 style={{ margin: "0 0 1rem", color: "#e2e8f0", fontSize: 15 }}>New Graph Experiment</h3>
+        <label style={{ display: "block", fontSize: 11, fontWeight: 600, color: "#64748b", marginBottom: 4 }}>Name *</label>
+        <input autoFocus value={name} onChange={e => setName(e.target.value)} onKeyDown={e => { if (e.key === "Enter" && name.trim()) { onCreate(name.trim(), desc.trim()); onClose(); }}} placeholder="e.g. Indus Symbol Analysis" style={inp} />
+        <label style={{ display: "block", fontSize: 11, fontWeight: 600, color: "#64748b", marginBottom: 4 }}>Description (optional)</label>
+        <textarea value={desc} onChange={e => setDesc(e.target.value)} rows={2} placeholder="What does this experiment compute?" style={{ ...inp, resize: "vertical", fontFamily: "inherit" }} />
+        <div style={{ display: "flex", gap: 8, justifyContent: "flex-end" }}>
+          <button onClick={onClose} style={{ padding: "7px 16px", border: "1px solid #334155", borderRadius: 6, cursor: "pointer", fontSize: 12, background: "none", color: "#64748b" }}>Cancel</button>
+          <button onClick={() => { if (name.trim()) { onCreate(name.trim(), desc.trim()); onClose(); }}} disabled={!name.trim()}
+            style={{ padding: "7px 18px", border: "none", borderRadius: 6, cursor: name.trim() ? "pointer" : "not-allowed", fontSize: 12, fontWeight: 600, background: "#7c3aed", color: "#fff", opacity: name.trim() ? 1 : 0.4 }}>
+            Create
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Inspector ─────────────────────────────────────────────────────────────────
+
+function Inspector({ node, onClose, onParamChange }: {
+  node: Node<ExpNodeData> | null;
+  onClose: () => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onParamChange: (nodeId: string, params: Record<string, any>) => void;
+}) {
+  if (!node) return null;
+  const nd = node.data;
+  const headerColor = (nd.outputs?.[0] ? PORT_CLR[nd.outputs[0].type] : null) ?? "#334155";
+  const schema = nd.params_schema?.properties ?? {};
+  const params = nd.params ?? {};
+
+  return (
+    <div style={{ width: 240, borderLeft: "1px solid #1e293b", padding: "11px 12px", background: "#090d18", overflowY: "auto", flexShrink: 0 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
+        <span style={{ fontSize: 12, fontWeight: 700, color: headerColor }}>{nd.label}</span>
+        <button onClick={onClose} style={{ border: "none", background: "none", cursor: "pointer", fontSize: 14, color: "#334155" }}>✕</button>
+      </div>
+
+      {/* Port legend */}
+      <div style={{ marginBottom: 10, display: "flex", gap: 8, flexWrap: "wrap" }}>
+        {nd.inputs.map(p => (
+          <span key={p.name} style={{ fontSize: 9, display: "flex", alignItems: "center", gap: 3, color: PORT_CLR[p.type] ?? PORT_CLR.any }}>
+            <span style={{ width: 6, height: 6, borderRadius: 1, background: PORT_CLR[p.type] ?? PORT_CLR.any, display: "inline-block" }} />
+            IN:{p.name}
+          </span>
+        ))}
+        {nd.outputs.map(p => (
+          <span key={p.name} style={{ fontSize: 9, display: "flex", alignItems: "center", gap: 3, color: PORT_CLR[p.type] ?? PORT_CLR.any }}>
+            OUT:{p.name}
+            <span style={{ width: 6, height: 6, borderRadius: 1, background: PORT_CLR[p.type] ?? PORT_CLR.any, display: "inline-block" }} />
+          </span>
+        ))}
+      </div>
+
+      {/* Params */}
+      {Object.keys(schema).length > 0 ? (
+        <div>
+          <div style={{ fontSize: 9, fontWeight: 700, color: "#475569", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 8, borderTop: "1px solid #1e293b", paddingTop: 8 }}>Parameters</div>
+          {Object.entries(schema).map(([k, def]) => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const d = def as Record<string, any>;
+            const type = d.type as string;
+            const label = (d.title as string) ?? k;
+            const iStyle: React.CSSProperties = { width: "100%", boxSizing: "border-box", padding: "4px 7px", border: "1px solid #334155", borderRadius: 4, fontSize: 11, outline: "none", background: "#1e293b", color: "#e2e8f0" };
+            return (
+              <div key={k} style={{ marginBottom: 9 }}>
+                <div style={{ fontSize: 11, fontWeight: 600, color: "#cbd5e1", marginBottom: 2 }}>{label}</div>
+                {d.description && <div style={{ fontSize: 10, color: "#64748b", marginBottom: 3 }}>{d.description as string}</div>}
+                {type === "boolean"
+                  ? <input type="checkbox" checked={!!(params[k])} onChange={e => onParamChange(node.id, { ...params, [k]: e.target.checked })} />
+                  : type === "integer" || type === "number"
+                    ? <input type="number" value={(params[k] as number) ?? (d.default as number) ?? ""} step={type === "integer" ? 1 : "any"} min={d.minimum as number | undefined} onChange={e => onParamChange(node.id, { ...params, [k]: (type === "integer" ? parseInt(e.target.value, 10) : parseFloat(e.target.value)) || 0 })} style={iStyle} />
+                    : <input type="text" value={(params[k] as string) ?? (d.default as string) ?? ""} onChange={e => onParamChange(node.id, { ...params, [k]: e.target.value })} placeholder={(d.default as string) ?? ""} style={iStyle} />
+                }
+              </div>
+            );
+          })}
+          <div style={{ fontSize: 9, color: "#1e293b" }}>Saved with experiment.</div>
+        </div>
+      ) : (
+        <div style={{ fontSize: 10, color: "#334155", fontStyle: "italic", marginTop: 6 }}>No parameters for this node.</div>
+      )}
+    </div>
+  );
+}
+
+// ── Main ExperimentBuilderView ─────────────────────────────────────────────
+
+let _eid = 0;
+function nextId() { return `en_${Date.now()}_${_eid++}`; }
+
+export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean }) {
+  const th = ebTheme(darkMode);
+
+  // Data
+  const [catalog, setCatalog]   = useState<AtomicNodeDef[]>([]);
+  const [savedExps, setSavedExps] = useState<GraphExperimentMeta[]>([]);
+  const [activeExp, setActiveExp] = useState<GraphExperiment | null>(null);
+
+  // Graph
+  const [nodes, setNodes] = useState<Node<ExpNodeData>[]>([]);
+  const [edges, setEdges] = useState<Edge[]>([]);
+  const [selectedNode, setSelectedNode] = useState<Node<ExpNodeData> | null>(null);
+  const [inspectorOff, setInspectorOff] = useState(false);
+
+  // UI
+  const [saving, setSaving]     = useState(false);
+  const [saveMsg, setSaveMsg]   = useState<string | null>(null);
+  const [running, setRunning]   = useState(false);
+  const [runResult, setRunResult] = useState<string | null>(null);
+  const [showNew, setShowNew]   = useState(false);
+  const [palSearch, setPalSearch] = useState("");
+  const [ctxMenu, setCtxMenu]   = useState<{ x: number; y: number; type: "pane" | "node"; nodeId?: string } | null>(null);
+  const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+
+  const reactFlowWrapper = useRef<HTMLDivElement>(null);
+  const draggedNodeType  = useRef<string | null>(null);
+  useEffect(() => {
+    void getAtomicNodeCatalog().then(setCatalog).catch(() => {});
+    void listGraphExperiments().then(setSavedExps).catch(() => {});
+  }, []);
+
+  // Load saved experiment
+  const loadExp = useCallback(async (id: string) => {
+    try {
+      const d = await getGraphExperiment(id);
+      setActiveExp(d);
+      setSelectedNode(null);
+      setNodes((d.nodes as Node<ExpNodeData>[]).map(n => {
+        const def = catalog.find(c => c.id === (n.data as ExpNodeData).atomicId);
+        return {
+          ...n, type: "expNode",
+          data: { ...n.data as ExpNodeData, inputs: def?.inputs ?? [], outputs: def?.outputs ?? [], params_schema: def?.params_schema ?? {} },
+        };
+      }));
+      setEdges((d.edges as Edge[]).map(e => ({ ...e, style: { stroke: PORT_CLR.any, strokeWidth: 2 } })));
+    } catch { /* ignore */ }
+  }, [catalog]);
+
+  // Save
+  const doSave = useCallback(async () => {
+    if (!activeExp) return;
+    setSaving(true);
+    try {
+      const graph: GraphExperiment = {
+        ...activeExp,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        nodes: nodes.map(n => ({ id: n.id, type: "expNode", position: n.position, data: { atomicId: (n.data as ExpNodeData).atomicId, label: n.data.label, params: n.data.params } })) as any,
+        edges: edges.map(e => ({ id: e.id, source: e.source, target: e.target, sourcePort: e.sourceHandle?.replace("out__",""), targetPort: e.targetHandle?.replace("in__","") })) as any,
+      };
+      const saved = activeExp.id
+        ? await updateGraphExperiment(activeExp.id, graph)
+        : await createGraphExperiment(graph);
+      setActiveExp(saved);
+      setSavedExps(prev => {
+        const idx = prev.findIndex(e => e.id === saved.id);
+        const meta = { id: saved.id!, name: saved.name, description: saved.description, node_count: nodes.length, edge_count: edges.length };
+        return idx >= 0 ? prev.map((e, i) => i === idx ? meta : e) : [meta, ...prev];
+      });
+      setSaveMsg("Saved"); setTimeout(() => setSaveMsg(null), 2000);
+    } catch { setSaveMsg("Failed"); }
+    finally { setSaving(false); }
+  }, [activeExp, nodes, edges]);
+
+  // Run preview
+  const doRun = useCallback(async () => {
+    if (!activeExp?.id) return;
+    await doSave();
+    setRunning(true); setRunResult(null);
+    setNodes(prev => prev.map(n => ({ ...n, data: { ...n.data, runStatus: "running" } as ExpNodeData })));
+    try {
+      const r = await runGraphExperiment(activeExp.id);
+      const summary = Object.keys(r.result || {}).slice(0, 3).join(", ");
+      setRunResult(`${r.status}: ${summary}`);
+      setNodes(prev => prev.map(n => ({ ...n, data: { ...n.data, runStatus: "complete", runResult: summary } as ExpNodeData })));
+    } catch (e) {
+      setRunResult(`Error: ${e instanceof Error ? e.message : "run failed"}`);
+      setNodes(prev => prev.map(n => ({ ...n, data: { ...n.data, runStatus: "error" } as ExpNodeData })));
+    } finally { setRunning(false); }
+  }, [activeExp, doSave]);
+
+  // Delete saved experiment
+  const doDeleteExp = useCallback(async (id: string) => {
+    if (deleteConfirm !== id) { setDeleteConfirm(id); setTimeout(() => setDeleteConfirm(null), 3000); return; }
+    setDeleteConfirm(null);
+    await deleteGraphExperiment(id);
+    setSavedExps(prev => prev.filter(e => e.id !== id));
+    if (activeExp?.id === id) { setActiveExp(null); setNodes([]); setEdges([]); }
+  }, [deleteConfirm, activeExp]);
+
+  // React Flow handlers
+  const onNodesChange = useCallback((ch: NodeChange[]) => setNodes(n => applyNodeChanges(ch, n) as Node<ExpNodeData>[]), []);
+  const onEdgesChange = useCallback((ch: EdgeChange[]) => setEdges(e => applyEdgeChanges(ch, e)), []);
+  const onConnect = useCallback((c: Connection) => {
+    const srcPort = c.sourceHandle?.replace("out__","") ?? "";
+    const tgtPort = c.targetHandle?.replace("in__","") ?? "";
+    const srcNode = nodes.find(n => n.id === c.source);
+    const tgtNode = nodes.find(n => n.id === c.target);
+    const srcType = (srcNode?.data as ExpNodeData)?.outputs?.find(p => p.name === srcPort)?.type ?? "any";
+    const tgtType = (tgtNode?.data as ExpNodeData)?.inputs?.find(p => p.name === tgtPort)?.type ?? "any";
+    const compatible = srcType === tgtType || srcType === "any" || tgtType === "any";
+    const edgeColor = compatible ? (PORT_CLR[srcType] ?? PORT_CLR.any) : "#f59e0b";
+    setEdges(e => addEdge({ ...c, style: { stroke: edgeColor, strokeWidth: 2.5 }, label: compatible ? undefined : "⚠ type mismatch" }, e));
+  }, [nodes]);
+
+  const onNodeClick = useCallback((_: React.MouseEvent, n: Node) => { setSelectedNode(n as Node<ExpNodeData>); setInspectorOff(false); setCtxMenu(null); }, []);
+  const onPaneClick = useCallback(() => { setSelectedNode(null); setCtxMenu(null); }, []);
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onNodeCtx = useCallback((ev: any, n: Node) => { ev?.preventDefault?.(); ev?.stopPropagation?.(); setCtxMenu({ x: ev.clientX, y: ev.clientY, type: "node", nodeId: n.id }); setSelectedNode(n as Node<ExpNodeData>); }, []);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onPaneCtx = useCallback((ev: any) => { ev?.preventDefault?.(); setCtxMenu({ x: ev.clientX, y: ev.clientY, type: "pane" }); }, []);
+
+  // Param change
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onParamChange = useCallback((nodeId: string, params: Record<string, any>) => {
+    setNodes(prev => prev.map(n => n.id === nodeId ? { ...n, data: { ...n.data, params } as ExpNodeData } : n));
+    setSelectedNode(prev => prev?.id === nodeId ? { ...prev, data: { ...prev.data, params } as ExpNodeData } : prev);
+  }, []);
+
+  // Drop from palette
+  const onDrop = useCallback((ev: React.DragEvent<HTMLDivElement>) => {
+    ev.preventDefault();
+    if (!draggedNodeType.current || !reactFlowWrapper.current) return;
+    const def = catalog.find(d => d.id === draggedNodeType.current);
+    if (!def) return;
+    const rect = reactFlowWrapper.current.getBoundingClientRect();
+    const pos = { x: Math.round((ev.clientX - rect.left - 80) / 15) * 15, y: Math.round((ev.clientY - rect.top - 30) / 15) * 15 };
+    const defaultParams = Object.fromEntries(
+      Object.entries(def.params_schema.properties ?? {}).map(([k, v]) => [k, (v as Record<string, unknown>).default ?? ""])
+    );
+    setNodes(n => [...n, {
+      id: nextId(), type: "expNode", position: pos,
+      data: { atomicId: def.id, label: def.name, inputs: def.inputs, outputs: def.outputs, params: defaultParams, params_schema: def.params_schema, runStatus: "idle" } as ExpNodeData,
+    }]);
+    draggedNodeType.current = null;
+  }, [catalog]);
+  const onDragOver = (ev: React.DragEvent) => { ev.preventDefault(); ev.dataTransfer.dropEffect = "move"; };
+
+  // Node context items
+  const nodeCtxItems = useCallback((nodeId: string): CtxItem[] => {
+    const nd = nodes.find(n => n.id === nodeId);
+    return [
+      { icon: "⎘", label: "Duplicate", action: () => { if (!nd) return; setNodes(n => [...n, { id: nextId(), type: "expNode", position: { x: nd.position.x + 20, y: nd.position.y + 20 }, data: { ...nd.data, runStatus: "idle" } as ExpNodeData }]); }},
+      { divider: true },
+      { icon: "🔗", label: "Disconnect all", action: () => setEdges(e => e.filter(ed => ed.source !== nodeId && ed.target !== nodeId)) },
+      { divider: true },
+      { icon: "🗑", label: "Delete node", danger: true, action: () => { setNodes(n => n.filter(x => x.id !== nodeId)); setEdges(e => e.filter(ed => ed.source !== nodeId && ed.target !== nodeId)); if (selectedNode?.id === nodeId) setSelectedNode(null); }},
+    ];
+  }, [nodes, selectedNode]);
+
+  const paneCtxItems = useCallback((x: number, y: number): CtxItem[] => {
+    const cats = [...new Set(catalog.map(d => d.category))];
+    return cats.flatMap((cat, ci) => [
+      ...(ci > 0 ? [{ divider: true }] : []),
+      ...catalog.filter(d => d.category === cat).map(d => ({
+        icon: "◆",
+        label: `${cat}: ${d.name}`,
+        action: () => {
+          if (!reactFlowWrapper.current) return;
+          const rect = reactFlowWrapper.current.getBoundingClientRect();
+          const pos = { x: Math.round((x - rect.left - 80) / 15) * 15, y: Math.round((y - rect.top - 30) / 15) * 15 };
+          const dp = Object.fromEntries(Object.entries(d.params_schema.properties ?? {}).map(([k, v]) => [k, (v as Record<string, unknown>).default ?? ""]));
+          setNodes(n => [...n, { id: nextId(), type: "expNode", position: pos, data: { atomicId: d.id, label: d.name, inputs: d.inputs, outputs: d.outputs, params: dp, params_schema: d.params_schema, runStatus: "idle" } as ExpNodeData }]);
+        },
+      })),
+    ]);
+  }, [catalog]);
+
+  // Grouped palette
+  const categories = useMemo(() => {
+    const cats: Record<string, AtomicNodeDef[]> = {};
+    for (const d of catalog) {
+      if (palSearch && !d.name.toLowerCase().includes(palSearch.toLowerCase())) continue;
+      (cats[d.category] = cats[d.category] || []).push(d);
+    }
+    return cats;
+  }, [catalog, palSearch]);
+
+  const catColors: Record<string, string> = { Sources: "#059669", Transforms: "#2563eb", Analysis: "#7c3aed", Outputs: "#0d9488" };
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0, overflow: "hidden" }}>
+      {/* Toolbar */}
+      <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "6px 12px", background: th.panelBg2, borderBottom: `1px solid ${th.border}`, flexShrink: 0, flexWrap: "wrap" }}>
+        <span style={{ fontSize: 13, fontWeight: 700, color: th.text }}>🔀 Experiment Builder</span>
+        {activeExp && <span style={{ fontSize: 11, color: th.textMuted, maxWidth: 200, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{activeExp.name}</span>}
+        {saveMsg && <span style={{ fontSize: 11, color: saveMsg === "Saved" ? "#22c55e" : "#ef4444", fontWeight: 600 }}>{saveMsg}</span>}
+        <div style={{ flex: 1 }} />
+        <span style={{ fontSize: 10, color: th.textFaint, border: `1px solid ${th.border}`, borderRadius: 4, padding: "2px 6px" }}>
+          Experiment Builder — compose typed nodes into a reusable experiment
+        </span>
+        {[
+          { label: "＋ New", action: () => setShowNew(true) },
+          { label: running ? "⏳…" : "▶ Run Preview", action: () => void doRun(), disabled: running || !activeExp?.id, green: true },
+          { label: saving ? "…" : "💾 Save", action: () => void doSave(), disabled: saving || !activeExp },
+        ].map(({ label, action, disabled, green }) => (
+          <button key={label} onClick={action} disabled={disabled}
+            style={{ padding: "4px 10px", border: `1px solid ${th.border}`, borderRadius: 5, cursor: disabled ? "not-allowed" : "pointer", fontSize: 11, fontWeight: 600, background: "transparent", color: green ? "#22c55e" : th.textMuted, opacity: disabled ? 0.4 : 1 }}>
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {/* Main area */}
+      <div style={{ flex: 1, display: "flex", minHeight: 0 }}>
+        {/* Left: saved experiments + palette */}
+        <div style={{ width: 230, background: th.panelBg, borderRight: `1px solid ${th.border}`, display: "flex", flexDirection: "column", flexShrink: 0, overflow: "hidden" }}>
+          {/* Saved experiments */}
+          <div style={{ padding: "7px 8px", borderBottom: `1px solid ${th.border}`, flexShrink: 0, maxHeight: 180, overflowY: "auto" }}>
+            <div style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 5 }}>Saved Graph Experiments</div>
+            {savedExps.length === 0 && <div style={{ fontSize: 10, color: th.textFaint, fontStyle: "italic" }}>None yet. Click ＋ New to start.</div>}
+            {savedExps.map(e => (
+              <div key={e.id} onClick={() => void loadExp(e.id)}
+                style={{ display: "flex", alignItems: "center", gap: 3, padding: "5px 5px", borderRadius: 4, marginBottom: 2, cursor: "pointer", background: activeExp?.id === e.id ? th.activeBg : "transparent" }}>
+                <span style={{ flex: 1, fontSize: 11, fontWeight: activeExp?.id === e.id ? 600 : 400, color: activeExp?.id === e.id ? th.activeText : th.text, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>🔀 {e.name}</span>
+                <span style={{ fontSize: 9, color: th.textFaint }}>{e.node_count}n</span>
+                <button onClick={ev => { ev.stopPropagation(); void doDeleteExp(e.id); }} title={deleteConfirm === e.id ? "Confirm?" : "Delete"}
+                  style={{ border: "none", background: "none", color: deleteConfirm === e.id ? "#f87171" : th.textFaint, cursor: "pointer", fontSize: 10, padding: "0 3px" }}>
+                  {deleteConfirm === e.id ? "!" : "×"}
+                </button>
+              </div>
+            ))}
+          </div>
+
+          {/* Atomic node palette */}
+          <div style={{ flex: 1, overflowY: "auto", padding: "7px 8px" }}>
+            <div style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 5 }}>Node Palette</div>
+            <input value={palSearch} onChange={e => setPalSearch(e.target.value)} placeholder="Search nodes…"
+              style={{ width: "100%", boxSizing: "border-box", padding: "5px 8px", fontSize: 10, border: `1px solid ${th.inputBdr}`, borderRadius: 5, marginBottom: 7, outline: "none", background: th.inputBg, color: th.inputText }} />
+            {Object.entries(categories).map(([cat, defs]) => (
+              <div key={cat} style={{ marginBottom: 10 }}>
+                <div style={{ fontSize: 9, fontWeight: 700, color: catColors[cat] ?? "#64748b", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 4 }}>{cat}</div>
+                {defs.map(def => {
+                    const hdrClr = def.outputs[0] ? PORT_CLR[def.outputs[0].type] : "#334155";
+                    return (
+                      <div key={def.id} draggable onDragStart={() => { draggedNodeType.current = def.id; }}
+                        title={def.description}
+                        style={{ padding: "5px 7px", marginBottom: 3, cursor: "grab", border: `1px solid ${hdrClr}40`, borderRadius: 5, background: hdrClr + "0d" }}>
+                      <div style={{ fontSize: 11, fontWeight: 600, color: hdrClr }}>{def.name}</div>
+                      {/* Port summary */}
+                      <div style={{ display: "flex", gap: 4, marginTop: 3, flexWrap: "wrap" }}>
+                        {def.inputs.map(p => <span key={p.name} style={{ fontSize: 8, padding: "0 4px", borderRadius: 2, background: PORT_CLR[p.type] + "25", color: PORT_CLR[p.type] ?? PORT_CLR.any }}>↓{p.name}</span>)}
+                        {def.outputs.map(p => <span key={p.name} style={{ fontSize: 8, padding: "0 4px", borderRadius: 2, background: PORT_CLR[p.type] + "25", color: PORT_CLR[p.type] ?? PORT_CLR.any }}>↑{p.name}</span>)}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Canvas */}
+        <div ref={reactFlowWrapper} style={{ flex: 1, minWidth: 0, background: th.canvasBg }} onDrop={onDrop} onDragOver={onDragOver}>
+          {!activeExp && (
+            <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 10, zIndex: 5, pointerEvents: "none" }}>
+              <div style={{ fontSize: 44 }}>🔀</div>
+              <div style={{ fontSize: 15, color: "#475569", fontWeight: 600 }}>Create or select a graph experiment</div>
+              <div style={{ fontSize: 12, color: "#334155" }}>Click ＋ New · Drag atomic nodes onto the canvas · Wire typed ports together</div>
+            </div>
+          )}
+          <ReactFlow
+            nodes={nodes} edges={edges}
+            nodeTypes={EXP_NODE_TYPES}
+            onNodesChange={onNodesChange} onEdgesChange={onEdgesChange}
+            onConnect={onConnect}
+            onNodeClick={onNodeClick} onPaneClick={onPaneClick}
+            onNodeContextMenu={onNodeCtx}
+            onPaneContextMenu={onPaneCtx}
+            snapToGrid snapGrid={[15, 15]}
+            deleteKeyCode={["Backspace", "Delete"]}
+            fitView fitViewOptions={{ padding: 0.2 }}
+            minZoom={0.15} maxZoom={2.5}
+            proOptions={{ hideAttribution: true }}
+            style={{ background: th.canvasBg }}
+            defaultEdgeOptions={{ style: { stroke: PORT_CLR.any, strokeWidth: 2.5 } }}
+          >
+            <Controls style={{ background: darkMode ? "#1e293b" : "#fff", border: `1px solid ${th.border}` }} />
+            <MiniMap style={{ background: th.canvasBg }} nodeColor={n => (n.data as ExpNodeData)?.outputs?.[0] ? PORT_CLR[(n.data as ExpNodeData).outputs[0].type] : "#334155"} />
+            <Background variant={BackgroundVariant.Dots} gap={15} size={1} color={th.canvasGrid} />
+          </ReactFlow>
+        </div>
+
+        {/* Right Inspector */}
+        {!inspectorOff && selectedNode && (
+          <Inspector node={selectedNode} onClose={() => setInspectorOff(true)} onParamChange={onParamChange} />
+        )}
+        {selectedNode && inspectorOff && (
+          <button onClick={() => setInspectorOff(false)}
+            style={{ position: "absolute", right: 6, top: "50%", transform: "translateY(-50%)", border: `1px solid ${th.border}`, background: th.panelBg2, color: th.textMuted, cursor: "pointer", borderRadius: 4, padding: "6px 4px", fontSize: 12, zIndex: 100 }}>◀</button>
+        )}
+      </div>
+
+      {/* Run result banner */}
+      {runResult && (
+        <div style={{ flexShrink: 0, padding: "5px 12px", background: runResult.startsWith("Error") ? "#450a0a" : "#052e16", borderTop: `1px solid ${th.border}`, fontSize: 11, color: runResult.startsWith("Error") ? "#fca5a5" : "#86efac", display: "flex", justifyContent: "space-between" }}>
+          <span>{runResult}</span>
+          <button onClick={() => setRunResult(null)} style={{ border: "none", background: "none", cursor: "pointer", color: "inherit", fontSize: 11 }}>× dismiss</button>
+        </div>
+      )}
+
+      {/* Context menu */}
+      {ctxMenu && (
+        <ContextMenu x={ctxMenu.x} y={ctxMenu.y} onClose={() => setCtxMenu(null)}
+          items={ctxMenu.type === "node" && ctxMenu.nodeId ? nodeCtxItems(ctxMenu.nodeId) : paneCtxItems(ctxMenu.x, ctxMenu.y)} />
+      )}
+
+      {/* New experiment dialog */}
+      {showNew && (
+        <NewExpDialog onClose={() => setShowNew(false)} onCreate={(name, desc) => {
+          const empty: GraphExperiment = { name, description: desc, nodes: [], edges: [] };
+          setActiveExp(empty);
+          setNodes([]); setEdges([]);
+        }} />
+      )}
+    </div>
+  );
+}

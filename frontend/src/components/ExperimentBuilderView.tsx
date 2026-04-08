@@ -16,6 +16,7 @@ import React, {
 } from "react";
 import { autoArrange as autoArrangeNodes } from "../utils/autoArrange";
 import { runGraphExperimentStream } from "../api";
+import { CorpusSelector } from "./CorpusSelector";
 import {
   ReactFlow,
   addEdge,
@@ -432,11 +433,13 @@ function Inspector({ node, onClose, onParamChange, darkMode = true }: {
               <div key={k} style={{ marginBottom: 9 }}>
                 <div style={{ fontSize: 11, fontWeight: 600, color: iText, marginBottom: 2 }}>{label}</div>
                 {d.description && <div style={{ fontSize: 10, color: iMuted, marginBottom: 3 }}>{d.description as string}</div>}
-                {type === "boolean"
-                  ? <input type="checkbox" checked={!!(params[k])} onChange={e => onParamChange(node.id, { ...params, [k]: e.target.checked })} />
-                  : type === "integer" || type === "number"
-                    ? <input type="number" value={(params[k] as number) ?? (d.default as number) ?? ""} step={type === "integer" ? 1 : "any"} min={d.minimum as number | undefined} onChange={e => onParamChange(node.id, { ...params, [k]: (type === "integer" ? parseInt(e.target.value, 10) : parseFloat(e.target.value)) || 0 })} style={iStyle} />
-                    : <input type="text" value={(params[k] as string) ?? (d.default as string) ?? ""} onChange={e => onParamChange(node.id, { ...params, [k]: e.target.value })} placeholder={(d.default as string) ?? ""} style={iStyle} />
+                {k === "corpus_id"
+                  ? <CorpusSelector value={(params[k] as string) ?? ""} onChange={v => onParamChange(node.id, { ...params, [k]: v })} darkMode={darkMode} />
+                  : type === "boolean"
+                    ? <input type="checkbox" checked={!!(params[k])} onChange={e => onParamChange(node.id, { ...params, [k]: e.target.checked })} />
+                    : type === "integer" || type === "number"
+                      ? <input type="number" value={(params[k] as number) ?? (d.default as number) ?? ""} step={type === "integer" ? 1 : "any"} min={d.minimum as number | undefined} onChange={e => onParamChange(node.id, { ...params, [k]: (type === "integer" ? parseInt(e.target.value, 10) : parseFloat(e.target.value)) || 0 })} style={iStyle} />
+                      : <input type="text" value={(params[k] as string) ?? (d.default as string) ?? ""} onChange={e => onParamChange(node.id, { ...params, [k]: e.target.value })} placeholder={(d.default as string) ?? ""} style={iStyle} />
                 }
               </div>
             );

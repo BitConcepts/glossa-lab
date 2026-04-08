@@ -102,7 +102,9 @@ function AppContent() {
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("glossa_dark") === "1");
   const [paletteOpen, setPaletteOpen] = useState(false);
   // Dirty badges — shown when builders have unsaved local changes
-  const [studyDirty, setStudyDirty] = useState(() => !!localStorage.getItem("glossa_study_draft"));
+  // Both start false on page load; the Study Builder dispatches glossa:dirty
+  // whenever the graph diverges from its last-saved state.
+  const [studyDirty, setStudyDirty] = useState(false);
   const [expDirty, setExpDirty] = useState(false);
   // Run indicators: count active runs + track last result
   type RunState = { count: number; lastStatus: "none" | "success" | "fail" };

@@ -363,7 +363,15 @@ def _run_experiment_node(
     node: dict[str, Any],
     upstream_results: dict[str, Any],
 ) -> dict[str, Any]:
-    """Execute an experiment node synchronously (runs in a thread executor)."""
+    """Execute an experiment node synchronously (runs in a thread executor).
+
+    corpus_id is resolved in priority order:
+      1. Explicit param on the node (set in Inspector)
+      2. corpus_id from an upstream 'corpus' type node result
+      3. Blank — experiment falls back to its built-in default corpus
+
+    All upstream results are also passed so experiments can use them.
+    """
     ref_id = node.get("ref_id", "")
     node_params = node.get("params") or {}
 
@@ -371,10 +379,23 @@ def _run_experiment_node(
     if cls is None:
         return {"status": "error", "reason": f"Experiment '{ref_id}' not found"}
 
+    # Resolve corpus_id: node param wins; otherwise take from upstream corpus node.
+    corpus_id: str | None = node_params.get("corpus_id") or None
+    if not corpus_id:
+        for r in upstream_results.values():
+            if isinstance(r, dict) and r.get("corpus_id"):
+                corpus_id = r["corpus_id"]
+                break
+
+    # Build run kwargs: merge node params, inject corpus_id, pass upstream results.
+    run_kwargs: dict[str, Any] = {**node_params}
+    if corpus_id:
+        run_kwargs["corpus_id"] = corpus_id
+    run_kwargs["upstream_results"] = upstream_results
+
     try:
         instance = cls()
-        kwargs = {**node_params, "upstream_results": upstream_results}
-        result = instance.run(**kwargs)
+        result = instance.run(**run_kwargs)
         return {"status": "complete", "result": result}
     except NotImplementedError:
         return {

@@ -1,22 +1,46 @@
 {
   "id": "kandles_bias",
   "name": "Kandles Bias Comparison (30 MC trials)",
-  "description": "CLI-only (~25 min). Compares biased vs unbiased Kandles phonological profiles across 30 Monte Carlo trials. Result: 0.000 delta.",
+  "description": "Biased-vs-unbiased Kandles phonological profile comparison. Graph mode: sequential, 3 trials (~1 min). Full 30-trial parallel analysis: use CLI command.",
   "auto_migrated": true,
   "nodes": [
     {
-      "id": "note",
+      "id": "corpus",
       "type": "expNode",
       "data": {
-        "atomicId": "StaticValue",
-        "label": "CLI Command",
-        "params": {
-          "value": "python -m glossa_lab.experiments.run_kandles_biased_experiments --trials 30\n\nThis experiment cannot run in the Experiment Builder. Use the CLI command shown in this node's value param, or open a terminal."
-        }
+        "atomicId": "CorpusReader",
+        "label": "Indus Corpus (context)",
+        "params": {}
       },
       "position": {
         "x": 60,
-        "y": 100
+        "y": 140
+      }
+    },
+    {
+      "id": "freq",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FreqCounter",
+        "label": "Frequency Analysis",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
+        "y": 80
+      }
+    },
+    {
+      "id": "entropy",
+      "type": "expNode",
+      "data": {
+        "atomicId": "EntropyCalc",
+        "label": "Entropy H1",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
+        "y": 200
       }
     },
     {
@@ -24,14 +48,15 @@
       "type": "expNode",
       "data": {
         "atomicId": "ExperimentWrapper",
-        "label": "Kandles Bias Suite (CLI-only)",
+        "label": "Kandles Bias Comparison",
         "params": {
-          "experiment_id": "kandles_bias"
+          "experiment_id": "kandles_bias",
+          "n_mc_trials": 3
         }
       },
       "position": {
-        "x": 360,
-        "y": 100
+        "x": 570,
+        "y": 140
       }
     },
     {
@@ -43,21 +68,35 @@
         "params": {}
       },
       "position": {
-        "x": 640,
-        "y": 100
+        "x": 830,
+        "y": 140
       }
     }
   ],
   "edges": [
     {
       "id": "e1",
-      "source": "note",
-      "target": "run",
-      "sourcePort": "text",
-      "targetPort": "upstream"
+      "source": "corpus",
+      "target": "freq",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
     },
     {
       "id": "e2",
+      "source": "freq",
+      "target": "entropy",
+      "sourcePort": "freq_map",
+      "targetPort": "freq_map"
+    },
+    {
+      "id": "e3",
+      "source": "entropy",
+      "target": "run",
+      "sourcePort": "h1_normalized",
+      "targetPort": "upstream"
+    },
+    {
+      "id": "e4",
       "source": "run",
       "target": "out",
       "sourcePort": "result",

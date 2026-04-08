@@ -1,7 +1,7 @@
 {
   "id": "ocr_texts",
   "name": "OCR \u2014 Inscription Sequences (2906 texts)",
-  "description": "CLI-only (~2 hours). Mistral OCR on Mahadevan (1977) inscription pages. Requires mistral_api_key in Settings.",
+  "description": "Mistral OCR on Mahadevan (1977) inscription pages. ~2 hours. Requires mistral_api_key in Settings AND Mahadevan PDF files on disk.",
   "auto_migrated": true,
   "nodes": [
     {
@@ -9,9 +9,9 @@
       "type": "expNode",
       "data": {
         "atomicId": "StaticValue",
-        "label": "CLI Command",
+        "label": "Why CLI-only + command",
         "params": {
-          "value": "python ocr_mahadevan.py --target texts\n\nRequires Mistral API key in Settings. This experiment cannot run in the Experiment Builder. Use the CLI command shown in this node's value param, or open a terminal."
+          "value": "Cannot run in the Experiment Builder because it requires:\n  1. Mahadevan (1977) PDF scan files on disk\n  2. Mistral API key set in Settings\n  3. Very long runtime (see estimated time above)\n\nUse the CLI command shown below:\n\npython ocr_mahadevan.py --target texts"
         }
       },
       "position": {
@@ -24,7 +24,7 @@
       "type": "expNode",
       "data": {
         "atomicId": "ExperimentWrapper",
-        "label": "OCR Inscription Texts (CLI-only)",
+        "label": "OCR Texts (needs PDF + API key)",
         "params": {
           "experiment_id": "ocr_texts"
         }

@@ -378,6 +378,40 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     void listExperiments().then(setExperiments).catch(() => {});
   }, []);
 
+  // Handle pending action dispatched from ExperimentsView or elsewhere via localStorage
+  useEffect(() => {
+    const pending = localStorage.getItem("glossa_exp_builder_open");
+    if (!pending) return;
+    localStorage.removeItem("glossa_exp_builder_open");
+    try {
+      const { action, id } = JSON.parse(pending) as { action: string; id?: string };
+      if (action === "load" && id) {
+        // Delay slightly so catalog is loaded first
+        const load = async () => {
+          await new Promise(r => setTimeout(r, 200));
+          void loadExp(id);
+        };
+        void load();
+      } else if (action === "new") {
+        setTimeout(() => setShowNew(true), 100);
+      } else if (action === "dup" && id) {
+        const dup = async () => {
+          await new Promise(r => setTimeout(r, 200));
+          try {
+            const d = await getGraphExperiment(id);
+            const copy = await createGraphExperiment({
+              ...d, id: undefined as unknown as string, name: `${d.name} (copy)`,
+            });
+            setSavedExps(prev => [{ id: copy.id!, name: copy.name, description: copy.description, node_count: copy.nodes.length, edge_count: copy.edges.length }, ...prev]);
+            void loadExp(copy.id!);
+          } catch { /* ignore */ }
+        };
+        void dup();
+      }
+    } catch { /* ignore parse errors */ }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);  // run once on mount only
+
   // Load saved experiment
   const loadExp = useCallback(async (id: string) => {
     try {
@@ -593,6 +627,11 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
           </button>
         ))}
         <input ref={importRef} type="file" accept=".json" style={{ display: "none" }} onChange={onImportExp} />
+        {/* AI hint */}
+        <span style={{ fontSize: 9, color: th.textFaint, borderLeft: `1px solid ${th.border}`, paddingLeft: 6, whiteSpace: "nowrap" }}
+          title="Open AI Chat and ask it to add/suggest nodes for your experiment">
+          ✨ AI builds nodes
+        </span>
       </div>
 
       {/* Main area */}

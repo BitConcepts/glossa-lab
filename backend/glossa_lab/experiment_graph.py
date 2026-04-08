@@ -486,6 +486,73 @@ def _make_cls(gd: dict[str, Any]) -> type:
     })
 
 
+def auto_migrate_hardcoded_experiments() -> int:
+    """Convert every registered Python ExperimentBase subclass into a graph experiment JSON.
+
+    Each Python experiment gets a minimal editable graph:
+      [CorpusReader] → [ExperimentWrapper] → [PassResult]
+
+    This makes all experiments visible and composable in the Experiment Builder.
+    Only creates files that do not already exist (fully idempotent).
+    Returns the number of new files created.
+    """
+    from glossa_lab.experiment_base import discover_experiments  # noqa: PLC0415
+
+    existing_ids = {p.stem for p in _GRAPHS_DIR.glob("*.json")}
+    created = 0
+
+    for exp_id, cls in discover_experiments().items():
+        if exp_id in existing_ids:
+            continue  # already has a graph experiment file
+        if cls.category == "Graph Experiments":
+            continue  # already IS a graph experiment; skip
+
+        clean_name = cls.name.replace("\ud83d\udd00 ", "")
+        graph_data: dict = {
+            "id": exp_id,
+            "name": clean_name,
+            "description": cls.description or f"Graph wrapper for {clean_name}.",
+            "nodes": [
+                {
+                    "id": "corpus", "type": "expNode",
+                    "data": {"atomicId": "CorpusReader", "label": "Load Corpus", "params": {}},
+                    "position": {"x": 60, "y": 80},
+                },
+                {
+                    "id": "wrap", "type": "expNode",
+                    "data": {
+                        "atomicId": "ExperimentWrapper",
+                        "label": clean_name,
+                        "params": {"experiment_id": exp_id, "corpus_id": ""},
+                    },
+                    "position": {"x": 320, "y": 80},
+                },
+                {
+                    "id": "out", "type": "expNode",
+                    "data": {"atomicId": "PassResult", "label": "Output", "params": {}},
+                    "position": {"x": 570, "y": 80},
+                },
+            ],
+            "edges": [
+                {"id": "e1", "source": "corpus", "target": "wrap",
+                 "sourcePort": "sequences", "targetPort": "upstream"},
+                {"id": "e2", "source": "wrap", "target": "out",
+                 "sourcePort": "result", "targetPort": "data"},
+            ],
+        }
+        # Write directly (bypass save_graph_experiment to avoid cache invalidation per file)
+        dest = _GRAPHS_DIR / f"{exp_id}.json"
+        dest.write_text(__import__("json").dumps(graph_data, indent=2), encoding="utf-8")
+        existing_ids.add(exp_id)
+        created += 1
+
+    if created > 0:
+        _invalidate()
+        logger.info("Migrated %d hardcoded experiments to graph experiment files", created)
+
+    return created
+
+
 def register_graph_experiments() -> None:
     """Inject all saved graph experiments into the ExperimentBase discovery registry."""
     if not _GRAPHS_DIR.exists():

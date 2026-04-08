@@ -374,6 +374,24 @@ def _topo_sort(nodes: list[dict], edges: list[dict]) -> list[dict]:
     return order
 
 
+def _node_type_and_params(node: dict) -> tuple[str, dict[str, Any]]:
+    """Resolve atomic type + params from either the React Flow format or simple format.
+
+    React Flow format (saved by the frontend)::
+
+        {"id": "n1", "type": "expNode",
+         "data": {"atomicId": "CorpusReader", "params": {"corpus_id": ""}}}
+
+    Simple format (legacy / direct construction)::
+
+        {"id": "n1", "type": "CorpusReader", "params": {"corpus_id": ""}}
+    """
+    if node.get("type") == "expNode" and isinstance(node.get("data"), dict):
+        data = node["data"]
+        return data.get("atomicId", ""), dict(data.get("params") or {})
+    return node.get("type", ""), dict(node.get("params") or {})
+
+
 def execute_graph(graph_def: dict[str, Any], kwargs: dict[str, Any] | None = None) -> dict[str, Any]:
     """Execute a graph experiment and return its output dict."""
     nodes: list[dict] = graph_def.get("nodes", [])
@@ -386,8 +404,9 @@ def execute_graph(graph_def: dict[str, Any], kwargs: dict[str, Any] | None = Non
     res: dict[str, dict] = {}
 
     for node in ordered:
-        nid, ntype = node["id"], node.get("type","")
-        params = {**node.get("params",{}), **kwargs}
+        nid = node["id"]
+        ntype, node_params = _node_type_and_params(node)
+        params = {**node_params, **kwargs}
 
         node_inputs: dict[str, Any] = {}
         for e in edges:
@@ -410,8 +429,12 @@ def execute_graph(graph_def: dict[str, Any], kwargs: dict[str, Any] | None = Non
         except Exception as exc:  # noqa: BLE001
             res[nid] = {"error": str(exc)}
 
-    output_ids = [n["id"] for n in nodes
-                  if (a := ATOMIC_NODES.get(n.get("type",""))) and a.category == "Outputs"]
+    # Collect all Output-category node results
+    output_ids = [
+        n["id"] for n in nodes
+        if ATOMIC_NODES.get(_node_type_and_params(n)[0], None) is not None
+        and ATOMIC_NODES[_node_type_and_params(n)[0]].category == "Outputs"
+    ]
     if output_ids:
         merged: dict[str, Any] = {}
         for oid in output_ids:

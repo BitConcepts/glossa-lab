@@ -154,35 +154,35 @@
       "source": "entropy",
       "target": "merger",
       "sourcePort": "h1_normalized",
-      "targetPort": "entropy_h1"
+      "targetPort": "a"
     },
     {
       "id": "e7",
       "source": "zipf",
       "target": "merger",
       "sourcePort": "zipf_exponent",
-      "targetPort": "zipf_alpha"
+      "targetPort": "b"
     },
     {
       "id": "e8",
       "source": "profiler",
       "target": "merger",
       "sourcePort": "class_summary",
-      "targetPort": "positions"
+      "targetPort": "c"
     },
     {
       "id": "e9",
       "source": "cluster",
       "target": "merger",
       "sourcePort": "clusters",
-      "targetPort": "clusters"
+      "targetPort": "d"
     },
     {
       "id": "e10",
       "source": "freq",
       "target": "merger",
       "sourcePort": "top_10",
-      "targetPort": "freq_top10"
+      "targetPort": "e"
     },
     {
       "id": "e11",

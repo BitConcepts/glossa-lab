@@ -20,8 +20,8 @@ import { expect, test } from "@playwright/test";
 
 async function navigateToExpBuilder(page: Parameters<typeof test>[1] extends never ? never : import("@playwright/test").Page) {
   await page.goto("/");
-  // Click the Exp. Builder tab (may require scrolling sidebar)
-  const btn = page.getByRole("button", { name: /Exp\.?\s*Builder/i }).first();
+  // Experiments tab is now the unified Experiment Builder canvas (no separate Exp. Builder tab)
+  const btn = page.getByRole("button", { name: /^Experiments$/ }).first();
   await btn.waitFor({ state: "visible", timeout: 8000 });
   await btn.click();
 }
@@ -29,17 +29,23 @@ async function navigateToExpBuilder(page: Parameters<typeof test>[1] extends nev
 // ── Tab navigation ────────────────────────────────────────────────────────────
 
 test.describe("Experiment Builder navigation", () => {
-  test("Exp Builder tab is visible in sidebar", async ({ page }) => {
+  test("Experiments tab is visible in sidebar", async ({ page }) => {
     await page.goto("/");
+    // Experiments is now the unified canvas (previously \"Exp. Builder\")
     await expect(
-      page.getByRole("button", { name: /Exp\.?\s*Builder/i }).first()
+      page.getByRole("button", { name: /^Experiments$/ }).first()
     ).toBeVisible();
   });
 
-  test("clicking Exp Builder tab renders the builder canvas", async ({ page }) => {
+  test("clicking Experiments tab renders the Experiment Builder canvas", async ({ page }) => {
     await navigateToExpBuilder(page);
     // The builder toolbar should appear
     await expect(page.getByText(/Experiment Builder/i).first()).toBeVisible();
+  });
+
+  test("old Exp. Builder tab no longer exists", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.getByRole("button", { name: /Exp\.?\s*Builder/i })).toHaveCount(0);
   });
 });
 

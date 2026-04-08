@@ -223,6 +223,11 @@ class UgariticProperBenchmark(_EB):
     description = "Proper 75/25 split benchmark. Circularity inflation: +76.7pp."
     estimated_time = "~30 sec"
     command = "python -m glossa_lab.experiments.ugaritic_proper_benchmark"
+    params_schema = {
+        "type": "object",
+        "properties": {},
+        "$comment": "Uses the built-in Ugaritic Baal Cycle corpus with fixed 75/25 train/test split.",
+    }
 
     def run(self, **kwargs):
         return run_ugaritic_benchmark(verbose=False)

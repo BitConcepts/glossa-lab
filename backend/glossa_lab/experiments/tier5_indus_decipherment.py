@@ -167,11 +167,13 @@ def _score_hypothesis(
     allowed_sign_types: tuple = ("PHONOGRAM", "MEDIAL"),
     n_random: int = 50,
     verbose: bool = True,
+    use_max_k: bool = True,
 ) -> dict[str, Any]:
     """Run beam decipherment and score against random baseline.
 
     allowed_sign_types: which sign classes to include in the cipher.
-      Defaults to PHONOGRAM + MEDIAL (excludes logograms and initial markers).
+    use_max_k: if True, enforce max_target_reuse = ceil(n_cipher/n_target)
+      to prevent degenerate all-to-one mappings.
     """
     indus_inscr   = d["indus_inscr"]
     indus_freq    = d["indus_freq"]
@@ -190,13 +192,20 @@ def _score_hypothesis(
     filtered_inscr = [i for i in filtered_inscr if len(i) >= 2]
     filtered_flat  = [s for i in filtered_inscr for s in i]
 
-    # ── Beam: find best mapping ────────────────────────────────────────
+    # ── Beam: find best mapping ────────────────────────────────────
+    # max-K diversity: each language phoneme used at most ceil(n_cipher/n_target) times
+    # Prevents degenerate all-to-'a' solution that dominates without this constraint
+    n_cipher_signs = len(Counter(filtered_flat))
+    n_target_signs = len(lm.alphabet)
+    max_k = math.ceil(n_cipher_signs / n_target_signs) if use_max_k and n_target_signs > 0 else 0
+
     result = d["beam_decipher"](
         filtered_flat,
         lm,
         beam_width=200,
         cipher_inscriptions=filtered_inscr,
         surjective=True,
+        max_target_reuse=max_k,
     )
     best_score = result["score"]
     best_map   = result["proposed_mapping"]
@@ -233,7 +242,7 @@ def _score_hypothesis(
     n_inscr_used = len(filtered_inscr)
 
     if verbose:
-        print(f"\n  [{label}]  LM: {len(lm.alphabet)} signs, {len(lm.bigram_freq)} bigrams")
+        print(f"\n  [{label}]  LM: {len(lm.alphabet)} signs, {len(lm.bigram_freq)} bigrams  max_k={max_k}")
         print(f"    Cipher signs used: {n_signs_used}  inscriptions: {n_inscr_used}")
         print(f"    Best beam score:   {best_score:.1f}")
         print(f"    Random mean ± std: {mean_rand:.1f} ± {std_rand:.1f}")

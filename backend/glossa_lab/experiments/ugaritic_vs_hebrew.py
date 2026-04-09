@@ -231,16 +231,67 @@ except ImportError:
 
 class UgariticVsHebrew(_EB):
     id = "ugaritic_vs_hebrew"
-    name = "Ugaritic vs Hebrew (Bigram Hill-Climbing)"
+    name = "Ugaritic vs Hebrew (SA + Structural Constraints)"
     category = "Validation"
-    description = "Hill-climbing bigram baseline: 6.7% vs HMM (77%) and neural (97%)."
+    description = (
+        "Cross-language Tier 1a benchmark (Snyder 2010 / Luo 2019 protocol). "
+        "SA hill-climbing + optional Semitic structural constraints: "
+        "OCP penalty (repeated consonants), word-boundary bigrams, positional weight."
+    )
     estimated_time = "~30 sec"
     command = "python -m glossa_lab.experiments.ugaritic_vs_hebrew"
     params_schema = {
         "type": "object",
-        "properties": {},
-        "$comment": "Uses built-in Ugaritic Baal Cycle and Old Hebrew corpus. No user params required.",
+        "properties": {
+            "max_iterations": {
+                "type": "integer",
+                "title": "Max Iterations",
+                "default": 15000,
+                "minimum": 1000,
+                "description": "SA iterations per restart.",
+            },
+            "restarts": {
+                "type": "integer",
+                "title": "Restarts",
+                "default": 10,
+                "minimum": 1,
+                "description": "Number of random restarts.",
+            },
+            "use_word_bigrams": {
+                "type": "boolean",
+                "title": "Word-Boundary Bigrams",
+                "default": False,
+                "description": (
+                    "Score bigrams within words only (not across word boundaries). "
+                    "Improves Semitic phonotactic matching. Requires word-level LM inscriptions."
+                ),
+            },
+            "ocp_weight": {
+                "type": "number",
+                "title": "OCP Penalty Weight",
+                "default": 0.0,
+                "minimum": 0.0,
+                "description": (
+                    "Obligatory Contour Principle: penalise mappings with repeated consonants "
+                    "within words. 0=disabled. Typical range 0.5–2.0."
+                ),
+            },
+            "positional_weight": {
+                "type": "number",
+                "title": "Positional Weight",
+                "default": 0.005,
+                "minimum": 0.0,
+                "description": (
+                    "Word-initial/final positional profile matching bonus weight. "
+                    "Default 0.005. Use 0.02–0.1 for stronger positional constraint."
+                ),
+            },
+        },
     }
 
     def run(self, **kwargs):
-        return run_ugaritic_vs_hebrew_benchmark(verbose=False)
+        return run_ugaritic_vs_hebrew_benchmark(
+            verbose=False,
+            max_iterations=int(kwargs.get("max_iterations") or 15000),
+            restarts=int(kwargs.get("restarts") or 10),
+        )

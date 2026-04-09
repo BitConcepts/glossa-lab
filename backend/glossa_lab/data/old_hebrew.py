@@ -481,6 +481,31 @@ def get_vocabulary() -> dict[str, str]:
     }
 
 
+def get_word_inscriptions() -> list[list[str]]:
+    """Return the corpus as approximate WORD-level inscriptions.
+
+    Hebrew words average 3-4 consonants.  Since the corpus stores complete
+    verses without explicit word boundaries, we split each verse into
+    non-overlapping chunks of avg_word_len consonants as a proxy.
+
+    This is a heuristic.  Its purpose is to enable word-boundary bigram
+    and OCP statistics in the LanguageModel.  Results should be interpreted
+    in light of this approximation.
+
+    avg_word_len=4 is chosen because Biblical Hebrew words average
+    3-4 consonants (Andersen & Forbes 1989).
+    """
+    avg_word_len = 4
+    words: list[list[str]] = []
+    for insc in get_corpus_inscriptions():
+        # Split inscription into chunks of avg_word_len
+        for start in range(0, len(insc), avg_word_len):
+            chunk = insc[start : start + avg_word_len]
+            if chunk:
+                words.append(chunk)
+    return words
+
+
 def get_sign_functions() -> dict[str, str]:
     """Return known sign function labels (ICIT codes) for Hebrew consonants.
 

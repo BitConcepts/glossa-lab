@@ -51,7 +51,7 @@ class LanguageModel:
         self.unigram_freq: dict[str, float] = {s: c / total for s, c in counts.items()}
         self.ranked = [s for s, _ in counts.most_common()]
 
-        # Bigram frequencies
+        # Bigram frequencies (over the flat symbol stream — may cross word boundaries)
         bigram_counts: Counter[tuple[str, str]] = Counter()
         for i in range(len(symbols) - 1):
             bigram_counts[(symbols[i], symbols[i + 1])] += 1
@@ -59,6 +59,46 @@ class LanguageModel:
         self.bigram_freq: dict[tuple[str, str], float] = {
             bg: c / bigram_total for bg, c in bigram_counts.items()
         }
+
+        # Word-boundary bigrams — scored only within words, not across them.
+        # Uses "<BOW>" and "<EOW>" pseudo-symbols so that word-initial and
+        # word-final positions carry their own frequency statistics.
+        # Snyder et al. (2010) use this representation for Semitic phonotactics.
+        self.word_bigram_freq: dict[tuple[str, str], float] = {}
+        self.word_initial_freq: dict[str, float] = {}
+        self.word_final_freq:   dict[str, float] = {}
+        self.ocp_rate: float = 0.0   # fraction of within-word bigrams that are repeats
+        if inscriptions:
+            wb_counts: Counter[tuple[str, str]] = Counter()
+            wi_counts: Counter[str] = Counter()
+            wf_counts: Counter[str] = Counter()
+            total_within = 0
+            repeat_count  = 0
+            for word in inscriptions:
+                if not word:
+                    continue
+                wi_counts[word[0]] += 1
+                wf_counts[word[-1]] += 1
+                # BOW → first sign
+                wb_counts[("<BOW>", word[0])] += 1
+                # within-word bigrams
+                for i in range(len(word) - 1):
+                    pair = (word[i], word[i + 1])
+                    wb_counts[pair] += 1
+                    total_within += 1
+                    if word[i] == word[i + 1]:
+                        repeat_count += 1
+                # last sign → EOW
+                wb_counts[(word[-1], "<EOW>")] += 1
+            wb_total = sum(wb_counts.values()) or 1
+            self.word_bigram_freq = {
+                bg: c / wb_total for bg, c in wb_counts.items()
+            }
+            wi_total = sum(wi_counts.values()) or 1
+            wf_total = sum(wf_counts.values()) or 1
+            self.word_initial_freq = {s: c / wi_total for s, c in wi_counts.items()}
+            self.word_final_freq   = {s: c / wf_total for s, c in wf_counts.items()}
+            self.ocp_rate = repeat_count / total_within if total_within > 0 else 0.0
 
         # Trigram frequencies
         trigram_counts: Counter[tuple[str, str, str]] = Counter()
@@ -85,29 +125,56 @@ class LanguageModel:
                 t = sum(pc.values()) or 1
                 self.positional[sign] = {k: v / t for k, v in pc.items()}
 
-    def score_text(self, text: list[str]) -> float:
+    def score_text(
+        self,
+        text: list[str],
+        use_word_bigrams: bool = False,
+        inscriptions: list[list[str]] | None = None,
+    ) -> float:
         """Combined bigram + trigram log-likelihood.
+
+        Args:
+            text:             flat decoded symbol sequence.
+            use_word_bigrams: if True, score bigrams within words only (using
+                              word_bigram_freq with <BOW>/<EOW> boundaries).
+                              Requires ``inscriptions`` to be provided.
+            inscriptions:     decoded word sequences (used when use_word_bigrams=True).
 
         Trigrams are only used when the corpus is large enough
         for meaningful trigram statistics (>1000 symbols).
         """
         smoothing = 1e-8
         ll = 0.0
-        # Bigram component (always used)
-        for i in range(len(text) - 1):
-            p = self.bigram_freq.get((text[i], text[i + 1]), smoothing)
-            ll += math.log(p)
-        # Trigram component (only if corpus is large enough)
-        if len(self.symbols) >= 1000 and len(text) > 2:
-            tri_ll = 0.0
-            for i in range(len(text) - 2):
-                p = self.trigram_freq.get(
-                    (text[i], text[i + 1], text[i + 2]),
-                    smoothing,
-                )
-                tri_ll += math.log(p)
-            # Light blend: 90% bigram + 10% trigram
-            ll = 0.9 * ll + 0.1 * tri_ll
+
+        if use_word_bigrams and inscriptions and self.word_bigram_freq:
+            # Score only within-word bigrams plus BOW/EOW transitions
+            for word in inscriptions:
+                if not word:
+                    continue
+                p = self.word_bigram_freq.get(("<BOW>", word[0]), smoothing)
+                ll += math.log(p)
+                for i in range(len(word) - 1):
+                    p = self.word_bigram_freq.get((word[i], word[i + 1]), smoothing)
+                    ll += math.log(p)
+                p = self.word_bigram_freq.get((word[-1], "<EOW>"), smoothing)
+                ll += math.log(p)
+        else:
+            # Flat bigram component (default, cross-boundary)
+            for i in range(len(text) - 1):
+                p = self.bigram_freq.get((text[i], text[i + 1]), smoothing)
+                ll += math.log(p)
+            # Trigram component (only if corpus is large enough)
+            if len(self.symbols) >= 1000 and len(text) > 2:
+                tri_ll = 0.0
+                for i in range(len(text) - 2):
+                    p = self.trigram_freq.get(
+                        (text[i], text[i + 1], text[i + 2]),
+                        smoothing,
+                    )
+                    tri_ll += math.log(p)
+                # Light blend: 90% bigram + 10% trigram
+                ll = 0.9 * ll + 0.1 * tri_ll
+
         return ll
 
 
@@ -123,8 +190,12 @@ def decipher(
     cipher_inscriptions: list[list[str]] | None = None,
     kandles_profile: str | None = None,
     use_sa: bool = True,
-    sa_temp_start: float = 1.0,   # lower = fewer bad moves accepted; tuned for 22-30 sign alphabets
-    sa_cooling: float = 0.9985,   # slower cooling = more exploration before convergence
+    sa_temp_start: float = 1.0,
+    sa_cooling: float = 0.9985,
+    # ── Structural constraint flags ────────────────────────────────────
+    use_word_bigrams: bool = False,
+    ocp_weight: float = 0.0,
+    positional_weight: float = 0.005,
 ) -> dict[str, Any]:
     """Crack a substitution cipher using simulated annealing.
 
@@ -140,6 +211,12 @@ def decipher(
         use_sa:           use simulated annealing (True) or pure hill climbing (False).
         sa_temp_start:    initial SA temperature.
         sa_cooling:       multiplicative cooling rate per iteration.
+        use_word_bigrams: score bigrams within-word only (Semitic phonotactics).
+                          Requires cipher_inscriptions and word_bigram_freq in LM.
+        ocp_weight:       Obligatory Contour Principle penalty weight (0 = disabled).
+                          Penalises mappings that produce many repeated consonants
+                          within the same word (rare in Semitic roots).
+        positional_weight: weight of word-initial/final positional bonus (default 0.005).
 
     Returns:
         dict with proposed_mapping, deciphered_text, score, and stats.
@@ -189,6 +266,10 @@ def decipher(
             mapping,
             target_model,
             cipher_positional,
+            use_word_bigrams=use_word_bigrams,
+            cipher_inscriptions=cipher_inscriptions,
+            ocp_weight=ocp_weight,
+            positional_weight=positional_weight,
         )
 
         temperature = sa_temp_start if use_sa else 0.0
@@ -207,6 +288,10 @@ def decipher(
                 mapping,
                 target_model,
                 cipher_positional,
+                use_word_bigrams=use_word_bigrams,
+                cipher_inscriptions=cipher_inscriptions,
+                ocp_weight=ocp_weight,
+                positional_weight=positional_weight,
             )
 
             delta = new_score - current_score
@@ -259,23 +344,60 @@ def _score_mapping(
     mapping: dict[str, str],
     target_model: LanguageModel,
     cipher_positional: dict[str, dict[str, float]] | None = None,
+    use_word_bigrams: bool = False,
+    cipher_inscriptions: list[list[str]] | None = None,
+    ocp_weight: float = 0.0,
+    positional_weight: float = 0.005,
 ) -> float:
-    """Score a mapping by trigram log-likelihood + positional match."""
-    decoded = [mapping.get(s, "?") for s in cipher_signs]
-    ll = target_model.score_text(decoded)
+    """Score a mapping by n-gram log-likelihood + structural constraint bonuses.
 
-    # Positional bonus: reward mappings where positional profiles match
-    if cipher_positional and target_model.positional:
+    Structural constraints (all optional, all additive):
+      use_word_bigrams:  score bigrams within words only (word_bigram_freq).
+      ocp_weight:        penalise repeated consonants within words (OCP).
+      positional_weight: weight for word-initial/final profile matching bonus.
+    """
+    decoded = [mapping.get(s, "?") for s in cipher_signs]
+
+    if use_word_bigrams and cipher_inscriptions and target_model.word_bigram_freq:
+        # Decode inscriptions word-by-word
+        decoded_inscriptions = [
+            [mapping.get(s, "?") for s in word] for word in cipher_inscriptions
+        ]
+        ll = target_model.score_text(
+            decoded,
+            use_word_bigrams=True,
+            inscriptions=decoded_inscriptions,
+        )
+    else:
+        ll = target_model.score_text(decoded)
+
+    # Positional bonus: reward mappings where word-initial/final profiles match
+    if positional_weight > 0 and cipher_positional and target_model.positional:
         pos_score = 0.0
         for cipher_sign, cipher_pos in cipher_positional.items():
             target_sign = mapping.get(cipher_sign)
             if target_sign and target_sign in target_model.positional:
                 target_pos = target_model.positional[target_sign]
-                # Cosine-like dot product of positional vectors
                 for pos_key in ("initial", "medial", "terminal"):
                     pos_score += cipher_pos.get(pos_key, 0) * target_pos.get(pos_key, 0)
-        # Very light positional bonus (avoid destabilizing hill climbing)
-        ll += pos_score * abs(ll) * 0.005
+        ll += pos_score * abs(ll) * positional_weight
+
+    # OCP penalty: in Semitic roots, consecutive identical consonants are rare.
+    # Penalise mappings that produce many within-word repeated pairs.
+    if ocp_weight > 0 and cipher_inscriptions:
+        ocp_violations = 0
+        total_pairs = 0
+        for word in cipher_inscriptions:
+            decoded_word = [mapping.get(s, "?") for s in word]
+            for i in range(len(decoded_word) - 1):
+                total_pairs += 1
+                if decoded_word[i] == decoded_word[i + 1]:
+                    ocp_violations += 1
+        if total_pairs > 0:
+            violation_rate = ocp_violations / total_pairs
+            # Penalise excess violations above the expected LM baseline
+            excess = max(0.0, violation_rate - target_model.ocp_rate)
+            ll -= ocp_weight * excess * abs(ll)
 
     return ll
 

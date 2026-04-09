@@ -394,12 +394,42 @@ def beam_decipher(
     # Bijective mode (same-alphabet scenarios):
     #   Each state additionally tracks remaining_free_targets so each is used once.
 
-    # Precompute within-group frequency-rank preferred targets (for rank_prior_weight).
-    # For each phonological group, sort Ugaritic signs by cipher frequency and Hebrew
-    # targets by LM frequency; match by rank.  Used as a scoring bonus in the beam.
+    # ── Effective groups ───────────────────────────────────────────────
+    # In surjective mode, anchored signs consume certain Hebrew targets.
+    # Subtract those consumed targets from the phonological group for each FREE sign
+    # so it only sees targets that aren't already "spoken for" by anchors.
+    # e.g. U21(p) group {b,p,m} minus anchored {b,m} = {p}  → forced correctly.
+    effective_phono: dict[str, frozenset] | None = None
+    if phono_groups and surjective and locked:
+        anchored_heb = set(locked.values())
+        effective_phono = {}
+        for cs in free_cipher:
+            if cs in phono_groups:
+                reduced = phono_groups[cs] - anchored_heb
+                effective_phono[cs] = reduced if reduced else phono_groups[cs]
+            # (signs not in phono_groups stay unrestricted)
+    effective_phono = effective_phono or phono_groups  # fallback
+
+    # ── Zero-frequency sign pre-assignment ──────────────────────────────────
+    # Some cipher signs appear in the ground truth but never in the cipher text
+    # (e.g. Ugaritic s2 has frequency 0 in the Baal Cycle).  These are not in
+    # cipher_ranked and never get assigned by the beam.  Assign them now using
+    # their phonological group (or the first free target if no group is given).
+    zero_freq_assignments: dict[str, str] = {}
+    all_known_cipher_signs = set(cipher_ranked) | set(locked.keys())
+    # Assign zero-freq signs in phono_groups that never appear in the cipher text
+    if phono_groups:
+        for cs, allowed in phono_groups.items():
+            if cs not in all_known_cipher_signs:
+                # Pick the most frequent target in the allowed group
+                best = max(allowed, key=lambda h: target_model.unigram_freq.get(h, 0))
+                zero_freq_assignments[cs] = best
+
+    # ── Rank prior computation ────────────────────────────────────────────
+    # Precompute within-group frequency-rank preferred targets.
+    # Include ALL group members (anchored + free) so rank positions are correct.
     rank_preferred: dict[str, str] = {}   # cipher_sign -> preferred target
     if rank_prior_weight > 0 and phono_groups:
-        # Collect groups (sets of cipher signs sharing the same allowed targets)
         group_map: dict[frozenset, list[str]] = defaultdict(list)
         for cs in free_cipher:
             if cs in phono_groups:
@@ -407,21 +437,27 @@ def beam_decipher(
                 group_map[key].append(cs)
         cipher_counts_local = Counter(cipher_signs)
         for heb_set, cs_list in group_map.items():
-            cs_sorted = sorted(cs_list, key=lambda x: -cipher_counts_local.get(x, 0))
-            heb_sorted = sorted(heb_set, key=lambda h: -target_model.unigram_freq.get(h, 0))
-            for i, cs in enumerate(cs_sorted):
-                if i < len(heb_sorted):
-                    rank_preferred[cs] = heb_sorted[i]
-                else:
-                    rank_preferred[cs] = heb_sorted[-1]  # overflow: use least frequent
+            # Include anchored signs from this same group in the ranking
+            locked_in_grp = [cs for cs, ts in locked.items()
+                             if phono_groups.get(cs) == heb_set]
+            all_in_grp = cs_list + [cs for cs in locked_in_grp if cs not in cs_list]
+            all_sorted = sorted(all_in_grp,
+                                key=lambda x: -cipher_counts_local.get(x, 0))
+            heb_sorted = sorted(heb_set,
+                                key=lambda h: -target_model.unigram_freq.get(h, 0))
+            full_rank = {cs: (heb_sorted[i] if i < len(heb_sorted) else heb_sorted[-1])
+                         for i, cs in enumerate(all_sorted)}
+            # Store rank_preferred only for free signs
+            for cs in cs_list:
+                rank_preferred[cs] = full_rank.get(cs, heb_sorted[-1] if heb_sorted else heb_set.pop())
 
     if surjective:
         beam_s: list[tuple[float, dict[str, str]]] = [(0.0, dict(locked))]
 
         for cipher_sign in free_cipher:
-            # Restrict candidates to phonological group if provided
-            if phono_groups and cipher_sign in phono_groups:
-                allowed = phono_groups[cipher_sign] & set(free_target_list)
+            # Restrict candidates to EFFECTIVE phonological group
+            if effective_phono and cipher_sign in effective_phono:
+                allowed = effective_phono[cipher_sign] & set(free_target_list)
                 candidates_pool = [t for t in free_target_list if t in allowed] or free_target_list
             else:
                 candidates_pool = free_target_list
@@ -449,6 +485,11 @@ def beam_decipher(
         else:
             best_neg, best_mapping = beam_s[0]
             best_score = -best_neg
+
+        # Assign zero-frequency signs that were never in cipher_ranked
+        for cs, ts in zero_freq_assignments.items():
+            if cs not in best_mapping:
+                best_mapping[cs] = ts
 
     else:
         # Bijective beam (original implementation)

@@ -48,7 +48,7 @@ for _p in (_BACKEND, _TESTS):
 # ── Shared data ────────────────────────────────────────────────────────
 
 def _load():
-    from glossa_lab.pipelines.beam_decipher import UGARITIC_PHONO_GROUPS
+    from glossa_lab.pipelines.beam_decipher import UGARITIC_PHONO_GROUPS, UGARITIC_PHONO_GROUPS_TIGHT
     from corpora.ugaritic import (
         _BAAL_CYCLE_LINES, _SIGN_TO_ID, get_answer_key,
         get_word_level_inscriptions,
@@ -110,13 +110,15 @@ def _load():
         "ANCHORS_5":          ANCHORS_5,
         "ANCHORS_10":         ANCHORS_10,
         "PHONO_GROUPS":       UGARITIC_PHONO_GROUPS,
+        "PHONO_GROUPS_TIGHT": UGARITIC_PHONO_GROUPS_TIGHT,
     }
 
 
 # ── Run helpers ────────────────────────────────────────────────────────
 
 def _run_beam(d, beam_width, use_word_bigrams=False, ocp_weight=0.0,
-              root_prior_weight=0.0, anchors=None, surjective=True, phono_groups=None):
+              root_prior_weight=0.0, anchors=None, surjective=True,
+              phono_groups=None, rank_prior_weight=0.0):
     t0 = time.time()
     lm = d["lm_word"] if use_word_bigrams else d["lm_flat"]
     insc = d["cipher_word"] if use_word_bigrams else d["cipher_line"]
@@ -130,6 +132,7 @@ def _run_beam(d, beam_width, use_word_bigrams=False, ocp_weight=0.0,
         anchors=anchors,
         surjective=surjective,
         phono_groups=phono_groups,
+        rank_prior_weight=rank_prior_weight,
     )
     acc = d["score_accuracy"](r["proposed_mapping"], d["gt"])
     return acc["correct"], round(time.time() - t0, 1)
@@ -223,28 +226,30 @@ def run_beam_benchmark(verbose: bool = True) -> dict[str, Any]:
 
     # ── Sweep C: Phono groups + wider beams ─────────────────────────────────
     _pr(f"\n\n  ══ SWEEP C — Phonological Groups + Wider Beams (10 anchors + OCP) ══")
-    configs = [
-        ("no groups, width=50",    50,   None,              False, 1.0),
-        ("no groups, width=200",   200,  None,              False, 1.0),
-        ("phono groups, width=50", 50,   d["PHONO_GROUPS"], False, 1.0),
-        ("phono groups, width=200",200,  d["PHONO_GROUPS"], False, 1.0),
-        ("phono + word-bg, w=200", 200,  d["PHONO_GROUPS"], True,  1.0),
-    ]
-    _pr(f"  {'Config':<28}  {'Correct':>8}  {'Accuracy':>9}  {'Time':>6}")
-    _pr("  " + "-" * 58)
-    sweep_c = []
     best_anchors = d["ANCHORS_10"]
-    for label, bw, pg, wb, ocp in configs:
+    configs = [
+        # label,                          bw,  groups,             wb,    ocp,  rank
+        ("broad groups, w=50",             50,  d["PHONO_GROUPS"],       False, 1.0, 0.0),
+        ("broad groups + rank, w=50",      50,  d["PHONO_GROUPS"],       False, 1.0, 1.0),
+        ("tight groups, w=50",             50,  d["PHONO_GROUPS_TIGHT"], False, 1.0, 0.0),
+        ("tight groups + rank, w=50",      50,  d["PHONO_GROUPS_TIGHT"], False, 1.0, 1.0),
+        ("tight groups + rank, w=200",     200, d["PHONO_GROUPS_TIGHT"], False, 1.0, 1.0),
+    ]
+    _pr(f"  {'Config':<32}  {'Correct':>8}  {'Accuracy':>9}  {'Time':>6}")
+    _pr("  " + "-" * 62)
+    sweep_c = []
+    for label, bw, pg, wb, ocp, rank in configs:
         correct, t = _run_beam(d, beam_width=bw,
                                 use_word_bigrams=wb,
                                 ocp_weight=ocp,
                                 anchors=best_anchors,
-                                phono_groups=pg)
+                                phono_groups=pg,
+                                rank_prior_weight=rank)
         pct = correct / 30 * 100
-        _pr(f"  {label:<28}  {correct:>8}/30  {pct:>8.1f}%  {t:>5}s")
+        _pr(f"  {label:<32}  {correct:>8}/30  {pct:>8.1f}%  {t:>5}s")
         sweep_c.append({"config": label, "correct": correct,
                          "beam_width": bw, "use_word_bigrams": wb,
-                         "ocp_weight": ocp, "time_s": t})
+                         "ocp_weight": ocp, "rank_prior_weight": rank, "time_s": t})
     results["sweep_c_constraints"] = sweep_c
 
     # ── Sweep D: Multi-seed SA surjective + anchors + phono ───────────────────

@@ -171,6 +171,7 @@ def beam_decipher(
     positional_weight: float = 0.005,
     root_prior_weight: float = 0.0,
     anchors: dict[str, str] | None = None,
+    surjective: bool = True,
 ) -> dict[str, Any]:
     """Beam-search substitution cipher decipherment.
 
@@ -187,6 +188,14 @@ def beam_decipher(
         root_prior_weight:  Root co-occurrence prior weight (0 = disabled).
         anchors:            Locked cipher→target mappings (pan-Semitic cognates,
                             etc.).  Anchored signs are excluded from search.
+        surjective:         If True (default), multiple cipher signs may map to
+                            the same target sign.  This is the correct mode for
+                            cross-language decipherment where the cipher alphabet
+                            is larger than the target (e.g. 30 Ugaritic signs
+                            mapping to 22 Hebrew signs: three aleph variants all
+                            map to Hebrew aleph, etc.).
+                            If False, enforces a bijection (each target used once)
+                            which is correct when both alphabets have equal size.
 
     Returns:
         Same dict as :func:`decipher`: proposed_mapping, deciphered_text,
@@ -196,9 +205,15 @@ def beam_decipher(
     # Assignment order: most frequent first (tightest constraint = best pruning)
     cipher_ranked = [s for s, _ in cipher_counts.most_common()]
 
-    target_alphabet = target_model.ranked[: len(cipher_ranked)]
-    while len(target_alphabet) < len(cipher_ranked):
-        target_alphabet.append(f"?{len(target_alphabet)}")
+    # In surjective mode, use only the *real* target alphabet (no dummy padding).
+    # Multiple cipher signs can map to the same target, which is correct when
+    # the cipher has more signs than the target language (e.g. Ugaritic 30 > Hebrew 22).
+    # In bijective mode, pad to equal length so every target is used exactly once.
+    target_alphabet: list[str] = list(target_model.ranked)
+    if not surjective:
+        while len(target_alphabet) < len(cipher_ranked):
+            target_alphabet.append(f"?{len(target_alphabet)}")
+        target_alphabet = target_alphabet[: len(cipher_ranked)]
 
     # Build cipher positional profiles
     cipher_positional: dict[str, dict[str, float]] = {}
@@ -231,49 +246,63 @@ def beam_decipher(
 
     free_cipher = [c for c in cipher_ranked if c not in locked]
 
-    # ── Beam search ────────────────────────────────────────────────────
-    # Each beam state: (neg_score, partial_mapping, remaining_free_targets)
-    # We use a min-heap so the best (least negative) state is at top.
-    # partial_mapping = {**locked} + partial assignments for free_cipher[:depth]
+    # ── Beam search ────────────────────────────────────────────
+    # Surjective mode (default for cross-language):
+    #   Each state is just (neg_score, partial_mapping).  Every target sign
+    #   is available at every step — many cipher signs can share a target.
+    # Bijective mode (same-alphabet scenarios):
+    #   Each state additionally tracks remaining_free_targets so each is used once.
 
-    initial_state = (0.0, dict(locked), list(free_target_list))
+    if surjective:
+        beam_s: list[tuple[float, dict[str, str]]] = [(0.0, dict(locked))]
 
-    # beam: list of (neg_score, partial, remaining_free)
-    beam: list[tuple[float, dict[str, str], list[str]]] = [initial_state]
+        for cipher_sign in free_cipher:
+            candidates_s: list[tuple[float, dict[str, str]]] = []
+            for neg_score, partial in beam_s:
+                for target_sign in free_target_list:  # all targets, no exclusion
+                    new_partial = {**partial, cipher_sign: target_sign}
+                    score = _partial_score(
+                        new_partial, cipher_signs, target_model, cipher_positional,
+                        cipher_inscriptions, use_word_bigrams, ocp_weight,
+                        positional_weight, root_prior_weight,
+                    )
+                    candidates_s.append((-score, new_partial))
+            beam_s = heapq.nsmallest(beam_width, candidates_s, key=lambda x: x[0])
 
-    for depth, cipher_sign in enumerate(free_cipher):
-        candidates: list[tuple[float, dict[str, str], list[str]]] = []
+        if not beam_s:
+            best_mapping = dict(locked)
+            best_mapping.update({c: free_target_list[0] for c in free_cipher})
+            best_score = 0.0
+        else:
+            best_neg, best_mapping = beam_s[0]
+            best_score = -best_neg
 
-        for neg_score, partial, remaining in beam:
-            for i, target_sign in enumerate(remaining):
-                new_partial = {**partial, cipher_sign: target_sign}
-                new_remaining = remaining[:i] + remaining[i + 1:]
-
-                score = _partial_score(
-                    new_partial,
-                    cipher_signs,
-                    target_model,
-                    cipher_positional,
-                    cipher_inscriptions,
-                    use_word_bigrams,
-                    ocp_weight,
-                    positional_weight,
-                    root_prior_weight,
-                )
-                candidates.append((-score, new_partial, new_remaining))
-
-        # Keep top beam_width by score
-        beam = heapq.nsmallest(beam_width, candidates, key=lambda x: x[0])
-
-    # Best complete mapping is the first beam state
-    if not beam:
-        # Fallback: frequency-rank mapping
-        best_mapping = dict(locked)
-        best_mapping.update(dict(zip(free_cipher, free_target_list)))
-        best_score = 0.0
     else:
-        best_neg, best_mapping, _ = beam[0]
-        best_score = -best_neg
+        # Bijective beam (original implementation)
+        beam_b: list[tuple[float, dict[str, str], list[str]]] = [
+            (0.0, dict(locked), list(free_target_list))
+        ]
+        for cipher_sign in free_cipher:
+            candidates_b: list[tuple[float, dict[str, str], list[str]]] = []
+            for neg_score, partial, remaining in beam_b:
+                for i, target_sign in enumerate(remaining):
+                    new_partial = {**partial, cipher_sign: target_sign}
+                    new_remaining = remaining[:i] + remaining[i + 1:]
+                    score = _partial_score(
+                        new_partial, cipher_signs, target_model, cipher_positional,
+                        cipher_inscriptions, use_word_bigrams, ocp_weight,
+                        positional_weight, root_prior_weight,
+                    )
+                    candidates_b.append((-score, new_partial, new_remaining))
+            beam_b = heapq.nsmallest(beam_width, candidates_b, key=lambda x: x[0])
+
+        if not beam_b:
+            best_mapping = dict(locked)
+            best_mapping.update(dict(zip(free_cipher, free_target_list)))
+            best_score = 0.0
+        else:
+            best_neg, best_mapping, _ = beam_b[0]
+            best_score = -best_neg
 
     deciphered = [best_mapping.get(s, "?") for s in cipher_signs]
     kandles_confidence = _kandles_validate(

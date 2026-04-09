@@ -34,32 +34,62 @@ export function ReportsView() {
   const toggleSelected = (id: string) =>
     setSelected((prev) => { const s = new Set(prev); s.has(id) ? s.delete(id) : s.add(id); return s; });
 
-  const exportComposedPdf = () => {
+  const exportComposedPdf = async () => {
     const picked = reports.filter((r) => selected.has(r.id));
     if (!picked.length) return;
-    const sections = picked.map((r) => {
+
+    // Fetch actual JSON content from each selected report
+    const sectionsHtml = await Promise.all(picked.map(async (r) => {
       const url = getReportDownloadUrl(r.id);
+      let contentHtml = `<a href="${url}" target="_blank" style="font-size:12px;color:#2563eb">Open source file →</a>`;
+      try {
+        const res = await fetch(url);
+        if (res.ok && r.kind === "json_report") {
+          const data = await res.json();
+          // If it's a Glossa study report, render results section
+          if (data.results && typeof data.results === "object") {
+            const rows = Object.entries(data.results as Record<string, unknown>).map(([key, val]) => {
+              const valStr = typeof val === "object" ? JSON.stringify(val, null, 2) : String(val);
+              return (
+                `<tr style="border-bottom:1px solid #f3f4f6">` +
+                `<td style="padding:6px 12px 6px 0;font-size:12px;font-weight:600;color:#1e3a5f;white-space:nowrap;vertical-align:top;width:220px">${key.replace(/_/g, ' ')}</td>` +
+                `<td style="padding:6px 0;font-size:11px;color:#374151"><pre style="margin:0;white-space:pre-wrap;font-family:monospace;font-size:10px;max-height:160px;overflow:hidden">${valStr.slice(0, 800)}${valStr.length > 800 ? '\u2026' : ''}</pre></td>` +
+                `</tr>`
+              );
+            }).join('');
+            const generated = typeof data.generated === "string" ? `<p style="font-size:10px;color:#9ca3af;margin:0 0 6px">${data.generated}</p>` : "";
+            contentHtml = generated + (rows.length
+              ? `<table style="border-collapse:collapse;width:100%">${rows}</table>`
+              : `<pre style="font-size:10px;color:#6b7280">${JSON.stringify(data, null, 2).slice(0, 1200)}</pre>`);
+          } else {
+            contentHtml = `<pre style="font-size:10px;color:#374151;white-space:pre-wrap">${JSON.stringify(data, null, 2).slice(0, 2000)}</pre>`;
+          }
+        }
+      } catch { /* leave fallback link */ }
       return (
         `<section style="margin-bottom:32px;page-break-inside:avoid">` +
-        `<h2 style="font-size:15px;margin:0 0 4px;color:#1e3a5f">${r.name}</h2>` +
-        `<p style="font-size:11px;color:#9ca3af;margin:0 0 8px">` +
-          `${r.kind.replace('_', ' ')} &ensp;·&ensp; ${r.relative_path}` +
-        `</p>` +
-        `<a href="${url}" target="_blank" style="font-size:12px;color:#2563eb">Open source file →</a>` +
+        `<h2 style="font-size:14px;margin:0 0 3px;color:#1e3a5f">${r.name}</h2>` +
+        `<p style="font-size:11px;color:#9ca3af;margin:0 0 8px">${r.kind.replace('_', ' ')} · ${r.relative_path}</p>` +
+        contentHtml +
         `</section>`
       );
-    }).join("<hr style='border:none;border-top:1px solid #e5e7eb;margin:20px 0'>\n");
-    const win = window.open("", "_blank", "width=860,height=940");
-    if (!win) { alert("Allow popups to export PDF"); return; }
+    }));
+
+    const sections = sectionsHtml.join("<hr style='border:none;border-top:1px solid #e5e7eb;margin:20px 0'>\n");
+    const win = window.open("", "_blank", "width=920,height=940");
+    if (!win) { alert("Allow popups from localhost in your browser settings, then try again."); return; }
     win.document.write(
-      `<!DOCTYPE html><html><head><title>Glossa Lab — Composed Report</title>` +
-      `<style>body{font-family:system-ui,sans-serif;max-width:740px;margin:40px auto;font-size:13px;line-height:1.65;color:#111}` +
-      `@media print{body{margin:0}}</style></head><body>` +
-      `<h1 style="font-size:18px;margin-bottom:4px">Glossa Lab — Composed Report</h1>` +
-      `<p style="color:#9ca3af;font-size:11px;margin-top:0">Generated ${new Date().toLocaleString()} · ${picked.length} report${picked.length !== 1 ? 's' : ''}</p>` +
-      `<hr style="border:none;border-top:2px solid #e5e7eb;margin-bottom:20px">` +
+      `<!DOCTYPE html><html><head><title>Glossa Lab — Research Report</title>` +
+      `<style>
+        body{font-family:system-ui,sans-serif;max-width:780px;margin:40px auto;font-size:13px;line-height:1.65;color:#111}
+        h1{font-size:20px;margin-bottom:4px}h2{font-size:15px;color:#1e3a5f}
+        @media print{body{margin:10px 20px}section{page-break-inside:avoid}}
+      </style></head><body>` +
+      `<h1>Glossa Lab — Research Report</h1>` +
+      `<p style="color:#9ca3af;font-size:11px;margin:0 0 16px">Generated ${new Date().toLocaleString()} · ${picked.length} report${picked.length !== 1 ? 's' : ''}</p>` +
+      `<hr style="border:none;border-top:2px solid #e5e7eb;margin-bottom:24px">` +
       sections +
-      `<script>setTimeout(()=>window.print(),400)</script></body></html>`
+      `<script>setTimeout(()=>{window.print()},600)</script></body></html>`
     );
     win.document.close();
   };

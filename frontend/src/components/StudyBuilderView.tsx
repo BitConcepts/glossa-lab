@@ -1191,10 +1191,18 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
 
         {runResult && (
           <div style={{ background: th.panelBg, border: `1px solid ${th.border}`, borderRadius: 6, overflow: "hidden", marginTop: 4 }}>
-            <div style={{ background: th.panelBg2, padding: "6px 12px", display: "flex", gap: 12, alignItems: "center", borderBottom: `1px solid ${th.border}` }}>
+            <div style={{ background: th.panelBg2, padding: "6px 12px", display: "flex", gap: 8, alignItems: "center", borderBottom: `1px solid ${th.border}` }}>
               <span style={{ fontSize: 11, fontWeight: 700, color: "#22c55e" }}>Run Results</span>
               <span style={{ fontSize: 10, color: th.textMuted }}>{runResult.completed} complete · {runResult.skipped} skipped · {runResult.annotations ?? 0} annotations · {runResult.errors} errors</span>
-              <button onClick={() => setRunResult(null)} style={{ marginLeft: "auto", border: "none", background: "none", cursor: "pointer", fontSize: 11, color: th.textFaint }}>× dismiss</button>
+              <div style={{ flex: 1 }} />
+              {/* Quick navigation to Reports tab */}
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: "reports" } }))}
+                title="Open Reports tab to view, compose and export PDF"
+                style={{ padding: "2px 8px", border: `1px solid ${th.border}`, borderRadius: 4, background: "none", cursor: "pointer", fontSize: 10, color: th.textMuted, whiteSpace: "nowrap" }}>
+                📄 View Reports
+              </button>
+              <button onClick={() => setRunResult(null)} style={{ border: "none", background: "none", cursor: "pointer", fontSize: 11, color: th.textFaint }}>× dismiss</button>
             </div>
             <div style={{ overflowX: "auto", maxHeight: 160, overflowY: "auto" }}>
               {Object.entries(runResult.results).map(([nid, res]) => {

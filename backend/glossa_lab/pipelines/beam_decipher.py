@@ -295,6 +295,7 @@ def beam_decipher(
     surjective: bool = True,
     phono_groups: dict[str, frozenset] | None = None,
     rank_prior_weight: float = 0.0,
+    max_target_reuse: int = 0,
 ) -> dict[str, Any]:
     """Beam-search substitution cipher decipherment.
 
@@ -330,6 +331,12 @@ def beam_decipher(
                             boosted toward the most-frequent Hebrew sign in the
                             group, etc.  Helps resolve residual ambiguity in groups
                             with 2+ candidates (labials, liquids).  0 = disabled.
+        max_target_reuse:   Maximum times any single target sign may be reused in
+                            the mapping.  0 = unlimited (default surjective).
+                            Set to ceil(n_cipher / n_target) to enforce near-uniform
+                            phoneme distribution across the full target alphabet.
+                            Critical for Indus hypothesis testing where naïve beam
+                            otherwise degenerates to mapping everything to 'a'.
 
     Returns:
         Same dict as :func:`decipher`: proposed_mapping, deciphered_text,
@@ -465,7 +472,15 @@ def beam_decipher(
             candidates_s: list[tuple[float, dict[str, str]]] = []
             preferred = rank_preferred.get(cipher_sign)  # within-group rank preference
             for neg_score, partial in beam_s:
-                for target_sign in candidates_pool:  # phonologically restricted or all
+                # Apply max-target-reuse filter if requested
+                if max_target_reuse > 0:
+                    usage = Counter(partial.values())
+                    limited_pool = [t for t in candidates_pool
+                                    if usage.get(t, 0) < max_target_reuse]
+                    pool = limited_pool if limited_pool else candidates_pool
+                else:
+                    pool = candidates_pool
+                for target_sign in pool:  # phonologically restricted, max-K filtered, or all
                     new_partial = {**partial, cipher_sign: target_sign}
                     score = _partial_score(
                         new_partial, cipher_signs, target_model, cipher_positional,

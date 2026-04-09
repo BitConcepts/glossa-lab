@@ -54,6 +54,69 @@ from glossa_lab.pipelines.decipher import (
     score_accuracy,
 )
 
+# ── Ugaritic phonological group constraints ─────────────────────────────
+#
+# Each Ugaritic opaque ID maps to the frozenset of Hebrew consonants it may
+# plausibly represent, based on known Northwest Semitic phonological
+# correspondences (Segert 1984; Tropper 2000; Huehnergard 2012).
+#
+# Groups:
+#   Alephs/glottals  (U01,U28,U29)  → {'}         (forced: 3 variants = 1 Hebrew)
+#   Semivowels       (U07,U11)      → {w}, {y}     (forced: pan-Semitic stable)
+#   He               (U06)          → {h}           (forced: universal)
+#   Pharyngeals      (U09,U04,U20)  → {H, E}        (het + het-variant + ayin)
+#   Emphatics        (U10,U22,U23,U18) → {T, C, q} (tet, tsade, qof, tsade-variant)
+#   Sibilants        (U08,U19,U26,U25,U30) → {z, s, G}
+#   Labials          (U02,U21,U15)  → {b, p, m}
+#   Dental stops     (U05,U16,U27)  → {d, t}
+#   Nasals/liquids   (U17,U14,U24)  → {n, l, r}    (n+l+r cluster)
+#   Velars           (U12,U13,U03)  → {k, g}        (k + kaf-variant + gimel)
+#
+# Using these groups reduces the beam branching factor from 22 to 1-3 candidates
+# per sign, making the search far more discriminative.
+UGARITIC_PHONO_GROUPS: dict[str, frozenset] = {
+    # Alephs — all three variants forced to Hebrew aleph
+    "U01": frozenset(["'"]),    # a  (aleph₁)
+    "U28": frozenset(["'"]),    # I  (aleph₂)
+    "U29": frozenset(["'"]),    # U  (aleph₃)
+    # Semivowels — forced (universal in Semitic)
+    "U07": frozenset(["w"]),    # w  (waw)
+    "U11": frozenset(["y"]),    # y  (yod)
+    # He — forced
+    "U06": frozenset(["h"]),    # h  (he)
+    # Pharyngeals / laryngeals
+    "U09": frozenset(["H", "E"]),   # H  (het)
+    "U04": frozenset(["H", "E"]),   # x  (khet → het)
+    "U20": frozenset(["E", "H"]),   # E  (ayin)
+    # Emphatics
+    "U10": frozenset(["T", "C", "q"]),   # T  (tet)
+    "U22": frozenset(["T", "C", "q"]),   # C  (tsade)
+    "U23": frozenset(["T", "C", "q"]),   # q  (qof)
+    "U18": frozenset(["T", "C", "q"]),   # Z  (tsade-variant)
+    # Sibilants
+    "U08": frozenset(["z", "s", "G"]),   # z  (zayin)
+    "U19": frozenset(["z", "s", "G"]),   # s  (samek)
+    "U26": frozenset(["z", "s", "G"]),   # G  (shin)
+    "U25": frozenset(["z", "s", "G"]),   # V  (ghayin/shin-variant)
+    "U30": frozenset(["z", "s", "G"]),   # s2 (shin₂)
+    # Labials
+    "U02": frozenset(["b", "p", "m"]),   # b  (bet)
+    "U21": frozenset(["b", "p", "m"]),   # p  (pe)
+    "U15": frozenset(["b", "p", "m"]),   # m  (mem)
+    # Dental stops
+    "U05": frozenset(["d", "t"]),        # d  (dalet)
+    "U16": frozenset(["d", "t"]),        # D  (dalet-variant)
+    "U27": frozenset(["d", "t"]),        # t  (tav)
+    # Nasals + liquids
+    "U17": frozenset(["n", "l", "r"]),   # n  (nun)
+    "U14": frozenset(["n", "l", "r"]),   # l  (lamed)
+    "U24": frozenset(["n", "l", "r"]),   # r  (resh)
+    # Velars
+    "U12": frozenset(["k", "g"]),        # k  (kaf)
+    "U13": frozenset(["k", "g"]),        # S  (kaf-variant)
+    "U03": frozenset(["k", "g"]),        # g  (gimel)
+}
+
 
 # ── Scoring helpers ────────────────────────────────────────────────────
 
@@ -172,6 +235,7 @@ def beam_decipher(
     root_prior_weight: float = 0.0,
     anchors: dict[str, str] | None = None,
     surjective: bool = True,
+    phono_groups: dict[str, frozenset] | None = None,
 ) -> dict[str, Any]:
     """Beam-search substitution cipher decipherment.
 
@@ -196,6 +260,12 @@ def beam_decipher(
                             map to Hebrew aleph, etc.).
                             If False, enforces a bijection (each target used once)
                             which is correct when both alphabets have equal size.
+        phono_groups:       Optional dict mapping cipher sign IDs to frozensets of
+                            allowed target signs.  When provided, the beam only
+                            considers candidates within the group at each step.
+                            Use ``UGARITIC_PHONO_GROUPS`` for cross-language
+                            Ugaritic→Hebrew.  Anchored signs are always locked
+                            regardless of their group.
 
     Returns:
         Same dict as :func:`decipher`: proposed_mapping, deciphered_text,
@@ -257,9 +327,16 @@ def beam_decipher(
         beam_s: list[tuple[float, dict[str, str]]] = [(0.0, dict(locked))]
 
         for cipher_sign in free_cipher:
+            # Restrict candidates to phonological group if provided
+            if phono_groups and cipher_sign in phono_groups:
+                allowed = phono_groups[cipher_sign] & set(free_target_list)
+                candidates_pool = [t for t in free_target_list if t in allowed] or free_target_list
+            else:
+                candidates_pool = free_target_list
+
             candidates_s: list[tuple[float, dict[str, str]]] = []
             for neg_score, partial in beam_s:
-                for target_sign in free_target_list:  # all targets, no exclusion
+                for target_sign in candidates_pool:  # phonologically restricted or all
                     new_partial = {**partial, cipher_sign: target_sign}
                     score = _partial_score(
                         new_partial, cipher_signs, target_model, cipher_positional,

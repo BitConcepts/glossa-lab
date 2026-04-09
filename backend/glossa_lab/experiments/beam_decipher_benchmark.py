@@ -48,6 +48,7 @@ for _p in (_BACKEND, _TESTS):
 # ── Shared data ────────────────────────────────────────────────────────
 
 def _load():
+    from glossa_lab.pipelines.beam_decipher import UGARITIC_PHONO_GROUPS
     from corpora.ugaritic import (
         _BAAL_CYCLE_LINES, _SIGN_TO_ID, get_answer_key,
         get_word_level_inscriptions,
@@ -97,24 +98,25 @@ def _load():
         assert gt.get(cs) == ts, f"Anchor mismatch: {cs} → {ts} (expected {gt.get(cs)})"
 
     return {
-        "cipher_flat":     cipher_flat,
-        "cipher_line":     encoded_lines,
-        "cipher_word":     ug_word_enc,
-        "gt":              gt,
-        "lm_flat":         lm_flat,
-        "lm_word":         lm_word,
-        "decipher":        decipher,
-        "beam_decipher":   beam_decipher,
-        "score_accuracy":  score_accuracy,
-        "ANCHORS_5":       ANCHORS_5,
-        "ANCHORS_10":      ANCHORS_10,
+        "cipher_flat":        cipher_flat,
+        "cipher_line":        encoded_lines,
+        "cipher_word":        ug_word_enc,
+        "gt":                 gt,
+        "lm_flat":            lm_flat,
+        "lm_word":            lm_word,
+        "decipher":           decipher,
+        "beam_decipher":      beam_decipher,
+        "score_accuracy":     score_accuracy,
+        "ANCHORS_5":          ANCHORS_5,
+        "ANCHORS_10":         ANCHORS_10,
+        "PHONO_GROUPS":       UGARITIC_PHONO_GROUPS,
     }
 
 
 # ── Run helpers ────────────────────────────────────────────────────────
 
 def _run_beam(d, beam_width, use_word_bigrams=False, ocp_weight=0.0,
-              root_prior_weight=0.0, anchors=None, surjective=True):
+              root_prior_weight=0.0, anchors=None, surjective=True, phono_groups=None):
     t0 = time.time()
     lm = d["lm_word"] if use_word_bigrams else d["lm_flat"]
     insc = d["cipher_word"] if use_word_bigrams else d["cipher_line"]
@@ -127,6 +129,7 @@ def _run_beam(d, beam_width, use_word_bigrams=False, ocp_weight=0.0,
         root_prior_weight=root_prior_weight,
         anchors=anchors,
         surjective=surjective,
+        phono_groups=phono_groups,
     )
     acc = d["score_accuracy"](r["proposed_mapping"], d["gt"])
     return acc["correct"], round(time.time() - t0, 1)
@@ -218,31 +221,46 @@ def run_beam_benchmark(verbose: bool = True) -> dict[str, Any]:
         sweep_b.append({"n_anchors": n_anchors, "correct": correct, "time_s": t})
     results["sweep_b_anchors"] = sweep_b
 
-    # ── Sweep C: Constraint combinations ─────────────────────────────
-    best_anchors = d["ANCHORS_10"]
-    _pr(f"\n\n  ══ SWEEP C — Constraint Stack (beam_width={best_width}, 10 anchors) ══")
+    # ── Sweep C: Phono groups + wider beams ─────────────────────────────────
+    _pr(f"\n\n  ══ SWEEP C — Phonological Groups + Wider Beams (10 anchors + OCP) ══")
     configs = [
-        ("flat bigrams only",     False, 0.0, 0.0),
-        ("+ word bigrams",        True,  0.0, 0.0),
-        ("+ OCP (w=1.0)",         True,  1.0, 0.0),
-        ("+ root prior (w=0.3)",  True,  1.0, 0.3),
-        ("+ root prior (w=1.0)",  True,  1.0, 1.0),
+        ("no groups, width=50",    50,   None,              False, 1.0),
+        ("no groups, width=200",   200,  None,              False, 1.0),
+        ("phono groups, width=50", 50,   d["PHONO_GROUPS"], False, 1.0),
+        ("phono groups, width=200",200,  d["PHONO_GROUPS"], False, 1.0),
+        ("phono + word-bg, w=200", 200,  d["PHONO_GROUPS"], True,  1.0),
     ]
-    _pr(f"  {'Config':<32}  {'Correct':>8}  {'Accuracy':>9}  {'Time':>6}")
-    _pr("  " + "-" * 60)
+    _pr(f"  {'Config':<28}  {'Correct':>8}  {'Accuracy':>9}  {'Time':>6}")
+    _pr("  " + "-" * 58)
     sweep_c = []
-    for label, wb, ocp, root in configs:
-        correct, t = _run_beam(d, beam_width=best_width,
+    best_anchors = d["ANCHORS_10"]
+    for label, bw, pg, wb, ocp in configs:
+        correct, t = _run_beam(d, beam_width=bw,
                                 use_word_bigrams=wb,
                                 ocp_weight=ocp,
-                                root_prior_weight=root,
-                                anchors=best_anchors)
+                                anchors=best_anchors,
+                                phono_groups=pg)
         pct = correct / 30 * 100
-        _pr(f"  {label:<32}  {correct:>8}/30  {pct:>8.1f}%  {t:>5}s")
+        _pr(f"  {label:<28}  {correct:>8}/30  {pct:>8.1f}%  {t:>5}s")
         sweep_c.append({"config": label, "correct": correct,
-                         "use_word_bigrams": wb, "ocp_weight": ocp,
-                         "root_prior_weight": root, "time_s": t})
+                         "beam_width": bw, "use_word_bigrams": wb,
+                         "ocp_weight": ocp, "time_s": t})
     results["sweep_c_constraints"] = sweep_c
+
+    # ── Sweep D: Multi-seed SA surjective + anchors + phono ───────────────────
+    _pr("\n\n  ══ SWEEP D — Multi-seed SA (surjective + 10 anchors) ══")
+    _pr(f"  {'Seed':>6}  {'Correct':>8}  {'Accuracy':>9}")
+    _pr("  " + "-" * 30)
+    sweep_d = []
+    for seed in range(8):
+        c, t = _run_sa(d, surjective=True, anchors=best_anchors, seed=seed)
+        pct = c / 30 * 100
+        _pr(f"  {seed:>6}  {c:>8}/30  {pct:>8.1f}%")
+        sweep_d.append({"seed": seed, "correct": c})
+    d_mean = sum(x["correct"] for x in sweep_d) / len(sweep_d)
+    d_best = max(x["correct"] for x in sweep_d)
+    _pr(f"  Mean: {d_mean:.2f}/30 = {d_mean/30*100:.1f}%   Best: {d_best}/30 = {d_best/30*100:.1f}%")
+    results["sweep_d_multiseed"] = sweep_d
 
     # ── Summary ───────────────────────────────────────────────────────
     best_c = max(sweep_c, key=lambda x: x["correct"])

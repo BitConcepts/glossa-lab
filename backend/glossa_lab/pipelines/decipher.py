@@ -26,6 +26,7 @@ from __future__ import annotations
 import math
 import random
 from collections import Counter, defaultdict
+from itertools import cycle
 from typing import Any
 
 from glossa_lab.engine import register_pipeline
@@ -222,6 +223,7 @@ def decipher(
     positional_weight: float = 0.005,
     root_prior_weight: float = 0.0,
     anchors: dict[str, str] | None = None,
+    surjective: bool = False,
 ) -> dict[str, Any]:
     """Crack a substitution cipher using simulated annealing.
 
@@ -249,6 +251,10 @@ def decipher(
         anchors:          optional dict of cipher_sign → target_sign for known
                           correspondences (e.g. pan-Semitic cognates r→r, m→m).
                           Anchored signs are locked and excluded from swaps.
+        surjective:       if True, multiple cipher signs may map to the same
+                          target sign (correct for cross-language where the cipher
+                          alphabet is larger).  SA proposes re-assignments rather
+                          than swaps.  Default False (bijection / same-alphabet).
 
     Returns:
         dict with proposed_mapping, deciphered_text, score, and stats.
@@ -284,32 +290,59 @@ def decipher(
     # Apply anchors: locked cipher→target pairs excluded from search
     locked: dict[str, str] = {}  # cipher_sign → target_sign (fixed)
     free_cipher: list[str] = []
-    free_target: list[str] = list(target_alphabet)
-    if anchors:
-        for cs, ts in anchors.items():
-            if cs in cipher_ranked and ts in free_target:
-                locked[cs] = ts
-                free_target.remove(ts)
-    for cs in cipher_ranked:
-        if cs not in locked:
-            free_cipher.append(cs)
-    free_target_ranked = [t for t in target_model.ranked if t in free_target]
-    for t in free_target:
-        if t not in free_target_ranked:
-            free_target_ranked.append(t)
+    if surjective:
+        # In surjective mode, target signs may be reused; no exclusion.
+        # Use the real target alphabet only (no dummy padding).
+        free_target: list[str] = list(target_alphabet)
+        if anchors:
+            for cs, ts in anchors.items():
+                if cs in cipher_ranked and ts in (set(target_model.ranked) | set(free_target)):
+                    locked[cs] = ts
+        for cs in cipher_ranked:
+            if cs not in locked:
+                free_cipher.append(cs)
+        free_target_ranked = list(target_model.ranked)  # all targets always available
+    else:
+        free_target = list(target_alphabet)
+        if anchors:
+            for cs, ts in anchors.items():
+                if cs in cipher_ranked and ts in free_target:
+                    locked[cs] = ts
+                    free_target.remove(ts)
+        for cs in cipher_ranked:
+            if cs not in locked:
+                free_cipher.append(cs)
+        free_target_ranked = [t for t in target_model.ranked if t in free_target]
+        for t in free_target:
+            if t not in free_target_ranked:
+                free_target_ranked.append(t)
 
     best_mapping: dict[str, str] = {}
     best_score = float("-inf")
 
-    for restart in range(restarts):
-        if restart == 0:
-            mapping = dict(locked)
-            mapping.update(dict(zip(free_cipher, free_target_ranked)))
+    def _init_mapping(rng_: random.Random, shuffle: bool) -> dict[str, str]:
+        """Build an initial cipher→target mapping for one restart.
+
+        Surjective mode: free_cipher may be longer than free_target_ranked.
+        We cycle over the targets so every cipher sign gets an assignment.
+        Bijective mode: zip gives a 1-to-1 pairing.
+        """
+        m = dict(locked)
+        if surjective:
+            targets = list(free_target_ranked)
+            if shuffle:
+                rng_.shuffle(targets)
+            # Cycle targets for the surplus cipher signs
+            m.update({cs: t for cs, t in zip(free_cipher, cycle(targets))})
         else:
-            shuffled = list(free_target_ranked)
-            rng.shuffle(shuffled)
-            mapping = dict(locked)
-            mapping.update(dict(zip(free_cipher, shuffled)))
+            targets = list(free_target_ranked)
+            if shuffle:
+                rng_.shuffle(targets)
+            m.update(dict(zip(free_cipher, targets)))
+        return m
+
+    for restart in range(restarts):
+        mapping = _init_mapping(rng, shuffle=(restart > 0))
 
         # Stage 2: REFINE — simulated annealing (falls back to hill climbing when T→0)
         current_score = _score_mapping(
@@ -327,6 +360,43 @@ def decipher(
         temperature = sa_temp_start if use_sa else 0.0
         no_improve = 0
         for _iteration in range(max_iterations):
+            if not free_cipher:
+                break
+
+            if surjective:
+                # Surjective SA: re-assign one random cipher sign to a new target
+                i = rng.randint(0, len(free_cipher) - 1)
+                a = free_cipher[i]
+                old_t = mapping[a]
+                new_t = free_target_ranked[rng.randint(0, len(free_target_ranked) - 1)]
+                if old_t == new_t:
+                    continue
+                mapping[a] = new_t
+                new_score = _score_mapping(
+                    cipher_signs, mapping, target_model, cipher_positional,
+                    use_word_bigrams=use_word_bigrams,
+                    cipher_inscriptions=cipher_inscriptions,
+                    ocp_weight=ocp_weight,
+                    positional_weight=positional_weight,
+                    root_prior_weight=root_prior_weight,
+                )
+                delta = new_score - current_score
+                if delta > 0 or (
+                    temperature > 1e-4 and rng.random() < math.exp(delta / temperature)
+                ):
+                    current_score = new_score
+                    no_improve = 0
+                else:
+                    mapping[a] = old_t
+                    no_improve += 1
+                if use_sa:
+                    temperature *= sa_cooling
+                thresh = 250 if temperature < 1e-4 else 800
+                if no_improve > thresh:
+                    break
+                continue  # skip the bijective swap below
+
+            # Bijective SA: swap two free cipher signs
             if len(free_cipher) < 2:
                 break
             i = rng.randint(0, len(free_cipher) - 1)

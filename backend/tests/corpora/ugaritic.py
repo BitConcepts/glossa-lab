@@ -191,6 +191,39 @@ def get_answer_key() -> dict[str, str]:
     return dict(_ID_TO_SIGN)
 
 
+def get_word_level_inscriptions(
+    encoded: bool = False,
+) -> list[list[str]]:
+    """Return the corpus as WORD-level inscriptions (split on '.' separators).
+
+    Each element is one word as a list of signs.  The '.' word-dividers
+    in the raw Baal Cycle lines are used as boundaries.
+
+    Args:
+        encoded: if True, return opaque sign IDs (U01…U30);
+                 if False, return real transliteration values.
+    """
+    words: list[list[str]] = []
+    for line in _BAAL_CYCLE_LINES:
+        current_word: list[str] = []
+        for token in line.split():
+            if token == ".":
+                if current_word:
+                    if encoded:
+                        words.append([_SIGN_TO_ID.get(s, s) for s in current_word])
+                    else:
+                        words.append(list(current_word))
+                    current_word = []
+            else:
+                current_word.append(token)
+        if current_word:
+            if encoded:
+                words.append([_SIGN_TO_ID.get(s, s) for s in current_word])
+            else:
+                words.append(list(current_word))
+    return [w for w in words if w]  # drop any empties
+
+
 # ── Known linguistic properties (for test assertions) ─────────────
 
 KNOWN_PROPERTIES = {

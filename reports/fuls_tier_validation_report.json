@@ -1,10 +1,489 @@
 {
   "report": "Fuls Tier Validation Report",
-  "generated": "2026-04-09T00:30:24.513047+00:00",
+  "generated": "2026-04-09T01:01:06.475668+00:00",
+  "node_labels": {
+    "n1": "Tier 1a: Ugaritic vs Hebrew",
+    "n2": "Tier 1a-B: Anti-Circularity Proof",
+    "n3": "Tier 1b: Hebrew Self-Decipherment",
+    "n4": "Tier 4: Linear B / Ventris",
+    "r1": "Fuls Tier Validation Report"
+  },
   "results": {
-    "n1": null,
-    "n2": null,
-    "n3": null,
-    "n4": null
+    "tier_1a_ugaritic_vs_hebrew": {
+      "protocol": "standard_cross_language (Snyder 2010 / Luo 2019)",
+      "cipher_corpus": "Ugaritic Baal Cycle 82 lines / 945 tokens",
+      "language_model": "Old Hebrew consonant corpus 1455 tokens",
+      "accuracy": 0.067,
+      "correct": 2,
+      "total": 30,
+      "kandles": 0.9433,
+      "literature_comparison": {
+        "heuristic_hm_1999": {
+          "correct": 23,
+          "total": 30,
+          "accuracy": 0.767
+        },
+        "snyder_bayesian_2010": {
+          "correct": 28,
+          "total": 30,
+          "accuracy": 0.933
+        },
+        "luo_neural_2019": {
+          "correct": 29,
+          "total": 30,
+          "accuracy": 0.967
+        },
+        "our_hillclimb": {
+          "correct": 2,
+          "total": 30,
+          "accuracy": 0.067
+        }
+      },
+      "wrong_mappings": [
+        {
+          "opaque": "U01",
+          "ugaritic": "a",
+          "proposed": "n",
+          "expected": "'"
+        },
+        {
+          "opaque": "U02",
+          "ugaritic": "b",
+          "proposed": "w",
+          "expected": "b"
+        },
+        {
+          "opaque": "U03",
+          "ugaritic": "g",
+          "proposed": "T",
+          "expected": "g"
+        },
+        {
+          "opaque": "U04",
+          "ugaritic": "x",
+          "proposed": "s",
+          "expected": "H"
+        },
+        {
+          "opaque": "U05",
+          "ugaritic": "d",
+          "proposed": "k",
+          "expected": "d"
+        },
+        {
+          "opaque": "U06",
+          "ugaritic": "h",
+          "proposed": "b",
+          "expected": "h"
+        },
+        {
+          "opaque": "U07",
+          "ugaritic": "w",
+          "proposed": "H",
+          "expected": "w"
+        },
+        {
+          "opaque": "U08",
+          "ugaritic": "z",
+          "proposed": "?26",
+          "expected": "z"
+        },
+        {
+          "opaque": "U09",
+          "ugaritic": "H",
+          "proposed": "q",
+          "expected": "H"
+        },
+        {
+          "opaque": "U10",
+          "ugaritic": "T",
+          "proposed": "?28",
+          "expected": "T"
+        },
+        {
+          "opaque": "U11",
+          "ugaritic": "y",
+          "proposed": "'",
+          "expected": "y"
+        },
+        {
+          "opaque": "U12",
+          "ugaritic": "k",
+          "proposed": "E",
+          "expected": "k"
+        },
+        {
+          "opaque": "U13",
+          "ugaritic": "S",
+          "proposed": "d",
+          "expected": "k"
+        },
+        {
+          "opaque": "U14",
+          "ugaritic": "l",
+          "proposed": "y",
+          "expected": "l"
+        },
+        {
+          "opaque": "U16",
+          "ugaritic": "D",
+          "proposed": "?24",
+          "expected": "d"
+        },
+        {
+          "opaque": "U17",
+          "ugaritic": "n",
+          "proposed": "G",
+          "expected": "n"
+        },
+        {
+          "opaque": "U18",
+          "ugaritic": "Z",
+          "proposed": "z",
+          "expected": "C"
+        },
+        {
+          "opaque": "U19",
+          "ugaritic": "s",
+          "proposed": "C",
+          "expected": "s"
+        },
+        {
+          "opaque": "U20",
+          "ugaritic": "E",
+          "proposed": "h",
+          "expected": "E"
+        },
+        {
+          "opaque": "U22",
+          "ugaritic": "C",
+          "proposed": "?23",
+          "expected": "C"
+        },
+        {
+          "opaque": "U23",
+          "ugaritic": "q",
+          "proposed": "g",
+          "expected": "q"
+        },
+        {
+          "opaque": "U24",
+          "ugaritic": "r",
+          "proposed": "t",
+          "expected": "r"
+        },
+        {
+          "opaque": "U25",
+          "ugaritic": "V",
+          "proposed": "?22",
+          "expected": "G"
+        },
+        {
+          "opaque": "U26",
+          "ugaritic": "G",
+          "proposed": "?27",
+          "expected": "G"
+        },
+        {
+          "opaque": "U27",
+          "ugaritic": "t",
+          "proposed": "l",
+          "expected": "t"
+        },
+        {
+          "opaque": "U28",
+          "ugaritic": "I",
+          "proposed": "r",
+          "expected": "'"
+        },
+        {
+          "opaque": "U29",
+          "ugaritic": "U",
+          "proposed": "?25",
+          "expected": "'"
+        },
+        {
+          "opaque": "U30",
+          "ugaritic": "s2",
+          "proposed": "?",
+          "expected": "G"
+        }
+      ]
+    },
+    "tier_1a_b_anti_circularity_proof": {
+      "corpus_stats": {
+        "total_lines": 82,
+        "total_tokens": 945,
+        "distinct_signs": 29,
+        "theoretical_inventory": 30,
+        "type_token_ratio": 0.0307,
+        "hapax_count": 1,
+        "avg_tokens_per_sign": 32.6,
+        "most_frequent": [
+          [
+            "l",
+            133
+          ],
+          [
+            "b",
+            88
+          ],
+          [
+            "m",
+            78
+          ],
+          [
+            "t",
+            76
+          ],
+          [
+            "E",
+            70
+          ]
+        ]
+      },
+      "circular_result": {
+        "accuracy": 0.967,
+        "correct": 29,
+        "total": 30,
+        "kandles": 1.0,
+        "note": "INVALID \u2014 train==test corpus"
+      },
+      "proper_result": {
+        "accuracy": 0.2,
+        "correct": 6,
+        "total": 30,
+        "kandles": 0.9631,
+        "note": "VALID \u2014 75/25 train/test split"
+      },
+      "cross_section_result": {
+        "accuracy": 0.433,
+        "correct": 13,
+        "total": 30,
+        "kandles": 0.9657,
+        "note": "VALID \u2014 KTU 1.1-1.3 train, KTU 1.4-1.6 test"
+      },
+      "circularity_inflation_pp": 76.7
+    },
+    "tier_1b_hebrew_self_decipherment": {
+      "tier": "1b",
+      "system": "Old Hebrew (abjad, 22 consonants)",
+      "protocol": "75/25 within-corpus train/test split",
+      "description": "Self-decipherment benchmark \u2014 same language, different verses. First 75% of corpus lines build the language model; last 25% are presented as the unknown cipher.",
+      "corpus_stats": {
+        "total_lines": 60,
+        "train_lines": 45,
+        "test_lines": 15,
+        "total_tokens": 1455,
+        "train_tokens": 1081,
+        "test_tokens": 374,
+        "distinct_signs": 22,
+        "theoretical_inventory": 22,
+        "type_token_ratio": 0.0151,
+        "hapax_count": 0
+      },
+      "accuracy": 0.095,
+      "correct": 2,
+      "total": 21,
+      "kandles_confidence": 0.9494,
+      "correct_mappings": [
+        {
+          "opaque": "H20",
+          "sign": "y",
+          "proposed": "y"
+        },
+        {
+          "opaque": "H18",
+          "sign": "t",
+          "proposed": "t"
+        }
+      ],
+      "wrong_mappings": [
+        {
+          "opaque": "H05",
+          "sign": "T",
+          "proposed": "s"
+        },
+        {
+          "opaque": "H12",
+          "sign": "m",
+          "proposed": "k"
+        },
+        {
+          "opaque": "H00",
+          "sign": "'",
+          "proposed": "G"
+        },
+        {
+          "opaque": "H21",
+          "sign": "z",
+          "proposed": "q"
+        },
+        {
+          "opaque": "H10",
+          "sign": "k",
+          "proposed": "E"
+        },
+        {
+          "opaque": "H03",
+          "sign": "G",
+          "proposed": "h"
+        },
+        {
+          "opaque": "H09",
+          "sign": "h",
+          "proposed": "w"
+        },
+        {
+          "opaque": "H11",
+          "sign": "l",
+          "proposed": "'"
+        },
+        {
+          "opaque": "H02",
+          "sign": "E",
+          "proposed": "H"
+        },
+        {
+          "opaque": "H19",
+          "sign": "w",
+          "proposed": "r"
+        },
+        {
+          "opaque": "H01",
+          "sign": "C",
+          "proposed": "p"
+        },
+        {
+          "opaque": "H07",
+          "sign": "d",
+          "proposed": "b"
+        },
+        {
+          "opaque": "H13",
+          "sign": "n",
+          "proposed": "m"
+        },
+        {
+          "opaque": "H15",
+          "sign": "q",
+          "proposed": "C"
+        },
+        {
+          "opaque": "H06",
+          "sign": "b",
+          "proposed": "l"
+        },
+        {
+          "opaque": "H04",
+          "sign": "H",
+          "proposed": "d"
+        },
+        {
+          "opaque": "H17",
+          "sign": "s",
+          "proposed": "T"
+        },
+        {
+          "opaque": "H14",
+          "sign": "p",
+          "proposed": "g"
+        },
+        {
+          "opaque": "H16",
+          "sign": "r",
+          "proposed": "n"
+        }
+      ],
+      "interpretation": "WEAK (2/21): Hebrew training corpus (1081 tokens) is too small for reliable hill-climbing. Expected \u2014 Snyder (2010) needed ~15,000 tokens. Expanding the corpus is the next step.",
+      "literature_notes": {
+        "snyder_2010_hebrew_tokens": 15000,
+        "our_hebrew_tokens": 1081,
+        "scale_ratio": 13.9,
+        "tier_1a_our_accuracy": 0.067,
+        "tier_1a_snyder": 0.933,
+        "tier_1a_luo": 0.967
+      }
+    },
+    "tier_4_linear_b_ventris": {
+      "tier": "4",
+      "system": "Mycenaean Linear B (syllabary, 87 signs)",
+      "protocol": "Unsupervised affinity clustering vs known Ventris CV grid",
+      "corpus_stats": {
+        "n_words": 186,
+        "n_tokens": 628,
+        "n_distinct_signs": 62,
+        "gt_signs_in_corpus": 52
+      },
+      "affinity": {
+        "n_vowel_groups": 9,
+        "n_consonant_groups": 9,
+        "threshold": 0.1,
+        "acceleration": "numpy-vectorised CPU"
+      },
+      "row_score": {
+        "precision": 0.2,
+        "recall": 0.0709,
+        "f1": 0.1047,
+        "true_pairs": 268,
+        "pred_pairs": 95,
+        "true_positives": 19
+      },
+      "col_score": {
+        "precision": 0.0562,
+        "recall": 0.0543,
+        "f1": 0.0552,
+        "true_pairs": 92,
+        "pred_pairs": 89,
+        "true_positives": 5
+      },
+      "f1_average": 0.0799,
+      "corpus_scaling": [
+        {
+          "fraction": 1.0,
+          "n_inscriptions": 186,
+          "n_tokens": 628,
+          "n_distinct_signs": 62,
+          "n_syllabograms": 54,
+          "row_f1": 0.1047,
+          "col_f1": 0.0552,
+          "f1_average": 0.0799,
+          "row_precision": 0.2,
+          "row_recall": 0.0709,
+          "col_precision": 0.0562,
+          "col_recall": 0.0543
+        },
+        {
+          "fraction": 0.75,
+          "n_inscriptions": 139,
+          "n_tokens": 462,
+          "n_distinct_signs": 61,
+          "n_syllabograms": 50,
+          "row_f1": 0.0901,
+          "col_f1": 0.025,
+          "f1_average": 0.0576,
+          "row_precision": 0.1839,
+          "row_recall": 0.0597,
+          "col_precision": 0.0294,
+          "col_recall": 0.0217
+        },
+        {
+          "fraction": 0.5,
+          "n_inscriptions": 93,
+          "n_tokens": 310,
+          "n_distinct_signs": 54,
+          "n_syllabograms": 45,
+          "row_f1": 0.0534,
+          "col_f1": 0.0649,
+          "f1_average": 0.0592,
+          "row_precision": 0.1304,
+          "row_recall": 0.0336,
+          "col_precision": 0.0806,
+          "col_recall": 0.0543
+        }
+      ],
+      "interpretation": "WEAK: Corpus too small or signs too sparse for reliable affinity analysis. A larger or more uniform corpus would improve results.",
+      "fuls_notes": "Tier 4 validation: affinity analysis on syllabary. F1 measures fraction of Ventris vowel/consonant pairs recovered. Corpus-size scaling shows data requirements before Indus application."
+    }
   }
 }

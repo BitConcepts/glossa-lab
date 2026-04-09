@@ -45,8 +45,8 @@ for _p in (_BACKEND, _TESTS):
 
 def run_ugaritic_vs_hebrew_benchmark(
     verbose: bool = True,
-    max_iterations: int = 10000,
-    restarts: int = 5,
+    max_iterations: int = 15000,
+    restarts: int = 10,
     seed: int = 42,
 ) -> dict[str, Any]:
     """Run the standard cross-language Ugaritic/Hebrew decipherment benchmark.

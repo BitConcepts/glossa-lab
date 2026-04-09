@@ -118,23 +118,28 @@ def decipher(
     cipher_signs: list[str],
     target_model: LanguageModel,
     seed: int = 42,
-    max_iterations: int = 5000,
-    restarts: int = 3,
+    max_iterations: int = 12000,
+    restarts: int = 10,
     cipher_inscriptions: list[list[str]] | None = None,
     kandles_profile: str | None = None,
+    use_sa: bool = True,
+    sa_temp_start: float = 1.0,   # lower = fewer bad moves accepted; tuned for 22-30 sign alphabets
+    sa_cooling: float = 0.9985,   # slower cooling = more exploration before convergence
 ) -> dict[str, Any]:
-    """Crack a substitution cipher.
+    """Crack a substitution cipher using simulated annealing.
 
     Args:
         cipher_signs:     the encrypted symbol sequence.
         target_model:     language model of the target (known) language.
-        seed:             random seed for hill climbing.
+        seed:             random seed.
         max_iterations:   max swaps per restart.
         restarts:         number of random restarts.
         cipher_inscriptions: optional inscription-level structure for
             positional constraint scoring.
-        kandles_profile:  optional language-specific bias profile name
-            (e.g. 'luwian', 'hurrian'). Passed to Kandles validation.
+        kandles_profile:  optional language-specific bias profile name.
+        use_sa:           use simulated annealing (True) or pure hill climbing (False).
+        sa_temp_start:    initial SA temperature.
+        sa_cooling:       multiplicative cooling rate per iteration.
 
     Returns:
         dict with proposed_mapping, deciphered_text, score, and stats.
@@ -178,7 +183,7 @@ def decipher(
             rng.shuffle(shuffled)
             mapping = dict(zip(cipher_ranked, shuffled))
 
-        # Stage 2: REFINE — hill climbing with combined scoring
+        # Stage 2: REFINE — simulated annealing (falls back to hill climbing when T→0)
         current_score = _score_mapping(
             cipher_signs,
             mapping,
@@ -186,6 +191,7 @@ def decipher(
             cipher_positional,
         )
 
+        temperature = sa_temp_start if use_sa else 0.0
         no_improve = 0
         for _iteration in range(max_iterations):
             i = rng.randint(0, len(cipher_ranked) - 1)
@@ -203,14 +209,25 @@ def decipher(
                 cipher_positional,
             )
 
-            if new_score > current_score:
+            delta = new_score - current_score
+            # Accept if better; or probabilistically if worse (SA escape from local optima)
+            if delta > 0 or (
+                temperature > 1e-4
+                and rng.random() < math.exp(delta / temperature)
+            ):
                 current_score = new_score
                 no_improve = 0
             else:
                 mapping[a], mapping[b] = mapping[b], mapping[a]
                 no_improve += 1
 
-            if no_improve > 500:
+            # Cool temperature
+            if use_sa:
+                temperature *= sa_cooling
+
+            # Early stop only when temperature is negligible (SA fully converged)
+            converged_threshold = 250 if temperature < 1e-4 else 800
+            if no_improve > converged_threshold:
                 break
 
         if current_score > best_score:

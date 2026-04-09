@@ -106,8 +106,8 @@ def run_ugaritic_benchmark(verbose: bool = True) -> dict[str, Any]:
         circ_test_encoded,
         model_circ,
         seed=42,
-        max_iterations=5000,
-        restarts=3,
+        max_iterations=8000,
+        restarts=5,
         cipher_inscriptions=circ_test_inscr,
     )
     acc_circ = score_accuracy(result_circ["proposed_mapping"], answer_key)
@@ -130,8 +130,8 @@ def run_ugaritic_benchmark(verbose: bool = True) -> dict[str, Any]:
         test_encoded,
         model_proper,
         seed=42,
-        max_iterations=5000,
-        restarts=3,
+        max_iterations=12000,
+        restarts=8,
         cipher_inscriptions=test_inscr,
     )
     acc_proper = score_accuracy(result_proper["proposed_mapping"], answer_key)
@@ -157,8 +157,8 @@ def run_ugaritic_benchmark(verbose: bool = True) -> dict[str, Any]:
         test_ktu_encoded,
         model_ktu,
         seed=42,
-        max_iterations=5000,
-        restarts=3,
+        max_iterations=12000,
+        restarts=8,
         cipher_inscriptions=test_ktu_inscr,
     )
     acc_ktu = score_accuracy(result_ktu["proposed_mapping"], answer_key)

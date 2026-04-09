@@ -100,6 +100,30 @@ class LanguageModel:
             self.word_final_freq   = {s: c / wf_total for s, c in wf_counts.items()}
             self.ocp_rate = repeat_count / total_within if total_within > 0 else 0.0
 
+        # Word co-occurrence: fraction of words containing each unordered consonant pair.
+        # Used by the root co-occurrence prior: in Semitic languages, the same two
+        # consonants rarely appear in the same root (dissimilation), so a mapping
+        # that produces many such co-occurrences in decoded words is penalised.
+        # Conversely, common co-occurring pairs (e.g. m+l, b+r, y+d) reward
+        # assignments that match the target language root structure.
+        self.word_cooccur: dict[frozenset, float] = {}
+        if inscriptions:
+            pair_counts: Counter[frozenset] = Counter()
+            n_words = 0
+            for word in inscriptions:
+                if len(word) < 2:
+                    continue
+                n_words += 1
+                seen = set(word)  # unique consonants in this word
+                for a in seen:
+                    for b in seen:
+                        if a < b:  # canonical unordered pair
+                            pair_counts[frozenset([a, b])] += 1
+            if n_words > 0:
+                self.word_cooccur = {
+                    pair: cnt / n_words for pair, cnt in pair_counts.items()
+                }
+
         # Trigram frequencies
         trigram_counts: Counter[tuple[str, str, str]] = Counter()
         for i in range(len(symbols) - 2):
@@ -196,6 +220,8 @@ def decipher(
     use_word_bigrams: bool = False,
     ocp_weight: float = 0.0,
     positional_weight: float = 0.005,
+    root_prior_weight: float = 0.0,
+    anchors: dict[str, str] | None = None,
 ) -> dict[str, Any]:
     """Crack a substitution cipher using simulated annealing.
 
@@ -217,6 +243,12 @@ def decipher(
                           Penalises mappings that produce many repeated consonants
                           within the same word (rare in Semitic roots).
         positional_weight: weight of word-initial/final positional bonus (default 0.005).
+        root_prior_weight: weight of the root co-occurrence prior (0 = disabled).
+                          Rewards mappings whose decoded words contain consonant
+                          pairs that commonly co-occur in target-language roots.
+        anchors:          optional dict of cipher_sign → target_sign for known
+                          correspondences (e.g. pan-Semitic cognates r→r, m→m).
+                          Anchored signs are locked and excluded from swaps.
 
     Returns:
         dict with proposed_mapping, deciphered_text, score, and stats.
@@ -249,16 +281,35 @@ def decipher(
     cipher_counts = Counter(cipher_signs)
     cipher_ranked = [s for s, _ in cipher_counts.most_common()]
 
+    # Apply anchors: locked cipher→target pairs excluded from search
+    locked: dict[str, str] = {}  # cipher_sign → target_sign (fixed)
+    free_cipher: list[str] = []
+    free_target: list[str] = list(target_alphabet)
+    if anchors:
+        for cs, ts in anchors.items():
+            if cs in cipher_ranked and ts in free_target:
+                locked[cs] = ts
+                free_target.remove(ts)
+    for cs in cipher_ranked:
+        if cs not in locked:
+            free_cipher.append(cs)
+    free_target_ranked = [t for t in target_model.ranked if t in free_target]
+    for t in free_target:
+        if t not in free_target_ranked:
+            free_target_ranked.append(t)
+
     best_mapping: dict[str, str] = {}
     best_score = float("-inf")
 
     for restart in range(restarts):
         if restart == 0:
-            mapping = dict(zip(cipher_ranked, target_alphabet))
+            mapping = dict(locked)
+            mapping.update(dict(zip(free_cipher, free_target_ranked)))
         else:
-            shuffled = list(target_alphabet)
+            shuffled = list(free_target_ranked)
             rng.shuffle(shuffled)
-            mapping = dict(zip(cipher_ranked, shuffled))
+            mapping = dict(locked)
+            mapping.update(dict(zip(free_cipher, shuffled)))
 
         # Stage 2: REFINE — simulated annealing (falls back to hill climbing when T→0)
         current_score = _score_mapping(
@@ -270,17 +321,20 @@ def decipher(
             cipher_inscriptions=cipher_inscriptions,
             ocp_weight=ocp_weight,
             positional_weight=positional_weight,
+            root_prior_weight=root_prior_weight,
         )
 
         temperature = sa_temp_start if use_sa else 0.0
         no_improve = 0
         for _iteration in range(max_iterations):
-            i = rng.randint(0, len(cipher_ranked) - 1)
-            j = rng.randint(0, len(cipher_ranked) - 1)
+            if len(free_cipher) < 2:
+                break
+            i = rng.randint(0, len(free_cipher) - 1)
+            j = rng.randint(0, len(free_cipher) - 1)
             if i == j:
                 continue
 
-            a, b = cipher_ranked[i], cipher_ranked[j]
+            a, b = free_cipher[i], free_cipher[j]
             mapping[a], mapping[b] = mapping[b], mapping[a]
 
             new_score = _score_mapping(
@@ -292,6 +346,7 @@ def decipher(
                 cipher_inscriptions=cipher_inscriptions,
                 ocp_weight=ocp_weight,
                 positional_weight=positional_weight,
+                root_prior_weight=root_prior_weight,
             )
 
             delta = new_score - current_score
@@ -348,13 +403,15 @@ def _score_mapping(
     cipher_inscriptions: list[list[str]] | None = None,
     ocp_weight: float = 0.0,
     positional_weight: float = 0.005,
+    root_prior_weight: float = 0.0,
 ) -> float:
     """Score a mapping by n-gram log-likelihood + structural constraint bonuses.
 
     Structural constraints (all optional, all additive):
-      use_word_bigrams:  score bigrams within words only (word_bigram_freq).
-      ocp_weight:        penalise repeated consonants within words (OCP).
-      positional_weight: weight for word-initial/final profile matching bonus.
+      use_word_bigrams:   score bigrams within words only (word_bigram_freq).
+      ocp_weight:         penalise repeated consonants within words (OCP).
+      positional_weight:  weight for word-initial/final profile matching bonus.
+      root_prior_weight:  weight for root co-occurrence prior (word_cooccur).
     """
     decoded = [mapping.get(s, "?") for s in cipher_signs]
 
@@ -398,6 +455,29 @@ def _score_mapping(
             # Penalise excess violations above the expected LM baseline
             excess = max(0.0, violation_rate - target_model.ocp_rate)
             ll -= ocp_weight * excess * abs(ll)
+
+    # Root co-occurrence prior: reward decoded words whose consonant pairs
+    # commonly co-occur in target-language roots (word_cooccur).
+    if root_prior_weight > 0 and cipher_inscriptions and target_model.word_cooccur:
+        cooccur_score = 0.0
+        n_scored = 0
+        for word in cipher_inscriptions:
+            decoded_word = [mapping.get(s, "?") for s in word]
+            if len(decoded_word) < 2:
+                continue
+            seen = set(decoded_word) - {"?"}
+            for a in seen:
+                for b in seen:
+                    if a < b:
+                        pair = frozenset([a, b])
+                        # Log of probability; 1e-4 as floor for unseen pairs
+                        cooccur_score += math.log(
+                            target_model.word_cooccur.get(pair, 1e-4)
+                        )
+                        n_scored += 1
+        if n_scored > 0:
+            # Normalise by number of pairs to keep scale consistent
+            ll += root_prior_weight * cooccur_score / n_scored * abs(ll)
 
     return ll
 

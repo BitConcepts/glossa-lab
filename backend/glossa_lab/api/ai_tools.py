@@ -521,10 +521,24 @@ async def ai_chat(body: ChatRequest) -> dict[str, Any]:
                 )
 
     from glossa_lab.model_profiles import get_profile  # noqa: PLC0415
+    from glossa_lab.experiment_base import discover_experiments  # noqa: PLC0415
 
     profile = get_profile(body.model)
     settings_ctx = _build_settings_context()
-    action_addendum = _ACTION_SYSTEM_ADDENDUM if profile["action_capable"] else ""
+
+    # Build action addendum with live experiment IDs so the AI never hallucinates IDs
+    if profile["action_capable"]:
+        try:
+            exp_ids = sorted(discover_experiments().keys())
+            exp_id_note = (
+                f"\n\nREGISTERED EXPERIMENT IDs (use EXACTLY these in run_experiment actions): "
+                f"{', '.join(exp_ids)}"
+            )
+            action_addendum = _ACTION_SYSTEM_ADDENDUM + exp_id_note
+        except Exception:  # noqa: BLE001
+            action_addendum = _ACTION_SYSTEM_ADDENDUM
+    else:
+        action_addendum = ""
 
     base_role = (
         "You are Glossa, an expert AI research assistant for Glossa Lab — a computational "
@@ -572,15 +586,21 @@ async def execute_action(body: ActionExecuteRequest) -> dict[str, Any]:
     if t == "open_view":
         return {"ok": True, "navigate": p.get("view"), "summary": f"Navigating to {p.get('view', '?')}"}
 
-    # ── run_experiment ──────────────────────────────────────────────────────────
+    # ── run_experiment ──────────────────────────────────────────────────────────────
     if t == "run_experiment":
-        from glossa_lab.experiment_base import get_experiment  # noqa: PLC0415
+        from glossa_lab.experiment_base import discover_experiments, get_experiment  # noqa: PLC0415
         exp_id = p.get("id", "")
         cls = get_experiment(exp_id)
         if cls is None:
-            raise HTTPException(404, f"Experiment '{exp_id}' not found")
+            # Return a helpful error listing all valid IDs
+            all_ids = sorted(discover_experiments().keys())
+            raise HTTPException(
+                404,
+                f"Experiment '{exp_id}' not found. "
+                f"Valid IDs are: {', '.join(all_ids[:30])}",
+            )
         loop = asyncio.get_event_loop()
-        result = await loop.run_in_executor(None, cls().run)
+        result = await loop.run_in_executor(None, lambda: cls().run())
         n = len(result) if isinstance(result, dict) else "?"
         return {"ok": True, "summary": f"Experiment '{exp_id}' completed ({n} result keys).", "result": result}
 
@@ -608,7 +628,7 @@ async def execute_action(body: ActionExecuteRequest) -> dict[str, Any]:
         set_key(key, str(value))
         return {"ok": True, "summary": f"Setting '{key}' updated."}
 
-    # ── generate_report ─────────────────────────────────────────────────────────
+    # ── generate_report ──────────────────────────────────────────────────────────────
     if t == "generate_report":
         script = p.get("script", "")
         if not script:
@@ -618,7 +638,7 @@ async def execute_action(body: ActionExecuteRequest) -> dict[str, Any]:
         backend_dir = Path(__file__).resolve().parent.parent.parent
         script_path = backend_dir / script
         if not script_path.exists():
-            raise HTTPException(404, f"Script {script} not found")
+            raise HTTPException(404, f"Script '{script}' not found. Use run_experiment with a valid experiment ID instead.")
         proc = subprocess.run(  # noqa: S603
             [sys.executable, str(script_path)],
             capture_output=True, text=True, timeout=300,
@@ -663,6 +683,91 @@ async def execute_action(body: ActionExecuteRequest) -> dict[str, Any]:
         return {"ok": True, "summary": f"Cleared {n} jobs."}
 
     raise HTTPException(400, f"Unknown action type: '{t}'")
+
+
+# ── AI Report Synthesis ───────────────────────────────────────────────────
+
+
+class ReportSynthesisRequest(BaseModel):
+    report_contents: list[dict[str, Any]]  # [{name, filename, data}]
+    study_ids: list[str] = []
+    title: str = "Research Report"
+
+
+@router.post("/report-synthesis")
+async def ai_report_synthesis(body: ReportSynthesisRequest) -> dict[str, Any]:
+    """Generate a comprehensive AI research report from selected report files.
+
+    Takes the content of selected JSON reports and optionally study metadata,
+    and produces a structured Markdown synthesis suitable for export as PDF
+    or sharing with collaborators.
+    """
+    from glossa_lab.database import get_db  # noqa: PLC0415
+
+    # Build context from report contents
+    report_sections: list[str] = []
+    for r in body.report_contents[:8]:  # cap at 8 reports
+        name = r.get("name", "Report")
+        data = r.get("data", {})
+        if isinstance(data, dict):
+            # Compact JSON snippet (first 800 chars)
+            snippet = json.dumps(data, indent=2, default=str)[:800]
+        else:
+            snippet = str(data)[:800]
+        report_sections.append(f"**{name}**:\n```json\n{snippet}\n```")
+
+    # Build context from studies
+    study_context = ""
+    db = get_db()
+    if db and body.study_ids:
+        study_summaries = []
+        for sid in body.study_ids[:4]:
+            study = await db.get_study(sid)
+            if study:
+                nodes = study.get("graph", {}).get("nodes", [])
+                study_summaries.append(
+                    f"Study '{study['name']}': {study.get('description', '')} "
+                    f"| {len(nodes)} nodes"
+                )
+        if study_summaries:
+            study_context = "\n\n**Studies included:**\n" + "\n".join(f"- {s}" for s in study_summaries)
+
+    system = (
+        "You are an expert research scientist specialising in computational linguistics, "
+        "ancient script analysis, and statistical decipherment methods. "
+        "Generate a comprehensive, rigorous research report in Markdown format. "
+        "The report must include:\n"
+        "1. Executive Summary (3-4 sentences)\n"
+        "2. Data & Methodology section\n"
+        "3. Results section with all numerical findings in a structured table format\n"
+        "4. Analysis & Interpretation section\n"
+        "5. Limitations section (be honest and specific)\n"
+        "6. Next Steps / Recommendations (concrete, actionable)\n\n"
+        "Use precise scientific language. Include ALL numerical results from the data. "
+        "Format numbers as tables where possible. Be specific about what succeeded and what failed."
+    )
+
+    user = (
+        f"Generate a comprehensive research report titled: '{body.title}'\n"
+        f"{study_context}\n\n"
+        f"**Report data ({len(body.report_contents)} files):**\n\n"
+        + "\n\n---\n\n".join(report_sections)
+    )
+
+    try:
+        markdown = await _run_llm(
+            [{"role": "system", "content": system}, {"role": "user", "content": user}]
+        )
+        return {
+            "title": body.title,
+            "markdown": markdown,
+            "n_reports": len(body.report_contents),
+            "study_ids": body.study_ids,
+        }
+    except ValueError as e:
+        raise HTTPException(status_code=503, detail=str(e)) from e
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
 
 
 @router.post("/decipher")

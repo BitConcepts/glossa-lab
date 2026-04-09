@@ -893,6 +893,13 @@ export interface ResearchContextResponse {
 export const getResearchContext = (): Promise<ResearchContextResponse> =>
   request("GET", "/ai/research-context");
 
+export const aiReportSynthesis = (body: {
+  report_contents: Array<{ name: string; filename: string; data: unknown }>;
+  study_ids?: string[];
+  title?: string;
+}): Promise<{ title: string; markdown: string; n_reports: number; study_ids: string[] }> =>
+  request("POST", "/ai/report-synthesis", body);
+
 // ── System Metrics ───────────────────────────────────────────────
 
 export interface GpuInfo {

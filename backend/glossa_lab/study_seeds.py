@@ -211,6 +211,37 @@ _SEEDS: list[dict[str, Any]] = [
         },
     },
     {
+        "name": "Dr. Fuls Tier Validation Progression",
+        "description": (
+            "Systematic validation of the decipherment pipeline following the tier "
+            "progression proposed by Dr. Andreas Fuls (Catalog of Indus Signs, p.105). "
+            "Each experiment must be validated before proceeding to the next. "
+            "IMPORTANT: Run these in order and share results with Dr. Fuls at each step. "
+            "\n\nTier 1a: Ugaritic cross-language (Hebrew LM → Ugaritic cipher). "
+            "Honest result: ~6.7% with our hill-climbing bigram (vs HMM 76.7%, neural 96.7%). "
+            "\nTier 1a-B: Anti-circularity — proves our original 96.7% claim was circular. "
+            "\nTier 1b: Hebrew self-decipherment (75/25 split). "
+            "\nTier 4: Linear B Ventris grid recovery (F1 at 100%/75%/50% corpus). "
+            "\n\nTier 5a (Sumerian) and Tier 5b (Indus) follow once these pass."
+        ),
+        "graph": {
+            "nodes": [
+                _node("n1", "ugaritic_vs_hebrew",        "Tier 1a: Ugaritic vs Hebrew",         100, 100),
+                _node("n2", "ugaritic_proper_benchmark",  "Tier 1a-B: Anti-Circularity Proof",   100, 260),
+                _node("n3", "old_hebrew_self_benchmark",  "Tier 1b: Hebrew Self-Decipherment",   100, 420),
+                _node("n4", "ventris_validation",         "Tier 4: Linear B / Ventris",          100, 580),
+                _report("r1", "Fuls Tier Validation Report", 600, 340,
+                        "fuls_tier_validation_report.json"),
+            ],
+            "edges": [
+                _edge("e1", "n1", "r1"),
+                _edge("e2", "n2", "r1"),
+                _edge("e3", "n3", "r1"),
+                _edge("e4", "n4", "r1"),
+            ],
+        },
+    },
+    {
         "name": "OCR Pipeline (requires Mistral key)",
         "description": (
             "Extracts Mahadevan (1977) bigram tables and inscription sequences via Mistral OCR. "

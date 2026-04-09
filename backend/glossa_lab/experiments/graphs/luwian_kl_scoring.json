@@ -1,7 +1,7 @@
 {
   "id": "luwian_kl_scoring",
   "name": "Word-Length KL Scoring (Luwian vs Greek)",
-  "description": "Frequency distribution and Zipf-Mandelbrot exponent. Compares sign-frequency distribution against Yadav (2010) parameters.",
+  "description": "KL and JS divergence of inscription-length distribution vs language profiles. Corpus node sets corpus_id; ExperimentWrapper calls the Python KL analysis.",
   "auto_migrated": true,
   "nodes": [
     {
@@ -27,7 +27,7 @@
       },
       "position": {
         "x": 300,
-        "y": 100
+        "y": 80
       }
     },
     {
@@ -35,12 +35,27 @@
       "type": "expNode",
       "data": {
         "atomicId": "ZipfFitter",
-        "label": "Zipf Fitter",
+        "label": "Zipf Exponent",
         "params": {}
       },
       "position": {
-        "x": 540,
-        "y": 100
+        "x": 300,
+        "y": 200
+      }
+    },
+    {
+      "id": "run",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ExperimentWrapper",
+        "label": "KL Scoring (Luwian/Greek)",
+        "params": {
+          "experiment_id": "luwian_kl_scoring"
+        }
+      },
+      "position": {
+        "x": 560,
+        "y": 140
       }
     },
     {
@@ -52,8 +67,8 @@
         "params": {}
       },
       "position": {
-        "x": 780,
-        "y": 100
+        "x": 820,
+        "y": 140
       }
     }
   ],
@@ -75,8 +90,15 @@
     {
       "id": "e3",
       "source": "zipf",
-      "target": "out",
+      "target": "run",
       "sourcePort": "zipf_exponent",
+      "targetPort": "upstream"
+    },
+    {
+      "id": "e4",
+      "source": "run",
+      "target": "out",
+      "sourcePort": "result",
       "targetPort": "data"
     }
   ]

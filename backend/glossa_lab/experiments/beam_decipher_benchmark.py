@@ -114,7 +114,7 @@ def _load():
 # ── Run helpers ────────────────────────────────────────────────────────
 
 def _run_beam(d, beam_width, use_word_bigrams=False, ocp_weight=0.0,
-              root_prior_weight=0.0, anchors=None):
+              root_prior_weight=0.0, anchors=None, surjective=True):
     t0 = time.time()
     lm = d["lm_word"] if use_word_bigrams else d["lm_flat"]
     insc = d["cipher_word"] if use_word_bigrams else d["cipher_line"]
@@ -126,13 +126,14 @@ def _run_beam(d, beam_width, use_word_bigrams=False, ocp_weight=0.0,
         ocp_weight=ocp_weight,
         root_prior_weight=root_prior_weight,
         anchors=anchors,
+        surjective=surjective,
     )
     acc = d["score_accuracy"](r["proposed_mapping"], d["gt"])
     return acc["correct"], round(time.time() - t0, 1)
 
 
 def _run_sa(d, restarts=25, use_word_bigrams=False, ocp_weight=0.0,
-            root_prior_weight=0.0, anchors=None, seed=42):
+            root_prior_weight=0.0, anchors=None, seed=42, surjective=False):
     t0 = time.time()
     lm = d["lm_word"] if use_word_bigrams else d["lm_flat"]
     insc = d["cipher_word"] if use_word_bigrams else d["cipher_line"]
@@ -144,6 +145,7 @@ def _run_sa(d, restarts=25, use_word_bigrams=False, ocp_weight=0.0,
         ocp_weight=ocp_weight,
         root_prior_weight=root_prior_weight,
         anchors=anchors,
+        surjective=surjective,
     )
     acc = d["score_accuracy"](r["proposed_mapping"], d["gt"])
     return acc["correct"], round(time.time() - t0, 1)
@@ -171,14 +173,19 @@ def run_beam_benchmark(verbose: bool = True) -> dict[str, Any]:
 
     results = {}
 
-    # ── SA Baseline ───────────────────────────────────────────────────
-    _pr("\n\n  ══ SA BASELINE ══")
+    # ── SA Baselines ─────────────────────────────────────────────
+    _pr("\n\n  ══ SA BASELINES ══")
     sa_correct, sa_t = _run_sa(d)
-    _pr(f"  SA (25 restarts, flat bigrams, seed=42):  {sa_correct}/30 = {sa_correct/30*100:.1f}%  [{sa_t}s]")
-    results["sa_baseline"] = {"correct": sa_correct, "total": 30, "time_s": sa_t}
+    _pr(f"  SA bijective (25 restarts, seed=42):     {sa_correct}/30 = {sa_correct/30*100:.1f}%  [{sa_t}s]")
+    sa_surj, sa_surj_t = _run_sa(d, surjective=True)
+    _pr(f"  SA surjective (25 restarts, seed=42):    {sa_surj}/30 = {sa_surj/30*100:.1f}%  [{sa_surj_t}s]")
+    sa_surj_anch, sa_sa_t = _run_sa(d, surjective=True, anchors=d["ANCHORS_10"])
+    _pr(f"  SA surjective + 10 anchors (seed=42):    {sa_surj_anch}/30 = {sa_surj_anch/30*100:.1f}%  [{sa_sa_t}s]")
+    results["sa_baseline"] = {"bijective": sa_correct, "surjective": sa_surj,
+                               "surjective_anchored": sa_surj_anch, "total": 30}
 
     # ── Sweep A: Beam width ───────────────────────────────────────────
-    _pr("\n\n  ══ SWEEP A — Beam Width (flat bigrams, no anchors) ══")
+    _pr("\n\n  ══ SWEEP A — Beam Width (surjective, flat bigrams, no anchors) ══")
     _pr(f"  {'Width':>6}  {'Correct':>8}  {'Accuracy':>9}  {'Time':>6}")
     _pr("  " + "-" * 38)
     sweep_a = []
@@ -274,6 +281,11 @@ def run_beam_benchmark(verbose: bool = True) -> dict[str, Any]:
             "The oracle signal (+550) should be exploitable; further analysis needed."
         )
 
+    # Also show SA vs beam head-to-head with best config
+    _pr(f"\n  SA bijective baseline:      {sa_correct}/30 = {sa_correct/30*100:.1f}%")
+    _pr(f"  SA surjective baseline:     {sa_surj}/30 = {sa_surj/30*100:.1f}%")
+    _pr(f"  SA surjective + 10 anchors: {sa_surj_anch}/30 = {sa_surj_anch/30*100:.1f}%")
+    _pr(f"  Beam surjective (best):     {best_overall}/30 = {best_overall/30*100:.1f}%")
     _pr(f"\n  CONCLUSION: {conclusion}")
 
     results["best_overall"] = best_overall

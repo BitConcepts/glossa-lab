@@ -560,6 +560,20 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
   // Auto-arrange fit trigger
   const [fitTrigger, setFitTrigger] = useState(0);
 
+  // Starred / pinned studies — floated to top, persisted across sessions
+  const [starredStudies, setStarredStudies] = useState<Set<string>>(() => {
+    try { return new Set(JSON.parse(localStorage.getItem("glossa_starred_studies") ?? "[]")); }
+    catch { return new Set(); }
+  });
+  const toggleStarStudy = (id: string) => {
+    setStarredStudies(prev => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      localStorage.setItem("glossa_starred_studies", JSON.stringify([...next]));
+      return next;
+    });
+  };
+
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   const draggedRef = useRef<{ nodeType: StudyNodeType; refId: string; label: string } | null>(null);
   const reconnectOk = useRef(false);
@@ -929,12 +943,16 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
               <input ref={importRef} type="file" accept=".json" style={{ display: "none" }} onChange={onImport} />
             </div>
             {studies.length === 0 && <div style={{ fontSize: 10, color: th.textFaint, fontStyle: "italic", padding: "4px 2px" }}>No studies yet. Click + to create one.</div>}
-            {studies.map(s => {
-              const active   = activeStudy?.id === s.id;
-              const modified = active && isDirty;
+            {[...studies].sort((a, b) => {
+              const aS = starredStudies.has(a.id), bS = starredStudies.has(b.id);
+              return aS === bS ? 0 : aS ? -1 : 1;
+            }).map(s => {
+              const active    = activeStudy?.id === s.id;
+              const modified  = active && isDirty;
               const isRunning = !!activeRuns[s.id];
+              const isStarred = starredStudies.has(s.id);
               const run = activeRuns[s.id];
-              const cached   = runCache[s.id];
+              const cached = runCache[s.id];
               const runBadge = isRunning && run
                 ? { label: `⏳ ${getElapsed(s.id)}s · ${run.currentNodeLabel.slice(0,16) || `${run.currentNodeIdx + 1}/${run.totalNodes}`}`, color: "#60a5fa" }
                 : cached
@@ -945,8 +963,15 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
               return (
                 <div key={s.id} onClick={() => loadStudy(s)}
                   style={{ display: "flex", alignItems: "center", gap: 3, padding: "5px 6px", borderRadius: 5, marginBottom: 2, cursor: "pointer",
-                    background: active ? th.activeBg : "transparent",
-                    border: `1px solid ${isRunning ? "#60a5fa40" : active ? "#2563eb40" : "transparent"}` }}>
+                    background: active ? th.activeBg : isStarred ? (darkMode ? "#1c1806" : "#fffbeb") : "transparent",
+                    border: `1px solid ${isRunning ? "#60a5fa40" : active ? "#2563eb40" : isStarred ? "#f59e0b30" : "transparent"}` }}>
+                  {/* Pin/star button */}
+                  <button onClick={e => { e.stopPropagation(); toggleStarStudy(s.id); }}
+                    title={isStarred ? "Unpin" : "Pin to top"}
+                    style={{ border: "none", background: "none", cursor: "pointer", fontSize: 10, padding: 0, lineHeight: 1, flexShrink: 0,
+                      color: isStarred ? "#f59e0b" : th.textFaint, opacity: isStarred ? 1 : 0.35 }}>
+                    {isStarred ? "⭐" : "☆"}
+                  </button>
                   <span style={{ flex: 1, fontSize: 11, fontWeight: active ? 600 : 400, color: active ? th.activeText : th.text, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{s.name}</span>
                   {modified && !isRunning && (
                     <span title="Unsaved changes" style={{ width: 6, height: 6, borderRadius: "50%", background: "#f59e0b", flexShrink: 0, display: "inline-block", boxShadow: "0 0 4px #f59e0b" }} />

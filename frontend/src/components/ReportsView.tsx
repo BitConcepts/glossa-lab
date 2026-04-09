@@ -34,6 +34,20 @@ export function ReportsView() {
   const toggleSelected = (id: string) =>
     setSelected((prev) => { const s = new Set(prev); s.has(id) ? s.delete(id) : s.add(id); return s; });
 
+  // ── Starred reports (persist to localStorage) ──────────────────
+  const [starredReports, setStarredReports] = useState<Set<string>>(() => {
+    try { return new Set(JSON.parse(localStorage.getItem("glossa_starred_reports") ?? "[]")); }
+    catch { return new Set(); }
+  });
+  const toggleStarReport = (id: string) => {
+    setStarredReports(prev => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      localStorage.setItem("glossa_starred_reports", JSON.stringify([...next]));
+      return next;
+    });
+  };
+
   const exportComposedPdf = async () => {
     const picked = reports.filter((r) => selected.has(r.id));
     if (!picked.length) return;
@@ -181,6 +195,11 @@ export function ReportsView() {
                 && (expFilter.size === 0 || expFilter.has(r.experiment_id))
                 && (studyExpIds === null || (r.experiment_id && studyExpIds.has(r.experiment_id))))
     .sort((a, b) => {
+      // Starred always float to top
+      const aS = starredReports.has(a.id), bS = starredReports.has(b.id);
+      if (aS && !bS) return -1;
+      if (!aS && bS) return 1;
+      // Then by selected sort key
       const av = a[sortKey as keyof CatalogReport] as string | number;
       const bv = b[sortKey as keyof CatalogReport] as string | number;
       const cmp = av < bv ? -1 : av > bv ? 1 : 0;
@@ -349,6 +368,8 @@ export function ReportsView() {
         <table style={{ borderCollapse: "collapse", width: "100%" }}>
           <thead>
             <tr>
+              {/* Star column */}
+              <th style={{ ...thStyle, width: 24, cursor: "default" }}>⭐</th>
               {composeMode && (
                 <th style={{ ...thStyle, width: 32, cursor: "default" }}></th>
               )}
@@ -373,14 +394,25 @@ export function ReportsView() {
             {sorted.map((r) => {
               const color = kindColor[r.kind] ?? "#6b7280";
               const isSel = selected.has(r.id);
+              const isStarred = starredReports.has(r.id);
               return (
                 <tr
                   key={r.relative_path}
-                  style={{ cursor: "pointer", background: isSel ? "#f3e8ff" : undefined }}
+                  style={{ cursor: "pointer",
+                    background: isSel ? "#f3e8ff" : isStarred ? "#fffbeb" : undefined }}
                   onClick={() => composeMode ? toggleSelected(r.id) : handleView(r)}
                 >
+                  {/* Star toggle — stopPropagation so row click doesn't also fire */}
+                  <td style={{ ...tdStyle, width: 24 }} onClick={(e) => { e.stopPropagation(); toggleStarReport(r.id); }}>
+                    <span style={{ cursor: "pointer", fontSize: 13, opacity: isStarred ? 1 : 0.25, lineHeight: 1 }}
+                      title={isStarred ? "Unpin" : "Pin to top"}>
+                      {isStarred ? "⭐" : "☆"}
+                    </span>
+                  </td>
                   {composeMode && (
-                    <td style={{ ...tdStyle, width: 32 }} onClick={(e) => { e.stopPropagation(); toggleSelected(r.id); }}>
+                    // Bug fix: td onClick only stops propagation; onChange on input does the actual toggle.
+                    // Previously both fired toggleSelected, causing a double-toggle (net = no change).
+                    <td style={{ ...tdStyle, width: 32 }} onClick={(e) => e.stopPropagation()}>
                       <input type="checkbox" checked={isSel} onChange={() => toggleSelected(r.id)}
                         style={{ cursor: "pointer", width: 14, height: 14 }} />
                     </td>

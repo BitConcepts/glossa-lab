@@ -184,8 +184,56 @@ def _score_clusters(
 # ── Main validation ───────────────────────────────────────────────────
 
 
+def _run_affinity_at_fraction(
+    inscriptions: list[list[str]],
+    fraction: float,
+    verbose: bool = True,
+) -> dict[str, Any]:
+    """Run affinity analysis on a fraction of the corpus and score against ground truth."""
+    from glossa_lab.pipelines.logosyllabic import classify_signs, compute_affinity
+    from collections import Counter
+
+    n = max(10, int(len(inscriptions) * fraction))
+    subset = inscriptions[:n]
+    flat = [s for insc in subset for s in insc]
+    freq = Counter(flat)
+
+    sign_class = classify_signs(subset, flat)
+    syllabograms = [s for s, info in sign_class.items() if info["type"] == "syllabogram"]
+    if len(syllabograms) < 5:
+        return {"n_inscriptions": n, "n_tokens": len(flat), "fraction": fraction,
+                "error": "Too few syllabograms in subset", "f1_average": 0.0}
+
+    affinity = compute_affinity(subset, syllabograms, top_n=40, window=2)
+    vowel_groups = affinity.get("vowel_groups", [])
+    consonant_groups = affinity.get("consonant_groups", [])
+
+    row_score = _score_clusters(vowel_groups, _sign_to_row(), "row", verbose=False)
+    col_score = _score_clusters(consonant_groups, _sign_to_col(), "col", verbose=False)
+    f1_avg = (row_score["f1"] + col_score["f1"]) / 2
+
+    return {
+        "fraction": fraction,
+        "n_inscriptions": n,
+        "n_tokens": len(flat),
+        "n_distinct_signs": len(freq),
+        "n_syllabograms": len(syllabograms),
+        "row_f1": round(row_score["f1"], 4),
+        "col_f1": round(col_score["f1"], 4),
+        "f1_average": round(f1_avg, 4),
+        "row_precision": round(row_score["precision"], 4),
+        "row_recall": round(row_score["recall"], 4),
+        "col_precision": round(col_score["precision"], 4),
+        "col_recall": round(col_score["recall"], 4),
+    }
+
+
 def run_ventris_validation(verbose: bool = True) -> dict[str, Any]:
-    """Load Linear B corpus, run affinity analysis, score against ground truth."""
+    """Load Linear B corpus, run affinity analysis, score against ground truth.
+
+    Runs at three data fractions (100%, 75%, 50%) to show how F1 scales
+    with corpus size — directly answers Dr. Fuls' question about data requirements.
+    """
     from glossa_lab.accelerate import gpu_info  # noqa: I001
     from glossa_lab.pipelines.logosyllabic import classify_signs, compute_affinity
     from pathlib import Path
@@ -279,6 +327,22 @@ def run_ventris_validation(verbose: bool = True) -> dict[str, Any]:
         verbose=verbose,
     )
 
+    # ── Corpus-size scaling (Tier 4 addition for Dr. Fuls) ───────────
+    _print("\n  Corpus-size scaling analysis:")
+    _print("  (How well does the Ventris grid recover with limited data?)")
+    scaling_results: list[dict] = []
+    for frac in (1.0, 0.75, 0.5):
+        sr = _run_affinity_at_fraction(inscriptions, frac, verbose=False)
+        scaling_results.append(sr)
+        if "error" not in sr:
+            _print(
+                f"    {int(frac * 100):3}% ({sr['n_inscriptions']:4} words, {sr['n_tokens']:5} tokens): "
+                f"F1={sr['f1_average']:.3f}  "
+                f"row={sr['row_f1']:.3f}  col={sr['col_f1']:.3f}"
+            )
+        else:
+            _print(f"    {int(frac * 100):3}%: {sr['error']}")
+
     # Overall summary
     f1_avg = (row_score["f1"] + col_score["f1"]) / 2
     _print(f"\n  OVERALL F1 (row+col avg): {f1_avg:.3f}")
@@ -290,6 +354,13 @@ def run_ventris_validation(verbose: bool = True) -> dict[str, Any]:
         f"  Consonant  F1: {col_score['f1']:.3f}  "
         f"({col_score['true_positives']}/{col_score['true_pairs']} pairs)"
     )
+    _print()
+    _print("  TIER 4 (Linear B / Ventris) summary for Dr. Fuls:")
+    _print(f"    Full corpus → F1={f1_avg:.3f}")
+    for sr in scaling_results[1:]:
+        if "error" not in sr:
+            _print(f"    {int(sr['fraction'] * 100)}% corpus → F1={sr['f1_average']:.3f}")
+    _print("  This demonstrates the data requirements before applying to Indus.")
 
     # Interpretation
     if f1_avg > 0.5:
@@ -316,6 +387,9 @@ def run_ventris_validation(verbose: bool = True) -> dict[str, Any]:
     _print(f"\n  INTERPRETATION: {interp}")
 
     return {
+        "tier": "4",
+        "system": "Mycenaean Linear B (syllabary, 87 signs)",
+        "protocol": "Unsupervised affinity clustering vs known Ventris CV grid",
         "corpus_stats": {
             "n_words": len(inscriptions),
             "n_tokens": len(flat),
@@ -331,7 +405,13 @@ def run_ventris_validation(verbose: bool = True) -> dict[str, Any]:
         "row_score": row_score,
         "col_score": col_score,
         "f1_average": round(f1_avg, 4),
+        "corpus_scaling": scaling_results,
         "interpretation": interp,
+        "fuls_notes": (
+            "Tier 4 validation: affinity analysis on syllabary. "
+            "F1 measures fraction of Ventris vowel/consonant pairs recovered. "
+            "Corpus-size scaling shows data requirements before Indus application."
+        ),
     }
 
 
@@ -346,16 +426,32 @@ except ImportError:
 
 class VentrisValidation(_EB):
     id = "ventris_validation"
-    name = "Ventris Grid Validation (Linear B)"
+    name = "Ventris Grid Validation (Linear B, Tier 4)"
     category = "Validation"
-    description = "Ventris affinity vs known Linear B CV grid. F1 for vowel/consonant groups."
-    estimated_time = "~10 sec"
+    description = (
+        "Tier 4 (Dr. Fuls progression): Linear B syllabary (87 signs) — "
+        "automatic recovery of Ventris vowel/consonant grid via affinity clustering. "
+        "F1 scored against the known ground-truth grid. "
+        "Also shows how F1 scales at 100%/75%/50% corpus to answer: "
+        "how much data is needed before applying to Indus?"
+    )
+    estimated_time = "~15 sec"
     command = "python -m glossa_lab.experiments.ventris_validation"
+    results_file = "reports/ventris_validation.json"
     params_schema = {
         "type": "object",
         "properties": {},
-        "$comment": "Uses the built-in Linear B corpus. Fully automated validation against known CV grid.",
+        "$comment": "Uses the built-in Linear B corpus. Fully automated validation against known Ventris CV grid.",
     }
 
     def run(self, **kwargs):
-        return run_ventris_validation(verbose=False)
+        import json  # noqa: PLC0415
+        from pathlib import Path  # noqa: PLC0415
+        result = run_ventris_validation(verbose=False)
+        out = (
+            Path(__file__).resolve().parent.parent.parent.parent
+            / "reports" / "ventris_validation.json"
+        )
+        out.parent.mkdir(exist_ok=True)
+        out.write_text(json.dumps(result, indent=2), encoding="utf-8")
+        return result

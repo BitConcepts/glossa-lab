@@ -79,7 +79,7 @@ def run_hebrew_self_benchmark(
 
     # ── Parse corpus ──────────────────────────────────────────────────
     def _parse_line(line: str) -> list[str]:
-        return [s for s in line.split() if s]
+        return [s for s in line.split() if s and s != "."]
 
     all_lines = [_parse_line(ln) for ln in _HEBREW_LINES if _parse_line(ln)]
     n_lines = len(all_lines)

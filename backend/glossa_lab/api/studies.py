@@ -519,11 +519,12 @@ async def _run_rag_node(
 def _run_report_node(
     node: dict[str, Any],
     upstream_results: dict[str, Any],
+    node_labels: dict[str, str] | None = None,
 ) -> dict[str, Any]:
     """Compile all upstream results and save to a named JSON file in reports/.
 
-    The report_name param controls the filename (defaults to slugified label).
-    Upstream results are stored under a 'results' key alongside metadata.
+    upstream_results values are already-unwrapped result dicts (NOT {status,result} wrappers).
+    node_labels maps node_id → human-readable label for readable JSON keys.
     """
     import json as _json  # noqa: PLC0415
     import re  # noqa: PLC0415
@@ -541,15 +542,35 @@ def _run_report_node(
     rep_dir.mkdir(exist_ok=True)
     out_path = rep_dir / report_name
 
+    # upstream_results values are the experiment results directly (already unwrapped).
+    # Use node label as key if available, otherwise fall back to node ID.
+    def _key(k: str) -> str:
+        if node_labels and k in node_labels:
+            lbl = node_labels[k]
+            safe = re.sub(r"[^a-z0-9_]+", "_", lbl.lower()).strip("_")
+            return safe or k
+        return k
+
     compiled = {
         "report": node.get("label", "Study Report"),
         "generated": _now_iso(),
-        "results": {k: v.get("result") for k, v in upstream_results.items() if isinstance(v, dict)},
+        "node_labels": node_labels or {},
+        "results": {
+            _key(k): v
+            for k, v in upstream_results.items()
+            if isinstance(v, dict)
+        },
     }
     out_path.write_text(_json.dumps(compiled, indent=2, default=str), encoding="utf-8")
+    logger.info("Report saved: %s (%d results)", report_name, len(compiled["results"]))
     return {
         "status": "complete",
-        "result": {"saved": True, "path": str(out_path), "filename": report_name},
+        "result": {
+            "saved": True,
+            "path": str(out_path),
+            "filename": report_name,
+            "n_results": len(compiled["results"]),
+        },
     }
 
 
@@ -730,7 +751,11 @@ async def run_study(study_id: str) -> StreamingResponse:  # noqa: PLR0912
                 elif node_type == "ai_analysis":
                     result = await _run_ai_analysis_node(node, upstream)
                 elif node_type == "report":
-                    result = await loop.run_in_executor(None, _run_report_node, node, upstream)
+                    # Pass node_labels so the JSON uses human-readable keys instead of node IDs
+                    _labels = {n["id"]: (n.get("label") or n["id"]) for n in ordered}
+                    result = await loop.run_in_executor(
+                        None, lambda _n=node, _u=upstream, _l=_labels: _run_report_node(_n, _u, _l)
+                    )
                 else:
                     result = await loop.run_in_executor(None, _run_experiment_node, node, upstream)
 

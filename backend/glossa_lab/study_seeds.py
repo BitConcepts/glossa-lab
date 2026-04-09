@@ -73,14 +73,18 @@ _SEEDS: list[dict[str, Any]] = [
     {
         "name": "Positional Profile Analysis",
         "description": (
-            "Quick start: run Positional Profile Analysis on a corpus you upload. "
-            "Set corpus_id in the Inspector after dragging the node onto the canvas."
+            "Run Positional Profile Analysis on any uploaded corpus. "
+            "Add a 📚 Corpus node and connect it to set corpus_id, or leave blank to use the default Indus corpus. "
+            "Results are compiled and saved to reports/ by the Report node."
         ),
         "graph": {
             "nodes": [
                 _node("n1", "positional_profile_analysis", "Positional Profile Analysis", 100, 100),
+                _report("r1", "Positional Profile Report", 450, 100, "positional_profile_report.json"),
             ],
-            "edges": [],
+            "edges": [
+                _edge("e1", "n1", "r1"),
+            ],
         },
     },
     {
@@ -105,20 +109,22 @@ _SEEDS: list[dict[str, Any]] = [
     {
         "name": "Indus Contact Zone & KL Scoring",
         "description": (
-            "Contact zone vs heartland sign-usage comparison, followed by "
-            "inscription-length KL scoring against 10 language profiles. "
-            "Requires icit_extracted_corpus.json in reports/."
+            "Three parallel Indus analyses compiled into one report: "
+            "(1) Contact zone vs heartland sign-usage (Lothal, Dholavira vs Harappa, Mohenjo-daro). "
+            "(2) Inscription-length KL scoring against 10 language profiles. "
+            "(3) Indus Structural Atlas (entropy, Zipf, NWSP, clustering). "
+            "All three require icit_extracted_corpus.json in reports/."
         ),
         "graph": {
             "nodes": [
-                _node("n1", "contact_zone",         "Contact Zone Analysis",   100, 100),
-                _node("n2", "luwian_kl_scoring",    "Luwian/Greek KL Scoring", 450, 100),
-                _node("n3", "indus_structural_atlas","Indus Structural Atlas",  800, 100),
-                _report("r1", "Indus Analysis Report", 1150, 100, "indus_contact_kl_report.json"),
+                _node("n1", "contact_zone",          "Contact Zone Analysis",   100, 100),
+                _node("n2", "luwian_kl_scoring",     "Luwian/Greek KL Scoring", 100, 260),
+                _node("n3", "indus_structural_atlas", "Indus Structural Atlas",  100, 420),
+                _report("r1", "Indus Analysis Report", 550, 260, "indus_contact_kl_report.json"),
             ],
             "edges": [
-                _edge("e1", "n1", "n2"),
-                _edge("e2", "n2", "n3"),
+                _edge("e1", "n1", "r1"),
+                _edge("e2", "n2", "r1"),
                 _edge("e3", "n3", "r1"),
             ],
         },
@@ -207,16 +213,17 @@ _SEEDS: list[dict[str, Any]] = [
     {
         "name": "OCR Pipeline (requires Mistral key)",
         "description": (
-            "Runs Mahadevan (1977) OCR to extract bigram tables and inscription sequences. "
-            "Both nodes are CLI-only and require mistral_api_key in Settings. "
-            "Run each via the terminal command shown in the Experiments tab."
+            "Extracts Mahadevan (1977) bigram tables and inscription sequences via Mistral OCR. "
+            "IMPORTANT: Both experiments are CLI-only \u2014 they cannot run from this graph. "
+            "Open a Terminal and run the command shown on each node. "
+            "Requires: (1) mistral_api_key set in Settings, (2) Mahadevan PDF files on disk."
         ),
         "graph": {
             "nodes": [
-                _node("n1", "ocr_tables", "OCR — Bigram & Frequency Tables", 100, 100),
-                _node("n2", "ocr_texts", "OCR — Inscription Sequences", 100, 300),
+                _node("n1", "ocr_tables", "OCR \u2014 Bigram & Frequency Tables", 100, 100),
+                _node("n2", "ocr_texts",  "OCR \u2014 Inscription Sequences",      100, 320),
             ],
-            "edges": [],
+            "edges": [],  # parallel independent CLI operations — no data flow between them
         },
     },
 ]
@@ -246,7 +253,8 @@ async def seed_studies(db: Any) -> None:  # noqa: ANN401
                ON CONFLICT(id) DO UPDATE SET
                    name        = excluded.name,
                    description = excluded.description,
-                   graph_json  = excluded.graph_json,
+                   -- graph_json intentionally NOT updated: preserve any user modifications.
+                   -- To reset a study to its seed graph, delete it and restart the server.
                    updated_at  = excluded.updated_at""",
             (
                 sid,

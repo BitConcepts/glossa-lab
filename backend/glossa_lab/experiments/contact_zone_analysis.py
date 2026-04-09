@@ -312,18 +312,32 @@ class ContactZoneAnalysis(_EB):
     description = (
         "Compares sign usage between Mesopotamian trade-contact sites "
         "(Lothal, Dholavira, Sutkagen-Dor) and heartland sites (Harappa, Mohenjo-daro). "
-        "Tests for script specialisation at trade interfaces."
+        "Tests for script specialisation at trade interfaces. "
+        "Requires icit_extracted_corpus.json in reports/ (run OCR pipeline or TXT extraction first)."
     )
     estimated_time = "< 1 min"
     requires_key = None
     results_file = "reports/contact_zone_results.json"
     params_schema = {
         "type": "object",
-        "properties": {},
-        "$comment": "Loads icit_extracted_corpus.json automatically. No user params required.",
+        "properties": {
+            "corpus_id": {
+                "type": "string",
+                "title": "Corpus ID",
+                "description": (
+                    "NOT USED — Contact Zone Analysis requires the ICIT corpus with "
+                    "per-inscription site metadata (Lothal, Harappa, etc.). "
+                    "It always loads icit_extracted_corpus.json from reports/. "
+                    "Leave blank."
+                ),
+            },
+        },
     }
 
     def run(self, **kwargs) -> dict:  # type: ignore[override]
+        # corpus_id param is accepted for UI schema consistency but NOT used —
+        # this experiment requires the ICIT corpus with site metadata that generic
+        # corpora do not have.  It always loads icit_extracted_corpus.json.
         result = run_contact_zone_analysis(verbose=False)
         out = _REPORTS / "contact_zone_results.json"
         out.write_text(json.dumps(result, indent=2), encoding="utf-8")

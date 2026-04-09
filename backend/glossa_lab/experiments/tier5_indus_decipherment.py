@@ -1,37 +1,35 @@
-"""Tier 5 — Indus Script Beam Decipherment Hypothesis Test.
+"""Tier 5 — Indus Script Beam Decipherment Hypothesis Test (Clean Protocol).
 
 SCIENTIFIC CONTEXT (Dr. Fuls validation progression):
-  After validating the beam decipherment framework on Ugaritic→Hebrew
-  (Tier 1–4), we apply it to the Indus Script — the primary research target.
+  After validating the beam decipherment on Ugaritic→Hebrew (Tier 1–4), we
+  apply it to the Indus Script.  The first attempt revealed a methodological
+  problem: the top-30 Indus signs are dominated by TERMINAL signs (logograms
+  or determinatives) that appear at the end of nearly every inscription.
+  Mapping all of them to the most-frequent vowel produces a trivially high
+  score for any vowel-heavy language (Dravidian, Sanskrit).
 
-APPROACH:
-  For each language-family hypothesis, we build a language model and run
-  the beam decipherment on the top-N most-frequent Indus signs.  The beam
-  finds the mapping from Indus sign IDs → hypothesis-language phonemes
-  that maximises the bigram log-likelihood.
+  This version implements the Fuls-style anti-circularity fix:
 
-  We compare:
-    (A) Best-mapping score       — the optimal fit achievable
-    (B) Random baseline score    — mean of 50 random mappings
-    (C) Z-score = (A − B) / σ   — how far above random is the best fit?
-    (D) Kandles confidence       — phonetic fingerprint similarity
+  SIGN CLASSIFICATION PROTOCOL
+  ──────────────────────────
+  For each Indus sign compute:
+    - terminal_bias = n_terminal / n_total_occurrences
+    - initial_bias  = n_initial  / n_total_occurrences
+    - positional_entropy = H(initial, medial, terminal)
 
-  The hypothesis with the highest Z-score has the STRONGEST bigram
-  signal relative to a random baseline, suggesting the Indus phonotactics
-  are most similar to that language family.
+  Classification:
+    TERMINAL SIGN   terminal_bias >= 0.50  → likely logogram / determinative
+    INITIAL  SIGN   initial_bias  >= 0.60  → likely prefix / conjunction marker
+    PHONOGRAM CAND  otherwise, freq >= MIN_FREQ, entropy >= MIN_ENTROPY
+
+  The beam runs ONLY on PHONOGRAM CANDIDATES.  This removes the terminal-sign
+  artifact and tests genuine phonotactic compatibility.
 
 HYPOTHESES TESTED:
-  1. Proto-Dravidian (Tamil/Kannada/Telugu ancestor) — Parpola hypothesis
-  2. Indo-Aryan / Sanskrit (Vedic ancestor)          — Rao et al. hypothesis
-  3. Sumerian (cuneiform, logo-syllabic)              — some early proposals
-  4. Hebrew / NW Semitic (control — known decipherment)
-
-LIMITATIONS:
-  - We treat all Indus signs as phonograms; logograms are included,
-    inflating sign count and reducing model quality.
-  - Corpora are small (Dravidian ~1300, Sanskrit ~1000 tokens).
-  - No phonological group constraints applied (unknown correspondences).
-  - This is a HYPOTHESIS SCORING experiment, not a claimed decipherment.
+  1. Proto-Dravidian (Tamil/Kannada/Telugu ancestor)  — Parpola hypothesis
+  2. Indo-Aryan / Sanskrit (Vedic ancestor)           — Rao et al. hypothesis
+  3. Sumerian (logo-syllabic control)                 — some early proposals
+  4. Hebrew / NW Semitic (known-decipherment control)
 
 Usage:
     python -m glossa_lab.experiments.tier5_indus_decipherment
@@ -50,7 +48,70 @@ _BACKEND = os.path.dirname(os.path.dirname(_HERE))
 sys.path.insert(0, _BACKEND)
 
 
-# ── Shared setup ────────────────────────────────────────────────────────
+# ── Sign classification ─────────────────────────────────────
+
+# Thresholds
+_TERMINAL_BIAS_LOGOGRAM = 0.50   # terminal% ≥ this → terminal logogram
+_INITIAL_BIAS_PREFIX    = 0.60   # initial%  ≥ this → initial prefix/marker
+_MIN_ENTROPY            = 0.50   # H(pos) ≥ this → balanced enough for phonogram
+_MIN_FREQ               = 8      # minimum occurrences to include
+
+
+def classify_indus_signs(
+    inscriptions: list[list[str]],
+) -> dict[str, dict]:
+    """Classify each Indus sign as LOGOGRAM, INITIAL, or PHONOGRAM.
+
+    Returns a dict {sign: {type, freq, terminal_bias, initial_bias, entropy}}.
+    """
+    from collections import defaultdict
+    pos: dict[str, dict[str, int]] = defaultdict(
+        lambda: {"initial": 0, "medial": 0, "terminal": 0}
+    )
+    freq: Counter = Counter()
+
+    for insc in inscriptions:
+        if len(insc) < 2:
+            continue
+        for s in insc:
+            freq[s] += 1
+        pos[insc[0]]["initial"]  += 1
+        pos[insc[-1]]["terminal"] += 1
+        for s in insc[1:-1]:
+            pos[s]["medial"] += 1
+
+    result = {}
+    for sign, cnt in freq.items():
+        if cnt < _MIN_FREQ:
+            result[sign] = {"type": "RARE", "freq": cnt}
+            continue
+        p = pos[sign]
+        total = p["initial"] + p["medial"] + p["terminal"]
+        tb = p["terminal"] / total if total else 0.0
+        ib = p["initial"]  / total if total else 0.0
+        probs = [p["initial"] / total, p["medial"] / total, p["terminal"] / total]
+        h = -sum(q * math.log(q + 1e-12) for q in probs)
+
+        if tb >= _TERMINAL_BIAS_LOGOGRAM:
+            stype = "LOGOGRAM"
+        elif ib >= _INITIAL_BIAS_PREFIX:
+            stype = "INITIAL"
+        elif h >= _MIN_ENTROPY:
+            stype = "PHONOGRAM"
+        else:
+            stype = "MEDIAL"   # appears mostly in medial position; ambiguous
+
+        result[sign] = {
+            "type":          stype,
+            "freq":          cnt,
+            "terminal_bias": round(tb, 3),
+            "initial_bias":  round(ib, 3),
+            "entropy":       round(h, 4),
+        }
+    return result
+
+
+# ── Shared setup ─────────────────────────────────────
 
 def _load():
     from glossa_lab.data.dravidian  import get_corpus_symbols as drav_sym
@@ -70,7 +131,6 @@ def _load():
     from glossa_lab.pipelines.decipher import LanguageModel, _score_mapping
     from glossa_lab.pipelines.beam_decipher import beam_decipher
 
-    # Dravidian + Sanskrit: no inscription-level data, build flat LM only
     lm_drav = LanguageModel(drav_sym())
     lm_skt  = LanguageModel(skt_sym())
     lm_sum  = LanguageModel(sum_sym(), inscriptions=sum_ins())
@@ -80,14 +140,18 @@ def _load():
     indus_inscr = ind_ins()
     indus_freq  = Counter(indus_flat)
 
+    # Classify all Indus signs
+    sign_classes = classify_indus_signs(indus_inscr)
+
     return {
-        "lm_drav":     lm_drav,
-        "lm_skt":      lm_skt,
-        "lm_sum":      lm_sum,
-        "lm_heb":      lm_heb,
-        "indus_flat":  indus_flat,
-        "indus_inscr": indus_inscr,
-        "indus_freq":  indus_freq,
+        "lm_drav":      lm_drav,
+        "lm_skt":       lm_skt,
+        "lm_sum":       lm_sum,
+        "lm_heb":       lm_heb,
+        "indus_flat":   indus_flat,
+        "indus_inscr":  indus_inscr,
+        "indus_freq":   indus_freq,
+        "sign_classes": sign_classes,
         "beam_decipher":   beam_decipher,
         "_score_mapping":  _score_mapping,
         "LanguageModel":   LanguageModel,
@@ -100,23 +164,27 @@ def _score_hypothesis(
     d: dict,
     lm,
     label: str,
-    top_n: int = 30,
+    allowed_sign_types: tuple = ("PHONOGRAM", "MEDIAL"),
     n_random: int = 50,
     verbose: bool = True,
 ) -> dict[str, Any]:
-    """Run beam decipherment and score against random baseline."""
-    indus_flat  = d["indus_flat"]
-    indus_inscr = d["indus_inscr"]
-    indus_freq  = d["indus_freq"]
+    """Run beam decipherment and score against random baseline.
+
+    allowed_sign_types: which sign classes to include in the cipher.
+      Defaults to PHONOGRAM + MEDIAL (excludes logograms and initial markers).
+    """
+    indus_inscr   = d["indus_inscr"]
+    indus_freq    = d["indus_freq"]
+    sign_classes  = d["sign_classes"]
     _score_mapping = d["_score_mapping"]
 
-    # Restrict cipher to top-N signs (most frequent — fewest missing bigrams)
-    top_signs = [s for s, _ in indus_freq.most_common(top_n)]
-    top_sign_set = set(top_signs)
+    # Build the phonogram sign set
+    allowed = {s for s, info in sign_classes.items()
+               if info["type"] in allowed_sign_types}
 
-    # Filter inscriptions to only use top-N signs
+    # Filter inscriptions to only use allowed signs
     filtered_inscr = [
-        [s for s in insc if s in top_sign_set]
+        [s for s in insc if s in allowed]
         for insc in indus_inscr
     ]
     filtered_inscr = [i for i in filtered_inscr if len(i) >= 2]
@@ -151,21 +219,30 @@ def _score_hypothesis(
     std_rand  = math.sqrt(sum((x - mean_rand)**2 for x in rand_scores) / len(rand_scores))
     z_score   = (best_score - mean_rand) / std_rand if std_rand > 0 else 0.0
 
-    # ── Top-sign proposed readings ─────────────────────────────────────
+    # ── Top-sign proposed readings ────────────────────────────────────
+    # Top signs by frequency within the allowed subset
+    top_signs_in_subset = [
+        s for s, _ in Counter(filtered_flat).most_common()
+    ]
     top10_readings = [
         (sign, indus_freq[sign], best_map.get(sign, "?"))
-        for sign in top_signs[:10]
+        for sign in top_signs_in_subset[:10]
     ]
+
+    n_signs_used = len(Counter(filtered_flat))
+    n_inscr_used = len(filtered_inscr)
 
     if verbose:
         print(f"\n  [{label}]  LM: {len(lm.alphabet)} signs, {len(lm.bigram_freq)} bigrams")
+        print(f"    Cipher signs used: {n_signs_used}  inscriptions: {n_inscr_used}")
         print(f"    Best beam score:   {best_score:.1f}")
         print(f"    Random mean ± std: {mean_rand:.1f} ± {std_rand:.1f}")
         print(f"    Z-score:           {z_score:+.2f}")
         print(f"    Kandles:           {kandles:.4f}")
-        print(f"    Top 10 proposed readings (sign → phoneme):")
+        print(f"    Top 10 proposed readings (sign \u2192 phoneme):")
         for s, cnt, ph in top10_readings:
-            print(f"      {s:6} (n={cnt:4})  →  {ph}")
+            cls = sign_classes.get(s, {}).get('type', '?')
+            print(f"      {s:6} ({cls:10}) n={cnt:4}  \u2192  {ph}")
 
     return {
         "label":           label,
@@ -176,6 +253,8 @@ def _score_hypothesis(
         "kandles":         round(kandles, 4),
         "top10_readings":  top10_readings,
         "lm_size":         len(lm.alphabet),
+        "n_signs_used":    n_signs_used,
+        "n_inscr_used":    n_inscr_used,
     }
 
 
@@ -186,16 +265,32 @@ def run_tier5_indus(verbose: bool = True, top_n: int = 30) -> dict[str, Any]:
         if verbose: print(*a, **kw)
 
     _pr("\n" + "=" * 70)
-    _pr("  Tier 5 — Indus Script Beam Hypothesis Test")
+    _pr("  Tier 5 — Indus Script Beam Hypothesis Test (Clean Protocol)")
     _pr("=" * 70)
 
     d = _load()
+    sign_classes = d["sign_classes"]
+
+    # ── Sign classification summary ─────────────────────────────────
+    by_type: dict[str, list] = {}
+    for s, info in sign_classes.items():
+        by_type.setdefault(info["type"], []).append((s, info["freq"]))
 
     _pr(f"\n  Indus corpus: {len(d['indus_flat'])} tokens  "
-        f"V={len(d['indus_freq'])} distinct signs  "
+        f"V={len(d['indus_freq'])} signs  "
         f"{len(d['indus_inscr'])} inscriptions")
-    _pr(f"  Testing top {top_n} most-frequent signs against 4 hypotheses")
-    _pr(f"  Scoring: beam (width=200) vs 50 random baselines → Z-score")
+    _pr(f"\n  Sign classification (terminal≥50%→LOGOGRAM, initial≥60%→INITIAL, "
+        f"entropy≥0.50→PHONOGRAM, else MEDIAL):")
+    for t in ("LOGOGRAM", "INITIAL", "PHONOGRAM", "MEDIAL", "RARE"):
+        signs = by_type.get(t, [])
+        top5 = sorted(signs, key=lambda x: -x[1])[:5]
+        _pr(f"    {t:12}: {len(signs):3} signs  "
+            f"(top 5: {', '.join(s for s,_ in top5)})")
+
+    phonogram_signs = {s for s, info in sign_classes.items()
+                       if info["type"] in ("PHONOGRAM", "MEDIAL")}
+    _pr(f"\n  PHONOGRAM + MEDIAL subset: {len(phonogram_signs)} signs  "
+        f"(excluding LOGOGRAM terminal signs and INITIAL prefix markers)")
 
     hypotheses = [
         ("Proto-Dravidian",   d["lm_drav"]),
@@ -204,59 +299,76 @@ def run_tier5_indus(verbose: bool = True, top_n: int = 30) -> dict[str, Any]:
         ("Hebrew (control)",  d["lm_heb"]),
     ]
 
+    _pr("\n" + "=" * 70)
+    _pr("  PASS A — Phonogram + Medial signs only (clean, no logograms)")
+    _pr("=" * 70)
+
     results = []
     for label, lm in hypotheses:
-        r = _score_hypothesis(d, lm, label, top_n=top_n, verbose=verbose)
+        r = _score_hypothesis(
+            d, lm, label,
+            allowed_sign_types=("PHONOGRAM", "MEDIAL"),
+            verbose=verbose,
+        )
         results.append(r)
 
-    # ── Summary table ───────────────────────────────────────────────────
+    # ── Summary table ─────────────────────────────────────────────
     _pr("\n\n" + "=" * 70)
-    _pr("  SUMMARY — Ranked by Z-score (higher = better fit above random)")
+    _pr("  SUMMARY — Ranked by Z-score (phonogram+medial subset, no logograms)")
     _pr("=" * 70)
     ranked = sorted(results, key=lambda x: -x["z_score"])
-    _pr(f"\n  {'Hypothesis':<24} {'Best score':>12}  {'Random mean':>12}  {'Z-score':>8}  {'Kandles':>8}")
-    _pr("  " + "-" * 68)
+    _pr(f"\n  {'Hypothesis':<24} {'Signs':>6}  {'Best':>10}  {'Random':>10}  "
+        f"{'Z-score':>8}  {'Kandles':>8}")
+    _pr("  " + "-" * 72)
     for r in ranked:
-        _pr(f"  {r['label']:<24} {r['best_score']:>12.1f}  "
-            f"{r['mean_random']:>12.1f}  {r['z_score']:>8.2f}  {r['kandles']:>8.4f}")
+        _pr(f"  {r['label']:<24} {r['n_signs_used']:>6}  "
+            f"{r['best_score']:>10.1f}  {r['mean_random']:>10.1f}  "
+            f"{r['z_score']:>8.2f}  {r['kandles']:>8.4f}")
 
-    winner = ranked[0]
+    winner  = ranked[0]
+    runner  = ranked[1] if len(ranked) > 1 else winner
+    margin  = winner["z_score"] - runner["z_score"]
 
-    if winner["z_score"] > 3.0:
+    if winner["z_score"] > 3.0 and margin > 0.5:
         interp = (
-            f"STRONG SIGNAL — {winner['label']} fits significantly above random (Z={winner['z_score']:.2f}). "
-            f"The Indus phonotactics are most consistent with this language family's bigram structure."
+            f"CLEAR SIGNAL — {winner['label']} leads (Z={winner['z_score']:.2f}, "
+            f"+{margin:.2f} over {runner['label']}). "
+            f"Phonogram-subset Indus phonotactics best fit this language family."
+        )
+    elif winner["z_score"] > 3.0:
+        interp = (
+            f"TIED SIGNAL — {winner['label']} and {runner['label']} score similarly "
+            f"(Z={winner['z_score']:.2f} vs {runner['z_score']:.2f}, margin {margin:.2f}). "
+            f"Both hypotheses are compatible with the phonogram-subset distributions."
         )
     elif winner["z_score"] > 1.5:
         interp = (
-            f"MODERATE SIGNAL — {winner['label']} marginally outperforms random (Z={winner['z_score']:.2f}). "
-            f"Consistent with the hypothesis but not conclusive without more data."
+            f"WEAK SIGNAL — {winner['label']} marginally above random (Z={winner['z_score']:.2f}). "
+            f"The phonogram subset may need more data or refined sign classification."
         )
     else:
         interp = (
-            f"WEAK / INCONCLUSIVE — No hypothesis produces a strong Z-score. "
-            f"The Indus corpus may be too small, or the script may be logo-syllabic "
-            f"(many signs are determinatives/logograms, not phonograms)."
+            "INCONCLUSIVE — No hypothesis scores significantly above random on the "
+            "phonogram subset. Further sign classification or larger language LMs needed."
         )
 
     _pr(f"\n  INTERPRETATION: {interp}")
-
-    _pr("\n  NOTE ON METHODOLOGY:")
-    _pr("  Z-scores measure bigram phonotactic similarity, not phonetic identity.")
-    _pr("  A high Z-score means Indus sign sequences RESEMBLE the hypothesis")
-    _pr("  language's consonant cluster patterns — not that the signs ARE those")
-    _pr("  phonemes. This is a distributional compatibility test, not a reading.")
-    _pr("  The Hebrew control should score near 0 (Semitic phonotactics are")
-    _pr("  unlike Indus). A high-Z hypothesis provides the strongest prior for")
-    _pr("  the next stage: phonological group hypothesis construction.")
+    _pr("\n  METHODOLOGY NOTE: Terminal signs (logograms/determinatives) are excluded.")
+    _pr("  Z-scores measure phonotactic compatibility of CANDIDATE PHONOGRAMS only.")
+    _pr("  Hebrew control validates the method: low Z expected (Semitic unlike Indus).")
+    _pr("  Leading hypothesis provides the prior for the next stage:")
+    _pr("  constructing phonological group constraints — as done for Ugaritic→Hebrew.")
 
     return {
         "results":          results,
         "ranked":           ranked,
         "winner":           winner["label"],
-        "winner_z":         winner["z_score"],
+        "winner_z":         round(winner["z_score"], 3),
+        "margin":           round(margin, 3),
         "interpretation":   interp,
-        "top_n":            top_n,
+        "sign_class_counts": {t: len(by_type.get(t, []))
+                              for t in ("LOGOGRAM","INITIAL","PHONOGRAM","MEDIAL","RARE")},
+        "n_phonogram_signs": len(phonogram_signs),
         "indus_tokens":     len(d["indus_flat"]),
         "indus_vocabulary": len(d["indus_freq"]),
     }

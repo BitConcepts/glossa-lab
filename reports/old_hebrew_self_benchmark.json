@@ -33,9 +33,84 @@
   ],
   "wrong_mappings": [
     {
-      "opaque": "H16",
-      "sign": "r",
-      "proposed": "n"
+      "opaque": "H05",
+      "sign": "T",
+      "proposed": "s"
+    },
+    {
+      "opaque": "H12",
+      "sign": "m",
+      "proposed": "k"
+    },
+    {
+      "opaque": "H00",
+      "sign": "'",
+      "proposed": "G"
+    },
+    {
+      "opaque": "H21",
+      "sign": "z",
+      "proposed": "q"
+    },
+    {
+      "opaque": "H10",
+      "sign": "k",
+      "proposed": "E"
+    },
+    {
+      "opaque": "H03",
+      "sign": "G",
+      "proposed": "h"
+    },
+    {
+      "opaque": "H09",
+      "sign": "h",
+      "proposed": "w"
+    },
+    {
+      "opaque": "H11",
+      "sign": "l",
+      "proposed": "'"
+    },
+    {
+      "opaque": "H02",
+      "sign": "E",
+      "proposed": "H"
+    },
+    {
+      "opaque": "H19",
+      "sign": "w",
+      "proposed": "r"
+    },
+    {
+      "opaque": "H01",
+      "sign": "C",
+      "proposed": "p"
+    },
+    {
+      "opaque": "H07",
+      "sign": "d",
+      "proposed": "b"
+    },
+    {
+      "opaque": "H13",
+      "sign": "n",
+      "proposed": "m"
+    },
+    {
+      "opaque": "H15",
+      "sign": "q",
+      "proposed": "C"
+    },
+    {
+      "opaque": "H06",
+      "sign": "b",
+      "proposed": "l"
+    },
+    {
+      "opaque": "H04",
+      "sign": "H",
+      "proposed": "d"
     },
     {
       "opaque": "H17",
@@ -48,84 +123,9 @@
       "proposed": "g"
     },
     {
-      "opaque": "H13",
-      "sign": "n",
-      "proposed": "m"
-    },
-    {
-      "opaque": "H01",
-      "sign": "C",
-      "proposed": "p"
-    },
-    {
-      "opaque": "H03",
-      "sign": "G",
-      "proposed": "h"
-    },
-    {
-      "opaque": "H04",
-      "sign": "H",
-      "proposed": "d"
-    },
-    {
-      "opaque": "H21",
-      "sign": "z",
-      "proposed": "q"
-    },
-    {
-      "opaque": "H09",
-      "sign": "h",
-      "proposed": "w"
-    },
-    {
-      "opaque": "H10",
-      "sign": "k",
-      "proposed": "E"
-    },
-    {
-      "opaque": "H07",
-      "sign": "d",
-      "proposed": "b"
-    },
-    {
-      "opaque": "H15",
-      "sign": "q",
-      "proposed": "C"
-    },
-    {
-      "opaque": "H11",
-      "sign": "l",
-      "proposed": "'"
-    },
-    {
-      "opaque": "H06",
-      "sign": "b",
-      "proposed": "l"
-    },
-    {
-      "opaque": "H19",
-      "sign": "w",
-      "proposed": "r"
-    },
-    {
-      "opaque": "H12",
-      "sign": "m",
-      "proposed": "k"
-    },
-    {
-      "opaque": "H05",
-      "sign": "T",
-      "proposed": "s"
-    },
-    {
-      "opaque": "H00",
-      "sign": "'",
-      "proposed": "G"
-    },
-    {
-      "opaque": "H02",
-      "sign": "E",
-      "proposed": "H"
+      "opaque": "H16",
+      "sign": "r",
+      "proposed": "n"
     }
   ],
   "interpretation": "WEAK (2/21): Hebrew training corpus (1081 tokens) is too small for reliable hill-climbing. Expected \u2014 Snyder (2010) needed ~15,000 tokens. Expanding the corpus is the next step.",

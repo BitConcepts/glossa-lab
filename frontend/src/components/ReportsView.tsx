@@ -6,10 +6,29 @@
 import { useEffect, useState } from "react";
 import {
   listReports, deleteReport, getReportDownloadUrl, openReportFolder,
-  listStudies,
+  listStudies, aiReportSynthesis,
   type CatalogReport, type StudyResponse,
 } from "../api";
 import { fmtDateTimeCompact } from "../dateFormat";
+
+/** Simple markdown → HTML renderer for the AI report modal. */
+function renderMarkdown(md: string): string {
+  return md
+    .replace(/^### (.+)$/gm, '<h3 style="font-size:14px;margin:16px 0 6px;color:#1e3a5f">$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2 style="font-size:16px;margin:20px 0 8px;color:#1e3a5f">$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1 style="font-size:18px;margin:24px 0 10px;color:#111">$1</h1>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/^\| (.+) \|$/gm, (row) => {
+      const cells = row.split('|').filter(c => c.trim());
+      return '<tr>' + cells.map(c => `<td style="padding:4px 10px;border:1px solid #e5e7eb">${c.trim()}</td>`).join('') + '</tr>';
+    })
+    .replace(/(<tr>.*?<\/tr>\n?)+/gs, (t) => `<table style="border-collapse:collapse;width:100%;margin:8px 0">${t}</table>`)
+    .replace(/^- (.+)$/gm, '<li style="margin:2px 0">$1</li>')
+    .replace(/(<li.*?<\/li>\n?)+/gs, '<ul style="margin:6px 0;padding-left:20px">$1</ul>')
+    .replace(/^(?!<[a-z])(.+)$/gm, '<p style="margin:6px 0">$1</p>')
+    .replace(/```[\s\S]*?```/g, (code) => `<pre style="background:#f8fafc;padding:8px;border-radius:4px;font-size:11px;overflow-x:auto">${code.replace(/```\w*/g, '').trim()}</pre>`);
+}
 
 type SortKey = "name" | "kind" | "size_bytes" | "updated_at";
 type SortDir = "asc" | "desc";
@@ -30,6 +49,39 @@ export function ReportsView() {
   // ── Compose mode ──────────────────────────────────────────────
   const [composeMode, setComposeMode] = useState(false);
   const [selected, setSelected] = useState<Set<string>>(new Set());
+
+  // AI Report generation
+  const [aiReportLoading, setAiReportLoading] = useState(false);
+  const [aiReportResult, setAiReportResult] = useState<{ title: string; markdown: string } | null>(null);
+
+  const generateAiReport = async () => {
+    const picked = reports.filter(r => selected.has(r.id));
+    if (!picked.length) return;
+    setAiReportLoading(true);
+    try {
+      // Fetch JSON content for each selected report
+      const contents = await Promise.all(picked.map(async r => {
+        const url = getReportDownloadUrl(r.id);
+        try {
+          const res = await fetch(url);
+          if (res.ok) {
+            const data = await res.json();
+            return { name: r.name, filename: r.relative_path, data };
+          }
+        } catch { /* ignore */ }
+        return { name: r.name, filename: r.relative_path, data: {} };
+      }));
+      const result = await aiReportSynthesis({
+        report_contents: contents,
+        title: picked.length === 1 ? `Analysis: ${picked[0].name}` : `Synthesis of ${picked.length} Reports`,
+      });
+      setAiReportResult(result);
+    } catch (e) {
+      alert(e instanceof Error ? e.message : "AI report generation failed. Check that a language model is configured in Settings.");
+    } finally {
+      setAiReportLoading(false);
+    }
+  };
 
   const toggleSelected = (id: string) =>
     setSelected((prev) => { const s = new Set(prev); s.has(id) ? s.delete(id) : s.add(id); return s; });
@@ -249,7 +301,15 @@ export function ReportsView() {
           </button>
           <div style={{ flex: 1 }} />
           <button
-            onClick={exportComposedPdf}
+            onClick={() => void generateAiReport()}
+            disabled={selected.size === 0 || aiReportLoading}
+            style={{ ...btnStyle, padding: "5px 14px", fontSize: 12,
+              background: selected.size > 0 && !aiReportLoading ? "#2563eb" : "#d1d5db",
+              cursor: selected.size > 0 && !aiReportLoading ? "pointer" : "not-allowed" }}>
+            {aiReportLoading ? "⏳ Generating…" : "🤖 AI Report"}
+          </button>
+          <button
+            onClick={() => void exportComposedPdf()}
             disabled={selected.size === 0}
             style={{ ...btnStyle, padding: "5px 16px", fontSize: 12, background: selected.size > 0 ? "#7c3aed" : "#d1d5db", cursor: selected.size > 0 ? "pointer" : "not-allowed" }}>
             📄 Export PDF ({selected.size})
@@ -456,6 +516,48 @@ export function ReportsView() {
             })}
           </tbody>
         </table>
+      )}
+
+      {/* AI Report Modal */}
+      {aiReportResult && (
+        <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)", zIndex: 10000, display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}
+          onClick={() => setAiReportResult(null)}>
+          <div style={{ background: "#fff", borderRadius: 10, maxWidth: 860, width: "100%", maxHeight: "85vh",
+            display: "flex", flexDirection: "column", boxShadow: "0 20px 60px rgba(0,0,0,0.4)" }}
+            onClick={e => e.stopPropagation()}>
+            {/* Modal header */}
+            <div style={{ padding: "14px 20px", borderBottom: "1px solid #e5e7eb", display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
+              <span style={{ fontSize: 15, fontWeight: 700, color: "#1e3a5f", flex: 1 }}>🤖 {aiReportResult.title}</span>
+              <button
+                onClick={() => {
+                  const html = renderMarkdown(aiReportResult.markdown);
+                  const win = window.open("", "_blank", "width=860,height=900");
+                  if (!win) { alert("Allow popups to export PDF"); return; }
+                  win.document.write(
+                    `<!DOCTYPE html><html><head><title>${aiReportResult.title}</title>` +
+                    `<style>body{font-family:system-ui,sans-serif;max-width:760px;margin:40px auto;font-size:13px;line-height:1.7;color:#111}` +
+                    `table{border-collapse:collapse;width:100%}td,th{border:1px solid #e5e7eb;padding:5px 10px}` +
+                    `@media print{body{margin:10px 20px}}` +
+                    `</style></head><body>` +
+                    `<h1 style="font-size:20px;margin-bottom:4px">${aiReportResult.title}</h1>` +
+                    `<p style="color:#9ca3af;font-size:11px">Generated by Glossa AI · ${new Date().toLocaleString()}</p>` +
+                    `<hr style="border:none;border-top:2px solid #e5e7eb;margin:16px 0">` +
+                    html +
+                    `<script>setTimeout(()=>window.print(),600)</script></body></html>`
+                  );
+                  win.document.close();
+                }}
+                style={{ padding: "5px 14px", border: "none", borderRadius: 6, background: "#7c3aed", color: "#fff", cursor: "pointer", fontSize: 12, fontWeight: 600 }}>
+                📄 Export PDF
+              </button>
+              <button onClick={() => setAiReportResult(null)}
+                style={{ border: "none", background: "none", cursor: "pointer", fontSize: 18, color: "#9ca3af" }}>×</button>
+            </div>
+            {/* Modal body — rendered markdown */}
+            <div style={{ padding: "16px 24px", overflowY: "auto", flex: 1 }}
+              dangerouslySetInnerHTML={{ __html: renderMarkdown(aiReportResult.markdown) }} />
+          </div>
+        </div>
       )}
     </div>
   );

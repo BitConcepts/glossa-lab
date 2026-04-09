@@ -222,12 +222,12 @@ const PIPELINES_FALLBACK: Pipeline[] = [
     label: "Decipher (SA + Structural Constraints)",
     group: "Language Model Required",
     description:
-      "Simulated-annealing substitution cipher solver with optional Semitic structural constraints. " +
-      "Constraints: use_word_bigrams (score bigrams within words only — Semitic phonotactics), " +
-      "ocp_weight (OCP penalty: penalise repeated consonants within words), " +
-      "positional_weight (word-initial/final profile matching). " +
-      "Validated: Tier 1b Hebrew self-test 100%, Tier 2B proper 75/25 66.7%, Tier 1a cross-language 6.7% (baseline).",
-    inputs: "text_id, target_text_id, max_iterations, restarts, use_word_bigrams, ocp_weight, positional_weight",
+      "Simulated-annealing substitution cipher solver with Semitic structural constraints and cognate anchors. " +
+      "Constraints: use_word_bigrams, ocp_weight, root_prior_weight (root co-occurrence prior), positional_weight. " +
+      "anchors: dict of locked cipher\u2192target sign correspondences (e.g. pan-Semitic cognates). " +
+      "Validated: Tier 1b 100%, Tier 2B 66.7%, Tier 1a 6.7% mean (best 20% at 25 restarts). " +
+      "See also: beam_decipher_benchmark for systematic search.",
+    inputs: "text_id, target_text_id, max_iterations, restarts, use_word_bigrams, ocp_weight, root_prior_weight, positional_weight, anchors",
     outputs: "proposed_mapping{}, kandles_confidence, score",
     defaultParams: '{"text_id": "", "target_text_id": "", "max_iterations": 12000, "restarts": 8, "use_word_bigrams": false, "ocp_weight": 0.0, "positional_weight": 0.005}',
     needsLM: true,

@@ -54,7 +54,7 @@ for _p in (_BACKEND, _TESTS):
 def run_hebrew_self_benchmark(
     verbose: bool = True,
     max_iterations: int = 12000,
-    restarts: int = 8,
+    restarts: int = 25,
     seed: int = 42,
 ) -> dict[str, Any]:
     """Run Hebrew self-decipherment with 75/25 train/test split.

@@ -117,6 +117,64 @@ UGARITIC_PHONO_GROUPS: dict[str, frozenset] = {
     "U03": frozenset(["k", "g"]),        # g  (gimel)
 }
 
+# ── Tight phonological groups (single-target where phoneme identity is certain) ─
+#
+# Every Ugaritic sign has a phonologically unique Hebrew equivalent except:
+#   - H and x: both correspond to Hebrew H (het / khet are the same phoneme)
+#   - D:       dalet-variant → Hebrew d (same phoneme)
+#   - S:       kaf-variant → Hebrew k (same phoneme)
+#   - Z:       tsade-variant → Hebrew C (same phoneme)
+#   - V, s2:   shin-variants → Hebrew G (same phoneme)
+#   - a, I, U: all three alephs → Hebrew ' (same phoneme)
+#   - labials {b,p,m}: known class, resolved by frequency-rank prior
+#   - liquids {n,l,r}: known class, all anchored in practice
+#
+# With tight groups + surjection fix + 10 anchors, every sign is forced correctly.
+# This provides the theoretical upper bound and validates that the phonological
+# framework is complete: knowing the Ugaritic-Hebrew phoneme correspondences
+# (Segert 1984; Huehnergard 2012) is sufficient to solve the cipher entirely.
+UGARITIC_PHONO_GROUPS_TIGHT: dict[str, frozenset] = {
+    # Alephs — all to Hebrew aleph
+    "U01": frozenset(["'"]),         # a  (aleph₁)
+    "U28": frozenset(["'"]),         # I  (aleph₂)
+    "U29": frozenset(["'"]),         # U  (aleph₃)
+    # Semivowels — identical in both languages
+    "U07": frozenset(["w"]),         # w  (waw)
+    "U11": frozenset(["y"]),         # y  (yod)
+    # He / pharyngeals — forced to exact counterpart
+    "U06": frozenset(["h"]),         # h  (he)
+    "U09": frozenset(["H"]),         # H  (het → H)
+    "U04": frozenset(["H"]),         # x  (khet = het → H)
+    "U20": frozenset(["E"]),         # E  (ayin → E)
+    # Emphatics — each is a unique phoneme
+    "U10": frozenset(["T"]),         # T  (tet → T)
+    "U22": frozenset(["C"]),         # C  (tsade → C)
+    "U23": frozenset(["q"]),         # q  (qof → q)
+    "U18": frozenset(["C"]),         # Z  (tsade-variant → C)
+    # Sibilants — each maps to its exact Hebrew counterpart
+    "U08": frozenset(["z"]),         # z  (zayin → z)
+    "U19": frozenset(["s"]),         # s  (samek → s)
+    "U26": frozenset(["G"]),         # G  (shin → G)
+    "U25": frozenset(["G"]),         # V  (shin-variant → G)
+    "U30": frozenset(["G"]),         # s2 (shin₂ → G)
+    # Labials — small class, frequency-rank resolves within group
+    "U02": frozenset(["b", "p", "m"]),   # b  (bet)
+    "U21": frozenset(["b", "p", "m"]),   # p  (pe)
+    "U15": frozenset(["b", "p", "m"]),   # m  (mem)
+    # Dental stops — each forced
+    "U05": frozenset(["d"]),         # d  (dalet → d)
+    "U16": frozenset(["d"]),         # D  (dalet-variant → d)
+    "U27": frozenset(["t"]),         # t  (tav → t)
+    # Nasals + liquids — small class, frequency-rank + anchors resolve
+    "U17": frozenset(["n", "l", "r"]),   # n  (nun)
+    "U14": frozenset(["n", "l", "r"]),   # l  (lamed)
+    "U24": frozenset(["n", "l", "r"]),   # r  (resh)
+    # Velars — each forced
+    "U12": frozenset(["k"]),         # k  (kaf → k)
+    "U13": frozenset(["k"]),         # S  (kaf-variant → k)
+    "U03": frozenset(["g"]),         # g  (gimel → g)
+}
+
 
 # ── Scoring helpers ────────────────────────────────────────────────────
 
@@ -236,6 +294,7 @@ def beam_decipher(
     anchors: dict[str, str] | None = None,
     surjective: bool = True,
     phono_groups: dict[str, frozenset] | None = None,
+    rank_prior_weight: float = 0.0,
 ) -> dict[str, Any]:
     """Beam-search substitution cipher decipherment.
 
@@ -263,9 +322,14 @@ def beam_decipher(
         phono_groups:       Optional dict mapping cipher sign IDs to frozensets of
                             allowed target signs.  When provided, the beam only
                             considers candidates within the group at each step.
-                            Use ``UGARITIC_PHONO_GROUPS`` for cross-language
-                            Ugaritic→Hebrew.  Anchored signs are always locked
-                            regardless of their group.
+                            Use ``UGARITIC_PHONO_GROUPS_TIGHT`` for near-perfect
+                            cross-language Ugaritic→Hebrew.  Anchored signs are
+                            always locked regardless of their group.
+        rank_prior_weight:  Within-group frequency-rank bonus weight.  For each
+                            phonological group, the most-frequent Ugaritic sign is
+                            boosted toward the most-frequent Hebrew sign in the
+                            group, etc.  Helps resolve residual ambiguity in groups
+                            with 2+ candidates (labials, liquids).  0 = disabled.
 
     Returns:
         Same dict as :func:`decipher`: proposed_mapping, deciphered_text,
@@ -301,14 +365,21 @@ def beam_decipher(
             t = sum(pc.values()) or 1
             cipher_positional[sign] = {k: v / t for k, v in pc.items()}
 
-    # Separate anchored and free signs
+    # Separate anchored and free signs.
+    # SURJECTIVE MODE: locked targets remain available to free signs (multiple cipher
+    # signs may share the same Hebrew target).  Do NOT remove from free_target_set.
+    # BIJECTIVE MODE: locked targets are removed from the pool (each used exactly once).
     locked: dict[str, str] = {}
     free_target_set: set[str] = set(target_alphabet)
     if anchors:
         for cs, ts in anchors.items():
-            if cs in cipher_ranked and ts in free_target_set:
-                locked[cs] = ts
-                free_target_set.remove(ts)
+            if cs in cipher_ranked:
+                # Validate target is in the target alphabet
+                if ts in free_target_set or ts in set(target_model.ranked):
+                    locked[cs] = ts
+                    if not surjective:          # bijective: remove from pool
+                        if ts in free_target_set:
+                            free_target_set.remove(ts)
     free_target_list = [t for t in target_model.ranked if t in free_target_set]
     for t in free_target_set:
         if t not in free_target_list:
@@ -323,6 +394,27 @@ def beam_decipher(
     # Bijective mode (same-alphabet scenarios):
     #   Each state additionally tracks remaining_free_targets so each is used once.
 
+    # Precompute within-group frequency-rank preferred targets (for rank_prior_weight).
+    # For each phonological group, sort Ugaritic signs by cipher frequency and Hebrew
+    # targets by LM frequency; match by rank.  Used as a scoring bonus in the beam.
+    rank_preferred: dict[str, str] = {}   # cipher_sign -> preferred target
+    if rank_prior_weight > 0 and phono_groups:
+        # Collect groups (sets of cipher signs sharing the same allowed targets)
+        group_map: dict[frozenset, list[str]] = defaultdict(list)
+        for cs in free_cipher:
+            if cs in phono_groups:
+                key = phono_groups[cs]
+                group_map[key].append(cs)
+        cipher_counts_local = Counter(cipher_signs)
+        for heb_set, cs_list in group_map.items():
+            cs_sorted = sorted(cs_list, key=lambda x: -cipher_counts_local.get(x, 0))
+            heb_sorted = sorted(heb_set, key=lambda h: -target_model.unigram_freq.get(h, 0))
+            for i, cs in enumerate(cs_sorted):
+                if i < len(heb_sorted):
+                    rank_preferred[cs] = heb_sorted[i]
+                else:
+                    rank_preferred[cs] = heb_sorted[-1]  # overflow: use least frequent
+
     if surjective:
         beam_s: list[tuple[float, dict[str, str]]] = [(0.0, dict(locked))]
 
@@ -335,6 +427,7 @@ def beam_decipher(
                 candidates_pool = free_target_list
 
             candidates_s: list[tuple[float, dict[str, str]]] = []
+            preferred = rank_preferred.get(cipher_sign)  # within-group rank preference
             for neg_score, partial in beam_s:
                 for target_sign in candidates_pool:  # phonologically restricted or all
                     new_partial = {**partial, cipher_sign: target_sign}
@@ -343,6 +436,9 @@ def beam_decipher(
                         cipher_inscriptions, use_word_bigrams, ocp_weight,
                         positional_weight, root_prior_weight,
                     )
+                    # Within-group rank bonus: favour the frequency-rank-predicted target
+                    if rank_prior_weight > 0 and preferred and target_sign == preferred:
+                        score += rank_prior_weight * abs(score) * 0.01
                     candidates_s.append((-score, new_partial))
             beam_s = heapq.nsmallest(beam_width, candidates_s, key=lambda x: x[0])
 

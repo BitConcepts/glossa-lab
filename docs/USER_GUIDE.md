@@ -1,7 +1,7 @@
 # Glossa Lab — User Guide
 
-> **Version**: current `main` branch  
-> **Last updated**: automatically — update this file whenever the UI or workflow changes.
+> **Version**: current `main` branch
+> **Last updated**: 2026-04-09
 
 ---
 
@@ -110,14 +110,28 @@ The tray icon provides Start / Stop / Restart controls.
 
 ### Sidebar sections
 
-The navigation follows the deliberate workflow order:
-
 | Section | Items |
 |---------|-------|
-| **Workflow** | Corpora → Experiments → Pipelines → Study Builder → Reports → Studies |
-| **Analysis** | Entropy · Signs · Timeline |
+| **Workflow** | Corpora · Experiments · Pipelines · Studies · Reports |
+| **Analysis** | Entropy · Signs · Timeline · Indus Data |
 | **Research** | Hypotheses · Notebooks · Citations · AI Tools |
 | **System** | Status · Jobs · Settings |
+
+**Key name changes (vs older versions)**:
+- "Study Builder" → **Studies** (unified workspace: study list + graph editor)
+- "Exp. Builder" merged into **Experiments** (unified workspace: experiment list + graph editor)
+- "Studies" (Indus statistical data) → **Indus Data** (moved to Analysis)
+
+### Nav indicator dots
+
+Each workspace tab shows a coloured dot reflecting its state:
+
+| Dot | Meaning |
+|-----|---------|
+| 🟡 Amber | Unsaved graph changes in this workspace |
+| 🟢 Pulsing | One or more runs currently in progress |
+| 🟢 Solid | Last run completed successfully |
+| 🔴 Solid red | Last run failed or was aborted |
 
 ### Header toolbar
 
@@ -187,40 +201,60 @@ parameter in experiment nodes to target a specific corpus.
 
 ## 5. Experiments
 
-**Path**: sidebar → Experiments
+**Path**: sidebar → Experiments (unified workspace)
 
-Experiments are the analysis units of Glossa Lab. Each experiment is a Python
-class in `backend/glossa_lab/experiments/` that inherits from `ExperimentBase`.
+The Experiments tab is the **Experiment Builder** — a ComfyUI-style visual
+editor where you compose atomic computation nodes into graph experiments.
+These graph experiments also appear in the Study Builder palette so you can
+use them as nodes in a full research workflow.
 
-### Experiment types
+### Active graph experiments (Experiment Builder palette)
 
-| Category         | Examples |
-|-----------------|---------|
-| **Analysis**    | Positional Profile Analysis, Symbol Clustering, Indus Structural Atlas |
-| **Validation**  | Ventris Validation, Fuls Progression Benchmark, Writing System Progression, Ugaritic Benchmarks |
-| **Research**    | Contact Zone Analysis, Luwian KL Scoring |
-| **Experiments** | Linear A Circularity Suite, Kandles Bias Comparison |
-| **Data Extraction** | OCR — Bigram Tables, OCR — Inscription Sequences (requires Mistral key) |
+| Experiment | Description | Corpus |
+|------------|-------------|--------|
+| Positional Profile Analysis | I/M/T rates per symbol (NWSP) | Any |
+| Symbol Clustering | L1 clustering by positional profile | Any |
+| Word-Length KL Scoring | KL/JS divergence vs language profiles | Any (or ICIT) |
+| Contact Zone Analysis | Site-grouping KL/Jaccard analysis | ICIT only |
+| Indus Structural Atlas | Entropy + Zipf + NWSP + clustering | Synthetic Indus |
+| Kandles Bias Comparison | Biased vs unbiased Kandles profiles | Synthetic Indus |
+| Linear A Anti-Circularity | 7-experiment validation suite | Linear A internal |
+| OCR — Tables / Texts | CLI-only Mahadevan extraction | N/A (CLI only) |
 
-### Running an experiment
+Validation experiments (Ugaritic, Ventris, Progression) remain available as
+Python classes for study execution but are not in the Experiment Builder palette.
 
-**From the Experiments tab**: click **▶ Run** on any experiment card.
-A dialog appears to enter parameters (if any).
+### Running an experiment graph
 
-**From the Study Builder**: drag an experiment onto the canvas, set its params
-in the Inspector panel, then click **▶ Run Study**.
+1. Select a saved experiment from the left panel list, or click **＋ New**
+2. Build/edit the node graph on the canvas
+3. Click the **▶ Run** floating pill at the **top-centre of the canvas**
+4. Each node highlights in blue as it executes (SSE streaming — real-time)
+5. Results shown in the banner below the canvas
 
-**Via the API**:
+All runs create a **Job record** visible in the Jobs panel (`pipeline='exp_run'`).
+
+### Multiple concurrent runs
+
+- Click **▶▶** in the experiment list header to run ALL saved experiments in parallel
+- Each experiment has its own abort controller — independent runs don't block each other
+- **⏹ Stop All** button appears in the toolbar when any runs are active
+- Per-experiment `⏹` stop button also appears on the canvas floating pill
+
+### Corpus selection in the Inspector
+
+When you click a node with a `corpus_id` parameter, the Inspector shows a
+**corpus dropdown** instead of a plain text field. It lists all uploaded corpora
+from the database. Select one or leave blank for the experiment's default.
+
+### Via the API (SSE streaming)
+
 ```
-POST /api/v1/experiments/{id}/run
+POST /api/v1/experiment-graphs/{id}/run
 Content-Type: application/json
-{"kwargs": {"corpus_id": "your-corpus-id", "min_count": 5}}
+{"kwargs": {}}
+→ returns text/event-stream with events: started | node_start | node_end | run_complete | run_error
 ```
-
-**CLI-only experiments**: some experiments (OCR, Kandles Bias, Linear A
-Circularity) take too long to run in-process. Their node will show as `skipped`
-in the Study Builder. Use the **Terminal** and run the CLI command shown on the
-experiment card.
 
 ### Adding a custom experiment
 
@@ -280,11 +314,10 @@ background jobs. Unlike experiments, pipelines are invoked by submitting a job
 
 ## 7. Study Builder
 
-**Path**: sidebar → Study Builder
+**Path**: sidebar → Studies (unified workspace)
 
-The Study Builder is the central workflow interface. It lets you compose
-experiments and pipelines into a **directed acyclic graph (DAG)** where results
-flow from upstream nodes to downstream nodes.
+The Studies tab is the central workflow interface. Left panel: study list + node palette.
+The canvas is a visual DAG editor for composing experiments and pipelines.
 
 ### Concepts
 
@@ -333,56 +366,91 @@ Search by name or filter by group using the pill buttons.
    param          + params       + params       upstream)
 ```
 
+### Corpus data flow
+
+The recommended pattern for flexible, corpus-agnostic research:
+
+```
+[📚 Corpus node]  ← select corpus from dropdown in Inspector
+       │  corpus_id flows to all downstream experiments
+       ▼
+[🧪 Experiment]   ← runs on your corpus (corpus_id injected automatically)
+       │  result
+       ▼
+[🧪 Experiment 2] ← can also use upstream result data
+       │  result
+       ▼
+[📄 Report]       ← saves all upstream results to reports/<name>.json
+```
+
+**corpus_id resolution order** (per experiment node, during study run):
+1. Explicit `corpus_id` param set on the node in Inspector
+2. `corpus_id` from an upstream Corpus (📚) node result
+3. Blank → experiment uses its built-in default (usually ICIT corpus)
+
 ### Running a study
 
-Click **▶ Run**. The backend:
-1. Topologically sorts nodes
-2. For each node in order:
-   - **experiment**: runs `ExperimentBase.run(**params, upstream_results=...)`
-   - **pipeline**: submits a Job and polls until complete (120s timeout)
-   - **corpus**: passes `corpus_id` downstream as a result
-   - **rag_query**: queries the RAG knowledge base with upstream context
-   - **ai_analysis**: sends upstream context to Glossa AI for interpretation
-   - **note/report/hypothesis**: annotation — no execution
-3. Results shown per-node with colored status badges.
+Click the **▶ Run Study** floating pill at the **top-centre of the canvas**.
+The backend streams Server-Sent Events showing each node as it executes:
 
-Node status colors:
-- 🟢 **complete** — ran successfully
-- 🔴 **error** — exception or job failure
-- 🟡 **skipped / pending** — CLI-only or job timed out
-- ⬛ **annotation / corpus** — passthrough nodes
+1. Topologically sorts nodes (sources first)
+2. For each node, emits `node_start` → executes → emits `node_end`
+3. The **currently executing node** pulses blue on the canvas
+4. A Job record (`pipeline='study_run'`) is created and visible in the Jobs panel
+5. When complete, emits `run_complete` with all results
+
+Node status colours after run:
+- 🔵 **Pulsing blue** — currently executing (real-time, via SSE)
+- 🟢 **Green dot** — complete
+- 🔴 **Red dot** — error or failed
+- 🟡 **Amber dot** — skipped / pending (CLI-only or job timed out)
+- ⚫ **Grey dot** — annotation node (corpus/note/hypothesis — not executed)
+
+### Multiple concurrent runs
+
+- Click **▶▶** in the study list header to run **all studies in parallel**
+- Each study has its own SSE stream and abort controller
+- **⏹ Stop All** appears in the toolbar when any runs are active
+- Per-study `⏹` stop button on the canvas; per-study `⏹` in the study list
+- Study list shows live status: `⏳ 5s · FreqCounter (2/7)` while running,
+  then `✓ 5/7` (success) or `✗ 2/7` (errors) after completion
 
 ### Inspector — editing node parameters
 
-Clicking a node opens the Inspector panel (right side). For experiments with
-a `params_schema`, you see typed form fields:
+Clicking a node opens the Inspector panel (right side). Typed form fields appear
+for each configurable parameter:
 
-- **String fields**: text input (e.g. Corpus ID — paste the UUID from the Corpora tab)
-- **Integer/Number fields**: number input with optional min/max
-- **Boolean fields**: checkbox toggle
+| Field type | Rendered as |
+|------------|-------------|
+| `corpus_id` | Dropdown of all uploaded corpora + "Default Indus corpus" option |
+| String | Text input |
+| Integer / Number | Number input with optional min/max |
+| Boolean | Checkbox toggle |
 
-Changes update the node's params immediately. **Save** to persist.
+**Corpus selector**: any parameter named `corpus_id` shows a live dropdown
+fetched from the Corpora tab. Select a corpus or leave blank for the default.
 
-For experiments with no configurable params (most research experiments), the
-Inspector shows "No configurable parameters" — they are self-contained.
+Changes update the node's params immediately. **💾 Save** to persist.
 
 ### Pre-built study seeds
 
-On every server restart, Glossa Lab upserts 8 curated seed studies:
+On first startup, Glossa Lab creates 8 curated seed studies:
 
-| Study | Purpose |
-|-------|---------|
-| **Positional Profile Analysis** | Quick-start: single-node, set `corpus_id` in Inspector |
-| **Symbol Clustering** | Positional profile → clustering pipeline |
-| **Indus Contact Zone & KL Scoring** | Contact zone + KL scoring + structural atlas |
-| **Indus Structural Atlas** | Full Indus entropy/Zipf/NWSP analysis |
-| **Ugaritic Anti-Circularity Benchmark** | Validates proper train/test split method |
-| **Writing System Progression** | 5-tier progression benchmark (Fuls method) |
-| **Linear A Anti-Circularity Suite** | 7-experiment circularity analysis (CLI-only) |
-| **OCR Pipeline** | OCR extraction nodes (requires Mistral key, CLI-only) |
+| Study | Graph structure | Notes |
+|-------|-----------------|-------|
+| **Positional Profile Analysis** | single node → report | Generic, set corpus_id in Inspector |
+| **Symbol Clustering** | positional_profile → symbol_clustering → report | Generic |
+| **Indus Contact Zone & KL Scoring** | 3 parallel nodes → report | Requires ICIT corpus |
+| **Indus Structural Atlas** | atlas → kandles_bias → report | Synthetic Indus corpus |
+| **Ugaritic Anti-Circularity Benchmark** | 2 nodes → report | Validation |
+| **Writing System Progression** | 3 nodes → report | Validation |
+| **Linear A Anti-Circularity Suite** | linear_a → kandles_bias → report | ~30s (3 MC trials) |
+| **OCR Pipeline** | 2 parallel CLI-only nodes | Requires Mistral key + PDFs |
 
-You can modify these freely — seeds are re-applied on restart but only for
-their own stable IDs, never overwriting user-created studies.
+**Graph preservation**: seed study _graphs_ are **never overwritten** after the
+first creation. Your modifications survive backend restarts. Only the `name` and
+`description` fields update on restart. To reset to the original graph, delete
+the study and restart the server.
 
 ### AI features in Study Builder
 

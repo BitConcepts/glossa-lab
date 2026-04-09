@@ -219,15 +219,17 @@ const PIPELINES_FALLBACK: Pipeline[] = [
   },
   {
     id: "decipher",
-    label: "Decipher (Substitution Cipher)",
+    label: "Decipher (SA + Structural Constraints)",
     group: "Language Model Required",
     description:
-      "Hill-climbing substitution cipher solver. Uses bigram/trigram frequencies from " +
-      "a target language model. Best validated on Ugaritic vs Hebrew (proper protocol). " +
-      "Not valid for logo-syllabic scripts as-is.",
-    inputs: "text_id, target_text_id, max_iterations, restarts",
+      "Simulated-annealing substitution cipher solver with optional Semitic structural constraints. " +
+      "Constraints: use_word_bigrams (score bigrams within words only — Semitic phonotactics), " +
+      "ocp_weight (OCP penalty: penalise repeated consonants within words), " +
+      "positional_weight (word-initial/final profile matching). " +
+      "Validated: Tier 1b Hebrew self-test 100%, Tier 2B proper 75/25 66.7%, Tier 1a cross-language 6.7% (baseline).",
+    inputs: "text_id, target_text_id, max_iterations, restarts, use_word_bigrams, ocp_weight, positional_weight",
     outputs: "proposed_mapping{}, kandles_confidence, score",
-    defaultParams: '{"text_id": "", "target_text_id": "", "max_iterations": 5000}',
+    defaultParams: '{"text_id": "", "target_text_id": "", "max_iterations": 12000, "restarts": 8, "use_word_bigrams": false, "ocp_weight": 0.0, "positional_weight": 0.005}',
     needsLM: true,
   },
   {

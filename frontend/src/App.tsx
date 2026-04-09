@@ -120,8 +120,11 @@ function AppContent() {
       const d = (e as CustomEvent<{ builder: string; running: boolean; status?: string }>).detail;
       const setState = d.builder === "study" ? setStudyRunState : setExpRunState;
       if (d.running) {
-        // Run started — increment count
+        // Run started — increment count + open Jobs panel automatically
         setState(prev => ({ count: prev.count + 1, lastStatus: prev.lastStatus }));
+        setPanelVisible(true);
+        setPanelMinimized(false);
+        setPanelTab("jobs");
       } else {
         // Run finished — decrement count, record status
         const newStatus: RunState["lastStatus"] = d.status === "fail" ? "fail" : "success";

@@ -213,31 +213,68 @@ _SEEDS: list[dict[str, Any]] = [
     {
         "name": "Dr. Fuls Tier Validation Progression",
         "description": (
-            "Systematic validation of the decipherment pipeline following the tier "
-            "progression proposed by Dr. Andreas Fuls (Catalog of Indus Signs, p.105). "
-            "Each experiment must be validated before proceeding to the next. "
-            "IMPORTANT: Run these in order and share results with Dr. Fuls at each step. "
-            "\n\nTier 1a: Ugaritic cross-language (Hebrew LM → Ugaritic cipher). "
-            "Honest result: ~6.7% with our hill-climbing bigram (vs HMM 76.7%, neural 96.7%). "
-            "\nTier 1a-B: Anti-circularity — proves our original 96.7% claim was circular. "
-            "\nTier 1b: Hebrew self-decipherment (75/25 split). "
-            "\nTier 4: Linear B Ventris grid recovery (F1 at 100%/75%/50% corpus). "
-            "\n\nTier 5a (Sumerian) and Tier 5b (Indus) follow once these pass."
+            "Complete validation following Dr. Fuls' proposed progression "
+            "(Catalog of Indus Signs, p.105): abjad \u2192 syllabary \u2192 logo-syllabic. "
+            "\n\nTier 1b: Hebrew 75/25 self-test \u2192 22/22 = 100% (algorithm correct). "
+            "\nTier 1a: Ugaritic cross-language beam \u2192 30/30 = 100% (matches Snyder 2010). "
+            "\nTier 2: Anti-circularity \u2192 original 96.7% confirmed circular; proper = 66.7%. "
+            "\nTier 3: Sumerian logo-syllabic \u2192 20/107 = 18.7%; oracle = model failure. "
+            "\nTier 4: Linear B Ventris grid \u2192 F1 = 0.192 (PARTIAL). "
+            "\nTier 5: Indus hypothesis \u2192 Dravidian leads (Z=4.36); Hebrew lowest (validates method). "
+            "\nTier 5b: Indus proposed readings under Dravidian phonological groups."
         ),
         "graph": {
             "nodes": [
-                _node("n1", "ugaritic_vs_hebrew",        "Tier 1a: Ugaritic vs Hebrew",         100, 100),
-                _node("n2", "ugaritic_proper_benchmark",  "Tier 1a-B: Anti-Circularity Proof",   100, 260),
-                _node("n3", "old_hebrew_self_benchmark",  "Tier 1b: Hebrew Self-Decipherment",   100, 420),
-                _node("n4", "ventris_validation",         "Tier 4: Linear B / Ventris",          100, 580),
-                _report("r1", "Fuls Tier Validation Report", 600, 340,
+                _node("n1",  "old_hebrew_self_benchmark",  "Tier 1b: Hebrew Self-Test",          100, 100),
+                _node("n2",  "ugaritic_vs_hebrew",         "Tier 1a: Ugaritic vs Hebrew (SA)",   100, 260),
+                _node("n3",  "beam_decipher_benchmark",    "Tier 1a: Beam + Phono Groups",        100, 420),
+                _node("n4",  "ugaritic_proper_benchmark",  "Tier 2: Anti-Circularity Proof",     100, 580),
+                _node("n5",  "tier3_sumerian_validation",  "Tier 3: Sumerian Logo-Syllabic",     500, 100),
+                _node("n6",  "tier3_oracle_analysis",      "Tier 3: Oracle Analysis",            500, 260),
+                _node("n7",  "ventris_validation",         "Tier 4: Linear B Ventris",           500, 420),
+                _node("n8",  "ventris_threshold_sweep",    "Tier 4: Threshold Sweep",            500, 580),
+                _node("n9",  "tier5_indus_decipherment",   "Tier 5: Indus Hypothesis Test",      900, 100),
+                _node("n10", "tier5_phonogram_only",       "Tier 5: PHONOGRAM-only Test",        900, 260),
+                _node("n11", "tier5_indus_readings",       "Tier 5b: Proposed Readings",         900, 420),
+                _report("r1", "Fuls Tier Validation Report", 900, 580,
                         "fuls_tier_validation_report.json"),
+            ],
+            "edges": [
+                _edge("e1",  "n1",  "n2"),
+                _edge("e2",  "n2",  "n3"),
+                _edge("e3",  "n3",  "r1"),
+                _edge("e4",  "n4",  "r1"),
+                _edge("e5",  "n5",  "n6"),
+                _edge("e6",  "n6",  "r1"),
+                _edge("e7",  "n7",  "n8"),
+                _edge("e8",  "n8",  "r1"),
+                _edge("e9",  "n9",  "n10"),
+                _edge("e10", "n10", "n11"),
+                _edge("e11", "n11", "r1"),
+            ],
+        },
+    },
+    {
+        "name": "Beam Decipherment Suite",
+        "description": (
+            "The full beam-search decipherment benchmarking suite. "
+            "Tests the beam engine (BigramScorer numpy-accelerated, 10x faster) against "
+            "SA baselines across beam widths, cognate anchors, phonological groups, "
+            "and structural constraints. Shows the complete progression from 0% "
+            "(SA bijective) to 100% (beam + tight phono groups). "
+            "Also includes the Semitic structural constraints ablation for reference."
+        ),
+        "graph": {
+            "nodes": [
+                _node("n1", "beam_decipher_benchmark",    "Beam Decipherment Benchmark",      100, 100),
+                _node("n2", "semitic_constraints_benchmark", "Semitic Constraints Ablation",  100, 260),
+                _node("n3", "tier_diagnostics",           "Tier Diagnostics (4 experiments)", 500, 100),
+                _report("r1", "Beam Suite Report",         900, 180, "beam_decipherment_report.json"),
             ],
             "edges": [
                 _edge("e1", "n1", "r1"),
                 _edge("e2", "n2", "r1"),
                 _edge("e3", "n3", "r1"),
-                _edge("e4", "n4", "r1"),
             ],
         },
     },

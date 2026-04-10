@@ -12,6 +12,8 @@ likely represented on Indus seals (animals, trade, religion, numerals).
 
 from __future__ import annotations
 
+from pathlib import Path
+
 # ── Proto-Dravidian reconstructed vocabulary (from DEDR) ──────────
 # Format: root → English gloss
 # Roots are in simplified transliteration (no diacritics)
@@ -307,13 +309,30 @@ def get_vocabulary() -> dict[str, str]:
 
 
 def get_corpus_text() -> str:
-    """Return Old Tamil text for language model building."""
-    return OLD_TAMIL_TEXT
+    """Return the Classical Tamil corpus used for the Dravidian LM.
+
+    Combines:
+      1. Embedded Old Tamil / Tirukkural-style transliterated corpus
+      2. The `tests/corpora/fixtures/tamil.txt` fixture used elsewhere in
+         Glossa Lab studies
+
+    This gives the Tier 5 Dravidian LM a larger and more varied character
+    distribution without changing the transliteration scheme.
+    """
+    fixture = (
+        Path(__file__).resolve().parent.parent.parent
+        / "tests"
+        / "corpora"
+        / "fixtures"
+        / "tamil.txt"
+    )
+    extra = fixture.read_text(encoding="utf-8") if fixture.exists() else ""
+    return f"{OLD_TAMIL_TEXT} {extra}".strip()
 
 
 def get_corpus_symbols() -> list[str]:
     """Return character-level symbol sequence from Old Tamil."""
-    return [c for c in OLD_TAMIL_TEXT.lower() if c.isalpha()]
+    return [c for c in get_corpus_text().lower() if c.isalpha()]
 
 
 def get_morphology() -> dict:

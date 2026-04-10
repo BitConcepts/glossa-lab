@@ -29,11 +29,23 @@ function stripAnsi(s: string): string {
  * and return a human-readable string like:
  *   16:32:21 INFO  [glossa_lab.database] Database ready  path=data/glossa.db
  */
+function parseLogTimestamp(raw: string): string {
+  // Input: "2026-04-08 16:32:21,111" (UTC) or similar
+  // Output: locale-formatted time, matching the Jobs panel's toLocaleTimeString()
+  try {
+    const iso = raw.replace(",", ".").replace(" ", "T") + "Z";
+    const dt = new Date(iso);
+    if (!isNaN(dt.getTime())) return dt.toLocaleTimeString();
+  } catch { /* fall through */ }
+  // Fallback: just strip the date prefix and return HH:MM:SS
+  return raw.length >= 19 ? raw.slice(11, 19) : raw;
+}
+
 function formatLogLine(raw: string): string {
   try {
     const d = JSON.parse(raw) as Record<string, unknown>;
     if (typeof d.message !== "string") return raw;
-    const ts  = typeof d.timestamp === "string" ? d.timestamp.slice(11, 19) : "";
+    const ts  = typeof d.timestamp === "string" ? parseLogTimestamp(d.timestamp) : "";
     const lvl = typeof d.level   === "string" ? d.level.padEnd(5) : "     ";
     const mod = typeof d.module  === "string" ? `[${d.module}]` : "";
     const msg = d.message;
@@ -146,6 +158,13 @@ function JobsPanel() {
     catch { toast("Clear failed", "error"); }
   };
 
+  const handleClearDone = async () => {
+    try { await clearJobs(true); await load(); toast("Finished jobs cleared", "info"); }
+    catch { toast("Clear failed", "error"); }
+  };
+
+  const finishedCount = jobs.filter((j) => ["completed", "failed", "cancelled"].includes(j.status)).length;
+
   const statusColor: Record<string, string> = {
     pending: "#d97706", running: "#2563eb", completed: "#16a34a", failed: "#dc2626", cancelled: "#6b7280",
   };
@@ -156,6 +175,9 @@ function JobsPanel() {
         <span style={{ fontSize: 11, color: "#94a3b8" }}>{jobs.length} jobs</span>
         <div style={{ display: "flex", gap: 4 }}>
           <button onClick={load} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#94a3b8", cursor: "pointer", fontSize: 10 }}>⟳</button>
+          {finishedCount > 0 && (
+            <button onClick={handleClearDone} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#94a3b8", cursor: "pointer", fontSize: 10 }}>Clear Done ({finishedCount})</button>
+          )}
           {jobs.length > 0 && (
             <button onClick={handleClearAll} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#ef4444", cursor: "pointer", fontSize: 10 }}>Delete All</button>
           )}

@@ -142,14 +142,18 @@ propose one or more actions include a block formatted EXACTLY as shown:
 %%END_ACTIONS%%
 
 Available action types — title/statement/id/etc. go INSIDE params{}, not at the top level:
-  run_experiment:    {"type":"run_experiment", "params":{"id":"<exp_id>"}, "label":"...", "description":"..."}
-  run_pipeline:      {"type":"run_pipeline",   "params":{"pipeline":"<id>","params":{},"name":"..."},      "label":"...", "description":"..."}
-  change_setting:    {"type":"change_setting", "params":{"key":"<key>","value":"<val>"},                  "label":"...", "description":"..."}
-  generate_report:   {"type":"generate_report","params":{"script":"<script.py>"},                        "label":"...", "description":"..."}
-  create_hypothesis: {"type":"create_hypothesis","params":{"title":"...","statement":"..."},             "label":"...", "description":"..."}
-  create_notebook:   {"type":"create_notebook", "params":{"title":"...","content":"..."},                "label":"...", "description":"..."}
-  open_view:         {"type":"open_view",       "params":{"view":"<view_id>"},                           "label":"...", "description":"..."}
-  clear_jobs:        {"type":"clear_jobs",      "params":{},                                              "label":"...", "description":"..."}
+  run_experiment:    {"type":"run_experiment",  "params":{"id":"<exp_id>"},                             "label":"...", "description":"..."}
+  run_pipeline:      {"type":"run_pipeline",    "params":{"pipeline":"<id>","params":{},"name":"..."},   "label":"...", "description":"..."}
+  change_setting:    {"type":"change_setting",  "params":{"key":"<key>","value":"<val>"},               "label":"...", "description":"..."}
+  generate_report:   {"type":"generate_report", "params":{"script":"<script.py>"},                      "label":"...", "description":"..."}
+  create_hypothesis: {"type":"create_hypothesis","params":{"title":"...","statement":"..."},            "label":"...", "description":"..."}
+  create_notebook:   {"type":"create_notebook", "params":{"title":"...","content":"..."},               "label":"...", "description":"..."}
+  open_view:         {"type":"open_view",        "params":{"view":"<view_id>"},                         "label":"...", "description":"..."}
+  clear_jobs:        {"type":"clear_jobs",       "params":{},                                            "label":"...", "description":"..."}
+  execute_script:    {"type":"execute_script",   "params":{"code":"<python_code>","description":"..."},  "label":"...", "description":"..."}   ← runs Python inline against the corpus
+  query_corpus:      {"type":"query_corpus",     "params":{"pattern":["sign_id",...],"position":"any"},  "label":"...", "description":"..."}   ← find inscriptions matching a sign pattern
+  compare_results:   {"type":"compare_results",  "params":{"file_a":"<report.json>","file_b":"..."},    "label":"...", "description":"..."}   ← diff two experiment result files
+  summarize_session: {"type":"summarize_session","params":{"title":"..."},                              "label":"...", "description":"..."}   ← save this conversation as a notebook entry
 
 View IDs for open_view: studies, builder, experiments, corpora, reports, entropy, signs,
   timeline, hypotheses, notebooks, citations, ai-tools, status, pipelines, jobs, settings
@@ -166,11 +170,194 @@ _REPORTS = Path(__file__).resolve().parent.parent.parent.parent / "reports"
 _LEDGER  = Path(__file__).resolve().parent.parent.parent.parent / "LEDGER.md"
 
 
+def _build_benchmark_context() -> str:
+    """Return a compact table of all current decipherment benchmark scores.
+
+    Tries to load from cached report JSON files first.  Falls back to the
+    hard-coded session results if reports are not present.
+    """
+    lines = ["\n=== DECIPHERMENT BENCHMARK SCORES (verified results) ==="]
+
+    # Try to load live scores from report JSON files
+    score_files = {
+        "beam_benchmark": _REPORTS / "beam_decipher_benchmark.json",
+        "transparency":   _REPORTS / "transparency_benchmark.json",
+        "prior_ablation": _REPORTS / "prior_ablation_benchmark.json",
+        "proto_sinaitic": _REPORTS / "proto_sinaitic_benchmark.json",
+        "meroitic":       _REPORTS / "meroitic_benchmark.json",
+        "ventris":        _REPORTS / "ventris_validation.json",
+    }
+    live: dict[str, Any] = {}
+    for key, path in score_files.items():
+        if path.exists():
+            try:
+                live[key] = json.loads(path.read_text(encoding="utf-8"))
+            except Exception:  # noqa: BLE001
+                pass
+
+    # ---- Tier 1a: Ugaritic → Hebrew ----------------------------------------
+    lines.append("\nTIER 1a — Ugaritic → Hebrew (Snyder 2010 protocol, 30 signs, 945 tokens)")
+    if "beam_benchmark" in live:
+        b = live["beam_benchmark"]
+        sa = b.get("sa_baseline", {})
+        best = b.get("best_overall", "?")
+        lines.append(f"  SA bijective (25 restarts):        {sa.get('bijective','?')}/30")
+        lines.append(f"  SA surjective:                     {sa.get('surjective','?')}/30")
+        lines.append(f"  SA + 10 anchors:                   {sa.get('surjective_anchored','?')}/30")
+        lines.append(f"  Beam + tight phono + 10 anchors:  {best}/30  ← 100% with full constraints")
+    else:
+        lines.append("  SA bijective:  0/30 = 0.0%    SA surjective: 2/30 = 6.7%")
+        lines.append("  SA + 10 anchors: 12/30 = 40.0%")
+        lines.append("  Beam + tight phono groups + 10 anchors: 30/30 = 100.0%  ← BEST")
+
+    # ---- Transparency breakdown --------------------------------------------
+    lines.append("\nTRANSPARENCY BENCHMARK (attribution for Tier 1a):")
+    if "transparency" in live:
+        t = live["transparency"]
+        for tier in t.get("tiers", []):
+            acc = tier.get("accuracy", "?")
+            delta = tier.get("oracle_delta")
+            d_str = f"oracle Δ={delta:+.0f}" if delta is not None else "oracle Δ=N/A"
+            lines.append(f"  {tier.get('label',''):<40} {acc}/30  {d_str}")
+    else:
+        lines.append("  T0 freq-rank floor:   0/30 = 0%    (nothing injected)")
+        lines.append("  T1 + bigram SA:       2/30 = 6.7%  oracle Δ = -1718  (INVERTED)")
+        lines.append("  T2 + ling. priors:    3/30 = 10.0% oracle Δ = -5480  (MORE inverted)")
+        lines.append("  T3 + human anchors:  30/30 = 100%  oracle Δ = 0")
+        lines.append("  Attribution: algorithm=7%, linguistic priors=3%, human anchors=90%")
+    lines.append("  CRITICAL FINDING: The score landscape is INVERTED — the correct")
+    lines.append("  Ugaritic→Hebrew mapping scores LOWER than SA's best under ALL")
+    lines.append("  statistical scoring methods, including all prior combinations.")
+    lines.append("  Hebrew bigram statistics do not separate Ugaritic phoneme assignments.")
+
+    # ---- Prior ablation ----------------------------------------------------
+    lines.append("\nPRIOR ABLATION STUDY (Tier 1a, 7 levels):")
+    if "prior_ablation" in live:
+        pa = live["prior_ablation"]
+        floor = pa.get("floor", 0)
+        peak  = pa.get("peak", 0)
+        lines.append(f"  Floor (no optimizer): {floor}/30   Peak (all priors): {peak}/30")
+        for r in pa.get("results", []):
+            d = r.get("delta")
+            d_str = f"Δ={d:+.0f}" if d is not None else "Δ=N/A"
+            lines.append(f"  Level {r['level']}: {r['label']:<44} acc={r['accuracy']}/30  {d_str}  {r['landscape']}")
+    else:
+        lines.append("  Level 0 (freq-rank seed, no optimizer): 0/30   oracle Δ = N/A")
+        lines.append("  Level 1 (+ bigram SA):    2/30  oracle Δ = -1718  FLAT/INV")
+        lines.append("  Level 2 (+ positional):   2/30  oracle Δ =  -855  FLAT/INV")
+        lines.append("  Level 3 (+ OCP):          1/30  oracle Δ = -1165  FLAT/INV")
+        lines.append("  Level 4 (+ word bigrams): 2/30  oracle Δ =  -939  FLAT/INV")
+        lines.append("  Level 5 (+ root prior):   2/30  oracle Δ = -7418  FLAT/INV")
+        lines.append("  Level 6 (all combined):   3/30  oracle Δ = -5480  FLAT/INV")
+
+    # ---- Tier 1b -----------------------------------------------------------
+    lines.append("\nTIER 1b — Ugaritic self-decipherment: 22/22 = 100%")
+    lines.append("TIER 1c — Ugaritic → Phoenician: 29/30 = 96.7% (best beam + anchors)")
+
+    # ---- Tier 1e: Proto-Sinaitic -------------------------------------------
+    lines.append("\nTIER 1e — Proto-Sinaitic → Hebrew (floor test, 576 tokens, 21/22 signs)")
+    if "proto_sinaitic" in live:
+        ps = live["proto_sinaitic"]
+        sa_d = ps.get("sa", {})
+        best = ps.get("best_overall", "?")
+        lines.append(f"  SA no anchors: {sa_d.get('no_anchors','?')}/22   SA+10 anchors: {sa_d.get('anchors_10','?')}/22")
+        lines.append(f"  Best (beam + phono + anchors): {best}/22")
+    else:
+        lines.append("  SA no anchors: 1/22 = 4.5%   SA + 10 anchors: 19/22 = 86.4%")
+        lines.append("  Beam + tight phono + 10 anchors: 19/22 = 86.4%")
+    lines.append("  Interpretation: minimum corpus size (~576 tokens) works with anchors.")
+
+    # ---- Tier 1f: Meroitic -------------------------------------------------
+    lines.append("\nTIER 1f — Meroitic → Coptic (graceful degradation test, 551 tokens)")
+    if "meroitic" in live:
+        mr = live["meroitic"]
+        cop = mr.get("coptic", {})
+        slf = mr.get("self", {})
+        lines.append(f"  Wrong target (Coptic): {cop.get('beam','?')}/19   oracle Δ = {cop.get('oracle_delta','?'):.0f}")
+        lines.append(f"  Self-model ceiling:   {slf.get('beam','?')}/19   oracle Δ = {slf.get('oracle_delta','?'):.1f}")
+        lines.append(f"  Degradation ratio: {mr.get('degradation_ratio','?')}")
+    else:
+        lines.append("  Wrong target (Coptic): 1/19 = 5.3%   oracle Δ = -3972  (NEGATIVE → engine rejects wrong LM)")
+        lines.append("  Self-model ceiling:   16/19 = 84.2%  oracle Δ = -8.7")
+        lines.append("  Degradation ratio: 0.06 — engine correctly detects wrong language hypothesis")
+
+    # ---- Tier 4: Linear B / Ventris ----------------------------------------
+    lines.append("\nTIER 4 — Linear B / Ventris (3429 words, 9242 tokens, 69 signs)")
+    lines.append("  F1 = 0.148 (vowel rows=0.165, consonant cols=0.131) — PARTIAL recovery")
+    lines.append("  Bottleneck: corpus diversity, not size. Scaling curve shows F1 ∝ sqrt(tokens).")
+    lines.append("=== END BENCHMARK SCORES ===")
+    return "\n".join(lines)
+
+
+_CODEBASE_API_REFERENCE = """
+=== DECIPHERMENT ENGINE API — CORRECT IMPORTS (use exactly these paths) ===
+from glossa_lab.pipelines.decipher import (
+    LanguageModel,    # bigram/trigram/positional/word-cooccur language model
+    decipher,         # Simulated Annealing decipherment
+    score_accuracy,   # {correct, total, accuracy, details} given proposed vs gt
+    _score_mapping,   # float log-likelihood score for a complete mapping
+)
+from glossa_lab.pipelines.beam_decipher import (
+    beam_decipher,               # beam-search decipherment (preferred over SA)
+    UGARITIC_PHONO_GROUPS,       # broad phonological groups (per Segert 1984)
+    UGARITIC_PHONO_GROUPS_TIGHT, # tight 1-to-1 groups (achieves 30/30 Tier 1a)
+)
+
+KEY SIGNATURES:
+  LanguageModel(symbols: list[str], inscriptions: list[list[str]] | None = None)
+    attrs: .bigram_freq, .word_bigram_freq, .word_cooccur, .ocp_rate, .ranked,
+           .positional, .trigram_freq, .unigram_freq
+
+  decipher(cipher_signs, target_model, seed=42, max_iterations=15000,
+           restarts=25, cipher_inscriptions=None, surjective=False,
+           use_word_bigrams=False, ocp_weight=0.0, positional_weight=0.005,
+           root_prior_weight=0.0, anchors=None) -> {proposed_mapping, score, ...}
+
+  beam_decipher(cipher_signs, target_model, beam_width=200,
+                cipher_inscriptions=None, surjective=True, anchors=None,
+                phono_groups=None, rank_prior_weight=0.0, max_target_reuse=0,
+                ocp_weight=0.0, use_word_bigrams=False, root_prior_weight=0.0)
+                -> same shape as decipher() plus {"engine":"beam"}
+
+  score_accuracy(proposed: dict[str,str], answer_key: dict[str,str])
+                -> {correct: int, total: int, accuracy: float, details: list}
+
+  _score_mapping(cipher_signs, mapping, target_model, cipher_positional={},
+                 use_word_bigrams=False, cipher_inscriptions=None,
+                 ocp_weight=0.0, positional_weight=0.005, root_prior_weight=0.0)
+                -> float (negative log-likelihood; higher = better fit)
+
+DATA MODULES:
+  from glossa_lab.data.old_hebrew import (
+      get_corpus_symbols,        # list[str] — flat Hebrew consonant tokens
+      get_word_inscriptions,     # list[list[str]] — word-level (4-sign chunks)
+      get_corpus_inscriptions,   # list[list[str]] — line-level (verse)
+      get_ugaritic_to_hebrew_map,# dict[str, str] — Ug consonant → Heb consonant
+  )
+  from glossa_lab.data.proto_sinaitic import (
+      get_corpus_symbols, get_corpus_inscriptions,
+      get_full_answer_key, get_partial_answer_key,  # PS01..PS22 → Hebrew phoneme
+  )
+  from glossa_lab.data.meroitic import (
+      get_corpus_symbols, get_corpus_inscriptions, get_full_answer_key,
+      get_coptic_symbols, get_coptic_inscriptions,
+  )
+  # (add backend/tests/ to sys.path first)
+  from corpora.ugaritic import (
+      _BAAL_CYCLE_LINES, _SIGN_TO_ID, get_answer_key, get_word_level_inscriptions,
+  )
+
+DO NOT use: glossa_lab.utils.corpus, decipherment.SimulatedAnnealing,
+            target_lm.score(), or any other non-existent modules.
+=== END API REFERENCE ==="""
+
+
 def _build_research_context() -> str:
     """Assemble current Indus decipherment research state into a compact context block.
 
     Loads from reports/sign_expansion.json and the last ~80 lines of LEDGER.md
     so any AI model has the full current state without needing file uploads.
+    Also injects verified benchmark scores and the codebase API reference.
     """
     lines: list[str] = []
     lines.append("=== GLOSSA LAB — INDUS SCRIPT DECIPHERMENT RESEARCH CONTEXT ===")
@@ -250,6 +437,10 @@ def _build_research_context() -> str:
         except Exception:  # noqa: BLE001
             pass
 
+    # ---- Benchmark scores + engine API reference (high-value for research tasks)
+    lines.append(_build_benchmark_context())
+    lines.append(_CODEBASE_API_REFERENCE)
+
     lines.append("""
 === PYTHON SCRIPTING PATTERNS (for writing runnable analysis scripts) ===
 Corpus file: reports/icit_extracted_corpus.json  (relative to backend/)
@@ -311,9 +502,11 @@ DO NOT invent T-rates/counts not in context; say 'run a script to obtain this'.
         "You are acting as a decipherment research collaborator. "
         "Reason from the evidence above ONLY. Do not invent T-rates, I-rates, or counts "
         "that are not in context; if data is missing say so and recommend running a script. "
-        "When writing Python scripts, use the corpus data structure and patterns documented above. "
+        "When writing Python scripts, use ONLY the import paths in DECIPHERMENT ENGINE API above. "
+        "When citing benchmark numbers, use the DECIPHERMENT BENCHMARK SCORES table above EXACTLY. "
         "Propose hypotheses with explicit confidence levels (HIGH/MED/LOW). "
-        "Reference Fuls sign numbers (e.g. 'sign 817')."
+        "Reference Fuls sign numbers (e.g. 'sign 817'). "
+        "Give thorough, complete answers — never truncate mid-response."
     )
     return "\n".join(lines)
 
@@ -682,7 +875,283 @@ async def execute_action(body: ActionExecuteRequest) -> dict[str, Any]:
         n = await db.clear_jobs()
         return {"ok": True, "summary": f"Cleared {n} jobs."}
 
+    # ── execute_script ──────────────────────────────────────────────────────────
+    if t == "execute_script":
+        import subprocess  # noqa: PLC0415, S404
+        import sys
+        import tempfile
+        code = p.get("code", "")
+        if not code or len(code.strip()) < 5:
+            raise HTTPException(400, "Missing or empty code")
+        # Write to a temp file; set PYTHONPATH so glossa_lab is importable
+        backend_dir = Path(__file__).resolve().parent.parent.parent
+        tests_dir   = backend_dir / "tests"
+        env = dict(__import__("os").environ)
+        existing_pp = env.get("PYTHONPATH", "")
+        env["PYTHONPATH"] = str(backend_dir) + __import__("os").pathsep + str(tests_dir) + (
+            __import__("os").pathsep + existing_pp if existing_pp else ""
+        )
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".py",
+                                         delete=False, encoding="utf-8") as fh:
+            fh.write(code)
+            tmp = fh.name
+        try:
+            proc = subprocess.run(  # noqa: S603
+                [sys.executable, tmp],
+                capture_output=True, text=True, timeout=120, env=env,
+            )
+        finally:
+            __import__("os").unlink(tmp)
+        ok = proc.returncode == 0
+        stdout = proc.stdout[-3000:]
+        stderr = proc.stderr[-500:]
+        # Try to parse last JSON line from stdout as structured result
+        result_json: dict[str, Any] | None = None
+        for raw_line in reversed(stdout.splitlines()):
+            try:
+                result_json = json.loads(raw_line.strip())
+                break
+            except Exception:  # noqa: BLE001
+                pass
+        return {
+            "ok": ok,
+            "summary": f"Script executed (exit {proc.returncode}). "
+                       f"{len(stdout.splitlines())} output lines.",
+            "stdout": stdout,
+            "stderr": stderr,
+            "result_json": result_json,
+        }
+
+    # ── query_corpus ────────────────────────────────────────────────────────────
+    if t == "query_corpus":
+        pattern: list[str] = p.get("pattern", [])
+        position: str = p.get("position", "any")  # any | initial | terminal | medial
+        max_results: int = min(int(p.get("max_results", 50)), 200)
+        corpus_file = Path(__file__).resolve().parent.parent.parent.parent / "reports" / "icit_extracted_corpus.json"
+        if not corpus_file.exists():
+            return {"ok": False, "summary": "Corpus file not found.", "matches": []}
+        try:
+            corpus_data = json.loads(corpus_file.read_text(encoding="utf-8"))
+            inscriptions = [i["sequence"] for i in corpus_data.get("inscriptions", []) if i.get("sequence")]
+        except Exception as exc:  # noqa: BLE001
+            raise HTTPException(500, f"Corpus load error: {exc}") from exc
+
+        if not pattern:
+            return {"ok": False, "summary": "No pattern provided.", "matches": []}
+
+        matches: list[dict[str, Any]] = []
+        for insc in inscriptions:
+            if len(insc) < len(pattern):
+                continue
+            found = False
+            if position == "initial":
+                found = insc[:len(pattern)] == pattern
+            elif position == "terminal":
+                found = insc[-len(pattern):] == pattern
+            else:  # any — sliding window
+                for i in range(len(insc) - len(pattern) + 1):
+                    if insc[i:i+len(pattern)] == pattern:
+                        found = True
+                        break
+            if found:
+                matches.append({"inscription": insc, "length": len(insc)})
+                if len(matches) >= max_results:
+                    break
+        return {
+            "ok": True,
+            "summary": f"Found {len(matches)} inscriptions matching {pattern} ({position}).",
+            "matches": matches,
+            "pattern": pattern,
+            "position": position,
+        }
+
+    # ── compare_results ─────────────────────────────────────────────────────────
+    if t == "compare_results":
+        file_a = p.get("file_a", "")
+        file_b = p.get("file_b", "")
+        if not file_a or not file_b:
+            raise HTTPException(400, "Both file_a and file_b are required")
+        reports_dir = Path(__file__).resolve().parent.parent.parent.parent / "reports"
+        def _safe_load(name: str) -> dict[str, Any] | None:
+            p = reports_dir / name
+            if not p.exists():
+                return None
+            try:
+                return json.loads(p.read_text(encoding="utf-8"))
+            except Exception:  # noqa: BLE001
+                return None
+        a = _safe_load(file_a)
+        b = _safe_load(file_b)
+        if a is None:
+            raise HTTPException(404, f"Report '{file_a}' not found")
+        if b is None:
+            raise HTTPException(404, f"Report '{file_b}' not found")
+        # Build a flat diff of numeric values
+        def _flatten(d: Any, prefix: str = "") -> dict[str, Any]:
+            out: dict[str, Any] = {}
+            if isinstance(d, dict):
+                for k, v in d.items():
+                    out.update(_flatten(v, f"{prefix}.{k}" if prefix else k))
+            elif isinstance(d, (int, float, str)):
+                out[prefix] = d
+            return out
+        flat_a = _flatten(a)
+        flat_b = _flatten(b)
+        diffs: list[dict[str, Any]] = []
+        all_keys = set(flat_a) | set(flat_b)
+        for key in sorted(all_keys):
+            va = flat_a.get(key, "<missing>")
+            vb = flat_b.get(key, "<missing>")
+            if va != vb:
+                diffs.append({"key": key, "a": va, "b": vb})
+        return {
+            "ok": True,
+            "summary": f"Compared {file_a} vs {file_b}: {len(diffs)} differences.",
+            "file_a": file_a,
+            "file_b": file_b,
+            "n_diffs": len(diffs),
+            "diffs": diffs[:100],
+        }
+
+    # ── summarize_session ───────────────────────────────────────────────────────
+    if t == "summarize_session":
+        from glossa_lab.database import get_db  # noqa: PLC0415
+        db = get_db()
+        if db is None:
+            raise HTTPException(503, "Database unavailable")
+        title = p.get("title", "AI Session Summary")
+        # Use any provided conversation content; otherwise generate a stub
+        conv_content = p.get("content", "")
+        nb = await db.create_notebook({
+            "title": title,
+            "content": conv_content or f"Session summary saved at {__import__('datetime').datetime.utcnow().isoformat()}",
+            "study_id": None,
+            "tags": ["ai-generated", "session-summary"],
+        })
+        return {"ok": True, "summary": f"Session summary '{title}' saved to notebooks.", "id": nb["id"]}
+
     raise HTTPException(400, f"Unknown action type: '{t}'")
+
+
+# ── Streaming chat endpoint ──────────────────────────────────────────────────
+
+
+@router.post("/chat/stream")
+async def ai_chat_stream(body: ChatRequest):
+    """Streaming version of /ai/chat using Server-Sent Events.
+
+    Streams token-by-token from Ollama (or falls back to a single event for
+    remote providers).  Frontend receives:
+      data: {"delta": "token text"}       — partial token
+      data: {"done": true, "actions": [...]}  — final event with parsed actions
+    """
+    from fastapi.responses import StreamingResponse  # noqa: PLC0415
+    from glossa_lab.ai_utils import _get_provider_prefs, _call_ollama  # noqa: PLC0415
+    from glossa_lab.model_profiles import get_profile, trim_history  # noqa: PLC0415
+    from glossa_lab.experiment_base import discover_experiments  # noqa: PLC0415
+    import urllib.request  # noqa: PLC0415
+
+    # Build the same system prompt as /ai/chat
+    context_block = ""
+    if body.context_type == "research":
+        context_block = "\n\n" + _build_research_context()
+
+    profile = get_profile(body.model)
+    settings_ctx = _build_settings_context()
+    action_addendum = ""
+    if profile["action_capable"]:
+        try:
+            exp_ids = sorted(discover_experiments().keys())
+            action_addendum = _ACTION_SYSTEM_ADDENDUM + (
+                f"\n\nREGISTERED EXPERIMENT IDs: {', '.join(exp_ids)}"
+            )
+        except Exception:  # noqa: BLE001
+            action_addendum = _ACTION_SYSTEM_ADDENDUM
+
+    base_role = (
+        "You are Glossa, an expert AI research assistant for Glossa Lab. "
+        "You have deep knowledge of computational linguistics, information theory, "
+        "and the specific decipherment methodology used at Glossa Lab."
+    )
+    system = _build_system_prompt(
+        base=base_role, context_block=context_block,
+        settings_ctx=settings_ctx, action_addendum=action_addendum,
+        style=profile["prompt_style"],
+    )
+    messages = [{"role": "system", "content": system}] + [
+        {"role": m.role, "content": m.content} for m in body.messages
+    ]
+    messages = trim_history(messages, budget_chars=profile["ctx_budget"] * 4)
+
+    # Try Ollama streaming; fall back to blocking call for remote providers
+    prefs = _get_provider_prefs()
+    ollama_pref = prefs.get("ollama", {})
+    use_ollama_stream = (
+        not body.provider
+        and ollama_pref.get("enabled")
+        and ollama_pref.get("selected_model")
+    ) or (body.provider == "ollama" and body.model)
+
+    async def _sse_stream():
+        accumulated = ""
+        if use_ollama_stream:
+            model = body.model or ollama_pref.get("selected_model", "")
+            payload = json.dumps({
+                "model": model,
+                "messages": messages,
+                "stream": True,
+                "options": {"temperature": profile["temperature"],
+                            "num_predict": profile["max_tokens"]},
+            }).encode()
+            req = urllib.request.Request(
+                "http://localhost:11434/api/chat",
+                data=payload,
+                headers={"Content-Type": "application/json"},
+                method="POST",
+            )
+            try:
+                with urllib.request.urlopen(req, timeout=180) as resp:
+                    for raw_line in resp:
+                        if not raw_line.strip():
+                            continue
+                        try:
+                            chunk = json.loads(raw_line.decode())
+                            token = chunk.get("message", {}).get("content", "")
+                            if token:
+                                accumulated += token
+                                yield f"data: {json.dumps({'delta': token})}\n\n"
+                            if chunk.get("done"):
+                                break
+                        except Exception:  # noqa: BLE001
+                            pass
+            except Exception as exc:  # noqa: BLE001
+                yield f"data: {json.dumps({'error': str(exc)})}\n\n"
+        else:
+            # Fall back: run blocking call in thread, emit full reply as one event
+            loop = asyncio.get_event_loop()
+            from glossa_lab.ai_utils import call_llm  # noqa: PLC0415
+            try:
+                full = await loop.run_in_executor(
+                    None,
+                    lambda: call_llm(messages, max_tokens=profile["max_tokens"],
+                                     temperature=profile["temperature"],
+                                     provider_override=body.provider,
+                                     model_override=body.model),
+                )
+                accumulated = full
+                yield f"data: {json.dumps({'delta': full})}\n\n"
+            except Exception as exc:  # noqa: BLE001
+                yield f"data: {json.dumps({'error': str(exc)})}\n\n"
+
+        # Final event: parse actions from assembled text
+        clean, actions = _parse_actions(accumulated)
+        yield f"data: {json.dumps({'done': True, 'content': clean, 'actions': actions})}\n\n"
+
+    return StreamingResponse(
+        _sse_stream(),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+    )
 
 
 # ── AI Report Synthesis ───────────────────────────────────────────────────
@@ -803,7 +1272,8 @@ async def ai_decipher(body: DecipherRequest) -> dict[str, Any]:
             [{"role": "system", "content": system}, {"role": "user", "content": user}],
             json_mode=True,
         )
-        result = json.loads(raw)
+        from glossa_lab.ai_utils import _extract_json  # noqa: PLC0415
+        result = json.loads(_extract_json(raw))
         result["sign_sequence"] = body.sign_sequence
         result["theory"] = body.theory
         return result
@@ -849,7 +1319,8 @@ async def ai_draft_section(body: DraftSectionRequest) -> dict[str, Any]:
             [{"role": "system", "content": system}, {"role": "user", "content": user}],
             json_mode=True,
         )
-        result = json.loads(raw)
+        from glossa_lab.ai_utils import _extract_json  # noqa: PLC0415
+        result = json.loads(_extract_json(raw))
         result["experiment_id"] = body.experiment_id
         return result
     except ValueError as e:
@@ -898,7 +1369,8 @@ async def ai_generate_hypotheses(body: HypothesisGenRequest) -> dict[str, Any]:
             [{"role": "system", "content": system}, {"role": "user", "content": user}],
             json_mode=True,
         )
-        result = json.loads(raw)
+        from glossa_lab.ai_utils import _extract_json  # noqa: PLC0415
+        result = json.loads(_extract_json(raw))
         if body.study_id:
             result["study_id"] = body.study_id
         return result

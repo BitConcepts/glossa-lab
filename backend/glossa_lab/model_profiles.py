@@ -122,17 +122,40 @@ def trim_history(
     messages: list[dict[str, str]],
     budget_chars: int,
 ) -> list[dict[str, str]]:
-    """Drop oldest non-system messages until total content length ≤ budget_chars.
+    """Trim conversation history to fit within budget_chars.
 
-    The system message (role="system") is always kept.
+    When the conversation exceeds the budget, the oldest turns are collapsed
+    into a single compact summary note rather than silently dropped.  This
+    preserves research continuity across long sessions.
+
+    The system message (role="system") is always kept intact.
     budget_chars approximates token count at 4 chars/token.
     """
     system = [m for m in messages if m["role"] == "system"]
     convo  = [m for m in messages if m["role"] != "system"]
 
     total = sum(len(m["content"]) for m in convo)
-    while total > budget_chars and len(convo) > 1:
+    if total <= budget_chars:
+        return system + convo
+
+    # Collect oldest messages to summarize (drop until we have headroom)
+    summarized: list[str] = []
+    while total > budget_chars * 0.9 and len(convo) > 2:
         removed = convo.pop(0)
+        role_label = "User" if removed["role"] == "user" else "Glossa"
+        # Keep first 120 chars of each dropped turn for the summary
+        snippet = removed["content"][:120].replace("\n", " ")
+        summarized.append(f"{role_label}: {snippet}...")
         total -= len(removed["content"])
+
+    if summarized:
+        summary_note = (
+            "[Earlier conversation summary — "
+            + str(len(summarized))
+            + " turns condensed]\n"
+            + "\n".join(summarized)
+        )
+        # Inject summary as first assistant message so context is preserved
+        convo.insert(0, {"role": "assistant", "content": summary_note})
 
     return system + convo

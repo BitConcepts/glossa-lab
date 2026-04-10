@@ -154,6 +154,20 @@ Available action types — title/statement/id/etc. go INSIDE params{}, not at th
   query_corpus:      {"type":"query_corpus",     "params":{"pattern":["sign_id",...],"position":"any"},  "label":"...", "description":"..."}   ← find inscriptions matching a sign pattern
   compare_results:   {"type":"compare_results",  "params":{"file_a":"<report.json>","file_b":"..."},    "label":"...", "description":"..."}   ← diff two experiment result files
   summarize_session: {"type":"summarize_session","params":{"title":"..."},                              "label":"...", "description":"..."}   ← save this conversation as a notebook entry
+  acquire_corpus:    {"type":"acquire_corpus",  "params":{"source_id":"<id>","name":"...","corpus_type":"ancient","url":"<opt>"},  "label":"...", "description":"..."}   ← download & register a corpus from a known source
+
+ACQUIRABLE CORPUS SOURCE IDs (use exactly in acquire_corpus):
+  cdli_proto_elamite    — Proto-Elamite ~5k tablets from Iran via CDLI API (available now)
+  cdli_sumerian_ur3     — Sumerian Ur III via CDLI API (available now)
+  oracc_akkadian        — Akkadian ORACC corpus, ~200k tokens (available now, 30-60s download)
+  sigla_linear_a        — Linear A SigLA/TylerLengyel CSV ~7.5k tokens (available now)
+  tylerlengyel_linear_a — Linear A JSON fallback (available now)
+  custom_url            — Any URL: provide url param; auto-detects CSV/JSON/text format
+  meroitic_rilly_expanded — Requires manual book acquisition (contact rilly@cnrs.fr)
+  rongorongo_fischer    — Requires Fischer 1997 book
+  cretan_hieroglyphic_chic — Requires CHIC 1996 book
+  yadav2010_indus       — Requires PLOS ONE supplementary download
+  mahadevan1977_concordance — Already covered by OCR pipeline
 
 View IDs for open_view: studies, builder, experiments, corpora, reports, entropy, signs,
   timeline, hypotheses, notebooks, citations, ai-tools, status, pipelines, jobs, settings
@@ -630,6 +644,23 @@ Tier 5:  Indus Script → Dravidian (the research frontier)
          Current: Dravidian leads but Z-scores do not cross significance threshold.
 === END TIER HIERARCHY ===
 """)
+
+    # ---- Acquirable corpus catalog -------------------------------------------
+    try:
+        from glossa_lab.corpus_acquirer import get_catalog as _get_cat  # noqa: PLC0415
+        cat = _get_cat()
+        available = [c for c in cat if c["status"] == "available"]
+        manual    = [c for c in cat if c["status"] != "available"]
+        lines.append("\n=== ACQUIRABLE CORPUS CATALOG (use with acquire_corpus action) ===")
+        lines.append("AVAILABLE NOW (downloadable automatically):")
+        for c in available:
+            lines.append(f"  {c['id']:<30} {c['name']} | {c['tier']} | {c['size_estimate']}")
+        lines.append("REQUIRES MANUAL ACQUISITION:")
+        for c in manual:
+            lines.append(f"  {c['id']:<30} {c['name']} | {c['note'][:80]}")
+        lines.append("=== END CORPUS CATALOG ===")
+    except Exception:  # noqa: BLE001
+        pass
 
     lines.append("\n=== END RESEARCH CONTEXT ===")
     lines.append(
@@ -1150,6 +1181,59 @@ async def execute_action(body: ActionExecuteRequest) -> dict[str, Any]:
             "diffs": diffs[:100],
         }
 
+    # ── acquire_corpus ──────────────────────────────────────────────────────────
+    if t == "acquire_corpus":
+        from glossa_lab.corpus_acquirer import acquire, get_catalog  # noqa: PLC0415
+        from glossa_lab.database import get_db  # noqa: PLC0415
+
+        source_id  = p.get("source_id", "custom_url")
+        corpus_name = p.get("name") or p.get("corpus_name", source_id.replace("_", " ").title())
+        corpus_type = p.get("corpus_type", "ancient")
+        custom_url  = p.get("url") or None
+        description = p.get("description", "")
+
+        # Acquire and convert
+        loop = asyncio.get_event_loop()
+        try:
+            result = await loop.run_in_executor(
+                None, lambda: acquire(source_id, custom_url=custom_url)
+            )
+        except (ValueError, RuntimeError) as exc:
+            raise HTTPException(400, str(exc)) from exc
+
+        inscriptions = result["inscriptions"]
+        meta = result["metadata"]
+        flat_tokens: list[str] = [s for ins in inscriptions for s in ins]
+
+        # Register in the corpus database
+        db = get_db()
+        if db is None:
+            raise HTTPException(503, "Database unavailable")
+
+        corpus = await db.create_text({
+            "name":         corpus_name,
+            "corpus_type":  corpus_type,
+            "content":      flat_tokens,
+            "description":  description or f"Acquired from {meta['source']}",
+        })
+
+        n_insc = meta["n_inscriptions"]
+        n_tok  = meta["n_tokens"]
+        alpha  = meta["alphabet_size"]
+        return {
+            "ok": True,
+            "corpus_id":      corpus["id"],
+            "corpus_name":    corpus_name,
+            "n_inscriptions": n_insc,
+            "n_tokens":       n_tok,
+            "alphabet_size":  alpha,
+            "source":         meta["source"],
+            "summary": (
+                f"Corpus '{corpus_name}' acquired: {n_insc} inscriptions, "
+                f"{n_tok} tokens, {alpha} distinct signs. Registered with ID {corpus['id']}."
+            ),
+        }
+
     # ── summarize_session ───────────────────────────────────────────────────────
     if t == "summarize_session":
         from glossa_lab.database import get_db  # noqa: PLC0415
@@ -1639,6 +1723,27 @@ async def ai_sign_reading(body: SignReadingRequest) -> dict[str, Any]:
         raise HTTPException(status_code=503, detail=str(e)) from e
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc)) from exc
+
+
+@router.get("/corpus-catalog")
+async def get_corpus_catalog() -> dict[str, Any]:
+    """Return the catalog of acquirable corpora.
+
+    Each entry includes: id, name, description, source, tier, size_estimate,
+    status (available | requires_manual), and a usage note.
+    The frontend uses this to let users browse what can be downloaded and
+    propose acquire_corpus actions via the AI.
+    """
+    from glossa_lab.corpus_acquirer import get_catalog  # noqa: PLC0415
+    catalog = get_catalog()
+    available = [c for c in catalog if c["status"] == "available"]
+    manual    = [c for c in catalog if c["status"] != "available"]
+    return {
+        "catalog":   catalog,
+        "available": [c["id"] for c in available],
+        "manual":    [c["id"] for c in manual],
+        "total":     len(catalog),
+    }
 
 
 @router.get("/research-context")

@@ -925,6 +925,18 @@ python ocr_mahadevan.py --target texts`}
         </p>
       </section>
 
+      {/* AI Behavior */}
+      <section style={sectionStyle}>
+        <h3 style={sectionTitleStyle}>AI Behavior</h3>
+        <p style={hintTextStyle}>
+          Control how Glossa AI handles action proposals during chat. These preferences
+          persist across sessions.
+        </p>
+
+        {/* Auto-approve toggle */}
+        <AutoApproveSetting />
+      </section>
+
       {/* About */}
       <section style={sectionStyle}>
         <h3 style={sectionTitleStyle}>About Glossa Lab</h3>
@@ -934,6 +946,70 @@ python ocr_mahadevan.py --target texts`}
           Collaboration target: ICIT access from Dr. Andreas Fuls (TU Berlin).
         </p>
       </section>
+    </div>
+  );
+}
+
+// ── Auto-approve setting ─────────────────────────────────────────────────────────
+
+const AUTO_APPROVE_KEY = "glossa_auto_approve";
+
+function AutoApproveSetting() {
+  const { toast } = useToast();
+  const [enabled, setEnabled] = useState(() => localStorage.getItem(AUTO_APPROVE_KEY) === "true");
+
+  const toggle = (v: boolean) => {
+    setEnabled(v);
+    localStorage.setItem(AUTO_APPROVE_KEY, v ? "true" : "false");
+    // Notify any open AIChatWindow instances
+    window.dispatchEvent(new CustomEvent("glossa:auto_approve_changed"));
+    toast(v ? "Auto-approve enabled — Glossa AI will run all actions automatically" : "Auto-approve disabled", v ? "success" : "info");
+  };
+
+  return (
+    <div style={{ marginTop: 12 }}>
+      <div style={{
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+        padding: "12px 14px", borderRadius: 7,
+        border: `1px solid ${enabled ? "#fbbf24" : "#e5e7eb"}`,
+        background: enabled ? "#fffbeb" : "#fafafa",
+      }}>
+        <div>
+          <div style={{ fontSize: 13, fontWeight: 600, color: enabled ? "#92400e" : "#374151", display: "flex", alignItems: "center", gap: 6 }}>
+            <span style={{ fontSize: 15 }}>{enabled ? "⚡" : "✋"}</span>
+            Auto Approve All AI Actions
+            {enabled && (
+              <span style={{ fontSize: 9, padding: "1px 6px", borderRadius: 8, background: "#f59e0b", color: "#78350f", fontWeight: 700 }}>ACTIVE</span>
+            )}
+          </div>
+          <p style={{ ...hintTextStyle, marginTop: 3 }}>
+            {enabled
+              ? "Glossa AI will execute all proposed actions automatically without asking for approval. Click to disable."
+              : "Glossa AI will ask for approval before executing actions. Toggle on to run all actions automatically."}
+          </p>
+        </div>
+        {/* Toggle switch */}
+        <div
+          onClick={() => toggle(!enabled)}
+          title={enabled ? "Click to disable auto-approve" : "Click to enable auto-approve"}
+          style={{
+            width: 44, height: 24, borderRadius: 12, cursor: "pointer", flexShrink: 0,
+            background: enabled ? "#f59e0b" : "#d1d5db",
+            position: "relative", transition: "background 0.2s",
+          }}
+        >
+          <div style={{
+            position: "absolute", top: 3, left: enabled ? 23 : 3,
+            width: 18, height: 18, borderRadius: "50%",
+            background: "#fff", boxShadow: "0 1px 3px rgba(0,0,0,0.25)",
+            transition: "left 0.2s",
+          }} />
+        </div>
+      </div>
+      <p style={{ ...hintTextStyle, marginTop: 6, color: "#9ca3af" }}>
+        You can also toggle auto-approve per-session from the <strong>⚡ AUTO</strong> badge
+        in the Glossa AI chat header, or via the <strong>▾</strong> dropdown on any Approve button.
+      </p>
     </div>
   );
 }

@@ -50,9 +50,13 @@ function CitationCard({ cit, onUpdated, onDeleted }: {
     finally { setSaving(false); }
   };
 
+  const [bibtexCopied, setBibtexCopied] = useState(false);
   const copyBibTeX = () => {
     if (!cit.bibtex) { toast("No BibTeX stored", "warning"); return; }
-    navigator.clipboard.writeText(cit.bibtex).then(() => toast("BibTeX copied", "success"));
+    navigator.clipboard.writeText(cit.bibtex).then(() => {
+      setBibtexCopied(true);
+      setTimeout(() => setBibtexCopied(false), 1400);
+    });
   };
 
   return (
@@ -65,7 +69,10 @@ function CitationCard({ cit, onUpdated, onDeleted }: {
         {cit.venue && <span style={{ fontSize: 11, color: "#9ca3af", maxWidth: 150, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{cit.venue}</span>}
         <span style={{ fontSize: 11, color: "#6b7280", fontFamily: "monospace" }}>[{cit.key}]</span>
         <button onClick={(e) => { e.stopPropagation(); copyBibTeX(); }} title="Copy BibTeX"
-          style={{ border: "1px solid #e5e7eb", background: "none", borderRadius: 4, fontSize: 10, padding: "1px 7px", cursor: "pointer" }}>BibTeX</button>
+          style={{ border: "1px solid #e5e7eb", background: bibtexCopied ? "#dcfce7" : "none",
+            color: bibtexCopied ? "#16a34a" : undefined,
+            borderRadius: 4, fontSize: 10, padding: "1px 7px", cursor: "pointer", transition: "background 0.2s" }}>
+            {bibtexCopied ? "✓" : "BibTeX"}</button>
         <button onClick={(e) => { e.stopPropagation(); if (!confirm("Delete?")) return; deleteCitation(cit.id).then(() => onDeleted(cit.id)).catch(() => toast("Delete failed", "error")); }}
           style={{ border: "1px solid #fca5a5", background: "none", color: "#dc2626", borderRadius: 4, fontSize: 10, padding: "1px 7px", cursor: "pointer" }}>🗑</button>
         <span style={{ fontSize: 14, color: "#9ca3af" }}>{expanded ? "▲" : "▼"}</span>

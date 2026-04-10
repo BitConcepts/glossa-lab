@@ -82,6 +82,33 @@ function renderMd(raw: string): string {
   return html;
 }
 
+// ── Silent copy button with brief checkmark feedback (no toast notification) ──
+function CopyButton({ text, label = "Copy", style: extraStyle }: { text: string; label?: string; style?: React.CSSProperties }) {
+  const [copied, setCopied] = useState(false);
+  const copy = () => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1400);
+    });
+  };
+  return (
+    <button
+      onClick={copy}
+      title="Copy to clipboard"
+      style={{
+        border: "1px solid #e5e7eb", borderRadius: 3, cursor: "pointer",
+        fontSize: 10, padding: "1px 6px",
+        background: copied ? "#dcfce7" : "#f9fafb",
+        color: copied ? "#16a34a" : "#6b7280",
+        transition: "background 0.2s, color 0.2s",
+        ...extraStyle,
+      }}
+    >
+      {copied ? "✓" : label}
+    </button>
+  );
+}
+
 function fmtTime(ts: number): string {
   return new Date(ts).toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" });
 }
@@ -105,6 +132,18 @@ const MODEL_PREF_KEY = "glossa_model_pref";
 
 // Action types that execute immediately without an approval card
 const AUTO_EXEC = new Set(["open_view", "create_hypothesis", "create_notebook"]);
+
+// LocalStorage key for persisted auto-approve preference
+const AUTO_APPROVE_KEY = "glossa_auto_approve";
+
+// Helper: resolve action label consistently (mirrors ActionCard fallback)
+function resolveLabel(action: AIAction): string {
+  return (
+    action.label
+    || (action.params as Record<string, string>)?.title
+    || action.type.replace(/_/g, " ")
+  );
+}
 
 let _msgId = 0;
 
@@ -187,20 +226,42 @@ function ModelPickerDropdown({ installed, providers, current, onSelect, onReset,
 // ── Action approval card ──────────────────────────────────────────────────────
 
 const ACTION_ICONS: Record<string, string> = {
-  run_experiment: "🧪", run_pipeline: "⚙️", change_setting: "⚙️",
-  generate_report: "📄", create_hypothesis: "💡", create_notebook: "📓",
-  open_view: "→", clear_jobs: "🗑",
+  run_experiment:    "🧪",
+  run_pipeline:      "⚙️",
+  change_setting:    "⚙️",
+  generate_report:   "📄",
+  create_hypothesis: "💡",
+  create_notebook:   "📓",
+  open_view:         "→",
+  clear_jobs:        "🗑️",
+  execute_script:    "🔧",
+  query_corpus:      "🔍",
+  compare_results:   "📊",
+  summarize_session: "💾",
+  acquire_corpus:    "📥",
 };
 
-function ActionCard({ action, status, onApprove, onCancel }: {
+function ActionCard({ action, status, onApprove, onCancel, onAutoApproveAll }: {
   action: AIAction; status: string;
-  onApprove: () => void; onCancel: () => void;
+  onApprove: () => void;
+  onCancel: () => void;
+  onAutoApproveAll: () => void;
 }) {
+  const [ddOpen, setDdOpen] = useState(false);
+  const ddRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!ddOpen) return;
+    const h = (e: MouseEvent) => {
+      if (ddRef.current && !ddRef.current.contains(e.target as Node)) setDdOpen(false);
+    };
+    setTimeout(() => document.addEventListener("mousedown", h), 0);
+    return () => document.removeEventListener("mousedown", h);
+  }, [ddOpen]);
+
   // Guard: if action has no type, don't render anything (prevents 'undefined' errors)
   if (!action?.type) return null;
-  const label = action.label
-    || (action.params as Record<string, string>)?.title
-    || action.type.replace(/_/g, " ");
+  const label = resolveLabel(action);
   const base: React.CSSProperties = { borderRadius: 6, padding: "8px 10px", margin: "5px 0", fontSize: 11, border: "1px solid" };
   if (status === "cancelled") return <div style={{ ...base, borderColor: "#374151", background: "#1a2332", color: "#6b7280" }}>✗ {label} — cancelled</div>;
   if (status === "done")      return <div style={{ ...base, borderColor: "#14532d", background: "#052e16", color: "#86efac" }}>✓ {label} — done</div>;
@@ -214,9 +275,45 @@ function ActionCard({ action, status, onApprove, onCancel }: {
       <div style={{ color: "#374151", marginBottom: 8, lineHeight: 1.5 }}>{action.description}</div>
       {status === "executing"
         ? <span style={{ color: "#6b7280", fontSize: 10 }}>⏳ Executing…</span>
-        : <div style={{ display: "flex", gap: 6 }}>
-            <button onClick={onApprove} style={{ padding: "3px 12px", background: "#1d4ed8", color: "#fff", border: "none", borderRadius: 4, cursor: "pointer", fontSize: 11, fontWeight: 600 }}>✓ Approve</button>
-            <button onClick={onCancel}  style={{ padding: "3px 10px", background: "none", color: "#6b7280", border: "1px solid #d1d5db", borderRadius: 4, cursor: "pointer", fontSize: 11 }}>✗ Cancel</button>
+        : <div style={{ display: "flex", gap: 0, alignItems: "center" }}>
+            {/* Split Approve button */}
+            <button
+              onClick={onApprove}
+              style={{ padding: "3px 11px", background: "#1d4ed8", color: "#fff", border: "none",
+                borderRadius: "4px 0 0 4px", cursor: "pointer", fontSize: 11, fontWeight: 600 }}
+            >✓ Approve</button>
+            {/* Dropdown arrow */}
+            <div style={{ position: "relative" }} ref={ddRef}>
+              <button
+                onClick={() => setDdOpen(o => !o)}
+                title="More options"
+                style={{ padding: "3px 6px", background: "#1a45c8", color: "#fff", border: "none",
+                  borderLeft: "1px solid rgba(255,255,255,0.25)", borderRadius: "0 4px 4px 0",
+                  cursor: "pointer", fontSize: 10, fontWeight: 700, lineHeight: 1.5 }}
+              >▾</button>
+              {ddOpen && (
+                <div style={{ position: "absolute", top: "calc(100% + 2px)", left: 0,
+                  background: "#fff", border: "1px solid #d1d5db", borderRadius: 5,
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.15)", zIndex: 9999, minWidth: 190 }}>
+                  <button
+                    onClick={() => { setDdOpen(false); onAutoApproveAll(); }}
+                    style={{ display: "flex", alignItems: "center", gap: 7, width: "100%",
+                      padding: "7px 12px", border: "none", background: "none",
+                      cursor: "pointer", fontSize: 11, color: "#1d4ed8", textAlign: "left",
+                      fontWeight: 600 }}
+                  >
+                    <span>⚡</span>
+                    <div>
+                      <div>Auto Approve All</div>
+                      <div style={{ fontSize: 9, color: "#6b7280", fontWeight: 400 }}>Approve every action automatically this session</div>
+                    </div>
+                  </button>
+                </div>
+              )}
+            </div>
+            <button onClick={onCancel}
+              style={{ marginLeft: 6, padding: "3px 10px", background: "none", color: "#6b7280",
+                border: "1px solid #d1d5db", borderRadius: 4, cursor: "pointer", fontSize: 11 }}>✗ Cancel</button>
           </div>
       }
     </div>
@@ -234,6 +331,22 @@ export function AIChatWindow() {
   const [busy, setBusy] = useState(false);
   const [compressing, setCompressing] = useState(false);
   const abortCtrl = useRef<AbortController | null>(null);
+
+  // Auto-approve: persisted to localStorage so it survives page reload
+  const [autoApprove, setAutoApproveState] = useState<boolean>(
+    () => localStorage.getItem(AUTO_APPROVE_KEY) === "true"
+  );
+  const setAutoApprove = (v: boolean) => {
+    setAutoApproveState(v);
+    localStorage.setItem(AUTO_APPROVE_KEY, v ? "true" : "false");
+  };
+
+  // Listen for external changes to the auto-approve setting (e.g. from SettingsView)
+  useEffect(() => {
+    const handler = () => setAutoApproveState(localStorage.getItem(AUTO_APPROVE_KEY) === "true");
+    window.addEventListener("glossa:auto_approve_changed", handler);
+    return () => window.removeEventListener("glossa:auto_approve_changed", handler);
+  }, []);
 
   // Model picker
   const [modelPref, setModelPref] = useState<ModelPref | null>(() => {
@@ -348,6 +461,7 @@ export function AIChatWindow() {
   const handleAction = useCallback(async (msg: MsgUI, idx: number, action: AIAction, approve: boolean) => {
     if (!approve) { updateActionState(msg.id, idx, "cancelled"); return; }
     updateActionState(msg.id, idx, "executing");
+    const label = resolveLabel(action);
     try {
       // Ensure params is always an object, never undefined/null
       const params = action.params && typeof action.params === "object" ? action.params : {};
@@ -355,15 +469,19 @@ export function AIChatWindow() {
       updateActionState(msg.id, idx, "done");
       if (action.type === "open_view" && result.navigate)
         window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: result.navigate } }));
-      setMessages(prev => [...prev, { id: ++_msgId, role: "assistant", content: `✓ **${action.label}** — ${result.summary ?? "done"}`, timestamp: Date.now() }]);
+      setMessages(prev => [...prev, { id: ++_msgId, role: "assistant", content: `✓ **${label}** — ${result.summary ?? "done"}`, timestamp: Date.now() }]);
     } catch (e) {
       updateActionState(msg.id, idx, "failed");
-      setMessages(prev => [...prev, { id: ++_msgId, role: "assistant", content: `✗ **${action.label}** failed: ${e instanceof Error ? e.message : String(e)}`, timestamp: Date.now(), error: true }]);
+      setMessages(prev => [...prev, { id: ++_msgId, role: "assistant", content: `✗ **${label}** failed: ${e instanceof Error ? e.message : String(e)}`, timestamp: Date.now(), error: true }]);
     }
   }, [updateActionState]);
 
-  const autoExec = useCallback((msg: MsgUI) => {
-    (msg.actions ?? []).forEach((a, i) => { if (AUTO_EXEC.has(a.type) && !a.requires_approval) handleAction(msg, i, a, true); });
+  // Auto-execute: either the lite AUTO_EXEC set or (if autoApprove) all actions
+  const autoExec = useCallback((msg: MsgUI, forceAll = false) => {
+    (msg.actions ?? []).forEach((a, i) => {
+      const shouldRun = forceAll || (AUTO_EXEC.has(a.type) && !a.requires_approval);
+      if (shouldRun) handleAction(msg, i, a, true);
+    });
   }, [handleAction]);
 
   // Send
@@ -404,15 +522,18 @@ export function AIChatWindow() {
         provider: modelPref?.provider ?? null,
         model: modelPref?.model ?? null,
       }, ctrl.signal);
+      const shouldAutoAll = autoApprove || localStorage.getItem(AUTO_APPROVE_KEY) === "true";
       const newMsg: MsgUI = {
         id: loadingMsg.id, role: "assistant", content: result.content,
         actions: result.actions ?? [],
-        actionStates: (result.actions ?? []).map(a => AUTO_EXEC.has(a.type) && !a.requires_approval ? "executing" : "pending"),
+        actionStates: (result.actions ?? []).map(a =>
+          (shouldAutoAll || (AUTO_EXEC.has(a.type) && !a.requires_approval)) ? "executing" : "pending"
+        ),
         timestamp: Date.now(), loading: false,
       };
       setMessages(prev => prev.map(m => m.id === loadingMsg.id ? newMsg : m));
-      if ((result.actions ?? []).some(a => AUTO_EXEC.has(a.type) && !a.requires_approval))
-        setTimeout(() => autoExec(newMsg), 50);
+      if ((result.actions ?? []).length > 0)
+        setTimeout(() => autoExec(newMsg, shouldAutoAll), 50);
     } catch (e) {
       const aborted = e instanceof Error && e.name === "AbortError";
       setMessages(prev => prev.map(m => m.id === loadingMsg.id
@@ -479,6 +600,13 @@ export function AIChatWindow() {
       <div style={{ background: "#1e3a5f", padding: "8px 10px", display: "flex", alignItems: "center", gap: 6, userSelect: "none", flexShrink: 0 }}>
         <span style={{ fontSize: 14 }}>✨</span>
         <span style={{ fontWeight: 700, fontSize: 13, color: "#fff", flex: 1 }}>Glossa AI</span>
+        {autoApprove && (
+          <span
+            title="Auto-approve is ON — all actions are executed automatically. Click to disable."
+            onClick={() => { setAutoApprove(false); toast("Auto-approve disabled", "info"); }}
+            style={{ fontSize: 9, padding: "1px 6px", borderRadius: 8, background: "#f59e0b",
+              color: "#78350f", fontWeight: 700, cursor: "pointer", letterSpacing: 0.3 }}>⚡ AUTO</span>
+        )}
 
         {/* Context bar + compress button */}
         <div style={{ display: "flex", alignItems: "center", gap: 3 }} title={`~${usedTokens.toLocaleString()} / ${maxCtx.toLocaleString()} tokens`}>
@@ -576,7 +704,17 @@ export function AIChatWindow() {
                 <ActionCard key={ai} action={action}
                   status={(msg.actionStates ?? [])[ai] ?? "pending"}
                   onApprove={() => handleAction(msg, ai, action, true)}
-                  onCancel={() => handleAction(msg, ai, action, false)} />
+                  onCancel={() => handleAction(msg, ai, action, false)}
+                  onAutoApproveAll={() => {
+                    setAutoApprove(true);
+                    toast("Auto-approve ON — all future actions will run automatically", "success");
+                    // Approve all currently-pending actions in this message too
+                    (msg.actions ?? []).forEach((a, i) => {
+                      if (((msg.actionStates ?? [])[i] ?? "pending") === "pending")
+                        handleAction(msg, i, a, true);
+                    });
+                  }}
+                />
               ))}
 
               {/* Per-message actions row */}
@@ -584,11 +722,7 @@ export function AIChatWindow() {
                 <span style={{ fontSize: 9, color: "#9ca3af" }}>{fmtTime(msg.timestamp)}</span>
                 {!msg.loading && (
                   <>
-                    <button onClick={() => navigator.clipboard.writeText(msg.content).then(() => toast("Copied", "success"))}
-                      title="Copy message"
-                      style={{ border: "1px solid #e5e7eb", borderRadius: 3, background: "#f9fafb", cursor: "pointer", fontSize: 10, color: "#6b7280", padding: "1px 6px" }}>
-                      Copy
-                    </button>
+                    <CopyButton text={msg.content} />
                     <button onClick={() => setMessages(prev => prev.filter((_, i) => i !== idx))} title="Delete"
                       style={{ border: "none", background: "none", cursor: "pointer", fontSize: 10, color: "#d1d5db", padding: 0 }}>×</button>
                   </>
@@ -601,7 +735,7 @@ export function AIChatWindow() {
         {/* Bottom toolbar */}
         {messages.length > 0 && !busy && (
           <div style={{ display: "flex", gap: 5, justifyContent: "center", marginTop: 4, flexWrap: "wrap" }}>
-            <button onClick={() => { const t = messages.filter(m => !m.loading).map(m => `[${m.role.toUpperCase()} ${fmtTime(m.timestamp)}]\n${m.content}`).join("\n\n"); navigator.clipboard.writeText(t).then(() => toast("Copied", "success")); }} style={botBtn}>⎘ Copy all</button>
+            <button onClick={() => { const t = messages.filter(m => !m.loading).map(m => `[${m.role.toUpperCase()} ${fmtTime(m.timestamp)}]\n${m.content}`).join("\n\n"); navigator.clipboard.writeText(t); }} style={botBtn}>⏘ Copy all</button>
             <button onClick={exportMd}  style={botBtn}>📥 Export MD</button>
             <button onClick={exportPdf} style={botBtn}>📥 Export PDF</button>
           </div>
@@ -719,14 +853,15 @@ export function ChatInline() {
     const upd = (state: string) => setMessages(prev => prev.map(m => { if (m.id !== msg.id) return m; const s = [...(m.actionStates ?? [])]; s[idx] = state; return { ...m, actionStates: s }; }));
     if (!approve) { upd("cancelled"); return; }
     upd("executing");
+    const label = resolveLabel(action);
     try {
       const r = await executeAiAction({ type: action.type, params: action.params });
       upd("done");
       if (action.type === "open_view" && r.navigate) window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: r.navigate } }));
-      setMessages(p => [...p, { id: ++_msgId, role: "assistant", content: `✓ ${action.label} — ${r.summary ?? "done"}`, timestamp: Date.now() }]);
+      setMessages(p => [...p, { id: ++_msgId, role: "assistant", content: `✓ ${label} — ${r.summary ?? "done"}`, timestamp: Date.now() }]);
     } catch (e) {
       upd("failed");
-      setMessages(p => [...p, { id: ++_msgId, role: "assistant", content: `✗ ${action.label} failed: ${e instanceof Error ? e.message : String(e)}`, timestamp: Date.now(), error: true }]);
+      setMessages(p => [...p, { id: ++_msgId, role: "assistant", content: `✗ ${label} failed: ${e instanceof Error ? e.message : String(e)}`, timestamp: Date.now(), error: true }]);
     }
   }, []);
 
@@ -790,7 +925,16 @@ export function ChatInline() {
               <ActionCard key={ai} action={action}
                 status={(msg.actionStates ?? [])[ai] ?? "pending"}
                 onApprove={() => handleInlineAction(msg, ai, action, true)}
-                onCancel={() => handleInlineAction(msg, ai, action, false)} />
+                onCancel={() => handleInlineAction(msg, ai, action, false)}
+                onAutoApproveAll={() => {
+                  localStorage.setItem(AUTO_APPROVE_KEY, "true");
+                  window.dispatchEvent(new CustomEvent("glossa:auto_approve_changed"));
+                  (msg.actions ?? []).forEach((a, i) => {
+                    if (((msg.actionStates ?? [])[i] ?? "pending") === "pending")
+                      handleInlineAction(msg, i, a, true);
+                  });
+                }}
+              />
             ))}
           </div>
         ))}

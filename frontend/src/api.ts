@@ -250,8 +250,8 @@ export const createJob = (body: JobCreate): Promise<JobResponse> =>
 export const cancelJob = (id: string): Promise<JobResponse> =>
   request("DELETE", `/jobs/${id}`);
 
-export const clearJobs = (): Promise<{ cleared: number }> =>
-  request("DELETE", "/jobs");
+export const clearJobs = (finishedOnly = false): Promise<{ cleared: number }> =>
+  request("DELETE", finishedOnly ? "/jobs?finished_only=true" : "/jobs");
 
 // ── Results ───────────────────────────────────────────────────────────
 

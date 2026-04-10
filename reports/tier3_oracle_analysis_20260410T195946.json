@@ -1,0 +1,6 @@
+{
+  "score_correct": -91965.65625,
+  "score_beam": -89660.84375,
+  "delta": -2304.8125,
+  "verdict": "MODEL FAILURE -- LM prefers wrong mapping. Cross-script transfer is the barrier."
+}

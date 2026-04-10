@@ -246,6 +246,25 @@ class Database:
         await self._conn.commit()
         return cleared
 
+    async def clear_finished_jobs(self) -> int:
+        """Delete only completed and cancelled jobs (leaves pending/running)."""
+        assert self._conn
+        statuses = ("completed", "cancelled", "failed")
+        placeholders = ",".join("?" * len(statuses))
+        # Remove results for finished jobs first
+        await self._conn.execute(
+            f"DELETE FROM job_results WHERE job_id IN "
+            f"(SELECT id FROM jobs WHERE status IN ({placeholders}))",
+            statuses,
+        )
+        cursor = await self._conn.execute(
+            f"DELETE FROM jobs WHERE status IN ({placeholders}) RETURNING id",
+            statuses,
+        )
+        rows = await cursor.fetchall()
+        await self._conn.commit()
+        return len(rows)
+
     async def get_job_counts(self) -> dict[str, int]:
         assert self._conn
         cursor = await self._conn.execute(
@@ -749,7 +768,7 @@ class Database:
         return self._row_to_dict(row) if row else None
 
     async def update_collab_message(
-        self, mid: str, *, pinned: int | None = None, message: str | None = None, author: str | None = None
+        self, mid: str, *, pinned: int | None = None, message: str | None = None, author: str | None = None  # noqa: E501
     ) -> dict[str, Any] | None:
         assert self._conn
         existing = await self.get_collab_message(mid)

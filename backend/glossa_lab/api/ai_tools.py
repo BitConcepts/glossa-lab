@@ -348,7 +348,42 @@ DATA MODULES:
   )
 
 DO NOT use: glossa_lab.utils.corpus, decipherment.SimulatedAnnealing,
-            target_lm.score(), or any other non-existent modules.
+            target_lm.score(), scipy, or any other non-existent modules.
+
+WORKING EXAMPLE 1 — SA decipherment with Hebrew target:
+  import os, sys
+  sys.path.insert(0, "<backend_dir>")
+  sys.path.insert(0, "<backend_dir>/tests")
+  from glossa_lab.pipelines.decipher import LanguageModel, decipher, score_accuracy, _score_mapping
+  from glossa_lab.data.old_hebrew import get_corpus_symbols, get_word_inscriptions, get_ugaritic_to_hebrew_map
+  heb_flat = get_corpus_symbols()
+  lm = LanguageModel(heb_flat, inscriptions=get_word_inscriptions())
+  result = decipher(cipher_signs, lm, seed=42, restarts=25, surjective=True)
+  acc = score_accuracy(result["proposed_mapping"], answer_key)
+  print(acc["correct"], acc["total"], acc["accuracy"])
+
+WORKING EXAMPLE 2 — Beam search with phonological groups:
+  from glossa_lab.pipelines.beam_decipher import beam_decipher, UGARITIC_PHONO_GROUPS_TIGHT
+  result = beam_decipher(
+      cipher_signs, lm,
+      beam_width=50, surjective=True,
+      anchors={"U24": "r", "U15": "m", "U06": "h"},
+      phono_groups=UGARITIC_PHONO_GROUPS_TIGHT,
+  )
+  acc = score_accuracy(result["proposed_mapping"], answer_key)
+
+WORKING EXAMPLE 3 — Corpus sub-sampling:
+  import random
+  def subsample(flat, fraction):
+      n = int(len(flat) * fraction)
+      return flat[:n]  # sequential slice (preserves bigram structure)
+  for frac in [0.25, 0.5, 0.75, 1.0]:
+      sub = subsample(cipher_flat, frac)
+      lm_sub = LanguageModel(sub)  # rebuild LM on sub-corpus
+      res = decipher(sub, lm, seed=42, restarts=10, surjective=True)
+      a = score_accuracy(res["proposed_mapping"], gt)
+      print(f"{frac:.2f}  {len(sub)} tokens  {a['correct']}/{a['total']}")
+
 === END API REFERENCE ==="""
 
 
@@ -454,9 +489,11 @@ Load pattern — ALWAYS use this EXACT pattern:
   # inscriptions is a list of lists of STRINGS: [["32","817"], ["400","520","752"], ...]
   # Signs are strings (Fuls numbers), NOT integers.
 
-WRONG load (do NOT do this):
-  inscriptions = json.load(f)              # WRONG: loads a dict, not a list
-  inscriptions = data["inscriptions"]      # WRONG: items have 'sequence' key, must extract
+WRONG load — these patterns are ALL BROKEN, NEVER use them:
+  with open(f) as fp: corpus = json.load(fp)  # WRONG: json.load() loads a dict, not a list
+  inscriptions = json.load(f)                  # WRONG: same issue
+  inscriptions = data["inscriptions"]          # WRONG: items have 'sequence' key, must extract
+  for insc in corpus: ...                      # WRONG: corpus is a DICT not a list
 
 Profile computation pattern (always use this):
   total_c    = Counter(s for ins in inscriptions for s in ins)
@@ -495,18 +532,118 @@ WRONG (never do this):
 
 ALL 12 M77 profiles must always be included in scripts, not just 2.
 DO NOT invent T-rates/counts not in context; say 'run a script to obtain this'.
+
+EXPERIMENT CLASS IMPORTS (for running experiments from Python):
+  # Each experiment class lives in its own module:
+  from glossa_lab.experiments.prior_ablation_benchmark import PriorAblationBenchmark
+  from glossa_lab.experiments.transparency_benchmark import TransparencyBenchmark
+  from glossa_lab.experiments.beam_decipher_benchmark import BeamDecipherBenchmark
+  from glossa_lab.experiments.proto_sinaitic_benchmark import ProtoSinaiticBenchmark
+  from glossa_lab.experiments.meroitic_benchmark import MeroiticBenchmark
+  from glossa_lab.experiments.sequence_eval_benchmark import SequenceEvalBenchmark
+  from glossa_lab.experiments.ventris_validation import VentrisValidation
+  # Run any experiment with: result = ExperimentClass().run()
+  # WRONG: from experiments import X   ← missing glossa_lab prefix
+  # WRONG: from glossa_lab.experiments import X  ← experiments package __init__ not exported
+  # CORRECT: from glossa_lab.experiments.<module_name> import <ClassName>
+
+SAVING RESULTS:
+  import json; from pathlib import Path
+  R = Path(__file__).parent.parent / "reports"
+  (R / "result_file.json").write_text(json.dumps(result, indent=2), encoding="utf-8")
+
+BENCHMARK SCORE FACTS (use EXACTLY these, never approximate):
+  Tier 1a Ugaritic→Hebrew best: 30/30 = 100.0% (NOT 0.967 — that is Tier 1c)
+  Tier 1c Ugaritic→Phoenician: 29/30 = 96.7%
+  Tier 1e Proto-Sinaitic→Hebrew: 19/22 = 86.4%
+  Tier 1f Meroitic→Coptic: 1/19 = 5.3% (oracle delta = -3972)
+  Tier 4 F1: 0.148
+  Oracle deltas at each ablation level (Tier 1a): L1=-1718, L2=-855, L3=-1165, L4=-939, L5=-7418, L6=-5480
+  ZIPF NOTE: rank×freq should be constant. If rank-1 gives 1200 and rank-10 gives 2800, the
+  product is NOT constant (1200 vs 2800) — this is SUPER-ZIPFIAN (faster-than-Zipf decay),
+  which is stronger evidence for structured language than pure Zipf.
 === END SCRIPTING PATTERNS ===""")
+
+    lines.append("""
+=== DOMAIN KNOWLEDGE: KANDLES SYSTEM ===
+The Kandles system (Merkur patent) assigns each phoneme a colour based on
+the articulatory/acoustic features of the consonant. It provides an
+independent cross-validation channel: if a proposed decipherment maps Indus
+sign frequencies to phoneme frequencies, the Kandles colour distribution of
+the decoded text should match the target language's Kandles profile.
+
+In the Glossa Lab engine, _kandles_validate(deciphered, target_symbols)
+compares the colour-grid of the decoded text against the target corpus and
+returns a confidence score in [0, 1].  A high Kandles confidence means the
+decoded phoneme distribution is plausible for the target language.
+
+M77 PROFILES — CRITICAL: M77 IDs are strings like "M059", "M029", "M012". They are NOT Fuls sign
+numbers (like 690, 740, etc.). Never cite an M77 profile as "sign 690" or similar.
+When a question asks about M77 profiles, compute L1 distances against these 12 entries:
+  M088 (Figure+staff):  T=0.056  I=0.333  M=0.611  — HIGH MEDIAL
+  M200 (Bull head):     T=0.038  I=0.811  M=0.151  — HIGH INITIAL
+  M028 (Arrow):         T=0.044  I=0.923  M=0.033  — ALMOST PURE INITIAL
+  M059 (Fish):          T=0.047  I=0.094  M=0.812  — HIGH MEDIAL (candidate sentence-ender)
+  M012 (Small circle):  T=0.863  I=0.013  M=0.125  — HIGH TERMINAL (TMK candidate)
+  M282 (Bracket):       T=0.730  I=0.016  M=0.254  — HIGH TERMINAL (TMK candidate)
+  M500 (Plant/tree):    T=0.125  I=0.250  M=0.625  — HIGH MEDIAL
+  M342 (Short stroke):  T=0.138  I=0.241  M=0.517  — HIGH MEDIAL
+  M086 (Stand. figure): T=0.060  I=0.360  M=0.540  — MEDIAL-BIASED
+  M083 (Kneel. figure): T=0.059  I=0.588  M=0.353  — INITIAL-BIASED
+  M029 (Comb/rake):     T=0.030  I=0.101  M=0.869  — VERY HIGH MEDIAL
+  M005 (Six strokes):   T=0.000  I=0.019  M=0.981  — ALMOST PURE MEDIAL
+
+Sign function categories from positional analysis:
+  TERMINAL MARKERS (TMK): high T-rate — likely grammatical suffixes or determinatives
+  INITIALS: high I-rate — likely word-initial signs (roots or determinatives)
+  MEDIALS: high M-rate — likely syllabic cores or root consonants
+  L1 distance formula (no scipy): dist = abs(t1-t2) + abs(i1-i2) + abs(m1-m2)
+
+WORKED M77 EXAMPLE — query sign T=0.04, I=0.09, M=0.87:
+  M029 (Comb/rake): L1 = |0.04-0.030| + |0.09-0.101| + |0.87-0.869| = 0.010+0.011+0.001 = 0.022  ← CLOSEST
+  M059 (Fish):      L1 = |0.04-0.047| + |0.09-0.094| + |0.87-0.812| = 0.007+0.004+0.058 = 0.069
+  M005 (Six strks): L1 = |0.04-0.000| + |0.09-0.019| + |0.87-0.981| = 0.040+0.071+0.111 = 0.222
+  NEVER cite "sign 690" or any Fuls sign number as an M77 result.
+  ALWAYS use M77 IDs like "M029", "M059", "M088" exactly as listed above.
+=== END DOMAIN KNOWLEDGE ===
+""")
+
+    lines.append("""
+=== GLOSSA LAB RESEARCH TIER HIERARCHY ===
+Tier 1a: Ugaritic → Hebrew (cross-language NW Semitic, 30 signs)
+         The CORE benchmark. Tests if Hebrew bigrams can guide Ugaritic decipherment.
+         KEY RESULT: Statistical landscape inverted. Works ONLY with phono groups + anchors.
+Tier 1b: Ugaritic → Ugaritic (self-decipherment)
+         Ceiling test: 22/22 = 100%. Confirms the engine works with correct target LM.
+Tier 1c: Ugaritic → Phoenician (cross-language NW Semitic, different from Hebrew)
+         Sister-language test: V→E (not G) differs. 29/30 = 96.7%.
+Tier 1e: Proto-Sinaitic → Hebrew (floor test, minimal corpus ~576 tokens)
+         Minimum corpus size validation. Works with anchors (19/22 = 86.4%).
+Tier 1f: Meroitic → Coptic (graceful degradation, WRONG target language)
+         Tests if engine rejects wrong hypotheses. Oracle delta -3972 = YES.
+Tier 3:  Sumerian / Oracle Bone classification (logographic detection)
+         Tests whether the engine can identify sign FUNCTION categories.
+Tier 4:  Linear B / Ventris grid recovery (syllabary structure)
+         Tests syllable-grid reconstruction. F1=0.148. Bottleneck: corpus diversity.
+Tier 5:  Indus Script → Dravidian (the research frontier)
+         No known answer key. Z-score tests whether Dravidian provides any signal.
+         Current: Dravidian leads but Z-scores do not cross significance threshold.
+=== END TIER HIERARCHY ===
+""")
 
     lines.append("\n=== END RESEARCH CONTEXT ===")
     lines.append(
         "You are acting as a decipherment research collaborator. "
         "Reason from the evidence above ONLY. Do not invent T-rates, I-rates, or counts "
         "that are not in context; if data is missing say so and recommend running a script. "
-        "When writing Python scripts, use ONLY the import paths in DECIPHERMENT ENGINE API above. "
+        "When writing Python code: copy imports VERBATIM from WORKING EXAMPLES in the "
+        "DECIPHERMENT ENGINE API section — never use any other module paths. "
         "When citing benchmark numbers, use the DECIPHERMENT BENCHMARK SCORES table above EXACTLY. "
         "Propose hypotheses with explicit confidence levels (HIGH/MED/LOW). "
         "Reference Fuls sign numbers (e.g. 'sign 817'). "
-        "Give thorough, complete answers — never truncate mid-response."
+        "Give thorough, complete answers — write your FULL response text FIRST, "
+        "then append the %%ACTIONS%% block at the very end if needed. "
+        "Never truncate a response by inserting %%ACTIONS%% mid-answer."
     )
     return "\n".join(lines)
 

@@ -50,8 +50,10 @@ from typing import Any
 
 from glossa_lab.pipelines.decipher import (
     LanguageModel,
+    BigramScorer,
     _kandles_validate,
     score_accuracy,
+    _HAS_NUMPY,
 )
 
 # ── Ugaritic phonological group constraints ─────────────────────────────
@@ -458,6 +460,23 @@ def beam_decipher(
             for cs in cs_list:
                 rank_preferred[cs] = full_rank.get(cs, heb_sorted[-1] if heb_sorted else heb_set.pop())
 
+    # Build a fast numpy scorer if we have no structural constraints that
+    # require the Python-loop _partial_score (OCP, root_prior, word_bigrams).
+    # When constraints are off, BigramScorer.score_partial is 50-200x faster.
+    _use_fast_scorer = (
+        _HAS_NUMPY
+        and not use_word_bigrams
+        and ocp_weight == 0.0
+        and root_prior_weight == 0.0
+        and positional_weight <= 0.005  # negligible positional bonus
+    )
+    _fast_scorer: BigramScorer | None = None
+    if _use_fast_scorer:
+        try:
+            _fast_scorer = target_model.build_scorer(cipher_signs)
+        except Exception:
+            _fast_scorer = None
+
     if surjective:
         beam_s: list[tuple[float, dict[str, str]]] = [(0.0, dict(locked))]
 
@@ -482,12 +501,16 @@ def beam_decipher(
                     pool = candidates_pool
                 for target_sign in pool:  # phonologically restricted, max-K filtered, or all
                     new_partial = {**partial, cipher_sign: target_sign}
-                    score = _partial_score(
-                        new_partial, cipher_signs, target_model, cipher_positional,
-                        cipher_inscriptions, use_word_bigrams, ocp_weight,
-                        positional_weight, root_prior_weight,
-                    )
-                    # Within-group rank bonus: favour the frequency-rank-predicted target
+                    # Fast path: numpy vectorised scoring when constraints allow
+                    if _fast_scorer is not None:
+                        score = _fast_scorer.score_partial(new_partial)
+                    else:
+                        score = _partial_score(
+                            new_partial, cipher_signs, target_model, cipher_positional,
+                            cipher_inscriptions, use_word_bigrams, ocp_weight,
+                            positional_weight, root_prior_weight,
+                        )
+                    # Within-group rank bonus
                     if rank_prior_weight > 0 and preferred and target_sign == preferred:
                         score += rank_prior_weight * abs(score) * 0.01
                     candidates_s.append((-score, new_partial))
@@ -507,7 +530,7 @@ def beam_decipher(
                 best_mapping[cs] = ts
 
     else:
-        # Bijective beam (original implementation)
+        # Bijective beam — also use fast scorer when constraints allow
         beam_b: list[tuple[float, dict[str, str], list[str]]] = [
             (0.0, dict(locked), list(free_target_list))
         ]
@@ -517,11 +540,15 @@ def beam_decipher(
                 for i, target_sign in enumerate(remaining):
                     new_partial = {**partial, cipher_sign: target_sign}
                     new_remaining = remaining[:i] + remaining[i + 1:]
-                    score = _partial_score(
-                        new_partial, cipher_signs, target_model, cipher_positional,
-                        cipher_inscriptions, use_word_bigrams, ocp_weight,
-                        positional_weight, root_prior_weight,
-                    )
+                    # Fast path: numpy vectorised scoring when constraints allow
+                    if _fast_scorer is not None:
+                        score = _fast_scorer.score_partial(new_partial)
+                    else:
+                        score = _partial_score(
+                            new_partial, cipher_signs, target_model, cipher_positional,
+                            cipher_inscriptions, use_word_bigrams, ocp_weight,
+                            positional_weight, root_prior_weight,
+                        )
                     candidates_b.append((-score, new_partial, new_remaining))
             beam_b = heapq.nsmallest(beam_width, candidates_b, key=lambda x: x[0])
 

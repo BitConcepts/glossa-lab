@@ -1,0 +1,65 @@
+{
+  "sa_baseline": {
+    "correct": 1,
+    "total": 30
+  },
+  "sweep_a": [
+    {
+      "beam_width": 50,
+      "correct": 1,
+      "time_s": 0.6
+    },
+    {
+      "beam_width": 100,
+      "correct": 1,
+      "time_s": 1.2
+    },
+    {
+      "beam_width": 200,
+      "correct": 1,
+      "time_s": 2.3
+    },
+    {
+      "beam_width": 500,
+      "correct": 1,
+      "time_s": 6.2
+    }
+  ],
+  "sweep_b": [
+    {
+      "n_anchors": 0,
+      "correct": 1
+    },
+    {
+      "n_anchors": 10,
+      "correct": 10
+    }
+  ],
+  "sweep_c": [
+    {
+      "config": "broad groups, w=50",
+      "correct": 19,
+      "time_s": 0.0
+    },
+    {
+      "config": "tight groups, w=50",
+      "correct": 29,
+      "time_s": 0.0
+    },
+    {
+      "config": "tight + rank, w=50",
+      "correct": 29,
+      "time_s": 0.0
+    },
+    {
+      "config": "tight + rank, w=200",
+      "correct": 29,
+      "time_s": 0.0
+    }
+  ],
+  "best_overall": 29,
+  "ghayin_id": "U25",
+  "ghayin_mapping": "G",
+  "ghayin_correct": false,
+  "conclusion": "STRONG (29/30 = 96.7%) \u2014 Beam engine deciphers Ugaritic using a Phoenician LM nearly as well as Hebrew (Tier 1a), confirming the result is driven by Northwest Semitic phonotactics, not corpus-specific artefacts."
+}

@@ -12,6 +12,22 @@ import { useToast } from "../hooks/useToast";
 
 type Tool = "decipher" | "draft" | "sign-reading" | "synthesis";
 
+// Silent copy button with brief ✓ visual feedback
+function CopyTextButton({ text }: { text: string }) {
+  const [copied, setCopied] = useState(false);
+  return (
+    <button
+      onClick={() => navigator.clipboard.writeText(text).then(() => { setCopied(true); setTimeout(() => setCopied(false), 1400); })}
+      style={{ ...btnSecondary, marginTop: 10, fontSize: 11,
+        background: copied ? "#dcfce7" : undefined,
+        color: copied ? "#16a34a" : undefined,
+        transition: "background 0.2s, color 0.2s" }}
+    >
+      {copied ? "✓ Copied" : "Copy Text"}
+    </button>
+  );
+}
+
 // ── Shared result panel ───────────────────────────────────────────────────────
 
 function ResultPanel({ result, onClose }: { result: Record<string, unknown>; onClose: () => void }) {
@@ -141,8 +157,7 @@ function DraftTool({ experiments }: { experiments: ExperimentMeta[] }) {
               Keywords: {(result.keywords as string[]).join(", ")}
             </div>
           )}
-          <button onClick={() => { navigator.clipboard.writeText(result.text as string); toast("Copied", "success"); }}
-            style={{ ...btnSecondary, marginTop: 10, fontSize: 11 }}>Copy Text</button>
+          <CopyTextButton text={result.text as string} />
         </div>
       )}
     </div>

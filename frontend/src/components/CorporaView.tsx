@@ -127,8 +127,12 @@ function CorpusCard({ text, onUpdated, onDeleted, allTexts }: {
     finally { setSaving(false); }
   };
 
+  const [corpusCopied, setCorpusCopied] = useState(false);
   const handleCopy = () => {
-    navigator.clipboard.writeText(text.content.join(" ")).then(() => toast("Copied to clipboard", "success"));
+    navigator.clipboard.writeText(text.content.join(" ")).then(() => {
+      setCorpusCopied(true);
+      setTimeout(() => setCorpusCopied(false), 1400);
+    });
   };
 
   const handleFileImport = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -216,7 +220,7 @@ function CorpusCard({ text, onUpdated, onDeleted, allTexts }: {
         <span style={{ fontSize: 11, color: "#9ca3af" }}>Σ {text.alphabet_size}</span>
         <span style={{ fontSize: 11, color: "#9ca3af" }}>{text.created_at.slice(0, 10)}</span>
         <span onClick={(e) => e.stopPropagation()} style={{ display: "flex", gap: 4 }}>
-          <button onClick={handleCopy} title="Copy" style={btnMini}>⎘</button>
+          <button onClick={handleCopy} title="Copy" style={{ ...btnMini, background: corpusCopied ? "#dcfce7" : undefined, color: corpusCopied ? "#16a34a" : undefined, transition: "background 0.2s" }}>{corpusCopied ? "✓" : "⎘"}</button>
           <a href={getCorpusExportUrl(text.id, "txt")} download onClick={(e) => e.stopPropagation()} style={{ ...btnMini, textDecoration: "none" }}>↓txt</a>
           <a href={getCorpusExportUrl(text.id, "csv")} download onClick={(e) => e.stopPropagation()} style={{ ...btnMini, textDecoration: "none" }}>↓csv</a>
           <button onClick={() => fileRef.current?.click()} title="Import file" style={btnMini}>↑ file</button>

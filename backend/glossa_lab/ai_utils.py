@@ -21,6 +21,57 @@ from glossa_lab.api.settings import get_key
 _OLLAMA_BASE = "http://localhost:11434"
 
 
+def _extract_json(text: str) -> str:
+    """Robustly extract JSON from a model response.
+
+    Tries in order:
+      1. Direct json.loads (fast path)
+      2. JSON inside a ```json...``` code fence
+      3. JSON inside any ```...``` code fence
+      4. First { } balanced block in the response
+    Returns the raw JSON string, or raises ValueError if nothing parses.
+    """
+    import re  # noqa: PLC0415
+
+    # Fast path: already valid JSON
+    try:
+        json.loads(text)
+        return text
+    except Exception:  # noqa: BLE001
+        pass
+
+    # Try ```json ... ``` fence
+    for pattern in (r"```json\s*(\{.*?\})\s*```", r"```\s*(\{.*?\})\s*``"):
+        m = re.search(pattern, text, re.DOTALL)
+        if m:
+            candidate = m.group(1).strip()
+            try:
+                json.loads(candidate)
+                return candidate
+            except Exception:  # noqa: BLE001
+                pass
+
+    # Try first balanced { } block
+    depth = 0
+    start = -1
+    for i, ch in enumerate(text):
+        if ch == "{":
+            if depth == 0:
+                start = i
+            depth += 1
+        elif ch == "}":
+            depth -= 1
+            if depth == 0 and start >= 0:
+                candidate = text[start: i + 1]
+                try:
+                    json.loads(candidate)
+                    return candidate
+                except Exception:  # noqa: BLE001
+                    break
+
+    raise ValueError(f"Could not extract valid JSON from model response. Raw: {text[:200]!r}")
+
+
 def _get_provider_prefs() -> dict[str, Any]:
     """Load saved provider preferences from the keys store."""
     from glossa_lab.api.settings import _PROVIDERS_KEY, _load_keys  # noqa: PLC0415

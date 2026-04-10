@@ -327,3 +327,83 @@ def run_all(verbose=True):
 
 if __name__ == "__main__":
     run_all(verbose=True)
+
+
+try:
+    from glossa_lab.experiment_base import ExperimentBase as _EB
+except ImportError:
+    _EB = object
+
+
+class Tier3SumerianClassified(_EB):
+    id = "tier3_sumerian_classified"
+    name = "Tier 3 — Sumerian Classified (Phonogram Subset)"
+    category = "Validation"
+    description = (
+        "Applies positional-entropy sign classification to the Sumerian UR III corpus "
+        "(same method as Indus), then runs beam decipherment on the phonogram+medial subset. "
+        "Compares accuracy before and after classification. "
+        "Key finding: Sumerian has only 2 logograms — classification barely reduces search space."
+    )
+    estimated_time = "~15 min (numpy-accelerated)"
+    command = "python -m glossa_lab.experiments.remaining_experiments"
+    params_schema = {"type": "object", "properties": {}}
+
+    def run(self, **kwargs) -> dict:
+        return exp_tier3_classified(verbose=False)
+
+
+class Tier3OracleAnalysis(_EB):
+    id = "tier3_oracle_analysis"
+    name = "Tier 3 — Sumerian Oracle Analysis"
+    category = "Validation"
+    description = (
+        "Oracle diagnostic for the Sumerian logo-syllabic benchmark: compares "
+        "score(correct mapping) vs score(beam best mapping) under the Sumerian LM. "
+        "KEY FINDING: The bigram model scores the WRONG mapping higher than the correct one "
+        "(model failure, not search failure). This is the fundamental logo-syllabic bottleneck "
+        "that requires phonological group constraints to overcome."
+    )
+    estimated_time = "~10 min (numpy-accelerated)"
+    command = "python -m glossa_lab.experiments.remaining_experiments"
+    params_schema = {"type": "object", "properties": {}}
+
+    def run(self, **kwargs) -> dict:
+        return exp_tier3_oracle(verbose=False)
+
+
+class Tier5PhonogramOnly(_EB):
+    id = "tier5_phonogram_only"
+    name = "Tier 5 — Indus Hypothesis Test (PHONOGRAM signs only)"
+    category = "Validation"
+    description = (
+        "Re-runs the Tier 5 Indus hypothesis test using only the 15 highest-entropy "
+        "PHONOGRAM signs (not the full 44-sign mixed set). Fewer, purer signs give "
+        "more discriminating Z-scores. "
+        "Result: Dravidian Z=4.36 leads with margin +0.75 over Sumerian. "
+        "Hebrew control scores lowest (Z=2.46) in every configuration."
+    )
+    estimated_time = "~3 min"
+    command = "python -m glossa_lab.experiments.remaining_experiments"
+    params_schema = {"type": "object", "properties": {}}
+
+    def run(self, **kwargs) -> dict:
+        return exp_tier5_phonogram_only(verbose=False)
+
+
+class VentrisThresholdSweep(_EB):
+    id = "ventris_threshold_sweep"
+    name = "Tier 4 — Ventris Threshold Sweep"
+    category = "Validation"
+    description = (
+        "Sweeps cosine similarity thresholds (0.05 to 0.30) for the Linear B Ventris grid "
+        "affinity analysis to find the F1-maximising threshold. "
+        "Key finding: F1 is flat (0.192) from threshold 0.05 to 0.15 — the bottleneck is "
+        "corpus size, not the threshold parameter. Best threshold = 0.05."
+    )
+    estimated_time = "~2 min"
+    command = "python -m glossa_lab.experiments.remaining_experiments"
+    params_schema = {"type": "object", "properties": {}}
+
+    def run(self, **kwargs) -> dict:
+        return exp_ventris_threshold_sweep(verbose=False)

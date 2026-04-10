@@ -616,6 +616,7 @@ experiments and studies.
 ## 11. Glossa AI Chat
 
 Click the **✨ bubble** (bottom-right corner) to open the floating AI chat.
+For real-time streaming responses, the frontend connects to `/api/v1/ai/chat/stream`.
 
 ### Context modes
 
@@ -625,10 +626,45 @@ Click the **✨ bubble** (bottom-right corner) to open the floating AI chat.
 | **Corpus** | Corpus metadata + top tokens |
 | **Experiment** | Experiment description and params |
 | **Study** | Study graph + related RAG artifacts (auto-retrieved) |
-| **🔬 Research** | Full Indus decipherment context + sign profiles + LEDGER + RAG-retrieved artifacts |
+| **🔬 Research** | Full research context — see details below |
 
 In Research and Study modes, the AI automatically retrieves semantically relevant
 chunks from the RAG knowledge base and prepends them to the context.
+
+### Research context — what is injected
+
+When you use **🔬 Research** mode, the system prompt contains (in order):
+
+1. **Sign assignments** — current Indus sign catalog with T/I/M profiles and confidence levels
+2. **Decipherment benchmark scores** — live results loaded from `reports/`:
+   - Tier 1a (Ugaritic → Hebrew): SA 0–12/30, beam+phono+anchors 30/30 = 100%
+   - Tier 1c (Ugaritic → Phoenician): 29/30 = 96.7%
+   - Tier 1e (Proto-Sinaitic → Hebrew): 19/22 = 86.4%
+   - Tier 1f (Meroitic → Coptic): 1/19 = 5.3%, oracle Δ = −3972
+   - Transparency: T0=0%, T1=6.7%, T2=10%, T3=100%; 90% from human anchors
+   - Prior ablation: oracle Δ is NEGATIVE at all 7 levels
+   - Tier 4 (Ventris): F1 = 0.148
+3. **Codebase API reference** — exact `glossa_lab.*` import paths with 3 working examples
+4. **M77 profiles** — 12 reference signs with T/I/M values and a worked L1 calculation
+5. **Tier hierarchy** — what each Tier 1a through Tier 5 tests and their key results
+6. **Kandles system** — phoneme-colour validation description and confidence score meaning
+7. **LEDGER last entry** — current research state and open TODOs
+8. **Scripting patterns** — correct corpus load pattern, M77 usage, experiment imports
+
+The research context is approximately **18,000 characters** and is rebuilt on every request
+from live report files.
+
+### Streaming chat
+
+The `/api/v1/ai/chat/stream` endpoint returns Server-Sent Events:
+
+```
+data: {"delta": "token text"}         ← each token as it is generated
+data: {"done": true, "actions": [...]} ← final event with any proposed actions
+```
+
+The frontend displays tokens as they arrive, making long responses readable
+before they complete.
 
 ### Model picker
 
@@ -651,13 +687,55 @@ Click the **auto ▾** dropdown in the chat header to select:
 
 The context bar (top of chat window) shows how full the context window is.
 At 75% a warning appears; at 90% auto-compression triggers.
-Click **⊟** (compress button) or `/compress` to manually summarize.
+When history is trimmed, oldest turns are **summarized into a note** rather than
+silently dropped, preserving research continuity.
 
 ### AI actions
 
-When the AI suggests an action (run experiment, change setting, open a view,
-create a hypothesis), it shows an **action card** with **✓ Approve** / **✗ Cancel**.
-Major actions require your approval; minor ones (e.g. opening a view) execute automatically.
+When the AI suggests an action, it shows an **action card** with **✓ Approve** / **✗ Cancel**.
+
+| Action type | What it does |
+|---|---|
+| `run_experiment` | Runs a registered experiment and returns results |
+| `run_pipeline` | Queues an async pipeline job |
+| `create_hypothesis` | Creates a new hypothesis record |
+| `create_notebook` | Saves a new notebook entry |
+| `open_view` | Navigates to a UI section |
+| `change_setting` | Updates a configuration value |
+| `execute_script` | **🔧 NEW** — runs a Python snippet against the corpus, returns stdout + JSON |
+| `query_corpus` | **🔧 NEW** — finds Indus inscriptions matching a sign pattern |
+| `compare_results` | **🔧 NEW** — diffs two experiment result JSON files |
+| `summarize_session` | **🔧 NEW** — saves this conversation as a notebook entry |
+| `clear_jobs` | Clears completed/failed jobs from the queue |
+
+#### execute_script example
+
+Ask: _"Run a script that computes the 10 most frequent Indus signs."_
+
+The AI will propose:
+```json
+{
+  "type": "execute_script",
+  "params": {
+    "code": "import json, sys\nfrom pathlib import Path\nfrom collections import Counter\nR = Path(sys.argv[0]).parent.parent / 'reports'\ndata = json.loads((R/'icit_extracted_corpus.json').read_text('utf-8'))\ninscriptions = [i['sequence'] for i in data['inscriptions'] if i.get('sequence')]\ntotal_c = Counter(s for ins in inscriptions for s in ins)\nprint(json.dumps(dict(total_c.most_common(10))))",
+    "description": "Count top 10 Indus signs"
+  }
+}
+```
+
+Approve it, and the result appears in the action card showing both `stdout`
+and the parsed `result_json`.
+
+#### query_corpus example
+
+Ask: _"How many inscriptions start with sign 400?"_
+
+```json
+{
+  "type": "query_corpus",
+  "params": {"pattern": ["400"], "position": "initial"}
+}
+```
 
 ---
 

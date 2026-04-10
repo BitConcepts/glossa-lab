@@ -81,12 +81,14 @@ async def get_job(job_id: str) -> JobResponse:
 
 
 @router.delete("/jobs", status_code=200)
-async def clear_jobs() -> ClearJobsResponse:
-    """Delete all stored jobs and results."""
+async def clear_jobs(finished_only: bool = False) -> ClearJobsResponse:
+    """Delete jobs.  Pass ?finished_only=true to keep running/pending jobs."""
     db = get_db()
     if db is None:
         raise HTTPException(status_code=503, detail="Database not available")
 
+    if finished_only:
+        return ClearJobsResponse(cleared=await db.clear_finished_jobs())
     return ClearJobsResponse(cleared=await db.clear_jobs())
 
 

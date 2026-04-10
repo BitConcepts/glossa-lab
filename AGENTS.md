@@ -501,6 +501,70 @@ Must record:
 
 ---
 
+## DECIPHERMENT RESEARCH ASSET REGISTRY
+
+Key assets currently implemented. Reference when planning new experiments or corpora.
+
+### Experiment modules (`backend/glossa_lab/experiments/`)
+
+| ID | Name | Tier | Notes |
+|---|---|---|---|
+| `beam_decipher_benchmark` | Beam Decipherment Benchmark | 1a | SA vs beam; 4 sweeps; 30/30 with phono groups |
+| `semitic_constraints_benchmark` | Semitic Constraints Benchmark | 1a | 4 constraint levels; oracle delta analysis |
+| `ugaritic_proper_benchmark` | Ugaritic Proper Benchmark | 1a/1b | Cross-language vs self; anti-circularity |
+| `phoenician_benchmark` | Phoenician Benchmark | 1c | Ugaritic→Phoenician; V→E differs from Hebrew |
+| `proto_sinaitic_benchmark` | Proto-Sinaitic Benchmark | 1e | Floor test; 576 tokens; 19/22 with anchors |
+| `meroitic_benchmark` | Meroitic Benchmark | 1f | Graceful degradation; oracle Δ = -3972 |
+| `prior_ablation_benchmark` | Prior Ablation Study | 1a | 7 levels; all oracle deltas NEGATIVE |
+| `transparency_benchmark` | Transparency Benchmark | 1a | 4-tier attribution; 90% from anchors |
+| `sequence_eval_benchmark` | Sequence-Level Eval | 1a | N-gram recall; noise robustness |
+| `ventris_validation` | Ventris Grid Validation | 4 | Linear B; F1=0.148 |
+| `tier5_indus_decipherment` | Tier 5 Indus Decipherment | 5 | Dravidian hypothesis; Z-scores |
+
+### Corpus data modules (`backend/glossa_lab/data/`)
+
+| Module | Language | Tokens | Notes |
+|---|---|---|---|
+| `old_hebrew.py` | Old Hebrew | large | Target LM for Tier 1a/1b |
+| `phoenician.py` | Phoenician | ~5000 | KAI inscriptions; Tier 1c target |
+| `proto_sinaitic.py` | Proto-Sinaitic | 576 | Serabit el-Khadim + Wadi el-Hol |
+| `meroitic.py` | Meroitic + Coptic | 551+537 | Tier 1f; includes Coptic LM |
+| `dravidian.py` | Tamil/Dravidian | large | Tier 5 comparison LM |
+| `linear_b_language.py` | Mycenaean Greek | — | Sign inventory for Tier 4 |
+| `indus_public_corpus.py` | Indus Script | 14,213 | Primary research target |
+
+### AI capabilities (`backend/glossa_lab/api/ai_tools.py`)
+
+**Endpoints:**
+- `POST /ai/chat` — freeform chat with research context injection
+- `POST /ai/chat/stream` — SSE streaming version
+- `POST /ai/decipher` — theory-based sign reading (json_mode)
+- `POST /ai/draft-section` — academic paper paragraph from experiment result
+- `POST /ai/hypotheses/generate` — generate testable hypotheses
+- `POST /ai/experiment-chain` — plan experiment sequence
+- `POST /ai/synthesize` — cross-study synthesis
+- `POST /ai/sign-reading` — probabilistic sign readings
+- `POST /ai/report-synthesis` — comprehensive research report
+- `POST /ai/execute-action` — execute AI-proposed action
+
+**Action types supported by execute-action:**
+`run_experiment`, `run_pipeline`, `create_hypothesis`, `create_notebook`,
+`open_view`, `change_setting`, `generate_report`, `clear_jobs`,
+`execute_script`, `query_corpus`, `compare_results`, `summarize_session`
+
+**Research context injected in chat (Research mode):**
+Sign catalog, benchmark scores (live from `reports/`), API reference with
+working code examples, M77 profiles + worked L1 example, tier hierarchy,
+Kandles domain knowledge, LEDGER last entry, scripting patterns.
+
+### Fine-tuning
+
+See `docs/FINETUNING_GUIDE.md` for how to train a Glossa-specific variant
+of Mistral NeMo 12B via LoRA (Unsloth/Axolotl). Dataset generator at
+`backend/scripts/generate_training_data.py`.
+
+---
+
 ## STOP CONDITIONS
 
 Stop if:

@@ -1,0 +1,57 @@
+{
+  "results": [
+    {
+      "level": 0,
+      "label": "Level 0 \u2014 Frequency-rank seed (no optimizer)",
+      "accuracy": 0,
+      "delta": null,
+      "landscape": "FLOOR"
+    },
+    {
+      "level": 1,
+      "label": "Level 1 \u2014 + Bigram SA (no priors)",
+      "accuracy": 2,
+      "delta": -1717.8,
+      "landscape": "FLAT/INV"
+    },
+    {
+      "level": 2,
+      "label": "Level 2 \u2014 + Positional weight",
+      "accuracy": 2,
+      "delta": -855.4,
+      "landscape": "FLAT/INV"
+    },
+    {
+      "level": 3,
+      "label": "Level 3 \u2014 + OCP penalty",
+      "accuracy": 1,
+      "delta": -1165.1,
+      "landscape": "FLAT/INV"
+    },
+    {
+      "level": 4,
+      "label": "Level 4 \u2014 + Word-boundary bigrams",
+      "accuracy": 2,
+      "delta": -938.8,
+      "landscape": "FLAT/INV"
+    },
+    {
+      "level": 5,
+      "label": "Level 5 \u2014 + Root co-occurrence prior",
+      "accuracy": 2,
+      "delta": -7417.6,
+      "landscape": "FLAT/INV"
+    },
+    {
+      "level": 6,
+      "label": "Level 6 \u2014 All priors combined",
+      "accuracy": 3,
+      "delta": -5479.5,
+      "landscape": "FLAT/INV"
+    }
+  ],
+  "floor": 0,
+  "peak": 3,
+  "total_gain": 3,
+  "conclusion": "Peak accuracy 3/30 = 10.0% with all priors. Floor (frequency rank only) = 0/30 = 0.0%. This establishes the marginal contribution of each prior to Tier 1a performance."
+}

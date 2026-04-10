@@ -1,0 +1,37 @@
+{
+  "tiers": [
+    {
+      "tier": 0,
+      "label": "T0 \u2014 Statistical floor",
+      "method": "Frequency-rank seed only",
+      "accuracy": 0,
+      "oracle_delta": null,
+      "injected": "Nothing \u2014 pure bigram/unigram statistics"
+    },
+    {
+      "tier": 1,
+      "label": "T1 \u2014 + Optimizer",
+      "method": "SA surjective (bigrams only)",
+      "accuracy": 2,
+      "oracle_delta": -1717.8,
+      "injected": "Bigram statistics from Hebrew corpus"
+    },
+    {
+      "tier": 2,
+      "label": "T2 \u2014 + Linguistic priors",
+      "method": "SA + word-bigrams + OCP + positional + root-prior",
+      "accuracy": 3,
+      "oracle_delta": -5479.5,
+      "injected": "OCP + positional + word-bigrams + root co-occurrence (Semitic phonology)"
+    },
+    {
+      "tier": 3,
+      "label": "T3 \u2014 + Human anchors",
+      "method": "Beam + tight phono groups + 10 pan-Semitic anchors",
+      "accuracy": 30,
+      "oracle_delta": 0.0,
+      "injected": "10 pan-Semitic cognate anchors (Segert 1984; Huehnergard 2012) + phono groups"
+    }
+  ],
+  "conclusion": "Tier 3 (full stack) achieves 30/30 = 100.0%. Attribution of improvement above floor (0/30): algorithm=7%, linguistic priors=3%, human anchors=90%. This table should accompany every published benchmark result to clearly separate model capability from hypothesis injection."
+}

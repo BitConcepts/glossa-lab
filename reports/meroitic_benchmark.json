@@ -1,0 +1,17 @@
+{
+  "self": {
+    "sa": 16,
+    "beam": 16,
+    "oracle_delta": -8.7,
+    "total": 19
+  },
+  "coptic": {
+    "sa": 1,
+    "beam": 1,
+    "oracle_delta": -3972.6,
+    "total": 19
+  },
+  "degradation_ratio": 0.062,
+  "oracle_signal_quality": "NEGATIVE \u2014 Coptic statistics actively mislead the optimizer. The engine correctly rejects the wrong hypothesis.",
+  "conclusion": "Meroitic\u2192Coptic accuracy: 1/19 = 5.3% (self-model: 16/19 = 84.2%). Oracle signal: NEGATIVE \u2014 Coptic statistics actively mislead the optimizer. The engine correctly rejects the wrong hypothesis."
+}

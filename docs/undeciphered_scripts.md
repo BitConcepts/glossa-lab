@@ -157,4 +157,121 @@ Based on the criteria: *corpus size ≥ 200 inscriptions* · *known or plausible
 
 ---
 
-*Last updated: 2026-04-10. See `AGENT.md` for experiment-addition procedures and `LEDGER.md` for research history.*
+---
+
+## Glossa Lab Implementation Status
+
+The following scripts have **active corpus modules** implemented in `backend/glossa_lab/data/`:
+
+| Script | Module | Corpus size | Benchmark | Status |
+|---|---|---|---|---|
+| **Proto-Sinaitic** | `proto_sinaitic.py` | 576 tokens, 22 signs | Tier 1e | ✅ Active — 19/22 = 86.4% with anchors |
+| **Meroitic** | `meroitic.py` | 551 tokens, 19 signs | Tier 1f | ✅ Active — graceful degradation test |
+| **Indus / Harappan** | `indus_public_corpus.py` | 14,213 tokens, 713 signs | Tier 5 | ✅ Active — primary research target |
+
+The following are implemented as **test fixtures** or **language model corpora**:
+
+| Script | Usage | Location |
+|---|---|---|
+| **Ugaritic** | Tier 1a/1b/1c cipher text | `tests/corpora/ugaritic.py` |
+| **Old Hebrew** | Tier 1a/1b/1c target LM | `data/old_hebrew.py` |
+| **Phoenician** | Tier 1c target LM | `data/phoenician.py` |
+| **Linear B** | Tier 4 (Ventris) | `tests/corpora/fixtures/linear_b.txt` |
+| **Tamil/Dravidian** | Tier 5 comparison LM | `data/dravidian.py` |
+| **Sumerian** | Tier 3 logographic reference | `tests/corpora/fixtures/sumerian.txt` |
+
+---
+
+## Digital Corpus Availability — Detailed Notes
+
+### High-priority scripts with substantial digital corpora
+
+**Indus / Harappan Script**
+- ICIT corpus (Fuls 2023): ~4,410 inscriptions, 14,213 tokens — held by Dr. Fuls, TU Berlin
+- Mahadevan concordance M77: ~3,700 inscriptions; partially OCR'd in `reports/`
+- IVC Digital Database (BSOAS): available to academic subscribers
+- Format: sign ID sequences (Fuls numbering or Mahadevan M-codes)
+- Current Glossa Lab status: full pipeline active on ICIT corpus
+
+**Proto-Elamite**
+- CDLI (Cuneiform Digital Library Initiative): ~5,000 tablets at cdli.ucla.edu
+- Accessible via API: `https://cdli.ucla.edu/search/`
+- Format: cuneiform sign sequences in ATF transliteration
+- Token estimate: ~200,000 sign tokens across all tablets
+- Note: purely administrative (numerals + commodities), no phonetic reading possible
+- Glossa Lab status: not yet implemented; high priority for structural analysis
+
+**Linear A**
+- SigLA (Signary of Linear A): sigla.classics.ox.ac.uk — ~1,500 inscriptions
+- GORILA (Recueil des inscriptions en linéaire A): published 1985–2003
+- Digital: DĀMOS (Oslo) partial; tylerlengyel.com Phase 1 data (used in experiments)
+- Format: sign code sequences (AB01, AB02, etc.)
+- Token estimate: ~7,500–10,000 sign tokens
+- Glossa Lab status: statistical model in `tests/corpora/linear_a_corpus.py`
+
+**Meroitic**
+- REM (Répertoire d'épigraphie méroïtique): ~1,200 inscriptions; publication ongoing
+- Digital: partial transcriptions at academia.edu; Rilly (2007) appendix
+- Format: sign sequences (Griffith values: a, e, i, b, t, k, n, r, s, l, m, w, y, d, q, h, ne, se, te)
+- Token estimate: ~15,000–20,000 sign tokens from attested corpus
+- Glossa Lab status: active in `data/meroitic.py` (551-token sample corpus)
+
+**Rongorongo**
+- Fischer (1997) catalogue: 25 surviving objects, ~14,000 glyphs total
+- Digital: Hochenburger database; Fischer 1997 ISBN 978-0-252-02349-9
+- Format: glyph ID sequences (Fischer numbering)
+- Token estimate: ~3,000–4,000 unique glyph types; 14,000 total tokens
+- Note: corpus is very small per inscription; ~25 objects means ~25 sequences
+- Glossa Lab status: not yet implemented; blocked by small per-inscription corpus
+
+**Cretan Hieroglyphic**
+- CHIC (Corpus Hieroglyphicarum Inscriptionum Cretae, Olivier & Godart 1996)
+- ~300 inscribed objects; digitised from CHIC publication
+- Token estimate: ~800–1,200 sign tokens
+- Glossa Lab status: too small for statistical methods; pending
+
+**Cypro-Minoan**
+- DĀMOS (Database of Mycenaean at Oslo): partial
+- Steele (2018) corpus: most comprehensive
+- ~230 inscriptions; ~2,000 sign tokens
+- Glossa Lab status: candidate for Tier 1 if Linear B phoneme overlap is used as anchor
+
+### Scripts needing corpus acquisition
+
+**Proto-Sinaitic (expanded)**
+- Current Glossa Lab corpus: 576 tokens (research-quality reconstruction)
+- Full attested corpus: ~40 inscriptions, ~500 sign tokens
+- Available: Sass (1988), Hamilton (2006), Darnell et al. (2005)
+- Status: ADEQUATE — our 576-token corpus exceeds the attested material
+
+**Linear Elamite (newly partially deciphered)**
+- Desset et al. (2022) partial decipherment — Nature paper
+- ~40 inscriptions; ~500 sign tokens
+- Acquisition: the paper appendices and supplementary material
+- Status: high priority — partial anchor points now available
+
+**Khitan (Large and Small)**
+- Several hundred texts; some catalogued in Chinese academic databases
+- Format: character sequences with some known morphological markers
+- Status: difficult acquisition; Chinese academic partnerships needed
+
+---
+
+## Corpora Planned for Future Implementation
+
+Based on acquisition feasibility and research priority:
+
+| Script | Priority | Blocker | Expected Tier |
+|---|---|---|---|
+| Proto-Elamite | High | Format conversion from CDLI ATF | Tier 3 (structural only) |
+| Linear Elamite | High | Acquire Desset 2022 supplement | Tier 1 (with partial anchors) |
+| Rongorongo | Medium | Acquire Fischer 1997 digital | Tier 5 (Polynesian LM) |
+| Cypro-Minoan | Medium | DĀMOS access | Tier 1 (Linear B anchors) |
+| Vinca symbols | Low | Disputed writing status | Structural only |
+| Khitan Large | Low | Chinese database access | Structural only |
+
+---
+
+*Last updated: 2026-04-10. See `AGENTS.md` for experiment-addition procedures,
+`LEDGER.md` for research history, and `docs/FINETUNING_GUIDE.md` for AI model
+tuning. Cross-reference: `backend/glossa_lab/data/` for implemented corpus modules.*

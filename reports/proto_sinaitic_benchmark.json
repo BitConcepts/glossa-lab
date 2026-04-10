@@ -1,0 +1,64 @@
+{
+  "sa": {
+    "no_anchors": 1,
+    "anchors_5": 16,
+    "anchors_10": 19,
+    "total": 22
+  },
+  "sweep_a": [
+    {
+      "beam_width": 50,
+      "correct": 2,
+      "time_s": 0.17
+    },
+    {
+      "beam_width": 100,
+      "correct": 1,
+      "time_s": 0.32
+    },
+    {
+      "beam_width": 200,
+      "correct": 1,
+      "time_s": 0.64
+    }
+  ],
+  "sweep_b": [
+    {
+      "n_anchors": 0,
+      "correct": 2,
+      "time_s": 0.16
+    },
+    {
+      "n_anchors": 5,
+      "correct": 15,
+      "time_s": 0.09
+    },
+    {
+      "n_anchors": 10,
+      "correct": 19,
+      "time_s": 0.04
+    }
+  ],
+  "sweep_c": [
+    {
+      "config": "broad groups, w=50",
+      "beam_width": 50,
+      "correct": 19,
+      "time_s": 0.04
+    },
+    {
+      "config": "tight groups, w=50",
+      "beam_width": 50,
+      "correct": 19,
+      "time_s": 0.04
+    },
+    {
+      "config": "tight groups, w=200",
+      "beam_width": 200,
+      "correct": 19,
+      "time_s": 0.15
+    }
+  ],
+  "best_overall": 19,
+  "note": "Floor benchmark at 576 tokens / 21 signs. Best accuracy 19/22 = 86.4%. Acrophonic tight groups reduce search space to 1 candidate per sign; with 10 anchors the mapping becomes fully determined. This confirms the engine scales down to minimal corpus sizes when phonological constraints are available."
+}

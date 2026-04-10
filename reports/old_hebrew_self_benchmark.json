@@ -4,135 +4,139 @@
   "protocol": "75/25 within-corpus train/test split",
   "description": "Self-decipherment benchmark \u2014 same language, different verses. First 75% of corpus lines build the language model; last 25% are presented as the unknown cipher.",
   "corpus_stats": {
-    "total_lines": 60,
-    "train_lines": 45,
-    "test_lines": 15,
-    "total_tokens": 1455,
-    "train_tokens": 1081,
-    "test_tokens": 374,
+    "total_lines": 442,
+    "train_lines": 331,
+    "test_lines": 111,
+    "total_tokens": 15641,
+    "train_tokens": 11094,
+    "test_tokens": 4547,
     "distinct_signs": 22,
     "theoretical_inventory": 22,
-    "type_token_ratio": 0.0151,
+    "type_token_ratio": 0.0014,
     "hapax_count": 0
   },
-  "accuracy": 0.095,
-  "correct": 2,
-  "total": 21,
-  "kandles_confidence": 0.9494,
+  "accuracy": 1.0,
+  "correct": 22,
+  "total": 22,
+  "kandles_confidence": 0.9523,
   "correct_mappings": [
+    {
+      "opaque": "H17",
+      "sign": "s",
+      "proposed": "s"
+    },
+    {
+      "opaque": "H16",
+      "sign": "r",
+      "proposed": "r"
+    },
+    {
+      "opaque": "H03",
+      "sign": "G",
+      "proposed": "G"
+    },
+    {
+      "opaque": "H07",
+      "sign": "d",
+      "proposed": "d"
+    },
+    {
+      "opaque": "H00",
+      "sign": "'",
+      "proposed": "'"
+    },
+    {
+      "opaque": "H09",
+      "sign": "h",
+      "proposed": "h"
+    },
+    {
+      "opaque": "H15",
+      "sign": "q",
+      "proposed": "q"
+    },
+    {
+      "opaque": "H13",
+      "sign": "n",
+      "proposed": "n"
+    },
+    {
+      "opaque": "H06",
+      "sign": "b",
+      "proposed": "b"
+    },
+    {
+      "opaque": "H10",
+      "sign": "k",
+      "proposed": "k"
+    },
+    {
+      "opaque": "H18",
+      "sign": "t",
+      "proposed": "t"
+    },
+    {
+      "opaque": "H02",
+      "sign": "E",
+      "proposed": "E"
+    },
+    {
+      "opaque": "H21",
+      "sign": "z",
+      "proposed": "z"
+    },
     {
       "opaque": "H20",
       "sign": "y",
       "proposed": "y"
     },
     {
-      "opaque": "H18",
-      "sign": "t",
-      "proposed": "t"
-    }
-  ],
-  "wrong_mappings": [
+      "opaque": "H01",
+      "sign": "C",
+      "proposed": "C"
+    },
+    {
+      "opaque": "H08",
+      "sign": "g",
+      "proposed": "g"
+    },
     {
       "opaque": "H05",
       "sign": "T",
-      "proposed": "s"
-    },
-    {
-      "opaque": "H12",
-      "sign": "m",
-      "proposed": "k"
-    },
-    {
-      "opaque": "H00",
-      "sign": "'",
-      "proposed": "G"
-    },
-    {
-      "opaque": "H21",
-      "sign": "z",
-      "proposed": "q"
-    },
-    {
-      "opaque": "H10",
-      "sign": "k",
-      "proposed": "E"
-    },
-    {
-      "opaque": "H03",
-      "sign": "G",
-      "proposed": "h"
-    },
-    {
-      "opaque": "H09",
-      "sign": "h",
-      "proposed": "w"
-    },
-    {
-      "opaque": "H11",
-      "sign": "l",
-      "proposed": "'"
-    },
-    {
-      "opaque": "H02",
-      "sign": "E",
-      "proposed": "H"
+      "proposed": "T"
     },
     {
       "opaque": "H19",
       "sign": "w",
-      "proposed": "r"
-    },
-    {
-      "opaque": "H01",
-      "sign": "C",
-      "proposed": "p"
-    },
-    {
-      "opaque": "H07",
-      "sign": "d",
-      "proposed": "b"
-    },
-    {
-      "opaque": "H13",
-      "sign": "n",
-      "proposed": "m"
-    },
-    {
-      "opaque": "H15",
-      "sign": "q",
-      "proposed": "C"
-    },
-    {
-      "opaque": "H06",
-      "sign": "b",
-      "proposed": "l"
+      "proposed": "w"
     },
     {
       "opaque": "H04",
       "sign": "H",
-      "proposed": "d"
-    },
-    {
-      "opaque": "H17",
-      "sign": "s",
-      "proposed": "T"
+      "proposed": "H"
     },
     {
       "opaque": "H14",
       "sign": "p",
-      "proposed": "g"
+      "proposed": "p"
     },
     {
-      "opaque": "H16",
-      "sign": "r",
-      "proposed": "n"
+      "opaque": "H12",
+      "sign": "m",
+      "proposed": "m"
+    },
+    {
+      "opaque": "H11",
+      "sign": "l",
+      "proposed": "l"
     }
   ],
-  "interpretation": "WEAK (2/21): Hebrew training corpus (1081 tokens) is too small for reliable hill-climbing. Expected \u2014 Snyder (2010) needed ~15,000 tokens. Expanding the corpus is the next step.",
+  "wrong_mappings": [],
+  "interpretation": "STRONG (22/22): Method recovers most Hebrew consonants from within-corpus phonotactics. Tier 1b validated.",
   "literature_notes": {
     "snyder_2010_hebrew_tokens": 15000,
-    "our_hebrew_tokens": 1081,
-    "scale_ratio": 13.9,
+    "our_hebrew_tokens": 11094,
+    "scale_ratio": 1.4,
     "tier_1a_our_accuracy": 0.067,
     "tier_1a_snyder": 0.933,
     "tier_1a_luo": 0.967

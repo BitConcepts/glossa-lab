@@ -49,6 +49,20 @@ class ExperimentBase:
         """Execute the experiment. Override in subclasses."""
         raise NotImplementedError(f"{self.__class__.__name__}.run() not implemented")
 
+    def run_cli(self, **kwargs: Any) -> dict[str, Any]:
+        """Run with full UI integration: registers a job, saves a report.
+
+        Wraps run() with cli_bridge so the Glossa Lab UI sees the experiment
+        while it runs from the terminal.  If the backend is not running the
+        experiment still executes normally; UI hooks are silently skipped.
+        """
+        from glossa_lab.cli_bridge import CliReporter
+        with CliReporter(self.__class__.id, self.__class__.name) as rep:
+            result = self.run(**kwargs)
+            if isinstance(result, dict):
+                rep.save_result(result)
+        return result
+
     @classmethod
     def to_dict(cls) -> dict[str, Any]:
         """Return experiment metadata as a dict (for the catalog API)."""

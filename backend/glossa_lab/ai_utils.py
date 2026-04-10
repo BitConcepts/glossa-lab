@@ -32,9 +32,16 @@ def _call_ollama(
     messages: list[dict[str, str]],
     max_tokens: int,
     temperature: float,
+    json_mode: bool = False,
 ) -> str:
-    """Call the local Ollama instance via its /api/chat endpoint."""
-    payload = {
+    """Call the local Ollama instance via its /api/chat endpoint.
+
+    When json_mode=True, passes ``"format": "json"`` so Ollama forces the model
+    to produce a valid JSON object.  Required for all structured endpoints
+    (/ai/decipher, /ai/draft-section, /ai/hypotheses/generate, etc.) to work
+    reliably regardless of which model is selected.
+    """
+    payload: dict = {
         "model": model,
         "messages": messages,
         "stream": False,
@@ -43,6 +50,8 @@ def _call_ollama(
             "num_predict": max_tokens,
         },
     }
+    if json_mode:
+        payload["format"] = "json"
     body = json.dumps(payload).encode()
     req = urllib.request.Request(
         f"{_OLLAMA_BASE}/api/chat",
@@ -51,14 +60,15 @@ def _call_ollama(
         method="POST",
     )
     try:
-        with urllib.request.urlopen(req, timeout=120) as resp:
+        # 180s: generous for large research-context + JSON schema generation
+        with urllib.request.urlopen(req, timeout=180) as resp:
             data = json.loads(resp.read().decode())
         # Ollama returns {"message": {"role": "assistant", "content": "..."}}
         return data["message"]["content"]
     except urllib.error.URLError as exc:
         raise RuntimeError(
             f"Ollama not reachable at {_OLLAMA_BASE}. "
-            "Is 'ollama serve' running? Error: {exc}"
+            f"Is 'ollama serve' running? Error: {exc}"
         ) from exc
     except Exception as exc:  # noqa: BLE001
         raise RuntimeError(f"Ollama request failed: {exc}") from exc
@@ -95,6 +105,7 @@ def call_llm(
                 messages=messages,
                 max_tokens=max_tokens,
                 temperature=temperature,
+                json_mode=json_mode,
             )
         if provider_override == "mistral":
             key = get_key("mistral_api_key")
@@ -157,6 +168,7 @@ def call_llm(
             messages=messages,
             max_tokens=max_tokens if max_tokens != 2000 else p["max_tokens"],
             temperature=temperature if temperature != 0.3 else p["temperature"],
+            json_mode=json_mode,
         )
 
     # ── 2. Mistral ─────────────────────────────────────────────────────────────

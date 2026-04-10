@@ -1,0 +1,130 @@
+{
+  "sa_baseline": {
+    "bijective": 0,
+    "surjective": 2,
+    "surjective_anchored": 12,
+    "total": 30
+  },
+  "sweep_a_beam_width": [
+    {
+      "beam_width": 50,
+      "correct": 2,
+      "time_s": 0.5
+    },
+    {
+      "beam_width": 100,
+      "correct": 2,
+      "time_s": 1.1
+    },
+    {
+      "beam_width": 200,
+      "correct": 2,
+      "time_s": 2.2
+    },
+    {
+      "beam_width": 500,
+      "correct": 2,
+      "time_s": 5.8
+    }
+  ],
+  "sweep_b_anchors": [
+    {
+      "n_anchors": 0,
+      "correct": 2,
+      "time_s": 0.6
+    },
+    {
+      "n_anchors": 5,
+      "correct": 7,
+      "time_s": 0.5
+    },
+    {
+      "n_anchors": 10,
+      "correct": 13,
+      "time_s": 0.4
+    }
+  ],
+  "sweep_c_constraints": [
+    {
+      "config": "broad groups, w=50",
+      "correct": 22,
+      "beam_width": 50,
+      "use_word_bigrams": false,
+      "ocp_weight": 1.0,
+      "rank_prior_weight": 0.0,
+      "time_s": 0.3
+    },
+    {
+      "config": "broad groups + rank, w=50",
+      "correct": 21,
+      "beam_width": 50,
+      "use_word_bigrams": false,
+      "ocp_weight": 1.0,
+      "rank_prior_weight": 1.0,
+      "time_s": 0.3
+    },
+    {
+      "config": "tight groups, w=50",
+      "correct": 30,
+      "beam_width": 50,
+      "use_word_bigrams": false,
+      "ocp_weight": 1.0,
+      "rank_prior_weight": 0.0,
+      "time_s": 0.0
+    },
+    {
+      "config": "tight groups + rank, w=50",
+      "correct": 30,
+      "beam_width": 50,
+      "use_word_bigrams": false,
+      "ocp_weight": 1.0,
+      "rank_prior_weight": 1.0,
+      "time_s": 0.0
+    },
+    {
+      "config": "tight groups + rank, w=200",
+      "correct": 30,
+      "beam_width": 200,
+      "use_word_bigrams": false,
+      "ocp_weight": 1.0,
+      "rank_prior_weight": 1.0,
+      "time_s": 0.0
+    }
+  ],
+  "sweep_d_multiseed": [
+    {
+      "seed": 0,
+      "correct": 12
+    },
+    {
+      "seed": 1,
+      "correct": 12
+    },
+    {
+      "seed": 2,
+      "correct": 12
+    },
+    {
+      "seed": 3,
+      "correct": 12
+    },
+    {
+      "seed": 4,
+      "correct": 12
+    },
+    {
+      "seed": 5,
+      "correct": 12
+    },
+    {
+      "seed": 6,
+      "correct": 12
+    },
+    {
+      "seed": 7,
+      "correct": 12
+    }
+  ],
+  "best_overall": 30,
+  "conclusion": "STRONG (30/30 = 100.0%) \u2014 Beam search + anchors + constraints substantially outperforms SA. Systematic search exploits the oracle signal the model always had."
+}

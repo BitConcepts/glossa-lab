@@ -2847,3 +2847,71 @@ Risks:
 - Fine-tuning requires separate GPU environment (not in current glossa-lab venv)
 
 Next step: Implement Study Builder layout fixes (plan 5ecfcd89 Step 1-2) or begin Experiment Builder (Step 4). Fine-tuning can proceed in parallel when a GPU machine is available.
+
+---
+
+## [2026-04-11] Entry — PLANNING: Global Ancient Language Research Platform
+
+Objective: Expand Glossa Lab from an Indus-focused tool into a full ancient-language research
+platform covering every known undeciphered script, all major deciphered ancient languages, and
+a novel suite of cross-language phylogenetic / diffusion experiments. Plan documented in Warp
+plan ID 5ae18708-be2c-4d90-aa05-ef37f7b1de21.
+
+SCOPE SUMMARY:
+- Phase 1: Infrastructure — DB V6 schema (language_id on studies, study_memory table,
+  language_corpora table); model ctx_budget bump (mistral-nemo 24K→60K chars);
+  language-scoped AI context refactor in ai_tools.py
+- Phase 2: 9 undeciphered language data modules — linear_a.py, proto_elamite.py, coptic.py,
+  linear_elamite.py, cretan_hieroglyphic.py, cypro_minoan.py, rongorongo.py, zapotec.py,
+  voynich.py
+- Phase 3: 8 deciphered comparison language data modules — egyptian_hieroglyphic.py,
+  akkadian.py, hittite.py, etruscan.py, ge_ez.py, oracle_bone.py, proto_austronesian.py,
+  elamite_proper.py
+- Phase 4: 9 per-undeciphered-language benchmark experiments (one per Phase 2 module)
+- Phase 5: 5 cross-language relationship experiments — language_distance_matrix.py,
+  phylogenetic_tree.py, diffusion_timeline.py, cognate_detection.py,
+  master_cross_language_study.py
+- Phase 6: corpus_acquirer.py expansion (~20 new catalog entries + 3 new fetch functions)
+- Phase 7: backend/scripts/seed_studies.py — pre-seeds 11 per-language studies + 1 master
+  cross-language study with language_id set
+- Phase 8: docs/cross_language_research.md (new), docs/undeciphered_scripts.md (update),
+  AGENTS.md (registry expansion), LEDGER.md (completion entry)
+
+SEQUENCING RATIONALE (minimum token/work spend):
+  Phases ordered so each phase's files are only touched once. DB and context changes are
+  first because all later phases depend on language_id. Data modules before experiments
+  (experiments import data modules). Corpus acquirer after experiments (no code depends
+  on it). Seed script last among backend files (depends on everything).
+
+LANGUAGES COVERED AFTER COMPLETION:
+  Undeciphered (active research): Indus, Linear A, Proto-Elamite, Linear Elamite,
+    Meroitic, Proto-Sinaitic, Cretan Hieroglyphic, Cypro-Minoan, Rongorongo, Zapotec,
+    Khitan, Voynich (structural-only)
+  Deciphered (reference/comparator): Old Hebrew, Phoenician, Sumerian Ur III, Linear B,
+    Sanskrit, Dravidian/Tamil, Egyptian Hieroglyphic, Akkadian, Hittite, Etruscan, Ge'ez,
+    Oracle Bone Chinese, Proto-Austronesian, Elamite Proper, Coptic
+
+FILES TO BE CREATED/MODIFIED (total):
+  Modified:  database.py, model_profiles.py, ai_tools.py, corpus_acquirer.py,
+             docs/undeciphered_scripts.md, AGENTS.md, LEDGER.md
+  Created:   17 data modules, 14 experiment modules, seed_studies.py,
+             docs/cross_language_research.md
+
+Status: PLANNED — not yet started.
+Open TODOs (from previous entries, still relevant):
+- [ ] Phase 1a: DB V6 migration
+- [ ] Phase 1b: model_profiles ctx_budget bump
+- [ ] Phase 1c: language-scoped context refactor
+- [ ] Phase 2: 9 undeciphered data modules
+- [ ] Phase 3: 8 deciphered data modules
+- [ ] Phase 4: 9 per-language benchmark experiments
+- [ ] Phase 5: 5 cross-language experiments
+- [ ] Phase 6: corpus_acquirer expansion
+- [ ] Phase 7: seed_studies.py
+- [ ] Phase 8: documentation
+- [ ] (carry-over) Implement Study Builder layout/color fixes (plan 5ecfcd89)
+- [ ] (carry-over) Implement Experiment Builder visual graph (plan 5ecfcd89)
+- [ ] (carry-over) Implement RAG module (plan 550d9dc5)
+- [ ] (carry-over) Fine-tune Mistral NeMo 12B
+
+Next step: Begin Phase 1a (database.py V6 migration) when ready to start implementation.

@@ -126,7 +126,10 @@ function PythonEnvSection() {
   const [running, setRunning] = useState(false);
   const [output, setOutput] = useState<{ text: string; type: string }[]>([]);
   const [packages, setPackages] = useState<EnvPackage[] | null>(null);
-  const outputRef = useRef<HTMLDivElement>(null);
+  const [outputOpen, setOutputOpen] = useState(true);
+  const [packagesOpen, setPackagesOpen] = useState(true);
+  // ref points to the scrollable output container, NOT a sentinel inside it
+  const outputContainerRef = useRef<HTMLDivElement>(null);
 
   const refresh = async () => {
     setLoading(true);
@@ -135,7 +138,11 @@ function PythonEnvSection() {
   };
 
   useEffect(() => { refresh(); }, []);
-  useEffect(() => { outputRef.current?.scrollIntoView({ behavior: "auto" }); }, [output]);
+  // Scroll the output container itself — never scroll the page
+  useEffect(() => {
+    const el = outputContainerRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
+  }, [output]);
 
   const runStream = async (fetcher: () => Promise<Response>, label: string) => {
     setRunning(true);
@@ -237,30 +244,52 @@ function PythonEnvSection() {
         </button>
       </div>
 
-      {/* Output stream */}
+      {/* Output stream — collapsible */}
       {output.length > 0 && (
-        <div style={{ background: "#0f172a", borderRadius: 5, padding: "8px 10px",
-          maxHeight: 200, overflowY: "auto", fontFamily: "monospace", fontSize: 11, marginBottom: 10 }}>
-          {output.map((l, i) => (
-            <div key={i} style={{ color: l.type === "error" ? "#f87171" : l.type === "success" ? "#86efac" : "#e2e8f0", lineHeight: 1.6 }}>{l.text}</div>
-          ))}
-          <div ref={outputRef} />
+        <div style={{ marginBottom: 10 }}>
+          <button
+            onClick={() => setOutputOpen(o => !o)}
+            style={{ display: "flex", alignItems: "center", gap: 5, background: "none",
+              border: "none", cursor: "pointer", padding: "2px 0", marginBottom: 4,
+              fontSize: 11, fontWeight: 700, color: "#374151", textTransform: "uppercase", letterSpacing: 0.5 }}
+          >
+            <span style={{ fontSize: 9, transition: "transform .15s", transform: outputOpen ? "rotate(90deg)" : "rotate(0deg)" }}>▶</span>
+            Install output
+          </button>
+          {outputOpen && (
+            /* ref is on THIS div so scrollTop affects only this container */
+            <div ref={outputContainerRef}
+              style={{ background: "#0f172a", borderRadius: 5, padding: "8px 10px",
+                maxHeight: 200, overflowY: "auto", fontFamily: "monospace", fontSize: 11 }}>
+              {output.map((l, i) => (
+                <div key={i} style={{ color: l.type === "error" ? "#f87171" : l.type === "success" ? "#86efac" : "#e2e8f0", lineHeight: 1.6 }}>{l.text}</div>
+              ))}
+            </div>
+          )}
         </div>
       )}
 
-      {/* Package list */}
+      {/* Package list — collapsible */}
       {packages && (
         <div>
-          <div style={{ fontSize: 11, fontWeight: 700, color: "#374151", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 6 }}>
+          <button
+            onClick={() => setPackagesOpen(o => !o)}
+            style={{ display: "flex", alignItems: "center", gap: 5, background: "none",
+              border: "none", cursor: "pointer", padding: "2px 0", marginBottom: 4,
+              fontSize: 11, fontWeight: 700, color: "#374151", textTransform: "uppercase", letterSpacing: 0.5 }}
+          >
+            <span style={{ fontSize: 9, transition: "transform .15s", transform: packagesOpen ? "rotate(90deg)" : "rotate(0deg)" }}>▶</span>
             Installed packages ({packages.length})
-          </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "2px 8px", maxHeight: 140, overflowY: "auto" }}>
-            {packages.map(p => (
-              <span key={p.name} style={{ fontSize: 10, fontFamily: "monospace", color: "#374151" }}>
-                {p.name} <span style={{ color: "#9ca3af" }}>{p.version}</span>
-              </span>
-            ))}
-          </div>
+          </button>
+          {packagesOpen && (
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "2px 8px", maxHeight: 140, overflowY: "auto" }}>
+              {packages.map(p => (
+                <span key={p.name} style={{ fontSize: 10, fontFamily: "monospace", color: "#374151" }}>
+                  {p.name} <span style={{ color: "#9ca3af" }}>{p.version}</span>
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       )}
     </section>

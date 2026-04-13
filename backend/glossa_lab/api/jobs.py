@@ -33,6 +33,13 @@ class JobResponse(BaseModel):
     updated_at: str
 
 
+class JobUpdate(BaseModel):
+    """Request body for updating a job's status."""
+
+    status: str  # running | completed | failed | cancelled
+    result_data: dict[str, Any] = {}
+
+
 class ClearJobsResponse(BaseModel):
     """Response body for bulk clearing jobs."""
 
@@ -78,6 +85,26 @@ async def get_job(job_id: str) -> JobResponse:
     if job is None:
         raise HTTPException(status_code=404, detail="Job not found")
     return JobResponse(**job)
+
+
+@router.patch("/jobs/{job_id}")
+async def update_job(job_id: str, body: JobUpdate) -> JobResponse:
+    """Update a job's status (running / completed / failed / cancelled).
+
+    Optionally store result_data in job_results so the UI can display
+    experiment output alongside the job entry.
+    """
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+    job = await db.get_job(job_id)
+    if job is None:
+        raise HTTPException(status_code=404, detail="Job not found")
+    await db.update_job_status(job_id, body.status)
+    if body.result_data:
+        now = datetime.now(timezone.utc).isoformat()
+        await db.store_result(job_id=job_id, data=body.result_data, created_at=now)
+    return JobResponse(**(await db.get_job(job_id)))  # type: ignore[arg-type]
 
 
 @router.delete("/jobs", status_code=200)

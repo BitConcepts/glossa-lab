@@ -238,13 +238,12 @@ def run_split_sensitivity(verbose: bool = True) -> dict[str, Any]:
 
 
 if __name__ == "__main__":
-    import json
-    from pathlib import Path
-    result = run_split_sensitivity(verbose=True)
-    out = Path(__file__).parent.parent.parent.parent / "reports" / "fuls_split_sensitivity.json"
-    out.write_text(json.dumps(result, indent=2), encoding="utf-8")
-    print(f"\n  Saved → {out}")
-
+    from glossa_lab.cli_bridge import run_with_reporting
+    run_with_reporting(
+        "fuls_split_sensitivity",
+        "Fuls Split Sensitivity Analysis",
+        run_split_sensitivity, verbose=True,
+    )
 
 try:
     from glossa_lab.experiment_base import ExperimentBase as _EB

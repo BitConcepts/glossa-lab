@@ -102,6 +102,8 @@ function AppContent() {
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("glossa_dark") === "1");
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [aiPanelOpen, setAiPanelOpen] = useState(false);
+  const [aiPanelWidth, setAiPanelWidth] = useState(320);
+  const [aiPanelSide, setAiPanelSide] = useState<"left" | "right">("left");
   // Dirty badges — shown when builders have unsaved local changes
   // Both start false on page load; the Study Builder dispatches glossa:dirty
   // whenever the graph diverges from its last-saved state.
@@ -350,11 +352,13 @@ function AppContent() {
 
       {/* ── Main content area ─────────────────────────────────────────────────── */}
       <div style={{
-        marginLeft: SIDEBAR_W,
+        marginLeft: SIDEBAR_W + (aiPanelOpen && aiPanelSide === "left" ? aiPanelWidth : 0),
+        marginRight: aiPanelOpen && aiPanelSide === "right" ? aiPanelWidth : 0,
         flex: 1, minWidth: 0,
         display: "flex", flexDirection: "column",
         height: "100vh",
         overflow: "hidden",
+        transition: "margin 0.15s",
       }}>
 
         {/* Top bar */}
@@ -455,12 +459,16 @@ function AppContent() {
         />
       )}
 
-      {/* AI side panel — attached to left sidebar, replaces the floating bubble */}
+      {/* AI side panel — dockable left/right, resizable */}
       {aiPanelOpen && (
         <AISidePanel
           onClose={() => setAiPanelOpen(false)}
           leftOffset={SIDEBAR_W}
           bottomOffset={effectivePanelH}
+          initialSide={aiPanelSide}
+          initialWidth={aiPanelWidth}
+          onWidthChange={setAiPanelWidth}
+          onSideChange={setAiPanelSide}
         />
       )}
 

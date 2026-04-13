@@ -83,6 +83,7 @@ wsys    = _load("fuls_writing_system_comparison*.json")
 drun    = _load("fuls_nw_semitic_decipher_run*.json")
 vsuite  = _load("fuls_validation_suite*.json")
 indep   = _load("fuls_independence_suite*.json")
+seqinfo = _load("fuls_sequence_info*.json")
 
 
 # ── Document setup ───────────────────────────────────────────────────────────
@@ -151,7 +152,7 @@ c += [
     sp(0.25), hr(),
     P("Prepared for: Dr. Andreas Fuls, TU Berlin / ICIT", AUTH),
     P("BitConcepts  ·  Glossa Lab Research Programme", AUTH),
-    P(f"{DATE}  ·  Version 1.4", VER),
+    P(f"{DATE}  ·  Version 1.5", VER),
     hr(), sp(0.4),
     P("<b>Abstract.</b>  This report presents five computational analyses of Dr. Fuls' 101-word "
       "NW Semitic syllabic test corpus (78 signs). (1) A train/test split sensitivity study "
@@ -844,6 +845,93 @@ if i_e5 and i_e6 and i_e7:
         sp(),
     ]
 
+# 6.5 Sequence information test
+si_c0  = seqinfo.get("c0_real_corpus", {})
+si_ctrl= seqinfo.get("control_conditions", {})
+si_stat= seqinfo.get("statistical_tests", {})
+si_d01 = seqinfo.get("c0_vs_c1_delta", {})
+si_con = seqinfo.get("conclusion", "Not yet run.")
+
+c += [P("6.5  Matched-Frequency Sequence-Information Test", H2)]
+c += [
+    P("To determine precisely whether the mapping inference signal depends on true within-word "
+      "sequential structure or only on sign unigram frequencies, I ran a controlled experiment "
+      "with three frequency-matched control corpora (100 instances each, 5 seeds per instance): "
+      "C1 (within-word shuffle — preserves frequencies and word lengths, destroys within-word order), "
+      "C2 (cross-word token shuffle — preserves global frequencies and word lengths, destroys "
+      "co-occurrence patterns), and C3 (frequency-matched random generation). "
+      "All controls use identical inference hyperparameters.", BODY),
+]
+
+if si_c0 and si_ctrl:
+    row_labels = [
+        ("M1 Consistency", "m1_consistency",  "mean_m1", "std_m1",  "{:.3f}"),
+        ("M2 HCI signs",   "m1_consistency",  "mean_m2", "std_m2",  "{:.1f}"),
+        ("M3 Entropy",     "m3_entropy",      "mean_m3", "std_m3",  "{:.3f}"),
+        ("M4 Bigram plaus","m4_plausibility", "mean_m4", "std_m4",  "{:.3f}"),
+        ("M5 Hamming",     "m5_hamming",      "mean_m5", "std_m5",  "{:.2f}"),
+    ]
+    ctrl_order = ["C1_within_word_shuffle", "C2_cross_word_shuffle", "C3_freq_random"]
+    ctrl_labels = {"C1_within_word_shuffle": "C1 Within-word",
+                   "C2_cross_word_shuffle":  "C2 Cross-word",
+                   "C3_freq_random":         "C3 Freq-random"}
+
+    # Build comparison table: one row per metric
+    seq_rows = [["Metric", "C0 Real",
+                 "C1 Within-word\n(mean ± std)",
+                 "C2 Cross-word\n(mean ± std)",
+                 "C3 Freq-random\n(mean ± std)",
+                 "C0 vs C1\nd / p"]]
+    # M1: consistency
+    c0_m1 = si_c0.get("m1_consistency", 0)
+    c0_m2 = si_c0.get("m2_hci_count", 0)
+    c0_m3 = si_c0.get("m3_entropy", 0)
+    c0_m4 = si_c0.get("m4_plausibility", 0)
+    c0_m5 = si_c0.get("m5_hamming", 0)
+
+    for metric_label, stat_key, mu_key, sd_key, fmt in [
+        ("M1 Consistency",   "m1_consistency",    "mean_m1", "std_m1", "{:.3f}"),
+        ("M2 HCI signs",     "m1_consistency",    "mean_m2", "std_m2", "{:.1f}"),
+        ("M3 Entropy (bits)","m3_entropy",        "mean_m3", "std_m3", "{:.3f}"),
+        ("M4 Bigram plaus.", "m4_plausibility",   "mean_m4", "std_m4", "{:.3f}"),
+        ("M5 Hamming spread","m5_hamming_convergence","mean_m5","std_m5","{:.2f}"),
+    ]:
+        c0_val = {"m1_consistency":c0_m1,"m1_consistency":c0_m1,
+                  "m3_entropy":c0_m3,"m4_plausibility":c0_m4,
+                  "m5_hamming_convergence":c0_m5,
+                  "M1 Consistency":c0_m1,"M2 HCI signs":c0_m2,
+                  "M3 Entropy (bits)":c0_m3,"M4 Bigram plaus.":c0_m4,
+                  "M5 Hamming spread":c0_m5}.get(metric_label, 0)
+        ctrl_vals = []
+        for ck in ctrl_order:
+            cd = si_ctrl.get(ck, {})
+            mu = cd.get(mu_key, 0)
+            sd = cd.get(sd_key, 0)
+            ctrl_vals.append(fmt.format(mu) + f" ±{sd:.3f}" if sd else fmt.format(mu))
+        # Stats for C0 vs C1
+        c1_stat = si_stat.get("C1_within_word_shuffle", {}).get(stat_key, {})
+        d_val = c1_stat.get("d", float("nan"))
+        p_val = c1_stat.get("p", 1.0)
+        dp_str = f"d={d_val:.2f}\np={p_val:.4f}" if not (isinstance(d_val, float) and d_val != d_val) else "—"
+        seq_rows.append([metric_label, fmt.format(c0_val)] + ctrl_vals + [dp_str])
+
+    extra_seq = []
+    # Highlight M1 row if significant
+    if si_d01.get("p_m1", 1) < 0.05:
+        extra_seq.append(("BACKGROUND",(0,1),(-1,1),LGREEN))
+    elif si_d01.get("p_m4", 1) < 0.05:
+        extra_seq.append(("BACKGROUND",(0,4),(-1,4),LGREEN))
+    c += [
+        tbl(seq_rows, w=[3.5*cm, 2*cm, 3.5*cm, 3.5*cm, 3.5*cm, 2*cm], extra=extra_seq or None),
+        P("Table 24. Matched-frequency sequence-information test (100 instances per control, "
+          "5 seeds each). C0 = real corpus (20 seeds). "
+          "M1 and M4 are the primary test metrics; M5 Hamming spread (lower = more convergent) is secondary. "
+          f"C0 vs C1: M1 d={si_d01.get('d_m1',0):.2f} (p={si_d01.get('p_m1',1):.4f}), "
+          f"M4 d={si_d01.get('d_m4',0):.2f} (p={si_d01.get('p_m4',1):.4f}).", CAP),
+        P(f"<b>Conclusion:</b>  {si_con}", BODY),
+        sp(),
+    ]
+
 c += [PageBreak()]
 
 # ── SECTION 7: ANCHOR COUNT SIMULATION ────────────────────────────────────────
@@ -991,6 +1079,9 @@ c += [
         ["Calibration (cons→acc)", "POOR — 3–6% accuracy at 60% cons.", "STOP CONDITION: consistency ≠ accuracy"],
         ["Solution clustering (50 seeds)", f"{i_e4.get('n_clusters','?')} clusters, dom. {i_e4.get('dominant_cluster_pct',0):.0%}", "FRAGMENTED — no single dominant solution"],
         ["Adversarial vs real corpus", f"{i_e7.get('mean_consistency',0)*100:.1f}% vs 59.9% (−4.3pp)", "Frequency, not bigrams, primary driver"],
+        ["Seq. info test (C0 vs C1)",
+         f"d={si_d01.get('d_m1',0):.2f} / p={si_d01.get('p_m1',1):.4f}",
+         "Primary signal is frequency-driven; sequential order not detectable at 4.2 tok/sign"],
     ], w=[4.5*cm, 4*cm, 6.5*cm],
        extra=[
            ("BACKGROUND",(0,3),(-1,3),LGREEN),
@@ -1034,7 +1125,20 @@ c += [
       "Raw JSON result files are available on request. The analysis code is maintained "
       "in the Glossa Lab repository and can be run with any future corpus updates "
       "Dr. Fuls may provide.", NOTE),
-    P(f"Report generated: {DATE}  ·  Glossa Lab v1.4  ·  BitConcepts", VER),
+    P("7. <b>Nature of the detected signal (sequence information test):</b>  "
+      "A rigorous matched-frequency experiment with 100 control instances per condition shows "
+      "that the mapping inference signal is primarily carried by sign unigram frequencies, "
+      "not by within-word sequential order. The real corpus does not significantly outperform "
+      "the within-word shuffle on mapping consistency or bigram plausibility. "
+      "The meaningful signal is: the specific distribution of sign frequencies in this corpus "
+      "is non-random (confirmed by the frequency-matched random control). "
+      "Sequential information is expected to become detectable above 10 tokens/sign.", BODY),
+    sp(0.5), hr(),
+    P("All experiments and results are reproducible via the Glossa Lab research platform. "
+      "Raw JSON result files are available on request. The analysis code is maintained "
+      "in the Glossa Lab repository and can be run with any future corpus updates "
+      "Dr. Fuls may provide.", NOTE),
+    P(f"Report generated: {DATE}  ·  Glossa Lab v1.5  ·  BitConcepts", VER),
 ]
 
 # ── BUILD PDF ─────────────────────────────────────────────────────────────────

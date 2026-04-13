@@ -8,6 +8,7 @@
  */
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cancelJob, clearJobs, getEnvStatus, getLogStreamUrl, listJobs, runTerminalCommand, type EnvStatus, type JobResponse } from "../api";
+import { fmtDateTimeCompact } from "../dateFormat";
 import { ChatInline } from "./AIChatWindow";
 import { useAIChat } from "../hooks/useAIChat";
 import { useToast } from "../hooks/useToast";
@@ -35,10 +36,16 @@ function parseLogTimestamp(raw: string): string {
   try {
     const iso = raw.replace(",", ".").replace(" ", "T") + "Z";
     const dt = new Date(iso);
-    if (!isNaN(dt.getTime())) return dt.toLocaleTimeString();
+    if (!isNaN(dt.getTime())) {
+      // Show date + time together (e.g. "Apr 13, 6:06 AM")
+      return dt.toLocaleString(undefined, {
+        month: "short", day: "numeric",
+        hour: "numeric", minute: "2-digit",
+      });
+    }
   } catch { /* fall through */ }
-  // Fallback: just strip the date prefix and return HH:MM:SS
-  return raw.length >= 19 ? raw.slice(11, 19) : raw;
+  // Fallback: return full datetime prefix as-is
+  return raw.length >= 19 ? raw.slice(0, 19) : raw;
 }
 
 function formatLogLine(raw: string): string {
@@ -218,7 +225,7 @@ function JobsPanel() {
               </div>
             )}
             <div style={{ fontSize: 10, color: "#64748b", marginTop: 2 }}>
-              {job.pipeline} · {new Date(job.created_at).toLocaleTimeString()}
+              {job.pipeline} · {fmtDateTimeCompact(job.created_at)}
             </div>
           </div>
         );

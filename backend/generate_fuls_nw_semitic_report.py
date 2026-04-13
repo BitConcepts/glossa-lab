@@ -82,6 +82,7 @@ anchor  = _load("fuls_anchor_simulation*.json")
 wsys    = _load("fuls_writing_system_comparison*.json")
 drun    = _load("fuls_nw_semitic_decipher_run*.json")
 vsuite  = _load("fuls_validation_suite*.json")
+indep   = _load("fuls_independence_suite*.json")
 
 
 # ── Document setup ───────────────────────────────────────────────────────────
@@ -150,7 +151,7 @@ c += [
     sp(0.25), hr(),
     P("Prepared for: Dr. Andreas Fuls, TU Berlin / ICIT", AUTH),
     P("BitConcepts  ·  Glossa Lab Research Programme", AUTH),
-    P(f"{DATE}  ·  Version 1.3", VER),
+    P(f"{DATE}  ·  Version 1.4", VER),
     hr(), sp(0.4),
     P("<b>Abstract.</b>  This report presents five computational analyses of Dr. Fuls' 101-word "
       "NW Semitic syllabic test corpus (78 signs). (1) A train/test split sensitivity study "
@@ -722,8 +723,131 @@ c += [
 
 c += [PageBreak()]
 
-# ── SECTION 6: ANCHOR COUNT SIMULATION ────────────────────────────────────────
-c += [P("6.  Anchor Count Simulation", H1)]
+# ── SECTION 6: MODEL INDEPENDENCE AND ROBUSTNESS ANALYSIS ──────────────────
+c += [P("6.  Model Independence and Robustness Analysis", H1)]
+
+i_e1  = indep.get("exp1_cross_lm", {})
+i_e2  = indep.get("exp2_calibration", {})
+i_e3  = indep.get("exp3_h_stress_test", {})
+i_e4  = indep.get("exp4_stability_clustering", {})
+i_e5  = indep.get("exp5_subset_generalization", {})
+i_e6  = indep.get("exp6_anchor_gradient", {})
+i_e7  = indep.get("exp7_adversarial", {})
+
+# 6.1 Cross-LM
+c += [P("6.1  Cross-Language Model Validation", H2)]
+if i_e1:
+    clm_rows = [["LM Condition", "Consistency", "High-conf signs", "Bigram plaus.", "Assessment"]]
+    assessments = {
+        "Hebrew (standard)":    "Baseline",
+        "Ugaritic decoded":     "Weaker but persists",
+        "Blended NW Semitic":   "Intermediate — consistent with mix",
+        "Reduced phonotactics": "Weakened; bigrams contribute signal",
+        "Uniform distribution": "Baseline (no structure)",
+    }
+    for lm_name, vals in i_e1.items():
+        if isinstance(vals, dict) and not vals.get("skipped"):
+            clm_rows.append([
+                lm_name,
+                f"{vals.get('mean_consistency',0)*100:.1f}%",
+                str(vals.get("high_conf_signs", "—")),
+                f"{vals.get('bigram_plausibility',0):.3f}",
+                assessments.get(lm_name, "—"),
+            ])
+    extra_clm2 = [("BACKGROUND",(0,1),(-1,1),LAMBER)]
+    c += [
+        tbl(clm_rows, w=[4.5*cm, 2.8*cm, 2.8*cm, 2.8*cm, 5.1*cm], extra=extra_clm2),
+        P("Table 20. Cross-LM validation (10 seeds per condition). Amber = Hebrew baseline. "
+          "The signal weakens but does NOT collapse across non-uniform LMs, confirming "
+          "LM independence. The Uniform condition (no structure) is the correct null baseline.", CAP),
+    ]
+
+# 6.2 Calibration curve (honest failure)
+c += [P("6.2  Consistency→Accuracy Calibration (Honest Result)", H2)]
+if i_e2:
+    cal = i_e2.get("curve", [])
+    cal_rows = [["Tokens", "Tok/sign", "Mean accuracy", "Mean consistency"]]
+    for r in cal:
+        cal_rows.append([
+            str(r.get("n_tokens","?")),
+            f"{r.get('approx_tok_sign',0):.1f}",
+            f"{r.get('mean_accuracy',0)*100:.1f}%",
+            f"{r.get('mean_consistency',0)*100:.1f}%",
+        ])
+    c += [
+        tbl(cal_rows, w=[2.5*cm, 2.5*cm, 4*cm, 4*cm]),
+        P("Table 21. Synthetic calibration curve. Accuracy measured against known ground-truth "
+          "mapping on a 78-sign synthetic corpus at each token density.", CAP),
+        P(f"<b>IMPORTANT: Calibration failure — consistency is NOT a reliable accuracy proxy.</b>  "
+          f"At all tested token densities, the synthetic calibration shows 3–6% accuracy despite "
+          f"40–62% consistency. This confirms a fundamental limitation: in the surjective sparse regime "
+          f"(78 signs → 22 consonants, 4 tok/sign), the solution space is massively underdetermined. "
+          f"Multiple mappings are statistically equivalent and the algorithm cannot distinguish between them. "
+          f"<b>Mapping consistency measures statistical structure detection, NOT sign-assignment correctness.</b>  "
+          f"The only reliable path to accuracy is via anchor injection from external linguistic knowledge.", BODY),
+    ]
+
+# 6.3 Stability clustering (honest fragmentation)
+c += [P("6.3  Stability Clustering (50 Seeds)", H2)]
+if i_e4:
+    n_cl  = i_e4.get("n_clusters", 48)
+    dom   = i_e4.get("dominant_cluster_pct", 0)
+    mc50  = i_e4.get("mean_consistency_50_seeds", 0)
+    hc50  = i_e4.get("high_conf_signs_50_seeds", 0)
+    c += [
+        tbl([
+            ["Metric", "Value", "Assessment"],
+            ["Seeds run", "50", "—"],
+            ["Distinct clusters (Hamming d ≤20%)",
+             str(n_cl),
+             "FRAGMENTED — almost every run a unique solution"],
+            ["Dominant cluster",
+             f"{i_e4.get('dominant_cluster_size',2)}/50 ({dom:.0%})",
+             "No single dominant solution"],
+            ["Mean consistency (50 seeds)", f"{mc50*100:.1f}%", "Stable at corpus level"],
+            ["High-confidence signs", f"{hc50}/78", "Consistent across majority of seeds"],
+        ], w=[5*cm, 3.5*cm, 9*cm]),
+        P(f"Table 22. Stability clustering. The {n_cl} clusters indicate highly fragmented solution space: "
+          "each random restart often finds a different local optimum. This is a direct consequence of "
+          "the sparse data regime (4.2 tok/sign) and large hypothesis space (78 signs → 22 consonants). "
+          "The 15 high-confidence signs are those where the sign’s frequency provides enough "
+          "statistical pressure to consistently assign the same modal consonant.", CAP),
+    ]
+
+# 6.4 Subset generalization + adversarial + anchor gradient (compact)
+c += [P("6.4  Subset Generalization, Anchor Gradient, and Adversarial Test", H2)]
+if i_e5 and i_e6 and i_e7:
+    agree = i_e5.get("mean_pairwise_agreement", 0)
+    n_shared = [p.get("shared_high_conf_signs",0) for p in i_e5.get("pairwise_agreement",[])]
+    anch_cond = i_e6.get("conditions", [])
+    adv_mc   = i_e7.get("mean_consistency", 0)
+    adv_base = i_e7.get("random_baseline", 0.40)
+    adv_d    = i_e7.get("delta_vs_baseline_pp", 0)
+    c += [
+        tbl([
+            ["Experiment", "Key result", "Interpretation"],
+            ["Subset generalization (3×33 words)",
+             f"{agree:.1%} agreement",
+             f"High agreement but on only {min(n_shared)}–{max(n_shared)} shared signs per pair — limited evidence"],
+            ["Anchor gradient (0→1→3→5)",
+             "+".join([f"{r['mean_consistency']*100:.1f}%" for r in anch_cond]),
+             "Each additional structural anchor provides modest but positive lift"],
+            ["Adversarial corpus (scrambled)",
+             f"{adv_mc:.1%} (vs {adv_base:.1%} random)",
+             f"+{adv_d:.1f}pp above random — but only {59.9-adv_mc*100:.1f}pp below real corpus: "
+             "frequency, not bigram order, is the dominant signal"],
+        ], w=[4.5*cm, 4*cm, 9.5*cm]),
+        P("Table 23. Supplementary robustness results. The adversarial test reveals that sign "
+          "frequency (not sequential structure) drives most of the consistency signal — "
+          "an important limitation. The anchor gradient confirms that expert linguistic input "
+          "provides genuine performance improvement.", CAP),
+        sp(),
+    ]
+
+c += [PageBreak()]
+
+# ── SECTION 7: ANCHOR COUNT SIMULATION ────────────────────────────────────────
+c += [P("7.  Anchor Count Simulation", H1)]
 
 anchor_sweep = anchor.get("anchor_sweep", [])
 viable_n = anchor.get("minimum_viable_n", "?")
@@ -804,8 +928,8 @@ c += [
     sp(),
 ]
 
-# ── SECTION 7: PROPOSED MAPPING HYPOTHESIS ────────────────────────────────────
-c += [P("7.  Proposed Sign-to-Syllable Mapping Hypothesis", H1),
+# ── SECTION 8: PROPOSED MAPPING HYPOTHESIS ────────────────────────────────────
+c += [P("8.  Proposed Sign-to-Syllable Mapping Hypothesis", H1),
       P("<i>Important caveat: No ground truth is available for this corpus. The following "
         "mapping is generated by frequency-rank matching with positional plausibility refinement "
         "and is provided solely as a starting hypothesis for Dr. Fuls' consideration. "
@@ -840,10 +964,10 @@ if mapping:
           "This mapping is a starting hypothesis — accuracy cannot be measured without a key.", CAP),
     ]
 
-# ── SECTION 8: SUMMARY AND RECOMMENDATIONS ───────────────────────────────────
+# ── SECTION 9: SUMMARY AND RECOMMENDATIONS ───────────────────────────────────
 c += [
     PageBreak(),
-    P("8.  Summary and Recommendations", H1),
+    P("9.  Summary and Recommendations", H1),
     tbl([
         ["Finding", "Value", "Significance"],
         ["Corpus size", "101 words, 331 tokens, 78 signs", "Full sign inventory observed"],
@@ -863,6 +987,10 @@ c += [
         ["Random corpus baseline", f"{vs_b.get('mean_consistency',0)*100:.1f}%", f"+{vs_b.get('delta_vs_real_corpus_pp',0):.1f}pp real signal delta"],
         ["Hebrew vs Uniform LM", f"{vs_c.get('Hebrew (standard)',{}).get('mean_consistency',0)*100:.1f}% vs {vs_c.get('Uniform distribution',{}).get('mean_consistency',0)*100:.1f}%", "LM provides genuine phonotactic structure"],
         ["Bigram plausibility lift", f"+{vs_r3.get('plausibility_lift',0):.2f} nats", "Hebrew-decoded output measurably coherent"],
+        ["Cross-LM: signal persists?", str(i_e1.get("_signal_persists_across_lms", "?")).upper(), "True = LM-independent signal"],
+        ["Calibration (cons→acc)", "POOR — 3–6% accuracy at 60% cons.", "STOP CONDITION: consistency ≠ accuracy"],
+        ["Solution clustering (50 seeds)", f"{i_e4.get('n_clusters','?')} clusters, dom. {i_e4.get('dominant_cluster_pct',0):.0%}", "FRAGMENTED — no single dominant solution"],
+        ["Adversarial vs real corpus", f"{i_e7.get('mean_consistency',0)*100:.1f}% vs 59.9% (−4.3pp)", "Frequency, not bigrams, primary driver"],
     ], w=[4.5*cm, 4*cm, 6.5*cm],
        extra=[
            ("BACKGROUND",(0,3),(-1,3),LGREEN),
@@ -894,12 +1022,19 @@ c += [
       "corpus, prioritise linguistically certain assignments over quantity. "
       "Five well-chosen pan-Semitic stable consonants outperform 12 random assignments "
       "in the Ugaritic proxy — the same principle applies here.", BODY),
+    P("6. <b>Important limitation (calibration + clustering):</b>  "
+      "the synthetic calibration experiment shows that mapping consistency does NOT reliably "
+      "predict sign-level accuracy in the sparse surjective regime (3–6% accuracy despite 60% "
+      "consistency). The solution space is also highly fragmented (48 distinct solutions from 50 seeds). "
+      "The only reliable path to verified accuracy is anchor injection from external linguistic knowledge. "
+      "The proposed mapping table should be evaluated against Dr. Fuls' answer key to produce "
+      "a direct accuracy figure.", BODY),
     sp(0.5), hr(),
     P("All experiments and results are reproducible via the Glossa Lab research platform. "
       "Raw JSON result files are available on request. The analysis code is maintained "
       "in the Glossa Lab repository and can be run with any future corpus updates "
       "Dr. Fuls may provide.", NOTE),
-    P(f"Report generated: {DATE}  ·  Glossa Lab v1.3  ·  BitConcepts", VER),
+    P(f"Report generated: {DATE}  ·  Glossa Lab v1.4  ·  BitConcepts", VER),
 ]
 
 # ── BUILD PDF ─────────────────────────────────────────────────────────────────

@@ -141,6 +141,7 @@ function JobsPanel() {
   const [jobs, setJobs] = useState<JobResponse[]>([]);
   const [loading, setLoading] = useState(true);
   const [cancelling, setCancelling] = useState<Set<string>>(new Set());
+  const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     try { setJobs(await listJobs()); setLoading(false); }
@@ -171,6 +172,19 @@ function JobsPanel() {
   };
 
   const finishedCount = jobs.filter((j) => ["completed", "failed", "cancelled"].includes(j.status)).length;
+  const activeJobs    = jobs.filter((j) => ["running", "pending"].includes(j.status));
+
+  const handleStopAll = async () => {
+    const ids = activeJobs.map(j => j.id);
+    if (!ids.length) return;
+    setCancelling(new Set(ids));
+    try {
+      await Promise.all(ids.map(id => cancelJob(id)));
+      await load();
+      toast(`Stopped ${ids.length} job${ids.length > 1 ? "s" : ""}`, "info");
+    } catch { toast("Some cancellations failed", "error"); }
+    finally { setCancelling(new Set()); }
+  };
 
   const statusColor: Record<string, string> = {
     pending: "#d97706", running: "#2563eb", completed: "#16a34a", failed: "#dc2626", cancelled: "#6b7280",
@@ -179,9 +193,12 @@ function JobsPanel() {
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", overflowY: "auto" }}>
       <div style={{ padding: "6px 10px", borderBottom: "1px solid #1e293b", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <span style={{ fontSize: 11, color: "#94a3b8" }}>{jobs.length} jobs</span>
+        <span style={{ fontSize: 11, color: "#94a3b8" }}>{jobs.length} jobs{activeJobs.length > 0 ? ` (${activeJobs.length} active)` : ""}</span>
         <div style={{ display: "flex", gap: 4 }}>
           <button onClick={load} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#94a3b8", cursor: "pointer", fontSize: 10 }}>⟳</button>
+          {activeJobs.length > 0 && (
+            <button onClick={handleStopAll} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#f97316", cursor: "pointer", fontSize: 10 }}>Stop All ({activeJobs.length})</button>
+          )}
           {finishedCount > 0 && (
             <button onClick={handleClearDone} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#94a3b8", cursor: "pointer", fontSize: 10 }}>Clear Done ({finishedCount})</button>
           )}
@@ -198,35 +215,81 @@ function JobsPanel() {
         </div>
       )}
       {jobs.map((job) => {
-        const isRunning = job.status === "running";
+        const isRunning  = job.status === "running";
+        const isExpanded = expandedId === job.id;
         const elapsed = isRunning ? Math.round((Date.now() - new Date(job.created_at).getTime()) / 1000) : null;
+        const result = (job as unknown as Record<string, unknown>).result as Record<string, unknown> | string | null | undefined;
+        const errMsg = (job as unknown as Record<string, unknown>).error as string | null | undefined;
         return (
-          <div key={job.id} style={{ padding: "8px 10px", borderBottom: "1px solid #1e293b" }}>
-            <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 4 }}>
-              <span style={{ fontSize: 10, padding: "1px 6px", borderRadius: 3, background: (statusColor[job.status] ?? "#6b7280") + "25", color: statusColor[job.status] ?? "#6b7280", fontWeight: 700 }}>
-                {job.status}
-              </span>
-              <span style={{ flex: 1, fontWeight: 600, fontSize: 12, color: "#e2e8f0" }}>{job.name}</span>
-              <span style={{ fontSize: 10, padding: "1px 5px", borderRadius: 3, background: "#1e293b", color: "#94a3b8" }}>CPU</span>
-              {elapsed !== null && <span style={{ fontSize: 10, color: "#64748b" }}>{elapsed}s</span>}
-              {(isRunning || job.status === "pending") && (
-                <button
-                  onClick={() => handleCancel(job.id)}
-                  disabled={cancelling.has(job.id)}
-                  style={{ padding: "2px 7px", border: "1px solid #ef4444", borderRadius: 3, background: "none", color: "#ef4444", cursor: "pointer", fontSize: 10 }}
-                >
-                  {cancelling.has(job.id) ? "…" : "Abort"}
-                </button>
+          <div key={job.id} style={{ borderBottom: "1px solid #1e293b" }}>
+            {/* Clickable header row */}
+            <div
+              onClick={() => setExpandedId(isExpanded ? null : job.id)}
+              style={{ padding: "8px 10px", cursor: "pointer", userSelect: "none" }}
+            >
+              <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 4 }}>
+                <span style={{ fontSize: 9, color: "#64748b", flexShrink: 0 }}>{isExpanded ? "▼" : "►"}</span>
+                <span style={{ fontSize: 10, padding: "1px 6px", borderRadius: 3, background: (statusColor[job.status] ?? "#6b7280") + "25", color: statusColor[job.status] ?? "#6b7280", fontWeight: 700 }}>
+                  {job.status}
+                </span>
+                <span style={{ flex: 1, fontWeight: 600, fontSize: 12, color: "#e2e8f0", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{job.name}</span>
+                {elapsed !== null && <span style={{ fontSize: 10, color: "#64748b", flexShrink: 0 }}>{elapsed}s</span>}
+                {(isRunning || job.status === "pending") && (
+                  <button
+                    onClick={e => { e.stopPropagation(); handleCancel(job.id); }}
+                    disabled={cancelling.has(job.id)}
+                    style={{ padding: "2px 7px", border: "1px solid #ef4444", borderRadius: 3, background: "none", color: "#ef4444", cursor: "pointer", fontSize: 10, flexShrink: 0 }}
+                  >
+                    {cancelling.has(job.id) ? "…" : "Abort"}
+                  </button>
+                )}
+              </div>
+              {isRunning && (
+                <div style={{ height: 2, background: "#1e293b", borderRadius: 1, overflow: "hidden", marginBottom: 2 }}>
+                  <div style={{ height: "100%", background: "#2563eb", borderRadius: 1, animation: "progress 1.5s linear infinite", width: "40%" }} />
+                </div>
               )}
+              <div style={{ fontSize: 10, color: "#64748b" }}>
+                {job.pipeline} · {fmtDateTimeCompact(job.created_at)}
+              </div>
             </div>
-            {isRunning && (
-              <div style={{ height: 2, background: "#1e293b", borderRadius: 1, overflow: "hidden" }}>
-                <div style={{ height: "100%", background: "#2563eb", borderRadius: 1, animation: "progress 1.5s linear infinite", width: "40%" }} />
+
+            {/* Expanded details */}
+            {isExpanded && (
+              <div style={{ padding: "6px 12px 10px 28px", background: "#0a1020", borderTop: "1px solid #1e293b" }}>
+                <div style={{ fontSize: 10, color: "#64748b", marginBottom: 4 }}>
+                  <span style={{ color: "#94a3b8", fontWeight: 600 }}>Job ID:</span> {job.id}
+                </div>
+                <div style={{ fontSize: 10, color: "#64748b", marginBottom: 4 }}>
+                  <span style={{ color: "#94a3b8", fontWeight: 600 }}>Pipeline:</span> {job.pipeline}
+                </div>
+                <div style={{ fontSize: 10, color: "#64748b", marginBottom: 6 }}>
+                  <span style={{ color: "#94a3b8", fontWeight: 600 }}>Created:</span> {fmtDateTimeCompact(job.created_at)}
+                </div>
+                {errMsg && (
+                  <div style={{ fontSize: 10, color: "#f87171", marginBottom: 6 }}>
+                    <span style={{ fontWeight: 600 }}>Error:</span>{" "}
+                    <span style={{ whiteSpace: "pre-wrap" }}>{errMsg}</span>
+                  </div>
+                )}
+                {result && (
+                  <div style={{ fontSize: 10, color: "#86efac" }}>
+                    <div style={{ fontWeight: 600, color: "#94a3b8", marginBottom: 2 }}>Result summary:</div>
+                    <pre style={{ background: "#0f172a", color: "#94a3b8", padding: "5px 8px", borderRadius: 4, overflow: "auto", maxHeight: 150, fontSize: 9, lineHeight: 1.5, margin: 0 }}>
+                      {typeof result === "string" ? result : JSON.stringify(result, null, 2)}
+                    </pre>
+                  </div>
+                )}
+                {!result && !errMsg && (
+                  <div style={{ fontSize: 10, color: "#475569", fontStyle: "italic" }}>
+                    {job.status === "running" ? "Job is running — check Logs tab for live output." :
+                     job.status === "pending"   ? "Job is queued — waiting for runner." :
+                     job.status === "completed" ? "Completed — no detailed result stored." :
+                     "No additional details available."}
+                  </div>
+                )}
               </div>
             )}
-            <div style={{ fontSize: 10, color: "#64748b", marginTop: 2 }}>
-              {job.pipeline} · {fmtDateTimeCompact(job.created_at)}
-            </div>
           </div>
         );
       })}

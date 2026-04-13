@@ -153,7 +153,7 @@ c += [
     sp(0.25), hr(),
     P("Prepared for: Dr. Andreas Fuls, TU Berlin / ICIT", AUTH),
     P("BitConcepts  ·  Glossa Lab Research Programme", AUTH),
-    P(f"{DATE}  ·  Version 1.6", VER),
+    P(f"{DATE}", VER),
     hr(), sp(0.4),
     P("<b>Abstract.</b>  This report presents five computational analyses of Dr. Fuls' 101-word "
       "NW Semitic syllabic test corpus (78 signs). (1) A train/test split sensitivity study "
@@ -1303,7 +1303,7 @@ c += [
       "Raw JSON result files are available on request. The analysis code is maintained "
       "in the Glossa Lab repository and can be run with any future corpus updates "
       "Dr. Fuls may provide.", NOTE),
-    P(f"Report generated: {DATE}  ·  Glossa Lab v1.6  ·  BitConcepts", VER),
+    P(f"Report generated: {DATE}  ·  Glossa Lab  ·  BitConcepts", VER),
 ]
 
 # ── BUILD PDF ─────────────────────────────────────────────────────────────────

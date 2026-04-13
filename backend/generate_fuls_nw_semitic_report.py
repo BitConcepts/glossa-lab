@@ -131,14 +131,47 @@ def ts(extra=None):
         base.extend(extra)
     return TableStyle(base)
 
+def _safe(t: str) -> str:
+    """Replace non-Latin-1 characters so ReportLab renders them without white blocks.
+    Characters in U+0000-U+00FF (Latin-1) are left unchanged; problematic chars above
+    U+00FF are mapped to safe ASCII equivalents."""
+    _MAP = [
+        ('\u2014', '--'),    # em dash
+        ('\u2013', '-'),     # en dash
+        ('\u2212', '-'),     # minus sign
+        ('\u2192', '->'),    # right arrow
+        ('\u2190', '<-'),    # left arrow
+        ('\u2081', '1'),     # subscript 1
+        ('\u2082', '2'),     # subscript 2
+        ('\u2083', '3'),     # subscript 3
+        ('\u2078', '8'),     # superscript 8
+        ('\u00b2', '2'),     # superscript 2 (R2) - Latin-1 but iffy in some fonts
+        ('\u2265', '>='),    # >=
+        ('\u2264', '<='),    # <=
+        ('\u2260', '!='),    # not-equal
+        ('\u2026', '...'),   # ellipsis
+        ('\u2019', "'"),     # right single curly quote
+        ('\u2018', "'"),     # left single curly quote
+        ('\u201c', '"'),     # left double curly quote
+        ('\u201d', '"'),     # right double curly quote
+        ('\u012b', 'i'),     # i-macron
+        ('\u016b', 'u'),     # u-macron
+        ('\u2713', '(ok)'),  # checkmark
+        ('\u00a7', 'S.'),    # section sign
+    ]
+    for u, a in _MAP:
+        t = t.replace(u, a)
+    return t
+
+
 def tbl(data, w=None, extra=None):
-    t = Table([[Paragraph(str(x), CELL) for x in row] for row in data], colWidths=w)
+    t = Table([[Paragraph(_safe(str(x)), CELL) for x in row] for row in data], colWidths=w)
     t.setStyle(ts(extra))
     return t
 
 def hr():   return HRFlowable(width="100%", thickness=0.5, color=MGREY, spaceAfter=8)
 def sp(h=0.3): return Spacer(1, h*cm)
-def P(text, style=None): return Paragraph(text, style or BODY)
+def P(text, style=None): return Paragraph(_safe(str(text)), style or BODY)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -983,33 +1016,39 @@ if cs_sum:
           "search space by approximately 10×.", CAP),
     ]
 
-# 7.2 Synthetic ranking
+# 7.2 Synthetic ranking (honest framing)
 if cs_syn:
+    t1  = cs_syn.get('top1_rate', 0) * 100
+    t3  = cs_syn.get('top3_rate', 0) * 100
+    t5  = cs_syn.get('top5_rate', 0) * 100
+    mr  = cs_syn.get('mean_rank', 0)
+    r_t1 = 1/N_FULL_CS*100
+    r_t3 = 3/N_FULL_CS*100
+    r_t5 = 5/N_FULL_CS*100
     c += [
-        P("7.2  Synthetic Top-k Ranking (Known-Mapping Benchmark)", H2),
+        P("7.2  Posterior Ranking on Synthetic Benchmark", H2),
         tbl([
-            ["Metric", "Value", "Random baseline", "Assessment"],
+            ["Metric", "Measured", "Random baseline", "Assessment"],
             ["Top-1 inclusion",
-             f"{cs_syn.get('top1_rate',0)*100:.1f}%",
-             f"{1/N_FULL_CS*100:.1f}% (1/22)",
-             f"×{cs_syn.get('top1_rate',0)*N_FULL_CS:.1f} vs random"],
+             f"{t1:.1f}%", f"{r_t1:.1f}%",
+             "Approx. random" if abs(t1 - r_t1) < 5 else "Above random"],
             ["Top-3 inclusion",
-             f"{cs_syn.get('top3_rate',0)*100:.1f}%",
-             f"{3/N_FULL_CS*100:.1f}% (3/22)",
-             f"×{cs_syn.get('top3_rate',0)*N_FULL_CS/3:.1f} vs random"],
+             f"{t3:.1f}%", f"{r_t3:.1f}%",
+             "Approx. random" if abs(t3 - r_t3) < 5 else "Above random"],
             ["Top-5 inclusion",
-             f"{cs_syn.get('top5_rate',0)*100:.1f}%",
-             f"{5/N_FULL_CS*100:.1f}% (5/22)",
-             f"×{cs_syn.get('top5_rate',0)*N_FULL_CS/5:.1f} vs random"],
+             f"{t5:.1f}%", f"{r_t5:.1f}%",
+             "Approx. random" if abs(t5 - r_t5) < 5 else "Above random"],
             ["Mean rank of true answer",
-             f"{cs_syn.get('mean_rank','?'):.2f} / {N_FULL_CS}",
+             f"{mr:.1f} / {N_FULL_CS}",
              f"{(N_FULL_CS+1)/2:.1f} (random)",
-             "Rank improvement over random"],
-        ], w=[4.5*cm, 3*cm, 3.5*cm, 7*cm]),
-        P(f"Table A2. Synthetic ranking on {cs_syn.get('n_corpora','?')} corpora with known ground-truth "
-          f"mappings at {cs_a.get('n_seeds','?')}-sign, 4-tok/sign density. "
-          "Top-k rates are above chance at all levels. The mean rank indicates the correct "
-          "answer appears in the upper half of the posterior ranking on average.", CAP),
+             "Near random" if mr > (N_FULL_CS+1)/2 * 0.85 else "Better than random"],
+        ], w=[4.5*cm, 2.8*cm, 3.2*cm, 7.5*cm]),
+        P(f"Table A2. Posterior ranking on {cs_syn.get('n_corpora','?')} synthetic corpora with known "
+          f"ground-truth mappings at the same sparse density (4 tok/sign, 78 signs). "
+          f"<b>Important:</b> at this corpus density, top-k inclusion rates match the random "
+          f"baseline. Posterior ranking does not provide predictive power for identifying "
+          f"the correct assignment. The value of the method lies in candidate-set compression "
+          f"(Section 7.1), not in the ordering of candidates within the set.", CAP),
     ]
 
 # 7.3 Anchor amplification
@@ -1063,18 +1102,20 @@ if cs_conds:
     ]
 
 c += [
-    P(f"<b>Summary: the system as a hypothesis-space reduction and anchor-amplification engine.</b>  "
-      f"Without any anchors, the system compresses the per-sign search space from {N_FULL_CS} consonants "
-      f"to approximately {cs_sum.get('mean_cs_80','?'):.1f} (80% coverage), a "
-      f"{cs_sum.get('mean_compression_80x','?'):.1f}× compression. "
-      f"When 1 structural anchor is provided, the observed gain on non-anchored signs is "
-      f"{cs_conds[1]['naive_combinatorial']['amplifier']:.1f}× the naïve combinatorial expectation "
-      f"(fixing 1/78 signs). "
-      "This super-linear propagation demonstrates that the system is transmitting constraints "
-      "through the statistical structure of the corpus, not simply eliminating one sign from a "
-      "lookup table. The practical implication: even a single verified sign-to-sound assignment "
-      "from Dr. Fuls’ linguistic knowledge produces a measurable, structured improvement across "
-      "the entire corpus.", BODY),
+    P(f"<b>Summary.</b>  "
+      f"The primary result of Section 7.1 is candidate-set compression: the system reduces "
+      f"the per-sign search space from {N_FULL_CS} possible consonants to approximately "
+      f"{cs_sum.get('mean_cs_80','?'):.1f} candidates (80% posterior coverage), "
+      f"a {cs_sum.get('mean_compression_80x','?'):.1f}x reduction. "
+      "This reduction is reliable and reproducible across different random seeds and does not "
+      "require any external information beyond the language family. "
+      "The ordering of candidates within this reduced set does not carry predictive power "
+      "at the current corpus density -- posterior ranking matches the random baseline. "
+      "When external anchor assignments are introduced, the constraints propagate measurably "
+      "to non-anchored signs, though the effect remains modest and variable at this corpus size. "
+      "The system's practical value is therefore as a hypothesis-constraining tool: it reduces "
+      "a combinatorially large mapping problem to a structured candidate manifold, which can "
+      "then be resolved using verified linguistic assignments.", BODY),
     sp(),
 ]
 
@@ -1265,44 +1306,24 @@ c += [
       "corpus, prioritise linguistically certain assignments over quantity. "
       "Five well-chosen pan-Semitic stable consonants outperform 12 random assignments "
       "in the Ugaritic proxy — the same principle applies here.", BODY),
-    P("6. <b>Important limitation (calibration + clustering):</b>  "
-      "the synthetic calibration experiment shows that mapping consistency does NOT reliably "
-      "predict sign-level accuracy in the sparse surjective regime (3–6% accuracy despite 60% "
-      "consistency). The solution space is also highly fragmented (48 distinct solutions from 50 seeds). "
-      "The only reliable path to verified accuracy is anchor injection from external linguistic knowledge. "
-      "The proposed mapping table should be evaluated against Dr. Fuls' answer key to produce "
-      "a direct accuracy figure.", BODY),
+    P("6. <b>Important limitation -- calibration and clustering:</b>  "
+      "Synthetic calibration shows that mapping consistency does not reliably predict "
+      "sign-level accuracy in the sparse surjective regime (3-6% top-1 accuracy despite "
+      "~60% consistency; posterior ranking does not exceed the random baseline). "
+      "The solution space is highly fragmented (48 distinct solutions from 50 seeds). "
+      "Mapping consistency measures structural signal detection, not correctness. "
+      "The only path to verified accuracy is anchor injection from external linguistic knowledge.", BODY),
+    P("7. <b>Nature of the signal:</b>  "
+      "A matched-frequency sequence experiment (100 control instances per condition) shows "
+      "that at 4 tokens/sign, the detectable signal is dominated by unigram frequency distributions. "
+      "Within-word sequential order is not recoverable under current conditions "
+      "(C0 vs C1 within-word shuffle: d=-0.49, p=0.94). "
+      "However, the frequency structure is non-random: the frequency-matched random control "
+      "is 19.9 percentage points below the real corpus, confirming genuine statistical structure. "
+      "Sequential information is expected to become detectable above approximately 10 tokens/sign.", BODY),
     sp(0.5), hr(),
-    P("All experiments and results are reproducible via the Glossa Lab research platform. "
-      "Raw JSON result files are available on request. The analysis code is maintained "
-      "in the Glossa Lab repository and can be run with any future corpus updates "
-      "Dr. Fuls may provide.", NOTE),
-    P("7. <b>Nature of the detected signal (sequence information test):</b>  "
-      "A rigorous matched-frequency experiment with 100 control instances per condition shows "
-      "that the mapping inference signal is primarily carried by sign unigram frequencies, "
-      "not by within-word sequential order. The real corpus does not significantly outperform "
-      "the within-word shuffle on mapping consistency or bigram plausibility. "
-      "The meaningful signal is: the specific distribution of sign frequencies in this corpus "
-      "is non-random (confirmed by the frequency-matched random control). "
-      "Sequential information is expected to become detectable above 10 tokens/sign.", BODY),
-    sp(0.5), hr(),
-    P("All experiments and results are reproducible via the Glossa Lab research platform. "
-      "Raw JSON result files are available on request. The analysis code is maintained "
-      "in the Glossa Lab repository and can be run with any future corpus updates "
-      "Dr. Fuls may provide.", NOTE),
-    P("8. <b>The system's value proposition</b> (constraint-space reduction and anchor amplification): "
-      f"the system reduces the per-sign search space from 22 consonants to {cs_sum.get('mean_cs_80','?'):.1f} "
-      f"candidates (80% posterior coverage), a {cs_sum.get('mean_compression_80x','?'):.1f}× compression. "
-      "A single verified sign-to-sound assignment produces a 12× super-linear propagation effect "
-      "on non-anchored signs. The correct answer ranks within the top-3 candidates in 13% of "
-      "synthetic sparse-regime tests (vs 13.6% expected at random for top-3). "
-      "These results establish the system's value as a <i>hypothesis-space reduction and "
-      "anchor-amplification engine</i>, not an unsupervised decipherment tool.", BODY),
-    sp(0.5), hr(),
-    P("All experiments and results are reproducible via the Glossa Lab research platform. "
-      "Raw JSON result files are available on request. The analysis code is maintained "
-      "in the Glossa Lab repository and can be run with any future corpus updates "
-      "Dr. Fuls may provide.", NOTE),
+    P("All experiments are reproducible via the Glossa Lab research platform. "
+      "Raw result files are available on request.", NOTE),
     P(f"Report generated: {DATE}  ·  Glossa Lab  ·  BitConcepts", VER),
 ]
 

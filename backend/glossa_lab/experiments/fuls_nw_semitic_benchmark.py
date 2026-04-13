@@ -404,12 +404,12 @@ def run_nw_semitic_benchmark(verbose: bool = True) -> dict[str, Any]:
 
 
 if __name__ == "__main__":
-    import json
-    result = run_nw_semitic_benchmark(verbose=True)
-    out = Path(_BACKEND).parent / "reports" / "fuls_nw_semitic_benchmark.json"
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(result, indent=2, default=str), encoding="utf-8")
-    print(f"\n  Saved -> {out}")
+    from glossa_lab.cli_bridge import run_with_reporting
+    run_with_reporting(
+        "fuls_nw_semitic_benchmark",
+        "Fuls NW Semitic Syllabic Benchmark (test1)",
+        run_nw_semitic_benchmark, verbose=True,
+    )
 
 
 try:

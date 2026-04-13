@@ -19,6 +19,7 @@ class JobCreate(BaseModel):
     name: str
     pipeline: str = "default"
     params: dict[str, Any] = {}
+    initial_status: str = "pending"  # allow CLI to create jobs already in 'running' state
 
 
 class JobResponse(BaseModel):
@@ -59,6 +60,7 @@ async def create_job(body: JobCreate) -> JobResponse:
         pipeline=body.pipeline,
         params=body.params,
         created_at=now,
+        initial_status=body.initial_status,
     )
     return JobResponse(**job)
 

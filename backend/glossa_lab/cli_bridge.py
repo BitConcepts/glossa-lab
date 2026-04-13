@@ -118,15 +118,17 @@ class CliReporter:
             "CLI experiment started",
             extra={"experiment": self.experiment_id, "exp_name": self.name},
         )
+        # Create directly as 'running' so the pipeline engine never picks it up.
+        # If created as 'pending' there is a race: the engine polls every 2s and
+        # would claim the job before the subsequent PATCH could arrive.
         job = _http("POST", "/jobs", {
-            "name":     f"{self.name}  [CLI]",
-            "pipeline": self.experiment_id,
-            "params":   {"source": "cli", "started_at": datetime.now(timezone.utc).isoformat()},
+            "name":           f"{self.name}  [CLI]",
+            "pipeline":       self.experiment_id,
+            "initial_status": "running",
+            "params":         {"source": "cli", "started_at": datetime.now(timezone.utc).isoformat()},
         })
         if job:
             self.job_id = job.get("id")
-            # Immediately mark as running so the UI shows a spinner
-            _http("PATCH", f"/jobs/{self.job_id}", {"status": "running"})
             _log.info("Job registered with UI", extra={"job_id": self.job_id})
         return self
 

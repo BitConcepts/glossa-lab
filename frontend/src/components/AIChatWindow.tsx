@@ -958,7 +958,7 @@ export function ChatInline() {
   );
 }
 
-// ── Floating bubble ───────────────────────────────────────────────────────────
+// ── Floating bubble (kept for undock path only — no longer rendered in App) ────
 
 export function AIChatBubble() {
   const { toggleChat, isOpen } = useAIChat();
@@ -968,7 +968,7 @@ export function AIChatBubble() {
         position: "fixed", right: 16, bottom: 16,
         width: 48, height: 48, borderRadius: "50%",
         background: isOpen
-          ? "#dc2626"   // bright red when open — clearly a close button
+          ? "#dc2626"
           : "linear-gradient(135deg,#7c3aed,#1e3a5f)",
         border: isOpen ? "2px solid #fca5a5" : "2px solid rgba(255,255,255,0.15)",
         cursor: "pointer",
@@ -979,8 +979,91 @@ export function AIChatBubble() {
         fontSize: isOpen ? 22 : 20, fontWeight: 700,
         color: "#fff", zIndex: 8400, transition: "bottom 0.2s, background 0.15s",
       }}>
-      {isOpen ? "×" : "✨"}
+      {isOpen ? "\u00d7" : "\u2728"}
     </button>
+  );
+}
+
+// ── AI Side Panel — fixed left panel replacing the floating bubble ─────────────
+
+export function AISidePanel({
+  onClose,
+  leftOffset = 220,
+  bottomOffset = 0,
+}: {
+  onClose: () => void;
+  leftOffset?: number;
+  bottomOffset?: number;
+}) {
+  const { isOpen: windowOpen } = useAIChat();
+  return (
+    <div
+      style={{
+        position: "fixed",
+        left: leftOffset,
+        top: 0,
+        bottom: bottomOffset,
+        width: 320,
+        background: "#0a0f1e",
+        borderRight: "1px solid #1e293b",
+        display: "flex",
+        flexDirection: "column",
+        zIndex: 195,
+        boxShadow: "6px 0 24px rgba(0,0,0,0.45)",
+        transition: "width 0.2s",
+      }}
+    >
+      {/* Header */}
+      <div
+        style={{
+          padding: "11px 12px 10px",
+          background: "linear-gradient(135deg, #1e1b4b 0%, #1e3a5f 100%)",
+          borderBottom: "1px solid rgba(255,255,255,0.07)",
+          display: "flex",
+          alignItems: "center",
+          gap: 9,
+          flexShrink: 0,
+        }}
+      >
+        <div
+          style={{
+            width: 28, height: 28, borderRadius: 8,
+            background: "linear-gradient(135deg,#7c3aed,#2563eb)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontSize: 14, flexShrink: 0,
+          }}
+        >
+          \u2728
+        </div>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ fontSize: 12, fontWeight: 700, color: "#e2e8f0", lineHeight: 1.2 }}>Glossa AI</div>
+          <div style={{ fontSize: 9, color: "#64748b", lineHeight: 1.4 }}>Research assistant</div>
+        </div>
+        <button
+          onClick={onClose}
+          title="Close AI panel"
+          style={{
+            background: "none", border: "none",
+            color: "rgba(255,255,255,0.4)",
+            cursor: "pointer", fontSize: 16, lineHeight: 1,
+            padding: "2px 4px", borderRadius: 3,
+            transition: "color 0.15s",
+          }}
+          onMouseEnter={e => (e.currentTarget.style.color = "#e2e8f0")}
+          onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
+        >
+          \u00d7
+        </button>
+      </div>
+
+      {/* Chat body — reuse ChatInline which handles its own message state */}
+      <div style={{ flex: 1, minHeight: 0, overflow: "hidden" }}>
+        <ChatInline />
+      </div>
+
+      {/* Also render full AIChatWindow if user undocked from within ChatInline */}
+      {windowOpen && <AIChatWindow />}
+    </div>
   );
 }
 

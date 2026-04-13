@@ -125,11 +125,14 @@ class CliReporter:
         })
         if job:
             self.job_id = job.get("id")
+            # Immediately mark as running so the UI shows a spinner
+            _http("PATCH", f"/jobs/{self.job_id}", {"status": "running"})
             _log.info("Job registered with UI", extra={"job_id": self.job_id})
         return self
 
     def save_result(self, result: dict[str, Any]) -> Path | None:
         """Persist result to reports/ so it appears in the Reports catalog."""
+        self._last_result = result
         return save_report(self.experiment_id, result)
 
     def progress(self, message: str, **extra: Any) -> None:
@@ -143,9 +146,18 @@ class CliReporter:
         exc_tb: object,
     ) -> bool:
         elapsed = round(time.time() - self._t0, 1)
+        status  = "failed" if exc_type else "completed"
         if self.job_id:
-            _http("DELETE", f"/jobs/{self.job_id}")
-        status = "failed" if exc_type else "completed"
+            # PATCH to completed/failed so the job persists and is visible in the UI
+            result_snapshot = getattr(self, "_last_result", {})
+            summary = {
+                k: result_snapshot[k]
+                for k in list(result_snapshot)[:10]  # keep payload small
+            } if isinstance(result_snapshot, dict) else {}
+            _http("PATCH", f"/jobs/{self.job_id}", {
+                "status": status,
+                "result_data": {"elapsed_s": elapsed, **summary},
+            })
         _log.info(
             "CLI experiment %s",
             status,

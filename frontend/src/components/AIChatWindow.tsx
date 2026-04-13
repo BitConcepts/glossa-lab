@@ -888,6 +888,8 @@ export function ChatInline() {
     r.readAsText(f); e.target.value = "";
   };
 
+  const textareaRef2 = useRef<HTMLTextAreaElement>(null);
+
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", background: "#0f172a" }}>
       <div style={{ display: "flex", gap: 5, padding: "3px 8px", borderBottom: "1px solid #1e293b", alignItems: "center", flexShrink: 0 }}>
@@ -916,7 +918,7 @@ export function ChatInline() {
           <div key={msg.id}>
             <div style={{ display: "flex", gap: 4, alignItems: "flex-start", flexDirection: msg.role === "user" ? "row-reverse" : "row" }}>
               <div style={{ padding: "4px 8px", borderRadius: 5, fontSize: 11, lineHeight: 1.5, maxWidth: "85%", background: msg.role === "user" ? "#1e3a5f" : msg.error ? "#450a0a" : "#1e293b", color: msg.role === "user" ? "#e2e8f0" : msg.error ? "#fca5a5" : "#cbd5e1" }}>
-                {msg.loading ? <span style={{ color: "#475569" }}>✨…</span>
+                {msg.loading ? <span style={{ color: "#475569" }}>{"\u2728"}…</span>
                   : msg.role === "user" ? <span style={{ whiteSpace: "pre-wrap" }}>{msg.content}</span>
                   : <div dangerouslySetInnerHTML={{ __html: renderMd(msg.content) }} />}
               </div>
@@ -941,16 +943,28 @@ export function ChatInline() {
         <div ref={bottomRef} />
       </div>
 
-      <div style={{ display: "flex", gap: 4, padding: "4px 8px", borderTop: "1px solid #1e293b", flexShrink: 0 }}>
-        <button onClick={() => fileInputRef.current?.click()} style={{ background: "#1e293b", border: "none", color: "#64748b", cursor: "pointer", fontSize: 11, padding: "0 4px", borderRadius: 3 }}>📎</button>
+      <div style={{ display: "flex", gap: 4, padding: "4px 8px", borderTop: "1px solid #1e293b", flexShrink: 0, alignItems: "flex-end" }}>
+        <button onClick={() => fileInputRef.current?.click()} style={{ background: "#1e293b", border: "none", color: "#64748b", cursor: "pointer", fontSize: 11, padding: "0 4px", borderRadius: 3, flexShrink: 0, marginBottom: 1 }}>📎</button>
         <input ref={fileInputRef} type="file" accept=".txt,.md,.csv,.json,.py" style={{ display: "none" }} onChange={handleFile} />
-        <input value={input} onChange={e => setInput(e.target.value)}
-          onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); } }}
-          placeholder="Ask anything… (Enter)"
-          style={{ flex: 1, background: "#1e293b", border: "none", color: "#e2e8f0", fontSize: 11, padding: "3px 6px", borderRadius: 3, outline: "none" }}
-          disabled={busy} />
+        <textarea
+          ref={textareaRef2}
+          value={input}
+          onChange={e => {
+            setInput(e.target.value);
+            const el = e.target;
+            el.style.height = "auto";
+            el.style.height = Math.min(el.scrollHeight, 120) + "px";
+          }}
+          onKeyDown={e => {
+            if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); }
+          }}
+          placeholder="Ask anything… (Enter · Shift+Enter for newline)"
+          rows={1}
+          style={{ flex: 1, background: "#1e293b", border: "none", color: "#e2e8f0", fontSize: 11, padding: "3px 6px", borderRadius: 3, outline: "none", resize: "none", fontFamily: "inherit", lineHeight: 1.5, overflowY: "hidden", minHeight: 24, maxHeight: 120 }}
+          disabled={busy}
+        />
         <button onClick={() => send()} disabled={busy || !input.trim()}
-          style={{ padding: "2px 8px", background: "#7c3aed", border: "none", borderRadius: 3, color: "#fff", cursor: "pointer", fontSize: 10 }}>
+          style={{ padding: "2px 8px", background: "#7c3aed", border: "none", borderRadius: 3, color: "#fff", cursor: "pointer", fontSize: 10, flexShrink: 0, marginBottom: 1 }}>
           {busy ? "…" : "Send"}
         </button>
       </div>
@@ -990,29 +1004,88 @@ export function AISidePanel({
   onClose,
   leftOffset = 220,
   bottomOffset = 0,
+  initialSide = "left",
+  initialWidth = 320,
+  onWidthChange,
+  onSideChange,
 }: {
   onClose: () => void;
   leftOffset?: number;
   bottomOffset?: number;
+  initialSide?: "left" | "right";
+  initialWidth?: number;
+  onWidthChange?: (w: number) => void;
+  onSideChange?: (s: "left" | "right") => void;
 }) {
   const { isOpen: windowOpen } = useAIChat();
+  const [side, setSide] = useCallback_SIDE(initialSide, onSideChange);
+  const [width, setWidth] = useCallback_WIDTH(initialWidth, onWidthChange);
+  const isDragging = useRef(false);
+  const dragStart = useRef(0);
+  const widthAtDrag = useRef(width);
+
+  const handleDragStart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    isDragging.current = true;
+    dragStart.current = e.clientX;
+    widthAtDrag.current = width;
+    const onMove = (ev: MouseEvent) => {
+      if (!isDragging.current) return;
+      const delta = side === "left" ? ev.clientX - dragStart.current : dragStart.current - ev.clientX;
+      const newW = Math.max(240, Math.min(600, widthAtDrag.current + delta));
+      setWidth(newW);
+    };
+    const onUp = () => {
+      isDragging.current = false;
+      document.removeEventListener("mousemove", onMove);
+      document.removeEventListener("mouseup", onUp);
+    };
+    document.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseup", onUp);
+  };
+
+  const toggleSide = () => {
+    const next = side === "left" ? "right" : "left";
+    setSide(next);
+  };
+
+  const panelStyle: React.CSSProperties = {
+    position: "fixed",
+    top: 0,
+    bottom: bottomOffset,
+    width,
+    background: "#0a0f1e",
+    display: "flex",
+    flexDirection: "column",
+    zIndex: 195,
+    ...(side === "left"
+      ? { left: leftOffset, borderRight: "1px solid #1e293b", boxShadow: "6px 0 24px rgba(0,0,0,0.45)" }
+      : { right: 0, borderLeft: "1px solid #1e293b", boxShadow: "-6px 0 24px rgba(0,0,0,0.45)" }
+    ),
+  };
+
+  const dragHandleStyle: React.CSSProperties = {
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    width: 4,
+    cursor: "ew-resize",
+    background: "transparent",
+    zIndex: 10,
+    ...(side === "left" ? { right: 0 } : { left: 0 }),
+    transition: "background 0.15s",
+  };
+
   return (
-    <div
-      style={{
-        position: "fixed",
-        left: leftOffset,
-        top: 0,
-        bottom: bottomOffset,
-        width: 320,
-        background: "#0a0f1e",
-        borderRight: "1px solid #1e293b",
-        display: "flex",
-        flexDirection: "column",
-        zIndex: 195,
-        boxShadow: "6px 0 24px rgba(0,0,0,0.45)",
-        transition: "width 0.2s",
-      }}
-    >
+    <div style={panelStyle}>
+      {/* Resize handle */}
+      <div
+        style={dragHandleStyle}
+        onMouseDown={handleDragStart}
+        onMouseEnter={e => (e.currentTarget.style.background = "rgba(96,165,250,0.35)")}
+        onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
+      />
+
       {/* Header */}
       <div
         style={{
@@ -1033,12 +1106,27 @@ export function AISidePanel({
             fontSize: 14, flexShrink: 0,
           }}
         >
-          \u2728
+          {"\u2728"}
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ fontSize: 12, fontWeight: 700, color: "#e2e8f0", lineHeight: 1.2 }}>Glossa AI</div>
           <div style={{ fontSize: 9, color: "#64748b", lineHeight: 1.4 }}>Research assistant</div>
         </div>
+        {/* Dock side toggle */}
+        <button
+          onClick={toggleSide}
+          title={side === "left" ? "Move to right side" : "Move to left side"}
+          style={{
+            background: "none", border: "none",
+            color: "rgba(255,255,255,0.4)",
+            cursor: "pointer", fontSize: 12, lineHeight: 1,
+            padding: "2px 5px", borderRadius: 3,
+          }}
+          onMouseEnter={e => (e.currentTarget.style.color = "#e2e8f0")}
+          onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
+        >
+          {side === "left" ? "\u2192" : "\u2190"}
+        </button>
         <button
           onClick={onClose}
           title="Close AI panel"
@@ -1052,19 +1140,30 @@ export function AISidePanel({
           onMouseEnter={e => (e.currentTarget.style.color = "#e2e8f0")}
           onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
         >
-          \u00d7
+          {"\u00d7"}
         </button>
       </div>
 
-      {/* Chat body — reuse ChatInline which handles its own message state */}
+      {/* Chat body */}
       <div style={{ flex: 1, minHeight: 0, overflow: "hidden" }}>
         <ChatInline />
       </div>
 
-      {/* Also render full AIChatWindow if user undocked from within ChatInline */}
       {windowOpen && <AIChatWindow />}
     </div>
   );
+}
+
+// Mini-hooks for side/width state with callbacks
+function useCallback_SIDE(initial: "left" | "right", cb?: (s: "left" | "right") => void) {
+  const [val, setValRaw] = useState<"left" | "right">(initial);
+  const set = useCallback((v: "left" | "right") => { setValRaw(v); cb?.(v); }, [cb]);
+  return [val, set] as const;
+}
+function useCallback_WIDTH(initial: number, cb?: (w: number) => void) {
+  const [val, setValRaw] = useState(initial);
+  const set = useCallback((v: number) => { setValRaw(v); cb?.(v); }, [cb]);
+  return [val, set] as const;
 }
 
 // ── Style constants ───────────────────────────────────────────────────────────

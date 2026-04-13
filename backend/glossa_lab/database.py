@@ -199,14 +199,18 @@ class Database:
         pipeline: str = "default",
         params: dict[str, Any] | None = None,
         created_at: str,
+        initial_status: str = "pending",
     ) -> dict[str, Any]:
         assert self._conn
         job_id = uuid.uuid4().hex[:12]
         params_json = json.dumps(params or {})
+        safe_status = initial_status if initial_status in (
+            "pending", "running", "completed", "failed", "cancelled"
+        ) else "pending"
         await self._conn.execute(
             """INSERT INTO jobs (id, name, pipeline, status, params, created_at, updated_at)
-               VALUES (?, ?, ?, 'pending', ?, ?, ?)""",
-            (job_id, name, pipeline, params_json, created_at, created_at),
+               VALUES (?, ?, ?, ?, ?, ?, ?)""",
+            (job_id, name, pipeline, safe_status, params_json, created_at, created_at),
         )
         await self._conn.commit()
         return await self.get_job(job_id)  # type: ignore[return-value]

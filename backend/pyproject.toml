@@ -30,7 +30,7 @@ ocr = [
 tray = [
     # Required for the system tray icon (tray/glossa_tray/)
     "pystray>=0.19,<1",
-    "Pillow>=10,<12",
+    "Pillow>=10,<13",
 ]
 dev = [
     "pytest>=8,<9",

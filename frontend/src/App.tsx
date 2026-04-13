@@ -16,7 +16,7 @@ import { SignDictionary } from "./components/SignDictionary";
 import { TimelineView } from "./components/TimelineView";
 import { CitationManager } from "./components/CitationManager";
 import { CommandPalette, type PaletteCommand } from "./components/CommandPalette";
-import { AIChatBubble, AIChatWindow } from "./components/AIChatWindow";
+import { AIChatWindow, AISidePanel } from "./components/AIChatWindow";
 import { BottomPanel } from "./components/BottomPanel";
 import { NotificationCenter } from "./components/NotificationDrawer";
 import { ToastProvider } from "./hooks/useToast";
@@ -101,6 +101,7 @@ function AppContent() {
   const [tab, setTab] = useState<Tab>("builder");
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("glossa_dark") === "1");
   const [paletteOpen, setPaletteOpen] = useState(false);
+  const [aiPanelOpen, setAiPanelOpen] = useState(false);
   // Dirty badges — shown when builders have unsaved local changes
   // Both start false on page load; the Study Builder dispatches glossa:dirty
   // whenever the graph diverges from its last-saved state.
@@ -312,6 +313,35 @@ function AppContent() {
           ))}
         </div>
 
+        {/* AI assistant button — sits above system items */}
+        <div style={{ padding: "6px 10px 4px", flexShrink: 0 }}>
+          <button
+            onClick={() => setAiPanelOpen(o => !o)}
+            title={aiPanelOpen ? "Close AI assistant" : "Open AI assistant"}
+            style={{
+              width: "100%",
+              padding: "8px 12px",
+              borderRadius: 8,
+              border: aiPanelOpen
+                ? "1px solid rgba(124,58,237,0.6)"
+                : "1px solid rgba(255,255,255,0.07)",
+              background: aiPanelOpen
+                ? "linear-gradient(135deg,rgba(124,58,237,0.35),rgba(30,58,95,0.5))"
+                : "rgba(255,255,255,0.04)",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              gap: 9,
+              color: aiPanelOpen ? "#c4b5fd" : "rgba(255,255,255,0.6)",
+              transition: "all 0.15s",
+            }}
+          >
+            <span style={{ fontSize: 14, lineHeight: 1 }}>&#x2728;</span>
+            <span style={{ fontSize: 12, fontWeight: aiPanelOpen ? 700 : 500, letterSpacing: 0.1 }}>Glossa AI</span>
+            {aiPanelOpen && <span style={{ marginLeft: "auto", fontSize: 10, opacity: 0.6 }}>&#x00d7;</span>}
+          </button>
+        </div>
+
         {/* System items at bottom — flexShrink:0 ensures they never get hidden */}
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 4, paddingBottom: 4, flexShrink: 0 }}>
           {SYSTEM_ITEMS.map((item) => <NavBtn key={item.id} item={item} />)}
@@ -425,9 +455,17 @@ function AppContent() {
         />
       )}
 
-      {/* Floating AI Chat — fixed position, overlaps panel */}
-      <AIChatWindow />
-      <AIChatBubble />
+      {/* AI side panel — attached to left sidebar, replaces the floating bubble */}
+      {aiPanelOpen && (
+        <AISidePanel
+          onClose={() => setAiPanelOpen(false)}
+          leftOffset={SIDEBAR_W}
+          bottomOffset={effectivePanelH}
+        />
+      )}
+
+      {/* Full AIChatWindow — only rendered when explicitly opened (e.g. undock from ChatInline) */}
+      {!aiPanelOpen && <AIChatWindow />}
 
       <style>{`
         @keyframes healthPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }

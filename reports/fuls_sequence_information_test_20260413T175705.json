@@ -1,0 +1,133 @@
+{
+  "design": {
+    "n_real_seeds": 20,
+    "n_ctrl_instances": 100,
+    "n_seeds_per_ctrl_instance": 5,
+    "consistency_threshold": 0.75
+  },
+  "c0_real_corpus": {
+    "n_seeds": 20,
+    "m1_consistency": 0.57821,
+    "m2_hci_count": 17,
+    "m3_entropy": 2.57499,
+    "m4_plausibility": -4.58317,
+    "m5_hamming": 44.084,
+    "m1_mean_over_seeds": 0.57821,
+    "m4_mean_over_seeds": -4.58317
+  },
+  "control_conditions": {
+    "C1_within_word_shuffle": {
+      "label": "Within-word shuffle",
+      "n_instances": 100,
+      "mean_m1": 0.60315,
+      "std_m1": 0.04166,
+      "mean_m2": 22.06,
+      "std_m2": 7.237,
+      "mean_m3": 2.61032,
+      "std_m3": 0.1099,
+      "mean_m4": -4.59143,
+      "std_m4": 0.03096,
+      "mean_m5": 47.96,
+      "std_m5": 4.233
+    },
+    "C2_cross_word_shuffle": {
+      "label": "Cross-word shuffle",
+      "n_instances": 100,
+      "mean_m1": 0.58426,
+      "std_m1": 0.03926,
+      "mean_m2": 19.04,
+      "std_m2": 7.211,
+      "mean_m3": 2.59361,
+      "std_m3": 0.10814,
+      "mean_m4": -4.60323,
+      "std_m4": 0.03163,
+      "mean_m5": 49.992,
+      "std_m5": 3.835
+    },
+    "C3_freq_random": {
+      "label": "Frequency-matched random",
+      "n_instances": 100,
+      "mean_m1": 0.47062,
+      "std_m1": 0.04657,
+      "mean_m2": 13.06,
+      "std_m2": 6.286,
+      "mean_m3": 2.50466,
+      "std_m3": 0.1302,
+      "mean_m4": -4.59002,
+      "std_m4": 0.033,
+      "mean_m5": 44.584,
+      "std_m5": 3.624
+    }
+  },
+  "statistical_tests": {
+    "C1_within_word_shuffle": {
+      "m1_consistency": {
+        "d": -0.489,
+        "p": 0.942644,
+        "r": 0.224,
+        "U": 776
+      },
+      "m4_plausibility": {
+        "d": 0.244,
+        "p": 0.091611,
+        "r": -0.189,
+        "U": 1189
+      },
+      "m5_hamming_convergence": {
+        "d": -1.0,
+        "p": 1e-06,
+        "r": -0.68,
+        "note": "positive d = real corpus more convergent"
+      }
+    },
+    "C2_cross_word_shuffle": {
+      "m1_consistency": {
+        "d": -0.123,
+        "p": 0.693926,
+        "r": 0.072,
+        "U": 928
+      },
+      "m4_plausibility": {
+        "d": 0.583,
+        "p": 0.012569,
+        "r": -0.318,
+        "U": 1318
+      },
+      "m5_hamming_convergence": {
+        "d": -1.682,
+        "p": 0.0,
+        "r": -0.82,
+        "note": "positive d = real corpus more convergent"
+      }
+    },
+    "C3_freq_random": {
+      "m1_consistency": {
+        "d": 1.977,
+        "p": 0.0,
+        "r": -0.749,
+        "U": 1748.5
+      },
+      "m4_plausibility": {
+        "d": 0.193,
+        "p": 0.128454,
+        "r": -0.161,
+        "U": 1161
+      },
+      "m5_hamming_convergence": {
+        "d": -0.151,
+        "p": 0.079513,
+        "r": -0.2,
+        "note": "positive d = real corpus more convergent"
+      }
+    }
+  },
+  "conclusion": "NO SIGNIFICANT SEQUENCE SIGNAL ABOVE FREQUENCY BASELINE. Real corpus consistency (d=-0.49, p=0.9426) and plausibility (d=0.24, p=0.0916) are not significantly different from the within-word shuffle. The mapping inference signal at this corpus size is primarily frequency-driven. Within-word sequential order does not provide additional detectable signal under current conditions (4.2 tokens/sign, 78-sign inventory).",
+  "c0_vs_c1_delta": {
+    "m1_delta_pp": -2.49,
+    "m4_delta": 0.0083,
+    "d_m1": -0.489,
+    "d_m4": 0.244,
+    "p_m1": 0.942644,
+    "p_m4": 0.091611
+  }
+}

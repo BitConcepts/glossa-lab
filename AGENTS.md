@@ -726,3 +726,131 @@ New report generators MUST import from `glossa_lab.report_utils` and use:
 * `BODY_WIDTH` to compute column widths
 
 Do not re-implement these helpers inline.
+
+---
+
+## GPU / CPU EXECUTION POLICY (H10 — MANDATORY)
+
+> Always prefer GPU. Never silently fall back. Parallelise everything.
+
+### H10.1 — GPU always first
+
+* ALL computationally intensive code MUST check for GPU availability and use it.
+* Use CuPy when available (`import cupy as cp`), falling back to NumPy only when CuPy is absent.
+* The `BigramScorer` in `glossa_lab.pipelines.decipher` already implements this pattern — follow it everywhere.
+* When falling back to CPU, log it explicitly: `logger.info("GPU unavailable — using NumPy CPU path")`.
+
+```python
+try:
+    import cupy as xp
+    _GPU = xp.cuda.is_available()
+except ImportError:
+    import numpy as xp
+    _GPU = False
+if not _GPU:
+    import logging; logging.getLogger(__name__).info("GPU unavailable — using NumPy CPU path")
+```
+
+### H10.2 — Mandatory CPU parallelism when GPU is unavailable
+
+* When GPU is not used, multi-core CPU execution is **mandatory** for all batch work.
+* Use `concurrent.futures.ProcessPoolExecutor` for CPU-bound work (SA runs, corpus generation).
+* Use `concurrent.futures.ThreadPoolExecutor` for I/O-bound work (file loading, API calls).
+* The SA hillclimber – specifically the multi-seed loops in experiments – MUST run seeds in parallel.
+* Parallelism ceiling: `min(N_SEEDS, os.cpu_count() or 4)`.
+
+```python
+import os
+from concurrent.futures import ProcessPoolExecutor, as_completed
+
+def _run_parallel(fn, args_list, max_workers=None):
+    """Run fn(args) in parallel, return list of results in submission order."""
+    workers = max_workers or min(len(args_list), os.cpu_count() or 4)
+    results = [None] * len(args_list)
+    with ProcessPoolExecutor(max_workers=workers) as ex:
+        futs = {ex.submit(fn, *a): i for i, a in enumerate(args_list)}
+        for fut in as_completed(futs):
+            results[futs[fut]] = fut.result()
+    return results
+```
+
+### H10.3 — Graph node parallelism
+
+In the experiment graph design (ExperimentBuilderView), nodes that are independent of each other
+(no data dependency edge between them) MUST be visually and executionally parallelisable.
+The graph runner must dispatch independent nodes to the thread/process pool simultaneously.
+
+### H10.4 — What must use parallel execution
+
+| Component | Parallelism required |
+|---|---|
+| SA seed loops in experiments | ProcessPoolExecutor per seed |
+| Cross-LM / control-corpus batch runs | ProcessPoolExecutor per condition |
+| Calibration / density curve points | ProcessPoolExecutor per density |
+| Corpus generation (N instances) | ProcessPoolExecutor per instance |
+| Bigram scoring (BigramScorer) | Already vectorised via numpy/cupy |
+| Graph node execution | Parallel across independent nodes |
+
+---
+
+## APPLIED EPISTEMIC ENGINEERING (AEE) — governance-tool Workflow (H11)
+
+This project integrates Applied Epistemic Engineering principles from
+[specsmith](https://github.com/BitConcepts/specsmith) and the
+[AEE documentation](https://governance-tool.readthedocs.io/en/stable/).
+
+> Source: governance-tool by BitConcepts. The AEE toolkit by the same author.
+
+### AEE Core Method: Frame → Disassemble → Stress-Test → Reconstruct
+
+1. **Frame** — state the claim/hypothesis as a `BeliefArtifact` with explicit propositions and epistemic boundaries
+2. **Disassemble** — break compound claims into atomic, testable propositions
+3. **Stress-Test** — apply 8 adversarial challenge categories to surface failure modes
+4. **Reconstruct** — rebuild the claim from surviving propositions only; document what failed
+
+### The 5 AEE Axioms
+
+1. **Observability** — every belief must be inspectable (reproducible code + saved JSON)
+2. **Falsifiability** — every belief must be challengeable (control experiments, stop conditions)
+3. **Irreducibility** — beliefs decompose to atomic primitives (no compound claims)
+4. **Reconstructability** — every failed belief can be rebuilt with more data or anchors
+5. **Convergence** — stress-test + recovery always reaches Equilibrium
+
+### The 7-Phase AEE Workflow
+
+```
+🌱 Inception → 🏗 Architecture → 📋 Requirements → ✅ Test Spec
+    → ⚙ Implementation → 🔬 Verification → 🚀 Release
+```
+
+For EVERY study or experiment run in Glossa Lab:
+
+| Phase | What the Glossa AI agent MUST do |
+|---|---|
+| Inception | State the research question as a falsifiable proposition |
+| Architecture | Identify the corpus, LM, metric, and control strategy |
+| Requirements | Define what results would confirm, partially confirm, or falsify the claim |
+| Test Spec | Define the stop conditions and statistical thresholds |
+| Implementation | Run experiments with GPU/parallel CPU; save all results as JSON |
+| Verification | Apply adversarial challenges: random baselines, ablations, cross-LM |
+| Release | Produce a report section stating clearly what was confirmed, partial, or refuted |
+
+### Epistemic Markers — use in all claims
+
+| Marker | Meaning |
+|---|---|
+| `[VERIFIED]` | Backed by experiment output in `reports/` |
+| `[INFERRED]` | Logically derived from verified facts |
+| `[ASSUMPTION]` | Working assumption; document epistemic boundary |
+| `[UNCERTAIN]` | Missing data; state what experiment would resolve it |
+| `[BLOCKER]` | Cannot proceed without resolving this |
+
+### H11 — AEE enforcement rules
+
+* Glossa AI conversations on research topics MUST maintain full conversation context.
+* All hypotheses MUST be registered as `BeliefArtifact` entries (in `LEDGER.md` at minimum).
+* Stop conditions from each experiment MUST be evaluated and reported honestly, never suppressed.
+* If an experiment triggers a stop condition, the report section MUST lead with the failure, not bury it.
+* Claims in emails to external collaborators MUST use AEE epistemic markers internally before being translated to plain prose.
+
+---

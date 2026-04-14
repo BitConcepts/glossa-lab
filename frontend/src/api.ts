@@ -108,6 +108,7 @@ export interface TextCreate {
   corpus_type?: string;
   content: string[];
   metadata?: Record<string, unknown>;
+  reading_direction?: string;
 }
 
 export interface TextResponse {
@@ -118,7 +119,21 @@ export interface TextResponse {
   alphabet_size: number;
   symbol_set: string[];
   metadata: Record<string, unknown>;
+  reading_direction: string;
   created_at: string;
+}
+
+export interface DetectDirectionResult {
+  text_id: string;
+  word_source: string;
+  entropy_pos0: number | null;
+  entropy_posN1: number | null;
+  gini_pos0: number | null;
+  gini_posN1: number | null;
+  inferred_direction: "ltr" | "rtl" | "unknown";
+  confidence: "high" | "medium" | "low";
+  n_words: number;
+  interpretation: string;
 }
 
 export interface JobCreate {
@@ -235,6 +250,16 @@ export const updateText = (id: string, body: Partial<TextCreate>): Promise<TextR
 
 export const deleteText = (id: string): Promise<TextResponse> =>
   request("DELETE", `/texts/${id}`);
+
+export const detectCorpusDirection = (
+  id: string,
+  words?: string[][],
+  updateField = true,
+): Promise<DetectDirectionResult> =>
+  request("POST", `/texts/${id}/detect-direction`, {
+    words: words ?? null,
+    update_field: updateField,
+  });
 
 // ── Jobs ──────────────────────────────────────────────────────────────
 

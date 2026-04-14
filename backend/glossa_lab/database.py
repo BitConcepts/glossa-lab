@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Increment this when adding a new _SCHEMA_Vn block below.
 # _apply_schema will raise if the DB is somehow ahead of the code.
-_SCHEMA_VERSION = 5
+_SCHEMA_VERSION = 6
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -118,6 +118,10 @@ CREATE TABLE IF NOT EXISTS collab_messages (
 );
 """
 
+_SCHEMA_V6 = """
+ALTER TABLE texts ADD COLUMN reading_direction TEXT NOT NULL DEFAULT 'unknown';
+"""
+
 # Module-level singleton
 _db: Database | None = None
 
@@ -181,6 +185,17 @@ class Database:
         if current_version < 5:
             await self._conn.executescript(_SCHEMA_V5)
             await self._conn.execute("UPDATE _schema_version SET version = ?", (5,))
+            current_version = 5
+
+        if current_version < 6:
+            # ALTER TABLE is not transactional in SQLite but is safe here
+            try:
+                await self._conn.execute(
+                    "ALTER TABLE texts ADD COLUMN reading_direction TEXT NOT NULL DEFAULT 'unknown'"
+                )
+            except Exception:  # noqa: BLE001
+                pass  # Column already exists (idempotent)
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (6,))
 
         if current_version > _SCHEMA_VERSION:
             logger.warning(
@@ -300,17 +315,19 @@ class Database:
         corpus_type: str = "linguistic",
         content: list[str],
         metadata: dict[str, Any] | None = None,
+        reading_direction: str = "unknown",
         created_at: str,
     ) -> dict[str, Any]:
         assert self._conn
         text_id = uuid.uuid4().hex[:12]
         symbol_set = sorted(set(content))
         alphabet_size = len(symbol_set)
+        safe_dir = reading_direction if reading_direction in ("ltr", "rtl", "unknown") else "unknown"
         await self._conn.execute(
             """INSERT INTO texts
                (id, name, corpus_type, content, alphabet_size,
-                symbol_set, metadata, created_at)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
+                symbol_set, metadata, reading_direction, created_at)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
             (
                 text_id,
                 name,
@@ -319,6 +336,7 @@ class Database:
                 alphabet_size,
                 json.dumps(symbol_set),
                 json.dumps(metadata or {}),
+                safe_dir,
                 created_at,
             ),
         )
@@ -345,6 +363,7 @@ class Database:
         corpus_type: str | None = None,
         content: list[str] | None = None,
         metadata: dict[str, Any] | None = None,
+        reading_direction: str | None = None,
     ) -> dict[str, Any] | None:
         """Update a text corpus and recompute derived fields when content changes."""
         assert self._conn
@@ -358,11 +377,13 @@ class Database:
         next_metadata = metadata if metadata is not None else existing["metadata"]
         next_symbol_set = sorted(set(next_content))
         next_alphabet_size = len(next_symbol_set)
+        raw_dir = reading_direction if reading_direction is not None else existing.get("reading_direction", "unknown")
+        next_direction = raw_dir if raw_dir in ("ltr", "rtl", "unknown") else "unknown"
 
         await self._conn.execute(
             """UPDATE texts
                SET name = ?, corpus_type = ?, content = ?, alphabet_size = ?,
-                   symbol_set = ?, metadata = ?
+                   symbol_set = ?, metadata = ?, reading_direction = ?
                WHERE id = ?""",
             (
                 next_name,
@@ -371,6 +392,7 @@ class Database:
                 next_alphabet_size,
                 json.dumps(next_symbol_set),
                 json.dumps(next_metadata),
+                next_direction,
                 text_id,
             ),
         )

@@ -52,6 +52,7 @@ def _xp():
 
 
 from glossa_lab.engine import register_pipeline
+from glossa_lab.corpus_utils import normalise_sequences
 
 # ── Vectorised bigram scorer ─────────────────────────────────────────────
 
@@ -349,6 +350,7 @@ def decipher(
     root_prior_weight: float = 0.0,
     anchors: dict[str, str] | None = None,
     surjective: bool = False,
+    reading_direction: str = "ltr",
 ) -> dict[str, Any]:
     """Crack a substitution cipher using simulated annealing.
 
@@ -380,10 +382,22 @@ def decipher(
                           target sign (correct for cross-language where the cipher
                           alphabet is larger).  SA proposes re-assignments rather
                           than swaps.  Default False (bijection / same-alphabet).
+        reading_direction: 'ltr' (default), 'rtl', or 'unknown'.  When 'rtl',
+                          cipher_inscriptions are reversed (normalised to LTR
+                          phonological order) before building positional stats
+                          and scoring.  cipher_signs is also reconstructed from
+                          the normalised word sequences.
 
     Returns:
         dict with proposed_mapping, deciphered_text, score, and stats.
     """
+    # ── Normalise sequences to LTR phonological order ─────────────────
+    if cipher_inscriptions and reading_direction == "rtl":
+        cipher_inscriptions = normalise_sequences(cipher_inscriptions, "rtl")
+        # Rebuild the flat token list from the normalised word list so that
+        # bigrams and positional stats are computed over correct order.
+        cipher_signs = [s for word in cipher_inscriptions for s in word]
+
     rng = random.Random(seed)
 
     cipher_alphabet = sorted(set(cipher_signs))

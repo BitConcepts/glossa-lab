@@ -33,6 +33,8 @@ import random
 import sys
 from typing import Any
 
+from glossa_lab.experiments._parallel import run_seeds_parallel as _rsp_ss
+
 _HERE    = os.path.dirname(os.path.abspath(__file__))
 _BACKEND = os.path.dirname(os.path.dirname(_HERE))
 _TESTS   = os.path.join(_BACKEND, "tests")
@@ -144,14 +146,15 @@ def run_split_sensitivity(verbose: bool = True) -> dict[str, Any]:
         seq_acc = seq_res[2] if seq_res else 0.0
         seq_str = f"{seq_res[0]}/{seq_res[1]}={seq_acc*100:.1f}%" if seq_res else "N/A"
 
-        # B. Random sampling with multiple seeds
-        rand_accs = []
-        for seed in range(n_random_seeds):
+        # B. Random sampling with multiple seeds — parallel execution
+        def _rand_seed(seed, _n=n, _n_train=n_train,
+                       _dl=decoded_lines, _el=encoded_lines, _ak=answer_key):
             rng = random.Random(seed * 1000 + 7)
-            rand_idx = sorted(rng.sample(range(n), n_train))
-            r = _run_one(decoded_lines, encoded_lines, answer_key, rand_idx)
-            if r:
-                rand_accs.append(r[2])
+            rand_idx = sorted(rng.sample(range(_n), _n_train))
+            r = _run_one(_dl, _el, _ak, rand_idx)
+            return r[2] if r else None
+        _raw = _rsp_ss(_rand_seed, list(range(n_random_seeds)))
+        rand_accs = [r for r in _raw if r is not None]
 
         rand_mean = _mean(rand_accs)
         rand_std  = _std(rand_accs)

@@ -180,11 +180,17 @@ def safe_tbl(
         fontSize=font_size,
         leading=int(font_size * 1.4),
         wordWrap="LTR",
+        textColor=colors.HexColor("#111827"),   # explicit dark — prevents inheritance issues
     )
-    bold_cell = ParagraphStyle(
-        "SafeCellBold",
+    # Header cells: MUST use white text explicitly.
+    # ReportLab's TableStyle TEXTCOLOR command does NOT override the text color
+    # of Paragraph objects in cells — paragraphs always use their own style's
+    # textColor.  Without this, header text is black on dark background.
+    header_cell = ParagraphStyle(
+        "SafeCellHeader",
         parent=cell_style,
         fontName="Helvetica-Bold",
+        textColor=colors.white,
     )
 
     # R2: wrap all cells in Paragraph objects
@@ -193,10 +199,17 @@ def safe_tbl(
         safe_row = []
         for ci, cell in enumerate(row):
             if isinstance(cell, Paragraph):
-                safe_row.append(cell)
+                # Re-wrap header Paragraphs in white-text style so that
+                # callers using pc() (which defaults to black) still render
+                # correctly when placed in the header row.
+                if ri == 0:
+                    raw = getattr(cell, "text", None) or str(cell)
+                    safe_row.append(Paragraph(raw, header_cell))
+                else:
+                    safe_row.append(cell)
             else:
                 text = str(cell).replace("\n", "<br/>")  # R3
-                sty = bold_cell if ri == 0 else cell_style
+                sty = header_cell if ri == 0 else cell_style
                 safe_row.append(Paragraph(text, sty))
         safe_data.append(safe_row)
 

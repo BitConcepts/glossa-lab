@@ -213,6 +213,273 @@ def _pass_result(inputs: dict, params: dict) -> dict:
     return dict(inputs)
 
 
+# ── New generic decipherment/analysis nodes ──────────────────────────────────
+
+
+def _lm_builder(inputs: dict, params: dict) -> dict:
+    """Build a LanguageModel from sequences. Output 'lm' is a Python object."""
+    import math  # noqa: PLC0415
+    sequences = inputs.get("sequences") or []
+    if not sequences:
+        return {"error": "No sequences — connect a CorpusReader or BuiltinCorpus node."}
+    flat = [s for seq in sequences for s in seq]
+    from glossa_lab.pipelines.decipher import LanguageModel  # noqa: PLC0415
+    lm = LanguageModel(flat, inscriptions=sequences)
+    h1 = -sum(p * math.log2(p) for p in lm.unigram_freq.values() if p > 0)
+    return {"lm": lm, "n_signs": lm.size, "n_tokens": len(flat),
+            "h1": round(h1, 4), "n_bigrams": len(lm.bigram_freq)}
+
+
+def _builtin_lm(inputs: dict, params: dict) -> dict:
+    """Load a pre-built reference language model by name (hebrew, geez, phoenician…)."""
+    import math  # noqa: PLC0415
+    lang = params.get("language", "hebrew").lower().strip()
+    try:
+        if lang in ("hebrew", "old_hebrew"):
+            from glossa_lab.data.old_hebrew import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
+            syms = get_corpus_symbols(); inscs = get_corpus_inscriptions()
+        elif lang == "geez":
+            from glossa_lab.data.geez import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
+            syms = get_corpus_symbols(); inscs = get_corpus_inscriptions()
+        elif lang == "phoenician":
+            from glossa_lab.data.phoenician import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
+            syms = get_corpus_symbols(); inscs = get_corpus_inscriptions()
+        elif lang in ("sumerian", "sumerian_ur3"):
+            from glossa_lab.data.sumerian_ur3 import get_corpus_symbols  # noqa: PLC0415
+            syms = get_corpus_symbols(); inscs = None
+        elif lang in ("dravidian", "tamil"):
+            from glossa_lab.data.dravidian import get_corpus_symbols  # noqa: PLC0415
+            syms = get_corpus_symbols(); inscs = None
+        else:
+            return {"error": f"Unknown language '{lang}'. Valid: hebrew, geez, phoenician, sumerian, dravidian"}
+    except ImportError as exc:
+        return {"error": str(exc)}
+    from glossa_lab.pipelines.decipher import LanguageModel  # noqa: PLC0415
+    lm = LanguageModel(syms, inscriptions=inscs)
+    h1 = -sum(p * math.log2(p) for p in lm.unigram_freq.values() if p > 0)
+    return {"lm": lm, "language": lang, "n_signs": lm.size,
+            "n_tokens": len(syms), "h1": round(h1, 4)}
+
+
+def _builtin_corpus(inputs: dict, params: dict) -> dict:
+    """Load a named built-in corpus as sequences (does not require a DB corpus ID)."""
+    name = params.get("corpus", "indus").lower().strip()
+    try:
+        if name == "indus":
+            from glossa_lab.data.indus_public_corpus import get_corpus_symbols  # noqa: PLC0415
+            flat = get_corpus_symbols()
+            seqs: list = [[s] for s in flat]
+        elif name in ("hebrew", "old_hebrew"):
+            from glossa_lab.data.old_hebrew import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
+            flat = get_corpus_symbols(); seqs = get_corpus_inscriptions()
+        elif name == "geez":
+            from glossa_lab.data.geez import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
+            flat = get_corpus_symbols(); seqs = get_corpus_inscriptions()
+        elif name == "phoenician":
+            from glossa_lab.data.phoenician import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
+            flat = get_corpus_symbols(); seqs = get_corpus_inscriptions()
+        else:
+            return {"error": f"Unknown corpus '{name}'. Valid: indus, hebrew, geez, phoenician"}
+    except ImportError as exc:
+        return {"error": str(exc)}
+    from collections import Counter  # noqa: PLC0415
+    freq = Counter(flat)
+    return {"sequences": seqs, "total_sequences": len(seqs), "total_tokens": len(flat),
+            "distinct_symbols": len(freq), "corpus": name}
+
+
+def _corpus_splitter(inputs: dict, params: dict) -> dict:
+    """Split sequences into contiguous train and test portions."""
+    sequences = inputs.get("sequences") or []
+    ratio = max(0.1, min(0.95, float(params.get("train_ratio", 0.75))))
+    n = len(sequences)
+    if n == 0:
+        return {"error": "No sequences to split"}
+    idx = max(1, int(n * ratio))
+    train = sequences[:idx]; test = sequences[idx:]
+    def _flat(s): return [tok for seq in s for tok in seq]
+    tf, ef = _flat(train), _flat(test)
+    return {"train_sequences": train, "test_sequences": test,
+            "train_n_sequences": len(train), "test_n_sequences": len(test),
+            "train_n_tokens": len(tf), "test_n_tokens": len(ef),
+            "split_ratio": round(ratio, 3)}
+
+
+def _direction_normalizer(inputs: dict, params: dict) -> dict:
+    """Apply RTL/LTR direction normalisation (Ashraf 2018 auto-detect or forced)."""
+    sequences = inputs.get("sequences") or []
+    if not sequences:
+        return {"error": "No sequences provided"}
+    direction = params.get("direction", "auto").lower().strip()
+    detected = direction
+    if direction in ("auto", "detect"):
+        try:
+            from glossa_lab.corpus_utils import run_ashraf_detection  # noqa: PLC0415
+            r = run_ashraf_detection(sequences)
+            detected = r.get("inferred_direction", "ltr")
+        except Exception:  # noqa: BLE001
+            detected = "ltr"
+    from glossa_lab.corpus_utils import normalise_sequences  # noqa: PLC0415
+    normed = normalise_sequences(sequences, detected)
+    return {"sequences": normed, "applied_direction": detected,
+            "n_sequences": len(normed),
+            "note": f"Direction applied: {detected}"}
+
+
+def _sa_decipher(inputs: dict, params: dict) -> dict:
+    """Simulated Annealing decipherment. Runs N seeds in parallel (GPU-aware BigramScorer)."""
+    from collections import Counter as _C  # noqa: PLC0415
+    sequences = inputs.get("sequences") or inputs.get("test_sequences") or []
+    lm = inputs.get("lm")
+    if not lm:
+        return {"error": "No LM — connect LMBuilder or BuiltinLM to the 'lm' port."}
+    if not sequences:
+        return {"error": "No sequences — connect CorpusReader or CorpusSplitter.test_sequences."}
+    n_seeds    = max(1, int(params.get("n_seeds", 5)))
+    max_iter   = max(100, int(params.get("max_iterations", 10000)))
+    restarts   = max(1,  int(params.get("restarts", 8)))
+    surjective = bool(params.get("surjective", True))
+    ocp_w      = float(params.get("ocp_weight", 0.0))  # 0 = GPU fast path
+    pos_w      = float(params.get("positional_weight", 0.005))
+    anchors    = inputs.get("anchors") or params.get("anchors") or None
+    flat = [s for seq in sequences for s in seq]
+
+    from glossa_lab.experiments._parallel import run_seeds_parallel  # noqa: PLC0415
+
+    def _one(seed: int) -> dict:
+        from glossa_lab.pipelines.decipher import decipher  # noqa: PLC0415
+        r = decipher(flat, lm, seed=seed, max_iterations=max_iter, restarts=restarts,
+                     cipher_inscriptions=sequences, surjective=surjective,
+                     ocp_weight=ocp_w, positional_weight=pos_w,
+                     anchors=anchors if anchors else None)
+        return r.get("proposed_mapping", {})
+
+    all_maps = run_seeds_parallel(_one, list(range(n_seeds)))
+    if not all_maps:
+        return {"error": "No mappings produced"}
+    # Modal mapping
+    all_signs = set().union(*[m.keys() for m in all_maps])
+    modal: dict[str, str] = {}
+    cons:  dict[str, float] = {}
+    for s in all_signs:
+        props = [m[s] for m in all_maps if s in m]
+        if props:
+            cnt = _C(props); mo, mc = cnt.most_common(1)[0]
+            modal[s] = mo; cons[s] = mc / len(props)
+    mean_c = sum(cons.values()) / len(cons) if cons else 0
+    hci = sum(1 for v in cons.values() if v >= 0.75)
+    return {"proposed_mapping": modal, "all_mappings": all_maps,
+            "mean_consistency": round(mean_c, 4), "hci_count": hci,
+            "n_seeds": len(all_maps), "n_signs": len(modal)}
+
+
+def _consistency_scorer(inputs: dict, params: dict) -> dict:
+    """Aggregate multiple SA run mappings into per-sign consistency statistics."""
+    from collections import Counter as _C  # noqa: PLC0415
+    all_maps = inputs.get("all_mappings") or []
+    if not all_maps:
+        m = inputs.get("proposed_mapping") or {}
+        if m:
+            r = {s: {"modal": v, "consistency": 1.0, "n_runs": 1, "top3": [v]}
+                 for s, v in m.items()}
+            return {"consistency_per_sign": r, "mean_consistency": 1.0,
+                    "hci_count": len(r), "hci_pct": 1.0, "n_signs": len(r)}
+        return {"error": "No mappings — connect SADecipher.all_mappings"}
+    all_signs = set().union(*[m.keys() for m in all_maps])
+    result = {}
+    for s in all_signs:
+        props = [m[s] for m in all_maps if s in m]
+        if props:
+            cnt = _C(props); mo, mc = cnt.most_common(1)[0]
+            result[s] = {"modal": mo, "consistency": round(mc / len(props), 3),
+                         "n_runs": len(props), "top3": [k for k, _ in cnt.most_common(3)]}
+    mean_c = sum(v["consistency"] for v in result.values()) / len(result) if result else 0
+    hci = sum(1 for v in result.values() if v["consistency"] >= 0.75)
+    return {"consistency_per_sign": result, "mean_consistency": round(mean_c, 4),
+            "hci_count": hci, "hci_pct": round(hci / max(1, len(result)), 4),
+            "n_signs": len(result)}
+
+
+def _benchmark_scorer(inputs: dict, params: dict) -> dict:
+    """Score a proposed mapping against a known answer key."""
+    mapping    = inputs.get("proposed_mapping") or {}
+    answer_key = (inputs.get("answer_key") or
+                  params.get("answer_key") or {})
+    if not mapping:
+        return {"error": "No mapping — connect SADecipher or BeamDecipher.proposed_mapping"}
+    if not answer_key:
+        return {"correct": 0, "total": 0, "accuracy": 0.0,
+                "note": "No answer key provided. Set params.answer_key or connect AnswerKey node."}
+    try:
+        from glossa_lab.pipelines.decipher import score_accuracy  # noqa: PLC0415
+        acc = score_accuracy(mapping, answer_key)
+        return {**acc, "accuracy": round(acc.get("accuracy", 0), 4)}
+    except Exception:  # noqa: BLE001
+        correct = sum(1 for k, v in mapping.items() if answer_key.get(k) == v)
+        total   = len(answer_key)
+        return {"correct": correct, "total": total, "accuracy": round(correct / max(1, total), 4)}
+
+
+def _kl_divergence(inputs: dict, params: dict) -> dict:
+    """Compute KL divergence between two frequency maps (P || Q)."""
+    import math  # noqa: PLC0415
+    p_map = (inputs.get("freq_map") or inputs.get("p") or
+             inputs.get("a") or {})
+    q_map = (inputs.get("q") or inputs.get("b") or {})
+    if not p_map or not q_map:
+        return {"error": "Need two freq_maps: p (primary) and q (reference). Connect two FreqCounter outputs."}
+    total_p = sum(p_map.values()) or 1
+    total_q = sum(q_map.values()) or 1
+    kl = js = 0.0
+    all_k = set(p_map) | set(q_map)
+    for k in all_k:
+        pk = p_map.get(k, 0) / total_p
+        qk = q_map.get(k, 0) / total_q
+        if pk > 0 and qk > 0:
+            kl += pk * math.log2(pk / qk)
+        m = (pk + qk) / 2
+        if pk > 0 and m > 0:
+            js += 0.5 * pk * math.log2(pk / m)
+        if qk > 0 and m > 0:
+            js += 0.5 * qk * math.log2(qk / m)
+    return {"kl_divergence": round(kl, 6), "js_divergence": round(js, 6),
+            "number": round(kl, 6), "n_symbols": len(all_k)}
+
+
+def _ngram_counter(inputs: dict, params: dict) -> dict:
+    """Count n-gram occurrences across all sequences."""
+    from collections import Counter  # noqa: PLC0415
+    sequences = inputs.get("sequences") or []
+    n = max(1, int(params.get("n", 2)))
+    limit = int(params.get("top_n", 200))
+    ngrams: Counter = Counter()
+    for seq in sequences:
+        for i in range(len(seq) - n + 1):
+            ngrams[tuple(seq[i:i + n])] += 1
+    ranked = ngrams.most_common(limit)
+    freq_map = {" ".join(str(x) for x in k): v for k, v in ranked}
+    return {"freq_map": freq_map, "n": n, "n_ngrams": len(ngrams),
+            "top_10": [{"ngram": " ".join(str(x) for x in k), "count": v}
+                       for k, v in ngrams.most_common(10)]}
+
+
+def _anchor_generator(inputs: dict, params: dict) -> dict:
+    """Generate anchor sets from a frequency map (structured: top-k by frequency)."""
+    freq_map  = inputs.get("freq_map") or {}
+    lm        = inputs.get("lm")
+    n_anchors = max(0, int(params.get("n_anchors", 5)))
+    strategy  = params.get("strategy", "frequency").lower()
+    if not freq_map and lm:
+        freq_map = {s: lm.unigram_freq.get(s, 0) for s in lm.ranked}
+    if not freq_map:
+        return {"error": "No freq_map or lm — connect FreqCounter or LMBuilder"}
+    ranked = sorted(freq_map.items(), key=lambda x: x[1], reverse=True)
+    anchors_list = [s for s, _ in ranked[:n_anchors]]
+    return {"anchor_signs": anchors_list, "n_anchors": len(anchors_list),
+            "strategy": strategy,
+            "note": f"Top-{n_anchors} signs by frequency. Provide ground-truth values to build anchor dict."}
+
+
 def _comparator_ai(inputs: dict, params: dict) -> dict:
     """Compare two upstream result dicts using Glossa AI."""
     from glossa_lab.ai_utils import call_llm  # noqa: PLC0415
@@ -346,7 +613,7 @@ for _d in [
             "comparison_prompt":{"type":"string","title":"Comparison Prompt","description":"Guide the AI comparison. Leave blank for default."},
         }},
         fn=_comparator_ai),
-    # ── Dynamic experiment wrapper ───────────────────────────────────────────
+    # ── Dynamic experiment wrapper ─────────────────────────────────────────
     AtomicNodeDef("ExperimentWrapper","Experiment","Experiments",
         "Run any registered ExperimentBase subclass with upstream inputs merged as kwargs.",
         inputs=[{"name":"upstream","type":"any","required":False}],
@@ -356,6 +623,134 @@ for _d in [
             "corpus_id":{"type":"string","title":"Corpus ID","description":"Optional corpus override for experiments that accept corpus_id."},
         }},
         fn=_experiment_wrapper),
+    # ── New decipherment and analysis nodes ────────────────────────────────
+    AtomicNodeDef("LMBuilder","Language Model Builder","Decipherment",
+        "Build a statistical language model (unigram+bigram+positional) from sequences. "
+        "Output 'lm' passes to SADecipher or BeamDecipher.",
+        inputs=[{"name":"sequences","type":"sequences","required":True}],
+        outputs=[{"name":"lm","type":"any"},{"name":"n_signs","type":"number"},
+                 {"name":"n_tokens","type":"number"},{"name":"h1","type":"number"}],
+        params_schema={"type":"object","properties":{}},
+        fn=_lm_builder),
+    AtomicNodeDef("BuiltinLM","Built-in Reference LM","Decipherment",
+        "Load a pre-built language model for a known language (hebrew, geez, phoenician, sumerian, dravidian). "
+        "Use as the target LM in SADecipher or BeamDecipher.",
+        inputs=[],
+        outputs=[{"name":"lm","type":"any"},{"name":"language","type":"text"},
+                 {"name":"n_signs","type":"number"},{"name":"n_tokens","type":"number"}],
+        params_schema={"type":"object","properties":{
+            "language":{"type":"string","title":"Language","default":"hebrew",
+                        "description":"hebrew | geez | phoenician | sumerian | dravidian"}}},
+        fn=_builtin_lm),
+    AtomicNodeDef("BuiltinCorpus","Built-in Corpus","Sources",
+        "Load a named built-in corpus directly (indus, hebrew, geez, phoenician). "
+        "Does not require a DB corpus ID — always available offline.",
+        inputs=[],
+        outputs=[{"name":"sequences","type":"sequences"},{"name":"total_tokens","type":"number"},
+                 {"name":"distinct_symbols","type":"number"}],
+        params_schema={"type":"object","properties":{
+            "corpus":{"type":"string","title":"Corpus Name","default":"indus",
+                      "description":"indus | hebrew | geez | phoenician"}}},
+        fn=_builtin_corpus),
+    AtomicNodeDef("CorpusSplitter","Corpus Splitter","Transforms",
+        "Split sequences into contiguous train and test portions. "
+        "Use train for LMBuilder, test for SADecipher (no leakage).",
+        inputs=[{"name":"sequences","type":"sequences","required":True}],
+        outputs=[{"name":"train_sequences","type":"sequences"},
+                 {"name":"test_sequences","type":"sequences"},
+                 {"name":"train_n_tokens","type":"number"},
+                 {"name":"test_n_tokens","type":"number"}],
+        params_schema={"type":"object","properties":{
+            "train_ratio":{"type":"number","title":"Train Ratio","default":0.75,
+                           "minimum":0.1,"maximum":0.95,
+                           "description":"Fraction of sequences used for training (0.1–0.95)"}}},
+        fn=_corpus_splitter),
+    AtomicNodeDef("DirectionNormalizer","Direction Normalizer","Transforms",
+        "Detect or force reading direction (LTR/RTL) and reverse sequences accordingly. "
+        "'auto' uses the Ashraf & Sinha (2018) entropy method.",
+        inputs=[{"name":"sequences","type":"sequences","required":True}],
+        outputs=[{"name":"sequences","type":"sequences"},
+                 {"name":"applied_direction","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "direction":{"type":"string","title":"Direction","default":"auto",
+                         "description":"auto | ltr | rtl"}}},
+        fn=_direction_normalizer),
+    AtomicNodeDef("SADecipher","SA Decipherment","Decipherment",
+        "Simulated Annealing mapping inference. Runs N seeds in parallel via ThreadPoolExecutor. "
+        "GPU-accelerated when CuPy is installed (ocp_weight=0 enables BigramScorer GPU path). "
+        "Connects: CorpusReader/CorpusSplitter → sequences, LMBuilder/BuiltinLM → lm.",
+        inputs=[{"name":"sequences","type":"sequences","required":True},
+                {"name":"lm","type":"any","required":True},
+                {"name":"anchors","type":"any","required":False}],
+        outputs=[{"name":"proposed_mapping","type":"json"},
+                 {"name":"all_mappings","type":"any"},
+                 {"name":"mean_consistency","type":"number"},
+                 {"name":"hci_count","type":"number"}],
+        params_schema={"type":"object","properties":{
+            "n_seeds":{"type":"integer","title":"Number of Seeds","default":5,"minimum":1},
+            "max_iterations":{"type":"integer","title":"Max Iterations","default":10000,"minimum":100},
+            "restarts":{"type":"integer","title":"Restarts per Seed","default":8,"minimum":1},
+            "surjective":{"type":"boolean","title":"Surjective Mapping","default":True,
+                          "description":"True: many cipher signs → fewer target signs (cross-language). False: bijective."},
+            "ocp_weight":{"type":"number","title":"OCP Weight","default":0.0,"minimum":0.0,
+                          "description":"0.0 = GPU fast path via BigramScorer (recommended). >0 = enable OCP penalty (slower)."},
+        }},
+        fn=_sa_decipher),
+    AtomicNodeDef("ConsistencyScorer","Consistency Scorer","Decipherment",
+        "Aggregate multiple SA seed mappings into per-sign consistency statistics. "
+        "Connects: SADecipher.all_mappings → all_mappings.",
+        inputs=[{"name":"all_mappings","type":"any","required":False},
+                {"name":"proposed_mapping","type":"json","required":False}],
+        outputs=[{"name":"consistency_per_sign","type":"json"},
+                 {"name":"mean_consistency","type":"number"},
+                 {"name":"hci_count","type":"number"},
+                 {"name":"hci_pct","type":"number"}],
+        params_schema={"type":"object","properties":{}},
+        fn=_consistency_scorer),
+    AtomicNodeDef("BenchmarkScorer","Benchmark Scorer","Decipherment",
+        "Score a proposed sign mapping against a known answer key. Reports top-1 accuracy. "
+        "Connects: SADecipher.proposed_mapping → proposed_mapping. "
+        "Supply answer_key as a JSON dict param (cipher_sign: target_sign).",
+        inputs=[{"name":"proposed_mapping","type":"json","required":True},
+                {"name":"answer_key","type":"json","required":False}],
+        outputs=[{"name":"correct","type":"number"},{"name":"total","type":"number"},
+                 {"name":"accuracy","type":"number"}],
+        params_schema={"type":"object","properties":{
+            "answer_key":{"type":"string","title":"Answer Key (JSON)",
+                          "description":"JSON dict mapping cipher sign → correct target sign. Leave blank to connect AnswerKey node."}}},
+        fn=_benchmark_scorer),
+    AtomicNodeDef("KLDivergence","KL / JS Divergence","Analysis",
+        "Compute KL divergence (information gain) and Jensen-Shannon divergence between two "
+        "frequency distributions. P = primary corpus; Q = reference corpus.",
+        inputs=[{"name":"freq_map","type":"freq_map","required":True},
+                {"name":"q","type":"freq_map","required":True}],
+        outputs=[{"name":"kl_divergence","type":"number"},
+                 {"name":"js_divergence","type":"number"},
+                 {"name":"number","type":"number"}],
+        params_schema={"type":"object","properties":{}},
+        fn=_kl_divergence),
+    AtomicNodeDef("NgramCounter","N-gram Counter","Analysis",
+        "Count n-gram (bigram, trigram, …) occurrences across sequences. "
+        "Output freq_map uses space-joined token strings as keys.",
+        inputs=[{"name":"sequences","type":"sequences","required":True}],
+        outputs=[{"name":"freq_map","type":"freq_map"},{"name":"n_ngrams","type":"number"},
+                 {"name":"top_10","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "n":{"type":"integer","title":"N","default":2,"minimum":1,"maximum":6},
+            "top_n":{"type":"integer","title":"Keep Top N","default":200,"minimum":10}}},
+        fn=_ngram_counter),
+    AtomicNodeDef("AnchorGenerator","Anchor Generator","Decipherment",
+        "Select the top-k most frequent signs as anchor candidates for decipherment. "
+        "Returns the list of sign IDs to anchor; pair with known values in params or via AI.",
+        inputs=[{"name":"freq_map","type":"freq_map","required":False},
+                {"name":"lm","type":"any","required":False}],
+        outputs=[{"name":"anchor_signs","type":"json"},
+                 {"name":"n_anchors","type":"number"}],
+        params_schema={"type":"object","properties":{
+            "n_anchors":{"type":"integer","title":"Number of Anchors","default":5,"minimum":1},
+            "strategy":{"type":"string","title":"Strategy","default":"frequency",
+                        "description":"frequency: top-N by occurrence count (recommended starting point)"}}},
+        fn=_anchor_generator),
 ]:
     ATOMIC_NODES[_d.id] = _d
 
@@ -683,6 +1078,148 @@ def _build_proper_graph_specs() -> dict[str, dict]:
     # ugaritic_proper_benchmark, ugaritic_vs_hebrew are methodology validators
     # for non-Indus scripts. They remain available as Python experiments for
     # study execution but are no longer auto-migrated as graph experiment files.
+
+    # ── Now properly expressible with new decipherment nodes ───────────────────
+
+    # SA decipherment: generic cipher → Hebrew LM (anti-circularity, proper train/test)
+    s["ugaritic_sa_decipher"] = {
+        "id": "ugaritic_sa_decipher",
+        "name": "SA Decipherment — Ugaritic → Hebrew (Train/Test Split)",
+        "description": (
+            "Proper anti-circularity SA benchmark: 75% of Ugaritic Baal Cycle builds the "
+            "Hebrew LM; 25% is the cipher test set. Runs 5 seeds in parallel (GPU-accelerated "
+            "via BigramScorer when CuPy is installed)."
+        ),
+        "auto_migrated": True,
+        "nodes": [
+            N("corpus",   "BuiltinCorpus",    "Ugaritic Corpus",   {"corpus": "hebrew"},           60,  200),
+            N("split",    "CorpusSplitter",   "75/25 Split",       {"train_ratio": 0.75},          300, 200),
+            N("lm",       "LMBuilder",        "Build Hebrew LM",   {},                             540, 100),
+            N("decipher", "SADecipher",       "SA Decipherment",
+              {"n_seeds": 5, "surjective": True, "ocp_weight": 0.0},                              540, 300),
+            N("score",    "ConsistencyScorer","Consistency",        {},                             780, 300),
+            N("out",      "JSONExport",        "Save Results",
+              {"filename": "ugaritic_sa_decipher.json"},                                          1020, 300),
+        ],
+        "edges": [
+            E("e1", "corpus",  "split",   "sequences",       "sequences"),
+            E("e2", "split",   "lm",      "train_sequences",  "sequences"),
+            E("e3", "split",   "decipher","test_sequences",   "sequences"),
+            E("e4", "lm",      "decipher","lm",               "lm"),
+            E("e5", "decipher","score",   "all_mappings",     "all_mappings"),
+            E("e6", "score",   "out",     "consistency_per_sign", "data"),
+        ],
+    }
+
+    # RTL-corrected NW Semitic decipherment
+    s["fuls_rtl_decipher"] = {
+        "id": "fuls_rtl_decipher",
+        "name": "NW Semitic — RTL Corrected Decipherment (Dr. Fuls)",
+        "description": (
+            "Applies RTL direction normalisation to the Fuls NW Semitic test1 corpus, "
+            "then runs SA mapping inference with 5 parallel seeds against the Hebrew LM. "
+            "Implements the Ashraf (2018) auto-detection for confirmation."
+        ),
+        "auto_migrated": True,
+        "nodes": [
+            N("corpus",   "CorpusReader",       "NW Semitic Test1",  {},                             60,  160),
+            N("rtl",      "DirectionNormalizer","RTL Correction",    {"direction": "rtl"},           300, 160),
+            N("lm",       "BuiltinLM",          "Hebrew LM",         {"language": "hebrew"},         300, 300),
+            N("decipher", "SADecipher",         "SA (5 seeds)",
+              {"n_seeds": 5, "surjective": True, "ocp_weight": 0.0},                              540, 200),
+            N("cons",     "ConsistencyScorer",  "Consistency",       {},                             780, 200),
+            N("out",      "PassResult",          "Output",            {},                            1020, 200),
+        ],
+        "edges": [
+            E("e1", "corpus",  "rtl",     "sequences",    "sequences"),
+            E("e2", "rtl",     "decipher","sequences",    "sequences"),
+            E("e3", "lm",      "decipher","lm",           "lm"),
+            E("e4", "decipher","cons",    "all_mappings", "all_mappings"),
+            E("e5", "cons",    "out",     "consistency_per_sign", "data"),
+        ],
+    }
+
+    # Geez syllabic decipherment (fully generic — build LM, cipher, decipher)
+    s["geez_decipher"] = {
+        "id": "geez_decipher",
+        "name": "Geez Syllabic Decipherment (Anchor Convergence)",
+        "description": (
+            "Split Geez Genesis corpus 75/25. Build syllabic LM from training set. "
+            "Run SA decipherment (5 seeds, GPU) on test set. Compute consistency. "
+            "Use to validate anchor-amplification: add anchors via params.anchors."
+        ),
+        "auto_migrated": True,
+        "nodes": [
+            N("corpus",   "BuiltinCorpus",    "Geez Genesis",    {"corpus": "geez"},              60,  200),
+            N("split",    "CorpusSplitter",   "75/25 Split",     {"train_ratio": 0.75},           300, 200),
+            N("lm",       "LMBuilder",        "Syllabic LM",     {},                              540, 100),
+            N("decipher", "SADecipher",       "SA (5 seeds, GPU)",
+              {"n_seeds": 5, "surjective": False, "ocp_weight": 0.0},                            540, 300),
+            N("cons",     "ConsistencyScorer","Consistency",      {},                              780, 300),
+            N("out",      "JSONExport",        "Save Results",
+              {"filename": "geez_decipher_graph.json"},                                          1020, 300),
+        ],
+        "edges": [
+            E("e1", "corpus",  "split",   "sequences",      "sequences"),
+            E("e2", "split",   "lm",      "train_sequences", "sequences"),
+            E("e3", "split",   "decipher","test_sequences",  "sequences"),
+            E("e4", "lm",      "decipher","lm",              "lm"),
+            E("e5", "decipher","cons",    "all_mappings",    "all_mappings"),
+            E("e6", "cons",    "out",     "consistency_per_sign", "data"),
+        ],
+    }
+
+    # Cross-language KL comparison (generic — works for any two corpora)
+    s["kl_comparison"] = {
+        "id": "kl_comparison",
+        "name": "Cross-Corpus KL Divergence Comparison",
+        "description": (
+            "Compute KL and JS divergence between two corpora\'s symbol frequency distributions. "
+            "Generic: works for any two corpora. Useful for script typology comparison."
+        ),
+        "auto_migrated": True,
+        "nodes": [
+            N("corp_a", "CorpusReader", "Corpus A (primary)",  {"corpus_id": ""},          60,  80),
+            N("corp_b", "CorpusReader", "Corpus B (reference)",{"corpus_id": ""},          60,  220),
+            N("freq_a", "FreqCounter",  "Freq Counter A",      {},                          300,  80),
+            N("freq_b", "FreqCounter",  "Freq Counter B",      {},                          300, 220),
+            N("kl",     "KLDivergence", "KL Divergence",       {},                          540, 150),
+            N("out",    "PassResult",   "Output",              {},                          780, 150),
+        ],
+        "edges": [
+            E("e1", "corp_a","freq_a", "sequences", "sequences"),
+            E("e2", "corp_b","freq_b", "sequences", "sequences"),
+            E("e3", "freq_a","kl",     "freq_map",  "freq_map"),
+            E("e4", "freq_b","kl",     "freq_map",  "q"),
+            E("e5", "kl",    "out",    "kl_divergence", "data"),
+        ],
+    }
+
+    # Bigram analysis — uses NgramCounter with n=2
+    s["bigram_analysis"] = {
+        "id": "bigram_analysis",
+        "name": "Bigram Analysis",
+        "description": (
+            "Count bigram (n=2) and trigram (n=3) frequencies. Generic: works on any corpus. "
+            "Use for language model quality assessment or sign co-occurrence patterns."
+        ),
+        "auto_migrated": True,
+        "nodes": [
+            N("corpus",   "CorpusReader", "Load Corpus",     {},        60, 160),
+            N("bigrams",  "NgramCounter", "Bigrams (n=2)",   {"n": 2}, 300,  80),
+            N("trigrams", "NgramCounter", "Trigrams (n=3)",  {"n": 3}, 300, 240),
+            N("merger",   "Merger",       "Merge Results",   {},        540, 160),
+            N("out",      "JSONExport",   "Save Report",
+              {"filename": "bigram_analysis.json"},                      780, 160),
+        ],
+        "edges": [
+            E("e1", "corpus",  "bigrams",  "sequences", "sequences"),
+            E("e2", "corpus",  "trigrams", "sequences", "sequences"),
+            E("e3", "bigrams", "merger",   "freq_map",  "a"),
+            E("e4", "trigrams","merger",   "freq_map",  "b"),
+            E("e5", "merger",  "out",      "json",      "data"),
+        ],
+    }
 
     s["_SKIP_progression"] = {"id": "progression",
         "name": "Fuls Progression Benchmark",

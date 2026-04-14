@@ -1,278 +1,249 @@
-# Building Experiments and Pipelines in Glossa Lab
+# Building Experiments in Glossa Lab
 
-## Overview
+## Architecture overview
 
-Glossa Lab has two layers for running computational analyses:
+```
+Atomic Nodes (palette)             generic computational primitives
+       ↓  compose into
+Graph Experiments (JSON)           reusable study-specific compositions
+       ↓  appear alongside
+ExperimentBase subclasses (Python) complex monolithic analyses
+       ↓  combined in
+Studies (visual graph)             full research workflows
+```
 
-1. **Experiments** — standalone Python classes that run a specific analysis and save results to `reports/`
-2. **Study Pipelines** — visual graph-based workflows that chain experiments, corpora, and analyses into a full research study
+**Atomic nodes** are generic — they work on any corpus, language, or data.
+**Graph experiments** are specific to a research question but reusable across studies.
+**ExperimentBase** subclasses are the Python equivalent: subroutines studies call.
 
 ---
 
-## Experiments
+## Option A: Graph Experiment (visual, no-code)
 
-### What is an Experiment?
+Build experiments in **Experiment Builder** using atomic nodes from the palette.
+Saved as JSON in `backend/glossa_lab/experiments/graphs/`.
+Automatically appears in the Experiments list and any Study.
 
-An experiment is a Python class in `backend/glossa_lab/experiments/` that:
+### Atomic node palette
 
-- Implements a `run()` method that returns a `dict`
-- Saves its results as a JSON file to `reports/`
-- Registers itself in the discovery registry via the `ExperimentBase` class (optional but recommended)
+| Category | Nodes |
+|---|---|
+| Sources | CorpusReader, BuiltinCorpus, BuiltinLM, StaticValue |
+| Transforms | FreqCounter, Filter, Merger, CorpusSplitter, DirectionNormalizer |
+| Analysis | PositionalProfiler, EntropyCalc, Clusterer, ZipfFitter, KLDivergence, NgramCounter, AnchorGenerator, Comparator |
+| Decipherment | LMBuilder, SADecipher, ConsistencyScorer, BenchmarkScorer |
+| Outputs | JSONExport, PassResult |
+| Experiments | ExperimentWrapper (run any ExperimentBase) |
 
-### Anatomy of an Experiment
+### Example: SA decipherment graph
+
+```
+[BuiltinCorpus: geez]
+        |
+[CorpusSplitter: 75/25]
+   |train_sequences          |test_sequences
+[LMBuilder]             [SADecipher: n_seeds=5, ocp_weight=0]
+        |lm ─────────────────|lm
+                             |all_mappings
+                       [ConsistencyScorer]
+                             |consistency_per_sign
+                         [JSONExport]
+```
+
+SADecipher runs 5 seeds in parallel on the GPU (when CuPy is installed).
+`ocp_weight=0.0` enables the BigramScorer GPU fast path.
+
+### Design rule: nodes must be generic
+
+Nodes in the palette must be corpus-agnostic and study-agnostic.
+Study-specific choices (which corpus, which language model) live in the
+graph JSON, not in the node implementation itself.
+
+---
+
+## Option B: Python ExperimentBase (code)
+
+For complex analyses that cannot yet be expressed as atomic node graphs.
+
+### Minimum viable experiment
 
 ```python
 # backend/glossa_lab/experiments/my_analysis.py
+from __future__ import annotations
+import json
+import logging
+from datetime import datetime, timezone
+from pathlib import Path
 
 from glossa_lab.experiment_base import ExperimentBase
-from pathlib import Path
-import json
-from datetime import datetime, timezone
+from glossa_lab.experiments._parallel import compute_device_label, run_seeds_parallel
 
-REPORTS = Path(__file__).resolve().parent.parent.parent.parent / "reports"
+_log     = logging.getLogger(__name__)
+_REPORTS = Path(__file__).resolve().parent.parent.parent.parent / "reports"
+
 
 class MyAnalysis(ExperimentBase):
-    id             = "my_analysis"          # must be unique, kebab-case
+    id             = "my_analysis"      # unique snake_case
     name           = "My Analysis"
-    category       = "Validation"           # shown in the UI palette
+    category       = "Analysis"
     description    = "What this experiment does."
-    estimated_time = "~1 min"
-    command        = "python -m glossa_lab.experiments.my_analysis"
+    estimated_time = "~2 min"
+    results_file   = "reports/my_analysis.json"
+
+    # params_schema lets the UI render form controls for parameters
+    params_schema = {
+        "type": "object",
+        "properties": {
+            "n_seeds": {
+                "type": "integer", "default": 5, "minimum": 1,
+                "description": "SA seeds run in parallel",
+            },
+        },
+    }
 
     def run(self, **kwargs) -> dict:
+        n_seeds = int(kwargs.get("n_seeds", 5))
+        _log.info("Starting | device=%s | n_seeds=%d",
+                  compute_device_label(), n_seeds)
+
         # --- your analysis here ---
-        result = {"answer": 42}
+        result = {"n_seeds": n_seeds, "answer": 42}
 
-        # Always save to reports/
-        ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S")
-        out = REPORTS / f"my_analysis_{ts}.json"
+        ts  = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S")
+        out = _REPORTS / f"my_analysis_{ts}.json"
         out.write_text(json.dumps(result, indent=2), encoding="utf-8")
-
         return result
 
 
-# Standalone runner (for CLI invocation)
+# Terminal entry point: run_cli() registers a Job in the UI (H12.3 mandatory)
 if __name__ == "__main__":
-    from glossa_lab.cli_bridge import run_with_reporting
-    run_with_reporting("my_analysis", "My Analysis", MyAnalysis().run, verbose=True)
+    MyAnalysis().run_cli()
 ```
 
-### Running Experiments
+### H12 rules — mandatory
 
-**From the UI**: Go to **Experiments** → find your experiment → click **Run**
+**H12.1 ExperimentBase required** — every experiment file MUST define at least one
+`ExperimentBase` subclass. Standalone scripts that bypass it are forbidden.
 
-**From the CLI**:
-```bash
-python -m glossa_lab.experiments.my_analysis
-```
+**H12.2 params_schema** — define JSON Schema for all configurable parameters so the
+UI can render form controls.
 
-**From Glossa AI**: Ask "Run my_analysis experiment"
+**H12.3 run_cli() for terminal** — the `if __name__ == "__main__":` block MUST call
+`run_cli()`, not `run()`. `run_cli()` registers the job in the Jobs panel.
 
-**From a Study pipeline**: add an Experiment node and connect it to your corpus
+**H12.4 Parallel seeds** — SA seed loops MUST use `run_seeds_parallel()` from
+`glossa_lab.experiments._parallel`. A plain `for seed in range(N):` loop is forbidden.
 
-### Accessing Corpus Data
+**H12.5 GPU fast path** — do NOT set `ocp_weight > 0` or `use_word_bigrams=True`
+unless scientifically necessary. These bypass the BigramScorer GPU path (50-200x slower).
+Document deliberate bypasses with a comment explaining why.
+
+---
+
+### Parallel seed execution (correct pattern)
 
 ```python
-# Load the Indus corpus (primary Glossa Lab corpus)
-import json
-from pathlib import Path
-R = Path(__file__).resolve().parent.parent.parent.parent / "reports"
-data = json.loads((R / "icit_extracted_corpus.json").read_text("utf-8"))
-inscriptions = [i["sequence"] for i in data["inscriptions"] if i.get("sequence")]
-# inscriptions = [["066", "069", "090"], ["003", "069"], ...]
+from glossa_lab.experiments._parallel import run_seeds_parallel, compute_device_label
+
+
+# Top-level function — must be picklable (no closures over complex objects)
+def _one_seed(seed: int, flat: list, lm) -> dict:
+    from glossa_lab.pipelines.decipher import decipher
+    return decipher(
+        flat, lm,
+        seed=seed,
+        max_iterations=10_000,
+        restarts=8,
+        ocp_weight=0.0,        # 0 = GPU BigramScorer fast path (H12.5)
+        use_word_bigrams=False, # False = GPU fast path (H12.5)
+        surjective=True,
+    ).get("proposed_mapping", {})
+
+
+class MyDecipherExperiment(ExperimentBase):
+    id = "my_decipher"
+    # ...
+
+    def run(self, **kwargs) -> dict:
+        n_seeds = int(kwargs.get("n_seeds", 10))
+        # GPU is used automatically via BigramScorer when CuPy is installed
+        _log.info("Compute device: %s", compute_device_label())
+
+        lm           = ...   # LanguageModel
+        cipher_flat  = [...] # flat token list
+
+        # Runs n_seeds in parallel via ThreadPoolExecutor
+        # GPU (CuPy BigramScorer) is used automatically if available
+        mappings = run_seeds_parallel(
+            _one_seed, list(range(n_seeds)),
+            cipher_flat, lm
+        )
+        return {"n_successful_seeds": len(mappings)}
 ```
 
-### Using the Decipherment Engine
+### Forbidden patterns
+
+```python
+# FORBIDDEN: sequential seed loop (H12.4)
+for seed in range(n_seeds):
+    m = _run_mapping(corpus, lm, seed)
+    results.append(m)
+
+# FORBIDDEN: ocp_weight bypasses GPU (H12.5, unless justified with a comment)
+result = decipher(flat, lm, ocp_weight=1.0, ...)
+
+# FORBIDDEN: standalone __main__ without run_cli() (H12.3)
+if __name__ == "__main__":
+    MyExperiment().run(verbose=True)   # WRONG
+```
+
+---
+
+## Accessing corpus data
+
+```python
+# User-uploaded corpus (from DB)
+from glossa_lab.database import get_db
+import asyncio
+db   = get_db()
+text = asyncio.get_event_loop().run_until_complete(db.get_text(corpus_id))
+seqs = text["content"]          # flat list OR list of lists
+
+# Built-in data module (always available)
+from glossa_lab.data.geez import get_corpus_symbols, get_corpus_inscriptions
+symbols      = get_corpus_symbols()       # flat list of tokens
+inscriptions = get_corpus_inscriptions()  # list of words (each word = list)
+```
+
+## Using the decipherment engine
 
 ```python
 from glossa_lab.pipelines.decipher import LanguageModel, decipher
-from glossa_lab.data.old_hebrew import _HEBREW_LINES
+from glossa_lab.data.old_hebrew import get_corpus_symbols, get_corpus_inscriptions
 
-# Build Hebrew language model
-hw = []
-for line in _HEBREW_LINES:
-    for w in line.split("."):
-        w = w.strip()
-        if w: hw.append(w.split())
-lm = LanguageModel([s for w in hw for s in w], inscriptions=hw)
+lm = LanguageModel(get_corpus_symbols(), inscriptions=get_corpus_inscriptions())
 
-# Run SA mapping inference
-flat_tokens = ["066", "069", "090", "112", ...]  # your cipher tokens
 result = decipher(
-    flat_tokens, lm,
+    flat_cipher_tokens, lm,
     seed=42,
-    max_iterations=12000,
-    restarts=10,
-    cipher_inscriptions=[[...]],  # word-split cipher
-    surjective=True,              # many cipher signs → fewer target signs
-    anchors={"066": "m"},         # verified assignments (optional)
+    max_iterations=10_000, restarts=8,
+    cipher_inscriptions=word_split_cipher,
+    surjective=True,
+    ocp_weight=0.0,         # GPU fast path
+    anchors={"066": "m"},   # optional verified assignments
 )
-mapping = result["proposed_mapping"]  # dict: sign -> consonant
+mapping = result["proposed_mapping"]  # {cipher_sign: target_consonant}
 ```
 
-### GPU/CPU Policy
+## Running experiments
 
-Per `AGENTS.md` rule H10:
+```bat
+# From terminal (job appears in UI Jobs panel):
+shell.cmd python -m glossa_lab.experiments.my_analysis
 
-```python
-# Always prefer GPU
-try:
-    import cupy as xp
-    _GPU = xp.cuda.is_available()
-except ImportError:
-    import numpy as xp
-    _GPU = False
+# From UI: Experiments -> My Analysis -> Run
 
-if not _GPU:
-    import logging
-    logging.getLogger(__name__).info("GPU unavailable — using NumPy CPU path")
+# From Glossa AI: "Run my_analysis"
+
+# From a Study: add Experiment node, select my_analysis
 ```
-
-For CPU-bound loops (multiple seeds), use parallel execution:
-
-```python
-import os
-from concurrent.futures import ProcessPoolExecutor, as_completed
-
-def run_one_seed(seed):
-    return _run_mapping(words, lm, seed)
-
-n_seeds = 20
-with ProcessPoolExecutor(max_workers=min(n_seeds, os.cpu_count() or 4)) as ex:
-    futures = [ex.submit(run_one_seed, s) for s in range(n_seeds)]
-    results = [f.result() for f in futures]
-```
-
----
-
-## Study Pipelines (Visual Graph Editor)
-
-### What is a Study?
-
-A Study is a visual graph of nodes connected by edges, defining a research workflow. Each node can be:
-
-- A **corpus** — the data source
-- An **experiment** — a computation step
-- A **pipeline** — an async job
-- A **result viewer** — inspection of outputs
-
-### Opening the Study Builder
-
-Click **Studies** in the sidebar to open the graph canvas.
-
-### Node Types
-
-| Node | Description |
-|---|---|
-| **Corpus** | Input data. Select from registered corpora. |
-| **Experiment** | Runs a registered experiment. Config: experiment ID, optional params. |
-| **Pipeline** | Queues a job (async). |
-| **Script** | Runs inline Python code. |
-| **Report** | Generates a PDF report. |
-| **Note** | Documentation node (no execution). |
-
-### Connecting Nodes
-
-Draw edges from left to right to define data flow:
-
-```
-[Corpus] ──> [Structural Analysis] ──> [Mapping Inference] ──> [Report]
-```
-
-Independent branches run in parallel (per AGENTS.md H10.3).
-
-### Example: NW Semitic Analysis Pipeline
-
-```
-[NW Semitic Test1 Corpus]
-         |
-         v
-[fuls_nw_semitic_benchmark]  ──> [fuls_writing_system_comparison]
-         |
-         v
-[fuls_rtl_corrected]  ──> [fuls_constraint_space]
-         |
-         v
-[fuls_nw_semitic_decipher_run]
-         |
-         v
-[generate_fuls_nw_semitic_report]
-```
-
-### Running a Study
-
-1. Build the graph in the canvas
-2. Click **Run Study** (play button)
-3. The bottom panel auto-opens to the Jobs tab to show progress
-4. Click any job to see detailed results
-
-### Saving and Sharing
-
-Studies are saved automatically to the database. To export:
-- Click the **Export** button to download a JSON representation
-- Share the JSON file; others can import it via **Import Study**
-
----
-
-## Writing Custom Analysis Scripts
-
-For one-off analyses, use the **Terminal** in the bottom panel or ask Glossa AI to run a script:
-
-```python
-# Example: compute entropy of a corpus
-import json
-import math
-from pathlib import Path
-from collections import Counter
-
-R = Path("reports")  # relative to repo root when run via Terminal
-data = json.loads((R / "icit_extracted_corpus.json").read_text("utf-8"))
-inscriptions = [i["sequence"] for i in data["inscriptions"] if i.get("sequence")]
-tokens = [s for ins in inscriptions for s in ins]
-counts = Counter(tokens)
-total = sum(counts.values())
-H1 = -sum((c/total) * math.log2(c/total) for c in counts.values())
-print(f"H1 = {H1:.4f} bits  (N={len(counts)} distinct signs, {total} tokens)")
-```
-
-Save results to `reports/` for them to appear in the Reports panel.
-
----
-
-## Experiment Best Practices
-
-1. **Always save to `reports/`** with a timestamped filename
-2. **Log at INFO level** so results appear in the Logs panel
-3. **Return a `dict`** from `run()` — this is what the UI displays on job completion
-4. **Use `_safe()` for any text going into PDFs** (see `generate_fuls_nw_semitic_report.py`)
-5. **Parallelize** seed loops using `ProcessPoolExecutor`
-6. **Check for GPU** before all numerical batch operations
-7. **Register via `ExperimentBase`** so the experiment appears in the UI palette and Glossa AI can reference it by ID
-
----
-
-## File and Directory Layout
-
-```
-backend/
-  glossa_lab/
-    experiments/         ← your experiment .py files go here
-      fuls_rtl_corrected.py
-      fuls_constraint_space.py
-      ...
-    data/               ← corpus data modules
-    pipelines/          ← SA engine, Kandles, etc.
-    api/                ← FastAPI endpoints
-  generate_fuls_*.py   ← standalone report generators
-
-reports/               ← all experiment JSON outputs (auto-created)
-
-docs/
-  user-manual.md        ← this file's companion
-  guides/
-    building-experiments.md  ← this file
-```
-
----
-
-*Glossa Lab — BitConcepts Research Programme*

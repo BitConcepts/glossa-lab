@@ -217,16 +217,24 @@ export function JobsView() {
         </div>
       )}
       {jobs.length > 0 && (
-        <table style={{ borderCollapse: "collapse", width: "100%", maxWidth: 900 }}>
+        <table style={{ borderCollapse: "collapse", width: "100%", maxWidth: 960 }}>
           <thead>
             <tr>
-              {["Name", "Pipeline", "Status", "Created", "Actions"].map((h) => (
+              {["Name", "Pipeline", "Device", "Status", "Created", "Actions"].map((h) => (
                 <Th key={h}>{h}</Th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {jobs.map((j) => (
+            {jobs.map((j) => {
+              const device: string = (j.params?.compute_device as string) ?? "";
+              const deviceLabel: string = (j.params?.compute_device_label as string) ?? "";
+              const isGpu = device === "gpu";
+              const deviceBadge = device
+                ? { bg: isGpu ? "#dbeafe" : "#f3f4f6", color: isGpu ? "#1e40af" : "#374151",
+                    text: isGpu ? `⚡ ${deviceLabel || "GPU"}` : `⚙️ ${deviceLabel || "CPU"}` }
+                : null;
+              return (
               <tr key={j.id}>
                 <Td>
                   <span style={{ fontWeight: 500 }}>{j.name}</span>
@@ -237,6 +245,15 @@ export function JobsView() {
                 </Td>
                 <Td>
                   <code style={{ fontSize: 12 }}>{j.pipeline}</code>
+                </Td>
+                <Td>
+                  {deviceBadge
+                    ? <span style={{ fontSize: 11, padding: "2px 7px", borderRadius: 6,
+                                     background: deviceBadge.bg, color: deviceBadge.color,
+                                     fontWeight: 600, whiteSpace: "nowrap" }}>
+                        {deviceBadge.text}
+                      </span>
+                    : <span style={{ fontSize: 11, color: "#9ca3af" }}>—</span>}
                 </Td>
                 <Td>
                   <span style={{ color: statusColor(j.status), fontWeight: 600 }}>
@@ -270,7 +287,8 @@ export function JobsView() {
                   </span>
                 </Td>
               </tr>
-            ))}
+            );
+            })}
           </tbody>
         </table>
       )}

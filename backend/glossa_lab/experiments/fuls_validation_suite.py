@@ -204,17 +204,20 @@ def run_validation_suite(verbose: bool = True) -> dict[str, Any]:
     # ─────────────────────────────────────────────────────────────────────
     _pr("\n  EXP B — Random Corpus Control...")
     rng_b = random.Random(2001)
-    random_mappings = []
-    for i in range(N_SEEDS):
-        # Synthetic corpus: same word-count and length distribution, random signs
-        synth = []
+    from glossa_lab.experiments._parallel import run_seeds_parallel as _rsp_vs
+    # Pre-generate per-seed synthetics and seeds (deterministic, reproducible)
+    _b_data = []
+    for _i in range(N_SEEDS):
+        _synth = []
         for length, count in wl_dist.items():
             for _ in range(count):
-                synth.append([rng_b.choice(all_signs) for _ in range(length)])
-        seed = rng_b.randint(0, 999999)
-        m = _run_mapping(synth, hebrew_lm, seed=seed)
-        random_mappings.append(m)
-        if verbose: _pr(f"    seed {i+1}/{N_SEEDS} done")
+                _synth.append([rng_b.choice(all_signs) for _ in range(length)])
+        _b_data.append((_synth, rng_b.randint(0, 999999)))
+    def _run_b_seed(idx, _data=_b_data, _lm=hebrew_lm):
+        _synth, _seed = _data[idx]
+        return _run_mapping(_synth, _lm, seed=_seed)
+    random_mappings = _rsp_vs(_run_b_seed, list(range(N_SEEDS)))
+    _pr(f"    {len(random_mappings)}/{N_SEEDS} done (parallel)")
 
     cons_random = _consistency(random_mappings, all_signs)
     mean_cons_random = _mean([v["consistency"] for v in cons_random.values() if v["n_runs"] > 0])
@@ -233,13 +236,11 @@ def run_validation_suite(verbose: bool = True) -> dict[str, Any]:
     exp_c_results = {}
     rng_c = random.Random(3001)
     for lm_name, lm in lm_conditions:
-        mappings_c = []
-        plaus_c = []
-        for _ in range(N_SEEDS):
-            seed = rng_c.randint(0, 999999)
-            m = _run_mapping(words, lm, seed=seed)
-            mappings_c.append(m)
-            plaus_c.append(_bigram_plausibility(m, words, hebrew_lm))
+        _seeds_c = [rng_c.randint(0, 999999) for _ in range(N_SEEDS)]
+        def _run_c(s, _w=words, _lm=lm):
+            return _run_mapping(_w, _lm, seed=s)
+        mappings_c = _rsp_vs(_run_c, _seeds_c)
+        plaus_c = [_bigram_plausibility(m, words, hebrew_lm) for m in mappings_c]
         cons_c = _consistency(mappings_c, all_signs)
         mc = _mean([v["consistency"] for v in cons_c.values() if v["n_runs"] > 0])
         mp = _mean(plaus_c)
@@ -263,18 +264,23 @@ def run_validation_suite(verbose: bool = True) -> dict[str, Any]:
     rng_a = random.Random(4001)
     for label, frac in density_targets:
         n_sample = max(20, int(round(n_words * frac)))
-        mappings_a = []
-        plaus_a = []
-        for _ in range(N_SEEDS):
-            seed = rng_a.randint(0, 999999)
-            idx = sorted(rng_a.sample(range(n_words), min(n_sample, n_words)))
-            sample_words = [words[i] for i in idx]
-            sample_flat  = [s for w in sample_words for s in w]
-            n_distinct   = len(set(sample_flat))
-            tok_per_sign = len(sample_flat) / max(n_distinct, 1)
-            m = _run_mapping(sample_words, hebrew_lm, seed=seed)
-            mappings_a.append(m)
-            plaus_a.append(_bigram_plausibility(m, sample_words, hebrew_lm))
+        # Pre-generate per-seed data (reproducible)
+        _a_data = []
+        for _i in range(N_SEEDS):
+            _seed = rng_a.randint(0, 999999)
+            _idx  = sorted(rng_a.sample(range(n_words), min(n_sample, n_words)))
+            _sw   = [words[j] for j in _idx]
+            _a_data.append((_seed, _sw))
+        def _run_a(idx, _data=_a_data, _lm=hebrew_lm):
+            _seed, _sw = _data[idx]
+            return _run_mapping(_sw, _lm, seed=_seed)
+        def _plaus_a(idx, _data=_a_data, _lm=hebrew_lm):
+            _seed, _sw = _data[idx]
+            m = _run_mapping(_sw, _lm, seed=_seed)
+            return m, _bigram_plausibility(m, _sw, _lm)
+        _parallel_results = _rsp_vs(_plaus_a, list(range(N_SEEDS)))
+        mappings_a = [r[0] for r in _parallel_results if r]
+        plaus_a    = [r[1] for r in _parallel_results if r]
         sample_flat_ref = [s for w in [words[i] for i in range(min(n_sample, n_words))] for s in w]
         actual_tps = len(sample_flat_ref) / max(len(set(sample_flat_ref)), 1)
         signs_for_a = sorted(set(s for m in mappings_a for s in m))

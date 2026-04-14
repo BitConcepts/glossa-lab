@@ -1,0 +1,6 @@
+split,tokens,words,pct
+train,56706,17663,75.0%
+test,18903,5533,25.0%
+total,75609,23196,100%
+
+inventory_size,153

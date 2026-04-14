@@ -100,18 +100,16 @@ def exp_multi_seed_stability(d: dict, n_seeds: int = 10) -> dict[str, Any]:
     print("  Exp A — Multi-seed stability (Tier 1a, {:d} seeds)".format(n_seeds))
     print("=" * 65)
 
-    results = []
-    for seed in range(n_seeds):
-        result = decipher(
-            d["cipher_flat"], model,
-            seed=seed,
-            max_iterations=12000,
-            restarts=6,
-            cipher_inscriptions=d["cipher_inscr"],
-        )
-        acc = score_accuracy(result["proposed_mapping"], d["ground_truth"])
-        results.append(acc["correct"])
-        print(f"  seed {seed:2d}: {acc['correct']:2d}/30 = {acc['correct']/30*100:.1f}%")
+    from glossa_lab.experiments._parallel import run_seeds_parallel as _rsp_td
+    def _seed_fn(seed, _d=d, _model=model, _sa=score_accuracy):
+        from glossa_lab.pipelines.decipher import decipher as _dec
+        r = _dec(_d["cipher_flat"], _model, seed=seed,
+                 max_iterations=12000, restarts=6,
+                 cipher_inscriptions=_d["cipher_inscr"])
+        return _sa(r["proposed_mapping"], _d["ground_truth"])["correct"]
+    results = _rsp_td(_seed_fn, list(range(n_seeds)))
+    for seed, correct in enumerate(results):
+        print(f"  seed {seed:2d}: {correct:2d}/30 = {correct/30*100:.1f}%")
 
     mean = sum(results) / len(results)
     variance = sum((x - mean) ** 2 for x in results) / len(results)

@@ -121,11 +121,26 @@ class CliReporter:
         # Create directly as 'running' so the pipeline engine never picks it up.
         # If created as 'pending' there is a race: the engine polls every 2s and
         # would claim the job before the subsequent PATCH could arrive.
+        # Detect compute device for UI display
+        _device = "unknown"
+        _device_label = "unknown"
+        try:
+            from glossa_lab.experiments._parallel import compute_device, compute_device_label
+            _device = compute_device()
+            _device_label = compute_device_label()
+        except Exception:
+            pass
+
         job = _http("POST", "/jobs", {
             "name":           f"{self.name}  [CLI]",
             "pipeline":       self.experiment_id,
             "initial_status": "running",
-            "params":         {"source": "cli", "started_at": datetime.now(timezone.utc).isoformat()},
+            "params":         {
+                "source": "cli",
+                "started_at": datetime.now(timezone.utc).isoformat(),
+                "compute_device": _device,
+                "compute_device_label": _device_label,
+            },
         })
         if job:
             self.job_id = job.get("id")

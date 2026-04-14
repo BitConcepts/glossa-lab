@@ -21,6 +21,7 @@ BUILT_IN_CORPORA = [
     "hebrew",
     "indus_synthetic",
     "sumerian_ur3",
+    "geez",
 ]
 
 
@@ -65,6 +66,7 @@ def _corpus_name(corpus_id: str) -> str:
         "hebrew": "Old Hebrew (Gen-Prov, consonantal)",
         "indus_synthetic": "Indus Script (synthetic, Yadav 2010 / Fuls 2014)",
         "sumerian_ur3": "Sumerian Ur III (CDLI statistics)",
+        "geez": "Geez Genesis (Ethiopic syllabic, Dr. Fuls)",
     }.get(corpus_id, corpus_id)
 
 
@@ -180,6 +182,36 @@ def _load_corpus(corpus_id: str) -> dict | None:
                     "real_signs": stats["real_cdli_stats"]["distinct_signs"],
                     "writing_type": "logo-syllabic (Tier 5 reference)",
                     "note": "Synthetic corpus calibrated to CDLI Ur III frequency data",
+                },
+            }
+
+        elif corpus_id == "geez":
+            from glossa_lab.data.geez import (
+                corpus_statistics, get_corpus_inscriptions, get_corpus_symbols
+            )
+
+            flat  = get_corpus_symbols()
+            inscs = get_corpus_inscriptions()
+            stats = corpus_statistics()
+            return {
+                "corpus_type": "ancient",
+                "content": flat,
+                "reading_direction": "ltr",
+                "metadata": {
+                    "source": "Book of Genesis in Ethiopic script (Tigrinya Bible)",
+                    "n_words": stats["n_words"],
+                    "distinct_signs": stats["inventory_size"],
+                    "writing_type": "abugida-syllabic (fully deciphered)",
+                    "reading_direction": "ltr",
+                    "language": "Tigrinya / Geez",
+                    "language_family": "Afro-Asiatic / Ethiosemitic",
+                    "provided_by": "Dr. Andreas Fuls",
+                    "note": (
+                        "26 consonant rows x 7 vowel orders = ~200 syllabic signs. "
+                        "Used as controlled syllabic benchmark for the "
+                        "anchor-convergence validation experiment."
+                    ),
+                    "inscriptions": inscs,   # word-level structure for Ashraf detection
                 },
             }
 

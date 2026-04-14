@@ -1,0 +1,127 @@
+{
+  "id": "kl_comparison",
+  "name": "Cross-Corpus KL Divergence Comparison",
+  "description": "Compute KL and JS divergence between two corpora's symbol frequency distributions. Generic: works for any two corpora. Useful for script typology comparison.",
+  "auto_migrated": true,
+  "nodes": [
+    {
+      "id": "corp_a",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CorpusReader",
+        "label": "Corpus A (primary)",
+        "params": {
+          "corpus_id": ""
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 80
+      }
+    },
+    {
+      "id": "corp_b",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CorpusReader",
+        "label": "Corpus B (reference)",
+        "params": {
+          "corpus_id": ""
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 220
+      }
+    },
+    {
+      "id": "freq_a",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FreqCounter",
+        "label": "Freq Counter A",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
+        "y": 80
+      }
+    },
+    {
+      "id": "freq_b",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FreqCounter",
+        "label": "Freq Counter B",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
+        "y": 220
+      }
+    },
+    {
+      "id": "kl",
+      "type": "expNode",
+      "data": {
+        "atomicId": "KLDivergence",
+        "label": "KL Divergence",
+        "params": {}
+      },
+      "position": {
+        "x": 540,
+        "y": 150
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PassResult",
+        "label": "Output",
+        "params": {}
+      },
+      "position": {
+        "x": 780,
+        "y": 150
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corp_a",
+      "target": "freq_a",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "corp_b",
+      "target": "freq_b",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "freq_a",
+      "target": "kl",
+      "sourcePort": "freq_map",
+      "targetPort": "freq_map"
+    },
+    {
+      "id": "e4",
+      "source": "freq_b",
+      "target": "kl",
+      "sourcePort": "freq_map",
+      "targetPort": "q"
+    },
+    {
+      "id": "e5",
+      "source": "kl",
+      "target": "out",
+      "sourcePort": "kl_divergence",
+      "targetPort": "data"
+    }
+  ]
+}

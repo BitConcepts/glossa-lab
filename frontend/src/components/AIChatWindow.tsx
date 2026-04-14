@@ -825,6 +825,18 @@ export function AIChatWindow() {
   );
 }
 
+// ── Action view-hint: where to navigate after completing each action type ─────
+function _actionViewHint(action: AIAction): string | null {
+  const t = action.type;
+  if (t === "run_experiment" || t === "generate_report") return "reports";
+  if (t === "run_pipeline") return "jobs";
+  if (t === "create_hypothesis") return "hypotheses";
+  if (t === "create_notebook") return "notebooks";
+  if (t === "acquire_corpus") return "corpora";
+  if (t === "open_view") return (action.params as Record<string, string>)?.view ?? null;
+  return null;
+}
+
 // ── ChatInline (docked in BottomPanel) ────────────────────────────────────────
 
 export function ChatInline() {
@@ -839,8 +851,15 @@ export function ChatInline() {
   const [studies, setStudies] = useState<StudyResponse[]>([]);
   const bottomRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const textareaInlineRef = useRef<HTMLTextAreaElement>(null);
+  const abortCtrlInline = useRef<AbortController | null>(null);
   const maxCtx = getLocalCtxLength();
   const ctxPct = Math.min(100, Math.round((estimateTokens(messages) / maxCtx) * 100));
+
+  // Navigation helper: dispatches glossa:navigate from within the chat panel
+  const navigateTo = useCallback((view: string) => {
+    window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view } }));
+  }, []);
 
   useEffect(() => {
     listTexts().then(setCorpora).catch(() => {});
@@ -855,31 +874,63 @@ export function ChatInline() {
     upd("executing");
     const label = resolveLabel(action);
     try {
-      const r = await executeAiAction({ type: action.type, params: action.params });
+      const r = await executeAiAction({ type: action.type, params: action.params ?? {} });
       upd("done");
-      if (action.type === "open_view" && r.navigate) window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: r.navigate } }));
-      setMessages(p => [...p, { id: ++_msgId, role: "assistant", content: `✓ ${label} — ${r.summary ?? "done"}`, timestamp: Date.now() }]);
+      if (action.type === "open_view" && r.navigate) {
+        window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: r.navigate } }));
+      }
+      // For long-running actions: offer navigation link rather than just a text message
+      const viewHint = r.navigate ?? _actionViewHint(action);
+      const doneContent = viewHint
+        ? `[NAVIGATE:${viewHint}]✓ **${label}** — ${r.summary ?? "done"}`
+        : `✓ **${label}** — ${r.summary ?? "done"}`;
+      setMessages(p => [...p, { id: ++_msgId, role: "assistant", content: doneContent, timestamp: Date.now() }]);
     } catch (e) {
       upd("failed");
-      setMessages(p => [...p, { id: ++_msgId, role: "assistant", content: `✗ ${label} failed: ${e instanceof Error ? e.message : String(e)}`, timestamp: Date.now(), error: true }]);
+      const errText = e instanceof Error ? e.message : String(e);
+      setMessages(p => [...p, { id: ++_msgId, role: "assistant",
+        content: `✗ **${label}** failed: ${errText}`,
+        timestamp: Date.now(), error: true }]);
     }
   }, []);
 
   const send = useCallback(async (text?: string) => {
     const t = (text ?? input).trim(); if (!t || busy) return;
     setInput("");
+    if (textareaInlineRef.current) textareaInlineRef.current.style.height = "auto";
     const um: MsgUI = { id: ++_msgId, role: "user", content: t, timestamp: Date.now() };
     const lm: MsgUI = { id: ++_msgId, role: "assistant", content: "", timestamp: Date.now(), loading: true };
     setMessages(p => [...p, um, lm]); setBusy(true);
+    const ctrl = new AbortController();
+    abortCtrlInline.current = ctrl;
     try {
       const h = [...messages, um].filter(m => !m.loading).map(({ role, content }) => ({ role, content }));
-      const r = await aiChat({ messages: h, context_type: contextType || null, context_id: contextId || null });
-      const nm: MsgUI = { id: lm.id, role: "assistant", content: r.content, actions: r.actions ?? [], actionStates: (r.actions ?? []).map(() => "pending"), timestamp: Date.now(), loading: false };
+      const r = await aiChat({ messages: h, context_type: contextType || null, context_id: contextId || null }, ctrl.signal);
+      const AUTO_RUN_INLINE = new Set(["run_experiment", "run_pipeline", "generate_report",
+                                        "create_hypothesis", "create_notebook", "open_view"]);
+      const nm: MsgUI = {
+        id: lm.id, role: "assistant", content: r.content,
+        actions: r.actions ?? [],
+        actionStates: (r.actions ?? []).map(a =>
+          AUTO_RUN_INLINE.has(a.type) ? "executing" : "pending"),
+        timestamp: Date.now(), loading: false,
+      };
       setMessages(p => p.map(m => m.id === lm.id ? nm : m));
+      // Auto-execute eligible actions
+      (r.actions ?? []).forEach((a, i) => {
+        if (AUTO_RUN_INLINE.has(a.type)) {
+          setTimeout(() => handleInlineAction(nm, i, a, true), 50);
+        }
+      });
     } catch (e) {
-      setMessages(p => p.map(m => m.id === lm.id ? { ...m, content: `Error: ${e instanceof Error ? e.message : "AI error"}`, loading: false, error: true, timestamp: Date.now() } : m));
-    } finally { setBusy(false); }
-  }, [input, busy, messages, contextType, contextId]);
+      const aborted = e instanceof Error && e.name === "AbortError";
+      setMessages(p => p.map(m => m.id === lm.id ? {
+        ...m,
+        content: aborted ? "[Stopped]" : `Error: ${e instanceof Error ? e.message : "AI error"}`,
+        loading: false, error: !aborted, timestamp: Date.now(),
+      } : m));
+    } finally { setBusy(false); abortCtrlInline.current = null; }
+  }, [input, busy, messages, contextType, contextId, handleInlineAction]);
 
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0]; if (!f) return;
@@ -890,61 +941,100 @@ export function ChatInline() {
 
   const textareaRef2 = useRef<HTMLTextAreaElement>(null);
 
+  // Copy-all handler
+  const copyAll = useCallback(() => {
+    const text = messages.filter(m => !m.loading).map(m =>
+      `[${m.role.toUpperCase()} ${fmtTime(m.timestamp)}]\n${m.content}`
+    ).join("\n\n");
+    navigator.clipboard.writeText(text);
+  }, [messages]);
+
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", background: "#0f172a" }}>
-      <div style={{ display: "flex", gap: 5, padding: "3px 8px", borderBottom: "1px solid #1e293b", alignItems: "center", flexShrink: 0 }}>
-        <span style={{ color: "#94a3b8", fontSize: 10 }}>Context:</span>
+      {/* Context + controls bar */}
+      <div style={{ display: "flex", gap: 4, padding: "3px 8px", borderBottom: "1px solid #1e293b", alignItems: "center", flexShrink: 0, flexWrap: "wrap" }}>
+        <span style={{ color: "#94a3b8", fontSize: 9, flexShrink: 0 }}>Context:</span>
         {(["", "corpus", "experiment", "study"] as const).map(ct => (
           <button key={ct || "g"} onClick={() => { setContextType(ct); setContextId(""); }}
             style={{ padding: "1px 5px", border: "none", borderRadius: 3, cursor: "pointer", fontSize: 9, background: contextType === ct ? "#2563eb" : "#1e293b", color: contextType === ct ? "#fff" : "#64748b" }}>
             {ct || "Global"}
           </button>
         ))}
-        {contextType === "corpus"     && <select value={contextId} onChange={e => setContextId(e.target.value)} style={inSel}><option value="">corpus…</option>{corpora.map(c => <option key={c.id} value={c.id}>{c.name.slice(0,18)}</option>)}</select>}
-        {contextType === "experiment" && <select value={contextId} onChange={e => setContextId(e.target.value)} style={inSel}><option value="">exp…</option>{experiments.map(x => <option key={x.id} value={x.id}>{x.name.slice(0,18)}</option>)}</select>}
-        {contextType === "study"      && <select value={contextId} onChange={e => setContextId(e.target.value)} style={inSel}><option value="">study…</option>{studies.map(s => <option key={s.id} value={s.id}>{s.name.slice(0,18)}</option>)}</select>}
-        <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 4 }}>
-          <div style={{ width: 40, height: 3, background: "#1e293b", borderRadius: 2 }}>
+        {contextType === "corpus"     && <select value={contextId} onChange={e => setContextId(e.target.value)} style={inSel}><option value="">corpus...</option>{corpora.map(c => <option key={c.id} value={c.id}>{c.name.slice(0,18)}</option>)}</select>}
+        {contextType === "experiment" && <select value={contextId} onChange={e => setContextId(e.target.value)} style={inSel}><option value="">exp...</option>{experiments.map(x => <option key={x.id} value={x.id}>{x.name.slice(0,18)}</option>)}</select>}
+        {contextType === "study"      && <select value={contextId} onChange={e => setContextId(e.target.value)} style={inSel}><option value="">study...</option>{studies.map(s => <option key={s.id} value={s.id}>{s.name.slice(0,18)}</option>)}</select>}
+        <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 3 }}>
+          <div style={{ width: 32, height: 3, background: "#1e293b", borderRadius: 2 }}>
             <div style={{ height: "100%", width: `${ctxPct}%`, background: ctxPct > 90 ? "#ef4444" : ctxPct > 75 ? "#f59e0b" : "#34d399", borderRadius: 2 }} />
           </div>
-          <button onClick={() => setMessages([])} style={{ border: "none", background: "none", color: "#64748b", cursor: "pointer", fontSize: 10 }}>🗑</button>
-          <button onClick={() => setDocked(false)} title="Undock" style={{ border: "none", background: "none", color: "#64748b", cursor: "pointer", fontSize: 10 }}>⊞</button>
+          {messages.length > 0 && (
+            <button onClick={copyAll} title="Copy all" style={{ border: "none", background: "none", color: "#64748b", cursor: "pointer", fontSize: 9, padding: "0 2px" }}>&#x23E9;</button>
+          )}
+          <button onClick={() => setMessages([])} title="Clear chat" style={{ border: "none", background: "none", color: "#64748b", cursor: "pointer", fontSize: 9 }}>&#x1F5D1;</button>
+          <button onClick={() => setDocked(false)} title="Undock" style={{ border: "none", background: "none", color: "#64748b", cursor: "pointer", fontSize: 9 }}>&#x229E;</button>
         </div>
       </div>
 
+      {/* Messages */}
       <div style={{ flex: 1, overflowY: "auto", padding: "4px 8px", display: "flex", flexDirection: "column", gap: 5 }}>
-        {messages.length === 0 && <div style={{ color: "#475569", fontSize: 10, fontStyle: "italic", padding: "8px 0" }}>Ask Glossa AI anything…</div>}
-        {messages.map((msg) => (
-          <div key={msg.id}>
-            <div style={{ display: "flex", gap: 4, alignItems: "flex-start", flexDirection: msg.role === "user" ? "row-reverse" : "row" }}>
-              <div style={{ padding: "4px 8px", borderRadius: 5, fontSize: 11, lineHeight: 1.5, maxWidth: "85%", background: msg.role === "user" ? "#1e3a5f" : msg.error ? "#450a0a" : "#1e293b", color: msg.role === "user" ? "#e2e8f0" : msg.error ? "#fca5a5" : "#cbd5e1" }}>
-                {msg.loading ? <span style={{ color: "#475569" }}>{"\u2728"}…</span>
-                  : msg.role === "user" ? <span style={{ whiteSpace: "pre-wrap" }}>{msg.content}</span>
-                  : <div dangerouslySetInnerHTML={{ __html: renderMd(msg.content) }} />}
+        {messages.length === 0 && <div style={{ color: "#475569", fontSize: 10, fontStyle: "italic", padding: "8px 0" }}>Ask Glossa AI anything...</div>}
+        {messages.map((msg) => {
+          // Check if content has a [NAVIGATE:view] prefix for post-action links
+          const navMatch = msg.content.match(/^\[NAVIGATE:([^\]]+)\]/);
+          const navView = navMatch ? navMatch[1] : null;
+          const displayContent = navView ? msg.content.slice(navMatch![0].length) : msg.content;
+          return (
+            <div key={msg.id}>
+              <div style={{ display: "flex", gap: 4, alignItems: "flex-start", flexDirection: msg.role === "user" ? "row-reverse" : "row" }}>
+                <div style={{ padding: "4px 8px", borderRadius: 5, fontSize: 11, lineHeight: 1.5, maxWidth: "85%", background: msg.role === "user" ? "#1e3a5f" : msg.error ? "#450a0a" : "#1e293b", color: msg.role === "user" ? "#e2e8f0" : msg.error ? "#fca5a5" : "#cbd5e1" }}>
+                  {msg.loading
+                    ? <span style={{ color: "#475569" }}>&#x2728;...</span>
+                    : msg.role === "user"
+                      ? <span style={{ whiteSpace: "pre-wrap" }}>{displayContent}</span>
+                      : <div dangerouslySetInnerHTML={{ __html: renderMd(displayContent) }} />
+                  }
+                </div>
               </div>
+              {/* Timestamp */}
+              {!msg.loading && (
+                <div style={{ fontSize: 9, color: "#334155", paddingLeft: msg.role === "user" ? 0 : 4,
+                              textAlign: msg.role === "user" ? "right" : "left", marginTop: 1 }}>
+                  {fmtTime(msg.timestamp)}
+                  {navView && (
+                    <button
+                      onClick={() => navigateTo(navView)}
+                      style={{ marginLeft: 6, padding: "0px 5px", background: "#1e3a5f", border: "none",
+                               borderRadius: 3, color: "#60a5fa", cursor: "pointer", fontSize: 9 }}>
+                      View {navView} {"->"}
+                    </button>
+                  )}
+                </div>
+              )}
+              {/* Action cards */}
+              {!msg.loading && (msg.actions ?? []).map((action, ai) => (
+                <ActionCard key={ai} action={action}
+                  status={(msg.actionStates ?? [])[ai] ?? "pending"}
+                  onApprove={() => handleInlineAction(msg, ai, action, true)}
+                  onCancel={() => handleInlineAction(msg, ai, action, false)}
+                  onAutoApproveAll={() => {
+                    localStorage.setItem(AUTO_APPROVE_KEY, "true");
+                    window.dispatchEvent(new CustomEvent("glossa:auto_approve_changed"));
+                    (msg.actions ?? []).forEach((a, i) => {
+                      if (((msg.actionStates ?? [])[i] ?? "pending") === "pending")
+                        handleInlineAction(msg, i, a, true);
+                    });
+                  }}
+                />
+              ))}
             </div>
-            {!msg.loading && (msg.actions ?? []).map((action, ai) => (
-              <ActionCard key={ai} action={action}
-                status={(msg.actionStates ?? [])[ai] ?? "pending"}
-                onApprove={() => handleInlineAction(msg, ai, action, true)}
-                onCancel={() => handleInlineAction(msg, ai, action, false)}
-                onAutoApproveAll={() => {
-                  localStorage.setItem(AUTO_APPROVE_KEY, "true");
-                  window.dispatchEvent(new CustomEvent("glossa:auto_approve_changed"));
-                  (msg.actions ?? []).forEach((a, i) => {
-                    if (((msg.actionStates ?? [])[i] ?? "pending") === "pending")
-                      handleInlineAction(msg, i, a, true);
-                  });
-                }}
-              />
-            ))}
-          </div>
-        ))}
+          );
+        })}
         <div ref={bottomRef} />
       </div>
 
+      {/* Input bar */}
       <div style={{ display: "flex", gap: 4, padding: "4px 8px", borderTop: "1px solid #1e293b", flexShrink: 0, alignItems: "flex-end" }}>
-        <button onClick={() => fileInputRef.current?.click()} style={{ background: "#1e293b", border: "none", color: "#64748b", cursor: "pointer", fontSize: 11, padding: "0 4px", borderRadius: 3, flexShrink: 0, marginBottom: 1 }}>📎</button>
+        <button onClick={() => fileInputRef.current?.click()} style={{ background: "#1e293b", border: "none", color: "#64748b", cursor: "pointer", fontSize: 10, padding: "0 4px", borderRadius: 3, flexShrink: 0, height: 26, lineHeight: "26px" }}>&#x1F4CE;</button>
         <input ref={fileInputRef} type="file" accept=".txt,.md,.csv,.json,.py" style={{ display: "none" }} onChange={handleFile} />
         <textarea
           ref={textareaRef2}
@@ -953,20 +1043,32 @@ export function ChatInline() {
             setInput(e.target.value);
             const el = e.target;
             el.style.height = "auto";
-            el.style.height = Math.min(el.scrollHeight, 120) + "px";
+            el.style.height = Math.min(el.scrollHeight, 100) + "px";
           }}
           onKeyDown={e => {
             if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); }
           }}
-          placeholder="Ask anything… (Enter · Shift+Enter for newline)"
+          placeholder="Ask anything... (Enter | Shift+Enter = newline)"
           rows={1}
-          style={{ flex: 1, background: "#1e293b", border: "none", color: "#e2e8f0", fontSize: 11, padding: "3px 6px", borderRadius: 3, outline: "none", resize: "none", fontFamily: "inherit", lineHeight: 1.5, overflowY: "hidden", minHeight: 24, maxHeight: 120 }}
+          style={{ flex: 1, background: "#1e293b", border: "none", color: "#e2e8f0", fontSize: 11,
+                   padding: "4px 6px", borderRadius: 3, outline: "none", resize: "none",
+                   fontFamily: "inherit", lineHeight: 1.5, overflowY: "hidden",
+                   minHeight: 26, maxHeight: 100 }}
           disabled={busy}
         />
-        <button onClick={() => send()} disabled={busy || !input.trim()}
-          style={{ padding: "2px 8px", background: "#7c3aed", border: "none", borderRadius: 3, color: "#fff", cursor: "pointer", fontSize: 10, flexShrink: 0, marginBottom: 1 }}>
-          {busy ? "…" : "Send"}
-        </button>
+        {busy
+          ? <button onClick={() => abortCtrlInline.current?.abort()}
+              style={{ padding: "0 8px", height: 26, background: "#dc2626", border: "none",
+                       borderRadius: 3, color: "#fff", cursor: "pointer", fontSize: 10, flexShrink: 0 }}>
+              Stop
+            </button>
+          : <button onClick={() => send()} disabled={!input.trim()}
+              style={{ padding: "0 8px", height: 26, background: input.trim() ? "#7c3aed" : "#1e293b",
+                       border: "none", borderRadius: 3, color: input.trim() ? "#fff" : "#475569",
+                       cursor: input.trim() ? "pointer" : "not-allowed", fontSize: 10, flexShrink: 0 }}>
+              Send
+            </button>
+        }
       </div>
     </div>
   );

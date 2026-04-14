@@ -5,7 +5,7 @@
  */
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
-  createText, deleteText,
+  createText, deleteText, detectCorpusDirection, getText,
   getCorpusConcordance, getCorpusEntropy, getCorpusExportUrl, getCorpusNgrams,
   listTexts, updateText,
   type ConcordanceResult, type EntropyResult, type NgramEntry, type TextResponse,
@@ -15,6 +15,18 @@ import { useAIChat } from "../hooks/useAIChat";
 import { useToast } from "../hooks/useToast";
 
 const CORPUS_TYPES = ["linguistic", "ancient", "dna", "code", "random", "other"];
+
+const DIR_OPTIONS = [
+  { value: "unknown", label: "Unknown" },
+  { value: "ltr",     label: "LTR — Left to Right" },
+  { value: "rtl",     label: "RTL — Right to Left" },
+] as const;
+
+const DIR_META: Record<string, { label: string; color: string; bg: string }> = {
+  ltr:     { label: "LTR", color: "#065f46", bg: "#d1fae5" },
+  rtl:     { label: "RTL", color: "#7c2d12", bg: "#fee2e2" },
+  unknown: { label: "?",   color: "#6b7280", bg: "#f3f4f6" },
+};
 const PAGE_SIZE = 200;
 
 function BarChart({ data, xKey, yKey, color = "#2563eb", height = 100 }: {
@@ -84,6 +96,8 @@ function CorpusCard({ text, onUpdated, onDeleted, allTexts }: {
   const [editType, setEditType] = useState(text.corpus_type);
   const [editContent, setEditContent] = useState(text.content.join(" "));
   const [editDelimiter, setEditDelimiter] = useState<"space" | "line" | "char">("space");
+  const [editDirection, setEditDirection] = useState(text.reading_direction ?? "unknown");
+  const [detectingDir, setDetectingDir] = useState(false);
   const [saving, setSaving] = useState(false);
 
   const [ngramN, setNgramN] = useState(2);
@@ -120,11 +134,25 @@ function CorpusCard({ text, onUpdated, onDeleted, allTexts }: {
       if (editDelimiter === "line") content = editContent.split("\n").map(s => s.trim()).filter(Boolean);
       else if (editDelimiter === "char") content = editContent.replace(/\s/g, "").split("");
       else content = editContent.trim().split(/\s+/).filter(Boolean);
-      const updated = await updateText(text.id, { name: editName.trim(), corpus_type: editType, content });
+      const updated = await updateText(text.id, { name: editName.trim(), corpus_type: editType, content, reading_direction: editDirection });
       onUpdated(updated);
       toast("Corpus updated", "success");
     } catch (e) { toast(e instanceof Error ? e.message : "Save failed", "error"); }
     finally { setSaving(false); }
+  };
+
+  const handleDetectDirection = async () => {
+    setDetectingDir(true);
+    try {
+      const result = await detectCorpusDirection(text.id);
+      setEditDirection(result.inferred_direction);
+      // Update the parent with the new reading_direction returned (if direction was updated in DB)
+      const updated = await getText(text.id);
+      onUpdated(updated);
+      const conf = result.confidence === "high" ? "high confidence" : result.confidence === "medium" ? "medium confidence" : "low confidence";
+      toast(`Detected: ${result.inferred_direction.toUpperCase()} (${conf}, ${result.n_words} words)`, "info");
+    } catch (e) { toast(e instanceof Error ? e.message : "Detection failed", "error"); }
+    finally { setDetectingDir(false); }
   };
 
   const [corpusCopied, setCorpusCopied] = useState(false);
@@ -215,6 +243,15 @@ function CorpusCard({ text, onUpdated, onDeleted, allTexts }: {
       <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 14px", background: "#fafafa", cursor: "pointer", borderBottom: expanded ? "1px solid #e5e7eb" : "none" }}
         onClick={() => setExpanded((x) => !x)}>
         <span style={{ fontSize: 11, padding: "1px 7px", borderRadius: 8, background: tc + "20", color: tc, fontWeight: 700, whiteSpace: "nowrap" }}>{text.corpus_type}</span>
+        {(() => {
+          const dm = DIR_META[text.reading_direction ?? "unknown"] ?? DIR_META.unknown;
+          return (
+            <span title={`Reading direction: ${text.reading_direction ?? "unknown"}`}
+              style={{ fontSize: 10, padding: "1px 6px", borderRadius: 8, background: dm.bg, color: dm.color, fontWeight: 700, whiteSpace: "nowrap", border: `1px solid ${dm.color}33` }}>
+              {dm.label}
+            </span>
+          );
+        })()}
         <span style={{ flex: 1, fontWeight: 600, fontSize: 13, color: "#111827" }}>{text.name}</span>
         <span style={{ fontSize: 11, color: "#9ca3af" }}>{text.content.length.toLocaleString()} tokens</span>
         <span style={{ fontSize: 11, color: "#9ca3af" }}>Σ {text.alphabet_size}</span>
@@ -276,6 +313,21 @@ function CorpusCard({ text, onUpdated, onDeleted, allTexts }: {
                   <select value={editType} onChange={(e) => setEditType(e.target.value)} style={inputStyle}>
                     {CORPUS_TYPES.map((t) => <option key={t}>{t}</option>)}
                   </select>
+                </div>
+                <div>
+                  <label style={labelStyle}>Reading Direction</label>
+                  <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                    <select value={editDirection} onChange={(e) => setEditDirection(e.target.value)} style={{ ...inputStyle, flex: 1 }}>
+                      {DIR_OPTIONS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+                    </select>
+                    <button onClick={handleDetectDirection} disabled={detectingDir} style={{ ...btnSecondary, whiteSpace: "nowrap" }}
+                      title="Auto-detect reading direction using Ashraf & Sinha (2018) positional entropy method">
+                      {detectingDir ? "Detecting…" : "🔍 Auto-detect"}
+                    </button>
+                  </div>
+                  <div style={{ fontSize: 10, color: "#6b7280", marginTop: 3 }}>
+                    Auto-detect applies the Ashraf &amp; Sinha (2018) positional entropy method. Lower entropy at word-end indicates the reading direction.
+                  </div>
                 </div>
                 <div><label style={labelStyle}>Tokenisation mode (for re-parsing)</label>
                   <select value={editDelimiter} onChange={(e) => setEditDelimiter(e.target.value as "space" | "line" | "char")} style={inputStyle}>
@@ -448,6 +500,7 @@ function UploadPanel({ onCreated }: { onCreated: (t: TextResponse) => void }) {
   const { toast } = useToast();
   const [name, setName] = useState(""); const [type, setType] = useState("linguistic");
   const [delimiter, setDelimiter] = useState<"space" | "line" | "char">("space");
+  const [direction, setDirection] = useState("unknown");
   const [rawContent, setRawContent] = useState(""); const [busy, setBusy] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
@@ -462,7 +515,7 @@ function UploadPanel({ onCreated }: { onCreated: (t: TextResponse) => void }) {
     const content = tokenise(rawContent);
     if (!content.length) { toast("Content cannot be empty", "warning"); return; }
     setBusy(true);
-    try { const t = await createText({ name: name.trim(), corpus_type: type, content }); onCreated(t); setName(""); setRawContent(""); toast("Corpus created", "success"); }
+    try { const t = await createText({ name: name.trim(), corpus_type: type, content, reading_direction: direction }); onCreated(t); setName(""); setRawContent(""); setDirection("unknown"); toast("Corpus created", "success"); }
     catch (e) { toast(e instanceof Error ? e.message : "Upload failed", "error"); }
     finally { setBusy(false); }
   };
@@ -489,6 +542,12 @@ function UploadPanel({ onCreated }: { onCreated: (t: TextResponse) => void }) {
         <div style={{ marginBottom: 8 }}>
           <label style={labelStyle}>Type</label>
           <select value={type} onChange={(e) => setType(e.target.value)} style={inputStyle}>{CORPUS_TYPES.map(t => <option key={t}>{t}</option>)}</select>
+        </div>
+        <div style={{ marginBottom: 8 }}>
+          <label style={labelStyle}>Reading Direction</label>
+          <select value={direction} onChange={(e) => setDirection(e.target.value)} style={inputStyle}>
+            {DIR_OPTIONS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+          </select>
         </div>
         <div style={{ marginBottom: 8 }}>
           <label style={labelStyle}>Tokenisation</label>

@@ -37,20 +37,23 @@ dev = [
     "httpx>=0.28,<1",
     "ruff>=0.9,<1",
 ]
-gpu = [
-    # CUDA-accelerated batch ops (Tier 3 acceleration).
-    # Install ONE of these depending on your CUDA version:
-    #   pip install glossa-lab[torch-cuda12]  (recommended for RTX 40xx / A100)
-    #   pip install glossa-lab[cupy]
+
+# GPU acceleration — install ONE of these via 'shell.cmd setup'
+# (auto-detected; see docs/GPU_SETUP.md and backend/scripts/install_gpu.py)
+#
+# NVIDIA CUDA 11.x:  pip install glossa-lab[gpu-cuda11]
+# NVIDIA CUDA 12.x:  pip install glossa-lab[gpu-cuda12]
+# NVIDIA CUDA 13.x:  pip install glossa-lab[gpu-cuda13]   ← recommended for RTX 4070+
+# AMD ROCm:          see docs/GPU_SETUP.md  (manual — pip install cupy-rocm-X-X)
+# CPU-only:          no extra needed (NumPy is in core deps)
+gpu-cuda11 = [
+    "cupy-cuda11x>=13,<15",
 ]
-torch-cuda12 = [
-    "torch>=2.2,<3",
+gpu-cuda12 = [
+    "cupy-cuda12x>=13,<15",
 ]
-torch-cuda11 = [
-    "torch>=2.0,<3",
-]
-cupy = [
-    "cupy-cuda12x>=13,<14",
+gpu-cuda13 = [
+    "cupy-cuda13x>=14,<16",
 ]
 
 [tool.hatch.build.targets.wheel]

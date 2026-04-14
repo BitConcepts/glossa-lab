@@ -144,17 +144,17 @@ def run_anchor_simulation(verbose: bool = True) -> dict[str, Any]:
         best_anchors = dict(ORDERED_ANCHORS[:n]) if n > 0 else {}
         correct_best, total, t_best = _beam(best_anchors)
 
-        # Strategy B: random anchors (N_RANDOM seeds)
-        rand_accs = []
-        for seed in range(N_RANDOM):
-            if n == 0:
-                rand_accs.append(correct_best / total)
-                break
-            rng  = random.Random(seed * 31 + 7)
-            rand_pairs = rng.sample(ALL_PAIRS, min(n, len(ALL_PAIRS)))
-            rand_dict  = dict(rand_pairs)
-            c, _, _t   = _beam(rand_dict)
-            rand_accs.append(c / total)
+        # Strategy B: random anchors (N_RANDOM seeds) — parallel execution
+        if n == 0:
+            rand_accs = [correct_best / total]
+        else:
+            from glossa_lab.experiments._parallel import run_seeds_parallel as _rsp_as
+            def _rand_beam(seed, _n=n, _ap=ALL_PAIRS, _tot=total, _bm=_beam):
+                rng = random.Random(seed * 31 + 7)
+                rd  = dict(rng.sample(_ap, min(_n, len(_ap))))
+                c, _, _t = _bm(rd)
+                return c / _tot
+            rand_accs = _rsp_as(_rand_beam, list(range(N_RANDOM)))
 
         rm = _mean(rand_accs)
         rs = _std(rand_accs)

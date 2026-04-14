@@ -532,6 +532,13 @@ Key assets currently implemented. Reference when planning new experiments or cor
 | `dravidian.py` | Tamil/Dravidian | large | Tier 5 comparison LM |
 | `linear_b_language.py` | Mycenaean Greek | — | Sign inventory for Tier 4 |
 | `indus_public_corpus.py` | Indus Script | 14,213 | Primary research target |
+| `geez/geez.py` | Geez/Ethiopic | ~80K syllabic | Fully deciphered; anchor-convergence benchmark; provided by Dr. Fuls |
+
+### Shared experiment utilities (`backend/glossa_lab/experiments/`)
+
+| Module | Purpose |
+|---|---|
+| `_parallel.py` | `run_seeds_parallel()` — ThreadPoolExecutor for SA seeds; `compute_device_label()` for GPU/CPU detection. ALL seed loops MUST use this. |
 
 ### AI capabilities (`backend/glossa_lab/api/ai_tools.py`)
 
@@ -790,6 +797,87 @@ The graph runner must dispatch independent nodes to the thread/process pool simu
 | Corpus generation (N instances) | ProcessPoolExecutor per instance |
 | Bigram scoring (BigramScorer) | Already vectorised via numpy/cupy |
 | Graph node execution | Parallel across independent nodes |
+
+---
+
+## EXPERIMENT / STUDY UI-FIRST POLICY (H12)
+
+> Every experiment must be runnable from the Glossa Lab UI. No exceptions.
+
+### H12.1 — ExperimentBase required
+
+ALL Python experiment files in `backend/glossa_lab/experiments/` MUST define at
+least one class that inherits from `glossa_lab.experiment_base.ExperimentBase`
+and sets `id`, `name`, `category`, `description`, and `estimated_time`.
+
+Standalone runner scripts that bypass `ExperimentBase` are **forbidden**.
+If a script exists for legacy reasons, it MUST be wrapped in an ExperimentBase
+subclass before new experiments are added to the same file.
+
+### H12.2 — params_schema required for configurable experiments
+
+Any experiment with configurable parameters MUST define `params_schema` as a
+JSON Schema dict so the UI can render form controls for those parameters.
+
+### H12.3 — run_cli() for terminal execution
+
+When an experiment is run from the terminal, it MUST use `ExperimentBase.run_cli()`
+or `CliReporter` so the job appears in the Jobs panel and reports are saved to
+`reports/`. Plain `python my_experiment.py` is only acceptable as a convenience
+wrapper that calls `run_cli()` internally.
+
+Correct terminal usage pattern:
+```python
+if __name__ == "__main__":
+    MyExperiment().run_cli()
+```
+
+### H12.4 — Parallel seeds mandatory
+
+All SA-based experiments that loop over multiple seeds MUST use
+`run_seeds_parallel()` from `glossa_lab.experiments._parallel` instead of a plain
+`for seed in range(N):` loop. This is mandatory per H10.2.
+
+Pattern:
+```python
+from glossa_lab.experiments._parallel import run_seeds_parallel
+
+def _one_seed(seed, cipher_tokens, lm, anchors):
+    from glossa_lab.pipelines.decipher import decipher
+    return decipher(..., seed=seed, ...).get("proposed_mapping", {})
+
+mappings = run_seeds_parallel(_one_seed, seeds=[1,2,3,4,5], cipher_tokens=..., lm=..., anchors=...)
+```
+
+### H12.5 — BigramScorer fast path
+
+SA-based experiments MUST NOT set `ocp_weight > 0` or `use_word_bigrams=True`
+unless those features are essential to the scientific question. Enabling these
+bypasses the numpy/cupy BigramScorer fast path and can cause 50-200x slowdown.
+Document any deliberate bypass with a comment explaining why.
+
+---
+
+## COMPUTE DEVICE REPORTING (H13)
+
+> All jobs MUST report their compute device. The UI MUST display it.
+
+### H13.1 — GPU/CPU detection
+
+Every experiment that runs compute-intensive work MUST detect and log the compute
+device at startup using `compute_device_label()` from
+`glossa_lab.experiments._parallel`.
+
+### H13.2 — Job params include compute device
+
+When `CliReporter` registers a job, it automatically includes `compute_device`
+and `compute_device_label` in the job params. Experiments that call `run_cli()`
+inherit this automatically.
+
+### H13.3 — UI badge mandatory
+
+The Jobs panel MUST display a GPU/CPU badge (⚡ GPU / ⚙️ CPU) for every job that
+has `compute_device` in its params. This is implemented in `JobsView.tsx`.
 
 ---
 

@@ -1,0 +1,10 @@
+{
+  "total_tokens": 56706,
+  "inventory_size": 153,
+  "shannon_entropy_h1": 6.0715,
+  "n_bigrams": 5872,
+  "bigram_coverage_pct": 99.88,
+  "mean_tokens_per_sign": 370.6,
+  "min_tokens_per_sign": 2.0,
+  "ocp_rate": 0.0048
+}

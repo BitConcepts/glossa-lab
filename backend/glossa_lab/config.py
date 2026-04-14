@@ -22,7 +22,7 @@ class Settings:
     """Application settings with platform-aware defaults."""
 
     # Core
-    host: str = "*********"
+    host: str = "127.0.0.1"
     port: int = 8001
     dev_mode: bool = True
     log_level: str = "INFO"   # DEBUG generates massive aiosqlite spam; use GLOSSA_LOG_LEVEL=DEBUG to override

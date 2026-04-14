@@ -36,7 +36,11 @@ _BACKEND_DIR = _REPO_ROOT / "backend"
 def _active_log_file() -> Path:
     """Return the most-recently-written glossa.log we can find.
 
-    Search order (highest precedence first):
+    Selects the **most recently modified** candidate file, which is the
+    one currently being written to.  Using file size was wrong: a stale
+    rotated file from a previous run can be much larger than the new log.
+
+    Search candidates (in priority order for fallback when none exists):
       1. settings.log_dir / glossa.log        — Python logging output (primary)
       2. {repo_root}/logs / glossa.log         — installed / tray mode
       3. {backend_dir}/logs / glossa.log       — dev mode launched from backend/
@@ -50,11 +54,13 @@ def _active_log_file() -> Path:
         _BACKEND_DIR / "logs" / "glossa.log",
         _BACKEND_DIR / "logs" / "backend.log",
     ]
-    # Pick the largest existing file (most content = most likely the active one)
-    existing = [(c.stat().st_size, c) for c in candidates if c.exists()]
+    # Pick the most-recently modified file: newest mtime = actively written now.
+    # (Size is NOT a valid proxy — a stale multi-MB rotated log beats a fresh
+    # 10-line current log and causes the UI to show days-old entries.)
+    existing = [(c.stat().st_mtime, c) for c in candidates if c.exists()]
     if existing:
         return max(existing)[1]
-    # Nothing exists yet — return the settings path so it auto-picks up when created
+    # Nothing exists yet — return the primary path so it picks up when created
     return candidates[0]
 
 # ── Persistent shell singleton ───────────────────────────────────────────

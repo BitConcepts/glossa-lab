@@ -1,0 +1,140 @@
+{
+  "id": "geez_decipher",
+  "name": "Geez Syllabic Decipherment (Anchor Convergence)",
+  "description": "Split Geez Genesis corpus 75/25. Build syllabic LM from training set. Run SA decipherment (5 seeds, GPU) on test set. Compute consistency. Use to validate anchor-amplification: add anchors via params.anchors.",
+  "auto_migrated": true,
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "Geez Genesis",
+        "params": {
+          "corpus": "geez"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 200
+      }
+    },
+    {
+      "id": "split",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CorpusSplitter",
+        "label": "75/25 Split",
+        "params": {
+          "train_ratio": 0.75
+        }
+      },
+      "position": {
+        "x": 300,
+        "y": 200
+      }
+    },
+    {
+      "id": "lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "LMBuilder",
+        "label": "Syllabic LM",
+        "params": {}
+      },
+      "position": {
+        "x": 540,
+        "y": 100
+      }
+    },
+    {
+      "id": "decipher",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA (5 seeds, GPU)",
+        "params": {
+          "n_seeds": 5,
+          "surjective": false,
+          "ocp_weight": 0.0
+        }
+      },
+      "position": {
+        "x": 540,
+        "y": 300
+      }
+    },
+    {
+      "id": "cons",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConsistencyScorer",
+        "label": "Consistency",
+        "params": {}
+      },
+      "position": {
+        "x": 780,
+        "y": 300
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Results",
+        "params": {
+          "filename": "geez_decipher_graph.json"
+        }
+      },
+      "position": {
+        "x": 1020,
+        "y": 300
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "split",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "split",
+      "target": "lm",
+      "sourcePort": "train_sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "split",
+      "target": "decipher",
+      "sourcePort": "test_sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e4",
+      "source": "lm",
+      "target": "decipher",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e5",
+      "source": "decipher",
+      "target": "cons",
+      "sourcePort": "all_mappings",
+      "targetPort": "all_mappings"
+    },
+    {
+      "id": "e6",
+      "source": "cons",
+      "target": "out",
+      "sourcePort": "consistency_per_sign",
+      "targetPort": "data"
+    }
+  ]
+}

@@ -13,11 +13,21 @@ This reveals sign communities that may correspond to:
 
 from __future__ import annotations
 
+import logging
 from collections import Counter, defaultdict
 from typing import Any
 
 from glossa_lab.database import get_db
 from glossa_lab.engine import register_pipeline
+
+_log = logging.getLogger("glossa_lab.pipelines.cooccurrence")
+
+# GPU/numpy detection (H10.1)
+try:
+    import numpy as _np
+    _HAS_NUMPY = True
+except ImportError:
+    _HAS_NUMPY = False
 
 
 def build_cooccurrence_network(
@@ -44,15 +54,31 @@ def build_cooccurrence_network(
     node_set = set(nodes)
 
     # Count co-occurrences within window
+    # Numpy fast path: encode symbols as integers then use vectorized diff (H10.1)
     edges: Counter[tuple[str, str]] = Counter()
-    for i in range(len(symbols)):
-        if symbols[i] not in node_set:
-            continue
-        for j in range(i + 1, min(i + window + 1, len(symbols))):
-            if symbols[j] not in node_set:
+    if _HAS_NUMPY and len(symbols) > 500:
+        idx_map = {s: i for i, s in enumerate(nodes)}
+        encoded = _np.array([idx_map.get(s, -1) for s in symbols], dtype=_np.int32)
+        valid   = encoded >= 0
+        pos     = _np.where(valid)[0]
+        for k in range(1, window + 1):
+            left_pos  = pos[pos + k < len(symbols)]
+            right_pos = left_pos + k
+            right_valid = encoded[right_pos] >= 0
+            lp = left_pos[right_valid]
+            rp = right_pos[right_valid]
+            for li, ri in zip(encoded[lp].tolist(), encoded[rp].tolist()):
+                a, b = (nodes[min(li, ri)], nodes[max(li, ri)])
+                edges[(a, b)] += 1
+    else:
+        for i in range(len(symbols)):
+            if symbols[i] not in node_set:
                 continue
-            pair = tuple(sorted([symbols[i], symbols[j]]))
-            edges[pair] += 1  # type: ignore[arg-type]
+            for j in range(i + 1, min(i + window + 1, len(symbols))):
+                if symbols[j] not in node_set:
+                    continue
+                pair = tuple(sorted([symbols[i], symbols[j]]))
+                edges[pair] += 1  # type: ignore[arg-type]
 
     # Filter edges
     edge_list = [
@@ -145,7 +171,15 @@ def _label_propagation(
 
 @register_pipeline("cooccurrence")
 async def run_cooccurrence(params: dict[str, Any]) -> dict[str, Any]:
-    """Pipeline entry point. Params: {text_id, window, min_freq, top_n_nodes}."""
+    """Pipeline entry point. Params: {text_id, window, min_freq, top_n_nodes}.
+
+    Uses numpy-vectorized co-occurrence counting for corpora >500 tokens (H10.1).
+    """
+    try:
+        from glossa_lab.experiments._parallel import compute_device_label  # noqa: PLC0415
+        _log.info("cooccurrence device: %s", compute_device_label())
+    except Exception:  # noqa: BLE001
+        pass
     text_id = params.get("text_id")
     if not text_id:
         raise ValueError("Missing required param: text_id")

@@ -51,9 +51,7 @@ def compute_block_entropies(
 ) -> dict[str, Any]:
     """Compute block entropies for N=1..max_n.
 
-    Returns dict with alphabet_size, symbol_count, estimator, and
-    block_entropies list. Each entry has n, raw (nats), and normalized
-    (H_N / ln(L)).
+    Each n value is independent; they run in parallel via parallel_map (H10.2).
 
     Args:
         symbols: flat list of symbols.
@@ -64,17 +62,24 @@ def compute_block_entropies(
     L = len(alphabet)
     ln_L = math.log(L) if L > 1 else 1.0
 
-    entries = []
-    for n in range(1, max_n + 1):
-        raw = compute_block_entropy(symbols, n, estimator=estimator)
-        normalized = raw / ln_L if ln_L > 0 else 0.0
-        entries.append(
-            {
-                "n": n,
-                "raw_nats": round(raw, 6),
-                "normalized": round(normalized, 6),
-            }
+    # All n-values are independent — run in parallel (H10.2)
+    try:
+        from glossa_lab.experiments._parallel import parallel_map  # noqa: PLC0415
+        def _compute_n(n: int) -> dict:
+            raw = compute_block_entropy(symbols, n, estimator=estimator)
+            return {"n": n, "raw_nats": round(raw, 6),
+                    "normalized": round(raw / ln_L, 6) if ln_L > 0 else 0.0}
+        entries = sorted(
+            parallel_map(_compute_n, [(n,) for n in range(1, max_n + 1)]),
+            key=lambda x: x["n"]
         )
+    except Exception:  # noqa: BLE001
+        # Fallback: sequential
+        entries = []
+        for n in range(1, max_n + 1):
+            raw = compute_block_entropy(symbols, n, estimator=estimator)
+            entries.append({"n": n, "raw_nats": round(raw, 6),
+                            "normalized": round(raw / ln_L, 6) if ln_L > 0 else 0.0})
 
     return {
         "alphabet_size": L,
@@ -86,7 +91,17 @@ def compute_block_entropies(
 
 @register_pipeline("block_entropy")
 async def run_block_entropy(params: dict[str, Any]) -> dict[str, Any]:
-    """Pipeline entry point. Params: {text_id: str, max_n: int (default 6)}."""
+    """Pipeline entry point. Params: {text_id: str, max_n: int (default 6)}.
+
+    Computes H_N for N=1..max_n in parallel (H10 compliant).
+    """
+    import logging  # noqa: PLC0415
+    _log = logging.getLogger("glossa_lab.pipelines.block_entropy")
+    try:
+        from glossa_lab.experiments._parallel import compute_device_label  # noqa: PLC0415
+        _log.info("block_entropy device: %s", compute_device_label())
+    except Exception:  # noqa: BLE001
+        pass
     text_id = params.get("text_id")
     if not text_id:
         raise ValueError("Missing required param: text_id")

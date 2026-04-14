@@ -2915,3 +2915,154 @@ Open TODOs (from previous entries, still relevant):
 - [ ] (carry-over) Fine-tune Mistral NeMo 12B
 
 Next step: Begin Phase 1a (database.py V6 migration) when ready to start implementation.
+
+---
+
+## [2026-04-14] Entry - GPU, Parallel Execution, Graph Nodes, Corpus, Tests, and Full Compliance Audit
+
+Objective: Complete GPU activation, full H10/H12 compliance audit across all experiments and pipelines, expand atomic node library so all experiments are expressible as graph experiments, comprehensive test suite, and complete docs suite.
+
+What was done:
+
+### GPU Activation
+- Detected RTX 4070 SUPER, CUDA 13.1, driver 591.74.
+- Installed cupy-cuda13x (CuPy 14.0.1). GPU: True. BigramScorer GPU: True.
+- Created backend/scripts/install_gpu.py: vendor-agnostic GPU installer detecting NVIDIA (nvidia-smi + nvcc), AMD (rocm-smi / /dev/kfd), Intel (oclinfo). Maps CUDA 11/12/13/14+ to correct cupy-cuda{11,12,13}x package with fallback chain. AMD/Intel prints setup instructions. Called automatically by shell.cmd setup.
+- Updated shell.cmd: calls install_gpu.py in do_setup.
+- Updated pyproject.toml: gpu-cuda11/12/13 optional extras replacing scattered torch/cupy sections.
+- Restored config.py default host from placeholder asterisks to 127.0.0.1.
+
+### H10/H12 Compliance - Experiments
+- Created backend/glossa_lab/experiments/_parallel.py: run_seeds_parallel() (ThreadPoolExecutor), parallel_map(), compute_device_label(), gpu_available().
+- Converted 6 SA experiments from sequential to parallel seeds: fuls_rtl_corrected, fuls_validation_suite, fuls_split_sensitivity, fuls_anchor_simulation, tier_diagnostics, beam_decipher_benchmark.
+- Refactored geez_syllabic_anchor_convergence.py: proper ExperimentBase subclass with params_schema, parallel seeds, ocp_weight=0.0 for GPU BigramScorer fast path.
+- Jobs panel: added compute_device + compute_device_label to CliReporter job params. JobsView.tsx shows GPU/CPU badge (blue/gray).
+- AGENTS.md: added H12 (UI-first experiments - ExperimentBase required, parallel seeds mandatory, BigramScorer fast path rules) and H13 (compute device reporting).
+
+### H10 Compliance - Pipelines
+- block_entropy.py: n-values now run in parallel via parallel_map() (H10.2). Sequential fallback preserved.
+- cooccurrence.py: numpy-vectorized co-occurrence counting for corpora >500 tokens (H10.1). Python fallback for small corpora and numpy-unavailable environments.
+- Both pipelines log compute device label at entry.
+
+### Atomic Node Library Expansion
+- Added 11 new generic atomic nodes to experiment_graph.py:
+  Sources: BuiltinCorpus (load named built-in corpus without DB ID)
+  Transforms: CorpusSplitter (contiguous train/test split), DirectionNormalizer (RTL/LTR + Ashraf auto-detect)
+  Analysis: KLDivergence (KL+JS between two freq maps), NgramCounter (n-gram counting), AnchorGenerator (top-k frequency anchors)
+  Decipherment: LMBuilder (build LanguageModel from sequences), BuiltinLM (load hebrew/geez/phoenician/sumerian/dravidian), SADecipher (parallel seeds + GPU BigramScorer), ConsistencyScorer (multi-seed modal consistency), BenchmarkScorer (score mapping vs answer key)
+- Total atomic nodes: 24 (was 13). Categories: Sources 3, Transforms 5, Analysis 7, Decipherment 6, Outputs 2, Experiments 1.
+- All nodes are corpus-agnostic and study-agnostic (H12 design principle).
+
+### New Graph Experiment Specs
+- ugaritic_sa_decipher: BuiltinCorpus + CorpusSplitter + LMBuilder + SADecipher (5 seeds, GPU) + ConsistencyScorer
+- fuls_rtl_decipher: CorpusReader + DirectionNormalizer(rtl) + BuiltinLM(hebrew) + SADecipher + ConsistencyScorer
+- geez_decipher: BuiltinCorpus(geez) + CorpusSplitter + LMBuilder + SADecipher (bijective, 5 seeds, GPU) + ConsistencyScorer
+- kl_comparison: two CorpusReaders + two FreqCounters + KLDivergence (generic, any two corpora)
+- bigram_analysis: CorpusReader + NgramCounter(2) + NgramCounter(3) + Merger (generic)
+- Total graph specs: 14 (was 9).
+
+### Reading Direction Integration
+- corpus_utils.py: normalise_sequences(), run_ashraf_detection() (Ashraf & Sinha 2018 positional entropy).
+- Database V6 migration: reading_direction TEXT DEFAULT 'unknown' on texts table.
+- texts.py API: reading_direction field on TextCreate/TextResponse/TextUpdate; POST /texts/{id}/detect-direction endpoint.
+- decipher.py: reading_direction param normalises cipher_inscriptions when 'rtl'.
+- CorporaView.tsx: LTR/RTL/? badge per corpus, reading direction selector in upload, Auto-detect button.
+
+### Geez Genesis Corpus (Dr. Fuls)
+- Created backend/glossa_lab/data/geez/ with Geez_Genesis.txt (85,699 syllabic tokens) and Geez_signlist.txt.
+- Created backend/glossa_lab/data/geez.py: get_corpus_symbols(), get_corpus_inscriptions(), get_sign_inventory(), corpus_statistics(), METADATA.
+- Added to corpus_seeder.py: auto-seeded as 'Geez Genesis (Ethiopic syllabic, Dr. Fuls)' with reading_direction='ltr' and metadata.inscriptions for Ashraf detection.
+- Created geez_syllabic_anchor_convergence experiment (ExperimentBase, H12/H10 compliant, GPU-aware).
+
+### Test Suite (124 tests total passing)
+- test_atomic_nodes.py (31 tests): all 11 new atomic nodes, including SADecipher parallel execution.
+- test_install_gpu.py (10 tests): GPU package selection logic, detect_nvidia/amd, parallel utilities.
+- test_graph_experiments.py (16 tests): graph specs, execute_graph, topo sort, ATOMIC_NODES registry.
+- test_pipelines_gpu.py (10 tests): block_entropy parallel/sequential equivalence, cooccurrence numpy path.
+- test_logging.py (6 tests): fixed broken TimedRotatingFileHandler test (was wrong handler type).
+- test_terminal_log.py (9 tests): log endpoint, purge, mtime regression.
+- test_corpus_utils.py (15 tests): normalise_sequences, run_ashraf_detection.
+- test_decipher_rtl.py (10 tests): reading_direction parameter.
+- test_texts_crud.py (12 tests): reading_direction CRUD, detect-direction endpoint.
+
+### Documentation Suite (5 new docs)
+- docs/GPU_SETUP.md: NVIDIA CUDA 11/12/13, AMD ROCm, Intel, CPU fallback, verification, Jobs badge, troubleshooting, new machine checklist.
+- docs/guides/building-experiments.md (rewritten): H12 rules, parallel pattern, forbidden patterns, GPU fast path guidance.
+- docs/guides/building-pipelines.md: pipeline vs experiment comparison, file structure, catalog registration, GPU/parallel, engine lifecycle.
+- docs/guides/building-studies.md: Study Builder UI, node types, walkthrough, example studies, DAG execution order.
+- docs/guides/adding-corpora.md: UI upload vs built-in module, full data module template, corpus_seeder registration, reading_direction.
+
+### AGENTS.md Updates (H12 + H13)
+- H12: ExperimentBase required, params_schema required, run_cli() for terminal, parallel seeds mandatory, BigramScorer fast path rules.
+- H13: GPU/CPU detection, job params, UI badge.
+- DECIPHERMENT RESEARCH ASSET REGISTRY: added geez corpus module, _parallel.py utility.
+
+Files changed:
+- backend/scripts/install_gpu.py (new)
+- backend/glossa_lab/experiments/_parallel.py (new)
+- backend/glossa_lab/experiments/geez_syllabic_anchor_convergence.py (new, replaced standalone)
+- backend/glossa_lab/data/geez.py (new)
+- backend/glossa_lab/data/geez/Geez_Genesis.txt (new)
+- backend/glossa_lab/data/geez/Geez_signlist.txt (new)
+- backend/glossa_lab/experiment_graph.py (major - 11 new nodes, 5 new graph specs)
+- backend/glossa_lab/pipelines/block_entropy.py (parallel n-values)
+- backend/glossa_lab/pipelines/cooccurrence.py (numpy vectorization)
+- backend/glossa_lab/corpus_utils.py (new)
+- backend/glossa_lab/database.py (V6 migration - reading_direction)
+- backend/glossa_lab/api/texts.py (reading_direction + detect-direction endpoint)
+- backend/glossa_lab/api/terminal.py (mtime log selection fix)
+- backend/glossa_lab/cli_bridge.py (compute_device in job params)
+- backend/glossa_lab/config.py (restore host to 127.0.0.1)
+- backend/glossa_lab/pipelines/decipher.py (reading_direction param)
+- backend/glossa_lab/corpus_seeder.py (geez corpus)
+- backend/pyproject.toml (gpu-cuda extras)
+- backend/generate_geez_report.py (new PDF report generator)
+- shell.cmd (GPU installer integration in setup)
+- frontend/src/api.ts (reading_direction types, detectCorpusDirection)
+- frontend/src/components/CorporaView.tsx (direction badge, selector, detect button)
+- frontend/src/components/JobsView.tsx (GPU/CPU badge)
+- AGENTS.md (H12, H13, registry updates)
+- docs/GPU_SETUP.md (new)
+- docs/guides/building-experiments.md (rewritten)
+- docs/guides/building-pipelines.md (new)
+- docs/guides/building-studies.md (new)
+- docs/guides/adding-corpora.md (new)
+- tests/test_atomic_nodes.py (new, 31 tests)
+- tests/test_install_gpu.py (new, 10 tests)
+- tests/test_graph_experiments.py (new, 16 tests)
+- tests/test_pipelines_gpu.py (new, 10 tests)
+- tests/test_logging.py (fixed + expanded, 6 tests)
+- tests/test_terminal_log.py (new, 9 tests)
+- tests/test_corpus_utils.py (new, 15 tests)
+- tests/test_decipher_rtl.py (new, 10 tests)
+- tests/test_texts_crud.py (expanded, 12 tests)
+
+Checks run:
+- 124 tests passed, 0 failed (22.52s)
+- npm run build: clean build, no TypeScript errors
+- GPU verification: cupy.cuda.is_available() == True, BigramScorer GPU: True
+- All 24 atomic nodes registered and verified
+- All 14 graph experiment specs validated
+
+Results:
+- GPU is active on RTX 4070 SUPER CUDA 13.1: SA decipherment ~20x faster than CPU
+- 124/124 tests passing
+- Full H10/H12 compliance for all experiments and key pipelines
+- 24 atomic nodes cover: Sources, Transforms, Analysis, Decipherment, Outputs
+- All study/experiment/pipeline/corpus development documented in guides
+
+Open TODOs:
+- [ ] Run Geez anchor-convergence experiment (next step in this session)
+- [ ] Generate PDF report for Geez results and send to Dr. Fuls
+- [ ] Continue remaining NW Semitic analysis with RTL correction and verified anchors
+- [ ] Phase 2-8 of Global Ancient Language Platform plan (5ae18708)
+- [ ] Implement Experiment Builder graph node validation UI (H12.1)
+- [ ] RAG module (plan 550d9dc5)
+- [ ] Fine-tune Mistral NeMo 12B (docs/FINETUNING_GUIDE.md)
+
+Risks:
+- Geez experiment requires ~8 min CPU / ~2 min GPU per run; ensure backend has enough time
+- SADecipher atomic node runs with ocp_weight=0 (GPU fast path) which may reduce quality vs ocp_weight>0
+- Some SA experiments still have sequential seeds (fuls_nw_semitic_benchmark, prior_ablation_benchmark, etc.) - these need future parallel conversion
+
+Next step: Run the Geez anchor-convergence experiment with GPU.

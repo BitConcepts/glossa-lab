@@ -21,44 +21,9 @@
   "kandles_confidence": 0.9523,
   "correct_mappings": [
     {
-      "opaque": "H17",
-      "sign": "s",
-      "proposed": "s"
-    },
-    {
-      "opaque": "H16",
-      "sign": "r",
-      "proposed": "r"
-    },
-    {
-      "opaque": "H03",
-      "sign": "G",
-      "proposed": "G"
-    },
-    {
-      "opaque": "H07",
-      "sign": "d",
-      "proposed": "d"
-    },
-    {
-      "opaque": "H00",
-      "sign": "'",
-      "proposed": "'"
-    },
-    {
-      "opaque": "H09",
-      "sign": "h",
-      "proposed": "h"
-    },
-    {
-      "opaque": "H15",
-      "sign": "q",
-      "proposed": "q"
-    },
-    {
-      "opaque": "H13",
-      "sign": "n",
-      "proposed": "n"
+      "opaque": "H01",
+      "sign": "C",
+      "proposed": "C"
     },
     {
       "opaque": "H06",
@@ -66,54 +31,19 @@
       "proposed": "b"
     },
     {
-      "opaque": "H10",
-      "sign": "k",
-      "proposed": "k"
-    },
-    {
-      "opaque": "H18",
-      "sign": "t",
-      "proposed": "t"
-    },
-    {
-      "opaque": "H02",
-      "sign": "E",
-      "proposed": "E"
-    },
-    {
-      "opaque": "H21",
-      "sign": "z",
-      "proposed": "z"
-    },
-    {
-      "opaque": "H20",
-      "sign": "y",
-      "proposed": "y"
-    },
-    {
-      "opaque": "H01",
-      "sign": "C",
-      "proposed": "C"
-    },
-    {
       "opaque": "H08",
       "sign": "g",
       "proposed": "g"
     },
     {
-      "opaque": "H05",
-      "sign": "T",
-      "proposed": "T"
+      "opaque": "H13",
+      "sign": "n",
+      "proposed": "n"
     },
     {
-      "opaque": "H19",
-      "sign": "w",
-      "proposed": "w"
-    },
-    {
-      "opaque": "H04",
-      "sign": "H",
-      "proposed": "H"
+      "opaque": "H17",
+      "sign": "s",
+      "proposed": "s"
     },
     {
       "opaque": "H14",
@@ -121,14 +51,84 @@
       "proposed": "p"
     },
     {
-      "opaque": "H12",
-      "sign": "m",
-      "proposed": "m"
+      "opaque": "H10",
+      "sign": "k",
+      "proposed": "k"
+    },
+    {
+      "opaque": "H21",
+      "sign": "z",
+      "proposed": "z"
+    },
+    {
+      "opaque": "H04",
+      "sign": "H",
+      "proposed": "H"
+    },
+    {
+      "opaque": "H20",
+      "sign": "y",
+      "proposed": "y"
+    },
+    {
+      "opaque": "H02",
+      "sign": "E",
+      "proposed": "E"
+    },
+    {
+      "opaque": "H18",
+      "sign": "t",
+      "proposed": "t"
+    },
+    {
+      "opaque": "H09",
+      "sign": "h",
+      "proposed": "h"
+    },
+    {
+      "opaque": "H07",
+      "sign": "d",
+      "proposed": "d"
+    },
+    {
+      "opaque": "H15",
+      "sign": "q",
+      "proposed": "q"
+    },
+    {
+      "opaque": "H05",
+      "sign": "T",
+      "proposed": "T"
+    },
+    {
+      "opaque": "H03",
+      "sign": "G",
+      "proposed": "G"
+    },
+    {
+      "opaque": "H16",
+      "sign": "r",
+      "proposed": "r"
     },
     {
       "opaque": "H11",
       "sign": "l",
       "proposed": "l"
+    },
+    {
+      "opaque": "H00",
+      "sign": "'",
+      "proposed": "'"
+    },
+    {
+      "opaque": "H19",
+      "sign": "w",
+      "proposed": "w"
+    },
+    {
+      "opaque": "H12",
+      "sign": "m",
+      "proposed": "m"
     }
   ],
   "wrong_mappings": [],

@@ -90,6 +90,10 @@ exit /b %E2E_EXIT%
 if exist "%REPO_ROOT%\tray\requirements.txt" (
     "%VENV_PYTHON%" -m pip install -r "%REPO_ROOT%\tray\requirements.txt"
 )
+REM Auto-detect GPU and install the right accelerator package (CuPy for NVIDIA, etc.)
+if exist "%REPO_ROOT%\backend\scripts\install_gpu.py" (
+    "%VENV_PYTHON%" "%REPO_ROOT%\backend\scripts\install_gpu.py"
+)
 if exist "%REPO_ROOT%\frontend\package.json" (
     pushd "%REPO_ROOT%\frontend"
     call npm install

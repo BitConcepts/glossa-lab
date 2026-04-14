@@ -7,7 +7,7 @@
  * - AI Chat tab appears when docked
  */
 import { useCallback, useEffect, useRef, useState } from "react";
-import { cancelJob, clearJobs, getEnvStatus, getLogStreamUrl, listJobs, runTerminalCommand, type EnvStatus, type JobResponse } from "../api";
+import { cancelJob, clearJobs, getEnvStatus, getLogStreamUrl, listJobs, purgeLog, runTerminalCommand, type EnvStatus, type JobResponse } from "../api";
 import { fmtDateTimeCompact } from "../dateFormat";
 import { ChatInline } from "./AIChatWindow";
 import { useAIChat } from "../hooks/useAIChat";
@@ -115,6 +115,12 @@ function LogPanel() {
           style={{ flex: 1, padding: "2px 6px", background: "#1e293b", border: "1px solid #334155", borderRadius: 3, fontSize: 11, color: "#e2e8f0", outline: "none" }}
         />
         {streaming && <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#16a34a", animation: "pulse 1.5s infinite", flexShrink: 0 }} />}
+        <button
+          onClick={async () => { await purgeLog().catch(() => {}); setLines([]); }}
+          title="Purge log file and clear display"
+          style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#f97316", cursor: "pointer", fontSize: 10 }}>
+          Purge
+        </button>
         <button onClick={() => setLines([])} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#94a3b8", cursor: "pointer", fontSize: 10 }}>Clear</button>
       </div>
       <div

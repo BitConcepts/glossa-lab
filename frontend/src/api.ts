@@ -1093,6 +1093,9 @@ export const getLogStreamUrl = (): string => `/api/v1/terminal/log/stream`;
 export const getLog = (lines = 200): Promise<{ lines: string[]; total_lines?: number; exists: boolean }> =>
   request("GET", `/terminal/log?lines=${lines}`);
 
+export const purgeLog = (): Promise<{ cleared: number; file: string }> =>
+  request("POST", "/terminal/log/purge");
+
 export const runTerminalCommand = (command: string, cwd?: string): Promise<Response> =>
   fetch(`${BASE}/terminal/run`, {
     method: "POST",

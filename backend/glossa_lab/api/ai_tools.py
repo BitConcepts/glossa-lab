@@ -943,6 +943,23 @@ async def execute_action(body: ActionExecuteRequest) -> dict[str, Any]:
     t = body.type
     p = body.params
 
+    # ── Safety: unknown types and malformed requests return 400, not 500 ──────
+    # Wrap entire handler so unhandled exceptions surface as descriptive errors.
+    try:
+        return await _execute_action_inner(t, p)
+    except HTTPException:
+        raise
+    except Exception as exc:  # noqa: BLE001
+        import logging as _log
+        _log.getLogger("glossa_lab").error("execute-action failed",
+                                            extra={"type": t, "error": str(exc)})
+        raise HTTPException(500, f"Action '{t}' raised an unexpected error: {exc}") from exc
+
+
+async def _execute_action_inner(t: str, p: dict) -> dict[str, Any]:  # noqa: PLR0912,PLR0915
+    """Inner handler for execute_action — raises HTTPException on all errors."""
+    from typing import Any as _Any  # already imported above but needed for linter
+
     # ── open_view — client-side navigation, nothing to do on server ────────────
     if t == "open_view":
         return {"ok": True, "navigate": p.get("view"), "summary": f"Navigating to {p.get('view', '?')}"}
@@ -1251,7 +1268,18 @@ async def execute_action(body: ActionExecuteRequest) -> dict[str, Any]:
         })
         return {"ok": True, "summary": f"Session summary '{title}' saved to notebooks.", "id": nb["id"]}
 
-    raise HTTPException(400, f"Unknown action type: '{t}'")
+    # ── Unknown action type — return 400 with helpful message ────────────────
+    known = [
+        "open_view", "run_experiment", "run_pipeline", "change_setting",
+        "generate_report", "create_hypothesis", "create_notebook",
+        "clear_jobs", "execute_script", "query_corpus", "compare_results",
+        "acquire_corpus", "summarize_session",
+    ]
+    raise HTTPException(
+        400,
+        f"Unknown action type: '{t}'. "
+        f"Valid types: {', '.join(known)}"
+    )
 
 
 # ── Streaming chat endpoint ──────────────────────────────────────────────────

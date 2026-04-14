@@ -1,0 +1,116 @@
+{
+  "id": "bigram_analysis",
+  "name": "Bigram Analysis",
+  "description": "Count bigram (n=2) and trigram (n=3) frequencies. Generic: works on any corpus. Use for language model quality assessment or sign co-occurrence patterns.",
+  "auto_migrated": true,
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CorpusReader",
+        "label": "Load Corpus",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 160
+      }
+    },
+    {
+      "id": "bigrams",
+      "type": "expNode",
+      "data": {
+        "atomicId": "NgramCounter",
+        "label": "Bigrams (n=2)",
+        "params": {
+          "n": 2
+        }
+      },
+      "position": {
+        "x": 300,
+        "y": 80
+      }
+    },
+    {
+      "id": "trigrams",
+      "type": "expNode",
+      "data": {
+        "atomicId": "NgramCounter",
+        "label": "Trigrams (n=3)",
+        "params": {
+          "n": 3
+        }
+      },
+      "position": {
+        "x": 300,
+        "y": 240
+      }
+    },
+    {
+      "id": "merger",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge Results",
+        "params": {}
+      },
+      "position": {
+        "x": 540,
+        "y": 160
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Report",
+        "params": {
+          "filename": "bigram_analysis.json"
+        }
+      },
+      "position": {
+        "x": 780,
+        "y": 160
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "bigrams",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "corpus",
+      "target": "trigrams",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "bigrams",
+      "target": "merger",
+      "sourcePort": "freq_map",
+      "targetPort": "a"
+    },
+    {
+      "id": "e4",
+      "source": "trigrams",
+      "target": "merger",
+      "sourcePort": "freq_map",
+      "targetPort": "b"
+    },
+    {
+      "id": "e5",
+      "source": "merger",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ]
+}

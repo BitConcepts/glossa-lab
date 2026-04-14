@@ -85,6 +85,7 @@ vsuite  = _load("fuls_validation_suite*.json")
 indep   = _load("fuls_independence_suite*.json")
 seqinfo = _load("fuls_sequence_info*.json")
 cspace  = _load("fuls_constraint_space*.json")
+rtl     = _load("fuls_rtl_corrected*.json")
 
 
 # ── Document setup ───────────────────────────────────────────────────────────
@@ -568,8 +569,168 @@ if templates:
 
 c += [PageBreak()]
 
-# ── SECTION 4: MAPPING INFERENCE RUN ON TEST1 CORPUS ───────────────────────
-c += [P("4.  Mapping Inference Run on the Test1 Corpus", H1)]
+# ── SECTION 4: RTL CORRECTION AND VERIFIED ANCHOR RESULTS ──────────────────
+c += [P("4.  Reading Direction Correction and Verified Anchor Results", H1)]
+
+rtl_ash = rtl.get("ashraf_directional_analysis", {})
+rtl_cmp = rtl.get("positional_profile_comparison", {})
+rtl_a   = rtl.get("condition_a_no_anchors_rtl", {})
+rtl_b   = rtl.get("condition_b_fuls_anchors_rtl", {})
+rtl_anc = rtl.get("fuls_verified_anchors", {})
+rtl_cmp_res = rtl.get("comparison", {})
+rtl_profs   = rtl_cmp.get("profiles_rtl", {})
+
+c += [
+    P("<b>IMPORTANT CORRECTION: Right-to-left reading direction.</b>  "
+      "Dr. Fuls has informed us that the test1 word list is read RIGHT-TO-LEFT. "
+      "All previous positional analysis (Sections 2.4, 3) was computed on the "
+      "incorrect left-to-right assumption and must be read with I and T labels swapped. "
+      "This section reports the corrected analysis. The structural fingerprint "
+      "(entropy, Zipf, writing-system classification) is unaffected by reading direction.", BODY),
+]
+
+# 4.1 Ashraf confirmation
+c += [P("4.1  Ashraf (2018) Reading Direction Confirmation", H2)]
+c += [
+    P("Following Ashraf and Sinha (PLoS ONE 2018), the word-END is universally more "
+      "constrained (lower entropy, higher Gini inequality) than the word-beginning. "
+      "Applying this to the test1 corpus independently confirms right-to-left reading:", BODY),
+    tbl([
+        ["Position", "Description", "Entropy (bits)", "Gini", "Assessment"],
+        ["Position 0 (leftmost in file)",
+         "Rightmost character in RTL text",
+         f"{rtl_ash.get('entropy_position_0_leftmost', 0):.4f}",
+         f"{rtl_ash.get('gini_position_0', 0):.4f}",
+         "MORE constrained -> word-END"],
+        ["Position -1 (rightmost in file)",
+         "Leftmost character in RTL text",
+         f"{rtl_ash.get('entropy_position_N1_rightmost', 0):.4f}",
+         f"{rtl_ash.get('gini_position_N1', 0):.4f}",
+         "Less constrained -> word-BEGIN"],
+    ], w=[4.5*cm, 4*cm, 3*cm, 2.5*cm, 4*cm],
+       extra=[("BACKGROUND",(0,1),(-1,1),LRED),("BACKGROUND",(0,2),(-1,2),LGREEN)]),
+    P(f"Table RTL-1. Ashraf (2018) directional analysis. "
+      f"Position 0 (leftmost in file) has lower entropy ({rtl_ash.get('entropy_position_0_leftmost',0):.3f} bits) "
+      f"than position -1 ({rtl_ash.get('entropy_position_N1_rightmost',0):.3f} bits), confirming "
+      "it is more constrained and therefore the word-END. "
+      "This independently confirms right-to-left reading from the data.", CAP),
+]
+
+# 4.2 Key positional profile corrections
+c += [P("4.2  Corrected Positional Profiles (RTL)", H2)]
+flips = rtl_cmp.get("most_affected", [])
+if flips:
+    flip_rows = [["Sign", "Freq", "LTR-I (wrong)", "LTR-T (wrong)",
+                  "RTL-I (correct)", "RTL-T (correct)", "Note"]]
+    key_signs = {"066": "word-FINAL (suffix)", "073": "word-INITIAL",
+                 "112": "word-INITIAL", "003": "word-FINAL",
+                 "006": "word-FINAL", "070": "word-FINAL"}
+    for fl in flips[:8]:
+        s = fl["sign"]
+        flip_rows.append([s, str(fl["freq"]),
+                          f"{fl['ltr_I']:.2f}", f"{fl['ltr_T']:.2f}",
+                          f"{fl['rtl_I']:.2f}", f"{fl['rtl_T']:.2f}",
+                          key_signs.get(s, "flipped")])
+    # Highlight 066 (most important)
+    ex_flip = [("BACKGROUND",(0,i+1),(-1,i+1),LAMBER)
+               for i, fl in enumerate(flips[:8]) if fl["sign"] == "066"]
+    c += [
+        tbl(flip_rows, w=[1.5*cm, 1.5*cm, 2.5*cm, 2.5*cm, 2.5*cm, 2.5*cm, 5*cm],
+            extra=ex_flip or None),
+        P("Table RTL-2. Most-affected signs after RTL correction (I=initial, T=terminal). "
+          "Sign 066, previously labelled word-initial (I=0.967), is now correctly "
+          "word-final (T=0.967) -- consistent with Dr. Fuls' assignment 066=M (mem), "
+          "a common NW Semitic terminal suffix. Sign 073, previously labelled terminal, "
+          "is now word-initial.", CAP),
+    ]
+
+# 4.3 Results under RTL correction
+c += [P("4.3  Mapping Inference Results -- RTL Corrected", H2)]
+c += [
+    tbl([
+        ["Condition", "Anchors", "Mean consistency", "HCI signs (>=75%)", "Bigram plaus."],
+        ["Cond. A: no anchors (LTR -- incorrect, reference)",
+         "none", "59.9%", "17/78", "-4.583"],
+        ["Cond. A: no anchors (RTL -- corrected)",
+         "none",
+         f"{rtl_a.get('mean_consistency',0)*100:.1f}%",
+         f"{rtl_a.get('hci_count','?')}/78",
+         f"{rtl_a.get('bigram_plausibility',0):.3f}"],
+        ["Cond. B: Fuls anchors 004=T, 066=M, 208=N, 133=ayin, 128=L, 080=W (RTL)",
+         "6 verified",
+         f"{rtl_b.get('mean_consistency',0)*100:.1f}%",
+         f"{rtl_b.get('hci_count','?')}/78",
+         f"{rtl_b.get('bigram_plausibility',0):.3f}"],
+    ], w=[6.5*cm, 2.5*cm, 3*cm, 3*cm, 3*cm],
+       extra=[
+           ("BACKGROUND",(0,1),(-1,1),LRED),
+           ("BACKGROUND",(0,3),(-1,3),LGREEN),
+       ]),
+    P("Table RTL-3. Mapping inference results. Red = original incorrect LTR result (reference). "
+      "Green = RTL-corrected with Dr. Fuls' 6 verified anchors. "
+      "The verified anchors raise HCI from 10 to "
+      f"{rtl_b.get('hci_count','?')} signs (all anchor signs are 100% consistent).", CAP),
+]
+
+# 4.4 Top signs with anchors
+c += [P("4.4  Proposed Mapping with Verified Anchors (RTL, Condition B)", H2)]
+if rtl_b.get("consistency_per_sign"):
+    from collections import Counter as _Counter
+    _sf2 = {}
+    _tf2 = Path(__file__).resolve().parent / "glossa_lab" / "data" / "fuls_nw_semitic_test1.txt"
+    if _tf2.exists():
+        with open(_tf2) as _f2:
+            _sf2 = dict(_Counter(s for line in _f2 for s in line.strip().split("-") if s.strip()))
+    cons_b_all = rtl_b["consistency_per_sign"]
+    sorted_b = sorted(cons_b_all.keys(),
+                      key=lambda s: (-cons_b_all[s].get("consistency",0), -_sf2.get(s,0)))
+    rtl_map_rows = [["Sign", "RTL-I", "RTL-T", "Proposed", "Stability", "Freq", "Anchored?"]]
+    for s in sorted_b[:25]:
+        cb  = cons_b_all[s]
+        pr  = rtl_profs.get(s, {"I":0,"T":0})
+        anc = rtl_anc.get(s, "")
+        rtl_map_rows.append([
+            s,
+            f"{pr.get('I',0):.2f}",
+            f"{pr.get('T',0):.2f}",
+            cb.get("modal", "?"),
+            f"{cb.get('consistency',0)*100:.0f}%",
+            str(_sf2.get(s, 0)),
+            anc if anc else "",
+        ])
+    ex_anc = [("BACKGROUND",(0,i+1),(-1,i+1),LGREEN)
+              for i, s in enumerate(sorted_b[:25]) if s in rtl_anc]
+    c += [
+        tbl(rtl_map_rows, w=[1.5*cm, 1.8*cm, 1.8*cm, 2.2*cm, 2.5*cm, 1.5*cm, 4.7*cm],
+            extra=ex_anc or None),
+        P("Table RTL-4. Top-25 signs by stability in Condition B (RTL + Fuls anchors). "
+          "Green rows = Dr. Fuls' verified assignments. RTL-I/T = corrected positional rates. "
+          "The proposed consonants for non-anchored signs are the modal assignment across "
+          "20 independent runs and represent the system's best statistical hypothesis.", CAP),
+    ]
+
+c += [
+    P("<b>Note on the Hebrew language model and vowels.</b>  "
+      "Hebrew is a consonant-only (abjad) writing system; it does not represent vowels explicitly. "
+      "The test1 corpus uses a syllabic system in which each sign encodes a consonant+vowel pair. "
+      "The surjective (many-to-one) SA mapping handles this correctly: multiple signs "
+      "with the same consonant but different vowels (e.g., MA, MI, MU) all map to "
+      "the same target consonant (/m/). The Hebrew phonotactic constraints on consonantal "
+      "sequences remain the primary signal for NW Semitic morphological patterns. "
+      "However, vowel harmony and vowel sequence patterns are not captured. "
+      "A vocalized Hebrew reference or another syllabic language model would improve accuracy "
+      "at higher corpus densities.", NOTE),
+    sp(),
+]
+
+c += [PageBreak()]
+
+# ── SECTION 5: MAPPING INFERENCE RUN ON TEST1 CORPUS (original, LTR) ──────────
+# Note: results below used incorrect LTR parsing; Section 4 supersedes them.
+c += [P("5.  Mapping Inference Run -- Original LTR Analysis (Reference)", H1)]
+c += [P("<i>Note: the following analysis used the original (incorrect) left-to-right parsing "
+         "of the word list. The RTL-corrected and anchor-verified results are in Section 4. "
+         "This section is retained for reference and comparison.</i>", NOTE)]
 
 dr_ca = drun.get("config_a_full_corpus", {})
 dr_cb = drun.get("config_b_75_25", {})

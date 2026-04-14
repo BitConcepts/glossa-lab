@@ -12,6 +12,7 @@ import { EntropyDashboard } from "./components/EntropyDashboard";
 import { HypothesisTracker } from "./components/HypothesisTracker";
 import { ResearchNotebook } from "./components/ResearchNotebook";
 import { AIToolsView } from "./components/AIToolsView";
+import { HelpView } from "./components/HelpView";
 import { SignDictionary } from "./components/SignDictionary";
 import { TimelineView } from "./components/TimelineView";
 import { CitationManager } from "./components/CitationManager";
@@ -27,7 +28,7 @@ type Tab =
   | "status" | "indus-data" | "builder" | "experiments" | "pipelines"
   | "corpora" | "jobs" | "reports" | "settings"
   | "entropy" | "hypotheses" | "notebooks" | "ai-tools"
-  | "signs" | "timeline" | "citations"
+  | "signs" | "timeline" | "citations" | "help"
   | "exp-builder"; // legacy alias — still handled but not in nav
 
 interface NavItem { id: Tab; label: string; icon: string; }
@@ -64,6 +65,7 @@ const NAV_SECTIONS: NavSection[] = [
       { id: "notebooks",  label: "Notebooks",  icon: "📓" },
       { id: "citations",  label: "Citations",  icon: "📖" },
       { id: "ai-tools",   label: "AI Tools",   icon: "🔬" },
+      { id: "help",       label: "Help",        icon: "📘" },
     ],
   },
 ];
@@ -436,6 +438,7 @@ function AppContent() {
               {tab === "signs"       && <SignDictionary />}
               {tab === "timeline"    && <TimelineView onNavigate={(t) => setTab(t as Tab)} />}
               {tab === "citations"   && <CitationManager />}
+              {tab === "help"        && <HelpView />}
             </main>
           );
         })()}

@@ -214,6 +214,21 @@ async def _tail_log() -> AsyncGenerator[str, None]:
         return
 
 
+@router.post("/log/purge")
+async def purge_log() -> dict:
+    """Clear (truncate) the active backend log file. Returns bytes cleared."""
+    log_file = _active_log_file()
+    if not log_file.exists():
+        return {"cleared": 0, "file": str(log_file)}
+    try:
+        size = log_file.stat().st_size
+        log_file.write_text("", encoding="utf-8")
+        return {"cleared": size, "file": str(log_file)}
+    except Exception as exc:  # noqa: BLE001
+        from fastapi import HTTPException  # noqa: PLC0415
+        raise HTTPException(500, f"Could not purge log: {exc}") from exc
+
+
 @router.get("/log/stream")
 async def stream_log() -> StreamingResponse:
     """SSE: tail the backend log file (100-line backfill + live updates every 500ms)."""

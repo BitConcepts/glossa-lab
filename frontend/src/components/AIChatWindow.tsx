@@ -46,7 +46,7 @@ function renderTableBlock(block: string): string {
     line.split("|").slice(1, -1).map(c => c.trim());
   const headers = parseRow(lines[0]);
   const rows = lines.slice(2).filter(l => l.trim()).map(parseRow);
-  const thSt = "background:#1e3a5f;color:#e2e8f0;padding:5px 8px;text-align:left;font-size:11px;font-weight:600;white-space:nowrap;border:1px solid #334155";
+  const thSt = "background:#1e3a5f;color:#ffffff;padding:5px 8px;text-align:left;font-size:11px;font-weight:700;white-space:nowrap;border:1px solid #334155;letter-spacing:0.3px";
   const tdSt = "padding:4px 8px;font-size:11px;border:1px solid #e5e7eb;vertical-align:top";
   const thead = `<thead><tr>${headers.map(h => `<th style='${thSt}'>${h}</th>`).join("")}</tr></thead>`;
   const tbody = `<tbody>${rows.map((cells, ri) => {
@@ -64,8 +64,8 @@ function renderMd(raw: string): string {
     return `%%TBL${tables.length - 1}%%`;
   });
   html = html
-    .replace(/```[\w]*\n?([\s\S]*?)```/g, "<pre style='background:#1e293b;color:#e2e8f0;padding:8px 12px;border-radius:5px;font-size:11px;overflow-x:auto;margin:6px 0'>$1</pre>")
-    .replace(/`([^`]+)`/g, "<code style='background:#f1f5f9;padding:1px 4px;border-radius:3px;font-size:12px;font-family:monospace'>$1</code>")
+    .replace(/```[\w]*\n?([\s\S]*?)```/g, "<pre style='background:#1e293b;color:#e2e8f0;padding:8px 12px;border-radius:5px;font-size:11px;overflow-x:auto;margin:6px 0;white-space:pre-wrap;word-break:break-word'>$1</pre>")
+    .replace(/`([^`]+)`/g, "<code style='background:#dbeafe;color:#1e40af;border:1px solid #bfdbfe;padding:1px 5px;border-radius:4px;font-size:11px;font-family:monospace;font-weight:600;white-space:nowrap'>$1</code>")
     .replace(/^### (.+)$/gm, "<div style='font-size:13px;font-weight:700;margin:10px 0 4px'>$1</div>")
     .replace(/^## (.+)$/gm,  "<div style='font-size:14px;font-weight:700;margin:12px 0 5px'>$1</div>")
     .replace(/^# (.+)$/gm,   "<div style='font-size:15px;font-weight:800;margin:14px 0 6px'>$1</div>")
@@ -191,7 +191,7 @@ function ModelPickerDropdown({ installed, providers, current, onSelect, onReset,
         Ollama · Local
       </div>
       {installed.length === 0
-        ? <div style={{ padding: "3px 10px 8px", fontSize: 10, color: "#334155", fontStyle: "italic" }}>None installed</div>
+        ? <div style={{ padding: "3px 10px 8px", fontSize: 10, color: "#64748b", fontStyle: "italic" }}>None installed</div>
         : installed.map(m => (
           <button key={m.name} onClick={() => onSelect({ provider: "ollama", model: m.name })} style={row(isSel("ollama", m.name))}>
             <span style={{ color: "#34d399", fontSize: 8 }}>●</span>
@@ -212,7 +212,7 @@ function ModelPickerDropdown({ installed, providers, current, onSelect, onReset,
         return p.recommended_models.slice(0, 3).map(m => (
           <button key={`${p.id}:${m}`} onClick={() => ok ? onSelect({ provider: p.id, model: m }) : undefined}
             style={row(isSel(p.id, m), !ok)} title={ok ? "" : `Set ${p.api_key_setting} in Settings`}>
-            <span style={{ color: ok ? "#60a5fa" : "#2d3f55", fontSize: 8 }}>⚡</span>
+            <span style={{ color: ok ? "#60a5fa" : "#475569", fontSize: 8 }}>⚡</span>
             <span style={{ flex: 1 }}>{m}</span>
             {!ok && <span style={{ color: "#ef4444", fontSize: 9 }}>no key</span>}
             {isSel(p.id, m) && ok && <span style={{ color: "#60a5fa", fontSize: 9 }}>✓</span>}
@@ -977,7 +977,7 @@ export function ChatInline() {
 
       {/* Messages */}
       <div style={{ flex: 1, overflowY: "auto", padding: "4px 8px", display: "flex", flexDirection: "column", gap: 5 }}>
-        {messages.length === 0 && <div style={{ color: "#475569", fontSize: 10, fontStyle: "italic", padding: "8px 0" }}>Ask Glossa AI anything...</div>}
+        {messages.length === 0 && <div style={{ color: "#94a3b8", fontSize: 10, fontStyle: "italic", padding: "8px 0" }}>Ask Glossa AI anything...</div>}
         {messages.map((msg) => {
           // Check if content has a [NAVIGATE:view] prefix for post-action links
           const navMatch = msg.content.match(/^\[NAVIGATE:([^\]]+)\]/);
@@ -988,7 +988,7 @@ export function ChatInline() {
               <div style={{ display: "flex", gap: 4, alignItems: "flex-start", flexDirection: msg.role === "user" ? "row-reverse" : "row" }}>
                 <div style={{ padding: "4px 8px", borderRadius: 5, fontSize: 11, lineHeight: 1.5, maxWidth: "85%", background: msg.role === "user" ? "#1e3a5f" : msg.error ? "#450a0a" : "#1e293b", color: msg.role === "user" ? "#e2e8f0" : msg.error ? "#fca5a5" : "#cbd5e1" }}>
                   {msg.loading
-                    ? <span style={{ color: "#475569" }}>&#x2728;...</span>
+                    ? <span style={{ color: "#94a3b8" }}>&#x2728;...</span>
                     : msg.role === "user"
                       ? <span style={{ whiteSpace: "pre-wrap" }}>{displayContent}</span>
                       : <div dangerouslySetInnerHTML={{ __html: renderMd(displayContent) }} />
@@ -997,7 +997,7 @@ export function ChatInline() {
               </div>
               {/* Timestamp */}
               {!msg.loading && (
-                <div style={{ fontSize: 9, color: "#334155", paddingLeft: msg.role === "user" ? 0 : 4,
+                <div style={{ fontSize: 9, color: "#64748b", paddingLeft: msg.role === "user" ? 0 : 4,
                               textAlign: msg.role === "user" ? "right" : "left", marginTop: 1 }}>
                   {fmtTime(msg.timestamp)}
                   {navView && (

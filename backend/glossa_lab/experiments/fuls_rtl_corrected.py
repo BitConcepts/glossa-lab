@@ -67,6 +67,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from glossa_lab.experiments._parallel import run_seeds_parallel
+
 _HERE    = os.path.dirname(os.path.abspath(__file__))
 _BACKEND = os.path.dirname(os.path.dirname(_HERE))
 ROOT     = Path(_BACKEND).parent
@@ -292,12 +294,12 @@ def run_rtl_corrected(verbose: bool = True) -> dict[str, Any]:
     _pr(f"\n  3. Condition A -- No anchors, RTL-corrected sequences ({N_SEEDS} seeds)...")
 
     rng_a = random.Random(5500)
-    maps_a = []
-    for i in range(N_SEEDS):
-        seed = rng_a.randint(0, 999999)
-        maps_a.append(_run_mapping(words_rtl, lm, seed))
-        if verbose and (i + 1) % 5 == 0:
-            _pr(f"    {i+1}/{N_SEEDS} done")
+    _seeds_a = [rng_a.randint(0, 999999) for _ in range(N_SEEDS)]
+    _words_rtl_a, _lm_a = words_rtl, lm  # capture for lambda
+    maps_a = run_seeds_parallel(
+        lambda s, _w=_words_rtl_a, _m=_lm_a: _run_mapping(_w, _m, s), _seeds_a
+    )
+    _pr(f"    {len(maps_a)}/{N_SEEDS} done (parallel)")
 
     cons_a = _consistency(maps_a, all_signs)
     mc_a   = _mean([v["consistency"] for v in cons_a.values()])
@@ -313,12 +315,13 @@ def run_rtl_corrected(verbose: bool = True) -> dict[str, Any]:
     _pr(f"     Anchors: {FULS_ANCHORS}")
 
     rng_b = random.Random(6600)
-    maps_b = []
-    for i in range(N_SEEDS):
-        seed = rng_b.randint(0, 999999)
-        maps_b.append(_run_mapping(words_rtl, lm, seed, anchors=FULS_ANCHORS))
-        if verbose and (i + 1) % 5 == 0:
-            _pr(f"    {i+1}/{N_SEEDS} done")
+    _seeds_b = [rng_b.randint(0, 999999) for _ in range(N_SEEDS)]
+    _words_rtl_b, _lm_b, _anch = words_rtl, lm, FULS_ANCHORS  # capture for lambda
+    maps_b = run_seeds_parallel(
+        lambda s, _w=_words_rtl_b, _m=_lm_b, _a=_anch: _run_mapping(_w, _m, s, anchors=_a),
+        _seeds_b
+    )
+    _pr(f"    {len(maps_b)}/{N_SEEDS} done (parallel)")
 
     cons_b = _consistency(maps_b, all_signs)
     mc_b   = _mean([v["consistency"] for v in cons_b.values()])

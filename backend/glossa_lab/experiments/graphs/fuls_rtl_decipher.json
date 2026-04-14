@@ -1,0 +1,131 @@
+{
+  "id": "fuls_rtl_decipher",
+  "name": "NW Semitic \u2014 RTL Corrected Decipherment (Dr. Fuls)",
+  "description": "Applies RTL direction normalisation to the Fuls NW Semitic test1 corpus, then runs SA mapping inference with 5 parallel seeds against the Hebrew LM. Implements the Ashraf (2018) auto-detection for confirmation.",
+  "auto_migrated": true,
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CorpusReader",
+        "label": "NW Semitic Test1",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 160
+      }
+    },
+    {
+      "id": "rtl",
+      "type": "expNode",
+      "data": {
+        "atomicId": "DirectionNormalizer",
+        "label": "RTL Correction",
+        "params": {
+          "direction": "rtl"
+        }
+      },
+      "position": {
+        "x": 300,
+        "y": 160
+      }
+    },
+    {
+      "id": "lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Hebrew LM",
+        "params": {
+          "language": "hebrew"
+        }
+      },
+      "position": {
+        "x": 300,
+        "y": 300
+      }
+    },
+    {
+      "id": "decipher",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA (5 seeds)",
+        "params": {
+          "n_seeds": 5,
+          "surjective": true,
+          "ocp_weight": 0.0
+        }
+      },
+      "position": {
+        "x": 540,
+        "y": 200
+      }
+    },
+    {
+      "id": "cons",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConsistencyScorer",
+        "label": "Consistency",
+        "params": {}
+      },
+      "position": {
+        "x": 780,
+        "y": 200
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PassResult",
+        "label": "Output",
+        "params": {}
+      },
+      "position": {
+        "x": 1020,
+        "y": 200
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "rtl",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "rtl",
+      "target": "decipher",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "lm",
+      "target": "decipher",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e4",
+      "source": "decipher",
+      "target": "cons",
+      "sourcePort": "all_mappings",
+      "targetPort": "all_mappings"
+    },
+    {
+      "id": "e5",
+      "source": "cons",
+      "target": "out",
+      "sourcePort": "consistency_per_sign",
+      "targetPort": "data"
+    }
+  ]
+}

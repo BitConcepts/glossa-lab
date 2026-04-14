@@ -1,0 +1,140 @@
+{
+  "id": "ugaritic_sa_decipher",
+  "name": "SA Decipherment \u2014 Ugaritic \u2192 Hebrew (Train/Test Split)",
+  "description": "Proper anti-circularity SA benchmark: 75% of Ugaritic Baal Cycle builds the Hebrew LM; 25% is the cipher test set. Runs 5 seeds in parallel (GPU-accelerated via BigramScorer when CuPy is installed).",
+  "auto_migrated": true,
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "Ugaritic Corpus",
+        "params": {
+          "corpus": "hebrew"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 200
+      }
+    },
+    {
+      "id": "split",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CorpusSplitter",
+        "label": "75/25 Split",
+        "params": {
+          "train_ratio": 0.75
+        }
+      },
+      "position": {
+        "x": 300,
+        "y": 200
+      }
+    },
+    {
+      "id": "lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "LMBuilder",
+        "label": "Build Hebrew LM",
+        "params": {}
+      },
+      "position": {
+        "x": 540,
+        "y": 100
+      }
+    },
+    {
+      "id": "decipher",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA Decipherment",
+        "params": {
+          "n_seeds": 5,
+          "surjective": true,
+          "ocp_weight": 0.0
+        }
+      },
+      "position": {
+        "x": 540,
+        "y": 300
+      }
+    },
+    {
+      "id": "score",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConsistencyScorer",
+        "label": "Consistency",
+        "params": {}
+      },
+      "position": {
+        "x": 780,
+        "y": 300
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Results",
+        "params": {
+          "filename": "ugaritic_sa_decipher.json"
+        }
+      },
+      "position": {
+        "x": 1020,
+        "y": 300
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "split",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "split",
+      "target": "lm",
+      "sourcePort": "train_sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "split",
+      "target": "decipher",
+      "sourcePort": "test_sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e4",
+      "source": "lm",
+      "target": "decipher",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e5",
+      "source": "decipher",
+      "target": "score",
+      "sourcePort": "all_mappings",
+      "targetPort": "all_mappings"
+    },
+    {
+      "id": "e6",
+      "source": "score",
+      "target": "out",
+      "sourcePort": "consistency_per_sign",
+      "targetPort": "data"
+    }
+  ]
+}

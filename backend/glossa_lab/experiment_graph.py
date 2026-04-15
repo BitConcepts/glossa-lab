@@ -278,8 +278,11 @@ def _builtin_corpus(inputs: dict, params: dict) -> dict:
         elif name == "phoenician":
             from glossa_lab.data.phoenician import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
             flat = get_corpus_symbols(); seqs = get_corpus_inscriptions()
+        elif name in ("nw_semitic", "fuls", "fuls_nw_semitic"):
+            from glossa_lab.data.nw_semitic import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
+            flat = get_corpus_symbols(); seqs = get_corpus_inscriptions()
         else:
-            return {"error": f"Unknown corpus '{name}'. Valid: indus, hebrew, geez, phoenician"}
+            return {"error": f"Unknown corpus '{name}'. Valid: indus, hebrew, geez, phoenician, nw_semitic"}
     except ImportError as exc:
         return {"error": str(exc)}
     from collections import Counter  # noqa: PLC0415
@@ -646,14 +649,13 @@ for _d in [
                         "description":"hebrew | geez | phoenician | sumerian | dravidian"}}},
         fn=_builtin_lm),
     AtomicNodeDef("BuiltinCorpus","Built-in Corpus","Sources",
-        "Load a named built-in corpus directly (indus, hebrew, geez, phoenician). "
-        "Does not require a DB corpus ID — always available offline.",
+        "Load a named built-in corpus directly. Does not require a DB corpus ID — always available offline.",
         inputs=[],
         outputs=[{"name":"sequences","type":"sequences"},{"name":"total_tokens","type":"number"},
                  {"name":"distinct_symbols","type":"number"}],
         params_schema={"type":"object","properties":{
             "corpus":{"type":"string","title":"Corpus Name","default":"indus",
-                      "description":"indus | hebrew | geez | phoenician"}}},
+                      "description":"indus | hebrew | geez | phoenician | nw_semitic (Fuls RTL)"}}},
         fn=_builtin_corpus),
     AtomicNodeDef("CorpusSplitter","Corpus Splitter","Transforms",
         "Split sequences into contiguous train and test portions. "

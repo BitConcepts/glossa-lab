@@ -899,7 +899,8 @@ Anything with a loop, function call, or more than one statement MUST be a script
 
 ### H14.4 — Specsmith issue
 
-This rule is tracked as specsmith governance issue **SPEC-GL-001**: *"Python agent execution must use script files — python -c is forbidden for non-trivial commands."* Filed 2026-04-15.
+Tracked as **EXEC-001** on the specsmith repository:
+https://github.com/BitConcepts/specsmith/issues/70
 
 ---
 

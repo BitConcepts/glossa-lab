@@ -1,0 +1,58 @@
+{
+  "experiment": "geez_anchor_convergence",
+  "timestamp": "20260415T125406",
+  "compute_device": "GPU (CUDA)",
+  "elapsed_seconds": 604.77476,
+  "conclusions": {},
+  "summary_table": [
+    {
+      "anchor_count": 0,
+      "struct_acc_free": 0.0449,
+      "rand_acc_free": 0.0577,
+      "struct_consistency": 0.359,
+      "rand_consistency": 0.3615,
+      "struct_n_distinct": 5.0,
+      "rand_n_distinct": 5.0,
+      "struct_hci75": 0.0962,
+      "rand_hci75": 0.1346
+    },
+    {
+      "anchor_count": 3,
+      "struct_acc_free": 0.0763,
+      "rand_acc_free": 0.0497,
+      "struct_consistency": 0.4373,
+      "rand_consistency": 0.5603,
+      "struct_n_distinct": 3.0,
+      "rand_n_distinct": 2.0,
+      "struct_hci75": 0.0897,
+      "rand_hci75": 0.1718
+    },
+    {
+      "anchor_count": 10,
+      "struct_acc_free": 0.121,
+      "rand_acc_free": 0.0575,
+      "struct_consistency": 0.4651,
+      "rand_consistency": 0.5603,
+      "struct_n_distinct": 3.0,
+      "rand_n_distinct": 2.0,
+      "struct_hci75": 0.1389,
+      "rand_hci75": 0.1718
+    },
+    {
+      "anchor_count": 20,
+      "struct_acc_free": 0.1176,
+      "rand_acc_free": 0.0794,
+      "struct_consistency": 0.4872,
+      "rand_consistency": 0.5897,
+      "struct_n_distinct": 3.0,
+      "rand_n_distinct": 2.0,
+      "struct_hci75": 0.1859,
+      "rand_hci75": 0.2308
+    }
+  ],
+  "raw_graph_output": {
+    "saved": "True",
+    "path": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\reports\\geez_anchor_convergence.json",
+    "filename": "geez_anchor_convergence.json"
+  }
+}

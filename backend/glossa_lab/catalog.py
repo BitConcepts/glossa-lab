@@ -420,30 +420,30 @@ def list_pipeline_catalog() -> list[dict[str, Any]]:
 
 
 def list_experiment_catalog() -> list[dict[str, Any]]:
-    """Return experiment metadata: static catalog + auto-discovered ExperimentBase subclasses."""
-    from glossa_lab.experiment_base import discover_experiments
+    """Return experiment metadata: ONLY graph experiments (H16 catalog reform).
 
-    entries: list[dict[str, Any]] = list(_EXPERIMENT_CATALOG)
-    seen_ids = {e["id"] for e in entries}
+    All experiments are now defined in the Experiment Builder as graph specs.
+    Python ExperimentBase subclasses are not user-visible (H15/H16 compliance).
+    The static _EXPERIMENT_CATALOG is retired; ocr_tables and ocr_texts
+    are accessible via their graph equivalents.
+    """
+    from glossa_lab.experiment_graph import list_graph_experiments  # noqa: PLC0415
 
-    for exp_id, cls in discover_experiments().items():
-        if exp_id in seen_ids:
-            continue  # static entry takes precedence
+    entries: list[dict[str, Any]] = []
+    for spec in list_graph_experiments():
         entries.append(
             {
-                "id": exp_id,
-                "name": getattr(cls, "name", exp_id),
-                "category": getattr(cls, "category", "Research"),
-                "description": getattr(cls, "description", ""),
-                "command": getattr(cls, "command", ""),
-                "results_file": getattr(cls, "results_file", ""),
-                "requires_key": getattr(cls, "requires_key", None),
-                "estimated_time": getattr(cls, "estimated_time", ""),
+                "id": spec["id"],
+                "name": spec["name"],
+                "category": "Graph Experiments",
+                "description": spec["description"],
+                "source": "graph",
+                "node_count": spec["node_count"],
+                "edge_count": spec["edge_count"],
+                "estimated_time": "varies",
             }
         )
-        seen_ids.add(exp_id)
-
-    return sorted(entries, key=lambda item: (item["category"], item["name"]))
+    return sorted(entries, key=lambda item: item["name"])
 
 
 def list_provider_catalog() -> list[dict[str, Any]]:

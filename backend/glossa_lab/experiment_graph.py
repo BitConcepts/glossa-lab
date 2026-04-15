@@ -681,6 +681,299 @@ def _comparator_ai(inputs: dict, params: dict) -> dict:
         return {"error": str(exc), "comparison": {}}
 
 
+def _cipher_constructor(inputs: dict, params: dict) -> dict:
+    """Create a bijective random substitution cipher from a sign inventory
+    (primitive: one operation — shuffle a known inventory and apply it to sequences).
+
+    Takes a test corpus and an LM (for its sign inventory), shuffles the sign-to-sign
+    mapping with a fixed random seed, and returns the ciphered sequences plus ground-truth
+    mapping. Designed to pair with AnchorConvergenceBenchmark for controlled self-tests.
+    """
+    import random as _rnd  # noqa: PLC0415
+    sequences = inputs.get("sequences") or inputs.get("test_sequences") or []
+    lm        = inputs.get("lm")
+    if not sequences:
+        return {"error": "No sequences — connect CorpusSplitter.test_sequences"}
+    if lm is None:
+        return {"error": "No LM — connect LMBuilder or BuiltinLM to supply sign inventory"}
+
+    seed       = int(params.get("cipher_seed", 42))
+    max_tokens = int(params.get("max_tokens", 15_000))
+
+    # Derive inventory from LM unigram freqs
+    try:
+        inv = sorted(lm.unigram_freq.keys())
+    except AttributeError:
+        return {"error": "LM has no unigram_freq — use LMBuilder or BuiltinLM"}
+
+    if not inv:
+        return {"error": "LM sign inventory is empty"}
+
+    rng  = _rnd.Random(seed)
+    shuf = list(inv); rng.shuffle(shuf)
+    perm  = {inv[i]: shuf[i] for i in range(len(inv))}   # original → cipher
+    truth = {shuf[i]: inv[i] for i in range(len(inv))}   # cipher   → original
+
+    # Cipher the sequences (filter to known signs, honour max_tokens)
+    inv_set       = set(inv)
+    cipher_seqs: list[list[str]] = []
+    token_count   = 0
+    for seq in sequences:
+        if token_count >= max_tokens:
+            break
+        cs = [perm[s] for s in seq if s in inv_set]
+        if len(cs) >= 2:
+            cipher_seqs.append(cs)
+            token_count += len(cs)
+
+    return {
+        "cipher_sequences":  cipher_seqs,
+        "true_mapping":      truth,
+        "perm":              perm,
+        "sign_inventory":    inv,
+        "n_cipher_tokens":   token_count,
+        "n_cipher_seqs":     len(cipher_seqs),
+        "inventory_size":    len(inv),
+    }
+
+
+def _anchor_convergence_benchmark(inputs: dict, params: dict) -> dict:
+    """Measure how anchor injection drives convergence in a known-cipher benchmark
+    (primitive: one well-defined engine — sweep anchor counts, measure accuracy/convergence).
+
+    Requires cipher_sequences from CipherConstructor plus the LM used to build the cipher.
+    For each anchor count runs structured (frequency-ranked) and random anchor sets,
+    reports top-1 accuracy, free-sign accuracy, consistency, and distinct-mappings metrics.
+    """
+    import random as _rnd  # noqa: PLC0415
+    import math as _math  # noqa: PLC0415
+    from collections import Counter as _C, defaultdict as _dd  # noqa: PLC0415
+
+    cipher_seqs  = inputs.get("cipher_sequences") or []
+    lm           = inputs.get("lm")
+    true_mapping = inputs.get("true_mapping") or {}
+    sign_inv     = inputs.get("sign_inventory") or []
+
+    if not cipher_seqs:
+        return {"error": "No cipher_sequences — connect CipherConstructor"}
+    if lm is None:
+        return {"error": "No LM — connect LMBuilder or BuiltinLM"}
+    if not true_mapping:
+        return {"error": "No true_mapping — connect CipherConstructor"}
+
+    anchor_counts_raw = params.get("anchor_counts", [0, 3, 10, 20])
+    anchor_counts = sorted([int(x) for x in anchor_counts_raw])
+    n_struct  = max(1, int(params.get("n_structured", 3)))
+    n_rand    = max(1, int(params.get("n_random", 5)))
+    nsb       = max(1, int(params.get("n_seeds_base", 5)))
+    nss       = max(1, int(params.get("n_seeds_struct", 3)))
+    nsr       = max(1, int(params.get("n_seeds_rand", 2)))
+    sa_iter   = max(500, int(params.get("sa_iterations", 2000)))
+    sa_rest   = max(1,   int(params.get("sa_restarts", 1)))
+    sa_temp   = float(params.get("sa_temp", 1.0))
+    sa_cool   = float(params.get("sa_cool", 0.9985))
+
+    from glossa_lab.experiments._parallel import run_seeds_parallel  # noqa: PLC0415
+
+    # Derive perm (original → cipher) from true_mapping (cipher → original)
+    perm = {v: k for k, v in true_mapping.items()}
+
+    # Use LM inventory if sign_inv not provided
+    if not sign_inv:
+        try:
+            sign_inv = sorted(lm.unigram_freq.keys())
+        except AttributeError:
+            pass
+    if not sign_inv:
+        return {"error": "Cannot determine sign inventory"}
+
+    inv_set = set(sign_inv)
+    flat_cipher = [s for seq in cipher_seqs for s in seq]
+    n_total = len(true_mapping)
+
+    # ── helpers ──────────────────────────────────────────────────────────────
+    def _mean(xs): return sum(xs) / len(xs) if xs else float("nan")
+
+    def _run_sa(seed: int, anchors: dict) -> dict:
+        from glossa_lab.pipelines.decipher import decipher  # noqa: PLC0415
+        r = decipher(flat_cipher, lm, seed=seed, max_iterations=sa_iter,
+                     restarts=sa_rest, cipher_inscriptions=None,
+                     use_sa=True, sa_temp_start=sa_temp, sa_cooling=sa_cool,
+                     positional_weight=0.0, ocp_weight=0.0, use_word_bigrams=False,
+                     anchors=anchors or None, surjective=False)
+        return r.get("proposed_mapping", {})
+
+    def _metrics(maps: list, anchored: set) -> dict:
+        if not maps:
+            return {}
+        cs   = list(true_mapping.keys())
+        free = [s for s in cs if s not in anchored]
+        n_cs, n_f = len(cs), max(1, len(free))
+        t1  = [sum(1 for s, c in m.items() if true_mapping.get(s) == c) / n_cs
+               for m in maps]
+        t1f = [sum(1 for s in free if m.get(s) == true_mapping.get(s)) / n_f
+               for m in maps]
+        cons, nd_cnt = {}, []
+        for s in cs:
+            props = [m.get(s) for m in maps if m.get(s)]
+            if props:
+                cnt = _C(props); mc = cnt.most_common(1)[0][1]
+                cons[s] = mc / len(props); nd_cnt.append(len(cnt))
+            else:
+                cons[s] = 0.0; nd_cnt.append(0)
+        # Safe modal computation: guard each sign individually
+        modal_correct_all = 0
+        for s in cs:
+            props = [m.get(s) for m in maps if m.get(s)]
+            if props:
+                top = _C(props).most_common(1)[0][0]
+                if top == true_mapping.get(s):
+                    modal_correct_all += 1
+        modal_t1_all = modal_correct_all / n_cs
+        modal_correct_free = 0
+        for s in free:
+            props = [m.get(s) for m in maps if m.get(s)]
+            if props:
+                top = _C(props).most_common(1)[0][0]
+                if top == true_mapping.get(s):
+                    modal_correct_free += 1
+        modal_t1_free = modal_correct_free / n_f
+        n_distinct = len({tuple(m.get(s, "") for s in sorted(cs)) for m in maps})
+        return {
+            "n_runs": len(maps), "n_anchors": len(anchored),
+            "mean_top1_all":   round(_mean(t1), 4),
+            "mean_top1_free":  round(_mean(t1f), 4),
+            "modal_top1_all":  round(modal_t1_all, 4),
+            "modal_top1_free": round(modal_t1_free, 4),
+            "mean_consistency": round(_mean(list(cons.values())), 4),
+            "n_distinct_mappings": n_distinct,
+            "mean_candidate_size": round(_mean(nd_cnt), 2),
+            "hci75_pct": round(sum(1 for v in cons.values() if v >= .75) / max(1, n_cs), 4),
+        }
+
+    def _mk_struct_anchors(k: int) -> list[dict]:
+        """Frequency-ranked anchor sets from LM."""
+        if k == 0:
+            return [{}]
+        ranked = sorted(sign_inv, key=lambda s: -lm.unigram_freq.get(s, 0))
+        sets = []
+        for i in range(min(n_struct, 3)):
+            if i == 0:
+                chosen = ranked[:k]
+            elif i == 1:
+                # Alternate ranks (diversify)
+                chosen = ranked[::2][:k]
+            else:
+                chosen = ranked[1::2][:k]
+            sets.append({perm[c]: c for c in chosen[:k] if c in perm})
+        return sets[:n_struct]
+
+    def _mk_rand_anchors(k: int, base_seed: int = 9999) -> list[dict]:
+        if k == 0:
+            return [{}]
+        rng = _rnd.Random(base_seed + k * 100)
+        sets = []
+        pool = [s for s in sign_inv if s in perm]
+        for _ in range(n_rand):
+            chosen = rng.sample(pool, min(k, len(pool)))
+            sets.append({perm[c]: c for c in chosen})
+        return sets
+
+    # ── main sweep ────────────────────────────────────────────────────────────
+    import logging as _log_mod  # noqa: PLC0415
+    _log = _log_mod.getLogger(__name__)
+    results_by_k: dict[int, dict] = {}
+
+    for k in anchor_counts:
+        _log.info("AnchorConvergenceBenchmark: k=%d", k)
+        n_seeds = nsb if k == 0 else nss
+
+        # Structured
+        s_met = []
+        for anchors in _mk_struct_anchors(k):
+            seeds  = list(range(k * 100 + 1, k * 100 + 1 + n_seeds))
+            maps   = run_seeds_parallel(lambda s, a=anchors: _run_sa(s, a), seeds)
+            s_met.append(_metrics(maps, set(anchors.keys())))
+
+        # Random
+        r_met = []
+        for anchors in _mk_rand_anchors(k):
+            n_r   = nsr if k > 0 else nsb
+            seeds = list(range(k * 1000 + 5001, k * 1000 + 5001 + n_r))
+            maps  = run_seeds_parallel(lambda s, a=anchors: _run_sa(s, a), seeds)
+            r_met.append(_metrics(maps, set(anchors.keys())))
+
+        def _avg(mlist, key):
+            vals = [m[key] for m in mlist if key in m and not _math.isnan(m.get(key, float("nan")))]
+            return round(_mean(vals), 4) if vals else float("nan")
+
+        results_by_k[k] = {
+            "struct_metrics":   s_met,
+            "rand_metrics":     r_met,
+            "struct_modal_top1_free": _avg(s_met, "modal_top1_free"),
+            "rand_modal_top1_free":   _avg(r_met, "modal_top1_free"),
+            "struct_modal_top1_all":  _avg(s_met, "modal_top1_all"),
+            "rand_modal_top1_all":    _avg(r_met, "modal_top1_all"),
+            "struct_mean_consistency": _avg(s_met, "mean_consistency"),
+            "rand_mean_consistency":   _avg(r_met, "mean_consistency"),
+            "struct_n_distinct":       _avg(s_met, "n_distinct_mappings"),
+            "rand_n_distinct":         _avg(r_met, "n_distinct_mappings"),
+            "struct_hci75_pct":        _avg(s_met, "hci75_pct"),
+            "rand_hci75_pct":          _avg(r_met, "hci75_pct"),
+        }
+
+    # ── conclusions ───────────────────────────────────────────────────────────
+    k0_s = results_by_k.get(0, {}).get("struct_modal_top1_free", float("nan"))
+    k_max = max(anchor_counts)
+    km_s = results_by_k.get(k_max, {}).get("struct_modal_top1_free", float("nan"))
+    acc_rises   = not (_math.isnan(k0_s) or _math.isnan(km_s)) and km_s > k0_s + 0.05
+    c0_d  = results_by_k.get(0, {}).get("struct_n_distinct", float("nan"))
+    cm_d  = results_by_k.get(k_max, {}).get("struct_n_distinct", float("nan"))
+    clust_collapses = not (_math.isnan(c0_d) or _math.isnan(cm_d)) and cm_d < c0_d * 0.75
+    success = acc_rises and clust_collapses
+    verdict = "SUCCESS" if success else ("PARTIAL" if acc_rises or clust_collapses else "FAILURE")
+    conclusion = (
+        "ANCHOR-AMPLIFICATION VALIDATED: Accuracy and convergence improve with anchor injection "
+        f"in the Geez syllabic system (free-sign accuracy {k0_s:.1%} → {km_s:.1%} at {k_max} anchors)."
+        if success else
+        f"MIXED/FAILURE: free-sign accuracy {k0_s:.1%} → {km_s:.1%}; "
+        f"cluster collapse={'YES' if clust_collapses else 'NO'}. "
+        "Method may require further investigation."
+    )
+
+    # summary table (list of rows for reporting)
+    table = []
+    for k in anchor_counts:
+        r = results_by_k.get(k, {})
+        table.append({
+            "anchor_count":     k,
+            "struct_acc_free":  r.get("struct_modal_top1_free"),
+            "rand_acc_free":    r.get("rand_modal_top1_free"),
+            "struct_consistency": r.get("struct_mean_consistency"),
+            "rand_consistency":   r.get("rand_mean_consistency"),
+            "struct_n_distinct":  r.get("struct_n_distinct"),
+            "rand_n_distinct":    r.get("rand_n_distinct"),
+            "struct_hci75": r.get("struct_hci75_pct"),
+            "rand_hci75":   r.get("rand_hci75_pct"),
+        })
+
+    return {
+        "results_by_anchor_count": results_by_k,
+        "conclusions": {
+            "verdict": verdict, "conclusion": conclusion,
+            "accuracy_rises": acc_rises, "clusters_collapse": clust_collapses,
+            "free_acc_at_0": k0_s, "free_acc_at_max": km_s, "max_anchor_k": k_max,
+            "improvement": round(km_s - k0_s, 4) if not (_math.isnan(k0_s) or _math.isnan(km_s)) else None,
+        },
+        "summary_table": table,
+        "params_used": {
+            "anchor_counts": anchor_counts, "n_structured": n_struct, "n_random": n_rand,
+            "n_seeds_base": nsb, "n_seeds_struct": nss, "n_seeds_rand": nsr,
+            "sa_iterations": sa_iter, "sa_restarts": sa_rest,
+        },
+    }
+
+
 def _experiment_wrapper(inputs: dict, params: dict) -> dict:
     """Delegate to any registered ExperimentBase subclass."""
     from glossa_lab.experiment_base import get_experiment  # noqa: PLC0415
@@ -988,6 +1281,49 @@ for _d in [
             "strategy":{"type":"string","title":"Strategy","default":"frequency",
                         "description":"frequency: top-N by occurrence count (recommended starting point)"}}},
         fn=_anchor_generator),
+    AtomicNodeDef("CipherConstructor","Cipher Constructor","Decipherment",
+        "Create a bijective random substitution cipher from the LM sign inventory. "
+        "Shuffles the sign-to-sign mapping deterministically and applies it to test sequences. "
+        "Returns cipher_sequences, true_mapping (cipher→original), and sign_inventory. "
+        "Pair with AnchorConvergenceBenchmark for controlled self-test experiments.",
+        inputs=[{"name":"sequences","type":"sequences","required":True},
+                {"name":"lm","type":"any","required":True}],
+        outputs=[{"name":"cipher_sequences","type":"sequences"},
+                 {"name":"true_mapping","type":"json"},
+                 {"name":"perm","type":"json"},
+                 {"name":"sign_inventory","type":"json"},
+                 {"name":"inventory_size","type":"number"},
+                 {"name":"n_cipher_tokens","type":"number"}],
+        params_schema={"type":"object","properties":{
+            "cipher_seed":{"type":"integer","title":"Cipher Seed","default":42,
+                           "description":"Random seed for the bijective shuffle (42 = default reproducible)"},
+            "max_tokens":{"type":"integer","title":"Max Cipher Tokens","default":15000,
+                          "description":"Truncate cipher sequences at this token count"}}},
+        fn=_cipher_constructor),
+    AtomicNodeDef("AnchorConvergenceBenchmark","Anchor Convergence Benchmark","Decipherment",
+        "Sweep anchor counts and measure convergence in a known-cipher self-test "
+        "(requires CipherConstructor output). For each anchor count runs structured "
+        "(frequency-ranked) and random anchor sets; reports accuracy, consistency, "
+        "and distinct-mappings per condition. Answers: do anchors drive convergence? "
+        "Connects: CipherConstructor → cipher_sequences + true_mapping + sign_inventory; LMBuilder → lm.",
+        inputs=[{"name":"cipher_sequences","type":"sequences","required":True},
+                {"name":"lm","type":"any","required":True},
+                {"name":"true_mapping","type":"json","required":True},
+                {"name":"sign_inventory","type":"json","required":False}],
+        outputs=[{"name":"results_by_anchor_count","type":"json"},
+                 {"name":"conclusions","type":"json"},
+                 {"name":"summary_table","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "anchor_counts":{"type":"array","title":"Anchor Counts","default":[0,3,10,20],
+                             "description":"List of anchor counts to evaluate"},
+            "n_structured":{"type":"integer","title":"Structured Sets per Count","default":3,"minimum":1},
+            "n_random":{"type":"integer","title":"Random Sets per Count","default":5,"minimum":1},
+            "n_seeds_base":{"type":"integer","title":"Seeds at 0 Anchors","default":5,"minimum":1},
+            "n_seeds_struct":{"type":"integer","title":"Seeds per Structured Run","default":3,"minimum":1},
+            "n_seeds_rand":{"type":"integer","title":"Seeds per Random Run","default":2,"minimum":1},
+            "sa_iterations":{"type":"integer","title":"SA Iterations","default":2000,"minimum":500},
+            "sa_restarts":{"type":"integer","title":"SA Restarts","default":1,"minimum":1}}},
+        fn=_anchor_convergence_benchmark),
 ]:
     ATOMIC_NODES[_d.id] = _d
 

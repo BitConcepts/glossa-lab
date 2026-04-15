@@ -139,8 +139,25 @@ def invalidate_cache() -> None:
 
 
 def list_discovered_experiments() -> list[dict[str, Any]]:
-    """Return metadata for all discovered experiments."""
-    return [cls.to_dict() for cls in discover_experiments().values()]
+    """Return metadata for GRAPH experiments only (H16 compliance).
+
+    Python ExperimentBase compositions are never user-visible (H15/H16).
+    Only graph-wrapped classes (injected by register_graph_experiments,
+    module prefix '_glossa_exp_') are returned — and only those whose
+    auto-generated class comes from experiment_graph.py (_make_cls).
+
+    IMPORTANT: If you need all Python classes for internal tooling, call
+    discover_experiments() directly.  This public function is H16-hardened.
+    """
+    result = []
+    for cls in discover_experiments().values():
+        # Graph-wrapped classes have a module name like '_glossa_exp_<id>'
+        # and their __qualname__ starts with 'GraphExp_'.
+        # Python composition classes live in real module files under experiments/.
+        qname = getattr(cls, "__qualname__", "")
+        if qname.startswith("GraphExp_"):
+            result.append(cls.to_dict())
+    return result
 
 
 def get_experiment(experiment_id: str) -> type[ExperimentBase] | None:

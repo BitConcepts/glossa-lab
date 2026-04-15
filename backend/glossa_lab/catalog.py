@@ -452,15 +452,17 @@ def list_provider_catalog() -> list[dict[str, Any]]:
 
 
 def _build_report_experiment_map() -> dict[str, str]:
-    """Return {report_stem: experiment_id} for experiments with results_file."""
-    from glossa_lab.experiment_base import discover_experiments
+    """Return {report_stem: experiment_id} derived from graph experiment IDs (H16).
+
+    Matches report filenames to experiment IDs by convention:
+    the JSONExport filename of a graph experiment is typically <id>.json.
+    """
+    from glossa_lab.experiment_graph import list_graph_experiments  # noqa: PLC0415
 
     mapping: dict[str, str] = {}
-    for exp_id, cls in discover_experiments().items():
-        rf = getattr(cls, "results_file", None)
-        if rf:
-            stem = Path(rf).stem
-            mapping[stem] = exp_id
+    for spec in list_graph_experiments():
+        # Convention: JSONExport nodes typically write to <id>.json
+        mapping[spec["id"]] = spec["id"]
     return mapping
 
 

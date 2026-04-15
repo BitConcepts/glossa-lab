@@ -3299,3 +3299,96 @@ Risks:
 - The geez_syllabic_anchor_convergence.py ExperimentBase class is still registered in the catalog — H15 violation, to be removed in H16 Phase 1
 
 Next step: Begin H16 execution (catalog reform, experiment subroutine ports, migration of remaining compositions).
+
+---
+
+## [2026-04-15] Entry — H16 Complete: Graph-Only Catalog, 33 Atomic Nodes, 37 Specs, Subroutine Ports
+
+Objective: Execute all phases of H16 plan to complete the graph-first platform.
+
+What was done:
+
+### Phase 1 — Catalog Reform
+- `list_experiment_catalog()` now returns ONLY graph experiments (H16 compliance)
+- 37 experiments in catalog, 0 Python-sourced
+- `ExperimentCatalogEntry` Pydantic model updated: `command` optional (empty for graphs), added `source`, `node_count`, `edge_count` fields
+- `_build_report_experiment_map` updated to use `list_graph_experiments()` instead of `discover_experiments()`
+
+### Phase 2 — Experiment Subroutine Ports
+- `ExperimentInput` atomic node: declares named input port for sub-experiment invocation
+- `ExperimentOutput` atomic node (category=Outputs): declares named output port
+- `SubExperiment` atomic node: invokes any graph experiment by ID as a subroutine
+- `execute_graph` updated: injects kwargs into ExperimentInput nodes matched by port_name
+- Enables Study → Experiment (SubExperiment) → Atomic Node hierarchy
+
+### Phase 3 — Extended BuiltinCorpus + BuiltinLM
+- BuiltinCorpus adds: meroitic, proto_sinaitic, linear_b, ugaritic (alias for nw_semitic)
+- BuiltinLM adds: coptic, linear_b, meroitic, proto_sinaitic
+- Fixed fragile `__import__` hack in proto_sinaitic corpus loading → proper try/except
+
+### Phase 4 — 12 New Graph Specs (37 total, was 24)
+All use only proper atomic nodes or SubExperiment (zero ExperimentWrapper):
+- meroitic_benchmark (BuiltinCorpus meroitic + BuiltinLM coptic + SADecipher)
+- phoenician_benchmark (BuiltinCorpus phoenician + BuiltinLM hebrew + BeamDecipher)
+- proto_sinaitic_benchmark (BuiltinCorpus proto_sinaitic + BuiltinLM hebrew + BeamDecipher)
+- fuls_anchor_simulation (NW Semitic + RTL + BuiltinLM hebrew + ConstraintSweep)
+- sequence_eval_benchmark (NW Semitic + NgramCounter + ShuffleControl + KLDivergence)
+- tier_diagnostics (CorpusReader + FreqCounter + EntropyCalc + WritingSystemClassifier)
+- prior_ablation_benchmark (NW Semitic + RTL + ConstraintSweep 7-level)
+- semitic_constraints_benchmark (NW Semitic + RTL + ConstraintSweep 4-level)
+- transparency_benchmark (SubExperiment calling geez_anchor_convergence)
+- ugaritic_vs_hebrew (NW Semitic + RTL + BuiltinLM hebrew + SADecipher)
+- fuls_independence_suite (NW Semitic + RTL + real vs shuffle SA comparison)
+- fuls_validation_suite (SubExperiment composite: NW Semitic + Ventris + Sumerian)
+
+### Phase 5 — Remove geez_syllabic_anchor_convergence ExperimentBase
+- Python ExperimentBase class removed from geez_syllabic_anchor_convergence.py
+- Graph spec geez_anchor_convergence.json is canonical
+- __main__ updated to point to runner script
+
+### Phase 6 — Tests Updated
+- test_all_33_nodes_registered: 33 nodes (was 28)
+- test_catalog_returns_only_graph_experiments: 37 graph, 0 Python
+- test_experiment_input_output_nodes: ExperimentInput kwarg injection
+- test_sub_experiment_node: SubExperiment round-trip
+- 53/53 critical tests pass (catalog + graph experiments + atomic nodes)
+- 1 pre-existing failure: test_rag_build_and_query (requires pytest-asyncio, not installed)
+
+### Fuls RTL Regression
+- Re-ran fuls_nw_semitic_decipher_run (condition A, no anchors, RTL, 10 seeds)
+- Result: 57.6% mean consistency vs prior 54.7% [VERIFIED] — variance within expected SA stochastic range
+
+Files changed:
+- backend/glossa_lab/experiment_graph.py (3 new node fns, 3 AtomicNodeDefs, BuiltinCorpus/LM extended, execute_graph updated, proto_sinaitic fixed)
+- backend/glossa_lab/catalog.py (list_experiment_catalog reformed, _build_report_experiment_map reformed)
+- backend/glossa_lab/api/catalog.py (ExperimentCatalogEntry updated)
+- backend/glossa_lab/experiments/geez_syllabic_anchor_convergence.py (ExperimentBase class removed)
+- 12 new graph spec JSON files in backend/glossa_lab/experiments/graphs/
+- backend/tests/test_graph_experiments.py (4 new tests, registry count updated)
+
+Checks run:
+- 53/53 critical tests pass (catalog + graph experiments + atomic nodes)
+- All 37 graph specs: node types valid, topology acyclic
+- Catalog: 37 graph experiments, 0 Python-sourced
+
+Results:
+- Catalog is fully H16 compliant: zero Python composition experiments visible to users
+- Study → Experiment → Atomic Node hierarchy is functional via SubExperiment
+- BuiltinCorpus and BuiltinLM now cover all benchmarked corpora
+
+Open TODOs:
+- [ ] 6 graph specs still use ExperimentWrapper (contact_zone, kandles_bias, linear_a_circularity, luwian_kl_scoring, ocr_tables, ocr_texts) — H15.3 temporary bandage; need OCRPipeline, KandlesAnalysis, LinearACircularity atomic primitives
+- [ ] Fix pytest-asyncio for test_rag_build_and_query (install plugin or skip test)
+- [ ] Fix ~40 stale Playwright UI locator tests
+- [ ] Phase 2-8 of Global Ancient Language Platform (plan 5ae18708)
+- [ ] RAG module (plan 550d9dc5)
+- [ ] Fine-tune Mistral NeMo 12B
+- [ ] Extended Geez benchmark (more iterations + anchors 50/100)
+- [ ] Send email + PDF to Dr. Fuls
+
+Risks:
+- 6 ExperimentWrapper specs work but violate H15.3 strict rule; they execute correctly via Python ExperimentBase classes auto-discovered by graph wrapper mechanism
+- SubExperiment recursion depth is unbounded; a graph calling itself would infinitely recurse
+- JSONExport filename for `fuls_nw_semitic_decipher_run` saved to backend/scripts/reports/ when run from runner script (CWD-dependent path resolution); direct graph execution from shell.cmd saves to glossa-lab/reports/ correctly
+
+Next step: Global Ancient Language Platform Phase 1 (DB migration for language_id), or send email to Dr. Fuls, or fix ExperimentWrapper 6 remaining specs.

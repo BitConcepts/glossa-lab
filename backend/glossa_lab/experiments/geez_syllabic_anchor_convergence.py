@@ -167,15 +167,20 @@ def _rand_anchors(inv, perm, k, n_sets=10, base=9999):
 # ── Single-seed inference (module-level for ThreadPoolExecutor) ───────────────
 
 def _one_seed(seed, ctok, cwords, lm, anch, sa_iter, sa_rest, sa_temp, sa_cool):
-    """ocp_weight=0 + use_word_bigrams=False -> BigramScorer GPU/numpy fast path."""
+    """GPU BigramScorer fast path.
+
+    cipher_inscriptions=None is critical: passing inscriptions populates
+    cipher_positional which sets _no_constraints=False even with ocp_weight=0,
+    bypassing the numpy/cupy BigramScorer and causing 50-200x slowdown.
+    """
     from glossa_lab.pipelines.decipher import decipher
     r = decipher(cipher_signs=ctok, target_model=lm, seed=seed,
                  max_iterations=sa_iter, restarts=sa_rest,
-                 cipher_inscriptions=cwords or None,
+                 cipher_inscriptions=None,   # None = GPU BigramScorer fast path
                  use_sa=True, sa_temp_start=sa_temp, sa_cooling=sa_cool,
-                 positional_weight=0.005,
-                 ocp_weight=0.0,         # enables BigramScorer GPU fast path
-                 use_word_bigrams=False,  # enables BigramScorer GPU fast path
+                 positional_weight=0.0,      # 0 = no cipher_positional built
+                 ocp_weight=0.0,             # 0 = GPU BigramScorer fast path
+                 use_word_bigrams=False,     # False = GPU fast path
                  anchors=anch or None, surjective=False)
     return r.get("proposed_mapping", {})
 

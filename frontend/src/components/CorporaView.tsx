@@ -244,9 +244,11 @@ function CorpusCard({ text, onUpdated, onDeleted, allTexts }: {
         onClick={() => setExpanded((x) => !x)}>
         <span style={{ fontSize: 11, padding: "1px 7px", borderRadius: 8, background: tc + "20", color: tc, fontWeight: 700, whiteSpace: "nowrap" }}>{text.corpus_type}</span>
         {(() => {
-          const dm = DIR_META[text.reading_direction ?? "unknown"] ?? DIR_META.unknown;
+          const dir = text.reading_direction ?? "unknown";
+          if (dir === "unknown") return null;  // don't show a "?" badge — direction is simply not set yet
+          const dm = DIR_META[dir] ?? DIR_META.ltr;
           return (
-            <span title={`Reading direction: ${text.reading_direction ?? "unknown"}`}
+            <span title={`Reading direction: ${dir.toUpperCase()}`}
               style={{ fontSize: 10, padding: "1px 6px", borderRadius: 8, background: dm.bg, color: dm.color, fontWeight: 700, whiteSpace: "nowrap", border: `1px solid ${dm.color}33` }}>
               {dm.label}
             </span>

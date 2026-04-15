@@ -297,9 +297,13 @@ def _builtin_corpus(inputs: dict, params: dict) -> dict:
             from glossa_lab.data.meroitic import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
             flat = get_corpus_symbols(); seqs = get_corpus_inscriptions()
         elif name in ("proto_sinaitic", "proto-sinaitic"):
-            from glossa_lab.data.proto_sinaitic import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
+            from glossa_lab.data.proto_sinaitic import get_corpus_symbols  # noqa: PLC0415
             flat = get_corpus_symbols()
-            seqs = get_corpus_inscriptions() if hasattr(__import__('glossa_lab.data.proto_sinaitic', fromlist=['get_corpus_inscriptions']), 'get_corpus_inscriptions') else [[s] for s in flat]
+            try:
+                from glossa_lab.data.proto_sinaitic import get_corpus_inscriptions  # noqa: PLC0415
+                seqs = get_corpus_inscriptions()
+            except ImportError:
+                seqs = [[s] for s in flat]
         elif name in ("linear_b", "linear-b", "mycenaean"):
             from glossa_lab.data.linear_b_language import get_corpus_symbols  # noqa: PLC0415
             flat = get_corpus_symbols(); seqs = [[s] for s in flat]

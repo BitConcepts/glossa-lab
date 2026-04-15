@@ -195,8 +195,8 @@ def test_topo_sort_diamond():
 
 # ── ATOMIC_NODES registry ─────────────────────────────────────────────────────
 
-def test_all_33_nodes_registered():
-    """TEST-GE-013: All 33 expected atomic nodes are in the registry."""
+def test_all_36_nodes_registered():
+    """TEST-GE-013: All 36 expected atomic nodes are in the registry."""
     expected = {
         # Original sources + transforms + analysis + outputs (13)
         "CorpusReader", "StaticValue", "FreqCounter", "PositionalProfiler",
@@ -211,11 +211,33 @@ def test_all_33_nodes_registered():
         # H16 subroutine ports + cipher benchmark primitives (5)
         "ExperimentInput", "ExperimentOutput", "SubExperiment",
         "CipherConstructor", "AnchorConvergenceBenchmark",
+        # H16 user-definable nodes (3)
+        "CorpusLM", "AnchorSetLoader", "ReportGenerator",
     }
     assert expected == set(ATOMIC_NODES.keys()), (
         f"Registry mismatch. Extra: {set(ATOMIC_NODES.keys()) - expected}. "
         f"Missing: {expected - set(ATOMIC_NODES.keys())}"
     )
+
+
+def test_corpus_lm_node_no_corpus_id():
+    """TEST-GE-020: CorpusLM returns error when corpus_id is missing."""
+    result = ATOMIC_NODES["CorpusLM"].fn({}, {})
+    assert "error" in result
+    assert "corpus_id" in result["error"].lower() or "no corpus_id" in result["error"].lower()
+
+
+def test_anchor_set_loader_no_id():
+    """TEST-GE-021: AnchorSetLoader returns error when anchor_set_id is missing."""
+    result = ATOMIC_NODES["AnchorSetLoader"].fn({}, {})
+    assert "error" in result
+    assert result.get("anchors") == {}
+
+
+def test_report_generator_no_template_id():
+    """TEST-GE-022: ReportGenerator returns error when template_id is missing."""
+    result = ATOMIC_NODES["ReportGenerator"].fn({}, {})
+    assert "error" in result
 
 
 def test_catalog_returns_only_graph_experiments():

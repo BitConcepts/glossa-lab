@@ -39,7 +39,6 @@ import "@xyflow/react/dist/style.css";
 
 import {
   getAtomicNodeCatalog,
-  listExperiments,
   listGraphExperiments,
   getGraphExperiment,
   createGraphExperiment,
@@ -48,7 +47,6 @@ import {
   PORT_COLORS,
   type AtomicNodeDef,
   type AtomicPort,
-  type ExperimentMeta,
   type GraphExperiment,
   type GraphExperimentMeta,
 } from "../api";
@@ -463,7 +461,6 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
 
   // Data
   const [catalog, setCatalog]     = useState<AtomicNodeDef[]>([]);
-  const [experiments, setExperiments] = useState<ExperimentMeta[]>([]);
   const [savedExps, setSavedExps] = useState<GraphExperimentMeta[]>([]);
   const [activeExp, setActiveExp] = useState<GraphExperiment | null>(null);
 
@@ -521,7 +518,6 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   useEffect(() => {
     void getAtomicNodeCatalog().then(setCatalog).catch(() => {});
     void listGraphExperiments().then(setSavedExps).catch(() => {});
-    void listExperiments().then(setExperiments).catch(() => {});
   }, []);
   useEffect(() => { localStorage.setItem("geb_lw",   String(leftW)); }, [leftW]);
   useEffect(() => { localStorage.setItem("geb_exh",  String(expsH)); }, [expsH]);
@@ -769,15 +765,16 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     const rect = reactFlowWrapper.current.getBoundingClientRect();
     const pos = { x: Math.round((ev.clientX - rect.left - 80) / 15) * 15, y: Math.round((ev.clientY - rect.top - 30) / 15) * 15 };
     if (draggedExpId.current) {
-      // Experiment wrapper node
-      const exp = experiments.find(e => e.id === draggedExpId.current);
+      // Create a SubExperiment node pointing to the dragged graph experiment (H16)
+      const exp = savedExps.find(e => e.id === draggedExpId.current);
       if (exp) {
-        const wrapperInputs  = [{ name: "upstream", type: "any", required: false }];
-        const wrapperOutputs = [{ name: "result",   type: "json" }];
-        const wrapperSchema = { type: "object", properties: { experiment_id: { type: "string", title: "Experiment ID", default: exp.id }, ...(exp.params_schema?.properties ?? {}) } };
-        const params = { experiment_id: exp.id, ...Object.fromEntries(Object.entries(wrapperSchema.properties).filter(([k]) => k !== "experiment_id").map(([k, v]) => [k, (v as Record<string, unknown>).default ?? ""])) };
+        const subDef = catalog.find(d => d.id === "SubExperiment");
+        const subInputs  = subDef?.inputs  ?? [{ name: "a", type: "any", required: false }];
+        const subOutputs = subDef?.outputs ?? [{ name: "result", type: "json" }, { name: "conclusions", type: "json" }];
+        const subSchema  = subDef?.params_schema ?? { type: "object", properties: { experiment_id: { type: "string", title: "Experiment ID" } } };
         setNodes(n => [...n, { id: nextId(), type: "expNode", position: pos,
-          data: { atomicId: "ExperimentWrapper", label: exp.name.replace(/^\ud83d\udd00 /, ""), inputs: wrapperInputs, outputs: wrapperOutputs, params, params_schema: wrapperSchema, runStatus: "idle", darkMode } as ExpNodeData }]);
+          data: { atomicId: "SubExperiment", label: exp.name, inputs: subInputs, outputs: subOutputs,
+            params: { experiment_id: exp.id }, params_schema: subSchema, runStatus: "idle", darkMode } as ExpNodeData }]);
       }
       draggedExpId.current = null; draggedNodeType.current = null; return;
     }
@@ -788,7 +785,7 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     setNodes(n => [...n, { id: nextId(), type: "expNode", position: pos,
       data: { atomicId: def.id, label: def.name, inputs: def.inputs, outputs: def.outputs, params: defaultParams, params_schema: def.params_schema, runStatus: "idle", darkMode } as ExpNodeData }]);
     draggedNodeType.current = null;
-  }, [catalog, experiments, darkMode]);
+  }, [catalog, savedExps, darkMode]);
   const onDragOver = (ev: React.DragEvent) => {
     if (!activeExp) return;  // no drop target when no experiment open
     ev.preventDefault(); ev.dataTransfer.dropEffect = "move";
@@ -877,9 +874,9 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     }
     return cats;
   }, [catalog, palSearch]);
-  const filteredExps = useMemo(() =>
-    experiments.filter(e => !palSearch || e.name.toLowerCase().includes(palSearch.toLowerCase()))
-  , [experiments, palSearch]);
+  const filteredSavedExps = useMemo(() =>
+    savedExps.filter(e => !palSearch || e.name.toLowerCase().includes(palSearch.toLowerCase()))
+  , [savedExps, palSearch]);
   const catColors: Record<string, string> = { Sources: "#059669", Transforms: "#2563eb", Analysis: "#7c3aed", Outputs: "#0d9488" };
   const ebm: React.CSSProperties = { border: `1px solid ${th.border}`, borderRadius: 3, background: "none", color: th.textMuted, cursor: "pointer", fontSize: 10, padding: "0 4px", lineHeight: "18px" };
 
@@ -915,7 +912,11 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
               const isRunning = !!activeRuns[e.id];
               const run = activeRuns[e.id];
               return (
-                <div key={e.id} onClick={() => void loadExp(e.id)}
+                <div key={e.id}
+                  draggable
+                  onDragStart={() => { draggedExpId.current = e.id; draggedNodeType.current = null; }}
+                  onClick={() => void loadExp(e.id)}
+                  title="Click to open · Drag to canvas to add as SubExperiment node"
                   style={{ display: "flex", alignItems: "center", gap: 3, padding: "5px 6px", borderRadius: 5, marginBottom: 2, cursor: "pointer",
                     background: active ? th.activeBg : "transparent",
                     border: `1px solid ${isRunning ? "#60a5fa40" : active ? "#7c3aed40" : "transparent"}` }}>
@@ -966,15 +967,16 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
                 })}
               </div>
             ))}
-            {filteredExps.length > 0 && (
+            {filteredSavedExps.length > 0 && (
               <div style={{ marginBottom: 8 }}>
-                <div style={{ fontSize: 9, fontWeight: 700, color: "#7c3aed", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 3 }}>Experiments</div>
-                {filteredExps.map(exp => (
+                <div style={{ fontSize: 9, fontWeight: 700, color: "#7c3aed", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 3 }}>Sub-Experiments</div>
+                <div style={{ fontSize: 8, color: th.textFaint, marginBottom: 4, fontStyle: "italic" }}>Drag to canvas → SubExperiment node</div>
+                {filteredSavedExps.map(exp => (
                   <div key={exp.id} draggable onDragStart={() => { draggedExpId.current = exp.id; draggedNodeType.current = null; }}
-                    title={exp.description}
+                    title={`Drag to add as SubExperiment: ${exp.description}`}
                     style={{ padding: "4px 7px", marginBottom: 3, cursor: "grab", border: "1px solid #7c3aed40", borderRadius: 5, background: "#7c3aed0d" }}>
-                    <div style={{ fontSize: 10, fontWeight: 600, color: "#7c3aed" }}>{exp.name.replace(/^\ud83d\udd00 /, "")}</div>
-                    <div style={{ fontSize: 8, color: th.textFaint, marginTop: 1 }}>{exp.category} · {exp.estimated_time}</div>
+                    <div style={{ fontSize: 10, fontWeight: 600, color: "#7c3aed" }}>🔀 {exp.name}</div>
+                    <div style={{ fontSize: 8, color: th.textFaint, marginTop: 1 }}>{exp.node_count}n · SubExperiment</div>
                   </div>
                 ))}
               </div>

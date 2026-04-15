@@ -1,0 +1,121 @@
+{
+  "id": "fuls_constraint_space",
+  "name": "Constraint Space & Anchor Amplification",
+  "description": "Tests how the solution space collapses as anchor assignments are added. Runs SA across anchor counts [0, 1, 3, 5, 10] and plots the consistency curve. This is the core anchor-amplification validation for NW Semitic.",
+  "auto_migrated": true,
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "NW Semitic Test1",
+        "params": {
+          "corpus": "nw_semitic"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 160
+      }
+    },
+    {
+      "id": "rtl",
+      "type": "expNode",
+      "data": {
+        "atomicId": "DirectionNormalizer",
+        "label": "RTL Correction",
+        "params": {
+          "direction": "rtl"
+        }
+      },
+      "position": {
+        "x": 300,
+        "y": 160
+      }
+    },
+    {
+      "id": "lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Hebrew LM",
+        "params": {
+          "language": "hebrew"
+        }
+      },
+      "position": {
+        "x": 300,
+        "y": 300
+      }
+    },
+    {
+      "id": "sweep",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConstraintSweep",
+        "label": "Anchor Count Sweep",
+        "params": {
+          "anchor_counts": [
+            0,
+            1,
+            3,
+            5,
+            10
+          ],
+          "n_seeds": 3,
+          "max_iterations": 2000
+        }
+      },
+      "position": {
+        "x": 540,
+        "y": 200
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Curve",
+        "params": {
+          "filename": "fuls_constraint_space.json"
+        }
+      },
+      "position": {
+        "x": 780,
+        "y": 200
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "rtl",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "rtl",
+      "target": "sweep",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "lm",
+      "target": "sweep",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e4",
+      "source": "sweep",
+      "target": "out",
+      "sourcePort": "consistency_curve",
+      "targetPort": "data"
+    }
+  ]
+}

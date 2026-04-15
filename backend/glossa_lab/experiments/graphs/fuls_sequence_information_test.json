@@ -1,0 +1,235 @@
+{
+  "id": "fuls_sequence_information_test",
+  "name": "Sequence Information Test (Shuffle Control)",
+  "description": "Tests whether the decipherment signal depends on sequential structure or just on symbol frequency. Runs SA on both the real corpus and a within-word shuffled control; compares mean consistency. If shuffled matches real: frequency drives the signal, not sequence order.",
+  "auto_migrated": true,
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "NW Semitic Test1",
+        "params": {
+          "corpus": "nw_semitic"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 160
+      }
+    },
+    {
+      "id": "rtl",
+      "type": "expNode",
+      "data": {
+        "atomicId": "DirectionNormalizer",
+        "label": "RTL Correction",
+        "params": {
+          "direction": "rtl"
+        }
+      },
+      "position": {
+        "x": 300,
+        "y": 160
+      }
+    },
+    {
+      "id": "lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Hebrew LM",
+        "params": {
+          "language": "hebrew"
+        }
+      },
+      "position": {
+        "x": 300,
+        "y": 400
+      }
+    },
+    {
+      "id": "shuffle",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ShuffleControl",
+        "label": "Shuffle Control",
+        "params": {
+          "mode": "within_word"
+        }
+      },
+      "position": {
+        "x": 540,
+        "y": 60
+      }
+    },
+    {
+      "id": "dec_real",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA Real Corpus",
+        "params": {
+          "n_seeds": 5,
+          "surjective": true,
+          "ocp_weight": 0.0
+        }
+      },
+      "position": {
+        "x": 540,
+        "y": 220
+      }
+    },
+    {
+      "id": "dec_shuf",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA Shuffled Control",
+        "params": {
+          "n_seeds": 5,
+          "surjective": true,
+          "ocp_weight": 0.0
+        }
+      },
+      "position": {
+        "x": 540,
+        "y": 380
+      }
+    },
+    {
+      "id": "cons_real",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConsistencyScorer",
+        "label": "Real Consistency",
+        "params": {}
+      },
+      "position": {
+        "x": 780,
+        "y": 220
+      }
+    },
+    {
+      "id": "cons_shuf",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConsistencyScorer",
+        "label": "Shuffle Consistency",
+        "params": {}
+      },
+      "position": {
+        "x": 780,
+        "y": 380
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Compare Results",
+        "params": {}
+      },
+      "position": {
+        "x": 1020,
+        "y": 300
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Test",
+        "params": {
+          "filename": "fuls_sequence_information_test.json"
+        }
+      },
+      "position": {
+        "x": 1260,
+        "y": 300
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "rtl",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "rtl",
+      "target": "shuffle",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "rtl",
+      "target": "dec_real",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e4",
+      "source": "shuffle",
+      "target": "dec_shuf",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e5",
+      "source": "lm",
+      "target": "dec_real",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e6",
+      "source": "lm",
+      "target": "dec_shuf",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e7",
+      "source": "dec_real",
+      "target": "cons_real",
+      "sourcePort": "all_mappings",
+      "targetPort": "all_mappings"
+    },
+    {
+      "id": "e8",
+      "source": "dec_shuf",
+      "target": "cons_shuf",
+      "sourcePort": "all_mappings",
+      "targetPort": "all_mappings"
+    },
+    {
+      "id": "e9",
+      "source": "cons_real",
+      "target": "merge",
+      "sourcePort": "mean_consistency",
+      "targetPort": "a"
+    },
+    {
+      "id": "e10",
+      "source": "cons_shuf",
+      "target": "merge",
+      "sourcePort": "mean_consistency",
+      "targetPort": "b"
+    },
+    {
+      "id": "e11",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ]
+}

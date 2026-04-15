@@ -1,0 +1,140 @@
+{
+  "id": "old_hebrew_self_benchmark",
+  "name": "Hebrew Self-Benchmark (Tier 1b)",
+  "description": "Validates the decipherment engine on Hebrew: 75% of the corpus builds the LM, 25% is the cipher test set. Expected accuracy: 22/22 = 100%. This proves the algorithm is correct before cross-language tests.",
+  "auto_migrated": true,
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "Old Hebrew",
+        "params": {
+          "corpus": "hebrew"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 180
+      }
+    },
+    {
+      "id": "split",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CorpusSplitter",
+        "label": "75/25 Split",
+        "params": {
+          "train_ratio": 0.75
+        }
+      },
+      "position": {
+        "x": 300,
+        "y": 180
+      }
+    },
+    {
+      "id": "lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "LMBuilder",
+        "label": "Build Hebrew LM",
+        "params": {}
+      },
+      "position": {
+        "x": 540,
+        "y": 80
+      }
+    },
+    {
+      "id": "decipher",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA Decipherment",
+        "params": {
+          "n_seeds": 5,
+          "surjective": false,
+          "ocp_weight": 0.0
+        }
+      },
+      "position": {
+        "x": 540,
+        "y": 280
+      }
+    },
+    {
+      "id": "score",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BenchmarkScorer",
+        "label": "Score vs Answer",
+        "params": {}
+      },
+      "position": {
+        "x": 780,
+        "y": 280
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Results",
+        "params": {
+          "filename": "old_hebrew_self_benchmark.json"
+        }
+      },
+      "position": {
+        "x": 1020,
+        "y": 280
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "split",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "split",
+      "target": "lm",
+      "sourcePort": "train_sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "split",
+      "target": "decipher",
+      "sourcePort": "test_sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e4",
+      "source": "lm",
+      "target": "decipher",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e5",
+      "source": "decipher",
+      "target": "score",
+      "sourcePort": "proposed_mapping",
+      "targetPort": "proposed_mapping"
+    },
+    {
+      "id": "e6",
+      "source": "score",
+      "target": "out",
+      "sourcePort": "accuracy",
+      "targetPort": "data"
+    }
+  ]
+}

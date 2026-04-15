@@ -195,19 +195,24 @@ def test_topo_sort_diamond():
 
 # ── ATOMIC_NODES registry ─────────────────────────────────────────────────────
 
-def test_all_24_nodes_registered():
-    """TEST-GE-013: All 24 expected atomic nodes are in the registry."""
+def test_all_28_nodes_registered():
+    """TEST-GE-013: All 28 expected atomic nodes are in the registry."""
     expected = {
         # Original (13)
         "CorpusReader", "StaticValue", "FreqCounter", "PositionalProfiler",
         "EntropyCalc", "Clusterer", "ZipfFitter", "Filter", "Merger",
         "JSONExport", "PassResult", "Comparator", "ExperimentWrapper",
-        # New (11)
+        # Decipherment nodes (11)
         "LMBuilder", "BuiltinLM", "BuiltinCorpus", "CorpusSplitter",
         "DirectionNormalizer", "SADecipher", "ConsistencyScorer",
         "BenchmarkScorer", "KLDivergence", "NgramCounter", "AnchorGenerator",
+        # H15 graph-first primitives (4)
+        "WritingSystemClassifier", "BeamDecipher", "ShuffleControl", "ConstraintSweep",
     }
-    assert expected == set(ATOMIC_NODES.keys())
+    assert expected == set(ATOMIC_NODES.keys()), (
+        f"Registry mismatch. Extra: {set(ATOMIC_NODES.keys()) - expected}. "
+        f"Missing: {expected - set(ATOMIC_NODES.keys())}"
+    )
 
 
 def test_every_node_has_required_fields():

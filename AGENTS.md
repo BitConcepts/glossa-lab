@@ -858,6 +858,71 @@ Document any deliberate bypass with a comment explaining why.
 
 ---
 
+## GRAPH-FIRST DESIGN (H15 — STRICT)
+
+> Studies and experiments are graphs. Python is for atomic primitives only.
+
+### H15.1 — The fundamental rule
+
+Researchers must NOT be required to write Python to create studies or experiments.
+All study-level and experiment-level logic MUST be expressed as a visual graph of
+generic atomic nodes in the Experiment Builder or Study Builder.
+
+**Python code is permitted ONLY for:**
+- Atomic node implementations (`ATOMIC_NODES` in `experiment_graph.py`) — the
+  lowest-level computational primitives that have no further decomposition
+- Core pipeline engines (`pipelines/decipher.py`, `pipelines/block_entropy.py`, etc.)
+  that implement well-defined mathematical algorithms
+- Data loaders (`data/*.py`) that read corpus files and return symbols/inscriptions
+- Backend infrastructure (API, database, CLI bridge, report generators)
+
+**Python code is FORBIDDEN for:**
+- Studies — must be graph JSON in `study_seeds.py` or created in the Studies UI
+- Experiments that combine multiple analytical steps — must be graph JSON in
+  `experiments/graphs/` created in the Experiment Builder
+- Any `ExperimentBase` subclass that is a composition of existing atomic operations
+  rather than a genuine new primitive
+
+### H15.2 — What counts as a primitive
+
+A primitive is an atomic operation that:
+1. Has exactly one well-defined mathematical/algorithmic purpose
+2. Cannot be decomposed into a meaningful sequence of existing atomic nodes
+3. Would be opaque and non-visual if broken down further
+
+Examples of genuine primitives (Python OK):
+- `FreqCounter` — count symbol frequencies (one operation)
+- `SADecipher` — run simulated annealing (one engine call)
+- `LMBuilder` — build bigram language model (one data structure)
+- `KLDivergence` — compute KL divergence (one formula)
+
+Examples of NON-primitives (must be graph):
+- `fuls_writing_system_comparison` — composes CorpusReader + FreqCounter +
+  PositionalProfiler + EntropyCalc + WritingSystemClassifier
+- `fuls_nw_semitic_benchmark` — composes structural analysis steps
+- Any experiment that chains more than one conceptual analytical step
+
+### H15.3 — Migration requirement
+
+All existing `ExperimentBase` subclasses that are compositions (not primitives)
+MUST be migrated to graph experiments. The ExperimentWrapper node is a TEMPORARY
+bandage — it must be replaced with proper atomic node decomposition.
+
+When adding a new experiment, ask: "Can this be built entirely from existing atomic
+nodes in the Experiment Builder?" If yes — build it as a graph, not Python code.
+
+### H15.4 — New atomic nodes
+
+When a study requires an operation that no existing atomic node covers:
+1. Add the new atomic node to `ATOMIC_NODES` in `experiment_graph.py`
+2. Write only the implementation function (one pure fn(inputs, params) -> dict)
+3. Register it in the catalog
+4. Then build the study/experiment as a graph using that new node
+
+Never write a new `ExperimentBase` subclass to work around a missing atomic node.
+
+---
+
 ## PYTHON EXECUTION RULE (H14 — MANDATORY)
 
 > Never run Python code via `python -c "..."`. Always use a script file.

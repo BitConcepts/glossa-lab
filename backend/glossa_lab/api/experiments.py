@@ -32,16 +32,38 @@ from glossa_lab.experiment_base import (
     get_experiment,
     import_experiment_file,
     invalidate_cache,
-    list_discovered_experiments,
 )
+from glossa_lab.experiment_graph import list_graph_experiments
 
 router = APIRouter()
 
 
 @router.get("/experiments")
 async def list_experiments() -> list[dict[str, Any]]:
-    """Return all discovered experiments with metadata."""
-    return list_discovered_experiments()
+    """Return graph experiments only (H16 compliance).
+
+    Python ExperimentBase subclasses are no longer user-visible.
+    All experiments are defined as graph specs in experiments/graphs/.
+    """
+    return [
+        {
+            "id":             spec["id"],
+            "name":           spec["name"],
+            "category":       "Graph Experiments",
+            "description":    spec["description"],
+            "estimated_time": "varies",
+            "requires_key":   None,
+            "command":        "",
+            "results_file":   None,
+            "report_schema":  None,
+            "params_schema":  {"type": "object", "properties": {}},
+            "source_file":    f"experiments/graphs/{spec['id']}.json",
+            "custom":         False,
+            "node_count":     spec.get("node_count", 0),
+            "edge_count":     spec.get("edge_count", 0),
+        }
+        for spec in list_graph_experiments()
+    ]
 
 
 @router.get("/experiments/{experiment_id}")

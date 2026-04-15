@@ -347,10 +347,13 @@ def _sa_decipher(inputs: dict, params: dict) -> dict:
     from glossa_lab.experiments._parallel import run_seeds_parallel  # noqa: PLC0415
 
     def _one(seed: int) -> dict:
+        # cipher_inscriptions=None keeps cipher_positional empty,
+        # enabling the numpy/cupy BigramScorer GPU fast path.
         from glossa_lab.pipelines.decipher import decipher  # noqa: PLC0415
         r = decipher(flat, lm, seed=seed, max_iterations=max_iter, restarts=restarts,
-                     cipher_inscriptions=sequences, surjective=surjective,
-                     ocp_weight=ocp_w, positional_weight=pos_w,
+                     cipher_inscriptions=None,  # None = GPU fast path
+                     surjective=surjective,
+                     ocp_weight=ocp_w, positional_weight=0.0,
                      anchors=anchors if anchors else None)
         return r.get("proposed_mapping", {})
 

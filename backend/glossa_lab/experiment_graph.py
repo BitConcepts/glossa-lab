@@ -250,8 +250,20 @@ def _builtin_lm(inputs: dict, params: dict) -> dict:
         elif lang in ("dravidian", "tamil"):
             from glossa_lab.data.dravidian import get_corpus_symbols  # noqa: PLC0415
             syms = get_corpus_symbols(); inscs = None
+        elif lang in ("coptic",):
+            from glossa_lab.data.meroitic import get_coptic_symbols  # noqa: PLC0415
+            syms = get_coptic_symbols(); inscs = None
+        elif lang in ("linear_b", "linear-b", "mycenaean", "mycenaean_greek"):
+            from glossa_lab.data.linear_b_language import get_corpus_symbols  # noqa: PLC0415
+            syms = get_corpus_symbols(); inscs = None
+        elif lang in ("meroitic",):
+            from glossa_lab.data.meroitic import get_corpus_symbols as _m  # noqa: PLC0415
+            syms = _m(); inscs = None
+        elif lang in ("proto_sinaitic", "proto-sinaitic"):
+            from glossa_lab.data.proto_sinaitic import get_corpus_symbols as _ps  # noqa: PLC0415
+            syms = _ps(); inscs = None
         else:
-            return {"error": f"Unknown language '{lang}'. Valid: hebrew, geez, phoenician, sumerian, dravidian"}
+            return {"error": f"Unknown language '{lang}'. Valid: hebrew, geez, phoenician, sumerian, dravidian, coptic, linear_b, meroitic, proto_sinaitic"}
     except ImportError as exc:
         return {"error": str(exc)}
     from glossa_lab.pipelines.decipher import LanguageModel  # noqa: PLC0415
@@ -278,11 +290,21 @@ def _builtin_corpus(inputs: dict, params: dict) -> dict:
         elif name == "phoenician":
             from glossa_lab.data.phoenician import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
             flat = get_corpus_symbols(); seqs = get_corpus_inscriptions()
-        elif name in ("nw_semitic", "fuls", "fuls_nw_semitic"):
+        elif name in ("nw_semitic", "fuls", "fuls_nw_semitic", "ugaritic"):
             from glossa_lab.data.nw_semitic import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
             flat = get_corpus_symbols(); seqs = get_corpus_inscriptions()
+        elif name == "meroitic":
+            from glossa_lab.data.meroitic import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
+            flat = get_corpus_symbols(); seqs = get_corpus_inscriptions()
+        elif name in ("proto_sinaitic", "proto-sinaitic"):
+            from glossa_lab.data.proto_sinaitic import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
+            flat = get_corpus_symbols()
+            seqs = get_corpus_inscriptions() if hasattr(__import__('glossa_lab.data.proto_sinaitic', fromlist=['get_corpus_inscriptions']), 'get_corpus_inscriptions') else [[s] for s in flat]
+        elif name in ("linear_b", "linear-b", "mycenaean"):
+            from glossa_lab.data.linear_b_language import get_corpus_symbols  # noqa: PLC0415
+            flat = get_corpus_symbols(); seqs = [[s] for s in flat]
         else:
-            return {"error": f"Unknown corpus '{name}'. Valid: indus, hebrew, geez, phoenician, nw_semitic"}
+            return {"error": f"Unknown corpus '{name}'. Valid: indus, hebrew, geez, phoenician, nw_semitic/ugaritic, meroitic, proto_sinaitic, linear_b"}
     except ImportError as exc:
         return {"error": str(exc)}
     from collections import Counter  # noqa: PLC0415
@@ -679,6 +701,65 @@ def _comparator_ai(inputs: dict, params: dict) -> dict:
         return {"comparison": _json.loads(raw), "a_summarized": str(a)[:200], "b_summarized": str(b)[:200]}
     except Exception as exc:  # noqa: BLE001
         return {"error": str(exc), "comparison": {}}
+
+
+def _experiment_input(inputs: dict, params: dict) -> dict:
+    """Declare a named input port for an experiment graph (subroutine pattern).
+
+    When this graph is invoked via SubExperiment, the caller injects a value
+    for each ExperimentInput port by port_name. Otherwise uses default_value.
+    The value passes through to downstream nodes as both 'value' and port_name.
+    """
+    port_name = str(params.get("port_name") or "input")
+    # Injected by execute_graph from kwargs when called as sub-experiment
+    value = (inputs.get(port_name) or inputs.get("value")
+             or params.get("default_value"))
+    return {"value": value, port_name: value, "port_name": port_name}
+
+
+def _experiment_output(inputs: dict, params: dict) -> dict:
+    """Declare a named output port for an experiment graph (subroutine pattern).
+
+    Exposes upstream data under port_name so a calling Study/Experiment can
+    wire the result to other nodes. Multiple ExperimentOutput nodes can exist
+    in one graph, each exporting a different named result.
+    """
+    port_name = str(params.get("port_name") or "output")
+    data = (inputs.get("data") or inputs.get("value")
+            or {k: v for k, v in inputs.items() if k not in ("port_name",)})
+    return {"value": data, "port_name": port_name, port_name: data}
+
+
+def _sub_experiment(inputs: dict, params: dict) -> dict:
+    """Invoke a graph experiment as a reusable subroutine.
+
+    Looks up experiment_id in the graph library, injects caller inputs through
+    ExperimentInput nodes (matched by port_name), executes the sub-graph, and
+    returns the sub-graph's ExperimentOutput values as named ports.
+
+    This implements the Study → Experiment → Atomic Node hierarchy:
+    a Study can compose multiple Experiments without code duplication.
+    """
+    exp_id = params.get("experiment_id", "")
+    if not exp_id:
+        return {"error": "No experiment_id param — set the experiment to call"}
+    target = get_graph_experiment(exp_id)
+    if not target:
+        return {"error": f"Graph experiment '{exp_id}' not found"}
+
+    # Collect which port names the sub-experiment declares as ExperimentInput
+    port_kwargs: dict[str, object] = {}
+    for node in target.get("nodes", []):
+        data = node.get("data", {}) if node.get("type") == "expNode" else {}
+        if data.get("atomicId") == "ExperimentInput":
+            pname = (data.get("params") or {}).get("port_name", "input")
+            if pname in inputs:
+                port_kwargs[pname] = inputs[pname]
+
+    # Also forward any extra caller params that aren't meta-params
+    extra = {k: v for k, v in params.items() if k != "experiment_id"}
+    result = execute_graph(target, {**port_kwargs, **extra})
+    return result if isinstance(result, dict) else {"result": result}
 
 
 def _cipher_constructor(inputs: dict, params: dict) -> dict:
@@ -1106,8 +1187,40 @@ for _d in [
                  {"name":"n_tokens","type":"number"},{"name":"h1","type":"number"}],
         params_schema={"type":"object","properties":{}},
         fn=_lm_builder),
+    AtomicNodeDef("ExperimentInput","Experiment Input Port","Experiments",
+        "Declare a named input port for this experiment graph. When invoked via SubExperiment, "
+        "the caller injects a value matched by port_name. Use as subroutine parameters.",
+        inputs=[],
+        outputs=[{"name":"value","type":"any"},{"name":"port_name","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "port_name":{"type":"string","title":"Port Name","default":"input",
+                         "description":"Unique name for this input port (matched by the calling SubExperiment node)"},
+            "default_value":{"type":"string","title":"Default Value","default":"",
+                             "description":"Used when not called as a sub-experiment"}}},
+        fn=_experiment_input),
+    AtomicNodeDef("ExperimentOutput","Experiment Output Port","Outputs",
+        "Declare a named output port for this experiment graph. Exposes upstream data under "
+        "port_name so a calling Study or Experiment can wire the result. "
+        "Multiple ExperimentOutput nodes can coexist in one graph.",
+        inputs=[{"name":"data","type":"any","required":True}],
+        outputs=[{"name":"value","type":"any"},{"name":"port_name","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "port_name":{"type":"string","title":"Port Name","default":"output",
+                         "description":"Unique name for this output port (visible to the calling graph)"}}},
+        fn=_experiment_output),
+    AtomicNodeDef("SubExperiment","Sub-Experiment","Experiments",
+        "Invoke a graph experiment as a reusable subroutine. Injects caller inputs through "
+        "ExperimentInput nodes (matched by port_name) and exposes ExperimentOutput values "
+        "as named ports. Implements the Study → Experiment → Atomic Node hierarchy.",
+        inputs=[{"name":"a","type":"any","required":False},{"name":"b","type":"any","required":False},
+                {"name":"c","type":"any","required":False}],
+        outputs=[{"name":"result","type":"json"},{"name":"conclusions","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "experiment_id":{"type":"string","title":"Experiment ID",
+                             "description":"ID of the graph experiment to invoke as a subroutine"}}},
+        fn=_sub_experiment),
     AtomicNodeDef("BuiltinLM","Built-in Reference LM","Decipherment",
-        "Load a pre-built language model for a known language (hebrew, geez, phoenician, sumerian, dravidian). "
+        "Load a pre-built language model for a known language (hebrew, geez, phoenician, sumerian, dravidian, coptic, linear_b). "
         "Use as the target LM in SADecipher or BeamDecipher.",
         inputs=[],
         outputs=[{"name":"lm","type":"any"},{"name":"language","type":"text"},
@@ -1372,12 +1485,24 @@ def _node_type_and_params(node: dict) -> tuple[str, dict[str, Any]]:
 
 
 def execute_graph(graph_def: dict[str, Any], kwargs: dict[str, Any] | None = None) -> dict[str, Any]:
-    """Execute a graph experiment and return its output dict."""
+    """Execute a graph experiment and return its output dict.
+
+    When kwargs contains keys matching ExperimentInput port_names,
+    those values are injected directly into the ExperimentInput node's
+    inputs, enabling sub-experiment (subroutine) invocation.
+    """
     nodes: list[dict] = graph_def.get("nodes", [])
     edges: list[dict] = graph_def.get("edges", [])
     kwargs = kwargs or {}
     if not nodes:
         return {"error": "Empty graph — add at least one node"}
+
+    # Pre-compute ExperimentInput port names for efficient lookup
+    _exp_input_ports: dict[str, str] = {}  # node_id -> port_name
+    for n in nodes:
+        ntype, nparams = _node_type_and_params(n)
+        if ntype == "ExperimentInput":
+            _exp_input_ports[n["id"]] = str(nparams.get("port_name") or "input")
 
     ordered = _topo_sort(nodes, edges)
     res: dict[str, dict] = {}
@@ -1398,6 +1523,13 @@ def execute_graph(graph_def: dict[str, Any], kwargs: dict[str, Any] | None = Non
                     node_inputs[tp] = res[src][sp]
                 else:
                     node_inputs.update(res[src])
+
+        # Inject kwargs into ExperimentInput nodes by matching port_name
+        if nid in _exp_input_ports:
+            pname = _exp_input_ports[nid]
+            if pname in kwargs:
+                node_inputs[pname] = kwargs[pname]
+                node_inputs["value"] = kwargs[pname]
 
         atomic = ATOMIC_NODES.get(ntype)
         if not atomic:

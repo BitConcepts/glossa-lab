@@ -1,0 +1,19 @@
+{
+  "id": "tier_diagnostics",
+  "name": "Tier Diagnostics — Multi-Script Classifier",
+  "description": "Classifies the Indus corpus against known writing system benchmarks using entropy, sign count, and word-length metrics. Identifies which tier (logographic/syllabic/abjad) the Indus script most resembles. Run on any corpus by changing the CorpusReader corpus_id.",
+  "nodes": [
+    {"id": "corpus", "type": "expNode", "data": {"atomicId": "CorpusReader", "label": "Load Corpus", "params": {}}, "position": {"x": 60, "y": 200}},
+    {"id": "freq", "type": "expNode", "data": {"atomicId": "FreqCounter", "label": "Frequency", "params": {}}, "position": {"x": 300, "y": 120}},
+    {"id": "entropy", "type": "expNode", "data": {"atomicId": "EntropyCalc", "label": "Entropy H1", "params": {}}, "position": {"x": 540, "y": 120}},
+    {"id": "classify", "type": "expNode", "data": {"atomicId": "WritingSystemClassifier", "label": "Classify Script Type", "params": {}}, "position": {"x": 780, "y": 200}},
+    {"id": "out", "type": "expNode", "data": {"atomicId": "JSONExport", "label": "Save Tier Report", "params": {"filename": "tier_diagnostics.json"}}, "position": {"x": 1020, "y": 200}}
+  ],
+  "edges": [
+    {"id": "e1", "source": "corpus", "target": "freq", "sourcePort": "sequences", "targetPort": "sequences"},
+    {"id": "e2", "source": "freq", "target": "entropy", "sourcePort": "freq_map", "targetPort": "freq_map"},
+    {"id": "e3", "source": "entropy", "target": "classify", "sourcePort": "h1", "targetPort": "h1"},
+    {"id": "e4", "source": "freq", "target": "classify", "sourcePort": "distinct_symbols", "targetPort": "distinct_symbols"},
+    {"id": "e5", "source": "classify", "target": "out", "sourcePort": "all_ranked", "targetPort": "data"}
+  ]
+}

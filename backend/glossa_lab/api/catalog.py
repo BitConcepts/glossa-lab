@@ -34,16 +34,19 @@ class PipelineCatalogEntry(BaseModel):
 
 
 class ExperimentCatalogEntry(BaseModel):
-    """Experiment catalog entry."""
+    """Experiment catalog entry (H16: graph experiments only)."""
 
     id: str
     name: str
     category: str
     description: str
-    command: str
+    source: str = "graph"
+    command: str = ""           # legacy field; empty for graph experiments
     results_file: str | None = None
     requires_key: str | None = None
-    estimated_time: str
+    estimated_time: str = "varies"
+    node_count: int = 0
+    edge_count: int = 0
 
 
 class ModelDetailEntry(BaseModel):

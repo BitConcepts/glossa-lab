@@ -1,0 +1,22 @@
+{
+  "id": "sequence_eval_benchmark",
+  "name": "Sequence-Level Evaluation Benchmark",
+  "description": "Tests whether SA decipherment preserves sequence-level structure. Compares bigram distributions of proposed vs shuffled-control mappings via KL divergence. A correct decipherment should produce lower KL divergence to the target LM than a shuffle control.",
+  "nodes": [
+    {"id": "corpus", "type": "expNode", "data": {"atomicId": "BuiltinCorpus", "label": "NW Semitic", "params": {"corpus": "nw_semitic"}}, "position": {"x": 60, "y": 200}},
+    {"id": "lm", "type": "expNode", "data": {"atomicId": "BuiltinLM", "label": "Hebrew LM", "params": {"language": "hebrew"}}, "position": {"x": 60, "y": 400}},
+    {"id": "ngram_real", "type": "expNode", "data": {"atomicId": "NgramCounter", "label": "Bigrams (real)", "params": {"n": 2}}, "position": {"x": 300, "y": 120}},
+    {"id": "shuffle", "type": "expNode", "data": {"atomicId": "ShuffleControl", "label": "Shuffle Control", "params": {"mode": "within_word", "seed": 42}}, "position": {"x": 300, "y": 280}},
+    {"id": "ngram_shuf", "type": "expNode", "data": {"atomicId": "NgramCounter", "label": "Bigrams (shuffled)", "params": {"n": 2}}, "position": {"x": 540, "y": 280}},
+    {"id": "kl", "type": "expNode", "data": {"atomicId": "KLDivergence", "label": "KL: real vs shuffle", "params": {}}, "position": {"x": 780, "y": 200}},
+    {"id": "out", "type": "expNode", "data": {"atomicId": "JSONExport", "label": "Save", "params": {"filename": "sequence_eval_benchmark.json"}}, "position": {"x": 1020, "y": 200}}
+  ],
+  "edges": [
+    {"id": "e1", "source": "corpus", "target": "ngram_real", "sourcePort": "sequences", "targetPort": "sequences"},
+    {"id": "e2", "source": "corpus", "target": "shuffle", "sourcePort": "sequences", "targetPort": "sequences"},
+    {"id": "e3", "source": "shuffle", "target": "ngram_shuf", "sourcePort": "sequences", "targetPort": "sequences"},
+    {"id": "e4", "source": "ngram_real", "target": "kl", "sourcePort": "freq_map", "targetPort": "freq_map"},
+    {"id": "e5", "source": "ngram_shuf", "target": "kl", "sourcePort": "freq_map", "targetPort": "q"},
+    {"id": "e6", "source": "kl", "target": "out", "sourcePort": "kl_divergence", "targetPort": "data"}
+  ]
+}

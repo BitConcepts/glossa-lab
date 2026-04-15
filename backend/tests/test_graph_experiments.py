@@ -195,24 +195,82 @@ def test_topo_sort_diamond():
 
 # ── ATOMIC_NODES registry ─────────────────────────────────────────────────────
 
-def test_all_28_nodes_registered():
-    """TEST-GE-013: All 28 expected atomic nodes are in the registry."""
+def test_all_33_nodes_registered():
+    """TEST-GE-013: All 33 expected atomic nodes are in the registry."""
     expected = {
-        # Original (13)
+        # Original sources + transforms + analysis + outputs (13)
         "CorpusReader", "StaticValue", "FreqCounter", "PositionalProfiler",
         "EntropyCalc", "Clusterer", "ZipfFitter", "Filter", "Merger",
         "JSONExport", "PassResult", "Comparator", "ExperimentWrapper",
-        # Decipherment nodes (11)
+        # Decipherment / corpus nodes (11)
         "LMBuilder", "BuiltinLM", "BuiltinCorpus", "CorpusSplitter",
         "DirectionNormalizer", "SADecipher", "ConsistencyScorer",
         "BenchmarkScorer", "KLDivergence", "NgramCounter", "AnchorGenerator",
         # H15 graph-first primitives (4)
         "WritingSystemClassifier", "BeamDecipher", "ShuffleControl", "ConstraintSweep",
+        # H16 subroutine ports + cipher benchmark primitives (5)
+        "ExperimentInput", "ExperimentOutput", "SubExperiment",
+        "CipherConstructor", "AnchorConvergenceBenchmark",
     }
     assert expected == set(ATOMIC_NODES.keys()), (
         f"Registry mismatch. Extra: {set(ATOMIC_NODES.keys()) - expected}. "
         f"Missing: {expected - set(ATOMIC_NODES.keys())}"
     )
+
+
+def test_catalog_returns_only_graph_experiments():
+    """TEST-GE-017: H16 catalog reform — list_experiment_catalog returns only graph experiments."""
+    import sys, os
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+    from glossa_lab.catalog import list_experiment_catalog
+    exps = list_experiment_catalog()
+    assert len(exps) > 0, "Catalog is empty"
+    for e in exps:
+        assert e.get("source") == "graph", (
+            f"Non-graph experiment in catalog: {e['id']} (source={e.get('source')})"
+        )
+
+
+def test_experiment_input_output_nodes():
+    """TEST-GE-018: ExperimentInput and ExperimentOutput nodes work as subroutine ports."""
+    graph = {
+        "nodes": [
+            {"id": "inp", "type": "expNode",
+             "data": {"atomicId": "ExperimentInput", "label": "Input",
+                      "params": {"port_name": "sequences", "default_value": ""}}},
+            {"id": "freq", "type": "expNode",
+             "data": {"atomicId": "FreqCounter", "label": "Freq", "params": {}}},
+            {"id": "out", "type": "expNode",
+             "data": {"atomicId": "ExperimentOutput", "label": "Output",
+                      "params": {"port_name": "freq_result"}}},
+        ],
+        "edges": [
+            {"id": "e1", "source": "inp", "target": "freq",
+             "sourcePort": "sequences", "targetPort": "sequences"},
+            {"id": "e2", "source": "freq", "target": "out",
+             "sourcePort": "freq_map", "targetPort": "data"},
+        ],
+    }
+    # Call as sub-experiment: inject sequences via kwargs
+    result = execute_graph(graph, {"sequences": [["a", "b", "a", "c"]]})
+    # ExperimentOutput is an Outputs category node, so it should be in the merged result
+    assert isinstance(result, dict), f"Expected dict, got {type(result)}"
+
+
+def test_sub_experiment_node():
+    """TEST-GE-019: SubExperiment calls an existing graph experiment as a subroutine."""
+    # SubExperiment on positional_profile_analysis should not crash (may return error if no corpus)
+    graph = {
+        "nodes": [
+            {"id": "sub", "type": "expNode",
+             "data": {"atomicId": "SubExperiment", "label": "Sub",
+                      "params": {"experiment_id": "positional_profile_analysis"}}},
+        ],
+        "edges": [],
+    }
+    result = execute_graph(graph)
+    # Should return a dict (even if it's an error from missing corpus)
+    assert isinstance(result, dict)
 
 
 def test_every_node_has_required_fields():

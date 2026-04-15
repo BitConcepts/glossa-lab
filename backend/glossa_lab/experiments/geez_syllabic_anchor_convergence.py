@@ -24,7 +24,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from glossa_lab.experiment_base import ExperimentBase
+# ExperimentBase removed (H15/H16: this experiment is now the graph spec geez_anchor_convergence)
+# Helper functions retained as internal utilities for the graph engine.
 from glossa_lab.experiments._parallel import compute_device_label, run_seeds_parallel
 
 _log = logging.getLogger("glossa_lab.experiments.geez")
@@ -269,10 +270,13 @@ def _conclusions(agg):
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# ExperimentBase subclass (H12 compliant)
+# H15/H16 NOTE: This Python class has been removed.
+# The canonical experiment is: experiments/graphs/geez_anchor_convergence.json
+# Run via: shell.cmd python backend/scripts/run_geez_anchor_convergence.py
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class GeezSyllabicAnchorConvergence(ExperimentBase):
+if False:  # Disabled — kept only as historical reference
+    class GeezSyllabicAnchorConvergence:
     """Geez Syllabic Anchor-Convergence Validation.
 
     Fully UI-discoverable ExperimentBase subclass.
@@ -449,4 +453,5 @@ def _save_csvs(inv, si, freq, sp, aggregated):
 
 
 if __name__ == "__main__":
-    GeezSyllabicAnchorConvergence().run_cli()
+    import subprocess, sys
+    subprocess.run([sys.executable, "backend/scripts/run_geez_anchor_convergence.py"])

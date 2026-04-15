@@ -3392,3 +3392,81 @@ Risks:
 - JSONExport filename for `fuls_nw_semitic_decipher_run` saved to backend/scripts/reports/ when run from runner script (CWD-dependent path resolution); direct graph execution from shell.cmd saves to glossa-lab/reports/ correctly
 
 Next step: Global Ancient Language Platform Phase 1 (DB migration for language_id), or send email to Dr. Fuls, or fix ExperimentWrapper 6 remaining specs.
+
+---
+
+## [2026-04-15] Entry — All H16 Phases: User-Definable Platform Complete
+
+Objective: Execute all 5 phases of H16 plan.
+
+Phase 1 — CorpusLM (user-defined language models):
+- CorpusLM atomic node added: builds LM from any DB corpus by corpus_id
+- No Python file needed to add a language; any uploaded corpus becomes an LM source
+- AnchorSetLoader atomic node: loads verified anchor pairs from anchor_sets DB table
+- ReportGenerator atomic node: generates structured report from user-defined template
+
+Phase 2 — Report Templates (database-backed):
+- DB V7: report_templates table (id, name, description, category, sections JSON)
+- CRUD API: GET/POST/PUT/DELETE /report-templates
+- Frontend: api.ts UserReportTemplate types + listUserReportTemplates/create/update/delete
+
+Phase 3 — World Language Corpus Catalogue (34 entries):
+- DB V9: corpus_catalogue table seeded with 34 world language entries
+- 7 undeciphered (Indus, Linear A, Proto-Sinaitic, Meroitic, Rongorongo, Zapotec, Voynich)
+- 15 deciphered ancient (Ugaritic, Hebrew, Phoenician, Linear B, Geez, Sumerian, Coptic, Egyptian, Akkadian, Hittite, Greek, Latin, Oracle Bone, Sanskrit, Old Persian)
+- 12 modern typological (Arabic, English, Mandarin, Hindi, Japanese, Korean, Finnish, Turkish, Swahili, Basque, Tamil, Syriac, Russian)
+- 10 entries have local_module (one-click import); rest require manual upload
+- API: GET /corpus-catalogue (with filters), POST /corpus-catalogue/{id}/import
+- Reports & Data split: 📋 Reports tab (PDF/MD) vs 📂 Data tab (JSON/CSV/artifacts)
+
+Phase 4 — Anchor Sets:
+- DB V8: anchor_sets table (id, name, description, corpus_id, language, pairs JSON)
+- CRUD API: GET/POST/PUT/DELETE /anchor-sets (with ?corpus_id= filter)
+- Frontend: AnchorSet + AnchorPair types, full CRUD functions
+
+Phase 5 — Governance lint:
+- test_governance_lint.py: 4 tests checking new experiment files for H15/H16 violations
+- Detects hardcoded anchor dicts, corpus names, report titles, ExperimentBase subclasses
+- 36 atomic nodes (was 33): + CorpusLM, AnchorSetLoader, ReportGenerator
+
+Tests:
+- test_report_templates.py: 12 tests (CRUD lifecycle)
+- test_anchor_sets.py: 13 tests (CRUD + corpus filter)
+- test_corpus_catalogue.py: 10 tests (seeder, filters, import, idempotency)
+- test_governance_lint.py: 4 tests (H15/H16 enforcement)
+- test_graph_experiments.py: 3 new tests (new node error handling)
+- Playwright: reports.spec.ts (new), corpora.spec.ts (stale locators fixed)
+- Total: 365 passed, 1 skipped (async RAG test, needs pytest-asyncio)
+- Playwright: 72 passed, 10 skipped (backend-dependent)
+
+REQUIREMENTS.md: R9-R13 added (LM, templates, catalogue, anchors, governance)
+
+Files changed (backend): database.py (V7-V9 schema + CRUD), experiment_graph.py (+3 nodes),
+  api/report_templates.py, api/anchor_sets.py, api/corpus_catalogue.py, main.py (routers + seeder),
+  corpus_catalogue_seeder.py (34 entries), tests/test_report_templates.py,
+  tests/test_anchor_sets.py, tests/test_corpus_catalogue.py, tests/test_governance_lint.py
+Files changed (frontend): api.ts (+H16 types/functions), e2e/reports.spec.ts (new),
+  e2e/corpora.spec.ts (stale locators fixed)
+Files changed (docs): REQUIREMENTS.md (R9-R13), LEDGER.md
+
+Risks:
+- ReportGenerator node renders sections but does not produce PDF directly; PDF export
+  requires wiring through backend report_utils (planned follow-up)
+- Corpus catalogue entries without local_module cannot be imported in one click; user must
+  download from source_url and upload manually
+- The 6 ExperimentWrapper graph specs remain (contact_zone, kandles_bias, etc.) — still H15.3
+  temporary bandage; adding atomic primitives for OCR/Kandles/LinearA is next migration priority
+
+Open TODOs:
+- [ ] Frontend UI: Browse Catalogue panel in CorporaView (one-click import buttons)
+- [ ] Frontend UI: Report Template Editor in Reports tab
+- [ ] Frontend UI: Anchor Set Editor in Corpora tab
+- [ ] Remove hardcoded _REPORT_TEMPLATES dict from api/reports.py (migrate to DB)
+- [ ] Add 6 missing atomic primitives: OCRPipeline, KandlesAnalysis, LinearACircularity,
+      WritingSystemProgression, ContactZoneAnalyzer, StatsBenchmark
+- [ ] Phase 2-8 Global Ancient Language Platform (plan 5ae18708)
+- [ ] RAG module (plan 550d9dc5)
+- [ ] Fine-tune Mistral NeMo 12B
+- [ ] Send email + PDF to Dr. Fuls
+
+Next step: Frontend UI for Browse Catalogue, Report Template Editor, and Anchor Set Editor.

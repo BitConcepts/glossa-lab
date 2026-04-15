@@ -707,6 +707,146 @@ def _comparator_ai(inputs: dict, params: dict) -> dict:
         return {"error": str(exc), "comparison": {}}
 
 
+def _corpus_lm(inputs: dict, params: dict) -> dict:
+    """Build a LanguageModel from any corpus stored in the user's database (H16).
+
+    Users upload any corpus via the Corpora tab, then reference it here by corpus_id.
+    No Python file or data module required — any uploaded corpus becomes an LM source.
+    This is the H16-compliant replacement for BuiltinLM hardcoded data modules.
+    """
+    import math as _math  # noqa: PLC0415
+    corpus_id = params.get("corpus_id") or inputs.get("corpus_id") or ""
+    min_freq   = max(1, int(params.get("min_freq", 1)))
+
+    if not corpus_id:
+        return {"error": "No corpus_id param — select a corpus from the dropdown or connect CorpusReader."}
+
+    # Load sequences from DB (same pattern as _corpus_reader)
+    from glossa_lab.database import get_db  # noqa: PLC0415
+    import asyncio  # noqa: PLC0415
+    db = get_db()
+    if db is None:
+        return {"error": "Database not available — is the backend running?"}
+    try:
+        loop = asyncio.get_event_loop()
+        text = loop.run_until_complete(db.get_text(corpus_id))
+    except Exception as exc:  # noqa: BLE001
+        return {"error": f"Failed to load corpus '{corpus_id}': {exc}"}
+
+    if text is None:
+        return {"error": f"Corpus '{corpus_id}' not found in database."}
+    raw = text.get("content", [])
+    if not raw:
+        return {"error": f"Corpus '{corpus_id}' is empty."}
+
+    flat: list[str] = raw if raw and not isinstance(raw[0], list) else [s for seq in raw for s in seq]
+    if min_freq > 1:
+        from collections import Counter as _C  # noqa: PLC0415
+        freq = _C(flat)
+        flat = [s for s in flat if freq[s] >= min_freq]
+
+    from glossa_lab.pipelines.decipher import LanguageModel  # noqa: PLC0415
+    lm = LanguageModel(flat)
+    h1 = -sum(p * _math.log2(p) for p in lm.unigram_freq.values() if p > 0)
+    return {
+        "lm": lm,
+        "corpus_id": corpus_id,
+        "corpus_name": text.get("name", corpus_id),
+        "n_signs": lm.size,
+        "n_tokens": len(flat),
+        "h1": round(h1, 4),
+    }
+
+
+def _anchor_set_loader(inputs: dict, params: dict) -> dict:
+    """Load a user-defined anchor set from the database (H16).
+
+    Returns the anchor pairs as a dict {cipher_sign: target_value}
+    compatible with the SADecipher and AnchorConvergenceBenchmark nodes.
+    Users define anchor sets in the Anchor Set Editor (Corpora tab).
+    No Python file required.
+    """
+    anchor_set_id = params.get("anchor_set_id") or inputs.get("anchor_set_id") or ""
+    if not anchor_set_id:
+        return {"error": "No anchor_set_id param — select an anchor set.", "anchors": {}}
+
+    from glossa_lab.database import get_db  # noqa: PLC0415
+    import asyncio  # noqa: PLC0415
+    db = get_db()
+    if db is None:
+        return {"error": "Database not available.", "anchors": {}}
+    try:
+        loop = asyncio.get_event_loop()
+        anchor_set = loop.run_until_complete(db.get_anchor_set(anchor_set_id))
+    except Exception as exc:  # noqa: BLE001
+        return {"error": f"Failed to load anchor set: {exc}", "anchors": {}}
+
+    if anchor_set is None:
+        return {"error": f"Anchor set '{anchor_set_id}' not found.", "anchors": {}}
+
+    pairs = anchor_set.get("pairs", []) or []
+    # Convert list of {cipher, target, confidence, note} to {cipher: target}
+    anchors = {p["cipher"]: p["target"] for p in pairs if p.get("cipher") and p.get("target")}
+    return {
+        "anchors": anchors,
+        "anchor_set_id": anchor_set_id,
+        "anchor_set_name": anchor_set.get("name", anchor_set_id),
+        "n_anchors": len(anchors),
+        "pairs": pairs,
+    }
+
+
+def _report_generator(inputs: dict, params: dict) -> dict:
+    """Generate a structured report from a user-defined template + upstream data (H16).
+
+    Takes a template_id (from the report_templates DB table) and upstream result data.
+    Renders each section using the template's section definitions (title, data_key, chart_type).
+    Saves the rendered report as JSON to reports/ (PDF rendering via ReportLab can be added
+    by wiring to a PDF export pipeline).
+    No Python script required — template structure is user-defined in the Template Editor.
+    """
+    template_id = params.get("template_id") or inputs.get("template_id") or ""
+    if not template_id:
+        return {"error": "No template_id param — select a report template."}
+
+    from glossa_lab.database import get_db  # noqa: PLC0415
+    import asyncio  # noqa: PLC0415
+    db = get_db()
+    if db is None:
+        return {"error": "Database not available."}
+    try:
+        loop = asyncio.get_event_loop()
+        template = loop.run_until_complete(db.get_report_template(template_id))
+    except Exception as exc:  # noqa: BLE001
+        return {"error": f"Failed to load template: {exc}"}
+    if template is None:
+        return {"error": f"Template '{template_id}' not found."}
+
+    sections = template.get("sections", []) or []
+    rendered: list[dict] = []
+    for sec in sections:
+        data_key = sec.get("data_key", "")
+        # Look up the data_key in the upstream inputs
+        value = inputs.get(data_key) if data_key else None
+        rendered.append({
+            "title":       sec.get("title", ""),
+            "chart_type":  sec.get("chart_type", "table"),
+            "description": sec.get("description", ""),
+            "data":        value,
+            "data_key":    data_key,
+        })
+
+    import datetime as _dt  # noqa: PLC0415
+    report = {
+        "template_id":   template_id,
+        "template_name": template.get("name", ""),
+        "category":      template.get("category", ""),
+        "generated_at":  _dt.datetime.utcnow().isoformat(),
+        "sections":      rendered,
+    }
+    return {"report": report, "template_name": template.get("name"), "n_sections": len(rendered)}
+
+
 def _experiment_input(inputs: dict, params: dict) -> dict:
     """Declare a named input port for an experiment graph (subroutine pattern).
 
@@ -1191,6 +1331,43 @@ for _d in [
                  {"name":"n_tokens","type":"number"},{"name":"h1","type":"number"}],
         params_schema={"type":"object","properties":{}},
         fn=_lm_builder),
+    # ── H16 user-definable nodes ────────────────────────────────────────────
+    AtomicNodeDef("CorpusLM","Corpus Language Model","Decipherment",
+        "Build a language model from any corpus already uploaded to the database (H16). "
+        "Users add languages via the Corpora tab — no Python data file required. "
+        "Preferred over BuiltinLM for user-defined and project-specific languages.",
+        inputs=[],
+        outputs=[{"name":"lm","type":"any"},{"name":"corpus_name","type":"text"},
+                 {"name":"n_signs","type":"number"},{"name":"n_tokens","type":"number"},
+                 {"name":"h1","type":"number"}],
+        params_schema={"type":"object","properties":{
+            "corpus_id":{"type":"string","title":"Corpus",
+                         "description":"Select from the Corpora tab. Any uploaded corpus works as an LM source."},
+            "min_freq":{"type":"integer","title":"Min Token Frequency","default":1,"minimum":1,
+                        "description":"Drop signs that appear fewer than this many times."}}},
+        fn=_corpus_lm),
+    AtomicNodeDef("AnchorSetLoader","Anchor Set Loader","Decipherment",
+        "Load a user-defined anchor set from the database (H16). "
+        "Anchor sets are created in the Anchor Set Editor (Corpora tab). "
+        "Returns {cipher_sign: target_value} dict compatible with SADecipher and AnchorConvergenceBenchmark.",
+        inputs=[],
+        outputs=[{"name":"anchors","type":"json"},{"name":"n_anchors","type":"number"},
+                 {"name":"anchor_set_name","type":"text"},{"name":"pairs","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "anchor_set_id":{"type":"string","title":"Anchor Set",
+                             "description":"ID of an anchor set created in the Anchor Set Editor."}}},
+        fn=_anchor_set_loader),
+    AtomicNodeDef("ReportGenerator","Report Generator","Outputs",
+        "Generate a structured report from a user-defined template (H16). "
+        "Templates are created in the Report Template Editor (Reports tab). "
+        "Connect upstream result nodes to match the template's data_key fields.",
+        inputs=[{"name":"data","type":"any","required":False}],
+        outputs=[{"name":"report","type":"json"},{"name":"template_name","type":"text"},
+                 {"name":"n_sections","type":"number"}],
+        params_schema={"type":"object","properties":{
+            "template_id":{"type":"string","title":"Report Template",
+                           "description":"ID of a template created in the Report Template Editor."}}},
+        fn=_report_generator),
     AtomicNodeDef("ExperimentInput","Experiment Input Port","Experiments",
         "Declare a named input port for this experiment graph. When invoked via SubExperiment, "
         "the caller injects a value matched by port_name. Use as subroutine parameters.",

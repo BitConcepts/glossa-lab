@@ -157,3 +157,70 @@
 | `rag.py` — `build_index()` + `query()` | 75% |
 | `api/studies.py` — `run_study()` | 70% |
 | Frontend component tests (React Testing Library) | Key interactions per builder |
+
+---
+
+## R9 — User-Definable Language Models (H16 Phase 1)
+
+- LM-1: CorpusLM atomic node builds a LanguageModel from any corpus stored in the database.
+- LM-2: CorpusLM accepts corpus_id and min_freq params; returns lm, n_signs, n_tokens, h1.
+- LM-3: CorpusLM returns a descriptive error (not a crash) when corpus_id is missing or not found.
+- LM-4: Any corpus uploaded via the Corpora tab is immediately usable as an LM source.
+- LM-5: BuiltinLM is retained for backward compatibility but CorpusLM is the preferred path.
+
+---
+
+## R10 — User-Definable Report Templates (H16 Phase 2)
+
+- RT-1: report_templates table stores user-defined templates (name, description, category, sections).
+- RT-2: sections is a JSON array of SectionDef objects (title, data_source, data_key, chart_type, include_table).
+- RT-3: GET /report-templates returns all templates; POST creates; PUT updates; DELETE removes.
+- RT-4: ReportGenerator atomic node generates a structured report from a template_id + upstream data.
+- RT-5: All hardcoded Python template definitions in reports.py are migrated to DB in future phase.
+- RT-6: Reports & Data view splits into 📋 Reports tab (PDF/MD) and 📂 Data tab (JSON/CSV/artifacts).
+
+---
+
+## R11 — World Language Corpus Catalogue (H16 Phase 3)
+
+- CC-1: corpus_catalogue table stores at least 30 world language entries on startup (idempotent seeder).
+- CC-2: Entries cover undeciphered scripts, deciphered ancient scripts, and modern typological comparators.
+- CC-3: GET /corpus-catalogue returns entries with already_imported flag enriched from user's corpus DB.
+- CC-4: GET /corpus-catalogue supports ?undeciphered=true/false and ?script_type= filters.
+- CC-5: POST /corpus-catalogue/{id}/import imports a bundled local_module entry in one click.
+- CC-6: Entries without local_module return HTTP 501 with a message to upload manually.
+- CC-7: Import is idempotent — re-importing an existing corpus returns already_exists reason, not an error.
+
+---
+
+## R12 — Anchor Set Library (H16 Phase 4)
+
+- AS-1: anchor_sets table stores user-defined anchor pairs (cipher, target, confidence, note).
+- AS-2: GET /anchor-sets returns all sets; optional ?corpus_id= filter for per-corpus sets.
+- AS-3: POST creates; PUT updates; DELETE removes.
+- AS-4: AnchorSetLoader atomic node loads anchor pairs from DB by anchor_set_id.
+- AS-5: AnchorSetLoader returns {anchors: {cipher: target}, n_anchors, pairs} compatible with SADecipher.
+
+---
+
+## R13 — Governance Enforcement (H16 Phase 5)
+
+- GOV-1: New experiment Python files must not define ExperimentBase subclasses (H15/H16).
+- GOV-2: New experiment Python files must not contain hardcoded anchor dicts.
+- GOV-3: New script Python files must not contain hardcoded study-specific report titles.
+- GOV-4: Governance lint runs as part of the standard test suite (shell.cmd test).
+- GOV-5: Legacy files in an explicit whitelist are exempted; the whitelist shrinks with migration.
+
+---
+
+## Test Coverage Targets (updated)
+
+| Area | Min Coverage |
+|------|-------------|
+| `experiment_graph.py` — atomic node functions | 80% |
+| `experiment_graph.py` — `execute_graph()` | 90% |
+| `database.py` — report_templates / anchor_sets / corpus_catalogue CRUD | 90% |
+| `api/report_templates.py` | 90% |
+| `api/anchor_sets.py` | 90% |
+| `api/corpus_catalogue.py` | 80% |
+| Playwright — corpora, reports, experiment builder | Core interactions per view |

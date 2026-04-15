@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Increment this when adding a new _SCHEMA_Vn block below.
 # _apply_schema will raise if the DB is somehow ahead of the code.
-_SCHEMA_VERSION = 6
+_SCHEMA_VERSION = 9
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -122,6 +122,48 @@ _SCHEMA_V6 = """
 ALTER TABLE texts ADD COLUMN reading_direction TEXT NOT NULL DEFAULT 'unknown';
 """
 
+_SCHEMA_V7 = """
+CREATE TABLE IF NOT EXISTS report_templates (
+    id          TEXT PRIMARY KEY,
+    name        TEXT NOT NULL,
+    description TEXT NOT NULL DEFAULT '',
+    category    TEXT NOT NULL DEFAULT 'General',
+    sections    TEXT NOT NULL DEFAULT '[]',
+    created_at  TEXT NOT NULL,
+    updated_at  TEXT NOT NULL
+);
+"""
+
+_SCHEMA_V8 = """
+CREATE TABLE IF NOT EXISTS anchor_sets (
+    id          TEXT PRIMARY KEY,
+    name        TEXT NOT NULL,
+    description TEXT NOT NULL DEFAULT '',
+    corpus_id   TEXT,
+    language    TEXT NOT NULL DEFAULT '',
+    pairs       TEXT NOT NULL DEFAULT '[]',
+    created_at  TEXT NOT NULL,
+    updated_at  TEXT NOT NULL
+);
+"""
+
+_SCHEMA_V9 = """
+CREATE TABLE IF NOT EXISTS corpus_catalogue (
+    id              TEXT PRIMARY KEY,
+    name            TEXT NOT NULL,
+    language        TEXT NOT NULL DEFAULT '',
+    language_family TEXT NOT NULL DEFAULT '',
+    script_type     TEXT NOT NULL DEFAULT '',
+    period          TEXT NOT NULL DEFAULT '',
+    tokens_approx   INTEGER NOT NULL DEFAULT 0,
+    source_url      TEXT NOT NULL DEFAULT '',
+    license         TEXT NOT NULL DEFAULT '',
+    description     TEXT NOT NULL DEFAULT '',
+    local_module    TEXT NOT NULL DEFAULT '',
+    is_undeciphered INTEGER NOT NULL DEFAULT 0
+);
+"""
+
 # Module-level singleton
 _db: Database | None = None
 
@@ -196,6 +238,21 @@ class Database:
             except Exception:  # noqa: BLE001
                 pass  # Column already exists (idempotent)
             await self._conn.execute("UPDATE _schema_version SET version = ?", (6,))
+
+        if current_version < 7:
+            await self._conn.executescript(_SCHEMA_V7)
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (7,))
+            current_version = 7
+
+        if current_version < 8:
+            await self._conn.executescript(_SCHEMA_V8)
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (8,))
+            current_version = 8
+
+        if current_version < 9:
+            await self._conn.executescript(_SCHEMA_V9)
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (9,))
+            current_version = 9
 
         if current_version > _SCHEMA_VERSION:
             logger.warning(
@@ -819,6 +876,173 @@ class Database:
         await self._conn.commit()
         return existing
 
+    # ── Report Templates (V7) ────────────────────────────────────────────
+
+    async def list_report_templates(self) -> list[dict[str, Any]]:
+        assert self._conn
+        cursor = await self._conn.execute("SELECT * FROM report_templates ORDER BY name ASC")
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    async def get_report_template(self, tid: str) -> dict[str, Any] | None:
+        assert self._conn
+        cursor = await self._conn.execute("SELECT * FROM report_templates WHERE id=?", (tid,))
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    async def create_report_template(
+        self,
+        *,
+        name: str,
+        description: str = "",
+        category: str = "General",
+        sections: list[dict] | None = None,
+        created_at: str,
+    ) -> dict[str, Any]:
+        assert self._conn
+        tid = uuid.uuid4().hex[:12]
+        await self._conn.execute(
+            """INSERT INTO report_templates (id,name,description,category,sections,created_at,updated_at)
+               VALUES (?,?,?,?,?,?,?)""",
+            (tid, name, description, category, json.dumps(sections or []), created_at, created_at),
+        )
+        await self._conn.commit()
+        return await self.get_report_template(tid)  # type: ignore[return-value]
+
+    async def update_report_template(self, tid: str, **fields: Any) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_report_template(tid)
+        if existing is None:
+            return None
+        name = fields.get("name", existing["name"])
+        description = fields.get("description", existing["description"])
+        category = fields.get("category", existing["category"])
+        sections = json.dumps(fields["sections"]) if "sections" in fields else json.dumps(existing["sections"])
+        await self._conn.execute(
+            """UPDATE report_templates SET name=?,description=?,category=?,sections=?,
+               updated_at=datetime('now') WHERE id=?""",
+            (name, description, category, sections, tid),
+        )
+        await self._conn.commit()
+        return await self.get_report_template(tid)
+
+    async def delete_report_template(self, tid: str) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_report_template(tid)
+        if existing is None:
+            return None
+        await self._conn.execute("DELETE FROM report_templates WHERE id=?", (tid,))
+        await self._conn.commit()
+        return existing
+
+    # ── Anchor Sets (V8) ─────────────────────────────────────────────────
+
+    async def list_anchor_sets(self, corpus_id: str | None = None) -> list[dict[str, Any]]:
+        assert self._conn
+        if corpus_id:
+            cursor = await self._conn.execute(
+                "SELECT * FROM anchor_sets WHERE corpus_id=? ORDER BY name ASC", (corpus_id,)
+            )
+        else:
+            cursor = await self._conn.execute("SELECT * FROM anchor_sets ORDER BY name ASC")
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    async def get_anchor_set(self, aid: str) -> dict[str, Any] | None:
+        assert self._conn
+        cursor = await self._conn.execute("SELECT * FROM anchor_sets WHERE id=?", (aid,))
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    async def create_anchor_set(
+        self,
+        *,
+        name: str,
+        description: str = "",
+        corpus_id: str | None = None,
+        language: str = "",
+        pairs: list[dict] | None = None,
+        created_at: str,
+    ) -> dict[str, Any]:
+        assert self._conn
+        aid = uuid.uuid4().hex[:12]
+        await self._conn.execute(
+            """INSERT INTO anchor_sets (id,name,description,corpus_id,language,pairs,created_at,updated_at)
+               VALUES (?,?,?,?,?,?,?,?)""",
+            (aid, name, description, corpus_id, language, json.dumps(pairs or []), created_at, created_at),
+        )
+        await self._conn.commit()
+        return await self.get_anchor_set(aid)  # type: ignore[return-value]
+
+    async def update_anchor_set(self, aid: str, **fields: Any) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_anchor_set(aid)
+        if existing is None:
+            return None
+        name = fields.get("name", existing["name"])
+        description = fields.get("description", existing["description"])
+        corpus_id = fields.get("corpus_id", existing.get("corpus_id"))
+        language = fields.get("language", existing["language"])
+        pairs = json.dumps(fields["pairs"]) if "pairs" in fields else json.dumps(existing["pairs"])
+        await self._conn.execute(
+            """UPDATE anchor_sets SET name=?,description=?,corpus_id=?,language=?,pairs=?,
+               updated_at=datetime('now') WHERE id=?""",
+            (name, description, corpus_id, language, pairs, aid),
+        )
+        await self._conn.commit()
+        return await self.get_anchor_set(aid)
+
+    async def delete_anchor_set(self, aid: str) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_anchor_set(aid)
+        if existing is None:
+            return None
+        await self._conn.execute("DELETE FROM anchor_sets WHERE id=?", (aid,))
+        await self._conn.commit()
+        return existing
+
+    # ── Corpus Catalogue (V9) ─────────────────────────────────────────────
+
+    async def list_corpus_catalogue(
+        self,
+        script_type: str | None = None,
+        is_undeciphered: bool | None = None,
+    ) -> list[dict[str, Any]]:
+        assert self._conn
+        q = "SELECT * FROM corpus_catalogue WHERE 1=1"
+        args: list = []
+        if script_type:
+            q += " AND script_type=?"; args.append(script_type)
+        if is_undeciphered is not None:
+            q += " AND is_undeciphered=?"; args.append(1 if is_undeciphered else 0)
+        q += " ORDER BY language_family ASC, name ASC"
+        cursor = await self._conn.execute(q, args)
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    async def get_corpus_catalogue_entry(self, cid: str) -> dict[str, Any] | None:
+        assert self._conn
+        cursor = await self._conn.execute("SELECT * FROM corpus_catalogue WHERE id=?", (cid,))
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    async def upsert_corpus_catalogue_entry(self, entry: dict[str, Any]) -> dict[str, Any]:
+        """Insert or replace a catalogue entry (used by the seeder)."""
+        assert self._conn
+        await self._conn.execute(
+            """INSERT OR REPLACE INTO corpus_catalogue
+               (id,name,language,language_family,script_type,period,
+                tokens_approx,source_url,license,description,local_module,is_undeciphered)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?)""",
+            (
+                entry["id"], entry["name"], entry.get("language", ""),
+                entry.get("language_family", ""), entry.get("script_type", ""),
+                entry.get("period", ""), entry.get("tokens_approx", 0),
+                entry.get("source_url", ""), entry.get("license", ""),
+                entry.get("description", ""), entry.get("local_module", ""),
+                1 if entry.get("is_undeciphered") else 0,
+            ),
+        )
+        await self._conn.commit()
+        return await self.get_corpus_catalogue_entry(entry["id"])  # type: ignore[return-value]
+
     # ── Helpers ──────────────────────────────────────────────────
 
     @staticmethod
@@ -836,6 +1060,8 @@ class Database:
             "study_ids",
             "exp_ids",
             "tags",
+            "sections",   # report_templates
+            "pairs",      # anchor_sets
         ):
             if field in d and isinstance(d[field], str):
                 try:

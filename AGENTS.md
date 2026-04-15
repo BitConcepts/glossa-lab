@@ -858,6 +858,51 @@ Document any deliberate bypass with a comment explaining why.
 
 ---
 
+## PYTHON EXECUTION RULE (H14 — MANDATORY)
+
+> Never run Python code via `python -c "..."`. Always use a script file.
+
+### H14.1 — No inline python -c
+
+`python -c "..."` is **absolutely forbidden** for any non-trivial command because:
+- It cannot be interrupted cleanly (Ctrl-C / abort does not stop the computation)
+- Long inline strings fail silently on Windows CMD/PowerShell
+- Output does not stream — the caller blocks until the process exits or times out
+- Debugging and logging are broken
+- Shell timeouts behave unpredictably
+
+### H14.2 — Required pattern: write a script file, then execute it
+
+For any experiment, benchmark, verification, or multi-line Python:
+
+```bat
+:: 1. Write the script to a temp file
+shell.cmd python backend/scripts/my_script.py
+
+:: OR for one-off runs:
+:: Write content to a .py file first, then:
+shell.cmd python my_run.py
+```
+
+For the agent:
+1. Use `create_file` to write the Python to a `.py` file in `backend/scripts/` or as a temp file
+2. Then execute with `shell.cmd python <path/to/file.py>`
+3. If the run needs to be stopped, the user can Ctrl-C the shell — which works correctly for script files
+
+### H14.3 — One-liner exception (trivial checks only)
+
+The ONLY acceptable use of `python -c` is for **single-line import/version checks** with zero computation:
+```bat
+python -c "import cupy; print(cupy.__version__)"
+```
+Anything with a loop, function call, or more than one statement MUST be a script file.
+
+### H14.4 — Specsmith issue
+
+This rule is tracked as specsmith governance issue **SPEC-GL-001**: *"Python agent execution must use script files — python -c is forbidden for non-trivial commands."* Filed 2026-04-15.
+
+---
+
 ## COMPUTE DEVICE REPORTING (H13)
 
 > All jobs MUST report their compute device. The UI MUST display it.

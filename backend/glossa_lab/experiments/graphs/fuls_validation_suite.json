@@ -1,0 +1,18 @@
+{
+  "id": "fuls_validation_suite",
+  "name": "Fuls Validation Suite — Composite",
+  "description": "Composite validation running three benchmark experiments as sub-experiments: (1) Fuls NW Semitic Benchmark, (2) Ventris Linear B Validation, (3) Tier 3 Sumerian. Merges results for cross-tier comparison. Demonstrates SubExperiment subroutine pattern.",
+  "nodes": [
+    {"id": "nws", "type": "expNode", "data": {"atomicId": "SubExperiment", "label": "NW Semitic Benchmark", "params": {"experiment_id": "fuls_nw_semitic_benchmark"}}, "position": {"x": 60, "y": 120}},
+    {"id": "ventris", "type": "expNode", "data": {"atomicId": "SubExperiment", "label": "Ventris Validation", "params": {"experiment_id": "ventris_validation"}}, "position": {"x": 60, "y": 300}},
+    {"id": "sumerian", "type": "expNode", "data": {"atomicId": "SubExperiment", "label": "Sumerian Validation", "params": {"experiment_id": "tier3_sumerian_validation"}}, "position": {"x": 60, "y": 480}},
+    {"id": "merge", "type": "expNode", "data": {"atomicId": "Merger", "label": "Merge All Results", "params": {}}, "position": {"x": 380, "y": 300}},
+    {"id": "out", "type": "expNode", "data": {"atomicId": "JSONExport", "label": "Save Suite Report", "params": {"filename": "fuls_validation_suite.json"}}, "position": {"x": 620, "y": 300}}
+  ],
+  "edges": [
+    {"id": "e1", "source": "nws", "target": "merge", "sourcePort": "result", "targetPort": "a"},
+    {"id": "e2", "source": "ventris", "target": "merge", "sourcePort": "result", "targetPort": "b"},
+    {"id": "e3", "source": "sumerian", "target": "merge", "sourcePort": "result", "targetPort": "c"},
+    {"id": "e4", "source": "merge", "target": "out", "sourcePort": "json", "targetPort": "data"}
+  ]
+}

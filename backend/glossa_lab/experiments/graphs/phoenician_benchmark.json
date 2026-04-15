@@ -1,0 +1,18 @@
+{
+  "id": "phoenician_benchmark",
+  "name": "Phoenician Benchmark (Hebrew LM)",
+  "description": "Beam decipherment of the Phoenician corpus (KAI inscriptions, ~5000 tokens) against Old Hebrew as the target language model. Phoenician is a sister script to Hebrew. Measures top-1 accuracy. Expected ~96% per prior Python study.",
+  "nodes": [
+    {"id": "corpus", "type": "expNode", "data": {"atomicId": "BuiltinCorpus", "label": "Phoenician", "params": {"corpus": "phoenician"}}, "position": {"x": 60, "y": 200}},
+    {"id": "lm", "type": "expNode", "data": {"atomicId": "BuiltinLM", "label": "Hebrew LM", "params": {"language": "hebrew"}}, "position": {"x": 60, "y": 380}},
+    {"id": "decipher", "type": "expNode", "data": {"atomicId": "BeamDecipher", "label": "Beam (w=200)", "params": {"beam_width": 200, "surjective": true}}, "position": {"x": 340, "y": 280}},
+    {"id": "score", "type": "expNode", "data": {"atomicId": "BenchmarkScorer", "label": "Score vs Hebrew key", "params": {}}, "position": {"x": 600, "y": 280}},
+    {"id": "out", "type": "expNode", "data": {"atomicId": "JSONExport", "label": "Save", "params": {"filename": "phoenician_benchmark.json"}}, "position": {"x": 840, "y": 280}}
+  ],
+  "edges": [
+    {"id": "e1", "source": "corpus", "target": "decipher", "sourcePort": "sequences", "targetPort": "sequences"},
+    {"id": "e2", "source": "lm", "target": "decipher", "sourcePort": "lm", "targetPort": "lm"},
+    {"id": "e3", "source": "decipher", "target": "score", "sourcePort": "proposed_mapping", "targetPort": "proposed_mapping"},
+    {"id": "e4", "source": "score", "target": "out", "sourcePort": "accuracy", "targetPort": "data"}
+  ]
+}

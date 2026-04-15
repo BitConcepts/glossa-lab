@@ -7,7 +7,8 @@ import { useEffect, useState } from "react";
 import {
   listReports, deleteReport, getReportDownloadUrl, openReportFolder,
   listStudies, aiReportSynthesis,
-  type CatalogReport, type StudyResponse,
+  listReportTemplates, generateReport,
+  type CatalogReport, type StudyResponse, type ReportTemplate,
 } from "../api";
 import { fmtDateTimeCompact } from "../dateFormat";
 
@@ -46,7 +47,39 @@ export function ReportsView() {
   const [groupByExp, setGroupByExp] = useState(true); // default on
   const [studies, setStudies] = useState<StudyResponse[]>([]);
   const [popupBlocked, setPopupBlocked] = useState<string | null>(null);
-  // ── Compose mode ──────────────────────────────────────────────
+  // ── Generate PDF Report modal ─────────────────────────────────────────
+  const [showGenerateModal, setShowGenerateModal] = useState(false);
+  const [templates, setTemplates] = useState<ReportTemplate[]>([]);
+  const [selectedTemplate, setSelectedTemplate] = useState<string>("");
+  const [generating, setGenerating] = useState(false);
+  const [generateMsg, setGenerateMsg] = useState<string | null>(null);
+
+  const openGenerateModal = async () => {
+    setGenerateMsg(null);
+    setShowGenerateModal(true);
+    try {
+      const t = await listReportTemplates();
+      setTemplates(t);
+      if (t.length > 0) setSelectedTemplate(t[0].id);
+    } catch { setTemplates([]); }
+  };
+
+  const handleGenerate = async () => {
+    if (!selectedTemplate) return;
+    setGenerating(true);
+    setGenerateMsg(null);
+    try {
+      const r = await generateReport(selectedTemplate);
+      setGenerateMsg(r.message);
+      setTimeout(() => { setShowGenerateModal(false); setGenerateMsg(null); load(); }, 3000);
+    } catch (e) {
+      setGenerateMsg(e instanceof Error ? e.message : "Generation failed");
+    } finally {
+      setGenerating(false);
+    }
+  };
+
+  // ── Compose mode ───────────────────────────────────────────────
   const [composeMode, setComposeMode] = useState(false);
   const [selected, setSelected] = useState<Set<string>>(new Set());
 
@@ -264,6 +297,13 @@ export function ReportsView() {
         <h2 style={{ margin: 0 }}>Reports</h2>
         <div style={{ display: "flex", gap: 6 }}>
           <button
+            onClick={() => void openGenerateModal()}
+            style={{ ...btnStyle, padding: "4px 12px", fontSize: 12, background: "#16a34a" }}
+            title="Generate a PDF report from experiment results"
+          >
+            📄 Generate Report
+          </button>
+          <button
             onClick={() => { setComposeMode((m) => !m); setSelected(new Set()); }}
             style={{ ...btnStyle, padding: "4px 12px", fontSize: 12,
               background: composeMode ? "#7c3aed" : "#f3f4f6",
@@ -276,6 +316,81 @@ export function ReportsView() {
             ⟳ Refresh
           </button>
         </div>
+
+      {/* Generate Report Modal */}
+      {showGenerateModal && (
+        <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.45)", zIndex: 9000,
+                      display: "flex", alignItems: "center", justifyContent: "center" }}
+             onClick={() => setShowGenerateModal(false)}>
+          <div style={{ background: "#fff", borderRadius: 10, padding: 28, maxWidth: 560, width: "90%",
+                        boxShadow: "0 20px 60px rgba(0,0,0,0.25)" }}
+               onClick={(e) => e.stopPropagation()}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+              <h3 style={{ margin: 0, fontSize: 16, color: "#111827" }}>📄 Generate PDF Report</h3>
+              <button onClick={() => setShowGenerateModal(false)}
+                style={{ border: "none", background: "none", fontSize: 20, cursor: "pointer", color: "#9ca3af" }}>×</button>
+            </div>
+            <p style={{ fontSize: 12, color: "#6b7280", margin: "0 0 16px" }}>
+              Select a template. The corresponding experiments must have been run first.
+              The PDF will appear in the Reports list when complete, and the job will show in the Jobs panel.
+            </p>
+            {templates.length === 0
+              ? <p style={{ color: "#9ca3af", fontSize: 13 }}>Loading templates…</p>
+              : (
+                <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 20 }}>
+                  {templates.map((t) => (
+                    <label key={t.id} style={{
+                      display: "flex", alignItems: "flex-start", gap: 10, padding: "10px 14px",
+                      border: `2px solid ${selectedTemplate === t.id ? "#16a34a" : "#e5e7eb"}`,
+                      borderRadius: 8, cursor: "pointer",
+                      background: selectedTemplate === t.id ? "#f0fdf4" : "#fafafa",
+                    }}>
+                      <input type="radio" name="template" value={t.id}
+                        checked={selectedTemplate === t.id}
+                        onChange={() => setSelectedTemplate(t.id)}
+                        style={{ marginTop: 2 }} />
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontWeight: 700, fontSize: 13, color: "#111827" }}>
+                          {t.name}
+                          {!t.ready && (
+                            <span style={{ marginLeft: 8, fontSize: 10, color: "#d97706",
+                                           background: "#fef3c7", padding: "1px 6px", borderRadius: 4 }}>
+                              ⚠ run experiments first
+                            </span>
+                          )}
+                        </div>
+                        <div style={{ fontSize: 11, color: "#6b7280", marginTop: 2 }}>{t.description}</div>
+                        <div style={{ fontSize: 10, color: "#9ca3af", marginTop: 2 }}>{t.category}</div>
+                      </div>
+                    </label>
+                  ))}
+                </div>
+              )}
+            {generateMsg && (
+              <div style={{ padding: "8px 12px", borderRadius: 6, marginBottom: 12, fontSize: 12,
+                             background: generateMsg.includes("fail") || generateMsg.includes("Cannot")
+                               ? "#fef2f2" : "#f0fdf4",
+                             color: generateMsg.includes("fail") || generateMsg.includes("Cannot")
+                               ? "#dc2626" : "#16a34a" }}>
+                {generateMsg}
+              </div>
+            )}
+            <div style={{ display: "flex", gap: 8, justifyContent: "flex-end" }}>
+              <button onClick={() => setShowGenerateModal(false)}
+                style={{ padding: "6px 16px", border: "1px solid #d1d5db", borderRadius: 4, background: "#fff",
+                         fontSize: 13, cursor: "pointer", color: "#374151" }}>Cancel</button>
+              <button
+                onClick={() => void handleGenerate()}
+                disabled={!selectedTemplate || generating}
+                style={{ padding: "6px 20px", background: generating ? "#6b7280" : "#16a34a",
+                         color: "#fff", border: "none", borderRadius: 4, fontSize: 13,
+                         cursor: generating ? "not-allowed" : "pointer", fontWeight: 600 }}>
+                {generating ? "⏳ Generating…" : "Generate PDF"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       </div>
 
       {/* Compose toolbar */}

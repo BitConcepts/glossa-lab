@@ -278,6 +278,96 @@ _SEEDS: list[dict[str, Any]] = [
             ],
         },
     },
+    # ── Dr. Fuls Collaboration Studies ────────────────────────────────
+    {
+        "name": "Fuls NW Semitic — RTL Decipherment",
+        "description": (
+            "Dr. Fuls' NW Semitic test1 corpus — RTL-corrected mapping inference study. "
+            "Reading direction: RIGHT-TO-LEFT (confirmed Dr. Fuls, Apr 2026). "
+            "Step 1: Load NW Semitic corpus (RTL). "
+            "Step 2: Apply DirectionNormalizer(rtl) to reverse word sequences. "
+            "Step 3: Run SA mapping inference against Hebrew LM with Dr. Fuls' anchors. "
+            "Step 4: Compute consistency across seeds. "
+            "Step 5: Generate Fuls NW Semitic PDF report. "
+            "\n\nRun each node in the Study Builder then use Reports → Generate Report "
+            "to produce the PDF for Dr. Fuls."
+        ),
+        "graph": {
+            "nodes": [
+                _node("n1", "fuls_rtl_corrected",
+                      "RTL Correction + SA Mapping", 100, 100),
+                _node("n2", "fuls_nw_semitic_benchmark",
+                      "NW Semitic Structural Benchmark", 100, 280),
+                _node("n3", "fuls_writing_system_comparison",
+                      "Writing System Comparison", 500, 100),
+                _node("n4", "fuls_constraint_space",
+                      "Constraint Space & Anchor Amplification", 500, 280),
+                _report("r1", "Fuls NW Semitic Report", 900, 180,
+                        "fuls_nw_semitic_report.pdf"),
+            ],
+            "edges": [
+                _edge("e1", "n1", "r1"),
+                _edge("e2", "n2", "r1"),
+                _edge("e3", "n3", "r1"),
+                _edge("e4", "n4", "r1"),
+            ],
+        },
+    },
+    {
+        "name": "Fuls Geez Syllabic Benchmark",
+        "description": (
+            "Decisive validation of the anchor-amplification hypothesis using Dr. Fuls' "
+            "Geez Genesis corpus (85K tokens, ~200 syllabic signs, FULLY DECIPHERED). "
+            "\n\nThis is the controlled benchmark: we know the answer. "
+            "The experiment tests whether adding correct anchor sign assignments "
+            "causes the SA mapping inference to converge toward the true mapping. "
+            "\n\nAnchor conditions tested: 0, 1, 3, 5, 10, 20 correct assignments. "
+            "GPU-accelerated (RTX 4070 SUPER, CuPy 14.0.1). "
+            "\n\nAfter running, use Reports → Generate Report to produce the PDF."
+        ),
+        "graph": {
+            "nodes": [
+                _node("n1", "geez_syllabic_anchor_convergence",
+                      "Geez Anchor-Convergence Validation", 100, 100),
+                _report("r1", "Geez Syllabic Benchmark Report", 500, 100,
+                        "geez_syllabic_anchor_convergence_report.pdf"),
+            ],
+            "edges": [
+                _edge("e1", "n1", "r1"),
+            ],
+        },
+    },
+    {
+        "name": "Fuls NW Semitic — Full Analysis Suite",
+        "description": (
+            "Complete NW Semitic analysis pipeline for Dr. Fuls collaboration: "
+            "\n\n1. RTL-corrected mapping inference with verified anchors (004=T, 066=M, 208=N, 133=ayin, 128=L, 080=W) "
+            "\n2. NW Semitic structural benchmark (entropy, positional profiles, writing system type) "
+            "\n3. Writing system comparison (positions test1 against 11 known scripts) "
+            "\n4. Constraint space and anchor amplification analysis "
+            "\n5. Independence suite (model robustness, bias tests) "
+            "\n6. Sequence information test (frequency vs sequential structure) "
+            "\n\nAll results feed into the Fuls NW Semitic PDF report."
+        ),
+        "graph": {
+            "nodes": [
+                _node("n1",  "fuls_rtl_corrected",           "1. RTL + Anchors",                 100, 100),
+                _node("n2",  "fuls_nw_semitic_benchmark",    "2. Structural Benchmark",          100, 260),
+                _node("n3",  "fuls_writing_system_comparison","3. Writing System Comparison",    100, 420),
+                _node("n4",  "fuls_constraint_space",         "4. Constraint & Anchor Space",    500, 100),
+                _node("n5",  "fuls_independence_suite",       "5. Independence Suite",            500, 260),
+                _node("n6",  "fuls_sequence_information_test","6. Sequence Information Test",    500, 420),
+                _node("n7",  "fuls_validation_suite",         "7. Validation & Robustness",      900, 260),
+                _report("r1", "Fuls Full Analysis Report",  900, 420, "fuls_nw_semitic_report.pdf"),
+            ],
+            "edges": [
+                _edge("e1", "n1", "r1"), _edge("e2", "n2", "r1"),
+                _edge("e3", "n3", "r1"), _edge("e4", "n4", "r1"),
+                _edge("e5", "n5", "r1"), _edge("e6", "n6", "r1"),
+                _edge("e7", "n7", "r1"),
+            ],
+        },
+    },
     {
         "name": "OCR Pipeline (requires Mistral key)",
         "description": (

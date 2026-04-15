@@ -22,6 +22,7 @@ BUILT_IN_CORPORA = [
     "indus_synthetic",
     "sumerian_ur3",
     "geez",
+    "nw_semitic",
 ]
 
 
@@ -66,7 +67,8 @@ def _corpus_name(corpus_id: str) -> str:
         "hebrew": "Old Hebrew (Gen-Prov, consonantal)",
         "indus_synthetic": "Indus Script (synthetic, Yadav 2010 / Fuls 2014)",
         "sumerian_ur3": "Sumerian Ur III (CDLI statistics)",
-        "geez": "Geez Genesis (Ethiopic syllabic, Dr. Fuls)",
+        "geez":      "Geez Genesis (Ethiopic syllabic, Dr. Fuls)",
+        "nw_semitic": "NW Semitic Test1 (undeciphered, Dr. Fuls)",
     }.get(corpus_id, corpus_id)
 
 
@@ -182,6 +184,35 @@ def _load_corpus(corpus_id: str) -> dict | None:
                     "real_signs": stats["real_cdli_stats"]["distinct_signs"],
                     "writing_type": "logo-syllabic (Tier 5 reference)",
                     "note": "Synthetic corpus calibrated to CDLI Ur III frequency data",
+                },
+            }
+
+        elif corpus_id == "nw_semitic":
+            from glossa_lab.data.nw_semitic import (
+                corpus_statistics, get_corpus_inscriptions, get_corpus_symbols, FULS_ANCHORS
+            )
+            flat  = get_corpus_symbols()
+            inscs = get_corpus_inscriptions()
+            stats = corpus_statistics()
+            return {
+                "corpus_type": "ancient",
+                "content": flat,
+                "reading_direction": "rtl",
+                "metadata": {
+                    "source": "Provided by Dr. Andreas Fuls for collaborative decipherment",
+                    "n_words":    stats["n_words"],
+                    "distinct_signs": stats["n_distinct"],
+                    "tokens_per_sign": stats["tokens_per_sign"],
+                    "writing_type": "syllabic CV (undeciphered NW Semitic)",
+                    "reading_direction": "rtl",
+                    "provided_by": "Dr. Andreas Fuls",
+                    "anchors": FULS_ANCHORS,
+                    "note": (
+                        "Reading direction: RIGHT-TO-LEFT (confirmed Apr 2026). "
+                        "78 distinct signs, ~450 tokens. "
+                        "Verified anchor signs: 004=T, 066=M, 208=N, 133=ayin, 128=L, 080=W."
+                    ),
+                    "inscriptions": inscs,   # word-level structure for RTL detection
                 },
             }
 

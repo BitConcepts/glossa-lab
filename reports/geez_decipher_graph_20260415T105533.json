@@ -1,0 +1,15 @@
+{
+  "experiment": "geez_decipher",
+  "timestamp": "20260415T105533",
+  "compute_device": "GPU (CUDA)",
+  "elapsed_seconds": 1048.681688,
+  "overall_consistency": null,
+  "signs_above_75pct": null,
+  "total_signs": null,
+  "consistency_per_sign": {},
+  "raw_results": {
+    "saved": true,
+    "path": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\reports\\geez_decipher_graph.json",
+    "filename": "geez_decipher_graph.json"
+  }
+}

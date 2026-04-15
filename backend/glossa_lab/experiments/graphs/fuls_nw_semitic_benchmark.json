@@ -1,0 +1,221 @@
+{
+  "id": "fuls_nw_semitic_benchmark",
+  "name": "NW Semitic Structural Benchmark",
+  "description": "Full structural analysis of the Fuls NW Semitic test1 corpus: entropy, positional profiles, Zipf fit, and n-gram statistics. All computed from RTL-corrected sequences using pure atomic nodes.",
+  "auto_migrated": true,
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "NW Semitic Test1",
+        "params": {
+          "corpus": "nw_semitic"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 160
+      }
+    },
+    {
+      "id": "rtl",
+      "type": "expNode",
+      "data": {
+        "atomicId": "DirectionNormalizer",
+        "label": "RTL Correction",
+        "params": {
+          "direction": "rtl"
+        }
+      },
+      "position": {
+        "x": 300,
+        "y": 160
+      }
+    },
+    {
+      "id": "freq",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FreqCounter",
+        "label": "Frequency Counter",
+        "params": {}
+      },
+      "position": {
+        "x": 540,
+        "y": 60
+      }
+    },
+    {
+      "id": "entropy",
+      "type": "expNode",
+      "data": {
+        "atomicId": "EntropyCalc",
+        "label": "Shannon Entropy H1",
+        "params": {}
+      },
+      "position": {
+        "x": 540,
+        "y": 180
+      }
+    },
+    {
+      "id": "profiler",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PositionalProfiler",
+        "label": "Positional Profiles",
+        "params": {
+          "min_count": 2
+        }
+      },
+      "position": {
+        "x": 540,
+        "y": 300
+      }
+    },
+    {
+      "id": "zipf",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ZipfFitter",
+        "label": "Zipf Exponent",
+        "params": {}
+      },
+      "position": {
+        "x": 540,
+        "y": 420
+      }
+    },
+    {
+      "id": "ngrams",
+      "type": "expNode",
+      "data": {
+        "atomicId": "NgramCounter",
+        "label": "Bigrams (n=2)",
+        "params": {
+          "n": 2
+        }
+      },
+      "position": {
+        "x": 540,
+        "y": 540
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge Results",
+        "params": {}
+      },
+      "position": {
+        "x": 780,
+        "y": 280
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Benchmark",
+        "params": {
+          "filename": "fuls_nw_semitic_benchmark.json"
+        }
+      },
+      "position": {
+        "x": 1020,
+        "y": 280
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "rtl",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "rtl",
+      "target": "freq",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "rtl",
+      "target": "entropy",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e4",
+      "source": "rtl",
+      "target": "profiler",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e5",
+      "source": "rtl",
+      "target": "ngrams",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e6",
+      "source": "freq",
+      "target": "zipf",
+      "sourcePort": "freq_map",
+      "targetPort": "freq_map"
+    },
+    {
+      "id": "e7",
+      "source": "entropy",
+      "target": "merge",
+      "sourcePort": "h1",
+      "targetPort": "a"
+    },
+    {
+      "id": "e8",
+      "source": "zipf",
+      "target": "merge",
+      "sourcePort": "zipf_exponent",
+      "targetPort": "b"
+    },
+    {
+      "id": "e9",
+      "source": "profiler",
+      "target": "merge",
+      "sourcePort": "class_summary",
+      "targetPort": "c"
+    },
+    {
+      "id": "e10",
+      "source": "ngrams",
+      "target": "merge",
+      "sourcePort": "top_10",
+      "targetPort": "d"
+    },
+    {
+      "id": "e11",
+      "source": "freq",
+      "target": "merge",
+      "sourcePort": "top_10",
+      "targetPort": "e"
+    },
+    {
+      "id": "e12",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "id": "tier3_sumerian_validation",
+  "name": "Sumerian Logo-Syllabic Validation (Tier 3)",
+  "description": "Structural fingerprint validation of the Sumerian Ur III corpus. Computes entropy, Zipf, and positional profiles, then classifies the corpus typologically to confirm logo-syllabic tier assignment.",
+  "auto_migrated": true,
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "Sumerian Ur III",
+        "params": {
+          "corpus": "indus"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 160
+      }
+    },
+    {
+      "id": "freq",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FreqCounter",
+        "label": "Frequency",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
+        "y": 60
+      }
+    },
+    {
+      "id": "entropy",
+      "type": "expNode",
+      "data": {
+        "atomicId": "EntropyCalc",
+        "label": "Entropy H1",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
+        "y": 200
+      }
+    },
+    {
+      "id": "profiler",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PositionalProfiler",
+        "label": "Position Profiles",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
+        "y": 340
+      }
+    },
+    {
+      "id": "zipf",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ZipfFitter",
+        "label": "Zipf Exponent",
+        "params": {}
+      },
+      "position": {
+        "x": 540,
+        "y": 60
+      }
+    },
+    {
+      "id": "classify",
+      "type": "expNode",
+      "data": {
+        "atomicId": "WritingSystemClassifier",
+        "label": "Writing System Type",
+        "params": {}
+      },
+      "position": {
+        "x": 540,
+        "y": 200
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge Results",
+        "params": {}
+      },
+      "position": {
+        "x": 780,
+        "y": 200
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Validation",
+        "params": {
+          "filename": "tier3_sumerian_validation.json"
+        }
+      },
+      "position": {
+        "x": 1020,
+        "y": 200
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "freq",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "corpus",
+      "target": "entropy",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "corpus",
+      "target": "profiler",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e4",
+      "source": "freq",
+      "target": "zipf",
+      "sourcePort": "freq_map",
+      "targetPort": "freq_map"
+    },
+    {
+      "id": "e5",
+      "source": "entropy",
+      "target": "classify",
+      "sourcePort": "h1",
+      "targetPort": "h1"
+    },
+    {
+      "id": "e6",
+      "source": "freq",
+      "target": "classify",
+      "sourcePort": "distinct_symbols",
+      "targetPort": "distinct_symbols"
+    },
+    {
+      "id": "e7",
+      "source": "entropy",
+      "target": "merge",
+      "sourcePort": "h1",
+      "targetPort": "a"
+    },
+    {
+      "id": "e8",
+      "source": "zipf",
+      "target": "merge",
+      "sourcePort": "zipf_exponent",
+      "targetPort": "b"
+    },
+    {
+      "id": "e9",
+      "source": "classify",
+      "target": "merge",
+      "sourcePort": "tier_classification",
+      "targetPort": "c"
+    },
+    {
+      "id": "e10",
+      "source": "profiler",
+      "target": "merge",
+      "sourcePort": "class_summary",
+      "targetPort": "d"
+    },
+    {
+      "id": "e11",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ]
+}

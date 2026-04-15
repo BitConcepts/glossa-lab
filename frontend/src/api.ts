@@ -371,6 +371,29 @@ export const deleteReport = (name: string): Promise<{ deleted: boolean; relative
 export const getReportDownloadUrl = (name: string): string =>
   `/api/v1/reports/${name}/download`;
 
+export interface ReportTemplate {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  requires: string[];
+  ready: boolean;  // true if all required input JSONs exist
+}
+
+export interface GenerateReportResult {
+  started: boolean;
+  job_id: string | null;
+  template_id: string;
+  template_name: string;
+  message: string;
+}
+
+export const listReportTemplates = (): Promise<ReportTemplate[]> =>
+  request("GET", "/reports/templates");
+
+export const generateReport = (template_id: string): Promise<GenerateReportResult> =>
+  request("POST", "/reports/generate", { template_id });
+
 export const openReportFolder = (name: string): Promise<{ opened: boolean; folder: string }> =>
   request("POST", `/reports/${name}/open-folder`);
 

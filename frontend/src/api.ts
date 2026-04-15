@@ -1097,6 +1097,134 @@ export const getLocalCtxLength = (): number =>
 export const setLocalCtxLength = (n: number): void =>
   { localStorage.setItem(CTX_LS_KEY, String(n)); };
 
+// ── H16: User-Definable Report Templates (DB-backed) ─────────────────────
+
+export interface ReportTemplateSection {
+  title:        string;
+  data_source:  string;  // experiment ID or "upstream"
+  data_key:     string;
+  chart_type:   "table" | "bar" | "line" | "text";
+  include_table: boolean;
+  description:  string;
+}
+
+export interface UserReportTemplate {
+  id:          string;
+  name:        string;
+  description: string;
+  category:    string;
+  sections:    ReportTemplateSection[];
+  created_at:  string;
+  updated_at:  string;
+}
+
+export const listUserReportTemplates = (): Promise<UserReportTemplate[]> =>
+  request("GET", "/report-templates");
+
+export const getUserReportTemplate = (id: string): Promise<UserReportTemplate> =>
+  request("GET", `/report-templates/${id}`);
+
+export const createUserReportTemplate = (body: {
+  name: string;
+  description?: string;
+  category?: string;
+  sections?: ReportTemplateSection[];
+}): Promise<UserReportTemplate> =>
+  request("POST", "/report-templates", body);
+
+export const updateUserReportTemplate = (
+  id: string,
+  body: Partial<Pick<UserReportTemplate, "name" | "description" | "category" | "sections">>
+): Promise<UserReportTemplate> =>
+  request("PUT", `/report-templates/${id}`, body);
+
+export const deleteUserReportTemplate = (id: string): Promise<{ deleted: boolean }> =>
+  request("DELETE", `/report-templates/${id}`);
+
+// ── H16: Anchor Sets ───────────────────────────────────────────────────
+
+export interface AnchorPair {
+  cipher:     string;
+  target:     string;
+  confidence: "high" | "medium" | "low";
+  note:       string;
+}
+
+export interface AnchorSet {
+  id:          string;
+  name:        string;
+  description: string;
+  corpus_id:   string | null;
+  language:    string;
+  pairs:       AnchorPair[];
+  created_at:  string;
+  updated_at:  string;
+}
+
+export const listAnchorSets = (corpusId?: string): Promise<AnchorSet[]> =>
+  request("GET", corpusId ? `/anchor-sets?corpus_id=${encodeURIComponent(corpusId)}` : "/anchor-sets");
+
+export const getAnchorSet = (id: string): Promise<AnchorSet> =>
+  request("GET", `/anchor-sets/${id}`);
+
+export const createAnchorSet = (body: {
+  name: string;
+  description?: string;
+  corpus_id?: string | null;
+  language?: string;
+  pairs?: AnchorPair[];
+}): Promise<AnchorSet> =>
+  request("POST", "/anchor-sets", body);
+
+export const updateAnchorSet = (
+  id: string,
+  body: Partial<Pick<AnchorSet, "name" | "description" | "corpus_id" | "language" | "pairs">>
+): Promise<AnchorSet> =>
+  request("PUT", `/anchor-sets/${id}`, body);
+
+export const deleteAnchorSet = (id: string): Promise<{ deleted: boolean }> =>
+  request("DELETE", `/anchor-sets/${id}`);
+
+// ── H16: World Language Corpus Catalogue ─────────────────────────────
+
+export interface CorpusCatalogueEntry {
+  id:              string;
+  name:            string;
+  language:        string;
+  language_family: string;
+  script_type:     string;
+  period:          string;
+  tokens_approx:   number;
+  source_url:      string;
+  license:         string;
+  description:     string;
+  local_module:    string;  // non-empty = can import in one click
+  is_undeciphered: boolean | number;
+  already_imported?: boolean;  // enriched by API
+}
+
+export interface CatalogueImportResult {
+  imported:   boolean;
+  corpus_id?: string;
+  name:       string;
+  tokens?:    number;
+  reason?:    string;  // "already_exists" if duplicate
+}
+
+export const listCorpusCatalogue = (params?: {
+  script_type?: string;
+  undeciphered?: boolean;
+}): Promise<CorpusCatalogueEntry[]> => {
+  const qs = new URLSearchParams();
+  if (params?.script_type)  qs.set("script_type", params.script_type);
+  if (params?.undeciphered !== undefined) qs.set("undeciphered", String(params.undeciphered));
+  const q = qs.toString();
+  return request("GET", `/corpus-catalogue${q ? `?${q}` : ""}`);
+};
+
+export const importCorpusCatalogueEntry = (id: string): Promise<CatalogueImportResult> =>
+  request("POST", `/corpus-catalogue/${id}/import`);
+
 // Note: do NOT encodeURIComponent here — EventSource sends the URL as-is and
 // FastAPI's path param decoder handles the colon in model names like "mistral:7b"
 export const getOllamaPullUrl = (modelName: string): string =>

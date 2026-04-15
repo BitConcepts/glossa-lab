@@ -1,0 +1,136 @@
+{
+  "id": "fuls_writing_system_comparison",
+  "name": "Writing System Typological Comparison",
+  "description": "Places the NW Semitic test1 corpus in the typological landscape of known writing systems using structural metrics. Compares H1 entropy, sign count, and word length against 11 reference scripts. Output: tier classification (abjad / syllabary / logosyllabic) and nearest known script.",
+  "auto_migrated": true,
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "NW Semitic Test1",
+        "params": {
+          "corpus": "nw_semitic"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 140
+      }
+    },
+    {
+      "id": "rtl",
+      "type": "expNode",
+      "data": {
+        "atomicId": "DirectionNormalizer",
+        "label": "RTL Correction",
+        "params": {
+          "direction": "rtl"
+        }
+      },
+      "position": {
+        "x": 300,
+        "y": 140
+      }
+    },
+    {
+      "id": "freq",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FreqCounter",
+        "label": "Frequency Counter",
+        "params": {}
+      },
+      "position": {
+        "x": 540,
+        "y": 60
+      }
+    },
+    {
+      "id": "entropy",
+      "type": "expNode",
+      "data": {
+        "atomicId": "EntropyCalc",
+        "label": "Entropy H1",
+        "params": {}
+      },
+      "position": {
+        "x": 540,
+        "y": 200
+      }
+    },
+    {
+      "id": "classifier",
+      "type": "expNode",
+      "data": {
+        "atomicId": "WritingSystemClassifier",
+        "label": "Writing System Type",
+        "params": {}
+      },
+      "position": {
+        "x": 780,
+        "y": 140
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Classification",
+        "params": {
+          "filename": "fuls_writing_system_comparison.json"
+        }
+      },
+      "position": {
+        "x": 1020,
+        "y": 140
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "rtl",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "rtl",
+      "target": "freq",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "rtl",
+      "target": "entropy",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e4",
+      "source": "freq",
+      "target": "classifier",
+      "sourcePort": "distinct_symbols",
+      "targetPort": "distinct_symbols"
+    },
+    {
+      "id": "e5",
+      "source": "entropy",
+      "target": "classifier",
+      "sourcePort": "h1",
+      "targetPort": "h1"
+    },
+    {
+      "id": "e6",
+      "source": "classifier",
+      "target": "out",
+      "sourcePort": "all_ranked",
+      "targetPort": "data"
+    }
+  ]
+}

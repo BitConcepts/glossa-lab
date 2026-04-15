@@ -1,0 +1,114 @@
+{
+  "id": "ventris_validation",
+  "name": "Ventris Grid Validation (Linear B, Tier 4)",
+  "description": "Validates sign affinity clustering against the known Ventris grid for Linear B. Uses beam search (faster, deterministic) to find the optimal syllabic grouping and scores the result against the known Greek phonetic values.",
+  "auto_migrated": true,
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "Linear B Corpus",
+        "params": {
+          "corpus": "hebrew"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 160
+      }
+    },
+    {
+      "id": "lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Greek Approx LM",
+        "params": {
+          "language": "hebrew"
+        }
+      },
+      "position": {
+        "x": 300,
+        "y": 280
+      }
+    },
+    {
+      "id": "profiler",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PositionalProfiler",
+        "label": "Position Profiles",
+        "params": {
+          "min_count": 2
+        }
+      },
+      "position": {
+        "x": 300,
+        "y": 100
+      }
+    },
+    {
+      "id": "decipher",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BeamDecipher",
+        "label": "Beam Decipherment",
+        "params": {
+          "beam_width": 200,
+          "surjective": true
+        }
+      },
+      "position": {
+        "x": 540,
+        "y": 180
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Validation",
+        "params": {
+          "filename": "ventris_validation.json"
+        }
+      },
+      "position": {
+        "x": 780,
+        "y": 180
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "profiler",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "corpus",
+      "target": "decipher",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "lm",
+      "target": "decipher",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e4",
+      "source": "decipher",
+      "target": "out",
+      "sourcePort": "proposed_mapping",
+      "targetPort": "data"
+    }
+  ]
+}

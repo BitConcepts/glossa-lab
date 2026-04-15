@@ -1,0 +1,140 @@
+{
+  "id": "fuls_nw_semitic_ngram",
+  "name": "NW Semitic N-gram Statistics",
+  "description": "Bigram and trigram frequency analysis of the NW Semitic test1 corpus (RTL corrected).",
+  "auto_migrated": true,
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "NW Semitic Test1",
+        "params": {
+          "corpus": "nw_semitic"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "rtl",
+      "type": "expNode",
+      "data": {
+        "atomicId": "DirectionNormalizer",
+        "label": "RTL Correction",
+        "params": {
+          "direction": "rtl"
+        }
+      },
+      "position": {
+        "x": 300,
+        "y": 100
+      }
+    },
+    {
+      "id": "bigrams",
+      "type": "expNode",
+      "data": {
+        "atomicId": "NgramCounter",
+        "label": "Bigrams (n=2)",
+        "params": {
+          "n": 2
+        }
+      },
+      "position": {
+        "x": 540,
+        "y": 60
+      }
+    },
+    {
+      "id": "trigrams",
+      "type": "expNode",
+      "data": {
+        "atomicId": "NgramCounter",
+        "label": "Trigrams (n=3)",
+        "params": {
+          "n": 3
+        }
+      },
+      "position": {
+        "x": 540,
+        "y": 200
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge",
+        "params": {}
+      },
+      "position": {
+        "x": 780,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save N-grams",
+        "params": {
+          "filename": "fuls_nw_semitic_ngram.json"
+        }
+      },
+      "position": {
+        "x": 1020,
+        "y": 100
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "rtl",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "rtl",
+      "target": "bigrams",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "rtl",
+      "target": "trigrams",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e4",
+      "source": "bigrams",
+      "target": "merge",
+      "sourcePort": "freq_map",
+      "targetPort": "a"
+    },
+    {
+      "id": "e5",
+      "source": "trigrams",
+      "target": "merge",
+      "sourcePort": "freq_map",
+      "targetPort": "b"
+    },
+    {
+      "id": "e6",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ]
+}

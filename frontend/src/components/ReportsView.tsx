@@ -34,10 +34,15 @@ function renderMarkdown(md: string): string {
 type SortKey = "name" | "kind" | "size_bytes" | "updated_at";
 type SortDir = "asc" | "desc";
 
+/** Data files are raw outputs (JSON, CSV, artifact). Reports are formatted documents (PDF, Markdown). */
+const DATA_KINDS  = new Set(["json_report", "table", "artifact"]);
+const REPORT_KINDS = new Set(["pdf", "document"]);
+
 export function ReportsView() {
   const [reports, setReports] = useState<CatalogReport[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [areaTab, setAreaTab] = useState<"data" | "reports">("reports");
   const [search, setSearch] = useState("");
   const [kindFilter, setKindFilter] = useState<Set<string>>(new Set());
   const [expFilter, setExpFilter] = useState<Set<string>>(new Set());
@@ -274,7 +279,15 @@ export function ReportsView() {
   const studyExpIds = studyFilter.size === 0 ? null :
     new Set([...studyFilter].flatMap((sid) => [...(studyExpMap[sid] ?? new Set())]));
 
-  const sorted = [...reports]
+  // Filter the catalog by the active area tab
+  const areaFiltered = reports.filter(r =>
+    areaTab === "data" ? DATA_KINDS.has(r.kind) : REPORT_KINDS.has(r.kind)
+  );
+
+  const dataCnt   = reports.filter(r => DATA_KINDS.has(r.kind)).length;
+  const reportCnt = reports.filter(r => REPORT_KINDS.has(r.kind)).length;
+
+  const sorted = [...areaFiltered]
     .filter((r) => (!search || r.name.toLowerCase().includes(search.toLowerCase()))
                 && (kindFilter.size === 0 || kindFilter.has(r.kind))
                 && (expFilter.size === 0 || expFilter.has(r.experiment_id))
@@ -293,8 +306,8 @@ export function ReportsView() {
 
   return (
     <div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" }}>
-        <h2 style={{ margin: 0 }}>Reports</h2>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem" }}>
+        <h2 style={{ margin: 0 }}>Reports &amp; Data</h2>
         <div style={{ display: "flex", gap: 6 }}>
           <button
             onClick={() => void openGenerateModal()}
@@ -312,10 +325,32 @@ export function ReportsView() {
           >
             {composeMode ? "✕ Cancel Compose" : "📊 Compose"}
           </button>
-          <button onClick={load} style={{ ...btnStyle, padding: "4px 12px", fontSize: 12, background: "#6b7280" }}>
-            ⟳ Refresh
+        <button onClick={load} style={{ ...btnStyle, padding: "4px 12px", fontSize: 12, background: "#6b7280" }}>
+          ⟳ Refresh
+        </button>
+      </div>
+
+      {/* Area tabs */}
+      <div style={{ display: "flex", gap: 0, marginBottom: "0.75rem", borderBottom: "2px solid #e5e7eb" }}>
+        {(["reports", "data"] as const).map(tab => (
+          <button key={tab} onClick={() => setAreaTab(tab)}
+            style={{ padding: "7px 18px", border: "none", background: "none", cursor: "pointer",
+              fontSize: 13, fontWeight: areaTab === tab ? 700 : 400,
+              color: areaTab === tab ? "#1e3a5f" : "#6b7280",
+              borderBottom: areaTab === tab ? "2px solid #1e3a5f" : "2px solid transparent",
+              marginBottom: "-2px", whiteSpace: "nowrap" }}>
+            {tab === "reports"
+              ? `📋 Reports ${reportCnt > 0 ? `(${reportCnt})` : ""}`
+              : `📂 Data ${dataCnt > 0 ? `(${dataCnt})` : ""}`}
           </button>
-        </div>
+        ))}
+        <div style={{ flex: 1 }} />
+        <span style={{ fontSize: 11, color: "#9ca3af", alignSelf: "center", paddingRight: 4 }}>
+          {areaTab === "reports"
+            ? "PDF & formatted documents"
+            : "JSON results, CSV exports, raw artifacts"}
+        </span>
+      </div>
 
       {/* Generate Report Modal */}
       {showGenerateModal && (

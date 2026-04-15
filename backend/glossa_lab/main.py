@@ -38,6 +38,9 @@ from glossa_lab.node_registry import router as node_registry_router
 from glossa_lab.api.rag import router as rag_router
 from glossa_lab.api.experiment_graphs import router as experiment_graphs_router
 from glossa_lab.api.collab import router as collab_router
+from glossa_lab.api.report_templates import router as report_templates_router
+from glossa_lab.api.anchor_sets import router as anchor_sets_router
+from glossa_lab.api.corpus_catalogue import router as corpus_catalogue_router
 from glossa_lab.config import get_settings
 from glossa_lab.database import close_db, init_db
 from glossa_lab.engine import run_engine_loop
@@ -120,6 +123,10 @@ async def lifespan(app: FastAPI):
         await seed_corpora(_db)
         await seed_studies(_db)
 
+    # Seed world language corpus catalogue (idempotent upserts)
+    from glossa_lab.corpus_catalogue_seeder import seed_corpus_catalogue  # noqa: PLC0415
+    await seed_corpus_catalogue()
+
     # Start Ollama in the background (no-op if not installed or already running)
     await asyncio.get_event_loop().run_in_executor(None, _try_start_ollama)
 
@@ -201,8 +208,11 @@ def create_app() -> FastAPI:
     application.include_router(node_registry_router, prefix="/api/v1")
     application.include_router(rag_router, prefix="/api/v1")
     application.include_router(experiment_graphs_router, prefix="/api/v1")
+    application.include_router(report_templates_router, prefix="/api/v1")
+    application.include_router(anchor_sets_router, prefix="/api/v1")
+    application.include_router(corpus_catalogue_router, prefix="/api/v1")
 
-    # Serve built frontend at "/" — run 'npm run build' in frontend/ to populate.
+    # Serve built frontend
     # Skipped silently in dev if the dist directory does not yet exist.
     if _FRONTEND_DIST.exists():
         application.mount(

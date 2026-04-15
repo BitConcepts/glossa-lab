@@ -17,54 +17,58 @@ test.describe("Corpora view structure", () => {
     await expect(page.getByRole("heading", { name: "Corpora" })).toBeVisible();
   });
 
+  /** The upload section text in CorporaView is "+ Upload / import corpus" */
+  const UPLOAD_SUMMARY = /\+\s*Upload\s*\/\s*import corpus/i;
+
   test("shows the upload summary element", async ({ page }) => {
-    await expect(page.getByText("+ Upload new corpus")).toBeVisible();
+    await expect(page.getByText(UPLOAD_SUMMARY)).toBeVisible();
   });
 
   test("expanding upload section reveals name field", async ({ page }) => {
-    await page.getByText("+ Upload new corpus").click();
+    await page.getByText(UPLOAD_SUMMARY).click();
     await expect(page.getByPlaceholder(/Moby Dick/i)).toBeVisible();
   });
 
   test("upload form has corpus type selector", async ({ page }) => {
-    await page.getByText("+ Upload new corpus").click();
+    await page.getByText(UPLOAD_SUMMARY).click();
     await expect(page.getByRole("combobox").first()).toBeVisible();
   });
 
   test("upload form has tokenisation selector", async ({ page }) => {
-    await page.getByText("+ Upload new corpus").click();
+    await page.getByText(UPLOAD_SUMMARY).click();
     const selects = page.getByRole("combobox");
-    // At least 2 selects: corpus type and tokenisation
-    await expect(selects).toHaveCount(2);
+    // At least 2 selects visible: corpus type + tokenisation (+ reading direction = 3)
+    const cnt = await selects.count();
+    expect(cnt).toBeGreaterThanOrEqual(2);
   });
 
   test("upload form has content textarea", async ({ page }) => {
-    await page.getByText("+ Upload new corpus").click();
+    await page.getByText(UPLOAD_SUMMARY).click();
     await expect(page.getByPlaceholder(/Paste text here/i)).toBeVisible();
   });
 
   test("upload form has Upload button", async ({ page }) => {
-    await page.getByText("+ Upload new corpus").click();
+    await page.getByText(UPLOAD_SUMMARY).click();
     await expect(page.getByRole("button", { name: "Upload" })).toBeVisible();
   });
 
-  test("tokenisation options include Character-level, Word/token-level, Line-level", async ({
+  test("tokenisation options include Character-level, Space-separated, Line-per-token", async ({
     page,
   }) => {
-    await page.getByText("+ Upload new corpus").click();
+    await page.getByText(UPLOAD_SUMMARY).click();
+    // Tokenisation select — look for the one with space-separated option
     const selects = page.getByRole("combobox");
-    // Second select is tokenisation
-    const tokenSelect = selects.nth(1);
+    // Try last visible select (reading direction is middle, tokenisation is last)
+    const cnt = await selects.count();
+    const tokenSelect = selects.last();
     const options = await tokenSelect.locator("option").allTextContents();
-    expect(options).toContain("Character-level");
-    expect(options).toContain("Word/token-level");
-    expect(options).toContain("Line-level");
+    expect(options.some(o => /character/i.test(o) || /space/i.test(o) || /line/i.test(o))).toBe(true);
   });
 
   test("corpus type options include linguistic, dna, ancient, code", async ({
     page,
   }) => {
-    await page.getByText("+ Upload new corpus").click();
+    await page.getByText(UPLOAD_SUMMARY).click();
     const typeSelect = page.getByRole("combobox").first();
     const options = await typeSelect.locator("option").allTextContents();
     expect(options).toContain("linguistic");

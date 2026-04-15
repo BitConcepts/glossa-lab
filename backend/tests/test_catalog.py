@@ -27,6 +27,32 @@ def test_pipeline_catalog_matches_live_registry(client):
     assert all(entry["module"].startswith("glossa_lab.pipelines.") for entry in pipelines)
 
 
+def test_experiments_endpoint_returns_graph_only(client):
+    """H16 regression: GET /experiments must NEVER return Python ExperimentBase compositions.
+
+    Every item returned must have source_file ending in .json (graph spec),
+    command empty string, and category='Graph Experiments'.
+    This test fails if Python compositions ever leak through.
+    """
+    response = client.get("/api/v1/experiments")
+    assert response.status_code == 200
+    experiments = response.json()
+    assert len(experiments) > 0
+
+    for exp in experiments:
+        assert exp.get("source_file", "").endswith(".json"), (
+            f"Experiment '{exp['id']}' has non-graph source_file: {exp.get('source_file')}. "
+            "Python composition leaked into /experiments response."
+        )
+        assert exp.get("command", "UNSET") == "", (
+            f"Experiment '{exp['id']}' has command set: {exp.get('command')}. "
+            "Only graph experiments (command='') should appear here."
+        )
+        assert exp.get("category") == "Graph Experiments", (
+            f"Experiment '{exp['id']}' has wrong category: {exp.get('category')}."
+        )
+
+
 def test_reports_and_providers_catalog_are_exposed(client):
     """Report and provider catalog endpoints should surface current metadata."""
     reports_response = client.get("/api/v1/catalog/reports")

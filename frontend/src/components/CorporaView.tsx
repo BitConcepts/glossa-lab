@@ -8,7 +8,10 @@ import {
   createText, deleteText, detectCorpusDirection, getText,
   getCorpusConcordance, getCorpusEntropy, getCorpusExportUrl, getCorpusNgrams,
   listTexts, updateText,
+  listCorpusCatalogue, importCorpusCatalogueEntry,
+  listAnchorSets, createAnchorSet, deleteAnchorSet,
   type ConcordanceResult, type EntropyResult, type NgramEntry, type TextResponse,
+  type CorpusCatalogueEntry, type AnchorSet, type AnchorPair,
 } from "../api";
 import { ContextMenuOverlay, copyItems, useContextMenu } from "../hooks/useContextMenu";
 import { useAIChat } from "../hooks/useAIChat";
@@ -571,6 +574,254 @@ function UploadPanel({ onCreated }: { onCreated: (t: TextResponse) => void }) {
   );
 }
 
+// ── World Language Corpus Catalogue Browser ─────────────────────────────────────────────
+
+function CatalogueBrowser({ onImported }: { onImported: () => void }) {
+  const { toast } = useToast();
+  const [entries, setEntries] = useState<CorpusCatalogueEntry[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [importing, setImporting] = useState<string | null>(null);
+  const [search, setSearch] = useState("");
+  const [filterUD, setFilterUD] = useState<"all" | "undeciphered" | "deciphered">("all");
+
+  const load = async () => {
+    setLoading(true);
+    try { setEntries(await listCorpusCatalogue()); }
+    catch (e) { toast(e instanceof Error ? e.message : "Failed to load catalogue", "error"); }
+    finally { setLoading(false); }
+  };
+
+  const handleImport = async (e: CorpusCatalogueEntry) => {
+    if (!e.local_module) {
+      toast(`No bundled module for '${e.name}'. Download from source URL and upload manually.`, "warning");
+      return;
+    }
+    setImporting(e.id);
+    try {
+      const r = await importCorpusCatalogueEntry(e.id);
+      if (r.imported) {
+        setEntries(prev => prev.map(x => x.id === e.id ? { ...x, already_imported: true } : x));
+        toast(`Imported '${r.name}' (${r.tokens?.toLocaleString()} tokens)`, "success");
+        onImported();
+      } else {
+        toast(`'${r.name}' already in your corpora`, "info");
+      }
+    } catch (err) {
+      toast(err instanceof Error ? err.message : "Import failed", "error");
+    } finally { setImporting(null); }
+  };
+
+  const filtered = entries.filter(e => {
+    const matchSearch = !search || e.name.toLowerCase().includes(search.toLowerCase()) || e.language.toLowerCase().includes(search.toLowerCase());
+    const matchUD = filterUD === "all" || (filterUD === "undeciphered" ? e.is_undeciphered : !e.is_undeciphered);
+    return matchSearch && matchUD;
+  });
+
+  // Group by language_family
+  const groups: Record<string, CorpusCatalogueEntry[]> = {};
+  for (const e of filtered) {
+    const g = e.language_family || "Other";
+    (groups[g] = groups[g] || []).push(e);
+  }
+
+  const scriptTypeColor: Record<string, string> = {
+    abjad: "#7c3aed", syllabary: "#059669", logosyllabic: "#d97706",
+    logographic: "#dc2626", alphabet: "#2563eb", unknown: "#6b7280",
+  };
+
+  return (
+    <details style={{ marginBottom: "1.5rem" }}>
+      <summary style={{ cursor: "pointer", fontWeight: 600, fontSize: 13, padding: "8px 0",
+        color: "#059669" }} onClick={() => entries.length === 0 && void load()}>
+        🌍 Browse World Language Corpus Catalogue
+      </summary>
+      <div style={{ marginTop: 10, padding: "1rem", border: "1px solid #d1fae5", borderRadius: 8, background: "#f0fdf4" }}>
+        <div style={{ display: "flex", gap: 8, marginBottom: 10, flexWrap: "wrap", alignItems: "center" }}>
+          <input placeholder="Search language or name…" value={search} onChange={e => setSearch(e.target.value)}
+            style={{ ...inputStyle, width: 220 }} />
+          {(["all", "undeciphered", "deciphered"] as const).map(f => (
+            <button key={f} onClick={() => setFilterUD(f)}
+              style={{ ...btnSmall, background: filterUD === f ? "#059669" : undefined,
+                color: filterUD === f ? "#fff" : undefined }}>
+              {f === "all" ? "All" : f === "undeciphered" ? "🔓 Undeciphered" : "✔ Deciphered"}
+            </button>
+          ))}
+          <button onClick={() => void load()} style={btnSmall}>⟳ Refresh</button>
+          <span style={{ fontSize: 11, color: "#6b7280", marginLeft: "auto" }}>{filtered.length} entries</span>
+        </div>
+        {loading && <p style={{ color: "#6b7280", fontSize: 13 }}>Loading catalogue…</p>}
+        {Object.entries(groups).sort(([a], [b]) => a.localeCompare(b)).map(([family, items]) => (
+          <div key={family} style={{ marginBottom: 12 }}>
+            <div style={{ fontSize: 10, fontWeight: 700, color: "#374151", textTransform: "uppercase",
+              letterSpacing: 0.5, marginBottom: 4, paddingBottom: 2, borderBottom: "1px solid #d1fae5" }}>
+              {family}
+            </div>
+            {items.map(e => {
+              const sc = scriptTypeColor[e.script_type] ?? "#6b7280";
+              const canImport = !!e.local_module;
+              return (
+                <div key={e.id} style={{ display: "flex", alignItems: "center", gap: 8, padding: "5px 0",
+                  borderBottom: "1px solid #ecfdf5" }}>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                      <span style={{ fontWeight: 600, fontSize: 12, color: e.is_undeciphered ? "#7c2d12" : "#1e3a5f" }}>
+                        {e.name}
+                      </span>
+                      <span style={{ fontSize: 9, padding: "1px 5px", borderRadius: 8,
+                        background: sc + "20", color: sc, fontWeight: 700 }}>{e.script_type}</span>
+                      {e.is_undeciphered && <span style={{ fontSize: 9, color: "#dc2626", fontWeight: 700 }}>🔓</span>}
+                    </div>
+                    <div style={{ fontSize: 10, color: "#6b7280", marginTop: 1 }}>
+                      {e.language} · {e.period} · ~{e.tokens_approx.toLocaleString()} tokens · {e.license}
+                    </div>
+                  </div>
+                  <div style={{ display: "flex", gap: 4, flexShrink: 0 }}>
+                    {e.already_imported
+                      ? <span style={{ fontSize: 10, color: "#059669", fontWeight: 700 }}>✓ Imported</span>
+                      : canImport
+                      ? <button
+                          onClick={() => void handleImport(e)}
+                          disabled={importing === e.id}
+                          style={{ ...btnSmall, background: importing === e.id ? "#d1d5db" : "#059669",
+                            color: "#fff", border: "none", fontSize: 10 }}>
+                          {importing === e.id ? "⏳" : "↓ Import"}
+                        </button>
+                      : <a href={e.source_url} target="_blank" rel="noopener noreferrer"
+                          style={{ ...btnSmall, textDecoration: "none", fontSize: 10 }}>Source ↗</a>
+                    }
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        ))}
+        {!loading && filtered.length === 0 && entries.length > 0 && (
+          <p style={{ color: "#6b7280", fontSize: 13 }}>No entries match your search.</p>
+        )}
+        {!loading && entries.length === 0 && (
+          <p style={{ color: "#6b7280", fontSize: 13 }}>Click Refresh to load the catalogue.</p>
+        )}
+      </div>
+    </details>
+  );
+}
+
+// ── Anchor Set Editor ───────────────────────────────────────────────────────────────
+
+function AnchorSetEditor() {
+  const { toast } = useToast();
+  const [sets, setSets] = useState<AnchorSet[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [showNew, setShowNew] = useState(false);
+  const [newName, setNewName] = useState("");
+  const [newLang, setNewLang] = useState("");
+  const [pairInput, setPairInput] = useState(""); // cipher<TAB>target per line
+
+  const load = async () => {
+    setLoading(true);
+    try { setSets(await listAnchorSets()); }
+    catch (e) { toast(e instanceof Error ? e.message : "Failed to load", "error"); }
+    finally { setLoading(false); }
+  };
+
+  const parsePairs = (raw: string): AnchorPair[] =>
+    raw.split("\n").map(l => l.trim()).filter(Boolean).map(l => {
+      const [cipher, target, confidence, ...noteParts] = l.split(/\s+|\t/);
+      return { cipher: cipher ?? "", target: target ?? "",
+        confidence: (confidence ?? "high") as "high" | "medium" | "low",
+        note: noteParts.join(" ") };
+    }).filter(p => p.cipher && p.target);
+
+  const handleCreate = async () => {
+    if (!newName.trim()) { toast("Name required", "warning"); return; }
+    try {
+      const s = await createAnchorSet({ name: newName.trim(), language: newLang.trim(),
+        pairs: parsePairs(pairInput) });
+      setSets(prev => [s, ...prev]);
+      setShowNew(false); setNewName(""); setNewLang(""); setPairInput("");
+      toast("Anchor set created", "success");
+    } catch (e) { toast(e instanceof Error ? e.message : "Create failed", "error"); }
+  };
+
+  const handleDelete = async (id: string) => {
+    if (!confirm("Delete this anchor set?")) return;
+    try { await deleteAnchorSet(id); setSets(prev => prev.filter(s => s.id !== id)); }
+    catch (e) { toast(e instanceof Error ? e.message : "Delete failed", "error"); }
+  };
+
+  useEffect(() => { void load(); }, []);
+
+  return (
+    <details style={{ marginBottom: "1.5rem" }}>
+      <summary style={{ cursor: "pointer", fontWeight: 600, fontSize: 13, padding: "8px 0",
+        color: "#7c3aed" }}>
+        ⚓ Anchor Sets ({sets.length})
+      </summary>
+      <div style={{ marginTop: 10, padding: "1rem", border: "1px solid #ede9fe", borderRadius: 8, background: "#faf5ff" }}>
+        <div style={{ display: "flex", gap: 8, marginBottom: 10 }}>
+          <button onClick={() => setShowNew(s => !s)} style={{ ...btnSmall, background: "#7c3aed", color: "#fff", border: "none" }}>+ New Set</button>
+          <button onClick={() => void load()} style={btnSmall}>⟳ Refresh</button>
+        </div>
+        {showNew && (
+          <div style={{ padding: 12, border: "1px solid #a78bfa", borderRadius: 6, marginBottom: 12, background: "#fff" }}>
+            <div style={{ display: "flex", gap: 8, marginBottom: 8 }}>
+              <div style={{ flex: 2 }}>
+                <label style={labelStyle}>Set Name</label>
+                <input value={newName} onChange={e => setNewName(e.target.value)}
+                  placeholder="e.g. Fuls Ugaritic Anchors" style={inputStyle} />
+              </div>
+              <div style={{ flex: 1 }}>
+                <label style={labelStyle}>Language (optional)</label>
+                <input value={newLang} onChange={e => setNewLang(e.target.value)}
+                  placeholder="e.g. Ugaritic" style={inputStyle} />
+              </div>
+            </div>
+            <div style={{ marginBottom: 8 }}>
+              <label style={labelStyle}>Anchor Pairs (one per line: cipher target confidence note)</label>
+              <textarea value={pairInput} onChange={e => setPairInput(e.target.value)}
+                rows={5} style={{ ...inputStyle, fontFamily: "monospace", fontSize: 11, resize: "vertical" }}
+                placeholder={"004 T high Fuls verified\n066 m high Fuls verified\n208 n high Fuls verified"} />
+              <div style={{ fontSize: 10, color: "#6b7280", marginTop: 2 }}>Format: cipher_sign target confidence(high/medium/low) note</div>
+            </div>
+            <div style={{ display: "flex", gap: 8 }}>
+              <button onClick={() => void handleCreate()} style={{ ...btnSmall, background: "#7c3aed", color: "#fff", border: "none" }}>Create</button>
+              <button onClick={() => setShowNew(false)} style={btnSmall}>Cancel</button>
+            </div>
+          </div>
+        )}
+        {loading && <p style={{ fontSize: 13, color: "#6b7280" }}>Loading…</p>}
+        {sets.length === 0 && !loading && <p style={{ fontSize: 13, color: "#6b7280" }}>No anchor sets yet. Create one above.</p>}
+        {sets.map(s => (
+          <div key={s.id} style={{ border: "1px solid #ede9fe", borderRadius: 6, padding: "8px 12px",
+            marginBottom: 6, background: "#fff" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <div style={{ flex: 1 }}>
+                <span style={{ fontWeight: 600, fontSize: 12 }}>{s.name}</span>
+                {s.language && <span style={{ fontSize: 11, color: "#7c3aed", marginLeft: 6 }}>{s.language}</span>}
+                <span style={{ fontSize: 11, color: "#9ca3af", marginLeft: 6 }}>{s.pairs.length} pairs</span>
+              </div>
+              <button onClick={() => handleDelete(s.id)}
+                style={{ ...btnMini, color: "#dc2626", borderColor: "#fca5a5" }}>Delete</button>
+            </div>
+            {s.pairs.length > 0 && (
+              <div style={{ marginTop: 4, display: "flex", gap: 4, flexWrap: "wrap" }}>
+                {s.pairs.slice(0, 8).map((p, i) => (
+                  <span key={i} style={{ fontSize: 10, padding: "1px 5px", borderRadius: 4,
+                    background: p.confidence === "high" ? "#d1fae5" : p.confidence === "medium" ? "#fef3c7" : "#fee2e2",
+                    color: "#374151" }}>
+                    {p.cipher}→{p.target}
+                  </span>
+                ))}
+                {s.pairs.length > 8 && <span style={{ fontSize: 10, color: "#9ca3af" }}>+{s.pairs.length - 8} more</span>}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </details>
+  );
+}
+
 export function CorporaView({ onSelect }: { onSelect?: (id: string, name: string) => void }) {
   const [texts, setTexts] = useState<TextResponse[]>([]);
   const [loading, setLoading] = useState(true);
@@ -592,6 +843,8 @@ export function CorporaView({ onSelect }: { onSelect?: (id: string, name: string
         <button onClick={load} style={{ ...btnPrimary, background: "#6b7280", padding: "4px 12px", fontSize: 12 }}>⟳ Refresh</button>
       </div>
       <UploadPanel onCreated={(t) => setTexts((prev) => [t, ...prev])} />
+      <CatalogueBrowser onImported={() => void load()} />
+      <AnchorSetEditor />
       {loading && <p style={{ color: "#6b7280", fontSize: 13 }}>Loading…</p>}
       {error && <p style={{ color: "#dc2626", fontSize: 13 }}>{error}</p>}
       {!loading && !error && texts.length === 0 && <p style={{ color: "#6b7280", fontSize: 13 }}>No corpora yet. Upload or import one above.</p>}

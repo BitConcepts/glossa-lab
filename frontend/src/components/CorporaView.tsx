@@ -82,6 +82,78 @@ function StatBadge({ label, value, color = "#374151" }: { label: string; value: 
   );
 }
 
+/** Classify a single token string into a Unicode category bucket. */
+function classifyToken(token: string): "numeric" | "latin" | "ancient" | "punctuation" | "mixed" {
+  let hasNumeric = false;
+  let hasLatin = false;
+  let hasAncient = false;
+  let hasPunct = false;
+  for (const ch of token) {
+    const cp = ch.codePointAt(0) ?? 0;
+    if (cp >= 0x30 && cp <= 0x39) { hasNumeric = true; continue; } // 0-9
+    if ((cp >= 0x41 && cp <= 0x5A) || (cp >= 0x61 && cp <= 0x7A)) { hasLatin = true; continue; } // A-Z a-z
+    if (cp === 0x2D || cp === 0x5F || cp === 0x20) continue; // dash / underscore / space (connectors, not counted)
+    if (cp < 0x0080) { hasPunct = true; continue; } // other ASCII
+    // Non-ASCII: treated as ancient/script character
+    hasAncient = true;
+  }
+  const categories = [hasNumeric, hasLatin, hasAncient, hasPunct].filter(Boolean).length;
+  if (categories > 1) return "mixed";
+  if (hasAncient) return "ancient";
+  if (hasLatin) return "latin";
+  if (hasPunct) return "punctuation";
+  return "numeric";
+}
+
+const TOKEN_TYPE_META: Record<string, { label: string; color: string; bg: string; desc: string }> = {
+  numeric:     { label: "Numeric codes",   color: "#2563eb", bg: "#dbeafe", desc: "Tokens like 066 or 066-069 (sign codes)" },
+  latin:       { label: "Latin / ASCII",   color: "#16a34a", bg: "#dcfce7", desc: "Latin letter tokens" },
+  ancient:     { label: "Non-Latin Unicode", color: "#7c3aed", bg: "#ede9fe", desc: "Ancient script glyphs (Geez, Hebrew, etc.)" },
+  punctuation: { label: "Punctuation",     color: "#d97706", bg: "#fef3c7", desc: "Punctuation-only tokens" },
+  mixed:       { label: "Mixed (⚠ noise)", color: "#dc2626", bg: "#fee2e2", desc: "Tokens mixing Latin + non-Latin + punctuation" },
+};
+
+function TokenTypeInspector({ tokens }: { tokens: string[] }) {
+  const counts: Record<string, number> = { numeric: 0, latin: 0, ancient: 0, punctuation: 0, mixed: 0 };
+  for (const t of tokens) counts[classifyToken(t)]++;
+  const total = tokens.length || 1;
+  const mixedPct = (counts.mixed / total) * 100;
+  const hasMixedWarning = mixedPct > 5;
+  const entries = Object.entries(counts).filter(([, v]) => v > 0);
+
+  return (
+    <div style={{ marginTop: 16, padding: "10px 12px", border: "1px solid #e5e7eb", borderRadius: 6, background: "#f9fafb" }}>
+      <div style={{ fontSize: 10, fontWeight: 700, color: "#7c3aed", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 8 }}>
+        Token-Type Breakdown
+      </div>
+      {hasMixedWarning && (
+        <div style={{ padding: "4px 8px", background: "#fef2f2", border: "1px solid #fca5a5", borderRadius: 4, fontSize: 11, color: "#991b1b", marginBottom: 8 }}>
+          ⚠ {mixedPct.toFixed(1)}% mixed-category tokens detected. Consider using a <strong>TokenFilter</strong> node to sanitize this corpus before analysis.
+        </div>
+      )}
+      <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+        {entries.map(([cat, count]) => {
+          const meta = TOKEN_TYPE_META[cat];
+          const pct = (count / total) * 100;
+          return (
+            <div key={cat} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <div style={{ width: 130, fontSize: 11, color: meta.color, fontWeight: 600, flexShrink: 0 }} title={meta.desc}>
+                {meta.label}
+              </div>
+              <div style={{ flex: 1, background: "#e5e7eb", borderRadius: 3, height: 10, overflow: "hidden" }}>
+                <div style={{ width: `${pct}%`, background: meta.color, height: "100%", borderRadius: 3, opacity: 0.85 }} />
+              </div>
+              <div style={{ width: 60, fontSize: 11, color: "#6b7280", textAlign: "right", flexShrink: 0 }}>
+                {count.toLocaleString()} ({pct.toFixed(1)}%)
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 function CorpusCard({ text, onUpdated, onDeleted, allTexts }: {
   text: TextResponse;
   onUpdated: (t: TextResponse) => void;
@@ -371,6 +443,7 @@ function CorpusCard({ text, onUpdated, onDeleted, allTexts }: {
                     <div><div style={sLabel}>Zipf log-rank vs log-freq</div><Sparkline values={entropy.zipf_table.map(d => d.log_freq)} color="#7c3aed" /></div>
                   </>
                 )}
+                <TokenTypeInspector tokens={text.content} />
               </div>
             )}
 

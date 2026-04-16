@@ -3470,3 +3470,57 @@ Open TODOs:
 - [ ] Send email + PDF to Dr. Fuls
 
 Next step: Frontend UI for Browse Catalogue, Report Template Editor, and Anchor Set Editor.
+
+---
+
+## [2026-04-16] Entry — Geez v2 + UI Completions (Dr. Fuls April 2026)
+
+Objective: Respond to Dr. Fuls' corpus update and word-final anchor suggestion; complete remaining UI gaps.
+
+### Corpus update (Dr. Fuls)
+- New file: Geez_Genesis_syllabic_nopunctuation.txt (80,221 tokens, 209 signs)
+- Removed: ። (2049) + ፡ (3155) + ፣ (2) + ፥ (98) + ፤ (29) + ፧ (145) = 5,478 punct tokens
+- geez.py: added get_clean_corpus_symbols() and get_clean_corpus_inscriptions()
+- BuiltinCorpus: added geez_clean/geez_nopunct/geez_syllabic names
+- Graph spec: geez_anchor_convergence_v2.json (uses geez_clean corpus)
+
+### Word-final anchor strategy (Dr. Fuls suggestion)
+- Added use_word_final_anchors param to AnchorConvergenceBenchmark
+- _word_final_ranked(): ranks by T-rate mapped through perm dict (cipher→original)
+  Fixed bug: initial implementation used cipher sign keys for original sign lookup
+- Set 0 = word-final ranked, Set 1 = frequency ranked, Set 2 = interleaved
+
+### V2 Results (GPU, 7.4 min)
+| Anchors | StructAcc(free) | RandAcc(free) | Consistency | HCI75 |
+|---------|----------------|---------------|-------------|-------|
+|  0      | 12.2%          | 9.3%          | 35.4%       | 12.8% |
+|  3      | 9.4%           | 8.1%          | 41.6%       |  8.7% |
+| 10      | 10.1%          | 9.3%          | 43.3%       | 11.4% |
+| 20      | 10.0%          | 9.7%          | 44.8%       | 15.2% |
+
+VERDICT: PARTIAL — consistency rises monotonically, cluster collapse at k=3.
+Baseline accuracy higher (12.2%) due to larger, cleaner corpus.
+Word-final ≈ frequency anchors at 2000 SA iterations; expected to diverge at 5000+.
+
+### UI completions (remaining gaps)
+- CorporaView: Browse World Language Corpus Catalogue (collapsible, grouped by family, one-click import)
+- CorporaView: Anchor Set Editor (create/view anchor pairs, pipe-separated input)
+- ReportsView: Templates tab (📝 user-defined report templates, section editor, CRUD)
+
+### Files changed
+- backend/glossa_lab/data/geez/Geez_Genesis_syllabic_nopunctuation.txt (new corpus)
+- reports/Geez_syllabic_no-punctuation_statistics.docx (Dr. Fuls stats)
+- backend/glossa_lab/data/geez.py (+get_clean_corpus_symbols, +get_clean_corpus_inscriptions)
+- backend/glossa_lab/experiment_graph.py (geez_clean corpus, word-final anchor fix, params_schema update)
+- backend/glossa_lab/experiments/graphs/geez_anchor_convergence_v2.json (new spec)
+- backend/scripts/run_geez_v2.py, generate_geez_v2_report.py (new)
+- reports/geez_v2_report.pdf, fuls_email_geez_v2.txt (new)
+- frontend: CorporaView.tsx (+CatalogueBrowser, +AnchorSetEditor), ReportsView.tsx (+Templates tab)
+- frontend/src/api.ts (already had new types from H16)
+
+Open TODOs:
+- [ ] Send email + PDF to Dr. Fuls (geez_v2_report.pdf, fuls_email_geez_v2.txt)
+- [ ] Extended Geez v2 run: 5000-10000 SA iterations, 50/100 anchor conditions
+- [ ] Word-final analysis on Indus Script corpus
+
+Next step: Send email to Dr. Fuls. Then extended benchmark with more iterations.

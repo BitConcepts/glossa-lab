@@ -29,7 +29,8 @@ from typing import Any
 
 _HERE     = Path(os.path.abspath(__file__)).parent
 _DATA_DIR = _HERE / "geez"
-_GENESIS  = _DATA_DIR / "Geez_Genesis.txt"
+_GENESIS       = _DATA_DIR / "Geez_Genesis.txt"
+_GENESIS_CLEAN = _DATA_DIR / "Geez_Genesis_syllabic_nopunctuation.txt"  # Dr. Fuls April 2026
 _SIGNLIST = _DATA_DIR / "Geez_signlist.txt"
 
 # ── Metadata ──────────────────────────────────────────────────────────────────
@@ -188,6 +189,44 @@ def get_syllabic_inventory_filtered(min_freq: int = 3) -> list[str]:
          if n >= min_freq and c in sign_inv and sign_inv[c]["is_syllabic"]],
         key=lambda c: sign_inv[c].get("row_idx", 999) * 10 + sign_inv[c].get("col_idx", 0)
     )
+
+
+# ── Clean corpus (punctuation-free, Dr. Fuls April 2026) ─────────────────────
+# 80,221 syllabic chars, 209 distinct signs (6 punctuation classes removed).
+# Removed: full stop ። (2049), word divider ፡ (3155), comma ፣ (2),
+#          colon ፥ (98), semicolon ፤ (29), question mark ፧ (145).
+
+import re as _re
+
+def get_clean_corpus_symbols() -> list[str]:
+    """Return syllabic tokens from the punctuation-free Genesis (Dr. Fuls, April 2026).
+
+    Uses Geez_Genesis_syllabic_nopunctuation.txt if available,
+    otherwise falls back to get_corpus_symbols() with run-time punct filter.
+    80,221 tokens, 209 distinct signs.
+    """
+    if _GENESIS_CLEAN.exists():
+        content = _GENESIS_CLEAN.read_text(encoding="utf-8")
+        return [c for c in content if _is_syllabic(c)]
+    # Fallback: filter original
+    return [c for c in get_corpus_symbols() if c not in _ETHIOPIC_PUNCT]
+
+
+def get_clean_corpus_inscriptions() -> list[list[str]]:
+    """Return word-level inscriptions from the punctuation-free corpus.
+
+    Each word is a sequence of syllabic Ethiopic characters.
+    Words of length < 2 are excluded.
+    """
+    content: str
+    if _GENESIS_CLEAN.exists():
+        content = _GENESIS_CLEAN.read_text(encoding="utf-8")
+        words_raw = _re.findall(r'[\u1200-\u1360]+', content)
+        words = [[c for c in w if _is_syllabic(c)] for w in words_raw]
+        return [w for w in words if len(w) >= 2]
+    # Fallback to original inscriptions with punct filtered
+    return [[c for c in w if c not in _ETHIOPIC_PUNCT]
+            for w in get_corpus_inscriptions()]
 
 
 def corpus_statistics() -> dict[str, Any]:

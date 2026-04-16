@@ -287,6 +287,10 @@ def _builtin_corpus(inputs: dict, params: dict) -> dict:
         elif name == "geez":
             from glossa_lab.data.geez import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
             flat = get_corpus_symbols(); seqs = get_corpus_inscriptions()
+        elif name in ("geez_clean", "geez_nopunct", "geez_syllabic"):
+            # Dr. Fuls April 2026: punctuation-free corpus (80,221 tokens, 209 signs)
+            from glossa_lab.data.geez import get_clean_corpus_symbols, get_clean_corpus_inscriptions  # noqa: PLC0415
+            flat = get_clean_corpus_symbols(); seqs = get_clean_corpus_inscriptions()
         elif name == "phoenician":
             from glossa_lab.data.phoenician import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
             flat = get_corpus_symbols(); seqs = get_corpus_inscriptions()
@@ -997,6 +1001,7 @@ def _anchor_convergence_benchmark(inputs: dict, params: dict) -> dict:
     sa_rest   = max(1,   int(params.get("sa_restarts", 1)))
     sa_temp   = float(params.get("sa_temp", 1.0))
     sa_cool   = float(params.get("sa_cool", 0.9985))
+    use_wf    = bool(params.get("use_word_final_anchors", False))
 
     from glossa_lab.experiments._parallel import run_seeds_parallel  # noqa: PLC0415
 
@@ -1076,20 +1081,59 @@ def _anchor_convergence_benchmark(inputs: dict, params: dict) -> dict:
             "hci75_pct": round(sum(1 for v in cons.values() if v >= .75) / max(1, n_cs), 4),
         }
 
+    def _word_final_ranked() -> list[str]:
+        """Rank signs by word-final preference (Dr. Fuls April 2026 suggestion).
+
+        Word-final signs have lower positional entropy (fewer distinct signs
+        appear at word-end than at word-initial), making them more constrained
+        and more informative as anchors.  Ranks by terminal rate (T-rate) from
+        cipher_seqs word-end positions divided by unigram frequency.
+        """
+        from collections import Counter as _Cwf  # noqa: PLC0415
+        # Count word-final occurrences in cipher sequences
+        final_cnt: dict[str, int] = _Cwf(
+            seq[-1] for seq in cipher_seqs if len(seq) >= 2
+        )
+        total_cnt: dict[str, int] = _Cwf(c for seq in cipher_seqs for c in seq)
+        if not final_cnt:
+            # Fall back to frequency ranking
+            return sorted(sign_inv, key=lambda s: -lm.unigram_freq.get(s, 0))
+        # T-rate: for each ORIGINAL sign s, find its cipher form (perm[s]),
+        # then measure how often that cipher form appears at word-final position.
+        # This correctly identifies which ORIGINAL signs tend to be word-final.
+        t_rate = {
+            s: final_cnt.get(perm.get(s, "_"), 0) / max(1, total_cnt.get(perm.get(s, "_"), 1))
+            for s in sign_inv
+        }
+        # Rank by T-rate descending, break ties by unigram frequency
+        return sorted(sign_inv, key=lambda s: (-t_rate[s], -lm.unigram_freq.get(s, 0)))
+
     def _mk_struct_anchors(k: int) -> list[dict]:
-        """Frequency-ranked anchor sets from LM."""
+        """Frequency-ranked (default) or word-final-ranked anchor sets from LM."""
         if k == 0:
             return [{}]
-        ranked = sorted(sign_inv, key=lambda s: -lm.unigram_freq.get(s, 0))
+        freq_ranked = sorted(sign_inv, key=lambda s: -lm.unigram_freq.get(s, 0))
+        wf_ranked   = _word_final_ranked() if use_wf else freq_ranked
         sets = []
         for i in range(min(n_struct, 3)):
             if i == 0:
-                chosen = ranked[:k]
+                # Set 0: word-final ranked (if enabled) else frequency
+                chosen = wf_ranked[:k]
             elif i == 1:
-                # Alternate ranks (diversify)
-                chosen = ranked[::2][:k]
+                # Set 1: pure frequency ranked
+                chosen = freq_ranked[:k]
             else:
-                chosen = ranked[1::2][:k]
+                # Set 2: interleaved word-final + frequency
+                merged: list[str] = []
+                wi = fi = 0
+                while len(merged) < k:
+                    if wi < len(wf_ranked) and wf_ranked[wi] not in merged:
+                        merged.append(wf_ranked[wi]); wi += 1
+                    elif fi < len(freq_ranked) and freq_ranked[fi] not in merged:
+                        merged.append(freq_ranked[fi]); fi += 1
+                    else:
+                        break
+                chosen = merged[:k]
             sets.append({perm[c]: c for c in chosen[:k] if c in perm})
         return sets[:n_struct]
 
@@ -1616,7 +1660,11 @@ for _d in [
             "n_seeds_struct":{"type":"integer","title":"Seeds per Structured Run","default":3,"minimum":1},
             "n_seeds_rand":{"type":"integer","title":"Seeds per Random Run","default":2,"minimum":1},
             "sa_iterations":{"type":"integer","title":"SA Iterations","default":2000,"minimum":500},
-            "sa_restarts":{"type":"integer","title":"SA Restarts","default":1,"minimum":1}}},
+            "sa_restarts":{"type":"integer","title":"SA Restarts","default":1,"minimum":1},
+            "use_word_final_anchors":{"type":"boolean","title":"Word-Final Anchor Priority","default":False,
+                                      "description":"Rank anchor candidates by word-final T-rate (Dr. Fuls 2026). "
+                                                     "Word-final signs have lower positional entropy — better anchors."},
+        }},
         fn=_anchor_convergence_benchmark),
 ]:
     ATOMIC_NODES[_d.id] = _d

@@ -8,7 +8,10 @@ import {
   listReports, deleteReport, getReportDownloadUrl, openReportFolder,
   listStudies, aiReportSynthesis,
   listReportTemplates, generateReport,
+  listUserReportTemplates, createUserReportTemplate,
+  deleteUserReportTemplate,
   type CatalogReport, type StudyResponse, type ReportTemplate,
+  type UserReportTemplate, type ReportTemplateSection,
 } from "../api";
 import { fmtDateTimeCompact } from "../dateFormat";
 
@@ -42,7 +45,7 @@ export function ReportsView() {
   const [reports, setReports] = useState<CatalogReport[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [areaTab, setAreaTab] = useState<"data" | "reports">("reports");
+  const [areaTab, setAreaTab] = useState<"data" | "reports" | "templates">("reports");
   const [search, setSearch] = useState("");
   const [kindFilter, setKindFilter] = useState<Set<string>>(new Set());
   const [expFilter, setExpFilter] = useState<Set<string>>(new Set());
@@ -287,6 +290,48 @@ export function ReportsView() {
   const dataCnt   = reports.filter(r => DATA_KINDS.has(r.kind)).length;
   const reportCnt = reports.filter(r => REPORT_KINDS.has(r.kind)).length;
 
+  // ── Template editor state ───────────────────────────────────────────────
+  const [userTemplates, setUserTemplates] = useState<UserReportTemplate[]>([]);
+  const [tmplLoading, setTmplLoading] = useState(false);
+  const [showNewTmpl, setShowNewTmpl] = useState(false);
+  const [newTmplName, setNewTmplName] = useState("");
+  const [newTmplCat, setNewTmplCat]   = useState("General");
+  const [newTmplDesc, setNewTmplDesc] = useState("");
+  const [newTmplSections, setNewTmplSections] = useState<ReportTemplateSection[]>([]);
+
+  const loadUserTemplates = async () => {
+    setTmplLoading(true);
+    try { setUserTemplates(await listUserReportTemplates()); }
+    catch { /* ignore */ }
+    finally { setTmplLoading(false); }
+  };
+
+  const handleCreateTmpl = async () => {
+    if (!newTmplName.trim()) return;
+    try {
+      const t = await createUserReportTemplate({
+        name: newTmplName.trim(), description: newTmplDesc.trim(),
+        category: newTmplCat, sections: newTmplSections,
+      });
+      setUserTemplates(prev => [t, ...prev]);
+      setShowNewTmpl(false); setNewTmplName(""); setNewTmplDesc(""); setNewTmplSections([]);
+    } catch { /* ignore */ }
+  };
+
+  const handleDeleteTmpl = async (id: string) => {
+    if (!confirm("Delete this template?")) return;
+    try { await deleteUserReportTemplate(id); setUserTemplates(prev => prev.filter(t => t.id !== id)); }
+    catch { /* ignore */ }
+  };
+
+  const addSection = () => setNewTmplSections(prev => [
+    ...prev,
+    { title: "", data_source: "", data_key: "", chart_type: "table", include_table: true, description: "" },
+  ]);
+
+  const updateSection = (i: number, field: keyof ReportTemplateSection, val: unknown) =>
+    setNewTmplSections(prev => prev.map((s, idx) => idx === i ? { ...s, [field]: val } : s));
+
   const sorted = [...areaFiltered]
     .filter((r) => (!search || r.name.toLowerCase().includes(search.toLowerCase()))
                 && (kindFilter.size === 0 || kindFilter.has(r.kind))
@@ -332,8 +377,8 @@ export function ReportsView() {
 
       {/* Area tabs */}
       <div style={{ display: "flex", gap: 0, marginBottom: "0.75rem", borderBottom: "2px solid #e5e7eb" }}>
-        {(["reports", "data"] as const).map(tab => (
-          <button key={tab} onClick={() => setAreaTab(tab)}
+        {(["reports", "data", "templates"] as const).map(tab => (
+          <button key={tab} onClick={() => { setAreaTab(tab); if (tab === "templates" && userTemplates.length === 0) void loadUserTemplates(); }}
             style={{ padding: "7px 18px", border: "none", background: "none", cursor: "pointer",
               fontSize: 13, fontWeight: areaTab === tab ? 700 : 400,
               color: areaTab === tab ? "#1e3a5f" : "#6b7280",
@@ -341,16 +386,116 @@ export function ReportsView() {
               marginBottom: "-2px", whiteSpace: "nowrap" }}>
             {tab === "reports"
               ? `📋 Reports ${reportCnt > 0 ? `(${reportCnt})` : ""}`
-              : `📂 Data ${dataCnt > 0 ? `(${dataCnt})` : ""}`}
+              : tab === "data"
+              ? `📂 Data ${dataCnt > 0 ? `(${dataCnt})` : ""}`
+              : `📝 Templates ${userTemplates.length > 0 ? `(${userTemplates.length})` : ""}`}
           </button>
         ))}
         <div style={{ flex: 1 }} />
         <span style={{ fontSize: 11, color: "#9ca3af", alignSelf: "center", paddingRight: 4 }}>
-          {areaTab === "reports"
-            ? "PDF & formatted documents"
-            : "JSON results, CSV exports, raw artifacts"}
+          {areaTab === "reports" ? "PDF & formatted documents"
+            : areaTab === "data" ? "JSON results, CSV exports, raw artifacts"
+            : "User-defined report templates (stored in database)"}
         </span>
       </div>
+
+      {/* Templates editor panel */}
+      {areaTab === "templates" && (
+        <div style={{ padding: "0 0 24px" }}>
+          <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
+            <button onClick={() => { setShowNewTmpl(s => !s); setNewTmplSections([]); }}
+              style={{ ...btnStyle, background: "#7c3aed", padding: "4px 14px", fontSize: 12 }}>
+              + New Template
+            </button>
+            <button onClick={() => void loadUserTemplates()} style={{ ...btnStyle, background: "#6b7280", padding: "4px 12px", fontSize: 12 }}>⟳</button>
+          </div>
+          {showNewTmpl && (
+            <div style={{ border: "1px solid #a78bfa", borderRadius: 8, padding: 16, marginBottom: 16, background: "#faf5ff" }}>
+              <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 10, color: "#7c3aed" }}>📝 New Report Template</div>
+              <div style={{ display: "flex", gap: 8, marginBottom: 8 }}>
+                <div style={{ flex: 2 }}>
+                  <label style={{ fontSize: 11, fontWeight: 600, color: "#374151", display: "block", marginBottom: 3 }}>Name</label>
+                  <input value={newTmplName} onChange={e => setNewTmplName(e.target.value)}
+                    placeholder="e.g. Fuls NW Semitic Report"
+                    style={{ width: "100%", padding: "5px 8px", border: "1px solid #d1d5db", borderRadius: 4, fontSize: 12, boxSizing: "border-box" }} />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <label style={{ fontSize: 11, fontWeight: 600, color: "#374151", display: "block", marginBottom: 3 }}>Category</label>
+                  <input value={newTmplCat} onChange={e => setNewTmplCat(e.target.value)}
+                    placeholder="General"
+                    style={{ width: "100%", padding: "5px 8px", border: "1px solid #d1d5db", borderRadius: 4, fontSize: 12, boxSizing: "border-box" }} />
+                </div>
+              </div>
+              <div style={{ marginBottom: 10 }}>
+                <label style={{ fontSize: 11, fontWeight: 600, color: "#374151", display: "block", marginBottom: 3 }}>Description</label>
+                <input value={newTmplDesc} onChange={e => setNewTmplDesc(e.target.value)}
+                  placeholder="What this report covers…"
+                  style={{ width: "100%", padding: "5px 8px", border: "1px solid #d1d5db", borderRadius: 4, fontSize: 12, boxSizing: "border-box" }} />
+              </div>
+              <div style={{ marginBottom: 10 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                  <label style={{ fontSize: 11, fontWeight: 600, color: "#374151" }}>Sections</label>
+                  <button onClick={addSection} style={{ fontSize: 11, background: "#ede9fe", border: "none", borderRadius: 4, padding: "2px 8px", cursor: "pointer", color: "#7c3aed" }}>+ Add Section</button>
+                </div>
+                {newTmplSections.map((s, i) => (
+                  <div key={i} style={{ display: "flex", gap: 6, marginBottom: 6, padding: "8px", background: "#fff", borderRadius: 4, border: "1px solid #e5e7eb" }}>
+                    <input placeholder="Title" value={s.title} onChange={e => updateSection(i, "title", e.target.value)}
+                      style={{ flex: 2, padding: "3px 6px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11 }} />
+                    <input placeholder="Data key" value={s.data_key} onChange={e => updateSection(i, "data_key", e.target.value)}
+                      style={{ flex: 2, padding: "3px 6px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11 }} />
+                    <select value={s.chart_type} onChange={e => updateSection(i, "chart_type", e.target.value)}
+                      style={{ padding: "3px 6px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11 }}>
+                      <option value="table">Table</option>
+                      <option value="bar">Bar</option>
+                      <option value="line">Line</option>
+                      <option value="text">Text</option>
+                    </select>
+                    <button onClick={() => setNewTmplSections(prev => prev.filter((_, j) => j !== i))}
+                      style={{ fontSize: 12, background: "none", border: "none", cursor: "pointer", color: "#dc2626" }}>×</button>
+                  </div>
+                ))}
+                {newTmplSections.length === 0 && <p style={{ fontSize: 11, color: "#9ca3af" }}>No sections yet. Add one above.</p>}
+              </div>
+              <div style={{ display: "flex", gap: 8 }}>
+                <button onClick={() => void handleCreateTmpl()} disabled={!newTmplName.trim()}
+                  style={{ ...btnStyle, background: "#7c3aed", padding: "5px 16px", fontSize: 12, opacity: newTmplName.trim() ? 1 : 0.4 }}>Create Template</button>
+                <button onClick={() => setShowNewTmpl(false)}
+                  style={{ ...btnStyle, background: "#6b7280", padding: "5px 14px", fontSize: 12 }}>Cancel</button>
+              </div>
+            </div>
+          )}
+          {tmplLoading && <p style={{ color: "#6b7280", fontSize: 13 }}>Loading…</p>}
+          {!tmplLoading && userTemplates.length === 0 && (
+            <div style={{ padding: "20px", border: "2px dashed #e5e7eb", borderRadius: 8, textAlign: "center", color: "#9ca3af" }}>
+              <div style={{ fontSize: 32, marginBottom: 8 }}>📝</div>
+              <div style={{ fontWeight: 600, marginBottom: 4 }}>No report templates yet</div>
+              <div style={{ fontSize: 12 }}>Create a template to define reusable report structures for your experiments.</div>
+            </div>
+          )}
+          {userTemplates.map(t => (
+            <div key={t.id} style={{ border: "1px solid #e5e7eb", borderRadius: 8, padding: "12px 16px", marginBottom: 8, background: "#fff" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontWeight: 700, fontSize: 13 }}>{t.name}</div>
+                  <div style={{ fontSize: 11, color: "#6b7280" }}>{t.category} · {t.sections.length} section{t.sections.length !== 1 ? "s" : ""} · {t.description}</div>
+                </div>
+                <button onClick={() => void handleDeleteTmpl(t.id)}
+                  style={{ fontSize: 11, border: "1px solid #fca5a5", borderRadius: 4, padding: "2px 8px", background: "none", cursor: "pointer", color: "#dc2626" }}>
+                  Delete
+                </button>
+              </div>
+              {t.sections.length > 0 && (
+                <div style={{ marginTop: 6, display: "flex", gap: 4, flexWrap: "wrap" }}>
+                  {t.sections.map((s, i) => (
+                    <span key={i} style={{ fontSize: 10, padding: "2px 8px", borderRadius: 10,
+                      background: "#f3f4f6", color: "#374151" }}>{s.title || `Section ${i+1}`} ({s.chart_type})</span>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Generate Report Modal */}
       {showGenerateModal && (

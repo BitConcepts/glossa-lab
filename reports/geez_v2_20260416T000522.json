@@ -1,0 +1,60 @@
+{
+  "experiment": "geez_anchor_convergence_v2",
+  "timestamp": "20260416T000522",
+  "corpus": "geez_clean_nopunct_80221_209signs",
+  "word_final_anchors": true,
+  "compute_device": "GPU (CUDA)",
+  "elapsed_seconds": 441.972583,
+  "conclusions": {
+    "verdict": "PARTIAL",
+    "free_acc_at_0": 0.1225,
+    "free_acc_at_max": 0.0996,
+    "improvement": -0.0229
+  },
+  "summary_table": [
+    {
+      "anchor_count": 0,
+      "struct_acc_free": 0.1225,
+      "rand_acc_free": 0.0931,
+      "struct_consistency": 0.3539,
+      "rand_consistency": 0.3461,
+      "struct_n_distinct": 5.0,
+      "rand_n_distinct": 5.0,
+      "struct_hci75": 0.1275,
+      "rand_hci75": 0.1176
+    },
+    {
+      "anchor_count": 3,
+      "struct_acc_free": 0.0945,
+      "rand_acc_free": 0.0806,
+      "struct_consistency": 0.4161,
+      "rand_consistency": 0.5294,
+      "struct_n_distinct": 3.0,
+      "rand_n_distinct": 2.0,
+      "struct_hci75": 0.0866,
+      "rand_hci75": 0.1471
+    },
+    {
+      "anchor_count": 10,
+      "struct_acc_free": 0.1014,
+      "rand_acc_free": 0.0928,
+      "struct_consistency": 0.433,
+      "rand_consistency": 0.5515,
+      "struct_n_distinct": 3.0,
+      "rand_n_distinct": 2.0,
+      "struct_hci75": 0.1143,
+      "rand_hci75": 0.1912
+    },
+    {
+      "anchor_count": 20,
+      "struct_acc_free": 0.0996,
+      "rand_acc_free": 0.0967,
+      "struct_consistency": 0.4477,
+      "rand_consistency": 0.5554,
+      "struct_n_distinct": 3.0,
+      "rand_n_distinct": 2.0,
+      "struct_hci75": 0.152,
+      "rand_hci75": 0.199
+    }
+  ]
+}

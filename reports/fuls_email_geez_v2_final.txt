@@ -3,8 +3,9 @@ SUBJECT: Re: Geez Syllabic Benchmark v2 — Clean Corpus Confirmed + Word-Final 
 
 Dear Dr. Fuls,
 
-Thank you for the corrected corpus and the statistical report. I have repeated the test
-with the new file and also carried out the word-position analysis you suggested.
+Thank you for the corrected corpus and the statistical report (.docx). I have repeated
+the test with the new file and also carried out the word-position analysis you suggested.
+Our computed figures match yours exactly: 80,221 syllabic tokens, 209 distinct signs.
 
 ─────────────────────────────────────────────────────────────────────
 1. CORPUS UPDATE — CONFIRMED
@@ -20,8 +21,6 @@ The new punctuation-free file has been integrated. Removed characters:
   Question   (Ethiopic, U+1367) :   145
   ─────────────────────────────────────
   Total removed                  : 5,478
-
-Result: 80,221 syllabic tokens, 209 distinct signs — matching your statistics exactly.
 
 ─────────────────────────────────────────────────────────────────────
 2. WORD-POSITION ANALYSIS OF ANCHOR SIGNS
@@ -46,11 +45,13 @@ TOP 10 WORD-FINAL SIGNS (best anchor candidates by T-rate):
   ዎ    |   83.7%  |    0.0%  |   16.3%  |    258 | U+12CE
   ሆ    |   81.6%  |    0.7%  |   17.7%  |    147 | U+1206
 
-These are almost exclusively second-order vowel forms (the -u vowel order), which
-are word-terminal morphemes in Tigrinya. This confirms your insight precisely:
-the -u forms are highly constrained at word-end.
+These are predominantly second-order (-u vowel: yu, su, lu, nu, wu, du, 'u)
+and third-order (-i vowel: ji, ni, qi, ti, ri, yi) Ethiopic syllabic forms --
+grammatical suffixes in Tigrinya that occur almost exclusively at word-end.
+This confirms your insight precisely: these orders are strongly constrained
+to word-final position.
 
-CRITICAL FINDING — our frequency-ranked anchors were mostly word-INITIAL:
+CRITICAL FINDING -- our frequency-ranked anchors were mostly word-INITIAL:
 
 The high-frequency signs we used as structured anchors are predominantly
 word-INITIAL or MIXED, not word-final:
@@ -69,10 +70,12 @@ word-INITIAL or MIXED, not word-final:
   ማ    |  1,530 |   72.2%  |   10.6%  |   17.2%  | TERMINAL ✓
 
 Summary:
-  - Only 2 of our 20 frequency-ranked anchors are TERMINAL-dominant
+  - The most common signs are 6th-order (-e/schwa vowel: ne, be, me, ye, de, te),
+    which are inflectional suffixes occurring across all word positions (MIXED).
+  - Only 2 of 20 frequency-ranked signs are TERMINAL-dominant.
   - Mean T-rate of frequency top-20:    31.6%
   - Mean T-rate of word-final top-20:   83.8%
-  - Overlap between the two strategies: 2 signs (ቲ and ማ)
+  - Overlap between the two strategies: 2 signs (ti and ma)
 
 This means our previous "structured" anchors were not exploiting the word-final
 constraint you identified. The two strategies were genuinely different, not
@@ -117,11 +120,12 @@ seeds and iterations.
 4. SCIENTIFIC INTERPRETATION
 ─────────────────────────────────────────────────────────────────────
 
-Your insight about word-final signs is structurally confirmed. The -u vowel
-forms (ዩ, ኒ, ቂ, ቲ, etc.) are word-final in 85-94% of their occurrences.
-These are linguistically meaningful: in Tigrinya, the second-order vowel forms
-frequently appear as grammatical suffixes (subject markers, accusative -u, etc.)
-at word-end.
+Your insight about word-final signs is structurally confirmed. The word-final
+dominant signs are the second-order (-u vowel: ዩ, ሱ, ሉ, ኡ, ዎ, etc.) and
+third-order (-i vowel: ዒ, ቂ, ቲ, ሪ, etc.) Ethiopic syllabic forms.
+These are linguistically meaningful: in Tigrinya, the 2nd- and 3rd-order forms
+appear as grammatical suffixes (subject -u, relativiser -ti, etc.) at word-end,
+giving them T-rates of 83-94%.
 
 For the Indus Script research, this suggests a concrete method:
 

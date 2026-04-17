@@ -37,10 +37,41 @@ except ImportError:
 
 _SCHTASK_NAME = "GlossaLab"  # single task that owns tray + backend
 
-BACKEND_URL = "http://127.0.0.1:8001"
-HEALTH_URL = f"{BACKEND_URL}/api/v1/health"
-FRONTEND_URL = "http://localhost:8001"  # backend serves built frontend
-POLL_INTERVAL = 3  # seconds — fast enough to feel live
+_CONFIG_FILE = Path.home() / ".glossa-lab" / "config.json"
+
+
+def _load_config() -> dict:
+    try:
+        if _CONFIG_FILE.exists():
+            return json.loads(_CONFIG_FILE.read_text(encoding="utf-8"))
+    except Exception:
+        pass
+    return {}
+
+
+def _save_config(cfg: dict) -> None:
+    try:
+        _CONFIG_FILE.parent.mkdir(parents=True, exist_ok=True)
+        _CONFIG_FILE.write_text(json.dumps(cfg, indent=2), encoding="utf-8")
+    except Exception:
+        pass
+
+
+def _current_port() -> int:
+    """Return the configured backend port (default 8001)."""
+    return int(_load_config().get("port", 8001))
+
+
+# Dynamically resolved so port changes take effect immediately.
+def _make_urls(port: int) -> tuple[str, str, str]:
+    base     = f"http://127.0.0.1:{port}"
+    health   = f"{base}/api/v1/health"
+    frontend = f"http://localhost:{port}"
+    return base, health, frontend
+
+
+BACKEND_URL, HEALTH_URL, FRONTEND_URL = _make_urls(_current_port())
+POLL_INTERVAL = 3  # seconds
 
 # Determine repo root and shell wrapper
 _TRAY_DIR = Path(__file__).resolve().parent
@@ -247,10 +278,11 @@ def _start_backend(_icon=None, _item=None) -> None:
         log_fh = open(str(_BACKEND_LOG), "ab")  # noqa: SIM115
         env = os.environ.copy()
         env["PYTHONPATH"] = _BACKEND_DIR
+        port = str(_current_port())
         subprocess.Popen(
             [
                 _VENV_PYTHON, "-m", "uvicorn", "glossa_lab.main:app",
-                "--host", "0.0.0.0", "--port", "8001",
+                "--host", "0.0.0.0", "--port", port,
                 "--app-dir", _BACKEND_DIR,
             ],
             cwd=_BACKEND_DIR,
@@ -277,6 +309,66 @@ def _stop_backend(_icon=None, _item=None) -> None:
         pass
     if platform.system() != "Windows":
         _run_silent("systemctl", "--user", "stop", "glossa-lab-backend")
+
+
+def _change_port(_icon=None, _item=None) -> None:
+    """Ask the user for a new port via a simple tkinter dialog.
+
+    Saves the new port to ~/.glossa-lab/config.json and offers to restart
+    the backend so the change takes effect immediately.
+    """
+    global BACKEND_URL, HEALTH_URL, FRONTEND_URL  # noqa: PLW0603
+    try:
+        import tkinter as tk  # noqa: PLC0415
+        from tkinter import simpledialog, messagebox  # noqa: PLC0415
+    except ImportError:
+        return  # tkinter not available — skip
+
+    root = tk.Tk()
+    root.withdraw()  # hide root window
+    root.attributes("-topmost", True)
+    current = _current_port()
+    answer = simpledialog.askstring(
+        "Glossa Lab — Change Port",
+        f"Enter new backend port (current: {current}):\n"
+        "Common choices: 8001 (default), 8000, 5000, 3000",
+        initialvalue=str(current),
+        parent=root,
+    )
+    root.destroy()
+    if not answer:
+        return
+    try:
+        new_port = int(answer.strip())
+        if not (1 <= new_port <= 65535):
+            raise ValueError("Port out of range")
+    except ValueError:
+        return
+
+    if new_port == current:
+        return
+
+    # Save and rebuild URLs
+    cfg = _load_config()
+    cfg["port"] = new_port
+    _save_config(cfg)
+    BACKEND_URL, HEALTH_URL, FRONTEND_URL = _make_urls(new_port)
+
+    # Ask whether to restart now
+    root2 = tk.Tk()
+    root2.withdraw()
+    root2.attributes("-topmost", True)
+    if messagebox.askyesno(
+        "Restart backend?",
+        f"Port changed to {new_port}.\nRestart the backend now to apply the change?",
+        parent=root2,
+    ):
+        threading.Thread(target=_restart_service, daemon=True).start()
+    root2.destroy()
+
+
+def _port_label(_item) -> str:
+    return f"Port: {_current_port()}"
 
 
 def _open_log(_icon=None, _item=None) -> None:
@@ -366,6 +458,9 @@ def main():
         pystray.MenuItem(_service_label, _start_or_stop_service, enabled=_service_enabled),
         pystray.MenuItem("Restart Service", _restart_service),
         pystray.MenuItem("View Log", _open_log),
+        pystray.Menu.SEPARATOR,
+        pystray.MenuItem(_port_label, None, enabled=False),  # display-only
+        pystray.MenuItem("Change Port...", _change_port),
         pystray.Menu.SEPARATOR,
         pystray.MenuItem(
             _AUTOSTART_LABEL,

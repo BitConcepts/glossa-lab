@@ -608,6 +608,100 @@ def _beam_decipher(inputs: dict, params: dict) -> dict:
         return {"error": str(exc)}
 
 
+def _token_filter(inputs: dict, params: dict) -> dict:
+    """Filter sequence tokens by Unicode range, explicit blocklist, or minimum frequency.
+
+    Solves the corpus sanitisation problem (H16): removes non-sign tokens
+    (e.g. Ethiopic punctuation U+1361-U+1368) before building an LM or running SA.
+    All three filter modes may be combined; they are applied in order:
+      1. unicode_ranges: keep only tokens whose codepoint falls within listed ranges.
+      2. blocklist: drop tokens whose string value appears in this list.
+      3. min_freq: drop tokens that appear fewer than min_freq times across the corpus.
+
+    Examples
+    --------
+    Remove Ethiopic punctuation (U+1361-U+1368)::
+        TokenFilter(unicode_ranges=["U+1200-U+1360"])
+
+    Remove specific sign codes::
+        TokenFilter(blocklist=["punct", "000", "-"])
+
+    Keep only signs appearing >= 3 times::
+        TokenFilter(min_freq=3)
+    """
+    import re as _re  # noqa: PLC0415
+    from collections import Counter as _C  # noqa: PLC0415
+
+    sequences = inputs.get("sequences") or []
+    if not sequences:
+        return {"sequences": [], "total_sequences": 0, "total_tokens": 0,
+                "removed_tokens": 0, "removed_types": 0}
+
+    # ── Parameter parsing ──────────────────────────────────────────────────────
+    # unicode_ranges: list of "U+XXXX-U+YYYY" or "U+XXXX" strings
+    raw_ranges = params.get("unicode_ranges") or []
+    if isinstance(raw_ranges, str):
+        raw_ranges = [r.strip() for r in raw_ranges.split(",") if r.strip()]
+
+    parsed_ranges: list[tuple[int, int]] = []
+    for rng in raw_ranges:
+        rng = rng.strip()
+        m = _re.match(r"U\+([0-9A-Fa-f]+)(?:-U\+([0-9A-Fa-f]+))?", rng)
+        if m:
+            lo = int(m.group(1), 16)
+            hi = int(m.group(2), 16) if m.group(2) else lo
+            parsed_ranges.append((lo, hi))
+
+    # blocklist: list of token strings to drop
+    blocklist_raw = params.get("blocklist") or []
+    if isinstance(blocklist_raw, str):
+        blocklist_raw = [t.strip() for t in blocklist_raw.split(",") if t.strip()]
+    blocklist: set[str] = set(blocklist_raw)
+
+    # min_freq: drop tokens appearing fewer than this many times
+    min_freq = max(0, int(params.get("min_freq", 0)))
+
+    # ── Build global frequency map if min_freq filtering ─────────────────────
+    freq: dict[str, int] = {}
+    if min_freq > 0:
+        freq = dict(_C(tok for seq in sequences for tok in seq))
+
+    # ── Filter function ────────────────────────────────────────────────────────
+    def _keep(tok: str) -> bool:
+        if tok in blocklist:
+            return False
+        if parsed_ranges:
+            # Token must match at least one accepted range
+            # For multi-char tokens: check first character codepoint
+            cp = ord(tok[0]) if tok else -1
+            if not any(lo <= cp <= hi for lo, hi in parsed_ranges):
+                return False
+        if min_freq > 0 and freq.get(tok, 0) < min_freq:
+            return False
+        return True
+
+    # ── Apply filter ───────────────────────────────────────────────────────────
+    before = sum(len(s) for s in sequences)
+    before_types = len({t for s in sequences for t in s})
+
+    filtered = [[tok for tok in seq if _keep(tok)] for seq in sequences]
+    # Drop now-empty sequences (optional: controlled by keep_empty_seqs param)
+    if not params.get("keep_empty_seqs", False):
+        filtered = [s for s in filtered if s]
+
+    after = sum(len(s) for s in filtered)
+    after_types = len({t for s in filtered for t in s})
+
+    return {
+        "sequences":       filtered,
+        "total_sequences": len(filtered),
+        "total_tokens":    after,
+        "removed_tokens":  before - after,
+        "removed_types":   before_types - after_types,
+        "kept_types":      after_types,
+    }
+
+
 def _shuffle_control(inputs: dict, params: dict) -> dict:
     """Create a shuffled control corpus (primitive: one statistical control operation).
 
@@ -1323,6 +1417,28 @@ for _d in [
         outputs=[{"name":"sequences","type":"sequences"},{"name":"total_sequences","type":"number"}],
         params_schema={"type":"object","properties":{"min_length":{"type":"integer","title":"Min Length","default":1,"minimum":1},"max_length":{"type":"integer","title":"Max Length","default":50,"minimum":1}}},
         fn=_filter_seqs),
+    AtomicNodeDef("TokenFilter","Token Filter (Sanitize)","Transforms",
+        "Remove unwanted tokens from sequences by Unicode range, explicit blocklist, or minimum frequency. "
+        "Solves the corpus sanitisation problem: strip punctuation, delimiter symbols, or rare noise tokens "
+        "before building a language model. "
+        "Example: unicode_ranges=['U+1200-U+1360'] removes Ethiopic punctuation (U+1361-U+1368) "
+        "while keeping all syllabic signs.",
+        inputs=[{"name":"sequences","type":"sequences","required":True}],
+        outputs=[{"name":"sequences","type":"sequences"},
+                 {"name":"total_tokens","type":"number"},
+                 {"name":"removed_tokens","type":"number"},
+                 {"name":"removed_types","type":"number"},
+                 {"name":"kept_types","type":"number"}],
+        params_schema={"type":"object","properties":{
+            "unicode_ranges":{"type":"array","title":"Keep Unicode Ranges","default":[],
+                              "description":"e.g. ['U+1200-U+1360'] keeps Ethiopic syllabic, removes punct. Leave empty to skip range filter."},
+            "blocklist":{"type":"array","title":"Token Blocklist","default":[],
+                         "description":"Explicit list of token strings to remove (e.g. ['-', 'SPACE'])."},
+            "min_freq":{"type":"integer","title":"Min Frequency","default":0,"minimum":0,
+                        "description":"Remove tokens appearing fewer than this many times. 0 = disabled."},
+            "keep_empty_seqs":{"type":"boolean","title":"Keep Empty Sequences","default":False,
+                               "description":"If True, retain sequences that become empty after filtering."}}},
+        fn=_token_filter),
     AtomicNodeDef("Merger","Result Merger","Transforms",
         "Merge two or more upstream results into one JSON dict.",
         inputs=[

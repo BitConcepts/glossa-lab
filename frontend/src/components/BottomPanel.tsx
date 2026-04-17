@@ -81,11 +81,15 @@ function LogPanel() {
   const [lines, setLines] = useState<string[]>([]);
   const [streaming, setStreaming] = useState(false);
   const [filter, setFilter] = useState("");
+  // streamKey: incrementing this closes the old EventSource and opens a fresh one
+  const [streamKey, setStreamKey] = useState(0);
   const bottomRef = useRef<HTMLDivElement>(null);
   const esRef = useRef<EventSource | null>(null);
   const autoScroll = useRef(true);
 
   useEffect(() => {
+    // Close any existing connection before opening new one
+    if (esRef.current) { esRef.current.close(); esRef.current = null; }
     const es = new EventSource(getLogStreamUrl());
     esRef.current = es;
     setStreaming(true);
@@ -97,7 +101,8 @@ function LogPanel() {
     };
     es.onerror = () => { setStreaming(false); };
     return () => { es.close(); esRef.current = null; };
-  }, []);
+  // streamKey causes re-run which closes old ES and opens a fresh one
+  }, [streamKey]);
 
   useEffect(() => {
     if (autoScroll.current) bottomRef.current?.scrollIntoView({ behavior: "auto" });
@@ -116,8 +121,16 @@ function LogPanel() {
         />
         {streaming && <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#16a34a", animation: "pulse 1.5s infinite", flexShrink: 0 }} />}
         <button
-          onClick={async () => { await purgeLog().catch(() => {}); setLines([]); }}
-          title="Purge log file and clear display"
+          onClick={async () => {
+            // 1. Tell backend to truncate the log file
+            await purgeLog().catch(() => {});
+            // 2. Clear the display
+            setLines([]);
+            // 3. Reconnect EventSource — this starts a fresh stream from the
+            //    (now-empty) log file, so stale entries never reappear.
+            setStreamKey(k => k + 1);
+          }}
+          title="Purge log file and reset stream (clears file on disk)"
           style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#f97316", cursor: "pointer", fontSize: 10 }}>
           Purge
         </button>

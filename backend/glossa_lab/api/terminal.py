@@ -222,14 +222,35 @@ async def _tail_log() -> AsyncGenerator[str, None]:
 
 @router.post("/log/purge")
 async def purge_log() -> dict:
-    """Clear (truncate) the active backend log file. Returns bytes cleared."""
+    """Clear (truncate) the active backend log file. Returns bytes cleared.
+
+    Uses seek(0)+truncate() via open('r+b') rather than write_text() so
+    the file descriptor stays accessible to the logging handler that may
+    already have it open on Windows (avoid PermissionError).
+    """
     log_file = _active_log_file()
     if not log_file.exists():
         return {"cleared": 0, "file": str(log_file)}
     try:
         size = log_file.stat().st_size
-        log_file.write_text("", encoding="utf-8")
-        return {"cleared": size, "file": str(log_file)}
+        # r+b keeps the file open (compatible with an active logging handler)
+        # and truncates in-place without re-creating the inode.
+        with open(str(log_file), "r+b") as fh:  # noqa: PTH123
+            fh.seek(0)
+            fh.truncate()
+        return {"cleared": size, "file": str(log_file), "truncated": True}
+    except PermissionError:
+        # On Windows the logging handler may hold an exclusive lock.
+        # Fall back to renaming the file so a fresh one is created.
+        try:
+            renamed = log_file.with_suffix(".purged.log")
+            log_file.rename(renamed)
+            renamed.unlink(missing_ok=True)
+            return {"cleared": log_file.stat().st_size if log_file.exists() else 0,
+                    "file": str(log_file), "truncated": False, "renamed": True}
+        except Exception as exc2:  # noqa: BLE001
+            from fastapi import HTTPException  # noqa: PLC0415
+            raise HTTPException(500, f"Could not purge log: {exc2}") from exc2
     except Exception as exc:  # noqa: BLE001
         from fastapi import HTTPException  # noqa: PLC0415
         raise HTTPException(500, f"Could not purge log: {exc}") from exc

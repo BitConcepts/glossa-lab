@@ -3524,3 +3524,118 @@ Open TODOs:
 - [ ] Word-final analysis on Indus Script corpus
 
 Next step: Send email to Dr. Fuls. Then extended benchmark with more iterations.
+
+---
+
+## [2026-04-16] Entry — Help system docs overhaul + corpus token-type inspector
+
+Objective: Fix broken table rendering in in-app Help, expand all help content, add corpus token-type inspector to Stats tab, update user manual.
+
+### Help system fixes
+- Identified root cause of blank rows between table cells in HelpView: the per-row `|...|` regex returned `<tr>` elements, then the subsequent `\n→<br>` pass injected `<br>` between rows, breaking the table-wrap grouping regex.
+- Fixed: added a check to skip separator rows (`|---|---|`) in the table row matcher.
+- Expanded MANUAL_SECTIONS from 7 to 8 sections with substantially more content:
+  - Quick Start: tray icon + port config, `http://localhost:8001` (was wrong 8080 → corrected)
+  - Interface: full panel-by-panel reference including corpus card tabs, experiment canvas, Glossa AI
+  - Corpus Formats → Working with Corpora: upload, RTL detection, stats interpretation, world catalogue, anchor sets
+  - Experiments Guide → Experiment Builder: graph-first node reference, sub-experiment composition
+  - Understanding Results: full metrics guide with empirical Geez anchor data
+  - Troubleshooting: expanded from 7 to 16 specific issues
+
+### Corpus token-type inspector
+- Added `classifyToken()` client-side Unicode category classifier to `CorporaView.tsx`
+- Added `TokenTypeInspector` component rendering inline bar charts per category: numeric codes, Latin/ASCII, non-Latin Unicode, punctuation, mixed
+- Wired into corpus Stats tab below entropy metrics
+- Warning banner fires when mixed-category tokens exceed 5% — recommends TokenFilter node
+
+### docs/user-manual.md
+- Rewritten: 600+ lines covering all features: file formats, corpus workflows, anchor sets, node reference, Glossa AI, results interpretation, NW Semitic walkthrough, troubleshooting, performance tips
+
+Files changed:
+- frontend/src/components/HelpView.tsx (separator row fix, port corrected 8080→8001, all sections expanded)
+- frontend/src/components/CorporaView.tsx (TokenTypeInspector component + Stats tab integration)
+- docs/user-manual.md (comprehensive rewrite)
+
+Checks run:
+- npm run build — 0 TypeScript errors, bundle 782 kB ✓
+- git commit + push (2a432cf) ✓
+
+Open TODOs:
+- [ ] Tables in Help still showing blank rows in browser — needs deeper renderer fix
+- [ ] Help content still too thin per user feedback — needs 10x expansion
+
+Next step: Complete Help renderer rewrite with line-by-line block table processor.
+
+---
+
+## [2026-04-17] Entry — Help complete rewrite + Dr. Fuls technical Q&A
+
+Objective: (1) Completely rewrite HelpView with correct table renderer and comprehensive multi-section documentation. (2) Draft scientific reply to Dr. Fuls' three technical questions about the Geez benchmark.
+
+### Help system complete rewrite
+
+The table rendering bug was more fundamental than the separator-row fix: the `\n→<br>` substitution ran AFTER each `|...|` line was converted to `<tr>`, injecting `<br>` between `</tr>` and `<tr>` which broke the table-wrapping regex so each row got its own `<table>`. The fix required a complete architectural change.
+
+New `renderSection()` function:
+1. HTML-escape content
+2. Protect code blocks with `\x02N\x03` placeholders BEFORE any newline conversion
+3. **Line-by-line imperative table processor**: scan all lines; when a `|...|` line is detected, collect ALL consecutive pipe-delimited lines into a block and emit a single `<table>` element — BEFORE any `\n→<br>` conversion. Separator rows filtered out. Header row styled with blue background.
+4. Apply remaining inline markdown (headers, bold, italic, lists, blockquotes)
+5. `\n\n→</p><p>` and `\n→<br>` conversions
+6. Restore code block placeholders
+
+Content expanded from 7 sections to 13 sections (2,573 lines):
+
+| Section | Key content |
+| Quick Start | System requirements table, all startup methods, port config, tray reference |
+| Interface Guide | Every sidebar panel, corpus card tabs, experiment canvas, study builder, reports/data, Glossa AI, settings |
+| Corpus Management | All file formats, upload, full Ashraf RTL methodology, all stats metrics with formulas, n-gram/concordance/compare |
+| Corpus Sanitization | TokenFilter reference, Unicode ranges for 12 scripts, Geez workflow, hapax removal, blocklist, invert |
+| World Language Catalogue | 50+ corpus listing by family (ancient/modern/undeciphered), import, CorpusLM integration |
+| Anchor Sets | Amplifier theory + empirical data, T/I/M selection, confidence levels, creation, sweep experiments |
+| Experiment Builder | Complete node reference (every node: all params + ports), port types, 4 common patterns, debugging |
+| Study Builder | Study vs experiment comparison, parallel execution, example study with dependency order |
+| Reports & Data | PDF structure, Markdown, JSON format, templates, sharing |
+| Glossa AI | All 5 context modes in depth, 8 actions with trigger phrases, advanced prompting, LEDGER, continuity |
+| Interpreting Results | Writing system classification, all entropy metrics with formulas, consistency guide, benchmark table, T/I/M, RTL correction, cluster collapse, 7 known limitations |
+| Research Workflows | 6-phase methodology, NW Semitic full case study with actual numbers, Geez benchmark, adapting to new scripts |
+| Troubleshooting | 5 categorised issue tables (backend/frontend/corpus/experiment/GPU/logs/performance), diagnostic procedure |
+
+Sidebar widened from 180px to 190px to accommodate new longer section names.
+
+### Dr. Fuls Q&A — technical reply drafted
+
+Dr. Fuls sent three specific scientific questions about the Geez v2 benchmark (Section 3 Table):
+
+**a) T/I/M and word vs sentence boundaries**: T, I, M rates are computed at **word boundaries** (each line = one word-unit in the corpus). In the Genesis corpus, each Ethiopic word is the unit. T-rate = fraction of occurrences at word-END; I-rate = word-START. Not sentence boundaries.
+
+**b) Column header definitions for Table 3**:
+- StructAcc (free): fraction of non-anchor signs where the modal SA assignment matches the **known correct Ge'ez syllable** — directly measures correctly identified syllables. At k=20: 189 free signs, 10.0% = ~19 correctly identified.
+- Rand Acc (free): same metric with randomly chosen anchors (placebo control).
+- Consistency: mean fraction of SA seeds agreeing on the modal assignment, averaged across free signs — measures statistical stability, NOT correctness.
+- HCI ≥ 75%: fraction of signs with consistency ≥ 75%.
+- Dr. Fuls' intuition was correct: StructAcc IS the fraction of syllables correctly identified.
+
+**c) Corpus size vs iterations as LM bottleneck**:
+- LM construction is a **single-pass frequency count** — not iterative. Bottleneck = reference corpus size.
+- SA inference has two levers: n_iterations (convergence quality per seed) and n_seeds (consistency reliability).
+- The **accuracy ceiling** is set by token density (tokens per sign) in the cipher corpus. With 80,221 tokens / 209 signs ≈ 384 tok/sign the Geez corpus is dense enough; the bottleneck is SA iterations at 2,000.
+- This explains why StructAcc at k=0 (12.2%) exceeds k=3 (9.4%) — insufficient iterations to propagate anchor constraints. Consistency rises correctly.
+
+Files changed:
+- frontend/src/components/HelpView.tsx (complete rewrite — 2,573 lines, 13 sections, fixed renderer)
+
+Checks run:
+- npm run build — 0 TypeScript errors, bundle 857 kB ✓
+- TypeScript strict pass via `tsc -b` ✓
+- git commit (a767942) + push ✓
+- Glossa Lab backend confirmed healthy at http://localhost:8001 ✓
+
+Open TODOs:
+- [ ] Send technical reply to Dr. Fuls (Q&A on T/I/M, column definitions, LM bottleneck)
+- [ ] Extended Geez v2 run: 5,000–10,000 SA iterations to confirm accuracy improvement
+- [ ] Word-final anchor strategy vs frequency-ranked anchor sweep on Indus Script corpus
+- [ ] Phase 2-8 Global Ancient Language Platform
+- [ ] RAG module
+
+Next step: Send Dr. Fuls reply. Then run extended Geez benchmark with higher iteration counts.

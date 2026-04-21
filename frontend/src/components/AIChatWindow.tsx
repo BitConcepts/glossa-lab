@@ -63,21 +63,33 @@ function renderMd(raw: string): string {
     tables.push(renderTableBlock(match));
     return `%%TBL${tables.length - 1}%%`;
   });
+  // Protect code blocks before any other processing
+  const codeBlocks: string[] = [];
+  html = html.replace(/```[\w]*\n?([\s\S]*?)```/g, (_, code) => {
+    codeBlocks.push(`<pre style='background:#1e293b;color:#e2e8f0;padding:8px 12px;border-radius:5px;font-size:11px;overflow-x:auto;margin:6px 0;white-space:pre-wrap;word-break:break-word'>${code}</pre>`);
+    return `%%CODE${codeBlocks.length - 1}%%`;
+  });
   html = html
-    .replace(/```[\w]*\n?([\s\S]*?)```/g, "<pre style='background:#1e293b;color:#e2e8f0;padding:8px 12px;border-radius:5px;font-size:11px;overflow-x:auto;margin:6px 0;white-space:pre-wrap;word-break:break-word'>$1</pre>")
     .replace(/`([^`]+)`/g, "<code style='background:#dbeafe;color:#1e40af;border:1px solid #bfdbfe;padding:1px 5px;border-radius:4px;font-size:11px;font-family:monospace;font-weight:600;white-space:nowrap'>$1</code>")
-    .replace(/^### (.+)$/gm, "<div style='font-size:13px;font-weight:700;margin:10px 0 4px'>$1</div>")
-    .replace(/^## (.+)$/gm,  "<div style='font-size:14px;font-weight:700;margin:12px 0 5px'>$1</div>")
-    .replace(/^# (.+)$/gm,   "<div style='font-size:15px;font-weight:800;margin:14px 0 6px'>$1</div>")
+    // Headers: h1–h6 (#### must come before ### which must come before ## etc.)
+    .replace(/^###### (.+)$/gm, "<div style='font-size:10px;font-weight:700;color:#6b7280;margin:6px 0 2px;letter-spacing:0.5px;text-transform:uppercase'>$1</div>")
+    .replace(/^##### (.+)$/gm,  "<div style='font-size:11px;font-weight:700;color:#374151;margin:7px 0 2px'>$1</div>")
+    .replace(/^#### (.+)$/gm,   "<div style='font-size:12px;font-weight:700;color:#1e3a5f;margin:9px 0 3px;border-bottom:1px solid #e5e7eb;padding-bottom:2px'>$1</div>")
+    .replace(/^### (.+)$/gm,    "<div style='font-size:13px;font-weight:700;margin:10px 0 4px;color:#111827'>$1</div>")
+    .replace(/^## (.+)$/gm,     "<div style='font-size:14px;font-weight:700;margin:12px 0 5px;color:#111827'>$1</div>")
+    .replace(/^# (.+)$/gm,      "<div style='font-size:15px;font-weight:800;margin:14px 0 6px;color:#111827'>$1</div>")
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     .replace(/\*(.+?)\*/g,     "<em>$1</em>")
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "<a href='$2' target='_blank' rel='noopener noreferrer' style='color:#2563eb'>$1</a>")
+    // Lists: group consecutive li into ul
     .replace(/^[-*] (.+)$/gm, "<li style='margin:2px 0;margin-left:16px'>$1</li>")
     .replace(/^\d+\. (.+)$/gm, "<li style='margin:2px 0;margin-left:16px;list-style-type:decimal'>$1</li>")
+    .replace(/(<li[^>]*>.*<\/li>\n?)+/g, m => `<ul style='margin:4px 0;padding-left:0'>${m}</ul>`)
     .replace(/^---$/gm, "<hr style='border:none;border-top:1px solid #e5e7eb;margin:10px 0'>")
     .replace(/\n\n/g, "</p><p style='margin:5px 0'>")
     .replace(/\n/g, "<br>")
     .replace(/^/, "<p style='margin:0'>").replace(/$/, "</p>");
+  codeBlocks.forEach((cb, i) => { html = html.replace(`%%CODE${i}%%`, cb); });
   tables.forEach((t, i) => { html = html.replace(`%%TBL${i}%%`, t); });
   return html;
 }
@@ -357,12 +369,31 @@ export function AIChatWindow() {
   const [installedModels, setInstalledModels] = useState<OllamaInstalledModel[]>([]);
   const [providerCatalog, setProviderCatalog] = useState<CatalogProvider[]>([]);
 
-  // Context
+  // Context — manual selector + auto-inference from glossa:context events
   const [contextType, setContextType] = useState<"" | "corpus" | "experiment" | "study" | "research">("");
   const [contextId, setContextId] = useState("");
+  const [autoContextLabel, setAutoContextLabel] = useState<string | null>(null); // set by glossa:context events
   const [corpora, setCorpora] = useState<TextResponse[]>([]);
   const [experiments, setExperiments] = useState<ExperimentMeta[]>([]);
   const [studies, setStudies] = useState<StudyResponse[]>([]);
+
+  // Auto-context: listen for glossa:context events from active views
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const d = (e as CustomEvent<{ type: string; id?: string; name?: string }>).detail;
+      if (d?.type && d.id) {
+        // Auto-set context to whatever view is active
+        setContextType(d.type as "corpus" | "experiment" | "study");
+        setContextId(d.id);
+        setAutoContextLabel(d.name ?? d.id);
+      } else if (!d?.type) {
+        // View cleared context — reset to global but preserve any manual selection
+        setAutoContextLabel(null);
+      }
+    };
+    window.addEventListener("glossa:context", handler);
+    return () => window.removeEventListener("glossa:context", handler);
+  }, []);
   const [researchSummary, setResearchSummary] = useState<{ n_assigned_signs: number; token_coverage_pct: number; next_steps: string[] } | null>(null);
 
   // Window is fixed — no drag
@@ -638,21 +669,42 @@ export function AIChatWindow() {
 
       {/* Context selector */}
       <div style={{ padding: "5px 10px", borderBottom: "1px solid #f3f4f6", background: "#fafafa", display: "flex", gap: 4, flexWrap: "wrap", alignItems: "center", flexShrink: 0 }}>
-        <span style={{ fontSize: 10, color: "#9ca3af", flexShrink: 0 }}>Context:</span>
-        {(["", "corpus", "experiment", "study"] as const).map(ct => (
-          <button key={ct || "none"} onClick={() => { setContextType(ct); setContextId(""); setResearchSummary(null); }}
-            style={{ padding: "2px 7px", borderRadius: 4, border: "1px solid", cursor: "pointer", fontSize: 10, background: contextType === ct ? "#1e3a5f" : "#fff", borderColor: contextType === ct ? "#1e3a5f" : "#e5e7eb", color: contextType === ct ? "#fff" : "#6b7280" }}>
-            {ct || "Global"}
-          </button>
-        ))}
-        <button onClick={loadResearch}
-          style={{ padding: "2px 7px", borderRadius: 4, border: "1px solid", cursor: "pointer", fontSize: 10, background: contextType === "research" ? "#7c3aed" : "#fff", borderColor: contextType === "research" ? "#7c3aed" : "#e5e7eb", color: contextType === "research" ? "#fff" : "#6b7280" }}>
-          🔬 Research
-        </button>
-        {contextType === "corpus"     && <select value={contextId} onChange={e => setContextId(e.target.value)} style={selSt}><option value="">— corpus —</option>{corpora.map(c => <option key={c.id} value={c.id}>{c.name.slice(0, 24)}</option>)}</select>}
-        {contextType === "experiment" && <select value={contextId} onChange={e => setContextId(e.target.value)} style={selSt}><option value="">— experiment —</option>{experiments.map(e => <option key={e.id} value={e.id}>{e.name.slice(0, 24)}</option>)}</select>}
-        {contextType === "study"      && <select value={contextId} onChange={e => setContextId(e.target.value)} style={selSt}><option value="">— study —</option>{studies.map(s => <option key={s.id} value={s.id}>{s.name.slice(0, 24)}</option>)}</select>}
-        {ctxLabel() && contextType !== "research" && <span style={{ fontSize: 10, padding: "1px 6px", background: "#eff6ff", color: "#2563eb", borderRadius: 4, fontWeight: 600 }}>📎 {ctxLabel()?.slice(0, 20)}</span>}
+        {/* Auto-context pill — shown when a view is active */}
+        {autoContextLabel && (
+          <span style={{ fontSize: 10, padding: "2px 8px", borderRadius: 10,
+            background: "linear-gradient(90deg,#dbeafe,#ede9fe)", color: "#1e40af",
+            fontWeight: 700, border: "1px solid #bfdbfe", display: "flex", alignItems: "center", gap: 4 }}
+            title={`Auto-context: ${contextType} — ${autoContextLabel}. Click × to reset to Global.`}>
+            ⚡ {contextType}: <span style={{ maxWidth: 140, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{autoContextLabel}</span>
+            <button onClick={() => { setContextType(""); setContextId(""); setAutoContextLabel(null); }}
+              style={{ border: "none", background: "none", cursor: "pointer", fontSize: 11, color: "#6b7280", padding: 0, lineHeight: 1 }}>×</button>
+          </span>
+        )}
+        {!autoContextLabel && (
+          <>
+            <span style={{ fontSize: 10, color: "#9ca3af", flexShrink: 0 }}>Context:</span>
+            {(["", "corpus", "experiment", "study"] as const).map(ct => (
+              <button key={ct || "none"} onClick={() => { setContextType(ct); setContextId(""); setResearchSummary(null); setAutoContextLabel(null); }}
+                style={{ padding: "2px 7px", borderRadius: 4, border: "1px solid", cursor: "pointer", fontSize: 10,
+                  background: contextType === ct ? "#1e3a5f" : "#fff",
+                  borderColor: contextType === ct ? "#1e3a5f" : "#e5e7eb",
+                  color: contextType === ct ? "#fff" : "#6b7280" }}>
+                {ct || "Global"}
+              </button>
+            ))}
+            <button onClick={loadResearch}
+              style={{ padding: "2px 7px", borderRadius: 4, border: "1px solid", cursor: "pointer", fontSize: 10,
+                background: contextType === "research" ? "#7c3aed" : "#fff",
+                borderColor: contextType === "research" ? "#7c3aed" : "#e5e7eb",
+                color: contextType === "research" ? "#fff" : "#6b7280" }}>
+              🔬 Research
+            </button>
+          </>
+        )}
+        {contextType === "corpus"     && !autoContextLabel && <select value={contextId} onChange={e => setContextId(e.target.value)} style={selSt}><option value="">— corpus —</option>{corpora.map(c => <option key={c.id} value={c.id}>{c.name.slice(0, 24)}</option>)}</select>}
+        {contextType === "experiment" && !autoContextLabel && <select value={contextId} onChange={e => setContextId(e.target.value)} style={selSt}><option value="">— experiment —</option>{experiments.map(e => <option key={e.id} value={e.id}>{e.name.slice(0, 24)}</option>)}</select>}
+        {contextType === "study"      && !autoContextLabel && <select value={contextId} onChange={e => setContextId(e.target.value)} style={selSt}><option value="">— study —</option>{studies.map(s => <option key={s.id} value={s.id}>{s.name.slice(0, 24)}</option>)}</select>}
+        {ctxLabel() && contextType !== "research" && !autoContextLabel && <span style={{ fontSize: 10, padding: "1px 6px", background: "#eff6ff", color: "#2563eb", borderRadius: 4, fontWeight: 600 }}>📎 {ctxLabel()?.slice(0, 20)}</span>}
         {contextType === "research" && researchSummary && (
           <span style={{ fontSize: 9, padding: "2px 6px", background: "#f3e8ff", color: "#7c3aed", borderRadius: 4, fontWeight: 600 }} title={researchSummary.next_steps[0] ?? ""}>
             🔬 {researchSummary.n_assigned_signs} signs · {researchSummary.token_coverage_pct}% coverage

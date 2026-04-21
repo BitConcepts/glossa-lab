@@ -90,7 +90,21 @@ export function JobsView() {
       const data = await getJobResults(job.id);
       setViewResult({ name: job.name, data });
     } catch (e) {
-      alert(e instanceof Error ? e.message : "Failed to load results");
+      const isNotFound = e instanceof Error && e.message.includes("404");
+      if (isNotFound && job.pipeline === "exp_run") {
+        // Old exp_run jobs (pre results-storage) — navigate to Reports tab
+        setViewResult({
+          name: job.name,
+          data: {
+            _info: "This run\'s results are saved as a JSON file in Reports & Data → Data tab.",
+            exp_id: job.params?.exp_id ?? "unknown",
+            node_count: job.params?.node_count ?? 0,
+            hint: `Look for '${job.params?.exp_id ?? ""}.json' in the Data tab.`,
+          }
+        });
+      } else {
+        alert(e instanceof Error ? e.message : "Failed to load results");
+      }
     }
   };
 
@@ -105,9 +119,19 @@ export function JobsView() {
 
   const statusColor = (s: string) => {
     if (s === "completed") return "#16a34a";
-    if (s === "failed") return "#dc2626";
-    if (s === "running") return "#2563eb";
+    if (s === "failed")    return "#dc2626";
+    if (s === "running")   return "#2563eb";
+    if (s === "pending")   return "#d97706";
+    if (s === "cancelled") return "#6b7280";
     return "#6b7280";
+  };
+  const statusBg = (s: string) => {
+    if (s === "completed") return "#dcfce7";
+    if (s === "failed")    return "#fee2e2";
+    if (s === "running")   return "#dbeafe";
+    if (s === "pending")   return "#fef3c7";
+    if (s === "cancelled") return "#f3f4f6";
+    return "#f3f4f6";
   };
 
   return (
@@ -278,7 +302,8 @@ export function JobsView() {
                     : <span style={{ fontSize: 11, color: "#9ca3af" }}>—</span>}
                 </Td>
                 <Td>
-                  <span style={{ color: statusColor(j.status), fontWeight: 600 }}>
+                  <span style={{ display: "inline-block", padding: "1px 7px", borderRadius: 10,
+                    background: statusBg(j.status), color: statusColor(j.status), fontWeight: 700, fontSize: 11 }}>
                     {j.status}
                   </span>
                   {j.status === "running" && elapsedSec !== null && !isExpRun && (
@@ -300,17 +325,31 @@ export function JobsView() {
                       <button
                         style={{ ...btnStyle, padding: "2px 10px", fontSize: 12, background: "#059669" }}
                         onClick={() => handleViewResults(j)}
-                        title="View result summary stored with job"
+                        title="View result data for this experiment run"
                       >
-                        Results
+                        📄 Results
                       </button>
+                    )}
+                    {j.status === "failed" && (
+                      <button
+                        style={{ ...btnStyle, padding: "2px 10px", fontSize: 12, background: "#dc2626" }}
+                        onClick={() => handleViewResults(j)}
+                        title="View error details"
+                      >
+                        ⚠ Error
+                      </button>
+                    )}
+                    {j.status === "cancelled" && (
+                      <span style={{ fontSize: 11, color: "#6b7280", fontStyle: "italic" }}>cancelled</span>
                     )}
                     {(j.status === "pending" || j.status === "running") && (
                       <button
-                        style={{ ...btnStyle, padding: "2px 10px", fontSize: 12, background: "#6b7280" }}
+                        style={{ ...btnStyle, padding: "2px 10px", fontSize: 12,
+                          background: j.status === "running" ? "#ea580c" : "#d97706" }}
                         onClick={() => handleCancel(j.id)}
+                        title={j.status === "running" ? "Abort this running job" : "Cancel this queued job"}
                       >
-                        {j.status === "running" ? "Abort" : "Cancel"}
+                        {j.status === "running" ? "❌ Abort" : "⏸ Cancel"}
                       </button>
                     )}
                   </span>

@@ -656,6 +656,8 @@ function CatalogueBrowser({ onImported }: { onImported: () => void }) {
   const [importing, setImporting] = useState<string | null>(null);
   const [search, setSearch] = useState("");
   const [filterUD, setFilterUD] = useState<"all" | "undeciphered" | "deciphered">("all");
+  const [filterScript, setFilterScript] = useState<string>("all");
+  const [filterImport, setFilterImport] = useState<"all" | "bundled" | "manual">("all");
 
   const load = async () => {
     setLoading(true);
@@ -666,7 +668,7 @@ function CatalogueBrowser({ onImported }: { onImported: () => void }) {
 
   const handleImport = async (e: CorpusCatalogueEntry) => {
     if (!e.local_module) {
-      toast(`No bundled module for '${e.name}'. Download from source URL and upload manually.`, "warning");
+      toast(`No bundled module for '${e.name}'. Download from the source URL and upload manually via + Upload / import corpus.`, "warning");
       return;
     }
     setImporting(e.id);
@@ -684,10 +686,19 @@ function CatalogueBrowser({ onImported }: { onImported: () => void }) {
     } finally { setImporting(null); }
   };
 
+  // Derive all distinct script types present in the catalogue
+  const allScriptTypes = Array.from(new Set(entries.map(e => e.script_type).filter(Boolean))).sort();
+
   const filtered = entries.filter(e => {
-    const matchSearch = !search || e.name.toLowerCase().includes(search.toLowerCase()) || e.language.toLowerCase().includes(search.toLowerCase());
-    const matchUD = filterUD === "all" || (filterUD === "undeciphered" ? e.is_undeciphered : !e.is_undeciphered);
-    return matchSearch && matchUD;
+    const matchSearch = !search ||
+      e.name.toLowerCase().includes(search.toLowerCase()) ||
+      e.language.toLowerCase().includes(search.toLowerCase()) ||
+      e.language_family.toLowerCase().includes(search.toLowerCase());
+    const matchUD = filterUD === "all" || (filterUD === "undeciphered" ? !!e.is_undeciphered : !e.is_undeciphered);
+    const matchScript = filterScript === "all" || e.script_type === filterScript;
+    const matchImport = filterImport === "all" ||
+      (filterImport === "bundled" ? !!e.local_module : !e.local_module);
+    return matchSearch && matchUD && matchScript && matchImport;
   });
 
   // Group by language_family
@@ -701,6 +712,13 @@ function CatalogueBrowser({ onImported }: { onImported: () => void }) {
     abjad: "#7c3aed", syllabary: "#059669", logosyllabic: "#d97706",
     logographic: "#dc2626", alphabet: "#2563eb", unknown: "#6b7280",
   };
+  const scriptTypeLabel: Record<string, string> = {
+    abjad: "Abjad", syllabary: "Syllabary", logosyllabic: "Logo-syllabic",
+    logographic: "Logographic", alphabet: "Alphabet", unknown: "Unknown",
+  };
+
+  const fmtTokens = (n: number) =>
+    n > 0 ? `~${n >= 1000 ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1)}K` : n.toString()} tokens` : "—";
 
   return (
     <details style={{ marginBottom: "1.5rem" }}>
@@ -709,43 +727,83 @@ function CatalogueBrowser({ onImported }: { onImported: () => void }) {
         🌍 Browse World Language Corpus Catalogue
       </summary>
       <div style={{ marginTop: 10, padding: "1rem", border: "1px solid #d1fae5", borderRadius: 8, background: "#f0fdf4" }}>
-        <div style={{ display: "flex", gap: 8, marginBottom: 10, flexWrap: "wrap", alignItems: "center" }}>
-          <input placeholder="Search language or name…" value={search} onChange={e => setSearch(e.target.value)}
+
+        {/* Filter row 1: search + status + import source */}
+        <div style={{ display: "flex", gap: 6, marginBottom: 6, flexWrap: "wrap", alignItems: "center" }}>
+          <input placeholder="Search name, language, family…" value={search} onChange={e => setSearch(e.target.value)}
             style={{ ...inputStyle, width: 220 }} />
           {(["all", "undeciphered", "deciphered"] as const).map(f => (
             <button key={f} onClick={() => setFilterUD(f)}
               style={{ ...btnSmall, background: filterUD === f ? "#059669" : undefined,
                 color: filterUD === f ? "#fff" : undefined }}>
-              {f === "all" ? "All" : f === "undeciphered" ? "🔓 Undeciphered" : "✔ Deciphered"}
+              {f === "all" ? "All" : f === "undeciphered" ? "🔓 Undeciphered" : "✓ Deciphered"}
             </button>
           ))}
-          <button onClick={() => void load()} style={btnSmall}>⟳ Refresh</button>
+          <div style={{ display: "flex", gap: 4 }}>
+            {(["all", "bundled", "manual"] as const).map(f => (
+              <button key={f} onClick={() => setFilterImport(f)}
+                style={{ ...btnSmall, background: filterImport === f ? "#2563eb" : undefined,
+                  color: filterImport === f ? "#fff" : undefined }}
+                title={f === "bundled" ? "One-click import available" : f === "manual" ? "Manual upload required" : "All"}>
+                {f === "all" ? "⬇ Any" : f === "bundled" ? "⬇ 1-click" : "✎ Manual"}
+              </button>
+            ))}
+          </div>
+          <button onClick={() => void load()} style={btnSmall} title="Reload catalogue">⟳</button>
           <span style={{ fontSize: 11, color: "#6b7280", marginLeft: "auto" }}>{filtered.length} entries</span>
         </div>
+
+        {/* Filter row 2: script type pills */}
+        {allScriptTypes.length > 0 && (
+          <div style={{ display: "flex", gap: 4, marginBottom: 10, flexWrap: "wrap" }}>
+            <button onClick={() => setFilterScript("all")}
+              style={{ ...btnSmall, padding: "2px 8px",
+                background: filterScript === "all" ? "#374151" : undefined,
+                color: filterScript === "all" ? "#fff" : undefined, fontSize: 10 }}>All types</button>
+            {allScriptTypes.map(st => {
+              const c = scriptTypeColor[st] ?? "#6b7280";
+              return (
+                <button key={st} onClick={() => setFilterScript(filterScript === st ? "all" : st)}
+                  style={{ ...btnSmall, padding: "2px 8px", fontSize: 10,
+                    background: filterScript === st ? c : c + "15",
+                    color: filterScript === st ? "#fff" : c,
+                    border: `1px solid ${c}40`,
+                    fontWeight: filterScript === st ? 700 : 400 }}>
+                  {scriptTypeLabel[st] ?? st}
+                </button>
+              );
+            })}
+          </div>
+        )}
+
         {loading && <p style={{ color: "#6b7280", fontSize: 13 }}>Loading catalogue…</p>}
         {Object.entries(groups).sort(([a], [b]) => a.localeCompare(b)).map(([family, items]) => (
-          <div key={family} style={{ marginBottom: 12 }}>
+          <div key={family} style={{ marginBottom: 10 }}>
             <div style={{ fontSize: 10, fontWeight: 700, color: "#374151", textTransform: "uppercase",
-              letterSpacing: 0.5, marginBottom: 4, paddingBottom: 2, borderBottom: "1px solid #d1fae5" }}>
-              {family}
+              letterSpacing: 0.5, marginBottom: 3, paddingBottom: 2, borderBottom: "1px solid #d1fae5" }}>
+              {family} <span style={{ fontWeight: 400, opacity: 0.6 }}>({items.length})</span>
             </div>
             {items.map(e => {
               const sc = scriptTypeColor[e.script_type] ?? "#6b7280";
               const canImport = !!e.local_module;
+              const tokenStr = fmtTokens(e.tokens_approx);
               return (
                 <div key={e.id} style={{ display: "flex", alignItems: "center", gap: 8, padding: "5px 0",
                   borderBottom: "1px solid #ecfdf5" }}>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 5, flexWrap: "wrap" }}>
                       <span style={{ fontWeight: 600, fontSize: 12, color: e.is_undeciphered ? "#7c2d12" : "#1e3a5f" }}>
                         {e.name}
                       </span>
                       <span style={{ fontSize: 9, padding: "1px 5px", borderRadius: 8,
-                        background: sc + "20", color: sc, fontWeight: 700 }}>{e.script_type}</span>
+                        background: sc + "18", color: sc, fontWeight: 700 }}>{scriptTypeLabel[e.script_type] ?? e.script_type}</span>
                       {e.is_undeciphered && <span style={{ fontSize: 9, color: "#dc2626", fontWeight: 700 }}>🔓</span>}
+                      {canImport && !e.already_imported && (
+                        <span style={{ fontSize: 9, color: "#059669", fontWeight: 600 }}>⬇ bundled</span>
+                      )}
                     </div>
                     <div style={{ fontSize: 10, color: "#6b7280", marginTop: 1 }}>
-                      {e.language} · {e.period} · ~{e.tokens_approx.toLocaleString()} tokens · {e.license}
+                      {e.language} · {e.period} · {tokenStr} · {e.license}
                     </div>
                   </div>
                   <div style={{ display: "flex", gap: 4, flexShrink: 0 }}>
@@ -760,7 +818,8 @@ function CatalogueBrowser({ onImported }: { onImported: () => void }) {
                           {importing === e.id ? "⏳" : "↓ Import"}
                         </button>
                       : <a href={e.source_url} target="_blank" rel="noopener noreferrer"
-                          style={{ ...btnSmall, textDecoration: "none", fontSize: 10 }}>Source ↗</a>
+                          style={{ ...btnSmall, textDecoration: "none", fontSize: 10, color: "#374151" }}
+                          title={`Source: ${e.source_url}`}>Source ↗</a>
                     }
                   </div>
                 </div>
@@ -769,10 +828,10 @@ function CatalogueBrowser({ onImported }: { onImported: () => void }) {
           </div>
         ))}
         {!loading && filtered.length === 0 && entries.length > 0 && (
-          <p style={{ color: "#6b7280", fontSize: 13 }}>No entries match your search.</p>
+          <p style={{ color: "#6b7280", fontSize: 13 }}>No entries match your filters.</p>
         )}
         {!loading && entries.length === 0 && (
-          <p style={{ color: "#6b7280", fontSize: 13 }}>Click Refresh to load the catalogue.</p>
+          <p style={{ color: "#6b7280", fontSize: 13 }}>Click ⟳ to load the catalogue.</p>
         )}
       </div>
     </details>

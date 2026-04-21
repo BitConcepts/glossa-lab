@@ -874,9 +874,21 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     }
     return cats;
   }, [catalog, palSearch]);
-  const filteredSavedExps = useMemo(() =>
-    savedExps.filter(e => !palSearch || e.name.toLowerCase().includes(palSearch.toLowerCase()))
-  , [savedExps, palSearch]);
+  const [expSort, setExpSort] = useState<"name" | "nodes" | "id">("name");
+  const [expSortAsc, setExpSortAsc] = useState(true);
+
+  const sortedFilteredExps = useMemo(() => {
+    const arr = savedExps.filter(e => !palSearch || e.name.toLowerCase().includes(palSearch.toLowerCase()));
+    return arr.slice().sort((a, b) => {
+      let cmp = 0;
+      if (expSort === "name")  cmp = a.name.localeCompare(b.name);
+      if (expSort === "nodes") cmp = (a.node_count ?? 0) - (b.node_count ?? 0);
+      if (expSort === "id")    cmp = a.id!.localeCompare(b.id ?? "");
+      return expSortAsc ? cmp : -cmp;
+    });
+  }, [savedExps, palSearch, expSort, expSortAsc]);
+
+  const filteredSavedExps = sortedFilteredExps;
   const catColors: Record<string, string> = { Sources: "#059669", Transforms: "#2563eb", Analysis: "#7c3aed", Outputs: "#0d9488" };
   const ebm: React.CSSProperties = { border: `1px solid ${th.border}`, borderRadius: 3, background: "none", color: th.textMuted, cursor: "pointer", fontSize: 10, padding: "0 4px", lineHeight: "18px" };
 
@@ -898,7 +910,7 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
         <>
           {/* Graph Experiments list */}
           <div style={{ padding: "7px 7px 4px", borderBottom: `1px solid ${th.border}`, flexShrink: 0, height: expsH, overflowY: "auto", boxSizing: "border-box" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 3, marginBottom: 5 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 3, marginBottom: 4 }}>
               <span style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: "uppercase", letterSpacing: 0.5, flex: 1 }}>Graph Experiments</span>
               <button onClick={() => savedExps.filter(e => e.id && !activeRuns[e.id]).forEach(e => void doRun({ id: e.id!, name: e.name, description: e.description ?? "", nodes: [], edges: [] }))}
                 title="Run all experiments in parallel" disabled={savedExps.length === 0 || hasActiveRuns}
@@ -906,8 +918,22 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
               <button onClick={() => setShowNew(true)} title="New graph experiment" style={{ ...ebm }}>+</button>
               <button onClick={() => importRef.current?.click()} title="Import" style={{ ...ebm }}>↑</button>
             </div>
-            {savedExps.length === 0 && <div style={{ fontSize: 10, color: th.textFaint, fontStyle: "italic", padding: "4px 2px" }}>No graph experiments yet.</div>}
-            {savedExps.map(e => {
+            {/* Search + sort row */}
+            <div style={{ display: "flex", gap: 3, marginBottom: 4, alignItems: "center" }}>
+              <input value={palSearch} onChange={e => setPalSearch(e.target.value)}
+                placeholder="Search…" style={{ flex: 1, padding: "2px 5px", fontSize: 9, borderRadius: 3,
+                  border: `1px solid ${th.inputBdr}`, background: th.inputBg, color: th.inputText, outline: "none" }} />
+              {(["name", "nodes"] as const).map(s => (
+                <button key={s} onClick={() => { if (expSort === s) setExpSortAsc(a => !a); else { setExpSort(s); setExpSortAsc(true); } }}
+                  title={`Sort by ${s}`}
+                  style={{ ...ebm, fontWeight: expSort === s ? 700 : 400, color: expSort === s ? th.activeText : th.textMuted,
+                    background: expSort === s ? th.activeBg : "none", padding: "0 4px" }}>
+                  {s === "name" ? "A↓" : "#↓"}{expSort === s ? (expSortAsc ? "▲" : "▼") : ""}
+                </button>
+              ))}
+            </div>
+            {sortedFilteredExps.length === 0 && <div style={{ fontSize: 10, color: th.textFaint, fontStyle: "italic", padding: "4px 2px" }}>{palSearch ? "No matches." : "No graph experiments yet."}</div>}
+            {sortedFilteredExps.map(e => {
               const active = activeExp?.id === e.id;
               const isRunning = !!activeRuns[e.id];
               const run = activeRuns[e.id];

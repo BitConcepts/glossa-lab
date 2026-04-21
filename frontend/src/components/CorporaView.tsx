@@ -313,10 +313,21 @@ function CorpusCard({ text, onUpdated, onDeleted, allTexts }: {
     { id: "ai", label: "✨ AI" }, { id: "compare", label: "Compare" },
   ];
 
+  const handleToggleExpand = () => {
+    const willExpand = !expanded;
+    setExpanded(willExpand);
+    if (willExpand) {
+      // Dispatch context for Glossa AI auto-inference
+      window.dispatchEvent(new CustomEvent("glossa:context", {
+        detail: { type: "corpus", id: text.id, name: text.name }
+      }));
+    }
+  };
+
   return (
     <div style={{ border: "1px solid #e5e7eb", borderRadius: 8, overflow: "hidden", marginBottom: 8, boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}>
       <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 14px", background: "#fafafa", cursor: "pointer", borderBottom: expanded ? "1px solid #e5e7eb" : "none" }}
-        onClick={() => setExpanded((x) => !x)}>
+        onClick={handleToggleExpand}>
         <span style={{ fontSize: 11, padding: "1px 7px", borderRadius: 8, background: tc + "20", color: tc, fontWeight: 700, whiteSpace: "nowrap" }}>{text.corpus_type}</span>
         {(() => {
           const dir = text.reading_direction ?? "unknown";

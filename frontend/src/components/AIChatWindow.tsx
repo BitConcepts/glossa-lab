@@ -37,7 +37,39 @@ import {
 import { useAIChat } from "../hooks/useAIChat";
 import { useToast } from "../hooks/useToast";
 
-// ── Markdown renderer ─────────────────────────────────────────────────────────
+// ── LaTeX math simplifier (no MathJax needed) ────────────────────────────────
+function _simplifyLatex(s: string): string {
+  const sups: Record<string, string> = { "0":"\u2070","1":"¹","2":"²","3":"³","4":"\u2074","5":"\u2075","6":"\u2076","7":"\u2077","8":"\u2078","9":"\u2079" };
+  return s
+    .replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, "($1\u00f7$2)")  // \frac{a}{b} → (a÷b)
+    .replace(/\\sum_\{([^}]+)\}\^\{([^}]+)\}/g, "Σ[₁=$1 to $2]")
+    .replace(/\\prod_\{([^}]+)\}\^\{([^}]+)\}/g, "∏[₁=$1 to $2]")
+    .replace(/\\sum/g, "Σ").replace(/\\prod/g, "∏")
+    .replace(/\\log_\{([^}]+)\}/g, (_, b) => `log₂`.replace("2", b))
+    .replace(/\\log_2/g, "log₂").replace(/\\log/g, "log")
+    .replace(/\\text\{([^}]+)\}/g, "$1")
+    .replace(/\\mathrm\{([^}]+)\}/g, "$1")
+    .replace(/\\mathbb\{([^}]+)\}/g, "$1")
+    .replace(/\\left/g, "").replace(/\\right/g, "")
+    .replace(/\\alpha/g, "α").replace(/\\beta/g, "β").replace(/\\gamma/g, "γ")
+    .replace(/\\delta/g, "δ").replace(/\\epsilon/g, "ε").replace(/\\theta/g, "θ")
+    .replace(/\\lambda/g, "λ").replace(/\\mu/g, "μ").replace(/\\sigma/g, "σ")
+    .replace(/\\tau/g, "τ").replace(/\\phi/g, "φ").replace(/\\psi/g, "ψ")
+    .replace(/\\omega/g, "ω").replace(/\\pi/g, "π")
+    .replace(/\\leq/g, "≤").replace(/\\geq/g, "≥").replace(/\\neq/g, "≠")
+    .replace(/\\approx/g, "≈").replace(/\\propto/g, "∝").replace(/\\infty/g, "∞")
+    .replace(/\\times/g, "×").replace(/\\cdot/g, "·").replace(/\\pm/g, "±")
+    .replace(/\\sqrt\{([^}]+)\}/g, "√($1)")
+    .replace(/\^\{([^}]+)\}/g, (_, e) => e.split("").map((c: string) => sups[c] ?? `^${c}`).join(""))
+    .replace(/\^([0-9])/g, (_, n) => sups[n] ?? `^${n}`)
+    .replace(/_\{([^}]+)\}/g, "_$1")
+    .replace(/\{([^}]*)\}/g, "$1")  // strip remaining braces
+    .replace(/\\,/g, " ").replace(/\\;/g, " ").replace(/\\!/g, "")
+    .replace(/\\[a-zA-Z]+/g, "")  // drop any remaining unknown commands
+    .trim();
+}
+
+// ── Markdown renderer ───────────────────────────────────────────────────
 
 function renderTableBlock(block: string): string {
   const lines = block.split("\n").map(l => l.trim()).filter(l => l.startsWith("|"));
@@ -57,7 +89,21 @@ function renderTableBlock(block: string): string {
 }
 
 function renderMd(raw: string): string {
-  let html = raw.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  // Step 0: extract block + inline math BEFORE HTML-escaping to preserve symbols
+  const mathBlocks: string[] = [];
+  let src = raw;
+  // Block math \[...\]
+  src = src.replace(/\\\[([\s\S]+?)\\\]/g, (_, m) => {
+    const rendered = _simplifyLatex(m.trim());
+    mathBlocks.push(`<div style='background:#f0f4ff;border-left:3px solid #6366f1;padding:6px 12px;margin:8px 0;font-family:monospace;font-size:12px;color:#312e81;border-radius:0 4px 4px 0;overflow-x:auto'>${rendered}</div>`);
+    return `%%MBLOCK${mathBlocks.length - 1}%%`;
+  });
+  // Inline math \(...\)
+  src = src.replace(/\\\(([^)]+?)\\\)/g, (_, m) =>
+    `<em style='font-family:monospace;font-style:normal;color:#4f46e5;background:#eef2ff;padding:1px 4px;border-radius:3px;font-size:11px'>${_simplifyLatex(m.trim())}</em>`
+  );
+
+  let html = src.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   const tables: string[] = [];
   html = html.replace(/(\|[^\n]+\n\|[ \t|:^-]+\n(?:\|[^\n]+\n?)+)/g, match => {
     tables.push(renderTableBlock(match));
@@ -91,6 +137,7 @@ function renderMd(raw: string): string {
     .replace(/^/, "<p style='margin:0'>").replace(/$/, "</p>");
   codeBlocks.forEach((cb, i) => { html = html.replace(`%%CODE${i}%%`, cb); });
   tables.forEach((t, i) => { html = html.replace(`%%TBL${i}%%`, t); });
+  mathBlocks.forEach((mb, i) => { html = html.replace(`%%MBLOCK${i}%%`, mb); });
   return html;
 }
 
@@ -898,6 +945,7 @@ export function ChatInline() {
   const [busy, setBusy] = useState(false);
   const [contextType, setContextType] = useState<"" | "corpus" | "experiment" | "study">("");
   const [contextId, setContextId] = useState("");
+  const [autoContextLabel, setAutoContextLabel] = useState<string | null>(null);
   const [corpora, setCorpora] = useState<TextResponse[]>([]);
   const [experiments, setExperiments] = useState<ExperimentMeta[]>([]);
   const [studies, setStudies] = useState<StudyResponse[]>([]);
@@ -911,6 +959,22 @@ export function ChatInline() {
   // Navigation helper: dispatches glossa:navigate from within the chat panel
   const navigateTo = useCallback((view: string) => {
     window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view } }));
+  }, []);
+
+  // Auto-context: listen for glossa:context events from active views
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const d = (e as CustomEvent<{ type: string; id?: string; name?: string }>).detail;
+      if (d?.type && d.id) {
+        setContextType(d.type as "corpus" | "experiment" | "study");
+        setContextId(d.id);
+        setAutoContextLabel(d.name ?? d.id);
+      } else if (!d?.type) {
+        setAutoContextLabel(null);
+      }
+    };
+    window.addEventListener("glossa:context", handler);
+    return () => window.removeEventListener("glossa:context", handler);
   }, []);
 
   useEffect(() => {
@@ -1005,16 +1069,32 @@ export function ChatInline() {
     <div style={{ display: "flex", flexDirection: "column", height: "100%", background: "#0f172a" }}>
       {/* Context + controls bar */}
       <div style={{ display: "flex", gap: 4, padding: "3px 8px", borderBottom: "1px solid #1e293b", alignItems: "center", flexShrink: 0, flexWrap: "wrap" }}>
-        <span style={{ color: "#94a3b8", fontSize: 9, flexShrink: 0 }}>Context:</span>
-        {(["", "corpus", "experiment", "study"] as const).map(ct => (
-          <button key={ct || "g"} onClick={() => { setContextType(ct); setContextId(""); }}
-            style={{ padding: "1px 5px", border: "none", borderRadius: 3, cursor: "pointer", fontSize: 9, background: contextType === ct ? "#2563eb" : "#1e293b", color: contextType === ct ? "#fff" : "#64748b" }}>
-            {ct || "Global"}
-          </button>
-        ))}
-        {contextType === "corpus"     && <select value={contextId} onChange={e => setContextId(e.target.value)} style={inSel}><option value="">corpus...</option>{corpora.map(c => <option key={c.id} value={c.id}>{c.name.slice(0,18)}</option>)}</select>}
-        {contextType === "experiment" && <select value={contextId} onChange={e => setContextId(e.target.value)} style={inSel}><option value="">exp...</option>{experiments.map(x => <option key={x.id} value={x.id}>{x.name.slice(0,18)}</option>)}</select>}
-        {contextType === "study"      && <select value={contextId} onChange={e => setContextId(e.target.value)} style={inSel}><option value="">study...</option>{studies.map(s => <option key={s.id} value={s.id}>{s.name.slice(0,18)}</option>)}</select>}
+        {/* Auto-context pill */}
+        {autoContextLabel ? (
+          <span style={{ fontSize: 9, padding: "1px 6px", borderRadius: 8,
+            background: "linear-gradient(90deg,#1e3a5f,#312e81)", color: "#93c5fd",
+            fontWeight: 700, border: "1px solid #3730a3", display: "flex", alignItems: "center", gap: 3 }}
+            title={`Auto-context: ${contextType} — ${autoContextLabel}`}>
+            ⚡ {contextType}: <span style={{ maxWidth: 100, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{autoContextLabel}</span>
+            <button onClick={() => { setContextType(""); setContextId(""); setAutoContextLabel(null); }}
+              style={{ border: "none", background: "none", cursor: "pointer", fontSize: 10, color: "#64748b", padding: 0, lineHeight: 1 }}>×</button>
+          </span>
+        ) : (
+          <>
+            <span style={{ color: "#94a3b8", fontSize: 9, flexShrink: 0 }}>Ctx:</span>
+            {(["", "corpus", "experiment", "study"] as const).map(ct => (
+              <button key={ct || "g"} onClick={() => { setContextType(ct); setContextId(""); setAutoContextLabel(null); }}
+                style={{ padding: "1px 5px", border: "none", borderRadius: 3, cursor: "pointer", fontSize: 9,
+                  background: contextType === ct ? "#2563eb" : "#1e293b",
+                  color: contextType === ct ? "#fff" : "#64748b" }}>
+                {ct || "Global"}
+              </button>
+            ))}
+            {contextType === "corpus"     && <select value={contextId} onChange={e => setContextId(e.target.value)} style={inSel}><option value="">corpus...</option>{corpora.map(c => <option key={c.id} value={c.id}>{c.name.slice(0,18)}</option>)}</select>}
+            {contextType === "experiment" && <select value={contextId} onChange={e => setContextId(e.target.value)} style={inSel}><option value="">exp...</option>{experiments.map(x => <option key={x.id} value={x.id}>{x.name.slice(0,18)}</option>)}</select>}
+            {contextType === "study"      && <select value={contextId} onChange={e => setContextId(e.target.value)} style={inSel}><option value="">study...</option>{studies.map(s => <option key={s.id} value={s.id}>{s.name.slice(0,18)}</option>)}</select>}
+          </>
+        )}
         <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 3 }}>
           <div style={{ width: 32, height: 3, background: "#1e293b", borderRadius: 2 }}>
             <div style={{ height: "100%", width: `${ctxPct}%`, background: ctxPct > 90 ? "#ef4444" : ctxPct > 75 ? "#f59e0b" : "#34d399", borderRadius: 2 }} />

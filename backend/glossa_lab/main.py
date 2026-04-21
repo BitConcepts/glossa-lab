@@ -127,6 +127,10 @@ async def lifespan(app: FastAPI):
     from glossa_lab.corpus_catalogue_seeder import seed_corpus_catalogue  # noqa: PLC0415
     await seed_corpus_catalogue()
 
+    # Seed default report templates (idempotent — skips existing IDs)
+    from glossa_lab.report_template_seeder import seed_report_templates  # noqa: PLC0415
+    await seed_report_templates()
+
     # Start Ollama in the background (no-op if not installed or already running)
     await asyncio.get_event_loop().run_in_executor(None, _try_start_ollama)
 

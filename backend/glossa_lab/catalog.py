@@ -506,12 +506,16 @@ def get_catalog_summary() -> dict[str, int]:
 
 
 def _report_kind_for_suffix(suffix: str) -> str:
-    if suffix == ".json":
-        return "json_report"
-    if suffix == ".md":
-        return "document"
-    if suffix == ".csv":
-        return "table"
+    """Map file suffix to a clean kind label.
+
+    Three categories:
+      report   — formatted PDF documents (the only true "report")
+      data     — structured data outputs (JSON, CSV, XLSX, …)
+      document — prose/markup documents (Markdown, text)
+    """
     if suffix == ".pdf":
-        return "pdf"
-    return "artifact"
+        return "report"
+    if suffix == ".md" or suffix == ".txt":
+        return "document"
+    # JSON, CSV, TSV, XLS, XLSX, YAML, TOML, and any other structured output = data
+    return "data"

@@ -309,7 +309,7 @@ CATALOGUE: list[dict[str, Any]] = [
     },
     {
         "id": "cat-sanskrit",
-        "name": "Sanskrit (Rigveda, Devanagari)",
+        "name": "Sanskrit (Rigveda, Devanagari transliteration)",
         "language": "Sanskrit",
         "language_family": "Indo-European",
         "script_type": "syllabary",
@@ -317,9 +317,91 @@ CATALOGUE: list[dict[str, Any]] = [
         "tokens_approx": 80000,
         "source_url": "https://www.sacred-texts.com/hin/rigveda/",
         "license": "Public domain",
-        "description": "Vedic Sanskrit from the Rigveda. Devanagari syllabic script. Reference corpus for Indo-European comparisons.",
+        "description": (
+            "Vedic Sanskrit from the Rigveda in Latin transliteration. "
+            "Indo-Aryan / Indo-European. Reference LM for the Sanskrit/Vedic hypothesis "
+            "testing on the Indus Script. Comparator in the Dravidian vs Sanskrit A/B test."
+        ),
         "local_module": "sanskrit",
         "is_undeciphered": False,
+    },
+
+    # ── Additional Indus corpus sources (no bundled module — link only) ─────────
+    {
+        "id": "cat-indus-cisi",
+        "name": "Indus Script (CISI corpus — Parpola 1987)",
+        "language": "Unknown",
+        "language_family": "Undeciphered",
+        "script_type": "unknown",
+        "period": "2600–1900 BCE",
+        "tokens_approx": 30000,
+        "source_url": "https://www.harappa.com/script/indus-script-sign-concordance",
+        "license": "Academic use (Parpola et al.)",
+        "description": (
+            "Corpus of Indus Signs and Inscriptions (CISI) by Asko Parpola, Seppo Koskenniemi, "
+            "Simo Parpola and Pentti Aalto (1987–1996). 3 volumes covering most known inscriptions. "
+            "Larger than the Mahadevan 1977 corpus. Download from Harappa.com or contact "
+            "the Finnish Oriental Society. See also: Wells (2011) for a digitized subset."
+        ),
+        "local_module": "",
+        "is_undeciphered": True,
+    },
+    {
+        "id": "cat-indus-yadav",
+        "name": "Indus Script (Yadav et al. 2010 — TIFR corpus)",
+        "language": "Unknown",
+        "language_family": "Undeciphered",
+        "script_type": "unknown",
+        "period": "2600–1900 BCE",
+        "tokens_approx": 14000,
+        "source_url": "https://www.tifr.res.in/~mayank/indus.html",
+        "license": "Academic use (TIFR)",
+        "description": (
+            "Indus corpus used by Yadav, Vahia, Mahadevan and Joglekar (2010) for the "
+            "block entropy analysis (Science 2009 paper). Subset of the Mahadevan 1977 corpus "
+            "with ~7,000 sign occurrences. Available via the TIFR Astrophysics group website. "
+            "Rao et al. 2009 PNAS Markov model paper used the same corpus."
+        ),
+        "local_module": "",
+        "is_undeciphered": True,
+    },
+    {
+        "id": "cat-indus-wells",
+        "name": "Indus Script (Wells 2011 — Sign Catalogue)",
+        "language": "Unknown",
+        "language_family": "Undeciphered",
+        "script_type": "unknown",
+        "period": "2600–1900 BCE",
+        "tokens_approx": 25000,
+        "source_url": "https://archaeopress.com/ArchaeopressShop/Public/displayProductDetail.asp?id={B4C0FE13-FF56-401E-9E28-3D9B21AD2EF0}",
+        "license": "Academic use (Archaeopress)",
+        "description": (
+            "B.K. Wells (2011) \"The Archaeology and Epigraphy of Indus Writing.\" "
+            "Systematic sign catalogue with digitized inscription sequences. "
+            "One of the most complete modern catalogues. Contact Archaeopress or "
+            "use the partial digital release at the Harappa.com archive."
+        ),
+        "local_module": "",
+        "is_undeciphered": True,
+    },
+    {
+        "id": "cat-indus-kenoyer",
+        "name": "Indus Script (Harappa.com digital archive)",
+        "language": "Unknown",
+        "language_family": "Undeciphered",
+        "script_type": "unknown",
+        "period": "2600–1900 BCE",
+        "tokens_approx": 5000,
+        "source_url": "https://www.harappa.com/script/",
+        "license": "Academic use (Harappa.com)",
+        "description": (
+            "J.M. Kenoyer\'s Harappa.com digital archive of Indus seals and tablet images. "
+            "Partial corpus of ~700 photographed objects with sign readings. "
+            "Not as comprehensive as CISI but freely browsable online. "
+            "Best source for high-resolution seal images with context."
+        ),
+        "local_module": "",
+        "is_undeciphered": True,
     },
 
     # ── Modern typological comparators ─────────────────────────────────────────

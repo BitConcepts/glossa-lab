@@ -3,7 +3,7 @@
  * View opens in a new browser window. Sort by name/kind/size/updated.
  */
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   listReports, deleteReport, getReportDownloadUrl, openReportFolder,
   listStudies, aiReportSynthesis,
@@ -37,9 +37,147 @@ function renderMarkdown(md: string): string {
 type SortKey = "name" | "kind" | "size_bytes" | "updated_at";
 type SortDir = "asc" | "desc";
 
-/** Data files are raw outputs (JSON, CSV, artifact). Reports are formatted documents (PDF, Markdown). */
-const DATA_KINDS  = new Set(["json_report", "table", "artifact"]);
-const REPORT_KINDS = new Set(["pdf", "document"]);
+/**
+ * Three clean file categories:
+ *   report   — formatted PDF documents (the only true reports)
+ *   data     — structured outputs: JSON, CSV, TSV, etc.
+ *   document — prose / markdown documents
+ */
+const DATA_KINDS   = new Set(["data", "document"]);
+const REPORT_KINDS = new Set(["report"]);
+
+// Human-readable labels + colors per kind
+const KIND_LABEL: Record<string, string> = {
+  report:   "PDF Report",
+  data:     "Data",
+  document: "Document",
+};
+const KIND_COLOR: Record<string, string> = {
+  report:   "#dc2626",  // red — PDF
+  data:     "#2563eb",  // blue — JSON/CSV
+  document: "#7c3aed",  // purple — markdown
+};
+
+// ── Modern multi-select dropdown ───────────────────────────────────────────
+function MultiSelectDropdown({
+  label, options, selected, onChange, colorMap,
+}: {
+  label: string;
+  options: string[];
+  selected: Set<string>;
+  onChange: (s: Set<string>) => void;
+  colorMap?: Record<string, string>;
+}) {
+  const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState("");
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const h = (e: MouseEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false); };
+    document.addEventListener("mousedown", h);
+    return () => document.removeEventListener("mousedown", h);
+  }, [open]);
+
+  const toggle = (v: string) => {
+    const next = new Set(selected);
+    next.has(v) ? next.delete(v) : next.add(v);
+    onChange(next);
+  };
+  const filtered = options.filter(o => !search || o.toLowerCase().includes(search.toLowerCase()));
+  const selCount = selected.size;
+
+  return (
+    <div ref={ref} style={{ position: "relative" }}>
+      {/* Trigger */}
+      <button onClick={() => setOpen(o => !o)}
+        style={{ display: "flex", alignItems: "center", gap: 5, padding: "4px 10px",
+          border: `1px solid ${selCount > 0 ? "#2563eb" : "#d1d5db"}`,
+          borderRadius: 6, background: selCount > 0 ? "#eff6ff" : "#fff",
+          cursor: "pointer", fontSize: 12, color: "#374151", whiteSpace: "nowrap" }}>
+        <span style={{ fontSize: 11, color: "#6b7280" }}>{label}:</span>
+        {selCount === 0
+          ? <span style={{ color: "#9ca3af" }}>All</span>
+          : <span style={{ fontWeight: 700, color: "#2563eb" }}>{selCount} selected</span>}
+        <span style={{ fontSize: 9, color: "#9ca3af" }}>{open ? "▲" : "▼"}</span>
+      </button>
+      {/* Dropdown */}
+      {open && (
+        <div style={{ position: "absolute", top: "calc(100% + 4px)", left: 0, zIndex: 200,
+          background: "#fff", border: "1px solid #e5e7eb", borderRadius: 8,
+          boxShadow: "0 8px 24px rgba(0,0,0,0.12)", minWidth: 200, maxHeight: 280,
+          display: "flex", flexDirection: "column" }}>
+          {/* Search */}
+          {options.length > 6 && (
+            <div style={{ padding: "6px 8px", borderBottom: "1px solid #f3f4f6" }}>
+              <input value={search} onChange={e => setSearch(e.target.value)}
+                placeholder="Search\u2026"
+                style={{ width: "100%", border: "1px solid #e5e7eb", borderRadius: 4,
+                  padding: "3px 7px", fontSize: 11, outline: "none", boxSizing: "border-box" }}
+                autoFocus />
+            </div>
+          )}
+          {/* All toggle */}
+          <button onClick={() => onChange(new Set())}
+            style={{ padding: "6px 12px", border: "none", background: "none", textAlign: "left",
+              cursor: "pointer", fontSize: 11, color: selCount === 0 ? "#2563eb" : "#374151",
+              fontWeight: selCount === 0 ? 700 : 400, borderBottom: "1px solid #f3f4f6" }}>
+            {selCount === 0 ? "\u2714 " : ""} All ({options.length})
+          </button>
+          {/* Options */}
+          <div style={{ overflowY: "auto", flex: 1 }}>
+            {filtered.map(opt => {
+              const c = colorMap?.[opt] ?? "#2563eb";
+              const sel = selected.has(opt);
+              return (
+                <button key={opt} onClick={() => toggle(opt)}
+                  style={{ display: "flex", alignItems: "center", gap: 8, width: "100%",
+                    padding: "6px 12px", border: "none", background: sel ? c + "10" : "none",
+                    cursor: "pointer", textAlign: "left", fontSize: 11,
+                    borderBottom: "1px solid #f9fafb" }}>
+                  <span style={{ width: 14, height: 14, borderRadius: 3,
+                    border: `2px solid ${sel ? c : "#d1d5db"}`,
+                    background: sel ? c : "#fff", flexShrink: 0, display: "flex",
+                    alignItems: "center", justifyContent: "center" }}>
+                    {sel && <span style={{ color: "#fff", fontSize: 9, fontWeight: 700 }}>\u2713</span>}
+                  </span>
+                  <span style={{ flex: 1, color: sel ? c : "#374151", fontWeight: sel ? 600 : 400 }}>
+                    {opt}
+                  </span>
+                </button>
+              );
+            })}
+            {filtered.length === 0 && <div style={{ padding: "8px 12px", color: "#9ca3af", fontSize: 11 }}>No matches</div>}
+          </div>
+          {selCount > 0 && (
+            <button onClick={() => { onChange(new Set()); setOpen(false); }}
+              style={{ padding: "5px 12px", border: "none", background: "none",
+                borderTop: "1px solid #f3f4f6", cursor: "pointer",
+                fontSize: 10, color: "#6b7280", textAlign: "left" }}>
+              Clear selection
+            </button>
+          )}
+        </div>
+      )}
+      {/* Selected pills */}
+      {selCount > 0 && (
+        <div style={{ display: "flex", gap: 3, flexWrap: "wrap", marginTop: 4 }}>
+          {Array.from(selected).map(v => (
+            <span key={v} style={{ display: "inline-flex", alignItems: "center", gap: 3,
+              padding: "1px 6px", borderRadius: 10, fontSize: 10, fontWeight: 600,
+              background: (colorMap?.[v] ?? "#2563eb") + "18",
+              color: colorMap?.[v] ?? "#2563eb", border: `1px solid ${(colorMap?.[v] ?? "#2563eb")}30` }}>
+              {v}
+              <button onClick={() => toggle(v)}
+                style={{ border: "none", background: "none", cursor: "pointer",
+                  color: "inherit", fontSize: 11, padding: 0, lineHeight: 1 }}>\u00d7</button>
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function ReportsView() {
   const [reports, setReports] = useState<CatalogReport[]>([]);
@@ -151,7 +289,7 @@ export function ReportsView() {
       let contentHtml = `<a href="${url}" target="_blank" style="font-size:12px;color:#2563eb">Open source file →</a>`;
       try {
         const res = await fetch(url);
-        if (res.ok && r.kind === "json_report") {
+        if (res.ok && r.kind === "data") {
           const data = await res.json();
           // If it's a Glossa study report, render results section
           if (data.results && typeof data.results === "object") {
@@ -254,9 +392,7 @@ export function ReportsView() {
     : b > 1_000 ? `${(b / 1_000).toFixed(0)} KB`
     : `${b} B`;
 
-  const kindColor: Record<string, string> = {
-    json_report: "#2563eb", document: "#7c3aed", table: "#16a34a", pdf: "#dc2626", artifact: "#6b7280",
-  };
+  const kindColor = KIND_COLOR;
 
   const allKinds = Array.from(new Set(reports.map((r) => r.kind)));
   const allExps  = Array.from(new Set(reports.map((r) => r.experiment_id).filter(Boolean)));
@@ -342,7 +478,7 @@ export function ReportsView() {
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem" }}>
-        <h2 style={{ margin: 0 }}>Reports &amp; Data</h2>
+        <h2 style={{ margin: 0 }}>Reports</h2>
         <div style={{ display: "flex", gap: 6 }}>
           <button
             onClick={() => void openGenerateModal()}
@@ -376,16 +512,16 @@ export function ReportsView() {
               borderBottom: areaTab === tab ? "2px solid #1e3a5f" : "2px solid transparent",
               marginBottom: "-2px", whiteSpace: "nowrap" }}>
             {tab === "reports"
-              ? `📋 Reports ${reportCnt > 0 ? `(${reportCnt})` : ""}`
+              ? `📄 Reports ${reportCnt > 0 ? `(${reportCnt})` : ""}`
               : tab === "data"
-              ? `📂 Data ${dataCnt > 0 ? `(${dataCnt})` : ""}`
+              ? `📂 Data & Docs ${dataCnt > 0 ? `(${dataCnt})` : ""}`
               : `📝 Templates ${userTemplates.length > 0 ? `(${userTemplates.length})` : ""}`}
           </button>
         ))}
         <div style={{ flex: 1 }} />
         <span style={{ fontSize: 11, color: "#9ca3af", alignSelf: "center", paddingRight: 4 }}>
-          {areaTab === "reports" ? "PDF & formatted documents"
-            : areaTab === "data" ? "JSON results, CSV exports, raw artifacts"
+          {areaTab === "reports" ? "PDF formatted reports only"
+            : areaTab === "data" ? "JSON data, CSV exports, markdown documents"
             : "User-defined report templates (stored in database)"}
         </span>
       </div>
@@ -617,83 +753,52 @@ export function ReportsView() {
         </div>
       )}
 
-      {/* Search + Filter row */}
-      <div style={{ display: "flex", gap: 8, marginBottom: "0.75rem", alignItems: "center", flexWrap: "wrap" }}>
-        {/* Search */}
+      {/* Search + Filter row — modern MultiSelectDropdown components */}
+      <div style={{ display: "flex", gap: 8, marginBottom: "0.75rem", alignItems: "flex-start", flexWrap: "wrap" }}>
         <input
           placeholder="Search by name…"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          style={{ padding: "5px 10px", border: "1px solid #d1d5db", borderRadius: 5, fontSize: 12, width: 220 }}
+          style={{ padding: "5px 10px", border: "1px solid #d1d5db", borderRadius: 6, fontSize: 12, width: 200 }}
         />
-
-        {/* Type multi-select */}
         {allKinds.length > 0 && (
-          <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-            <span style={{ fontSize: 11, color: "#9ca3af", whiteSpace: "nowrap" }}>Type:</span>
-            <select multiple
-              value={Array.from(kindFilter)}
-              onChange={e => setKindFilter(new Set(Array.from(e.target.selectedOptions).map(o => o.value)))}
-              style={{ fontSize: 11, padding: "2px", border: "1px solid #d1d5db", borderRadius: 4,
-                height: Math.min(4, allKinds.length + 1) * 22, minWidth: 120, maxWidth: 160 }}
-              title="Hold Ctrl/Cmd to select multiple">
-              {allKinds.map(k => (
-                <option key={k} value={k} style={{ padding: "2px 6px", color: kindColor[k] ?? "#374151", fontWeight: kindFilter.has(k) ? 700 : 400 }}>
-                  {k.replace("_", " ")}
-                </option>
-              ))}
-            </select>
-            {kindFilter.size > 0 && <button onClick={() => setKindFilter(new Set())} style={{ fontSize: 10, border: "none", background: "none", cursor: "pointer", color: "#6b7280" }}>×</button>}
-          </div>
+          <MultiSelectDropdown
+            label="Type"
+            options={allKinds.map(k => KIND_LABEL[k] ?? k)}
+            selected={new Set(Array.from(kindFilter).map(k => KIND_LABEL[k] ?? k))}
+            onChange={s => setKindFilter(new Set(
+              Array.from(s).map(label => Object.entries(KIND_LABEL).find(([, v]) => v === label)?.[0] ?? label)
+            ))}
+            colorMap={Object.fromEntries(allKinds.map(k => [KIND_LABEL[k] ?? k, KIND_COLOR[k] ?? "#374151"]))}
+          />
         )}
-
-        {/* Experiment autocomplete-select */}
         {allExps.length > 0 && (
-          <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-            <span style={{ fontSize: 11, color: "#9ca3af", whiteSpace: "nowrap" }}>Exp:</span>
-            <select multiple
-              value={Array.from(expFilter)}
-              onChange={e => setExpFilter(new Set(Array.from(e.target.selectedOptions).map(o => o.value)))}
-              style={{ fontSize: 11, padding: "2px", border: "1px solid #d1d5db", borderRadius: 4,
-                height: Math.min(5, allExps.length + 1) * 22, minWidth: 160, maxWidth: 240 }}
-              title="Hold Ctrl/Cmd to select multiple">
-              {allExps.map(exp => (
-                <option key={exp} value={exp} style={{ padding: "2px 6px", fontWeight: expFilter.has(exp) ? 700 : 400 }}>
-                  {exp.replace(/_/g, " ")}
-                </option>
-              ))}
-            </select>
-            {expFilter.size > 0 && <button onClick={() => setExpFilter(new Set())} style={{ fontSize: 10, border: "none", background: "none", cursor: "pointer", color: "#6b7280" }}>×</button>}
-          </div>
+          <MultiSelectDropdown
+            label="Experiment"
+            options={allExps.map(e => e.replace(/_/g, " "))}
+            selected={new Set(Array.from(expFilter).map(e => e.replace(/_/g, " ")))}
+            onChange={s => setExpFilter(new Set(
+              Array.from(s).map(label => allExps.find(e => e.replace(/_/g, " ") === label) ?? label)
+            ))}
+          />
         )}
-
-        {/* Study select */}
         {studies.length > 0 && (
-          <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-            <span style={{ fontSize: 11, color: "#9ca3af", whiteSpace: "nowrap" }}>Study:</span>
-            <select multiple
-              value={Array.from(studyFilter)}
-              onChange={e => setStudyFilter(new Set(Array.from(e.target.selectedOptions).map(o => o.value)))}
-              style={{ fontSize: 11, padding: "2px", border: "1px solid #d1d5db", borderRadius: 4,
-                height: Math.min(5, studies.length + 1) * 22, minWidth: 140, maxWidth: 200 }}
-              title="Hold Ctrl/Cmd to select multiple">
-              {studies.map(st => (
-                <option key={st.id} value={st.id} style={{ padding: "2px 6px", fontWeight: studyFilter.has(st.id) ? 700 : 400 }}>
-                  {st.name}
-                </option>
-              ))}
-            </select>
-            {studyFilter.size > 0 && <button onClick={() => setStudyFilter(new Set())} style={{ fontSize: 10, border: "none", background: "none", cursor: "pointer", color: "#6b7280" }}>×</button>}
-          </div>
+          <MultiSelectDropdown
+            label="Study"
+            options={studies.map(st => st.name)}
+            selected={new Set(studies.filter(st => studyFilter.has(st.id)).map(st => st.name))}
+            onChange={s => setStudyFilter(new Set(
+              studies.filter(st => s.has(st.name)).map(st => st.id)
+            ))}
+          />
         )}
-
-        {/* Group + count */}
-        <label style={{ fontSize: 11, color: "#6b7280", display: "flex", alignItems: "center", gap: 4, cursor: "pointer", marginLeft: 4 }}>
+        <label style={{ fontSize: 11, color: "#6b7280", display: "flex", alignItems: "center", gap: 4,
+          cursor: "pointer", marginLeft: "auto", alignSelf: "flex-start", paddingTop: 5 }}>
           <input type="checkbox" checked={groupByExp} onChange={(e) => setGroupByExp(e.target.checked)} />
-          Group by exp
+          Group by experiment
         </label>
-        <span style={{ fontSize: 11, color: "#9ca3af", marginLeft: "auto", whiteSpace: "nowrap" }}>
-          {sorted.length} / {reports.length}
+        <span style={{ fontSize: 11, color: "#9ca3af", alignSelf: "flex-start", paddingTop: 5, whiteSpace: "nowrap" }}>
+          {sorted.length} of {areaFiltered.length}
         </span>
       </div>
 
@@ -768,6 +873,7 @@ export function ReportsView() {
           <tbody>
             {sorted.map((r) => {
               const color = kindColor[r.kind] ?? "#6b7280";
+              const kindLabel = KIND_LABEL[r.kind] ?? r.kind;
               const isSel = selected.has(r.id);
               const isStarred = starredReports.has(r.id);
               return (
@@ -803,7 +909,7 @@ export function ReportsView() {
                   </td>
                   <td style={tdStyle}>
                     <span style={{ fontSize: 11, padding: "1px 6px", borderRadius: 8, background: color + "20", color, fontWeight: 600 }}>
-                      {r.kind.replace("_", " ")}
+                      {kindLabel}
                     </span>
                   </td>
                   <td style={{ ...tdStyle, whiteSpace: "nowrap" }}>{fmtSize(r.size_bytes)}</td>

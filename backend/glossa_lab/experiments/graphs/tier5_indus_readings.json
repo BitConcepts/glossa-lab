@@ -1,0 +1,31 @@
+{
+  "id": "tier5_indus_readings",
+  "name": "Tier 5 — Indus Script Structural Readings Analysis",
+  "description": "Deep structural analysis of the Indus Script corpus for reading-pattern research. Computes positional profiles (I/M/T rates), symbol clustering, bigram frequencies, Zipf distribution, entropy, and writing-system classification. Produces the sign-level data needed to identify logograms, determinatives, and phonogram candidates. All results are merged and exported for downstream research.",
+  "nodes": [
+    {"id": "corpus",   "type": "expNode", "data": {"atomicId": "BuiltinCorpus", "label": "Indus Script", "params": {"corpus": "indus"}}, "position": {"x": 60,  "y": 300}},
+    {"id": "freq",     "type": "expNode", "data": {"atomicId": "FreqCounter", "label": "Sign Frequencies", "params": {"min_count": 1}}, "position": {"x": 280, "y": 100}},
+    {"id": "profiles", "type": "expNode", "data": {"atomicId": "PositionalProfiler", "label": "Positional Profiler (I/M/T)", "params": {"min_count": 5}}, "position": {"x": 280, "y": 300}},
+    {"id": "clusters", "type": "expNode", "data": {"atomicId": "Clusterer", "label": "Symbol Clusterer", "params": {}}, "position": {"x": 500, "y": 300}},
+    {"id": "bigrams",  "type": "expNode", "data": {"atomicId": "NgramCounter", "label": "Bigrams (n=2)", "params": {"n": 2, "top_n": 200}}, "position": {"x": 280, "y": 500}},
+    {"id": "entropy",  "type": "expNode", "data": {"atomicId": "EntropyCalc", "label": "Entropy H1", "params": {}}, "position": {"x": 500, "y": 100}},
+    {"id": "zipf",     "type": "expNode", "data": {"atomicId": "ZipfFitter", "label": "Zipf Exponent", "params": {}}, "position": {"x": 720, "y": 100}},
+    {"id": "wsc",      "type": "expNode", "data": {"atomicId": "WritingSystemClassifier", "label": "Writing System Classifier", "params": {}}, "position": {"x": 960, "y": 100}},
+    {"id": "merge",    "type": "expNode", "data": {"atomicId": "Merger", "label": "Merge Structural Analysis", "params": {}}, "position": {"x": 1200, "y": 300}},
+    {"id": "out",      "type": "expNode", "data": {"atomicId": "JSONExport", "label": "Save", "params": {"filename": "tier5_indus_readings.json"}}, "position": {"x": 1460, "y": 300}}
+  ],
+  "edges": [
+    {"id": "e1",  "source": "corpus",   "target": "freq",     "sourcePort": "sequences",         "targetPort": "sequences"},
+    {"id": "e2",  "source": "corpus",   "target": "profiles", "sourcePort": "sequences",         "targetPort": "sequences"},
+    {"id": "e3",  "source": "corpus",   "target": "bigrams",  "sourcePort": "sequences",         "targetPort": "sequences"},
+    {"id": "e4",  "source": "profiles", "target": "clusters", "sourcePort": "profiles",          "targetPort": "profiles"},
+    {"id": "e5",  "source": "freq",     "target": "entropy",  "sourcePort": "freq_map",          "targetPort": "freq_map"},
+    {"id": "e6",  "source": "freq",     "target": "zipf",     "sourcePort": "freq_map",          "targetPort": "freq_map"},
+    {"id": "e7",  "source": "entropy",  "target": "wsc",      "sourcePort": "h1",                "targetPort": "h1"},
+    {"id": "e8",  "source": "freq",     "target": "wsc",      "sourcePort": "distinct_symbols",  "targetPort": "distinct_symbols"},
+    {"id": "e9",  "source": "clusters", "target": "merge",    "sourcePort": "clusters",          "targetPort": "a"},
+    {"id": "e10", "source": "wsc",      "target": "merge",    "sourcePort": "tier_classification","targetPort": "b"},
+    {"id": "e11", "source": "bigrams",  "target": "merge",    "sourcePort": "top_10",            "targetPort": "c"},
+    {"id": "e12", "source": "merge",    "target": "out",      "sourcePort": "json",              "targetPort": "data"}
+  ]
+}

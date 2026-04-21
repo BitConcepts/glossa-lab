@@ -22,66 +22,23 @@ _EXP_DIR     = _BACKEND_DIR / "glossa_lab" / "experiments"
 _SCRIPTS_DIR = _BACKEND_DIR / "scripts"
 
 # Files that are explicitly permitted to contain historical hardcoded content.
-# These should progressively shrink as migration continues.
+# All Python experiment compositions have been migrated to graph specs in
+# experiments/graphs/*.json and archived to experiments/_legacy/.
+# The experiments/ directory now contains only _parallel.py (utility),
+# __init__.py, and __main__.py — none of which need whitelisting.
+#
+# This whitelist covers only scripts/ directory files that retain
+# legacy report-generation logic pending full ReportGenerator node migration.
 _LEGACY_WHITELIST: set[str] = {
-    # Python experiment files that predate H15 and are being migrated
-    "fuls_rtl_corrected.py",
-    "fuls_validation_suite.py",
-    "fuls_independence_suite.py",
-    "fuls_split_sensitivity.py",
-    "fuls_anchor_simulation.py",
-    "geez_syllabic_anchor_convergence.py",
-    "beam_decipher_benchmark.py",
-    "meroitic_benchmark.py",
-    "phoenician_benchmark.py",
-    "prior_ablation_benchmark.py",
-    "proto_sinaitic_benchmark.py",
-    "semitic_constraints_benchmark.py",
-    "sequence_eval_benchmark.py",
-    "tier5_indus_decipherment.py",
-    "tier5_indus_readings.py",
-    "transparency_benchmark.py",
-    "ugaritic_vs_hebrew.py",
-    "tier_diagnostics.py",
-    "writing_system_progression.py",
-    "progression_report.py",
-    "remaining_experiments.py",
-    "run_kandles_biased_experiments.py",
-    "ocr_experiments.py",
-    "stats.py",
-    # Report generator scripts (to be replaced by ReportGenerator node)
+    # Report generator scripts (pending replacement by ReportGenerator node)
     "generate_geez_report.py",
     "generate_geez_convergence_report.py",
     "generate_fuls_nw_semitic_report.py",
     "_save_benchmark_reports.py",
     "run_fuls_rtl.py",
-    # Runner scripts (H14 compliant; allowed to reference specific experiments)
+    # Runner scripts (H16 compliant; allowed to reference specific experiments by ID)
     "run_geez_decipher.py",
     "run_geez_anchor_convergence.py",
-    # Legacy experiments that have graph equivalents but retain their Python classes for CLI compatibility
-    "positional_profile_analysis.py",
-    "symbol_clustering.py",
-    # Contact zone needs OCR data; linear_a, luwian, kandles, indus_structural remain as legacy
-    "contact_zone_analysis.py",
-    "linear_a_circularity.py",
-    "luwian_kl_scoring.py",
-    "indus_structural_atlas.py",
-    "fuls_nw_semitic_benchmark.py",
-    "fuls_nw_semitic_decipher_run.py",
-    "fuls_nw_semitic_ngram.py",
-    "fuls_constraint_space.py",
-    "fuls_sequence_information_test.py",
-    "fuls_writing_system_comparison.py",
-    "fuls_anchor_simulation.py",
-    "geez_syllabic_anchor_convergence.py",
-    "ugaritic_proper_benchmark.py",
-    "ugaritic_vs_hebrew.py",
-    "old_hebrew_self_benchmark.py",
-    "ventris_validation.py",
-    "tier3_sumerian_validation.py",
-    "tier_diagnostics.py",
-    "fuls_split_sensitivity.py",
-    "writing_system_progression.py",
 }
 
 # Patterns that indicate hardcoded study-specific data in non-whitelisted files

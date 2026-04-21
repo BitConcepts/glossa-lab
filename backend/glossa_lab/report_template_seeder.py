@@ -298,8 +298,292 @@ DEFAULT_TEMPLATES: list[dict[str, Any]] = [
             },
         ],
     },
+    # ── Generic templates ──────────────────────────────────────────────────
+    {
+        "id": "tmpl-corpus-overview",
+        "name": "Corpus Overview Report",
+        "description": (
+            "General-purpose overview of any uploaded corpus. "
+            "Covers token count, alphabet size, Shannon entropy, conditional entropy, "
+            "type-token ratio, Zipf exponent, and hapax count. "
+            "Works for any script or language."
+        ),
+        "category": "General",
+        "sections": [
+            {
+                "title": "Corpus Metrics Summary",
+                "data_source": "experiment",
+                "data_key": "token_count",
+                "chart_type": "text",
+                "include_table": True,
+                "description": "Total token count for the corpus.",
+            },
+            {
+                "title": "H1 Shannon Entropy",
+                "data_source": "experiment",
+                "data_key": "h1",
+                "chart_type": "bar",
+                "include_table": False,
+                "description": "Unigram entropy H1 in bits/token. Natural language: 3–6 bits.",
+            },
+            {
+                "title": "Conditional Entropy H(X|X−1)",
+                "data_source": "experiment",
+                "data_key": "conditional_h",
+                "chart_type": "text",
+                "include_table": False,
+                "description": "Bigram predictability. Lower = more structured.",
+            },
+            {
+                "title": "H2/H1 Ratio",
+                "data_source": "experiment",
+                "data_key": "h2_h1_ratio",
+                "chart_type": "text",
+                "include_table": False,
+                "description": "~1.5 for natural language; <1 = strong sequential structure.",
+            },
+            {
+                "title": "Type-Token Ratio (TTR)",
+                "data_source": "experiment",
+                "data_key": "type_token_ratio",
+                "chart_type": "text",
+                "include_table": False,
+                "description": "Lexical diversity. High = rich vocabulary; low = formulaic/repetitive.",
+            },
+            {
+                "title": "Zipf Exponent",
+                "data_source": "experiment",
+                "data_key": "zipf_exponent",
+                "chart_type": "text",
+                "include_table": False,
+                "description": "Log-rank regression slope. −1.0 = ideal Zipf-Mandelbrot.",
+            },
+            {
+                "title": "Token Frequency Distribution (top 30)",
+                "data_source": "experiment",
+                "data_key": "top_10",
+                "chart_type": "bar",
+                "include_table": True,
+                "description": "Frequency rank of the most common tokens.",
+            },
+        ],
+    },
+    {
+        "id": "tmpl-token-frequency",
+        "name": "Token Frequency Report",
+        "description": (
+            "Detailed token frequency analysis for any corpus. "
+            "Reports full frequency map, bigram counts, hapax legomena, "
+            "and sign inventory size. Suitable for any sign-level corpus."
+        ),
+        "category": "General",
+        "sections": [
+            {
+                "title": "Frequency Map",
+                "data_source": "experiment",
+                "data_key": "freq_map",
+                "chart_type": "bar",
+                "include_table": True,
+                "description": "Frequency of each distinct token in the corpus.",
+            },
+            {
+                "title": "Top 10 Tokens",
+                "data_source": "experiment",
+                "data_key": "top_10",
+                "chart_type": "table",
+                "include_table": True,
+                "description": "Most frequent symbols with counts.",
+            },
+            {
+                "title": "Distinct Symbol Count",
+                "data_source": "experiment",
+                "data_key": "distinct_symbols",
+                "chart_type": "text",
+                "include_table": False,
+                "description": "Total unique symbols in the corpus.",
+            },
+            {
+                "title": "Total Token Count",
+                "data_source": "experiment",
+                "data_key": "total_tokens",
+                "chart_type": "text",
+                "include_table": False,
+                "description": "Total sign/token occurrences.",
+            },
+            {
+                "title": "Bigram Frequencies",
+                "data_source": "experiment",
+                "data_key": "n_bigrams",
+                "chart_type": "text",
+                "include_table": False,
+                "description": "Number of distinct bigram types found.",
+            },
+        ],
+    },
+    {
+        "id": "tmpl-comparative-analysis",
+        "name": "Comparative Corpus Analysis Report",
+        "description": (
+            "Side-by-side comparison of two corpora using KL and Jensen-Shannon divergence. "
+            "Identifies structural differences in token distributions. "
+            "Use after running a KL Divergence or KL Comparison experiment."
+        ),
+        "category": "Comparison",
+        "sections": [
+            {
+                "title": "KL Divergence (P ∥ Q)",
+                "data_source": "experiment",
+                "data_key": "kl_divergence",
+                "chart_type": "text",
+                "include_table": False,
+                "description": "KL(P∥Q) in nats. 0 = identical; higher = more different.",
+            },
+            {
+                "title": "Jensen-Shannon Divergence",
+                "data_source": "experiment",
+                "data_key": "js_divergence",
+                "chart_type": "text",
+                "include_table": False,
+                "description": "Symmetric JS divergence [0, 1]. 0 = identical; 1 = fully different.",
+            },
+            {
+                "title": "Number of Shared Symbols",
+                "data_source": "experiment",
+                "data_key": "n_symbols",
+                "chart_type": "text",
+                "include_table": False,
+                "description": "Symbols present in both corpora.",
+            },
+        ],
+    },
+    {
+        "id": "tmpl-sign-classification",
+        "name": "Sign / Symbol Classification Report",
+        "description": (
+            "Probabilistic classification of every sign in a corpus: "
+            "P(numeral), P(determinative/logogram), P(phonetic), P(boundary marker). "
+            "Generates a per-sign classification table. Use after running "
+            "SignFunctionEstimator or PositionalProfiler."
+        ),
+        "category": "General",
+        "sections": [
+            {
+                "title": "Positional Classes",
+                "data_source": "experiment",
+                "data_key": "class_summary",
+                "chart_type": "table",
+                "include_table": True,
+                "description": "Count of INITIAL / MEDIAL / TERMINAL / MIXED signs.",
+            },
+            {
+                "title": "Per-Sign Profiles",
+                "data_source": "experiment",
+                "data_key": "profiles",
+                "chart_type": "table",
+                "include_table": True,
+                "description": "I/M/T rates and dominant position class per sign.",
+            },
+            {
+                "title": "Symbol Clusters",
+                "data_source": "experiment",
+                "data_key": "clusters",
+                "chart_type": "table",
+                "include_table": True,
+                "description": "Signs grouped by positional behaviour.",
+            },
+        ],
+    },
+    {
+        "id": "tmpl-writing-system-fingerprint",
+        "name": "Writing System Fingerprint Report",
+        "description": (
+            "10-dimensional structural fingerprint of any corpus, compared against "
+            "a database of known writing systems. Returns nearest known script, "
+            "distance score, and tier classification (abjad/syllabary/logosyllabic/logographic). "
+            "Use after running WritingSystemClassifier or StructuralFingerprint."
+        ),
+        "category": "Structural Analysis",
+        "sections": [
+            {
+                "title": "Tier Classification",
+                "data_source": "experiment",
+                "data_key": "tier_classification",
+                "chart_type": "text",
+                "include_table": False,
+                "description": "Rule-based writing system tier (abjad/syllabary/logosyllabic/logographic).",
+            },
+            {
+                "title": "Nearest Known Script",
+                "data_source": "experiment",
+                "data_key": "nearest_script",
+                "chart_type": "text",
+                "include_table": False,
+                "description": "Closest match in the benchmark script database.",
+            },
+            {
+                "title": "Distance Score",
+                "data_source": "experiment",
+                "data_key": "nearest_distance",
+                "chart_type": "text",
+                "include_table": False,
+                "description": "Euclidean distance to nearest script. Lower = closer match.",
+            },
+            {
+                "title": "Top 3 Nearest Scripts",
+                "data_source": "experiment",
+                "data_key": "top3_nearest",
+                "chart_type": "table",
+                "include_table": True,
+                "description": "Ranked table of 3 closest known writing systems.",
+            },
+            {
+                "title": "Classification Summary",
+                "data_source": "experiment",
+                "data_key": "text",
+                "chart_type": "text",
+                "include_table": False,
+                "description": "Human-readable classification statement.",
+            },
+        ],
+    },
+    {
+        "id": "tmpl-session-summary",
+        "name": "Research Session Summary",
+        "description": (
+            "High-level summary of research progress for any session. "
+            "Records key findings, next steps, and open questions. "
+            "Designed for use with Glossa AI synthesis: select multiple data "
+            "files in Compose mode then click AI Report to auto-generate."
+        ),
+        "category": "Research Summary",
+        "sections": [
+            {
+                "title": "Key Findings",
+                "data_source": "experiment",
+                "data_key": "conclusions",
+                "chart_type": "text",
+                "include_table": False,
+                "description": "Main conclusions from the experiment or session.",
+            },
+            {
+                "title": "Quantitative Results",
+                "data_source": "experiment",
+                "data_key": "summary_table",
+                "chart_type": "table",
+                "include_table": True,
+                "description": "Numerical results table.",
+            },
+            {
+                "title": "Status / Verdict",
+                "data_source": "experiment",
+                "data_key": "verdict",
+                "chart_type": "text",
+                "include_table": False,
+                "description": "Pass / Fail / Partial verdict for the experiment.",
+            },
+        ],
+    },
 ]
-
 
 async def seed_report_templates() -> int:
     """Seed default report templates (idempotent — skips existing IDs).

@@ -121,6 +121,15 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
     kwargs = body.kwargs or {}
 
     async def _stream() -> AsyncGenerator[str, None]:
+        # ── Detect GPU / compute device at job creation time ───────────────────
+        try:
+            from glossa_lab.accelerate import gpu_info as _gpu_info  # noqa: PLC0415
+            _ginfo = _gpu_info()
+            _compute_device = "gpu" if _ginfo.get("cuda") else "cpu"
+            _compute_label  = _ginfo.get("tier_name", "CPU")
+        except Exception:  # noqa: BLE001
+            _compute_device = "cpu"; _compute_label = "CPU"
+
         # ── Create a Job record so the run appears in the Jobs panel ────────────
         job_id: str | None = None
         db = _db_mod.get_db()
@@ -129,7 +138,13 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                 job = await db.create_job(
                     name=f"Exp run: {d.get('name', exp_id)}",
                     pipeline="exp_run",
-                    params={"exp_id": exp_id, "node_count": len(nodes)},
+                    params={
+                        "exp_id": exp_id,
+                        "node_count": len(nodes),
+                        "nodes_done": 0,
+                        "compute_device": _compute_device,
+                        "compute_device_label": _compute_label,
+                    },
                     created_at=datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z"),
                 )
                 job_id = job["id"]
@@ -192,6 +207,18 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                             "status": "error" if had_error else "complete",
                             "error": node_result.get("error", "")})
 
+                # Update nodes_done + heartbeat timestamp in DB for progress tracking
+                if job_id and db:
+                    try:
+                        await db._conn.execute(  # noqa: SLF001
+                            "UPDATE jobs SET params = json_set(params, '$.nodes_done', ?), "
+                            "updated_at = datetime('now') WHERE id = ?",
+                            (node_idx + 1, job_id),
+                        )
+                        await db._conn.commit()  # noqa: SLF001
+                    except Exception:  # noqa: BLE001
+                        pass
+
         except Exception as exc:  # noqa: BLE001
             logger.error("Experiment run '%s' crashed: %s", d.get("name"), exc)
             yield _sse({"event": "run_error", "message": str(exc)})
@@ -222,9 +249,35 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                 await db.update_job_status(job_id, final_status)
                 await db._conn.execute(  # noqa: SLF001
                     "UPDATE jobs SET params = ? WHERE id = ?",
-                    (json.dumps({"exp_id": exp_id, "node_count": len(ordered), "errors": int(had_errors)}), job_id),
+                    (json.dumps({
+                        "exp_id": exp_id,
+                        "node_count": len(ordered),
+                        "nodes_done": len(ordered),
+                        "errors": int(had_errors),
+                        "compute_device": _compute_device,
+                        "compute_device_label": _compute_label,
+                    }), job_id),
                 )
                 await db._conn.commit()  # noqa: SLF001
+                # Store final result summary in job_results table for Results button
+                result_summary = {
+                    k: v for k, v in merged.items()
+                    if not isinstance(v, type(None))
+                    and not hasattr(v, "unigram_freq")  # skip LM objects
+                    and (not isinstance(v, dict) or len(json.dumps(v, default=str)) < 8192)
+                }
+                await db.store_result(
+                    job_id=job_id,
+                    data={
+                        "exp_id": exp_id,
+                        "exp_name": d.get("name", exp_id),
+                        "status": final_status,
+                        "node_count": len(ordered),
+                        "had_errors": had_errors,
+                        "result": result_summary,
+                    },
+                    created_at=datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z"),
+                )
             except Exception as _je:  # noqa: BLE001
                 logger.warning("Could not update job record: %s", _je)
         yield _sse({"event": "run_complete", "exp_id": exp_id, "job_id": job_id,

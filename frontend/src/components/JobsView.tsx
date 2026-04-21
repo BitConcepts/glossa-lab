@@ -217,7 +217,7 @@ export function JobsView() {
         </div>
       )}
       {jobs.length > 0 && (
-        <table style={{ borderCollapse: "collapse", width: "100%", maxWidth: 960 }}>
+        <table style={{ borderCollapse: "collapse", width: "100%" }}>
           <thead>
             <tr>
               {["Name", "Pipeline", "Device", "Status", "Created", "Actions"].map((h) => (
@@ -234,14 +234,36 @@ export function JobsView() {
                 ? { bg: isGpu ? "#dbeafe" : "#f3f4f6", color: isGpu ? "#1e40af" : "#374151",
                     text: isGpu ? `⚡ ${deviceLabel || "GPU"}` : `⚙️ ${deviceLabel || "CPU"}` }
                 : null;
+              const nodeCount = (j.params?.node_count as number) ?? 0;
+              const nodesDone = (j.params?.nodes_done as number) ?? 0;
+              const pct = nodeCount > 0 ? Math.round((nodesDone / nodeCount) * 100) : null;
+              const isExpRun = j.pipeline === "exp_run";
+              const elapsedSec = j.status === "running"
+                ? Math.round((Date.now() - new Date(j.created_at).getTime()) / 1000)
+                : null;
+              const etaSec = (pct !== null && pct > 5 && elapsedSec !== null)
+                ? Math.round((elapsedSec / pct) * (100 - pct))
+                : null;
               return (
               <tr key={j.id}>
                 <Td>
-                  <span style={{ fontWeight: 500 }}>{j.name}</span>
-                  <br />
-                  <span style={{ fontSize: 11, color: "#6b7280", fontFamily: "monospace" }}>
+                  <div style={{ fontWeight: 500 }}>{j.name}</div>
+                  <div style={{ fontSize: 11, color: "#6b7280", fontFamily: "monospace" }}>
                     {j.id.slice(0, 8)}…
-                  </span>
+                  </div>
+                  {/* Progress bar for running exp_run jobs */}
+                  {j.status === "running" && isExpRun && nodeCount > 0 && (
+                    <div style={{ marginTop: 4, display: "flex", alignItems: "center", gap: 6 }}>
+                      <div style={{ flex: 1, height: 4, background: "#e5e7eb", borderRadius: 2, overflow: "hidden" }}>
+                        <div style={{ height: "100%", width: `${pct ?? 0}%`, background: "#2563eb", borderRadius: 2, transition: "width 0.5s" }} />
+                      </div>
+                      <span style={{ fontSize: 10, color: "#6b7280", whiteSpace: "nowrap" }}>
+                        {nodesDone}/{nodeCount} nodes{pct !== null ? ` (${pct}%)` : ""}
+                        {elapsedSec !== null && ` · ${elapsedSec}s`}
+                        {etaSec !== null && ` · ~${etaSec}s left`}
+                      </span>
+                    </div>
+                  )}
                 </Td>
                 <Td>
                   <code style={{ fontSize: 12 }}>{j.pipeline}</code>
@@ -259,11 +281,14 @@ export function JobsView() {
                   <span style={{ color: statusColor(j.status), fontWeight: 600 }}>
                     {j.status}
                   </span>
+                  {j.status === "running" && elapsedSec !== null && !isExpRun && (
+                    <div style={{ fontSize: 10, color: "#9ca3af" }}>{elapsedSec}s elapsed</div>
+                  )}
                 </Td>
                 <Td>{fmtDateTimeCompact(j.created_at)}</Td>
                 <Td>
-                  <span style={{ display: "flex", gap: 6 }}>
-                    {j.status === "completed" && (
+                  <span style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                    {j.status === "completed" && !isExpRun && (
                       <button
                         style={{ ...btnStyle, padding: "2px 10px", fontSize: 12 }}
                         onClick={() => handleViewResults(j)}
@@ -271,17 +296,21 @@ export function JobsView() {
                         Results
                       </button>
                     )}
+                    {j.status === "completed" && isExpRun && (
+                      <button
+                        style={{ ...btnStyle, padding: "2px 10px", fontSize: 12, background: "#059669" }}
+                        onClick={() => handleViewResults(j)}
+                        title="View result summary stored with job"
+                      >
+                        Results
+                      </button>
+                    )}
                     {(j.status === "pending" || j.status === "running") && (
                       <button
-                        style={{
-                          ...btnStyle,
-                          padding: "2px 10px",
-                          fontSize: 12,
-                          background: "#6b7280",
-                        }}
+                        style={{ ...btnStyle, padding: "2px 10px", fontSize: 12, background: "#6b7280" }}
                         onClick={() => handleCancel(j.id)}
                       >
-                        Cancel
+                        {j.status === "running" ? "Abort" : "Cancel"}
                       </button>
                     )}
                   </span>

@@ -94,11 +94,58 @@ async def _process_one() -> bool:
     return True
 
 
+# How long a running job can go without a heartbeat (updated_at) before being
+# marked as timed_out.  exp_run jobs update updated_at on every node completion.
+_JOB_STALL_TIMEOUT_SECONDS = 600  # 10 minutes — generous for heavy SA runs
+
+
+async def _stall_watchdog() -> None:
+    """Background task: mark stalled running jobs as timed_out.
+
+    A job is considered stalled if its status is 'running' and its updated_at
+    has not changed in _JOB_STALL_TIMEOUT_SECONDS seconds.  For exp_run jobs
+    the updated_at is touched on every node completion, so this catches
+    genuinely frozen jobs (e.g. BeamDecipher on enormous sign inventory).
+    """
+    while True:
+        await asyncio.sleep(60)  # check every minute
+        db = get_db()
+        if db is None or db._conn is None:  # noqa: SLF001
+            continue
+        try:
+            cursor = await db._conn.execute(  # noqa: SLF001
+                """SELECT id, name FROM jobs WHERE status = 'running'
+                   AND (julianday('now') - julianday(updated_at)) * 86400 > ?""",
+                (_JOB_STALL_TIMEOUT_SECONDS,),
+            )
+            stalled = await cursor.fetchall()
+            for row in stalled:
+                jid, jname = row["id"], row["name"]
+                logger.warning(
+                    "Job %s ('%s') has stalled (no heartbeat in %ds) — marking timed_out",
+                    jid, jname, _JOB_STALL_TIMEOUT_SECONDS,
+                )
+                await db._conn.execute(  # noqa: SLF001
+                    "UPDATE jobs SET status = 'failed', updated_at = datetime('now'), "
+                    "params = json_set(params, '$.stall_reason', 'timeout') WHERE id = ?",
+                    (jid,),
+                )
+            if stalled:
+                await db._conn.commit()  # noqa: SLF001
+        except asyncio.CancelledError:
+            raise
+        except Exception as exc:  # noqa: BLE001
+            logger.debug("Stall watchdog error: %s", exc)
+
+
 async def run_engine_loop(*, poll_interval: float = 2.0) -> None:
     """Main engine loop — runs until cancelled."""
     logger.info("Pipeline engine started (poll_interval=%.1fs)", poll_interval)
     # Import pipelines so they register themselves
     _ensure_pipelines_loaded()
+
+    # Start stall watchdog as a sibling task (cancelled when engine is cancelled)
+    watchdog = asyncio.create_task(_stall_watchdog())
 
     try:
         while True:
@@ -106,6 +153,7 @@ async def run_engine_loop(*, poll_interval: float = 2.0) -> None:
             if not did_work:
                 await asyncio.sleep(poll_interval)
     except asyncio.CancelledError:
+        watchdog.cancel()
         logger.info("Pipeline engine stopped")
 
 

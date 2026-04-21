@@ -44,12 +44,28 @@ log = logging.getLogger(__name__)
 
 T = TypeVar("T")
 
-# ── Device detection ──────────────────────────────────────────────────
+# ── Device detection ─────────────────────────────────────────
+
+# ── GPU Platform Roadmap (TODO) ─────────────────────────────────────────────
+# A) NVIDIA CUDA   — SUPPORTED via torch.cuda / cupy  (current)
+# B) AMD ROCm 7.2  — TODO: Linux only. Use `torch` with ROCm wheel:
+#      pip install torch --index-url https://download.pytorch.org/whl/rocm6.2
+#      Then _TORCH_OK + torch.cuda.is_available() works identically.
+# C) Apple M-series MPS — TODO: torch.backends.mps.is_available()
+#      Move batch operations to device="mps" instead of "cuda".
+#      BiggramScorer in decipher.py needs an MPS-aware path.
+# D) Intel Arc (beta) — TODO: torch with Intel Extension for PyTorch (IPEX).
+#      import intel_extension_for_pytorch as ipex
+#      Very limited support; CPU fallback is acceptable.
+# N) CPU — always available (numpy fast path, no GPU required).
+# ───────────────────────────────────────────────────────────────────────────────
 
 _NUMPY_OK = False
 _TORCH_OK = False
 _CUPY_OK = False
 _CUDA_AVAILABLE = False
+_MPS_AVAILABLE  = False   # Apple Silicon (future)
+_ROCM_AVAILABLE = False   # AMD ROCm (future)
 
 try:
     import numpy as _np  # type: ignore[import]
@@ -69,11 +85,17 @@ except ImportError:
 if not _CUDA_AVAILABLE:
     try:
         import cupy as _cp  # type: ignore[import]
-
         _CUPY_OK = True
         _CUDA_AVAILABLE = True
     except ImportError:
         _cp = None  # type: ignore[assignment]
+
+# Apple MPS detection (no-op until MPS code paths are implemented)
+if not _CUDA_AVAILABLE and _TORCH_OK:
+    try:
+        _MPS_AVAILABLE = _torch.backends.mps.is_available()  # type: ignore[union-attr]
+    except Exception:  # noqa: BLE001
+        _MPS_AVAILABLE = False
 
 
 def gpu_info() -> dict[str, Any]:
@@ -83,13 +105,20 @@ def gpu_info() -> dict[str, Any]:
         "torch": _TORCH_OK,
         "cupy": _CUPY_OK,
         "cuda": _CUDA_AVAILABLE,
+        "mps": _MPS_AVAILABLE,
         "cpu_cores": multiprocessing.cpu_count(),
         "tier": 1,
         "tier_name": "multi-process CPU",
+        "platform": "CPU",
     }
     if _NUMPY_OK:
         info["tier"] = 2
         info["tier_name"] = "numpy-vectorised CPU"
+        info["platform"] = "CPU (numpy)"
+    if _MPS_AVAILABLE:
+        info["tier"] = 3
+        info["tier_name"] = "GPU (Apple MPS)"
+        info["platform"] = "Apple MPS"
     if _CUDA_AVAILABLE:
         info["tier"] = 3
         info["tier_name"] = "GPU (CUDA)"

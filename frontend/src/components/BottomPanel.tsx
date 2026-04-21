@@ -239,6 +239,18 @@ function JobsPanel() {
         const elapsed = isRunning ? Math.round((Date.now() - new Date(job.created_at).getTime()) / 1000) : null;
         const result = (job as unknown as Record<string, unknown>).result as Record<string, unknown> | string | null | undefined;
         const errMsg = (job as unknown as Record<string, unknown>).error as string | null | undefined;
+        // Progress tracking for exp_run jobs
+        const nodeCount  = (job.params?.node_count  as number) ?? 0;
+        const nodesDone  = (job.params?.nodes_done  as number) ?? 0;
+        const pct        = isRunning && nodeCount > 0 ? Math.min(99, Math.round((nodesDone / nodeCount) * 100)) : null;
+        const etaSec     = (pct !== null && pct > 5 && elapsed !== null)
+          ? Math.round((elapsed / pct) * (100 - pct)) : null;
+        const isExpRun   = job.pipeline === "exp_run";
+        const device     = job.params?.compute_device as string | undefined;
+        const deviceLabel = job.params?.compute_device_label as string | undefined;
+        // Stall: running exp_run > 5min with 0 nodes completed
+        const isStalled  = isRunning && isExpRun && elapsed !== null && elapsed > 300
+          && nodesDone === 0 && nodeCount > 0;
         return (
           <div key={job.id} style={{ borderBottom: "1px solid #1e293b" }}>
             {/* Clickable header row */}
@@ -246,13 +258,28 @@ function JobsPanel() {
               onClick={() => setExpandedId(isExpanded ? null : job.id)}
               style={{ padding: "8px 10px", cursor: "pointer", userSelect: "none" }}
             >
-              <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 4 }}>
+              <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 3 }}>
                 <span style={{ fontSize: 9, color: "#64748b", flexShrink: 0 }}>{isExpanded ? "▼" : "►"}</span>
-                <span style={{ fontSize: 10, padding: "1px 6px", borderRadius: 3, background: (statusColor[job.status] ?? "#6b7280") + "25", color: statusColor[job.status] ?? "#6b7280", fontWeight: 700 }}>
-                  {job.status}
+                <span style={{ fontSize: 10, padding: "1px 6px", borderRadius: 3,
+                  background: isStalled ? "rgba(220,38,38,0.2)" : (statusColor[job.status] ?? "#6b7280") + "25",
+                  color: isStalled ? "#fca5a5" : (statusColor[job.status] ?? "#6b7280"),
+                  fontWeight: 700 }}>
+                  {isStalled ? "⚠ stalled" : job.status}
                 </span>
+                {device && (
+                  <span style={{ fontSize: 9, padding: "1px 5px", borderRadius: 3,
+                    background: device === "gpu" ? "#1e3a5f" : "#1e293b",
+                    color: device === "gpu" ? "#60a5fa" : "#94a3b8",
+                    fontWeight: 600, flexShrink: 0 }}>
+                    {device === "gpu" ? `⚡ ${deviceLabel ?? "GPU"}` : `⚙ ${deviceLabel ?? "CPU"}`}
+                  </span>
+                )}
                 <span style={{ flex: 1, fontWeight: 600, fontSize: 12, color: "#e2e8f0", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{job.name}</span>
-                {elapsed !== null && <span style={{ fontSize: 10, color: "#64748b", flexShrink: 0 }}>{elapsed}s</span>}
+                {elapsed !== null && (
+                  <span style={{ fontSize: 10, color: "#64748b", flexShrink: 0 }}>
+                    {elapsed}s{etaSec !== null ? ` / ~${etaSec}s left` : ""}
+                  </span>
+                )}
                 {(isRunning || job.status === "pending") && (
                   <button
                     onClick={e => { e.stopPropagation(); handleCancel(job.id); }}
@@ -263,13 +290,27 @@ function JobsPanel() {
                   </button>
                 )}
               </div>
+              {/* Progress bar */}
               {isRunning && (
-                <div style={{ height: 2, background: "#1e293b", borderRadius: 1, overflow: "hidden", marginBottom: 2 }}>
-                  <div style={{ height: "100%", background: "#2563eb", borderRadius: 1, animation: "progress 1.5s linear infinite", width: "40%" }} />
+                <div style={{ height: 3, background: "#1e293b", borderRadius: 1, overflow: "hidden", marginBottom: 3 }}>
+                  {pct !== null
+                    ? <div style={{ height: "100%", width: `${pct}%`, background: isStalled ? "#dc2626" : "#2563eb", borderRadius: 1, transition: "width 0.6s ease" }} />
+                    : <div style={{ height: "100%", background: isStalled ? "#dc2626" : "#2563eb", borderRadius: 1, animation: "progress 1.5s linear infinite", width: "30%" }} />
+                  }
                 </div>
               )}
-              <div style={{ fontSize: 10, color: "#64748b" }}>
-                {job.pipeline} · {fmtDateTimeCompact(job.created_at)}
+              <div style={{ fontSize: 10, color: "#64748b", display: "flex", alignItems: "center", gap: 6 }}>
+                <span>{job.pipeline} · {fmtDateTimeCompact(job.created_at)}</span>
+                {isRunning && isExpRun && nodeCount > 0 && (
+                  <span style={{ color: "#94a3b8", fontWeight: 600 }}>
+                    {nodesDone}/{nodeCount} nodes{pct !== null ? ` (${pct}%)` : ""}
+                  </span>
+                )}
+                {isStalled && (
+                  <span style={{ color: "#f87171", fontWeight: 700 }}>
+                    ⚠ no progress {Math.floor(elapsed! / 60)}min — consider aborting
+                  </span>
+                )}
               </div>
             </div>
 

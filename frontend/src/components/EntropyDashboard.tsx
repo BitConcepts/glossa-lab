@@ -138,8 +138,8 @@ export function EntropyDashboard() {
                 <tr>
                   <th style={{ textAlign: "left", padding: "8px 12px 8px 0", borderBottom: "2px solid #e5e7eb", color: "#374151" }}>Metric</th>
                   {loaded.map((s, i) => (
-                    <th key={i} style={{ textAlign: "right", padding: "8px 12px 8px 0", borderBottom: "2px solid #e5e7eb" }}>
-                      <span style={{ color: COLORS[slots.indexOf(s)] }}>{s.name.slice(0, 20)}</span>
+                    <th key={i} style={{ textAlign: "right", padding: "8px 12px 8px 0", borderBottom: "2px solid #e5e7eb", maxWidth: 200 }}>
+                      <span style={{ color: COLORS[slots.indexOf(s)], display: "block", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }} title={s.name}>{s.name}</span>
                     </th>
                   ))}
                 </tr>

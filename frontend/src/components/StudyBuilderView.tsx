@@ -646,6 +646,8 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
     localStorage.removeItem("glossa_study_draft");
     window.dispatchEvent(new CustomEvent("glossa:dirty", { detail: { builder: "study", dirty: false } }));
     setActiveStudy(s); setSelectedNode(null); setSummary(null);
+    // Dispatch context for Glossa AI auto-inference
+    window.dispatchEvent(new CustomEvent("glossa:context", { detail: { type: "study", id: s.id, name: s.name } }));
     // Build nodes — if a run is currently active for this study, restore its node statuses
     const currentRun = activeRunsRef.current[s.id];
     setNodes((s.graph.nodes ?? []).map(n => ({

@@ -261,17 +261,7 @@ export function ReportsView() {
   const allKinds = Array.from(new Set(reports.map((r) => r.kind)));
   const allExps  = Array.from(new Set(reports.map((r) => r.experiment_id).filter(Boolean)));
 
-  const toggleKind = (k: string) => setKindFilter((prev) => {
-    const s = new Set(prev); s.has(k) ? s.delete(k) : s.add(k); return s;
-  });
-  const toggleExp = (e: string) => setExpFilter((prev) => {
-    const s = new Set(prev); s.has(e) ? s.delete(e) : s.add(e); return s;
-  });
-  const toggleStudy = (sid: string) => setStudyFilter((prev) => {
-    const s = new Set(prev); s.has(sid) ? s.delete(sid) : s.add(sid); return s;
-  });
-
-  // Build study->experiments mapping from study graph nodes
+  // Build study->experiments mapping
   const studyExpMap: Record<string, Set<string>> = {};
   for (const st of studies) {
     const exps = new Set((st.graph?.nodes ?? []).map((n: {ref_id: string}) => n.ref_id).filter(Boolean));
@@ -627,70 +617,85 @@ export function ReportsView() {
         </div>
       )}
 
-      {/* Search */}
+      {/* Search + Filter row */}
       <div style={{ display: "flex", gap: 8, marginBottom: "0.75rem", alignItems: "center", flexWrap: "wrap" }}>
+        {/* Search */}
         <input
           placeholder="Search by name…"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          style={{ padding: "4px 10px", border: "1px solid #d1d5db", borderRadius: 4, fontSize: 13, width: 240 }}
+          style={{ padding: "5px 10px", border: "1px solid #d1d5db", borderRadius: 5, fontSize: 12, width: 220 }}
         />
-        <label style={{ fontSize: 12, color: "#6b7280", display: "flex", alignItems: "center", gap: 5, cursor: "pointer" }}>
+
+        {/* Type multi-select */}
+        {allKinds.length > 0 && (
+          <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+            <span style={{ fontSize: 11, color: "#9ca3af", whiteSpace: "nowrap" }}>Type:</span>
+            <select multiple
+              value={Array.from(kindFilter)}
+              onChange={e => setKindFilter(new Set(Array.from(e.target.selectedOptions).map(o => o.value)))}
+              style={{ fontSize: 11, padding: "2px", border: "1px solid #d1d5db", borderRadius: 4,
+                height: Math.min(4, allKinds.length + 1) * 22, minWidth: 120, maxWidth: 160 }}
+              title="Hold Ctrl/Cmd to select multiple">
+              {allKinds.map(k => (
+                <option key={k} value={k} style={{ padding: "2px 6px", color: kindColor[k] ?? "#374151", fontWeight: kindFilter.has(k) ? 700 : 400 }}>
+                  {k.replace("_", " ")}
+                </option>
+              ))}
+            </select>
+            {kindFilter.size > 0 && <button onClick={() => setKindFilter(new Set())} style={{ fontSize: 10, border: "none", background: "none", cursor: "pointer", color: "#6b7280" }}>×</button>}
+          </div>
+        )}
+
+        {/* Experiment autocomplete-select */}
+        {allExps.length > 0 && (
+          <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+            <span style={{ fontSize: 11, color: "#9ca3af", whiteSpace: "nowrap" }}>Exp:</span>
+            <select multiple
+              value={Array.from(expFilter)}
+              onChange={e => setExpFilter(new Set(Array.from(e.target.selectedOptions).map(o => o.value)))}
+              style={{ fontSize: 11, padding: "2px", border: "1px solid #d1d5db", borderRadius: 4,
+                height: Math.min(5, allExps.length + 1) * 22, minWidth: 160, maxWidth: 240 }}
+              title="Hold Ctrl/Cmd to select multiple">
+              {allExps.map(exp => (
+                <option key={exp} value={exp} style={{ padding: "2px 6px", fontWeight: expFilter.has(exp) ? 700 : 400 }}>
+                  {exp.replace(/_/g, " ")}
+                </option>
+              ))}
+            </select>
+            {expFilter.size > 0 && <button onClick={() => setExpFilter(new Set())} style={{ fontSize: 10, border: "none", background: "none", cursor: "pointer", color: "#6b7280" }}>×</button>}
+          </div>
+        )}
+
+        {/* Study select */}
+        {studies.length > 0 && (
+          <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+            <span style={{ fontSize: 11, color: "#9ca3af", whiteSpace: "nowrap" }}>Study:</span>
+            <select multiple
+              value={Array.from(studyFilter)}
+              onChange={e => setStudyFilter(new Set(Array.from(e.target.selectedOptions).map(o => o.value)))}
+              style={{ fontSize: 11, padding: "2px", border: "1px solid #d1d5db", borderRadius: 4,
+                height: Math.min(5, studies.length + 1) * 22, minWidth: 140, maxWidth: 200 }}
+              title="Hold Ctrl/Cmd to select multiple">
+              {studies.map(st => (
+                <option key={st.id} value={st.id} style={{ padding: "2px 6px", fontWeight: studyFilter.has(st.id) ? 700 : 400 }}>
+                  {st.name}
+                </option>
+              ))}
+            </select>
+            {studyFilter.size > 0 && <button onClick={() => setStudyFilter(new Set())} style={{ fontSize: 10, border: "none", background: "none", cursor: "pointer", color: "#6b7280" }}>×</button>}
+          </div>
+        )}
+
+        {/* Group + count */}
+        <label style={{ fontSize: 11, color: "#6b7280", display: "flex", alignItems: "center", gap: 4, cursor: "pointer", marginLeft: 4 }}>
           <input type="checkbox" checked={groupByExp} onChange={(e) => setGroupByExp(e.target.checked)} />
-          Group by experiment
+          Group by exp
         </label>
-        <span style={{ fontSize: 12, color: "#9ca3af", marginLeft: "auto" }}>
-          {sorted.length} / {reports.length} reports
+        <span style={{ fontSize: 11, color: "#9ca3af", marginLeft: "auto", whiteSpace: "nowrap" }}>
+          {sorted.length} / {reports.length}
         </span>
       </div>
-
-      {/* Kind filter */}
-      {allKinds.length > 0 && (
-        <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginBottom: "0.5rem", alignItems: "center" }}>
-          <span style={{ fontSize: 11, color: "#9ca3af", marginRight: 2 }}>Type:</span>
-          <button onClick={() => setKindFilter(new Set())} style={pillStyle(kindFilter.size === 0, "#1e3a5f")}>
-            All
-          </button>
-          {allKinds.map((k) => (
-            <button key={k} onClick={() => toggleKind(k)}
-              style={pillStyle(kindFilter.has(k), kindColor[k] ?? "#1e3a5f")}>
-              {k.replace("_", " ")}
-            </button>
-          ))}
-        </div>
-      )}
-
-      {/* Experiment filter */}
-      {allExps.length > 0 && (
-        <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginBottom: "0.5rem", alignItems: "center" }}>
-          <span style={{ fontSize: 11, color: "#9ca3af", marginRight: 2 }}>Experiment:</span>
-          <button onClick={() => setExpFilter(new Set())} style={pillStyle(expFilter.size === 0, "#1e3a5f")}>
-            All
-          </button>
-          {allExps.map((e) => (
-            <button key={e} onClick={() => toggleExp(e)}
-              style={pillStyle(expFilter.has(e), "#1e3a5f")}>
-              {e.replace(/_/g, " ")}
-            </button>
-          ))}
-        </div>
-      )}
-
-      {/* Study filter */}
-      {studies.length > 0 && (
-        <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginBottom: "1rem", alignItems: "center" }}>
-          <span style={{ fontSize: 11, color: "#9ca3af", marginRight: 2 }}>Study:</span>
-          <button onClick={() => setStudyFilter(new Set())} style={pillStyle(studyFilter.size === 0, "#7c3aed")}>
-            All
-          </button>
-          {studies.map((st) => (
-            <button key={st.id} onClick={() => toggleStudy(st.id)}
-              style={pillStyle(studyFilter.has(st.id), "#7c3aed")}>
-              {st.name}
-            </button>
-          ))}
-        </div>
-      )}
 
       {/* Popup-blocked warning */}
       {popupBlocked && (
@@ -872,14 +877,6 @@ export function ReportsView() {
     </div>
   );
 }
-
-const pillStyle = (active: boolean, color: string): React.CSSProperties => ({
-  padding: "2px 10px", border: `1px solid ${active ? color : "#d1d5db"}`,
-  borderRadius: 10, cursor: "pointer", fontSize: 11,
-  fontWeight: active ? 700 : 400,
-  background: active ? color : "#fff",
-  color: active ? "#fff" : "#374151",
-});
 
 const thStyle: React.CSSProperties = {
   textAlign: "left", padding: "6px 14px 6px 0",

@@ -250,6 +250,9 @@ def _builtin_lm(inputs: dict, params: dict) -> dict:
         elif lang in ("dravidian", "tamil"):
             from glossa_lab.data.dravidian import get_corpus_symbols  # noqa: PLC0415
             syms = get_corpus_symbols(); inscs = None
+        elif lang in ("sanskrit", "vedic"):
+            from glossa_lab.data.sanskrit import get_corpus_symbols  # noqa: PLC0415
+            syms = get_corpus_symbols(); inscs = None
         elif lang in ("coptic",):
             from glossa_lab.data.meroitic import get_coptic_symbols  # noqa: PLC0415
             syms = get_coptic_symbols(); inscs = None
@@ -263,7 +266,7 @@ def _builtin_lm(inputs: dict, params: dict) -> dict:
             from glossa_lab.data.proto_sinaitic import get_corpus_symbols as _ps  # noqa: PLC0415
             syms = _ps(); inscs = None
         else:
-            return {"error": f"Unknown language '{lang}'. Valid: hebrew, geez, phoenician, sumerian, dravidian, coptic, linear_b, meroitic, proto_sinaitic"}
+            return {"error": f"Unknown language '{lang}'. Valid: hebrew, geez, phoenician, sumerian, dravidian, sanskrit, coptic, linear_b, meroitic, proto_sinaitic"}
     except ImportError as exc:
         return {"error": str(exc)}
     from glossa_lab.pipelines.decipher import LanguageModel  # noqa: PLC0415
@@ -297,9 +300,12 @@ def _builtin_corpus(inputs: dict, params: dict) -> dict:
         elif name in ("nw_semitic", "fuls", "fuls_nw_semitic", "ugaritic"):
             from glossa_lab.data.nw_semitic import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
             flat = get_corpus_symbols(); seqs = get_corpus_inscriptions()
-        elif name == "meroitic":
+        elif name in ("meroitic",):
             from glossa_lab.data.meroitic import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
             flat = get_corpus_symbols(); seqs = get_corpus_inscriptions()
+        elif name in ("sanskrit", "vedic"):
+            from glossa_lab.data.sanskrit import get_corpus_symbols  # noqa: PLC0415
+            flat = get_corpus_symbols(); seqs = [[s] for s in flat]
         elif name in ("proto_sinaitic", "proto-sinaitic"):
             from glossa_lab.data.proto_sinaitic import get_corpus_symbols  # noqa: PLC0415
             flat = get_corpus_symbols()
@@ -312,7 +318,7 @@ def _builtin_corpus(inputs: dict, params: dict) -> dict:
             from glossa_lab.data.linear_b_language import get_corpus_symbols  # noqa: PLC0415
             flat = get_corpus_symbols(); seqs = [[s] for s in flat]
         else:
-            return {"error": f"Unknown corpus '{name}'. Valid: indus, hebrew, geez, phoenician, nw_semitic/ugaritic, meroitic, proto_sinaitic, linear_b"}
+            return {"error": f"Unknown corpus '{name}'. Valid: indus, hebrew, geez, phoenician, nw_semitic/ugaritic, meroitic, proto_sinaitic, linear_b, sanskrit"}
     except ImportError as exc:
         return {"error": str(exc)}
     from collections import Counter  # noqa: PLC0415

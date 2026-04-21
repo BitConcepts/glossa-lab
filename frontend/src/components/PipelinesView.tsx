@@ -4,11 +4,14 @@
 
 import { useEffect, useState } from "react";
 import {
+  createJob,
   deletePipeline,
   duplicatePipeline,
   getPipelineCatalog,
   importPipeline,
+  listTexts,
   type CatalogPipeline,
+  type TextResponse,
 } from "../api";
 
 interface Pipeline {
@@ -256,6 +259,7 @@ export function PipelinesView() {
   const [filter, setFilter] = useState<string>("all");
   const [selected, setSelected] = useState<string | null>(null);
   const [pipelines, setPipelines] = useState<Pipeline[]>(PIPELINES_FALLBACK);
+  const [corpora, setCorpora] = useState<TextResponse[]>([]);
   const [importPath, setImportPath] = useState("");
   const [importing, setImporting] = useState(false);
   const [importMsg, setImportMsg] = useState<{ ok: boolean; text: string } | null>(null);
@@ -290,7 +294,7 @@ export function PipelinesView() {
       .catch(() => {});
   };
 
-  useEffect(() => { load(); }, []);
+  useEffect(() => { load(); listTexts().then(setCorpora).catch(() => {}); }, []);
 
   const groups = ["all", ...Array.from(new Set(pipelines.map((p) => p.group)))];
   const visible = filter === "all" ? pipelines : pipelines.filter((p) => p.group === filter);
@@ -381,6 +385,7 @@ export function PipelinesView() {
             onToggle={() => setSelected(selected === p.id ? null : p.id)}
             onDeleted={handleDeleted}
             onDuplicated={load}
+            corpora={corpora}
           />
         ))}
       </div>
@@ -402,18 +407,47 @@ function PipelineCard({
   onToggle,
   onDeleted,
   onDuplicated,
+  corpora,
 }: {
   pipeline: Pipeline;
   expanded: boolean;
   onToggle: () => void;
   onDeleted: (id: string) => void;
   onDuplicated: () => void;
+  corpora: TextResponse[];
 }) {
   const groupColor = GROUP_COLORS[p.group] ?? "#6b7280";
   const [duplicating, setDuplicating] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [confirmDel, setConfirmDel] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // Quick Run state
+  const [showRun, setShowRun] = useState(false);
+  const [runCorpus, setRunCorpus] = useState("");
+  const [runTarget, setRunTarget] = useState(""); // for LM-required pipelines
+  const [runName, setRunName] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [submitMsg, setSubmitMsg] = useState<{ ok: boolean; text: string } | null>(null);
+
+  const handleQuickRun = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!runCorpus && !runName.trim()) { setSubmitMsg({ ok: false, text: "Select a corpus or enter a job name" }); return; }
+    setSubmitting(true); setSubmitMsg(null);
+    try {
+      const params: Record<string, unknown> = { ...JSON.parse(p.defaultParams || "{}") };
+      if (runCorpus) params["text_id"] = runCorpus;
+      if (runTarget) params["target_text_id"] = runTarget;
+      const job = await createJob({
+        name: runName.trim() || `${p.label} — ${corpora.find(c => c.id === runCorpus)?.name ?? (runCorpus || "quick run")}`,
+        pipeline: p.id,
+        params,
+      });
+      setSubmitMsg({ ok: true, text: `Job submitted: ${job.id.slice(0, 8)}… — check Jobs panel` });
+      window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "study", running: true } }));
+    } catch (err) {
+      setSubmitMsg({ ok: false, text: err instanceof Error ? err.message : "Submit failed" });
+    } finally { setSubmitting(false); }
+  };
 
   const handleDuplicate = async (ev: React.MouseEvent) => {
     ev.stopPropagation();
@@ -511,6 +545,62 @@ function PipelineCard({
           {p.module && (
             <div style={{ fontSize: 11, color: "#9ca3af", marginBottom: 8 }}>Module: <code>{p.module}</code></div>
           )}
+
+          {/* Quick Run form */}
+          <div style={{ marginTop: 10, paddingTop: 10, borderTop: `1px solid ${groupColor}20` }}>
+            <button
+              onClick={e => { e.stopPropagation(); setShowRun(r => !r); setSubmitMsg(null); }}
+              style={{ padding: "4px 12px", border: "none", borderRadius: 5, cursor: "pointer",
+                background: showRun ? "#f3f4f6" : groupColor, color: showRun ? "#374151" : "#fff",
+                fontSize: 12, fontWeight: 600 }}>
+              {showRun ? "× Cancel" : "▶ Quick Run"}
+            </button>
+            {showRun && (
+              <div style={{ marginTop: 8, display: "flex", flexDirection: "column", gap: 6 }} onClick={e => e.stopPropagation()}>
+                <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                  <div style={{ flex: 2, minWidth: 160 }}>
+                    <div style={metaLabel}>Corpus (text_id)</div>
+                    <select value={runCorpus} onChange={e => setRunCorpus(e.target.value)}
+                      style={{ width: "100%", padding: "4px 8px", border: "1px solid #d1d5db", borderRadius: 4, fontSize: 12 }}>
+                      <option value="">— select corpus —</option>
+                      {corpora.map(c => <option key={c.id} value={c.id}>{c.name} ({c.corpus_type}, {c.content.length.toLocaleString()} tokens)</option>)}
+                    </select>
+                  </div>
+                  {p.needsLM && (
+                    <div style={{ flex: 2, minWidth: 160 }}>
+                      <div style={metaLabel}>Target corpus (target_text_id)</div>
+                      <select value={runTarget} onChange={e => setRunTarget(e.target.value)}
+                        style={{ width: "100%", padding: "4px 8px", border: "1px solid #d1d5db", borderRadius: 4, fontSize: 12 }}>
+                        <option value="">— select target LM corpus —</option>
+                        {corpora.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+                      </select>
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <div style={metaLabel}>Job name (optional)</div>
+                  <input value={runName} onChange={e => setRunName(e.target.value)}
+                    placeholder={`${p.label} run…`}
+                    style={{ width: "100%", padding: "4px 8px", border: "1px solid #d1d5db", borderRadius: 4, fontSize: 12, boxSizing: "border-box" }} />
+                </div>
+                <button
+                  onClick={e => void handleQuickRun(e)}
+                  disabled={submitting || (!runCorpus && !runName.trim())}
+                  style={{ alignSelf: "flex-start", padding: "5px 16px", border: "none", borderRadius: 5,
+                    background: submitting ? "#6b7280" : groupColor, color: "#fff", cursor: submitting ? "not-allowed" : "pointer",
+                    fontSize: 12, fontWeight: 700 }}>
+                  {submitting ? "⏳ Submitting…" : "▶ Submit Job"}
+                </button>
+                {submitMsg && (
+                  <div style={{ fontSize: 11, padding: "4px 8px", borderRadius: 4,
+                    background: submitMsg.ok ? "#f0fdf4" : "#fef2f2",
+                    color: submitMsg.ok ? "#16a34a" : "#b91c1c" }}>
+                    {submitMsg.text}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>

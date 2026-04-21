@@ -25,14 +25,8 @@ import {
   getProviderCatalog,
   getResearchContext,
   isLocalKeySet,
-  listExperiments,
   listOllamaInstalled,
-  listStudies,
-  listTexts,
   type ChatMessage,
-  type ExperimentMeta,
-  type StudyResponse,
-  type TextResponse,
 } from "../api";
 import { useAIChat } from "../hooks/useAIChat";
 import { useToast } from "../hooks/useToast";
@@ -416,13 +410,10 @@ export function AIChatWindow() {
   const [installedModels, setInstalledModels] = useState<OllamaInstalledModel[]>([]);
   const [providerCatalog, setProviderCatalog] = useState<CatalogProvider[]>([]);
 
-  // Context — manual selector + auto-inference from glossa:context events
+  // Context — auto-inferred from active view via glossa:context events
   const [contextType, setContextType] = useState<"" | "corpus" | "experiment" | "study" | "research">("");
   const [contextId, setContextId] = useState("");
-  const [autoContextLabel, setAutoContextLabel] = useState<string | null>(null); // set by glossa:context events
-  const [corpora, setCorpora] = useState<TextResponse[]>([]);
-  const [experiments, setExperiments] = useState<ExperimentMeta[]>([]);
-  const [studies, setStudies] = useState<StudyResponse[]>([]);
+  const [autoContextLabel, setAutoContextLabel] = useState<string | null>(null);
 
   // Auto-context: listen for glossa:context events from active views
   useEffect(() => {
@@ -459,9 +450,6 @@ export function AIChatWindow() {
   const ctxCritical = ctxPct >= 90;
 
   useEffect(() => {
-    listTexts().then(setCorpora).catch(() => {});
-    listExperiments().then(setExperiments).catch(() => {});
-    listStudies().then(setStudies).catch(() => {});
     listOllamaInstalled().then(r => setInstalledModels(r.models)).catch(() => {});
     getProviderCatalog().then(setProviderCatalog).catch(() => {});
   }, []);
@@ -665,12 +653,6 @@ export function AIChatWindow() {
     zIndex: 8500,
   };
 
-  const ctxLabel = () => {
-    if (contextType === "research") return "Research";
-    if (!contextType || !contextId) return null;
-    return { corpus: corpora.find(c => c.id === contextId)?.name, experiment: experiments.find(e => e.id === contextId)?.name, study: studies.find(s => s.id === contextId)?.name }[contextType];
-  };
-
   return (
     <div ref={winRef} style={{ ...winStyle, background: "#fff", borderRadius: 10, boxShadow: "0 20px 60px rgba(0,0,0,0.22),0 0 0 1px rgba(0,0,0,0.08)", display: "flex", flexDirection: "column", overflow: "hidden" }}>
 
@@ -714,47 +696,36 @@ export function AIChatWindow() {
         <button onClick={closeChat} style={{ ...hdrBtn, fontSize: 16 }}>×</button>
       </div>
 
-      {/* Context selector */}
-      <div style={{ padding: "5px 10px", borderBottom: "1px solid #f3f4f6", background: "#fafafa", display: "flex", gap: 4, flexWrap: "wrap", alignItems: "center", flexShrink: 0 }}>
-        {/* Auto-context pill — shown when a view is active */}
-        {autoContextLabel && (
+      {/* Context bar: auto-inferred from active view. Research is the only manual override. */}
+      <div style={{ padding: "5px 10px", borderBottom: "1px solid #f3f4f6", background: "#fafafa", display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center", flexShrink: 0 }}>
+        {autoContextLabel ? (
           <span style={{ fontSize: 10, padding: "2px 8px", borderRadius: 10,
             background: "linear-gradient(90deg,#dbeafe,#ede9fe)", color: "#1e40af",
             fontWeight: 700, border: "1px solid #bfdbfe", display: "flex", alignItems: "center", gap: 4 }}
-            title={`Auto-context: ${contextType} — ${autoContextLabel}. Click × to reset to Global.`}>
-            ⚡ {contextType}: <span style={{ maxWidth: 140, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{autoContextLabel}</span>
+            title={`Active context: ${contextType} — ${autoContextLabel}. Opens when you navigate to a view.`}>
+            ⚡ {contextType}: <span style={{ maxWidth: 160, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{autoContextLabel}</span>
             <button onClick={() => { setContextType(""); setContextId(""); setAutoContextLabel(null); }}
-              style={{ border: "none", background: "none", cursor: "pointer", fontSize: 11, color: "#6b7280", padding: 0, lineHeight: 1 }}>×</button>
+              style={{ border: "none", background: "none", cursor: "pointer", fontSize: 11, color: "#6b7280", padding: 0, lineHeight: 1 }}
+              title="Clear to Global">×</button>
+          </span>
+        ) : (
+          <span style={{ fontSize: 10, color: "#9ca3af", fontStyle: "italic" }}
+            title="Context auto-infers when you open a corpus, experiment, or study">
+            🌐 Global context
           </span>
         )}
-        {!autoContextLabel && (
-          <>
-            <span style={{ fontSize: 10, color: "#9ca3af", flexShrink: 0 }}>Context:</span>
-            {(["", "corpus", "experiment", "study"] as const).map(ct => (
-              <button key={ct || "none"} onClick={() => { setContextType(ct); setContextId(""); setResearchSummary(null); setAutoContextLabel(null); }}
-                style={{ padding: "2px 7px", borderRadius: 4, border: "1px solid", cursor: "pointer", fontSize: 10,
-                  background: contextType === ct ? "#1e3a5f" : "#fff",
-                  borderColor: contextType === ct ? "#1e3a5f" : "#e5e7eb",
-                  color: contextType === ct ? "#fff" : "#6b7280" }}>
-                {ct || "Global"}
-              </button>
-            ))}
-            <button onClick={loadResearch}
-              style={{ padding: "2px 7px", borderRadius: 4, border: "1px solid", cursor: "pointer", fontSize: 10,
-                background: contextType === "research" ? "#7c3aed" : "#fff",
-                borderColor: contextType === "research" ? "#7c3aed" : "#e5e7eb",
-                color: contextType === "research" ? "#fff" : "#6b7280" }}>
-              🔬 Research
-            </button>
-          </>
-        )}
-        {contextType === "corpus"     && !autoContextLabel && <select value={contextId} onChange={e => setContextId(e.target.value)} style={selSt}><option value="">— corpus —</option>{corpora.map(c => <option key={c.id} value={c.id}>{c.name.slice(0, 24)}</option>)}</select>}
-        {contextType === "experiment" && !autoContextLabel && <select value={contextId} onChange={e => setContextId(e.target.value)} style={selSt}><option value="">— experiment —</option>{experiments.map(e => <option key={e.id} value={e.id}>{e.name.slice(0, 24)}</option>)}</select>}
-        {contextType === "study"      && !autoContextLabel && <select value={contextId} onChange={e => setContextId(e.target.value)} style={selSt}><option value="">— study —</option>{studies.map(s => <option key={s.id} value={s.id}>{s.name.slice(0, 24)}</option>)}</select>}
-        {ctxLabel() && contextType !== "research" && !autoContextLabel && <span style={{ fontSize: 10, padding: "1px 6px", background: "#eff6ff", color: "#2563eb", borderRadius: 4, fontWeight: 600 }}>📎 {ctxLabel()?.slice(0, 20)}</span>}
+        {/* Research is a special manual context that loads the LEDGER summary */}
+        <button onClick={loadResearch}
+          style={{ marginLeft: "auto", padding: "2px 8px", borderRadius: 4, border: "1px solid", cursor: "pointer", fontSize: 10,
+            background: contextType === "research" ? "#7c3aed" : "#fff",
+            borderColor: contextType === "research" ? "#7c3aed" : "#e5e7eb",
+            color: contextType === "research" ? "#fff" : "#6b7280" }}
+          title="Load full research context from LEDGER">
+          🔬 Research
+        </button>
         {contextType === "research" && researchSummary && (
           <span style={{ fontSize: 9, padding: "2px 6px", background: "#f3e8ff", color: "#7c3aed", borderRadius: 4, fontWeight: 600 }} title={researchSummary.next_steps[0] ?? ""}>
-            🔬 {researchSummary.n_assigned_signs} signs · {researchSummary.token_coverage_pct}% coverage
+            {researchSummary.n_assigned_signs} signs · {researchSummary.token_coverage_pct}% coverage
           </span>
         )}
       </div>
@@ -946,9 +917,6 @@ export function ChatInline() {
   const [contextType, setContextType] = useState<"" | "corpus" | "experiment" | "study">("");
   const [contextId, setContextId] = useState("");
   const [autoContextLabel, setAutoContextLabel] = useState<string | null>(null);
-  const [corpora, setCorpora] = useState<TextResponse[]>([]);
-  const [experiments, setExperiments] = useState<ExperimentMeta[]>([]);
-  const [studies, setStudies] = useState<StudyResponse[]>([]);
   const bottomRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const textareaInlineRef = useRef<HTMLTextAreaElement>(null);
@@ -975,12 +943,6 @@ export function ChatInline() {
     };
     window.addEventListener("glossa:context", handler);
     return () => window.removeEventListener("glossa:context", handler);
-  }, []);
-
-  useEffect(() => {
-    listTexts().then(setCorpora).catch(() => {});
-    listExperiments().then(setExperiments).catch(() => {});
-    listStudies().then(setStudies).catch(() => {});
   }, []);
   useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: "smooth" }); }, [messages]);
 
@@ -1067,33 +1029,22 @@ export function ChatInline() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", background: "#0f172a" }}>
-      {/* Context + controls bar */}
+      {/* Context bar: auto-inferred only — no manual selection */}
       <div style={{ display: "flex", gap: 4, padding: "3px 8px", borderBottom: "1px solid #1e293b", alignItems: "center", flexShrink: 0, flexWrap: "wrap" }}>
-        {/* Auto-context pill */}
         {autoContextLabel ? (
           <span style={{ fontSize: 9, padding: "1px 6px", borderRadius: 8,
             background: "linear-gradient(90deg,#1e3a5f,#312e81)", color: "#93c5fd",
             fontWeight: 700, border: "1px solid #3730a3", display: "flex", alignItems: "center", gap: 3 }}
-            title={`Auto-context: ${contextType} — ${autoContextLabel}`}>
+            title={`Active context: ${contextType} — ${autoContextLabel}. Click × for Global.`}>
             ⚡ {contextType}: <span style={{ maxWidth: 100, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{autoContextLabel}</span>
             <button onClick={() => { setContextType(""); setContextId(""); setAutoContextLabel(null); }}
               style={{ border: "none", background: "none", cursor: "pointer", fontSize: 10, color: "#64748b", padding: 0, lineHeight: 1 }}>×</button>
           </span>
         ) : (
-          <>
-            <span style={{ color: "#94a3b8", fontSize: 9, flexShrink: 0 }}>Ctx:</span>
-            {(["", "corpus", "experiment", "study"] as const).map(ct => (
-              <button key={ct || "g"} onClick={() => { setContextType(ct); setContextId(""); setAutoContextLabel(null); }}
-                style={{ padding: "1px 5px", border: "none", borderRadius: 3, cursor: "pointer", fontSize: 9,
-                  background: contextType === ct ? "#2563eb" : "#1e293b",
-                  color: contextType === ct ? "#fff" : "#64748b" }}>
-                {ct || "Global"}
-              </button>
-            ))}
-            {contextType === "corpus"     && <select value={contextId} onChange={e => setContextId(e.target.value)} style={inSel}><option value="">corpus...</option>{corpora.map(c => <option key={c.id} value={c.id}>{c.name.slice(0,18)}</option>)}</select>}
-            {contextType === "experiment" && <select value={contextId} onChange={e => setContextId(e.target.value)} style={inSel}><option value="">exp...</option>{experiments.map(x => <option key={x.id} value={x.id}>{x.name.slice(0,18)}</option>)}</select>}
-            {contextType === "study"      && <select value={contextId} onChange={e => setContextId(e.target.value)} style={inSel}><option value="">study...</option>{studies.map(s => <option key={s.id} value={s.id}>{s.name.slice(0,18)}</option>)}</select>}
-          </>
+          <span style={{ fontSize: 9, color: "#475569", fontStyle: "italic" }}
+            title="Context auto-infers when you open a corpus, experiment, or study">
+            🌐 Global
+          </span>
         )}
         <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 3 }}>
           <div style={{ width: 32, height: 3, background: "#1e293b", borderRadius: 2 }}>
@@ -1402,8 +1353,6 @@ function useCallback_WIDTH(initial: number, cb?: (w: number) => void) {
 
 // ── Style constants ───────────────────────────────────────────────────────────
 
-const selSt:  React.CSSProperties = { padding: "2px 5px", border: "1px solid #e5e7eb", borderRadius: 4, fontSize: 10, background: "#fff", maxWidth: 140 };
-const inSel:  React.CSSProperties = { fontSize: 9, background: "#1e293b", color: "#e2e8f0", border: "none", borderRadius: 3 };
 const attBtn: React.CSSProperties = { padding: "2px 8px", border: "1px solid #e5e7eb", borderRadius: 4, background: "#f9fafb", cursor: "pointer", fontSize: 10, color: "#6b7280" };
 const botBtn: React.CSSProperties = { fontSize: 10, color: "#9ca3af", background: "none", border: "1px solid #e5e7eb", borderRadius: 4, cursor: "pointer", padding: "2px 8px" };
 const hdrBtn: React.CSSProperties = { border: "none", background: "none", color: "rgba(255,255,255,0.65)", cursor: "pointer", fontSize: 13, padding: "0 3px" };

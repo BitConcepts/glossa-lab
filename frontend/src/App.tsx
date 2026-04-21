@@ -53,7 +53,7 @@ const NAV_SECTIONS: NavSection[] = [
     title: "Analysis",
     items: [
       { id: "entropy",    label: "Entropy",     icon: "📊" },
-      { id: "signs",      label: "Signs",       icon: "𔰀" },
+      { id: "signs",      label: "Signs",       icon: "🔣" },
       { id: "timeline",   label: "Timeline",    icon: "📅" },
       { id: "indus-data", label: "Indus Data",  icon: "📋" },
     ],

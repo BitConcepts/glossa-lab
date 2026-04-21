@@ -470,10 +470,10 @@ CATALOGUE: list[dict[str, Any]] = [
         "language_family": "Dravidian",
         "script_type": "syllabary",
         "period": "300 BCE – present",
-        "tokens_approx": 4065,
+        "tokens_approx": 18500,
         "source_url": "https://www.tamildigitallibrary.in/",
         "license": "Public domain",
-        "description": "Classical Tamil in Dravidian script. Primary LM for Dravidian hypothesis testing on the Indus Script (Tier 5).",
+        "description": "Classical Tamil in Romanized transliteration: Tirukkural (∼300 BCE), Sangam poetry (Akananuru, Purananuru), and Dravidian phonotactic text. Expanded Tier 5 LM for Indus Script Dravidian hypothesis testing.",
         "local_module": "dravidian",
         "is_undeciphered": False,
     },
@@ -525,7 +525,11 @@ CATALOGUE: list[dict[str, Any]] = [
 async def seed_corpus_catalogue() -> int:
     """Seed the corpus_catalogue table from the CATALOGUE list.
 
-    Upserts all entries (idempotent on repeated startup).
+    Upserts all entries (idempotent on repeated startup).  Also runs an
+    explicit UPDATE pass for any rows where tokens_approx = 0 (can happen
+    when the table was first seeded before token counts were added to the
+    CATALOGUE dict, since SQLite DEFAULT 0 fills the column on the first
+    INSERT if the column wasn't present in older code).
     Returns the number of entries processed.
     """
     from glossa_lab.database import get_db  # noqa: PLC0415
@@ -534,6 +538,7 @@ async def seed_corpus_catalogue() -> int:
         logger.warning("corpus_catalogue_seeder: database not available, skipping seed")
         return 0
 
+    assert db._conn  # noqa: SLF001
     count = 0
     for entry in CATALOGUE:
         try:
@@ -541,6 +546,31 @@ async def seed_corpus_catalogue() -> int:
             count += 1
         except Exception as exc:  # noqa: BLE001
             logger.warning("Failed to seed catalogue entry '%s': %s", entry.get("id"), exc)
+
+    # Explicit fix-up: if any rows still have tokens_approx = 0 (legacy DB),
+    # force-update them from the CATALOGUE dict values.
+    try:
+        fixed = 0
+        for entry in CATALOGUE:
+            tokens = entry.get("tokens_approx", 0)
+            if tokens > 0:
+                await db._conn.execute(  # noqa: SLF001
+                    "UPDATE corpus_catalogue SET tokens_approx = ? WHERE id = ? AND tokens_approx = 0",
+                    (tokens, entry["id"]),
+                )
+                # rowcount not easily accessible on aiosqlite; just commit all
+        await db._conn.commit()
+        # Also ensure description and source_url are fresh (may have improved)
+        for entry in CATALOGUE:
+            await db._conn.execute(
+                "UPDATE corpus_catalogue SET description = ?, source_url = ?, tokens_approx = ? WHERE id = ?",
+                (entry.get("description", ""), entry.get("source_url", ""),
+                 entry.get("tokens_approx", 0), entry["id"]),
+            )
+        await db._conn.commit()
+        logger.debug("Corpus catalogue token fixup complete")
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Corpus catalogue token fixup failed: %s", exc)
 
     logger.info("Corpus catalogue seeded: %d entries", count)
     return count

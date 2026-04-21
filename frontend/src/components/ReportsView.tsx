@@ -370,9 +370,10 @@ export function ReportsView() {
           >
             {composeMode ? "✕ Cancel Compose" : "📊 Compose"}
           </button>
-        <button onClick={load} style={{ ...btnStyle, padding: "4px 12px", fontSize: 12, background: "#6b7280" }}>
-          ⟳ Refresh
-        </button>
+          <button onClick={load} style={{ ...btnStyle, padding: "4px 12px", fontSize: 12, background: "#6b7280" }}>
+            ⟳ Refresh
+          </button>
+        </div>
       </div>
 
       {/* Area tabs */}
@@ -410,27 +411,42 @@ export function ReportsView() {
             <button onClick={() => void loadUserTemplates()} style={{ ...btnStyle, background: "#6b7280", padding: "4px 12px", fontSize: 12 }}>⟳</button>
           </div>
           {showNewTmpl && (
-            <div style={{ border: "1px solid #a78bfa", borderRadius: 8, padding: 16, marginBottom: 16, background: "#faf5ff" }}>
-              <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 10, color: "#7c3aed" }}>📝 New Report Template</div>
-              <div style={{ display: "flex", gap: 8, marginBottom: 8 }}>
-                <div style={{ flex: 2 }}>
-                  <label style={{ fontSize: 11, fontWeight: 600, color: "#374151", display: "block", marginBottom: 3 }}>Name</label>
-                  <input value={newTmplName} onChange={e => setNewTmplName(e.target.value)}
-                    placeholder="e.g. Fuls NW Semitic Report"
-                    style={{ width: "100%", padding: "5px 8px", border: "1px solid #d1d5db", borderRadius: 4, fontSize: 12, boxSizing: "border-box" }} />
-                </div>
-                <div style={{ flex: 1 }}>
+            <div style={{ border: "1px solid #a78bfa", borderRadius: 8, padding: "16px 20px", marginBottom: 16, background: "#faf5ff", maxWidth: 680 }}>
+              <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 12, color: "#7c3aed", display: "flex", alignItems: "center", gap: 6 }}>📝 New Report Template</div>
+              {/* Name (full width) */}
+              <div style={{ marginBottom: 10 }}>
+                <label style={{ fontSize: 11, fontWeight: 600, color: "#374151", display: "block", marginBottom: 3 }}>Template Name</label>
+                <input value={newTmplName} onChange={e => setNewTmplName(e.target.value)}
+                  placeholder="e.g. Fuls NW Semitic Analysis Report"
+                  style={{ width: "100%", padding: "6px 9px", border: "1px solid #c4b5fd", borderRadius: 5, fontSize: 13, boxSizing: "border-box", outline: "none" }} />
+              </div>
+              {/* Category + Description side by side */}
+              <div style={{ display: "flex", gap: 10, marginBottom: 10 }}>
+                <div style={{ flex: 1, minWidth: 0 }}>
                   <label style={{ fontSize: 11, fontWeight: 600, color: "#374151", display: "block", marginBottom: 3 }}>Category</label>
                   <input value={newTmplCat} onChange={e => setNewTmplCat(e.target.value)}
-                    placeholder="General"
-                    style={{ width: "100%", padding: "5px 8px", border: "1px solid #d1d5db", borderRadius: 4, fontSize: 12, boxSizing: "border-box" }} />
+                    list="tmpl-category-options"
+                    placeholder="Select or type a category…"
+                    style={{ width: "100%", padding: "6px 9px", border: "1px solid #c4b5fd", borderRadius: 5, fontSize: 13, boxSizing: "border-box" }} />
+                  <datalist id="tmpl-category-options">
+                    <option value="General" />
+                    <option value="Decipherment" />
+                    <option value="Benchmark" />
+                    <option value="NW Semitic" />
+                    <option value="Indus Script" />
+                    <option value="Geez / Ethiopic" />
+                    <option value="Linear B" />
+                    <option value="Meroitic" />
+                    <option value="Comparison" />
+                    <option value="Research Summary" />
+                  </datalist>
                 </div>
-              </div>
-              <div style={{ marginBottom: 10 }}>
-                <label style={{ fontSize: 11, fontWeight: 600, color: "#374151", display: "block", marginBottom: 3 }}>Description</label>
-                <input value={newTmplDesc} onChange={e => setNewTmplDesc(e.target.value)}
-                  placeholder="What this report covers…"
-                  style={{ width: "100%", padding: "5px 8px", border: "1px solid #d1d5db", borderRadius: 4, fontSize: 12, boxSizing: "border-box" }} />
+                <div style={{ flex: 2, minWidth: 0 }}>
+                  <label style={{ fontSize: 11, fontWeight: 600, color: "#374151", display: "block", marginBottom: 3 }}>Description</label>
+                  <input value={newTmplDesc} onChange={e => setNewTmplDesc(e.target.value)}
+                    placeholder="What this template covers…"
+                    style={{ width: "100%", padding: "6px 9px", border: "1px solid #c4b5fd", borderRadius: 5, fontSize: 13, boxSizing: "border-box" }} />
+                </div>
               </div>
               <div style={{ marginBottom: 10 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
@@ -571,7 +587,6 @@ export function ReportsView() {
           </div>
         </div>
       )}
-      </div>
 
       {/* Compose toolbar */}
       {composeMode && (

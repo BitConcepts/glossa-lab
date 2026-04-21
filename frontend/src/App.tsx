@@ -419,7 +419,7 @@ function AppContent() {
               paddingBottom: isCanvas ? 0 : 32,
               marginBottom:  effectivePanelH,
               color: fg,
-              maxWidth: isCanvas ? "none" : 960,
+              maxWidth: "none",
               overflow: isCanvas ? "hidden" : "auto",
             }}>
               {tab === "status"      && <StatusView />}

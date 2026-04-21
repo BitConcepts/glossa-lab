@@ -3639,3 +3639,104 @@ Open TODOs:
 - [ ] RAG module
 
 Next step: Send Dr. Fuls reply. Then run extended Geez benchmark with higher iteration counts.
+
+---
+
+## [2026-04-21] Entry — H16 Complete: Graph-First Platform, All Plans Executed, Indus Research Pivot
+
+Objective: Execute all remaining phases of the H16 (graph-first experiment platform) and User-Definable Platform plans, then pivot to Indus Script research gathering as our next primary target.
+
+### H16 Phases 3/4 — 5 missing graph specs created
+
+All Python experiment compositions now have confirmed graph equivalents. Created the final 5 missing JSON specs:
+
+- `beam_decipher_benchmark.json`: SA vs Beam Search comparison on NW Semitic corpus. NW Semitic → RTL → CorpusSplitter(75/25) → Hebrew LM (BuiltinLM) → SADecipher(5 seeds) vs BeamDecipher(width 200) → merge → export.
+- `fuls_split_sensitivity.json`: Dr. Fuls' train/test split ratio investigation. Parallel 50/50 and 75/25 SA runs to test whether 66.7% accuracy at 2/3 training is structural or artefactual.
+- `tier5_indus_decipherment.json`: Tier 5 hypothesis test. Indus corpus → TokenFilter(min_freq=8, Fuls anti-circularity) → BeamDecipher vs Dravidian LM and vs Sumerian LM → WritingSystemClassifier → merge.
+- `tier5_indus_readings.json`: Structural readings analysis. Indus corpus → PositionalProfiler, FreqCounter, NgramCounter, EntropyCalc, WritingSystemClassifier → merge → export.
+- `writing_system_progression.json`: Dr. Fuls tier 1→5 progression benchmark. Four parallel paths: NW Semitic (Tier 1), Meroitic (Tier 1/2), Ge'ez clean (Tier 4), Indus (Tier 5) — each through FreqCounter → EntropyCalc → WritingSystemClassifier → merge.
+
+This completes the graph spec migration: 44 total JSON specs in `experiments/graphs/`.
+
+### H16 Phase 5 — Legacy Python experiments archived
+
+40 Python experiment composition files moved to `experiments/_legacy/`. The `experiments/` directory now contains only:
+- `_parallel.py` (thread pool utility, used by graph nodes at runtime)
+- `__init__.py`, `__main__.py` (package files)
+- `_legacy/` (archived Python compositions, kept for CLI reference)
+- `graphs/` (44 JSON graph specs)
+
+None of the archived Python files are user-visible; the catalog has served only graph experiments since H16 Phase 1.
+
+### H16 Phase 6 — Governance lint tightened
+
+The `_LEGACY_WHITELIST` in `test_governance_lint.py` reduced from 40+ entries to 7 entries (only scripts/ directory files with pending ReportGenerator node migration). The whitelist entries for ALL experiment Python files removed since they no longer exist in `experiments/`. All 4 governance lint tests pass.
+
+Test registry count updated: `test_all_37_nodes_registered` (was `test_all_36_nodes_registered`) — TokenFilter was already registered but missing from the expected set.
+
+### User-Definable Platform — Verified complete
+
+All 5 phases confirmed implemented and working:
+- Phase 1 (CorpusLM): `CorpusLM` atomic node registered, loads any DB corpus as a language model.
+- Phase 2 (Report Templates): DB schema V7, API CRUD (`/report-templates`), Template Editor UI in ReportsView.
+- Phase 3 (World Corpus Catalogue): DB schema V9, seeder with 50+ entries, browse+import UI in CorporaView.
+- Phase 4 (Anchor Sets): DB schema V8, API CRUD (`/anchor-sets`), Anchor Set Editor UI in CorporaView.
+- Phase 5 (Governance lint): All 4 tests passing with clean whitelist.
+
+### Tests
+
+- `tests/test_governance_lint.py` — 4/4 passed
+- `tests/test_catalog.py` + `tests/test_graph_experiments.py` — 30/30 passed
+
+### Indus Script Research — Pivot confirmed
+
+With the $1 million Tamil Nadu prize announced in January 2025 by CM M.K. Stalin (presented at the IVC centenary conference in Chennai, inaugurating the 100-year anniversary of John Marshall's 1924 announcement), we are formalising the Indus Script as our next primary research target.
+
+**Key findings from research gathering:**
+
+**The prize**: $1 million USD offered to any individual or organisation that convincingly deciphers the Indus Valley Script. Judged by archaeologists. Announced 5 January 2025. A separate ₹2 crore chair in memory of Iravatham Mahadevan established at the Roja Muthiah Library Indus Research Centre.
+
+**Morphological evidence (Rajan & Sivanantham 2025, Tamil Nadu DoA)**: Documented 15,000+ graffiti-bearing potsherds from 140 Tamil Nadu sites. 42 base signs, 544 variants, 1,521 composite forms identified. ~60% of base signs have parallels in Indus script. >90% of South Indian graffiti marks share parallels with IVC inscriptions. Authors interpret this as evidence of cultural contact and possible evolutionary continuity, NOT linguistic decipherment.
+
+**Structural constraints we already know (from our existing platform experiments)**:
+- ~400 distinct signs, average inscription ~5 signs, longest ~17 signs on a single surface
+- ~14,000 tokens in our ICIT/Mahadevan 1977 synthetic corpus
+- Rao et al. 2009 (PNAS): block entropy of Indus script sits squarely between natural languages and non-linguistic sequences — consistent with, but not proof of, linguistic encoding
+- Signs obey Zipf-Mandelbrot — necessary but insufficient for language
+- Strong positional constraints: strong terminal bias (T-rate) for many signs — the logograms/determinatives problem identified in our `tier5_indus_decipherment` experiment
+- Fuls anti-circularity protocol: filter signs with terminal_bias ≥ 0.50 or initial_bias ≥ 0.60 as LOGOGRAM/INITIAL; only PHONOGRAM candidates (entropy ≥ 0.50, freq ≥ 8) should feed decipherment
+
+**Key hypotheses and their current standing**:
+- Dravidian (Parpola 1994, Mahadevan): most supported by structural comparators; strongest archaeological case
+- Indo-Aryan / Vedic: politically promoted but archaeologically weak (no horse imagery in IVC, no Vedic city patterns)
+- Non-linguistic (Farmer, Sproat, Witzel 2004): vigorously rebutted by Parpola, Vidale, McIntosh; conditional entropy evidence contradicts it
+- Administrative/commercial logographic (Mukhopadhyay 2023, Humanities & Social Sci Comms): seals as tax stamps, trade licenses, gate passes — not encoding speech per se
+
+**Key challenge for Glossa Lab**: The logo-syllabic nature means our substitution cipher model is fundamentally limited. A single sign → phoneme assumption is **invalid** for Tier 5. The Fuls anti-circularity protocol (filter logograms before decipherment) is the correct entry point. Our `tier5_indus_decipherment.json` graph implements this.
+
+**Next research steps**:
+1. Run `tier5_indus_readings.json` on ICIT corpus — get the full structural fingerprint
+2. Apply `tier5_indus_decipherment.json` — Dravidian vs Sumerian beam comparison on phonogram-filtered sequences
+3. Develop a Dravidian language model from the full Tamil/Kannada/Telugu corpus data (currently only small synthetic corpus)
+4. Contact Asko Parpola's sign concordance database for a more complete public corpus
+5. Await Dr. Fuls' response — he has expertise in structural Indus analysis (cited in Khanna & Merriam 2025 IJCA computational paper)
+
+Files changed:
+- `backend/glossa_lab/experiments/graphs/` — 5 new JSON graph specs added
+- `backend/glossa_lab/experiments/_legacy/` — 40 Python experiment files archived (moved from `experiments/`)
+- `backend/tests/test_governance_lint.py` — whitelist reduced, comments updated
+- `backend/tests/test_graph_experiments.py` — node count test updated to 37
+
+Checks run:
+- `tests/test_governance_lint.py` — 4/4 passed ✓
+- `tests/test_catalog.py` — 3/3 passed ✓
+- `tests/test_graph_experiments.py` — 23/23 passed ✓ (30 total with catalog)
+
+Open TODOs:
+- [ ] Run tier5_indus_readings.json and tier5_indus_decipherment.json experiments
+- [ ] Build fuller Dravidian language model (Tamil/Kannada corpus from catalogue)
+- [ ] Send Dr. Fuls technical reply (T/I/M, column defs, LM bottleneck)
+- [ ] Extended Geez v2 run: 5,000–10,000 SA iterations
+- [ ] Contact Asko Parpola's group for better Indus corpus data
+
+Next step: Run the two Indus graph experiments, then pursue Dravidian LM expansion and await Dr. Fuls feedback.

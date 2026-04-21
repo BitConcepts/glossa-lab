@@ -534,6 +534,9 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
 
   const [palSearch, setPalSearch] = useState("");
   const [palFilter, setPalFilter] = useState<"all" | "experiment" | "pipeline" | "special">("all");
+  const [studySearch, setStudySearch] = useState("");
+  const [studySort, setStudySort] = useState<"name" | "updated" | "star">("star");
+  const [studySortAsc, setStudySortAsc] = useState(true);
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
   const [showNewStudy, setShowNewStudy]   = useState(false);
   const [inspectorOff, setInspectorOff]  = useState(false);
@@ -942,11 +945,33 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
               <button onClick={() => importRef.current?.click()} title="Import" style={{ ...bm, color: th.textMuted, borderColor: th.border }}>↑</button>
               <input ref={importRef} type="file" accept=".json" style={{ display: "none" }} onChange={onImport} />
             </div>
+            {/* Search + sort row */}
+            <div style={{ display: "flex", gap: 3, marginBottom: 4, alignItems: "center" }}>
+              <input value={studySearch} onChange={e => setStudySearch(e.target.value)}
+                placeholder="Search studies…"
+                style={{ flex: 1, padding: "2px 5px", fontSize: 9, borderRadius: 3,
+                  border: `1px solid ${th.inputBdr}`, background: th.inputBg, color: th.inputText, outline: "none" }} />
+              {(["star", "name", "updated"] as const).map(s => (
+                <button key={s} onClick={() => { if (studySort === s) setStudySortAsc(a => !a); else { setStudySort(s); setStudySortAsc(s !== "updated"); } }}
+                  title={`Sort by ${s}`}
+                  style={{ fontSize: 8, padding: "1px 4px", border: `1px solid ${th.border}`, borderRadius: 3,
+                    background: studySort === s ? th.activeBg : "none",
+                    color: studySort === s ? th.activeText : th.textMuted, cursor: "pointer" }}>
+                  {s === "star" ? "★" : s === "name" ? "A" : "🗓"}{studySort === s ? (studySortAsc ? "▲" : "▼") : ""}
+                </button>
+              ))}
+            </div>
             {studies.length === 0 && <div style={{ fontSize: 10, color: th.textFaint, fontStyle: "italic", padding: "4px 2px" }}>No studies yet. Click + to create one.</div>}
-            {[...studies].sort((a, b) => {
-              const aS = starredStudies.has(a.id), bS = starredStudies.has(b.id);
-              return aS === bS ? 0 : aS ? -1 : 1;
-            }).map(s => {
+            {[...studies]
+              .filter(s => !studySearch || s.name.toLowerCase().includes(studySearch.toLowerCase()))
+              .sort((a, b) => {
+                const aS = starredStudies.has(a.id), bS = starredStudies.has(b.id);
+                if (studySort === "star") return aS === bS ? 0 : aS ? -1 : 1;
+                if (studySort === "name")    { const c = a.name.localeCompare(b.name); return studySortAsc ? c : -c; }
+                if (studySort === "updated") { const c = (a.updated_at ?? "").localeCompare(b.updated_at ?? ""); return studySortAsc ? c : -c; }
+                return 0;
+              })
+              .map(s => {
               const active    = activeStudy?.id === s.id;
               const modified  = active && isDirty;
               const isRunning = !!activeRuns[s.id];

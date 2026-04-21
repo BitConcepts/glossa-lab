@@ -548,6 +548,8 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
       const d = await getGraphExperiment(id);
       setActiveExp(d);
       setSelectedNode(null);
+      // Dispatch context for Glossa AI auto-inference
+      window.dispatchEvent(new CustomEvent("glossa:context", { detail: { type: "experiment", id, name: d.name } }));
 
       const snap15e = (n: number) => Math.round(n / 15) * 15;
 

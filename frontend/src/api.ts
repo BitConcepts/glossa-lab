@@ -1370,3 +1370,67 @@ export const deleteCASModel = (id: string): Promise<{ deleted: boolean; id: stri
 
 export const validateCASModel = (id: string): Promise<CASValidateResult> =>
   request("POST", `/cas-models/${id}/validate`);
+
+// ── AG2 Research Agent ────────────────────────────────────────────
+
+export interface AG2Status {
+  available: boolean;
+  model: string | null;
+  mode: "llm_enabled" | "tool_only";
+  tools: string[];
+  note?: string;
+  error?: string;
+}
+
+export interface AG2Event {
+  type: "agent_start" | "tool_call" | "tool_result" | "message" | "error" | "done";
+  agent: string;
+  content: string;
+}
+
+export interface AG2Tool {
+  name: string;
+  description: string;
+}
+
+export const getAG2Status = (): Promise<AG2Status> =>
+  request("GET", "/ag2/status");
+
+export const getAG2Tools = (): Promise<AG2Tool[]> =>
+  request("GET", "/ag2/tools");
+
+export async function* streamAG2Chat(
+  message: string,
+  history: { role: string; content: string }[] = [],
+  contextType = "",
+  contextId = "",
+  signal?: AbortSignal,
+): AsyncGenerator<AG2Event> {
+  const res = await fetch(`${BASE}/ag2/chat`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message, history, context_type: contextType, context_id: contextId }),
+    signal,
+  });
+  if (!res.ok) throw new Error(`AG2 HTTP ${res.status}`);
+  const reader = res.body!.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+  try {
+    while (true) {
+      if (signal?.aborted) break;
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split("\n");
+      buffer = lines.pop() ?? "";
+      for (const line of lines) {
+        if (line.startsWith("data: ") && line.length > 6) {
+          try { yield JSON.parse(line.slice(6)) as AG2Event; } catch { /* skip */ }
+        }
+      }
+    }
+  } finally {
+    reader.releaseLock();
+  }
+}

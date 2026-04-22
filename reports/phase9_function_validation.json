@@ -1,0 +1,1388 @@
+{
+  "json": {
+    "profiles": [
+      {
+        "symbol": "P324",
+        "count": 99,
+        "t_rate": 0.0101,
+        "i_rate": 0.7778,
+        "m_rate": 0.2121,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P122",
+        "count": 76,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P385",
+        "count": 35,
+        "t_rate": 0.8286,
+        "i_rate": 0.0,
+        "m_rate": 0.1714,
+        "pos_class": "TERMINAL"
+      },
+      {
+        "symbol": "P086",
+        "count": 35,
+        "t_rate": 0.0286,
+        "i_rate": 0.5429,
+        "m_rate": 0.4286,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P050",
+        "count": 32,
+        "t_rate": 0.0,
+        "i_rate": 0.0312,
+        "m_rate": 0.9688,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P145",
+        "count": 27,
+        "t_rate": 0.1481,
+        "i_rate": 0.0,
+        "m_rate": 0.8519,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P230",
+        "count": 23,
+        "t_rate": 0.1739,
+        "i_rate": 0.0,
+        "m_rate": 0.8261,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P120",
+        "count": 22,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P062",
+        "count": 21,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P060",
+        "count": 20,
+        "t_rate": 0.05,
+        "i_rate": 0.0,
+        "m_rate": 0.95,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P316",
+        "count": 19,
+        "t_rate": 0.1053,
+        "i_rate": 0.0526,
+        "m_rate": 0.8421,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P000",
+        "count": 19,
+        "t_rate": 0.3158,
+        "i_rate": 0.5789,
+        "m_rate": 0.1053,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P217",
+        "count": 18,
+        "t_rate": 0.1111,
+        "i_rate": 0.7778,
+        "m_rate": 0.1111,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P378",
+        "count": 17,
+        "t_rate": 0.5882,
+        "i_rate": 0.1176,
+        "m_rate": 0.2941,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P364",
+        "count": 17,
+        "t_rate": 0.1176,
+        "i_rate": 0.0,
+        "m_rate": 0.8824,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P058",
+        "count": 15,
+        "t_rate": 0.0667,
+        "i_rate": 0.0,
+        "m_rate": 0.9333,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P147",
+        "count": 14,
+        "t_rate": 0.0714,
+        "i_rate": 0.0714,
+        "m_rate": 0.8571,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P154",
+        "count": 14,
+        "t_rate": 0.2143,
+        "i_rate": 0.0,
+        "m_rate": 0.7857,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P325",
+        "count": 14,
+        "t_rate": 0.0714,
+        "i_rate": 0.0,
+        "m_rate": 0.9286,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P123",
+        "count": 13,
+        "t_rate": 0.3846,
+        "i_rate": 0.0,
+        "m_rate": 0.6154,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P256",
+        "count": 12,
+        "t_rate": 0.75,
+        "i_rate": 0.0,
+        "m_rate": 0.25,
+        "pos_class": "TERMINAL"
+      },
+      {
+        "symbol": "P202",
+        "count": 11,
+        "t_rate": 0.0909,
+        "i_rate": 0.1818,
+        "m_rate": 0.7273,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P268",
+        "count": 11,
+        "t_rate": 0.0,
+        "i_rate": 0.2727,
+        "m_rate": 0.7273,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P332",
+        "count": 11,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P121",
+        "count": 10,
+        "t_rate": 0.0,
+        "i_rate": 0.1,
+        "m_rate": 0.9,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P205",
+        "count": 10,
+        "t_rate": 0.1,
+        "i_rate": 0.1,
+        "m_rate": 0.8,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P011",
+        "count": 10,
+        "t_rate": 0.5,
+        "i_rate": 0.0,
+        "m_rate": 0.5,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P349",
+        "count": 10,
+        "t_rate": 0.2,
+        "i_rate": 0.0,
+        "m_rate": 0.8,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P056",
+        "count": 9,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P013",
+        "count": 9,
+        "t_rate": 0.0,
+        "i_rate": 1.0,
+        "m_rate": 0.0,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P073",
+        "count": 8,
+        "t_rate": 0.125,
+        "i_rate": 0.0,
+        "m_rate": 0.875,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P144",
+        "count": 8,
+        "t_rate": 0.25,
+        "i_rate": 0.125,
+        "m_rate": 0.625,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P194",
+        "count": 8,
+        "t_rate": 0.125,
+        "i_rate": 0.0,
+        "m_rate": 0.875,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P175",
+        "count": 7,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P276",
+        "count": 6,
+        "t_rate": 0.1667,
+        "i_rate": 0.0,
+        "m_rate": 0.8333,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P126",
+        "count": 6,
+        "t_rate": 0.1667,
+        "i_rate": 0.0,
+        "m_rate": 0.8333,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P215",
+        "count": 6,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P160",
+        "count": 6,
+        "t_rate": 0.1667,
+        "i_rate": 0.0,
+        "m_rate": 0.8333,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P076",
+        "count": 6,
+        "t_rate": 0.6667,
+        "i_rate": 0.0,
+        "m_rate": 0.3333,
+        "pos_class": "TERMINAL"
+      },
+      {
+        "symbol": "P092",
+        "count": 6,
+        "t_rate": 0.1667,
+        "i_rate": 0.0,
+        "m_rate": 0.8333,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P301",
+        "count": 6,
+        "t_rate": 0.0,
+        "i_rate": 0.8333,
+        "m_rate": 0.1667,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P004",
+        "count": 6,
+        "t_rate": 0.0,
+        "i_rate": 1.0,
+        "m_rate": 0.0,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P108",
+        "count": 5,
+        "t_rate": 0.6,
+        "i_rate": 0.0,
+        "m_rate": 0.4,
+        "pos_class": "TERMINAL"
+      },
+      {
+        "symbol": "P201",
+        "count": 5,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P009",
+        "count": 5,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P270",
+        "count": 5,
+        "t_rate": 0.2,
+        "i_rate": 0.0,
+        "m_rate": 0.8,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P221",
+        "count": 5,
+        "t_rate": 0.4,
+        "i_rate": 0.0,
+        "m_rate": 0.6,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P210",
+        "count": 5,
+        "t_rate": 0.2,
+        "i_rate": 0.0,
+        "m_rate": 0.8,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P091",
+        "count": 5,
+        "t_rate": 0.0,
+        "i_rate": 0.2,
+        "m_rate": 0.8,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P051",
+        "count": 5,
+        "t_rate": 0.0,
+        "i_rate": 1.0,
+        "m_rate": 0.0,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P204",
+        "count": 4,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P035",
+        "count": 4,
+        "t_rate": 0.25,
+        "i_rate": 0.0,
+        "m_rate": 0.75,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P142",
+        "count": 4,
+        "t_rate": 0.25,
+        "i_rate": 0.0,
+        "m_rate": 0.75,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P125",
+        "count": 4,
+        "t_rate": 0.5,
+        "i_rate": 0.0,
+        "m_rate": 0.5,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P095",
+        "count": 4,
+        "t_rate": 0.75,
+        "i_rate": 0.0,
+        "m_rate": 0.25,
+        "pos_class": "TERMINAL"
+      },
+      {
+        "symbol": "P127",
+        "count": 4,
+        "t_rate": 0.25,
+        "i_rate": 0.0,
+        "m_rate": 0.75,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P139",
+        "count": 4,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P001",
+        "count": 4,
+        "t_rate": 0.0,
+        "i_rate": 1.0,
+        "m_rate": 0.0,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P124",
+        "count": 4,
+        "t_rate": 0.5,
+        "i_rate": 0.0,
+        "m_rate": 0.5,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P289",
+        "count": 4,
+        "t_rate": 0.25,
+        "i_rate": 0.0,
+        "m_rate": 0.75,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P098",
+        "count": 4,
+        "t_rate": 0.0,
+        "i_rate": 0.75,
+        "m_rate": 0.25,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P226",
+        "count": 4,
+        "t_rate": 1.0,
+        "i_rate": 0.0,
+        "m_rate": 0.0,
+        "pos_class": "TERMINAL"
+      },
+      {
+        "symbol": "P075",
+        "count": 4,
+        "t_rate": 0.25,
+        "i_rate": 0.0,
+        "m_rate": 0.75,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P355",
+        "count": 4,
+        "t_rate": 0.5,
+        "i_rate": 0.0,
+        "m_rate": 0.5,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P096",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P114",
+        "count": 3,
+        "t_rate": 0.3333,
+        "i_rate": 0.0,
+        "m_rate": 0.6667,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P067",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.3333,
+        "m_rate": 0.6667,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P369",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P275",
+        "count": 3,
+        "t_rate": 0.3333,
+        "i_rate": 0.0,
+        "m_rate": 0.6667,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P174",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P238",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.6667,
+        "m_rate": 0.3333,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P103",
+        "count": 3,
+        "t_rate": 0.3333,
+        "i_rate": 0.0,
+        "m_rate": 0.6667,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P309",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P303",
+        "count": 3,
+        "t_rate": 0.3333,
+        "i_rate": 0.0,
+        "m_rate": 0.6667,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P288",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P326",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P234",
+        "count": 3,
+        "t_rate": 0.3333,
+        "i_rate": 0.0,
+        "m_rate": 0.6667,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P031",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P110",
+        "count": 3,
+        "t_rate": 0.3333,
+        "i_rate": 0.0,
+        "m_rate": 0.6667,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P283",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      }
+    ],
+    "class_summary__TERMINAL": 6,
+    "class_summary__INITIAL": 11,
+    "class_summary__MEDIAL": 55,
+    "class_summary__MIXED": 8,
+    "error": "Database not available",
+    "terminal_signs": [
+      "P076",
+      "P095",
+      "P108",
+      "P226",
+      "P256",
+      "P378",
+      "P385"
+    ],
+    "initial_signs": [
+      "P000",
+      "P001",
+      "P004",
+      "P013",
+      "P051",
+      "P086",
+      "P098",
+      "P217",
+      "P238",
+      "P301",
+      "P324"
+    ],
+    "medial_signs": [
+      "P009",
+      "P011",
+      "P031",
+      "P035",
+      "P050",
+      "P056",
+      "P058",
+      "P060",
+      "P062",
+      "P067",
+      "P073",
+      "P075",
+      "P091",
+      "P092",
+      "P096",
+      "P103",
+      "P110",
+      "P114",
+      "P120",
+      "P121",
+      "P122",
+      "P123",
+      "P124",
+      "P125",
+      "P126",
+      "P127",
+      "P139",
+      "P142",
+      "P144",
+      "P145",
+      "P147",
+      "P154",
+      "P160",
+      "P174",
+      "P175",
+      "P194",
+      "P201",
+      "P202",
+      "P204",
+      "P205",
+      "P210",
+      "P215",
+      "P221",
+      "P230",
+      "P234",
+      "P268",
+      "P270",
+      "P275",
+      "P276",
+      "P283",
+      "P288",
+      "P289",
+      "P303",
+      "P309",
+      "P316",
+      "P325",
+      "P326",
+      "P332",
+      "P349",
+      "P355",
+      "P364",
+      "P369"
+    ],
+    "sign_roles__P121": "MEDIAL",
+    "sign_roles__P202": "MEDIAL",
+    "sign_roles__P385": "TERMINAL",
+    "sign_roles__P073": "MEDIAL",
+    "sign_roles__P108": "TERMINAL",
+    "sign_roles__P145": "MEDIAL",
+    "sign_roles__P205": "MEDIAL",
+    "sign_roles__P147": "MEDIAL",
+    "sign_roles__P316": "MEDIAL",
+    "sign_roles__P056": "MEDIAL",
+    "sign_roles__P122": "MEDIAL",
+    "sign_roles__P268": "MEDIAL",
+    "sign_roles__P324": "INITIAL",
+    "sign_roles__P096": "MEDIAL",
+    "sign_roles__P062": "MEDIAL",
+    "sign_roles__P060": "MEDIAL",
+    "sign_roles__P120": "MEDIAL",
+    "sign_roles__P256": "TERMINAL",
+    "sign_roles__P378": "TERMINAL",
+    "sign_roles__P201": "MEDIAL",
+    "sign_roles__P086": "INITIAL",
+    "sign_roles__P011": "MEDIAL",
+    "sign_roles__P154": "MEDIAL",
+    "sign_roles__P009": "MEDIAL",
+    "sign_roles__P175": "MEDIAL",
+    "sign_roles__P270": "MEDIAL",
+    "sign_roles__P144": "MEDIAL",
+    "sign_roles__P204": "MEDIAL",
+    "sign_roles__P114": "MEDIAL",
+    "sign_roles__P364": "MEDIAL",
+    "sign_roles__P067": "MEDIAL",
+    "sign_roles__P221": "MEDIAL",
+    "sign_roles__P276": "MEDIAL",
+    "sign_roles__P058": "MEDIAL",
+    "sign_roles__P035": "MEDIAL",
+    "sign_roles__P210": "MEDIAL",
+    "sign_roles__P013": "INITIAL",
+    "sign_roles__P194": "MEDIAL",
+    "sign_roles__P126": "MEDIAL",
+    "sign_roles__P369": "MEDIAL",
+    "sign_roles__P142": "MEDIAL",
+    "sign_roles__P000": "INITIAL",
+    "sign_roles__P125": "MEDIAL",
+    "sign_roles__P215": "MEDIAL",
+    "sign_roles__P275": "MEDIAL",
+    "sign_roles__P091": "MEDIAL",
+    "sign_roles__P050": "MEDIAL",
+    "sign_roles__P230": "MEDIAL",
+    "sign_roles__P217": "INITIAL",
+    "sign_roles__P160": "MEDIAL",
+    "sign_roles__P076": "TERMINAL",
+    "sign_roles__P174": "MEDIAL",
+    "sign_roles__P238": "INITIAL",
+    "sign_roles__P325": "MEDIAL",
+    "sign_roles__P123": "MEDIAL",
+    "sign_roles__P103": "MEDIAL",
+    "sign_roles__P332": "MEDIAL",
+    "sign_roles__P349": "MEDIAL",
+    "sign_roles__P095": "TERMINAL",
+    "sign_roles__P127": "MEDIAL",
+    "sign_roles__P309": "MEDIAL",
+    "sign_roles__P092": "MEDIAL",
+    "sign_roles__P139": "MEDIAL",
+    "sign_roles__P303": "MEDIAL",
+    "sign_roles__P301": "INITIAL",
+    "sign_roles__P288": "MEDIAL",
+    "sign_roles__P051": "INITIAL",
+    "sign_roles__P326": "MEDIAL",
+    "sign_roles__P001": "INITIAL",
+    "sign_roles__P234": "MEDIAL",
+    "sign_roles__P124": "MEDIAL",
+    "sign_roles__P289": "MEDIAL",
+    "sign_roles__P031": "MEDIAL",
+    "sign_roles__P098": "INITIAL",
+    "sign_roles__P226": "TERMINAL",
+    "sign_roles__P004": "INITIAL",
+    "sign_roles__P110": "MEDIAL",
+    "sign_roles__P075": "MEDIAL",
+    "sign_roles__P283": "MEDIAL",
+    "sign_roles__P355": "MEDIAL",
+    "projected_weights__P121": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.1,
+      "medial_weight": 0.9,
+      "t_observed": 0.0,
+      "i_observed": 0.1
+    },
+    "projected_weights__P202": {
+      "terminal_weight": 0.09090909090909091,
+      "initial_weight": 0.18181818181818182,
+      "medial_weight": 0.7272727272727273,
+      "t_observed": 0.09090909090909091,
+      "i_observed": 0.18181818181818182
+    },
+    "projected_weights__P385": {
+      "terminal_weight": 0.8285714285714286,
+      "initial_weight": 0.0,
+      "medial_weight": 0.17142857142857137,
+      "t_observed": 0.8285714285714286,
+      "i_observed": 0.0
+    },
+    "projected_weights__P073": {
+      "terminal_weight": 0.125,
+      "initial_weight": 0.0,
+      "medial_weight": 0.875,
+      "t_observed": 0.125,
+      "i_observed": 0.0
+    },
+    "projected_weights__P108": {
+      "terminal_weight": 0.6,
+      "initial_weight": 0.0,
+      "medial_weight": 0.4,
+      "t_observed": 0.6,
+      "i_observed": 0.0
+    },
+    "projected_weights__P145": {
+      "terminal_weight": 0.14814814814814814,
+      "initial_weight": 0.0,
+      "medial_weight": 0.8518518518518519,
+      "t_observed": 0.14814814814814814,
+      "i_observed": 0.0
+    },
+    "projected_weights__P205": {
+      "terminal_weight": 0.1,
+      "initial_weight": 0.1,
+      "medial_weight": 0.8,
+      "t_observed": 0.1,
+      "i_observed": 0.1
+    },
+    "projected_weights__P147": {
+      "terminal_weight": 0.07142857142857142,
+      "initial_weight": 0.07142857142857142,
+      "medial_weight": 0.8571428571428572,
+      "t_observed": 0.07142857142857142,
+      "i_observed": 0.07142857142857142
+    },
+    "projected_weights__P316": {
+      "terminal_weight": 0.10526315789473684,
+      "initial_weight": 0.05263157894736842,
+      "medial_weight": 0.8421052631578947,
+      "t_observed": 0.10526315789473684,
+      "i_observed": 0.05263157894736842
+    },
+    "projected_weights__P056": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.0,
+      "medial_weight": 1.0,
+      "t_observed": 0.0,
+      "i_observed": 0.0
+    },
+    "projected_weights__P122": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.0,
+      "medial_weight": 1.0,
+      "t_observed": 0.0,
+      "i_observed": 0.0
+    },
+    "projected_weights__P268": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.2727272727272727,
+      "medial_weight": 0.7272727272727273,
+      "t_observed": 0.0,
+      "i_observed": 0.2727272727272727
+    },
+    "projected_weights__P324": {
+      "terminal_weight": 0.010101010101010102,
+      "initial_weight": 0.7777777777777778,
+      "medial_weight": 0.21212121212121215,
+      "t_observed": 0.010101010101010102,
+      "i_observed": 0.7777777777777778
+    },
+    "projected_weights__P096": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.0,
+      "medial_weight": 1.0,
+      "t_observed": 0.0,
+      "i_observed": 0.0
+    },
+    "projected_weights__P062": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.0,
+      "medial_weight": 1.0,
+      "t_observed": 0.0,
+      "i_observed": 0.0
+    },
+    "projected_weights__P060": {
+      "terminal_weight": 0.05,
+      "initial_weight": 0.0,
+      "medial_weight": 0.95,
+      "t_observed": 0.05,
+      "i_observed": 0.0
+    },
+    "projected_weights__P120": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.0,
+      "medial_weight": 1.0,
+      "t_observed": 0.0,
+      "i_observed": 0.0
+    },
+    "projected_weights__P256": {
+      "terminal_weight": 0.75,
+      "initial_weight": 0.0,
+      "medial_weight": 0.25,
+      "t_observed": 0.75,
+      "i_observed": 0.0
+    },
+    "projected_weights__P378": {
+      "terminal_weight": 0.5882352941176471,
+      "initial_weight": 0.11764705882352941,
+      "medial_weight": 0.2941176470588235,
+      "t_observed": 0.5882352941176471,
+      "i_observed": 0.11764705882352941
+    },
+    "projected_weights__P201": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.0,
+      "medial_weight": 1.0,
+      "t_observed": 0.0,
+      "i_observed": 0.0
+    },
+    "projected_weights__P086": {
+      "terminal_weight": 0.02857142857142857,
+      "initial_weight": 0.5428571428571428,
+      "medial_weight": 0.4285714285714286,
+      "t_observed": 0.02857142857142857,
+      "i_observed": 0.5428571428571428
+    },
+    "projected_weights__P011": {
+      "terminal_weight": 0.5,
+      "initial_weight": 0.0,
+      "medial_weight": 0.5,
+      "t_observed": 0.5,
+      "i_observed": 0.0
+    },
+    "projected_weights__P154": {
+      "terminal_weight": 0.21428571428571427,
+      "initial_weight": 0.0,
+      "medial_weight": 0.7857142857142857,
+      "t_observed": 0.21428571428571427,
+      "i_observed": 0.0
+    },
+    "projected_weights__P009": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.0,
+      "medial_weight": 1.0,
+      "t_observed": 0.0,
+      "i_observed": 0.0
+    },
+    "projected_weights__P175": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.0,
+      "medial_weight": 1.0,
+      "t_observed": 0.0,
+      "i_observed": 0.0
+    },
+    "projected_weights__P270": {
+      "terminal_weight": 0.2,
+      "initial_weight": 0.0,
+      "medial_weight": 0.8,
+      "t_observed": 0.2,
+      "i_observed": 0.0
+    },
+    "projected_weights__P144": {
+      "terminal_weight": 0.25,
+      "initial_weight": 0.125,
+      "medial_weight": 0.625,
+      "t_observed": 0.25,
+      "i_observed": 0.125
+    },
+    "projected_weights__P204": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.0,
+      "medial_weight": 1.0,
+      "t_observed": 0.0,
+      "i_observed": 0.0
+    },
+    "projected_weights__P114": {
+      "terminal_weight": 0.3333333333333333,
+      "initial_weight": 0.0,
+      "medial_weight": 0.6666666666666667,
+      "t_observed": 0.3333333333333333,
+      "i_observed": 0.0
+    },
+    "projected_weights__P364": {
+      "terminal_weight": 0.11764705882352941,
+      "initial_weight": 0.0,
+      "medial_weight": 0.8823529411764706,
+      "t_observed": 0.11764705882352941,
+      "i_observed": 0.0
+    },
+    "projected_weights__P067": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.3333333333333333,
+      "medial_weight": 0.6666666666666667,
+      "t_observed": 0.0,
+      "i_observed": 0.3333333333333333
+    },
+    "projected_weights__P221": {
+      "terminal_weight": 0.4,
+      "initial_weight": 0.0,
+      "medial_weight": 0.6,
+      "t_observed": 0.4,
+      "i_observed": 0.0
+    },
+    "projected_weights__P276": {
+      "terminal_weight": 0.16666666666666666,
+      "initial_weight": 0.0,
+      "medial_weight": 0.8333333333333334,
+      "t_observed": 0.16666666666666666,
+      "i_observed": 0.0
+    },
+    "projected_weights__P058": {
+      "terminal_weight": 0.06666666666666667,
+      "initial_weight": 0.0,
+      "medial_weight": 0.9333333333333333,
+      "t_observed": 0.06666666666666667,
+      "i_observed": 0.0
+    },
+    "projected_weights__P035": {
+      "terminal_weight": 0.25,
+      "initial_weight": 0.0,
+      "medial_weight": 0.75,
+      "t_observed": 0.25,
+      "i_observed": 0.0
+    },
+    "projected_weights__P210": {
+      "terminal_weight": 0.2,
+      "initial_weight": 0.0,
+      "medial_weight": 0.8,
+      "t_observed": 0.2,
+      "i_observed": 0.0
+    },
+    "projected_weights__P013": {
+      "terminal_weight": 0.0,
+      "initial_weight": 1.0,
+      "medial_weight": 0.0,
+      "t_observed": 0.0,
+      "i_observed": 1.0
+    },
+    "projected_weights__P194": {
+      "terminal_weight": 0.125,
+      "initial_weight": 0.0,
+      "medial_weight": 0.875,
+      "t_observed": 0.125,
+      "i_observed": 0.0
+    },
+    "projected_weights__P126": {
+      "terminal_weight": 0.16666666666666666,
+      "initial_weight": 0.0,
+      "medial_weight": 0.8333333333333334,
+      "t_observed": 0.16666666666666666,
+      "i_observed": 0.0
+    },
+    "projected_weights__P369": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.0,
+      "medial_weight": 1.0,
+      "t_observed": 0.0,
+      "i_observed": 0.0
+    },
+    "projected_weights__P142": {
+      "terminal_weight": 0.25,
+      "initial_weight": 0.0,
+      "medial_weight": 0.75,
+      "t_observed": 0.25,
+      "i_observed": 0.0
+    },
+    "projected_weights__P000": {
+      "terminal_weight": 0.3157894736842105,
+      "initial_weight": 0.5789473684210527,
+      "medial_weight": 0.10526315789473684,
+      "t_observed": 0.3157894736842105,
+      "i_observed": 0.5789473684210527
+    },
+    "projected_weights__P125": {
+      "terminal_weight": 0.5,
+      "initial_weight": 0.0,
+      "medial_weight": 0.5,
+      "t_observed": 0.5,
+      "i_observed": 0.0
+    },
+    "projected_weights__P215": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.0,
+      "medial_weight": 1.0,
+      "t_observed": 0.0,
+      "i_observed": 0.0
+    },
+    "projected_weights__P275": {
+      "terminal_weight": 0.3333333333333333,
+      "initial_weight": 0.0,
+      "medial_weight": 0.6666666666666667,
+      "t_observed": 0.3333333333333333,
+      "i_observed": 0.0
+    },
+    "projected_weights__P091": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.2,
+      "medial_weight": 0.8,
+      "t_observed": 0.0,
+      "i_observed": 0.2
+    },
+    "projected_weights__P050": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.03125,
+      "medial_weight": 0.96875,
+      "t_observed": 0.0,
+      "i_observed": 0.03125
+    },
+    "projected_weights__P230": {
+      "terminal_weight": 0.17391304347826086,
+      "initial_weight": 0.0,
+      "medial_weight": 0.8260869565217391,
+      "t_observed": 0.17391304347826086,
+      "i_observed": 0.0
+    },
+    "projected_weights__P217": {
+      "terminal_weight": 0.1111111111111111,
+      "initial_weight": 0.7777777777777778,
+      "medial_weight": 0.11111111111111105,
+      "t_observed": 0.1111111111111111,
+      "i_observed": 0.7777777777777778
+    },
+    "projected_weights__P160": {
+      "terminal_weight": 0.16666666666666666,
+      "initial_weight": 0.0,
+      "medial_weight": 0.8333333333333334,
+      "t_observed": 0.16666666666666666,
+      "i_observed": 0.0
+    },
+    "projected_weights__P076": {
+      "terminal_weight": 0.6666666666666666,
+      "initial_weight": 0.0,
+      "medial_weight": 0.33333333333333337,
+      "t_observed": 0.6666666666666666,
+      "i_observed": 0.0
+    },
+    "projected_weights__P174": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.0,
+      "medial_weight": 1.0,
+      "t_observed": 0.0,
+      "i_observed": 0.0
+    },
+    "projected_weights__P238": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.6666666666666666,
+      "medial_weight": 0.33333333333333337,
+      "t_observed": 0.0,
+      "i_observed": 0.6666666666666666
+    },
+    "projected_weights__P325": {
+      "terminal_weight": 0.07142857142857142,
+      "initial_weight": 0.0,
+      "medial_weight": 0.9285714285714286,
+      "t_observed": 0.07142857142857142,
+      "i_observed": 0.0
+    },
+    "projected_weights__P123": {
+      "terminal_weight": 0.38461538461538464,
+      "initial_weight": 0.0,
+      "medial_weight": 0.6153846153846154,
+      "t_observed": 0.38461538461538464,
+      "i_observed": 0.0
+    },
+    "projected_weights__P103": {
+      "terminal_weight": 0.3333333333333333,
+      "initial_weight": 0.0,
+      "medial_weight": 0.6666666666666667,
+      "t_observed": 0.3333333333333333,
+      "i_observed": 0.0
+    },
+    "projected_weights__P332": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.0,
+      "medial_weight": 1.0,
+      "t_observed": 0.0,
+      "i_observed": 0.0
+    },
+    "projected_weights__P349": {
+      "terminal_weight": 0.2,
+      "initial_weight": 0.0,
+      "medial_weight": 0.8,
+      "t_observed": 0.2,
+      "i_observed": 0.0
+    },
+    "projected_weights__P095": {
+      "terminal_weight": 0.75,
+      "initial_weight": 0.0,
+      "medial_weight": 0.25,
+      "t_observed": 0.75,
+      "i_observed": 0.0
+    },
+    "projected_weights__P127": {
+      "terminal_weight": 0.25,
+      "initial_weight": 0.0,
+      "medial_weight": 0.75,
+      "t_observed": 0.25,
+      "i_observed": 0.0
+    },
+    "projected_weights__P309": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.0,
+      "medial_weight": 1.0,
+      "t_observed": 0.0,
+      "i_observed": 0.0
+    },
+    "projected_weights__P092": {
+      "terminal_weight": 0.16666666666666666,
+      "initial_weight": 0.0,
+      "medial_weight": 0.8333333333333334,
+      "t_observed": 0.16666666666666666,
+      "i_observed": 0.0
+    },
+    "projected_weights__P139": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.0,
+      "medial_weight": 1.0,
+      "t_observed": 0.0,
+      "i_observed": 0.0
+    },
+    "projected_weights__P303": {
+      "terminal_weight": 0.3333333333333333,
+      "initial_weight": 0.0,
+      "medial_weight": 0.6666666666666667,
+      "t_observed": 0.3333333333333333,
+      "i_observed": 0.0
+    },
+    "projected_weights__P301": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.8333333333333334,
+      "medial_weight": 0.16666666666666663,
+      "t_observed": 0.0,
+      "i_observed": 0.8333333333333334
+    },
+    "projected_weights__P288": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.0,
+      "medial_weight": 1.0,
+      "t_observed": 0.0,
+      "i_observed": 0.0
+    },
+    "projected_weights__P051": {
+      "terminal_weight": 0.0,
+      "initial_weight": 1.0,
+      "medial_weight": 0.0,
+      "t_observed": 0.0,
+      "i_observed": 1.0
+    },
+    "projected_weights__P326": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.0,
+      "medial_weight": 1.0,
+      "t_observed": 0.0,
+      "i_observed": 0.0
+    },
+    "projected_weights__P001": {
+      "terminal_weight": 0.0,
+      "initial_weight": 1.0,
+      "medial_weight": 0.0,
+      "t_observed": 0.0,
+      "i_observed": 1.0
+    },
+    "projected_weights__P234": {
+      "terminal_weight": 0.3333333333333333,
+      "initial_weight": 0.0,
+      "medial_weight": 0.6666666666666667,
+      "t_observed": 0.3333333333333333,
+      "i_observed": 0.0
+    },
+    "projected_weights__P124": {
+      "terminal_weight": 0.5,
+      "initial_weight": 0.0,
+      "medial_weight": 0.5,
+      "t_observed": 0.5,
+      "i_observed": 0.0
+    },
+    "projected_weights__P289": {
+      "terminal_weight": 0.25,
+      "initial_weight": 0.0,
+      "medial_weight": 0.75,
+      "t_observed": 0.25,
+      "i_observed": 0.0
+    },
+    "projected_weights__P031": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.0,
+      "medial_weight": 1.0,
+      "t_observed": 0.0,
+      "i_observed": 0.0
+    },
+    "projected_weights__P098": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.75,
+      "medial_weight": 0.25,
+      "t_observed": 0.0,
+      "i_observed": 0.75
+    },
+    "projected_weights__P226": {
+      "terminal_weight": 1.0,
+      "initial_weight": 0.0,
+      "medial_weight": 0.0,
+      "t_observed": 1.0,
+      "i_observed": 0.0
+    },
+    "projected_weights__P004": {
+      "terminal_weight": 0.0,
+      "initial_weight": 1.0,
+      "medial_weight": 0.0,
+      "t_observed": 0.0,
+      "i_observed": 1.0
+    },
+    "projected_weights__P110": {
+      "terminal_weight": 0.3333333333333333,
+      "initial_weight": 0.0,
+      "medial_weight": 0.6666666666666667,
+      "t_observed": 0.3333333333333333,
+      "i_observed": 0.0
+    },
+    "projected_weights__P075": {
+      "terminal_weight": 0.25,
+      "initial_weight": 0.0,
+      "medial_weight": 0.75,
+      "t_observed": 0.25,
+      "i_observed": 0.0
+    },
+    "projected_weights__P283": {
+      "terminal_weight": 0.0,
+      "initial_weight": 0.0,
+      "medial_weight": 1.0,
+      "t_observed": 0.0,
+      "i_observed": 0.0
+    },
+    "projected_weights__P355": {
+      "terminal_weight": 0.5,
+      "initial_weight": 0.0,
+      "medial_weight": 0.5,
+      "t_observed": 0.5,
+      "i_observed": 0.0
+    },
+    "constraint_summary__n_classified": 80,
+    "constraint_summary__n_terminal": 7,
+    "constraint_summary__n_initial": 11,
+    "constraint_summary__n_medial": 62,
+    "constraint_summary__violations": [],
+    "constraint_summary__engine_used": "iterative",
+    "constraint_summary__thresholds": {
+      "terminal": 0.55,
+      "initial": 0.45
+    },
+    "n_signs_classified": 80
+  }
+}

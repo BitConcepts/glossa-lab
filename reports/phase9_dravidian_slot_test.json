@@ -1,0 +1,900 @@
+{
+  "json": {
+    "error": "No cluster_sequences \u2014 connect ClusterMapper.cluster_sequences",
+    "profiles": [
+      {
+        "symbol": "P324",
+        "count": 99,
+        "t_rate": 0.0101,
+        "i_rate": 0.7778,
+        "m_rate": 0.2121,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P122",
+        "count": 76,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P385",
+        "count": 35,
+        "t_rate": 0.8286,
+        "i_rate": 0.0,
+        "m_rate": 0.1714,
+        "pos_class": "TERMINAL"
+      },
+      {
+        "symbol": "P086",
+        "count": 35,
+        "t_rate": 0.0286,
+        "i_rate": 0.5429,
+        "m_rate": 0.4286,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P050",
+        "count": 32,
+        "t_rate": 0.0,
+        "i_rate": 0.0312,
+        "m_rate": 0.9688,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P145",
+        "count": 27,
+        "t_rate": 0.1481,
+        "i_rate": 0.0,
+        "m_rate": 0.8519,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P230",
+        "count": 23,
+        "t_rate": 0.1739,
+        "i_rate": 0.0,
+        "m_rate": 0.8261,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P120",
+        "count": 22,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P062",
+        "count": 21,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P060",
+        "count": 20,
+        "t_rate": 0.05,
+        "i_rate": 0.0,
+        "m_rate": 0.95,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P316",
+        "count": 19,
+        "t_rate": 0.1053,
+        "i_rate": 0.0526,
+        "m_rate": 0.8421,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P000",
+        "count": 19,
+        "t_rate": 0.3158,
+        "i_rate": 0.5789,
+        "m_rate": 0.1053,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P217",
+        "count": 18,
+        "t_rate": 0.1111,
+        "i_rate": 0.7778,
+        "m_rate": 0.1111,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P378",
+        "count": 17,
+        "t_rate": 0.5882,
+        "i_rate": 0.1176,
+        "m_rate": 0.2941,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P364",
+        "count": 17,
+        "t_rate": 0.1176,
+        "i_rate": 0.0,
+        "m_rate": 0.8824,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P058",
+        "count": 15,
+        "t_rate": 0.0667,
+        "i_rate": 0.0,
+        "m_rate": 0.9333,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P147",
+        "count": 14,
+        "t_rate": 0.0714,
+        "i_rate": 0.0714,
+        "m_rate": 0.8571,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P154",
+        "count": 14,
+        "t_rate": 0.2143,
+        "i_rate": 0.0,
+        "m_rate": 0.7857,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P325",
+        "count": 14,
+        "t_rate": 0.0714,
+        "i_rate": 0.0,
+        "m_rate": 0.9286,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P123",
+        "count": 13,
+        "t_rate": 0.3846,
+        "i_rate": 0.0,
+        "m_rate": 0.6154,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P256",
+        "count": 12,
+        "t_rate": 0.75,
+        "i_rate": 0.0,
+        "m_rate": 0.25,
+        "pos_class": "TERMINAL"
+      },
+      {
+        "symbol": "P202",
+        "count": 11,
+        "t_rate": 0.0909,
+        "i_rate": 0.1818,
+        "m_rate": 0.7273,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P268",
+        "count": 11,
+        "t_rate": 0.0,
+        "i_rate": 0.2727,
+        "m_rate": 0.7273,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P332",
+        "count": 11,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P121",
+        "count": 10,
+        "t_rate": 0.0,
+        "i_rate": 0.1,
+        "m_rate": 0.9,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P205",
+        "count": 10,
+        "t_rate": 0.1,
+        "i_rate": 0.1,
+        "m_rate": 0.8,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P011",
+        "count": 10,
+        "t_rate": 0.5,
+        "i_rate": 0.0,
+        "m_rate": 0.5,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P349",
+        "count": 10,
+        "t_rate": 0.2,
+        "i_rate": 0.0,
+        "m_rate": 0.8,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P056",
+        "count": 9,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P013",
+        "count": 9,
+        "t_rate": 0.0,
+        "i_rate": 1.0,
+        "m_rate": 0.0,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P073",
+        "count": 8,
+        "t_rate": 0.125,
+        "i_rate": 0.0,
+        "m_rate": 0.875,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P144",
+        "count": 8,
+        "t_rate": 0.25,
+        "i_rate": 0.125,
+        "m_rate": 0.625,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P194",
+        "count": 8,
+        "t_rate": 0.125,
+        "i_rate": 0.0,
+        "m_rate": 0.875,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P175",
+        "count": 7,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P276",
+        "count": 6,
+        "t_rate": 0.1667,
+        "i_rate": 0.0,
+        "m_rate": 0.8333,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P126",
+        "count": 6,
+        "t_rate": 0.1667,
+        "i_rate": 0.0,
+        "m_rate": 0.8333,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P215",
+        "count": 6,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P160",
+        "count": 6,
+        "t_rate": 0.1667,
+        "i_rate": 0.0,
+        "m_rate": 0.8333,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P076",
+        "count": 6,
+        "t_rate": 0.6667,
+        "i_rate": 0.0,
+        "m_rate": 0.3333,
+        "pos_class": "TERMINAL"
+      },
+      {
+        "symbol": "P092",
+        "count": 6,
+        "t_rate": 0.1667,
+        "i_rate": 0.0,
+        "m_rate": 0.8333,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P301",
+        "count": 6,
+        "t_rate": 0.0,
+        "i_rate": 0.8333,
+        "m_rate": 0.1667,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P004",
+        "count": 6,
+        "t_rate": 0.0,
+        "i_rate": 1.0,
+        "m_rate": 0.0,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P108",
+        "count": 5,
+        "t_rate": 0.6,
+        "i_rate": 0.0,
+        "m_rate": 0.4,
+        "pos_class": "TERMINAL"
+      },
+      {
+        "symbol": "P201",
+        "count": 5,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P009",
+        "count": 5,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P270",
+        "count": 5,
+        "t_rate": 0.2,
+        "i_rate": 0.0,
+        "m_rate": 0.8,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P221",
+        "count": 5,
+        "t_rate": 0.4,
+        "i_rate": 0.0,
+        "m_rate": 0.6,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P210",
+        "count": 5,
+        "t_rate": 0.2,
+        "i_rate": 0.0,
+        "m_rate": 0.8,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P091",
+        "count": 5,
+        "t_rate": 0.0,
+        "i_rate": 0.2,
+        "m_rate": 0.8,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P051",
+        "count": 5,
+        "t_rate": 0.0,
+        "i_rate": 1.0,
+        "m_rate": 0.0,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P204",
+        "count": 4,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P035",
+        "count": 4,
+        "t_rate": 0.25,
+        "i_rate": 0.0,
+        "m_rate": 0.75,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P142",
+        "count": 4,
+        "t_rate": 0.25,
+        "i_rate": 0.0,
+        "m_rate": 0.75,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P125",
+        "count": 4,
+        "t_rate": 0.5,
+        "i_rate": 0.0,
+        "m_rate": 0.5,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P095",
+        "count": 4,
+        "t_rate": 0.75,
+        "i_rate": 0.0,
+        "m_rate": 0.25,
+        "pos_class": "TERMINAL"
+      },
+      {
+        "symbol": "P127",
+        "count": 4,
+        "t_rate": 0.25,
+        "i_rate": 0.0,
+        "m_rate": 0.75,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P139",
+        "count": 4,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P001",
+        "count": 4,
+        "t_rate": 0.0,
+        "i_rate": 1.0,
+        "m_rate": 0.0,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P124",
+        "count": 4,
+        "t_rate": 0.5,
+        "i_rate": 0.0,
+        "m_rate": 0.5,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P289",
+        "count": 4,
+        "t_rate": 0.25,
+        "i_rate": 0.0,
+        "m_rate": 0.75,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P098",
+        "count": 4,
+        "t_rate": 0.0,
+        "i_rate": 0.75,
+        "m_rate": 0.25,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P226",
+        "count": 4,
+        "t_rate": 1.0,
+        "i_rate": 0.0,
+        "m_rate": 0.0,
+        "pos_class": "TERMINAL"
+      },
+      {
+        "symbol": "P075",
+        "count": 4,
+        "t_rate": 0.25,
+        "i_rate": 0.0,
+        "m_rate": 0.75,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P355",
+        "count": 4,
+        "t_rate": 0.5,
+        "i_rate": 0.0,
+        "m_rate": 0.5,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P096",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P114",
+        "count": 3,
+        "t_rate": 0.3333,
+        "i_rate": 0.0,
+        "m_rate": 0.6667,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P067",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.3333,
+        "m_rate": 0.6667,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P369",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P275",
+        "count": 3,
+        "t_rate": 0.3333,
+        "i_rate": 0.0,
+        "m_rate": 0.6667,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P174",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P238",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.6667,
+        "m_rate": 0.3333,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P103",
+        "count": 3,
+        "t_rate": 0.3333,
+        "i_rate": 0.0,
+        "m_rate": 0.6667,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P309",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P303",
+        "count": 3,
+        "t_rate": 0.3333,
+        "i_rate": 0.0,
+        "m_rate": 0.6667,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P288",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P326",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P234",
+        "count": 3,
+        "t_rate": 0.3333,
+        "i_rate": 0.0,
+        "m_rate": 0.6667,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P031",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P110",
+        "count": 3,
+        "t_rate": 0.3333,
+        "i_rate": 0.0,
+        "m_rate": 0.6667,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P283",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      }
+    ],
+    "class_summary__TERMINAL": 6,
+    "class_summary__INITIAL": 11,
+    "class_summary__MEDIAL": 55,
+    "class_summary__MIXED": 8,
+    "freq_map__P122 P385": 29,
+    "freq_map__P147 P316": 10,
+    "freq_map__P324 P332": 10,
+    "freq_map__P062 P060": 9,
+    "freq_map__P364 P122": 9,
+    "freq_map__P013 P324": 9,
+    "freq_map__P050 P145": 8,
+    "freq_map__P120 P256": 7,
+    "freq_map__P145 P122": 7,
+    "freq_map__P217 P050": 6,
+    "freq_map__P060 P122": 6,
+    "freq_map__P122 P086": 6,
+    "freq_map__P122 P378": 6,
+    "freq_map__P268 P268": 5,
+    "freq_map__P060 P364": 5,
+    "freq_map__P324 P086": 5,
+    "freq_map__P086 P276": 5,
+    "freq_map__P050 P092": 5,
+    "freq_map__P230 P062": 5,
+    "freq_map__P122 P205": 5,
+    "freq_map__P217 P147": 5,
+    "freq_map__P324 P175": 5,
+    "freq_map__P056 P122": 4,
+    "freq_map__P324 P154": 4,
+    "freq_map__P062 P122": 4,
+    "freq_map__P058 P122": 4,
+    "freq_map__P324 P194": 4,
+    "freq_map__P000 P122": 4,
+    "freq_map__P086 P123": 4,
+    "freq_map__P301 P230": 4,
+    "freq_map__P050 P201": 4,
+    "freq_map__P120 P230": 4,
+    "freq_map__P004 P123": 4,
+    "freq_map__P324 P009": 4,
+    "freq_map__P324 P096": 3,
+    "freq_map__P316 P011": 3,
+    "freq_map__P086 P204": 3,
+    "freq_map__P122 P202": 3,
+    "freq_map__P086 P126": 3,
+    "freq_map__P122 P050": 3,
+    "freq_map__P050 P221": 3,
+    "freq_map__P123 P122": 3,
+    "freq_map__P086 P035": 3,
+    "freq_map__P324 P230": 3,
+    "freq_map__P230 P122": 3,
+    "freq_map__P324 P050": 3,
+    "freq_map__P326 P120": 3,
+    "freq_map__P324 P073": 3,
+    "freq_map__P217 P058": 3,
+    "freq_map__P121 P202": 2,
+    "freq_map__P202 P385": 2,
+    "freq_map__P385 P073": 2,
+    "freq_map__P316 P056": 2,
+    "freq_map__P060 P120": 2,
+    "freq_map__P086 P352": 2,
+    "freq_map__P352 P011": 2,
+    "freq_map__P204 P114": 2,
+    "freq_map__P276 P058": 2,
+    "freq_map__P210 P122": 2,
+    "freq_map__P194 P122": 2,
+    "freq_map__P126 P122": 2,
+    "freq_map__P122 P369": 2,
+    "freq_map__P324 P142": 2,
+    "freq_map__P215 P275": 2,
+    "freq_map__P324 P172": 2,
+    "freq_map__P050 P060": 2,
+    "freq_map__P332 P349": 2,
+    "freq_map__P058 P120": 2,
+    "freq_map__P120 P378": 2,
+    "freq_map__P324 P145": 2,
+    "freq_map__P324 P309": 2,
+    "freq_map__P324 P358": 2,
+    "freq_map__P188 P073": 2,
+    "freq_map__P035 P270": 2,
+    "freq_map__P270 P145": 2,
+    "freq_map__P316 P062": 2,
+    "freq_map__P120 P202": 2,
+    "freq_map__P202 P154": 2,
+    "freq_map__P000 P230": 2,
+    "freq_map__P062 P050": 2,
+    "freq_map__P324 P288": 2,
+    "freq_map__P288 P127": 2,
+    "freq_map__P122 P000": 2,
+    "freq_map__P215 P091": 2,
+    "freq_map__P060 P324": 2,
+    "freq_map__P145 P050": 2,
+    "freq_map__P050 P126": 2,
+    "freq_map__P205 P076": 2,
+    "freq_map__P145 P060": 2,
+    "freq_map__P051 P145": 2,
+    "freq_map__P120 P160": 2,
+    "freq_map__P050 P124": 2,
+    "freq_map__P324 P364": 2,
+    "freq_map__P364 P056": 2,
+    "freq_map__P073 P316": 2,
+    "freq_map__P124 P122": 2,
+    "freq_map__P086 P128": 2,
+    "freq_map__P349 P139": 2,
+    "freq_map__P144 P122": 2,
+    "freq_map__P324 P003": 2,
+    "freq_map__P092 P122": 2,
+    "freq_map__P160 P303": 2,
+    "freq_map__P121 P378": 2,
+    "freq_map__P332 P283": 2,
+    "freq_map__P058 P364": 2,
+    "freq_map__P154 P355": 2,
+    "freq_map__P355 P058": 2,
+    "freq_map__P058 P075": 2,
+    "freq_map__P175 P050": 2,
+    "freq_map__P230 P234": 2,
+    "freq_map__P325 P086": 2,
+    "freq_map__P073 P108": 1,
+    "freq_map__P320 P145": 1,
+    "freq_map__P145 P094": 1,
+    "freq_map__P205 P186": 1,
+    "freq_map__P186 P147": 1,
+    "freq_map__P122 P237": 1,
+    "freq_map__P237 P268": 1,
+    "freq_map__P268 P147": 1,
+    "freq_map__P096 P062": 1,
+    "freq_map__P378 P384": 1,
+    "freq_map__P384 P201": 1,
+    "freq_map__P201 P065": 1,
+    "freq_map__P011 P324": 1,
+    "freq_map__P154 P009": 1,
+    "freq_map__P009 P154": 1,
+    "freq_map__P154 P175": 1,
+    "freq_map__P175 P062": 1,
+    "freq_map__P011 P270": 1,
+    "freq_map__P144 P205": 1,
+    "freq_map__P205 P327": 1,
+    "freq_map__P114 P151": 1,
+    "freq_map__P151 P316": 1,
+    "freq_map__P316 P060": 1,
+    "freq_map__P122 P067": 1,
+    "freq_map__P067 P221": 1,
+    "freq_map__P202 P386": 1,
+    "freq_map__P386 P182": 1,
+    "freq_map__P182 P108": 1,
+    "freq_map__P202 P205": 1,
+    "freq_map__P205 P035": 1,
+    "freq_map__P324 P117": 1,
+    "freq_map__P117 P210": 1,
+    "freq_map__P378 P026": 1,
+    "freq_map__P026 P151": 1,
+    "freq_map__P151 P346": 1,
+    "freq_map__P369 P232": 1,
+    "freq_map__P341 P324": 1,
+    "freq_map__P086 P125": 1,
+    "freq_map__P125 P122": 1,
+    "freq_map__P385 P147": 1,
+    "freq_map__P147 P147": 1,
+    "freq_map__P147 P215": 1,
+    "freq_map__P091 P121": 1,
+    "freq_map__P121 P324": 1,
+    "freq_map__P324 P272": 1,
+    "freq_map__P272 P256": 1,
+    "freq_map__P256 P145": 1,
+    "freq_map__P172 P194": 1,
+    "freq_map__P194 P050": 1,
+    "freq_map__P145 P230": 1,
+    "freq_map__P230 P000": 1,
+    "freq_map__P324 P197": 1,
+    "freq_map__P197 P120": 1,
+    "freq_map__P256 P217": 1,
+    "freq_map__P060 P121": 1,
+    "freq_map__P121 P160": 1,
+    "freq_map__P160 P350": 1,
+    "freq_map__P350 P390": 1,
+    "freq_map__P390 P076": 1,
+    "freq_map__P076 P202": 1,
+    "freq_map__P324 P062": 1,
+    "freq_map__P122 P174": 1,
+    "freq_map__P174 P011": 1,
+    "freq_map__P268 P050": 1,
+    "freq_map__P050 P316": 1,
+    "freq_map__P316 P276": 1,
+    "freq_map__P324 P228": 1,
+    "freq_map__P228 P120": 1,
+    "freq_map__P238 P060": 1,
+    "freq_map__P364 P325": 1,
+    "freq_map__P325 P311": 1,
+    "freq_map__P311 P154": 1,
+    "freq_map__P154 P123": 1,
+    "freq_map__P000 P103": 1,
+    "freq_map__P103 P324": 1,
+    "freq_map__P349 P095": 1,
+    "freq_map__P095 P122": 1,
+    "freq_map__P142 P062": 1,
+    "freq_map__P221 P210": 1,
+    "freq_map__P332 P127": 1,
+    "freq_map__P127 P210": 1,
+    "freq_map__P210 P062": 1,
+    "freq_map__P324 P067": 1,
+    "freq_map__P067 P275": 1,
+    "freq_map__P275 P058": 1,
+    "freq_map__P145 P175": 1,
+    "freq_map__P175 P111": 1,
+    "freq_map__P111 P058": 1,
+    "freq_map__P122 P041": 1,
+    "n": 2,
+    "n_ngrams": 551,
+    "top_10": [
+      {
+        "ngram": "P122 P385",
+        "count": 29
+      },
+      {
+        "ngram": "P147 P316",
+        "count": 10
+      },
+      {
+        "ngram": "P324 P332",
+        "count": 10
+      },
+      {
+        "ngram": "P062 P060",
+        "count": 9
+      },
+      {
+        "ngram": "P364 P122",
+        "count": 9
+      },
+      {
+        "ngram": "P013 P324",
+        "count": 9
+      },
+      {
+        "ngram": "P050 P145",
+        "count": 8
+      },
+      {
+        "ngram": "P120 P256",
+        "count": 7
+      },
+      {
+        "ngram": "P145 P122",
+        "count": 7
+      },
+      {
+        "ngram": "P217 P050",
+        "count": 6
+      }
+    ],
+    "lm": "<glossa_lab.pipelines.decipher.LanguageModel object at 0x000001EFCAA54440>",
+    "language": "dravidian",
+    "n_signs": 22,
+    "n_tokens": 8025,
+    "h1": 3.6921
+  }
+}

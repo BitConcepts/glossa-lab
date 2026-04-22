@@ -1188,18 +1188,19 @@ export const deleteAnchorSet = (id: string): Promise<{ deleted: boolean }> =>
 // ── H16: World Language Corpus Catalogue ─────────────────────────────
 
 export interface CorpusCatalogueEntry {
-  id:              string;
-  name:            string;
-  language:        string;
-  language_family: string;
-  script_type:     string;
-  period:          string;
-  tokens_approx:   number;
-  source_url:      string;
-  license:         string;
-  description:     string;
-  local_module:    string;  // non-empty = can import in one click
-  is_undeciphered: boolean | number;
+  id:                string;
+  name:              string;
+  language:          string;
+  language_family:   string;
+  script_type:       string;
+  period:            string;
+  tokens_approx:     number;
+  source_url:        string;
+  license:           string;
+  description:       string;
+  local_module:      string;  // non-empty = can import in one click
+  is_undeciphered:   boolean | number;
+  reading_direction: string;  // ltr | rtl | bidi | unknown
   already_imported?: boolean;  // enriched by API
 }
 

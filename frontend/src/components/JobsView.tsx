@@ -10,7 +10,6 @@ import {
   CatalogPipeline,
   JobResponse,
 } from "../api";
-import { ResultsView } from "./ResultsView";
 
 // ── Shared error dialog ─────────────────────────────────────────────────────
 interface ErrorModalProps {
@@ -96,10 +95,6 @@ export function JobsView() {
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
-  // Results drawer
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [viewResult, setViewResult] = useState<{ name: string; data: Record<string, any> } | null>(null);
-
   // Error modal
   const [errorModal, setErrorModal] = useState<{ title: string; message: string; detail?: string } | null>(null);
 
@@ -157,40 +152,36 @@ export function JobsView() {
   };
 
   const handleViewResults = async (job: JobResponse) => {
-    if (job.pipeline === "exp_run") {
-      // Navigate to Reports → Data tab and highlight the output file
-      const expId = (job.params?.exp_id as string) ?? "";
-      const filename = expId ? `${expId}.json` : "";
-      // Dispatch navigation + highlight events
-      window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: "reports" } }));
-      if (filename) {
-        // Small delay so the view has time to mount before the highlight fires
-        setTimeout(() => {
-          window.dispatchEvent(new CustomEvent("glossa:reports_highlight", {
-            detail: { tab: "data", search: filename }
-          }));
-        }, 120);
-      }
-      return;
-    }
-    // Regular pipeline jobs — show inline result or error modal
-    try {
-      const data = await getJobResults(job.id);
-      if (job.status === "failed") {
-        // Show error in modal instead of inline JSON
+    // Determine the result filename: exp_run uses exp_id.json, pipeline jobs use result_file param
+    const expId      = (job.params?.exp_id   as string) ?? "";
+    const resultFile = (job.params?.result_file as string) ?? "";
+    const filename   = expId ? `${expId}.json` : resultFile;
+
+    if (job.status === "failed") {
+      // Load error details and show in modal
+      try {
+        const data = await getJobResults(job.id);
         const errMsg = (data as Record<string, unknown>).error as string ?? "Unknown error";
         const trace  = (data as Record<string, unknown>).traceback as string ?? null;
         setErrorModal({ title: job.name, message: errMsg, detail: trace ?? undefined });
-      } else {
-        setViewResult({ name: job.name, data });
+      } catch {
+        setErrorModal({
+          title: job.name,
+          message: "Job failed — no error details stored.",
+          detail: `Job ID: ${job.id}\nPipeline: ${job.pipeline}`,
+        });
       }
-    } catch (e) {
-      // If no result stored, still show modal with what we know
-      setErrorModal({
-        title: job.name,
-        message: e instanceof Error ? e.message : "Failed to load error details.",
-        detail: `Job ID: ${job.id}\nStatus: ${job.status}`,
-      });
+      return;
+    }
+
+    // All completed jobs: navigate to Reports → Data tab
+    window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: "reports" } }));
+    if (filename) {
+      setTimeout(() => {
+        window.dispatchEvent(new CustomEvent("glossa:reports_highlight", {
+          detail: { tab: "data", search: filename },
+        }));
+      }, 120);
     }
   };
 
@@ -399,19 +390,11 @@ export function JobsView() {
                 <Td>{fmtDateTimeCompact(j.created_at)}</Td>
                 <Td>
                   <span style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                    {j.status === "completed" && !isExpRun && (
-                      <button
-                        style={{ ...btnStyle, padding: "2px 10px", fontSize: 12 }}
-                        onClick={() => handleViewResults(j)}
-                      >
-                        Results
-                      </button>
-                    )}
-                    {j.status === "completed" && isExpRun && (
+                    {j.status === "completed" && (
                       <button
                         style={{ ...btnStyle, padding: "2px 10px", fontSize: 12, background: "#059669" }}
                         onClick={() => handleViewResults(j)}
-                        title={`Open in Reports → Data tab: ${(j.params?.exp_id as string ?? "") + ".json"}`}
+                        title="Open result in Reports → Data tab"
                       >
                         📂 View in Reports
                       </button>
@@ -422,7 +405,7 @@ export function JobsView() {
                         onClick={() => handleViewResults(j)}
                         title="View error details"
                       >
-                        ⚠ Error
+                        ⚠ Error Details
                       </button>
                     )}
                     {j.status === "cancelled" && (
@@ -457,35 +440,6 @@ export function JobsView() {
         />
       )}
 
-      {/* Results drawer */}
-      {viewResult && (
-        <div
-          style={{
-            marginTop: "2rem",
-            padding: "1.25rem",
-            border: "1px solid #e5e7eb",
-            borderRadius: 6,
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: "0.75rem",
-            }}
-          >
-            <strong>Results</strong>
-            <button
-              style={{ background: "none", border: "none", cursor: "pointer", fontSize: 18 }}
-              onClick={() => setViewResult(null)}
-            >
-              ×
-            </button>
-          </div>
-          <ResultsView result={viewResult.data} jobName={viewResult.name} />
-        </div>
-      )}
     </div>
   );
 }

@@ -1,0 +1,37 @@
+{
+  "id": "indus_sign_function_dravidian",
+  "name": "Indus: Sign Function Classification + Dravidian Suffix-Position Analysis",
+  "description": "P2: Uses PositionalProfiler to classify Indus signs by function (INITIAL determinative, MEDIAL phoneme, TERMINAL/case marker). Terminal signs with high T-rate correspond to Dravidian case suffixes (-in genitive, -ku dative, -il locative, -al instrumental, -atu ablative). Compared against Dravidian LM consistency at terminal positions. This tests whether terminal sign distribution aligns with Dravidian agglutinative morphology. Also runs WritingSystemClassifier to anchor the tier classification. GPU: ocp_weight=0.0, n_seeds=5.",
+  "nodes": [
+    {"id": "corpus",    "type": "expNode", "data": {"atomicId": "BuiltinCorpus",          "label": "Indus Script",                   "params": {"corpus": "indus"}},                                                                                          "position": {"x": 60,   "y": 280}},
+    {"id": "filter",    "type": "expNode", "data": {"atomicId": "TokenFilter",             "label": "Filter hapax (min_freq=8)",       "params": {"min_freq": 8}},                                                                                            "position": {"x": 280,  "y": 280}},
+    {"id": "freq",      "type": "expNode", "data": {"atomicId": "FreqCounter",             "label": "Freq Counter",                   "params": {}},                                                                                                         "position": {"x": 500,  "y": 60}},
+    {"id": "entropy",   "type": "expNode", "data": {"atomicId": "EntropyCalc",             "label": "Entropy H1",                     "params": {}},                                                                                                         "position": {"x": 720,  "y": 60}},
+    {"id": "profiler",  "type": "expNode", "data": {"atomicId": "PositionalProfiler",      "label": "Positional Profiles (I/M/T)",    "params": {"min_count": 8}},                                                                                           "position": {"x": 500,  "y": 200}},
+    {"id": "wsc",       "type": "expNode", "data": {"atomicId": "WritingSystemClassifier", "label": "Writing System Classifier",      "params": {}},                                                                                                         "position": {"x": 960,  "y": 60}},
+    {"id": "drav_lm",   "type": "expNode", "data": {"atomicId": "BuiltinLM",              "label": "Dravidian LM (Tamil suffix ref)", "params": {"language": "dravidian"}},                                                                                 "position": {"x": 60,   "y": 500}},
+    {"id": "sa_drav",   "type": "expNode", "data": {"atomicId": "SADecipher",             "label": "SA vs Dravidian (GPU)",           "params": {"n_seeds": 5, "max_iterations": 6000, "restarts": 3, "surjective": true, "ocp_weight": 0.0}},              "position": {"x": 800,  "y": 460}},
+    {"id": "cons_drav", "type": "expNode", "data": {"atomicId": "ConsistencyScorer",      "label": "Consistency + HCI",               "params": {}},                                                                                                         "position": {"x": 1080, "y": 460}},
+    {"id": "ngrams",    "type": "expNode", "data": {"atomicId": "NgramCounter",           "label": "Bigrams (n=2)",                  "params": {"n": 2}},                                                                                                  "position": {"x": 500,  "y": 360}},
+    {"id": "merge",     "type": "expNode", "data": {"atomicId": "Merger",                 "label": "Merge: profiles + cons + wsc",   "params": {}},                                                                                                         "position": {"x": 1340, "y": 300}},
+    {"id": "out",       "type": "expNode", "data": {"atomicId": "JSONExport",             "label": "Save Results",                   "params": {"filename": "indus_sign_function_dravidian.json"}},                                                         "position": {"x": 1620, "y": 300}}
+  ],
+  "edges": [
+    {"id": "e1",  "source": "corpus",    "target": "filter",    "sourcePort": "sequences",          "targetPort": "sequences"},
+    {"id": "e2",  "source": "filter",    "target": "freq",      "sourcePort": "sequences",          "targetPort": "sequences"},
+    {"id": "e3",  "source": "filter",    "target": "profiler",  "sourcePort": "sequences",          "targetPort": "sequences"},
+    {"id": "e4",  "source": "filter",    "target": "ngrams",    "sourcePort": "sequences",          "targetPort": "sequences"},
+    {"id": "e5",  "source": "filter",    "target": "sa_drav",   "sourcePort": "sequences",          "targetPort": "sequences"},
+    {"id": "e6",  "source": "freq",      "target": "entropy",   "sourcePort": "freq_map",           "targetPort": "freq_map"},
+    {"id": "e7",  "source": "freq",      "target": "wsc",       "sourcePort": "distinct_symbols",   "targetPort": "distinct_symbols"},
+    {"id": "e8",  "source": "entropy",   "target": "wsc",       "sourcePort": "h1",                 "targetPort": "h1"},
+    {"id": "e9",  "source": "drav_lm",   "target": "sa_drav",   "sourcePort": "lm",                 "targetPort": "lm"},
+    {"id": "e10", "source": "sa_drav",   "target": "cons_drav", "sourcePort": "all_mappings",       "targetPort": "all_mappings"},
+    {"id": "e11", "source": "profiler",  "target": "merge",     "sourcePort": "class_summary",      "targetPort": "a"},
+    {"id": "e12", "source": "wsc",       "target": "merge",     "sourcePort": "tier_classification","targetPort": "b"},
+    {"id": "e13", "source": "cons_drav", "target": "merge",     "sourcePort": "mean_consistency",   "targetPort": "c"},
+    {"id": "e14", "source": "ngrams",    "target": "merge",     "sourcePort": "top_10",             "targetPort": "d"},
+    {"id": "e15", "source": "profiler",  "target": "merge",     "sourcePort": "profiles",           "targetPort": "e"},
+    {"id": "e16", "source": "merge",     "target": "out",       "sourcePort": "json",               "targetPort": "data"}
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "data": {
+    "a": [
+      {
+        "symbol": "411",
+        "count": 342
+      },
+      {
+        "symbol": "342",
+        "count": 328
+      },
+      {
+        "symbol": "550",
+        "count": 280
+      },
+      {
+        "symbol": "159",
+        "count": 274
+      },
+      {
+        "symbol": "070",
+        "count": 209
+      },
+      {
+        "symbol": "412",
+        "count": 201
+      },
+      {
+        "symbol": "343",
+        "count": 165
+      },
+      {
+        "symbol": "413",
+        "count": 153
+      },
+      {
+        "symbol": "017",
+        "count": 142
+      },
+      {
+        "symbol": "400",
+        "count": 141
+      }
+    ],
+    "b__TERMINAL": 0,
+    "b__INITIAL": 0,
+    "b__MEDIAL": 0,
+    "b__MIXED": 86,
+    "c": [],
+    "d": [],
+    "e": "Logographic / Logosyllabic",
+    "f": 1.3496
+  }
+}

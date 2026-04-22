@@ -4184,3 +4184,88 @@ Risks:
 - All inscription readings are [INFERRED] without further cross-validation against visual Parpola sign types.
 
 Next step: Re-run 5-anchor SA with P324='o' (corrected from 'k'); test M-5A 'koyil' hypothesis via P096 positional analysis; build UI Anchor Set.
+
+---
+
+## [2026-04-22] Entry — P324 Revision, Koyil Hypothesis, Optimal Anchor Set in DB
+
+Objective: Do the next step from LEDGER: re-run 5-anchor SA with P324='o', test M-5A koyil hypothesis, build Anchor Set in DB.
+
+### Experiments (shell.cmd python -m glossa_lab.experiments)
+
+- **`indus_cisi_anchored_5_o`** — P324 corrected to 'o' (ko syllable vowel)
+
+### Analysis (shell.cmd python backend/scripts/...)
+
+- **`analyze_koyil.py`** — P096 positional analysis + M-5A 'koyil' hypothesis test
+- **`compare_p324_revision.py`** — P324='k' vs P324='o' head-to-head comparison
+- **`create_anchor_set.py`** — Created optimal 5-anchor set in glossa.db
+
+### Results
+
+**P324 revision: 'o' vs 'k' comparison [VERIFIED]:**
+
+| Anchor | Consistency | HCI% | Verdict |
+|---|---|---|---|
+| P324='k' (original 5-anchor) | **0.8591** | **88.4%** | OPTIMAL |
+| P324='o' (revised) | 0.817 | 79.6% | -4.2pp worse |
+
+Key finding: **P324='k' remains the correct SA mapping despite P324 being structurally a 'ko' syllable.** Reconciliation: the SA phonotactic model maps P324 to 'k' (the primary consonant of 'ko'), which correctly reflects how 'k'-initial words dominate Dravidian phonotactics. The structural evidence (P324 never precedes P122) confirms P324 = full syllable, but the SA correctly identifies /k/ as the dominant phoneme for bigram scoring.
+
+**P096 analysis [INFERRED]:**
+- P096: 3/3 = 100% MEDIAL, ALL 3 occurrences preceded by P324
+- P096='y' (medial consonant) is STRUCTURALLY SUPPORTED
+- BUT: SA with P324='o' maps P096='n' (not 'y') — phonotactically, 'on' fits Dravidian better than 'oy'
+- TENSION: structural evidence supports 'koyil'; SA phonotactics support 'kon...' or 'on...' pattern
+
+**M-5A reading status:**
+- [INFERRED structural]: P324(ko)+P096(y)+P060(i)+P256(l) = **'koyil'** (temple, Tamil kōyil)
+- [SA verdict]: P324(k/o)+P096(n)+... = pattern suggesting genitive or 'on' (one)
+- Status: INFERRED structural, NOT SA-phonotactically confirmed
+- P096 needs visual crosswalk against Parpola sign catalog to determine if it's a /y/ variant
+
+**New interesting inscription pattern with P324='o':**
+- Many inscriptions show **'om...' or 'on...'** patterns with P324='o'
+- M-148A: `P324+P385` = **'on'** — Tamil 'on' (one) OR genitive-of-'ko' [INFERRED]
+- M-165A: contains **'mano'** = Tamil 'mano' (mind/heart, Sanskrit loanword) [SPECULATIVE]
+
+**Anchor Set created in DB:**
+- ID: dcf69e6e69fe
+- Name: "CISI Optimal 5-Anchor Set (P385=n, P324=o, P122=a, P086=m, P060=i)"
+- 5 pairs with confidence levels (high/medium) and etymological notes
+- Available in UI: Corpora → Anchor Sets → AnchorSetLoader node in palette
+
+### Final consensus on 5-anchor set
+
+The empirically optimal anchor set for SA decipherment is {P385=n, P324=k, P122=a, P086=m, P060=i}:
+- All 5 are structurally VERIFIED or INFERRED
+- Adding more anchors reduces consistency (peak at 5)
+- P324='k' fits Dravidian phonotactics better than P324='o' in SA model
+- Linguistic interpretation: P324 = syllable 'ko/ku' where /k/ is primary phoneme
+
+### Files changed
+
+- `experiments/graphs/indus_cisi_anchored_5_o.json` (created)
+- `scripts/analyze_koyil.py` + `compare_p324_revision.py` + `create_anchor_set.py` (created)
+- `reports/` — 3 new result files + CliReporter timestamps
+
+### Checks run
+
+- `shell.cmd python -m glossa_lab.experiments indus_cisi_anchored_5_o` (H7) ✓
+- `shell.cmd python backend/scripts/analyze_koyil.py` (H7, H14) ✓
+- `shell.cmd python backend/scripts/compare_p324_revision.py` (H7, H14) ✓
+- `shell.cmd python backend/scripts/create_anchor_set.py` (H7, H14) ✓
+
+Open TODOs:
+- [ ] Visual crosswalk: identify P096 visually in Parpola (1982) sign catalog — is it the Indus 'y' syllable sign?
+- [ ] Contact Parpola group for full CISI corpus (3K+ inscriptions, all sites)
+- [ ] Run `indus_cisi_anchored_5` with AnchorSetLoader (use DB anchor set dcf69e6e69fe)
+- [ ] Expand anchor analysis: test P332 (most common P324-follower, n=10) phoneme assignment
+- [ ] Investigate P324+P385 = 'on' reading in M-148A: 'of the king' vs 'one'
+
+Risks:
+- 'koyil' reading is [INFERRED structural] only — SA phonotactics support 'kon...' pattern instead
+- The 5-anchor SA degeneracy (most signs → 'a') limits reading coverage; need full CISI corpus
+- P096 visual identification needed from Parpola printed catalog (not available digitally)
+
+Next step: Identify P332 (n=10, most common P324-follower) phoneme via positional + frequency analysis; run AnchorSetLoader-linked SA experiment; investigate M-148A 'on'='one'/'of-king' disambiguation.

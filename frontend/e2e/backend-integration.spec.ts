@@ -323,7 +323,7 @@ test.describe("System metrics peaks", () => {
 test.describe("Corpora UI", () => {
   test("corpora page shows corpus cards", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /^Corpora$/ }).first().click();
+    await page.getByTitle("Corpora").first().click();
     await page.waitForTimeout(1000);
     // Either shows corpora or "No corpora yet" message
     const hasCorpora = await page.locator("div").filter({ hasText: /corpus entries/i }).count() > 0;
@@ -333,7 +333,7 @@ test.describe("Corpora UI", () => {
 
   test("corpus card expands on click", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /^Corpora$/ }).first().click();
+    await page.getByTitle("Corpora").first().click();
     await page.waitForTimeout(1500);
     // If there are corpus cards, click the first one
     const cards = page.locator("[style*='border: 1px solid'][style*='border-radius: 8px']");
@@ -349,14 +349,14 @@ test.describe("Corpora UI", () => {
 test.describe("Entropy Dashboard UI", () => {
   test("entropy tab shows dashboard with corpus selector", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /Entropy/i }).first().click();
+    await page.getByTitle("Entropy").first().click();
     await expect(page.getByRole("heading", { name: "Entropy Dashboard" })).toBeVisible();
     await expect(page.getByRole("button", { name: /Add Corpus/i })).toBeVisible();
   });
 
   test("entropy dashboard shows select corpus dropdown", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /Entropy/i }).first().click();
+    await page.getByTitle("Entropy").first().click();
     await page.waitForTimeout(1000);
     await expect(page.locator("select").filter({ hasText: /select corpus/i })).toBeVisible();
   });
@@ -365,14 +365,14 @@ test.describe("Entropy Dashboard UI", () => {
 test.describe("Hypothesis Tracker UI", () => {
   test("hypotheses tab loads", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /Hypotheses/i }).first().click();
+    await page.getByTitle("Hypotheses").first().click();
     await expect(page.getByRole("heading", { name: "Hypothesis Tracker" })).toBeVisible();
     await expect(page.getByPlaceholder(/New hypothesis title/i)).toBeVisible();
   });
 
   test("can type a hypothesis title", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /Hypotheses/i }).first().click();
+    await page.getByTitle("Hypotheses").first().click();
     const input = page.getByPlaceholder(/New hypothesis title/i);
     await input.fill("Indus Script is linguistic");
     await expect(input).toHaveValue("Indus Script is linguistic");
@@ -384,7 +384,7 @@ test.describe("Hypothesis Tracker UI", () => {
 test.describe("Research Notebook UI", () => {
   test("notebooks tab loads", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /Notebooks/i }).first().click();
+    await page.getByTitle("Notebooks").first().click();
     await expect(page.getByRole("heading", { name: "Research Notebooks" })).toBeVisible();
     await expect(page.getByPlaceholder(/New notebook title/i)).toBeVisible();
   });
@@ -393,38 +393,49 @@ test.describe("Research Notebook UI", () => {
 test.describe("Citation Manager UI", () => {
   test("citations tab loads with add form", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /Citations/i }).first().click();
+    await page.getByTitle("Citations").first().click();
     await expect(page.getByRole("heading", { name: "Citation Manager" })).toBeVisible();
   });
 });
 
 test.describe("AI Chat UI", () => {
-  test("AI Chat tab shows chat interface", async ({ page }) => {
+  // The AI assistant is opened via the "✨ Glossa AI" sidebar button (not a tab).
+  // The panel shows "Glossa AI" + "Research assistant" text — no role=heading.
+
+  test("Glossa AI panel opens with chat textarea", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /AI Chat/i }).first().click();
-    await expect(page.getByRole("heading", { name: /Glossa AI Chat/i })).toBeVisible();
-    await expect(page.locator("textarea")).toBeVisible();
-    await expect(page.getByRole("button", { name: /Send/i })).toBeVisible();
+    // Open via the sidebar button (title toggles between Open/Close)
+    await page.getByTitle(/Open AI assistant/i).first().click();
+    // Panel header shows "Glossa AI"
+    await expect(page.getByText("Glossa AI").first()).toBeVisible();
+    // Sub-header shows "Research assistant"
+    await expect(page.getByText("Research assistant")).toBeVisible();
+    // Chat input textarea is present
+    await expect(page.locator("textarea").first()).toBeVisible();
   });
 
-  test("AI Chat shows starter prompts", async ({ page }) => {
+  test("Glossa AI panel shows starter prompt buttons", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /AI Chat/i }).first().click();
-    await expect(page.getByText(/Zipf law/i)).toBeVisible({ timeout: 3000 });
+    await page.getByTitle(/Open AI assistant/i).first().click();
+    // Starter prompts: "What experiments should I run?", "Explain the Ventris method", etc.
+    await expect(page.getByText(/Ventris/i)).toBeVisible({ timeout: 3000 });
   });
 
-  test("AI Chat context selector works", async ({ page }) => {
+  test("Glossa AI panel has Research context button", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /AI Chat/i }).first().click();
-    await page.getByRole("button", { name: /^corpus$/i }).click();
-    await expect(page.locator("select")).toBeVisible({ timeout: 2000 });
+    await page.getByTitle(/Open AI assistant/i).first().click();
+    // Context is auto-inferred from active view.
+    // The only manual context override is the \"🔬 Research\" button.
+    await expect(
+      page.locator("button").filter({ hasText: /Research/ }).first()
+    ).toBeVisible({ timeout: 3000 });
   });
 });
 
 test.describe("AI Tools UI", () => {
   test("AI Tools tab shows tool sections", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /AI Tools/i }).first().click();
+    await page.getByTitle("AI Tools").first().click();
     await expect(page.getByRole("heading", { name: /AI Research Tools/i })).toBeVisible();
     await expect(page.getByText(/Decipherment/i)).toBeVisible();
     await expect(page.getByText(/Draft Paper/i)).toBeVisible();
@@ -434,7 +445,7 @@ test.describe("AI Tools UI", () => {
 test.describe("Sign Dictionary UI", () => {
   test("signs tab shows dictionary grid", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /Signs/i }).first().click();
+    await page.getByTitle("Signs").first().click();
     await expect(page.getByRole("heading", { name: "Sign Dictionary" })).toBeVisible();
     // Should show sign IDs like 740
     await expect(page.getByText("740")).toBeVisible({ timeout: 3000 });
@@ -442,7 +453,7 @@ test.describe("Sign Dictionary UI", () => {
 
   test("sign search filters results", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /Signs/i }).first().click();
+    await page.getByTitle("Signs").first().click();
     await page.getByPlaceholder(/Search sign ID/i).fill("fish");
     await expect(page.getByText(/fish/i).first()).toBeVisible({ timeout: 2000 });
   });
@@ -451,7 +462,7 @@ test.describe("Sign Dictionary UI", () => {
 test.describe("Timeline UI", () => {
   test("timeline tab loads", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /Timeline/i }).first().click();
+    await page.getByTitle("Timeline").first().click();
     await expect(page.getByRole("heading", { name: "Timeline" })).toBeVisible();
   });
 });
@@ -504,7 +515,7 @@ test.describe("Command Palette", () => {
 test.describe("Settings - Ollama", () => {
   test("settings tab shows Ollama section", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /Settings/i }).first().click();
+    await page.getByTitle("Settings").first().click();
     await page.waitForTimeout(500);
     await expect(page.getByText(/Ollama/i).first()).toBeVisible();
     await expect(page.getByText(/Local AI Models/i)).toBeVisible();
@@ -512,14 +523,14 @@ test.describe("Settings - Ollama", () => {
 
   test("Ollama section shows model library", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /Settings/i }).first().click();
+    await page.getByTitle("Settings").first().click();
     await page.waitForTimeout(1500);
     await expect(page.getByText(/Model Library/i)).toBeVisible({ timeout: 5000 });
   });
 
   test("Ollama section shows GPU recommendation", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /Settings/i }).first().click();
+    await page.getByTitle("Settings").first().click();
     await page.waitForTimeout(2000);
     // Either shows recommendation or "not running" message
     const hasRec = await page.getByText(/GPU.*Recommendation/i).count() > 0;
@@ -531,7 +542,7 @@ test.describe("Settings - Ollama", () => {
 test.describe("Status view - system metrics", () => {
   test("status page shows system metrics sections", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /^Status$/ }).first().click();
+    await page.getByTitle("Status").first().click();
     await page.waitForTimeout(2000);
     // Should show CPU, Memory, Disk, Network sections
     await expect(page.getByText(/CPU/i).first()).toBeVisible({ timeout: 5000 });
@@ -540,13 +551,13 @@ test.describe("Status view - system metrics", () => {
 
   test("status page shows Clear Peaks button", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /^Status$/ }).first().click();
+    await page.getByTitle("Status").first().click();
     await expect(page.getByRole("button", { name: /Clear Peaks/i })).toBeVisible({ timeout: 3000 });
   });
 
   test("Clear Peaks button is clickable", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /^Status$/ }).first().click();
+    await page.getByTitle("Status").first().click();
     await page.waitForTimeout(500);
     const btn = page.getByRole("button", { name: /Clear Peaks/i });
     await btn.waitFor({ timeout: 5000 });

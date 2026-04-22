@@ -21,21 +21,26 @@ test.describe("Status view structure", () => {
   });
 
   test("shows loading or a status row within 5 seconds", async ({ page }) => {
-    // Within 5s, the component should either show 'Loading' or resolved status
+    // Within 5s, the component should show 'Loading' or resolved status.
+    // Use .first() to avoid strict mode: health badge + status view both match.
     await expect(
-      page.getByText(/loading|healthy|degraded|disconnected/i)
+      page.getByText(/loading|healthy|degraded|disconnected|offline/i).first()
     ).toBeVisible({ timeout: 5000 });
   });
 
-  test("shows Disconnected when backend is unreachable", async ({ page, context }) => {
+  test("shows Offline/Disconnected when backend is unreachable", async ({ page, context }) => {
     // Block all API requests to simulate backend being down
     await context.route("**/api/v1/**", (route) => route.abort());
     // Navigate fresh so all API calls are blocked from the start
     await page.goto("/");
     // Navigate to Status tab (default is Indus Studies)
-    await page.getByRole("button", { name: "Status" }).click();
+    await page.getByTitle("Status").first().click();
 
-    await expect(page.getByText(/disconnected/i)).toBeVisible({ timeout: 10000 });
+    // The header health badge shows "Offline"; StatusView may say "Disconnected".
+    // Match either so the test is resilient to wording changes.
+    await expect(
+      page.getByText(/disconnected|offline/i).first()
+    ).toBeVisible({ timeout: 10000 });
   });
 });
 

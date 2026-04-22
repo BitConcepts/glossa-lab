@@ -1,0 +1,20 @@
+{
+    "id": "P012",
+    "description": "Person with an extra raised arm",
+    "parpola_graphemes": [
+        "V268",
+        "V743"
+    ],
+    "wells_graphemes": [
+        "W098"
+    ],
+    "mahadevan_graphemes": [
+        "M007"
+    ],
+    "features": [
+        {
+            "raised_arm": "integer",
+            "description": "Which arm is raised? 0 = left, 1 = right"
+        }
+    ]
+}

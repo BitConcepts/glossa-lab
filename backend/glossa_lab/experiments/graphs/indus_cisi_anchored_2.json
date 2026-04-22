@@ -1,0 +1,22 @@
+{
+  "id": "indus_cisi_anchored_2",
+  "name": "Indus CISI: Anchored Decipherment — 2 Anchor Readings (P385=n, P324=k)",
+  "description": "First anchored decipherment attempt on real CISI inscription data. Anchors derived from structural analysis: P385 (T=0.83, preceded by P122 in 83% of cases) → 'n' (Dravidian genitive suffix -in phoneme /n/); P324 (I=0.78, most frequent initial sign n=99) → 'k' (Dravidian initial consonant /k/, as in 'ko' king/chief, 'kal' stone). These are the most structurally motivated readings. The SA must satisfy: P122→P385 bigram maps to a Dravidian genitive construction; P324 maps to a high-frequency Dravidian initial consonant. GPU: ocp_weight=0.0, n_seeds=5, max_iter=10000.",
+  "nodes": [
+    {"id": "corpus",     "type": "expNode", "data": {"atomicId": "BuiltinCorpus",    "label": "Indus CISI (178 inscriptions)",       "params": {"corpus": "indus_cisi"}},                                                                                                                   "position": {"x": 60,   "y": 240}},
+    {"id": "drav_lm",   "type": "expNode", "data": {"atomicId": "BuiltinLM",        "label": "South Dravidian LM (T+K+Tel)",         "params": {"language": "south_dravidian"}},                                                                                                           "position": {"x": 60,   "y": 440}},
+    {"id": "sa",        "type": "expNode", "data": {"atomicId": "SADecipher",       "label": "Anchored SA (GPU, 2 anchors)",          "params": {"n_seeds": 5, "max_iterations": 10000, "restarts": 4, "surjective": true, "ocp_weight": 0.0, "anchors": {"P385": "n", "P324": "k"}}}, "position": {"x": 700,  "y": 320}},
+    {"id": "cons",      "type": "expNode", "data": {"atomicId": "ConsistencyScorer","label": "Consistency + HCI",                    "params": {}},                                                                                                                                       "position": {"x": 1020, "y": 320}},
+    {"id": "merge",     "type": "expNode", "data": {"atomicId": "Merger",           "label": "Merge Results",                        "params": {}},                                                                                                                                       "position": {"x": 1280, "y": 320}},
+    {"id": "out",       "type": "expNode", "data": {"atomicId": "JSONExport",       "label": "Save Anchored Results",                "params": {"filename": "indus_cisi_anchored_2.json"}},                                                                                              "position": {"x": 1560, "y": 320}}
+  ],
+  "edges": [
+    {"id": "e1", "source": "corpus",  "target": "sa",    "sourcePort": "sequences",        "targetPort": "sequences"},
+    {"id": "e2", "source": "drav_lm", "target": "sa",    "sourcePort": "lm",               "targetPort": "lm"},
+    {"id": "e3", "source": "sa",      "target": "cons",  "sourcePort": "all_mappings",     "targetPort": "all_mappings"},
+    {"id": "e4", "source": "cons",    "target": "merge", "sourcePort": "mean_consistency", "targetPort": "a"},
+    {"id": "e5", "source": "cons",    "target": "merge", "sourcePort": "hci_pct",          "targetPort": "b"},
+    {"id": "e6", "source": "sa",      "target": "merge", "sourcePort": "proposed_mapping", "targetPort": "c"},
+    {"id": "e7", "source": "merge",   "target": "out",   "sourcePort": "json",             "targetPort": "data"}
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "indus_cisi_anchored_5",
+  "name": "Indus CISI: Anchored Decipherment — 5 Anchor Readings",
+  "description": "Extended anchored decipherment with 5 structurally motivated readings. Anchors: P385→'n' (genitive suffix, T=0.83, n=35); P324→'k' (INITIAL, n=99, I=0.78); P122→'a' (pure MEDIAL n=76, M=1.00, most frequent medial — acts as vowel carrier for the stem before genitive); P086→'m' (INITIAL n=35, I=0.54 — second most common initial after P324, likely 'man', 'min', 'mul' type word-initial); P060→'i' (pure MEDIAL n=20, M=0.95 — common inner vowel). The pattern P324(k)+...+P122(a)+P385(n) = 'k...an' → Dravidian word in genitive. E.g. P324+P122+P385 = 'kan' = 'eye' (Tamil kan+in genitive). GPU: ocp_weight=0.0, n_seeds=8, max_iter=12000.",
+  "nodes": [
+    {"id": "corpus",  "type": "expNode", "data": {"atomicId": "BuiltinCorpus",    "label": "Indus CISI (178 inscriptions)",  "params": {"corpus": "indus_cisi"}},                                                                                                                                                    "position": {"x": 60,   "y": 240}},
+    {"id": "drav_lm", "type": "expNode", "data": {"atomicId": "BuiltinLM",        "label": "South Dravidian LM",             "params": {"language": "south_dravidian"}},                                                                                                                                              "position": {"x": 60,   "y": 440}},
+    {"id": "sa",      "type": "expNode", "data": {"atomicId": "SADecipher",       "label": "5-Anchor SA (GPU)",              "params": {"n_seeds": 8, "max_iterations": 12000, "restarts": 4, "surjective": true, "ocp_weight": 0.0, "anchors": {"P385": "n", "P324": "k", "P122": "a", "P086": "m", "P060": "i"}}}, "position": {"x": 700,  "y": 320}},
+    {"id": "cons",    "type": "expNode", "data": {"atomicId": "ConsistencyScorer","label": "Consistency + HCI",              "params": {}},                                                                                                                                                                            "position": {"x": 1020, "y": 320}},
+    {"id": "merge",   "type": "expNode", "data": {"atomicId": "Merger",           "label": "Merge 5-Anchor Results",         "params": {}},                                                                                                                                                                          "position": {"x": 1280, "y": 320}},
+    {"id": "out",     "type": "expNode", "data": {"atomicId": "JSONExport",       "label": "Save",                           "params": {"filename": "indus_cisi_anchored_5.json"}},                                                                                                                                   "position": {"x": 1560, "y": 320}}
+  ],
+  "edges": [
+    {"id": "e1", "source": "corpus",  "target": "sa",    "sourcePort": "sequences",        "targetPort": "sequences"},
+    {"id": "e2", "source": "drav_lm", "target": "sa",    "sourcePort": "lm",               "targetPort": "lm"},
+    {"id": "e3", "source": "sa",      "target": "cons",  "sourcePort": "all_mappings",     "targetPort": "all_mappings"},
+    {"id": "e4", "source": "cons",    "target": "merge", "sourcePort": "mean_consistency", "targetPort": "a"},
+    {"id": "e5", "source": "cons",    "target": "merge", "sourcePort": "hci_pct",          "targetPort": "b"},
+    {"id": "e6", "source": "sa",      "target": "merge", "sourcePort": "proposed_mapping", "targetPort": "c"},
+    {"id": "e7", "source": "merge",   "target": "out",   "sourcePort": "json",             "targetPort": "data"}
+  ]
+}

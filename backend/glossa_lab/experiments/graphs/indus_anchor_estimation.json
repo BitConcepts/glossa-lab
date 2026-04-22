@@ -1,0 +1,24 @@
+{
+  "id": "indus_anchor_estimation",
+  "name": "Indus: Anchor Estimation — Minimum k for >80% Free-Sign Accuracy (CISI Corpus)",
+  "description": "P2: Uses AnchorConvergenceBenchmark on the CISI corpus (179 real multi-sign inscriptions) to find the minimum number of externally-identified anchor signs needed for reliable decipherment. CISI uses Parpola sign numbering and provides real inscription structure. CorpusSplitter(75/25): train set builds the LM; CipherConstructor applies a random bijective shuffle to the test set; AnchorConvergenceBenchmark sweeps anchor counts [0,5,10,20,30,50] measuring top-1 free-sign accuracy at each k. The anchor count where accuracy first exceeds 80% gives the practical anchor requirement for the Indus Script.",
+  "nodes": [
+    {"id": "corpus",    "type": "expNode", "data": {"atomicId": "BuiltinCorpus",            "label": "Indus CISI (179 Mohenjo-daro)",    "params": {"corpus": "indus_cisi"}},                                                                   "position": {"x": 60,   "y": 240}},
+    {"id": "split",     "type": "expNode", "data": {"atomicId": "CorpusSplitter",           "label": "75/25 Train/Test Split",          "params": {"train_ratio": 0.75}},                                                                      "position": {"x": 300,  "y": 240}},
+    {"id": "lm",        "type": "expNode", "data": {"atomicId": "LMBuilder",                "label": "Indus LM (train 75%)",            "params": {}},                                                                                         "position": {"x": 560,  "y": 100}},
+    {"id": "cipher",    "type": "expNode", "data": {"atomicId": "CipherConstructor",        "label": "Random Bijective Cipher",        "params": {"cipher_seed": 42, "max_tokens": 800}},                                                     "position": {"x": 560,  "y": 380}},
+    {"id": "benchmark", "type": "expNode", "data": {"atomicId": "AnchorConvergenceBenchmark","label": "Anchor Sweep [0,5,10,20,30,50]", "params": {"anchor_counts": [0, 5, 10, 20, 30, 50], "n_structured": 3, "n_random": 5, "n_seeds_base": 5, "n_seeds_struct": 3, "n_seeds_rand": 2, "sa_iterations": 3000, "sa_restarts": 2, "use_word_final_anchors": true}}, "position": {"x": 820,  "y": 240}},
+    {"id": "out",       "type": "expNode", "data": {"atomicId": "JSONExport",               "label": "Save Anchor Estimation",         "params": {"filename": "indus_anchor_estimation.json"}},                                               "position": {"x": 1080, "y": 240}}
+  ],
+  "edges": [
+    {"id": "e1", "source": "corpus",    "target": "split",     "sourcePort": "sequences",       "targetPort": "sequences"},
+    {"id": "e2", "source": "split",     "target": "lm",        "sourcePort": "train_sequences", "targetPort": "sequences"},
+    {"id": "e3", "source": "split",     "target": "cipher",    "sourcePort": "test_sequences",  "targetPort": "sequences"},
+    {"id": "e4", "source": "lm",        "target": "cipher",    "sourcePort": "lm",              "targetPort": "lm"},
+    {"id": "e5", "source": "cipher",    "target": "benchmark", "sourcePort": "cipher_sequences","targetPort": "cipher_sequences"},
+    {"id": "e6", "source": "cipher",    "target": "benchmark", "sourcePort": "true_mapping",    "targetPort": "true_mapping"},
+    {"id": "e7", "source": "cipher",    "target": "benchmark", "sourcePort": "sign_inventory",  "targetPort": "sign_inventory"},
+    {"id": "e8", "source": "lm",        "target": "benchmark", "sourcePort": "lm",              "targetPort": "lm"},
+    {"id": "e9", "source": "benchmark", "target": "out",       "sourcePort": "summary_table",   "targetPort": "data"}
+  ]
+}

@@ -9,7 +9,8 @@ import { test, expect } from "@playwright/test";
 test.describe("Corpora view structure", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: "Corpora" }).click();
+    // Use getByTitle to scope to sidebar nav button
+    await page.getByTitle("Corpora").first().click();
     await expect(page.getByRole("heading", { name: "Corpora" })).toBeVisible();
   });
 
@@ -83,7 +84,7 @@ test.describe("Corpora view with backend", () => {
 
   test("shows empty state message when no corpora exist", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: "Corpora" }).click();
+    await page.getByTitle("Corpora").first().click();
     // Either a table or the empty state message
     const emptyMsg = page.getByText(/No corpora yet/i);
     const table = page.locator("table");

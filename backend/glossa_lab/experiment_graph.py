@@ -283,6 +283,7 @@ def _builtin_corpus(inputs: dict, params: dict) -> dict:
         if name == "indus":
             from glossa_lab.data.indus_public_corpus import get_corpus_symbols  # noqa: PLC0415
             flat = get_corpus_symbols()
+            # Single-token sequences — use CorpusReader for multi-sign inscriptions
             seqs: list = [[s] for s in flat]
         elif name in ("hebrew", "old_hebrew"):
             from glossa_lab.data.old_hebrew import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
@@ -305,7 +306,7 @@ def _builtin_corpus(inputs: dict, params: dict) -> dict:
             flat = get_corpus_symbols(); seqs = get_corpus_inscriptions()
         elif name in ("sanskrit", "vedic"):
             from glossa_lab.data.sanskrit import get_corpus_symbols  # noqa: PLC0415
-            flat = get_corpus_symbols(); seqs = [[s] for s in flat]
+            flat = get_corpus_symbols(); seqs = [[s] for s in flat if len(s) >= 1]
         elif name in ("proto_sinaitic", "proto-sinaitic"):
             from glossa_lab.data.proto_sinaitic import get_corpus_symbols  # noqa: PLC0415
             flat = get_corpus_symbols()
@@ -317,8 +318,11 @@ def _builtin_corpus(inputs: dict, params: dict) -> dict:
         elif name in ("linear_b", "linear-b", "mycenaean"):
             from glossa_lab.data.linear_b_language import get_corpus_symbols  # noqa: PLC0415
             flat = get_corpus_symbols(); seqs = [[s] for s in flat]
+        elif name in ("dravidian", "tamil"):
+            from glossa_lab.data.dravidian import get_corpus_symbols, get_corpus_inscriptions as _di  # noqa: PLC0415
+            flat = get_corpus_symbols(); seqs = _di()  # word-level char sequences
         else:
-            return {"error": f"Unknown corpus '{name}'. Valid: indus, hebrew, geez, phoenician, nw_semitic/ugaritic, meroitic, proto_sinaitic, linear_b, sanskrit"}
+            return {"error": f"Unknown corpus '{name}'. Valid: indus, hebrew, geez, phoenician, nw_semitic/ugaritic, meroitic, proto_sinaitic, linear_b, sanskrit, dravidian"}
     except ImportError as exc:
         return {"error": str(exc)}
     from collections import Counter  # noqa: PLC0415

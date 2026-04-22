@@ -518,8 +518,26 @@ def get_corpus_text() -> str:
 
 
 def get_corpus_symbols() -> list[str]:
-    """Return character-level symbol sequence from Old Tamil."""
+    """Return character-level symbol sequence from Old Tamil (flat list)."""
     return [c for c in get_corpus_text().lower() if c.isalpha()]
+
+
+def get_corpus_inscriptions() -> list[list[str]]:
+    """Return word-level character sequences for the Dravidian corpus.
+
+    Each word in the text becomes a sequence of its constituent characters.
+    Words with < 2 characters are excluded.  This produces multi-character
+    sequences that CipherConstructor and AnchorConvergenceBenchmark require.
+
+    Example: 'akara mutala' -> [['a','k','a','r','a'], ['m','u','t','a','l','a']]
+    """
+    text = get_corpus_text().lower()
+    seqs = []
+    for word in text.split():
+        chars = [c for c in word if c.isalpha()]
+        if len(chars) >= 2:
+            seqs.append(chars)
+    return seqs
 
 
 def get_morphology() -> dict:

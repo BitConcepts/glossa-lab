@@ -1,0 +1,24 @@
+{
+  "id": "indus_cisi_sa_anchorset",
+  "name": "Indus CISI: SA Decipherment via AnchorSetLoader (DB anchor set)",
+  "description": "Production-pattern SA decipherment: anchors loaded from the database via AnchorSetLoader rather than hardcoded in graph params. Uses the CISI Optimal 5-Anchor Set (ID: dcf69e6e69fe) stored in glossa.db: P385->n, P324->k, P122->a, P086->m, P060->i. This is the recommended pattern for reusable anchor sets — modify the DB set in the Anchor Set Editor and re-run without touching the graph. GPU fast path: ocp_weight=0.0, n_seeds=8, max_iter=12000.",
+  "nodes": [
+    {"id": "corpus",  "type": "expNode", "data": {"atomicId": "BuiltinCorpus",    "label": "Indus CISI (178 inscriptions)",   "params": {"corpus": "indus_cisi"}},                                                                                                                                    "position": {"x": 60,   "y": 240}},
+    {"id": "drav_lm", "type": "expNode", "data": {"atomicId": "BuiltinLM",        "label": "South Dravidian LM",              "params": {"language": "south_dravidian"}},                                                                                                                              "position": {"x": 60,   "y": 440}},
+    {"id": "anchors", "type": "expNode", "data": {"atomicId": "AnchorSetLoader",  "label": "CISI Optimal 5-Anchor Set (DB)",  "params": {"anchor_set_id": "dcf69e6e69fe"}},                                                                                                                           "position": {"x": 60,   "y": 620}},
+    {"id": "sa",      "type": "expNode", "data": {"atomicId": "SADecipher",       "label": "SA + DB Anchors (GPU)",           "params": {"n_seeds": 8, "max_iterations": 12000, "restarts": 4, "surjective": true, "ocp_weight": 0.0}},                                                             "position": {"x": 700,  "y": 380}},
+    {"id": "cons",    "type": "expNode", "data": {"atomicId": "ConsistencyScorer","label": "Consistency + HCI",               "params": {}},                                                                                                                                                            "position": {"x": 1040, "y": 380}},
+    {"id": "merge",   "type": "expNode", "data": {"atomicId": "Merger",           "label": "Merge Results",                   "params": {}},                                                                                                                                                            "position": {"x": 1300, "y": 380}},
+    {"id": "out",     "type": "expNode", "data": {"atomicId": "JSONExport",       "label": "Save",                            "params": {"filename": "indus_cisi_sa_anchorset.json"}},                                                                                                                  "position": {"x": 1560, "y": 380}}
+  ],
+  "edges": [
+    {"id": "e1", "source": "corpus",  "target": "sa",    "sourcePort": "sequences",        "targetPort": "sequences"},
+    {"id": "e2", "source": "drav_lm", "target": "sa",    "sourcePort": "lm",               "targetPort": "lm"},
+    {"id": "e3", "source": "anchors", "target": "sa",    "sourcePort": "anchors",          "targetPort": "anchors"},
+    {"id": "e4", "source": "sa",      "target": "cons",  "sourcePort": "all_mappings",     "targetPort": "all_mappings"},
+    {"id": "e5", "source": "cons",    "target": "merge", "sourcePort": "mean_consistency", "targetPort": "a"},
+    {"id": "e6", "source": "cons",    "target": "merge", "sourcePort": "hci_pct",          "targetPort": "b"},
+    {"id": "e7", "source": "sa",      "target": "merge", "sourcePort": "proposed_mapping", "targetPort": "c"},
+    {"id": "e8", "source": "merge",   "target": "out",   "sourcePort": "json",             "targetPort": "data"}
+  ]
+}

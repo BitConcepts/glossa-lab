@@ -17,6 +17,7 @@ import { SignDictionary } from "./components/SignDictionary";
 import { TimelineView } from "./components/TimelineView";
 import { CitationManager } from "./components/CitationManager";
 import { CASModelView } from "./components/CASModelView";
+import { AG2Panel } from "./components/AG2Panel";
 import { CommandPalette, type PaletteCommand } from "./components/CommandPalette";
 import { AIChatWindow, AISidePanel } from "./components/AIChatWindow";
 import { BottomPanel } from "./components/BottomPanel";
@@ -28,8 +29,7 @@ import { getHealth } from "./api";
 type Tab =
   | "status" | "indus-data" | "builder" | "experiments" | "pipelines"
   | "corpora" | "jobs" | "reports" | "settings"
-  | "entropy" | "hypotheses" | "notebooks" | "ai-tools"
-  | "signs" | "timeline" | "citations" | "help" | "models"
+  | "entropy" | "hypotheses" | "notebooks" | "ai-tools" | "signs" | "timeline" | "citations" | "help" | "models" | "ag2"
   | "exp-builder"; // legacy alias — still handled but not in nav
 
 interface NavItem { id: Tab; label: string; icon: string; }
@@ -67,6 +67,7 @@ const NAV_SECTIONS: NavSection[] = [
       { id: "notebooks",  label: "Notebooks",  icon: "📓" },
       { id: "citations",  label: "Citations",  icon: "📖" },
       { id: "ai-tools",   label: "AI Tools",   icon: "🔬" },
+      { id: "ag2",        label: "AG2 Agent",   icon: "🤖" },
       { id: "help",       label: "Help",        icon: "📘" },
     ],
   },
@@ -434,6 +435,7 @@ function AppContent() {
               {tab === "reports"     && <ReportsView />}
               {tab === "settings"    && <SettingsView />}
               {tab === "models"      && <CASModelView />}
+              {tab === "ag2"         && <AG2Panel />}
               {tab === "entropy"     && <EntropyDashboard />}
               {tab === "hypotheses"  && <HypothesisTracker />}
               {tab === "notebooks"   && <ResearchNotebook />}

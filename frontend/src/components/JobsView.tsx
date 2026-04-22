@@ -429,6 +429,8 @@ export function JobsView() {
               const device: string = (j.params?.compute_device as string) ?? "";
               const deviceLabel: string = (j.params?.compute_device_label as string) ?? "";
               const isGpu = device === "gpu";
+              const isCli = (j.params?.source as string) === "cli";
+              const isAiAction = (j.params?.source as string) === "ai_action";
               const deviceBadge = device
                 ? { bg: isGpu ? "#dbeafe" : "#f3f4f6", color: isGpu ? "#1e40af" : "#374151",
                     text: isGpu ? `⚡ ${deviceLabel || "GPU"}` : `⚙️ ${deviceLabel || "CPU"}` }
@@ -468,13 +470,34 @@ export function JobsView() {
                   <code style={{ fontSize: 12 }}>{j.pipeline}</code>
                 </Td>
                 <Td>
-                  {deviceBadge
-                    ? <span style={{ fontSize: 11, padding: "2px 7px", borderRadius: 6,
-                                     background: deviceBadge.bg, color: deviceBadge.color,
-                                     fontWeight: 600, whiteSpace: "nowrap" }}>
-                        {deviceBadge.text}
-                      </span>
-                    : <span style={{ fontSize: 11, color: "#9ca3af" }}>—</span>}
+                  <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                  {deviceBadge && (
+                    <span style={{ fontSize: 11, padding: "2px 7px", borderRadius: 6,
+                                   background: deviceBadge.bg, color: deviceBadge.color,
+                                   fontWeight: 600, whiteSpace: "nowrap" }}>
+                      {deviceBadge.text}
+                    </span>
+                  )}
+                  {isCli && (
+                    <span style={{ fontSize: 11, padding: "2px 7px", borderRadius: 6,
+                                   background: "#f0fdf4", color: "#15803d",
+                                   fontWeight: 600, whiteSpace: "nowrap" }}
+                          title="Run from CLI (terminal/script)">
+                      💻 CLI
+                    </span>
+                  )}
+                  {isAiAction && (
+                    <span style={{ fontSize: 11, padding: "2px 7px", borderRadius: 6,
+                                   background: "#fdf4ff", color: "#7e22ce",
+                                   fontWeight: 600, whiteSpace: "nowrap" }}
+                          title="Triggered by AI assistant">
+                      ✨ AI
+                    </span>
+                  )}
+                  {!deviceBadge && !isCli && !isAiAction && (
+                    <span style={{ fontSize: 11, color: "#9ca3af" }}>—</span>
+                  )}
+                  </div>
                 </Td>
                 <Td>
                   <span style={{ display: "inline-block", padding: "1px 7px", borderRadius: 10,

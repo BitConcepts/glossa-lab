@@ -314,13 +314,13 @@ CATALOGUE: list[dict[str, Any]] = [
         "language_family": "Indo-European",
         "script_type": "syllabary",
         "period": "1500 BCE – 500 CE",
-        "tokens_approx": 80000,
-        "source_url": "https://www.sacred-texts.com/hin/rigveda/",
-        "license": "Public domain",
+        "tokens_approx": 728000,
+        "source_url": "https://sanskritdocuments.org/doc_veda/",
+        "license": "Academic use (Vedic Tradition / Detlef Eichler via sanskritdocuments.org)",
         "description": (
-            "Vedic Sanskrit from the Rigveda in Latin transliteration. "
-            "Indo-Aryan / Indo-European. Reference LM for the Sanskrit/Vedic hypothesis "
-            "testing on the Indus Script. Comparator in the Dravidian vs Sanskrit A/B test."
+            "Complete Rigveda all 10 mandalas in ITRANS-simplified Roman transliteration. "
+            "728K character tokens from Aufrecht/van Nooten/Holland Samhita edition. "
+            "Simplified bigram LM for Indus Script A/B hypothesis test (Dravidian vs Sanskrit)."
         ),
         "local_module": "sanskrit",
         "is_undeciphered": False,

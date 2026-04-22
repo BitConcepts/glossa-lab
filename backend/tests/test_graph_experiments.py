@@ -195,8 +195,8 @@ def test_topo_sort_diamond():
 
 # ── ATOMIC_NODES registry ─────────────────────────────────────────────────────
 
-def test_all_37_nodes_registered():
-    """TEST-GE-013: All 37 expected atomic nodes are in the registry."""
+def test_all_40_nodes_registered():
+    """TEST-GE-013: All 40 expected atomic nodes are in the registry."""
     expected = {
         # Original sources + transforms + analysis + outputs (13)
         "CorpusReader", "StaticValue", "FreqCounter", "PositionalProfiler",
@@ -215,6 +215,8 @@ def test_all_37_nodes_registered():
         "CorpusLM", "AnchorSetLoader", "ReportGenerator",
         # Corpus sanitisation node (1)
         "TokenFilter",
+        # CPSC / Constraint Solver nodes (3)
+        "CASModelLoader", "CASProjector", "CASIndusEngine",
     }
     assert expected == set(ATOMIC_NODES.keys()), (
         f"Registry mismatch. Extra: {set(ATOMIC_NODES.keys()) - expected}. "

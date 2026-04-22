@@ -881,6 +881,182 @@ def _corpus_lm(inputs: dict, params: dict) -> dict:
     }
 
 
+def _cas_model_loader(inputs: dict, params: dict) -> dict:
+    """Load a CAS-YAML constraint model from the database or built-in library.
+
+    Users create CAS models in the Models editor (or use the built-in Indus models).
+    The 'model' output is an opaque CasModel object that CASProjector and
+    CASIndusEngine can consume directly — no YAML file path required.
+    """
+    model_id   = params.get("model_id", "").strip()
+    yaml_text  = params.get("yaml_text", "").strip()
+    builtin    = params.get("builtin", "").strip()
+
+    try:
+        from glossa_lab.cpsc_bridge import load_builtin_cas_model, _parse_yaml_to_model  # noqa: PLC0415
+    except ImportError as exc:
+        return {"error": f"CPSC not installed: {exc}"}
+
+    # Priority: builtin name > inline yaml_text > DB model_id
+    model = None
+    source = ""
+
+    if builtin:
+        model = load_builtin_cas_model(builtin)
+        source = f"builtin:{builtin}"
+        if model is None:
+            return {"error": f"Built-in CAS model '{builtin}' not found in data/cas_models/"}
+
+    elif yaml_text:
+        try:
+            model = _parse_yaml_to_model(yaml_text)
+            source = "inline_yaml"
+        except Exception as exc:  # noqa: BLE001
+            return {"error": f"YAML parse error: {exc}"}
+
+    elif model_id:
+        from glossa_lab.database import get_db  # noqa: PLC0415
+        import asyncio  # noqa: PLC0415
+        db = get_db()
+        if db is None:
+            return {"error": "Database not available."}
+        try:
+            loop = asyncio.get_event_loop()
+            record = loop.run_until_complete(db.get_cas_model(model_id))
+        except Exception as exc:  # noqa: BLE001
+            return {"error": f"Failed to load CAS model '{model_id}': {exc}"}
+        if record is None:
+            return {"error": f"CAS model '{model_id}' not found in database."}
+        try:
+            model = _parse_yaml_to_model(record["yaml_text"])
+            source = f"db:{model_id}"
+        except Exception as exc:  # noqa: BLE001
+            return {"error": f"Failed to parse stored CAS-YAML: {exc}"}
+    else:
+        return {"error": "Provide one of: builtin (e.g. 'indus_sign_roles'), yaml_text, or model_id."}
+
+    return {
+        "model":        model,
+        "model_id":     model.model_id,
+        "model_name":   model.model_id,
+        "source":       source,
+        "n_variables":  len(model.variables),
+        "n_constraints":len(model.constraints),
+        "dof_vars":     model.free_variables,
+        "engine_hint":  getattr(model.projection, "strategy", "auto"),
+    }
+
+
+def _cas_projector(inputs: dict, params: dict) -> dict:
+    """Run CPSC constraint projection on a CAS model.
+
+    Connects: CASModelLoader.model → model.
+    Provide DoF values as a JSON list or dict.
+    The CPSC IterativeEngine (or CellularEngine) projects the free variables
+    onto the constraint manifold — returning all derived variable values.
+
+    GPU note: IterativeEngine is pure numpy (CPU). GPU acceleration applies
+    to SADecipher/BigramScorer; CASProjector is constraint-gradient-based.
+    """
+    model    = inputs.get("model")
+    dof_raw  = inputs.get("dof_values") or params.get("dof_values")
+    engine   = str(params.get("engine", "auto"))
+    max_iter = params.get("max_iterations")
+    strategy = params.get("force_strategy", "") or None
+
+    if model is None:
+        return {"error": "No model — connect CASModelLoader to the 'model' port."}
+
+    try:
+        from glossa_lab.cpsc_bridge import project_cas_model  # noqa: PLC0415
+    except ImportError as exc:
+        return {"error": f"CPSC not installed: {exc}"}
+
+    # Parse DoF values — accept list, dict (by name), JSON string, or empty (use zeros)
+    dof_names = model.free_variables
+    # If dof_raw came in as a JSON string from node params, parse it first
+    if isinstance(dof_raw, str) and dof_raw.strip():
+        import json as _json  # noqa: PLC0415
+        try:
+            dof_raw = _json.loads(dof_raw)
+        except (ValueError, _json.JSONDecodeError):
+            dof_raw = None
+
+    if dof_raw is None or dof_raw == []:
+        dof_values = [0.0] * len(dof_names)
+    elif isinstance(dof_raw, dict):
+        dof_values = [float(dof_raw.get(n, 0.0)) for n in dof_names]
+    elif isinstance(dof_raw, list):
+        dof_values = [float(v) for v in dof_raw[:len(dof_names)]]
+        # Pad with zeros if fewer values than DoF vars
+        dof_values += [0.0] * max(0, len(dof_names) - len(dof_values))
+    else:
+        dof_values = [0.0] * len(dof_names)
+
+    result = project_cas_model(
+        model, dof_values,
+        engine=engine,
+        max_iterations=int(max_iter) if max_iter else None,
+        force_strategy=strategy,
+    )
+    return {
+        "state":          result.get("state", {}),
+        "success":        result.get("success", False),
+        "iterations":     result.get("iterations", 0),
+        "max_violation":  result.get("max_violation", float("inf")),
+        "strategy_used":  result.get("strategy_used", engine),
+        "reason":         result.get("reason"),
+        "details":        result.get("details", {}),
+        "dof_vars":       dof_names,
+        "dof_values_used":dof_values,
+    }
+
+
+def _cas_indus_engine(inputs: dict, params: dict) -> dict:
+    """CASIndusEngine — custom CPSC-based Indus sign role classifier.
+
+    Our own engine built on CPSC's IterativeEngine. For each sign in the corpus:
+      1. Observes I/M/T rates from real CISI inscription sequences
+      2. Builds a CasModel dynamically encoding Dravidian morphological constraints
+         (case suffixes terminal-biased, determinatives initial-biased,
+         phonetic syllables medial-biased)
+      3. Runs CPSC IterativeEngine to project observed rates onto the constraint manifold
+      4. Classifies each sign as TERMINAL / INITIAL / MEDIAL based on projected weights
+
+    Connects:
+      BuiltinCorpus(indus_cisi) → sequences
+      PositionalProfiler → profiles
+      BuiltinLM(dravidian) → lm  (optional, used for phoneme candidate matching)
+
+    Unlike SADecipher (black-box SA optimizer), this engine is transparent:
+    users can modify the constraints in the Models editor and re-run.
+    """
+    sequences = inputs.get("sequences") or []
+    profiles  = inputs.get("profiles") or inputs.get("class_summary") or {}
+    lm        = inputs.get("lm")
+
+    t_thresh = float(params.get("terminal_threshold", 0.55))
+    i_thresh = float(params.get("initial_threshold", 0.45))
+    engine   = str(params.get("engine", "iterative"))
+
+    try:
+        from glossa_lab.cpsc_bridge import run_indus_engine  # noqa: PLC0415
+    except ImportError as exc:
+        return {"error": f"CPSC not installed: {exc}"}
+
+    if not sequences and not profiles:
+        return {"error": "Connect BuiltinCorpus(indus_cisi) to sequences and/or PositionalProfiler to profiles."}
+
+    return run_indus_engine(
+        sequences=sequences,
+        profiles=profiles,
+        lm=lm,
+        terminal_threshold=t_thresh,
+        initial_threshold=i_thresh,
+        engine=engine,
+    )
+
+
 def _anchor_set_loader(inputs: dict, params: dict) -> dict:
     """Load a user-defined anchor set from the database (H16).
 
@@ -1531,6 +1707,65 @@ for _d in [
             "min_freq":{"type":"integer","title":"Min Token Frequency","default":1,"minimum":1,
                         "description":"Drop signs that appear fewer than this many times."}}},
         fn=_corpus_lm),
+    # ── CPSC / Constraint Solver nodes ────────────────────────────────────────
+    AtomicNodeDef("CASModelLoader","CAS Model Loader","CPSC / Constraint Solver",
+        "Load a CAS-YAML constraint model from the database, a built-in template, or inline YAML. "
+        "Outputs a 'model' object for CASProjector or CASIndusEngine. "
+        "Built-in models: 'indus_sign_roles', 'dravidian_phonotactic'. "
+        "Create custom models in the Models editor.",
+        inputs=[],
+        outputs=[{"name":"model","type":"any"},{"name":"model_id","type":"text"},
+                 {"name":"n_variables","type":"number"},{"name":"n_constraints","type":"number"},
+                 {"name":"dof_vars","type":"json"},{"name":"engine_hint","type":"text"}],
+        params_schema={"type":"object","properties":{
+            "builtin":{"type":"string","title":"Built-in Model","default":"indus_sign_roles",
+                       "description":"One of the built-in CAS models: indus_sign_roles | dravidian_phonotactic"},
+            "model_id":{"type":"string","title":"DB Model ID",
+                        "description":"ID of a user-created CAS model (from Models editor). Leave blank to use builtin."},
+            "yaml_text":{"type":"string","title":"Inline CAS-YAML",
+                         "description":"Paste CAS-YAML directly here (highest priority if non-empty)"}}},
+        fn=_cas_model_loader),
+    AtomicNodeDef("CASProjector","CAS Projector (CPSC)","CPSC / Constraint Solver",
+        "Run CPSC constraint projection on a CAS model. "
+        "Connects: CASModelLoader.model → model. "
+        "Provide DoF values as a list [v1,v2,...] or dict {var_name: value}. "
+        "CPSC IterativeEngine projects free variables onto the constraint manifold, "
+        "returning all derived variable values and diagnostics.",
+        inputs=[{"name":"model","type":"any","required":True},
+                {"name":"dof_values","type":"any","required":False}],
+        outputs=[{"name":"state","type":"json"},{"name":"success","type":"number"},
+                 {"name":"iterations","type":"number"},{"name":"max_violation","type":"number"},
+                 {"name":"strategy_used","type":"text"},{"name":"details","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "engine":{"type":"string","title":"Engine","default":"auto",
+                      "description":"auto | iterative | cellular"},
+            "max_iterations":{"type":"integer","title":"Max Iterations","default":200,"minimum":10},
+            "force_strategy":{"type":"string","title":"Force Strategy",
+                              "description":"iterative | cellular (overrides CAS-YAML hint)"},
+            "dof_values":{"type":"string","title":"DoF Values (JSON)",
+                          "description":"Optional: [0.5, 0.3] or {\"terminal_weight\": 0.5}. Leave blank to use zeros or upstream connection."}}},
+        fn=_cas_projector),
+    AtomicNodeDef("CASIndusEngine","CAS Indus Engine","CPSC / Constraint Solver",
+        "Custom constraint-projection engine for Indus sign role classification. "
+        "Built on CPSC IterativeEngine. For each sign: observes I/M/T rates from CISI inscription data, "
+        "builds a CasModel encoding Dravidian morphological constraints (case suffixes terminal-biased, "
+        "determinatives initial-biased, phonetic syllables medial-biased), then projects. "
+        "Connects: BuiltinCorpus(indus_cisi)→sequences, PositionalProfiler→profiles, BuiltinLM(dravidian)→lm.",
+        inputs=[{"name":"sequences","type":"sequences","required":False},
+                {"name":"profiles","type":"any","required":False},
+                {"name":"lm","type":"any","required":False}],
+        outputs=[{"name":"terminal_signs","type":"json"},{"name":"initial_signs","type":"json"},
+                 {"name":"medial_signs","type":"json"},{"name":"sign_roles","type":"json"},
+                 {"name":"phoneme_candidates","type":"json"},{"name":"constraint_summary","type":"json"},
+                 {"name":"projected_weights","type":"json"},{"name":"n_signs_classified","type":"number"}],
+        params_schema={"type":"object","properties":{
+            "terminal_threshold":{"type":"number","title":"Terminal Threshold","default":0.55,"minimum":0.1,"maximum":0.9,
+                                   "description":"Min projected terminal_weight to classify sign as TERMINAL (case suffix candidate)"},
+            "initial_threshold":{"type":"number","title":"Initial Threshold","default":0.45,"minimum":0.1,"maximum":0.9,
+                                  "description":"Min projected initial_weight to classify sign as INITIAL (determinative candidate)"},
+            "engine":{"type":"string","title":"CPSC Engine","default":"iterative",
+                      "description":"iterative (gradient-based, default) | cellular (local-rule propagation)"}}},
+        fn=_cas_indus_engine),
     AtomicNodeDef("AnchorSetLoader","Anchor Set Loader","Decipherment",
         "Load a user-defined anchor set from the database (H16). "
         "Anchor sets are created in the Anchor Set Editor (Corpora tab). "

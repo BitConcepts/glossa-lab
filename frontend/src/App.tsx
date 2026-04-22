@@ -16,6 +16,7 @@ import { HelpView } from "./components/HelpView";
 import { SignDictionary } from "./components/SignDictionary";
 import { TimelineView } from "./components/TimelineView";
 import { CitationManager } from "./components/CitationManager";
+import { CASModelView } from "./components/CASModelView";
 import { CommandPalette, type PaletteCommand } from "./components/CommandPalette";
 import { AIChatWindow, AISidePanel } from "./components/AIChatWindow";
 import { BottomPanel } from "./components/BottomPanel";
@@ -28,7 +29,7 @@ type Tab =
   | "status" | "indus-data" | "builder" | "experiments" | "pipelines"
   | "corpora" | "jobs" | "reports" | "settings"
   | "entropy" | "hypotheses" | "notebooks" | "ai-tools"
-  | "signs" | "timeline" | "citations" | "help"
+  | "signs" | "timeline" | "citations" | "help" | "models"
   | "exp-builder"; // legacy alias — still handled but not in nav
 
 interface NavItem { id: Tab; label: string; icon: string; }
@@ -43,10 +44,11 @@ const NAV_SECTIONS: NavSection[] = [
     title: "Workflow",
     items: [
       { id: "corpora",     label: "Corpora",      icon: "📚" },  // 1. Upload data
-      { id: "experiments", label: "Experiments",  icon: "🔀" },  // 2. Build + browse graph experiments
-      { id: "pipelines",   label: "Pipelines",    icon: "⚙️" },  // 3. Async jobs
-      { id: "builder",     label: "Studies",      icon: "📐" },  // 4. Compose + run studies
-      { id: "reports",     label: "Reports",      icon: "📄" },  // 5. View results
+      { id: "models",      label: "CAS Models",   icon: "🔢" },  // 2. CPSC constraint models
+      { id: "experiments", label: "Experiments",  icon: "🔀" },  // 3. Build + browse graph experiments
+      { id: "pipelines",   label: "Pipelines",    icon: "⚙️" },  // 4. Async jobs
+      { id: "builder",     label: "Studies",      icon: "📐" },  // 5. Compose + run studies
+      { id: "reports",     label: "Reports",      icon: "📄" },  // 6. View results
     ],
   },
   {
@@ -431,6 +433,7 @@ function AppContent() {
               {tab === "jobs"        && <JobsView />}
               {tab === "reports"     && <ReportsView />}
               {tab === "settings"    && <SettingsView />}
+              {tab === "models"      && <CASModelView />}
               {tab === "entropy"     && <EntropyDashboard />}
               {tab === "hypotheses"  && <HypothesisTracker />}
               {tab === "notebooks"   && <ResearchNotebook />}

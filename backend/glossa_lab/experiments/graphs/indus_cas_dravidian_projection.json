@@ -1,0 +1,19 @@
+{
+  "id": "indus_cas_dravidian_projection",
+  "name": "Indus: Dravidian Phonotactic Constraint Projection (CPSC CASProjector)",
+  "description": "Demonstrates the CASModelLoader → CASProjector CPSC pipeline. Loads the built-in 'dravidian_phonotactic' CAS-YAML model (which encodes Dravidian consistency constraints) and projects the known Indus values (H1=4.9536 bits, SA consistency=0.9753) through the constraint manifold. The CPSC IterativeEngine computes derived quantities: dravidian_score, indo_aryan_contrast, classification confidence. This is fully user-editable: modify the CAS model in the Models tab and re-run to test different constraint hypotheses without touching Python code.",
+  "nodes": [
+    {"id": "model_loader", "type": "expNode", "data": {"atomicId": "CASModelLoader", "label": "Dravidian Phonotactic Model",    "params": {"builtin": "dravidian_phonotactic"}},                              "position": {"x": 60,  "y": 200}},
+    {"id": "projector",    "type": "expNode", "data": {"atomicId": "CASProjector",   "label": "CPSC Projection (IterativeEngine)", "params": {"engine": "iterative", "max_iterations": 200, "dof_values": "[0.826, 0.9753]"}}, "position": {"x": 400, "y": 200}},
+    {"id": "merge",        "type": "expNode", "data": {"atomicId": "Merger",          "label": "Merge Projection Results",     "params": {}},                                                                "position": {"x": 700, "y": 200}},
+    {"id": "out",          "type": "expNode", "data": {"atomicId": "JSONExport",      "label": "Save Projection",              "params": {"filename": "indus_cas_dravidian_projection.json"}},               "position": {"x": 960, "y": 200}}
+  ],
+  "edges": [
+    {"id": "e1", "source": "model_loader", "target": "projector", "sourcePort": "model",          "targetPort": "model"},
+    {"id": "e2", "source": "projector",    "target": "merge",     "sourcePort": "state",          "targetPort": "a"},
+    {"id": "e3", "source": "projector",    "target": "merge",     "sourcePort": "success",        "targetPort": "b"},
+    {"id": "e4", "source": "projector",    "target": "merge",     "sourcePort": "max_violation",  "targetPort": "c"},
+    {"id": "e5", "source": "projector",    "target": "merge",     "sourcePort": "strategy_used",  "targetPort": "d"},
+    {"id": "e6", "source": "merge",        "target": "out",       "sourcePort": "json",           "targetPort": "data"}
+  ]
+}

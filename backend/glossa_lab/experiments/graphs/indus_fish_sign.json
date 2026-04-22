@@ -1,0 +1,35 @@
+{
+  "id": "indus_fish_sign",
+  "name": "Indus: Fish Sign (Parpola 'min/meen') Positional & Bigram Profile",
+  "description": "P3: Tests Parpola's rebus hypothesis for the Indus fish sign (most frequent ~342 occurrences, sign 411 in Mahadevan numbering; signs 70/72 in Fuls numbering have M-rate ~0.87, identified as primary fish allographs in our April 7 analysis). Runs PositionalProfiler to get I/M/T rates for all signs, FreqCounter to rank by frequency, and NgramCounter (bigrams + trigrams) to see what precedes and follows the fish sign. Also runs the full structural atlas (Zipf + entropy + WSC) for comparison. If fish is medial with M-rate >0.70 and appears frequently after INITIAL determinatives, this supports the 'meen' (fish=star) rebus reading.",
+  "nodes": [
+    {"id": "corpus",   "type": "expNode", "data": {"atomicId": "BuiltinCorpus",          "label": "Indus Script",              "params": {"corpus": "indus"}},               "position": {"x": 60,  "y": 200}},
+    {"id": "freq",     "type": "expNode", "data": {"atomicId": "FreqCounter",             "label": "Sign Frequencies",          "params": {}},                                "position": {"x": 300, "y": 80}},
+    {"id": "entropy",  "type": "expNode", "data": {"atomicId": "EntropyCalc",             "label": "Entropy H1",                "params": {}},                                "position": {"x": 520, "y": 80}},
+    {"id": "zipf",     "type": "expNode", "data": {"atomicId": "ZipfFitter",              "label": "Zipf Exponent",             "params": {}},                                "position": {"x": 300, "y": 200}},
+    {"id": "profiler", "type": "expNode", "data": {"atomicId": "PositionalProfiler",      "label": "I/M/T Profiles (min 5)",    "params": {"min_count": 5}},                  "position": {"x": 520, "y": 200}},
+    {"id": "bigrams",  "type": "expNode", "data": {"atomicId": "NgramCounter",            "label": "Bigrams (n=2)",             "params": {"n": 2}},                          "position": {"x": 300, "y": 340}},
+    {"id": "trigrams", "type": "expNode", "data": {"atomicId": "NgramCounter",            "label": "Trigrams (n=3)",            "params": {"n": 3}},                          "position": {"x": 520, "y": 340}},
+    {"id": "wsc",      "type": "expNode", "data": {"atomicId": "WritingSystemClassifier", "label": "Writing System Tier",       "params": {}},                                "position": {"x": 740, "y": 80}},
+    {"id": "merge",    "type": "expNode", "data": {"atomicId": "Merger",                  "label": "Merge All Fish-Sign Data",  "params": {}},                                "position": {"x": 960, "y": 220}},
+    {"id": "out",      "type": "expNode", "data": {"atomicId": "JSONExport",              "label": "Save Fish Sign Report",     "params": {"filename": "indus_fish_sign.json"}}, "position": {"x": 1200, "y": 220}}
+  ],
+  "edges": [
+    {"id": "e1",  "source": "corpus",   "target": "freq",     "sourcePort": "sequences",          "targetPort": "sequences"},
+    {"id": "e2",  "source": "corpus",   "target": "zipf",     "sourcePort": "sequences",          "targetPort": "sequences"},
+    {"id": "e3",  "source": "corpus",   "target": "profiler", "sourcePort": "sequences",          "targetPort": "sequences"},
+    {"id": "e4",  "source": "corpus",   "target": "bigrams",  "sourcePort": "sequences",          "targetPort": "sequences"},
+    {"id": "e5",  "source": "corpus",   "target": "trigrams", "sourcePort": "sequences",          "targetPort": "sequences"},
+    {"id": "e6",  "source": "freq",     "target": "entropy",  "sourcePort": "freq_map",           "targetPort": "freq_map"},
+    {"id": "e7",  "source": "freq",     "target": "zipf",     "sourcePort": "freq_map",           "targetPort": "freq_map"},
+    {"id": "e8",  "source": "freq",     "target": "wsc",      "sourcePort": "distinct_symbols",   "targetPort": "distinct_symbols"},
+    {"id": "e9",  "source": "entropy",  "target": "wsc",      "sourcePort": "h1",                 "targetPort": "h1"},
+    {"id": "e10", "source": "freq",     "target": "merge",    "sourcePort": "top_10",             "targetPort": "a"},
+    {"id": "e11", "source": "profiler", "target": "merge",    "sourcePort": "class_summary",      "targetPort": "b"},
+    {"id": "e12", "source": "bigrams",  "target": "merge",    "sourcePort": "top_10",             "targetPort": "c"},
+    {"id": "e13", "source": "trigrams", "target": "merge",    "sourcePort": "top_10",             "targetPort": "d"},
+    {"id": "e14", "source": "wsc",      "target": "merge",    "sourcePort": "tier_classification","targetPort": "e"},
+    {"id": "e15", "source": "zipf",     "target": "merge",    "sourcePort": "zipf_exponent",      "targetPort": "f"},
+    {"id": "e16", "source": "merge",    "target": "out",      "sourcePort": "json",               "targetPort": "data"}
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "indus_cisi_anchored_5_o",
+  "name": "Indus CISI: Anchored Decipherment — 5 Anchors, P324 Corrected to 'o' (ko syllable)",
+  "description": "CORRECTED from indus_cisi_anchored_5: P324 is revised from 'k' to 'o' based on critical cross-validation finding that P324 NEVER precedes P122 ('a') in 178 CISI inscriptions (0/98 = 0.0%). Since P324 always carries its own vowel, it is a full syllable sign, most likely 'ko' (Dravidian DEDR 2147: king/chief/bull). In the SA single-character model, the vowel component 'o' is the appropriate mapping. This corrects the 5-anchor set to: P385->n (genitive suffix), P324->o (ko=king syllable vowel), P122->a (medial vowel), P086->m (initial consonant), P060->i (medial vowel). Key prediction: M-5A reads 'ko?uil' possibly koyil (temple). GPU: n_seeds=8, max_iter=12000.",
+  "nodes": [
+    {"id": "corpus",  "type": "expNode", "data": {"atomicId": "BuiltinCorpus",    "label": "Indus CISI (178 inscriptions)",  "params": {"corpus": "indus_cisi"}},                                                                                                                                                          "position": {"x": 60,   "y": 240}},
+    {"id": "drav_lm", "type": "expNode", "data": {"atomicId": "BuiltinLM",        "label": "South Dravidian LM",             "params": {"language": "south_dravidian"}},                                                                                                                                                    "position": {"x": 60,   "y": 440}},
+    {"id": "sa",      "type": "expNode", "data": {"atomicId": "SADecipher",       "label": "5-Anchor SA, P324=o (GPU)",       "params": {"n_seeds": 8, "max_iterations": 12000, "restarts": 4, "surjective": true, "ocp_weight": 0.0, "anchors": {"P385": "n", "P324": "o", "P122": "a", "P086": "m", "P060": "i"}}}, "position": {"x": 700,  "y": 320}},
+    {"id": "cons",    "type": "expNode", "data": {"atomicId": "ConsistencyScorer","label": "Consistency + HCI",               "params": {}},                                                                                                                                                                                "position": {"x": 1020, "y": 320}},
+    {"id": "merge",   "type": "expNode", "data": {"atomicId": "Merger",           "label": "Merge Revised Results",           "params": {}},                                                                                                                                                                                "position": {"x": 1280, "y": 320}},
+    {"id": "out",     "type": "expNode", "data": {"atomicId": "JSONExport",       "label": "Save",                            "params": {"filename": "indus_cisi_anchored_5_o.json"}},                                                                                                                                       "position": {"x": 1560, "y": 320}}
+  ],
+  "edges": [
+    {"id": "e1", "source": "corpus",  "target": "sa",    "sourcePort": "sequences",        "targetPort": "sequences"},
+    {"id": "e2", "source": "drav_lm", "target": "sa",    "sourcePort": "lm",               "targetPort": "lm"},
+    {"id": "e3", "source": "sa",      "target": "cons",  "sourcePort": "all_mappings",     "targetPort": "all_mappings"},
+    {"id": "e4", "source": "cons",    "target": "merge", "sourcePort": "mean_consistency", "targetPort": "a"},
+    {"id": "e5", "source": "cons",    "target": "merge", "sourcePort": "hci_pct",          "targetPort": "b"},
+    {"id": "e6", "source": "sa",      "target": "merge", "sourcePort": "proposed_mapping", "targetPort": "c"},
+    {"id": "e7", "source": "merge",   "target": "out",   "sourcePort": "json",             "targetPort": "data"}
+  ]
+}

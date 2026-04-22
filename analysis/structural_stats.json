@@ -1,0 +1,4402 @@
+{
+  "generated": "2026-04-22T17:16:01Z",
+  "frequency": {
+    "global_freq": {
+      "P324": 99,
+      "P122": 76,
+      "P385": 35,
+      "P086": 35,
+      "P050": 32,
+      "P145": 27,
+      "P230": 23,
+      "P120": 22,
+      "P062": 21,
+      "P060": 20,
+      "P316": 19,
+      "P000": 19,
+      "P217": 18,
+      "P378": 17,
+      "P364": 17,
+      "P058": 15,
+      "P147": 14,
+      "P154": 14,
+      "P325": 14,
+      "P123": 13,
+      "P256": 12,
+      "P202": 11,
+      "P268": 11,
+      "P332": 11,
+      "P121": 10,
+      "P205": 10,
+      "P011": 10,
+      "P349": 10,
+      "P056": 9,
+      "P013": 9,
+      "P073": 8,
+      "P144": 8,
+      "P194": 8,
+      "P175": 7,
+      "P276": 6,
+      "P126": 6,
+      "P215": 6,
+      "P160": 6,
+      "P076": 6,
+      "P092": 6,
+      "P301": 6,
+      "P004": 6,
+      "P108": 5,
+      "P201": 5,
+      "P009": 5,
+      "P270": 5,
+      "P221": 5,
+      "P210": 5,
+      "P091": 5,
+      "P051": 5,
+      "P204": 4,
+      "P035": 4,
+      "P142": 4,
+      "P125": 4,
+      "P095": 4,
+      "P127": 4,
+      "P139": 4,
+      "P001": 4,
+      "P124": 4,
+      "P289": 4,
+      "P098": 4,
+      "P226": 4,
+      "P075": 4,
+      "P355": 4,
+      "P096": 3,
+      "P114": 3,
+      "P067": 3,
+      "P369": 3,
+      "P275": 3,
+      "P174": 3,
+      "P238": 3,
+      "P103": 3,
+      "P309": 3,
+      "P303": 3,
+      "P288": 3,
+      "P326": 3,
+      "P234": 3,
+      "P031": 3,
+      "P110": 3,
+      "P283": 3,
+      "P320": 2,
+      "P186": 2,
+      "P384": 2,
+      "P352": 2,
+      "P151": 2,
+      "P182": 2,
+      "P117": 2,
+      "P026": 2,
+      "P172": 2,
+      "P390": 2,
+      "P111": 2,
+      "P358": 2,
+      "P188": 2,
+      "P353": 2,
+      "P251": 2,
+      "P310": 2,
+      "P342": 2,
+      "P040": 2,
+      "P043": 2,
+      "P082": 2,
+      "P128": 2,
+      "P003": 2,
+      "P359": 2,
+      "P368": 2,
+      "P265": 2,
+      "P094": 1,
+      "P237": 1,
+      "P065": 1,
+      "P327": 1,
+      "P386": 1,
+      "P346": 1,
+      "P232": 1,
+      "P341": 1,
+      "P272": 1,
+      "P197": 1,
+      "P350": 1,
+      "P228": 1,
+      "P311": 1,
+      "P041": 1,
+      "P007": 1,
+      "P307": 1,
+      "P083": 1,
+      "P089": 1,
+      "P360": 1,
+      "P296": 1,
+      "P372": 1,
+      "P211": 1,
+      "P382": 1,
+      "P281": 1,
+      "P258": 1,
+      "P246": 1,
+      "P206": 1,
+      "P223": 1,
+      "P260": 1,
+      "P047": 1,
+      "P023": 1,
+      "P181": 1,
+      "P280": 1,
+      "P366": 1,
+      "P012": 1,
+      "P247": 1,
+      "P053": 1,
+      "P180": 1,
+      "P335": 1,
+      "P070": 1,
+      "P178": 1,
+      "P020": 1,
+      "P313": 1,
+      "P253": 1,
+      "P038": 1,
+      "P054": 1,
+      "P071": 1,
+      "P099": 1,
+      "P381": 1,
+      "P084": 1,
+      "P285": 1,
+      "P254": 1,
+      "P156": 1,
+      "P195": 1,
+      "P044": 1,
+      "P014": 1,
+      "P208": 1,
+      "P293": 1,
+      "P032": 1,
+      "P177": 1,
+      "P379": 1,
+      "P061": 1,
+      "P294": 1,
+      "P022": 1,
+      "P170": 1,
+      "P231": 1,
+      "P393": 1,
+      "P300": 1,
+      "P136": 1,
+      "P166": 1,
+      "P290": 1,
+      "P048": 1,
+      "P037": 1,
+      "P255": 1,
+      "P193": 1,
+      "P207": 1,
+      "P010": 1
+    },
+    "by_site": {
+      "Mohenjo-daro": {
+        "P324": 99,
+        "P122": 76,
+        "P385": 35,
+        "P086": 35,
+        "P050": 32,
+        "P145": 27,
+        "P230": 23,
+        "P120": 22,
+        "P062": 21,
+        "P060": 20,
+        "P316": 19,
+        "P000": 19,
+        "P217": 18,
+        "P378": 17,
+        "P364": 17,
+        "P058": 15,
+        "P147": 14,
+        "P154": 14,
+        "P325": 14,
+        "P123": 13,
+        "P256": 12,
+        "P202": 11,
+        "P268": 11,
+        "P332": 11,
+        "P121": 10,
+        "P205": 10,
+        "P011": 10,
+        "P349": 10,
+        "P056": 9,
+        "P013": 9
+      }
+    },
+    "by_artifact": {
+      "unicorn seal": {
+        "P324": 99,
+        "P122": 76,
+        "P385": 35,
+        "P086": 35,
+        "P050": 32,
+        "P145": 27,
+        "P230": 23,
+        "P120": 22,
+        "P062": 21,
+        "P060": 20,
+        "P316": 19,
+        "P000": 19,
+        "P217": 18,
+        "P378": 17,
+        "P364": 17,
+        "P058": 15,
+        "P147": 14,
+        "P154": 14,
+        "P325": 14,
+        "P123": 13
+      }
+    },
+    "length_distribution": {
+      "1": 1,
+      "2": 8,
+      "3": 26,
+      "4": 20,
+      "5": 35,
+      "6": 32,
+      "7": 25,
+      "8": 17,
+      "9": 7,
+      "10": 5,
+      "11": 1,
+      "13": 2
+    },
+    "n_tokens": 1003,
+    "n_distinct_signs": 182,
+    "n_hapax": 77,
+    "hapax_fraction": 0.4231,
+    "mean_length": 5.6,
+    "median_length": 5,
+    "max_length": 13,
+    "min_length": 1,
+    "unigram_entropy_h1": 6.2859,
+    "top_30_signs": {
+      "P324": 99,
+      "P122": 76,
+      "P385": 35,
+      "P086": 35,
+      "P050": 32,
+      "P145": 27,
+      "P230": 23,
+      "P120": 22,
+      "P062": 21,
+      "P060": 20,
+      "P316": 19,
+      "P000": 19,
+      "P217": 18,
+      "P378": 17,
+      "P364": 17,
+      "P058": 15,
+      "P147": 14,
+      "P154": 14,
+      "P325": 14,
+      "P123": 13,
+      "P256": 12,
+      "P202": 11,
+      "P268": 11,
+      "P332": 11,
+      "P121": 10,
+      "P205": 10,
+      "P011": 10,
+      "P349": 10,
+      "P056": 9,
+      "P013": 9
+    }
+  },
+  "positional": {
+    "h_unigram": 6.2859,
+    "h_start_position": 3.3197,
+    "h_end_position": 5.7541,
+    "terminal_candidates": [
+      {
+        "sign": "P385",
+        "end_rate": 0.8286,
+        "end_count": 29,
+        "total_freq": 35
+      },
+      {
+        "sign": "P256",
+        "end_rate": 0.75,
+        "end_count": 9,
+        "total_freq": 12
+      },
+      {
+        "sign": "P378",
+        "end_rate": 0.5882,
+        "end_count": 10,
+        "total_freq": 17
+      },
+      {
+        "sign": "P011",
+        "end_rate": 0.5,
+        "end_count": 5,
+        "total_freq": 10
+      }
+    ],
+    "initial_candidates": [
+      {
+        "sign": "P013",
+        "start_rate": 1.0,
+        "start_count": 9,
+        "total_freq": 9
+      },
+      {
+        "sign": "P051",
+        "start_rate": 1.0,
+        "start_count": 5,
+        "total_freq": 5
+      },
+      {
+        "sign": "P001",
+        "start_rate": 1.0,
+        "start_count": 4,
+        "total_freq": 4
+      },
+      {
+        "sign": "P004",
+        "start_rate": 1.0,
+        "start_count": 6,
+        "total_freq": 6
+      },
+      {
+        "sign": "P301",
+        "start_rate": 0.8333,
+        "start_count": 5,
+        "total_freq": 6
+      },
+      {
+        "sign": "P324",
+        "start_rate": 0.7778,
+        "start_count": 77,
+        "total_freq": 99
+      },
+      {
+        "sign": "P217",
+        "start_rate": 0.7778,
+        "start_count": 14,
+        "total_freq": 18
+      },
+      {
+        "sign": "P098",
+        "start_rate": 0.75,
+        "start_count": 3,
+        "total_freq": 4
+      },
+      {
+        "sign": "P000",
+        "start_rate": 0.5789,
+        "start_count": 11,
+        "total_freq": 19
+      },
+      {
+        "sign": "P086",
+        "start_rate": 0.5429,
+        "start_count": 19,
+        "total_freq": 35
+      }
+    ],
+    "per_sign_profile": {
+      "P121": {
+        "freq": 10,
+        "start_rate": 0.1,
+        "end_rate": 0.0,
+        "internal_rate": 0.9,
+        "start_count": 1,
+        "end_count": 0,
+        "internal_count": 9
+      },
+      "P202": {
+        "freq": 11,
+        "start_rate": 0.1818,
+        "end_rate": 0.0909,
+        "internal_rate": 0.7273,
+        "start_count": 2,
+        "end_count": 1,
+        "internal_count": 8
+      },
+      "P385": {
+        "freq": 35,
+        "start_rate": 0.0,
+        "end_rate": 0.8286,
+        "internal_rate": 0.1714,
+        "start_count": 0,
+        "end_count": 29,
+        "internal_count": 6
+      },
+      "P073": {
+        "freq": 8,
+        "start_rate": 0.0,
+        "end_rate": 0.125,
+        "internal_rate": 0.875,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 7
+      },
+      "P108": {
+        "freq": 5,
+        "start_rate": 0.0,
+        "end_rate": 0.6,
+        "internal_rate": 0.4,
+        "start_count": 0,
+        "end_count": 3,
+        "internal_count": 2
+      },
+      "P320": {
+        "freq": 2,
+        "start_rate": 0.5,
+        "end_rate": 0.5,
+        "internal_rate": 0.0,
+        "start_count": 1,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P145": {
+        "freq": 27,
+        "start_rate": 0.0,
+        "end_rate": 0.1481,
+        "internal_rate": 0.8519,
+        "start_count": 0,
+        "end_count": 4,
+        "internal_count": 23
+      },
+      "P094": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P205": {
+        "freq": 10,
+        "start_rate": 0.1,
+        "end_rate": 0.1,
+        "internal_rate": 0.8,
+        "start_count": 1,
+        "end_count": 1,
+        "internal_count": 8
+      },
+      "P186": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 2
+      },
+      "P147": {
+        "freq": 14,
+        "start_rate": 0.0714,
+        "end_rate": 0.0714,
+        "internal_rate": 0.8571,
+        "start_count": 1,
+        "end_count": 1,
+        "internal_count": 12
+      },
+      "P316": {
+        "freq": 19,
+        "start_rate": 0.0526,
+        "end_rate": 0.1053,
+        "internal_rate": 0.8421,
+        "start_count": 1,
+        "end_count": 2,
+        "internal_count": 16
+      },
+      "P056": {
+        "freq": 9,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 9
+      },
+      "P122": {
+        "freq": 76,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 76
+      },
+      "P237": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P268": {
+        "freq": 11,
+        "start_rate": 0.2727,
+        "end_rate": 0.0,
+        "internal_rate": 0.7273,
+        "start_count": 3,
+        "end_count": 0,
+        "internal_count": 8
+      },
+      "P324": {
+        "freq": 99,
+        "start_rate": 0.7778,
+        "end_rate": 0.0101,
+        "internal_rate": 0.2121,
+        "start_count": 77,
+        "end_count": 1,
+        "internal_count": 21
+      },
+      "P096": {
+        "freq": 3,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 3
+      },
+      "P062": {
+        "freq": 21,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 21
+      },
+      "P060": {
+        "freq": 20,
+        "start_rate": 0.0,
+        "end_rate": 0.05,
+        "internal_rate": 0.95,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 19
+      },
+      "P120": {
+        "freq": 22,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 22
+      },
+      "P256": {
+        "freq": 12,
+        "start_rate": 0.0,
+        "end_rate": 0.75,
+        "internal_rate": 0.25,
+        "start_count": 0,
+        "end_count": 9,
+        "internal_count": 3
+      },
+      "P378": {
+        "freq": 17,
+        "start_rate": 0.1176,
+        "end_rate": 0.5882,
+        "internal_rate": 0.2941,
+        "start_count": 2,
+        "end_count": 10,
+        "internal_count": 5
+      },
+      "P384": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 0.5,
+        "internal_rate": 0.5,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 1
+      },
+      "P201": {
+        "freq": 5,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 5
+      },
+      "P065": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P086": {
+        "freq": 35,
+        "start_rate": 0.5429,
+        "end_rate": 0.0286,
+        "internal_rate": 0.4286,
+        "start_count": 19,
+        "end_count": 1,
+        "internal_count": 15
+      },
+      "P352": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 2
+      },
+      "P011": {
+        "freq": 10,
+        "start_rate": 0.0,
+        "end_rate": 0.5,
+        "internal_rate": 0.5,
+        "start_count": 0,
+        "end_count": 5,
+        "internal_count": 5
+      },
+      "P154": {
+        "freq": 14,
+        "start_rate": 0.0,
+        "end_rate": 0.2143,
+        "internal_rate": 0.7857,
+        "start_count": 0,
+        "end_count": 3,
+        "internal_count": 11
+      },
+      "P009": {
+        "freq": 5,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 5
+      },
+      "P175": {
+        "freq": 7,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 7
+      },
+      "P270": {
+        "freq": 5,
+        "start_rate": 0.0,
+        "end_rate": 0.2,
+        "internal_rate": 0.8,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 4
+      },
+      "P144": {
+        "freq": 8,
+        "start_rate": 0.125,
+        "end_rate": 0.25,
+        "internal_rate": 0.625,
+        "start_count": 1,
+        "end_count": 2,
+        "internal_count": 5
+      },
+      "P327": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P204": {
+        "freq": 4,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 4
+      },
+      "P114": {
+        "freq": 3,
+        "start_rate": 0.0,
+        "end_rate": 0.3333,
+        "internal_rate": 0.6667,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 2
+      },
+      "P151": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 2
+      },
+      "P364": {
+        "freq": 17,
+        "start_rate": 0.0,
+        "end_rate": 0.1176,
+        "internal_rate": 0.8824,
+        "start_count": 0,
+        "end_count": 2,
+        "internal_count": 15
+      },
+      "P067": {
+        "freq": 3,
+        "start_rate": 0.3333,
+        "end_rate": 0.0,
+        "internal_rate": 0.6667,
+        "start_count": 1,
+        "end_count": 0,
+        "internal_count": 2
+      },
+      "P221": {
+        "freq": 5,
+        "start_rate": 0.0,
+        "end_rate": 0.4,
+        "internal_rate": 0.6,
+        "start_count": 0,
+        "end_count": 2,
+        "internal_count": 3
+      },
+      "P276": {
+        "freq": 6,
+        "start_rate": 0.0,
+        "end_rate": 0.1667,
+        "internal_rate": 0.8333,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 5
+      },
+      "P058": {
+        "freq": 15,
+        "start_rate": 0.0,
+        "end_rate": 0.0667,
+        "internal_rate": 0.9333,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 14
+      },
+      "P386": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P182": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 2
+      },
+      "P035": {
+        "freq": 4,
+        "start_rate": 0.0,
+        "end_rate": 0.25,
+        "internal_rate": 0.75,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 3
+      },
+      "P117": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 2
+      },
+      "P210": {
+        "freq": 5,
+        "start_rate": 0.0,
+        "end_rate": 0.2,
+        "internal_rate": 0.8,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 4
+      },
+      "P013": {
+        "freq": 9,
+        "start_rate": 1.0,
+        "end_rate": 0.0,
+        "internal_rate": 0.0,
+        "start_count": 9,
+        "end_count": 0,
+        "internal_count": 0
+      },
+      "P194": {
+        "freq": 8,
+        "start_rate": 0.0,
+        "end_rate": 0.125,
+        "internal_rate": 0.875,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 7
+      },
+      "P026": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 2
+      },
+      "P346": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P126": {
+        "freq": 6,
+        "start_rate": 0.0,
+        "end_rate": 0.1667,
+        "internal_rate": 0.8333,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 5
+      },
+      "P369": {
+        "freq": 3,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 3
+      },
+      "P232": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P341": {
+        "freq": 1,
+        "start_rate": 1.0,
+        "end_rate": 0.0,
+        "internal_rate": 0.0,
+        "start_count": 1,
+        "end_count": 0,
+        "internal_count": 0
+      },
+      "P142": {
+        "freq": 4,
+        "start_rate": 0.0,
+        "end_rate": 0.25,
+        "internal_rate": 0.75,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 3
+      },
+      "P000": {
+        "freq": 19,
+        "start_rate": 0.5789,
+        "end_rate": 0.3158,
+        "internal_rate": 0.1053,
+        "start_count": 11,
+        "end_count": 6,
+        "internal_count": 2
+      },
+      "P125": {
+        "freq": 4,
+        "start_rate": 0.0,
+        "end_rate": 0.5,
+        "internal_rate": 0.5,
+        "start_count": 0,
+        "end_count": 2,
+        "internal_count": 2
+      },
+      "P215": {
+        "freq": 6,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 6
+      },
+      "P275": {
+        "freq": 3,
+        "start_rate": 0.0,
+        "end_rate": 0.3333,
+        "internal_rate": 0.6667,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 2
+      },
+      "P091": {
+        "freq": 5,
+        "start_rate": 0.2,
+        "end_rate": 0.0,
+        "internal_rate": 0.8,
+        "start_count": 1,
+        "end_count": 0,
+        "internal_count": 4
+      },
+      "P272": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P172": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 2
+      },
+      "P050": {
+        "freq": 32,
+        "start_rate": 0.0312,
+        "end_rate": 0.0,
+        "internal_rate": 0.9688,
+        "start_count": 1,
+        "end_count": 0,
+        "internal_count": 31
+      },
+      "P230": {
+        "freq": 23,
+        "start_rate": 0.0,
+        "end_rate": 0.1739,
+        "internal_rate": 0.8261,
+        "start_count": 0,
+        "end_count": 4,
+        "internal_count": 19
+      },
+      "P197": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P217": {
+        "freq": 18,
+        "start_rate": 0.7778,
+        "end_rate": 0.1111,
+        "internal_rate": 0.1111,
+        "start_count": 14,
+        "end_count": 2,
+        "internal_count": 2
+      },
+      "P160": {
+        "freq": 6,
+        "start_rate": 0.0,
+        "end_rate": 0.1667,
+        "internal_rate": 0.8333,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 5
+      },
+      "P350": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P390": {
+        "freq": 2,
+        "start_rate": 0.5,
+        "end_rate": 0.0,
+        "internal_rate": 0.5,
+        "start_count": 1,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P076": {
+        "freq": 6,
+        "start_rate": 0.0,
+        "end_rate": 0.6667,
+        "internal_rate": 0.3333,
+        "start_count": 0,
+        "end_count": 4,
+        "internal_count": 2
+      },
+      "P174": {
+        "freq": 3,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 3
+      },
+      "P228": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P238": {
+        "freq": 3,
+        "start_rate": 0.6667,
+        "end_rate": 0.0,
+        "internal_rate": 0.3333,
+        "start_count": 2,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P325": {
+        "freq": 14,
+        "start_rate": 0.0,
+        "end_rate": 0.0714,
+        "internal_rate": 0.9286,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 13
+      },
+      "P311": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P123": {
+        "freq": 13,
+        "start_rate": 0.0,
+        "end_rate": 0.3846,
+        "internal_rate": 0.6154,
+        "start_count": 0,
+        "end_count": 5,
+        "internal_count": 8
+      },
+      "P103": {
+        "freq": 3,
+        "start_rate": 0.0,
+        "end_rate": 0.3333,
+        "internal_rate": 0.6667,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 2
+      },
+      "P332": {
+        "freq": 11,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 11
+      },
+      "P349": {
+        "freq": 10,
+        "start_rate": 0.0,
+        "end_rate": 0.2,
+        "internal_rate": 0.8,
+        "start_count": 0,
+        "end_count": 2,
+        "internal_count": 8
+      },
+      "P095": {
+        "freq": 4,
+        "start_rate": 0.0,
+        "end_rate": 0.75,
+        "internal_rate": 0.25,
+        "start_count": 0,
+        "end_count": 3,
+        "internal_count": 1
+      },
+      "P127": {
+        "freq": 4,
+        "start_rate": 0.0,
+        "end_rate": 0.25,
+        "internal_rate": 0.75,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 3
+      },
+      "P111": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 2
+      },
+      "P041": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P309": {
+        "freq": 3,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 3
+      },
+      "P007": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P358": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 2
+      },
+      "P307": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P092": {
+        "freq": 6,
+        "start_rate": 0.0,
+        "end_rate": 0.1667,
+        "internal_rate": 0.8333,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 5
+      },
+      "P188": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 2
+      },
+      "P139": {
+        "freq": 4,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 4
+      },
+      "P083": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P303": {
+        "freq": 3,
+        "start_rate": 0.0,
+        "end_rate": 0.3333,
+        "internal_rate": 0.6667,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 2
+      },
+      "P089": {
+        "freq": 1,
+        "start_rate": 1.0,
+        "end_rate": 0.0,
+        "internal_rate": 0.0,
+        "start_count": 1,
+        "end_count": 0,
+        "internal_count": 0
+      },
+      "P301": {
+        "freq": 6,
+        "start_rate": 0.8333,
+        "end_rate": 0.0,
+        "internal_rate": 0.1667,
+        "start_count": 5,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P360": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P296": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P372": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P353": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 0.5,
+        "internal_rate": 0.5,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 1
+      },
+      "P288": {
+        "freq": 3,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 3
+      },
+      "P211": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P051": {
+        "freq": 5,
+        "start_rate": 1.0,
+        "end_rate": 0.0,
+        "internal_rate": 0.0,
+        "start_count": 5,
+        "end_count": 0,
+        "internal_count": 0
+      },
+      "P382": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P281": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P258": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P326": {
+        "freq": 3,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 3
+      },
+      "P001": {
+        "freq": 4,
+        "start_rate": 1.0,
+        "end_rate": 0.0,
+        "internal_rate": 0.0,
+        "start_count": 4,
+        "end_count": 0,
+        "internal_count": 0
+      },
+      "P251": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 2
+      },
+      "P246": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P310": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 0.5,
+        "internal_rate": 0.5,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 1
+      },
+      "P234": {
+        "freq": 3,
+        "start_rate": 0.0,
+        "end_rate": 0.3333,
+        "internal_rate": 0.6667,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 2
+      },
+      "P124": {
+        "freq": 4,
+        "start_rate": 0.0,
+        "end_rate": 0.5,
+        "internal_rate": 0.5,
+        "start_count": 0,
+        "end_count": 2,
+        "internal_count": 2
+      },
+      "P289": {
+        "freq": 4,
+        "start_rate": 0.0,
+        "end_rate": 0.25,
+        "internal_rate": 0.75,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 3
+      },
+      "P206": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P342": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 0.5,
+        "internal_rate": 0.5,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 1
+      },
+      "P040": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 2
+      },
+      "P223": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P260": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P047": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P031": {
+        "freq": 3,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 3
+      },
+      "P023": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P098": {
+        "freq": 4,
+        "start_rate": 0.75,
+        "end_rate": 0.0,
+        "internal_rate": 0.25,
+        "start_count": 3,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P181": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P280": {
+        "freq": 1,
+        "start_rate": 1.0,
+        "end_rate": 0.0,
+        "internal_rate": 0.0,
+        "start_count": 1,
+        "end_count": 0,
+        "internal_count": 0
+      },
+      "P366": {
+        "freq": 1,
+        "start_rate": 1.0,
+        "end_rate": 0.0,
+        "internal_rate": 0.0,
+        "start_count": 1,
+        "end_count": 0,
+        "internal_count": 0
+      },
+      "P043": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 0.5,
+        "internal_rate": 0.5,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 1
+      },
+      "P226": {
+        "freq": 4,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 4,
+        "internal_count": 0
+      },
+      "P012": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P247": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P004": {
+        "freq": 6,
+        "start_rate": 1.0,
+        "end_rate": 0.0,
+        "internal_rate": 0.0,
+        "start_count": 6,
+        "end_count": 0,
+        "internal_count": 0
+      },
+      "P053": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P082": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 2
+      },
+      "P128": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 2
+      },
+      "P180": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P335": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P070": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P178": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P020": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P110": {
+        "freq": 3,
+        "start_rate": 0.0,
+        "end_rate": 0.3333,
+        "internal_rate": 0.6667,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 2
+      },
+      "P313": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P075": {
+        "freq": 4,
+        "start_rate": 0.0,
+        "end_rate": 0.25,
+        "internal_rate": 0.75,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 3
+      },
+      "P253": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P038": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P003": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 2
+      },
+      "P359": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 2,
+        "internal_count": 0
+      },
+      "P054": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P071": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P099": {
+        "freq": 1,
+        "start_rate": 1.0,
+        "end_rate": 0.0,
+        "internal_rate": 0.0,
+        "start_count": 1,
+        "end_count": 0,
+        "internal_count": 0
+      },
+      "P381": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P084": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P285": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P254": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P156": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P283": {
+        "freq": 3,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 3
+      },
+      "P195": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P044": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P355": {
+        "freq": 4,
+        "start_rate": 0.0,
+        "end_rate": 0.5,
+        "internal_rate": 0.5,
+        "start_count": 0,
+        "end_count": 2,
+        "internal_count": 2
+      },
+      "P014": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P208": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P293": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P032": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P177": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P379": {
+        "freq": 1,
+        "start_rate": 1.0,
+        "end_rate": 0.0,
+        "internal_rate": 0.0,
+        "start_count": 1,
+        "end_count": 0,
+        "internal_count": 0
+      },
+      "P368": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 0.5,
+        "internal_rate": 0.5,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 1
+      },
+      "P061": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P294": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P022": {
+        "freq": 1,
+        "start_rate": 1.0,
+        "end_rate": 0.0,
+        "internal_rate": 0.0,
+        "start_count": 1,
+        "end_count": 0,
+        "internal_count": 0
+      },
+      "P170": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P231": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P393": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P300": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P265": {
+        "freq": 2,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 2,
+        "internal_count": 0
+      },
+      "P136": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P166": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P290": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P048": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P037": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P255": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P193": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      },
+      "P207": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 1.0,
+        "internal_rate": 0.0,
+        "start_count": 0,
+        "end_count": 1,
+        "internal_count": 0
+      },
+      "P010": {
+        "freq": 1,
+        "start_rate": 0.0,
+        "end_rate": 0.0,
+        "internal_rate": 1.0,
+        "start_count": 0,
+        "end_count": 0,
+        "internal_count": 1
+      }
+    }
+  },
+  "ngram": {
+    "top_30_bigrams": [
+      {
+        "a": "P122",
+        "b": "P385",
+        "count": 29
+      },
+      {
+        "a": "P147",
+        "b": "P316",
+        "count": 10
+      },
+      {
+        "a": "P324",
+        "b": "P332",
+        "count": 10
+      },
+      {
+        "a": "P062",
+        "b": "P060",
+        "count": 9
+      },
+      {
+        "a": "P364",
+        "b": "P122",
+        "count": 9
+      },
+      {
+        "a": "P013",
+        "b": "P324",
+        "count": 9
+      },
+      {
+        "a": "P050",
+        "b": "P145",
+        "count": 8
+      },
+      {
+        "a": "P120",
+        "b": "P256",
+        "count": 7
+      },
+      {
+        "a": "P145",
+        "b": "P122",
+        "count": 7
+      },
+      {
+        "a": "P217",
+        "b": "P050",
+        "count": 6
+      },
+      {
+        "a": "P060",
+        "b": "P122",
+        "count": 6
+      },
+      {
+        "a": "P122",
+        "b": "P086",
+        "count": 6
+      },
+      {
+        "a": "P122",
+        "b": "P378",
+        "count": 6
+      },
+      {
+        "a": "P268",
+        "b": "P268",
+        "count": 5
+      },
+      {
+        "a": "P060",
+        "b": "P364",
+        "count": 5
+      },
+      {
+        "a": "P324",
+        "b": "P086",
+        "count": 5
+      },
+      {
+        "a": "P086",
+        "b": "P276",
+        "count": 5
+      },
+      {
+        "a": "P050",
+        "b": "P092",
+        "count": 5
+      },
+      {
+        "a": "P230",
+        "b": "P062",
+        "count": 5
+      },
+      {
+        "a": "P122",
+        "b": "P205",
+        "count": 5
+      },
+      {
+        "a": "P217",
+        "b": "P147",
+        "count": 5
+      },
+      {
+        "a": "P324",
+        "b": "P175",
+        "count": 5
+      },
+      {
+        "a": "P056",
+        "b": "P122",
+        "count": 4
+      },
+      {
+        "a": "P324",
+        "b": "P154",
+        "count": 4
+      },
+      {
+        "a": "P062",
+        "b": "P122",
+        "count": 4
+      },
+      {
+        "a": "P058",
+        "b": "P122",
+        "count": 4
+      },
+      {
+        "a": "P324",
+        "b": "P194",
+        "count": 4
+      },
+      {
+        "a": "P000",
+        "b": "P122",
+        "count": 4
+      },
+      {
+        "a": "P086",
+        "b": "P123",
+        "count": 4
+      },
+      {
+        "a": "P301",
+        "b": "P230",
+        "count": 4
+      }
+    ],
+    "top_20_trigrams": [
+      {
+        "a": "P050",
+        "b": "P145",
+        "c_sign": "P122",
+        "count": 5
+      },
+      {
+        "a": "P217",
+        "b": "P147",
+        "c_sign": "P316",
+        "count": 5
+      },
+      {
+        "a": "P324",
+        "b": "P086",
+        "c_sign": "P276",
+        "count": 4
+      },
+      {
+        "a": "P062",
+        "b": "P060",
+        "c_sign": "P122",
+        "count": 4
+      },
+      {
+        "a": "P062",
+        "b": "P122",
+        "c_sign": "P385",
+        "count": 3
+      },
+      {
+        "a": "P060",
+        "b": "P364",
+        "c_sign": "P122",
+        "count": 3
+      },
+      {
+        "a": "P000",
+        "b": "P122",
+        "c_sign": "P385",
+        "count": 3
+      },
+      {
+        "a": "P086",
+        "b": "P123",
+        "c_sign": "P122",
+        "count": 3
+      },
+      {
+        "a": "P217",
+        "b": "P050",
+        "c_sign": "P092",
+        "count": 3
+      },
+      {
+        "a": "P122",
+        "b": "P086",
+        "c_sign": "P035",
+        "count": 3
+      },
+      {
+        "a": "P301",
+        "b": "P230",
+        "c_sign": "P062",
+        "count": 3
+      },
+      {
+        "a": "P013",
+        "b": "P324",
+        "c_sign": "P050",
+        "count": 3
+      },
+      {
+        "a": "P364",
+        "b": "P122",
+        "c_sign": "P385",
+        "count": 3
+      },
+      {
+        "a": "P147",
+        "b": "P316",
+        "c_sign": "P056",
+        "count": 2
+      },
+      {
+        "a": "P316",
+        "b": "P056",
+        "c_sign": "P122",
+        "count": 2
+      },
+      {
+        "a": "P086",
+        "b": "P352",
+        "c_sign": "P011",
+        "count": 2
+      },
+      {
+        "a": "P086",
+        "b": "P204",
+        "c_sign": "P114",
+        "count": 2
+      },
+      {
+        "a": "P086",
+        "b": "P276",
+        "c_sign": "P058",
+        "count": 2
+      },
+      {
+        "a": "P210",
+        "b": "P122",
+        "c_sign": "P385",
+        "count": 2
+      },
+      {
+        "a": "P013",
+        "b": "P324",
+        "c_sign": "P194",
+        "count": 2
+      }
+    ],
+    "top_30_pmi_pairs": [
+      {
+        "a": "P204",
+        "b": "P114",
+        "pmi": 7.6687
+      },
+      {
+        "a": "P288",
+        "b": "P127",
+        "pmi": 7.6687
+      },
+      {
+        "a": "P188",
+        "b": "P073",
+        "pmi": 7.2537
+      },
+      {
+        "a": "P215",
+        "b": "P275",
+        "pmi": 7.0838
+      },
+      {
+        "a": "P160",
+        "b": "P303",
+        "pmi": 7.0838
+      },
+      {
+        "a": "P352",
+        "b": "P011",
+        "pmi": 6.9318
+      },
+      {
+        "a": "P035",
+        "b": "P270",
+        "pmi": 6.9318
+      },
+      {
+        "a": "P215",
+        "b": "P091",
+        "pmi": 6.3468
+      },
+      {
+        "a": "P332",
+        "b": "P283",
+        "pmi": 6.2093
+      },
+      {
+        "a": "P004",
+        "b": "P123",
+        "pmi": 5.9683
+      },
+      {
+        "a": "P349",
+        "b": "P139",
+        "pmi": 5.9318
+      },
+      {
+        "a": "P326",
+        "b": "P120",
+        "pmi": 5.7943
+      },
+      {
+        "a": "P268",
+        "b": "P268",
+        "pmi": 5.6568
+      },
+      {
+        "a": "P147",
+        "b": "P316",
+        "pmi": 5.5204
+      },
+      {
+        "a": "P154",
+        "b": "P355",
+        "pmi": 5.4464
+      },
+      {
+        "a": "P205",
+        "b": "P076",
+        "pmi": 5.3468
+      },
+      {
+        "a": "P355",
+        "b": "P058",
+        "pmi": 5.3468
+      },
+      {
+        "a": "P058",
+        "b": "P075",
+        "pmi": 5.3468
+      },
+      {
+        "a": "P301",
+        "b": "P230",
+        "pmi": 5.1452
+      },
+      {
+        "a": "P230",
+        "b": "P234",
+        "pmi": 5.1452
+      },
+      {
+        "a": "P086",
+        "b": "P352",
+        "pmi": 5.1244
+      },
+      {
+        "a": "P086",
+        "b": "P128",
+        "pmi": 5.1244
+      },
+      {
+        "a": "P120",
+        "b": "P256",
+        "pmi": 5.0167
+      },
+      {
+        "a": "P050",
+        "b": "P092",
+        "pmi": 4.9907
+      },
+      {
+        "a": "P050",
+        "b": "P201",
+        "pmi": 4.9318
+      },
+      {
+        "a": "P086",
+        "b": "P276",
+        "pmi": 4.8614
+      },
+      {
+        "a": "P276",
+        "b": "P058",
+        "pmi": 4.7619
+      },
+      {
+        "a": "P062",
+        "b": "P060",
+        "pmi": 4.7094
+      },
+      {
+        "a": "P086",
+        "b": "P204",
+        "pmi": 4.7094
+      },
+      {
+        "a": "P086",
+        "b": "P035",
+        "pmi": 4.7094
+      }
+    ],
+    "conditional_entropy_h2": 2.5149,
+    "n_distinct_bigrams": 551,
+    "n_distinct_trigrams": 583
+  },
+  "segmentation": {
+    "terminal_sign_candidates": [
+      "P011",
+      "P256",
+      "P378",
+      "P385"
+    ],
+    "initial_sign_candidates": [
+      "P000",
+      "P001",
+      "P004",
+      "P013",
+      "P051",
+      "P086",
+      "P098",
+      "P217",
+      "P301",
+      "P324"
+    ],
+    "inscriptions_ending_in_terminal_candidate": 53,
+    "fraction_ending_in_terminal_candidate": 0.2961,
+    "inscriptions_starting_with_initial_candidate": 153,
+    "fraction_starting_with_initial_candidate": 0.8547,
+    "top_terminal_occupants": [
+      {
+        "sign": "P385",
+        "count": 29
+      },
+      {
+        "sign": "P378",
+        "count": 10
+      },
+      {
+        "sign": "P256",
+        "count": 9
+      },
+      {
+        "sign": "P000",
+        "count": 6
+      },
+      {
+        "sign": "P011",
+        "count": 5
+      },
+      {
+        "sign": "P123",
+        "count": 5
+      },
+      {
+        "sign": "P145",
+        "count": 4
+      },
+      {
+        "sign": "P076",
+        "count": 4
+      },
+      {
+        "sign": "P230",
+        "count": 4
+      },
+      {
+        "sign": "P226",
+        "count": 4
+      },
+      {
+        "sign": "P108",
+        "count": 3
+      },
+      {
+        "sign": "P154",
+        "count": 3
+      },
+      {
+        "sign": "P095",
+        "count": 3
+      },
+      {
+        "sign": "P221",
+        "count": 2
+      },
+      {
+        "sign": "P364",
+        "count": 2
+      }
+    ],
+    "top_initial_occupants": [
+      {
+        "sign": "P324",
+        "count": 77
+      },
+      {
+        "sign": "P086",
+        "count": 19
+      },
+      {
+        "sign": "P217",
+        "count": 14
+      },
+      {
+        "sign": "P000",
+        "count": 11
+      },
+      {
+        "sign": "P013",
+        "count": 9
+      },
+      {
+        "sign": "P004",
+        "count": 6
+      },
+      {
+        "sign": "P301",
+        "count": 5
+      },
+      {
+        "sign": "P051",
+        "count": 5
+      },
+      {
+        "sign": "P001",
+        "count": 4
+      },
+      {
+        "sign": "P268",
+        "count": 3
+      },
+      {
+        "sign": "P098",
+        "count": 3
+      },
+      {
+        "sign": "P378",
+        "count": 2
+      },
+      {
+        "sign": "P202",
+        "count": 2
+      },
+      {
+        "sign": "P238",
+        "count": 2
+      },
+      {
+        "sign": "P121",
+        "count": 1
+      }
+    ],
+    "recurrent_templates_count_ge3": [
+      {
+        "template": [
+          "P122",
+          "P385"
+        ],
+        "count": 29
+      },
+      {
+        "template": [
+          "P147",
+          "P316"
+        ],
+        "count": 10
+      },
+      {
+        "template": [
+          "P324",
+          "P332"
+        ],
+        "count": 10
+      },
+      {
+        "template": [
+          "P062",
+          "P060"
+        ],
+        "count": 9
+      },
+      {
+        "template": [
+          "P364",
+          "P122"
+        ],
+        "count": 9
+      },
+      {
+        "template": [
+          "P013",
+          "P324"
+        ],
+        "count": 9
+      },
+      {
+        "template": [
+          "P050",
+          "P145"
+        ],
+        "count": 8
+      },
+      {
+        "template": [
+          "P120",
+          "P256"
+        ],
+        "count": 7
+      },
+      {
+        "template": [
+          "P145",
+          "P122"
+        ],
+        "count": 7
+      },
+      {
+        "template": [
+          "P217",
+          "P050"
+        ],
+        "count": 6
+      },
+      {
+        "template": [
+          "P060",
+          "P122"
+        ],
+        "count": 6
+      },
+      {
+        "template": [
+          "P122",
+          "P086"
+        ],
+        "count": 6
+      },
+      {
+        "template": [
+          "P122",
+          "P378"
+        ],
+        "count": 6
+      },
+      {
+        "template": [
+          "P268",
+          "P268"
+        ],
+        "count": 5
+      },
+      {
+        "template": [
+          "P060",
+          "P364"
+        ],
+        "count": 5
+      },
+      {
+        "template": [
+          "P324",
+          "P086"
+        ],
+        "count": 5
+      },
+      {
+        "template": [
+          "P086",
+          "P276"
+        ],
+        "count": 5
+      },
+      {
+        "template": [
+          "P050",
+          "P145",
+          "P122"
+        ],
+        "count": 5
+      },
+      {
+        "template": [
+          "P050",
+          "P092"
+        ],
+        "count": 5
+      },
+      {
+        "template": [
+          "P230",
+          "P062"
+        ],
+        "count": 5
+      },
+      {
+        "template": [
+          "P122",
+          "P205"
+        ],
+        "count": 5
+      },
+      {
+        "template": [
+          "P217",
+          "P147"
+        ],
+        "count": 5
+      },
+      {
+        "template": [
+          "P217",
+          "P147",
+          "P316"
+        ],
+        "count": 5
+      },
+      {
+        "template": [
+          "P324",
+          "P175"
+        ],
+        "count": 5
+      },
+      {
+        "template": [
+          "P056",
+          "P122"
+        ],
+        "count": 4
+      },
+      {
+        "template": [
+          "P324",
+          "P154"
+        ],
+        "count": 4
+      },
+      {
+        "template": [
+          "P062",
+          "P122"
+        ],
+        "count": 4
+      },
+      {
+        "template": [
+          "P058",
+          "P122"
+        ],
+        "count": 4
+      },
+      {
+        "template": [
+          "P324",
+          "P086",
+          "P276"
+        ],
+        "count": 4
+      },
+      {
+        "template": [
+          "P324",
+          "P194"
+        ],
+        "count": 4
+      },
+      {
+        "template": [
+          "P000",
+          "P122"
+        ],
+        "count": 4
+      },
+      {
+        "template": [
+          "P062",
+          "P060",
+          "P122"
+        ],
+        "count": 4
+      },
+      {
+        "template": [
+          "P086",
+          "P123"
+        ],
+        "count": 4
+      },
+      {
+        "template": [
+          "P301",
+          "P230"
+        ],
+        "count": 4
+      },
+      {
+        "template": [
+          "P050",
+          "P201"
+        ],
+        "count": 4
+      },
+      {
+        "template": [
+          "P120",
+          "P230"
+        ],
+        "count": 4
+      },
+      {
+        "template": [
+          "P004",
+          "P123"
+        ],
+        "count": 4
+      },
+      {
+        "template": [
+          "P324",
+          "P009"
+        ],
+        "count": 4
+      },
+      {
+        "template": [
+          "P324",
+          "P096"
+        ],
+        "count": 3
+      },
+      {
+        "template": [
+          "P062",
+          "P122",
+          "P385"
+        ],
+        "count": 3
+      }
+    ]
+  },
+  "graph": {
+    "top_25_hubs_by_cooccurrence_weight": [
+      {
+        "sign": "P122",
+        "weight": 341
+      },
+      {
+        "sign": "P324",
+        "weight": 305
+      },
+      {
+        "sign": "P050",
+        "weight": 155
+      },
+      {
+        "sign": "P086",
+        "weight": 122
+      },
+      {
+        "sign": "P145",
+        "weight": 117
+      },
+      {
+        "sign": "P385",
+        "weight": 109
+      },
+      {
+        "sign": "P062",
+        "weight": 104
+      },
+      {
+        "sign": "P060",
+        "weight": 104
+      },
+      {
+        "sign": "P120",
+        "weight": 94
+      },
+      {
+        "sign": "P230",
+        "weight": 92
+      },
+      {
+        "sign": "P316",
+        "weight": 86
+      },
+      {
+        "sign": "P364",
+        "weight": 84
+      },
+      {
+        "sign": "P058",
+        "weight": 74
+      },
+      {
+        "sign": "P325",
+        "weight": 64
+      },
+      {
+        "sign": "P147",
+        "weight": 58
+      },
+      {
+        "sign": "P217",
+        "weight": 55
+      },
+      {
+        "sign": "P378",
+        "weight": 54
+      },
+      {
+        "sign": "P154",
+        "weight": 53
+      },
+      {
+        "sign": "P056",
+        "weight": 47
+      },
+      {
+        "sign": "P121",
+        "weight": 46
+      },
+      {
+        "sign": "P000",
+        "weight": 44
+      },
+      {
+        "sign": "P332",
+        "weight": 44
+      },
+      {
+        "sign": "P349",
+        "weight": 44
+      },
+      {
+        "sign": "P202",
+        "weight": 42
+      },
+      {
+        "sign": "P256",
+        "weight": 42
+      }
+    ],
+    "top_20_out_degree": [
+      [
+        "P324",
+        56
+      ],
+      [
+        "P122",
+        28
+      ],
+      [
+        "P086",
+        19
+      ],
+      [
+        "P145",
+        15
+      ],
+      [
+        "P316",
+        13
+      ],
+      [
+        "P050",
+        13
+      ],
+      [
+        "P230",
+        12
+      ],
+      [
+        "P325",
+        12
+      ],
+      [
+        "P120",
+        10
+      ],
+      [
+        "P154",
+        10
+      ],
+      [
+        "P062",
+        9
+      ],
+      [
+        "P000",
+        9
+      ],
+      [
+        "P332",
+        9
+      ],
+      [
+        "P121",
+        8
+      ],
+      [
+        "P202",
+        8
+      ],
+      [
+        "P205",
+        8
+      ],
+      [
+        "P060",
+        8
+      ],
+      [
+        "P058",
+        8
+      ],
+      [
+        "P268",
+        7
+      ],
+      [
+        "P378",
+        7
+      ]
+    ],
+    "top_20_in_degree": [
+      [
+        "P122",
+        35
+      ],
+      [
+        "P050",
+        19
+      ],
+      [
+        "P120",
+        18
+      ],
+      [
+        "P145",
+        17
+      ],
+      [
+        "P062",
+        16
+      ],
+      [
+        "P325",
+        14
+      ],
+      [
+        "P230",
+        14
+      ],
+      [
+        "P324",
+        13
+      ],
+      [
+        "P364",
+        11
+      ],
+      [
+        "P058",
+        11
+      ],
+      [
+        "P154",
+        10
+      ],
+      [
+        "P060",
+        10
+      ],
+      [
+        "P147",
+        9
+      ],
+      [
+        "P349",
+        9
+      ],
+      [
+        "P121",
+        9
+      ],
+      [
+        "P316",
+        8
+      ],
+      [
+        "P378",
+        8
+      ],
+      [
+        "P123",
+        7
+      ],
+      [
+        "P056",
+        7
+      ],
+      [
+        "P011",
+        7
+      ]
+    ],
+    "bidirectional_adjacency_pairs": [
+      {
+        "a": "P050",
+        "b": "P145",
+        "a_to_b": 8,
+        "b_to_a": 2
+      },
+      {
+        "a": "P122",
+        "b": "P145",
+        "a_to_b": 1,
+        "b_to_a": 7
+      },
+      {
+        "a": "P086",
+        "b": "P122",
+        "a_to_b": 1,
+        "b_to_a": 6
+      },
+      {
+        "a": "P062",
+        "b": "P230",
+        "a_to_b": 1,
+        "b_to_a": 5
+      },
+      {
+        "a": "P000",
+        "b": "P122",
+        "a_to_b": 4,
+        "b_to_a": 2
+      },
+      {
+        "a": "P120",
+        "b": "P230",
+        "a_to_b": 4,
+        "b_to_a": 1
+      },
+      {
+        "a": "P324",
+        "b": "P364",
+        "a_to_b": 2,
+        "b_to_a": 1
+      },
+      {
+        "a": "P060",
+        "b": "P324",
+        "a_to_b": 2,
+        "b_to_a": 1
+      },
+      {
+        "a": "P120",
+        "b": "P160",
+        "a_to_b": 2,
+        "b_to_a": 1
+      },
+      {
+        "a": "P000",
+        "b": "P230",
+        "a_to_b": 2,
+        "b_to_a": 1
+      },
+      {
+        "a": "P145",
+        "b": "P349",
+        "a_to_b": 1,
+        "b_to_a": 1
+      },
+      {
+        "a": "P145",
+        "b": "P256",
+        "a_to_b": 1,
+        "b_to_a": 1
+      },
+      {
+        "a": "P056",
+        "b": "P230",
+        "a_to_b": 1,
+        "b_to_a": 1
+      },
+      {
+        "a": "P122",
+        "b": "P142",
+        "a_to_b": 1,
+        "b_to_a": 1
+      },
+      {
+        "a": "P324",
+        "b": "P385",
+        "a_to_b": 1,
+        "b_to_a": 1
+      },
+      {
+        "a": "P120",
+        "b": "P154",
+        "a_to_b": 1,
+        "b_to_a": 1
+      },
+      {
+        "a": "P009",
+        "b": "P154",
+        "a_to_b": 1,
+        "b_to_a": 1
+      },
+      {
+        "a": "P058",
+        "b": "P062",
+        "a_to_b": 1,
+        "b_to_a": 1
+      },
+      {
+        "a": "P000",
+        "b": "P332",
+        "a_to_b": 1,
+        "b_to_a": 1
+      },
+      {
+        "a": "P050",
+        "b": "P316",
+        "a_to_b": 1,
+        "b_to_a": 1
+      },
+      {
+        "a": "P050",
+        "b": "P073",
+        "a_to_b": 1,
+        "b_to_a": 1
+      },
+      {
+        "a": "P238",
+        "b": "P324",
+        "a_to_b": 1,
+        "b_to_a": 1
+      },
+      {
+        "a": "P325",
+        "b": "P349",
+        "a_to_b": 1,
+        "b_to_a": 1
+      },
+      {
+        "a": "P123",
+        "b": "P154",
+        "a_to_b": 1,
+        "b_to_a": 1
+      },
+      {
+        "a": "P289",
+        "b": "P316",
+        "a_to_b": 1,
+        "b_to_a": 1
+      },
+      {
+        "a": "P082",
+        "b": "P122",
+        "a_to_b": 1,
+        "b_to_a": 1
+      }
+    ],
+    "high_jaccard_neighbor_pairs": [
+      {
+        "a": "P147",
+        "b": "P316",
+        "jaccard": 0.4583
+      },
+      {
+        "a": "P186",
+        "b": "P237",
+        "jaccard": 0.4444
+      },
+      {
+        "a": "P122",
+        "b": "P324",
+        "jaccard": 0.4255
+      },
+      {
+        "a": "P385",
+        "b": "P086",
+        "jaccard": 0.4242
+      },
+      {
+        "a": "P385",
+        "b": "P062",
+        "jaccard": 0.4127
+      },
+      {
+        "a": "P204",
+        "b": "P114",
+        "jaccard": 0.4118
+      },
+      {
+        "a": "P062",
+        "b": "P060",
+        "jaccard": 0.4058
+      },
+      {
+        "a": "P009",
+        "b": "P270",
+        "jaccard": 0.4
+      },
+      {
+        "a": "P270",
+        "b": "P142",
+        "jaccard": 0.3889
+      },
+      {
+        "a": "P145",
+        "b": "P324",
+        "jaccard": 0.3868
+      },
+      {
+        "a": "P062",
+        "b": "P120",
+        "jaccard": 0.3857
+      },
+      {
+        "a": "P316",
+        "b": "P062",
+        "jaccard": 0.381
+      },
+      {
+        "a": "P385",
+        "b": "P324",
+        "jaccard": 0.37
+      },
+      {
+        "a": "P147",
+        "b": "P000",
+        "jaccard": 0.3684
+      },
+      {
+        "a": "P324",
+        "b": "P060",
+        "jaccard": 0.3679
+      },
+      {
+        "a": "P122",
+        "b": "P086",
+        "jaccard": 0.3621
+      },
+      {
+        "a": "P256",
+        "b": "P000",
+        "jaccard": 0.3611
+      },
+      {
+        "a": "P121",
+        "b": "P256",
+        "jaccard": 0.3571
+      },
+      {
+        "a": "P385",
+        "b": "P122",
+        "jaccard": 0.3571
+      },
+      {
+        "a": "P096",
+        "b": "P067",
+        "jaccard": 0.3571
+      },
+      {
+        "a": "P096",
+        "b": "P013",
+        "jaccard": 0.3529
+      },
+      {
+        "a": "P385",
+        "b": "P120",
+        "jaccard": 0.3521
+      },
+      {
+        "a": "P385",
+        "b": "P316",
+        "jaccard": 0.3438
+      },
+      {
+        "a": "P060",
+        "b": "P364",
+        "jaccard": 0.3429
+      },
+      {
+        "a": "P324",
+        "b": "P120",
+        "jaccard": 0.3426
+      },
+      {
+        "a": "P145",
+        "b": "P062",
+        "jaccard": 0.3378
+      },
+      {
+        "a": "P121",
+        "b": "P215",
+        "jaccard": 0.3333
+      },
+      {
+        "a": "P385",
+        "b": "P060",
+        "jaccard": 0.3333
+      },
+      {
+        "a": "P147",
+        "b": "P056",
+        "jaccard": 0.3333
+      },
+      {
+        "a": "P316",
+        "b": "P086",
+        "jaccard": 0.3333
+      }
+    ]
+  },
+  "cross_site": {
+    "note": "Site comparison is not meaningful \u2014 only Mohenjo-daro is present. This will become informative once Harappa / Dholavira / Lothal data are ingested.",
+    "sites_present": [
+      "Mohenjo-daro"
+    ],
+    "n_sites": 1,
+    "site_sign_inventory": {
+      "Mohenjo-daro": [
+        "P000",
+        "P001",
+        "P003",
+        "P004",
+        "P007",
+        "P009",
+        "P010",
+        "P011",
+        "P012",
+        "P013",
+        "P014",
+        "P020",
+        "P022",
+        "P023",
+        "P026",
+        "P031",
+        "P032",
+        "P035",
+        "P037",
+        "P038",
+        "P040",
+        "P041",
+        "P043",
+        "P044",
+        "P047",
+        "P048",
+        "P050",
+        "P051",
+        "P053",
+        "P054",
+        "P056",
+        "P058",
+        "P060",
+        "P061",
+        "P062",
+        "P065",
+        "P067",
+        "P070",
+        "P071",
+        "P073",
+        "P075",
+        "P076",
+        "P082",
+        "P083",
+        "P084",
+        "P086",
+        "P089",
+        "P091",
+        "P092",
+        "P094",
+        "P095",
+        "P096",
+        "P098",
+        "P099",
+        "P103",
+        "P108",
+        "P110",
+        "P111",
+        "P114",
+        "P117",
+        "P120",
+        "P121",
+        "P122",
+        "P123",
+        "P124",
+        "P125",
+        "P126",
+        "P127",
+        "P128",
+        "P136",
+        "P139",
+        "P142",
+        "P144",
+        "P145",
+        "P147",
+        "P151",
+        "P154",
+        "P156",
+        "P160",
+        "P166",
+        "P170",
+        "P172",
+        "P174",
+        "P175",
+        "P177",
+        "P178",
+        "P180",
+        "P181",
+        "P182",
+        "P186",
+        "P188",
+        "P193",
+        "P194",
+        "P195",
+        "P197",
+        "P201",
+        "P202",
+        "P204",
+        "P205",
+        "P206",
+        "P207",
+        "P208",
+        "P210",
+        "P211",
+        "P215",
+        "P217",
+        "P221",
+        "P223",
+        "P226",
+        "P228",
+        "P230",
+        "P231",
+        "P232",
+        "P234",
+        "P237",
+        "P238",
+        "P246",
+        "P247",
+        "P251",
+        "P253",
+        "P254",
+        "P255",
+        "P256",
+        "P258",
+        "P260",
+        "P265",
+        "P268",
+        "P270",
+        "P272",
+        "P275",
+        "P276",
+        "P280",
+        "P281",
+        "P283",
+        "P285",
+        "P288",
+        "P289",
+        "P290",
+        "P293",
+        "P294",
+        "P296",
+        "P300",
+        "P301",
+        "P303",
+        "P307",
+        "P309",
+        "P310",
+        "P311",
+        "P313",
+        "P316",
+        "P320",
+        "P324",
+        "P325",
+        "P326",
+        "P327",
+        "P332",
+        "P335",
+        "P341",
+        "P342",
+        "P346",
+        "P349",
+        "P350",
+        "P352",
+        "P353",
+        "P355",
+        "P358",
+        "P359",
+        "P360",
+        "P364",
+        "P366",
+        "P368",
+        "P369",
+        "P372",
+        "P378",
+        "P379",
+        "P381",
+        "P382",
+        "P384",
+        "P385",
+        "P386",
+        "P390",
+        "P393"
+      ]
+    },
+    "cross_site_overlap": {}
+  },
+  "latent_classes": {
+    "n_signs_classified": 182,
+    "class_distribution": {
+      "HAPAX": 77,
+      "MEDIAL_STRONG": 48,
+      "LOW_FREQUENCY": 32,
+      "INITIAL_STRONG": 9,
+      "MIXED": 8,
+      "TERMINAL_STRONG": 7,
+      "BIMODAL_INIT_TERM": 1
+    },
+    "class_profiles": {
+      "MEDIAL_STRONG": {
+        "n_members": 48,
+        "mean_end_rate": 0.0828,
+        "mean_start_rate": 0.021,
+        "mean_internal_rate": 0.8961,
+        "variance_end_rate": 0.0084,
+        "members": [
+          "P009",
+          "P031",
+          "P035",
+          "P050",
+          "P056",
+          "P058",
+          "P060",
+          "P062",
+          "P073",
+          "P075",
+          "P091",
+          "P092",
+          "P096",
+          "P120",
+          "P121",
+          "P122",
+          "P126",
+          "P127",
+          "P139",
+          "P142",
+          "P145",
+          "P147",
+          "P154",
+          "P160",
+          "P174",
+          "P175",
+          "P194",
+          "P201",
+          "P202",
+          "P204",
+          "P205",
+          "P210",
+          "P215",
+          "P230",
+          "P268",
+          "P270",
+          "P276",
+          "P283",
+          "P288",
+          "P289",
+          "P309",
+          "P316",
+          "P325",
+          "P326",
+          "P332",
+          "P349",
+          "P364",
+          "P369"
+        ]
+      },
+      "TERMINAL_STRONG": {
+        "n_members": 7,
+        "mean_end_rate": 0.7405,
+        "mean_start_rate": 0.0168,
+        "mean_internal_rate": 0.2427,
+        "variance_end_rate": 0.0177,
+        "members": [
+          "P076",
+          "P095",
+          "P108",
+          "P226",
+          "P256",
+          "P378",
+          "P385"
+        ]
+      },
+      "BIMODAL_INIT_TERM": {
+        "n_members": 1,
+        "mean_end_rate": 0.5,
+        "mean_start_rate": 0.5,
+        "mean_internal_rate": 0.0,
+        "variance_end_rate": 0.0,
+        "members": [
+          "P320"
+        ]
+      },
+      "HAPAX": {
+        "n_members": 77,
+        "mean_end_rate": 0.4286,
+        "mean_start_rate": 0.0909,
+        "mean_internal_rate": 0.4805,
+        "variance_end_rate": 0.2449,
+        "members": [
+          "P007",
+          "P010",
+          "P012",
+          "P014",
+          "P020",
+          "P022",
+          "P023",
+          "P032",
+          "P037",
+          "P038",
+          "P041",
+          "P044",
+          "P047",
+          "P048",
+          "P053",
+          "P054",
+          "P061",
+          "P065",
+          "P070",
+          "P071",
+          "P083",
+          "P084",
+          "P089",
+          "P094",
+          "P099",
+          "P136",
+          "P156",
+          "P166",
+          "P170",
+          "P177",
+          "P178",
+          "P180",
+          "P181",
+          "P193",
+          "P195",
+          "P197",
+          "P206",
+          "P207",
+          "P208",
+          "P211",
+          "P223",
+          "P228",
+          "P231",
+          "P232",
+          "P237",
+          "P246",
+          "P247",
+          "P253",
+          "P254",
+          "P255",
+          "P258",
+          "P260",
+          "P272",
+          "P280",
+          "P281",
+          "P285",
+          "P290",
+          "P293",
+          "P294",
+          "P296",
+          "P300",
+          "P307",
+          "P311",
+          "P313",
+          "P327",
+          "P335",
+          "P341",
+          "P346",
+          "P350",
+          "P360",
+          "P366",
+          "P372",
+          "P379",
+          "P381",
+          "P382",
+          "P386",
+          "P393"
+        ]
+      },
+      "LOW_FREQUENCY": {
+        "n_members": 32,
+        "mean_end_rate": 0.2187,
+        "mean_start_rate": 0.0469,
+        "mean_internal_rate": 0.7344,
+        "variance_end_rate": 0.0824,
+        "members": [
+          "P003",
+          "P026",
+          "P040",
+          "P043",
+          "P067",
+          "P082",
+          "P103",
+          "P110",
+          "P111",
+          "P114",
+          "P117",
+          "P128",
+          "P151",
+          "P172",
+          "P182",
+          "P186",
+          "P188",
+          "P234",
+          "P238",
+          "P251",
+          "P265",
+          "P275",
+          "P303",
+          "P310",
+          "P342",
+          "P352",
+          "P353",
+          "P358",
+          "P359",
+          "P368",
+          "P384",
+          "P390"
+        ]
+      },
+      "INITIAL_STRONG": {
+        "n_members": 9,
+        "mean_end_rate": 0.0486,
+        "mean_start_rate": 0.8575,
+        "mean_internal_rate": 0.0939,
+        "variance_end_rate": 0.0101,
+        "members": [
+          "P000",
+          "P001",
+          "P004",
+          "P013",
+          "P051",
+          "P098",
+          "P217",
+          "P301",
+          "P324"
+        ]
+      },
+      "MIXED": {
+        "n_members": 8,
+        "mean_end_rate": 0.3829,
+        "mean_start_rate": 0.0835,
+        "mean_internal_rate": 0.5336,
+        "variance_end_rate": 0.0248,
+        "members": [
+          "P011",
+          "P086",
+          "P123",
+          "P124",
+          "P125",
+          "P144",
+          "P221",
+          "P355"
+        ]
+      }
+    },
+    "sign_to_class": {
+      "P121": "MEDIAL_STRONG",
+      "P202": "MEDIAL_STRONG",
+      "P385": "TERMINAL_STRONG",
+      "P073": "MEDIAL_STRONG",
+      "P108": "TERMINAL_STRONG",
+      "P320": "BIMODAL_INIT_TERM",
+      "P145": "MEDIAL_STRONG",
+      "P094": "HAPAX",
+      "P205": "MEDIAL_STRONG",
+      "P186": "LOW_FREQUENCY",
+      "P147": "MEDIAL_STRONG",
+      "P316": "MEDIAL_STRONG",
+      "P056": "MEDIAL_STRONG",
+      "P122": "MEDIAL_STRONG",
+      "P237": "HAPAX",
+      "P268": "MEDIAL_STRONG",
+      "P324": "INITIAL_STRONG",
+      "P096": "MEDIAL_STRONG",
+      "P062": "MEDIAL_STRONG",
+      "P060": "MEDIAL_STRONG",
+      "P120": "MEDIAL_STRONG",
+      "P256": "TERMINAL_STRONG",
+      "P378": "TERMINAL_STRONG",
+      "P384": "LOW_FREQUENCY",
+      "P201": "MEDIAL_STRONG",
+      "P065": "HAPAX",
+      "P086": "MIXED",
+      "P352": "LOW_FREQUENCY",
+      "P011": "MIXED",
+      "P154": "MEDIAL_STRONG",
+      "P009": "MEDIAL_STRONG",
+      "P175": "MEDIAL_STRONG",
+      "P270": "MEDIAL_STRONG",
+      "P144": "MIXED",
+      "P327": "HAPAX",
+      "P204": "MEDIAL_STRONG",
+      "P114": "LOW_FREQUENCY",
+      "P151": "LOW_FREQUENCY",
+      "P364": "MEDIAL_STRONG",
+      "P067": "LOW_FREQUENCY",
+      "P221": "MIXED",
+      "P276": "MEDIAL_STRONG",
+      "P058": "MEDIAL_STRONG",
+      "P386": "HAPAX",
+      "P182": "LOW_FREQUENCY",
+      "P035": "MEDIAL_STRONG",
+      "P117": "LOW_FREQUENCY",
+      "P210": "MEDIAL_STRONG",
+      "P013": "INITIAL_STRONG",
+      "P194": "MEDIAL_STRONG",
+      "P026": "LOW_FREQUENCY",
+      "P346": "HAPAX",
+      "P126": "MEDIAL_STRONG",
+      "P369": "MEDIAL_STRONG",
+      "P232": "HAPAX",
+      "P341": "HAPAX",
+      "P142": "MEDIAL_STRONG",
+      "P000": "INITIAL_STRONG",
+      "P125": "MIXED",
+      "P215": "MEDIAL_STRONG",
+      "P275": "LOW_FREQUENCY",
+      "P091": "MEDIAL_STRONG",
+      "P272": "HAPAX",
+      "P172": "LOW_FREQUENCY",
+      "P050": "MEDIAL_STRONG",
+      "P230": "MEDIAL_STRONG",
+      "P197": "HAPAX",
+      "P217": "INITIAL_STRONG",
+      "P160": "MEDIAL_STRONG",
+      "P350": "HAPAX",
+      "P390": "LOW_FREQUENCY",
+      "P076": "TERMINAL_STRONG",
+      "P174": "MEDIAL_STRONG",
+      "P228": "HAPAX",
+      "P238": "LOW_FREQUENCY",
+      "P325": "MEDIAL_STRONG",
+      "P311": "HAPAX",
+      "P123": "MIXED",
+      "P103": "LOW_FREQUENCY",
+      "P332": "MEDIAL_STRONG",
+      "P349": "MEDIAL_STRONG",
+      "P095": "TERMINAL_STRONG",
+      "P127": "MEDIAL_STRONG",
+      "P111": "LOW_FREQUENCY",
+      "P041": "HAPAX",
+      "P309": "MEDIAL_STRONG",
+      "P007": "HAPAX",
+      "P358": "LOW_FREQUENCY",
+      "P307": "HAPAX",
+      "P092": "MEDIAL_STRONG",
+      "P188": "LOW_FREQUENCY",
+      "P139": "MEDIAL_STRONG",
+      "P083": "HAPAX",
+      "P303": "LOW_FREQUENCY",
+      "P089": "HAPAX",
+      "P301": "INITIAL_STRONG",
+      "P360": "HAPAX",
+      "P296": "HAPAX",
+      "P372": "HAPAX",
+      "P353": "LOW_FREQUENCY",
+      "P288": "MEDIAL_STRONG",
+      "P211": "HAPAX",
+      "P051": "INITIAL_STRONG",
+      "P382": "HAPAX",
+      "P281": "HAPAX",
+      "P258": "HAPAX",
+      "P326": "MEDIAL_STRONG",
+      "P001": "INITIAL_STRONG",
+      "P251": "LOW_FREQUENCY",
+      "P246": "HAPAX",
+      "P310": "LOW_FREQUENCY",
+      "P234": "LOW_FREQUENCY",
+      "P124": "MIXED",
+      "P289": "MEDIAL_STRONG",
+      "P206": "HAPAX",
+      "P342": "LOW_FREQUENCY",
+      "P040": "LOW_FREQUENCY",
+      "P223": "HAPAX",
+      "P260": "HAPAX",
+      "P047": "HAPAX",
+      "P031": "MEDIAL_STRONG",
+      "P023": "HAPAX",
+      "P098": "INITIAL_STRONG",
+      "P181": "HAPAX",
+      "P280": "HAPAX",
+      "P366": "HAPAX",
+      "P043": "LOW_FREQUENCY",
+      "P226": "TERMINAL_STRONG",
+      "P012": "HAPAX",
+      "P247": "HAPAX",
+      "P004": "INITIAL_STRONG",
+      "P053": "HAPAX",
+      "P082": "LOW_FREQUENCY",
+      "P128": "LOW_FREQUENCY",
+      "P180": "HAPAX",
+      "P335": "HAPAX",
+      "P070": "HAPAX",
+      "P178": "HAPAX",
+      "P020": "HAPAX",
+      "P110": "LOW_FREQUENCY",
+      "P313": "HAPAX",
+      "P075": "MEDIAL_STRONG",
+      "P253": "HAPAX",
+      "P038": "HAPAX",
+      "P003": "LOW_FREQUENCY",
+      "P359": "LOW_FREQUENCY",
+      "P054": "HAPAX",
+      "P071": "HAPAX",
+      "P099": "HAPAX",
+      "P381": "HAPAX",
+      "P084": "HAPAX",
+      "P285": "HAPAX",
+      "P254": "HAPAX",
+      "P156": "HAPAX",
+      "P283": "MEDIAL_STRONG",
+      "P195": "HAPAX",
+      "P044": "HAPAX",
+      "P355": "MIXED",
+      "P014": "HAPAX",
+      "P208": "HAPAX",
+      "P293": "HAPAX",
+      "P032": "HAPAX",
+      "P177": "HAPAX",
+      "P379": "HAPAX",
+      "P368": "LOW_FREQUENCY",
+      "P061": "HAPAX",
+      "P294": "HAPAX",
+      "P022": "HAPAX",
+      "P170": "HAPAX",
+      "P231": "HAPAX",
+      "P393": "HAPAX",
+      "P300": "HAPAX",
+      "P265": "LOW_FREQUENCY",
+      "P136": "HAPAX",
+      "P166": "HAPAX",
+      "P290": "HAPAX",
+      "P048": "HAPAX",
+      "P037": "HAPAX",
+      "P255": "HAPAX",
+      "P193": "HAPAX",
+      "P207": "HAPAX",
+      "P010": "HAPAX"
+    },
+    "sign_entropy_max": 7.5078,
+    "class_entropy": 2.1078,
+    "entropy_reduction_fraction": 0.7193,
+    "interpretation": "Classes are derived from positional behavior only (start/end/internal rates). These are candidate structural classes, NOT phoneme assignments. TERMINAL_STRONG signs are candidates for morpheme-final markers. INITIAL_STRONG signs are candidates for title/initial determinatives."
+  },
+  "dof": {
+    "sequence_entropy_raw_signs": 7.4461,
+    "sequence_entropy_class_labels": 7.0688,
+    "entropy_reduction_abs": 0.3772,
+    "entropy_reduction_pct": 5.1,
+    "slot_class_occupants": {
+      "0": {
+        "INITIAL_STRONG": 134,
+        "MIXED": 20,
+        "MEDIAL_STRONG": 11,
+        "HAPAX": 7,
+        "LOW_FREQUENCY": 4,
+        "TERMINAL_STRONG": 2,
+        "BIMODAL_INIT_TERM": 1
+      },
+      "1": {
+        "MEDIAL_STRONG": 469,
+        "LOW_FREQUENCY": 52,
+        "MIXED": 42,
+        "HAPAX": 37,
+        "INITIAL_STRONG": 27,
+        "TERMINAL_STRONG": 19
+      },
+      "-1": {
+        "TERMINAL_STRONG": 62,
+        "MEDIAL_STRONG": 36,
+        "HAPAX": 33,
+        "MIXED": 21,
+        "LOW_FREQUENCY": 16,
+        "INITIAL_STRONG": 9,
+        "BIMODAL_INIT_TERM": 1
+      }
+    },
+    "n_candidate_terminal_signs": 4,
+    "n_candidate_initial_signs": 10,
+    "n_candidate_medial_signs": 56,
+    "n_hapax_signs": 77,
+    "recurrent_class_templates": [
+      {
+        "template": [
+          "MEDIAL_STRONG",
+          "MEDIAL_STRONG"
+        ],
+        "count": 308
+      },
+      {
+        "template": [
+          "MEDIAL_STRONG",
+          "MEDIAL_STRONG",
+          "MEDIAL_STRONG"
+        ],
+        "count": 178
+      },
+      {
+        "template": [
+          "MEDIAL_STRONG",
+          "MEDIAL_STRONG",
+          "MEDIAL_STRONG",
+          "MEDIAL_STRONG"
+        ],
+        "count": 92
+      },
+      {
+        "template": [
+          "INITIAL_STRONG",
+          "MEDIAL_STRONG"
+        ],
+        "count": 92
+      },
+      {
+        "template": [
+          "INITIAL_STRONG",
+          "MEDIAL_STRONG",
+          "MEDIAL_STRONG"
+        ],
+        "count": 72
+      },
+      {
+        "template": [
+          "MEDIAL_STRONG",
+          "TERMINAL_STRONG"
+        ],
+        "count": 62
+      },
+      {
+        "template": [
+          "INITIAL_STRONG",
+          "MEDIAL_STRONG",
+          "MEDIAL_STRONG",
+          "MEDIAL_STRONG"
+        ],
+        "count": 55
+      },
+      {
+        "template": [
+          "MIXED",
+          "MEDIAL_STRONG"
+        ],
+        "count": 39
+      },
+      {
+        "template": [
+          "MEDIAL_STRONG",
+          "MEDIAL_STRONG",
+          "TERMINAL_STRONG"
+        ],
+        "count": 38
+      },
+      {
+        "template": [
+          "MEDIAL_STRONG",
+          "HAPAX"
+        ],
+        "count": 38
+      },
+      {
+        "template": [
+          "LOW_FREQUENCY",
+          "MEDIAL_STRONG"
+        ],
+        "count": 32
+      },
+      {
+        "template": [
+          "MEDIAL_STRONG",
+          "MIXED"
+        ],
+        "count": 32
+      },
+      {
+        "template": [
+          "MEDIAL_STRONG",
+          "MEDIAL_STRONG",
+          "HAPAX"
+        ],
+        "count": 29
+      },
+      {
+        "template": [
+          "MEDIAL_STRONG",
+          "MEDIAL_STRONG",
+          "MEDIAL_STRONG",
+          "TERMINAL_STRONG"
+        ],
+        "count": 27
+      },
+      {
+        "template": [
+          "MEDIAL_STRONG",
+          "LOW_FREQUENCY"
+        ],
+        "count": 26
+      },
+      {
+        "template": [
+          "HAPAX",
+          "MEDIAL_STRONG"
+        ],
+        "count": 22
+      },
+      {
+        "template": [
+          "MEDIAL_STRONG",
+          "MEDIAL_STRONG",
+          "MEDIAL_STRONG",
+          "HAPAX"
+        ],
+        "count": 21
+      },
+      {
+        "template": [
+          "INITIAL_STRONG",
+          "LOW_FREQUENCY"
+        ],
+        "count": 21
+      },
+      {
+        "template": [
+          "LOW_FREQUENCY",
+          "MEDIAL_STRONG",
+          "MEDIAL_STRONG"
+        ],
+        "count": 19
+      },
+      {
+        "template": [
+          "MEDIAL_STRONG",
+          "MEDIAL_STRONG",
+          "MIXED"
+        ],
+        "count": 19
+      },
+      {
+        "template": [
+          "MIXED",
+          "MEDIAL_STRONG",
+          "MEDIAL_STRONG"
+        ],
+        "count": 18
+      },
+      {
+        "template": [
+          "INITIAL_STRONG",
+          "HAPAX"
+        ],
+        "count": 17
+      },
+      {
+        "template": [
+          "MEDIAL_STRONG",
+          "MEDIAL_STRONG",
+          "LOW_FREQUENCY"
+        ],
+        "count": 15
+      },
+      {
+        "template": [
+          "INITIAL_STRONG",
+          "LOW_FREQUENCY",
+          "MEDIAL_STRONG"
+        ],
+        "count": 15
+      },
+      {
+        "template": [
+          "MEDIAL_STRONG",
+          "MIXED",
+          "MEDIAL_STRONG"
+        ],
+        "count": 14
+      }
+    ],
+    "candidate_dof_schema": {
+      "INITIAL_SLOT": {
+        "description": "Opening sign/signs \u2014 candidate title or determinative",
+        "evidence": "10 signs with start_rate >= 0.55",
+        "top_candidates": [
+          "P000",
+          "P324",
+          "P051",
+          "P301",
+          "P001",
+          "P086",
+          "P217",
+          "P013",
+          "P098",
+          "P004"
+        ]
+      },
+      "MEDIAL_SLOT": {
+        "description": "Internal signs \u2014 candidate root or modifier",
+        "evidence": "56 signs with internal_rate >= 0.70",
+        "top_candidates": [
+          "P215",
+          "P175",
+          "P332",
+          "P276",
+          "P058",
+          "P283",
+          "P123",
+          "P120",
+          "P126",
+          "P210"
+        ]
+      },
+      "TERMINAL_SLOT": {
+        "description": "Final sign/signs \u2014 candidate suffix or formula closure",
+        "evidence": "4 signs with end_rate >= 0.55",
+        "top_candidates": [
+          "P011",
+          "P256",
+          "P385",
+          "P378"
+        ]
+      },
+      "HAPAX_SLOT": {
+        "description": "Signs appearing once only \u2014 high uncertainty",
+        "evidence": "77 hapax signs (42.3% of sign inventory)",
+        "top_candidates": []
+      }
+    }
+  }
+}

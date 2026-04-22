@@ -1,5 +1,5 @@
 # Decipherment Readiness Report
-Generated: 2026-04-22T17:16:01Z
+Generated: 2026-04-22T17:35:27Z
 **Site scope**: Mohenjo-daro only (179 inscriptions).
 
 ---
@@ -19,57 +19,57 @@ require arbitrary sign collapse.'
 
 ### INITIAL_SLOT
   Description: Opening sign/signs — candidate title or determinative
-  Evidence: 10 signs with start_rate >= 0.55
-  Top candidates: P000, P324, P051, P301, P001, P086, P217, P013
+  Evidence: 20 signs with start_rate >= 0.55
+  Top candidates: P004, Y0156, Y0064, Y0090, P098, Y0153, Y0155, P001
 
 ### MEDIAL_SLOT
   Description: Internal signs — candidate root or modifier
-  Evidence: 56 signs with internal_rate >= 0.70
-  Top candidates: P215, P175, P332, P276, P058, P283, P123, P120
+  Evidence: 235 signs with internal_rate >= 0.70
+  Top candidates: Y0382, Y0390, Y0337, Y0035, Y0048, Y0455, P316, Y0585
 
 ### TERMINAL_SLOT
   Description: Final sign/signs — candidate suffix or formula closure
-  Evidence: 4 signs with end_rate >= 0.55
-  Top candidates: P011, P256, P385, P378
+  Evidence: 20 signs with end_rate >= 0.55
+  Top candidates: Y0371, Y0098, Y0201, P385, Y0137, Y0260, Y0091, P378
 
 ### HAPAX_SLOT
   Description: Signs appearing once only — high uncertainty
-  Evidence: 77 hapax signs (42.3% of sign inventory)
+  Evidence: 276 hapax signs (35.7% of sign inventory)
   Top candidates: none identified
 
 ---
 
 ## Entropy Analysis
 
-- Sequence entropy in raw sign space: 7.4461 bits
-- Sequence entropy in class-label space: 7.0688 bits
-- Entropy reduction: 0.3772 bits (5.1%)
+- Sequence entropy in raw sign space: 10.6691 bits
+- Sequence entropy in class-label space: 8.3636 bits
+- Entropy reduction: 2.3055 bits (21.6%)
 
 Class-label representation reduces sequence entropy, indicating that
 structural classes capture real patterns in inscription structure.
 
 ## Recurrent Class Templates
 
-  - MEDIAL_STRONG MEDIAL_STRONG: 308 times
-  - MEDIAL_STRONG MEDIAL_STRONG MEDIAL_STRONG: 178 times
-  - MEDIAL_STRONG MEDIAL_STRONG MEDIAL_STRONG MEDIAL_STRONG: 92 times
-  - INITIAL_STRONG MEDIAL_STRONG: 92 times
-  - INITIAL_STRONG MEDIAL_STRONG MEDIAL_STRONG: 72 times
-  - MEDIAL_STRONG TERMINAL_STRONG: 62 times
-  - INITIAL_STRONG MEDIAL_STRONG MEDIAL_STRONG MEDIAL_STRONG: 55 times
-  - MIXED MEDIAL_STRONG: 39 times
-  - MEDIAL_STRONG MEDIAL_STRONG TERMINAL_STRONG: 38 times
-  - MEDIAL_STRONG HAPAX: 38 times
-  - LOW_FREQUENCY MEDIAL_STRONG: 32 times
-  - MEDIAL_STRONG MIXED: 32 times
-  - MEDIAL_STRONG MEDIAL_STRONG HAPAX: 29 times
-  - MEDIAL_STRONG MEDIAL_STRONG MEDIAL_STRONG TERMINAL_STRONG: 27 times
-  - MEDIAL_STRONG LOW_FREQUENCY: 26 times
-  - HAPAX MEDIAL_STRONG: 22 times
-  - MEDIAL_STRONG MEDIAL_STRONG MEDIAL_STRONG HAPAX: 21 times
-  - INITIAL_STRONG LOW_FREQUENCY: 21 times
-  - LOW_FREQUENCY MEDIAL_STRONG MEDIAL_STRONG: 19 times
-  - MEDIAL_STRONG MEDIAL_STRONG MIXED: 19 times
+  - MEDIAL_STRONG MEDIAL_STRONG: 1689 times
+  - MEDIAL_STRONG MIXED: 1195 times
+  - INITIAL_STRONG MEDIAL_STRONG: 1161 times
+  - MIXED MEDIAL_STRONG: 1148 times
+  - INITIAL_STRONG MIXED: 786 times
+  - MEDIAL_STRONG TERMINAL_STRONG: 742 times
+  - MIXED MIXED: 670 times
+  - MEDIAL_STRONG MEDIAL_STRONG MEDIAL_STRONG: 616 times
+  - INITIAL_STRONG MEDIAL_STRONG MEDIAL_STRONG: 568 times
+  - MEDIAL_STRONG MEDIAL_STRONG MIXED: 435 times
+  - MEDIAL_STRONG MIXED MEDIAL_STRONG: 398 times
+  - INITIAL_STRONG MEDIAL_STRONG MIXED: 378 times
+  - INITIAL_STRONG INITIAL_STRONG: 373 times
+  - MIXED MEDIAL_STRONG MEDIAL_STRONG: 362 times
+  - INITIAL_STRONG MIXED MEDIAL_STRONG: 351 times
+  - MEDIAL_STRONG MEDIAL_STRONG TERMINAL_STRONG: 322 times
+  - MIXED MEDIAL_STRONG MIXED: 286 times
+  - MIXED TERMINAL_STRONG: 279 times
+  - MIXED MEDIAL_STRONG TERMINAL_STRONG: 253 times
+  - MEDIAL_STRONG MEDIAL_STRONG MEDIAL_STRONG MEDIAL_STRONG: 219 times
 
 ---
 

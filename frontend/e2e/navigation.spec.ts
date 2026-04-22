@@ -8,7 +8,8 @@ import { expect, test } from "@playwright/test";
 test.describe("App shell", () => {
   test("loads and shows Glossa Lab title", async ({ page }) => {
     await page.goto("/");
-    await expect(page.locator("h1").filter({ hasText: "Glossa Lab" })).toBeVisible();
+    // Logo is in a div/span in the sidebar — not an h1
+    await expect(page.getByText("Glossa Lab").first()).toBeVisible();
   });
 
   test("shows collaboration subtitle", async ({ page }) => {
@@ -33,14 +34,17 @@ test.describe("App shell", () => {
   });
 });
 
+// Note: sidebar nav buttons use title attr = clean label (no emoji).
+// Use getByTitle() to avoid strict mode violations caused by the bottom
+// panel or other elements also having matching text content.
 test.describe("Grouped tab navigation", () => {
   test("Workflow section tabs are visible", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("button", { name: /^Studies$/ })).toBeVisible();
-    await expect(page.getByRole("button", { name: /^Experiments$/ })).toBeVisible();
-    await expect(page.getByRole("button", { name: /^Corpora$/ })).toBeVisible();
-    await expect(page.getByRole("button", { name: /^Reports$/ })).toBeVisible();
-    await expect(page.getByRole("button", { name: /^Pipelines$/ })).toBeVisible();
+    await expect(page.getByTitle("Studies").first()).toBeVisible();
+    await expect(page.getByTitle("Experiments").first()).toBeVisible();
+    await expect(page.getByTitle("Corpora").first()).toBeVisible();
+    await expect(page.getByTitle("Reports").first()).toBeVisible();
+    await expect(page.getByTitle("Pipelines").first()).toBeVisible();
   });
 
   test("default tab renders Study Builder canvas", async ({ page }) => {
@@ -51,20 +55,20 @@ test.describe("Grouped tab navigation", () => {
 
   test("clicking Status tab shows System Status", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /^Status$/ }).first().click();
+    await page.getByTitle("Status").first().click();
     await expect(page.getByRole("heading", { name: "System Status" })).toBeVisible();
   });
 
   test("clicking Experiments tab renders Experiment Builder canvas", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /^Experiments$/ }).first().click();
+    await page.getByTitle("Experiments").first().click();
     // Experiments now opens the unified Experiment Builder canvas — shows toolbar text
     await expect(page.getByText(/Experiment Builder/i).first()).toBeVisible();
   });
 
   test("clicking Corpora tab shows Corpora view", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /^Corpora$/ }).first().click();
+    await page.getByTitle("Corpora").first().click();
     await expect(page.getByRole("heading", { name: "Corpora" })).toBeVisible();
   });
 
@@ -75,23 +79,24 @@ test.describe("Grouped tab navigation", () => {
 
   test("Research group tabs are visible", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("button", { name: /Hypotheses/i })).toBeVisible();
-    await expect(page.getByRole("button", { name: /Notebooks/i })).toBeVisible();
-    await expect(page.getByRole("button", { name: /Citations/i })).toBeVisible();
+    await expect(page.getByTitle("Hypotheses").first()).toBeVisible();
+    await expect(page.getByTitle("Notebooks").first()).toBeVisible();
+    await expect(page.getByTitle("Citations").first()).toBeVisible();
   });
 
   test("Analysis group tabs are visible", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("button", { name: /Entropy/i })).toBeVisible();
-    await expect(page.getByRole("button", { name: /Timeline/i })).toBeVisible();
-    await expect(page.getByRole("button", { name: /Indus Data/i })).toBeVisible();
+    await expect(page.getByTitle("Entropy").first()).toBeVisible();
+    await expect(page.getByTitle("Timeline").first()).toBeVisible();
+    await expect(page.getByTitle("Indus Data").first()).toBeVisible();
   });
 
   test("System items visible at sidebar bottom", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("button", { name: /^Status$/ })).toBeVisible();
-    await expect(page.getByRole("button", { name: /^Jobs$/ })).toBeVisible();
-    await expect(page.getByRole("button", { name: /^Settings$/ })).toBeVisible();
+    await expect(page.getByTitle("Status").first()).toBeVisible();
+    // Jobs: use title to scope to sidebar (bottom panel also has a Jobs tab)
+    await expect(page.getByTitle("Jobs").first()).toBeVisible();
+    await expect(page.getByTitle("Settings").first()).toBeVisible();
   });
 
   test("Exp. Builder tab is no longer in sidebar (merged into Experiments)", async ({ page }) => {
@@ -139,13 +144,13 @@ test.describe("Studies workspace features", () => {
 test.describe("Experiments workspace features", () => {
   test("Run All button is visible in Experiments list header", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /^Experiments$/ }).first().click();
+    await page.getByTitle("Experiments").first().click();
     await expect(page.getByTitle("Run all experiments in parallel").first()).toBeVisible();
   });
 
   test("Stop All button not visible when nothing is running", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /^Experiments$/ }).first().click();
+    await page.getByTitle("Experiments").first().click();
     // Stop All only appears when activeRuns has entries
     const stopAllBtns = page.getByTitle("Stop all running experiments");
     const count = await stopAllBtns.count();
@@ -154,7 +159,7 @@ test.describe("Experiments workspace features", () => {
 
   test("floating Run button in canvas only appears when experiment is open", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /^Experiments$/ }).first().click();
+    await page.getByTitle("Experiments").first().click();
     // When no experiment is open, there should be no floating run button
     const floatingRun = page.getByTitle("Run experiment");
     const visibleBefore = await floatingRun.isVisible({ timeout: 1000 }).catch(() => false);
@@ -165,12 +170,13 @@ test.describe("Experiments workspace features", () => {
 test.describe("Jobs panel", () => {
   test("Jobs tab is visible in sidebar", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("button", { name: /^Jobs$/ })).toBeVisible();
+    // Use getByTitle to avoid strict mode: bottom panel also has a 'Jobs' tab
+    await expect(page.getByTitle("Jobs").first()).toBeVisible();
   });
 
   test("clicking Jobs tab shows jobs panel", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /^Jobs$/ }).click();
+    await page.getByTitle("Jobs").first().click();
     await expect(page.getByRole("heading", { name: /Jobs/i })).toBeVisible();
   });
 });

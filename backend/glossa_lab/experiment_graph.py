@@ -333,8 +333,11 @@ def _builtin_corpus(inputs: dict, params: dict) -> dict:
         elif name in ("dravidian", "tamil"):
             from glossa_lab.data.dravidian import get_corpus_symbols, get_corpus_inscriptions as _di  # noqa: PLC0415
             flat = get_corpus_symbols(); seqs = _di()  # word-level char sequences
+        elif name in ("indus_cisi", "cisi", "indus_parpola"):
+            from glossa_lab.data.indus_cisi import get_corpus_symbols as _cisi_syms, get_corpus_inscriptions as _cisi_inscs  # noqa: PLC0415
+            flat = _cisi_syms(); seqs = _cisi_inscs()  # real multi-sign Parpola inscriptions
         else:
-            return {"error": f"Unknown corpus '{name}'. Valid: indus, hebrew, geez, phoenician, nw_semitic/ugaritic, meroitic, proto_sinaitic, linear_b, sanskrit, dravidian"}
+            return {"error": f"Unknown corpus '{name}'. Valid: indus, indus_cisi, hebrew, geez, phoenician, nw_semitic/ugaritic, meroitic, proto_sinaitic, linear_b, sanskrit, dravidian"}
     except ImportError as exc:
         return {"error": str(exc)}
     from collections import Counter  # noqa: PLC0415
@@ -1599,7 +1602,7 @@ for _d in [
                  {"name":"distinct_symbols","type":"number"}],
         params_schema={"type":"object","properties":{
             "corpus":{"type":"string","title":"Corpus Name","default":"indus",
-                      "description":"indus | hebrew | geez | phoenician | nw_semitic (Fuls RTL)"}}},
+                      "description":"indus | indus_cisi (CISI real multi-sign) | hebrew | geez | phoenician | nw_semitic (Fuls RTL)"}}},
         fn=_builtin_corpus),
     AtomicNodeDef("CorpusSplitter","Corpus Splitter","Transforms",
         "Split sequences into contiguous train and test portions. "

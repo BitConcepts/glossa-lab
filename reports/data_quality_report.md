@@ -1,33 +1,58 @@
 # Data Quality Report
-Generated: 2026-04-22T17:10:09Z
+Generated: 2026-04-22T17:35:13Z
 Source: Glossa-Lab decipherment sprint Phase 5
 
 ## 1. Corpus Overview
-- Total inscriptions: 179
+- Total inscriptions: 2722
 - Distinct signs observed: 182
 - Total sign tokens: 1003
 
 ## 2. Site Coverage
 
-- Mohenjo-daro: 179 inscriptions
-- Harappa: **ABSENT — acquisition needed**
-- Kalibangan: **ABSENT — acquisition needed**
-- Dholavira: **ABSENT — acquisition needed**
-- Lothal: **ABSENT — acquisition needed**
+- Mohenjo-daro: 1381 inscriptions
+- Harappa: 970 inscriptions
+- Kalibangan: 54 inscriptions
+- Dholavira: 74 inscriptions
+- Lothal: 80 inscriptions
 - Chanhu-daro: **ABSENT — acquisition needed**
-- Banawali: **ABSENT — acquisition needed**
-- Rakhigarhi: **ABSENT — acquisition needed**
+- Banawali: 12 inscriptions
+- Rakhigarhi: 3 inscriptions
 - Shortugai: **ABSENT — acquisition needed**
 
 ## 3. Artifact Type Distribution
 
+- seal (Steatite): 1469
+- seal (None): 417
+- seal (Faience): 229
+- seal (Clay): 214
 - unicorn seal: 179
+- seal (Copper): 154
+- seal (Terracotta): 25
+- seal (Ivory): 15
+- seal (Stoneware): 4
+- seal (Agate): 3
+- seal (Silver): 3
+- seal (Paste): 3
+- seal (Bone): 2
+- seal (Gypsum): 1
+- seal (steatite): 1
+- seal (Shell): 1
+- seal (Limestone): 1
+- seal (Gold): 1
 
 ## 4. Duplicate Detection
-- Exact-sequence duplicates (same site + sign sequence): 2 clusters
+- Exact-sequence duplicates (same site + sign sequence): 211 clusters
 
   - Mohenjo-daro | `P000 P122 P385` → ['GLOSSA-M-19A', 'GLOSSA-M-110A', 'GLOSSA-M-175A']
   - Mohenjo-daro | `P086 P123 P122 P385` → ['GLOSSA-M-32A', 'GLOSSA-M-177A']
+  - Alamgirpur | `Y0410 Y0017` → ['GLOSSA-YJ-0001', 'GLOSSA-YJ-0002']
+  - Banawali | `Y0002 Y0817` → ['GLOSSA-YJ-0030', 'GLOSSA-YJ-0031', 'GLOSSA-YJ-0036']
+  - Chanhujo-daro | `Y0032 Y0031 Y0000 Y0740 Y0222 Y0235 Y0002 Y0861` → ['GLOSSA-YJ-0071', 'GLOSSA-YJ-0074']
+  - Dholavira | `Y0156 Y0019` → ['GLOSSA-YJ-0128', 'GLOSSA-YJ-4225']
+  - Dholavira | `Y0390 Y0016 Y0002 Y0861` → ['GLOSSA-YJ-0136', 'GLOSSA-YJ-4260']
+  - Harappa | `Y0220 Y0016` → ['GLOSSA-YJ-0173', 'GLOSSA-YJ-0318']
+  - Harappa | `Y0740 Y0603 Y0240 Y0060 Y0692` → ['GLOSSA-YJ-0198', 'GLOSSA-YJ-0686', 'GLOSSA-YJ-3975']
+  - Harappa | `Y0400 Y0154 Y0440 Y0220` → ['GLOSSA-YJ-0220', 'GLOSSA-YJ-1653']
 
 ## 5. Sign Identity Conflicts
 - Signs without Mahadevan M77 crosswalk: 169 of 182

@@ -192,6 +192,7 @@ def load_cisi_inscriptions() -> list[dict]:
             # Provenance
             "ingested_at": NOW,
             "source_sha256": "see logs/file_manifest.json",
+            "sign_numbering_system": "Parpola (1982) allograph IDs (P001-P450)",
         })
     return records
 
@@ -553,6 +554,21 @@ def write_ingestion_log(records: list[dict]) -> Path:
     return out
 
 
+# ── Yajnadevam corpus loader ──────────────────────────────────────────────────
+
+def load_yajnadevam_inscriptions() -> list[dict]:
+    """Load Yajnadevam inscriptions from the parsed JSON (multi-site)."""
+    yj_path = ROOT / "data_raw" / "other_sites" / "yajnadevam_inscriptions.json"
+    if not yj_path.exists():
+        print("  [skip] Yajnadevam JSON not found — run parse_yajnadevam_sql.py first")
+        return []
+    records = json.loads(yj_path.read_text("utf-8"))
+    # Only include inscriptions with a non-empty sign sequence
+    records = [r for r in records if r.get("sign_sequence_raw", "").strip()]
+    print(f"[Phase 1] Yajnadevam corpus loaded: {len(records)} inscriptions")
+    return records
+
+
 # ── Main ─────────────────────────────────────────────────────────────────────
 
 def main() -> None:
@@ -560,26 +576,41 @@ def main() -> None:
     print("Glossa-Lab Decipherment Sprint: Phases 1-5 Pipeline")
     print("=" * 60)
 
-    print("\n[Phase 1] Loading CISI corpus...")
-    records = load_cisi_inscriptions()
-    write_corpus_master(records)
-    write_ingestion_log(records)
+    print("\n[Phase 1] Loading CISI corpus (Parpola P-numbers, Mohenjo-daro)...")
+    cisi_records = load_cisi_inscriptions()
 
-    print("\n[Phase 3] Building sign registry...")
-    signs = extract_sign_inventory(records)
+    print("\n[Phase 1] Loading Yajnadevam corpus (multi-site, Y-numbers)...")
+    yj_records = load_yajnadevam_inscriptions()
+
+    # Combine: CISI first (higher confidence), Yajnadevam second
+    all_records = cisi_records + yj_records
+    print(f"  Total combined: {len(all_records)} inscriptions")
+
+    write_corpus_master(all_records)
+    write_ingestion_log(all_records)
+
+    print("\n[Phase 3] Building sign registry (CISI P-numbers only for crosswalk)...")
+    # Sign registry built from CISI only (Parpola P-numbers are the canonical system)
+    signs = extract_sign_inventory(cisi_records)
     write_sign_registry(signs)
     write_sign_crosswalk(signs)
 
     print("\n[Phase 5] Writing data quality report...")
-    write_data_quality_report(records, signs)
+    write_data_quality_report(all_records, signs)
 
     print("\n" + "=" * 60)
     print("Pipeline complete. Review gate triggered.")
-    print("  corpus_master.csv  →", DATA_NORM / "corpus_master.csv")
+    print(f"  corpus_master.csv  → {len(all_records)} total inscriptions")
+    print(f"    CISI (P-numbers): {len(cisi_records)} (Mohenjo-daro)")
+    print(f"    Yajnadevam (Y-numbers): {len(yj_records)} (multi-site)")
     print("  sign_registry      →", CROSSWALKS / "sign_registry_master.csv")
     print("  sign_crosswalk     →", CROSSWALKS / "sign_crosswalk_master.csv")
     print("  ingestion_log      →", LOGS / "corpus_ingestion_log.md")
     print("  data_quality       →", REPORTS / "data_quality_report.md")
+    print("="*60)
+    print("NOTE: Two sign numbering systems in corpus_master.csv:")
+    print("  P-numbers (CISI) + Y-numbers (Yajnadevam)")
+    print("  Crosswalk between systems is PENDING — required for full merge.")
     print("=" * 60)
 
 

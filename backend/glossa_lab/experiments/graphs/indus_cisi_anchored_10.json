@@ -1,0 +1,22 @@
+{
+  "id": "indus_cisi_anchored_10",
+  "name": "Indus CISI: Anchored Decipherment — 10 Anchor Readings",
+  "description": "Maximum-evidence anchored decipherment: 10 structurally motivated sign-to-phoneme assignments covering 2 terminal, 3 initial, and 5 medial positions. VERIFIED (structural): P385->n (genitive suffix, T=0.83), P324->k (dominant initial, I=0.78). INFERRED (positional): P122->a (pure medial n=76), P086->m (initial n=35), P060->i (medial n=20). NEW INFERRED: P256->l (2nd terminal T=0.75, Dravidian locative -il), P217->p (initial n=18, Tamil pal/puli), P050->v (pure medial n=32, Tamil val/vay), P145->r (medial n=27, Tamil maram/aravu), P062->u (pure medial n=21, Tamil mul/kul). With 10 anchors covering key positions, the SA should produce candidate readings for common 3-sign inscriptions. Key prediction: P324+P122+P256 = k+a+l = 'kal' (stone); P217+P122+P385 = p+a+n = 'pan' (work/pig). GPU: n_seeds=8, max_iter=15000.",
+  "nodes": [
+    {"id": "corpus",  "type": "expNode", "data": {"atomicId": "BuiltinCorpus",    "label": "Indus CISI (178 inscriptions)",  "params": {"corpus": "indus_cisi"}},                                                                                                                                                                                                                          "position": {"x": 60,   "y": 240}},
+    {"id": "drav_lm", "type": "expNode", "data": {"atomicId": "BuiltinLM",        "label": "South Dravidian LM",             "params": {"language": "south_dravidian"}},                                                                                                                                                                                                                    "position": {"x": 60,   "y": 440}},
+    {"id": "sa",      "type": "expNode", "data": {"atomicId": "SADecipher",       "label": "10-Anchor SA (GPU, max evidence)", "params": {"n_seeds": 8, "max_iterations": 15000, "restarts": 5, "surjective": true, "ocp_weight": 0.0, "anchors": {"P385": "n", "P324": "k", "P122": "a", "P086": "m", "P060": "i", "P256": "l", "P217": "p", "P050": "v", "P145": "r", "P062": "u"}}}, "position": {"x": 700,  "y": 320}},
+    {"id": "cons",    "type": "expNode", "data": {"atomicId": "ConsistencyScorer","label": "Consistency + HCI",               "params": {}},                                                                                                                                                                                                                                                "position": {"x": 1040, "y": 320}},
+    {"id": "merge",   "type": "expNode", "data": {"atomicId": "Merger",           "label": "Merge 10-Anchor Results",         "params": {}},                                                                                                                                                                                                                                                "position": {"x": 1300, "y": 320}},
+    {"id": "out",     "type": "expNode", "data": {"atomicId": "JSONExport",       "label": "Save",                            "params": {"filename": "indus_cisi_anchored_10.json"}},                                                                                                                                                                                                       "position": {"x": 1580, "y": 320}}
+  ],
+  "edges": [
+    {"id": "e1", "source": "corpus",  "target": "sa",    "sourcePort": "sequences",        "targetPort": "sequences"},
+    {"id": "e2", "source": "drav_lm", "target": "sa",    "sourcePort": "lm",               "targetPort": "lm"},
+    {"id": "e3", "source": "sa",      "target": "cons",  "sourcePort": "all_mappings",     "targetPort": "all_mappings"},
+    {"id": "e4", "source": "cons",    "target": "merge", "sourcePort": "mean_consistency", "targetPort": "a"},
+    {"id": "e5", "source": "cons",    "target": "merge", "sourcePort": "hci_pct",          "targetPort": "b"},
+    {"id": "e6", "source": "sa",      "target": "merge", "sourcePort": "proposed_mapping", "targetPort": "c"},
+    {"id": "e7", "source": "merge",   "target": "out",   "sourcePort": "json",             "targetPort": "data"}
+  ]
+}

@@ -1,0 +1,194 @@
+yajnadevam_glyph_id,registry_sign_id_yajnadevam,best_parpola_match,match_confidence,match_count,total_alignments,top3_parpola,review_status,method,source
+1,Y0001,P121,0.8571,6,7,P121:6 | P139:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+2,Y0002,P122,0.9516,59,62,P122:59 | P145:2 | P372:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+3,Y0003,P123,1.0,10,10,P123:10,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+4,Y0004,P124,1.0,4,4,P124:4,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+5,Y0005,P125,1.0,2,2,P125:2,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+13,Y0013,P139,1.0,2,2,P139:2,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+16,Y0016,P126,1.0,6,6,P126:6,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+17,Y0017,P127,1.0,2,2,P127:2,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+18,Y0018,P128,1.0,2,2,P128:2,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+31,Y0031,P144,1.0,7,7,P144:7,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+32,Y0032,P145,0.9565,22,23,P145:22 | P122:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+33,Y0033,P147,1.0,10,10,P147:10,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+35,Y0035,P151,1.0,1,1,P151:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+48,Y0048,P136,1.0,1,1,P136:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+55,Y0055,P142,1.0,4,4,P142:4,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+60,Y0060,P120,1.0,17,17,P120:17,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+61,Y0061,P204,1.0,3,3,P204:3,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+65,Y0065,P201,1.0,5,5,P201:5,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+70,Y0070,P114,1.0,1,1,P114:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+72,Y0072,P114,1.0,1,1,P114:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+81,Y0081,P251,1.0,1,1,P251:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+84,Y0084,P253,1.0,1,1,P253:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+90,Y0090,P013,1.0,8,8,P013:8,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+93,Y0093,P014,1.0,1,1,P014:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+94,Y0094,P003,1.0,1,1,P003:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+95,Y0095,P023,1.0,1,1,P023:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+100,Y0100,P009,1.0,2,2,P009:2,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+101,Y0101,P010,1.0,1,1,P010:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+104,Y0104,P020,1.0,1,1,P020:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+107,Y0107,P007,1.0,1,1,P007:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+111,Y0111,P040,1.0,1,1,P040:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+112,Y0112,P041,1.0,1,1,P041:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+119,Y0119,P038,1.0,1,1,P038:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+125,Y0125,P035,1.0,3,3,P035:3,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+130,Y0130,P026,1.0,2,2,P026:2,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+136,Y0136,P022,1.0,1,1,P022:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+140,Y0140,P011,1.0,8,8,P011:8,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+142,Y0142,P031,1.0,3,3,P031:3,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+144,Y0144,P032,1.0,1,1,P032:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+151,Y0151,P001,1.0,3,3,P001:3,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+154,Y0154,P004,1.0,1,1,P004:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+156,Y0156,P004,1.0,5,5,P004:5,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+165,Y0165,P342,1.0,1,1,P342:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+168,Y0168,P003,1.0,1,1,P003:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+171,Y0171,P346,1.0,1,1,P346:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+175,Y0175,P193,1.0,1,1,P193:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+176,Y0176,P194,1.0,6,6,P194:6,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+190,Y0190,P076,1.0,4,4,P076:4,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+202,Y0202,P386,1.0,1,1,P386:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+205,Y0205,P082,1.0,1,1,P082:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+207,Y0207,P082,1.0,1,1,P082:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+215,Y0215,P353,1.0,2,2,P353:2,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+220,Y0220,P050,0.931,27,29,P050:27 | P056:1 | P060:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+222,Y0222,P053,1.0,1,1,P053:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+226,Y0226,P051,1.0,3,3,P051:3,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+231,Y0231,P056,1.0,5,5,P056:5,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+233,Y0233,P058,1.0,13,13,P058:13,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+235,Y0235,P060,1.0,13,13,P060:13,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+236,Y0236,P051,0.5,1,2,P051:1 | P061:1,pending_confirmation,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+240,Y0240,P062,1.0,15,15,P062:15,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+243,Y0243,P048,1.0,1,1,P048:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+244,Y0244,P065,1.0,1,1,P065:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+250,Y0250,P166,1.0,1,1,P166:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+252,Y0252,P170,1.0,1,1,P170:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+255,Y0255,P073,1.0,7,7,P073:7,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+260,Y0260,P071,1.0,1,1,P071:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+269,Y0269,P067,1.0,2,2,P067:2,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+272,Y0272,P070,1.0,1,1,P070:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+279,Y0279,P108,1.0,1,1,P108:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+287,Y0287,P084,1.0,1,1,P084:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+295,Y0295,P205,1.0,1,1,P205:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+297,Y0297,P205,1.0,3,3,P205:3,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+300,Y0300,P205,1.0,1,1,P205:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+301,Y0301,P205,1.0,1,1,P205:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+302,Y0302,P205,1.0,1,1,P205:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+304,Y0304,P205,1.0,1,1,P205:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+311,Y0311,P205,1.0,1,1,P205:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+317,Y0317,P296,1.0,1,1,P296:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+320,Y0320,P303,1.0,1,1,P303:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+329,Y0329,P307,1.0,1,1,P307:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+336,Y0336,P309,1.0,2,2,P309:2,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+337,Y0337,P309,1.0,1,1,P309:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+344,Y0344,P043,1.0,1,1,P043:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+345,Y0345,P043,1.0,1,1,P043:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+350,Y0350,P091,1.0,4,4,P091:4,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+360,Y0360,P293,1.0,1,1,P293:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+361,Y0361,P294,1.0,1,1,P294:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+362,Y0362,P272,1.0,1,1,P272:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+368,Y0368,P202,1.0,10,10,P202:10,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+371,Y0371,P108,1.0,2,2,P108:2,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+372,Y0372,P108,1.0,1,1,P108:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+373,Y0373,P360,1.0,1,1,P360:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+374,Y0374,P103,1.0,2,2,P103:2,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+382,Y0382,P111,1.0,2,2,P111:2,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+388,Y0388,P110,1.0,3,3,P110:3,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+390,Y0390,P086,1.0,25,25,P086:25,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+391,Y0391,P089,1.0,1,1,P089:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+400,Y0400,P098,1.0,3,3,P098:3,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+405,Y0405,P086,1.0,2,2,P086:2,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+406,Y0406,P086,1.0,1,1,P086:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+407,Y0407,P086,1.0,1,1,P086:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+413,Y0413,P099,1.0,1,1,P099:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+415,Y0415,P092,1.0,4,4,P092:4,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+416,Y0416,P095,1.0,4,4,P095:4,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+435,Y0435,P188,1.0,2,2,P188:2,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+440,Y0440,P283,1.0,3,3,P283:3,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+455,Y0455,P221,1.0,3,3,P221:3,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+460,Y0460,P215,1.0,4,4,P215:4,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+475,Y0475,P186,1.0,1,1,P186:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+484,Y0484,P195,1.0,1,1,P195:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+500,Y0500,P208,1.0,1,1,P208:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+502,Y0502,P207,1.0,1,1,P207:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+503,Y0503,P210,1.0,5,5,P210:5,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+504,Y0504,P211,1.0,1,1,P211:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+511,Y0511,P275,1.0,1,1,P275:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+520,Y0520,P217,1.0,14,14,P217:14,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+521,Y0521,P094,1.0,1,1,P094:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+526,Y0526,P301,1.0,1,1,P301:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+527,Y0527,P301,0.8,4,5,P301:4 | P000:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+531,Y0531,P228,1.0,1,1,P228:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+545,Y0545,P226,1.0,4,4,P226:4,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+550,Y0550,P230,1.0,9,9,P230:9,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+555,Y0555,P230,1.0,1,1,P230:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+556,Y0556,P231,1.0,1,1,P231:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+560,Y0560,P232,1.0,1,1,P232:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+563,Y0563,P230,1.0,1,1,P230:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+565,Y0565,P238,1.0,2,2,P238:2,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+572,Y0572,P285,1.0,1,1,P285:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+575,Y0575,P289,1.0,2,2,P289:2,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+579,Y0579,P290,1.0,1,1,P290:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+585,Y0585,P288,1.0,1,1,P288:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+590,Y0590,P276,1.0,4,4,P276:4,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+595,Y0595,P280,1.0,1,1,P280:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+600,Y0600,P145,1.0,1,1,P145:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+611,Y0611,P281,1.0,1,1,P281:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+617,Y0617,P268,1.0,1,1,P268:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+621,Y0621,P265,1.0,1,1,P265:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+630,Y0630,P270,1.0,1,1,P270:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+632,Y0632,P270,1.0,3,3,P270:3,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+684,Y0684,P254,1.0,1,1,P254:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+690,Y0690,P256,0.5,1,2,P256:1 | P255:1,pending_confirmation,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+692,Y0692,P256,1.0,8,8,P256:8,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+693,Y0693,P258,1.0,1,1,P258:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+700,Y0700,P310,1.0,1,1,P310:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+704,Y0704,P316,1.0,1,1,P316:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+705,Y0705,P316,1.0,10,10,P316:10,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+706,Y0706,P316,1.0,3,3,P316:3,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+717,Y0717,P320,1.0,2,2,P320:2,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+734,Y0734,P313,1.0,1,1,P313:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+740,Y0740,P324,0.9867,74,75,P324:74 | P000:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+741,Y0741,P325,0.7692,10,13,P325:10 | P324:3,pending_confirmation,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+742,Y0742,P326,1.0,1,1,P326:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+745,Y0745,P327,1.0,1,1,P327:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+752,Y0752,P332,1.0,1,1,P332:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+760,Y0760,P332,1.0,6,6,P332:6,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+765,Y0765,P335,1.0,1,1,P335:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+772,Y0772,P096,1.0,2,2,P096:2,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+773,Y0773,P096,1.0,1,1,P096:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+776,Y0776,P117,1.0,1,1,P117:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+786,Y0786,P117,1.0,1,1,P117:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+790,Y0790,P355,1.0,3,3,P355:3,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+794,Y0794,P358,1.0,2,2,P358:2,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+796,Y0796,P180,1.0,1,1,P180:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+798,Y0798,P230,0.6364,7,11,P230:7 | P075:4,pending_confirmation,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+803,Y0803,P364,0.9,9,10,P364:9 | P385:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+806,Y0806,P364,1.0,5,5,P364:5,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+812,Y0812,P369,1.0,1,1,P369:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+814,Y0814,P369,1.0,2,2,P369:2,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+817,Y0817,P385,1.0,11,11,P385:11,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+820,Y0820,P378,0.9333,14,15,P378:14 | P000:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+831,Y0831,P268,1.0,1,1,P268:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+832,Y0832,P368,0.6667,2,3,P368:2 | P366:1,pending_confirmation,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+840,Y0840,P349,1.0,7,7,P349:7,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+844,Y0844,P352,0.5,1,2,P352:1 | P349:1,pending_confirmation,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+850,Y0850,P355,1.0,1,1,P355:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+853,Y0853,P359,1.0,2,2,P359:2,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+861,Y0861,P385,1.0,13,13,P385:13,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+864,Y0864,P393,1.0,1,1,P393:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+872,Y0872,P390,1.0,1,1,P390:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+877,Y0877,P382,1.0,1,1,P382:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+879,Y0879,P381,1.0,1,1,P381:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+880,Y0880,P384,1.0,2,2,P384:2,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+890,Y0890,P178,1.0,1,1,P178:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+892,Y0892,P182,0.5,1,2,P182:1 | P000:1,pending_confirmation,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+900,Y0900,P154,0.8571,6,7,P154:6 | P160:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+904,Y0904,P172,1.0,1,1,P172:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+906,Y0906,P174,1.0,3,3,P174:3,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+908,Y0908,P177,1.0,1,1,P177:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+920,Y0920,P154,0.5,3,6,P154:3 | P160:2 | P156:1,pending_confirmation,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+923,Y0923,P175,1.0,6,6,P175:6,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+932,Y0932,P341,1.0,1,1,P341:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+940,Y0940,P054,1.0,1,1,P054:1,confirmed,sequence_alignment_length_match,Yajnadevam indus-website + mayig CISI corpus alignment
+741,Y0741,P325,1.0,2,2,P325:2,confirmed_extended,anchor_guided_gap_filling,Yajnadevam SQL + mayig CISI corpus (mismatched-length pairs)

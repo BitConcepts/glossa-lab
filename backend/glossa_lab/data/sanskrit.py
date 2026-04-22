@@ -12,6 +12,8 @@ and patterns we'd expect to find.
 
 from __future__ import annotations
 
+from pathlib import Path
+
 VOCABULARY: dict[str, str] = {
     # Gods / religion
     "deva": "god / divine",
@@ -152,7 +154,17 @@ VOCABULARY: dict[str, str] = {
     "durga": "difficult / fortress",
 }
 
-# Rigveda opening hymns (character-level text for model building)
+# ── Full Rigveda corpus (all 10 mandalas, ITRANS-simplified) ─────────────────
+# Loaded from data/rigveda_clean.json (728K chars, 161K words)
+# Built from Sanskritdocuments.org CC-licensed ITRANS e-texts, simplified to
+# basic ASCII for character-level bigram modeling.  Long vowels and aspirates
+# are collapsed to their basic equivalents (A→a, Sh→s, kh→k, etc.) so the LM
+# captures Sanskrit phonotactics without diacritics.
+#
+# Source: Detlef Eichler / Vedic Tradition via sanskritdocuments.org (Academic use)
+#         Aufrecht / van Nooten / Holland Samhita transliteration
+
+# Small embedded fallback used if the JSON file is absent (first run)
 RIGVEDA_TEXT = (
     "agnim ile purohitam yajnasya devam ritvijam hotaram ratnadhaatamam "
     "agnih purvebhir rishibhir idyo nutanair uta sa devaan eha vakshati "
@@ -260,6 +272,31 @@ MORPHOLOGY = {
 }
 
 
+# Module-level cache so the JSON is only loaded once
+_RIGVEDA_WORDS: list[str] | None = None
+
+
+def _load_rigveda_words() -> list[str]:
+    """Load full Rigveda corpus from the JSON file in glossa-lab/data/."""
+    global _RIGVEDA_WORDS  # noqa: PLW0603
+    if _RIGVEDA_WORDS is not None:
+        return _RIGVEDA_WORDS
+    import json  # noqa: PLC0415
+    # data/rigveda_clean.json lives two levels above this file
+    # (glossa-lab/data/ relative to glossa-lab/backend/glossa_lab/data/)
+    candidates = [
+        Path(__file__).resolve().parents[3] / "data" / "rigveda_clean.json",
+        Path(__file__).resolve().parents[2] / "data" / "rigveda_clean.json",
+    ]
+    for p in candidates:
+        if p.exists():
+            _RIGVEDA_WORDS = json.loads(p.read_text("utf-8"))
+            return _RIGVEDA_WORDS
+    # Fallback to embedded text
+    _RIGVEDA_WORDS = [w for w in RIGVEDA_TEXT.lower().split() if len(w) >= 2]
+    return _RIGVEDA_WORDS
+
+
 def get_vocabulary() -> dict[str, str]:
     return dict(VOCABULARY)
 
@@ -269,7 +306,18 @@ def get_corpus_text() -> str:
 
 
 def get_corpus_symbols() -> list[str]:
-    return [c for c in RIGVEDA_TEXT.lower() if c.isalpha()]
+    """Return character-level tokens from the full Rigveda corpus."""
+    words = _load_rigveda_words()
+    return [c for w in words for c in w if c.isalpha()]
+
+
+def get_corpus_inscriptions() -> list[list[str]]:
+    """Return word-level character sequences for the Sanskrit corpus.
+
+    Each Rigveda word becomes a sequence of its constituent characters.
+    Words with < 2 characters are excluded.
+    """
+    return [[c for c in w if c.isalpha()] for w in _load_rigveda_words() if len(w) >= 2]
 
 
 def get_morphology() -> dict:

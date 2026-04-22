@@ -197,36 +197,31 @@ _TOOLS = {
 }
 
 
-# ── LLM config builder ────────────────────────────────────────────────────────
+# ── LLM config builder ────────────────────────────────────────────
 
 def _get_llm_config() -> dict | bool:
-    """Build AG2 LLM config from the currently installed Ollama models.
+    """Build AG2 LLM config using the model selected in Glossa Lab Settings.
 
-    Returns False if Ollama is not reachable (AG2 agents won't use LLM,
-    tool-only mode).
+    Reads from the same provider-preference store that call_llm() uses,
+    so AG2 always honours the user's Settings > Default AI selection.
+    Returns False if no Ollama model is configured (tool-only mode).
     """
-    import urllib.request  # noqa: PLC0415
     try:
-        with urllib.request.urlopen("http://localhost:11434/api/tags", timeout=2) as r:
-            tags = json.loads(r.read())
-        models = [m["name"] for m in tags.get("models", [])]
-        if not models:
+        from glossa_lab.ai_utils import _get_provider_prefs  # noqa: PLC0415
+        prefs = _get_provider_prefs()
+        ollama = prefs.get("ollama", {})
+        if not (ollama.get("enabled") and ollama.get("selected_model")):
             return False
-        # Prefer larger/smarter models
-        preferred = next(
-            (m for m in models if any(p in m.lower() for p in
-             ["mistral", "llama3", "qwen", "gemma", "phi3", "deepseek"])),
-            models[0],
-        )
+        model = ollama["selected_model"]
         return {
             "config_list": [{
-                "model": preferred,
+                "model": model,
                 "base_url": "http://localhost:11434/v1",
                 "api_key": "ollama",
             }],
             "temperature": 0.3,
-            "max_tokens": 1500,
-            "cache_seed": None,  # disable caching for research use
+            "max_tokens": 2048,
+            "cache_seed": None,
         }
     except Exception:  # noqa: BLE001
         return False

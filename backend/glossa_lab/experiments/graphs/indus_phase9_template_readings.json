@@ -1,0 +1,103 @@
+{
+  "id": "indus_phase9_template_readings",
+  "name": "Phase 9: Structural Template Readings (CAS+Dravidian)",
+  "description": "Tests Hypothesis H5: that the Indus script encodes a Dravidian logosyllabic system. Combines CPSC constraint projection (CASIndusEngine classifies signs as TERMINAL/INITIAL/MEDIAL via Dravidian morphological constraints) with full structural atlas and template analysis. The CAS engine projects Dravidian phonotactic constraints onto the sign inventory, identifying phonogram candidates (signs eligible for phoneme assignment) separate from logograms/determinatives. Structural templates from cluster-space are then scored for Dravidian-compatibility. Records both consistent and inconsistent readings (falsification record).",
+  "nodes": [
+    {
+      "id": "n1",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "CISI Corpus",
+        "params": {"corpus": "indus_cisi"}
+      }
+    },
+    {
+      "id": "n2",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Dravidian LM",
+        "params": {"language": "dravidian"}
+      }
+    },
+    {
+      "id": "n3",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PositionalProfiler",
+        "label": "Sign Profiles",
+        "params": {"min_count": 3}
+      }
+    },
+    {
+      "id": "n4",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CASIndusEngine",
+        "label": "CAS: Classify Sign Roles",
+        "params": {"terminal_threshold": 0.55, "initial_threshold": 0.45, "engine": "iterative"}
+      }
+    },
+    {
+      "id": "n5",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ClusterMapper",
+        "label": "Map→Cluster Space",
+        "params": {}
+      }
+    },
+    {
+      "id": "n6",
+      "type": "expNode",
+      "data": {
+        "atomicId": "StructuralTemplateAnalyzer",
+        "label": "Extract Templates",
+        "params": {"min_count": 3, "max_template_length": 5}
+      }
+    },
+    {
+      "id": "n7",
+      "type": "expNode",
+      "data": {
+        "atomicId": "WritingSystemClassifier",
+        "label": "Writing System Tier",
+        "params": {}
+      }
+    },
+    {
+      "id": "n8",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge Template Evidence",
+        "params": {}
+      }
+    },
+    {
+      "id": "n9",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Export Template Readings",
+        "params": {"filename": "phase9_template_readings.json"}
+      }
+    }
+  ],
+  "edges": [
+    {"source": "n1", "sourceHandle": "sequences", "target": "n3", "targetHandle": "sequences"},
+    {"source": "n1", "sourceHandle": "sequences", "target": "n4", "targetHandle": "sequences"},
+    {"source": "n1", "sourceHandle": "sequences", "target": "n5", "targetHandle": "sequences"},
+    {"source": "n1", "sourceHandle": "sequences", "target": "n7", "targetHandle": "sequences"},
+    {"source": "n2", "sourceHandle": "lm", "target": "n4", "targetHandle": "lm"},
+    {"source": "n3", "sourceHandle": "profiles", "target": "n4", "targetHandle": "profiles"},
+    {"source": "n5", "sourceHandle": "cluster_sequences", "target": "n6", "targetHandle": "cluster_sequences"},
+    {"source": "n4", "sourceHandle": "sign_roles", "target": "n8", "targetHandle": "a"},
+    {"source": "n4", "sourceHandle": "phoneme_candidates", "target": "n8", "targetHandle": "b"},
+    {"source": "n6", "sourceHandle": "recurrent_templates", "target": "n8", "targetHandle": "c"},
+    {"source": "n6", "sourceHandle": "slot_occupancy", "target": "n8", "targetHandle": "d"},
+    {"source": "n7", "sourceHandle": "tier", "target": "n8", "targetHandle": "e"},
+    {"source": "n8", "sourceHandle": "json", "target": "n9", "targetHandle": "data"}
+  ]
+}

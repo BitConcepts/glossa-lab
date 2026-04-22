@@ -1,0 +1,91 @@
+{
+  "id": "indus_phase9_cluster_anchored_sa",
+  "name": "Phase 9: Cluster-Class Anchored SA (Dravidian)",
+  "description": "Tests Hypothesis H6: that anchoring structural CLUSTERS to phoneme classes (not individual signs) produces more stable SA decipherment. The DB 6-anchor set maps: P385→n (TERMINAL suffix), P324→k (INITIAL title), P122→a (MEDIAL vowel), P086→m, P060→i, P332→o. SA is run against the Dravidian LM on real CISI multi-sign inscription data. Consistency and HCI metrics measure how well Dravidian phonotactics fit the cluster-constrained search space. Compare: South Dravidian vs Pali vs Sanskrit under the same cluster anchoring.",
+  "nodes": [
+    {
+      "id": "n1",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "CISI Real Inscriptions",
+        "params": {"corpus": "indus_cisi"}
+      }
+    },
+    {
+      "id": "n2",
+      "type": "expNode",
+      "data": {
+        "atomicId": "AnchorSetLoader",
+        "label": "Load 6-Anchor Set (DB)",
+        "params": {"anchor_set_id": "dcf69e6e69fe"}
+      }
+    },
+    {
+      "id": "n3",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "South Dravidian LM",
+        "params": {"language": "south_dravidian"}
+      }
+    },
+    {
+      "id": "n4",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Pali MIA LM (control)",
+        "params": {"language": "pali"}
+      }
+    },
+    {
+      "id": "n5",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA vs South Dravidian",
+        "params": {"n_seeds": 5, "max_iterations": 5000, "ocp_weight": 0.0, "n_restarts": 3}
+      }
+    },
+    {
+      "id": "n6",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA vs Pali (control)",
+        "params": {"n_seeds": 5, "max_iterations": 5000, "ocp_weight": 0.0, "n_restarts": 3}
+      }
+    },
+    {
+      "id": "n7",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Compare Results",
+        "params": {}
+      }
+    },
+    {
+      "id": "n8",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Export SA Comparison",
+        "params": {"filename": "phase9_cluster_anchored_sa.json"}
+      }
+    }
+  ],
+  "edges": [
+    {"source": "n1", "sourceHandle": "sequences", "target": "n5", "targetHandle": "sequences"},
+    {"source": "n1", "sourceHandle": "sequences", "target": "n6", "targetHandle": "sequences"},
+    {"source": "n2", "sourceHandle": "anchors", "target": "n5", "targetHandle": "anchors"},
+    {"source": "n2", "sourceHandle": "anchors", "target": "n6", "targetHandle": "anchors"},
+    {"source": "n3", "sourceHandle": "lm", "target": "n5", "targetHandle": "lm"},
+    {"source": "n4", "sourceHandle": "lm", "target": "n6", "targetHandle": "lm"},
+    {"source": "n5", "sourceHandle": "consistency", "target": "n7", "targetHandle": "a"},
+    {"source": "n6", "sourceHandle": "consistency", "target": "n7", "targetHandle": "b"},
+    {"source": "n5", "sourceHandle": "proposed_mapping", "target": "n7", "targetHandle": "c"},
+    {"source": "n7", "sourceHandle": "json", "target": "n8", "targetHandle": "data"}
+  ]
+}

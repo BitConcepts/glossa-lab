@@ -1,0 +1,91 @@
+{
+  "id": "indus_phase9_dravidian_slot_test",
+  "name": "Phase 9: Dravidian Morphological Slot Test",
+  "description": "Tests Hypothesis H3: that Indus inscription structure INITIAL-MEDIAL*-TERMINAL matches Dravidian agglutinative morphology (title/determinative – stem – case suffix). Builds cluster-space sequences from CISI corpus, runs StructuralTemplateAnalyzer to find recurrent patterns, then checks if template slot occupancy is consistent with Dravidian morpheme slot distributions (title signs at start, grammatical affixes at end, phonetic syllables in the middle). Results are scored against the Dravidian LM's conditional entropy to measure structural fit.",
+  "nodes": [
+    {
+      "id": "n1",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "CISI Corpus",
+        "params": {"corpus": "indus_cisi"}
+      }
+    },
+    {
+      "id": "n2",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Dravidian Reference LM",
+        "params": {"language": "dravidian"}
+      }
+    },
+    {
+      "id": "n3",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ClusterMapper",
+        "label": "Map to Structural Clusters",
+        "params": {}
+      }
+    },
+    {
+      "id": "n4",
+      "type": "expNode",
+      "data": {
+        "atomicId": "StructuralTemplateAnalyzer",
+        "label": "Find Recurrent Templates",
+        "params": {"min_count": 3, "max_template_length": 5}
+      }
+    },
+    {
+      "id": "n5",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PositionalProfiler",
+        "label": "Sign Positional Profiles",
+        "params": {"min_count": 3}
+      }
+    },
+    {
+      "id": "n6",
+      "type": "expNode",
+      "data": {
+        "atomicId": "NgramCounter",
+        "label": "Bigram / Trigram Stats",
+        "params": {"max_n": 3, "min_freq": 2}
+      }
+    },
+    {
+      "id": "n7",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge All Evidence",
+        "params": {}
+      }
+    },
+    {
+      "id": "n8",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Export Slot Test",
+        "params": {"filename": "phase9_dravidian_slot_test.json"}
+      }
+    }
+  ],
+  "edges": [
+    {"source": "n1", "sourceHandle": "sequences", "target": "n3", "targetHandle": "sequences"},
+    {"source": "n1", "sourceHandle": "sequences", "target": "n5", "targetHandle": "sequences"},
+    {"source": "n1", "sourceHandle": "sequences", "target": "n6", "targetHandle": "sequences"},
+    {"source": "n3", "sourceHandle": "cluster_sequences", "target": "n4", "targetHandle": "cluster_sequences"},
+    {"source": "n4", "sourceHandle": "recurrent_templates", "target": "n7", "targetHandle": "a"},
+    {"source": "n4", "sourceHandle": "slot_occupancy", "target": "n7", "targetHandle": "b"},
+    {"source": "n5", "sourceHandle": "class_summary", "target": "n7", "targetHandle": "c"},
+    {"source": "n6", "sourceHandle": "bigrams", "target": "n7", "targetHandle": "d"},
+    {"source": "n2", "sourceHandle": "n_signs", "target": "n7", "targetHandle": "e"},
+    {"source": "n7", "sourceHandle": "json", "target": "n8", "targetHandle": "data"}
+  ]
+}

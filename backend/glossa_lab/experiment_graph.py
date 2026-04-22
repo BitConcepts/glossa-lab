@@ -1205,6 +1205,177 @@ def _sub_experiment(inputs: dict, params: dict) -> dict:
     return result if isinstance(result, dict) else {"result": result}
 
 
+# ── CGSA / Structural nodes ───────────────────────────────────────────────────
+
+def _canonical_sign_loader(inputs: dict, params: dict) -> dict:
+    """Load the canonical sign registry from the CGSA pipeline (V12 DB table).
+
+    Returns the full sign inventory with Parpola, Wells, Mahadevan crosswalk IDs,
+    ICIT function codes, and corpus frequency/positional statistics.
+    Requires: scripts/cgsa_pipeline.py has been run, DB seeded via POST /canonical-signs/seed.
+    """
+    filter_in_corpus = bool(params.get("in_corpus_only", True))
+    numbering_system = params.get("numbering_system") or None
+
+    from glossa_lab.database import get_db  # noqa: PLC0415
+    import asyncio  # noqa: PLC0415
+    db = get_db()
+    if db is None:
+        return {"error": "Database not available"}
+    try:
+        loop = asyncio.get_event_loop()
+        signs = loop.run_until_complete(
+            db.list_canonical_signs(in_corpus_only=filter_in_corpus,
+                                    numbering_system=numbering_system)
+        )
+    except Exception as exc:  # noqa: BLE001
+        return {"error": f"Failed to load registry: {exc}"}
+
+    if not signs:
+        return {
+            "error": "Canonical sign registry is empty — run POST /canonical-signs/seed first",
+            "n_signs": 0,
+        }
+
+    # Build sign_id → internal_id map for downstream nodes
+    sign_id_map = {s["sign_id"]: s["internal_id"] for s in signs}
+    parpola_signs = [s for s in signs if s["numbering_system"] == "parpola_1982"]
+    return {
+        "registry": signs,
+        "n_signs": len(signs),
+        "n_parpola": len(parpola_signs),
+        "sign_id_to_uuid": sign_id_map,
+        "sign_ids": [s["sign_id"] for s in signs],
+    }
+
+
+def _cluster_mapper(inputs: dict, params: dict) -> dict:
+    """Map inscription sign sequences to structural cluster labels.
+
+    Loads cluster assignments from the DB (seeded by the CGSA pipeline) and
+    replaces each sign token in every sequence with its cluster label.
+    Unmapped signs (Yunmapped_*, signs not in the 40-cluster set) receive label -1.
+    Outputs cluster-space sequences for structural template analysis.
+    NO phonetic mapping is performed.
+    """
+    from glossa_lab.database import get_db  # noqa: PLC0415
+    import asyncio  # noqa: PLC0415
+    db = get_db()
+    if db is None:
+        return {"error": "Database not available"}
+    try:
+        loop = asyncio.get_event_loop()
+        assignments = loop.run_until_complete(db.list_cluster_assignments())
+        summary = loop.run_until_complete(db.get_clusters_summary())
+    except Exception as exc:  # noqa: BLE001
+        return {"error": f"Failed to load clusters: {exc}"}
+
+    if not assignments:
+        return {
+            "error": "Cluster assignments are empty — run POST /sign-clusters/seed first",
+            "n_assignments": 0,
+        }
+
+    s2c: dict[str, int] = {a["sign_id"]: a["cluster_label"] for a in assignments}
+    sequences = inputs.get("sequences") or []
+    cluster_sequences: list[list[int]] = []
+    n_mapped = 0
+    n_unmapped = 0
+    for seq in sequences:
+        cs = []
+        for sign in seq:
+            lbl = s2c.get(sign, -1)
+            cs.append(lbl)
+            if lbl >= 0:
+                n_mapped += 1
+            else:
+                n_unmapped += 1
+        cluster_sequences.append(cs)
+
+    total = n_mapped + n_unmapped
+    return {
+        "cluster_sequences": cluster_sequences,
+        "n_sequences": len(cluster_sequences),
+        "n_mapped_tokens": n_mapped,
+        "n_unmapped_tokens": n_unmapped,
+        "map_rate": round(n_mapped / total, 4) if total else 0,
+        "n_clusters": summary.get("n_clusters", 0),
+        "cluster_k": summary.get("cluster_k", 0),
+        "sign_to_cluster": s2c,
+    }
+
+
+def _structural_template_analyzer(inputs: dict, params: dict) -> dict:
+    """Find recurrent structural templates in cluster-space inscription sequences.
+
+    Operates on cluster_sequences from ClusterMapper (not raw sign sequences).
+    Discovers recurring patterns of cluster labels (length 2-5, count ≥ min_count),
+    identifies dominant prefix/suffix clusters, and computes slot occupancy.
+    NO phonetic claims are made. All outputs are structural class labels.
+    """
+    import math as _m  # noqa: PLC0415
+    from collections import Counter as _C  # noqa: PLC0415
+
+    cluster_sequences = inputs.get("cluster_sequences") or []
+    min_count = int(params.get("min_count", 3))
+    max_len = int(params.get("max_template_length", 5))
+
+    if not cluster_sequences:
+        return {"error": "No cluster_sequences — connect ClusterMapper.cluster_sequences"}
+
+    template_ctr: _C = _C()
+    prefix_ctr: _C = _C()
+    suffix_ctr: _C = _C()
+    slot_dist: dict = {"initial": _C(), "terminal": _C(), "internal": _C()}
+
+    for cs in cluster_sequences:
+        if not cs:
+            continue
+        # Filter out unmapped (-1)
+        clean = [c for c in cs if c >= 0]
+        if not clean:
+            continue
+        prefix_ctr[clean[0]] += 1
+        suffix_ctr[clean[-1]] += 1
+        for i, c in enumerate(cs):
+            if c < 0:
+                continue
+            if i == 0:
+                slot_dist["initial"][c] += 1
+            elif i == len(cs) - 1:
+                slot_dist["terminal"][c] += 1
+            else:
+                slot_dist["internal"][c] += 1
+        for length in range(2, min(max_len + 1, len(clean) + 1)):
+            for i in range(len(clean) - length + 1):
+                t = tuple(clean[i:i + length])
+                template_ctr[t] += 1
+
+    recurrent = [
+        {"template": list(t), "count": c, "length": len(t)}
+        for t, c in template_ctr.most_common(50) if c >= min_count
+    ]
+
+    # Sequence-level entropy (class space)
+    seq_ctr: _C = _C(tuple(cs) for cs in cluster_sequences)
+    total_seqs = len(cluster_sequences)
+    h_class = -sum((c/total_seqs)*_m.log2(c/total_seqs)
+                   for c in seq_ctr.values() if c > 0) if total_seqs else 0
+
+    return {
+        "n_templates": len(recurrent),
+        "recurrent_templates": recurrent,
+        "dominant_prefix_clusters": dict(prefix_ctr.most_common(10)),
+        "dominant_suffix_clusters": dict(suffix_ctr.most_common(10)),
+        "slot_occupancy": {
+            k: dict(v.most_common(10)) for k, v in slot_dist.items()
+        },
+        "h_class_sequence": round(h_class, 4),
+        "n_distinct_class_sequences": len(seq_ctr),
+        "n_sequences": total_seqs,
+    }
+
+
 def _cipher_constructor(inputs: dict, params: dict) -> dict:
     """Create a bijective random substitution cipher from a sign inventory
     (primitive: one operation — shuffle a known inventory and apply it to sequences).
@@ -1707,6 +1878,51 @@ for _d in [
             "min_freq":{"type":"integer","title":"Min Token Frequency","default":1,"minimum":1,
                         "description":"Drop signs that appear fewer than this many times."}}},
         fn=_corpus_lm),
+    # ── CGSA / Structural nodes ────────────────────────────────────────────────
+    AtomicNodeDef("CanonicalSignLoader","Canonical Sign Loader","CGSA / Structural",
+        "Load the CGSA canonical sign registry from the database (V12). "
+        "Returns all 803 signs with Parpola P-numbers, Wells W-numbers, Mahadevan M-numbers, "
+        "ICIT function codes, and corpus frequency/positional statistics. "
+        "Seed with POST /canonical-signs/seed after running scripts/cgsa_pipeline.py.",
+        inputs=[],
+        outputs=[{"name":"registry","type":"json"},{"name":"n_signs","type":"number"},
+                 {"name":"n_parpola","type":"number"},{"name":"sign_ids","type":"json"},
+                 {"name":"sign_id_to_uuid","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "in_corpus_only":{"type":"boolean","title":"In Corpus Only","default":True,
+                              "description":"If True, return only signs that appear in the inscription corpus."},
+            "numbering_system":{"type":"string","title":"Numbering System","default":"",
+                                "description":"Filter by system: parpola_1982 | yajnadevam_glyphid | (blank=all)"}}},
+        fn=_canonical_sign_loader),
+    AtomicNodeDef("ClusterMapper","Cluster Mapper","CGSA / Structural",
+        "Map inscription sign sequences to structural cluster labels (CGSA Phase 5/6). "
+        "Loads the 40-class hierarchical cluster assignments from the DB and translates "
+        "each sign token to its cluster ID. Unmapped signs get label -1. "
+        "Outputs cluster_sequences for StructuralTemplateAnalyzer. "
+        "NO phonetic mapping performed.",
+        inputs=[{"name":"sequences","type":"sequences","required":True}],
+        outputs=[{"name":"cluster_sequences","type":"json"},{"name":"n_sequences","type":"number"},
+                 {"name":"map_rate","type":"number"},{"name":"n_mapped_tokens","type":"number"},
+                 {"name":"n_clusters","type":"number"},{"name":"sign_to_cluster","type":"json"}],
+        params_schema={"type":"object","properties":{}},
+        fn=_cluster_mapper),
+    AtomicNodeDef("StructuralTemplateAnalyzer","Structural Template Analyzer","CGSA / Structural",
+        "Find recurrent structural templates in cluster-space inscription sequences (CGSA Phase 6). "
+        "Discovers recurring cluster-label patterns (length 2-5, count >= min_count), "
+        "identifies dominant prefix/suffix clusters, and computes slot occupancy. "
+        "Connects: ClusterMapper.cluster_sequences -> cluster_sequences. "
+        "NO phonetic claims made. All outputs are structural class labels.",
+        inputs=[{"name":"cluster_sequences","type":"json","required":True}],
+        outputs=[{"name":"recurrent_templates","type":"json"},{"name":"n_templates","type":"number"},
+                 {"name":"dominant_prefix_clusters","type":"json"},{"name":"dominant_suffix_clusters","type":"json"},
+                 {"name":"slot_occupancy","type":"json"},{"name":"h_class_sequence","type":"number"},
+                 {"name":"n_distinct_class_sequences","type":"number"}],
+        params_schema={"type":"object","properties":{
+            "min_count":{"type":"integer","title":"Min Template Count","default":3,"minimum":2,
+                         "description":"Minimum occurrences for a template to be included (default: 3)"},
+            "max_template_length":{"type":"integer","title":"Max Template Length","default":5,"minimum":2,
+                                   "description":"Maximum cluster-sequence length to consider as template"}}},
+        fn=_structural_template_analyzer),
     # ── CPSC / Constraint Solver nodes ────────────────────────────────────────
     AtomicNodeDef("CASModelLoader","CAS Model Loader","CPSC / Constraint Solver",
         "Load a CAS-YAML constraint model from the database, a built-in template, or inline YAML. "

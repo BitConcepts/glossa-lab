@@ -356,6 +356,22 @@ export function ReportsView() {
     listStudies().then(setStudies).catch(() => {});
   }, []);
 
+  // Listen for Jobs-tab 'Results' navigation
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const d = (e as CustomEvent<{ tab?: string; search?: string }>).detail;
+      if (d?.tab === "data") setAreaTab("data");
+      if (d?.search) setSearch(d.search);
+      // Clear kind/exp filters so the file is visible
+      setKindFilter(new Set());
+      setExpFilter(new Set());
+      // Scroll to top of list
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+    window.addEventListener("glossa:reports_highlight", handler);
+    return () => window.removeEventListener("glossa:reports_highlight", handler);
+  }, []);
+
   const handleView = (r: CatalogReport) => {
     const url = getReportDownloadUrl(r.id);
     // Open as a popup so it stays near the app; detect if blocked

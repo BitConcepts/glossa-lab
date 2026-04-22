@@ -7,9 +7,10 @@
  * - AI Chat tab appears when docked
  */
 import { useCallback, useEffect, useRef, useState } from "react";
-import { cancelJob, clearJobs, getEnvStatus, getLogStreamUrl, listJobs, purgeLog, runTerminalCommand, type EnvStatus, type JobResponse } from "../api";
+import { cancelJob, clearJobs, getJobResults, getEnvStatus, getLogStreamUrl, listJobs, purgeLog, runTerminalCommand, type EnvStatus, type JobResponse } from "../api";
 import { fmtDateTimeCompact } from "../dateFormat";
 import { ChatInline } from "./AIChatWindow";
+import { JobErrorModal } from "./JobsView";
 import { useAIChat } from "../hooks/useAIChat";
 import { useToast } from "../hooks/useToast";
 
@@ -161,6 +162,34 @@ function JobsPanel() {
   const [loading, setLoading] = useState(true);
   const [cancelling, setCancelling] = useState<Set<string>>(new Set());
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [errorModal, setErrorModal] = useState<{ title: string; message: string; detail?: string } | null>(null);
+
+  const handleViewInReports = (expId: string) => {
+    const filename = expId ? `${expId}.json` : "";
+    window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: "reports" } }));
+    if (filename) {
+      setTimeout(() => {
+        window.dispatchEvent(new CustomEvent("glossa:reports_highlight", {
+          detail: { tab: "data", search: filename }
+        }));
+      }, 120);
+    }
+  };
+
+  const handleShowError = async (job: JobResponse) => {
+    try {
+      const data = await getJobResults(job.id);
+      const errMsg = (data as Record<string, unknown>).error as string ?? "Unknown error";
+      const trace  = (data as Record<string, unknown>).traceback as string ?? null;
+      setErrorModal({ title: job.name, message: errMsg, detail: trace ?? undefined });
+    } catch {
+      setErrorModal({
+        title: job.name,
+        message: "Job failed. No detailed error was stored.",
+        detail: `Job ID: ${job.id}\nStatus: ${job.status}\nParams: ${JSON.stringify(job.params ?? {}, null, 2)}`,
+      });
+    }
+  };
 
   const load = useCallback(async () => {
     try { setJobs(await listJobs()); setLoading(false); }
@@ -326,6 +355,24 @@ function JobsPanel() {
                 <div style={{ fontSize: 10, color: "#64748b", marginBottom: 6 }}>
                   <span style={{ color: "#94a3b8", fontWeight: 600 }}>Created:</span> {fmtDateTimeCompact(job.created_at)}
                 </div>
+                {/* View in Reports button for completed exp_run */}
+                {job.status === "completed" && isExpRun && (
+                  <button
+                    onClick={e => { e.stopPropagation(); handleViewInReports((job.params?.exp_id as string) ?? ""); }}
+                    style={{ padding: "3px 10px", marginBottom: 8, border: "none", borderRadius: 4,
+                      background: "#059669", color: "#fff", cursor: "pointer", fontSize: 10, fontWeight: 600 }}>
+                    📂 View in Reports
+                  </button>
+                )}
+                {/* Error details button for failed jobs */}
+                {job.status === "failed" && (
+                  <button
+                    onClick={e => { e.stopPropagation(); void handleShowError(job); }}
+                    style={{ padding: "3px 10px", marginBottom: 8, border: "none", borderRadius: 4,
+                      background: "#dc2626", color: "#fff", cursor: "pointer", fontSize: 10, fontWeight: 600 }}>
+                    ⚠ View Error
+                  </button>
+                )}
                 {errMsg && (
                   <div style={{ fontSize: 10, color: "#f87171", marginBottom: 6 }}>
                     <span style={{ fontWeight: 600 }}>Error:</span>{" "}
@@ -354,6 +401,15 @@ function JobsPanel() {
         );
       })}
       <style>{`@keyframes progress { 0%{transform:translateX(-100%)} 100%{transform:translateX(350%)} }`}</style>
+      {/* Error modal */}
+      {errorModal && (
+        <JobErrorModal
+          title={errorModal.title}
+          message={errorModal.message}
+          detail={errorModal.detail}
+          onClose={() => setErrorModal(null)}
+        />
+      )}
     </div>
   );
 }

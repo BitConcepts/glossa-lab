@@ -250,6 +250,18 @@ def _builtin_lm(inputs: dict, params: dict) -> dict:
         elif lang in ("dravidian", "tamil"):
             from glossa_lab.data.dravidian import get_corpus_symbols  # noqa: PLC0415
             syms = get_corpus_symbols(); inscs = None
+        elif lang in ("south_dravidian", "dravidian_south", "kannada_telugu_tamil"):
+            from glossa_lab.data.dravidian_south import get_corpus_symbols  # noqa: PLC0415
+            syms = get_corpus_symbols(); inscs = None
+        elif lang in ("kannada",):
+            from glossa_lab.data.dravidian_south import get_kannada_symbols  # noqa: PLC0415
+            syms = get_kannada_symbols(); inscs = None
+        elif lang in ("telugu",):
+            from glossa_lab.data.dravidian_south import get_telugu_symbols  # noqa: PLC0415
+            syms = get_telugu_symbols(); inscs = None
+        elif lang in ("pali", "middle_indo_aryan", "mia"):
+            from glossa_lab.data.pali import get_corpus_symbols  # noqa: PLC0415
+            syms = get_corpus_symbols(); inscs = None
         elif lang in ("sanskrit", "vedic"):
             from glossa_lab.data.sanskrit import get_corpus_symbols  # noqa: PLC0415
             syms = get_corpus_symbols(); inscs = None
@@ -266,7 +278,7 @@ def _builtin_lm(inputs: dict, params: dict) -> dict:
             from glossa_lab.data.proto_sinaitic import get_corpus_symbols as _ps  # noqa: PLC0415
             syms = _ps(); inscs = None
         else:
-            return {"error": f"Unknown language '{lang}'. Valid: hebrew, geez, phoenician, sumerian, dravidian, sanskrit, coptic, linear_b, meroitic, proto_sinaitic"}
+            return {"error": f"Unknown language '{lang}'. Valid: hebrew, geez, phoenician, sumerian, dravidian, south_dravidian, kannada, telugu, pali, sanskrit, coptic, linear_b, meroitic, proto_sinaitic"}
     except ImportError as exc:
         return {"error": str(exc)}
     from glossa_lab.pipelines.decipher import LanguageModel  # noqa: PLC0415
@@ -1571,7 +1583,7 @@ for _d in [
                              "description":"ID of the graph experiment to invoke as a subroutine"}}},
         fn=_sub_experiment),
     AtomicNodeDef("BuiltinLM","Built-in Reference LM","Decipherment",
-        "Load a pre-built language model for a known language (hebrew, geez, phoenician, sumerian, dravidian, coptic, linear_b). "
+        "Load a pre-built language model for a known language (hebrew, geez, phoenician, sumerian, dravidian, south_dravidian, kannada, telugu, pali, sanskrit, coptic, linear_b, meroitic, proto_sinaitic). "
         "Use as the target LM in SADecipher or BeamDecipher.",
         inputs=[],
         outputs=[{"name":"lm","type":"any"},{"name":"language","type":"text"},

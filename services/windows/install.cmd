@@ -1,6 +1,8 @@
 @echo off
 REM Glossa Lab — Windows Startup Registration
 REM Creates a shortcut in the user's Startup folder to launch the tray app.
+REM For on-demand (non-blocking) start at any time:
+REM   powershell -ExecutionPolicy Bypass -File scripts\start_tray.ps1
 
 set "REPO_ROOT=%~dp0..\.."
 set "STARTUP=%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"

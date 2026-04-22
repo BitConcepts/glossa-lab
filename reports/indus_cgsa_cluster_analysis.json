@@ -1,0 +1,651 @@
+{
+  "json": {
+    "error": "No cluster_sequences \u2014 connect ClusterMapper.cluster_sequences",
+    "profiles": [
+      {
+        "symbol": "P324",
+        "count": 99,
+        "t_rate": 0.0101,
+        "i_rate": 0.7778,
+        "m_rate": 0.2121,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P122",
+        "count": 76,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P385",
+        "count": 35,
+        "t_rate": 0.8286,
+        "i_rate": 0.0,
+        "m_rate": 0.1714,
+        "pos_class": "TERMINAL"
+      },
+      {
+        "symbol": "P086",
+        "count": 35,
+        "t_rate": 0.0286,
+        "i_rate": 0.5429,
+        "m_rate": 0.4286,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P050",
+        "count": 32,
+        "t_rate": 0.0,
+        "i_rate": 0.0312,
+        "m_rate": 0.9688,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P145",
+        "count": 27,
+        "t_rate": 0.1481,
+        "i_rate": 0.0,
+        "m_rate": 0.8519,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P230",
+        "count": 23,
+        "t_rate": 0.1739,
+        "i_rate": 0.0,
+        "m_rate": 0.8261,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P120",
+        "count": 22,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P062",
+        "count": 21,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P060",
+        "count": 20,
+        "t_rate": 0.05,
+        "i_rate": 0.0,
+        "m_rate": 0.95,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P316",
+        "count": 19,
+        "t_rate": 0.1053,
+        "i_rate": 0.0526,
+        "m_rate": 0.8421,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P000",
+        "count": 19,
+        "t_rate": 0.3158,
+        "i_rate": 0.5789,
+        "m_rate": 0.1053,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P217",
+        "count": 18,
+        "t_rate": 0.1111,
+        "i_rate": 0.7778,
+        "m_rate": 0.1111,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P378",
+        "count": 17,
+        "t_rate": 0.5882,
+        "i_rate": 0.1176,
+        "m_rate": 0.2941,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P364",
+        "count": 17,
+        "t_rate": 0.1176,
+        "i_rate": 0.0,
+        "m_rate": 0.8824,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P058",
+        "count": 15,
+        "t_rate": 0.0667,
+        "i_rate": 0.0,
+        "m_rate": 0.9333,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P147",
+        "count": 14,
+        "t_rate": 0.0714,
+        "i_rate": 0.0714,
+        "m_rate": 0.8571,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P154",
+        "count": 14,
+        "t_rate": 0.2143,
+        "i_rate": 0.0,
+        "m_rate": 0.7857,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P325",
+        "count": 14,
+        "t_rate": 0.0714,
+        "i_rate": 0.0,
+        "m_rate": 0.9286,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P123",
+        "count": 13,
+        "t_rate": 0.3846,
+        "i_rate": 0.0,
+        "m_rate": 0.6154,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P256",
+        "count": 12,
+        "t_rate": 0.75,
+        "i_rate": 0.0,
+        "m_rate": 0.25,
+        "pos_class": "TERMINAL"
+      },
+      {
+        "symbol": "P202",
+        "count": 11,
+        "t_rate": 0.0909,
+        "i_rate": 0.1818,
+        "m_rate": 0.7273,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P268",
+        "count": 11,
+        "t_rate": 0.0,
+        "i_rate": 0.2727,
+        "m_rate": 0.7273,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P332",
+        "count": 11,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P121",
+        "count": 10,
+        "t_rate": 0.0,
+        "i_rate": 0.1,
+        "m_rate": 0.9,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P205",
+        "count": 10,
+        "t_rate": 0.1,
+        "i_rate": 0.1,
+        "m_rate": 0.8,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P011",
+        "count": 10,
+        "t_rate": 0.5,
+        "i_rate": 0.0,
+        "m_rate": 0.5,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P349",
+        "count": 10,
+        "t_rate": 0.2,
+        "i_rate": 0.0,
+        "m_rate": 0.8,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P056",
+        "count": 9,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P013",
+        "count": 9,
+        "t_rate": 0.0,
+        "i_rate": 1.0,
+        "m_rate": 0.0,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P073",
+        "count": 8,
+        "t_rate": 0.125,
+        "i_rate": 0.0,
+        "m_rate": 0.875,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P144",
+        "count": 8,
+        "t_rate": 0.25,
+        "i_rate": 0.125,
+        "m_rate": 0.625,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P194",
+        "count": 8,
+        "t_rate": 0.125,
+        "i_rate": 0.0,
+        "m_rate": 0.875,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P175",
+        "count": 7,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P276",
+        "count": 6,
+        "t_rate": 0.1667,
+        "i_rate": 0.0,
+        "m_rate": 0.8333,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P126",
+        "count": 6,
+        "t_rate": 0.1667,
+        "i_rate": 0.0,
+        "m_rate": 0.8333,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P215",
+        "count": 6,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P160",
+        "count": 6,
+        "t_rate": 0.1667,
+        "i_rate": 0.0,
+        "m_rate": 0.8333,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P076",
+        "count": 6,
+        "t_rate": 0.6667,
+        "i_rate": 0.0,
+        "m_rate": 0.3333,
+        "pos_class": "TERMINAL"
+      },
+      {
+        "symbol": "P092",
+        "count": 6,
+        "t_rate": 0.1667,
+        "i_rate": 0.0,
+        "m_rate": 0.8333,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P301",
+        "count": 6,
+        "t_rate": 0.0,
+        "i_rate": 0.8333,
+        "m_rate": 0.1667,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P004",
+        "count": 6,
+        "t_rate": 0.0,
+        "i_rate": 1.0,
+        "m_rate": 0.0,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P108",
+        "count": 5,
+        "t_rate": 0.6,
+        "i_rate": 0.0,
+        "m_rate": 0.4,
+        "pos_class": "TERMINAL"
+      },
+      {
+        "symbol": "P201",
+        "count": 5,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P009",
+        "count": 5,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P270",
+        "count": 5,
+        "t_rate": 0.2,
+        "i_rate": 0.0,
+        "m_rate": 0.8,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P221",
+        "count": 5,
+        "t_rate": 0.4,
+        "i_rate": 0.0,
+        "m_rate": 0.6,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P210",
+        "count": 5,
+        "t_rate": 0.2,
+        "i_rate": 0.0,
+        "m_rate": 0.8,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P091",
+        "count": 5,
+        "t_rate": 0.0,
+        "i_rate": 0.2,
+        "m_rate": 0.8,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P051",
+        "count": 5,
+        "t_rate": 0.0,
+        "i_rate": 1.0,
+        "m_rate": 0.0,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P204",
+        "count": 4,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P035",
+        "count": 4,
+        "t_rate": 0.25,
+        "i_rate": 0.0,
+        "m_rate": 0.75,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P142",
+        "count": 4,
+        "t_rate": 0.25,
+        "i_rate": 0.0,
+        "m_rate": 0.75,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P125",
+        "count": 4,
+        "t_rate": 0.5,
+        "i_rate": 0.0,
+        "m_rate": 0.5,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P095",
+        "count": 4,
+        "t_rate": 0.75,
+        "i_rate": 0.0,
+        "m_rate": 0.25,
+        "pos_class": "TERMINAL"
+      },
+      {
+        "symbol": "P127",
+        "count": 4,
+        "t_rate": 0.25,
+        "i_rate": 0.0,
+        "m_rate": 0.75,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P139",
+        "count": 4,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P001",
+        "count": 4,
+        "t_rate": 0.0,
+        "i_rate": 1.0,
+        "m_rate": 0.0,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P124",
+        "count": 4,
+        "t_rate": 0.5,
+        "i_rate": 0.0,
+        "m_rate": 0.5,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P289",
+        "count": 4,
+        "t_rate": 0.25,
+        "i_rate": 0.0,
+        "m_rate": 0.75,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P098",
+        "count": 4,
+        "t_rate": 0.0,
+        "i_rate": 0.75,
+        "m_rate": 0.25,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P226",
+        "count": 4,
+        "t_rate": 1.0,
+        "i_rate": 0.0,
+        "m_rate": 0.0,
+        "pos_class": "TERMINAL"
+      },
+      {
+        "symbol": "P075",
+        "count": 4,
+        "t_rate": 0.25,
+        "i_rate": 0.0,
+        "m_rate": 0.75,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P355",
+        "count": 4,
+        "t_rate": 0.5,
+        "i_rate": 0.0,
+        "m_rate": 0.5,
+        "pos_class": "MIXED"
+      },
+      {
+        "symbol": "P096",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P114",
+        "count": 3,
+        "t_rate": 0.3333,
+        "i_rate": 0.0,
+        "m_rate": 0.6667,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P067",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.3333,
+        "m_rate": 0.6667,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P369",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P275",
+        "count": 3,
+        "t_rate": 0.3333,
+        "i_rate": 0.0,
+        "m_rate": 0.6667,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P174",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P238",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.6667,
+        "m_rate": 0.3333,
+        "pos_class": "INITIAL"
+      },
+      {
+        "symbol": "P103",
+        "count": 3,
+        "t_rate": 0.3333,
+        "i_rate": 0.0,
+        "m_rate": 0.6667,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P309",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P303",
+        "count": 3,
+        "t_rate": 0.3333,
+        "i_rate": 0.0,
+        "m_rate": 0.6667,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P288",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P326",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P234",
+        "count": 3,
+        "t_rate": 0.3333,
+        "i_rate": 0.0,
+        "m_rate": 0.6667,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P031",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P110",
+        "count": 3,
+        "t_rate": 0.3333,
+        "i_rate": 0.0,
+        "m_rate": 0.6667,
+        "pos_class": "MEDIAL"
+      },
+      {
+        "symbol": "P283",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.0,
+        "m_rate": 1.0,
+        "pos_class": "MEDIAL"
+      }
+    ],
+    "class_summary__TERMINAL": 6,
+    "class_summary__INITIAL": 11,
+    "class_summary__MEDIAL": 55,
+    "class_summary__MIXED": 8
+  }
+}

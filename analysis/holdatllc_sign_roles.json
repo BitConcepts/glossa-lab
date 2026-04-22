@@ -1,0 +1,1357 @@
+{
+  "generated": "2026-04-22T21:40:30Z",
+  "source": "holdatllc/Indus-scripts-deciphering (MIT)",
+  "n_signs": 150,
+  "roles": {
+    "M391": {
+      "holdatllc_role": "CASE_MARKER_SUFFIX",
+      "mapped_to": "TERMINAL",
+      "count": 193,
+      "p_number": "\u2014",
+      "is_ending": true,
+      "is_starter": false,
+      "avg_position": 0.6
+    },
+    "M211": {
+      "holdatllc_role": "CASE_MARKER_SUFFIX",
+      "mapped_to": "TERMINAL",
+      "count": 249,
+      "p_number": "\u2014",
+      "is_ending": true,
+      "is_starter": false,
+      "avg_position": 0.622
+    },
+    "M099": {
+      "holdatllc_role": "CASE_MARKER_SUFFIX",
+      "mapped_to": "TERMINAL",
+      "count": 389,
+      "p_number": "\u2014",
+      "is_ending": true,
+      "is_starter": false,
+      "avg_position": 0.598
+    },
+    "M220": {
+      "holdatllc_role": "CASE_MARKER_SUFFIX",
+      "mapped_to": "TERMINAL",
+      "count": 62,
+      "p_number": "\u2014",
+      "is_ending": true,
+      "is_starter": false,
+      "avg_position": 0.992
+    },
+    "M022": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 22,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M270": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 6,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.464
+    },
+    "M087": {
+      "holdatllc_role": "CASE_MARKER_SUFFIX",
+      "mapped_to": "TERMINAL",
+      "count": 130,
+      "p_number": "\u2014",
+      "is_ending": true,
+      "is_starter": false,
+      "avg_position": 0.678
+    },
+    "M042": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 13,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M012": {
+      "holdatllc_role": "CASE_MARKER_SUFFIX",
+      "mapped_to": "TERMINAL",
+      "count": 143,
+      "p_number": "\u2014",
+      "is_ending": true,
+      "is_starter": false,
+      "avg_position": 0.605
+    },
+    "M062": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 28,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M162": {
+      "holdatllc_role": "CASE_MARKER_SUFFIX",
+      "mapped_to": "TERMINAL",
+      "count": 205,
+      "p_number": "\u2014",
+      "is_ending": true,
+      "is_starter": false,
+      "avg_position": 0.608
+    },
+    "M267": {
+      "holdatllc_role": "CASE_MARKER_SUFFIX",
+      "mapped_to": "TERMINAL",
+      "count": 400,
+      "p_number": "\u2014",
+      "is_ending": true,
+      "is_starter": false,
+      "avg_position": 0.54
+    },
+    "M073": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 25,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M328": {
+      "holdatllc_role": "CASE_MARKER_SUFFIX",
+      "mapped_to": "TERMINAL",
+      "count": 234,
+      "p_number": "\u2014",
+      "is_ending": true,
+      "is_starter": false,
+      "avg_position": 0.595
+    },
+    "M125": {
+      "holdatllc_role": "CASE_MARKER_SUFFIX",
+      "mapped_to": "TERMINAL",
+      "count": 132,
+      "p_number": "\u2014",
+      "is_ending": true,
+      "is_starter": false,
+      "avg_position": 0.734
+    },
+    "M089": {
+      "holdatllc_role": "CASE_MARKER_SUFFIX",
+      "mapped_to": "TERMINAL",
+      "count": 171,
+      "p_number": "\u2014",
+      "is_ending": true,
+      "is_starter": false,
+      "avg_position": 0.684
+    },
+    "M059": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 222,
+      "p_number": "P064",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.578
+    },
+    "M004": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 17,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M183": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.435
+    },
+    "M048": {
+      "holdatllc_role": "CASE_MARKER_SUFFIX",
+      "mapped_to": "TERMINAL",
+      "count": 157,
+      "p_number": "\u2014",
+      "is_ending": true,
+      "is_starter": false,
+      "avg_position": 0.627
+    },
+    "M008": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 22,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M028": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 11,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M051": {
+      "holdatllc_role": "CASE_MARKER_SUFFIX",
+      "mapped_to": "TERMINAL",
+      "count": 163,
+      "p_number": "\u2014",
+      "is_ending": true,
+      "is_starter": false,
+      "avg_position": 0.653
+    },
+    "M014": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 17,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M176": {
+      "holdatllc_role": "CASE_MARKER_SUFFIX",
+      "mapped_to": "TERMINAL",
+      "count": 356,
+      "p_number": "\u2014",
+      "is_ending": true,
+      "is_starter": false,
+      "avg_position": 0.607
+    },
+    "M023": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 16,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M066": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 16,
+      "p_number": "P073",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M077": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 18,
+      "p_number": "P086",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M044": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 19,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M065": {
+      "holdatllc_role": "CASE_MARKER_SUFFIX",
+      "mapped_to": "TERMINAL",
+      "count": 154,
+      "p_number": "\u2014",
+      "is_ending": true,
+      "is_starter": false,
+      "avg_position": 0.669
+    },
+    "M001": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 14,
+      "p_number": "P001",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M401": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 6,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.583
+    },
+    "M222": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.571
+    },
+    "M071": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 16,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M367": {
+      "holdatllc_role": "CASE_MARKER_SUFFIX",
+      "mapped_to": "TERMINAL",
+      "count": 190,
+      "p_number": "\u2014",
+      "is_ending": true,
+      "is_starter": false,
+      "avg_position": 0.695
+    },
+    "M365": {
+      "holdatllc_role": "POSSIBLE_PERSON",
+      "mapped_to": "MIXED",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.477
+    },
+    "M060": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 20,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M412": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.56
+    },
+    "M009": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 16,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M018": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 18,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M336": {
+      "holdatllc_role": "CASE_MARKER_SUFFIX",
+      "mapped_to": "TERMINAL",
+      "count": 161,
+      "p_number": "\u2014",
+      "is_ending": true,
+      "is_starter": false,
+      "avg_position": 0.681
+    },
+    "M061": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 22,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M067": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 15,
+      "p_number": "P074",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M233": {
+      "holdatllc_role": "CASE_MARKER_SUFFIX",
+      "mapped_to": "TERMINAL",
+      "count": 171,
+      "p_number": "\u2014",
+      "is_ending": true,
+      "is_starter": false,
+      "avg_position": 0.712
+    },
+    "M019": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 20,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M293": {
+      "holdatllc_role": "CASE_MARKER_SUFFIX",
+      "mapped_to": "TERMINAL",
+      "count": 232,
+      "p_number": "\u2014",
+      "is_ending": true,
+      "is_starter": false,
+      "avg_position": 0.621
+    },
+    "M033": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 12,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M016": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 23,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M305": {
+      "holdatllc_role": "CASE_MARKER_SUFFIX",
+      "mapped_to": "TERMINAL",
+      "count": 83,
+      "p_number": "\u2014",
+      "is_ending": true,
+      "is_starter": false,
+      "avg_position": 0.988
+    },
+    "M040": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 13,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M026": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 17,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M058": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 21,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M024": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 13,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M035": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 19,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M034": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 17,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M151": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.433
+    },
+    "M069": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 16,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M039": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 18,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M075": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 14,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M027": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 17,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M347": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 8,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.399
+    },
+    "M074": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 12,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M063": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 18,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M049": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 13,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M081": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 13,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M053": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 19,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M054": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 12,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M005": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 15,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M030": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 18,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M249": {
+      "holdatllc_role": "CASE_MARKER_SUFFIX",
+      "mapped_to": "TERMINAL",
+      "count": 73,
+      "p_number": "\u2014",
+      "is_ending": true,
+      "is_starter": false,
+      "avg_position": 0.981
+    },
+    "M021": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 16,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M052": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 22,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M169": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 8,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.485
+    },
+    "M041": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 17,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M031": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 16,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M011": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 15,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M017": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 18,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M038": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 17,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M043": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 11,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M068": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 13,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M304": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.427
+    },
+    "M355": {
+      "holdatllc_role": "POSSIBLE_PERSON",
+      "mapped_to": "MIXED",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.655
+    },
+    "M374": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 6,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.436
+    },
+    "M350": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.473
+    },
+    "M178": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.326
+    },
+    "M076": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 7,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M036": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 15,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M127": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 6,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.494
+    },
+    "M252": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 6,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.557
+    },
+    "M079": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 24,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M029": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 11,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M010": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 17,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M003": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 19,
+      "p_number": "P003",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M386": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 6,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.385
+    },
+    "M045": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 24,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M013": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 23,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M163": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.475
+    },
+    "M057": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 18,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M272": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 7,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.462
+    },
+    "M064": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 11,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M351": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 6,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.355
+    },
+    "M072": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 12,
+      "p_number": "P079",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M020": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 18,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M002": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 16,
+      "p_number": "P002",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M032": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 9,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M080": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 19,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M108": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.57
+    },
+    "M050": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 17,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M055": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 12,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M231": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.45
+    },
+    "M025": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 17,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M070": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 17,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M128": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 7,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.451
+    },
+    "M006": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 15,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M237": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 8,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.518
+    },
+    "M082": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 7,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M321": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.49
+    },
+    "M102": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 8,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.502
+    },
+    "M153": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.35
+    },
+    "M047": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 13,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M235": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 7,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.536
+    },
+    "M177": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.482
+    },
+    "M007": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 11,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M149": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 7,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.443
+    },
+    "M185": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 7,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.457
+    },
+    "M037": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 16,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M357": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.44
+    },
+    "M137": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.34
+    },
+    "M155": {
+      "holdatllc_role": "POSSIBLE_PERSON",
+      "mapped_to": "MIXED",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.677
+    },
+    "M239": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.407
+    },
+    "M015": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 15,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M383": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 7,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.307
+    },
+    "M223": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.52
+    },
+    "M103": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.533
+    },
+    "M254": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.457
+    },
+    "M198": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 6,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.347
+    },
+    "M168": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 6,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.422
+    },
+    "M078": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 17,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M262": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.327
+    },
+    "M056": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 19,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M332": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 6,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.43
+    },
+    "M416": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.467
+    },
+    "M375": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 7,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.518
+    },
+    "M143": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.397
+    },
+    "M345": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.533
+    },
+    "M329": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.6
+    },
+    "M046": {
+      "holdatllc_role": "CLASSIFIER_PREFIX",
+      "mapped_to": "INITIAL",
+      "count": 11,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": true,
+      "avg_position": 0.0
+    },
+    "M190": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.533
+    },
+    "M295": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.574
+    },
+    "M402": {
+      "holdatllc_role": "PERSON_OR_OWNER",
+      "mapped_to": "BIMODAL",
+      "count": 5,
+      "p_number": "\u2014",
+      "is_ending": false,
+      "is_starter": false,
+      "avg_position": 0.323
+    }
+  }
+}

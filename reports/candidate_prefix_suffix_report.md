@@ -1,5 +1,5 @@
 # Candidate Prefix/Suffix Report
-Generated: 2026-04-22T17:16:01Z
+Generated: 2026-04-22T17:35:27Z
 **Site scope**: Mohenjo-daro only. Results are site-limited.
 
 ---
@@ -17,101 +17,101 @@ All labels ('prefix-like', 'suffix-like') are structural candidates only.
 Definition: sign appears in final position in ≥ 55% of its occurrences,
 with at least 5 total occurrences.
 
-  - P385: appears terminally 29 times
-  - P378: appears terminally 10 times
-  - P256: appears terminally 9 times
-  - P000: appears terminally 6 times
-  - P011: appears terminally 5 times
-  - P123: appears terminally 5 times
-  - P145: appears terminally 4 times
-  - P076: appears terminally 4 times
-  - P230: appears terminally 4 times
-  - P226: appears terminally 4 times
-  - P108: appears terminally 3 times
-  - P154: appears terminally 3 times
-  - P095: appears terminally 3 times
-  - P221: appears terminally 2 times
-  - P364: appears terminally 2 times
+  - Y0817: appears terminally 127 times
+  - Y0820: appears terminally 121 times
+  - Y0861: appears terminally 118 times
+  - Y0003: appears terminally 84 times
+  - Y0235: appears terminally 74 times
+  - Y0920: appears terminally 67 times
+  - Y0032: appears terminally 65 times
+  - Y0176: appears terminally 59 times
+  - Y0240: appears terminally 56 times
+  - Y0031: appears terminally 49 times
+  - Y0503: appears terminally 49 times
+  - Y0033: appears terminally 48 times
+  - Y0806: appears terminally 46 times
+  - Y0803: appears terminally 43 times
+  - Y0692: appears terminally 43 times
 
 ## Candidate Prefix-like Signs (initial position bias)
 
 Definition: sign appears in initial position in ≥ 55% of its occurrences,
 with at least 3 total occurrences.
 
+  - Y0740: appears initially 865 times
+  - Y0400: appears initially 293 times
+  - Y0520: appears initially 198 times
+  - Y0390: appears initially 98 times
+  - Y0090: appears initially 82 times
   - P324: appears initially 77 times
-  - P086: appears initially 19 times
-  - P217: appears initially 14 times
-  - P000: appears initially 11 times
-  - P013: appears initially 9 times
-  - P004: appears initially 6 times
-  - P301: appears initially 5 times
-  - P051: appears initially 5 times
-  - P001: appears initially 4 times
-  - P268: appears initially 3 times
-  - P098: appears initially 3 times
-  - P378: appears initially 2 times
-  - P202: appears initially 2 times
-  - P238: appears initially 2 times
-  - P121: appears initially 1 times
+  - Y0156: appears initially 68 times
+  - Y0151: appears initially 59 times
+  - Y0700: appears initially 53 times
+  - Y0407: appears initially 53 times
+  - Y0527: appears initially 41 times
+  - Y0617: appears initially 39 times
+  - Y0405: appears initially 32 times
+  - Y0154: appears initially 29 times
+  - Y0368: appears initially 27 times
 
 ## Recurrent Multi-sign Templates
 
 These patterns appear ≥ 3 times in the corpus.
 They may represent formulaic expressions or recurring morphological patterns.
 
-  - `P122 P385`: 29 times
-  - `P147 P316`: 10 times
-  - `P324 P332`: 10 times
-  - `P062 P060`: 9 times
-  - `P364 P122`: 9 times
-  - `P013 P324`: 9 times
-  - `P050 P145`: 8 times
-  - `P120 P256`: 7 times
-  - `P145 P122`: 7 times
-  - `P217 P050`: 6 times
-  - `P060 P122`: 6 times
-  - `P122 P086`: 6 times
-  - `P122 P378`: 6 times
-  - `P268 P268`: 5 times
-  - `P060 P364`: 5 times
-  - `P324 P086`: 5 times
-  - `P086 P276`: 5 times
-  - `P050 P145 P122`: 5 times
-  - `P050 P092`: 5 times
-  - `P230 P062`: 5 times
-  - `P122 P205`: 5 times
-  - `P217 P147`: 5 times
-  - `P217 P147 P316`: 5 times
-  - `P324 P175`: 5 times
-  - `P056 P122`: 4 times
-  - `P324 P154`: 4 times
-  - `P062 P122`: 4 times
-  - `P058 P122`: 4 times
-  - `P324 P086 P276`: 4 times
-  - `P324 P194`: 4 times
+  - `Y0400 Y0740`: 166 times
+  - `Y0002 Y0861`: 131 times
+  - `Y0002 Y0817`: 118 times
+  - `Y0740 Y0176`: 107 times
+  - `Y0090 Y0740`: 85 times
+  - `Y0740 Y0100`: 81 times
+  - `Y0740 Y0760`: 79 times
+  - `Y0002 Y0820`: 77 times
+  - `Y0033 Y0705`: 72 times
+  - `Y0220 Y0415`: 62 times
+  - `Y0240 Y0002`: 62 times
+  - `Y0390 Y0590`: 52 times
+  - `Y0060 Y0920`: 52 times
+  - `Y0220 Y0032`: 51 times
+  - `Y0740 Y0032`: 49 times
+  - `Y0520 Y0220`: 47 times
+  - `Y0520 Y0033`: 45 times
+  - `Y0520 Y0240`: 45 times
+  - `Y0740 Y0752`: 42 times
+  - `Y0740 Y0220`: 40 times
+  - `Y0435 Y0255`: 40 times
+  - `Y0740 Y0690`: 40 times
+  - `Y0740 Y0390`: 39 times
+  - `Y0033 Y0706`: 39 times
+  - `Y0740 Y0390 Y0590`: 38 times
+  - `Y0240 Y0235`: 37 times
+  - `Y0400 Y0740 Y0176`: 37 times
+  - `Y0060 Y0692`: 36 times
+  - `Y0740 Y0923`: 35 times
+  - `Y0156 Y0003`: 35 times
 
 ## Top Bigrams (strongest adjacency pairs)
 
-  - P122 → P385: 29
-  - P147 → P316: 10
-  - P324 → P332: 10
-  - P062 → P060: 9
-  - P364 → P122: 9
-  - P013 → P324: 9
-  - P050 → P145: 8
-  - P120 → P256: 7
-  - P145 → P122: 7
-  - P217 → P050: 6
-  - P060 → P122: 6
-  - P122 → P086: 6
-  - P122 → P378: 6
-  - P268 → P268: 5
-  - P060 → P364: 5
-  - P324 → P086: 5
-  - P086 → P276: 5
-  - P050 → P092: 5
-  - P230 → P062: 5
-  - P122 → P205: 5
+  - Y0400 → Y0740: 166
+  - Y0002 → Y0861: 131
+  - Y0002 → Y0817: 118
+  - Y0740 → Y0176: 107
+  - Y0090 → Y0740: 85
+  - Y0740 → Y0100: 81
+  - Y0740 → Y0760: 79
+  - Y0002 → Y0820: 77
+  - Y0033 → Y0705: 72
+  - Y0220 → Y0415: 62
+  - Y0240 → Y0002: 62
+  - Y0390 → Y0590: 52
+  - Y0060 → Y0920: 52
+  - Y0220 → Y0032: 51
+  - Y0740 → Y0032: 49
+  - Y0520 → Y0220: 47
+  - Y0520 → Y0033: 45
+  - Y0520 → Y0240: 45
+  - Y0740 → Y0752: 42
+  - Y0740 → Y0220: 40
 
 ## Interpretation Guidelines
 

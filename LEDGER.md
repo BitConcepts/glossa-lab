@@ -4355,3 +4355,32 @@ Open TODOs:
 - [ ] Clean report templates: remove test templates, keep only real-world useful ones
 
 Next step: Update DB anchor set to P324='k' + add P332='o'; clean report templates.
+
+---
+
+## [2026-04-22] Entry — Report Template Cleanup
+
+Objective: Remove all test/E2E artifact templates; keep only real-world useful ones.
+
+What was done:
+- `scripts/clean_report_templates.py`: Deleted 12 test artifact templates by exact name matching ('Get By ID', 'Listed Template', 'Minimal', 'New Name', 'Update Sections', 'With Sections' + duplicates). Note: initial version incorrectly matched 'test' substring in 'hypothesis test' — fixed with word-boundary logic.
+- `scripts/reseed_templates.py`: Restored 3 real templates that were incorrectly deleted: 'Indus Script Complete Analysis', 'Writing System Fingerprint Report', 'Writing System Tier Progression Report'.
+- `scripts/list_templates.py`: Verification utility.
+
+Final state: **12 real-world templates** across 8 categories:
+
+| Category | Templates |
+|---|---|
+| Analysis | Writing System Fingerprint Report |
+| Comparison | Comparative Corpus Analysis Report, Writing System Tier Progression |
+| Decipherment | Decipherment Benchmark Report |
+| Geʻez / Ethiopic | Ge'ez Syllabic Anchor Convergence Report |
+| General | Corpus Overview, Sign/Symbol Classification, Token Frequency |
+| Indus Script | Indus Script Complete Analysis |
+| NW Semitic | NW Semitic Study Report (Fuls Method) |
+| Research Summary | Research Session Summary |
+| Structural Analysis | Structural Analysis Report |
+
+Files changed: `scripts/clean_report_templates.py`, `scripts/reseed_templates.py`, `scripts/list_templates.py`
+
+Next step: Update DB anchor set dcf69e6e69fe (change P324 from 'o' to 'k', add P332='o'); contact Parpola group.

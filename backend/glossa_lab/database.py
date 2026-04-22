@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Increment this when adding a new _SCHEMA_Vn block below.
 # _apply_schema will raise if the DB is somehow ahead of the code.
-_SCHEMA_VERSION = 11
+_SCHEMA_VERSION = 12
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -181,6 +181,36 @@ CREATE TABLE IF NOT EXISTS cas_models (
 );
 """
 
+_SCHEMA_V12 = """
+CREATE TABLE IF NOT EXISTS canonical_signs (
+    internal_id        TEXT PRIMARY KEY,
+    sign_id            TEXT NOT NULL,
+    numbering_system   TEXT NOT NULL DEFAULT 'parpola_1982',
+    description        TEXT NOT NULL DEFAULT '',
+    wells_ids          TEXT NOT NULL DEFAULT '',
+    mahadevan_ids      TEXT NOT NULL DEFAULT '',
+    parpola_allographs TEXT NOT NULL DEFAULT '',
+    icit_function      TEXT NOT NULL DEFAULT '',
+    corpus_freq        INTEGER NOT NULL DEFAULT 0,
+    start_rate         REAL NOT NULL DEFAULT 0.0,
+    end_rate           REAL NOT NULL DEFAULT 0.0,
+    internal_rate      REAL NOT NULL DEFAULT 0.0,
+    in_corpus          INTEGER NOT NULL DEFAULT 0,
+    n_feature_dims     INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS sign_cluster_assignments (
+    id             TEXT PRIMARY KEY,
+    sign_id        TEXT NOT NULL,
+    cluster_label  INTEGER NOT NULL,
+    cluster_k      INTEGER NOT NULL DEFAULT 40,
+    method         TEXT NOT NULL DEFAULT 'hierarchical_ward',
+    silhouette     REAL NOT NULL DEFAULT 0.0,
+    dominant_pos   TEXT NOT NULL DEFAULT '',
+    created_at     TEXT NOT NULL
+);
+"""
+
 # Module-level singleton
 _db: Database | None = None
 
@@ -285,6 +315,11 @@ class Database:
                 pass  # column already exists
             await self._conn.execute("UPDATE _schema_version SET version = ?", (11,))
             current_version = 11
+
+        if current_version < 12:
+            await self._conn.executescript(_SCHEMA_V12)
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (12,))
+            current_version = 12
 
         if current_version > _SCHEMA_VERSION:
             logger.warning(
@@ -1143,6 +1178,101 @@ class Database:
         await self._conn.execute("DELETE FROM cas_models WHERE id=?", (mid,))
         await self._conn.commit()
         return existing
+
+    # ── Canonical Sign Registry (V12) ────────────────────────────────────
+
+    async def seed_canonical_signs(self, signs: list[dict[str, Any]]) -> int:
+        """Bulk-insert canonical signs from the CGSA pipeline output."""
+        assert self._conn
+        await self._conn.execute("DELETE FROM canonical_signs")
+        for s in signs:
+            await self._conn.execute(
+                """INSERT OR REPLACE INTO canonical_signs
+                   (internal_id,sign_id,numbering_system,description,wells_ids,mahadevan_ids,
+                    parpola_allographs,icit_function,corpus_freq,start_rate,end_rate,internal_rate,
+                    in_corpus,n_feature_dims)
+                   VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                (
+                    s["internal_id"], s["sign_id"], s.get("numbering_system", "parpola_1982"),
+                    s.get("description", ""), s.get("wells_ids", ""), s.get("mahadevan_ids", ""),
+                    s.get("parpola_allographs", ""), s.get("icit_function", ""),
+                    int(s.get("corpus_freq", 0)), float(s.get("start_rate", 0)),
+                    float(s.get("end_rate", 0)), float(s.get("internal_rate", 0)),
+                    1 if s.get("in_corpus") else 0, int(s.get("n_feature_dims", 0)),
+                )
+            )
+        await self._conn.commit()
+        return len(signs)
+
+    async def list_canonical_signs(
+        self,
+        in_corpus_only: bool = False,
+        numbering_system: str | None = None,
+    ) -> list[dict[str, Any]]:
+        assert self._conn
+        q = "SELECT * FROM canonical_signs WHERE 1=1"
+        args: list = []
+        if in_corpus_only:
+            q += " AND in_corpus=1"
+        if numbering_system:
+            q += " AND numbering_system=?"; args.append(numbering_system)
+        q += " ORDER BY sign_id ASC"
+        cursor = await self._conn.execute(q, args)
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    async def get_canonical_sign(self, sign_id: str) -> dict[str, Any] | None:
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM canonical_signs WHERE sign_id=? OR internal_id=? LIMIT 1",
+            (sign_id, sign_id)
+        )
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    async def seed_cluster_assignments(
+        self, assignments: list[dict[str, Any]], created_at: str
+    ) -> int:
+        """Bulk-insert cluster assignments from the CGSA pipeline."""
+        assert self._conn
+        await self._conn.execute("DELETE FROM sign_cluster_assignments")
+        for a in assignments:
+            aid = uuid.uuid4().hex[:12]
+            await self._conn.execute(
+                """INSERT INTO sign_cluster_assignments
+                   (id,sign_id,cluster_label,cluster_k,method,silhouette,dominant_pos,created_at)
+                   VALUES (?,?,?,?,?,?,?,?)""",
+                (
+                    aid, a["sign_id"], int(a["cluster_label"]),
+                    int(a.get("cluster_k", 40)), a.get("method", "hierarchical_ward"),
+                    float(a.get("silhouette", 0)), a.get("dominant_pos", ""), created_at,
+                )
+            )
+        await self._conn.commit()
+        return len(assignments)
+
+    async def list_cluster_assignments(
+        self, cluster_k: int | None = None
+    ) -> list[dict[str, Any]]:
+        assert self._conn
+        q = "SELECT * FROM sign_cluster_assignments WHERE 1=1"
+        args: list = []
+        if cluster_k:
+            q += " AND cluster_k=?"; args.append(cluster_k)
+        q += " ORDER BY cluster_label ASC, sign_id ASC"
+        cursor = await self._conn.execute(q, args)
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    async def get_clusters_summary(self) -> dict[str, Any]:
+        """Return cluster count, k value, and top cluster sizes."""
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT cluster_k, COUNT(DISTINCT cluster_label) as n_clusters, "
+            "COUNT(*) as n_signs FROM sign_cluster_assignments LIMIT 1"
+        )
+        row = await cursor.fetchone()
+        if not row:
+            return {"n_clusters": 0, "cluster_k": 0, "n_signs": 0}
+        return dict(row)
 
     # ── Helpers ──────────────────────────────────────────────────
 

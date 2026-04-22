@@ -1,0 +1,80 @@
+{
+  "id": "indus_cgsa_cluster_analysis",
+  "name": "Indus CGSA Cluster Sequence Analysis",
+  "description": "CGSA Phase 5-6: Load CISI corpus, map signs to structural clusters (40 classes), analyze recurrent templates. NO phonetic mapping.",
+  "nodes": [
+    {
+      "id": "n1",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "CISI Corpus",
+        "params": {"corpus": "indus_cisi"}
+      }
+    },
+    {
+      "id": "n2",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CanonicalSignLoader",
+        "label": "Canonical Sign Registry",
+        "params": {"in_corpus_only": true, "numbering_system": ""}
+      }
+    },
+    {
+      "id": "n3",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ClusterMapper",
+        "label": "Cluster Mapper (40 classes)",
+        "params": {}
+      }
+    },
+    {
+      "id": "n4",
+      "type": "expNode",
+      "data": {
+        "atomicId": "StructuralTemplateAnalyzer",
+        "label": "Structural Template Analyzer",
+        "params": {"min_count": 3, "max_template_length": 5}
+      }
+    },
+    {
+      "id": "n5",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PositionalProfiler",
+        "label": "Positional Profiler",
+        "params": {"min_count": 3}
+      }
+    },
+    {
+      "id": "n6",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge Results",
+        "params": {}
+      }
+    },
+    {
+      "id": "n7",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Export",
+        "params": {"filename": "indus_cgsa_cluster_analysis.json"}
+      }
+    }
+  ],
+  "edges": [
+    {"source": "n1", "sourceHandle": "sequences", "target": "n3", "targetHandle": "sequences"},
+    {"source": "n1", "sourceHandle": "sequences", "target": "n5", "targetHandle": "sequences"},
+    {"source": "n3", "sourceHandle": "cluster_sequences", "target": "n4", "targetHandle": "cluster_sequences"},
+    {"source": "n2", "sourceHandle": "registry", "target": "n6", "targetHandle": "a"},
+    {"source": "n3", "sourceHandle": "cluster_sequences", "target": "n6", "targetHandle": "b"},
+    {"source": "n4", "sourceHandle": "recurrent_templates", "target": "n6", "targetHandle": "c"},
+    {"source": "n5", "sourceHandle": "class_summary", "target": "n6", "targetHandle": "d"},
+    {"source": "n6", "sourceHandle": "json", "target": "n7", "targetHandle": "data"}
+  ]
+}

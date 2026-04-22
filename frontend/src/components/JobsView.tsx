@@ -12,6 +12,74 @@ import {
 } from "../api";
 import { ResultsView } from "./ResultsView";
 
+// ── Shared error dialog ─────────────────────────────────────────────────────
+interface ErrorModalProps {
+  title: string;
+  message: string;
+  detail?: string | null;
+  onClose: () => void;
+}
+export function JobErrorModal({ title, message, detail, onClose }: ErrorModalProps) {
+  const text = `${title}\n${message}${detail ? "\n" + detail : ""}`;
+  const [copied, setCopied] = useState(false);
+  const copy = () => {
+    navigator.clipboard.writeText(text).then(() => { setCopied(true); setTimeout(() => setCopied(false), 1500); });
+  };
+  return (
+    <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)", zIndex: 12000,
+      display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}
+      onClick={onClose}>
+      <div style={{ background: "#fff", borderRadius: 10, maxWidth: 700, width: "100%", maxHeight: "80vh",
+        display: "flex", flexDirection: "column", boxShadow: "0 20px 60px rgba(0,0,0,0.4)" }}
+        onClick={e => e.stopPropagation()}>
+        {/* Header */}
+        <div style={{ padding: "16px 20px", borderBottom: "1px solid #fee2e2", background: "#fef2f2",
+          borderRadius: "10px 10px 0 0", display: "flex", alignItems: "center", gap: 10 }}>
+          <span style={{ fontSize: 20 }}>⚠️</span>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontWeight: 700, fontSize: 14, color: "#991b1b", overflow: "hidden",
+              textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{title}</div>
+            <div style={{ fontSize: 11, color: "#b91c1c", marginTop: 2 }}>Job failed</div>
+          </div>
+          <button onClick={copy} style={{ padding: "4px 10px", border: "1px solid #fca5a5", borderRadius: 5,
+            background: copied ? "#fee2e2" : "#fff", cursor: "pointer", fontSize: 11,
+            color: copied ? "#16a34a" : "#dc2626" }}>
+            {copied ? "✓ Copied" : "📋 Copy"}
+          </button>
+          <button onClick={onClose} style={{ border: "none", background: "none",
+            cursor: "pointer", fontSize: 20, color: "#9ca3af", padding: "0 4px" }}>×</button>
+        </div>
+        {/* Error message */}
+        <div style={{ padding: "14px 20px", borderBottom: detail ? "1px solid #fee2e2" : "none" }}>
+          <div style={{ fontSize: 13, fontWeight: 600, color: "#374151", marginBottom: 6 }}>Error message</div>
+          <div style={{ fontFamily: "monospace", fontSize: 12, color: "#dc2626",
+            background: "#fef2f2", padding: "8px 12px", borderRadius: 5, lineHeight: 1.6,
+            whiteSpace: "pre-wrap", wordBreak: "break-word" }}>
+            {message || "No error message available."}
+          </div>
+        </div>
+        {/* Detail */}
+        {detail && (
+          <div style={{ flex: 1, overflowY: "auto", padding: "14px 20px" }}>
+            <div style={{ fontSize: 13, fontWeight: 600, color: "#374151", marginBottom: 6 }}>Details</div>
+            <pre style={{ fontFamily: "monospace", fontSize: 11, color: "#374151",
+              background: "#f8fafc", padding: "8px 12px", borderRadius: 5, lineHeight: 1.6,
+              whiteSpace: "pre-wrap", wordBreak: "break-word", margin: 0, overflowX: "auto" }}>
+              {detail}
+            </pre>
+          </div>
+        )}
+        {/* Footer */}
+        <div style={{ padding: "12px 20px", borderTop: "1px solid #f3f4f6",
+          display: "flex", justifyContent: "flex-end" }}>
+          <button onClick={onClose} style={{ padding: "6px 18px", border: "1px solid #d1d5db",
+            borderRadius: 5, background: "#fff", cursor: "pointer", fontSize: 13 }}>Close</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function JobsView() {
   const [jobs, setJobs] = useState<JobResponse[]>([]);
   const [loading, setLoading] = useState(true);
@@ -31,6 +99,9 @@ export function JobsView() {
   // Results drawer
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [viewResult, setViewResult] = useState<{ name: string; data: Record<string, any> } | null>(null);
+
+  // Error modal
+  const [errorModal, setErrorModal] = useState<{ title: string; message: string; detail?: string } | null>(null);
 
   const load = useCallback(async (manual = false) => {
     if (manual) setRefreshing(true);
@@ -86,25 +157,40 @@ export function JobsView() {
   };
 
   const handleViewResults = async (job: JobResponse) => {
+    if (job.pipeline === "exp_run") {
+      // Navigate to Reports → Data tab and highlight the output file
+      const expId = (job.params?.exp_id as string) ?? "";
+      const filename = expId ? `${expId}.json` : "";
+      // Dispatch navigation + highlight events
+      window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: "reports" } }));
+      if (filename) {
+        // Small delay so the view has time to mount before the highlight fires
+        setTimeout(() => {
+          window.dispatchEvent(new CustomEvent("glossa:reports_highlight", {
+            detail: { tab: "data", search: filename }
+          }));
+        }, 120);
+      }
+      return;
+    }
+    // Regular pipeline jobs — show inline result or error modal
     try {
       const data = await getJobResults(job.id);
-      setViewResult({ name: job.name, data });
-    } catch (e) {
-      const isNotFound = e instanceof Error && e.message.includes("404");
-      if (isNotFound && job.pipeline === "exp_run") {
-        // Old exp_run jobs (pre results-storage) — navigate to Reports tab
-        setViewResult({
-          name: job.name,
-          data: {
-            _info: "This run\'s results are saved as a JSON file in Reports & Data → Data tab.",
-            exp_id: job.params?.exp_id ?? "unknown",
-            node_count: job.params?.node_count ?? 0,
-            hint: `Look for '${job.params?.exp_id ?? ""}.json' in the Data tab.`,
-          }
-        });
+      if (job.status === "failed") {
+        // Show error in modal instead of inline JSON
+        const errMsg = (data as Record<string, unknown>).error as string ?? "Unknown error";
+        const trace  = (data as Record<string, unknown>).traceback as string ?? null;
+        setErrorModal({ title: job.name, message: errMsg, detail: trace ?? undefined });
       } else {
-        alert(e instanceof Error ? e.message : "Failed to load results");
+        setViewResult({ name: job.name, data });
       }
+    } catch (e) {
+      // If no result stored, still show modal with what we know
+      setErrorModal({
+        title: job.name,
+        message: e instanceof Error ? e.message : "Failed to load error details.",
+        detail: `Job ID: ${job.id}\nStatus: ${job.status}`,
+      });
     }
   };
 
@@ -325,9 +411,9 @@ export function JobsView() {
                       <button
                         style={{ ...btnStyle, padding: "2px 10px", fontSize: 12, background: "#059669" }}
                         onClick={() => handleViewResults(j)}
-                        title="View result data for this experiment run"
+                        title={`Open in Reports → Data tab: ${(j.params?.exp_id as string ?? "") + ".json"}`}
                       >
-                        📄 Results
+                        📂 View in Reports
                       </button>
                     )}
                     {j.status === "failed" && (
@@ -359,6 +445,16 @@ export function JobsView() {
             })}
           </tbody>
         </table>
+      )}
+
+      {/* Error modal */}
+      {errorModal && (
+        <JobErrorModal
+          title={errorModal.title}
+          message={errorModal.message}
+          detail={errorModal.detail}
+          onClose={() => setErrorModal(null)}
+        />
       )}
 
       {/* Results drawer */}

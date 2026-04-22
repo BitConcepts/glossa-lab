@@ -202,9 +202,10 @@ def write_corpus_master(records: list[dict]) -> Path:
     if not records:
         print("WARNING: No records to write")
         return out
+    # Use the first CISI record's keys as canonical fieldnames (no extra crosswalk fields)
     fieldnames = list(records[0].keys())
     with open(out, "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=fieldnames)
+        w = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
         w.writeheader()
         w.writerows(records)
     print(f"[Phase 1] corpus_master.csv → {len(records)} inscriptions")
@@ -557,15 +558,18 @@ def write_ingestion_log(records: list[dict]) -> Path:
 # ── Yajnadevam corpus loader ──────────────────────────────────────────────────
 
 def load_yajnadevam_inscriptions() -> list[dict]:
-    """Load Yajnadevam inscriptions from the parsed JSON (multi-site)."""
-    yj_path = ROOT / "data_raw" / "other_sites" / "yajnadevam_inscriptions.json"
+    """Load Yajnadevam inscriptions — prefer P-numbered version if available."""
+    # Prefer the P-numbered version (Y→P crosswalk applied, 81.5% of tokens use P-numbers)
+    pnum_path = ROOT / "data_raw" / "other_sites" / "yajnadevam_inscriptions_pnumbered.json"
+    raw_path  = ROOT / "data_raw" / "other_sites" / "yajnadevam_inscriptions.json"
+    yj_path = pnum_path if pnum_path.exists() else raw_path
     if not yj_path.exists():
         print("  [skip] Yajnadevam JSON not found — run parse_yajnadevam_sql.py first")
         return []
+    label = "P-numbered" if yj_path == pnum_path else "raw Y-numbers"
     records = json.loads(yj_path.read_text("utf-8"))
-    # Only include inscriptions with a non-empty sign sequence
     records = [r for r in records if r.get("sign_sequence_raw", "").strip()]
-    print(f"[Phase 1] Yajnadevam corpus loaded: {len(records)} inscriptions")
+    print(f"[Phase 1] Yajnadevam corpus loaded ({label}): {len(records)} inscriptions")
     return records
 
 

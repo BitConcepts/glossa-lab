@@ -1,5 +1,5 @@
 # Data Quality Report
-Generated: 2026-04-22T17:35:13Z
+Generated: 2026-04-22T18:05:06Z
 Source: Glossa-Lab decipherment sprint Phase 5
 
 ## 1. Corpus Overview
@@ -41,18 +41,18 @@ Source: Glossa-Lab decipherment sprint Phase 5
 - seal (Gold): 1
 
 ## 4. Duplicate Detection
-- Exact-sequence duplicates (same site + sign sequence): 211 clusters
+- Exact-sequence duplicates (same site + sign sequence): 313 clusters
 
-  - Mohenjo-daro | `P000 P122 P385` → ['GLOSSA-M-19A', 'GLOSSA-M-110A', 'GLOSSA-M-175A']
-  - Mohenjo-daro | `P086 P123 P122 P385` → ['GLOSSA-M-32A', 'GLOSSA-M-177A']
-  - Alamgirpur | `Y0410 Y0017` → ['GLOSSA-YJ-0001', 'GLOSSA-YJ-0002']
-  - Banawali | `Y0002 Y0817` → ['GLOSSA-YJ-0030', 'GLOSSA-YJ-0031', 'GLOSSA-YJ-0036']
-  - Chanhujo-daro | `Y0032 Y0031 Y0000 Y0740 Y0222 Y0235 Y0002 Y0861` → ['GLOSSA-YJ-0071', 'GLOSSA-YJ-0074']
-  - Dholavira | `Y0156 Y0019` → ['GLOSSA-YJ-0128', 'GLOSSA-YJ-4225']
-  - Dholavira | `Y0390 Y0016 Y0002 Y0861` → ['GLOSSA-YJ-0136', 'GLOSSA-YJ-4260']
-  - Harappa | `Y0220 Y0016` → ['GLOSSA-YJ-0173', 'GLOSSA-YJ-0318']
-  - Harappa | `Y0740 Y0603 Y0240 Y0060 Y0692` → ['GLOSSA-YJ-0198', 'GLOSSA-YJ-0686', 'GLOSSA-YJ-3975']
-  - Harappa | `Y0400 Y0154 Y0440 Y0220` → ['GLOSSA-YJ-0220', 'GLOSSA-YJ-1653']
+  - Mohenjo-daro | `P121 P202 P385 P073 P108` → ['GLOSSA-M-1A', 'GLOSSA-YJ-2531']
+  - Mohenjo-daro | `P320 P145 P094` → ['GLOSSA-M-3A', 'GLOSSA-YJ-2532']
+  - Mohenjo-daro | `P324 P096 P062 P060 P120 P256` → ['GLOSSA-M-5A', 'GLOSSA-YJ-2534']
+  - Mohenjo-daro | `P378 P384 P201 P065` → ['GLOSSA-M-6A', 'GLOSSA-YJ-2535']
+  - Mohenjo-daro | `P316 P011 P270` → ['GLOSSA-M-8A', 'GLOSSA-YJ-2537']
+  - Mohenjo-daro | `P144 P205 P327` → ['GLOSSA-M-9A', 'GLOSSA-YJ-2538']
+  - Mohenjo-daro | `P202 P205 P035` → ['GLOSSA-M-13A', 'GLOSSA-YJ-2541']
+  - Mohenjo-daro | `P324 P117 P210 P122 P385` → ['GLOSSA-M-14A', 'GLOSSA-YJ-2542']
+  - Mohenjo-daro | `P013 P324 P194 P122 P385` → ['GLOSSA-M-15A', 'GLOSSA-YJ-2543']
+  - Mohenjo-daro | `P378 P026 P151 P346` → ['GLOSSA-M-16A', 'GLOSSA-YJ-2544']
 
 ## 5. Sign Identity Conflicts
 - Signs without Mahadevan M77 crosswalk: 169 of 182

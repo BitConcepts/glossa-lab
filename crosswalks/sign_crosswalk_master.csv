@@ -186,7 +186,7 @@ P073,mahadevan_1977,M066,approximate,Parpola 1994 plate 14; visual match confirm
 P074,mahadevan_1977,M067,approximate,Parpola 1994 plate 14,pending_confirmation
 P079,mahadevan_1977,M072,approximate,Parpola 1994 plate 15,pending_confirmation
 P086,mahadevan_1977,M077,exact,Mahadevan 1977 concordance; key terminal sign,confirmed
-P122,mahadevan_1977,M342,approximate,Terminal position bias confirmed; Fuls 2014 sign catalog,pending_confirmation
+P122,mahadevan_1977,M342,incorrect,Terminal position bias confirmed; Fuls 2014 sign catalog,INCORRECT_VISUAL_MISMATCH
 P121,mahadevan_1977,M339,approximate,Positional analysis; Parpola 1994,pending_confirmation
 P001,mahadevan_1977,M001,exact,Single stroke numeral; universal agreement,confirmed
 P002,mahadevan_1977,M002,exact,Double stroke; universal agreement,confirmed

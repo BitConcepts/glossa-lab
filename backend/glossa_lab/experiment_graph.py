@@ -1252,27 +1252,53 @@ def _canonical_sign_loader(inputs: dict, params: dict) -> dict:
 def _cluster_mapper(inputs: dict, params: dict) -> dict:
     """Map inscription sign sequences to structural cluster labels.
 
-    Loads cluster assignments from the DB (seeded by the CGSA pipeline) and
-    replaces each sign token in every sequence with its cluster label.
-    Unmapped signs (Yunmapped_*, signs not in the 40-cluster set) receive label -1.
-    Outputs cluster-space sequences for structural template analysis.
-    NO phonetic mapping is performed.
+    Loads cluster assignments from the DB (seeded by the CGSA pipeline) or,
+    when the DB is not available (e.g. CLI context), falls back to loading
+    directly from analysis/sign_clusters.json.
+    Unmapped signs receive label -1. NO phonetic mapping is performed.
     """
-    from glossa_lab.database import get_db  # noqa: PLC0415
+    import json as _json  # noqa: PLC0415
     import asyncio  # noqa: PLC0415
+    from pathlib import Path as _Path  # noqa: PLC0415
+
+    assignments: list = []
+    summary: dict = {}
+
+    # ── Try DB first (live backend context) ──────────────────────────────────
+    from glossa_lab.database import get_db  # noqa: PLC0415
     db = get_db()
-    if db is None:
-        return {"error": "Database not available"}
-    try:
-        loop = asyncio.get_event_loop()
-        assignments = loop.run_until_complete(db.list_cluster_assignments())
-        summary = loop.run_until_complete(db.get_clusters_summary())
-    except Exception as exc:  # noqa: BLE001
-        return {"error": f"Failed to load clusters: {exc}"}
+    if db is not None:
+        try:
+            loop = asyncio.get_event_loop()
+            assignments = loop.run_until_complete(db.list_cluster_assignments())
+            summary     = loop.run_until_complete(db.get_clusters_summary())
+        except Exception:  # noqa: BLE001
+            assignments = []
+
+    # ── Fallback: load from analysis/sign_clusters.json ──────────────────────
+    if not assignments:
+        _cluster_json = (
+            _Path(__file__).resolve().parents[3] / "analysis" / "sign_clusters.json"
+        )
+        if _cluster_json.exists():
+            try:
+                data = _json.loads(_cluster_json.read_text("utf-8"))
+                best_k = data.get("best_k", 40)
+                s2c_raw: dict = data.get("sign_to_cluster", {})
+                assignments = [
+                    {"sign_id": sid, "cluster_label": lbl}
+                    for sid, lbl in s2c_raw.items()
+                ]
+                n_clusters = len(set(s2c_raw.values()))
+                summary = {"n_clusters": n_clusters, "cluster_k": best_k,
+                           "n_signs": len(s2c_raw)}
+            except Exception:  # noqa: BLE001
+                assignments = []
 
     if not assignments:
         return {
-            "error": "Cluster assignments are empty — run POST /sign-clusters/seed first",
+            "error": "Cluster assignments unavailable. "
+                     "Seed via POST /sign-clusters/seed or run scripts/cgsa_pipeline.py",
             "n_assignments": 0,
         }
 

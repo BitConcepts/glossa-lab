@@ -28,6 +28,8 @@ for _p in (_BACKEND, _TESTS):
 
 
 def _list_experiments() -> None:
+    from glossa_lab.experiment_graph import register_graph_experiments  # noqa: PLC0415
+    register_graph_experiments()
     from glossa_lab.experiment_base import list_discovered_experiments
     exps = list_discovered_experiments()
     print(f"\n  {len(exps)} experiments registered:\n")
@@ -37,13 +39,19 @@ def _list_experiments() -> None:
 
 
 def _run(experiment_id: str) -> None:
+    # Register graph experiments (JSON files) into the discovery registry
+    # before looking up the experiment by ID.
+    from glossa_lab.experiment_graph import register_graph_experiments  # noqa: PLC0415
+    register_graph_experiments()
     from glossa_lab.experiment_base import get_experiment
     cls = get_experiment(experiment_id)
     if cls is None:
         print(f"  ERROR: experiment '{experiment_id}' not found.", file=sys.stderr)
         print("  Run with --list to see all registered experiments.", file=sys.stderr)
         sys.exit(1)
-    print(f"\n  Running: {cls.name}  [{cls.estimated_time}]")
+    # Strip surrogate/emoji chars that can crash Windows console
+    safe_name = cls.name.encode("ascii", errors="replace").decode("ascii")
+    print(f"\n  Running: {safe_name}  [{cls.estimated_time}]")
     print(f"  This run is registered as a Job in the Glossa Lab UI.\n")
     result = cls().run_cli()
     print(f"\n  Done. Result keys: {list(result.keys()) if isinstance(result, dict) else type(result)}")

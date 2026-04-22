@@ -1,0 +1,33 @@
+{
+  "id": "indus_cisi_dravidian_vs_sanskrit",
+  "name": "Indus CISI: Dravidian vs Sanskrit SA on Real Multi-Sign Inscriptions",
+  "description": "Critical test: uses real CISI inscription sequences (178 inscriptions, 1003 tokens, Parpola numbering) instead of ICIT single-sign sequences. For the first time, SA exploits real bigram structure (e.g. P122→P385 n=29, P324→P332 n=10). LMBuilder first builds an Indus self-LM from CISI to get H1. Then SA decipherment against Dravidian and Sanskrit target LMs. With real multi-sign data, the phonotactic signal is much richer. GPU fast path: ocp_weight=0.0, n_seeds=5, max_iter=8000.",
+  "nodes": [
+    {"id": "corpus",     "type": "expNode", "data": {"atomicId": "BuiltinCorpus",     "label": "Indus CISI (178 real inscriptions)",   "params": {"corpus": "indus_cisi"}},                                                                                   "position": {"x": 60,   "y": 240}},
+    {"id": "freq",      "type": "expNode", "data": {"atomicId": "FreqCounter",       "label": "Sign Frequency",                      "params": {}},                                                                                                         "position": {"x": 300,  "y": 80}},
+    {"id": "entropy",   "type": "expNode", "data": {"atomicId": "EntropyCalc",        "label": "Indus H1 (real inscriptions)",         "params": {}},                                                                                                         "position": {"x": 520,  "y": 80}},
+    {"id": "drav_lm",   "type": "expNode", "data": {"atomicId": "BuiltinLM",          "label": "Dravidian LM (South: Tam+Kan+Tel)",    "params": {"language": "south_dravidian"}},                                                                           "position": {"x": 60,   "y": 460}},
+    {"id": "skt_lm",    "type": "expNode", "data": {"atomicId": "BuiltinLM",          "label": "Sanskrit LM (Rigveda 728K)",            "params": {"language": "sanskrit"}},                                                                                   "position": {"x": 60,   "y": 620}},
+    {"id": "sa_drav",   "type": "expNode", "data": {"atomicId": "SADecipher",         "label": "SA vs South Dravidian (GPU)",          "params": {"n_seeds": 5, "max_iterations": 8000, "restarts": 3, "surjective": true, "ocp_weight": 0.0}},               "position": {"x": 840,  "y": 420}},
+    {"id": "sa_skt",    "type": "expNode", "data": {"atomicId": "SADecipher",         "label": "SA vs Sanskrit (GPU)",                 "params": {"n_seeds": 5, "max_iterations": 8000, "restarts": 3, "surjective": true, "ocp_weight": 0.0}},               "position": {"x": 840,  "y": 620}},
+    {"id": "cons_drav", "type": "expNode", "data": {"atomicId": "ConsistencyScorer",  "label": "Consistency (Dravidian)",              "params": {}},                                                                                                         "position": {"x": 1120, "y": 420}},
+    {"id": "cons_skt",  "type": "expNode", "data": {"atomicId": "ConsistencyScorer",  "label": "Consistency (Sanskrit)",               "params": {}},                                                                                                         "position": {"x": 1120, "y": 620}},
+    {"id": "merge",     "type": "expNode", "data": {"atomicId": "Merger",             "label": "Merge A/B Results",                   "params": {}},                                                                                                         "position": {"x": 1380, "y": 380}},
+    {"id": "out",       "type": "expNode", "data": {"atomicId": "JSONExport",         "label": "Save Results",                        "params": {"filename": "indus_cisi_dravidian_vs_sanskrit.json"}},                                                        "position": {"x": 1660, "y": 380}}
+  ],
+  "edges": [
+    {"id": "e1",  "source": "corpus",     "target": "freq",     "sourcePort": "sequences",        "targetPort": "sequences"},
+    {"id": "e2",  "source": "corpus",     "target": "sa_drav",  "sourcePort": "sequences",        "targetPort": "sequences"},
+    {"id": "e3",  "source": "corpus",     "target": "sa_skt",   "sourcePort": "sequences",        "targetPort": "sequences"},
+    {"id": "e4",  "source": "freq",       "target": "entropy",  "sourcePort": "freq_map",         "targetPort": "freq_map"},
+    {"id": "e5",  "source": "drav_lm",   "target": "sa_drav",  "sourcePort": "lm",               "targetPort": "lm"},
+    {"id": "e6",  "source": "skt_lm",    "target": "sa_skt",   "sourcePort": "lm",               "targetPort": "lm"},
+    {"id": "e7",  "source": "sa_drav",   "target": "cons_drav","sourcePort": "all_mappings",     "targetPort": "all_mappings"},
+    {"id": "e8",  "source": "sa_skt",    "target": "cons_skt", "sourcePort": "all_mappings",     "targetPort": "all_mappings"},
+    {"id": "e9",  "source": "entropy",   "target": "merge",    "sourcePort": "h1",              "targetPort": "a"},
+    {"id": "e10", "source": "cons_drav", "target": "merge",    "sourcePort": "mean_consistency", "targetPort": "b"},
+    {"id": "e11", "source": "cons_skt",  "target": "merge",    "sourcePort": "mean_consistency", "targetPort": "c"},
+    {"id": "e12", "source": "sa_drav",   "target": "merge",    "sourcePort": "proposed_mapping", "targetPort": "d"},
+    {"id": "e13", "source": "merge",     "target": "out",      "sourcePort": "json",             "targetPort": "data"}
+  ]
+}

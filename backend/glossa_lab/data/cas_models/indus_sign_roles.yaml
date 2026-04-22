@@ -1,0 +1,89 @@
+version: "1.0"
+model_id: indus_sign_roles
+description: >
+  Indus sign role classifier using Dravidian morphological constraints.
+  Free variables: terminal_weight and initial_weight (start from observed I/M/T rates).
+  CPSC projects these onto the Dravidian constraint manifold — case suffixes are
+  terminal-biased, determinatives initial-biased, phonetic syllables medial-biased.
+  Used by CASIndusEngine to produce principled sign role classifications.
+
+state:
+  variables:
+    - name: terminal_weight
+      type: float
+      domain: [0.0, 1.0]
+      description: "Weight for terminal position (DoF — starts from observed terminal rate)"
+
+    - name: initial_weight
+      type: float
+      domain: [0.0, 1.0]
+      description: "Weight for initial position (DoF — starts from observed initial rate)"
+
+    - name: medial_weight
+      type: float
+      domain: [0.0, 1.0]
+      derived: true
+      description: "Derived: complement of terminal + initial weights"
+
+    - name: case_suffix_score
+      type: float
+      domain: [0.0, 1.0]
+      derived: true
+      description: "Dravidian case suffix compatibility — terminal-biased (genitive -in, dative -ku, locative -il)"
+
+    - name: determinative_score
+      type: float
+      domain: [0.0, 1.0]
+      derived: true
+      description: "Logographic determinative compatibility — initial-biased (title/deity signs)"
+
+    - name: phoneme_score
+      type: float
+      domain: [0.0, 1.0]
+      derived: true
+      description: "CV syllable phoneme compatibility — medial-biased (core phonetic inventory)"
+
+degrees_of_freedom:
+  free:
+    - terminal_weight
+    - initial_weight
+
+constraints:
+  - id: medial_derived
+    expression: "medial_weight = 1.0 - terminal_weight - initial_weight"
+    description: "Medial weight is the complement of terminal and initial"
+
+  - id: case_suffix_score_def
+    expression: "case_suffix_score = terminal_weight * 0.75 + medial_weight * 0.25"
+    description: >
+      Dravidian case suffixes (-in genitive, -ku dative, -il locative, -al instrumental,
+      -atu ablative) appear predominantly in terminal position (Parpola 1994 §7.3).
+      Weight: 75% terminal affinity, 25% medial (some suffixes appear mid-inscription
+      in compound nouns).
+
+  - id: determinative_score_def
+    expression: "determinative_score = initial_weight * 0.80 + medial_weight * 0.20"
+    description: >
+      Dravidian logograms and determinatives (deity names, commodity classifiers)
+      appear predominantly in initial position. Weight: 80% initial, 20% medial.
+
+  - id: phoneme_score_def
+    expression: "phoneme_score = medial_weight * 0.70 + terminal_weight * 0.20 + initial_weight * 0.10"
+    description: >
+      Core CV syllable signs (the phonetic inventory carrying the spoken word)
+      appear predominantly in medial positions within 5-sign Indus inscriptions.
+
+  - id: weights_partition
+    expression: "terminal_weight + initial_weight <= 1.0"
+    description: "Terminal and initial weights must together not exceed 1.0"
+
+projection:
+  method: bounded_relaxation
+  max_iterations: 300
+  convergence_epsilon: 0.00001
+  strategy: iterative
+
+execution:
+  deterministic: true
+  numeric_mode: float64
+  precision_bits: 64

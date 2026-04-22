@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Increment this when adding a new _SCHEMA_Vn block below.
 # _apply_schema will raise if the DB is somehow ahead of the code.
-_SCHEMA_VERSION = 9
+_SCHEMA_VERSION = 10
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -164,6 +164,19 @@ CREATE TABLE IF NOT EXISTS corpus_catalogue (
 );
 """
 
+_SCHEMA_V10 = """
+CREATE TABLE IF NOT EXISTS cas_models (
+    id          TEXT PRIMARY KEY,
+    name        TEXT NOT NULL,
+    description TEXT NOT NULL DEFAULT '',
+    yaml_text   TEXT NOT NULL DEFAULT '',
+    engine_hint TEXT NOT NULL DEFAULT 'auto',
+    is_builtin  INTEGER NOT NULL DEFAULT 0,
+    created_at  TEXT NOT NULL,
+    updated_at  TEXT NOT NULL
+);
+"""
+
 # Module-level singleton
 _db: Database | None = None
 
@@ -253,6 +266,11 @@ class Database:
             await self._conn.executescript(_SCHEMA_V9)
             await self._conn.execute("UPDATE _schema_version SET version = ?", (9,))
             current_version = 9
+
+        if current_version < 10:
+            await self._conn.executescript(_SCHEMA_V10)
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (10,))
+            current_version = 10
 
         if current_version > _SCHEMA_VERSION:
             logger.warning(
@@ -1042,6 +1060,74 @@ class Database:
         )
         await self._conn.commit()
         return await self.get_corpus_catalogue_entry(entry["id"])  # type: ignore[return-value]
+
+    # ── CAS Models (V10) ─────────────────────────────────────────────
+
+    async def list_cas_models(self, builtin_only: bool = False) -> list[dict[str, Any]]:
+        assert self._conn
+        q = "SELECT * FROM cas_models"
+        if builtin_only:
+            q += " WHERE is_builtin=1"
+        q += " ORDER BY name ASC"
+        cursor = await self._conn.execute(q)
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    async def get_cas_model(self, mid: str) -> dict[str, Any] | None:
+        assert self._conn
+        cursor = await self._conn.execute("SELECT * FROM cas_models WHERE id=?", (mid,))
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    async def create_cas_model(
+        self,
+        *,
+        name: str,
+        description: str = "",
+        yaml_text: str = "",
+        engine_hint: str = "auto",
+        is_builtin: bool = False,
+        created_at: str,
+        model_id: str | None = None,
+    ) -> dict[str, Any]:
+        assert self._conn
+        mid = model_id or uuid.uuid4().hex[:12]
+        await self._conn.execute(
+            """INSERT OR REPLACE INTO cas_models
+               (id,name,description,yaml_text,engine_hint,is_builtin,created_at,updated_at)
+               VALUES (?,?,?,?,?,?,?,?)""",
+            (mid, name, description, yaml_text, engine_hint,
+             1 if is_builtin else 0, created_at, created_at),
+        )
+        await self._conn.commit()
+        return await self.get_cas_model(mid)  # type: ignore[return-value]
+
+    async def update_cas_model(self, mid: str, **fields: Any) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_cas_model(mid)
+        if existing is None:
+            return None
+        name        = fields.get("name",        existing["name"])
+        description = fields.get("description", existing["description"])
+        yaml_text   = fields.get("yaml_text",   existing["yaml_text"])
+        engine_hint = fields.get("engine_hint", existing["engine_hint"])
+        await self._conn.execute(
+            """UPDATE cas_models SET name=?,description=?,yaml_text=?,engine_hint=?,
+               updated_at=datetime('now') WHERE id=?""",
+            (name, description, yaml_text, engine_hint, mid),
+        )
+        await self._conn.commit()
+        return await self.get_cas_model(mid)
+
+    async def delete_cas_model(self, mid: str) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_cas_model(mid)
+        if existing is None:
+            return None
+        if existing.get("is_builtin"):
+            return None  # protect built-in models
+        await self._conn.execute("DELETE FROM cas_models WHERE id=?", (mid,))
+        await self._conn.commit()
+        return existing
 
     # ── Helpers ──────────────────────────────────────────────────
 

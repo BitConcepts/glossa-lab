@@ -1,0 +1,430 @@
+{
+  "generated": "2026-04-22T20:58:57Z",
+  "n_inscriptions_analysed": 179,
+  "top_20": [
+    {
+      "rank": 1,
+      "signs": [
+        "P000",
+        "P122",
+        "P385"
+      ],
+      "count": 3,
+      "roles": [
+        "INITIAL",
+        "MEDIAL",
+        "TERMINAL"
+      ],
+      "reading": "a-n",
+      "structural": "P000[I] \u00b7 P122[M=a] \u00b7 P385[T=n]"
+    },
+    {
+      "rank": 2,
+      "signs": [
+        "P086",
+        "P123",
+        "P122",
+        "P385"
+      ],
+      "count": 2,
+      "roles": [
+        "INITIAL",
+        "UNKNOWN",
+        "MEDIAL",
+        "TERMINAL"
+      ],
+      "reading": "m-a-n",
+      "structural": "P086[I=m] \u00b7 P123[?] \u00b7 P122[M=a] \u00b7 P385[T=n]"
+    },
+    {
+      "rank": 3,
+      "signs": [
+        "P121",
+        "P202",
+        "P385",
+        "P073",
+        "P108"
+      ],
+      "count": 1,
+      "roles": [
+        "MEDIAL",
+        "MEDIAL",
+        "TERMINAL",
+        "MEDIAL",
+        "TERMINAL"
+      ],
+      "reading": "n-al",
+      "structural": "P121[M] \u00b7 P202[M] \u00b7 P385[T=n] \u00b7 P073[M] \u00b7 P108[T=al]"
+    },
+    {
+      "rank": 4,
+      "signs": [
+        "P320",
+        "P145",
+        "P094"
+      ],
+      "count": 1,
+      "roles": [
+        "UNKNOWN",
+        "MEDIAL",
+        "UNKNOWN"
+      ],
+      "reading": "[no phoneme candidates]",
+      "structural": "P320[?] \u00b7 P145[M] \u00b7 P094[?]"
+    },
+    {
+      "rank": 5,
+      "signs": [
+        "P205",
+        "P186",
+        "P147",
+        "P316",
+        "P056",
+        "P122",
+        "P237",
+        "P268",
+        "P268",
+        "P147"
+      ],
+      "count": 1,
+      "roles": [
+        "MEDIAL",
+        "UNKNOWN",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "UNKNOWN",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL"
+      ],
+      "reading": "a",
+      "structural": "P205[M] \u00b7 P186[?] \u00b7 P147[M] \u00b7 P316[M] \u00b7 P056[M] \u00b7 P122[M=a] \u00b7 P237[?] \u00b7 P268[M] \u00b7 P268[M] \u00b7 P147[M]"
+    },
+    {
+      "rank": 6,
+      "signs": [
+        "P324",
+        "P096",
+        "P062",
+        "P060",
+        "P120",
+        "P256"
+      ],
+      "count": 1,
+      "roles": [
+        "INITIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "TERMINAL"
+      ],
+      "reading": "k-i-l",
+      "structural": "P324[I=k] \u00b7 P096[M] \u00b7 P062[M] \u00b7 P060[M=i] \u00b7 P120[M] \u00b7 P256[T=l]"
+    },
+    {
+      "rank": 7,
+      "signs": [
+        "P378",
+        "P384",
+        "P201",
+        "P065"
+      ],
+      "count": 1,
+      "roles": [
+        "TERMINAL",
+        "UNKNOWN",
+        "MEDIAL",
+        "UNKNOWN"
+      ],
+      "reading": "n",
+      "structural": "P378[T=n] \u00b7 P384[?] \u00b7 P201[M] \u00b7 P065[?]"
+    },
+    {
+      "rank": 8,
+      "signs": [
+        "P086",
+        "P352",
+        "P011",
+        "P324",
+        "P154",
+        "P009",
+        "P154",
+        "P175",
+        "P062",
+        "P122",
+        "P385"
+      ],
+      "count": 1,
+      "roles": [
+        "INITIAL",
+        "UNKNOWN",
+        "UNKNOWN",
+        "INITIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "TERMINAL"
+      ],
+      "reading": "m-k-a-n",
+      "structural": "P086[I=m] \u00b7 P352[?] \u00b7 P011[?] \u00b7 P324[I=k] \u00b7 P154[M] \u00b7 P009[M] \u00b7 P154[M] \u00b7 P175[M] \u00b7 P062[M] \u00b7 P122[M=a] \u00b7 P385[T=n]"
+    },
+    {
+      "rank": 9,
+      "signs": [
+        "P316",
+        "P011",
+        "P270"
+      ],
+      "count": 1,
+      "roles": [
+        "MEDIAL",
+        "UNKNOWN",
+        "MEDIAL"
+      ],
+      "reading": "[no phoneme candidates]",
+      "structural": "P316[M] \u00b7 P011[?] \u00b7 P270[M]"
+    },
+    {
+      "rank": 10,
+      "signs": [
+        "P144",
+        "P205",
+        "P327"
+      ],
+      "count": 1,
+      "roles": [
+        "UNKNOWN",
+        "MEDIAL",
+        "UNKNOWN"
+      ],
+      "reading": "[no phoneme candidates]",
+      "structural": "P144[?] \u00b7 P205[M] \u00b7 P327[?]"
+    },
+    {
+      "rank": 11,
+      "signs": [
+        "P086",
+        "P204",
+        "P114",
+        "P151",
+        "P316",
+        "P060",
+        "P364",
+        "P122",
+        "P067",
+        "P221"
+      ],
+      "count": 1,
+      "roles": [
+        "INITIAL",
+        "UNKNOWN",
+        "MEDIAL",
+        "UNKNOWN",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "UNKNOWN"
+      ],
+      "reading": "m-i-a",
+      "structural": "P086[I=m] \u00b7 P204[?] \u00b7 P114[M] \u00b7 P151[?] \u00b7 P316[M] \u00b7 P060[M=i] \u00b7 P364[M] \u00b7 P122[M=a] \u00b7 P067[M] \u00b7 P221[?]"
+    },
+    {
+      "rank": 12,
+      "signs": [
+        "P324",
+        "P086",
+        "P276",
+        "P058",
+        "P122",
+        "P202",
+        "P386",
+        "P182",
+        "P108"
+      ],
+      "count": 1,
+      "roles": [
+        "INITIAL",
+        "INITIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "UNKNOWN",
+        "UNKNOWN",
+        "TERMINAL"
+      ],
+      "reading": "k-m-a-al",
+      "structural": "P324[I=k] \u00b7 P086[I=m] \u00b7 P276[M] \u00b7 P058[M] \u00b7 P122[M=a] \u00b7 P202[M] \u00b7 P386[?] \u00b7 P182[?] \u00b7 P108[T=al]"
+    },
+    {
+      "rank": 13,
+      "signs": [
+        "P202",
+        "P205",
+        "P035"
+      ],
+      "count": 1,
+      "roles": [
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL"
+      ],
+      "reading": "[no phoneme candidates]",
+      "structural": "P202[M] \u00b7 P205[M] \u00b7 P035[M]"
+    },
+    {
+      "rank": 14,
+      "signs": [
+        "P324",
+        "P117",
+        "P210",
+        "P122",
+        "P385"
+      ],
+      "count": 1,
+      "roles": [
+        "INITIAL",
+        "UNKNOWN",
+        "UNKNOWN",
+        "MEDIAL",
+        "TERMINAL"
+      ],
+      "reading": "k-a-n",
+      "structural": "P324[I=k] \u00b7 P117[?] \u00b7 P210[?] \u00b7 P122[M=a] \u00b7 P385[T=n]"
+    },
+    {
+      "rank": 15,
+      "signs": [
+        "P013",
+        "P324",
+        "P194",
+        "P122",
+        "P385"
+      ],
+      "count": 1,
+      "roles": [
+        "INITIAL",
+        "INITIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "TERMINAL"
+      ],
+      "reading": "p-k-a-n",
+      "structural": "P013[I=p] \u00b7 P324[I=k] \u00b7 P194[M] \u00b7 P122[M=a] \u00b7 P385[T=n]"
+    },
+    {
+      "rank": 16,
+      "signs": [
+        "P378",
+        "P026",
+        "P151",
+        "P346"
+      ],
+      "count": 1,
+      "roles": [
+        "TERMINAL",
+        "UNKNOWN",
+        "UNKNOWN",
+        "UNKNOWN"
+      ],
+      "reading": "n",
+      "structural": "P378[T=n] \u00b7 P026[?] \u00b7 P151[?] \u00b7 P346[?]"
+    },
+    {
+      "rank": 17,
+      "signs": [
+        "P086",
+        "P126",
+        "P122",
+        "P369",
+        "P232"
+      ],
+      "count": 1,
+      "roles": [
+        "INITIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "UNKNOWN"
+      ],
+      "reading": "m-a",
+      "structural": "P086[I=m] \u00b7 P126[M] \u00b7 P122[M=a] \u00b7 P369[M] \u00b7 P232[?]"
+    },
+    {
+      "rank": 18,
+      "signs": [
+        "P341",
+        "P324",
+        "P142"
+      ],
+      "count": 1,
+      "roles": [
+        "UNKNOWN",
+        "INITIAL",
+        "MEDIAL"
+      ],
+      "reading": "k",
+      "structural": "P341[?] \u00b7 P324[I=k] \u00b7 P142[M]"
+    },
+    {
+      "rank": 19,
+      "signs": [
+        "P086",
+        "P125",
+        "P122",
+        "P385",
+        "P147",
+        "P147",
+        "P215",
+        "P275"
+      ],
+      "count": 1,
+      "roles": [
+        "INITIAL",
+        "UNKNOWN",
+        "MEDIAL",
+        "TERMINAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "UNKNOWN"
+      ],
+      "reading": "m-a-n",
+      "structural": "P086[I=m] \u00b7 P125[?] \u00b7 P122[M=a] \u00b7 P385[T=n] \u00b7 P147[M] \u00b7 P147[M] \u00b7 P215[M] \u00b7 P275[?]"
+    },
+    {
+      "rank": 20,
+      "signs": [
+        "P091",
+        "P121",
+        "P324",
+        "P272",
+        "P256",
+        "P145",
+        "P122",
+        "P385"
+      ],
+      "count": 1,
+      "roles": [
+        "UNKNOWN",
+        "MEDIAL",
+        "INITIAL",
+        "UNKNOWN",
+        "TERMINAL",
+        "MEDIAL",
+        "MEDIAL",
+        "TERMINAL"
+      ],
+      "reading": "k-l-a-n",
+      "structural": "P091[?] \u00b7 P121[M] \u00b7 P324[I=k] \u00b7 P272[?] \u00b7 P256[T=l] \u00b7 P145[M] \u00b7 P122[M=a] \u00b7 P385[T=n]"
+    }
+  ]
+}

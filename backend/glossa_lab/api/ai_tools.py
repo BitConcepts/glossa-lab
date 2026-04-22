@@ -887,13 +887,16 @@ async def ai_chat(body: ChatRequest) -> dict[str, Any]:
     profile = get_profile(body.model)
     settings_ctx = _build_settings_context()
 
-    # Build action addendum with live experiment IDs so the AI never hallucinates IDs
+    # Build action addendum with live experiment IDs so the AI never hallucinates IDs.
+    # Use list_graph_experiments() directly (reads JSON files, no Python registry cache)
+    # so this is immune to the discover_experiments() cache-invalidation race.
     if profile["action_capable"]:
         try:
-            exp_ids = sorted(discover_experiments().keys())
+            from glossa_lab.experiment_graph import list_graph_experiments  # noqa: PLC0415
+            graph_ids = sorted(e["id"] for e in list_graph_experiments())
             exp_id_note = (
                 f"\n\nREGISTERED EXPERIMENT IDs (use EXACTLY these in run_experiment actions): "
-                f"{', '.join(exp_ids)}"
+                f"{', '.join(graph_ids)}"
             )
             action_addendum = _ACTION_SYSTEM_ADDENDUM + exp_id_note
         except Exception:  # noqa: BLE001
@@ -964,19 +967,43 @@ async def _execute_action_inner(t: str, p: dict) -> dict[str, Any]:  # noqa: PLR
     if t == "open_view":
         return {"ok": True, "navigate": p.get("view"), "summary": f"Navigating to {p.get('view', '?')}"}
 
-    # ── run_experiment ──────────────────────────────────────────────────────────────
+    # ── run_experiment ─────────────────────────────────────────────────────────────────
     if t == "run_experiment":
-        from glossa_lab.experiment_base import discover_experiments, get_experiment  # noqa: PLC0415
+        from glossa_lab.experiment_base import get_experiment  # noqa: PLC0415
+        from glossa_lab.experiment_graph import (  # noqa: PLC0415
+            get_graph_experiment, list_graph_experiments, register_graph_experiments,
+        )
         exp_id = p.get("id", "")
+        # Always re-register graph experiments — the Python registry cache may have been
+        # invalidated by auto_migrate_hardcoded_experiments() at startup.
+        register_graph_experiments()
         cls = get_experiment(exp_id)
         if cls is None:
-            # Return a helpful error listing all valid IDs
-            all_ids = sorted(discover_experiments().keys())
-            raise HTTPException(
-                404,
-                f"Experiment '{exp_id}' not found. "
-                f"Valid IDs are: {', '.join(all_ids[:30])}",
+            # ID not in Python registry. Check if it exists as a raw graph file.
+            gdata = get_graph_experiment(exp_id)
+            if gdata is None:
+                all_ids = sorted(e["id"] for e in list_graph_experiments())
+                raise HTTPException(
+                    404,
+                    f"Experiment '{exp_id}' not found. "
+                    f"Valid IDs are: {', '.join(all_ids[:40])}",
+                )
+            # It's a valid graph experiment — run it via the engine pipeline (creates a job)
+            from glossa_lab.database import get_db  # noqa: PLC0415
+            db = get_db()
+            if db is None:
+                raise HTTPException(503, "Database unavailable")
+            job = await db.create_job(
+                name=f"{gdata.get('name', exp_id)}  [AI]",
+                pipeline="exp_run",
+                params={"exp_id": exp_id, "source": "ai_action"},
+                created_at=__import__("datetime").datetime.utcnow().isoformat(),
             )
+            return {
+                "ok": True,
+                "summary": f"Graph experiment '{exp_id}' queued (job {job['id']}).",
+                "job_id": job["id"],
+            }
         loop = asyncio.get_event_loop()
         result = await loop.run_in_executor(None, lambda: cls().run())
         n = len(result) if isinstance(result, dict) else "?"

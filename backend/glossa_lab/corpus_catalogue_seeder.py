@@ -604,6 +604,56 @@ CATALOGUE: list[dict[str, Any]] = [
 ]
 
 
+# ── Reading direction for every catalogue entry ────────────────────────────────
+# ltr = left-to-right, rtl = right-to-left, bidi = boustrophedon/alternating,
+# unknown = direction uncertain or not applicable (logographic vertical etc.)
+READING_DIRECTIONS: dict[str, str] = {
+    # Undeciphered — Indus direction is debated (possibly RTL or boustrophedon)
+    "cat-indus":          "unknown",   # Indus: RTL and boustrophedon both proposed
+    "cat-linear-a":       "ltr",       # Linear A tablets: left-to-right
+    "cat-proto-sinaitic": "rtl",       # Ancestor of Semitic abjads; RTL
+    "cat-meroitic":       "ltr",       # Meroitic: left-to-right
+    "cat-rongorongo":     "bidi",      # Boustrophedon (alternating)
+    "cat-zapotec":        "ltr",       # Columnar / LTR horizontal
+    "cat-voynich":        "ltr",       # Appears left-to-right
+    # Deciphered ancient — Semitic abjads are RTL
+    "cat-ugaritic":       "rtl",
+    "cat-old-hebrew":     "rtl",
+    "cat-phoenician":     "rtl",
+    "cat-linear-b":       "ltr",
+    "cat-geez":           "ltr",
+    "cat-sumerian":       "ltr",       # Cuneiform LTR
+    "cat-coptic":         "ltr",
+    "cat-egyptian":       "ltr",       # Standard horizontal Egyptian is LTR
+    "cat-akkadian":       "ltr",       # Cuneiform LTR
+    "cat-hittite":        "ltr",       # Cuneiform LTR
+    "cat-greek":          "ltr",
+    "cat-latin":          "ltr",
+    "cat-old-chinese":    "ltr",       # Oracle bone: vertical columns but horizontal LTR
+    "cat-sanskrit":       "ltr",       # Devanagari LTR
+    # Additional Indus sources
+    "cat-indus-cisi":     "unknown",
+    "cat-indus-yadav":    "unknown",
+    "cat-indus-wells":    "unknown",
+    "cat-indus-kenoyer":  "unknown",
+    # Modern
+    "cat-arabic":         "rtl",
+    "cat-english":        "ltr",
+    "cat-mandarin":       "ltr",       # Horizontal modern Chinese is LTR
+    "cat-hindi":          "ltr",       # Devanagari LTR
+    "cat-japanese":       "ltr",       # Horizontal Japanese is LTR
+    "cat-korean":         "ltr",
+    "cat-finnish":        "ltr",
+    "cat-turkish":        "ltr",
+    "cat-swahili":        "ltr",
+    "cat-basque":         "ltr",
+    "cat-tamil":          "ltr",
+    "cat-syriac":         "rtl",
+    "cat-russian":        "ltr",
+    "cat-old-persian":    "ltr",       # Cuneiform LTR
+}
+
+
 async def seed_corpus_catalogue() -> int:
     """Seed the corpus_catalogue table from the CATALOGUE list.
 
@@ -624,7 +674,10 @@ async def seed_corpus_catalogue() -> int:
     count = 0
     for entry in CATALOGUE:
         try:
-            await db.upsert_corpus_catalogue_entry(entry)
+            # Inject reading_direction from the lookup table if not already set
+            enriched = dict(entry)
+            enriched.setdefault("reading_direction", READING_DIRECTIONS.get(entry["id"], "unknown"))
+            await db.upsert_corpus_catalogue_entry(enriched)
             count += 1
         except Exception as exc:  # noqa: BLE001
             logger.warning("Failed to seed catalogue entry '%s': %s", entry.get("id"), exc)
@@ -642,12 +695,13 @@ async def seed_corpus_catalogue() -> int:
                 )
                 # rowcount not easily accessible on aiosqlite; just commit all
         await db._conn.commit()
-        # Also ensure description and source_url are fresh (may have improved)
+        # Also ensure description, source_url, and reading_direction are fresh
         for entry in CATALOGUE:
+            rd = READING_DIRECTIONS.get(entry["id"], "unknown")
             await db._conn.execute(
-                "UPDATE corpus_catalogue SET description = ?, source_url = ?, tokens_approx = ? WHERE id = ?",
+                "UPDATE corpus_catalogue SET description = ?, source_url = ?, tokens_approx = ?, reading_direction = ? WHERE id = ?",
                 (entry.get("description", ""), entry.get("source_url", ""),
-                 entry.get("tokens_approx", 0), entry["id"]),
+                 entry.get("tokens_approx", 0), rd, entry["id"]),
             )
         await db._conn.commit()
         logger.debug("Corpus catalogue token fixup complete")

@@ -4376,6 +4376,41 @@ Next step: AG2 integration planning; update DB anchor set dcf69e6e69fe (P324=k, 
 
 ---
 
+## [2026-04-22] Entry — AG2 Integration + Anchor Set Corrected
+
+Objective: Integrate AG2 (AutoGen 2); update anchor set P324=k + add P332=o.
+
+### Anchor set update
+
+- `scripts/update_anchor_set.py` (shell.cmd python): updated dcf69e6e69fe
+  - P324: 'o' → 'k' (SA phonotactics prefer 'k': 0.8591 vs 0.817)
+  - P332: 'o' added as 6th pair (CV pair vowel; -0.005pp cost, noise)
+  - Renamed: "CISI Optimal 6-Anchor Set (P385=n, P324=k, P122=a, P086=m, P060=i, P332=o)"
+
+### AG2 integration (ag2 v0.12.0, `import autogen`)
+
+**Backend:**
+- `ag2_agent.py`: GlossaResearch (AssistantAgent) + GlossaExecutor (UserProxyAgent)
+  - System prompt: full Indus research state injected
+  - Tools: `list_experiments`, `run_experiment`, `read_result`, `query_corpus`, `read_ledger`
+  - LLM: Ollama auto-detected; graceful fallback to tool-only mode
+  - Streaming: asyncio.Queue + threading bridge for SSE compatibility
+- `api/ag2_chat.py`: `POST /api/v1/ag2/chat` (SSE), `GET /ag2/status`, `GET /ag2/tools`
+- `main.py`: router registered
+
+**Frontend:**
+- `AG2Panel.tsx`: dedicated research agent UI
+  - Tool calls (🔧), tool results (📋 collapsible), messages (💬), errors (⚠️)
+  - Stop button, example prompts, status badge
+- `App.tsx`: "🤖 AG2 Agent" nav in Research section
+- `api.ts`: `streamAG2Chat` async generator, `getAG2Status`, `getAG2Tools`
+
+Checks: TypeScript 0 errors ✓ | Governance lint 4/4 ✓
+
+Next step: Start backend + test AG2 chat with a research question.
+
+---
+
 ## [2026-04-22] Entry — Report Template Cleanup
 
 Objective: Remove all test/E2E artifact templates; keep only real-world useful ones.

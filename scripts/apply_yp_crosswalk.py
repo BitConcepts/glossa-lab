@@ -26,7 +26,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CROSSWALK_PATH = ROOT / "crosswalks" / "yajnadevam_to_parpola_crosswalk.csv"
+# Prefer extended crosswalk (anchor-guided gap-filling adds more mappings)
+_EXT = ROOT / "crosswalks" / "yajnadevam_to_parpola_crosswalk_extended.csv"
+_BASE = ROOT / "crosswalks" / "yajnadevam_to_parpola_crosswalk.csv"
+CROSSWALK_PATH = _EXT if _EXT.exists() else _BASE
 YJ_PATH = ROOT / "data_raw" / "other_sites" / "yajnadevam_inscriptions.json"
 OUT_PATH = ROOT / "data_raw" / "other_sites" / "yajnadevam_inscriptions_pnumbered.json"
 LOGS = ROOT / "logs"

@@ -15,10 +15,12 @@ import {
   deleteGraphExperiment,
   getGraphExperiment,
   listGraphExperiments,
+  listJobs,
   runGraphExperiment,
   type GraphExperimentMeta,
 } from "../api";
 import { useAIChat } from "../hooks/useAIChat";
+import { fmtDateTimeCompact } from "../dateFormat";
 
 // ── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -39,9 +41,10 @@ interface CardProps {
   exp: GraphExperimentMeta;
   onDeleted: (id: string) => void;
   onRefresh: () => void;
+  lastRun?: string;
 }
 
-function ExpCard({ exp, onDeleted, onRefresh }: CardProps) {
+function ExpCard({ exp, onDeleted, onRefresh, lastRun }: CardProps) {
   const [running, setRunning] = useState(false);
   const [runResult, setRunResult] = useState<string | null>(null);
   const [runError, setRunError] = useState<string | null>(null);
@@ -110,10 +113,15 @@ function ExpCard({ exp, onDeleted, onRefresh }: CardProps) {
               </div>
             )}
           </div>
-          <div style={{ display: "flex", gap: 4, flexShrink: 0, flexWrap: "wrap", justifyContent: "flex-end" }}>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 3, flexShrink: 0 }}>
             <span style={{ fontSize: 10, padding: "2px 6px", borderRadius: 8, background: "#7c3aed20", color: "#7c3aed", fontWeight: 600, whiteSpace: "nowrap" }}>
               {exp.node_count}n · {exp.edge_count}e
             </span>
+            {lastRun && (
+              <span style={{ fontSize: 10, color: "#9ca3af", whiteSpace: "nowrap" }} title={lastRun}>
+                🕐 {fmtDateTimeCompact(lastRun)}
+              </span>
+            )}
           </div>
         </div>
 
@@ -156,25 +164,55 @@ function ExpCard({ exp, onDeleted, onRefresh }: CardProps) {
 
 // ── Main view ────────────────────────────────────────────────────────────────
 
+type SortMode = "name_asc" | "name_desc" | "nodes" | "last_run";
+
 export function ExperimentsView() {
   const [exps, setExps] = useState<GraphExperimentMeta[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [search, setSearch] = useState("");
+  const [sort, setSort] = useState<SortMode>("last_run");
+  // map exp_id → ISO timestamp of most recent completed job
+  const [lastRunMap, setLastRunMap] = useState<Record<string, string>>({});
 
   const load = useCallback(async () => {
     setError(null); setLoading(true);
-    try { setExps(await listGraphExperiments()); }
+    try {
+      const [expList, jobs] = await Promise.all([listGraphExperiments(), listJobs()]);
+      setExps(expList);
+      // build last-run map from jobs
+      const m: Record<string, string> = {};
+      for (const j of jobs) {
+        const eid = (j.params as Record<string, unknown>)?.exp_id as string | undefined;
+        if (eid && j.status === "completed" && j.created_at) {
+          if (!m[eid] || j.created_at > m[eid]) m[eid] = j.created_at;
+        }
+      }
+      setLastRunMap(m);
+    }
     catch (e) { setError(e instanceof Error ? e.message : "Failed to load experiments"); }
     finally { setLoading(false); }
   }, []);
 
   useEffect(() => { void load(); }, [load]);
 
-  const filtered = exps.filter(e =>
-    !search || e.name.toLowerCase().includes(search.toLowerCase()) ||
-               e.description.toLowerCase().includes(search.toLowerCase())
-  );
+  const filtered = exps
+    .filter(e =>
+      !search || e.name.toLowerCase().includes(search.toLowerCase()) ||
+                 e.description.toLowerCase().includes(search.toLowerCase())
+    )
+    .sort((a, b) => {
+      if (sort === "name_asc")  return a.name.localeCompare(b.name);
+      if (sort === "name_desc") return b.name.localeCompare(a.name);
+      if (sort === "nodes")     return (b.node_count ?? 0) - (a.node_count ?? 0);
+      // last_run: experiments with a run come first (newest first), then alphabetically
+      const ra = lastRunMap[a.id] ?? "";
+      const rb = lastRunMap[b.id] ?? "";
+      if (ra && rb) return rb.localeCompare(ra);
+      if (ra) return -1;
+      if (rb) return 1;
+      return a.name.localeCompare(b.name);
+    });
 
   const handleDeleted = useCallback((id: string) => setExps(prev => prev.filter(e => e.id !== id)), []);
 
@@ -196,14 +234,27 @@ export function ExperimentsView() {
         </div>
       </div>
 
-      {/* Description */}
-      <div style={{ fontSize: 13, color: "#6b7280", marginBottom: 14, lineHeight: 1.6, background: "#f8fafc", border: "1px solid #e5e7eb", borderRadius: 8, padding: "10px 14px" }}>
-        <strong style={{ color: "#374151" }}>Every experiment is a composable graph</strong> built in the{" "}
-        <button onClick={() => openInBuilder("new")} style={{ background: "none", border: "none", color: "#7c3aed", cursor: "pointer", fontWeight: 600, padding: 0, fontSize: 13 }}>
-          🔀 Experiment Builder
-        </button>
-        {" "}— drag atomic nodes, wire typed ports, and let <strong>AI Chat ✨</strong> suggest nodes right inside the builder.
-        Experiments can be added to Studies for full research workflows.
+      {/* Description + sort controls */}
+      <div style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 14, flexWrap: "wrap" }}>
+        <div style={{ flex: 1, fontSize: 13, color: "#6b7280", lineHeight: 1.6, background: "#f8fafc", border: "1px solid #e5e7eb", borderRadius: 8, padding: "10px 14px", minWidth: 200 }}>
+          <strong style={{ color: "#374151" }}>Every experiment is a composable graph</strong> built in the{" "}
+          <button onClick={() => openInBuilder("new")} style={{ background: "none", border: "none", color: "#7c3aed", cursor: "pointer", fontWeight: 600, padding: 0, fontSize: 13 }}>
+            🔀 Experiment Builder
+          </button>
+          {" "}— drag nodes, wire ports, let <strong>AI Chat ✨</strong> suggest improvements.
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
+          <span style={{ fontSize: 11, color: "#9ca3af", whiteSpace: "nowrap" }}>Sort by</span>
+          {(["last_run", "name_asc", "name_desc", "nodes"] as SortMode[]).map(s => (
+            <button key={s} onClick={() => setSort(s)}
+              style={{ padding: "4px 9px", border: `1px solid ${sort === s ? "#7c3aed" : "#e5e7eb"}`,
+                borderRadius: 5, cursor: "pointer", fontSize: 11, fontWeight: sort === s ? 700 : 400,
+                background: sort === s ? "#ede9fe" : "#f9fafb",
+                color: sort === s ? "#6d28d9" : "#374151" }}>
+              {s === "last_run" ? "🕐 Last run" : s === "name_asc" ? "A→Z" : s === "name_desc" ? "Z→A" : "Nodes"}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Search */}
@@ -242,7 +293,8 @@ export function ExperimentsView() {
       {/* Card grid */}
       <div style={{ display: "grid", gap: "0.75rem", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))" }}>
         {filtered.map(exp => (
-          <ExpCard key={exp.id} exp={exp} onDeleted={handleDeleted} onRefresh={load} />
+          <ExpCard key={exp.id} exp={exp} onDeleted={handleDeleted} onRefresh={load}
+            lastRun={lastRunMap[exp.id]} />
         ))}
       </div>
     </div>

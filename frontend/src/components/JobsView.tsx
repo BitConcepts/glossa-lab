@@ -11,34 +11,73 @@ import {
   JobResponse,
 } from "../api";
 
+// ── Helpers ─────────────────────────────────────────────────────────────────
+
+/** Try to parse a string as JSON; return the object or null. */
+function tryParseJson(s: string | undefined | null): Record<string, unknown> | null {
+  if (!s) return null;
+  try { const v = JSON.parse(s); return typeof v === "object" && v !== null ? v as Record<string, unknown> : null; }
+  catch { return null; }
+}
+
+/** Render a user-friendly label for an error category. */
+function errorCategory(msg: string): { label: string; color: string } {
+  const m = msg.toLowerCase();
+  if (m.includes("no module") || m.includes("import") || m.includes("attribute"))
+    return { label: "Code / Import Error", color: "#7c3aed" };
+  if (m.includes("timeout") || m.includes("unreachable") || m.includes("network"))
+    return { label: "Network / Timeout", color: "#d97706" };
+  if (m.includes("database") || m.includes("sqlite") || m.includes("sql"))
+    return { label: "Database Error", color: "#0369a1" };
+  if (m.includes("key") || m.includes("auth") || m.includes("permission"))
+    return { label: "Auth / Permission", color: "#b45309" };
+  if (m.includes("assertion") || m.includes("assert"))
+    return { label: "Assertion Failed", color: "#9f1239" };
+  return { label: "Experiment Error", color: "#991b1b" };
+}
+
 // ── Shared error dialog ─────────────────────────────────────────────────────
 interface ErrorModalProps {
   title: string;
   message: string;
   detail?: string | null;
+  params?: Record<string, unknown> | null;
   onClose: () => void;
 }
-export function JobErrorModal({ title, message, detail, onClose }: ErrorModalProps) {
+export function JobErrorModal({ title, message, detail, params, onClose }: ErrorModalProps) {
   const text = `${title}\n${message}${detail ? "\n" + detail : ""}`;
   const [copied, setCopied] = useState(false);
+  const [showRaw, setShowRaw] = useState(false);
   const copy = () => {
     navigator.clipboard.writeText(text).then(() => { setCopied(true); setTimeout(() => setCopied(false), 1500); });
   };
+
+  // Try to parse the message itself as JSON (structured error objects)
+  const parsedMsg = tryParseJson(message);
+  const displayMsg = parsedMsg
+    ? (parsedMsg.error as string ?? parsedMsg.message as string ?? JSON.stringify(parsedMsg, null, 2))
+    : message;
+  const cat = errorCategory(displayMsg || "");
+
+  const cleanDetail = detail ?? null;
+
   return (
     <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)", zIndex: 12000,
       display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}
       onClick={onClose}>
-      <div style={{ background: "#fff", borderRadius: 10, maxWidth: 700, width: "100%", maxHeight: "80vh",
-        display: "flex", flexDirection: "column", boxShadow: "0 20px 60px rgba(0,0,0,0.4)" }}
+      <div style={{ background: "#fff", borderRadius: 12, maxWidth: 720, width: "100%", maxHeight: "85vh",
+        display: "flex", flexDirection: "column", boxShadow: "0 24px 64px rgba(0,0,0,0.4)" }}
         onClick={e => e.stopPropagation()}>
+
         {/* Header */}
         <div style={{ padding: "16px 20px", borderBottom: "1px solid #fee2e2", background: "#fef2f2",
-          borderRadius: "10px 10px 0 0", display: "flex", alignItems: "center", gap: 10 }}>
-          <span style={{ fontSize: 20 }}>⚠️</span>
+          borderRadius: "12px 12px 0 0", display: "flex", alignItems: "center", gap: 10 }}>
+          <span style={{ fontSize: 22 }}>⚠️</span>
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontWeight: 700, fontSize: 14, color: "#991b1b", overflow: "hidden",
-              textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{title}</div>
-            <div style={{ fontSize: 11, color: "#b91c1c", marginTop: 2 }}>Job failed</div>
+              textOverflow: "ellipsis", whiteSpace: "nowrap" }} title={title}>{title}</div>
+            <span style={{ fontSize: 11, padding: "1px 7px", borderRadius: 8, background: cat.color + "20",
+              color: cat.color, fontWeight: 600 }}>{cat.label}</span>
           </div>
           <button onClick={copy} style={{ padding: "4px 10px", border: "1px solid #fca5a5", borderRadius: 5,
             background: copied ? "#fee2e2" : "#fff", cursor: "pointer", fontSize: 11,
@@ -46,33 +85,74 @@ export function JobErrorModal({ title, message, detail, onClose }: ErrorModalPro
             {copied ? "✓ Copied" : "📋 Copy"}
           </button>
           <button onClick={onClose} style={{ border: "none", background: "none",
-            cursor: "pointer", fontSize: 20, color: "#9ca3af", padding: "0 4px" }}>×</button>
+            cursor: "pointer", fontSize: 22, color: "#9ca3af", lineHeight: 1, padding: "0 4px" }}>×</button>
         </div>
-        {/* Error message */}
-        <div style={{ padding: "14px 20px", borderBottom: detail ? "1px solid #fee2e2" : "none" }}>
-          <div style={{ fontSize: 13, fontWeight: 600, color: "#374151", marginBottom: 6 }}>Error message</div>
-          <div style={{ fontFamily: "monospace", fontSize: 12, color: "#dc2626",
-            background: "#fef2f2", padding: "8px 12px", borderRadius: 5, lineHeight: 1.6,
-            whiteSpace: "pre-wrap", wordBreak: "break-word" }}>
-            {message || "No error message available."}
+
+        <div style={{ flex: 1, overflowY: "auto" }}>
+          {/* Human-friendly error summary */}
+          <div style={{ padding: "14px 20px", borderBottom: "1px solid #f3f4f6" }}>
+            <div style={{ fontSize: 12, fontWeight: 600, color: "#374151", marginBottom: 6,
+              textTransform: "uppercase", letterSpacing: "0.05em" }}>What went wrong</div>
+            <div style={{ fontSize: 13, color: "#111827", lineHeight: 1.7,
+              background: "#fef2f2", padding: "10px 14px", borderRadius: 7,
+              border: "1px solid #fecaca", whiteSpace: "pre-wrap", wordBreak: "break-word" }}>
+              {displayMsg || "No error message available."}
+            </div>
           </div>
+
+          {/* Job params — shown as a clean key-value table */}
+          {params && Object.keys(params).filter(k => !k.startsWith("_")).length > 0 && (
+            <div style={{ padding: "12px 20px", borderBottom: "1px solid #f3f4f6" }}>
+              <div style={{ fontSize: 12, fontWeight: 600, color: "#374151", marginBottom: 8,
+                textTransform: "uppercase", letterSpacing: "0.05em" }}>Job parameters</div>
+              <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
+                <tbody>
+                  {Object.entries(params)
+                    .filter(([k]) => !k.startsWith("_") && k !== "traceback")
+                    .map(([k, v]) => (
+                      <tr key={k} style={{ borderBottom: "1px solid #f3f4f6" }}>
+                        <td style={{ padding: "4px 10px 4px 0", color: "#6b7280", fontWeight: 500,
+                          whiteSpace: "nowrap", verticalAlign: "top", width: "35%" }}>{k}</td>
+                        <td style={{ padding: "4px 0", color: "#111827", wordBreak: "break-all",
+                          fontFamily: typeof v === "string" ? "inherit" : "monospace" }}>
+                          {typeof v === "object" ? JSON.stringify(v) : String(v ?? "—")}
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          {/* Traceback / raw detail — collapsible */}
+          {cleanDetail && (
+            <div style={{ padding: "12px 20px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                <div style={{ fontSize: 12, fontWeight: 600, color: "#374151",
+                  textTransform: "uppercase", letterSpacing: "0.05em" }}>Stack trace</div>
+                <button onClick={() => setShowRaw(!showRaw)}
+                  style={{ fontSize: 11, border: "1px solid #e5e7eb", background: "#f9fafb",
+                    borderRadius: 4, cursor: "pointer", padding: "2px 8px", color: "#6b7280" }}>
+                  {showRaw ? "Hide" : "Show"}
+                </button>
+              </div>
+              {showRaw && (
+                <pre style={{ fontFamily: "monospace", fontSize: 11, color: "#374151",
+                  background: "#f8fafc", padding: "10px 14px", borderRadius: 7,
+                  border: "1px solid #e5e7eb", lineHeight: 1.6,
+                  whiteSpace: "pre-wrap", wordBreak: "break-word", margin: 0, maxHeight: 260, overflowY: "auto" }}>
+                  {cleanDetail}
+                </pre>
+              )}
+            </div>
+          )}
         </div>
-        {/* Detail */}
-        {detail && (
-          <div style={{ flex: 1, overflowY: "auto", padding: "14px 20px" }}>
-            <div style={{ fontSize: 13, fontWeight: 600, color: "#374151", marginBottom: 6 }}>Details</div>
-            <pre style={{ fontFamily: "monospace", fontSize: 11, color: "#374151",
-              background: "#f8fafc", padding: "8px 12px", borderRadius: 5, lineHeight: 1.6,
-              whiteSpace: "pre-wrap", wordBreak: "break-word", margin: 0, overflowX: "auto" }}>
-              {detail}
-            </pre>
-          </div>
-        )}
+
         {/* Footer */}
         <div style={{ padding: "12px 20px", borderTop: "1px solid #f3f4f6",
-          display: "flex", justifyContent: "flex-end" }}>
+          display: "flex", justifyContent: "flex-end", gap: 8 }}>
           <button onClick={onClose} style={{ padding: "6px 18px", border: "1px solid #d1d5db",
-            borderRadius: 5, background: "#fff", cursor: "pointer", fontSize: 13 }}>Close</button>
+            borderRadius: 6, background: "#fff", cursor: "pointer", fontSize: 13 }}>Close</button>
         </div>
       </div>
     </div>
@@ -96,7 +176,7 @@ export function JobsView() {
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Error modal
-  const [errorModal, setErrorModal] = useState<{ title: string; message: string; detail?: string } | null>(null);
+  const [errorModal, setErrorModal] = useState<{ title: string; message: string; detail?: string; params?: Record<string, unknown> | null } | null>(null);
 
   const load = useCallback(async (manual = false) => {
     if (manual) setRefreshing(true);
@@ -158,17 +238,35 @@ export function JobsView() {
     const filename   = expId ? `${expId}.json` : resultFile;
 
     if (job.status === "failed") {
-      // Load error details and show in modal
+      // Extract the job params for display (strip internal keys)
+      const displayParams: Record<string, unknown> = {};
+      for (const [k, v] of Object.entries(job.params ?? {})) {
+        if (!k.startsWith("_") && k !== "traceback") displayParams[k] = v;
+      }
       try {
         const data = await getJobResults(job.id);
-        const errMsg = (data as Record<string, unknown>).error as string ?? "Unknown error";
-        const trace  = (data as Record<string, unknown>).traceback as string ?? null;
-        setErrorModal({ title: job.name, message: errMsg, detail: trace ?? undefined });
+        const raw  = data as Record<string, unknown>;
+        // Try structured error fields, fall back to any string property
+        const errMsg =
+          (raw.error as string) ??
+          (raw.message as string) ??
+          (raw.detail as string) ??
+          JSON.stringify(raw).slice(0, 300);
+        const trace  = (raw.traceback as string) ?? null;
+        setErrorModal({
+          title: job.name,
+          message: errMsg || "Unknown error — see stack trace below.",
+          detail: trace ?? undefined,
+          params: Object.keys(displayParams).length ? displayParams : null,
+        });
       } catch {
         setErrorModal({
           title: job.name,
-          message: "Job failed — no error details stored.",
-          detail: `Job ID: ${job.id}\nPipeline: ${job.pipeline}`,
+          message: "Job failed — no error details stored in the database.",
+          detail: undefined,
+          params: Object.keys(displayParams).length ? displayParams : {
+            job_id: job.id, pipeline: job.pipeline,
+          },
         });
       }
       return;
@@ -436,6 +534,7 @@ export function JobsView() {
           title={errorModal.title}
           message={errorModal.message}
           detail={errorModal.detail}
+          params={errorModal.params}
           onClose={() => setErrorModal(null)}
         />
       )}

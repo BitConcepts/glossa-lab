@@ -4358,6 +4358,24 @@ Next step: Update DB anchor set to P324='k' + add P332='o'; clean report templat
 
 ---
 
+## [2026-04-22] Entry — 3 UI Fixes: LTR/RTL Badges, Jobs→Reports, Error Modal
+
+Objective: (1) Add LTR/RTL badges to all corpus catalogue entries. (2) Unify Jobs results button to navigate to Reports/Data. (3) Ensure error details show in modal.
+
+Files changed:
+- `database.py`: V11 schema — `reading_direction` column on `corpus_catalogue`
+- `corpus_catalogue_seeder.py`: `READING_DIRECTIONS` map for 50+ entries; upsert + fixup pass
+- `engine.py`: pipeline results now saved to `reports/{pipeline}_{id}.json`; `result_file` stored in job params
+- `JobsView.tsx`: single `📂 View in Reports` button for all completed jobs; `⚠ Error Details` for failed; removed inline drawer
+- `CorporaView.tsx`: `dirMeta` table; LTR/RTL/BIDI/? badge on every catalogue card
+- `api.ts`: `CorpusCatalogueEntry.reading_direction` added
+
+Checks: TypeScript 0 errors ✓
+
+Next step: AG2 integration planning; update DB anchor set dcf69e6e69fe (P324=k, +P332=o).
+
+---
+
 ## [2026-04-22] Entry — Report Template Cleanup
 
 Objective: Remove all test/E2E artifact templates; keep only real-world useful ones.

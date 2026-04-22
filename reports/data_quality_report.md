@@ -1,5 +1,5 @@
 # Data Quality Report
-Generated: 2026-04-22T18:05:06Z
+Generated: 2026-04-22T18:12:38Z
 Source: Glossa-Lab decipherment sprint Phase 5
 
 ## 1. Corpus Overview
@@ -41,7 +41,7 @@ Source: Glossa-Lab decipherment sprint Phase 5
 - seal (Gold): 1
 
 ## 4. Duplicate Detection
-- Exact-sequence duplicates (same site + sign sequence): 313 clusters
+- Exact-sequence duplicates (same site + sign sequence): 320 clusters
 
   - Mohenjo-daro | `P121 P202 P385 P073 P108` → ['GLOSSA-M-1A', 'GLOSSA-YJ-2531']
   - Mohenjo-daro | `P320 P145 P094` → ['GLOSSA-M-3A', 'GLOSSA-YJ-2532']

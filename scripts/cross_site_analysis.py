@@ -55,15 +55,30 @@ def positional_profile_per_sign(records: list[dict]) -> dict[str, dict]:
                 "ir": round(int_f[s]/freq[s], 4)} for s in freq}
 
 
-def classify_sign(profile: dict) -> str:
+def classify_sign(profile: dict, min_freq: int = 4) -> str:
+    """
+    Classify a sign by positional behavior.
+    min_freq: site-relative frequency threshold (low for small sites).
+    Using relative thresholds avoids HAPAX inflation in small-site corpora.
+    """
     f = profile["freq"]
     if f == 1: return "HAPAX"
-    if f <= 3: return "LOW_FREQ"
-    if profile["er"] >= 0.55 and f >= 4: return "TERMINAL"
-    if profile["sr"] >= 0.55 and f >= 4: return "INITIAL"
-    if profile["ir"] >= 0.70 and f >= 3: return "MEDIAL"
+    if f < min_freq: return "LOW_FREQ"
+    if profile["er"] >= 0.55: return "TERMINAL"
+    if profile["sr"] >= 0.55: return "INITIAL"
+    if profile["ir"] >= 0.70: return "MEDIAL"
     if profile["sr"] >= 0.30 and profile["er"] >= 0.30 and profile["ir"] < 0.30: return "BIMODAL"
     return "MIXED"
+
+
+def site_min_freq(n_inscriptions: int) -> int:
+    """
+    Compute site-relative minimum frequency threshold.
+    Small sites get a lower threshold so signs can be classified meaningfully.
+    Formula: max(2, n_inscriptions // 30)  -- top ~3% by frequency minimum.
+    Examples: 45 inscr -> 2, 80 -> 2, 970 -> 32, 1381 -> 46.
+    """
+    return max(2, n_inscriptions // 30)
 
 
 def _entropy(ctr: Counter) -> float:
@@ -93,9 +108,10 @@ def analyse_site(records: list[dict]) -> dict:
     hapax = sum(1 for c in freq.values() if c == 1)
 
     per_sign = positional_profile_per_sign(records)
-    class_dist: Counter = Counter(classify_sign(p) for p in per_sign.values())
-    terminal_signs = {s for s, p in per_sign.items() if classify_sign(p) == "TERMINAL"}
-    initial_signs = {s for s, p in per_sign.items() if classify_sign(p) == "INITIAL"}
+    min_f = site_min_freq(n)
+    class_dist: Counter = Counter(classify_sign(p, min_f) for p in per_sign.values())
+    terminal_signs = {s for s, p in per_sign.items() if classify_sign(p, min_f) == "TERMINAL"}
+    initial_signs  = {s for s, p in per_sign.items() if classify_sign(p, min_f) == "INITIAL"}
 
     h1 = _entropy(freq)
     # Bigram conditional entropy
@@ -139,13 +155,16 @@ def class_stability(profiles_by_site: dict[str, dict]) -> dict:
     """
     Measure latent class stability: for signs appearing in ≥2 sites,
     do they get the same class assignment?
+    Uses site-relative frequency thresholds (site_min_freq) for fair comparison.
     """
     sign_classes: dict[str, dict[str, str]] = defaultdict(dict)
     for site, profile in profiles_by_site.items():
         recs = profile["_records"]
+        n = len(recs)
+        min_f = site_min_freq(n)
         per_sign = positional_profile_per_sign(recs)
         for sign, p in per_sign.items():
-            sign_classes[sign][site] = classify_sign(p)
+            sign_classes[sign][site] = classify_sign(p, min_f)
 
     multi_site_signs = {s: d for s, d in sign_classes.items() if len(d) >= 2}
     stable = sum(1 for d in multi_site_signs.values() if len(set(d.values())) == 1)
@@ -168,8 +187,9 @@ def write_report(sites: dict[str, dict], stability: dict) -> Path:
     lines = [
         "# Cross-Site Structural Analysis Report",
         f"Generated: {NOW}",
-        "**NOTE**: Yajnadevam signs use Y-prefix (custom GLYPHIDs); CISI signs use P-prefix (Parpola).",
-        "Cross-system sign overlap requires Y↔P crosswalk (see crosswalks/ directory).",
+        "**NOTE**: Classification uses RELATIVE frequency thresholds (site_min_freq = max(2, N//30)).",
+        "This avoids HAPAX inflation in small sites (45-80 inscriptions) vs large (1381).",
+        "Yajnadevam Y-unmapped signs are treated as site-unique and excluded from multi-site stability.",
         "",
         "---",
         "",

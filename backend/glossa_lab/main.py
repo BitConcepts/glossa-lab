@@ -41,6 +41,7 @@ from glossa_lab.api.collab import router as collab_router
 from glossa_lab.api.report_templates import router as report_templates_router
 from glossa_lab.api.anchor_sets import router as anchor_sets_router
 from glossa_lab.api.corpus_catalogue import router as corpus_catalogue_router
+from glossa_lab.api.cas_models import router as cas_models_router
 from glossa_lab.config import get_settings
 from glossa_lab.database import close_db, init_db
 from glossa_lab.engine import run_engine_loop
@@ -215,6 +216,7 @@ def create_app() -> FastAPI:
     application.include_router(report_templates_router, prefix="/api/v1")
     application.include_router(anchor_sets_router, prefix="/api/v1")
     application.include_router(corpus_catalogue_router, prefix="/api/v1")
+    application.include_router(cas_models_router, prefix="/api/v1")
 
     # Serve built frontend
     # Skipped silently in dev if the dist directory does not yet exist.

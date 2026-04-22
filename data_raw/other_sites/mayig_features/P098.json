@@ -1,0 +1,29 @@
+{
+    "id": "P098",
+    "description": "Vertical line with small horizontal lines coming off one side across the entire height",
+    "parpola_graphemes": [
+        "V051",
+        "V486"
+    ],
+    "wells_graphemes": [
+        "W400",
+        "W402"
+    ],
+    "mahadevan_graphemes": [
+        "M176"
+    ],
+    "features": [
+        {
+            "tines": "integer",
+            "description": "Number of tines coming off the vertical line"
+        },
+        {
+            "direction": "integer",
+            "description": "Direction of the tines. 0 is left, 1 is right"
+        },
+        {
+            "stroke_angle": "integer",
+            "description": "Angle of the tines. 0 = straight, 1 = angled"
+        }
+    ]
+}

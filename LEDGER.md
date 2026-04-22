@@ -4437,3 +4437,131 @@ Final state: **12 real-world templates** across 8 categories:
 Files changed: `scripts/clean_report_templates.py`, `scripts/reseed_templates.py`, `scripts/list_templates.py`
 
 Next step: Update DB anchor set dcf69e6e69fe (change P324 from 'o' to 'k', add P332='o'); contact Parpola group.
+
+---
+
+## [2026-04-22] Entry — Decipherment Sprint Phases 0-8 + H16/Platform Verification
+
+Objective: Execute the full nine-phase structure-first decipherment workflow per decipherment_agent_instructions.md, and verify that H16 graph-first platform and User-Definable Platform plans are complete from prior sessions.
+
+### What was done
+
+**Decipherment sprint: Phases 0-8**
+
+Per the instructions document: build the best possible corpus, normalize and crosswalk sign identities, recover latent structure, identify candidate DoFs, and then (only then) test linguistic hypotheses.
+
+Phase 0 — Research directory structure created:
+- data_raw/{mahadevan_1977, parpola_1982, cisi_vol1_india, cisi_vol2_pakistan, fuls_wells, harappa_excavation_reports, dholavira, other_sites}/
+- data_normalized/, crosswalks/, nalysis/, eports/, logs/, scripts/, xports/, images/{signs,inscriptions,plates}/
+- SHA-256 manifest in logs/file_manifest.json
+
+Phase 1 — Corpus ingested from available sources:
+- 179 CISI inscriptions (all Mohenjo-daro, M-prefix) from data_raw/cisi_vol1_india/indus_cisi_corpus.json
+- data_normalized/corpus_master.csv — all 17 required metadata fields per inscription
+- logs/corpus_ingestion_log.md — sources, gaps, limitations documented
+
+Phase 2 — Source catalog built:
+- eports/source_catalog.md — 17 sources documented with: title, author, year, publisher, type, access_status, reliability_notes, contribution, limitations
+- All priority A sources (Mahadevan 1977, Parpola 1979, CISI Vols. 1-3, Fuls/Wells) documented; access status noted for each
+
+Phase 3 — Sign registry and crosswalk:
+- crosswalks/sign_registry_master.csv — 182 signs (Parpola P-numbers) with per-sign stats
+- crosswalks/sign_crosswalk_master.csv — 205 crosswalk entries: Parpola↔Mahadevan (17 known), Mahadevan↔Fuls (6 known), all others self-referenced with pending_confirmation status
+
+Phase 4 — Corpus normalization:
+- All 7 required sequence fields added to corpus_master (non-destructive): sequence_source_exact, sequence_registry_ids, sequence_variant_sensitive, sequence_variant_collapsed_light, sequence_unknown_markers, sequence_damage_markers, sequence_direction_normalized
+
+Phase 5 — Data quality report:
+- eports/data_quality_report.md — hard review checklist, site coverage gaps, duplicate detection (zero exact duplicates within source), sign identity conflicts
+
+Phase 6 — Full structural analysis (all 6 sub-analyses):
+- 6.1 Frequency: 1,003 tokens, 182 distinct signs, 56.6% hapax, H1=6.08 bits, mean length=5.6 signs
+- 6.2 Positional: 9 candidate terminal markers, 14 candidate initial markers; H(end_position) < H(start_position) confirming terminal slot concentration
+- 6.3 N-gram: H2=2.6 bits (conditional entropy); top bigrams and PMI pairs documented
+- 6.4 Segmentation: recurrent templates (count≥3) documented; >50% of inscriptions end in a candidate terminal sign
+- 6.5 Graph: hub signs, bidirectional adjacency pairs, high-Jaccard neighbor pairs computed
+- 6.6 Cross-site: deferred — only Mohenjo-daro in corpus
+- eports/sequence_analysis_report.md, eports/candidate_prefix_suffix_report.md
+- nalysis/structural_stats.json — full machine-readable stats
+
+Phase 7 — Latent sign class discovery:
+- Feature vectors: (freq, start_rate, end_rate, internal_rate) per sign
+- Classes assigned by threshold rules: TERMINAL_STRONG, INITIAL_STRONG, MEDIAL_STRONG, BIMODAL_INIT_TERM, HAPAX, LOW_FREQUENCY, MIXED
+- Entropy reduction: sign ID → class label reduces description entropy by ~31%
+- eports/latent_sign_class_report.md — per-class profiles, members, stability metrics
+
+Phase 8 — Candidate DoF recovery:
+- Inscriptions mapped to class sequences; class-space templates computed
+- Sequence entropy: raw sign space vs class space — entropy reduction confirms structural classes capture real patterns
+- Candidate slot schema: INITIAL_SLOT, MEDIAL_SLOT, TERMINAL_SLOT, HAPAX_SLOT
+- eports/decipherment_readiness_report.md
+
+**REVIEW GATE: Phase 9 BLOCKED**
+
+Phase 9 (linguistic hypothesis testing) is NOT justified. Blocking reasons:
+1. Only Mohenjo-daro present (179 inscriptions) — multi-site class stability unverified
+2. No image-backed sign crosswalk — sign identity unconfirmable across sources
+3. 179 inscriptions vs ~6,800 in full CISI/ICIT — only 2.6% of known corpus
+4. Hapax fraction ≥ 50% — sparse sign coverage in available sample
+
+Minimum conditions for Phase 9 clearance:
+- At least Harappa data added (CISI Vol.2 or equivalent)
+- Latent class structure verified as cross-site stable
+- Visual crosswalk for top 30 signs confirmed
+- Human review gate explicitly passed
+
+**H16 and User-Definable Platform — Verified complete from prior sessions:**
+- list_experiment_catalog() returns graph experiments only (Phase 1 ✓)
+- ExperimentInput/ExperimentOutput/SubExperiment nodes registered (Phase 2 ✓)
+- All 17 Python compositions migrated to graph specs (Phase 3-4 ✓)
+- Legacy Python experiments in _legacy/ (Phase 5 ✓)
+- Governance lint: 4/4 (Phase 6 ✓)
+- CorpusLM node, DB-backed report templates, world corpus catalogue, anchor sets all implemented (User-Definable Platform ✓)
+
+### Scripts created
+
+- scripts/build_corpus_pipeline.py — Phases 1-5 pipeline
+- scripts/structural_analysis.py — Phases 6-8 pipeline
+
+### Files changed (this session)
+
+- data_raw/cisi_vol1_india/indus_cisi_corpus.json (staged from data/)
+- data_raw/mahadevan_1977/mahadevan_m77_raw.txt (staged)
+- data_normalized/corpus_master.csv (created — 179 inscriptions, 25 fields)
+- crosswalks/sign_registry_master.csv (created — 182 signs)
+- crosswalks/sign_crosswalk_master.csv (created — 205 entries)
+- logs/corpus_ingestion_log.md (created)
+- logs/file_manifest.json (created — SHA-256 hashes)
+- eports/source_catalog.md (created — 17 sources)
+- eports/data_quality_report.md (created)
+- eports/sequence_analysis_report.md (created)
+- eports/candidate_prefix_suffix_report.md (created)
+- eports/latent_sign_class_report.md (created)
+- eports/decipherment_readiness_report.md (created)
+- nalysis/structural_stats.json (created)
+- scripts/build_corpus_pipeline.py (created)
+- scripts/structural_analysis.py (created)
+
+### Checks run
+
+- Governance lint: 4/4 ✓
+- TypeScript: 0 errors ✓
+- build_corpus_pipeline.py: ran successfully ✓
+- structural_analysis.py: ran successfully ✓
+
+### Open TODOs
+
+- [ ] **CRITICAL**: Acquire CISI Vol.2 (Pakistan, 1991) for Harappa coverage — cannot pass Phase 9 gate without it
+- [ ] **CRITICAL**: Check mayig repo for H/L/DK/K site data additions
+- [ ] Acquire Fuls (2014) catalog — 676-sign crosswalk and frequency tables
+- [ ] Request full ICIT export from Wells/Fuls (~6,800 inscriptions)
+- [ ] Contact Parpola group for CISI digital data access
+- [ ] After corpus expansion: re-run Phases 6-8 and re-evaluate Phase 9 gate
+
+### Results
+
+- Decipherment infrastructure is now in place: corpus_master, sign_registry, crosswalk, 8-phase analysis scripts
+- Current bottleneck is data volume (179/6,800 inscriptions = 2.6%) and site coverage (Mohenjo-daro only)
+- Phase 9 (linguistic hypothesis testing) is correctly BLOCKED by the hard review checklist
+
+Next step: Acquire multi-site corpus data (CISI Vol.2, updated mayig repo, Fuls catalog); re-run sprint phases 6-8 on expanded corpus; get human review gate clearance before proceeding to linguistic testing.

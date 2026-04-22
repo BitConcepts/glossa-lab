@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Increment this when adding a new _SCHEMA_Vn block below.
 # _apply_schema will raise if the DB is somehow ahead of the code.
-_SCHEMA_VERSION = 10
+_SCHEMA_VERSION = 11
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -164,6 +164,10 @@ CREATE TABLE IF NOT EXISTS corpus_catalogue (
 );
 """
 
+_SCHEMA_V11 = """
+ALTER TABLE corpus_catalogue ADD COLUMN reading_direction TEXT NOT NULL DEFAULT 'unknown';
+"""
+
 _SCHEMA_V10 = """
 CREATE TABLE IF NOT EXISTS cas_models (
     id          TEXT PRIMARY KEY,
@@ -271,6 +275,16 @@ class Database:
             await self._conn.executescript(_SCHEMA_V10)
             await self._conn.execute("UPDATE _schema_version SET version = ?", (10,))
             current_version = 10
+
+        if current_version < 11:
+            try:
+                await self._conn.execute(
+                    "ALTER TABLE corpus_catalogue ADD COLUMN reading_direction TEXT NOT NULL DEFAULT 'unknown'"
+                )
+            except Exception:  # noqa: BLE001
+                pass  # column already exists
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (11,))
+            current_version = 11
 
         if current_version > _SCHEMA_VERSION:
             logger.warning(
@@ -1047,8 +1061,8 @@ class Database:
         await self._conn.execute(
             """INSERT OR REPLACE INTO corpus_catalogue
                (id,name,language,language_family,script_type,period,
-                tokens_approx,source_url,license,description,local_module,is_undeciphered)
-               VALUES (?,?,?,?,?,?,?,?,?,?,?,?)""",
+                tokens_approx,source_url,license,description,local_module,is_undeciphered,reading_direction)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)""",
             (
                 entry["id"], entry["name"], entry.get("language", ""),
                 entry.get("language_family", ""), entry.get("script_type", ""),
@@ -1056,6 +1070,7 @@ class Database:
                 entry.get("source_url", ""), entry.get("license", ""),
                 entry.get("description", ""), entry.get("local_module", ""),
                 1 if entry.get("is_undeciphered") else 0,
+                entry.get("reading_direction", "unknown"),
             ),
         )
         await self._conn.commit()

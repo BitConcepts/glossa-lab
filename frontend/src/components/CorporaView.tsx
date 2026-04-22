@@ -727,6 +727,12 @@ function CatalogueBrowser({ onImported }: { onImported: () => void }) {
     abjad: "Abjad", syllabary: "Syllabary", logosyllabic: "Logo-syllabic",
     logographic: "Logographic", alphabet: "Alphabet", unknown: "Unknown",
   };
+  const dirMeta: Record<string, { label: string; color: string; bg: string; title: string }> = {
+    ltr:     { label: "LTR",  color: "#065f46", bg: "#d1fae5", title: "Left to Right" },
+    rtl:     { label: "RTL",  color: "#7c2d12", bg: "#fee2e2", title: "Right to Left" },
+    bidi:    { label: "BIDI", color: "#5b21b6", bg: "#ede9fe", title: "Boustrophedon (alternating)" },
+    unknown: { label: "?",    color: "#6b7280", bg: "#f3f4f6", title: "Reading direction unknown" },
+  };
 
   const fmtTokens = (n: number) =>
     n > 0 ? `~${n >= 1000 ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1)}K` : n.toString()} tokens` : "—";
@@ -808,6 +814,15 @@ function CatalogueBrowser({ onImported }: { onImported: () => void }) {
                       </span>
                       <span style={{ fontSize: 9, padding: "1px 5px", borderRadius: 8,
                         background: sc + "18", color: sc, fontWeight: 700 }}>{scriptTypeLabel[e.script_type] ?? e.script_type}</span>
+                      {(() => {
+                        const dir = (e.reading_direction ?? "unknown") as string;
+                        const dm  = dirMeta[dir] ?? dirMeta.unknown;
+                        return (
+                          <span style={{ fontSize: 9, padding: "1px 5px", borderRadius: 8,
+                            background: dm.bg, color: dm.color, fontWeight: 700, letterSpacing: 0.2 }}
+                            title={dm.title}>{dm.label}</span>
+                        );
+                      })()}
                       {e.is_undeciphered && <span style={{ fontSize: 9, color: "#dc2626", fontWeight: 700 }}>🔓</span>}
                       {canImport && !e.already_imported && (
                         <span style={{ fontSize: 9, color: "#059669", fontWeight: 600 }}>⬇ bundled</span>

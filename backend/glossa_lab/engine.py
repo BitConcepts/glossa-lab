@@ -81,6 +81,19 @@ async def _process_one() -> bool:
         now = datetime.now(timezone.utc).isoformat()
         await db.store_result(job_id=job_id, data=result_data, created_at=now)
         await db.update_job_status(job_id, "completed")
+        # Also save to reports/ so the Jobs panel can navigate to Reports → Data
+        import json as _json  # noqa: PLC0415
+        _reports_dir = Path(__file__).parents[2] / "reports"
+        _reports_dir.mkdir(parents=True, exist_ok=True)
+        _safe_name = job["pipeline"].replace("/", "_").replace("\\", "_")
+        _out_file = _reports_dir / f"{_safe_name}_{job_id[:8]}.json"
+        _out_file.write_text(_json.dumps(result_data, indent=2, default=str), encoding="utf-8")
+        # Store the result filename in params so JobsView can navigate to it
+        await db._conn.execute(  # noqa: SLF001
+            "UPDATE jobs SET params = json_set(params, '$.result_file', ?) WHERE id = ?",
+            (f"{_safe_name}_{job_id[:8]}.json", job_id),
+        )
+        await db._conn.commit()  # noqa: SLF001
         logger.info("Job %s completed", job_id)
     except Exception as exc:
         logger.error("Job %s failed: %s", job_id, exc)

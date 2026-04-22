@@ -1,0 +1,20 @@
+{
+    "id": "P026",
+    "description": "Person with pitchfork",
+    "parpola_graphemes": [
+        "V138",
+        "V763"
+    ],
+    "wells_graphemes": [
+        "W130"
+    ],
+    "mahadevan_graphemes": [
+        "M019"
+    ],
+    "features": [
+        {
+            "tines": "integer",
+            "description": "Number of tines on the pitchfork"
+        }
+    ]
+}

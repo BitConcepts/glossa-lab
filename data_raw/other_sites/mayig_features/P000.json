@@ -1,0 +1,15 @@
+{
+    "id": "P000",
+    "description": "Represents a section of significant damage or lost material",
+    "parpola_graphemes": [
+        "V599"
+    ],
+    "wells_graphemes": [],
+    "mahadevan_graphemes": [],
+    "features": [
+        {
+            "percent_lost": "integer",
+            "description": "How much of the inscription was lost in this stretch of damage"
+        }
+    ]
+}

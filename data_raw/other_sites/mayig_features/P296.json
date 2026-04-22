@@ -1,0 +1,20 @@
+{
+    "id": "P296",
+    "description": "Two long vertical strokes, connected by multiple horizontal lines",
+    "parpola_graphemes": [
+        "V056",
+        "V686"
+    ],
+    "wells_graphemes": [
+        "W317"
+    ],
+    "mahadevan_graphemes": [
+        "M186"
+    ],
+    "features": [
+        {
+            "lines": "integer",
+            "description": "How many horizontal lines go across the middle?"
+        }
+    ]
+}

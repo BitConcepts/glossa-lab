@@ -1,65 +1,111 @@
 {
   "id": "indus_phase9_cluster_anchored_sa",
   "name": "Phase 9: Cluster-Class Anchored SA (Dravidian)",
-  "description": "Tests Hypothesis H6: that anchoring structural CLUSTERS to phoneme classes (not individual signs) produces more stable SA decipherment. The DB 6-anchor set maps: P385→n (TERMINAL suffix), P324→k (INITIAL title), P122→a (MEDIAL vowel), P086→m, P060→i, P332→o. SA is run against the Dravidian LM on real CISI multi-sign inscription data. Consistency and HCI metrics measure how well Dravidian phonotactics fit the cluster-constrained search space. Compare: South Dravidian vs Pali vs Sanskrit under the same cluster anchoring.",
+  "description": "Tests Hypothesis H6: that anchoring structural CLUSTERS to phoneme classes (not individual signs) produces more stable SA decipherment. The DB 6-anchor set maps: P385\u2192n (TERMINAL suffix), P324\u2192k (INITIAL title), P122\u2192a (MEDIAL vowel), P086\u2192m, P060\u2192i, P332\u2192o. SA is run against the Dravidian LM on real CISI multi-sign inscription data. Consistency and HCI metrics measure how well Dravidian phonotactics fit the cluster-constrained search space. Compare: South Dravidian vs Pali vs Sanskrit under the same cluster anchoring.",
   "nodes": [
     {
       "id": "n1",
       "type": "expNode",
+      "position": {
+        "x": 60,
+        "y": 60
+      },
       "data": {
         "atomicId": "BuiltinCorpus",
         "label": "CISI Real Inscriptions",
-        "params": {"corpus": "indus_cisi"}
+        "params": {
+          "corpus": "indus_cisi"
+        }
       }
     },
     {
       "id": "n2",
       "type": "expNode",
+      "position": {
+        "x": 60,
+        "y": 210
+      },
       "data": {
         "atomicId": "AnchorSetLoader",
         "label": "Load 6-Anchor Set (DB)",
-        "params": {"anchor_set_id": "dcf69e6e69fe"}
+        "params": {
+          "anchor_set_id": "dcf69e6e69fe"
+        }
       }
     },
     {
       "id": "n3",
       "type": "expNode",
+      "position": {
+        "x": 60,
+        "y": 360
+      },
       "data": {
         "atomicId": "BuiltinLM",
         "label": "South Dravidian LM",
-        "params": {"language": "south_dravidian"}
+        "params": {
+          "language": "south_dravidian"
+        }
       }
     },
     {
       "id": "n4",
       "type": "expNode",
+      "position": {
+        "x": 60,
+        "y": 510
+      },
       "data": {
         "atomicId": "BuiltinLM",
         "label": "Pali MIA LM (control)",
-        "params": {"language": "pali"}
+        "params": {
+          "language": "pali"
+        }
       }
     },
     {
       "id": "n5",
       "type": "expNode",
+      "position": {
+        "x": 315,
+        "y": 210
+      },
       "data": {
         "atomicId": "SADecipher",
         "label": "SA vs South Dravidian",
-        "params": {"n_seeds": 5, "max_iterations": 5000, "ocp_weight": 0.0, "n_restarts": 3}
+        "params": {
+          "n_seeds": 5,
+          "max_iterations": 5000,
+          "ocp_weight": 0,
+          "n_restarts": 3
+        }
       }
     },
     {
       "id": "n6",
       "type": "expNode",
+      "position": {
+        "x": 315,
+        "y": 360
+      },
       "data": {
         "atomicId": "SADecipher",
         "label": "SA vs Pali (control)",
-        "params": {"n_seeds": 5, "max_iterations": 5000, "ocp_weight": 0.0, "n_restarts": 3}
+        "params": {
+          "n_seeds": 5,
+          "max_iterations": 5000,
+          "ocp_weight": 0,
+          "n_restarts": 3
+        }
       }
     },
     {
       "id": "n7",
       "type": "expNode",
+      "position": {
+        "x": 570,
+        "y": 285
+      },
       "data": {
         "atomicId": "Merger",
         "label": "Compare Results",
@@ -69,23 +115,89 @@
     {
       "id": "n8",
       "type": "expNode",
+      "position": {
+        "x": 825,
+        "y": 285
+      },
       "data": {
         "atomicId": "JSONExport",
         "label": "Export SA Comparison",
-        "params": {"filename": "phase9_cluster_anchored_sa.json"}
+        "params": {
+          "filename": "phase9_cluster_anchored_sa.json"
+        }
       }
     }
   ],
   "edges": [
-    {"id": "e1", "source": "n1", "sourcePort": "sequences", "target": "n5", "targetPort": "sequences"},
-    {"id": "e2", "source": "n1", "sourcePort": "sequences", "target": "n6", "targetPort": "sequences"},
-    {"id": "e3", "source": "n2", "sourcePort": "anchors", "target": "n5", "targetPort": "anchors"},
-    {"id": "e4", "source": "n2", "sourcePort": "anchors", "target": "n6", "targetPort": "anchors"},
-    {"id": "e5", "source": "n3", "sourcePort": "lm", "target": "n5", "targetPort": "lm"},
-    {"id": "e6", "source": "n4", "sourcePort": "lm", "target": "n6", "targetPort": "lm"},
-    {"id": "e7", "source": "n5", "sourcePort": "mean_consistency", "target": "n7", "targetPort": "a"},
-    {"id": "e8", "source": "n6", "sourcePort": "mean_consistency", "target": "n7", "targetPort": "b"},
-    {"id": "e9", "source": "n5", "sourcePort": "proposed_mapping", "target": "n7", "targetPort": "c"},
-    {"id": "e10", "source": "n7", "sourcePort": "json", "target": "n8", "targetPort": "data"}
+    {
+      "id": "e1",
+      "source": "n1",
+      "target": "n5",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "n1",
+      "target": "n6",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "n2",
+      "target": "n5",
+      "sourcePort": "anchors",
+      "targetPort": "anchors"
+    },
+    {
+      "id": "e4",
+      "source": "n2",
+      "target": "n6",
+      "sourcePort": "anchors",
+      "targetPort": "anchors"
+    },
+    {
+      "id": "e5",
+      "source": "n3",
+      "target": "n5",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e6",
+      "source": "n4",
+      "target": "n6",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e7",
+      "source": "n5",
+      "target": "n7",
+      "sourcePort": "mean_consistency",
+      "targetPort": "a"
+    },
+    {
+      "id": "e8",
+      "source": "n6",
+      "target": "n7",
+      "sourcePort": "mean_consistency",
+      "targetPort": "b"
+    },
+    {
+      "id": "e9",
+      "source": "n5",
+      "target": "n7",
+      "sourcePort": "proposed_mapping",
+      "targetPort": "c"
+    },
+    {
+      "id": "e10",
+      "source": "n7",
+      "target": "n8",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
   ]
 }

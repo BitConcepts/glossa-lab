@@ -1,28 +1,237 @@
 {
   "id": "indus_phase9_p385_phoneme_test",
-  "name": "Phase 9: P385 Phoneme Test — /n/ vs /ku/ (H1 Resolution)",
-  "description": "Resolves the P385 phoneme conflict: SA evidence assigns P385=/n/ (genitive, consistency 0.8591) while CAS assigns P385=/ku/ (dative). Runs two SA arms with identical settings against South Dravidian LM, differing only in P385 anchor assignment. Higher consistency identifies the structurally supported phoneme. Both are valid Dravidian suffixes — the corpus structure decides. Also tests P385=/n/ against Pali as falsification control.",
+  "name": "Phase 9: P385 Phoneme Test \u2014 /n/ vs /ku/ (H1 Resolution)",
+  "description": "Resolves the P385 phoneme conflict: SA evidence assigns P385=/n/ (genitive, consistency 0.8591) while CAS assigns P385=/ku/ (dative). Runs two SA arms with identical settings against South Dravidian LM, differing only in P385 anchor assignment. Higher consistency identifies the structurally supported phoneme. Both are valid Dravidian suffixes \u2014 the corpus structure decides. Also tests P385=/n/ against Pali as falsification control.",
   "nodes": [
-    {"id":"n1","type":"expNode","data":{"atomicId":"BuiltinCorpus","label":"CISI Inscriptions","params":{"corpus":"indus_cisi"}}},
-    {"id":"n2","type":"expNode","data":{"atomicId":"BuiltinLM","label":"South Dravidian LM","params":{"language":"south_dravidian"}}},
-    {"id":"n3","type":"expNode","data":{"atomicId":"BuiltinLM","label":"Pali Control LM","params":{"language":"pali"}}},
-    {"id":"n4","type":"expNode","data":{"atomicId":"SADecipher","label":"SA: P385=n (genitive)","params":{"n_seeds":5,"max_iterations":4000,"ocp_weight":0.0,"n_restarts":2,"anchors":{"P385":"n","P324":"k","P122":"a","P086":"m","P060":"i","P332":"o"}}}},
-    {"id":"n5","type":"expNode","data":{"atomicId":"SADecipher","label":"SA: P385=ku (dative)","params":{"n_seeds":5,"max_iterations":4000,"ocp_weight":0.0,"n_restarts":2,"anchors":{"P385":"ku","P324":"k","P122":"a","P086":"m","P060":"i","P332":"o"}}}},
-    {"id":"n6","type":"expNode","data":{"atomicId":"SADecipher","label":"SA: P385=n vs Pali (control)","params":{"n_seeds":5,"max_iterations":4000,"ocp_weight":0.0,"n_restarts":2,"anchors":{"P385":"n","P324":"k","P122":"a","P086":"m","P060":"i","P332":"o"}}}},
-    {"id":"n7","type":"expNode","data":{"atomicId":"Merger","label":"Compare All Arms","params":{}}},
-    {"id":"n8","type":"expNode","data":{"atomicId":"JSONExport","label":"Export P385 Test","params":{"filename":"phase9_p385_phoneme_test.json"}}}
+    {
+      "id": "n1",
+      "type": "expNode",
+      "position": {
+        "x": 60,
+        "y": 60
+      },
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "CISI Inscriptions",
+        "params": {
+          "corpus": "indus_cisi"
+        }
+      }
+    },
+    {
+      "id": "n2",
+      "type": "expNode",
+      "position": {
+        "x": 60,
+        "y": 210
+      },
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "South Dravidian LM",
+        "params": {
+          "language": "south_dravidian"
+        }
+      }
+    },
+    {
+      "id": "n3",
+      "type": "expNode",
+      "position": {
+        "x": 60,
+        "y": 360
+      },
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Pali Control LM",
+        "params": {
+          "language": "pali"
+        }
+      }
+    },
+    {
+      "id": "n4",
+      "type": "expNode",
+      "position": {
+        "x": 315,
+        "y": 60
+      },
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA: P385=n (genitive)",
+        "params": {
+          "n_seeds": 5,
+          "max_iterations": 4000,
+          "ocp_weight": 0,
+          "n_restarts": 2,
+          "anchors": {
+            "P385": "n",
+            "P324": "k",
+            "P122": "a",
+            "P086": "m",
+            "P060": "i",
+            "P332": "o"
+          }
+        }
+      }
+    },
+    {
+      "id": "n5",
+      "type": "expNode",
+      "position": {
+        "x": 315,
+        "y": 210
+      },
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA: P385=ku (dative)",
+        "params": {
+          "n_seeds": 5,
+          "max_iterations": 4000,
+          "ocp_weight": 0,
+          "n_restarts": 2,
+          "anchors": {
+            "P385": "ku",
+            "P324": "k",
+            "P122": "a",
+            "P086": "m",
+            "P060": "i",
+            "P332": "o"
+          }
+        }
+      }
+    },
+    {
+      "id": "n6",
+      "type": "expNode",
+      "position": {
+        "x": 315,
+        "y": 360
+      },
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA: P385=n vs Pali (control)",
+        "params": {
+          "n_seeds": 5,
+          "max_iterations": 4000,
+          "ocp_weight": 0,
+          "n_restarts": 2,
+          "anchors": {
+            "P385": "n",
+            "P324": "k",
+            "P122": "a",
+            "P086": "m",
+            "P060": "i",
+            "P332": "o"
+          }
+        }
+      }
+    },
+    {
+      "id": "n7",
+      "type": "expNode",
+      "position": {
+        "x": 570,
+        "y": 210
+      },
+      "data": {
+        "atomicId": "Merger",
+        "label": "Compare All Arms",
+        "params": {}
+      }
+    },
+    {
+      "id": "n8",
+      "type": "expNode",
+      "position": {
+        "x": 825,
+        "y": 210
+      },
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Export P385 Test",
+        "params": {
+          "filename": "phase9_p385_phoneme_test.json"
+        }
+      }
+    }
   ],
   "edges": [
-    {"id": "e1", "source": "n1", "sourcePort": "sequences", "target": "n4", "targetPort": "sequences"},
-    {"id": "e2", "source": "n1", "sourcePort": "sequences", "target": "n5", "targetPort": "sequences"},
-    {"id": "e3", "source": "n1", "sourcePort": "sequences", "target": "n6", "targetPort": "sequences"},
-    {"id": "e4", "source": "n2", "sourcePort": "lm", "target": "n4", "targetPort": "lm"},
-    {"id": "e5", "source": "n2", "sourcePort": "lm", "target": "n5", "targetPort": "lm"},
-    {"id": "e6", "source": "n3", "sourcePort": "lm", "target": "n6", "targetPort": "lm"},
-    {"id": "e7", "source": "n4", "sourcePort": "mean_consistency", "target": "n7", "targetPort": "a"},
-    {"id": "e8", "source": "n5", "sourcePort": "mean_consistency", "target": "n7", "targetPort": "b"},
-    {"id": "e9", "source": "n6", "sourcePort": "mean_consistency", "target": "n7", "targetPort": "c"},
-    {"id": "e10", "source": "n4", "sourcePort": "proposed_mapping", "target": "n7", "targetPort": "d"},
-    {"id": "e11", "source": "n7", "sourcePort": "json", "target": "n8", "targetPort": "data"}
+    {
+      "id": "e1",
+      "source": "n1",
+      "target": "n4",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "n1",
+      "target": "n5",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "n1",
+      "target": "n6",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e4",
+      "source": "n2",
+      "target": "n4",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e5",
+      "source": "n2",
+      "target": "n5",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e6",
+      "source": "n3",
+      "target": "n6",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e7",
+      "source": "n4",
+      "target": "n7",
+      "sourcePort": "mean_consistency",
+      "targetPort": "a"
+    },
+    {
+      "id": "e8",
+      "source": "n5",
+      "target": "n7",
+      "sourcePort": "mean_consistency",
+      "targetPort": "b"
+    },
+    {
+      "id": "e9",
+      "source": "n6",
+      "target": "n7",
+      "sourcePort": "mean_consistency",
+      "targetPort": "c"
+    },
+    {
+      "id": "e10",
+      "source": "n4",
+      "target": "n7",
+      "sourcePort": "proposed_mapping",
+      "targetPort": "d"
+    },
+    {
+      "id": "e11",
+      "source": "n7",
+      "target": "n8",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
   ]
 }

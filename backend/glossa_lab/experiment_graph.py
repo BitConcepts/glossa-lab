@@ -1838,7 +1838,9 @@ for _d in [
                                "description":"If True, retain sequences that become empty after filtering."}}},
         fn=_token_filter),
     AtomicNodeDef("Merger","Result Merger","Transforms",
-        "Merge two or more upstream results into one JSON dict.",
+        "Merge two or more upstream results into one JSON dict. "
+        "Inputs grow automatically: wire any output into the last slot and a new empty slot appears. "
+        "Supports up to 26 inputs (a–z) before switching to a2, b2, … naming.",
         inputs=[
             {"name":"a","type":"any","required":True},
             {"name":"b","type":"any","required":False},
@@ -1847,7 +1849,7 @@ for _d in [
             {"name":"e","type":"any","required":False},
         ],
         outputs=[{"name":"json","type":"json"}],
-        params_schema={"type":"object","properties":{}},
+        params_schema={"type":"object","properties":{},"variable_inputs":True},
         fn=_merger),
     AtomicNodeDef("JSONExport","JSON Export","Outputs",
         "Save result to a JSON file in reports/.",

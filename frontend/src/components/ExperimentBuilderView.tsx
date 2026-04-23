@@ -480,8 +480,8 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
   const [fitTrigger, setFitTrigger] = useState(0);
 
-  // Multi-run state
-  type ExpRun = { controller: AbortController; startTime: number; currentLabel: string; idx: number; total: number };
+  // Multi-run state — keyed by unique runKey (expId:timestamp), not expId, to allow parallel runs
+  type ExpRun = { controller: AbortController; startTime: number; currentLabel: string; idx: number; total: number; expId: string };
   const [activeRuns, setActiveRuns] = useState<Record<string, ExpRun>>({});
   const activeRunsRef = useRef<Record<string, ExpRun>>({});
   useEffect(() => { activeRunsRef.current = activeRuns; }, [activeRuns]);
@@ -492,10 +492,53 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     const t = setInterval(() => setTick(n => n + 1), 1000);
     return () => clearInterval(t);
   }, [hasActiveRuns]);
-  const getElapsed = (id: string) => {
-    const r = activeRuns[id]; if (!r) return 0;
-    return Math.floor((Date.now() - r.startTime) / 1000);
+
+  // Helpers: check / iterate runs per experiment
+  const getExpRuns  = useCallback((expId: string) => Object.values(activeRuns).filter(r => r.expId === expId), [activeRuns]);
+  const isExpRunning = useCallback((expId: string) => Object.values(activeRuns).some(r => r.expId === expId), [activeRuns]);
+  const getElapsed  = (run: ExpRun | undefined) => {
+    if (!run) return 0;
+    return Math.floor((Date.now() - run.startTime) / 1000);
   };
+
+  // ── Undo / Redo history ────────────────────────────────────────────────────
+  type HistorySnap = { nodes: Node<ExpNodeData>[]; edges: Edge[] };
+  const historyRef       = useRef<HistorySnap[]>([]);
+  const historyIdxRef    = useRef(-1);
+  const isRestoringRef   = useRef(false);
+  const isDraggingNodeRef = useRef(false);
+  const historyTimerRef  = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const pushHistory = useCallback((ns: Node<ExpNodeData>[], es: Edge[]) => {
+    if (isRestoringRef.current) return;
+    const snap: HistorySnap = { nodes: ns.map(n => ({ ...n })), edges: es.map(e => ({ ...e })) };
+    const trimmed = historyRef.current.slice(0, historyIdxRef.current + 1);
+    trimmed.push(snap);
+    if (trimmed.length > 150) trimmed.shift();
+    historyRef.current = trimmed;
+    historyIdxRef.current = trimmed.length - 1;
+  }, []);
+
+  const undo = useCallback(() => {
+    if (historyIdxRef.current <= 0) return;
+    isRestoringRef.current = true;
+    historyIdxRef.current -= 1;
+    const snap = historyRef.current[historyIdxRef.current];
+    if (snap) { setNodes(snap.nodes); setEdges(snap.edges); }
+    requestAnimationFrame(() => { isRestoringRef.current = false; });
+  }, []);
+
+  const redo = useCallback(() => {
+    if (historyIdxRef.current >= historyRef.current.length - 1) return;
+    isRestoringRef.current = true;
+    historyIdxRef.current += 1;
+    const snap = historyRef.current[historyIdxRef.current];
+    if (snap) { setNodes(snap.nodes); setEdges(snap.edges); }
+    requestAnimationFrame(() => { isRestoringRef.current = false; });
+  }, []);
+
+  const canUndo = historyIdxRef.current > 0;
+  const canRedo = historyIdxRef.current < historyRef.current.length - 1;
 
   // Panel layout — outer left-panel width + inner experiments/palette split
   const [leftW,   setLeftW]   = useState<number>(() => parseInt(localStorage.getItem("geb_lw")  ?? "250", 10));
@@ -522,6 +565,28 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   useEffect(() => { localStorage.setItem("geb_lw",   String(leftW)); }, [leftW]);
   useEffect(() => { localStorage.setItem("geb_exh",  String(expsH)); }, [expsH]);
   useEffect(() => { localStorage.setItem("geb_dock", dockL ? "left" : "right"); }, [dockL]);
+
+  // Debounced history push — fires after any nodes/edges change that isn't drag-in-progress or a restore
+  useEffect(() => {
+    if (isRestoringRef.current || isDraggingNodeRef.current) return;
+    if (historyTimerRef.current) clearTimeout(historyTimerRef.current);
+    historyTimerRef.current = setTimeout(() => pushHistory(nodes, edges), 120);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nodes, edges]);
+
+  // Keyboard Ctrl+Z / Ctrl+Y / Ctrl+Shift+Z for undo/redo
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      const tag = (e.target as HTMLElement)?.tagName?.toLowerCase();
+      if (tag === "input" || tag === "textarea") return;
+      if (e.ctrlKey || e.metaKey) {
+        if (e.key === "z" && !e.shiftKey) { e.preventDefault(); undo(); }
+        if (e.key === "y" || (e.key === "z" && e.shiftKey)) { e.preventDefault(); redo(); }
+      }
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, [undo, redo]);
 
   // Parse pending action from localStorage ONCE on mount.
   // "new" is immediate; "load"/"dup" wait for catalog (handled after loadExp below).
@@ -659,22 +724,22 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     finally { setSaving(false); }
   }, [activeExp, nodes, edges]);
 
-  // Run (streaming, multiple concurrent)
+  // Run (streaming) — each invocation gets a unique runKey so multiple parallel runs are supported.
   const doRun = useCallback(async (targetExp?: typeof activeExp) => {
     const exp = targetExp ?? activeExp;
     if (!exp?.id) return;
-    if (activeRunsRef.current[exp.id]) return;  // already running
     await doSave();
+    const runKey = `${exp.id}:${Date.now().toString(36)}`;
     const controller = new AbortController();
-    setActiveRuns(prev => ({ ...prev, [exp.id!]: { controller, startTime: Date.now(), currentLabel: "", idx: 0, total: 0 } }));
+    setActiveRuns(prev => ({ ...prev, [runKey]: { controller, startTime: Date.now(), currentLabel: "", idx: 0, total: 0, expId: exp.id! } }));
     setRunResult(null);
     window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "exp", running: true, id: exp.id, name: exp.name } }));
     try {
       for await (const ev of runGraphExperimentStream(exp.id!, {}, controller.signal)) {
         if (ev.event === "started") {
-          setActiveRuns(prev => ({ ...prev, [exp.id!]: { ...prev[exp.id!], total: ev.node_count ?? 0 } }));
+          setActiveRuns(prev => prev[runKey] ? { ...prev, [runKey]: { ...prev[runKey], total: ev.node_count ?? 0 } } : prev);
         } else if (ev.event === "node_start" && ev.nid) {
-          setActiveRuns(prev => ({ ...prev, [exp.id!]: { ...prev[exp.id!], currentLabel: ev.label ?? "", idx: ev.idx ?? 0, total: ev.total ?? 0 } }));
+          setActiveRuns(prev => prev[runKey] ? { ...prev, [runKey]: { ...prev[runKey], currentLabel: ev.label ?? "", idx: ev.idx ?? 0, total: ev.total ?? 0 } } : prev);
           if (activeExp?.id === exp.id) {
             setNodes(prev => prev.map(n => ({ ...n, data: { ...n.data, runStatus: n.id === ev.nid ? "running" : (n.data.runStatus === "running" ? "idle" : n.data.runStatus) } as ExpNodeData })));
           }
@@ -694,22 +759,24 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
         }
       }
     } catch (e) {
-      const status = (e instanceof DOMException && e.name === "AbortError") ? "fail" : "fail";
-      if (status === "fail" && !(e instanceof DOMException && e.name === "AbortError")) {
+      if (!(e instanceof DOMException && e.name === "AbortError")) {
         setRunResult(`Error: ${e instanceof Error ? e.message : "run failed"}`);
       }
-      setActiveRuns(prev => { const n = { ...prev }; delete n[exp.id!]; return n; });
+      setActiveRuns(prev => { const n = { ...prev }; delete n[runKey]; return n; });
       window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "exp", running: false, id: exp.id, status: "fail" } }));
       return;
     }
-    setActiveRuns(prev => { const n = { ...prev }; delete n[exp.id!]; return n; });
-    // Determine success from runResult string (set by run_complete handler)
+    setActiveRuns(prev => { const n = { ...prev }; delete n[runKey]; return n; });
     const isSuccess = runResult?.startsWith("complete") ?? true;
     window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "exp", running: false, id: exp.id, status: isSuccess ? "success" : "fail" } }));
   }, [activeExp, doSave, runResult]);
 
   const stopAll = useCallback(() => {
     Object.values(activeRunsRef.current).forEach(r => r.controller.abort());
+  }, []);
+
+  const stopExp = useCallback((expId: string) => {
+    Object.values(activeRunsRef.current).filter(r => r.expId === expId).forEach(r => r.controller.abort());
   }, []);
 
 
@@ -722,8 +789,25 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     if (activeExp?.id === id) { setActiveExp(null); setNodes([]); setEdges([]); }
   }, [deleteConfirm, activeExp]);
 
+  // Variable-input node helpers (Merger auto-grows when last input is wired)
+  const VARIABLE_INPUT_NODES = new Set(["Merger", "ResultMerger"]);
+  const nextInputName = (inputs: { name: string }[]) => {
+    const used = new Set(inputs.map(i => i.name));
+    const alpha = "abcdefghijklmnopqrstuvwxyz";
+    for (const c of alpha) if (!used.has(c)) return c;
+    for (let n = 2; n < 100; n++) for (const c of alpha) { const k = c + n; if (!used.has(k)) return k; }
+    return `in${inputs.length}`;
+  };
+
   // React Flow handlers
-  const onNodesChange = useCallback((ch: NodeChange[]) => setNodes(n => applyNodeChanges(ch, n) as Node<ExpNodeData>[]), []);
+  const onNodesChange = useCallback((ch: NodeChange[]) => {
+    // Track drag state so history doesn't push mid-drag
+    const hasDragStart = ch.some(c => c.type === "position" && (c as { dragging?: boolean }).dragging);
+    const hasDragStop  = ch.some(c => c.type === "position" && !(c as { dragging?: boolean }).dragging);
+    if (hasDragStart) isDraggingNodeRef.current = true;
+    if (hasDragStop)  isDraggingNodeRef.current = false;
+    setNodes(n => applyNodeChanges(ch, n) as Node<ExpNodeData>[]);
+  }, []);
   const onEdgesChange = useCallback((ch: EdgeChange[]) => setEdges(e => applyEdgeChanges(ch, e)), []);
   const onConnect = useCallback((c: Connection) => {
     const srcPort = c.sourceHandle?.replace("out__","") ?? "";
@@ -734,7 +818,20 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     const tgtType = (tgtNode?.data as ExpNodeData)?.inputs?.find(p => p.name === tgtPort)?.type ?? "any";
     const compatible = srcType === tgtType || srcType === "any" || tgtType === "any";
     const edgeColor = compatible ? (PORT_CLR[srcType] ?? PORT_CLR.any) : "#f59e0b";
-    setEdges(e => addEdge({ ...c, style: { stroke: edgeColor, strokeWidth: 2.5 }, label: compatible ? undefined : "⚠ type mismatch" }, e));
+    setEdges(e => addEdge({ ...c, id: `e_${Date.now().toString(36)}`, style: { stroke: edgeColor, strokeWidth: 2.5 }, label: compatible ? undefined : "⚠ type mismatch" }, e));
+    // Auto-grow variable-input nodes: when the last input slot is wired, add a new empty slot
+    if (tgtNode && VARIABLE_INPUT_NODES.has((tgtNode.data as ExpNodeData).atomicId)) {
+      const tnd = tgtNode.data as ExpNodeData;
+      if (tnd.inputs.length > 0 && tnd.inputs[tnd.inputs.length - 1].name === tgtPort) {
+        const newName = nextInputName(tnd.inputs);
+        setNodes(prev => prev.map(n =>
+          n.id === c.target
+            ? { ...n, data: { ...n.data, inputs: [...tnd.inputs, { name: newName, type: "any", required: false }] } as ExpNodeData }
+            : n
+        ));
+      }
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nodes]);
 
   const onNodeClick = useCallback((_: React.MouseEvent, n: Node) => { setSelectedNode(n as Node<ExpNodeData>); setInspectorOff(false); setCtxMenu(null); }, []);
@@ -801,11 +898,20 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
       { icon: "🔗", label: "Disconnect all", action: () => setEdges(e => e.filter(ed => ed.source !== nodeId && ed.target !== nodeId)) },
       { divider: true },
       { icon: "🗑", label: "Delete node", danger: true, action: () => { setNodes(n => n.filter(x => x.id !== nodeId)); setEdges(e => e.filter(ed => ed.source !== nodeId && ed.target !== nodeId)); if (selectedNode?.id === nodeId) setSelectedNode(null); }},
+      { divider: true },
+      { icon: "↩", label: "Undo", action: undo },
+      { icon: "↪", label: "Redo", action: redo },
     ];
-  }, [nodes, selectedNode]);
+  }, [nodes, selectedNode, undo, redo]);
 
   const paneCtxItems = useCallback((x: number, y: number): CtxItem[] => {
-    if (!activeExp) return [];  // no add-node menu when no experiment is open
+    if (!activeExp) return [   // No experiment open — offer workspace-level actions
+      { icon: "＋", label: "New Experiment",    action: () => setShowNew(true) },
+      { icon: "↑",  label: "Import from JSON",  action: () => importRef.current?.click() },
+      { divider: true },
+      { icon: "↩",  label: "Undo", action: undo },
+      { icon: "↪",  label: "Redo", action: redo },
+    ];
     if (!reactFlowWrapper.current) return [];
     const rect = reactFlowWrapper.current.getBoundingClientRect();
     const pos = { x: Math.round((x - rect.left - 80) / 15) * 15, y: Math.round((y - rect.top - 30) / 15) * 15 };
@@ -937,8 +1043,9 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
             {sortedFilteredExps.length === 0 && <div style={{ fontSize: 10, color: th.textFaint, fontStyle: "italic", padding: "4px 2px" }}>{palSearch ? "No matches." : "No graph experiments yet."}</div>}
             {sortedFilteredExps.map(e => {
               const active = activeExp?.id === e.id;
-              const isRunning = !!activeRuns[e.id];
-              const run = activeRuns[e.id];
+              const expRuns = getExpRuns(e.id);
+              const isRunning = expRuns.length > 0;
+              const latestRun = expRuns.sort((a, b) => b.startTime - a.startTime)[0];
               return (
                 <div key={e.id}
                   draggable
@@ -947,13 +1054,27 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
                   title="Click to open · Drag to canvas to add as SubExperiment node"
                   style={{ display: "flex", alignItems: "center", gap: 3, padding: "5px 6px", borderRadius: 5, marginBottom: 2, cursor: "pointer",
                     background: active ? th.activeBg : "transparent",
-                    border: `1px solid ${isRunning ? "#60a5fa40" : active ? "#7c3aed40" : "transparent"}` }}>
+                    border: `1px solid ${isRunning ? "#60a5fa60" : active ? "#7c3aed40" : "transparent"}` }}>
+                  {/* Pulsing ring indicator when running */}
+                  {isRunning && (
+                    <span style={{ position: "relative", display: "inline-flex", width: 8, height: 8, flexShrink: 0 }}>
+                      <span style={{ position: "absolute", inset: 0, borderRadius: "50%", background: "#60a5fa",
+                        animation: "glossa-pulse-ring 1.2s ease-out infinite" }} />
+                      <span style={{ position: "relative", display: "inline-block", width: 8, height: 8, borderRadius: "50%", background: "#60a5fa" }} />
+                    </span>
+                  )}
                   <span style={{ flex: 1, fontSize: 11, fontWeight: active ? 600 : 400, color: active ? th.activeText : th.text, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>🔀 {e.name}</span>
-                  {isRunning && run && <span style={{ fontSize: 8, color: "#60a5fa", fontWeight: 700, flexShrink: 0, whiteSpace: "nowrap" }}>⏳{getElapsed(e.id)}s</span>}
+                  {isRunning && latestRun && (
+                    <span style={{ fontSize: 8, color: "#60a5fa", fontWeight: 700, flexShrink: 0, whiteSpace: "nowrap" }}>
+                      {expRuns.length > 1 ? `×${expRuns.length} ` : ""}{getElapsed(latestRun)}s
+                    </span>
+                  )}
                   <span style={{ fontSize: 9, color: th.textFaint, flexShrink: 0 }}>{e.node_count}n</span>
-                  {!isRunning && e.id && (
+                  {/* Run button — always shown; clicking while running starts another parallel run */}
+                  {e.id && (
                     <button onClick={ev => { ev.stopPropagation(); void doRun({ id: e.id, name: e.name, description: e.description ?? "", nodes: [], edges: [] }); }}
-                      title="Run" style={{ border: "none", background: "none", color: "#22c55e", cursor: "pointer", fontSize: 10, padding: "0 2px", lineHeight: "18px", borderRadius: 3, flexShrink: 0 }}>▶</button>
+                      title={isRunning ? "Start another parallel run" : "Run"}
+                      style={{ border: "none", background: "none", color: isRunning ? "#60a5fa" : "#22c55e", cursor: "pointer", fontSize: 10, padding: "0 2px", lineHeight: "18px", borderRadius: 3, flexShrink: 0 }}>▶</button>
                   )}
                   <button onClick={ev => { ev.stopPropagation(); void doDeleteExp(e.id); }} title={deleteConfirm === e.id ? "Confirm?" : "Delete"}
                     style={{ border: "none", background: "none", color: deleteConfirm === e.id ? "#f87171" : th.textMuted, cursor: "pointer", fontSize: 10, padding: "0 3px", lineHeight: "18px", borderRadius: 3, flexShrink: 0 }}>
@@ -1030,12 +1151,16 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
         {activeExp && <span style={{ fontSize: 10, color: th.textMuted, maxWidth: 180, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{activeExp.name}</span>}
         {saveMsg && <span style={{ fontSize: 10, color: saveMsg === "Saved" ? "#22c55e" : "#ef4444", fontWeight: 600, flexShrink: 0 }}>{saveMsg}</span>}
         <div style={{ flex: 1 }} />
-        {/* Progress + Stop All */}
-        {activeExp?.id && activeRuns[activeExp.id] && (() => { const r = activeRuns[activeExp.id]; return (
-          <span style={{ fontSize: 10, color: "#60a5fa", fontWeight: 600, flexShrink: 0, whiteSpace: "nowrap" }}>
-            ⏳ {getElapsed(activeExp.id!)}s · {r.currentLabel.slice(0,18) || `${r.idx + 1}/${r.total}`}
-          </span>
-        ); })()}
+        {/* Active run progress for the current experiment */}
+        {activeExp?.id && isExpRunning(activeExp.id) && (() => {
+          const runs = getExpRuns(activeExp.id);
+          const r = runs.sort((a, b) => b.startTime - a.startTime)[0];
+          return (
+            <span style={{ fontSize: 10, color: "#60a5fa", fontWeight: 600, flexShrink: 0, whiteSpace: "nowrap" }}>
+              ⏳ {getElapsed(r)}s{runs.length > 1 ? ` ×${runs.length}` : ""}{r.currentLabel ? ` · ${r.currentLabel.slice(0,16)}` : ""}
+            </span>
+          );
+        })()}
         {hasActiveRuns && (
           <button onClick={stopAll} title="Stop all running experiments"
             style={{ padding: "3px 8px", border: "1px solid #ef444430", borderRadius: 5, cursor: "pointer", fontSize: 10, fontWeight: 600, background: "transparent", color: "#ef4444" }}>
@@ -1043,10 +1168,12 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
           </button>
         )}
         {[
+          { label: "↩ Undo",   title: "Undo (Ctrl+Z)",       disabled: !canUndo,                   action: undo },
+          { label: "↪ Redo",   title: "Redo (Ctrl+Y)",       disabled: !canRedo,                   action: redo },
           { label: "＋ New",    title: "New experiment",      action: () => setShowNew(true) },
           { label: "↑ Import",  title: "Import from JSON",    action: () => importRef.current?.click() },
-          { label: "↓ Export",  title: "Export to JSON",      disabled: !activeExp,             action: exportExp },
-          { label: saving ? "…" : "💾 Save", title: "Save",           disabled: saving || !activeExp,   action: () => void doSave() },
+          { label: "↓ Export",  title: "Export to JSON",      disabled: !activeExp,                 action: exportExp },
+          { label: saving ? "…" : "💾 Save", title: "Save",   disabled: saving || !activeExp,       action: () => void doSave() },
           { label: "⬦ Arrange", title: "Auto-arrange nodes",  disabled: !activeExp || nodes.length === 0, action: doArrange },
         ].map(({ label, title, action, disabled }) => (
           <button key={label} onClick={action} disabled={disabled} title={title}
@@ -1081,18 +1208,23 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
           )}
           {/* Floating run/stop button — top-center of canvas */}
           {activeExp?.id && nodes.length > 0 && (
-            <div style={{ position: "absolute", top: 12, left: "50%", transform: "translateX(-50%)", zIndex: 20 }}>
-              {activeRuns[activeExp.id] ? (
-                <button onClick={() => activeRuns[activeExp.id!]?.controller.abort()} title="Stop run"
-                  style={{ padding: "6px 16px", border: "2px solid #ef4444", borderRadius: 20, background: "rgba(69,10,10,0.9)", color: "#f87171", cursor: "pointer", fontSize: 12, fontWeight: 700, boxShadow: "0 2px 12px rgba(0,0,0,0.5)", whiteSpace: "nowrap", backdropFilter: "blur(4px)" }}>
+            <div style={{ position: "absolute", top: 12, left: "50%", transform: "translateX(-50%)", zIndex: 20, display: "flex", gap: 6 }}>
+              {isExpRunning(activeExp.id) && (
+                <button onClick={() => stopExp(activeExp.id!)} title="Stop all runs of this experiment"
+                  style={{ padding: "6px 14px", border: "2px solid #ef4444", borderRadius: 20, background: "rgba(69,10,10,0.9)", color: "#f87171", cursor: "pointer", fontSize: 12, fontWeight: 700, boxShadow: "0 2px 12px rgba(0,0,0,0.5)", whiteSpace: "nowrap", backdropFilter: "blur(4px)" }}>
                   ⏹ Stop
                 </button>
-              ) : (
-                <button onClick={() => void doRun()} title="Run experiment"
-                  style={{ padding: "6px 18px", border: "none", borderRadius: 20, background: "linear-gradient(135deg,#7c3aed,#4f46e5)", color: "#fff", cursor: "pointer", fontSize: 12, fontWeight: 700, boxShadow: "0 2px 12px rgba(0,0,0,0.4)", whiteSpace: "nowrap" }}>
-                  ▶ Run
-                </button>
               )}
+              <button onClick={() => void doRun()} title="Run experiment (parallel if already running)"
+                style={{ border: "none", background: "none", padding: 0, cursor: "pointer" }}>
+                <style>{`@keyframes glossa-pulse-ring{0%{transform:scale(1);opacity:.7}100%{transform:scale(2);opacity:0}}`}</style>
+                <span style={{ padding: "6px 18px", display: "inline-block", borderRadius: 20,
+                  background: isExpRunning(activeExp.id) ? "linear-gradient(135deg,#1d4ed8,#2563eb)" : "linear-gradient(135deg,#7c3aed,#4f46e5)",
+                  color: "#fff", fontSize: 12, fontWeight: 700,
+                  boxShadow: "0 2px 12px rgba(0,0,0,0.4)", whiteSpace: "nowrap" }}>
+                  {isExpRunning(activeExp.id) ? "▶ Run again" : "▶ Run"}
+                </span>
+              </button>
             </div>
           )}
           <ReactFlow
@@ -1127,18 +1259,18 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
         )}
       </div>
 
+      {/* Right-click context menu */}
+      {ctxMenu && (
+        <ContextMenu x={ctxMenu.x} y={ctxMenu.y} onClose={() => setCtxMenu(null)}
+          items={ctxMenu.type === "node" && ctxMenu.nodeId ? nodeCtxItems(ctxMenu.nodeId) : paneCtxItems(ctxMenu.x, ctxMenu.y)} />
+      )}
+
       {/* Run result banner */}
       {runResult && (
         <div style={{ flexShrink: 0, padding: "5px 12px", background: runResult.startsWith("Error") ? "#450a0a" : "#052e16", borderTop: `1px solid ${th.border}`, fontSize: 11, color: runResult.startsWith("Error") ? "#fca5a5" : "#86efac", display: "flex", justifyContent: "space-between" }}>
           <span>{runResult}</span>
           <button onClick={() => setRunResult(null)} style={{ border: "none", background: "none", cursor: "pointer", color: "inherit", fontSize: 11 }}>× dismiss</button>
         </div>
-      )}
-
-      {/* Context menu */}
-      {ctxMenu && (
-        <ContextMenu x={ctxMenu.x} y={ctxMenu.y} onClose={() => setCtxMenu(null)}
-          items={ctxMenu.type === "node" && ctxMenu.nodeId ? nodeCtxItems(ctxMenu.nodeId) : paneCtxItems(ctxMenu.x, ctxMenu.y)} />
       )}
 
       {/* New experiment dialog */}

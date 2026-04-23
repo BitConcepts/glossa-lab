@@ -451,6 +451,15 @@ function Inspector({ node, onClose, onParamChange, darkMode = true }: {
   );
 }
 
+/** Format seconds as M:SS or H:MM:SS */
+function fmtHMS(s: number): string {
+  const h = Math.floor(s / 3600);
+  const m = Math.floor((s % 3600) / 60);
+  const sec = Math.floor(s % 60);
+  if (h > 0) return `${h}:${String(m).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
+  return `${m}:${String(sec).padStart(2, "0")}`;
+}
+
 // ── Module-level exp-run store — survives component remounts / navigation ──────────
 // Kept outside the component so state is never lost when the user navigates away.
 type _ER = { controller: AbortController; startTime: number; currentLabel: string; idx: number; total: number; expId: string };
@@ -482,6 +491,20 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   const [saving, setSaving]     = useState(false);
   const [saveMsg, setSaveMsg]   = useState<string | null>(null);
   const [runResult, setRunResult] = useState<string | null>(null);
+
+  // Per-experiment run result cache — persisted across navigation (mirrors StudyBuilderView)
+  type ExpRunCacheEntry = { status: "success" | "fail"; ts: number };
+  const [expRunCache, setExpRunCache] = useState<Record<string, ExpRunCacheEntry>>(() => {
+    try { return JSON.parse(localStorage.getItem("geb_run_cache") ?? "{}") as Record<string, ExpRunCacheEntry>; }
+    catch { return {}; }
+  });
+  const saveToExpRunCache = useCallback((expId: string, status: "success" | "fail") => {
+    setExpRunCache(prev => {
+      const next = { ...prev, [expId]: { status, ts: Date.now() } };
+      localStorage.setItem("geb_run_cache", JSON.stringify(next));
+      return next;
+    });
+  }, []);
   const [showNew, setShowNew]   = useState(false);
   const [palSearch, setPalSearch] = useState("");
   const [ctxMenu, setCtxMenu]   = useState<{ x: number; y: number; type: "pane" | "node"; nodeId?: string } | null>(null);
@@ -744,6 +767,9 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     _erSet(prev => ({ ...prev, [runKey]: { controller, startTime: Date.now(), currentLabel: "", idx: 0, total: 0, expId: exp.id! } }));
     setRunResult(null);
     window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "exp", running: true, id: exp.id, name: exp.name } }));
+    // Use a local flag — DON’T rely on runResult state (it’s stale in this closure)
+    let runSucceeded = false;
+    let hadError = false;
     try {
       for await (const ev of runGraphExperimentStream(exp.id!, {}, controller.signal)) {
         if (ev.event === "started") {
@@ -755,13 +781,16 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
           }
         } else if (ev.event === "node_end" && ev.nid) {
           const st = ev.status === "error" ? "error" : "complete";
+          if (st === "error") hadError = true;
           if (activeExp?.id === exp.id) {
             setNodes(prev => prev.map(n => n.id === ev.nid ? { ...n, data: { ...n.data, runStatus: st } as ExpNodeData } : n));
           }
         } else if (ev.event === "run_complete") {
+          runSucceeded = true;
           const keys = Object.keys(ev.result || {}).slice(0, 4).join(", ");
           setRunResult(`complete: ${keys || "done"}`);
         } else if (ev.event === "run_error") {
+          hadError = true;
           setRunResult(`Error: ${ev.message ?? "run failed"}`);
           if (activeExp?.id === exp.id) {
             setNodes(prev => prev.map(n => ({ ...n, data: { ...n.data, runStatus: "error" } as ExpNodeData })));
@@ -770,16 +799,19 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
       }
     } catch (e) {
       if (!(e instanceof DOMException && e.name === "AbortError")) {
+        hadError = true;
         setRunResult(`Error: ${e instanceof Error ? e.message : "run failed"}`);
       }
       _erSet(prev => { const n = { ...prev }; delete n[runKey]; return n; });
+      saveToExpRunCache(exp.id!, "fail");
       window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "exp", running: false, id: exp.id, status: "fail" } }));
       return;
     }
     _erSet(prev => { const n = { ...prev }; delete n[runKey]; return n; });
-    const isSuccess = runResult?.startsWith("complete") ?? true;
-    window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "exp", running: false, id: exp.id, status: isSuccess ? "success" : "fail" } }));
-  }, [activeExp, doSave, runResult]);
+    const finalStatus: "success" | "fail" = (runSucceeded && !hadError) ? "success" : "fail";
+    saveToExpRunCache(exp.id!, finalStatus);
+    window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "exp", running: false, id: exp.id, status: finalStatus } }));
+  }, [activeExp, doSave, saveToExpRunCache]);
 
   const stopAll = useCallback(() => {
     Object.values(_erStore.runs).forEach(r => r.controller.abort());
@@ -1102,9 +1134,24 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
                     </span>
                   )}
                   <span style={{ flex: 1, fontSize: 11, fontWeight: active ? 600 : 400, color: active ? th.activeText : th.text, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>🔀 {e.name}</span>
-                  {isRunning && latestRun && (
-                    <span style={{ fontSize: 8, color: "#60a5fa", fontWeight: 700, flexShrink: 0, whiteSpace: "nowrap" }}>
-                      {expRuns.length > 1 ? `×${expRuns.length} ` : ""}{getElapsed(latestRun)}s
+                  {isRunning && latestRun && (() => {
+                    const elSec = getElapsed(latestRun);
+                    const pct = latestRun.total > 0 ? Math.round((latestRun.idx / latestRun.total) * 100) : null;
+                    const eta = (pct !== null && pct > 5) ? Math.round((elSec / pct) * (100 - pct)) : null;
+                    return (
+                      <span style={{ fontSize: 8, color: "#60a5fa", fontWeight: 700, flexShrink: 0, whiteSpace: "nowrap" }}>
+                        {pct !== null ? `${pct}%` : fmtHMS(elSec)}
+                        {eta !== null && ` ≈${fmtHMS(eta)}`}
+                      </span>
+                    );
+                  })()}
+                  {/* Last-run status badge (only when not currently running) */}
+                  {!isRunning && expRunCache[e.id ?? ""] && (
+                    <span style={{
+                      fontSize: 8, fontWeight: 700, flexShrink: 0,
+                      color: expRunCache[e.id ?? ""].status === "success" ? "#22c55e" : "#ef4444",
+                    }} title={expRunCache[e.id ?? ""].status === "success" ? "Last run succeeded" : "Last run failed"}>
+                      {expRunCache[e.id ?? ""].status === "success" ? "✓" : "✗"}
                     </span>
                   )}
                   <span style={{ fontSize: 9, color: th.textFaint, flexShrink: 0 }}>{e.node_count}n</span>
@@ -1199,9 +1246,16 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
         {activeExp?.id && isExpRunning(activeExp.id) && (() => {
           const runs = getExpRuns(activeExp.id);
           const r = runs.sort((a, b) => b.startTime - a.startTime)[0];
+          const elSec = getElapsed(r);
+          const pct  = r.total > 0 ? Math.round((r.idx / r.total) * 100) : null;
+          const eta  = (pct !== null && pct > 5) ? Math.round((elSec / pct) * (100 - pct)) : null;
           return (
             <span style={{ fontSize: 10, color: "#60a5fa", fontWeight: 600, flexShrink: 0, whiteSpace: "nowrap" }}>
-              ⏳ {getElapsed(r)}s{runs.length > 1 ? ` ×${runs.length}` : ""}{r.currentLabel ? ` · ${r.currentLabel.slice(0,16)}` : ""}
+              ⏳
+              {pct !== null ? ` ${pct}%` : ""}
+              {` ${fmtHMS(elSec)}`}
+              {eta !== null ? ` ≈${fmtHMS(eta)} left` : ""}
+              {r.currentLabel ? ` · ${r.currentLabel.slice(0, 14)}` : ""}
             </span>
           );
         })()}

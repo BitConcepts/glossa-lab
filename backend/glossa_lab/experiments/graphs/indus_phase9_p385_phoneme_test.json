@@ -19,9 +19,9 @@
     {"source":"n2","sourceHandle":"lm","target":"n4","targetHandle":"lm"},
     {"source":"n2","sourceHandle":"lm","target":"n5","targetHandle":"lm"},
     {"source":"n3","sourceHandle":"lm","target":"n6","targetHandle":"lm"},
-    {"source":"n4","sourceHandle":"consistency","target":"n7","targetHandle":"a"},
-    {"source":"n5","sourceHandle":"consistency","target":"n7","targetHandle":"b"},
-    {"source":"n6","sourceHandle":"consistency","target":"n7","targetHandle":"c"},
+    {"source":"n4","sourceHandle":"mean_consistency","target":"n7","targetHandle":"a"},
+    {"source":"n5","sourceHandle":"mean_consistency","target":"n7","targetHandle":"b"},
+    {"source":"n6","sourceHandle":"mean_consistency","target":"n7","targetHandle":"c"},
     {"source":"n4","sourceHandle":"proposed_mapping","target":"n7","targetHandle":"d"},
     {"source":"n7","sourceHandle":"json","target":"n8","targetHandle":"data"}
   ]

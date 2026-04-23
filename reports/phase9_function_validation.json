@@ -647,6 +647,7 @@
     "class_summary__MEDIAL": 55,
     "class_summary__MIXED": 8,
     "error": "Database not available",
+    "n_assignments": 0,
     "terminal_signs": [
       "P076",
       "P095",

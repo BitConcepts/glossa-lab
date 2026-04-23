@@ -68,14 +68,14 @@
     }
   ],
   "edges": [
-    {"source": "n1", "sourceHandle": "sequences", "target": "n2", "targetHandle": "sequences"},
-    {"source": "n1", "sourceHandle": "sequences", "target": "n3", "targetHandle": "sequences"},
-    {"source": "n1", "sourceHandle": "sequences", "target": "n5", "targetHandle": "sequences"},
-    {"source": "n2", "sourceHandle": "profiles", "target": "n5", "targetHandle": "profiles"},
-    {"source": "n2", "sourceHandle": "class_summary", "target": "n6", "targetHandle": "a"},
-    {"source": "n3", "sourceHandle": "sign_to_cluster", "target": "n6", "targetHandle": "b"},
-    {"source": "n4", "sourceHandle": "registry", "target": "n6", "targetHandle": "c"},
-    {"source": "n5", "sourceHandle": "sign_roles", "target": "n6", "targetHandle": "d"},
-    {"source": "n6", "sourceHandle": "json", "target": "n7", "targetHandle": "data"}
+    {"id": "e1", "source": "n1", "sourcePort": "sequences", "target": "n2", "targetPort": "sequences"},
+    {"id": "e2", "source": "n1", "sourcePort": "sequences", "target": "n3", "targetPort": "sequences"},
+    {"id": "e3", "source": "n1", "sourcePort": "sequences", "target": "n5", "targetPort": "sequences"},
+    {"id": "e4", "source": "n2", "sourcePort": "profiles", "target": "n5", "targetPort": "profiles"},
+    {"id": "e5", "source": "n2", "sourcePort": "class_summary", "target": "n6", "targetPort": "a"},
+    {"id": "e6", "source": "n3", "sourcePort": "sign_to_cluster", "target": "n6", "targetPort": "b"},
+    {"id": "e7", "source": "n4", "sourcePort": "registry", "target": "n6", "targetPort": "c"},
+    {"id": "e8", "source": "n5", "sourcePort": "sign_roles", "target": "n6", "targetPort": "d"},
+    {"id": "e9", "source": "n6", "sourcePort": "json", "target": "n7", "targetPort": "data"}
   ]
 }

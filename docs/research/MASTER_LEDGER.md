@@ -151,7 +151,8 @@ Each entry must include:
 **Summary**: Sent email to Dr. Andreas Fuls requesting collaboration on ICIT database access. CC: Mike Merkur. Attachment: glossa_lab_project_report.pdf (9KB — NOT FOUND LOCALLY, must recover from email). Full log: communications/DISCLOSURE_LOG.md (COMM-2026-001 and COMM-2026-002).  
 **Key Artifacts**: reports/fuls_contact_email.md, reports/fuls_email_draft_v4.txt  
 **Git Commit**: 98fd599  
-**Artifact Hashes**: [glossa_lab_project_report.pdf hash: PENDING — file not found locally]  
+**Artifact Hashes**:
+- glossa_lab_project_report.pdf: `2E06C644C713AB1355C15D229B0BA4B344994ADEB6491DB68BFF3671AD9010AA` (9,114 bytes; archived at communications/glossa_lab_project_report.pdf; recovered 2026-04-23)
 **External Parties**: Dr. Andreas Fuls (andreas.fuls@tu-berlin.de)  
 **Confidentiality**: CONTROLLED  
 **Status**: NO REPLY (as of 2026-04-23)

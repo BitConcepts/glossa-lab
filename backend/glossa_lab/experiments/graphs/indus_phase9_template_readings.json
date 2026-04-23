@@ -104,21 +104,21 @@
     }
   ],
   "edges": [
-    {"source": "n1", "sourceHandle": "sequences", "target": "n3", "targetHandle": "sequences"},
-    {"source": "n1", "sourceHandle": "sequences", "target": "n4", "targetHandle": "sequences"},
-    {"source": "n1", "sourceHandle": "sequences", "target": "n5", "targetHandle": "sequences"},
-    {"source": "n1", "sourceHandle": "sequences", "target": "n7a", "targetHandle": "sequences"},
-    {"source": "n7a", "sourceHandle": "freq_map", "target": "n7b", "targetHandle": "freq_map"},
-    {"source": "n7a", "sourceHandle": "distinct_symbols", "target": "n7", "targetHandle": "distinct_symbols"},
-    {"source": "n7b", "sourceHandle": "h1", "target": "n7", "targetHandle": "h1"},
-    {"source": "n2", "sourceHandle": "lm", "target": "n4", "targetHandle": "lm"},
-    {"source": "n3", "sourceHandle": "profiles", "target": "n4", "targetHandle": "profiles"},
-    {"source": "n5", "sourceHandle": "cluster_sequences", "target": "n6", "targetHandle": "cluster_sequences"},
-    {"source": "n4", "sourceHandle": "sign_roles", "target": "n8", "targetHandle": "a"},
-    {"source": "n4", "sourceHandle": "phoneme_candidates", "target": "n8", "targetHandle": "b"},
-    {"source": "n6", "sourceHandle": "recurrent_templates", "target": "n8", "targetHandle": "c"},
-    {"source": "n6", "sourceHandle": "slot_occupancy", "target": "n8", "targetHandle": "d"},
-    {"source": "n7", "sourceHandle": "tier_classification", "target": "n8", "targetHandle": "e"},
-    {"source": "n8", "sourceHandle": "json", "target": "n9", "targetHandle": "data"}
+    {"id": "e1",  "source": "n1",  "sourcePort": "sequences",          "target": "n3",  "targetPort": "sequences"},
+    {"id": "e2",  "source": "n1",  "sourcePort": "sequences",          "target": "n4",  "targetPort": "sequences"},
+    {"id": "e3",  "source": "n1",  "sourcePort": "sequences",          "target": "n5",  "targetPort": "sequences"},
+    {"id": "e4",  "source": "n1",  "sourcePort": "sequences",          "target": "n7a", "targetPort": "sequences"},
+    {"id": "e5",  "source": "n7a", "sourcePort": "freq_map",           "target": "n7b", "targetPort": "freq_map"},
+    {"id": "e6",  "source": "n7a", "sourcePort": "distinct_symbols",   "target": "n7",  "targetPort": "distinct_symbols"},
+    {"id": "e7",  "source": "n7b", "sourcePort": "h1",                 "target": "n7",  "targetPort": "h1"},
+    {"id": "e8",  "source": "n2",  "sourcePort": "lm",                 "target": "n4",  "targetPort": "lm"},
+    {"id": "e9",  "source": "n3",  "sourcePort": "profiles",           "target": "n4",  "targetPort": "profiles"},
+    {"id": "e10", "source": "n5",  "sourcePort": "cluster_sequences",  "target": "n6",  "targetPort": "cluster_sequences"},
+    {"id": "e11", "source": "n4",  "sourcePort": "sign_roles",         "target": "n8",  "targetPort": "a"},
+    {"id": "e12", "source": "n4",  "sourcePort": "phoneme_candidates", "target": "n8",  "targetPort": "b"},
+    {"id": "e13", "source": "n6",  "sourcePort": "recurrent_templates","target": "n8",  "targetPort": "c"},
+    {"id": "e14", "source": "n6",  "sourcePort": "slot_occupancy",     "target": "n8",  "targetPort": "d"},
+    {"id": "e15", "source": "n7",  "sourcePort": "tier_classification","target": "n8",  "targetPort": "e"},
+    {"id": "e16", "source": "n8",  "sourcePort": "json",               "target": "n9",  "targetPort": "data"}
   ]
 }

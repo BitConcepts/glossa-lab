@@ -77,15 +77,15 @@
     }
   ],
   "edges": [
-    {"source": "n1", "sourceHandle": "sequences", "target": "n3", "targetHandle": "sequences"},
-    {"source": "n1", "sourceHandle": "sequences", "target": "n5", "targetHandle": "sequences"},
-    {"source": "n1", "sourceHandle": "sequences", "target": "n6", "targetHandle": "sequences"},
-    {"source": "n3", "sourceHandle": "cluster_sequences", "target": "n4", "targetHandle": "cluster_sequences"},
-    {"source": "n4", "sourceHandle": "recurrent_templates", "target": "n7", "targetHandle": "a"},
-    {"source": "n4", "sourceHandle": "slot_occupancy", "target": "n7", "targetHandle": "b"},
-    {"source": "n5", "sourceHandle": "class_summary", "target": "n7", "targetHandle": "c"},
-    {"source": "n6", "sourceHandle": "top_10", "target": "n7", "targetHandle": "d"},
-    {"source": "n2", "sourceHandle": "n_tokens", "target": "n7", "targetHandle": "e"},
-    {"source": "n7", "sourceHandle": "json", "target": "n8", "targetHandle": "data"}
+    {"id": "e1", "source": "n1", "sourcePort": "sequences", "target": "n3", "targetPort": "sequences"},
+    {"id": "e2", "source": "n1", "sourcePort": "sequences", "target": "n5", "targetPort": "sequences"},
+    {"id": "e3", "source": "n1", "sourcePort": "sequences", "target": "n6", "targetPort": "sequences"},
+    {"id": "e4", "source": "n3", "sourcePort": "cluster_sequences", "target": "n4", "targetPort": "cluster_sequences"},
+    {"id": "e5", "source": "n4", "sourcePort": "recurrent_templates", "target": "n7", "targetPort": "a"},
+    {"id": "e6", "source": "n4", "sourcePort": "slot_occupancy", "target": "n7", "targetPort": "b"},
+    {"id": "e7", "source": "n5", "sourcePort": "class_summary", "target": "n7", "targetPort": "c"},
+    {"id": "e8", "source": "n6", "sourcePort": "top_10", "target": "n7", "targetPort": "d"},
+    {"id": "e9", "source": "n2", "sourcePort": "n_tokens", "target": "n7", "targetPort": "e"},
+    {"id": "e10", "source": "n7", "sourcePort": "json", "target": "n8", "targetPort": "data"}
   ]
 }

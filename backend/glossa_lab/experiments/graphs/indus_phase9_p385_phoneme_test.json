@@ -13,16 +13,16 @@
     {"id":"n8","type":"expNode","data":{"atomicId":"JSONExport","label":"Export P385 Test","params":{"filename":"phase9_p385_phoneme_test.json"}}}
   ],
   "edges": [
-    {"source":"n1","sourceHandle":"sequences","target":"n4","targetHandle":"sequences"},
-    {"source":"n1","sourceHandle":"sequences","target":"n5","targetHandle":"sequences"},
-    {"source":"n1","sourceHandle":"sequences","target":"n6","targetHandle":"sequences"},
-    {"source":"n2","sourceHandle":"lm","target":"n4","targetHandle":"lm"},
-    {"source":"n2","sourceHandle":"lm","target":"n5","targetHandle":"lm"},
-    {"source":"n3","sourceHandle":"lm","target":"n6","targetHandle":"lm"},
-    {"source":"n4","sourceHandle":"mean_consistency","target":"n7","targetHandle":"a"},
-    {"source":"n5","sourceHandle":"mean_consistency","target":"n7","targetHandle":"b"},
-    {"source":"n6","sourceHandle":"mean_consistency","target":"n7","targetHandle":"c"},
-    {"source":"n4","sourceHandle":"proposed_mapping","target":"n7","targetHandle":"d"},
-    {"source":"n7","sourceHandle":"json","target":"n8","targetHandle":"data"}
+    {"id": "e1", "source": "n1", "sourcePort": "sequences", "target": "n4", "targetPort": "sequences"},
+    {"id": "e2", "source": "n1", "sourcePort": "sequences", "target": "n5", "targetPort": "sequences"},
+    {"id": "e3", "source": "n1", "sourcePort": "sequences", "target": "n6", "targetPort": "sequences"},
+    {"id": "e4", "source": "n2", "sourcePort": "lm", "target": "n4", "targetPort": "lm"},
+    {"id": "e5", "source": "n2", "sourcePort": "lm", "target": "n5", "targetPort": "lm"},
+    {"id": "e6", "source": "n3", "sourcePort": "lm", "target": "n6", "targetPort": "lm"},
+    {"id": "e7", "source": "n4", "sourcePort": "mean_consistency", "target": "n7", "targetPort": "a"},
+    {"id": "e8", "source": "n5", "sourcePort": "mean_consistency", "target": "n7", "targetPort": "b"},
+    {"id": "e9", "source": "n6", "sourcePort": "mean_consistency", "target": "n7", "targetPort": "c"},
+    {"id": "e10", "source": "n4", "sourcePort": "proposed_mapping", "target": "n7", "targetPort": "d"},
+    {"id": "e11", "source": "n7", "sourcePort": "json", "target": "n8", "targetPort": "data"}
   ]
 }

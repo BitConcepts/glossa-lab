@@ -32,8 +32,8 @@ Per Section 3.4 of the Operating Instructions: every external communication must
 | **Date/time sent** | 2026-04-01 at 19:17 (local time, timezone unconfirmed) |
 | **Subject** | [Unknown — to be recovered from email archive] |
 | **Body** | Initial project introduction email. Content archived in reports/fuls_contact_email.md (fuls_contact_email.md, 5,343 bytes). Draft versions: reports/fuls_email_draft_v2.txt, v3.txt, v4.txt |
-| **Attachments** | `glossa_lab_project_report.pdf` (9KB per email header) |
-| **Attachment status** | ⚠️ NOT FOUND LOCALLY — file not found at any path on local disk. Must be recovered from email sent items. Hash cannot be computed until recovered. |
+| **Attachments** | `glossa_lab_project_report.pdf` (9,114 bytes) |
+| **Attachment status** | ✓ RECOVERED — archived at `communications/glossa_lab_project_report.pdf`. SHA256: `2E06C644C713AB1355C15D229B0BA4B344994ADEB6491DB68BFF3671AD9010AA` |
 | **Claims made** | Presented Glossa-Lab as a computational Indus decipherment research tool; shared initial structural findings; requested access to ICIT database |
 | **Questions asked** | Requested collaboration / data access for ICIT database |
 | **Reply status** | NO REPLY RECEIVED (as of 2026-04-23) |
@@ -86,8 +86,8 @@ Per Section 3.4 of the Operating Instructions: every external communication must
 
 | Item | Priority | Status |
 |------|---------|--------|
-| Recover glossa_lab_project_report.pdf from email sent items | HIGH | PENDING |
-| Compute SHA256 hash of recovered PDF | HIGH | PENDING — blocked by recovery |
+| Recover glossa_lab_project_report.pdf from email sent items | HIGH | DONE — archived in communications/ |
+| Compute SHA256 hash of recovered PDF | HIGH | DONE — SHA256: 2E06C644C713AB1355C15D229B0BA4B344994ADEB6491DB68BFF3671AD9010AA |
 | Recover COMM-2026-002 body and attachments from email archive | MEDIUM | PENDING |
 | Consider re-contact to Dr. Fuls after 30 days (May 1, 2026) | MEDIUM | SCHEDULED |
 

@@ -1378,86 +1378,86 @@
     },
     "n_signs_classified": 80,
     "error": "No cluster_sequences \u2014 connect ClusterMapper.cluster_sequences",
-    "corpus_h1": 5.5,
-    "corpus_n_signs": 182,
+    "corpus_h1": 4.0097,
+    "corpus_n_signs": 20,
     "corpus_avg_word_len": 3.3,
-    "tier_classification": "Mixed / Unknown",
-    "nearest_script": "Linear B",
-    "nearest_distance": 0.4071,
+    "tier_classification": "Abjad (consonant alphabet)",
+    "nearest_script": "Old Hebrew",
+    "nearest_distance": 0.1608,
     "top3_nearest": [
       {
-        "name": "Linear B",
-        "tier": "Syllabary",
-        "distance": 0.4071
-      },
-      {
-        "name": "Cypriot Syllabary",
-        "tier": "Syllabary",
-        "distance": 0.6018
-      },
-      {
-        "name": "Old Persian Cuneiform",
-        "tier": "Syllabary",
-        "distance": 0.7376
-      }
-    ],
-    "all_ranked": [
-      {
-        "name": "Linear B",
-        "tier": "Syllabary",
-        "distance": 0.4071
-      },
-      {
-        "name": "Cypriot Syllabary",
-        "tier": "Syllabary",
-        "distance": 0.6018
-      },
-      {
-        "name": "Old Persian Cuneiform",
-        "tier": "Syllabary",
-        "distance": 0.7376
-      },
-      {
-        "name": "Indus Script",
-        "tier": "Unknown",
-        "distance": 0.7598
-      },
-      {
-        "name": "Ugaritic",
+        "name": "Old Hebrew",
         "tier": "Abjad",
-        "distance": 0.9214
-      },
-      {
-        "name": "Sumerian Cuneiform",
-        "tier": "Logosyllabic",
-        "distance": 0.9574
-      },
-      {
-        "name": "Proto-Sinaitic",
-        "tier": "Abjad",
-        "distance": 0.996
+        "distance": 0.1608
       },
       {
         "name": "Meroitic",
         "tier": "Abjad/Syllabic",
-        "distance": 1.0347
-      },
-      {
-        "name": "Old Hebrew",
-        "tier": "Abjad",
-        "distance": 1.08
+        "distance": 0.1757
       },
       {
         "name": "Phoenician",
         "tier": "Abjad",
-        "distance": 1.0853
+        "distance": 0.2107
+      }
+    ],
+    "all_ranked": [
+      {
+        "name": "Old Hebrew",
+        "tier": "Abjad",
+        "distance": 0.1608
+      },
+      {
+        "name": "Meroitic",
+        "tier": "Abjad/Syllabic",
+        "distance": 0.1757
+      },
+      {
+        "name": "Phoenician",
+        "tier": "Abjad",
+        "distance": 0.2107
+      },
+      {
+        "name": "Ugaritic",
+        "tier": "Abjad",
+        "distance": 0.2662
+      },
+      {
+        "name": "Proto-Sinaitic",
+        "tier": "Abjad",
+        "distance": 0.2988
+      },
+      {
+        "name": "Old Persian Cuneiform",
+        "tier": "Syllabary",
+        "distance": 0.4598
+      },
+      {
+        "name": "Cypriot Syllabary",
+        "tier": "Syllabary",
+        "distance": 0.604
+      },
+      {
+        "name": "Linear B",
+        "tier": "Syllabary",
+        "distance": 0.8313
+      },
+      {
+        "name": "Indus Script",
+        "tier": "Unknown",
+        "distance": 1.6338
+      },
+      {
+        "name": "Sumerian Cuneiform",
+        "tier": "Logosyllabic",
+        "distance": 2.0123
       },
       {
         "name": "Classical Chinese",
         "tier": "Logographic",
-        "distance": 2.0467
+        "distance": 3.0231
       }
     ],
-    "text": "Classified as: Mixed / Unknown. Nearest known script: Linear B (Syllabary)."
+    "text": "Classified as: Abjad (consonant alphabet). Nearest known script: Old Hebrew (Abjad)."
   }
 }

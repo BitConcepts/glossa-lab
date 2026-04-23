@@ -451,6 +451,14 @@ function Inspector({ node, onClose, onParamChange, darkMode = true }: {
   );
 }
 
+// ── Module-level exp-run store — survives component remounts / navigation ──────────
+// Kept outside the component so state is never lost when the user navigates away.
+type _ER = { controller: AbortController; startTime: number; currentLabel: string; idx: number; total: number; expId: string };
+type _ERM = Record<string, _ER>;
+const _erStore = { runs: {} as _ERM, cbs: new Set<(r: _ERM) => void>() };
+function _erSet(fn: (prev: _ERM) => _ERM) { _erStore.runs = fn(_erStore.runs); _erStore.cbs.forEach(c => c(_erStore.runs)); }
+function _erSub(cb: (r: _ERM) => void): () => void { _erStore.cbs.add(cb); return () => _erStore.cbs.delete(cb); }
+
 // ── Main ExperimentBuilderView ─────────────────────────────────────────────
 
 let _eid = 0;
@@ -480,11 +488,11 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
   const [fitTrigger, setFitTrigger] = useState(0);
 
-  // Multi-run state — keyed by unique runKey (expId:timestamp), not expId, to allow parallel runs
-  type ExpRun = { controller: AbortController; startTime: number; currentLabel: string; idx: number; total: number; expId: string };
-  const [activeRuns, setActiveRuns] = useState<Record<string, ExpRun>>({});
-  const activeRunsRef = useRef<Record<string, ExpRun>>({});
-  useEffect(() => { activeRunsRef.current = activeRuns; }, [activeRuns]);
+  // ── Active runs — backed by the module-level store (survives navigation) ──────────
+  type ExpRun = _ER;
+  const [activeRuns, setActiveRunsLocal] = useState<_ERM>(() => _erStore.runs);
+  // Subscribe to store updates so any run started before/after navigation is reflected
+  useEffect(() => _erSub(r => setActiveRunsLocal(r)), []);
   const [, setTick] = useState(0);
   const hasActiveRuns = Object.keys(activeRuns).length > 0;
   useEffect(() => {
@@ -494,9 +502,9 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   }, [hasActiveRuns]);
 
   // Helpers: check / iterate runs per experiment
-  const getExpRuns  = useCallback((expId: string) => Object.values(activeRuns).filter(r => r.expId === expId), [activeRuns]);
+  const getExpRuns   = useCallback((expId: string) => Object.values(activeRuns).filter(r => r.expId === expId), [activeRuns]);
   const isExpRunning = useCallback((expId: string) => Object.values(activeRuns).some(r => r.expId === expId), [activeRuns]);
-  const getElapsed  = (run: ExpRun | undefined) => {
+  const getElapsed   = (run: ExpRun | undefined) => {
     if (!run) return 0;
     return Math.floor((Date.now() - run.startTime) / 1000);
   };
@@ -724,22 +732,24 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     finally { setSaving(false); }
   }, [activeExp, nodes, edges]);
 
-  // Run (streaming) — each invocation gets a unique runKey so multiple parallel runs are supported.
+  // Run (streaming) — only one run per experiment allowed; state persists across navigation.
   const doRun = useCallback(async (targetExp?: typeof activeExp) => {
     const exp = targetExp ?? activeExp;
     if (!exp?.id) return;
+    // Single-run guard: don’t start if this experiment is already running
+    if (Object.values(_erStore.runs).some(r => r.expId === exp.id)) return;
     await doSave();
     const runKey = `${exp.id}:${Date.now().toString(36)}`;
     const controller = new AbortController();
-    setActiveRuns(prev => ({ ...prev, [runKey]: { controller, startTime: Date.now(), currentLabel: "", idx: 0, total: 0, expId: exp.id! } }));
+    _erSet(prev => ({ ...prev, [runKey]: { controller, startTime: Date.now(), currentLabel: "", idx: 0, total: 0, expId: exp.id! } }));
     setRunResult(null);
     window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "exp", running: true, id: exp.id, name: exp.name } }));
     try {
       for await (const ev of runGraphExperimentStream(exp.id!, {}, controller.signal)) {
         if (ev.event === "started") {
-          setActiveRuns(prev => prev[runKey] ? { ...prev, [runKey]: { ...prev[runKey], total: ev.node_count ?? 0 } } : prev);
+          _erSet(prev => prev[runKey] ? { ...prev, [runKey]: { ...prev[runKey], total: ev.node_count ?? 0 } } : prev);
         } else if (ev.event === "node_start" && ev.nid) {
-          setActiveRuns(prev => prev[runKey] ? { ...prev, [runKey]: { ...prev[runKey], currentLabel: ev.label ?? "", idx: ev.idx ?? 0, total: ev.total ?? 0 } } : prev);
+          _erSet(prev => prev[runKey] ? { ...prev, [runKey]: { ...prev[runKey], currentLabel: ev.label ?? "", idx: ev.idx ?? 0, total: ev.total ?? 0 } } : prev);
           if (activeExp?.id === exp.id) {
             setNodes(prev => prev.map(n => ({ ...n, data: { ...n.data, runStatus: n.id === ev.nid ? "running" : (n.data.runStatus === "running" ? "idle" : n.data.runStatus) } as ExpNodeData })));
           }
@@ -762,21 +772,21 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
       if (!(e instanceof DOMException && e.name === "AbortError")) {
         setRunResult(`Error: ${e instanceof Error ? e.message : "run failed"}`);
       }
-      setActiveRuns(prev => { const n = { ...prev }; delete n[runKey]; return n; });
+      _erSet(prev => { const n = { ...prev }; delete n[runKey]; return n; });
       window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "exp", running: false, id: exp.id, status: "fail" } }));
       return;
     }
-    setActiveRuns(prev => { const n = { ...prev }; delete n[runKey]; return n; });
+    _erSet(prev => { const n = { ...prev }; delete n[runKey]; return n; });
     const isSuccess = runResult?.startsWith("complete") ?? true;
     window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "exp", running: false, id: exp.id, status: isSuccess ? "success" : "fail" } }));
   }, [activeExp, doSave, runResult]);
 
   const stopAll = useCallback(() => {
-    Object.values(activeRunsRef.current).forEach(r => r.controller.abort());
+    Object.values(_erStore.runs).forEach(r => r.controller.abort());
   }, []);
 
   const stopExp = useCallback((expId: string) => {
-    Object.values(activeRunsRef.current).filter(r => r.expId === expId).forEach(r => r.controller.abort());
+    Object.values(_erStore.runs).filter(r => r.expId === expId).forEach(r => r.controller.abort());
   }, []);
 
 
@@ -985,16 +995,36 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   const [expSort, setExpSort] = useState<"name" | "nodes" | "id">("name");
   const [expSortAsc, setExpSortAsc] = useState(true);
 
+  // Starred / pinned experiments — floated to top of name sort, persisted
+  const [starredExps, setStarredExps] = useState<Set<string>>(() => {
+    try { return new Set(JSON.parse(localStorage.getItem("glossa_starred_exps") ?? "[]")); }
+    catch { return new Set(); }
+  });
+  const toggleStarExp = useCallback((id: string) => {
+    setStarredExps(prev => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      localStorage.setItem("glossa_starred_exps", JSON.stringify([...next]));
+      return next;
+    });
+  }, []);
+
   const sortedFilteredExps = useMemo(() => {
     const arr = savedExps.filter(e => !palSearch || e.name.toLowerCase().includes(palSearch.toLowerCase()));
     return arr.slice().sort((a, b) => {
+      if (expSort === "name") {
+        // Starred group first (sorted by name), then unstarred group (sorted by name)
+        const aS = starredExps.has(a.id ?? ""), bS = starredExps.has(b.id ?? "");
+        if (aS !== bS) return aS ? -1 : 1;
+        const c = a.name.localeCompare(b.name);
+        return expSortAsc ? c : -c;
+      }
       let cmp = 0;
-      if (expSort === "name")  cmp = a.name.localeCompare(b.name);
       if (expSort === "nodes") cmp = (a.node_count ?? 0) - (b.node_count ?? 0);
       if (expSort === "id")    cmp = a.id!.localeCompare(b.id ?? "");
       return expSortAsc ? cmp : -cmp;
     });
-  }, [savedExps, palSearch, expSort, expSortAsc]);
+  }, [savedExps, palSearch, expSort, expSortAsc, starredExps]);
 
   const filteredSavedExps = sortedFilteredExps;
   const catColors: Record<string, string> = { Sources: "#059669", Transforms: "#2563eb", Analysis: "#7c3aed", Outputs: "#0d9488" };
@@ -1020,8 +1050,8 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
           <div style={{ padding: "7px 7px 4px", borderBottom: `1px solid ${th.border}`, flexShrink: 0, height: expsH, overflowY: "auto", boxSizing: "border-box" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 3, marginBottom: 4 }}>
               <span style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: "uppercase", letterSpacing: 0.5, flex: 1 }}>Graph Experiments</span>
-              <button onClick={() => savedExps.filter(e => e.id && !activeRuns[e.id]).forEach(e => void doRun({ id: e.id!, name: e.name, description: e.description ?? "", nodes: [], edges: [] }))}
-                title="Run all experiments in parallel" disabled={savedExps.length === 0 || hasActiveRuns}
+              <button onClick={() => savedExps.filter(e => e.id && !isExpRunning(e.id)).forEach(e => void doRun({ id: e.id!, name: e.name, description: e.description ?? "", nodes: [], edges: [] }))}
+                title="Run all experiments (skips already-running ones)" disabled={savedExps.length === 0}
                 style={{ ...ebm, color: "#22c55e", borderColor: "#15803d40", opacity: savedExps.length === 0 || hasActiveRuns ? 0.4 : 1 }}>▶▶</button>
               <button onClick={() => setShowNew(true)} title="New graph experiment" style={{ ...ebm }}>+</button>
               <button onClick={() => importRef.current?.click()} title="Import" style={{ ...ebm }}>↑</button>
@@ -1046,6 +1076,7 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
               const expRuns = getExpRuns(e.id);
               const isRunning = expRuns.length > 0;
               const latestRun = expRuns.sort((a, b) => b.startTime - a.startTime)[0];
+              const isStarred = starredExps.has(e.id ?? "");
               return (
                 <div key={e.id}
                   draggable
@@ -1053,8 +1084,15 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
                   onClick={() => void loadExp(e.id)}
                   title="Click to open · Drag to canvas to add as SubExperiment node"
                   style={{ display: "flex", alignItems: "center", gap: 3, padding: "5px 6px", borderRadius: 5, marginBottom: 2, cursor: "pointer",
-                    background: active ? th.activeBg : "transparent",
-                    border: `1px solid ${isRunning ? "#60a5fa60" : active ? "#7c3aed40" : "transparent"}` }}>
+                    background: active ? th.activeBg : isStarred ? (darkMode ? "#1a110a" : "#fffbeb") : "transparent",
+                    border: `1px solid ${isRunning ? "#60a5fa60" : active ? "#7c3aed40" : isStarred ? "#f59e0b30" : "transparent"}` }}>
+                  {/* Star / pin button */}
+                  <button onClick={ev => { ev.stopPropagation(); toggleStarExp(e.id ?? ""); }}
+                    title={isStarred ? "Unpin" : "Pin to top"}
+                    style={{ border: "none", background: "none", cursor: "pointer", fontSize: 9, padding: 0, lineHeight: 1, flexShrink: 0,
+                      color: isStarred ? "#f59e0b" : th.textFaint, opacity: isStarred ? 1 : 0.35 }}>
+                    {isStarred ? "⭐" : "☆"}
+                  </button>
                   {/* Pulsing ring indicator when running */}
                   {isRunning && (
                     <span style={{ position: "relative", display: "inline-flex", width: 8, height: 8, flexShrink: 0 }}>
@@ -1070,11 +1108,17 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
                     </span>
                   )}
                   <span style={{ fontSize: 9, color: th.textFaint, flexShrink: 0 }}>{e.node_count}n</span>
-                  {/* Run button — always shown; clicking while running starts another parallel run */}
+                  {/* Run / running indicator button */}
                   {e.id && (
-                    <button onClick={ev => { ev.stopPropagation(); void doRun({ id: e.id, name: e.name, description: e.description ?? "", nodes: [], edges: [] }); }}
-                      title={isRunning ? "Start another parallel run" : "Run"}
-                      style={{ border: "none", background: "none", color: isRunning ? "#60a5fa" : "#22c55e", cursor: "pointer", fontSize: 10, padding: "0 2px", lineHeight: "18px", borderRadius: 3, flexShrink: 0 }}>▶</button>
+                    <button
+                      onClick={ev => { ev.stopPropagation(); if (!isRunning) void doRun({ id: e.id, name: e.name, description: e.description ?? "", nodes: [], edges: [] }); }}
+                      title={isRunning ? "Running…" : "Run"}
+                      disabled={isRunning}
+                      style={{ border: "none", background: "none", color: isRunning ? "#60a5fa" : "#22c55e",
+                        cursor: isRunning ? "default" : "pointer", fontSize: 10, padding: "0 2px",
+                        lineHeight: "18px", borderRadius: 3, flexShrink: 0, opacity: isRunning ? 0.6 : 1 }}>
+                      {isRunning ? "⏳" : "▶"}
+                    </button>
                   )}
                   <button onClick={ev => { ev.stopPropagation(); void doDeleteExp(e.id); }} title={deleteConfirm === e.id ? "Confirm?" : "Delete"}
                     style={{ border: "none", background: "none", color: deleteConfirm === e.id ? "#f87171" : th.textMuted, cursor: "pointer", fontSize: 10, padding: "0 3px", lineHeight: "18px", borderRadius: 3, flexShrink: 0 }}>
@@ -1215,16 +1259,19 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
                   ⏹ Stop
                 </button>
               )}
-              <button onClick={() => void doRun()} title="Run experiment (parallel if already running)"
-                style={{ border: "none", background: "none", padding: 0, cursor: "pointer" }}>
-                <style>{`@keyframes glossa-pulse-ring{0%{transform:scale(1);opacity:.7}100%{transform:scale(2);opacity:0}}`}</style>
-                <span style={{ padding: "6px 18px", display: "inline-block", borderRadius: 20,
-                  background: isExpRunning(activeExp.id) ? "linear-gradient(135deg,#1d4ed8,#2563eb)" : "linear-gradient(135deg,#7c3aed,#4f46e5)",
-                  color: "#fff", fontSize: 12, fontWeight: 700,
-                  boxShadow: "0 2px 12px rgba(0,0,0,0.4)", whiteSpace: "nowrap" }}>
-                  {isExpRunning(activeExp.id) ? "▶ Run again" : "▶ Run"}
-                </span>
-              </button>
+              {/* Run button — disabled while experiment is running (single-run enforced) */}
+              {!isExpRunning(activeExp.id) && (
+                <button onClick={() => void doRun()} title="Run experiment"
+                  style={{ border: "none", background: "none", padding: 0, cursor: "pointer" }}>
+                  <style>{`@keyframes glossa-pulse-ring{0%{transform:scale(1);opacity:.7}100%{transform:scale(2);opacity:0}}`}</style>
+                  <span style={{ padding: "6px 18px", display: "inline-block", borderRadius: 20,
+                    background: "linear-gradient(135deg,#7c3aed,#4f46e5)",
+                    color: "#fff", fontSize: 12, fontWeight: 700,
+                    boxShadow: "0 2px 12px rgba(0,0,0,0.4)", whiteSpace: "nowrap" }}>
+                    ▶ Run
+                  </span>
+                </button>
+              )}
             </div>
           )}
           <ReactFlow

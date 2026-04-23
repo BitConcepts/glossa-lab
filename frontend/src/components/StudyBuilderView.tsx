@@ -458,7 +458,14 @@ function AutoFitView({ trigger }: { trigger: number }) {
   return null;
 }
 
-// ── Main: StudyBuilderView ──────────────────────────────────────────────────
+// ── Module-level study-run store — survives component remounts / navigation ────────
+type _SR = { controller: AbortController; startTime: number; nodeStatuses: Record<string, string>; currentNodeLabel: string; currentNodeIdx: number; totalNodes: number };
+type _SRM = Record<string, _SR>;
+const _srStore = { runs: {} as _SRM, cbs: new Set<(r: _SRM) => void>() };
+function _srSet(fn: (prev: _SRM) => _SRM) { _srStore.runs = fn(_srStore.runs); _srStore.cbs.forEach(c => c(_srStore.runs)); }
+function _srSub(cb: (r: _SRM) => void): () => void { _srStore.cbs.add(cb); return () => _srStore.cbs.delete(cb); }
+
+// ── Main: StudyBuilderView ──────────────────────────────────────────
 
 let _nid = 0;
 function nextNodeId() { return `n_${Date.now()}_${_nid++}`; }
@@ -520,19 +527,11 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
   const sCanUndo = sHistoryIdxRef.current > 0;
   const sCanRedo = sHistoryIdxRef.current < sHistoryRef.current.length - 1;
 
-  // ── Multi-run state (one entry per running study) ─────────────────────
-  type ActiveRun = {
-    controller: AbortController;
-    startTime: number;
-    nodeStatuses: Record<string, string>;  // nodeId → status
-    currentNodeLabel: string;
-    currentNodeIdx: number;
-    totalNodes: number;
-  };
-  const [activeRuns, setActiveRuns] = useState<Record<string, ActiveRun>>({});
-  const activeRunsRef = useRef<Record<string, ActiveRun>>({});
-  useEffect(() => { activeRunsRef.current = activeRuns; }, [activeRuns]);
-  const [, setTick] = useState(0);  // force re-render for elapsed display
+  // ── Active runs — backed by module-level store (survives navigation) ────────────
+  type ActiveRun = _SR;
+  const [activeRuns, setActiveRunsLocal] = useState<_SRM>(() => _srStore.runs);
+  useEffect(() => _srSub(r => setActiveRunsLocal(r)), []);
+  const [, setTick] = useState(0);
   const hasActiveRuns = Object.keys(activeRuns).length > 0;
   useEffect(() => {
     if (!hasActiveRuns) return;
@@ -688,7 +687,7 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
     // Dispatch context for Glossa AI auto-inference
     window.dispatchEvent(new CustomEvent("glossa:context", { detail: { type: "study", id: s.id, name: s.name } }));
     // Build nodes — if a run is currently active for this study, restore its node statuses
-    const currentRun = activeRunsRef.current[s.id];
+    const currentRun = _srStore.runs[s.id];
     setNodes((s.graph.nodes ?? []).map(n => ({
       id: n.id, type: "glossaNode",
       position: { x: snap15((n.position?.x ?? 80)), y: snap15((n.position?.y ?? 80)) },
@@ -727,33 +726,28 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
     loadStudy(activeStudy);  // activeStudy always holds the last-saved graph
   }, [activeStudy, loadStudy]);
 
-  // ── Run (streaming, supports multiple concurrent) ──────────────────────
+  // ── Run (streaming) — one run per study; state persists across navigation. ────────
   const doRun = useCallback(async (target: StudyResponse) => {
-    if (activeRunsRef.current[target.id]) return;  // already running
+    if (_srStore.runs[target.id]) return;  // already running (single-run guard)
     setRunError(null);
-    if (target.id === activeStudy?.id) {
-      await doSave();
-    }
+    if (target.id === activeStudy?.id) await doSave();
     const controller = new AbortController();
-    const startTime = Date.now();
-    const initRun: ActiveRun = { controller, startTime, nodeStatuses: {}, currentNodeLabel: "", currentNodeIdx: 0, totalNodes: 0 };
-    setActiveRuns(prev => ({ ...prev, [target.id]: initRun }));
+    const initRun: ActiveRun = { controller, startTime: Date.now(), nodeStatuses: {}, currentNodeLabel: "", currentNodeIdx: 0, totalNodes: 0 };
+    _srSet(prev => ({ ...prev, [target.id]: initRun }));
     window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "study", running: true, id: target.id, name: target.name } }));
-
     try {
       for await (const ev of runStudyStream(target.id, controller.signal)) {
         if (ev.event === "started") {
-          setActiveRuns(prev => ({ ...prev, [target.id]: { ...prev[target.id], totalNodes: ev.node_count ?? 0 } }));
+          _srSet(prev => ({ ...prev, [target.id]: { ...prev[target.id], totalNodes: ev.node_count ?? 0 } }));
         } else if (ev.event === "node_start" && ev.nid) {
           const nid = ev.nid;
-          setActiveRuns(prev => ({
+          _srSet(prev => ({
             ...prev, [target.id]: { ...prev[target.id],
               currentNodeLabel: ev.label ?? "", currentNodeIdx: ev.idx ?? 0,
               totalNodes: ev.total ?? prev[target.id]?.totalNodes ?? 0,
               nodeStatuses: { ...prev[target.id]?.nodeStatuses, [nid]: "running" },
             }
           }));
-          // Update canvas if this is the active study
           if (activeStudy?.id === target.id || !activeStudy) {
             setNodes(prev => prev.map(n => ({
               ...n, data: { ...n.data,
@@ -762,18 +756,13 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
           }
         } else if (ev.event === "node_end" && ev.nid) {
           const nid = ev.nid; const st = (ev.status ?? "idle") as NodeRunStatus;
-          setActiveRuns(prev => ({
-            ...prev, [target.id]: { ...prev[target.id],
-              nodeStatuses: { ...prev[target.id]?.nodeStatuses, [nid]: st } }
-          }));
+          _srSet(prev => ({ ...prev, [target.id]: { ...prev[target.id], nodeStatuses: { ...prev[target.id]?.nodeStatuses, [nid]: st } } }));
           if (activeStudy?.id === target.id || !activeStudy) {
             setNodes(prev => prev.map(n => n.id === nid ? { ...n, data: { ...n.data, runStatus: st } } : n));
           }
         } else if (ev.event === "run_complete") {
           saveToRunCache(target.id, { completed: ev.completed ?? 0, errors: ev.errors ?? 0, nodeCount: ev.node_count ?? 0, ts: Date.now() });
-          if (activeStudy?.id === target.id || !activeStudy) {
-            setRunResult(ev as unknown as StudyRunResult);
-          }
+          if (activeStudy?.id === target.id || !activeStudy) setRunResult(ev as unknown as StudyRunResult);
         } else if (ev.event === "run_error") {
           setRunError(ev.message ?? "Run failed");
           saveToRunCache(target.id, { completed: 0, errors: 1, nodeCount: 0, ts: Date.now() });
@@ -783,23 +772,19 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
       if (!(e instanceof DOMException && e.name === "AbortError")) {
         setRunError(e instanceof Error ? e.message : "Run failed");
         saveToRunCache(target.id, { completed: 0, errors: 1, nodeCount: 0, ts: Date.now() });
-        window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "study", running: false, id: target.id, status: "fail" } }));
-      } else {
-        // Aborted by user — treat as failure so indicator shows red
-        window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "study", running: false, id: target.id, status: "fail" } }));
       }
+      window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "study", running: false, id: target.id, status: "fail" } }));
       return;
     } finally {
-      setActiveRuns(prev => { const n = { ...prev }; delete n[target.id]; return n; });
+      _srSet(prev => { const n = { ...prev }; delete n[target.id]; return n; });
     }
-    // Normal completion (no exception): status comes from run_complete event errors field
     const cached = runCache[target.id];
     const wasSuccess = !cached || cached.errors === 0;
     window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "study", running: false, id: target.id, status: wasSuccess ? "success" : "fail" } }));
   }, [activeStudy, doSave, saveToRunCache, runCache]);
 
   const stopAll = useCallback(() => {
-    Object.values(activeRunsRef.current).forEach(r => r.controller.abort());
+    Object.values(_srStore.runs).forEach(r => r.controller.abort());
   }, []);
 
   // Delete / duplicate / export / import study
@@ -1047,7 +1032,12 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
               .sort((a, b) => {
                 const aS = starredStudies.has(a.id), bS = starredStudies.has(b.id);
                 if (studySort === "star") return aS === bS ? 0 : aS ? -1 : 1;
-                if (studySort === "name")    { const c = a.name.localeCompare(b.name); return studySortAsc ? c : -c; }
+                if (studySort === "name") {
+                  // Starred group first (sorted by name), then unstarred group (sorted by name)
+                  if (aS !== bS) return aS ? -1 : 1;
+                  const c = a.name.localeCompare(b.name);
+                  return studySortAsc ? c : -c;
+                }
                 if (studySort === "updated") { const c = (a.updated_at ?? "").localeCompare(b.updated_at ?? ""); return studySortAsc ? c : -c; }
                 return 0;
               })

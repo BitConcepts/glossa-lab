@@ -58,6 +58,24 @@
       }
     },
     {
+      "id": "n7a",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FreqCounter",
+        "label": "Sign Frequency",
+        "params": {"min_count": 1, "top_n": 20}
+      }
+    },
+    {
+      "id": "n7b",
+      "type": "expNode",
+      "data": {
+        "atomicId": "EntropyCalc",
+        "label": "H1 Entropy",
+        "params": {}
+      }
+    },
+    {
       "id": "n7",
       "type": "expNode",
       "data": {
@@ -89,7 +107,10 @@
     {"source": "n1", "sourceHandle": "sequences", "target": "n3", "targetHandle": "sequences"},
     {"source": "n1", "sourceHandle": "sequences", "target": "n4", "targetHandle": "sequences"},
     {"source": "n1", "sourceHandle": "sequences", "target": "n5", "targetHandle": "sequences"},
-    {"source": "n1", "sourceHandle": "sequences", "target": "n7", "targetHandle": "sequences"},
+    {"source": "n1", "sourceHandle": "sequences", "target": "n7a", "targetHandle": "sequences"},
+    {"source": "n7a", "sourceHandle": "freq_map", "target": "n7b", "targetHandle": "freq_map"},
+    {"source": "n7a", "sourceHandle": "distinct_symbols", "target": "n7", "targetHandle": "distinct_symbols"},
+    {"source": "n7b", "sourceHandle": "h1", "target": "n7", "targetHandle": "h1"},
     {"source": "n2", "sourceHandle": "lm", "target": "n4", "targetHandle": "lm"},
     {"source": "n3", "sourceHandle": "profiles", "target": "n4", "targetHandle": "profiles"},
     {"source": "n5", "sourceHandle": "cluster_sequences", "target": "n6", "targetHandle": "cluster_sequences"},
@@ -97,7 +118,7 @@
     {"source": "n4", "sourceHandle": "phoneme_candidates", "target": "n8", "targetHandle": "b"},
     {"source": "n6", "sourceHandle": "recurrent_templates", "target": "n8", "targetHandle": "c"},
     {"source": "n6", "sourceHandle": "slot_occupancy", "target": "n8", "targetHandle": "d"},
-    {"source": "n7", "sourceHandle": "tier", "target": "n8", "targetHandle": "e"},
+    {"source": "n7", "sourceHandle": "tier_classification", "target": "n8", "targetHandle": "e"},
     {"source": "n8", "sourceHandle": "json", "target": "n9", "targetHandle": "data"}
   ]
 }

@@ -83,8 +83,8 @@
     {"source": "n2", "sourceHandle": "anchors", "target": "n6", "targetHandle": "anchors"},
     {"source": "n3", "sourceHandle": "lm", "target": "n5", "targetHandle": "lm"},
     {"source": "n4", "sourceHandle": "lm", "target": "n6", "targetHandle": "lm"},
-    {"source": "n5", "sourceHandle": "consistency", "target": "n7", "targetHandle": "a"},
-    {"source": "n6", "sourceHandle": "consistency", "target": "n7", "targetHandle": "b"},
+    {"source": "n5", "sourceHandle": "mean_consistency", "target": "n7", "targetHandle": "a"},
+    {"source": "n6", "sourceHandle": "mean_consistency", "target": "n7", "targetHandle": "b"},
     {"source": "n5", "sourceHandle": "proposed_mapping", "target": "n7", "targetHandle": "c"},
     {"source": "n7", "sourceHandle": "json", "target": "n8", "targetHandle": "data"}
   ]

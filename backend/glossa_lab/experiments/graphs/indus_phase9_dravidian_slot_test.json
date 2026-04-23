@@ -54,7 +54,7 @@
       "data": {
         "atomicId": "NgramCounter",
         "label": "Bigram / Trigram Stats",
-        "params": {"max_n": 3, "min_freq": 2}
+        "params": {"n": 2, "top_n": 100}
       }
     },
     {
@@ -84,8 +84,8 @@
     {"source": "n4", "sourceHandle": "recurrent_templates", "target": "n7", "targetHandle": "a"},
     {"source": "n4", "sourceHandle": "slot_occupancy", "target": "n7", "targetHandle": "b"},
     {"source": "n5", "sourceHandle": "class_summary", "target": "n7", "targetHandle": "c"},
-    {"source": "n6", "sourceHandle": "bigrams", "target": "n7", "targetHandle": "d"},
-    {"source": "n2", "sourceHandle": "n_signs", "target": "n7", "targetHandle": "e"},
+    {"source": "n6", "sourceHandle": "top_10", "target": "n7", "targetHandle": "d"},
+    {"source": "n2", "sourceHandle": "n_tokens", "target": "n7", "targetHandle": "e"},
     {"source": "n7", "sourceHandle": "json", "target": "n8", "targetHandle": "data"}
   ]
 }

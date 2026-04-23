@@ -481,6 +481,45 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
   const [edges, setEdges] = useState<Edge[]>([]);
   const [selectedNode, setSelectedNode] = useState<Node<NodeData> | null>(null);
 
+  // ── Undo / Redo ────────────────────────────────────────────────────
+  type SHistorySnap = { nodes: Node<NodeData>[]; edges: Edge[] };
+  const sHistoryRef     = useRef<SHistorySnap[]>([]);
+  const sHistoryIdxRef  = useRef(-1);
+  const sIsRestoringRef = useRef(false);
+  const sIsDraggingRef  = useRef(false);
+  const sHistTimerRef   = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const sPushHistory = useCallback((ns: Node<NodeData>[], es: Edge[]) => {
+    if (sIsRestoringRef.current) return;
+    const snap: SHistorySnap = { nodes: ns.map(n => ({ ...n })), edges: es.map(e => ({ ...e })) };
+    const trimmed = sHistoryRef.current.slice(0, sHistoryIdxRef.current + 1);
+    trimmed.push(snap);
+    if (trimmed.length > 150) trimmed.shift();
+    sHistoryRef.current = trimmed;
+    sHistoryIdxRef.current = trimmed.length - 1;
+  }, []);
+
+  const sUndo = useCallback(() => {
+    if (sHistoryIdxRef.current <= 0) return;
+    sIsRestoringRef.current = true;
+    sHistoryIdxRef.current -= 1;
+    const snap = sHistoryRef.current[sHistoryIdxRef.current];
+    if (snap) { setNodes(snap.nodes); setEdges(snap.edges); }
+    requestAnimationFrame(() => { sIsRestoringRef.current = false; });
+  }, []);
+
+  const sRedo = useCallback(() => {
+    if (sHistoryIdxRef.current >= sHistoryRef.current.length - 1) return;
+    sIsRestoringRef.current = true;
+    sHistoryIdxRef.current += 1;
+    const snap = sHistoryRef.current[sHistoryIdxRef.current];
+    if (snap) { setNodes(snap.nodes); setEdges(snap.edges); }
+    requestAnimationFrame(() => { sIsRestoringRef.current = false; });
+  }, []);
+
+  const sCanUndo = sHistoryIdxRef.current > 0;
+  const sCanRedo = sHistoryIdxRef.current < sHistoryRef.current.length - 1;
+
   // ── Multi-run state (one entry per running study) ─────────────────────
   type ActiveRun = {
     controller: AbortController;
@@ -798,8 +837,35 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
     e.target.value = "";
   }, [loadStudy]);
 
+  // Debounced history push + keyboard shortcuts for undo/redo
+  useEffect(() => {
+    if (sIsRestoringRef.current || sIsDraggingRef.current) return;
+    if (sHistTimerRef.current) clearTimeout(sHistTimerRef.current);
+    sHistTimerRef.current = setTimeout(() => sPushHistory(nodes, edges), 120);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nodes, edges]);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      const tag = (e.target as HTMLElement)?.tagName?.toLowerCase();
+      if (tag === "input" || tag === "textarea") return;
+      if (e.ctrlKey || e.metaKey) {
+        if (e.key === "z" && !e.shiftKey) { e.preventDefault(); sUndo(); }
+        if (e.key === "y" || (e.key === "z" && e.shiftKey)) { e.preventDefault(); sRedo(); }
+      }
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, [sUndo, sRedo]);
+
   // React Flow callbacks
-  const onNodesChange = useCallback((ch: NodeChange[]) => setNodes(n => applyNodeChanges(ch, n) as Node<NodeData>[]), []);
+  const onNodesChange = useCallback((ch: NodeChange[]) => {
+    const hasDragStart = ch.some(c => c.type === "position" && (c as { dragging?: boolean }).dragging);
+    const hasDragStop  = ch.some(c => c.type === "position" && !(c as { dragging?: boolean }).dragging);
+    if (hasDragStart) sIsDraggingRef.current = true;
+    if (hasDragStop)  sIsDraggingRef.current = false;
+    setNodes(n => applyNodeChanges(ch, n) as Node<NodeData>[]);
+  }, []);
   const onEdgesChange = useCallback((ch: EdgeChange[]) => setEdges(e => applyEdgeChanges(ch, e)), []);
   const onConnect = useCallback((c: Connection) => setEdges(e => addEdge({ ...c, reconnectable: true, style: { stroke: "#334155", strokeWidth: 2 } }, e)), []);
   const onNodeClick = useCallback((_: React.MouseEvent, n: Node) => { setSelectedNode(n as Node<NodeData>); setCtxMenu(null); setInspectorOff(false); }, []);
@@ -867,14 +933,17 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
   const nodeCtxItems = useCallback((nodeId: string): CtxItem[] => {
     const nd = nodes.find(n => n.id === nodeId);
     return [
-      { icon: "⎘", label: "Duplicate", action: () => { if (!nd) return; setNodes(n => [...n, { id: nextNodeId(), type: "glossaNode", position: { x: nd.position.x + 20, y: nd.position.y + 20 }, data: { ...nd.data, runStatus: "idle" } as NodeData }]); } },
+      { icon: "⍘", label: "Duplicate", action: () => { if (!nd) return; setNodes(n => [...n, { id: nextNodeId(), type: "glossaNode", position: { x: nd.position.x + 20, y: nd.position.y + 20 }, data: { ...nd.data, runStatus: "idle" } as NodeData }]); } },
       { icon: "✏", label: "Rename", action: () => { const lbl = prompt("Label:", nd?.data.label as string || ""); if (lbl !== null) setNodes(n => n.map(node => node.id === nodeId ? { ...node, data: { ...node.data, label: lbl } } : node)); } },
       { divider: true },
       { icon: "🔗", label: "Disconnect all edges", action: () => setEdges(e => e.filter(ed => ed.source !== nodeId && ed.target !== nodeId)) },
       { divider: true },
       { icon: "🗑", label: "Delete node", danger: true, action: () => { setNodes(n => n.filter(node => node.id !== nodeId)); setEdges(e => e.filter(ed => ed.source !== nodeId && ed.target !== nodeId)); if (selectedNode?.id === nodeId) setSelectedNode(null); } },
+      { divider: true },
+      { icon: "↩", label: "Undo", action: sUndo },
+      { icon: "↪", label: "Redo", action: sRedo },
     ];
-  }, [nodes, selectedNode]);
+  }, [nodes, selectedNode, sUndo, sRedo]);
 
   const edgeCtxItems = useCallback((edgeId: string): CtxItem[] => [
     { icon: "🗑", label: "Delete connection", danger: true, action: () => setEdges(e => e.filter(ed => ed.id !== edgeId)) },
@@ -882,7 +951,15 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
   ], []);
 
   const paneCtxItems = useCallback((x: number, y: number): CtxItem[] => {
-    if (!activeStudy) return [];  // no add-node menu when no project is open
+    const undoRedoItems: CtxItem[] = [
+      { divider: true },
+      { icon: "↩", label: `Undo${!sCanUndo ? " (nothing to undo)" : ""}`, action: sUndo },
+      { icon: "↪", label: `Redo${!sCanRedo ? " (nothing to redo)" : ""}`, action: sRedo },
+    ];
+    if (!activeStudy) return [
+      { icon: "＋", label: "New Study", action: () => setShowNewStudy(true) },
+      ...undoRedoItems,
+    ];
     return [
     { icon: "🧪", label: "Add Experiment", action: () => addNodeAt("experiment", x, y) },
     { icon: "⚙️", label: "Add Pipeline", action: () => addNodeAt("pipeline", x, y) },
@@ -894,12 +971,13 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
     { icon: "📝", label: "Add Note", action: () => addNodeAt("note", x, y) },
     { icon: "📄", label: "Add Report Link", action: () => addNodeAt("report", x, y) },
     { icon: "💡", label: "Add Hypothesis", action: () => addNodeAt("hypothesis", x, y) },
-    { icon: "↔️", label: "Add Compare", action: () => addNodeAt("compare", x, y) },
+    { icon: "⇔️", label: "Add Compare", action: () => addNodeAt("compare", x, y) },
     { divider: true },
     { icon: "⊞", label: "Select all", action: () => setNodes(n => n.map(node => ({ ...node, selected: true }))) },
     { icon: "✖", label: "Clear canvas", danger: true, action: () => { setNodes([]); setEdges([]); setSelectedNode(null); } },
+    ...undoRedoItems,
     ];
-  }, [activeStudy, addNodeAt]);
+  }, [activeStudy, addNodeAt, sUndo, sRedo, sCanUndo, sCanRedo]);
 
   // Outer panel divider drag (width)
   const onDividerDown = useCallback((e: React.MouseEvent) => {

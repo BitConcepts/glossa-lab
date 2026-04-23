@@ -7,7 +7,7 @@
  * - AI Chat tab appears when docked
  */
 import { useCallback, useEffect, useRef, useState } from "react";
-import { cancelJob, clearJobs, getJobResults, getEnvStatus, getLogStreamUrl, listJobs, purgeLog, runTerminalCommand, type EnvStatus, type JobResponse } from "../api";
+import { cancelJob, clearJobs, createJob, getJobResults, getEnvStatus, getLogStreamUrl, listJobs, purgeLog, runTerminalCommand, type EnvStatus, type JobResponse } from "../api";
 import { fmtDateTimeCompact } from "../dateFormat";
 import { ChatInline } from "./AIChatWindow";
 import { JobErrorModal } from "./JobsView";
@@ -162,7 +162,12 @@ function JobsPanel() {
   const [loading, setLoading] = useState(true);
   const [cancelling, setCancelling] = useState<Set<string>>(new Set());
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  const [errorModal, setErrorModal] = useState<{ title: string; message: string; detail?: string } | null>(null);
+  const [errorModal, setErrorModal] = useState<{
+    title: string; message: string; detail?: string;
+    params?: Record<string, unknown> | null;
+    job?: JobResponse | null;
+    onRetry?: (() => void) | null;
+  } | null>(null);
 
   const handleViewInReports = (expId: string) => {
     const filename = expId ? `${expId}.json` : "";
@@ -176,17 +181,41 @@ function JobsPanel() {
     }
   };
 
+  // Build a retry handler that re-submits the same job (minus runtime-tracking params)
+  const makeRetry = (job: JobResponse) => async () => {
+    const SKIP = new Set(["node_count", "nodes_done", "stall_reason"]);
+    const clean = Object.fromEntries(
+      Object.entries(job.params ?? {}).filter(([k]) => !k.startsWith("_") && !SKIP.has(k))
+    );
+    try {
+      await createJob({ name: `${job.name} (retry)`, pipeline: job.pipeline, params: clean });
+      await load();
+      toast("Job re-submitted", "info");
+    } catch (e) { toast(e instanceof Error ? e.message : "Retry failed", "error"); }
+  };
+
   const handleShowError = async (job: JobResponse) => {
+    // Build display params (strip internal keys)
+    const displayParams: Record<string, unknown> = {};
+    for (const [k, v] of Object.entries(job.params ?? {}))
+      if (!k.startsWith("_") && k !== "traceback") displayParams[k] = v;
+
     try {
       const data = await getJobResults(job.id);
-      const errMsg = (data as Record<string, unknown>).error as string ?? "Unknown error";
-      const trace  = (data as Record<string, unknown>).traceback as string ?? null;
-      setErrorModal({ title: job.name, message: errMsg, detail: trace ?? undefined });
+      const raw  = data as Record<string, unknown>;
+      const errMsg = (raw.error as string) ?? (raw.message as string) ?? (raw.detail as string) ?? "Unknown error";
+      const trace  = (raw.traceback as string) ?? null;
+      setErrorModal({
+        title: job.name, message: errMsg, detail: trace ?? undefined,
+        params: Object.keys(displayParams).length ? displayParams : null,
+        job, onRetry: makeRetry(job),
+      });
     } catch {
       setErrorModal({
         title: job.name,
         message: "Job failed. No detailed error was stored.",
-        detail: `Job ID: ${job.id}\nStatus: ${job.status}\nParams: ${JSON.stringify(job.params ?? {}, null, 2)}`,
+        params: Object.keys(displayParams).length ? displayParams : null,
+        job, onRetry: makeRetry(job),
       });
     }
   };
@@ -407,6 +436,9 @@ function JobsPanel() {
           title={errorModal.title}
           message={errorModal.message}
           detail={errorModal.detail}
+          params={errorModal.params}
+          job={errorModal.job}
+          onRetry={errorModal.onRetry}
           onClose={() => setErrorModal(null)}
         />
       )}

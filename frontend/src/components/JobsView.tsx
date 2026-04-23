@@ -11,6 +11,29 @@ import {
   JobResponse,
 } from "../api";
 
+// Internal runtime-only param keys that should NOT be re-submitted on retry
+const RUNTIME_PARAM_KEYS = new Set(["node_count", "nodes_done", "stall_reason"]);
+
+/** Build a clean params object suitable for re-submitting a job. */
+function buildRetryParams(params: Record<string, unknown>): Record<string, unknown> {
+  return Object.fromEntries(
+    Object.entries(params).filter(([k]) => !k.startsWith("_") && !RUNTIME_PARAM_KEYS.has(k))
+  );
+}
+
+/** Human-readable label for a params key. */
+function fmtParamKey(k: string): string {
+  return k.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+}
+
+/** Render a param value as a readable string (not raw JSON). */
+function fmtParamValue(v: unknown): string {
+  if (v === null || v === undefined) return "—";
+  if (typeof v === "boolean") return v ? "Yes" : "No";
+  if (typeof v === "object") return JSON.stringify(v); // compact for objects/arrays
+  return String(v);
+}
+
 // ── Helpers ─────────────────────────────────────────────────────────────────
 
 /** Try to parse a string as JSON; return the object or null. */
@@ -42,9 +65,11 @@ interface ErrorModalProps {
   message: string;
   detail?: string | null;
   params?: Record<string, unknown> | null;
+  job?: JobResponse | null;        // if supplied, enables Retry button
+  onRetry?: (() => void) | null;   // called on Retry — modal auto-closes
   onClose: () => void;
 }
-export function JobErrorModal({ title, message, detail, params, onClose }: ErrorModalProps) {
+export function JobErrorModal({ title, message, detail, params, job, onRetry, onClose }: ErrorModalProps) {
   const text = `${title}\n${message}${detail ? "\n" + detail : ""}`;
   const [copied, setCopied] = useState(false);
   const [showRaw, setShowRaw] = useState(false);
@@ -108,14 +133,14 @@ export function JobErrorModal({ title, message, detail, params, onClose }: Error
               <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
                 <tbody>
                   {Object.entries(params)
-                    .filter(([k]) => !k.startsWith("_") && k !== "traceback")
+            .filter(([k]) => !k.startsWith("_") && k !== "traceback")
                     .map(([k, v]) => (
                       <tr key={k} style={{ borderBottom: "1px solid #f3f4f6" }}>
                         <td style={{ padding: "4px 10px 4px 0", color: "#6b7280", fontWeight: 500,
-                          whiteSpace: "nowrap", verticalAlign: "top", width: "35%" }}>{k}</td>
+                          whiteSpace: "nowrap", verticalAlign: "top", width: "35%" }}>{fmtParamKey(k)}</td>
                         <td style={{ padding: "4px 0", color: "#111827", wordBreak: "break-all",
                           fontFamily: typeof v === "string" ? "inherit" : "monospace" }}>
-                          {typeof v === "object" ? JSON.stringify(v) : String(v ?? "—")}
+          {fmtParamValue(v)}
                         </td>
                       </tr>
                     ))}
@@ -150,9 +175,27 @@ export function JobErrorModal({ title, message, detail, params, onClose }: Error
 
         {/* Footer */}
         <div style={{ padding: "12px 20px", borderTop: "1px solid #f3f4f6",
-          display: "flex", justifyContent: "flex-end", gap: 8 }}>
-          <button onClick={onClose} style={{ padding: "6px 18px", border: "1px solid #d1d5db",
-            borderRadius: 6, background: "#fff", cursor: "pointer", fontSize: 13 }}>Close</button>
+          display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
+          {/* Left: job identity */}
+          {job && (
+            <div style={{ fontSize: 10, color: "#9ca3af", fontFamily: "monospace" }}>
+              Job ID: {job.id.slice(0, 12)}… &middot; {job.pipeline}
+            </div>
+          )}
+          {/* Right: action buttons */}
+          <div style={{ display: "flex", gap: 8, marginLeft: "auto" }}>
+            {onRetry && (
+              <button
+                onClick={() => { onRetry(); onClose(); }}
+                style={{ padding: "6px 16px", border: "none", borderRadius: 6,
+                  background: "#2563eb", color: "#fff", cursor: "pointer", fontSize: 13, fontWeight: 600 }}
+                title="Re-submit this job with the same parameters">
+                ↻ Retry
+              </button>
+            )}
+            <button onClick={onClose} style={{ padding: "6px 18px", border: "1px solid #d1d5db",
+              borderRadius: 6, background: "#fff", cursor: "pointer", fontSize: 13 }}>Close</button>
+          </div>
         </div>
       </div>
     </div>
@@ -176,7 +219,12 @@ export function JobsView() {
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Error modal
-  const [errorModal, setErrorModal] = useState<{ title: string; message: string; detail?: string; params?: Record<string, unknown> | null } | null>(null);
+  const [errorModal, setErrorModal] = useState<{
+    title: string; message: string; detail?: string;
+    params?: Record<string, unknown> | null;
+    job?: JobResponse | null;
+    onRetry?: (() => void) | null;
+  } | null>(null);
 
   const load = useCallback(async (manual = false) => {
     if (manual) setRefreshing(true);
@@ -198,6 +246,19 @@ export function JobsView() {
     const id = setInterval(load, 3000);
     getPipelineCatalog().then(setPipelines).catch(() => {});
     return () => clearInterval(id);
+  }, [load]);
+
+  const makeRetryHandler = useCallback((job: JobResponse) => async () => {
+    try {
+      await createJob({
+        name: `${job.name} (retry)`,
+        pipeline: job.pipeline,
+        params: buildRetryParams(job.params ?? {}),
+      });
+      await load();
+    } catch (e) {
+      alert(e instanceof Error ? e.message : "Retry failed");
+    }
   }, [load]);
 
   const handleClearJobs = async () => {
@@ -253,20 +314,22 @@ export function JobsView() {
           (raw.detail as string) ??
           JSON.stringify(raw).slice(0, 300);
         const trace  = (raw.traceback as string) ?? null;
-        setErrorModal({
+      setErrorModal({
           title: job.name,
           message: errMsg || "Unknown error — see stack trace below.",
           detail: trace ?? undefined,
           params: Object.keys(displayParams).length ? displayParams : null,
+          job,
+          onRetry: makeRetryHandler(job),
         });
       } catch {
         setErrorModal({
           title: job.name,
           message: "Job failed — no error details stored in the database.",
           detail: undefined,
-          params: Object.keys(displayParams).length ? displayParams : {
-            job_id: job.id, pipeline: job.pipeline,
-          },
+          params: Object.keys(displayParams).length ? displayParams : null,
+          job,
+          onRetry: makeRetryHandler(job),
         });
       }
       return;
@@ -558,6 +621,8 @@ export function JobsView() {
           message={errorModal.message}
           detail={errorModal.detail}
           params={errorModal.params}
+          job={errorModal.job}
+          onRetry={errorModal.onRetry}
           onClose={() => setErrorModal(null)}
         />
       )}

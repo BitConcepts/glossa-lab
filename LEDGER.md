@@ -4565,3 +4565,69 @@ Minimum conditions for Phase 9 clearance:
 - Phase 9 (linguistic hypothesis testing) is correctly BLOCKED by the hard review checklist
 
 Next step: Acquire multi-site corpus data (CISI Vol.2, updated mayig repo, Fuls catalog); re-run sprint phases 6-8 on expanded corpus; get human review gate clearance before proceeding to linguistic testing.
+
+
+---
+
+## [2026-04-23] Governance Infrastructure + Research Intelligence
+
+**Entry type**: snapshot + dataset_change  
+**Author**: Tristen Pierson / Oz (AI agent, Glossa-Lab)  
+**Git reference**: see commit hash below
+
+### Actions
+
+1. **Created Operating Instructions plan document** (Warp plan ID: 72d2b06d) implementing the 19-section governance framework for the Indus decipherment research project.
+
+2. **Created governance directory structure**: predictions/, validation/, communications/, ip/, snapshots/, publication/, docs/research/
+
+3. **Created all 17 required internal deliverables**:
+   - docs/research/MASTER_LEDGER.md (formal governance ledger with SHA256 hashes for 12 key artifacts)
+   - docs/research/CORPUS_DEFINITION.md
+   - docs/research/SIGN_INVENTORY.md
+   - docs/research/NORMALIZATION_RULES.md
+   - docs/research/STRUCTURAL_MODEL.md
+   - docs/research/BASELINE_COMPARISON.md
+   - docs/research/REPRODUCIBILITY_PROTOCOL.md
+   - docs/research/DECIPHERMENT_LIMITS.md
+   - docs/research/DECIPHERMENT_DOSSIER_v1.md
+   - docs/research/SIGNAL_STATUS.md (Signal Level: MODERATE)
+   - predictions/PREDICTION_REGISTER.md (9 registered predictions, PRED-2026-001 through 009)
+   - validation/VALIDATION_PLAN.md (4-tier validation plan)
+   - communications/DISCLOSURE_LOG.md (3 Dr. Fuls communications logged; PDF attachment flagged as missing)
+   - ip/IP_OWNERSHIP_NOTE.md (BitConcepts, LLC sole ownership)
+   - publication/EXPERT_SUMMARY_PACKAGE.md
+   - publication/GOVERNMENT_INQUIRY_PACKAGE.md (prize:  USD, Tamil Nadu)
+   - publication/PREPRINT_OUTLINE.md
+
+4. **Logged Dr. Fuls external communications** (COMM-2026-001, 002, 003): both April 1 emails and April 15 follow-up. glossa_lab_project_report.pdf attachment NOT FOUND locally; flagged for recovery.
+
+5. **Internet research for corpus expansion leads** logged in docs/research/CORPUS_EXPANSION_LEADS.md:
+   - Tamil Nadu graffiti (Keeladi): 15,184 potsherds, 90%+ similarity to IVC signs — HIGH PRIORITY lead
+   - Tamil Nadu  USD prize (updated from incorrect ₹1 crore)
+   - Dilmun Gulf-type seals: contact zone evidence, NOT bilingual (different language hypothesis, Laursen 2010)
+   - ASI: no open digital Indus dataset found; RTI recommended
+   - mayig corpus: current (last pushed 2025-04-16)
+
+6. **Launched Phase 9 experiments non-blocking**: indus_phase9_function_validation, indus_phase9_dravidian_slot_test, indus_phase9_template_readings
+
+### Signal Status
+- Level: MODERATE
+- Phase 9 gate: PASSED (85.3%)
+- Disclosure lock: ACTIVE
+
+### SHA256 Hashes (Key Artifacts)
+| File | SHA256 |
+|------|--------|
+| corpus_master.csv | CBC0ADB88E5E4EF55E6F68836F3A75D0428A83875A3CB847118352EE765818BD |
+| canonical_sign_registry.csv | 27C699EB098CAD010857A802602ACD32B4E7C4B9C7F2553ADDD0BD1756F9A358 |
+| sign_crosswalk_master.csv | DA1F2EA16FF8CE43370207CEFE2627B01ADC60D06B562F20890818C98D136338 |
+| yajnadevam_crosswalk_extended.csv | C796FD424A75AB40C642CCA40DB4FE08336F29BFA8C6CBF5AF81A68C19FD6085 |
+| global_class_stability.json | 4F015BD6BCCA283F10D33BB99CFDADEE148A06CDF449665128E144C9ED9B9F83 |
+| sign_clusters.json | B4D0293814F8FD587D0215D81B96A21AF63D490C39AF371BD039F672FC653F89 |
+| cross_site_stats.json | 5DC2498F0BC915F8B4DB472786E2554CFCE2AEE0B378D108F164DEC2185D7D4A |
+| holdatllc_sign_roles.json | 02030BA3B6980CD28BE638C469C079D6975A229D00A6AC2894F32DAA34681031 |
+| consolidated_structural_grammar.md | 1A59244D9D041AFE3CD8BA57F69F911E0B9EED64895454885D322C1E31715699 |
+| cluster_characterization.md | 0481142073E9DD11F36029474C4D50EBFBB2848BC8EF7A279C147F4BF46349F2 |
+| nair2026_scorecard_comparison.md | A03FD37FD08F8F6D8532FE0AAD4ECBE22A0D2A6BAFD1F595490D29B253D53887 |
+| global_class_stability_report.md | E709C05C1543FB18F4CF070F77078752ACA6734B2017E0EE57B0DEF6F05E7B33 |

@@ -1,732 +1,86 @@
 {
-  "json": {
-    "terminal_signs": [
-      "P076",
-      "P095",
-      "P108",
-      "P226",
-      "P256",
-      "P378",
-      "P385"
-    ],
-    "initial_signs": [
-      "P000",
-      "P001",
-      "P004",
-      "P013",
-      "P051",
-      "P086",
-      "P098",
-      "P217",
-      "P238",
-      "P301",
-      "P324"
-    ],
-    "medial_signs": [
-      "P009",
-      "P011",
-      "P031",
-      "P035",
-      "P050",
-      "P056",
-      "P058",
-      "P060",
-      "P062",
-      "P067",
-      "P073",
-      "P075",
-      "P091",
-      "P092",
-      "P096",
-      "P103",
-      "P110",
-      "P114",
-      "P120",
-      "P121",
-      "P122",
-      "P123",
-      "P124",
-      "P125",
-      "P126",
-      "P127",
-      "P139",
-      "P142",
-      "P144",
-      "P145",
-      "P147",
-      "P154",
-      "P160",
-      "P174",
-      "P175",
-      "P194",
-      "P201",
-      "P202",
-      "P204",
-      "P205",
-      "P210",
-      "P215",
-      "P221",
-      "P230",
-      "P234",
-      "P268",
-      "P270",
-      "P275",
-      "P276",
-      "P283",
-      "P288",
-      "P289",
-      "P303",
-      "P309",
-      "P316",
-      "P325",
-      "P326",
-      "P332",
-      "P349",
-      "P355",
-      "P364",
-      "P369"
-    ],
-    "sign_roles__P121": "MEDIAL",
-    "sign_roles__P202": "MEDIAL",
-    "sign_roles__P385": "TERMINAL",
-    "sign_roles__P073": "MEDIAL",
-    "sign_roles__P108": "TERMINAL",
-    "sign_roles__P145": "MEDIAL",
-    "sign_roles__P205": "MEDIAL",
-    "sign_roles__P147": "MEDIAL",
-    "sign_roles__P316": "MEDIAL",
-    "sign_roles__P056": "MEDIAL",
-    "sign_roles__P122": "MEDIAL",
-    "sign_roles__P268": "MEDIAL",
-    "sign_roles__P324": "INITIAL",
-    "sign_roles__P096": "MEDIAL",
-    "sign_roles__P062": "MEDIAL",
-    "sign_roles__P060": "MEDIAL",
-    "sign_roles__P120": "MEDIAL",
-    "sign_roles__P256": "TERMINAL",
-    "sign_roles__P378": "TERMINAL",
-    "sign_roles__P201": "MEDIAL",
-    "sign_roles__P086": "INITIAL",
-    "sign_roles__P011": "MEDIAL",
-    "sign_roles__P154": "MEDIAL",
-    "sign_roles__P009": "MEDIAL",
-    "sign_roles__P175": "MEDIAL",
-    "sign_roles__P270": "MEDIAL",
-    "sign_roles__P144": "MEDIAL",
-    "sign_roles__P204": "MEDIAL",
-    "sign_roles__P114": "MEDIAL",
-    "sign_roles__P364": "MEDIAL",
-    "sign_roles__P067": "MEDIAL",
-    "sign_roles__P221": "MEDIAL",
-    "sign_roles__P276": "MEDIAL",
-    "sign_roles__P058": "MEDIAL",
-    "sign_roles__P035": "MEDIAL",
-    "sign_roles__P210": "MEDIAL",
-    "sign_roles__P013": "INITIAL",
-    "sign_roles__P194": "MEDIAL",
-    "sign_roles__P126": "MEDIAL",
-    "sign_roles__P369": "MEDIAL",
-    "sign_roles__P142": "MEDIAL",
-    "sign_roles__P000": "INITIAL",
-    "sign_roles__P125": "MEDIAL",
-    "sign_roles__P215": "MEDIAL",
-    "sign_roles__P275": "MEDIAL",
-    "sign_roles__P091": "MEDIAL",
-    "sign_roles__P050": "MEDIAL",
-    "sign_roles__P230": "MEDIAL",
-    "sign_roles__P217": "INITIAL",
-    "sign_roles__P160": "MEDIAL",
-    "sign_roles__P076": "TERMINAL",
-    "sign_roles__P174": "MEDIAL",
-    "sign_roles__P238": "INITIAL",
-    "sign_roles__P325": "MEDIAL",
-    "sign_roles__P123": "MEDIAL",
-    "sign_roles__P103": "MEDIAL",
-    "sign_roles__P332": "MEDIAL",
-    "sign_roles__P349": "MEDIAL",
-    "sign_roles__P095": "TERMINAL",
-    "sign_roles__P127": "MEDIAL",
-    "sign_roles__P309": "MEDIAL",
-    "sign_roles__P092": "MEDIAL",
-    "sign_roles__P139": "MEDIAL",
-    "sign_roles__P303": "MEDIAL",
-    "sign_roles__P301": "INITIAL",
-    "sign_roles__P288": "MEDIAL",
-    "sign_roles__P051": "INITIAL",
-    "sign_roles__P326": "MEDIAL",
-    "sign_roles__P001": "INITIAL",
-    "sign_roles__P234": "MEDIAL",
-    "sign_roles__P124": "MEDIAL",
-    "sign_roles__P289": "MEDIAL",
-    "sign_roles__P031": "MEDIAL",
-    "sign_roles__P098": "INITIAL",
-    "sign_roles__P226": "TERMINAL",
-    "sign_roles__P004": "INITIAL",
-    "sign_roles__P110": "MEDIAL",
-    "sign_roles__P075": "MEDIAL",
-    "sign_roles__P283": "MEDIAL",
-    "sign_roles__P355": "MEDIAL",
-    "projected_weights__P121": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.1,
-      "medial_weight": 0.9,
-      "t_observed": 0.0,
-      "i_observed": 0.1
-    },
-    "projected_weights__P202": {
-      "terminal_weight": 0.09090909090909091,
-      "initial_weight": 0.18181818181818182,
-      "medial_weight": 0.7272727272727273,
-      "t_observed": 0.09090909090909091,
-      "i_observed": 0.18181818181818182
-    },
-    "projected_weights__P385": {
-      "terminal_weight": 0.8285714285714286,
-      "initial_weight": 0.0,
-      "medial_weight": 0.17142857142857137,
-      "t_observed": 0.8285714285714286,
-      "i_observed": 0.0
-    },
-    "projected_weights__P073": {
-      "terminal_weight": 0.125,
-      "initial_weight": 0.0,
-      "medial_weight": 0.875,
-      "t_observed": 0.125,
-      "i_observed": 0.0
-    },
-    "projected_weights__P108": {
-      "terminal_weight": 0.6,
-      "initial_weight": 0.0,
-      "medial_weight": 0.4,
-      "t_observed": 0.6,
-      "i_observed": 0.0
-    },
-    "projected_weights__P145": {
-      "terminal_weight": 0.14814814814814814,
-      "initial_weight": 0.0,
-      "medial_weight": 0.8518518518518519,
-      "t_observed": 0.14814814814814814,
-      "i_observed": 0.0
-    },
-    "projected_weights__P205": {
-      "terminal_weight": 0.1,
-      "initial_weight": 0.1,
-      "medial_weight": 0.8,
-      "t_observed": 0.1,
-      "i_observed": 0.1
-    },
-    "projected_weights__P147": {
-      "terminal_weight": 0.07142857142857142,
-      "initial_weight": 0.07142857142857142,
-      "medial_weight": 0.8571428571428572,
-      "t_observed": 0.07142857142857142,
-      "i_observed": 0.07142857142857142
-    },
-    "projected_weights__P316": {
-      "terminal_weight": 0.10526315789473684,
-      "initial_weight": 0.05263157894736842,
-      "medial_weight": 0.8421052631578947,
-      "t_observed": 0.10526315789473684,
-      "i_observed": 0.05263157894736842
-    },
-    "projected_weights__P056": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.0,
-      "medial_weight": 1.0,
-      "t_observed": 0.0,
-      "i_observed": 0.0
-    },
-    "projected_weights__P122": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.0,
-      "medial_weight": 1.0,
-      "t_observed": 0.0,
-      "i_observed": 0.0
-    },
-    "projected_weights__P268": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.2727272727272727,
-      "medial_weight": 0.7272727272727273,
-      "t_observed": 0.0,
-      "i_observed": 0.2727272727272727
-    },
-    "projected_weights__P324": {
-      "terminal_weight": 0.010101010101010102,
-      "initial_weight": 0.7777777777777778,
-      "medial_weight": 0.21212121212121215,
-      "t_observed": 0.010101010101010102,
-      "i_observed": 0.7777777777777778
-    },
-    "projected_weights__P096": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.0,
-      "medial_weight": 1.0,
-      "t_observed": 0.0,
-      "i_observed": 0.0
-    },
-    "projected_weights__P062": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.0,
-      "medial_weight": 1.0,
-      "t_observed": 0.0,
-      "i_observed": 0.0
-    },
-    "projected_weights__P060": {
-      "terminal_weight": 0.05,
-      "initial_weight": 0.0,
-      "medial_weight": 0.95,
-      "t_observed": 0.05,
-      "i_observed": 0.0
-    },
-    "projected_weights__P120": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.0,
-      "medial_weight": 1.0,
-      "t_observed": 0.0,
-      "i_observed": 0.0
-    },
-    "projected_weights__P256": {
-      "terminal_weight": 0.75,
-      "initial_weight": 0.0,
-      "medial_weight": 0.25,
-      "t_observed": 0.75,
-      "i_observed": 0.0
-    },
-    "projected_weights__P378": {
-      "terminal_weight": 0.5882352941176471,
-      "initial_weight": 0.11764705882352941,
-      "medial_weight": 0.2941176470588235,
-      "t_observed": 0.5882352941176471,
-      "i_observed": 0.11764705882352941
-    },
-    "projected_weights__P201": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.0,
-      "medial_weight": 1.0,
-      "t_observed": 0.0,
-      "i_observed": 0.0
-    },
-    "projected_weights__P086": {
-      "terminal_weight": 0.02857142857142857,
-      "initial_weight": 0.5428571428571428,
-      "medial_weight": 0.4285714285714286,
-      "t_observed": 0.02857142857142857,
-      "i_observed": 0.5428571428571428
-    },
-    "projected_weights__P011": {
-      "terminal_weight": 0.5,
-      "initial_weight": 0.0,
-      "medial_weight": 0.5,
-      "t_observed": 0.5,
-      "i_observed": 0.0
-    },
-    "projected_weights__P154": {
-      "terminal_weight": 0.21428571428571427,
-      "initial_weight": 0.0,
-      "medial_weight": 0.7857142857142857,
-      "t_observed": 0.21428571428571427,
-      "i_observed": 0.0
-    },
-    "projected_weights__P009": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.0,
-      "medial_weight": 1.0,
-      "t_observed": 0.0,
-      "i_observed": 0.0
-    },
-    "projected_weights__P175": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.0,
-      "medial_weight": 1.0,
-      "t_observed": 0.0,
-      "i_observed": 0.0
-    },
-    "projected_weights__P270": {
-      "terminal_weight": 0.2,
-      "initial_weight": 0.0,
-      "medial_weight": 0.8,
-      "t_observed": 0.2,
-      "i_observed": 0.0
-    },
-    "projected_weights__P144": {
-      "terminal_weight": 0.25,
-      "initial_weight": 0.125,
-      "medial_weight": 0.625,
-      "t_observed": 0.25,
-      "i_observed": 0.125
-    },
-    "projected_weights__P204": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.0,
-      "medial_weight": 1.0,
-      "t_observed": 0.0,
-      "i_observed": 0.0
-    },
-    "projected_weights__P114": {
-      "terminal_weight": 0.3333333333333333,
-      "initial_weight": 0.0,
-      "medial_weight": 0.6666666666666667,
-      "t_observed": 0.3333333333333333,
-      "i_observed": 0.0
-    },
-    "projected_weights__P364": {
-      "terminal_weight": 0.11764705882352941,
-      "initial_weight": 0.0,
-      "medial_weight": 0.8823529411764706,
-      "t_observed": 0.11764705882352941,
-      "i_observed": 0.0
-    },
-    "projected_weights__P067": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.3333333333333333,
-      "medial_weight": 0.6666666666666667,
-      "t_observed": 0.0,
-      "i_observed": 0.3333333333333333
-    },
-    "projected_weights__P221": {
-      "terminal_weight": 0.4,
-      "initial_weight": 0.0,
-      "medial_weight": 0.6,
-      "t_observed": 0.4,
-      "i_observed": 0.0
-    },
-    "projected_weights__P276": {
-      "terminal_weight": 0.16666666666666666,
-      "initial_weight": 0.0,
-      "medial_weight": 0.8333333333333334,
-      "t_observed": 0.16666666666666666,
-      "i_observed": 0.0
-    },
-    "projected_weights__P058": {
-      "terminal_weight": 0.06666666666666667,
-      "initial_weight": 0.0,
-      "medial_weight": 0.9333333333333333,
-      "t_observed": 0.06666666666666667,
-      "i_observed": 0.0
-    },
-    "projected_weights__P035": {
-      "terminal_weight": 0.25,
-      "initial_weight": 0.0,
-      "medial_weight": 0.75,
-      "t_observed": 0.25,
-      "i_observed": 0.0
-    },
-    "projected_weights__P210": {
-      "terminal_weight": 0.2,
-      "initial_weight": 0.0,
-      "medial_weight": 0.8,
-      "t_observed": 0.2,
-      "i_observed": 0.0
-    },
-    "projected_weights__P013": {
-      "terminal_weight": 0.0,
-      "initial_weight": 1.0,
-      "medial_weight": 0.0,
-      "t_observed": 0.0,
-      "i_observed": 1.0
-    },
-    "projected_weights__P194": {
-      "terminal_weight": 0.125,
-      "initial_weight": 0.0,
-      "medial_weight": 0.875,
-      "t_observed": 0.125,
-      "i_observed": 0.0
-    },
-    "projected_weights__P126": {
-      "terminal_weight": 0.16666666666666666,
-      "initial_weight": 0.0,
-      "medial_weight": 0.8333333333333334,
-      "t_observed": 0.16666666666666666,
-      "i_observed": 0.0
-    },
-    "projected_weights__P369": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.0,
-      "medial_weight": 1.0,
-      "t_observed": 0.0,
-      "i_observed": 0.0
-    },
-    "projected_weights__P142": {
-      "terminal_weight": 0.25,
-      "initial_weight": 0.0,
-      "medial_weight": 0.75,
-      "t_observed": 0.25,
-      "i_observed": 0.0
-    },
-    "projected_weights__P000": {
-      "terminal_weight": 0.3157894736842105,
-      "initial_weight": 0.5789473684210527,
-      "medial_weight": 0.10526315789473684,
-      "t_observed": 0.3157894736842105,
-      "i_observed": 0.5789473684210527
-    },
-    "projected_weights__P125": {
-      "terminal_weight": 0.5,
-      "initial_weight": 0.0,
-      "medial_weight": 0.5,
-      "t_observed": 0.5,
-      "i_observed": 0.0
-    },
-    "projected_weights__P215": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.0,
-      "medial_weight": 1.0,
-      "t_observed": 0.0,
-      "i_observed": 0.0
-    },
-    "projected_weights__P275": {
-      "terminal_weight": 0.3333333333333333,
-      "initial_weight": 0.0,
-      "medial_weight": 0.6666666666666667,
-      "t_observed": 0.3333333333333333,
-      "i_observed": 0.0
-    },
-    "projected_weights__P091": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.2,
-      "medial_weight": 0.8,
-      "t_observed": 0.0,
-      "i_observed": 0.2
-    },
-    "projected_weights__P050": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.03125,
-      "medial_weight": 0.96875,
-      "t_observed": 0.0,
-      "i_observed": 0.03125
-    },
-    "projected_weights__P230": {
-      "terminal_weight": 0.17391304347826086,
-      "initial_weight": 0.0,
-      "medial_weight": 0.8260869565217391,
-      "t_observed": 0.17391304347826086,
-      "i_observed": 0.0
-    },
-    "projected_weights__P217": {
-      "terminal_weight": 0.1111111111111111,
-      "initial_weight": 0.7777777777777778,
-      "medial_weight": 0.11111111111111105,
-      "t_observed": 0.1111111111111111,
-      "i_observed": 0.7777777777777778
-    },
-    "projected_weights__P160": {
-      "terminal_weight": 0.16666666666666666,
-      "initial_weight": 0.0,
-      "medial_weight": 0.8333333333333334,
-      "t_observed": 0.16666666666666666,
-      "i_observed": 0.0
-    },
-    "projected_weights__P076": {
-      "terminal_weight": 0.6666666666666666,
-      "initial_weight": 0.0,
-      "medial_weight": 0.33333333333333337,
-      "t_observed": 0.6666666666666666,
-      "i_observed": 0.0
-    },
-    "projected_weights__P174": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.0,
-      "medial_weight": 1.0,
-      "t_observed": 0.0,
-      "i_observed": 0.0
-    },
-    "projected_weights__P238": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.6666666666666666,
-      "medial_weight": 0.33333333333333337,
-      "t_observed": 0.0,
-      "i_observed": 0.6666666666666666
-    },
-    "projected_weights__P325": {
-      "terminal_weight": 0.07142857142857142,
-      "initial_weight": 0.0,
-      "medial_weight": 0.9285714285714286,
-      "t_observed": 0.07142857142857142,
-      "i_observed": 0.0
-    },
-    "projected_weights__P123": {
-      "terminal_weight": 0.38461538461538464,
-      "initial_weight": 0.0,
-      "medial_weight": 0.6153846153846154,
-      "t_observed": 0.38461538461538464,
-      "i_observed": 0.0
-    },
-    "projected_weights__P103": {
-      "terminal_weight": 0.3333333333333333,
-      "initial_weight": 0.0,
-      "medial_weight": 0.6666666666666667,
-      "t_observed": 0.3333333333333333,
-      "i_observed": 0.0
-    },
-    "projected_weights__P332": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.0,
-      "medial_weight": 1.0,
-      "t_observed": 0.0,
-      "i_observed": 0.0
-    },
-    "projected_weights__P349": {
-      "terminal_weight": 0.2,
-      "initial_weight": 0.0,
-      "medial_weight": 0.8,
-      "t_observed": 0.2,
-      "i_observed": 0.0
-    },
-    "projected_weights__P095": {
-      "terminal_weight": 0.75,
-      "initial_weight": 0.0,
-      "medial_weight": 0.25,
-      "t_observed": 0.75,
-      "i_observed": 0.0
-    },
-    "projected_weights__P127": {
-      "terminal_weight": 0.25,
-      "initial_weight": 0.0,
-      "medial_weight": 0.75,
-      "t_observed": 0.25,
-      "i_observed": 0.0
-    },
-    "projected_weights__P309": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.0,
-      "medial_weight": 1.0,
-      "t_observed": 0.0,
-      "i_observed": 0.0
-    },
-    "projected_weights__P092": {
-      "terminal_weight": 0.16666666666666666,
-      "initial_weight": 0.0,
-      "medial_weight": 0.8333333333333334,
-      "t_observed": 0.16666666666666666,
-      "i_observed": 0.0
-    },
-    "projected_weights__P139": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.0,
-      "medial_weight": 1.0,
-      "t_observed": 0.0,
-      "i_observed": 0.0
-    },
-    "projected_weights__P303": {
-      "terminal_weight": 0.3333333333333333,
-      "initial_weight": 0.0,
-      "medial_weight": 0.6666666666666667,
-      "t_observed": 0.3333333333333333,
-      "i_observed": 0.0
-    },
-    "projected_weights__P301": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.8333333333333334,
-      "medial_weight": 0.16666666666666663,
-      "t_observed": 0.0,
-      "i_observed": 0.8333333333333334
-    },
-    "projected_weights__P288": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.0,
-      "medial_weight": 1.0,
-      "t_observed": 0.0,
-      "i_observed": 0.0
-    },
-    "projected_weights__P051": {
-      "terminal_weight": 0.0,
-      "initial_weight": 1.0,
-      "medial_weight": 0.0,
-      "t_observed": 0.0,
-      "i_observed": 1.0
-    },
-    "projected_weights__P326": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.0,
-      "medial_weight": 1.0,
-      "t_observed": 0.0,
-      "i_observed": 0.0
-    },
-    "projected_weights__P001": {
-      "terminal_weight": 0.0,
-      "initial_weight": 1.0,
-      "medial_weight": 0.0,
-      "t_observed": 0.0,
-      "i_observed": 1.0
-    },
-    "projected_weights__P234": {
-      "terminal_weight": 0.3333333333333333,
-      "initial_weight": 0.0,
-      "medial_weight": 0.6666666666666667,
-      "t_observed": 0.3333333333333333,
-      "i_observed": 0.0
-    },
-    "projected_weights__P124": {
-      "terminal_weight": 0.5,
-      "initial_weight": 0.0,
-      "medial_weight": 0.5,
-      "t_observed": 0.5,
-      "i_observed": 0.0
-    },
-    "projected_weights__P289": {
-      "terminal_weight": 0.25,
-      "initial_weight": 0.0,
-      "medial_weight": 0.75,
-      "t_observed": 0.25,
-      "i_observed": 0.0
-    },
-    "projected_weights__P031": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.0,
-      "medial_weight": 1.0,
-      "t_observed": 0.0,
-      "i_observed": 0.0
-    },
-    "projected_weights__P098": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.75,
-      "medial_weight": 0.25,
-      "t_observed": 0.0,
-      "i_observed": 0.75
-    },
-    "projected_weights__P226": {
-      "terminal_weight": 1.0,
-      "initial_weight": 0.0,
-      "medial_weight": 0.0,
-      "t_observed": 1.0,
-      "i_observed": 0.0
-    },
-    "projected_weights__P004": {
-      "terminal_weight": 0.0,
-      "initial_weight": 1.0,
-      "medial_weight": 0.0,
-      "t_observed": 0.0,
-      "i_observed": 1.0
-    },
-    "projected_weights__P110": {
-      "terminal_weight": 0.3333333333333333,
-      "initial_weight": 0.0,
-      "medial_weight": 0.6666666666666667,
-      "t_observed": 0.3333333333333333,
-      "i_observed": 0.0
-    },
-    "projected_weights__P075": {
-      "terminal_weight": 0.25,
-      "initial_weight": 0.0,
-      "medial_weight": 0.75,
-      "t_observed": 0.25,
-      "i_observed": 0.0
-    },
-    "projected_weights__P283": {
-      "terminal_weight": 0.0,
-      "initial_weight": 0.0,
-      "medial_weight": 1.0,
-      "t_observed": 0.0,
-      "i_observed": 0.0
-    },
-    "projected_weights__P355": {
-      "terminal_weight": 0.5,
-      "initial_weight": 0.0,
-      "medial_weight": 0.5,
-      "t_observed": 0.5,
-      "i_observed": 0.0
-    },
-    "phoneme_candidates__P076": [
+  "data": {
+    "a__P121": "MEDIAL",
+    "a__P202": "MEDIAL",
+    "a__P385": "TERMINAL",
+    "a__P073": "MEDIAL",
+    "a__P108": "TERMINAL",
+    "a__P145": "MEDIAL",
+    "a__P205": "MEDIAL",
+    "a__P147": "MEDIAL",
+    "a__P316": "MEDIAL",
+    "a__P056": "MEDIAL",
+    "a__P122": "MEDIAL",
+    "a__P268": "MEDIAL",
+    "a__P324": "INITIAL",
+    "a__P096": "MEDIAL",
+    "a__P062": "MEDIAL",
+    "a__P060": "MEDIAL",
+    "a__P120": "MEDIAL",
+    "a__P256": "TERMINAL",
+    "a__P378": "TERMINAL",
+    "a__P201": "MEDIAL",
+    "a__P086": "INITIAL",
+    "a__P011": "MEDIAL",
+    "a__P154": "MEDIAL",
+    "a__P009": "MEDIAL",
+    "a__P175": "MEDIAL",
+    "a__P270": "MEDIAL",
+    "a__P144": "MEDIAL",
+    "a__P204": "MEDIAL",
+    "a__P114": "MEDIAL",
+    "a__P364": "MEDIAL",
+    "a__P067": "MEDIAL",
+    "a__P221": "MEDIAL",
+    "a__P276": "MEDIAL",
+    "a__P058": "MEDIAL",
+    "a__P035": "MEDIAL",
+    "a__P210": "MEDIAL",
+    "a__P013": "INITIAL",
+    "a__P194": "MEDIAL",
+    "a__P126": "MEDIAL",
+    "a__P369": "MEDIAL",
+    "a__P142": "MEDIAL",
+    "a__P000": "INITIAL",
+    "a__P125": "MEDIAL",
+    "a__P215": "MEDIAL",
+    "a__P275": "MEDIAL",
+    "a__P091": "MEDIAL",
+    "a__P050": "MEDIAL",
+    "a__P230": "MEDIAL",
+    "a__P217": "INITIAL",
+    "a__P160": "MEDIAL",
+    "a__P076": "TERMINAL",
+    "a__P174": "MEDIAL",
+    "a__P238": "INITIAL",
+    "a__P325": "MEDIAL",
+    "a__P123": "MEDIAL",
+    "a__P103": "MEDIAL",
+    "a__P332": "MEDIAL",
+    "a__P349": "MEDIAL",
+    "a__P095": "TERMINAL",
+    "a__P127": "MEDIAL",
+    "a__P309": "MEDIAL",
+    "a__P092": "MEDIAL",
+    "a__P139": "MEDIAL",
+    "a__P303": "MEDIAL",
+    "a__P301": "INITIAL",
+    "a__P288": "MEDIAL",
+    "a__P051": "INITIAL",
+    "a__P326": "MEDIAL",
+    "a__P001": "INITIAL",
+    "a__P234": "MEDIAL",
+    "a__P124": "MEDIAL",
+    "a__P289": "MEDIAL",
+    "a__P031": "MEDIAL",
+    "a__P098": "INITIAL",
+    "a__P226": "TERMINAL",
+    "a__P004": "INITIAL",
+    "a__P110": "MEDIAL",
+    "a__P075": "MEDIAL",
+    "a__P283": "MEDIAL",
+    "a__P355": "MEDIAL",
+    "b__P076": [
       {
         "phoneme": "in",
         "role": "genitive",
@@ -734,7 +88,7 @@
         "rationale": "TERMINAL sign; candidate Dravidian case suffix (-in, -vin)"
       }
     ],
-    "phoneme_candidates__P095": [
+    "b__P095": [
       {
         "phoneme": "ku",
         "role": "dative",
@@ -742,7 +96,7 @@
         "rationale": "TERMINAL sign; candidate Dravidian case suffix (-ku, -ukku)"
       }
     ],
-    "phoneme_candidates__P108": [
+    "b__P108": [
       {
         "phoneme": "al",
         "role": "instrumental",
@@ -750,7 +104,7 @@
         "rationale": "TERMINAL sign; candidate Dravidian case suffix (-\u0101l)"
       }
     ],
-    "phoneme_candidates__P226": [
+    "b__P226": [
       {
         "phoneme": "atu",
         "role": "ablative/nominalize",
@@ -758,7 +112,7 @@
         "rationale": "TERMINAL sign; candidate Dravidian case suffix (-atu, -itu)"
       }
     ],
-    "phoneme_candidates__P256": [
+    "b__P256": [
       {
         "phoneme": "il",
         "role": "locative",
@@ -766,7 +120,7 @@
         "rationale": "TERMINAL sign; candidate Dravidian case suffix (-il, -u\u1e37)"
       }
     ],
-    "phoneme_candidates__P378": [
+    "b__P378": [
       {
         "phoneme": "in",
         "role": "genitive",
@@ -774,7 +128,7 @@
         "rationale": "TERMINAL sign; candidate Dravidian case suffix (-in, -vin)"
       }
     ],
-    "phoneme_candidates__P385": [
+    "b__P385": [
       {
         "phoneme": "ku",
         "role": "dative",
@@ -782,7 +136,7 @@
         "rationale": "TERMINAL sign; candidate Dravidian case suffix (-ku, -ukku)"
       }
     ],
-    "phoneme_candidates__P000": [
+    "b__P000": [
       {
         "phoneme": "k",
         "role": "initial_element",
@@ -790,7 +144,7 @@
         "rationale": "INITIAL sign; candidate Dravidian word-initial phoneme /k/"
       }
     ],
-    "phoneme_candidates__P001": [
+    "b__P001": [
       {
         "phoneme": "m",
         "role": "initial_element",
@@ -798,7 +152,7 @@
         "rationale": "INITIAL sign; candidate Dravidian word-initial phoneme /m/"
       }
     ],
-    "phoneme_candidates__P004": [
+    "b__P004": [
       {
         "phoneme": "n",
         "role": "initial_element",
@@ -806,7 +160,7 @@
         "rationale": "INITIAL sign; candidate Dravidian word-initial phoneme /n/"
       }
     ],
-    "phoneme_candidates__P013": [
+    "b__P013": [
       {
         "phoneme": "p",
         "role": "initial_element",
@@ -814,7 +168,7 @@
         "rationale": "INITIAL sign; candidate Dravidian word-initial phoneme /p/"
       }
     ],
-    "phoneme_candidates__P051": [
+    "b__P051": [
       {
         "phoneme": "t",
         "role": "initial_element",
@@ -822,7 +176,7 @@
         "rationale": "INITIAL sign; candidate Dravidian word-initial phoneme /t/"
       }
     ],
-    "phoneme_candidates__P086": [
+    "b__P086": [
       {
         "phoneme": "v",
         "role": "initial_element",
@@ -830,7 +184,7 @@
         "rationale": "INITIAL sign; candidate Dravidian word-initial phoneme /v/"
       }
     ],
-    "phoneme_candidates__P098": [
+    "b__P098": [
       {
         "phoneme": "c",
         "role": "initial_element",
@@ -838,7 +192,7 @@
         "rationale": "INITIAL sign; candidate Dravidian word-initial phoneme /c/"
       }
     ],
-    "phoneme_candidates__P217": [
+    "b__P217": [
       {
         "phoneme": "a",
         "role": "initial_element",
@@ -846,7 +200,7 @@
         "rationale": "INITIAL sign; candidate Dravidian word-initial phoneme /a/"
       }
     ],
-    "phoneme_candidates__P238": [
+    "b__P238": [
       {
         "phoneme": "k",
         "role": "initial_element",
@@ -854,7 +208,7 @@
         "rationale": "INITIAL sign; candidate Dravidian word-initial phoneme /k/"
       }
     ],
-    "phoneme_candidates__P301": [
+    "b__P301": [
       {
         "phoneme": "m",
         "role": "initial_element",
@@ -862,7 +216,7 @@
         "rationale": "INITIAL sign; candidate Dravidian word-initial phoneme /m/"
       }
     ],
-    "phoneme_candidates__P324": [
+    "b__P324": [
       {
         "phoneme": "n",
         "role": "initial_element",
@@ -870,7 +224,7 @@
         "rationale": "INITIAL sign; candidate Dravidian word-initial phoneme /n/"
       }
     ],
-    "phoneme_candidates__P009": [
+    "b__P009": [
       {
         "phoneme": "a",
         "role": "medial_syllable",
@@ -878,7 +232,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P011": [
+    "b__P011": [
       {
         "phoneme": "i",
         "role": "medial_syllable",
@@ -886,7 +240,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P031": [
+    "b__P031": [
       {
         "phoneme": "n",
         "role": "medial_syllable",
@@ -894,7 +248,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P035": [
+    "b__P035": [
       {
         "phoneme": "r",
         "role": "medial_syllable",
@@ -902,7 +256,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P050": [
+    "b__P050": [
       {
         "phoneme": "u",
         "role": "medial_syllable",
@@ -910,7 +264,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P056": [
+    "b__P056": [
       {
         "phoneme": "l",
         "role": "medial_syllable",
@@ -918,7 +272,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P058": [
+    "b__P058": [
       {
         "phoneme": "v",
         "role": "medial_syllable",
@@ -926,7 +280,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P060": [
+    "b__P060": [
       {
         "phoneme": "m",
         "role": "medial_syllable",
@@ -934,7 +288,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P062": [
+    "b__P062": [
       {
         "phoneme": "t",
         "role": "medial_syllable",
@@ -942,7 +296,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P067": [
+    "b__P067": [
       {
         "phoneme": "e",
         "role": "medial_syllable",
@@ -950,7 +304,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P073": [
+    "b__P073": [
       {
         "phoneme": "k",
         "role": "medial_syllable",
@@ -958,7 +312,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P075": [
+    "b__P075": [
       {
         "phoneme": "y",
         "role": "medial_syllable",
@@ -966,7 +320,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P091": [
+    "b__P091": [
       {
         "phoneme": "p",
         "role": "medial_syllable",
@@ -974,7 +328,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P092": [
+    "b__P092": [
       {
         "phoneme": "o",
         "role": "medial_syllable",
@@ -982,7 +336,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P096": [
+    "b__P096": [
       {
         "phoneme": "h",
         "role": "medial_syllable",
@@ -990,7 +344,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P103": [
+    "b__P103": [
       {
         "phoneme": "d",
         "role": "medial_syllable",
@@ -998,7 +352,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P110": [
+    "b__P110": [
       {
         "phoneme": "c",
         "role": "medial_syllable",
@@ -1006,7 +360,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P114": [
+    "b__P114": [
       {
         "phoneme": "z",
         "role": "medial_syllable",
@@ -1014,7 +368,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P120": [
+    "b__P120": [
       {
         "phoneme": "s",
         "role": "medial_syllable",
@@ -1022,7 +376,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P121": [
+    "b__P121": [
       {
         "phoneme": "b",
         "role": "medial_syllable",
@@ -1030,7 +384,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P122": [
+    "b__P122": [
       {
         "phoneme": "g",
         "role": "medial_syllable",
@@ -1038,7 +392,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P123": [
+    "b__P123": [
       {
         "phoneme": "j",
         "role": "medial_syllable",
@@ -1046,7 +400,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P124": [
+    "b__P124": [
       {
         "phoneme": "a",
         "role": "medial_syllable",
@@ -1054,7 +408,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P125": [
+    "b__P125": [
       {
         "phoneme": "i",
         "role": "medial_syllable",
@@ -1062,7 +416,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P126": [
+    "b__P126": [
       {
         "phoneme": "n",
         "role": "medial_syllable",
@@ -1070,7 +424,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P127": [
+    "b__P127": [
       {
         "phoneme": "r",
         "role": "medial_syllable",
@@ -1078,7 +432,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P139": [
+    "b__P139": [
       {
         "phoneme": "u",
         "role": "medial_syllable",
@@ -1086,7 +440,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P142": [
+    "b__P142": [
       {
         "phoneme": "l",
         "role": "medial_syllable",
@@ -1094,7 +448,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P144": [
+    "b__P144": [
       {
         "phoneme": "v",
         "role": "medial_syllable",
@@ -1102,7 +456,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P145": [
+    "b__P145": [
       {
         "phoneme": "m",
         "role": "medial_syllable",
@@ -1110,7 +464,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P147": [
+    "b__P147": [
       {
         "phoneme": "t",
         "role": "medial_syllable",
@@ -1118,7 +472,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P154": [
+    "b__P154": [
       {
         "phoneme": "e",
         "role": "medial_syllable",
@@ -1126,7 +480,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P160": [
+    "b__P160": [
       {
         "phoneme": "k",
         "role": "medial_syllable",
@@ -1134,7 +488,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P174": [
+    "b__P174": [
       {
         "phoneme": "y",
         "role": "medial_syllable",
@@ -1142,7 +496,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P175": [
+    "b__P175": [
       {
         "phoneme": "p",
         "role": "medial_syllable",
@@ -1150,7 +504,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P194": [
+    "b__P194": [
       {
         "phoneme": "o",
         "role": "medial_syllable",
@@ -1158,7 +512,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P201": [
+    "b__P201": [
       {
         "phoneme": "h",
         "role": "medial_syllable",
@@ -1166,7 +520,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P202": [
+    "b__P202": [
       {
         "phoneme": "d",
         "role": "medial_syllable",
@@ -1174,7 +528,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P204": [
+    "b__P204": [
       {
         "phoneme": "c",
         "role": "medial_syllable",
@@ -1182,7 +536,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P205": [
+    "b__P205": [
       {
         "phoneme": "z",
         "role": "medial_syllable",
@@ -1190,7 +544,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P210": [
+    "b__P210": [
       {
         "phoneme": "s",
         "role": "medial_syllable",
@@ -1198,7 +552,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P215": [
+    "b__P215": [
       {
         "phoneme": "b",
         "role": "medial_syllable",
@@ -1206,7 +560,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P221": [
+    "b__P221": [
       {
         "phoneme": "g",
         "role": "medial_syllable",
@@ -1214,7 +568,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P230": [
+    "b__P230": [
       {
         "phoneme": "j",
         "role": "medial_syllable",
@@ -1222,7 +576,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P234": [
+    "b__P234": [
       {
         "phoneme": "a",
         "role": "medial_syllable",
@@ -1230,7 +584,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P268": [
+    "b__P268": [
       {
         "phoneme": "i",
         "role": "medial_syllable",
@@ -1238,7 +592,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P270": [
+    "b__P270": [
       {
         "phoneme": "n",
         "role": "medial_syllable",
@@ -1246,7 +600,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P275": [
+    "b__P275": [
       {
         "phoneme": "r",
         "role": "medial_syllable",
@@ -1254,7 +608,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P276": [
+    "b__P276": [
       {
         "phoneme": "u",
         "role": "medial_syllable",
@@ -1262,7 +616,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P283": [
+    "b__P283": [
       {
         "phoneme": "l",
         "role": "medial_syllable",
@@ -1270,7 +624,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P288": [
+    "b__P288": [
       {
         "phoneme": "v",
         "role": "medial_syllable",
@@ -1278,7 +632,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P289": [
+    "b__P289": [
       {
         "phoneme": "m",
         "role": "medial_syllable",
@@ -1286,7 +640,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P303": [
+    "b__P303": [
       {
         "phoneme": "t",
         "role": "medial_syllable",
@@ -1294,7 +648,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P309": [
+    "b__P309": [
       {
         "phoneme": "e",
         "role": "medial_syllable",
@@ -1302,7 +656,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P316": [
+    "b__P316": [
       {
         "phoneme": "k",
         "role": "medial_syllable",
@@ -1310,7 +664,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P325": [
+    "b__P325": [
       {
         "phoneme": "y",
         "role": "medial_syllable",
@@ -1318,7 +672,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P326": [
+    "b__P326": [
       {
         "phoneme": "p",
         "role": "medial_syllable",
@@ -1326,7 +680,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P332": [
+    "b__P332": [
       {
         "phoneme": "o",
         "role": "medial_syllable",
@@ -1334,7 +688,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P349": [
+    "b__P349": [
       {
         "phoneme": "h",
         "role": "medial_syllable",
@@ -1342,7 +696,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P355": [
+    "b__P355": [
       {
         "phoneme": "d",
         "role": "medial_syllable",
@@ -1350,7 +704,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P364": [
+    "b__P364": [
       {
         "phoneme": "c",
         "role": "medial_syllable",
@@ -1358,7 +712,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "phoneme_candidates__P369": [
+    "b__P369": [
       {
         "phoneme": "z",
         "role": "medial_syllable",
@@ -1366,98 +720,7 @@
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
-    "constraint_summary__n_classified": 80,
-    "constraint_summary__n_terminal": 7,
-    "constraint_summary__n_initial": 11,
-    "constraint_summary__n_medial": 62,
-    "constraint_summary__violations": [],
-    "constraint_summary__engine_used": "iterative",
-    "constraint_summary__thresholds": {
-      "terminal": 0.55,
-      "initial": 0.45
-    },
-    "n_signs_classified": 80,
     "error": "No cluster_sequences \u2014 connect ClusterMapper.cluster_sequences",
-    "corpus_h1": 4.0097,
-    "corpus_n_signs": 20,
-    "corpus_avg_word_len": 3.3,
-    "tier_classification": "Abjad (consonant alphabet)",
-    "nearest_script": "Old Hebrew",
-    "nearest_distance": 0.1608,
-    "top3_nearest": [
-      {
-        "name": "Old Hebrew",
-        "tier": "Abjad",
-        "distance": 0.1608
-      },
-      {
-        "name": "Meroitic",
-        "tier": "Abjad/Syllabic",
-        "distance": 0.1757
-      },
-      {
-        "name": "Phoenician",
-        "tier": "Abjad",
-        "distance": 0.2107
-      }
-    ],
-    "all_ranked": [
-      {
-        "name": "Old Hebrew",
-        "tier": "Abjad",
-        "distance": 0.1608
-      },
-      {
-        "name": "Meroitic",
-        "tier": "Abjad/Syllabic",
-        "distance": 0.1757
-      },
-      {
-        "name": "Phoenician",
-        "tier": "Abjad",
-        "distance": 0.2107
-      },
-      {
-        "name": "Ugaritic",
-        "tier": "Abjad",
-        "distance": 0.2662
-      },
-      {
-        "name": "Proto-Sinaitic",
-        "tier": "Abjad",
-        "distance": 0.2988
-      },
-      {
-        "name": "Old Persian Cuneiform",
-        "tier": "Syllabary",
-        "distance": 0.4598
-      },
-      {
-        "name": "Cypriot Syllabary",
-        "tier": "Syllabary",
-        "distance": 0.604
-      },
-      {
-        "name": "Linear B",
-        "tier": "Syllabary",
-        "distance": 0.8313
-      },
-      {
-        "name": "Indus Script",
-        "tier": "Unknown",
-        "distance": 1.6338
-      },
-      {
-        "name": "Sumerian Cuneiform",
-        "tier": "Logosyllabic",
-        "distance": 2.0123
-      },
-      {
-        "name": "Classical Chinese",
-        "tier": "Logographic",
-        "distance": 3.0231
-      }
-    ],
-    "text": "Classified as: Abjad (consonant alphabet). Nearest known script: Old Hebrew (Abjad)."
+    "e": "Abjad (consonant alphabet)"
   }
 }

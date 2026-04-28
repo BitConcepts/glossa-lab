@@ -277,8 +277,13 @@ def _builtin_lm(inputs: dict, params: dict) -> dict:
         elif lang in ("proto_sinaitic", "proto-sinaitic"):
             from glossa_lab.data.proto_sinaitic import get_corpus_symbols as _ps  # noqa: PLC0415
             syms = _ps(); inscs = None
+        elif lang in ("hieroglyphic_luwian", "luwian", "hluwian", "chli"):
+            from glossa_lab.data.hieroglyphic_luwian import (  # noqa: PLC0415
+                get_corpus_symbols, get_corpus_inscriptions,
+            )
+            syms = get_corpus_symbols(); inscs = get_corpus_inscriptions()
         else:
-            return {"error": f"Unknown language '{lang}'. Valid: hebrew, geez, phoenician, sumerian, dravidian, south_dravidian, kannada, telugu, pali, sanskrit, coptic, linear_b, meroitic, proto_sinaitic"}
+            return {"error": f"Unknown language '{lang}'. Valid: hebrew, geez, phoenician, sumerian, dravidian, south_dravidian, kannada, telugu, pali, sanskrit, coptic, linear_b, meroitic, proto_sinaitic, hieroglyphic_luwian"}
     except ImportError as exc:
         return {"error": str(exc)}
     from glossa_lab.pipelines.decipher import LanguageModel  # noqa: PLC0415
@@ -336,6 +341,11 @@ def _builtin_corpus(inputs: dict, params: dict) -> dict:
         elif name in ("indus_cisi", "cisi", "indus_parpola"):
             from glossa_lab.data.indus_cisi import get_corpus_symbols as _cisi_syms, get_corpus_inscriptions as _cisi_inscs  # noqa: PLC0415
             flat = _cisi_syms(); seqs = _cisi_inscs()  # real multi-sign Parpola inscriptions
+        elif name in ("hieroglyphic_luwian", "luwian", "hluwian", "chli"):
+            from glossa_lab.data.hieroglyphic_luwian import (  # noqa: PLC0415
+                get_corpus_symbols, get_corpus_inscriptions,
+            )
+            flat = get_corpus_symbols(); seqs = get_corpus_inscriptions()
         else:
             return {"error": f"Unknown corpus '{name}'. Valid: indus, indus_cisi, hebrew, geez, phoenician, nw_semitic/ugaritic, meroitic, proto_sinaitic, linear_b, sanskrit, dravidian"}
     except ImportError as exc:

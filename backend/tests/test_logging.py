@@ -17,7 +17,7 @@ from pathlib import Path
 import pytest
 
 from glossa_lab.config import Settings
-from glossa_lab.logging import setup_logging
+from glossa_lab.log_setup import setup_logging
 
 
 def test_log_file_created(tmp_path: Path):

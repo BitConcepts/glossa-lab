@@ -465,6 +465,116 @@ To start the backend and tray as background services, use `setup-os.cmd start` (
 
 If a command produces no output, it has failed. Do not retry it. Do not wait for it. Treat it as broken and fix the invocation or replace the command. Commands that are known to hang or produce no output are **forbidden**.
 
+### H17 — Job and test execution monitoring (MANDATORY)
+
+> Running a script is not the same as the work succeeding. Always verify status.
+
+When executing ANY long-running Python script, experiment, test suite, or background task, the agent MUST monitor the actual job/test status — never assume success from absence of stderr or from a single "OK" print.
+
+#### H17.1 — Verify exit code AND job status
+
+For every experiment, benchmark, or analysis script run:
+1. Capture the process exit code. Non-zero = FAIL.
+2. If the script registers a Job via `cli_bridge.run_with_reporting()` or `ExperimentBase.run_cli()`, the agent MUST query the backend Jobs API after the run and confirm `status == "completed"`. A job with status `failed`, `timed_out`, `cancelled`, or `pending` is NOT a success.
+3. If a script writes a JSON/PDF output file, verify the file exists, has non-trivial size, and parses as valid JSON/PDF. A truncated or empty file = FAIL.
+4. Use `backend/scripts/inspect_jobs.py` (or equivalent `/api/v1/jobs` query) after every batch of CLI experiment runs to confirm no jobs failed.
+
+#### H17.2 — pytest exit code is authoritative
+
+When running `shell.cmd test`:
+* exit code 0 = all tests passed
+* exit code 1 = at least one test failed (must be triaged) 
+* exit code 5 = no tests collected (must be triaged — usually a typo in `-k` filter)
+* Any non-zero exit code with a traceback during teardown (e.g. WinError 448 in pytest cleanup_dead_symlinks) is a Windows-specific pytest artefact, NOT a test failure — but it MUST still be reported and the actual `passed/failed` line from the summary block must be located before declaring the run successful.
+* NEVER declare "all tests pass" based on the count of dots in the progress bar alone. Always locate the explicit `=== N passed, M failed ===` summary.
+
+#### H17.3 — Long-running scripts must stream progress
+
+If an experiment is expected to run > 30s, the runner script MUST emit periodic progress markers (every N seeds, every phase, etc.). Silent multi-minute runs are forbidden under H8.
+
+#### H17.4 — When a job fails
+
+1. Fetch its full record via `/api/v1/jobs/<id>` (look for `error`, `logs`, `params`).
+2. Inspect `logs/backend.log` and any `job_<id>.log` for the actual exception/traceback.
+3. Report the failure mode in the agent response BEFORE proceeding to the next step.
+4. NEVER silently continue past a failed job — record it under "Risks" or "Open TODOs" in the LEDGER entry.
+
+#### H17.5 — Reporting standard
+
+After running any experiment batch the agent MUST report, in plain text:
+* number of jobs/tests submitted
+* number completed
+* number failed (with IDs)
+* any timed-out or stalled jobs (>10 minutes without heartbeat)
+* path to the generated output files
+* whether each output passes file-validity checks (size > 0, parses as expected format)
+
+Failing to report this constitutes a violation of H1 (ledger required) and H8 (no silent commands).
+
+#### H17.6 — Mandatory polling pattern for ALL experiment runs (NON-NEGOTIABLE)
+
+> Sitting on a long-running shell command with no output is forbidden. Every
+> experiment must be observable in real time via `/api/v1/jobs`.
+
+Any CLI invocation expected to run more than ~10 seconds MUST follow this pattern:
+
+1. **Spawn the experiment as a detached subprocess.**
+   The launcher returns a `job_id` immediately. The experiment registers itself
+   in `/api/v1/jobs` via `CliReporter` (or graph SSE, or pipeline engine).
+
+2. **Poll `/api/v1/jobs` from the foreground every 5–10 seconds.**
+   The poller MUST print a status line on every transition
+   (`pending` → `running` → `completed`/`failed`/`timed_out`) and a heartbeat
+   line every poll interval. Silent multi-minute waits are a violation of H8.
+
+3. **Exit conditions for the poller:**
+   * All tracked jobs reach a terminal state (`completed`/`failed`/`timed_out`/`cancelled`).
+   * Any tracked job transitions to a non-`completed` terminal state — print full
+     job record (id, name, error, params) and EXIT NON-ZERO immediately.
+   * Optional max-wait timeout in seconds; on timeout, mark job as suspect and
+     surface its current status.
+
+The canonical implementation lives at:
+* `backend/scripts/run_and_watch.py` — takes one or more experiment IDs,
+  spawns each detached, polls jobs API, prints transitions, returns non-zero
+  on first failure. THIS IS THE ONLY APPROVED WAY for the agent to launch
+  CLI experiments.
+* `backend/scripts/inspect_jobs.py` — ad-hoc snapshot of recent jobs.
+
+**Forbidden patterns:**
+* ❌ `shell.cmd python <experiment_runner.py>` for any run > 10s without
+  using `run_and_watch.py`.
+* ❌ Sitting in `wait` mode on a foreground experiment subprocess for more
+  than 60 seconds without polling job status in between.
+* ❌ Assuming a script is healthy because it produced no stderr.
+* ❌ Reading `reports/*.json` to infer success without first verifying the
+  Job's terminal status was `completed`.
+
+**Required pattern for the agent:**
+```
+shell.cmd python backend/scripts/run_and_watch.py \
+    fuls_writing_system_comparison \
+    fuls_nw_semitic_ngram \
+    --poll-interval 5 \
+    --max-wait 1800
+```
+The agent reads the streaming output and reacts to transitions in real time.
+
+#### H17.7 — Experiment authorship rules
+
+Every NEW experiment added under `backend/glossa_lab/experiments/` MUST:
+1. Inherit from `ExperimentBase` and define `id`, `name`, `category`,
+   `description`, `estimated_time` (already required by H12).
+2. Use `run_cli()` as its terminal entry point (already required by H12.3) so
+   that `CliReporter` registers the job and PATCHes its terminal status.
+3. Emit a heartbeat — either by calling `rep.progress(...)` from inside
+   `run()` at least every 60 seconds, OR by being decomposable into multiple
+   shorter primitives so the watchdog never trips on long silent stretches.
+4. Be runnable via `run_and_watch.py` without any wrapper script of its own.
+
+Legacy experiments under `_legacy/` may bypass these rules ONLY for backward
+compatibility; new code MUST conform.
+
 ---
 
 ## PLATFORM EXPECTATIONS

@@ -36,7 +36,7 @@ from typing import Any
 from glossa_lab.experiments._parallel import run_seeds_parallel as _rsp_ss
 
 _HERE    = os.path.dirname(os.path.abspath(__file__))
-_BACKEND = os.path.dirname(os.path.dirname(_HERE))
+_BACKEND = os.path.dirname(os.path.dirname(os.path.dirname(_HERE)))
 _TESTS   = os.path.join(_BACKEND, "tests")
 for _p in (_BACKEND, _TESTS):
     if _p not in sys.path:

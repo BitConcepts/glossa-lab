@@ -22,12 +22,12 @@ _QUIET_LOGGERS = [
     "httpx",
     "httpcore",
     "hpack",
-    "uvicorn.access",   # HTTP access log is emitted by uvicorn itself
+    "uvicorn.access",  # HTTP access log is emitted by uvicorn itself
 ]
 
 # Size-based rotation limits
-_MAX_BYTES    = 10 * 1024 * 1024   # 10 MB per file
-_BACKUP_COUNT = 5                   # keep 5 rotated files → ≤55 MB total
+_MAX_BYTES = 10 * 1024 * 1024  # 10 MB per file
+_BACKUP_COUNT = 5  # keep 5 rotated files → ≤55 MB total
 
 
 def setup_logging(settings: Settings) -> None:

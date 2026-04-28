@@ -216,7 +216,13 @@ def test_all_40_nodes_registered():
         # Corpus sanitisation node (1)
         "TokenFilter",
         # CPSC / Constraint Solver nodes (3)
-        "CASModelLoader", "CASProjector", "CASIndusEngine", "ClusterMapper", "CanonicalSignLoader", "StructuralTemplateAnalyzer",
+        "CASModelLoader", "CASProjector", "CASIndusEngine",
+        # CGSA / Structural nodes (3)
+        "ClusterMapper", "CanonicalSignLoader", "StructuralTemplateAnalyzer",
+        # CTT / Constraint Topology nodes (7)
+        "IndusSignRoleClassifier", "CTTAdmissibilityFilter", "DefaultIndusValueRoleMap",
+        "CompoundDependencyConstraint", "HoldoutWordRecall", "AttestedVocabularyLoader",
+        "CTTAnchoredSADecipher",
     }
     assert expected == set(ATOMIC_NODES.keys()), (
         f"Registry mismatch. Extra: {set(ATOMIC_NODES.keys()) - expected}. "

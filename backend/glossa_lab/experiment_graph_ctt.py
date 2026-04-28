@@ -508,16 +508,177 @@ DEFAULT_INDUS_VALUE_ROLE_MAP = {
 }
 
 
-def _default_value_role_map_loader(inputs: dict, params: dict) -> dict:
-    """Emit the default Indus value-role map as a graph value.
+# ── Per-language value-role maps ─────────────────────────────────
+# Each builder returns {target_value: role} for one language family. Used by
+# the families= param of DefaultIndusValueRoleMap so each Phase-10 SA branch
+# can apply strict_mode against its own attested target inventory.
 
-    Useful as a StaticValue replacement when the same role map is needed
-    in multiple places downstream.  Override values via params['extra'].
+
+# Royal titles and place names that act as determinatives in Hieroglyphic
+# Luwian inscriptions (per Hawkins 2000 functional categorisation).
+_LUWIAN_DETERMINATIVE_VALUES = frozenset({
+    "labarna", "tabarna", "hantawat", "hassu", "sarli", "hura",
+    "tarwana", "muwawa", "karkamis", "tabal", "milid", "halpa",
+    "kawa", "kummu", "gurgum", "hamath", "patin", "labaras",
+    "muwatallis", "suppiluliuma", "tudhaliya", "hattusili",
+    "katuwa", "araras", "hartapus",
+})
+
+# Numeric Luwian values
+_LUWIAN_NUMERAL_VALUES = frozenset({
+    "asa", "tu", "tara", "miwa", "panta", "saksa",
+    "supta", "akta", "nuwa", "an-ta", "panza",
+})
+
+
+def _build_old_tamil_role_map() -> dict[str, str]:
+    """Tamil/Dravidian value-role map.
+
+    - Case suffixes (DEDR Krishnamurti 2003 §6.2) → 'suffix'
+    - Numerals → 'numeral'
+    - All other DEDR roots and Tamil-Brahmi attested words → 'phonetic'
+      (rebus-decoded Indus signs land on word roots, not on individual
+      syllables, so the SA-proposed value will be a full word root.)
     """
+    out: dict[str, str] = {}
+    suffix_set = {
+        "-um", "-e", "-il", "-ku", "-in", "-al", "-an", "-ai", "-ar",
+        "-aru", "um", "il", "ku", "in", "al", "an", "ai", "ar", "aru",
+        "otu", "atu", "am",
+    }
+    numeral_set = {
+        "onr", "ir", "mu", "nal", "aynt", "aru", "elu", "ettu",
+        "onpatu", "pattu", "nuru", "ayir",
+    }
+    try:
+        from glossa_lab.data.dravidian import (  # noqa: PLC0415
+            VOCABULARY as TAMIL_VOCAB,
+            TAMIL_BRAHMI_ATTESTED,
+        )
+    except Exception:  # noqa: BLE001
+        TAMIL_VOCAB, TAMIL_BRAHMI_ATTESTED = {}, []
+    for w in suffix_set:
+        out[w] = "suffix"
+    for w in numeral_set:
+        out[w] = "numeral"
+    for w in TAMIL_VOCAB:
+        if w not in out:
+            out[w] = "phonetic"
+    for w in TAMIL_BRAHMI_ATTESTED:
+        if w not in out:
+            out[w] = "phonetic"
+    return out
+
+
+def _build_hieroglyphic_luwian_role_map() -> dict[str, str]:
+    """Hieroglyphic Luwian value-role map.
+
+    - Royal titles, place names, deity names → 'determinative'
+    - Numerals → 'numeral'
+    - All other Hawkins/Melchert lemmas → 'phonetic'
+    """
+    out: dict[str, str] = {}
+    try:
+        from glossa_lab.data.hieroglyphic_luwian import (  # noqa: PLC0415
+            VOCABULARY as LUWIAN_VOCAB,
+        )
+    except Exception:  # noqa: BLE001
+        LUWIAN_VOCAB = {}
+    for w in LUWIAN_VOCAB:
+        if w in _LUWIAN_DETERMINATIVE_VALUES:
+            out[w] = "determinative"
+        elif w in _LUWIAN_NUMERAL_VALUES:
+            out[w] = "numeral"
+        else:
+            out[w] = "phonetic"
+    return out
+
+
+def _build_mycenaean_greek_role_map() -> dict[str, str]:
+    """Mycenaean Greek (Linear B) value-role map.
+
+    Linear B is a syllabary; every value is a CV-syllabogram → 'phonetic'.
+    Built from the data/linear_b_language module's symbol inventory plus
+    the standard Linear B grid (a-, e-, i-, o-, u- and CV).
+    """
+    out: dict[str, str] = {}
+    # Standard 87-sign Linear B grid (Ventris)
+    base_syllables = (
+        ["a", "e", "i", "o", "u"]
+        + [c + v for c in "dkmnprstwz" for v in "aeiou"]
+        + ["ja", "je", "jo", "ju", "wa", "we", "wi", "wo"]
+        + ["qa", "qe", "qi", "qo"]
+    )
+    for s in base_syllables:
+        out[s] = "phonetic"
+    # Pull whatever extra symbols the data module exposes
+    try:
+        from glossa_lab.data.linear_b_language import get_corpus_symbols  # noqa: PLC0415
+        for s in get_corpus_symbols():
+            s = str(s).lower()
+            if 1 <= len(s) <= 4 and s.isalpha():
+                out.setdefault(s, "phonetic")
+    except Exception:  # noqa: BLE001
+        pass
+    return out
+
+
+_FAMILY_ROLE_MAP_BUILDERS = {
+    "old_tamil": _build_old_tamil_role_map,
+    "dravidian": _build_old_tamil_role_map,
+    "tamil": _build_old_tamil_role_map,
+    "hieroglyphic_luwian": _build_hieroglyphic_luwian_role_map,
+    "luwian": _build_hieroglyphic_luwian_role_map,
+    "mycenaean_greek": _build_mycenaean_greek_role_map,
+    "linear_b": _build_mycenaean_greek_role_map,
+    "greek": _build_mycenaean_greek_role_map,
+}
+
+
+def _default_value_role_map_loader(inputs: dict, params: dict) -> dict:
+    """Emit a value-role map merged from the default + selected language families.
+
+    Behaviour:
+      - Always starts from DEFAULT_INDUS_VALUE_ROLE_MAP (CV syllabograms,
+        Tamil case suffixes, generic determinatives, base numerals).
+      - For each name in `families` (param), merges in the per-LM map
+        produced by _build_<family>_role_map().
+      - Finally applies `extra` overrides (param) on top.
+
+    The `families` param accepts either a list[str] or a comma-separated
+    string. Unknown families are reported in `unknown_families`.
+    """
+    families_raw = params.get("families", []) or []
+    if isinstance(families_raw, str):
+        families_list = [s.strip() for s in families_raw.split(",") if s.strip()]
+    elif isinstance(families_raw, (list, tuple)):
+        families_list = [str(s).strip() for s in families_raw if str(s).strip()]
+    else:
+        families_list = []
+
     extra: dict[str, str] = params.get("extra", {}) or {}
-    out = dict(DEFAULT_INDUS_VALUE_ROLE_MAP)
+    include_default = bool(params.get("include_default", True))
+
+    out: dict[str, str] = dict(DEFAULT_INDUS_VALUE_ROLE_MAP) if include_default else {}
+    family_sizes: dict[str, int] = {}
+    unknown: list[str] = []
+    for fam in families_list:
+        builder = _FAMILY_ROLE_MAP_BUILDERS.get(fam.lower())
+        if builder is None:
+            unknown.append(fam)
+            continue
+        fmap = builder()
+        out.update(fmap)
+        family_sizes[fam] = len(fmap)
     out.update(extra)
-    return {"value_role_map": out, "n_values": len(out), "json": out}
+    return {
+        "value_role_map": out,
+        "n_values": len(out),
+        "families_applied": list(family_sizes.keys()),
+        "family_sizes": family_sizes,
+        "unknown_families": unknown,
+        "json": out,
+    }
 
 
 # ── Attested vocabulary loader ──────────────────────────────────────────────
@@ -744,17 +905,44 @@ def _ctt_node_defs() -> list[Any]:
             "DefaultIndusValueRoleMap",
             "Default Indus Value-Role Map",
             "CTT / Constraint Topology",
-            "Emit the default Indus target-value-to-role lookup table (Tamil suffixes, "
-            "CV syllabograms, determinatives, numerals). Use as input to CTTAdmissibilityFilter.",
+            "Emit a value-role lookup table for CTTAdmissibilityFilter. Always "
+            "includes the default CV-syllabary baseline (Tamil case suffixes + "
+            "CV syllabograms + numerals + generic determinatives). When `families` "
+            "is set, merges in per-language target inventories: 'old_tamil' "
+            "(DEDR roots + Mahadevan Tamil-Brahmi attested words), "
+            "'hieroglyphic_luwian' (Hawkins 2000 lemmas, royal titles as "
+            "determinatives), 'mycenaean_greek' (Linear B Ventris grid). "
+            "Use one node per Phase-10 SA branch so strict_mode is meaningful "
+            "per language.",
             inputs=[],
             outputs=[
                 {"name": "value_role_map", "type": "json"},
                 {"name": "n_values", "type": "number"},
+                {"name": "families_applied", "type": "json"},
+                {"name": "family_sizes", "type": "json"},
+                {"name": "unknown_families", "type": "json"},
                 {"name": "json", "type": "json"},
             ],
             params_schema={
                 "type": "object",
                 "properties": {
+                    "families": {
+                        "type": "array",
+                        "default": [],
+                        "description": (
+                            "List of language families whose target inventories "
+                            "to merge in: old_tamil | hieroglyphic_luwian | "
+                            "mycenaean_greek (aliases: dravidian, luwian, linear_b)."
+                        ),
+                    },
+                    "include_default": {
+                        "type": "boolean",
+                        "default": True,
+                        "description": (
+                            "Include the CV-syllabary baseline. Disable only if "
+                            "you want a strictly per-language map."
+                        ),
+                    },
                     "extra": {
                         "type": "object",
                         "default": {},

@@ -40,14 +40,34 @@
       "position": { "x": 580, "y": 60 }
     },
     {
-      "id": "value_role_map",
+      "id": "vrm_tamil",
       "type": "expNode",
       "data": {
         "atomicId": "DefaultIndusValueRoleMap",
-        "label": "Indus Value-Role Map",
-        "params": { "extra": {} }
+        "label": "Value-Role Map (Tamil DEDR + Mahadevan)",
+        "params": { "families": ["old_tamil"], "include_default": true, "extra": {} }
       },
       "position": { "x": 580, "y": 240 }
+    },
+    {
+      "id": "vrm_luwian",
+      "type": "expNode",
+      "data": {
+        "atomicId": "DefaultIndusValueRoleMap",
+        "label": "Value-Role Map (Hieroglyphic Luwian / Hawkins)",
+        "params": { "families": ["hieroglyphic_luwian"], "include_default": true, "extra": {} }
+      },
+      "position": { "x": 580, "y": 380 }
+    },
+    {
+      "id": "vrm_greek",
+      "type": "expNode",
+      "data": {
+        "atomicId": "DefaultIndusValueRoleMap",
+        "label": "Value-Role Map (Mycenaean Greek / Linear B)",
+        "params": { "families": ["mycenaean_greek"], "include_default": true, "extra": {} }
+      },
+      "position": { "x": 580, "y": 520 }
     },
     {
       "id": "lm_tamil",
@@ -247,9 +267,9 @@
     { "id": "e_role_sa_l",          "source": "role_clf",       "target": "sa_luwian",    "sourcePort": "role_table",     "targetPort": "role_table" },
     { "id": "e_role_sa_g",          "source": "role_clf",       "target": "sa_greek",     "sourcePort": "role_table",     "targetPort": "role_table" },
 
-    { "id": "e_vrm_sa_t",           "source": "value_role_map", "target": "sa_tamil",     "sourcePort": "value_role_map", "targetPort": "value_role_map" },
-    { "id": "e_vrm_sa_l",           "source": "value_role_map", "target": "sa_luwian",    "sourcePort": "value_role_map", "targetPort": "value_role_map" },
-    { "id": "e_vrm_sa_g",           "source": "value_role_map", "target": "sa_greek",     "sourcePort": "value_role_map", "targetPort": "value_role_map" },
+    { "id": "e_vrm_sa_t",           "source": "vrm_tamil",      "target": "sa_tamil",     "sourcePort": "value_role_map", "targetPort": "value_role_map" },
+    { "id": "e_vrm_sa_l",           "source": "vrm_luwian",     "target": "sa_luwian",    "sourcePort": "value_role_map", "targetPort": "value_role_map" },
+    { "id": "e_vrm_sa_g",           "source": "vrm_greek",      "target": "sa_greek",     "sourcePort": "value_role_map", "targetPort": "value_role_map" },
 
     { "id": "e_lm_t",               "source": "lm_tamil",       "target": "sa_tamil",     "sourcePort": "lm",             "targetPort": "lm" },
     { "id": "e_lm_l",               "source": "lm_luwian",      "target": "sa_luwian",    "sourcePort": "lm",             "targetPort": "lm" },

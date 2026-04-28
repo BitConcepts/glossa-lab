@@ -248,8 +248,12 @@ def _builtin_lm(inputs: dict, params: dict) -> dict:
             from glossa_lab.data.sumerian_ur3 import get_corpus_symbols  # noqa: PLC0415
             syms = get_corpus_symbols(); inscs = None
         elif lang in ("dravidian", "tamil"):
-            from glossa_lab.data.dravidian import get_corpus_symbols  # noqa: PLC0415
-            syms = get_corpus_symbols(); inscs = None
+            # Use word-level symbols so SA proposes word strings (e.g. 'tarhunt',
+            # 'kol', 'min') that align with the Tamil-Brahmi + DEDR target
+            # inventory in DefaultIndusValueRoleMap. Character-level symbols
+            # would produce single-letter values that strict_mode rejects.
+            from glossa_lab.data.dravidian import get_word_symbols  # noqa: PLC0415
+            syms = get_word_symbols(); inscs = None
         elif lang in ("south_dravidian", "dravidian_south", "kannada_telugu_tamil"):
             from glossa_lab.data.dravidian_south import get_corpus_symbols  # noqa: PLC0415
             syms = get_corpus_symbols(); inscs = None

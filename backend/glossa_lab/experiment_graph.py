@@ -345,13 +345,22 @@ def _builtin_corpus(inputs: dict, params: dict) -> dict:
         elif name in ("indus_cisi", "cisi", "indus_parpola"):
             from glossa_lab.data.indus_cisi import get_corpus_symbols as _cisi_syms, get_corpus_inscriptions as _cisi_inscs  # noqa: PLC0415
             flat = _cisi_syms(); seqs = _cisi_inscs()  # real multi-sign Parpola inscriptions
+        elif name in ("indus_m77", "m77", "mahadevan", "mahadevan_1977"):
+            # Full Mahadevan 1977 concordance: 1669 inscriptions / 5361 tokens.
+            # Much larger than the CISI Parpola subset; sign IDs are M77 codes
+            # (e.g. "047", "820") rather than Parpola P-codes.
+            from glossa_lab.data.indus_m77 import (  # noqa: PLC0415
+                get_corpus_symbols as _m77_syms,
+                get_corpus_inscriptions as _m77_inscs,
+            )
+            flat = _m77_syms(); seqs = _m77_inscs()
         elif name in ("hieroglyphic_luwian", "luwian", "hluwian", "chli"):
             from glossa_lab.data.hieroglyphic_luwian import (  # noqa: PLC0415
                 get_corpus_symbols, get_corpus_inscriptions,
             )
             flat = get_corpus_symbols(); seqs = get_corpus_inscriptions()
         else:
-            return {"error": f"Unknown corpus '{name}'. Valid: indus, indus_cisi, hebrew, geez, phoenician, nw_semitic/ugaritic, meroitic, proto_sinaitic, linear_b, sanskrit, dravidian"}
+            return {"error": f"Unknown corpus '{name}'. Valid: indus, indus_cisi, indus_m77, hebrew, geez, phoenician, nw_semitic/ugaritic, meroitic, proto_sinaitic, linear_b, sanskrit, dravidian"}
     except ImportError as exc:
         return {"error": str(exc)}
     from collections import Counter  # noqa: PLC0415

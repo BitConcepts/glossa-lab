@@ -1,0 +1,778 @@
+{
+  "data": {
+    "a__short": {
+      "n": 921,
+      "max_len": 2
+    },
+    "a__medium": {
+      "n": 570,
+      "max_len": 5
+    },
+    "a__long": {
+      "n": 178,
+      "max_len": null
+    },
+    "a__total": 1669,
+    "b__suffix": 5,
+    "b__determinative": 5,
+    "b__numeral": 25,
+    "b__phonetic": 35,
+    "b__logogram": 23,
+    "b__compound": 49,
+    "c": 23,
+    "d": "k=3: recall = 0.7746 \u00b1 0.0637 (95% CI), std=0.0563; compound mean=-10.6667.",
+    "e": "k=3: recall = 0.0888 \u00b1 0.0292 (95% CI), std=0.0258; compound mean=-12.3333.",
+    "f": "k=3: recall = 0.0396 \u00b1 0.0418 (95% CI), std=0.0370; compound mean=-10.5000.",
+    "g": "k=3: recall = 0.8214 \u00b1 0.0326 (95% CI), std=0.0288; compound mean=-7.8333.",
+    "h": "k=3: recall = 0.1276 \u00b1 0.0540 (95% CI), std=0.0477; compound mean=-6.1667.",
+    "i": "k=3: recall = 0.0637 \u00b1 0.0720 (95% CI), std=0.0637; compound mean=-9.8333.",
+    "j": "k=3: recall = 0.0020 \u00b1 0.0039 (95% CI), std=0.0035; compound mean=-13.5000.",
+    "k": "k=3: recall = 0.0023 \u00b1 0.0044 (95% CI), std=0.0039; compound mean=-13.5000.",
+    "l": "k=3: recall = 0.0000 \u00b1 0.0000 (95% CI), std=0.0000; compound mean=-12.3333.",
+    "m": 0.4044,
+    "n": 0.3615,
+    "o": 0.0036,
+    "p": 0.0,
+    "q": 0.3818,
+    "r": 0.0,
+    "s": 0.0,
+    "t": "Recall 0.0000 over 463 inscriptions of decoded length >= 3 (1206 too short, dropped).",
+    "u": "Recall 0.0000 over 559 inscriptions of decoded length >= 3 (1110 too short, dropped).",
+    "v": "Recall 0.0019 over 516 inscriptions of decoded length >= 3 (1153 too short, dropped).",
+    "w": "No vocab or no proposed_mapping.",
+    "x": "Real config UNDERPERFORMS permuted: 0.4044 - 0.5266 = -0.1222. The metric is dominated by vocabulary density, not corpus structure.",
+    "y": "Real config UNDERPERFORMS permuted: 0.3615 - 0.4554 = -0.0939. The metric is dominated by vocabulary density, not corpus structure.",
+    "z": "Real and permuted recall match within \u00b10.05: 0.0036 vs 0.0151 (delta -0.0115). Metric is largely vacuous on this corpus / vocab.",
+    "aa": "Real and permuted recall match within \u00b10.05: 0.0000 vs 0.0000 (delta +0.0000). Metric is largely vacuous on this corpus / vocab.",
+    "ab": "Observed recall is -1.91\u03c3 vs role-shuffled null (mean 0.4518). Marginal contribution from role classifier.",
+    "ac": -1.912,
+    "ad": [
+      0.4467,
+      0.4876,
+      0.444,
+      0.425,
+      0.476,
+      0.4317
+    ],
+    "ae": 30,
+    "af": 30,
+    "ag": [
+      "aanai",
+      "aatti",
+      "aatu",
+      "acci",
+      "adavu",
+      "adi",
+      "adu",
+      "aen",
+      "akala",
+      "akam",
+      "akappadu",
+      "akaram",
+      "akaravu",
+      "akil",
+      "akiri",
+      "akiya",
+      "akka",
+      "akkam",
+      "akkamma",
+      "akku",
+      "akkur",
+      "alai",
+      "alakapuri",
+      "alaku",
+      "alam"
+    ],
+    "ah": [
+      {
+        "indus_a": "740",
+        "indus_b": "740",
+        "target_a": "or",
+        "target_b": "or",
+        "count": 412,
+        "decoded": "oror",
+        "already_mapped": true,
+        "target_count": 0
+      },
+      {
+        "indus_a": "700",
+        "indus_b": "700",
+        "target_a": "iru",
+        "target_b": "iru",
+        "count": 310,
+        "decoded": "iruiru",
+        "already_mapped": true,
+        "target_count": 0
+      },
+      {
+        "indus_a": "520",
+        "indus_b": "520",
+        "target_a": "an",
+        "target_b": "am",
+        "count": 145,
+        "target_count": 30,
+        "decoded": "anam",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "874",
+        "indus_b": "874",
+        "target_a": "al",
+        "target_b": "ai",
+        "count": 111,
+        "target_count": 29,
+        "decoded": "alai",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "400",
+        "indus_b": "400",
+        "target_a": "ak",
+        "target_b": "ku",
+        "count": 96,
+        "target_count": 24,
+        "decoded": "akku",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "820",
+        "indus_b": "820",
+        "target_a": "ar",
+        "target_b": "ai",
+        "count": 86,
+        "target_count": 24,
+        "decoded": "arai",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "481",
+        "indus_b": "481",
+        "target_a": "kk",
+        "target_b": "am",
+        "count": 81,
+        "target_count": 23,
+        "decoded": "kkam",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "090",
+        "indus_b": "090",
+        "target_a": "ar",
+        "target_b": "am",
+        "count": 70,
+        "target_count": 22,
+        "decoded": "aram",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "203",
+        "indus_b": "203",
+        "target_a": "an",
+        "target_b": "ai",
+        "count": 68,
+        "target_count": 21,
+        "decoded": "anai",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "045",
+        "indus_b": "045",
+        "target_a": "iy",
+        "target_b": "an",
+        "count": 67,
+        "target_count": 21,
+        "decoded": "iyan",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "692",
+        "indus_b": "692",
+        "target_a": "ti",
+        "target_b": "ru",
+        "count": 56,
+        "target_count": 21,
+        "decoded": "tiru",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "003",
+        "indus_b": "003",
+        "target_a": "va",
+        "target_b": "la",
+        "count": 52,
+        "target_count": 21,
+        "decoded": "vala",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "169",
+        "indus_b": "169",
+        "target_a": "at",
+        "target_b": "ti",
+        "count": 51,
+        "target_count": 20,
+        "decoded": "atti",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "692",
+        "indus_b": "861",
+        "target_a": "ru",
+        "target_b": "ma",
+        "count": 45,
+        "target_count": 18,
+        "decoded": "ruma",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "047",
+        "indus_b": "047",
+        "target_a": "kutam",
+        "target_b": "kutam",
+        "count": 44,
+        "decoded": "kutamkutam",
+        "already_mapped": true,
+        "target_count": 0
+      },
+      {
+        "indus_a": "416",
+        "indus_b": "416",
+        "target_a": "ak",
+        "target_b": "ka",
+        "count": 43,
+        "target_count": 20,
+        "decoded": "akka",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "861",
+        "indus_b": "861",
+        "target_a": "ma",
+        "target_b": "ma",
+        "count": 37,
+        "decoded": "mama",
+        "already_mapped": true,
+        "target_count": 2
+      },
+      {
+        "indus_a": "394",
+        "indus_b": "394",
+        "target_a": "ap",
+        "target_b": "pu",
+        "count": 36,
+        "target_count": 20,
+        "decoded": "appu",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "527",
+        "indus_b": "527",
+        "target_a": "in",
+        "target_b": "ai",
+        "count": 33,
+        "target_count": 19,
+        "decoded": "inai",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "256",
+        "indus_b": "256",
+        "target_a": "ka",
+        "target_b": "ra",
+        "count": 31,
+        "target_count": 18,
+        "decoded": "kara",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "503",
+        "indus_b": "503",
+        "target_a": "ip",
+        "target_b": "pu",
+        "count": 28,
+        "target_count": 18,
+        "decoded": "ippu",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "481",
+        "indus_b": "047",
+        "target_a": "am",
+        "target_b": "kutam",
+        "count": 26,
+        "decoded": "amkutam",
+        "already_mapped": true,
+        "target_count": 0
+      },
+      {
+        "indus_a": "047",
+        "indus_b": "400",
+        "target_a": "kutam",
+        "target_b": "ku",
+        "count": 23,
+        "decoded": "kutamku",
+        "already_mapped": true,
+        "target_count": 0
+      },
+      {
+        "indus_a": "526",
+        "indus_b": "526",
+        "target_a": "at",
+        "target_b": "tu",
+        "count": 22,
+        "target_count": 18,
+        "decoded": "attu",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "413",
+        "indus_b": "003",
+        "target_a": "ka",
+        "target_b": "la",
+        "count": 20,
+        "target_count": 17,
+        "decoded": "kala",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "480",
+        "indus_b": "480",
+        "target_a": "pe",
+        "target_b": "ru",
+        "count": 20,
+        "target_count": 18,
+        "decoded": "peru",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "861",
+        "indus_b": "692",
+        "target_a": "ma",
+        "target_b": "ru",
+        "count": 20,
+        "decoded": "maru",
+        "already_mapped": true,
+        "target_count": 8
+      },
+      {
+        "indus_a": "723",
+        "indus_b": "782",
+        "target_a": "pa",
+        "target_b": "ra",
+        "count": 20,
+        "target_count": 17,
+        "decoded": "para",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "920",
+        "indus_b": "920",
+        "target_a": "an",
+        "target_b": "ta",
+        "count": 19,
+        "target_count": 17,
+        "decoded": "anta",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "708",
+        "indus_b": "413",
+        "target_a": "ik",
+        "target_b": "ka",
+        "count": 18,
+        "target_count": 15,
+        "decoded": "ikka",
+        "already_mapped": false
+      }
+    ],
+    "ai": [
+      {
+        "indus_a": "740",
+        "indus_b": "740",
+        "target_a": "a",
+        "target_b": "ke",
+        "count": 412,
+        "target_count": 4,
+        "decoded": "a-ke",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "700",
+        "indus_b": "700",
+        "target_a": "ti",
+        "target_b": "ri",
+        "count": 310,
+        "target_count": 4,
+        "decoded": "ti-ri",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "520",
+        "indus_b": "520",
+        "target_a": "e",
+        "target_b": "ra",
+        "count": 145,
+        "target_count": 4,
+        "decoded": "e-ra",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "874",
+        "indus_b": "874",
+        "target_a": "ta",
+        "target_b": "ra",
+        "count": 111,
+        "target_count": 4,
+        "decoded": "ta-ra",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "400",
+        "indus_b": "400",
+        "target_a": "ri",
+        "target_b": "jo",
+        "count": 96,
+        "target_count": 4,
+        "decoded": "ri-jo",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "820",
+        "indus_b": "820",
+        "target_a": "ka",
+        "target_b": "na",
+        "count": 86,
+        "target_count": 3,
+        "decoded": "ka-na",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "481",
+        "indus_b": "481",
+        "target_a": "ki",
+        "target_b": "ja",
+        "count": 81,
+        "target_count": 3,
+        "decoded": "ki-ja",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "090",
+        "indus_b": "090",
+        "target_a": "ni",
+        "target_b": "ja",
+        "count": 70,
+        "target_count": 3,
+        "decoded": "ni-ja",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "203",
+        "indus_b": "203",
+        "target_a": "a",
+        "target_b": "pi",
+        "count": 68,
+        "target_count": 3,
+        "decoded": "a-pi",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "045",
+        "indus_b": "045",
+        "target_a": "mi",
+        "target_b": "jo",
+        "count": 67,
+        "target_count": 3,
+        "decoded": "mi-jo",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "692",
+        "indus_b": "692",
+        "target_a": "ni",
+        "target_b": "jo",
+        "count": 56,
+        "target_count": 3,
+        "decoded": "ni-jo",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "003",
+        "indus_b": "003",
+        "target_a": "e",
+        "target_b": "ke",
+        "count": 52,
+        "target_count": 3,
+        "decoded": "e-ke",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "169",
+        "indus_b": "169",
+        "target_a": "ke",
+        "target_b": "ra",
+        "count": 51,
+        "target_count": 3,
+        "decoded": "ke-ra",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "047",
+        "indus_b": "047",
+        "target_a": "me",
+        "target_b": "no",
+        "count": 44,
+        "target_count": 3,
+        "decoded": "me-no",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "416",
+        "indus_b": "416",
+        "target_a": "e",
+        "target_b": "pi",
+        "count": 43,
+        "target_count": 3,
+        "decoded": "e-pi",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "861",
+        "indus_b": "861",
+        "target_a": "me",
+        "target_b": "na",
+        "count": 37,
+        "target_count": 3,
+        "decoded": "me-na",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "394",
+        "indus_b": "394",
+        "target_a": "ka",
+        "target_b": "ko",
+        "count": 36,
+        "target_count": 3,
+        "decoded": "ka-ko",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "527",
+        "indus_b": "527",
+        "target_a": "ka",
+        "target_b": "ra",
+        "count": 33,
+        "target_count": 3,
+        "decoded": "ka-ra",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "256",
+        "indus_b": "256",
+        "target_a": "te",
+        "target_b": "o",
+        "count": 31,
+        "target_count": 3,
+        "decoded": "te-o",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "503",
+        "indus_b": "503",
+        "target_a": "to",
+        "target_b": "ko",
+        "count": 28,
+        "target_count": 3,
+        "decoded": "to-ko",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "047",
+        "indus_b": "427",
+        "target_a": "no",
+        "target_b": "no",
+        "count": 26,
+        "target_count": 1,
+        "decoded": "no-no",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "481",
+        "indus_b": "047",
+        "target_a": "ja",
+        "target_b": "no",
+        "count": 26,
+        "decoded": "ja-no",
+        "already_mapped": true,
+        "target_count": 0
+      },
+      {
+        "indus_a": "047",
+        "indus_b": "034",
+        "target_a": "no",
+        "target_b": "so",
+        "count": 23,
+        "target_count": 1,
+        "decoded": "no-so",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "047",
+        "indus_b": "400",
+        "target_a": "no",
+        "target_b": "jo",
+        "count": 23,
+        "decoded": "no-jo",
+        "already_mapped": true,
+        "target_count": 0
+      },
+      {
+        "indus_a": "047",
+        "indus_b": "858",
+        "target_a": "no",
+        "target_b": "ke",
+        "count": 22,
+        "target_count": 1,
+        "decoded": "no-ke",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "526",
+        "indus_b": "526",
+        "target_a": "wi",
+        "target_b": "ri",
+        "count": 22,
+        "target_count": 3,
+        "decoded": "wi-ri",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "413",
+        "indus_b": "003",
+        "target_a": "ka",
+        "target_b": "ke",
+        "count": 20,
+        "target_count": 1,
+        "decoded": "ka-ke",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "047",
+        "indus_b": "461",
+        "target_a": "no",
+        "target_b": "o",
+        "count": 20,
+        "target_count": 1,
+        "decoded": "no-o",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "480",
+        "indus_b": "480",
+        "target_a": "a",
+        "target_b": "ka",
+        "count": 20,
+        "target_count": 2,
+        "decoded": "a-ka",
+        "already_mapped": false
+      },
+      {
+        "indus_a": "861",
+        "indus_b": "692",
+        "target_a": "na",
+        "target_b": "jo",
+        "count": 20,
+        "decoded": "na-jo",
+        "already_mapped": true,
+        "target_count": 0
+      }
+    ],
+    "aj": 0.1228,
+    "ak": 0.0,
+    "al": "no meaningful cross-language agreement: avg pairwise value-agreement = 0.0192 over 10 pairs, n_full_agreement = 0 of 41 signs.",
+    "am": 0.0192,
+    "an": [
+      {
+        "a": "tamil_sa",
+        "b": "luwian_sa",
+        "n_shared": 30,
+        "jaccard_signs": 0.6667,
+        "agreement_value": 0.0,
+        "n_value_agreements": 0
+      },
+      {
+        "a": "tamil_sa",
+        "b": "greek_sa",
+        "n_shared": 30,
+        "jaccard_signs": 0.7317,
+        "agreement_value": 0.0,
+        "n_value_agreements": 0
+      },
+      {
+        "a": "tamil_sa",
+        "b": "tamil_pmi",
+        "n_shared": 15,
+        "jaccard_signs": 0.2632,
+        "agreement_value": 0.0,
+        "n_value_agreements": 0
+      },
+      {
+        "a": "tamil_sa",
+        "b": "tamil_logo",
+        "n_shared": 26,
+        "jaccard_signs": 0.7027,
+        "agreement_value": 0.1923,
+        "n_value_agreements": 5
+      },
+      {
+        "a": "luwian_sa",
+        "b": "greek_sa",
+        "n_shared": 36,
+        "jaccard_signs": 0.8182,
+        "agreement_value": 0.0,
+        "n_value_agreements": 0
+      },
+      {
+        "a": "luwian_sa",
+        "b": "tamil_pmi",
+        "n_shared": 17,
+        "jaccard_signs": 0.2656,
+        "agreement_value": 0.0,
+        "n_value_agreements": 0
+      },
+      {
+        "a": "luwian_sa",
+        "b": "tamil_logo",
+        "n_shared": 28,
+        "jaccard_signs": 0.6364,
+        "agreement_value": 0.0,
+        "n_value_agreements": 0
+      },
+      {
+        "a": "greek_sa",
+        "b": "tamil_pmi",
+        "n_shared": 14,
+        "jaccard_signs": 0.2222,
+        "agreement_value": 0.0,
+        "n_value_agreements": 0
+      },
+      {
+        "a": "greek_sa",
+        "b": "tamil_logo",
+        "n_shared": 28,
+        "jaccard_signs": 0.7,
+        "agreement_value": 0.0,
+        "n_value_agreements": 0
+      },
+      {
+        "a": "tamil_pmi",
+        "b": "tamil_logo",
+        "n_shared": 13,
+        "jaccard_signs": 0.2321,
+        "agreement_value": 0.0,
+        "n_value_agreements": 0
+      }
+    ],
+    "ao": 0
+  }
+}

@@ -678,6 +678,40 @@ def get_corpus_symbols() -> list[str]:
     return [c for c in get_corpus_text().lower() if c.isalpha()]
 
 
+def get_word_symbols() -> list[str]:
+    """Return word-level symbol sequence from Old Tamil + DEDR + Brahmi sources.
+
+    Each token is a complete word string (e.g. 'tarhunt', 'kol', 'min', 'antuvan').
+    This is the granularity required for cross-linguistic decipherment against
+    word-level target inventories like Hieroglyphic Luwian and Linear B.
+
+    Combines:
+      1. DEDR reconstructed roots (VOCABULARY keys) — frequency-weighted x4
+         to reflect their canonical status as core Indus rebus targets.
+      2. Tamil-Brahmi attested epigraphic words (TAMIL_BRAHMI_ATTESTED) —
+         frequency-weighted x2 to reflect epigraphic attestation.
+      3. Sangam corpus word tokens from OLD_TAMIL_TEXT — each word as one
+         symbol, single-occurrence (gives the LM realistic bigram statistics).
+    """
+    syms: list[str] = []
+    # DEDR reconstructed roots (4x weight)
+    for w in VOCABULARY.keys():
+        wl = w.lower()
+        if wl.isalpha() and len(wl) >= 2:
+            syms.extend([wl] * 4)
+    # Tamil-Brahmi attested forms (2x weight)
+    for w in TAMIL_BRAHMI_ATTESTED:
+        wl = w.lower()
+        if wl.isalpha() and len(wl) >= 2:
+            syms.extend([wl] * 2)
+    # Sangam corpus word tokens (1x weight, with bigram preservation)
+    for word in OLD_TAMIL_TEXT.lower().split():
+        wl = "".join(c for c in word if c.isalpha())
+        if wl and len(wl) >= 2:
+            syms.append(wl)
+    return syms
+
+
 def get_corpus_inscriptions() -> list[list[str]]:
     """Return word-level character sequences for the Dravidian corpus.
 

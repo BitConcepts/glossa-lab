@@ -269,189 +269,19 @@ def _conclusions(agg):
             "improvement": round(f20 - f0, 4) if not (math.isnan(f0) or math.isnan(f20)) else None}
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
+# ════════════════════════════════════════════════════════════════════════════
 # H15/H16 NOTE: This Python class has been removed.
 # The canonical experiment is: experiments/graphs/geez_anchor_convergence.json
 # Run via: shell.cmd python backend/scripts/run_geez_anchor_convergence.py
-# ═══════════════════════════════════════════════════════════════════════════════
-
-if False:  # Disabled — kept only as historical reference
-    class GeezSyllabicAnchorConvergence:
-    """Geez Syllabic Anchor-Convergence Validation.
-
-    Fully UI-discoverable ExperimentBase subclass.
-    Appears in the Experiments list, runs as a tracked Job with GPU/CPU badge.
-    All seed loops are parallelised via ThreadPoolExecutor (H10 compliant).
-    BigramScorer GPU/numpy fast path enabled (ocp_weight=0, use_word_bigrams=False).
-    """
-
-    id            = "geez_syllabic_anchor_convergence"
-    name          = "Geez Syllabic Anchor-Convergence Validation"
-    category      = "Decipherment Benchmark"
-    description   = ("Controlled benchmark on Geez Genesis corpus (85K tokens, ~200 signs). "
-                     "Tests anchor-amplification under 6 anchor conditions with structured "
-                     "and random anchor sets. Parallel seeds, GPU-aware BigramScorer.")
-    estimated_time = "~8 min (CPU) / ~2 min (GPU)"
-    results_file  = "reports/geez_syllabic_anchor_convergence.json"
-    params_schema = {
-        "type": "object",
-        "properties": {
-            "train_ratio":        {"type": "number",  "default": 0.75},
-            "cipher_tokens":      {"type": "integer", "default": 12000},
-            "anchor_counts":      {"type": "array",   "default": [0, 1, 3, 5, 10, 20]},
-            "n_seeds_baseline":   {"type": "integer", "default": 10},
-            "n_structured_sets":  {"type": "integer", "default": 3},
-            "n_seeds_structured": {"type": "integer", "default": 4},
-            "n_random_sets":      {"type": "integer", "default": 10},
-            "n_seeds_random":     {"type": "integer", "default": 2},
-            "sa_iterations":      {"type": "integer", "default": 10000},
-            "sa_restarts":        {"type": "integer", "default": 8},
-        },
-    }
-
-    def run(self, **kw: Any) -> dict[str, Any]:
-        tr    = float(kw.get("train_ratio",        0.75))
-        cn    = int(  kw.get("cipher_tokens",      12_000))
-        acs   = list( kw.get("anchor_counts",      [0, 1, 3, 5, 10, 20]))
-        nsb   = int(  kw.get("n_seeds_baseline",   10))
-        nss   = int(  kw.get("n_structured_sets",  3))
-        nsseed= int(  kw.get("n_seeds_structured", 4))
-        nrs   = int(  kw.get("n_random_sets",      10))
-        nrseed= int(  kw.get("n_seeds_random",     2))
-        sa_it = int(  kw.get("sa_iterations",      10_000))
-        sa_re = int(  kw.get("sa_restarts",        8))
-        sa_t  = 1.0; sa_c = 0.9985
-
-        dev = compute_device_label()
-        _log.info("Geez anchor-convergence | device=%s", dev)
-        t0 = time.time()
-
-        # Data
-        si     = _parse_signlist(_DATA / "Geez_signlist.txt")
-        known  = {c for c, m in si.items() if m["syl"]}
-        tok, words = _load_corpus(_DATA / "Geez_Genesis.txt", known)
-        freq   = Counter(tok)
-        inv    = sorted([c for c, n in freq.items()
-                          if n >= 3 and c in si and si[c]["syl"]],
-                         key=lambda c: si[c]["row"] * 10 + si[c]["col"])
-        grid: dict[str, list[str]] = defaultdict(list)
-        inv_set = set(inv)
-        for c, m in si.items():
-            if m["syl"] and c in inv_set:
-                grid[m["name"]].append(c)
-
-        _log.info("Corpus %d tok | inventory %d signs | %d words",
-                  len(tok), len(inv), len(words))
-
-        sp  = _split(tok, words, tr)
-        lm  = _build_lm(sp["tr"], sp["tw"])
-        tps = round(len(sp["tr"]) / max(1, len(inv)), 1)
-
-        cd  = _cipher(sp["te"], sp["ew"], inv, cn)
-        ctok, cwords, truth, perm = cd["tok"], cd["words"], cd["truth"], cd["perm"]
-        _log.info("Cipher %d tok | %d signs | %.1f tok/sign",
-                  len(ctok), cd["n_signs"], len(ctok) / max(1, cd["n_signs"]))
-
-        def _run_set(anch: dict, n_seeds: int, base: int) -> dict:
-            seeds = list(range(base, base + n_seeds))
-            maps  = run_seeds_parallel(
-                _one_seed, seeds,
-                ctok, cwords, lm, anch, sa_it, sa_re, sa_t, sa_c
-            )
-            return _metrics(maps, truth, set(anch))
-
-        # Main loop
-        aggregated: dict[int, dict] = {}
-        for ac in sorted(acs):
-            _log.info("Running anchor_count=%d", ac)
-            ssets = _struct_anchors(inv, perm, lm, dict(grid), ac, nss)
-            rsets = _rand_anchors(inv, perm, ac, nrs)
-            ns = nsb if ac == 0 else nsseed
-            nr = 0   if ac == 0 else nrseed
-            sm = [_run_set(s, ns, 1000 + ac * 100 + si2 * 200)
-                  for si2, s in enumerate(ssets)]
-            rm = [_run_set(s, nr, 5000 + ac * 100 + si2 * 200)
-                  for si2, s in enumerate(rsets)] if nr > 0 else []
-            agg = _aggregate(sm, rm)
-            agg["n_anchors"] = ac
-            aggregated[ac] = agg
-            tf = agg.get("overall_modal_top1_free", float("nan"))
-            _log.info("  ac=%d top1_free=%.1f%%", ac,
-                      0.0 if math.isnan(tf) else tf * 100)
-
-        # 50/50 robustness
-        sp50 = _split(tok, words, 0.50)
-        lm50 = _build_lm(sp50["tr"], sp50["tw"])
-        cd50 = _cipher(sp50["te"], sp50["ew"], inv, cn, seed=99)
-        sec50: dict[str, dict] = {}
-        for ac in [0, 5, 20]:
-            if ac > max(acs): continue
-            as50 = _struct_anchors(inv, cd50["perm"], lm50, dict(grid), ac, 1)
-            seeds = list(range(9000 + ac * 100, 9000 + ac * 100 + (5 if ac == 0 else 3)))
-            maps  = run_seeds_parallel(_one_seed, seeds,
-                                        cd50["tok"], cd50["words"], lm50, as50[0],
-                                        sa_it, sa_re, sa_t, sa_c)
-            sec50[str(ac)] = _metrics(maps, cd50["truth"], set(as50[0]))
-
-        conc = _conclusions(aggregated)
-        _log.info("VERDICT: %s", conc["verdict"])
-
-        # Save CSVs
-        _save_csvs(inv, si, freq, sp, aggregated)
-
-        elapsed = round(time.time() - t0, 1)
-        _log.info("Geez experiment complete in %.1fs | %s", elapsed, conc["verdict"])
-
-        return {
-            "title": self.name,
-            "timestamp": datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S"),
-            "elapsed_s": elapsed,
-            "compute_device": dev,
-            "data": {
-                "corpus_tokens": len(tok), "inventory_size": len(inv),
-                "train_tokens": sp["tr_n"], "test_tokens": sp["te_n"],
-                "cipher_n_tokens": len(ctok), "cipher_n_signs": cd["n_signs"],
-                "tokens_per_sign_lm": tps,
-            },
-            "lm_stats": {
-                "total_tokens": len(sp["tr"]), "inventory_size": len(inv),
-                "n_bigrams": len(lm.bigram_freq), "mean_tokens_per_sign": tps,
-            },
-            "anchor_convergence": {str(k): v for k, v in aggregated.items()},
-            "secondary_50_50": sec50,
-            "comparison_nw_semitic": {
-                "nw_tokens_per_sign": _NW_TPS,
-                "geez_tokens_per_sign_lm": tps,
-                "geez_top1_0anchors": aggregated.get(0, {}).get("overall_modal_top1_all"),
-                "geez_top1_20anchors": aggregated.get(20, {}).get("overall_modal_top1_all"),
-            },
-            "scientific_conclusions": conc,
-        }
-
-
-def _save_csvs(inv, si, freq, sp, aggregated):
-    with open(_REPORTS / "geez_sign_inventory.csv", "w", newline="", encoding="utf-8") as f:
-        w = csv.writer(f)
-        w.writerow(["code", "char", "codepoint", "name", "roman", "order", "freq"])
-        for i, c in enumerate(inv):
-            m = si.get(c, {})
-            w.writerow([f"G{i+1:03d}", c, f"U+{ord(c):04X}",
-                        m.get("name","?"), m.get("roman","?"), m.get("order","?"), freq.get(c,0)])
-    total = sp["tr_n"] + sp["te_n"]
-    with open(_REPORTS / "geez_split_manifest.csv", "w", newline="", encoding="utf-8") as f:
-        w = csv.writer(f)
-        w.writerow(["split","tokens","pct"])
-        w.writerow(["train", sp["tr_n"], f"{100*sp['tr_n']/total:.1f}%"])
-        w.writerow(["test",  sp["te_n"], f"{100*sp['te_n']/total:.1f}%"])
-    with open(_REPORTS / "geez_anchor_convergence.csv", "w", newline="", encoding="utf-8") as f:
-        keys = ["overall_modal_top1_all","overall_modal_top1_free",
-                "overall_mean_consistency","overall_n_distinct_mappings"]
-        w = csv.DictWriter(f, fieldnames=["anchor_count"]+keys, extrasaction="ignore")
-        w.writeheader()
-        for ac, agg in sorted(aggregated.items()):
-            w.writerow({"anchor_count": ac, **{k: agg.get(k) for k in keys}})
-
+#
+# The historical-reference class body that previously lived here as an
+# `if False: class GeezSyllabicAnchorConvergence: ...` block has been removed
+# because Python's parser still validates indentation inside `if False:` and
+# the class body was malformed (single-level indent under the `if`). Git
+# history retains the original implementation.
+# ════════════════════════════════════════════════════════════════════════════
 
 if __name__ == "__main__":
-    import subprocess, sys
+    import subprocess
+    import sys
     subprocess.run([sys.executable, "backend/scripts/run_geez_anchor_convergence.py"])

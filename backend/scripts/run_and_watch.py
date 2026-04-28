@@ -40,7 +40,7 @@ import sys
 import time
 import urllib.error
 import urllib.request
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -252,8 +252,13 @@ def monitor(exp_ids: list[str], poll_interval: float, max_wait: float) -> int:
             return 4
         log(f"VALID  {exp_id} -> {cls.__module__}.{cls.__name__}")
 
-    # Snapshot the time so we only track jobs created from now on
-    started_iso = datetime.utcnow().isoformat()
+    # Snapshot the time so we only track jobs created from now on. We use a
+    # timezone-aware UTC datetime (datetime.utcnow is deprecated in 3.12+) but
+    # then drop the tzinfo before isoformat() so the resulting string remains
+    # in the same naive form ("YYYY-MM-DDTHH:MM:SS.ffffff") that the backend
+    # `created_at` field is stored in. Keeping the format identical preserves
+    # the lexicographic >= comparison used by list_jobs_since().
+    started_iso = datetime.now(timezone.utc).replace(tzinfo=None).isoformat()
     log(f"Tracking jobs created at or after: {started_iso}")
 
     procs: dict[str, subprocess.Popen] = {}

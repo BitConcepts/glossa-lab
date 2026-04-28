@@ -14,16 +14,25 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from glossa_lab import __version__
+from glossa_lab.api.ag2_chat import router as ag2_chat_router
 from glossa_lab.api.ai_tools import router as ai_tools_router
 from glossa_lab.api.analysis import router as analysis_router
-from glossa_lab.api.env import router as env_router
+from glossa_lab.api.anchor_sets import router as anchor_sets_router
+from glossa_lab.api.cas_models import router as cas_models_router
 from glossa_lab.api.catalog import router as catalog_router
+from glossa_lab.api.cgsa import router as cgsa_router
+from glossa_lab.api.collab import router as collab_router
+from glossa_lab.api.corpus_catalogue import router as corpus_catalogue_router
+from glossa_lab.api.env import router as env_router
+from glossa_lab.api.experiment_graphs import router as experiment_graphs_router
 from glossa_lab.api.experiments import router as experiments_router
 from glossa_lab.api.health import router as health_router
 from glossa_lab.api.jobs import router as jobs_router
 from glossa_lab.api.ollama import router as ollama_router
 from glossa_lab.api.pipelines import router as pipelines_router
 from glossa_lab.api.presets import router as presets_router
+from glossa_lab.api.rag import router as rag_router
+from glossa_lab.api.report_templates import router as report_templates_router
 from glossa_lab.api.reports import router as reports_router
 from glossa_lab.api.research import router as research_router
 from glossa_lab.api.results import router as results_router
@@ -34,20 +43,11 @@ from glossa_lab.api.studies import router as studies_router
 from glossa_lab.api.system import router as system_router
 from glossa_lab.api.terminal import router as terminal_router
 from glossa_lab.api.texts import router as texts_router
-from glossa_lab.node_registry import router as node_registry_router
-from glossa_lab.api.rag import router as rag_router
-from glossa_lab.api.experiment_graphs import router as experiment_graphs_router
-from glossa_lab.api.collab import router as collab_router
-from glossa_lab.api.report_templates import router as report_templates_router
-from glossa_lab.api.anchor_sets import router as anchor_sets_router
-from glossa_lab.api.corpus_catalogue import router as corpus_catalogue_router
-from glossa_lab.api.cas_models import router as cas_models_router
-from glossa_lab.api.ag2_chat import router as ag2_chat_router
-from glossa_lab.api.cgsa import router as cgsa_router
 from glossa_lab.config import get_settings
 from glossa_lab.database import close_db, init_db
 from glossa_lab.engine import run_engine_loop
-from glossa_lab.logging import setup_logging
+from glossa_lab.log_setup import setup_logging
+from glossa_lab.node_registry import router as node_registry_router
 
 # Repo root is two levels above this file (backend/glossa_lab/main.py)
 _REPO_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -103,6 +103,7 @@ def _try_start_ollama() -> None:
     except Exception:  # noqa: BLE001
         _ollama_started = False
 
+
 _start_time: float = 0.0
 
 
@@ -128,10 +129,12 @@ async def lifespan(app: FastAPI):
 
     # Seed world language corpus catalogue (idempotent upserts)
     from glossa_lab.corpus_catalogue_seeder import seed_corpus_catalogue  # noqa: PLC0415
+
     await seed_corpus_catalogue()
 
     # Seed default report templates (idempotent — skips existing IDs)
     from glossa_lab.report_template_seeder import seed_report_templates  # noqa: PLC0415
+
     await seed_report_templates()
 
     # Start Ollama in the background (no-op if not installed or already running)
@@ -139,6 +142,7 @@ async def lifespan(app: FastAPI):
 
     # Build RAG index in the background (non-blocking — completes while app starts)
     from glossa_lab.rag import build_index as _rag_build  # noqa: PLC0415
+
     asyncio.create_task(_rag_build(_db))  # fire and forget
 
     # Register graph experiments into the ExperimentBase discovery registry
@@ -146,6 +150,7 @@ async def lifespan(app: FastAPI):
         auto_migrate_hardcoded_experiments,
         register_graph_experiments,
     )
+
     register_graph_experiments()
     # Migrate any Python experiments not yet represented as graph files (idempotent)
     auto_migrate_hardcoded_experiments()

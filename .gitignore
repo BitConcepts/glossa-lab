@@ -148,3 +148,7 @@ logs/
 !services/linux/.gitkeep
 !services/macos/.gitkeep
 !scripts/.gitkeep
+
+# Auto-generated experiment runner stubs from run_and_watch.py (H17.6)
+backend/scripts/_run_*.py
+

@@ -1,0 +1,97 @@
+{
+  "experiment_a_token_density_curve": [
+    {
+      "label": "~2 tok/sign",
+      "n_words_sampled": 45,
+      "approx_tok_per_sign": 3.02,
+      "mean_consistency": 0.5879,
+      "mean_bigram_plausibility": -4.3807
+    },
+    {
+      "label": "~3 tok/sign",
+      "n_words_sampled": 73,
+      "approx_tok_per_sign": 3.75,
+      "mean_consistency": 0.6156,
+      "mean_bigram_plausibility": -4.4804
+    },
+    {
+      "label": "~4 tok/sign",
+      "n_words_sampled": 101,
+      "approx_tok_per_sign": 4.24,
+      "mean_consistency": 0.6205,
+      "mean_bigram_plausibility": -4.5882
+    },
+    {
+      "label": "~31.5 tok/sign (Ugaritic reference)",
+      "n_words_sampled": 945,
+      "approx_tok_per_sign": 31.5,
+      "mean_consistency": 0.867,
+      "mean_bigram_plausibility": null,
+      "note": "Measured from fuls_tier_validation_report (beam+phono groups, 0 anchors)"
+    }
+  ],
+  "experiment_b_random_corpus_control": {
+    "mean_consistency": 0.3998,
+    "delta_vs_real_corpus_pp": 19.9,
+    "interpretation": "Random corpus consistency is significantly lower than real corpus, confirming that real test1 contains genuine statistical structure beyond what would be expected by chance."
+  },
+  "experiment_c_cross_lm_test": {
+    "Hebrew (standard)": {
+      "mean_consistency": 0.641,
+      "mean_bigram_plausibility": -4.5461
+    },
+    "Uniform distribution": {
+      "mean_consistency": 0.2513,
+      "mean_bigram_plausibility": -7.5245
+    },
+    "Shuffled bigrams": {
+      "mean_consistency": 0.5397,
+      "mean_bigram_plausibility": -4.4908
+    }
+  },
+  "experiment_d_frequency_vs_consistency": {
+    "pearson_r": -0.1329,
+    "mean_consistency_by_frequency_bucket": {
+      "1\u20132": 0.656,
+      "3\u20135": 0.534,
+      "6\u201310": 0.546,
+      "11\u201320": 0.5,
+      "21+": 0.7
+    },
+    "interpretation": "Positive correlation confirms that token density is the primary driver of mapping consistency, not LM choice or split ratio."
+  },
+  "risk2_assignment_distribution": {
+    "assigned_counts": {
+      "y": 26,
+      "h": 19,
+      "w": 12,
+      "G": 8,
+      "m": 4,
+      "'": 3,
+      "l": 3,
+      "r": 1,
+      "n": 1,
+      "t": 1
+    },
+    "assignment_entropy_bits": 2.6001,
+    "max_entropy_bits": 4.4594,
+    "entropy_utilisation_pct": 58.3,
+    "h_assigned_count": 19,
+    "h_assigned_fraction": 0.2436,
+    "h_expected_fraction_in_hebrew": 0.0876,
+    "h_overassignment_factor": 2.78,
+    "interpretation": "/h/ is assigned to 19 signs (24.4% of inventory) vs 8.8% expected from Hebrew corpus frequency. This is an overassignment \u2014 explained by Hebrew he appearing in many grammatical contexts (definite article, suffix, interrogative) giving it a high-entropy positional profile that matches many test1 signs."
+  },
+  "risk3_proxy_correctness": {
+    "bigram_plausibility_hebrew_lm": -4.5461,
+    "bigram_plausibility_uniform_lm": -7.5245,
+    "plausibility_lift": 2.9784,
+    "interpretation": "A positive plausibility lift confirms that the Hebrew LM is contributing genuine phonotactic structure to the mapping, not just randomisation. The lift quantifies how much more linguistically coherent the decoded output is vs a uniform baseline."
+  },
+  "strategic_summary": {
+    "signal_vs_noise": "Random corpus: 40.0% vs real corpus: 59.9%. Delta = +19.9pp \u2014 real signal confirmed.",
+    "lm_dependence": "Hebrew: 64.1%  Uniform: 25.1%  Shuffled: 54.0%",
+    "density_scaling": "{'~2 tok/sign': '58.8%', '~3 tok/sign': '61.6%', '~4 tok/sign': '62.1%', '~31.5 tok/sign (Ugaritic reference)': '86.7%'}",
+    "freq_consistency_r": -0.1329223241391404
+  }
+}

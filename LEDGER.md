@@ -4736,3 +4736,66 @@ Risks:
 - The seq_info_test taking ~2h on this hardware suggests the `bigram_plausibility` calculation is more expensive than expected. No evidence of bugs but worth profiling later.
 
 Next step: Use the new observable infrastructure to drive real Indus decipherment. Specific candidates documented in the conversation: (1) Phase-9 Dravidian-anchor SA on the 4,410-inscription ICIT corpus with the assigned 28-sign hypothesis matrix as fixed anchors; (2) cross-validate the suffix family `[817, 920, 760, 798, 752]` against Old Tamil case morphology in attested epigraphic Tamil-Brahmi; (3) integrate Constraint Topology Theory (CTT) as a feasibility filter on the SA decoder so the search never proposes mappings that violate positional/role constraints.
+
+---
+
+## [2026-04-28] Entry — Phase-10: CTT graph nodes + dense-coupling primitives + Indus graph experiment
+
+Objective: Add Constraint Topology Theory (Layer1Labs Silicon, 2026) and dense-cross-sign-coupling primitives to the experiment graph, and build the first H17.7-compliant Phase-10 Indus decipherment experiment as a pure-graph composition.
+
+What was done:
+- Created `backend/glossa_lab/experiment_graph_ctt.py` (793 lines) with seven new atomic node implementations:
+  - `IndusSignRoleClassifier` — derives 6-bit role mask per sign (suffix/determinative/numeral/phonetic/logogram/compound) from corpus positional and bigram-PMI statistics
+  - `CTTAdmissibilityFilter` — per-sign feasibility oracle. O(K) per Theorem 1 of CTT TR. Forbids (sign, value) pairs whose roles disagree with the sign's admissible-roles set
+  - `DefaultIndusValueRoleMap` — emits the canonical Indus target-value-to-role lookup table (Tamil suffixes, CV syllabograms, determinatives, numerals)
+  - `CompoundDependencyConstraint` — single-factor approximation of Cotterell/Eisner 2015 dual decomposition. Scores each high-PMI compound bigram by checking whether the concatenated decoded value is an attested word
+  - `HoldoutWordRecall` — non-circular cognate recall on the held-out corpus partition (Snyder/Berg-Kirkpatrick/Luo paradigm)
+  - `AttestedVocabularyLoader` — loads attested-language word list (old_tamil, hieroglyphic_luwian, mycenaean_greek, vedic_sanskrit, sumerian) for HoldoutWordRecall and CompoundDependencyConstraint
+  - `CTTAnchoredSADecipher` — SA decipherment with the CTT admissibility oracle filtering every proposal step. Forbidden pairs are mathematically unselectable per CTT Claim 9
+- Wired the seven nodes into `experiment_graph.py` ATOMIC_NODES via a try/import-guarded call to `_ctt_node_defs()` (50 total atomic nodes registered, 7 in the new "CTT / Constraint Topology" category)
+- Created `backend/glossa_lab/experiments/graphs/indus_phase10_ctt_anchored_sa.json` — 19-node, 32-edge graph experiment that:
+  1. Loads the ICIT Indus corpus
+  2. 70/30 train/test splits it
+  3. Derives role masks from train sequences via IndusSignRoleClassifier
+  4. Loads three competing language models in parallel (Old Tamil DEDR, Hebrew-proxy for Luwian, Linear B for Mycenaean Greek)
+  5. Runs three CTTAnchoredSADecipher branches simultaneously (10000 iters, 5 restarts each)
+  6. Evaluates each via HoldoutWordRecall on the 30% held-out partition against the corresponding attested vocabulary
+  7. Scores compound-bigram coupling for the Tamil branch via CompoundDependencyConstraint
+  8. Merges all branch results and JSONExports to `reports/indus_phase10_ctt_anchored_sa.json`
+- Updated `backend/tests/test_graph_experiments.py::test_all_40_nodes_registered` to reflect the new 50-node total (CGSA + CTT additions). Test passes 22/22.
+
+Academic foundation (researched this session):
+- Cotterell, Peng, Eisner. "Dual Decomposition Inference for Graphical Models over Strings." EMNLP 2015 — provides the theoretical basis for the CompoundDependencyConstraint primitive
+- Luo, Cao, Barzilay. "Neural Decipherment via Minimum-Cost Flow." ACL 2019 — the cognate-recall paradigm that HoldoutWordRecall instantiates
+- Tamburini. "Decipherment of Lost Ancient Scripts as Combinatorial Optimisation using Coupled Simulated Annealing." CAWL 2023 — combinatorial framing CTT enforces
+- Snyder, Barzilay, Knight. "A statistical model for lost language decipherment." ACL 2010 — non-parallel anchor framework
+
+Files changed:
+- backend/glossa_lab/experiment_graph_ctt.py (created — 793 lines)
+- backend/glossa_lab/experiment_graph.py (modified — added 9-line CTT registration block)
+- backend/glossa_lab/experiments/graphs/indus_phase10_ctt_anchored_sa.json (created — 19 nodes, 32 edges)
+- backend/tests/test_graph_experiments.py (modified — node-set assertion updated for 50 atomic nodes)
+
+Checks run:
+- `ruff check backend/glossa_lab/experiment_graph_ctt.py` — 0 issues
+- `python -c "from glossa_lab.experiment_graph import ATOMIC_NODES; ..."` — 50 nodes, 7 CTT
+- `shell.cmd test backend/tests/test_graph_experiments.py` — 22/22 passed in 0.10s
+- Graph file parses; `register_graph_experiments()` discovers `indus_phase10_ctt_anchored_sa` cleanly
+
+Results:
+- The Phase-10 graph is now visible in the Experiment Builder as `🔀 Indus Phase-10 — CTT-anchored SA + Holdout Recall` and runnable via `run_and_watch.py indus_phase10_ctt_anchored_sa` per H17.6.
+- All seven CTT primitives meet H15.2 (single well-defined operation), H17.7 (run_cli-compatible via the graph wrapper), and the pattern Cotterell/Eisner identified as the way to handle dense cross-sign dependencies via factor-graph soft constraints over high-PMI compounds.
+- The graph composes pure atomic nodes only — no new ExperimentBase Python subclasses, per H15.1.
+
+Open TODOs:
+- [ ] Run `indus_phase10_ctt_anchored_sa` end-to-end via run_and_watch (will take ~1–2 hours per branch with 10k SA iterations × 5 restarts × 3 language families)
+- [ ] BuiltinLM does not yet have a true Hieroglyphic Luwian LM — currently using Hebrew as a placeholder. To make the 3-way comparison fair, a Hieroglyphic Luwian sign-token corpus needs to be loaded into glossa_lab/data/.
+- [ ] AttestedVocabularyLoader currently uses regex string-literal extraction from data/*.py; this is a pragmatic but loose vocabulary source. A proper attested-Tamil-Brahmi epigraphic word list (Mahadevan 2003) should replace it for publication-grade results.
+- [ ] CompoundDependencyConstraint is wired only to the Tamil branch in the graph; if you want Luwian/Greek compound coupling, duplicate the node and connect to those branches' proposed_mappings.
+
+Risks:
+- The "Hebrew-proxy for Luwian" LM is a known limitation. Until a real Luwian corpus is loaded, the Luwian branch's NLL is not meaningful. Document this in any results commentary.
+- Graph experiment runtime is long. With heartbeat-saved CliReporter (per H17.6), it should complete cleanly; monitor via run_and_watch.
+- The DefaultIndusValueRoleMap currently includes only ~70 target values (Tamil suffixes + 50 CV syllabograms + 4 dets + 5 numerals). If the SA proposes a target value not in the map, CTTAnchoredSADecipher defaults its role to "phonetic" — which is permissive but not strict. Tighten by adding all expected target values for each language family.
+
+Next step: Run the Phase-10 graph via `shell.cmd python backend/scripts/run_and_watch.py indus_phase10_ctt_anchored_sa --poll-interval 30 --max-wait 7200` and inspect the merged JSON output to compare Tamil/Luwian/Greek holdout-recall scores. If Tamil clearly leads after CTT-filtered SA + holdout recall, we have the first non-circular Indus claim.

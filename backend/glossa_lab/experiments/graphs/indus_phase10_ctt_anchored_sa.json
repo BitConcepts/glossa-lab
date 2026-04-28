@@ -1,0 +1,275 @@
+{
+  "id": "indus_phase10_ctt_anchored_sa",
+  "name": "Indus Phase-10 — CTT-anchored SA + Holdout Recall",
+  "description": "Phase-10 H17.7-compliant decipherment graph. Pulls the ICIT corpus, derives per-sign 6-bit role masks (suffix/determinative/numeral/phonetic/logogram/compound) from positional and bigram statistics, then runs simulated-annealing decipherment with the Constraint Topology Theory (Layer1Labs Silicon, 2026) admissibility oracle filtering every proposal step against three competing language models in parallel: Old Tamil (DEDR), Hieroglyphic Luwian, and Mycenaean Greek. The corpus is split 70/30 train/test; SA is fit on the 70% train portion, then evaluated by Holdout Word Recall against attested vocabulary on the 30% held-out partition. Compound bigram dependencies (Cotterell/Eisner 2015 dual-decomposition idea) are scored separately to capture cross-sign coupling that pure CTT (independent constraints) cannot. The DefaultIndusValueRoleMap node feeds the value-role lookup that the CTT oracle uses to forbid (sign, value) pairs whose roles disagree.",
+  "auto_migrated": true,
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "ICIT Indus Corpus",
+        "params": { "corpus": "indus" }
+      },
+      "position": { "x": 60, "y": 60 }
+    },
+    {
+      "id": "split",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CorpusSplitter",
+        "label": "70/30 Train/Test",
+        "params": { "train_ratio": 0.7 }
+      },
+      "position": { "x": 320, "y": 60 }
+    },
+    {
+      "id": "role_clf",
+      "type": "expNode",
+      "data": {
+        "atomicId": "IndusSignRoleClassifier",
+        "label": "Sign-Role Classifier (CTT mask)",
+        "params": {
+          "terminal_threshold": 0.85,
+          "initial_threshold": 0.7,
+          "compound_pmi_threshold": 4.0,
+          "min_count": 5
+        }
+      },
+      "position": { "x": 580, "y": 60 }
+    },
+    {
+      "id": "value_role_map",
+      "type": "expNode",
+      "data": {
+        "atomicId": "DefaultIndusValueRoleMap",
+        "label": "Indus Value-Role Map",
+        "params": { "extra": {} }
+      },
+      "position": { "x": 580, "y": 240 }
+    },
+    {
+      "id": "lm_tamil",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Old Tamil LM (DEDR)",
+        "params": { "language": "dravidian" }
+      },
+      "position": { "x": 60, "y": 300 }
+    },
+    {
+      "id": "lm_luwian",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Hebrew-proxy (Hieroglyphic Luwian unavailable)",
+        "params": { "language": "hebrew" }
+      },
+      "position": { "x": 60, "y": 480 }
+    },
+    {
+      "id": "lm_greek",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Mycenaean Greek LM (Linear B)",
+        "params": { "language": "linear_b" }
+      },
+      "position": { "x": 60, "y": 660 }
+    },
+    {
+      "id": "sa_tamil",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CTTAnchoredSADecipher",
+        "label": "CTT-SA → Tamil",
+        "params": {
+          "seed": 1,
+          "max_iterations": 10000,
+          "restarts": 5,
+          "surjective": true
+        }
+      },
+      "position": { "x": 880, "y": 300 }
+    },
+    {
+      "id": "sa_luwian",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CTTAnchoredSADecipher",
+        "label": "CTT-SA → Luwian",
+        "params": {
+          "seed": 2,
+          "max_iterations": 10000,
+          "restarts": 5,
+          "surjective": true
+        }
+      },
+      "position": { "x": 880, "y": 480 }
+    },
+    {
+      "id": "sa_greek",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CTTAnchoredSADecipher",
+        "label": "CTT-SA → Greek",
+        "params": {
+          "seed": 3,
+          "max_iterations": 10000,
+          "restarts": 5,
+          "surjective": true
+        }
+      },
+      "position": { "x": 880, "y": 660 }
+    },
+    {
+      "id": "vocab_tamil",
+      "type": "expNode",
+      "data": {
+        "atomicId": "AttestedVocabularyLoader",
+        "label": "Attested Old Tamil",
+        "params": {
+          "family": "old_tamil",
+          "min_len": 2,
+          "max_len": 12
+        }
+      },
+      "position": { "x": 1180, "y": 60 }
+    },
+    {
+      "id": "vocab_luwian",
+      "type": "expNode",
+      "data": {
+        "atomicId": "AttestedVocabularyLoader",
+        "label": "Attested Hieroglyphic Luwian",
+        "params": {
+          "family": "hieroglyphic_luwian",
+          "min_len": 2,
+          "max_len": 12
+        }
+      },
+      "position": { "x": 1180, "y": 240 }
+    },
+    {
+      "id": "vocab_greek",
+      "type": "expNode",
+      "data": {
+        "atomicId": "AttestedVocabularyLoader",
+        "label": "Attested Mycenaean Greek",
+        "params": {
+          "family": "mycenaean_greek",
+          "min_len": 2,
+          "max_len": 12
+        }
+      },
+      "position": { "x": 1180, "y": 420 }
+    },
+    {
+      "id": "recall_tamil",
+      "type": "expNode",
+      "data": {
+        "atomicId": "HoldoutWordRecall",
+        "label": "Holdout Recall — Tamil",
+        "params": { "decode_separator": "", "min_word_len": 2 }
+      },
+      "position": { "x": 1480, "y": 300 }
+    },
+    {
+      "id": "recall_luwian",
+      "type": "expNode",
+      "data": {
+        "atomicId": "HoldoutWordRecall",
+        "label": "Holdout Recall — Luwian",
+        "params": { "decode_separator": "", "min_word_len": 2 }
+      },
+      "position": { "x": 1480, "y": 480 }
+    },
+    {
+      "id": "recall_greek",
+      "type": "expNode",
+      "data": {
+        "atomicId": "HoldoutWordRecall",
+        "label": "Holdout Recall — Greek",
+        "params": { "decode_separator": "", "min_word_len": 2 }
+      },
+      "position": { "x": 1480, "y": 660 }
+    },
+    {
+      "id": "compound_tamil",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CompoundDependencyConstraint",
+        "label": "Compound Coupling — Tamil",
+        "params": { "hit_bonus": 1.0, "miss_penalty": 0.5, "compound_separator": "" }
+      },
+      "position": { "x": 1180, "y": 600 }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge 3-Family Results",
+        "params": {}
+      },
+      "position": { "x": 1780, "y": 480 }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save phase-10 results",
+        "params": { "filename": "indus_phase10_ctt_anchored_sa.json" }
+      },
+      "position": { "x": 2040, "y": 480 }
+    }
+  ],
+  "edges": [
+    { "id": "e_corpus_split",        "source": "corpus",         "target": "split",        "sourcePort": "sequences",      "targetPort": "sequences" },
+
+    { "id": "e_train_role",         "source": "split",          "target": "role_clf",     "sourcePort": "train_sequences","targetPort": "sequences" },
+
+    { "id": "e_train_sa_t",         "source": "split",          "target": "sa_tamil",     "sourcePort": "train_sequences","targetPort": "sequences" },
+    { "id": "e_train_sa_l",         "source": "split",          "target": "sa_luwian",    "sourcePort": "train_sequences","targetPort": "sequences" },
+    { "id": "e_train_sa_g",         "source": "split",          "target": "sa_greek",     "sourcePort": "train_sequences","targetPort": "sequences" },
+
+    { "id": "e_test_recall_t",      "source": "split",          "target": "recall_tamil", "sourcePort": "test_sequences", "targetPort": "sequences" },
+    { "id": "e_test_recall_l",      "source": "split",          "target": "recall_luwian","sourcePort": "test_sequences", "targetPort": "sequences" },
+    { "id": "e_test_recall_g",      "source": "split",          "target": "recall_greek", "sourcePort": "test_sequences", "targetPort": "sequences" },
+
+    { "id": "e_role_sa_t",          "source": "role_clf",       "target": "sa_tamil",     "sourcePort": "role_table",     "targetPort": "role_table" },
+    { "id": "e_role_sa_l",          "source": "role_clf",       "target": "sa_luwian",    "sourcePort": "role_table",     "targetPort": "role_table" },
+    { "id": "e_role_sa_g",          "source": "role_clf",       "target": "sa_greek",     "sourcePort": "role_table",     "targetPort": "role_table" },
+
+    { "id": "e_vrm_sa_t",           "source": "value_role_map", "target": "sa_tamil",     "sourcePort": "value_role_map", "targetPort": "value_role_map" },
+    { "id": "e_vrm_sa_l",           "source": "value_role_map", "target": "sa_luwian",    "sourcePort": "value_role_map", "targetPort": "value_role_map" },
+    { "id": "e_vrm_sa_g",           "source": "value_role_map", "target": "sa_greek",     "sourcePort": "value_role_map", "targetPort": "value_role_map" },
+
+    { "id": "e_lm_t",               "source": "lm_tamil",       "target": "sa_tamil",     "sourcePort": "lm",             "targetPort": "lm" },
+    { "id": "e_lm_l",               "source": "lm_luwian",      "target": "sa_luwian",    "sourcePort": "lm",             "targetPort": "lm" },
+    { "id": "e_lm_g",               "source": "lm_greek",       "target": "sa_greek",     "sourcePort": "lm",             "targetPort": "lm" },
+
+    { "id": "e_pm_recall_t",        "source": "sa_tamil",       "target": "recall_tamil", "sourcePort": "proposed_mapping","targetPort": "proposed_mapping" },
+    { "id": "e_pm_recall_l",        "source": "sa_luwian",      "target": "recall_luwian","sourcePort": "proposed_mapping","targetPort": "proposed_mapping" },
+    { "id": "e_pm_recall_g",        "source": "sa_greek",       "target": "recall_greek", "sourcePort": "proposed_mapping","targetPort": "proposed_mapping" },
+
+    { "id": "e_vocab_recall_t",     "source": "vocab_tamil",    "target": "recall_tamil", "sourcePort": "attested_vocab", "targetPort": "attested_vocab" },
+    { "id": "e_vocab_recall_l",     "source": "vocab_luwian",   "target": "recall_luwian","sourcePort": "attested_vocab", "targetPort": "attested_vocab" },
+    { "id": "e_vocab_recall_g",     "source": "vocab_greek",    "target": "recall_greek", "sourcePort": "attested_vocab", "targetPort": "attested_vocab" },
+
+    { "id": "e_pm_compound",        "source": "sa_tamil",       "target": "compound_tamil","sourcePort": "proposed_mapping","targetPort": "proposed_mapping" },
+    { "id": "e_pmi_compound",       "source": "role_clf",       "target": "compound_tamil","sourcePort": "high_pmi_bigrams","targetPort": "high_pmi_bigrams" },
+    { "id": "e_vocab_compound",     "source": "vocab_tamil",    "target": "compound_tamil","sourcePort": "attested_vocab", "targetPort": "attested_vocab" },
+
+    { "id": "e_merge_t",            "source": "recall_tamil",   "target": "merge",        "sourcePort": "recall_score",   "targetPort": "a" },
+    { "id": "e_merge_l",            "source": "recall_luwian",  "target": "merge",        "sourcePort": "recall_score",   "targetPort": "b" },
+    { "id": "e_merge_g",            "source": "recall_greek",   "target": "merge",        "sourcePort": "recall_score",   "targetPort": "c" },
+    { "id": "e_merge_compound",     "source": "compound_tamil", "target": "merge",        "sourcePort": "compound_score", "targetPort": "d" },
+    { "id": "e_merge_role",         "source": "role_clf",       "target": "merge",        "sourcePort": "role_summary",   "targetPort": "e" },
+
+    { "id": "e_out",                "source": "merge",          "target": "out",          "sourcePort": "json",           "targetPort": "data" }
+  ]
+}

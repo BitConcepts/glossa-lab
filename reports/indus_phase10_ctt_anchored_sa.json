@@ -1,0 +1,515 @@
+{
+  "data": {
+    "a": 0.0,
+    "b": 0.0,
+    "c": 0.0,
+    "d": 0.0,
+    "e__suffix": 0,
+    "e__determinative": 5,
+    "e__numeral": 0,
+    "e__phonetic": 35,
+    "e__logogram": 18,
+    "e__compound": 7,
+    "f__P121": [
+      "logogram",
+      "phonetic"
+    ],
+    "f__P202": [
+      "phonetic"
+    ],
+    "f__P385": [
+      "phonetic"
+    ],
+    "f__P073": [
+      "logogram",
+      "phonetic"
+    ],
+    "f__P108": [
+      "logogram",
+      "phonetic"
+    ],
+    "f__P145": [
+      "phonetic"
+    ],
+    "f__P205": [
+      "logogram",
+      "phonetic"
+    ],
+    "f__P147": [
+      "compound",
+      "phonetic"
+    ],
+    "f__P316": [
+      "compound",
+      "phonetic"
+    ],
+    "f__P056": [
+      "logogram",
+      "phonetic"
+    ],
+    "f__P122": [
+      "phonetic"
+    ],
+    "f__P268": [
+      "logogram",
+      "phonetic"
+    ],
+    "f__P324": [
+      "determinative"
+    ],
+    "f__P062": [
+      "compound",
+      "phonetic"
+    ],
+    "f__P060": [
+      "compound",
+      "phonetic"
+    ],
+    "f__P120": [
+      "compound",
+      "phonetic"
+    ],
+    "f__P256": [
+      "compound",
+      "logogram",
+      "phonetic"
+    ],
+    "f__P378": [
+      "phonetic"
+    ],
+    "f__P086": [
+      "phonetic"
+    ],
+    "f__P011": [
+      "logogram",
+      "phonetic"
+    ],
+    "f__P154": [
+      "phonetic"
+    ],
+    "f__P270": [
+      "logogram",
+      "phonetic"
+    ],
+    "f__P364": [
+      "compound",
+      "phonetic"
+    ],
+    "f__P276": [
+      "logogram",
+      "phonetic"
+    ],
+    "f__P058": [
+      "phonetic"
+    ],
+    "f__P210": [
+      "logogram",
+      "phonetic"
+    ],
+    "f__P013": [
+      "determinative"
+    ],
+    "f__P194": [
+      "logogram",
+      "phonetic"
+    ],
+    "f__P000": [
+      "phonetic"
+    ],
+    "f__P215": [
+      "logogram",
+      "phonetic"
+    ],
+    "f__P091": [
+      "logogram",
+      "phonetic"
+    ],
+    "f__P050": [
+      "phonetic"
+    ],
+    "f__P230": [
+      "phonetic"
+    ],
+    "f__P217": [
+      "determinative"
+    ],
+    "f__P325": [
+      "logogram",
+      "phonetic"
+    ],
+    "f__P123": [
+      "logogram",
+      "phonetic"
+    ],
+    "f__P332": [
+      "logogram",
+      "phonetic"
+    ],
+    "f__P349": [
+      "logogram",
+      "phonetic"
+    ],
+    "f__P301": [
+      "determinative"
+    ],
+    "f__P004": [
+      "determinative"
+    ],
+    "g": [
+      {
+        "a": "P122",
+        "b": "P385",
+        "count": 21
+      },
+      {
+        "a": "P147",
+        "b": "P316",
+        "count": 9
+      },
+      {
+        "a": "P062",
+        "b": "P060",
+        "count": 8
+      },
+      {
+        "a": "P364",
+        "b": "P122",
+        "count": 7
+      },
+      {
+        "a": "P013",
+        "b": "P324",
+        "count": 7
+      },
+      {
+        "a": "P324",
+        "b": "P332",
+        "count": 7
+      },
+      {
+        "a": "P050",
+        "b": "P145",
+        "count": 6
+      },
+      {
+        "a": "P060",
+        "b": "P122",
+        "count": 6
+      },
+      {
+        "a": "P122",
+        "b": "P086",
+        "count": 6
+      },
+      {
+        "a": "P120",
+        "b": "P256",
+        "count": 5
+      },
+      {
+        "a": "P060",
+        "b": "P364",
+        "count": 5
+      },
+      {
+        "a": "P145",
+        "b": "P122",
+        "count": 5
+      },
+      {
+        "a": "P056",
+        "b": "P122",
+        "count": 4
+      },
+      {
+        "a": "P268",
+        "b": "P268",
+        "count": 4
+      },
+      {
+        "a": "P324",
+        "b": "P086",
+        "count": 4
+      },
+      {
+        "a": "P086",
+        "b": "P276",
+        "count": 4
+      },
+      {
+        "a": "P058",
+        "b": "P122",
+        "count": 4
+      },
+      {
+        "a": "P217",
+        "b": "P050",
+        "count": 4
+      },
+      {
+        "a": "P230",
+        "b": "P062",
+        "count": 4
+      },
+      {
+        "a": "P122",
+        "b": "P205",
+        "count": 4
+      },
+      {
+        "a": "P122",
+        "b": "P378",
+        "count": 4
+      },
+      {
+        "a": "P217",
+        "b": "P147",
+        "count": 4
+      },
+      {
+        "a": "P062",
+        "b": "P122",
+        "count": 3
+      },
+      {
+        "a": "P316",
+        "b": "P011",
+        "count": 3
+      },
+      {
+        "a": "P122",
+        "b": "P202",
+        "count": 3
+      },
+      {
+        "a": "P324",
+        "b": "P194",
+        "count": 3
+      },
+      {
+        "a": "P050",
+        "b": "P092",
+        "count": 3
+      },
+      {
+        "a": "P086",
+        "b": "P035",
+        "count": 3
+      },
+      {
+        "a": "P301",
+        "b": "P230",
+        "count": 3
+      },
+      {
+        "a": "P324",
+        "b": "P230",
+        "count": 3
+      },
+      {
+        "a": "P230",
+        "b": "P122",
+        "count": 3
+      },
+      {
+        "a": "P326",
+        "b": "P120",
+        "count": 3
+      },
+      {
+        "a": "P004",
+        "b": "P123",
+        "count": 3
+      },
+      {
+        "a": "P324",
+        "b": "P009",
+        "count": 3
+      },
+      {
+        "a": "P121",
+        "b": "P202",
+        "count": 2
+      },
+      {
+        "a": "P202",
+        "b": "P385",
+        "count": 2
+      },
+      {
+        "a": "P385",
+        "b": "P073",
+        "count": 2
+      },
+      {
+        "a": "P316",
+        "b": "P056",
+        "count": 2
+      },
+      {
+        "a": "P324",
+        "b": "P096",
+        "count": 2
+      },
+      {
+        "a": "P060",
+        "b": "P120",
+        "count": 2
+      },
+      {
+        "a": "P086",
+        "b": "P352",
+        "count": 2
+      },
+      {
+        "a": "P352",
+        "b": "P011",
+        "count": 2
+      },
+      {
+        "a": "P324",
+        "b": "P154",
+        "count": 2
+      },
+      {
+        "a": "P276",
+        "b": "P058",
+        "count": 2
+      },
+      {
+        "a": "P210",
+        "b": "P122",
+        "count": 2
+      },
+      {
+        "a": "P194",
+        "b": "P122",
+        "count": 2
+      },
+      {
+        "a": "P126",
+        "b": "P122",
+        "count": 2
+      },
+      {
+        "a": "P122",
+        "b": "P369",
+        "count": 2
+      },
+      {
+        "a": "P324",
+        "b": "P142",
+        "count": 2
+      },
+      {
+        "a": "P000",
+        "b": "P122",
+        "count": 2
+      }
+    ],
+    "j__P385": "ke",
+    "j__P086": "re",
+    "j__P050": "ko",
+    "j__P145": "ro",
+    "j__P060": "ro",
+    "j__P316": "ro",
+    "j__P062": "ko",
+    "j__P120": "ke",
+    "j__P378": "ke",
+    "j__P000": "pa",
+    "j__P147": "ko",
+    "j__P364": "ko",
+    "j__P202": "ta",
+    "j__P058": "ro",
+    "j__P056": "ro",
+    "j__P011": "te",
+    "j__P123": "te",
+    "j__P121": "pa",
+    "j__P194": "ra",
+    "j__P325": "re",
+    "j__P349": "ko",
+    "j__P215": "pi",
+    "j__P108": "ke",
+    "j__P210": "te",
+    "j__P091": "ko",
+    "j__P009": "ko",
+    "j__P144": "ro",
+    "j__P035": "ke",
+    "j__P076": "ke",
+    "j__P124": "te",
+    "j__P221": "to",
+    "j__P126": "ro",
+    "j__P125": "ta",
+    "j__P275": "to",
+    "j__P238": "pa",
+    "j__P103": "ke",
+    "j__P095": "te",
+    "j__P127": "ke",
+    "j__P092": "to",
+    "j__P001": "to",
+    "j__P289": "ko",
+    "j__P098": "ro",
+    "j__P151": "ra",
+    "j__P067": "ko",
+    "j__P369": "re",
+    "j__P174": "si",
+    "j__P111": "ko",
+    "j__P188": "pe",
+    "j__P303": "ke",
+    "j__P353": "ke",
+    "j__P251": "pa",
+    "j__P310": "ke",
+    "j__P234": "ro",
+    "j__P342": "ko",
+    "j__P043": "pa",
+    "j__P226": "ko",
+    "j__P237": "si",
+    "j__P384": "ko",
+    "j__P065": "ko",
+    "j__P327": "ko",
+    "j__P204": "pa",
+    "j__P026": "ta",
+    "j__P341": "ke",
+    "j__P350": "ta",
+    "j__P041": "to",
+    "j__P007": "ke",
+    "j__P083": "pi",
+    "j__P089": "ro",
+    "j__P360": "to",
+    "j__P296": "ro",
+    "j__P372": "pe",
+    "j__P211": "ke",
+    "j__P382": "ko",
+    "j__P281": "ke",
+    "j__P258": "to",
+    "j__P246": "re",
+    "j__P223": "ro",
+    "j__P260": "re",
+    "j__P047": "ke",
+    "j__P031": "ro",
+    "j__P181": "re",
+    "j__P280": "ta",
+    "j__P366": "ko",
+    "j__P247": "pa",
+    "j__P082": "pi",
+    "j__P128": "te",
+    "j__P180": "po",
+    "j__P070": "ko",
+    "j__P020": "pi",
+    "j__P110": "pa",
+    "j__P359": "pa",
+    "j__P054": "mo",
+    "j__P071": "ra",
+    "j__P084": "ka",
+    "j__P254": "te",
+    "j__P156": "pa",
+    "j__P283": "ro",
+    "j__P195": "ro",
+    "j__P044": "to",
+    "j__P355": "ke",
+    "k": [],
+    "l": [],
+    "m": [],
+    "n": []
+  }
+}

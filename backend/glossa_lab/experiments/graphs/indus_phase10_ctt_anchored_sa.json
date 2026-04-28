@@ -1,7 +1,7 @@
 {
   "id": "indus_phase10_ctt_anchored_sa",
   "name": "Indus Phase-10 — CTT-anchored SA + Holdout Recall",
-  "description": "Phase-10 H17.7-compliant decipherment graph. Pulls the ICIT corpus, derives per-sign 6-bit role masks (suffix/determinative/numeral/phonetic/logogram/compound) from positional and bigram statistics, then runs simulated-annealing decipherment with the Constraint Topology Theory (Layer1Labs Silicon, 2026) admissibility oracle filtering every proposal step against three competing language models in parallel: Old Tamil (DEDR), Hieroglyphic Luwian, and Mycenaean Greek. The corpus is split 70/30 train/test; SA is fit on the 70% train portion, then evaluated by Holdout Word Recall against attested vocabulary on the 30% held-out partition. Compound bigram dependencies (Cotterell/Eisner 2015 dual-decomposition idea) are scored separately to capture cross-sign coupling that pure CTT (independent constraints) cannot. The DefaultIndusValueRoleMap node feeds the value-role lookup that the CTT oracle uses to forbid (sign, value) pairs whose roles disagree.",
+  "description": "Phase-10 H17.7-compliant decipherment graph. Pulls the ICIT corpus, derives per-sign 6-bit role masks (suffix/determinative/numeral/phonetic/logogram/compound) from positional and bigram statistics, then runs simulated-annealing decipherment with the Constraint Topology Theory (Layer1Labs Silicon, 2026) admissibility oracle filtering every proposal step against three competing language models in parallel: Old Tamil (Mahadevan 2003 Tamil-Brahmi + DEDR), Hieroglyphic Luwian (Hawkins 2000 / Melchert 2003), and Mycenaean Greek (Linear B). The corpus is split 70/30 train/test; SA is fit on the 70% train portion, then evaluated by Holdout Word Recall against attested vocabulary on the 30% held-out partition. The CTT-anchored SA runs in strict_mode: values not present in the DefaultIndusValueRoleMap are treated as forbidden (unmapped role). Compound bigram dependencies (Cotterell/Eisner 2015 dual-decomposition idea) are scored separately to capture cross-sign coupling that pure CTT (independent constraints) cannot.",
   "auto_migrated": true,
   "nodes": [
     {
@@ -9,8 +9,8 @@
       "type": "expNode",
       "data": {
         "atomicId": "BuiltinCorpus",
-        "label": "ICIT Indus Corpus",
-        "params": { "corpus": "indus" }
+        "label": "CISI multi-sign Parpola corpus",
+        "params": { "corpus": "indus_cisi" }
       },
       "position": { "x": 60, "y": 60 }
     },
@@ -64,8 +64,8 @@
       "type": "expNode",
       "data": {
         "atomicId": "BuiltinLM",
-        "label": "Hebrew-proxy (Hieroglyphic Luwian unavailable)",
-        "params": { "language": "hebrew" }
+        "label": "Hieroglyphic Luwian LM (Hawkins 2000)",
+        "params": { "language": "hieroglyphic_luwian" }
       },
       "position": { "x": 60, "y": 480 }
     },
@@ -84,12 +84,13 @@
       "type": "expNode",
       "data": {
         "atomicId": "CTTAnchoredSADecipher",
-        "label": "CTT-SA → Tamil",
+        "label": "CTT-SA → Tamil (strict)",
         "params": {
           "seed": 1,
           "max_iterations": 10000,
           "restarts": 5,
-          "surjective": true
+          "surjective": true,
+          "strict_mode": true
         }
       },
       "position": { "x": 880, "y": 300 }
@@ -99,12 +100,13 @@
       "type": "expNode",
       "data": {
         "atomicId": "CTTAnchoredSADecipher",
-        "label": "CTT-SA → Luwian",
+        "label": "CTT-SA → Luwian (strict)",
         "params": {
           "seed": 2,
           "max_iterations": 10000,
           "restarts": 5,
-          "surjective": true
+          "surjective": true,
+          "strict_mode": true
         }
       },
       "position": { "x": 880, "y": 480 }
@@ -114,12 +116,13 @@
       "type": "expNode",
       "data": {
         "atomicId": "CTTAnchoredSADecipher",
-        "label": "CTT-SA → Greek",
+        "label": "CTT-SA → Greek (strict)",
         "params": {
           "seed": 3,
           "max_iterations": 10000,
           "restarts": 5,
-          "surjective": true
+          "surjective": true,
+          "strict_mode": true
         }
       },
       "position": { "x": 880, "y": 660 }
@@ -264,12 +267,21 @@
     { "id": "e_pmi_compound",       "source": "role_clf",       "target": "compound_tamil","sourcePort": "high_pmi_bigrams","targetPort": "high_pmi_bigrams" },
     { "id": "e_vocab_compound",     "source": "vocab_tamil",    "target": "compound_tamil","sourcePort": "attested_vocab", "targetPort": "attested_vocab" },
 
-    { "id": "e_merge_t",            "source": "recall_tamil",   "target": "merge",        "sourcePort": "recall_score",   "targetPort": "a" },
-    { "id": "e_merge_l",            "source": "recall_luwian",  "target": "merge",        "sourcePort": "recall_score",   "targetPort": "b" },
-    { "id": "e_merge_g",            "source": "recall_greek",   "target": "merge",        "sourcePort": "recall_score",   "targetPort": "c" },
-    { "id": "e_merge_compound",     "source": "compound_tamil", "target": "merge",        "sourcePort": "compound_score", "targetPort": "d" },
-    { "id": "e_merge_role",         "source": "role_clf",       "target": "merge",        "sourcePort": "role_summary",   "targetPort": "e" },
+    { "id": "e_merge_recall_t",     "source": "recall_tamil",   "target": "merge",        "sourcePort": "recall_score",      "targetPort": "a" },
+    { "id": "e_merge_recall_l",     "source": "recall_luwian",  "target": "merge",        "sourcePort": "recall_score",      "targetPort": "b" },
+    { "id": "e_merge_recall_g",     "source": "recall_greek",   "target": "merge",        "sourcePort": "recall_score",      "targetPort": "c" },
+    { "id": "e_merge_compound",     "source": "compound_tamil", "target": "merge",        "sourcePort": "compound_score",    "targetPort": "d" },
+    { "id": "e_merge_role_sum",     "source": "role_clf",       "target": "merge",        "sourcePort": "role_summary",      "targetPort": "e" },
+    { "id": "e_merge_role_table",   "source": "role_clf",       "target": "merge",        "sourcePort": "role_table",        "targetPort": "f" },
+    { "id": "e_merge_pmi",          "source": "role_clf",       "target": "merge",        "sourcePort": "high_pmi_bigrams",  "targetPort": "g" },
+    { "id": "e_merge_pm_t",         "source": "sa_tamil",       "target": "merge",        "sourcePort": "proposed_mapping",  "targetPort": "h" },
+    { "id": "e_merge_pm_l",         "source": "sa_luwian",      "target": "merge",        "sourcePort": "proposed_mapping",  "targetPort": "i" },
+    { "id": "e_merge_pm_g",         "source": "sa_greek",       "target": "merge",        "sourcePort": "proposed_mapping",  "targetPort": "j" },
+    { "id": "e_merge_matched_t",    "source": "recall_tamil",   "target": "merge",        "sourcePort": "matched_words",     "targetPort": "k" },
+    { "id": "e_merge_matched_l",    "source": "recall_luwian",  "target": "merge",        "sourcePort": "matched_words",     "targetPort": "l" },
+    { "id": "e_merge_matched_g",    "source": "recall_greek",   "target": "merge",        "sourcePort": "matched_words",     "targetPort": "m" },
+    { "id": "e_merge_compound_hits","source": "compound_tamil", "target": "merge",        "sourcePort": "hits",              "targetPort": "n" },
 
-    { "id": "e_out",                "source": "merge",          "target": "out",          "sourcePort": "json",           "targetPort": "data" }
+    { "id": "e_out",                "source": "merge",          "target": "out",          "sourcePort": "json",              "targetPort": "data" }
   ]
 }

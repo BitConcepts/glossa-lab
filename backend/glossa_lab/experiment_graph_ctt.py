@@ -143,6 +143,16 @@ def _ctt_admissibility_filter(inputs: dict, params: dict) -> dict:
       - find the value's expected role from value_role_map (params)
       - if value's role is not in the sign's admissible set: VIOLATION
 
+    Strict mode (params.strict_mode = True):
+      Values that are NOT present in value_role_map are treated as having
+      role 'unmapped' (which is not in any sign's admissible set), and
+      therefore violate. This is the rigorous default per CTT Claim 9.
+
+    Permissive mode (default, strict_mode = False):
+      Unmapped values fall back to role 'phonetic' (the most common Indus
+      role), so the filter only catches unambiguously-wrong assignments.
+      Useful when the value_role_map is incomplete.
+
     Returns the filtered mapping (admissible only) and a violation report.
 
     Pure primitive — O(K) per Theorem 1 of CTT TR 2026.
@@ -153,6 +163,8 @@ def _ctt_admissibility_filter(inputs: dict, params: dict) -> dict:
     value_role_map: dict[str, str] = (
         inputs.get("value_role_map") or params.get("value_role_map") or {}
     )
+    strict_mode = bool(params.get("strict_mode", False))
+    fallback_role = "unmapped" if strict_mode else "phonetic"
 
     if not role_table:
         return {
@@ -161,13 +173,19 @@ def _ctt_admissibility_filter(inputs: dict, params: dict) -> dict:
             "n_violations": 0,
             "n_admissible": len(proposed_mapping),
             "admissibility_rate": 1.0,
+            "strict_mode": strict_mode,
         }
 
     filtered: dict[str, str] = {}
     violations: list[dict] = []
+    n_unmapped_values = 0
     for sign_id, value in proposed_mapping.items():
         admissible_roles = set(role_table.get(sign_id, []))
-        expected_role = value_role_map.get(value, "phonetic")
+        if value in value_role_map:
+            expected_role = value_role_map[value]
+        else:
+            expected_role = fallback_role
+            n_unmapped_values += 1
         if not admissible_roles or expected_role in admissible_roles:
             filtered[sign_id] = value
         else:
@@ -177,6 +195,7 @@ def _ctt_admissibility_filter(inputs: dict, params: dict) -> dict:
                     "proposed_value": value,
                     "value_role": expected_role,
                     "admissible_roles": sorted(admissible_roles),
+                    "unmapped": expected_role == "unmapped",
                 }
             )
 
@@ -186,7 +205,9 @@ def _ctt_admissibility_filter(inputs: dict, params: dict) -> dict:
         "violations": violations[:200],  # cap for JSON size
         "n_violations": len(violations),
         "n_admissible": len(filtered),
+        "n_unmapped_values": n_unmapped_values,
         "admissibility_rate": round(len(filtered) / n, 4),
+        "strict_mode": strict_mode,
     }
 
 
@@ -321,6 +342,7 @@ def _ctt_anchored_sa_decipher(inputs: dict, params: dict) -> dict:
     max_iterations = int(params.get("max_iterations", 8000))
     restarts = int(params.get("restarts", 5))
     surjective = bool(params.get("surjective", True))
+    strict_mode = bool(params.get("strict_mode", False))
 
     if lm is None or not sequences:
         return {"error": "Missing lm or sequences", "proposed_mapping": {}, "score": 0.0}
@@ -380,6 +402,18 @@ def _ctt_anchored_sa_decipher(inputs: dict, params: dict) -> dict:
             best_mapping = kept
         rng.random()  # perturb for next restart's seed-mod salt
 
+    # Strict-mode post-filter: drop any mapped value that is missing from
+    # value_role_map (unmapped → unmapped role is forbidden).
+    n_unmapped_dropped = 0
+    if strict_mode and value_role_map:
+        keep: dict[str, str] = {}
+        for s, v in best_mapping.items():
+            if v in value_role_map:
+                keep[s] = v
+            else:
+                n_unmapped_dropped += 1
+        best_mapping = keep
+
     rate = n_filtered_proposals / max(1, n_total_proposals)
     return {
         "proposed_mapping": best_mapping,
@@ -388,8 +422,10 @@ def _ctt_anchored_sa_decipher(inputs: dict, params: dict) -> dict:
         "n_forbidden_pairs": len(forbidden),
         "n_filtered_proposals": n_filtered_proposals,
         "n_total_proposals": n_total_proposals,
+        "n_unmapped_dropped": n_unmapped_dropped,
         "filter_rate": round(rate, 4),
         "anchors_used": len(anchors),
+        "strict_mode": strict_mode,
     }
 
 
@@ -487,44 +523,122 @@ def _default_value_role_map_loader(inputs: dict, params: dict) -> dict:
 # ── Attested vocabulary loader ──────────────────────────────────────────────
 
 
+# ── Family → import-path map for structured vocabulary loading ──────────────
+# Each entry: (module_path, [callable_attr_or_dict_attr...]). The loader tries
+# each attribute in order, returning words from the first one that exists.
+# Structured exports take priority over the regex fallback.
+_FAMILY_VOCAB_SOURCES: dict[str, tuple[str, tuple[str, ...]]] = {
+    "old_tamil":           ("glossa_lab.data.dravidian",
+                             ("get_attested_words", "VOCABULARY", "get_vocabulary")),
+    "hieroglyphic_luwian": ("glossa_lab.data.hieroglyphic_luwian",
+                             ("get_attested_words", "VOCABULARY", "get_vocabulary")),
+    "mycenaean_greek":     ("glossa_lab.data.linear_b_language",
+                             ("get_attested_words", "VOCABULARY", "get_vocabulary")),
+    "vedic_sanskrit":      ("glossa_lab.data.sanskrit",
+                             ("get_attested_words", "VOCABULARY", "get_vocabulary")),
+    "sumerian":            ("glossa_lab.data.sumerian_ur3",
+                             ("get_attested_words", "VOCABULARY", "get_vocabulary")),
+    "old_hebrew":          ("glossa_lab.data.old_hebrew",
+                             ("get_attested_words", "VOCABULARY", "get_vocabulary")),
+}
+
+
+def _try_structured_vocab(family: str) -> tuple[list[str], str] | tuple[None, str]:
+    """Attempt to import a structured vocabulary export from the data module.
+
+    Returns (words, source_name) on success, (None, reason) on failure.
+    """
+    spec = _FAMILY_VOCAB_SOURCES.get(family)
+    if not spec:
+        return None, f"family '{family}' has no structured source"
+    module_path, attrs = spec
+    try:
+        import importlib  # noqa: PLC0415
+        mod = importlib.import_module(module_path)
+    except Exception as exc:  # noqa: BLE001
+        return None, f"import failed: {exc}"
+    for attr in attrs:
+        obj = getattr(mod, attr, None)
+        if obj is None:
+            continue
+        try:
+            if callable(obj):
+                value = obj()
+            else:
+                value = obj
+            if isinstance(value, dict):
+                # dict of word -> gloss; words are the keys
+                words = [str(k).lower() for k in value.keys()]
+            elif isinstance(value, (list, tuple, set)):
+                words = [str(w).lower() for w in value]
+            else:
+                continue
+            if words:
+                return words, f"{module_path}.{attr}"
+        except Exception:  # noqa: BLE001
+            continue
+    return None, f"no structured attribute found in {module_path}"
+
+
 def _attested_vocab_loader(inputs: dict, params: dict) -> dict:
     """Load an attested-language vocabulary list for HoldoutWordRecall.
 
     Sources:
-      - 'family' param: 'old_tamil', 'hieroglyphic_luwian', 'mycenaean_greek'
+      - 'family' param: 'old_tamil', 'hieroglyphic_luwian', 'mycenaean_greek',
+                        'vedic_sanskrit', 'sumerian', 'old_hebrew'
       - 'extra_words' param: list[str] appended to the family vocab
       - 'min_len' / 'max_len': filter by length
 
-    Pure primitive — file read + filter. No transformation.
+    Loading strategy (priority order):
+      1. Structured Python export from the data module: attempts in order
+         get_attested_words(), VOCABULARY (dict keys), get_vocabulary().
+      2. If no structured export: regex string-literal fallback against the
+         module source (legacy behaviour, looser).
+
+    Pure primitive — one import / read + filter. No transformation.
     """
     family = str(params.get("family", "old_tamil"))
     extra: list[str] = list(params.get("extra_words", []))
     min_len = int(params.get("min_len", 2))
     max_len = int(params.get("max_len", 12))
 
-    repo_root = Path(__file__).resolve().parent.parent.parent
-    candidates = {
-        "old_tamil": repo_root / "backend" / "glossa_lab" / "data" / "dravidian.py",
-        "hieroglyphic_luwian": repo_root / "backend" / "glossa_lab" / "data" / "old_hebrew.py",
-        "mycenaean_greek": repo_root / "backend" / "glossa_lab" / "data" / "linear_b_language.py",
-        "vedic_sanskrit": repo_root / "backend" / "glossa_lab" / "data" / "sanskrit.py",
-        "sumerian": repo_root / "backend" / "glossa_lab" / "data" / "sumerian_ur3.py",
-    }
-
-    src = candidates.get(family)
     words: list[str] = []
-    if src and src.exists():
-        # Extract string literals from the data module — loose but adequate for vocab dumps
-        text = src.read_text(encoding="utf-8", errors="ignore")
-        # quick pull of "word", 'word' literals
-        for m in re.finditer(r"['\"]([a-zA-Z\-]{2,})['\"]", text):
-            w = m.group(1).lower()
-            if min_len <= len(w) <= max_len:
-                words.append(w)
+    source_used = "none"
+
+    # ── Step 1: structured import ──
+    structured_words, structured_msg = _try_structured_vocab(family)
+    if structured_words is not None:
+        words.extend(w for w in structured_words if min_len <= len(w) <= max_len)
+        source_used = structured_msg
+
+    # ── Step 2: regex fallback (legacy) ──
+    if not words:
+        repo_root = Path(__file__).resolve().parent.parent.parent
+        legacy_paths = {
+            "old_tamil":           repo_root / "backend" / "glossa_lab" / "data" / "dravidian.py",
+            "hieroglyphic_luwian": repo_root / "backend" / "glossa_lab" / "data" / "hieroglyphic_luwian.py",
+            "mycenaean_greek":     repo_root / "backend" / "glossa_lab" / "data" / "linear_b_language.py",
+            "vedic_sanskrit":      repo_root / "backend" / "glossa_lab" / "data" / "sanskrit.py",
+            "sumerian":            repo_root / "backend" / "glossa_lab" / "data" / "sumerian_ur3.py",
+            "old_hebrew":          repo_root / "backend" / "glossa_lab" / "data" / "old_hebrew.py",
+        }
+        src = legacy_paths.get(family)
+        if src and src.exists():
+            text = src.read_text(encoding="utf-8", errors="ignore")
+            for m in re.finditer(r"['\"]([a-zA-Z\-]{2,})['\"]", text):
+                w = m.group(1).lower()
+                if min_len <= len(w) <= max_len:
+                    words.append(w)
+            source_used = f"regex-fallback:{src.name} ({structured_msg})"
 
     words.extend(w.lower() for w in extra if min_len <= len(w) <= max_len)
     words = sorted(set(words))
-    return {"attested_vocab": words, "n_words": len(words), "family": family}
+    return {
+        "attested_vocab": words,
+        "n_words": len(words),
+        "family": family,
+        "source": source_used,
+    }
 
 
 # ── Atomic node defs for registration ───────────────────────────────────────
@@ -609,6 +723,17 @@ def _ctt_node_defs() -> list[Any]:
                         "description": (
                             "Map target-language values to roles. Use "
                             "DefaultIndusValueRoleMap for the standard set."
+                        ),
+                    },
+                    "strict_mode": {
+                        "type": "boolean",
+                        "default": False,
+                        "description": (
+                            "If True, values not present in value_role_map are "
+                            "treated as having an 'unmapped' role and are filtered "
+                            "as violations (rigorous CTT default). If False, "
+                            "unmapped values fall back to 'phonetic' and pass "
+                            "the filter unless the sign forbids phonetic."
                         ),
                     },
                 },
@@ -771,6 +896,15 @@ def _ctt_node_defs() -> list[Any]:
                     "restarts": {"type": "integer", "default": 5, "minimum": 1},
                     "surjective": {"type": "boolean", "default": True},
                     "value_role_map": {"type": "object", "default": {}},
+                    "strict_mode": {
+                        "type": "boolean",
+                        "default": False,
+                        "description": (
+                            "If True, the final mapping is post-filtered to "
+                            "drop any value missing from value_role_map. "
+                            "Treats unmapped values as having a forbidden role."
+                        ),
+                    },
                 },
             },
             fn=_ctt_anchored_sa_decipher,

@@ -92,6 +92,18 @@ def find_experiment_class(exp_id: str):
     """Walk the experiments package and return the ExperimentBase subclass with matching id."""
     from glossa_lab.experiment_base import ExperimentBase
 
+    # Register saved graph experiments first so JSON-defined experiments are
+    # discoverable by id alongside Python ExperimentBase subclasses.
+    try:
+        from glossa_lab.experiment_graph import (  # noqa: PLC0415
+            auto_migrate_hardcoded_experiments,
+            register_graph_experiments,
+        )
+        auto_migrate_hardcoded_experiments()
+        register_graph_experiments()
+    except Exception as exc:  # noqa: BLE001
+        log(f"WARN: graph experiment registration failed: {exc}")
+
     # Search both the public experiments package and the _legacy subpackage
     candidates = [
         "glossa_lab.experiments._legacy",
@@ -122,6 +134,19 @@ def find_experiment_class(exp_id: str):
                     and getattr(obj, "id", None) == exp_id
                 ):
                     return obj
+
+    # Last-resort: check the discover_experiments registry (graph experiments
+    # register themselves directly into this registry without going through
+    # the package walker).
+    try:
+        from glossa_lab.experiment_base import discover_experiments  # noqa: PLC0415
+        registry = discover_experiments()
+        cls = registry.get(exp_id)
+        if cls is not None and issubclass(cls, ExperimentBase) and cls is not ExperimentBase:
+            return cls
+    except Exception as exc:  # noqa: BLE001
+        log(f"WARN: discover_experiments lookup failed: {exc}")
+
     return None
 
 
@@ -143,7 +168,17 @@ def spawn_experiment(exp_id: str) -> subprocess.Popen | None:
         '    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")\n'
         f'sys.path.insert(0, r"{_BACKEND}")\n'
         f'sys.path.insert(0, r"{os.path.join(_BACKEND, "tests")}")\n'
-        "from glossa_lab.experiment_base import ExperimentBase\n"
+        "from glossa_lab.experiment_base import ExperimentBase, discover_experiments\n"
+        "# Register graph experiments (JSON-defined) into the discovery registry.\n"
+        "try:\n"
+        "    from glossa_lab.experiment_graph import (\n"
+        "        auto_migrate_hardcoded_experiments,\n"
+        "        register_graph_experiments,\n"
+        "    )\n"
+        "    auto_migrate_hardcoded_experiments()\n"
+        "    register_graph_experiments()\n"
+        "except Exception as e:\n"
+        "    print(f'GRAPH-REG-FAIL: {e}', flush=True)\n"
         f'TARGET = "{exp_id}"\n'
         "def _find():\n"
         "    for pkg_name in ('glossa_lab.experiments._legacy', 'glossa_lab.experiments'):\n"
@@ -165,6 +200,14 @@ def spawn_experiment(exp_id: str) -> subprocess.Popen | None:
         "                        and obj is not ExperimentBase\n"
         "                        and getattr(obj, 'id', None) == TARGET):\n"
         "                    return obj\n"
+        "    # Fall back to graph-experiment registry\n"
+        "    try:\n"
+        "        reg = discover_experiments()\n"
+        "        cls = reg.get(TARGET)\n"
+        "        if cls is not None and issubclass(cls, ExperimentBase) and cls is not ExperimentBase:\n"
+        "            return cls\n"
+        "    except Exception as e:\n"
+        "        print(f'DISCOVER-FAIL: {e}', flush=True)\n"
         "    return None\n"
         "cls = _find()\n"
         "if cls is None:\n"

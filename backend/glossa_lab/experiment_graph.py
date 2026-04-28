@@ -2289,8 +2289,16 @@ for _d in [
 ]:
     ATOMIC_NODES[_d.id] = _d
 
+# ── CTT / Constraint Topology nodes (Layer1Labs Silicon, 2026) ─────────────────────────────
+try:
+    from glossa_lab.experiment_graph_ctt import _ctt_node_defs as _ctt_defs  # noqa: PLC0415
+    for _d in _ctt_defs():
+        ATOMIC_NODES[_d.id] = _d
+except Exception as _ctt_exc:  # noqa: BLE001
+    logger.warning("CTT nodes not registered: %s", _ctt_exc)
 
-# ── Graph execution ──────────────────────────────────────────────────────────
+
+# ── Graph execution ────────────────────────────────────────────────────────────────────
 
 def _topo_sort(nodes: list[dict], edges: list[dict]) -> list[dict]:
     id2n = {n["id"]: n for n in nodes}

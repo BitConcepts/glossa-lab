@@ -12,7 +12,7 @@ Output: reports/fuls_rtl_corrected_YYYYMMDDTHHMMSS.json
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 
-from glossa_lab.experiments.fuls_rtl_corrected import FulsRTLCorrected
+from glossa_lab.experiments._legacy.fuls_rtl_corrected import FulsRTLCorrected
 
 if __name__ == "__main__":
     print("=" * 60)

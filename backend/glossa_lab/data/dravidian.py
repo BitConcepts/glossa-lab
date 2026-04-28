@@ -490,9 +490,165 @@ MORPHOLOGY = {
 }
 
 
+# ── Tamil-Brahmi attested word list (Mahadevan 2003) ──────────────
+# Hand-curated subset of words attested in Tamil-Brahmi cave inscriptions
+# (~3rd c. BCE – 2nd c. CE), as catalogued in:
+#   Mahadevan, Iravatham (2003). *Early Tamil Epigraphy: From the Earliest
+#   Times to the Sixth Century A.D.*, Harvard Oriental Series 62.
+#
+# These are *attested epigraphic* forms, not reconstructed Proto-Dravidian.
+# Used by AttestedVocabularyLoader for HoldoutWordRecall.
+TAMIL_BRAHMI_ATTESTED: list[str] = [
+    # Personal names and titles (Mahadevan 2003 §3.5)
+    "antuvan", "atan", "atiyan", "akiya", "amani",
+    "appan", "aran", "araiyan", "arici", "aru",
+    "avan", "ayyan", "campan", "catan", "cattan",
+    "cattuvan", "cenkan", "centan", "ceyan", "cilappan",
+    "cinnan", "ciru", "citan", "cuvan", "elini",
+    "erumai", "ila", "ilam", "ilan", "inai",
+    "iniya", "iraiyan", "iruku", "itan", "kacipan",
+    "kalan", "kanan", "kannan", "karu", "katai",
+    "katan", "kavan", "kaviti", "kayan", "kilan",
+    "kilavan", "kiran", "kompan", "kotai", "kotan",
+    "kovan", "kucan", "kunran", "kuviran", "makan",
+    "makal", "makantai", "manakan", "mani", "manram",
+    "matan", "mayilai", "milalai", "minci", "minai",
+    "morika", "murikan", "mutu", "nakan", "nakkan",
+    "nalliyan", "nampi", "nanan", "narai", "natuvil",
+    "netunkilli", "netuman", "netun", "netunceliyan", "oran",
+    "oruvan", "otan", "ovan", "paliyan", "palliyan",
+    "panan", "pancavan", "panri", "paritan", "patan",
+    "patikan", "patumai", "pekan", "perun", "perumakan",
+    "perumal", "piliran", "pilli", "pittan", "piyan",
+    "poripai", "porkai", "poruntu", "poyyamoli", "puli",
+    "pulikari", "pulli", "punal", "puyan", "talai",
+    "tantan", "tantu", "tatan", "taympan", "teccan",
+    "tenparayan", "tetan", "tevan", "tirumakan", "tiruvan",
+    "tittan", "tontaiyan", "toti", "tovan", "tuvan",
+    "ulavan", "untan", "uracan", "uravan", "urai",
+    "uriyavan", "utiyan", "uvan", "vacan", "valavan",
+    "valli", "vannakan", "velan", "vellan", "velliyan",
+    "venkai", "venman", "venni", "verri", "vikkan",
+    # Common nouns from the inscriptions
+    "akam", "akaram", "akaravu", "akkam", "alam",
+    "ali", "aliyatu", "amalan", "amaram", "amma",
+    "ammai", "anaivar", "ananku", "antan", "antar",
+    "appal", "arai", "arakam", "aram", "ari",
+    "arici", "aritu", "aru", "aruvi", "atavi",
+    "avai", "ayil", "ayintu", "calai", "caran",
+    "cati", "cavarai", "celvam", "cempan", "ceruppu",
+    "cevvi", "ceyti", "cinai", "cina", "colai",
+    "cunai", "cuppam", "erumai", "ettam", "evan",
+    "icai", "ikal", "ilakkam", "ilaman", "ilancan",
+    "illi", "ina", "inam", "inci", "intu",
+    "iruvan", "itai", "itam", "itti", "ivai",
+    "kalanai", "kalal", "kalan", "kalavu", "kalavoy",
+    "kallam", "kalli", "kanam", "kannam", "kantu",
+    "kapilai", "karam", "karari", "karayan", "katai",
+    "katam", "katavul", "katir", "kattai", "kavu",
+    "kayam", "kelvi", "keni", "keram", "ketu",
+    "kilam", "kilan", "kinaru", "kiri", "kolam",
+    "konkanam", "konnar", "koppu", "kotti", "kotumai",
+    "kovalan", "kufican", "kulam", "kunram", "kuram",
+    "kurampai", "kurankam", "kuril", "kurinji", "kurram",
+    "kurri", "kurumai", "kurumpu", "kurunkan", "kuyilan",
+    "makan", "makil", "makkal", "malar", "malarvu",
+    "malai", "manai", "manam", "manatu", "manram",
+    "manru", "mantai", "marakatam", "maram", "marrai",
+    "maruntu", "matam", "matarppu", "mati", "matil",
+    "matiram", "matti", "mayilai", "melam", "meli",
+    "melli", "melu", "meni", "meynan", "meyppu",
+    "min", "mintu", "mira", "miran", "miti",
+    "mokkam", "molai", "moli", "mullai", "mumpu",
+    "munaivan", "muram", "murampu", "murasu", "murru",
+    "murukan", "mutalvan", "muti", "muyal", "nakaram",
+    "nakku", "nalam", "nallar", "nampi", "nan",
+    "nanmai", "nantanam", "natai", "nataivu", "natam",
+    "natamai", "natpu", "nattam", "nattil", "navam",
+    "naval", "navi", "nayam", "nayan", "netunkilli",
+    "nila", "nilavu", "nilam", "niram", "niraivu",
+    "nirai", "niranai", "oli", "olukku", "ompu",
+    "onam", "onru", "oraan", "orai", "oran",
+    "oruvar", "otam", "otti", "otu", "ovai",
+    "ovam", "oyalum", "pakal", "pakuti", "palam",
+    "pali", "palli", "panai", "panam", "panavu",
+    "panci", "panku", "pannai", "pantam", "pantu",
+    "papan", "parai", "paravu", "paripu", "pasi",
+    "patam", "patavi", "pati", "patikai", "patukai",
+    "payanam", "payir", "perai", "peran", "perunal",
+    "perumai", "perumakan", "perun", "peruntirai", "perur",
+    "peyar", "pi", "pilai", "pillai", "pintu",
+    "pirai", "piram", "piri", "pirivu", "piru",
+    "pirunaal", "pitar", "piti", "polam", "polivu",
+    "pollai", "ponam", "ponku", "poniyan", "ponkam",
+    "poriyalan", "poru", "porul", "porunan", "poruntal",
+    "potti", "pottiyar", "poy", "poytu", "poyyaa",
+    "pulai", "pulam", "pulan", "pulavar", "pulan",
+    "pull", "punal", "punaivu", "puranam", "purinai",
+    "puru", "pusai", "pusam", "putalvar", "putam",
+    "putavu", "putu", "taatai", "talai", "talaivar",
+    "talaivi", "tampi", "tanam", "tanmai", "tantam",
+    "tantu", "taram", "tarpu", "tarum", "tarumam",
+    "taruvai", "tatti", "tavam", "tavan", "tavu",
+    "tayan", "tayil", "telu", "tem", "temputtai",
+    "tena", "tenkai", "tennan", "tennar", "tenral",
+    "teri", "terinta", "terivu", "terru", "teru",
+    "tevam", "tevar", "tey", "tikai", "tiku",
+    "timai", "tinai", "tinkal", "tipam", "tippili",
+    "tiraikkattu", "tirumakal", "tirumal", "tirumeni", "tirupati",
+    "tiruvallam", "tiruvana", "tiruveti", "titam", "titti",
+    "tiyan", "tol", "tolakan", "tollai", "tonkai",
+    "tontu", "toral", "tori", "toti", "toyu",
+    "tukai", "tulai", "tunai", "tunivu", "tunmai",
+    "turai", "turavi", "turi", "tuvai", "tuvasam",
+    "ula", "ulai", "ulakam", "ulam", "ulavu",
+    "ulla", "ullam", "ullatu", "unar", "unmai",
+    "untu", "upakaram", "upayam", "uppu", "uravu",
+    "uri", "urimai", "urru", "urtam", "urum",
+    "uruvam", "utal", "uttamam", "uvakai", "uyir",
+    "vacam", "vacanai", "vacanam", "vacappu", "vacatu",
+    "vakai", "valam", "valavan", "vali", "valli",
+    "vallu", "valluvar", "vampu", "vanam", "vanan",
+    "vanci", "vanikan", "vannam", "vantai", "vanti",
+    "varai", "varam", "varavu", "varivu", "varuti",
+    "vatakku", "vati", "vayil", "vayiram", "velam",
+    "velvi", "vempu", "venkalam", "venkay", "venkayam",
+    "venni", "vennilavu", "venpa", "venram", "vetai",
+    "veti", "viccam", "vicimpu", "vil", "vilakku",
+    "vilam", "vilampu", "vilan", "vilavu", "vinai",
+    "vintai", "viral", "viran", "viranai", "virivu",
+    "viruntu", "vittu", "vitu", "viyal", "yam",
+    # Place names (Mahadevan 2003 §4.2)
+    "akkur", "alakapuri", "amparam", "anaimalai", "arachalur",
+    "arikkamedu", "arittapatti", "erikkampatti", "jambai", "kanchipuram",
+    "karur", "keelavalavu", "kilavalavu", "kongarpuliyankulam", "kunnakkudi",
+    "madurai", "mamandur", "mankulam", "marugaltalai", "meenakshipuram",
+    "meettukudi", "muttupatti", "neyveli", "palani", "panarpatti",
+    "pugalur", "sittannavasal", "sitthanavasal", "thirupparankunram", "tirucchengodu",
+    "tiruchirappalli", "tiruvadavur", "tiruvellarai", "tondi", "uraiyur",
+    "vasavasamudram", "vellalore", "venkayanur", "vikramangalam",
+]
+
+
 def get_vocabulary() -> dict[str, str]:
     """Return the proto-Dravidian vocabulary."""
     return dict(VOCABULARY)
+
+
+def get_attested_words() -> list[str]:
+    """Return the deduplicated, lowercase list of *attested* Tamil-Brahmi words.
+
+    This is the gold-standard source for `HoldoutWordRecall` and
+    `CompoundDependencyConstraint`. Combines:
+      1. Mahadevan (2003) Tamil-Brahmi epigraphic word list (TAMIL_BRAHMI_ATTESTED).
+      2. Reconstructed Proto-Dravidian roots (VOCABULARY keys) as a fallback
+         for older / non-Brahmi attestations covered by DEDR.
+
+    Used by AttestedVocabularyLoader(family='old_tamil').
+    """
+    words = set(w.lower() for w in TAMIL_BRAHMI_ATTESTED)
+    words.update(k.lower() for k in VOCABULARY.keys())
+    return sorted(words)
 
 
 def get_corpus_text() -> str:

@@ -1888,6 +1888,685 @@ def _corpus_stratifier(inputs: dict, params: dict) -> dict:
     }
 
 
+# ── Phase-13 atomic nodes ────────────────────────────────
+# DeltaRecall, MultiWordHitRate, RoleShuffledNullDistribution,
+# LogogramAwareValueRoleMap, SignMappingConsistency, PMIBigramAligner.
+# These nodes are the direct response to Phase-12's findings:
+#   - HoldoutWordRecall on M77 is dominated by trivial short-CV matches.
+#   - Negative controls (permuted corpus, ablated anchors) BEAT the real run
+#     on Tamil, so the headline metric needs a robust reference.
+#   - The CTT role classifier hasn't been independently validated.
+#   - The 23 detected logograms have nowhere to land in the role map.
+#   - SA hasn't been compared against a non-SA decipherment baseline.
+
+
+def _delta_recall(inputs: dict, params: dict) -> dict:
+    """Compute the recall delta between a real-corpus run and one or more
+    negative-control runs (permuted corpus, ablated anchors, ablated vocab).
+
+    Inputs:
+      real_recall                : float (HoldoutWordRecall.recall_score on the
+                                   real configuration)
+      permuted_recall            : float (recall on a CorpusPermuter-permuted
+                                   corpus, optional)
+      anchor_ablated_recall      : float (recall with AnchorAblator, optional)
+      vocab_ablated_recall       : float (recall with VocabularyAblator, opt.)
+
+    Outputs:
+      delta_permuted, delta_anchor, delta_vocab : real - control
+      best_delta : the most informative (largest in magnitude) of the three
+      verdict    : qualitative interpretation
+
+    Verdict rules (decided in order):
+      - delta_permuted >= 0.05: real corpus carries signal beyond chance
+      - delta_permuted between -0.05 and 0.05: metric likely vacuous on this
+        corpus / vocab (Phase-12 status for Tamil)
+      - delta_permuted < -0.05: real config is *worse* than chance
+        (vocabulary saturates regardless of corpus structure)
+    """
+    def _f(name: str) -> float | None:
+        v = inputs.get(name)
+        if v is None:
+            v = params.get(name)
+        if v is None:
+            return None
+        try:
+            return float(v)
+        except (TypeError, ValueError):
+            return None
+
+    real = _f("real_recall")
+    permuted = _f("permuted_recall")
+    anchor_ab = _f("anchor_ablated_recall")
+    vocab_ab = _f("vocab_ablated_recall")
+
+    if real is None:
+        return {
+            "real_recall": None,
+            "permuted_recall": permuted,
+            "anchor_ablated_recall": anchor_ab,
+            "vocab_ablated_recall": vocab_ab,
+            "delta_permuted": None,
+            "delta_anchor": None,
+            "delta_vocab": None,
+            "best_delta": None,
+            "verdict": "No real_recall supplied.",
+        }
+
+    delta_permuted = (real - permuted) if permuted is not None else None
+    delta_anchor = (real - anchor_ab) if anchor_ab is not None else None
+    delta_vocab = (real - vocab_ab) if vocab_ab is not None else None
+
+    candidates = [d for d in (delta_permuted, delta_anchor, delta_vocab) if d is not None]
+    best_delta = max(candidates, key=abs) if candidates else None
+
+    if delta_permuted is None:
+        verdict = (
+            "No permuted-corpus baseline supplied. Real recall = "
+            f"{real:.4f}. Provide CorpusPermuter -> SA -> recall to compute "
+            "a meaningful delta."
+        )
+    elif delta_permuted >= 0.05:
+        verdict = (
+            f"Real corpus carries signal: recall {real:.4f} - permuted "
+            f"{permuted:.4f} = {delta_permuted:+.4f} (>= +0.05)."
+        )
+    elif delta_permuted <= -0.05:
+        verdict = (
+            f"Real config UNDERPERFORMS permuted: {real:.4f} - {permuted:.4f} "
+            f"= {delta_permuted:+.4f}. The metric is dominated by vocabulary "
+            f"density, not corpus structure."
+        )
+    else:
+        verdict = (
+            f"Real and permuted recall match within \u00b10.05: "
+            f"{real:.4f} vs {permuted:.4f} (delta {delta_permuted:+.4f}). "
+            f"Metric is largely vacuous on this corpus / vocab."
+        )
+
+    return {
+        "real_recall": round(real, 4),
+        "permuted_recall": round(permuted, 4) if permuted is not None else None,
+        "anchor_ablated_recall": round(anchor_ab, 4) if anchor_ab is not None else None,
+        "vocab_ablated_recall": round(vocab_ab, 4) if vocab_ab is not None else None,
+        "delta_permuted": round(delta_permuted, 4) if delta_permuted is not None else None,
+        "delta_anchor": round(delta_anchor, 4) if delta_anchor is not None else None,
+        "delta_vocab": round(delta_vocab, 4) if delta_vocab is not None else None,
+        "best_delta": round(best_delta, 4) if best_delta is not None else None,
+        "verdict": verdict,
+    }
+
+
+def _multi_word_hit_rate(inputs: dict, params: dict) -> dict:
+    """Like HoldoutWordRecall but only counts inscriptions whose decoded
+    length (in target tokens) is at least `min_seq_length`.
+
+    The Phase-12 stratification result -- short=0.744 / medium=0.053 /
+    long=0.107 -- showed that headline recall on M77 is almost entirely a
+    short-inscription artifact. This node provides the headline metric on
+    multi-token inscriptions only, so we can read recall on the cases where
+    a real decipherment would actually have to do work.
+    """
+    sequences: list[list[str]] = inputs.get("sequences") or []
+    proposed_mapping: dict[str, str] = inputs.get("proposed_mapping") or {}
+    attested_vocab: list[str] = (
+        inputs.get("attested_vocab") or params.get("attested_vocab", [])
+    )
+    sep = str(params.get("decode_separator", ""))
+    min_word_len = int(params.get("min_word_len", 2))
+    min_seq_length = int(params.get("min_seq_length", 3))
+
+    attested_set = {w.lower() for w in attested_vocab if len(w) >= min_word_len}
+    if not attested_set or not proposed_mapping:
+        return {
+            "recall_score": 0.0,
+            "n_decoded": 0,
+            "n_attested_hits": 0,
+            "n_unique_hits": 0,
+            "hit_rate": 0.0,
+            "matched_words": [],
+            "min_seq_length": min_seq_length,
+            "verdict": "No vocab or no proposed_mapping.",
+        }
+
+    matched: Counter[str] = Counter()
+    decoded_words: list[str] = []
+    n_filtered_short = 0
+    for seq in sequences:
+        decoded_tokens = [proposed_mapping[s] for s in seq if s in proposed_mapping]
+        if len(decoded_tokens) < min_seq_length:
+            n_filtered_short += 1
+            continue
+        decoded = sep.join(decoded_tokens).lower()
+        if not decoded:
+            continue
+        decoded_words.append(decoded)
+        if decoded in attested_set:
+            matched[decoded] += 1
+
+    n_decoded = len(decoded_words)
+    n_hits = sum(matched.values())
+    recall = n_hits / max(1, n_decoded)
+    return {
+        "recall_score": round(recall, 4),
+        "n_decoded": n_decoded,
+        "n_attested_hits": n_hits,
+        "n_unique_hits": len(matched),
+        "hit_rate": round(len(matched) / max(1, len(attested_set)), 6),
+        "matched_words": [{"word": w, "count": c} for w, c in matched.most_common(50)],
+        "min_seq_length": min_seq_length,
+        "n_filtered_short": n_filtered_short,
+        "verdict": (
+            f"Recall {recall:.4f} over {n_decoded} inscriptions of decoded "
+            f"length >= {min_seq_length} ({n_filtered_short} too short, dropped)."
+        ),
+    }
+
+
+def _role_shuffled_null_distribution(inputs: dict, params: dict) -> dict:
+    """Build a null distribution where the LM and corpus are kept fixed but
+    the role_table assignments are shuffled across signs.
+
+    For each of n_trials trials:
+      - shuffle which sign gets which role-list (preserving the multiset of
+        role assignments, only the sign->roles association changes)
+      - run a CTT-anchored SA decipherment on the (real) sequences with the
+        shuffled role table
+      - compute recall on the (real) sequences using the same attested vocab
+
+    If real-mode recall lies inside the role-shuffled null, the role
+    classifier contributes no decipherment signal and the entire CTT
+    admissibility layer is decorative.
+    """
+    sequences: list[list[str]] = inputs.get("sequences") or []
+    lm = inputs.get("lm")
+    attested_vocab: list[str] = inputs.get("attested_vocab") or []
+    observed_recall = float(inputs.get("observed_recall") or 0.0)
+    role_table: dict[str, list[str]] = inputs.get("role_table") or {}
+    value_role_map: dict[str, str] = inputs.get("value_role_map") or {}
+    anchors: dict[str, str] = inputs.get("anchors") or {}
+    high_pmi_bigrams: list[dict] = inputs.get("high_pmi_bigrams") or []
+
+    n_trials = max(2, int(params.get("n_trials", 6)))
+    seed = int(params.get("seed", 31))
+    iters_per_trial = max(200, int(params.get("iterations_per_trial", 1500)))
+    sep = str(params.get("decode_separator", ""))
+    min_word_len = int(params.get("min_word_len", 2))
+    compound_weight = float(params.get("compound_weight", 0.0))
+    compound_separator = str(params.get("compound_separator", ""))
+    strict_mode = bool(params.get("strict_mode", True))
+
+    if lm is None or not sequences or not attested_vocab or not role_table:
+        return {
+            "null_recalls": [],
+            "null_mean": 0.0,
+            "null_std": 0.0,
+            "observed_recall": observed_recall,
+            "z_score": 0.0,
+            "empirical_p": 1.0,
+            "n_trials": 0,
+            "verdict": "Insufficient inputs (need lm, sequences, attested_vocab, role_table).",
+        }
+
+    rng = random.Random(seed)
+    sign_ids = list(role_table.keys())
+    role_lists = [list(v) for v in role_table.values()]
+
+    recalls: list[float] = []
+    for trial in range(n_trials):
+        # Permute the role-list values across sign_ids.
+        perm = role_lists[:]
+        rng.shuffle(perm)
+        shuffled_role_table = dict(zip(sign_ids, perm))
+
+        sa_out = _ctt_anchored_sa_decipher(
+            {
+                "sequences": sequences,
+                "lm": lm,
+                "role_table": shuffled_role_table,
+                "value_role_map": value_role_map,
+                "anchors": anchors,
+                "high_pmi_bigrams": high_pmi_bigrams,
+                "attested_vocab": attested_vocab,
+            },
+            {
+                "seed": seed + trial * 31,
+                "max_iterations": iters_per_trial,
+                "restarts": 1,
+                "surjective": True,
+                "strict_mode": strict_mode,
+                "compound_weight": compound_weight,
+                "compound_separator": compound_separator,
+            },
+        )
+        proposed = sa_out.get("proposed_mapping") or {}
+        rec_out = _holdout_word_recall(
+            {
+                "sequences": sequences,
+                "proposed_mapping": proposed,
+                "attested_vocab": attested_vocab,
+            },
+            {"decode_separator": sep, "min_word_len": min_word_len},
+        )
+        recalls.append(float(rec_out.get("recall_score", 0.0)))
+
+    n = len(recalls)
+    if n == 0:
+        return {
+            "null_recalls": [],
+            "null_mean": 0.0,
+            "null_std": 0.0,
+            "observed_recall": observed_recall,
+            "z_score": 0.0,
+            "empirical_p": 1.0,
+            "n_trials": 0,
+            "verdict": "All trials failed.",
+        }
+    mean = sum(recalls) / n
+    var = sum((r - mean) ** 2 for r in recalls) / max(1, n - 1)
+    std = var ** 0.5
+    z = (observed_recall - mean) / std if std > 0 else 0.0
+    p = sum(1 for r in recalls if r >= observed_recall) / n
+    if abs(z) < 1.0:
+        verdict = (
+            f"Role-shuffled null mean {mean:.4f}; observed {observed_recall:.4f} "
+            f"is only {z:+.2f}\u03c3 away. Role classifier contributes NO "
+            f"decipherment signal at this corpus / vocab."
+        )
+    elif z >= 2.0:
+        verdict = (
+            f"Observed recall is {z:+.2f}\u03c3 above role-shuffled null "
+            f"({mean:.4f}). Role classifier contributes signal."
+        )
+    else:
+        verdict = (
+            f"Observed recall is {z:+.2f}\u03c3 vs role-shuffled null "
+            f"(mean {mean:.4f}). Marginal contribution from role classifier."
+        )
+    return {
+        "null_recalls": [round(r, 4) for r in recalls],
+        "null_mean": round(mean, 4),
+        "null_std": round(std, 4),
+        "observed_recall": round(observed_recall, 4),
+        "z_score": round(z, 3),
+        "empirical_p": round(p, 4),
+        "n_trials": n,
+        "verdict": verdict,
+    }
+
+
+def _logogram_aware_value_role_map(inputs: dict, params: dict) -> dict:
+    """Take an upstream value_role_map and promote a configurable subset of
+    target-language words to role 'logogram'.
+
+    Phase-12 produced 23 logogram signs but every value in the role map was
+    'phonetic', so the logogram bit was inert. This node lets the graph wire
+    a list of high-frequency content nouns (or raw words from
+    AttestedVocabularyLoader) to the role 'logogram' so strict-mode SA
+    actually has logogram-tagged values to assign to logogram-tagged signs.
+
+    Inputs:
+      value_role_map  : dict[str, str] (from DefaultIndusValueRoleMap)
+      logogram_words  : list[str] (optional; words to retag as 'logogram')
+      attested_vocab  : list[str] (optional; if logogram_words not supplied,
+                                   take the top-N highest-priority
+                                   content words from this list)
+
+    Params:
+      family            : str (used for filtering when no logogram_words
+                          input is given; defaults to 'old_tamil')
+      top_n             : int (only when no logogram_words supplied;
+                          first top_n entries from attested_vocab become
+                          logograms)
+      min_word_len      : int (filter both lists to words >= this length)
+      preserve_suffixes : bool (default True; never demote a 'suffix' word
+                          to 'logogram')
+    """
+    value_role_map: dict[str, str] = dict(inputs.get("value_role_map") or {})
+    upstream_words = inputs.get("logogram_words") or []
+    attested_vocab = inputs.get("attested_vocab") or []
+    family = str(params.get("family", "old_tamil"))
+    top_n = int(params.get("top_n", 30))
+    min_word_len = int(params.get("min_word_len", 3))
+    preserve_suffixes = bool(params.get("preserve_suffixes", True))
+
+    if isinstance(upstream_words, dict):
+        upstream_words = list(upstream_words.keys())
+    if isinstance(attested_vocab, dict):
+        attested_vocab = list(attested_vocab.keys())
+
+    candidate_words: list[str] = []
+    if upstream_words:
+        candidate_words = [str(w).lower() for w in upstream_words]
+    elif attested_vocab:
+        words = [str(w).lower() for w in attested_vocab if len(str(w)) >= min_word_len]
+        candidate_words = words[:top_n]
+
+    promoted: list[str] = []
+    skipped: list[str] = []
+    for w in candidate_words:
+        cur_role = value_role_map.get(w)
+        if cur_role is None:
+            value_role_map[w] = "logogram"
+            promoted.append(w)
+            continue
+        if preserve_suffixes and cur_role in ("suffix", "determinative", "numeral"):
+            skipped.append(w)
+            continue
+        value_role_map[w] = "logogram"
+        promoted.append(w)
+
+    n_logograms = sum(1 for v in value_role_map.values() if v == "logogram")
+    return {
+        "value_role_map": value_role_map,
+        "json": value_role_map,
+        "n_values": len(value_role_map),
+        "n_logograms_promoted": len(promoted),
+        "n_logograms_total": n_logograms,
+        "n_skipped_preserved": len(skipped),
+        "family": family,
+        "promoted_sample": promoted[:25],
+        "skipped_sample": skipped[:25],
+    }
+
+
+def _sign_mapping_consistency(inputs: dict, params: dict) -> dict:
+    """Compute pairwise per-sign agreement across multiple proposed mappings.
+
+    Inputs (ports a..f) each accept a proposed_mapping dict (sign_id -> value).
+    Param `labels` names the branches in port order (default a..f).
+    Param `top_k` (optional, default 0 = no filter) restricts comparison to
+    the top-k most frequent signs from `freq_map` if supplied.
+
+    Output:
+      pairwise         : list[{a, b, jaccard_signs, agreement_value}]
+      modal_per_sign   : list[{sign, values, agreement_count}]
+      n_full_agreement : signs where all >=2 branches agree on the same value
+      n_signs_compared : signs present in at least 2 mappings
+      verdict          : human-readable summary
+    """
+    ports = ("a", "b", "c", "d", "e", "f")
+    labels_raw = params.get("labels", []) or []
+    if isinstance(labels_raw, str):
+        labels = [s.strip() for s in labels_raw.split(",") if s.strip()]
+    elif isinstance(labels_raw, (list, tuple)):
+        labels = [str(s).strip() for s in labels_raw if str(s).strip()]
+    else:
+        labels = []
+    top_k = int(params.get("top_k", 0))
+    freq_map = inputs.get("freq_map") or {}
+
+    branches: dict[str, dict[str, str]] = {}
+    for i, port in enumerate(ports):
+        m = inputs.get(port)
+        if not isinstance(m, dict) or not m:
+            continue
+        label = labels[i] if i < len(labels) else port
+        branches[label] = {str(k): str(v) for k, v in m.items() if k and v}
+
+    if len(branches) < 2:
+        return {
+            "pairwise": [],
+            "modal_per_sign": [],
+            "n_full_agreement": 0,
+            "n_signs_compared": 0,
+            "verdict": "Need at least two non-empty mappings.",
+        }
+
+    # Determine the universe of signs to compare
+    universe: set[str] = set()
+    for m in branches.values():
+        universe.update(m.keys())
+    if top_k > 0 and freq_map:
+        # Order by descending freq, take top_k
+        try:
+            ranked = sorted(
+                ((str(k), float(v)) for k, v in dict(freq_map).items()),
+                key=lambda kv: -kv[1],
+            )
+            top_signs = {s for s, _ in ranked[:top_k]}
+            universe &= top_signs
+        except Exception:  # noqa: BLE001
+            pass
+
+    # Pairwise Jaccard over signs and value-agreement rate over shared signs
+    branch_labels = list(branches.keys())
+    pairwise: list[dict] = []
+    for i in range(len(branch_labels)):
+        for j in range(i + 1, len(branch_labels)):
+            la = branch_labels[i]
+            lb = branch_labels[j]
+            sa = set(branches[la].keys()) & universe
+            sb = set(branches[lb].keys()) & universe
+            jacc_signs = len(sa & sb) / max(1, len(sa | sb))
+            shared = sa & sb
+            same = sum(1 for s in shared if branches[la][s] == branches[lb][s])
+            agreement_value = same / max(1, len(shared))
+            pairwise.append({
+                "a": la,
+                "b": lb,
+                "n_shared": len(shared),
+                "jaccard_signs": round(jacc_signs, 4),
+                "agreement_value": round(agreement_value, 4),
+                "n_value_agreements": same,
+            })
+
+    # Per-sign modal agreement
+    modal: list[dict] = []
+    n_full_agreement = 0
+    for sign in sorted(universe):
+        votes = [branches[lab].get(sign) for lab in branch_labels]
+        votes_present = [v for v in votes if v]
+        if len(votes_present) < 2:
+            continue
+        c = Counter(votes_present)
+        top_value, top_count = c.most_common(1)[0]
+        if top_count == len(votes_present):
+            n_full_agreement += 1
+        modal.append({
+            "sign": sign,
+            "values": dict(zip(branch_labels, votes)),
+            "modal_value": top_value,
+            "agreement_count": top_count,
+            "n_voters": len(votes_present),
+        })
+
+    if pairwise:
+        avg_pair_value = sum(p["agreement_value"] for p in pairwise) / len(pairwise)
+    else:
+        avg_pair_value = 0.0
+    if avg_pair_value >= 0.30:
+        verdict_grade = "strong cross-language agreement"
+    elif avg_pair_value >= 0.10:
+        verdict_grade = "weak cross-language agreement"
+    else:
+        verdict_grade = "no meaningful cross-language agreement"
+    verdict = (
+        f"{verdict_grade}: avg pairwise value-agreement = {avg_pair_value:.4f} "
+        f"over {len(pairwise)} pairs, n_full_agreement = {n_full_agreement} of "
+        f"{len(modal)} signs."
+    )
+    return {
+        "pairwise": pairwise,
+        "modal_per_sign": modal[:200],
+        "n_full_agreement": n_full_agreement,
+        "n_signs_compared": len(modal),
+        "avg_pairwise_value_agreement": round(avg_pair_value, 4),
+        "verdict": verdict,
+    }
+
+
+def _pmi_bigram_aligner(inputs: dict, params: dict) -> dict:
+    """Direct rank-based alignment of Indus high-PMI bigrams to attested
+    target-language compound bigrams (no SA).
+
+    This is the Berg-Kirkpatrick-2011 / Cotterell-2015 alignment baseline
+    against which Phase-12's CTT-anchored SA can be compared. The algorithm
+    is a simplified single-pass version of minimum-cost alignment:
+
+      1. Rank Indus bigrams by count (already produced by
+         IndusSignRoleClassifier.high_pmi_bigrams).
+      2. Build target-language compound bigrams: for each attested word, if
+         it splits cleanly on `target_separator` (Linear B '-') OR can be
+         decomposed into balanced prefix/suffix halves of length
+         `target_token_len` (e.g. CV-syllable Tamil words), the (prefix,
+         suffix) pair becomes one target bigram. Rank by frequency.
+      3. Greedily align Indus bigrams to target bigrams in rank order, with
+         the constraint that an Indus sign that is already mapped (because
+         it appeared in an earlier higher-rank bigram) keeps its existing
+         value.
+
+    Inputs:
+      high_pmi_bigrams : list[{a, b, count}] (from IndusSignRoleClassifier)
+      attested_vocab   : list[str]
+
+    Params:
+      target_separator : str (default '' for unsplit Tamil/Luwian, '-' for
+                         Linear B)
+      target_token_len : int (default 2; used only when target_separator='')
+      max_alignments   : int (default 30)
+      anchors          : dict[str, str] (optional preset anchors that bind
+                         specific Indus signs to specific target tokens
+                         before the greedy pass)
+
+    Outputs:
+      proposed_mapping : dict[str, str] (sign_id -> value), comparable with
+                         CTTAnchoredSADecipher.proposed_mapping
+      alignment_table  : list[{indus_a, indus_b, target_a, target_b,
+                         count, target_count, decoded}]
+      n_alignments     : int
+      n_signs          : int (count of signs in proposed_mapping)
+    """
+    bigrams: list[dict] = inputs.get("high_pmi_bigrams") or []
+    attested_vocab: list[str] = inputs.get("attested_vocab") or []
+    target_sep = str(params.get("target_separator", ""))
+    target_token_len = int(params.get("target_token_len", 2))
+    max_alignments = int(params.get("max_alignments", 30))
+    anchors_param = params.get("anchors", {}) or {}
+    anchors_input = inputs.get("anchors", {}) or {}
+    anchors: dict[str, str] = {}
+    for a in (anchors_input, anchors_param):
+        if isinstance(a, dict):
+            anchors.update({str(k): str(v) for k, v in a.items()})
+
+    if not bigrams or not attested_vocab:
+        return {
+            "proposed_mapping": dict(anchors),
+            "alignment_table": [],
+            "n_alignments": 0,
+            "n_signs": len(anchors),
+            "verdict": "No bigrams or no attested_vocab.",
+        }
+
+    # Build target bigram inventory.
+    target_bigrams: Counter[tuple[str, str]] = Counter()
+    for w in attested_vocab:
+        w = str(w).lower()
+        if not w:
+            continue
+        if target_sep:
+            parts = [p for p in w.split(target_sep) if p]
+            for i in range(len(parts) - 1):
+                target_bigrams[(parts[i], parts[i + 1])] += 1
+        else:
+            tl = target_token_len
+            if len(w) >= 2 * tl:
+                # all balanced (a, b) decompositions of length 2*tl
+                # using a sliding window
+                for i in range(0, len(w) - 2 * tl + 1):
+                    a = w[i : i + tl]
+                    b = w[i + tl : i + 2 * tl]
+                    if a.isalpha() and b.isalpha():
+                        target_bigrams[(a, b)] += 1
+
+    if not target_bigrams:
+        return {
+            "proposed_mapping": dict(anchors),
+            "alignment_table": [],
+            "n_alignments": 0,
+            "n_signs": len(anchors),
+            "verdict": "No target bigrams could be derived from attested_vocab.",
+        }
+
+    target_ranked = sorted(
+        target_bigrams.items(),
+        key=lambda kv: -kv[1],
+    )
+    indus_ranked = sorted(
+        ((bg.get("a"), bg.get("b"), int(bg.get("count", 0))) for bg in bigrams),
+        key=lambda t: -t[2],
+    )
+
+    # Greedy alignment
+    proposed: dict[str, str] = dict(anchors)
+    used_target_pairs: set[tuple[str, str]] = set()
+    alignment_table: list[dict] = []
+
+    for indus_a, indus_b, count in indus_ranked:
+        if not indus_a or not indus_b:
+            continue
+        if len(alignment_table) >= max_alignments:
+            break
+        # If both Indus signs already mapped, just record the implied target
+        # bigram for diagnostics and move on.
+        if indus_a in proposed and indus_b in proposed:
+            ta = proposed[indus_a]
+            tb = proposed[indus_b]
+            decoded = (ta + target_sep + tb).lower() if target_sep else (ta + tb).lower()
+            alignment_table.append({
+                "indus_a": indus_a,
+                "indus_b": indus_b,
+                "target_a": ta,
+                "target_b": tb,
+                "count": count,
+                "decoded": decoded,
+                "already_mapped": True,
+                "target_count": target_bigrams.get((ta, tb), 0),
+            })
+            continue
+        # Find the highest-rank target bigram compatible with any
+        # already-bound endpoints.
+        chosen: tuple[str, str, int] | None = None
+        for (ta, tb), tcount in target_ranked:
+            if (ta, tb) in used_target_pairs:
+                continue
+            if indus_a in proposed and proposed[indus_a] != ta:
+                continue
+            if indus_b in proposed and proposed[indus_b] != tb:
+                continue
+            chosen = (ta, tb, tcount)
+            break
+        if chosen is None:
+            continue
+        ta, tb, tcount = chosen
+        proposed[indus_a] = ta
+        proposed[indus_b] = tb
+        used_target_pairs.add((ta, tb))
+        decoded = (ta + target_sep + tb).lower() if target_sep else (ta + tb).lower()
+        alignment_table.append({
+            "indus_a": indus_a,
+            "indus_b": indus_b,
+            "target_a": ta,
+            "target_b": tb,
+            "count": count,
+            "target_count": tcount,
+            "decoded": decoded,
+            "already_mapped": False,
+        })
+
+    return {
+        "proposed_mapping": proposed,
+        "alignment_table": alignment_table,
+        "n_alignments": len(alignment_table),
+        "n_signs": len(proposed),
+        "n_anchored": len(anchors),
+        "verdict": (
+            f"Aligned {len(alignment_table)} bigrams (top by count); "
+            f"final mapping covers {len(proposed)} signs."
+        ),
+    }
+
+
 # ── Atomic node defs for registration ─────────────────────
 # Imported by experiment_graph.py and added to ATOMIC_NODES at module load.
 
@@ -2567,6 +3246,226 @@ def _ctt_node_defs() -> list[Any]:
             params_schema={"type": "object", "properties": {}},
             fn=_k_fold_aggregator,
         ),
+        AtomicNodeDef(
+            "DeltaRecall",
+            "Delta Recall (Phase-13)",
+            "CTT / Constraint Topology",
+            "Compute the recall delta between a real-corpus run and one or "
+            "more negative-control runs (permuted corpus, ablated anchors, "
+            "ablated vocab). Phase-12 showed permuted recall on Tamil > real "
+            "recall, so this delta is the headline-quality metric: positive "
+            "delta_permuted means the corpus structure is contributing.",
+            inputs=[
+                {"name": "real_recall", "type": "number", "required": False},
+                {"name": "permuted_recall", "type": "number", "required": False},
+                {"name": "anchor_ablated_recall", "type": "number", "required": False},
+                {"name": "vocab_ablated_recall", "type": "number", "required": False},
+            ],
+            outputs=[
+                {"name": "real_recall", "type": "number"},
+                {"name": "permuted_recall", "type": "number"},
+                {"name": "anchor_ablated_recall", "type": "number"},
+                {"name": "vocab_ablated_recall", "type": "number"},
+                {"name": "delta_permuted", "type": "number"},
+                {"name": "delta_anchor", "type": "number"},
+                {"name": "delta_vocab", "type": "number"},
+                {"name": "best_delta", "type": "number"},
+                {"name": "verdict", "type": "text"},
+            ],
+            params_schema={
+                "type": "object",
+                "properties": {
+                    "real_recall": {"type": "number"},
+                    "permuted_recall": {"type": "number"},
+                    "anchor_ablated_recall": {"type": "number"},
+                    "vocab_ablated_recall": {"type": "number"},
+                },
+            },
+            fn=_delta_recall,
+        ),
+        AtomicNodeDef(
+            "MultiWordHitRate",
+            "Multi-Word Hit Rate (Phase-13)",
+            "CTT / Constraint Topology",
+            "HoldoutWordRecall variant that only counts inscriptions whose "
+            "decoded length is at least `min_seq_length` tokens. Eliminates "
+            "the short-CV trivial-match artifact uncovered by Phase-12 "
+            "stratification (short=0.74 / medium=0.05 / long=0.11).",
+            inputs=[
+                {"name": "sequences", "type": "sequences", "required": True},
+                {"name": "proposed_mapping", "type": "json", "required": True},
+                {"name": "attested_vocab", "type": "json", "required": False},
+            ],
+            outputs=[
+                {"name": "recall_score", "type": "number"},
+                {"name": "n_decoded", "type": "number"},
+                {"name": "n_attested_hits", "type": "number"},
+                {"name": "n_unique_hits", "type": "number"},
+                {"name": "hit_rate", "type": "number"},
+                {"name": "matched_words", "type": "json"},
+                {"name": "min_seq_length", "type": "number"},
+                {"name": "n_filtered_short", "type": "number"},
+                {"name": "verdict", "type": "text"},
+            ],
+            params_schema={
+                "type": "object",
+                "properties": {
+                    "decode_separator": {"type": "string", "default": ""},
+                    "min_seq_length": {"type": "integer", "default": 3, "minimum": 1},
+                    "min_word_len": {"type": "integer", "default": 2, "minimum": 1},
+                    "attested_vocab": {"type": "array", "default": []},
+                },
+            },
+            fn=_multi_word_hit_rate,
+        ),
+        AtomicNodeDef(
+            "RoleShuffledNullDistribution",
+            "Role-Shuffled Null Distribution (Phase-13)",
+            "CTT / Constraint Topology",
+            "Build a null where the LM and corpus are kept fixed but the "
+            "role_table assignments are shuffled across signs. Real-mode "
+            "recall inside this null means the role classifier contributes "
+            "no decipherment signal.",
+            inputs=[
+                {"name": "sequences", "type": "sequences", "required": True},
+                {"name": "lm", "type": "any", "required": True},
+                {"name": "attested_vocab", "type": "json", "required": True},
+                {"name": "observed_recall", "type": "number", "required": True},
+                {"name": "role_table", "type": "json", "required": True},
+                {"name": "value_role_map", "type": "json", "required": False},
+                {"name": "anchors", "type": "json", "required": False},
+                {"name": "high_pmi_bigrams", "type": "json", "required": False},
+            ],
+            outputs=[
+                {"name": "null_recalls", "type": "json"},
+                {"name": "null_mean", "type": "number"},
+                {"name": "null_std", "type": "number"},
+                {"name": "observed_recall", "type": "number"},
+                {"name": "z_score", "type": "number"},
+                {"name": "empirical_p", "type": "number"},
+                {"name": "n_trials", "type": "number"},
+                {"name": "verdict", "type": "text"},
+            ],
+            params_schema={
+                "type": "object",
+                "properties": {
+                    "n_trials": {"type": "integer", "default": 6, "minimum": 2},
+                    "seed": {"type": "integer", "default": 31},
+                    "iterations_per_trial": {"type": "integer", "default": 1500, "minimum": 200},
+                    "decode_separator": {"type": "string", "default": ""},
+                    "min_word_len": {"type": "integer", "default": 2, "minimum": 1},
+                    "compound_weight": {"type": "number", "default": 0.0},
+                    "compound_separator": {"type": "string", "default": ""},
+                    "strict_mode": {"type": "boolean", "default": True},
+                },
+            },
+            fn=_role_shuffled_null_distribution,
+        ),
+        AtomicNodeDef(
+            "LogogramAwareValueRoleMap",
+            "Logogram-Aware Value-Role Map (Phase-13)",
+            "CTT / Constraint Topology",
+            "Take an upstream value_role_map and re-tag a list of words "
+            "(provided via `logogram_words` input or top-N from "
+            "attested_vocab) as 'logogram'. Phase-12 detected 23 logograms "
+            "in M77 but the role map had no logogram-tagged values, making "
+            "the bit inert. This node closes that gap.",
+            inputs=[
+                {"name": "value_role_map", "type": "json", "required": True},
+                {"name": "logogram_words", "type": "json", "required": False},
+                {"name": "attested_vocab", "type": "json", "required": False},
+            ],
+            outputs=[
+                {"name": "value_role_map", "type": "json"},
+                {"name": "json", "type": "json"},
+                {"name": "n_values", "type": "number"},
+                {"name": "n_logograms_promoted", "type": "number"},
+                {"name": "n_logograms_total", "type": "number"},
+                {"name": "n_skipped_preserved", "type": "number"},
+                {"name": "family", "type": "text"},
+                {"name": "promoted_sample", "type": "json"},
+                {"name": "skipped_sample", "type": "json"},
+            ],
+            params_schema={
+                "type": "object",
+                "properties": {
+                    "family": {"type": "string", "default": "old_tamil"},
+                    "top_n": {"type": "integer", "default": 30, "minimum": 1},
+                    "min_word_len": {"type": "integer", "default": 3, "minimum": 1},
+                    "preserve_suffixes": {"type": "boolean", "default": True},
+                },
+            },
+            fn=_logogram_aware_value_role_map,
+        ),
+        AtomicNodeDef(
+            "SignMappingConsistency",
+            "Sign Mapping Consistency (Phase-13)",
+            "CTT / Constraint Topology",
+            "Compute pairwise per-sign agreement across multiple proposed "
+            "mappings (Tamil / Luwian / Greek / Sanskrit, etc.). High "
+            "agreement on the same Indus signs indicates a real cross- "
+            "language signal; low agreement is consistent with each branch "
+            "finding language-specific noise. Up to six branches via ports "
+            "a..f.",
+            inputs=[
+                {"name": "a", "type": "json", "required": False},
+                {"name": "b", "type": "json", "required": False},
+                {"name": "c", "type": "json", "required": False},
+                {"name": "d", "type": "json", "required": False},
+                {"name": "e", "type": "json", "required": False},
+                {"name": "f", "type": "json", "required": False},
+                {"name": "freq_map", "type": "json", "required": False},
+            ],
+            outputs=[
+                {"name": "pairwise", "type": "json"},
+                {"name": "modal_per_sign", "type": "json"},
+                {"name": "n_full_agreement", "type": "number"},
+                {"name": "n_signs_compared", "type": "number"},
+                {"name": "avg_pairwise_value_agreement", "type": "number"},
+                {"name": "verdict", "type": "text"},
+            ],
+            params_schema={
+                "type": "object",
+                "properties": {
+                    "labels": {"type": "array", "default": []},
+                    "top_k": {"type": "integer", "default": 0},
+                },
+            },
+            fn=_sign_mapping_consistency,
+        ),
+        AtomicNodeDef(
+            "PMIBigramAligner",
+            "PMI Bigram Aligner (Phase-13, Berg-Kirkpatrick baseline)",
+            "CTT / Constraint Topology",
+            "Direct rank-based alignment of Indus high-PMI bigrams to "
+            "target-language attested compound bigrams. No SA. Berg-"
+            "Kirkpatrick 2011 / Cotterell-Eisner 2015 baseline against which "
+            "the CTT-anchored SA can be compared. Greedy alignment in "
+            "descending count order; supports preset anchors.",
+            inputs=[
+                {"name": "high_pmi_bigrams", "type": "json", "required": True},
+                {"name": "attested_vocab", "type": "json", "required": True},
+                {"name": "anchors", "type": "json", "required": False},
+            ],
+            outputs=[
+                {"name": "proposed_mapping", "type": "json"},
+                {"name": "alignment_table", "type": "json"},
+                {"name": "n_alignments", "type": "number"},
+                {"name": "n_signs", "type": "number"},
+                {"name": "n_anchored", "type": "number"},
+                {"name": "verdict", "type": "text"},
+            ],
+            params_schema={
+                "type": "object",
+                "properties": {
+                    "target_separator": {"type": "string", "default": ""},
+                    "target_token_len": {"type": "integer", "default": 2, "minimum": 1},
+                    "max_alignments": {"type": "integer", "default": 30, "minimum": 1},
+                    "anchors": {"type": "object", "default": {}},
+                },
+            },
+            fn=_pmi_bigram_aligner,
+        ),
     ]
 
 
@@ -2592,5 +3491,11 @@ __all__ = [
     "_vocabulary_ablator",
     "_anchor_ablator",
     "_corpus_stratifier",
+    "_delta_recall",
+    "_multi_word_hit_rate",
+    "_role_shuffled_null_distribution",
+    "_logogram_aware_value_role_map",
+    "_sign_mapping_consistency",
+    "_pmi_bigram_aligner",
     "_ctt_node_defs",
 ]

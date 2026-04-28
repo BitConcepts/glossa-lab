@@ -2320,6 +2320,14 @@ try:
 except Exception as _ctt_exc:  # noqa: BLE001
     logger.warning("CTT nodes not registered: %s", _ctt_exc)
 
+# ── Phase-14 nodes (structural signature + grounding + epistatic + CPSC) ────────────────
+try:
+    from glossa_lab.experiment_graph_phase14 import _phase14_node_defs as _p14_defs  # noqa: PLC0415
+    for _d in _p14_defs():
+        ATOMIC_NODES[_d.id] = _d
+except Exception as _p14_exc:  # noqa: BLE001
+    logger.warning("Phase-14 nodes not registered: %s", _p14_exc)
+
 
 # ── Graph execution ────────────────────────────────────────────────────────────────────
 

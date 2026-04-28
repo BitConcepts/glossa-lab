@@ -50,6 +50,19 @@ ROLE_BITS = (
 # ── 1. IndusSignRoleClassifier ──────────────────────────────────────────────
 
 
+# Default numeral candidates spanning M77 and Parpola P-code conventions.
+# Parpola P121–P125 / P144–P150 are the vertical-stroke families (one–six
+# strokes); Mahadevan M77 100–130 range covers the same numerical signs.
+_DEFAULT_NUMERAL_SIGNS: tuple[str, ...] = (
+    # Parpola allograph numbers for stroke-numerals (CISI Parpola corpus)
+    "P121", "P122", "P123", "P124", "P125",
+    "P144", "P145", "P146", "P147", "P148", "P149", "P150",
+    # Mahadevan M77 numbering for stroke-numerals
+    "100", "101", "102", "103", "104", "105", "106", "107", "108", "109",
+    "110", "111", "112", "113", "114", "115",
+)
+
+
 def _indus_sign_role_classifier(inputs: dict, params: dict) -> dict:
     """Derive a 6-bit role mask per sign from corpus statistics.
 
@@ -59,20 +72,48 @@ def _indus_sign_role_classifier(inputs: dict, params: dict) -> dict:
 
     Pure primitive: counts terminal/initial/medial rates, applies thresholds.
     No machine learning, no composition of existing nodes.
+
+    Suffix/numeral detection (2026-04-28 fix):
+      - Strict `terminal_threshold` (0.85) only catches signs that are
+        almost-exclusively final. Realistic Indus suffix candidates have
+        terminal rates of 0.4–0.7 with strong terminal-vs-initial bias.
+        We now also accept signs with `t_rate >= terminal_relaxed` AND
+        t_rate >= 1.5 · i_rate as suffix candidates.
+      - The default numeral_set now spans both Parpola P-codes (P121–P125,
+        P144–P150) and Mahadevan M77 numbering (100–115).
+      - Optional `numeral_repetition_threshold` parameter promotes any sign
+        that appears in solo or repeated-run inscriptions at high rate to a
+        numeral (covers tally-style stroke signs that don't appear in the
+        canonical numeral list).
     """
     sequences: list[list[str]] = inputs.get("sequences") or []
     if not sequences:
         return {"role_table": {}, "n_signs": 0}
 
     t_thr = float(params.get("terminal_threshold", 0.85))
+    t_thr_relaxed = float(params.get("terminal_relaxed", 0.45))
     i_thr = float(params.get("initial_threshold", 0.70))
     pmi_thr = float(params.get("compound_pmi_threshold", 4.0))
     min_count = int(params.get("min_count", 5))
-    numeral_set = set(params.get("numeral_signs", ["820", "590", "60", "176", "90"]))
+    numeral_repetition_thr = float(params.get("numeral_repetition_threshold", 0.5))
+    numeral_set = set(params.get("numeral_signs", _DEFAULT_NUMERAL_SIGNS))
 
     tc: Counter[str] = Counter(s for seq in sequences for s in seq)
     te: Counter[str] = Counter(seq[-1] for seq in sequences if len(seq) >= 1)
     ic: Counter[str] = Counter(seq[0] for seq in sequences if len(seq) >= 1)
+
+    # Repetition / solo statistics for numeral heuristic.
+    solo_or_repeat_count: Counter[str] = Counter()
+    for seq in sequences:
+        if len(seq) == 0:
+            continue
+        # Solo inscription → every sign in it gets a +1
+        if len(seq) == 1:
+            solo_or_repeat_count[seq[0]] += 1
+            continue
+        # Repeated run: if all signs in the seq are the same, +1 per token
+        if len(set(seq)) == 1:
+            solo_or_repeat_count[seq[0]] += len(seq)
 
     # Bigram PMI for compound detection (Mahadevan-style)
     bg: Counter[tuple[str, str]] = Counter()
@@ -100,18 +141,22 @@ def _indus_sign_role_classifier(inputs: dict, params: dict) -> dict:
             continue
         t_rate = te[sym] / n if n else 0.0
         i_rate = ic[sym] / n if n else 0.0
+        rep_rate = solo_or_repeat_count[sym] / n if n else 0.0
         roles: set[str] = set()
-        if t_rate >= t_thr:
+        # Suffix detection: strict OR relaxed-with-terminal-bias
+        if t_rate >= t_thr or (
+            t_rate >= t_thr_relaxed and (i_rate == 0 or t_rate >= 1.5 * i_rate)
+        ):
             roles.add("suffix")
         if i_rate >= i_thr:
             roles.add("determinative")
-        if sym in numeral_set:
+        if sym in numeral_set or rep_rate >= numeral_repetition_thr:
             roles.add("numeral")
-        # Phonetic syllabograms = mixed-position high-frequency signs not exclusively
-        # terminal/initial and not in the numeral set
-        if t_rate < t_thr and i_rate < i_thr and sym not in numeral_set:
+        # Phonetic syllabograms = mixed-position high-frequency signs not
+        # exclusively terminal/initial and not classified as numeral.
+        if t_rate < t_thr and i_rate < i_thr and "numeral" not in roles:
             roles.add("phonetic")
-        # Logograms = very-low-frequency mixed-position singletons
+        # Logograms = low-frequency phonetic singletons
         if 1 <= n < min_count * 2 and "phonetic" in roles:
             roles.add("logogram")
         if sym in compound_signs:
@@ -329,6 +374,14 @@ def _ctt_anchored_sa_decipher(inputs: dict, params: dict) -> dict:
     sign's admissible set. Per CTT Claim 9: invalid states are
     mathematically unselectable, so no warm-up or rejection sampling
     is needed.
+
+    Joint inference (2026-04-28): if `compound_weight` > 0 and high-PMI
+    bigrams + attested_vocab are supplied, candidate restart mappings are
+    re-scored as `score_LM + compound_weight * compound_score`, where
+    compound_score = (#hits - 0.5 * #misses) over the high-PMI bigram set.
+    This makes cross-sign coupling part of the restart selection rather
+    than a post-hoc evaluator, which is the core Cotterell/Eisner 2015 dual-
+    decomposition idea (collapsed to single-pass via best-of-restart).
     """
     sequences: list[list[str]] = inputs.get("sequences") or []
     lm = inputs.get("lm")
@@ -337,12 +390,16 @@ def _ctt_anchored_sa_decipher(inputs: dict, params: dict) -> dict:
     value_role_map: dict[str, str] = (
         inputs.get("value_role_map") or params.get("value_role_map") or {}
     )
+    high_pmi_bigrams: list[dict] = inputs.get("high_pmi_bigrams") or []
+    attested_vocab: list[str] = inputs.get("attested_vocab") or []
 
     seed = int(params.get("seed", 1))
     max_iterations = int(params.get("max_iterations", 8000))
     restarts = int(params.get("restarts", 5))
     surjective = bool(params.get("surjective", True))
     strict_mode = bool(params.get("strict_mode", False))
+    compound_weight = float(params.get("compound_weight", 0.0))
+    compound_separator = str(params.get("compound_separator", ""))
 
     if lm is None or not sequences:
         return {"error": "Missing lm or sequences", "proposed_mapping": {}, "score": 0.0}
@@ -367,9 +424,30 @@ def _ctt_anchored_sa_decipher(inputs: dict, params: dict) -> dict:
     if not flat_tokens:
         return {"error": "Empty corpus", "proposed_mapping": {}}
 
+    attested_set = {w.lower() for w in attested_vocab}
+
+    def _compound_score(mapping: dict[str, str]) -> tuple[float, int, int]:
+        if compound_weight <= 0 or not high_pmi_bigrams or not attested_set:
+            return 0.0, 0, 0
+        hits = misses = 0
+        for bg in high_pmi_bigrams:
+            a, b = bg.get("a"), bg.get("b")
+            va = mapping.get(a)
+            vb = mapping.get(b)
+            if not va or not vb:
+                continue
+            word = (va + compound_separator + vb).lower()
+            if word in attested_set:
+                hits += 1
+            else:
+                misses += 1
+        return float(hits) - 0.5 * float(misses), hits, misses
+
     rng = random.Random(seed)
     best_mapping: dict[str, str] = {}
     best_score = float("-inf")
+    best_lm_score = 0.0
+    best_compound = (0.0, 0, 0)
     n_filtered_proposals = 0
     n_total_proposals = 0
     for r in range(restarts):
@@ -396,9 +474,13 @@ def _ctt_anchored_sa_decipher(inputs: dict, params: dict) -> dict:
                 n_filtered_proposals += 1
                 continue
             kept[s] = v
-        score = float(result.get("score", 0.0))
-        if score > best_score:
-            best_score = score
+        lm_score = float(result.get("score", 0.0))
+        comp_score, comp_hits, comp_misses = _compound_score(kept)
+        joint_score = lm_score + compound_weight * comp_score
+        if joint_score > best_score:
+            best_score = joint_score
+            best_lm_score = lm_score
+            best_compound = (comp_score, comp_hits, comp_misses)
             best_mapping = kept
         rng.random()  # perturb for next restart's seed-mod salt
 
@@ -413,11 +495,18 @@ def _ctt_anchored_sa_decipher(inputs: dict, params: dict) -> dict:
             else:
                 n_unmapped_dropped += 1
         best_mapping = keep
+        # Recompute compound score on the strict-filtered mapping for honesty
+        best_compound = _compound_score(best_mapping)
 
     rate = n_filtered_proposals / max(1, n_total_proposals)
     return {
         "proposed_mapping": best_mapping,
         "score": round(best_score, 4),
+        "lm_score": round(best_lm_score, 4),
+        "compound_score": round(best_compound[0], 4),
+        "compound_hits": best_compound[1],
+        "compound_misses": best_compound[2],
+        "compound_weight": compound_weight,
         "n_signs": len(best_mapping),
         "n_forbidden_pairs": len(forbidden),
         "n_filtered_proposals": n_filtered_proposals,
@@ -802,7 +891,514 @@ def _attested_vocab_loader(inputs: dict, params: dict) -> dict:
     }
 
 
-# ── Atomic node defs for registration ───────────────────────────────────────
+# ── LMGranularityProfiler + GranularityComparison ─────────────────────
+# Diagnostic nodes that profile a Language Model's symbol granularity (char
+# vs syllable vs word) and compare multiple LM profiles for compatibility
+# with a target value-role map / attested vocabulary.
+
+
+def _lm_granularity_profiler(inputs: dict, params: dict) -> dict:
+    """Profile an LM's symbol-length granularity and overlap with target inventory.
+
+    Outputs:
+      - granularity: "character" | "syllabic" | "word" | "mixed"
+      - mean_symbol_len, median_symbol_len
+      - vocab_overlap: fraction of LM symbols that appear in attested_vocab
+      - role_map_overlap: fraction of LM symbols that appear in value_role_map
+      - n_symbols, top_symbols
+
+    Pure primitive. No SA, no model fitting.
+    """
+    lm = inputs.get("lm")
+    attested_vocab: list[str] = inputs.get("attested_vocab") or []
+    value_role_map: dict[str, str] = inputs.get("value_role_map") or {}
+    label = str(params.get("label", "unknown"))
+
+    symbols: list[str] = []
+    # Try common LM shapes: dict[symbol -> prob]; or .vocab attr; or .symbols
+    if lm is None:
+        symbols = []
+    elif isinstance(lm, dict):
+        symbols = [str(k) for k in lm.keys()]
+    elif hasattr(lm, "vocab") and isinstance(getattr(lm, "vocab"), (list, set, dict, tuple)):
+        v = getattr(lm, "vocab")
+        symbols = [str(s) for s in (v.keys() if isinstance(v, dict) else v)]
+    elif hasattr(lm, "symbols"):
+        try:
+            symbols = [str(s) for s in getattr(lm, "symbols")]
+        except Exception:  # noqa: BLE001
+            symbols = []
+    elif hasattr(lm, "unigrams"):
+        try:
+            ug = getattr(lm, "unigrams")
+            symbols = [str(k) for k in (ug.keys() if isinstance(ug, dict) else ug)]
+        except Exception:  # noqa: BLE001
+            symbols = []
+
+    if not symbols:
+        return {
+            "label": label,
+            "granularity": "unknown",
+            "mean_symbol_len": 0.0,
+            "median_symbol_len": 0,
+            "vocab_overlap": 0.0,
+            "role_map_overlap": 0.0,
+            "n_symbols": 0,
+            "top_symbols": [],
+            "verdict": "LM produced no enumerable symbol set; granularity unknown.",
+        }
+
+    symbols = [s for s in symbols if s]
+    lengths = sorted(len(s) for s in symbols)
+    n = len(lengths)
+    mean_len = sum(lengths) / max(1, n)
+    median_len = lengths[n // 2] if n else 0
+
+    # Granularity heuristic.
+    bucket = {1: 0, 2: 0, 3: 0}
+    long_count = 0
+    for s in symbols:
+        L = len(s)
+        if L == 1:
+            bucket[1] += 1
+        elif L == 2:
+            bucket[2] += 1
+        elif L == 3:
+            bucket[3] += 1
+        else:
+            long_count += 1
+    p1 = bucket[1] / max(1, n)
+    p23 = (bucket[2] + bucket[3]) / max(1, n)
+    p_long = long_count / max(1, n)
+    if p1 >= 0.7:
+        granularity = "character"
+    elif p23 >= 0.6 and p_long < 0.2:
+        granularity = "syllabic"
+    elif p_long >= 0.5:
+        granularity = "word"
+    else:
+        granularity = "mixed"
+
+    attested_set = {w.lower() for w in attested_vocab}
+    vrm_set = {k.lower() for k in value_role_map.keys()}
+    sym_lower = [s.lower() for s in symbols]
+    vocab_overlap = (
+        sum(1 for s in sym_lower if s in attested_set) / max(1, n) if attested_set else 0.0
+    )
+    role_map_overlap = (
+        sum(1 for s in sym_lower if s in vrm_set) / max(1, n) if vrm_set else 0.0
+    )
+
+    if granularity == "character" and attested_set:
+        verdict = (
+            f"{label}: character-level LM. Strict-mode SA against word-level "
+            f"vocab will reject most proposals. Switch to a word-level LM."
+        )
+    elif granularity == "word" and vocab_overlap < 0.05:
+        verdict = (
+            f"{label}: word-level LM but only "
+            f"{vocab_overlap:.1%} of LM words appear in attested vocab. "
+            f"Recall ceiling will be low; consider expanding attested vocab."
+        )
+    elif granularity == "syllabic" and role_map_overlap < 0.3:
+        verdict = (
+            f"{label}: syllabic LM with only {role_map_overlap:.1%} role-map "
+            f"coverage. Expand value-role map to include more CV syllables."
+        )
+    else:
+        verdict = (
+            f"{label}: granularity={granularity}, vocab_overlap={vocab_overlap:.1%}, "
+            f"role_map_overlap={role_map_overlap:.1%}."
+        )
+
+    out = {
+        "label": label,
+        "granularity": granularity,
+        "mean_symbol_len": round(mean_len, 3),
+        "median_symbol_len": median_len,
+        "vocab_overlap": round(vocab_overlap, 4),
+        "role_map_overlap": round(role_map_overlap, 4),
+        "n_symbols": n,
+        "length_distribution": {"1": bucket[1], "2": bucket[2], "3": bucket[3], "4+": long_count},
+        "top_symbols": symbols[:20],
+        "verdict": verdict,
+    }
+    # Emit the declared `json` output port so downstream nodes (e.g.
+    # GranularityComparison) can consume the entire profile as one value.
+    return {**out, "json": dict(out)}
+
+
+def _granularity_comparison(inputs: dict, params: dict) -> dict:
+    """Rank multiple LMGranularityProfiler outputs and emit a verdict.
+
+    Accepts up to six profiles via ports a..f. Ranks by:
+      vocab_overlap descending, then role_map_overlap descending.
+    """
+    profiles: list[dict] = []
+    for port in ("a", "b", "c", "d", "e", "f"):
+        p = inputs.get(port)
+        if isinstance(p, dict) and p.get("granularity"):
+            profiles.append(p)
+    if not profiles:
+        return {"ranking": [], "best": None, "verdict": "No profiles supplied."}
+    ranked = sorted(
+        profiles,
+        key=lambda p: (
+            -float(p.get("vocab_overlap", 0.0)),
+            -float(p.get("role_map_overlap", 0.0)),
+        ),
+    )
+    best = ranked[0]
+    verdict = (
+        f"Best LM: {best.get('label','?')} "
+        f"({best.get('granularity','?')}, vocab_overlap="
+        f"{best.get('vocab_overlap',0):.1%}, role_map_overlap="
+        f"{best.get('role_map_overlap',0):.1%})."
+    )
+    return {
+        "ranking": [
+            {
+                "rank": i + 1,
+                "label": p.get("label", "?"),
+                "granularity": p.get("granularity"),
+                "vocab_overlap": p.get("vocab_overlap", 0.0),
+                "role_map_overlap": p.get("role_map_overlap", 0.0),
+            }
+            for i, p in enumerate(ranked)
+        ],
+        "best": {
+            "label": best.get("label", "?"),
+            "granularity": best.get("granularity"),
+            "vocab_overlap": best.get("vocab_overlap", 0.0),
+        },
+        "verdict": verdict,
+    }
+
+
+# ── IconographicAnchorPin ────────────────────────────────────
+# Mahadevan/Parpola-style iconographic priors. Pin specific (sign → value)
+# mappings into the SA initial mapping so it explores around them rather
+# than from scratch.
+
+
+def _iconographic_anchor_pin(inputs: dict, params: dict) -> dict:
+    """Emit an anchor mapping {sign_id -> value} suitable for SA's anchors input.
+
+    Default anchors (Tamil branch, after Mahadevan 2003 / Parpola 1994):
+      - fish-sign → 'min'   (Dravidian rebus *mīn = "fish/star")
+      - jar-sign  → 'kutam' (DEDR 1751 "pot/jar")
+      - U-sign    → 'uravu' (DEDR 597 "kinship/relative")
+    Override or extend via params.anchors.
+    """
+    overrides = params.get("anchors", {}) or {}
+    family = str(params.get("family", "old_tamil"))
+    weight = float(params.get("weight", 1.0))
+
+    if family in ("old_tamil", "dravidian", "tamil"):
+        defaults = {
+            "P002": "min",     # fish (Mahadevan iconic anchor)
+            "P342": "kutam",   # jar / pot (Parpola)
+            "P176": "uravu",   # U-sign / kinship
+            "P059": "min",     # alternate fish allograph
+            "P099": "min",     # diacritic-fish (fish + stroke)
+            "P067": "velu",    # arrow (vel "spear" rebus)
+            "P391": "katam",   # vessel
+            "P162": "vil",     # bow / archer
+            "P017": "munru",   # three (numeral anchor)
+            "P004": "or",      # one
+        }
+    elif family in ("hieroglyphic_luwian", "luwian"):
+        defaults = {
+            "P176": "hassu",       # "king"
+            "P004": "sarli",       # "high/sun"
+            "P122": "tarwana",     # "ruler"
+            "P073": "karkamis",    # place name
+        }
+    else:
+        defaults = {}
+
+    merged = dict(defaults)
+    if isinstance(overrides, dict):
+        merged.update({str(k): str(v) for k, v in overrides.items()})
+    elif isinstance(overrides, (list, tuple)):
+        for item in overrides:
+            if isinstance(item, dict) and "sign" in item and "value" in item:
+                merged[str(item["sign"])] = str(item["value"])
+
+    return {
+        "anchors": merged,
+        "n_anchors": len(merged),
+        "family": family,
+        "weight": weight,
+    }
+
+
+# ── ShuffledLMNullDistribution ──────────────────────────────────
+# Generate an empirical null distribution by repeatedly running SA against
+# an LM whose unigram probabilities have been shuffled. Compare the
+# observed recall against this null to obtain a z-score / p-value.
+
+
+def _shuffled_lm_null_distribution(inputs: dict, params: dict) -> dict:
+    """Build a null distribution of recall scores under shuffled LMs.
+
+    For each of `n_trials` iterations:
+      - permute the unigram probability mass over the LM's symbols
+      - run a single short SA (small max_iterations / restarts)
+      - decode the test sequences and compute recall against attested vocab
+
+    Output:
+      - null_recalls: list[float]
+      - null_mean, null_std
+      - observed_recall: float (passed in)
+      - z_score: (observed - mean) / std
+      - empirical_p: P(null >= observed)
+
+    Note: this is intentionally cheap (default n_trials=50, 1500 iters) to
+    keep total runtime bounded. For publication-grade nulls bump n_trials
+    to >= 200.
+    """
+    sequences: list[list[str]] = inputs.get("sequences") or []
+    lm = inputs.get("lm")
+    attested_vocab: list[str] = inputs.get("attested_vocab") or []
+    observed_recall = float(inputs.get("observed_recall") or 0.0)
+    role_table: dict[str, list[str]] = inputs.get("role_table") or {}
+    value_role_map: dict[str, str] = inputs.get("value_role_map") or {}
+
+    n_trials = int(params.get("n_trials", 50))
+    seed = int(params.get("seed", 17))
+    iters_per_trial = int(params.get("iterations_per_trial", 1500))
+    sep = str(params.get("decode_separator", ""))
+
+    if lm is None or not sequences or not attested_vocab:
+        return {
+            "null_recalls": [],
+            "null_mean": 0.0,
+            "null_std": 0.0,
+            "observed_recall": observed_recall,
+            "z_score": 0.0,
+            "empirical_p": 1.0,
+            "n_trials": 0,
+            "verdict": "Insufficient inputs for null distribution.",
+        }
+
+    try:
+        from glossa_lab.pipelines.decipher import decipher  # noqa: PLC0415
+    except Exception as exc:  # noqa: BLE001
+        return {
+            "null_recalls": [],
+            "null_mean": 0.0,
+            "null_std": 0.0,
+            "observed_recall": observed_recall,
+            "z_score": 0.0,
+            "empirical_p": 1.0,
+            "n_trials": 0,
+            "verdict": f"decipher import failed: {exc}",
+        }
+
+    attested_set = {w.lower() for w in attested_vocab}
+    flat_tokens = [s for seq in sequences for s in seq]
+    rng = random.Random(seed)
+    recalls: list[float] = []
+
+    # Pull unigram probs from LM if possible; we shuffle the value mass.
+    base_unigrams: dict[str, float] = {}
+    if hasattr(lm, "unigrams") and isinstance(getattr(lm, "unigrams"), dict):
+        base_unigrams = dict(getattr(lm, "unigrams"))
+    elif isinstance(lm, dict):
+        base_unigrams = {str(k): float(v) for k, v in lm.items()}
+
+    for trial in range(n_trials):
+        # Build a shuffled-LM clone if we can; else fall back to a fresh seed
+        # which still produces a different SA trajectory.
+        shuffled_lm = lm
+        if base_unigrams:
+            keys = list(base_unigrams.keys())
+            vals = list(base_unigrams.values())
+            rng.shuffle(vals)
+            shuffled_unigrams = dict(zip(keys, vals))
+            try:
+                # Best-effort clone: most LMs have a .unigrams attribute.
+                import copy  # noqa: PLC0415
+                shuffled_lm = copy.copy(lm)
+                if hasattr(shuffled_lm, "unigrams"):
+                    setattr(shuffled_lm, "unigrams", shuffled_unigrams)
+            except Exception:  # noqa: BLE001
+                shuffled_lm = lm
+
+        try:
+            result = decipher(
+                flat_tokens,
+                shuffled_lm,
+                seed=seed + trial * 13,
+                max_iterations=iters_per_trial,
+                restarts=1,
+                cipher_inscriptions=sequences,
+                surjective=True,
+                use_sa=True,
+                anchors={},
+            )
+        except Exception:  # noqa: BLE001
+            recalls.append(0.0)
+            continue
+        m = result.get("proposed_mapping", {}) or {}
+        # Apply CTT filter equivalent (keep mapping admissible vs role table)
+        if role_table and value_role_map:
+            kept = {}
+            for s, v in m.items():
+                role = value_role_map.get(v, "phonetic")
+                allowed = set(role_table.get(s, []))
+                if not allowed or role in allowed:
+                    kept[s] = v
+            m = kept
+        # Compute recall as in HoldoutWordRecall
+        hits = 0
+        n_dec = 0
+        for seq in sequences:
+            decoded = sep.join(m[s] for s in seq if s in m).lower()
+            if not decoded:
+                continue
+            n_dec += 1
+            if decoded in attested_set:
+                hits += 1
+        recalls.append(hits / max(1, n_dec))
+
+    if not recalls:
+        return {
+            "null_recalls": [],
+            "null_mean": 0.0,
+            "null_std": 0.0,
+            "observed_recall": observed_recall,
+            "z_score": 0.0,
+            "empirical_p": 1.0,
+            "n_trials": 0,
+            "verdict": "All trials failed.",
+        }
+
+    mean = sum(recalls) / len(recalls)
+    var = sum((r - mean) ** 2 for r in recalls) / max(1, len(recalls) - 1)
+    std = var ** 0.5
+    z = (observed_recall - mean) / std if std > 0 else 0.0
+    p = sum(1 for r in recalls if r >= observed_recall) / len(recalls)
+    if z >= 4:
+        verdict = (
+            f"Observed recall is {z:.2f}σ above shuffled-LM null. STRONG signal."
+        )
+    elif z >= 2:
+        verdict = (
+            f"Observed recall is {z:.2f}σ above shuffled-LM null. Suggestive but not definitive."
+        )
+    else:
+        verdict = (
+            f"Observed recall is only {z:.2f}σ above shuffled-LM null. "
+            f"Cannot reject the null — result is consistent with chance."
+        )
+    return {
+        "null_recalls": [round(r, 4) for r in recalls],
+        "null_mean": round(mean, 4),
+        "null_std": round(std, 4),
+        "observed_recall": round(observed_recall, 4),
+        "z_score": round(z, 3),
+        "empirical_p": round(p, 4),
+        "n_trials": len(recalls),
+        "verdict": verdict,
+    }
+
+
+# ── KFoldCorpusSplitter + KFoldAggregator ────────────────────────
+# Lightweight k-fold cross-validation. The splitter produces k pairs of
+# (train, test) sequences; downstream nodes are run k times by the engine
+# (Phase-11 graph fans out). The aggregator collapses per-fold metrics
+# into mean / std / 95% CI.
+
+
+def _k_fold_corpus_splitter(inputs: dict, params: dict) -> dict:
+    """Emit k disjoint train/test partitions of the input sequences.
+
+    Output is a list of fold dicts {train_sequences, test_sequences, fold_id}.
+    Downstream graph wiring picks a single fold via the `fold_index` param of
+    each consumer; for the simplest case the Phase-11 graph runs all k folds
+    sequentially and aggregates their metrics.
+    """
+    sequences: list[list[str]] = inputs.get("sequences") or []
+    k = max(2, int(params.get("k", 10)))
+    seed = int(params.get("seed", 7))
+    if not sequences:
+        return {"folds": [], "k": k, "n": 0}
+    rng = random.Random(seed)
+    idx = list(range(len(sequences)))
+    rng.shuffle(idx)
+    fold_size = max(1, len(idx) // k)
+    folds = []
+    for f in range(k):
+        start = f * fold_size
+        end = (f + 1) * fold_size if f < k - 1 else len(idx)
+        test_idx = set(idx[start:end])
+        train = [sequences[i] for i in idx if i not in test_idx]
+        test = [sequences[i] for i in idx if i in test_idx]
+        folds.append({
+            "fold_id": f,
+            "train_sequences": train,
+            "test_sequences": test,
+            "n_train": len(train),
+            "n_test": len(test),
+        })
+    # Convenience pointer: "first" fold for simple wiring.
+    first = folds[0]
+    return {
+        "folds": folds,
+        "k": k,
+        "n": len(sequences),
+        "train_sequences": first["train_sequences"],
+        "test_sequences": first["test_sequences"],
+        "fold_summaries": [
+            {"fold_id": f["fold_id"], "n_train": f["n_train"], "n_test": f["n_test"]}
+            for f in folds
+        ],
+    }
+
+
+def _k_fold_aggregator(inputs: dict, params: dict) -> dict:
+    """Aggregate per-fold metrics (passed via ports a..j) into mean / std / 95% CI."""
+    values: list[float] = []
+    for port in ("a", "b", "c", "d", "e", "f", "g", "h", "i", "j"):
+        v = inputs.get(port)
+        if v is None:
+            continue
+        try:
+            values.append(float(v))
+        except (TypeError, ValueError):
+            continue
+    if not values:
+        return {
+            "k": 0,
+            "mean": 0.0,
+            "std": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "values": [],
+            "verdict": "No fold values.",
+        }
+    n = len(values)
+    mean = sum(values) / n
+    var = sum((v - mean) ** 2 for v in values) / max(1, n - 1)
+    std = var ** 0.5
+    # 95% normal approx; with k=10 use t-correction ≈ 1.96
+    half = 1.96 * std / (n ** 0.5)
+    return {
+        "k": n,
+        "mean": round(mean, 4),
+        "std": round(std, 4),
+        "ci_low": round(mean - half, 4),
+        "ci_high": round(mean + half, 4),
+        "values": [round(v, 4) for v in values],
+        "verdict": (
+            f"Mean = {mean:.4f} ± {half:.4f} (95% CI), std = {std:.4f} over {n} folds."
+        ),
+    }
+
+
+# ── Atomic node defs for registration ─────────────────────────────────
 # Imported by experiment_graph.py and added to ATOMIC_NODES at module load.
 
 
@@ -1058,17 +1654,26 @@ def _ctt_node_defs() -> list[Any]:
             "mathematically unselectable per CTT Claim 9. Restarts and seeds "
             "controlled like the standard SADecipher. Pure primitive: one engine call "
             "with a constraint mask. Use this in place of SADecipher when role_table "
-            "is available and you want guaranteed-admissible outputs.",
+            "is available and you want guaranteed-admissible outputs. "
+            "When `compound_weight` > 0 and high_pmi_bigrams + attested_vocab "
+            "are wired in, restart selection becomes joint over LM + compound "
+            "coupling (Cotterell/Eisner 2015 single-pass dual decomposition).",
             inputs=[
                 {"name": "sequences", "type": "sequences", "required": True},
                 {"name": "lm", "type": "any", "required": True},
                 {"name": "role_table", "type": "json", "required": False},
                 {"name": "value_role_map", "type": "json", "required": False},
                 {"name": "anchors", "type": "any", "required": False},
+                {"name": "high_pmi_bigrams", "type": "json", "required": False},
+                {"name": "attested_vocab", "type": "json", "required": False},
             ],
             outputs=[
                 {"name": "proposed_mapping", "type": "json"},
                 {"name": "score", "type": "number"},
+                {"name": "lm_score", "type": "number"},
+                {"name": "compound_score", "type": "number"},
+                {"name": "compound_hits", "type": "number"},
+                {"name": "compound_misses", "type": "number"},
                 {"name": "n_signs", "type": "number"},
                 {"name": "n_forbidden_pairs", "type": "number"},
                 {"name": "n_filtered_proposals", "type": "number"},
@@ -1093,9 +1698,196 @@ def _ctt_node_defs() -> list[Any]:
                             "Treats unmapped values as having a forbidden role."
                         ),
                     },
+                    "compound_weight": {
+                        "type": "number",
+                        "default": 0.0,
+                        "description": (
+                            "Weight on the compound-coupling term in the joint "
+                            "score. Set to 1.0 to enable joint LM + compound "
+                            "selection. Requires high_pmi_bigrams + attested_vocab."
+                        ),
+                    },
+                    "compound_separator": {"type": "string", "default": ""},
                 },
             },
             fn=_ctt_anchored_sa_decipher,
+        ),
+        AtomicNodeDef(
+            "LMGranularityProfiler",
+            "LM Granularity Profiler",
+            "CTT / Constraint Topology",
+            "Diagnose an LM's symbol granularity (character / syllabic / word / mixed) "
+            "and report its overlap with the attested vocab and value-role map for a "
+            "target language. Use BEFORE strict-mode SA to ensure the LM produces "
+            "symbols at a granularity compatible with the role-map filter.",
+            inputs=[
+                {"name": "lm", "type": "any", "required": True},
+                {"name": "attested_vocab", "type": "json", "required": False},
+                {"name": "value_role_map", "type": "json", "required": False},
+            ],
+            outputs=[
+                {"name": "label", "type": "text"},
+                {"name": "granularity", "type": "text"},
+                {"name": "mean_symbol_len", "type": "number"},
+                {"name": "median_symbol_len", "type": "number"},
+                {"name": "vocab_overlap", "type": "number"},
+                {"name": "role_map_overlap", "type": "number"},
+                {"name": "n_symbols", "type": "number"},
+                {"name": "length_distribution", "type": "json"},
+                {"name": "top_symbols", "type": "json"},
+                {"name": "verdict", "type": "text"},
+                {"name": "json", "type": "json"},
+            ],
+            params_schema={
+                "type": "object",
+                "properties": {
+                    "label": {"type": "string", "default": "unknown"},
+                },
+            },
+            fn=_lm_granularity_profiler,
+        ),
+        AtomicNodeDef(
+            "GranularityComparison",
+            "Granularity Comparison",
+            "CTT / Constraint Topology",
+            "Rank multiple LMGranularityProfiler outputs by vocab + role-map "
+            "compatibility and emit a textual verdict identifying the best LM "
+            "for the target language family.",
+            inputs=[
+                {"name": "a", "type": "json", "required": False},
+                {"name": "b", "type": "json", "required": False},
+                {"name": "c", "type": "json", "required": False},
+                {"name": "d", "type": "json", "required": False},
+                {"name": "e", "type": "json", "required": False},
+                {"name": "f", "type": "json", "required": False},
+            ],
+            outputs=[
+                {"name": "ranking", "type": "json"},
+                {"name": "best", "type": "json"},
+                {"name": "verdict", "type": "text"},
+            ],
+            params_schema={"type": "object", "properties": {}},
+            fn=_granularity_comparison,
+        ),
+        AtomicNodeDef(
+            "IconographicAnchorPin",
+            "Iconographic Anchor Pin",
+            "CTT / Constraint Topology",
+            "Emit Mahadevan/Parpola-style iconographic anchors as a sign→value "
+            "mapping. Wire to CTTAnchoredSADecipher.anchors to bias the SA "
+            "initial mapping toward established iconic readings (fish=min, "
+            "jar=kutam, U=uravu, ...). Defaults are family-aware.",
+            inputs=[],
+            outputs=[
+                {"name": "anchors", "type": "json"},
+                {"name": "n_anchors", "type": "number"},
+                {"name": "family", "type": "text"},
+                {"name": "weight", "type": "number"},
+            ],
+            params_schema={
+                "type": "object",
+                "properties": {
+                    "family": {"type": "string", "default": "old_tamil"},
+                    "weight": {"type": "number", "default": 1.0},
+                    "anchors": {"type": "object", "default": {}},
+                },
+            },
+            fn=_iconographic_anchor_pin,
+        ),
+        AtomicNodeDef(
+            "ShuffledLMNullDistribution",
+            "Shuffled-LM Null Distribution",
+            "CTT / Constraint Topology",
+            "Build an empirical null recall distribution by running SA against "
+            "shuffled-LM-unigram clones of the input LM. Reports z-score and "
+            "empirical p of the observed recall vs. the shuffled null. "
+            "Use to convert raw recall into a defensible significance claim.",
+            inputs=[
+                {"name": "sequences", "type": "sequences", "required": True},
+                {"name": "lm", "type": "any", "required": True},
+                {"name": "attested_vocab", "type": "json", "required": True},
+                {"name": "observed_recall", "type": "number", "required": True},
+                {"name": "role_table", "type": "json", "required": False},
+                {"name": "value_role_map", "type": "json", "required": False},
+            ],
+            outputs=[
+                {"name": "null_recalls", "type": "json"},
+                {"name": "null_mean", "type": "number"},
+                {"name": "null_std", "type": "number"},
+                {"name": "observed_recall", "type": "number"},
+                {"name": "z_score", "type": "number"},
+                {"name": "empirical_p", "type": "number"},
+                {"name": "n_trials", "type": "number"},
+                {"name": "verdict", "type": "text"},
+            ],
+            params_schema={
+                "type": "object",
+                "properties": {
+                    "n_trials": {"type": "integer", "default": 50, "minimum": 5},
+                    "seed": {"type": "integer", "default": 17},
+                    "iterations_per_trial": {"type": "integer", "default": 1500, "minimum": 100},
+                    "decode_separator": {"type": "string", "default": ""},
+                },
+            },
+            fn=_shuffled_lm_null_distribution,
+        ),
+        AtomicNodeDef(
+            "KFoldCorpusSplitter",
+            "K-Fold Corpus Splitter",
+            "CTT / Constraint Topology",
+            "Emit k disjoint train/test partitions of the input sequences for "
+            "k-fold cross-validation. Convenience output (train_sequences / "
+            "test_sequences) points at the first fold; the full `folds` list "
+            "can be consumed by graph runners that fan out across folds.",
+            inputs=[
+                {"name": "sequences", "type": "sequences", "required": True},
+            ],
+            outputs=[
+                {"name": "folds", "type": "json"},
+                {"name": "k", "type": "number"},
+                {"name": "n", "type": "number"},
+                {"name": "train_sequences", "type": "sequences"},
+                {"name": "test_sequences", "type": "sequences"},
+                {"name": "fold_summaries", "type": "json"},
+            ],
+            params_schema={
+                "type": "object",
+                "properties": {
+                    "k": {"type": "integer", "default": 10, "minimum": 2},
+                    "seed": {"type": "integer", "default": 7},
+                },
+            },
+            fn=_k_fold_corpus_splitter,
+        ),
+        AtomicNodeDef(
+            "KFoldAggregator",
+            "K-Fold Aggregator",
+            "CTT / Constraint Topology",
+            "Aggregate up to 10 per-fold scalar metrics into mean / std / 95% CI. "
+            "Wire each fold's metric (e.g. recall) into ports a..j.",
+            inputs=[
+                {"name": "a", "type": "number", "required": False},
+                {"name": "b", "type": "number", "required": False},
+                {"name": "c", "type": "number", "required": False},
+                {"name": "d", "type": "number", "required": False},
+                {"name": "e", "type": "number", "required": False},
+                {"name": "f", "type": "number", "required": False},
+                {"name": "g", "type": "number", "required": False},
+                {"name": "h", "type": "number", "required": False},
+                {"name": "i", "type": "number", "required": False},
+                {"name": "j", "type": "number", "required": False},
+            ],
+            outputs=[
+                {"name": "k", "type": "number"},
+                {"name": "mean", "type": "number"},
+                {"name": "std", "type": "number"},
+                {"name": "ci_low", "type": "number"},
+                {"name": "ci_high", "type": "number"},
+                {"name": "values", "type": "json"},
+                {"name": "verdict", "type": "text"},
+            ],
+            params_schema={"type": "object", "properties": {}},
+            fn=_k_fold_aggregator,
         ),
     ]
 
@@ -1110,5 +1902,11 @@ __all__ = [
     "_ctt_anchored_sa_decipher",
     "_default_value_role_map_loader",
     "_attested_vocab_loader",
+    "_lm_granularity_profiler",
+    "_granularity_comparison",
+    "_iconographic_anchor_pin",
+    "_shuffled_lm_null_distribution",
+    "_k_fold_corpus_splitter",
+    "_k_fold_aggregator",
     "_ctt_node_defs",
 ]

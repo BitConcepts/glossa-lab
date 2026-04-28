@@ -460,6 +460,8 @@ function fmtHMS(s: number): string {
   return `${m}:${String(sec).padStart(2, "0")}`;
 }
 
+import { listJobs } from "../api";
+
 // ── Module-level exp-run store — survives component remounts / navigation ──────────
 // Kept outside the component so state is never lost when the user navigates away.
 type _ER = { controller: AbortController; startTime: number; currentLabel: string; idx: number; total: number; expId: string };
@@ -523,6 +525,65 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     const t = setInterval(() => setTick(n => n + 1), 1000);
     return () => clearInterval(t);
   }, [hasActiveRuns]);
+
+  // Sync background jobs (exp_run pipeline) with UI state
+  useEffect(() => {
+    const checkJobs = async () => {
+      try {
+        const jobs = await listJobs();
+        const expJobs = jobs.filter(j => j.pipeline === "exp_run");
+        let changed = false;
+        const currentRuns = _erStore.runs;
+
+        expJobs.forEach(j => {
+          const expId = j.params?.exp_id as string | undefined;
+          if (!expId) return;
+
+          const runKey = `${expId}:${j.id}`; // Map job ID to runKey
+          const isRunning = j.status === "running" || j.status === "pending";
+          const existsLocal = !!currentRuns[runKey];
+
+          if (isRunning && !existsLocal) {
+            // A new background job started (e.g. from Jobs tab or terminal)
+            _erSet(prev => ({
+              ...prev,
+              [runKey]: {
+                controller: new AbortController(),
+                startTime: new Date(j.created_at).getTime(),
+                currentLabel: "background job",
+                idx: (j.params?.nodes_done as number) ?? 0,
+                total: (j.params?.node_count as number) ?? 0,
+                expId: expId
+              }
+            }));
+            changed = true;
+          } else if (!isRunning && existsLocal) {
+            // A background job finished
+            const finalStatus = j.status === "completed" ? "success" : "fail";
+            saveToExpRunCache(expId, finalStatus);
+            _erSet(prev => { const n = { ...prev }; delete n[runKey]; return n; });
+            window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "exp", running: false, id: expId, status: finalStatus } }));
+            changed = true;
+          } else if (isRunning && existsLocal) {
+            // Update progress
+            const newTotal = (j.params?.node_count as number) ?? currentRuns[runKey].total;
+            const newIdx   = (j.params?.nodes_done as number) ?? currentRuns[runKey].idx;
+            if (newTotal !== currentRuns[runKey].total || newIdx !== currentRuns[runKey].idx) {
+              _erSet(prev => ({
+                ...prev,
+                [runKey]: { ...prev[runKey], total: newTotal, idx: newIdx }
+              }));
+              changed = true;
+            }
+          }
+        });
+        if (changed) setTick(t => t + 1);
+      } catch { /* ignore */ }
+    };
+    checkJobs();
+    const interval = setInterval(checkJobs, 3000);
+    return () => clearInterval(interval);
+  }, [saveToExpRunCache]);
 
   // Helpers: check / iterate runs per experiment
   const getExpRuns   = useCallback((expId: string) => Object.values(activeRuns).filter(r => r.expId === expId), [activeRuns]);

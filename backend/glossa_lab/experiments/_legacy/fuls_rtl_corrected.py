@@ -70,7 +70,7 @@ from typing import Any
 from glossa_lab.experiments._parallel import run_seeds_parallel
 
 _HERE    = os.path.dirname(os.path.abspath(__file__))
-_BACKEND = os.path.dirname(os.path.dirname(_HERE))
+_BACKEND = os.path.dirname(os.path.dirname(os.path.dirname(_HERE)))
 ROOT     = Path(_BACKEND).parent
 REPORTS  = ROOT / "reports"
 REPORTS.mkdir(exist_ok=True)

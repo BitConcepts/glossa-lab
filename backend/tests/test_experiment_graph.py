@@ -9,9 +9,9 @@ Covers:
 Run with:
   cd backend && pytest tests/test_experiment_graph.py -v
 """
+
 import json
 import sys
-import tempfile
 from pathlib import Path
 
 import pytest
@@ -37,7 +37,6 @@ from glossa_lab.experiment_graph import (
     save_graph_experiment,
 )
 
-
 # ── Fixtures ────────────────────────────────────────────────────────────────
 
 SAMPLE_SEQUENCES = [
@@ -50,6 +49,7 @@ SAMPLE_SEQUENCES = [
 
 
 # ── PORT_COLORS ─────────────────────────────────────────────────────────────
+
 
 def test_port_colors_complete():
     expected = {"sequences", "freq_map", "profiles", "clusters", "number", "text", "json", "any"}
@@ -64,11 +64,21 @@ def test_port_colors_are_hex():
 
 # ── ATOMIC_NODES registry ────────────────────────────────────────────────────
 
+
 def test_all_required_nodes_registered():
     required = {
-        "CorpusReader", "StaticValue", "FreqCounter", "PositionalProfiler",
-        "EntropyCalc", "Clusterer", "ZipfFitter", "Filter",
-        "Merger", "JSONExport", "PassResult", "ExperimentWrapper",
+        "CorpusReader",
+        "StaticValue",
+        "FreqCounter",
+        "PositionalProfiler",
+        "EntropyCalc",
+        "Clusterer",
+        "ZipfFitter",
+        "Filter",
+        "Merger",
+        "JSONExport",
+        "PassResult",
+        "ExperimentWrapper",
     }
     assert required.issubset(set(ATOMIC_NODES))
 
@@ -86,6 +96,7 @@ def test_each_node_has_required_fields():
 
 
 # ── Atomic node unit tests ───────────────────────────────────────────────────
+
 
 def test_static_value_string():
     r = _static_value({}, {"value": "hello"})
@@ -143,7 +154,7 @@ def test_positional_profiler_terminal():
 def test_entropy_calc_from_freq_map():
     r = _entropy_calc({"freq_map": {"A": 50, "B": 50}}, {})
     assert abs(r["h1"] - 1.0) < 0.01  # equal distribution = H1 = 1 bit
-    assert r["h1_normalized"] == 1.0   # max entropy for 2 symbols
+    assert r["h1_normalized"] == 1.0  # max entropy for 2 symbols
 
 
 def test_entropy_calc_from_sequences():
@@ -170,7 +181,9 @@ def test_zipf_fitter_empty():
 
 def test_filter_seqs_length():
     # [1,2,3] len=3 ✓, [1] len=1 ✗, [1,2,3,4,5] len=5 ✗
-    r = _filter_seqs({"sequences": [[1, 2, 3], [1], [1, 2, 3, 4, 5]]}, {"min_length": 2, "max_length": 4})
+    r = _filter_seqs(
+        {"sequences": [[1, 2, 3], [1], [1, 2, 3, 4, 5]]}, {"min_length": 2, "max_length": 4}
+    )
     assert r["total_sequences"] == 1
     assert all(2 <= len(s) <= 4 for s in r["sequences"])
 
@@ -199,6 +212,7 @@ def test_pass_result_identity():
 
 # ── execute_graph ────────────────────────────────────────────────────────────
 
+
 def make_graph(nodes, edges):
     return {"nodes": nodes, "edges": edges}
 
@@ -209,10 +223,7 @@ def test_execute_empty_graph():
 
 
 def test_execute_single_static_value():
-    graph = make_graph(
-        [{"id": "n1", "type": "StaticValue", "params": {"value": "hello"}}],
-        []
-    )
+    graph = make_graph([{"id": "n1", "type": "StaticValue", "params": {"value": "hello"}}], [])
     r = execute_graph(graph)
     assert r.get("value") == "hello" or r.get("text") == "hello"
 
@@ -223,7 +234,7 @@ def test_execute_freq_counter_chain():
         [
             {"id": "n1", "type": "FreqCounter", "params": {"min_count": 1}},
         ],
-        []
+        [],
     )
     # Inject sequences as kwargs (since no CorpusReader, we pass directly)
     r = execute_graph(graph, {"sequences": SAMPLE_SEQUENCES})
@@ -238,9 +249,9 @@ def test_execute_two_node_chain():
     graph = make_graph(
         [
             {"id": "n1", "type": "StaticValue", "params": {"value": "test"}},
-            {"id": "n2", "type": "PassResult",  "params": {}},
+            {"id": "n2", "type": "PassResult", "params": {}},
         ],
-        [{"id": "e1", "source": "n1", "target": "n2", "sourcePort": "value", "targetPort": "data"}]
+        [{"id": "e1", "source": "n1", "target": "n2", "sourcePort": "value", "targetPort": "data"}],
     )
     r = execute_graph(graph)
     # PassResult merges all inputs; should contain the value from StaticValue
@@ -248,10 +259,7 @@ def test_execute_two_node_chain():
 
 
 def test_execute_unknown_node_type():
-    graph = make_graph(
-        [{"id": "n1", "type": "NonExistentNode", "params": {}}],
-        []
-    )
+    graph = make_graph([{"id": "n1", "type": "NonExistentNode", "params": {}}], [])
     r = execute_graph(graph)
     # Last node result contains the error
     assert "error" in r
@@ -281,7 +289,7 @@ def test_execute_topological_order():
                 {"id": "n1", "type": "StaticValue", "params": {"value": "x"}},
                 {"id": "n2", "type": "PassResult", "params": {}},
             ],
-            [{"id": "e1", "source": "n1", "target": "n2"}]
+            [{"id": "e1", "source": "n1", "target": "n2"}],
         )
         execute_graph(graph)
         assert call_order == ["n1", "n2"]
@@ -292,9 +300,11 @@ def test_execute_topological_order():
 
 # ── File storage ─────────────────────────────────────────────────────────────
 
+
 def test_save_and_retrieve(tmp_path, monkeypatch):
     """save_graph_experiment and get_graph_experiment round-trip."""
     from glossa_lab import experiment_graph as eg
+
     monkeypatch.setattr(eg, "_GRAPHS_DIR", tmp_path)
 
     data = {"name": "Test Experiment", "description": "A test.", "nodes": [], "edges": []}
@@ -308,6 +318,7 @@ def test_save_and_retrieve(tmp_path, monkeypatch):
 
 def test_list_graph_experiments(tmp_path, monkeypatch):
     from glossa_lab import experiment_graph as eg
+
     monkeypatch.setattr(eg, "_GRAPHS_DIR", tmp_path)
 
     save_graph_experiment({"name": "A", "nodes": [], "edges": []})
@@ -321,6 +332,7 @@ def test_list_graph_experiments(tmp_path, monkeypatch):
 
 def test_delete_graph_experiment(tmp_path, monkeypatch):
     from glossa_lab import experiment_graph as eg
+
     monkeypatch.setattr(eg, "_GRAPHS_DIR", tmp_path)
 
     saved = save_graph_experiment({"name": "ToDelete", "nodes": [], "edges": []})
@@ -334,6 +346,7 @@ def test_delete_graph_experiment(tmp_path, monkeypatch):
 
 def test_delete_nonexistent_returns_false(tmp_path, monkeypatch):
     from glossa_lab import experiment_graph as eg
+
     monkeypatch.setattr(eg, "_GRAPHS_DIR", tmp_path)
 
     assert delete_graph_experiment("does_not_exist") is False
@@ -341,8 +354,10 @@ def test_delete_nonexistent_returns_false(tmp_path, monkeypatch):
 
 # ── RAG module ────────────────────────────────────────────────────────────────
 
+
 def test_rag_tokenize():
     from glossa_lab.rag import _tokenize
+
     tokens = _tokenize("Hello, World! foo bar")
     assert "hello" in tokens
     assert "world" in tokens
@@ -351,6 +366,7 @@ def test_rag_tokenize():
 
 def test_rag_query_empty_index():
     from glossa_lab import rag
+
     # Don't build index; query should return empty list gracefully
     rag._chunks.clear()
     rag._tfidf_matrix.clear()
@@ -358,19 +374,24 @@ def test_rag_query_empty_index():
     assert result == []
 
 
-@pytest.mark.asyncio
-async def test_rag_build_and_query(tmp_path, monkeypatch):
-    """Build a tiny in-memory index and verify query returns results."""
+def test_rag_build_and_query(tmp_path, monkeypatch):
+    """Build a tiny in-memory index and verify query returns results.
+
+    Uses asyncio.run directly rather than pytest.mark.asyncio because
+    pytest-asyncio is not a project dependency.
+    """
+    import asyncio
+
     from glossa_lab import rag as rag_mod
+
     monkeypatch.setattr(rag_mod, "_REPORTS_DIR", tmp_path)
 
     # Write a small JSON report
     (tmp_path / "test_report.json").write_text(
-        json.dumps({"result": "Indus script positional analysis complete"}),
-        encoding="utf-8"
+        json.dumps({"result": "Indus script positional analysis complete"}), encoding="utf-8"
     )
 
-    count = await rag_mod.build_index(db=None)
+    count = asyncio.run(rag_mod.build_index(db=None))
     assert count > 0
 
     results = rag_mod.query("Indus positional analysis", top_k=3)
@@ -382,6 +403,7 @@ async def test_rag_build_and_query(tmp_path, monkeypatch):
 
 
 # ── React Flow node format ───────────────────────────────────────────────────
+
 
 def make_rf_node(nid: str, atomic_id: str, params: dict, pos: tuple = (0, 0)) -> dict:
     """Build a React Flow format node (as saved by the frontend)."""
@@ -395,10 +417,7 @@ def make_rf_node(nid: str, atomic_id: str, params: dict, pos: tuple = (0, 0)) ->
 
 def test_execute_rf_format_static_value():
     """React Flow expNode format: StaticValue node produces correct output."""
-    graph = make_graph(
-        [make_rf_node("n1", "StaticValue", {"value": "hello_rf"})],
-        []
-    )
+    graph = make_graph([make_rf_node("n1", "StaticValue", {"value": "hello_rf"})], [])
     r = execute_graph(graph)
     assert r.get("value") == "hello_rf" or r.get("text") == "hello_rf"
 
@@ -408,9 +427,9 @@ def test_execute_rf_format_two_node_chain():
     graph = make_graph(
         [
             make_rf_node("n1", "StaticValue", {"value": "rf_test"}),
-            make_rf_node("n2", "PassResult",  {}),
+            make_rf_node("n2", "PassResult", {}),
         ],
-        [{"id": "e1", "source": "n1", "target": "n2", "sourcePort": "value", "targetPort": "data"}]
+        [{"id": "e1", "source": "n1", "target": "n2", "sourcePort": "value", "targetPort": "data"}],
     )
     r = execute_graph(graph)
     assert "data" in r or "value" in r or "text" in r
@@ -421,9 +440,9 @@ def test_execute_rf_freq_counter_passresult():
     graph = make_graph(
         [
             make_rf_node("freq", "FreqCounter", {}),
-            make_rf_node("out",  "PassResult",  {}),
+            make_rf_node("out", "PassResult", {}),
         ],
-        [{"id": "e1", "source": "freq", "target": "out", "sourcePort": "", "targetPort": ""}]
+        [{"id": "e1", "source": "freq", "target": "out", "sourcePort": "", "targetPort": ""}],
     )
     r = execute_graph(graph, {"sequences": SAMPLE_SEQUENCES})
     # Should not be an error (FreqCounter+PassResult chain works)
@@ -432,17 +451,24 @@ def test_execute_rf_freq_counter_passresult():
 
 def test_execute_rf_positional_profiler_chain():
     """React Flow format: CorpusReader-equivalent → PositionalProfiler → PassResult.
-    
+
     We bypass CorpusReader (which needs a real corpus file) by using a
     StaticValue node with a known sequences list passed via kwargs.
     """
     graph = make_graph(
         [
             make_rf_node("profiler", "PositionalProfiler", {"min_count": 1}),
-            make_rf_node("out",      "PassResult",         {}),
+            make_rf_node("out", "PassResult", {}),
         ],
-        [{"id": "e1", "source": "profiler", "target": "out",
-          "sourcePort": "profiles", "targetPort": "data"}]
+        [
+            {
+                "id": "e1",
+                "source": "profiler",
+                "target": "out",
+                "sourcePort": "profiles",
+                "targetPort": "data",
+            }
+        ],
     )
     # Inject sequences via kwargs (PositionalProfiler picks them up from node_inputs)
     # Since no upstream edge, inject via a trick: pass sequences in params (won't work)
@@ -453,7 +479,7 @@ def test_execute_rf_positional_profiler_chain():
 
 def test_execute_rf_full_positional_chain():
     """React Flow format: inject sequences through execute_graph kwargs.
-    
+
     When kwargs include 'sequences', FreqCounter picks them up because
     execute_graph merges kwargs into each node's params dict.
     NOTE: FreqCounter reads from inputs['sequences'], not params, so we
@@ -465,15 +491,19 @@ def test_execute_rf_full_positional_chain():
     graph = make_graph(
         [
             make_rf_node("freq", "FreqCounter", {}),
-            make_rf_node("zipf", "ZipfFitter",  {}),
-            make_rf_node("out",  "PassResult",   {}),
+            make_rf_node("zipf", "ZipfFitter", {}),
+            make_rf_node("out", "PassResult", {}),
         ],
         [
-            {"id": "e1", "source": "freq", "target": "zipf",
-             "sourcePort": "freq_map", "targetPort": "freq_map"},
-            {"id": "e2", "source": "zipf", "target": "out",
-             "sourcePort": "", "targetPort": ""},
-        ]
+            {
+                "id": "e1",
+                "source": "freq",
+                "target": "zipf",
+                "sourcePort": "freq_map",
+                "targetPort": "freq_map",
+            },
+            {"id": "e2", "source": "zipf", "target": "out", "sourcePort": "", "targetPort": ""},
+        ],
     )
     r = execute_graph(graph)
     # Even without sequences, chain should not raise — may return empty zipf
@@ -483,10 +513,7 @@ def test_execute_rf_full_positional_chain():
 
 def test_execute_rf_unknown_atomic_id():
     """React Flow format: unknown atomicId returns error gracefully."""
-    graph = make_graph(
-        [make_rf_node("n1", "NoSuchNode", {})],
-        []
-    )
+    graph = make_graph([make_rf_node("n1", "NoSuchNode", {})], [])
     r = execute_graph(graph)
     assert "error" in r
     assert "NoSuchNode" in r["error"]
@@ -494,16 +521,19 @@ def test_execute_rf_unknown_atomic_id():
 
 # ── Auto-migrate ──────────────────────────────────────────────────────────────
 
+
 def test_auto_migrate_creates_proper_graphs(tmp_path, monkeypatch):
     """auto_migrate_hardcoded_experiments creates proper multi-node graphs."""
     from glossa_lab import experiment_graph as eg
+
     monkeypatch.setattr(eg, "_GRAPHS_DIR", tmp_path)
     tmp_path.mkdir(exist_ok=True)
 
     from glossa_lab.experiment_graph import (
-        auto_migrate_hardcoded_experiments,
         _build_proper_graph_specs,
+        auto_migrate_hardcoded_experiments,
     )
+
     n = auto_migrate_hardcoded_experiments()
     specs = _build_proper_graph_specs()
     assert n == len(specs)
@@ -542,16 +572,22 @@ def test_auto_migrate_creates_proper_graphs(tmp_path, monkeypatch):
 def test_auto_migrate_preserves_user_graphs(tmp_path, monkeypatch):
     """auto_migrate does NOT overwrite files without auto_migrated flag."""
     from glossa_lab import experiment_graph as eg
+
     monkeypatch.setattr(eg, "_GRAPHS_DIR", tmp_path)
     tmp_path.mkdir(exist_ok=True)
 
     # Write a user-saved file (no auto_migrated flag)
     user_file = tmp_path / "positional_profile_analysis.json"
-    user_data = {"id": "positional_profile_analysis", "name": "My Custom Graph",
-                 "nodes": [{"id": "x"}], "edges": []}
+    user_data = {
+        "id": "positional_profile_analysis",
+        "name": "My Custom Graph",
+        "nodes": [{"id": "x"}],
+        "edges": [],
+    }
     user_file.write_text(json.dumps(user_data))
 
     from glossa_lab.experiment_graph import auto_migrate_hardcoded_experiments
+
     auto_migrate_hardcoded_experiments()
 
     # File should NOT have been overwritten
@@ -562,6 +598,7 @@ def test_auto_migrate_preserves_user_graphs(tmp_path, monkeypatch):
 def test_auto_migrate_overwrites_old_3node_wrapper(tmp_path, monkeypatch):
     """auto_migrate replaces old 3-node ExperimentWrapper pattern files."""
     from glossa_lab import experiment_graph as eg
+
     monkeypatch.setattr(eg, "_GRAPHS_DIR", tmp_path)
     tmp_path.mkdir(exist_ok=True)
 
@@ -571,22 +608,35 @@ def test_auto_migrate_overwrites_old_3node_wrapper(tmp_path, monkeypatch):
         "id": "positional_profile_analysis",
         "name": "Old Positional Profile",
         "nodes": [
-            {"id": "corpus", "type": "expNode",
-             "data": {"atomicId": "CorpusReader", "label": "Load Corpus", "params": {}}},
-            {"id": "wrap", "type": "expNode",
-             "data": {"atomicId": "ExperimentWrapper", "label": "Old Wrapper",
-                      "params": {"experiment_id": "positional_profile_analysis"}}},
-            {"id": "out", "type": "expNode",
-             "data": {"atomicId": "PassResult", "label": "Output", "params": {}}},
+            {
+                "id": "corpus",
+                "type": "expNode",
+                "data": {"atomicId": "CorpusReader", "label": "Load Corpus", "params": {}},
+            },
+            {
+                "id": "wrap",
+                "type": "expNode",
+                "data": {
+                    "atomicId": "ExperimentWrapper",
+                    "label": "Old Wrapper",
+                    "params": {"experiment_id": "positional_profile_analysis"},
+                },
+            },
+            {
+                "id": "out",
+                "type": "expNode",
+                "data": {"atomicId": "PassResult", "label": "Output", "params": {}},
+            },
         ],
         "edges": [
             {"id": "e1", "source": "corpus", "target": "wrap"},
-            {"id": "e2", "source": "wrap",   "target": "out"},
+            {"id": "e2", "source": "wrap", "target": "out"},
         ],
     }
     old_file.write_text(json.dumps(old_data))
 
     from glossa_lab.experiment_graph import auto_migrate_hardcoded_experiments
+
     auto_migrate_hardcoded_experiments()
 
     # Should have been replaced with 3-node pure atomic (no ExperimentWrapper)
@@ -599,6 +649,7 @@ def test_auto_migrate_overwrites_old_3node_wrapper(tmp_path, monkeypatch):
 def test_execute_graph_canonical_positional_profile():
     """execute_graph on the canonical positional_profile_analysis graph."""
     from glossa_lab.experiment_graph import _build_proper_graph_specs, execute_graph
+
     spec = _build_proper_graph_specs()["positional_profile_analysis"]
     # Without a real corpus, CorpusReader returns empty sequences,
     # PositionalProfiler returns empty profiles — test that it doesn't crash
@@ -611,6 +662,7 @@ def test_execute_graph_canonical_positional_profile():
 def test_execute_graph_canonical_luwian():
     """execute_graph on the canonical luwian_kl_scoring graph."""
     from glossa_lab.experiment_graph import _build_proper_graph_specs, execute_graph
+
     spec = _build_proper_graph_specs()["luwian_kl_scoring"]
     r = execute_graph(spec)
     assert isinstance(r, dict)
@@ -620,6 +672,7 @@ def test_execute_graph_canonical_luwian():
 def test_execute_graph_canonical_symbol_clustering():
     """execute_graph on the canonical symbol_clustering graph."""
     from glossa_lab.experiment_graph import _build_proper_graph_specs, execute_graph
+
     spec = _build_proper_graph_specs()["symbol_clustering"]
     r = execute_graph(spec)
     assert isinstance(r, dict)
@@ -628,8 +681,10 @@ def test_execute_graph_canonical_symbol_clustering():
 
 # ── ExperimentWrapper ────────────────────────────────────────────────────────
 
+
 def test_experiment_wrapper_unknown_experiment():
     from glossa_lab.experiment_graph import _experiment_wrapper
+
     r = _experiment_wrapper({}, {"experiment_id": "this_does_not_exist"})
     assert "error" in r
 
@@ -644,8 +699,7 @@ def test_experiment_wrapper_registered_experiment():
         pytest.skip("No registered experiments")
 
     # Find an experiment that's not CLI-only
-    non_cli = {eid: cls for eid, cls in exps.items()
-               if "CLI" not in (cls.description or "")}
+    non_cli = {eid: cls for eid, cls in exps.items() if "CLI" not in (cls.description or "")}
     if not non_cli:
         pytest.skip("No non-CLI experiments available")
 

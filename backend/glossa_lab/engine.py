@@ -10,6 +10,7 @@ import ast
 import asyncio
 import importlib
 import logging
+import os as _os_eng
 import pkgutil
 import traceback
 from datetime import datetime, timezone
@@ -19,6 +20,13 @@ from typing import Any
 from glossa_lab.database import get_db
 
 logger = logging.getLogger(__name__)
+
+# How long a running job can go without a heartbeat (updated_at) before being
+# marked as timed_out.  exp_run jobs update updated_at on every node completion.
+# Override via env GLOSSA_JOB_STALL_TIMEOUT_SECONDS (default: 30 min, generous for SA suites).
+_JOB_STALL_TIMEOUT_SECONDS = int(
+    _os_eng.environ.get("GLOSSA_JOB_STALL_TIMEOUT_SECONDS", "1800")
+)
 
 # Pipeline registry — maps pipeline name to callable
 _PIPELINES: dict[str, Any] = {}
@@ -83,6 +91,7 @@ async def _process_one() -> bool:
         await db.update_job_status(job_id, "completed")
         # Also save to reports/ so the Jobs panel can navigate to Reports → Data
         import json as _json  # noqa: PLC0415
+
         _reports_dir = Path(__file__).parents[2] / "reports"
         _reports_dir.mkdir(parents=True, exist_ok=True)
         _safe_name = job["pipeline"].replace("/", "_").replace("\\", "_")
@@ -105,11 +114,6 @@ async def _process_one() -> bool:
         await db.update_job_status(job_id, "failed")
 
     return True
-
-
-# How long a running job can go without a heartbeat (updated_at) before being
-# marked as timed_out.  exp_run jobs update updated_at on every node completion.
-_JOB_STALL_TIMEOUT_SECONDS = 600  # 10 minutes — generous for heavy SA runs
 
 
 async def _stall_watchdog() -> None:
@@ -136,7 +140,9 @@ async def _stall_watchdog() -> None:
                 jid, jname = row["id"], row["name"]
                 logger.warning(
                     "Job %s ('%s') has stalled (no heartbeat in %ds) — marking timed_out",
-                    jid, jname, _JOB_STALL_TIMEOUT_SECONDS,
+                    jid,
+                    jname,
+                    _JOB_STALL_TIMEOUT_SECONDS,
                 )
                 await db._conn.execute(  # noqa: SLF001
                     "UPDATE jobs SET status = 'failed', updated_at = datetime('now'), "

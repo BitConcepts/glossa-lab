@@ -35,13 +35,13 @@ from pathlib import Path
 from typing import Any
 
 _HERE    = os.path.dirname(os.path.abspath(__file__))
-_BACKEND = os.path.dirname(os.path.dirname(_HERE))
+_BACKEND = os.path.dirname(os.path.dirname(os.path.dirname(_HERE)))
 _TESTS   = os.path.join(_BACKEND, "tests")
 for _p in (_BACKEND, _TESTS):
     if _p not in sys.path:
         sys.path.insert(0, _p)
 
-_DATA_FILE = Path(_HERE).parent / "data" / "fuls_nw_semitic_test1.txt"
+_DATA_FILE = Path(_HERE).parent.parent / "data" / "fuls_nw_semitic_test1.txt"
 
 
 def _load_corpus() -> list[list[str]]:

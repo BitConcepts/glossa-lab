@@ -21,7 +21,7 @@ import { expect, test } from "@playwright/test";
 async function navigateToExpBuilder(page: Parameters<typeof test>[1] extends never ? never : import("@playwright/test").Page) {
   await page.goto("/");
   // Experiments tab is now the unified Experiment Builder canvas (no separate Exp. Builder tab)
-  const btn = page.getByRole("button", { name: /^Experiments$/ }).first();
+  const btn = page.getByTitle("Experiments").first();
   await btn.waitFor({ state: "visible", timeout: 8000 });
   await btn.click();
 }

@@ -21,7 +21,7 @@ _BACKEND = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 if _BACKEND not in sys.path:
     sys.path.insert(0, _BACKEND)
 
-from glossa_lab.experiments.fuls_rtl_corrected import FulsRTLCorrected as FulsRtlCorrected
+from glossa_lab.experiments._legacy.fuls_rtl_corrected import FulsRTLCorrected as FulsRtlCorrected
 
 if __name__ == "__main__":
     print("Starting Fuls RTL Corrected Experiment...")

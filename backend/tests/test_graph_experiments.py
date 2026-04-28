@@ -216,7 +216,7 @@ def test_all_40_nodes_registered():
         # Corpus sanitisation node (1)
         "TokenFilter",
         # CPSC / Constraint Solver nodes (3)
-        "CASModelLoader", "CASProjector", "CASIndusEngine",
+        "CASModelLoader", "CASProjector", "CASIndusEngine", "ClusterMapper", "CanonicalSignLoader", "StructuralTemplateAnalyzer",
     }
     assert expected == set(ATOMIC_NODES.keys()), (
         f"Registry mismatch. Extra: {set(ATOMIC_NODES.keys()) - expected}. "

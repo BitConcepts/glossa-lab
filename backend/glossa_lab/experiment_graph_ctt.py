@@ -97,23 +97,41 @@ def _indus_sign_role_classifier(inputs: dict, params: dict) -> dict:
     min_count = int(params.get("min_count", 5))
     numeral_repetition_thr = float(params.get("numeral_repetition_threshold", 0.5))
     numeral_set = set(params.get("numeral_signs", _DEFAULT_NUMERAL_SIGNS))
+    # Logogram detector parameters (Phase-12 overhaul, 2026-04-28).
+    # Replaces the old "low-frequency phonetic singleton" rule with a
+    # behavior-based detector: a logogram is a HIGH-frequency sign that
+    # appears with LOW positional variance (Σ p_pos² ≈ 1, i.e. concentrated
+    # in one position class) and that frequently occurs as the entire
+    # inscription (solo). All three conditions must hold.
+    logo_min_count = int(params.get("logogram_min_count", 20))
+    logo_pos_concentration = float(
+        params.get("logogram_position_concentration", 0.55)
+    )
+    logo_solo_rate = float(params.get("logogram_solo_rate", 0.05))
 
     tc: Counter[str] = Counter(s for seq in sequences for s in seq)
     te: Counter[str] = Counter(seq[-1] for seq in sequences if len(seq) >= 1)
     ic: Counter[str] = Counter(seq[0] for seq in sequences if len(seq) >= 1)
 
-    # Repetition / solo statistics for numeral heuristic.
+    # Repetition / solo statistics for numeral heuristic, plus per-sign
+    # solo-only count for logogram detection.
     solo_or_repeat_count: Counter[str] = Counter()
+    solo_count: Counter[str] = Counter()
+    medial_count: Counter[str] = Counter()
     for seq in sequences:
         if len(seq) == 0:
             continue
         # Solo inscription → every sign in it gets a +1
         if len(seq) == 1:
             solo_or_repeat_count[seq[0]] += 1
+            solo_count[seq[0]] += 1
             continue
         # Repeated run: if all signs in the seq are the same, +1 per token
         if len(set(seq)) == 1:
             solo_or_repeat_count[seq[0]] += len(seq)
+        # Medial: every token that is neither initial nor final
+        for s in seq[1:-1]:
+            medial_count[s] += 1
 
     # Bigram PMI for compound detection (Mahadevan-style)
     bg: Counter[tuple[str, str]] = Counter()
@@ -136,12 +154,25 @@ def _indus_sign_role_classifier(inputs: dict, params: dict) -> dict:
                 compound_signs.add(b)
 
     role_table: dict[str, list[str]] = {}
+    n_logograms_detected = 0
     for sym, n in tc.items():
         if n < min_count:
             continue
         t_rate = te[sym] / n if n else 0.0
         i_rate = ic[sym] / n if n else 0.0
         rep_rate = solo_or_repeat_count[sym] / n if n else 0.0
+        m_rate = medial_count[sym] / n if n else 0.0
+        solo_rate = solo_count[sym] / n if n else 0.0
+        # Position-concentration: Σ p_pos² over (initial, medial, terminal).
+        # solo_rate is excluded so that a sign that is *only* solo doesn't
+        # alias to high concentration via t_rate=1 trivia.
+        # Renormalise non-solo positional shares so the metric is meaningful
+        # even when solo_rate > 0.
+        non_solo = max(1e-12, 1.0 - solo_rate)
+        p_i = i_rate / non_solo
+        p_m = m_rate / non_solo
+        p_t = t_rate / non_solo
+        pos_conc = p_i * p_i + p_m * p_m + p_t * p_t
         roles: set[str] = set()
         # Suffix detection: strict OR relaxed-with-terminal-bias
         if t_rate >= t_thr or (
@@ -156,9 +187,19 @@ def _indus_sign_role_classifier(inputs: dict, params: dict) -> dict:
         # exclusively terminal/initial and not classified as numeral.
         if t_rate < t_thr and i_rate < i_thr and "numeral" not in roles:
             roles.add("phonetic")
-        # Logograms = low-frequency phonetic singletons
-        if 1 <= n < min_count * 2 and "phonetic" in roles:
+        # Logogram detector overhaul (Phase-12, 2026-04-28).
+        # New rule: a logogram is high-frequency, has low positional
+        # variance (one position class dominates), AND occurs solo at least
+        # `logo_solo_rate` of the time. This replaces the old rule that
+        # mis-flagged rare phonetic singletons as logograms.
+        is_logogram = (
+            n >= logo_min_count
+            and pos_conc >= logo_pos_concentration
+            and solo_rate >= logo_solo_rate
+        )
+        if is_logogram:
             roles.add("logogram")
+            n_logograms_detected += 1
         if sym in compound_signs:
             roles.add("compound")
         if roles:
@@ -174,6 +215,7 @@ def _indus_sign_role_classifier(inputs: dict, params: dict) -> dict:
             [{"a": a, "b": b, "count": c} for (a, b), c in bg.most_common(50)],
             key=lambda x: -x["count"],
         )[:50],
+        "n_logograms": n_logograms_detected,
     }
 
 
@@ -1081,6 +1123,59 @@ def _granularity_comparison(inputs: dict, params: dict) -> dict:
 # than from scratch.
 
 
+# Mahadevan 1977 (M77) numeric sign codes are 3-digit zero-padded strings
+# (e.g. "047", "176", "740"). The Phase-11 corpus loader emits sign IDs in
+# this code system, so anchors keyed in P-codes (Parpola allograph) never
+# fire on the M77 corpus. The `code_system` parameter selects which set of
+# defaults to apply; pass "m77" when the upstream corpus is Mahadevan 1977.
+_TAMIL_ANCHORS_PARPOLA = {
+    "P002": "min",     # fish (Mahadevan iconic anchor)
+    "P342": "kutam",   # jar / pot (Parpola)
+    "P176": "uravu",   # U-sign / kinship
+    "P059": "min",     # alternate fish allograph
+    "P099": "min",     # diacritic-fish (fish + stroke)
+    "P067": "velu",    # arrow (vel "spear" rebus)
+    "P391": "katam",   # vessel
+    "P162": "vil",     # bow / archer
+    "P017": "munru",   # three (numeral anchor)
+    "P004": "or",      # one
+}
+# Mahadevan 1977 anchor cross-walk (Tamil branch) per Mahadevan 2003 readings.
+# Sign IDs are M77 3-digit zero-padded codes. Coverage targets the most
+# frequent M77 sign IDs in the corpus ("047", "176", "740", "700", "059",
+# "061", "067", "342") so the SA initial mapping picks up at least one
+# pinned anchor per restart.
+_TAMIL_ANCHORS_M77 = {
+    "059": "min",     # basic fish (Mahadevan #59)
+    "061": "min",     # fish with chevron
+    "067": "min",     # fish with horn / star-fish
+    "068": "min",     # diacritic fish allograph
+    "047": "kutam",   # jar / pot
+    "048": "uravu",   # U-sign / vessel-as-kinship
+    "176": "kai",     # hand-sign
+    "342": "an",      # terminal-man (TMK suffix anchor)
+    "740": "or",      # single stroke (numeral one)
+    "700": "iru",     # double stroke (numeral two)
+    "100": "or",      # alt one-stroke
+    "101": "iru",     # alt two-stroke
+    "102": "munru",   # three-stroke
+    "103": "nalu",    # four-stroke
+    "104": "aintu",   # five-stroke
+}
+# Hieroglyphic Luwian anchors are by definition keyed in the Luwian sign
+# system. When the source corpus is M77 (Indus) we leave the cross-walk
+# empty — there is no public Luwian-on-Indus iconographic mapping that
+# warrants pinning. Users can still supply M77-keyed Luwian anchors via
+# the `anchors` override param.
+_LUWIAN_ANCHORS_PARPOLA = {
+    "P176": "hassu",       # "king"
+    "P004": "sarli",       # "high/sun"
+    "P122": "tarwana",     # "ruler"
+    "P073": "karkamis",    # place name
+}
+_LUWIAN_ANCHORS_M77: dict[str, str] = {}
+
+
 def _iconographic_anchor_pin(inputs: dict, params: dict) -> dict:
     """Emit an anchor mapping {sign_id -> value} suitable for SA's anchors input.
 
@@ -1088,32 +1183,29 @@ def _iconographic_anchor_pin(inputs: dict, params: dict) -> dict:
       - fish-sign → 'min'   (Dravidian rebus *mīn = "fish/star")
       - jar-sign  → 'kutam' (DEDR 1751 "pot/jar")
       - U-sign    → 'uravu' (DEDR 597 "kinship/relative")
+
+    Phase-12 (2026-04-28): added `code_system` parameter to select between
+    Parpola P-codes (CISI corpus) and Mahadevan 1977 M77 numeric codes.
+    Pass `code_system="m77"` when the upstream corpus is `indus_m77` so
+    anchors actually fire.
+
     Override or extend via params.anchors.
     """
     overrides = params.get("anchors", {}) or {}
     family = str(params.get("family", "old_tamil"))
     weight = float(params.get("weight", 1.0))
+    code_system = str(params.get("code_system", "parpola")).lower()
+    if code_system not in ("parpola", "m77"):
+        code_system = "parpola"
 
     if family in ("old_tamil", "dravidian", "tamil"):
-        defaults = {
-            "P002": "min",     # fish (Mahadevan iconic anchor)
-            "P342": "kutam",   # jar / pot (Parpola)
-            "P176": "uravu",   # U-sign / kinship
-            "P059": "min",     # alternate fish allograph
-            "P099": "min",     # diacritic-fish (fish + stroke)
-            "P067": "velu",    # arrow (vel "spear" rebus)
-            "P391": "katam",   # vessel
-            "P162": "vil",     # bow / archer
-            "P017": "munru",   # three (numeral anchor)
-            "P004": "or",      # one
-        }
+        defaults = (
+            _TAMIL_ANCHORS_M77 if code_system == "m77" else _TAMIL_ANCHORS_PARPOLA
+        )
     elif family in ("hieroglyphic_luwian", "luwian"):
-        defaults = {
-            "P176": "hassu",       # "king"
-            "P004": "sarli",       # "high/sun"
-            "P122": "tarwana",     # "ruler"
-            "P073": "karkamis",    # place name
-        }
+        defaults = (
+            _LUWIAN_ANCHORS_M77 if code_system == "m77" else _LUWIAN_ANCHORS_PARPOLA
+        )
     else:
         defaults = {}
 
@@ -1130,6 +1222,7 @@ def _iconographic_anchor_pin(inputs: dict, params: dict) -> dict:
         "n_anchors": len(merged),
         "family": family,
         "weight": weight,
+        "code_system": code_system,
     }
 
 
@@ -1398,7 +1491,404 @@ def _k_fold_aggregator(inputs: dict, params: dict) -> dict:
     }
 
 
-# ── Atomic node defs for registration ─────────────────────────────────
+# ── KFoldRunner ────────────────────────────────
+# True k-fold runner (Phase-12). Internally splits the corpus, runs the SA
+# decipherer + holdout recall + compound-dependency constraint K times, and
+# aggregates per-fold metrics into mean / std / 95% CI. Replaces the
+# Phase-11 wiring that only ran the first fold.
+
+
+def _k_fold_runner(inputs: dict, params: dict) -> dict:
+    """Run SA + holdout recall + compound coupling on K folds.
+
+    Internally:
+      1. Splits the input sequences K ways (KFoldCorpusSplitter logic).
+      2. For each fold, runs CTTAnchoredSADecipher on the train split and
+         HoldoutWordRecall + CompoundDependencyConstraint on the test split.
+      3. Returns mean / std / 95% CI for recall and compound score, plus
+         the full per-fold values.
+
+    Inputs:
+      sequences          : list[list[str]] (the full corpus)
+      lm                 : the language model used by SA
+      role_table         : dict from IndusSignRoleClassifier (optional)
+      value_role_map     : dict from DefaultIndusValueRoleMap (optional)
+      anchors            : dict from IconographicAnchorPin (optional)
+      attested_vocab     : list[str] from AttestedVocabularyLoader
+      high_pmi_bigrams   : list[dict] from IndusSignRoleClassifier (optional)
+
+    Params:
+      k                  : int >= 2 (default 5)
+      seed               : int (default 7)
+      sa_seed_base       : int (default 11)
+      max_iterations     : int (default 4000)
+      restarts           : int (default 3)
+      surjective         : bool (default True)
+      strict_mode        : bool (default True)
+      compound_weight    : float (default 1.0)
+      compound_separator : str (default "")
+      decode_separator   : str (default "")
+      min_word_len       : int (default 2)
+      hit_bonus          : float (default 1.0)
+      miss_penalty       : float (default 0.5)
+    """
+    sequences: list[list[str]] = inputs.get("sequences") or []
+    lm = inputs.get("lm")
+    role_table: dict[str, list[str]] = inputs.get("role_table") or {}
+    value_role_map: dict[str, str] = inputs.get("value_role_map") or {}
+    anchors: dict[str, str] = inputs.get("anchors") or {}
+    attested_vocab: list[str] = inputs.get("attested_vocab") or []
+    high_pmi_bigrams: list[dict] = inputs.get("high_pmi_bigrams") or []
+
+    k = max(2, int(params.get("k", 5)))
+    split_seed = int(params.get("seed", 7))
+    sa_seed_base = int(params.get("sa_seed_base", 11))
+    max_iterations = int(params.get("max_iterations", 4000))
+    restarts = int(params.get("restarts", 3))
+    surjective = bool(params.get("surjective", True))
+    strict_mode = bool(params.get("strict_mode", True))
+    compound_weight = float(params.get("compound_weight", 1.0))
+    compound_separator = str(params.get("compound_separator", ""))
+    decode_separator = str(params.get("decode_separator", ""))
+    min_word_len = int(params.get("min_word_len", 2))
+    hit_bonus = float(params.get("hit_bonus", 1.0))
+    miss_penalty = float(params.get("miss_penalty", 0.5))
+
+    if not sequences or lm is None:
+        return {
+            "k": 0,
+            "per_fold": [],
+            "recall_values": [],
+            "compound_values": [],
+            "recall_mean": 0.0,
+            "recall_std": 0.0,
+            "recall_ci_low": 0.0,
+            "recall_ci_high": 0.0,
+            "compound_mean": 0.0,
+            "verdict": "Missing sequences or lm.",
+        }
+
+    rng = random.Random(split_seed)
+    idx = list(range(len(sequences)))
+    rng.shuffle(idx)
+    fold_size = max(1, len(idx) // k)
+
+    per_fold: list[dict] = []
+    recall_values: list[float] = []
+    compound_values: list[float] = []
+    for f in range(k):
+        start = f * fold_size
+        end = (f + 1) * fold_size if f < k - 1 else len(idx)
+        test_idx = set(idx[start:end])
+        train = [sequences[i] for i in idx if i not in test_idx]
+        test = [sequences[i] for i in idx if i in test_idx]
+        sa_out = _ctt_anchored_sa_decipher(
+            {
+                "sequences": train,
+                "lm": lm,
+                "role_table": role_table,
+                "value_role_map": value_role_map,
+                "anchors": anchors,
+                "high_pmi_bigrams": high_pmi_bigrams,
+                "attested_vocab": attested_vocab,
+            },
+            {
+                "seed": sa_seed_base + f,
+                "max_iterations": max_iterations,
+                "restarts": restarts,
+                "surjective": surjective,
+                "strict_mode": strict_mode,
+                "compound_weight": compound_weight,
+                "compound_separator": compound_separator,
+            },
+        )
+        proposed = sa_out.get("proposed_mapping") or {}
+        recall_out = _holdout_word_recall(
+            {
+                "sequences": test,
+                "proposed_mapping": proposed,
+                "attested_vocab": attested_vocab,
+            },
+            {
+                "decode_separator": decode_separator,
+                "min_word_len": min_word_len,
+            },
+        )
+        compound_out = _compound_dependency_constraint(
+            {
+                "proposed_mapping": proposed,
+                "high_pmi_bigrams": high_pmi_bigrams,
+                "attested_vocab": attested_vocab,
+            },
+            {
+                "hit_bonus": hit_bonus,
+                "miss_penalty": miss_penalty,
+                "compound_separator": compound_separator,
+            },
+        )
+        rec = float(recall_out.get("recall_score", 0.0))
+        comp = float(compound_out.get("compound_score", 0.0))
+        recall_values.append(rec)
+        compound_values.append(comp)
+        per_fold.append({
+            "fold_id": f,
+            "n_train": len(train),
+            "n_test": len(test),
+            "recall": round(rec, 4),
+            "compound": round(comp, 4),
+            "n_attested_hits": int(recall_out.get("n_attested_hits", 0)),
+            "n_decoded": int(recall_out.get("n_decoded", 0)),
+            "n_signs": int(sa_out.get("n_signs", 0)),
+            "compound_hits": int(sa_out.get("compound_hits", 0)),
+            "compound_misses": int(sa_out.get("compound_misses", 0)),
+            "matched_top": list(recall_out.get("matched_words", []))[:5],
+        })
+
+    n = len(recall_values)
+    if n == 0:
+        return {
+            "k": 0,
+            "per_fold": [],
+            "recall_values": [],
+            "compound_values": [],
+            "recall_mean": 0.0,
+            "recall_std": 0.0,
+            "recall_ci_low": 0.0,
+            "recall_ci_high": 0.0,
+            "compound_mean": 0.0,
+            "verdict": "No folds executed.",
+        }
+    rmean = sum(recall_values) / n
+    rvar = sum((v - rmean) ** 2 for v in recall_values) / max(1, n - 1)
+    rstd = rvar ** 0.5
+    half = 1.96 * rstd / (n ** 0.5)
+    cmean = sum(compound_values) / n
+    return {
+        "k": n,
+        "per_fold": per_fold,
+        "recall_values": [round(v, 4) for v in recall_values],
+        "compound_values": [round(v, 4) for v in compound_values],
+        "recall_mean": round(rmean, 4),
+        "recall_std": round(rstd, 4),
+        "recall_ci_low": round(rmean - half, 4),
+        "recall_ci_high": round(rmean + half, 4),
+        "compound_mean": round(cmean, 4),
+        "verdict": (
+            f"k={n}: recall = {rmean:.4f} ± {half:.4f} (95% CI), "
+            f"std={rstd:.4f}; compound mean={cmean:.4f}."
+        ),
+    }
+
+
+# ── MatchedWordReporter ──────────────────────────
+# Aggregate matched_words across multiple branches into one sortable table.
+
+
+def _matched_word_reporter(inputs: dict, params: dict) -> dict:
+    """Aggregate per-branch matched_words into a single sortable report.
+
+    Inputs (ports a..f) each accept a list of {word, count} dicts as
+    emitted by HoldoutWordRecall.matched_words. Param `labels` is a list
+    of N strings naming the branches in port order; missing labels fall
+    back to the port letter.
+
+    Output is a flat table sortable by branch + count, plus a per-branch
+    summary count of matched words.
+    """
+    labels_raw = params.get("labels", []) or []
+    if isinstance(labels_raw, str):
+        labels = [s.strip() for s in labels_raw.split(",") if s.strip()]
+    elif isinstance(labels_raw, (list, tuple)):
+        labels = [str(s).strip() for s in labels_raw if str(s).strip()]
+    else:
+        labels = []
+
+    ports = ("a", "b", "c", "d", "e", "f")
+    table: list[dict] = []
+    by_branch: dict[str, dict[str, int]] = {}
+    for i, port in enumerate(ports):
+        items = inputs.get(port)
+        if not items:
+            continue
+        label = labels[i] if i < len(labels) else port
+        items_iter = items if isinstance(items, list) else []
+        branch_counts: dict[str, int] = {}
+        for item in items_iter:
+            if not isinstance(item, dict):
+                continue
+            word = str(item.get("word") or item.get("decoded") or "").lower()
+            count = int(item.get("count", 1) or 1)
+            if not word:
+                continue
+            branch_counts[word] = branch_counts.get(word, 0) + count
+            table.append({
+                "branch": label,
+                "word": word,
+                "count": count,
+            })
+        if branch_counts:
+            by_branch[label] = dict(
+                sorted(branch_counts.items(), key=lambda kv: -kv[1])
+            )
+
+    table.sort(key=lambda r: (r["branch"], -int(r["count"]), r["word"]))
+    summary = {
+        label: {
+            "n_unique_words": len(branch),
+            "total_count": sum(branch.values()),
+            "top": list(branch.items())[:10],
+        }
+        for label, branch in by_branch.items()
+    }
+    return {
+        "table": table[:500],
+        "n_rows": len(table),
+        "by_branch": by_branch,
+        "summary": summary,
+    }
+
+
+# ── CorpusPermuter ────────────────────────────────
+# Negative-control corpus transformer. Three modes available:
+#   - "relabel": replace every sign id with a uniform random sign id from
+#     the global vocabulary (destroys positional + bigram structure).
+#   - "shuffle_within": shuffle tokens inside each inscription independently
+#     (destroys positional structure but preserves bigram histogram per seq).
+#   - "shuffle_global": flat-shuffle every token across the corpus
+#     (destroys both positional and per-inscription structure).
+# Recall on a permuted corpus should collapse to chance.
+
+
+def _corpus_permuter(inputs: dict, params: dict) -> dict:
+    """Apply a permutation to the corpus that destroys decipherment signal."""
+    sequences: list[list[str]] = inputs.get("sequences") or []
+    seed = int(params.get("seed", 23))
+    mode = str(params.get("mode", "relabel")).lower()
+    if mode not in ("relabel", "shuffle_within", "shuffle_global"):
+        mode = "relabel"
+
+    rng = random.Random(seed)
+    if not sequences:
+        return {"sequences": [], "mode": mode, "n": 0}
+
+    if mode == "relabel":
+        vocab = sorted({s for seq in sequences for s in seq})
+        if not vocab:
+            return {"sequences": [], "mode": mode, "n": 0}
+        permuted = [
+            [rng.choice(vocab) for _ in seq] for seq in sequences
+        ]
+    elif mode == "shuffle_within":
+        permuted = []
+        for seq in sequences:
+            cp = list(seq)
+            rng.shuffle(cp)
+            permuted.append(cp)
+    else:  # shuffle_global
+        flat = [s for seq in sequences for s in seq]
+        rng.shuffle(flat)
+        permuted = []
+        cursor = 0
+        for seq in sequences:
+            n = len(seq)
+            permuted.append(flat[cursor : cursor + n])
+            cursor += n
+    return {
+        "sequences": permuted,
+        "mode": mode,
+        "n": len(permuted),
+        "n_tokens": sum(len(s) for s in permuted),
+    }
+
+
+# ── VocabularyAblator ─────────────────────────────
+# Negative control: emit an empty (or shuffled-label) attested vocab.
+# Wired into HoldoutWordRecall, this drives recall to 0 (or chance).
+
+
+def _vocabulary_ablator(inputs: dict, params: dict) -> dict:
+    """Produce an ablated attested vocab for negative-control runs.
+
+    Modes:
+      - "empty"  : returns []
+      - "shuffle": returns the same vocab but with characters shuffled per
+        word, breaking string-equality with any decoded form.
+    """
+    attested_vocab: list[str] = inputs.get("attested_vocab") or []
+    mode = str(params.get("mode", "empty")).lower()
+    seed = int(params.get("seed", 41))
+    if mode == "empty":
+        return {
+            "attested_vocab": [],
+            "n_words": 0,
+            "mode": mode,
+        }
+    rng = random.Random(seed)
+    out: list[str] = []
+    for w in attested_vocab:
+        chars = list(w)
+        rng.shuffle(chars)
+        out.append("".join(chars))
+    return {
+        "attested_vocab": sorted(set(out)),
+        "n_words": len(set(out)),
+        "mode": mode,
+    }
+
+
+# ── AnchorAblator ────────────────────────────────
+# Negative control: emit empty anchors so SA starts cold.
+
+
+def _anchor_ablator(inputs: dict, params: dict) -> dict:
+    """Strip anchors from the upstream IconographicAnchorPin (negative control)."""
+    return {
+        "anchors": {},
+        "n_anchors": 0,
+        "family": str(
+            (inputs.get("family") or params.get("family") or "unknown")
+        ),
+        "weight": 0.0,
+    }
+
+
+# ── CorpusStratifier ────────────────────────────
+# Split the corpus by inscription length into short / medium / long strata.
+# Inscription length is a known proxy for text type in the M77 corpus
+# (short inscriptions cluster around seals; long ones around copper plates).
+
+
+def _corpus_stratifier(inputs: dict, params: dict) -> dict:
+    """Split sequences into length-stratified subsets."""
+    sequences: list[list[str]] = inputs.get("sequences") or []
+    short_max = int(params.get("short_max", 2))
+    medium_max = int(params.get("medium_max", 5))
+    short_seqs: list[list[str]] = []
+    medium_seqs: list[list[str]] = []
+    long_seqs: list[list[str]] = []
+    for seq in sequences:
+        L = len(seq)
+        if L <= short_max:
+            short_seqs.append(seq)
+        elif L <= medium_max:
+            medium_seqs.append(seq)
+        else:
+            long_seqs.append(seq)
+    summary = {
+        "short": {"n": len(short_seqs), "max_len": short_max},
+        "medium": {"n": len(medium_seqs), "max_len": medium_max},
+        "long": {"n": len(long_seqs), "max_len": None},
+        "total": len(sequences),
+    }
+    return {
+        "short_sequences": short_seqs,
+        "medium_sequences": medium_seqs,
+        "long_sequences": long_seqs,
+        "stratum_summary": summary,
+    }
+
+
+# ── Atomic node defs for registration ─────────────────────
 # Imported by experiment_graph.py and added to ATOMIC_NODES at module load.
 
 
@@ -1776,8 +2266,173 @@ def _ctt_node_defs() -> list[Any]:
             "Emit Mahadevan/Parpola-style iconographic anchors as a sign→value "
             "mapping. Wire to CTTAnchoredSADecipher.anchors to bias the SA "
             "initial mapping toward established iconic readings (fish=min, "
-            "jar=kutam, U=uravu, ...). Defaults are family-aware.",
+            "jar=kutam, U=uravu, ...). Defaults are family + code_system aware: "
+            "set code_system='m77' when the upstream corpus is Mahadevan 1977 "
+            "(indus_m77) so anchors fire on M77 numeric sign IDs.",
             inputs=[],
+            outputs=[
+                {"name": "anchors", "type": "json"},
+                {"name": "n_anchors", "type": "number"},
+                {"name": "family", "type": "text"},
+                {"name": "weight", "type": "number"},
+                {"name": "code_system", "type": "text"},
+            ],
+            params_schema={
+                "type": "object",
+                "properties": {
+                    "family": {"type": "string", "default": "old_tamil"},
+                    "weight": {"type": "number", "default": 1.0},
+                    "anchors": {"type": "object", "default": {}},
+                    "code_system": {
+                        "type": "string",
+                        "default": "parpola",
+                        "description": (
+                            "Sign-ID code system the upstream corpus uses: "
+                            "'parpola' (P-codes, CISI) or 'm77' (Mahadevan 1977)."
+                        ),
+                    },
+                },
+            },
+            fn=_iconographic_anchor_pin,
+        ),
+        AtomicNodeDef(
+            "KFoldRunner",
+            "K-Fold Runner",
+            "CTT / Constraint Topology",
+            "True k-fold cross-validation runner. Internally splits the corpus, "
+            "runs CTTAnchoredSADecipher + HoldoutWordRecall + CompoundDependency"
+            "Constraint on each fold, and aggregates per-fold recall and compound "
+            "score into mean / std / 95% CI. Replaces the Phase-11 single-fold "
+            "wiring with a real k-fold experiment. Phase-12 (2026-04-28).",
+            inputs=[
+                {"name": "sequences", "type": "sequences", "required": True},
+                {"name": "lm", "type": "any", "required": True},
+                {"name": "role_table", "type": "json", "required": False},
+                {"name": "value_role_map", "type": "json", "required": False},
+                {"name": "anchors", "type": "json", "required": False},
+                {"name": "attested_vocab", "type": "json", "required": False},
+                {"name": "high_pmi_bigrams", "type": "json", "required": False},
+            ],
+            outputs=[
+                {"name": "k", "type": "number"},
+                {"name": "per_fold", "type": "json"},
+                {"name": "recall_values", "type": "json"},
+                {"name": "compound_values", "type": "json"},
+                {"name": "recall_mean", "type": "number"},
+                {"name": "recall_std", "type": "number"},
+                {"name": "recall_ci_low", "type": "number"},
+                {"name": "recall_ci_high", "type": "number"},
+                {"name": "compound_mean", "type": "number"},
+                {"name": "verdict", "type": "text"},
+            ],
+            params_schema={
+                "type": "object",
+                "properties": {
+                    "k": {"type": "integer", "default": 5, "minimum": 2},
+                    "seed": {"type": "integer", "default": 7},
+                    "sa_seed_base": {"type": "integer", "default": 11},
+                    "max_iterations": {"type": "integer", "default": 4000, "minimum": 100},
+                    "restarts": {"type": "integer", "default": 3, "minimum": 1},
+                    "surjective": {"type": "boolean", "default": True},
+                    "strict_mode": {"type": "boolean", "default": True},
+                    "compound_weight": {"type": "number", "default": 1.0},
+                    "compound_separator": {"type": "string", "default": ""},
+                    "decode_separator": {"type": "string", "default": ""},
+                    "min_word_len": {"type": "integer", "default": 2, "minimum": 1},
+                    "hit_bonus": {"type": "number", "default": 1.0},
+                    "miss_penalty": {"type": "number", "default": 0.5},
+                },
+            },
+            fn=_k_fold_runner,
+        ),
+        AtomicNodeDef(
+            "MatchedWordReporter",
+            "Matched Word Reporter",
+            "CTT / Constraint Topology",
+            "Aggregate matched_words from up to six HoldoutWordRecall branches "
+            "into a single sortable table. Param `labels` names the branches "
+            "in port order (a..f).",
+            inputs=[
+                {"name": "a", "type": "json", "required": False},
+                {"name": "b", "type": "json", "required": False},
+                {"name": "c", "type": "json", "required": False},
+                {"name": "d", "type": "json", "required": False},
+                {"name": "e", "type": "json", "required": False},
+                {"name": "f", "type": "json", "required": False},
+            ],
+            outputs=[
+                {"name": "table", "type": "json"},
+                {"name": "n_rows", "type": "number"},
+                {"name": "by_branch", "type": "json"},
+                {"name": "summary", "type": "json"},
+            ],
+            params_schema={
+                "type": "object",
+                "properties": {
+                    "labels": {"type": "array", "default": []},
+                },
+            },
+            fn=_matched_word_reporter,
+        ),
+        AtomicNodeDef(
+            "CorpusPermuter",
+            "Corpus Permuter (negative control)",
+            "CTT / Constraint Topology",
+            "Permute the corpus to produce a negative-control input. Modes: "
+            "'relabel' (replace every sign id with a uniform random sign), "
+            "'shuffle_within' (shuffle tokens inside each inscription), "
+            "'shuffle_global' (flat-shuffle every token across the corpus).",
+            inputs=[
+                {"name": "sequences", "type": "sequences", "required": True},
+            ],
+            outputs=[
+                {"name": "sequences", "type": "sequences"},
+                {"name": "mode", "type": "text"},
+                {"name": "n", "type": "number"},
+                {"name": "n_tokens", "type": "number"},
+            ],
+            params_schema={
+                "type": "object",
+                "properties": {
+                    "seed": {"type": "integer", "default": 23},
+                    "mode": {"type": "string", "default": "relabel"},
+                },
+            },
+            fn=_corpus_permuter,
+        ),
+        AtomicNodeDef(
+            "VocabularyAblator",
+            "Vocabulary Ablator (negative control)",
+            "CTT / Constraint Topology",
+            "Strip or shuffle the attested vocabulary so HoldoutWordRecall "
+            "sees no real targets. Recall should collapse to chance.",
+            inputs=[
+                {"name": "attested_vocab", "type": "json", "required": False},
+            ],
+            outputs=[
+                {"name": "attested_vocab", "type": "json"},
+                {"name": "n_words", "type": "number"},
+                {"name": "mode", "type": "text"},
+            ],
+            params_schema={
+                "type": "object",
+                "properties": {
+                    "mode": {"type": "string", "default": "empty"},
+                    "seed": {"type": "integer", "default": 41},
+                },
+            },
+            fn=_vocabulary_ablator,
+        ),
+        AtomicNodeDef(
+            "AnchorAblator",
+            "Anchor Ablator (negative control)",
+            "CTT / Constraint Topology",
+            "Drop all iconographic anchors so SA starts from a uniform-random "
+            "initial mapping. Use to verify anchor priors actually contribute.",
+            inputs=[
+                {"name": "anchors", "type": "json", "required": False},
+                {"name": "family", "type": "text", "required": False},
+            ],
             outputs=[
                 {"name": "anchors", "type": "json"},
                 {"name": "n_anchors", "type": "number"},
@@ -1787,12 +2442,35 @@ def _ctt_node_defs() -> list[Any]:
             params_schema={
                 "type": "object",
                 "properties": {
-                    "family": {"type": "string", "default": "old_tamil"},
-                    "weight": {"type": "number", "default": 1.0},
-                    "anchors": {"type": "object", "default": {}},
+                    "family": {"type": "string", "default": "unknown"},
                 },
             },
-            fn=_iconographic_anchor_pin,
+            fn=_anchor_ablator,
+        ),
+        AtomicNodeDef(
+            "CorpusStratifier",
+            "Corpus Stratifier (by inscription length)",
+            "CTT / Constraint Topology",
+            "Stratify M77 inscriptions by length into short / medium / long "
+            "sub-corpora. Inscription length is a proxy for text type "
+            "(short = seal, long = copper plate / pottery graffiti).",
+            inputs=[
+                {"name": "sequences", "type": "sequences", "required": True},
+            ],
+            outputs=[
+                {"name": "short_sequences", "type": "sequences"},
+                {"name": "medium_sequences", "type": "sequences"},
+                {"name": "long_sequences", "type": "sequences"},
+                {"name": "stratum_summary", "type": "json"},
+            ],
+            params_schema={
+                "type": "object",
+                "properties": {
+                    "short_max": {"type": "integer", "default": 2, "minimum": 1},
+                    "medium_max": {"type": "integer", "default": 5, "minimum": 2},
+                },
+            },
+            fn=_corpus_stratifier,
         ),
         AtomicNodeDef(
             "ShuffledLMNullDistribution",
@@ -1908,5 +2586,11 @@ __all__ = [
     "_shuffled_lm_null_distribution",
     "_k_fold_corpus_splitter",
     "_k_fold_aggregator",
+    "_k_fold_runner",
+    "_matched_word_reporter",
+    "_corpus_permuter",
+    "_vocabulary_ablator",
+    "_anchor_ablator",
+    "_corpus_stratifier",
     "_ctt_node_defs",
 ]

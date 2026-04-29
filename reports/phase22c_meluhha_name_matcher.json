@@ -1,0 +1,140 @@
+{
+  "data": {
+    "a": "Indus-seals-at-Mesopotamia inventory: 13 seals (8 countries, 8 types). Dominant context: ('Mesopotamia', 5).",
+    "b": [
+      {
+        "catalogue_id": "AO_22310",
+        "type": "akkadian_with_meluhha_mention",
+        "find_country": "Mesopotamia (presumed)",
+        "find_spot": "(unprovenanced; Collection De Clercq -> Louvre)",
+        "find_period": "Late Akkadian / early Ur III (ca. 2200-2113 BC)",
+        "current_collection": "Musee du Louvre, AO 22310",
+        "inscription_reading": "Shu-ilishu EME.BAL.ME.LUH.HA.KI",
+        "source": "Possehl 2006 (Expedition 48:1); Parpola, Parpola & Brunswig 1977 footnote 9"
+      },
+      {
+        "catalogue_id": "BM_122187_UR_seal_1",
+        "type": "indus_type_at_mesopotamia",
+        "find_country": "Mesopotamia",
+        "find_spot": "Ur (mod. Tell Muqayyar), Iraq",
+        "find_period": "Akkadian period (ca. 2334-2154 BC)",
+        "current_collection": "British Museum, BM 122187",
+        "inscription_reading": "(unread; standard Indus iconography: zebu)",
+        "source": "Gadd 1932; Frenez 2018"
+      },
+      {
+        "catalogue_id": "GADD_1",
+        "type": "indus_type_at_mesopotamia",
+        "find_country": "Mesopotamia",
+        "find_spot": "Ur (mod. Tell Muqayyar), Iraq",
+        "find_period": "Akkadian period (ca. 2334-2154 BC)",
+        "current_collection": "British Museum",
+        "inscription_reading": "(unread; ~3 Indus signs)",
+        "source": "Gadd 1932; Laursen 2010 (PCA classification)"
+      },
+      {
+        "catalogue_id": "GADD_2",
+        "type": "indus_type_at_mesopotamia",
+        "find_country": "Mesopotamia",
+        "find_spot": "Ur (mod. Tell Muqayyar), Iraq",
+        "find_period": "Akkadian period (ca. 2334-2154 BC)",
+        "current_collection": "British Museum",
+        "inscription_reading": "(unread)",
+        "source": "Gadd 1932; Laursen 2010"
+      },
+      {
+        "catalogue_id": "ASMAR_TA",
+        "type": "indus_type_at_mesopotamia",
+        "find_country": "Mesopotamia",
+        "find_spot": "Tell Asmar (anc. Eshnunna), Iraq",
+        "find_period": "Old Akkadian / Larsa (ca. 2200-1900 BC)",
+        "current_collection": "Iraq Museum / Penn Museum",
+        "inscription_reading": "(unread; bull motif)",
+        "source": "Mallowan 1947; Wheeler 1968"
+      },
+      {
+        "catalogue_id": "KISH_INDUS_1",
+        "type": "indus_type_at_mesopotamia",
+        "find_country": "Mesopotamia",
+        "find_spot": "Kish, Iraq",
+        "find_period": "Akkadian period (ca. 2334-2154 BC)",
+        "current_collection": "Ashmolean Museum, Oxford",
+        "inscription_reading": "(unread)",
+        "source": "Mallowan 1947; CISI Vol 3"
+      },
+      {
+        "catalogue_id": "SUSA_INDUS_1",
+        "type": "indus_type_at_iran",
+        "find_country": "Iran (Elam)",
+        "find_spot": "Susa (mod. Shush), Iran",
+        "find_period": "Akkadian / Sukkalmah (ca. 2300-1600 BC)",
+        "current_collection": "Musee du Louvre",
+        "inscription_reading": "(unread)",
+        "source": "Wheeler 1968; Possehl 2002 'The Indus Civilization'"
+      },
+      {
+        "catalogue_id": "LOTHAL_PERSIAN_GULF_SEAL",
+        "type": "gulf_type_at_indus",
+        "find_country": "India (Indus civilization)",
+        "find_spot": "Lothal, Gujarat, India",
+        "find_period": "Mature Harappan (ca. 2200-1900 BC)",
+        "current_collection": "Archaeological Survey of India",
+        "inscription_reading": "(unread; circular morphology)",
+        "source": "Rao 1963 (Antiquity 37); Laursen 2010"
+      },
+      {
+        "catalogue_id": "FAILAKA_KM_1113",
+        "type": "dilmun_type_with_indus_signs",
+        "find_country": "Kuwait (Dilmun)",
+        "find_spot": "Failaka, Tell F6 'The Palace', Kuwait",
+        "find_period": "Early Dilmun (ca. 1950-1750 BC)",
+        "current_collection": "Kuwait National Museum",
+        "inscription_reading": "(unread; carries Indus signs in distinctive 'twins'-prefix Gulf style)",
+        "source": "David-Cuny & Neyme 2016 (Failaka Seals Vol 2); Laursen 2010"
+      },
+      {
+        "catalogue_id": "VA_243_BERLIN",
+        "type": "indus_type_at_mesopotamia",
+        "find_country": "Mesopotamia (presumed)",
+        "find_spot": "(uncertain Mesopotamian context)",
+        "find_period": "Akkadian (ca. 2334-2154 BC)",
+        "current_collection": "Vorderasiatisches Museum, Berlin (VA/243)",
+        "inscription_reading": "(unread; markhor + Indus-style hieroglyphs)",
+        "source": "Kalyanaraman ANE compilation; Frenez 2018"
+      },
+      {
+        "catalogue_id": "KONAR_SANDAL_S_CYLINDER",
+        "type": "indus_iconography_at_iran",
+        "find_country": "Iran (Marhashi)",
+        "find_spot": "Konar Sandal South, Halil Rud / Jiroft, Iran",
+        "find_period": "Late 3rd millennium BC",
+        "current_collection": "Iran National Museum",
+        "inscription_reading": "(no inscription; carries Indus animal-head whirl motif)",
+        "source": "Vidale & Frenez 2015 (South Asian Studies 31:1)"
+      },
+      {
+        "catalogue_id": "JALALABAD_FARS",
+        "type": "indus_inscribed_at_iran",
+        "find_country": "Iran",
+        "find_spot": "Jalalabad, Fars, Iran (reported)",
+        "find_period": "Late 3rd millennium BC",
+        "current_collection": "Iran National Museum, NMI 2698",
+        "inscription_reading": "(short Indus sign sequence + South-East Iranian deity scene)",
+        "source": "Vidale, Desset & Frenez 2021 (Journal of Archaeological Studies); Ascalone 2008"
+      },
+      {
+        "catalogue_id": "AL_MAQSHA_TOKEN_2",
+        "type": "dilmun_token_with_indus_morphology",
+        "find_country": "Bahrain (Dilmun)",
+        "find_spot": "Al-Maqsha, Bahrain",
+        "find_period": "Old Dilmun (ca. 1700 BC)",
+        "current_collection": "Bahrain National Museum",
+        "inscription_reading": "Yagli'el, servant of the goddess Panipa",
+        "source": "Laursen, Al-Shaikh, Reeler, Lombard & Marchesi 2026 (JNES); summary at gdnonline.com 2026-04-19"
+      }
+    ],
+    "c": "PROTOTYPE STATUS: name-matcher cannot score yet because no Mesopotamia-found Indus seals have ingested sign sequences. Phase-23 must populate indus_signs[] from CISI Vol 3 / Frenez 2018 catalogue tables. Available: 66 name candidates (freq>=2); 13 seals (none with signs).",
+    "d": [],
+    "e": 0
+  }
+}

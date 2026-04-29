@@ -2344,6 +2344,22 @@ try:
 except Exception as _p20_exc:  # noqa: BLE001
     logger.warning("Phase-20 nodes not registered: %s", _p20_exc)
 
+# ── Phase-21 nodes (repetition collapser, site stratifier, numerical-weight regression) ──
+try:
+    from glossa_lab.experiment_graph_phase21 import _phase21_node_defs as _p21_defs  # noqa: PLC0415
+    for _d in _p21_defs():
+        ATOMIC_NODES[_d.id] = _d
+except Exception as _p21_exc:  # noqa: BLE001
+    logger.warning("Phase-21 nodes not registered: %s", _p21_exc)
+
+# ── Phase-16/17/18/19 retroactive migration shims (LegacyPhaseScriptRunner) ──
+try:
+    from glossa_lab.experiment_graph_phase_legacy import _phase_legacy_node_defs as _plg_defs  # noqa: PLC0415
+    for _d in _plg_defs():
+        ATOMIC_NODES[_d.id] = _d
+except Exception as _plg_exc:  # noqa: BLE001
+    logger.warning("Phase-legacy nodes not registered: %s", _plg_exc)
+
 
 # ── Graph execution ────────────────────────────────────────────────────────────────────
 

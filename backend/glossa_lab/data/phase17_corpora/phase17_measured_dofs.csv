@@ -1,0 +1,2 @@
+name,n_tokens,n_types,zipf_alpha,zipf_r2,mi_gamma,mi_r2_pow,epistatic_2nd_norm,epistatic_3rd_norm,h1_norm,h1_nats,note
+damos_linear_b,44850,8507,0.8224,0.8943,0.0486,0.8383,0.5956,0.3401,0.7161,6.4793,"DAMOS Mycenaean Linear B; full corpus scrape, Phase-17."

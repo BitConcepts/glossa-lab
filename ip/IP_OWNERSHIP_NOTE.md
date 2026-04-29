@@ -1,7 +1,7 @@
 # IP_OWNERSHIP_NOTE
 **Version**: 1.0  
 **Date**: 2026-04-23  
-**Owner**: Tristen Pierson / BitConcepts, LLC  
+**Owner**: Tristen Pierson / Layer1Labs Silicon, Inc.  
 **Confidentiality**: INTERNAL — LEGAL SENSITIVE
 
 ---
@@ -11,7 +11,7 @@
 All research methodology, software, analysis pipelines, data transformations, sign registries, crosswalks, structural models, and written outputs produced in the Glossa-Lab Indus decipherment project are the exclusive intellectual property of:
 
 **Tristen Pierson**  
-**BitConcepts, LLC**
+**Layer1Labs Silicon, Inc.**
 
 This includes but is not limited to:
 - The CGSA (Corpus-Grounded Structural Analysis) methodology and all phases thereof
@@ -34,7 +34,7 @@ The following datasets are used under their respective licenses and do NOT const
 | holdatllc corpus | MIT | Free use; attribution required |
 | Parpola sign descriptions | CISI Vol. 1 (1987) | Academic fair use |
 
-Our original analysis, crosswalks, and registry built from these datasets are original works owned by BitConcepts, LLC.
+Our original analysis, crosswalks, and registry built from these datasets are original works owned by Layer1Labs Silicon, Inc.
 
 ---
 
@@ -56,7 +56,7 @@ Dr. Andreas Fuls: contacted for potential data access (ICIT database). Has no IP
 
 - **Patent**: The CGSA methodology and Glossa-Lab experimental platform may have patentable aspects. Patent review recommended before any public preprint if CRITICAL signal is reached.
 - **Publication**: Preprint-first strategy on arXiv. Author list: Tristen Pierson (sole author unless co-authorship agreement signed).
-- **Government reward / prize**: Any Tamil Nadu government prize or equivalent recognition is the property of Tristen Pierson / BitConcepts, LLC as the originating researchers.
+- **Government reward / prize**: Any Tamil Nadu government prize or equivalent recognition is the property of Tristen Pierson / Layer1Labs Silicon, Inc. as the originating researchers.
 
 ---
 

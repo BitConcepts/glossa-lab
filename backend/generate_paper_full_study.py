@@ -72,7 +72,7 @@ doc = SimpleDocTemplate(
     leftMargin=3*cm, rightMargin=3*cm,
     topMargin=2.5*cm, bottomMargin=2.5*cm,
     title="Glossa Lab: Computational Decipherment and the Linear A Problem",
-    author="BitConcepts",
+    author=\"Layer1Labs Silicon, Inc.\",
 )
 
 styles = getSampleStyleSheet()
@@ -143,7 +143,7 @@ c.append(Paragraph(
     "Decipherment Validation, Linear A Phonological Analysis, and Anti-Circularity Experiments",SUBTITLE))
 c.append(Spacer(1, 0.3*cm))
 c.append(HRFlowable(width="100%",thickness=0.5,color=MGREY,spaceAfter=8))
-c.append(Paragraph("BitConcepts · Glossa Lab Research Programme · 2026", AUTHORS))
+c.append(Paragraph("Layer1Labs Silicon, Inc. \u00B7 Glossa Lab Research Programme · 2026", AUTHORS))
 c.append(Paragraph(
     f"Version 1.0 · {datetime.now(timezone.utc).strftime('%B %Y')} · git main",
     ParagraphStyle("ver",parent=styles["Normal"],fontSize=9,alignment=TA_CENTER,

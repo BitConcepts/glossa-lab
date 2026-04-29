@@ -1,0 +1,22 @@
+{
+  "id": "indus_phase20a_length_strata",
+  "name": "Indus Phase-20a \u2014 length-stratified spectral analysis",
+  "description": "Phase-20 follow-up to Phase-19 finding 1 (M77's bigram-transition spectral gap of ~0.01 is ~50x smaller than every natural-language reference). Stratifies M77 inscriptions into length bins L1-2, L3-4, L5-6, L7+ and re-computes the spectral gap per bin. If the gap rises with length, the M77 anomaly is dominated by 1-3 sign pseudo-inscriptions / numerical tags. Output: reports/phase20a_length_strata.json.",
+  "auto_migrated": false,
+  "nodes": [
+    { "id": "load",     "type": "expNode", "data": { "atomicId": "M77InscriptionLoader",  "label": "Load M77 inscriptions",        "params": { "use_raw": false, "label": "indus_m77" } }, "position": { "x": 60,  "y": 100 } },
+    { "id": "strat",    "type": "expNode", "data": { "atomicId": "LengthStratifier",       "label": "Stratify by length",            "params": { "bins": [[1,2],[3,4],[5,6],[7,9999]] } }, "position": { "x": 360, "y": 100 } },
+    { "id": "spectral", "type": "expNode", "data": { "atomicId": "BinSpectralFingerprint", "label": "Per-bin spectral fingerprint", "params": {} }, "position": { "x": 660, "y": 100 } },
+    { "id": "merge",    "type": "expNode", "data": { "atomicId": "Merger",                 "label": "Merge results",                  "params": {} }, "position": { "x": 960, "y": 100 } },
+    { "id": "out",      "type": "expNode", "data": { "atomicId": "JSONExport",             "label": "Save Phase-20a results",         "params": { "filename": "phase20a_length_strata.json" } }, "position": { "x": 1240, "y": 100 } }
+  ],
+  "edges": [
+    { "id": "e_load_strat",      "source": "load",     "target": "strat",    "sourcePort": "sequences",       "targetPort": "sequences" },
+    { "id": "e_strat_spectral", "source": "strat",    "target": "spectral", "sourcePort": "stratifications", "targetPort": "stratifications" },
+    { "id": "e_strat_merge",    "source": "strat",    "target": "merge",    "sourcePort": "summary",         "targetPort": "a" },
+    { "id": "e_spec_merge",     "source": "spectral", "target": "merge",    "sourcePort": "per_bin",         "targetPort": "b" },
+    { "id": "e_spec_v_merge",   "source": "spectral", "target": "merge",    "sourcePort": "verdict",         "targetPort": "c" },
+    { "id": "e_load_merge",     "source": "load",     "target": "merge",    "sourcePort": "n_inscriptions",  "targetPort": "d" },
+    { "id": "e_merge_out",      "source": "merge",    "target": "out",      "sourcePort": "json",            "targetPort": "data" }
+  ]
+}

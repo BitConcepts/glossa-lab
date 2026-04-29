@@ -1,0 +1,21 @@
+{
+  "id": "indus_phase20d_fuls_positional",
+  "name": "Indus Phase-20d \u2014 Fuls-style positional sign-function classifier",
+  "description": "Phase-20 follow-up to Phase-19 finding 4 (14/20 top epistatic trigrams in M77 are pure same-sign repetitions). Classifies each M77 sign into INITIAL / MEDIAL / TERMINAL / NUMERICAL / MIXED based on Fuls 2013 NWSP I/M/T position rates plus a same-sign repetition rate that surfaces the numerical-stroke artifact. Output: reports/phase20d_fuls_positional.json.",
+  "auto_migrated": false,
+  "nodes": [
+    { "id": "load",   "type": "expNode", "data": { "atomicId": "M77InscriptionLoader",     "label": "Load M77 inscriptions",      "params": { "use_raw": false } }, "position": { "x": 60,  "y": 100 } },
+    { "id": "fuls",   "type": "expNode", "data": { "atomicId": "FulsPositionalClassifier", "label": "5-way Fuls classifier",       "params": { "min_count": 5, "dom_threshold": 0.55, "secondary_threshold": 0.30, "numerical_rr": 0.20 } }, "position": { "x": 360, "y": 100 } },
+    { "id": "merge",  "type": "expNode", "data": { "atomicId": "Merger",                   "label": "Merge results",                "params": {} }, "position": { "x": 660, "y": 100 } },
+    { "id": "out",    "type": "expNode", "data": { "atomicId": "JSONExport",               "label": "Save Phase-20d results",       "params": { "filename": "phase20d_fuls_positional.json" } }, "position": { "x": 960, "y": 100 } }
+  ],
+  "edges": [
+    { "id": "e_load_fuls",  "source": "load",  "target": "fuls",  "sourcePort": "sequences",         "targetPort": "sequences" },
+    { "id": "e_fuls_merge", "source": "fuls",  "target": "merge", "sourcePort": "counts_by_class",   "targetPort": "a" },
+    { "id": "e_fuls_frac",  "source": "fuls",  "target": "merge", "sourcePort": "fractions_by_class","targetPort": "b" },
+    { "id": "e_fuls_table", "source": "fuls",  "target": "merge", "sourcePort": "table",             "targetPort": "c" },
+    { "id": "e_fuls_v",     "source": "fuls",  "target": "merge", "sourcePort": "verdict",           "targetPort": "d" },
+    { "id": "e_load_n",     "source": "load",  "target": "merge", "sourcePort": "n_inscriptions",    "targetPort": "e" },
+    { "id": "e_merge_out",  "source": "merge", "target": "out",   "sourcePort": "json",              "targetPort": "data" }
+  ]
+}

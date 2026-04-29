@@ -1,0 +1,27 @@
+{
+  "id": "indus_phase20c_ferrara_cm_extract",
+  "name": "Indus Phase-20c \u2014 Ferrara 2006 OCR + CM catalog extraction",
+  "description": "Phase-20 follow-up to Phase-19 finding 2 (the Cypro-Minoan typological-priors-only YAML fits M77 at max_violation=0.0). Tests whether the Ferrara 2006 PhD PDF (corpora/downloads/ferrara_2006_phd_cyprominoan.pdf, 478MB) can be programmatically harvested for an empirical CM corpus that would replace the typological prior. Extracts text via PyMuPDF, then runs heuristic catalog parsing for inscription IDs (RASH Avv NN, ENKO Atab NN, CM N.NNN), sign sequences in transliteration form (NNN-NNN-NNN), and Cypro-Minoan unicode codepoints (U+12F90..U+12FFF). Output: reports/phase20c_ferrara_cm_extract.json.",
+  "auto_migrated": false,
+  "nodes": [
+    { "id": "fpath",  "type": "expNode", "data": { "atomicId": "StaticValue", "label": "Ferrara PDF path", "params": { "value": "C:/Users/trist/Development/BitConcepts/glossa-lab/corpora/downloads/ferrara_2006_phd_cyprominoan.pdf" } }, "position": { "x": 60,  "y": 100 } },
+    { "id": "pdf",    "type": "expNode", "data": { "atomicId": "PDFTextExtractor", "label": "Extract text per page", "params": { "max_pages": 600, "start_page": 0 } }, "position": { "x": 360, "y": 100 } },
+    { "id": "parser", "type": "expNode", "data": { "atomicId": "CMCatalogParser",  "label": "CM catalog parser",      "params": {} }, "position": { "x": 660, "y": 100 } },
+    { "id": "merge",  "type": "expNode", "data": { "atomicId": "Merger", "label": "Merge results", "params": {} }, "position": { "x": 960, "y": 100 } },
+    { "id": "out",    "type": "expNode", "data": { "atomicId": "JSONExport", "label": "Save Phase-20c results", "params": { "filename": "phase20c_ferrara_cm_extract.json" } }, "position": { "x": 1240, "y": 100 } }
+  ],
+  "edges": [
+    { "id": "e_path_pdf",  "source": "fpath",  "target": "pdf",    "sourcePort": "value",                  "targetPort": "file_path" },
+    { "id": "e_pdf_parse", "source": "pdf",    "target": "parser", "sourcePort": "pages",                  "targetPort": "pages" },
+    { "id": "e_pdf_merge", "source": "pdf",    "target": "merge",  "sourcePort": "n_total_pages",          "targetPort": "a" },
+    { "id": "e_pdf_chars", "source": "pdf",    "target": "merge",  "sourcePort": "total_characters",       "targetPort": "b" },
+    { "id": "e_p_n",       "source": "parser", "target": "merge",  "sourcePort": "n_inscriptions_recovered","targetPort": "c" },
+    { "id": "e_p_seq",     "source": "parser", "target": "merge",  "sourcePort": "n_with_sequence",        "targetPort": "d" },
+    { "id": "e_p_uni",     "source": "parser", "target": "merge",  "sourcePort": "n_cm_unicode_glyphs",    "targetPort": "e" },
+    { "id": "e_p_top",     "source": "parser", "target": "merge",  "sourcePort": "top_sign_codes",         "targetPort": "f" },
+    { "id": "e_p_unitop",  "source": "parser", "target": "merge",  "sourcePort": "top_cm_unicode",         "targetPort": "g" },
+    { "id": "e_p_v",       "source": "parser", "target": "merge",  "sourcePort": "verdict",                "targetPort": "h" },
+    { "id": "e_p_sample",  "source": "parser", "target": "merge",  "sourcePort": "inscriptions_sample",    "targetPort": "i" },
+    { "id": "e_merge_out", "source": "merge",  "target": "out",    "sourcePort": "json",                   "targetPort": "data" }
+  ]
+}

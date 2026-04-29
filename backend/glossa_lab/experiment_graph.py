@@ -2336,6 +2336,14 @@ try:
 except Exception as _p15_exc:  # noqa: BLE001
     logger.warning("Phase-15 nodes not registered: %s", _p15_exc)
 
+# ── Phase-20 nodes (length-stratified spectral, cluster archaeology, Ferrara OCR, Fuls) ──
+try:
+    from glossa_lab.experiment_graph_phase20 import _phase20_node_defs as _p20_defs  # noqa: PLC0415
+    for _d in _p20_defs():
+        ATOMIC_NODES[_d.id] = _d
+except Exception as _p20_exc:  # noqa: BLE001
+    logger.warning("Phase-20 nodes not registered: %s", _p20_exc)
+
 
 # ── Graph execution ────────────────────────────────────────────────────────────────────
 

@@ -1,0 +1,20 @@
+{
+  "phase": "phase17",
+  "purpose": "Linear B DoF measurement",
+  "results": [
+    {
+      "name": "damos_linear_b",
+      "n_tokens": 44850,
+      "n_types": 8507,
+      "zipf_alpha": 0.8224,
+      "zipf_r2": 0.8943,
+      "mi_gamma": 0.0486,
+      "mi_r2_pow": 0.8383,
+      "epistatic_2nd_norm": 0.5956,
+      "epistatic_3rd_norm": 0.3401,
+      "h1_norm": 0.7161,
+      "h1_nats": 6.4793,
+      "note": "DAMOS Mycenaean Linear B; full corpus scrape, Phase-17."
+    }
+  ]
+}

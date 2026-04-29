@@ -1,0 +1,50 @@
+{
+  "data": {
+    "a__min_run": 2,
+    "a__n_inscriptions": 1669,
+    "a__n_tokens_in": 5361,
+    "a__n_tokens_out": 3212,
+    "a__n_tokens_dropped": 2149,
+    "a__n_runs_collapsed": 764,
+    "a__share_kept": 0.5991,
+    "a__n_distinct_signs_in": 64,
+    "a__n_distinct_signs_out": 64,
+    "a__verdict": "Collapsed 764 runs of >= 2 same-sign repetitions, dropping 2149 of 5361 tokens (40.1% reduction). Distinct signs unchanged (64 \u2192 64).",
+    "b__original": {
+      "n_seqs": 1669,
+      "n_tokens": 5361,
+      "n_signs": 63,
+      "spectral_gap": 0.0,
+      "top_eigenvalues": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "verdict": "highly deterministic / anomalous"
+    },
+    "b__collapsed": {
+      "n_seqs": 1669,
+      "n_tokens": 3212,
+      "n_signs": 54,
+      "spectral_gap": 0.0,
+      "top_eigenvalues": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.992587,
+        0.905046,
+        0.643984
+      ],
+      "verdict": "highly deterministic / anomalous"
+    },
+    "c": "Spectral gap range across strata: 0.0000 (original) \u2192 0.0000 (original), spread = 0.0000. Strata behave similarly.",
+    "d": 1669
+  }
+}

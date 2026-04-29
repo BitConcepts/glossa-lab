@@ -1,0 +1,13 @@
+{
+  "id": "indus_phase19_sign_clusters_genre_cm",
+  "name": "Indus Phase-19 \u2014 sign clusters + genre + CM (legacy migration)",
+  "description": "Retroactive migration of scripts/phase19/sign_clusters_genre_cm.py. Distributional sign clustering + corpus-genre + Cypro-Minoan reference signatures. Output: reports/phase19_sign_clusters_genre_cm.json.",
+  "auto_migrated": false,
+  "nodes": [
+    { "id": "run", "type": "expNode", "data": { "atomicId": "LegacyPhaseScriptRunner", "label": "Run Phase-19 sign_clusters_genre_cm", "params": { "script_path": "scripts/phase19/sign_clusters_genre_cm.py", "output_path": "reports/phase19_sign_clusters_genre_cm.json", "timeout_s": 1200 } }, "position": { "x": 60, "y": 100 } },
+    { "id": "out", "type": "expNode", "data": { "atomicId": "JSONExport",            "label": "Save run summary", "params": { "filename": "phase19_sign_clusters_genre_cm.json" } }, "position": { "x": 360, "y": 100 } }
+  ],
+  "edges": [
+    { "id": "e_run_out", "source": "run", "target": "out", "sourcePort": "verdict", "targetPort": "data" }
+  ]
+}

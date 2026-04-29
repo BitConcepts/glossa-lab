@@ -1,0 +1,94 @@
+version: "1.0"
+model_id: indo_aryan_morphology
+description: >
+  Indo-Aryan-family hypothesis (Vedic Sanskrit / Old Indo-Aryan) projected
+  as a CPSC constraint manifold over the Phase-14 structural-signature
+  DoFs. Indo-Aryan is fusional/inflectional with a moderately complex
+  syllabic transcription. Sandhi at morpheme boundaries reduces strict
+  agglutinative chain length. Compared to Dravidian: lower MI gamma
+  (sandhi smears phonological boundaries), lower epistatic 3rd-order
+  fraction (less suffix-chain depth), broader Zipf alpha. Use with
+  CASHypothesisProjector to score whether the M77 DoFs lie inside the
+  Indo-Aryan language manifold.
+state:
+  variables:
+    - name: zipf_alpha
+      type: float
+      domain: [0.0, 3.0]
+      description: "Zipf-Mandelbrot alpha. Sanskrit: 0.90-1.25."
+    - name: zipf_r2
+      type: float
+      domain: [0.0, 1.0]
+      description: "Zipf fit R^2. Sanskrit: >= 0.80."
+    - name: mi_gamma
+      type: float
+      domain: [0.0, 5.0]
+      description: "Power-law MI decay. Inflectional/sandhi: 0.30-0.85."
+    - name: mi_r2_pow
+      type: float
+      domain: [0.0, 1.0]
+      description: "MI power-law fit R^2. Sanskrit: >= 0.65."
+    - name: epistatic_2nd_norm
+      type: float
+      domain: [0.0, 1.0]
+      description: "2nd-order info fraction. Inflectional: 0.10-0.35."
+    - name: epistatic_3rd_norm
+      type: float
+      domain: [0.0, 1.0]
+      description: "3rd-order info fraction. Inflectional: 0.05-0.20."
+    - name: h1_norm
+      type: float
+      domain: [0.0, 1.0]
+      description: "Per-symbol H1 / ln(L). Syllabic: 0.60-0.85."
+    - name: h1_nats
+      type: float
+      domain: [0.0, 12.0]
+      description: "Raw H1 in nats (diagnostic only)."
+    - name: indo_aryan_score
+      type: float
+      domain: [0.0, 2.0]
+      derived: true
+      description: "Aggregate Indo-Aryan-fit score. >=1.5 strong fit."
+degrees_of_freedom:
+  free:
+    - zipf_alpha
+    - zipf_r2
+    - mi_gamma
+    - mi_r2_pow
+    - epistatic_2nd_norm
+    - epistatic_3rd_norm
+    - h1_norm
+    - h1_nats
+constraints:
+  - id: zipf_alpha_ia_low
+    expression: "zipf_alpha >= 0.90"
+    description: "Sanskrit Zipf alpha is broader than Dravidian."
+  - id: zipf_alpha_ia_high
+    expression: "zipf_alpha <= 1.25"
+  - id: zipf_r2_ia
+    expression: "zipf_r2 >= 0.75"
+  - id: mi_gamma_ia_low
+    expression: "mi_gamma >= 0.25"
+    description: "Sandhi reduces but does not eliminate MI decay."
+  - id: mi_gamma_ia_high
+    expression: "mi_gamma <= 0.95"
+  - id: mi_r2_pow_ia
+    expression: "mi_r2_pow >= 0.55"
+  - id: hed_2nd_ia_low
+    expression: "epistatic_2nd_norm >= 0.08"
+    description: "Inflectional morphology raises 2nd-order interactions."
+  - id: hed_2nd_ia_high
+    expression: "epistatic_2nd_norm <= 0.40"
+  - id: hed_3rd_ia_low
+    expression: "epistatic_3rd_norm >= 0.04"
+  - id: h1_norm_ia_low
+    expression: "h1_norm >= 0.55"
+  - id: h1_norm_ia_high
+    expression: "h1_norm <= 0.95"
+  - id: indo_aryan_score_def
+    expression: "indo_aryan_score = zipf_r2 * 0.25 + mi_r2_pow * 0.25 + epistatic_2nd_norm * 0.9 + epistatic_3rd_norm * 1.0 + h1_norm * 0.30"
+    description: "Score weighted toward fusional / mid-range epistatic fingerprint."
+projection:
+  strategy: iterative
+  max_iterations: 200
+  convergence_epsilon: 0.000001

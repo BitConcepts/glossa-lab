@@ -1,0 +1,95 @@
+version: "1.0"
+model_id: sumerian_morphology
+description: >
+  Sumerian-family hypothesis (language isolate, agglutinative SOV with
+  rich verbal prefix and suffix system) projected as a CPSC constraint
+  manifold over the Phase-14 structural-signature DoFs. Sumerian is
+  written logo-syllabically with a much larger sign inventory (~600
+  signs in Ur III) than syllabic Dravidian / Indo-Aryan, producing
+  lower h1_norm (more even distribution across many signs), broader
+  Zipf alpha, and weaker MI decay (some signs are CV logograms with
+  no morphological coupling at the sign level). Use with
+  CASHypothesisProjector to score whether the M77 DoFs lie inside the
+  Sumerian language manifold.
+state:
+  variables:
+    - name: zipf_alpha
+      type: float
+      domain: [0.0, 3.0]
+      description: "Zipf-Mandelbrot alpha. Sumerian Ur III: 0.80-1.10."
+    - name: zipf_r2
+      type: float
+      domain: [0.0, 1.0]
+      description: "Zipf fit R^2. Sumerian: >= 0.75."
+    - name: mi_gamma
+      type: float
+      domain: [0.0, 5.0]
+      description: "Power-law MI decay. Logo-syllabic: 0.20-0.70."
+    - name: mi_r2_pow
+      type: float
+      domain: [0.0, 1.0]
+      description: "MI power-law fit R^2. Sumerian: >= 0.50."
+    - name: epistatic_2nd_norm
+      type: float
+      domain: [0.0, 1.0]
+      description: "2nd-order info fraction. Logo-syllabic: 0.05-0.25."
+    - name: epistatic_3rd_norm
+      type: float
+      domain: [0.0, 1.0]
+      description: "3rd-order info fraction. Logo-syllabic: 0.03-0.15."
+    - name: h1_norm
+      type: float
+      domain: [0.0, 1.0]
+      description: "Per-symbol H1 / ln(L). Large inventory: 0.50-0.80."
+    - name: h1_nats
+      type: float
+      domain: [0.0, 12.0]
+      description: "Raw H1 in nats (diagnostic only)."
+    - name: sumerian_score
+      type: float
+      domain: [0.0, 2.0]
+      derived: true
+      description: "Aggregate Sumerian-fit score. >=1.5 strong fit."
+degrees_of_freedom:
+  free:
+    - zipf_alpha
+    - zipf_r2
+    - mi_gamma
+    - mi_r2_pow
+    - epistatic_2nd_norm
+    - epistatic_3rd_norm
+    - h1_norm
+    - h1_nats
+constraints:
+  - id: zipf_alpha_su_low
+    expression: "zipf_alpha >= 0.75"
+    description: "Larger inventory drags Zipf alpha downward."
+  - id: zipf_alpha_su_high
+    expression: "zipf_alpha <= 1.15"
+  - id: zipf_r2_su
+    expression: "zipf_r2 >= 0.70"
+  - id: mi_gamma_su_low
+    expression: "mi_gamma >= 0.15"
+    description: "Some MI decay must exist (not flat)."
+  - id: mi_gamma_su_high
+    expression: "mi_gamma <= 0.80"
+    description: "Logo-syllabic mixing weakens long-range MI."
+  - id: mi_r2_pow_su
+    expression: "mi_r2_pow >= 0.45"
+  - id: hed_2nd_su_low
+    expression: "epistatic_2nd_norm >= 0.04"
+  - id: hed_2nd_su_high
+    expression: "epistatic_2nd_norm <= 0.30"
+  - id: hed_3rd_su_low
+    expression: "epistatic_3rd_norm >= 0.02"
+  - id: h1_norm_su_low
+    expression: "h1_norm >= 0.45"
+  - id: h1_norm_su_high
+    expression: "h1_norm <= 0.85"
+  - id: sumerian_score_def
+    expression: "sumerian_score = zipf_r2 * 0.30 + mi_r2_pow * 0.30 + epistatic_2nd_norm * 0.7 + epistatic_3rd_norm * 0.7 + h1_norm * 0.40"
+    description: "Score weighted toward fit-quality DoFs (logo-syllabic noise)."
+projection:
+  strategy: iterative
+  max_iterations: 200
+  convergence_epsilon: 0.000001

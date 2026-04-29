@@ -1,0 +1,303 @@
+{
+  "data": {
+    "a__members": [
+      "034",
+      "106",
+      "157",
+      "307",
+      "427",
+      "617",
+      "712",
+      "718",
+      "858",
+      "874"
+    ],
+    "a__size": 10,
+    "b": [
+      {
+        "site_prefix": "100000",
+        "n_inscriptions": 1160,
+        "n_with_cluster": 307,
+        "rate_with_cluster": 0.2647,
+        "enrichment": 0.885
+      },
+      {
+        "site_prefix": "210000",
+        "n_inscriptions": 117,
+        "n_with_cluster": 49,
+        "rate_with_cluster": 0.4188,
+        "enrichment": 1.401
+      },
+      {
+        "site_prefix": "200000",
+        "n_inscriptions": 91,
+        "n_with_cluster": 17,
+        "rate_with_cluster": 0.1868,
+        "enrichment": 0.625
+      },
+      {
+        "site_prefix": "510000",
+        "n_inscriptions": 88,
+        "n_with_cluster": 65,
+        "rate_with_cluster": 0.7386,
+        "enrichment": 2.471
+      },
+      {
+        "site_prefix": "310000",
+        "n_inscriptions": 78,
+        "n_with_cluster": 15,
+        "rate_with_cluster": 0.1923,
+        "enrichment": 0.643
+      },
+      {
+        "site_prefix": "400000",
+        "n_inscriptions": 47,
+        "n_with_cluster": 3,
+        "rate_with_cluster": 0.0638,
+        "enrichment": 0.213
+      },
+      {
+        "site_prefix": "110000",
+        "n_inscriptions": 22,
+        "n_with_cluster": 9,
+        "rate_with_cluster": 0.4091,
+        "enrichment": 1.368
+      },
+      {
+        "site_prefix": "700000",
+        "n_inscriptions": 22,
+        "n_with_cluster": 15,
+        "rate_with_cluster": 0.6818,
+        "enrichment": 2.28
+      },
+      {
+        "site_prefix": "500000",
+        "n_inscriptions": 15,
+        "n_with_cluster": 9,
+        "rate_with_cluster": 0.6,
+        "enrichment": 2.007
+      },
+      {
+        "site_prefix": "900000",
+        "n_inscriptions": 7,
+        "n_with_cluster": 4,
+        "rate_with_cluster": 0.5714,
+        "enrichment": 1.911
+      },
+      {
+        "site_prefix": "710000",
+        "n_inscriptions": 6,
+        "n_with_cluster": 4,
+        "rate_with_cluster": 0.6667,
+        "enrichment": 2.23
+      },
+      {
+        "site_prefix": "600000",
+        "n_inscriptions": 5,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0,
+        "enrichment": 0.0
+      },
+      {
+        "site_prefix": "410000",
+        "n_inscriptions": 5,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0,
+        "enrichment": 0.0
+      },
+      {
+        "site_prefix": "300000",
+        "n_inscriptions": 3,
+        "n_with_cluster": 1,
+        "rate_with_cluster": 0.3333,
+        "enrichment": 1.115
+      },
+      {
+        "site_prefix": "610000",
+        "n_inscriptions": 2,
+        "n_with_cluster": 1,
+        "rate_with_cluster": 0.5,
+        "enrichment": 1.672
+      },
+      {
+        "site_prefix": "910000",
+        "n_inscriptions": 1,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0,
+        "enrichment": 0.0
+      }
+    ],
+    "c": [
+      {
+        "length": 1,
+        "n_inscriptions": 564,
+        "n_with_cluster": 48,
+        "rate_with_cluster": 0.0851
+      },
+      {
+        "length": 2,
+        "n_inscriptions": 357,
+        "n_with_cluster": 78,
+        "rate_with_cluster": 0.2185
+      },
+      {
+        "length": 3,
+        "n_inscriptions": 270,
+        "n_with_cluster": 129,
+        "rate_with_cluster": 0.4778
+      },
+      {
+        "length": 4,
+        "n_inscriptions": 188,
+        "n_with_cluster": 81,
+        "rate_with_cluster": 0.4309
+      },
+      {
+        "length": 5,
+        "n_inscriptions": 112,
+        "n_with_cluster": 63,
+        "rate_with_cluster": 0.5625
+      },
+      {
+        "length": 6,
+        "n_inscriptions": 73,
+        "n_with_cluster": 42,
+        "rate_with_cluster": 0.5753
+      },
+      {
+        "length": 7,
+        "n_inscriptions": 34,
+        "n_with_cluster": 23,
+        "rate_with_cluster": 0.6765
+      },
+      {
+        "length": 8,
+        "n_inscriptions": 27,
+        "n_with_cluster": 20,
+        "rate_with_cluster": 0.7407
+      },
+      {
+        "length": 9,
+        "n_inscriptions": 10,
+        "n_with_cluster": 5,
+        "rate_with_cluster": 0.5
+      },
+      {
+        "length": 10,
+        "n_inscriptions": 6,
+        "n_with_cluster": 1,
+        "rate_with_cluster": 0.1667
+      },
+      {
+        "length": 11,
+        "n_inscriptions": 2,
+        "n_with_cluster": 2,
+        "rate_with_cluster": 1.0
+      },
+      {
+        "length": 14,
+        "n_inscriptions": 1,
+        "n_with_cluster": 1,
+        "rate_with_cluster": 1.0
+      },
+      {
+        "length": 15,
+        "n_inscriptions": 1,
+        "n_with_cluster": 1,
+        "rate_with_cluster": 1.0
+      },
+      {
+        "length": 16,
+        "n_inscriptions": 1,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0
+      },
+      {
+        "length": 17,
+        "n_inscriptions": 1,
+        "n_with_cluster": 1,
+        "rate_with_cluster": 1.0
+      },
+      {
+        "length": 18,
+        "n_inscriptions": 2,
+        "n_with_cluster": 1,
+        "rate_with_cluster": 0.5
+      },
+      {
+        "length": 19,
+        "n_inscriptions": 2,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0
+      },
+      {
+        "length": 20,
+        "n_inscriptions": 2,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0
+      },
+      {
+        "length": 22,
+        "n_inscriptions": 1,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0
+      },
+      {
+        "length": 23,
+        "n_inscriptions": 1,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0
+      },
+      {
+        "length": 24,
+        "n_inscriptions": 2,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0
+      },
+      {
+        "length": 43,
+        "n_inscriptions": 1,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0
+      },
+      {
+        "length": 47,
+        "n_inscriptions": 1,
+        "n_with_cluster": 1,
+        "rate_with_cluster": 1.0
+      },
+      {
+        "length": 50,
+        "n_inscriptions": 1,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0
+      },
+      {
+        "length": 51,
+        "n_inscriptions": 2,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0
+      },
+      {
+        "length": 52,
+        "n_inscriptions": 4,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0
+      },
+      {
+        "length": 53,
+        "n_inscriptions": 2,
+        "n_with_cluster": 2,
+        "rate_with_cluster": 1.0
+      },
+      {
+        "length": 72,
+        "n_inscriptions": 1,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0
+      }
+    ],
+    "d": 152.3767,
+    "e": "PREDICTION 2 CONFIRMED: chi2=152.38 dof=15; per-site rate range 0.000-0.739 (corpus baseline 0.299)."
+  }
+}

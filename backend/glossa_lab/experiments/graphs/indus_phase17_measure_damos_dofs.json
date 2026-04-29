@@ -1,0 +1,13 @@
+{
+  "id": "indus_phase17_measure_damos_dofs",
+  "name": "Indus Phase-17 \u2014 measure DAMOS Linear B DoFs (legacy migration)",
+  "description": "Retroactive migration of scripts/phase17/measure_damos_dofs.py. Measures the 8 language-signature DoFs on the DAMOS Mycenaean (Linear B) corpus. Output: backend/glossa_lab/data/phase17_corpora/phase17_measured_dofs.json.",
+  "auto_migrated": false,
+  "nodes": [
+    { "id": "run", "type": "expNode", "data": { "atomicId": "LegacyPhaseScriptRunner", "label": "Run Phase-17 measure_damos_dofs", "params": { "script_path": "scripts/phase17/measure_damos_dofs.py", "output_path": "backend/glossa_lab/data/phase17_corpora/phase17_measured_dofs.json", "timeout_s": 600 } }, "position": { "x": 60, "y": 100 } },
+    { "id": "out", "type": "expNode", "data": { "atomicId": "JSONExport",            "label": "Save run summary", "params": { "filename": "phase17_measure_damos_dofs.json" } }, "position": { "x": 360, "y": 100 } }
+  ],
+  "edges": [
+    { "id": "e_run_out", "source": "run", "target": "out", "sourcePort": "verdict", "targetPort": "data" }
+  ]
+}

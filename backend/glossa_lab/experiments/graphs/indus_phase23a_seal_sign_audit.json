@@ -1,0 +1,22 @@
+{
+  "id": "indus_phase23a_seal_sign_audit",
+  "name": "Indus Phase-23a \u2014 seal sign audit",
+  "description": "Phase-23a: audit the inscription_length distribution and signs_confidence tiers across the 13 Indus-seals-at-Mesopotamia inventory after Phase-23 sign ingestion. 10/13 seals now carry indus_signs[] placeholders (37 total signs); 3 are explicitly cuneiform/iconographic-only. Output: reports/phase23a_seal_sign_audit.json.",
+  "auto_migrated": false,
+  "nodes": [
+    { "id": "load",   "type": "expNode", "data": { "atomicId": "RefinedSealLoader", "label": "Load augmented seals + persons", "params": {} },                                "position": { "x": 60,   "y": 100 } },
+    { "id": "audit",  "type": "expNode", "data": { "atomicId": "SealSignAuditor",   "label": "Seal sign auditor",             "params": {} },                                "position": { "x": 360,  "y": 100 } },
+    { "id": "merge",  "type": "expNode", "data": { "atomicId": "Merger",            "label": "Merge",                          "params": {} },                                "position": { "x": 660,  "y": 100 } },
+    { "id": "out",    "type": "expNode", "data": { "atomicId": "JSONExport",        "label": "Save Phase-23a results",         "params": { "filename": "phase23a_seal_sign_audit.json" } }, "position": { "x": 960,  "y": 100 } }
+  ],
+  "edges": [
+    { "id": "e_load_audit_s",    "source": "load",  "target": "audit", "sourcePort": "all_seals",        "targetPort": "all_seals" },
+    { "id": "e_load_audit_md",   "source": "load",  "target": "audit", "sourcePort": "sign_metadata",    "targetPort": "sign_metadata" },
+    { "id": "e_audit_merge_v",   "source": "audit", "target": "merge", "sourcePort": "verdict",          "targetPort": "a" },
+    { "id": "e_audit_merge_n",   "source": "audit", "target": "merge", "sourcePort": "n_inscribed",      "targetPort": "b" },
+    { "id": "e_audit_merge_t",   "source": "audit", "target": "merge", "sourcePort": "total_indus_signs","targetPort": "c" },
+    { "id": "e_audit_merge_bc",  "source": "audit", "target": "merge", "sourcePort": "by_confidence",    "targetPort": "d" },
+    { "id": "e_audit_merge_rows","source": "audit", "target": "merge", "sourcePort": "inscribed_rows",   "targetPort": "e" },
+    { "id": "e_merge_out",       "source": "merge", "target": "out",   "sourcePort": "json",             "targetPort": "data" }
+  ]
+}

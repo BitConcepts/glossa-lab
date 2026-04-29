@@ -1,0 +1,122 @@
+version: "1.0"
+model_id: akkadian_morphology
+description: >
+  Akkadian-Semitic hypothesis (Old Babylonian + Neo-Assyrian Akkadian)
+  projected as a CPSC constraint manifold. Akkadian is fusional/inflectional
+  Semitic with triliteral roots and strong consonantal templating, written
+  logo-syllabically in cuneiform sharing the sign inventory with Sumerian
+  but with very different phonotactic and morphological patterns.
+  Phase-16 introduces this as a SEPARATE hypothesis from sumerian_morphology
+  because the Akkadian language family is genealogically and typologically
+  unrelated to Sumerian; using a single 'cuneiform' CAS would conflate two
+  distinct language manifolds. Constraints are grounded against measured
+  DoFs of the Old Babylonian (398k signs) and Neo-Assyrian (486k signs)
+  Akkadian CDLI subsets.
+measured_from:
+  - corpus: cdli_akkadian_ob
+    n_tokens: 397977
+    n_types: 77524
+    zipf_alpha: 0.7938
+    zipf_r2: 0.8953
+    mi_gamma: 0.0520
+    mi_r2_pow: 0.9205
+    epistatic_2nd_norm: 0.6575
+    epistatic_3rd_norm: 0.3988
+    h1_norm: 0.7391
+    h1_nats: 8.3208
+    note: "CDLI Old Babylonian Akkadian, Phase-16 measurement."
+  - corpus: cdli_akkadian_na
+    n_tokens: 486011
+    n_types: 76964
+    zipf_alpha: 0.9610
+    zipf_r2: 0.9527
+    mi_gamma: 0.0382
+    mi_r2_pow: 0.9217
+    epistatic_2nd_norm: 0.7316
+    epistatic_3rd_norm: 0.5312
+    h1_norm: 0.7707
+    h1_nats: 8.6717
+    note: "CDLI Neo-Assyrian Akkadian, Phase-16 measurement."
+state:
+  variables:
+    - name: zipf_alpha
+      type: float
+      domain: [0.0, 3.0]
+      description: "Zipf-Mandelbrot alpha. Akkadian: 0.79-0.96."
+    - name: zipf_r2
+      type: float
+      domain: [0.0, 1.0]
+      description: "Zipf fit R^2. Akkadian: >= 0.85."
+    - name: mi_gamma
+      type: float
+      domain: [0.0, 5.0]
+      description: "Power-law MI decay. Akkadian cuneiform: 0.03-0.07."
+    - name: mi_r2_pow
+      type: float
+      domain: [0.0, 1.0]
+      description: "MI power-law fit R^2. Akkadian: >= 0.85."
+    - name: epistatic_2nd_norm
+      type: float
+      domain: [0.0, 1.0]
+      description: "2nd-order info fraction. Triliteral templating: 0.65-0.75."
+    - name: epistatic_3rd_norm
+      type: float
+      domain: [0.0, 1.0]
+      description: "3rd-order info fraction. Inflectional: 0.40-0.55."
+    - name: h1_norm
+      type: float
+      domain: [0.0, 1.0]
+      description: "Per-symbol H1 / ln(V). Akkadian: 0.74-0.78."
+    - name: h1_nats
+      type: float
+      domain: [0.0, 12.0]
+      description: "Raw H1 in nats (diagnostic only)."
+    - name: akkadian_score
+      type: float
+      domain: [0.0, 2.0]
+      derived: true
+      description: "Aggregate Akkadian-fit score. >=1.5 strong fit."
+degrees_of_freedom:
+  free:
+    - zipf_alpha
+    - zipf_r2
+    - mi_gamma
+    - mi_r2_pow
+    - epistatic_2nd_norm
+    - epistatic_3rd_norm
+    - h1_norm
+    - h1_nats
+constraints:
+  # Phase-16 grounded ranges. Measurements: zipf_alpha [0.79, 0.96],
+  # mi_gamma [0.04, 0.05], eps2 [0.66, 0.73], eps3 [0.40, 0.53], h1_norm [0.74, 0.77].
+  - id: zipf_alpha_akk_low
+    expression: "zipf_alpha >= 0.72"
+  - id: zipf_alpha_akk_high
+    expression: "zipf_alpha <= 1.05"
+  - id: zipf_r2_akk
+    expression: "zipf_r2 >= 0.85"
+  - id: mi_gamma_akk_low
+    expression: "mi_gamma >= 0.01"
+  - id: mi_gamma_akk_high
+    expression: "mi_gamma <= 0.15"
+  - id: mi_r2_pow_akk
+    expression: "mi_r2_pow >= 0.85"
+  - id: hed_2nd_akk_low
+    expression: "epistatic_2nd_norm >= 0.55"
+    description: "Triliteral root templating yields strong pairwise interactions."
+  - id: hed_2nd_akk_high
+    expression: "epistatic_2nd_norm <= 0.85"
+  - id: hed_3rd_akk_low
+    expression: "epistatic_3rd_norm >= 0.30"
+  - id: hed_3rd_akk_high
+    expression: "epistatic_3rd_norm <= 0.65"
+  - id: h1_norm_akk_low
+    expression: "h1_norm >= 0.65"
+  - id: h1_norm_akk_high
+    expression: "h1_norm <= 0.85"
+  - id: akkadian_score_def
+    expression: "akkadian_score = zipf_r2 * 0.25 + mi_r2_pow * 0.25 + epistatic_2nd_norm * 0.8 + epistatic_3rd_norm * 0.9 + h1_norm * 0.30"
+projection:
+  strategy: iterative
+  max_iterations: 200
+  convergence_epsilon: 0.000001

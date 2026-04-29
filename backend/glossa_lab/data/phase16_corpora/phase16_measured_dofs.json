@@ -1,0 +1,90 @@
+{
+  "phase": "phase16",
+  "purpose": "language-signature DoF measurements on Phase-A corpora",
+  "results": [
+    {
+      "name": "cdli_sumerian_ur3",
+      "n_tokens": 3468699,
+      "n_types": 109948,
+      "zipf_alpha": 1.0978,
+      "zipf_r2": 0.9197,
+      "mi_gamma": 0.1413,
+      "mi_r2_pow": 0.9258,
+      "epistatic_2nd_norm": 0.5102,
+      "epistatic_3rd_norm": 0.2557,
+      "h1_norm": 0.5671,
+      "h1_nats": 6.583,
+      "note": "CDLI subset sumerian_ur3"
+    },
+    {
+      "name": "cdli_sumerian_ob_lit",
+      "n_tokens": 425147,
+      "n_types": 90024,
+      "zipf_alpha": 0.8211,
+      "zipf_r2": 0.9229,
+      "mi_gamma": 0.0262,
+      "mi_r2_pow": 0.9116,
+      "epistatic_2nd_norm": 0.7261,
+      "epistatic_3rd_norm": 0.5095,
+      "h1_norm": 0.783,
+      "h1_nats": 8.9325,
+      "note": "CDLI subset sumerian_ob_lit"
+    },
+    {
+      "name": "cdli_akkadian_ob",
+      "n_tokens": 397977,
+      "n_types": 77524,
+      "zipf_alpha": 0.7938,
+      "zipf_r2": 0.8953,
+      "mi_gamma": 0.052,
+      "mi_r2_pow": 0.9205,
+      "epistatic_2nd_norm": 0.6575,
+      "epistatic_3rd_norm": 0.3988,
+      "h1_norm": 0.7391,
+      "h1_nats": 8.3208,
+      "note": "CDLI subset akkadian_ob"
+    },
+    {
+      "name": "cdli_akkadian_na",
+      "n_tokens": 486011,
+      "n_types": 76964,
+      "zipf_alpha": 0.961,
+      "zipf_r2": 0.9527,
+      "mi_gamma": 0.0382,
+      "mi_r2_pow": 0.9217,
+      "epistatic_2nd_norm": 0.7316,
+      "epistatic_3rd_norm": 0.5312,
+      "h1_norm": 0.7707,
+      "h1_nats": 8.6717,
+      "note": "CDLI subset akkadian_na"
+    },
+    {
+      "name": "kee2u_tamil",
+      "n_tokens": 17414,
+      "n_types": 1924,
+      "zipf_alpha": 1.1749,
+      "zipf_r2": 0.9736,
+      "mi_gamma": 0.0917,
+      "mi_r2_pow": 0.7496,
+      "epistatic_2nd_norm": 0.5691,
+      "epistatic_3rd_norm": 0.2815,
+      "h1_norm": 0.7752,
+      "h1_nats": 5.8624,
+      "note": "Kee2u Tamil morpheme-ID stream"
+    },
+    {
+      "name": "kalyanaraman_vedic",
+      "n_tokens": 98707,
+      "n_types": 49140,
+      "zipf_alpha": 0.5849,
+      "zipf_r2": 0.9022,
+      "mi_gamma": 0.0097,
+      "mi_r2_pow": 0.9718,
+      "epistatic_2nd_norm": 0.9017,
+      "epistatic_3rd_norm": 0.8191,
+      "h1_norm": 0.9357,
+      "h1_nats": 10.1075,
+      "note": "Devanagari vocabulary from Kalyanaraman corpus"
+    }
+  ]
+}

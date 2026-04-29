@@ -1,16 +1,42 @@
-version: "1.0"
+version: "1.1"
 model_id: sumerian_morphology
 description: >
   Sumerian-family hypothesis (language isolate, agglutinative SOV with
   rich verbal prefix and suffix system) projected as a CPSC constraint
   manifold over the Phase-14 structural-signature DoFs. Sumerian is
-  written logo-syllabically with a much larger sign inventory (~600
-  signs in Ur III) than syllabic Dravidian / Indo-Aryan, producing
-  lower h1_norm (more even distribution across many signs), broader
-  Zipf alpha, and weaker MI decay (some signs are CV logograms with
-  no morphological coupling at the sign level). Use with
-  CASHypothesisProjector to score whether the M77 DoFs lie inside the
-  Sumerian language manifold.
+  written logo-syllabically with a large sign inventory (~600 signs in
+  Ur III) producing broad Zipf alpha and weak MI decay (sign-level
+  morphological coupling washed out by logograms).
+  Phase-16 update: constraint ranges grounded against measured DoFs of
+  the Ur III (3.47M signs) and Old Babylonian Sumerian-literary (425k
+  signs) CDLI subsets. Notable empirical correction: mi_gamma turned
+  out far LOWER than the Phase-15 heuristic guess of 0.15-0.80 because
+  CDLI is dominated by short formulaic admin texts; new lower bound 0.01.
+measured_from:
+  - corpus: cdli_sumerian_ur3
+    n_tokens: 3468699
+    n_types: 109948
+    zipf_alpha: 1.0978
+    zipf_r2: 0.9197
+    mi_gamma: 0.1413
+    mi_r2_pow: 0.9258
+    epistatic_2nd_norm: 0.5102
+    epistatic_3rd_norm: 0.2557
+    h1_norm: 0.5671
+    h1_nats: 6.5830
+    note: "CDLI Ur III Sumerian, Phase-16 measurement."
+  - corpus: cdli_sumerian_ob_lit
+    n_tokens: 425147
+    n_types: 90024
+    zipf_alpha: 0.8211
+    zipf_r2: 0.9229
+    mi_gamma: 0.0262
+    mi_r2_pow: 0.9116
+    epistatic_2nd_norm: 0.7261
+    epistatic_3rd_norm: 0.5095
+    h1_norm: 0.7830
+    h1_nats: 8.9325
+    note: "CDLI Old Babylonian Sumerian (literary admixture), Phase-16 measurement."
 state:
   variables:
     - name: zipf_alpha
@@ -61,29 +87,37 @@ degrees_of_freedom:
     - h1_norm
     - h1_nats
 constraints:
+  # Phase-16 grounded ranges. Measurements span [0.82, 1.10] for zipf_alpha and
+  # [0.57, 0.78] for h1_norm, so we use [low - buffer, high + buffer].
   - id: zipf_alpha_su_low
-    expression: "zipf_alpha >= 0.75"
-    description: "Larger inventory drags Zipf alpha downward."
+    expression: "zipf_alpha >= 0.78"
   - id: zipf_alpha_su_high
-    expression: "zipf_alpha <= 1.15"
+    expression: "zipf_alpha <= 1.20"
   - id: zipf_r2_su
-    expression: "zipf_r2 >= 0.70"
+    expression: "zipf_r2 >= 0.85"
+    description: "Measured 0.92 on both subsets; tightened from prior 0.70."
   - id: mi_gamma_su_low
-    expression: "mi_gamma >= 0.15"
-    description: "Some MI decay must exist (not flat)."
+    expression: "mi_gamma >= 0.01"
+    description: "Measured 0.14 (Ur III) and 0.026 (OB lit). Phase-15 guess of 0.15 was wrong."
   - id: mi_gamma_su_high
-    expression: "mi_gamma <= 0.80"
-    description: "Logo-syllabic mixing weakens long-range MI."
+    expression: "mi_gamma <= 0.40"
+    description: "CDLI cuneiform never decays this fast in our Phase-16 sample."
   - id: mi_r2_pow_su
-    expression: "mi_r2_pow >= 0.45"
+    expression: "mi_r2_pow >= 0.85"
+    description: "Measured 0.91-0.93; power-law fit is actually very strong."
   - id: hed_2nd_su_low
-    expression: "epistatic_2nd_norm >= 0.04"
+    expression: "epistatic_2nd_norm >= 0.40"
+    description: "Measured 0.51 (Ur III) and 0.73 (OB lit); much higher than Phase-15 guess of 0.04."
   - id: hed_2nd_su_high
-    expression: "epistatic_2nd_norm <= 0.30"
+    expression: "epistatic_2nd_norm <= 0.85"
   - id: hed_3rd_su_low
-    expression: "epistatic_3rd_norm >= 0.02"
+    expression: "epistatic_3rd_norm >= 0.18"
+    description: "Measured 0.26 (Ur III) and 0.51 (OB lit)."
+  - id: hed_3rd_su_high
+    expression: "epistatic_3rd_norm <= 0.65"
   - id: h1_norm_su_low
-    expression: "h1_norm >= 0.45"
+    expression: "h1_norm >= 0.50"
+    description: "Measured 0.567 (Ur III, large admin) and 0.783 (OB lit)."
   - id: h1_norm_su_high
     expression: "h1_norm <= 0.85"
   - id: sumerian_score_def

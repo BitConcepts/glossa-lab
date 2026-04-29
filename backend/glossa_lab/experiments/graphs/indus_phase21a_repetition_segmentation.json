@@ -1,0 +1,25 @@
+{
+  "id": "indus_phase21a_repetition_segmentation",
+  "name": "Indus Phase-21a \u2014 repetition-aware corpus segmentation",
+  "description": "Phase-21 follow-up to Phase-20 finding 4 (40/61 of M77 signs are NUMERICAL with rep_rate >= 0.20). Collapses runs of identical consecutive signs (\"A B B B C\" \u2192 \"A B C\"), then re-measures the bigram-transition spectral gap on both the original and the de-numerified corpus side-by-side. If the gap rises into the natural-language regime (>= 0.40) after collapsing, the M77 anomaly is dominated by repetition-block tokens and the residual corpus is closer to a real language. Output: reports/phase21a_repetition_segmentation.json.",
+  "auto_migrated": false,
+  "nodes": [
+    { "id": "load",     "type": "expNode", "data": { "atomicId": "M77InscriptionLoader", "label": "Load M77 inscriptions",  "params": { "use_raw": false, "label": "indus_m77" } }, "position": { "x": 60,   "y": 100 } },
+    { "id": "collapse", "type": "expNode", "data": { "atomicId": "RepetitionCollapser",  "label": "Repetition collapser", "params": { "min_run": 2 } }, "position": { "x": 360,  "y": 100 } },
+    { "id": "spectral", "type": "expNode", "data": { "atomicId": "BinSpectralFingerprint", "label": "Per-stratum spectral fingerprint", "params": {} }, "position": { "x": 660,  "y": 100 } },
+    { "id": "summary",  "type": "expNode", "data": { "atomicId": "PerStratumSummary",     "label": "Per-stratum summary",  "params": {} }, "position": { "x": 960,  "y": 100 } },
+    { "id": "merge",    "type": "expNode", "data": { "atomicId": "Merger",                "label": "Merge results",        "params": {} }, "position": { "x": 1240, "y": 100 } },
+    { "id": "out",      "type": "expNode", "data": { "atomicId": "JSONExport",            "label": "Save Phase-21a results", "params": { "filename": "phase21a_repetition_segmentation.json" } }, "position": { "x": 1520, "y": 100 } }
+  ],
+  "edges": [
+    { "id": "e_load_collapse",     "source": "load",     "target": "collapse", "sourcePort": "sequences",       "targetPort": "sequences" },
+    { "id": "e_load_collapse_ins", "source": "load",     "target": "collapse", "sourcePort": "inscriptions",    "targetPort": "inscriptions" },
+    { "id": "e_collapse_spectral","source": "collapse", "target": "spectral", "sourcePort": "stratifications", "targetPort": "stratifications" },
+    { "id": "e_spectral_summary", "source": "spectral", "target": "summary",  "sourcePort": "per_bin",         "targetPort": "per_bin" },
+    { "id": "e_collapse_merge",   "source": "collapse", "target": "merge",    "sourcePort": "collapse_stats",  "targetPort": "a" },
+    { "id": "e_spectral_merge",   "source": "spectral", "target": "merge",    "sourcePort": "per_bin",         "targetPort": "b" },
+    { "id": "e_summary_merge",    "source": "summary",  "target": "merge",    "sourcePort": "verdict",         "targetPort": "c" },
+    { "id": "e_load_merge",       "source": "load",     "target": "merge",    "sourcePort": "n_inscriptions",  "targetPort": "d" },
+    { "id": "e_merge_out",        "source": "merge",    "target": "out",      "sourcePort": "json",            "targetPort": "data" }
+  ]
+}

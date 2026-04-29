@@ -1,0 +1,11 @@
+name,n_tokens,n_types,zipf_alpha,zipf_r2,mi_gamma,mi_r2_pow,epistatic_2nd_norm,epistatic_3rd_norm,h1_norm,h1_nats,note
+cdli_sumerian_ur3,3468699,109948,1.0978,0.9197,0.1413,0.9258,0.5102,0.2557,0.5671,6.583,path=backend\glossa_lab\data\phase16_corpora\cdli_sumerian_ur3_seqs.csv
+cdli_sumerian_ob_lit,425147,90024,0.8211,0.9229,0.0262,0.9116,0.7261,0.5095,0.783,8.9325,path=backend\glossa_lab\data\phase16_corpora\cdli_sumerian_ob_lit_seqs.csv
+cdli_akkadian_ob,397977,77524,0.7938,0.8953,0.052,0.9205,0.6575,0.3988,0.7391,8.3208,path=backend\glossa_lab\data\phase16_corpora\cdli_akkadian_ob_seqs.csv
+cdli_akkadian_na,486011,76964,0.961,0.9527,0.0382,0.9217,0.7316,0.5312,0.7707,8.6717,path=backend\glossa_lab\data\phase16_corpora\cdli_akkadian_na_seqs.csv
+kee2u_tamil,17414,1924,1.1749,0.9736,0.0917,0.7496,0.5691,0.2815,0.7752,5.8624,path=backend\glossa_lab\data\phase16_corpora\kee2u_tamil_morpheme_seqs.csv
+kalyanaraman_vedic,98707,49140,0.5849,0.9022,0.0097,0.9718,0.9017,0.8191,0.9357,10.1075,path=backend\glossa_lab\data\phase16_corpora\kalyanaraman_devanagari_corpus.txt
+damos_linear_b,44850,8507,0.8224,0.8943,0.0486,0.8383,0.5956,0.3401,0.7161,6.4793,path=backend\glossa_lab\data\phase17_corpora\damos_signs.txt
+rv_padapatha,163172,27152,1.0179,0.9645,0.0178,0.7115,0.6333,0.3116,0.8249,8.4217,path=backend\glossa_lab\data\phase18_corpora\rv_padapatha_stream.txt
+cisi_mayig,1003,182,1.0976,0.9478,0.0392,0.5855,0.5618,0.2387,0.8372,4.357,path=backend\glossa_lab\data\phase18_corpora\cisi_mayig_signs.txt
+indus_m77,5361,64,0.9785,0.6618,0.0976,0.9777,0.5971,0.4224,0.8973,3.732,path=reports\mahadevan_corpus_flat.txt

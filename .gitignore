@@ -169,3 +169,7 @@ backend/glossa_lab/data/phase16_corpora/cdli_*_seqs.csv
 backend/glossa_lab/data/phase16_corpora/kee2u_tamil_morpheme_features.csv
 backend/glossa_lab/data/phase16_corpora/kalyanaraman_devanagari_corpus.txt
 
+
+# Phase-18 derived: large stream txt regenerable from CSV
+backend/glossa_lab/data/phase18_corpora/rv_padapatha_stream.txt
+

@@ -21,12 +21,52 @@ from __future__ import annotations
 
 import io
 import math
+import sys
 import textwrap
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
 import yaml
+
+
+def _force_real_cpsc_on_path() -> None:
+    """Defensively prepend the real cpsc-engine-python source dir to sys.path.
+
+    Several legacy experiment scripts in `glossa_lab/experiments/_legacy/` insert
+    ``glossa-lab/backend/glossa_lab/`` at the front of sys.path. Once that
+    happens, ``import cpsc`` resolves to the local ``glossa_lab/cpsc/`` package
+    (a flag module) instead of the real cpsc-engine-python package, and the
+    submodule ``cpsc.cas`` is then unimportable.
+
+    To make this module robust regardless of import order, we walk up from
+    the glossa-lab repo to its sibling ``cpsc-engine-python/src`` directory
+    and put it ahead of any path that contains ``backend/glossa_lab``.
+    """
+    here = Path(__file__).resolve()
+    # backend/glossa_lab/cpsc_bridge.py -> repos parent dir
+    candidate = here.parents[3] / "cpsc-engine-python" / "src"
+    if not candidate.exists():
+        return
+    candidate_str = str(candidate)
+    # Drop any sys.path entry that points at the glossa_lab package root
+    # (those entries cause `import cpsc` to find glossa_lab/cpsc/).
+    bad_marker = str(here.parent)  # backend/glossa_lab/
+    sys.path[:] = [p for p in sys.path if p != bad_marker]
+    if candidate_str in sys.path:
+        sys.path.remove(candidate_str)
+    sys.path.insert(0, candidate_str)
+    # Evict any cached wrong-cpsc module so the next import resolves freshly
+    for stale in ("cpsc", "cpsc.cas", "cpsc.solvers",
+                  "cpsc.solvers.iterative", "cpsc.solvers.cellular",
+                  "cpsc.solvers.result"):
+        cached = sys.modules.get(stale)
+        if cached is not None and getattr(cached, "__file__", "") and \
+                str(here.parent) in str(cached.__file__):
+            del sys.modules[stale]
+
+
+_force_real_cpsc_on_path()
 
 # ── CPSC submodule imports (avoid numba-dependent top-level import) ────────────
 from cpsc.cas import (

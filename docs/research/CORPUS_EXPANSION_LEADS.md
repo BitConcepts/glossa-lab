@@ -1,7 +1,7 @@
 # CORPUS EXPANSION LEADS & EXTERNAL EVIDENCE
 **Version**: 1.0  
 **Date**: 2026-04-23  
-**Owner**: Tristen Pierson / BitConcepts, LLC  
+**Owner**: Tristen Pierson / Layer1Labs Silicon, Inc.  
 **Confidentiality**: INTERNAL
 
 ---

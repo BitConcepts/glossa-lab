@@ -1108,7 +1108,7 @@ This project integrates Applied Epistemic Engineering principles from
 [specsmith](https://github.com/BitConcepts/specsmith) and the
 [AEE documentation](https://specsmith.readthedocs.io/en/stable/).
 
-> Source: specsmith by BitConcepts. The AEE toolkit by the same author.
+> Source: specsmith by Layer1Labs Silicon, Inc. The AEE toolkit by the same author.
 
 ### AEE Core Method: Frame → Disassemble → Stress-Test → Reconstruct
 

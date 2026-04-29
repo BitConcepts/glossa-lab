@@ -146,7 +146,7 @@ def main():
         leftMargin=2.2*cm, rightMargin=2.2*cm,
         topMargin=2.2*cm, bottomMargin=2.2*cm,
         title="Glossa Lab — Real Indus Sign Analysis",
-        author="BitConcepts / Glossa Lab",
+        author="Layer1Labs Silicon, Inc. / Glossa Lab",
     )
 
     story = []
@@ -165,7 +165,7 @@ def main():
             S["subtitle"]
         ),
         Paragraph(f"Report date: {today}", S["body_small"]),
-        Paragraph("Prepared by: Tristen Pierson, BitConcepts", S["body_small"]),
+        Paragraph("Prepared by: Tristen Pierson, Layer1Labs Silicon, Inc.", S["body_small"]),
         Spacer(1, 0.8*cm),
     ]
 
@@ -525,9 +525,9 @@ def main():
     story.append(Spacer(1, 0.5*cm))
     story.append(HRFlowable(width="100%", thickness=1, color=MID_GREY, spaceAfter=4))
     story.append(Paragraph(
-        "Glossa Lab is developed by BitConcepts. "
+        "Glossa Lab is developed by Layer1Labs Silicon, Inc. "
         "All source code is available on request. "
-        "Contact: tpierson@bitconcepts.tech",
+        "Contact: tbitcs@bitconcepts.tech",
         S["body_small"]
     ))
 

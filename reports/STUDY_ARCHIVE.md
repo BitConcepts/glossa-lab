@@ -254,7 +254,7 @@ backend/
 If you use Glossa Lab or these study results, please cite:
 
 ```
-BitConcepts. (2026). Glossa Lab: A Computational Toolkit for Ancient Script Analysis.
+Layer1Labs Silicon, Inc. (2026). Glossa Lab: A Computational Toolkit for Ancient Script Analysis.
 Decipherment Validation, Linear A Phonological Analysis, and Anti-Circularity Experiments.
 Version 1.0. Available at: github.com/BitConcepts/glossa-lab
 ```
@@ -280,7 +280,7 @@ And acknowledge the data sources listed above, particularly DĀMOS and Younger (
 ## Contact
 
 For questions about data access, methodology, or collaboration:
-**Glossa Lab Research Programme, BitConcepts**
+**Glossa Lab Research Programme, Layer1Labs Silicon, Inc.**
 
 For Indus Script corpus access (ICIT):
 **Dr. Andreas Fuls, Technische Universität Berlin**

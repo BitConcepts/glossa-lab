@@ -2328,6 +2328,14 @@ try:
 except Exception as _p14_exc:  # noqa: BLE001
     logger.warning("Phase-14 nodes not registered: %s", _p14_exc)
 
+# ── Phase-15 nodes (long-tail validity, cipher self-test, hypothesis ranker) ─────────────
+try:
+    from glossa_lab.experiment_graph_phase15 import _phase15_node_defs as _p15_defs  # noqa: PLC0415
+    for _d in _p15_defs():
+        ATOMIC_NODES[_d.id] = _d
+except Exception as _p15_exc:  # noqa: BLE001
+    logger.warning("Phase-15 nodes not registered: %s", _p15_exc)
+
 
 # ── Graph execution ────────────────────────────────────────────────────────────────────
 

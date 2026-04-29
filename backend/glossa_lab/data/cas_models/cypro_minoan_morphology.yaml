@@ -1,0 +1,117 @@
+version: "1.0"
+model_id: cypro_minoan_morphology
+description: >
+  Cypro-Minoan typological-control hypothesis (Late Bronze Age Cyprus,
+  ca. 1550-1050 BCE). Used as a *control* in the multi-hypothesis ranker
+  to test whether ANY small-inventory undeciphered logo-syllabic script
+  yields a different projection through the M77 manifold than the four
+  natural-language families do.
+  Constraint ranges are NOT empirically measured against a CM corpus
+  (the Ferrara 2012/2013 HoChyMin corpus is print-only; the Ferrara 2006
+  PhD thesis catalog is OCR-able but not yet processed). Instead the
+  constraints encode the *typological priors* implied by Valério 2016
+  and Everson 2020 (N5135):
+    - inventory ~57-70 (Valério) or ~96 (Olivier) syllabograms
+    - open-syllable logo-syllabic script in the Aegean-Cypriot family
+    - ~250 inscriptions, ~4000 signs total (very small-sample regime)
+    - linguistic substrate likely related to Eteocypriot of the next
+      millennium (per Valério's clay-ball morphological analysis)
+  As a typological control, it should sit somewhere between Linear A
+  (~90 signs) and Cypro-Greek (~55 signs) in DoF-space, with weaker
+  stationary statistics than any large-sample natural-language reference.
+measured_from:
+  - corpus: typological_priors_only
+    n_tokens: 4000
+    n_types: 70
+    note: >
+      No corpus measurements -- constraint ranges derived from Valério 2016
+      sign-list (57-70 syllabograms) and Aegean-script typology. To replace
+      with measured DoFs, OCR the Ferrara 2006 PhD thesis Vol II catalog
+      (UCL Discovery, 478 MB PDF, available under corpora/downloads/) or
+      acquire HoChyMin volumes.
+state:
+  variables:
+    - name: zipf_alpha
+      type: float
+      domain: [0.0, 3.0]
+      description: "Zipf-Mandelbrot alpha. Aegean syllabaries: 0.85-1.30."
+    - name: zipf_r2
+      type: float
+      domain: [0.0, 1.0]
+      description: "Zipf fit R^2. Small-sample CM: less constrained."
+    - name: mi_gamma
+      type: float
+      domain: [0.0, 5.0]
+      description: "Power-law MI decay. Small undeciphered scripts: 0.0-0.4."
+    - name: mi_r2_pow
+      type: float
+      domain: [0.0, 1.0]
+      description: "MI power-law fit R^2."
+    - name: epistatic_2nd_norm
+      type: float
+      domain: [0.0, 1.0]
+      description: "2nd-order info fraction. Logo-syllabic small-sample: 0.40-0.85."
+    - name: epistatic_3rd_norm
+      type: float
+      domain: [0.0, 1.0]
+      description: "3rd-order info fraction. Small-sample: 0.15-0.65."
+    - name: h1_norm
+      type: float
+      domain: [0.0, 1.0]
+      description: "Per-symbol H1 / ln(V). Small alphabet: 0.65-0.90."
+    - name: h1_nats
+      type: float
+      domain: [0.0, 12.0]
+      description: "Raw H1 in nats (diagnostic only)."
+    - name: cypro_minoan_score
+      type: float
+      domain: [0.0, 2.0]
+      derived: true
+      description: "Aggregate CM-fit score."
+degrees_of_freedom:
+  free:
+    - zipf_alpha
+    - zipf_r2
+    - mi_gamma
+    - mi_r2_pow
+    - epistatic_2nd_norm
+    - epistatic_3rd_norm
+    - h1_norm
+    - h1_nats
+constraints:
+  # Permissive ranges reflecting the small-sample regime + typological priors
+  # rather than tight empirical measurements. This YAML is a control: it should
+  # match M77 if M77 is also a small-sample undeciphered logo-syllabic script,
+  # regardless of underlying language family.
+  - id: zipf_alpha_cm_low
+    expression: "zipf_alpha >= 0.85"
+    description: "Linear A 0.85-1.10; CM expected similar."
+  - id: zipf_alpha_cm_high
+    expression: "zipf_alpha <= 1.30"
+  - id: zipf_r2_cm
+    expression: "zipf_r2 >= 0.65"
+    description: "Loose lower bound: CM small-sample noise."
+  - id: mi_gamma_cm_low
+    expression: "mi_gamma >= 0.0"
+  - id: mi_gamma_cm_high
+    expression: "mi_gamma <= 0.45"
+  - id: mi_r2_pow_cm
+    expression: "mi_r2_pow >= 0.60"
+  - id: hed_2nd_cm_low
+    expression: "epistatic_2nd_norm >= 0.40"
+  - id: hed_2nd_cm_high
+    expression: "epistatic_2nd_norm <= 0.85"
+  - id: hed_3rd_cm_low
+    expression: "epistatic_3rd_norm >= 0.15"
+  - id: hed_3rd_cm_high
+    expression: "epistatic_3rd_norm <= 0.65"
+  - id: h1_norm_cm_low
+    expression: "h1_norm >= 0.65"
+  - id: h1_norm_cm_high
+    expression: "h1_norm <= 0.95"
+  - id: cypro_minoan_score_def
+    expression: "cypro_minoan_score = zipf_r2 * 0.25 + mi_r2_pow * 0.25 + epistatic_2nd_norm * 0.7 + epistatic_3rd_norm * 0.7 + h1_norm * 0.40"
+projection:
+  strategy: iterative
+  max_iterations: 200
+  convergence_epsilon: 0.000001

@@ -94,7 +94,7 @@ doc = SimpleDocTemplate(
     leftMargin=2.8*cm, rightMargin=2.8*cm,
     topMargin=2.5*cm, bottomMargin=2.5*cm,
     title="Glossa Lab: NW Semitic Test1 Analysis — Dr. Fuls",
-    author="BitConcepts / Glossa Lab",
+    author="Layer1Labs Silicon, Inc. / Glossa Lab",
 )
 
 SS = getSampleStyleSheet()
@@ -186,7 +186,7 @@ c += [
     P("Test1 Corpus  ·  Structural Fingerprint  ·  Mapping Inference  ·  Robustness Validation", SUB),
     sp(0.25), hr(),
     P("Prepared for: Dr. Andreas Fuls, TU Berlin / ICIT", AUTH),
-    P("BitConcepts  ·  Glossa Lab Research Programme", AUTH),
+    P("Layer1Labs Silicon, Inc.  ·  Glossa Lab Research Programme", AUTH),
     P(f"{DATE}", VER),
     hr(), sp(0.4),
     P("<b>Abstract.</b>  This report presents five computational analyses of Dr. Fuls' 101-word "
@@ -1485,7 +1485,7 @@ c += [
     sp(0.5), hr(),
     P("All experiments are reproducible via the Glossa Lab research platform. "
       "Raw result files are available on request.", NOTE),
-    P(f"Report generated: {DATE}  ·  Glossa Lab  ·  BitConcepts", VER),
+    P(f"Report generated: {DATE}  ·  Glossa Lab  ·  Layer1Labs Silicon, Inc.", VER),
 ]
 
 # ── BUILD PDF ─────────────────────────────────────────────────────────────────

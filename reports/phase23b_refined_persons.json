@@ -1,0 +1,109 @@
+{
+  "data": {
+    "a": "Refined Meluhhan-PN extractor (Phase-23): 6 unique name candidates (freq>=1); 0 historically-confirmed; by-pattern distribution {'suffix:-me-luh-ha': 11, 'prefix:lu2/lu/dumu': 6}.",
+    "b": 6,
+    "c": [
+      {
+        "candidate_name": "ab-ba-me-luh-ha",
+        "occurrences": 7,
+        "n_distinct_tablets": 7,
+        "periods": [
+          "Old Babylonian (ca. 1900-1600 BC)"
+        ],
+        "proveniences": [
+          "Nippur (mod. Nuffar)",
+          "Nippur (mod. Nuffar) ?"
+        ],
+        "source_patterns": [
+          "suffix:-me-luh-ha"
+        ],
+        "is_known_meluhhan": false,
+        "example_line": "7. gesz ab-ba-me-luh-ha"
+      },
+      {
+        "candidate_name": "lu-u",
+        "occurrences": 4,
+        "n_distinct_tablets": 4,
+        "periods": [
+          "Neo-Assyrian (ca. 911-612 BC)"
+        ],
+        "proveniences": [
+          "Nineveh (mod. Kuyunjik)"
+        ],
+        "source_patterns": [
+          "prefix:lu2/lu/dumu"
+        ],
+        "is_known_meluhhan": false,
+        "example_line": "49. a-na {kur}ma2-kan u {kur}me-luh-ha lu-u al-lik "
+      },
+      {
+        "candidate_name": "ba-me-luh-ha",
+        "occurrences": 3,
+        "n_distinct_tablets": 3,
+        "periods": [
+          "Old Babylonian (ca. 1900-1600 BC)"
+        ],
+        "proveniences": [
+          "Nippur (mod. Nuffar)",
+          "Nippur (mod. Nuffar) ?"
+        ],
+        "source_patterns": [
+          "suffix:-me-luh-ha"
+        ],
+        "is_known_meluhhan": false,
+        "example_line": "9. [...] ab#-ba-me-luh-ha"
+      },
+      {
+        "candidate_name": "e2-duru5-me-luh-ha",
+        "occurrences": 1,
+        "n_distinct_tablets": 1,
+        "periods": [
+          "Ur III (ca. 2100-2000 BC)"
+        ],
+        "proveniences": [
+          "Girsu (mod. Tello)"
+        ],
+        "source_patterns": [
+          "suffix:-me-luh-ha"
+        ],
+        "is_known_meluhhan": false,
+        "example_line": "1. i3-dub e2-duru5-me-luh-ha{ki}"
+      },
+      {
+        "candidate_name": "lu2-tukul",
+        "occurrences": 1,
+        "n_distinct_tablets": 1,
+        "periods": [
+          "Old Akkadian (ca. 2340-2200 BC)"
+        ],
+        "proveniences": [
+          "(unknown)"
+        ],
+        "source_patterns": [
+          "prefix:lu2/lu/dumu"
+        ],
+        "is_known_meluhhan": false,
+        "example_line": "3. lu2-tukul ma2 me-luh-ha-ka "
+      },
+      {
+        "candidate_name": "lu2-tu15",
+        "occurrences": 1,
+        "n_distinct_tablets": 1,
+        "periods": [
+          "Old Babylonian (ca. 1900-1600 BC)"
+        ],
+        "proveniences": [
+          "Ur (mod. Tell Muqayyar)"
+        ],
+        "source_patterns": [
+          "prefix:lu2/lu/dumu"
+        ],
+        "is_known_meluhhan": false,
+        "example_line": "4. gig2-ga me-luh-ha{ki} dimx(LUGAL@s) zi3 mil lu2-tu15# [...] "
+      }
+    ],
+    "d": [],
+    "e__suffix:-me-luh-ha": 11,
+    "e__prefix:lu2/lu/dumu": 6
+  }
+}

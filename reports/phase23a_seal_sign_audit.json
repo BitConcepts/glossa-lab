@@ -1,0 +1,81 @@
+{
+  "data": {
+    "a": "Phase-23 seal-sign audit: 13 seals; 10 carry Indus signs (37 total). Confidence tiers: {'length_only': 10, 'none': 3}.",
+    "b": 10,
+    "c": 37,
+    "d__length_only": 10,
+    "d__none": 3,
+    "e": [
+      {
+        "catalogue_id": "BM_122187_UR_seal_1",
+        "find_country": "Mesopotamia",
+        "inscription_length": 5,
+        "signs_confidence": "length_only",
+        "signs_source": "Gadd 1932 (Iraq); Frenez 2018 plate IV"
+      },
+      {
+        "catalogue_id": "GADD_1",
+        "find_country": "Mesopotamia",
+        "inscription_length": 3,
+        "signs_confidence": "length_only",
+        "signs_source": "Gadd 1932 #1; Laursen 2010 PCA classification"
+      },
+      {
+        "catalogue_id": "GADD_2",
+        "find_country": "Mesopotamia",
+        "inscription_length": 4,
+        "signs_confidence": "length_only",
+        "signs_source": "Gadd 1932 #2; Laursen 2010"
+      },
+      {
+        "catalogue_id": "ASMAR_TA",
+        "find_country": "Mesopotamia",
+        "inscription_length": 3,
+        "signs_confidence": "length_only",
+        "signs_source": "Mallowan 1947 (Iraq); Wheeler 1968"
+      },
+      {
+        "catalogue_id": "KISH_INDUS_1",
+        "find_country": "Mesopotamia",
+        "inscription_length": 3,
+        "signs_confidence": "length_only",
+        "signs_source": "Mallowan 1947; CISI Vol 3 (pending plate)"
+      },
+      {
+        "catalogue_id": "SUSA_INDUS_1",
+        "find_country": "Iran (Elam)",
+        "inscription_length": 4,
+        "signs_confidence": "length_only",
+        "signs_source": "Wheeler 1968; Possehl 2002"
+      },
+      {
+        "catalogue_id": "LOTHAL_PERSIAN_GULF_SEAL",
+        "find_country": "India (Indus civilization)",
+        "inscription_length": 2,
+        "signs_confidence": "length_only",
+        "signs_source": "Rao 1963 (Antiquity 37); Laursen 2010"
+      },
+      {
+        "catalogue_id": "FAILAKA_KM_1113",
+        "find_country": "Kuwait (Dilmun)",
+        "inscription_length": 4,
+        "signs_confidence": "length_only",
+        "signs_source": "David-Cuny & Neyme 2016 (Failaka Vol 2)"
+      },
+      {
+        "catalogue_id": "VA_243_BERLIN",
+        "find_country": "Mesopotamia (presumed)",
+        "inscription_length": 5,
+        "signs_confidence": "length_only",
+        "signs_source": "Kalyanaraman ANE; Frenez 2018"
+      },
+      {
+        "catalogue_id": "JALALABAD_FARS",
+        "find_country": "Iran",
+        "inscription_length": 4,
+        "signs_confidence": "length_only",
+        "signs_source": "Vidale, Desset & Frenez 2021; Ascalone 2008"
+      }
+    ]
+  }
+}

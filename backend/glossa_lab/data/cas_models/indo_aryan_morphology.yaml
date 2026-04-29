@@ -1,15 +1,31 @@
-version: "1.0"
+version: "1.1"
 model_id: indo_aryan_morphology
 description: >
   Indo-Aryan-family hypothesis (Vedic Sanskrit / Old Indo-Aryan) projected
   as a CPSC constraint manifold over the Phase-14 structural-signature
-  DoFs. Indo-Aryan is fusional/inflectional with a moderately complex
-  syllabic transcription. Sandhi at morpheme boundaries reduces strict
-  agglutinative chain length. Compared to Dravidian: lower MI gamma
-  (sandhi smears phonological boundaries), lower epistatic 3rd-order
-  fraction (less suffix-chain depth), broader Zipf alpha. Use with
-  CASHypothesisProjector to score whether the M77 DoFs lie inside the
-  Indo-Aryan language manifold.
+  DoFs. Indo-Aryan is fusional/inflectional with sandhi at morpheme
+  boundaries. Compared to Dravidian: lower MI gamma (sandhi smears
+  phonological boundaries), lower epistatic 3rd-order fraction (less
+  suffix-chain depth), broader Zipf alpha. Use with CASHypothesisProjector
+  to score whether the M77 DoFs lie inside the Indo-Aryan language
+  manifold.
+  Phase-16 update: constraint ranges informed by the Devanagari
+  vocabulary corpus extracted from Kalyanaraman's zanodor index files
+  (98,707 tokens, 49,140 distinct words), which is bag-of-words rather
+  than running text -- so MI/eps2/eps3 have caveats.
+measured_from:
+  - corpus: kalyanaraman_vedic
+    n_tokens: 98707
+    n_types: 49140
+    zipf_alpha: 0.5849
+    zipf_r2: 0.9022
+    mi_gamma: 0.0097
+    mi_r2_pow: 0.9718
+    epistatic_2nd_norm: 0.9017
+    epistatic_3rd_norm: 0.8191
+    h1_norm: 0.9357
+    h1_nats: 10.1075
+    note: "Devanagari vocabulary from Kalyanaraman corpus; bag-of-words artefact, MI structure should not be over-interpreted."
 state:
   variables:
     - name: zipf_alpha
@@ -60,31 +76,38 @@ degrees_of_freedom:
     - h1_norm
     - h1_nats
 constraints:
+  # Phase-16 grounded ranges. Note: only one corpus measurement available and
+  # it is a bag-of-words rather than running prose; ranges err on the side of
+  # admitting a wider set of Indo-Aryan vocabulary distributions. Genuine
+  # running-Sanskrit measurements (Rigveda) should be added as a second
+  # measured_from in a future iteration.
   - id: zipf_alpha_ia_low
-    expression: "zipf_alpha >= 0.90"
-    description: "Sanskrit Zipf alpha is broader than Dravidian."
+    expression: "zipf_alpha >= 0.50"
+    description: "Measured 0.585 on Kalyanaraman vocab; widened to admit running Sanskrit (~1.0)."
   - id: zipf_alpha_ia_high
-    expression: "zipf_alpha <= 1.25"
+    expression: "zipf_alpha <= 1.30"
   - id: zipf_r2_ia
-    expression: "zipf_r2 >= 0.75"
+    expression: "zipf_r2 >= 0.80"
   - id: mi_gamma_ia_low
-    expression: "mi_gamma >= 0.25"
-    description: "Sandhi reduces but does not eliminate MI decay."
+    expression: "mi_gamma >= 0.005"
+    description: "Measured 0.010 on bag-of-words; lower bound permissive."
   - id: mi_gamma_ia_high
     expression: "mi_gamma <= 0.95"
   - id: mi_r2_pow_ia
     expression: "mi_r2_pow >= 0.55"
   - id: hed_2nd_ia_low
-    expression: "epistatic_2nd_norm >= 0.08"
-    description: "Inflectional morphology raises 2nd-order interactions."
+    expression: "epistatic_2nd_norm >= 0.20"
+    description: "Measured 0.902 on bag-of-words is artefactually high; running Sanskrit should still hit at least ~0.20."
   - id: hed_2nd_ia_high
-    expression: "epistatic_2nd_norm <= 0.40"
+    expression: "epistatic_2nd_norm <= 0.95"
   - id: hed_3rd_ia_low
-    expression: "epistatic_3rd_norm >= 0.04"
+    expression: "epistatic_3rd_norm >= 0.10"
+  - id: hed_3rd_ia_high
+    expression: "epistatic_3rd_norm <= 0.90"
   - id: h1_norm_ia_low
     expression: "h1_norm >= 0.55"
   - id: h1_norm_ia_high
-    expression: "h1_norm <= 0.95"
+    expression: "h1_norm <= 0.97"
   - id: indo_aryan_score_def
     expression: "indo_aryan_score = zipf_r2 * 0.25 + mi_r2_pow * 0.25 + epistatic_2nd_norm * 0.9 + epistatic_3rd_norm * 1.0 + h1_norm * 0.30"
     description: "Score weighted toward fusional / mid-range epistatic fingerprint."

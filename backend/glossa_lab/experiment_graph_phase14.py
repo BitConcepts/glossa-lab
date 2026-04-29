@@ -1212,6 +1212,16 @@ def _cas_hypothesis_projector(inputs: dict, params: dict) -> dict:
     out["free_variables"] = free_vars
     out["dof_values"] = dof_values
     out["missing_dof_defaulted_to_zero"] = missing
+    # Phase-15: rollup field so MultiHypothesisRanker can wire one port per
+    # hypothesis and still see success / max_violation / model_source.
+    out["json"] = {
+        "success": bool(out.get("success", False)),
+        "max_violation": float(out.get("max_violation", 1e9)),
+        "iterations": int(out.get("iterations", 0)),
+        "strategy_used": out.get("strategy_used", ""),
+        "model_source": source,
+        "reason": out.get("reason"),
+    }
     return out
 
 

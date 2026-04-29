@@ -1,0 +1,23 @@
+{
+  "id": "indus_phase21d_numerical_weights",
+  "name": "Indus Phase-21d \u2014 numerical-weight regression",
+  "description": "Phase-21 follow-up to Phase-20 finding 4. For each M77 sign classified NUMERICAL by FulsPositionalClassifier with rep_rate >= 0.40, collects every repetition-block length observed in the corpus and cross-tabulates by site group + inscription-length bin. Reports per-sign mean / std / coefficient of variation (CV) and classifies the block-length distribution as poisson_count, low_variance_doubling, or high_variance_count. If the dominant regime is poisson_count, M77 numerical signs behave like Sumerian DUG/SILA3 numerals (a counting / quantity-marking system). Output: reports/phase21d_numerical_weights.json.",
+  "auto_migrated": false,
+  "nodes": [
+    { "id": "load",   "type": "expNode", "data": { "atomicId": "M77InscriptionLoader",       "label": "Load M77 inscriptions", "params": { "use_raw": false, "label": "indus_m77" } }, "position": { "x": 60,  "y": 100 } },
+    { "id": "fuls",   "type": "expNode", "data": { "atomicId": "FulsPositionalClassifier",   "label": "Fuls 5-way classifier", "params": { "min_count": 5, "numerical_rr": 0.20 } }, "position": { "x": 360, "y": 100 } },
+    { "id": "nwa",    "type": "expNode", "data": { "atomicId": "NumericalWeightAnalyzer",    "label": "Numerical weight analyzer", "params": { "rep_rate_min": 0.40, "min_block_count": 5 } }, "position": { "x": 660, "y": 100 } },
+    { "id": "merge",  "type": "expNode", "data": { "atomicId": "Merger",                     "label": "Merge results",         "params": {} }, "position": { "x": 960, "y": 100 } },
+    { "id": "out",    "type": "expNode", "data": { "atomicId": "JSONExport",                 "label": "Save Phase-21d results","params": { "filename": "phase21d_numerical_weights.json" } }, "position": { "x": 1240, "y": 100 } }
+  ],
+  "edges": [
+    { "id": "e_load_fuls",    "source": "load", "target": "fuls",  "sourcePort": "sequences",       "targetPort": "sequences" },
+    { "id": "e_load_nwa",     "source": "load", "target": "nwa",   "sourcePort": "inscriptions",    "targetPort": "inscriptions" },
+    { "id": "e_fuls_nwa",     "source": "fuls", "target": "nwa",   "sourcePort": "table",           "targetPort": "table" },
+    { "id": "e_fuls_merge",   "source": "fuls", "target": "merge", "sourcePort": "counts_by_class", "targetPort": "a" },
+    { "id": "e_nwa_merge",    "source": "nwa",  "target": "merge", "sourcePort": "rows",            "targetPort": "b" },
+    { "id": "e_nwa_v_merge",  "source": "nwa",  "target": "merge", "sourcePort": "verdict",         "targetPort": "c" },
+    { "id": "e_load_merge",   "source": "load", "target": "merge", "sourcePort": "n_inscriptions",  "targetPort": "d" },
+    { "id": "e_merge_out",    "source": "merge","target": "out",   "sourcePort": "json",            "targetPort": "data" }
+  ]
+}

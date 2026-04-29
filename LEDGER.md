@@ -4595,7 +4595,7 @@ Next step: Acquire multi-site corpus data (CISI Vol.2, updated mayig repo, Fuls 
    - predictions/PREDICTION_REGISTER.md (9 registered predictions, PRED-2026-001 through 009)
    - validation/VALIDATION_PLAN.md (4-tier validation plan)
    - communications/DISCLOSURE_LOG.md (3 Dr. Fuls communications logged; PDF attachment flagged as missing)
-   - ip/IP_OWNERSHIP_NOTE.md (BitConcepts, LLC sole ownership)
+   - ip/IP_OWNERSHIP_NOTE.md (Layer1Labs Silicon, Inc. sole ownership)
    - publication/EXPERT_SUMMARY_PACKAGE.md
    - publication/GOVERNMENT_INQUIRY_PACKAGE.md (prize:  USD, Tamil Nadu)
    - publication/PREPRINT_OUTLINE.md

@@ -1,0 +1,97 @@
+version: "1.0"
+model_id: dravidian_morphology
+description: >
+  Dravidian-family hypothesis (Tamil/Kannada/Telugu/Brahui) projected as a
+  CPSC constraint manifold over the Phase-14 structural-signature DoFs.
+  Dravidian is strongly agglutinative SOV with a syllabic native script
+  (Tamil-Brahmi ~50 signs, Kannada/Telugu ~50 signs). Case-bearing
+  suffixes carry rich morphology, producing long-range MI correlations
+  (gamma ~0.5-1.0) and elevated 2nd/3rd-order epistasis (rich morpheme
+  chains). Use with CASHypothesisProjector to score whether the M77
+  corpus's measured DoFs lie inside the Dravidian language manifold.
+state:
+  variables:
+    - name: zipf_alpha
+      type: float
+      domain: [0.0, 3.0]
+      description: "Zipf-Mandelbrot alpha. Dravidian syllabaries: 0.95-1.15."
+    - name: zipf_r2
+      type: float
+      domain: [0.0, 1.0]
+      description: "Zipf fit R^2. Dravidian: >= 0.85."
+    - name: mi_gamma
+      type: float
+      domain: [0.0, 5.0]
+      description: "Power-law MI decay. Agglutinative: 0.40-1.00."
+    - name: mi_r2_pow
+      type: float
+      domain: [0.0, 1.0]
+      description: "MI power-law fit R^2. Dravidian: >= 0.70."
+    - name: epistatic_2nd_norm
+      type: float
+      domain: [0.0, 1.0]
+      description: "2nd-order info fraction. Rich morphology: 0.15-0.40."
+    - name: epistatic_3rd_norm
+      type: float
+      domain: [0.0, 1.0]
+      description: "3rd-order info fraction. Rich morphology: 0.10-0.25."
+    - name: h1_norm
+      type: float
+      domain: [0.0, 1.0]
+      description: "Per-symbol H1 / ln(L). Syllabic: 0.65-0.90."
+    - name: h1_nats
+      type: float
+      domain: [0.0, 12.0]
+      description: "Raw H1 in nats (diagnostic only)."
+    - name: dravidian_score
+      type: float
+      domain: [0.0, 2.0]
+      derived: true
+      description: "Aggregate Dravidian-fit score. >=1.5 strong fit."
+degrees_of_freedom:
+  free:
+    - zipf_alpha
+    - zipf_r2
+    - mi_gamma
+    - mi_r2_pow
+    - epistatic_2nd_norm
+    - epistatic_3rd_norm
+    - h1_norm
+    - h1_nats
+constraints:
+  - id: zipf_alpha_dravidian_low
+    expression: "zipf_alpha >= 0.95"
+    description: "Dravidian Zipf alpha is tightly clustered around 1.0-1.1."
+  - id: zipf_alpha_dravidian_high
+    expression: "zipf_alpha <= 1.15"
+  - id: zipf_r2_dravidian
+    expression: "zipf_r2 >= 0.80"
+    description: "Strong Zipf fit expected for syllabic Dravidian corpora."
+  - id: mi_gamma_dravidian_low
+    expression: "mi_gamma >= 0.40"
+    description: "Agglutinative chains produce moderate-to-strong MI decay."
+  - id: mi_gamma_dravidian_high
+    expression: "mi_gamma <= 1.10"
+  - id: mi_r2_pow_dravidian
+    expression: "mi_r2_pow >= 0.65"
+    description: "Power-law MI fit must be reasonably strong."
+  - id: hed_2nd_dravidian_low
+    expression: "epistatic_2nd_norm >= 0.12"
+    description: "Rich agglutinative morphology lifts 2nd-order epistasis."
+  - id: hed_2nd_dravidian_high
+    expression: "epistatic_2nd_norm <= 0.45"
+  - id: hed_3rd_dravidian_low
+    expression: "epistatic_3rd_norm >= 0.06"
+    description: "Multi-suffix chains produce 3rd-order interactions."
+  - id: h1_norm_dravidian_low
+    expression: "h1_norm >= 0.60"
+    description: "Syllabic inventory yields moderate-high normalised entropy."
+  - id: h1_norm_dravidian_high
+    expression: "h1_norm <= 0.95"
+  - id: dravidian_score_def
+    expression: "dravidian_score = zipf_r2 * 0.20 + mi_r2_pow * 0.20 + epistatic_2nd_norm * 1.0 + epistatic_3rd_norm * 1.5 + h1_norm * 0.25"
+    description: "Fit score weighted toward morphological-richness DoFs."
+projection:
+  strategy: iterative
+  max_iterations: 200
+  convergence_epsilon: 0.000001

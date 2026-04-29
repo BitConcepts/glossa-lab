@@ -1,7 +1,7 @@
 # MASTER_LEDGER
 **Version**: 1.0  
 **Date**: 2026-04-23  
-**Owner**: Tristen Pierson / BitConcepts, LLC  
+**Owner**: Tristen Pierson / Layer1Labs Silicon, Inc.  
 **Confidentiality**: INTERNAL
 
 This is the formal governance-compliant research ledger. It records every significant research action with all required fields. The working session log is in `LEDGER.md` at the project root; this document is the summary record suitable for legal and scientific audit.

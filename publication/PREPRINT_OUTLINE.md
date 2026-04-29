@@ -1,7 +1,7 @@
 # PREPRINT_OUTLINE
 **Version**: 1.0 (DRAFT)  
 **Date**: 2026-04-23  
-**Owner**: Tristen Pierson / BitConcepts, LLC  
+**Owner**: Tristen Pierson / Layer1Labs Silicon, Inc.  
 **Confidentiality**: INTERNAL
 
 ---
@@ -25,7 +25,7 @@
 
 ## 3. Authors
 
-Tristen Pierson (BitConcepts, LLC) — sole author unless co-authorship agreement signed
+Tristen Pierson (Layer1Labs Silicon, Inc.) — sole author unless co-authorship agreement signed
 
 ---
 

@@ -1,0 +1,21 @@
+{
+  "id": "indus_phase22b_meluhhan_persons",
+  "name": "Indus Phase-22b \u2014 Meluhhan named-person extraction",
+  "description": "Phase-22b: surfaces high-confidence Meluhhan personal-name candidates from CDLI tablet lines that mention 'me-luh-ha'. Aggregates across the 215 me-luh-ha-mention tablets, ranks by occurrence count, and flags any matches against historically-known Meluhhan-named persons (Lu-sun-zi-da, Shu-ilishu). Feeds Phase-22c (name matcher) and Phase-23 (name-to-seal binding). Output: reports/phase22b_meluhhan_persons.json.",
+  "auto_migrated": false,
+  "nodes": [
+    { "id": "load",      "type": "expNode", "data": { "atomicId": "ContactCorpusLoader",       "label": "Load contact corpus",          "params": {} },                                            "position": { "x": 60,   "y": 100 } },
+    { "id": "extract",   "type": "expNode", "data": { "atomicId": "MeluhhanPersonsExtractor",  "label": "Meluhhan persons extractor",     "params": { "min_freq": 2 } },                              "position": { "x": 360,  "y": 100 } },
+    { "id": "merge",     "type": "expNode", "data": { "atomicId": "Merger",                    "label": "Merge results",                  "params": {} },                                            "position": { "x": 660,  "y": 100 } },
+    { "id": "out",       "type": "expNode", "data": { "atomicId": "JSONExport",                "label": "Save Phase-22b results",         "params": { "filename": "phase22b_meluhhan_persons.json" } }, "position": { "x": 960,  "y": 100 } }
+  ],
+  "edges": [
+    { "id": "e_load_extract",        "source": "load",    "target": "extract", "sourcePort": "persons",             "targetPort": "persons" },
+    { "id": "e_load_merge_np",       "source": "load",    "target": "merge",   "sourcePort": "n_persons",           "targetPort": "a" },
+    { "id": "e_extract_merge_top",   "source": "extract", "target": "merge",   "sourcePort": "rows_top50",          "targetPort": "b" },
+    { "id": "e_extract_merge_n",     "source": "extract", "target": "merge",   "sourcePort": "n_unique_candidates", "targetPort": "c" },
+    { "id": "e_extract_merge_hits",  "source": "extract", "target": "merge",   "sourcePort": "confirmed_hits",      "targetPort": "d" },
+    { "id": "e_extract_merge_v",     "source": "extract", "target": "merge",   "sourcePort": "verdict",             "targetPort": "e" },
+    { "id": "e_merge_out",           "source": "merge",   "target": "out",     "sourcePort": "json",                "targetPort": "data" }
+  ]
+}

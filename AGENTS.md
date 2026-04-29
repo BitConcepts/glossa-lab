@@ -4,6 +4,11 @@
 
 This repository uses a closed-loop, specification-first, constraint-governed agentic workflow.
 
+> **See also `WARP.md` at repo root for project rules governing how experiments
+> MUST run (graph executor / `ExperimentBase`, never standalone phase scripts).
+> AGENTS.md governs *how you record work*; WARP.md governs *how you build and
+> run the experiments*.**
+
 Agents are **proposal generators**, not authorities.
 
 All non-trivial work MUST flow through:

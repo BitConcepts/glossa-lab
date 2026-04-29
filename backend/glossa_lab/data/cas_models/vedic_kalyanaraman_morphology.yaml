@@ -1,0 +1,120 @@
+version: "1.0"
+model_id: vedic_kalyanaraman_morphology
+description: >
+  Kalyanaraman-style Indus-as-Vedic-Sanskrit hypothesis projected as a CPSC
+  constraint manifold. This is a competitor to the mainstream Indo-Aryan
+  hypothesis: Kalyanaraman's "Epigraphia Indus Script -- Hypertexts &
+  Meanings" volumes argue Indus signs encode Sanskrit/Vedic terms (often
+  Mleccha vocabulary) via rebus mapping. Phase-16 builds an empirical
+  baseline by extracting all Devanagari words from the 421 Kalyanaraman
+  index files (~99k tokens, ~49k distinct words) and computing the same
+  language-signature DoFs as the other hypotheses. Used as a *competing*
+  CAS-YAML alongside indo_aryan_morphology so the multi-hypothesis ranker
+  can distinguish a generic Indo-Aryan fit from a Kalyanaraman-specific
+  vocabulary-distribution fit.
+  Caveat: Kalyanaraman's interpretation is contested even within the
+  Indo-Aryan-hypothesis camp. The Devanagari corpus underlying the
+  measured DoFs is bag-of-words (concatenation of vocabulary across
+  many documents), so MI-based DoFs (mi_gamma, eps2/eps3) are
+  artefactually high or low and should not be over-interpreted.
+measured_from:
+  - corpus: kalyanaraman_vedic
+    n_tokens: 98707
+    n_types: 49140
+    zipf_alpha: 0.5849
+    zipf_r2: 0.9022
+    mi_gamma: 0.0097
+    mi_r2_pow: 0.9718
+    epistatic_2nd_norm: 0.9017
+    epistatic_3rd_norm: 0.8191
+    h1_norm: 0.9357
+    h1_nats: 10.1075
+    note: "Devanagari vocabulary aggregated from 421 Kalyanaraman zanodor files."
+state:
+  variables:
+    - name: zipf_alpha
+      type: float
+      domain: [0.0, 3.0]
+      description: "Zipf-Mandelbrot alpha. Bag-of-words: 0.50-0.70 typical."
+    - name: zipf_r2
+      type: float
+      domain: [0.0, 1.0]
+      description: "Zipf fit R^2. Vedic vocabulary: >= 0.85."
+    - name: mi_gamma
+      type: float
+      domain: [0.0, 5.0]
+      description: "Power-law MI decay. Bag-of-words: near 0 (artefact)."
+    - name: mi_r2_pow
+      type: float
+      domain: [0.0, 1.0]
+      description: "MI power-law fit R^2. Often spuriously high in BoW."
+    - name: epistatic_2nd_norm
+      type: float
+      domain: [0.0, 1.0]
+      description: "2nd-order info fraction. Wide vocabulary: 0.85-0.95."
+    - name: epistatic_3rd_norm
+      type: float
+      domain: [0.0, 1.0]
+      description: "3rd-order info fraction. Wide vocabulary: 0.75-0.90."
+    - name: h1_norm
+      type: float
+      domain: [0.0, 1.0]
+      description: "Per-symbol H1 / ln(V). Wide vocabulary: 0.90-0.97."
+    - name: h1_nats
+      type: float
+      domain: [0.0, 14.0]
+      description: "Raw H1 in nats (diagnostic only)."
+    - name: vedic_kalyanaraman_score
+      type: float
+      domain: [0.0, 2.0]
+      derived: true
+      description: "Aggregate Kalyanaraman-Vedic-fit score. >=1.5 strong fit."
+degrees_of_freedom:
+  free:
+    - zipf_alpha
+    - zipf_r2
+    - mi_gamma
+    - mi_r2_pow
+    - epistatic_2nd_norm
+    - epistatic_3rd_norm
+    - h1_norm
+    - h1_nats
+constraints:
+  # Phase-16 grounded ranges, narrow bracket around the measured Kalyanaraman
+  # vocabulary point. Tighter than indo_aryan_morphology because we are
+  # encoding the *specific* fingerprint of Kalyanaraman's BoW Devanagari
+  # corpus, not generic Sanskrit.
+  - id: zipf_alpha_vk_low
+    expression: "zipf_alpha >= 0.50"
+  - id: zipf_alpha_vk_high
+    expression: "zipf_alpha <= 0.75"
+    description: "Measured 0.585; tight upper bound to distinguish from running Sanskrit."
+  - id: zipf_r2_vk
+    expression: "zipf_r2 >= 0.85"
+  - id: mi_gamma_vk_low
+    expression: "mi_gamma >= 0.0"
+  - id: mi_gamma_vk_high
+    expression: "mi_gamma <= 0.05"
+    description: "Bag-of-words artefact: near-zero MI decay."
+  - id: mi_r2_pow_vk
+    expression: "mi_r2_pow >= 0.85"
+  - id: hed_2nd_vk_low
+    expression: "epistatic_2nd_norm >= 0.80"
+    description: "Bag-of-words pushes pairwise info fraction near 1.0."
+  - id: hed_2nd_vk_high
+    expression: "epistatic_2nd_norm <= 0.99"
+  - id: hed_3rd_vk_low
+    expression: "epistatic_3rd_norm >= 0.70"
+  - id: hed_3rd_vk_high
+    expression: "epistatic_3rd_norm <= 0.95"
+  - id: h1_norm_vk_low
+    expression: "h1_norm >= 0.88"
+    description: "Wide vocabulary -> high normalised entropy."
+  - id: h1_norm_vk_high
+    expression: "h1_norm <= 0.99"
+  - id: vedic_kalyanaraman_score_def
+    expression: "vedic_kalyanaraman_score = zipf_r2 * 0.30 + mi_r2_pow * 0.20 + epistatic_2nd_norm * 0.6 + epistatic_3rd_norm * 0.6 + h1_norm * 0.40"
+projection:
+  strategy: iterative
+  max_iterations: 200
+  convergence_epsilon: 0.000001

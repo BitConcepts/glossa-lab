@@ -152,3 +152,20 @@ logs/
 # Auto-generated experiment runner stubs from run_and_watch.py (H17.6)
 backend/scripts/_run_*.py
 
+# ---- Phase-16: large acquired corpora and scratch space ----
+# corpora/downloads/ holds ~3 GB of external dictionaries, OCR scans, ATF
+# dumps, etc. that are not authoritative project data; the Phase-16
+# extraction scripts under scripts/phase16/ regenerate the artifacts under
+# backend/glossa_lab/data/phase16_corpora/ from these.
+corpora/
+scratch/
+
+# Phase-16 derived corpora are large (~108 MB) and fully regenerable by
+# scripts/phase16/extract_*.py. We commit only the small DoF summary files
+# and the small lemma/lexicon tables; the ATF subsets, sign-sequence CSVs,
+# Tamil feature matrix, and Devanagari corpus are gitignored.
+backend/glossa_lab/data/phase16_corpora/cdli_*.atf
+backend/glossa_lab/data/phase16_corpora/cdli_*_seqs.csv
+backend/glossa_lab/data/phase16_corpora/kee2u_tamil_morpheme_features.csv
+backend/glossa_lab/data/phase16_corpora/kalyanaraman_devanagari_corpus.txt
+

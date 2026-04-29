@@ -1,0 +1,31 @@
+{
+  "id": "indus_phase22_synthesis",
+  "name": "Indus Phase-22 \u2014 contact-zone synthesis",
+  "description": "Phase-22 master graph: re-runs all four sub-experiments inline (Meluhha corpus audit, Meluhhan persons extractor, Indus-seals-at-Mesopotamia summary, name-matcher prototype) and aggregates results via Phase22Verdict. Produces the headline contact-zone inventory verdict + Phase-23 priority list (CISI Vol 3 sign ingestion, regex tightening, falsifiable readout test). Output: reports/phase22_synthesis.json.",
+  "auto_migrated": false,
+  "nodes": [
+    { "id": "load",     "type": "expNode", "data": { "atomicId": "ContactCorpusLoader",            "label": "Load contact corpus",          "params": {} },                                            "position": { "x": 60,   "y": 280 } },
+    { "id": "audit",    "type": "expNode", "data": { "atomicId": "MeluhhaCorpusReporter",          "label": "Meluhha corpus audit",          "params": {} },                                            "position": { "x": 360,  "y": 80 } },
+    { "id": "persons",  "type": "expNode", "data": { "atomicId": "MeluhhanPersonsExtractor",       "label": "Meluhhan persons extractor",     "params": { "min_freq": 2 } },                              "position": { "x": 360,  "y": 240 } },
+    { "id": "seals",    "type": "expNode", "data": { "atomicId": "IndusSealsAtMesopotamiaSummary","label": "Indus seals @ Mesopotamia",     "params": {} },                                            "position": { "x": 360,  "y": 400 } },
+    { "id": "matcher",  "type": "expNode", "data": { "atomicId": "MeluhhaNameMatcher",            "label": "Meluhha name matcher",           "params": { "min_name_freq": 2 } },                          "position": { "x": 360,  "y": 560 } },
+    { "id": "verdict",  "type": "expNode", "data": { "atomicId": "Phase22Verdict",                 "label": "Phase-22 verdict aggregator",    "params": {} },                                            "position": { "x": 760,  "y": 320 } },
+    { "id": "out",      "type": "expNode", "data": { "atomicId": "JSONExport",                     "label": "Save Phase-22 synthesis",        "params": { "filename": "phase22_synthesis.json" } },     "position": { "x": 1080, "y": 320 } }
+  ],
+  "edges": [
+    { "id": "e_load_audit_t",    "source": "load",    "target": "audit",   "sourcePort": "tablets",              "targetPort": "tablets" },
+    { "id": "e_load_audit_kc",   "source": "load",    "target": "audit",   "sourcePort": "keyword_counts",       "targetPort": "keyword_counts" },
+    { "id": "e_load_audit_pc",   "source": "load",    "target": "audit",   "sourcePort": "period_counts",        "targetPort": "period_counts" },
+    { "id": "e_load_audit_prov", "source": "load",    "target": "audit",   "sourcePort": "provenience_counts",   "targetPort": "provenience_counts" },
+    { "id": "e_load_persons",    "source": "load",    "target": "persons", "sourcePort": "persons",              "targetPort": "persons" },
+    { "id": "e_load_seals",      "source": "load",    "target": "seals",   "sourcePort": "seals_at_mesopotamia", "targetPort": "seals_at_mesopotamia" },
+    { "id": "e_load_match_p",    "source": "load",    "target": "matcher", "sourcePort": "persons",              "targetPort": "persons" },
+    { "id": "e_load_match_s",    "source": "load",    "target": "matcher", "sourcePort": "seals_at_mesopotamia", "targetPort": "seals_at_mesopotamia" },
+    { "id": "e_v_audit_n",       "source": "audit",   "target": "verdict", "sourcePort": "n_tablets",            "targetPort": "n_tablets" },
+    { "id": "e_v_persons_n",     "source": "persons", "target": "verdict", "sourcePort": "n_unique_candidates",  "targetPort": "n_persons" },
+    { "id": "e_v_persons_h",     "source": "persons", "target": "verdict", "sourcePort": "confirmed_hits",       "targetPort": "confirmed_hits" },
+    { "id": "e_v_seals_n",       "source": "seals",   "target": "verdict", "sourcePort": "n_seals",              "targetPort": "n_seals" },
+    { "id": "e_v_match_np",      "source": "matcher", "target": "verdict", "sourcePort": "n_pairings",           "targetPort": "n_pairings" },
+    { "id": "e_verdict_out",     "source": "verdict", "target": "out",     "sourcePort": "summary",              "targetPort": "data" }
+  ]
+}

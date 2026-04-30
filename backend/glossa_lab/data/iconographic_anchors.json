@@ -1,4 +1,17 @@
 {
+  "_citation": {
+    "primary_source": "Parpola 2010",
+    "full_reference": "Parpola, Asko. 2010. A Dravidian solution to the Indus script problem. Coimbatore: Kalaignar M. Karunanidhi Classical Tamil Award lecture, World Classical Tamil Conference, 25 June 2010. Pp. 39.",
+    "figures_cited": "figs 5, 6, 7, 9, 10, 14, 17, 19, 20, 21, 22, 23",
+    "catalogue_sources": [
+      "Joshi, Jagat Pati & Asko Parpola (eds.). 1987. CISI 1: Collections in India. Helsinki: Suomalainen Tiedeakatemia. ISBN 951-41-0555-9.",
+      "Shah, Sayid Ghulam Mustafa & Asko Parpola (eds.). 1991. CISI 2: Collections in Pakistan. Helsinki: Suomalainen Tiedeakatemia. ISBN 951-41-0556-7.",
+      "Parpola, Asko, B. M. Pande & Petteri Koskikallio (eds.). 2010. CISI 3.1: Mohenjo-daro and Harappa. Helsinki: Suomalainen Tiedeakatemia. ISBN 978-951-41-1040-5."
+    ],
+    "license": "Iconographic anchor compilation derived from Parpola 2010 (open conference paper) plus CISI catalogue images (Suomalainen Tiedeakatemia, copyrighted). Reference use only; consult CITATIONS.md (sections A.2, A.3, A.4, C.2) for full citations.",
+    "see_also": "CITATIONS.md",
+    "compiled_by": "Glossa-Lab Phase-27 (12 anchors)."
+  },
   "_doc": "Iconographic anchors: Indus seals/tablets where the iconographic motif depicted on the seal SUPPORTS or DETERMINES the iconic reading of one of its inscribed signs. These are non-statistical, non-rebus anchors that any phonetic decoder must respect. Source: Parpola 2010 figs 5, 6, 7, 9, 14, 17, 19, 20, 22, 23.",
   "anchors": [
     {

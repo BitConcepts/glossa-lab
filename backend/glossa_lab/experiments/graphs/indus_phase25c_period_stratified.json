@@ -1,0 +1,16 @@
+{
+  "id": "indus_phase25c_period_stratified",
+  "name": "Indus Phase-25c \u2014 period-stratified readout test",
+  "description": "Phase-25c Tier B4: replicates the Phase-24d p=0.046 bipartite readout test on each period subset (Ur III, Old Babylonian, Neo-Assyrian, Old Akkadian, Ebla, Other). Period-robust signal = p<0.05 in 2+ strata. Output: reports/phase25c_period_stratified.json.",
+  "auto_migrated": false,
+  "nodes": [
+    { "id": "load",  "type": "expNode", "data": { "atomicId": "Phase25CorpusLoader",      "label": "Load Phase-25 corpus",       "params": {} },                                          "position": { "x": 60,   "y": 100 } },
+    { "id": "test",  "type": "expNode", "data": { "atomicId": "PeriodStratifiedReadout", "label": "Period-stratified readout",  "params": { "n_permutations": 1000, "tolerance": 2 } },   "position": { "x": 360,  "y": 100 } },
+    { "id": "out",   "type": "expNode", "data": { "atomicId": "JSONExport",              "label": "Save Phase-25c results",      "params": { "filename": "phase25c_period_stratified.json" } }, "position": { "x": 660, "y": 100 } }
+  ],
+  "edges": [
+    { "id": "e_load_t_p",    "source": "load", "target": "test", "sourcePort": "persons_v3",      "targetPort": "persons_v3" },
+    { "id": "e_load_t_s",    "source": "load", "target": "test", "sourcePort": "inscribed_seals", "targetPort": "inscribed_seals" },
+    { "id": "e_t_out",       "source": "test", "target": "out",  "sourcePort": "results",         "targetPort": "data" }
+  ]
+}

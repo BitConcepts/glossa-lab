@@ -2419,6 +2419,14 @@ try:
 except Exception as _p28_exc:  # noqa: BLE001
     logger.warning("Phase-28 nodes not registered: %s", _p28_exc)
 
+# ── Phase-29 nodes (corpus 10x expansion: M77 + ePSD2 + Fuls + ICIT loaders) ──
+try:
+    from glossa_lab.experiment_graph_phase29 import _phase29_node_defs as _p29_defs  # noqa: PLC0415
+    for _d in _p29_defs():
+        ATOMIC_NODES[_d.id] = _d
+except Exception as _p29_exc:  # noqa: BLE001
+    logger.warning("Phase-29 nodes not registered: %s", _p29_exc)
+
 
 # ── Graph execution ────────────────────────────────────────────────────────────────────
 

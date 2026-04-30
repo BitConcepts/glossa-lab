@@ -1,4 +1,17 @@
 {
+  "_citation": {
+    "primary_source": "Mahadevan 1977 + Parpola 1994a/b + Wells 2015",
+    "full_references": [
+      "Mahadevan, Iravatham. 1977. The Indus Script: Texts, Concordance and Tables. Memoirs of the Archaeological Survey of India, No. 77. New Delhi: ASI.",
+      "Parpola, Asko. 1994a. Deciphering the Indus Script. Cambridge: CUP. ISBN 978-0-521-43079-1.",
+      "Parpola, Asko. 1994b. Sign list (= Parpola 1994a fig. 5.1, pp. 70-78).",
+      "Wells, Bryan K. 2015. The Archaeology and Epigraphy of Indus Writing. Oxford: Archaeopress. ISBN 978-1-78491-046-4.",
+      "Parpola, Asko. 2010. A Dravidian solution to the Indus script problem. Coimbatore."
+    ],
+    "license": "Reference use only; copyrighted by the respective authors and publishers. See CITATIONS.md (A.1, A.7, C.1, C.2) for full bibliographic and licensing details.",
+    "see_also": "CITATIONS.md",
+    "compiled_by": "Glossa-Lab Phase-28; hand-curated subset."
+  },
   "_doc": "Mahadevan 1977 (M77) sign-list <-> Parpola 1994b (P) sign-list crosswalk for the most-cited and most-relevant signs. Source: Mahadevan 1977 Appendix III (sign list comparisons); Parpola 1994a fig. 5.1 + Parpola 1994b. Wells 2015 also cross-references in his sign list. NOTE: this is a curated subset; complete crosswalks for all ~400 signs require Mahadevan 1977 in print form.",
   "method_note": "Each entry maps M77 ID -> Parpola ID and includes any additional cross-references (Wells, Yajnadevam where known). Entries marked 'allograph_of' indicate this M77 sign is an allograph of another sign in Parpola's standard family.",
   "version": "Phase-28 v1, hand-curated from Parpola 2010 + Mahadevan 1977 secondary references",

@@ -1,4 +1,21 @@
 {
+  "_citation": {
+    "primary_source": "Parpola 1994a + Parpola 2010",
+    "full_references": [
+      "Parpola, Asko. 1994. Deciphering the Indus Script. Cambridge: Cambridge University Press. ISBN 978-0-521-43079-1.",
+      "Parpola, Asko. 2010. A Dravidian solution to the Indus script problem. Coimbatore: Karunanidhi Classical Tamil Award lecture, World Classical Tamil Conference.",
+      "Parpola, Asko. 1994b. Sign list (= Parpola 1994a fig. 5.1, pp. 70-78).",
+      "Mahadevan, Iravatham. 1977. The Indus Script: Texts, Concordance and Tables. ASI MASI No. 77.",
+      "Laursen, Steffen Terp. 2010. The westward transmission of Indus Valley sealing technology... Arabian Archaeology and Epigraphy 21(2): 96-134.",
+      "Wells, Bryan K. 2015. The Archaeology and Epigraphy of Indus Writing. Oxford: Archaeopress. ISBN 978-1-78491-046-4.",
+      "Parpola, Asko. 1981. On the Harappan yoke-carrier pictogram and the kavai worship.",
+      "Parpola, Asko. 2004. From archaeology to stratigraphy of Vedic syncretism: The banyan tree and the water buffalo.",
+      "Parpola, Asko. 1985. The Sky-Garment. Studia Orientalia 57. Helsinki: Finnish Oriental Society."
+    ],
+    "license": "All Parpola/Mahadevan/Laursen/Wells material is copyrighted by the respective authors and publishers. The data here is a derivative compilation of phoneme readings from the cited works. Reference use only; consult CITATIONS.md (sections A.1, A.7, A.12, C.1, C.2, C.3, C.4, F.2) for full bibliographic details.",
+    "see_also": "CITATIONS.md",
+    "compiled_by": "Glossa-Lab Phase-25 through Phase-28; hand-curated from cited primary sources."
+  },
   "source_papers": [
     "Parpola, A. (1994a) Deciphering the Indus Script. Cambridge UP.",
     "Parpola, A. (2010) A Dravidian solution to the Indus script problem. Coimbatore.",

@@ -1,0 +1,54 @@
+{
+  "data": [
+    {
+      "p_value": 0.03,
+      "observed": 3.0,
+      "null_mean": 2.0447,
+      "n_names": 3,
+      "n_seals": 11,
+      "n_perms": 1000,
+      "period": "Old Akkadian",
+      "n_unique_candidates": 3
+    },
+    {
+      "p_value": 0.005,
+      "observed": 4.0,
+      "null_mean": 2.5003,
+      "n_names": 4,
+      "n_seals": 11,
+      "n_perms": 1000,
+      "period": "Old Babylonian",
+      "n_unique_candidates": 4
+    },
+    {
+      "p_value": 0.107,
+      "observed": 2.0,
+      "null_mean": 1.3399,
+      "n_names": 2,
+      "n_seals": 11,
+      "n_perms": 1000,
+      "period": "Other",
+      "n_unique_candidates": 2
+    },
+    {
+      "p_value": 0.035,
+      "observed": 8.333,
+      "null_mean": 7.1414,
+      "n_names": 36,
+      "n_seals": 11,
+      "n_perms": 1000,
+      "period": "Ur III",
+      "n_unique_candidates": 36
+    },
+    {
+      "p_value": 0.0,
+      "observed": 9.334,
+      "null_mean": 7.125,
+      "n_names": 44,
+      "n_seals": 11,
+      "n_perms": 1000,
+      "period": "ALL (overall)",
+      "n_unique_candidates": 44
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "data": [
+    {
+      "catalogue_id": "BM_122187_UR_seal_1",
+      "n_signs": 5,
+      "real_signs": 0,
+      "predicted_phoneme_skeleton": "(all placeholders)",
+      "n_high_conf": 0,
+      "readable": false
+    },
+    {
+      "catalogue_id": "GADD_1",
+      "n_signs": 3,
+      "real_signs": 0,
+      "predicted_phoneme_skeleton": "(all placeholders)",
+      "n_high_conf": 0,
+      "readable": false
+    },
+    {
+      "catalogue_id": "GADD_2",
+      "n_signs": 4,
+      "real_signs": 0,
+      "predicted_phoneme_skeleton": "(all placeholders)",
+      "n_high_conf": 0,
+      "readable": false
+    },
+    {
+      "catalogue_id": "ASMAR_TA",
+      "n_signs": 3,
+      "real_signs": 0,
+      "predicted_phoneme_skeleton": "(all placeholders)",
+      "n_high_conf": 0,
+      "readable": false
+    },
+    {
+      "catalogue_id": "KISH_INDUS_1",
+      "n_signs": 3,
+      "real_signs": 0,
+      "predicted_phoneme_skeleton": "(all placeholders)",
+      "n_high_conf": 0,
+      "readable": false
+    },
+    {
+      "catalogue_id": "SUSA_INDUS_1",
+      "n_signs": 4,
+      "real_signs": 0,
+      "predicted_phoneme_skeleton": "(all placeholders)",
+      "n_high_conf": 0,
+      "readable": false
+    },
+    {
+      "catalogue_id": "LOTHAL_PERSIAN_GULF_SEAL",
+      "n_signs": 2,
+      "real_signs": 0,
+      "predicted_phoneme_skeleton": "(all placeholders)",
+      "n_high_conf": 0,
+      "readable": false
+    },
+    {
+      "catalogue_id": "FAILAKA_KM_1113",
+      "n_signs": 4,
+      "real_signs": 0,
+      "predicted_phoneme_skeleton": "(all placeholders)",
+      "n_high_conf": 0,
+      "readable": false
+    },
+    {
+      "catalogue_id": "VA_243_BERLIN",
+      "n_signs": 5,
+      "real_signs": 0,
+      "predicted_phoneme_skeleton": "(all placeholders)",
+      "n_high_conf": 0,
+      "readable": false
+    },
+    {
+      "catalogue_id": "JALALABAD_FARS",
+      "n_signs": 4,
+      "real_signs": 0,
+      "predicted_phoneme_skeleton": "(all placeholders)",
+      "n_high_conf": 0,
+      "readable": false
+    },
+    {
+      "catalogue_id": "JANABIYAH_LAURSEN_10",
+      "n_signs": 7,
+      "real_signs": 7,
+      "predicted_phoneme_skeleton": "uncertain-miin-or (?)-miin-uncertain-uncertain-miin",
+      "n_high_conf": 3,
+      "readable": true
+    }
+  ]
+}

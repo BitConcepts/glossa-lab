@@ -34,6 +34,7 @@ _ROOT = Path(__file__).resolve().parents[3]
 _CDLI_MELUHHA = _ROOT / "corpora" / "downloads" / "contact_zone" / "cdli_meluhha" / "meluhha_tablets.json"
 _INDUS_SEALS_MES = _ROOT / "corpora" / "downloads" / "contact_zone" / "indus_seals_mesopotamia" / "seals_at_mesopotamia.json"
 _LAURSEN_TABLE1 = _ROOT / "corpora" / "downloads" / "contact_zone" / "gulf_seals" / "laursen_2010_table1.json"
+_PARPOLA_PHONEMES = Path(__file__).resolve().parent / "parpola_phonemes.json"
 
 
 def _safe_load(path: Path) -> dict:
@@ -124,6 +125,23 @@ def get_seal_sign_upgrade_metadata() -> dict:
     """Return Phase-24 sign-upgrade metadata block."""
     md = _load_indus_seals_at_mesopotamia_data().get("metadata") or {}
     return md.get("phase24_sign_upgrade") or {}
+
+
+@lru_cache(maxsize=1)
+def _load_parpola_phonemes_data() -> dict:
+    return _safe_load(_PARPOLA_PHONEMES)
+
+
+def get_parpola_phoneme_map() -> dict:
+    """Return the Parpola candidate phoneme map: sign_id -> {phoneme, gloss, confidence, source}.
+    Phase-25."""
+    return dict(_load_parpola_phonemes_data().get("phoneme_map") or {})
+
+
+def get_janabiyah_seal_reading() -> dict:
+    """Return the canonical Parpola reading of Janabiyah seal #10.
+    Phase-25."""
+    return dict(_load_parpola_phonemes_data().get("janabiyah_seal_reading") or {})
 
 
 # ── Meluhhan-named-person extraction ─────────────────────────────────
@@ -411,6 +429,114 @@ def _is_personal_name_candidate_v2(token: str) -> bool:
     return False
 
 
+# ── Phase-25: persons-v3 with extended Akkadian-fragment stoplist + 6-segment regex ──
+_AKKADIAN_STOPLIST_V3: frozenset[str] = frozenset(
+    _AKKADIAN_STOPLIST_V2 | {
+        # Mid-Akkadian-word fragments observed as Phase-24c noise tail
+        "lu-ti", "lu-na", "lu-ma-ku", "lu-ma", "lu-bi", "lu-ud",
+        "lu-uh", "lu-um", "lu-uk", "lu-up", "lu-us", "lu-uz",
+        "lu-li", "lu-mu", "lu-pi", "lu-su", "lu-tu", "lu-zu",
+        "lu-h", "lu-uq", "lu-pu", "lu-bu",
+        # Common Akkadian/Sumerian compositional fragments
+        "dumu-mesz", "dumu-ne-ne", "dumu-min", "dumu-bi",
+        "lu-li-szu", "lu-li-su",
+    }
+)
+
+# Widened regex: up to 6 hyphenated segments (was 5). Captures
+# longer canonical Sumerian PNs like ur-{d}suen-me-luh-ha-ki and the
+# 7-sign Janabiyah-style readings. Allow {d} divine determinative.
+_PN_PREFIX_RE_V3 = re.compile(
+    r"\b(?P<full>(?:lu2|lu|dumu|ur)-(?:\{d\})?(?:[a-z][a-z0-9']*)"
+    r"(?:-(?:\{d\})?[a-z][a-z0-9']*){0,5})\b",
+    re.IGNORECASE,
+)
+_PN_MELUHHA_SUFFIX_RE_V3 = re.compile(
+    r"\b(?P<full>(?:[a-z][a-z0-9']*)"
+    r"(?:-(?:\{d\})?[a-z][a-z0-9']*){0,5}-me-luh-?ha(?:-ki)?)\b",
+    re.IGNORECASE,
+)
+
+
+def _is_personal_name_candidate_v3(token: str) -> bool:
+    """Phase-25 strict PN heuristic: v2 + extended Akkadian-fragment stoplist."""
+    t = token.lower().strip()
+    if not t or t in _AKKADIAN_STOPLIST_V3:
+        return False
+    if _DIGIT_TOKEN_RE.match(t):
+        return False
+    if _is_toponym_candidate(t):
+        return False
+    if t in _KNOWN_MELUHHAN_NAMES:
+        return True
+    # Must have at least 3 segments to count as a PN candidate
+    # (drops 'lu-ti', 'lu-na', 'lu-bi' style 2-segment fragments)
+    if t.count("-") < 2:
+        return False
+    if _PN_PREFIX_RE_V3.fullmatch(t):
+        return True
+    if _PN_MELUHHA_SUFFIX_RE_V3.fullmatch(t):
+        return True
+    return False
+
+
+def get_meluhhan_persons_v3() -> list[dict]:
+    """Phase-25 Meluhhan-PN extractor.
+
+    Differences vs v2:
+      - Extended Akkadian-fragment stoplist (lu-ti, lu-na, lu-ma-ku, etc.)
+      - Minimum 3 segments per candidate (drops 2-segment fragments).
+      - 6-segment regex (was 5) to capture ur-{d}suen-me-luh-ha-ki.
+    """
+    persons: list[dict] = []
+    seen: set[tuple[str, str]] = set()
+    for t in get_meluhha_tablets():
+        kw = " ".join(t.get("matched_keywords") or []).lower()
+        if "me-luh" not in kw:
+            continue
+        line_pool: list[str] = []
+        line_pool.extend(t.get("atf_lines_with_match") or [])
+        line_pool.extend(t.get("atf_excerpt_lines") or [])
+        excerpt = t.get("atf_excerpt") or ""
+        if excerpt:
+            line_pool.extend(
+                [ln for ln in str(excerpt).splitlines() if ln.strip()]
+            )
+        seen_lines: set[str] = set()
+        unique_lines: list[str] = []
+        for ln in line_pool:
+            if ln in seen_lines:
+                continue
+            seen_lines.add(ln)
+            unique_lines.append(ln)
+
+        for line in unique_lines:
+            ll = line.lower()
+            for regex, pattern in (
+                (_PN_PREFIX_RE_V3,         "prefix:lu2/lu/dumu/ur (v3)"),
+                (_PN_MELUHHA_SUFFIX_RE_V3, "suffix:-me-luh-ha (v3)"),
+            ):
+                for m in regex.finditer(ll):
+                    cand = m.group("full")
+                    if not _is_personal_name_candidate_v3(cand):
+                        continue
+                    key = (t["p_number"], cand)
+                    if key in seen:
+                        continue
+                    seen.add(key)
+                    persons.append({
+                        "p_number": t["p_number"],
+                        "designation": t.get("designation", ""),
+                        "period": t.get("period", ""),
+                        "provenience": t.get("provenience", ""),
+                        "candidate_name": cand,
+                        "line": line,
+                        "source_pattern": pattern,
+                        "is_known": cand.lower() in _KNOWN_MELUHHAN_NAMES,
+                    })
+    return persons
+
+
 def get_meluhhan_persons_v2() -> list[dict]:
     """Phase-24 Meluhhan-PN extractor.
 
@@ -490,4 +616,7 @@ __all__ = [
     "get_meluhhan_persons",
     "get_meluhhan_persons_strict",
     "get_meluhhan_persons_v2",
+    "get_meluhhan_persons_v3",
+    "get_parpola_phoneme_map",
+    "get_janabiyah_seal_reading",
 ]

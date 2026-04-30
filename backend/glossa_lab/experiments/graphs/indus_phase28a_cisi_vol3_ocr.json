@@ -1,0 +1,13 @@
+{
+  "id": "indus_phase28a_cisi_vol3_ocr",
+  "name": "Indus Phase-28a — CISI Vol 3 OCR (call_llm_vision)",
+  "description": "Phase-28 #1: load OCR records from CISI Vol 3 Part 3 (default no-op; set run_ocr=true + pdf_path to re-run).",
+  "auto_migrated": false,
+  "nodes": [
+    { "id": "ocr",  "type": "expNode", "data": { "atomicId": "CISIVol3OCRNode", "label": "CISI Vol 3 OCR", "params": { "run_ocr": false, "output_path": "reports/cisi_vol3_extracted_signs.json" } }, "position": { "x": 60, "y": 100 } },
+    { "id": "out",  "type": "expNode", "data": { "atomicId": "JSONExport",       "label": "Save",         "params": { "filename": "phase28a_cisi_vol3_ocr.json" } }, "position": { "x": 360, "y": 100 } }
+  ],
+  "edges": [
+    { "id": "e1", "source": "ocr", "target": "out", "targetPort": "data" }
+  ]
+}

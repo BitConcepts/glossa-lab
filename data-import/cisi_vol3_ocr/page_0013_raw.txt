@@ -1,0 +1,19 @@
+SEAL: Alt-49 | SIGNS: (no specific sign numbers listed)
+SEAL: Alt-90 | SIGNS: (no specific sign numbers listed)
+SEAL: Gonur (Indus-type seal) | SIGNS: elephant image, eight signs long inscription (parallels in Indus Valley)
+SEAL: TY-106 (Tepe Yahya) | SIGNS: Indus seal impression on pottery sherd (no specific sign numbers listed)
+SEAL: Shd-1 (Shahr-i Sokhta) | SIGNS: P145 (referenced in connection with pottery motif)
+SEAL: Damb Sadaat (Quetta Valley) | SIGNS: (no specific sign numbers listed)
+SEAL: Kara-depe (Kara-14) | SIGNS: (no specific sign numbers listed)
+
+ICONOGRAPHY: Gonur seal | MOTIF: elephant and eight signs long inscription in Indus script
+ICONOGRAPHY: TY-106 (Tepe Yahya) | MOTIF: Indus seal impression on pottery sherd
+ICONOGRAPHY: Shahr-i Sokhta, Mundigak, Mehrgarh | MOTIF: three-branched fig tree with a single stem (pottery motif related to Indus script signs)
+ICONOGRAPHY: Quetta culture seals | MOTIF: parallels with seals from southern Turkmenistan (Damb Sadaat and Kara-depe)
+
+PARPOLA NUMBER REFERENCES:
+- P145 (sign of the Indus script)
+- P235–236 (Indus script signs based on pottery motif)
+- P2006 (reference to Parpola 2006 for Gonur seal inscription)
+
+SIGN_REF: P145 | MEANING: sign of the Indus script based on a pottery motif ('three-branched fig tree with a single stem')

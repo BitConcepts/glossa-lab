@@ -1,0 +1,245 @@
+{
+  "data": {
+    "47": {
+      "phoneme": "miin",
+      "gloss": "fish/star",
+      "confidence": "high",
+      "source": "Parpola 2010 (the central case study); Parpola 1994a Ch.10",
+      "iconic": "plain fish",
+      "homonymy": "Dravidian miin = both 'fish' and 'star'"
+    },
+    "50": {
+      "phoneme": "miin-X",
+      "gloss": "fish-with-modifier",
+      "confidence": "high",
+      "source": "Parpola 2010 sec. 'fish-family signs'",
+      "iconic": "fish with diacritical mark"
+    },
+    "60": {
+      "phoneme": "miin",
+      "gloss": "fish (variant)",
+      "confidence": "high",
+      "source": "Laursen 2010 fn 2 cites this as 'badly drawn fish'; Parpola family"
+    },
+    "145": {
+      "phoneme": "miin",
+      "gloss": "fish/star (the central Indus sign)",
+      "confidence": "high",
+      "source": "Parpola 1994a fig. 5.1; co-occurs with numerical signs to form astral names",
+      "iconic": "fish-shape with two horizontal lines"
+    },
+    "147": {
+      "phoneme": "miin",
+      "gloss": "fish (sign-list variant)",
+      "confidence": "high",
+      "source": "Parpola 1994b sign list; Laursen 2010 fn 2 (Janabiyah seal pos. 1b)"
+    },
+    "311": {
+      "phoneme": "vaTa-miin (?)",
+      "gloss": "fig + fish = north star",
+      "confidence": "medium",
+      "source": "Parpola 2010 ('fig + fish' compound); 'V' sign per Parpola fig. 5.1 no. 311",
+      "iconic": "outlined V or fig variant"
+    },
+    "16": {
+      "phoneme": "uncertain",
+      "gloss": "rare in Indus Valley, common in Near East",
+      "confidence": "low",
+      "source": "Laursen 2010 fn 2 attests as Janabiyah seal pos. 5; sequence 16-145 at start of Kalibangan K-69 to K-75",
+      "noted_pattern": "16-145 sequence repeats in Kalibangan K-69 to K-75 (Joshi & Parpola 1987)"
+    },
+    "364": {
+      "phoneme": "or (?)",
+      "gloss": "numerical single / 'one' (?)",
+      "confidence": "low",
+      "source": "Laursen 2010 fn 2 attests as Janabiyah seal pos. 2; co-occurs with 16 on Mohenjo-Daro M-798 unicorn seal (Shah & Parpola 1991:68)",
+      "iconic": "single vertical / numerical mark"
+    },
+    "126": {
+      "phoneme": "uncertain",
+      "gloss": "Parpola fig. 1718 text 5",
+      "confidence": "low",
+      "source": "Laursen 2010 fn 2 attests as Janabiyah seal pos. 4; alternates 125 and 128",
+      "uncertainty_note": "Parpola flagged 'very uncertain' even in his attested reading"
+    },
+    "53": {
+      "phoneme": "uncertain",
+      "gloss": "possibly a homonym sign",
+      "confidence": "low",
+      "source": "Laursen 2010 fn 2 attests as Janabiyah seal pos. 1a (alt: 60 'fish')"
+    },
+    "1": {
+      "phoneme": "aaL/vir",
+      "gloss": "man / human; rebus aaL = 'man, person, slave' (Dravidian)",
+      "confidence": "medium",
+      "source": "Parpola 1994a ch.13; iconic 'man with raised arm'; Tamil aaL = man, vir = hero",
+      "iconic": "stick figure with one or both arms raised"
+    },
+    "99": {
+      "phoneme": "vil",
+      "gloss": "bow; rebus vil = 'bow' (Tamil); also vil-vaa-LL = bowman/archer in Sangam Tamil",
+      "confidence": "medium",
+      "source": "Parpola 1994a fig. 5.1; iconic 'bow' or 'man with bow'",
+      "iconic": "bow shape, sometimes with archer holding it"
+    },
+    "117": {
+      "phoneme": "ar/aru",
+      "gloss": "wheel / chakra; rebus ar = Tamil 'spoke (of wheel) / file (tool)'",
+      "confidence": "medium",
+      "source": "Mahadevan 1977; Parpola 1994a; iconic six- or eight-spoked wheel",
+      "iconic": "circle with internal spokes (chakra)"
+    },
+    "124": {
+      "phoneme": "kuTam",
+      "gloss": "pot/jar; rebus kuTam = 'pot' in all Dravidian languages",
+      "confidence": "high",
+      "source": "Parpola 2010 sec. 'iconic shape...' + M-478 tablet anchor (fig. 5)",
+      "iconic": "V-shaped offering vessel (possibly cross-section of a pot)",
+      "iconographic_anchor": "M-478: V-shaped sign in inscription = V-shaped offering vessel held by worshipper before sacred tree"
+    },
+    "264": {
+      "phoneme": "dam/peN",
+      "gloss": "wife/lady/goddess; rebus peN = 'female' (Dravidian)",
+      "confidence": "medium",
+      "source": "Parpola 1994a ch.13; iconic 'goddess with horns' or generic female sign",
+      "iconic": "horned female figure or stylized goddess"
+    },
+    "86": {
+      "phoneme": "or-",
+      "gloss": "one (numerical, single vertical stroke)",
+      "confidence": "medium",
+      "source": "Parpola 1994a fig. 5.1; numerical sign sequence position 1",
+      "iconic": "single vertical stroke"
+    },
+    "87": {
+      "phoneme": "veL",
+      "gloss": "two vertical strokes; rebus = veL/veeL 'white/bright', muruku-veeL composite name of Murukan; veN-miin = 'white star' = Venus",
+      "confidence": "medium",
+      "source": "Parpola 2010 sec. 'Murukan and Venus'; cf. Old Tamil veN-miin = Venus",
+      "iconic": "two long vertical strokes",
+      "homonymy": "veL ('white/bright', name component of Murukan), veLi ('open space, atmosphere'), veeL ('desire')"
+    },
+    "88": {
+      "phoneme": "muu(n)-",
+      "gloss": "three vertical strokes, possibly 'three' or 'three worlds'",
+      "confidence": "low",
+      "source": "Parpola 2010 in passing; numerical sign",
+      "iconic": "three long vertical strokes"
+    },
+    "91": {
+      "phoneme": "aru-",
+      "gloss": "six (numerical); aru-miin = Pleiades ('six stars') in Old Tamil",
+      "confidence": "high",
+      "source": "Parpola 2010 sec. 'Compounds with fish signs and Indian mythology'; central case study",
+      "iconic": "six vertical strokes"
+    },
+    "92": {
+      "phoneme": "eZu-",
+      "gloss": "seven (numerical); eZu-miin = Ursa Major ('seven stars') in Old Tamil",
+      "confidence": "high",
+      "source": "Parpola 2010 sec. 'Compounds with fish signs and Indian mythology'; H-9 seal carries '7 + fish' alone",
+      "iconic": "seven vertical strokes"
+    },
+    "175": {
+      "phoneme": "katir",
+      "gloss": "spinner's spindle; rebus = katir 'to shine, be radiant' (often connected with Murukan and the rising sun); katir-k-kaTavuL = 'radiant deity' = sun",
+      "confidence": "medium",
+      "source": "Parpola 2010 sec. 'Identifying Murukan name in the Indus texts'; M-241 + M-112 seals",
+      "iconic": "traditional Indian cotton spinner's spindle"
+    },
+    "261": {
+      "phoneme": "muruku",
+      "gloss": "two intersecting circles; rebus = muruku 'young man / Murukan / ear-ring / bangle'; central name of the Old Tamil war-god",
+      "confidence": "high",
+      "source": "Parpola 2010 sec. 'Identifying Murukan name'; defended across Parpola 1994 + 2010 + 2018",
+      "iconic": "two intersecting circles (likely depicting paired ear-rings)",
+      "homonymy": "muruku ('young man, Murukan'), muruku ('ring, ear-ring, bangle')",
+      "co_occurrence_anchor": "high frequency on inscribed Harappan stoneware bangles -> 'bangle' meaning corroborated by artifact context"
+    },
+    "281": {
+      "phoneme": "piLLai",
+      "gloss": "five-striped palm squirrel; rebus = piLLai 'child, infant, young of animals'; forms diminutives like Muruka-p-piLLa",
+      "confidence": "medium",
+      "source": "Parpola 2010 sec. 'PiLLai young as attribute of squirrel and of Muruku'; co-occurs with 261 (muruku) on M-1202, H-771, Nausharo",
+      "iconic": "squirrel with tail up, head down, four feet on a vertical tree-trunk",
+      "homonymy": "piLLai ('child, son'), piLLai ('squirrel') -- Proto-Dravidian"
+    },
+    "311_fig": {
+      "phoneme": "vaTa",
+      "gloss": "banyan/fig; rebus = vaTa 'north/northern'; 'fig + fish' = vaTa-miin = north star (Old Tamil; Alcor in Ursa Major in late tradition; Thuban in 3rd millennium BCE)",
+      "confidence": "high",
+      "source": "Parpola 2010 sec. 'Banyan fig and the pole star'",
+      "iconic": "three-branched fig tree (cf. Nausharo painted goblet c. 2600-2550 BCE)",
+      "homonymy": "vaTam ('rope, cord' / 'banyan'), vaTa ('north/northern')"
+    },
+    "87_veLLi_synonym": {
+      "phoneme": "veLLi",
+      "gloss": "two long vertical strokes used as a SYNONYM of fish/star: veLLi = Venus + 'star' in general (Tamil)",
+      "confidence": "high",
+      "source": "Parpola 2010 sec. 'Additional cross-checking'; M-172 + H-6 inscriptions show 87 and 47 in same context with same preceding+following sign",
+      "compound": "vaan-veLLi 'sky-star' = 'star (general)' in Tamil; viTi-veLLi = viTi-miin = 'dawn star' = Venus",
+      "note": "Synonymy with sign 47 (miin) is structural evidence, not just rebus-coincidence"
+    },
+    "_yoke_carrier": {
+      "phoneme": "kavai/karam",
+      "gloss": "yoke carrier (the figure carrying a beam across shoulders); rebus kavai = 'yoke' in Tamil; cf. kavai worship",
+      "confidence": "medium",
+      "source": "Parpola 1981 'On the Harappan yoke-carrier pictogram and the kavai worship' (Proceedings 5th Tamil Studies Conference); Parpola 1994a",
+      "iconic": "human figure with horizontal beam across shoulders, jars hanging from each end",
+      "sign_id_note": "Parpola sign-list ID requires Parpola 1994a fig. 5.1 reference; not yet integer-resolved in our data"
+    },
+    "_buffalo": {
+      "phoneme": "erumai/yelu",
+      "gloss": "water buffalo; rebus erumai = 'female buffalo' (Tamil); also Parpola: yelu = 'royal buffalo'",
+      "confidence": "medium",
+      "source": "Parpola 2004 'From archaeology to stratigraphy of Vedic syncretism: The banyan tree and the water buffalo as Harappan-Dravidian symbols of royalty'; Parpola 1985 The Sky-Garment",
+      "iconic": "buffalo with curved horns (often reclining)",
+      "royalty_anchor": "buffalo + banyan = royal symbolism inherited by Yama (Indo-Aryan god of death) -> Vedic stratigraphy supports Harappan origin"
+    },
+    "_three_strokes_worlds": {
+      "phoneme": "muunRu/muvulam",
+      "gloss": "three vertical strokes; per Parpola 2010 'denotes the three worlds' (intervening space, atmosphere, three lokas)",
+      "confidence": "medium",
+      "source": "Parpola 2010 sec. 'Additional cross-checking'; cf. Sanskrit antarikSa 'intervening space'",
+      "iconic": "three long vertical strokes",
+      "distinct_from_sign_88": "Sign 88 in our map is 'three short strokes (numeral)'; this entry refers specifically to the LONG-stroke variant Parpola identifies as 'three worlds'"
+    },
+    "_lion": {
+      "phoneme": "araL/ari",
+      "gloss": "lion or large feline; rebus araL/ari = 'lion' or 'master/king' (Tamil)",
+      "confidence": "medium",
+      "source": "Parpola 1994a Ch. 14; cf. Mahadevan 1977; central to Phase-28 sign-allograph extension",
+      "iconic": "feline / lion (often horned)"
+    },
+    "_eagle": {
+      "phoneme": "puL/Garuda (?)",
+      "gloss": "bird/eagle; possible rebus to 'puL' = bird or to mythical Garuda; uncertain",
+      "confidence": "low",
+      "source": "Parpola 1994a; speculative reading",
+      "iconic": "eagle or stylized bird"
+    },
+    "_cobra": {
+      "phoneme": "naagam (?)",
+      "gloss": "snake/cobra; rebus naagam = 'snake/cobra/king-cobra' (Dravidian)",
+      "confidence": "low",
+      "source": "Parpola 1994a Ch. 13 (snake cult of Murukan)",
+      "iconic": "sinusoidal/serpentine sign"
+    },
+    "_yoke_carrier_v2": {
+      "phoneme": "kavai",
+      "gloss": "strengthened entry: yoke-carrier; rebus kavai = 'yoke + worship'; Parpola defended in 1981, 1994a, 2010",
+      "confidence": "high",
+      "source": "Parpola 1981 'On the Harappan yoke-carrier pictogram'; reaffirmed in Parpola 1994a Ch. 13 + Parpola 2010",
+      "iconic": "human figure with horizontal beam + jars hanging",
+      "strengthening_note": "Phase-28: promoted to high-confidence based on Parpola's 30-year defense across multiple papers"
+    },
+    "_buffalo_v2": {
+      "phoneme": "erumai",
+      "gloss": "strengthened entry: water buffalo; central royal-symbolism animal of Harappan iconography",
+      "confidence": "high",
+      "source": "Parpola 2004 + 1985 Sky-Garment + Parpola 1994a Ch. 13",
+      "iconic": "reclining/horned buffalo",
+      "royalty_anchor": "Inherited by Yama (Indo-Aryan god of death) per Parpola 2004 stratigraphy of Vedic syncretism"
+    }
+  }
+}

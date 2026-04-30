@@ -279,6 +279,94 @@ def call_llm(
     )
 
 
+def call_llm_vision(
+    *,
+    prompt: str,
+    image_data_uri: str,
+    max_tokens: int = 2000,
+    temperature: float = 0.1,
+    provider_override: str | None = None,
+    model_override: str | None = None,
+) -> str:
+    """Call a vision-capable LLM with text prompt + base64-encoded image.
+
+    Phase-28: routes through the same Settings infrastructure as call_llm,
+    but uses vision-capable models (Mistral pixtral, Ollama llava).
+
+    Resolution order (no overrides):
+      1. Ollama (if enabled in provider prefs + selected model is vision-capable, e.g. llava, llava:13b, gemma3-vision)
+      2. Mistral (uses pixtral-12b-2409 by default; if mistral_api_key set)
+
+    Returns the model's reply text. Raises ValueError if no provider available.
+    """
+    prefs = _get_provider_prefs()
+    ollama_pref = prefs.get("ollama", {})
+
+    # Build OpenAI-style multi-content message (works for both Mistral + Ollama)
+    messages = [{
+        "role": "user",
+        "content": [
+            {"type": "text", "text": prompt},
+            {"type": "image_url", "image_url": {"url": image_data_uri}},
+        ],
+    }]
+
+    # Explicit override
+    if provider_override == "ollama" and model_override:
+        return _call_ollama(
+            model=model_override,
+            messages=messages,
+            max_tokens=max_tokens,
+            temperature=temperature,
+            json_mode=False,
+        )
+    if provider_override == "mistral":
+        key = get_key("mistral_api_key")
+        if not key:
+            raise ValueError("Mistral API key not set")
+        payload = {
+            "model": model_override or "pixtral-12b-2409",
+            "messages": messages,
+            "max_tokens": max_tokens,
+            "temperature": temperature,
+        }
+        return _call_remote(
+            "https://api.mistral.ai/v1/chat/completions",
+            payload, auth_header=f"Bearer {key}",
+        )
+
+    # Default chain
+    if ollama_pref.get("enabled") and ollama_pref.get("selected_model"):
+        sel = ollama_pref["selected_model"]
+        if any(tag in sel.lower() for tag in ("llava", "gemma3", "vision", "mini-cpm")):
+            return _call_ollama(
+                model=sel,
+                messages=messages,
+                max_tokens=max_tokens,
+                temperature=temperature,
+                json_mode=False,
+            )
+
+    mistral_key = get_key("mistral_api_key")
+    if mistral_key:
+        payload = {
+            "model": prefs.get("mistral", {}).get("vision_model", "pixtral-12b-2409"),
+            "messages": messages,
+            "max_tokens": max_tokens,
+            "temperature": temperature,
+        }
+        return _call_remote(
+            "https://api.mistral.ai/v1/chat/completions",
+            payload, auth_header=f"Bearer {mistral_key}",
+        )
+
+    raise ValueError(
+        "No vision-capable AI provider configured. "
+        "In Settings: enable Ollama with a vision model (llava/gemma3-vision), "
+        "or set mistral_api_key."
+    )
+
+
 def _call_remote(
     url: str,
     payload: dict[str, Any],

@@ -2411,6 +2411,14 @@ try:
 except Exception as _p27_exc:  # noqa: BLE001
     logger.warning("Phase-27 nodes not registered: %s", _p27_exc)
 
+# ── Phase-28 nodes (CISI Vol 3 OCR via call_llm_vision + Mahadevan crosswalk + allograph-aware) ──
+try:
+    from glossa_lab.experiment_graph_phase28 import _phase28_node_defs as _p28_defs  # noqa: PLC0415
+    for _d in _p28_defs():
+        ATOMIC_NODES[_d.id] = _d
+except Exception as _p28_exc:  # noqa: BLE001
+    logger.warning("Phase-28 nodes not registered: %s", _p28_exc)
+
 
 # ── Graph execution ────────────────────────────────────────────────────────────────────
 

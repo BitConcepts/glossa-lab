@@ -1,4 +1,19 @@
 {
+  "_citation": {
+    "primary_source": "Parpola & Koskikallio 2022 (CISI 3.3)",
+    "full_reference": "Parpola, Asko & Petteri Koskikallio (eds.). 2022. Corpus of Indus Seals and Inscriptions. Volume 3.3: Indo-Iranian Borderlands. Annales Academiae Scientiarum Fennicae, Humaniora 386. Tampere: Suomalainen Tiedeakatemia. ISBN 978-951-41-1153-2. Pp. lxxxvii + 683.",
+    "site_prefix_source": "Table of Contents of CISI 3.3 (front-matter, pp. xx-xxv); each site listed with its alphabetic prefix code.",
+    "additional_catalogue_sources": [
+      "Joshi, Jagat Pati & Asko Parpola (eds.). 1987. CISI 1: Collections in India. Helsinki: Suomalainen Tiedeakatemia. ISBN 951-41-0555-9.",
+      "Shah, Sayid Ghulam Mustafa & Asko Parpola (eds.). 1991. CISI 2: Collections in Pakistan. Helsinki: Suomalainen Tiedeakatemia. ISBN 951-41-0556-7.",
+      "Parpola, Asko, B. M. Pande & Petteri Koskikallio (eds.). 2010. CISI 3.1: Mohenjo-daro and Harappa. Helsinki: Suomalainen Tiedeakatemia. ISBN 978-951-41-1040-5.",
+      "Parpola, Asko, B. M. Pande & Petteri Koskikallio (eds.). 2019. CISI 3.2: Iranian + BMAC + Indus border sites. ISBN 978-951-41-1134-1."
+    ],
+    "phase27_overrides_source": "Hand-encoded from individual seal publications (Gadd 1932; Parpola/Brunswig 1977; Possehl 2006; Laursen 2010; Frenez 2018-2024; Vidale & Frenez 2015).",
+    "license": "Site-prefix mapping derived from CISI 3.3 ToC + secondary publications. Suomalainen Tiedeakatemia retains catalogue copyright. Reference use only; consult CITATIONS.md (sections A.4, A.5, A.6, F.5).",
+    "see_also": "CITATIONS.md",
+    "compiled_by": "Glossa-Lab Phase-26 + Phase-27."
+  },
   "source": "CISI Vol 3 Part 3 (Desset ed. 2022) Table of Contents — site-prefix mapping; Phase-26 ingest of acquired PDF",
   "method_note": "The CISI catalogue uses a 2-4 letter site prefix on each seal ID (e.g. 'Shd-1' = Shahdad seal #1). This map provides find-spot metadata for the Indo-Iranian Borderlands corpus, enabling provenience-aware filtering of the Indus seal corpus. Vol 3 Part 3 covers the Indo-Iranian + Central Asian peripheries; Vol 1-2 cover the Indus Valley core; Vol 3 Parts 1-2 cover Pakistan + India peripheries.",
   "site_prefix_to_findspot": {

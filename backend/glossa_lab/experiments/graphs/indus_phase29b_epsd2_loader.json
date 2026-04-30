@@ -1,0 +1,13 @@
+{
+  "id": "indus_phase29b_epsd2_loader",
+  "name": "Indus Phase-29b — ePSD2 Sumerian/Akkadian names loader",
+  "description": "Phase-29 #2: load 4,848 Sumerian/Akkadian names (1,222 PN + 2,068 DN + ...) from Penn Sumerian Dictionary 2.7.2.",
+  "auto_migrated": false,
+  "nodes": [
+    { "id": "load", "type": "expNode", "data": { "atomicId": "EPSD2NamesLoader", "label": "ePSD2 names", "params": { "pos_filter": "" } }, "position": { "x": 60, "y": 100 } },
+    { "id": "out",  "type": "expNode", "data": { "atomicId": "JSONExport",       "label": "Save",        "params": { "filename": "phase29b_epsd2_loader.json" } }, "position": { "x": 360, "y": 100 } }
+  ],
+  "edges": [
+    { "id": "e1", "source": "load", "target": "out", "targetPort": "data" }
+  ]
+}

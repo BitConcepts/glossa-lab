@@ -1,0 +1,120 @@
+{
+  "data": {
+    "a": "Matcher v2: bipartite assignment of 10/26 candidates onto 11 inscribed seals; total length-score = 7.334.",
+    "b": [
+      {
+        "candidate_name": "ab-ba-me-luh-ha",
+        "name_n_segments": 5,
+        "name_occurrences": 7,
+        "is_known_meluhhan": false,
+        "seal_idx": 0,
+        "seal_id": "BM_122187_UR_seal_1",
+        "seal_n_signs": 5,
+        "seal_signs_confidence": "length_only",
+        "length_score": 1.0
+      },
+      {
+        "candidate_name": "lu-ti",
+        "name_n_segments": 2,
+        "name_occurrences": 6,
+        "is_known_meluhhan": false,
+        "seal_idx": 6,
+        "seal_id": "LOTHAL_PERSIAN_GULF_SEAL",
+        "seal_n_signs": 2,
+        "seal_signs_confidence": "length_only",
+        "length_score": 1.0
+      },
+      {
+        "candidate_name": "ba-me-luh-ha",
+        "name_n_segments": 4,
+        "name_occurrences": 3,
+        "is_known_meluhhan": false,
+        "seal_idx": 2,
+        "seal_id": "GADD_2",
+        "seal_n_signs": 4,
+        "seal_signs_confidence": "length_only",
+        "length_score": 1.0
+      },
+      {
+        "candidate_name": "lu2-gi-na",
+        "name_n_segments": 3,
+        "name_occurrences": 2,
+        "is_known_meluhhan": false,
+        "seal_idx": 4,
+        "seal_id": "KISH_INDUS_1",
+        "seal_n_signs": 3,
+        "seal_signs_confidence": "length_only",
+        "length_score": 1.0
+      },
+      {
+        "candidate_name": "dumu-ni",
+        "name_n_segments": 2,
+        "name_occurrences": 3,
+        "is_known_meluhhan": false,
+        "seal_idx": 1,
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "seal_signs_confidence": "length_only",
+        "length_score": 0.667
+      },
+      {
+        "candidate_name": "dumu-zi",
+        "name_n_segments": 2,
+        "name_occurrences": 2,
+        "is_known_meluhhan": false,
+        "seal_idx": 3,
+        "seal_id": "ASMAR_TA",
+        "seal_n_signs": 3,
+        "seal_signs_confidence": "length_only",
+        "length_score": 0.667
+      },
+      {
+        "candidate_name": "lu2-kal-la",
+        "name_n_segments": 3,
+        "name_occurrences": 2,
+        "is_known_meluhhan": false,
+        "seal_idx": 5,
+        "seal_id": "SUSA_INDUS_1",
+        "seal_n_signs": 4,
+        "seal_signs_confidence": "length_only",
+        "length_score": 0.667
+      },
+      {
+        "candidate_name": "lu-ma-ku",
+        "name_n_segments": 3,
+        "name_occurrences": 2,
+        "is_known_meluhhan": false,
+        "seal_idx": 9,
+        "seal_id": "JALALABAD_FARS",
+        "seal_n_signs": 4,
+        "seal_signs_confidence": "length_only",
+        "length_score": 0.667
+      },
+      {
+        "candidate_name": "lu-na",
+        "name_n_segments": 2,
+        "name_occurrences": 2,
+        "is_known_meluhhan": false,
+        "seal_idx": 7,
+        "seal_id": "FAILAKA_KM_1113",
+        "seal_n_signs": 4,
+        "seal_signs_confidence": "length_only",
+        "length_score": 0.333
+      },
+      {
+        "candidate_name": "lu2-du10-ga",
+        "name_n_segments": 3,
+        "name_occurrences": 1,
+        "is_known_meluhhan": false,
+        "seal_idx": 8,
+        "seal_id": "VA_243_BERLIN",
+        "seal_n_signs": 5,
+        "seal_signs_confidence": "length_only",
+        "length_score": 0.333
+      }
+    ],
+    "c": 7.334,
+    "d": "READOUT_MARGINAL (p<0.05)",
+    "e": 0.046
+  }
+}

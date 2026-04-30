@@ -2392,6 +2392,17 @@ try:
 except Exception as _p25_exc:  # noqa: BLE001
     logger.warning("Phase-25 nodes not registered: %s", _p25_exc)
 
+# ── Phase-26 nodes (provenience-stratified + Bayesian decoder + expanded readout + find-spot) ──
+try:
+    from glossa_lab.experiment_graph_phase26 import _phase26_node_defs as _p26_defs  # noqa: PLC0415
+    for _d in _p26_defs():
+        # NB: Phase-26 redefines a few atomic IDs that collide with Phase-25
+        # (e.g. ProvenienceStratifiedReadout). Phase-26 overrides Phase-25
+        # for any colliding ID.
+        ATOMIC_NODES[_d.id] = _d
+except Exception as _p26_exc:  # noqa: BLE001
+    logger.warning("Phase-26 nodes not registered: %s", _p26_exc)
+
 
 # ── Graph execution ────────────────────────────────────────────────────────────────────
 

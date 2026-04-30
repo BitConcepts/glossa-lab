@@ -1,0 +1,82 @@
+{
+  "skeleton": "uncertain-miin-or (?)-miin-uncertain-uncertain-miin",
+  "n_miin": 3,
+  "predictions": [
+    {
+      "sign_id": "53",
+      "phoneme": "uncertain",
+      "gloss": "possibly a homonym sign",
+      "confidence": "low"
+    },
+    {
+      "sign_id": "147",
+      "phoneme": "miin",
+      "gloss": "fish (sign-list variant)",
+      "confidence": "high"
+    },
+    {
+      "sign_id": "364",
+      "phoneme": "or (?)",
+      "gloss": "numerical single / 'one' (?)",
+      "confidence": "low"
+    },
+    {
+      "sign_id": "145",
+      "phoneme": "miin",
+      "gloss": "fish/star (the central Indus sign)",
+      "confidence": "high"
+    },
+    {
+      "sign_id": "126",
+      "phoneme": "uncertain",
+      "gloss": "Parpola fig. 1718 text 5",
+      "confidence": "low"
+    },
+    {
+      "sign_id": "16",
+      "phoneme": "uncertain",
+      "gloss": "rare in Indus Valley, common in Near East",
+      "confidence": "low"
+    },
+    {
+      "sign_id": "145",
+      "phoneme": "miin",
+      "gloss": "fish/star (the central Indus sign)",
+      "confidence": "high"
+    }
+  ],
+  "n_signs": 7,
+  "matches_direct_top20": [],
+  "n_matches_direct": 0,
+  "matches_expanded_top20": [],
+  "n_matches_expanded": 0,
+  "n_new_matches_from_translation": 0,
+  "miin_renderings_searched": [
+    "mi-in",
+    "me-en",
+    "mi-na",
+    "me-na",
+    "mi-il",
+    "me-il",
+    "mi-en",
+    "me-in",
+    "mu-li",
+    "min-",
+    "men-",
+    "mul",
+    "mul-mul",
+    "{mul}",
+    "nun",
+    "an-na",
+    "kakkab",
+    "kak-kab",
+    "kak-ka-bu",
+    "imin",
+    "i-min",
+    "as-",
+    "asz",
+    "{d}mul",
+    "{d}imin"
+  ],
+  "verdict": "Janabiyah phonetic readout v2 (Phase-26): predicted skeleton 'uncertain-miin-or (?)-miin-uncertain-uncertain-miin' (3/7 confirmed miin). Direct-transliteration search (Phase-25a vocab): 0 matches. Expanded search (direct + mul-/kakkab-/imin- translation candidates): 0 matches. The translation-candidate hypothesis is supported if the expanded search produces new matches that the direct search missed."
+}

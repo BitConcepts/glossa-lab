@@ -1,0 +1,47 @@
+{
+  "source": "CISI Vol 3 Part 3 (Desset ed. 2022) Table of Contents — site-prefix mapping; Phase-26 ingest of acquired PDF",
+  "method_note": "The CISI catalogue uses a 2-4 letter site prefix on each seal ID (e.g. 'Shd-1' = Shahdad seal #1). This map provides find-spot metadata for the Indo-Iranian Borderlands corpus, enabling provenience-aware filtering of the Indus seal corpus. Vol 3 Part 3 covers the Indo-Iranian + Central Asian peripheries; Vol 1-2 cover the Indus Valley core; Vol 3 Parts 1-2 cover Pakistan + India peripheries.",
+  "site_prefix_to_findspot": {
+    "Shd": {"site": "Shahdad", "country": "Iran", "region": "Kerman / Lut Desert", "n_seals_in_volume": 306, "is_contact_zone": true},
+    "Bam": {"site": "Bam", "country": "Iran", "region": "Kerman", "n_seals_in_volume": 6, "is_contact_zone": true},
+    "Cgk": {"site": "Chegerdak", "country": "Iran", "region": "South-East Iran", "n_seals_in_volume": 22, "is_contact_zone": true},
+    "Spj": {"site": "Spidej", "country": "Iran", "region": "Sistan-Baluchistan", "n_seals_in_volume": 25, "is_contact_zone": true},
+    "Bmp": {"site": "Bampur", "country": "Iran", "region": "Sistan-Baluchistan", "n_seals_in_volume": 2, "is_contact_zone": true},
+    "Ksk": {"site": "Keshik", "country": "Iran", "region": "Kerman", "n_seals_in_volume": 1, "is_contact_zone": true},
+    "Chl": {"site": "Tepe Chalow", "country": "Iran", "region": "North-East Iran", "n_seals_in_volume": 11, "is_contact_zone": true},
+    "Dnd": {"site": "Tepe Dand", "country": "Iran", "region": "North-East Iran", "n_seals_in_volume": 1, "is_contact_zone": true},
+    "Dmg": {"site": "Tepe Damghani / Deh Morasi Ghundai (overloaded)", "country": "Iran/Afghanistan", "region": "South-East Iran / South-East Afghanistan", "n_seals_in_volume": 7, "is_contact_zone": true},
+    "Yrm": {"site": "Yarim Tepe", "country": "Turkmenistan", "region": "Kopet-Dag piedmont", "n_seals_in_volume": 1, "is_contact_zone": true},
+    "Nmz": {"site": "Namazga-depe", "country": "Turkmenistan", "region": "Kopet-Dag piedmont", "n_seals_in_volume": 8, "is_contact_zone": true},
+    "Alt": {"site": "Altyn-depe", "country": "Turkmenistan", "region": "Kopet-Dag piedmont", "n_seals_in_volume": 142, "is_contact_zone": true},
+    "Ilg": {"site": "Ilgynly-depe", "country": "Turkmenistan", "region": "Kopet-Dag piedmont", "n_seals_in_volume": 5, "is_contact_zone": true},
+    "Uch": {"site": "Uch-depe", "country": "Turkmenistan", "region": "Margiana", "n_seals_in_volume": 1, "is_contact_zone": true},
+    "Sap": {"site": "Sapalli-tepa", "country": "Uzbekistan", "region": "Bactria", "n_seals_in_volume": 67, "is_contact_zone": true},
+    "Bus": {"site": "Bustan", "country": "Uzbekistan", "region": "Bactria", "n_seals_in_volume": 3, "is_contact_zone": true},
+    "Sz":  {"site": "Sarazm", "country": "Tajikistan", "region": "Zerafshan / Pamir foothills", "n_seals_in_volume": 5, "is_contact_zone": true},
+    "Sh":  {"site": "Shortughai", "country": "Afghanistan", "region": "Indus colony in Bactria, NE", "n_seals_in_volume": 84, "is_contact_zone": true, "note": "Indus trading colony — most northeasterly Harappan site"},
+    "Mgk": {"site": "Mundigak", "country": "Afghanistan", "region": "Kandahar", "n_seals_in_volume": 4, "is_contact_zone": true},
+    "Gks1": {"site": "Geoksyur 1", "country": "Turkmenistan", "region": "Tedjen oasis", "n_seals_in_volume": 6, "is_contact_zone": true},
+    "Gks3": {"site": "Geoksyur 3", "country": "Turkmenistan", "region": "Tedjen oasis", "n_seals_in_volume": 3, "is_contact_zone": true},
+    "Gks4": {"site": "Geoksyur 4", "country": "Turkmenistan", "region": "Tedjen oasis", "n_seals_in_volume": 1, "is_contact_zone": true},
+    "Gks5": {"site": "Geoksyur 5", "country": "Turkmenistan", "region": "Tedjen oasis", "n_seals_in_volume": 2, "is_contact_zone": true},
+    "Gks":  {"site": "Geoksyur (general)", "country": "Turkmenistan", "region": "Tedjen oasis", "n_seals_in_volume": 9, "is_contact_zone": true}
+  },
+  "core_indus_prefixes": {
+    "M":   {"site": "Mohenjo-daro", "country": "Pakistan", "region": "Sindh / Indus core", "is_contact_zone": false},
+    "H":   {"site": "Harappa", "country": "Pakistan", "region": "Punjab / Indus core", "is_contact_zone": false},
+    "L":   {"site": "Lothal", "country": "India", "region": "Gujarat / Indus core", "is_contact_zone": false},
+    "K":   {"site": "Kalibangan", "country": "India", "region": "Rajasthan / Indus core", "is_contact_zone": false},
+    "B":   {"site": "Banawali", "country": "India", "region": "Haryana / Indus core", "is_contact_zone": false},
+    "C":   {"site": "Chanhu-daro", "country": "Pakistan", "region": "Sindh / Indus core", "is_contact_zone": false},
+    "Nd":  {"site": "Nindowari", "country": "Pakistan", "region": "Balochistan / Indus core", "is_contact_zone": false}
+  },
+  "mesopotamia_dilmun_external_prefixes_in_other_volumes": {
+    "Failaka_seal": {"site": "Failaka", "country": "Kuwait", "region": "Persian Gulf / Dilmun-related", "is_contact_zone": true, "note": "Not in CISI Vol 3 Part 3; seals at Kuwait National Museum"},
+    "Bahrain_seal": {"site": "Bahrain (Saar / Janabiyah / Qala'at)", "country": "Bahrain", "region": "Dilmun core", "is_contact_zone": true, "note": "Janabiyah seal #10 carries the only fully-resolved Indus-style sign sequence in the contact zone"},
+    "Susa": {"site": "Susa", "country": "Iran", "region": "Khuzestan", "is_contact_zone": true},
+    "Mesopotamia_seal": {"site": "Mesopotamia (various: Ur, Nippur, Tell Asmar, Umma, Tello/Girsu)", "country": "Iraq", "region": "Sumer/Akkad core", "is_contact_zone": true}
+  },
+  "phase26_ingest_note": "The CISI Vol 3 Part 3 PDF text extract gives us the site-prefix structure but not sign-by-sign content (which lives in image plates not parseable from text). To populate indus_signs[] for the 10 length-only Mesopotamia-found seals, we need either: (a) high-resolution plate scans + manual sign-ID assignment, (b) targeted requests to Parpola/Frenez/Laursen for digital sign-ID lists, or (c) the CISI Vol 3 Part 3 supplementary digital catalogue from the Finnish Academy of Science. Phase-26 acquires the prefix-to-site mapping (above), enabling provenience-aware filtering, but does NOT populate the seal-level sign sequences themselves.",
+  "shu_ilishu_candidate_filter_criteria": "For each Indus inscription of length 3-7, check if its site prefix is in the contact-zone set (Shd, Sap, Sh, Mgk, etc., or Mesopotamia/Dilmun/Failaka external prefix). The 138 Phase-25e candidate inscriptions can be reduced to those with contact-zone provenience for a tighter Shu-ilishu candidate list."
+}

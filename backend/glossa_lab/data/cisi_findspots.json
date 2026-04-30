@@ -42,6 +42,23 @@
     "Susa": {"site": "Susa", "country": "Iran", "region": "Khuzestan", "is_contact_zone": true},
     "Mesopotamia_seal": {"site": "Mesopotamia (various: Ur, Nippur, Tell Asmar, Umma, Tello/Girsu)", "country": "Iraq", "region": "Sumer/Akkad core", "is_contact_zone": true}
   },
-  "phase26_ingest_note": "The CISI Vol 3 Part 3 PDF text extract gives us the site-prefix structure but not sign-by-sign content (which lives in image plates not parseable from text). To populate indus_signs[] for the 10 length-only Mesopotamia-found seals, we need either: (a) high-resolution plate scans + manual sign-ID assignment, (b) targeted requests to Parpola/Frenez/Laursen for digital sign-ID lists, or (c) the CISI Vol 3 Part 3 supplementary digital catalogue from the Finnish Academy of Science. Phase-26 acquires the prefix-to-site mapping (above), enabling provenience-aware filtering, but does NOT populate the seal-level sign sequences themselves.",
-  "shu_ilishu_candidate_filter_criteria": "For each Indus inscription of length 3-7, check if its site prefix is in the contact-zone set (Shd, Sap, Sh, Mgk, etc., or Mesopotamia/Dilmun/Failaka external prefix). The 138 Phase-25e candidate inscriptions can be reduced to those with contact-zone provenience for a tighter Shu-ilishu candidate list."
+  "phase26_ingest_note": "The CISI Vol 3 Part 3 PDF text extract gives us the site-prefix structure but not sign-by-sign content (which lives in image plates not parseable from text). To populate indus_signs[] for the 10 length-only Mesopotamia-found seals, we need either: (a) high-resolution plate scans + manual sign-ID assignment, (b) targeted requests to Parpola/Frenez/Laursen for digital sign-ID lists, or (c) the CISI Vol 3 Part 3 supplementary digital catalogue from the Finnish Academy of Science. Phase-26 ingests the prefix-to-site mapping (above), enabling provenience-aware filtering, but does NOT populate the seal-level sign sequences themselves.",
+  "shu_ilishu_candidate_filter_criteria": "For each Indus inscription of length 3-7, check if its site prefix is in the contact-zone set (Shd, Sap, Sh, Mgk, etc., or Mesopotamia/Dilmun/Failaka external prefix). The 138 Phase-25e candidate inscriptions can be reduced to those with contact-zone provenience for a tighter Shu-ilishu candidate list.",
+  "phase27_explicit_overrides": {
+    "_doc": "Phase-26d's auto-prefix-matcher mis-assigned 3 hand-encoded Phase-22 seals because their catalogue IDs use site-name conventions, not CISI prefixes. Phase-27 adds explicit overrides keyed by catalogue_id. Lookup precedence: explicit override > longest CISI prefix match > unknown.",
+    "BM_122187_UR_seal_1": {"site": "Ur (BM 122187)", "country": "Iraq", "region": "Mesopotamia / Sumer core", "is_contact_zone": true},
+    "GADD_1": {"site": "Ur (Gadd 1932 pl. I no. 3)", "country": "Iraq", "region": "Mesopotamia / Sumer core", "is_contact_zone": true},
+    "GADD_2": {"site": "Ur (Gadd 1932 pl. I no. 4)", "country": "Iraq", "region": "Mesopotamia / Sumer core", "is_contact_zone": true},
+    "ASMAR_TA": {"site": "Tell Asmar (Eshnunna)", "country": "Iraq", "region": "Mesopotamia / Diyala", "is_contact_zone": true},
+    "KISH_INDUS_1": {"site": "Kish", "country": "Iraq", "region": "Mesopotamia / Sumer core", "is_contact_zone": true},
+    "SUSA_INDUS_1": {"site": "Susa", "country": "Iran", "region": "Khuzestan / Elam", "is_contact_zone": true},
+    "LOTHAL_PERSIAN_GULF_SEAL": {"site": "Lothal (Persian Gulf style)", "country": "India", "region": "Gujarat / Indus core", "is_contact_zone": false, "note": "Found in core Indus Valley but is a Persian-Gulf-style seal"},
+    "FAILAKA_KM_1113": {"site": "Failaka (KM 1113)", "country": "Kuwait", "region": "Persian Gulf / Dilmun-related", "is_contact_zone": true},
+    "VA_243_BERLIN": {"site": "Berlin VA 243 (provenience uncertain; possibly Mesopotamian)", "country": "Iraq?", "region": "Mesopotamia / unverified", "is_contact_zone": true},
+    "JALALABAD_FARS": {"site": "Jalalabad (Fars)", "country": "Iran", "region": "Fars / SE Iran", "is_contact_zone": true},
+    "AL_MAQSHA_TOKEN_2": {"site": "Al-Maqsha (Bahrain)", "country": "Bahrain", "region": "Dilmun core", "is_contact_zone": true},
+    "AO_22310_SHU_ILISHU": {"site": "Mesopotamia (Louvre AO 22310, Shu-ilishu cylinder seal)", "country": "Iraq", "region": "Mesopotamia / Old Akkadian", "is_contact_zone": true},
+    "KONAR_SANDAL_CYLINDER": {"site": "Konar Sandal (Jiroft, Halil Rud)", "country": "Iran", "region": "Kerman / Marhashi", "is_contact_zone": true},
+    "JANABIYAH_LAURSEN_10": {"site": "Janabiyah Cemetery, Bahrain", "country": "Bahrain", "region": "Dilmun core", "is_contact_zone": true}
+  }
 }

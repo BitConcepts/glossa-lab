@@ -1,0 +1,16 @@
+{
+  "id": "indus_phase27a_reverse_janabiyah",
+  "name": "Indus Phase-27a — Reverse Janabiyah search",
+  "description": "Phase-27 #1: rank persons-v3 candidates against the 7-position Janabiyah skeleton.",
+  "auto_migrated": false,
+  "nodes": [
+    { "id": "load",  "type": "expNode", "data": { "atomicId": "Phase27CorpusLoader",     "label": "Load Phase-27", "params": {} },                 "position": { "x": 60, "y": 100 } },
+    { "id": "rev",   "type": "expNode", "data": { "atomicId": "ReverseJanabiyahSearch", "label": "Reverse search","params": { "top_k": 30 } }, "position": { "x": 360, "y": 100 } },
+    { "id": "out",   "type": "expNode", "data": { "atomicId": "JSONExport",              "label": "Save",           "params": { "filename": "phase27a_reverse_janabiyah.json" } }, "position": { "x": 660, "y": 100 } }
+  ],
+  "edges": [
+    { "id": "e1", "source": "load", "target": "rev", "sourcePort": "persons_v3",        "targetPort": "persons_v3" },
+    { "id": "e2", "source": "load", "target": "rev", "sourcePort": "janabiyah_reading", "targetPort": "janabiyah_reading" },
+    { "id": "e3", "source": "rev",  "target": "out", "targetPort": "data" }
+  ]
+}

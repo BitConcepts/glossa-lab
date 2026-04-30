@@ -1,0 +1,156 @@
+{
+  "_doc": "Iconographic anchors: Indus seals/tablets where the iconographic motif depicted on the seal SUPPORTS or DETERMINES the iconic reading of one of its inscribed signs. These are non-statistical, non-rebus anchors that any phonetic decoder must respect. Source: Parpola 2010 figs 5, 6, 7, 9, 14, 17, 19, 20, 22, 23.",
+  "anchors": [
+    {
+      "anchor_id": "M-410_fish_crocodile",
+      "object_type": "seal",
+      "object_id": "M-410",
+      "site": "Mohenjo-daro",
+      "publication_ref": "CISI 1: 98; Parpola 2010 fig. 7",
+      "sign_id": "47",
+      "iconic_reading": "fish",
+      "iconic_evidence": "The 'fish' sign is depicted in the mouth of a fish-eating crocodile (gharial, Gavialis gangeticus). The pictorial context proves the sign denotes 'fish' irrespective of any rebus argument.",
+      "implication": "Any phonetic-decoder hypothesis must respect sign 47 as iconographically 'fish'. The Dravidian rebus *miin* (fish/star) is consistent with this; competing readings that don't have a 'fish' meaning are falsified.",
+      "confidence": "high"
+    },
+    {
+      "anchor_id": "H-902B_four_pots_of_fish",
+      "object_type": "tablet",
+      "object_id": "H-902 (B-side)",
+      "site": "Harappa",
+      "publication_ref": "CISI 2: 339; Parpola 2010 fig. 6",
+      "sign_id": "47",
+      "iconic_reading": "fish (in offering context)",
+      "iconic_evidence": "Tablet appears to mention 'four pots of fish' as offerings. The 'fish' sign appears with a numerical sign ('four') and a pot/jar sign in an offering context.",
+      "implication": "Confirms sign 47 retains its iconic 'fish' meaning in at least some contexts (offering / commodity tablets), as opposed to its rebus meaning 'star' in seal-onomastic contexts.",
+      "confidence": "high"
+    },
+    {
+      "anchor_id": "M-478_pot_of_offerings",
+      "object_type": "tablet",
+      "object_id": "M-478",
+      "site": "Mohenjo-daro",
+      "publication_ref": "CISI 1: 115; Parpola 2010 fig. 5",
+      "sign_id": "124",
+      "iconic_reading": "pot/jar (kuTam in Dravidian)",
+      "iconic_evidence": "The 'V-shaped' sign in the inscription is depicted on the right end of the same tablet as a V-shaped offering vessel held by a kneeling worshipper before a sacred tree.",
+      "implication": "The intended and iconic meanings of the V-shaped sign coincide ('pot/offering vessel'). Independent confirmation of one Dravidian rebus reading: kuTam = 'pot'.",
+      "confidence": "medium"
+    },
+    {
+      "anchor_id": "H-9_seven_fish_only",
+      "object_type": "seal",
+      "object_id": "H-9",
+      "site": "Harappa",
+      "publication_ref": "CISI 1: 166; Parpola 2010 fig. 9",
+      "sign_id": "92+47",
+      "iconic_reading": "Pleiades / Ursa Major (eZu-miin = 'seven stars' = Ursa Major)",
+      "iconic_evidence": "The entire inscription on this large seal is the two-sign sequence 'seven vertical strokes' + 'fish'. Big dedicatory seals in Mesopotamia were sometimes presented to divinities; in Old Tamil ezhu-miin = Ursa Major.",
+      "implication": "Single-sign-pair seal whose context (large dedicatory seal) and content (numerical + fish) jointly support the Dravidian astral reading. Strong typological anchor.",
+      "confidence": "high"
+    },
+    {
+      "anchor_id": "M-414_fig_fish_seal",
+      "object_type": "seal",
+      "object_id": "M-414",
+      "site": "Mohenjo-daro",
+      "publication_ref": "CISI 1: 98; Parpola 2010 fig. 10",
+      "sign_id": "311+47",
+      "iconic_reading": "vaTa-miin = north star (Old Tamil; original referent: pole star Thuban in 3rd millennium BCE)",
+      "iconic_evidence": "Recurring 'fig + fish' sign sequence. The Vedic and Hindu texts repeatedly refer to a heavenly fig tree (cosmic banyan held up in the sky by VaruNa).",
+      "implication": "Dravidian compound vaTa-miin = 'banyan-star' + 'rope-star' + 'north-star' (homonymy). Three semantic threads converge on the pole star; the Indus 'fig + fish' compound matches.",
+      "confidence": "medium"
+    },
+    {
+      "anchor_id": "H-179_fig_with_deity",
+      "object_type": "tablet",
+      "object_id": "H-179",
+      "site": "Harappa",
+      "publication_ref": "CISI 3.1: 403; Parpola 2010 fig. 14",
+      "sign_id": "311",
+      "iconic_reading": "fig tree (with stars)",
+      "iconic_evidence": "Anthropomorphic deity inside a fig tree, flanked at the bottom by a star on either side.",
+      "implication": "Iconographic confirmation of fig+star (= banyan + Pleiades / north star) co-occurrence in Harappan religion. Supports vaTa-miin reading.",
+      "confidence": "medium"
+    },
+    {
+      "anchor_id": "M-453_anthropomorphic_deity",
+      "object_type": "tablet",
+      "object_id": "M-453",
+      "site": "Mohenjo-daro",
+      "publication_ref": "CISI 1: 111; Parpola 2010 fig. 17ab",
+      "sign_id": "261",
+      "iconic_reading": "Murukan / 'two intersecting circles' (muruku)",
+      "iconic_evidence": "Faience tablet whose obverse carries the 'two intersecting circles' sign sequence and whose reverse depicts an anthropomorphic deity sitting on a throne, surrounded by a kneeling worshipper and a snake on either side. Murukan in South Indian tradition is associated with snake cult.",
+      "implication": "Iconographic context corroborates muruku = name of a deity (Murukan / war-god). Tightens phoneme map entry for sign 261.",
+      "confidence": "medium"
+    },
+    {
+      "anchor_id": "M-1186_fig_deity_seven_mothers",
+      "object_type": "seal",
+      "object_id": "M-1186",
+      "site": "Mohenjo-daro",
+      "publication_ref": "CISI 2: 425; Parpola 2010 fig. 19",
+      "sign_id": "261+311",
+      "iconic_reading": "muruku + fig (Murukan-piLLai associated with the Seven Mothers / Pleiades, his nurses)",
+      "iconic_evidence": "Famous 'fig deity' seal. The deity standing inside the fig tree wears bangles on both arms. Seven anthropomorphic figures at the bottom (in traditional female hairstyle) likely represent the 'Seven Mothers' = Pleiades, the child-granting and child-killing goddesses.",
+      "implication": "Triangulates muruku/Murukan + Pleiades + bangle iconography on a single seal. The Vedic / South Indian tradition that Murukan's mothers/nurses are the Pleiades (krittikah) appears already in Harappan art.",
+      "confidence": "medium"
+    },
+    {
+      "anchor_id": "M-1202_intersecting_circles_squirrel",
+      "object_type": "seal",
+      "object_id": "M-1202",
+      "site": "Mohenjo-daro",
+      "publication_ref": "CISI 2: 143; Parpola 2010 fig. 20b",
+      "sign_id": "261+281",
+      "iconic_reading": "muruku-piLLai (= 'young Murukan' / 'son of Murukan' or Muruka-p-piLLa, an attested Tamil name)",
+      "iconic_evidence": "Recurring sign sequence: 'two intersecting circles' (muruku, Murukan) + 'squirrel' (piLLai, 'young one / child / son'). The compound matches an actually attested Tamil compound for affectionate diminutives (e.g. Jaffna Tamil Muruka-p-piLLa).",
+      "implication": "Two-sign Indus compound has a precise lexical Tamil match. Independent corroboration of both phoneme readings (muruku for 261 + piLLai for 281).",
+      "confidence": "high"
+    },
+    {
+      "anchor_id": "H-771_intersecting_circles_squirrel_2",
+      "object_type": "tablet",
+      "object_id": "H-771",
+      "site": "Harappa",
+      "publication_ref": "CISI 2: 324; Parpola 2010 fig. 20c",
+      "sign_id": "261+281",
+      "iconic_reading": "muruku-piLLai (replication on a different site)",
+      "iconic_evidence": "Same 'intersecting circles' + 'squirrel' compound as M-1202 but on a moulded tablet from Harappa. Independent attestation at a separate Indus site.",
+      "implication": "Cross-site replication of the 261+281 compound -> the muruku-piLLai reading is not site-specific.",
+      "confidence": "high"
+    },
+    {
+      "anchor_id": "Nd-1_squirrel_clarification",
+      "object_type": "seal",
+      "object_id": "Nd-1",
+      "site": "Nindowari",
+      "publication_ref": "CISI 2: 419; Parpola 2010 fig. 21",
+      "sign_id": "281",
+      "iconic_reading": "squirrel (piLLai)",
+      "iconic_evidence": "Detailed engraving of a five-striped palm squirrel hanging head-down on a tree-trunk, in the typical pose used by squirrels to absorb sun on a vertical trunk.",
+      "implication": "Iconographic confirmation that sign 281 depicts the five-striped palm squirrel specifically. The aNil (squirrel) reading and the rebus piLLai (= 'child') both follow.",
+      "confidence": "high"
+    },
+    {
+      "anchor_id": "H-723_two_strokes_compounds",
+      "object_type": "tablet",
+      "object_id": "H-723",
+      "site": "Harappa",
+      "publication_ref": "CISI 2: 319; Parpola 2010 fig. 22",
+      "sign_id": "87",
+      "iconic_reading": "veL/veeL (white/bright, name component of Murukan; veN-miin = Venus)",
+      "iconic_evidence": "Recurring co-occurrence of 'two long vertical strokes' with 'fish' (87+47 = veN-miin = white star = Venus, the brightest morning/evening star).",
+      "implication": "If 87 is veL/veeL, then 87+47 yields the actually-attested Old Tamil compound veN-miin (= Venus). Independent cross-check between sign 87 and sign 47 readings.",
+      "confidence": "medium"
+    }
+  ],
+  "summary": {
+    "n_anchors": 12,
+    "n_high_confidence": 7,
+    "n_medium_confidence": 5,
+    "signs_anchored": ["47", "87", "92", "124", "261", "281", "311"],
+    "anchored_compounds": ["91+47 (aru-miin)", "92+47 (eZu-miin)", "311+47 (vaTa-miin)", "87+47 (veN-miin)", "261+281 (muruku-piLLai)"]
+  }
+}

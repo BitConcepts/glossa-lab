@@ -128,6 +128,63 @@ def get_inscriptions_by_site() -> dict[str, list[list[str]]]:
     return result
 
 
+# ── Phase-27: catalogue_id-aware accessors ────────────────────────────────────
+#
+# Phase-26e revealed that the existing get_corpus_inscriptions() drops the
+# catalogue_id (e.g. 'M-001'), preventing provenience-based filtering. The
+# accessors below preserve the catalogue_id so downstream nodes can filter
+# by site prefix.
+
+
+def get_corpus_inscriptions_with_ids(
+    site: str | None = None,
+    min_length: int = 2,
+) -> list[dict]:
+    """Return inscription sequences as ``[{catalogue_id, signs}]`` (Phase-27).
+
+    Same filter semantics as :func:`get_corpus_inscriptions` but each
+    element is a dict ``{'catalogue_id': str, 'signs': list[str]}``.
+    Enables provenience-aware filtering by CISI site prefix.
+    """
+    corpus = _load_corpus()
+    out: list[dict] = []
+    for insc in corpus:
+        cid = insc.get("id", "") or ""
+        if site is not None and cid.split("-")[0] != site:
+            continue
+        graphemes = insc.get("graphemes") or []
+        signs = [g["id"] for g in graphemes if g.get("id")]
+        if len(signs) >= min_length:
+            out.append({"catalogue_id": cid, "signs": signs})
+    return out
+
+
+def get_inscriptions_filtered_by_prefix(
+    prefixes: set[str] | list[str] | tuple[str, ...],
+    min_length: int = 2,
+    max_length: int | None = None,
+) -> list[dict]:
+    """Return inscriptions whose catalogue_id starts with any of the given
+    site prefixes (Phase-27).
+
+    Used to filter the Shu-ilishu candidate list to contact-zone seals.
+    """
+    if not prefixes:
+        return []
+    pset = {p for p in prefixes if p}
+    out: list[dict] = []
+    for entry in get_corpus_inscriptions_with_ids(min_length=min_length):
+        cid = entry["catalogue_id"]
+        # Try the longest prefix first (4-, 3-, 2-, 1-letter) so 'Gks5' beats 'G'
+        for L in (4, 3, 2, 1):
+            if cid[:L] in pset:
+                if max_length is not None and len(entry["signs"]) > max_length:
+                    break
+                out.append(entry)
+                break
+    return out
+
+
 def get_corpus_metadata() -> dict:
     """Return summary statistics for the loaded CISI corpus."""
     corpus = _load_corpus()

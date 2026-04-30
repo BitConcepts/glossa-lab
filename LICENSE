@@ -2,7 +2,7 @@ LAYER1LABS PROPRIETARY LICENSE
 Version 1.0
 Effective: April 29, 2026
 
-Copyright (c) 2026 Layer1Labs Silicon, Inc.
+Copyright (c) 2026 Layer1Labs Silicon Inc.
 All rights reserved.
 
 NOTICE
@@ -11,7 +11,7 @@ This software, including all source code, hardware description language,
 firmware, register transfer logic, schematics, specifications, designs,
 documentation, build artifacts, evaluation kits, and accompanying
 materials in this repository (collectively, the "Software"), is the
-exclusive property of Layer1Labs Silicon, Inc. ("Layer1Labs") and is
+exclusive property of Layer1Labs Silicon Inc. ("Layer1Labs") and is
 protected by United States copyright, trade secret, patent, trademark,
 and other intellectual property laws, and by applicable foreign
 intellectual property laws and international treaties.
@@ -31,7 +31,7 @@ Any use of the Software for any purpose, including but not limited to
 research, evaluation, internal testing, benchmarking, integration,
 deployment, distribution, sublicensing, or commercial exploitation,
 requires a separate, executed, written commercial license agreement
-between the user and Layer1Labs Silicon, Inc. No previously published,
+between the user and Layer1Labs Silicon Inc. No previously published,
 published, or implied "research and evaluation" or "non-commercial"
 license applies to the Software. Any earlier or contradictory licensing
 notice is hereby superseded and revoked as of the effective date above.
@@ -84,7 +84,7 @@ the prior written consent of Layer1Labs.
 TRADEMARKS
 
 "Layer1Labs," "Layer1Labs Silicon," "ChronoFabric," "UDIS," "CPSC,"
-"CPAC," and associated logos are trademarks of Layer1Labs Silicon, Inc.
+"CPAC," and associated logos are trademarks of Layer1Labs Silicon Inc.
 No right or license to use any Layer1Labs trademark is granted under
 this License.
 
@@ -153,7 +153,7 @@ COMMERCIAL LICENSING INQUIRIES
 
 To obtain a commercial license for any use of the Software, contact:
 
-    Layer1Labs Silicon, Inc.
+    Layer1Labs Silicon Inc.
     info@layer1labs.ai
 
 END OF LICENSE

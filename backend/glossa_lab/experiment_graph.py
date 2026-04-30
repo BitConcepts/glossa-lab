@@ -2403,6 +2403,14 @@ try:
 except Exception as _p26_exc:  # noqa: BLE001
     logger.warning("Phase-26 nodes not registered: %s", _p26_exc)
 
+# ── Phase-27 nodes (reverse Janabiyah + Bayesian v2 + iconographic anchors + 6-bucket period) ──
+try:
+    from glossa_lab.experiment_graph_phase27 import _phase27_node_defs as _p27_defs  # noqa: PLC0415
+    for _d in _p27_defs():
+        ATOMIC_NODES[_d.id] = _d
+except Exception as _p27_exc:  # noqa: BLE001
+    logger.warning("Phase-27 nodes not registered: %s", _p27_exc)
+
 
 # ── Graph execution ────────────────────────────────────────────────────────────────────
 

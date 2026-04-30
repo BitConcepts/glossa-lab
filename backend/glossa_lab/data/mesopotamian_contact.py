@@ -36,6 +36,7 @@ _INDUS_SEALS_MES = _ROOT / "corpora" / "downloads" / "contact_zone" / "indus_sea
 _LAURSEN_TABLE1 = _ROOT / "corpora" / "downloads" / "contact_zone" / "gulf_seals" / "laursen_2010_table1.json"
 _PARPOLA_PHONEMES = Path(__file__).resolve().parent / "parpola_phonemes.json"
 _CISI_FINDSPOTS = Path(__file__).resolve().parent / "cisi_findspots.json"
+_ICONOGRAPHIC_ANCHORS = Path(__file__).resolve().parent / "iconographic_anchors.json"
 
 
 def _safe_load(path: Path) -> dict:
@@ -166,6 +167,25 @@ def get_contact_zone_prefix_set() -> set:
     (i.e. outside the Indus core). Phase-26."""
     fm = get_cisi_findspot_map()
     return {k for k, v in fm.items() if v.get("is_contact_zone")}
+
+
+def get_phase27_seal_findspot_overrides() -> dict:
+    """Return Phase-27 explicit catalogue_id -> find-spot overrides
+    (for Phase-22 hand-encoded seals whose IDs don't follow CISI conventions)."""
+    return dict(_load_cisi_findspots_data().get("phase27_explicit_overrides") or {})
+
+
+@lru_cache(maxsize=1)
+def _load_iconographic_anchors_data() -> dict:
+    return _safe_load(_ICONOGRAPHIC_ANCHORS)
+
+
+def get_iconographic_anchors() -> list[dict]:
+    """Return iconographic anchors (Phase-27): seals/tablets where the
+    iconographic motif independently confirms the iconic reading of an
+    inscribed sign. Source: Parpola 2010 figs 5/6/7/9/14/17/19/20/22/23.
+    """
+    return list(_load_iconographic_anchors_data().get("anchors") or [])
 
 
 # ── Phase-26: expanded phonetic search vocabulary ────────────────────
@@ -697,4 +717,6 @@ __all__ = [
     "get_cisi_findspot_map",
     "get_contact_zone_prefix_set",
     "get_miin_renderings",
+    "get_phase27_seal_findspot_overrides",
+    "get_iconographic_anchors",
 ]

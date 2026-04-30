@@ -33,6 +33,7 @@ from pathlib import Path
 _ROOT = Path(__file__).resolve().parents[3]
 _CDLI_MELUHHA = _ROOT / "corpora" / "downloads" / "contact_zone" / "cdli_meluhha" / "meluhha_tablets.json"
 _INDUS_SEALS_MES = _ROOT / "corpora" / "downloads" / "contact_zone" / "indus_seals_mesopotamia" / "seals_at_mesopotamia.json"
+_LAURSEN_TABLE1 = _ROOT / "corpora" / "downloads" / "contact_zone" / "gulf_seals" / "laursen_2010_table1.json"
 
 
 def _safe_load(path: Path) -> dict:
@@ -101,6 +102,28 @@ def get_seal_sign_metadata() -> dict:
     """Return Phase-23 sign-ingestion metadata block (counts, method)."""
     md = _load_indus_seals_at_mesopotamia_data().get("metadata") or {}
     return md.get("phase23_sign_ingestion") or {}
+
+
+@lru_cache(maxsize=1)
+def _load_laursen_table1_data() -> dict:
+    return _safe_load(_LAURSEN_TABLE1)
+
+
+def get_laursen_table1() -> list[dict]:
+    """Return Laursen 2010 Table 1 rows (Phase-24)."""
+    return list(_load_laursen_table1_data().get("rows") or [])
+
+
+def get_laursen_parpola_readings() -> dict:
+    """Return the Parpola-1994b sign-by-sign readings transcribed from
+    Laursen 2010 footnote 2 (currently only seal #10)."""
+    return dict(_load_laursen_table1_data().get("parpola_readings") or {})
+
+
+def get_seal_sign_upgrade_metadata() -> dict:
+    """Return Phase-24 sign-upgrade metadata block."""
+    md = _load_indus_seals_at_mesopotamia_data().get("metadata") or {}
+    return md.get("phase24_sign_upgrade") or {}
 
 
 # ── Meluhhan-named-person extraction ─────────────────────────────────
@@ -327,6 +350,132 @@ def get_meluhhan_persons_strict() -> list[dict]:
     return persons
 
 
+# ── Phase-24: persons-v2 with toponym filter, extended stoplist, wider window ──
+#
+# Phase-23b's strict extractor surfaced 6 candidates but ~3 were noise
+# (toponyms like ``e2-duru5-me-luh-ha`` and Akkadian particles like
+# ``lu-u``). Phase-24 fixes:
+#
+#   1. Toponym filter: drop candidates that begin with explicit place-
+#      designating prefixes (``e2-``, ``bad3-``, ``iri-``, ``kur-``,
+#      ``a-ab-ba-``).
+#   2. Extended stoplist: add ``lu-u``, ``lu-ub``, ``ka-bal``, ``sze-ga``,
+#      ``gu-ub``, ``ma-ru``, etc.
+#   3. Wider extraction window: scan ALL lines on a tablet whose keyword
+#      matches me-luh-ha (not just lines that themselves contain me-luh-
+#      ha). This captures Lu-sun-zi-da and similar PNs that occur on a
+#      different line of the same tablet from the keyword.
+
+_TOPONYM_PREFIXES: frozenset[str] = frozenset({
+    "e2-", "e2.", "bad3-", "bad-", "iri-", "iri.", "kur-", "kur.",
+    "a-ab-ba-", "i7-", "id2-", "ki-tusz", "unu",
+})
+
+_AKKADIAN_STOPLIST_V2: frozenset[str] = frozenset(
+    _AKKADIAN_STOPLIST | {
+        "lu-u", "lu-ub", "lu-ub2", "lu-u2",
+        "ka-bal", "sze-ga", "gu-ub", "ma-ru",
+        "gid2", "gi-na", "gen-na", "sze-bi",
+        "al-lik", "al-li-ku", "al-lik-ma",
+        "e-li-szu2", "e-li-szu",
+        "ka-tar", "a-na-asz", "la-bi",
+        "ub-bi-bu", "u3-na",
+    }
+)
+
+
+def _is_toponym_candidate(token: str) -> bool:
+    t = token.lower()
+    for pref in _TOPONYM_PREFIXES:
+        if t.startswith(pref):
+            return True
+    return False
+
+
+def _is_personal_name_candidate_v2(token: str) -> bool:
+    """Phase-24 strict PN heuristic. Same as v1 plus toponym filter
+    and extended stoplist."""
+    t = token.lower().strip()
+    if not t or t in _AKKADIAN_STOPLIST_V2:
+        return False
+    if _DIGIT_TOKEN_RE.match(t):
+        return False
+    if _is_toponym_candidate(t):
+        return False
+    if t in _KNOWN_MELUHHAN_NAMES:
+        return True
+    if _PN_PREFIX_RE.fullmatch(t):
+        return True
+    if _PN_MELUHHA_SUFFIX_RE.fullmatch(t):
+        return True
+    return False
+
+
+def get_meluhhan_persons_v2() -> list[dict]:
+    """Phase-24 Meluhhan-PN extractor.
+
+    Differences vs ``get_meluhhan_persons_strict()`` (Phase-23):
+      - Toponym prefix filter (drops ``e2-X-me-luh-ha``, ``iri-...``).
+      - Extended Akkadian-modal stoplist (``lu-u``, ``ka-bal``,
+        ``sze-ga``, ``gu-ub``, ``ma-ru``, ...).
+      - **Wider extraction window**: scans ALL lines on tablets whose
+        ``matched_keywords`` include me-luh-ha (not just lines that
+        themselves contain the keyword). Required to surface Lu-sun-
+        zi-da, Ur-suen-me-luh-ha, etc., where the PN sits a few lines
+        above or below the keyword line.
+    """
+    persons: list[dict] = []
+    seen: set[tuple[str, str]] = set()
+    for t in get_meluhha_tablets():
+        kw = " ".join(t.get("matched_keywords") or []).lower()
+        if "me-luh" not in kw:
+            continue
+        # Wider window: scan ALL atf_lines (full tablet body when
+        # available) plus the keyword-match lines.
+        line_pool: list[str] = []
+        line_pool.extend(t.get("atf_lines_with_match") or [])
+        line_pool.extend(t.get("atf_excerpt_lines") or [])
+        excerpt = t.get("atf_excerpt") or ""
+        if excerpt:
+            line_pool.extend(
+                [ln for ln in str(excerpt).splitlines() if ln.strip()]
+            )
+        # De-dup while preserving order
+        seen_lines: set[str] = set()
+        unique_lines: list[str] = []
+        for ln in line_pool:
+            if ln in seen_lines:
+                continue
+            seen_lines.add(ln)
+            unique_lines.append(ln)
+
+        for line in unique_lines:
+            ll = line.lower()
+            for regex, pattern in (
+                (_PN_PREFIX_RE,         "prefix:lu2/lu/dumu"),
+                (_PN_MELUHHA_SUFFIX_RE, "suffix:-me-luh-ha"),
+            ):
+                for m in regex.finditer(ll):
+                    cand = m.group("full")
+                    if not _is_personal_name_candidate_v2(cand):
+                        continue
+                    key = (t["p_number"], cand)
+                    if key in seen:
+                        continue
+                    seen.add(key)
+                    persons.append({
+                        "p_number": t["p_number"],
+                        "designation": t.get("designation", ""),
+                        "period": t.get("period", ""),
+                        "provenience": t.get("provenience", ""),
+                        "candidate_name": cand,
+                        "line": line,
+                        "source_pattern": pattern,
+                        "is_known": cand.lower() in _KNOWN_MELUHHAN_NAMES,
+                    })
+    return persons
+
+
 __all__ = [
     "get_meluhha_tablets",
     "get_meluhha_keyword_counts",
@@ -335,6 +484,10 @@ __all__ = [
     "get_indus_seals_at_mesopotamia",
     "get_seals_with_inscription",
     "get_seal_sign_metadata",
+    "get_seal_sign_upgrade_metadata",
+    "get_laursen_table1",
+    "get_laursen_parpola_readings",
     "get_meluhhan_persons",
     "get_meluhhan_persons_strict",
+    "get_meluhhan_persons_v2",
 ]

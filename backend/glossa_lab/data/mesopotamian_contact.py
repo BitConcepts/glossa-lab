@@ -35,6 +35,7 @@ _CDLI_MELUHHA = _ROOT / "corpora" / "downloads" / "contact_zone" / "cdli_meluhha
 _INDUS_SEALS_MES = _ROOT / "corpora" / "downloads" / "contact_zone" / "indus_seals_mesopotamia" / "seals_at_mesopotamia.json"
 _LAURSEN_TABLE1 = _ROOT / "corpora" / "downloads" / "contact_zone" / "gulf_seals" / "laursen_2010_table1.json"
 _PARPOLA_PHONEMES = Path(__file__).resolve().parent / "parpola_phonemes.json"
+_CISI_FINDSPOTS = Path(__file__).resolve().parent / "cisi_findspots.json"
 
 
 def _safe_load(path: Path) -> dict:
@@ -142,6 +143,80 @@ def get_janabiyah_seal_reading() -> dict:
     """Return the canonical Parpola reading of Janabiyah seal #10.
     Phase-25."""
     return dict(_load_parpola_phonemes_data().get("janabiyah_seal_reading") or {})
+
+
+@lru_cache(maxsize=1)
+def _load_cisi_findspots_data() -> dict:
+    return _safe_load(_CISI_FINDSPOTS)
+
+
+def get_cisi_findspot_map() -> dict:
+    """Return CISI Vol 3 Part 3 site-prefix -> find-spot map (Phase-26).
+    Includes contact-zone, core-Indus, and Mesopotamia/Dilmun prefix sets."""
+    d = _load_cisi_findspots_data()
+    out: dict[str, dict] = {}
+    for k in ("site_prefix_to_findspot", "core_indus_prefixes",
+              "mesopotamia_dilmun_external_prefixes_in_other_volumes"):
+        out.update(dict(d.get(k) or {}))
+    return out
+
+
+def get_contact_zone_prefix_set() -> set:
+    """Return the set of CISI prefixes considered to be contact-zone
+    (i.e. outside the Indus core). Phase-26."""
+    fm = get_cisi_findspot_map()
+    return {k for k, v in fm.items() if v.get("is_contact_zone")}
+
+
+# ── Phase-26: expanded phonetic search vocabulary ────────────────────
+#
+# Phase-25a's Janabiyah-readout test searched only direct
+# transliterations of Dravidian *miin* (mi-in, me-en, mi-na, etc.)
+# and got 0 matches across 1462 CDLI tablets. This is consistent with
+# Akkadian scribes *translating* Meluhhan astral names rather than
+# transliterating them. Phase-26 widens the search to include:
+#
+#   - Sumerian astral terms: mul ('star', logogram for any star),
+#     nun ('prince/god'), an ('sky/god'), digir ('god', written {d}),
+#   - Akkadian astral terms: kakkab- ('star'), nuru- ('light'),
+#     ilu- ('god'), shamash- ('sun-god'),
+#   - Sumerian numerical-translation candidates: imin- ('seven', for
+#     eZu-miin = Ursa Major), as- ('six', for aru-miin = Pleiades),
+#     mul-mul (the canonical Sumerian writing for the Pleiades),
+#   - Logographic markers: {d}MUL.MUL = Pleiades, {d}IMIN.BI =
+#     'the seven', {mul}APIN = a constellation.
+
+_PHASE26_MIIN_RENDERINGS_DIRECT: list[str] = [
+    # Original Phase-25a list (direct transliteration of *miin*)
+    "mi-in", "me-en", "mi-na", "me-na", "mi-il", "me-il",
+    "mi-en", "me-in", "mu-li", "min-", "men-",
+]
+
+_PHASE26_MIIN_RENDERINGS_TRANSLATED: list[str] = [
+    # Sumerian astral terms (translation candidates)
+    "mul", "mul-mul", "{mul}",
+    "nun", "an-na",
+    # Akkadian astral terms
+    "kakkab", "kak-kab", "kak-ka-bu",
+    # Sumerian numerical-name candidates
+    "imin", "i-min",  # 'seven' (eZu-miin candidate)
+    "as-", "asz",     # 'six' (aru-miin candidate; cf. Sumerian asz/dis)
+    # Logographic markers for divinity (the divine determinative is
+    # written {d} in CDLI ATF; the Janabiyah miin pattern would not
+    # have such a determinative because it's a personal-name suffix)
+    "{d}mul", "{d}imin",
+]
+
+
+def get_miin_renderings(include_translated: bool = True) -> list[str]:
+    """Return the list of Sumerian/Akkadian syllable forms searched
+    for as candidates for Dravidian *miin* (fish/star) phoneme. If
+    ``include_translated`` is True (Phase-26), include translation
+    candidates (mul, kakkab, imin, etc.) in addition to direct
+    transliterations (mi-in, me-en, etc.)."""
+    if not include_translated:
+        return list(_PHASE26_MIIN_RENDERINGS_DIRECT)
+    return list(_PHASE26_MIIN_RENDERINGS_DIRECT + _PHASE26_MIIN_RENDERINGS_TRANSLATED)
 
 
 # ── Meluhhan-named-person extraction ─────────────────────────────────
@@ -619,4 +694,7 @@ __all__ = [
     "get_meluhhan_persons_v3",
     "get_parpola_phoneme_map",
     "get_janabiyah_seal_reading",
+    "get_cisi_findspot_map",
+    "get_contact_zone_prefix_set",
+    "get_miin_renderings",
 ]

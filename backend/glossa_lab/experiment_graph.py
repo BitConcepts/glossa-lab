@@ -2384,6 +2384,14 @@ try:
 except Exception as _p24_exc:  # noqa: BLE001
     logger.warning("Phase-24 nodes not registered: %s", _p24_exc)
 
+# ── Phase-25 nodes (phonetic readout + period-stratified replication + Tamil-Brahmi cross-check) ──
+try:
+    from glossa_lab.experiment_graph_phase25 import _phase25_node_defs as _p25_defs  # noqa: PLC0415
+    for _d in _p25_defs():
+        ATOMIC_NODES[_d.id] = _d
+except Exception as _p25_exc:  # noqa: BLE001
+    logger.warning("Phase-25 nodes not registered: %s", _p25_exc)
+
 
 # ── Graph execution ────────────────────────────────────────────────────────────────────
 

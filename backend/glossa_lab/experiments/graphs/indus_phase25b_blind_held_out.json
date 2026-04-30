@@ -1,0 +1,16 @@
+{
+  "id": "indus_phase25b_blind_held_out",
+  "name": "Indus Phase-25b \u2014 blind held-out phonetic test",
+  "description": "Phase-25b Tier A2: applies the fixed Parpola phoneme map to all inscribed seals; reports how many can be 'read' (have at least one Parpola-attributed phoneme) vs how many are placeholder-only. Output: reports/phase25b_blind_held_out.json.",
+  "auto_migrated": false,
+  "nodes": [
+    { "id": "load",  "type": "expNode", "data": { "atomicId": "Phase25CorpusLoader", "label": "Load Phase-25 corpus", "params": {} }, "position": { "x": 60,   "y": 100 } },
+    { "id": "test",  "type": "expNode", "data": { "atomicId": "BlindHeldOutTest",    "label": "Blind held-out test",  "params": {} }, "position": { "x": 360,  "y": 100 } },
+    { "id": "out",   "type": "expNode", "data": { "atomicId": "JSONExport",          "label": "Save Phase-25b results","params": { "filename": "phase25b_blind_held_out.json" } }, "position": { "x": 660, "y": 100 } }
+  ],
+  "edges": [
+    { "id": "e_load_t_s",    "source": "load", "target": "test", "sourcePort": "inscribed_seals", "targetPort": "inscribed_seals" },
+    { "id": "e_load_t_phm",  "source": "load", "target": "test", "sourcePort": "phoneme_map",     "targetPort": "phoneme_map" },
+    { "id": "e_t_out",       "source": "test", "target": "out",  "sourcePort": "rows",            "targetPort": "data" }
+  ]
+}

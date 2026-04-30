@@ -1,0 +1,80 @@
+{
+  "data": {
+    "a": "Phase-24 sign-upgrade audit: 14 seals; 5 cross-referenced with Laursen Table 1; 1 with high-confidence Parpola IDs; 44 total Indus signs.",
+    "b": 5,
+    "c": 1,
+    "d__length_only": 10,
+    "d__none": 3,
+    "d__high": 1,
+    "e": [
+      {
+        "catalogue_id": "BM_122187_UR_seal_1",
+        "laursen_seal_no": 16,
+        "inscription_length": 5,
+        "signs_confidence": "length_only",
+        "indus_signs": [
+          "?",
+          "?",
+          "?",
+          "?",
+          "?"
+        ],
+        "rationale": "Gadd 1932 pl. I no. 2 (round Ur seal with zebu motif). Best-fit Laursen Table 1 row for the BM 122187 entry."
+      },
+      {
+        "catalogue_id": "GADD_1",
+        "laursen_seal_no": 17,
+        "inscription_length": 3,
+        "signs_confidence": "length_only",
+        "indus_signs": [
+          "?",
+          "?",
+          "?"
+        ],
+        "rationale": "Gadd 1932 pl. I no. 3 (square Ur seal)."
+      },
+      {
+        "catalogue_id": "GADD_2",
+        "laursen_seal_no": 18,
+        "inscription_length": 4,
+        "signs_confidence": "length_only",
+        "indus_signs": [
+          "?",
+          "?",
+          "?",
+          "?"
+        ],
+        "rationale": "Gadd 1932 pl. I no. 4 (Ur)."
+      },
+      {
+        "catalogue_id": "SUSA_INDUS_1",
+        "laursen_seal_no": 14,
+        "inscription_length": 4,
+        "signs_confidence": "length_only",
+        "indus_signs": [
+          "?",
+          "?",
+          "?",
+          "?"
+        ],
+        "rationale": "Amiet 1972 no. 1643 \u2014 Susa Gulf INDUS seal (Laursen Table 1 row 14)."
+      },
+      {
+        "catalogue_id": "JANABIYAH_LAURSEN_10",
+        "laursen_seal_no": 10,
+        "inscription_length": 7,
+        "signs_confidence": "high",
+        "indus_signs": [
+          "53",
+          "147",
+          "364",
+          "145",
+          "126",
+          "16",
+          "145"
+        ],
+        "rationale": ""
+      }
+    ]
+  }
+}

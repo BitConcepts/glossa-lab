@@ -1,0 +1,22 @@
+{
+  "id": "indus_phase24b_seal_signs_upgraded_audit",
+  "name": "Indus Phase-24b \u2014 seal sign upgrade audit",
+  "description": "Phase-24b: audit the Phase-24 sign-ID upgrade. Cross-references 4 of our 13 hand-encoded seals with Laursen Table 1 row numbers (BM_122187 -> Laursen #16, GADD_1 -> #17, GADD_2 -> #18, SUSA_INDUS_1 -> #14) and adds Janabiyah seal #10 with full Parpola-1994b sign sequence. Inventory: 14 seals, 11 inscribed, 44 signs, 1 high-confidence. Output: reports/phase24b_seal_signs_upgraded_audit.json.",
+  "auto_migrated": false,
+  "nodes": [
+    { "id": "load",   "type": "expNode", "data": { "atomicId": "RefinedSealLoaderV2",   "label": "Load augmented seals v2",       "params": {} },                                "position": { "x": 60,   "y": 100 } },
+    { "id": "audit",  "type": "expNode", "data": { "atomicId": "SealSignUpgradeAuditor","label": "Sign-upgrade auditor",          "params": {} },                                "position": { "x": 360,  "y": 100 } },
+    { "id": "merge",  "type": "expNode", "data": { "atomicId": "Merger",                "label": "Merge",                          "params": {} },                                "position": { "x": 660,  "y": 100 } },
+    { "id": "out",    "type": "expNode", "data": { "atomicId": "JSONExport",            "label": "Save Phase-24b results",         "params": { "filename": "phase24b_seal_signs_upgraded_audit.json" } }, "position": { "x": 960, "y": 100 } }
+  ],
+  "edges": [
+    { "id": "e_load_audit_s",  "source": "load",  "target": "audit", "sourcePort": "all_seals",          "targetPort": "all_seals" },
+    { "id": "e_load_audit_md", "source": "load",  "target": "audit", "sourcePort": "upgrade_metadata",   "targetPort": "upgrade_metadata" },
+    { "id": "e_audit_merge_v", "source": "audit", "target": "merge", "sourcePort": "verdict",            "targetPort": "a" },
+    { "id": "e_audit_merge_n", "source": "audit", "target": "merge", "sourcePort": "n_with_laursen_xref","targetPort": "b" },
+    { "id": "e_audit_merge_h", "source": "audit", "target": "merge", "sourcePort": "n_high_conf",        "targetPort": "c" },
+    { "id": "e_audit_merge_c", "source": "audit", "target": "merge", "sourcePort": "by_confidence",      "targetPort": "d" },
+    { "id": "e_audit_merge_r", "source": "audit", "target": "merge", "sourcePort": "upgrade_rows",       "targetPort": "e" },
+    { "id": "e_merge_out",     "source": "merge", "target": "out",   "sourcePort": "json",               "targetPort": "data" }
+  ]
+}

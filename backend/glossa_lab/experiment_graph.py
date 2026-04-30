@@ -2376,6 +2376,14 @@ try:
 except Exception as _p23_exc:  # noqa: BLE001
     logger.warning("Phase-23 nodes not registered: %s", _p23_exc)
 
+# ── Phase-24 nodes (Laursen Table 1 + sign upgrade + persons-v2 + bipartite readout test) ──
+try:
+    from glossa_lab.experiment_graph_phase24 import _phase24_node_defs as _p24_defs  # noqa: PLC0415
+    for _d in _p24_defs():
+        ATOMIC_NODES[_d.id] = _d
+except Exception as _p24_exc:  # noqa: BLE001
+    logger.warning("Phase-24 nodes not registered: %s", _p24_exc)
+
 
 # ── Graph execution ────────────────────────────────────────────────────────────────────
 

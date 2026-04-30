@@ -207,6 +207,7 @@ def get_allograph_families() -> dict:
 
 
 _CISI_VOL3_OCR = _ROOT / "reports" / "cisi_vol3_extracted_signs.json"
+_EPSD2_NAMES = Path(__file__).resolve().parent / "epsd2_names_subset.json"
 
 
 @lru_cache(maxsize=1)
@@ -227,6 +228,59 @@ def get_cisi_vol3_ocr_results() -> list[dict]:
     introduction/front-matter only (40 pp); seal IDs extracted are
     LPIW/LE (Linear Proto-Iranian/Linear Elamite), NOT Indus script."""
     return list(_load_cisi_vol3_ocr_data())
+
+
+@lru_cache(maxsize=1)
+def _load_epsd2_names_data() -> dict:
+    return _safe_load(_EPSD2_NAMES)
+
+
+def get_epsd2_names() -> list[dict]:
+    """Return ePSD2 names subset (Phase-29).
+    Source: oracc.museum.upenn.edu/json/epsd2-names.zip (CC BY-SA).
+    4,848 entries: 1,222 PN (Personal), 2,068 DN (Divine), 346 TN (Temple),
+    335 SN (Settlement), 306 RN (Royal), 263 GN (Geographic), 164 WN (Watercourse),
+    + others. Each entry has headword, id, pos, icount, cf, forms, periods."""
+    return list(_load_epsd2_names_data().get("entries") or [])
+
+
+def get_epsd2_personal_names() -> list[dict]:
+    """Return only the PN (personal name) subset of ePSD2 names (Phase-29).
+    1,222 entries. The relevant subset for Janabiyah-style PN search."""
+    return [e for e in get_epsd2_names() if e.get("pos") == "PN"]
+
+
+def get_epsd2_metadata() -> dict:
+    """Return ePSD2 metadata (counts, license, source URL)."""
+    d = _load_epsd2_names_data()
+    return {
+        "n_total_entries": d.get("_n_total_entries", 0),
+        "pos_counts": d.get("_pos_counts", {}),
+        "license": d.get("_license", ""),
+        "source": d.get("_source", ""),
+    }
+
+
+def get_mahadevan_inscriptions(min_length: int = 1) -> list[list[str]]:
+    """Return Mahadevan 1977 inscription corpus (Phase-29).
+    1,669 inscriptions / 5,361 sign tokens / M77 numeric codes.
+    9.4× the 178-inscription CISI corpus we used through Phase-28."""
+    try:
+        from glossa_lab.data.indus_m77 import (  # noqa: PLC0415
+            get_corpus_inscriptions,
+        )
+        return get_corpus_inscriptions(min_length=min_length)
+    except Exception:  # noqa: BLE001
+        return []
+
+
+def get_mahadevan_metadata() -> dict:
+    """Return Mahadevan corpus metadata (Phase-29)."""
+    try:
+        from glossa_lab.data.indus_m77 import get_corpus_metadata  # noqa: PLC0415
+        return get_corpus_metadata()
+    except Exception:  # noqa: BLE001
+        return {}
 
 
 # ── Phase-26: expanded phonetic search vocabulary ────────────────────
@@ -763,4 +817,9 @@ __all__ = [
     "get_mahadevan_parpola_crosswalk",
     "get_allograph_families",
     "get_cisi_vol3_ocr_results",
+    "get_epsd2_names",
+    "get_epsd2_personal_names",
+    "get_epsd2_metadata",
+    "get_mahadevan_inscriptions",
+    "get_mahadevan_metadata",
 ]

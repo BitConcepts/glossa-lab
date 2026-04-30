@@ -1,0 +1,13 @@
+{
+  "id": "indus_phase28b_mahadevan_crosswalk",
+  "name": "Indus Phase-28b — Mahadevan-Parpola crosswalk loader",
+  "description": "Phase-28 #4: load M77 -> Parpola 1994b crosswalk + 4 allograph families.",
+  "auto_migrated": false,
+  "nodes": [
+    { "id": "load", "type": "expNode", "data": { "atomicId": "MahadevanCrosswalkLoader", "label": "Crosswalk", "params": {} }, "position": { "x": 60, "y": 100 } },
+    { "id": "out",  "type": "expNode", "data": { "atomicId": "JSONExport",                "label": "Save",      "params": { "filename": "phase28b_mahadevan_crosswalk.json" } }, "position": { "x": 360, "y": 100 } }
+  ],
+  "edges": [
+    { "id": "e1", "source": "load", "target": "out", "targetPort": "data" }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "indus_phase25a_janabiyah_phonetic",
+  "name": "Indus Phase-25a \u2014 Janabiyah phonetic readout",
+  "description": "Phase-25a Tier A1: first true phonetic decipherment attempt. Predicts phonetic reading of Janabiyah seal #10 (sign sequence [53,147,364,145,126,16,145]) using Parpola candidate phoneme map (fish-family signs = Dravidian *miin*). Searches CDLI Meluhha-mention tablets for any line containing >=2 miin-rendering syllables (mi-in, me-en, mi-na, etc.). Output: reports/phase25a_janabiyah_phonetic.json.",
+  "auto_migrated": false,
+  "nodes": [
+    { "id": "load",     "type": "expNode", "data": { "atomicId": "Phase25CorpusLoader",       "label": "Load Phase-25 corpus",       "params": {} }, "position": { "x": 60,   "y": 100 } },
+    { "id": "readout",  "type": "expNode", "data": { "atomicId": "JanabiyahPhoneticReadout","label": "Janabiyah phonetic readout","params": {} }, "position": { "x": 360,  "y": 100 } },
+    { "id": "out",      "type": "expNode", "data": { "atomicId": "JSONExport",               "label": "Save Phase-25a results",     "params": { "filename": "phase25a_janabiyah_phonetic.json" } }, "position": { "x": 660, "y": 100 } }
+  ],
+  "edges": [
+    { "id": "e_load_r_jan",  "source": "load",    "target": "readout", "sourcePort": "janabiyah_reading", "targetPort": "janabiyah_reading" },
+    { "id": "e_load_r_phm",  "source": "load",    "target": "readout", "sourcePort": "phoneme_map",       "targetPort": "phoneme_map" },
+    { "id": "e_load_r_t",    "source": "load",    "target": "readout", "sourcePort": "tablets",           "targetPort": "tablets" },
+    { "id": "e_r_out",       "source": "readout", "target": "out",     "sourcePort": "verdict",           "targetPort": "data" }
+  ]
+}

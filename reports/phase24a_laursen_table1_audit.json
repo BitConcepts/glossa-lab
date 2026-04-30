@@ -1,0 +1,70 @@
+{
+  "data": {
+    "a": "Laursen 2010 Table 1 audit: 102/121 rows parsed; 23 inscribed Gulf-INDUS; 1 seal(s) with full Parpola sign-by-sign reading.",
+    "b": 23,
+    "c__Gulf Type": 76,
+    "c__Gulf INDUS": 23,
+    "c__(unknown)": 2,
+    "c__Linear-Elamite": 1,
+    "d__(unmatched)": 30,
+    "d__Karzakkan Cemetery": 28,
+    "d__Saar Cemetery": 11,
+    "d__Ur": 6,
+    "d__Saar": 6,
+    "d__Failaka": 4,
+    "d__Mohenjo-Daro": 3,
+    "d__Mesopotamia?": 3,
+    "d__Near East": 2,
+    "d__Chanhu-Daro": 1,
+    "e": [
+      {
+        "seal_no": 1,
+        "reference": "Mackay 1943: pl. LI 23 \u2044 CISI vol.1",
+        "gulf_type": "Gulf INDUS",
+        "site": "Chanhu-Daro"
+      },
+      {
+        "seal_no": 2,
+        "reference": "Marshall 1931: pl. CX.309",
+        "gulf_type": "Gulf INDUS",
+        "site": "Mohenjo-Daro"
+      },
+      {
+        "seal_no": 3,
+        "reference": "Marshall 1931: pl. CXIV.478",
+        "gulf_type": "Gulf INDUS",
+        "site": "Mohenjo-Daro"
+      },
+      {
+        "seal_no": 4,
+        "reference": "Marshall 1931: pl. CXII.383",
+        "gulf_type": "Gulf INDUS",
+        "site": "Mohenjo-Daro"
+      },
+      {
+        "seal_no": 5,
+        "reference": "Mackay et al. 1937\u201338: pl. XCVL no 500",
+        "gulf_type": "",
+        "site": ""
+      },
+      {
+        "seal_no": 7,
+        "reference": "This paper",
+        "gulf_type": "Gulf Type",
+        "site": "Karzakkan Cemetery"
+      },
+      {
+        "seal_no": 8,
+        "reference": "Al-Sindi 1999: no. 136",
+        "gulf_type": "Gulf Type",
+        "site": "Karzakkan Cemetery"
+      },
+      {
+        "seal_no": 10,
+        "reference": "Al-Sindi 1999: no. 182",
+        "gulf_type": "Gulf INDUS",
+        "site": "Karzakkan Cemetery"
+      }
+    ]
+  }
+}

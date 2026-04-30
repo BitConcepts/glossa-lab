@@ -1,0 +1,17 @@
+{
+  "id": "indus_phase29c_fuls_icit_loaders",
+  "name": "Indus Phase-29c — Fuls vol. 3 + ICIT loaders (no-op default)",
+  "description": "Phase-29 #3+#4: Fuls Mathematica Epigraphica vol. 3 + Interactive Corpus of Indus Texts loaders. Default no-op; loads if data files present.",
+  "auto_migrated": false,
+  "nodes": [
+    { "id": "fuls", "type": "expNode", "data": { "atomicId": "MathematicaEpigraphicaLoader", "label": "Fuls vol. 3", "params": {} }, "position": { "x": 60, "y": 60 } },
+    { "id": "icit", "type": "expNode", "data": { "atomicId": "ICITCorpusLoader",             "label": "ICIT live",   "params": {} }, "position": { "x": 60, "y": 200 } },
+    { "id": "merge","type": "expNode", "data": { "atomicId": "Merger",                       "label": "Merge",       "params": {} }, "position": { "x": 360, "y": 130 } },
+    { "id": "out",  "type": "expNode", "data": { "atomicId": "JSONExport",                   "label": "Save",        "params": { "filename": "phase29c_fuls_icit_loaders.json" } }, "position": { "x": 660, "y": 130 } }
+  ],
+  "edges": [
+    { "id": "e1", "source": "fuls", "target": "merge", "sourcePort": "verdict", "targetPort": "a" },
+    { "id": "e2", "source": "icit", "target": "merge", "sourcePort": "verdict", "targetPort": "b" },
+    { "id": "e3", "source": "merge","target": "out",   "sourcePort": "json",    "targetPort": "data" }
+  ]
+}

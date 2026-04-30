@@ -1,0 +1,498 @@
+{
+  "n_pns_searched": 1222,
+  "n_renderings": 15,
+  "n_with_position_match": 102,
+  "n_with_free_miin": 223,
+  "top_matches": [
+    {
+      "headword": "Enmenanak[1]PN",
+      "best_form": "en-men-an-na-ka-\u0161e\u2083",
+      "n_segments": 6,
+      "position_match": 2,
+      "positions_matched": [
+        1,
+        3
+      ],
+      "free_miin": 3,
+      "total_score": 7.0,
+      "icount": 4,
+      "periods": [
+        "Old Akkadian"
+      ],
+      "n_alternate_forms": 2
+    },
+    {
+      "headword": "Enheduana[1]PN",
+      "best_form": "en-he\u2082-du\u2087-an-na-me-en",
+      "n_segments": 7,
+      "position_match": 1,
+      "positions_matched": [
+        6
+      ],
+      "free_miin": 4,
+      "total_score": 6.5,
+      "icount": 12,
+      "periods": [
+        "Old Akkadian",
+        "Old Babylonian"
+      ],
+      "n_alternate_forms": 3
+    },
+    {
+      "headword": "Anadamutaklu[0]PN",
+      "best_form": "a-na-da-mu-tak\u2082-lu",
+      "n_segments": 6,
+      "position_match": 2,
+      "positions_matched": [
+        1,
+        3
+      ],
+      "free_miin": 2,
+      "total_score": 6.5,
+      "icount": 1,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "n_alternate_forms": 1
+    },
+    {
+      "headword": "Enmebaragesi[1]PN",
+      "best_form": "en-me-barag\u2082-ge\u2084-e-si",
+      "n_segments": 6,
+      "position_match": 1,
+      "positions_matched": [
+        1
+      ],
+      "free_miin": 2,
+      "total_score": 5.0,
+      "icount": 1,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "n_alternate_forms": 1
+    },
+    {
+      "headword": "Enmegalanak[1]PN",
+      "best_form": "en-me-gal-an-na",
+      "n_segments": 5,
+      "position_match": 1,
+      "positions_matched": [
+        1
+      ],
+      "free_miin": 3,
+      "total_score": 5.0,
+      "icount": 1,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "n_alternate_forms": 1
+    },
+    {
+      "headword": "\u0160usuenanasuentakil[1]PN",
+      "best_form": "\u0161u-suen-a-na-suen-ta\u2082-ki-il",
+      "n_segments": 8,
+      "position_match": 1,
+      "positions_matched": [
+        3
+      ],
+      "free_miin": 2,
+      "total_score": 5.0,
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "n_alternate_forms": 1
+    },
+    {
+      "headword": "Unap\u0161en[1]PN",
+      "best_form": "u\u2082-na-ap-\u0161e-en",
+      "n_segments": 5,
+      "position_match": 1,
+      "positions_matched": [
+        1
+      ],
+      "free_miin": 2,
+      "total_score": 4.5,
+      "icount": 5,
+      "periods": [
+        "Ur III"
+      ],
+      "n_alternate_forms": 2
+    },
+    {
+      "headword": "Enmeteanki[0]PN",
+      "best_form": "en-me-te-an-ki",
+      "n_segments": 5,
+      "position_match": 1,
+      "positions_matched": [
+        1
+      ],
+      "free_miin": 2,
+      "total_score": 4.5,
+      "icount": 1,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "n_alternate_forms": 1
+    },
+    {
+      "headword": "Gudea\u02beenlilak[0]PN",
+      "best_form": "gu\u2083-de\u2082-a-en-lil\u2082-la\u2082",
+      "n_segments": 6,
+      "position_match": 1,
+      "positions_matched": [
+        3
+      ],
+      "free_miin": 1,
+      "total_score": 4.5,
+      "icount": 1,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "n_alternate_forms": 1
+    },
+    {
+      "headword": "Nanaibsa[0]PN",
+      "best_form": "na-na-a-ib\u2082-sa\u2082",
+      "n_segments": 5,
+      "position_match": 1,
+      "positions_matched": [
+        1
+      ],
+      "free_miin": 2,
+      "total_score": 4.5,
+      "icount": 1,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "n_alternate_forms": 1
+    },
+    {
+      "headword": "Ninurtagamil[0]PN",
+      "best_form": "nin-urta-ga-mi-il",
+      "n_segments": 5,
+      "position_match": 1,
+      "positions_matched": [
+        3
+      ],
+      "free_miin": 2,
+      "total_score": 4.5,
+      "icount": 1,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "n_alternate_forms": 1
+    },
+    {
+      "headword": "\u0160usueni\u1e6dib\u0161inat[1]PN",
+      "best_form": "\u0161u-suen-i-ti-ib-\u0161i-na-at",
+      "n_segments": 8,
+      "position_match": 1,
+      "positions_matched": [
+        6
+      ],
+      "free_miin": 1,
+      "total_score": 4.5,
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "n_alternate_forms": 1
+    },
+    {
+      "headword": "Zidnatiluma[0]PN",
+      "best_form": "zid-na-at-i-lu-ma",
+      "n_segments": 6,
+      "position_match": 1,
+      "positions_matched": [
+        1
+      ],
+      "free_miin": 1,
+      "total_score": 4.5,
+      "icount": 1,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "n_alternate_forms": 1
+    },
+    {
+      "headword": "Urenlila[1]PN",
+      "best_form": "ur-en-lil\u2082-la\u2082-ke\u2084",
+      "n_segments": 5,
+      "position_match": 1,
+      "positions_matched": [
+        1
+      ],
+      "free_miin": 1,
+      "total_score": 4.0,
+      "icount": 5,
+      "periods": [
+        "Early Dynastic IIIb",
+        "Lagash II",
+        "Old Babylonian"
+      ],
+      "n_alternate_forms": 2
+    },
+    {
+      "headword": "Ilan\u0161emea[0]PN",
+      "best_form": "dingir-dingir-\u0161e-me-a",
+      "n_segments": 5,
+      "position_match": 1,
+      "positions_matched": [
+        3
+      ],
+      "free_miin": 1,
+      "total_score": 4.0,
+      "icount": 2,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "n_alternate_forms": 2
+    },
+    {
+      "headword": "Ena\u02beil[0]PN",
+      "best_form": "en-na-il",
+      "n_segments": 3,
+      "position_match": 1,
+      "positions_matched": [
+        1
+      ],
+      "free_miin": 3,
+      "total_score": 4.0,
+      "icount": 1,
+      "periods": [
+        "Early Dynastic IIIb"
+      ],
+      "n_alternate_forms": 1
+    },
+    {
+      "headword": "Ha\u0161hamer[1]PN",
+      "best_form": "ha-a\u0161\u2082-ha-me-er",
+      "n_segments": 5,
+      "position_match": 1,
+      "positions_matched": [
+        3
+      ],
+      "free_miin": 1,
+      "total_score": 4.0,
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "n_alternate_forms": 1
+    },
+    {
+      "headword": "Il\u0161umuballi\u1e6d[1]PN",
+      "best_form": "il\u2083-\u0161u-mu-ba-al-li-i\u1e6d",
+      "n_segments": 7,
+      "position_match": 0,
+      "positions_matched": [],
+      "free_miin": 2,
+      "total_score": 4.0,
+      "icount": 1,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "n_alternate_forms": 1
+    },
+    {
+      "headword": "Ninmetabare[1]PN",
+      "best_form": "nin-me-ta-bar-re\u2082",
+      "n_segments": 5,
+      "position_match": 1,
+      "positions_matched": [
+        1
+      ],
+      "free_miin": 1,
+      "total_score": 4.0,
+      "icount": 1,
+      "periods": [
+        "Early Dynastic IIIb"
+      ],
+      "n_alternate_forms": 1
+    },
+    {
+      "headword": "Sumuel[1]PN",
+      "best_form": "su-mu-i-la",
+      "n_segments": 4,
+      "position_match": 1,
+      "positions_matched": [
+        1
+      ],
+      "free_miin": 1,
+      "total_score": 3.5,
+      "icount": 20,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "n_alternate_forms": 5
+    },
+    {
+      "headword": "Lugalinimgina[1]PN",
+      "best_form": "lugal-inim-gi-na",
+      "n_segments": 4,
+      "position_match": 1,
+      "positions_matched": [
+        3
+      ],
+      "free_miin": 1,
+      "total_score": 3.5,
+      "icount": 6,
+      "periods": [
+        "Lagash II",
+        "Ur III",
+        "Old Babylonian",
+        "Neo-Assyrian",
+        "Hellenistic"
+      ],
+      "n_alternate_forms": 5
+    },
+    {
+      "headword": "Nininimgina[1]PN",
+      "best_form": "nin-inim-gi-na",
+      "n_segments": 4,
+      "position_match": 1,
+      "positions_matched": [
+        3
+      ],
+      "free_miin": 1,
+      "total_score": 3.5,
+      "icount": 6,
+      "periods": [
+        "Lagash II"
+      ],
+      "n_alternate_forms": 1
+    },
+    {
+      "headword": "Irinabadbi[1]PN",
+      "best_form": "uru-na-bad\u2083-bi",
+      "n_segments": 4,
+      "position_match": 1,
+      "positions_matched": [
+        1
+      ],
+      "free_miin": 1,
+      "total_score": 3.5,
+      "icount": 3,
+      "periods": [
+        "Old Akkadian"
+      ],
+      "n_alternate_forms": 1
+    },
+    {
+      "headword": "Luenki[1]PN",
+      "best_form": "lu\u2082-en-ki-ka",
+      "n_segments": 4,
+      "position_match": 1,
+      "positions_matched": [
+        1
+      ],
+      "free_miin": 1,
+      "total_score": 3.5,
+      "icount": 3,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "n_alternate_forms": 3
+    },
+    {
+      "headword": "Silhaha[1]PN",
+      "best_form": "si-il-ha-ha",
+      "n_segments": 4,
+      "position_match": 1,
+      "positions_matched": [
+        1
+      ],
+      "free_miin": 1,
+      "total_score": 3.5,
+      "icount": 3,
+      "periods": [
+        "Ur III"
+      ],
+      "n_alternate_forms": 1
+    },
+    {
+      "headword": "Urkugnuna[2]PN",
+      "best_form": "ur-kug-nun-na",
+      "n_segments": 4,
+      "position_match": 1,
+      "positions_matched": [
+        3
+      ],
+      "free_miin": 1,
+      "total_score": 3.5,
+      "icount": 3,
+      "periods": [
+        "Ur III"
+      ],
+      "n_alternate_forms": 1
+    },
+    {
+      "headword": "Ayazi\u014bu[1]PN",
+      "best_form": "a-a-zi-mu",
+      "n_segments": 4,
+      "position_match": 1,
+      "positions_matched": [
+        3
+      ],
+      "free_miin": 1,
+      "total_score": 3.5,
+      "icount": 2,
+      "periods": [
+        "Ur III",
+        "Old Babylonian"
+      ],
+      "n_alternate_forms": 2
+    },
+    {
+      "headword": "Kindattu[1]PN",
+      "best_form": "ki-in-da-tu",
+      "n_segments": 4,
+      "position_match": 1,
+      "positions_matched": [
+        1
+      ],
+      "free_miin": 1,
+      "total_score": 3.5,
+      "icount": 2,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "n_alternate_forms": 1
+    },
+    {
+      "headword": "Tulid\u0161am\u0161i[1]PN",
+      "best_form": "tu-li-id-utu",
+      "n_segments": 4,
+      "position_match": 1,
+      "positions_matched": [
+        1
+      ],
+      "free_miin": 1,
+      "total_score": 3.5,
+      "icount": 2,
+      "periods": [
+        "Ur III"
+      ],
+      "n_alternate_forms": 1
+    },
+    {
+      "headword": "Urenlilak[1]PN",
+      "best_form": "ur-en-lil\u2082-la\u2082",
+      "n_segments": 4,
+      "position_match": 1,
+      "positions_matched": [
+        1
+      ],
+      "free_miin": 1,
+      "total_score": 3.5,
+      "icount": 2,
+      "periods": [
+        "Ur III",
+        "Old Babylonian"
+      ],
+      "n_alternate_forms": 1
+    }
+  ],
+  "verdict": "Phase-29 reverse Janabiyah search (ePSD2 v3): 1222 ePSD2 PNs scored against 15 miin-token-renderings. 102 have at least one position-match (segment with miin-token at Janabiyah positions 1/3/6). 223 have at least one miin-rendering anywhere. Top: 'Enmenanak[1]PN' (score 7.0, icount 4, periods ['Old Akkadian']). 28x scale-up vs Phase-28d (1,222 PNs vs 44)."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "indus_phase28e_expanded_phoneme_map",
+  "name": "Indus Phase-28e — Expanded Parpola phoneme map loader",
+  "description": "Phase-28 #2: load expanded 35-entry phoneme map (vs Phase-27's 30) including lion, eagle, cobra, plus strengthened yoke-carrier and buffalo entries.",
+  "auto_migrated": false,
+  "nodes": [
+    { "id": "load", "type": "expNode", "data": { "atomicId": "Phase28CorpusLoader", "label": "Load Phase-28", "params": {} }, "position": { "x": 60, "y": 100 } },
+    { "id": "out",  "type": "expNode", "data": { "atomicId": "JSONExport",          "label": "Save",          "params": { "filename": "phase28e_expanded_phoneme_map.json" } }, "position": { "x": 360, "y": 100 } }
+  ],
+  "edges": [
+    { "id": "e1", "source": "load", "target": "out", "sourcePort": "phoneme_map", "targetPort": "data" }
+  ]
+}

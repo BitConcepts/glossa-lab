@@ -37,6 +37,7 @@ _LAURSEN_TABLE1 = _ROOT / "corpora" / "downloads" / "contact_zone" / "gulf_seals
 _PARPOLA_PHONEMES = Path(__file__).resolve().parent / "parpola_phonemes.json"
 _CISI_FINDSPOTS = Path(__file__).resolve().parent / "cisi_findspots.json"
 _ICONOGRAPHIC_ANCHORS = Path(__file__).resolve().parent / "iconographic_anchors.json"
+_MAHADEVAN_CROSSWALK = Path(__file__).resolve().parent / "mahadevan_parpola_crosswalk.json"
 
 
 def _safe_load(path: Path) -> dict:
@@ -186,6 +187,46 @@ def get_iconographic_anchors() -> list[dict]:
     inscribed sign. Source: Parpola 2010 figs 5/6/7/9/14/17/19/20/22/23.
     """
     return list(_load_iconographic_anchors_data().get("anchors") or [])
+
+
+@lru_cache(maxsize=1)
+def _load_mahadevan_crosswalk_data() -> dict:
+    return _safe_load(_MAHADEVAN_CROSSWALK)
+
+
+def get_mahadevan_parpola_crosswalk() -> dict:
+    """Return the Mahadevan 1977 -> Parpola 1994b sign crosswalk (Phase-28)."""
+    return dict(_load_mahadevan_crosswalk_data().get("crosswalk") or {})
+
+
+def get_allograph_families() -> dict:
+    """Return allograph-family map (Phase-28): family name -> {members, phoneme, iconic, ...}.
+    Used by AllographAwareIconographicScore so e.g. fish-family signs
+    47/50/60/145/147 all match the M-410 fish anchor."""
+    return dict(_load_mahadevan_crosswalk_data().get("allograph_families") or {})
+
+
+_CISI_VOL3_OCR = _ROOT / "reports" / "cisi_vol3_extracted_signs.json"
+
+
+@lru_cache(maxsize=1)
+def _load_cisi_vol3_ocr_data() -> list:
+    if not _CISI_VOL3_OCR.exists():
+        return []
+    try:
+        return json.loads(_CISI_VOL3_OCR.read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return []
+
+
+def get_cisi_vol3_ocr_results() -> list[dict]:
+    """Return raw OCR-extracted entries from CISI Vol 3 Part 3 (Phase-28).
+    Source: scripts/phase28/ocr_cisi_vol3.py with Mistral pixtral-12b-2409.
+    Each entry has page, type (seal|iconography|sign_ref), seal_id|sign_id,
+    and signs|motif|meaning fields. Note: the on-disk PDF was found to be
+    introduction/front-matter only (40 pp); seal IDs extracted are
+    LPIW/LE (Linear Proto-Iranian/Linear Elamite), NOT Indus script."""
+    return list(_load_cisi_vol3_ocr_data())
 
 
 # ── Phase-26: expanded phonetic search vocabulary ────────────────────
@@ -719,4 +760,7 @@ __all__ = [
     "get_miin_renderings",
     "get_phase27_seal_findspot_overrides",
     "get_iconographic_anchors",
+    "get_mahadevan_parpola_crosswalk",
+    "get_allograph_families",
+    "get_cisi_vol3_ocr_results",
 ]

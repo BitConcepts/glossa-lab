@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Increment this when adding a new _SCHEMA_Vn block below.
 # _apply_schema will raise if the DB is somehow ahead of the code.
-_SCHEMA_VERSION = 13
+_SCHEMA_VERSION = 14
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -208,6 +208,39 @@ CREATE INDEX IF NOT EXISTS idx_discovery_kind_fetched
     ON discovery_items(kind, fetched_at DESC);
 """
 
+_SCHEMA_V14 = """
+-- Notification recipients (managed via /api/v1/notifications)
+CREATE TABLE IF NOT EXISTS notification_recipients (
+    id          TEXT PRIMARY KEY,
+    email       TEXT NOT NULL UNIQUE,
+    label       TEXT NOT NULL DEFAULT '',
+    active      INTEGER NOT NULL DEFAULT 1,
+    created_at  TEXT NOT NULL,
+    updated_at  TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_recipients_active ON notification_recipients(active);
+
+-- Audit log of every send attempt (one row per recipient per send).
+CREATE TABLE IF NOT EXISTS notification_log (
+    id          TEXT PRIMARY KEY,
+    recipient   TEXT NOT NULL,
+    subject     TEXT NOT NULL DEFAULT '',
+    kind        TEXT NOT NULL DEFAULT '',
+    sent_at     TEXT NOT NULL,
+    item_count  INTEGER NOT NULL DEFAULT 0,
+    status      TEXT NOT NULL DEFAULT 'sent',
+    error       TEXT NOT NULL DEFAULT ''
+);
+
+CREATE INDEX IF NOT EXISTS idx_notif_log_sent ON notification_log(sent_at DESC);
+CREATE INDEX IF NOT EXISTS idx_notif_log_kind_sent ON notification_log(kind, sent_at DESC);
+
+-- Per-item dedupe so the digest emails each item at most once.
+ALTER TABLE discovery_items ADD COLUMN notified_at TEXT NOT NULL DEFAULT '';
+CREATE INDEX IF NOT EXISTS idx_discovery_notified ON discovery_items(notified_at);
+"""
+
 _SCHEMA_V12 = """
 CREATE TABLE IF NOT EXISTS canonical_signs (
     internal_id        TEXT PRIMARY KEY,
@@ -352,6 +385,28 @@ class Database:
             await self._conn.executescript(_SCHEMA_V13)
             await self._conn.execute("UPDATE _schema_version SET version = ?", (13,))
             current_version = 13
+
+        if current_version < 14:
+            # The ALTER TABLE inside V14 is non-idempotent on existing DBs that
+            # may already have notified_at; guard it so reruns are safe.
+            try:
+                await self._conn.executescript(_SCHEMA_V14)
+            except aiosqlite.OperationalError as exc:  # noqa: PERF203
+                # "duplicate column name: notified_at" — we still want the
+                # CREATE TABLE/INDEX statements before the ALTER to take.
+                if "duplicate column name" not in str(exc):
+                    raise
+                # Re-run just the CREATE TABLE/INDEX statements explicitly so
+                # the partial executescript that was rolled back above leaves
+                # a working schema behind.
+                await self._conn.executescript(
+                    "\n".join(
+                        s for s in _SCHEMA_V14.split(";")
+                        if "ALTER TABLE" not in s.upper()
+                    )
+                )
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (14,))
+            current_version = 14
 
         if current_version > _SCHEMA_VERSION:
             logger.warning(
@@ -1465,7 +1520,154 @@ class Database:
         await self._conn.commit()
         return existing
 
-    # ── Helpers ──────────────────────────────────────────────────
+    async def list_unnotified_discovery_items(
+        self,
+        *,
+        min_confidence: float = 0.0,
+        topic: str | None = None,
+        limit: int = 200,
+    ) -> list[dict[str, Any]]:
+        """Return classified items that have not yet been emailed.
+
+        Excludes items with status='dismissed' so the user-curated noise floor
+        is respected. Caller should mark them notified via
+        :meth:`mark_discovery_notified` after a successful send.
+        """
+        assert self._conn
+        q = (
+            "SELECT * FROM discovery_items "
+            "WHERE notified_at='' AND status != 'dismissed' "
+            "AND confidence >= ?"
+        )
+        args: list[Any] = [float(min_confidence)]
+        if topic:
+            q += " AND (',' || topic || ',') LIKE ?"
+            args.append(f"%,{topic},%")
+        q += " ORDER BY fetched_at DESC LIMIT ?"
+        args.append(int(limit))
+        cursor = await self._conn.execute(q, args)
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    async def mark_discovery_notified(
+        self, item_ids: list[str], *, notified_at: str,
+    ) -> int:
+        """Stamp ``notified_at`` on each id; returns the rowcount."""
+        assert self._conn
+        if not item_ids:
+            return 0
+        placeholders = ",".join("?" * len(item_ids))
+        cursor = await self._conn.execute(
+            f"UPDATE discovery_items SET notified_at=? WHERE id IN ({placeholders})",
+            (notified_at, *item_ids),
+        )
+        await self._conn.commit()
+        return cursor.rowcount or 0
+
+    # ── Notification Recipients (V14) ────────────────────────────
+
+    async def list_recipients(self, *, active_only: bool = False) -> list[dict[str, Any]]:
+        assert self._conn
+        q = "SELECT * FROM notification_recipients"
+        if active_only:
+            q += " WHERE active=1"
+        q += " ORDER BY created_at ASC"
+        cursor = await self._conn.execute(q)
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    async def get_recipient(self, rid: str) -> dict[str, Any] | None:
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM notification_recipients WHERE id=?", (rid,)
+        )
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    async def create_recipient(
+        self, *, email: str, label: str = "", active: bool = True, created_at: str,
+    ) -> dict[str, Any]:
+        assert self._conn
+        rid = uuid.uuid4().hex[:12]
+        await self._conn.execute(
+            """INSERT INTO notification_recipients
+               (id, email, label, active, created_at, updated_at)
+               VALUES (?, ?, ?, ?, ?, ?)""",
+            (rid, email.strip().lower(), label, 1 if active else 0, created_at, created_at),
+        )
+        await self._conn.commit()
+        return await self.get_recipient(rid)  # type: ignore[return-value]
+
+    async def update_recipient(
+        self,
+        rid: str,
+        *,
+        email: str | None = None,
+        label: str | None = None,
+        active: bool | None = None,
+    ) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_recipient(rid)
+        if existing is None:
+            return None
+        next_email  = (email or existing["email"]).strip().lower()
+        next_label  = label if label is not None else existing["label"]
+        next_active = (1 if active else 0) if active is not None else int(existing["active"])
+        await self._conn.execute(
+            """UPDATE notification_recipients
+               SET email=?, label=?, active=?, updated_at=datetime('now')
+               WHERE id=?""",
+            (next_email, next_label, next_active, rid),
+        )
+        await self._conn.commit()
+        return await self.get_recipient(rid)
+
+    async def delete_recipient(self, rid: str) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_recipient(rid)
+        if existing is None:
+            return None
+        await self._conn.execute(
+            "DELETE FROM notification_recipients WHERE id=?", (rid,)
+        )
+        await self._conn.commit()
+        return existing
+
+    async def append_notification_log(
+        self,
+        *,
+        recipient: str,
+        subject: str,
+        kind: str,
+        sent_at: str,
+        item_count: int = 0,
+        status: str = "sent",
+        error: str = "",
+    ) -> dict[str, Any]:
+        assert self._conn
+        lid = uuid.uuid4().hex[:12]
+        await self._conn.execute(
+            """INSERT INTO notification_log
+               (id, recipient, subject, kind, sent_at, item_count, status, error)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
+            (lid, recipient, subject, kind, sent_at, int(item_count), status, error),
+        )
+        await self._conn.commit()
+        return {
+            "id": lid, "recipient": recipient, "subject": subject, "kind": kind,
+            "sent_at": sent_at, "item_count": int(item_count),
+            "status": status, "error": error,
+        }
+
+    async def list_notification_log(
+        self, *, limit: int = 100,
+    ) -> list[dict[str, Any]]:
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM notification_log ORDER BY sent_at DESC LIMIT ?",
+            (int(limit),),
+        )
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    # ── Helpers ────────────────────────────────────
 
     @staticmethod
     def _row_to_dict(row: aiosqlite.Row) -> dict[str, Any]:

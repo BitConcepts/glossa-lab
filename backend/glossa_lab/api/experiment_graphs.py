@@ -55,6 +55,35 @@ class GraphExperimentBody(BaseModel):
 
 class RunGraphBody(BaseModel):
     kwargs: dict[str, Any] = {}
+    notify: bool = False  # send a completion email when finished
+
+
+async def _maybe_notify_experiment(
+    *, exp_id: str, exp_name: str, status: str,
+    summary: dict[str, Any], duration_s: float | None,
+) -> None:
+    """Fire an experiment_complete email; never raises."""
+    try:
+        from glossa_lab.notifications import (  # noqa: PLC0415
+            format_experiment_complete, get_notifier,
+        )
+        notifier = get_notifier()
+        if not notifier.is_configured():
+            return
+        recipients = await notifier.list_active_recipients()
+        if not recipients:
+            return
+        subject, body_text, body_html = format_experiment_complete(
+            name=exp_name, exp_id=exp_id, status=status,
+            summary=summary, duration_s=duration_s,
+        )
+        await notifier.send(
+            subject=subject, body_text=body_text, body_html=body_html,
+            kind="experiment_complete", item_count=0,
+            recipients=recipients,
+        )
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("experiment notify failed: %s", exc)
 
 
 # ── Catalog ──────────────────────────────────────────────────────────────────
@@ -119,8 +148,10 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
     nodes = d.get("nodes", [])
     edges = d.get("edges", [])
     kwargs = body.kwargs or {}
+    notify_on_done = bool(body.notify)
 
     async def _stream() -> AsyncGenerator[str, None]:
+        _t0 = datetime.now(UTC)
         # ── Detect GPU / compute device at job creation time ───────────────────
         try:
             from glossa_lab.accelerate import gpu_info as _gpu_info  # noqa: PLC0415
@@ -156,6 +187,13 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
             if job_id and db:
                 try: await db.update_job_status(job_id, "completed")
                 except Exception: pass  # noqa: BLE001
+            if notify_on_done:
+                await _maybe_notify_experiment(
+                    exp_id=exp_id, exp_name=d.get("name", exp_id),
+                    status="completed",
+                    summary={"node_count": 0, "job_id": job_id or ""},
+                    duration_s=(datetime.now(UTC) - _t0).total_seconds(),
+                )
             yield _sse({"event": "run_complete", "exp_id": exp_id,
                         "node_count": 0, "status": "complete", "result": {}, "job_id": job_id})
             return
@@ -225,6 +263,13 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
             if job_id and db:
                 try: await db.update_job_status(job_id, "failed")
                 except Exception: pass  # noqa: BLE001
+            if notify_on_done:
+                await _maybe_notify_experiment(
+                    exp_id=exp_id, exp_name=d.get("name", exp_id),
+                    status="failed",
+                    summary={"error": str(exc), "job_id": job_id or ""},
+                    duration_s=(datetime.now(UTC) - _t0).total_seconds(),
+                )
             return
 
         # Collect outputs (Output-category nodes)
@@ -280,6 +325,18 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                 )
             except Exception as _je:  # noqa: BLE001
                 logger.warning("Could not update job record: %s", _je)
+        if notify_on_done:
+            await _maybe_notify_experiment(
+                exp_id=exp_id, exp_name=d.get("name", exp_id),
+                status=final_status,
+                summary={
+                    "node_count": len(ordered),
+                    "errors": int(had_errors),
+                    "job_id": job_id or "",
+                    "compute_device": _compute_device,
+                },
+                duration_s=(datetime.now(UTC) - _t0).total_seconds(),
+            )
         yield _sse({"event": "run_complete", "exp_id": exp_id, "job_id": job_id,
                     "node_count": len(ordered), "status": "complete",
                     "result": merged, "node_results": res})

@@ -1,0 +1,36 @@
+{
+  "id": "ivc_archaeology",
+  "label": "IVC Archaeology",
+  "description": "Excavation reports, dating studies, material-culture papers and news coverage of Indus Valley Civilization sites.",
+  "keywords": [
+    "Indus Valley Civilization",
+    "Harappan civilization",
+    "Mohenjo-daro excavation",
+    "Harappa excavation",
+    "Rakhigarhi",
+    "Dholavira",
+    "Banawali",
+    "Lothal",
+    "Kalibangan",
+    "Ganweriwala",
+    "Sanauli",
+    "Meluhha trade",
+    "ASI Indus",
+    "Harappan seal",
+    "Indus DNA aDNA"
+  ],
+  "exclusions": [
+    "real estate",
+    "Indus Tower",
+    "tourism brochure"
+  ],
+  "languages": ["en"],
+  "source_overrides": {
+    "newsapi": {"page_size": 50, "sort_by": "publishedAt", "search_in": "title,description"},
+    "brave":   {"count": 20, "search_endpoint": "news"},
+    "serpapi": {"engine": "google_news", "num": 20},
+    "openalex":{"per_page": 25},
+    "arxiv":   {"max_results": 10},
+    "crossref":{"rows": 25}
+  }
+}

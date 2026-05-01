@@ -25,6 +25,7 @@ from typing import Any
 
 from glossa_lab.api.settings import get_key
 from glossa_lab.database import get_db
+from glossa_lab.notifications.graph import GraphConfig, send_mail as graph_send_mail
 
 _log = logging.getLogger("glossa_lab.notifications")
 
@@ -94,13 +95,32 @@ class _SendBatch:
 
 
 class Notifier:
-    """Wraps SMTP send + recipient lookup + audit logging."""
+    """Wraps mail send + recipient lookup + audit logging.
+
+    The notifier prefers Microsoft Graph (modern OAuth, works with Outlook 365)
+    when ``ms_graph_client_id`` AND ``ms_graph_refresh_token`` are configured.
+    Otherwise it falls back to plain SMTP via stdlib ``smtplib`` so users on
+    Gmail / SendGrid / Mailgun / etc. still work.
+
+    Both transports go through :meth:`_send_one` so audit logging,
+    error handling, and recipient enumeration are identical.
+    """
 
     def __init__(self, config: NotifierConfig | None = None) -> None:
         self.config = config or NotifierConfig.from_settings()
+        self.graph = GraphConfig.from_settings()
 
     def is_configured(self) -> bool:
-        return self.config.is_configured()
+        return self.graph.is_configured() or self.config.is_configured()
+
+    @property
+    def transport(self) -> str:
+        """Human-readable name of the transport that would be used right now."""
+        if self.graph.is_configured():
+            return "graph"
+        if self.config.is_configured():
+            return "smtp"
+        return "none"
 
     async def list_active_recipients(self) -> list[str]:
         """Return active recipient email addresses, deduped."""
@@ -142,31 +162,31 @@ class Notifier:
             _log.info("notifier: no active recipients; skipping send (kind=%s)", kind)
             return batch
 
-        if not cfg.is_configured():
+        if self.transport == "none":
             _log.warning(
-                "notifier: SMTP not configured (smtp_host/smtp_from unset); "
-                "skipping send for %d recipient(s) (kind=%s)",
+                "notifier: no transport configured (set ms_graph_* for Graph or "
+                "smtp_host/smtp_from for SMTP); skipping send for %d recipient(s) (kind=%s)",
                 len(recipients), kind,
             )
             for r in recipients:
                 batch.results.append(SendResult(recipient=r, status="skipped",
-                                                error="smtp not configured"))
+                                                error="no transport configured"))
                 await self._log_send(r, batch, status="skipped",
-                                      error="smtp not configured")
+                                      error="no transport configured")
             return batch
 
-        # Build the message once; smtplib lets us reuse it per recipient.
         for recipient in recipients:
-            msg = EmailMessage()
-            msg["From"] = cfg.sender
-            msg["To"] = recipient
-            msg["Subject"] = subject
-            msg["Message-ID"] = make_msgid(domain=(cfg.sender.split("@", 1)[-1] or "glossa-lab"))
-            msg.set_content(body_text or " ")
-            if body_html:
-                msg.add_alternative(body_html, subtype="html")
             try:
-                await asyncio.to_thread(self._smtp_send, msg, recipient)
+                if self.transport == "graph":
+                    await self._send_via_graph(
+                        recipient=recipient, subject=subject,
+                        body_text=body_text, body_html=body_html,
+                    )
+                else:
+                    await asyncio.to_thread(
+                        self._smtp_send_one,
+                        recipient, subject, body_text, body_html,
+                    )
                 batch.results.append(SendResult(recipient=recipient, status="sent"))
                 await self._log_send(recipient, batch, status="sent")
             except Exception as exc:  # noqa: BLE001 — log every failure; never raise
@@ -176,10 +196,53 @@ class Notifier:
                 await self._log_send(recipient, batch, status="failed", error=err)
         return batch
 
-    # ── Internals ───────────────────────────────────────────────────────────
+    # ── Internals ───────────────────────────────────────────────
 
-    def _smtp_send(self, msg: EmailMessage, recipient: str) -> None:
+    async def _send_via_graph(
+        self, *, recipient: str, subject: str, body_text: str, body_html: str,
+    ) -> None:
+        """Hand off to Microsoft Graph; raise on failure.
+
+        The Graph send is synchronous + I/O-bound, so we offload it to a
+        worker thread the same way SMTP does. If Microsoft rotated the
+        refresh token, we persist the new value via :func:`_save_keys`.
+        """
+        from glossa_lab.api.settings import _load_keys, _save_keys  # noqa: PLC0415
+
+        sender = self.config.sender or ""
+        result = await asyncio.to_thread(
+            graph_send_mail, self.graph,
+            sender=sender, recipient=recipient,
+            subject=subject, body_text=body_text, body_html=body_html,
+        )
+        # Persist a rotated refresh token so the next send still works.
+        if (
+            result.rotated_refresh_token
+            and result.rotated_refresh_token != self.graph.refresh_token
+        ):
+            try:
+                stored = _load_keys()
+                stored["ms_graph_refresh_token"] = result.rotated_refresh_token
+                _save_keys(stored)
+                self.graph.refresh_token = result.rotated_refresh_token
+            except Exception as exc:  # noqa: BLE001
+                _log.warning("notifier: failed to persist rotated refresh_token: %s", exc)
+        if not result.success:
+            raise RuntimeError(result.error or "Graph sendMail failed")
+
+    def _smtp_send_one(
+        self, recipient: str, subject: str, body_text: str, body_html: str,
+    ) -> None:
+        """Build + send one EmailMessage via SMTP."""
         cfg = self.config
+        msg = EmailMessage()
+        msg["From"] = cfg.sender
+        msg["To"] = recipient
+        msg["Subject"] = subject
+        msg["Message-ID"] = make_msgid(domain=(cfg.sender.split("@", 1)[-1] or "glossa-lab"))
+        msg.set_content(body_text or " ")
+        if body_html:
+            msg.add_alternative(body_html, subtype="html")
         ctx = ssl.create_default_context()
         with smtplib.SMTP(cfg.host, cfg.port, timeout=30) as s:
             s.ehlo()

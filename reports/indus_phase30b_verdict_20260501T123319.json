@@ -1,0 +1,262 @@
+{
+  "phase": "30b",
+  "timestamp_utc": "20260501T123319",
+  "scope": "Tier-1 fixes (T1.1, T1.2, T1.3) + Tier-3 Sanskrit falsification (T3)",
+  "results": {
+    "t1_1_tight_renderings": {
+      "test_id": "T1.1",
+      "test_name": "Tight rendering set: re-run A1 + A5 + A6",
+      "loose_rendering_set_size": 15,
+      "tight_rendering_set_size": 8,
+      "loose_tokens": [
+        "asz",
+        "en",
+        "il",
+        "imin",
+        "in",
+        "kakkab",
+        "li",
+        "me",
+        "men",
+        "mi",
+        "miin",
+        "min",
+        "mu",
+        "mul",
+        "na"
+      ],
+      "tight_tokens": [
+        "en",
+        "il",
+        "in",
+        "li",
+        "me",
+        "mi",
+        "mu",
+        "na"
+      ],
+      "loose_n_position_matched": 102,
+      "tight_n_position_matched": 102,
+      "loose_enmenanak_score": 7.0,
+      "tight_enmenanak_score": 5.0,
+      "loose_top_3": [
+        "Enmenanak[1]PN",
+        "Anadamutaklu[0]PN",
+        "Enheduana[1]PN"
+      ],
+      "tight_top_3": [
+        "Anadamutaklu[0]PN",
+        "Enheduana[1]PN",
+        "Enmebaragesi[1]PN"
+      ],
+      "a1_n_permutations": 10000,
+      "a1_observed_score": 5.0,
+      "a1_p_value": 0.070693,
+      "a1_null_mean": 3.1258,
+      "a1_null_p95": 5.0,
+      "a1_null_p99": 5.5,
+      "a5_n_tests": 30,
+      "a5_n_perms_per_test": 500,
+      "a5_n_significant_after_bh": 0,
+      "a5_top_pvals": [
+        {
+          "headword": "Enaʾil[0]PN",
+          "score": 4.0,
+          "icount": 1,
+          "periods": [
+            "Early Dynastic IIIb"
+          ],
+          "p_value": 0.001996,
+          "bh_threshold_q05": 0.001667,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Ninurtagamil[0]PN",
+          "score": 4.5,
+          "icount": 1,
+          "periods": [
+            "Old Babylonian"
+          ],
+          "p_value": 0.005988,
+          "bh_threshold_q05": 0.003333,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Enmebaragesi[1]PN",
+          "score": 5.0,
+          "icount": 1,
+          "periods": [
+            "Old Babylonian"
+          ],
+          "p_value": 0.00998,
+          "bh_threshold_q05": 0.005,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Enmegalanak[1]PN",
+          "score": 5.0,
+          "icount": 1,
+          "periods": [
+            "Old Babylonian"
+          ],
+          "p_value": 0.011976,
+          "bh_threshold_q05": 0.006667,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Anadamutaklu[0]PN",
+          "score": 6.5,
+          "icount": 1,
+          "periods": [
+            "Old Babylonian"
+          ],
+          "p_value": 0.01996,
+          "bh_threshold_q05": 0.008333,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Enheduana[1]PN",
+          "score": 6.5,
+          "icount": 12,
+          "periods": [
+            "Old Akkadian",
+            "Old Babylonian"
+          ],
+          "p_value": 0.02994,
+          "bh_threshold_q05": 0.01,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Ayahili[1]PN",
+          "score": 3.5,
+          "icount": 1,
+          "periods": [
+            "Old Babylonian"
+          ],
+          "p_value": 0.037924,
+          "bh_threshold_q05": 0.011667,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Unapšen[1]PN",
+          "score": 4.5,
+          "icount": 5,
+          "periods": [
+            "Ur III"
+          ],
+          "p_value": 0.045908,
+          "bh_threshold_q05": 0.013333,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Enmeteanki[0]PN",
+          "score": 4.5,
+          "icount": 1,
+          "periods": [
+            "Old Babylonian"
+          ],
+          "p_value": 0.053892,
+          "bh_threshold_q05": 0.015,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Enmenanak[1]PN",
+          "score": 5.0,
+          "icount": 4,
+          "periods": [
+            "Old Akkadian"
+          ],
+          "p_value": 0.067864,
+          "bh_threshold_q05": 0.016667,
+          "significant_at_q05": false
+        }
+      ],
+      "a6_ur3_n": 643,
+      "a6_ur3_position_match_rate": 0.0669,
+      "a6_obab_n": 324,
+      "a6_obab_position_match_rate": 0.1327,
+      "a6_rate_delta_pp": 6.5842,
+      "verdict": "T1.1 tightened renderings: position-match rate dropped from 102 (loose, 15 tokens) to 102 (tight, 8 tokens). Enmenanak score went from 7.0 -> 5.0. A1 p-value (tight) = 0.0707. A5 BH-FDR survivors (tight) = 0/30. A6 Ur III rate 6.69% vs OBab 13.27% (delta +6.58pp).",
+      "_elapsed_seconds": 0.24
+    },
+    "t1_2_meluhha_v2": {
+      "test_id": "T1.2",
+      "test_name": "A3-v2 token-level Meluhha co-occurrence (tight renderings)",
+      "n_position_matched_input": 102,
+      "n_meluhha_tablets_searched": 180,
+      "n_with_meluhha_cooccurrence": 0,
+      "fraction_kept": 0.0,
+      "survivors": [],
+      "min_match_length": 3,
+      "verdict": "T1.2 (A3-v2) token-level Meluhha co-occurrence: of 102 position-matched PNs (tight renderings), 0 have a >=3-segment contiguous match in at least one of the 180 Meluhha-mentioning tablets. Zero substantive co-occurrences. Either (a) Phase-29 candidates are not Meluhhan names, or (b) the corpus does not contain them, or (c) the matcher needs further relaxation.",
+      "_elapsed_seconds": 0.16
+    },
+    "t1_3_signid_audit": {
+      "test_id": "T1.3",
+      "test_name": "A8-v2 sign-ID alignment audit",
+      "m77_distinct_signs": 64,
+      "m77_total_tokens": 5361,
+      "phoneme_map_entries": 33,
+      "crosswalk_entries": 25,
+      "direct_overlap_count": 2,
+      "direct_overlap_signs": [
+        "147",
+        "47"
+      ],
+      "via_crosswalk_overlap_count": 2,
+      "via_crosswalk_overlap_signs": [
+        "147",
+        "47"
+      ],
+      "full_overlap_count": 2,
+      "full_overlap_signs": [
+        "147",
+        "47"
+      ],
+      "m77_tokens_with_phoneme_coverage": 546,
+      "phoneme_coverage_token_fraction": 0.1018,
+      "m77_signs_with_no_phoneme": 62,
+      "verdict": "T1.3 sign-ID audit: M77 corpus has 64 distinct signs (5361 tokens). Phoneme map has 33 entries. Direct ID overlap = 2; via crosswalk = 2; UNION = 2. Phoneme coverage of M77 token frequency = 10.18%. This confirms the Phase-30a A8 finding: even with proper sign-ID alignment, only 2 signs in the M77 corpus have a phoneme reading. Phase-30a A8 cannot be meaningfully re-run until the phoneme map expands to cover more M77 corpus signs (P30-B2 Wells 2015 + P30-D1/D2 Wells/Fuls cross-cluster).",
+      "_elapsed_seconds": 0.0
+    },
+    "t3_yajnadevam": {
+      "test_id": "T3",
+      "test_name": "Yajnadevam Sanskrit vs Parpola Dravidian falsification (E7 head-to-head)",
+      "n_perms_per_map": 10000,
+      "n_anchors": 12,
+      "parpola_dravidian": {
+        "observed_anchor_score": 24.5,
+        "n_perms": 10000,
+        "null_mean": 1.9252,
+        "null_p50": 0.0,
+        "null_p95": 8.0,
+        "null_p99": 11.0,
+        "null_max": 18.0,
+        "p_value_one_sided": 0.0001,
+        "rank_percentile": 100.0
+      },
+      "yajnadevam_sanskrit": {
+        "observed_anchor_score": 17.5,
+        "n_perms": 10000,
+        "null_mean": 1.2278,
+        "null_p50": 0.0,
+        "null_p95": 6.0,
+        "null_p99": 8.0,
+        "null_max": 14.0,
+        "p_value_one_sided": 0.0001,
+        "rank_percentile": 100.0
+      },
+      "score_difference_parpola_minus_yajnadevam": 7.0,
+      "outcome": "PARPOLA EDGE: Both maps significant but Dravidian scores higher (24.5 vs 17.5). Both hypotheses receive non-trivial iconographic-anchor support; Parpola's edge suggests Dravidian-specific homonymies (miin = fish/star, vaTa = banyan/north, piLLai = squirrel/child) ARE doing real work.",
+      "verdict": "T3 falsification: Parpola Dravidian map observed anchor score = 24.5 (p=0.0001); Yajnadevam Sanskrit map observed = 17.5 (p=0.0001). Score difference = +7.00 in favor of Parpola. PARPOLA EDGE: Both maps significant but Dravidian scores higher (24.5 vs 17.5). Both hypotheses receive non-trivial iconographic-anchor support; Parpola's edge suggests Dravidian-specific homonymies (miin = fish/star, vaTa = banyan/north, piLLai = squirrel/child) ARE doing real work.",
+      "_elapsed_seconds": 0.66
+    }
+  },
+  "decision_summary": [
+    "T1.1 PARTIAL: tight renderings drop position-match rate from 102 to 102; A5 still 0/30. A1 p=0.070693.",
+    "T1.2 FAIL: 0 PNs co-occur with Meluhha keyword even with token-level matching.",
+    "T1.3 CONFIRMS DATA LIMIT: M77 ↔ phoneme-map overlap = 2 (data-starved).",
+    "T3: PARPOLA EDGE: Both maps significant but Dravidian scores higher (24.5 vs 17.5). Both hypotheses receive non-trivial iconographic-anchor support; Parpola's edge suggests Dravidian-specific homonymies (miin = fish/star, vaTa = banyan/north, piLLai = squirrel/child) ARE doing real work."
+  ],
+  "next_action": "PROCEED CAUTIOUSLY: Parpola wins Sanskrit head-to-head (score 24.5 vs 17.5, p=0.0001), but Tier-1 fixes did not fully restore A5/A3 power. Phase-30c should focus on Tier-2 corpus expansion (Fuls + Wells), then re-run Phase-30a tests at expanded scale."
+}

@@ -13,16 +13,27 @@ Endpoints (mounted at ``/api/v1/notifications``):
 
 from __future__ import annotations
 
+import asyncio
 import logging
 import re
+import time
+import uuid
 from datetime import datetime, timezone
 from typing import Any
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
+from glossa_lab.api.settings import _load_keys, _save_keys, get_key
 from glossa_lab.database import get_db
 from glossa_lab.notifications import format_test, get_notifier
+from glossa_lab.notifications.graph import (
+    GraphAuthPending,
+    GraphConfig,
+    GraphError,
+    poll_device_flow,
+    start_device_flow,
+)
 from glossa_lab.notifications.smtp import mask_email
 
 router = APIRouter(prefix="/api/v1/notifications", tags=["notifications"])
@@ -134,6 +145,7 @@ async def notifier_status() -> dict[str, Any]:
     """Lightweight health/config snapshot used by the Settings UI."""
     notifier = get_notifier()
     cfg = notifier.config
+    graph = notifier.graph
     db = get_db()
     n_active = 0
     n_total = 0
@@ -143,15 +155,141 @@ async def notifier_status() -> dict[str, Any]:
         n_active = sum(1 for r in rows if r.get("active"))
     return {
         "configured": notifier.is_configured(),
+        "transport": notifier.transport,  # "graph" | "smtp" | "none"
         "host": cfg.host,
         "port": cfg.port,
         "from": cfg.sender,
         "use_tls": cfg.use_tls,
         "username_set": bool(cfg.username),
         "password_set": bool(cfg.password),
+        "graph_configured": graph.is_configured(),
+        "graph_client_id_set": bool(graph.client_id),
+        "graph_tenant": graph.tenant,
         "recipients_total": n_total,
         "recipients_active": n_active,
     }
+
+
+# ── Microsoft Graph device-flow endpoints ───────────────────────────
+# In-memory store of pending device flows. Keyed by an opaque session id
+# the frontend gets back from POST /graph/start. Entries auto-expire when
+# the underlying device_code does (~15 min).
+
+_pending_graph_flows: dict[str, dict[str, Any]] = {}
+_pending_graph_lock = asyncio.Lock()
+
+
+async def _purge_expired_graph_sessions() -> None:
+    now = time.time()
+    async with _pending_graph_lock:
+        for sid in list(_pending_graph_flows):
+            if _pending_graph_flows[sid].get("expires_at", 0) < now:
+                _pending_graph_flows.pop(sid, None)
+
+
+@router.post("/graph/start")
+async def graph_start() -> dict[str, Any]:
+    """Begin Microsoft Graph device-code flow.
+
+    The user pastes the returned ``user_code`` at ``verification_uri`` in
+    any browser, signs in to their Outlook 365 account, and approves the
+    Mail.Send + offline_access scopes. The frontend polls /graph/poll with
+    the returned ``session_id`` until ``status == "success"``.
+    """
+    client_id = (get_key("ms_graph_client_id") or "").strip()
+    tenant = (get_key("ms_graph_tenant_id") or "common").strip() or "common"
+    if not client_id:
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                "ms_graph_client_id is not set. Register a public-client app "
+                "in entra.microsoft.com (Delegated Mail.Send + offline_access) "
+                "and paste the Application (client) ID into Settings."
+            ),
+        )
+    try:
+        flow = await asyncio.to_thread(start_device_flow, client_id, tenant)
+    except GraphError as exc:
+        raise HTTPException(status_code=502, detail=str(exc)) from exc
+
+    sid = uuid.uuid4().hex
+    await _purge_expired_graph_sessions()
+    async with _pending_graph_lock:
+        _pending_graph_flows[sid] = {
+            "client_id": client_id,
+            "tenant": tenant,
+            "device_code": flow["device_code"],
+            "expires_at": time.time() + int(flow.get("expires_in", 900)),
+            "interval": int(flow.get("interval", 5)),
+            "status": "pending",
+            "error": "",
+        }
+
+    return {
+        "session_id": sid,
+        "user_code": flow["user_code"],
+        "verification_uri": flow["verification_uri"],
+        "expires_in": int(flow.get("expires_in", 900)),
+        "interval": int(flow.get("interval", 5)),
+        "message": flow.get("message", ""),
+    }
+
+
+@router.post("/graph/poll")
+async def graph_poll(body: dict[str, Any]) -> dict[str, Any]:
+    """Poll a pending device-code flow.
+
+    Returns ``{status: "pending"|"success"|"failed"|"expired"}``. On
+    success, the refresh_token is persisted and the session is deleted.
+    """
+    sid = (body or {}).get("session_id") or ""
+    async with _pending_graph_lock:
+        state = _pending_graph_flows.get(sid)
+    if not state:
+        raise HTTPException(status_code=404, detail="Session not found or expired")
+
+    if state["status"] in ("success", "failed", "expired"):
+        return {"status": state["status"], "error": state.get("error", "")}
+
+    if time.time() > state["expires_at"]:
+        async with _pending_graph_lock:
+            state["status"] = "expired"
+        return {"status": "expired", "error": "User did not approve in time"}
+
+    try:
+        bundle = await asyncio.to_thread(
+            poll_device_flow,
+            state["client_id"], state["tenant"], state["device_code"],
+        )
+    except GraphAuthPending:
+        return {"status": "pending"}
+    except GraphError as exc:
+        async with _pending_graph_lock:
+            state["status"] = "failed"
+            state["error"] = str(exc)
+        return {"status": "failed", "error": str(exc)}
+
+    refresh_token = bundle.get("refresh_token")
+    if not refresh_token:
+        return {"status": "failed", "error": "no refresh_token returned"}
+    # Persist via the shared keys file so the Notifier picks it up next call.
+    stored = _load_keys()
+    stored["ms_graph_refresh_token"] = refresh_token
+    _save_keys(stored)
+    async with _pending_graph_lock:
+        state["status"] = "success"
+        # Drop the session immediately — we're done.
+        _pending_graph_flows.pop(sid, None)
+    return {"status": "success"}
+
+
+@router.post("/graph/disconnect")
+async def graph_disconnect() -> dict[str, Any]:
+    """Clear the stored refresh_token so Graph stops being used."""
+    stored = _load_keys()
+    had = bool(stored.pop("ms_graph_refresh_token", ""))
+    _save_keys(stored)
+    return {"disconnected": had}
 
 
 # ── Test send ────────────────────────────────────────────────────────────────

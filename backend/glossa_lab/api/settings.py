@@ -42,6 +42,19 @@ KNOWN_KEYS = [
     "smtp_password",
     "smtp_from",
     "smtp_use_tls",
+    # Microsoft Graph (Outlook 365 OAuth) — set via the Connect Outlook 365
+    # button in the Notifications panel, which runs the device-code flow.
+    # ``ms_graph_client_id`` is the Application (client) ID from the Azure
+    # app registration; ``ms_graph_tenant_id`` defaults to ``common`` so
+    # both consumer and work/school accounts work; ``ms_graph_refresh_token``
+    # is written by the OAuth callback after the user approves consent.
+    "ms_graph_client_id",
+    "ms_graph_tenant_id",
+    "ms_graph_refresh_token",
+    # Discovery scheduler auto-start. "1" = run fetch+mine+digest every 24h
+    # automatically when the backend lifespan boots. Surfaced in the
+    # Notifications panel as a toggle so the user doesn't need shell access.
+    "discovery_daily",
 ]
 
 KNOWN_PROVIDERS = ["openai", "anthropic", "google", "mistral", "ollama"]

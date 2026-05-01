@@ -23,23 +23,42 @@ import {
 } from "../api";
 import { useToast } from "../hooks/useToast";
 
-const KEY_LABELS: Record<string, { label: string; hint: string; priority?: boolean }> = {
+const KEY_LABELS: Record<string, { label: string; hint: string; priority?: boolean; verifiable?: boolean }> = {
   mistral_api_key: {
     label: "Mistral API Key",
     hint: "Required for OCR via pixtral-12b. Get yours at console.mistral.ai",
     priority: true,
+    verifiable: true,
   },
   openai_api_key: {
     label: "OpenAI API Key",
     hint: "For GPT-4 vision, embeddings, and agentic tasks.",
+    verifiable: true,
   },
   anthropic_api_key: {
     label: "Anthropic API Key",
     hint: "For Claude vision and reasoning tasks.",
+    verifiable: true,
   },
   google_api_key: {
     label: "Google API Key",
     hint: "For Gemini vision and multimodal tasks.",
+    verifiable: true,
+  },
+  // ── Discovery / search providers ─────────────────────────────────────────
+  // Used by the continuous-discovery engine. No verify endpoint yet, so the
+  // Verify button is suppressed for these keys.
+  serp_api_key: {
+    label: "SerpAPI Key",
+    hint: "Discovery: Google News + Scholar via serpapi.com. Get yours at serpapi.com.",
+  },
+  news_api_key: {
+    label: "NewsAPI Key",
+    hint: "Discovery: latest articles via newsapi.org.",
+  },
+  brave_search_api_key: {
+    label: "Brave Search Key",
+    hint: "Discovery: web + news search via api.search.brave.com.",
   },
 };
 
@@ -756,12 +775,13 @@ export function SettingsView() {
           It is also synced to the backend so terminal scripts (OCR, experiments) can use it.
         </p>
 
-        {Object.entries(KEY_LABELS).map(([key, { label, hint, priority }]) => {
+        {Object.entries(KEY_LABELS).map(([key, { label, hint, priority, verifiable }]) => {
           const keyIsSet = isSet(key);
           const keySrc = source(key);
           const envOnly = keySrc === "env";
           const draft = drafts[key] ?? "";
           const msg = savedMsg[key];
+          const canVerify = verifiable ?? false;
 
           return (
             <div key={key} style={{
@@ -805,19 +825,21 @@ export function SettingsView() {
                 >
                   {saving ? "…" : "Save"}
                 </button>
-                <button
-                  onClick={() => handleVerify(key)}
-                  disabled={verifying[key] || (!keyIsSet && !draft)}
-                  title={(keyIsSet || draft) ? "Test this key against the provider API" : "Save a key first"}
-                  style={{
-                    ...btnStyle,
-                    padding: "6px 14px",
-                    background: "#6b7280",
-                    opacity: (keyIsSet || draft) ? 1 : 0.4,
-                  }}
-                >
-                  {verifying[key] ? "Testing…" : "Verify"}
-                </button>
+                {canVerify && (
+                  <button
+                    onClick={() => handleVerify(key)}
+                    disabled={verifying[key] || (!keyIsSet && !draft)}
+                    title={(keyIsSet || draft) ? "Test this key against the provider API" : "Save a key first"}
+                    style={{
+                      ...btnStyle,
+                      padding: "6px 14px",
+                      background: "#6b7280",
+                      opacity: (keyIsSet || draft) ? 1 : 0.4,
+                    }}
+                  >
+                    {verifying[key] ? "Testing…" : "Verify"}
+                  </button>
+                )}
                 {keyIsSet && (
                   <button onClick={() => handleClear(key)} style={{ ...iconBtnStyle, color: "#dc2626" }} title="Clear">
                     ✕

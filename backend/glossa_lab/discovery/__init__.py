@@ -24,9 +24,29 @@ from glossa_lab.discovery.store import (
     make_item_id,
 )
 
+# Phase D — mining + LLM client. Re-exported for ergonomic call sites:
+#     from glossa_lab.discovery import LLMClient, mine_pending
+from glossa_lab.discovery.llm import LLMClient, LLMError
+from glossa_lab.discovery.mine import (
+    Classification,
+    MineSummary,
+    classify_item,
+    link_entities,
+    mine_item,
+    mine_pending,
+)
+
 __all__ = [
     "DiscoveryItem",
     "RawItem",
     "canonical_url",
     "make_item_id",
+    "LLMClient",
+    "LLMError",
+    "Classification",
+    "MineSummary",
+    "classify_item",
+    "link_entities",
+    "mine_item",
+    "mine_pending",
 ]

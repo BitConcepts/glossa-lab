@@ -1434,3 +1434,113 @@ export async function* streamAG2Chat(
     reader.releaseLock();
   }
 }
+
+// ── Discovery (continuous-discovery engine) ───────────────────────────────
+
+export interface DiscoveryLink {
+  kind: string;          // sign | dedr | site | provider | ...
+  target_id: string;
+  scheme?: string;       // generic | mahadevan | parpola | fuls (for sign links)
+  label?: string;
+}
+
+export interface DiscoveryItem {
+  id: string;
+  title: string;
+  url: string;
+  source: string;
+  topic: string;         // CSV of topic ids
+  published_at: string;
+  fetched_at: string;
+  lang: string;
+  raw_json: Record<string, unknown>;
+  summary: string;
+  kind: string;          // hypothesis | finding | study | tablet | review | tooling | other
+  confidence: number;
+  links: DiscoveryLink[];
+  status: "new" | "reviewed" | "saved" | "dismissed" | string;
+  notes: string;
+}
+
+export interface DiscoveryTopic {
+  id: string;
+  label: string;
+  description: string;
+  keywords: string[];
+  exclusions: string[];
+  languages: string[];
+}
+
+export interface DiscoverySource {
+  source: string;
+  requires: string[];
+  configured: boolean;
+  disabled_reason: string;
+}
+
+export interface DiscoveryListResponse {
+  items: DiscoveryItem[];
+  limit: number;
+  offset: number;
+}
+
+export interface DiscoveryJobAck {
+  job_id: string;
+  status: string;
+  message: string;
+}
+
+export interface DiscoveryListParams {
+  topic?: string;
+  kind?: string;
+  status?: string;
+  since?: string;
+  limit?: number;
+  offset?: number;
+}
+
+function _qs(params: Record<string, unknown>): string {
+  const usp = new URLSearchParams();
+  for (const [k, v] of Object.entries(params)) {
+    if (v === undefined || v === null || v === "") continue;
+    usp.set(k, String(v));
+  }
+  const s = usp.toString();
+  return s ? `?${s}` : "";
+}
+
+export const listDiscoveryItems = (
+  params: DiscoveryListParams = {},
+): Promise<DiscoveryListResponse> =>
+  request("GET", `/discovery/items${_qs(params as Record<string, unknown>)}`);
+
+export const getDiscoveryItem = (id: string): Promise<DiscoveryItem> =>
+  request("GET", `/discovery/items/${encodeURIComponent(id)}`);
+
+export const updateDiscoveryStatus = (
+  id: string,
+  status: string,
+  notes?: string,
+): Promise<DiscoveryItem> =>
+  request("POST", `/discovery/items/${encodeURIComponent(id)}/status`, { status, notes });
+
+export const listDiscoveryTopics = (): Promise<{ topics: DiscoveryTopic[] }> =>
+  request("GET", "/discovery/topics");
+
+export const listDiscoverySources = (): Promise<{ sources: DiscoverySource[] }> =>
+  request("GET", "/discovery/sources");
+
+export const getDiscoveryStats = (
+  group: "status" | "kind" | "topic" | "source" = "status",
+): Promise<{ group: string; counts: Record<string, number> }> =>
+  request("GET", `/discovery/stats?group=${group}`);
+
+export const startDiscoveryFetch = (body: {
+  topics?: string[]; sources?: string[]; since_iso?: string;
+}): Promise<DiscoveryJobAck> =>
+  request("POST", "/discovery/fetch", body);
+
+export const startDiscoveryMine = (body: {
+  topic?: string; limit?: number;
+}): Promise<DiscoveryJobAck> =>
+  request("POST", "/discovery/mine", body);

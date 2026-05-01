@@ -1,0 +1,11 @@
+{
+  "test_id": "P30-G8",
+  "test_name": "Cohen's d effect size for Enmenanak vs random PN baseline",
+  "n_pns": 1222,
+  "observed_score": 7.0,
+  "baseline_mean": 1.3691,
+  "baseline_sd": 0.9055,
+  "cohens_d": 6.2189,
+  "verdict": "P30-G8: Enmenanak score 7.0 vs corpus baseline (mean=1.3691, sd=0.9055, n=1222); Cohen's d = 6.2189 (large).",
+  "_elapsed_seconds": 0.0
+}

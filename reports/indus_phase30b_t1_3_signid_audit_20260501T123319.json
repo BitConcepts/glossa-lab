@@ -1,0 +1,28 @@
+{
+  "test_id": "T1.3",
+  "test_name": "A8-v2 sign-ID alignment audit",
+  "m77_distinct_signs": 64,
+  "m77_total_tokens": 5361,
+  "phoneme_map_entries": 33,
+  "crosswalk_entries": 25,
+  "direct_overlap_count": 2,
+  "direct_overlap_signs": [
+    "147",
+    "47"
+  ],
+  "via_crosswalk_overlap_count": 2,
+  "via_crosswalk_overlap_signs": [
+    "147",
+    "47"
+  ],
+  "full_overlap_count": 2,
+  "full_overlap_signs": [
+    "147",
+    "47"
+  ],
+  "m77_tokens_with_phoneme_coverage": 546,
+  "phoneme_coverage_token_fraction": 0.1018,
+  "m77_signs_with_no_phoneme": 62,
+  "verdict": "T1.3 sign-ID audit: M77 corpus has 64 distinct signs (5361 tokens). Phoneme map has 33 entries. Direct ID overlap = 2; via crosswalk = 2; UNION = 2. Phoneme coverage of M77 token frequency = 10.18%. This confirms the Phase-30a A8 finding: even with proper sign-ID alignment, only 2 signs in the M77 corpus have a phoneme reading. Phase-30a A8 cannot be meaningfully re-run until the phoneme map expands to cover more M77 corpus signs (P30-B2 Wells 2015 + P30-D1/D2 Wells/Fuls cross-cluster).",
+  "_elapsed_seconds": 0.0
+}

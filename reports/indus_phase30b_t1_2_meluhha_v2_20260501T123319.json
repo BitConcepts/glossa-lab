@@ -1,0 +1,12 @@
+{
+  "test_id": "T1.2",
+  "test_name": "A3-v2 token-level Meluhha co-occurrence (tight renderings)",
+  "n_position_matched_input": 102,
+  "n_meluhha_tablets_searched": 180,
+  "n_with_meluhha_cooccurrence": 0,
+  "fraction_kept": 0.0,
+  "survivors": [],
+  "min_match_length": 3,
+  "verdict": "T1.2 (A3-v2) token-level Meluhha co-occurrence: of 102 position-matched PNs (tight renderings), 0 have a >=3-segment contiguous match in at least one of the 180 Meluhha-mentioning tablets. Zero substantive co-occurrences. Either (a) Phase-29 candidates are not Meluhhan names, or (b) the corpus does not contain them, or (c) the matcher needs further relaxation.",
+  "_elapsed_seconds": 0.16
+}

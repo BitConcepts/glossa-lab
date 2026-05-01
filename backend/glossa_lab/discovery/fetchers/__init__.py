@@ -1,0 +1,202 @@
+"""Fetcher registry + orchestration.
+
+Public surface:
+* :func:`available_fetchers` — return the list of all registered fetchers
+  (configured or not), along with their disabled-reason if a key is missing.
+* :func:`run_topic`          — fetch one topic across the requested sources
+  and persist results via :mod:`glossa_lab.discovery.store`.
+* :func:`run_all`            — fetch every topic profile shipped with the
+  package across every configured source.
+"""
+
+from __future__ import annotations
+
+import asyncio
+import logging
+from datetime import datetime
+from typing import Iterable
+
+from glossa_lab.discovery import store
+from glossa_lab.discovery.fetchers.arxiv import ArxivFetcher
+from glossa_lab.discovery.fetchers.base import (
+    Fetcher,
+    FetcherError,
+    TopicProfile,
+    list_topics,
+    load_topic,
+    now_utc,
+    to_iso,
+)
+from glossa_lab.discovery.fetchers.brave import BraveFetcher
+from glossa_lab.discovery.fetchers.crossref import CrossrefFetcher
+from glossa_lab.discovery.fetchers.newsapi import NewsAPIFetcher
+from glossa_lab.discovery.fetchers.openalex import OpenAlexFetcher
+from glossa_lab.discovery.fetchers.serpapi import SerpAPIFetcher
+from glossa_lab.discovery.store import RawItem
+
+_log = logging.getLogger("glossa_lab.discovery.fetchers")
+
+# Order matters: API-key sources first (most authoritative for news/scholar),
+# keyless academic sources after.
+_REGISTRY: tuple[type[Fetcher], ...] = (
+    NewsAPIFetcher,
+    BraveFetcher,
+    SerpAPIFetcher,
+    OpenAlexFetcher,
+    ArxivFetcher,
+    CrossrefFetcher,
+)
+
+
+def available_fetchers() -> list[dict[str, object]]:
+    """Return a status snapshot for each registered fetcher."""
+    out: list[dict[str, object]] = []
+    for cls in _REGISTRY:
+        f = cls()
+        out.append(
+            {
+                "source": f.source,
+                "requires": list(f.requires),
+                "configured": f.is_configured(),
+                "disabled_reason": f.disabled_reason(),
+            }
+        )
+    return out
+
+
+def _build_fetchers(only_sources: Iterable[str] | None) -> list[Fetcher]:
+    wanted = {s.lower() for s in only_sources} if only_sources else None
+    instances: list[Fetcher] = []
+    for cls in _REGISTRY:
+        f = cls()
+        if wanted is not None and f.source not in wanted:
+            continue
+        if not f.is_configured():
+            _log.info(
+                "fetcher %s skipped (%s)",
+                f.source,
+                f.disabled_reason() or "not configured",
+            )
+            continue
+        instances.append(f)
+    return instances
+
+
+async def run_topic(
+    topic: TopicProfile | str,
+    *,
+    since: datetime | None = None,
+    only_sources: Iterable[str] | None = None,
+) -> dict[str, object]:
+    """Fetch a topic across all configured sources and persist results.
+
+    Returns an aggregate summary suitable for embedding in a CLI report or
+    in a Job result row.
+    """
+    profile = load_topic(topic) if isinstance(topic, str) else topic
+    fetchers = _build_fetchers(only_sources)
+    if not fetchers:
+        return {
+            "topic": profile.id,
+            "since": to_iso(since),
+            "fetchers": [],
+            "fetched": 0,
+            "new": 0,
+            "merged": 0,
+            "errors": 0,
+        }
+
+    fetched_at = to_iso(now_utc())
+    fetched_total = 0
+    new_total = 0
+    merged_total = 0
+    errors = 0
+    per_source: list[dict[str, object]] = []
+
+    async def _one(f: Fetcher) -> None:
+        nonlocal fetched_total, new_total, merged_total, errors
+        s_fetched = 0
+        s_new = 0
+        s_merged = 0
+        s_error: str | None = None
+        try:
+            items = list(await f.fetch(profile, since=since))
+            for item in items:
+                created = await store.upsert_raw(item, fetched_at=fetched_at)
+                s_fetched += 1
+                if created:
+                    s_new += 1
+                else:
+                    s_merged += 1
+        except FetcherError as exc:
+            s_error = f"FetcherError: {exc}"
+        except Exception as exc:  # noqa: BLE001 — keep one bad source from killing the run
+            s_error = f"{type(exc).__name__}: {exc}"
+            _log.warning("fetcher %s raised %s", f.source, exc)
+
+        fetched_total += s_fetched
+        new_total += s_new
+        merged_total += s_merged
+        if s_error:
+            errors += 1
+        per_source.append(
+            {
+                "source": f.source,
+                "fetched": s_fetched,
+                "new": s_new,
+                "merged": s_merged,
+                "error": s_error,
+            }
+        )
+
+    # Run providers in parallel; one slow upstream shouldn't gate the others.
+    await asyncio.gather(*[_one(f) for f in fetchers])
+
+    return {
+        "topic": profile.id,
+        "since": to_iso(since),
+        "fetched_at": fetched_at,
+        "fetchers": per_source,
+        "fetched": fetched_total,
+        "new": new_total,
+        "merged": merged_total,
+        "errors": errors,
+    }
+
+
+async def run_all(
+    *,
+    since: datetime | None = None,
+    only_sources: Iterable[str] | None = None,
+    only_topics: Iterable[str] | None = None,
+) -> dict[str, object]:
+    """Fetch every topic profile shipped with the package."""
+    topics = list_topics()
+    if only_topics is not None:
+        wanted = {t.lower() for t in only_topics}
+        topics = [t for t in topics if t.id.lower() in wanted]
+    summaries = []
+    for t in topics:
+        summaries.append(await run_topic(t, since=since, only_sources=only_sources))
+    agg = {
+        "topics_run": [t.id for t in topics],
+        "results": summaries,
+        "fetched": sum(int(s.get("fetched", 0)) for s in summaries),
+        "new": sum(int(s.get("new", 0)) for s in summaries),
+        "merged": sum(int(s.get("merged", 0)) for s in summaries),
+        "errors": sum(int(s.get("errors", 0)) for s in summaries),
+    }
+    return agg
+
+
+__all__ = [
+    "available_fetchers",
+    "run_topic",
+    "run_all",
+    "Fetcher",
+    "TopicProfile",
+    "FetcherError",
+    "RawItem",
+    "load_topic",
+    "list_topics",
+]

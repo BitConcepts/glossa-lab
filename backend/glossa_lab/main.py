@@ -23,6 +23,7 @@ from glossa_lab.api.catalog import router as catalog_router
 from glossa_lab.api.cgsa import router as cgsa_router
 from glossa_lab.api.collab import router as collab_router
 from glossa_lab.api.corpus_catalogue import router as corpus_catalogue_router
+from glossa_lab.api.discovery import router as discovery_router
 from glossa_lab.api.env import router as env_router
 from glossa_lab.api.experiment_graphs import router as experiment_graphs_router
 from glossa_lab.api.experiments import router as experiments_router
@@ -158,14 +159,25 @@ async def lifespan(app: FastAPI):
     # Start pipeline engine in background
     engine_task = asyncio.create_task(run_engine_loop())
 
+    # Optional: start the discovery scheduler when GLOSSA_DISCOVERY_DAILY=1.
+    from glossa_lab.discovery.scheduler import start_scheduler  # noqa: PLC0415
+
+    discovery_task = start_scheduler()
+
     _start_time = time.time()
     yield
-    # Shutdown: stop engine, close database, flush logs
+    # Shutdown: stop engine + scheduler, close database, flush logs
     engine_task.cancel()
     try:
         await engine_task
     except asyncio.CancelledError:
         pass
+    if discovery_task is not None:
+        discovery_task.cancel()
+        try:
+            await discovery_task
+        except asyncio.CancelledError:
+            pass
     await close_db()
     _start_time = 0.0
 
@@ -226,6 +238,7 @@ def create_app() -> FastAPI:
     application.include_router(cas_models_router, prefix="/api/v1")
     application.include_router(ag2_chat_router, prefix="/api/v1")
     application.include_router(cgsa_router, prefix="/api/v1")
+    application.include_router(discovery_router)  # already prefixed at /api/v1/discovery
 
     # Serve built frontend
     # Skipped silently in dev if the dist directory does not yet exist.

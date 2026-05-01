@@ -1,0 +1,1027 @@
+{
+  "test_id": "T1.2-v3",
+  "test_name": "Tiered Meluhha co-occurrence matcher (3-seg / 2-seg / bag)",
+  "n_total_pns_searched": 1222,
+  "n_meluhha_tablets_searched": 180,
+  "n_pos_matched_input": 3,
+  "n_tier_a_3seg_contiguous": 21,
+  "n_tier_b_2seg_contiguous": 55,
+  "n_tier_c_bag_70pct": 444,
+  "n_with_any_tier_hit": 444,
+  "top_results": [
+    {
+      "headword": "Name[1]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "best_form": "na-me",
+      "n_segs": 2,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 2,
+      "tier_c_bag_hits": 116,
+      "tier_a_examples": [],
+      "tier_b_examples": [
+        {
+          "p_number": "P394796",
+          "period": "Neo-Assyrian (ca. 911-612 BC)"
+        },
+        {
+          "p_number": "P462884",
+          "period": "Neo-Assyrian (ca. 911-612 BC)"
+        }
+      ],
+      "tier_c_examples": [
+        {
+          "p_number": "P102519",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P107404",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P108448",
+          "overlap": 1.0
+        }
+      ]
+    },
+    {
+      "headword": "Dayyati[1]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "best_form": "da-a-a-ti",
+      "n_segs": 4,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 0,
+      "tier_c_bag_hits": 103,
+      "tier_a_examples": [],
+      "tier_b_examples": [],
+      "tier_c_examples": [
+        {
+          "p_number": "P102519",
+          "overlap": 0.75
+        },
+        {
+          "p_number": "P108484",
+          "overlap": 0.75
+        },
+        {
+          "p_number": "P110238",
+          "overlap": 1.0
+        }
+      ]
+    },
+    {
+      "headword": "X[2]PN",
+      "icount": 3,
+      "periods": [
+        "Ur III",
+        "Old Babylonian",
+        "unknown"
+      ],
+      "best_form": "x-x",
+      "n_segs": 2,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 34,
+      "tier_c_bag_hits": 64,
+      "tier_a_examples": [],
+      "tier_b_examples": [
+        {
+          "p_number": "P124739",
+          "period": "Ur III (ca. 2100-2000 BC)"
+        },
+        {
+          "p_number": "P136689",
+          "period": "Ur III (ca. 2100-2000 BC)"
+        },
+        {
+          "p_number": "P137081",
+          "period": "Ur III (ca. 2100-2000 BC)"
+        }
+      ],
+      "tier_c_examples": [
+        {
+          "p_number": "P102031",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P107404",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P110238",
+          "overlap": 1.0
+        }
+      ]
+    },
+    {
+      "headword": "Baya[1]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "best_form": "ba-a-a",
+      "n_segs": 3,
+      "tier_a_3seg_hits": 2,
+      "tier_b_2seg_hits": 0,
+      "tier_c_bag_hits": 92,
+      "tier_a_examples": [
+        {
+          "p_number": "P467157",
+          "period": "Neo-Assyrian (ca. 911-612 BC)"
+        },
+        {
+          "p_number": "P423227",
+          "period": "Neo-Assyrian (ca. 911-612 BC)"
+        }
+      ],
+      "tier_b_examples": [],
+      "tier_c_examples": [
+        {
+          "p_number": "P102519",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P108484",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P110238",
+          "overlap": 1.0
+        }
+      ]
+    },
+    {
+      "headword": "Za.X[0]PN",
+      "icount": 1,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "best_form": "za-a-a-x",
+      "n_segs": 4,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 0,
+      "tier_c_bag_hits": 83,
+      "tier_a_examples": [],
+      "tier_b_examples": [],
+      "tier_c_examples": [
+        {
+          "p_number": "P110238",
+          "overlap": 0.75
+        },
+        {
+          "p_number": "P110774",
+          "overlap": 0.75
+        },
+        {
+          "p_number": "P116633",
+          "overlap": 0.75
+        }
+      ]
+    },
+    {
+      "headword": "Ayakala[1]PN",
+      "icount": 9,
+      "periods": [
+        "Ur III"
+      ],
+      "best_form": "a-a-kal-la",
+      "n_segs": 4,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 0,
+      "tier_c_bag_hits": 82,
+      "tier_a_examples": [],
+      "tier_b_examples": [],
+      "tier_c_examples": [
+        {
+          "p_number": "P100892",
+          "overlap": 0.75
+        },
+        {
+          "p_number": "P108484",
+          "overlap": 0.75
+        },
+        {
+          "p_number": "P110774",
+          "overlap": 0.75
+        }
+      ]
+    },
+    {
+      "headword": "Ayakala[3]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "best_form": "a-a-kal-la",
+      "n_segs": 4,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 0,
+      "tier_c_bag_hits": 82,
+      "tier_a_examples": [],
+      "tier_b_examples": [],
+      "tier_c_examples": [
+        {
+          "p_number": "P100892",
+          "overlap": 0.75
+        },
+        {
+          "p_number": "P108484",
+          "overlap": 0.75
+        },
+        {
+          "p_number": "P110774",
+          "overlap": 0.75
+        }
+      ]
+    },
+    {
+      "headword": "Ayakala[4]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "best_form": "a-a-kal-la",
+      "n_segs": 4,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 0,
+      "tier_c_bag_hits": 82,
+      "tier_a_examples": [],
+      "tier_b_examples": [],
+      "tier_c_examples": [
+        {
+          "p_number": "P100892",
+          "overlap": 0.75
+        },
+        {
+          "p_number": "P108484",
+          "overlap": 0.75
+        },
+        {
+          "p_number": "P110774",
+          "overlap": 0.75
+        }
+      ]
+    },
+    {
+      "headword": "Ayakala[5]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "best_form": "a-a-kal-la",
+      "n_segs": 4,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 0,
+      "tier_c_bag_hits": 82,
+      "tier_a_examples": [],
+      "tier_b_examples": [],
+      "tier_c_examples": [
+        {
+          "p_number": "P100892",
+          "overlap": 0.75
+        },
+        {
+          "p_number": "P108484",
+          "overlap": 0.75
+        },
+        {
+          "p_number": "P110774",
+          "overlap": 0.75
+        }
+      ]
+    },
+    {
+      "headword": "Mani[1]PN",
+      "icount": 1,
+      "periods": [
+        "Lagash II"
+      ],
+      "best_form": "ma-ni",
+      "n_segs": 2,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 6,
+      "tier_c_bag_hits": 75,
+      "tier_a_examples": [],
+      "tier_b_examples": [
+        {
+          "p_number": "P226318",
+          "period": "Old Babylonian (ca. 1900-1600 BC)"
+        },
+        {
+          "p_number": "P421787",
+          "period": "Neo-Assyrian (ca. 911-612 BC)"
+        },
+        {
+          "p_number": "P421789",
+          "period": "Neo-Assyrian (ca. 911-612 BC)"
+        }
+      ],
+      "tier_c_examples": [
+        {
+          "p_number": "P110774",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P135727",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P136752",
+          "overlap": 1.0
+        }
+      ]
+    },
+    {
+      "headword": "X[1]PN",
+      "icount": 6,
+      "periods": [
+        "Early Dynastic IIIb",
+        "Old Babylonian"
+      ],
+      "best_form": "x-x-x",
+      "n_segs": 3,
+      "tier_a_3seg_hits": 13,
+      "tier_b_2seg_hits": 0,
+      "tier_c_bag_hits": 64,
+      "tier_a_examples": [
+        {
+          "p_number": "P124739",
+          "period": "Ur III (ca. 2100-2000 BC)"
+        },
+        {
+          "p_number": "P137081",
+          "period": "Ur III (ca. 2100-2000 BC)"
+        },
+        {
+          "p_number": "P137085",
+          "period": "Ur III (ca. 2100-2000 BC)"
+        }
+      ],
+      "tier_b_examples": [],
+      "tier_c_examples": [
+        {
+          "p_number": "P102031",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P107404",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P110238",
+          "overlap": 1.0
+        }
+      ]
+    },
+    {
+      "headword": "Lani[1]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "best_form": "la-ni",
+      "n_segs": 2,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 20,
+      "tier_c_bag_hits": 56,
+      "tier_a_examples": [],
+      "tier_b_examples": [
+        {
+          "p_number": "P393966",
+          "period": "Neo-Assyrian (ca. 911-612 BC)"
+        },
+        {
+          "p_number": "P421788",
+          "period": "Neo-Assyrian (ca. 911-612 BC)"
+        },
+        {
+          "p_number": "P421789",
+          "period": "Neo-Assyrian (ca. 911-612 BC)"
+        }
+      ],
+      "tier_c_examples": [
+        {
+          "p_number": "P110774",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P123010",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P135727",
+          "overlap": 1.0
+        }
+      ]
+    },
+    {
+      "headword": "Lugal.E[1]PN",
+      "icount": 1,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "best_form": "lugal-e",
+      "n_segs": 2,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 0,
+      "tier_c_bag_hits": 76,
+      "tier_a_examples": [],
+      "tier_b_examples": [],
+      "tier_c_examples": [
+        {
+          "p_number": "P100892",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P102519",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P108448",
+          "overlap": 1.0
+        }
+      ]
+    },
+    {
+      "headword": "Namu[1]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "best_form": "na-mu",
+      "n_segs": 2,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 1,
+      "tier_c_bag_hits": 75,
+      "tier_a_examples": [],
+      "tier_b_examples": [
+        {
+          "p_number": "P469516",
+          "period": "Old Babylonian (ca. 1900-1600 BC)"
+        }
+      ],
+      "tier_c_examples": [
+        {
+          "p_number": "P102519",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P108448",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P115266",
+          "overlap": 1.0
+        }
+      ]
+    },
+    {
+      "headword": "Mamaniša[1]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "best_form": "ma-ma-ni-ša",
+      "n_segs": 4,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 0,
+      "tier_c_bag_hits": 75,
+      "tier_a_examples": [],
+      "tier_b_examples": [],
+      "tier_c_examples": [
+        {
+          "p_number": "P110774",
+          "overlap": 0.75
+        },
+        {
+          "p_number": "P135727",
+          "overlap": 0.75
+        },
+        {
+          "p_number": "P136752",
+          "overlap": 0.75
+        }
+      ]
+    },
+    {
+      "headword": "Dudu[1]PN",
+      "icount": 7,
+      "periods": [
+        "Early Dynastic IIIb"
+      ],
+      "best_form": "du-du",
+      "n_segs": 2,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 4,
+      "tier_c_bag_hits": 70,
+      "tier_a_examples": [],
+      "tier_b_examples": [
+        {
+          "p_number": "P108448",
+          "period": "Ur III (ca. 2100-2000 BC)"
+        },
+        {
+          "p_number": "P135969",
+          "period": "Ur III (ca. 2100-2000 BC)"
+        },
+        {
+          "p_number": "P232275",
+          "period": "Lagash II (ca. 2200-2100 BC)"
+        }
+      ],
+      "tier_c_examples": [
+        {
+          "p_number": "P100892",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P102519",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P107404",
+          "overlap": 1.0
+        }
+      ]
+    },
+    {
+      "headword": "Dudu[2]PN",
+      "icount": 1,
+      "periods": [
+        "Early Dynastic IIIb"
+      ],
+      "best_form": "du-du",
+      "n_segs": 2,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 4,
+      "tier_c_bag_hits": 70,
+      "tier_a_examples": [],
+      "tier_b_examples": [
+        {
+          "p_number": "P108448",
+          "period": "Ur III (ca. 2100-2000 BC)"
+        },
+        {
+          "p_number": "P135969",
+          "period": "Ur III (ca. 2100-2000 BC)"
+        },
+        {
+          "p_number": "P232275",
+          "period": "Lagash II (ca. 2200-2100 BC)"
+        }
+      ],
+      "tier_c_examples": [
+        {
+          "p_number": "P100892",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P102519",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P107404",
+          "overlap": 1.0
+        }
+      ]
+    },
+    {
+      "headword": "Abba[1]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "best_form": "ab-ba",
+      "n_segs": 2,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 34,
+      "tier_c_bag_hits": 39,
+      "tier_a_examples": [],
+      "tier_b_examples": [
+        {
+          "p_number": "P102519",
+          "period": "Ur III (ca. 2100-2000 BC)"
+        },
+        {
+          "p_number": "P107404",
+          "period": "Ur III (ca. 2100-2000 BC)"
+        },
+        {
+          "p_number": "P108484",
+          "period": "Ur III (ca. 2100-2000 BC)"
+        }
+      ],
+      "tier_c_examples": [
+        {
+          "p_number": "P102519",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P107404",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P108484",
+          "overlap": 1.0
+        }
+      ]
+    },
+    {
+      "headword": "Abba[2]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "best_form": "ab-ba",
+      "n_segs": 2,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 34,
+      "tier_c_bag_hits": 39,
+      "tier_a_examples": [],
+      "tier_b_examples": [
+        {
+          "p_number": "P102519",
+          "period": "Ur III (ca. 2100-2000 BC)"
+        },
+        {
+          "p_number": "P107404",
+          "period": "Ur III (ca. 2100-2000 BC)"
+        },
+        {
+          "p_number": "P108484",
+          "period": "Ur III (ca. 2100-2000 BC)"
+        }
+      ],
+      "tier_c_examples": [
+        {
+          "p_number": "P102519",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P107404",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P108484",
+          "overlap": 1.0
+        }
+      ]
+    },
+    {
+      "headword": "NannameaDU[1]PN",
+      "icount": 1,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "best_form": "nanna-me-a-du",
+      "n_segs": 4,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 0,
+      "tier_c_bag_hits": 73,
+      "tier_a_examples": [],
+      "tier_b_examples": [],
+      "tier_c_examples": [
+        {
+          "p_number": "P100892",
+          "overlap": 0.75
+        },
+        {
+          "p_number": "P102519",
+          "overlap": 0.75
+        },
+        {
+          "p_number": "P108484",
+          "overlap": 0.75
+        }
+      ]
+    },
+    {
+      "headword": "Urmeme[1]PN",
+      "icount": 2,
+      "periods": [
+        "Ur III"
+      ],
+      "best_form": "ur-me-me",
+      "n_segs": 3,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 0,
+      "tier_c_bag_hits": 72,
+      "tier_a_examples": [],
+      "tier_b_examples": [],
+      "tier_c_examples": [
+        {
+          "p_number": "P100892",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P102031",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P102519",
+          "overlap": 1.0
+        }
+      ]
+    },
+    {
+      "headword": "Babara[1]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "best_form": "ba-ba-ra",
+      "n_segs": 3,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 0,
+      "tier_c_bag_hits": 72,
+      "tier_a_examples": [],
+      "tier_b_examples": [],
+      "tier_c_examples": [
+        {
+          "p_number": "P102519",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P110574",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P116633",
+          "overlap": 1.0
+        }
+      ]
+    },
+    {
+      "headword": "Urmeme[2]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "best_form": "ur-me-me",
+      "n_segs": 3,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 0,
+      "tier_c_bag_hits": 72,
+      "tier_a_examples": [],
+      "tier_b_examples": [],
+      "tier_c_examples": [
+        {
+          "p_number": "P100892",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P102031",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P102519",
+          "overlap": 1.0
+        }
+      ]
+    },
+    {
+      "headword": "Anunu[0]PN",
+      "icount": 1,
+      "periods": [
+        "Early Dynastic IIIb"
+      ],
+      "best_form": "a-nu-nu",
+      "n_segs": 3,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 0,
+      "tier_c_bag_hits": 65,
+      "tier_a_examples": [],
+      "tier_b_examples": [],
+      "tier_c_examples": [
+        {
+          "p_number": "P100892",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P108484",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P110238",
+          "overlap": 1.0
+        }
+      ]
+    },
+    {
+      "headword": "Nuraya[1]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "best_form": "nu-ur₂-a-a",
+      "n_segs": 4,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 0,
+      "tier_c_bag_hits": 65,
+      "tier_a_examples": [],
+      "tier_b_examples": [],
+      "tier_c_examples": [
+        {
+          "p_number": "P100892",
+          "overlap": 0.75
+        },
+        {
+          "p_number": "P108484",
+          "overlap": 0.75
+        },
+        {
+          "p_number": "P110238",
+          "overlap": 0.75
+        }
+      ]
+    },
+    {
+      "headword": "Dada[1]PN",
+      "icount": 13,
+      "periods": [
+        "Early Dynastic IIIb",
+        "Old Akkadian",
+        "Ur III",
+        "Old Babylonian"
+      ],
+      "best_form": "da-da",
+      "n_segs": 2,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 3,
+      "tier_c_bag_hits": 61,
+      "tier_a_examples": [],
+      "tier_b_examples": [
+        {
+          "p_number": "P110238",
+          "period": "Ur III (ca. 2100-2000 BC)"
+        },
+        {
+          "p_number": "P112283",
+          "period": "Ur III (ca. 2100-2000 BC)"
+        },
+        {
+          "p_number": "P217715",
+          "period": "Old Akkadian (ca. 2340-2200 BC)"
+        }
+      ],
+      "tier_c_examples": [
+        {
+          "p_number": "P108448",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P108484",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P110238",
+          "overlap": 1.0
+        }
+      ]
+    },
+    {
+      "headword": "Ayabaraganak[1]PN",
+      "icount": 1,
+      "periods": [
+        "Early Dynastic IIIb"
+      ],
+      "best_form": "a-bara₂-an-na",
+      "n_segs": 4,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 0,
+      "tier_c_bag_hits": 64,
+      "tier_a_examples": [],
+      "tier_b_examples": [],
+      "tier_c_examples": [
+        {
+          "p_number": "P115266",
+          "overlap": 0.75
+        },
+        {
+          "p_number": "P136752",
+          "overlap": 0.75
+        },
+        {
+          "p_number": "P136982",
+          "overlap": 0.75
+        }
+      ]
+    },
+    {
+      "headword": "Dada[4]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "best_form": "da-da",
+      "n_segs": 2,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 3,
+      "tier_c_bag_hits": 61,
+      "tier_a_examples": [],
+      "tier_b_examples": [
+        {
+          "p_number": "P110238",
+          "period": "Ur III (ca. 2100-2000 BC)"
+        },
+        {
+          "p_number": "P112283",
+          "period": "Ur III (ca. 2100-2000 BC)"
+        },
+        {
+          "p_number": "P217715",
+          "period": "Old Akkadian (ca. 2340-2200 BC)"
+        }
+      ],
+      "tier_c_examples": [
+        {
+          "p_number": "P108448",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P108484",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P110238",
+          "overlap": 1.0
+        }
+      ]
+    },
+    {
+      "headword": "Dada[5]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "best_form": "da-da",
+      "n_segs": 2,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 3,
+      "tier_c_bag_hits": 61,
+      "tier_a_examples": [],
+      "tier_b_examples": [
+        {
+          "p_number": "P110238",
+          "period": "Ur III (ca. 2100-2000 BC)"
+        },
+        {
+          "p_number": "P112283",
+          "period": "Ur III (ca. 2100-2000 BC)"
+        },
+        {
+          "p_number": "P217715",
+          "period": "Old Akkadian (ca. 2340-2200 BC)"
+        }
+      ],
+      "tier_c_examples": [
+        {
+          "p_number": "P108448",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P108484",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P110238",
+          "overlap": 1.0
+        }
+      ]
+    },
+    {
+      "headword": "Nin.X.X.X[0]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "best_form": "nin-x-x-x",
+      "n_segs": 4,
+      "tier_a_3seg_hits": 0,
+      "tier_b_2seg_hits": 0,
+      "tier_c_bag_hits": 64,
+      "tier_a_examples": [],
+      "tier_b_examples": [],
+      "tier_c_examples": [
+        {
+          "p_number": "P102031",
+          "overlap": 1.0
+        },
+        {
+          "p_number": "P107404",
+          "overlap": 0.75
+        },
+        {
+          "p_number": "P110238",
+          "overlap": 0.75
+        }
+      ]
+    }
+  ],
+  "verdict": "T1.2-v3 tiered Meluhha matcher across all 1222 ePSD2 PNs: tier_a (>=3-seg contiguous) = 21, tier_b (>=2-seg contiguous) = 55, tier_c (bag overlap >=70%) = 444. Top hit: 'Name[1]PN' (0+2+116 hits).",
+  "_elapsed_seconds": 2.91
+}

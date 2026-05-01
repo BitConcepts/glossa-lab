@@ -36,6 +36,7 @@ from glossa_lab.discovery.fetchers import (
 )
 from glossa_lab.discovery.llm import LLMClient
 from glossa_lab.discovery.mine import mine_pending
+from glossa_lab.discovery.notify import send_pending_digest
 
 
 def _parse_csv(raw: str | None) -> list[str] | None:
@@ -92,6 +93,16 @@ async def _cmd_status(_args: argparse.Namespace) -> int:
     return 0
 
 
+async def _maybe_notify(
+    args: argparse.Namespace, *, topic: str | None = None,
+) -> dict[str, Any] | None:
+    """Run the discovery digest when --notify was set; return its summary."""
+    if not getattr(args, "notify", False):
+        return None
+    min_conf = float(getattr(args, "notify_min_confidence", 0.5) or 0.0)
+    return await send_pending_digest(min_confidence=min_conf, topic=topic)
+
+
 async def _cmd_fetch(args: argparse.Namespace) -> int:
     topics = _parse_csv(args.topics)
     sources = _parse_csv(args.sources)
@@ -113,11 +124,16 @@ async def _cmd_fetch(args: argparse.Namespace) -> int:
             }
         else:
             agg = await run_all(since=since, only_sources=sources)
+        notify_result = await _maybe_notify(args)
+        if notify_result is not None:
+            agg["notify"] = notify_result
         rep.save_result(agg)
-    print(json.dumps(
-        {k: agg[k] for k in ("fetched", "new", "merged", "errors") if k in agg},
-        indent=2,
-    ))
+    summary = {k: agg[k] for k in ("fetched", "new", "merged", "errors") if k in agg}
+    if "notify" in agg:
+        summary["notify"] = {
+            k: agg["notify"][k] for k in ("sent", "skipped", "failed", "item_count", "reason")
+        }
+    print(json.dumps(summary, indent=2))
     return 0
 
 
@@ -134,11 +150,16 @@ async def _cmd_mine(args: argparse.Namespace) -> int:
         result = await mine_pending(
             client=client, topic=args.topic, limit=int(args.limit),
         )
+        notify_result = await _maybe_notify(args, topic=args.topic)
+        if notify_result is not None:
+            result["notify"] = notify_result
         rep.save_result(result)
-    print(json.dumps(
-        {k: result[k] for k in ("classified", "failed", "by_kind", "pending")},
-        indent=2,
-    ))
+    summary = {k: result[k] for k in ("classified", "failed", "by_kind", "pending")}
+    if "notify" in result:
+        summary["notify"] = {
+            k: result["notify"][k] for k in ("sent", "skipped", "failed", "item_count", "reason")
+        }
+    print(json.dumps(summary, indent=2))
     return 0
 
 
@@ -151,16 +172,21 @@ async def _cmd_daily(args: argparse.Namespace) -> int:
             mine_result = await mine_pending(client=client, limit=int(args.limit))
         else:
             mine_result = {"skipped": "no LLM provider configured"}
+        notify_result = await _maybe_notify(args)
         result = {"fetch": fetch_result, "mine": mine_result}
+        if notify_result is not None:
+            result["notify"] = notify_result
         rep.save_result(result)
-    print(json.dumps(
-        {
-            "fetched": fetch_result.get("fetched"),
-            "new": fetch_result.get("new"),
-            "classified": mine_result.get("classified") if isinstance(mine_result, dict) else None,
-        },
-        indent=2,
-    ))
+    summary = {
+        "fetched": fetch_result.get("fetched"),
+        "new": fetch_result.get("new"),
+        "classified": mine_result.get("classified") if isinstance(mine_result, dict) else None,
+    }
+    if notify_result is not None:
+        summary["notify"] = {
+            k: notify_result[k] for k in ("sent", "skipped", "failed", "item_count", "reason")
+        }
+    print(json.dumps(summary, indent=2))
     return 0
 
 
@@ -182,15 +208,30 @@ def build_parser() -> argparse.ArgumentParser:
     pf.add_argument("--topics", help="comma-separated topic ids (default: all)")
     pf.add_argument("--sources", help="comma-separated source names (default: all)")
     pf.add_argument("--since", help="ISO-8601 lower bound on published_at")
+    _add_notify_flags(pf)
 
     pm = sub.add_parser("mine", help="classify + link un-mined items")
     pm.add_argument("--topic", help="restrict to a single topic id")
     pm.add_argument("--limit", default="20", help="max items per run (default: 20)")
+    _add_notify_flags(pm)
 
     pd = sub.add_parser("daily", help="combined fetch + mine, like the scheduler")
     pd.add_argument("--limit", default="50", help="max items to mine (default: 50)")
+    _add_notify_flags(pd)
 
     return p
+
+
+def _add_notify_flags(parser: argparse.ArgumentParser) -> None:
+    """Attach the shared --notify / --notify-min-confidence flags."""
+    parser.add_argument(
+        "--notify", action="store_true",
+        help="send a digest email (uses recipients + SMTP settings) on completion",
+    )
+    parser.add_argument(
+        "--notify-min-confidence", default="0.5",
+        help="minimum classifier confidence for items to include (default: 0.5)",
+    )
 
 
 _HANDLERS = {

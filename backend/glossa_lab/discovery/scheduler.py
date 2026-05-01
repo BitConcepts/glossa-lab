@@ -15,6 +15,7 @@ from datetime import datetime, timezone
 from glossa_lab.discovery import mine_pending, store
 from glossa_lab.discovery.fetchers import run_all
 from glossa_lab.discovery.llm import LLMClient
+from glossa_lab.discovery.notify import send_pending_digest
 
 _log = logging.getLogger("glossa_lab.discovery.scheduler")
 
@@ -34,7 +35,7 @@ def _enabled() -> bool:
 
 
 async def run_once() -> dict[str, object]:
-    """Fetch every topic with every configured source, then mine pending items."""
+    """Fetch every topic with every configured source, mine, then notify."""
     started = datetime.now(timezone.utc).isoformat()
     fetch_summary = await run_all()
     client = LLMClient()
@@ -43,12 +44,17 @@ async def run_once() -> dict[str, object]:
         mine_summary = await mine_pending(client=client, limit=50)
     else:
         mine_summary = {"skipped": "no LLM provider configured"}
+    # Always attempt the digest; the notifier silently no-ops if SMTP is
+    # unconfigured or the recipient list is empty, so this is safe to call
+    # unconditionally on every tick.
+    notify_summary = await send_pending_digest(min_confidence=0.5)
     finished = datetime.now(timezone.utc).isoformat()
     return {
         "started_at": started,
         "finished_at": finished,
         "fetch": fetch_summary,
         "mine": mine_summary,
+        "notify": notify_summary,
     }
 
 
@@ -59,10 +65,11 @@ async def _scheduler_loop(interval: float) -> None:
         try:
             summary = await run_once()
             _log.info(
-                "discovery scheduler tick: fetched=%s new=%s classified=%s",
+                "discovery scheduler tick: fetched=%s new=%s classified=%s notified=%s",
                 summary.get("fetch", {}).get("fetched"),
                 summary.get("fetch", {}).get("new"),
                 summary.get("mine", {}).get("classified"),
+                summary.get("notify", {}).get("sent"),
             )
         except asyncio.CancelledError:
             raise

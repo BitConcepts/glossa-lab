@@ -817,7 +817,8 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   }, [activeExp, nodes, edges]);
 
   // Run (streaming) — only one run per experiment allowed; state persists across navigation.
-  const doRun = useCallback(async (targetExp?: typeof activeExp) => {
+  // notify=true asks the backend to email all active recipients on completion.
+  const doRun = useCallback(async (targetExp?: typeof activeExp, notify = false) => {
     const exp = targetExp ?? activeExp;
     if (!exp?.id) return;
     // Single-run guard: don’t start if this experiment is already running
@@ -832,7 +833,7 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     let runSucceeded = false;
     let hadError = false;
     try {
-      for await (const ev of runGraphExperimentStream(exp.id!, {}, controller.signal)) {
+      for await (const ev of runGraphExperimentStream(exp.id!, {}, controller.signal, notify)) {
         if (ev.event === "started") {
           _erSet(prev => prev[runKey] ? { ...prev, [runKey]: { ...prev[runKey], total: ev.node_count ?? 0 } } : prev);
         } else if (ev.event === "node_start" && ev.nid) {
@@ -1218,15 +1219,27 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
                   <span style={{ fontSize: 9, color: th.textFaint, flexShrink: 0 }}>{e.node_count}n</span>
                   {/* Run / running indicator button */}
                   {e.id && (
-                    <button
-                      onClick={ev => { ev.stopPropagation(); if (!isRunning) void doRun({ id: e.id, name: e.name, description: e.description ?? "", nodes: [], edges: [] }); }}
-                      title={isRunning ? "Running…" : "Run"}
-                      disabled={isRunning}
-                      style={{ border: "none", background: "none", color: isRunning ? "#60a5fa" : "#22c55e",
-                        cursor: isRunning ? "default" : "pointer", fontSize: 10, padding: "0 2px",
-                        lineHeight: "18px", borderRadius: 3, flexShrink: 0, opacity: isRunning ? 0.6 : 1 }}>
-                      {isRunning ? "⏳" : "▶"}
-                    </button>
+                    <>
+                      <button
+                        onClick={ev => { ev.stopPropagation(); if (!isRunning) void doRun({ id: e.id, name: e.name, description: e.description ?? "", nodes: [], edges: [] }); }}
+                        title={isRunning ? "Running…" : "Run"}
+                        disabled={isRunning}
+                        style={{ border: "none", background: "none", color: isRunning ? "#60a5fa" : "#22c55e",
+                          cursor: isRunning ? "default" : "pointer", fontSize: 10, padding: "0 2px",
+                          lineHeight: "18px", borderRadius: 3, flexShrink: 0, opacity: isRunning ? 0.6 : 1 }}>
+                        {isRunning ? "⏳" : "▶"}
+                      </button>
+                      {!isRunning && (
+                        <button
+                          onClick={ev => { ev.stopPropagation(); void doRun({ id: e.id, name: e.name, description: e.description ?? "", nodes: [], edges: [] }, true); }}
+                          title="Run + email recipients on completion"
+                          style={{ border: "none", background: "none", color: "#7c3aed",
+                            cursor: "pointer", fontSize: 10, padding: "0 2px",
+                            lineHeight: "18px", borderRadius: 3, flexShrink: 0 }}>
+                          ✉
+                        </button>
+                      )}
+                    </>
                   )}
                   <button onClick={ev => { ev.stopPropagation(); void doDeleteExp(e.id); }} title={deleteConfirm === e.id ? "Confirm?" : "Delete"}
                     style={{ border: "none", background: "none", color: deleteConfirm === e.id ? "#f87171" : th.textMuted, cursor: "pointer", fontSize: 10, padding: "0 3px", lineHeight: "18px", borderRadius: 3, flexShrink: 0 }}>

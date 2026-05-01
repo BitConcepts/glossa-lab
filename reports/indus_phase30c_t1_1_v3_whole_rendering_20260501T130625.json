@@ -1,0 +1,267 @@
+{
+  "test_id": "T1.1-v3",
+  "test_name": "Whole-rendering matcher (single-token + 2-token consecutive)",
+  "single_token_renderings": [
+    "miin",
+    "min"
+  ],
+  "two_token_renderings": [
+    "me-en",
+    "me-il",
+    "me-in",
+    "me-na",
+    "mi-en",
+    "mi-il",
+    "mi-in",
+    "mi-na",
+    "mu-li"
+  ],
+  "n_position_matched": 3,
+  "enmenanak_score": 2.5,
+  "enmenanak_position_match": 0,
+  "enheduana_score": 5.0,
+  "top_10_scores": [
+    {
+      "headword": "Enheduana[1]PN",
+      "score": 5.0,
+      "best_form": "en-he₂-du₇-an-na-me-en",
+      "icount": 12,
+      "periods": [
+        "Old Akkadian",
+        "Old Babylonian"
+      ],
+      "position_match": 1,
+      "free_miin": 1
+    },
+    {
+      "headword": "Ninurtagamil[0]PN",
+      "score": 4.0,
+      "best_form": "nin-urta-ga-mi-il",
+      "icount": 1,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "position_match": 1,
+      "free_miin": 1
+    },
+    {
+      "headword": "Baragšesaŋniŋsagani[0]PN",
+      "score": 3.0,
+      "best_form": "bara₂-še-sag-nig₂-sag₉-ga-ni",
+      "icount": 1,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "position_match": 0,
+      "free_miin": 0
+    },
+    {
+      "headword": "Ilšumuballiṭ[1]PN",
+      "score": 3.0,
+      "best_form": "il₃-šu-mu-ba-al-li-iṭ",
+      "icount": 1,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "position_match": 0,
+      "free_miin": 0
+    },
+    {
+      "headword": "Simatenlil[1]PN",
+      "score": 3.0,
+      "best_form": "me-en-lil₂",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "position_match": 1,
+      "free_miin": 1
+    },
+    {
+      "headword": "Sipadninŋirsukeipad[1]PN",
+      "score": 3.0,
+      "best_form": "sipad-nin-ŋir₂-su-ke₄-i₃-pad₃",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "position_match": 0,
+      "free_miin": 0
+    },
+    {
+      "headword": "Abaindasa[1]PN",
+      "score": 2.5,
+      "best_form": "a-ba-in-da-sa₂-a",
+      "icount": 5,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "position_match": 0,
+      "free_miin": 0
+    },
+    {
+      "headword": "Abatahlugalŋak[1]PN",
+      "score": 2.5,
+      "best_form": "a-ba₄-tah-lugal-ŋa₂-ke₄",
+      "icount": 1,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "position_match": 0,
+      "free_miin": 0
+    },
+    {
+      "headword": "Abisimti[1]PN",
+      "score": 2.5,
+      "best_form": "a-bi-si₂-im-ti-ŋu₁₀",
+      "icount": 4,
+      "periods": [
+        "Ur III",
+        "Old Babylonian"
+      ],
+      "position_match": 0,
+      "free_miin": 0
+    },
+    {
+      "headword": "Anadamutaklu[0]PN",
+      "score": 2.5,
+      "best_form": "a-na-da-mu-tak₂-lu",
+      "icount": 1,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "position_match": 0,
+      "free_miin": 0
+    }
+  ],
+  "a1_n_perms": 10000,
+  "a1_observed_score": 2.5,
+  "a1_p_value": 1.0,
+  "a1_null_mean": 2.5365,
+  "a1_null_p95": 2.5,
+  "a1_null_p99": 4.5,
+  "a5_n_tests": 30,
+  "a5_n_perms_per_test": 500,
+  "a5_n_significant_after_bh": 0,
+  "a5_top_pvals": [
+    {
+      "headword": "Ninurtagamil[0]PN",
+      "score": 4.0,
+      "icount": 1,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "p_value": 0.003992,
+      "bh_threshold_q05": 0.001667,
+      "significant_at_q05": false
+    },
+    {
+      "headword": "Simatenlil[1]PN",
+      "score": 3.0,
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "p_value": 0.011976,
+      "bh_threshold_q05": 0.003333,
+      "significant_at_q05": false
+    },
+    {
+      "headword": "Enheduana[1]PN",
+      "score": 5.0,
+      "icount": 12,
+      "periods": [
+        "Old Akkadian",
+        "Old Babylonian"
+      ],
+      "p_value": 0.015968,
+      "bh_threshold_q05": 0.005,
+      "significant_at_q05": false
+    },
+    {
+      "headword": "Baragšesaŋniŋsagani[0]PN",
+      "score": 3.0,
+      "icount": 1,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "p_value": 1.0,
+      "bh_threshold_q05": 0.006667,
+      "significant_at_q05": false
+    },
+    {
+      "headword": "Ilšumuballiṭ[1]PN",
+      "score": 3.0,
+      "icount": 1,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "p_value": 1.0,
+      "bh_threshold_q05": 0.008333,
+      "significant_at_q05": false
+    },
+    {
+      "headword": "Sipadninŋirsukeipad[1]PN",
+      "score": 3.0,
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "p_value": 1.0,
+      "bh_threshold_q05": 0.01,
+      "significant_at_q05": false
+    },
+    {
+      "headword": "Abaindasa[1]PN",
+      "score": 2.5,
+      "icount": 5,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "p_value": 1.0,
+      "bh_threshold_q05": 0.011667,
+      "significant_at_q05": false
+    },
+    {
+      "headword": "Abatahlugalŋak[1]PN",
+      "score": 2.5,
+      "icount": 1,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "p_value": 1.0,
+      "bh_threshold_q05": 0.013333,
+      "significant_at_q05": false
+    },
+    {
+      "headword": "Abisimti[1]PN",
+      "score": 2.5,
+      "icount": 4,
+      "periods": [
+        "Ur III",
+        "Old Babylonian"
+      ],
+      "p_value": 1.0,
+      "bh_threshold_q05": 0.015,
+      "significant_at_q05": false
+    },
+    {
+      "headword": "Anadamutaklu[0]PN",
+      "score": 2.5,
+      "icount": 1,
+      "periods": [
+        "Old Babylonian"
+      ],
+      "p_value": 1.0,
+      "bh_threshold_q05": 0.016667,
+      "significant_at_q05": false
+    }
+  ],
+  "a6_ur3_n": 643,
+  "a6_ur3_position_match_rate": 0.0016,
+  "a6_obab_n": 324,
+  "a6_obab_position_match_rate": 0.0062,
+  "a6_rate_delta_pp": 0.4618,
+  "verdict": "T1.1-v3 whole-rendering matcher: position-match count = 3 (was 102 under loose token-level matching). Enmenanak score = 2.5 (was 7.0 → 5.0; now likely 0). A1 p-value = 1.0000. A5 BH-FDR survivors = 0/30. A6 Ur III rate 0.16% vs OBab 0.62% (delta +0.46pp).",
+  "_elapsed_seconds": 0.33
+}

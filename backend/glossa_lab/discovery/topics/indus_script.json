@@ -1,0 +1,37 @@
+{
+  "id": "indus_script",
+  "label": "Indus Script",
+  "description": "New tablets, decipherment claims, sign analyses, corpus releases, and computational methods related to the Indus / Harappan script.",
+  "keywords": [
+    "Indus script",
+    "Harappan script",
+    "Indus seal",
+    "Indus tablet",
+    "Indus decipherment",
+    "Mohenjo-daro inscription",
+    "Mahadevan Indus",
+    "Parpola Indus",
+    "Yajnadevam",
+    "M77 corpus",
+    "ICIT Indus",
+    "Fuls Indus",
+    "Wells Indus",
+    "Indus Valley script",
+    "CISI corpus"
+  ],
+  "exclusions": [
+    "stock market",
+    "Indus Towers",
+    "Indus Hospital",
+    "Indus Motors"
+  ],
+  "languages": ["en"],
+  "source_overrides": {
+    "newsapi": {"page_size": 50, "sort_by": "publishedAt", "search_in": "title,description"},
+    "brave":   {"count": 20, "search_endpoint": "news"},
+    "serpapi": {"engine": "google_news", "num": 20},
+    "openalex":{"per_page": 25, "filter": "concepts.id:C2778407484|C2779033659"},
+    "arxiv":   {"max_results": 25, "search_query_extra": "cat:cs.CL OR cat:stat.AP"},
+    "crossref":{"rows": 25}
+  }
+}

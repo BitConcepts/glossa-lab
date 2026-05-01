@@ -23,10 +23,16 @@ router = APIRouter(prefix="/api/v1/settings", tags=["settings"])
 _MASK = "••••••••"
 
 KNOWN_KEYS = [
+    # LLM providers (verifiable via _VERIFY_ENDPOINTS)
     "mistral_api_key",
     "openai_api_key",
     "anthropic_api_key",
     "google_api_key",
+    # Discovery / search providers — used by the continuous-discovery engine
+    # (no verify endpoints yet; added in a follow-up phase if needed).
+    "serp_api_key",
+    "news_api_key",
+    "brave_search_api_key",
 ]
 
 KNOWN_PROVIDERS = ["openai", "anthropic", "google", "mistral", "ollama"]

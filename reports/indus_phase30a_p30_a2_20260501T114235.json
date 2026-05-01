@@ -1,0 +1,499 @@
+{
+  "test_id": "P30-A2",
+  "test_name": "Period filter (Old Akkadian / Ur III only)",
+  "n_position_matched_input": 102,
+  "n_chronologically_compatible": 49,
+  "fraction_kept": 0.4804,
+  "top_30_compatible": [
+    {
+      "headword": "Enmenanak[1]PN",
+      "icount": 4,
+      "periods": [
+        "Old Akkadian"
+      ],
+      "total_score": 7.0,
+      "length_score": 2.5,
+      "position_match": 2,
+      "free_miin": 3,
+      "best_form": "en-men-an-na-ka-še₃",
+      "best_n_segs": 6,
+      "positions_matched": [
+        1,
+        3
+      ]
+    },
+    {
+      "headword": "Enheduana[1]PN",
+      "icount": 12,
+      "periods": [
+        "Old Akkadian",
+        "Old Babylonian"
+      ],
+      "total_score": 6.5,
+      "length_score": 3.0,
+      "position_match": 1,
+      "free_miin": 4,
+      "best_form": "en-he₂-du₇-an-na-me-en",
+      "best_n_segs": 7,
+      "positions_matched": [
+        6
+      ]
+    },
+    {
+      "headword": "Šusuenanasuentakil[1]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "total_score": 5.0,
+      "length_score": 2.5,
+      "position_match": 1,
+      "free_miin": 2,
+      "best_form": "šu-suen-a-na-suen-ta₂-ki-il",
+      "best_n_segs": 8,
+      "positions_matched": [
+        3
+      ]
+    },
+    {
+      "headword": "Unapšen[1]PN",
+      "icount": 5,
+      "periods": [
+        "Ur III"
+      ],
+      "total_score": 4.5,
+      "length_score": 2.0,
+      "position_match": 1,
+      "free_miin": 2,
+      "best_form": "u₂-na-ap-še-en",
+      "best_n_segs": 5,
+      "positions_matched": [
+        1
+      ]
+    },
+    {
+      "headword": "Šusueniṭibšinat[1]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "total_score": 4.5,
+      "length_score": 2.5,
+      "position_match": 1,
+      "free_miin": 1,
+      "best_form": "šu-suen-i-ti-ib-ši-na-at",
+      "best_n_segs": 8,
+      "positions_matched": [
+        6
+      ]
+    },
+    {
+      "headword": "Hašhamer[1]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "total_score": 4.0,
+      "length_score": 2.0,
+      "position_match": 1,
+      "free_miin": 1,
+      "best_form": "ha-aš₂-ha-me-er",
+      "best_n_segs": 5,
+      "positions_matched": [
+        3
+      ]
+    },
+    {
+      "headword": "Lugalinimgina[1]PN",
+      "icount": 6,
+      "periods": [
+        "Lagash II",
+        "Ur III",
+        "Old Babylonian",
+        "Neo-Assyrian",
+        "Hellenistic"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.5,
+      "position_match": 1,
+      "free_miin": 1,
+      "best_form": "lugal-inim-gi-na",
+      "best_n_segs": 4,
+      "positions_matched": [
+        3
+      ]
+    },
+    {
+      "headword": "Irinabadbi[1]PN",
+      "icount": 3,
+      "periods": [
+        "Old Akkadian"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.5,
+      "position_match": 1,
+      "free_miin": 1,
+      "best_form": "uru-na-bad₃-bi",
+      "best_n_segs": 4,
+      "positions_matched": [
+        1
+      ]
+    },
+    {
+      "headword": "Silhaha[1]PN",
+      "icount": 3,
+      "periods": [
+        "Ur III"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.5,
+      "position_match": 1,
+      "free_miin": 1,
+      "best_form": "si-il-ha-ha",
+      "best_n_segs": 4,
+      "positions_matched": [
+        1
+      ]
+    },
+    {
+      "headword": "Urkugnuna[2]PN",
+      "icount": 3,
+      "periods": [
+        "Ur III"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.5,
+      "position_match": 1,
+      "free_miin": 1,
+      "best_form": "ur-kug-nun-na",
+      "best_n_segs": 4,
+      "positions_matched": [
+        3
+      ]
+    },
+    {
+      "headword": "Ayaziŋu[1]PN",
+      "icount": 2,
+      "periods": [
+        "Ur III",
+        "Old Babylonian"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.5,
+      "position_match": 1,
+      "free_miin": 1,
+      "best_form": "a-a-zi-mu",
+      "best_n_segs": 4,
+      "positions_matched": [
+        3
+      ]
+    },
+    {
+      "headword": "Tulidšamši[1]PN",
+      "icount": 2,
+      "periods": [
+        "Ur III"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.5,
+      "position_match": 1,
+      "free_miin": 1,
+      "best_form": "tu-li-id-utu",
+      "best_n_segs": 4,
+      "positions_matched": [
+        1
+      ]
+    },
+    {
+      "headword": "Urenlilak[1]PN",
+      "icount": 2,
+      "periods": [
+        "Ur III",
+        "Old Babylonian"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.5,
+      "position_match": 1,
+      "free_miin": 1,
+      "best_form": "ur-en-lil₂-la₂",
+      "best_n_segs": 4,
+      "positions_matched": [
+        1
+      ]
+    },
+    {
+      "headword": "Urkugnuna[1]PN",
+      "icount": 2,
+      "periods": [
+        "Ur III"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.5,
+      "position_match": 1,
+      "free_miin": 1,
+      "best_form": "ur-kug-nun-na",
+      "best_n_segs": 4,
+      "positions_matched": [
+        3
+      ]
+    },
+    {
+      "headword": "Urmeme[1]PN",
+      "icount": 2,
+      "periods": [
+        "Ur III"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.0,
+      "position_match": 1,
+      "free_miin": 2,
+      "best_form": "ur-me-me",
+      "best_n_segs": 3,
+      "positions_matched": [
+        1
+      ]
+    },
+    {
+      "headword": "Anummutappil[1]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.5,
+      "position_match": 1,
+      "free_miin": 1,
+      "best_form": "an-mu-ta₂-pil",
+      "best_n_segs": 4,
+      "positions_matched": [
+        1
+      ]
+    },
+    {
+      "headword": "Ganana[1]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.0,
+      "position_match": 1,
+      "free_miin": 2,
+      "best_form": "ga-na-na",
+      "best_n_segs": 3,
+      "positions_matched": [
+        1
+      ]
+    },
+    {
+      "headword": "Igienlilše[1]PN",
+      "icount": 1,
+      "periods": [
+        "Old Akkadian"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.5,
+      "position_match": 1,
+      "free_miin": 1,
+      "best_form": "igi-en-lil₂-še₃",
+      "best_n_segs": 4,
+      "positions_matched": [
+        1
+      ]
+    },
+    {
+      "headword": "Ludiŋiranak[1]PN",
+      "icount": 1,
+      "periods": [
+        "Old Akkadian"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.5,
+      "position_match": 1,
+      "free_miin": 1,
+      "best_form": "lu₂-dingir-ra-na",
+      "best_n_segs": 4,
+      "positions_matched": [
+        3
+      ]
+    },
+    {
+      "headword": "Luenlilak[2]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.5,
+      "position_match": 1,
+      "free_miin": 1,
+      "best_form": "lu₂-en-lil₂-la₂",
+      "best_n_segs": 4,
+      "positions_matched": [
+        1
+      ]
+    },
+    {
+      "headword": "Luenlilak[3]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.5,
+      "position_match": 1,
+      "free_miin": 1,
+      "best_form": "lu₂-en-lil₂-la₂",
+      "best_n_segs": 4,
+      "positions_matched": [
+        1
+      ]
+    },
+    {
+      "headword": "Lugalkagina[3]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.5,
+      "position_match": 1,
+      "free_miin": 1,
+      "best_form": "lugal-ka-gin₆-na",
+      "best_n_segs": 4,
+      "positions_matched": [
+        3
+      ]
+    },
+    {
+      "headword": "Lunarua[1]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.5,
+      "position_match": 1,
+      "free_miin": 1,
+      "best_form": "lu₂-na-ru₂-a",
+      "best_n_segs": 4,
+      "positions_matched": [
+        1
+      ]
+    },
+    {
+      "headword": "Lunarua[2]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.5,
+      "position_match": 1,
+      "free_miin": 1,
+      "best_form": "lu₂-na-du₃-a",
+      "best_n_segs": 4,
+      "positions_matched": [
+        1
+      ]
+    },
+    {
+      "headword": "Luušgena[1]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.5,
+      "position_match": 1,
+      "free_miin": 1,
+      "best_form": "lu₂-uš-gen₆-na",
+      "best_n_segs": 4,
+      "positions_matched": [
+        3
+      ]
+    },
+    {
+      "headword": "Memetum[0]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.0,
+      "position_match": 1,
+      "free_miin": 2,
+      "best_form": "me-me-tum",
+      "best_n_segs": 3,
+      "positions_matched": [
+        1
+      ]
+    },
+    {
+      "headword": "Saŋenlilak[1]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.5,
+      "position_match": 1,
+      "free_miin": 1,
+      "best_form": "saŋ-en-lil₂-la₂",
+      "best_n_segs": 4,
+      "positions_matched": [
+        1
+      ]
+    },
+    {
+      "headword": "Simatenlil[1]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.0,
+      "position_match": 1,
+      "free_miin": 2,
+      "best_form": "me-en-lil₂",
+      "best_n_segs": 3,
+      "positions_matched": [
+        1
+      ]
+    },
+    {
+      "headword": "Šarru-ili[1]PN",
+      "icount": 1,
+      "periods": [
+        "Old Akkadian"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.5,
+      "position_match": 1,
+      "free_miin": 1,
+      "best_form": "šar-ru-i₃-li",
+      "best_n_segs": 4,
+      "positions_matched": [
+        3
+      ]
+    },
+    {
+      "headword": "Ureanak[1]PN",
+      "icount": 1,
+      "periods": [
+        "Ur III"
+      ],
+      "total_score": 3.5,
+      "length_score": 1.5,
+      "position_match": 1,
+      "free_miin": 1,
+      "best_form": "ur-e₂-an-na",
+      "best_n_segs": 4,
+      "positions_matched": [
+        3
+      ]
+    }
+  ],
+  "verdict": "P30-A2 period filter: of 102 position-matched PNs (Phase-29 baseline), 49 survive the Old-Akkadian/Ur-III chronological filter (overlap with Janabiyah ~2100-2000 BCE). Remaining 53 are post-Akkadian (Old Babylonian, Neo-Assyrian, etc.) and chronologically incompatible with the Janabiyah seal.",
+  "_elapsed_seconds": 0.0
+}

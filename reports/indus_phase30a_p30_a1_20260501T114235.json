@@ -1,0 +1,22 @@
+{
+  "test_id": "P30-A1",
+  "test_name": "Permutation null for Enmenanak score (random rendering tokens)",
+  "n_permutations": 10000,
+  "observed_headword": "Enmenanak[1]PN",
+  "observed_score": 7.0,
+  "rendering_set_size": 15,
+  "vocab_size": 397,
+  "p_value_one_sided": 0.005299,
+  "rank_percentile": 99.48,
+  "null_distribution_stats": {
+    "mean": 3.6155,
+    "min": 2.5,
+    "max": 8.0,
+    "p50": 3.0,
+    "p95": 5.5,
+    "p99": 6.0
+  },
+  "n_at_or_above_observed": 52,
+  "verdict": "P30-A1 permutation null on Enmenanak[1]PN: observed score 7.0 sits at the 99.48 percentile of 10000 random-rendering permutations. Empirical p-value (one-sided, P(null >= observed)) = 0.0053. Null distribution: mean=3.6155, p95=5.5, p99=6.0.",
+  "_elapsed_seconds": 0.13
+}

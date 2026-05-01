@@ -1,0 +1,27 @@
+{
+  "test_id": "P30-A6",
+  "test_name": "Held-out replication: Ur III train, Old Babylonian test",
+  "ur3": {
+    "label": "Ur III (train)",
+    "n": 643,
+    "mean_score": 1.3087,
+    "p50": 1.0,
+    "p95": 3.0,
+    "n_with_position_match": 43,
+    "n_with_position_match_rate": 0.0669,
+    "top_score": 5.0
+  },
+  "old_babylonian": {
+    "label": "Old Babylonian (test)",
+    "n": 324,
+    "mean_score": 1.6698,
+    "p50": 1.5,
+    "p95": 3.5,
+    "n_with_position_match": 43,
+    "n_with_position_match_rate": 0.1327,
+    "top_score": 6.5
+  },
+  "rate_delta": 0.0658,
+  "verdict": "P30-A6: Ur III (643 PNs) position-match rate 6.69% vs Old Babylonian (324 PNs) 13.27% (delta 6.58pp). Rate differs by >=5pp; check for period-specific bias.",
+  "_elapsed_seconds": 0.01
+}

@@ -1,0 +1,1173 @@
+{
+  "phase": "30a",
+  "timestamp_utc": "20260501T114235",
+  "headline_target": "Validate Phase-29 Enmenanak/Enheduana finding",
+  "n_pns_in_corpus": 1222,
+  "n_pns_position_matched_baseline": 102,
+  "n_iconographic_anchors": 12,
+  "n_m77_inscriptions": 1669,
+  "n_meluhha_tablets": 1462,
+  "results": {
+    "P30-A1": {
+      "test_id": "P30-A1",
+      "test_name": "Permutation null for Enmenanak score (random rendering tokens)",
+      "n_permutations": 10000,
+      "observed_headword": "Enmenanak[1]PN",
+      "observed_score": 7.0,
+      "rendering_set_size": 15,
+      "vocab_size": 397,
+      "p_value_one_sided": 0.005299,
+      "rank_percentile": 99.48,
+      "null_distribution_stats": {
+        "mean": 3.6155,
+        "min": 2.5,
+        "max": 8.0,
+        "p50": 3.0,
+        "p95": 5.5,
+        "p99": 6.0
+      },
+      "n_at_or_above_observed": 52,
+      "verdict": "P30-A1 permutation null on Enmenanak[1]PN: observed score 7.0 sits at the 99.48 percentile of 10000 random-rendering permutations. Empirical p-value (one-sided, P(null >= observed)) = 0.0053. Null distribution: mean=3.6155, p95=5.5, p99=6.0.",
+      "_elapsed_seconds": 0.13
+    },
+    "P30-A2": {
+      "test_id": "P30-A2",
+      "test_name": "Period filter (Old Akkadian / Ur III only)",
+      "n_position_matched_input": 102,
+      "n_chronologically_compatible": 49,
+      "fraction_kept": 0.4804,
+      "top_30_compatible": [
+        {
+          "headword": "Enmenanak[1]PN",
+          "icount": 4,
+          "periods": [
+            "Old Akkadian"
+          ],
+          "total_score": 7.0,
+          "length_score": 2.5,
+          "position_match": 2,
+          "free_miin": 3,
+          "best_form": "en-men-an-na-ka-še₃",
+          "best_n_segs": 6,
+          "positions_matched": [
+            1,
+            3
+          ]
+        },
+        {
+          "headword": "Enheduana[1]PN",
+          "icount": 12,
+          "periods": [
+            "Old Akkadian",
+            "Old Babylonian"
+          ],
+          "total_score": 6.5,
+          "length_score": 3.0,
+          "position_match": 1,
+          "free_miin": 4,
+          "best_form": "en-he₂-du₇-an-na-me-en",
+          "best_n_segs": 7,
+          "positions_matched": [
+            6
+          ]
+        },
+        {
+          "headword": "Šusuenanasuentakil[1]PN",
+          "icount": 1,
+          "periods": [
+            "Ur III"
+          ],
+          "total_score": 5.0,
+          "length_score": 2.5,
+          "position_match": 1,
+          "free_miin": 2,
+          "best_form": "šu-suen-a-na-suen-ta₂-ki-il",
+          "best_n_segs": 8,
+          "positions_matched": [
+            3
+          ]
+        },
+        {
+          "headword": "Unapšen[1]PN",
+          "icount": 5,
+          "periods": [
+            "Ur III"
+          ],
+          "total_score": 4.5,
+          "length_score": 2.0,
+          "position_match": 1,
+          "free_miin": 2,
+          "best_form": "u₂-na-ap-še-en",
+          "best_n_segs": 5,
+          "positions_matched": [
+            1
+          ]
+        },
+        {
+          "headword": "Šusueniṭibšinat[1]PN",
+          "icount": 1,
+          "periods": [
+            "Ur III"
+          ],
+          "total_score": 4.5,
+          "length_score": 2.5,
+          "position_match": 1,
+          "free_miin": 1,
+          "best_form": "šu-suen-i-ti-ib-ši-na-at",
+          "best_n_segs": 8,
+          "positions_matched": [
+            6
+          ]
+        },
+        {
+          "headword": "Hašhamer[1]PN",
+          "icount": 1,
+          "periods": [
+            "Ur III"
+          ],
+          "total_score": 4.0,
+          "length_score": 2.0,
+          "position_match": 1,
+          "free_miin": 1,
+          "best_form": "ha-aš₂-ha-me-er",
+          "best_n_segs": 5,
+          "positions_matched": [
+            3
+          ]
+        },
+        {
+          "headword": "Lugalinimgina[1]PN",
+          "icount": 6,
+          "periods": [
+            "Lagash II",
+            "Ur III",
+            "Old Babylonian",
+            "Neo-Assyrian",
+            "Hellenistic"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.5,
+          "position_match": 1,
+          "free_miin": 1,
+          "best_form": "lugal-inim-gi-na",
+          "best_n_segs": 4,
+          "positions_matched": [
+            3
+          ]
+        },
+        {
+          "headword": "Irinabadbi[1]PN",
+          "icount": 3,
+          "periods": [
+            "Old Akkadian"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.5,
+          "position_match": 1,
+          "free_miin": 1,
+          "best_form": "uru-na-bad₃-bi",
+          "best_n_segs": 4,
+          "positions_matched": [
+            1
+          ]
+        },
+        {
+          "headword": "Silhaha[1]PN",
+          "icount": 3,
+          "periods": [
+            "Ur III"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.5,
+          "position_match": 1,
+          "free_miin": 1,
+          "best_form": "si-il-ha-ha",
+          "best_n_segs": 4,
+          "positions_matched": [
+            1
+          ]
+        },
+        {
+          "headword": "Urkugnuna[2]PN",
+          "icount": 3,
+          "periods": [
+            "Ur III"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.5,
+          "position_match": 1,
+          "free_miin": 1,
+          "best_form": "ur-kug-nun-na",
+          "best_n_segs": 4,
+          "positions_matched": [
+            3
+          ]
+        },
+        {
+          "headword": "Ayaziŋu[1]PN",
+          "icount": 2,
+          "periods": [
+            "Ur III",
+            "Old Babylonian"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.5,
+          "position_match": 1,
+          "free_miin": 1,
+          "best_form": "a-a-zi-mu",
+          "best_n_segs": 4,
+          "positions_matched": [
+            3
+          ]
+        },
+        {
+          "headword": "Tulidšamši[1]PN",
+          "icount": 2,
+          "periods": [
+            "Ur III"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.5,
+          "position_match": 1,
+          "free_miin": 1,
+          "best_form": "tu-li-id-utu",
+          "best_n_segs": 4,
+          "positions_matched": [
+            1
+          ]
+        },
+        {
+          "headword": "Urenlilak[1]PN",
+          "icount": 2,
+          "periods": [
+            "Ur III",
+            "Old Babylonian"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.5,
+          "position_match": 1,
+          "free_miin": 1,
+          "best_form": "ur-en-lil₂-la₂",
+          "best_n_segs": 4,
+          "positions_matched": [
+            1
+          ]
+        },
+        {
+          "headword": "Urkugnuna[1]PN",
+          "icount": 2,
+          "periods": [
+            "Ur III"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.5,
+          "position_match": 1,
+          "free_miin": 1,
+          "best_form": "ur-kug-nun-na",
+          "best_n_segs": 4,
+          "positions_matched": [
+            3
+          ]
+        },
+        {
+          "headword": "Urmeme[1]PN",
+          "icount": 2,
+          "periods": [
+            "Ur III"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.0,
+          "position_match": 1,
+          "free_miin": 2,
+          "best_form": "ur-me-me",
+          "best_n_segs": 3,
+          "positions_matched": [
+            1
+          ]
+        },
+        {
+          "headword": "Anummutappil[1]PN",
+          "icount": 1,
+          "periods": [
+            "Ur III"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.5,
+          "position_match": 1,
+          "free_miin": 1,
+          "best_form": "an-mu-ta₂-pil",
+          "best_n_segs": 4,
+          "positions_matched": [
+            1
+          ]
+        },
+        {
+          "headword": "Ganana[1]PN",
+          "icount": 1,
+          "periods": [
+            "Ur III"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.0,
+          "position_match": 1,
+          "free_miin": 2,
+          "best_form": "ga-na-na",
+          "best_n_segs": 3,
+          "positions_matched": [
+            1
+          ]
+        },
+        {
+          "headword": "Igienlilše[1]PN",
+          "icount": 1,
+          "periods": [
+            "Old Akkadian"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.5,
+          "position_match": 1,
+          "free_miin": 1,
+          "best_form": "igi-en-lil₂-še₃",
+          "best_n_segs": 4,
+          "positions_matched": [
+            1
+          ]
+        },
+        {
+          "headword": "Ludiŋiranak[1]PN",
+          "icount": 1,
+          "periods": [
+            "Old Akkadian"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.5,
+          "position_match": 1,
+          "free_miin": 1,
+          "best_form": "lu₂-dingir-ra-na",
+          "best_n_segs": 4,
+          "positions_matched": [
+            3
+          ]
+        },
+        {
+          "headword": "Luenlilak[2]PN",
+          "icount": 1,
+          "periods": [
+            "Ur III"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.5,
+          "position_match": 1,
+          "free_miin": 1,
+          "best_form": "lu₂-en-lil₂-la₂",
+          "best_n_segs": 4,
+          "positions_matched": [
+            1
+          ]
+        },
+        {
+          "headword": "Luenlilak[3]PN",
+          "icount": 1,
+          "periods": [
+            "Ur III"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.5,
+          "position_match": 1,
+          "free_miin": 1,
+          "best_form": "lu₂-en-lil₂-la₂",
+          "best_n_segs": 4,
+          "positions_matched": [
+            1
+          ]
+        },
+        {
+          "headword": "Lugalkagina[3]PN",
+          "icount": 1,
+          "periods": [
+            "Ur III"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.5,
+          "position_match": 1,
+          "free_miin": 1,
+          "best_form": "lugal-ka-gin₆-na",
+          "best_n_segs": 4,
+          "positions_matched": [
+            3
+          ]
+        },
+        {
+          "headword": "Lunarua[1]PN",
+          "icount": 1,
+          "periods": [
+            "Ur III"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.5,
+          "position_match": 1,
+          "free_miin": 1,
+          "best_form": "lu₂-na-ru₂-a",
+          "best_n_segs": 4,
+          "positions_matched": [
+            1
+          ]
+        },
+        {
+          "headword": "Lunarua[2]PN",
+          "icount": 1,
+          "periods": [
+            "Ur III"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.5,
+          "position_match": 1,
+          "free_miin": 1,
+          "best_form": "lu₂-na-du₃-a",
+          "best_n_segs": 4,
+          "positions_matched": [
+            1
+          ]
+        },
+        {
+          "headword": "Luušgena[1]PN",
+          "icount": 1,
+          "periods": [
+            "Ur III"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.5,
+          "position_match": 1,
+          "free_miin": 1,
+          "best_form": "lu₂-uš-gen₆-na",
+          "best_n_segs": 4,
+          "positions_matched": [
+            3
+          ]
+        },
+        {
+          "headword": "Memetum[0]PN",
+          "icount": 1,
+          "periods": [
+            "Ur III"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.0,
+          "position_match": 1,
+          "free_miin": 2,
+          "best_form": "me-me-tum",
+          "best_n_segs": 3,
+          "positions_matched": [
+            1
+          ]
+        },
+        {
+          "headword": "Saŋenlilak[1]PN",
+          "icount": 1,
+          "periods": [
+            "Ur III"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.5,
+          "position_match": 1,
+          "free_miin": 1,
+          "best_form": "saŋ-en-lil₂-la₂",
+          "best_n_segs": 4,
+          "positions_matched": [
+            1
+          ]
+        },
+        {
+          "headword": "Simatenlil[1]PN",
+          "icount": 1,
+          "periods": [
+            "Ur III"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.0,
+          "position_match": 1,
+          "free_miin": 2,
+          "best_form": "me-en-lil₂",
+          "best_n_segs": 3,
+          "positions_matched": [
+            1
+          ]
+        },
+        {
+          "headword": "Šarru-ili[1]PN",
+          "icount": 1,
+          "periods": [
+            "Old Akkadian"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.5,
+          "position_match": 1,
+          "free_miin": 1,
+          "best_form": "šar-ru-i₃-li",
+          "best_n_segs": 4,
+          "positions_matched": [
+            3
+          ]
+        },
+        {
+          "headword": "Ureanak[1]PN",
+          "icount": 1,
+          "periods": [
+            "Ur III"
+          ],
+          "total_score": 3.5,
+          "length_score": 1.5,
+          "position_match": 1,
+          "free_miin": 1,
+          "best_form": "ur-e₂-an-na",
+          "best_n_segs": 4,
+          "positions_matched": [
+            3
+          ]
+        }
+      ],
+      "verdict": "P30-A2 period filter: of 102 position-matched PNs (Phase-29 baseline), 49 survive the Old-Akkadian/Ur-III chronological filter (overlap with Janabiyah ~2100-2000 BCE). Remaining 53 are post-Akkadian (Old Babylonian, Neo-Assyrian, etc.) and chronologically incompatible with the Janabiyah seal.",
+      "_elapsed_seconds": 0.0
+    },
+    "P30-A3": {
+      "test_id": "P30-A3",
+      "test_name": "Meluhha co-occurrence filter on 102 candidates",
+      "n_position_matched_input": 102,
+      "n_meluhha_tablets_searched": 180,
+      "n_with_meluhha_cooccurrence": 0,
+      "fraction_kept": 0.0,
+      "survivors": [],
+      "verdict": "P30-A3 Meluhha co-occurrence filter: of 102 position-matched PNs, 0 appear (as their best form) in at least one of the 180 Meluhha-mentioning CDLI tablets. No PN co-occurs with a Meluhha keyword on any tablet.",
+      "_elapsed_seconds": 0.01
+    },
+    "P30-A4": {
+      "test_id": "P30-A4",
+      "test_name": "Bootstrap CI on Enmenanak[1]PN score",
+      "n_bootstrap": 1000,
+      "headword": "Enmenanak[1]PN",
+      "ci": {
+        "mean": 5.4025,
+        "ci_2_5": 2.5,
+        "ci_50": 5.0,
+        "ci_97_5": 7.0,
+        "min": 2.5,
+        "max": 7.0
+      },
+      "verdict": "Bootstrap (n=1000): Enmenanak[1]PN score has 95% CI [2.5, 7.0], median 5.0, mean 5.4025.",
+      "_elapsed_seconds": 0.01
+    },
+    "P30-A5": {
+      "test_id": "P30-A5",
+      "test_name": "Benjamini-Hochberg FDR correction",
+      "n_tests": 30,
+      "n_perms_per_test": 500,
+      "q_level": 0.05,
+      "n_significant_after_bh": 0,
+      "rows": [
+        {
+          "headword": "Enmenanak[1]PN",
+          "score": 7.0,
+          "icount": 4,
+          "periods": [
+            "Old Akkadian"
+          ],
+          "p_value": 0.001996,
+          "bh_threshold_q05": 0.001667,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Enaʾil[0]PN",
+          "score": 4.0,
+          "icount": 1,
+          "periods": [
+            "Early Dynastic IIIb"
+          ],
+          "p_value": 0.005988,
+          "bh_threshold_q05": 0.003333,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Ninurtagamil[0]PN",
+          "score": 4.5,
+          "icount": 1,
+          "periods": [
+            "Old Babylonian"
+          ],
+          "p_value": 0.015968,
+          "bh_threshold_q05": 0.005,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Anadamutaklu[0]PN",
+          "score": 6.5,
+          "icount": 1,
+          "periods": [
+            "Old Babylonian"
+          ],
+          "p_value": 0.033932,
+          "bh_threshold_q05": 0.006667,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Enmebaragesi[1]PN",
+          "score": 5.0,
+          "icount": 1,
+          "periods": [
+            "Old Babylonian"
+          ],
+          "p_value": 0.065868,
+          "bh_threshold_q05": 0.008333,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Ayahili[1]PN",
+          "score": 3.5,
+          "icount": 1,
+          "periods": [
+            "Old Babylonian"
+          ],
+          "p_value": 0.073852,
+          "bh_threshold_q05": 0.01,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Enmegalanak[1]PN",
+          "score": 5.0,
+          "icount": 1,
+          "periods": [
+            "Old Babylonian"
+          ],
+          "p_value": 0.08982,
+          "bh_threshold_q05": 0.011667,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Ilanšemea[0]PN",
+          "score": 4.0,
+          "icount": 2,
+          "periods": [
+            "Old Babylonian"
+          ],
+          "p_value": 0.125749,
+          "bh_threshold_q05": 0.013333,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Enheduana[1]PN",
+          "score": 6.5,
+          "icount": 12,
+          "periods": [
+            "Old Akkadian",
+            "Old Babylonian"
+          ],
+          "p_value": 0.131737,
+          "bh_threshold_q05": 0.015,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Ninmetabare[1]PN",
+          "score": 4.0,
+          "icount": 1,
+          "periods": [
+            "Early Dynastic IIIb"
+          ],
+          "p_value": 0.133733,
+          "bh_threshold_q05": 0.016667,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Anummutappil[1]PN",
+          "score": 3.5,
+          "icount": 1,
+          "periods": [
+            "Ur III"
+          ],
+          "p_value": 0.137725,
+          "bh_threshold_q05": 0.018333,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Enmeteanki[0]PN",
+          "score": 4.5,
+          "icount": 1,
+          "periods": [
+            "Old Babylonian"
+          ],
+          "p_value": 0.147705,
+          "bh_threshold_q05": 0.02,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Iddindamu[1]PN",
+          "score": 3.5,
+          "icount": 1,
+          "periods": [
+            "Old Babylonian"
+          ],
+          "p_value": 0.161677,
+          "bh_threshold_q05": 0.021667,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Hašhamer[1]PN",
+          "score": 4.0,
+          "icount": 1,
+          "periods": [
+            "Ur III"
+          ],
+          "p_value": 0.165669,
+          "bh_threshold_q05": 0.023333,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Unapšen[1]PN",
+          "score": 4.5,
+          "icount": 5,
+          "periods": [
+            "Ur III"
+          ],
+          "p_value": 0.175649,
+          "bh_threshold_q05": 0.025,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Balamunamhe[0]PN",
+          "score": 3.5,
+          "icount": 1,
+          "periods": [
+            "Old Babylonian"
+          ],
+          "p_value": 0.179641,
+          "bh_threshold_q05": 0.026667,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Ayaziŋu[1]PN",
+          "score": 3.5,
+          "icount": 2,
+          "periods": [
+            "Ur III",
+            "Old Babylonian"
+          ],
+          "p_value": 0.257485,
+          "bh_threshold_q05": 0.028333,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Šusuenanasuentakil[1]PN",
+          "score": 5.0,
+          "icount": 1,
+          "periods": [
+            "Ur III"
+          ],
+          "p_value": 0.323353,
+          "bh_threshold_q05": 0.03,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Ayabaraganak[1]PN",
+          "score": 3.5,
+          "icount": 1,
+          "periods": [
+            "Early Dynastic IIIb"
+          ],
+          "p_value": 0.329341,
+          "bh_threshold_q05": 0.031667,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Ganana[1]PN",
+          "score": 3.5,
+          "icount": 1,
+          "periods": [
+            "Ur III"
+          ],
+          "p_value": 0.337325,
+          "bh_threshold_q05": 0.033333,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Hanzamu[1]PN",
+          "score": 3.5,
+          "icount": 1,
+          "periods": [
+            "Old Babylonian"
+          ],
+          "p_value": 0.341317,
+          "bh_threshold_q05": 0.035,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Nanaibsa[0]PN",
+          "score": 4.5,
+          "icount": 1,
+          "periods": [
+            "Old Babylonian"
+          ],
+          "p_value": 0.343313,
+          "bh_threshold_q05": 0.036667,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Gemeŋeštinanak[1]PN",
+          "score": 3.5,
+          "icount": 1,
+          "periods": [
+            "Old Babylonian"
+          ],
+          "p_value": 0.351297,
+          "bh_threshold_q05": 0.038333,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Zidnatiluma[0]PN",
+          "score": 4.5,
+          "icount": 1,
+          "periods": [
+            "Old Babylonian"
+          ],
+          "p_value": 0.355289,
+          "bh_threshold_q05": 0.04,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Gudeaʾenlilak[0]PN",
+          "score": 4.5,
+          "icount": 1,
+          "periods": [
+            "Old Babylonian"
+          ],
+          "p_value": 0.397206,
+          "bh_threshold_q05": 0.041667,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Urenlila[1]PN",
+          "score": 4.0,
+          "icount": 5,
+          "periods": [
+            "Early Dynastic IIIb",
+            "Lagash II",
+            "Old Babylonian"
+          ],
+          "p_value": 0.407186,
+          "bh_threshold_q05": 0.043333,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Igienlilše[1]PN",
+          "score": 3.5,
+          "icount": 1,
+          "periods": [
+            "Old Akkadian"
+          ],
+          "p_value": 0.413174,
+          "bh_threshold_q05": 0.045,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Inimenlila[1]PN",
+          "score": 3.5,
+          "icount": 1,
+          "periods": [
+            "Old Babylonian"
+          ],
+          "p_value": 0.46507,
+          "bh_threshold_q05": 0.046667,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Šusueniṭibšinat[1]PN",
+          "score": 4.5,
+          "icount": 1,
+          "periods": [
+            "Ur III"
+          ],
+          "p_value": 0.48503,
+          "bh_threshold_q05": 0.048333,
+          "significant_at_q05": false
+        },
+        {
+          "headword": "Ilšumuballiṭ[1]PN",
+          "score": 4.0,
+          "icount": 1,
+          "periods": [
+            "Old Babylonian"
+          ],
+          "p_value": 0.516966,
+          "bh_threshold_q05": 0.05,
+          "significant_at_q05": false
+        }
+      ],
+      "verdict": "P30-A5 BH-FDR (q=0.05): of 30 top-scoring PNs subjected to empirical permutation tests (500 perms/PN), 0 survive multiple-comparisons correction.",
+      "_elapsed_seconds": 0.13
+    },
+    "P30-A6": {
+      "test_id": "P30-A6",
+      "test_name": "Held-out replication: Ur III train, Old Babylonian test",
+      "ur3": {
+        "label": "Ur III (train)",
+        "n": 643,
+        "mean_score": 1.3087,
+        "p50": 1.0,
+        "p95": 3.0,
+        "n_with_position_match": 43,
+        "n_with_position_match_rate": 0.0669,
+        "top_score": 5.0
+      },
+      "old_babylonian": {
+        "label": "Old Babylonian (test)",
+        "n": 324,
+        "mean_score": 1.6698,
+        "p50": 1.5,
+        "p95": 3.5,
+        "n_with_position_match": 43,
+        "n_with_position_match_rate": 0.1327,
+        "top_score": 6.5
+      },
+      "rate_delta": 0.0658,
+      "verdict": "P30-A6: Ur III (643 PNs) position-match rate 6.69% vs Old Babylonian (324 PNs) 13.27% (delta 6.58pp). Rate differs by >=5pp; check for period-specific bias.",
+      "_elapsed_seconds": 0.01
+    },
+    "P30-A7": {
+      "test_id": "P30-A7",
+      "test_name": "Janabiyah skeleton sensitivity analysis",
+      "headword": "Enmenanak[1]PN",
+      "variants": [
+        {
+          "variant": "baseline",
+          "miin_positions": [
+            1,
+            3,
+            6
+          ],
+          "n_target_segments": 7,
+          "enmenanak_score": 7.0,
+          "enmenanak_position_matches": 2,
+          "top_corpus_score": 7.0,
+          "top_corpus_headword": "Enmenanak[1]PN",
+          "enmenanak_rank": 1
+        },
+        {
+          "variant": "miin_pos_0_2_5",
+          "miin_positions": [
+            0,
+            2,
+            5
+          ],
+          "n_target_segments": 7,
+          "enmenanak_score": 5.5,
+          "enmenanak_position_matches": 1,
+          "top_corpus_score": 8.0,
+          "top_corpus_headword": "Enheduana[1]PN",
+          "enmenanak_rank": 7
+        },
+        {
+          "variant": "miin_pos_0_3_6",
+          "miin_positions": [
+            0,
+            3,
+            6
+          ],
+          "n_target_segments": 7,
+          "enmenanak_score": 7.0,
+          "enmenanak_position_matches": 2,
+          "top_corpus_score": 8.0,
+          "top_corpus_headword": "Enheduana[1]PN",
+          "enmenanak_rank": 2
+        },
+        {
+          "variant": "miin_pos_2_4_6",
+          "miin_positions": [
+            2,
+            4,
+            6
+          ],
+          "n_target_segments": 7,
+          "enmenanak_score": 4.0,
+          "enmenanak_position_matches": 0,
+          "top_corpus_score": 8.0,
+          "top_corpus_headword": "Enheduana[1]PN",
+          "enmenanak_rank": 28
+        },
+        {
+          "variant": "skeleton_5_segments",
+          "miin_positions": [
+            1,
+            3,
+            4
+          ],
+          "n_target_segments": 5,
+          "enmenanak_score": 7.0,
+          "enmenanak_position_matches": 2,
+          "top_corpus_score": 7.5,
+          "top_corpus_headword": "Enmegalanak[1]PN",
+          "enmenanak_rank": 2
+        },
+        {
+          "variant": "skeleton_6_segments",
+          "miin_positions": [
+            1,
+            3,
+            5
+          ],
+          "n_target_segments": 6,
+          "enmenanak_score": 7.5,
+          "enmenanak_position_matches": 2,
+          "top_corpus_score": 7.5,
+          "top_corpus_headword": "Enmenanak[1]PN",
+          "enmenanak_rank": 1
+        },
+        {
+          "variant": "skeleton_8_segments",
+          "miin_positions": [
+            1,
+            3,
+            6,
+            7
+          ],
+          "n_target_segments": 8,
+          "enmenanak_score": 6.5,
+          "enmenanak_position_matches": 2,
+          "top_corpus_score": 7.0,
+          "top_corpus_headword": "Šusuenanasuentakil[1]PN",
+          "enmenanak_rank": 2
+        }
+      ],
+      "verdict": "P30-A7: Across 7 skeleton variants, Enmenanak's score ranges from 4.00 to 7.50; Enmenanak's rank in the corpus ranges from 1 to 28. Baseline (positions {1,3,6}, 7 segs) gives score 7.0, rank 1.",
+      "_elapsed_seconds": 0.04
+    },
+    "P30-A8": {
+      "test_id": "P30-A8",
+      "test_name": "Phoneme-value permutation null v3 at M77 scale",
+      "n_permutations": 2000,
+      "n_overlap_signs": 2,
+      "n_overlap_tokens_in_m77": 546,
+      "observed_h1_phoneme": 0.0,
+      "null_h1_mean": 0.074,
+      "null_h1_p50": 0.0752,
+      "null_h1_p95": 0.0752,
+      "p_value_one_sided": 1.0,
+      "verdict": "P30-A8: At M77 scale (546 sign-token overlap, 2 distinct signs in phoneme map), observed phoneme H1 = 0.0000; null H1 distribution mean=0.0740, p95=0.0752; p=1.0000.",
+      "_elapsed_seconds": 0.02
+    },
+    "P30-E7": {
+      "test_id": "P30-E7",
+      "test_name": "Random-mapping null for iconographic anchor score",
+      "n_permutations": 10000,
+      "n_anchors": 12,
+      "n_signs_in_phoneme_map": 33,
+      "observed_anchor_score": 24.5,
+      "null_mean": 1.9252,
+      "null_p50": 0.0,
+      "null_p95": 8.0,
+      "null_p99": 11.0,
+      "null_max": 18.0,
+      "p_value_one_sided": 0.0001,
+      "rank_percentile": 100.0,
+      "verdict": "P30-E7: observed anchor score 24.50 sits at the 100.00 percentile of 10000 random sign->phoneme permutations; null mean 1.93, p95 8.00; empirical p=0.0001.",
+      "_elapsed_seconds": 0.22
+    },
+    "P30-G1": {
+      "test_id": "P30-G1",
+      "test_name": "Joint period x provenience stratification (8x5=40 cells)",
+      "n_pos_matched_pns": 102,
+      "n_pns_with_any_cell_observation": 7,
+      "n_distinct_cells_observed": 7,
+      "rows": [
+        {
+          "period": "Ur III (ca. 2100-2000 BC)",
+          "provenience_bucket": "Sumer core",
+          "n_pos_match_pns_observed": 5,
+          "n_tablets_in_cell": 772,
+          "rate_per_tablet": 0.0065
+        },
+        {
+          "period": "Ebla (ca. 2350-2250 BC)",
+          "provenience_bucket": "Periphery West / Mari/Ebla",
+          "n_pos_match_pns_observed": 3,
+          "n_tablets_in_cell": 133,
+          "rate_per_tablet": 0.0226
+        },
+        {
+          "period": "Old Akkadian (ca. 2340-2200 BC)",
+          "provenience_bucket": "Sumer core",
+          "n_pos_match_pns_observed": 2,
+          "n_tablets_in_cell": 27,
+          "rate_per_tablet": 0.0741
+        },
+        {
+          "period": "ED IIIb (ca. 2500-2340 BC)",
+          "provenience_bucket": "Sumer core",
+          "n_pos_match_pns_observed": 2,
+          "n_tablets_in_cell": 59,
+          "rate_per_tablet": 0.0339
+        },
+        {
+          "period": "Old Babylonian (ca. 1900-1600 BC)",
+          "provenience_bucket": "Unknown / Other",
+          "n_pos_match_pns_observed": 2,
+          "n_tablets_in_cell": 28,
+          "rate_per_tablet": 0.0714
+        },
+        {
+          "period": "ED IIIa (ca. 2600-2500 BC)",
+          "provenience_bucket": "Unknown / Other",
+          "n_pos_match_pns_observed": 1,
+          "n_tablets_in_cell": 8,
+          "rate_per_tablet": 0.125
+        },
+        {
+          "period": "Ur III (ca. 2100-2000 BC)",
+          "provenience_bucket": "Unknown / Other",
+          "n_pos_match_pns_observed": 1,
+          "n_tablets_in_cell": 78,
+          "rate_per_tablet": 0.0128
+        }
+      ],
+      "verdict": "P30-G1: of 102 position-matched PNs, 7 were observed on Meluhha-mentioning tablets distributed across 7 period x provenience cells. Densest cell: Ur III (ca. 2100-2000 BC) / Sumer core (5 PNs, 772 tablets).",
+      "_elapsed_seconds": 0.02
+    },
+    "P30-G8": {
+      "test_id": "P30-G8",
+      "test_name": "Cohen's d effect size for Enmenanak vs random PN baseline",
+      "n_pns": 1222,
+      "observed_score": 7.0,
+      "baseline_mean": 1.3691,
+      "baseline_sd": 0.9055,
+      "cohens_d": 6.2189,
+      "verdict": "P30-G8: Enmenanak score 7.0 vs corpus baseline (mean=1.3691, sd=0.9055, n=1222); Cohen's d = 6.2189 (large).",
+      "_elapsed_seconds": 0.0
+    },
+    "P30-G9": {
+      "test_id": "P30-G9",
+      "test_name": "M77 bigram LM train, predict Janabiyah",
+      "n_repeats": 50,
+      "n_train": 1500,
+      "n_test": 169,
+      "janabiyah_signs": [
+        "53",
+        "147",
+        "364",
+        "145",
+        "126",
+        "16",
+        "145"
+      ],
+      "held_out_ppl_mean": 27.1171,
+      "janabiyah_ppl_mean": 65.6014,
+      "ppl_ratio_janabiyah_to_heldout": 2.4192,
+      "verdict": "P30-G9: M77 bigram LM held-out PPL = 27.12; Janabiyah PPL under same LM = 65.60 (ratio 2.42). Janabiyah is structurally distinct from M77 (PPL ratio > 2).",
+      "_elapsed_seconds": 0.07
+    }
+  },
+  "decision_summary": [
+    "PASS: A1 + E7 both reject the null at p<0.05.",
+    "PASS: 49 PNs survive period filter.",
+    "WARN: no PN co-occurs with Meluhha keyword on any tablet.",
+    "WARN: no PN survives BH-FDR (q=0.05).",
+    "PASS: Cohen's d = 6.22 (large effect).",
+    "WARN: Janabiyah PPL ratio 2.42 > 2 (distinct)."
+  ],
+  "next_action": "PARTIAL — Phase-30a partially supports the Phase-29 headline. Proceed cautiously: corpus expansion (F1, F9) + falsification round (E1) before publication."
+}

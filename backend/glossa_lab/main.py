@@ -24,6 +24,7 @@ from glossa_lab.api.cgsa import router as cgsa_router
 from glossa_lab.api.collab import router as collab_router
 from glossa_lab.api.corpus_catalogue import router as corpus_catalogue_router
 from glossa_lab.api.discovery import router as discovery_router
+from glossa_lab.api.notifications import router as notifications_router
 from glossa_lab.api.env import router as env_router
 from glossa_lab.api.experiment_graphs import router as experiment_graphs_router
 from glossa_lab.api.experiments import router as experiments_router
@@ -239,6 +240,7 @@ def create_app() -> FastAPI:
     application.include_router(ag2_chat_router, prefix="/api/v1")
     application.include_router(cgsa_router, prefix="/api/v1")
     application.include_router(discovery_router)  # already prefixed at /api/v1/discovery
+    application.include_router(notifications_router)  # already prefixed at /api/v1/notifications
 
     # Serve built frontend
     # Skipped silently in dev if the dist directory does not yet exist.

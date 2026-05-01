@@ -221,10 +221,11 @@ export const deleteGraphExperiment = (id: string): Promise<{ deleted: boolean }>
 
 export const runGraphExperiment = (
   id: string,
-  kwargs: Record<string, unknown> = {}
+  kwargs: Record<string, unknown> = {},
+  notify = false,
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Promise<{ status: string; result: Record<string, any> }> =>
-  request("POST", `/experiment-graphs/${id}/run`, { kwargs });
+  request("POST", `/experiment-graphs/${id}/run`, { kwargs, notify });
 
 // ── Health & Status ───────────────────────────────────────────────────
 
@@ -574,8 +575,14 @@ async function* _sseStream<T>(response: Response, signal?: AbortSignal): AsyncGe
 export async function* runStudyStream(
   studyId: string,
   signal?: AbortSignal,
+  notify = false,
 ): AsyncGenerator<StudyRunEvent> {
-  const res = await fetch(`${BASE}/studies/${studyId}/run`, { method: "POST", signal });
+  const res = await fetch(`${BASE}/studies/${studyId}/run`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ notify }),
+    signal,
+  });
   yield* _sseStream<StudyRunEvent>(res, signal);
 }
 
@@ -583,11 +590,12 @@ export async function* runGraphExperimentStream(
   expId: string,
   kwargs: Record<string, unknown> = {},
   signal?: AbortSignal,
+  notify = false,
 ): AsyncGenerator<ExpRunEvent> {
   const res = await fetch(`${BASE}/experiment-graphs/${expId}/run`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ kwargs }),
+    body: JSON.stringify({ kwargs, notify }),
     signal,
   });
   yield* _sseStream<ExpRunEvent>(res, signal);
@@ -1544,3 +1552,75 @@ export const startDiscoveryMine = (body: {
   topic?: string; limit?: number;
 }): Promise<DiscoveryJobAck> =>
   request("POST", "/discovery/mine", body);
+
+// ── Notifications (email recipients + send log) ────────────────────────
+
+export interface NotificationRecipient {
+  id: string;
+  email: string;
+  label: string;
+  active: number; // 0 | 1
+  created_at: string;
+  updated_at: string;
+}
+
+export interface NotificationLogEntry {
+  id: string;
+  recipient: string;
+  subject: string;
+  kind: string;
+  sent_at: string;
+  item_count: number;
+  status: string; // sent | failed | skipped
+  error: string;
+}
+
+export interface NotifierStatus {
+  configured: boolean;
+  host: string;
+  port: number;
+  from: string;
+  use_tls: boolean;
+  username_set: boolean;
+  password_set: boolean;
+  recipients_total: number;
+  recipients_active: number;
+}
+
+export interface NotificationTestResult {
+  subject: string;
+  results: { recipient: string; status: string; error: string }[];
+  sent: number;
+  failed: number;
+}
+
+export const listNotificationRecipients = (
+): Promise<{ recipients: NotificationRecipient[]; count: number }> =>
+  request("GET", "/notifications/recipients");
+
+export const createNotificationRecipient = (
+  body: { email: string; label?: string; active?: boolean },
+): Promise<NotificationRecipient> =>
+  request("POST", "/notifications/recipients", body);
+
+export const updateNotificationRecipient = (
+  rid: string,
+  body: Partial<{ email: string; label: string; active: boolean }>,
+): Promise<NotificationRecipient> =>
+  request("PATCH", `/notifications/recipients/${encodeURIComponent(rid)}`, body);
+
+export const deleteNotificationRecipient = (
+  rid: string,
+): Promise<{ deleted: boolean; id: string }> =>
+  request("DELETE", `/notifications/recipients/${encodeURIComponent(rid)}`);
+
+export const getNotifierStatus = (): Promise<NotifierStatus> =>
+  request("GET", "/notifications/status");
+
+export const listNotificationLog = (
+  limit = 100,
+): Promise<{ entries: NotificationLogEntry[]; limit: number }> =>
+  request("GET", `/notifications/log?limit=${limit}`);
+
+export const sendTestNotification = (): Promise<NotificationTestResult> =>
+  request("POST", "/notifications/test");

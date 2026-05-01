@@ -12,15 +12,23 @@
  * it just shows whether the notifier is currently configured.
  */
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   createNotificationRecipient,
   deleteNotificationRecipient,
+  disconnectGraph,
+  getDiscoverySchedulerStatus,
   getNotifierStatus,
   listNotificationLog,
   listNotificationRecipients,
+  pollGraphDeviceFlow,
   sendTestNotification,
+  startDiscoveryScheduler,
+  startGraphDeviceFlow,
+  stopDiscoveryScheduler,
   updateNotificationRecipient,
+  type DiscoverySchedulerStatus,
+  type GraphDeviceFlowStart,
   type NotificationLogEntry,
   type NotificationRecipient,
   type NotifierStatus,
@@ -32,22 +40,31 @@ export function NotificationsPanel() {
   const [status, setStatus]   = useState<NotifierStatus | null>(null);
   const [rows, setRows]       = useState<NotificationRecipient[]>([]);
   const [log, setLog]         = useState<NotificationLogEntry[]>([]);
+  const [sched, setSched]     = useState<DiscoverySchedulerStatus | null>(null);
   const [loading, setLoading] = useState(true);
   const [busy, setBusy]       = useState(false);
   const [newEmail, setNewEmail] = useState("");
   const [newLabel, setNewLabel] = useState("");
 
+  // Outlook 365 device-code flow state
+  const [graphFlow, setGraphFlow] = useState<GraphDeviceFlowStart | null>(null);
+  const [graphPolling, setGraphPolling] = useState(false);
+  const [graphError, setGraphError] = useState<string>("");
+  const graphPollAbort = useRef(false);
+
   const refresh = useCallback(async () => {
     setLoading(true);
     try {
-      const [s, r, l] = await Promise.all([
+      const [s, r, l, sc] = await Promise.all([
         getNotifierStatus(),
         listNotificationRecipients(),
         listNotificationLog(20),
+        getDiscoverySchedulerStatus().catch(() => null),
       ]);
       setStatus(s);
       setRows(r.recipients);
       setLog(l.entries);
+      setSched(sc);
     } catch (e) {
       toast(e instanceof Error ? e.message : "Failed to load notifications", "error");
     } finally {
@@ -113,6 +130,91 @@ export function NotificationsPanel() {
     } finally { setBusy(false); }
   };
 
+  // ── Microsoft Graph: device-code flow ────────────────────────────────
+
+  const onConnectOutlook = async () => {
+    setGraphError("");
+    setBusy(true);
+    try {
+      const flow = await startGraphDeviceFlow();
+      setGraphFlow(flow);
+      graphPollAbort.current = false;
+      void pollGraphLoop(flow);
+    } catch (e) {
+      setGraphError(e instanceof Error ? e.message : "Could not start device flow");
+      toast("Outlook connect failed \u2014 check ms_graph_client_id", "error");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const pollGraphLoop = async (flow: GraphDeviceFlowStart) => {
+    setGraphPolling(true);
+    const intervalMs = Math.max(2000, flow.interval * 1000);
+    while (!graphPollAbort.current) {
+      await new Promise((r) => setTimeout(r, intervalMs));
+      if (graphPollAbort.current) break;
+      try {
+        const res = await pollGraphDeviceFlow(flow.session_id);
+        if (res.status === "success") {
+          toast("Outlook 365 connected", "success");
+          setGraphFlow(null);
+          setGraphPolling(false);
+          await refresh();
+          return;
+        }
+        if (res.status === "failed" || res.status === "expired") {
+          setGraphError(res.error || res.status);
+          setGraphPolling(false);
+          return;
+        }
+      } catch (e) {
+        setGraphError(e instanceof Error ? e.message : "poll failed");
+        setGraphPolling(false);
+        return;
+      }
+    }
+    setGraphPolling(false);
+  };
+
+  const onCancelOutlookFlow = () => {
+    graphPollAbort.current = true;
+    setGraphFlow(null);
+    setGraphPolling(false);
+  };
+
+  const onDisconnectOutlook = async () => {
+    if (!window.confirm("Disconnect Outlook 365? You can reconnect anytime.")) return;
+    setBusy(true);
+    try {
+      await disconnectGraph();
+      toast("Outlook 365 disconnected", "info");
+      await refresh();
+    } catch (e) {
+      toast(e instanceof Error ? e.message : "Disconnect failed", "error");
+    } finally { setBusy(false); }
+  };
+
+  // ── Discovery scheduler auto-start ─────────────────────────────────────
+
+  const onToggleAutoStart = async (enable: boolean) => {
+    setBusy(true);
+    try {
+      const next = enable
+        ? await startDiscoveryScheduler()
+        : await stopDiscoveryScheduler();
+      setSched(next);
+      toast(
+        enable
+          ? `Auto-start ON — fetch + mine + digest will run every ${Math.round(next.interval_seconds / 3600)}h`
+          : "Auto-start OFF",
+        "info",
+      );
+    } catch (e) {
+      toast(e instanceof Error ? e.message : "Toggle failed", "error");
+    } finally { setBusy(false); }
+  };
+
   const configured = status?.configured ?? false;
   const activeCount = status?.recipients_active ?? 0;
   const totalCount  = status?.recipients_total ?? 0;
@@ -137,12 +239,18 @@ export function NotificationsPanel() {
         <span style={{ fontSize: 16 }}>{configured ? "✅" : "⚠️"}</span>
         <div style={{ flex: 1, minWidth: 220 }}>
           <div style={{ fontSize: 13, fontWeight: 600, color: configured ? "#15803d" : "#92400e" }}>
-            {configured ? "SMTP configured" : "SMTP not configured"}
+            {configured
+              ? (status?.transport === "graph"
+                  ? "Outlook 365 (Microsoft Graph) configured"
+                  : "SMTP configured")
+              : "Email not configured"}
           </div>
           <div style={{ fontSize: 11, color: "#6b7280", marginTop: 2 }}>
-            {configured
-              ? `Host ${status?.host}:${status?.port} · From ${status?.from || "(unset)"} · ${activeCount}/${totalCount} active`
-              : "Set smtp_host and smtp_from in API Keys to enable email."}
+            {!configured
+              ? "Connect Outlook 365 below \u2014 or set smtp_host + smtp_from in API Keys."
+              : status?.transport === "graph"
+                ? `Tenant ${status?.graph_tenant} · ${activeCount}/${totalCount} active recipients`
+                : `Host ${status?.host}:${status?.port} · From ${status?.from || "(unset)"} · ${activeCount}/${totalCount} active`}
           </div>
         </div>
         <button onClick={() => void onTest()} disabled={busy || !configured || activeCount === 0}
@@ -160,6 +268,111 @@ export function NotificationsPanel() {
             background: "#fff", cursor: "pointer", fontSize: 12 }}>
           ⟳
         </button>
+      </div>
+
+      {/* Outlook 365 connect block */}
+      <div style={{ marginTop: 14, padding: "12px 14px", borderRadius: 7,
+        border: "1px solid #c7d2fe", background: "#eef2ff" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+          <span style={{ fontSize: 16 }}>📧</span>
+          <div style={{ flex: 1, minWidth: 240 }}>
+            <div style={{ fontSize: 13, fontWeight: 700, color: "#3730a3" }}>
+              Outlook 365 (Microsoft Graph)
+            </div>
+            <div style={{ fontSize: 11, color: "#4338ca", marginTop: 2 }}>
+              {status?.graph_configured
+                ? `Connected. Tenant: ${status?.graph_tenant}. Mail.Send delegated.`
+                : status?.graph_client_id_set
+                  ? "Client ID set, but not yet authorised. Click Connect to start."
+                  : "Set ms_graph_client_id in API Keys (after registering a public-client app at entra.microsoft.com), then click Connect."}
+            </div>
+          </div>
+          {status?.graph_configured ? (
+            <button onClick={() => void onDisconnectOutlook()} disabled={busy}
+              style={{ padding: "5px 12px", border: "1px solid #c7d2fe",
+                borderRadius: 6, background: "#fff", color: "#4338ca",
+                fontSize: 12, fontWeight: 600, cursor: busy ? "not-allowed" : "pointer" }}>
+              Disconnect
+            </button>
+          ) : (
+            <button onClick={() => void onConnectOutlook()}
+              disabled={busy || !status?.graph_client_id_set || graphPolling}
+              title={!status?.graph_client_id_set
+                ? "Set ms_graph_client_id in API Keys first"
+                : "Start the device-code OAuth flow"}
+              style={{ padding: "5px 14px", border: "none", borderRadius: 6,
+                background: "#4338ca", color: "#fff", fontSize: 12, fontWeight: 700,
+                cursor: busy || !status?.graph_client_id_set ? "not-allowed" : "pointer",
+                opacity: busy || !status?.graph_client_id_set ? 0.5 : 1 }}>
+              🔗 Connect Outlook 365
+            </button>
+          )}
+        </div>
+        {graphFlow && (
+          <div style={{ marginTop: 10, padding: "10px 12px", borderRadius: 6,
+            background: "#fff", border: "1px solid #c7d2fe" }}>
+            <div style={{ fontSize: 12, color: "#374151" }}>
+              1. Open <a href={graphFlow.verification_uri} target="_blank"
+                rel="noopener noreferrer" style={{ color: "#4338ca" }}>
+                {graphFlow.verification_uri}
+              </a>
+            </div>
+            <div style={{ fontSize: 12, color: "#374151", marginTop: 4 }}>
+              2. Paste this code:
+            </div>
+            <div style={{ marginTop: 6, fontSize: 22, fontWeight: 800,
+              fontFamily: "monospace", color: "#4338ca", letterSpacing: 2,
+              padding: "6px 10px", border: "2px dashed #c7d2fe",
+              borderRadius: 6, display: "inline-block" }}>
+              {graphFlow.user_code}
+            </div>
+            <div style={{ fontSize: 11, color: "#6b7280", marginTop: 6 }}>
+              {graphPolling ? "Waiting for approval\u2026 (polls automatically)" : "Polling stopped"}
+              {" "}· Code expires in {Math.round(graphFlow.expires_in / 60)} min.
+              <button onClick={onCancelOutlookFlow}
+                style={{ marginLeft: 8, padding: "2px 8px", border: "1px solid #d1d5db",
+                  borderRadius: 4, background: "#fff", cursor: "pointer", fontSize: 11,
+                  color: "#6b7280" }}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
+        {graphError && (
+          <div style={{ marginTop: 8, fontSize: 11, color: "#b91c1c" }}>
+            ⚠ {graphError}
+          </div>
+        )}
+      </div>
+
+      {/* Auto-start discovery scheduler toggle */}
+      <div style={{ marginTop: 14, padding: "12px 14px", borderRadius: 7,
+        border: `1px solid ${sched?.running ? "#86efac" : "#e5e7eb"}`,
+        background: sched?.running ? "#f0fdf4" : "#fafafa",
+        display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+        <span style={{ fontSize: 16 }}>{sched?.running ? "⏱️" : "💤"}</span>
+        <div style={{ flex: 1, minWidth: 240 }}>
+          <div style={{ fontSize: 13, fontWeight: 600, color: sched?.running ? "#15803d" : "#374151" }}>
+            Auto-start discovery {sched?.running ? "— RUNNING" : "— OFF"}
+          </div>
+          <div style={{ fontSize: 11, color: "#6b7280", marginTop: 2 }}>
+            {sched
+              ? `Fetch + mine + digest every ${Math.round(sched.interval_seconds / 3600)}h. ${
+                  sched.enabled ? "Persisted; will resume on next backend boot." : "Not persisted."
+                }`
+              : "Loading scheduler status\u2026"}
+          </div>
+        </div>
+        <div onClick={() => !busy && void onToggleAutoStart(!sched?.running)}
+          title={sched?.running ? "Stop scheduler + persist OFF" : "Start scheduler + persist ON"}
+          style={{ width: 44, height: 24, borderRadius: 12, cursor: busy ? "not-allowed" : "pointer",
+            flexShrink: 0, position: "relative",
+            background: sched?.running ? "#22c55e" : "#d1d5db",
+            opacity: busy ? 0.5 : 1, transition: "background 0.2s" }}>
+          <div style={{ position: "absolute", top: 3, left: sched?.running ? 23 : 3,
+            width: 18, height: 18, borderRadius: "50%", background: "#fff",
+            boxShadow: "0 1px 3px rgba(0,0,0,0.25)", transition: "left 0.2s" }} />
+        </div>
       </div>
 
       {/* Recipients */}

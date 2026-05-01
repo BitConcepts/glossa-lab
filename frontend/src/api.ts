@@ -1577,14 +1577,40 @@ export interface NotificationLogEntry {
 
 export interface NotifierStatus {
   configured: boolean;
+  transport: "graph" | "smtp" | "none";
   host: string;
   port: number;
   from: string;
   use_tls: boolean;
   username_set: boolean;
   password_set: boolean;
+  graph_configured: boolean;
+  graph_client_id_set: boolean;
+  graph_tenant: string;
   recipients_total: number;
   recipients_active: number;
+}
+
+export interface GraphDeviceFlowStart {
+  session_id: string;
+  user_code: string;
+  verification_uri: string;
+  expires_in: number;
+  interval: number;
+  message: string;
+}
+
+export interface GraphDeviceFlowPoll {
+  status: "pending" | "success" | "failed" | "expired";
+  error?: string;
+}
+
+export interface DiscoverySchedulerStatus {
+  running: boolean;
+  enabled: boolean;
+  interval_seconds: number;
+  newly_started?: boolean;
+  stopped?: boolean;
 }
 
 export interface NotificationTestResult {
@@ -1624,3 +1650,30 @@ export const listNotificationLog = (
 
 export const sendTestNotification = (): Promise<NotificationTestResult> =>
   request("POST", "/notifications/test");
+
+// ── Microsoft Graph (Outlook 365) device-code OAuth ───────────────────
+
+export const startGraphDeviceFlow = (): Promise<GraphDeviceFlowStart> =>
+  request("POST", "/notifications/graph/start");
+
+export const pollGraphDeviceFlow = (
+  session_id: string,
+): Promise<GraphDeviceFlowPoll> =>
+  request("POST", "/notifications/graph/poll", { session_id });
+
+export const disconnectGraph = (): Promise<{ disconnected: boolean }> =>
+  request("POST", "/notifications/graph/disconnect");
+
+// ── Discovery scheduler runtime control ──────────────────────────
+
+export const getDiscoverySchedulerStatus = (
+): Promise<DiscoverySchedulerStatus> =>
+  request("GET", "/discovery/scheduler/status");
+
+export const startDiscoveryScheduler = (
+): Promise<DiscoverySchedulerStatus> =>
+  request("POST", "/discovery/scheduler/start");
+
+export const stopDiscoveryScheduler = (
+): Promise<DiscoverySchedulerStatus> =>
+  request("POST", "/discovery/scheduler/stop");

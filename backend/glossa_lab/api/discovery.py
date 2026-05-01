@@ -32,6 +32,7 @@ from glossa_lab.discovery.fetchers import (
 )
 from glossa_lab.discovery.llm import LLMClient
 from glossa_lab.discovery.mine import mine_pending
+from glossa_lab.discovery import scheduler as _scheduler
 
 router = APIRouter(prefix="/api/v1/discovery", tags=["discovery"])
 
@@ -263,6 +264,37 @@ async def mine_endpoint(body: MineRequest) -> JobAck:
 
     asyncio.create_task(_runner(), name=f"discovery_mine_{job_id}")
     return JobAck(job_id=job_id, status="running", message="Mine started")
+
+
+# ── Scheduler runtime control ─────────────────────────────────────
+
+
+@router.get("/scheduler/status")
+async def scheduler_status() -> dict[str, Any]:
+    """Snapshot of whether the auto-start scheduler is running + persisted on/off."""
+    return {
+        "running": _scheduler.is_running(),
+        "enabled": _scheduler._enabled(),  # noqa: SLF001
+        "interval_seconds": _scheduler._interval_seconds(),  # noqa: SLF001
+    }
+
+
+@router.post("/scheduler/start")
+async def scheduler_start() -> dict[str, Any]:
+    """Persist auto-start=on AND start the in-process task immediately."""
+    started = await _scheduler.enable_at_runtime()
+    return {
+        "running": _scheduler.is_running(),
+        "newly_started": started,
+        "interval_seconds": _scheduler._interval_seconds(),  # noqa: SLF001
+    }
+
+
+@router.post("/scheduler/stop")
+async def scheduler_stop() -> dict[str, Any]:
+    """Persist auto-start=off AND cancel the running task."""
+    stopped = await _scheduler.disable_at_runtime()
+    return {"running": _scheduler.is_running(), "stopped": stopped}
 
 
 __all__ = ["router"]

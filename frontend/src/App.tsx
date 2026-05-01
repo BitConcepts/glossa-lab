@@ -18,6 +18,7 @@ import { TimelineView } from "./components/TimelineView";
 import { CitationManager } from "./components/CitationManager";
 import { CASModelView } from "./components/CASModelView";
 import { AG2Panel } from "./components/AG2Panel";
+import { DiscoveryView } from "./components/Discovery/DiscoveryView";
 import { CommandPalette, type PaletteCommand } from "./components/CommandPalette";
 import { AIChatWindow, AISidePanel } from "./components/AIChatWindow";
 import { BottomPanel } from "./components/BottomPanel";
@@ -30,6 +31,7 @@ type Tab =
   | "status" | "indus-data" | "builder" | "experiments" | "pipelines"
   | "corpora" | "jobs" | "reports" | "settings"
   | "entropy" | "hypotheses" | "notebooks" | "ai-tools" | "signs" | "timeline" | "citations" | "help" | "models" | "ag2"
+  | "discovery"
   | "exp-builder"; // legacy alias — still handled but not in nav
 
 interface NavItem { id: Tab; label: string; icon: string; }
@@ -63,6 +65,7 @@ const NAV_SECTIONS: NavSection[] = [
   {
     title: "Research",
     items: [
+      { id: "discovery",  label: "Discovery",  icon: "🔭" },
       { id: "hypotheses", label: "Hypotheses", icon: "💡" },
       { id: "notebooks",  label: "Notebooks",  icon: "📓" },
       { id: "citations",  label: "Citations",  icon: "📖" },
@@ -443,6 +446,7 @@ function AppContent() {
               {tab === "signs"       && <SignDictionary />}
               {tab === "timeline"    && <TimelineView onNavigate={(t) => setTab(t as Tab)} />}
               {tab === "citations"   && <CitationManager />}
+              {tab === "discovery"   && <DiscoveryView />}
               {tab === "help"        && <HelpView />}
             </main>
           );

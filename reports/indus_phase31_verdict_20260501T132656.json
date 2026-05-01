@@ -1,0 +1,601 @@
+{
+  "phase": "31",
+  "timestamp_utc": "20260501T132656",
+  "scope": "M77 vs Tamil-Brahmi (Mahadevan 2003) parallel-corpus comparison",
+  "corpora": {
+    "m77": {
+      "n_inscriptions": 1669,
+      "n_tokens": 5361,
+      "n_distinct_signs": 64
+    },
+    "tamil_brahmi": {
+      "n_inscriptions": 47,
+      "n_aksharas": 637,
+      "n_distinct_aksharas": 104,
+      "raw_summary": {
+        "n_total_inscriptions": 47,
+        "n_tamil_brahmi": 30,
+        "n_vatteluttu": 17,
+        "n_with_aksharas_extracted": 47,
+        "total_aksharas_in_corpus": 694,
+        "n_distinct_aksharas_normalized": 265,
+        "top_20_aksharas": [
+          [
+            "na",
+            31
+          ],
+          [
+            "ka",
+            25
+          ],
+          [
+            "ta",
+            24
+          ],
+          [
+            "tà",
+            20
+          ],
+          [
+            "ya",
+            16
+          ],
+          [
+            "a",
+            16
+          ],
+          [
+            "ti",
+            15
+          ],
+          [
+            "па",
+            12
+          ],
+          [
+            "ца",
+            12
+          ],
+          [
+            "pa",
+            12
+          ],
+          [
+            "ma",
+            11
+          ],
+          [
+            "tu",
+            11
+          ],
+          [
+            "và",
+            11
+          ],
+          [
+            "а",
+            9
+          ],
+          [
+            "la",
+            9
+          ],
+          [
+            "ko",
+            9
+          ],
+          [
+            "ni",
+            9
+          ],
+          [
+            "ra",
+            9
+          ],
+          [
+            "l.2",
+            9
+          ],
+          [
+            "li",
+            8
+          ]
+        ]
+      }
+    }
+  },
+  "results": {
+    "t1_positional_profiles": {
+      "test_id": "T1",
+      "test_name": "Positional profile entropy comparison (I/M/T)",
+      "m77_summary": {
+        "corpus": "M77 (Indus)",
+        "n_signs": 61,
+        "mean_entropy_bits": 1.2933,
+        "median_entropy_bits": 1.3943,
+        "min_entropy_bits": 0.4022,
+        "max_entropy_bits": 1.5784
+      },
+      "tb_summary": {
+        "corpus": "Tamil-Brahmi (Mahadevan 2003)",
+        "n_signs": 63,
+        "mean_entropy_bits": 0.3785,
+        "median_entropy_bits": 0.0,
+        "min_entropy_bits": 0.0,
+        "max_entropy_bits": 1.3788
+      },
+      "ks_statistic": 0.8064,
+      "m77_top_15_profiles": [
+        {
+          "sign": "047",
+          "I": 0.5435,
+          "M": 0.1957,
+          "T": 0.2609,
+          "n": 541
+        },
+        {
+          "sign": "740",
+          "I": 0.0185,
+          "M": 0.9352,
+          "T": 0.0463,
+          "n": 432
+        },
+        {
+          "sign": "700",
+          "I": 0.0562,
+          "M": 0.8315,
+          "T": 0.1124,
+          "n": 355
+        },
+        {
+          "sign": "874",
+          "I": 0.1295,
+          "M": 0.6562,
+          "T": 0.2143,
+          "n": 219
+        },
+        {
+          "sign": "400",
+          "I": 0.2629,
+          "M": 0.4064,
+          "T": 0.3307,
+          "n": 211
+        },
+        {
+          "sign": "520",
+          "I": 0.0804,
+          "M": 0.799,
+          "T": 0.1206,
+          "n": 196
+        },
+        {
+          "sign": "481",
+          "I": 0.449,
+          "M": 0.4388,
+          "T": 0.1122,
+          "n": 179
+        },
+        {
+          "sign": "692",
+          "I": 0.4262,
+          "M": 0.3443,
+          "T": 0.2295,
+          "n": 171
+        },
+        {
+          "sign": "427",
+          "I": 0.1636,
+          "M": 0.4788,
+          "T": 0.3576,
+          "n": 147
+        },
+        {
+          "sign": "861",
+          "I": 0.2,
+          "M": 0.3758,
+          "T": 0.4242,
+          "n": 138
+        },
+        {
+          "sign": "003",
+          "I": 0.0403,
+          "M": 0.6129,
+          "T": 0.3468,
+          "n": 124
+        },
+        {
+          "sign": "820",
+          "I": 0.2358,
+          "M": 0.5285,
+          "T": 0.2358,
+          "n": 121
+        },
+        {
+          "sign": "817",
+          "I": 0.1402,
+          "M": 0.6636,
+          "T": 0.1963,
+          "n": 107
+        },
+        {
+          "sign": "858",
+          "I": 0.2807,
+          "M": 0.4123,
+          "T": 0.307,
+          "n": 105
+        },
+        {
+          "sign": "090",
+          "I": 0.3107,
+          "M": 0.3786,
+          "T": 0.3107,
+          "n": 102
+        }
+      ],
+      "tb_top_15_profiles": [
+        {
+          "akshara": "na",
+          "I": 0.0492,
+          "M": 0.7705,
+          "T": 0.1803,
+          "n": 61
+        },
+        {
+          "akshara": "a",
+          "I": 0.1091,
+          "M": 0.8727,
+          "T": 0.0182,
+          "n": 55
+        },
+        {
+          "akshara": "ta",
+          "I": 0.0,
+          "M": 0.9783,
+          "T": 0.0217,
+          "n": 46
+        },
+        {
+          "akshara": "l",
+          "I": 0.2581,
+          "M": 0.6774,
+          "T": 0.0645,
+          "n": 31
+        },
+        {
+          "akshara": "ka",
+          "I": 0.1034,
+          "M": 0.8966,
+          "T": 0.0,
+          "n": 29
+        },
+        {
+          "akshara": "ya",
+          "I": 0.0,
+          "M": 0.7619,
+          "T": 0.2381,
+          "n": 21
+        },
+        {
+          "akshara": "pa",
+          "I": 0.15,
+          "M": 0.85,
+          "T": 0.0,
+          "n": 20
+        },
+        {
+          "akshara": "ca",
+          "I": 0.125,
+          "M": 0.875,
+          "T": 0.0,
+          "n": 16
+        },
+        {
+          "akshara": "ti",
+          "I": 0.125,
+          "M": 0.8125,
+          "T": 0.0625,
+          "n": 16
+        },
+        {
+          "akshara": "va",
+          "I": 0.0667,
+          "M": 0.9333,
+          "T": 0.0,
+          "n": 15
+        },
+        {
+          "akshara": "ma",
+          "I": 0.0667,
+          "M": 0.8667,
+          "T": 0.0667,
+          "n": 15
+        },
+        {
+          "akshara": "i",
+          "I": 0.1538,
+          "M": 0.6154,
+          "T": 0.2308,
+          "n": 13
+        },
+        {
+          "akshara": "tu",
+          "I": 0.0769,
+          "M": 0.9231,
+          "T": 0.0,
+          "n": 13
+        },
+        {
+          "akshara": "ra",
+          "I": 0.0,
+          "M": 0.8333,
+          "T": 0.1667,
+          "n": 12
+        },
+        {
+          "akshara": "ru",
+          "I": 0.0,
+          "M": 1.0,
+          "T": 0.0,
+          "n": 12
+        }
+      ],
+      "verdict": "T1 positional profiles: M77 mean entropy = 1.2933 bits (61 signs ≥5 freq), Tamil-Brahmi mean entropy = 0.3785 bits (63 aksharas ≥2 freq). KS = 0.8064. Profile distributions differ substantially (KS>=0.3).",
+      "_elapsed_seconds": 0.0
+    },
+    "t2_length_distribution": {
+      "test_id": "T2",
+      "test_name": "Inscription length distribution",
+      "m77": {
+        "corpus": "M77 (Indus)",
+        "n": 1669,
+        "mean": 3.212,
+        "median": 2,
+        "p25": 1,
+        "p75": 4,
+        "p95": 7,
+        "min": 1,
+        "max": 72
+      },
+      "tamil_brahmi": {
+        "corpus": "Tamil-Brahmi",
+        "n": 47,
+        "mean": 13.553,
+        "median": 10,
+        "p25": 6,
+        "p75": 16,
+        "p95": 37,
+        "min": 2,
+        "max": 63
+      },
+      "ePSD2_pn_segmented_forms": {
+        "corpus": "ePSD2 PN segmented forms",
+        "n": 1353,
+        "mean": 3.28,
+        "median": 3,
+        "p25": 3,
+        "p75": 4,
+        "p95": 5,
+        "min": 1,
+        "max": 9
+      },
+      "ks_m77_vs_tb": 0.6809,
+      "ks_m77_vs_pn": 0.3231,
+      "ks_tb_vs_pn": 0.7584,
+      "verdict": "T2 length distributions: M77 mean = 3.21 (n=1669), Tamil-Brahmi mean = 13.55 (n=47), ePSD2 PN-form mean = 3.28 (n=1353). KS(M77,TB)=0.6809, KS(M77,PN)=0.3231, KS(TB,PN)=0.7584. Lower KS between M77 and Tamil-Brahmi than between M77 and PN would support the Dravidian hypothesis.",
+      "_elapsed_seconds": 0.01
+    },
+    "t3_zipf": {
+      "test_id": "T3",
+      "test_name": "Zipf-Mandelbrot rank-frequency comparison",
+      "m77_top_10": [
+        {
+          "sign": "047",
+          "freq": 541
+        },
+        {
+          "sign": "740",
+          "freq": 432
+        },
+        {
+          "sign": "700",
+          "freq": 355
+        },
+        {
+          "sign": "874",
+          "freq": 219
+        },
+        {
+          "sign": "400",
+          "freq": 211
+        },
+        {
+          "sign": "520",
+          "freq": 196
+        },
+        {
+          "sign": "481",
+          "freq": 179
+        },
+        {
+          "sign": "692",
+          "freq": 171
+        },
+        {
+          "sign": "427",
+          "freq": 147
+        },
+        {
+          "sign": "861",
+          "freq": 138
+        }
+      ],
+      "tb_top_10": [
+        {
+          "akshara": "na",
+          "freq": 61
+        },
+        {
+          "akshara": "a",
+          "freq": 55
+        },
+        {
+          "akshara": "ta",
+          "freq": 46
+        },
+        {
+          "akshara": "l",
+          "freq": 31
+        },
+        {
+          "akshara": "ka",
+          "freq": 29
+        },
+        {
+          "akshara": "ya",
+          "freq": 21
+        },
+        {
+          "akshara": "pa",
+          "freq": 20
+        },
+        {
+          "akshara": "ca",
+          "freq": 16
+        },
+        {
+          "akshara": "ti",
+          "freq": 16
+        },
+        {
+          "akshara": "va",
+          "freq": 15
+        }
+      ],
+      "m77_zipf_slope": 0.7482,
+      "tb_zipf_slope": 0.9256,
+      "slope_diff": 0.1774,
+      "verdict": "T3 Zipf slopes: M77 = 0.7482, Tamil-Brahmi = 0.9256, |delta| = 0.1774. Similar slopes (delta < 0.3) suggest the same statistical regime (syllabic / logo-syllabic script with comparable lexicon size).",
+      "_elapsed_seconds": 0.0
+    },
+    "t4_kl_divergence": {
+      "test_id": "T4",
+      "test_name": "KL divergence between M77 and Tamil-Brahmi top-N positional profiles",
+      "top_n": 10,
+      "n_m77_top": 10,
+      "n_tb_top": 10,
+      "pairwise_best_matches": [
+        {
+          "m77_sign": "047",
+          "m77_profile": {
+            "I": 0.543,
+            "M": 0.196,
+            "T": 0.261
+          },
+          "best_tb_match": "l",
+          "best_kl_bits": 0.7592
+        },
+        {
+          "m77_sign": "740",
+          "m77_profile": {
+            "I": 0.019,
+            "M": 0.935,
+            "T": 0.046
+          },
+          "best_tb_match": "a",
+          "best_kl_bits": 0.1083
+        },
+        {
+          "m77_sign": "700",
+          "m77_profile": {
+            "I": 0.056,
+            "M": 0.831,
+            "T": 0.112
+          },
+          "best_tb_match": "na",
+          "best_kl_bits": 0.0255
+        },
+        {
+          "m77_sign": "874",
+          "m77_profile": {
+            "I": 0.129,
+            "M": 0.656,
+            "T": 0.214
+          },
+          "best_tb_match": "na",
+          "best_kl_bits": 0.0822
+        },
+        {
+          "m77_sign": "400",
+          "m77_profile": {
+            "I": 0.263,
+            "M": 0.406,
+            "T": 0.331
+          },
+          "best_tb_match": "l",
+          "best_kl_bits": 0.4872
+        },
+        {
+          "m77_sign": "520",
+          "m77_profile": {
+            "I": 0.08,
+            "M": 0.799,
+            "T": 0.121
+          },
+          "best_tb_match": "na",
+          "best_kl_bits": 0.0289
+        },
+        {
+          "m77_sign": "481",
+          "m77_profile": {
+            "I": 0.449,
+            "M": 0.439,
+            "T": 0.112
+          },
+          "best_tb_match": "l",
+          "best_kl_bits": 0.1735
+        },
+        {
+          "m77_sign": "692",
+          "m77_profile": {
+            "I": 0.426,
+            "M": 0.344,
+            "T": 0.23
+          },
+          "best_tb_match": "l",
+          "best_kl_bits": 0.3925
+        },
+        {
+          "m77_sign": "427",
+          "m77_profile": {
+            "I": 0.164,
+            "M": 0.479,
+            "T": 0.358
+          },
+          "best_tb_match": "na",
+          "best_kl_bits": 0.3083
+        },
+        {
+          "m77_sign": "861",
+          "m77_profile": {
+            "I": 0.2,
+            "M": 0.376,
+            "T": 0.424
+          },
+          "best_tb_match": "na",
+          "best_kl_bits": 0.5391
+        }
+      ],
+      "avg_best_kl_bits": 0.2905,
+      "avg_kl_vs_uniform": 0.3533,
+      "verdict": "T4 KL divergence: average best-match KL between M77 top-10 signs and Tamil-Brahmi top-10 aksharas = 0.2905 bits (vs uniform-profile baseline 0.3533). Lower than uniform => some positional alignment.",
+      "_elapsed_seconds": 0.0
+    }
+  },
+  "decision_summary": [
+    "T1: KS(M77 entropy, TB entropy) = 0.8064.",
+    "T2: KS(M77,TB)=0.6809, KS(M77,PN)=0.3231. M77 closer to PN than TB.",
+    "T3: |Zipf slope diff| = 0.1774.",
+    "T4: avg best-match KL = 0.2905 bits (vs uniform 0.3533)."
+  ],
+  "next_action": "WEAK SUPPORT: M77 is NOT closer to Tamil-Brahmi than to Sumerian/Akkadian PNs. The Dravidian-script hypothesis still has iconographic-anchor backing (Phase-30c T3-v2) but lacks structural-positional corroboration. Investigate whether OCR noise + parser coverage (only 47/110 inscriptions) is the cause."
+}

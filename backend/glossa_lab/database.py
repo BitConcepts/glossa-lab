@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Increment this when adding a new _SCHEMA_Vn block below.
 # _apply_schema will raise if the DB is somehow ahead of the code.
-_SCHEMA_VERSION = 12
+_SCHEMA_VERSION = 13
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -181,6 +181,33 @@ CREATE TABLE IF NOT EXISTS cas_models (
 );
 """
 
+_SCHEMA_V13 = """
+CREATE TABLE IF NOT EXISTS discovery_items (
+    id            TEXT PRIMARY KEY,
+    title         TEXT NOT NULL DEFAULT '',
+    url           TEXT NOT NULL DEFAULT '',
+    source        TEXT NOT NULL DEFAULT '',
+    topic         TEXT NOT NULL DEFAULT '',
+    published_at  TEXT NOT NULL DEFAULT '',
+    fetched_at    TEXT NOT NULL,
+    lang          TEXT NOT NULL DEFAULT '',
+    raw_json      TEXT NOT NULL DEFAULT '{}',
+    summary       TEXT NOT NULL DEFAULT '',
+    kind          TEXT NOT NULL DEFAULT 'other',
+    confidence    REAL NOT NULL DEFAULT 0.0,
+    links         TEXT NOT NULL DEFAULT '[]',
+    status        TEXT NOT NULL DEFAULT 'new',
+    notes         TEXT NOT NULL DEFAULT ''
+);
+
+CREATE INDEX IF NOT EXISTS idx_discovery_topic_fetched
+    ON discovery_items(topic, fetched_at DESC);
+CREATE INDEX IF NOT EXISTS idx_discovery_status_fetched
+    ON discovery_items(status, fetched_at DESC);
+CREATE INDEX IF NOT EXISTS idx_discovery_kind_fetched
+    ON discovery_items(kind, fetched_at DESC);
+"""
+
 _SCHEMA_V12 = """
 CREATE TABLE IF NOT EXISTS canonical_signs (
     internal_id        TEXT PRIMARY KEY,
@@ -320,6 +347,11 @@ class Database:
             await self._conn.executescript(_SCHEMA_V12)
             await self._conn.execute("UPDATE _schema_version SET version = ?", (12,))
             current_version = 12
+
+        if current_version < 13:
+            await self._conn.executescript(_SCHEMA_V13)
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (13,))
+            current_version = 13
 
         if current_version > _SCHEMA_VERSION:
             logger.warning(
@@ -1274,6 +1306,158 @@ class Database:
             return {"n_clusters": 0, "cluster_k": 0, "n_signs": 0}
         return dict(row)
 
+    # ── Discovery Items (V13) ────────────────────────────────────────────
+
+    async def upsert_discovery_item(
+        self,
+        *,
+        item_id: str,
+        title: str,
+        url: str,
+        source: str,
+        topic: str,
+        published_at: str,
+        fetched_at: str,
+        lang: str = "",
+        raw: dict[str, Any] | None = None,
+    ) -> bool:
+        """Insert a new item, or merge ``topic`` if the id already exists.
+
+        Returns True if a new row was created, False if the existing row was
+        only updated (topic-merge / latest-fetched_at).
+        """
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT topic FROM discovery_items WHERE id=?", (item_id,)
+        )
+        existing = await cursor.fetchone()
+        if existing is None:
+            await self._conn.execute(
+                """INSERT INTO discovery_items
+                   (id,title,url,source,topic,published_at,fetched_at,lang,raw_json)
+                   VALUES (?,?,?,?,?,?,?,?,?)""",
+                (
+                    item_id, title, url, source, topic, published_at,
+                    fetched_at, lang, json.dumps(raw or {}),
+                ),
+            )
+            await self._conn.commit()
+            return True
+        # Merge topic CSV (set semantics) and bump fetched_at
+        existing_topics = {t for t in (existing["topic"] or "").split(",") if t}
+        new_topics = {t for t in (topic or "").split(",") if t}
+        merged = ",".join(sorted(existing_topics | new_topics))
+        await self._conn.execute(
+            "UPDATE discovery_items SET topic=?, fetched_at=? WHERE id=?",
+            (merged, fetched_at, item_id),
+        )
+        await self._conn.commit()
+        return False
+
+    async def update_discovery_classification(
+        self,
+        item_id: str,
+        *,
+        kind: str,
+        confidence: float,
+        summary: str,
+        links: list[dict[str, Any]] | None = None,
+    ) -> dict[str, Any] | None:
+        assert self._conn
+        await self._conn.execute(
+            """UPDATE discovery_items
+               SET kind=?, confidence=?, summary=?, links=?
+               WHERE id=?""",
+            (kind, float(confidence), summary, json.dumps(links or []), item_id),
+        )
+        await self._conn.commit()
+        return await self.get_discovery_item(item_id)
+
+    async def update_discovery_status(
+        self,
+        item_id: str,
+        *,
+        status: str,
+        notes: str | None = None,
+    ) -> dict[str, Any] | None:
+        assert self._conn
+        safe_status = status if status in ("new", "reviewed", "dismissed", "saved") else "new"
+        if notes is None:
+            await self._conn.execute(
+                "UPDATE discovery_items SET status=? WHERE id=?",
+                (safe_status, item_id),
+            )
+        else:
+            await self._conn.execute(
+                "UPDATE discovery_items SET status=?, notes=? WHERE id=?",
+                (safe_status, notes, item_id),
+            )
+        await self._conn.commit()
+        return await self.get_discovery_item(item_id)
+
+    async def get_discovery_item(self, item_id: str) -> dict[str, Any] | None:
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM discovery_items WHERE id=?", (item_id,)
+        )
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    async def list_discovery_items(
+        self,
+        *,
+        topic: str | None = None,
+        kind: str | None = None,
+        status: str | None = None,
+        since: str | None = None,
+        limit: int = 50,
+        offset: int = 0,
+    ) -> list[dict[str, Any]]:
+        assert self._conn
+        q = "SELECT * FROM discovery_items WHERE 1=1"
+        args: list[Any] = []
+        if topic:
+            # CSV match — items whose topic column contains this id
+            q += " AND (',' || topic || ',') LIKE ?"
+            args.append(f"%,{topic},%")
+        if kind:
+            q += " AND kind=?"
+            args.append(kind)
+        if status:
+            q += " AND status=?"
+            args.append(status)
+        if since:
+            q += " AND fetched_at >= ?"
+            args.append(since)
+        q += " ORDER BY fetched_at DESC LIMIT ? OFFSET ?"
+        args.extend([int(limit), int(offset)])
+        cursor = await self._conn.execute(q, args)
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    async def count_discovery_by(
+        self,
+        *,
+        group: str = "status",
+    ) -> dict[str, int]:
+        """Group counts by one of: status, kind, topic, source."""
+        assert self._conn
+        if group not in ("status", "kind", "topic", "source"):
+            return {}
+        cursor = await self._conn.execute(
+            f"SELECT {group} AS g, COUNT(*) AS cnt FROM discovery_items GROUP BY {group}"
+        )
+        rows = await cursor.fetchall()
+        return {(r["g"] or ""): int(r["cnt"]) for r in rows}
+
+    async def delete_discovery_item(self, item_id: str) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_discovery_item(item_id)
+        if existing is None:
+            return None
+        await self._conn.execute("DELETE FROM discovery_items WHERE id=?", (item_id,))
+        await self._conn.commit()
+        return existing
+
     # ── Helpers ──────────────────────────────────────────────────
 
     @staticmethod
@@ -1293,6 +1477,8 @@ class Database:
             "tags",
             "sections",   # report_templates
             "pairs",      # anchor_sets
+            "raw_json",   # discovery_items
+            "links",      # discovery_items
         ):
             if field in d and isinstance(d[field], str):
                 try:

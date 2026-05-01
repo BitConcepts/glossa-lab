@@ -253,6 +253,14 @@ export function DiscoveryView() {
 
   const [fetching, setFetching] = useState(false);
   const [mining, setMining] = useState(false);
+  // Persist the notify-on-run preference per browser so subsequent runs default
+  // to the same setting until the user toggles it.
+  const [notifyOnRun, setNotifyOnRun] = useState<boolean>(
+    () => localStorage.getItem("glossa_discovery_notify") === "1",
+  );
+  useEffect(() => {
+    localStorage.setItem("glossa_discovery_notify", notifyOnRun ? "1" : "0");
+  }, [notifyOnRun]);
 
   // ── Data loading ────────────────────────────────────────────────────────
   const loadMeta = useCallback(async () => {
@@ -365,7 +373,18 @@ export function DiscoveryView() {
             {" "}{configuredSources} of {sources.length} sources configured · keys editable in Settings.
           </p>
         </div>
-        <div style={{ display: "flex", gap: 6 }}>
+        <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+          <label style={{ display: "inline-flex", alignItems: "center", gap: 5,
+              fontSize: 11, color: notifyOnRun ? "#7c3aed" : "#6b7280",
+              padding: "4px 8px", border: `1px solid ${notifyOnRun ? "#c4b5fd" : "#e5e7eb"}`,
+              borderRadius: 5, cursor: "pointer",
+              background: notifyOnRun ? "#faf5ff" : "#fff" }}
+              title="When enabled, fetch + mine runs trigger an email digest if SMTP is configured">
+            <input type="checkbox" checked={notifyOnRun}
+              onChange={(e) => setNotifyOnRun(e.target.checked)}
+              style={{ cursor: "pointer" }} />
+            ✉ Notify
+          </label>
           <button onClick={() => { void loadItems(); void loadMeta(); }} style={btnSecondary} title="Reload">
             ⟳ Reload
           </button>

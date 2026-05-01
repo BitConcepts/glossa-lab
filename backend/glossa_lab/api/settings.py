@@ -33,6 +33,15 @@ KNOWN_KEYS = [
     "serp_api_key",
     "news_api_key",
     "brave_search_api_key",
+    # SMTP — outbound email notifications (discovery digest + study/experiment
+    # completion emails). All optional; if smtp_host or smtp_from is unset the
+    # Notifier becomes a silent no-op so runs never fail because of missing creds.
+    "smtp_host",
+    "smtp_port",
+    "smtp_username",
+    "smtp_password",
+    "smtp_from",
+    "smtp_use_tls",
 ]
 
 KNOWN_PROVIDERS = ["openai", "anthropic", "google", "mistral", "ollama"]

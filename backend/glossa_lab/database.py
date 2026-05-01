@@ -1325,26 +1325,33 @@ class Database:
 
         Returns True if a new row was created, False if the existing row was
         only updated (topic-merge / latest-fetched_at).
+
+        The insert path uses ``INSERT OR IGNORE`` so concurrent fetchers cannot
+        race on the check-then-insert pattern — SQLite resolves the conflict
+        atomically and the caller falls through to the merge path on collision.
         """
         assert self._conn
         cursor = await self._conn.execute(
-            "SELECT topic FROM discovery_items WHERE id=?", (item_id,)
+            """INSERT OR IGNORE INTO discovery_items
+               (id,title,url,source,topic,published_at,fetched_at,lang,raw_json)
+               VALUES (?,?,?,?,?,?,?,?,?)""",
+            (
+                item_id, title, url, source, topic, published_at,
+                fetched_at, lang, json.dumps(raw or {}),
+            ),
         )
-        existing = await cursor.fetchone()
-        if existing is None:
-            await self._conn.execute(
-                """INSERT INTO discovery_items
-                   (id,title,url,source,topic,published_at,fetched_at,lang,raw_json)
-                   VALUES (?,?,?,?,?,?,?,?,?)""",
-                (
-                    item_id, title, url, source, topic, published_at,
-                    fetched_at, lang, json.dumps(raw or {}),
-                ),
-            )
+        if cursor.rowcount == 1:
             await self._conn.commit()
             return True
-        # Merge topic CSV (set semantics) and bump fetched_at
-        existing_topics = {t for t in (existing["topic"] or "").split(",") if t}
+        # Existing row — read its current topic CSV so we can merge with set
+        # semantics (and a stable sort order) and bump fetched_at.
+        sel = await self._conn.execute(
+            "SELECT topic FROM discovery_items WHERE id=?", (item_id,)
+        )
+        row = await sel.fetchone()
+        existing_topics = (
+            {t for t in (row["topic"] or "").split(",") if t} if row else set()
+        )
         new_topics = {t for t in (topic or "").split(",") if t}
         merged = ",".join(sorted(existing_topics | new_topics))
         await self._conn.execute(

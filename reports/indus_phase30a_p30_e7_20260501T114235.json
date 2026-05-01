@@ -1,0 +1,17 @@
+{
+  "test_id": "P30-E7",
+  "test_name": "Random-mapping null for iconographic anchor score",
+  "n_permutations": 10000,
+  "n_anchors": 12,
+  "n_signs_in_phoneme_map": 33,
+  "observed_anchor_score": 24.5,
+  "null_mean": 1.9252,
+  "null_p50": 0.0,
+  "null_p95": 8.0,
+  "null_p99": 11.0,
+  "null_max": 18.0,
+  "p_value_one_sided": 0.0001,
+  "rank_percentile": 100.0,
+  "verdict": "P30-E7: observed anchor score 24.50 sits at the 100.00 percentile of 10000 random sign->phoneme permutations; null mean 1.93, p95 8.00; empirical p=0.0001.",
+  "_elapsed_seconds": 0.22
+}

@@ -669,11 +669,44 @@ async def _run_ai_analysis_node(
         return {"status": "error", "reason": f"AI analysis failed: {exc}"}
 
 
+class RunStudyBody(BaseModel):
+    notify: bool = False  # send a completion email when finished
+
+
+async def _maybe_notify_study(
+    *, study_id: str, study_name: str, status: str,
+    summary: dict[str, Any], duration_s: float | None,
+) -> None:
+    """Fire a study_complete email; never raises into the runner."""
+    try:
+        from glossa_lab.notifications import (  # noqa: PLC0415
+            format_study_complete, get_notifier,
+        )
+        notifier = get_notifier()
+        if not notifier.is_configured():
+            return
+        recipients = await notifier.list_active_recipients()
+        if not recipients:
+            return
+        subject, body_text, body_html = format_study_complete(
+            name=study_name, study_id=study_id, status=status,
+            summary=summary, duration_s=duration_s,
+        )
+        await notifier.send(
+            subject=subject, body_text=body_text, body_html=body_html,
+            kind="study_complete", item_count=0,
+            recipients=recipients,
+        )
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("study notify failed: %s", exc)
+
+
 @router.post("/studies/{study_id}/run")
-async def run_study(study_id: str) -> StreamingResponse:  # noqa: PLR0912
+async def run_study(study_id: str, body: RunStudyBody | None = None) -> StreamingResponse:  # noqa: PLR0912
     """Stream study execution as Server-Sent Events.
 
     Events: started | node_start | node_end | run_complete | run_error
+    Pass ``{"notify": true}`` in the body to email recipients on completion.
     """
     db = get_db()
     if db is None:
@@ -685,11 +718,20 @@ async def run_study(study_id: str) -> StreamingResponse:  # noqa: PLR0912
     graph = study.get("graph") or {}
     nodes: list[dict[str, Any]] = graph.get("nodes", [])
     edges: list[dict[str, Any]] = graph.get("edges", [])
+    notify_on_done = bool(body and body.notify)
 
     async def _stream() -> AsyncGenerator[str, None]:  # noqa: PLR0912
-        # ── Create job record ─────────────────────────────────────────────────
+        _t0 = datetime.now(timezone.utc)
+        # ── Create job record ─────────────────────────────────────
         job_id: str | None = None
         if not nodes:
+            if notify_on_done:
+                await _maybe_notify_study(
+                    study_id=study_id, study_name=study["name"],
+                    status="completed",
+                    summary={"node_count": 0},
+                    duration_s=(datetime.now(timezone.utc) - _t0).total_seconds(),
+                )
             yield _sse({"event": "run_complete", "study_id": study_id,
                         "node_count": 0, "completed": 0, "errors": 0,
                         "skipped": 0, "annotations": 0, "results": {}, "job_id": None})
@@ -772,6 +814,13 @@ async def run_study(study_id: str) -> StreamingResponse:  # noqa: PLR0912
                     await db.update_job_status(job_id, "failed")
                 except Exception:  # noqa: BLE001
                     pass
+            if notify_on_done:
+                await _maybe_notify_study(
+                    study_id=study_id, study_name=study["name"],
+                    status="failed",
+                    summary={"error": str(exc)},
+                    duration_s=(datetime.now(timezone.utc) - _t0).total_seconds(),
+                )
             return
 
         # ── Summary ───────────────────────────────────────────────────────
@@ -796,6 +845,19 @@ async def run_study(study_id: str) -> StreamingResponse:  # noqa: PLR0912
             except Exception as je:  # noqa: BLE001
                 logger.warning("Could not update job record: %s", je)
 
+        if notify_on_done:
+            await _maybe_notify_study(
+                study_id=study_id, study_name=study["name"],
+                status=final_status,
+                summary={
+                    "node_count": len(ordered),
+                    "completed": completed,
+                    "skipped": skipped,
+                    "annotations": annotations,
+                    "errors": errors,
+                },
+                duration_s=(datetime.now(timezone.utc) - _t0).total_seconds(),
+            )
         yield _sse({"event": "run_complete", "study_id": study_id, "job_id": job_id,
                     "node_count": len(ordered), "completed": completed,
                     "skipped": skipped, "annotations": annotations, "errors": errors,

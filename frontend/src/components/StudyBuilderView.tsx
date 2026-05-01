@@ -727,7 +727,8 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
   }, [activeStudy, loadStudy]);
 
   // ── Run (streaming) — one run per study; state persists across navigation. ────────
-  const doRun = useCallback(async (target: StudyResponse) => {
+  // notify=true asks the backend to email all active recipients on completion.
+  const doRun = useCallback(async (target: StudyResponse, notify = false) => {
     if (_srStore.runs[target.id]) return;  // already running (single-run guard)
     setRunError(null);
     if (target.id === activeStudy?.id) await doSave();
@@ -736,7 +737,7 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
     _srSet(prev => ({ ...prev, [target.id]: initRun }));
     window.dispatchEvent(new CustomEvent("glossa:running", { detail: { builder: "study", running: true, id: target.id, name: target.name } }));
     try {
-      for await (const ev of runStudyStream(target.id, controller.signal)) {
+      for await (const ev of runStudyStream(target.id, controller.signal, notify)) {
         if (ev.event === "started") {
           _srSet(prev => ({ ...prev, [target.id]: { ...prev[target.id], totalNodes: ev.node_count ?? 0 } }));
         } else if (ev.event === "node_start" && ev.nid) {
@@ -1075,7 +1076,10 @@ export function StudyBuilderView({ darkMode = true }: { darkMode?: boolean }) {
                     <span style={{ fontSize: 8, color: runBadge.color, fontWeight: 700, flexShrink: 0, whiteSpace: "nowrap" }}>{runBadge.label}</span>
                   )}
                   {!isRunning && (
-                    <button onClick={e => { e.stopPropagation(); void doRun(s); }} title="Run study" style={{ ...bm, color: "#22c55e", borderColor: "#15803d40", background: "none", padding: "0 3px" }}>▶</button>
+                    <>
+                      <button onClick={e => { e.stopPropagation(); void doRun(s); }} title="Run study" style={{ ...bm, color: "#22c55e", borderColor: "#15803d40", background: "none", padding: "0 3px" }}>▶</button>
+                      <button onClick={e => { e.stopPropagation(); void doRun(s, true); }} title="Run + email recipients on completion" style={{ ...bm, color: "#7c3aed", borderColor: "#7c3aed40", background: "none", padding: "0 3px" }}>✉</button>
+                    </>
                   )}
                   <button onClick={e => { e.stopPropagation(); void dupStudy(s); }} title="Dup" style={{ ...bm, color: th.textMuted, borderColor: th.border }}>⥘</button>
                   <button onClick={e => void delStudy(s.id, e)} title={deleteConfirm === s.id ? "Confirm?" : "Delete"}

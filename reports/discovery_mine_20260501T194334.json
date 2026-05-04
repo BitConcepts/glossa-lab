@@ -1,0 +1,421 @@
+{
+  "topic": null,
+  "considered": 94,
+  "pending": 50,
+  "classified": 50,
+  "failed": 0,
+  "by_kind": {
+    "study": 11,
+    "finding": 1,
+    "hypothesis": 6,
+    "review": 1,
+    "other": 30,
+    "tooling": 1
+  },
+  "items": [
+    {
+      "id": "05d77e5b633e95b0bb3fd33347b11a97f60e88d333ae7f416d0ba99121753103",
+      "kind": "study",
+      "confidence": 0.95,
+      "n_links": 2,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "e1fdcdadb0bb3ed600be1986946d0acc9fdf8e4e120590a3b91c5b70fe146284",
+      "kind": "finding",
+      "confidence": 0.98,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "a994183235d33ebee52d10d3fc6140691778444ffc4953360d9b8d5fbe1e3b99",
+      "kind": "hypothesis",
+      "confidence": 0.95,
+      "n_links": 1,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "ac65b51099a435eac0de55b872fba4c134880821151c7cb0a619125b64c0dae4",
+      "kind": "study",
+      "confidence": 0.98,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "412ab786e8270599958bb7be53828f7334e4bb60e481222ae439dee7b9a552b1",
+      "kind": "hypothesis",
+      "confidence": 0.95,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "e6854993d7bd7525e34a33c761bf0f6b678b17f1a7dcc4f7eb5a440efd16a4ec",
+      "kind": "study",
+      "confidence": 0.98,
+      "n_links": 4,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "431a382ff97a623263fa5846648f5a66ddff9af7e98c18c5b8bd9172a655178d",
+      "kind": "study",
+      "confidence": 0.98,
+      "n_links": 4,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "9293e7f4c8557fb4b765e8baa6e89bb6ee79fc6e857fde70eb3ea71ce0f354b0",
+      "kind": "hypothesis",
+      "confidence": 0.95,
+      "n_links": 2,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "4e9a0db4c3f378592ef6024484103d72064e4a9817cdc7c5b67a1ed2592b5b5c",
+      "kind": "study",
+      "confidence": 0.98,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "609a985870217f716d715e7545cc2a1cdce0a30482003ab1466054cea4da1484",
+      "kind": "hypothesis",
+      "confidence": 0.95,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "a992e32207b3953a3f32f45f374942885d4508eaea59100a83fd3dcd9954bb8f",
+      "kind": "hypothesis",
+      "confidence": 0.95,
+      "n_links": 1,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "66f2988266d452104429910876e601b6b0a3291c553f7280ff6afb2be7e81178",
+      "kind": "study",
+      "confidence": 0.95,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "d6460503556e418795ea20df52eab182216d54117fc5de1cbc36e253f944fc58",
+      "kind": "study",
+      "confidence": 0.95,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "de355ec53a4524e5566fb2218b3598b45b3f7f586c891bb4e8d456f1d0409454",
+      "kind": "study",
+      "confidence": 0.98,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "e7bb9d7f621ca5b8aa6c06154605cd82dee1ae42568b22ec211a021df12602b1",
+      "kind": "study",
+      "confidence": 0.98,
+      "n_links": 6,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "bed2cf22f5e8faa307d92a5113851c8c0eb29acf5286fa98ac40e6e4b6e82483",
+      "kind": "hypothesis",
+      "confidence": 0.95,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "272e6b31c0bfacedb470fe224662116889ad754a0e8d27007d64e78c9b583a79",
+      "kind": "study",
+      "confidence": 0.98,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "ec43212601a26f83f474e4a9938206af176381297ed8d4cf8d253ee0b878e8a0",
+      "kind": "review",
+      "confidence": 0.95,
+      "n_links": 2,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "70308e7932d4971c83823e26ffe2976d132cc386d25ed2edb8c327913facb982",
+      "kind": "other",
+      "confidence": 0.05,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "5369114b2ffe8e0bf084190ac88d5462e777783ac735495d73b2bd8aa8112bc5",
+      "kind": "other",
+      "confidence": 0.95,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "101697ea96236ce65ff7b787b85943eed09ef0e122e920d40a1afb5f2b041c4a",
+      "kind": "other",
+      "confidence": 0.95,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "29bee4c02380340d73c5b5f73dc56fa2516e5f74491c14ceadd8a1a22ced5ef6",
+      "kind": "study",
+      "confidence": 0.95,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "62331e6365dbd74a09fbea3ba3db6305524453fd7eb90ce7a1fa8086265fa99f",
+      "kind": "other",
+      "confidence": 0.95,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "9244c83f806ab2f10915f13ece0d971d85598ba84c36f1cf0e461327787d5da9",
+      "kind": "other",
+      "confidence": 0.0,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "d9d08b2b87513557c9e75af7a77a36106df2fbc26d673bd203571898ff3b5b97",
+      "kind": "other",
+      "confidence": 0.1,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "4d0fbe3bd49a674e63280c980c8f4fc0d93a8b56e45120fd8fe83f3895c4d262",
+      "kind": "other",
+      "confidence": 0.95,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "7456cf7bc8f48a2da48bbcf58db0e0f1641eac3614763eb0f845ac4ba883d115",
+      "kind": "other",
+      "confidence": 0.95,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "b2373ae146bbb9eb564411d44a5abece372f7390c80e4aa4245c37a4bdac090d",
+      "kind": "other",
+      "confidence": 0.95,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "29c6b08f200578b419a98f12c92c78c097f0025df0c58221f2d88f3a0f10b16b",
+      "kind": "other",
+      "confidence": 0.0,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "029e2455c821a867d8643b7786688c91e65208c8d3557ab557db4c437e69b726",
+      "kind": "other",
+      "confidence": 0.0,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "b3d08d0caff6ea76967414a18550e41ba750d1e44fa76d1534f4bda26085c5c5",
+      "kind": "other",
+      "confidence": 0.0,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "767f11320edbd991240d38741bf15268183b03f5a0142302d96ae137ffedf7af",
+      "kind": "other",
+      "confidence": 0.0,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "e1ac580a9447fc5306e46c853c3dd8326341bff9e74064ce332a28da2b5d2b3a",
+      "kind": "other",
+      "confidence": 0.0,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "6dcdfd1a2aa2ff6633eebb182582594f9accce760cb889ef0f7745fba1e76379",
+      "kind": "other",
+      "confidence": 0.0,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "75f6db084b97603a95e7d5c9f04e7aee229d216841d4c92c0f8c2c52ed185c36",
+      "kind": "other",
+      "confidence": 0.05,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "a9109d974cdc127d269b545ed87ba200837db32a8c3f7821b768029d7222b9bf",
+      "kind": "other",
+      "confidence": 0.05,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "fe55395b385fd4bcd2108744b44746550c56d2e03fbe5dcbe28f8a3eca9f12bc",
+      "kind": "other",
+      "confidence": 0.05,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "8054d8b3e8b4ecaf58db7f1b54be0719f0e2cee5215b75059e32bbeb91c70d88",
+      "kind": "other",
+      "confidence": 0.0,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "077105dcc3a33ea1360686ec08e1127fc2e5e7bd5e573aa5c3bfbe03296b7a71",
+      "kind": "other",
+      "confidence": 0.0,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "9c71f94b099d6b1075458cc2c63cf36beb0bb3bdfae7e45189a9d3a07aeede9a",
+      "kind": "other",
+      "confidence": 0.05,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "d183e8df11c7d290c99ab8810c41d0cafa6684abbba6c48a819421d09a222a78",
+      "kind": "other",
+      "confidence": 0.05,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "8bff342d5acacddab99f8dca6374350a69fd328db207da88f3bc7a84fe60ca9a",
+      "kind": "other",
+      "confidence": 0.05,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "842e0ec39358a27c8cfd6fbd24fb12d46d51989b895d99158fa5c0a31b78e51e",
+      "kind": "other",
+      "confidence": 0.0,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "72dbd7e90de05d3bd8e32b2a7e2bb962e9d3b4e7bbc7f9f92b71646bd327e562",
+      "kind": "other",
+      "confidence": 0.95,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "3baadf69e0fd6cf3ccfe48a17129c202f26442a56aa086e5337ce5a628cc8a0b",
+      "kind": "other",
+      "confidence": 0.1,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "5a555b2e0248cd743686fb0fd4c76e5a6a4b59ee588c1a31bcfba79c2fe56053",
+      "kind": "tooling",
+      "confidence": 0.95,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "57cea3acd4b7cf8a9b1ca51bba4592470ded5fd57c575333ba0aeb38fe679ccd",
+      "kind": "other",
+      "confidence": 0.05,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "c080437f3b205f48dfd13d49ebf1195023e0d4380c2507331f044a6485e09f3c",
+      "kind": "other",
+      "confidence": 0.05,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "3082edf12b1ed025cbeb907a6376f5946dc4349f1900d5af6cced0003a5d543e",
+      "kind": "other",
+      "confidence": 0.0,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    },
+    {
+      "id": "e141966cfeee1511c6bb93b73ead1fe5b6a68bf65d81c247333b0f347b67f059",
+      "kind": "other",
+      "confidence": 0.0,
+      "n_links": 0,
+      "provider": "mistral",
+      "error": ""
+    }
+  ],
+  "providers_configured": [
+    "mistral",
+    "openai"
+  ]
+}

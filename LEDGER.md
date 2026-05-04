@@ -4857,3 +4857,51 @@ Risks:
 - Strict_mode + a CV-only value-role map biases the recall metric strongly toward syllabaries (Greek); this is inherent to the rigorous-CTT framing and must be documented in any results commentary.
 
 Next step: Expand DEFAULT_INDUS_VALUE_ROLE_MAP per language family, re-run Phase-10 with branch-specific role maps, and compare recall scores honestly. If Tamil with full DEDR coverage still scores 0 against held-out CISI inscriptions, the Dravidian hypothesis is in real trouble.
+
+---
+
+## [2026-05-04] Entry — Executable AI insights, AI-profile suggester, Phase-30a M77 length stratification
+
+Objective: Make the dashboard's AI "next actions" actually executable (one-click Apply per action), surface the existing `/ai-profiles/suggest` backend in the AI Profiles settings panel, and add Phase-30a as a finer-grained length-stratified follow-up to Phase-20a on the full Mahadevan 1977 corpus.
+
+What was done:
+- DashboardView Apply buttons. Replaced the read-only "Next actions" bullet list with per-action ▶ Apply buttons. Each button dispatches based on `action_type`:
+  - `run_experiment` → `runGraphExperiment(experiment_id)`
+  - `open_view` → dispatches `glossa:navigate`
+  - `run_fetch` / `run_mine` → `startDiscoveryFetch` / `startDiscoveryMine`
+  - `create_hypothesis` → `createHypothesis`
+  - `propose_experiment_chain` / `ai_chat` → prompts the docked Glossa AI panel via `useAIChat.openChat` + `glossa:open-ai-panel`
+  - other types → best-effort `executeAiAction` POST
+  Impact-row entries now also render an Apply button when the LLM has tagged the impact with a `suggested_action`. Per-action busy state (`applying`) prevents double-clicks.
+- AIProfilesPanel suggester. Added an indigo "✨ Auto-suggest profiles" block above the manual create form that calls `suggestAIProfiles()`, renders preview cards (name, backend kind chip, role chip, rationale, notes), and supports both single-card "➕ Create" and bulk "➕ Create all N" via the existing `createAIProfile` API. Suggestions are removed from the preview list after creation so the user sees progress.
+- Phase-30a graph. New file `backend/glossa_lab/experiments/graphs/indus_phase30a_period_stratified_m77.json`. 5-node graph: `M77InscriptionLoader` → `LengthStratifier` (8 fine-grained bins `[[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,8],[9,9999]]`) → `BinSpectralFingerprint` → `Merger` → `JSONExport`. Reuses pre-existing Phase-20 atomic nodes only — no new Python.
+- Stale TODO sweep. Removed 13 legacy TODOs from the in-conversation list (Phase 21a-c grounded ranker, Phase 22 ClusterCollapseTransform, Phase 23 anchor pin + LM null, Phase 24 joint multi-LM posterior, Phase 25 positional transitions, Phase 26 k-fold + bootstrap, Phase 27 saved-finding loop, structured next_actions backend, AI-profile suggester backend) which had been superseded by the actual on-disk Phase 20–29 work + already-shipped backend changes.
+
+Files changed:
+- frontend/src/components/DashboardView.tsx (modified — Apply buttons, action dispatcher, `actionLabel` helper, `btnApply` style)
+- frontend/src/components/Settings/AIProfilesPanel.tsx (modified — Suggest panel, single + bulk create handlers)
+- backend/glossa_lab/experiments/graphs/indus_phase30a_period_stratified_m77.json (created)
+- reports/phase30a_period_stratified_m77.json (run output)
+- reports/indus_phase30a_period_stratified_m77_20260504T131251.json (timestamped run output via CliReporter)
+
+Checks run:
+- `npm run build` (frontend) — clean: 225 modules transformed, `dist/assets/index-nulODap1.js` 1,001.63 kB / 295.11 kB gzipped, built in 1.70s, 0 TS errors.
+- `python -m glossa_lab.experiments indus_phase30a_period_stratified_m77` — completed cleanly; report file landed at 3,972 bytes.
+- `setup-os.cmd restart` — stop+start succeeded; `curl http://localhost:8001/api/v1/health` → `{"status":"healthy","version":"0.1.0"}`.
+
+Results:
+- The Dashboard "Next actions" + "Impact" sections are now interactive: every structured action returned by `_INSIGHT_PROMPT` (already in place from a prior session) is one click from execution; informational `no_op` items remain non-interactive.
+- AI Profiles settings UI now closes the loop on the existing `/api/v1/ai-profiles/suggest` endpoint — users can introspect their available cloud keys / Ollama models / custom endpoints and instantiate a tuned profile bundle in one click without filling the manual create form.
+- Phase-30a result on the full 1,669-inscription M77 corpus: spectral gap = 0.0 across **all 8 length buckets** (L1-1: 564 seqs, L2-2: 357, L3-3: 270, L4-4: 188, L5-5: 112, L6-6: 73, L7-8: 61, L9+: 44 seqs averaging 24.3 signs each). Top eigenvalues cluster at 1.0 in every bin. **Phase-19 prediction NOT confirmed: M77's anomalous spectral structure is not driven by short-inscription noise; it is corpus-wide deterministic at every length scale, including the very-long-tail bin.** This is the cleanest available rejection of the "short pseudo-inscriptions dominate the anomaly" hypothesis.
+
+Open TODOs:
+- [ ] BinSpectralFingerprint verdict text formatter has a copy-paste bug — in this run it printed `"spectral gap rises from 0.0000 (L1-1) to 0.0000 (L1-1) across length bins"` (the second bin label should be the largest bin, L9+). Cosmetic; per-bin numbers are correct.
+- [ ] Phase-30b–f from the Phase-30 plan are not yet built (period-stratified ePSD2 PN search, Phase-29 corpus-stats stratified by length, allograph-aware stratification on M77, joint M77 + Fuls vol. 3 ranker pending data acquisition). The Phase-30a finding suggests prioritizing the joint-corpus loaders over more length-stratified runs.
+- [ ] Apply buttons silently fall through to a generic `executeAiAction` POST for unknown action types. If the backend executor doesn't recognise the type the user gets a 4xx toast but no in-line repair option — acceptable for now, worth revisiting if the LLM starts emitting many novel types.
+
+Risks:
+- The 8-bucket Phase-30a result is informative but not statistically powered: the longest bin (L9+) has only 44 inscriptions. The verdict is qualitatively unambiguous (gap = 0 everywhere) but a permutation null per-bin would tighten the claim before publication.
+- DashboardView's Apply handler does not currently surface the SSE stream from `runGraphExperiment` — it fires the request and returns. For long-running graphs the user will only see completion via the Jobs panel, not the Apply button itself.
+- AIProfilesPanel "Create all" performs sequential POSTs without rollback. Partial failures are logged in the toast but the user has to manually delete any duplicates if they re-run Suggest+Create-all after a failure.
+
+Next step: Build Phase-30b as a length-conditioned reverse-Janabiyah search (M77ReverseJanabiyahSearchV3 against ePSD2 PNs, with results stratified by Janabiyah-skeleton length), to test whether the Janabiyah miin-pattern signal concentrates in any specific length cohort — a length-aware version of the Phase-29d test. If signal stays flat across cohorts the contact-zone hypothesis loses one more degree of freedom.

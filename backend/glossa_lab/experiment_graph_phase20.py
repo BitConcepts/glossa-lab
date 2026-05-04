@@ -271,13 +271,28 @@ def _bin_spectral_fingerprint(inputs: dict, params: dict) -> dict:
     nontrivial = [(b, d["spectral_gap"]) for b, d in per_bin.items()
                   if d.get("spectral_gap") is not None]
     if nontrivial:
-        max_bin, max_gap = max(nontrivial, key=lambda kv: kv[1])
-        min_bin, min_gap = min(nontrivial, key=lambda kv: kv[1])
+        # Bin labels are produced by LengthStratifier as e.g. "L1-2", "L7+".
+        # Sort by numeric prefix so we always quote the SHORTEST and LONGEST
+        # bin (not just the gap-min/max ones, which collapse to a single label
+        # when all gaps are tied at 0.0).
+        def _bin_lo(label: str) -> int:
+            try:
+                core = label.lstrip("L")
+                lo = core.split("-")[0].rstrip("+")
+                return int(lo)
+            except Exception:  # noqa: BLE001
+                return 0
+        ordered = sorted(nontrivial, key=lambda kv: _bin_lo(kv[0]))
+        short_bin, short_gap = ordered[0]
+        long_bin, long_gap = ordered[-1]
+        max_gap = max(g for _, g in nontrivial)
+        min_gap = min(g for _, g in nontrivial)
         rises = max_gap > 5 * max(1e-6, min_gap)
         verdict = (
             f"PREDICTION 1 {'CONFIRMED' if rises else 'NOT CONFIRMED'}: "
-            f"spectral gap rises from {min_gap:.4f} ({min_bin}) to "
-            f"{max_gap:.4f} ({max_bin}) across length bins. "
+            f"spectral gap goes from {short_gap:.4f} ({short_bin}) to "
+            f"{long_gap:.4f} ({long_bin}) across length bins "
+            f"(min={min_gap:.4f}, max={max_gap:.4f}). "
             f"{'Long-tail bins are more language-like.' if rises else 'No length effect.'}"
         )
     else:

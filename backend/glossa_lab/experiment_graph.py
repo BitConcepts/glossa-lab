@@ -2427,6 +2427,14 @@ try:
 except Exception as _p29_exc:  # noqa: BLE001
     logger.warning("Phase-29 nodes not registered: %s", _p29_exc)
 
+# ── Phase-30 nodes (length-cohort reverse Janabiyah + per-bin permutation null) ──
+try:
+    from glossa_lab.experiment_graph_phase30 import _phase30_node_defs as _p30_defs  # noqa: PLC0415
+    for _d in _p30_defs():
+        ATOMIC_NODES[_d.id] = _d
+except Exception as _p30_exc:  # noqa: BLE001
+    logger.warning("Phase-30 nodes not registered: %s", _p30_exc)
+
 
 # ── Graph execution ────────────────────────────────────────────────────────────────────
 

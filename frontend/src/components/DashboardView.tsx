@@ -1,0 +1,603 @@
+/**
+ * DashboardView — main landing page.
+ *
+ * Layout:
+ *   ┌──────────────────────────────────────────────────────────────────┐
+ *   │ Header: counts (items, studies, experiments) + ↻ refresh         │
+ *   ├──────────────────────────────────────────────────────────────────┤
+ *   │ ✨ AI Insight (lazy-loaded)         │ 📡 RSS feed (last 14 d)    │
+ *   │  • Highlights with why-it-matters   │  • most-recent first       │
+ *   │  • What it means narrative          │  • kind chip + source      │
+ *   │  • Per-study impact suggestions     │                            │
+ *   │  • Next actions                     │                            │
+ *   ├──────────────────────────────────────────────────────────────────┤
+ *   │ 🔭 Top kinds  │ 🏷 Top topics  │ 📡 Top sources                  │
+ *   └──────────────────────────────────────────────────────────────────┘
+ *
+ * The dashboard is intentionally read-only: every action button on it
+ * either opens another view or POSTs the same endpoints the rest of the
+ * app already uses.
+ */
+
+import { useCallback, useEffect, useState } from "react";
+import {
+  createHypothesis,
+  executeAiAction,
+  getDashboardHighlights,
+  regenerateDashboardInsight,
+  runGraphExperiment,
+  startDiscoveryFetch,
+  startDiscoveryMine,
+  type DashboardActionType,
+  type DashboardHighlights,
+  type DashboardInsight,
+  type DashboardNextAction,
+  type DiscoveryItem,
+} from "../api";
+import { useAIChat } from "../hooks/useAIChat";
+import { useToast } from "../hooks/useToast";
+
+const KIND_COLOURS: Record<string, { bg: string; fg: string }> = {
+  hypothesis: { bg: "#ede9fe", fg: "#6d28d9" },
+  finding:    { bg: "#dcfce7", fg: "#15803d" },
+  study:      { bg: "#dbeafe", fg: "#1d4ed8" },
+  tablet:     { bg: "#fef3c7", fg: "#b45309" },
+  review:     { bg: "#fce7f3", fg: "#be185d" },
+  tooling:    { bg: "#e0e7ff", fg: "#4338ca" },
+  other:      { bg: "#f3f4f6", fg: "#4b5563" },
+};
+
+function fmtRelative(iso: string): string {
+  if (!iso) return "";
+  const t = Date.parse(iso);
+  if (Number.isNaN(t)) return iso;
+  const dSec = Math.round((Date.now() - t) / 1000);
+  if (dSec < 60) return "just now";
+  if (dSec < 3600) return `${Math.round(dSec / 60)}m ago`;
+  if (dSec < 86400) return `${Math.round(dSec / 3600)}h ago`;
+  if (dSec < 86400 * 14) return `${Math.round(dSec / 86400)}d ago`;
+  return new Date(t).toISOString().slice(0, 10);
+}
+
+export function DashboardView() {
+  const { toast } = useToast();
+  const { openChat } = useAIChat();
+  const [data, setData] = useState<DashboardHighlights | null>(null);
+  const [insight, setInsight] = useState<DashboardInsight | null>(null);
+  const [insightLoading, setInsightLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [days, setDays] = useState(14);
+  const [running, setRunning] = useState<"" | "fetch" | "mine">("");
+
+  const refresh = useCallback(async () => {
+    setLoading(true); setError(null);
+    try {
+      const d = await getDashboardHighlights({ days, limit: 30 });
+      setData(d);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Could not load dashboard");
+    } finally {
+      setLoading(false);
+    }
+  }, [days]);
+
+  const generateInsight = useCallback(async () => {
+    setInsightLoading(true);
+    try {
+      const ins = await regenerateDashboardInsight({ days, limit: 30 });
+      setInsight(ins);
+    } catch (e) {
+      toast(e instanceof Error ? e.message : "Insight failed", "error");
+    } finally {
+      setInsightLoading(false);
+    }
+  }, [days, toast]);
+
+  useEffect(() => { void refresh(); }, [refresh]);
+
+  // Auto-generate insight once on mount (non-blocking)
+  useEffect(() => {
+    if (data && !insight && !insightLoading && data.n_items > 0) {
+      void generateInsight();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
+
+  const onRunFetch = async () => {
+    setRunning("fetch");
+    try {
+      const ack = await startDiscoveryFetch({});
+      toast(`Fetch started · job ${ack.job_id.slice(0, 8)}`, "info");
+    } catch (e) {
+      toast(e instanceof Error ? e.message : "Fetch failed", "error");
+    } finally {
+      setRunning("");
+      void refresh();
+    }
+  };
+
+  const onRunMine = async () => {
+    setRunning("mine");
+    try {
+      const ack = await startDiscoveryMine({ limit: 50 });
+      toast(`Mine started · job ${ack.job_id.slice(0, 8)} · limit 50`, "info");
+    } catch (e) {
+      toast(e instanceof Error ? e.message : "Mine failed", "error");
+    } finally {
+      setRunning("");
+      void refresh();
+    }
+  };
+
+  const askAIAbout = (it: DiscoveryItem) => {
+    openChat({
+      contextType: "", contextId: "",
+      initialPrompt: `Help me decide if this discovery item should change my research plan.\n\n` +
+                     `Title: ${it.title}\nSource: ${it.source}\nURL: ${it.url}\nTopic: ${it.topic}\n` +
+                     (it.summary ? `Summary: ${it.summary}\n` : "") +
+                     `\nGiven my current studies and experiments, what (if anything) should I do?`,
+    });
+  };
+
+  const navigate = (view: string) =>
+    window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view } }));
+
+  // ── Apply: execute a structured insight action ─────────────────────
+  const [applying, setApplying] = useState<string>("");
+  const applyAction = async (a: DashboardNextAction, key: string) => {
+    if (applying) return;
+    setApplying(key);
+    try {
+      switch (a.action_type) {
+        case "run_experiment": {
+          const expId = String(a.params?.experiment_id || "").trim();
+          if (!expId) {
+            toast("Action missing experiment_id", "warning");
+            break;
+          }
+          await runGraphExperiment(expId, {});
+          toast(`Started experiment ${expId}`, "success");
+          break;
+        }
+        case "open_view": {
+          const view = String(a.params?.view || "dashboard");
+          navigate(view);
+          toast(`Opened ${view}`, "info");
+          break;
+        }
+        case "run_fetch": {
+          const ack = await startDiscoveryFetch({});
+          toast(`Fetch started · job ${ack.job_id.slice(0, 8)}`, "info");
+          break;
+        }
+        case "run_mine": {
+          const limit = Number(a.params?.limit ?? 50);
+          const ack = await startDiscoveryMine({ limit });
+          toast(`Mine started · job ${ack.job_id.slice(0, 8)} · limit ${limit}`, "info");
+          break;
+        }
+        case "create_hypothesis": {
+          const title = String(a.params?.title || a.label || "").slice(0, 200);
+          const statement = String(a.params?.statement || a.rationale || "");
+          if (!title) {
+            toast("Action missing hypothesis title", "warning");
+            break;
+          }
+          await createHypothesis({ title, statement });
+          toast(`Hypothesis created: ${title.slice(0, 60)}`, "success");
+          break;
+        }
+        case "propose_experiment_chain": {
+          const hypothesis = String(a.params?.hypothesis || a.label || a.rationale || "");
+          openChat({
+            contextType: "",
+            contextId: "",
+            initialPrompt:
+              `Plan an experiment chain to evaluate the following hypothesis, ` +
+              `using the existing graph experiment registry where possible:\n\n` +
+              `${hypothesis}\n\n` +
+              `Return a numbered ordered chain with each step's purpose and the ` +
+              `existing experiment id (or a brief sketch if none fits).`,
+          });
+          window.dispatchEvent(new CustomEvent("glossa:open-ai-panel"));
+          toast("Sent to Glossa AI", "info");
+          break;
+        }
+        case "ai_chat": {
+          const prompt = String(a.params?.prompt || a.label || a.rationale || "");
+          openChat({ contextType: "", contextId: "", initialPrompt: prompt });
+          window.dispatchEvent(new CustomEvent("glossa:open-ai-panel"));
+          toast("Sent to Glossa AI", "info");
+          break;
+        }
+        case "no_op":
+        default:
+          // Best-effort: pass arbitrary action types to backend executor.
+          if (a.action_type && a.action_type !== "no_op") {
+            await executeAiAction({
+              type: a.action_type,
+              params: (a.params || {}) as Record<string, unknown>,
+            });
+            toast(`Executed ${a.action_type}`, "success");
+          } else {
+            toast("Informational only — nothing to apply", "info");
+          }
+      }
+    } catch (e) {
+      toast(e instanceof Error ? e.message : "Action failed", "error");
+    } finally {
+      setApplying("");
+      void refresh();
+    }
+  };
+
+  // ── render ───────────────────────────────────────────────────────────
+  return (
+    <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+      {/* Header */}
+      <div style={{ display: "flex", alignItems: "flex-end", gap: 12,
+        marginBottom: 14, flexWrap: "wrap" }}>
+        <div style={{ flex: 1, minWidth: 240 }}>
+          <h2 style={{ margin: 0, fontSize: 22, color: "#111827" }}>📊 Dashboard</h2>
+          <p style={{ margin: "4px 0 0", fontSize: 13, color: "#6b7280" }}>
+            What&rsquo;s new, what it means, and what to do about it. Highlights
+            are pulled from the last {days} days of your discovery feed; AI
+            insight tells you how new findings might shift your studies and
+            experiments.
+          </p>
+        </div>
+        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <select value={days} onChange={(e) => setDays(parseInt(e.target.value, 10))}
+            style={selectStyle}>
+            {[7, 14, 30, 60, 90].map((d) => (
+              <option key={d} value={d}>last {d} days</option>
+            ))}
+          </select>
+          <button onClick={() => void refresh()} disabled={loading} style={btnGhost}>
+            {loading ? "…" : "⟳ Reload"}
+          </button>
+          <button onClick={() => void onRunFetch()} disabled={!!running} style={btnPrimary}
+            title="Pull new items from every configured source for every topic">
+            {running === "fetch" ? "⏳ Fetching…" : "▶ Fetch now"}
+          </button>
+          <button onClick={() => void onRunMine()} disabled={!!running} style={btnAccent}
+            title="LLM-classify the next 50 un-mined items">
+            {running === "mine" ? "⏳ Mining…" : "✨ Mine 50"}
+          </button>
+        </div>
+      </div>
+
+      {/* Counters */}
+      {data && (
+        <div style={{ display: "grid", gap: 10, marginBottom: 16,
+          gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))" }}>
+          <CounterTile label="Discovery items"  value={data.n_items}        emoji="🔭"
+            sub={`last ${data.since_days}d`} onClick={() => navigate("discovery")} />
+          <CounterTile label="Studies"          value={data.n_studies}      emoji="📐"
+            sub="open builder" onClick={() => navigate("builder")} />
+          <CounterTile label="Experiments"      value={data.n_experiments}  emoji="🔀"
+            sub="graph registry" onClick={() => navigate("experiments")} />
+          <CounterTile label="Saved findings"   value={data.by_status.saved ?? 0}
+            emoji="★" sub="for follow-up" onClick={() => navigate("discovery")} />
+          <CounterTile label="Hypotheses"       value={data.by_kind.hypothesis ?? 0}
+            emoji="💡" sub="extracted" onClick={() => navigate("hypotheses")} />
+        </div>
+      )}
+
+      {error && (
+        <div style={{ background: "#fef2f2", border: "1px solid #fca5a5",
+          borderRadius: 7, padding: "10px 14px", fontSize: 13, color: "#b91c1c",
+          marginBottom: 12 }}>{error}</div>
+      )}
+
+      {/* Two-column main: AI insight (left) + RSS feed (right) */}
+      <div style={{ display: "grid", gap: 14, marginBottom: 16,
+        gridTemplateColumns: "minmax(0, 1.3fr) minmax(0, 1fr)" }}>
+
+        {/* ── AI Insight ─────────────────────────────────────────────── */}
+        <section style={card}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+            <h3 style={cardTitle}>✨ AI Insight</h3>
+            <span style={{ flex: 1 }} />
+            {insight?.model && (
+              <span style={{ fontSize: 10, padding: "2px 8px", borderRadius: 8,
+                background: insight.model === "ai" ? "#ede9fe" : "#fef3c7",
+                color: insight.model === "ai" ? "#6d28d9" : "#92400e",
+                fontWeight: 700 }}>
+                {insight.model}
+              </span>
+            )}
+            <button onClick={() => void generateInsight()} disabled={insightLoading}
+              style={btnGhost}>
+              {insightLoading ? "…" : "↻ Regenerate"}
+            </button>
+          </div>
+          {insightLoading && !insight && (
+            <div style={{ fontSize: 13, color: "#6b7280" }}>
+              Asking the AI to read the latest items and tell you what they mean…
+            </div>
+          )}
+          {!insightLoading && !insight && (
+            <button onClick={() => void generateInsight()} style={btnPrimary}>
+              Generate insight
+            </button>
+          )}
+          {insight && (
+            <>
+              <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.55,
+                margin: "4px 0 12px" }}>{insight.what_it_means}</p>
+
+              {insight.highlights.length > 0 && (
+                <>
+                  <div style={subhead}>Highlights</div>
+                  <ul style={{ margin: "4px 0 12px", paddingLeft: 18 }}>
+                    {insight.highlights.map((h, i) => (
+                      <li key={i} style={{ fontSize: 12, color: "#111827", marginBottom: 6,
+                        lineHeight: 1.5 }}>
+                        <strong>{h.title}</strong>
+                        <div style={{ color: "#4b5563", fontSize: 12, marginTop: 2 }}>
+                          {h.why_it_matters}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+
+              {insight.impact.length > 0 && (
+                <>
+                  <div style={subhead}>Impact on your studies / experiments</div>
+                  <ul style={{ margin: "4px 0 12px", paddingLeft: 18 }}>
+                    {insight.impact.map((im, i) => {
+                      const k = `impact-${i}`;
+                      const at: DashboardActionType = (im.suggested_action || "no_op") as DashboardActionType;
+                      return (
+                        <li key={i} style={{ fontSize: 12, color: "#111827", marginBottom: 6,
+                          lineHeight: 1.5, display: "flex", alignItems: "flex-start", gap: 8 }}>
+                          <div style={{ flex: 1 }}>
+                            <code style={{ color: "#7c3aed", background: "#f5f3ff",
+                              padding: "1px 6px", borderRadius: 4, fontSize: 11 }}>
+                              {im.study_or_experiment_id}
+                            </code>{" "}
+                            — {im.impact}
+                          </div>
+                          {at !== "no_op" && (
+                            <button
+                              onClick={() => void applyAction({
+                                label: actionLabel(at),
+                                action_type: at,
+                                params: { experiment_id: im.study_or_experiment_id },
+                                rationale: im.impact,
+                              }, k)}
+                              disabled={!!applying}
+                              style={btnApply}
+                              title={`Apply: ${at}`}
+                            >
+                              {applying === k ? "…" : `▶ ${actionLabel(at)}`}
+                            </button>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </>
+              )}
+
+              {insight.next_actions.length > 0 && (
+                <>
+                  <div style={subhead}>Next actions</div>
+                  <ul style={{ margin: "4px 0 0", paddingLeft: 18,
+                    display: "flex", flexDirection: "column", gap: 6 }}>
+                    {insight.next_actions.map((a, i) => {
+                      const k = `na-${i}`;
+                      const isApplyable = a.action_type && a.action_type !== "no_op";
+                      return (
+                        <li key={i} style={{ fontSize: 12, color: "#111827",
+                          lineHeight: 1.5 }}>
+                          <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                            <div style={{ flex: 1 }}>
+                              <strong>{a.label}</strong>
+                              {a.rationale && (
+                                <div style={{ color: "#6b7280", fontSize: 11, marginTop: 2 }}>
+                                  {a.rationale}
+                                </div>
+                              )}
+                            </div>
+                            {isApplyable && (
+                              <button
+                                onClick={() => void applyAction(a, k)}
+                                disabled={!!applying}
+                                style={btnApply}
+                                title={`Apply: ${a.action_type}`}
+                              >
+                                {applying === k ? "…" : `▶ ${actionLabel(a.action_type)}`}
+                              </button>
+                            )}
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </>
+              )}
+              {insight.error && (
+                <div style={{ marginTop: 8, fontSize: 11, color: "#b91c1c" }}>
+                  ⚠ {insight.error}
+                </div>
+              )}
+            </>
+          )}
+        </section>
+
+        {/* ── RSS-style feed ─────────────────────────────────────────── */}
+        <section style={card}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+            <h3 style={cardTitle}>📡 Latest feed</h3>
+            <span style={{ flex: 1 }} />
+            <button onClick={() => navigate("discovery")} style={btnGhost}>
+              Open Discovery →
+            </button>
+          </div>
+          {data && data.items.length === 0 && (
+            <div style={{ fontSize: 12, color: "#9ca3af", fontStyle: "italic", padding: 8 }}>
+              No items in the last {days} days. Click <strong>▶ Fetch now</strong> above
+              to pull from your configured sources.
+            </div>
+          )}
+          <div style={{ maxHeight: 540, overflowY: "auto", display: "flex",
+            flexDirection: "column", gap: 6 }}>
+            {data?.items.map((it) => {
+              const k = KIND_COLOURS[it.kind] ?? KIND_COLOURS.other;
+              return (
+                <div key={it.id} style={{
+                  border: "1px solid #e5e7eb", borderRadius: 7, padding: "8px 10px",
+                  display: "flex", alignItems: "flex-start", gap: 8,
+                }}>
+                  <span style={{
+                    fontSize: 9, padding: "1px 6px", borderRadius: 4,
+                    background: k.bg, color: k.fg, fontWeight: 700,
+                    textTransform: "uppercase", flexShrink: 0,
+                  }}>
+                    {it.kind}
+                  </span>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <a href={it.url} target="_blank" rel="noopener noreferrer"
+                      style={{ fontSize: 12, fontWeight: 600, color: "#111827",
+                        textDecoration: "none", display: "block",
+                        overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                      {it.title || "(untitled)"}
+                    </a>
+                    <div style={{ fontSize: 10, color: "#6b7280", marginTop: 1 }}>
+                      📡 {it.source} · ⬇ {fmtRelative(it.fetched_at)}
+                      {it.topic && ` · #${it.topic}`}
+                    </div>
+                  </div>
+                  <button onClick={() => askAIAbout(it)} title="Ask Glossa AI about this item"
+                    style={miniBtn}>✨</button>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      </div>
+
+      {/* Tally row */}
+      {data && (
+        <div style={{ display: "grid", gap: 12,
+          gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
+          <Tally title="By kind"   counts={data.by_kind} />
+          <Tally title="By topic"  counts={data.by_topic} />
+          <Tally title="By source" counts={data.by_source} />
+          <Tally title="By status" counts={data.by_status} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── Subcomponents ──────────────────────────────────────────────────────
+
+function CounterTile({ label, value, emoji, sub, onClick }: {
+  label: string; value: number; emoji: string; sub: string; onClick?: () => void;
+}) {
+  return (
+    <button onClick={onClick} style={{
+      padding: "12px 14px", border: "1px solid #e5e7eb", borderRadius: 8,
+      background: "#fff", textAlign: "left", cursor: onClick ? "pointer" : "default",
+      display: "flex", flexDirection: "column", gap: 2,
+    }}>
+      <div style={{ fontSize: 22, lineHeight: 1 }}>{emoji}</div>
+      <div style={{ fontSize: 22, fontWeight: 800, color: "#111827", lineHeight: 1.1 }}>
+        {value.toLocaleString()}
+      </div>
+      <div style={{ fontSize: 11, fontWeight: 700, color: "#374151" }}>{label}</div>
+      <div style={{ fontSize: 10, color: "#9ca3af" }}>{sub}</div>
+    </button>
+  );
+}
+
+function Tally({ title, counts }: { title: string; counts: Record<string, number> }) {
+  const entries = Object.entries(counts);
+  const max = Math.max(1, ...entries.map(([, v]) => v));
+  return (
+    <section style={card}>
+      <div style={cardTitle}>{title}</div>
+      {entries.length === 0 ? (
+        <div style={{ fontSize: 11, color: "#9ca3af" }}>No data</div>
+      ) : (
+        <div style={{ display: "flex", flexDirection: "column", gap: 4, marginTop: 6 }}>
+          {entries.map(([k, v]) => (
+            <div key={k} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <div style={{ flex: 1, minWidth: 0,
+                fontSize: 11, color: "#374151",
+                overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                {k}
+              </div>
+              <div style={{ flex: 2, height: 6, background: "#f1f5f9", borderRadius: 3,
+                overflow: "hidden" }}>
+                <div style={{ height: "100%",
+                  width: `${(v / max) * 100}%`, background: "#7c3aed" }} />
+              </div>
+              <div style={{ width: 32, fontSize: 11, color: "#111827",
+                fontWeight: 700, textAlign: "right" }}>{v}</div>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  );
+}
+
+// ── Styles ────────────────────────────────────────────────────────────
+const card: React.CSSProperties = {
+  padding: "14px 16px", border: "1px solid #e5e7eb", borderRadius: 10,
+  background: "#fff",
+};
+const cardTitle: React.CSSProperties = {
+  margin: 0, fontSize: 13, fontWeight: 700, color: "#111827",
+};
+const subhead: React.CSSProperties = {
+  fontSize: 10, fontWeight: 700, color: "#7c3aed",
+  textTransform: "uppercase", letterSpacing: 0.5, marginTop: 8, marginBottom: 4,
+};
+const selectStyle: React.CSSProperties = {
+  padding: "5px 8px", border: "1px solid #d1d5db", borderRadius: 5,
+  fontSize: 12, background: "#fff",
+};
+const btnGhost: React.CSSProperties = {
+  padding: "5px 10px", border: "1px solid #d1d5db", borderRadius: 5,
+  background: "#fff", cursor: "pointer", fontSize: 12, color: "#374151",
+};
+const btnPrimary: React.CSSProperties = {
+  padding: "6px 12px", border: "1px solid #2563eb", borderRadius: 6,
+  background: "#2563eb", color: "#fff", fontSize: 12, fontWeight: 600,
+  cursor: "pointer",
+};
+const btnAccent: React.CSSProperties = {
+  padding: "6px 12px", border: "1px solid #7c3aed", borderRadius: 6,
+  background: "#7c3aed", color: "#fff", fontSize: 12, fontWeight: 600,
+  cursor: "pointer",
+};
+const miniBtn: React.CSSProperties = {
+  padding: "2px 6px", border: "1px solid #e5e7eb", borderRadius: 4,
+  background: "#fff", cursor: "pointer", fontSize: 11,
+};
+const btnApply: React.CSSProperties = {
+  padding: "3px 9px", border: "1px solid #c4b5fd", borderRadius: 5,
+  background: "#f5f3ff", color: "#5b21b6", fontSize: 11, fontWeight: 700,
+  cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0,
+};
+
+function actionLabel(t: DashboardActionType): string {
+  switch (t) {
+    case "run_experiment":           return "Run";
+    case "open_view":                return "Open";
+    case "run_fetch":                return "Fetch";
+    case "run_mine":                 return "Mine";
+    case "create_hypothesis":        return "Add hypothesis";
+    case "propose_experiment_chain": return "Plan chain";
+    case "ai_chat":                  return "Ask AI";
+    default:                         return "Apply";
+  }
+}

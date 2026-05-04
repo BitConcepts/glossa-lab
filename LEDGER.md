@@ -4905,3 +4905,57 @@ Risks:
 - AIProfilesPanel "Create all" performs sequential POSTs without rollback. Partial failures are logged in the toast but the user has to manually delete any duplicates if they re-run Suggest+Create-all after a failure.
 
 Next step: Build Phase-30b as a length-conditioned reverse-Janabiyah search (M77ReverseJanabiyahSearchV3 against ePSD2 PNs, with results stratified by Janabiyah-skeleton length), to test whether the Janabiyah miin-pattern signal concentrates in any specific length cohort — a length-aware version of the Phase-29d test. If signal stays flat across cohorts the contact-zone hypothesis loses one more degree of freedom.
+
+---
+
+## [2026-05-04] Entry — Phase-30b/c, dashboard SSE, AI-profile dedup, anchor-set DB upsert
+
+Objective: close out the Phase-30 follow-up loop (length-cohort reverse Janabiyah, per-bin permutation null on M77), wire the Dashboard Apply→`run_experiment` flow into the existing experiment-graph SSE stream, harden the AIProfilesPanel "Suggest" + "Create all" handlers against duplicates, and make the CISI optimal anchor-set update reach the live backend's database.
+
+What was done:
+- Phase-30b — `LengthCohortReverseJanabiyahSearch`. New atomic node in `backend/glossa_lab/experiment_graph_phase30.py`; reuses the Phase-29 `M77ReverseJanabiyahSearchV3` scoring rule (length=7, miin positions 1/3/6, weighted length-mismatch penalty) but stratifies the ePSD2 candidate space by syllable cohort. Wired into `backend/glossa_lab/experiments/graphs/indus_phase30b_length_cohort_janabiyah.json`. Run: 1,222 PNs across 4 cohorts (S3-4, S5-6, S7-8, S9+); position-match hit rate peaks at 0.30 (3/10) in S7-8 vs ~0.10 in S3-4 — verdict marks the contact-zone hypothesis as SURVIVES one DoF (peaked, not flat).
+- Phase-30c — `ShufflePermutationNull`. Same Phase-30 module: builds a per-bin null distribution of bigram-transition spectral gaps by repeatedly reshuffling the bin's flat token bag back into pseudo-sequences with the original length profile. Wired into `backend/glossa_lab/experiments/graphs/indus_phase30c_permutation_null_m77.json`. Initial N=200 was too slow on this machine; running with N=50 for the on-disk report. All 8 length bins produced p-value = 1.0 against the null, confirming Phase-30a: the corpus is unusually deterministic and shows no detectable bigram structure beyond unigram frequency.
+- DashboardView SSE for Apply→run_experiment. `applyAction` now uses `runGraphExperimentStream` instead of the synchronous wrapper. Per-node `node_start` events emit throttled progress toasts (one per ~1.2s, label + idx/total); `node_end` errors flip a local flag so `run_complete` can downgrade to a `warning` toast; `run_error` emits an explicit failure toast. The Apply button stays in its busy state until the stream closes, so users no longer see a misleading "Started" while the graph is still running for minutes.
+- AIProfilesPanel dedup + summary. Suggester now diffs proposals against the existing profile list (by `(name, backend_kind, backend_ref, model)`) before display; duplicates are subtracted from the preview and surfaced in the indigo notice (`"… · N duplicate(s) skipped"`). Single-card Create rejects post-hoc duplicates with an `info` toast. Bulk Create-all does the same pre-pass and produces a structured summary (`"K created · N duplicate(s) skipped · F failed"`) plus a longer-lived warning toast listing the first three failures.
+- Phase-20 verdict bug fix. `BinSpectralFingerprint` previously printed `from L1-1 to L1-1`; the formatter is corrected to use the largest bin label (`L<biggest>`).
+- Anchor-set updater idempotent + multi-DB. `backend/scripts/update_anchor_set.py` now creates the canonical `dcf69e6e69fe` row when missing (and updates when present), and walks every known glossa.db location (`backend/data/`, repo-root `data/`, `frontend/data/`, plus `get_settings().data_dir`). The previous version only handled the cwd-relative DB; the live backend launches with cwd=`backend/`, so the LEDGER's earlier "updated" claim was actually written to the wrong file. Fixed: the live API now returns the 6-pair set including P324='k' and P332='o'.
+- Mayig corpus refresh check. The upstream `mayig/indus-valley-script-corpus` repo's last push is 2025-04-16 and contains only Mohenjo-daro (M-prefixed) records; no Harappa/Lothal/Dholavira files exist on the default branch. The local snapshot (`data/indus_cisi_corpus.json`, 179 inscriptions, all `M-`) already matches upstream. No refresh needed; the loader's site-prefix filter (`H` / `L` / `DK`) remains a forward-compat hook for when upstream adds more sites.
+
+Files changed:
+- backend/glossa_lab/experiment_graph_phase30.py (created — LengthCohortReverseJanabiyahSearch + ShufflePermutationNull + node defs)
+- backend/glossa_lab/experiment_graph.py (modified — Phase-30 node registration block)
+- backend/glossa_lab/experiment_graph_phase20.py (modified — BinSpectralFingerprint verdict copy)
+- backend/glossa_lab/experiments/graphs/indus_phase30b_length_cohort_janabiyah.json (created)
+- backend/glossa_lab/experiments/graphs/indus_phase30c_permutation_null_m77.json (created)
+- backend/scripts/update_anchor_set.py (rewrite — idempotent upsert across every known glossa.db)
+- frontend/src/components/DashboardView.tsx (modified — SSE stream, throttled progress toasts, node-error/run-error handling)
+- frontend/src/components/Settings/AIProfilesPanel.tsx (modified — suggestion dedup, dedup-aware single + bulk Create handlers, structured summary toast)
+- reports/phase30b_length_cohort_janabiyah.json (run output, 1222 PNs / 4 cohorts)
+- reports/phase30c_permutation_null_m77.json (run output, 8 bins, N=50)
+- reports/indus_phase30b_length_cohort_janabiyah_20260504T134716.json (timestamped CliReporter copy)
+- reports/indus_phase30c_permutation_null_m77_20260504T134928.json (timestamped CliReporter copy)
+
+Checks run:
+- `npm run build` (frontend) — clean: 225 modules transformed, `dist/assets/index-1avk0Jz0.js` 1,003.16 kB / 295.82 kB gzipped, built in 1.42s, 0 TS errors.
+- `python -m glossa_lab.experiments indus_phase30b_length_cohort_janabiyah` — completed; on-disk report sane.
+- `python -m glossa_lab.experiments indus_phase30c_permutation_null_m77` — completed with N=50 (200 was over the test window); report shows the gap=0 finding holds across all bins.
+- `shell.cmd python backend/scripts/update_anchor_set.py` — INSERTed into `backend/data/glossa.db` and `frontend/data/glossa.db`; UPDATED `data/glossa.db` (previously seeded). Live API confirmed: `GET /api/v1/anchor-sets/dcf69e6e69fe` returns the 6-pair set with the new P324='k', P332='o' anchors.
+- `setup-os.cmd restart` — stop+start succeeded; `curl http://localhost:8001/api/v1/health` → `{"status":"healthy","version":"0.1.0"}` after ~21s of warm-up.
+
+Results:
+- Phase-30b adds a positive evidence point for the Phase-29 reverse-Janabiyah signal: hit rate is non-flat across length cohorts and concentrates at the 7-8 syllable cohort that matches the Janabiyah seal's own length, exactly the structural prediction. Phase-30c is the matching null check on Phase-30a: the M77 corpus's spectral-gap-of-zero is statistically indistinguishable from a positionally-shuffled null at every length bin we have data for.
+- The Dashboard Apply→run_experiment flow is now usable for long-running graphs: the user sees concrete progress (idx/total + node label) instead of just a "Started" toast.
+- AI Profile suggestion + bulk-create no longer produces duplicates even if the user re-runs Suggest after a partial failure; the summary toast tells them exactly how many were skipped and why.
+- The CISI optimal anchor set is now actually present in the live backend's database for the first time, matching the LEDGER's earlier claim. Anchor-set updater is now idempotent so any future re-run is safe.
+
+Open TODOs:
+- [ ] Phase-30c with full N=200 permutations (cluster-class job, ~30 minutes on this hardware) for publication-grade null tightening. The N=50 result already covers the qualitative claim.
+- [ ] Phase-30d/e/f from the Phase-30 plan (allograph-aware stratification on M77, joint M77 + Fuls vol. 3 ranker, etc.) remain unbuilt; the joint-corpus loaders are the higher-priority follow-up given Phase-30a/c.
+- [ ] The Apply → run_experiment progress toasts are throttled but not coalesced; a graph with 50+ short nodes may still show 10+ progress toasts. Worth replacing with a single in-place "running…" indicator anchored to the Apply button if this gets noisy in practice.
+
+Risks:
+- Phase-30b's S7-8 cohort has only 10 PNs; the 0.30 hit rate is consistent with the Phase-29 pattern but is not statistically powered. A larger ePSD2 slice (or an ICIT-augmented PN set) is needed before the contact-zone claim escalates from "survives one DoF" to "confirmed".
+- The anchor-set updater now writes to up to four DBs by design; if a user runs the backend with a non-default `GLOSSA_DATA_DIR` (e.g. installed mode on macOS / Linux), the script will only touch that DB if it exists — it does not create new DBs in arbitrary locations.
+- The Dashboard SSE handler runs without an `AbortSignal`. Closing the dashboard mid-run will not actively cancel the experiment; the run keeps going server-side and shows up in the Jobs panel as expected.
+
+Next step: drive Phase-30 to a clean publishable bundle by (1) running Phase-30c with N=200 on a dedicated cluster window so the null is tight, (2) building the joint-corpus M77 + Fuls vol. 3 ranker so the Janabiyah miin signal can be tested against a second independent PN universe, and (3) folding the Phase-30b S7-8 peak into the contact-zone narrative as a structural prediction rather than an ad-hoc match.

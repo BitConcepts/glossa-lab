@@ -127,16 +127,42 @@ export function AIProfilesPanel() {
   };
 
   // ── Suggester ──────────────────────────────────────────────────────
+  // Compare keys for dedup. We treat (name, backend_kind, backend_ref, model)
+  // as the natural identity so the same provider+model can hold multiple
+  // role-specific profiles.
+  const _profileKey = (p: { name: string; backend_kind: string; backend_ref: string; model: string }) =>
+    [p.name.trim().toLowerCase(),
+     (p.backend_kind || "").toLowerCase(),
+     (p.backend_ref  || "").toLowerCase(),
+     (p.model        || "").toLowerCase()].join("|");
+
   const onSuggest = async () => {
     setSuggesting(true);
     try {
       const res = await suggestAIProfiles();
-      setSuggestions(res.profiles ?? []);
-      setSuggestMsg(res.message ?? "");
-      if (!res.profiles?.length) {
-        toast(res.message || "No suggestions yet", "info");
+      const proposed = res.profiles ?? [];
+      // Dedup against existing profiles before showing the user anything.
+      const existing = new Set(profiles.map((p) => _profileKey(p)));
+      const fresh:    AIProfileSuggestion[] = [];
+      const skipped:  AIProfileSuggestion[] = [];
+      for (const p of proposed) {
+        if (existing.has(_profileKey(p))) skipped.push(p);
+        else                              fresh.push(p);
+      }
+      setSuggestions(fresh);
+      const baseMsg = res.message ?? "";
+      const dedupMsg = skipped.length
+        ? `${skipped.length} duplicate(s) skipped`
+        : "";
+      setSuggestMsg([baseMsg, dedupMsg].filter(Boolean).join(" · "));
+      if (!fresh.length && !skipped.length) {
+        toast(baseMsg || "No suggestions yet", "info");
+      } else if (!fresh.length) {
+        toast(`All ${skipped.length} suggestion(s) already match existing profiles`, "info");
+      } else if (skipped.length) {
+        toast(`${fresh.length} new · ${skipped.length} duplicate(s) skipped`, "success");
       } else {
-        toast(`Got ${res.profiles.length} suggestion(s)`, "success");
+        toast(`Got ${fresh.length} suggestion(s)`, "success");
       }
     } catch (err) {
       toast(err instanceof Error ? err.message : "Suggest failed", "error");
@@ -144,6 +170,13 @@ export function AIProfilesPanel() {
   };
 
   const onCreateSuggestion = async (s: AIProfileSuggestion, idx: number) => {
+    // Refuse to create a duplicate even if the existing list races behind.
+    const existing = new Set(profiles.map((p) => _profileKey(p)));
+    if (existing.has(_profileKey(s))) {
+      toast(`Skipped "${s.name}" — already exists`, "info");
+      setSuggestions((prev) => prev.filter((_, i) => i !== idx));
+      return;
+    }
     setCreatingIdx(idx);
     try {
       await createAIProfile({
@@ -170,10 +203,20 @@ export function AIProfilesPanel() {
     if (!suggestions.length) return;
     if (!window.confirm(`Create all ${suggestions.length} suggested profile(s)?`)) return;
     setBulkCreating(true);
-    let ok = 0, fail = 0;
     // Snapshot so removals don't shift indices mid-loop.
     const items = [...suggestions];
+    // Filter out anything that already matches an existing profile so the
+    // bulk run never creates duplicates even if the suggester missed it.
+    const existingKeys = new Set(profiles.map((p) => _profileKey(p)));
+    const planned: AIProfileSuggestion[] = [];
+    let preSkipped = 0;
     for (const s of items) {
+      if (existingKeys.has(_profileKey(s))) preSkipped += 1;
+      else                                  planned.push(s);
+    }
+    let ok = 0, fail = 0;
+    const failures: string[] = [];
+    for (const s of planned) {
       try {
         await createAIProfile({
           name:         s.name,
@@ -187,13 +230,25 @@ export function AIProfilesPanel() {
           is_default:   false,
         });
         ok += 1;
-      } catch {
+      } catch (err) {
         fail += 1;
+        failures.push(`${s.name}: ${err instanceof Error ? err.message : "unknown"}`);
       }
     }
     setBulkCreating(false);
     setSuggestions([]);
-    toast(`Bulk create: ${ok} created, ${fail} failed`, fail ? "warning" : "success");
+    const summaryParts = [
+      `${ok} created`,
+      preSkipped ? `${preSkipped} duplicate(s) skipped` : "",
+      fail ? `${fail} failed` : "",
+    ].filter(Boolean);
+    const summary = summaryParts.join(" · ");
+    toast(`Bulk create: ${summary}`, fail ? "warning" : "success");
+    if (failures.length) {
+      // Persist a second toast so the user sees *which* ones failed in the
+      // notification history; the bulk row is intentionally short.
+      toast(`Failures: ${failures.slice(0, 3).join("; ")}${failures.length > 3 ? "…" : ""}`, "warning", 6000);
+    }
     await refresh();
   };
 

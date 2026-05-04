@@ -1,0 +1,18 @@
+{
+  "id": "indus_phase30b_length_cohort_janabiyah",
+  "name": "Indus Phase-30b — length-cohort reverse Janabiyah search (ePSD2 PNs)",
+  "description": "Phase-30 #2: stratify the Phase-29 ReverseJanabiyahSearchV3 candidate space by ePSD2 PN syllable count cohort (3-4, 5-6, 7-8, 9+). Tests whether the Janabiyah miin-pattern signal concentrates in any specific length cohort — a length-aware version of Phase-29d. If hit rates stay flat across cohorts the contact-zone hypothesis loses one more degree of freedom. Output: reports/phase30b_length_cohort_janabiyah.json.",
+  "auto_migrated": false,
+  "nodes": [
+    { "id": "load",  "type": "expNode", "data": { "atomicId": "Phase29CorpusLoader",                "label": "Load Phase-29 corpus",        "params": {} },                                                                  "position": { "x":  60, "y": 100 } },
+    { "id": "rev",   "type": "expNode", "data": { "atomicId": "LengthCohortReverseJanabiyahSearch", "label": "Length-cohort reverse search", "params": { "cohorts": [[3,4],[5,6],[7,8],[9,99]], "min_icount": 1, "top_k": 15 } }, "position": { "x": 360, "y": 100 } },
+    { "id": "out",   "type": "expNode", "data": { "atomicId": "JSONExport",                        "label": "Save Phase-30b results",       "params": { "filename": "phase30b_length_cohort_janabiyah.json" } },             "position": { "x": 660, "y": 100 } }
+  ],
+  "edges": [
+    { "id": "e1", "source": "load", "target": "rev", "sourcePort": "epsd2_personal_names", "targetPort": "epsd2_personal_names" },
+    { "id": "e2", "source": "load", "target": "rev", "sourcePort": "janabiyah_reading",     "targetPort": "janabiyah_reading" },
+    { "id": "e3", "source": "load", "target": "rev", "sourcePort": "phoneme_map",           "targetPort": "phoneme_map" },
+    { "id": "e4", "source": "load", "target": "rev", "sourcePort": "allograph_families",    "targetPort": "allograph_families" },
+    { "id": "e5", "source": "rev",  "target": "out", "targetPort": "data" }
+  ]
+}

@@ -23,6 +23,9 @@ import {
 } from "../api";
 import { useToast } from "../hooks/useToast";
 import { NotificationsPanel } from "./Notifications/NotificationsPanel";
+import { AIEndpointsPanel } from "./Settings/AIEndpointsPanel";
+import { AIProfilesPanel } from "./Settings/AIProfilesPanel";
+import { AutoDiscoveryPanel } from "./Settings/AutoDiscoveryPanel";
 
 const KEY_LABELS: Record<string, { label: string; hint: string; priority?: boolean; verifiable?: boolean }> = {
   mistral_api_key: {
@@ -46,48 +49,28 @@ const KEY_LABELS: Record<string, { label: string; hint: string; priority?: boole
     hint: "For Gemini vision and multimodal tasks.",
     verifiable: true,
   },
-  // ── Discovery / search providers ─────────────────────────────────────────
-  // Used by the continuous-discovery engine. No verify endpoint yet, so the
-  // Verify button is suppressed for these keys.
+  // ── Discovery / search providers ─────────────────────────────────────
+  // Used by the continuous-discovery engine. Verifiable via the live
+  // /api/v1/settings/verify-key endpoint that probes each provider directly.
   serp_api_key: {
     label: "SerpAPI Key",
     hint: "Discovery: Google News + Scholar via serpapi.com. Get yours at serpapi.com.",
+    verifiable: true,
   },
   news_api_key: {
     label: "NewsAPI Key",
     hint: "Discovery: latest articles via newsapi.org.",
+    verifiable: true,
   },
   brave_search_api_key: {
     label: "Brave Search Key",
     hint: "Discovery: web + news search via api.search.brave.com.",
+    verifiable: true,
   },
-  // ── SMTP / outbound email ──────────────────────────────────
-  // No verify endpoint — use the “Send test” button in the Notifications panel
-  // to confirm credentials work end-to-end against your live recipient list.
-  smtp_host: {
-    label: "SMTP Host",
-    hint: "Notifications: SMTP server hostname (e.g. smtp.gmail.com, smtp.sendgrid.net).",
-  },
-  smtp_port: {
-    label: "SMTP Port",
-    hint: "Notifications: 587 for STARTTLS (default), 465 for implicit TLS.",
-  },
-  smtp_username: {
-    label: "SMTP Username",
-    hint: "Notifications: usually your full sender address.",
-  },
-  smtp_password: {
-    label: "SMTP Password",
-    hint: "Notifications: provider app-password (Gmail/Outlook) or API key (SendGrid/Mailgun).",
-  },
-  smtp_from: {
-    label: "SMTP From Address",
-    hint: "Notifications: the From: header on outgoing emails (RFC 5321 MAIL FROM).",
-  },
-  smtp_use_tls: {
-    label: "SMTP Use TLS",
-    hint: "Notifications: '1' to enable STARTTLS (default), '0' to disable. Recommended: keep on.",
-  },
+  // ── SMTP / Microsoft Graph ─────────────────────────────────
+  // These are now managed exclusively in the Email & Notifications panel
+  // (provider-aware presets + Outlook 365 OAuth flow), so they are NOT
+  // exposed in the generic API-key list to keep the surface focused.
 };
 
 // ── Context Length Panel ───────────────────────────────────────────────────
@@ -784,8 +767,14 @@ export function SettingsView() {
 
 
   return (
-    <div style={{ maxWidth: 640 }}>
+    <div style={{ maxWidth: 720 }}>
       <h2 style={{ marginTop: 0 }}>Settings</h2>
+      <p style={hintTextStyle}>
+        Cloud provider keys go below. Custom AI endpoints (vLLM, LM Studio,
+        OpenRouter, Together, Groq, etc.) and reusable AI profiles live in their
+        own panels further down. Email/notifications has its own provider-aware
+        configuration block.
+      </p>
 
       {error && (
         <div style={{ ...alertStyle, background: "#fef2f2", borderColor: "#fca5a5", color: "#991b1b" }}>
@@ -970,7 +959,16 @@ export function SettingsView() {
         </section>
       )}
 
-      {/* Notifications (recipients + send log + test) */}
+      {/* Custom AI endpoints (vLLM / LM Studio / OpenRouter / Together / etc.) */}
+      <AIEndpointsPanel />
+
+      {/* AI profiles — reusable backend + model bundles */}
+      <AIProfilesPanel />
+
+      {/* Auto Discovery — source keys, scheduler, manual fetch/mine, notify */}
+      <AutoDiscoveryPanel />
+
+      {/* Notifications (provider-aware email + recipients + send log) */}
       <NotificationsPanel />
 
       {/* Ollama */}

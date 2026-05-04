@@ -55,6 +55,15 @@ _log = logging.getLogger("glossa_lab.notifications.graph")
 _DEFAULT_TENANT = "common"
 _GRAPH_BASE = "https://graph.microsoft.com/v1.0"
 
+# Well-known multi-tenant public client ("Microsoft Graph PowerShell" SDK).
+# This is a *Microsoft-published* public client app that anyone can use for
+# device-code flow against Mail.Send / offline_access. Choosing it lets the
+# user skip the entire Azure portal app-registration dance for first-time
+# setup; the consent screen will simply say "Microsoft Graph PowerShell"
+# instead of "Glossa Lab". Users who want branded consent can still register
+# their own client and paste its ID into ``ms_graph_client_id``.
+DEFAULT_CLIENT_ID = "14d82eec-204b-4c2f-b7e8-296a70dab67e"
+
 # ``offline_access`` is required to receive a refresh_token alongside the
 # short-lived (~1h) access_token. ``Mail.Send`` is the minimum scope for
 # /me/sendMail.
@@ -84,14 +93,27 @@ class GraphConfig:
 
     @classmethod
     def from_settings(cls) -> "GraphConfig":
+        # If the user hasn't pasted a custom client_id, fall back to the
+        # public Microsoft Graph PowerShell client so they can connect with
+        # ZERO Azure-portal setup. They can always override later for
+        # branded consent.
+        cid = (get_key("ms_graph_client_id") or "").strip() or DEFAULT_CLIENT_ID
         return cls(
-            client_id=(get_key("ms_graph_client_id") or "").strip(),
+            client_id=cid,
             tenant=(get_key("ms_graph_tenant_id") or _DEFAULT_TENANT).strip() or _DEFAULT_TENANT,
             refresh_token=(get_key("ms_graph_refresh_token") or "").strip(),
         )
 
     def is_configured(self) -> bool:
+        # client_id always resolves (default fallback), so configuration is
+        # complete once the user has finished the device-code consent flow
+        # and we have a refresh_token.
         return bool(self.client_id and self.refresh_token)
+
+    @property
+    def is_default_client(self) -> bool:
+        """True if we're using the public Microsoft-Graph-PowerShell client."""
+        return self.client_id == DEFAULT_CLIENT_ID
 
 
 # ── Token cache (thread-safe, in-memory) ─────────────────────────────────────

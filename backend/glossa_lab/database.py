@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Increment this when adding a new _SCHEMA_Vn block below.
 # _apply_schema will raise if the DB is somehow ahead of the code.
-_SCHEMA_VERSION = 14
+_SCHEMA_VERSION = 15
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -241,6 +241,50 @@ ALTER TABLE discovery_items ADD COLUMN notified_at TEXT NOT NULL DEFAULT '';
 CREATE INDEX IF NOT EXISTS idx_discovery_notified ON discovery_items(notified_at);
 """
 
+_SCHEMA_V15 = """
+-- Bring-your-own AI endpoints (vLLM, LM Studio, OpenRouter, Together,
+-- llama.cpp server, Groq, etc.). Distinct from the built-in cloud-provider
+-- API keys (settings.py KNOWN_KEYS) and from Ollama (queried live).
+CREATE TABLE IF NOT EXISTS ai_endpoints (
+    id            TEXT PRIMARY KEY,
+    name          TEXT NOT NULL,
+    endpoint_kind TEXT NOT NULL DEFAULT 'openai_compatible',
+    base_url      TEXT NOT NULL DEFAULT '',
+    api_key       TEXT NOT NULL DEFAULT '',
+    default_model TEXT NOT NULL DEFAULT '',
+    headers_json  TEXT NOT NULL DEFAULT '{}',
+    enabled       INTEGER NOT NULL DEFAULT 1,
+    notes         TEXT NOT NULL DEFAULT '',
+    created_at    TEXT NOT NULL,
+    updated_at    TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_ai_endpoints_enabled ON ai_endpoints(enabled);
+
+-- Reusable AI profiles (user-named bundles of backend + model + params).
+-- backend_kind:
+--   'cloud'    → backend_ref is a cloud provider id (openai/anthropic/google/mistral)
+--   'ollama'   → backend_ref is the Ollama model name
+--   'endpoint' → backend_ref is an ai_endpoints.id
+CREATE TABLE IF NOT EXISTS ai_profiles (
+    id           TEXT PRIMARY KEY,
+    name         TEXT NOT NULL,
+    backend_kind TEXT NOT NULL DEFAULT 'cloud',
+    backend_ref  TEXT NOT NULL DEFAULT '',
+    model        TEXT NOT NULL DEFAULT '',
+    params_json  TEXT NOT NULL DEFAULT '{}',
+    tags_json    TEXT NOT NULL DEFAULT '[]',
+    is_default   INTEGER NOT NULL DEFAULT 0,
+    role         TEXT NOT NULL DEFAULT '',
+    notes        TEXT NOT NULL DEFAULT '',
+    created_at   TEXT NOT NULL,
+    updated_at   TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_ai_profiles_role ON ai_profiles(role);
+CREATE INDEX IF NOT EXISTS idx_ai_profiles_default ON ai_profiles(is_default);
+"""
+
 _SCHEMA_V12 = """
 CREATE TABLE IF NOT EXISTS canonical_signs (
     internal_id        TEXT PRIMARY KEY,
@@ -407,6 +451,11 @@ class Database:
                 )
             await self._conn.execute("UPDATE _schema_version SET version = ?", (14,))
             current_version = 14
+
+        if current_version < 15:
+            await self._conn.executescript(_SCHEMA_V15)
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (15,))
+            current_version = 15
 
         if current_version > _SCHEMA_VERSION:
             logger.warning(
@@ -1667,7 +1716,231 @@ class Database:
         )
         return [self._row_to_dict(r) for r in await cursor.fetchall()]
 
-    # ── Helpers ────────────────────────────────────
+    # ── AI Endpoints (V15) ────────────────────────────────
+
+    async def list_ai_endpoints(
+        self, *, enabled_only: bool = False,
+    ) -> list[dict[str, Any]]:
+        assert self._conn
+        q = "SELECT * FROM ai_endpoints"
+        if enabled_only:
+            q += " WHERE enabled=1"
+        q += " ORDER BY name ASC"
+        cursor = await self._conn.execute(q)
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    async def get_ai_endpoint(self, eid: str) -> dict[str, Any] | None:
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM ai_endpoints WHERE id=?", (eid,)
+        )
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    async def create_ai_endpoint(
+        self,
+        *,
+        name: str,
+        endpoint_kind: str = "openai_compatible",
+        base_url: str = "",
+        api_key: str = "",
+        default_model: str = "",
+        headers: dict[str, str] | None = None,
+        enabled: bool = True,
+        notes: str = "",
+        created_at: str,
+    ) -> dict[str, Any]:
+        assert self._conn
+        eid = uuid.uuid4().hex[:12]
+        await self._conn.execute(
+            """INSERT INTO ai_endpoints
+               (id, name, endpoint_kind, base_url, api_key, default_model,
+                headers_json, enabled, notes, created_at, updated_at)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+            (
+                eid, name, endpoint_kind, base_url, api_key, default_model,
+                json.dumps(headers or {}), 1 if enabled else 0,
+                notes, created_at, created_at,
+            ),
+        )
+        await self._conn.commit()
+        return await self.get_ai_endpoint(eid)  # type: ignore[return-value]
+
+    async def update_ai_endpoint(
+        self, eid: str, **fields: Any,
+    ) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_ai_endpoint(eid)
+        if existing is None:
+            return None
+        name           = fields.get("name",          existing["name"])
+        endpoint_kind  = fields.get("endpoint_kind", existing["endpoint_kind"])
+        base_url       = fields.get("base_url",      existing["base_url"])
+        api_key        = fields.get("api_key",       existing["api_key"])
+        default_model  = fields.get("default_model", existing["default_model"])
+        notes          = fields.get("notes",         existing["notes"])
+        headers_json   = (
+            json.dumps(fields["headers"])
+            if "headers" in fields
+            else json.dumps(existing.get("headers", {}))
+        )
+        if "enabled" in fields:
+            enabled = 1 if fields["enabled"] else 0
+        else:
+            enabled = int(existing["enabled"])
+        await self._conn.execute(
+            """UPDATE ai_endpoints SET name=?, endpoint_kind=?, base_url=?,
+               api_key=?, default_model=?, headers_json=?, enabled=?, notes=?,
+               updated_at=datetime('now') WHERE id=?""",
+            (name, endpoint_kind, base_url, api_key, default_model,
+             headers_json, enabled, notes, eid),
+        )
+        await self._conn.commit()
+        return await self.get_ai_endpoint(eid)
+
+    async def delete_ai_endpoint(self, eid: str) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_ai_endpoint(eid)
+        if existing is None:
+            return None
+        await self._conn.execute("DELETE FROM ai_endpoints WHERE id=?", (eid,))
+        await self._conn.commit()
+        return existing
+
+    # ── AI Profiles (V15) ─────────────────────────────────
+
+    async def list_ai_profiles(
+        self, *, role: str | None = None,
+    ) -> list[dict[str, Any]]:
+        assert self._conn
+        q = "SELECT * FROM ai_profiles"
+        args: list[Any] = []
+        if role:
+            q += " WHERE role=?"
+            args.append(role)
+        q += " ORDER BY is_default DESC, name ASC"
+        cursor = await self._conn.execute(q, args)
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    async def get_ai_profile(self, pid: str) -> dict[str, Any] | None:
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM ai_profiles WHERE id=?", (pid,)
+        )
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    async def get_default_ai_profile(
+        self, role: str = "",
+    ) -> dict[str, Any] | None:
+        """Return the default profile for a given role (empty role = global default)."""
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM ai_profiles WHERE is_default=1 AND role=? LIMIT 1",
+            (role,),
+        )
+        row = await cursor.fetchone()
+        if row:
+            return self._row_to_dict(row)
+        # Fall back to global default if no role-specific match
+        if role:
+            cursor = await self._conn.execute(
+                "SELECT * FROM ai_profiles WHERE is_default=1 AND role='' LIMIT 1"
+            )
+            row = await cursor.fetchone()
+            if row:
+                return self._row_to_dict(row)
+        return None
+
+    async def create_ai_profile(
+        self,
+        *,
+        name: str,
+        backend_kind: str = "cloud",
+        backend_ref: str = "",
+        model: str = "",
+        params: dict[str, Any] | None = None,
+        tags: list[str] | None = None,
+        is_default: bool = False,
+        role: str = "",
+        notes: str = "",
+        created_at: str,
+    ) -> dict[str, Any]:
+        assert self._conn
+        pid = uuid.uuid4().hex[:12]
+        # Enforce a single default per role: clear other defaults of the same role first
+        if is_default:
+            await self._conn.execute(
+                "UPDATE ai_profiles SET is_default=0 WHERE role=?", (role,),
+            )
+        await self._conn.execute(
+            """INSERT INTO ai_profiles
+               (id, name, backend_kind, backend_ref, model, params_json,
+                tags_json, is_default, role, notes, created_at, updated_at)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+            (
+                pid, name, backend_kind, backend_ref, model,
+                json.dumps(params or {}), json.dumps(tags or []),
+                1 if is_default else 0, role, notes, created_at, created_at,
+            ),
+        )
+        await self._conn.commit()
+        return await self.get_ai_profile(pid)  # type: ignore[return-value]
+
+    async def update_ai_profile(
+        self, pid: str, **fields: Any,
+    ) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_ai_profile(pid)
+        if existing is None:
+            return None
+        name         = fields.get("name",         existing["name"])
+        backend_kind = fields.get("backend_kind", existing["backend_kind"])
+        backend_ref  = fields.get("backend_ref",  existing["backend_ref"])
+        model        = fields.get("model",        existing["model"])
+        role         = fields.get("role",         existing["role"])
+        notes        = fields.get("notes",        existing["notes"])
+        params_json  = (
+            json.dumps(fields["params"])
+            if "params" in fields
+            else json.dumps(existing.get("params", {}))
+        )
+        tags_json    = (
+            json.dumps(fields["tags"])
+            if "tags" in fields
+            else json.dumps(existing.get("tags", []))
+        )
+        is_default = (
+            (1 if fields["is_default"] else 0)
+            if "is_default" in fields
+            else int(existing["is_default"])
+        )
+        # Enforce single default per role
+        if is_default:
+            await self._conn.execute(
+                "UPDATE ai_profiles SET is_default=0 WHERE role=? AND id<>?",
+                (role, pid),
+            )
+        await self._conn.execute(
+            """UPDATE ai_profiles SET name=?, backend_kind=?, backend_ref=?,
+               model=?, params_json=?, tags_json=?, is_default=?, role=?,
+               notes=?, updated_at=datetime('now') WHERE id=?""",
+            (name, backend_kind, backend_ref, model, params_json, tags_json,
+             is_default, role, notes, pid),
+        )
+        await self._conn.commit()
+        return await self.get_ai_profile(pid)
+
+    async def delete_ai_profile(self, pid: str) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_ai_profile(pid)
+        if existing is None:
+            return None
+        await self._conn.execute("DELETE FROM ai_profiles WHERE id=?", (pid,))
+        await self._conn.commit()
+        return existing
+
+    # ── Helpers ─────────────────────────────────────
 
     @staticmethod
     def _row_to_dict(row: aiosqlite.Row) -> dict[str, Any]:
@@ -1688,6 +1961,9 @@ class Database:
             "pairs",      # anchor_sets
             "raw_json",   # discovery_items
             "links",      # discovery_items
+            "headers_json",  # ai_endpoints (deserialised to .headers below)
+            "params_json",   # ai_profiles
+            "tags_json",     # ai_profiles
         ):
             if field in d and isinstance(d[field], str):
                 try:
@@ -1698,6 +1974,13 @@ class Database:
         if "graph_json" in d and isinstance(d["graph_json"], str):
             d["graph"] = json.loads(d["graph_json"])
             del d["graph_json"]
+        # ai_endpoints: headers_json → headers, ai_profiles: params_json/tags_json
+        if "headers_json" in d:
+            d["headers"] = d.pop("headers_json") or {}
+        if "params_json" in d:
+            d["params"] = d.pop("params_json") or {}
+        if "tags_json" in d:
+            d["tags"] = d.pop("tags_json") or []
         return d
 
 

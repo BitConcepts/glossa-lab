@@ -262,6 +262,20 @@ export function DiscoveryView() {
     localStorage.setItem("glossa_discovery_notify", notifyOnRun ? "1" : "0");
   }, [notifyOnRun]);
 
+  // Manual run controls — expanded options for fetch + mine. Sources empty
+  // means "all configured sources"; mine limit defaults to 25 to match the
+  // backend default and keep round-trips short. Persisted across reloads.
+  const [advOpen, setAdvOpen] = useState<boolean>(
+    () => localStorage.getItem("glossa_discovery_adv_open") === "1",
+  );
+  useEffect(() => {
+    localStorage.setItem("glossa_discovery_adv_open", advOpen ? "1" : "0");
+  }, [advOpen]);
+  const [pickedSources, setPickedSources] = useState<string[]>([]);
+  const [pickedTopics,  setPickedTopics]  = useState<string[]>([]);
+  const [sinceIso,      setSinceIso]      = useState<string>(""); // YYYY-MM-DD
+  const [mineLimit,     setMineLimit]     = useState<number>(25);
+
   // ── Data loading ────────────────────────────────────────────────────────
   const loadMeta = useCallback(async () => {
     try {
@@ -333,10 +347,27 @@ export function DiscoveryView() {
   const onRunFetch = async () => {
     setFetching(true);
     try {
-      const body: { topics?: string[] } = {};
-      if (topicFilter !== "all") body.topics = [topicFilter];
+      const body: { topics?: string[]; sources?: string[]; since_iso?: string } = {};
+      // Topic filter chip wins; otherwise honour the Advanced multi-select
+      // (empty array = no override = backend uses every topic).
+      if (topicFilter !== "all")        body.topics  = [topicFilter];
+      else if (pickedTopics.length > 0) body.topics  = pickedTopics;
+      if (pickedSources.length > 0)     body.sources = pickedSources;
+      if (sinceIso) {
+        // Promote a YYYY-MM-DD calendar value into a full ISO timestamp at UTC
+        // midnight; the backend treats `since_iso` as inclusive lower bound.
+        body.since_iso = /T/.test(sinceIso) ? sinceIso : `${sinceIso}T00:00:00Z`;
+      }
       const ack = await startDiscoveryFetch(body);
-      toast(`Fetch started · job ${ack.job_id.slice(0, 8)}`, "info");
+      const summary: string[] = [];
+      if (body.topics)    summary.push(`${body.topics.length} topic(s)`);
+      if (body.sources)   summary.push(`${body.sources.length} source(s)`);
+      if (body.since_iso) summary.push(`since ${body.since_iso.slice(0, 10)}`);
+      toast(
+        `Fetch started · job ${ack.job_id.slice(0, 8)}` +
+        (summary.length ? ` · ${summary.join(" · ")}` : ""),
+        "info",
+      );
     } catch (e) {
       toast(e instanceof Error ? e.message : "Fetch failed to start", "error");
     } finally {
@@ -347,16 +378,30 @@ export function DiscoveryView() {
   const onRunMine = async () => {
     setMining(true);
     try {
-      const body: { topic?: string; limit?: number } = { limit: 25 };
-      if (topicFilter !== "all") body.topic = topicFilter;
+      const body: { topic?: string; limit?: number } = {
+        limit: Math.max(1, Math.min(500, mineLimit || 25)),
+      };
+      // Mine only accepts a single topic; chip filter wins, otherwise the
+      // first picked topic is used (multi-topic mining is a future extension).
+      if (topicFilter !== "all")        body.topic = topicFilter;
+      else if (pickedTopics.length > 0) body.topic = pickedTopics[0];
       const ack = await startDiscoveryMine(body);
-      toast(`Mine started · job ${ack.job_id.slice(0, 8)}`, "info");
+      toast(
+        `Mine started · job ${ack.job_id.slice(0, 8)} · limit ${body.limit}` +
+        (body.topic ? ` · topic ${body.topic}` : ""),
+        "info",
+      );
     } catch (e) {
       toast(e instanceof Error ? e.message : "Mine failed to start (no LLM key?)", "error");
     } finally {
       setMining(false);
     }
   };
+
+  const togglePickedSource = (s: string) =>
+    setPickedSources((prev) => prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s]);
+  const togglePickedTopic = (t: string) =>
+    setPickedTopics((prev) => prev.includes(t) ? prev.filter((x) => x !== t) : [...prev, t]);
 
   const totalItems = items.length;
   const configuredSources = sources.filter((s) => s.configured).length;
@@ -399,8 +444,129 @@ export function DiscoveryView() {
             title="Classify + link un-mined items via the configured LLM provider">
             {mining ? "⏳ Mining…" : "✨ Run mine"}
           </button>
+          <button onClick={() => setAdvOpen((v) => !v)}
+            title={advOpen ? "Hide manual fetch/mine options" : "Show source/topic/since/limit options"}
+            style={{ ...btnSecondary,
+              background: advOpen ? "#eef2ff" : "#f9fafb",
+              borderColor: advOpen ? "#c7d2fe" : "#e5e7eb",
+              color: advOpen ? "#3730a3" : "#374151" }}>
+            ⚙ {advOpen ? "Hide options" : "Options"}
+          </button>
         </div>
       </div>
+
+      {/* Manual fetch / mine — advanced options. Mirrors the CLI flags so
+          power users can pin a single source, restrict to a topic subset, set
+          a `since` date, or pick a mine batch size from the UI. The chip
+          filter above still wins for topic when set; otherwise these
+          multi-selects are used. */}
+      {advOpen && (
+        <div style={{
+          marginBottom: 12, padding: "12px 14px", borderRadius: 9,
+          border: "1px solid #c7d2fe", background: "#f5f3ff",
+          display: "grid", gap: 10,
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+        }}>
+          <div>
+            <div style={advHead}>Sources (fetch)</div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+              {sources.length === 0 && (
+                <span style={{ fontSize: 11, color: "#6b7280" }}>No sources loaded yet.</span>
+              )}
+              {sources.map((s) => {
+                const active = pickedSources.includes(s.source);
+                const dim = !s.configured;
+                return (
+                  <button key={s.source}
+                    onClick={() => togglePickedSource(s.source)}
+                    title={dim ? `Missing: ${s.requires.join(", ") || "—"} · ${s.disabled_reason || ""}` : `Toggle ${s.source}`}
+                    style={{
+                      padding: "3px 9px", borderRadius: 12,
+                      border: "1px solid",
+                      borderColor: active ? "#7c3aed" : dim ? "#e5e7eb" : "#cbd5e1",
+                      background: active ? "#7c3aed" : "#fff",
+                      color: active ? "#fff" : dim ? "#9ca3af" : "#374151",
+                      cursor: "pointer", fontSize: 10, fontWeight: active ? 700 : 500,
+                      opacity: dim ? 0.6 : 1,
+                    }}>
+                    {s.source}{!s.configured ? " · ⚠" : ""}
+                  </button>
+                );
+              })}
+              {pickedSources.length > 0 && (
+                <button onClick={() => setPickedSources([])}
+                  style={{ ...btnSecondary, padding: "2px 8px", fontSize: 10 }}>
+                  Clear
+                </button>
+              )}
+            </div>
+            <div style={advHint}>
+              Empty = all {configuredSources} configured source(s). Greyed sources
+              are missing their key in Settings.
+            </div>
+          </div>
+
+          <div>
+            <div style={advHead}>Topics (fetch)</div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+              {topics.length === 0 && (
+                <span style={{ fontSize: 11, color: "#6b7280" }}>No topics loaded yet.</span>
+              )}
+              {topics.map((t) => {
+                const active = pickedTopics.includes(t.id);
+                return (
+                  <button key={t.id} onClick={() => togglePickedTopic(t.id)}
+                    style={{
+                      padding: "3px 9px", borderRadius: 12,
+                      border: "1px solid",
+                      borderColor: active ? "#7c3aed" : "#cbd5e1",
+                      background: active ? "#7c3aed" : "#fff",
+                      color: active ? "#fff" : "#374151",
+                      cursor: "pointer", fontSize: 10, fontWeight: active ? 700 : 500,
+                    }}>
+                    {t.label}
+                  </button>
+                );
+              })}
+              {pickedTopics.length > 0 && (
+                <button onClick={() => setPickedTopics([])}
+                  style={{ ...btnSecondary, padding: "2px 8px", fontSize: 10 }}>
+                  Clear
+                </button>
+              )}
+            </div>
+            <div style={advHint}>
+              Topic chip above wins when not &ldquo;All&rdquo;. Mine uses the
+              first picked topic only (single-topic API).
+            </div>
+          </div>
+
+          <div>
+            <div style={advHead}>Since (fetch)</div>
+            <input type="date" value={sinceIso}
+              onChange={(e) => setSinceIso(e.target.value)}
+              style={{ padding: "4px 8px", border: "1px solid #d1d5db",
+                borderRadius: 6, fontSize: 12, width: "100%", boxSizing: "border-box" }} />
+            <div style={advHint}>
+              Lower bound for fetch. Empty = each fetcher&rsquo;s default
+              window (typically 7 days).
+            </div>
+          </div>
+
+          <div>
+            <div style={advHead}>Mine batch size</div>
+            <input type="number" min={1} max={500} step={5}
+              value={mineLimit}
+              onChange={(e) => setMineLimit(parseInt(e.target.value || "25", 10) || 25)}
+              style={{ padding: "4px 8px", border: "1px solid #d1d5db",
+                borderRadius: 6, fontSize: 12, width: "100%", boxSizing: "border-box" }} />
+            <div style={advHint}>
+              How many un-mined items to classify in one Run mine. Costs LLM
+              tokens; 25 is a sensible default.
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Topic chips */}
       <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 10 }}>
@@ -567,4 +733,13 @@ const btnSecondary: React.CSSProperties = {
   padding: "5px 10px", border: "1px solid #e5e7eb", borderRadius: 5,
   cursor: "pointer", fontSize: 11, fontWeight: 500,
   background: "#f9fafb", color: "#374151",
+};
+
+const advHead: React.CSSProperties = {
+  fontSize: 10, fontWeight: 700, color: "#6d28d9",
+  textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 6,
+};
+
+const advHint: React.CSSProperties = {
+  fontSize: 10, color: "#6b7280", marginTop: 6, lineHeight: 1.4,
 };

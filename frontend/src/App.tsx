@@ -17,7 +17,7 @@ import { SignDictionary } from "./components/SignDictionary";
 import { TimelineView } from "./components/TimelineView";
 import { CitationManager } from "./components/CitationManager";
 import { CASModelView } from "./components/CASModelView";
-import { AG2Panel } from "./components/AG2Panel";
+import { DashboardView } from "./components/DashboardView";
 import { DiscoveryView } from "./components/Discovery/DiscoveryView";
 import { CommandPalette, type PaletteCommand } from "./components/CommandPalette";
 import { AIChatWindow, AISidePanel } from "./components/AIChatWindow";
@@ -28,9 +28,10 @@ import { AIChatProvider, useAIChat } from "./hooks/useAIChat";
 import { getHealth } from "./api";
 
 type Tab =
+  | "dashboard"
   | "status" | "indus-data" | "builder" | "experiments" | "pipelines"
   | "corpora" | "jobs" | "reports" | "settings"
-  | "entropy" | "hypotheses" | "notebooks" | "ai-tools" | "signs" | "timeline" | "citations" | "help" | "models" | "ag2"
+  | "entropy" | "hypotheses" | "notebooks" | "ai-tools" | "signs" | "timeline" | "citations" | "help" | "models"
   | "discovery"
   | "exp-builder"; // legacy alias — still handled but not in nav
 
@@ -42,6 +43,12 @@ interface NavSection { title: string; items: NavItem[]; }
 // "Experiments" is now the full canvas workspace (Exp Builder + gallery).
 // "Studies" is the full canvas workspace (Study Builder + study list).
 const NAV_SECTIONS: NavSection[] = [
+  {
+    title: "Overview",
+    items: [
+      { id: "dashboard", label: "Dashboard", icon: "\ud83d\udcca" },  // 0. Highlights + AI insights
+    ],
+  },
   {
     title: "Workflow",
     items: [
@@ -70,7 +77,6 @@ const NAV_SECTIONS: NavSection[] = [
       { id: "notebooks",  label: "Notebooks",  icon: "📓" },
       { id: "citations",  label: "Citations",  icon: "📖" },
       { id: "ai-tools",   label: "AI Tools",   icon: "🔬" },
-      { id: "ag2",        label: "AG2 Agent",   icon: "🤖" },
       { id: "help",       label: "Help",        icon: "📘" },
     ],
   },
@@ -106,7 +112,10 @@ function HealthBadge() {
 }
 
 function AppContent() {
-  const [tab, setTab] = useState<Tab>("builder");
+  // Dashboard is the default landing tab — it's the only screen that gives a
+  // global picture of the project (highlights, feed, AI insight). Persisted
+  // selection from a prior session still wins via the navigate event below.
+  const [tab, setTab] = useState<Tab>("dashboard");
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("glossa_dark") === "1");
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [aiPanelOpen, setAiPanelOpen] = useState(false);
@@ -183,6 +192,23 @@ function AppContent() {
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
+  }, []);
+
+  // Allow other components (e.g. AIToolsView "Glossa AI chat" card) to
+  // open the left-docked AI side panel via a window event. Centralising
+  // this avoids each consumer having to know the local aiPanelOpen state.
+  useEffect(() => {
+    const open  = () => setAiPanelOpen(true);
+    const close = () => setAiPanelOpen(false);
+    const toggle = () => setAiPanelOpen((v) => !v);
+    window.addEventListener("glossa:open-ai-panel",   open);
+    window.addEventListener("glossa:close-ai-panel",  close);
+    window.addEventListener("glossa:toggle-ai-panel", toggle);
+    return () => {
+      window.removeEventListener("glossa:open-ai-panel",   open);
+      window.removeEventListener("glossa:close-ai-panel",  close);
+      window.removeEventListener("glossa:toggle-ai-panel", toggle);
+    };
   }, []);
 
   // Listen for AI-initiated navigation (open_view action)
@@ -428,6 +454,7 @@ function AppContent() {
               maxWidth: "none",
               overflow: isCanvas ? "hidden" : "auto",
             }}>
+              {tab === "dashboard"   && <DashboardView />}
               {tab === "status"      && <StatusView />}
               {tab === "indus-data"   && <StudiesView />}
               {tab === "builder"      && <StudyBuilderView darkMode={darkMode} />}
@@ -438,7 +465,6 @@ function AppContent() {
               {tab === "reports"     && <ReportsView />}
               {tab === "settings"    && <SettingsView />}
               {tab === "models"      && <CASModelView />}
-              {tab === "ag2"         && <AG2Panel />}
               {tab === "entropy"     && <EntropyDashboard />}
               {tab === "hypotheses"  && <HypothesisTracker />}
               {tab === "notebooks"   && <ResearchNotebook />}

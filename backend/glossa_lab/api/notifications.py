@@ -146,6 +146,7 @@ async def notifier_status() -> dict[str, Any]:
     notifier = get_notifier()
     cfg = notifier.config
     graph = notifier.graph
+    resend = notifier.resend
     db = get_db()
     n_active = 0
     n_total = 0
@@ -155,7 +156,7 @@ async def notifier_status() -> dict[str, Any]:
         n_active = sum(1 for r in rows if r.get("active"))
     return {
         "configured": notifier.is_configured(),
-        "transport": notifier.transport,  # "graph" | "smtp" | "none"
+        "transport": notifier.transport,  # "graph" | "resend" | "smtp" | "none"
         "host": cfg.host,
         "port": cfg.port,
         "from": cfg.sender,
@@ -164,7 +165,13 @@ async def notifier_status() -> dict[str, Any]:
         "password_set": bool(cfg.password),
         "graph_configured": graph.is_configured(),
         "graph_client_id_set": bool(graph.client_id),
+        # graph_client_id always resolves now (default fallback). Tell the
+        # frontend whether we're using the public default so it can offer a
+        # one-click connect without any Azure setup.
+        "graph_default_client": graph.is_default_client,
         "graph_tenant": graph.tenant,
+        "resend_configured": resend.is_configured(),
+        "resend_from": resend.sender,
         "recipients_total": n_total,
         "recipients_active": n_active,
     }

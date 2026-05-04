@@ -15,6 +15,8 @@ from fastapi.staticfiles import StaticFiles
 
 from glossa_lab import __version__
 from glossa_lab.api.ag2_chat import router as ag2_chat_router
+from glossa_lab.api.ai_endpoints import router as ai_endpoints_router
+from glossa_lab.api.ai_profiles import router as ai_profiles_router
 from glossa_lab.api.ai_tools import router as ai_tools_router
 from glossa_lab.api.analysis import router as analysis_router
 from glossa_lab.api.anchor_sets import router as anchor_sets_router
@@ -23,6 +25,7 @@ from glossa_lab.api.catalog import router as catalog_router
 from glossa_lab.api.cgsa import router as cgsa_router
 from glossa_lab.api.collab import router as collab_router
 from glossa_lab.api.corpus_catalogue import router as corpus_catalogue_router
+from glossa_lab.api.dashboard import router as dashboard_router
 from glossa_lab.api.discovery import router as discovery_router
 from glossa_lab.api.notifications import router as notifications_router
 from glossa_lab.api.env import router as env_router
@@ -240,7 +243,10 @@ def create_app() -> FastAPI:
     application.include_router(ag2_chat_router, prefix="/api/v1")
     application.include_router(cgsa_router, prefix="/api/v1")
     application.include_router(discovery_router)  # already prefixed at /api/v1/discovery
+    application.include_router(dashboard_router)   # already prefixed at /api/v1/dashboard
     application.include_router(notifications_router)  # already prefixed at /api/v1/notifications
+    application.include_router(ai_endpoints_router)  # already prefixed at /api/v1/ai-endpoints
+    application.include_router(ai_profiles_router)   # already prefixed at /api/v1/ai-profiles
 
     # Serve built frontend
     # Skipped silently in dev if the dist directory does not yet exist.

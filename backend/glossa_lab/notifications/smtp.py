@@ -26,6 +26,10 @@ from typing import Any
 from glossa_lab.api.settings import get_key
 from glossa_lab.database import get_db
 from glossa_lab.notifications.graph import GraphConfig, send_mail as graph_send_mail
+from glossa_lab.notifications.resend import (
+    ResendConfig,
+    send_mail as resend_send_mail,
+)
 
 _log = logging.getLogger("glossa_lab.notifications")
 
@@ -109,15 +113,28 @@ class Notifier:
     def __init__(self, config: NotifierConfig | None = None) -> None:
         self.config = config or NotifierConfig.from_settings()
         self.graph = GraphConfig.from_settings()
+        self.resend = ResendConfig.from_settings()
 
     def is_configured(self) -> bool:
-        return self.graph.is_configured() or self.config.is_configured()
+        return (
+            self.graph.is_configured()
+            or self.resend.is_configured()
+            or self.config.is_configured()
+        )
 
     @property
     def transport(self) -> str:
-        """Human-readable name of the transport that would be used right now."""
+        """Human-readable name of the transport that would be used right now.
+
+        Priority:
+          1. Microsoft Graph (Outlook 365 OAuth)        — if connected
+          2. Resend HTTPS API (no SMTP server / domain) — if API key set
+          3. SMTP                                       — if host + sender set
+        """
         if self.graph.is_configured():
             return "graph"
+        if self.resend.is_configured():
+            return "resend"
         if self.config.is_configured():
             return "smtp"
         return "none"
@@ -164,8 +181,9 @@ class Notifier:
 
         if self.transport == "none":
             _log.warning(
-                "notifier: no transport configured (set ms_graph_* for Graph or "
-                "smtp_host/smtp_from for SMTP); skipping send for %d recipient(s) (kind=%s)",
+                "notifier: no transport configured (set ms_graph_* for Graph, "
+                "resend_api_key for Resend, or smtp_host/smtp_from for SMTP); "
+                "skipping send for %d recipient(s) (kind=%s)",
                 len(recipients), kind,
             )
             for r in recipients:
@@ -179,6 +197,11 @@ class Notifier:
             try:
                 if self.transport == "graph":
                     await self._send_via_graph(
+                        recipient=recipient, subject=subject,
+                        body_text=body_text, body_html=body_html,
+                    )
+                elif self.transport == "resend":
+                    await self._send_via_resend(
                         recipient=recipient, subject=subject,
                         body_text=body_text, body_html=body_html,
                     )
@@ -229,6 +252,22 @@ class Notifier:
                 _log.warning("notifier: failed to persist rotated refresh_token: %s", exc)
         if not result.success:
             raise RuntimeError(result.error or "Graph sendMail failed")
+
+    async def _send_via_resend(
+        self, *, recipient: str, subject: str, body_text: str, body_html: str,
+    ) -> None:
+        """Hand off to the Resend HTTPS API; raise on failure.
+
+        Resend's send is sync HTTPS, so we offload to a worker thread to
+        keep the asyncio event loop free during long sweeps.
+        """
+        result = await asyncio.to_thread(
+            resend_send_mail, self.resend,
+            recipient=recipient, subject=subject,
+            body_text=body_text, body_html=body_html,
+        )
+        if not result.success:
+            raise RuntimeError(result.error or "Resend send failed")
 
     def _smtp_send_one(
         self, recipient: str, subject: str, body_text: str, body_html: str,

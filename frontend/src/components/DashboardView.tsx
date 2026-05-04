@@ -25,7 +25,7 @@ import {
   executeAiAction,
   getDashboardHighlights,
   regenerateDashboardInsight,
-  runGraphExperiment,
+  runGraphExperimentStream,
   startDiscoveryFetch,
   startDiscoveryMine,
   type DashboardActionType,
@@ -156,8 +156,62 @@ export function DashboardView() {
             toast("Action missing experiment_id", "warning");
             break;
           }
-          await runGraphExperiment(expId, {});
-          toast(`Started experiment ${expId}`, "success");
+          // Stream the run so the user sees per-node progress in the toast row
+          // instead of just "started". Keep the Apply button in its busy state
+          // until run_complete / run_error.
+          toast(`Started experiment ${expId}`, "info");
+          let total = 0;
+          let lastTick = 0;
+          let runOk = false;
+          let runFailed = false;
+          let hadNodeError = false;
+          try {
+            for await (const ev of runGraphExperimentStream(expId, {})) {
+              if (ev.event === "started") {
+                total = ev.node_count ?? 0;
+              } else if (ev.event === "node_start") {
+                const idx = (ev.idx ?? 0) + 1;
+                const totalNow = ev.total ?? total ?? 0;
+                // Throttle progress toasts to one per ~1.2s so we don't spam
+                // the toast stack on fast graphs.
+                const now = Date.now();
+                if (now - lastTick > 1200) {
+                  lastTick = now;
+                  toast(
+                    `${expId}: ${idx}/${totalNow} ${ev.label ?? ""}`.trim(),
+                    "info",
+                    1500,
+                  );
+                }
+              } else if (ev.event === "node_end" && ev.status === "error") {
+                hadNodeError = true;
+              } else if (ev.event === "run_complete") {
+                runOk = true;
+                toast(
+                  hadNodeError
+                    ? `Experiment ${expId} completed with errors`
+                    : `Experiment ${expId} complete`,
+                  hadNodeError ? "warning" : "success",
+                );
+              } else if (ev.event === "run_error") {
+                runFailed = true;
+                toast(
+                  `Experiment ${expId} failed: ${ev.message ?? "run failed"}`,
+                  "error",
+                );
+              }
+            }
+            if (!runOk && !runFailed) {
+              // Stream closed without an explicit run_complete — surface that
+              // rather than silently flashing the success toast.
+              toast(`Experiment ${expId} ended without completion event`, "warning");
+            }
+          } catch (err) {
+            toast(
+              err instanceof Error ? err.message : `Experiment ${expId} failed`,
+              "error",
+            );
+          }
           break;
         }
         case "open_view": {

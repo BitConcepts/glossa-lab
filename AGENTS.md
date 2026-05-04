@@ -1,5 +1,132 @@
 # AGENTS.md
 
+## ⛔ OPERATOR PLAYBOOK — READ FIRST, EVERY SESSION ⛔
+
+> The agent has repeatedly forgotten how to start services on Windows and how the
+> email/notifications stack is wired. This block is the **single source of
+> truth** for both. Do not improvise. Do not invent alternatives. Do not run
+> uvicorn/pythonw/`shell.cmd run`/`shell.cmd tray` directly. Use the entries
+> below verbatim.
+
+### 🚀 Start the backend + tray (Windows) — THE ONLY APPROVED WAY
+
+Canonical command (fire-and-forget; returns immediately; never blocks the agent
+terminal):
+
+```powershell
+Start-Process -FilePath "cmd.exe" -ArgumentList "/c","C:\Users\trist\Development\BitConcepts\glossa-lab\setup-os.cmd","start" -WindowStyle Hidden
+```
+
+Equivalents (all acceptable, all detached):
+
+```cmd
+setup-os.cmd start          :: from a human shell only — still returns fast
+setup-os.cmd stop
+setup-os.cmd restart
+setup-os.cmd status
+```
+
+Why `Start-Process … -WindowStyle Hidden`: it spawns `cmd.exe` in a detached,
+hidden child process. The agent's PTY is freed instantly. `setup-os.cmd start`
+internally uses `pythonw.exe` (GUI subsystem, zero console) plus the tray's
+`start_tray.pyw` entry point, which auto-starts the backend on `localhost:8001`.
+
+Verify after starting (read-only, returns in <3 s):
+
+```powershell
+curl.exe -sf --max-time 3 http://localhost:8001/api/v1/health
+Get-Content C:\Users\trist\Development\BitConcepts\glossa-lab\logs\backend.log -Tail 20
+```
+
+#### ❌ HARD-BANNED service-start patterns (these have all failed before)
+
+* `shell.cmd run` / `shell.cmd tray` — foreground only, blocks the PTY
+* Direct `uvicorn glossa_lab.main:app …` invocation — blocks the PTY
+* Inline PowerShell `Start-Process` with a here-string body — Defender AMSI blocks it
+* New `.ps1` launcher scripts authored on the fly — Defender AMSI blocks them
+* `start /B …` *inside* the agent's foreground shell — still attaches to this PTY
+* Sitting in `wait` mode on a long-running shell command (H8, H17.6)
+
+If the canonical command fails: capture the error, **stop**, and report it.
+Do NOT improvise a new launcher. The fix is in `setup-os.cmd`, not in the
+agent's shell call.
+
+### ✉️ Email / notifications stack
+
+Three layers, all already shipped (Phases H1–H7 + I1–I3):
+
+* **Transport** — `backend/glossa_lab/notifications/`
+  * `smtp.py` — stdlib `smtplib` SMTP (Outlook, Gmail app-password, etc.)
+  * `graph.py` — Microsoft Graph device-code OAuth (Mail.Send) for Outlook 365
+  * The `Notifier` auto-prefers Graph when `ms_graph_refresh_token` is set;
+    falls back to SMTP; silently no-ops when neither is configured.
+* **Persistence** — `backend/glossa_lab/database.py` schema v14:
+  * `notification_recipients` (id, email, label, active, …)
+  * `notification_log`         (id, recipient, subject, kind, sent_at, status, error)
+  * `discovery_items.notified_at` so each finding emails at most once
+* **Surface**
+  * Settings keys (managed via `api/settings.py` `KNOWN_KEYS`):
+    `smtp_host`, `smtp_port`, `smtp_username`, `smtp_password`, `smtp_from`,
+    `smtp_use_tls`, `ms_graph_client_id`, `ms_graph_tenant_id`,
+    `ms_graph_refresh_token`, `discovery_daily`
+  * REST: `/api/v1/notifications/{recipients, log, status, test, graph/start, graph/status, graph/disconnect}`
+  * Discovery scheduler runtime: `/api/v1/discovery/scheduler/{status, start, stop}`
+  * CLI: `python -m glossa_lab.discovery {fetch,mine,daily} --notify`
+  * UI: `frontend/src/components/Notifications/NotificationsPanel.tsx` — Outlook
+    Connect modal, recipient CRUD, send-test, auto-start scheduler toggle
+  * Per-run notify: `DiscoveryView` checkbox; `StudyBuilderView` /
+    `ExperimentBuilderView` Run-+-notify buttons (`POST /run` body `{notify:true}`)
+
+#### Quick checks
+
+```powershell
+# Recipient + transport status
+curl.exe -sf http://localhost:8001/api/v1/notifications/status
+# Send a test email to all active recipients
+curl.exe -sf -X POST http://localhost:8001/api/v1/notifications/test
+# Trigger a discovery digest immediately (headless)
+C:\Users\trist\Development\BitConcepts\glossa-lab\backend\venv\Scripts\python.exe -m glossa_lab.discovery daily --notify
+```
+
+If email is silent: check `notification_log` rows and `logs/backend.log`. Do
+NOT add a second mail backend; extend the existing `Notifier`.
+
+### 🏗️ Frontend bundle MUST be rebuilt whenever UI/api code changes
+
+The backend serves `frontend/dist/` via FastAPI `StaticFiles`. Editing
+`frontend/src/**` does **NOT** change what users see until the bundle is
+rebuilt. Skipping this step is what makes "I added the panel but it isn't
+there" happen.
+
+After ANY edit to `frontend/src/**` or `frontend/src/api.ts`:
+
+```powershell
+cd C:\Users\trist\Development\BitConcepts\glossa-lab\frontend
+npm run build
+```
+
+Then verify the served HTML references the new hashed bundle:
+
+```powershell
+curl.exe -sf http://localhost:8001/ | Select-String -Pattern 'index-[A-Za-z0-9]+\.(js|css)' -AllMatches | %% { $_.Matches.Value }
+```
+
+The browser may still show stale UI from cache — instruct the user to do a
+**hard refresh** (`Ctrl+Shift+R` / `Ctrl+F5`). No backend restart is needed;
+`StaticFiles` re-reads the directory on each request.
+
+Mandatory checklist any time backend or frontend code lands:
+* [ ] `npm run build` ran cleanly (no TS errors, no Vite warnings beyond chunk size)
+* [ ] `dist/index.html` mtime is newer than the source edits
+* [ ] Spot-check the bundle for an expected literal: `Select-String -Path .\dist\assets\index-*.js -SimpleMatch -Pattern 'graph/start'`
+* [ ] User does a hard refresh
+
+### 🔁 If you forget any of the above
+
+Re-read this block. It is at the top of AGENTS.md for exactly that reason.
+
+---
+
 ## Purpose
 
 This repository uses a closed-loop, specification-first, constraint-governed agentic workflow.

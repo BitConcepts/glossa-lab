@@ -1553,6 +1553,105 @@ export const startDiscoveryMine = (body: {
 }): Promise<DiscoveryJobAck> =>
   request("POST", "/discovery/mine", body);
 
+// ── Dashboard (highlights + AI insights aggregator) ─────────────────────
+
+export interface DashboardHighlight {
+  id: string;
+  title: string;
+  why_it_matters: string;
+}
+
+export type DashboardActionType =
+  | "run_experiment"
+  | "open_view"
+  | "run_fetch"
+  | "run_mine"
+  | "create_hypothesis"
+  | "propose_experiment_chain"
+  | "ai_chat"
+  | "no_op";
+
+export interface DashboardNextAction {
+  label:        string;
+  action_type:  DashboardActionType;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  params:       Record<string, any>;
+  rationale:    string;
+}
+
+export interface DashboardImpact {
+  study_or_experiment_id: string;
+  impact: string;
+  suggested_action?: DashboardActionType;
+}
+
+export interface DashboardInsight {
+  highlights: DashboardHighlight[];
+  what_it_means: string;
+  impact: DashboardImpact[];
+  next_actions: DashboardNextAction[];
+  model: string;
+  error?: string;
+}
+
+export interface DashboardHighlights {
+  items: DiscoveryItem[];
+  n_items: number;
+  by_kind:   Record<string, number>;
+  by_status: Record<string, number>;
+  by_topic:  Record<string, number>;
+  by_source: Record<string, number>;
+  n_studies: number;
+  n_experiments: number;
+  since_days: number;
+  insight: DashboardInsight | null;
+}
+
+export const getDashboardHighlights = (
+  opts: { days?: number; limit?: number; include_ai?: boolean } = {},
+): Promise<DashboardHighlights> => {
+  const qs = new URLSearchParams();
+  if (opts.days       !== undefined) qs.set("days",        String(opts.days));
+  if (opts.limit      !== undefined) qs.set("limit",       String(opts.limit));
+  if (opts.include_ai !== undefined) qs.set("include_ai",  String(opts.include_ai));
+  const s = qs.toString();
+  return request("GET", `/dashboard/highlights${s ? "?" + s : ""}`);
+};
+
+export const regenerateDashboardInsight = (
+  opts: { days?: number; limit?: number } = {},
+): Promise<DashboardInsight> => {
+  const qs = new URLSearchParams();
+  if (opts.days  !== undefined) qs.set("days",  String(opts.days));
+  if (opts.limit !== undefined) qs.set("limit", String(opts.limit));
+  const s = qs.toString();
+  return request("POST", `/dashboard/insight${s ? "?" + s : ""}`);
+};
+
+// ── AI profile suggestions ───────────────────────────────────────────
+
+export interface AIProfileSuggestion {
+  name: string;
+  backend_kind: AIBackendKind;
+  backend_ref: string;
+  model: string;
+  role: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  params: Record<string, any>;
+  tags: string[];
+  notes: string;
+  rationale: string;
+}
+
+export interface AIProfileSuggestionsResponse {
+  profiles: AIProfileSuggestion[];
+  message: string;
+  available: { cloud: string[]; ollama: number; endpoints: number };
+}
+
+export const suggestAIProfiles = (): Promise<AIProfileSuggestionsResponse> =>
+  request("POST", "/ai-profiles/suggest");
+
 // ── Notifications (email recipients + send log) ────────────────────────
 
 export interface NotificationRecipient {
@@ -1577,7 +1676,7 @@ export interface NotificationLogEntry {
 
 export interface NotifierStatus {
   configured: boolean;
-  transport: "graph" | "smtp" | "none";
+  transport: "graph" | "resend" | "smtp" | "none";
   host: string;
   port: number;
   from: string;
@@ -1586,7 +1685,13 @@ export interface NotifierStatus {
   password_set: boolean;
   graph_configured: boolean;
   graph_client_id_set: boolean;
+  // True when the backend resolved the public Microsoft Graph PowerShell
+  // client_id (zero Azure setup). Frontend uses this to relax the "set
+  // client_id first" warning before clicking Connect.
+  graph_default_client?: boolean;
   graph_tenant: string;
+  resend_configured?: boolean;
+  resend_from?: string;
   recipients_total: number;
   recipients_active: number;
 }
@@ -1677,3 +1782,263 @@ export const startDiscoveryScheduler = (
 export const stopDiscoveryScheduler = (
 ): Promise<DiscoverySchedulerStatus> =>
   request("POST", "/discovery/scheduler/stop");
+
+// ── AI Endpoints (vLLM / LM Studio / OpenRouter / etc.) ─────────────────
+
+export interface AIEndpointPreset {
+  id: string;
+  label: string;
+  description: string;
+  endpoint_kind: string;
+  base_url: string;
+  needs_key: boolean;
+}
+
+export interface AIEndpoint {
+  id: string;
+  name: string;
+  endpoint_kind: string;
+  base_url: string;
+  api_key: string;          // always blank in responses; api_key_set tells you if one is stored
+  api_key_set?: boolean;
+  default_model: string;
+  headers: Record<string, string>;
+  enabled: boolean;
+  notes: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface AIEndpointVerifyResult {
+  valid: boolean;
+  message: string;
+  models: string[];
+}
+
+export const listAIEndpointPresets = (
+): Promise<{ presets: AIEndpointPreset[] }> =>
+  request("GET", "/ai-endpoints/presets");
+
+export const listAIEndpoints = (
+  enabled_only = false,
+): Promise<{ endpoints: AIEndpoint[] }> =>
+  request("GET", `/ai-endpoints${enabled_only ? "?enabled_only=true" : ""}`);
+
+export const createAIEndpoint = (
+  body: Partial<AIEndpoint> & { name: string },
+): Promise<AIEndpoint> =>
+  request("POST", "/ai-endpoints", body);
+
+export const updateAIEndpoint = (
+  eid: string,
+  body: Partial<AIEndpoint>,
+): Promise<AIEndpoint> =>
+  request("PATCH", `/ai-endpoints/${encodeURIComponent(eid)}`, body);
+
+export const deleteAIEndpoint = (
+  eid: string,
+): Promise<{ deleted: boolean; id: string }> =>
+  request("DELETE", `/ai-endpoints/${encodeURIComponent(eid)}`);
+
+export const verifyAIEndpoint = (
+  eid: string,
+): Promise<AIEndpointVerifyResult> =>
+  request("POST", `/ai-endpoints/${encodeURIComponent(eid)}/verify`);
+
+export const verifyAIEndpointConfig = (
+  body: { base_url: string; api_key?: string; endpoint_kind?: string; headers?: Record<string, string> },
+): Promise<AIEndpointVerifyResult> =>
+  request("POST", "/ai-endpoints/verify", body);
+
+// ── AI Profiles (named bundles of backend + model + params) ─────────────
+
+export type AIBackendKind = "cloud" | "ollama" | "endpoint";
+
+export interface AIProfile {
+  id: string;
+  name: string;
+  backend_kind: AIBackendKind;
+  backend_ref: string;
+  model: string;
+  params: Record<string, unknown>;
+  tags: string[];
+  is_default: boolean;
+  role: string;
+  notes: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface AIProfileRole {
+  id: string;
+  label: string;
+}
+
+export const listAIProfileRoles = (
+): Promise<{ roles: AIProfileRole[] }> =>
+  request("GET", "/ai-profiles/roles");
+
+export const listAIProfiles = (
+  role?: string,
+): Promise<{ profiles: AIProfile[] }> =>
+  request("GET", `/ai-profiles${role !== undefined ? `?role=${encodeURIComponent(role)}` : ""}`);
+
+export const getDefaultAIProfile = (
+  role = "",
+): Promise<{ profile: AIProfile | null }> =>
+  request("GET", `/ai-profiles/default?role=${encodeURIComponent(role)}`);
+
+export const createAIProfile = (
+  body: Partial<AIProfile> & { name: string },
+): Promise<AIProfile> =>
+  request("POST", "/ai-profiles", body);
+
+export const updateAIProfile = (
+  pid: string,
+  body: Partial<AIProfile>,
+): Promise<AIProfile> =>
+  request("PATCH", `/ai-profiles/${encodeURIComponent(pid)}`, body);
+
+export const deleteAIProfile = (
+  pid: string,
+): Promise<{ deleted: boolean; id: string }> =>
+  request("DELETE", `/ai-profiles/${encodeURIComponent(pid)}`);
+
+// ── Email provider presets (frontend-only catalogue) ──────────────────────
+
+export interface EmailProviderPreset {
+  id: string;
+  label: string;
+  // "oauth"  — Outlook 365 device-code flow (no SMTP at all)
+  // "api"    — HTTPS API like Resend (no SMTP server, no mailbox needed)
+  // "smtp"   — traditional SMTP with host/port/credentials
+  category: "oauth" | "smtp" | "api" | "oauth_or_smtp";
+  recommended?: boolean;
+  smtp_host?: string;
+  smtp_port?: number;
+  smtp_use_tls?: boolean;
+  notes: string;
+}
+
+export const EMAIL_PROVIDER_PRESETS: EmailProviderPreset[] = [
+  {
+    id: "outlook365_oauth",
+    label: "Outlook 365 (Microsoft Graph OAuth) — recommended",
+    category: "oauth",
+    recommended: true,
+    notes: "Modern SSO via device-code flow. Works with personal and work/school accounts. No app password needed.",
+  },
+  {
+    id: "resend_api",
+    label: "Resend (HTTPS API) — no SMTP, no mailbox, no domain",
+    category: "api",
+    recommended: true,
+    notes: "Sign up at resend.com, generate an API key, paste it here. Sends from onboarding@resend.dev (free, 100/day, 3000/month) without any DNS setup. Verify your own domain in Resend later for branded From: addresses.",
+  },
+  {
+    id: "microsoft365_smtp",
+    label: "Microsoft 365 SMTP (legacy / basic auth)",
+    category: "smtp",
+    smtp_host: "smtp.office365.com",
+    smtp_port: 587,
+    smtp_use_tls: true,
+    notes: "Only works if your tenant still allows SMTP AUTH. Most do not — use the OAuth option above instead.",
+  },
+  {
+    id: "outlook_com",
+    label: "Outlook.com / Hotmail / Live",
+    category: "smtp",
+    smtp_host: "smtp-mail.outlook.com",
+    smtp_port: 587,
+    smtp_use_tls: true,
+    notes: "Use your full email as username and an app password (account.live.com → Security → App passwords).",
+  },
+  {
+    id: "gmail",
+    label: "Gmail / Google Workspace",
+    category: "smtp",
+    smtp_host: "smtp.gmail.com",
+    smtp_port: 587,
+    smtp_use_tls: true,
+    notes: "Requires an app password (myaccount.google.com → Security → 2-Step Verification → App passwords).",
+  },
+  {
+    id: "yahoo",
+    label: "Yahoo Mail",
+    category: "smtp",
+    smtp_host: "smtp.mail.yahoo.com",
+    smtp_port: 587,
+    smtp_use_tls: true,
+    notes: "Requires an app password (login.yahoo.com → Account Security → Generate app password).",
+  },
+  {
+    id: "icloud",
+    label: "Apple iCloud Mail",
+    category: "smtp",
+    smtp_host: "smtp.mail.me.com",
+    smtp_port: 587,
+    smtp_use_tls: true,
+    notes: "Requires an app-specific password (appleid.apple.com → Sign-In and Security → App-Specific Passwords).",
+  },
+  {
+    id: "zoho",
+    label: "Zoho Mail",
+    category: "smtp",
+    smtp_host: "smtp.zoho.com",
+    smtp_port: 587,
+    smtp_use_tls: true,
+    notes: "For zoho.eu users use smtp.zoho.eu. Generate an app-specific password in your Zoho Mail account.",
+  },
+  {
+    id: "infomaniak",
+    label: "Infomaniak (incl. swissmail.io)",
+    category: "smtp",
+    smtp_host: "mail.infomaniak.com",
+    smtp_port: 465,
+    smtp_use_tls: true,
+    notes: "Common Swiss research provider. Port 465 = SSL on connect; some setups also allow 587 STARTTLS.",
+  },
+  {
+    id: "protonmail_bridge",
+    label: "ProtonMail (Bridge)",
+    category: "smtp",
+    smtp_host: "127.0.0.1",
+    smtp_port: 1025,
+    smtp_use_tls: true,
+    notes: "Run ProtonMail Bridge locally; it exposes a local SMTP relay on 127.0.0.1:1025.",
+  },
+  {
+    id: "sendgrid",
+    label: "SendGrid",
+    category: "smtp",
+    smtp_host: "smtp.sendgrid.net",
+    smtp_port: 587,
+    smtp_use_tls: true,
+    notes: "Use 'apikey' as the username and your SendGrid API key as the password.",
+  },
+  {
+    id: "mailgun",
+    label: "Mailgun",
+    category: "smtp",
+    smtp_host: "smtp.mailgun.org",
+    smtp_port: 587,
+    smtp_use_tls: true,
+    notes: "Use the SMTP credentials shown in your Mailgun domain dashboard.",
+  },
+  {
+    id: "university",
+    label: "University / research-institution SMTP",
+    category: "smtp",
+    smtp_port: 587,
+    smtp_use_tls: true,
+    notes: "Most universities expose smtp.<institution>.edu on port 587 STARTTLS. Check your IT pages — some require VPN or institutional MFA app passwords.",
+  },
+  {
+    id: "custom",
+    label: "Custom SMTP",
+    category: "smtp",
+    smtp_port: 587,
+    smtp_use_tls: true,
+    notes: "Fill in your provider's host, port, and TLS settings manually.",
+  },
+];

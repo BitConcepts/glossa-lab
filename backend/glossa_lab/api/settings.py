@@ -51,6 +51,12 @@ KNOWN_KEYS = [
     "ms_graph_client_id",
     "ms_graph_tenant_id",
     "ms_graph_refresh_token",
+    # Resend HTTPS API — zero-server email transport. With just an API key,
+    # users can email out from "onboarding@resend.dev" without any domain,
+    # mailbox, or DNS setup. ``resend_from`` is optional; defaults to the
+    # Resend shared sender.
+    "resend_api_key",
+    "resend_from",
     # Discovery scheduler auto-start. "1" = run fetch+mine+digest every 24h
     # automatically when the backend lifespan boots. Surfaced in the
     # Notifications panel as a toggle so the user doesn't need shell access.
@@ -125,7 +131,33 @@ _VERIFY_ENDPOINTS: dict[str, dict[str, Any]] = {
         "url": "https://generativelanguage.googleapis.com/v1beta/models",
         "auth_header": None,  # key goes in query param
         "auth_prefix": "",
+        "query_param": "key",
         "extra_headers": {},
+    },
+    # ── Discovery / search providers ─────────────────────────────────────
+    "serp_api_key": {
+        "provider": "SerpAPI",
+        "url": "https://serpapi.com/account",
+        "auth_header": None,
+        "auth_prefix": "",
+        "query_param": "api_key",
+        "extra_headers": {},
+    },
+    "news_api_key": {
+        "provider": "NewsAPI",
+        # /v2/sources is the cheapest auth check; returns 200 + sources list
+        "url": "https://newsapi.org/v2/sources",
+        "auth_header": "X-Api-Key",
+        "auth_prefix": "",
+        "extra_headers": {},
+    },
+    "brave_search_api_key": {
+        "provider": "Brave Search",
+        # ?count=1 keeps the response small while still validating the key
+        "url": "https://api.search.brave.com/res/v1/web/search?q=test&count=1",
+        "auth_header": "X-Subscription-Token",
+        "auth_prefix": "",
+        "extra_headers": {"Accept": "application/json"},
     },
 }
 
@@ -161,8 +193,11 @@ async def verify_key(body: VerifyRequest) -> dict[str, Any]:
 
     # Build the request
     url = ep["url"]
-    if ep["auth_header"] is None:  # Google: key in query param
-        url = f"{url}?key={key_val}"
+    if ep["auth_header"] is None:
+        # Key goes in a query parameter (Google, SerpAPI, etc.)
+        param = ep.get("query_param", "key")
+        sep = "&" if "?" in url else "?"
+        url = f"{url}{sep}{param}={key_val}"
 
     headers: dict[str, str] = {"Accept": "application/json"}
     if ep["auth_header"]:

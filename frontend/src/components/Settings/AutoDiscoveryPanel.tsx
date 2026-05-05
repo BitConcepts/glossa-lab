@@ -38,7 +38,7 @@ import { useToast } from "../../hooks/useToast";
 const SOURCE_KEYS: { id: string; label: string; href: string }[] = [
   { id: "news_api_key",         label: "NewsAPI",       href: "https://newsapi.org/account" },
   { id: "serp_api_key",         label: "SerpAPI",       href: "https://serpapi.com/manage-api-key" },
-  { id: "brave_search_api_key", label: "Brave Search",  href: "https://api.search.brave.com/app/dashboard" },
+  { id: "brave_search_api_key", label: "Brave Search",  href: "https://api-dashboard.search.brave.com/" },
 ];
 
 export function AutoDiscoveryPanel() {

@@ -910,7 +910,7 @@ function _actionViewHint(action: AIAction): string | null {
 // ── ChatInline (docked in BottomPanel) ────────────────────────────────────────
 
 export function ChatInline() {
-  const { setDocked } = useAIChat();
+  const { setDocked, request } = useAIChat();
   const [messages, setMessages] = useState<MsgUI[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
@@ -944,6 +944,22 @@ export function ChatInline() {
     window.addEventListener("glossa:context", handler);
     return () => window.removeEventListener("glossa:context", handler);
   }, []);
+  // Pre-fill from openChat({ initialPrompt }) so dashboard "Plan chain" /
+  // "Ask AI" actions land directly in this docked side-panel input. The
+  // height itself is handled by the [input]-driven _autoGrow effect below;
+  // here we only set state + focus.
+  useEffect(() => {
+    if (!request) return;
+    if (request.contextType !== undefined && request.contextType !== "") {
+      setContextType(request.contextType);
+    }
+    if (request.contextId) setContextId(request.contextId);
+    if (request.contextLabel) setAutoContextLabel(request.contextLabel);
+    if (request.initialPrompt) {
+      setInput(request.initialPrompt);
+      setTimeout(() => textareaInlineRef.current?.focus(), 80);
+    }
+  }, [request]);
   useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: "smooth" }); }, [messages]);
 
   const handleInlineAction = useCallback(async (msg: MsgUI, idx: number, action: AIAction, approve: boolean) => {
@@ -1017,7 +1033,21 @@ export function ChatInline() {
     r.readAsText(f); e.target.value = "";
   };
 
-  const textareaRef2 = useRef<HTMLTextAreaElement>(null);
+  // Auto-grow ceiling: ~12 lines at 12px / lineHeight 1.5 + vertical padding.
+  // Once content exceeds the ceiling we flip to overflow:auto so a scrollbar
+  // appears — nothing is ever clipped invisibly.
+  const TEXTAREA_MAX_H = 200;
+  const _autoGrow = useCallback((el: HTMLTextAreaElement | null) => {
+    if (!el) return;
+    el.style.height = "auto";
+    const next = Math.min(el.scrollHeight, TEXTAREA_MAX_H);
+    el.style.height = next + "px";
+    el.style.overflowY = el.scrollHeight > TEXTAREA_MAX_H ? "auto" : "hidden";
+  }, []);
+  // Re-run autosize whenever ``input`` changes value programmatically (prefill
+  // from openChat({ initialPrompt }), file/url paste, etc.). The onChange path
+  // also calls _autoGrow synchronously for snappy keystroke updates.
+  useEffect(() => { _autoGrow(textareaInlineRef.current); }, [input, _autoGrow]);
 
   // Copy-all handler
   const copyAll = useCallback(() => {
@@ -1115,44 +1145,95 @@ export function ChatInline() {
         <div ref={bottomRef} />
       </div>
 
-      {/* Input bar */}
-      <div style={{ display: "flex", gap: 4, padding: "4px 8px", borderTop: "1px solid #1e293b", flexShrink: 0, alignItems: "flex-end" }}>
-        <button onClick={() => fileInputRef.current?.click()} style={{ background: "#1e293b", border: "none", color: "#64748b", cursor: "pointer", fontSize: 10, padding: "0 4px", borderRadius: 3, flexShrink: 0, height: 26, lineHeight: "26px" }}>&#x1F4CE;</button>
+      {/* Input bar — ChatGPT-style auto-grow.
+          Row pins to bottom; the textarea grows upward as content adds lines.
+          When empty the textarea is exactly one line tall (single-line input);
+          the keyboard hint lives in a caption *below* the row, never inside
+          the placeholder, so the empty state reads as a search box. */}
+      <div style={{
+        display: "flex", gap: 6, padding: "6px 10px 4px",
+        borderTop: "1px solid #1e293b", flexShrink: 0,
+        alignItems: "flex-end", background: "#0f172a",
+      }}>
+        <button
+          onClick={() => fileInputRef.current?.click()}
+          title="Attach file"
+          style={{
+            background: "#1e293b", border: "none", color: "#94a3b8",
+            cursor: "pointer", fontSize: 13, padding: "0 8px",
+            borderRadius: 6, flexShrink: 0, height: 30, lineHeight: "30px",
+          }}>&#x1F4CE;</button>
         <input ref={fileInputRef} type="file" accept=".txt,.md,.csv,.json,.py" style={{ display: "none" }} onChange={handleFile} />
-        <textarea
-          ref={textareaRef2}
-          value={input}
-          onChange={e => {
-            setInput(e.target.value);
-            const el = e.target;
-            el.style.height = "auto";
-            el.style.height = Math.min(el.scrollHeight, 100) + "px";
-          }}
-          onKeyDown={e => {
-            if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); }
-          }}
-          placeholder="Ask anything... (Enter | Shift+Enter = newline)"
-          rows={1}
-          style={{ flex: 1, background: "#1e293b", border: "none", color: "#e2e8f0", fontSize: 11,
-                   padding: "4px 6px", borderRadius: 3, outline: "none", resize: "none",
-                   fontFamily: "inherit", lineHeight: 1.5, overflowY: "hidden",
-                   minHeight: 26, maxHeight: 100 }}
-          disabled={busy}
-        />
-        {busy
-          ? <button onClick={() => abortCtrlInline.current?.abort()}
-              style={{ padding: "0 8px", height: 26, background: "#dc2626", border: "none",
-                       borderRadius: 3, color: "#fff", cursor: "pointer", fontSize: 10, flexShrink: 0 }}>
-              Stop
-            </button>
-          : <button onClick={() => send()} disabled={!input.trim()}
-              style={{ padding: "0 8px", height: 26, background: input.trim() ? "#7c3aed" : "#1e293b",
-                       border: "none", borderRadius: 3, color: input.trim() ? "#fff" : "#475569",
-                       cursor: input.trim() ? "pointer" : "not-allowed", fontSize: 10, flexShrink: 0 }}>
-              Send
-            </button>
-        }
+        <div style={{ flex: 1, position: "relative", minWidth: 0 }}>
+          <textarea
+            ref={textareaInlineRef}
+            value={input}
+            onChange={e => {
+              setInput(e.target.value);
+              _autoGrow(e.currentTarget);
+            }}
+            onKeyDown={e => {
+              if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); }
+            }}
+            placeholder="Ask Glossa AI anything…"
+            rows={1}
+            disabled={busy}
+            className="glossa-chat-input"
+            style={{
+              width: "100%", boxSizing: "border-box",
+              background: "#1e293b", border: "1px solid #334155",
+              color: "#e2e8f0", fontSize: 12,
+              padding: "6px 52px 6px 10px",
+              borderRadius: 8, outline: "none", resize: "none",
+              fontFamily: "inherit", lineHeight: 1.5,
+              overflowY: "hidden",
+              // Single-line tall when empty; _autoGrow expands as content arrives.
+              minHeight: 30, maxHeight: TEXTAREA_MAX_H,
+              display: "block",
+            }}
+            onFocus={e => { e.currentTarget.style.borderColor = "#7c3aed"; e.currentTarget.style.boxShadow = "0 0 0 2px rgba(124,58,237,0.18)"; }}
+            onBlur={e => { e.currentTarget.style.borderColor = "#334155"; e.currentTarget.style.boxShadow = "none"; }}
+          />
+          {/* Embedded send / stop button — always at the textarea's bottom-right */}
+          {busy
+            ? <button onClick={() => abortCtrlInline.current?.abort()}
+                title="Stop generation"
+                style={{
+                  position: "absolute", right: 6, bottom: 6,
+                  padding: "4px 10px", background: "#dc2626",
+                  border: "none", borderRadius: 5, color: "#fff",
+                  cursor: "pointer", fontSize: 11, fontWeight: 700, lineHeight: 1.4,
+                }}>■ Stop</button>
+            : <button onClick={() => send()} disabled={!input.trim()}
+                title="Send (Enter)"
+                style={{
+                  position: "absolute", right: 6, bottom: 6,
+                  padding: "4px 10px",
+                  background: input.trim() ? "#7c3aed" : "#334155",
+                  border: "none", borderRadius: 5,
+                  color: input.trim() ? "#fff" : "#64748b",
+                  cursor: input.trim() ? "pointer" : "not-allowed",
+                  fontSize: 11, fontWeight: 600, lineHeight: 1.4,
+                }}>Send</button>
+          }
+        </div>
       </div>
+      {/* Keyboard-hint caption — lives outside the input box per request so
+          the textarea reads as a clean single-line search field. */}
+      <div style={{
+        padding: "0 10px 5px", fontSize: 9, color: "#475569",
+        background: "#0f172a", textAlign: "right",
+      }}>
+        Enter to send · Shift+Enter for newline
+      </div>
+      {/* Local scrollbar styling so the input doesn't look broken when content
+          exceeds the auto-grow ceiling. */}
+      <style>{`
+        .glossa-chat-input::-webkit-scrollbar { width: 6px; }
+        .glossa-chat-input::-webkit-scrollbar-track { background: transparent; }
+        .glossa-chat-input::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+        .glossa-chat-input::-webkit-scrollbar-thumb:hover { background: #475569; }
+      `}</style>
     </div>
   );
 }
@@ -1202,7 +1283,6 @@ export function AISidePanel({
   onWidthChange?: (w: number) => void;
   onSideChange?: (s: "left" | "right") => void;
 }) {
-  const { isOpen: windowOpen } = useAIChat();
   const [side, setSide] = useCallback_SIDE(initialSide, onSideChange);
   const [width, setWidth] = useCallback_WIDTH(initialWidth, onWidthChange);
   const isDragging = useRef(false);
@@ -1333,8 +1413,6 @@ export function AISidePanel({
       <div style={{ flex: 1, minHeight: 0, overflow: "hidden" }}>
         <ChatInline />
       </div>
-
-      {windowOpen && <AIChatWindow />}
     </div>
   );
 }

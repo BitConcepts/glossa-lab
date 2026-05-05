@@ -20,7 +20,7 @@ import { CASModelView } from "./components/CASModelView";
 import { DashboardView } from "./components/DashboardView";
 import { DiscoveryView } from "./components/Discovery/DiscoveryView";
 import { CommandPalette, type PaletteCommand } from "./components/CommandPalette";
-import { AIChatWindow, AISidePanel } from "./components/AIChatWindow";
+import { AISidePanel } from "./components/AIChatWindow";
 import { BottomPanel } from "./components/BottomPanel";
 import { NotificationCenter } from "./components/NotificationDrawer";
 import { ToastProvider } from "./hooks/useToast";
@@ -497,7 +497,8 @@ function AppContent() {
         />
       )}
 
-      {/* AI side panel — dockable left/right, resizable */}
+      {/* AI side panel — the only Glossa AI surface. Dockable left/right, resizable.
+           The legacy floating AIChatWindow has been retired; openChat() always opens this. */}
       {aiPanelOpen && (
         <AISidePanel
           onClose={() => setAiPanelOpen(false)}
@@ -509,9 +510,6 @@ function AppContent() {
           onSideChange={setAiPanelSide}
         />
       )}
-
-      {/* Full AIChatWindow — only rendered when explicitly opened (e.g. undock from ChatInline) */}
-      {!aiPanelOpen && <AIChatWindow />}
 
       <style>{`
         @keyframes healthPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }

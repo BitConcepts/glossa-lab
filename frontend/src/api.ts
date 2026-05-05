@@ -5,6 +5,56 @@
 
 const BASE = "/api/v1";
 
+/**
+ * Parse a server error body into a single human-readable line.
+ *
+ * Handles:
+ *  - FastAPI ``{"detail": "..."}`` (single string)
+ *  - FastAPI ``{"detail": [{"msg": "...", "loc": [...]}]}`` (validation errors)
+ *  - generic JSON ``{"message": "..."}`` / ``{"error": "..."}``
+ *  - non-JSON bodies fall back to the raw text
+ */
+export function parseHttpError(status: number, rawBody: string, statusText = ""): string {
+  const httpLabel = `HTTP ${status}${statusText ? " " + statusText : ""}`;
+  if (!rawBody) return httpLabel;
+  let parsed: unknown;
+  try { parsed = JSON.parse(rawBody); } catch { return `${httpLabel}: ${rawBody.slice(0, 200)}`; }
+  if (parsed && typeof parsed === "object") {
+    const obj = parsed as Record<string, unknown>;
+    const detail = obj.detail;
+    if (typeof detail === "string") return detail;
+    if (Array.isArray(detail)) {
+      const msgs = detail
+        .map((d) => {
+          if (d && typeof d === "object") {
+            const dd = d as Record<string, unknown>;
+            const loc = Array.isArray(dd.loc) ? (dd.loc as unknown[]).filter((p) => p !== "body").join(".") : "";
+            const msg = typeof dd.msg === "string" ? dd.msg : JSON.stringify(d);
+            return loc ? `${loc}: ${msg}` : msg;
+          }
+          return String(d);
+        })
+        .filter(Boolean);
+      if (msgs.length) return msgs.join("; ");
+    }
+    if (typeof obj.message === "string") return obj.message;
+    if (typeof obj.error === "string") return obj.error;
+  }
+  return `${httpLabel}: ${rawBody.slice(0, 200)}`;
+}
+
+/** Build a thrown Error whose .message is human-readable. The full payload is
+ *  attached as `(err as any).body` for debugging. */
+function _makeHttpError(method: string, path: string, status: number, statusText: string, body: string): Error {
+  const friendly = parseHttpError(status, body, statusText);
+  const err = new Error(`${method} ${path} — ${friendly}`);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (err as any).status = status;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (err as any).body = body;
+  return err;
+}
+
 async function request<T>(
   method: string,
   path: string,
@@ -19,8 +69,8 @@ async function request<T>(
   if (body !== undefined) opts.body = JSON.stringify(body);
   const res = await fetch(`${BASE}${path}`, opts);
   if (!res.ok) {
-    const text = await res.text().catch(() => res.statusText);
-    throw new Error(`${method} ${path} → HTTP ${res.status}: ${text}`);
+    const text = await res.text().catch(() => "");
+    throw _makeHttpError(method, path, res.status, res.statusText, text);
   }
   return res.json() as Promise<T>;
 }
@@ -547,8 +597,8 @@ export interface ExpRunEvent {
 /** Shared SSE line reader — parses a fetch ReadableStream into typed events. */
 async function* _sseStream<T>(response: Response, signal?: AbortSignal): AsyncGenerator<T> {
   if (!response.ok) {
-    const text = await response.text().catch(() => response.statusText);
-    throw new Error(`HTTP ${response.status}: ${text}`);
+    const text = await response.text().catch(() => "");
+    throw _makeHttpError("POST", new URL(response.url).pathname, response.status, response.statusText, text);
   }
   const reader = response.body!.getReader();
   const decoder = new TextDecoder();
@@ -1582,7 +1632,13 @@ export interface DashboardNextAction {
 export interface DashboardImpact {
   study_or_experiment_id: string;
   impact: string;
-  suggested_action?: DashboardActionType;
+  // Wire shape may be a clean string (current backend after coercion) OR
+  // a legacy structured object {action_type, params} that older insights
+  // produced. The DashboardView normalises both.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  suggested_action?: DashboardActionType | { action_type?: string; params?: Record<string, any> } | string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  suggested_params?: Record<string, any>;
 }
 
 export interface DashboardInsight {

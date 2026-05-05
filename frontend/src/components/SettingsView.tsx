@@ -64,7 +64,7 @@ const KEY_LABELS: Record<string, { label: string; hint: string; priority?: boole
   },
   brave_search_api_key: {
     label: "Brave Search Key",
-    hint: "Discovery: web + news search via api.search.brave.com.",
+    hint: "Discovery: web + news search via api.search.brave.com. Get yours at api-dashboard.search.brave.com.",
     verifiable: true,
   },
   // ── SMTP / Microsoft Graph ─────────────────────────────────
@@ -215,9 +215,21 @@ function PythonEnvSection() {
     }
   };
 
-  const loadPackages = async () => {
+  // Show-packages is a *toggle*: first click fetches + shows; second click
+  // hides the list without re-fetching; a third click re-shows the cached
+  // list immediately, with the latest counts updated only on the first click
+  // of each session.
+  const togglePackages = async () => {
+    if (packages !== null) {
+      // Already loaded — toggle visibility without re-fetching.
+      setPackages(null);
+      return;
+    }
     const r = await getEnvPackages();
     setPackages(r.packages);
+    // Default the inner accordion to "open" when first revealed so the user
+    // sees the list immediately rather than just a header.
+    setPackagesOpen(true);
   };
 
   const active = status?.venv_exists;
@@ -268,9 +280,12 @@ function PythonEnvSection() {
           style={btnSt("#2563eb", running || !active)}>
           ↑ Upgrade deps
         </button>
-        <button onClick={loadPackages} disabled={!active}
-          style={btnSt("#7c3aed", !active)}>
-          📦 Show packages
+        <button onClick={togglePackages} disabled={!active}
+          style={btnSt("#7c3aed", !active)}
+          title={packages !== null
+            ? "Hide the package list (does not uninstall anything)"
+            : "Fetch and show installed packages"}>
+          {packages !== null ? "📦 Hide packages" : "📦 Show packages"}
         </button>
       </div>
 
@@ -769,12 +784,22 @@ export function SettingsView() {
   return (
     <div style={{ maxWidth: 720 }}>
       <h2 style={{ marginTop: 0 }}>Settings</h2>
-      <p style={hintTextStyle}>
-        Cloud provider keys go below. Custom AI endpoints (vLLM, LM Studio,
-        OpenRouter, Together, Groq, etc.) and reusable AI profiles live in their
-        own panels further down. Email/notifications has its own provider-aware
-        configuration block.
-      </p>
+
+      {/* Jump-nav strip */}
+      <nav style={{ display: "flex", gap: 4, marginBottom: 16, flexWrap: "wrap" }}>
+        {[
+          ["#settings-ai",        "🤖 AI"],
+          ["#settings-discovery", "🔭 Discovery & Email"],
+          ["#settings-env",       "⚙️ Environment & System"],
+        ].map(([href, label]) => (
+          <a key={href} href={href}
+            style={{ padding: "5px 14px", borderRadius: 6, border: "1px solid #e5e7eb",
+              background: "#f9fafb", color: "#374151", fontSize: 12, fontWeight: 600,
+              textDecoration: "none", cursor: "pointer" }}>
+            {label}
+          </a>
+        ))}
+      </nav>
 
       {error && (
         <div style={{ ...alertStyle, background: "#fef2f2", borderColor: "#fca5a5", color: "#991b1b" }}>
@@ -782,7 +807,11 @@ export function SettingsView() {
         </div>
       )}
 
-      <PythonEnvSection />
+      {/* ═══════════════════ AI CONFIGURATION ═══════════════════ */}
+      <div id="settings-ai" style={groupHeaderStyle}>
+        <span style={{ fontSize: 16 }}>🤖</span>
+        <span>AI Configuration</span>
+      </div>
 
       {/* AI API Keys */}
       <section style={sectionStyle}>
@@ -965,14 +994,38 @@ export function SettingsView() {
       {/* AI profiles — reusable backend + model bundles */}
       <AIProfilesPanel />
 
+      {/* Ollama */}
+      <OllamaSection />
+
+      {/* AI Behavior */}
+      <section style={sectionStyle}>
+        <h3 style={sectionTitleStyle}>AI Behavior</h3>
+        <p style={hintTextStyle}>
+          Control how Glossa AI handles action proposals during chat. These preferences
+          persist across sessions.
+        </p>
+        <AutoApproveSetting />
+      </section>
+
+      {/* ═══════════════════ DISCOVERY & EMAIL ═══════════════════ */}
+      <div id="settings-discovery" style={groupHeaderStyle}>
+        <span style={{ fontSize: 16 }}>🔭</span>
+        <span>Discovery & Email</span>
+      </div>
+
       {/* Auto Discovery — source keys, scheduler, manual fetch/mine, notify */}
       <AutoDiscoveryPanel />
 
       {/* Notifications (provider-aware email + recipients + send log) */}
       <NotificationsPanel />
 
-      {/* Ollama */}
-      <OllamaSection />
+      {/* ═══════════════════ ENVIRONMENT & SYSTEM ═══════════════════ */}
+      <div id="settings-env" style={groupHeaderStyle}>
+        <span style={{ fontSize: 16 }}>⚙️</span>
+        <span>Environment & System</span>
+      </div>
+
+      <PythonEnvSection />
 
       {/* System info */}
       <section style={sectionStyle}>
@@ -1003,18 +1056,6 @@ python ocr_mahadevan.py --target texts`}
         <p style={{ ...hintTextStyle, marginTop: 6 }}>
           Results auto-convert from Mahadevan → Fuls sign numbering and save to <code>reports/</code>.
         </p>
-      </section>
-
-      {/* AI Behavior */}
-      <section style={sectionStyle}>
-        <h3 style={sectionTitleStyle}>AI Behavior</h3>
-        <p style={hintTextStyle}>
-          Control how Glossa AI handles action proposals during chat. These preferences
-          persist across sessions.
-        </p>
-
-        {/* Auto-approve toggle */}
-        <AutoApproveSetting />
       </section>
 
       {/* About */}
@@ -1172,6 +1213,13 @@ const alertStyle: React.CSSProperties = {
   border: "1px solid",
   marginBottom: "1rem",
   fontSize: 13,
+};
+
+const groupHeaderStyle: React.CSSProperties = {
+  display: "flex", alignItems: "center", gap: 8,
+  fontSize: 17, fontWeight: 700, color: "#111827",
+  margin: "2rem 0 1rem", paddingBottom: 8,
+  borderBottom: "2px solid #e5e7eb",
 };
 
 const ollamaSection: React.CSSProperties = {

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import logging
 import sys
+import time
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 from typing import TYPE_CHECKING
@@ -39,11 +40,16 @@ def setup_logging(settings: Settings) -> None:
     """
     log_level = getattr(logging, settings.log_level.upper(), logging.INFO)
 
-    # JSON formatter
+    # JSON formatter — emit timestamps in UTC so the frontend log viewer can
+    # convert them to the user's local time consistently. Without this the
+    # default ``time.localtime`` produces server-local strings that the
+    # frontend then incorrectly re-converts (treating them as UTC), giving
+    # a TZ-offset error in the displayed time.
     formatter = JsonFormatter(
         fmt="%(asctime)s %(levelname)s %(name)s %(message)s",
         rename_fields={"asctime": "timestamp", "levelname": "level", "name": "module"},
     )
+    formatter.converter = time.gmtime  # type: ignore[assignment]
 
     # Console handler — honour configured level
     console_handler = logging.StreamHandler(sys.stdout)

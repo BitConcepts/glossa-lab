@@ -19,11 +19,13 @@
  * app already uses.
  */
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   createHypothesis,
   executeAiAction,
   getDashboardHighlights,
+  getHealth,
+  listGraphExperiments,
   regenerateDashboardInsight,
   runGraphExperimentStream,
   startDiscoveryFetch,
@@ -33,9 +35,41 @@ import {
   type DashboardInsight,
   type DashboardNextAction,
   type DiscoveryItem,
+  type GraphExperimentMeta,
 } from "../api";
 import { useAIChat } from "../hooks/useAIChat";
 import { useToast } from "../hooks/useToast";
+
+// ── Insight persistence ──────────────────────────────────────────────────
+// Insights are expensive to regenerate (LLM call). We cache the last result
+// in localStorage along with the timestamp and the backend's boot time so
+// we can detect a backend restart without re-asking the LLM every reload.
+const INSIGHT_LS_KEY = "glossa_dashboard_insight_v1";
+interface PersistedInsight {
+  insight: DashboardInsight;
+  generated_at: number;       // epoch ms when LLM generated this
+  backend_boot_at: number;    // epoch ms (sec-quantised) when backend started
+  days: number;               // window the insight was computed against
+}
+function _loadPersistedInsight(): PersistedInsight | null {
+  try {
+    const raw = localStorage.getItem(INSIGHT_LS_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw) as PersistedInsight;
+  } catch { return null; }
+}
+function _savePersistedInsight(p: PersistedInsight): void {
+  try { localStorage.setItem(INSIGHT_LS_KEY, JSON.stringify(p)); } catch { /* ignore */ }
+}
+
+// Mine batch-size preference (how many un-mined items to classify per click).
+const MINE_LIMIT_LS_KEY = "glossa_dashboard_mine_limit";
+const MINE_LIMIT_OPTIONS = [10, 25, 50, 100, 200, 500];
+const MINE_LIMIT_DEFAULT = 50;
+function _loadMineLimit(): number {
+  const raw = parseInt(localStorage.getItem(MINE_LIMIT_LS_KEY) ?? "", 10);
+  return MINE_LIMIT_OPTIONS.includes(raw) ? raw : MINE_LIMIT_DEFAULT;
+}
 
 const KIND_COLOURS: Record<string, { bg: string; fg: string }> = {
   hypothesis: { bg: "#ede9fe", fg: "#6d28d9" },
@@ -59,16 +93,45 @@ function fmtRelative(iso: string): string {
   return new Date(t).toISOString().slice(0, 10);
 }
 
+/** Format an epoch-ms as a short human-readable timestamp for the
+ *  "last generated" caption next to the Regenerate button. */
+function fmtAbsoluteShort(ms: number): string {
+  if (!ms) return "";
+  const dt = new Date(ms);
+  const today = new Date();
+  const sameDay = dt.toDateString() === today.toDateString();
+  if (sameDay) {
+    return dt.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
+  }
+  return dt.toLocaleString(undefined, {
+    month: "short", day: "numeric",
+    hour: "numeric", minute: "2-digit",
+  });
+}
+
 export function DashboardView() {
   const { toast } = useToast();
   const { openChat } = useAIChat();
   const [data, setData] = useState<DashboardHighlights | null>(null);
   const [insight, setInsight] = useState<DashboardInsight | null>(null);
+  const [insightGeneratedAt, setInsightGeneratedAt] = useState<number>(0);
   const [insightLoading, setInsightLoading] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [days, setDays] = useState(14);
   const [running, setRunning] = useState<"" | "fetch" | "mine">("");
+  // Mine batch size — persisted; controls how many un-mined items the LLM
+  // classifies per "✨ Mine N" click. Default 50.
+  const [mineLimit, setMineLimitState] = useState<number>(_loadMineLimit);
+  const setMineLimit = (n: number) => {
+    setMineLimitState(n);
+    try { localStorage.setItem(MINE_LIMIT_LS_KEY, String(n)); } catch { /* ignore */ }
+  };
+  // Per-button completion state for Apply / Run buttons. After an action
+  // finishes successfully we keep the ✓ / ✗ marker visible until the user
+  // clicks again (or refreshes the insight).
+  type ApplyResult = "success" | "error" | "warn";
+  const [applyResult, setApplyResult] = useState<Record<string, ApplyResult>>({});
 
   const refresh = useCallback(async () => {
     setLoading(true); setError(null);
@@ -86,7 +149,21 @@ export function DashboardView() {
     setInsightLoading(true);
     try {
       const ins = await regenerateDashboardInsight({ days, limit: 30 });
+      const generatedAt = Date.now();
       setInsight(ins);
+      setInsightGeneratedAt(generatedAt);
+      // Persist along with backend boot time so we can detect restarts on
+      // future mounts and skip auto-regen otherwise.
+      try {
+        const h = await getHealth();
+        const bootAt = Math.round((Date.now() - h.uptime_seconds * 1000) / 1000) * 1000;
+        _savePersistedInsight({ insight: ins, generated_at: generatedAt, backend_boot_at: bootAt, days });
+      } catch {
+        _savePersistedInsight({ insight: ins, generated_at: generatedAt, backend_boot_at: 0, days });
+      }
+      // Clear stale per-button completion marks now that the insight body
+      // has changed — the keyed indices may no longer line up.
+      setApplyResult({});
     } catch (e) {
       toast(e instanceof Error ? e.message : "Insight failed", "error");
     } finally {
@@ -96,9 +173,29 @@ export function DashboardView() {
 
   useEffect(() => { void refresh(); }, [refresh]);
 
-  // Auto-generate insight once on mount (non-blocking)
+  // Auto-generate insight policy.
+  // The AI insight is expensive (LLM call) and the user explicitly does not
+  // want it to regenerate just because the page was reloaded, the backend
+  // restarted, or the `days` window changed. Regen happens ONLY when:
+  //   • there is no persisted insight at all (first ever generation), OR
+  //   • the user clicks ↻ Regenerate (handled in generateInsight()), OR
+  //   • a Fetch Now run completes (chained inside onRunFetch).
+  // On every other mount we just surface the persisted insight and the
+  // "Last regenerated" caption tells the user how stale it is.
+  const insightBootstrapDone = useRef(false);
   useEffect(() => {
-    if (data && !insight && !insightLoading && data.n_items > 0) {
+    if (insightBootstrapDone.current) return;
+    if (!data) return;  // wait for highlights so we know n_items
+    insightBootstrapDone.current = true;
+    const persisted = _loadPersistedInsight();
+    if (persisted) {
+      setInsight(persisted.insight);
+      setInsightGeneratedAt(persisted.generated_at);
+      return;
+    }
+    // No cached insight yet — do a one-time generation so the panel isn't
+    // empty on first run. After this it stays sticky until the user acts.
+    if (data.n_items > 0) {
       void generateInsight();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -108,20 +205,30 @@ export function DashboardView() {
     setRunning("fetch");
     try {
       const ack = await startDiscoveryFetch({});
-      toast(`Fetch started · job ${ack.job_id.slice(0, 8)}`, "info");
+      toast(`Fetch started · job ${ack.job_id.slice(0, 8)} · will regenerate insight when complete`, "info");
     } catch (e) {
       toast(e instanceof Error ? e.message : "Fetch failed", "error");
-    } finally {
       setRunning("");
-      void refresh();
+      return;
     }
+    // Per the spec: Fetch Now → always followed by an Insight regen so the
+    // Dashboard reflects the new items. We give the backend a moment to
+    // ingest+mine the items before asking the LLM to summarise.
+    setTimeout(() => {
+      void refresh();
+      void generateInsight();
+      setRunning("");
+    }, 1500);
   };
 
   const onRunMine = async () => {
     setRunning("mine");
     try {
-      const ack = await startDiscoveryMine({ limit: 50 });
-      toast(`Mine started · job ${ack.job_id.slice(0, 8)} · limit 50`, "info");
+      const ack = await startDiscoveryMine({ limit: mineLimit });
+      toast(
+        `Mine started · job ${ack.job_id.slice(0, 8)} · classifying up to ${mineLimit} items`,
+        "info",
+      );
     } catch (e) {
       toast(e instanceof Error ? e.message : "Mine failed", "error");
     } finally {
@@ -143,17 +250,74 @@ export function DashboardView() {
   const navigate = (view: string) =>
     window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view } }));
 
-  // ── Apply: execute a structured insight action ─────────────────────
+  // ── Cached experiment registry for pre-validation ────────────────
+  // The LLM occasionally hallucinates experiment IDs (e.g.
+  // ``indus_contact_zone_k`` instead of a real ``indus_contact_zone_v2``).
+  // We list the registry once on mount and re-fetch on demand so the
+  // dashboard can reject phantom IDs with a friendly message AND offer the
+  // closest real match.
+  const expRegistryRef = useRef<GraphExperimentMeta[] | null>(null);
+  const ensureExpRegistry = useCallback(async (force = false): Promise<GraphExperimentMeta[]> => {
+    if (expRegistryRef.current && !force) return expRegistryRef.current;
+    try {
+      const list = await listGraphExperiments();
+      expRegistryRef.current = list;
+      return list;
+    } catch {
+      return expRegistryRef.current ?? [];
+    }
+  }, []);
+  useEffect(() => { void ensureExpRegistry(); }, [ensureExpRegistry]);
+
+  /** Crude prefix-similarity score — enough to suggest a likely correction. */
+  const _scoreMatch = (target: string, candidate: string): number => {
+    const a = target.toLowerCase();
+    const b = candidate.toLowerCase();
+    if (a === b) return 1000;
+    if (b.startsWith(a) || a.startsWith(b)) return 500 + Math.min(a.length, b.length);
+    let common = 0;
+    const max = Math.min(a.length, b.length);
+    while (common < max && a[common] === b[common]) common += 1;
+    if (b.includes(a) || a.includes(b)) return 100 + common;
+    return common;
+  };
+
+  // ── Apply: execute a structured insight action ───────────────────
   const [applying, setApplying] = useState<string>("");
   const applyAction = async (a: DashboardNextAction, key: string) => {
     if (applying) return;
     setApplying(key);
+    // Track outcome for the per-button checkmark/error indicator. Initially
+    // assume success; downgrade on warning/error inside each branch.
+    let outcome: ApplyResult = "success";
     try {
       switch (a.action_type) {
         case "run_experiment": {
           const expId = String(a.params?.experiment_id || "").trim();
           if (!expId) {
             toast("Action missing experiment_id", "warning");
+            break;
+          }
+          // Pre-validate against the registry so a hallucinated id never
+          // reaches the backend (and never produces a raw HTTP 404).
+          const registry = await ensureExpRegistry();
+          const known = registry.some((e) => e.id === expId);
+          if (!known) {
+            const suggestions = registry
+              .map((e) => ({ id: e.id, score: _scoreMatch(expId, e.id) }))
+              .sort((x, y) => y.score - x.score)
+              .slice(0, 3)
+              .filter((s) => s.score > 4)
+              .map((s) => s.id);
+            const tail = suggestions.length
+              ? ` Did you mean: ${suggestions.join(", ")}?`
+              : "";
+            toast(
+              `Experiment '${expId}' is not registered.${tail}`,
+              "warning",
+              6000,
+            );
+            outcome = "error";
             break;
           }
           // Stream the run so the user sees per-node progress in the toast row
@@ -193,24 +357,28 @@ export function DashboardView() {
                     : `Experiment ${expId} complete`,
                   hadNodeError ? "warning" : "success",
                 );
+                if (hadNodeError) outcome = "warn";
               } else if (ev.event === "run_error") {
                 runFailed = true;
                 toast(
                   `Experiment ${expId} failed: ${ev.message ?? "run failed"}`,
                   "error",
                 );
+                outcome = "error";
               }
             }
             if (!runOk && !runFailed) {
               // Stream closed without an explicit run_complete — surface that
               // rather than silently flashing the success toast.
               toast(`Experiment ${expId} ended without completion event`, "warning");
+              outcome = "warn";
             }
           } catch (err) {
             toast(
               err instanceof Error ? err.message : `Experiment ${expId} failed`,
               "error",
             );
+            outcome = "error";
           }
           break;
         }
@@ -276,12 +444,15 @@ export function DashboardView() {
             toast(`Executed ${a.action_type}`, "success");
           } else {
             toast("Informational only — nothing to apply", "info");
+            outcome = "warn";
           }
       }
     } catch (e) {
       toast(e instanceof Error ? e.message : "Action failed", "error");
+      outcome = "error";
     } finally {
       setApplying("");
+      setApplyResult((prev) => ({ ...prev, [key]: outcome }));
       void refresh();
     }
   };
@@ -312,13 +483,36 @@ export function DashboardView() {
             {loading ? "…" : "⟳ Reload"}
           </button>
           <button onClick={() => void onRunFetch()} disabled={!!running} style={btnPrimary}
-            title="Pull new items from every configured source for every topic">
+            title="Pull new items from every configured source for every topic. Insight regenerates automatically when fetch completes.">
             {running === "fetch" ? "⏳ Fetching…" : "▶ Fetch now"}
           </button>
-          <button onClick={() => void onRunMine()} disabled={!!running} style={btnAccent}
-            title="LLM-classify the next 50 un-mined items">
-            {running === "mine" ? "⏳ Mining…" : "✨ Mine 50"}
-          </button>
+          <div style={{ display: "flex", alignItems: "stretch", gap: 0 }}
+            title={
+              "Mine = ask the LLM to read the next N un-mined items and assign "
+              + "each one a kind (study / hypothesis / finding / tablet / review / "
+              + "tooling / other), confidence score, short summary, and any extracted "
+              + "entity/provider links. Mining converts raw RSS rows into the "
+              + "classified material the dashboard insight reasons over."
+            }>
+            <button onClick={() => void onRunMine()} disabled={!!running} style={{
+              ...btnAccent, borderTopRightRadius: 0, borderBottomRightRadius: 0,
+            }}>
+              {running === "mine" ? "⏳ Mining…" : `✨ Mine ${mineLimit}`}
+            </button>
+            <select
+              value={mineLimit}
+              onChange={(e) => setMineLimit(parseInt(e.target.value, 10))}
+              disabled={!!running}
+              style={{
+                ...selectStyle,
+                borderTopLeftRadius: 0, borderBottomLeftRadius: 0,
+                borderLeft: "none", color: "#5b21b6",
+              }}>
+              {MINE_LIMIT_OPTIONS.map((n) => (
+                <option key={n} value={n}>{n}</option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
 
@@ -362,8 +556,20 @@ export function DashboardView() {
                 {insight.model}
               </span>
             )}
+            {insightGeneratedAt > 0 && (
+              <span
+                title={`Last regenerated ${new Date(insightGeneratedAt).toLocaleString()} · only changes on Fetch Now or Regenerate`}
+                style={{
+                  fontSize: 10, color: "#6b7280",
+                  background: "#f3f4f6", padding: "1px 7px", borderRadius: 8,
+                }}>
+                🕒 Last regen: {fmtAbsoluteShort(insightGeneratedAt)}
+                <span style={{ color: "#9ca3af", marginLeft: 4 }}>({fmtRelative(new Date(insightGeneratedAt).toISOString())})</span>
+              </span>
+            )}
             <button onClick={() => void generateInsight()} disabled={insightLoading}
-              style={btnGhost}>
+              style={btnGhost}
+              title="Re-run the AI to summarise the latest items. Auto-runs after Fetch, after a backend restart, or after a hard reload — but NOT on every page refresh.">
               {insightLoading ? "…" : "↻ Regenerate"}
             </button>
           </div>
@@ -405,7 +611,26 @@ export function DashboardView() {
                   <ul style={{ margin: "4px 0 12px", paddingLeft: 18 }}>
                     {insight.impact.map((im, i) => {
                       const k = `impact-${i}`;
-                      const at: DashboardActionType = (im.suggested_action || "no_op") as DashboardActionType;
+                      // suggested_action may be a clean string action_type OR a
+                      // legacy structured object {action_type, params}. Normalise
+                      // both to (at: string, sp: params object) so the rest of
+                      // this view can stay simple.
+                      let at: DashboardActionType = "no_op";
+                      let sp: Record<string, unknown> = { experiment_id: im.study_or_experiment_id };
+                      const sa = im.suggested_action as unknown;
+                      if (typeof sa === "string") {
+                        at = (sa || "no_op") as DashboardActionType;
+                      } else if (sa && typeof sa === "object") {
+                        const obj = sa as { action_type?: string; type?: string; params?: Record<string, unknown> };
+                        at = ((obj.action_type || obj.type) || "no_op") as DashboardActionType;
+                        if (obj.params && typeof obj.params === "object") {
+                          sp = { ...obj.params };
+                        }
+                      }
+                      // Backend may also send a sibling `suggested_params` block.
+                      if (im.suggested_params && typeof im.suggested_params === "object") {
+                        sp = { ...sp, ...(im.suggested_params as Record<string, unknown>) };
+                      }
                       return (
                         <li key={i} style={{ fontSize: 12, color: "#111827", marginBottom: 6,
                           lineHeight: 1.5, display: "flex", alignItems: "flex-start", gap: 8 }}>
@@ -421,14 +646,14 @@ export function DashboardView() {
                               onClick={() => void applyAction({
                                 label: actionLabel(at),
                                 action_type: at,
-                                params: { experiment_id: im.study_or_experiment_id },
+                                params: sp,
                                 rationale: im.impact,
                               }, k)}
-                              disabled={!!applying}
-                              style={btnApply}
-                              title={`Apply: ${at}`}
+                              disabled={!!applying || applyResult[k] === "success"}
+                              style={applyButtonStyle(applyResult[k])}
+                              title={applyResultTitle(applyResult[k], at)}
                             >
-                              {applying === k ? "…" : `▶ ${actionLabel(at)}`}
+                              {renderApplyLabel(applying === k, applyResult[k], actionLabel(at))}
                             </button>
                           )}
                         </li>
@@ -461,11 +686,11 @@ export function DashboardView() {
                             {isApplyable && (
                               <button
                                 onClick={() => void applyAction(a, k)}
-                                disabled={!!applying}
-                                style={btnApply}
-                                title={`Apply: ${a.action_type}`}
+                                disabled={!!applying || applyResult[k] === "success"}
+                                style={applyButtonStyle(applyResult[k])}
+                                title={applyResultTitle(applyResult[k], a.action_type)}
                               >
-                                {applying === k ? "…" : `▶ ${actionLabel(a.action_type)}`}
+                                {renderApplyLabel(applying === k, applyResult[k], actionLabel(a.action_type))}
                               </button>
                             )}
                           </div>
@@ -508,23 +733,28 @@ export function DashboardView() {
                   border: "1px solid #e5e7eb", borderRadius: 7, padding: "8px 10px",
                   display: "flex", alignItems: "flex-start", gap: 8,
                 }}>
-                  <span style={{
-                    fontSize: 9, padding: "1px 6px", borderRadius: 4,
-                    background: k.bg, color: k.fg, fontWeight: 700,
-                    textTransform: "uppercase", flexShrink: 0,
-                  }}>
-                    {it.kind}
-                  </span>
+                  {/* Title left-justified at top; kind badge moved to the meta
+                      row beneath so titles don't get pushed away from the
+                      left edge. AI "✨" stays on the right. */}
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <a href={it.url} target="_blank" rel="noopener noreferrer"
                       style={{ fontSize: 12, fontWeight: 600, color: "#111827",
-                        textDecoration: "none", display: "block",
+                        textDecoration: "none", display: "block", textAlign: "left",
                         overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                       {it.title || "(untitled)"}
                     </a>
-                    <div style={{ fontSize: 10, color: "#6b7280", marginTop: 1 }}>
-                      📡 {it.source} · ⬇ {fmtRelative(it.fetched_at)}
-                      {it.topic && ` · #${it.topic}`}
+                    <div style={{ fontSize: 10, color: "#6b7280", marginTop: 3,
+                      display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                      <span style={{
+                        fontSize: 9, padding: "1px 5px", borderRadius: 3,
+                        background: k.bg, color: k.fg, fontWeight: 700,
+                        textTransform: "uppercase", letterSpacing: 0.3,
+                      }}>
+                        {it.kind}
+                      </span>
+                      <span>📡 {it.source}</span>
+                      <span>⬇ {fmtRelative(it.fetched_at)}</span>
+                      {it.topic && <span>#{it.topic}</span>}
                     </div>
                   </div>
                   <button onClick={() => askAIAbout(it)} title="Ask Glossa AI about this item"
@@ -642,6 +872,48 @@ const btnApply: React.CSSProperties = {
   background: "#f5f3ff", color: "#5b21b6", fontSize: 11, fontWeight: 700,
   cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0,
 };
+// Apply-button styling per outcome. After success the button visibly
+// disables itself with a green check; warnings stay clickable but tinted
+// amber; errors are red and clickable for retry.
+const btnApplySuccess: React.CSSProperties = {
+  ...btnApply,
+  border: "1px solid #86efac", background: "#f0fdf4", color: "#166534",
+  cursor: "default",
+};
+const btnApplyWarn: React.CSSProperties = {
+  ...btnApply,
+  border: "1px solid #fcd34d", background: "#fffbeb", color: "#92400e",
+};
+const btnApplyError: React.CSSProperties = {
+  ...btnApply,
+  border: "1px solid #fca5a5", background: "#fef2f2", color: "#991b1b",
+};
+function applyButtonStyle(r: "success" | "warn" | "error" | undefined): React.CSSProperties {
+  if (r === "success") return btnApplySuccess;
+  if (r === "warn")    return btnApplyWarn;
+  if (r === "error")   return btnApplyError;
+  return btnApply;
+}
+function applyResultTitle(
+  r: "success" | "warn" | "error" | undefined,
+  actionType: string,
+): string {
+  if (r === "success") return `Done · ${actionType} (regenerate insight to clear)`;
+  if (r === "warn")    return `Completed with warnings · ${actionType} (click to retry)`;
+  if (r === "error")   return `Failed · ${actionType} (click to retry)`;
+  return `Apply: ${actionType}`;
+}
+function renderApplyLabel(
+  busy: boolean,
+  r: "success" | "warn" | "error" | undefined,
+  fallback: string,
+): string {
+  if (busy) return "…";
+  if (r === "success") return `✓ Done`;
+  if (r === "warn")    return `⚠ ${fallback}`;
+  if (r === "error")   return `✗ Retry ${fallback}`;
+  return `▶ ${fallback}`;
+}
 
 function actionLabel(t: DashboardActionType): string {
   switch (t) {

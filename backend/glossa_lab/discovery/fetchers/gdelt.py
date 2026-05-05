@@ -28,6 +28,7 @@ _ENDPOINT = "https://api.gdeltproject.org/api/v2/doc/doc"
 class GDELTFetcher(Fetcher):
     source = "gdelt"
     requires = ()  # keyless
+    rate_delay: float = 5.5  # seconds between calls ("one every 5 seconds")
 
     async def fetch(
         self, topic: TopicProfile, *, since: datetime | None = None,

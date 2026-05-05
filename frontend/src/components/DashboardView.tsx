@@ -415,6 +415,7 @@ export function DashboardView() {
           openChat({
             contextType: "",
             contextId: "",
+            autoSend: true,
             initialPrompt:
               `Plan an experiment chain to evaluate the following hypothesis, ` +
               `using the existing graph experiment registry where possible:\n\n` +
@@ -422,14 +423,12 @@ export function DashboardView() {
               `Return a numbered ordered chain with each step's purpose and the ` +
               `existing experiment id (or a brief sketch if none fits).`,
           });
-          window.dispatchEvent(new CustomEvent("glossa:open-ai-panel"));
           toast("Sent to Glossa AI", "info");
           break;
         }
         case "ai_chat": {
           const prompt = String(a.params?.prompt || a.label || a.rationale || "");
-          openChat({ contextType: "", contextId: "", initialPrompt: prompt });
-          window.dispatchEvent(new CustomEvent("glossa:open-ai-panel"));
+          openChat({ contextType: "", contextId: "", initialPrompt: prompt, autoSend: true });
           toast("Sent to Glossa AI", "info");
           break;
         }

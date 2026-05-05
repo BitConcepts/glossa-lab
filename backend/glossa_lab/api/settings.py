@@ -39,9 +39,10 @@ KNOWN_KEYS = [
     "semantic_scholar_api_key",
     "openalex_email",
     # Patent data sources.
-    # PatentsView (search.patentsview.org) — required for the patentsview fetcher.
+    # PatentsView/PPUBS — keyless fetcher uses ppubs.uspto.gov session API.
+    # This key is retained for future use but not currently required.
     "patentsview_api_key",
-    # USPTO Open Data Portal — optional upgrade key for the keyless PPUBS fetcher.
+    # USPTO Open Data Portal — required for the ODP fetcher (api.uspto.gov).
     "uspto_api_key",
     # Academia.edu — NOT an API key, but a *session cookie* harvested from a
     # logged-in browser. Optional. When present the academia.py fetcher

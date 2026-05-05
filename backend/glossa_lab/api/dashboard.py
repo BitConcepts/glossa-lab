@@ -149,7 +149,7 @@ def _build_insight_prompt(
     ) or "(no studies yet)"
     exp_block = ", ".join(experiments[:80]) or "(no experiments registered)"
     goal_label = (goal or {}).get("label", "research")
-    prompt_text = _INSIGHT_PROMPT_TEMPLATE.format(goal_label=goal_label)
+    prompt_text = _INSIGHT_PROMPT_TEMPLATE.replace("{goal_label}", goal_label)
     goal_ctx = ""
     if goal and goal.get("prompt_context"):
         goal_ctx = f"\n## Research goal context\n{goal['prompt_context']}\n"

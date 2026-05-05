@@ -18,6 +18,9 @@ export interface ChatRequest {
   contextId?: string;
   contextLabel?: string;
   initialPrompt?: string;
+  /** When true the chat window sends initialPrompt immediately instead of
+   *  just pre-filling the input box. */
+  autoSend?: boolean;
 }
 
 interface AIChatCtx {

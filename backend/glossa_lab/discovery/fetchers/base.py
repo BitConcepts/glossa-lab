@@ -198,6 +198,7 @@ class Fetcher(ABC):
 
     source: str = ""
     requires: tuple[str, ...] = ()
+    rate_delay: float = 0  # seconds to wait between successive calls across topics
 
     def __init__(self) -> None:
         if not self.source:

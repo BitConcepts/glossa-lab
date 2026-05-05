@@ -64,18 +64,29 @@ class GDELTFetcher(Fetcher):
         if since is not None:
             # GDELT accepts startdatetime as YYYYMMDDHHmmss
             params["startdatetime"] = since.strftime("%Y%m%d%H%M%S")
-        # Retry loop for 429 rate-limit responses
+        # Retry loop for 429 / SSL-timeout / connection errors
         data: dict | None = None
         for attempt in range(1 + self._MAX_RETRIES):
             try:
-                data = await run_in_thread(http_get_json, _ENDPOINT, params=params, timeout=25.0)
+                data = await run_in_thread(
+                    http_get_json, _ENDPOINT, params=params, timeout=30.0,
+                )
                 break
             except FetcherError as exc:
-                if "429" in str(exc) and attempt < self._MAX_RETRIES:
+                err_str = str(exc)
+                is_retryable = (
+                    "429" in err_str
+                    or "timed out" in err_str.lower()
+                    or "ssl" in err_str.lower()
+                    or "urlopen error" in err_str.lower()
+                )
+                if is_retryable and attempt < self._MAX_RETRIES:
                     backoff = self._RETRY_BACKOFF * (attempt + 1)
                     _log.info(
-                        "GDELT 429 for topic %s, retry %d/%d after %.0fs",
-                        topic.id, attempt + 1, self._MAX_RETRIES, backoff,
+                        "GDELT error for topic %s (attempt %d/%d), "
+                        "retrying in %.0fs: %s",
+                        topic.id, attempt + 1, self._MAX_RETRIES,
+                        backoff, err_str[:120],
                     )
                     await asyncio.sleep(backoff)
                     GDELTFetcher._last_request = _time.monotonic()

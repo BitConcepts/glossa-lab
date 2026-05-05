@@ -35,18 +35,24 @@ import {
 } from "../../api";
 import { useToast } from "../../hooks/useToast";
 
-const SOURCE_KEYS: { id: string; label: string; href: string; hint?: string }[] = [
-  { id: "news_api_key",              label: "NewsAPI",            href: "https://newsapi.org/account" },
-  { id: "serp_api_key",              label: "SerpAPI",            href: "https://serpapi.com/manage-api-key" },
-  { id: "brave_search_api_key",      label: "Brave Search",       href: "https://api-dashboard.search.brave.com/" },
-  { id: "semantic_scholar_api_key",  label: "Semantic Scholar",   href: "https://www.semanticscholar.org/product/api#api-key-form",
-    hint: "Free key removes the 100 req/5 min rate limit. Strongly recommended." },
-  { id: "openalex_email",            label: "OpenAlex (email)",   href: "https://docs.openalex.org/how-to-use-the-api/rate-limits-and-authentication",
-    hint: "Enter your email to join the \"polite pool\" (faster, priority access). Not a key — just an email." },
-  { id: "patentsview_api_key",       label: "PatentsView (PPUBS)", href: "https://ppubs.uspto.gov/pubwebapp/",
-    hint: "Patent search via USPTO PPUBS (keyless — always on). This key is optional and currently unused." },
-  { id: "uspto_api_key",             label: "USPTO (ODP)",        href: "https://developer.uspto.gov/",
-    hint: "Required for US patent search via the Open Data Portal. Register for a free API key." },
+// Keys that enable a source (source won't fetch without the key).
+const REQUIRED_KEYS: { id: string; label: string; href: string; hint?: string }[] = [
+  { id: "news_api_key",              label: "NewsAPI",       href: "https://newsapi.org/account",
+    hint: "Global news articles. Free tier: 100 req/day." },
+  { id: "serp_api_key",              label: "SerpAPI",       href: "https://serpapi.com/manage-api-key",
+    hint: "Google search results. Free tier: 100 searches/month." },
+  { id: "brave_search_api_key",      label: "Brave Search",  href: "https://api-dashboard.search.brave.com/",
+    hint: "Web search. Free tier: 2,000 queries/month." },
+  { id: "uspto_api_key",             label: "USPTO (ODP)",   href: "https://developer.uspto.gov/",
+    hint: "US patent search via the Open Data Portal. Free key." },
+];
+
+// Optional keys that upgrade a source that already works without one.
+const UPGRADE_KEYS: { id: string; label: string; href: string; hint?: string }[] = [
+  { id: "semantic_scholar_api_key",  label: "Semantic Scholar", href: "https://www.semanticscholar.org/product/api#api-key-form",
+    hint: "Removes the 100 req/5 min cap. Strongly recommended." },
+  { id: "openalex_email",            label: "OpenAlex (email)", href: "https://docs.openalex.org/how-to-use-the-api/rate-limits-and-authentication",
+    hint: "Enter your email for priority access. Not a key — just an email." },
 ];
 
 export function AutoDiscoveryPanel() {
@@ -228,73 +234,31 @@ export function AutoDiscoveryPanel() {
 
       {/* Source API keys */}
       <div style={{ marginTop: 14 }}>
-        <div style={subhead}>2 · Source API keys</div>
+        <div style={subhead}>2 · API keys</div>
         <p style={{ ...hint, marginTop: 4 }}>
-          Each fetcher is enabled when its key is set. OpenAlex, arXiv, Crossref,
-          Wikidata, and GitHub are key-less and always on.
+          Sources that need a key are listed below. Keyless sources (arXiv,
+          Crossref, OpenAlex, PubMed, Europe PMC, DOAJ, GDELT, PPUBS, RSS,
+          Academia) are always on.
         </p>
-        <div style={{ display: "grid", gap: 8, marginTop: 8 }}>
-          {SOURCE_KEYS.map((k) => {
-            const isSet = settings?.keys[k.id]?.set ?? false;
-            const src   = (settings?.keys[k.id]?.source ?? null) as "env" | "stored" | null;
-            const v     = verify[k.id];
-            return (
-              <div key={k.id} style={{
-                padding: 10, border: "1px solid #e5e7eb", borderRadius: 7, background: "#fff",
-                display: "flex", flexDirection: "column", gap: 6,
-              }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                  <span style={{ fontSize: 13, fontWeight: 600, color: "#111827" }}>{k.label}</span>
-                  {isSet ? (
-                    <span style={{ fontSize: 10, padding: "1px 7px", borderRadius: 9,
-                      background: "#dcfce7", color: "#15803d", fontWeight: 700 }}>
-                      SET ({src})
-                    </span>
-                  ) : (
-                    <span style={{ fontSize: 10, padding: "1px 7px", borderRadius: 9,
-                      background: "#fee2e2", color: "#b91c1c", fontWeight: 700 }}>
-                      MISSING
-                    </span>
-                  )}
-                  <a href={k.href} target="_blank" rel="noopener noreferrer"
-                    style={{ fontSize: 11, color: "#2563eb", marginLeft: "auto" }}>
-                    Get a key →
-                  </a>
-                </div>
-                <div style={{ display: "flex", gap: 6 }}>
-                  <input value={pendingKeys[k.id] ?? ""}
-                    onChange={(e) => setPendingKeys((p) => ({ ...p, [k.id]: e.target.value }))}
-                    placeholder={isSet ? "●●●●●●●● (paste new value to replace)" : `Paste your ${k.label} API key`}
-                    type="password" autoComplete="off" style={input} />
-                  <button onClick={() => void onSaveKey(k.id)}
-                    disabled={busy || !(pendingKeys[k.id]?.trim())}
-                    style={{ ...btnGhostStrong,
-                      opacity: (busy || !pendingKeys[k.id]?.trim()) ? 0.5 : 1,
-                      cursor:  (busy || !pendingKeys[k.id]?.trim()) ? "not-allowed" : "pointer" }}>
-                    Save
-                  </button>
-                  <button onClick={() => void onVerifyKey(k.id)}
-                    disabled={!isSet || v === "loading"}
-                    style={{ ...btnGhost,
-                      opacity: (!isSet || v === "loading") ? 0.5 : 1,
-                      cursor:  (!isSet || v === "loading") ? "not-allowed" : "pointer" }}>
-                    {v === "loading" ? "…" : "Verify"}
-                  </button>
-                </div>
-                {k.hint && (
-                  <div style={{ fontSize: 10, color: "#6b7280", lineHeight: 1.4 }}>
-                    {k.hint}
-                  </div>
-                )}
-                {v && v !== "loading" && (
-                  <div style={{ fontSize: 11,
-                    color: v.valid ? "#15803d" : "#b91c1c" }}>
-                    {v.valid ? "✓" : "✗"} {v.message}
-                  </div>
-                )}
-              </div>
-            );
-          })}
+
+        {/* Required keys */}
+        <div style={{ marginTop: 10, marginBottom: 4 }}>
+          <span style={groupLabel}>🔑 Required — source won’t fetch without these</span>
+        </div>
+        <div style={{ display: "grid", gap: 8 }}>
+          {REQUIRED_KEYS.map((k) => <KeyRow key={k.id} k={k} settings={settings}
+            pendingKeys={pendingKeys} setPendingKeys={setPendingKeys}
+            verify={verify} onSaveKey={onSaveKey} onVerifyKey={onVerifyKey} busy={busy} />)}
+        </div>
+
+        {/* Upgrade keys */}
+        <div style={{ marginTop: 14, marginBottom: 4 }}>
+          <span style={groupLabel}>⚡ Optional upgrades — source works without, key removes rate limits</span>
+        </div>
+        <div style={{ display: "grid", gap: 8 }}>
+          {UPGRADE_KEYS.map((k) => <KeyRow key={k.id} k={k} settings={settings}
+            pendingKeys={pendingKeys} setPendingKeys={setPendingKeys}
+            verify={verify} onSaveKey={onSaveKey} onVerifyKey={onVerifyKey} busy={busy} />)}
         </div>
       </div>
 
@@ -375,7 +339,77 @@ export function AutoDiscoveryPanel() {
   );
 }
 
-// ── Styles ─────────────────────────────────────────────────────────────
+// ── Extracted key-row component ───────────────────────────────────────────────────
+
+function KeyRow({ k, settings, pendingKeys, setPendingKeys, verify, onSaveKey, onVerifyKey, busy }: {
+  k: { id: string; label: string; href: string; hint?: string };
+  settings: SettingsResponse | null;
+  pendingKeys: Record<string, string>;
+  setPendingKeys: React.Dispatch<React.SetStateAction<Record<string, string>>>;
+  verify: Record<string, VerifyKeyResult | "loading">;
+  onSaveKey: (k: string) => Promise<void>;
+  onVerifyKey: (k: string) => Promise<void>;
+  busy: boolean;
+}) {
+  const isSet = settings?.keys[k.id]?.set ?? false;
+  const src   = (settings?.keys[k.id]?.source ?? null) as "env" | "stored" | null;
+  const v     = verify[k.id];
+  return (
+    <div style={{
+      padding: "8px 10px", border: "1px solid #e5e7eb", borderRadius: 7,
+      background: "#fff", display: "flex", flexDirection: "column", gap: 5,
+    }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+        <span style={{ fontSize: 13, fontWeight: 600, color: "#111827" }}>{k.label}</span>
+        {isSet ? (
+          <span style={{ fontSize: 10, padding: "1px 7px", borderRadius: 9,
+            background: "#dcfce7", color: "#15803d", fontWeight: 700 }}>
+            SET ({src})
+          </span>
+        ) : (
+          <span style={{ fontSize: 10, padding: "1px 7px", borderRadius: 9,
+            background: "#fee2e2", color: "#b91c1c", fontWeight: 700 }}>
+            MISSING
+          </span>
+        )}
+        {k.hint && (
+          <span style={{ fontSize: 10, color: "#6b7280" }}>— {k.hint}</span>
+        )}
+        <a href={k.href} target="_blank" rel="noopener noreferrer"
+          style={{ fontSize: 11, color: "#2563eb", marginLeft: "auto" }}>
+          Get key →
+        </a>
+      </div>
+      <div style={{ display: "flex", gap: 6 }}>
+        <input value={pendingKeys[k.id] ?? ""}
+          onChange={(e) => setPendingKeys((p) => ({ ...p, [k.id]: e.target.value }))}
+          placeholder={isSet ? "●●●●●●●● (paste new value)" : `Paste ${k.label} key`}
+          type="password" autoComplete="off" style={input} />
+        <button onClick={() => void onSaveKey(k.id)}
+          disabled={busy || !(pendingKeys[k.id]?.trim())}
+          style={{ ...btnGhostStrong,
+            opacity: (busy || !pendingKeys[k.id]?.trim()) ? 0.5 : 1,
+            cursor:  (busy || !pendingKeys[k.id]?.trim()) ? "not-allowed" : "pointer" }}>
+          Save
+        </button>
+        <button onClick={() => void onVerifyKey(k.id)}
+          disabled={!isSet || v === "loading"}
+          style={{ ...btnGhost,
+            opacity: (!isSet || v === "loading") ? 0.5 : 1,
+            cursor:  (!isSet || v === "loading") ? "not-allowed" : "pointer" }}>
+          {v === "loading" ? "…" : "Verify"}
+        </button>
+      </div>
+      {v && v !== "loading" && (
+        <div style={{ fontSize: 11, color: v.valid ? "#15803d" : "#b91c1c" }}>
+          {v.valid ? "✓" : "✗"} {v.message}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── Styles ─────────────────────────────────────────────────────────────────────
 const section: React.CSSProperties = {
   marginBottom: "2rem", padding: "1.25rem",
   border: "1px solid #e5e7eb", borderRadius: 8,
@@ -389,6 +423,9 @@ const hint: React.CSSProperties = {
 const subhead: React.CSSProperties = {
   fontSize: 11, fontWeight: 700, color: "#7c3aed",
   textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 6,
+};
+const groupLabel: React.CSSProperties = {
+  fontSize: 11, fontWeight: 600, color: "#374151",
 };
 const input: React.CSSProperties = {
   flex: 1, padding: "6px 10px", border: "1px solid #d1d5db", borderRadius: 5,

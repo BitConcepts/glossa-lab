@@ -1,80 +1,26 @@
 {
-  "tier": "4",
-  "system": "Mycenaean Linear B (syllabary, 87 signs)",
-  "protocol": "Unsupervised affinity clustering vs known Ventris CV grid",
-  "corpus_stats": {
-    "n_words": 3429,
-    "n_tokens": 9242,
-    "n_distinct_signs": 69,
-    "gt_signs_in_corpus": 55
-  },
-  "affinity": {
-    "n_vowel_groups": 5,
-    "n_consonant_groups": 4,
-    "threshold": 0.15,
-    "acceleration": "numpy-vectorised CPU"
-  },
-  "row_score": {
-    "precision": 0.2244,
-    "recall": 0.1306,
-    "f1": 0.1651,
-    "true_pairs": 268,
-    "pred_pairs": 156,
-    "true_positives": 35
-  },
-  "col_score": {
-    "precision": 0.0984,
-    "recall": 0.1957,
-    "f1": 0.1309,
-    "true_pairs": 92,
-    "pred_pairs": 183,
-    "true_positives": 18
-  },
-  "f1_average": 0.148,
-  "corpus_scaling": [
-    {
-      "fraction": 1.0,
-      "n_inscriptions": 3429,
-      "n_tokens": 9242,
-      "n_distinct_signs": 69,
-      "n_syllabograms": 60,
-      "row_f1": 0.1651,
-      "col_f1": 0.1309,
-      "f1_average": 0.148,
-      "row_precision": 0.2244,
-      "row_recall": 0.1306,
-      "col_precision": 0.0984,
-      "col_recall": 0.1957
-    },
-    {
-      "fraction": 0.75,
-      "n_inscriptions": 2571,
-      "n_tokens": 7526,
-      "n_distinct_signs": 69,
-      "n_syllabograms": 62,
-      "row_f1": 0.1635,
-      "col_f1": 0.1149,
-      "f1_average": 0.1392,
-      "row_precision": 0.2297,
-      "row_recall": 0.1269,
-      "col_precision": 0.0888,
-      "col_recall": 0.163
-    },
-    {
-      "fraction": 0.5,
-      "n_inscriptions": 1714,
-      "n_tokens": 5797,
-      "n_distinct_signs": 69,
-      "n_syllabograms": 61,
-      "row_f1": 0.1468,
-      "col_f1": 0.0577,
-      "f1_average": 0.1023,
-      "row_precision": 0.2283,
-      "row_recall": 0.1082,
-      "col_precision": 0.0517,
-      "col_recall": 0.0652
-    }
-  ],
-  "interpretation": "PARTIAL: Our method recovers some correct relationships. Useful as a filtering tool to reduce the search space.",
-  "fuls_notes": "Tier 4 validation: affinity analysis on syllabary. F1 measures fraction of Ventris vowel/consonant pairs recovered. Corpus-size scaling shows data requirements before Indus application."
+  "data": {
+    "y": "y",
+    "w": "y",
+    "h": "h",
+    "'": "h",
+    "m": "w",
+    "l": "w",
+    "b": "w",
+    "r": "y",
+    "t": "w",
+    "k": "h",
+    "G": "w",
+    "n": "w",
+    "E": "h",
+    "d": "w",
+    "H": "y",
+    "q": "h",
+    "C": "h",
+    "p": "h",
+    "s": "w",
+    "z": "w",
+    "T": "w",
+    "g": "h"
+  }
 }

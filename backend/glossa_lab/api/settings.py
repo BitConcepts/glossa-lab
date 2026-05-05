@@ -38,6 +38,11 @@ KNOWN_KEYS = [
     # OpenAlex: "polite pool" with an email gets priority access.
     "semantic_scholar_api_key",
     "openalex_email",
+    # Patent data sources.
+    # PatentsView (search.patentsview.org) — required for the patentsview fetcher.
+    "patentsview_api_key",
+    # USPTO Open Data Portal — optional upgrade key for the keyless PPUBS fetcher.
+    "uspto_api_key",
     # Academia.edu — NOT an API key, but a *session cookie* harvested from a
     # logged-in browser. Optional. When present the academia.py fetcher
     # upgrades from public-search-only to authenticated mode and can stream
@@ -231,6 +236,15 @@ _VERIFY_ENDPOINTS: dict[str, dict[str, Any]] = {
         "query_param": "mailto",
         "extra_headers": {},
     },
+    # ── Patent data sources ──────────────────────────────────────────────
+    "patentsview_api_key": {
+        "provider": "PatentsView",
+        # Lightweight search — validates the key + returns rate headers.
+        "url": "https://search.patentsview.org/api/v1/patent/?q={%22patent_id%22:%2210000000%22}&f=[%22patent_id%22]&o={%22size%22:1}",
+        "auth_header": "X-Api-Key",
+        "auth_prefix": "",
+        "extra_headers": {},
+    },
 }
 
 
@@ -307,6 +321,7 @@ async def verify_key(body: VerifyRequest) -> dict[str, Any]:
                     "brave_search_api_key": "brave",
                     "news_api_key": "newsapi",
                     "serp_api_key": "serpapi",
+                    "patentsview_api_key": "patentsview",
                 }
                 src = src_map.get(key_name)
                 if src:

@@ -25,7 +25,7 @@ import { BottomPanel } from "./components/BottomPanel";
 import { NotificationCenter } from "./components/NotificationDrawer";
 import { ToastProvider } from "./hooks/useToast";
 import { AIChatProvider, useAIChat } from "./hooks/useAIChat";
-import { getHealth } from "./api";
+import { getHealth, listJobs } from "./api";
 
 type Tab =
   | "dashboard"
@@ -159,6 +159,27 @@ function AppContent() {
     };
   }, []);
 
+  // Poll job counts for the Jobs tab indicator
+  const [activeJobCount, setActiveJobCount] = useState(0);
+  useEffect(() => {
+    let cancelled = false;
+    const poll = () => {
+      listJobs()
+        .then((jobs) => {
+          if (!cancelled) {
+            const active = jobs.filter(
+              (j) => j.status === "pending" || j.status === "running",
+            ).length;
+            setActiveJobCount(active);
+          }
+        })
+        .catch(() => { if (!cancelled) setActiveJobCount(0); });
+    };
+    poll();
+    const t = setInterval(poll, 5000);
+    return () => { cancelled = true; clearInterval(t); };
+  }, []);
+
   // Redirect legacy exp-builder navigations to experiments
   useEffect(() => {
     if (tab === "exp-builder") setTab("experiments");
@@ -265,6 +286,8 @@ function AppContent() {
     const runState = item.id === "builder" ? studyRunState : item.id === "experiments" ? expRunState : { count: 0, lastStatus: "none" as const };
     const running  = runState.count > 0;
     const lastSt   = runState.lastStatus;
+    // Jobs tab: show pulsing dot when any jobs are pending/running
+    const jobsActive = item.id === "jobs" && activeJobCount > 0;
     return (
       <button
         onClick={() => setTab(item.id)}
@@ -292,6 +315,10 @@ function AppContent() {
         {/* Running: pulsing green dot */}
         {running && (
           <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#22c55e", flexShrink: 0, boxShadow: "0 0 6px #22c55e", animation: "healthPulse 0.7s ease-in-out infinite" }} title="Running" />
+        )}
+        {/* Jobs tab: pulsing blue dot when jobs are active */}
+        {jobsActive && !running && (
+          <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#3b82f6", flexShrink: 0, boxShadow: "0 0 6px #3b82f6", animation: "healthPulse 0.7s ease-in-out infinite" }} title={`${activeJobCount} active job(s)`} />
         )}
         {/* Completed: solid green dot */}
         {!running && lastSt === "success" && (

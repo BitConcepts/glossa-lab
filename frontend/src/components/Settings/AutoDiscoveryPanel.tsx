@@ -35,10 +35,14 @@ import {
 } from "../../api";
 import { useToast } from "../../hooks/useToast";
 
-const SOURCE_KEYS: { id: string; label: string; href: string }[] = [
-  { id: "news_api_key",         label: "NewsAPI",       href: "https://newsapi.org/account" },
-  { id: "serp_api_key",         label: "SerpAPI",       href: "https://serpapi.com/manage-api-key" },
-  { id: "brave_search_api_key", label: "Brave Search",  href: "https://api-dashboard.search.brave.com/" },
+const SOURCE_KEYS: { id: string; label: string; href: string; hint?: string }[] = [
+  { id: "news_api_key",              label: "NewsAPI",            href: "https://newsapi.org/account" },
+  { id: "serp_api_key",              label: "SerpAPI",            href: "https://serpapi.com/manage-api-key" },
+  { id: "brave_search_api_key",      label: "Brave Search",       href: "https://api-dashboard.search.brave.com/" },
+  { id: "semantic_scholar_api_key",  label: "Semantic Scholar",   href: "https://www.semanticscholar.org/product/api#api-key-form",
+    hint: "Free key removes the 100 req/5 min rate limit. Strongly recommended." },
+  { id: "openalex_email",            label: "OpenAlex (email)",   href: "https://docs.openalex.org/how-to-use-the-api/rate-limits-and-authentication",
+    hint: "Enter your email to join the \"polite pool\" (faster, priority access). Not a key — just an email." },
 ];
 
 export function AutoDiscoveryPanel() {
@@ -273,6 +277,11 @@ export function AutoDiscoveryPanel() {
                     {v === "loading" ? "…" : "Verify"}
                   </button>
                 </div>
+                {k.hint && (
+                  <div style={{ fontSize: 10, color: "#6b7280", lineHeight: 1.4 }}>
+                    {k.hint}
+                  </div>
+                )}
                 {v && v !== "loading" && (
                   <div style={{ fontSize: 11,
                     color: v.valid ? "#15803d" : "#b91c1c" }}>

@@ -94,10 +94,15 @@ async def list_hypotheses() -> list[dict[str, Any]]:
 
 @router.post("/hypotheses", status_code=201)
 async def create_hypothesis(body: HypothesisCreate) -> dict[str, Any]:
-    """Create a new hypothesis."""
+    """Create a new hypothesis.  Returns the existing one if a hypothesis
+    with an identical title (case-insensitive) already exists."""
     db = get_db()
     if db is None:
         raise HTTPException(status_code=503, detail="Database not available")
+    # Dedup: check for an existing hypothesis with the same title.
+    existing = await db.find_hypothesis_by_title(body.title)
+    if existing is not None:
+        return existing
     return await db.create_hypothesis(
         title=body.title, statement=body.statement, status=body.status, created_at=_now_iso()
     )

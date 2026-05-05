@@ -810,6 +810,15 @@ class Database:
         await self._conn.commit()
         return await self.get_hypothesis(hid)  # type: ignore[return-value]
 
+    async def find_hypothesis_by_title(self, title: str) -> dict[str, Any] | None:
+        """Return the first hypothesis whose title matches (case-insensitive), or None."""
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM hypotheses WHERE LOWER(title) = LOWER(?) LIMIT 1", (title.strip(),)
+        )
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
     async def list_hypotheses(self) -> list[dict[str, Any]]:
         assert self._conn
         cursor = await self._conn.execute("SELECT * FROM hypotheses ORDER BY updated_at DESC")

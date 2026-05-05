@@ -4959,3 +4959,65 @@ Risks:
 - The Dashboard SSE handler runs without an `AbortSignal`. Closing the dashboard mid-run will not actively cancel the experiment; the run keeps going server-side and shows up in the Jobs panel as expected.
 
 Next step: drive Phase-30 to a clean publishable bundle by (1) running Phase-30c with N=200 on a dedicated cluster window so the null is tight, (2) building the joint-corpus M77 + Fuls vol. 3 ranker so the Janabiyah miin signal can be tested against a second independent PN universe, and (3) folding the Phase-30b S7-8 peak into the contact-zone narrative as a structural prediction rather than an ad-hoc match.
+
+---
+
+## [2026-05-05] Entry — UI polish mega-bundle recovery + 7 no-key Discovery fetchers + Settings reorg
+
+Objective: Recover and complete the UI polish mega-bundle from the crashed 2026-05-04 session, create the 7 missing no-key discovery fetcher files that were blocking backend startup, and reorganize the Settings tab into logical groups.
+
+What was done:
+- **Session recovery.** The prior session (2026-05-04 evening) crashed mid-flight with repeated 403 errors while creating files. 14 modified files + 1 untracked file survived on disk but were uncommitted. This session assessed what landed, identified what was broken, and completed the remaining work.
+- **7 no-key Discovery fetchers (6 new + 1 prior).** The crashed session updated __init__.py to import 7 new fetcher classes but only created pubmed.py before dying. The backend could not start (ImportError on the missing 6 modules). Created: uropepmc.py (Europe PMC ebi.ac.uk REST API), doaj.py (Directory of Open Access Journals search), semanticscholar.py (Semantic Scholar graph API with TLDR + citations), gdelt.py (GDELT DOC 2.0 global news monitoring), ss.py (RSS/Atom feed parser from topic-override URLs), cademia.py (Academia.edu JSON-LD metadata scrape). All 13 fetchers now load and appear in /api/v1/discovery/sources.
+- **Settings tab reorg.** Reorganized SettingsView into 3 logical groups with a jump-nav strip at the top: AI Configuration (API keys, provider toggles, endpoints, profiles, Ollama, AI behavior), Discovery & Email (auto discovery, notifications), Environment & System (Python env, system info, OCR, about). Each group has a section header with anchor ID.
+- **Surviving changes from crashed session (uncommitted, now included).** Brave query truncation (48-word cap in _build_brave_query), tighter insight regen (localStorage persistence, no auto-regen on reload/restart, "Last regen" pill), show-packages toggle, ChatInline auto-grow textarea with "Shift+Enter" caption, Mine N selector (10/25/50/100/200/500), Apply/Run completion indicators (per-action outcome tracking + experiment ID registry pre-validation), feed left-justified with kind in meta line, persisted insight cache, vLLM/Ollama model discovery (models_detail with context_length), default AI profile preset (multi-role local Ollama stack), placeholder key detection in settings.py.
+- **Test-saves-as-Add bug.** Investigated all panels with Test+Add buttons (NotificationsPanel, AIEndpointsPanel, AutoDiscoveryPanel, PresetsView). All handlers are properly separated — could not reproduce. Likely fixed by other changes or was a transient UX observation.
+
+Files changed:
+- backend/glossa_lab/discovery/fetchers/europepmc.py (created)
+- backend/glossa_lab/discovery/fetchers/doaj.py (created)
+- backend/glossa_lab/discovery/fetchers/semanticscholar.py (created)
+- backend/glossa_lab/discovery/fetchers/gdelt.py (created)
+- backend/glossa_lab/discovery/fetchers/rss.py (created)
+- backend/glossa_lab/discovery/fetchers/academia.py (created)
+- backend/glossa_lab/discovery/fetchers/pubmed.py (created — from crashed session)
+- backend/glossa_lab/discovery/fetchers/__init__.py (modified — registry expanded to 13 fetchers)
+- backend/glossa_lab/discovery/fetchers/brave.py (modified — _build_brave_query with 48-word cap)
+- backend/glossa_lab/api/ai_endpoints.py (modified — models_detail with context_length)
+- backend/glossa_lab/api/ai_profiles.py (modified — multi-role local Ollama stack suggestion)
+- backend/glossa_lab/api/dashboard.py (modified — insight cache + regen control)
+- backend/glossa_lab/api/settings.py (modified — placeholder key detection + academia_session_cookie)
+- backend/glossa_lab/log_setup.py (modified)
+- frontend/src/App.tsx (modified)
+- frontend/src/api.ts (modified — new API hooks)
+- frontend/src/components/AIChatWindow.tsx (modified — auto-grow textarea, Shift+Enter caption)
+- frontend/src/components/DashboardView.tsx (modified — insight regen, Mine N, Apply/Run indicators, feed layout)
+- frontend/src/components/Settings/AutoDiscoveryPanel.tsx (modified — Brave key hint)
+- frontend/src/components/SettingsView.tsx (modified — 3-group reorg with jump-nav)
+- frontend/src/hooks/useAIChat.tsx (modified)
+- frontend/dist/ (rebuilt)
+
+Checks run:
+- 
+pm run build — clean: 225 modules, dist/assets/index-Bk42Tzwf.js 988.24 kB / 292.57 kB gzipped, 0 TS errors.
+- setup-os.cmd restart — healthy: {"status":"healthy","version":"0.1.0","uptime_seconds":17.9}.
+- curl /api/v1/discovery/sources — all 13 fetchers visible and configured.
+- Fetcher import check: rom glossa_lab.discovery.fetchers import available_fetchers — 13 fetchers loaded, 0 ImportError.
+
+Results:
+- Backend startup is restored — the 6 missing fetcher files that caused ImportError are now in place.
+- Discovery now has 13 sources: 3 API-key-gated (NewsAPI, Brave, SerpAPI) + 10 keyless-always-on (OpenAlex, arXiv, Crossref, PubMed, EuropePMC, DOAJ, SemanticScholar, GDELT, RSS, Academia.edu).
+- Settings page is organized into 3 navigable groups instead of a flat list of 12 panels.
+- All UI polish from the crashed session (Brave truncation, insight cache, Mine N, Apply/Run indicators, ChatInline, feed layout) is now committed and live.
+
+Open TODOs:
+- [ ] Test-saves-as-Add: could not reproduce; monitor for recurrence.
+- [ ] Phase-30c with N=200 permutations for publication-grade null tightening (carried from prior session).
+- [ ] Phase-30d/e/f from the Phase-30 plan (allograph-aware M77 stratification, joint-corpus ranker).
+
+Risks:
+- The 7 new fetchers are untested against live APIs in this session (they follow the established pattern and import cleanly, but a fetch run hasn't been triggered to confirm end-to-end data flow for each).
+- Academia.edu fetcher uses HTML scraping (JSON-LD extraction) which is brittle — Academia frequently changes its markup.
+- RSS fetcher requires topic overrides to specify feed URLs; topics without source_overrides.rss.feeds silently return empty results.
+
+Next step: Run a full discovery fetch cycle to smoke-test all 13 fetchers end-to-end, then return to Phase-30 research.

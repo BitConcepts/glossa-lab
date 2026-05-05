@@ -39,9 +39,7 @@ KNOWN_KEYS = [
     "semantic_scholar_api_key",
     "openalex_email",
     # Patent data sources.
-    # PatentsView/PPUBS — keyless fetcher uses ppubs.uspto.gov session API.
-    # This key is retained for future use but not currently required.
-    "patentsview_api_key",
+    # PatentsView/PPUBS is keyless (ppubs.uspto.gov session API) — no key needed.
     # USPTO Open Data Portal — required for the ODP fetcher (api.uspto.gov).
     "uspto_api_key",
     # Academia.edu — NOT an API key, but a *session cookie* harvested from a
@@ -322,7 +320,6 @@ async def verify_key(body: VerifyRequest) -> dict[str, Any]:
                     "brave_search_api_key": "brave",
                     "news_api_key": "newsapi",
                     "serp_api_key": "serpapi",
-                    "patentsview_api_key": "patentsview",
                     "uspto_api_key": "uspto",
                 }
                 src = src_map.get(key_name)

@@ -43,8 +43,8 @@ const SOURCE_KEYS: { id: string; label: string; href: string; hint?: string }[] 
     hint: "Free key removes the 100 req/5 min rate limit. Strongly recommended." },
   { id: "openalex_email",            label: "OpenAlex (email)",   href: "https://docs.openalex.org/how-to-use-the-api/rate-limits-and-authentication",
     hint: "Enter your email to join the \"polite pool\" (faster, priority access). Not a key — just an email." },
-  { id: "patentsview_api_key",       label: "PatentsView",        href: "https://patentsview-support.atlassian.net/servicedesk/customer/portals",
-    hint: "⚠️ PatentsView API shut down March 2026. Key saved but source disabled. Use USPTO (ODP) instead." },
+  { id: "patentsview_api_key",       label: "PatentsView (PPUBS)", href: "https://ppubs.uspto.gov/pubwebapp/",
+    hint: "Patent search via USPTO PPUBS (keyless — always on). This key is optional and currently unused." },
   { id: "uspto_api_key",             label: "USPTO (ODP)",        href: "https://developer.uspto.gov/",
     hint: "Required for US patent search via the Open Data Portal. Register for a free API key." },
 ];

@@ -30,6 +30,7 @@ class GDELTFetcher(Fetcher):
     source = "gdelt"
     requires = ()  # keyless
     rate_delay: float = 8.0  # seconds between calls (conservative; "one every 5 seconds")
+    # GDELT has no API key option — rate limit is fixed at 1 req/5s.
 
     # Track last request time class-wide so multiple instances share cooldown.
     # Initialised to now so the first call after a restart always waits the

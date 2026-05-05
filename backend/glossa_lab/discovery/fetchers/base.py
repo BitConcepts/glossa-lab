@@ -184,6 +184,62 @@ async def run_in_thread(fn, *args, **kwargs):
     return await loop.run_in_executor(None, lambda: fn(*args, **kwargs))
 
 
+# ── Rate-limit tracker ──────────────────────────────────────────────────────
+
+
+class RateLimitTracker:
+    """Per-source request counter and 429 tracker.
+
+    Tracks total requests, successes, 429 errors, and last-request timestamp
+    for each source. Exposed via ``/api/v1/discovery/sources`` so the frontend
+    can show rate-limit health and suggest API key setup when needed.
+    """
+
+    def __init__(self) -> None:
+        self._data: dict[str, dict[str, object]] = {}
+
+    def record_request(self, source: str, *, ok: bool = True, was_429: bool = False) -> None:
+        import time  # noqa: PLC0415
+        if source not in self._data:
+            self._data[source] = {
+                "requests": 0, "success": 0, "errors_429": 0,
+                "errors_other": 0, "last_request": 0.0,
+            }
+        d = self._data[source]
+        d["requests"] = int(d["requests"]) + 1  # type: ignore[arg-type]
+        d["last_request"] = time.time()
+        if was_429:
+            d["errors_429"] = int(d["errors_429"]) + 1  # type: ignore[arg-type]
+        elif not ok:
+            d["errors_other"] = int(d["errors_other"]) + 1  # type: ignore[arg-type]
+        else:
+            d["success"] = int(d["success"]) + 1  # type: ignore[arg-type]
+
+    def status(self, source: str) -> dict[str, object]:
+        d = self._data.get(source, {})
+        reqs = int(d.get("requests", 0))
+        n429 = int(d.get("errors_429", 0))
+        return {
+            "requests": reqs,
+            "success": int(d.get("success", 0)),
+            "errors_429": n429,
+            "errors_other": int(d.get("errors_other", 0)),
+            "rate_limited": n429 > 0 and n429 >= reqs * 0.3,  # >30% of requests are 429
+            "last_request": d.get("last_request", 0),
+        }
+
+    def all_statuses(self) -> dict[str, dict[str, object]]:
+        return {s: self.status(s) for s in self._data}
+
+
+# Module-level singleton — shared across all fetcher instances.
+_rate_tracker = RateLimitTracker()
+
+
+def get_rate_tracker() -> RateLimitTracker:
+    return _rate_tracker
+
+
 # ── Fetcher contract ────────────────────────────────────────────────────────
 
 
@@ -199,6 +255,9 @@ class Fetcher(ABC):
     source: str = ""
     requires: tuple[str, ...] = ()
     rate_delay: float = 0  # seconds to wait between successive calls across topics
+    # Optional key name that upgrades rate limits when set.
+    upgrade_key: str = ""
+    upgrade_url: str = ""  # URL where users can get the key
 
     def __init__(self) -> None:
         if not self.source:

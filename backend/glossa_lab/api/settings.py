@@ -209,11 +209,27 @@ _VERIFY_ENDPOINTS: dict[str, dict[str, Any]] = {
     },
     "brave_search_api_key": {
         "provider": "Brave Search",
-        # ?count=1 keeps the response small while still validating the key
         "url": "https://api.search.brave.com/res/v1/web/search?q=test&count=1",
         "auth_header": "X-Subscription-Token",
         "auth_prefix": "",
         "extra_headers": {"Accept": "application/json"},
+    },
+    "semantic_scholar_api_key": {
+        "provider": "Semantic Scholar",
+        # Lightweight search with limit=1 — validates the key + returns rate headers.
+        "url": "https://api.semanticscholar.org/graph/v1/paper/search?query=test&limit=1&fields=paperId",
+        "auth_header": "x-api-key",
+        "auth_prefix": "",
+        "extra_headers": {},
+    },
+    "openalex_email": {
+        "provider": "OpenAlex",
+        # A minimal search with mailto= — 200 means the polite pool accepted us.
+        "url": "https://api.openalex.org/works?search=test&per-page=1",
+        "auth_header": None,
+        "auth_prefix": "",
+        "query_param": "mailto",
+        "extra_headers": {},
     },
 }
 
@@ -264,11 +280,51 @@ async def verify_key(body: VerifyRequest) -> dict[str, Any]:
         req = urllib.request.Request(url, headers=headers, method="GET")
         with urllib.request.urlopen(req, timeout=10) as resp:
             status = resp.status
+            # Capture rate-limit headers from the verify response.
+            rl_limit = (
+                resp.headers.get("X-RateLimit-Limit")
+                or resp.headers.get("RateLimit-Limit")
+            )
+            rl_remaining = (
+                resp.headers.get("X-RateLimit-Remaining")
+                or resp.headers.get("RateLimit-Remaining")
+            )
         if status == 200:
+            msg = f"{ep['provider']} key is valid."
+            if rl_limit:
+                msg += f" Rate limit: {rl_limit}/window"
+                if rl_remaining:
+                    msg += f", {rl_remaining} remaining"
+                msg += "."
+            # Record in the rate tracker so the /sources API shows the limit.
+            try:
+                from glossa_lab.discovery.fetchers.base import get_rate_tracker  # noqa: PLC0415
+                tracker = get_rate_tracker()
+                # Map key_name → source name for the tracker.
+                src_map = {
+                    "semantic_scholar_api_key": "semanticscholar",
+                    "openalex_email": "openalex",
+                    "brave_search_api_key": "brave",
+                    "news_api_key": "newsapi",
+                    "serp_api_key": "serpapi",
+                }
+                src = src_map.get(key_name)
+                if src:
+                    info: dict[str, object] = {}
+                    if rl_limit:
+                        try: info["limit"] = int(rl_limit)
+                        except ValueError: info["limit"] = rl_limit
+                    if rl_remaining:
+                        try: info["remaining"] = int(rl_remaining)
+                        except ValueError: info["remaining"] = rl_remaining
+                    if info:
+                        tracker.record_request(src, ok=True, rate_limit_info=info)
+            except Exception:  # noqa: BLE001
+                pass
             return {
                 "valid": True,
                 "provider": ep["provider"],
-                "message": f"{ep['provider']} key is valid.",
+                "message": msg,
             }
         return {
             "valid": False,

@@ -132,6 +132,50 @@ class FetcherError(RuntimeError):
     """Raised when a fetcher cannot complete a request."""
 
 
+# Thread-local storage for rate-limit headers captured from the last response.
+# Fetchers can read this after http_get_json returns to feed the tracker.
+import threading as _threading
+_last_rate_headers = _threading.local()
+
+
+def get_last_rate_limit_info() -> dict[str, object] | None:
+    """Return rate-limit info parsed from the last http_get_json response, if any."""
+    return getattr(_last_rate_headers, "info", None)
+
+
+def _parse_rate_headers(resp_headers: Any) -> dict[str, object] | None:
+    """Extract X-RateLimit-* / RateLimit-* headers from an HTTP response."""
+    limit = (
+        resp_headers.get("X-RateLimit-Limit")
+        or resp_headers.get("RateLimit-Limit")
+        or resp_headers.get("x-ratelimit-limit")
+    )
+    remaining = (
+        resp_headers.get("X-RateLimit-Remaining")
+        or resp_headers.get("RateLimit-Remaining")
+        or resp_headers.get("x-ratelimit-remaining")
+    )
+    reset = (
+        resp_headers.get("X-RateLimit-Reset")
+        or resp_headers.get("RateLimit-Reset")
+        or resp_headers.get("Retry-After")
+        or resp_headers.get("x-ratelimit-reset")
+    )
+    if limit is None and remaining is None and reset is None:
+        return None
+    info: dict[str, object] = {}
+    if limit is not None:
+        try: info["limit"] = int(limit)
+        except (ValueError, TypeError): info["limit"] = str(limit)
+    if remaining is not None:
+        try: info["remaining"] = int(remaining)
+        except (ValueError, TypeError): info["remaining"] = str(remaining)
+    if reset is not None:
+        try: info["reset"] = int(reset)
+        except (ValueError, TypeError): info["reset"] = str(reset)
+    return info
+
+
 def http_get_json(
     url: str,
     *,
@@ -141,12 +185,15 @@ def http_get_json(
 ) -> Any:
     """Make a synchronous JSON GET request and return the parsed body.
 
+    Also captures X-RateLimit-* headers from the response into thread-local
+    storage; callers can read them via :func:`get_last_rate_limit_info`.
+
     Raises :class:`FetcherError` on any HTTP / decode failure so callers can
     handle individual provider failures without crashing the whole run.
     """
+    _last_rate_headers.info = None  # reset
     full_url = url
     if params:
-        # Drop None values so callers can skip optional params idiomatically.
         clean = {k: v for k, v in params.items() if v is not None}
         if clean:
             sep = "&" if "?" in full_url else "?"
@@ -157,15 +204,21 @@ def http_get_json(
     req = urllib.request.Request(full_url, headers=hdrs, method="GET")
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
+            # Capture rate-limit headers before reading body.
+            _last_rate_headers.info = _parse_rate_headers(resp.headers)
             raw = resp.read()
             if not raw:
                 return {}
             ctype = (resp.headers.get("Content-Type") or "").lower()
             if "json" in ctype or raw[:1] in (b"{", b"["):
                 return json.loads(raw)
-            # Some providers (arXiv) return XML; let the caller decide.
             return raw
     except urllib.error.HTTPError as exc:
+        # Still try to capture rate-limit headers from error responses.
+        try:
+            _last_rate_headers.info = _parse_rate_headers(exc.headers)
+        except Exception:  # noqa: BLE001
+            pass
         body = ""
         try:
             body = exc.read().decode("utf-8", errors="replace")[:300]
@@ -198,12 +251,16 @@ class RateLimitTracker:
     def __init__(self) -> None:
         self._data: dict[str, dict[str, object]] = {}
 
-    def record_request(self, source: str, *, ok: bool = True, was_429: bool = False) -> None:
+    def record_request(
+        self, source: str, *, ok: bool = True, was_429: bool = False,
+        rate_limit_info: dict[str, object] | None = None,
+    ) -> None:
         import time  # noqa: PLC0415
         if source not in self._data:
             self._data[source] = {
                 "requests": 0, "success": 0, "errors_429": 0,
                 "errors_other": 0, "last_request": 0.0,
+                "limit": None, "remaining": None, "reset": None,
             }
         d = self._data[source]
         d["requests"] = int(d["requests"]) + 1  # type: ignore[arg-type]
@@ -214,6 +271,14 @@ class RateLimitTracker:
             d["errors_other"] = int(d["errors_other"]) + 1  # type: ignore[arg-type]
         else:
             d["success"] = int(d["success"]) + 1  # type: ignore[arg-type]
+        # Persist rate-limit headers when the provider returns them.
+        if rate_limit_info:
+            if rate_limit_info.get("limit") is not None:
+                d["limit"] = rate_limit_info["limit"]
+            if rate_limit_info.get("remaining") is not None:
+                d["remaining"] = rate_limit_info["remaining"]
+            if rate_limit_info.get("reset") is not None:
+                d["reset"] = rate_limit_info["reset"]
 
     def status(self, source: str) -> dict[str, object]:
         d = self._data.get(source, {})
@@ -226,6 +291,10 @@ class RateLimitTracker:
             "errors_other": int(d.get("errors_other", 0)),
             "rate_limited": n429 > 0 and n429 >= reqs * 0.3,  # >30% of requests are 429
             "last_request": d.get("last_request", 0),
+            # Provider-reported limits (from X-RateLimit-* headers)
+            "limit": d.get("limit"),
+            "remaining": d.get("remaining"),
+            "reset": d.get("reset"),
         }
 
     def all_statuses(self) -> dict[str, dict[str, object]]:

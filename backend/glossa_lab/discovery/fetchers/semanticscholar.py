@@ -6,6 +6,7 @@ paper metadata with citation counts and TLDRs when available.
 
 from __future__ import annotations
 
+import asyncio
 import logging
 from datetime import datetime
 from typing import Iterable
@@ -29,11 +30,25 @@ _FIELDS = "paperId,title,url,abstract,authors,year,citationCount,externalIds,tld
 class SemanticScholarFetcher(Fetcher):
     source = "semanticscholar"
     requires = ()  # keyless (rate-limited)
-    rate_delay: float = 3.5  # seconds between calls (100 req/5 min ≈ 3s)
+    rate_delay: float = 6.0  # seconds between calls (conservative; 100 req/5 min)
+
+    # Track last request time class-wide so multiple instances share cooldown.
+    # Initialised to now so the first call after a restart always waits the
+    # full rate_delay — prevents 429s when the backend restarts quickly.
+    import time as _time_init
+    _last_request: float = _time_init.monotonic()
 
     async def fetch(
         self, topic: TopicProfile, *, since: datetime | None = None,
     ) -> Iterable[RawItem]:
+        # Enforce per-class rate limit before every request.
+        import time as _time
+        now = _time.monotonic()
+        wait = self.rate_delay - (now - SemanticScholarFetcher._last_request)
+        if wait > 0:
+            await asyncio.sleep(wait)
+        SemanticScholarFetcher._last_request = _time.monotonic()
+
         opts = topic.overrides_for(self.source)
         max_results = int(opts.get("max_results", 25))
         query = " ".join(topic.keywords[:8]) or topic.label

@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Increment this when adding a new _SCHEMA_Vn block below.
 # _apply_schema will raise if the DB is somehow ahead of the code.
-_SCHEMA_VERSION = 16
+_SCHEMA_VERSION = 17
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -305,6 +305,26 @@ CREATE TABLE IF NOT EXISTS research_goals (
 CREATE INDEX IF NOT EXISTS idx_goals_default ON research_goals(is_default);
 """
 
+_SCHEMA_V17 = """
+-- Projects — top-level container replacing research_goals + studies.
+-- Each project scopes topics, experiments, corpora, and provides an
+-- LLM prompt_context for mine classification and dashboard insights.
+CREATE TABLE IF NOT EXISTS projects (
+    id              TEXT PRIMARY KEY,
+    label           TEXT NOT NULL,
+    description     TEXT NOT NULL DEFAULT '',
+    prompt_context  TEXT NOT NULL DEFAULT '',
+    topic_ids       TEXT NOT NULL DEFAULT '[]',
+    experiment_ids  TEXT NOT NULL DEFAULT '[]',
+    corpus_ids      TEXT NOT NULL DEFAULT '[]',
+    is_active       INTEGER NOT NULL DEFAULT 0,
+    created_at      TEXT NOT NULL,
+    updated_at      TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_projects_active ON projects(is_active);
+"""
+
 _SCHEMA_V12 = """
 CREATE TABLE IF NOT EXISTS canonical_signs (
     internal_id        TEXT PRIMARY KEY,
@@ -481,6 +501,30 @@ class Database:
             await self._conn.executescript(_SCHEMA_V16)
             await self._conn.execute("UPDATE _schema_version SET version = ?", (16,))
             current_version = 16
+
+        if current_version < 17:
+            await self._conn.executescript(_SCHEMA_V17)
+            # Migrate existing research_goals into projects
+            try:
+                rows = await self._conn.execute(
+                    "SELECT * FROM research_goals"
+                )
+                for r in await rows.fetchall():
+                    await self._conn.execute(
+                        """INSERT OR IGNORE INTO projects
+                           (id, label, description, prompt_context, topic_ids,
+                            experiment_ids, corpus_ids, is_active, created_at, updated_at)
+                           VALUES (?, ?, ?, ?, ?, '[]', '[]', ?, ?, ?)""",
+                        (
+                            r["id"], r["label"], r["description"],
+                            r["prompt_context"], r["topic_ids"],
+                            int(r["is_default"]), r["created_at"], r["updated_at"],
+                        ),
+                    )
+            except Exception:  # noqa: BLE001
+                pass  # research_goals may not exist on fresh DBs
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (17,))
+            current_version = 17
 
         if current_version > _SCHEMA_VERSION:
             logger.warning(
@@ -1974,91 +2018,101 @@ class Database:
         await self._conn.commit()
         return existing
 
-    # ── Research Goals (V16) ─────────────────────────────────
+    # ── Projects (V17) ─────────────────────────────────────
 
-    async def list_goals(self) -> list[dict[str, Any]]:
+    async def list_projects(self) -> list[dict[str, Any]]:
         assert self._conn
         cursor = await self._conn.execute(
-            "SELECT * FROM research_goals ORDER BY is_default DESC, label ASC"
+            "SELECT * FROM projects ORDER BY is_active DESC, label ASC"
         )
         return [self._row_to_dict(r) for r in await cursor.fetchall()]
 
-    async def get_goal(self, goal_id: str) -> dict[str, Any] | None:
+    async def get_project(self, project_id: str) -> dict[str, Any] | None:
         assert self._conn
         cursor = await self._conn.execute(
-            "SELECT * FROM research_goals WHERE id=?", (goal_id,)
+            "SELECT * FROM projects WHERE id=?", (project_id,)
         )
         row = await cursor.fetchone()
         return self._row_to_dict(row) if row else None
 
-    async def get_default_goal(self) -> dict[str, Any] | None:
+    async def get_active_project(self) -> dict[str, Any] | None:
         assert self._conn
         cursor = await self._conn.execute(
-            "SELECT * FROM research_goals WHERE is_default=1 LIMIT 1"
+            "SELECT * FROM projects WHERE is_active=1 LIMIT 1"
         )
         row = await cursor.fetchone()
         if row:
             return self._row_to_dict(row)
-        # Fall back to first goal if no default set
+        # Fall back to first project
         cursor = await self._conn.execute(
-            "SELECT * FROM research_goals ORDER BY created_at ASC LIMIT 1"
+            "SELECT * FROM projects ORDER BY created_at ASC LIMIT 1"
         )
         row = await cursor.fetchone()
         return self._row_to_dict(row) if row else None
 
-    async def goal_for_topic(self, topic_id: str) -> dict[str, Any] | None:
-        """Return the first goal whose topic_ids contains *topic_id*."""
+    async def project_for_topic(self, topic_id: str) -> dict[str, Any] | None:
+        """Return the first project whose topic_ids contains *topic_id*."""
         assert self._conn
         cursor = await self._conn.execute(
-            "SELECT * FROM research_goals WHERE topic_ids LIKE ? "
-            "ORDER BY is_default DESC LIMIT 1",
+            "SELECT * FROM projects WHERE topic_ids LIKE ? "
+            "ORDER BY is_active DESC LIMIT 1",
             (f'%"{topic_id}"%',),
         )
         row = await cursor.fetchone()
         return self._row_to_dict(row) if row else None
 
-    async def upsert_goal(
+    async def upsert_project(
         self,
         *,
-        goal_id: str,
+        project_id: str,
         label: str,
         description: str = "",
         prompt_context: str = "",
         topic_ids: list[str] | None = None,
-        study_ids: list[str] | None = None,
-        is_default: bool = False,
+        experiment_ids: list[str] | None = None,
+        corpus_ids: list[str] | None = None,
+        is_active: bool = False,
         created_at: str,
     ) -> dict[str, Any]:
         assert self._conn
-        # Enforce single default
-        if is_default:
+        # Enforce single active
+        if is_active:
             await self._conn.execute(
-                "UPDATE research_goals SET is_default=0 WHERE id<>?", (goal_id,),
+                "UPDATE projects SET is_active=0 WHERE id<>?", (project_id,),
             )
         await self._conn.execute(
-            """INSERT OR REPLACE INTO research_goals
-               (id, label, description, prompt_context, topic_ids, study_ids,
-                is_default, created_at, updated_at)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))""",
+            """INSERT OR REPLACE INTO projects
+               (id, label, description, prompt_context, topic_ids,
+                experiment_ids, corpus_ids, is_active, created_at, updated_at)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))""",
             (
-                goal_id, label, description, prompt_context,
+                project_id, label, description, prompt_context,
                 json.dumps(topic_ids or []),
-                json.dumps(study_ids or []),
-                1 if is_default else 0,
+                json.dumps(experiment_ids or []),
+                json.dumps(corpus_ids or []),
+                1 if is_active else 0,
                 created_at,
             ),
         )
         await self._conn.commit()
-        return await self.get_goal(goal_id)  # type: ignore[return-value]
+        return await self.get_project(project_id)  # type: ignore[return-value]
 
-    async def delete_goal(self, goal_id: str) -> dict[str, Any] | None:
+    async def delete_project(self, project_id: str) -> dict[str, Any] | None:
         assert self._conn
-        existing = await self.get_goal(goal_id)
+        existing = await self.get_project(project_id)
         if existing is None:
             return None
-        await self._conn.execute("DELETE FROM research_goals WHERE id=?", (goal_id,))
+        await self._conn.execute("DELETE FROM projects WHERE id=?", (project_id,))
         await self._conn.commit()
         return existing
+
+    # ── Legacy goal compat (delegates to projects) ───────────────
+
+    async def get_default_goal(self) -> dict[str, Any] | None:
+        return await self.get_active_project()
+
+    async def goal_for_topic(self, topic_id: str) -> dict[str, Any] | None:
+        return await self.project_for_topic(topic_id)
 
     # ── Helpers ─────────────────────────────────────
 
@@ -2084,7 +2138,9 @@ class Database:
             "headers_json",  # ai_endpoints (deserialised to .headers below)
             "params_json",   # ai_profiles
             "tags_json",     # ai_profiles
-            "topic_ids",     # research_goals
+            "topic_ids",     # projects / research_goals
+            "experiment_ids", # projects
+            "corpus_ids",    # projects
         ):
             if field in d and isinstance(d[field], str):
                 try:

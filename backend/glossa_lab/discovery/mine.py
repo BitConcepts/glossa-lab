@@ -83,11 +83,22 @@ class Classification:
 
 # ── Prompt construction ─────────────────────────────────────────────────────
 
-_SYSTEM_PROMPT = (
-    "You are a research-triage assistant for an Indus script decipherment "
-    "project. You read a single news / paper / dataset item and classify it. "
-    "Reply with JSON only \u2014 no prose, no markdown."
+# Default system prompt — used when no research goal is configured.
+_DEFAULT_SYSTEM_PROMPT = (
+    "You are a research-triage assistant. You read a single news / paper / "
+    "dataset item and classify it. Reply with JSON only \u2014 no prose, no markdown."
 )
+
+
+def _system_prompt(goal: dict | None = None) -> str:
+    """Build the system prompt, injecting goal context when available."""
+    if goal and goal.get("prompt_context"):
+        return (
+            f"{goal['prompt_context']} "
+            "You read a single news / paper / dataset item and classify it. "
+            "Reply with JSON only \u2014 no prose, no markdown."
+        )
+    return _DEFAULT_SYSTEM_PROMPT
 
 _INSTRUCTIONS = (
     "Return a JSON object with exactly these fields:\n"
@@ -102,7 +113,9 @@ _INSTRUCTIONS = (
 )
 
 
-def _build_messages(item: DiscoveryItem) -> list[dict[str, str]]:
+def _build_messages(
+    item: DiscoveryItem, *, goal: dict | None = None,
+) -> list[dict[str, str]]:
     """Compose the chat messages used to classify a single item."""
     raw = item.raw_json or {}
     snippet = (
@@ -124,7 +137,7 @@ def _build_messages(item: DiscoveryItem) -> list[dict[str, str]]:
         f"{_INSTRUCTIONS}"
     )
     return [
-        {"role": "system", "content": _SYSTEM_PROMPT},
+        {"role": "system", "content": _system_prompt(goal)},
         {"role": "user", "content": user},
     ]
 
@@ -132,10 +145,12 @@ def _build_messages(item: DiscoveryItem) -> list[dict[str, str]]:
 # ── Classification ──────────────────────────────────────────────────────────
 
 
-def classify_item(item: DiscoveryItem, *, client: LLMClient) -> Classification:
+def classify_item(
+    item: DiscoveryItem, *, client: LLMClient, goal: dict | None = None,
+) -> Classification:
     """Run the LLM classifier on *item*. Raises :class:`LLMError` on failure."""
     data, result = client.chat_json(
-        _build_messages(item), max_tokens=600, temperature=0.0,
+        _build_messages(item, goal=goal), max_tokens=600, temperature=0.0,
     )
     return Classification.from_response(data, result)
 
@@ -232,10 +247,12 @@ class MineSummary:
     error: str = ""
 
 
-async def mine_item(item: DiscoveryItem, *, client: LLMClient) -> MineSummary:
+async def mine_item(
+    item: DiscoveryItem, *, client: LLMClient, goal: dict | None = None,
+) -> MineSummary:
     """Classify and link one item, persisting the result via :mod:`store`."""
     try:
-        classification = classify_item(item, client=client)
+        classification = classify_item(item, client=client, goal=goal)
     except LLMError as exc:
         _log.warning("classify failed for %s: %s", item.id, exc)
         return MineSummary(
@@ -294,12 +311,32 @@ async def mine_pending(
 
     Returns an aggregate summary suitable for embedding in a Job result.
     """
+    # Look up the research goal for context-scoped classification.
+    goal: dict | None = None
+    try:
+        from glossa_lab.database import get_db  # noqa: PLC0415
+        db = get_db()
+        if db:
+            goal = await db.get_default_goal()
+    except Exception:  # noqa: BLE001
+        pass
+
     items = await store.list_items(topic=topic, limit=max(limit * 2, limit))
     pending = [it for it in items if _is_unmined(it)]
     pending = pending[:limit]
     summaries: list[MineSummary] = []
     for it in pending:
-        summaries.append(await mine_item(it, client=client))
+        # Try to find a topic-specific goal; fall back to default.
+        item_goal = goal
+        if it.topic and db:
+            try:
+                first_topic = it.topic.split(",")[0].strip()
+                tg = await db.goal_for_topic(first_topic)
+                if tg:
+                    item_goal = tg
+            except Exception:  # noqa: BLE001
+                pass
+        summaries.append(await mine_item(it, client=client, goal=item_goal))
     classified = [s for s in summaries if s.classified]
     failed = [s for s in summaries if not s.classified]
     by_kind: dict[str, int] = {}

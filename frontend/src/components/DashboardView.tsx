@@ -300,37 +300,54 @@ export function DashboardView() {
           }
           // Pre-validate against the registry so a hallucinated id never
           // reaches the backend (and never produces a raw HTTP 404).
+          // When the ID is hallucinated but we have a strong match, auto-
+          // correct to it instead of just warning — the LLM is usually
+          // close (e.g. "indus_contact_zone_k" → "contact_zone").
           const registry = await ensureExpRegistry();
+          let resolvedId = expId;
           const known = registry.some((e) => e.id === expId);
           if (!known) {
-            const suggestions = registry
+            const ranked = registry
               .map((e) => ({ id: e.id, score: _scoreMatch(expId, e.id) }))
-              .sort((x, y) => y.score - x.score)
-              .slice(0, 3)
-              .filter((s) => s.score > 4)
-              .map((s) => s.id);
-            const tail = suggestions.length
-              ? ` Did you mean: ${suggestions.join(", ")}?`
-              : "";
-            toast(
-              `Experiment '${expId}' is not registered.${tail}`,
-              "warning",
-              6000,
-            );
-            outcome = "error";
-            break;
+              .sort((x, y) => y.score - x.score);
+            const best = ranked[0];
+            if (best && best.score >= 80) {
+              // Strong match — auto-correct silently with a brief info toast.
+              resolvedId = best.id;
+              toast(
+                `Auto-corrected '${expId}' → ${resolvedId}`,
+                "info",
+                3000,
+              );
+            } else {
+              // No confident match — warn and bail.
+              const suggestions = ranked
+                .slice(0, 3)
+                .filter((s) => s.score > 4)
+                .map((s) => s.id);
+              const tail = suggestions.length
+                ? ` Did you mean: ${suggestions.join(", ")}?`
+                : "";
+              toast(
+                `Experiment '${expId}' is not registered.${tail}`,
+                "warning",
+                6000,
+              );
+              outcome = "error";
+              break;
+            }
           }
           // Stream the run so the user sees per-node progress in the toast row
           // instead of just "started". Keep the Apply button in its busy state
           // until run_complete / run_error.
-          toast(`Started experiment ${expId}`, "info");
+          toast(`Started experiment ${resolvedId}`, "info");
           let total = 0;
           let lastTick = 0;
           let runOk = false;
           let runFailed = false;
           let hadNodeError = false;
           try {
-            for await (const ev of runGraphExperimentStream(expId, {})) {
+            for await (const ev of runGraphExperimentStream(resolvedId, {})) {
               if (ev.event === "started") {
                 total = ev.node_count ?? 0;
               } else if (ev.event === "node_start") {
@@ -342,7 +359,7 @@ export function DashboardView() {
                 if (now - lastTick > 1200) {
                   lastTick = now;
                   toast(
-                    `${expId}: ${idx}/${totalNow} ${ev.label ?? ""}`.trim(),
+                    `${resolvedId}: ${idx}/${totalNow} ${ev.label ?? ""}`.trim(),
                     "info",
                     1500,
                   );
@@ -353,15 +370,15 @@ export function DashboardView() {
                 runOk = true;
                 toast(
                   hadNodeError
-                    ? `Experiment ${expId} completed with errors`
-                    : `Experiment ${expId} complete`,
+                    ? `Experiment ${resolvedId} completed with errors`
+                    : `Experiment ${resolvedId} complete`,
                   hadNodeError ? "warning" : "success",
                 );
                 if (hadNodeError) outcome = "warn";
               } else if (ev.event === "run_error") {
                 runFailed = true;
                 toast(
-                  `Experiment ${expId} failed: ${ev.message ?? "run failed"}`,
+                  `Experiment ${resolvedId} failed: ${ev.message ?? "run failed"}`,
                   "error",
                 );
                 outcome = "error";
@@ -370,12 +387,12 @@ export function DashboardView() {
             if (!runOk && !runFailed) {
               // Stream closed without an explicit run_complete — surface that
               // rather than silently flashing the success toast.
-              toast(`Experiment ${expId} ended without completion event`, "warning");
+              toast(`Experiment ${resolvedId} ended without completion event`, "warning");
               outcome = "warn";
             }
           } catch (err) {
             toast(
-              err instanceof Error ? err.message : `Experiment ${expId} failed`,
+              err instanceof Error ? err.message : `Experiment ${resolvedId} failed`,
               "error",
             );
             outcome = "error";
@@ -411,19 +428,57 @@ export function DashboardView() {
           break;
         }
         case "propose_experiment_chain": {
+          // Automated chain: create hypothesis → pick relevant experiments → run them.
           const hypothesis = String(a.params?.hypothesis || a.label || a.rationale || "");
-          openChat({
-            contextType: "",
-            contextId: "",
-            autoSend: true,
-            initialPrompt:
-              `Plan an experiment chain to evaluate the following hypothesis, ` +
-              `using the existing graph experiment registry where possible:\n\n` +
-              `${hypothesis}\n\n` +
-              `Return a numbered ordered chain with each step's purpose and the ` +
-              `existing experiment id (or a brief sketch if none fits).`,
-          });
-          toast("Sent to Glossa AI", "info");
+          if (!hypothesis) { toast("No hypothesis text for chain", "warning"); break; }
+
+          // Step 1: create the hypothesis so it’s tracked.
+          try {
+            await createHypothesis({ title: hypothesis.slice(0, 200), statement: hypothesis });
+            toast(`Hypothesis created: ${hypothesis.slice(0, 60)}`, "success");
+          } catch { /* may already exist — continue */ }
+
+          // Step 2: pick relevant experiments from the registry.
+          // Use simple keyword overlap between hypothesis text and experiment
+          // names/descriptions to select the top 3 most relevant.
+          const chainRegistry = await ensureExpRegistry();
+          const hypWords = new Set(
+            hypothesis.toLowerCase().replace(/[^a-z0-9 ]/g, " ").split(/\s+/).filter(w => w.length > 3),
+          );
+          const scored = chainRegistry
+            .map((e) => {
+              const txt = `${e.id} ${e.name ?? ""} ${e.description ?? ""}`.toLowerCase();
+              let hits = 0;
+              for (const w of hypWords) { if (txt.includes(w)) hits++; }
+              return { id: e.id, hits };
+            })
+            .filter((s) => s.hits > 0)
+            .sort((x, y) => y.hits - x.hits)
+            .slice(0, 3);
+
+          if (scored.length === 0) {
+            toast("No matching experiments found in registry — open Experiment Builder to create one", "warning");
+            outcome = "warn";
+            break;
+          }
+
+          // Step 3: run each experiment sequentially.
+          toast(`Running ${scored.length} experiment(s): ${scored.map(s => s.id).join(", ")}`, "info");
+          let chainOk = true;
+          for (const s of scored) {
+            try {
+              let ok = false;
+              for await (const ev of runGraphExperimentStream(s.id, {})) {
+                if (ev.event === "run_complete") { ok = true; toast(`${s.id} complete`, "success"); }
+                if (ev.event === "run_error")    { chainOk = false; toast(`${s.id} failed`, "error"); }
+              }
+              if (!ok && chainOk) { toast(`${s.id} ended without completion`, "warning"); chainOk = false; }
+            } catch (err) {
+              chainOk = false;
+              toast(`${s.id}: ${err instanceof Error ? err.message : "failed"}`, "error");
+            }
+          }
+          outcome = chainOk ? "success" : "warn";
           break;
         }
         case "ai_chat": {

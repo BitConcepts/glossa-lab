@@ -6,6 +6,7 @@ Keyless. Provides DOI-anchored bibliographic metadata.
 from __future__ import annotations
 
 import logging
+import re
 from datetime import datetime
 from typing import Iterable
 
@@ -23,10 +24,22 @@ _log = logging.getLogger("glossa_lab.discovery.fetchers.crossref")
 _ENDPOINT = "https://api.crossref.org/works"
 
 
+_RE_TAG = re.compile(r"<[^>]+>")
+_RE_WHITESPACE = re.compile(r"\s{2,}")
+
+
+def _strip_markup(text: str) -> str:
+    """Remove HTML/XML/MathML tags and collapse whitespace."""
+    cleaned = _RE_TAG.sub(" ", text)
+    cleaned = _RE_WHITESPACE.sub(" ", cleaned)
+    return cleaned.strip()
+
+
 def _join_title(parts: list[str] | None) -> str:
     if not parts:
         return ""
-    return " ".join(p for p in parts if p).strip()
+    raw = " ".join(p for p in parts if p).strip()
+    return _strip_markup(raw)
 
 
 def _published_iso(item: dict) -> str:
@@ -81,7 +94,7 @@ class CrossrefFetcher(Fetcher):
                 url = f"https://doi.org/{doi}"
             if not url:
                 continue
-            abstract = it.get("abstract") or ""
+            abstract = _strip_markup(it.get("abstract") or "")
             if not self._passes_exclusions(f"{title} {abstract}", topic.exclusions):
                 continue
             authors = [

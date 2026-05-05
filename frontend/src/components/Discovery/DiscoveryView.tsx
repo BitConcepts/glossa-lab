@@ -69,6 +69,11 @@ function topicTags(item: DiscoveryItem): string[] {
   return (item.topic || "").split(",").map((s) => s.trim()).filter(Boolean);
 }
 
+/** Strip HTML/XML/MathML tags (safety net for Crossref titles). */
+function stripTags(s: string): string {
+  return s.replace(/<[^>]+>/g, " ").replace(/\s{2,}/g, " ").trim();
+}
+
 // ── Item card ──────────────────────────────────────────────────────────────
 
 interface CardProps {
@@ -125,8 +130,8 @@ function ItemCard({ item, onStatus }: CardProps) {
                 display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical",
                 overflow: "hidden",
               }}
-              title={item.title}>
-              {item.title || "(untitled)"}
+              title={stripTags(item.title)}>
+              {stripTags(item.title) || "(untitled)"}
             </a>
             <div style={{ fontSize: 11, color: "#6b7280", marginTop: 3, display: "flex", gap: 8, flexWrap: "wrap" }}>
               <span title="Source">📡 {item.source}</span>

@@ -29,6 +29,7 @@ _FIELDS = "paperId,title,url,abstract,authors,year,citationCount,externalIds,tld
 class SemanticScholarFetcher(Fetcher):
     source = "semanticscholar"
     requires = ()  # keyless (rate-limited)
+    rate_delay: float = 3.5  # seconds between calls (100 req/5 min ≈ 3s)
 
     async def fetch(
         self, topic: TopicProfile, *, since: datetime | None = None,

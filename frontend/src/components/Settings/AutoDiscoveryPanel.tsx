@@ -44,9 +44,9 @@ const SOURCE_KEYS: { id: string; label: string; href: string; hint?: string }[] 
   { id: "openalex_email",            label: "OpenAlex (email)",   href: "https://docs.openalex.org/how-to-use-the-api/rate-limits-and-authentication",
     hint: "Enter your email to join the \"polite pool\" (faster, priority access). Not a key — just an email." },
   { id: "patentsview_api_key",       label: "PatentsView",        href: "https://patentsview-support.atlassian.net/servicedesk/customer/portals",
-    hint: "Required for US patent search. 45 req/min. Request a free key from the PatentsView service desk." },
+    hint: "⚠️ PatentsView API shut down March 2026. Key saved but source disabled. Use USPTO (ODP) instead." },
   { id: "uspto_api_key",             label: "USPTO (ODP)",        href: "https://developer.uspto.gov/",
-    hint: "Optional upgrade for the USPTO/PPUBS fetcher. Enables higher rate limits via the Open Data Portal." },
+    hint: "Required for US patent search via the Open Data Portal. Register for a free API key." },
 ];
 
 export function AutoDiscoveryPanel() {

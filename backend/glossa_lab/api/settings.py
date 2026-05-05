@@ -33,12 +33,11 @@ KNOWN_KEYS = [
     "serp_api_key",
     "news_api_key",
     "brave_search_api_key",
-    # Academia.edu — NOT an API key, but a *session cookie* harvested from a
-    # logged-in browser. Optional. When present the academia.py fetcher
-    # upgrades from public-search-only to authenticated mode and can stream
-    # PDFs into the local data dir. Leave unset for keyless metadata-only
-    # discovery, which works without any account.
-    "academia_session_cookie",
+    # Optional API keys for higher rate limits on keyless sources.
+    # Semantic Scholar: free key removes the 100 req/5min cap.
+    # OpenAlex: "polite pool" with an email gets priority access.
+    "semantic_scholar_api_key",
+    "openalex_email",
     # Academia.edu — NOT an API key, but a *session cookie* harvested from a
     # logged-in browser. Optional. When present the academia.py fetcher
     # upgrades from public-search-only to authenticated mode and can stream

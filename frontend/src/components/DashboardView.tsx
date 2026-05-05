@@ -291,16 +291,27 @@ export function DashboardView() {
   }, []);
   useEffect(() => { void ensureExpRegistry(); }, [ensureExpRegistry]);
 
-  /** Crude prefix-similarity score — enough to suggest a likely correction. */
+  /** Fuzzy similarity score for experiment ID matching.
+   *  Returns 0–1000; higher = better match. Handles:
+   *  - Exact match (1000)
+   *  - One is a prefix of the other (500+)
+   *  - Substring containment (100+)
+   *  - Long common prefix relative to string length (percentage-based) */
   const _scoreMatch = (target: string, candidate: string): number => {
     const a = target.toLowerCase();
     const b = candidate.toLowerCase();
     if (a === b) return 1000;
     if (b.startsWith(a) || a.startsWith(b)) return 500 + Math.min(a.length, b.length);
+    // Count common prefix characters
     let common = 0;
-    const max = Math.min(a.length, b.length);
-    while (common < max && a[common] === b[common]) common += 1;
+    const maxLen = Math.min(a.length, b.length);
+    while (common < maxLen && a[common] === b[common]) common += 1;
     if (b.includes(a) || a.includes(b)) return 100 + common;
+    // Percentage-based score: if 80%+ of the shorter string matches as a
+    // prefix, treat it as a strong match. This catches cases like
+    // "indus_contact_zone_k" vs "indus_contact_zone_v2" (19/21 = 90%).
+    const pct = common / Math.max(a.length, b.length);
+    if (pct >= 0.7) return Math.round(200 * pct);  // 70% → 140, 90% → 180
     return common;
   };
 

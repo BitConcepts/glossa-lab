@@ -219,26 +219,51 @@ def _probe_models(
                 "models": [],
             }
         # OpenAI-compatible: {"data":[{"id":...}, ...]}
+        # Per-model detail — vLLM exposes ``max_model_len`` (its name for the
+        # rolled-out context window), ``owned_by`` and sometimes a free-form
+        # ``description``. We surface every field we can recognise so the
+        # frontend can render "id — description (ctx N)" labels without a
+        # second probe.
         models: list[str] = []
+        models_detail: list[dict[str, Any]] = []
         for entry in (payload.get("data") or payload.get("models") or []):
             if isinstance(entry, dict):
                 mid = entry.get("id") or entry.get("name") or entry.get("model")
                 if mid:
-                    models.append(str(mid))
+                    mid_s = str(mid)
+                    models.append(mid_s)
+                    ctx = (
+                        entry.get("max_model_len")
+                        or entry.get("context_length")
+                        or entry.get("context_window")
+                        or 0
+                    )
+                    models_detail.append({
+                        "id":             mid_s,
+                        "owner":          str(entry.get("owned_by") or entry.get("owner") or ""),
+                        "context_length": int(ctx) if isinstance(ctx, (int, float)) and ctx else 0,
+                        "description":    str(
+                            entry.get("description")
+                            or entry.get("summary")
+                            or ""
+                        ),
+                    })
             elif isinstance(entry, str):
                 models.append(entry)
+                models_detail.append({"id": entry, "owner": "", "context_length": 0, "description": ""})
         return {
             "valid": True,
             "message": f"OK — {len(models)} model(s) reachable.",
             "models": models[:200],  # cap to keep response small
+            "models_detail": models_detail[:200],
         }
     except urllib.error.HTTPError as exc:
         msg = f"HTTP {exc.code}: {exc.reason}"
         if exc.code in (401, 403):
             msg = f"Unauthorized (HTTP {exc.code}). Check API key."
-        return {"valid": False, "message": msg, "models": []}
+        return {"valid": False, "message": msg, "models": [], "models_detail": []}
     except Exception as exc:  # noqa: BLE001
-        return {"valid": False, "message": f"Connection error: {exc}", "models": []}
+        return {"valid": False, "message": f"Connection error: {exc}", "models": [], "models_detail": []}
 
 
 # ── Routes ─────────────────────────────────────────────────────────────

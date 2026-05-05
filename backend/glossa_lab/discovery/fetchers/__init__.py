@@ -27,10 +27,17 @@ from glossa_lab.discovery.fetchers.base import (
     now_utc,
     to_iso,
 )
+from glossa_lab.discovery.fetchers.academia import AcademiaFetcher
 from glossa_lab.discovery.fetchers.brave import BraveFetcher
 from glossa_lab.discovery.fetchers.crossref import CrossrefFetcher
+from glossa_lab.discovery.fetchers.doaj import DOAJFetcher
+from glossa_lab.discovery.fetchers.europepmc import EuropePMCFetcher
+from glossa_lab.discovery.fetchers.gdelt import GDELTFetcher
 from glossa_lab.discovery.fetchers.newsapi import NewsAPIFetcher
 from glossa_lab.discovery.fetchers.openalex import OpenAlexFetcher
+from glossa_lab.discovery.fetchers.pubmed import PubMedFetcher
+from glossa_lab.discovery.fetchers.rss import RSSFetcher
+from glossa_lab.discovery.fetchers.semanticscholar import SemanticScholarFetcher
 from glossa_lab.discovery.fetchers.serpapi import SerpAPIFetcher
 from glossa_lab.discovery.store import RawItem
 
@@ -39,12 +46,24 @@ _log = logging.getLogger("glossa_lab.discovery.fetchers")
 # Order matters: API-key sources first (most authoritative for news/scholar),
 # keyless academic sources after.
 _REGISTRY: tuple[type[Fetcher], ...] = (
+    # API-key sources first — most authoritative for news/scholar.
     NewsAPIFetcher,
     BraveFetcher,
     SerpAPIFetcher,
+    # Keyless academic / scientific sources — always on.
     OpenAlexFetcher,
     ArxivFetcher,
     CrossrefFetcher,
+    PubMedFetcher,
+    EuropePMCFetcher,
+    DOAJFetcher,
+    SemanticScholarFetcher,
+    # Keyless news + general sources.
+    GDELTFetcher,
+    RSSFetcher,
+    # Academia.edu — keyless metadata search; auth-gated download requires
+    # the user to paste a session cookie in Settings → Discovery.
+    AcademiaFetcher,
 )
 
 

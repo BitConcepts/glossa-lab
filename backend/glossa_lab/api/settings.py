@@ -33,6 +33,18 @@ KNOWN_KEYS = [
     "serp_api_key",
     "news_api_key",
     "brave_search_api_key",
+    # Academia.edu — NOT an API key, but a *session cookie* harvested from a
+    # logged-in browser. Optional. When present the academia.py fetcher
+    # upgrades from public-search-only to authenticated mode and can stream
+    # PDFs into the local data dir. Leave unset for keyless metadata-only
+    # discovery, which works without any account.
+    "academia_session_cookie",
+    # Academia.edu — NOT an API key, but a *session cookie* harvested from a
+    # logged-in browser. Optional. When present the academia.py fetcher
+    # upgrades from public-search-only to authenticated mode and can stream
+    # PDFs into the local data dir. Leave unset for keyless metadata-only
+    # discovery, which works without any account.
+    "academia_session_cookie",
     # SMTP — outbound email notifications (discovery digest + study/experiment
     # completion emails). All optional; if smtp_host or smtp_from is unset the
     # Notifier becomes a silent no-op so runs never fail because of missing creds.
@@ -93,13 +105,58 @@ def _save_keys(data: dict[str, str]) -> None:
         pass
 
 
+# Values that look like a real key but are actually placeholders. We treat
+# them as "not configured" so a fetcher / verifier never POSTs them to a
+# real provider (which would 401/422). Match by exact-equal OR by prefix
+# so common forms like ``dummy-news``, ``dummy_serp``, ``placeholder-xxx``,
+# ``your-api-key-here``, ``<insert key>`` are all caught.
+_PLACEHOLDER_EQUAL = {
+    "", "none", "null", "undefined", "<your-key>", "<your-api-key>",
+    "your-api-key-here", "your_api_key_here", "replace-me", "replace_me",
+    "changeme", "change-me", "todo", "tbd", "xxx", "xxxx", "xxxxxxxx",
+}
+_PLACEHOLDER_PREFIX = (
+    "dummy", "placeholder", "<insert", "<your", "sk-xxx", "your-", "your_",
+)
+_log_warned: set[str] = set()
+
+
+def _is_placeholder(value: str | None) -> bool:
+    if not value:
+        return True
+    v = value.strip().lower()
+    if not v or v in _PLACEHOLDER_EQUAL:
+        return True
+    return any(v.startswith(p) for p in _PLACEHOLDER_PREFIX)
+
+
 def get_key(key_name: str) -> str | None:
-    """Return the plaintext value of a stored key (for internal use only)."""
-    # Check environment variable first (overrides stored keys)
-    env_val = os.environ.get(key_name.upper())
-    if env_val:
+    """Return the plaintext value of a stored key (for internal use only).
+
+    Resolution order: process env (UPPERCASE name) -> stored ``.keys.json``.
+    Placeholder values (``dummy-*``, ``your-api-key-here`` etc.) are
+    treated as if no key were set so callers fall through to the next
+    source or skip the request entirely.
+    """
+    import logging  # noqa: PLC0415
+
+    env_name = key_name.upper()
+    env_val = os.environ.get(env_name)
+    if env_val and not _is_placeholder(env_val):
         return env_val
-    return _load_keys().get(key_name)
+    if env_val and _is_placeholder(env_val) and env_name not in _log_warned:
+        # Surface this once: a polluted env variable beats the stored value
+        # and would otherwise cause silent provider 401s with no clue why.
+        _log_warned.add(env_name)
+        logging.getLogger("glossa_lab.api.settings").warning(
+            "Ignoring placeholder env value for %s (%r); falling back to stored key. "
+            "Run `Remove-Item Env:%s` in your shell or `setx %s \"\"` to clear it.",
+            env_name, env_val, env_name, env_name,
+        )
+    stored = _load_keys().get(key_name)
+    if stored and _is_placeholder(stored):
+        return None
+    return stored
 
 
 # ── Verification ─────────────────────────────────────────────────────

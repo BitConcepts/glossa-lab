@@ -260,47 +260,63 @@ async def suggest_profiles() -> dict[str, Any]:
     except Exception:  # noqa: BLE001
         ollama_models = []
 
-    # Only suggest 1-2 Ollama profiles to avoid drowning the user in choices.
+    # Default-AI-stack: when Ollama has at least one model, propose the
+    # "local-first" full role bundle (chat, decipher, drafting,
+    # classification, hypotheses, sign-reading) all backed by the best
+    # locally-installed model. The user can one-click "Create all" to wire
+    # the whole stack at once.
     if ollama_models:
-        chosen = ollama_models[0]
-        chosen_name = chosen.get("name") or ""
-        if chosen_name:
-            tuning = _ROLE_TUNING["chat"]
+        # Pick the largest installed model as the heavyweight reasoner and
+        # the smallest as the fast classifier. ``size_gb`` is provided by
+        # ``list_local_models`` which mirrors ``ollama list``.
+        sized = sorted(
+            ((m.get("name") or "", float(m.get("size_gb") or 0)) for m in ollama_models),
+            key=lambda t: t[1],
+        )
+        small = next((n for n, _ in sized if n), "")
+        large = next((n for n, _ in reversed(sized) if n), small)
+        if small and large:
+            local_role_plan = [
+                ("chat",         "Chat",          large, "Local conversation — your default chatter; data never leaves the box."),
+                ("decipher",     "Decipherment",  large, "Heavyweight reasoning for low-temperature decipherment runs."),
+                ("hypotheses",   "Hypotheses",    large, "Brainstorming hypotheses with the larger local model for better diversity."),
+                ("sign_reading", "Sign reading",  large, "Phonetic + semantic sign reading; uses the larger local model for nuance."),
+                ("draft",        "Drafting",      large, "Long-form journal-quality drafting locally; no cloud cost or rate-limits."),
+                ("discovery",    "Mine classify", small, "Fast, low-temperature classifier for the Mine pipeline; small model is fine here."),
+            ]
+            for role, friendly, model_name, why in local_role_plan:
+                tuning = _ROLE_TUNING.get(role, _ROLE_TUNING["chat"])
+                suggestions.append(SuggestedProfile(
+                    name=f"Local Default · {friendly}",
+                    backend_kind="ollama",
+                    backend_ref=model_name,
+                    model=model_name,
+                    role=role,
+                    params={k: v for k, v in tuning.items() if k != "notes"},
+                    tags=["ollama", "local", "default-stack", role],
+                    notes=tuning.get("notes", ""),
+                    rationale=why,
+                ))
+        # OCR is the one role that *cannot* run on plain text Ollama models;
+        # if the Mistral key is present, surface a Mistral-Pixtral profile so
+        # the local-first stack still has an OCR option.
+        if get_key("mistral_api_key"):
+            tuning = _ROLE_TUNING.get("sign_reading", _ROLE_TUNING["chat"])
             suggestions.append(SuggestedProfile(
-                name=f"Local Ollama · Chat",
-                backend_kind="ollama",
-                backend_ref=chosen_name,
-                model=chosen_name,
-                role="chat",
+                name="OCR · Mistral Pixtral",
+                backend_kind="cloud",
+                backend_ref="mistral",
+                model="pixtral-12b-latest",
+                role="sign_reading",
                 params={k: v for k, v in tuning.items() if k != "notes"},
-                tags=["ollama", "local", "chat"],
-                notes=tuning.get("notes", ""),
+                tags=["cloud", "mistral", "ocr", "vision"],
+                notes="Vision OCR via Mistral pixtral-12b. Required for tablet image OCR.",
                 rationale=(
-                    f"Ollama is installed with {chosen_name} — free, local, no "
-                    "data leaves your machine. Great for everyday chat."
+                    "Ollama doesn't ship a tablet-OCR-quality vision model out "
+                    "of the box. Mistral pixtral-12b is the recommended OCR "
+                    "backend and your Mistral key is configured."
                 ),
             ))
-            # If a heavier model is also installed, propose it for decipher.
-            for m in ollama_models[1:]:
-                nm = m.get("name") or ""
-                if not nm or nm == chosen_name:
-                    continue
-                tuning = _ROLE_TUNING["decipher"]
-                suggestions.append(SuggestedProfile(
-                    name=f"Local Ollama · Decipherment",
-                    backend_kind="ollama",
-                    backend_ref=nm,
-                    model=nm,
-                    role="decipher",
-                    params={k: v for k, v in tuning.items() if k != "notes"},
-                    tags=["ollama", "local", "decipher"],
-                    notes=tuning.get("notes", ""),
-                    rationale=(
-                        f"Use {nm} locally for low-temperature decipherment runs "
-                        "so iterative experiments don't burn cloud tokens."
-                    ),
-                ))
-                break
 
     # ---- 3. Custom AI endpoints (one profile per saved enabled endpoint) ----
     db = get_db()

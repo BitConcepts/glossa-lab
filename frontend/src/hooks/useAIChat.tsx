@@ -48,6 +48,9 @@ export function AIChatProvider({ children }: { children: React.ReactNode }) {
   const openChat = useCallback((req?: ChatRequest) => {
     if (req) setRequest(req);
     setIsOpen(true);
+    // Always route through the docked side panel — the floating chat window
+    // has been retired. App-level handler listens for this event.
+    window.dispatchEvent(new CustomEvent("glossa:open-ai-panel"));
   }, []);
 
   const closeChat = useCallback(() => setIsOpen(false), []);

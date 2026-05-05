@@ -123,6 +123,7 @@ export function DashboardView() {
   const [error, setError] = useState<string | null>(null);
   const [days, setDays] = useState(14);
   const [running, setRunning] = useState<"" | "fetch" | "mine">("");
+  const [mineDropOpen, setMineDropOpen] = useState(false);
   // Mine batch size — persisted; controls how many un-mined items the LLM
   // classifies per "✨ Mine N" click. Default 50.
   const [mineLimit, setMineLimitState] = useState<number>(_loadMineLimit);
@@ -573,32 +574,54 @@ export function DashboardView() {
             title="Pull new items from every configured source for every topic. Insight regenerates automatically when fetch completes.">
             {running === "fetch" ? "⏳ Fetching…" : "▶ Fetch now"}
           </button>
-          <div style={{ display: "flex", alignItems: "stretch", gap: 0 }}
+          {/* Split Mine button: main click runs at current limit; ▾ opens
+              a dropdown to pick a different limit before running. */}
+          <div style={{ position: "relative", display: "inline-flex" }}
             title={
               "Mine = ask the LLM to read the next N un-mined items and assign "
               + "each one a kind (study / hypothesis / finding / tablet / review / "
               + "tooling / other), confidence score, short summary, and any extracted "
-              + "entity/provider links. Mining converts raw RSS rows into the "
-              + "classified material the dashboard insight reasons over."
+              + "entity/provider links."
             }>
             <button onClick={() => void onRunMine()} disabled={!!running} style={{
               ...btnAccent, borderTopRightRadius: 0, borderBottomRightRadius: 0,
+              paddingRight: 10,
             }}>
               {running === "mine" ? "⏳ Mining…" : `✨ Mine ${mineLimit}`}
             </button>
-            <select
-              value={mineLimit}
-              onChange={(e) => setMineLimit(parseInt(e.target.value, 10))}
+            <button
+              onClick={() => setMineDropOpen((o) => !o)}
               disabled={!!running}
               style={{
-                ...selectStyle,
+                ...btnAccent,
                 borderTopLeftRadius: 0, borderBottomLeftRadius: 0,
-                borderLeft: "none", color: "#5b21b6",
+                borderLeft: "1px solid rgba(255,255,255,0.25)",
+                padding: "6px 7px", fontSize: 9, lineHeight: 1,
               }}>
-              {MINE_LIMIT_OPTIONS.map((n) => (
-                <option key={n} value={n}>{n}</option>
-              ))}
-            </select>
+              ▾
+            </button>
+            {mineDropOpen && (
+              <div style={{
+                position: "absolute", top: "calc(100% + 4px)", right: 0,
+                background: "#fff", border: "1px solid #d1d5db", borderRadius: 6,
+                boxShadow: "0 4px 12px rgba(0,0,0,0.15)", zIndex: 100,
+                minWidth: 130, overflow: "hidden",
+              }}>
+                {MINE_LIMIT_OPTIONS.map((n) => (
+                  <button key={n} onClick={() => {
+                    setMineLimit(n); setMineDropOpen(false); void onRunMine();
+                  }} style={{
+                    display: "block", width: "100%", padding: "7px 14px",
+                    border: "none", background: n === mineLimit ? "#f5f3ff" : "#fff",
+                    color: "#374151", fontSize: 12, textAlign: "left",
+                    cursor: "pointer", fontWeight: n === mineLimit ? 700 : 400,
+                  }}>
+                    ✨ Mine {n}
+                    {n === mineLimit && <span style={{ color: "#7c3aed", marginLeft: 6, fontSize: 10 }}>✓</span>}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>

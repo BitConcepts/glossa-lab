@@ -325,22 +325,46 @@ export function AutoDiscoveryPanel() {
         </div>
       </div>
 
-      {/* Configured-source summary */}
+      {/* Configured-source summary with rate-limit health */}
       <div style={{ marginTop: 14 }}>
         <div style={subhead}>4 · Sources detected by the backend</div>
         <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginTop: 6 }}>
-          {sources.map((s) => (
-            <span key={s.source} title={s.disabled_reason || `${s.source} ready`}
-              style={{
-                padding: "3px 9px", borderRadius: 12, border: "1px solid",
-                background: s.configured ? "#f0fdf4" : "#fafafa",
-                borderColor: s.configured ? "#86efac" : "#e5e7eb",
-                color: s.configured ? "#15803d" : "#9ca3af",
-                fontSize: 11, fontWeight: 500,
-              }}>
-              {s.configured ? "✓ " : "✗ "}{s.source}
-            </span>
-          ))}
+          {sources.map((s) => {
+            const sx = s as unknown as Record<string, unknown>;
+            const rl = sx.rate_limit as Record<string, unknown> | undefined;
+            const isRateLimited = rl?.rate_limited;
+            const n429 = Number(rl?.errors_429 ?? 0);
+            const nReqs = Number(rl?.requests ?? 0);
+            const upgradeHint = sx.upgrade_hint as string | undefined;
+            const upgradeUrl = sx.upgrade_url as string | undefined;
+            const chipBg = isRateLimited ? "#fef2f2" : s.configured ? "#f0fdf4" : "#fafafa";
+            const chipBorder = isRateLimited ? "#fca5a5" : s.configured ? "#86efac" : "#e5e7eb";
+            const chipColor = isRateLimited ? "#b91c1c" : s.configured ? "#15803d" : "#9ca3af";
+            return (
+              <span key={s.source}
+                title={
+                  isRateLimited
+                    ? `⚠ Rate limited (${n429}/${nReqs} requests returned 429)${
+                        upgradeHint ? `. ${upgradeHint}` : ""}`
+                    : nReqs > 0
+                      ? `${nReqs} requests, ${n429} rate-limited`
+                      : (s.disabled_reason || `${s.source} ready`)
+                }
+                style={{
+                  padding: "3px 9px", borderRadius: 12, border: "1px solid",
+                  background: chipBg, borderColor: chipBorder, color: chipColor,
+                  fontSize: 11, fontWeight: 500, cursor: upgradeUrl ? "pointer" : "default",
+                }}
+                onClick={() => upgradeUrl && window.open(upgradeUrl, "_blank")}>
+                {isRateLimited ? "⚠ " : s.configured ? "✓ " : "✗ "}{s.source}
+                {nReqs > 0 && (
+                  <span style={{ fontSize: 9, marginLeft: 4, opacity: 0.7 }}>
+                    {nReqs}req{n429 > 0 ? ` · ${n429}×429` : ""}
+                  </span>
+                )}
+              </span>
+            );
+          })}
         </div>
       </div>
     </section>

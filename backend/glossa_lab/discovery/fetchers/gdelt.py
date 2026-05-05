@@ -6,6 +6,7 @@ worldwide news outlets, useful as a complement to the news-API-gated sources.
 
 from __future__ import annotations
 
+import asyncio
 import logging
 from datetime import datetime
 from typing import Iterable
@@ -28,11 +29,25 @@ _ENDPOINT = "https://api.gdeltproject.org/api/v2/doc/doc"
 class GDELTFetcher(Fetcher):
     source = "gdelt"
     requires = ()  # keyless
-    rate_delay: float = 5.5  # seconds between calls ("one every 5 seconds")
+    rate_delay: float = 8.0  # seconds between calls (conservative; "one every 5 seconds")
+
+    # Track last request time class-wide so multiple instances share cooldown.
+    # Initialised to now so the first call after a restart always waits the
+    # full rate_delay — prevents 429s when the backend restarts quickly.
+    import time as _time_init
+    _last_request: float = _time_init.monotonic()
 
     async def fetch(
         self, topic: TopicProfile, *, since: datetime | None = None,
     ) -> Iterable[RawItem]:
+        # Enforce per-class rate limit before every request.
+        import time as _time
+        now = _time.monotonic()
+        wait = self.rate_delay - (now - GDELTFetcher._last_request)
+        if wait > 0:
+            await asyncio.sleep(wait)
+        GDELTFetcher._last_request = _time.monotonic()
+
         opts = topic.overrides_for(self.source)
         max_results = int(opts.get("max_results", 25))
         query = build_query(topic, quote_phrases=True) or topic.label

@@ -1,0 +1,69 @@
+{
+  "id": "contact_zone",
+  "name": "Contact Zone Analysis",
+  "description": "Compares sign usage between Mesopotamian trade-contact sites (Lothal, Dholavira) and heartland sites (Harappa, Mohenjo-daro). Requires icit_extracted_corpus.json in reports/.",
+  "auto_migrated": true,
+  "nodes": [
+    {
+      "id": "note",
+      "type": "expNode",
+      "data": {
+        "atomicId": "StaticValue",
+        "label": "Data requirement",
+        "params": {
+          "value": "Requires icit_extracted_corpus.json in reports/. Run OCR pipeline or extract from TXT corpus first."
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 60
+      }
+    },
+    {
+      "id": "run",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ExperimentWrapper",
+        "label": "Contact Zone Analysis (ICIT)",
+        "params": {
+          "experiment_id": "contact_zone"
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Report",
+        "params": {
+          "filename": "contact_zone_results.json"
+        }
+      },
+      "position": {
+        "x": 640,
+        "y": 100
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "note",
+      "target": "run",
+      "sourcePort": "text",
+      "targetPort": "upstream"
+    },
+    {
+      "id": "e2",
+      "source": "run",
+      "target": "out",
+      "sourcePort": "result",
+      "targetPort": "data"
+    }
+  ]
+}

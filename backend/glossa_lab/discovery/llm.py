@@ -83,7 +83,7 @@ def _http_post_json(
 
 def _is_fallback_status(code: int) -> bool:
     """Return True for HTTP statuses that justify trying the next provider."""
-    return code in (401, 403, 408, 409, 425, 429) or 500 <= code < 600
+    return code in (401, 403, 404, 408, 409, 425, 429) or 500 <= code < 600
 
 
 # ── Provider contract ───────────────────────────────────────────────────────
@@ -195,7 +195,7 @@ class OpenAIProvider(LLMProvider):
 class GoogleProvider(LLMProvider):
     name = "google"
     key_name = "google_api_key"
-    default_model = "gemini-2.0-flash"
+    default_model = "gemini-2.0-flash-lite"
 
     def chat(self, messages, *, json_mode, max_tokens, temperature):
         from glossa_lab.api.settings import get_key
@@ -279,7 +279,7 @@ class LLMClient:
         max_tokens: int = 600,
         temperature: float = 0.0,
     ) -> LLMResult:
-        last_err: Exception | None = None
+        errors: list[str] = []
         for p in self._providers:
             if not p.is_configured():
                 continue
@@ -293,24 +293,27 @@ class LLMClient:
             except urllib.error.HTTPError as exc:  # provider responded with non-2xx
                 if _is_fallback_status(exc.code):
                     _log.info("provider %s returned %s, falling through", p.name, exc.code)
-                    last_err = exc
+                    errors.append(f"{p.name}: HTTP {exc.code}")
                     continue
                 raise LLMError(
                     f"{p.name} HTTP {exc.code}: {exc.reason}"
                 ) from exc
             except urllib.error.URLError as exc:  # network unreachable
                 _log.info("provider %s URLError: %s, falling through", p.name, exc.reason)
-                last_err = exc
+                errors.append(f"{p.name}: URLError {exc.reason}")
                 continue
             except LLMError:
                 raise
             except Exception as exc:  # noqa: BLE001
                 _log.warning("provider %s raised %s: %s", p.name, type(exc).__name__, exc)
-                last_err = exc
+                errors.append(f"{p.name}: {type(exc).__name__}: {exc}")
                 continue
+        configured = self.configured_providers()
+        summary = "; ".join(errors) if errors else "no configured providers"
+        _log.warning("All LLM providers failed: %s", summary)
         raise LLMError(
-            f"No LLM provider succeeded. Last error: {last_err!r}. "
-            f"Configured providers: {self.configured_providers()}"
+            f"No LLM provider succeeded ({summary}). "
+            f"Configured: {configured}"
         )
 
     def chat_json(

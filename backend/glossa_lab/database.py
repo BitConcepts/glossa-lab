@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Increment this when adding a new _SCHEMA_Vn block below.
 # _apply_schema will raise if the DB is somehow ahead of the code.
-_SCHEMA_VERSION = 15
+_SCHEMA_VERSION = 16
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -285,6 +285,26 @@ CREATE INDEX IF NOT EXISTS idx_ai_profiles_role ON ai_profiles(role);
 CREATE INDEX IF NOT EXISTS idx_ai_profiles_default ON ai_profiles(is_default);
 """
 
+_SCHEMA_V16 = """
+-- Research goals — multi-project scoping for discovery topics, mine prompts,
+-- and dashboard insights. Each goal owns a set of topics and optionally links
+-- to studies. The prompt_context is injected into LLM system prompts so the
+-- miner and insight generator know *why* items are being fetched.
+CREATE TABLE IF NOT EXISTS research_goals (
+    id              TEXT PRIMARY KEY,
+    label           TEXT NOT NULL,
+    description     TEXT NOT NULL DEFAULT '',
+    prompt_context  TEXT NOT NULL DEFAULT '',
+    topic_ids       TEXT NOT NULL DEFAULT '[]',
+    study_ids       TEXT NOT NULL DEFAULT '[]',
+    is_default      INTEGER NOT NULL DEFAULT 0,
+    created_at      TEXT NOT NULL,
+    updated_at      TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_goals_default ON research_goals(is_default);
+"""
+
 _SCHEMA_V12 = """
 CREATE TABLE IF NOT EXISTS canonical_signs (
     internal_id        TEXT PRIMARY KEY,
@@ -456,6 +476,11 @@ class Database:
             await self._conn.executescript(_SCHEMA_V15)
             await self._conn.execute("UPDATE _schema_version SET version = ?", (15,))
             current_version = 15
+
+        if current_version < 16:
+            await self._conn.executescript(_SCHEMA_V16)
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (16,))
+            current_version = 16
 
         if current_version > _SCHEMA_VERSION:
             logger.warning(
@@ -1949,6 +1974,92 @@ class Database:
         await self._conn.commit()
         return existing
 
+    # ── Research Goals (V16) ─────────────────────────────────
+
+    async def list_goals(self) -> list[dict[str, Any]]:
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM research_goals ORDER BY is_default DESC, label ASC"
+        )
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    async def get_goal(self, goal_id: str) -> dict[str, Any] | None:
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM research_goals WHERE id=?", (goal_id,)
+        )
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    async def get_default_goal(self) -> dict[str, Any] | None:
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM research_goals WHERE is_default=1 LIMIT 1"
+        )
+        row = await cursor.fetchone()
+        if row:
+            return self._row_to_dict(row)
+        # Fall back to first goal if no default set
+        cursor = await self._conn.execute(
+            "SELECT * FROM research_goals ORDER BY created_at ASC LIMIT 1"
+        )
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    async def goal_for_topic(self, topic_id: str) -> dict[str, Any] | None:
+        """Return the first goal whose topic_ids contains *topic_id*."""
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM research_goals WHERE topic_ids LIKE ? "
+            "ORDER BY is_default DESC LIMIT 1",
+            (f'%"{topic_id}"%',),
+        )
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    async def upsert_goal(
+        self,
+        *,
+        goal_id: str,
+        label: str,
+        description: str = "",
+        prompt_context: str = "",
+        topic_ids: list[str] | None = None,
+        study_ids: list[str] | None = None,
+        is_default: bool = False,
+        created_at: str,
+    ) -> dict[str, Any]:
+        assert self._conn
+        # Enforce single default
+        if is_default:
+            await self._conn.execute(
+                "UPDATE research_goals SET is_default=0 WHERE id<>?", (goal_id,),
+            )
+        await self._conn.execute(
+            """INSERT OR REPLACE INTO research_goals
+               (id, label, description, prompt_context, topic_ids, study_ids,
+                is_default, created_at, updated_at)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))""",
+            (
+                goal_id, label, description, prompt_context,
+                json.dumps(topic_ids or []),
+                json.dumps(study_ids or []),
+                1 if is_default else 0,
+                created_at,
+            ),
+        )
+        await self._conn.commit()
+        return await self.get_goal(goal_id)  # type: ignore[return-value]
+
+    async def delete_goal(self, goal_id: str) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_goal(goal_id)
+        if existing is None:
+            return None
+        await self._conn.execute("DELETE FROM research_goals WHERE id=?", (goal_id,))
+        await self._conn.commit()
+        return existing
+
     # ── Helpers ─────────────────────────────────────
 
     @staticmethod
@@ -1973,6 +2084,7 @@ class Database:
             "headers_json",  # ai_endpoints (deserialised to .headers below)
             "params_json",   # ai_profiles
             "tags_json",     # ai_profiles
+            "topic_ids",     # research_goals
         ):
             if field in d and isinstance(d[field], str):
                 try:

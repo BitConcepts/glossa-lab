@@ -47,6 +47,7 @@ from glossa_lab.api.status import router as status_router
 from glossa_lab.api.studies import router as studies_router
 from glossa_lab.api.system import router as system_router
 from glossa_lab.api.terminal import router as terminal_router
+from glossa_lab.api.goals import router as goals_router
 from glossa_lab.api.texts import router as texts_router
 from glossa_lab.config import get_settings
 from glossa_lab.database import close_db, init_db
@@ -141,6 +142,12 @@ async def lifespan(app: FastAPI):
     from glossa_lab.report_template_seeder import seed_report_templates  # noqa: PLC0415
 
     await seed_report_templates()
+
+    # Seed default research goal (idempotent — skips if goals exist)
+    from glossa_lab.goal_seeder import seed_goals  # noqa: PLC0415
+
+    if _db:
+        await seed_goals(_db)
 
     # Start Ollama in the background (no-op if not installed or already running)
     await asyncio.get_event_loop().run_in_executor(None, _try_start_ollama)
@@ -247,6 +254,7 @@ def create_app() -> FastAPI:
     application.include_router(notifications_router)  # already prefixed at /api/v1/notifications
     application.include_router(ai_endpoints_router)  # already prefixed at /api/v1/ai-endpoints
     application.include_router(ai_profiles_router)   # already prefixed at /api/v1/ai-profiles
+    application.include_router(goals_router)           # already prefixed at /api/v1/goals
 
     # Serve built frontend
     # Skipped silently in dev if the dist directory does not yet exist.

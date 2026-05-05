@@ -87,8 +87,8 @@ async def _experiment_count() -> int:
 # ── AI insight ─────────────────────────────────────────────────────────────
 
 
-_INSIGHT_PROMPT = (
-    "You are an Indus-script research assistant. Given the most recent\n"
+_INSIGHT_PROMPT_TEMPLATE = (
+    "You are a {goal_label} research assistant. Given the most recent\n"
     "discovery items the user has captured, produce a JSON object with\n"
     "exactly these keys:\n\n"
     "  highlights      — list of the 3 most consequential items, each:\n"
@@ -135,6 +135,7 @@ def _build_insight_prompt(
     items: list[dict[str, Any]],
     studies: list[dict[str, Any]],
     experiments: list[str],
+    goal: dict[str, Any] | None = None,
 ) -> str:
     items_block = "\n".join(
         f"- id={it.get('id', '')[:10]} kind={it.get('kind', 'other')} "
@@ -147,8 +148,14 @@ def _build_insight_prompt(
         f"- {s.get('id', '')}: {s.get('name', '')[:120]}" for s in studies[:25]
     ) or "(no studies yet)"
     exp_block = ", ".join(experiments[:80]) or "(no experiments registered)"
+    goal_label = (goal or {}).get("label", "research")
+    prompt_text = _INSIGHT_PROMPT_TEMPLATE.format(goal_label=goal_label)
+    goal_ctx = ""
+    if goal and goal.get("prompt_context"):
+        goal_ctx = f"\n## Research goal context\n{goal['prompt_context']}\n"
     return (
-        f"{_INSIGHT_PROMPT}\n\n"
+        f"{prompt_text}\n\n"
+        f"{goal_ctx}"
         f"## Recent discovery items ({len(items)} total, showing up to 25)\n"
         f"{items_block}\n\n"
         f"## User's studies\n{studies_block}\n\n"
@@ -181,7 +188,16 @@ async def _generate_insight(
             "model": "heuristic",
         }
 
-    prompt = _build_insight_prompt(items, studies, experiments)
+    # Look up the default research goal for context-scoped insight.
+    goal: dict[str, Any] | None = None
+    try:
+        _db = get_db()
+        if _db is not None:
+            goal = await _db.get_default_goal()
+    except Exception:  # noqa: BLE001
+        pass
+
+    prompt = _build_insight_prompt(items, studies, experiments, goal=goal)
 
     try:
         from glossa_lab.ai_utils import call_llm  # noqa: PLC0415

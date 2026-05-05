@@ -168,8 +168,14 @@ async def run_topic(
             }
         )
 
-    # Run providers in parallel; one slow upstream shouldn't gate the others.
-    await asyncio.gather(*[_one(f) for f in fetchers])
+    # Split fetchers into parallel (no rate limit) and sequential (rate-limited)
+    # groups. Rate-limited fetchers are run one at a time with an inter-call
+    # delay so they don't immediately 429 when multiple topics fire.
+    parallel = [f for f in fetchers if getattr(f, "rate_delay", 0) <= 0]
+    sequential = [f for f in fetchers if getattr(f, "rate_delay", 0) > 0]
+    await asyncio.gather(*[_one(f) for f in parallel])
+    for f in sequential:
+        await _one(f)
 
     return {
         "topic": profile.id,
@@ -194,8 +200,17 @@ async def run_all(
     if only_topics is not None:
         wanted = {t.lower() for t in only_topics}
         topics = [t for t in topics if t.id.lower() in wanted]
+    # Collect rate-limited fetchers' delays so we can insert inter-topic
+    # cooldowns. This prevents 429s when multiple topics are queued.
+    max_rate_delay = 0.0
+    for cls in _REGISTRY:
+        d = getattr(cls, "rate_delay", 0) or 0
+        if d > max_rate_delay:
+            max_rate_delay = d
     summaries = []
-    for t in topics:
+    for i, t in enumerate(topics):
+        if i > 0 and max_rate_delay > 0:
+            await asyncio.sleep(max_rate_delay)
         summaries.append(await run_topic(t, since=since, only_sources=only_sources))
     agg = {
         "topics_run": [t.id for t in topics],

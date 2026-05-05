@@ -7,6 +7,7 @@ matching the topic profile. All results are open-access by definition.
 from __future__ import annotations
 
 import logging
+import urllib.parse
 from datetime import datetime
 from typing import Iterable
 
@@ -36,7 +37,9 @@ class DOAJFetcher(Fetcher):
         max_results = int(opts.get("max_results", 25))
         query = build_query(topic, quote_phrases=True) or topic.label
         # DOAJ search endpoint uses path-based query: /api/search/articles/{query}
-        url = f"{_ENDPOINT}/{query}"
+        # The query goes into the URL *path* — it MUST be percent-encoded so
+        # special chars (spaces, parens, quotes) don't break urllib.
+        url = f"{_ENDPOINT}/{urllib.parse.quote(query, safe='')}"
         params = {
             "pageSize": min(max_results, 100),
             "sort": opts.get("sort", "last_updated:desc"),

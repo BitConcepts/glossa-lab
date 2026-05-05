@@ -35,10 +35,12 @@ from glossa_lab.discovery.fetchers.europepmc import EuropePMCFetcher
 from glossa_lab.discovery.fetchers.gdelt import GDELTFetcher
 from glossa_lab.discovery.fetchers.newsapi import NewsAPIFetcher
 from glossa_lab.discovery.fetchers.openalex import OpenAlexFetcher
+from glossa_lab.discovery.fetchers.patentsview import PatentsViewFetcher
 from glossa_lab.discovery.fetchers.pubmed import PubMedFetcher
 from glossa_lab.discovery.fetchers.rss import RSSFetcher
 from glossa_lab.discovery.fetchers.semanticscholar import SemanticScholarFetcher
 from glossa_lab.discovery.fetchers.serpapi import SerpAPIFetcher
+from glossa_lab.discovery.fetchers.uspto import USPTOFetcher
 from glossa_lab.discovery.store import RawItem
 
 _log = logging.getLogger("glossa_lab.discovery.fetchers")
@@ -58,6 +60,9 @@ _REGISTRY: tuple[type[Fetcher], ...] = (
     EuropePMCFetcher,
     DOAJFetcher,
     SemanticScholarFetcher,
+    # Patent sources — PatentsView requires a key; PPUBS is keyless.
+    PatentsViewFetcher,
+    USPTOFetcher,
     # Keyless news + general sources.
     GDELTFetcher,
     RSSFetcher,

@@ -237,11 +237,11 @@ _VERIFY_ENDPOINTS: dict[str, dict[str, Any]] = {
         "extra_headers": {},
     },
     # ── Patent data sources ──────────────────────────────────────────────
-    "patentsview_api_key": {
-        "provider": "PatentsView",
-        # Lightweight search — validates the key + returns rate headers.
-        "url": "https://search.patentsview.org/api/v1/patent/?q={%22patent_id%22:%2210000000%22}&f=[%22patent_id%22]&o={%22size%22:1}",
-        "auth_header": "X-Api-Key",
+    # PatentsView: API shut down March 2026 — no verify endpoint.
+    "uspto_api_key": {
+        "provider": "USPTO (ODP)",
+        "url": "https://api.uspto.gov/api/v1/patent/status-codes?limit=1",
+        "auth_header": "X-API-KEY",
         "auth_prefix": "",
         "extra_headers": {},
     },
@@ -322,6 +322,7 @@ async def verify_key(body: VerifyRequest) -> dict[str, Any]:
                     "news_api_key": "newsapi",
                     "serp_api_key": "serpapi",
                     "patentsview_api_key": "patentsview",
+                    "uspto_api_key": "uspto",
                 }
                 src = src_map.get(key_name)
                 if src:

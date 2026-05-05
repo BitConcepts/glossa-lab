@@ -22,6 +22,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   createHypothesis,
+  updateHypothesis,
   executeAiAction,
   getDashboardHighlights,
   getHealth,
@@ -435,8 +436,17 @@ export function DashboardView() {
         }
         case "open_view": {
           const view = String(a.params?.view || "dashboard");
-          navigate(view);
-          toast(`Opened ${view}`, "info");
+          // External views: open in a new tab instead of internal navigation
+          if (view === "wiki" || view === "github_wiki") {
+            window.open("https://github.com/layer1labs/glossa-lab/wiki", "_blank");
+            toast("Opened wiki in new tab", "info");
+          } else if (view.startsWith("http://") || view.startsWith("https://")) {
+            window.open(view, "_blank");
+            toast("Opened link in new tab", "info");
+          } else {
+            navigate(view);
+            toast(`Opened ${view}`, "info");
+          }
           break;
         }
         case "run_fetch": {
@@ -495,6 +505,19 @@ export function DashboardView() {
             outcome = "warn";
             break;
           }
+
+          // Step 2b: save experiment IDs back to the hypothesis.
+          // createHypothesis returns the existing hypothesis on title-dedup,
+          // so we can use it to get the ID without a separate find call.
+          const chainExpIds = scored.map(s => s.id);
+          try {
+            const hyp = await createHypothesis({ title: hypothesis.slice(0, 200), statement: hypothesis });
+            if (hyp?.id) {
+              const prevIds: string[] = Array.isArray(hyp.exp_ids) ? hyp.exp_ids : [];
+              const merged = [...new Set([...prevIds, ...chainExpIds])];
+              await updateHypothesis(hyp.id, { exp_ids: merged });
+            }
+          } catch { /* non-critical — continue */ }
 
           // Step 3: run each experiment sequentially.
           toast(`Running ${scored.length} experiment(s): ${scored.map(s => s.id).join(", ")}`, "info");

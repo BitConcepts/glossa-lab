@@ -29,8 +29,10 @@ _ENDPOINT = "https://api.gdeltproject.org/api/v2/doc/doc"
 class GDELTFetcher(Fetcher):
     source = "gdelt"
     requires = ()  # keyless
-    rate_delay: float = 8.0  # seconds between calls (conservative; "one every 5 seconds")
+    rate_delay: float = 12.0  # GDELT enforces 1 req/5s; 12s avoids 429 under load
     # GDELT has no API key option — rate limit is fixed at 1 req/5s.
+    _MAX_RETRIES: int = 2
+    _RETRY_BACKOFF: float = 8.0  # seconds extra wait on 429
 
     # Track last request time class-wide so multiple instances share cooldown.
     # Initialised to now so the first call after a restart always waits the
@@ -62,11 +64,24 @@ class GDELTFetcher(Fetcher):
         if since is not None:
             # GDELT accepts startdatetime as YYYYMMDDHHmmss
             params["startdatetime"] = since.strftime("%Y%m%d%H%M%S")
-        try:
-            data = await run_in_thread(http_get_json, _ENDPOINT, params=params, timeout=25.0)
-        except FetcherError as exc:
-            _log.warning("GDELT error for topic %s: %s", topic.id, exc)
-            return []
+        # Retry loop for 429 rate-limit responses
+        data: dict | None = None
+        for attempt in range(1 + self._MAX_RETRIES):
+            try:
+                data = await run_in_thread(http_get_json, _ENDPOINT, params=params, timeout=25.0)
+                break
+            except FetcherError as exc:
+                if "429" in str(exc) and attempt < self._MAX_RETRIES:
+                    backoff = self._RETRY_BACKOFF * (attempt + 1)
+                    _log.info(
+                        "GDELT 429 for topic %s, retry %d/%d after %.0fs",
+                        topic.id, attempt + 1, self._MAX_RETRIES, backoff,
+                    )
+                    await asyncio.sleep(backoff)
+                    GDELTFetcher._last_request = _time.monotonic()
+                    continue
+                _log.warning("GDELT error for topic %s: %s", topic.id, exc)
+                return []
         if not isinstance(data, dict):
             return []
 

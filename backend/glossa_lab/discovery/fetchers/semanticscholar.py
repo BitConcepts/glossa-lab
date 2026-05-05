@@ -1,7 +1,8 @@
 """Semantic Scholar fetcher (https://api.semanticscholar.org/graph/v1/paper/search).
 
-Keyless (rate-limited to ~100 req/5 min without a key). Returns academic
-paper metadata with citation counts and TLDRs when available.
+With an API key (``semantic_scholar_api_key`` in Settings) the rate limit
+improves to 1 req/sec across all endpoints. Without a key the free tier
+is ~100 req/5 min, shared with all unauthenticated users.
 """
 
 from __future__ import annotations
@@ -31,6 +32,8 @@ class SemanticScholarFetcher(Fetcher):
     source = "semanticscholar"
     requires = ()  # keyless (rate-limited)
     rate_delay: float = 6.0  # seconds between calls (conservative; 100 req/5 min)
+    upgrade_key = "semantic_scholar_api_key"
+    upgrade_url = "https://www.semanticscholar.org/product/api#api-key-form"
 
     # Track last request time class-wide so multiple instances share cooldown.
     # Initialised to now so the first call after a restart always waits the
@@ -59,8 +62,17 @@ class SemanticScholarFetcher(Fetcher):
         }
         if since is not None:
             params["year"] = f"{since.year}-"
+        # If the user has set a Semantic Scholar API key, send it via
+        # the x-api-key header for higher rate limits (1 req/sec).
+        from glossa_lab.api.settings import get_key  # noqa: PLC0415
+        headers: dict[str, str] | None = None
+        s2_key = get_key("semantic_scholar_api_key")
+        if s2_key:
+            headers = {"x-api-key": s2_key}
         try:
-            data = await run_in_thread(http_get_json, _ENDPOINT, params=params, timeout=25.0)
+            data = await run_in_thread(
+                http_get_json, _ENDPOINT, params=params, headers=headers, timeout=25.0,
+            )
         except FetcherError as exc:
             _log.warning("SemanticScholar error for topic %s: %s", topic.id, exc)
             return []

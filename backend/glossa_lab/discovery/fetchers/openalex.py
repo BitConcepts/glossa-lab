@@ -2,6 +2,10 @@
 
 Keyless. Uses the ``search`` parameter for keyword matching and
 ``from_publication_date`` for the since window.
+
+When ``openalex_email`` is set in Settings, it is sent as a ``mailto``
+query parameter, moving requests into OpenAlex's "polite pool" for
+higher priority and faster responses.
 """
 
 from __future__ import annotations
@@ -39,6 +43,8 @@ def _reconstruct_abstract(inv_idx: dict[str, list[int]] | None) -> str:
 class OpenAlexFetcher(Fetcher):
     source = "openalex"
     requires = ()  # keyless
+    upgrade_key = "openalex_email"
+    upgrade_url = "https://docs.openalex.org/how-to-use-the-api/rate-limits-and-authentication"
 
     async def fetch(
         self, topic: TopicProfile, *, since: datetime | None = None,
@@ -58,6 +64,12 @@ class OpenAlexFetcher(Fetcher):
             existing = params.get("filter", "")
             params["filter"] = (existing + "," + str(opts["filter"])).lstrip(",")
 
+        # If the user has set an email for OpenAlex, include it as the
+        # "mailto" param to join the polite pool (faster, priority access).
+        from glossa_lab.api.settings import get_key  # noqa: PLC0415
+        oa_email = get_key("openalex_email")
+        if oa_email:
+            params["mailto"] = oa_email
         try:
             data = await run_in_thread(http_get_json, _ENDPOINT, params=params, timeout=25.0)
         except FetcherError as exc:

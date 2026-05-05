@@ -28,7 +28,7 @@ import {
   listOllamaInstalled,
   type ChatMessage,
 } from "../api";
-import { useAIChat } from "../hooks/useAIChat";
+import { useAIChat, type ChatRequest } from "../hooks/useAIChat";
 import { useToast } from "../hooks/useToast";
 
 // ── LaTeX math simplifier (no MathJax needed) ────────────────────────────────
@@ -454,12 +454,23 @@ export function AIChatWindow() {
     getProviderCatalog().then(setProviderCatalog).catch(() => {});
   }, []);
 
+  // Track the last request id we processed so we don't re-send on re-renders.
+  const lastRequestRef = useRef<ChatRequest | null>(null);
   useEffect(() => {
-    if (!request) return;
+    if (!request || request === lastRequestRef.current) return;
+    lastRequestRef.current = request;
     if (request.contextType !== undefined) setContextType(request.contextType ?? "");
     if (request.contextId) setContextId(request.contextId);
-    if (request.initialPrompt) setInput(request.initialPrompt);
-    setTimeout(() => textareaRef.current?.focus(), 100);
+    if (request.initialPrompt) {
+      if (request.autoSend) {
+        // Fire immediately — don't just prefill.
+        void send(request.initialPrompt);
+      } else {
+        setInput(request.initialPrompt);
+        setTimeout(() => textareaRef.current?.focus(), 100);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [request]);
 
   useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: "smooth" }); }, [messages]);
@@ -945,20 +956,27 @@ export function ChatInline() {
     return () => window.removeEventListener("glossa:context", handler);
   }, []);
   // Pre-fill from openChat({ initialPrompt }) so dashboard "Plan chain" /
-  // "Ask AI" actions land directly in this docked side-panel input. The
-  // height itself is handled by the [input]-driven _autoGrow effect below;
-  // here we only set state + focus.
+  // "Ask AI" actions land directly in this docked side-panel input.
+  // When autoSend is true, fire the message immediately instead of just
+  // prefilling — this is how dashboard Apply buttons actually execute.
+  const lastInlineRequestRef = useRef<typeof request>(null);
   useEffect(() => {
-    if (!request) return;
+    if (!request || request === lastInlineRequestRef.current) return;
+    lastInlineRequestRef.current = request;
     if (request.contextType !== undefined && request.contextType !== "") {
       setContextType(request.contextType);
     }
     if (request.contextId) setContextId(request.contextId);
     if (request.contextLabel) setAutoContextLabel(request.contextLabel);
     if (request.initialPrompt) {
-      setInput(request.initialPrompt);
-      setTimeout(() => textareaInlineRef.current?.focus(), 80);
+      if (request.autoSend) {
+        void send(request.initialPrompt);
+      } else {
+        setInput(request.initialPrompt);
+        setTimeout(() => textareaInlineRef.current?.focus(), 80);
+      }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [request]);
   useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: "smooth" }); }, [messages]);
 

@@ -85,6 +85,11 @@ const KIND_COLOURS: Record<string, { bg: string; fg: string }> = {
   other:      { bg: "#f3f4f6", fg: "#4b5563" },
 };
 
+/** Strip HTML/XML/MathML tags from text (safety net for Crossref titles). */
+function stripTags(s: string): string {
+  return s.replace(/<[^>]+>/g, " ").replace(/\s{2,}/g, " ").trim();
+}
+
 function fmtRelative(iso: string): string {
   if (!iso) return "";
   const t = Date.parse(iso);
@@ -874,7 +879,7 @@ export function DashboardView() {
                       style={{ fontSize: 12, fontWeight: 600, color: "#111827",
                         textDecoration: "none", display: "block", textAlign: "left",
                         overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                      {it.title || "(untitled)"}
+                      {stripTags(it.title) || "(untitled)"}
                     </a>
                     <div style={{ fontSize: 10, color: "#6b7280", marginTop: 3,
                       display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>

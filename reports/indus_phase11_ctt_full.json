@@ -22,9 +22,10 @@
     "m__determinative": 6,
     "m__numeral": 25,
     "m__phonetic": 35,
-    "m__logogram": 0,
+    "m__logogram": 22,
     "m__compound": 42,
     "n__047": [
+      "logogram",
       "phonetic"
     ],
     "n__855": [
@@ -45,6 +46,7 @@
     ],
     "n__503": [
       "compound",
+      "logogram",
       "numeral"
     ],
     "n__617": [
@@ -52,6 +54,7 @@
     ],
     "n__861": [
       "compound",
+      "logogram",
       "phonetic",
       "suffix"
     ],
@@ -61,6 +64,7 @@
     ],
     "n__481": [
       "compound",
+      "logogram",
       "numeral"
     ],
     "n__003": [
@@ -68,10 +72,12 @@
       "phonetic"
     ],
     "n__427": [
+      "logogram",
       "phonetic"
     ],
     "n__841": [
       "determinative",
+      "logogram",
       "numeral",
       "suffix"
     ],
@@ -85,6 +91,7 @@
     ],
     "n__256": [
       "compound",
+      "logogram",
       "numeral"
     ],
     "n__718": [
@@ -99,6 +106,7 @@
     ],
     "n__035": [
       "determinative",
+      "logogram",
       "numeral"
     ],
     "n__700": [
@@ -116,6 +124,7 @@
     ],
     "n__440": [
       "compound",
+      "logogram",
       "phonetic"
     ],
     "n__413": [
@@ -128,6 +137,7 @@
     ],
     "n__400": [
       "compound",
+      "logogram",
       "phonetic"
     ],
     "n__307": [
@@ -142,6 +152,7 @@
     ],
     "n__719": [
       "determinative",
+      "logogram",
       "numeral"
     ],
     "n__090": [
@@ -155,6 +166,7 @@
     "n__151": [
       "compound",
       "determinative",
+      "logogram",
       "numeral"
     ],
     "n__461": [
@@ -163,10 +175,12 @@
     ],
     "n__872": [
       "compound",
+      "logogram",
       "numeral"
     ],
     "n__074": [
       "compound",
+      "logogram",
       "phonetic",
       "suffix"
     ],
@@ -189,6 +203,7 @@
       "phonetic"
     ],
     "n__156": [
+      "logogram",
       "phonetic"
     ],
     "n__708": [
@@ -197,6 +212,7 @@
     ],
     "n__790": [
       "compound",
+      "logogram",
       "numeral"
     ],
     "n__740": [
@@ -209,6 +225,7 @@
     ],
     "n__920": [
       "compound",
+      "logogram",
       "phonetic"
     ],
     "n__129": [
@@ -221,6 +238,7 @@
     ],
     "n__138": [
       "compound",
+      "logogram",
       "numeral"
     ],
     "n__169": [
@@ -236,19 +254,23 @@
     ],
     "n__782": [
       "compound",
+      "logogram",
       "phonetic",
       "suffix"
     ],
     "n__455": [
       "compound",
+      "logogram",
       "numeral"
     ],
     "n__526": [
       "compound",
+      "logogram",
       "numeral"
     ],
     "n__394": [
       "compound",
+      "logogram",
       "numeral"
     ],
     "n__387": [

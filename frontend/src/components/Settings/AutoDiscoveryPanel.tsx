@@ -43,6 +43,10 @@ const SOURCE_KEYS: { id: string; label: string; href: string; hint?: string }[] 
     hint: "Free key removes the 100 req/5 min rate limit. Strongly recommended." },
   { id: "openalex_email",            label: "OpenAlex (email)",   href: "https://docs.openalex.org/how-to-use-the-api/rate-limits-and-authentication",
     hint: "Enter your email to join the \"polite pool\" (faster, priority access). Not a key — just an email." },
+  { id: "patentsview_api_key",       label: "PatentsView",        href: "https://patentsview-support.atlassian.net/servicedesk/customer/portals",
+    hint: "Required for US patent search. 45 req/min. Request a free key from the PatentsView service desk." },
+  { id: "uspto_api_key",             label: "USPTO (ODP)",        href: "https://developer.uspto.gov/",
+    hint: "Optional upgrade for the USPTO/PPUBS fetcher. Enables higher rate limits via the Open Data Portal." },
 ];
 
 export function AutoDiscoveryPanel() {

@@ -2707,33 +2707,8 @@ def _build_proper_graph_specs() -> dict[str, dict]:
         ],
     }
 
-    # contact_zone: ExperimentWrapper calls the Python ContactZoneAnalysis class,
-    # which performs KL/Jaccard analysis of ICIT sites grouped by contact-zone
-    # classification. Requires icit_extracted_corpus.json in reports/.
-    # The StaticValue note explains the corpus requirement in the Exp Builder.
-    s["contact_zone"] = {
-        "id": "contact_zone",
-        "name": "Contact Zone Analysis",
-        "description": (
-            "Compares sign usage between Mesopotamian trade-contact sites "
-            "(Lothal, Dholavira) and heartland sites (Harappa, Mohenjo-daro). "
-            "Requires icit_extracted_corpus.json in reports/."
-        ),
-        "auto_migrated": True,
-        "nodes": [
-            N("note",  "StaticValue",      "Data requirement",
-              {"value": "Requires icit_extracted_corpus.json in reports/. Run OCR pipeline or extract from TXT corpus first."},
-              60, 60),
-            N("run",   "ExperimentWrapper","Contact Zone Analysis (ICIT)",
-              {"experiment_id": "contact_zone"},                    360, 100),
-            N("out",   "JSONExport",        "Save Report",
-              {"filename": "contact_zone_results.json"},             640, 100),
-        ],
-        "edges": [
-            E("e1", "note", "run", "text",   "upstream"),
-            E("e2", "run",  "out", "result", "data"),
-        ],
-    }
+    # contact_zone: RETIRED — was a self-referential ExperimentWrapper (experiment_id
+    # = "contact_zone" looking up itself). Replaced by indus_contact_zone_v2.json.
 
     s["indus_structural_atlas"] = {
         "id": "indus_structural_atlas",
@@ -3496,6 +3471,7 @@ def auto_migrate_hardcoded_experiments() -> int:
     _RETIRED = {
         "progression", "writing_system_progression", "ventris_validation",
         "ugaritic_proper_benchmark", "ugaritic_vs_hebrew",
+        "contact_zone",  # self-referential ExperimentWrapper; replaced by indus_contact_zone_v2
     }
     for retired_id in _RETIRED:
         stale = _GRAPHS_DIR / f"{retired_id}.json"

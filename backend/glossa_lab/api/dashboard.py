@@ -96,8 +96,13 @@ _INSIGHT_PROMPT = (
     "  what_it_means   — 2-3 sentence narrative summarising the trend or\n"
     "                    cluster across the items\n"
     "  impact          — list of {study_or_experiment_id, impact,\n"
-    "                    suggested_action} where suggested_action is one\n"
-    "                    of the action_type values listed below.\n"
+    "                    suggested_action, suggested_params} where\n"
+    "                    suggested_action is one of the action_type\n"
+    "                    string values listed below (NEVER an object).\n"
+    "                    suggested_params is a JSON object carrying the\n"
+    "                    same payload schema as the corresponding\n"
+    "                    next_actions params (e.g. {experiment_id} for\n"
+    "                    run_experiment); use {} when not applicable.\n"
     "  next_actions    — list of 3-5 EXECUTABLE suggestions, each:\n"
     "                    {label, action_type, params, rationale}.\n"
     "\n"
@@ -220,13 +225,29 @@ async def _generate_insight(
                 normalised.append(a)
         parsed["next_actions"] = normalised
         # Same coercion for impact entries.
+        # The LLM occasionally emits ``suggested_action`` as a structured
+        # object (``{action_type, params}``) instead of the contracted
+        # string. Detect both shapes and split into a stable wire format:
+        # ``suggested_action`` is always a string action_type and the
+        # accompanying params (if any) move to ``suggested_params``.
         impact_norm: list[dict[str, Any]] = []
         for im in parsed.get("impact", []):
-            if isinstance(im, dict):
-                im.setdefault("study_or_experiment_id", im.get("id", ""))
-                im.setdefault("impact", "")
-                im.setdefault("suggested_action", "no_op")
-                impact_norm.append(im)
+            if not isinstance(im, dict):
+                continue
+            im.setdefault("study_or_experiment_id", im.get("id", ""))
+            im.setdefault("impact", "")
+            sa = im.get("suggested_action", "no_op")
+            sp = im.get("suggested_params")
+            if isinstance(sa, dict):
+                sp_inner = sa.get("params")
+                if isinstance(sp_inner, dict) and not isinstance(sp, dict):
+                    sp = sp_inner
+                sa = sa.get("action_type") or sa.get("type") or "no_op"
+            if not isinstance(sa, str):
+                sa = "no_op"
+            im["suggested_action"] = sa
+            im["suggested_params"] = sp if isinstance(sp, dict) else {}
+            impact_norm.append(im)
         parsed["impact"] = impact_norm
         parsed["model"] = "ai"
         return parsed

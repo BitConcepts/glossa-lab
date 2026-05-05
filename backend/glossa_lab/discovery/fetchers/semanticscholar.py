@@ -44,10 +44,12 @@ class SemanticScholarFetcher(Fetcher):
     async def fetch(
         self, topic: TopicProfile, *, since: datetime | None = None,
     ) -> Iterable[RawItem]:
-        # Enforce per-class rate limit before every request.
+        # With an API key the limit is 1 req/sec; without it use conservative 6s.
+        from glossa_lab.api.settings import get_key as _gk  # noqa: PLC0415
+        effective_delay = 1.1 if _gk("semantic_scholar_api_key") else self.rate_delay
         import time as _time
         now = _time.monotonic()
-        wait = self.rate_delay - (now - SemanticScholarFetcher._last_request)
+        wait = effective_delay - (now - SemanticScholarFetcher._last_request)
         if wait > 0:
             await asyncio.sleep(wait)
         SemanticScholarFetcher._last_request = _time.monotonic()

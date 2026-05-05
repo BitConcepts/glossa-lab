@@ -174,7 +174,9 @@ async def run_topic(
     parallel = [f for f in fetchers if getattr(f, "rate_delay", 0) <= 0]
     sequential = [f for f in fetchers if getattr(f, "rate_delay", 0) > 0]
     await asyncio.gather(*[_one(f) for f in parallel])
-    for f in sequential:
+    for i, f in enumerate(sequential):
+        if i > 0:
+            await asyncio.sleep(f.rate_delay)
         await _one(f)
 
     return {

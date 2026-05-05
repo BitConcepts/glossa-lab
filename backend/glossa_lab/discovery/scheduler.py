@@ -85,6 +85,12 @@ async def run_once() -> dict[str, object]:
 async def _scheduler_loop(interval: float) -> None:
     """Run :func:`run_once` every *interval* seconds until the task is cancelled."""
     _log.info("discovery scheduler started (interval=%.0fs)", interval)
+    # Wait before the first tick so rate-limited providers' rolling windows
+    # have time to clear after a rapid restart cycle.
+    _INITIAL_DELAY = float(os.environ.get("GLOSSA_DISCOVERY_INITIAL_DELAY", "30"))
+    if _INITIAL_DELAY > 0:
+        _log.info("discovery scheduler: waiting %.0fs before first tick", _INITIAL_DELAY)
+        await asyncio.sleep(_INITIAL_DELAY)
     while True:
         try:
             summary = await run_once()

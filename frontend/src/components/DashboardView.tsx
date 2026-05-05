@@ -50,6 +50,9 @@ interface PersistedInsight {
   generated_at: number;       // epoch ms when LLM generated this
   backend_boot_at: number;    // epoch ms (sec-quantised) when backend started
   days: number;               // window the insight was computed against
+  /** Per-button completion state keyed by "impact-0", "na-1", etc.
+   *  Persisted so completed actions survive page reloads. */
+  completed?: Record<string, "success" | "error" | "warn">;
 }
 function _loadPersistedInsight(): PersistedInsight | null {
   try {
@@ -127,11 +130,26 @@ export function DashboardView() {
     setMineLimitState(n);
     try { localStorage.setItem(MINE_LIMIT_LS_KEY, String(n)); } catch { /* ignore */ }
   };
-  // Per-button completion state for Apply / Run buttons. After an action
-  // finishes successfully we keep the ✓ / ✗ marker visible until the user
-  // clicks again (or refreshes the insight).
+  // Per-button completion state for Apply / Run buttons. Persisted in
+  // localStorage alongside the insight so completed actions survive reloads.
   type ApplyResult = "success" | "error" | "warn";
-  const [applyResult, setApplyResult] = useState<Record<string, ApplyResult>>({});
+  const [applyResult, setApplyResultRaw] = useState<Record<string, ApplyResult>>({});
+  // Wrap setter to also persist to localStorage whenever it changes.
+  const setApplyResult = useCallback((updater: Record<string, ApplyResult> | ((prev: Record<string, ApplyResult>) => Record<string, ApplyResult>)) => {
+    setApplyResultRaw((prev) => {
+      const next = typeof updater === "function" ? updater(prev) : updater;
+      // Persist alongside the existing insight cache.
+      try {
+        const raw = localStorage.getItem(INSIGHT_LS_KEY);
+        if (raw) {
+          const p = JSON.parse(raw) as PersistedInsight;
+          p.completed = next;
+          localStorage.setItem(INSIGHT_LS_KEY, JSON.stringify(p));
+        }
+      } catch { /* ignore */ }
+      return next;
+    });
+  }, []);
 
   const refresh = useCallback(async () => {
     setLoading(true); setError(null);
@@ -169,7 +187,7 @@ export function DashboardView() {
     } finally {
       setInsightLoading(false);
     }
-  }, [days, toast]);
+  }, [days, toast, setApplyResult]);
 
   useEffect(() => { void refresh(); }, [refresh]);
 
@@ -191,6 +209,10 @@ export function DashboardView() {
     if (persisted) {
       setInsight(persisted.insight);
       setInsightGeneratedAt(persisted.generated_at);
+      // Restore completed-action marks so they survive reloads.
+      if (persisted.completed && Object.keys(persisted.completed).length > 0) {
+        setApplyResult(persisted.completed);
+      }
       return;
     }
     // No cached insight yet — do a one-time generation so the panel isn't

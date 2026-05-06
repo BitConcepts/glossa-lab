@@ -233,9 +233,22 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                     node_result = {"error": f"Unknown node type: '{ntype}'"}
                 else:
                     try:
-                        node_result = await loop.run_in_executor(
+                        # Run node in thread; send SSE heartbeats every 30s
+                        # to prevent browser/proxy timeouts on long nodes.
+                        import concurrent.futures  # noqa: PLC0415
+                        future = loop.run_in_executor(
                             None, atomic.fn, node_inputs, params
-                        ) or {}
+                        )
+                        while True:
+                            try:
+                                node_result = await asyncio.wait_for(
+                                    asyncio.shield(future), timeout=30.0,
+                                ) or {}
+                                break
+                            except asyncio.TimeoutError:
+                                # Node still running — send keepalive
+                                yield _sse({"event": "heartbeat", "nid": nid,
+                                            "idx": node_idx, "total": len(ordered)})
                     except Exception as exc:  # noqa: BLE001
                         node_result = {"error": str(exc)}
 

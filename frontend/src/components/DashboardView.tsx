@@ -769,15 +769,20 @@ export function DashboardView() {
                       if (im.suggested_params && typeof im.suggested_params === "object") {
                         sp = { ...sp, ...(im.suggested_params as Record<string, unknown>) };
                       }
+                      // Hide raw hex hash IDs — only show if it looks like an experiment name
+                      const idStr = String(im.study_or_experiment_id || "");
+                      const looksLikeHash = /^[0-9a-f]{8,}$/i.test(idStr);
                       return (
                         <li key={i} style={{ fontSize: 12, color: "#111827", marginBottom: 6,
                           lineHeight: 1.5, display: "flex", alignItems: "flex-start", gap: 8 }}>
                           <div style={{ flex: 1 }}>
-                            <code style={{ color: "#7c3aed", background: "#f5f3ff",
-                              padding: "1px 6px", borderRadius: 4, fontSize: 11 }}>
-                              {im.study_or_experiment_id}
-                            </code>{" "}
-                            — {im.impact}
+                            {!looksLikeHash && idStr && (
+                              <><code style={{ color: "#7c3aed", background: "#f5f3ff",
+                                padding: "1px 6px", borderRadius: 4, fontSize: 11 }}>
+                                {idStr}
+                              </code>{" — "}</>
+                            )}
+                            {im.impact}
                           </div>
                           {at !== "no_op" && (
                             <button

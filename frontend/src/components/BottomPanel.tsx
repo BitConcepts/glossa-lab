@@ -136,6 +136,15 @@ function LogPanel() {
           Purge
         </button>
         <button onClick={() => setLines([])} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#94a3b8", cursor: "pointer", fontSize: 10 }}>Clear</button>
+        <button
+          onClick={() => {
+            const text = visible.join("\n");
+            navigator.clipboard.writeText(text).catch(() => {});
+          }}
+          title="Copy all visible log lines to clipboard"
+          style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#60a5fa", cursor: "pointer", fontSize: 10 }}>
+          Copy All
+        </button>
       </div>
       <div
         style={{ flex: 1, overflowY: "auto", fontFamily: "monospace", fontSize: 11, padding: "4px 8px", lineHeight: 1.6 }}

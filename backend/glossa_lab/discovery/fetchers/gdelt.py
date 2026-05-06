@@ -31,8 +31,8 @@ class GDELTFetcher(Fetcher):
     requires = ()  # keyless
     rate_delay: float = 12.0  # GDELT enforces 1 req/5s; 12s avoids 429 under load
     # GDELT has no API key option — rate limit is fixed at 1 req/5s.
-    _MAX_RETRIES: int = 2
-    _RETRY_BACKOFF: float = 8.0  # seconds extra wait on 429
+    _MAX_RETRIES: int = 4
+    _RETRY_BACKOFF: float = 6.0  # seconds extra wait per attempt
 
     # Track last request time class-wide so multiple instances share cooldown.
     # Initialised to now so the first call after a restart always waits the

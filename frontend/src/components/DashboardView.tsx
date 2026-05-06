@@ -233,8 +233,8 @@ export function DashboardView() {
   const onRunFetch = async () => {
     setRunning("fetch");
     try {
-      const ack = await startDiscoveryFetch({});
-      toast(`Fetch started · job ${ack.job_id.slice(0, 8)} · will regenerate insight when complete`, "info");
+      await startDiscoveryFetch({});
+      toast(`Fetch started · will regenerate insight when complete`, "info");
     } catch (e) {
       toast(e instanceof Error ? e.message : "Fetch failed", "error");
       setRunning("");
@@ -253,9 +253,9 @@ export function DashboardView() {
   const onRunMine = async () => {
     setRunning("mine");
     try {
-      const ack = await startDiscoveryMine({ limit: mineLimit });
+      await startDiscoveryMine({ limit: mineLimit });
       toast(
-        `Mine started · job ${ack.job_id.slice(0, 8)} · classifying up to ${mineLimit} items`,
+        `Mine started · classifying up to ${mineLimit} items`,
         "info",
       );
     } catch (e) {
@@ -455,14 +455,14 @@ export function DashboardView() {
           break;
         }
         case "run_fetch": {
-          const ack = await startDiscoveryFetch({});
-          toast(`Fetch started · job ${ack.job_id.slice(0, 8)}`, "info");
+          await startDiscoveryFetch({});
+      toast("Fetch started", "info");
           break;
         }
         case "run_mine": {
           const limit = Number(a.params?.limit ?? 50);
-          const ack = await startDiscoveryMine({ limit });
-          toast(`Mine started · job ${ack.job_id.slice(0, 8)} · limit ${limit}`, "info");
+          await startDiscoveryMine({ limit });
+      toast(`Mine started · classifying up to ${limit} items`, "info");
           break;
         }
         case "create_hypothesis": {

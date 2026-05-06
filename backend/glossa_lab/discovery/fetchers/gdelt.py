@@ -29,10 +29,10 @@ _ENDPOINT = "https://api.gdeltproject.org/api/v2/doc/doc"
 class GDELTFetcher(Fetcher):
     source = "gdelt"
     requires = ()  # keyless
-    rate_delay: float = 12.0  # GDELT enforces 1 req/5s; 12s avoids 429 under load
+    rate_delay: float = 15.0  # GDELT enforces 1 req/5s; 15s avoids 429 + connection drops
     # GDELT has no API key option — rate limit is fixed at 1 req/5s.
     _MAX_RETRIES: int = 4
-    _RETRY_BACKOFF: float = 6.0  # seconds extra wait per attempt
+    _RETRY_BACKOFF: float = 10.0  # seconds extra wait per attempt (10/20/30/40)
 
     # Track last request time class-wide so multiple instances share cooldown.
     # Initialised to now so the first call after a restart always waits the
@@ -79,6 +79,9 @@ class GDELTFetcher(Fetcher):
                     or "timed out" in err_str.lower()
                     or "ssl" in err_str.lower()
                     or "urlopen error" in err_str.lower()
+                    or "urlerror" in err_str.lower()
+                    or "winerror" in err_str.lower()
+                    or "connection" in err_str.lower()
                 )
                 if is_retryable and attempt < self._MAX_RETRIES:
                     backoff = self._RETRY_BACKOFF * (attempt + 1)

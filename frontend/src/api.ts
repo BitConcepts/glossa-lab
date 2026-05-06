@@ -413,8 +413,8 @@ export const getReportCatalog = (): Promise<CatalogReport[]> =>
 export const getReport = (name: string): Promise<Record<string, any>> =>
   request("GET", `/reports/${name}`);
 
-export const listReports = (): Promise<CatalogReport[]> =>
-  request("GET", "/reports");
+export const listReports = (projectId?: string | null): Promise<CatalogReport[]> =>
+  request("GET", `/reports${projectId ? `?project_id=${projectId}` : ""}`);
 
 export const deleteReport = (name: string): Promise<{ deleted: boolean; relative_path: string }> =>
   request("DELETE", `/reports/${name}`);
@@ -854,10 +854,10 @@ export interface Hypothesis {
   updated_at: string;
 }
 
-export const listHypotheses = (): Promise<Hypothesis[]> =>
-  request("GET", "/hypotheses");
+export const listHypotheses = (projectId?: string | null): Promise<Hypothesis[]> =>
+  request("GET", `/hypotheses${projectId ? `?project_id=${projectId}` : ""}`);
 
-export const createHypothesis = (body: { title: string; statement?: string; status?: string }): Promise<Hypothesis> =>
+export const createHypothesis = (body: { title: string; statement?: string; status?: string; project_id?: string }): Promise<Hypothesis> =>
   request("POST", "/hypotheses", body);
 
 export const updateHypothesis = (id: string, body: Partial<Hypothesis>): Promise<Hypothesis> =>
@@ -878,10 +878,10 @@ export interface Notebook {
   updated_at: string;
 }
 
-export const listNotebooks = (): Promise<Notebook[]> =>
-  request("GET", "/notebooks");
+export const listNotebooks = (projectId?: string | null): Promise<Notebook[]> =>
+  request("GET", `/notebooks${projectId ? `?project_id=${projectId}` : ""}`);
 
-export const createNotebook = (body: { title: string; content?: string; study_id?: string; tags?: string[] }): Promise<Notebook> =>
+export const createNotebook = (body: { title: string; content?: string; study_id?: string; tags?: string[]; project_id?: string }): Promise<Notebook> =>
   request("POST", "/notebooks", body);
 
 export const updateNotebook = (id: string, body: Partial<Notebook>): Promise<Notebook> =>
@@ -911,7 +911,7 @@ export interface Citation {
 export const listCitations = (): Promise<Citation[]> =>
   request("GET", "/citations");
 
-export const createCitation = (body: Omit<Citation, "id" | "exp_ids" | "study_ids" | "created_at">): Promise<Citation> =>
+export const createCitation = (body: Omit<Citation, "id" | "exp_ids" | "study_ids" | "created_at"> & { project_id?: string }): Promise<Citation> =>
   request("POST", "/citations", body);
 
 export const updateCitation = (id: string, body: Partial<Citation>): Promise<Citation> =>
@@ -1665,22 +1665,24 @@ export interface DashboardHighlights {
 }
 
 export const getDashboardHighlights = (
-  opts: { days?: number; limit?: number; include_ai?: boolean } = {},
+  opts: { days?: number; limit?: number; include_ai?: boolean; project_id?: string | null } = {},
 ): Promise<DashboardHighlights> => {
   const qs = new URLSearchParams();
   if (opts.days       !== undefined) qs.set("days",        String(opts.days));
   if (opts.limit      !== undefined) qs.set("limit",       String(opts.limit));
   if (opts.include_ai !== undefined) qs.set("include_ai",  String(opts.include_ai));
+  if (opts.project_id)              qs.set("project_id",  opts.project_id);
   const s = qs.toString();
   return request("GET", `/dashboard/highlights${s ? "?" + s : ""}`);
 };
 
 export const regenerateDashboardInsight = (
-  opts: { days?: number; limit?: number } = {},
+  opts: { days?: number; limit?: number; project_id?: string | null } = {},
 ): Promise<DashboardInsight> => {
   const qs = new URLSearchParams();
   if (opts.days  !== undefined) qs.set("days",  String(opts.days));
   if (opts.limit !== undefined) qs.set("limit", String(opts.limit));
+  if (opts.project_id)          qs.set("project_id", opts.project_id);
   const s = qs.toString();
   return request("POST", `/dashboard/insight${s ? "?" + s : ""}`);
 };
@@ -1998,6 +2000,62 @@ export const deleteProject = (
   id: string,
 ): Promise<{ deleted: boolean; project: Project }> =>
   request("DELETE", `/projects/${id}`);
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const exportProject = (id: string): Promise<Record<string, any>> =>
+  request("GET", `/projects/${id}/export`);
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const importProject = (bundle: Record<string, any>): Promise<Project> =>
+  request("POST", "/projects/import", bundle);
+
+// ── Correspondences ────────────────────────────────────────────────
+
+export interface Correspondence {
+  id: string;
+  project_id: string;
+  direction: "inbound" | "outbound" | "internal" | string;
+  channel: "email" | "meeting" | "letter" | "phone" | "other" | string;
+  from_addr: string;
+  to_addr: string;
+  cc_addr: string;
+  subject: string;
+  body: string;
+  date: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  attachments: Record<string, any>[];
+  claims_made: string;
+  questions: string;
+  reply_status: "pending" | "replied" | "no_reply" | "closed" | string;
+  follow_up_date: string;
+  tags: string[];
+  created_at: string;
+  updated_at: string;
+}
+
+export const listCorrespondences = (projectId?: string | null): Promise<Correspondence[]> =>
+  request("GET", `/correspondences${projectId ? `?project_id=${projectId}` : ""}`);
+
+export const createCorrespondence = (
+  body: Partial<Correspondence>,
+): Promise<Correspondence> =>
+  request("POST", "/correspondences", body);
+
+export const updateCorrespondence = (
+  id: string,
+  body: Partial<Correspondence>,
+): Promise<Correspondence> =>
+  request("PUT", `/correspondences/${id}`, body);
+
+export const deleteCorrespondence = (
+  id: string,
+): Promise<{ deleted: boolean }> =>
+  request("DELETE", `/correspondences/${id}`);
+
+export const parseEmailToCorrespondence = (
+  body: { raw_text: string; is_eml?: boolean },
+): Promise<Partial<Correspondence>> =>
+  request("POST", "/correspondences/parse", body);
 
 // ── Email provider presets (frontend-only catalogue) ──────────────────────
 

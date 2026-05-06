@@ -29,7 +29,7 @@ _ENDPOINT = "https://api.gdeltproject.org/api/v2/doc/doc"
 class GDELTFetcher(Fetcher):
     source = "gdelt"
     requires = ()  # keyless
-    rate_delay: float = 15.0  # GDELT enforces 1 req/5s; 15s avoids 429 + connection drops
+    rate_delay: float = 30.0  # GDELT enforces 1 req/5s; 30s (6x) eliminates 429s across 3 topics
     # GDELT has no API key option — rate limit is fixed at 1 req/5s.
     _MAX_RETRIES: int = 4
     _RETRY_BACKOFF: float = 10.0  # seconds extra wait per attempt (10/20/30/40)

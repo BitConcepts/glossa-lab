@@ -84,6 +84,16 @@ def _graph_experiment_ids() -> list[str]:
         return []
 
 
+def _graph_experiment_id_name_map() -> dict[str, str]:
+    """Return {id: name} for graph experiments — used to give the LLM human-readable labels."""
+    try:
+        from glossa_lab.experiment_graph import list_graph_experiments  # noqa: PLC0415
+
+        return {spec["id"]: spec.get("name", spec["id"]) for spec in list_graph_experiments()}
+    except Exception:  # noqa: BLE001
+        return {}
+
+
 async def _hypothesis_count() -> int:
     """Count of tracked hypotheses (not discovery items tagged 'hypothesis')."""
     db = get_db()
@@ -167,7 +177,10 @@ def _build_insight_prompt(
     studies_block = "\n".join(
         f"- {s.get('id', '')}: {s.get('name', '')[:120]}" for s in studies[:25]
     ) or "(no studies yet)"
-    exp_block = ", ".join(experiments[:80]) or "(no experiments registered)"
+    # Include experiment name so the LLM can use real labels, not invented ones.
+    _names = _graph_experiment_id_name_map()
+    exp_lines = [f"{eid} ({_names.get(eid, eid)})" for eid in experiments[:80]]
+    exp_block = ", ".join(exp_lines) or "(no experiments registered)"
     goal_label = (goal or {}).get("label", "research")
     prompt_text = _INSIGHT_PROMPT_TEMPLATE.replace("{goal_label}", goal_label)
     goal_ctx = ""
@@ -340,7 +353,7 @@ async def _generate_insight(
                 # and navigates the user to the experiments page.
                 if not final_eid:
                     im["suggested_action"] = "open_view"
-                    im["suggested_params"] = {"view": "experiments"}
+                    im["suggested_params"] = {"view": "experiments", "experiment_id": p_eid}
                     im["impact"] = (
                         f"{im.get('impact', '')} "
                         f"[experiment '{p_eid}' not in registry]"
@@ -362,7 +375,7 @@ async def _generate_insight(
                         # Unresolvable — downgrade to open_view so button
                         # still appears and points user to the experiments page.
                         a["action_type"] = "open_view"
-                        a["params"] = {"view": "experiments"}
+                        a["params"] = {"view": "experiments", "experiment_id": eid}
                         a["rationale"] = (
                             f"{a.get('rationale', '')} "
                             f"[experiment '{eid}' not in registry — open Experiments to find it]"

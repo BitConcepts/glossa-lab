@@ -149,6 +149,12 @@ async def lifespan(app: FastAPI):
     if _db:
         await seed_projects(_db)
 
+    # Seed built-in CAS-YAML constraint models into DB (idempotent)
+    from glossa_lab.cas_model_seeder import seed_cas_models  # noqa: PLC0415
+
+    if _db:
+        await seed_cas_models(_db)
+
     # Start Ollama in the background (no-op if not installed or already running)
     await asyncio.get_event_loop().run_in_executor(None, _try_start_ollama)
 

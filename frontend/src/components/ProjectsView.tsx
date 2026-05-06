@@ -9,6 +9,8 @@ import { useCallback, useEffect, useState } from "react";
 import {
   listProjects,
   activateProject,
+  upsertProject,
+  deleteProject,
   type Project,
 } from "../api";
 import { useToast } from "../hooks/useToast";
@@ -46,6 +48,40 @@ export function ProjectsView() {
     }
   };
 
+  const onDelete = async (id: string) => {
+    if (!confirm("Delete this project? This cannot be undone.")) return;
+    try {
+      await deleteProject(id);
+      toast("Project deleted", "info");
+      setSelected(null);
+      void refresh();
+    } catch (e) {
+      toast(e instanceof Error ? e.message : "Delete failed", "error");
+    }
+  };
+
+  const onCreateNew = async () => {
+    const label = prompt("New project name:");
+    if (!label?.trim()) return;
+    const id = label.trim().toLowerCase().replace(/[^a-z0-9]+/g, "_").slice(0, 40);
+    try {
+      await upsertProject(id, {
+        label: label.trim(),
+        description: "",
+        prompt_context: "",
+        topic_ids: [],
+        experiment_ids: [],
+        corpus_ids: [],
+        is_active: 0,
+      });
+      toast("Project created", "success");
+      setSelected(id);
+      void refresh();
+    } catch (e) {
+      toast(e instanceof Error ? e.message : "Create failed", "error");
+    }
+  };
+
   const active = projects.find((p) => p.id === selected);
 
   const navigate = (view: string) =>
@@ -54,13 +90,20 @@ export function ProjectsView() {
   return (
     <div style={{ maxWidth: 1200, margin: "0 auto" }}>
       <div style={{ display: "flex", alignItems: "flex-end", gap: 12, marginBottom: 16 }}>
-        <div>
+        <div style={{ flex: 1 }}>
           <h2 style={{ margin: 0, fontSize: 22, color: "#111827" }}>📁 Projects</h2>
           <p style={{ margin: "4px 0 0", fontSize: 13, color: "#6b7280" }}>
             Each project scopes your research — topics, experiments, corpora, and AI context.
             The active project controls what the discovery engine fetches and how insights are generated.
           </p>
         </div>
+        <button onClick={() => void onCreateNew()} style={{
+          padding: "8px 16px", border: "1px solid #2563eb", borderRadius: 6,
+          background: "#2563eb", color: "#fff", fontSize: 12, fontWeight: 600,
+          cursor: "pointer",
+        }}>
+          + New Project
+        </button>
       </div>
 
       {loading && <div style={{ color: "#6b7280", fontSize: 13 }}>Loading projects…</div>}
@@ -127,6 +170,12 @@ export function ProjectsView() {
                   ✓ Active Project
                 </span>
               ) : null}
+              <button onClick={() => void onDelete(active.id)} style={{
+                padding: "5px 10px", border: "1px solid #fca5a5", borderRadius: 6,
+                background: "#fff", color: "#b91c1c", fontSize: 11, cursor: "pointer",
+              }}>
+                Delete
+              </button>
             </div>
 
             <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.55, margin: "0 0 16px" }}>

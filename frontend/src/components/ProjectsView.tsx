@@ -11,6 +11,7 @@ import {
   activateProject,
   upsertProject,
   deleteProject,
+  aiChat,
   type Project,
 } from "../api";
 import { useToast } from "../hooks/useToast";
@@ -53,6 +54,7 @@ export function ProjectsView() {
     try {
       await activateProject(id);
       toast("Project activated", "success");
+      window.dispatchEvent(new CustomEvent("glossa:project-changed"));
       void refresh();
     } catch (e) {
       toast(e instanceof Error ? e.message : "Activate failed", "error");
@@ -65,6 +67,7 @@ export function ProjectsView() {
       await deleteProject(id);
       toast("Project deleted", "info");
       setSelected(null);
+      window.dispatchEvent(new CustomEvent("glossa:project-changed"));
       void refresh();
     } catch (e) {
       toast(e instanceof Error ? e.message : "Delete failed", "error");
@@ -87,6 +90,7 @@ export function ProjectsView() {
       });
       toast("Project created", "success");
       setSelected(id);
+      window.dispatchEvent(new CustomEvent("glossa:project-changed"));
       void refresh();
     } catch (e) {
       toast(e instanceof Error ? e.message : "Create failed", "error");
@@ -258,6 +262,18 @@ export function ProjectsView() {
                     toast(e instanceof Error ? e.message : "Save failed", "error");
                   }
                 }}
+                onGenerate={async () => {
+                  const desc = active.description || active.label;
+                  const topics = (active.topic_ids || []).join(", ");
+                  const nExp = active.experiment_ids?.length ?? 0;
+                  const resp = await aiChat({
+                    messages: [
+                      { role: "system", content: "You are a research-project goal writer for Glossa Lab, a computational decipherment platform. Write clear, concise, actionable project goals. Output ONLY the goals text — no preamble, no markdown fences, no explanation. The goals should: (1) state the core research objective, (2) list 4–6 key research axes as bullet points using •, (3) specify methodological standards (falsifiability, benchmarks, transparency). Keep it under 250 words." },
+                      { role: "user", content: `Generate project goals for:\nProject: ${active.label}\nDescription: ${desc}\nTopics: ${topics || "(none)"}\nLinked experiments: ${nExp}\nExisting goals: ${active.prompt_context || "(none yet)"}` },
+                    ],
+                  });
+                  return resp.content;
+                }}
               />
             </Section>
 
@@ -274,6 +290,17 @@ export function ProjectsView() {
                   } catch (e) {
                     toast(e instanceof Error ? e.message : "Save failed", "error");
                   }
+                }}
+                onGenerate={async () => {
+                  const topics = (active.topic_ids || []).join(", ");
+                  const nExp = active.experiment_ids?.length ?? 0;
+                  const resp = await aiChat({
+                    messages: [
+                      { role: "system", content: "You are a research-project description writer for Glossa Lab, a computational decipherment and linguistic analysis platform. Write a concise, informative project description in 1-2 sentences. Output ONLY the description text — no preamble, no markdown, no explanation." },
+                      { role: "user", content: `Generate a short project description for:\nProject: ${active.label}\nTopics: ${topics || "(none)"}\nLinked experiments: ${nExp}\nExisting goals: ${active.prompt_context || "(none)"}\nExisting description: ${active.description || "(none yet)"}` },
+                    ],
+                  });
+                  return resp.content;
                 }}
               />
             </Section>
@@ -307,37 +334,73 @@ function Section({ title, count, children }: {
   );
 }
 
-/** Inline editable textarea with Save/Cancel. */
-function EditableTextArea({ value, placeholder, onSave }: {
+/** Inline editable textarea with Save/Cancel and optional AI generation. */
+function EditableTextArea({ value, placeholder, onSave, onGenerate }: {
   value: string; placeholder: string; onSave: (v: string) => Promise<void>;
+  onGenerate?: () => Promise<string>;
 }) {
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState(value);
   const [saving, setSaving] = useState(false);
+  const [generating, setGenerating] = useState(false);
 
   useEffect(() => { setDraft(value); }, [value]);
 
+  const handleGenerate = async () => {
+    if (!onGenerate) return;
+    setGenerating(true);
+    setEditing(true);
+    try {
+      const result = await onGenerate();
+      setDraft(result);
+    } catch {
+      /* leave draft unchanged on error */
+    } finally {
+      setGenerating(false);
+    }
+  };
+
   if (!editing) {
     return (
-      <div
-        onClick={() => setEditing(true)}
-        style={{ fontSize: 12, color: value ? "#374151" : "#9ca3af", lineHeight: 1.5,
-          background: "#f8fafc", padding: 10, borderRadius: 6,
-          border: "1px solid #e5e7eb", cursor: "pointer",
-          minHeight: 40, whiteSpace: "pre-wrap" }}
-        title="Click to edit">
-        {value || placeholder}
+      <div style={{ position: "relative" }}>
+        <div
+          onClick={() => setEditing(true)}
+          style={{ fontSize: 12, color: value ? "#374151" : "#9ca3af", lineHeight: 1.5,
+            background: "#f8fafc", padding: 10, borderRadius: 6,
+            border: "1px solid #e5e7eb", cursor: "pointer",
+            minHeight: 40, whiteSpace: "pre-wrap",
+            paddingRight: onGenerate ? 90 : 10 }}
+          title="Click to edit">
+          {value || placeholder}
+        </div>
+        {onGenerate && (
+          <button
+            onClick={(e) => { e.stopPropagation(); void handleGenerate(); }}
+            disabled={generating}
+            style={{ position: "absolute", top: 6, right: 6,
+              padding: "4px 10px", border: "1px solid #7c3aed", borderRadius: 5,
+              background: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)",
+              color: "#fff", fontSize: 10, fontWeight: 600,
+              cursor: generating ? "wait" : "pointer", opacity: generating ? 0.7 : 1 }}>
+            {generating ? "Generating…" : "✨ Glossa AI"}
+          </button>
+        )}
       </div>
     );
   }
 
   return (
     <div>
+      {generating && (
+        <div style={{ fontSize: 11, color: "#7c3aed", marginBottom: 4 }}>
+          ✨ Generating with Glossa AI…
+        </div>
+      )}
       <textarea
         value={draft}
         onChange={(e) => setDraft(e.target.value)}
         placeholder={placeholder}
-        rows={4}
+        rows={6}
         style={{ width: "100%", fontSize: 12, padding: 8, borderRadius: 6,
           border: "1px solid #7c3aed", lineHeight: 1.5, resize: "vertical",
           fontFamily: "inherit" }}
@@ -345,7 +408,7 @@ function EditableTextArea({ value, placeholder, onSave }: {
       />
       <div style={{ display: "flex", gap: 6, marginTop: 6 }}>
         <button
-          disabled={saving}
+          disabled={saving || generating}
           onClick={async () => {
             setSaving(true);
             await onSave(draft);
@@ -357,6 +420,16 @@ function EditableTextArea({ value, placeholder, onSave }: {
             cursor: "pointer" }}>
           {saving ? "Saving…" : "Save"}
         </button>
+        {onGenerate && (
+          <button
+            onClick={() => void handleGenerate()}
+            disabled={generating}
+            style={{ padding: "4px 12px", border: "1px solid #7c3aed", borderRadius: 5,
+              background: "#f5f3ff", color: "#7c3aed", fontSize: 11, fontWeight: 600,
+              cursor: generating ? "wait" : "pointer" }}>
+            {generating ? "Generating…" : "✨ Regenerate"}
+          </button>
+        )}
         <button
           onClick={() => { setDraft(value); setEditing(false); }}
           style={{ padding: "4px 12px", border: "1px solid #d1d5db", borderRadius: 5,

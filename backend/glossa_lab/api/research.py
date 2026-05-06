@@ -11,7 +11,7 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from typing import Any
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel
 
 from glossa_lab.database import get_db
@@ -30,6 +30,7 @@ class HypothesisCreate(BaseModel):
     title: str
     statement: str = ""
     status: str = "active"
+    project_id: str = ""
 
 
 class HypothesisUpdate(BaseModel):
@@ -46,6 +47,7 @@ class NotebookCreate(BaseModel):
     content: str = ""
     study_id: str | None = None
     tags: list[str] = []
+    project_id: str = ""
 
 
 class NotebookUpdate(BaseModel):
@@ -65,6 +67,7 @@ class CitationCreate(BaseModel):
     url: str = ""
     bibtex: str = ""
     notes: str = ""
+    project_id: str = ""
 
 
 class CitationUpdate(BaseModel):
@@ -84,12 +87,14 @@ class CitationUpdate(BaseModel):
 
 
 @router.get("/hypotheses")
-async def list_hypotheses() -> list[dict[str, Any]]:
-    """List all hypotheses."""
+async def list_hypotheses(
+    project_id: str | None = Query(None),
+) -> list[dict[str, Any]]:
+    """List hypotheses. Pass project_id to scope to a project."""
     db = get_db()
     if db is None:
         raise HTTPException(status_code=503, detail="Database not available")
-    return await db.list_hypotheses()
+    return await db.list_hypotheses(project_id=project_id)
 
 
 @router.post("/hypotheses", status_code=201)
@@ -104,7 +109,8 @@ async def create_hypothesis(body: HypothesisCreate) -> dict[str, Any]:
     if existing is not None:
         return existing
     return await db.create_hypothesis(
-        title=body.title, statement=body.statement, status=body.status, created_at=_now_iso()
+        title=body.title, statement=body.statement, status=body.status,
+        project_id=body.project_id, created_at=_now_iso(),
     )
 
 
@@ -136,12 +142,14 @@ async def delete_hypothesis(hypothesis_id: str) -> dict[str, Any]:
 
 
 @router.get("/notebooks")
-async def list_notebooks() -> list[dict[str, Any]]:
-    """List all notebooks."""
+async def list_notebooks(
+    project_id: str | None = Query(None),
+) -> list[dict[str, Any]]:
+    """List notebooks. Pass project_id to scope to a project."""
     db = get_db()
     if db is None:
         raise HTTPException(status_code=503, detail="Database not available")
-    return await db.list_notebooks()
+    return await db.list_notebooks(project_id=project_id)
 
 
 @router.post("/notebooks", status_code=201)
@@ -155,6 +163,7 @@ async def create_notebook(body: NotebookCreate) -> dict[str, Any]:
         content=body.content,
         study_id=body.study_id,
         tags=body.tags,
+        project_id=body.project_id,
         created_at=_now_iso(),
     )
 

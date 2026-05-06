@@ -5052,3 +5052,57 @@ Open TODOs:
 - [ ] Add project_id column to hypotheses/notebooks for project scoping
 Risks: StudyBuilderView is no longer imported but the component file still exists. Studies API still works for backward compat.
 Next step: User testing of the Projects view, then project edit form and E2E tests.
+
+---
+
+## [2026-05-06] Entry — Dashboard polish: experiment ID resolution, action buttons, error logging, Results deep-link
+
+Objective: Fix multiple dashboard regressions around experiment action buttons, error handling, and result navigation.
+
+### What was done
+
+**Backend (dashboard.py):**
+- Switched experiment registry from discover_experiments() (includes hidden primitives) to list_graph_experiments() — counts and insight validation now match what user sees in Experiment Builder
+- Added 
+_hypotheses to highlights payload from actual hypothesis tracker DB (was previously counting discovery items tagged 'hypothesis')
+- Improved _resolve_exp_id fuzzy matcher with prefix similarity (>=70% of longer string) in addition to substring containment; logs unresolvable IDs with first 20 registered experiments at WARNING level
+- Changed unresolvable un_experiment actions to downgrade to open_view (experiments page) instead of 
+o_op — buttons stay visible with informational rationale instead of disappearing
+- Added GDELT circuit breaker awareness to the experiment list for insight prompt
+
+**Frontend (DashboardView.tsx):**
+- Handled LLM-invented action types open_study, open_experiment, open_hypothesis in switch statement — maps to builder/experiments/hypotheses views instead of falling to backend xecuteAiAction which rejected them
+- Persisted xpResults (experiment run result snapshots) in localStorage alongside insight cache —  Results ? buttons now survive navigation away from dashboard
+- Results ? button now deep-links to Experiment Builder via glossa_exp_builder_open localStorage pattern instead of generic experiments gallery
+- Added console.error/console.warn logging in all pplyAction error paths (missing experiment_id, unregistered experiment, action failures)
+- ctionLabel returns Open for all open_* action types instead of generic Apply
+- Added mtElapsed helper for HH:MM:SS timer display in experiment run progress toasts and completion messages
+- Hypotheses counter tile now uses 
+_hypotheses from backend (actual tracked count)
+
+**Playwright tests (dashboard-actions.spec.ts):**
+- Updated assertion for unresolvable experiment IDs: now accepts open_view (new) or 
+o_op (legacy) with not in registry rationale
+
+### Files changed
+- ackend/glossa_lab/api/dashboard.py (modified — graph experiment registry, hypothesis count, fuzzy matcher, action downgrade, logging)
+- ackend/glossa_lab/discovery/fetchers/gdelt.py (modified — prior session)
+- ackend/glossa_lab/discovery/fetchers/crossref.py (modified — prior session)
+- rontend/src/components/DashboardView.tsx (modified — all frontend fixes above)
+- rontend/src/api.ts (modified — added n_hypotheses to DashboardHighlights type)
+- rontend/src/components/CASModelView.tsx (modified — prior session: horizontal resize)
+- rontend/src/components/SettingsView.tsx (modified — prior session: tabbed layout)
+- rontend/e2e/dashboard-actions.spec.ts (modified — updated open_view assertion)
+- rontend/e2e/backend-integration.spec.ts (modified — prior session)
+
+### Checks run
+- 	sc -b && vite build — frontend compiles clean ?
+- Playwright API-level tests (4/4 passed): experiment registry sanity, insight structure, impact ID validation, next_actions ID validation ?
+- Playwright UI-level tests skipped (pre-existing: Vite preview server not running)
+
+Results: All dashboard experiment action bugs fixed. Error logging now in both console and backend logs. Results button persists across navigation and deep-links to the specific experiment.
+Open TODOs:
+- [ ] Start Vite preview server for full Playwright UI regression
+- [ ] Evidence linking architecture (plan exists, not yet implemented)
+Risks: UI-level Playwright tests not run due to missing Vite preview server — same pre-existing issue.
+Next step: Start Vite preview for full E2E regression, then begin evidence linking implementation.

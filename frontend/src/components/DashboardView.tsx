@@ -26,6 +26,7 @@ import {
   executeAiAction,
   getDashboardHighlights,
   getHealth,
+  listExperiments,
   listGraphExperiments,
   regenerateDashboardInsight,
   runGraphExperimentStream,
@@ -45,7 +46,9 @@ import { useToast } from "../hooks/useToast";
 // Insights are expensive to regenerate (LLM call). We cache the last result
 // in localStorage along with the timestamp and the backend's boot time so
 // we can detect a backend restart without re-asking the LLM every reload.
-const INSIGHT_LS_KEY = "glossa_dashboard_insight_v1";
+// Bump version to invalidate stale caches that contain hallucinated hex-hash
+// experiment IDs from before the backend validation was deployed.
+const INSIGHT_LS_KEY = "glossa_dashboard_insight_v2";
 interface PersistedInsight {
   insight: DashboardInsight;
   generated_at: number;       // epoch ms when LLM generated this
@@ -54,6 +57,9 @@ interface PersistedInsight {
   /** Per-button completion state keyed by "impact-0", "na-1", etc.
    *  Persisted so completed actions survive page reloads. */
   completed?: Record<string, "success" | "error" | "warn">;
+  /** Experiment run result snapshots — persisted so "Results →" buttons
+   *  survive navigation away from the dashboard. */
+  exp_results?: Record<string, { ok: boolean; ts: number; completed: number; errors: number; nodeCount: number }>;
 }
 function _loadPersistedInsight(): PersistedInsight | null {
   try {
@@ -85,9 +91,13 @@ const KIND_COLOURS: Record<string, { bg: string; fg: string }> = {
   other:      { bg: "#f3f4f6", fg: "#4b5563" },
 };
 
-/** Strip HTML/XML/MathML tags from text (safety net for Crossref titles). */
+/** Strip HTML/XML/MathML tags and Unicode replacement characters from text. */
 function stripTags(s: string): string {
-  return s.replace(/<[^>]+>/g, " ").replace(/\s{2,}/g, " ").trim();
+  return s
+    .replace(/<[^>]+>/g, " ")
+    .replace(/[\uFFFD\uFFFE\uFFFF]/g, "")  // replacement chars (□)
+    .replace(/\s{2,}/g, " ")
+    .trim();
 }
 
 function fmtRelative(iso: string): string {
@@ -100,6 +110,17 @@ function fmtRelative(iso: string): string {
   if (dSec < 86400) return `${Math.round(dSec / 3600)}h ago`;
   if (dSec < 86400 * 14) return `${Math.round(dSec / 86400)}d ago`;
   return new Date(t).toISOString().slice(0, 10);
+}
+
+/** Format elapsed seconds as HH:MM:SS (or MM:SS if < 1h). */
+function fmtElapsed(ms: number): string {
+  const totalSec = Math.round(ms / 1000);
+  const h = Math.floor(totalSec / 3600);
+  const m = Math.floor((totalSec % 3600) / 60);
+  const s = totalSec % 60;
+  const mm = String(m).padStart(2, "0");
+  const ss = String(s).padStart(2, "0");
+  return h > 0 ? `${h}:${mm}:${ss}` : `${mm}:${ss}`;
 }
 
 /** Format an epoch-ms as a short human-readable timestamp for the
@@ -220,6 +241,10 @@ export function DashboardView() {
       if (persisted.completed && Object.keys(persisted.completed).length > 0) {
         setApplyResult(persisted.completed);
       }
+      // Restore experiment result snapshots so "Results →" buttons survive.
+      if (persisted.exp_results && Object.keys(persisted.exp_results).length > 0) {
+        setExpResultsRaw(persisted.exp_results);
+      }
       return;
     }
     // No cached insight yet — do a one-time generation so the panel isn't
@@ -285,13 +310,29 @@ export function DashboardView() {
   // We list the registry once on mount and re-fetch on demand so the
   // dashboard can reject phantom IDs with a friendly message AND offer the
   // closest real match.
+  // Full experiment registry (graph + primitive) — used for run_experiment
+  // validation AND propose_experiment_chain keyword matching.  The previous
+  // version only loaded graph experiments, which missed the 100+ primitives
+  // and caused "no matching experiments" on Plan chain.
   const expRegistryRef = useRef<GraphExperimentMeta[] | null>(null);
   const ensureExpRegistry = useCallback(async (force = false): Promise<GraphExperimentMeta[]> => {
     if (expRegistryRef.current && !force) return expRegistryRef.current;
     try {
-      const list = await listGraphExperiments();
-      expRegistryRef.current = list;
-      return list;
+      // Merge graph experiments + primitive experiments into one list.
+      const [graph, all] = await Promise.all([
+        listGraphExperiments(),
+        listExperiments(),
+      ]);
+      const seen = new Set(graph.map(g => g.id));
+      const merged: GraphExperimentMeta[] = [...graph];
+      for (const e of all) {
+        if (!seen.has(e.id)) {
+          merged.push({ id: e.id, name: e.name, description: e.description, node_count: 0, edge_count: 0 });
+          seen.add(e.id);
+        }
+      }
+      expRegistryRef.current = merged;
+      return merged;
     } catch {
       return expRegistryRef.current ?? [];
     }
@@ -322,6 +363,28 @@ export function DashboardView() {
     return common;
   };
 
+  // ── Experiment results after dashboard-triggered runs ─────────────
+  // When user clicks Run from impact/next-actions, we store the completion
+  // snapshot here so we can show an inline "results available" link.
+  // Persisted in localStorage alongside the insight so buttons survive
+  // navigation away from the dashboard.
+  type ExpResultSnap = { ok: boolean; ts: number; completed: number; errors: number; nodeCount: number };
+  const [expResults, setExpResultsRaw] = useState<Record<string, ExpResultSnap>>({});
+  const setExpResults = useCallback((updater: Record<string, ExpResultSnap> | ((prev: Record<string, ExpResultSnap>) => Record<string, ExpResultSnap>)) => {
+    setExpResultsRaw((prev) => {
+      const next = typeof updater === "function" ? updater(prev) : updater;
+      try {
+        const raw = localStorage.getItem(INSIGHT_LS_KEY);
+        if (raw) {
+          const p = JSON.parse(raw) as PersistedInsight;
+          p.exp_results = next;
+          localStorage.setItem(INSIGHT_LS_KEY, JSON.stringify(p));
+        }
+      } catch { /* ignore */ }
+      return next;
+    });
+  }, []);
+
   // ── Apply: execute a structured insight action ───────────────────
   const [applying, setApplying] = useState<string>("");
   const applyAction = async (a: DashboardNextAction, key: string) => {
@@ -335,7 +398,9 @@ export function DashboardView() {
         case "run_experiment": {
           const expId = String(a.params?.experiment_id || "").trim();
           if (!expId) {
+            console.error("[Dashboard] run_experiment: missing experiment_id", a);
             toast("Action missing experiment_id", "warning");
+            outcome = "error";
             break;
           }
           // Pre-validate against the registry so a hallucinated id never
@@ -368,6 +433,7 @@ export function DashboardView() {
               const tail = suggestions.length
                 ? ` Did you mean: ${suggestions.join(", ")}?`
                 : "";
+              console.error(`[Dashboard] run_experiment: '${expId}' not in registry. Top matches:`, ranked.slice(0, 5));
               toast(
                 `Experiment '${expId}' is not registered.${tail}`,
                 "warning",
@@ -386,6 +452,7 @@ export function DashboardView() {
           let runOk = false;
           let runFailed = false;
           let hadNodeError = false;
+          const runT0 = Date.now();
           try {
             for await (const ev of runGraphExperimentStream(resolvedId, {})) {
               if (ev.event === "started") {
@@ -398,8 +465,9 @@ export function DashboardView() {
                 const now = Date.now();
                 if (now - lastTick > 1200) {
                   lastTick = now;
+                  const elapsed = fmtElapsed(now - runT0);
                   toast(
-                    `${resolvedId}: ${idx}/${totalNow} ${ev.label ?? ""}`.trim(),
+                    `${resolvedId}: ${idx}/${totalNow} ${ev.label ?? ""} [${elapsed}]`.trim(),
                     "info",
                     1500,
                   );
@@ -408,13 +476,30 @@ export function DashboardView() {
                 hadNodeError = true;
               } else if (ev.event === "run_complete") {
                 runOk = true;
-                toast(
-                  hadNodeError
-                    ? `Experiment ${resolvedId} completed with errors`
-                    : `Experiment ${resolvedId} complete`,
-                  hadNodeError ? "warning" : "success",
-                );
+                const elapsed = fmtElapsed(Date.now() - runT0);
+                const label = hadNodeError
+                  ? `Experiment ${resolvedId} completed with errors (${elapsed})`
+                  : `Experiment ${resolvedId} complete (${elapsed})`;
+                toast(label, hadNodeError ? "warning" : "success");
                 if (hadNodeError) outcome = "warn";
+                // Show a "View Results" toast so user can jump to the experiment.
+                toast(
+                  `→ View results for ${resolvedId}`,
+                  "info",
+                  8000,
+                );
+                // Store a result snippet so impact/next-action section can
+                // show an inline "results available" link after completion.
+                setExpResults((prev) => ({
+                  ...prev,
+                  [resolvedId]: {
+                    ok: !hadNodeError,
+                    ts: Date.now(),
+                    completed: total,
+                    errors: hadNodeError ? 1 : 0,
+                    nodeCount: ev.node_count ?? total,
+                  },
+                }));
               } else if (ev.event === "run_error") {
                 runFailed = true;
                 toast(
@@ -425,8 +510,6 @@ export function DashboardView() {
               }
             }
             if (!runOk && !runFailed) {
-              // Stream closed without an explicit run_complete — surface that
-              // rather than silently flashing the success toast.
               toast(`Experiment ${resolvedId} ended without completion event`, "warning");
               outcome = "warn";
             }
@@ -439,8 +522,16 @@ export function DashboardView() {
           }
           break;
         }
-        case "open_view": {
-          const view = String(a.params?.view || "dashboard");
+        case "open_view":
+        case "open_study" as DashboardActionType:
+        case "open_experiment" as DashboardActionType:
+        case "open_hypothesis" as DashboardActionType: {
+          // Map LLM-invented open_* variants to internal view names.
+          const viewMap: Record<string, string> = {
+            open_study: "builder", open_experiment: "experiments",
+            open_hypothesis: "hypotheses",
+          };
+          const view = viewMap[a.action_type] ?? String(a.params?.view || "dashboard");
           // External views: open in a new tab instead of internal navigation
           if (view === "wiki" || view === "github_wiki") {
             window.open("https://github.com/layer1labs/glossa-lab/wiki", "_blank");
@@ -479,12 +570,17 @@ export function DashboardView() {
         case "propose_experiment_chain": {
           // Automated chain: create hypothesis → pick relevant experiments → run them.
           const hypothesis = String(a.params?.hypothesis || a.label || a.rationale || "");
-          if (!hypothesis) { toast("No hypothesis text for chain", "warning"); break; }
+          if (!hypothesis) { toast("No hypothesis text for chain", "warning"); outcome = "error"; break; }
+          // Guard: if the LLM returned a hex hash instead of a real hypothesis, use the label.
+          const hexTest = /^[0-9a-f]{6,}$/i;
+          const hypTitle = hexTest.test(hypothesis.trim())
+            ? String(a.label || a.rationale || hypothesis).slice(0, 200)
+            : hypothesis.slice(0, 200);
 
-          // Step 1: create the hypothesis so it’s tracked.
+          // Step 1: create the hypothesis so it's tracked.
           try {
-            await createHypothesis({ title: hypothesis.slice(0, 200), statement: hypothesis });
-            toast(`Hypothesis created: ${hypothesis.slice(0, 60)}`, "success");
+            await createHypothesis({ title: hypTitle, statement: hypothesis });
+            toast(`Hypothesis created: ${hypTitle.slice(0, 60)}`, "success");
           } catch { /* may already exist — continue */ }
 
           // Step 2: pick relevant experiments from the registry.
@@ -564,9 +660,14 @@ export function DashboardView() {
           }
       }
     } catch (e) {
-      toast(e instanceof Error ? e.message : "Action failed", "error");
+      const msg = e instanceof Error ? e.message : "Action failed";
+      console.error(`[Dashboard] applyAction ${a.action_type} (${key}) failed:`, e);
+      toast(msg, "error");
       outcome = "error";
     } finally {
+      if (outcome === "error" || outcome === "warn") {
+        console.warn(`[Dashboard] action ${a.action_type} (${key}) outcome=${outcome}`);
+      }
       setApplying("");
       setApplyResult((prev) => ({ ...prev, [key]: outcome }));
       void refresh();
@@ -666,8 +767,8 @@ export function DashboardView() {
             sub="graph registry" onClick={() => navigate("experiments")} />
           <CounterTile label="Saved findings"   value={data.by_status.saved ?? 0}
             emoji="★" sub="for follow-up" onClick={() => navigate("discovery")} />
-          <CounterTile label="Hypotheses"       value={data.by_kind.hypothesis ?? 0}
-            emoji="💡" sub="extracted" onClick={() => navigate("hypotheses")} />
+          <CounterTile label="Hypotheses"       value={data.n_hypotheses ?? data.by_kind.hypothesis ?? 0}
+            emoji="💡" sub="tracked" onClick={() => navigate("hypotheses")} />
         </div>
       )}
 
@@ -776,13 +877,24 @@ export function DashboardView() {
                         <li key={i} style={{ fontSize: 12, color: "#111827", marginBottom: 6,
                           lineHeight: 1.5, display: "flex", alignItems: "flex-start", gap: 8 }}>
                           <div style={{ flex: 1 }}>
-                            {!looksLikeHash && idStr && (
-                              <><code style={{ color: "#7c3aed", background: "#f5f3ff",
-                                padding: "1px 6px", borderRadius: 4, fontSize: 11 }}>
-                                {idStr}
-                              </code>{" — "}</>
+                            {(im as any).name ? (
+                              <>
+                                <strong style={{ fontSize: 12 }}>{(im as any).name}</strong>
+                                <div style={{ color: "#4b5563", fontSize: 12, marginTop: 2 }}>
+                                  {im.impact}
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                {!looksLikeHash && idStr && (
+                                  <><code style={{ color: "#7c3aed", background: "#f5f3ff",
+                                    padding: "1px 6px", borderRadius: 4, fontSize: 11 }}>
+                                    {idStr}
+                                  </code>{" — "}</>
+                                )}
+                                {im.impact}
+                              </>
                             )}
-                            {im.impact}
                           </div>
                           {at !== "no_op" && (
                             <button
@@ -799,6 +911,34 @@ export function DashboardView() {
                               {renderApplyLabel(applying === k, applyResult[k], actionLabel(at))}
                             </button>
                           )}
+                          {/* Inline result highlight after experiment completes */}
+                          {(() => {
+                            const eid = String(sp?.experiment_id || idStr || "");
+                            const res = eid ? expResults[eid] : undefined;
+                            if (!res) return null;
+                            return (
+                              <button
+                                onClick={() => {
+                                  // Deep-link: open the experiment in the builder.
+                                  localStorage.setItem(
+                                    "glossa_exp_builder_open",
+                                    JSON.stringify({ action: "load", id: eid }),
+                                  );
+                                  navigate("exp-builder");
+                                }}
+                                title={`${res.completed}/${res.nodeCount} nodes completed${res.errors ? `, ${res.errors} errors` : ""} — click to open in builder`}
+                                style={{
+                                  fontSize: 10, padding: "2px 8px", borderRadius: 4,
+                                  border: `1px solid ${res.ok ? "#86efac" : "#fcd34d"}`,
+                                  background: res.ok ? "#f0fdf4" : "#fffbeb",
+                                  color: res.ok ? "#166534" : "#92400e",
+                                  cursor: "pointer", fontWeight: 600, whiteSpace: "nowrap",
+                                  flexShrink: 0,
+                                }}>
+                                {res.ok ? "✓" : "⚠"} Results →
+                              </button>
+                            );
+                          })()}
                         </li>
                       );
                     })}
@@ -1067,6 +1207,9 @@ function actionLabel(t: DashboardActionType): string {
     case "create_hypothesis":        return "Add hypothesis";
     case "propose_experiment_chain": return "Plan chain";
     case "ai_chat":                  return "Ask AI";
-    default:                         return "Apply";
+    default:
+      // LLM-invented open_* variants should show "Open", not generic "Apply".
+      if (typeof t === "string" && t.startsWith("open_")) return "Open";
+      return "Apply";
   }
 }

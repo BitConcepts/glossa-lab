@@ -9,7 +9,7 @@
  * nodes using CPSC's IterativeEngine/CellularEngine under the hood.
  */
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import {
   listCASModels,
   createCASModel,
@@ -262,6 +262,18 @@ export function CASModelView() {
   const removeCon = (idx: number) =>
     setForm(f => ({ ...f, constraints: f.constraints.filter((_, i) => i !== idx) }));
 
+  // ── Resizable left panel ────────────────────────────────────────────────────
+  const [leftW, setLeftW] = useState(260);
+  const isDragging = useRef(false);
+  const dragStart = useRef(0);
+  const dragW0 = useRef(0);
+  const onDividerDown = useCallback((e: React.MouseEvent) => {
+    isDragging.current = true; dragStart.current = e.clientX; dragW0.current = leftW;
+    const onMove = (me: MouseEvent) => { if (!isDragging.current) return; setLeftW(Math.max(180, Math.min(460, dragW0.current + me.clientX - dragStart.current))); };
+    const onUp = () => { isDragging.current = false; document.removeEventListener("mousemove", onMove); document.removeEventListener("mouseup", onUp); };
+    document.addEventListener("mousemove", onMove); document.addEventListener("mouseup", onUp);
+  }, [leftW]);
+
   // ── Styles ─────────────────────────────────────────────────────────────────
   const bg = "#f8fafc", cardBg = "#fff", border = "#e5e7eb";
   const muted = "#6b7280", blue = "#2563eb", indigo = "#4f46e5";
@@ -278,7 +290,7 @@ export function CASModelView() {
     <div style={{ display: "flex", height: "100%", gap: 0, background: bg, overflow: "hidden" }}>
 
       {/* ── Left panel: model list ──────────────────────────────────── */}
-      <div style={{ width: 240, borderRight: `1px solid ${border}`, display: "flex",
+      <div style={{ width: leftW, borderRight: `1px solid ${border}`, display: "flex",
                     flexDirection: "column", overflow: "hidden", flexShrink: 0 }}>
         <div style={{ padding: "12px 14px", borderBottom: `1px solid ${border}`,
                       display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -335,6 +347,15 @@ export function CASModelView() {
           </div>
         </div>
       </div>
+
+      {/* ── Resize divider ──────────────────────────────────────────── */}
+      <div
+        onMouseDown={onDividerDown}
+        style={{ width: 4, cursor: "col-resize", background: bg, flexShrink: 0,
+          borderLeft: `1px solid ${border}`, transition: "border-color 0.1s" }}
+        onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderLeftColor = "#94a3b8"; }}
+        onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderLeftColor = border; }}
+      />
 
       {/* ── Right panel: editor ─────────────────────────────────────── */}
       <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>

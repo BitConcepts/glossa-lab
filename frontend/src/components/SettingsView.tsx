@@ -27,7 +27,10 @@ import { AIEndpointsPanel } from "./Settings/AIEndpointsPanel";
 import { AIProfilesPanel } from "./Settings/AIProfilesPanel";
 import { AutoDiscoveryPanel } from "./Settings/AutoDiscoveryPanel";
 
-const KEY_LABELS: Record<string, { label: string; hint: string; priority?: boolean; verifiable?: boolean }> = {
+type KeyMeta = { label: string; hint: string; priority?: boolean; verifiable?: boolean };
+
+// AI provider keys — shown on the "AI Providers" tab.
+const AI_KEY_LABELS: Record<string, KeyMeta> = {
   mistral_api_key: {
     label: "Mistral API Key",
     hint: "Required for OCR via pixtral-12b. Get yours at console.mistral.ai",
@@ -49,29 +52,48 @@ const KEY_LABELS: Record<string, { label: string; hint: string; priority?: boole
     hint: "For Gemini vision and multimodal tasks.",
     verifiable: true,
   },
-  // ── Discovery / search providers ─────────────────────────────────────
-  // Used by the continuous-discovery engine. Verifiable via the live
-  // /api/v1/settings/verify-key endpoint that probes each provider directly.
+};
+
+// Discovery source keys — shown on the "Discovery" tab.
+const DISCOVERY_KEY_LABELS: Record<string, KeyMeta> = {
   serp_api_key: {
     label: "SerpAPI Key",
-    hint: "Discovery: Google News + Scholar via serpapi.com. Get yours at serpapi.com.",
+    hint: "Google News + Scholar via serpapi.com.",
     verifiable: true,
   },
   news_api_key: {
     label: "NewsAPI Key",
-    hint: "Discovery: latest articles via newsapi.org.",
+    hint: "Latest articles via newsapi.org.",
     verifiable: true,
   },
   brave_search_api_key: {
     label: "Brave Search Key",
-    hint: "Discovery: web + news search via api.search.brave.com. Get yours at api-dashboard.search.brave.com.",
+    hint: "Web + news search via api.search.brave.com.",
     verifiable: true,
   },
-  // ── SMTP / Microsoft Graph ─────────────────────────────────
-  // These are now managed exclusively in the Email & Notifications panel
-  // (provider-aware presets + Outlook 365 OAuth flow), so they are NOT
-  // exposed in the generic API-key list to keep the surface focused.
+  semantic_scholar_api_key: {
+    label: "Semantic Scholar Key",
+    hint: "Optional — removes 100 req/5min cap. Free at semanticscholar.org/product/api.",
+    verifiable: true,
+  },
+  openalex_email: {
+    label: "OpenAlex Email",
+    hint: "Optional — email for polite-pool priority access.",
+    verifiable: true,
+  },
+  uspto_api_key: {
+    label: "USPTO (ODP) API Key",
+    hint: "For patent data from api.uspto.gov.",
+    verifiable: true,
+  },
+  academia_session_cookie: {
+    label: "Academia.edu Session Cookie",
+    hint: "Optional — paste from browser to enable authenticated PDF downloads.",
+  },
 };
+
+// Combined for the key-input renderer.
+const ALL_KEY_LABELS: Record<string, KeyMeta> = { ...AI_KEY_LABELS, ...DISCOVERY_KEY_LABELS };
 
 // ── Context Length Panel ───────────────────────────────────────────────────
 
@@ -682,9 +704,26 @@ function OllamaSection() {
   );
 }
 
-// ── Main SettingsView ─────────────────────────────────────────────────────────
+// ── Settings tab persistence ───────────────────────────────────────────
+const SETTINGS_TAB_KEY = "glossa_settings_tab";
+type SettingsTab = "ai" | "discovery" | "notifications" | "local-ai" | "system";
+const TABS: { id: SettingsTab; label: string; icon: string }[] = [
+  { id: "ai",            label: "AI Providers",  icon: "🤖" },
+  { id: "discovery",     label: "Discovery",     icon: "🔭" },
+  { id: "notifications", label: "Notifications", icon: "✉️" },
+  { id: "local-ai",      label: "Local AI",      icon: "🦙" },
+  { id: "system",        label: "System",        icon: "⚙️" },
+];
+
+// ── Main SettingsView ─────────────────────────────────────────────────────
 
 export function SettingsView() {
+  const [tab, setTabState] = useState<SettingsTab>(() => {
+    const saved = localStorage.getItem(SETTINGS_TAB_KEY);
+    return (saved && TABS.some(t => t.id === saved) ? saved : "ai") as SettingsTab;
+  });
+  const setTab = (t: SettingsTab) => { setTabState(t); localStorage.setItem(SETTINGS_TAB_KEY, t); };
+
   const [backendKeys, setBackendKeys] = useState<Record<string, KeyStatus>>({});
   const [dataDir, setDataDir] = useState("");
   const [drafts, setDrafts] = useState<Record<string, string>>({});
@@ -751,7 +790,7 @@ export function SettingsView() {
   };
 
   const handleClear = async (key: string) => {
-    if (!window.confirm(`Clear ${KEY_LABELS[key]?.label ?? key}?`)) return;
+    if (!window.confirm(`Clear ${ALL_KEY_LABELS[key]?.label ?? key}?`)) return;
     clearLocalKey(key);
     try { await updateSettings({ [key]: "" }); } catch { /* optional */ }
     setDrafts((d) => { const n = { ...d }; delete n[key]; return n; });
@@ -781,47 +820,9 @@ export function SettingsView() {
   };
 
 
-  return (
-    <div style={{ maxWidth: 720 }}>
-      <h2 style={{ marginTop: 0 }}>Settings</h2>
-
-      {/* Jump-nav strip */}
-      <nav style={{ display: "flex", gap: 4, marginBottom: 16, flexWrap: "wrap" }}>
-        {[
-          ["#settings-ai",        "🤖 AI"],
-          ["#settings-discovery", "🔭 Discovery & Email"],
-          ["#settings-env",       "⚙️ Environment & System"],
-        ].map(([href, label]) => (
-          <a key={href} href={href}
-            style={{ padding: "5px 14px", borderRadius: 6, border: "1px solid #e5e7eb",
-              background: "#f9fafb", color: "#374151", fontSize: 12, fontWeight: 600,
-              textDecoration: "none", cursor: "pointer" }}>
-            {label}
-          </a>
-        ))}
-      </nav>
-
-      {error && (
-        <div style={{ ...alertStyle, background: "#fef2f2", borderColor: "#fca5a5", color: "#991b1b" }}>
-          {error}
-        </div>
-      )}
-
-      {/* ═══════════════════ AI CONFIGURATION ═══════════════════ */}
-      <div id="settings-ai" style={groupHeaderStyle}>
-        <span style={{ fontSize: 16 }}>🤖</span>
-        <span>AI Configuration</span>
-      </div>
-
-      {/* AI API Keys */}
-      <section style={sectionStyle}>
-        <h3 style={sectionTitleStyle}>AI API Keys</h3>
-        <p style={hintTextStyle}>
-          Paste a key and click Save. The key is hidden immediately and stored in your browser.
-          It is also synced to the backend so terminal scripts (OCR, experiments) can use it.
-        </p>
-
-        {Object.entries(KEY_LABELS).map(([key, { label, hint, priority, verifiable }]) => {
+  // Render a key-input group (reused for AI and Discovery tabs)
+  const renderKeyGroup = (keyLabels: Record<string, KeyMeta>) =>
+    Object.entries(keyLabels).map(([key, { label, hint, priority, verifiable }]) => {
           const keyIsSet = isSet(key);
           const keySrc = source(key);
           const envOnly = keySrc === "env";
@@ -903,7 +904,7 @@ export function SettingsView() {
                   color: verifyResult[key].valid ? "#15803d" : "#b91c1c",
                 }}>
                   <span style={{ fontSize: 14 }}>{verifyResult[key].valid ? "✓" : "✗"}</span>
-                  <span><strong>{verifyResult[key].provider || KEY_LABELS[key]?.label}:</strong> {verifyResult[key].message}</span>
+                  <span><strong>{verifyResult[key].provider || ALL_KEY_LABELS[key]?.label}:</strong> {verifyResult[key].message}</span>
                 </div>
               )}
 
@@ -912,10 +913,47 @@ export function SettingsView() {
               )}
             </div>
           );
-        })}
-      </section>
+    });
 
-      {/* Provider toggles */}
+  return (
+    <div style={{ maxWidth: 760 }}>
+      <h2 style={{ marginTop: 0, marginBottom: 12 }}>Settings</h2>
+
+      {/* ── Tab bar ───────────────────────────────────────────────────── */}
+      <div style={{ display: "flex", gap: 2, borderBottom: "2px solid #e5e7eb", marginBottom: 20 }}>
+        {TABS.map(t => (
+          <button key={t.id} onClick={() => setTab(t.id)}
+            style={{
+              padding: "8px 16px", border: "none", cursor: "pointer",
+              fontSize: 13, fontWeight: tab === t.id ? 700 : 500,
+              color: tab === t.id ? "#2563eb" : "#6b7280",
+              background: tab === t.id ? "#eff6ff" : "transparent",
+              borderBottom: tab === t.id ? "2px solid #2563eb" : "2px solid transparent",
+              borderRadius: "6px 6px 0 0",
+              marginBottom: -2,  // overlap the container border
+            }}>
+            {t.icon} {t.label}
+          </button>
+        ))}
+      </div>
+
+      {error && (
+        <div style={{ ...alertStyle, background: "#fef2f2", borderColor: "#fca5a5", color: "#991b1b" }}>
+          {error}
+        </div>
+      )}
+
+      {/* ═════ TAB: AI Providers ═════ */}
+      {tab === "ai" && (
+        <>
+          <section style={sectionStyle}>
+            <h3 style={sectionTitleStyle}>AI API Keys</h3>
+            <p style={hintTextStyle}>
+              Paste a key and click Save. Stored in browser + synced to backend.
+            </p>
+            {renderKeyGroup(AI_KEY_LABELS)}
+          </section>
+
       {providers.length > 0 && (
         <section style={sectionStyle}>
           <h3 style={sectionTitleStyle}>Provider Enable / Model Selection</h3>
@@ -988,85 +1026,80 @@ export function SettingsView() {
         </section>
       )}
 
-      {/* Custom AI endpoints (vLLM / LM Studio / OpenRouter / Together / etc.) */}
-      <AIEndpointsPanel />
+          <AIEndpointsPanel />
+          <AIProfilesPanel />
 
-      {/* AI profiles — reusable backend + model bundles */}
-      <AIProfilesPanel />
+          <section style={sectionStyle}>
+            <h3 style={sectionTitleStyle}>AI Behavior</h3>
+            <p style={hintTextStyle}>
+              Control how Glossa AI handles action proposals during chat.
+            </p>
+            <AutoApproveSetting />
+          </section>
+        </>
+      )}
 
-      {/* Ollama */}
-      <OllamaSection />
+      {/* ═════ TAB: Discovery ═════ */}
+      {tab === "discovery" && (
+        <>
+          <section style={sectionStyle}>
+            <h3 style={sectionTitleStyle}>Discovery Source Keys</h3>
+            <p style={hintTextStyle}>
+              API keys for the continuous-discovery engine. Optional keys upgrade
+              keyless sources to higher rate limits.
+            </p>
+            {renderKeyGroup(DISCOVERY_KEY_LABELS)}
+          </section>
+          <AutoDiscoveryPanel />
+        </>
+      )}
 
-      {/* AI Behavior */}
-      <section style={sectionStyle}>
-        <h3 style={sectionTitleStyle}>AI Behavior</h3>
-        <p style={hintTextStyle}>
-          Control how Glossa AI handles action proposals during chat. These preferences
-          persist across sessions.
-        </p>
-        <AutoApproveSetting />
-      </section>
+      {/* ═════ TAB: Notifications ═════ */}
+      {tab === "notifications" && <NotificationsPanel />}
 
-      {/* ═══════════════════ DISCOVERY & EMAIL ═══════════════════ */}
-      <div id="settings-discovery" style={groupHeaderStyle}>
-        <span style={{ fontSize: 16 }}>🔭</span>
-        <span>Discovery & Email</span>
-      </div>
+      {/* ═════ TAB: Local AI ═════ */}
+      {tab === "local-ai" && <OllamaSection />}
 
-      {/* Auto Discovery — source keys, scheduler, manual fetch/mine, notify */}
-      <AutoDiscoveryPanel />
+      {/* ═════ TAB: System ═════ */}
+      {tab === "system" && (
+        <>
+          <PythonEnvSection />
 
-      {/* Notifications (provider-aware email + recipients + send log) */}
-      <NotificationsPanel />
+          <section style={sectionStyle}>
+            <h3 style={sectionTitleStyle}>System</h3>
+            <table style={{ borderCollapse: "collapse" }}>
+              <tbody>
+                <InfoRow label="Data directory" value={dataDir || "—"} mono />
+                <InfoRow label="OCR pipeline" value="ocr_mahadevan.py (pixtral-12b)" />
+                <InfoRow label="Corpus" value="Mahadevan (1977) — Internet Archive" />
+                <InfoRow label="Sign mapping" value="Fuls (2023) Chapter 2.4 — 386 entries" />
+              </tbody>
+            </table>
+          </section>
 
-      {/* ═══════════════════ ENVIRONMENT & SYSTEM ═══════════════════ */}
-      <div id="settings-env" style={groupHeaderStyle}>
-        <span style={{ fontSize: 16 }}>⚙️</span>
-        <span>Environment & System</span>
-      </div>
-
-      <PythonEnvSection />
-
-      {/* System info */}
-      <section style={sectionStyle}>
-        <h3 style={sectionTitleStyle}>System</h3>
-        <table style={{ borderCollapse: "collapse" }}>
-          <tbody>
-            <InfoRow label="Data directory" value={dataDir || "—"} mono />
-            <InfoRow label="OCR pipeline" value="ocr_mahadevan.py (pixtral-12b)" />
-            <InfoRow label="Corpus" value="Mahadevan (1977) — Internet Archive" />
-            <InfoRow label="Sign mapping" value="Fuls (2023) Chapter 2.4 — 386 entries" />
-          </tbody>
-        </table>
-      </section>
-
-      {/* OCR quick-start */}
-      <section style={sectionStyle}>
-        <h3 style={sectionTitleStyle}>OCR Quick Start</h3>
-        <p style={hintTextStyle}>
-          After setting your Mistral key, run OCR from the Experiments tab or directly from the terminal:
-        </p>
-        <pre style={codeStyle}>
+          <section style={sectionStyle}>
+            <h3 style={sectionTitleStyle}>OCR Quick Start</h3>
+            <p style={hintTextStyle}>
+              After setting your Mistral key, run OCR from the Experiments tab or from the terminal:
+            </p>
+            <pre style={codeStyle}>
 {`# Bigram + frequency tables (29 pages, fastest)
 python ocr_mahadevan.py --target tables
 
 # All inscription sequences (124 pages)
 python ocr_mahadevan.py --target texts`}
-        </pre>
-        <p style={{ ...hintTextStyle, marginTop: 6 }}>
-          Results auto-convert from Mahadevan → Fuls sign numbering and save to <code>reports/</code>.
-        </p>
-      </section>
+            </pre>
+          </section>
 
-      {/* About */}
-      <section style={sectionStyle}>
-        <h3 style={sectionTitleStyle}>About Glossa Lab</h3>
-        <p style={hintTextStyle}>
-          17 analysis pipelines for ancient script analysis. Real Indus data extracted
-          from Fuls (2023) <em>A Catalog of Indus Signs</em>: 713 signs, 17,990 token occurrences.
-          Collaboration target: ICIT access from Dr. Andreas Fuls (TU Berlin).
-        </p>
-      </section>
+          <section style={sectionStyle}>
+            <h3 style={sectionTitleStyle}>About Glossa Lab</h3>
+            <p style={hintTextStyle}>
+              17 analysis pipelines for ancient script analysis. Real Indus data extracted
+              from Fuls (2023) <em>A Catalog of Indus Signs</em>: 713 signs, 17,990 token occurrences.
+            </p>
+          </section>
+        </>
+      )}
     </div>
   );
 }
@@ -1215,12 +1248,6 @@ const alertStyle: React.CSSProperties = {
   fontSize: 13,
 };
 
-const groupHeaderStyle: React.CSSProperties = {
-  display: "flex", alignItems: "center", gap: 8,
-  fontSize: 17, fontWeight: 700, color: "#111827",
-  margin: "2rem 0 1rem", paddingBottom: 8,
-  borderBottom: "2px solid #e5e7eb",
-};
 
 const ollamaSection: React.CSSProperties = {
   marginBottom: "2rem",

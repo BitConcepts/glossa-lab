@@ -2,12 +2,21 @@
 
 Keyless. Provides global news monitoring — articles from thousands of
 worldwide news outlets, useful as a complement to the news-API-gated sources.
+
+Rate-limiting strategy:
+  • Global ``asyncio.Lock`` so only one coroutine hits GDELT at a time.
+  • 60 s inter-request delay (12× the documented 5 s minimum).
+  • **Circuit breaker**: if GDELT returns 429, all requests are skipped for
+    an escalating cooldown (1 h → 2 h → 4 h → 8 h, max 24 h).  A successful
+    request resets the breaker.  This prevents retry storms from worsening
+    an IP-level penalty that GDELT applies after sustained over-use.
 """
 
 from __future__ import annotations
 
 import asyncio
 import logging
+import time as _time_mod
 from datetime import datetime
 from typing import Iterable
 
@@ -25,31 +34,87 @@ _log = logging.getLogger("glossa_lab.discovery.fetchers.gdelt")
 
 _ENDPOINT = "https://api.gdeltproject.org/api/v2/doc/doc"
 
+# ── Global GDELT serialisation ──────────────────────────────────────────────
+_gdelt_lock = asyncio.Lock()
+_last_request_mono: float = _time_mod.monotonic()
+
+
+def _update_last_request() -> None:
+    global _last_request_mono  # noqa: PLW0603
+    _last_request_mono = _time_mod.monotonic()
+
+
+async def _wait_for_rate_delay(delay: float) -> None:
+    elapsed = _time_mod.monotonic() - _last_request_mono
+    remaining = delay - elapsed
+    if remaining > 0:
+        _log.debug("GDELT rate-delay: sleeping %.1fs", remaining)
+        await asyncio.sleep(remaining)
+
+
+# ── Circuit breaker ───────────────────────────────────────────────────
+# After a 429, all GDELT requests are skipped for ``_cb_cooldown_secs``.
+# Each consecutive 429 doubles the cooldown (1 h → 2 h → … → 24 h max).
+# A successful request resets everything.
+_CB_INITIAL: float = 3600.0       # 1 hour
+_CB_MAX: float = 86400.0          # 24 hours
+_cb_cooldown_secs: float = 0.0    # 0 = breaker closed (healthy)
+_cb_tripped_at: float = 0.0       # monotonic time of last trip
+_cb_consecutive_429: int = 0
+
+
+def _cb_is_open() -> bool:
+    """True when the circuit breaker is open (requests should be skipped)."""
+    if _cb_cooldown_secs <= 0:
+        return False
+    elapsed = _time_mod.monotonic() - _cb_tripped_at
+    if elapsed >= _cb_cooldown_secs:
+        # Cooldown expired — allow one probe request.
+        return False
+    return True
+
+
+def _cb_trip() -> None:
+    """Record a 429 and escalate the cooldown."""
+    global _cb_cooldown_secs, _cb_tripped_at, _cb_consecutive_429  # noqa: PLW0603
+    _cb_consecutive_429 += 1
+    _cb_cooldown_secs = min(_CB_MAX, _CB_INITIAL * (2 ** (_cb_consecutive_429 - 1)))
+    _cb_tripped_at = _time_mod.monotonic()
+    _log.warning(
+        "GDELT circuit breaker OPEN — skipping all requests for %.0f s "
+        "(consecutive 429s: %d)",
+        _cb_cooldown_secs, _cb_consecutive_429,
+    )
+
+
+def _cb_reset() -> None:
+    """A successful request resets the breaker."""
+    global _cb_cooldown_secs, _cb_tripped_at, _cb_consecutive_429  # noqa: PLW0603
+    if _cb_consecutive_429 > 0:
+        _log.info("GDELT circuit breaker CLOSED — successful request after %d consecutive 429s", _cb_consecutive_429)
+    _cb_cooldown_secs = 0.0
+    _cb_tripped_at = 0.0
+    _cb_consecutive_429 = 0
+
 
 class GDELTFetcher(Fetcher):
     source = "gdelt"
     requires = ()  # keyless
-    rate_delay: float = 30.0  # GDELT enforces 1 req/5s; 30s (6x) eliminates 429s across 3 topics
-    # GDELT has no API key option — rate limit is fixed at 1 req/5s.
-    _MAX_RETRIES: int = 4
-    _RETRY_BACKOFF: float = 10.0  # seconds extra wait per attempt (10/20/30/40)
-
-    # Track last request time class-wide so multiple instances share cooldown.
-    # Initialised to now so the first call after a restart always waits the
-    # full rate_delay — prevents 429s when the backend restarts quickly.
-    import time as _time_init
-    _last_request: float = _time_init.monotonic()
+    rate_delay: float = 60.0
+    _MAX_RETRIES: int = 0  # zero retries — any error trips the breaker
+    _RETRY_BASE: float = 60.0
 
     async def fetch(
         self, topic: TopicProfile, *, since: datetime | None = None,
     ) -> Iterable[RawItem]:
-        # Enforce per-class rate limit before every request.
-        import time as _time
-        now = _time.monotonic()
-        wait = self.rate_delay - (now - GDELTFetcher._last_request)
-        if wait > 0:
-            await asyncio.sleep(wait)
-        GDELTFetcher._last_request = _time.monotonic()
+        # ── Circuit breaker check ─────────────────────────────────────
+        if _cb_is_open():
+            remaining = _cb_cooldown_secs - (_time_mod.monotonic() - _cb_tripped_at)
+            _log.debug(
+                "GDELT circuit breaker open — skipping topic %s (%.0fs remaining)",
+                topic.id, remaining,
+            )
+            return []
 
         opts = topic.overrides_for(self.source)
         max_results = int(opts.get("max_results", 25))
@@ -62,40 +127,59 @@ class GDELTFetcher(Fetcher):
             "sort": opts.get("sort", "DateDesc"),
         }
         if since is not None:
-            # GDELT accepts startdatetime as YYYYMMDDHHmmss
             params["startdatetime"] = since.strftime("%Y%m%d%H%M%S")
-        # Retry loop for 429 / SSL-timeout / connection errors
+
         data: dict | None = None
         for attempt in range(1 + self._MAX_RETRIES):
-            try:
-                data = await run_in_thread(
-                    http_get_json, _ENDPOINT, params=params, timeout=30.0,
-                )
-                break
-            except FetcherError as exc:
-                err_str = str(exc)
-                is_retryable = (
-                    "429" in err_str
-                    or "timed out" in err_str.lower()
-                    or "ssl" in err_str.lower()
-                    or "urlopen error" in err_str.lower()
-                    or "urlerror" in err_str.lower()
-                    or "winerror" in err_str.lower()
-                    or "connection" in err_str.lower()
-                )
-                if is_retryable and attempt < self._MAX_RETRIES:
-                    backoff = self._RETRY_BACKOFF * (attempt + 1)
-                    _log.info(
-                        "GDELT error for topic %s (attempt %d/%d), "
-                        "retrying in %.0fs: %s",
-                        topic.id, attempt + 1, self._MAX_RETRIES,
-                        backoff, err_str[:120],
+            async with _gdelt_lock:
+                await _wait_for_rate_delay(self.rate_delay)
+                _update_last_request()
+                try:
+                    data = await run_in_thread(
+                        http_get_json, _ENDPOINT, params=params, timeout=30.0,
                     )
-                    await asyncio.sleep(backoff)
-                    GDELTFetcher._last_request = _time.monotonic()
-                    continue
-                _log.warning("GDELT error for topic %s: %s", topic.id, exc)
-                return []
+                    _cb_reset()  # success — reset breaker
+                    break
+                except FetcherError as exc:
+                    err_str = str(exc)
+                    is_429 = "429" in err_str
+                    is_retryable = (
+                        is_429
+                        or "timed out" in err_str.lower()
+                        or "ssl" in err_str.lower()
+                        or "urlopen error" in err_str.lower()
+                        or "urlerror" in err_str.lower()
+                        or "winerror" in err_str.lower()
+                        or "connection" in err_str.lower()
+                    )
+                    if is_429 or is_retryable:
+                        # Trip the circuit breaker on ANY error — GDELT
+                        # blocks the whole IP, so URLError / timeout / 429
+                        # all mean the same thing: stop hitting them.
+                        _cb_trip()
+                        _log.info(
+                            "GDELT %s for topic %s — breaker tripped, skipping remaining topics",
+                            "429" if is_429 else "error", topic.id,
+                        )
+                        return []
+                    if is_retryable and attempt < self._MAX_RETRIES:
+                        backoff = self._RETRY_BASE * (attempt + 1)
+                        _log.info(
+                            "GDELT error for topic %s (attempt %d/%d), "
+                            "retrying in %.0fs: %s",
+                            topic.id, attempt + 1, self._MAX_RETRIES,
+                            backoff, err_str[:200],
+                        )
+                        _update_last_request()
+                    else:
+                        _log.warning("GDELT exhausted retries for topic %s: %s", topic.id, exc)
+                        return []
+            # Backoff sleep outside lock (only for non-429 retryable errors).
+            if data is None and attempt < self._MAX_RETRIES:
+                backoff = self._RETRY_BASE * (attempt + 1)
+                await asyncio.sleep(backoff)
+                _update_last_request()
+
         if not isinstance(data, dict):
             return []
 

@@ -1659,6 +1659,7 @@ export interface DashboardHighlights {
   by_source: Record<string, number>;
   n_studies: number;
   n_experiments: number;
+  n_hypotheses: number;
   since_days: number;
   insight: DashboardInsight | null;
 }

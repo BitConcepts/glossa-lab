@@ -37,7 +37,8 @@ export function AIEndpointsPanel() {
   const [presets, setPresets] = useState<AIEndpointPreset[]>([]);
   const [items, setItems] = useState<AIEndpoint[]>([]);
   const [loading, setLoading] = useState(true);
-  const [busy, setBusy] = useState(false);
+  const [busyDraft, setBusyDraft] = useState(false);
+  const [busySaved, setBusySaved] = useState<string | null>(null);
   const [draft, setDraft] = useState<DraftEndpoint>(EMPTY);
   const [presetId, setPresetId] = useState<string>("custom");
   const [verifyState, setVerifyState] = useState<Record<string, { msg: string; ok: boolean; models: string[] } | null>>({});
@@ -87,7 +88,7 @@ export function AIEndpointsPanel() {
       toast("Name and Base URL are required", "warning");
       return;
     }
-    setBusy(true);
+    setBusyDraft(true);
     try {
       await createAIEndpoint({
         name: draft.name.trim(),
@@ -104,7 +105,7 @@ export function AIEndpointsPanel() {
       await refresh();
     } catch (err) {
       toast(err instanceof Error ? err.message : "Save failed", "error");
-    } finally { setBusy(false); }
+    } finally { setBusyDraft(false); }
   };
 
   const onTestDraft = async () => {
@@ -112,7 +113,7 @@ export function AIEndpointsPanel() {
       toast("Enter a Base URL first", "warning");
       return;
     }
-    setBusy(true);
+    setBusyDraft(true);
     try {
       const r = await verifyAIEndpointConfig({
         base_url: draft.base_url.trim(),
@@ -122,17 +123,17 @@ export function AIEndpointsPanel() {
       setVerifyState((s) => ({ ...s, "_draft": { msg: r.message, ok: r.valid, models: r.models } }));
     } catch (err) {
       setVerifyState((s) => ({ ...s, "_draft": { msg: err instanceof Error ? err.message : "request failed", ok: false, models: [] } }));
-    } finally { setBusy(false); }
+    } finally { setBusyDraft(false); }
   };
 
   const onTestSaved = async (e: AIEndpoint) => {
-    setBusy(true);
+    setBusySaved(e.id);
     try {
       const r = await verifyAIEndpoint(e.id);
       setVerifyState((s) => ({ ...s, [e.id]: { msg: r.message, ok: r.valid, models: r.models } }));
     } catch (err) {
       setVerifyState((s) => ({ ...s, [e.id]: { msg: err instanceof Error ? err.message : "request failed", ok: false, models: [] } }));
-    } finally { setBusy(false); }
+    } finally { setBusySaved(null); }
   };
 
   const onToggleEnabled = async (e: AIEndpoint) => {
@@ -179,12 +180,8 @@ export function AIEndpointsPanel() {
       toast("Name and Base URL are required", "warning");
       return;
     }
-    setBusy(true);
+    setBusySaved(id);
     try {
-      // Build a partial body: only include api_key when the user actually
-      // typed a new one, so editing other fields doesn't blow away the
-      // stored key. Same for default_model / notes — explicit empty string
-      // is a deliberate clear, undefined is "don't touch".
       const body: Record<string, string> = {
         name: editDraft.name.trim(),
         endpoint_kind: editDraft.endpoint_kind,
@@ -199,7 +196,7 @@ export function AIEndpointsPanel() {
       await refresh();
     } catch (err) {
       toast(err instanceof Error ? err.message : "Update failed", "error");
-    } finally { setBusy(false); }
+    } finally { setBusySaved(null); }
   };
 
   return (
@@ -253,11 +250,11 @@ export function AIEndpointsPanel() {
             placeholder="Notes (optional)"
             style={input} />
           <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-            <button onClick={() => void onSave()} disabled={busy} style={btnPrimary}>
-              {busy ? "Saving…" : "Save endpoint"}
+            <button onClick={() => void onSave()} disabled={busyDraft} style={btnPrimary}>
+              {busyDraft ? "Saving…" : "Save endpoint"}
             </button>
-            <button onClick={() => void onTestDraft()} disabled={busy} style={btnGhostStrong}>
-              Test connection
+            <button onClick={() => void onTestDraft()} disabled={busyDraft} style={btnGhostStrong}>
+              {busyDraft ? "Testing…" : "Test connection"}
             </button>
             {verifyState["_draft"] && (
               <span style={{ ...verdictStyle(verifyState["_draft"].ok), marginLeft: "auto" }}>
@@ -301,11 +298,11 @@ export function AIEndpointsPanel() {
                     {e.default_model ? <span style={chip("#7c3aed")}>{e.default_model}</span> : null}
                     {isEditing ? (
                       <div style={{ marginLeft: "auto", display: "flex", gap: 6 }}>
-                        <button onClick={() => void onSaveEdit(e.id)} disabled={busy}
+                        <button onClick={() => void onSaveEdit(e.id)} disabled={busySaved === e.id}
                           style={btnPrimary}>
-                          {busy ? "Saving…" : "Save"}
+                          {busySaved === e.id ? "Saving…" : "Save"}
                         </button>
-                        <button onClick={onCancelEdit} disabled={busy} style={btnGhost}>
+                        <button onClick={onCancelEdit} style={btnGhost}>
                           Cancel
                         </button>
                       </div>
@@ -316,10 +313,10 @@ export function AIEndpointsPanel() {
                             onChange={() => void onToggleEnabled(e)} />
                           enabled
                         </label>
-                        <button onClick={() => void onTestSaved(e)} disabled={busy} style={btnGhost}>
-                          Test
+                        <button onClick={() => void onTestSaved(e)} disabled={busySaved === e.id} style={btnGhost}>
+                          {busySaved === e.id ? "Testing…" : "Test"}
                         </button>
-                        <button onClick={() => onStartEdit(e)} disabled={busy} style={btnGhost}>
+                        <button onClick={() => onStartEdit(e)} style={btnGhost}>
                           Edit
                         </button>
                         <button onClick={() => void onDelete(e)} style={{ ...btnGhost, color: "#dc2626", borderColor: "#fca5a5" }}>

@@ -6,9 +6,10 @@
 import { useEffect, useState } from "react";
 import {
   aiGenerateHypotheses, aiExperimentChain,
-  createHypothesis, deleteHypothesis, listHypotheses, listStudies, updateHypothesis,
+  createHypothesis, deleteHypothesis, listHypotheses, updateHypothesis,
   type Hypothesis,
 } from "../api";
+import { useProject } from "../hooks/useProject";
 import { useToast } from "../hooks/useToast";
 
 const STATUS_COLORS: Record<string, { bg: string; text: string }> = {
@@ -168,6 +169,8 @@ function HypCard({ h, onUpdated, onDeleted }: {
 
 export function HypothesisTracker() {
   const { toast } = useToast();
+  const { activeProject } = useProject();
+  const projectId = activeProject?.id ?? null;
   const [hypotheses, setHypotheses] = useState<Hypothesis[]>([]);
   const [loading, setLoading] = useState(true);
   const [newTitle, setNewTitle] = useState("");
@@ -175,26 +178,23 @@ export function HypothesisTracker() {
   const [aiLoading, setAiLoading] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [aiResult, setAiResult] = useState<Record<string, any> | null>(null);
-  const [studies, setStudies] = useState<{ id: string; name: string }[]>([]);
-  const [aiStudyId, setAiStudyId] = useState("");
   const [filter, setFilter] = useState<"all" | "active" | "confirmed" | "refuted" | "paused">("all");
 
   const load = async () => {
     setLoading(true);
-    try { setHypotheses(await listHypotheses()); }
+    try { setHypotheses(await listHypotheses(projectId)); }
     catch { toast("Failed to load", "error"); }
     finally { setLoading(false); }
   };
 
   useEffect(() => {
     load();
-    listStudies().then((s) => setStudies(s.map((x) => ({ id: x.id, name: x.name })))).catch(() => {});
-  }, []);
+  }, [projectId]);
 
   const addHyp = async () => {
     if (!newTitle.trim()) return;
     try {
-      const h = await createHypothesis({ title: newTitle.trim() });
+      const h = await createHypothesis({ title: newTitle.trim(), project_id: projectId || undefined });
       setHypotheses((prev) => [h, ...prev]); setNewTitle("");
       toast("Hypothesis created", "success");
     } catch { toast("Failed", "error"); }
@@ -203,7 +203,7 @@ export function HypothesisTracker() {
   const handleAIGenerate = async () => {
     setAiLoading(true); setAiResult(null);
     try {
-      const r = await aiGenerateHypotheses({ study_id: aiStudyId || undefined, context: aiContext });
+      const r = await aiGenerateHypotheses({ context: aiContext });
       setAiResult(r);
     } catch (e) { toast(e instanceof Error ? e.message : "AI error", "error"); }
     finally { setAiLoading(false); }
@@ -251,15 +251,6 @@ export function HypothesisTracker() {
       <details style={{ marginBottom: "1.25rem" }}>
         <summary style={{ cursor: "pointer", fontWeight: 600, fontSize: 13, color: "#7c3aed" }}>✨ AI Generate Hypotheses</summary>
         <div style={{ marginTop: 10, padding: "14px 16px", border: "1px solid #a78bfa", borderRadius: 8, background: "#faf5ff" }}>
-          {studies.length > 0 && (
-            <div style={{ marginBottom: 8 }}>
-              <label style={sLabel}>Link to study (optional)</label>
-              <select value={aiStudyId} onChange={(e) => setAiStudyId(e.target.value)} style={inputStyle}>
-                <option value="">— none —</option>
-                {studies.map((s) => <option key={s.id} value={s.id}>{s.name}</option>)}
-              </select>
-            </div>
-          )}
           <div style={{ marginBottom: 8 }}>
             <label style={sLabel}>Context (optional)</label>
             <textarea value={aiContext} onChange={(e) => setAiContext(e.target.value)} rows={3}

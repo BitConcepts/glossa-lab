@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { StatusView } from "./components/StatusView";
 import { CorporaView } from "./components/CorporaView";
 import { JobsView } from "./components/JobsView";
@@ -18,6 +18,7 @@ import { TimelineView } from "./components/TimelineView";
 import { CitationManager } from "./components/CitationManager";
 import { CASModelView } from "./components/CASModelView";
 import { DashboardView } from "./components/DashboardView";
+import { CorrespondenceView } from "./components/CorrespondenceView";
 import { DiscoveryView } from "./components/Discovery/DiscoveryView";
 import { CommandPalette, type PaletteCommand } from "./components/CommandPalette";
 import { AISidePanel } from "./components/AIChatWindow";
@@ -25,13 +26,14 @@ import { BottomPanel } from "./components/BottomPanel";
 import { NotificationCenter } from "./components/NotificationDrawer";
 import { ToastProvider } from "./hooks/useToast";
 import { AIChatProvider, useAIChat } from "./hooks/useAIChat";
+import { ProjectProvider, useProject } from "./hooks/useProject";
 import { getHealth, listJobs } from "./api";
 
 type Tab =
   | "dashboard"
   | "status" | "indus-data" | "builder" | "experiments" | "pipelines"
   | "corpora" | "jobs" | "reports" | "settings"
-  | "entropy" | "hypotheses" | "notebooks" | "ai-tools" | "signs" | "timeline" | "citations" | "help" | "models"
+  | "entropy" | "hypotheses" | "notebooks" | "ai-tools" | "signs" | "timeline" | "citations" | "correspondence" | "help" | "models"
   | "discovery"
   | "exp-builder"; // legacy alias — still handled but not in nav
 
@@ -75,8 +77,9 @@ const NAV_SECTIONS: NavSection[] = [
       { id: "discovery",  label: "Discovery",  icon: "🔭" },
       { id: "hypotheses", label: "Hypotheses", icon: "💡" },
       { id: "notebooks",  label: "Notebooks",  icon: "📓" },
-      { id: "citations",  label: "Citations",  icon: "📖" },
-      { id: "ai-tools",   label: "AI Tools",   icon: "🔬" },
+      { id: "citations",       label: "Citations",       icon: "📖" },
+      { id: "correspondence",  label: "Correspondence",  icon: "✉" },
+      { id: "ai-tools",        label: "AI Tools",        icon: "🔬" },
       { id: "help",       label: "Help",        icon: "📘" },
     ],
   },
@@ -111,7 +114,113 @@ function HealthBadge() {
   );
 }
 
+/** Compact project selector for the sidebar. */
+function ProjectSelector({ onNavigateToProjects }: { onNavigateToProjects: () => void }) {
+  const { activeProject, projects, setActiveProject } = useProject();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const h = (e: MouseEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false); };
+    document.addEventListener("mousedown", h);
+    return () => document.removeEventListener("mousedown", h);
+  }, [open]);
+
+  return (
+    <div ref={ref} style={{ padding: "6px 10px 8px", borderBottom: "1px solid rgba(255,255,255,0.06)", flexShrink: 0, position: "relative" }}>
+      <button
+        onClick={() => setOpen((v) => !v)}
+        style={{
+          width: "100%", padding: "6px 10px", borderRadius: 6,
+          border: activeProject
+            ? "1px solid rgba(37,99,235,0.4)"
+            : "1px solid rgba(255,255,255,0.1)",
+          background: activeProject
+            ? "rgba(37,99,235,0.12)"
+            : "rgba(255,255,255,0.04)",
+          cursor: "pointer", display: "flex", alignItems: "center", gap: 8,
+          color: activeProject ? "#93c5fd" : "rgba(255,255,255,0.5)",
+          transition: "all 0.12s",
+        }}
+      >
+        <span style={{ fontSize: 12, lineHeight: 1 }}>📁</span>
+        <span style={{ flex: 1, fontSize: 11, fontWeight: activeProject ? 600 : 400,
+          textAlign: "left", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+          {activeProject ? activeProject.label : "All Projects (Global)"}
+        </span>
+        <span style={{ fontSize: 9, opacity: 0.5 }}>{open ? "▲" : "▼"}</span>
+      </button>
+
+      {open && (
+        <div style={{
+          position: "absolute", top: "100%", left: 10, right: 10, zIndex: 300,
+          background: "#1e293b", border: "1px solid rgba(255,255,255,0.12)",
+          borderRadius: 8, boxShadow: "0 8px 24px rgba(0,0,0,0.4)",
+          maxHeight: 280, overflowY: "auto",
+          marginTop: 2,
+        }}>
+          {/* Global option */}
+          <button
+            onClick={() => { void setActiveProject(null); setOpen(false); }}
+            style={{
+              width: "100%", padding: "8px 12px", border: "none",
+              background: !activeProject ? "rgba(37,99,235,0.15)" : "none",
+              color: !activeProject ? "#93c5fd" : "rgba(255,255,255,0.6)",
+              cursor: "pointer", textAlign: "left", fontSize: 11,
+              fontWeight: !activeProject ? 700 : 400,
+              borderBottom: "1px solid rgba(255,255,255,0.06)",
+            }}
+          >
+            🌐 All Projects (Global)
+          </button>
+          {projects.map((p) => {
+            const sel = activeProject?.id === p.id;
+            return (
+              <button key={p.id}
+                onClick={() => { void setActiveProject(p.id); setOpen(false); }}
+                style={{
+                  width: "100%", padding: "8px 12px", border: "none",
+                  background: sel ? "rgba(37,99,235,0.15)" : "none",
+                  color: sel ? "#93c5fd" : "rgba(255,255,255,0.6)",
+                  cursor: "pointer", textAlign: "left", fontSize: 11,
+                  fontWeight: sel ? 700 : 400,
+                  borderBottom: "1px solid rgba(255,255,255,0.04)",
+                  display: "flex", alignItems: "center", gap: 6,
+                }}
+              >
+                <span style={{ flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                  {p.label}
+                </span>
+                {p.is_active ? (
+                  <span style={{ fontSize: 8, padding: "1px 5px", borderRadius: 6,
+                    background: "rgba(34,197,94,0.2)", color: "#4ade80", fontWeight: 700 }}>
+                    ACTIVE
+                  </span>
+                ) : null}
+              </button>
+            );
+          })}
+          {/* Manage link */}
+          <button
+            onClick={() => { onNavigateToProjects(); setOpen(false); }}
+            style={{
+              width: "100%", padding: "7px 12px", border: "none",
+              borderTop: "1px solid rgba(255,255,255,0.08)",
+              background: "none", color: "rgba(255,255,255,0.4)",
+              cursor: "pointer", textAlign: "left", fontSize: 10,
+            }}
+          >
+            ⚙ Manage Projects…
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function AppContent() {
+  const projCtx = useProject();
   // Dashboard is the default landing tab — it's the only screen that gives a
   // global picture of the project (highlights, feed, AI insight). Persisted
   // selection from a prior session still wins via the navigate event below.
@@ -347,7 +456,7 @@ function AppContent() {
       }}>
 
         {/* Logo + title */}
-        <div style={{ padding: "18px 14px 14px", borderBottom: "1px solid rgba(255,255,255,0.08)", flexShrink: 0 }}>
+        <div style={{ padding: "18px 14px 10px", borderBottom: "1px solid rgba(255,255,255,0.08)", flexShrink: 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 9, marginBottom: 8 }}>
             <div style={{ width: 30, height: 30, borderRadius: 7, background: "linear-gradient(135deg,#2563eb,#60a5fa)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 800, fontSize: 14, flexShrink: 0 }}>G</div>
             <div style={{ minWidth: 0 }}>
@@ -357,6 +466,9 @@ function AppContent() {
           </div>
           <HealthBadge />
         </div>
+
+        {/* Project selector */}
+        <ProjectSelector onNavigateToProjects={() => setTab("builder")} />
 
         {/* Scrollable nav */}
         <div style={{ flex: 1, overflowY: "auto", paddingTop: 6, paddingBottom: 6 }}>
@@ -433,6 +545,21 @@ function AppContent() {
         }}>
           {/* Breadcrumb */}
           <span style={{ fontSize: 13, color: muted }}>Glossa Lab</span>
+          {projCtx.activeProject && (
+            <>
+              <span style={{ color: border, fontSize: 13 }}>/</span>
+              <span
+                style={{ fontSize: 12, padding: "2px 8px", borderRadius: 10,
+                  background: darkMode ? "rgba(37,99,235,0.18)" : "#eff6ff",
+                  color: "#2563eb", fontWeight: 600, cursor: "pointer",
+                  border: "1px solid rgba(37,99,235,0.25)" }}
+                onClick={() => setTab("builder")}
+                title={`Active project: ${projCtx.activeProject.label}`}
+              >
+                {projCtx.activeProject.label}
+              </span>
+            </>
+          )}
           <span style={{ color: border, fontSize: 13 }}>/</span>
           <span style={{ fontSize: 13, fontWeight: 600, color: fg }}>{currentLabel}</span>
 
@@ -498,7 +625,8 @@ function AppContent() {
               {tab === "ai-tools"    && <AIToolsView />}
               {tab === "signs"       && <SignDictionary />}
               {tab === "timeline"    && <TimelineView onNavigate={(t) => setTab(t as Tab)} />}
-              {tab === "citations"   && <CitationManager />}
+              {tab === "citations"       && <CitationManager />}
+              {tab === "correspondence"  && <CorrespondenceView />}
               {tab === "discovery"   && <DiscoveryView />}
               {tab === "help"        && <HelpView />}
             </main>
@@ -553,7 +681,9 @@ export function App() {
   return (
     <ToastProvider>
       <AIChatProvider>
-        <AppContent />
+        <ProjectProvider>
+          <AppContent />
+        </ProjectProvider>
       </AIChatProvider>
     </ToastProvider>
   );

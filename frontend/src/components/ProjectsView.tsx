@@ -15,6 +15,17 @@ import {
 } from "../api";
 import { useToast } from "../hooks/useToast";
 
+/** Deep-link to a specific experiment in the builder. */
+function openExpInBuilder(expId: string) {
+  localStorage.setItem(
+    "glossa_exp_builder_open",
+    JSON.stringify({ action: "load", id: expId }),
+  );
+  window.dispatchEvent(
+    new CustomEvent("glossa:navigate", { detail: { view: "exp-builder" } }),
+  );
+}
+
 export function ProjectsView() {
   const { toast } = useToast();
   const [projects, setProjects] = useState<Project[]>([]);
@@ -178,9 +189,12 @@ export function ProjectsView() {
               </button>
             </div>
 
-            <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.55, margin: "0 0 16px" }}>
-              {active.description}
-            </p>
+            {/* Description shown in header only if non-empty and not in edit section */}
+            {active.description && (
+              <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.55, margin: "0 0 16px" }}>
+                {active.description}
+              </p>
+            )}
 
             {/* Topics */}
             <Section title="🔭 Discovery Topics" count={active.topic_ids?.length ?? 0}>
@@ -200,8 +214,8 @@ export function ProjectsView() {
                 overflowY: "auto" }}>
                 {(active.experiment_ids || []).slice(0, 50).map((e) => (
                   <span key={e} style={{ ...chip, cursor: "pointer" }}
-                    onClick={() => navigate("experiments")}
-                    title={`Open experiment: ${e}`}>
+                    onClick={() => openExpInBuilder(e)}
+                    title={`Open ${e} in Experiment Builder`}>
                     {e}
                   </span>
                 ))}
@@ -230,17 +244,38 @@ export function ProjectsView() {
               </div>
             </Section>
 
-            {/* AI Context */}
-            <Section title="🤖 AI Prompt Context" count={active.prompt_context ? 1 : 0}>
-              {active.prompt_context ? (
-                <div style={{ fontSize: 12, color: "#374151", lineHeight: 1.5,
-                  background: "#f8fafc", padding: 10, borderRadius: 6,
-                  border: "1px solid #e5e7eb", maxHeight: 120, overflowY: "auto" }}>
-                  {active.prompt_context}
-                </div>
-              ) : (
-                <span style={{ fontSize: 11, color: "#9ca3af" }}>No prompt context set</span>
-              )}
+            {/* Project Goals (editable prompt_context) */}
+            <Section title="🎯 Project Goals" count={active.prompt_context ? 1 : 0}>
+              <EditableTextArea
+                value={active.prompt_context}
+                placeholder="Describe the research goals for this project. This text is injected into every LLM call (discovery mining, dashboard insight, AI chat) to scope the AI to your research."
+                onSave={async (val) => {
+                  try {
+                    await upsertProject(active.id, { ...active, prompt_context: val });
+                    toast("Project goals saved", "success");
+                    void refresh();
+                  } catch (e) {
+                    toast(e instanceof Error ? e.message : "Save failed", "error");
+                  }
+                }}
+              />
+            </Section>
+
+            {/* Description (editable) */}
+            <Section title="📝 Description" count={active.description ? 1 : 0}>
+              <EditableTextArea
+                value={active.description}
+                placeholder="Short description of this project."
+                onSave={async (val) => {
+                  try {
+                    await upsertProject(active.id, { ...active, description: val });
+                    toast("Description saved", "success");
+                    void refresh();
+                  } catch (e) {
+                    toast(e instanceof Error ? e.message : "Save failed", "error");
+                  }
+                }}
+              />
             </Section>
 
             {/* Quick links */}
@@ -268,6 +303,67 @@ function Section({ title, count, children }: {
         {title} <span style={{ color: "#9ca3af", fontWeight: 500 }}>({count})</span>
       </div>
       {children}
+    </div>
+  );
+}
+
+/** Inline editable textarea with Save/Cancel. */
+function EditableTextArea({ value, placeholder, onSave }: {
+  value: string; placeholder: string; onSave: (v: string) => Promise<void>;
+}) {
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState(value);
+  const [saving, setSaving] = useState(false);
+
+  useEffect(() => { setDraft(value); }, [value]);
+
+  if (!editing) {
+    return (
+      <div
+        onClick={() => setEditing(true)}
+        style={{ fontSize: 12, color: value ? "#374151" : "#9ca3af", lineHeight: 1.5,
+          background: "#f8fafc", padding: 10, borderRadius: 6,
+          border: "1px solid #e5e7eb", cursor: "pointer",
+          minHeight: 40, whiteSpace: "pre-wrap" }}
+        title="Click to edit">
+        {value || placeholder}
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <textarea
+        value={draft}
+        onChange={(e) => setDraft(e.target.value)}
+        placeholder={placeholder}
+        rows={4}
+        style={{ width: "100%", fontSize: 12, padding: 8, borderRadius: 6,
+          border: "1px solid #7c3aed", lineHeight: 1.5, resize: "vertical",
+          fontFamily: "inherit" }}
+        autoFocus
+      />
+      <div style={{ display: "flex", gap: 6, marginTop: 6 }}>
+        <button
+          disabled={saving}
+          onClick={async () => {
+            setSaving(true);
+            await onSave(draft);
+            setSaving(false);
+            setEditing(false);
+          }}
+          style={{ padding: "4px 12px", border: "1px solid #2563eb", borderRadius: 5,
+            background: "#2563eb", color: "#fff", fontSize: 11, fontWeight: 600,
+            cursor: "pointer" }}>
+          {saving ? "Saving…" : "Save"}
+        </button>
+        <button
+          onClick={() => { setDraft(value); setEditing(false); }}
+          style={{ padding: "4px 12px", border: "1px solid #d1d5db", borderRadius: 5,
+            background: "#fff", color: "#374151", fontSize: 11, cursor: "pointer" }}>
+          Cancel
+        </button>
+      </div>
     </div>
   );
 }

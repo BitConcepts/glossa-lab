@@ -532,6 +532,21 @@ export function DashboardView() {
             open_hypothesis: "hypotheses",
           };
           const view = viewMap[a.action_type] ?? String(a.params?.view || "dashboard");
+
+          // Deep-link: if the action carries an experiment_id AND the
+          // target is the experiments page, open the exact experiment
+          // in the builder instead of the generic gallery.
+          const deepExpId = String(a.params?.experiment_id || "").trim();
+          if (deepExpId && (view === "experiments" || (a.action_type as string) === "open_experiment")) {
+            localStorage.setItem(
+              "glossa_exp_builder_open",
+              JSON.stringify({ action: "load", id: deepExpId }),
+            );
+            navigate("exp-builder");
+            toast(`Opening experiment ${deepExpId}`, "info");
+            break;
+          }
+
           // External views: open in a new tab instead of internal navigation
           if (view === "wiki" || view === "github_wiki") {
             window.open("https://github.com/layer1labs/glossa-lab/wiki", "_blank");

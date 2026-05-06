@@ -74,12 +74,24 @@ async def _study_count() -> int:
         return 0
 
 
-async def _experiment_count() -> int:
-    """Approximate count of registered graph experiments."""
+def _graph_experiment_ids() -> list[str]:
+    """Return sorted IDs of graph experiments (what the user actually sees)."""
     try:
-        from glossa_lab.experiment_base import discover_experiments  # noqa: PLC0415
+        from glossa_lab.experiment_graph import list_graph_experiments  # noqa: PLC0415
 
-        return len(discover_experiments())
+        return sorted(spec["id"] for spec in list_graph_experiments())
+    except Exception:  # noqa: BLE001
+        return []
+
+
+async def _hypothesis_count() -> int:
+    """Count of tracked hypotheses (not discovery items tagged 'hypothesis')."""
+    db = get_db()
+    if db is None:
+        return 0
+    try:
+        rows = await db.list_hypotheses()
+        return len(rows)
     except Exception:  # noqa: BLE001
         return 0
 
@@ -95,8 +107,14 @@ _INSIGHT_PROMPT_TEMPLATE = (
     "                    {id, title, why_it_matters}\n"
     "  what_it_means   — 2-3 sentence narrative summarising the trend or\n"
     "                    cluster across the items\n"
-    "  impact          — list of {study_or_experiment_id, impact,\n"
-    "                    suggested_action, suggested_params} where\n"
+    "  impact          — list of {study_or_experiment_id, name, impact,\n"
+    "                    suggested_action, suggested_params}.\n"
+    "                    CRITICAL: study_or_experiment_id MUST be an id\n"
+    "                    that appears VERBATIM in the 'Registered\n"
+    "                    experiments' or 'User's studies' lists below.\n"
+    "                    NEVER invent, abbreviate, or hash an id.\n"
+    "                    name is a short human-readable label for the\n"
+    "                    experiment or study.\n"
     "                    suggested_action is one of the action_type\n"
     "                    string values listed below (NEVER an object).\n"
     "                    suggested_params is a JSON object carrying the\n"
@@ -107,8 +125,10 @@ _INSIGHT_PROMPT_TEMPLATE = (
     "                    {label, action_type, params, rationale}.\n"
     "\n"
     "action_type MUST be one of:\n"
-    "  run_experiment           — params: {experiment_id} (use exactly an\n"
-    "                             id from the registered list).\n"
+    "  run_experiment           — params: {experiment_id} where\n"
+    "                             experiment_id MUST be copied EXACTLY\n"
+    "                             from the 'Registered experiments'\n"
+    "                             list. NEVER fabricate an id.\n"
     "  open_view                — params: {view} (one of: discovery,\n"
     "                             builder, experiments, hypotheses,\n"
     "                             notebooks, ai-tools, reports, settings,\n"
@@ -125,7 +145,7 @@ _INSIGHT_PROMPT_TEMPLATE = (
     "Pick action_type values that map to real next steps. Prefer\n"
     "run_experiment and propose_experiment_chain over no_op when there's\n"
     "a clear research move. params MUST be a JSON object (use {} when\n"
-    "empty). Use ids exactly as given for run_experiment.\n"
+    "empty).\n"
     "\n"
     "Return ONLY valid JSON, no markdown fences."
 )
@@ -246,12 +266,59 @@ async def _generate_insight(
         # string. Detect both shapes and split into a stable wire format:
         # ``suggested_action`` is always a string action_type and the
         # accompanying params (if any) move to ``suggested_params``.
+        # Validate experiment IDs against the real registry.  The LLM
+        # sometimes hallucinates hex-hash-style ids; we resolve or strip
+        # them here so the frontend never sees a phantom experiment.
+        exp_set = set(experiments)  # O(1) lookup
+        import re as _re  # noqa: PLC0415
+        _hex_re = _re.compile(r"^[0-9a-f]{8,}$", _re.IGNORECASE)
+
+        def _resolve_exp_id(raw_id: str) -> str:
+            """Return a valid experiment id, or '' if unresolvable."""
+            if not raw_id:
+                return ""
+            if raw_id in exp_set:
+                return raw_id
+            # If it's a hex hash the LLM made up, drop it.
+            if _hex_re.match(raw_id):
+                return ""
+            # Fuzzy match: substring containment + prefix similarity.
+            best, best_score = "", 0
+            low = raw_id.lower()
+            for eid in experiments:
+                eid_low = eid.lower()
+                # Substring containment (either direction).
+                if low in eid_low or eid_low in low:
+                    score = min(len(low), len(eid_low))
+                    if score > best_score:
+                        best, best_score = eid, score
+                    continue
+                # Prefix similarity: common prefix ≥ 70% of the longer string.
+                common = 0
+                max_check = min(len(low), len(eid_low))
+                while common < max_check and low[common] == eid_low[common]:
+                    common += 1
+                longer = max(len(low), len(eid_low))
+                if longer > 0 and common / longer >= 0.7 and common > best_score:
+                    best, best_score = eid, common
+            if not best:
+                _log.warning(
+                    "Experiment ID '%s' unresolvable; %d registered: %s",
+                    raw_id, len(experiments),
+                    ", ".join(experiments[:20]) or "(empty)",
+                )
+            return best
+
         impact_norm: list[dict[str, Any]] = []
         for im in parsed.get("impact", []):
             if not isinstance(im, dict):
                 continue
             im.setdefault("study_or_experiment_id", im.get("id", ""))
             im.setdefault("impact", "")
+            # Resolve the experiment id. Strip hex hashes the LLM made up.
+            raw_eid = str(im.get("study_or_experiment_id", ""))
+            resolved = _resolve_exp_id(raw_eid)
+            im["study_or_experiment_id"] = resolved  # may be "" if unresolvable
             sa = im.get("suggested_action", "no_op")
             sp = im.get("suggested_params")
             if isinstance(sa, dict):
@@ -263,8 +330,45 @@ async def _generate_insight(
                 sa = "no_op"
             im["suggested_action"] = sa
             im["suggested_params"] = sp if isinstance(sp, dict) else {}
+            # Ensure suggested_params.experiment_id is also valid.
+            if sa == "run_experiment" and isinstance(sp, dict):
+                p_eid = str(sp.get("experiment_id", resolved or ""))
+                final_eid = _resolve_exp_id(p_eid) or resolved
+                sp["experiment_id"] = final_eid
+                # If experiment_id is still empty after resolution,
+                # downgrade to open_view so the button still appears
+                # and navigates the user to the experiments page.
+                if not final_eid:
+                    im["suggested_action"] = "open_view"
+                    im["suggested_params"] = {"view": "experiments"}
+                    im["impact"] = (
+                        f"{im.get('impact', '')} "
+                        f"[experiment '{p_eid}' not in registry]"
+                    ).strip()
+                    sa = "open_view"
             impact_norm.append(im)
         parsed["impact"] = impact_norm
+
+        # Same validation for next_actions with run_experiment.
+        for a in normalised:
+            if a.get("action_type") == "run_experiment":
+                p = a.get("params", {})
+                if isinstance(p, dict):
+                    eid = str(p.get("experiment_id", ""))
+                    resolved_na = _resolve_exp_id(eid)
+                    if resolved_na:
+                        p["experiment_id"] = resolved_na
+                    elif eid:
+                        # Unresolvable — downgrade to open_view so button
+                        # still appears and points user to the experiments page.
+                        a["action_type"] = "open_view"
+                        a["params"] = {"view": "experiments"}
+                        a["rationale"] = (
+                            f"{a.get('rationale', '')} "
+                            f"[experiment '{eid}' not in registry — open Experiments to find it]"
+                        ).strip()
+        parsed["next_actions"] = normalised
+
         parsed["model"] = "ai"
         return parsed
     except Exception as exc:  # noqa: BLE001
@@ -322,12 +426,8 @@ async def dashboard_highlights(
             studies = await db.list_studies()
         except Exception:  # noqa: BLE001
             studies = []
-    try:
-        from glossa_lab.experiment_base import discover_experiments  # noqa: PLC0415
-
-        exp_ids = sorted(discover_experiments().keys())
-    except Exception:  # noqa: BLE001
-        exp_ids = []
+    exp_ids = _graph_experiment_ids()
+    n_hypotheses = await _hypothesis_count()
 
     payload: dict[str, Any] = {
         "items": items,
@@ -338,6 +438,7 @@ async def dashboard_highlights(
         "by_source": _tally(items, "source"),
         "n_studies":     len(studies),
         "n_experiments": len(exp_ids),
+        "n_hypotheses":  n_hypotheses,
         "since_days":    days,
     }
 
@@ -363,12 +464,7 @@ async def dashboard_insight(
             studies = await db.list_studies()
         except Exception:  # noqa: BLE001
             studies = []
-    try:
-        from glossa_lab.experiment_base import discover_experiments  # noqa: PLC0415
-
-        exp_ids = sorted(discover_experiments().keys())
-    except Exception:  # noqa: BLE001
-        exp_ids = []
+    exp_ids = _graph_experiment_ids()
     return await _generate_insight(items, studies, exp_ids)
 
 

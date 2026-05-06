@@ -17,6 +17,7 @@ Endpoints (mounted at ``/api/v1/projects``):
 
 from __future__ import annotations
 
+import uuid
 from datetime import datetime, timezone
 from typing import Any
 
@@ -118,3 +119,91 @@ async def delete_project(project_id: str) -> dict[str, Any]:
     if deleted is None:
         raise HTTPException(404, f"Project {project_id} not found")
     return {"deleted": True, "project": deleted}
+
+
+# ── Export / Import ────────────────────────────────────────────────────────
+
+
+@router.get("/{project_id}/export")
+async def export_project(project_id: str) -> dict[str, Any]:
+    """Export a project and all its linked entities as a JSON bundle."""
+    db = get_db()
+    if db is None:
+        raise HTTPException(503, "Database not ready")
+    project = await db.get_project(project_id)
+    if project is None:
+        raise HTTPException(404, f"Project {project_id} not found")
+
+    hypotheses = await db.list_hypotheses(project_id=project_id)
+    notebooks = await db.list_notebooks(project_id=project_id)
+    correspondences = await db.list_correspondences(project_id=project_id)
+    # Citations don't have project_id filter yet — export all
+    citations = await db.list_citations()
+
+    return {
+        "version": 1,
+        "project": project,
+        "hypotheses": hypotheses,
+        "notebooks": notebooks,
+        "citations": citations,
+        "correspondences": correspondences,
+    }
+
+
+@router.post("/import")
+async def import_project(bundle: dict[str, Any]) -> dict[str, Any]:
+    """Import a project bundle. Creates new project + all linked entities with fresh IDs."""
+    db = get_db()
+    if db is None:
+        raise HTTPException(503, "Database not ready")
+
+    proj = bundle.get("project")
+    if not proj or not proj.get("label"):
+        raise HTTPException(422, "Bundle must contain a project with a label")
+
+    now = datetime.now(timezone.utc).isoformat()
+    new_id = proj.get("label", "imported").lower().replace(" ", "_")[:30] + "_" + uuid.uuid4().hex[:6]
+
+    created = await db.upsert_project(
+        project_id=new_id,
+        label=proj["label"],
+        description=proj.get("description", ""),
+        prompt_context=proj.get("prompt_context", ""),
+        topic_ids=proj.get("topic_ids", []),
+        experiment_ids=proj.get("experiment_ids", []),
+        corpus_ids=proj.get("corpus_ids", []),
+        is_active=False,
+        created_at=now,
+    )
+
+    counts = {"hypotheses": 0, "notebooks": 0, "citations": 0, "correspondences": 0}
+
+    for h in bundle.get("hypotheses", []):
+        await db.create_hypothesis(
+            title=h.get("title", ""), statement=h.get("statement", ""),
+            status=h.get("status", "active"), project_id=new_id, created_at=now,
+        )
+        counts["hypotheses"] += 1
+
+    for n in bundle.get("notebooks", []):
+        await db.create_notebook(
+            title=n.get("title", ""), content=n.get("content", ""),
+            tags=n.get("tags", []), project_id=new_id, created_at=now,
+        )
+        counts["notebooks"] += 1
+
+    for c in bundle.get("correspondences", []):
+        await db.create_correspondence(
+            project_id=new_id, direction=c.get("direction", "inbound"),
+            channel=c.get("channel", "email"), from_addr=c.get("from_addr", ""),
+            to_addr=c.get("to_addr", ""), cc_addr=c.get("cc_addr", ""),
+            subject=c.get("subject", ""), body=c.get("body", ""),
+            date=c.get("date", ""), attachments=c.get("attachments", []),
+            claims_made=c.get("claims_made", ""), questions=c.get("questions", ""),
+            reply_status=c.get("reply_status", "pending"),
+            follow_up_date=c.get("follow_up_date", ""),
+            tags=c.get("tags", []), created_at=now,
+        )
+        counts["correspondences"] += 1
+
+    return {"project": created, "imported": counts}

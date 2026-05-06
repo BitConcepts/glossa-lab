@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Increment this when adding a new _SCHEMA_Vn block below.
 # _apply_schema will raise if the DB is somehow ahead of the code.
-_SCHEMA_VERSION = 17
+_SCHEMA_VERSION = 19
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -325,6 +325,41 @@ CREATE TABLE IF NOT EXISTS projects (
 CREATE INDEX IF NOT EXISTS idx_projects_active ON projects(is_active);
 """
 
+_SCHEMA_V18 = """
+-- Project-scoping: add project_id to hypotheses, notebooks, citations.
+-- Empty string = global (unscoped). Existing rows stay global.
+ALTER TABLE hypotheses ADD COLUMN project_id TEXT NOT NULL DEFAULT '';
+ALTER TABLE notebooks  ADD COLUMN project_id TEXT NOT NULL DEFAULT '';
+ALTER TABLE citations  ADD COLUMN project_id TEXT NOT NULL DEFAULT '';
+"""
+
+_SCHEMA_V19 = """
+-- Correspondence log: tracks researcher communications (email, meetings, letters).
+CREATE TABLE IF NOT EXISTS correspondences (
+    id              TEXT PRIMARY KEY,
+    project_id      TEXT NOT NULL DEFAULT '',
+    direction       TEXT NOT NULL DEFAULT 'outbound',
+    channel         TEXT NOT NULL DEFAULT 'email',
+    from_addr       TEXT NOT NULL DEFAULT '',
+    to_addr         TEXT NOT NULL DEFAULT '',
+    cc_addr         TEXT NOT NULL DEFAULT '',
+    subject         TEXT NOT NULL DEFAULT '',
+    body            TEXT NOT NULL DEFAULT '',
+    date            TEXT NOT NULL DEFAULT '',
+    attachments     TEXT NOT NULL DEFAULT '[]',
+    claims_made     TEXT NOT NULL DEFAULT '',
+    questions       TEXT NOT NULL DEFAULT '',
+    reply_status    TEXT NOT NULL DEFAULT 'pending',
+    follow_up_date  TEXT NOT NULL DEFAULT '',
+    tags            TEXT NOT NULL DEFAULT '[]',
+    created_at      TEXT NOT NULL,
+    updated_at      TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_correspondences_project ON correspondences(project_id);
+CREATE INDEX IF NOT EXISTS idx_correspondences_date ON correspondences(date DESC);
+"""
+
 _SCHEMA_V12 = """
 CREATE TABLE IF NOT EXISTS canonical_signs (
     internal_id        TEXT PRIMARY KEY,
@@ -525,6 +560,24 @@ class Database:
                 pass  # research_goals may not exist on fresh DBs
             await self._conn.execute("UPDATE _schema_version SET version = ?", (17,))
             current_version = 17
+
+        if current_version < 18:
+            # V18: add project_id to hypotheses/notebooks/citations.
+            for stmt in _SCHEMA_V18.strip().split(";"):
+                stmt = stmt.strip()
+                if not stmt:
+                    continue
+                try:
+                    await self._conn.execute(stmt)
+                except Exception:  # noqa: BLE001
+                    pass  # column may already exist on re-run
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (18,))
+            current_version = 18
+
+        if current_version < 19:
+            await self._conn.executescript(_SCHEMA_V19)
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (19,))
+            current_version = 19
 
         if current_version > _SCHEMA_VERSION:
             logger.warning(
@@ -866,15 +919,16 @@ class Database:
         title: str,
         statement: str = "",
         status: str = "active",
+        project_id: str = "",
         created_at: str,
     ) -> dict[str, Any]:
         assert self._conn
         hid = uuid.uuid4().hex[:12]
         await self._conn.execute(  # noqa: E501
             """INSERT INTO hypotheses
-               (id,title,statement,status,evidence,study_ids,exp_ids,created_at,updated_at)
-               VALUES (?,?,?,?,?,?,?,?,?)""",
-            (hid, title, statement, status, "[]", "[]", "[]", created_at, created_at),
+               (id,title,statement,status,evidence,study_ids,exp_ids,project_id,created_at,updated_at)
+               VALUES (?,?,?,?,?,?,?,?,?,?)""",
+            (hid, title, statement, status, "[]", "[]", "[]", project_id, created_at, created_at),
         )
         await self._conn.commit()
         return await self.get_hypothesis(hid)  # type: ignore[return-value]
@@ -888,9 +942,15 @@ class Database:
         row = await cursor.fetchone()
         return self._row_to_dict(row) if row else None
 
-    async def list_hypotheses(self) -> list[dict[str, Any]]:
+    async def list_hypotheses(self, project_id: str | None = None) -> list[dict[str, Any]]:
         assert self._conn
-        cursor = await self._conn.execute("SELECT * FROM hypotheses ORDER BY updated_at DESC")
+        if project_id:
+            cursor = await self._conn.execute(
+                "SELECT * FROM hypotheses WHERE project_id=? OR project_id='' ORDER BY updated_at DESC",
+                (project_id,),
+            )
+        else:
+            cursor = await self._conn.execute("SELECT * FROM hypotheses ORDER BY updated_at DESC")
         return [self._row_to_dict(r) for r in await cursor.fetchall()]
 
     async def get_hypothesis(self, hid: str) -> dict[str, Any] | None:
@@ -948,21 +1008,28 @@ class Database:
         content: str = "",
         study_id: str | None = None,
         tags: list[str] | None = None,
+        project_id: str = "",
         created_at: str,
     ) -> dict[str, Any]:
         assert self._conn
         nid = uuid.uuid4().hex[:12]
         await self._conn.execute(
-            """INSERT INTO notebooks (id,title,content,study_id,tags,created_at,updated_at)
-               VALUES (?,?,?,?,?,?,?)""",
-            (nid, title, content, study_id, json.dumps(tags or []), created_at, created_at),
+            """INSERT INTO notebooks (id,title,content,study_id,tags,project_id,created_at,updated_at)
+               VALUES (?,?,?,?,?,?,?,?)""",
+            (nid, title, content, study_id, json.dumps(tags or []), project_id, created_at, created_at),
         )
         await self._conn.commit()
         return await self.get_notebook(nid)  # type: ignore[return-value]
 
-    async def list_notebooks(self) -> list[dict[str, Any]]:
+    async def list_notebooks(self, project_id: str | None = None) -> list[dict[str, Any]]:
         assert self._conn
-        cursor = await self._conn.execute("SELECT * FROM notebooks ORDER BY updated_at DESC")
+        if project_id:
+            cursor = await self._conn.execute(
+                "SELECT * FROM notebooks WHERE project_id=? OR project_id='' ORDER BY updated_at DESC",
+                (project_id,),
+            )
+        else:
+            cursor = await self._conn.execute("SELECT * FROM notebooks ORDER BY updated_at DESC")
         return [self._row_to_dict(r) for r in await cursor.fetchall()]
 
     async def get_notebook(self, nid: str) -> dict[str, Any] | None:
@@ -1013,14 +1080,15 @@ class Database:
         url: str = "",
         bibtex: str = "",
         notes: str = "",
+        project_id: str = "",
         created_at: str,
     ) -> dict[str, Any]:
         assert self._conn
         cid = uuid.uuid4().hex[:12]
         await self._conn.execute(
             """INSERT INTO citations
-               (id,key,title,authors,year,venue,doi,url,bibtex,exp_ids,study_ids,notes,created_at)
-               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+               (id,key,title,authors,year,venue,doi,url,bibtex,exp_ids,study_ids,notes,project_id,created_at)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
             (
                 cid,
                 key,
@@ -1034,6 +1102,7 @@ class Database:
                 "[]",
                 "[]",
                 notes,
+                project_id,
                 created_at,
             ),
         )
@@ -2106,6 +2175,121 @@ class Database:
         await self._conn.commit()
         return existing
 
+    # ── Correspondences (V19) ─────────────────────────────────────
+
+    async def create_correspondence(
+        self,
+        *,
+        project_id: str = "",
+        direction: str = "outbound",
+        channel: str = "email",
+        from_addr: str = "",
+        to_addr: str = "",
+        cc_addr: str = "",
+        subject: str = "",
+        body: str = "",
+        date: str = "",
+        attachments: list[dict] | None = None,
+        claims_made: str = "",
+        questions: str = "",
+        reply_status: str = "pending",
+        follow_up_date: str = "",
+        tags: list[str] | None = None,
+        created_at: str,
+    ) -> dict[str, Any]:
+        assert self._conn
+        cid = uuid.uuid4().hex[:12]
+        await self._conn.execute(
+            """INSERT INTO correspondences
+               (id,project_id,direction,channel,from_addr,to_addr,cc_addr,
+                subject,body,date,attachments,claims_made,questions,
+                reply_status,follow_up_date,tags,created_at,updated_at)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+            (
+                cid, project_id, direction, channel, from_addr, to_addr, cc_addr,
+                subject, body, date, json.dumps(attachments or []),
+                claims_made, questions, reply_status, follow_up_date,
+                json.dumps(tags or []), created_at, created_at,
+            ),
+        )
+        await self._conn.commit()
+        return await self.get_correspondence(cid)  # type: ignore[return-value]
+
+    async def list_correspondences(
+        self, project_id: str | None = None,
+    ) -> list[dict[str, Any]]:
+        assert self._conn
+        if project_id:
+            cursor = await self._conn.execute(
+                "SELECT * FROM correspondences WHERE project_id=? OR project_id='' ORDER BY date DESC",
+                (project_id,),
+            )
+        else:
+            cursor = await self._conn.execute(
+                "SELECT * FROM correspondences ORDER BY date DESC"
+            )
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    async def get_correspondence(self, cid: str) -> dict[str, Any] | None:
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM correspondences WHERE id=?", (cid,)
+        )
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    async def update_correspondence(
+        self, cid: str, **fields: Any,
+    ) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_correspondence(cid)
+        if existing is None:
+            return None
+        updatable = (
+            "project_id", "direction", "channel", "from_addr", "to_addr",
+            "cc_addr", "subject", "body", "date", "claims_made", "questions",
+            "reply_status", "follow_up_date",
+        )
+        for f in updatable:
+            existing[f] = fields.get(f, existing[f])
+        attachments = (
+            json.dumps(fields["attachments"])
+            if "attachments" in fields
+            else json.dumps(existing.get("attachments", []))
+        )
+        tags = (
+            json.dumps(fields["tags"])
+            if "tags" in fields
+            else json.dumps(existing.get("tags", []))
+        )
+        await self._conn.execute(
+            """UPDATE correspondences SET
+               project_id=?,direction=?,channel=?,from_addr=?,to_addr=?,
+               cc_addr=?,subject=?,body=?,date=?,attachments=?,
+               claims_made=?,questions=?,reply_status=?,follow_up_date=?,
+               tags=?,updated_at=datetime('now')
+               WHERE id=?""",
+            (
+                existing["project_id"], existing["direction"], existing["channel"],
+                existing["from_addr"], existing["to_addr"], existing["cc_addr"],
+                existing["subject"], existing["body"], existing["date"],
+                attachments, existing["claims_made"], existing["questions"],
+                existing["reply_status"], existing["follow_up_date"],
+                tags, cid,
+            ),
+        )
+        await self._conn.commit()
+        return await self.get_correspondence(cid)
+
+    async def delete_correspondence(self, cid: str) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_correspondence(cid)
+        if existing is None:
+            return None
+        await self._conn.execute("DELETE FROM correspondences WHERE id=?", (cid,))
+        await self._conn.commit()
+        return existing
+
     # ── Legacy goal compat (delegates to projects) ───────────────
 
     async def get_default_goal(self) -> dict[str, Any] | None:
@@ -2131,6 +2315,7 @@ class Database:
             "study_ids",
             "exp_ids",
             "tags",
+            "attachments",  # correspondences
             "sections",   # report_templates
             "pairs",      # anchor_sets
             "raw_json",   # discovery_items

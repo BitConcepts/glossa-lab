@@ -5106,3 +5106,46 @@ Open TODOs:
 - [ ] Evidence linking architecture (plan exists, not yet implemented)
 Risks: UI-level Playwright tests not run due to missing Vite preview server — same pre-existing issue.
 Next step: Start Vite preview for full E2E regression, then begin evidence linking implementation.
+
+
+---
+
+## [2026-05-06] Entry - Project-scoped UI overhaul, Correspondence log, Collaboration features
+
+Objective: Major UI overhaul to scope all views by active project, add correspondence tracking for researcher communications, and close implementation gaps.
+
+### What was done
+
+**Phase 1 - Project Context + Sidebar Selector:**
+- New frontend/src/hooks/useProject.tsx: React context with localStorage persistence, backend sync, glossa:project-changed events
+- App.tsx: ProjectProvider wraps app, sidebar project selector dropdown below logo, breadcrumb project chip
+
+**Phase 2 - Dashboard Project Scoping:**
+- Backend dashboard.py: /highlights, /insight, /feed accept ?project_id=, filter by project topic_ids
+- DashboardView.tsx: passes projectId to all API calls, auto-refreshes on project switch
+- Bug fix: empty LLM response guard in _generate_insight returns friendly fallback
+
+**Phase 3 - Schema + View Scoping:**
+- Schema V18: project_id on hypotheses, notebooks, citations
+- research.py: ?project_id= filter on /hypotheses and /notebooks
+- All views use useProject, pass projectId to list calls; create endpoints store project_id
+
+**Phase 6 - UI Simplification:** Removed study filters from Reports/Hypotheses/Notebooks
+
+**Phase 7 - Bug Fixes:** GDELT 429 backoff (3 retries), dashboard empty LLM guard
+
+**Correspondence (Features 1-4):**
+- Schema V19: correspondences table with CRUD + project_id scoping
+- correspondences.py: CRUD + /parse endpoint (eml stdlib + LLM extraction)
+- CorrespondenceView.tsx: card UI with paste-to-import, manual create, status tracking
+- Auto-disclosure hook in notifier; Project export/import endpoints
+
+### Files changed
+- 3 new files: useProject.tsx, CorrespondenceView.tsx, correspondences.py
+- 14 modified files across backend + frontend
+
+### Checks
+- tsc --noEmit clean
+- Backend syntax clean
+
+Risks: Playwright UI tests not run (pre-existing Vite preview issue).

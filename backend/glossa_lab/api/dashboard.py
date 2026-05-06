@@ -36,16 +36,35 @@ _log = logging.getLogger("glossa_lab.api.dashboard")
 # ── Helpers ────────────────────────────────────────────────────────────────
 
 
-async def _recent_discovery(limit: int = 30, days: int = 14) -> list[dict[str, Any]]:
-    """Recent discovery items, newest first, optionally restricted to N days."""
+async def _recent_discovery(
+    limit: int = 30,
+    days: int = 14,
+    topic_ids: list[str] | None = None,
+) -> list[dict[str, Any]]:
+    """Recent discovery items, newest first, optionally restricted to N days.
+
+    If *topic_ids* is provided, only items whose ``topic`` intersects the
+    given set are returned (used for project-scoped dashboards).
+    """
     db = get_db()
     if db is None:
         return []
     since = (datetime.now(timezone.utc) - timedelta(days=days)).isoformat()
     rows = await db.list_discovery_items(
         topic=None, kind=None, status=None, since=since,
-        limit=limit, offset=0,
+        limit=limit * 3 if topic_ids else limit,  # fetch extra when filtering
+        offset=0,
     )
+    if topic_ids:
+        tid_set = set(topic_ids)
+        filtered: list[dict[str, Any]] = []
+        for r in rows:
+            item_topics = {t.strip() for t in (r.get("topic") or "").split(",") if t.strip()}
+            if item_topics & tid_set:
+                filtered.append(r)
+                if len(filtered) >= limit:
+                    break
+        return filtered
     return rows
 
 
@@ -196,10 +215,23 @@ def _build_insight_prompt(
     )
 
 
+async def _resolve_project(
+    project_id: str | None,
+) -> dict[str, Any] | None:
+    """Resolve a project by ID, falling back to the active project."""
+    db = get_db()
+    if db is None:
+        return None
+    if project_id:
+        return await db.get_project(project_id)
+    return await db.get_active_project()
+
+
 async def _generate_insight(
     items: list[dict[str, Any]],
     studies: list[dict[str, Any]],
     experiments: list[str],
+    project: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Call the configured LLM and return the structured insight payload.
 
@@ -221,14 +253,15 @@ async def _generate_insight(
             "model": "heuristic",
         }
 
-    # Look up the default research goal for context-scoped insight.
-    goal: dict[str, Any] | None = None
-    try:
-        _db = get_db()
-        if _db is not None:
-            goal = await _db.get_default_goal()
-    except Exception:  # noqa: BLE001
-        pass
+    # Use the provided project for context-scoped insight, or fall back to active.
+    goal: dict[str, Any] | None = project
+    if goal is None:
+        try:
+            _db = get_db()
+            if _db is not None:
+                goal = await _db.get_default_goal()
+        except Exception:  # noqa: BLE001
+            pass
 
     prompt = _build_insight_prompt(items, studies, experiments, goal=goal)
 
@@ -242,6 +275,21 @@ async def _generate_insight(
             ],
             max_tokens=900, temperature=0.2,
         )
+        # Guard against empty / whitespace-only LLM responses (observed
+        # when the provider times out or returns no content).
+        if not raw or not raw.strip():
+            _log.warning("dashboard insight LLM returned empty response")
+            return {
+                "highlights": [],
+                "what_it_means": (
+                    "Insight generation returned empty \u2014 this usually means "
+                    "the LLM provider timed out or returned no content. "
+                    "Try regenerating."
+                ),
+                "impact": [],
+                "next_actions": [],
+                "model": "empty-fallback",
+            }
         # Strip any stray code fences before json-loading.
         cleaned = raw.strip()
         if cleaned.startswith("```"):
@@ -423,6 +471,7 @@ async def dashboard_highlights(
     days: int = Query(14, ge=1, le=90),
     limit: int = Query(30, ge=1, le=200),
     include_ai: bool = Query(False),
+    project_id: str | None = Query(None),
 ) -> dict[str, Any]:
     """Aggregated dashboard payload.
 
@@ -430,8 +479,12 @@ async def dashboard_highlights(
     recent items, status/kind tallies, and basic counts. With
     ``include_ai=true`` the configured LLM is also called to produce a
     structured insight.
+
+    Pass ``project_id`` to scope discovery items to the project's topics.
     """
-    items = await _recent_discovery(limit=limit, days=days)
+    project = await _resolve_project(project_id)
+    topic_ids = project.get("topic_ids") if project else None
+    items = await _recent_discovery(limit=limit, days=days, topic_ids=topic_ids)
     studies: list[dict[str, Any]] = []
     db = get_db()
     if db is not None:
@@ -453,10 +506,11 @@ async def dashboard_highlights(
         "n_experiments": len(exp_ids),
         "n_hypotheses":  n_hypotheses,
         "since_days":    days,
+        "project_id":    project["id"] if project else None,
     }
 
     if include_ai:
-        payload["insight"] = await _generate_insight(items, studies, exp_ids)
+        payload["insight"] = await _generate_insight(items, studies, exp_ids, project=project)
     else:
         payload["insight"] = None  # frontend can request it lazily
 
@@ -467,9 +521,12 @@ async def dashboard_highlights(
 async def dashboard_insight(
     days: int = Query(14, ge=1, le=90),
     limit: int = Query(30, ge=1, le=200),
+    project_id: str | None = Query(None),
 ) -> dict[str, Any]:
     """Force-regenerate the AI insight (always burns LLM tokens)."""
-    items = await _recent_discovery(limit=limit, days=days)
+    project = await _resolve_project(project_id)
+    topic_ids = project.get("topic_ids") if project else None
+    items = await _recent_discovery(limit=limit, days=days, topic_ids=topic_ids)
     db = get_db()
     studies: list[dict[str, Any]] = []
     if db is not None:
@@ -478,20 +535,24 @@ async def dashboard_insight(
         except Exception:  # noqa: BLE001
             studies = []
     exp_ids = _graph_experiment_ids()
-    return await _generate_insight(items, studies, exp_ids)
+    return await _generate_insight(items, studies, exp_ids, project=project)
 
 
 @router.get("/feed")
 async def dashboard_feed(
     days: int = Query(14, ge=1, le=90),
     limit: int = Query(50, ge=1, le=200),
+    project_id: str | None = Query(None),
 ) -> dict[str, Any]:
     """RSS-style flat feed for the dashboard timeline tile."""
-    items = await _recent_discovery(limit=limit, days=days)
+    project = await _resolve_project(project_id)
+    topic_ids = project.get("topic_ids") if project else None
+    items = await _recent_discovery(limit=limit, days=days, topic_ids=topic_ids)
     return {
         "items": items,
         "n_items": len(items),
         "since_days": days,
+        "project_id": project["id"] if project else None,
     }
 
 

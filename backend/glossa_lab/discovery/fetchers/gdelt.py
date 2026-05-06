@@ -101,8 +101,8 @@ class GDELTFetcher(Fetcher):
     source = "gdelt"
     requires = ()  # keyless
     rate_delay: float = 60.0
-    _MAX_RETRIES: int = 0  # zero retries — any error trips the breaker
-    _RETRY_BASE: float = 60.0
+    _MAX_RETRIES: int = 3  # retry up to 3 times with exponential backoff before tripping
+    _RETRY_BASE: float = 2.0  # 2s → 4s → 8s backoff
 
     async def fetch(
         self, topic: TopicProfile, *, since: datetime | None = None,
@@ -152,27 +152,29 @@ class GDELTFetcher(Fetcher):
                         or "winerror" in err_str.lower()
                         or "connection" in err_str.lower()
                     )
-                    if is_429 or is_retryable:
-                        # Trip the circuit breaker on ANY error — GDELT
-                        # blocks the whole IP, so URLError / timeout / 429
-                        # all mean the same thing: stop hitting them.
-                        _cb_trip()
-                        _log.info(
-                            "GDELT %s for topic %s — breaker tripped, skipping remaining topics",
-                            "429" if is_429 else "error", topic.id,
-                        )
-                        return []
                     if is_retryable and attempt < self._MAX_RETRIES:
-                        backoff = self._RETRY_BASE * (attempt + 1)
+                        # Parse Retry-After header if present in the error message.
+                        backoff = self._RETRY_BASE * (2 ** attempt)  # 2s → 4s → 8s
                         _log.info(
-                            "GDELT error for topic %s (attempt %d/%d), "
-                            "retrying in %.0fs: %s",
-                            topic.id, attempt + 1, self._MAX_RETRIES,
+                            "GDELT %s for topic %s (attempt %d/%d), "
+                            "retrying in %.1fs: %s",
+                            "429" if is_429 else "error", topic.id,
+                            attempt + 1, self._MAX_RETRIES,
                             backoff, err_str[:200],
                         )
                         _update_last_request()
+                        # Release lock, backoff, then loop to retry.
+                        break  # exits the `async with _gdelt_lock` block
+                    elif is_429 or is_retryable:
+                        # Exhausted retries — trip the circuit breaker.
+                        _cb_trip()
+                        _log.warning(
+                            "GDELT %s for topic %s — exhausted %d retries, breaker tripped",
+                            "429" if is_429 else "error", topic.id, self._MAX_RETRIES,
+                        )
+                        return []
                     else:
-                        _log.warning("GDELT exhausted retries for topic %s: %s", topic.id, exc)
+                        _log.warning("GDELT non-retryable error for topic %s: %s", topic.id, exc)
                         return []
             # Backoff sleep outside lock (only for non-429 retryable errors).
             if data is None and attempt < self._MAX_RETRIES:

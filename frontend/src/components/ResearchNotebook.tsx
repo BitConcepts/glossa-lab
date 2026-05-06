@@ -4,9 +4,10 @@
  */
 import { useEffect, useState } from "react";
 import {
-  createNotebook, deleteNotebook, listNotebooks, listStudies, updateNotebook,
+  createNotebook, deleteNotebook, listNotebooks, updateNotebook,
   type Notebook,
 } from "../api";
+import { useProject } from "../hooks/useProject";
 import { useToast } from "../hooks/useToast";
 
 /** Minimal markdown renderer (no external deps) */
@@ -109,54 +110,43 @@ function NoteCard({ note, onUpdated, onDeleted, studies }: {
 
 export function ResearchNotebook() {
   const { toast } = useToast();
+  const { activeProject } = useProject();
+  const projectId = activeProject?.id ?? null;
   const [notebooks, setNotebooks] = useState<Notebook[]>([]);
-  const [studies, setStudies] = useState<{ id: string; name: string }[]>([]);
   const [loading, setLoading] = useState(true);
   const [newTitle, setNewTitle] = useState("");
-  const [filter, setFilter] = useState<"all" | string>("all");
 
   useEffect(() => {
-    Promise.all([listNotebooks(), listStudies()]).then(([nb, st]) => {
-      setNotebooks(nb);
-      setStudies(st.map((s) => ({ id: s.id, name: s.name })));
-    }).catch(() => toast("Failed to load", "error")).finally(() => setLoading(false));
-  }, []);
+    setLoading(true);
+    listNotebooks(projectId)
+      .then(setNotebooks)
+      .catch(() => toast("Failed to load", "error"))
+      .finally(() => setLoading(false));
+  }, [projectId]);
 
   const addNote = async () => {
     if (!newTitle.trim()) return;
     try {
-      const n = await createNotebook({ title: newTitle.trim() });
+      const n = await createNotebook({ title: newTitle.trim(), project_id: projectId || undefined });
       setNotebooks((prev) => [n, ...prev]); setNewTitle(""); toast("Notebook created", "success");
     } catch { toast("Failed", "error"); }
   };
-
-  const visible = filter === "all" ? notebooks : notebooks.filter((n) => n.study_id === filter);
 
   return (
     <div>
       <h2 style={{ margin: "0 0 0.75rem" }}>Research Notebooks</h2>
       <p style={{ margin: "0 0 1.25rem", fontSize: 13, color: "#6b7280" }}>
-        Freeform markdown notes. Link notebooks to studies for organized research documentation.
+        Freeform markdown notes.{activeProject ? ` Scoped to ${activeProject.label}.` : ""}
       </p>
       <div style={{ display: "flex", gap: 8, marginBottom: "1.25rem" }}>
         <input value={newTitle} onChange={(e) => setNewTitle(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") addNote(); }}
           placeholder="New notebook title…" style={{ ...inputStyle, flex: 1 }} />
         <button onClick={addNote} disabled={!newTitle.trim()} style={btnPrimary}>+ Create</button>
       </div>
-      {studies.length > 0 && (
-        <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: "1rem" }}>
-          <button onClick={() => setFilter("all")} style={{ ...btnSmall, background: filter === "all" ? "#1e3a5f" : "#f3f4f6", color: filter === "all" ? "#fff" : "#374151" }}>All</button>
-          {studies.map((s) => (
-            <button key={s.id} onClick={() => setFilter(s.id)} style={{ ...btnSmall, background: filter === s.id ? "#2563eb" : "#f3f4f6", color: filter === s.id ? "#fff" : "#374151" }}>
-              {s.name.slice(0, 20)}
-            </button>
-          ))}
-        </div>
-      )}
       {loading && <p style={{ color: "#6b7280", fontSize: 13 }}>Loading…</p>}
-      {!loading && visible.length === 0 && <p style={{ color: "#6b7280", fontSize: 13 }}>No notebooks yet. Create one above.</p>}
-      {visible.map((n) => (
-        <NoteCard key={n.id} note={n} studies={studies}
+      {!loading && notebooks.length === 0 && <p style={{ color: "#6b7280", fontSize: 13 }}>No notebooks yet. Create one above.</p>}
+      {notebooks.map((n) => (
+        <NoteCard key={n.id} note={n} studies={[]}
           onUpdated={(u) => setNotebooks((prev) => prev.map((x) => x.id === u.id ? u : x))}
           onDeleted={(id) => setNotebooks((prev) => prev.filter((x) => x.id !== id))} />
       ))}

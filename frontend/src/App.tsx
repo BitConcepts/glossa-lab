@@ -6,7 +6,7 @@ import { StudiesView } from "./components/StudiesView";
 import { PipelinesView } from "./components/PipelinesView";
 import { SettingsView } from "./components/SettingsView";
 import { ReportsView } from "./components/ReportsView";
-import { StudyBuilderView } from "./components/StudyBuilderView";
+import { ProjectsView } from "./components/ProjectsView";
 import { ExperimentBuilderView } from "./components/ExperimentBuilderView";
 import { EntropyDashboard } from "./components/EntropyDashboard";
 import { HypothesisTracker } from "./components/HypothesisTracker";
@@ -56,7 +56,7 @@ const NAV_SECTIONS: NavSection[] = [
       { id: "models",      label: "CAS Models",   icon: "🔢" },  // 2. CPSC constraint models
       { id: "experiments", label: "Experiments",  icon: "🔀" },  // 3. Build + browse graph experiments
       { id: "pipelines",   label: "Pipelines",    icon: "⚙️" },  // 4. Async jobs
-      { id: "builder",     label: "Studies",      icon: "📐" },  // 5. Compose + run studies
+      { id: "builder",     label: "Projects",     icon: "📁" },  // 5. Project overview + management
       { id: "reports",     label: "Reports",      icon: "📄" },  // 6. View results
     ],
   },
@@ -468,7 +468,7 @@ function AppContent() {
              zero padding, no maxWidth, and marginBottom to sit above the bottom panel.
              All other views get the standard padded, scrollable layout. */}
         {(() => {
-          const isCanvas = tab === "builder" || tab === "experiments" || tab === "exp-builder";
+          const isCanvas = tab === "experiments" || tab === "exp-builder";
           return (
             <main style={{
               flex: 1,
@@ -484,7 +484,7 @@ function AppContent() {
               {tab === "dashboard"   && <DashboardView />}
               {tab === "status"      && <StatusView />}
               {tab === "indus-data"   && <StudiesView />}
-              {tab === "builder"      && <StudyBuilderView darkMode={darkMode} />}
+              {tab === "builder"      && <ProjectsView />}
               {(tab === "experiments" || tab === "exp-builder") && <ExperimentBuilderView darkMode={darkMode} />}
               {tab === "pipelines"   && <PipelinesView />}
               {tab === "corpora"     && <CorporaView />}

@@ -37,12 +37,17 @@ class EuropePMCFetcher(Fetcher):
         query = build_query(topic, quote_phrases=True) or topic.label
         if since is not None:
             query = f"({query}) AND (FIRST_PDATE:[{since.strftime('%Y-%m-%d')} TO *])"
+        # EuropePMC sorts via query modifiers, not a separate param.
+        sort_mode = opts.get("sort", "date")
+        if sort_mode == "date":
+            query = f"{query} sort_date:y"
+        elif sort_mode == "cited":
+            query = f"{query} sort_cited:y"
         params = {
             "query": query,
             "pageSize": min(max_results, 100),
             "resultType": "lite",
             "format": "json",
-            "sort": opts.get("sort", "DATE_DESC"),
         }
         try:
             data = await run_in_thread(http_get_json, _ENDPOINT, params=params, timeout=25.0)

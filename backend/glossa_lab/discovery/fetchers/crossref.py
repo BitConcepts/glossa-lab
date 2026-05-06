@@ -29,8 +29,11 @@ _RE_WHITESPACE = re.compile(r"\s{2,}")
 
 
 def _strip_markup(text: str) -> str:
-    """Remove HTML/XML/MathML tags and collapse whitespace."""
+    """Remove HTML/XML/MathML tags, Unicode replacement chars, and collapse whitespace."""
     cleaned = _RE_TAG.sub(" ", text)
+    # Strip Unicode replacement characters (�) that appear when source
+    # data has encoding issues (common in Crossref metadata).
+    cleaned = cleaned.replace("\uFFFD", "").replace("\uFFFE", "").replace("\uFFFF", "")
     cleaned = _RE_WHITESPACE.sub(" ", cleaned)
     return cleaned.strip()
 

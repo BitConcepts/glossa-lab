@@ -513,25 +513,31 @@ test.describe("Command Palette", () => {
 });
 
 test.describe("Settings - Ollama", () => {
-  test("settings tab shows Ollama section", async ({ page }) => {
+  // Ollama is now on the "Local AI" settings tab (tabbed layout).
+  const goToOllama = async (page: import("@playwright/test").Page) => {
     await page.goto("/");
     await page.getByTitle("Settings").first().click();
+    await page.waitForTimeout(300);
+    // Click the "Local AI" tab
+    await page.getByRole("button", { name: /Local AI/i }).click();
     await page.waitForTimeout(500);
+  };
+
+  test("settings tab shows Ollama section", async ({ page }) => {
+    await goToOllama(page);
     await expect(page.getByText(/Ollama/i).first()).toBeVisible();
     await expect(page.getByText(/Local AI Models/i)).toBeVisible();
   });
 
   test("Ollama section shows model library", async ({ page }) => {
-    await page.goto("/");
-    await page.getByTitle("Settings").first().click();
-    await page.waitForTimeout(1500);
+    await goToOllama(page);
+    await page.waitForTimeout(1000);
     await expect(page.getByText(/Model Library/i)).toBeVisible({ timeout: 5000 });
   });
 
   test("Ollama section shows GPU recommendation", async ({ page }) => {
-    await page.goto("/");
-    await page.getByTitle("Settings").first().click();
-    await page.waitForTimeout(2000);
+    await goToOllama(page);
+    await page.waitForTimeout(1500);
     // Either shows recommendation or "not running" message
     const hasRec = await page.getByText(/GPU.*Recommendation/i).count() > 0;
     const hasNotRunning = await page.getByText(/not running/i).count() > 0;

@@ -40,6 +40,7 @@ import {
   type GraphExperimentMeta,
 } from "../api";
 import { useAIChat } from "../hooks/useAIChat";
+import { useProject } from "../hooks/useProject";
 import { useToast } from "../hooks/useToast";
 
 // ── Insight persistence ──────────────────────────────────────────────────
@@ -142,6 +143,8 @@ function fmtAbsoluteShort(ms: number): string {
 export function DashboardView() {
   const { toast } = useToast();
   const { openChat } = useAIChat();
+  const { activeProject } = useProject();
+  const projectId = activeProject?.id ?? null;
   const [data, setData] = useState<DashboardHighlights | null>(null);
   const [insight, setInsight] = useState<DashboardInsight | null>(null);
   const [insightGeneratedAt, setInsightGeneratedAt] = useState<number>(0);
@@ -182,19 +185,19 @@ export function DashboardView() {
   const refresh = useCallback(async () => {
     setLoading(true); setError(null);
     try {
-      const d = await getDashboardHighlights({ days, limit: 30 });
+      const d = await getDashboardHighlights({ days, limit: 30, project_id: projectId });
       setData(d);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Could not load dashboard");
     } finally {
       setLoading(false);
     }
-  }, [days]);
+  }, [days, projectId]);
 
   const generateInsight = useCallback(async () => {
     setInsightLoading(true);
     try {
-      const ins = await regenerateDashboardInsight({ days, limit: 30 });
+      const ins = await regenerateDashboardInsight({ days, limit: 30, project_id: projectId });
       const generatedAt = Date.now();
       setInsight(ins);
       setInsightGeneratedAt(generatedAt);
@@ -215,7 +218,7 @@ export function DashboardView() {
     } finally {
       setInsightLoading(false);
     }
-  }, [days, toast, setApplyResult]);
+  }, [days, projectId, toast, setApplyResult]);
 
   useEffect(() => { void refresh(); }, [refresh]);
 

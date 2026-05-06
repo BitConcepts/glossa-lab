@@ -6,13 +6,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
   listReports, deleteReport, getReportDownloadUrl, openReportFolder,
-  listStudies, aiReportSynthesis,
+  aiReportSynthesis,
   listReportTemplates, generateReport,
   listUserReportTemplates, createUserReportTemplate,
   deleteUserReportTemplate,
-  type CatalogReport, type StudyResponse, type ReportTemplate,
+  type CatalogReport, type ReportTemplate,
   type UserReportTemplate, type ReportTemplateSection,
 } from "../api";
+import { useProject } from "../hooks/useProject";
 import { fmtDateTimeCompact } from "../dateFormat";
 
 /** Simple markdown → HTML renderer for the AI report modal. */
@@ -180,6 +181,8 @@ function MultiSelectDropdown({
 }
 
 export function ReportsView() {
+  const { activeProject } = useProject();
+  const projectId = activeProject?.id ?? null;
   const [reports, setReports] = useState<CatalogReport[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -187,11 +190,9 @@ export function ReportsView() {
   const [search, setSearch] = useState("");
   const [kindFilter, setKindFilter] = useState<Set<string>>(new Set());
   const [expFilter, setExpFilter] = useState<Set<string>>(new Set());
-  const [studyFilter, setStudyFilter] = useState<Set<string>>(new Set());
   const [sortKey, setSortKey] = useState<SortKey>("updated_at");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
   const [groupByExp, setGroupByExp] = useState(true); // default on
-  const [studies, setStudies] = useState<StudyResponse[]>([]);
   const [popupBlocked, setPopupBlocked] = useState<string | null>(null);
   // ── Generate PDF Report modal ─────────────────────────────────────────
   const [showGenerateModal, setShowGenerateModal] = useState(false);
@@ -343,7 +344,7 @@ export function ReportsView() {
     setLoading(true);
     setError(null);
     try {
-      setReports(await listReports());
+      setReports(await listReports(projectId));
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to load reports");
     } finally {
@@ -353,8 +354,7 @@ export function ReportsView() {
 
   useEffect(() => {
     load();
-    listStudies().then(setStudies).catch(() => {});
-  }, []);
+  }, [projectId]);
 
   // Listen for Jobs-tab 'Results' navigation
   useEffect(() => {
@@ -413,17 +413,6 @@ export function ReportsView() {
   const allKinds = Array.from(new Set(reports.map((r) => r.kind)));
   const allExps  = Array.from(new Set(reports.map((r) => r.experiment_id).filter(Boolean)));
 
-  // Build study->experiments mapping
-  const studyExpMap: Record<string, Set<string>> = {};
-  for (const st of studies) {
-    const exps = new Set((st.graph?.nodes ?? []).map((n: {ref_id: string}) => n.ref_id).filter(Boolean));
-    studyExpMap[st.id] = exps;
-  }
-
-  // Resolve which experiment IDs belong to the selected studies
-  const studyExpIds = studyFilter.size === 0 ? null :
-    new Set([...studyFilter].flatMap((sid) => [...(studyExpMap[sid] ?? new Set())]));
-
   // Filter the catalog by the active area tab
   const areaFiltered = reports.filter(r =>
     areaTab === "data" ? DATA_KINDS.has(r.kind) : REPORT_KINDS.has(r.kind)
@@ -477,8 +466,7 @@ export function ReportsView() {
   const sorted = [...areaFiltered]
     .filter((r) => (!search || r.name.toLowerCase().includes(search.toLowerCase()))
                 && (kindFilter.size === 0 || kindFilter.has(r.kind))
-                && (expFilter.size === 0 || expFilter.has(r.experiment_id))
-                && (studyExpIds === null || (r.experiment_id && studyExpIds.has(r.experiment_id))))
+                && (expFilter.size === 0 || expFilter.has(r.experiment_id)))
     .sort((a, b) => {
       // Starred always float to top
       const aS = starredReports.has(a.id), bS = starredReports.has(b.id);
@@ -795,16 +783,6 @@ export function ReportsView() {
             selected={new Set(Array.from(expFilter).map(e => e.replace(/_/g, " ")))}
             onChange={s => setExpFilter(new Set(
               Array.from(s).map(label => allExps.find(e => e.replace(/_/g, " ") === label) ?? label)
-            ))}
-          />
-        )}
-        {studies.length > 0 && (
-          <MultiSelectDropdown
-            label="Study"
-            options={studies.map(st => st.name)}
-            selected={new Set(studies.filter(st => studyFilter.has(st.id)).map(st => st.name))}
-            onChange={s => setStudyFilter(new Set(
-              studies.filter(st => s.has(st.name)).map(st => st.id)
             ))}
           />
         )}

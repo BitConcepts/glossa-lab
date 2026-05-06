@@ -80,6 +80,24 @@ async def send_pending_digest(
             [it["id"] for it in items], notified_at=notified_at,
         )
 
+        # F3: Auto-disclosure — log every successful send as an outbound correspondence.
+        for r in batch.results:
+            if r.ok():
+                try:
+                    await db.create_correspondence(
+                        direction="outbound",
+                        channel="email",
+                        to_addr=r.recipient,
+                        subject=subject,
+                        body=f"Discovery digest with {len(items)} item(s).",
+                        date=notified_at[:10],
+                        claims_made="Automated discovery digest — no specific claims.",
+                        reply_status="closed",
+                        created_at=notified_at,
+                    )
+                except Exception:  # noqa: BLE001
+                    _log.debug("Failed to log correspondence for %s", r.recipient)
+
     sent_n = sum(1 for r in batch.results if r.status == "sent")
     skip_n = sum(1 for r in batch.results if r.status == "skipped")
     fail_n = sum(1 for r in batch.results if r.status == "failed")

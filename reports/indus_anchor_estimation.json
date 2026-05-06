@@ -1,0 +1,70 @@
+{
+  "data": [
+    {
+      "anchor_count": 0,
+      "struct_acc_free": 0.0368,
+      "rand_acc_free": 0.0184,
+      "struct_consistency": 0.1509,
+      "rand_consistency": 0.1325,
+      "struct_n_distinct": 5.0,
+      "rand_n_distinct": 5.0,
+      "struct_hci75": 0.0184,
+      "rand_hci75": 0.0245
+    },
+    {
+      "anchor_count": 5,
+      "struct_acc_free": 0.0211,
+      "rand_acc_free": 0.0253,
+      "struct_consistency": 0.1867,
+      "rand_consistency": 0.2178,
+      "struct_n_distinct": 3.0,
+      "rand_n_distinct": 2.0,
+      "struct_hci75": 0.0532,
+      "rand_hci75": 0.0491
+    },
+    {
+      "anchor_count": 10,
+      "struct_acc_free": 0.0371,
+      "rand_acc_free": 0.0366,
+      "struct_consistency": 0.2004,
+      "rand_consistency": 0.2221,
+      "struct_n_distinct": 3.0,
+      "rand_n_distinct": 2.0,
+      "struct_hci75": 0.0593,
+      "rand_hci75": 0.0577
+    },
+    {
+      "anchor_count": 20,
+      "struct_acc_free": 0.0397,
+      "rand_acc_free": 0.028,
+      "struct_consistency": 0.2611,
+      "rand_consistency": 0.2375,
+      "struct_n_distinct": 3.0,
+      "rand_n_distinct": 2.0,
+      "struct_hci75": 0.1452,
+      "rand_hci75": 0.0883
+    },
+    {
+      "anchor_count": 30,
+      "struct_acc_free": 0.0226,
+      "rand_acc_free": 0.0481,
+      "struct_consistency": 0.2904,
+      "rand_consistency": 0.2448,
+      "struct_n_distinct": 3.0,
+      "rand_n_distinct": 2.0,
+      "struct_hci75": 0.1943,
+      "rand_hci75": 0.1031
+    },
+    {
+      "anchor_count": 50,
+      "struct_acc_free": 0.0088,
+      "rand_acc_free": 0.0389,
+      "struct_consistency": 0.349,
+      "rand_consistency": 0.2668,
+      "struct_n_distinct": 3.0,
+      "rand_n_distinct": 2.0,
+      "struct_hci75": 0.3088,
+      "rand_hci75": 0.1473
+    }
+  ]
+}

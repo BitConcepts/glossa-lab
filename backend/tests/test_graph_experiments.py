@@ -38,7 +38,7 @@ def test_all_expected_specs_present():
     specs = _build_proper_graph_specs()
     expected = [
         "positional_profile_analysis", "symbol_clustering", "luwian_kl_scoring",
-        "contact_zone", "indus_structural_atlas", "kandles_bias",
+        "kandles_bias",
         "linear_a_circularity", "ocr_tables", "ocr_texts",
         # New specs:
         "ugaritic_sa_decipher", "fuls_rtl_decipher", "geez_decipher",

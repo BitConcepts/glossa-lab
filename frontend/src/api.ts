@@ -1960,6 +1960,44 @@ export const deleteAIProfile = (
 ): Promise<{ deleted: boolean; id: string }> =>
   request("DELETE", `/ai-profiles/${encodeURIComponent(pid)}`);
 
+// ── Projects ────────────────────────────────────────────────────
+
+export interface Project {
+  id: string;
+  label: string;
+  description: string;
+  prompt_context: string;
+  topic_ids: string[];
+  experiment_ids: string[];
+  corpus_ids: string[];
+  is_active: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export const listProjects = (): Promise<Project[]> =>
+  request("GET", "/projects");
+
+export const getActiveProject = (): Promise<Project> =>
+  request("GET", "/projects/active");
+
+export const getProject = (id: string): Promise<Project> =>
+  request("GET", `/projects/${id}`);
+
+export const upsertProject = (
+  id: string,
+  body: Partial<Project> & { label: string },
+): Promise<Project> =>
+  request("PUT", `/projects/${id}`, body);
+
+export const activateProject = (id: string): Promise<Project> =>
+  request("POST", `/projects/${id}/activate`);
+
+export const deleteProject = (
+  id: string,
+): Promise<{ deleted: boolean; project: Project }> =>
+  request("DELETE", `/projects/${id}`);
+
 // ── Email provider presets (frontend-only catalogue) ──────────────────────
 
 export interface EmailProviderPreset {

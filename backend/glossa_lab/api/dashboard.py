@@ -268,13 +268,31 @@ async def _generate_insight(
     try:
         from glossa_lab.ai_utils import call_llm  # noqa: PLC0415
 
-        raw = call_llm(
-            [
-                {"role": "system", "content": "You produce concise structured JSON for a research dashboard."},
-                {"role": "user", "content": prompt},
-            ],
-            max_tokens=900, temperature=0.2,
-        )
+        try:
+            raw = call_llm(
+                [
+                    {"role": "system", "content": "You produce concise structured JSON for a research dashboard."},
+                    {"role": "user", "content": prompt},
+                ],
+                max_tokens=900, temperature=0.2,
+            )
+        except ValueError as ve:
+            # ValueError from call_llm = "No AI provider configured"
+            _log.info("dashboard insight skipped: %s", ve)
+            return {
+                "highlights": [],
+                "what_it_means": (
+                    "No AI provider is configured. Go to Settings \u2192 AI Providers "
+                    "to set up Ollama, Mistral, OpenAI, or Anthropic, then click "
+                    "Regenerate."
+                ),
+                "impact": [],
+                "next_actions": [
+                    {"label": "Open Settings", "action_type": "open_view",
+                     "params": {"view": "settings"}, "rationale": "Configure an AI provider to enable insights."},
+                ],
+                "model": "no-provider",
+            }
         # Guard against empty / whitespace-only LLM responses (observed
         # when the provider times out or returns no content).
         if not raw or not raw.strip():

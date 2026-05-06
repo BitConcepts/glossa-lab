@@ -5021,3 +5021,34 @@ Risks:
 - RSS fetcher requires topic overrides to specify feed URLs; topics without source_overrides.rss.feeds silently return empty results.
 
 Next step: Run a full discovery fetch cycle to smoke-test all 13 fetchers end-to-end, then return to Phase-30 research.
+
+---
+
+## [2026-05-06] Entry — Project architecture, patent APIs, discovery polish, LLM fixes
+
+Objective: Implement Project entity as top-level container, fix patent data sources, restructure settings, fix multiple bugs, add UI polish.
+
+What was done:
+- Patent fetchers: rewrote USPTO to use ODP API (api.uspto.gov), rewrote PatentsView to use PPUBS session-based keyless API (ppubs.uspto.gov)
+- GDELT: increased rate delay to 12s, added 429/SSL/timeout retry with exponential backoff
+- Settings panel: restructured into Required vs Optional groups, removed dead patentsview_api_key
+- LLM chain: added 404 to fallback statuses, updated Google model to gemini-2.0-flash-lite, improved error reporting
+- Research Goals (V16): DB table, CRUD API, seeder, goal-scoped mine + dashboard prompts
+- Projects (V17): replaced Goals + Studies as the top-level entity. DB migration, full CRUD API, project_seeder with Indus Script Decipherment project (134 experiments linked)
+- Frontend Projects view: sidebar Studies -> Projects, new ProjectsView component with detail panel
+- Jobs tab: pulsing blue dot when jobs are pending/running
+- Dashboard: wiki link opens in new tab, hypothesis-experiment chain linkage, stripped job hash IDs from toasts
+- Crossref: strip MathML/XML tags from titles + abstracts, frontend safety net stripTags()
+- Dashboard insight: fixed .format() KeyError by using .replace()
+- Cleanup: removed dead goal_seeder.py and api/goals.py, fixed test_graph_experiments
+
+Files changed: ~25 files across backend + frontend
+Checks run: 185 tests passed, 2 skipped, 0 failed. Frontend build clean (948KB bundle).
+Results: Project entity is live, Indus Script Decipherment project seeded with all experiments, sidebar shows Projects view, discovery sources working.
+Open TODOs:
+- [ ] Add project edit form in ProjectsView
+- [ ] Add Playwright E2E tests for project CRUD
+- [ ] Update HelpView documentation for Projects
+- [ ] Add project_id column to hypotheses/notebooks for project scoping
+Risks: StudyBuilderView is no longer imported but the component file still exists. Studies API still works for backward compat.
+Next step: User testing of the Projects view, then project edit form and E2E tests.

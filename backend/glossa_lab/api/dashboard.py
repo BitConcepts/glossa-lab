@@ -316,7 +316,24 @@ async def _generate_insight(
                 cleaned = cleaned[4:].lstrip()
             if cleaned.endswith("```"):
                 cleaned = cleaned[:-3]
-        parsed = json.loads(cleaned)
+        try:
+            parsed = json.loads(cleaned)
+        except json.JSONDecodeError as jde:
+            _log.warning(
+                "dashboard insight: LLM returned invalid JSON (%s). First 200 chars: %s",
+                jde, cleaned[:200],
+            )
+            return {
+                "highlights": [],
+                "what_it_means": (
+                    "The AI returned a response but it wasn\u2019t valid JSON. "
+                    "This sometimes happens when the model is overloaded or "
+                    "the response was truncated. Click Regenerate to retry."
+                ),
+                "impact": [],
+                "next_actions": [],
+                "model": "json-error",
+            }
         # Light schema validation
         for k in ("highlights", "what_it_means", "impact", "next_actions"):
             parsed.setdefault(k, [] if k != "what_it_means" else "")

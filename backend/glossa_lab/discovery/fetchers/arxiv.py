@@ -43,10 +43,15 @@ def _build_search_query(topic: TopicProfile, extra: str = "") -> str:
 class ArxivFetcher(Fetcher):
     source = "arxiv"
     requires = ()  # keyless
+    rate_delay: float = 4.0  # arXiv asks for 3s between requests
+    _MAX_RETRIES: int = 3
+    _RETRY_BASE: float = 5.0  # 5s → 10s → 20s backoff
 
     async def fetch(
         self, topic: TopicProfile, *, since: datetime | None = None,
     ) -> Iterable[RawItem]:
+        import asyncio as _asyncio  # noqa: PLC0415
+
         opts = topic.overrides_for(self.source)
         params = {
             "search_query": _build_search_query(topic, str(opts.get("search_query_extra", ""))),
@@ -54,11 +59,26 @@ class ArxivFetcher(Fetcher):
             "sortBy": opts.get("sort_by", "submittedDate"),
             "sortOrder": opts.get("sort_order", "descending"),
         }
-        try:
-            raw = await run_in_thread(http_get_json, _ENDPOINT, params=params, timeout=25.0)
-        except FetcherError as exc:
-            _log.warning("arXiv error for topic %s: %s", topic.id, exc)
-            return []
+        raw = None
+        for attempt in range(1 + self._MAX_RETRIES):
+            try:
+                raw = await run_in_thread(http_get_json, _ENDPOINT, params=params, timeout=25.0)
+                break
+            except FetcherError as exc:
+                err_str = str(exc)
+                is_429 = "429" in err_str
+                is_retryable = is_429 or "timed out" in err_str.lower()
+                if is_retryable and attempt < self._MAX_RETRIES:
+                    backoff = self._RETRY_BASE * (2 ** attempt)
+                    _log.info(
+                        "arXiv %s for topic %s (attempt %d/%d), retrying in %.0fs",
+                        "429" if is_429 else "error", topic.id,
+                        attempt + 1, self._MAX_RETRIES, backoff,
+                    )
+                    await _asyncio.sleep(backoff)
+                    continue
+                _log.warning("arXiv error for topic %s: %s", topic.id, exc)
+                return []
 
         if not isinstance(raw, (bytes, bytearray)):
             _log.warning("arXiv: unexpected payload type %s", type(raw).__name__)

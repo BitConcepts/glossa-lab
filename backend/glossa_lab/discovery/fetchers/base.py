@@ -202,8 +202,15 @@ def http_get_json(
     if headers:
         hdrs.update(headers)
     req = urllib.request.Request(full_url, headers=hdrs, method="GET")
+    # Allow disabling SSL verification via env var (for corporate proxies/VPNs)
+    import os as _os, ssl as _ssl  # noqa: PLC0415,E401
+    ssl_ctx: _ssl.SSLContext | None = None
+    if _os.environ.get("GLOSSA_SSL_VERIFY", "1").strip() in ("0", "false", "no"):
+        ssl_ctx = _ssl.create_default_context()
+        ssl_ctx.check_hostname = False
+        ssl_ctx.verify_mode = _ssl.CERT_NONE
     try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
+        with urllib.request.urlopen(req, timeout=timeout, context=ssl_ctx) as resp:
             # Capture rate-limit headers before reading body.
             _last_rate_headers.info = _parse_rate_headers(resp.headers)
             raw = resp.read()

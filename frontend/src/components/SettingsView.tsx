@@ -1,58 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import {
-  deleteOllamaModel,
   getEnvPackages,
   getEnvStatus,
-  getLocalCtxLength, setLocalCtxLength,
-  getOllamaLibrary,
-  getOllamaPullUrl,
-  getOllamaRecommendation,
-  getOllamaStatus,
-  getProviderCatalog,
   getSettings,
-  getStatus,
   isLocalKeySet, clearLocalKey, getLocalKeys, setLocalKey,
-  listOllamaInstalled,
   runEnvRebuild, runEnvSetup, runEnvUpgrade,
-  setOllamaContextLength,
   updateSettings,
   verifyKey,
-  type CatalogProvider, type EnvPackage, type EnvStatus, type KeyStatus, type ModelDetail,
-  type OllamaInstalledModel, type OllamaLibraryEntry, type OllamaRecommendation,
+  type EnvPackage, type EnvStatus, type KeyStatus,
   type VerifyKeyResult,
 } from "../api";
 import { useToast } from "../hooks/useToast";
 import { NotificationsPanel } from "./Notifications/NotificationsPanel";
-import { AIEndpointsPanel } from "./Settings/AIEndpointsPanel";
-import { AIProfilesPanel } from "./Settings/AIProfilesPanel";
 import { AutoDiscoveryPanel } from "./Settings/AutoDiscoveryPanel";
+import { ProvidersPanel } from "./Settings/ProvidersPanel";
+import { ModelAssignmentsPanel } from "./Settings/ModelAssignmentsPanel";
 
 type KeyMeta = { label: string; hint: string; priority?: boolean; verifiable?: boolean };
-
-// AI provider keys — shown on the "AI Providers" tab.
-const AI_KEY_LABELS: Record<string, KeyMeta> = {
-  mistral_api_key: {
-    label: "Mistral API Key",
-    hint: "Required for OCR via pixtral-12b. Get yours at console.mistral.ai",
-    priority: true,
-    verifiable: true,
-  },
-  openai_api_key: {
-    label: "OpenAI API Key",
-    hint: "For GPT-4 vision, embeddings, and agentic tasks.",
-    verifiable: true,
-  },
-  anthropic_api_key: {
-    label: "Anthropic API Key",
-    hint: "For Claude vision and reasoning tasks.",
-    verifiable: true,
-  },
-  google_api_key: {
-    label: "Google API Key",
-    hint: "For Gemini vision and multimodal tasks.",
-    verifiable: true,
-  },
-};
 
 // Discovery source keys — shown on the "Discovery" tab.
 const DISCOVERY_KEY_LABELS: Record<string, KeyMeta> = {
@@ -93,83 +57,9 @@ const DISCOVERY_KEY_LABELS: Record<string, KeyMeta> = {
 };
 
 // Combined for the key-input renderer.
-const ALL_KEY_LABELS: Record<string, KeyMeta> = { ...AI_KEY_LABELS, ...DISCOVERY_KEY_LABELS };
+const ALL_KEY_LABELS: Record<string, KeyMeta> = { ...DISCOVERY_KEY_LABELS };
 
-// ── Context Length Panel ───────────────────────────────────────────────────
-
-function ContextLengthPanel({ recommendation }: { recommendation: OllamaRecommendation }) {
-  const { toast } = useToast();
-  const [ctx, setCtx] = useState(getLocalCtxLength);
-  const [saving, setSaving] = useState(false);
-
-  const recommended = recommendation.recommended_ctx_length;
-  const options = [512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072];
-
-  const apply = async (val: number) => {
-    setCtx(val);
-    setLocalCtxLength(val);
-    setSaving(true);
-    try {
-      await setOllamaContextLength(val);
-      toast(`Context length set to ${val.toLocaleString()} tokens`, "success");
-    } catch { toast("Failed to update session context length", "error"); }
-    finally { setSaving(false); }
-  };
-
-  return (
-    <div style={{ borderTop: "1px solid #bae6fd", paddingTop: 10, marginTop: 2 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-        <div>
-          <div style={{ fontSize: 11, fontWeight: 700, color: "#0284c7", textTransform: "uppercase", letterSpacing: 0.5 }}>Context Length</div>
-          <div style={{ fontSize: 11, color: "#6b7280" }}>{recommendation.ctx_tier_note}</div>
-        </div>
-        <div style={{ textAlign: "right" }}>
-          <div style={{ fontSize: 18, fontWeight: 800, color: "#0284c7", fontFamily: "monospace", lineHeight: 1 }}>
-            {ctx.toLocaleString()}
-          </div>
-          <div style={{ fontSize: 10, color: "#9ca3af" }}>tokens</div>
-        </div>
-      </div>
-
-      {/* Slider */}
-      <input
-        type="range"
-        min={0} max={options.length - 1} step={1}
-        value={options.indexOf(ctx) === -1 ? 3 : options.indexOf(ctx)}
-        onChange={(e) => apply(options[parseInt(e.target.value)])}
-        style={{ width: "100%", accentColor: "#0284c7", marginBottom: 6 }}
-      />
-
-      {/* Quick presets */}
-      <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
-        {options.map((o) => (
-          <button
-            key={o}
-            onClick={() => apply(o)}
-            title={o === recommended ? "Auto-detected recommendation for your GPU" : ""}
-            style={{
-              padding: "2px 7px", borderRadius: 4, border: "1px solid",
-              cursor: "pointer", fontSize: 10, fontFamily: "monospace",
-              background: ctx === o ? "#0284c7" : o === recommended ? "#e0f2fe" : "#fff",
-              borderColor: ctx === o ? "#0284c7" : o === recommended ? "#7dd3fc" : "#d1d5db",
-              color: ctx === o ? "#fff" : o === recommended ? "#0369a1" : "#374151",
-              fontWeight: (ctx === o || o === recommended) ? 700 : 400,
-            }}
-          >
-            {o >= 1024 ? `${o / 1024}K` : o}
-            {o === recommended && " ★"}
-          </button>
-        ))}
-      </div>
-      <div style={{ fontSize: 10, color: "#9ca3af", marginTop: 6 }}>
-        ★ = auto-detected for your {recommendation.ctx_tier_label}
-        {saving && <span style={{ marginLeft: 8, color: "#0284c7" }}>Saving…</span>}
-      </div>
-    </div>
-  );
-}
-
-// ── Python Environment Section ─────────────────────────────────────────────────────────
+// ── Python Environment Section ─────────────────────────────────────────────
 
 function PythonEnvSection() {
   const { toast } = useToast();
@@ -363,355 +253,12 @@ function PythonEnvSection() {
   );
 }
 
-// ── Ollama Section ──────────────────────────────────────────────────────────────
-
-function OllamaSection() {
-  const { toast } = useToast();
-  const [status, setStatus] = useState<{ running: boolean; message: string } | null>(null);
-  const [ollamaInstalled, setOllamaInstalled] = useState<boolean | null>(null);
-  const [installed, setInstalled] = useState<OllamaInstalledModel[]>([]);
-  const [library, setLibrary] = useState<OllamaLibraryEntry[]>([]);
-  const [recommendation, setRecommendation] = useState<OllamaRecommendation | null>(null);
-  const [, setLoading] = useState(true);
-  const [pulling, setPulling] = useState<Record<string, { progress: number; status: string; total: number; completed: number }>>({});
-  const [pullCancelled, setPullCancelled] = useState<Set<string>>(new Set());
-  const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
-  const [libFilter, setLibFilter] = useState<"all" | "compatible">("compatible");
-  const [defaultModel, setDefaultModel] = useState<string | null>(null);
-  const esRefs = useRef<Record<string, EventSource>>({})
-
-  const refresh = async () => {
-    setLoading(true);
-    try {
-      const [st, inst, lib, rec, settings, sysStatus] = await Promise.all([
-        getOllamaStatus(), listOllamaInstalled(), getOllamaLibrary(),
-        getOllamaRecommendation(), getSettings(), getStatus(),
-      ]);
-      setStatus(st);
-      setOllamaInstalled(sysStatus.ollama_installed ?? null);
-      setInstalled(inst.models ?? []);
-      setLibrary(lib.models ?? []);
-      setRecommendation(rec);
-      // Load saved default model from provider prefs
-      const prefs = (settings as unknown as Record<string, unknown>).providers as Record<string, unknown> ?? {};
-      const ollamaPref = prefs.ollama as Record<string, unknown> | undefined;
-      if (ollamaPref?.enabled && ollamaPref?.selected_model) {
-        setDefaultModel(ollamaPref.selected_model as string);
-      } else {
-        setDefaultModel(null);
-      }
-    } catch { setStatus({ running: false, message: "Could not connect to backend" }); }
-    finally { setLoading(false); }
-  };
-
-  const setAsDefault = async (modelName: string) => {
-    try {
-      await updateSettings({ providers: { ollama: { enabled: true, selected_model: modelName } } });
-      setDefaultModel(modelName);
-      toast(`${modelName} set as default AI model`, "success");
-    } catch { toast("Failed to set default model", "error"); }
-  };
-
-  useEffect(() => { refresh(); return () => { Object.values(esRefs.current).forEach(es => es.close()); }; }, []);
-
-  const startPull = (modelName: string) => {
-    if (pulling[modelName]) return;
-    const es = new EventSource(getOllamaPullUrl(modelName));
-    esRefs.current[modelName] = es;
-    setPulling(p => ({ ...p, [modelName]: { progress: 0, status: "Starting…", total: 0, completed: 0 } }));
-    setPullCancelled(c => { const n = new Set(c); n.delete(modelName); return n; });
-
-    es.onmessage = (ev) => {
-      try {
-        const d = JSON.parse(ev.data);
-        const total = d.total ?? 0;
-        const completed = d.completed ?? 0;
-        const pct = total > 0 ? Math.round((completed / total) * 100) : 0;
-        setPulling(p => ({ ...p, [modelName]: { progress: pct, status: d.status ?? "Downloading…", total, completed } }));
-        if (d.status === "success") {
-          es.close(); delete esRefs.current[modelName];
-          setPulling(p => { const n = { ...p }; delete n[modelName]; return n; });
-          toast(`${modelName} downloaded`, "success");
-          refresh();
-        } else if (d.status === "error") {
-          es.close(); delete esRefs.current[modelName];
-          setPulling(p => { const n = { ...p }; delete n[modelName]; return n; });
-          toast(`Download failed: ${d.error ?? "unknown error"}`, "error");
-        }
-      } catch { /* ignore */ }
-    };
-    es.onerror = () => {
-      es.close(); delete esRefs.current[modelName];
-      if (!pullCancelled.has(modelName)) {
-        setPulling(p => { const n = { ...p }; delete n[modelName]; return n; });
-        toast(`Connection lost during download of ${modelName}`, "error");
-      }
-    };
-  };
-
-  const cancelPull = (modelName: string) => {
-    const es = esRefs.current[modelName];
-    if (es) { es.close(); delete esRefs.current[modelName]; }
-    setPullCancelled(c => new Set([...c, modelName]));
-    setPulling(p => { const n = { ...p }; delete n[modelName]; return n; });
-    toast(`Download cancelled`, "info");
-  };
-
-  const handleDelete = async (modelName: string) => {
-    if (deleteConfirm !== modelName) { setDeleteConfirm(modelName); return; }
-    setDeleteConfirm(null);
-    try {
-      await deleteOllamaModel(modelName);
-      setInstalled(prev => prev.filter(m => m.name !== modelName));
-      setLibrary(prev => prev.map(m => m.name === modelName ? { ...m, installed: false } : m));
-      toast(`${modelName} deleted`, "info");
-    } catch (e) { toast(e instanceof Error ? e.message : "Delete failed", "error"); }
-  };
-
-  const qualityColors: Record<string, string> = { good: "#6b7280", great: "#2563eb", excellent: "#7c3aed" };
-  const familyColors: Record<string, string> = { mistral: "#f59e0b", llama: "#3b82f6", gemma: "#10b981", qwen: "#8b5cf6", deepseek: "#06b6d4", phi: "#ec4899" };
-
-  const visibleLib = library.filter(m => {
-    if (libFilter === "compatible") return recommendation && m.min_vram_gb <= (recommendation.vram_gb + 2);
-    return true;
-  });
-
-  return (
-    <section style={ollamaSection}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" }}>
-        <div>
-          <h3 style={{ margin: "0 0 2px", fontSize: 15, fontWeight: 600, color: "#111827" }}>🦙 Ollama — Local AI Models</h3>
-          {status && (
-            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-              <span style={{ width: 7, height: 7, borderRadius: "50%", background: status.running ? "#16a34a" : "#9ca3af", display: "inline-block" }} />
-              <span style={{ fontSize: 12, color: status.running ? "#16a34a" : "#6b7280" }}>{status.message}</span>
-            </div>
-          )}
-        </div>
-        <button onClick={refresh} style={{ padding: "4px 10px", border: "1px solid #e5e7eb", borderRadius: 4, background: "#f9fafb", cursor: "pointer", fontSize: 12, color: "#6b7280" }}>⟳ Refresh</button>
-      </div>
-
-      {ollamaInstalled === false && (
-        <div style={{ padding: "14px 16px", background: "#fff7ed", border: "1px solid #fed7aa", borderRadius: 8, marginBottom: 14 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
-            <span style={{ fontSize: 20 }}>📦</span>
-            <div>
-              <div style={{ fontSize: 13, fontWeight: 700, color: "#92400e" }}>Ollama not installed</div>
-              <div style={{ fontSize: 11, color: "#b45309" }}>Install Ollama to run AI models locally, for free, with full privacy.</div>
-            </div>
-          </div>
-          <div style={{ display: "flex", gap: 8 }}>
-            <a href="https://ollama.com/download" target="_blank" rel="noopener noreferrer"
-              style={{ display: "inline-block", padding: "6px 16px", background: "#ea580c", color: "#fff", borderRadius: 5, fontSize: 12, fontWeight: 700, textDecoration: "none" }}>
-              ↓ Download Ollama
-            </a>
-            <button onClick={refresh}
-              style={{ padding: "6px 14px", border: "1px solid #fed7aa", borderRadius: 5, background: "#fff", cursor: "pointer", fontSize: 12, color: "#92400e" }}>
-              ⟳ I installed it — check again
-            </button>
-          </div>
-          <div style={{ marginTop: 8, fontSize: 11, color: "#b45309" }}>
-            After installing: Glossa Lab will start Ollama automatically on next launch.
-            Currently on Windows? Run the Ollama installer, then click "check again" above.
-          </div>
-        </div>
-      )}
-      {ollamaInstalled === true && !status?.running && (
-        <div style={{ padding: "10px 14px", background: "#fef3c7", border: "1px solid #fcd34d", borderRadius: 6, marginBottom: 12, fontSize: 12 }}>
-          Ollama is installed but not responding at localhost:11434.
-          <button onClick={refresh} style={{ marginLeft: 10, padding: "2px 10px", border: "1px solid #fcd34d", borderRadius: 4, background: "none", cursor: "pointer", fontSize: 11, color: "#92400e" }}>⟳ Retry</button>
-        </div>
-      )}
-
-      <div style={{ padding: "8px 12px", background: "#fefce8", border: "1px solid #fde68a", borderRadius: 6, marginBottom: 14, fontSize: 11, display: "flex", gap: 8, alignItems: "flex-start" }}>
-        <span style={{ flexShrink: 0, fontSize: 14 }}>⚠️</span>
-        <span style={{ color: "#78350f", lineHeight: 1.5 }}>
-          <strong>Shared model store:</strong> Ollama stores all models in a single system-wide location
-          (<code>~/.ollama/models</code>). Models shown here are shared across all applications on this machine.
-          Deleting a model removes it for all apps — not just Glossa Lab. Be careful before deleting.
-        </span>
-      </div>
-
-      {/* GPU + Recommendation */}
-      {recommendation && (
-        <div style={{ padding: "12px 14px", background: "#f0f9ff", border: "1px solid #bae6fd", borderRadius: 8, marginBottom: 14 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: "#0284c7", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 6 }}>GPU / Hardware</div>
-          <p style={{ margin: "0 0 6px", fontSize: 13, color: "#374151" }}>{recommendation.tier_description}</p>
-          <p style={{ margin: "0 0 8px", fontSize: 12, color: "#6b7280" }}>{recommendation.glossa_note}</p>
-          <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 10 }}>
-            <span style={{ fontSize: 11, fontWeight: 700, color: "#0284c7" }}>Top pick:</span>
-            <span style={{ fontSize: 11, padding: "2px 8px", background: "#7c3aed", color: "#fff", borderRadius: 4, fontWeight: 600 }}>{recommendation.recommended.display}</span>
-            <span style={{ fontSize: 11, color: "#6b7280" }}>{recommendation.recommended.size_gb} GB · score {recommendation.recommended.glossa_score}/10</span>
-          </div>
-          {/* Context length config */}
-          <ContextLengthPanel recommendation={recommendation} />
-        </div>
-      )}
-
-      {/* Default model indicator */}
-      {defaultModel && (
-        <div style={{ padding: "8px 12px", background: "#f0fdf4", border: "1px solid #86efac",
-          borderRadius: 6, marginBottom: 10, display: "flex", alignItems: "center", gap: 8 }}>
-          <span style={{ fontSize: 12 }}>🤖</span>
-          <span style={{ fontSize: 12, color: "#15803d" }}>
-            <strong>Default AI:</strong> {defaultModel}
-          </span>
-          <button
-            onClick={async () => {
-              await updateSettings({ providers: { ollama: { enabled: false, selected_model: defaultModel } } });
-              setDefaultModel(null);
-              toast("Ollama disabled as default AI", "info");
-            }}
-            style={{ marginLeft: "auto", padding: "2px 8px", border: "1px solid #86efac",
-              borderRadius: 4, background: "none", cursor: "pointer", fontSize: 10,
-              color: "#15803d" }}
-          >
-            Clear default
-          </button>
-        </div>
-      )}
-
-      {/* Installed models — 2-row card matching library layout */}
-      {installed.length > 0 && (
-        <div style={{ marginBottom: 14 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: "#374151", textTransform: "uppercase",
-            letterSpacing: 0.5, marginBottom: 6 }}>Installed ({installed.length})</div>
-          {installed.map((m) => {
-            const isDefault = m.name === defaultModel;
-            const famColor = familyColors[m.family] ?? "#6b7280";
-            // Try to find library entry for description
-            const libEntry = library.find(l => l.name === m.name);
-            return (
-              <div key={m.name} style={{ border: `1px solid ${isDefault ? "#86efac" : "#e5e7eb"}`,
-                borderRadius: 6, overflow: "hidden", marginBottom: 6,
-                background: isDefault ? "#f0fdf4" : "#fafafa" }}>
-                {/* Row 1: name + actions */}
-                <div style={{ display: "flex", gap: 8, padding: "8px 12px", alignItems: "center" }}>
-                  <span style={{ fontSize: 10, padding: "1px 6px", borderRadius: 4,
-                    background: famColor + "20", color: famColor, fontWeight: 700,
-                    flexShrink: 0 }}>{m.family}</span>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontWeight: 600, fontSize: 13, lineHeight: 1.3 }}>{m.display || m.name}</div>
-                    {libEntry?.desc && <div style={{ fontSize: 11, color: "#6b7280", marginTop: 1 }}>{libEntry.desc}</div>}
-                    {!libEntry?.desc && <div style={{ fontSize: 11, color: "#9ca3af" }}>{m.name}</div>}
-                  </div>
-                  {/* Aligned metadata column */}
-                  <div style={{ display: "flex", gap: 6, alignItems: "center", flexShrink: 0 }}>
-                    <span style={{ fontSize: 11, color: "#6b7280", minWidth: 50, textAlign: "right" }}>{m.size_gb} GB</span>
-                    {m.glossa_score != null && (
-                      <span style={{ fontSize: 10, padding: "1px 5px", background: "#7c3aed20",
-                        color: "#7c3aed", borderRadius: 4, minWidth: 42, textAlign: "center" }}>⭐ {m.glossa_score}/10</span>
-                    )}
-                    {isDefault
-                      ? <span style={{ fontSize: 10, padding: "2px 7px", background: "#15803d",
-                          color: "#fff", borderRadius: 4, fontWeight: 700, whiteSpace: "nowrap" }}>🤖 Default AI</span>
-                      : <button onClick={() => setAsDefault(m.name)}
-                          style={{ padding: "2px 8px", border: "1px solid #86efac", borderRadius: 4,
-                            cursor: "pointer", fontSize: 10, fontWeight: 600,
-                            background: "#f0fdf4", color: "#15803d", whiteSpace: "nowrap" }}>Set default</button>
-                    }
-                    <button onClick={() => handleDelete(m.name)}
-                      style={{ padding: "2px 8px", border: "1px solid",
-                        borderRadius: 4, cursor: "pointer", fontSize: 10, fontWeight: 600,
-                        borderColor: deleteConfirm === m.name ? "#dc2626" : "#fca5a5",
-                        background: deleteConfirm === m.name ? "#fef2f2" : "none",
-                        color: "#dc2626", whiteSpace: "nowrap" }}>
-                      {deleteConfirm === m.name ? "Confirm?" : "Delete"}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
-
-      {/* Library browser */}
-      <div>
-        <div style={{ display: "flex", gap: 6, marginBottom: 10, alignItems: "center" }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: "#374151", textTransform: "uppercase", letterSpacing: 0.5 }}>Model Library</div>
-          {(["all", "compatible"] as const).map((f) => (
-            <button key={f} onClick={() => setLibFilter(f)}
-              style={{ padding: "2px 8px", borderRadius: 4, border: "1px solid", cursor: "pointer", fontSize: 11,
-                background: libFilter === f ? "#1e3a5f" : "#fff",
-                borderColor: libFilter === f ? "#1e3a5f" : "#d1d5db",
-                color: libFilter === f ? "#fff" : "#374151" }}>
-              {f === "compatible" ? "Compatible with my GPU" : "All models"}
-            </button>
-          ))}
-          {recommendation && libFilter === "compatible" && (
-            <span style={{ fontSize: 10, color: "#9ca3af", marginLeft: 2 }}>
-              ({visibleLib.length} of {library.length} models)
-            </span>
-          )}
-        </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-          {visibleLib.map((m) => {
-            const isPulling = !!pulling[m.name];
-            const pullState = pulling[m.name];
-            const qualColor = qualityColors[m.quality] ?? "#6b7280";
-            const famColor = familyColors[m.family] ?? "#6b7280";
-            return (
-              <div key={m.name} style={{ border: `1px solid ${m.installed ? "#bbf7d0" : "#e5e7eb"}`, borderRadius: 6, overflow: "hidden", background: m.installed ? "#f0fdf4" : "#fafafa" }}>
-                <div style={{ display: "flex", gap: 8, padding: "8px 12px", alignItems: "center" }}>
-                  <span style={{ fontSize: 10, padding: "1px 5px", borderRadius: 3, background: famColor + "20", color: famColor, fontWeight: 700, flexShrink: 0 }}>{m.family}</span>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
-                      <span style={{ fontWeight: 600, fontSize: 13 }}>{m.display}</span>
-                      {m.tags.includes("top-pick") && <span style={{ fontSize: 9, padding: "1px 5px", background: "#7c3aed", color: "#fff", borderRadius: 3, fontWeight: 700 }}>TOP PICK</span>}
-                      {m.tags.includes("recommended") && <span style={{ fontSize: 9, padding: "1px 5px", background: "#2563eb", color: "#fff", borderRadius: 3, fontWeight: 700 }}>FOR GLOSSA</span>}
-                    </div>
-                    <div style={{ fontSize: 11, color: "#6b7280", marginTop: 1 }}>{m.desc}</div>
-                  </div>
-                  <div style={{ display: "flex", gap: 4, flexShrink: 0, alignItems: "center" }}>
-                    <span style={{ fontSize: 10, color: "#9ca3af" }}>{m.size_gb} GB</span>
-                    {m.min_vram_gb > 0 && <span style={{ fontSize: 10, color: "#9ca3af" }}>·</span>}
-                    {m.min_vram_gb > 0 && <span style={{ fontSize: 10, color: "#9ca3af" }}>{m.min_vram_gb}+ GB VRAM</span>}
-                    <span style={{ fontSize: 10, padding: "1px 5px", borderRadius: 3, background: qualColor + "20", color: qualColor, fontWeight: 700 }}>{m.quality}</span>
-                    <span style={{ fontSize: 10, padding: "1px 5px", background: "#7c3aed10", color: "#7c3aed", borderRadius: 3 }}>⭐{m.glossa_score}</span>
-                  </div>
-                  {m.installed ? (
-                    <span style={{ fontSize: 11, color: "#16a34a", fontWeight: 700, flexShrink: 0 }}>✓ Installed</span>
-                  ) : isPulling ? (
-                    <button onClick={() => cancelPull(m.name)}
-                      style={{ padding: "3px 10px", border: "1px solid #fca5a5", borderRadius: 4, background: "#fef2f2", cursor: "pointer", fontSize: 11, color: "#dc2626", flexShrink: 0 }}>
-                      Cancel
-                    </button>
-                  ) : (
-                    <button onClick={() => startPull(m.name)} disabled={!status?.running}
-                      style={{ padding: "3px 10px", border: "none", borderRadius: 4, background: status?.running ? "#2563eb" : "#e5e7eb", cursor: status?.running ? "pointer" : "not-allowed", fontSize: 11, color: status?.running ? "#fff" : "#9ca3af", flexShrink: 0, fontWeight: 600 }}>
-                      ↓ Download
-                    </button>
-                  )}
-                </div>
-                {isPulling && (
-                  <div style={{ padding: "6px 12px 10px", borderTop: "1px solid #e5e7eb", background: "#fff" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "#6b7280", marginBottom: 4 }}>
-                      <span>{pullState.status}</span>
-                      <span>{pullState.progress}% · {(pullState.completed / 1_000_000).toFixed(0)} / {(pullState.total / 1_000_000).toFixed(0)} MB</span>
-                    </div>
-                    <div style={{ height: 4, background: "#f3f4f6", borderRadius: 2 }}>
-                      <div style={{ height: "100%", width: `${pullState.progress}%`, background: "#2563eb", borderRadius: 2, transition: "width 0.3s" }} />
-                    </div>
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ── Settings tab persistence ───────────────────────────────────────────
 const SETTINGS_TAB_KEY = "glossa_settings_tab";
-type SettingsTab = "ai" | "discovery" | "notifications" | "local-ai" | "system";
+type SettingsTab = "ai" | "discovery" | "notifications" | "system";
 const TABS: { id: SettingsTab; label: string; icon: string }[] = [
-  { id: "ai",            label: "AI Providers",  icon: "🤖" },
+  { id: "ai",            label: "AI",            icon: "🤖" },
   { id: "discovery",     label: "Discovery",     icon: "🔭" },
   { id: "notifications", label: "Notifications", icon: "✉️" },
-  { id: "local-ai",      label: "Local AI",      icon: "🦙" },
   { id: "system",        label: "System",        icon: "⚙️" },
 ];
 
@@ -732,36 +279,19 @@ export function SettingsView() {
   const [error, setError] = useState("");
   const [verifying, setVerifying] = useState<Record<string, boolean>>({});
   const [verifyResult, setVerifyResult] = useState<Record<string, VerifyKeyResult>>({});
-  const [providers, setProviders] = useState<CatalogProvider[]>([]);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [providerPrefs, setProviderPrefs] = useState<Record<string, any>>({});
 
   const load = async () => {
     try {
       const s = await getSettings();
       setBackendKeys(s.keys);
       setDataDir(s.data_dir);
-      setProviderPrefs((s as unknown as Record<string, unknown>).providers as Record<string, unknown> ?? {});
       setError("");
     } catch {
       // Backend might not be available; localStorage still works
     }
-    getProviderCatalog().then(setProviders).catch(() => {});
   };
 
   useEffect(() => { load(); }, []);
-
-  const handleProviderToggle = async (pid: string, enabled: boolean) => {
-    const updated = { ...providerPrefs, [pid]: { ...(providerPrefs[pid] ?? {}), enabled } };
-    setProviderPrefs(updated);
-    try { await updateSettings({ providers: { [pid]: { ...(providerPrefs[pid] ?? {}), enabled } } }); } catch { /* optional */ }
-  };
-
-  const handleModelSelect = async (pid: string, model: string) => {
-    const updated = { ...providerPrefs, [pid]: { ...(providerPrefs[pid] ?? {}), selected_model: model } };
-    setProviderPrefs(updated);
-    try { await updateSettings({ providers: { [pid]: { ...(providerPrefs[pid] ?? {}), selected_model: model } } }); } catch { /* optional */ }
-  };
 
   // A key is "set" if it's in localStorage OR in backend env/storage
   const isSet = (key: string) => isLocalKeySet(key) || (backendKeys[key]?.set ?? false);
@@ -943,91 +473,11 @@ export function SettingsView() {
         </div>
       )}
 
-      {/* ═════ TAB: AI Providers ═════ */}
+      {/* ═════ TAB: AI ═════ */}
       {tab === "ai" && (
         <>
-          <section style={sectionStyle}>
-            <h3 style={sectionTitleStyle}>AI API Keys</h3>
-            <p style={hintTextStyle}>
-              Paste a key and click Save. Stored in browser + synced to backend.
-            </p>
-            {renderKeyGroup(AI_KEY_LABELS)}
-          </section>
-
-      {providers.length > 0 && (
-        <section style={sectionStyle}>
-          <h3 style={sectionTitleStyle}>Provider Enable / Model Selection</h3>
-          <p style={hintTextStyle}>Enable providers and select the model to use for each. OCR-capable providers are highlighted.</p>
-          <div style={{ display: "grid", gap: "0.75rem", marginTop: "0.75rem" }}>
-            {providers.map((p) => {
-              const pref = providerPrefs[p.id] ?? {};
-              const enabled = pref.enabled ?? false;
-              const selectedModel = pref.selected_model ?? p.recommended_models[0] ?? "";
-              const keySet = backendKeys[p.api_key_setting]?.set || isLocalKeySet(p.api_key_setting);
-              const details: ModelDetail[] = p.model_details ?? [];
-              const selectedDetail = details.find((d) => d.id === selectedModel);
-              return (
-                <div key={p.id} style={{ border: "1px solid #e5e7eb", borderRadius: 8,
-                  background: enabled ? "#f0fdf4" : "#fafafa", overflow: "hidden" }}>
-                  {/* Header row */}
-                  <div style={{ display: "flex", alignItems: "center", gap: 10,
-                    padding: "10px 12px" }}>
-                    <input type="checkbox" checked={enabled}
-                      onChange={(e) => handleProviderToggle(p.id, e.target.checked)}
-                      style={{ width: 16, height: 16, cursor: "pointer" }} />
-                    <span style={{ fontWeight: 600, fontSize: 13, minWidth: 80 }}>{p.label}</span>
-                    {p.ocr_preferred_models.length > 0 && (
-                      <span style={{ fontSize: 10, color: "#7c3aed", background: "#ede9fe",
-                        padding: "1px 6px", borderRadius: 8, fontWeight: 600 }}>OCR</span>
-                    )}
-                    {!keySet && (
-                      <span style={{ fontSize: 10, color: "#d97706", background: "#fef3c7",
-                        padding: "1px 6px", borderRadius: 8 }}>No key</span>
-                    )}
-                    <select
-                      value={selectedModel}
-                      onChange={(e) => handleModelSelect(p.id, e.target.value)}
-                      disabled={!enabled}
-                      style={{ marginLeft: "auto", fontSize: 12, padding: "3px 6px",
-                        borderRadius: 4, border: "1px solid #d1d5db",
-                        background: enabled ? "#fff" : "#f9fafb",
-                        cursor: enabled ? "pointer" : "default",
-                        minWidth: 260, maxWidth: 480 }}
-                    >
-                      {details.length > 0
-                        ? details.map((d) => (
-                            <option key={d.id} value={d.id}>
-                              {d.id}{d.use_for ? ` — ${d.use_for}` : ""}
-                            </option>
-                          ))
-                        : p.recommended_models.map((m) => (
-                            <option key={m} value={m}>{m}</option>
-                          ))
-                      }
-                    </select>
-                  </div>
-                  {/* Model description */}
-                  {enabled && selectedDetail && (
-                    <div style={{ padding: "6px 12px 10px 38px",
-                      borderTop: "1px solid #e5e7eb", background: "#f8fafc" }}>
-                      <p style={{ margin: 0, fontSize: 11, color: "#374151",
-                        lineHeight: 1.5 }}>{selectedDetail.description}</p>
-                      {selectedDetail.use_for && (
-                        <p style={{ margin: "4px 0 0", fontSize: 11, color: "#6b7280" }}>
-                          <strong>Best for:</strong> {selectedDetail.use_for}
-                        </p>
-                      )}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </section>
-      )}
-
-          <AIEndpointsPanel />
-          <AIProfilesPanel />
+          <ProvidersPanel />
+          <ModelAssignmentsPanel />
 
           <section style={sectionStyle}>
             <h3 style={sectionTitleStyle}>AI Behavior</h3>
@@ -1056,9 +506,6 @@ export function SettingsView() {
 
       {/* ═════ TAB: Notifications ═════ */}
       {tab === "notifications" && <NotificationsPanel />}
-
-      {/* ═════ TAB: Local AI ═════ */}
-      {tab === "local-ai" && <OllamaSection />}
 
       {/* ═════ TAB: System ═════ */}
       {tab === "system" && (

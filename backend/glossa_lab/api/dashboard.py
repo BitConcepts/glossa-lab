@@ -19,8 +19,10 @@ insight" / scrolls to the AI block.
 
 from __future__ import annotations
 
+import asyncio
 import json
 import logging
+import re
 from datetime import datetime, timedelta, timezone
 from typing import Any
 
@@ -127,56 +129,86 @@ async def _hypothesis_count() -> int:
 
 # ── AI insight ─────────────────────────────────────────────────────────────
 
+# JSON Schema for vLLM guided_json — forces the model to output exactly this
+# structure at the token level (no wrong keys, no missing fields).
+_INSIGHT_JSON_SCHEMA: dict[str, Any] = {
+    "type": "object",
+    "properties": {
+        "highlights": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {"type": "string"},
+                    "title": {"type": "string"},
+                    "why_it_matters": {"type": "string"},
+                },
+                "required": ["id", "title", "why_it_matters"],
+            },
+        },
+        "what_it_means": {"type": "string"},
+        "impact": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "study_or_experiment_id": {"type": "string"},
+                    "name": {"type": "string"},
+                    "impact": {"type": "string"},
+                    "suggested_action": {"type": "string"},
+                    "suggested_params": {"type": "object"},
+                },
+                "required": ["study_or_experiment_id", "name", "impact",
+                             "suggested_action"],
+            },
+        },
+        "next_actions": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "label": {"type": "string"},
+                    "action_type": {"type": "string"},
+                    "params": {"type": "object"},
+                    "rationale": {"type": "string"},
+                },
+                "required": ["label", "action_type", "params", "rationale"],
+            },
+        },
+    },
+    "required": ["highlights", "what_it_means", "impact", "next_actions"],
+}
 
 _INSIGHT_PROMPT_TEMPLATE = (
     "You are a {goal_label} research assistant. Given the most recent\n"
     "discovery items the user has captured, produce a JSON object with\n"
-    "exactly these keys:\n\n"
-    "  highlights      — list of the 3 most consequential items, each:\n"
-    "                    {id, title, why_it_matters}\n"
-    "  what_it_means   — 2-3 sentence narrative summarising the trend or\n"
-    "                    cluster across the items\n"
-    "  impact          — list of {study_or_experiment_id, name, impact,\n"
-    "                    suggested_action, suggested_params}.\n"
-    "                    CRITICAL: study_or_experiment_id MUST be an id\n"
-    "                    that appears VERBATIM in the 'Registered\n"
-    "                    experiments' or 'User's studies' lists below.\n"
-    "                    NEVER invent, abbreviate, or hash an id.\n"
-    "                    name is a short human-readable label for the\n"
-    "                    experiment or study.\n"
-    "                    suggested_action is one of the action_type\n"
-    "                    string values listed below (NEVER an object).\n"
-    "                    suggested_params is a JSON object carrying the\n"
-    "                    same payload schema as the corresponding\n"
-    "                    next_actions params (e.g. {experiment_id} for\n"
-    "                    run_experiment); use {} when not applicable.\n"
-    "  next_actions    — list of 3-5 EXECUTABLE suggestions, each:\n"
-    "                    {label, action_type, params, rationale}.\n"
-    "\n"
-    "action_type MUST be one of:\n"
-    "  run_experiment           — params: {experiment_id} where\n"
-    "                             experiment_id MUST be copied EXACTLY\n"
-    "                             from the 'Registered experiments'\n"
-    "                             list. NEVER fabricate an id.\n"
-    "  open_view                — params: {view} (one of: discovery,\n"
-    "                             builder, experiments, hypotheses,\n"
-    "                             notebooks, ai-tools, reports, settings,\n"
-    "                             dashboard).\n"
-    "  run_fetch                — params: {} — trigger discovery fetch.\n"
-    "  run_mine                 — params: {limit?: int}.\n"
-    "  create_hypothesis        — params: {title, statement?}.\n"
-    "  propose_experiment_chain — params: {hypothesis} — opens AI Hub\n"
-    "                             prompt for chain planning.\n"
-    "  ai_chat                  — params: {prompt} — send a starter\n"
-    "                             prompt to the docked Glossa AI.\n"
-    "  no_op                    — informational only; no Apply button.\n"
-    "\n"
-    "Pick action_type values that map to real next steps. Prefer\n"
-    "run_experiment and propose_experiment_chain over no_op when there's\n"
-    "a clear research move. params MUST be a JSON object (use {} when\n"
-    "empty).\n"
-    "\n"
-    "Return ONLY valid JSON, no markdown fences."
+    "EXACTLY this structure (no other keys):\n\n"
+    '{{\n'
+    '  "highlights": [\n'
+    '    {{"id": "<item_id>", "title": "<title>", "why_it_matters": "<1 sentence>"}}\n'
+    '  ],\n'
+    '  "what_it_means": "<2-3 sentence narrative>",\n'
+    '  "impact": [\n'
+    '    {{"study_or_experiment_id": "<EXACT id from list below>",\n'
+    '      "name": "<label>", "impact": "<1 sentence>",\n'
+    '      "suggested_action": "run_experiment",\n'
+    '      "suggested_params": {{"experiment_id": "<same id>"}} }}\n'
+    '  ],\n'
+    '  "next_actions": [\n'
+    '    {{"label": "<button text>", "action_type": "<type>",\n'
+    '      "params": {{}}, "rationale": "<why>"}}\n'
+    '  ]\n'
+    '}}\n\n'
+    "RULES:\n"
+    "- highlights: pick the 3 most consequential items from the list below.\n"
+    "- impact: study_or_experiment_id MUST appear VERBATIM in the experiment\n"
+    "  or study lists below. NEVER invent or abbreviate an id.\n"
+    "- next_actions: 3-5 executable suggestions.\n"
+    "- action_type is one of: run_experiment, open_view, run_fetch, run_mine,\n"
+    "  create_hypothesis, propose_experiment_chain, ai_chat, no_op.\n"
+    "- params is always a JSON object (use {{}} when empty).\n"
+    "- Be concise. Keep each string under 120 chars.\n"
+    "- Return ONLY the JSON object. No markdown, no explanation."
 )
 
 
@@ -213,6 +245,70 @@ def _build_insight_prompt(
         f"## User's studies\n{studies_block}\n\n"
         f"## Registered experiments\n{exp_block}\n"
     )
+
+
+def _try_repair_json(text: str) -> dict[str, Any] | None:
+    """Try to repair truncated JSON by closing open brackets/braces.
+
+    Returns the parsed dict if successful, None otherwise.
+    """
+    # Only attempt if the text starts with { (valid JSON object start)
+    stripped = text.strip()
+    if not stripped.startswith("{"):
+        return None
+    # Count unclosed brackets and braces
+    # Walk the string tracking nesting, ignoring chars inside strings
+    in_string = False
+    escape = False
+    stack: list[str] = []
+    for ch in stripped:
+        if escape:
+            escape = False
+            continue
+        if ch == "\\" and in_string:
+            escape = True
+            continue
+        if ch == '"' and not escape:
+            in_string = not in_string
+            continue
+        if in_string:
+            continue
+        if ch in ("{", "["):
+            stack.append(ch)
+        elif ch == "}" and stack and stack[-1] == "{":
+            stack.pop()
+        elif ch == "]" and stack and stack[-1] == "[":
+            stack.pop()
+    if not stack:
+        return None  # Already balanced — the error is something else
+    # Close everything that's still open (in reverse order)
+    # First, close any dangling string or value
+    suffix = ""
+    for bracket in reversed(stack):
+        if bracket == "[":
+            suffix += "]"
+        elif bracket == "{":
+            suffix += "}"
+    # Try a few repair strategies
+    for trim in ("", ","):
+        # Trim trailing comma or partial value before closing
+        candidate = stripped.rstrip()
+        if trim and candidate.endswith(trim):
+            candidate = candidate[:-len(trim)]
+        # Also strip a trailing incomplete string (open quote without close)
+        if candidate.count('"') % 2 != 0:
+            # Remove chars back to the last complete key-value boundary
+            last_comma = candidate.rfind(",")
+            last_brace = max(candidate.rfind("{"), candidate.rfind("["))
+            cut = max(last_comma, last_brace)
+            if cut > 0:
+                candidate = candidate[:cut + 1]
+        candidate += suffix
+        try:
+            return json.loads(candidate)
+        except (json.JSONDecodeError, ValueError):
+            continue
+    return None
 
 
 async def _resolve_project(
@@ -268,13 +364,30 @@ async def _generate_insight(
     try:
         from glossa_lab.ai_utils import call_llm  # noqa: PLC0415
 
+        _log.info("dashboard insight: calling LLM (json_mode=True, %d items)", len(items))
         try:
-            raw = call_llm(
-                [
-                    {"role": "system", "content": "You produce concise structured JSON for a research dashboard."},
-                    {"role": "user", "content": prompt},
-                ],
-                max_tokens=900, temperature=0.2,
+            loop = asyncio.get_event_loop()
+            raw = await loop.run_in_executor(
+                None,
+                lambda: call_llm(
+                    [
+                        {
+                            "role": "system",
+                            "content": (
+                                "/no_think\n"
+                                "You produce concise structured JSON for a research dashboard. "
+                                "Output ONLY a JSON object with keys: highlights, what_it_means, impact, next_actions. "
+                                "No other keys. No markdown. No explanation. "
+                                "Keep each string value under 120 characters. Be brief."
+                            ),
+                        },
+                        {"role": "user", "content": prompt},
+                    ],
+                    bucket="reasoning",
+                    json_mode=True,
+                    json_schema=_INSIGHT_JSON_SCHEMA,
+                    max_tokens=1500, temperature=0.2,
+                ),
             )
         except ValueError as ve:
             # ValueError from call_llm = "No AI provider configured"
@@ -308,8 +421,13 @@ async def _generate_insight(
                 "next_actions": [],
                 "model": "empty-fallback",
             }
-        # Strip any stray code fences before json-loading.
+        _log.info("dashboard insight: got %d chars from LLM", len(raw))
+        # Strip Qwen3-style <think>...</think> reasoning prefix.
         cleaned = raw.strip()
+        think_match = re.search(r"</think>\s*", cleaned)
+        if think_match:
+            cleaned = cleaned[think_match.end():].strip()
+        # Strip any stray code fences before json-loading.
         if cleaned.startswith("```"):
             cleaned = cleaned.split("```", 2)[1] if "```" in cleaned[3:] else cleaned[3:]
             if cleaned.lower().startswith("json"):
@@ -319,24 +437,43 @@ async def _generate_insight(
         try:
             parsed = json.loads(cleaned)
         except json.JSONDecodeError as jde:
-            _log.warning(
-                "dashboard insight: LLM returned invalid JSON (%s). First 200 chars: %s",
-                jde, cleaned[:200],
-            )
-            return {
-                "highlights": [],
-                "what_it_means": (
-                    "The AI returned a response but it wasn\u2019t valid JSON. "
-                    "This sometimes happens when the model is overloaded or "
-                    "the response was truncated. Click Regenerate to retry."
-                ),
-                "impact": [],
-                "next_actions": [],
-                "model": "json-error",
-            }
+            # Attempt repair: if the JSON was truncated (max_tokens hit),
+            # close any open brackets/braces so json.loads can succeed.
+            repaired = _try_repair_json(cleaned)
+            if repaired is not None:
+                _log.info("dashboard insight: repaired truncated JSON (%d chars)", len(cleaned))
+                parsed = repaired
+            else:
+                _log.warning(
+                    "dashboard insight: LLM returned invalid JSON (%s). First 200 chars: %s",
+                    jde, cleaned[:200],
+                )
+                return {
+                    "highlights": [],
+                    "what_it_means": (
+                        "The AI returned a response but it wasn\u2019t valid JSON. "
+                        "This sometimes happens when the model is overloaded or "
+                        "the response was truncated. Click Regenerate to retry."
+                    ),
+                    "impact": [],
+                    "next_actions": [],
+                    "model": "json-error",
+                }
         # Light schema validation
         for k in ("highlights", "what_it_means", "impact", "next_actions"):
             parsed.setdefault(k, [] if k != "what_it_means" else "")
+        # Reject effectively-empty responses (model outputting minimal
+        # schema to satisfy guided_json without actually analyzing).
+        if (
+            not parsed.get("highlights")
+            and not parsed.get("what_it_means", "").strip()
+            and not parsed.get("next_actions")
+        ):
+            _log.warning(
+                "dashboard insight: LLM returned empty schema (%d chars). "
+                "Falling back to heuristic.", len(raw),
+            )
+            raise RuntimeError("LLM returned empty insight schema")
         # Coerce next_actions to the structured shape — the LLM sometimes
         # returns plain strings, in which case we fall back to no_op. The
         # frontend depends on action_type / params being present.
@@ -466,6 +603,11 @@ async def _generate_insight(
         parsed["next_actions"] = normalised
 
         parsed["model"] = "ai"
+        # Phase F: Add AI metadata for output badges
+        parsed["_ai_meta"] = {
+            "bucket": "reasoning",
+            "is_fallback": False,
+        }
         return parsed
     except Exception as exc:  # noqa: BLE001
         _log.warning("dashboard insight LLM call failed: %s", exc)

@@ -781,6 +781,7 @@ async def _run_llm(
     json_mode: bool = False,
     provider: str | None = None,
     model: str | None = None,
+    bucket: str = "conversational",
 ) -> str:
     from glossa_lab.ai_utils import call_llm  # noqa: PLC0415
     from glossa_lab.model_profiles import get_profile, trim_history  # noqa: PLC0415
@@ -794,6 +795,7 @@ async def _run_llm(
         None,
         lambda: call_llm(
             messages,
+            bucket=bucket,
             json_mode=json_mode,
             max_tokens=profile["max_tokens"],
             temperature=profile["temperature"],

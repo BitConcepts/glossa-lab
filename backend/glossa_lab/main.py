@@ -49,6 +49,9 @@ from glossa_lab.api.system import router as system_router
 from glossa_lab.api.terminal import router as terminal_router
 from glossa_lab.api.projects import router as projects_router
 from glossa_lab.api.correspondences import router as correspondences_router
+from glossa_lab.api.model_assignments import router as model_assignments_router
+from glossa_lab.api.provider_registry import router as provider_registry_router
+from glossa_lab.model_intelligence import router as model_intelligence_router
 from glossa_lab.api.texts import router as texts_router
 from glossa_lab.config import get_settings
 from glossa_lab.database import close_db, init_db
@@ -182,6 +185,40 @@ async def lifespan(app: FastAPI):
 
     discovery_task = start_scheduler()
 
+    # Probe all enabled providers to refresh available_models (non-blocking)
+    async def _probe_all_providers() -> None:
+        from glossa_lab.api.provider_registry import probe_provider  # noqa: PLC0415
+        _pdb = get_db()
+        if _pdb is None:
+            return
+        try:
+            provs = await _pdb.list_providers(enabled_only=True)
+            for prov in provs:
+                try:
+                    result = await asyncio.get_event_loop().run_in_executor(
+                        None,
+                        lambda p=prov: probe_provider(
+                            p["provider_type"], p.get("provider_id", ""),
+                            p["base_url"], p["api_key"], p.get("headers"),
+                        ),
+                    )
+                    from datetime import datetime as _dt, timezone as _tz  # noqa: PLC0415
+                    await _pdb.update_provider(
+                        prov["id"],
+                        status="reachable" if result["valid"] else "unreachable",
+                        available_models=result.get("models", []),
+                        last_probed_at=_dt.now(_tz.utc).isoformat(),
+                    )
+                except Exception:  # noqa: BLE001
+                    pass
+        except Exception:  # noqa: BLE001
+            pass
+    asyncio.create_task(_probe_all_providers())
+
+    # Start model intelligence sync (HF leaderboard → model_scores)
+    from glossa_lab.model_intelligence import start_intelligence_sync  # noqa: PLC0415
+    intel_task = asyncio.create_task(start_intelligence_sync())
+
     _start_time = time.time()
     yield
     # Shutdown: stop engine + scheduler, close database, flush logs
@@ -263,6 +300,9 @@ def create_app() -> FastAPI:
     application.include_router(ai_profiles_router)   # already prefixed at /api/v1/ai-profiles
     application.include_router(projects_router)        # already prefixed at /api/v1/projects
     application.include_router(correspondences_router)  # already prefixed at /api/v1/correspondences
+    application.include_router(provider_registry_router)  # /api/v1/providers
+    application.include_router(model_assignments_router)  # /api/v1/model-assignments
+    application.include_router(model_intelligence_router)  # /api/v1/model-intelligence
 
     # Serve built frontend
     # Skipped silently in dev if the dist directory does not yet exist.

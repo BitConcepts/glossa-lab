@@ -2057,7 +2057,154 @@ export const parseEmailToCorrespondence = (
 ): Promise<Partial<Correspondence>> =>
   request("POST", "/correspondences/parse", body);
 
-// ── Email provider presets (frontend-only catalogue) ──────────────────────
+// ── Provider Registry (V20) ───────────────────────────────────────────
+
+export type ProviderType = "cloud" | "ollama" | "byoe" | "huggingface";
+
+export interface ProviderEntry {
+  id: string;
+  name: string;
+  provider_type: ProviderType;
+  provider_id: string;
+  base_url: string;
+  api_key_set: boolean;
+  headers: Record<string, string>;
+  enabled: number;
+  status: "reachable" | "unreachable" | "untested" | string;
+  available_models: string[];
+  last_probed_at: string;
+  notes: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CloudProviderInfo {
+  id: string;
+  label: string;
+  base_url: string;
+  models_url: string;
+}
+
+export const listProviders = (
+  enabledOnly = false, providerType?: string,
+): Promise<{ providers: ProviderEntry[] }> => {
+  const params = new URLSearchParams();
+  if (enabledOnly) params.set("enabled_only", "true");
+  if (providerType) params.set("provider_type", providerType);
+  const q = params.toString();
+  return request("GET", `/providers${q ? `?${q}` : ""}`);
+};
+
+export const createProvider = (
+  body: {
+    name: string; provider_type: ProviderType; provider_id?: string;
+    base_url?: string; api_key?: string; headers?: Record<string, string>;
+    enabled?: boolean; notes?: string;
+  },
+): Promise<ProviderEntry> =>
+  request("POST", "/providers", body);
+
+export const updateProvider = (
+  id: string, body: Partial<ProviderEntry & { api_key: string }>,
+): Promise<ProviderEntry> =>
+  request("PATCH", `/providers/${id}`, body);
+
+export const deleteProvider = (
+  id: string,
+): Promise<{ deleted: boolean; id: string }> =>
+  request("DELETE", `/providers/${id}`);
+
+export const testProvider = (
+  id: string,
+): Promise<{ valid: boolean; message: string; models: string[] }> =>
+  request("POST", `/providers/${id}/test`);
+
+export const testUnsavedProvider = (
+  body: { provider_type: string; provider_id?: string; base_url: string; api_key?: string; headers?: Record<string, string> },
+): Promise<{ valid: boolean; message: string; models: string[] }> =>
+  request("POST", "/providers/test-unsaved", body);
+
+export const detectOllama = (): Promise<{ detected: { url: string; valid: boolean; message: string; models: string[] }[] }> =>
+  request("GET", "/providers/detect-ollama");
+
+export const listCloudProviders = (): Promise<{ providers: CloudProviderInfo[] }> =>
+  request("GET", "/providers/cloud-providers");
+
+// ── Model Assignments (V20) ─────────────────────────────────────────
+
+export type Bucket = "reasoning" | "conversational" | "longform" | "global";
+
+export interface ModelAssignment {
+  id: string;
+  bucket: Bucket;
+  rank: number;
+  provider_registry_id: string;
+  model: string;
+  params: Record<string, unknown>;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface BucketGroup {
+  bucket: string;
+  primary?: ModelAssignment;
+  fallback?: ModelAssignment;
+}
+
+export const listModelAssignments = (): Promise<{ assignments: BucketGroup[]; buckets: string[] }> =>
+  request("GET", "/model-assignments");
+
+export const setModelAssignment = (
+  bucket: Bucket,
+  body: {
+    primary_provider_id?: string; primary_model?: string; primary_params?: Record<string, unknown>;
+    fallback_provider_id?: string; fallback_model?: string; fallback_params?: Record<string, unknown>;
+  },
+): Promise<BucketGroup> =>
+  request("PUT", `/model-assignments/${bucket}`, body);
+
+export const resolveModelAssignment = (
+  bucket: Bucket,
+): Promise<{
+  resolved: boolean; bucket: string; rank?: number; is_fallback?: boolean;
+  provider_id?: string; provider_name?: string; provider_type?: string;
+  base_url?: string; model?: string; params?: Record<string, unknown>;
+  message?: string;
+}> =>
+  request("GET", `/model-assignments/resolve?bucket=${bucket}`);
+
+export const autoConfigureAssignments = (): Promise<{ configured: boolean; assignments?: Record<string, unknown>; message?: string }> =>
+  request("POST", "/model-assignments/auto-configure");
+
+// ── Model Intelligence (V20) ────────────────────────────────────────
+
+export interface ModelScore {
+  id: string;
+  model_name: string;
+  provider_type: string;
+  reasoning_score: number;
+  conversational_score: number;
+  longform_score: number;
+  source: string;
+  raw_benchmarks: Record<string, number>;
+  scored_at: string;
+}
+
+export const listModelScores = (source?: string): Promise<{ scores: ModelScore[] }> =>
+  request("GET", `/model-intelligence/scores${source ? `?source=${source}` : ""}`);
+
+export const getModelScore = (name: string): Promise<{ score: ModelScore | null }> =>
+  request("GET", `/model-intelligence/scores/${encodeURIComponent(name)}`);
+
+export const getModelRecommendations = (
+  bucket: Bucket,
+): Promise<{ bucket: string; recommendations: { model: string; score: number; source: string; reasoning: number; conversational: number; longform: number }[] }> =>
+  request("GET", `/model-intelligence/recommendations?bucket=${bucket}`);
+
+export const syncModelIntelligence = (): Promise<{ synced: number; errors: number; message: string }> =>
+  request("POST", "/model-intelligence/sync");
+
+// ── Email provider presets (frontend-only catalogue) ────────────────────────────────
 
 export interface EmailProviderPreset {
   id: string;

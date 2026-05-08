@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Increment this when adding a new _SCHEMA_Vn block below.
 # _apply_schema will raise if the DB is somehow ahead of the code.
-_SCHEMA_VERSION = 19
+_SCHEMA_VERSION = 20
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -360,6 +360,62 @@ CREATE INDEX IF NOT EXISTS idx_correspondences_project ON correspondences(projec
 CREATE INDEX IF NOT EXISTS idx_correspondences_date ON correspondences(date DESC);
 """
 
+_SCHEMA_V20 = """
+-- Unified provider registry: replaces scattered ai_endpoints + .keys.json + Ollama prefs.
+-- Each row = one configured provider (cloud key, Ollama instance, BYOE endpoint, HuggingFace).
+CREATE TABLE IF NOT EXISTS provider_registry (
+    id                   TEXT PRIMARY KEY,
+    name                 TEXT NOT NULL,
+    provider_type        TEXT NOT NULL DEFAULT 'cloud',
+    provider_id          TEXT NOT NULL DEFAULT '',
+    base_url             TEXT NOT NULL DEFAULT '',
+    api_key              TEXT NOT NULL DEFAULT '',
+    headers_json         TEXT NOT NULL DEFAULT '{}',
+    enabled              INTEGER NOT NULL DEFAULT 1,
+    status               TEXT NOT NULL DEFAULT 'untested',
+    available_models_json TEXT NOT NULL DEFAULT '[]',
+    last_probed_at       TEXT NOT NULL DEFAULT '',
+    notes                TEXT NOT NULL DEFAULT '',
+    created_at           TEXT NOT NULL,
+    updated_at           TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_provider_registry_type ON provider_registry(provider_type);
+CREATE INDEX IF NOT EXISTS idx_provider_registry_enabled ON provider_registry(enabled);
+
+-- Model assignments: bucket → primary/fallback provider+model.
+-- bucket: 'reasoning' | 'conversational' | 'longform' | 'global'
+-- rank: 1 = primary, 2 = fallback
+CREATE TABLE IF NOT EXISTS model_assignments (
+    id                   TEXT PRIMARY KEY,
+    bucket               TEXT NOT NULL DEFAULT 'global',
+    rank                 INTEGER NOT NULL DEFAULT 1,
+    provider_registry_id TEXT NOT NULL DEFAULT '',
+    model                TEXT NOT NULL DEFAULT '',
+    params_json          TEXT NOT NULL DEFAULT '{}',
+    created_at           TEXT NOT NULL,
+    updated_at           TEXT NOT NULL
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_model_assignments_bucket_rank
+    ON model_assignments(bucket, rank);
+
+-- Model intelligence scores (from HuggingFace leaderboard + local benchmarks).
+CREATE TABLE IF NOT EXISTS model_scores (
+    id                   TEXT PRIMARY KEY,
+    model_name           TEXT NOT NULL,
+    provider_type        TEXT NOT NULL DEFAULT '',
+    reasoning_score      REAL NOT NULL DEFAULT 0.0,
+    conversational_score REAL NOT NULL DEFAULT 0.0,
+    longform_score       REAL NOT NULL DEFAULT 0.0,
+    source               TEXT NOT NULL DEFAULT 'huggingface',
+    raw_benchmarks_json  TEXT NOT NULL DEFAULT '{}',
+    scored_at            TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_model_scores_name ON model_scores(model_name);
+""";
+
 _SCHEMA_V12 = """
 CREATE TABLE IF NOT EXISTS canonical_signs (
     internal_id        TEXT PRIMARY KEY,
@@ -578,6 +634,90 @@ class Database:
             await self._conn.executescript(_SCHEMA_V19)
             await self._conn.execute("UPDATE _schema_version SET version = ?", (19,))
             current_version = 19
+
+        if current_version < 20:
+            await self._conn.executescript(_SCHEMA_V20)
+            # Migrate existing ai_endpoints into provider_registry
+            try:
+                eps = await self._conn.execute("SELECT * FROM ai_endpoints")
+                for ep in await eps.fetchall():
+                    await self._conn.execute(
+                        """INSERT OR IGNORE INTO provider_registry
+                           (id,name,provider_type,provider_id,base_url,api_key,
+                            headers_json,enabled,status,available_models_json,
+                            notes,created_at,updated_at)
+                           VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                        (
+                            ep["id"], ep["name"], "byoe", "byoe",
+                            ep["base_url"], ep["api_key"],
+                            ep["headers_json"], int(ep["enabled"]),
+                            "untested",
+                            json.dumps([ep["default_model"]] if ep["default_model"] else []),
+                            ep["notes"], ep["created_at"], ep["updated_at"],
+                        ),
+                    )
+            except Exception:  # noqa: BLE001
+                pass
+            # Migrate Ollama prefs from .keys.json
+            try:
+                from glossa_lab.api.settings import _load_keys  # noqa: PLC0415
+                keys = _load_keys()
+                prefs = keys.get("_provider_prefs", {})
+                ollama_pref = prefs.get("ollama", {})
+                if ollama_pref.get("enabled") and ollama_pref.get("selected_model"):
+                    now = __import__("datetime").datetime.now(
+                        __import__("datetime").timezone.utc
+                    ).isoformat()
+                    await self._conn.execute(
+                        """INSERT OR IGNORE INTO provider_registry
+                           (id,name,provider_type,provider_id,base_url,api_key,
+                            headers_json,enabled,status,available_models_json,
+                            notes,created_at,updated_at)
+                           VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                        (
+                            "ollama_default", "Ollama (local)", "ollama", "ollama",
+                            "http://localhost:11434", "",
+                            "{}", 1, "untested",
+                            json.dumps([ollama_pref["selected_model"]]),
+                            "", now, now,
+                        ),
+                    )
+                # Migrate cloud keys
+                for prov, key_name in [
+                    ("openai", "openai_api_key"),
+                    ("anthropic", "anthropic_api_key"),
+                    ("mistral", "mistral_api_key"),
+                    ("google", "google_api_key"),
+                ]:
+                    val = keys.get(key_name, "")
+                    if val and val.strip():
+                        cloud_urls = {
+                            "openai": "https://api.openai.com/v1",
+                            "anthropic": "https://api.anthropic.com/v1",
+                            "mistral": "https://api.mistral.ai/v1",
+                            "google": "https://generativelanguage.googleapis.com/v1beta",
+                        }
+                        now = __import__("datetime").datetime.now(
+                            __import__("datetime").timezone.utc
+                        ).isoformat()
+                        await self._conn.execute(
+                            """INSERT OR IGNORE INTO provider_registry
+                               (id,name,provider_type,provider_id,base_url,api_key,
+                                headers_json,enabled,status,available_models_json,
+                                notes,created_at,updated_at)
+                               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                            (
+                                f"cloud_{prov}", f"{prov.title()}",
+                                "cloud", prov,
+                                cloud_urls.get(prov, ""), val,
+                                "{}", 1, "untested", "[]",
+                                "", now, now,
+                            ),
+                        )
+            except Exception:  # noqa: BLE001
+                pass
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (20,))
+            current_version = 20
 
         if current_version > _SCHEMA_VERSION:
             logger.warning(
@@ -2290,6 +2430,246 @@ class Database:
         await self._conn.commit()
         return existing
 
+    # ── Provider Registry (V20) ─────────────────────────────────
+
+    async def list_providers(
+        self, *, enabled_only: bool = False, provider_type: str | None = None,
+    ) -> list[dict[str, Any]]:
+        assert self._conn
+        q = "SELECT * FROM provider_registry WHERE 1=1"
+        args: list[Any] = []
+        if enabled_only:
+            q += " AND enabled=1"
+        if provider_type:
+            q += " AND provider_type=?"
+            args.append(provider_type)
+        q += " ORDER BY name ASC"
+        cursor = await self._conn.execute(q, args)
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    async def get_provider(self, pid: str) -> dict[str, Any] | None:
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM provider_registry WHERE id=?", (pid,)
+        )
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    async def create_provider(
+        self, *, name: str, provider_type: str, provider_id: str = "",
+        base_url: str = "", api_key: str = "",
+        headers: dict[str, str] | None = None,
+        enabled: bool = True, notes: str = "", created_at: str,
+    ) -> dict[str, Any]:
+        assert self._conn
+        pid = uuid.uuid4().hex[:12]
+        await self._conn.execute(
+            """INSERT INTO provider_registry
+               (id,name,provider_type,provider_id,base_url,api_key,
+                headers_json,enabled,status,available_models_json,
+                notes,created_at,updated_at)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+            (
+                pid, name, provider_type, provider_id, base_url, api_key,
+                json.dumps(headers or {}), 1 if enabled else 0,
+                "untested", "[]", notes, created_at, created_at,
+            ),
+        )
+        await self._conn.commit()
+        return await self.get_provider(pid)  # type: ignore[return-value]
+
+    async def update_provider(
+        self, pid: str, **fields: Any,
+    ) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_provider(pid)
+        if existing is None:
+            return None
+        cols = {
+            "name": fields.get("name", existing["name"]),
+            "provider_type": fields.get("provider_type", existing["provider_type"]),
+            "provider_id": fields.get("provider_id", existing["provider_id"]),
+            "base_url": fields.get("base_url", existing["base_url"]),
+            "api_key": fields.get("api_key", existing["api_key"]),
+            "headers_json": (
+                json.dumps(fields["headers"])
+                if "headers" in fields
+                else json.dumps(existing.get("headers", {}))
+            ),
+            "enabled": (
+                (1 if fields["enabled"] else 0)
+                if "enabled" in fields
+                else int(existing["enabled"])
+            ),
+            "status": fields.get("status", existing["status"]),
+            "available_models_json": (
+                json.dumps(fields["available_models"])
+                if "available_models" in fields
+                else json.dumps(existing.get("available_models", []))
+            ),
+            "last_probed_at": fields.get("last_probed_at", existing.get("last_probed_at", "")),
+            "notes": fields.get("notes", existing["notes"]),
+        }
+        set_clause = ", ".join(f"{k}=?" for k in cols)
+        await self._conn.execute(
+            f"UPDATE provider_registry SET {set_clause}, updated_at=datetime('now') WHERE id=?",
+            (*cols.values(), pid),
+        )
+        await self._conn.commit()
+        return await self.get_provider(pid)
+
+    async def delete_provider(self, pid: str) -> dict[str, Any] | None:
+        assert self._conn
+        existing = await self.get_provider(pid)
+        if existing is None:
+            return None
+        await self._conn.execute("DELETE FROM provider_registry WHERE id=?", (pid,))
+        await self._conn.commit()
+        return existing
+
+    # ── Model Assignments (V20) ─────────────────────────────────
+
+    async def list_model_assignments(self) -> list[dict[str, Any]]:
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM model_assignments ORDER BY bucket ASC, rank ASC"
+        )
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    async def get_model_assignment(
+        self, bucket: str, rank: int = 1,
+    ) -> dict[str, Any] | None:
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM model_assignments WHERE bucket=? AND rank=?",
+            (bucket, rank),
+        )
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    async def upsert_model_assignment(
+        self, *, bucket: str, rank: int,
+        provider_registry_id: str, model: str,
+        params: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
+        assert self._conn
+        now = __import__("datetime").datetime.now(
+            __import__("datetime").timezone.utc
+        ).isoformat()
+        existing = await self.get_model_assignment(bucket, rank)
+        if existing:
+            await self._conn.execute(
+                """UPDATE model_assignments
+                   SET provider_registry_id=?, model=?, params_json=?,
+                       updated_at=datetime('now')
+                   WHERE bucket=? AND rank=?""",
+                (provider_registry_id, model, json.dumps(params or {}), bucket, rank),
+            )
+        else:
+            aid = uuid.uuid4().hex[:12]
+            await self._conn.execute(
+                """INSERT INTO model_assignments
+                   (id,bucket,rank,provider_registry_id,model,params_json,
+                    created_at,updated_at)
+                   VALUES (?,?,?,?,?,?,?,?)""",
+                (aid, bucket, rank, provider_registry_id, model,
+                 json.dumps(params or {}), now, now),
+            )
+        await self._conn.commit()
+        return await self.get_model_assignment(bucket, rank)  # type: ignore[return-value]
+
+    async def delete_model_assignment(self, bucket: str, rank: int) -> bool:
+        assert self._conn
+        cursor = await self._conn.execute(
+            "DELETE FROM model_assignments WHERE bucket=? AND rank=?",
+            (bucket, rank),
+        )
+        await self._conn.commit()
+        return (cursor.rowcount or 0) > 0
+
+    async def resolve_model_for_bucket(
+        self, bucket: str,
+    ) -> dict[str, Any] | None:
+        """Return the best available assignment for a bucket.
+
+        Tries: primary for bucket → fallback for bucket → primary global → fallback global.
+        Each candidate is checked against the provider_registry to ensure the
+        provider is enabled. Returns None if nothing is configured.
+        """
+        for b in (bucket, "global"):
+            for rank in (1, 2):
+                row = await self.get_model_assignment(b, rank)
+                if not row:
+                    continue
+                prov = await self.get_provider(row["provider_registry_id"])
+                if prov and prov.get("enabled"):
+                    return {**row, "_provider": prov}
+        return None
+
+    # ── Model Scores (V20) ─────────────────────────────────
+
+    async def upsert_model_score(
+        self, *, model_name: str, provider_type: str = "",
+        reasoning_score: float = 0.0, conversational_score: float = 0.0,
+        longform_score: float = 0.0, source: str = "huggingface",
+        raw_benchmarks: dict[str, Any] | None = None, scored_at: str,
+    ) -> dict[str, Any]:
+        assert self._conn
+        # Upsert by model_name + source
+        cursor = await self._conn.execute(
+            "SELECT id FROM model_scores WHERE model_name=? AND source=?",
+            (model_name, source),
+        )
+        row = await cursor.fetchone()
+        if row:
+            await self._conn.execute(
+                """UPDATE model_scores SET reasoning_score=?, conversational_score=?,
+                   longform_score=?, raw_benchmarks_json=?, scored_at=?, provider_type=?
+                   WHERE id=?""",
+                (reasoning_score, conversational_score, longform_score,
+                 json.dumps(raw_benchmarks or {}), scored_at, provider_type, row["id"]),
+            )
+        else:
+            sid = uuid.uuid4().hex[:12]
+            await self._conn.execute(
+                """INSERT INTO model_scores
+                   (id,model_name,provider_type,reasoning_score,conversational_score,
+                    longform_score,source,raw_benchmarks_json,scored_at)
+                   VALUES (?,?,?,?,?,?,?,?,?)""",
+                (sid, model_name, provider_type, reasoning_score,
+                 conversational_score, longform_score, source,
+                 json.dumps(raw_benchmarks or {}), scored_at),
+            )
+        await self._conn.commit()
+        cursor = await self._conn.execute(
+            "SELECT * FROM model_scores WHERE model_name=? AND source=?",
+            (model_name, source),
+        )
+        r = await cursor.fetchone()
+        return self._row_to_dict(r) if r else {}
+
+    async def list_model_scores(
+        self, source: str | None = None,
+    ) -> list[dict[str, Any]]:
+        assert self._conn
+        q = "SELECT * FROM model_scores"
+        args: list[Any] = []
+        if source:
+            q += " WHERE source=?"
+            args.append(source)
+        q += " ORDER BY reasoning_score DESC"
+        cursor = await self._conn.execute(q, args)
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    async def get_model_score(self, model_name: str) -> dict[str, Any] | None:
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM model_scores WHERE model_name=? ORDER BY source ASC LIMIT 1",
+            (model_name,),
+        )
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
     # ── Legacy goal compat (delegates to projects) ───────────────
 
     async def get_default_goal(self) -> dict[str, Any] | None:
@@ -2320,12 +2700,14 @@ class Database:
             "pairs",      # anchor_sets
             "raw_json",   # discovery_items
             "links",      # discovery_items
-            "headers_json",  # ai_endpoints (deserialised to .headers below)
-            "params_json",   # ai_profiles
+            "headers_json",  # ai_endpoints / provider_registry
+            "params_json",   # ai_profiles / model_assignments
             "tags_json",     # ai_profiles
             "topic_ids",     # projects / research_goals
             "experiment_ids", # projects
             "corpus_ids",    # projects
+            "available_models_json",  # provider_registry
+            "raw_benchmarks_json",    # model_scores
         ):
             if field in d and isinstance(d[field], str):
                 try:
@@ -2343,6 +2725,10 @@ class Database:
             d["params"] = d.pop("params_json") or {}
         if "tags_json" in d:
             d["tags"] = d.pop("tags_json") or []
+        if "available_models_json" in d:
+            d["available_models"] = d.pop("available_models_json") or []
+        if "raw_benchmarks_json" in d:
+            d["raw_benchmarks"] = d.pop("raw_benchmarks_json") or {}
         return d
 
 

@@ -80,7 +80,18 @@ class TestRequest(BaseModel):
     headers: dict[str, str] = {}
 
 
-# ── Probe helpers ──────────────────────────────────────────────────────────
+# ── Probe helpers ──────────────────────────────────────────────────────
+
+
+def _ssl_context():
+    """Return an SSL context that respects GLOSSA_SSL_VERIFY env var."""
+    import os, ssl  # noqa: PLC0415,E401
+    if os.environ.get("GLOSSA_SSL_VERIFY", "1").strip() in ("0", "false", "no"):
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        return ctx
+    return None
 
 
 def _probe_openai_compatible(
@@ -96,7 +107,7 @@ def _probe_openai_compatible(
         req_headers.update(headers)
     try:
         req = urllib.request.Request(url, headers=req_headers, method="GET")
-        with urllib.request.urlopen(req, timeout=8) as resp:
+        with urllib.request.urlopen(req, timeout=8, context=_ssl_context()) as resp:
             data = json.loads(resp.read().decode())
         models = []
         for entry in (data.get("data") or data.get("models") or []):
@@ -141,7 +152,7 @@ def _probe_anthropic(api_key: str) -> dict[str, Any]:
             },
             method="GET",
         )
-        with urllib.request.urlopen(req, timeout=8) as resp:
+        with urllib.request.urlopen(req, timeout=8, context=_ssl_context()) as resp:
             data = json.loads(resp.read().decode())
         models = [m.get("id", "") for m in data.get("data", []) if m.get("id")]
         return {"valid": True, "message": f"OK — {len(models)} model(s)", "models": models[:100]}

@@ -1,0 +1,64 @@
+{
+  "id": "indus_v3_scrambled_control",
+  "name": "Indus V3 \u2014 Scrambled Corpus Negative Control",
+  "description": "CRITICAL: Randomly permute sign sequences, re-run decoder. Real=29.6% vs Scrambled=28.7% (SNR=1.03 for 3-char). Strict 4-char: SNR=1.28.",
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "CorpusReader",
+      "label": "ICIT Corpus",
+      "params": {},
+      "x": 60,
+      "y": 100
+    },
+    {
+      "id": "freq",
+      "type": "FreqCounter",
+      "label": "Sign Frequencies",
+      "params": {},
+      "x": 300,
+      "y": 100
+    },
+    {
+      "id": "run",
+      "type": "ExperimentWrapper",
+      "label": "Scrambled Control",
+      "params": {
+        "experiment_id": "indus_v3_scrambled_control"
+      },
+      "x": 560,
+      "y": 100
+    },
+    {
+      "id": "out",
+      "type": "PassResult",
+      "label": "Output",
+      "params": {},
+      "x": 820,
+      "y": 100
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "freq",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "freq",
+      "target": "run",
+      "sourcePort": "freq_map",
+      "targetPort": "upstream"
+    },
+    {
+      "id": "e3",
+      "source": "run",
+      "target": "out",
+      "sourcePort": "result",
+      "targetPort": "data"
+    }
+  ]
+}

@@ -25,7 +25,8 @@ _log = logging.getLogger(__name__)
 def _endpoint_chat_url(base_url: str) -> str:
     """Build the /chat/completions URL from an endpoint's base_url."""
     base = (base_url or "").strip().rstrip("/")
-    if base.endswith("/v1"):
+    # Accept /v1, /v1beta/openai, and other versioned paths as complete
+    if base.endswith("/v1") or "/v1beta" in base or base.endswith("/openai"):
         return f"{base}/chat/completions"
     return f"{base}/v1/chat/completions"
 

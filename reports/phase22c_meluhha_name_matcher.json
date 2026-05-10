@@ -1,6 +1,6 @@
 {
   "data": {
-    "a": "Indus-seals-at-Mesopotamia inventory: 13 seals (8 countries, 8 types). Dominant context: ('Mesopotamia', 5).",
+    "a": "Indus-seals-at-Mesopotamia inventory: 14 seals (8 countries, 9 types). Dominant context: ('Mesopotamia', 5).",
     "b": [
       {
         "catalogue_id": "AO_22310",
@@ -131,10 +131,421 @@
         "current_collection": "Bahrain National Museum",
         "inscription_reading": "Yagli'el, servant of the goddess Panipa",
         "source": "Laursen, Al-Shaikh, Reeler, Lombard & Marchesi 2026 (JNES); summary at gdnonline.com 2026-04-19"
+      },
+      {
+        "catalogue_id": "JANABIYAH_LAURSEN_10",
+        "type": "gulf_indus_with_parpola_reading",
+        "find_country": "Bahrain (Dilmun)",
+        "find_spot": "Janabiyah Cemetery, Bahrain",
+        "find_period": "Early Dilmun (ca. 2100-2000 BC)",
+        "current_collection": "Bahrain National Museum",
+        "inscription_reading": "7-sign Indus inscription read right-to-left on impression: [53|60]-147 / 364 / 145 / 126 / 16 / 145 (Asko Parpola, Laursen 2010 footnote 2)",
+        "source": "Laursen 2010 (AAE 21:96-134) Table 1 row 10 + footnote 2"
       }
     ],
-    "c": "PROTOTYPE STATUS: name-matcher cannot score yet because no Mesopotamia-found Indus seals have ingested sign sequences. Phase-23 must populate indus_signs[] from CISI Vol 3 / Frenez 2018 catalogue tables. Available: 66 name candidates (freq>=2); 13 seals (none with signs).",
-    "d": [],
-    "e": 0
+    "c": "Name-matcher: 700 length-compatible pairings between 11 sign-bearing seals and 66 name candidates.",
+    "d": [
+      {
+        "seal_id": "BM_122187_UR_seal_1",
+        "seal_n_signs": 5,
+        "candidate_name": "ik-te-ru-nim-ma",
+        "name_n_segments": 5,
+        "name_occurrences": 9,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "BM_122187_UR_seal_1",
+        "seal_n_signs": 5,
+        "candidate_name": "ab-ba-me-luh-ha",
+        "name_n_segments": 5,
+        "name_occurrences": 7,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "BM_122187_UR_seal_1",
+        "seal_n_signs": 5,
+        "candidate_name": "usz-te-esz-sze-ra",
+        "name_n_segments": 5,
+        "name_occurrences": 4,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "BM_122187_UR_seal_1",
+        "seal_n_signs": 5,
+        "candidate_name": "im-ma-ta-e11-de3",
+        "name_n_segments": 5,
+        "name_occurrences": 2,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "e-mu-qi2",
+        "name_n_segments": 3,
+        "name_occurrences": 20,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "u-su-un",
+        "name_n_segments": 3,
+        "name_occurrences": 15,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "ansze-kur-ra",
+        "name_n_segments": 3,
+        "name_occurrences": 9,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "il-li-ku",
+        "name_n_segments": 3,
+        "name_occurrences": 9,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "tam-ha-ri",
+        "name_n_segments": 3,
+        "name_occurrences": 7,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "an-zil-li",
+        "name_n_segments": 3,
+        "name_occurrences": 7,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "e-pu-szu",
+        "name_n_segments": 3,
+        "name_occurrences": 7,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "ik-szu-da",
+        "name_n_segments": 3,
+        "name_occurrences": 7,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "ma2-kan-na",
+        "name_n_segments": 3,
+        "name_occurrences": 7,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "har-ra-nu",
+        "name_n_segments": 3,
+        "name_occurrences": 6,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "kur-bi-ta",
+        "name_n_segments": 3,
+        "name_occurrences": 4,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "u-szu2-un",
+        "name_n_segments": 3,
+        "name_occurrences": 4,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "mah-re-e",
+        "name_n_segments": 3,
+        "name_occurrences": 3,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "ger-ri-ia",
+        "name_n_segments": 3,
+        "name_occurrences": 3,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "e2-ba-an",
+        "name_n_segments": 3,
+        "name_occurrences": 2,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "gi-rin-e",
+        "name_n_segments": 3,
+        "name_occurrences": 2,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "za-gin3-na",
+        "name_n_segments": 3,
+        "name_occurrences": 2,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "a-ab-ba",
+        "name_n_segments": 3,
+        "name_occurrences": 2,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "u2-sza2-as",
+        "name_n_segments": 3,
+        "name_occurrences": 2,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "asz2-ta-kan",
+        "name_n_segments": 3,
+        "name_occurrences": 2,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "aq-rib-ma",
+        "name_n_segments": 3,
+        "name_occurrences": 2,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "eme-luh-ha",
+        "name_n_segments": 3,
+        "name_occurrences": 2,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_1",
+        "seal_n_signs": 3,
+        "candidate_name": "ra-a-a",
+        "name_n_segments": 3,
+        "name_occurrences": 2,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_2",
+        "seal_n_signs": 4,
+        "candidate_name": "mes-me-luh-ha",
+        "name_n_segments": 4,
+        "name_occurrences": 11,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_2",
+        "seal_n_signs": 4,
+        "candidate_name": "u-ra-a-a",
+        "name_n_segments": 4,
+        "name_occurrences": 10,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_2",
+        "seal_n_signs": 4,
+        "candidate_name": "lib3-ba-szu2-un",
+        "name_n_segments": 4,
+        "name_occurrences": 5,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_2",
+        "seal_n_signs": 4,
+        "candidate_name": "ba-me-luh-ha",
+        "name_n_segments": 4,
+        "name_occurrences": 3,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_2",
+        "seal_n_signs": 4,
+        "candidate_name": "usz-te-sze-ra",
+        "name_n_segments": 4,
+        "name_occurrences": 3,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_2",
+        "seal_n_signs": 4,
+        "candidate_name": "mu-na-ab-gal2",
+        "name_n_segments": 4,
+        "name_occurrences": 2,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_2",
+        "seal_n_signs": 4,
+        "candidate_name": "pa-nu-u-a",
+        "name_n_segments": 4,
+        "name_occurrences": 2,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_2",
+        "seal_n_signs": 4,
+        "candidate_name": "ad-ke-e-ma",
+        "name_n_segments": 4,
+        "name_occurrences": 2,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_2",
+        "seal_n_signs": 4,
+        "candidate_name": "ik-te-ru-ni",
+        "name_n_segments": 4,
+        "name_occurrences": 2,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_2",
+        "seal_n_signs": 4,
+        "candidate_name": "al-ta-qu-u2",
+        "name_n_segments": 4,
+        "name_occurrences": 2,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_2",
+        "seal_n_signs": 4,
+        "candidate_name": "it-ti-szu2-un",
+        "name_n_segments": 4,
+        "name_occurrences": 2,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_2",
+        "seal_n_signs": 4,
+        "candidate_name": "am-da-hi-is",
+        "name_n_segments": 4,
+        "name_occurrences": 2,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "GADD_2",
+        "seal_n_signs": 4,
+        "candidate_name": "u-us-su-un",
+        "name_n_segments": 4,
+        "name_occurrences": 2,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "ASMAR_TA",
+        "seal_n_signs": 3,
+        "candidate_name": "e-mu-qi2",
+        "name_n_segments": 3,
+        "name_occurrences": 20,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "ASMAR_TA",
+        "seal_n_signs": 3,
+        "candidate_name": "u-su-un",
+        "name_n_segments": 3,
+        "name_occurrences": 15,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "ASMAR_TA",
+        "seal_n_signs": 3,
+        "candidate_name": "ansze-kur-ra",
+        "name_n_segments": 3,
+        "name_occurrences": 9,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "ASMAR_TA",
+        "seal_n_signs": 3,
+        "candidate_name": "il-li-ku",
+        "name_n_segments": 3,
+        "name_occurrences": 9,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "ASMAR_TA",
+        "seal_n_signs": 3,
+        "candidate_name": "tam-ha-ri",
+        "name_n_segments": 3,
+        "name_occurrences": 7,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "ASMAR_TA",
+        "seal_n_signs": 3,
+        "candidate_name": "an-zil-li",
+        "name_n_segments": 3,
+        "name_occurrences": 7,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "ASMAR_TA",
+        "seal_n_signs": 3,
+        "candidate_name": "e-pu-szu",
+        "name_n_segments": 3,
+        "name_occurrences": 7,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "ASMAR_TA",
+        "seal_n_signs": 3,
+        "candidate_name": "ik-szu-da",
+        "name_n_segments": 3,
+        "name_occurrences": 7,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "ASMAR_TA",
+        "seal_n_signs": 3,
+        "candidate_name": "ma2-kan-na",
+        "name_n_segments": 3,
+        "name_occurrences": 7,
+        "length_score": 1.0
+      },
+      {
+        "seal_id": "ASMAR_TA",
+        "seal_n_signs": 3,
+        "candidate_name": "har-ra-nu",
+        "name_n_segments": 3,
+        "name_occurrences": 6,
+        "length_score": 1.0
+      }
+    ],
+    "e": 700
   }
 }

@@ -1,6 +1,6 @@
 {
   "data": {
-    "a": "Enhanced matcher (Phase-23): 52 length-compatible pairings between 10 inscribed seals and 6 strict-PN candidates (freq>=1, tol=2).",
+    "a": "Enhanced matcher (Phase-23): 54 length-compatible pairings between 11 inscribed seals and 6 strict-PN candidates (freq>=1, tol=2).",
     "b": [
       {
         "candidate_name": "ab-ba-me-luh-ha",
@@ -63,7 +63,7 @@
         "length_score": 1.0
       }
     ],
-    "c": 52,
+    "c": 54,
     "d": "READOUT_NOT_SIGNIFICANT",
     "e": 1.0
   }

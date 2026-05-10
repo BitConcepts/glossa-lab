@@ -3516,6 +3516,8 @@ def register_graph_experiments() -> None:
     from glossa_lab.experiment_base import discover_experiments  # noqa: PLC0415
     registry = discover_experiments()
     for p in sorted(_GRAPHS_DIR.glob("*.json")):
+        if not p.exists():  # guard against race with retirement cleanup
+            continue
         try:
             d = json.loads(p.read_text("utf-8"))
             cls = _make_cls(d)

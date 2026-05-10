@@ -178,497 +178,497 @@
     ],
     "d__P009": [
       {
-        "phoneme": "a",
+        "phoneme": "nalam",
         "role": "medial_syllable",
-        "score": 0.2510903426791277,
+        "score": 0.0017395085888236572,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P011": [
       {
-        "phoneme": "i",
+        "phoneme": "aru",
         "role": "medial_syllable",
-        "score": 0.08797507788161994,
+        "score": 0.0014133507284192215,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P031": [
       {
-        "phoneme": "n",
+        "phoneme": "vel",
         "role": "medial_syllable",
-        "score": 0.08747663551401869,
+        "score": 0.0014133507284192215,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P035": [
       {
-        "phoneme": "r",
+        "phoneme": "porul",
         "role": "medial_syllable",
-        "score": 0.08523364485981308,
+        "score": 0.0014133507284192215,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P050": [
       {
-        "phoneme": "u",
+        "phoneme": "neer",
         "role": "medial_syllable",
-        "score": 0.07688473520249221,
+        "score": 0.001304631441617743,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P056": [
       {
-        "phoneme": "l",
+        "phoneme": "nal",
         "role": "medial_syllable",
-        "score": 0.07177570093457944,
+        "score": 0.0011959121548162643,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P058": [
       {
-        "phoneme": "v",
+        "phoneme": "nallavar",
         "role": "medial_syllable",
-        "score": 0.048598130841121495,
+        "score": 0.0011959121548162643,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P060": [
       {
-        "phoneme": "m",
+        "phoneme": "nalnalam",
         "role": "medial_syllable",
-        "score": 0.045981308411214956,
+        "score": 0.0011959121548162643,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P062": [
       {
-        "phoneme": "t",
+        "phoneme": "uyar",
         "role": "medial_syllable",
-        "score": 0.0443613707165109,
+        "score": 0.0010871928680147858,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P067": [
       {
-        "phoneme": "e",
+        "phoneme": "nalla",
         "role": "medial_syllable",
-        "score": 0.03489096573208723,
+        "score": 0.0010871928680147858,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P073": [
       {
-        "phoneme": "k",
+        "phoneme": "kal",
         "role": "medial_syllable",
-        "score": 0.03227414330218069,
+        "score": 0.0009784735812133072,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P075": [
       {
-        "phoneme": "y",
+        "phoneme": "tol",
         "role": "medial_syllable",
-        "score": 0.03202492211838006,
+        "score": 0.0009784735812133072,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P091": [
       {
-        "phoneme": "p",
+        "phoneme": "nilam",
         "role": "medial_syllable",
-        "score": 0.03090342679127726,
+        "score": 0.0009784735812133072,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P092": [
       {
-        "phoneme": "o",
+        "phoneme": "min",
         "role": "medial_syllable",
-        "score": 0.018691588785046728,
+        "score": 0.0008697542944118286,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P096": [
       {
-        "phoneme": "h",
+        "phoneme": "puli",
         "role": "medial_syllable",
-        "score": 0.017570093457943924,
+        "score": 0.0008697542944118286,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P103": [
       {
-        "phoneme": "d",
+        "phoneme": "cey",
         "role": "medial_syllable",
-        "score": 0.010965732087227415,
+        "score": 0.0008697542944118286,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P110": [
       {
-        "phoneme": "c",
+        "phoneme": "kalan",
         "role": "medial_syllable",
-        "score": 0.00822429906542056,
+        "score": 0.0008697542944118286,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P114": [
       {
-        "phoneme": "z",
+        "phoneme": "katai",
         "role": "medial_syllable",
-        "score": 0.007476635514018692,
+        "score": 0.0008697542944118286,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P120": [
       {
-        "phoneme": "s",
+        "phoneme": "valli",
         "role": "medial_syllable",
-        "score": 0.0032398753894080996,
+        "score": 0.0008697542944118286,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P121": [
       {
-        "phoneme": "b",
+        "phoneme": "kuti",
         "role": "medial_syllable",
-        "score": 0.0024922118380062306,
+        "score": 0.0008697542944118286,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P122": [
       {
-        "phoneme": "g",
+        "phoneme": "talai",
         "role": "medial_syllable",
-        "score": 0.0017445482866043614,
+        "score": 0.0008697542944118286,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P123": [
       {
-        "phoneme": "j",
+        "phoneme": "erumai",
         "role": "medial_syllable",
-        "score": 0.00012461059190031152,
+        "score": 0.0008697542944118286,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P124": [
       {
-        "phoneme": "a",
+        "phoneme": "perumai",
         "role": "medial_syllable",
-        "score": 0.2510903426791277,
+        "score": 0.0008697542944118286,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P125": [
       {
-        "phoneme": "i",
+        "phoneme": "venni",
         "role": "medial_syllable",
-        "score": 0.08797507788161994,
+        "score": 0.0008697542944118286,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P126": [
       {
-        "phoneme": "n",
+        "phoneme": "perumakan",
         "role": "medial_syllable",
-        "score": 0.08747663551401869,
+        "score": 0.0008697542944118286,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P127": [
       {
-        "phoneme": "r",
+        "phoneme": "irai",
         "role": "medial_syllable",
-        "score": 0.08523364485981308,
+        "score": 0.0008697542944118286,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P139": [
       {
-        "phoneme": "u",
+        "phoneme": "toti",
         "role": "medial_syllable",
-        "score": 0.07688473520249221,
+        "score": 0.0008697542944118286,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P142": [
       {
-        "phoneme": "l",
+        "phoneme": "unmai",
         "role": "medial_syllable",
-        "score": 0.07177570093457944,
+        "score": 0.0008697542944118286,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P144": [
       {
-        "phoneme": "v",
+        "phoneme": "vaazh",
         "role": "medial_syllable",
-        "score": 0.048598130841121495,
+        "score": 0.0008697542944118286,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P145": [
       {
-        "phoneme": "m",
+        "phoneme": "kol",
         "role": "medial_syllable",
-        "score": 0.045981308411214956,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P147": [
       {
-        "phoneme": "t",
+        "phoneme": "mul",
         "role": "medial_syllable",
-        "score": 0.0443613707165109,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P154": [
       {
-        "phoneme": "e",
+        "phoneme": "val",
         "role": "medial_syllable",
-        "score": 0.03489096573208723,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P160": [
       {
-        "phoneme": "k",
+        "phoneme": "per",
         "role": "medial_syllable",
-        "score": 0.03227414330218069,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P174": [
       {
-        "phoneme": "y",
+        "phoneme": "pon",
         "role": "medial_syllable",
-        "score": 0.03202492211838006,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P175": [
       {
-        "phoneme": "p",
+        "phoneme": "vali",
         "role": "medial_syllable",
-        "score": 0.03090342679127726,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P194": [
       {
-        "phoneme": "o",
+        "phoneme": "araci",
         "role": "medial_syllable",
-        "score": 0.018691588785046728,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P201": [
       {
-        "phoneme": "h",
+        "phoneme": "urai",
         "role": "medial_syllable",
-        "score": 0.017570093457943924,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P202": [
       {
-        "phoneme": "d",
+        "phoneme": "murai",
         "role": "medial_syllable",
-        "score": 0.010965732087227415,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P204": [
       {
-        "phoneme": "c",
+        "phoneme": "muyal",
         "role": "medial_syllable",
-        "score": 0.00822429906542056,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P205": [
       {
-        "phoneme": "z",
+        "phoneme": "oli",
         "role": "medial_syllable",
-        "score": 0.007476635514018692,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P210": [
       {
-        "phoneme": "s",
+        "phoneme": "poru",
         "role": "medial_syllable",
-        "score": 0.0032398753894080996,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P215": [
       {
-        "phoneme": "b",
+        "phoneme": "poy",
         "role": "medial_syllable",
-        "score": 0.0024922118380062306,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P221": [
       {
-        "phoneme": "g",
+        "phoneme": "atan",
         "role": "medial_syllable",
-        "score": 0.0017445482866043614,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P230": [
       {
-        "phoneme": "j",
+        "phoneme": "itan",
         "role": "medial_syllable",
-        "score": 0.00012461059190031152,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P234": [
       {
-        "phoneme": "a",
+        "phoneme": "arai",
         "role": "medial_syllable",
-        "score": 0.2510903426791277,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P268": [
       {
-        "phoneme": "i",
+        "phoneme": "ikal",
         "role": "medial_syllable",
-        "score": 0.08797507788161994,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P270": [
       {
-        "phoneme": "n",
+        "phoneme": "malai",
         "role": "medial_syllable",
-        "score": 0.08747663551401869,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P275": [
       {
-        "phoneme": "r",
+        "phoneme": "vaanam",
         "role": "medial_syllable",
-        "score": 0.08523364485981308,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P276": [
       {
-        "phoneme": "u",
+        "phoneme": "vinai",
         "role": "medial_syllable",
-        "score": 0.07688473520249221,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P283": [
       {
-        "phoneme": "l",
+        "phoneme": "viruntu",
         "role": "medial_syllable",
-        "score": 0.07177570093457944,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P288": [
       {
-        "phoneme": "v",
+        "phoneme": "uyir",
         "role": "medial_syllable",
-        "score": 0.048598130841121495,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P289": [
       {
-        "phoneme": "m",
+        "phoneme": "nannalam",
         "role": "medial_syllable",
-        "score": 0.045981308411214956,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P303": [
       {
-        "phoneme": "t",
+        "phoneme": "naattu",
         "role": "medial_syllable",
-        "score": 0.0443613707165109,
+        "score": 0.00076103500761035,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P309": [
       {
-        "phoneme": "e",
+        "phoneme": "tin",
         "role": "medial_syllable",
-        "score": 0.03489096573208723,
+        "score": 0.0006523157208088715,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P316": [
       {
-        "phoneme": "k",
+        "phoneme": "ven",
         "role": "medial_syllable",
-        "score": 0.03227414330218069,
+        "score": 0.0006523157208088715,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P325": [
       {
-        "phoneme": "y",
+        "phoneme": "kar",
         "role": "medial_syllable",
-        "score": 0.03202492211838006,
+        "score": 0.0006523157208088715,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P326": [
       {
-        "phoneme": "p",
+        "phoneme": "cem",
         "role": "medial_syllable",
-        "score": 0.03090342679127726,
+        "score": 0.0006523157208088715,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P332": [
       {
-        "phoneme": "o",
+        "phoneme": "kan",
         "role": "medial_syllable",
-        "score": 0.018691588785046728,
+        "score": 0.0006523157208088715,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P349": [
       {
-        "phoneme": "h",
+        "phoneme": "muti",
         "role": "medial_syllable",
-        "score": 0.017570093457943924,
+        "score": 0.0006523157208088715,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P355": [
       {
-        "phoneme": "d",
+        "phoneme": "viral",
         "role": "medial_syllable",
-        "score": 0.010965732087227415,
+        "score": 0.0006523157208088715,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P364": [
       {
-        "phoneme": "c",
+        "phoneme": "ko",
         "role": "medial_syllable",
-        "score": 0.00822429906542056,
+        "score": 0.0006523157208088715,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],
     "d__P369": [
       {
-        "phoneme": "z",
+        "phoneme": "ur",
         "role": "medial_syllable",
-        "score": 0.007476635514018692,
+        "score": 0.0006523157208088715,
         "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
       }
     ],

@@ -98,7 +98,7 @@
       ],
       "verdict": "highly deterministic / anomalous"
     },
-    "c": "PREDICTION 1 NOT CONFIRMED: spectral gap rises from 0.0000 (L1-2) to 0.0000 (L1-2) across length bins. No length effect.",
+    "c": "PREDICTION 1 NOT CONFIRMED: spectral gap goes from 0.0000 (L1-2) to 0.0000 (L7+) across length bins (min=0.0000, max=0.0000). No length effect.",
     "d": 1669
   }
 }

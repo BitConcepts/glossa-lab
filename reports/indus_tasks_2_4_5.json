@@ -1,0 +1,69 @@
+{
+  "task2_allograph_r2": {
+    "sign_types_after": 266,
+    "rare_merged": 402,
+    "effective_reduction_pct": 62.69284712482469
+  },
+  "task4_site_stratified": {
+    "harappa_count": 1718,
+    "mohenjo_count": 1551,
+    "top50_overlap": 38,
+    "top50_overlap_pct": 76.0
+  },
+  "task5_numerals": {
+    "numeral_candidates": [
+      {
+        "sign": "32",
+        "freq": 753,
+        "rep_count": 20,
+        "rep_rate": 0.02656042496679947,
+        "t_rate": 0.18985849056603774
+      },
+      {
+        "sign": "2",
+        "freq": 497,
+        "rep_count": 18,
+        "rep_rate": 0.03621730382293763,
+        "t_rate": 0.127134724857685
+      },
+      {
+        "sign": "60",
+        "freq": 312,
+        "rep_count": 2,
+        "rep_rate": 0.00641025641025641,
+        "t_rate": 0.04100946372239748
+      },
+      {
+        "sign": "100",
+        "freq": 141,
+        "rep_count": 1,
+        "rep_rate": 0.0070921985815602835,
+        "t_rate": 0.12751677852348994
+      },
+      {
+        "sign": "4",
+        "freq": 146,
+        "rep_count": 1,
+        "rep_rate": 0.00684931506849315,
+        "t_rate": 0.15286624203821655
+      },
+      {
+        "sign": "550",
+        "freq": 105,
+        "rep_count": 1,
+        "rep_rate": 0.009523809523809525,
+        "t_rate": 0.07894736842105263
+      }
+    ],
+    "numerical_inscriptions": 164,
+    "linguistic_inscriptions": 4246,
+    "numeral_signs": [
+      "2",
+      "550",
+      "4",
+      "100",
+      "60",
+      "32"
+    ]
+  }
+}

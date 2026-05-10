@@ -1,0 +1,64 @@
+{
+  "id": "indus_v3_morphological_template",
+  "name": "Indus V3 \u2014 Dravidian Morphological Template Matching (15,423 forms)",
+  "description": "15,423 PDR word forms generated. 201 inscriptions (4.6%) contain 2+ valid PDR words. k\u014dl (scepter/stick) most common root.",
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "CorpusReader",
+      "label": "ICIT Corpus",
+      "params": {},
+      "x": 60,
+      "y": 100
+    },
+    {
+      "id": "freq",
+      "type": "FreqCounter",
+      "label": "Sign Frequencies",
+      "params": {},
+      "x": 300,
+      "y": 100
+    },
+    {
+      "id": "run",
+      "type": "ExperimentWrapper",
+      "label": "Template Match",
+      "params": {
+        "experiment_id": "indus_v3_morphological_template"
+      },
+      "x": 560,
+      "y": 100
+    },
+    {
+      "id": "out",
+      "type": "PassResult",
+      "label": "Output",
+      "params": {},
+      "x": 820,
+      "y": 100
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "freq",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "freq",
+      "target": "run",
+      "sourcePort": "freq_map",
+      "targetPort": "upstream"
+    },
+    {
+      "id": "e3",
+      "source": "run",
+      "target": "out",
+      "sourcePort": "result",
+      "targetPort": "data"
+    }
+  ]
+}

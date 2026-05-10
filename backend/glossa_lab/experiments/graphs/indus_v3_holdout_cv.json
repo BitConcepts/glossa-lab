@@ -1,0 +1,64 @@
+{
+  "id": "indus_v3_holdout_cv",
+  "name": "Indus V3 \u2014 Holdout Cross-Validation (80/20)",
+  "description": "Train 29.3% vs Test 30.8% \u2014 1.5% difference. NO overfitting confirmed.",
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "CorpusReader",
+      "label": "ICIT Corpus",
+      "params": {},
+      "x": 60,
+      "y": 100
+    },
+    {
+      "id": "freq",
+      "type": "FreqCounter",
+      "label": "Sign Frequencies",
+      "params": {},
+      "x": 300,
+      "y": 100
+    },
+    {
+      "id": "run",
+      "type": "ExperimentWrapper",
+      "label": "Holdout CV",
+      "params": {
+        "experiment_id": "indus_v3_holdout_cv"
+      },
+      "x": 560,
+      "y": 100
+    },
+    {
+      "id": "out",
+      "type": "PassResult",
+      "label": "Output",
+      "params": {},
+      "x": 820,
+      "y": 100
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "freq",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "freq",
+      "target": "run",
+      "sourcePort": "freq_map",
+      "targetPort": "upstream"
+    },
+    {
+      "id": "e3",
+      "source": "run",
+      "target": "out",
+      "sourcePort": "result",
+      "targetPort": "data"
+    }
+  ]
+}

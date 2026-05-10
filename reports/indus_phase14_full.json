@@ -1,8 +1,8 @@
 {
   "data": {
-    "a": "AMBIGUOUS: 4 positive and 2 negative signals; confidence=0.33. Need richer corpus or stronger diagnostic to discriminate.",
-    "b": "LIKELY LANGUAGE: 3 positive signals vs 1 negative; confidence=0.50.",
-    "c": "AMBIGUOUS: 3 positive and 2 negative signals; confidence=0.20. Need richer corpus or stronger diagnostic to discriminate.",
+    "a": "AMBIGUOUS: 4 positive and 3 negative signals; confidence=0.14. Need richer corpus or stronger diagnostic to discriminate.",
+    "b": "AMBIGUOUS: 3 positive and 2 negative signals; confidence=0.20. Need richer corpus or stronger diagnostic to discriminate.",
+    "c": "AMBIGUOUS: 3 positive and 3 negative signals; confidence=0.00. Need richer corpus or stronger diagnostic to discriminate.",
     "d": [
       "Conditional-entropy plateau at n>=3 (h(n) saturates)",
       "HED regime = language-like (2nd/1st=0.00, 3rd/2nd=0.00)",
@@ -11,10 +11,11 @@
     ],
     "e": [
       "Zipf alpha=2.10 R^2=0.000 outside language range",
-      "MI decay = exponential (Markov-1, non-linguistic)"
+      "MI decay = exponential (Markov-1, non-linguistic)",
+      "CAS projection failed (max_violation=1000000000.000)"
     ],
-    "f": 2,
-    "g": 0.333,
+    "f": 1,
+    "g": 0.143,
     "h": [
       {
         "label": "linear_b",
@@ -109,9 +110,9 @@
     "z": "luwian: alpha=0.70, beta=0.00, R^2=0.908. Atypical Zipf shape; review.",
     "aa": "luwian: I(k) ~ exp(-lam*k) with lam=0.278, R^2=0.812. Exponential decay = Markov-1 / non-linguistic.",
     "ab": "luwian: HED regime=language_like, 2nd/1st=2.199, 3rd/2nd=0.645.",
-    "ac": 1000000000.0,
-    "ad": 1000000000.0,
-    "ae": 1000000000.0,
+    "ac": Infinity,
+    "ad": Infinity,
+    "ae": Infinity,
     "af": [
       {
         "sign": "740",

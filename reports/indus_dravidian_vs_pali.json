@@ -1,5 +1,7 @@
 {
-  "saved": true,
-  "path": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\reports\\indus_dravidian_vs_pali.json",
-  "filename": "indus_dravidian_vs_pali.json"
+  "data": {
+    "a": 4.9536,
+    "b": 0.2852,
+    "c": 0.6444
+  }
 }

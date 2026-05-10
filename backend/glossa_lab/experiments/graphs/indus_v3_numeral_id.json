@@ -1,0 +1,64 @@
+{
+  "id": "indus_v3_numeral_id",
+  "name": "Indus V3 \u2014 Numeral Sign Identification",
+  "description": "Identify numeral signs from repetitive stroke patterns. 164 (3.7%) purely numerical inscriptions separated. Signs 32,240,34,4,60,100,140 = 1-7.",
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "CorpusReader",
+      "label": "ICIT Corpus",
+      "params": {},
+      "x": 60,
+      "y": 100
+    },
+    {
+      "id": "freq",
+      "type": "FreqCounter",
+      "label": "Sign Frequencies",
+      "params": {},
+      "x": 300,
+      "y": 100
+    },
+    {
+      "id": "run",
+      "type": "ExperimentWrapper",
+      "label": "Numeral ID",
+      "params": {
+        "experiment_id": "indus_v3_numeral_id"
+      },
+      "x": 560,
+      "y": 100
+    },
+    {
+      "id": "out",
+      "type": "PassResult",
+      "label": "Output",
+      "params": {},
+      "x": 820,
+      "y": 100
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "freq",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "freq",
+      "target": "run",
+      "sourcePort": "freq_map",
+      "targetPort": "upstream"
+    },
+    {
+      "id": "e3",
+      "source": "run",
+      "target": "out",
+      "sourcePort": "result",
+      "targetPort": "data"
+    }
+  ]
+}

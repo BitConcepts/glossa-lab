@@ -1,5 +1,7 @@
 {
-  "saved": true,
-  "path": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\reports\\indus_south_dravidian_vs_sanskrit.json",
-  "filename": "indus_south_dravidian_vs_sanskrit.json"
+  "data": {
+    "a": 4.9536,
+    "b": 1.0,
+    "c": 0.5815
+  }
 }

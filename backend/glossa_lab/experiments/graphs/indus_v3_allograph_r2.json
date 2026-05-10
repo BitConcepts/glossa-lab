@@ -1,0 +1,64 @@
+{
+  "id": "indus_v3_allograph_r2",
+  "name": "Indus V3 \u2014 Allograph Reduction Round 2 (713\u2192266)",
+  "description": "Merge 402 rare signs (freq<5) into nearest positional-behavior neighbor. Reduces 713 sign types to 266 effective signs.",
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "CorpusReader",
+      "label": "ICIT Corpus",
+      "params": {},
+      "x": 60,
+      "y": 100
+    },
+    {
+      "id": "prof",
+      "type": "PositionalProfiler",
+      "label": "Positional Profiles",
+      "params": {},
+      "x": 300,
+      "y": 100
+    },
+    {
+      "id": "run",
+      "type": "ExperimentWrapper",
+      "label": "Allograph R2",
+      "params": {
+        "experiment_id": "indus_v3_allograph_r2"
+      },
+      "x": 560,
+      "y": 100
+    },
+    {
+      "id": "out",
+      "type": "PassResult",
+      "label": "Output",
+      "params": {},
+      "x": 820,
+      "y": 100
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "prof",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "prof",
+      "target": "run",
+      "sourcePort": "profiles",
+      "targetPort": "upstream"
+    },
+    {
+      "id": "e3",
+      "source": "run",
+      "target": "out",
+      "sourcePort": "result",
+      "targetPort": "data"
+    }
+  ]
+}

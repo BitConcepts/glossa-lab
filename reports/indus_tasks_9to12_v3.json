@@ -1,0 +1,1734 @@
+{
+  "task8b_strict_control": {
+    "real_strict_rate": 0.05011337868480726,
+    "scrambled_strict_rate": 0.03913832199546485,
+    "snr_strict": 1.2804171494785632
+  },
+  "task9_glossed": {
+    "total_glossed": 736,
+    "examples": [
+      {
+        "id": "Alt-90",
+        "reading": "vēl-ar",
+        "gloss": "ēlar(mind, reason, knowledge+ar)",
+        "site": "Altyn Depe",
+        "words": [
+          [
+            "ēlar",
+            "mind, reason, knowledge+ar"
+          ]
+        ]
+      },
+      {
+        "id": "Ai-7",
+        "reading": "kal-vēl",
+        "gloss": "kal()",
+        "site": "Altyn Depe",
+        "words": [
+          [
+            "kal",
+            ""
+          ]
+        ]
+      },
+      {
+        "id": "B-5",
+        "reading": "kōl-um",
+        "gloss": "kōlum(stick, plough shaft+um) + kōl(stick, plough shaft)",
+        "site": "Banawali",
+        "words": [
+          [
+            "kōlum",
+            "stick, plough shaft+um"
+          ],
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "B-7",
+        "reading": "kōl-um",
+        "gloss": "kōlum(stick, plough shaft+um) + kōl(stick, plough shaft)",
+        "site": "Banawali",
+        "words": [
+          [
+            "kōlum",
+            "stick, plough shaft+um"
+          ],
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "B-15",
+        "reading": "kōl-um",
+        "gloss": "kōlum(stick, plough shaft+um) + kōl(stick, plough shaft)",
+        "site": "Banawali",
+        "words": [
+          [
+            "kōlum",
+            "stick, plough shaft+um"
+          ],
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "B18",
+        "reading": "r-kōl",
+        "gloss": "kōl(stick, plough shaft)",
+        "site": "Banawali",
+        "words": [
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "",
+        "reading": "ku-kōl-n",
+        "gloss": "kōl(stick, plough shaft)",
+        "site": "Unknown",
+        "words": [
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "-",
+        "reading": "kōl-vēl",
+        "gloss": "kōl(stick, plough shaft)",
+        "site": "Baror",
+        "words": [
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "-",
+        "reading": "ka-kōl-ā",
+        "gloss": "kōl(stick, plough shaft)",
+        "site": "Baror",
+        "words": [
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "",
+        "reading": "ko-ṭ",
+        "gloss": "koṭ(bison, nilgai)",
+        "site": "Unknown",
+        "words": [
+          [
+            "koṭ",
+            "bison, nilgai"
+          ]
+        ]
+      },
+      {
+        "id": "0-66",
+        "reading": "kōl-kōl-vēl-um",
+        "gloss": "ēlum(mind, reason, knowledge+um) + kōl(stick, plough shaft)",
+        "site": "Chanhu-Daro",
+        "words": [
+          [
+            "ēlum",
+            "mind, reason, knowledge+um"
+          ],
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "C-65",
+        "reading": "r-kōl-i-nāṭ-n-a",
+        "gloss": "kōl(stick, plough shaft)",
+        "site": "Chanhu-Daro",
+        "words": [
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "",
+        "reading": "aN-r-kōl-i-ū",
+        "gloss": "kōl(stick, plough shaft)",
+        "site": "Unknown",
+        "words": [
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "C-74",
+        "reading": "r-mu-kōl",
+        "gloss": "kōl(stick, plough shaft)",
+        "site": "Chanhu-Daro",
+        "words": [
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "C-71",
+        "reading": "r-kōl-kōl-e",
+        "gloss": "kōl(stick, plough shaft)",
+        "site": "Chanhu-Daro",
+        "words": [
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "C-62",
+        "reading": "o-ū-n-ar-an",
+        "gloss": "aran(to cut, reap, harvest+an) + nara()",
+        "site": "Chanhu-Daro",
+        "words": [
+          [
+            "aran",
+            "to cut, reap, harvest+an"
+          ],
+          [
+            "nara",
+            ""
+          ]
+        ]
+      },
+      {
+        "id": "C-85",
+        "reading": "ka-kōl",
+        "gloss": "kōl(stick, plough shaft)",
+        "site": "Chanhu-Daro",
+        "words": [
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "C-67",
+        "reading": "ku-kōl-mān-ṇ-um",
+        "gloss": "kōl(stick, plough shaft)",
+        "site": "Chanhu-Daro",
+        "words": [
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "",
+        "reading": "ku-kōl-ā-ṇ-um",
+        "gloss": "kōl(stick, plough shaft)",
+        "site": "Unknown",
+        "words": [
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "",
+        "reading": "ku-kōl-i-a-āṟ-iṯ",
+        "gloss": "kōl(stick, plough shaft)",
+        "site": "Unknown",
+        "words": [
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "",
+        "reading": "aN-kōl-i-n-aḷ-um",
+        "gloss": "kōl(stick, plough shaft)",
+        "site": "Unknown",
+        "words": [
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "C-15",
+        "reading": "aN-min-ī-an",
+        "gloss": "nīan(+an) + min(to shine, twinkle)",
+        "site": "Chanhu-Daro",
+        "words": [
+          [
+            "nīan",
+            "+an"
+          ],
+          [
+            "min",
+            "to shine, twinkle"
+          ]
+        ]
+      },
+      {
+        "id": "C-18",
+        "reading": "kōl-ī-um",
+        "gloss": "kōl(stick, plough shaft)",
+        "site": "Chanhu-Daro",
+        "words": [
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "",
+        "reading": "aN-ta-n-aṭ",
+        "gloss": "tan(self; (SD I) emphatic particle)",
+        "site": "Unknown",
+        "words": [
+          [
+            "tan",
+            "self; (SD I) emphatic particle"
+          ]
+        ]
+      },
+      {
+        "id": "-",
+        "reading": "aN-r-kōl-ar",
+        "gloss": "kōlar(stick, plough shaft+ar) + kōl(stick, plough shaft)",
+        "site": "Dholavira",
+        "words": [
+          [
+            "kōlar",
+            "stick, plough shaft+ar"
+          ],
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "-",
+        "reading": "r-kōl-ki-vēl",
+        "gloss": "kōl(stick, plough shaft)",
+        "site": "Dholavira",
+        "words": [
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "-",
+        "reading": "aN-ēl-nāṭ-uṇ",
+        "gloss": "nāṭu(country, place) + āṭu(to play, dance)",
+        "site": "Dholavira",
+        "words": [
+          [
+            "nāṭu",
+            "country, place"
+          ],
+          [
+            "āṭu",
+            "to play, dance"
+          ]
+        ]
+      },
+      {
+        "id": "",
+        "reading": "kōl-um",
+        "gloss": "kōlum(stick, plough shaft+um) + kōl(stick, plough shaft)",
+        "site": "Unknown",
+        "words": [
+          [
+            "kōlum",
+            "stick, plough shaft+um"
+          ],
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "-",
+        "reading": "aN-min-al",
+        "gloss": "minal(to shine, twinkle+al) + inal(sweet+al) + nal(good) + min(to shine, twinkle)",
+        "site": "Farmana",
+        "words": [
+          [
+            "minal",
+            "to shine, twinkle+al"
+          ],
+          [
+            "inal",
+            "sweet+al"
+          ],
+          [
+            "nal",
+            "good"
+          ],
+          [
+            "min",
+            "to shine, twinkle"
+          ]
+        ]
+      },
+      {
+        "id": "H-1502",
+        "reading": "kal-āṟ",
+        "gloss": "kal()",
+        "site": "Harappa",
+        "words": [
+          [
+            "kal",
+            ""
+          ]
+        ]
+      },
+      {
+        "id": "H-1460",
+        "reading": "kal",
+        "gloss": "kal()",
+        "site": "Harappa",
+        "words": [
+          [
+            "kal",
+            ""
+          ]
+        ]
+      },
+      {
+        "id": "H-1086",
+        "reading": "ki-n",
+        "gloss": "kin(to be angry)",
+        "site": "Harappa",
+        "words": [
+          [
+            "kin",
+            "to be angry"
+          ]
+        ]
+      },
+      {
+        "id": "H-1394",
+        "reading": "ēl-kōl-n",
+        "gloss": "kōl(stick, plough shaft)",
+        "site": "Harappa",
+        "words": [
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "M-584",
+        "reading": "aN-uṇ-al",
+        "gloss": "uṇal(to drink+al)",
+        "site": "Mohenjo-Daro",
+        "words": [
+          [
+            "uṇal",
+            "to drink+al"
+          ]
+        ]
+      },
+      {
+        "id": "H-1466",
+        "reading": "min",
+        "gloss": "min(to shine, twinkle)",
+        "site": "Harappa",
+        "words": [
+          [
+            "min",
+            "to shine, twinkle"
+          ]
+        ]
+      },
+      {
+        "id": "H-1434",
+        "reading": "min-ā",
+        "gloss": "min(to shine, twinkle)",
+        "site": "Harappa",
+        "words": [
+          [
+            "min",
+            "to shine, twinkle"
+          ]
+        ]
+      },
+      {
+        "id": "H-1407",
+        "reading": "aN-min",
+        "gloss": "min(to shine, twinkle)",
+        "site": "Harappa",
+        "words": [
+          [
+            "min",
+            "to shine, twinkle"
+          ]
+        ]
+      },
+      {
+        "id": "",
+        "reading": "i-kal",
+        "gloss": "kal()",
+        "site": "Unknown",
+        "words": [
+          [
+            "kal",
+            ""
+          ]
+        ]
+      },
+      {
+        "id": "-",
+        "reading": "aN-min-nāṭ-ū",
+        "gloss": "min(to shine, twinkle)",
+        "site": "Harappa",
+        "words": [
+          [
+            "min",
+            "to shine, twinkle"
+          ]
+        ]
+      },
+      {
+        "id": "H-294",
+        "reading": "aN-po-n-a",
+        "gloss": "pon()",
+        "site": "Harappa",
+        "words": [
+          [
+            "pon",
+            ""
+          ]
+        ]
+      },
+      {
+        "id": "H-1042",
+        "reading": "aN-vi-kōl-n-um",
+        "gloss": "kōl(stick, plough shaft)",
+        "site": "Harappa",
+        "words": [
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "H-1119",
+        "reading": "min-i",
+        "gloss": "min(to shine, twinkle)",
+        "site": "Harappa",
+        "words": [
+          [
+            "min",
+            "to shine, twinkle"
+          ]
+        ]
+      },
+      {
+        "id": "H-1106",
+        "reading": "ni-min",
+        "gloss": "nim(you) + min(to shine, twinkle)",
+        "site": "Harappa",
+        "words": [
+          [
+            "nim",
+            "you"
+          ],
+          [
+            "min",
+            "to shine, twinkle"
+          ]
+        ]
+      },
+      {
+        "id": "H-1355",
+        "reading": "kal-vēl",
+        "gloss": "kal()",
+        "site": "Harappa",
+        "words": [
+          [
+            "kal",
+            ""
+          ]
+        ]
+      },
+      {
+        "id": "H-1056",
+        "reading": "aN-min-po-kōl-n",
+        "gloss": "kōl(stick, plough shaft) + pok(to make a hole) + min(to shine, twinkle)",
+        "site": "Harappa",
+        "words": [
+          [
+            "kōl",
+            "stick, plough shaft"
+          ],
+          [
+            "pok",
+            "to make a hole"
+          ],
+          [
+            "min",
+            "to shine, twinkle"
+          ]
+        ]
+      },
+      {
+        "id": "H-1339",
+        "reading": "min-po",
+        "gloss": "min(to shine, twinkle)",
+        "site": "Harappa",
+        "words": [
+          [
+            "min",
+            "to shine, twinkle"
+          ]
+        ]
+      },
+      {
+        "id": "H-1045",
+        "reading": "aN-ka-kōl-pūr-al",
+        "gloss": "ūral(habitation, village, town+al) + kōl(stick, plough shaft)",
+        "site": "Harappa",
+        "words": [
+          [
+            "ūral",
+            "habitation, village, town+al"
+          ],
+          [
+            "kōl",
+            "stick, plough shaft"
+          ]
+        ]
+      },
+      {
+        "id": "H-1147",
+        "reading": "min-ẓ",
+        "gloss": "min(to shine, twinkle)",
+        "site": "Harappa",
+        "words": [
+          [
+            "min",
+            "to shine, twinkle"
+          ]
+        ]
+      },
+      {
+        "id": "H-1133",
+        "reading": "ko-min-ṭ-i-āl",
+        "gloss": "min(to shine, twinkle)",
+        "site": "Harappa",
+        "words": [
+          [
+            "min",
+            "to shine, twinkle"
+          ]
+        ]
+      },
+      {
+        "id": "H-1165",
+        "reading": "ku-min",
+        "gloss": "min(to shine, twinkle)",
+        "site": "Harappa",
+        "words": [
+          [
+            "min",
+            "to shine, twinkle"
+          ]
+        ]
+      }
+    ]
+  },
+  "task10_substitutions": {
+    "total_contexts": 338,
+    "top_sets": [
+      {
+        "context": "32 _ 220",
+        "alternatives": [
+          "190",
+          "95",
+          "140",
+          "70",
+          "216",
+          "176",
+          "72",
+          "153",
+          "100",
+          "55",
+          "168",
+          "142",
+          "151",
+          "60",
+          "75"
+        ],
+        "n_alts": 15,
+        "phonemes": [
+          "?",
+          "?",
+          "ma",
+          "?",
+          "?",
+          "ū",
+          "?",
+          "ni",
+          "nāṭ",
+          "?",
+          "?",
+          "ẓ",
+          "eẓ",
+          "o",
+          "?"
+        ]
+      },
+      {
+        "context": "400 _ 32",
+        "alternatives": [
+          "388",
+          "18",
+          "14",
+          "820",
+          "125",
+          "335",
+          "840",
+          "435",
+          "617",
+          "90",
+          "27",
+          "25",
+          "16",
+          "32",
+          "892"
+        ],
+        "n_alts": 15,
+        "phonemes": [
+          "tu",
+          "?",
+          "?",
+          "ka",
+          "mu",
+          "?",
+          "?",
+          "l",
+          "y",
+          "po",
+          "?",
+          "?",
+          "ki",
+          "i",
+          "ṭ"
+        ]
+      },
+      {
+        "context": "700 _ 32",
+        "alternatives": [
+          "511",
+          "31",
+          "156",
+          "125",
+          "840",
+          "400",
+          "4",
+          "923",
+          "2",
+          "90",
+          "520",
+          "491",
+          "550",
+          "32",
+          "590"
+        ],
+        "n_alts": 15,
+        "phonemes": [
+          "?",
+          "ī",
+          "to",
+          "mu",
+          "?",
+          "min",
+          "pūr",
+          "vi",
+          "kōl",
+          "po",
+          "ku",
+          "?",
+          "va",
+          "i",
+          "ēl"
+        ]
+      },
+      {
+        "context": "32 _ 390",
+        "alternatives": [
+          "190",
+          "240",
+          "300",
+          "226",
+          "201",
+          "194",
+          "368",
+          "154",
+          "63",
+          "55",
+          "139",
+          "70",
+          "104",
+          "220"
+        ],
+        "n_alts": 14,
+        "phonemes": [
+          "?",
+          "a",
+          "?",
+          "?",
+          "?",
+          "?",
+          "oṭ",
+          "ti",
+          "?",
+          "?",
+          "?",
+          "?",
+          "?",
+          "n"
+        ]
+      },
+      {
+        "context": "520 _ 220",
+        "alternatives": [
+          "34",
+          "820",
+          "6",
+          "617",
+          "4",
+          "2",
+          "110",
+          "90",
+          "130",
+          "16",
+          "60",
+          "32",
+          "892"
+        ],
+        "n_alts": 13,
+        "phonemes": [
+          "kal",
+          "ka",
+          "?",
+          "y",
+          "pūr",
+          "kōl",
+          "?",
+          "po",
+          "?",
+          "ki",
+          "o",
+          "i",
+          "ṭ"
+        ]
+      },
+      {
+        "context": "2 _ 817",
+        "alternatives": [
+          "240",
+          "97",
+          "31",
+          "34",
+          "368",
+          "233",
+          "390",
+          "760",
+          "219",
+          "540",
+          "70",
+          "220",
+          "32"
+        ],
+        "n_alts": 13,
+        "phonemes": [
+          "a",
+          "?",
+          "ī",
+          "kal",
+          "oṭ",
+          "mān",
+          "vēl",
+          "am",
+          "?",
+          "?",
+          "?",
+          "n",
+          "i"
+        ]
+      },
+      {
+        "context": "861 _ 2",
+        "alternatives": [
+          "850",
+          "820",
+          "125",
+          "840",
+          "503",
+          "400",
+          "2",
+          "90",
+          "520",
+          "408",
+          "892",
+          "590"
+        ],
+        "n_alts": 12,
+        "phonemes": [
+          "u",
+          "ka",
+          "mu",
+          "?",
+          "ḷ",
+          "min",
+          "kōl",
+          "po",
+          "ku",
+          "?",
+          "ṭ",
+          "ēl"
+        ]
+      },
+      {
+        "context": "60 _ 920",
+        "alternatives": [
+          "32",
+          "415",
+          "142",
+          "42",
+          "600",
+          "2",
+          "460",
+          "592",
+          "527",
+          "440",
+          "16",
+          "742"
+        ],
+        "n_alts": 12,
+        "phonemes": [
+          "i",
+          "ar",
+          "ẓ",
+          "?",
+          "?",
+          "kōl",
+          "?",
+          "?",
+          "?",
+          "?",
+          "ki",
+          "mi"
+        ]
+      },
+      {
+        "context": "741 _ 32",
+        "alternatives": [
+          "31",
+          "335",
+          "840",
+          "400",
+          "161",
+          "923",
+          "90",
+          "520",
+          "1",
+          "60",
+          "590"
+        ],
+        "n_alts": 11,
+        "phonemes": [
+          "ī",
+          "?",
+          "?",
+          "min",
+          "?",
+          "vi",
+          "po",
+          "ku",
+          "ō",
+          "o",
+          "ēl"
+        ]
+      },
+      {
+        "context": "220 _ 415",
+        "alternatives": [
+          "240",
+          "299",
+          "244",
+          "287",
+          "233",
+          "390",
+          "235",
+          "255",
+          "320",
+          "407",
+          "257"
+        ],
+        "n_alts": 11,
+        "phonemes": [
+          "a",
+          "?",
+          "?",
+          "?",
+          "mān",
+          "vēl",
+          "ā",
+          "aṭ",
+          "?",
+          "uṇ",
+          "?"
+        ]
+      },
+      {
+        "context": "435 _ 255",
+        "alternatives": [
+          "240",
+          "176",
+          "34",
+          "233",
+          "231",
+          "4",
+          "2",
+          "1",
+          "220",
+          "32",
+          "590"
+        ],
+        "n_alts": 11,
+        "phonemes": [
+          "a",
+          "ū",
+          "kal",
+          "mān",
+          "aḷ",
+          "pūr",
+          "kōl",
+          "ō",
+          "n",
+          "i",
+          "ēl"
+        ]
+      },
+      {
+        "context": "32 _ 705",
+        "alternatives": [
+          "240",
+          "175",
+          "233",
+          "231",
+          "235",
+          "167",
+          "172",
+          "482",
+          "151",
+          "585"
+        ],
+        "n_alts": 10,
+        "phonemes": [
+          "a",
+          "?",
+          "mān",
+          "aḷ",
+          "ā",
+          "?",
+          "?",
+          "?",
+          "eẓ",
+          "?"
+        ]
+      },
+      {
+        "context": "60 _ 692",
+        "alternatives": [
+          "240",
+          "176",
+          "552",
+          "231",
+          "255",
+          "267",
+          "531",
+          "60",
+          "32",
+          "923"
+        ],
+        "n_alts": 10,
+        "phonemes": [
+          "a",
+          "ū",
+          "?",
+          "aḷ",
+          "aṭ",
+          "?",
+          "?",
+          "o",
+          "i",
+          "vi"
+        ]
+      },
+      {
+        "context": "32 _ 817",
+        "alternatives": [
+          "240",
+          "226",
+          "175",
+          "368",
+          "390",
+          "235",
+          "760",
+          "601",
+          "220",
+          "585"
+        ],
+        "n_alts": 10,
+        "phonemes": [
+          "a",
+          "?",
+          "?",
+          "oṭ",
+          "vēl",
+          "ā",
+          "am",
+          "?",
+          "n",
+          "?"
+        ]
+      },
+      {
+        "context": "520 _ 233",
+        "alternatives": [
+          "70",
+          "31",
+          "125",
+          "81",
+          "400",
+          "2",
+          "72",
+          "192",
+          "60",
+          "32"
+        ],
+        "n_alts": 10,
+        "phonemes": [
+          "?",
+          "ī",
+          "mu",
+          "?",
+          "min",
+          "kōl",
+          "?",
+          "?",
+          "o",
+          "i"
+        ]
+      },
+      {
+        "context": "2 _ 220",
+        "alternatives": [
+          "70",
+          "31",
+          "34",
+          "165",
+          "176",
+          "2",
+          "72",
+          "16",
+          "151",
+          "32"
+        ],
+        "n_alts": 10,
+        "phonemes": [
+          "?",
+          "ī",
+          "kal",
+          "?",
+          "ū",
+          "kōl",
+          "?",
+          "ki",
+          "eẓ",
+          "i"
+        ]
+      },
+      {
+        "context": "700 _ 34",
+        "alternatives": [
+          "156",
+          "400",
+          "861",
+          "2",
+          "90",
+          "520",
+          "1",
+          "60",
+          "690",
+          "742"
+        ],
+        "n_alts": 10,
+        "phonemes": [
+          "to",
+          "min",
+          "r",
+          "kōl",
+          "po",
+          "ku",
+          "ō",
+          "o",
+          "ul",
+          "mi"
+        ]
+      },
+      {
+        "context": "520 _ 240",
+        "alternatives": [
+          "34",
+          "233",
+          "231",
+          "235",
+          "60",
+          "2",
+          "70",
+          "220",
+          "32",
+          "590"
+        ],
+        "n_alts": 10,
+        "phonemes": [
+          "kal",
+          "mān",
+          "aḷ",
+          "ā",
+          "o",
+          "kōl",
+          "?",
+          "n",
+          "i",
+          "ēl"
+        ]
+      },
+      {
+        "context": "60 _ 32",
+        "alternatives": [
+          "31",
+          "636",
+          "13",
+          "2",
+          "90",
+          "435",
+          "495",
+          "742",
+          "590"
+        ],
+        "n_alts": 9,
+        "phonemes": [
+          "ī",
+          "?",
+          "ca",
+          "kōl",
+          "po",
+          "l",
+          "?",
+          "mi",
+          "ēl"
+        ]
+      },
+      {
+        "context": "740 _ 2",
+        "alternatives": [
+          "820",
+          "840",
+          "636",
+          "700",
+          "861",
+          "90",
+          "741",
+          "892",
+          "923"
+        ],
+        "n_alts": 9,
+        "phonemes": [
+          "ka",
+          "?",
+          "?",
+          "ko",
+          "r",
+          "po",
+          "ta",
+          "ṭ",
+          "vi"
+        ]
+      },
+      {
+        "context": "32 _ 415",
+        "alternatives": [
+          "240",
+          "34",
+          "175",
+          "231",
+          "100",
+          "255",
+          "151",
+          "220",
+          "32"
+        ],
+        "n_alts": 9,
+        "phonemes": [
+          "a",
+          "kal",
+          "?",
+          "aḷ",
+          "nāṭ",
+          "aṭ",
+          "eẓ",
+          "n",
+          "i"
+        ]
+      },
+      {
+        "context": "2 _ 900",
+        "alternatives": [
+          "585",
+          "705",
+          "66",
+          "803",
+          "4",
+          "545",
+          "621",
+          "645",
+          "817"
+        ],
+        "n_alts": 9,
+        "phonemes": [
+          "?",
+          "āṟ",
+          "?",
+          "ṇ",
+          "pūr",
+          "?",
+          "?",
+          "on",
+          "um"
+        ]
+      },
+      {
+        "context": "60 _ 235",
+        "alternatives": [
+          "140",
+          "226",
+          "31",
+          "820",
+          "173",
+          "233",
+          "231",
+          "70",
+          "32"
+        ],
+        "n_alts": 9,
+        "phonemes": [
+          "ma",
+          "?",
+          "ī",
+          "ka",
+          "?",
+          "mān",
+          "aḷ",
+          "?",
+          "i"
+        ]
+      },
+      {
+        "context": "32 _ 240",
+        "alternatives": [
+          "95",
+          "176",
+          "233",
+          "100",
+          "235",
+          "70",
+          "171",
+          "220"
+        ],
+        "n_alts": 8,
+        "phonemes": [
+          "?",
+          "ū",
+          "mān",
+          "nāṭ",
+          "ā",
+          "?",
+          "?",
+          "n"
+        ]
+      },
+      {
+        "context": "60 _ 220",
+        "alternatives": [
+          "176",
+          "165",
+          "820",
+          "4",
+          "2",
+          "527",
+          "32",
+          "742"
+        ],
+        "n_alts": 8,
+        "phonemes": [
+          "ū",
+          "?",
+          "ka",
+          "pūr",
+          "kōl",
+          "?",
+          "i",
+          "mi"
+        ]
+      },
+      {
+        "context": "32 _ 233",
+        "alternatives": [
+          "176",
+          "112",
+          "55",
+          "168",
+          "70",
+          "151",
+          "220",
+          "32"
+        ],
+        "n_alts": 8,
+        "phonemes": [
+          "ū",
+          "?",
+          "?",
+          "?",
+          "?",
+          "eẓ",
+          "n",
+          "i"
+        ]
+      },
+      {
+        "context": "861 _ 235",
+        "alternatives": [
+          "32",
+          "140",
+          "679",
+          "520",
+          "388",
+          "527",
+          "525",
+          "590"
+        ],
+        "n_alts": 8,
+        "phonemes": [
+          "i",
+          "ma",
+          "?",
+          "ku",
+          "tu",
+          "?",
+          "?",
+          "ēl"
+        ]
+      },
+      {
+        "context": "590 _ 220",
+        "alternatives": [
+          "31",
+          "820",
+          "100",
+          "81",
+          "2",
+          "388",
+          "142",
+          "32"
+        ],
+        "n_alts": 8,
+        "phonemes": [
+          "ī",
+          "ka",
+          "nāṭ",
+          "?",
+          "kōl",
+          "tu",
+          "ẓ",
+          "i"
+        ]
+      },
+      {
+        "context": "60 _ 240",
+        "alternatives": [
+          "34",
+          "56",
+          "231",
+          "235",
+          "100",
+          "90",
+          "220",
+          "32"
+        ],
+        "n_alts": 8,
+        "phonemes": [
+          "kal",
+          "?",
+          "aḷ",
+          "ā",
+          "nāṭ",
+          "po",
+          "n",
+          "i"
+        ]
+      },
+      {
+        "context": "90 _ 240",
+        "alternatives": [
+          "31",
+          "820",
+          "100",
+          "235",
+          "66",
+          "16",
+          "220",
+          "32"
+        ],
+        "n_alts": 8,
+        "phonemes": [
+          "ī",
+          "ka",
+          "nāṭ",
+          "ā",
+          "?",
+          "ki",
+          "n",
+          "i"
+        ]
+      }
+    ],
+    "grid_pairs": [
+      [
+        "ni",
+        "nāṭ",
+        "32 _ 220"
+      ],
+      [
+        "ka",
+        "ki",
+        "400 _ 32"
+      ],
+      [
+        "mu",
+        "min",
+        "700 _ 32"
+      ],
+      [
+        "pūr",
+        "po",
+        "700 _ 32"
+      ],
+      [
+        "vi",
+        "va",
+        "700 _ 32"
+      ],
+      [
+        "kōl",
+        "ku",
+        "700 _ 32"
+      ],
+      [
+        "kal",
+        "ka",
+        "520 _ 220"
+      ],
+      [
+        "kal",
+        "kōl",
+        "520 _ 220"
+      ],
+      [
+        "kal",
+        "ki",
+        "520 _ 220"
+      ],
+      [
+        "ka",
+        "kōl",
+        "520 _ 220"
+      ],
+      [
+        "ka",
+        "ki",
+        "520 _ 220"
+      ],
+      [
+        "pūr",
+        "po",
+        "520 _ 220"
+      ],
+      [
+        "kōl",
+        "ki",
+        "520 _ 220"
+      ],
+      [
+        "ka",
+        "kōl",
+        "861 _ 2"
+      ],
+      [
+        "ka",
+        "ku",
+        "861 _ 2"
+      ],
+      [
+        "mu",
+        "min",
+        "861 _ 2"
+      ],
+      [
+        "kōl",
+        "ku",
+        "861 _ 2"
+      ],
+      [
+        "kōl",
+        "ki",
+        "60 _ 920"
+      ],
+      [
+        "kal",
+        "kōl",
+        "435 _ 255"
+      ],
+      [
+        "aḷ",
+        "aṭ",
+        "60 _ 692"
+      ]
+    ]
+  },
+  "task12_parpola": {
+    "readings_tested": 16,
+    "readings": {
+      "400": {
+        "value": "miin",
+        "meaning": "fish/star",
+        "source": "Parpola 1994"
+      },
+      "700": {
+        "value": "koo",
+        "meaning": "king",
+        "source": "Parpola 1994"
+      },
+      "740": {
+        "value": "deity_det",
+        "meaning": "deity determinative",
+        "source": "Parpola 1994"
+      },
+      "176": {
+        "value": "aru",
+        "meaning": "six (Pleiades)",
+        "source": "Parpola 2009"
+      },
+      "220": {
+        "value": "muruku",
+        "meaning": "Murukan/young",
+        "source": "Parpola 1994"
+      },
+      "415": {
+        "value": "nandu",
+        "meaning": "crab",
+        "source": "Parpola 1994"
+      },
+      "520": {
+        "value": "kuti",
+        "meaning": "pot/dwelling",
+        "source": "Parpola 1994"
+      },
+      "550": {
+        "value": "vata",
+        "meaning": "north/banyan",
+        "source": "Parpola 1994"
+      },
+      "861": {
+        "value": "eeru",
+        "meaning": "plough/ox",
+        "source": "Parpola 1994"
+      },
+      "32": {
+        "value": "onru",
+        "meaning": "one",
+        "source": "Mahadevan 1977"
+      },
+      "240": {
+        "value": "irantu",
+        "meaning": "two",
+        "source": "Mahadevan/Parpola"
+      },
+      "34": {
+        "value": "muunru",
+        "meaning": "three",
+        "source": "Mahadevan/Parpola"
+      },
+      "4": {
+        "value": "naanku",
+        "meaning": "four",
+        "source": "Mahadevan/Parpola"
+      },
+      "60": {
+        "value": "aintu",
+        "meaning": "five",
+        "source": "Mahadevan/Parpola"
+      },
+      "100": {
+        "value": "aaru",
+        "meaning": "six",
+        "source": "Mahadevan/Parpola"
+      },
+      "140": {
+        "value": "eelu",
+        "meaning": "seven",
+        "source": "Mahadevan/Parpola"
+      }
+    }
+  }
+}

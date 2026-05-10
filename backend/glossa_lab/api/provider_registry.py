@@ -38,7 +38,7 @@ CLOUD_PROVIDERS: dict[str, dict[str, str]] = {
     "openai":     {"label": "OpenAI",     "base_url": "https://api.openai.com/v1",         "models_url": "https://api.openai.com/v1/models"},
     "anthropic":  {"label": "Anthropic",  "base_url": "https://api.anthropic.com/v1",      "models_url": "https://api.anthropic.com/v1/models"},
     "mistral":    {"label": "Mistral",    "base_url": "https://api.mistral.ai/v1",         "models_url": "https://api.mistral.ai/v1/models"},
-    "google":     {"label": "Google",     "base_url": "https://generativelanguage.googleapis.com/v1beta", "models_url": ""},
+    "google":     {"label": "Google",     "base_url": "https://generativelanguage.googleapis.com/v1beta/openai", "models_url": "https://generativelanguage.googleapis.com/v1beta/openai/models"},
     "groq":       {"label": "Groq",       "base_url": "https://api.groq.com/openai/v1",   "models_url": "https://api.groq.com/openai/v1/models"},
     "together":   {"label": "Together",   "base_url": "https://api.together.xyz/v1",       "models_url": "https://api.together.xyz/v1/models"},
     "fireworks":  {"label": "Fireworks",  "base_url": "https://api.fireworks.ai/inference/v1", "models_url": "https://api.fireworks.ai/inference/v1/models"},
@@ -99,7 +99,11 @@ def _probe_openai_compatible(
 ) -> dict[str, Any]:
     """Hit GET {base}/models on an OpenAI-compatible endpoint."""
     base = (base_url or "").strip().rstrip("/")
-    url = f"{base}/models" if base.endswith("/v1") else f"{base}/v1/models"
+    # Accept /v1, /v1beta, /v1beta/openai, etc. as already having a version prefix
+    if base.endswith("/v1") or "/v1beta" in base or base.endswith("/openai"):
+        url = f"{base}/models"
+    else:
+        url = f"{base}/v1/models"
     req_headers: dict[str, str] = {"Accept": "application/json"}
     if api_key:
         req_headers["Authorization"] = f"Bearer {api_key}"

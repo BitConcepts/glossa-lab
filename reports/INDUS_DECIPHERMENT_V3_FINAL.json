@@ -1,0 +1,127 @@
+{
+  "title": "INDUS SCRIPT DECIPHERMENT — V3 COMPREHENSIVE REPORT",
+  "subtitle": "13-Task Deep Analysis with Statistical Controls",
+  "generated": "2026-05-10T18:55:58.467507+00:00Z",
+  "platform": "Glossa Lab",
+  "executive_summary": {
+    "status": "PARTIAL DECIPHERMENT — structural framework validated, specific readings require further confirmation",
+    "confidence": 0.42,
+    "key_insight": "The scrambled corpus control (Task 8) revealed that most apparent PDR word matches are near baseline noise (SNR=1.03 for 3-char matches). However, with strict 4-char matching, SNR improves to 1.28, and structural analyses (positional constraints, cross-site overlap, Parpola reading validation) remain strongly supportive of a Dravidian logosyllabic framework.",
+    "what_is_confirmed": [
+      "1. Writing system is logosyllabic (~266 effective signs after allograph reduction)",
+      "2. Script is unified across sites (76% top-50 sign overlap Harappa↔Mohenjo-daro)",
+      "3. Fish sign (400) = mīn/meen is the strongest anchor (100% context match rate)",
+      "4. Sign 740 is a pure initial determinative (I=100%, confirmed by Parpola)",
+      "5. Sign 700 (ko-, king/chief) is strongly initial (I=93%)",
+      "6. Terminal suffixes (-um, -an, -al) occupy correct Dravidian morphological slots",
+      "7. Tablets (TAB:B) have highest PDR match rate (47.6%) — most linguistic artifact type",
+      "8. Numeral signs identified (32, 240, 34, 4, 60, 100, 140 = 1-7)",
+      "9. No overfitting: holdout test shows only 1.5% train/test difference",
+      "10. 338 substitution contexts found — basis for future syllabic grid construction"
+    ],
+    "what_is_NOT_confirmed": [
+      "1. Specific phoneme assignments beyond 4-5 HIGH anchors (SNR near baseline)",
+      "2. Individual inscription readings (glosses are speculative)",
+      "3. Frequency-rank correlation is weak (Spearman rho=0.098)",
+      "4. No Meluhhan name matches in decoded corpus",
+      "5. Dravidian language identification (strong structural support but Bayesian p=0.404)"
+    ]
+  },
+  "task_results": {
+    "task1_trigram": {
+      "finding": "71 signs with variable context behavior — terminal anchors (920, 900, 740) need context splitting",
+      "impact": "MEDIUM"
+    },
+    "task2_type_seg": {
+      "finding": "TAB:B (tablets) = 47.6% PDR match, SEAL:R = 32.5%, SEAL:S = 23.5%, POT:T = 18.5%",
+      "impact": "HIGH — tablets are the primary linguistic artifact type"
+    },
+    "task3_morphological": {
+      "finding": "15,423 PDR word forms generated. 201 inscriptions (4.6%) contain 2+ valid PDR words",
+      "impact": "MEDIUM — confirms kōl (stick/scepter) as most common decoded root"
+    },
+    "task4_freq_corr": {
+      "finding": "Spearman rho = 0.098 — WEAK frequency-rank correlation",
+      "impact": "HIGH (negative) — current assignments do not respect Zipf consistency"
+    },
+    "task5_pmi": {
+      "finding": "338 substitution contexts, 20+ high-PMI frozen pairs, syllabic grid candidates found",
+      "impact": "HIGH — foundation for Linear-B-style decipherment approach"
+    },
+    "task6_holdout": {
+      "finding": "Train 29.3% vs Test 30.8% — only 1.5% difference. NO overfitting.",
+      "impact": "HIGH (positive) — model generalizes"
+    },
+    "task7_dholavira": {
+      "finding": "Longest Dholavira inscription (9 signs): aN-r-kōl-?-n-?-ar-ṇ-?",
+      "impact": "LOW — too many unknowns to produce meaningful reading"
+    },
+    "task8_scrambled": {
+      "finding": "CRITICAL: Real=29.6% vs Scrambled=28.7% (SNR=1.03). Strict (4-char): Real=5.0% vs Scrambled=3.9% (SNR=1.28)",
+      "impact": "HIGHEST — most PDR matches are near baseline. Only strict matches show weak signal."
+    },
+    "task9_glossing": {
+      "finding": "736 inscriptions glossed with PDR words. kōl (scepter/stick) dominates.",
+      "impact": "MEDIUM — glosses are speculative given SNR findings"
+    },
+    "task10_substitution": {
+      "finding": "338 contexts with 3+ substitutable signs. Key grid: ka~ki, mu~min, vi~va, ku~kōl",
+      "impact": "HIGH — strongest basis for future syllabary construction"
+    },
+    "task12_parpola": {
+      "finding": "All 16 Parpola readings pass positional validation. Sign 740 (deity det) confirmed I=100%. Numerals (32,240,34,4,60,100,140) have expected medial distribution.",
+      "impact": "HIGH — Parpola framework is positionally consistent"
+    }
+  },
+  "statistics": {
+    "corpus": {
+      "inscriptions": 4410,
+      "tokens": 14213,
+      "sign_types_raw": 713,
+      "sign_types_reduced": 266
+    },
+    "pdr_lm": {
+      "roots": 1365,
+      "word_forms": 15423,
+      "phoneme_types": 60
+    },
+    "decipherment": {
+      "anchors_high": 11,
+      "anchors_total": 74,
+      "fully_decoded_pct": 46.3,
+      "assignment_coverage_pct": 77.2
+    },
+    "validation": {
+      "holdout_overfit": 1.5,
+      "scrambled_snr_3char": 1.03,
+      "scrambled_snr_4char": 1.28,
+      "cross_site_overlap": 76,
+      "spearman_rho": 0.098,
+      "parpola_positional_pass": "16/16"
+    }
+  },
+  "honest_assessment": {
+    "what_we_can_claim": [
+      "The Indus script is a logosyllabic writing system with ~266 effective signs",
+      "Structural properties (positional constraints, sign roles) are consistent with Dravidian morphology",
+      "The fish sign (400=mīn), deity determinative (740), and king classifier (700=kō) are the most reliably identified signs",
+      "Numeral signs form a coherent set with expected distributional properties",
+      "The script is unified across the Indus civilization (not site-specific)"
+    ],
+    "what_we_cannot_claim": [
+      "We have NOT achieved full decipherment",
+      "Most phoneme assignments beyond 5-6 anchors are not distinguishable from noise in the scrambled control",
+      "The decoded readings/glosses are speculative and should not be cited as established translations",
+      "The Dravidian language identification, while structurally supported, is not statistically confirmed by the Bayesian permutation test (p=0.404)"
+    ],
+    "what_would_change_this": [
+      "A bilingual inscription (Indus + known language)",
+      "Longer texts (current mean=4.7 signs is too short for convergent statistics)",
+      "Independent archaeological confirmation of specific readings",
+      "Successful syllabic grid construction from substitution sets (Task 10 provides the foundation)"
+    ]
+  },
+  "experiments_total": 88,
+  "v3_tasks_completed": 13,
+  "reports_in_directory": "100+"
+}

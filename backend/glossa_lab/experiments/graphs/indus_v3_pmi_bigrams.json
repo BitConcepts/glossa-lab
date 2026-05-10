@@ -1,0 +1,64 @@
+{
+  "id": "indus_v3_pmi_bigrams",
+  "name": "Indus V3 \u2014 Bigram PMI Analysis (Frozen Combinations)",
+  "description": "High-PMI sign pairs identified as frozen morphemes. 20+ pairs with PMI>7.0.",
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "CorpusReader",
+      "label": "ICIT Corpus",
+      "params": {},
+      "x": 60,
+      "y": 100
+    },
+    {
+      "id": "freq",
+      "type": "FreqCounter",
+      "label": "Sign Frequencies",
+      "params": {},
+      "x": 300,
+      "y": 100
+    },
+    {
+      "id": "run",
+      "type": "ExperimentWrapper",
+      "label": "PMI Analysis",
+      "params": {
+        "experiment_id": "indus_v3_pmi_bigrams"
+      },
+      "x": 560,
+      "y": 100
+    },
+    {
+      "id": "out",
+      "type": "PassResult",
+      "label": "Output",
+      "params": {},
+      "x": 820,
+      "y": 100
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "freq",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "freq",
+      "target": "run",
+      "sourcePort": "freq_map",
+      "targetPort": "upstream"
+    },
+    {
+      "id": "e3",
+      "source": "run",
+      "target": "out",
+      "sourcePort": "result",
+      "targetPort": "data"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "data": [
+    {
+      "name": "Sumerian Cuneiform",
+      "tier": "Logosyllabic",
+      "distance": 0.413
+    },
+    {
+      "name": "Indus Script",
+      "tier": "Unknown",
+      "distance": 0.8183
+    },
+    {
+      "name": "Linear B",
+      "tier": "Syllabary",
+      "distance": 1.0936
+    },
+    {
+      "name": "Cypriot Syllabary",
+      "tier": "Syllabary",
+      "distance": 1.3199
+    },
+    {
+      "name": "Old Persian Cuneiform",
+      "tier": "Syllabary",
+      "distance": 1.4662
+    },
+    {
+      "name": "Classical Chinese",
+      "tier": "Logographic",
+      "distance": 1.4703
+    },
+    {
+      "name": "Ugaritic",
+      "tier": "Abjad",
+      "distance": 1.6758
+    },
+    {
+      "name": "Proto-Sinaitic",
+      "tier": "Abjad",
+      "distance": 1.7431
+    },
+    {
+      "name": "Meroitic",
+      "tier": "Abjad/Syllabic",
+      "distance": 1.7845
+    },
+    {
+      "name": "Old Hebrew",
+      "tier": "Abjad",
+      "distance": 1.8381
+    },
+    {
+      "name": "Phoenician",
+      "tier": "Abjad",
+      "distance": 1.8387
+    }
+  ]
+}

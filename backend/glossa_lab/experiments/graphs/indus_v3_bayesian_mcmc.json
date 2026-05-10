@@ -1,0 +1,81 @@
+{
+  "id": "indus_v3_bayesian_mcmc",
+  "name": "Indus V3 \u2014 Bayesian MCMC Decoder with PDR Bigram LM",
+  "description": "MCMC Metropolis-Hastings decoder optimizing sign\u2192phoneme assignments against 1365-root Proto-Dravidian bigram language model. 2000 iterations.",
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "CorpusReader",
+      "label": "ICIT Corpus",
+      "params": {},
+      "x": 60,
+      "y": 140
+    },
+    {
+      "id": "freq",
+      "type": "FreqCounter",
+      "label": "Sign Frequencies",
+      "params": {},
+      "x": 300,
+      "y": 80
+    },
+    {
+      "id": "prof",
+      "type": "PositionalProfiler",
+      "label": "Positional Profiles",
+      "params": {
+        "min_count": 5
+      },
+      "x": 300,
+      "y": 200
+    },
+    {
+      "id": "run",
+      "type": "ExperimentWrapper",
+      "label": "Bayesian MCMC Decoder",
+      "params": {
+        "experiment_id": "indus_v3_bayesian_mcmc"
+      },
+      "x": 570,
+      "y": 140
+    },
+    {
+      "id": "out",
+      "type": "PassResult",
+      "label": "Output",
+      "params": {},
+      "x": 830,
+      "y": 140
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "freq",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "corpus",
+      "target": "prof",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "prof",
+      "target": "run",
+      "sourcePort": "profiles",
+      "targetPort": "upstream"
+    },
+    {
+      "id": "e4",
+      "source": "run",
+      "target": "out",
+      "sourcePort": "result",
+      "targetPort": "data"
+    }
+  ]
+}

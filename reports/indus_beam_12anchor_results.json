@@ -1,0 +1,391 @@
+{
+  "anchors": 12,
+  "total_assignments": 79,
+  "total_decoded": 4410,
+  "fully_decoded": 1901,
+  "mean_anchor_coverage": 0.22658573767317264,
+  "anchor_token_coverage": 0.22711602054457186,
+  "high_coverage_readings": [
+    {
+      "id": "-",
+      "signs": [
+        "740",
+        "400",
+        "900"
+      ],
+      "reading": "aN-min-al",
+      "anchor_coverage": 1.0,
+      "length": 3
+    },
+    {
+      "id": "H-1330",
+      "signs": [
+        "700",
+        "520",
+        "32",
+        "220"
+      ],
+      "reading": "ko-ku-i-n",
+      "anchor_coverage": 1.0,
+      "length": 4
+    },
+    {
+      "id": "H-569",
+      "signs": [
+        "32",
+        "220",
+        "240"
+      ],
+      "reading": "i-n-a",
+      "anchor_coverage": 1.0,
+      "length": 3
+    },
+    {
+      "id": "H-926",
+      "signs": [
+        "400",
+        "32",
+        "220"
+      ],
+      "reading": "min-i-n",
+      "anchor_coverage": 1.0,
+      "length": 3
+    },
+    {
+      "id": "K-96",
+      "signs": [
+        "520",
+        "32",
+        "220"
+      ],
+      "reading": "ku-i-n",
+      "anchor_coverage": 1.0,
+      "length": 3
+    },
+    {
+      "id": "M-453",
+      "signs": [
+        "861",
+        "32",
+        "220"
+      ],
+      "reading": "r-i-n",
+      "anchor_coverage": 1.0,
+      "length": 3
+    },
+    {
+      "id": "M-1031",
+      "signs": [
+        "520",
+        "220",
+        "817"
+      ],
+      "reading": "ku-n-um",
+      "anchor_coverage": 1.0,
+      "length": 3
+    },
+    {
+      "id": "M-1044",
+      "signs": [
+        "861",
+        "520",
+        "32",
+        "220"
+      ],
+      "reading": "r-ku-i-n",
+      "anchor_coverage": 1.0,
+      "length": 4
+    },
+    {
+      "id": "M-1148",
+      "signs": [
+        "861",
+        "520",
+        "220"
+      ],
+      "reading": "r-ku-n",
+      "anchor_coverage": 1.0,
+      "length": 3
+    },
+    {
+      "id": "M-1788",
+      "signs": [
+        "32",
+        "220",
+        "817"
+      ],
+      "reading": "i-n-um",
+      "anchor_coverage": 1.0,
+      "length": 3
+    },
+    {
+      "id": "-",
+      "signs": [
+        "520",
+        "32",
+        "220"
+      ],
+      "reading": "ku-i-n",
+      "anchor_coverage": 1.0,
+      "length": 3
+    },
+    {
+      "id": "M-240",
+      "signs": [
+        "861",
+        "520",
+        "32",
+        "220",
+        "240",
+        "603"
+      ],
+      "reading": "r-ku-i-n-a-?",
+      "anchor_coverage": 0.8333333333333334,
+      "length": 6
+    },
+    {
+      "id": "H-1102",
+      "signs": [
+        "740",
+        "700",
+        "400",
+        "32",
+        "382"
+      ],
+      "reading": "aN-ko-min-i-?",
+      "anchor_coverage": 0.8,
+      "length": 5
+    },
+    {
+      "id": "H-2201",
+      "signs": [
+        "700",
+        "400",
+        "32",
+        "176",
+        "240"
+      ],
+      "reading": "ko-min-i-ri-a",
+      "anchor_coverage": 0.8,
+      "length": 5
+    },
+    {
+      "id": "H-2173",
+      "signs": [
+        "700",
+        "491",
+        "400",
+        "32",
+        "817"
+      ],
+      "reading": "ko-?-min-i-um",
+      "anchor_coverage": 0.8,
+      "length": 5
+    },
+    {
+      "id": "H-2146",
+      "signs": [
+        "700",
+        "520",
+        "32",
+        "220",
+        "415"
+      ],
+      "reading": "ko-ku-i-n-ke",
+      "anchor_coverage": 0.8,
+      "length": 5
+    },
+    {
+      "id": "H-1678",
+      "signs": [
+        "520",
+        "32",
+        "220",
+        "233",
+        "240"
+      ],
+      "reading": "ku-i-n-pu-a",
+      "anchor_coverage": 0.8,
+      "length": 5
+    },
+    {
+      "id": "H-98",
+      "signs": [
+        "861",
+        "520",
+        "16",
+        "220",
+        "920"
+      ],
+      "reading": "r-ku-?-n-an",
+      "anchor_coverage": 0.8,
+      "length": 5
+    },
+    {
+      "id": "M-722",
+      "signs": [
+        "32",
+        "220",
+        "240",
+        "585",
+        "817"
+      ],
+      "reading": "i-n-a-nni-um",
+      "anchor_coverage": 0.8,
+      "length": 5
+    },
+    {
+      "id": "C-15",
+      "signs": [
+        "740",
+        "400",
+        "31",
+        "920"
+      ],
+      "reading": "aN-min-te-an",
+      "anchor_coverage": 0.75,
+      "length": 4
+    },
+    {
+      "id": "H-294",
+      "signs": [
+        "740",
+        "90",
+        "220",
+        "240"
+      ],
+      "reading": "aN-pi-n-a",
+      "anchor_coverage": 0.75,
+      "length": 4
+    },
+    {
+      "id": "H-1319",
+      "signs": [
+        "700",
+        "400",
+        "32",
+        "678"
+      ],
+      "reading": "ko-min-i-?",
+      "anchor_coverage": 0.75,
+      "length": 4
+    },
+    {
+      "id": "-",
+      "signs": [
+        "740",
+        "700",
+        "400",
+        "176"
+      ],
+      "reading": "aN-ko-min-ri",
+      "anchor_coverage": 0.75,
+      "length": 4
+    },
+    {
+      "id": "H-1278",
+      "signs": [
+        "740",
+        "700",
+        "400",
+        "31"
+      ],
+      "reading": "aN-ko-min-te",
+      "anchor_coverage": 0.75,
+      "length": 4
+    },
+    {
+      "id": "H-1152",
+      "signs": [
+        "740",
+        "700",
+        "840",
+        "220"
+      ],
+      "reading": "aN-ko-?-n",
+      "anchor_coverage": 0.75,
+      "length": 4
+    }
+  ],
+  "all_assignments": {
+    "817": "um",
+    "920": "an",
+    "900": "al",
+    "740": "aN",
+    "700": "ko",
+    "400": "min",
+    "32": "i",
+    "220": "n",
+    "520": "ku",
+    "240": "a",
+    "861": "r",
+    "752": "il",
+    "2": "ti",
+    "235": "tu",
+    "31": "te",
+    "820": "ni",
+    "3": "nu",
+    "1": "ne",
+    "590": "li",
+    "33": "lu",
+    "60": "la",
+    "741": "mu",
+    "176": "ri",
+    "705": "ru",
+    "90": "pi",
+    "233": "pu",
+    "34": "pe",
+    "798": "ki",
+    "415": "ke",
+    "390": "mi",
+    "255": "me",
+    "100": "vi",
+    "806": "am",
+    "760": "ar",
+    "407": "vu",
+    "405": "ve",
+    "368": "ca",
+    "690": "na",
+    "140": "ci",
+    "156": "ta",
+    "550": "pa",
+    "706": "cu",
+    "4": "ya",
+    "61": "yu",
+    "231": "ye",
+    "151": "si",
+    "892": "su",
+    "803": "se",
+    "503": "ta:",
+    "142": "ka:",
+    "17": "ma:",
+    "617": "na:",
+    "575": "pa:",
+    "692": "ntu",
+    "435": "nta",
+    "615": "ka",
+    "527": "nku",
+    "55": "rku",
+    "904": "ai",
+    "125": "nci",
+    "388": "tti",
+    "585": "nni",
+    "850": "ma",
+    "790": "va",
+    "595": "sa",
+    "923": "ra",
+    "154": "ce",
+    "832": "at",
+    "630": "ak",
+    "501": "ap",
+    "645": "ul",
+    "877": "en",
+    "838": "on",
+    "831": "ey",
+    "906": "ay",
+    "137": "ur",
+    "554": "ir",
+    "844": "em",
+    "515": "el"
+  }
+}

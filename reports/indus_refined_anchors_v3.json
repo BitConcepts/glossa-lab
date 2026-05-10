@@ -1,0 +1,698 @@
+{
+  "total_refined": 74,
+  "high_confidence": 11,
+  "med_confidence": 31,
+  "low_confidence": 32,
+  "fully_decoded": 2043,
+  "pdr_word_matches": 1306,
+  "refined_anchors": {
+    "400": {
+      "phoneme": "min",
+      "confidence": "HIGH",
+      "match_rate": 1.0,
+      "sample_size": 436
+    },
+    "2": {
+      "phoneme": "k\u014dl",
+      "confidence": "HIGH",
+      "match_rate": 1.0,
+      "sample_size": 497
+    },
+    "34": {
+      "phoneme": "kal",
+      "confidence": "HIGH",
+      "match_rate": 1.0,
+      "sample_size": 218
+    },
+    "806": {
+      "phoneme": "n\u012br",
+      "confidence": "HIGH",
+      "match_rate": 1.0,
+      "sample_size": 133
+    },
+    "501": {
+      "phoneme": "en",
+      "confidence": "HIGH",
+      "match_rate": 1.0,
+      "sample_size": 27
+    },
+    "153": {
+      "phoneme": "ni",
+      "confidence": "HIGH",
+      "match_rate": 0.7954545454545454,
+      "sample_size": 44
+    },
+    "154": {
+      "phoneme": "ti",
+      "confidence": "HIGH",
+      "match_rate": 0.7115384615384616,
+      "sample_size": 52
+    },
+    "137": {
+      "phoneme": "\u014dr",
+      "confidence": "MED",
+      "match_rate": 0.7058823529411765,
+      "sample_size": 17
+    },
+    "900": {
+      "phoneme": "al",
+      "confidence": "HIGH",
+      "match_rate": 0.6306306306306306,
+      "sample_size": 111
+    },
+    "700": {
+      "phoneme": "ko",
+      "confidence": "HIGH",
+      "match_rate": 0.5836909871244635,
+      "sample_size": 233
+    },
+    "405": {
+      "phoneme": "e\u1e6f",
+      "confidence": "HIGH",
+      "match_rate": 0.5726495726495726,
+      "sample_size": 117
+    },
+    "156": {
+      "phoneme": "to",
+      "confidence": "HIGH",
+      "match_rate": 0.5370370370370371,
+      "sample_size": 108
+    },
+    "176": {
+      "phoneme": "\u016b",
+      "confidence": "MED",
+      "match_rate": 0.4337899543378995,
+      "sample_size": 219
+    },
+    "100": {
+      "phoneme": "n\u0101\u1e6d",
+      "confidence": "MED",
+      "match_rate": 0.4326241134751773,
+      "sample_size": 141
+    },
+    "415": {
+      "phoneme": "ar",
+      "confidence": "MED",
+      "match_rate": 0.4166666666666667,
+      "sample_size": 204
+    },
+    "740": {
+      "phoneme": "aN",
+      "confidence": "MED",
+      "match_rate": 0.41228070175438597,
+      "sample_size": 114
+    },
+    "832": {
+      "phoneme": "in",
+      "confidence": "MED",
+      "match_rate": 0.4090909090909091,
+      "sample_size": 44
+    },
+    "817": {
+      "phoneme": "um",
+      "confidence": "MED",
+      "match_rate": 0.4055299539170507,
+      "sample_size": 217
+    },
+    "798": {
+      "phoneme": "i\u1e6f",
+      "confidence": "MED",
+      "match_rate": 0.40397350993377484,
+      "sample_size": 151
+    },
+    "220": {
+      "phoneme": "n",
+      "confidence": "MED",
+      "match_rate": 0.3974358974358974,
+      "sample_size": 468
+    },
+    "861": {
+      "phoneme": "r",
+      "confidence": "MED",
+      "match_rate": 0.38345864661654133,
+      "sample_size": 266
+    },
+    "850": {
+      "phoneme": "u",
+      "confidence": "MED",
+      "match_rate": 0.38181818181818183,
+      "sample_size": 55
+    },
+    "16": {
+      "phoneme": "ki",
+      "confidence": "MED",
+      "match_rate": 0.3779527559055118,
+      "sample_size": 127
+    },
+    "125": {
+      "phoneme": "mu",
+      "confidence": "MED",
+      "match_rate": 0.3728813559322034,
+      "sample_size": 59
+    },
+    "617": {
+      "phoneme": "y",
+      "confidence": "MED",
+      "match_rate": 0.3717948717948718,
+      "sample_size": 78
+    },
+    "435": {
+      "phoneme": "l",
+      "confidence": "MED",
+      "match_rate": 0.3695652173913043,
+      "sample_size": 92
+    },
+    "255": {
+      "phoneme": "a\u1e6d",
+      "confidence": "MED",
+      "match_rate": 0.36496350364963503,
+      "sample_size": 137
+    },
+    "904": {
+      "phoneme": "ay",
+      "confidence": "MED",
+      "match_rate": 0.36065573770491804,
+      "sample_size": 61
+    },
+    "892": {
+      "phoneme": "\u1e6d",
+      "confidence": "MED",
+      "match_rate": 0.35555555555555557,
+      "sample_size": 90
+    },
+    "140": {
+      "phoneme": "ma",
+      "confidence": "MED",
+      "match_rate": 0.35135135135135137,
+      "sample_size": 111
+    },
+    "520": {
+      "phoneme": "ku",
+      "confidence": "MED",
+      "match_rate": 0.346875,
+      "sample_size": 320
+    },
+    "368": {
+      "phoneme": "o\u1e6d",
+      "confidence": "MED",
+      "match_rate": 0.3391304347826087,
+      "sample_size": 115
+    },
+    "575": {
+      "phoneme": "v",
+      "confidence": "MED",
+      "match_rate": 0.33766233766233766,
+      "sample_size": 77
+    },
+    "240": {
+      "phoneme": "a",
+      "confidence": "MED",
+      "match_rate": 0.336986301369863,
+      "sample_size": 365
+    },
+    "390": {
+      "phoneme": "v\u0113l",
+      "confidence": "MED",
+      "match_rate": 0.3356164383561644,
+      "sample_size": 146
+    },
+    "831": {
+      "phoneme": "\u0101l",
+      "confidence": "MED",
+      "match_rate": 0.3333333333333333,
+      "sample_size": 18
+    },
+    "820": {
+      "phoneme": "ka",
+      "confidence": "MED",
+      "match_rate": 0.33191489361702126,
+      "sample_size": 235
+    },
+    "233": {
+      "phoneme": "m\u0101n",
+      "confidence": "MED",
+      "match_rate": 0.32160804020100503,
+      "sample_size": 199
+    },
+    "32": {
+      "phoneme": "i",
+      "confidence": "MED",
+      "match_rate": 0.3200531208499336,
+      "sample_size": 753
+    },
+    "90": {
+      "phoneme": "po",
+      "confidence": "MED",
+      "match_rate": 0.31981981981981983,
+      "sample_size": 222
+    },
+    "690": {
+      "phoneme": "ul",
+      "confidence": "MED",
+      "match_rate": 0.3157894736842105,
+      "sample_size": 114
+    },
+    "388": {
+      "phoneme": "tu",
+      "confidence": "MED",
+      "match_rate": 0.3050847457627119,
+      "sample_size": 59
+    },
+    "803": {
+      "phoneme": "\u1e47",
+      "confidence": "LOW",
+      "match_rate": 0.29069767441860467,
+      "sample_size": 86
+    },
+    "645": {
+      "phoneme": "on",
+      "confidence": "LOW",
+      "match_rate": 0.28,
+      "sample_size": 25
+    },
+    "31": {
+      "phoneme": "\u012b",
+      "confidence": "LOW",
+      "match_rate": 0.2793522267206478,
+      "sample_size": 247
+    },
+    "920": {
+      "phoneme": "an",
+      "confidence": "LOW",
+      "match_rate": 0.27702702702702703,
+      "sample_size": 148
+    },
+    "235": {
+      "phoneme": "\u0101",
+      "confidence": "LOW",
+      "match_rate": 0.2753623188405797,
+      "sample_size": 276
+    },
+    "142": {
+      "phoneme": "\u1e93",
+      "confidence": "LOW",
+      "match_rate": 0.275,
+      "sample_size": 80
+    },
+    "742": {
+      "phoneme": "mi",
+      "confidence": "LOW",
+      "match_rate": 0.27450980392156865,
+      "sample_size": 51
+    },
+    "741": {
+      "phoneme": "ta",
+      "confidence": "LOW",
+      "match_rate": 0.27314814814814814,
+      "sample_size": 216
+    },
+    "13": {
+      "phoneme": "ca",
+      "confidence": "LOW",
+      "match_rate": 0.2727272727272727,
+      "sample_size": 33
+    },
+    "60": {
+      "phoneme": "o",
+      "confidence": "LOW",
+      "match_rate": 0.2724358974358974,
+      "sample_size": 312
+    },
+    "590": {
+      "phoneme": "\u0113l",
+      "confidence": "LOW",
+      "match_rate": 0.26991150442477874,
+      "sample_size": 226
+    },
+    "1": {
+      "phoneme": "\u014d",
+      "confidence": "LOW",
+      "match_rate": 0.2687224669603524,
+      "sample_size": 227
+    },
+    "838": {
+      "phoneme": "\u0101\u1e47",
+      "confidence": "LOW",
+      "match_rate": 0.2631578947368421,
+      "sample_size": 19
+    },
+    "550": {
+      "phoneme": "va",
+      "confidence": "LOW",
+      "match_rate": 0.2571428571428571,
+      "sample_size": 105
+    },
+    "760": {
+      "phoneme": "am",
+      "confidence": "LOW",
+      "match_rate": 0.25,
+      "sample_size": 132
+    },
+    "745": {
+      "phoneme": "pa",
+      "confidence": "LOW",
+      "match_rate": 0.25,
+      "sample_size": 36
+    },
+    "906": {
+      "phoneme": "e",
+      "confidence": "LOW",
+      "match_rate": 0.25,
+      "sample_size": 16
+    },
+    "407": {
+      "phoneme": "u\u1e47",
+      "confidence": "LOW",
+      "match_rate": 0.24603174603174602,
+      "sample_size": 126
+    },
+    "877": {
+      "phoneme": "\u0113r",
+      "confidence": "LOW",
+      "match_rate": 0.23809523809523808,
+      "sample_size": 21
+    },
+    "790": {
+      "phoneme": "pi",
+      "confidence": "LOW",
+      "match_rate": 0.23636363636363636,
+      "sample_size": 55
+    },
+    "595": {
+      "phoneme": "ci",
+      "confidence": "LOW",
+      "match_rate": 0.23404255319148937,
+      "sample_size": 47
+    },
+    "4": {
+      "phoneme": "p\u016br",
+      "confidence": "LOW",
+      "match_rate": 0.2191780821917808,
+      "sample_size": 146
+    },
+    "844": {
+      "phoneme": "i\u1e5f",
+      "confidence": "LOW",
+      "match_rate": 0.21428571428571427,
+      "sample_size": 14
+    },
+    "705": {
+      "phoneme": "\u0101\u1e5f",
+      "confidence": "LOW",
+      "match_rate": 0.21405750798722045,
+      "sample_size": 313
+    },
+    "630": {
+      "phoneme": "u\u1e37",
+      "confidence": "LOW",
+      "match_rate": 0.20512820512820512,
+      "sample_size": 39
+    },
+    "231": {
+      "phoneme": "a\u1e37",
+      "confidence": "LOW",
+      "match_rate": 0.20388349514563106,
+      "sample_size": 103
+    },
+    "554": {
+      "phoneme": "\u0113",
+      "confidence": "LOW",
+      "match_rate": 0.2,
+      "sample_size": 15
+    },
+    "503": {
+      "phoneme": "\u1e37",
+      "confidence": "LOW",
+      "match_rate": 0.1951219512195122,
+      "sample_size": 82
+    },
+    "151": {
+      "phoneme": "e\u1e93",
+      "confidence": "LOW",
+      "match_rate": 0.1935483870967742,
+      "sample_size": 93
+    },
+    "923": {
+      "phoneme": "vi",
+      "confidence": "LOW",
+      "match_rate": 0.17777777777777778,
+      "sample_size": 45
+    },
+    "615": {
+      "phoneme": "na",
+      "confidence": "LOW",
+      "match_rate": 0.14084507042253522,
+      "sample_size": 71
+    },
+    "752": {
+      "phoneme": "il",
+      "confidence": "LOW",
+      "match_rate": 0.1346153846153846,
+      "sample_size": 52
+    }
+  },
+  "top_20": [
+    {
+      "sign": "400",
+      "phoneme": "min",
+      "rate": 1.0,
+      "n": 436
+    },
+    {
+      "sign": "2",
+      "phoneme": "k\u014dl",
+      "rate": 1.0,
+      "n": 497
+    },
+    {
+      "sign": "34",
+      "phoneme": "kal",
+      "rate": 1.0,
+      "n": 218
+    },
+    {
+      "sign": "806",
+      "phoneme": "n\u012br",
+      "rate": 1.0,
+      "n": 133
+    },
+    {
+      "sign": "501",
+      "phoneme": "en",
+      "rate": 1.0,
+      "n": 27
+    },
+    {
+      "sign": "153",
+      "phoneme": "ni",
+      "rate": 0.7954545454545454,
+      "n": 44
+    },
+    {
+      "sign": "154",
+      "phoneme": "ti",
+      "rate": 0.7115384615384616,
+      "n": 52
+    },
+    {
+      "sign": "137",
+      "phoneme": "\u014dr",
+      "rate": 0.7058823529411765,
+      "n": 17
+    },
+    {
+      "sign": "900",
+      "phoneme": "al",
+      "rate": 0.6306306306306306,
+      "n": 111
+    },
+    {
+      "sign": "700",
+      "phoneme": "ko",
+      "rate": 0.5836909871244635,
+      "n": 233
+    },
+    {
+      "sign": "405",
+      "phoneme": "e\u1e6f",
+      "rate": 0.5726495726495726,
+      "n": 117
+    },
+    {
+      "sign": "156",
+      "phoneme": "to",
+      "rate": 0.5370370370370371,
+      "n": 108
+    },
+    {
+      "sign": "176",
+      "phoneme": "\u016b",
+      "rate": 0.4337899543378995,
+      "n": 219
+    },
+    {
+      "sign": "100",
+      "phoneme": "n\u0101\u1e6d",
+      "rate": 0.4326241134751773,
+      "n": 141
+    },
+    {
+      "sign": "415",
+      "phoneme": "ar",
+      "rate": 0.4166666666666667,
+      "n": 204
+    },
+    {
+      "sign": "740",
+      "phoneme": "aN",
+      "rate": 0.41228070175438597,
+      "n": 114
+    },
+    {
+      "sign": "832",
+      "phoneme": "in",
+      "rate": 0.4090909090909091,
+      "n": 44
+    },
+    {
+      "sign": "817",
+      "phoneme": "um",
+      "rate": 0.4055299539170507,
+      "n": 217
+    },
+    {
+      "sign": "798",
+      "phoneme": "i\u1e6f",
+      "rate": 0.40397350993377484,
+      "n": 151
+    },
+    {
+      "sign": "220",
+      "phoneme": "n",
+      "rate": 0.3974358974358974,
+      "n": 468
+    }
+  ],
+  "bottom_20": [
+    {
+      "sign": "838",
+      "phoneme": "\u0101\u1e47",
+      "rate": 0.2631578947368421,
+      "n": 19
+    },
+    {
+      "sign": "550",
+      "phoneme": "va",
+      "rate": 0.2571428571428571,
+      "n": 105
+    },
+    {
+      "sign": "760",
+      "phoneme": "am",
+      "rate": 0.25,
+      "n": 132
+    },
+    {
+      "sign": "745",
+      "phoneme": "pa",
+      "rate": 0.25,
+      "n": 36
+    },
+    {
+      "sign": "906",
+      "phoneme": "e",
+      "rate": 0.25,
+      "n": 16
+    },
+    {
+      "sign": "407",
+      "phoneme": "u\u1e47",
+      "rate": 0.24603174603174602,
+      "n": 126
+    },
+    {
+      "sign": "877",
+      "phoneme": "\u0113r",
+      "rate": 0.23809523809523808,
+      "n": 21
+    },
+    {
+      "sign": "790",
+      "phoneme": "pi",
+      "rate": 0.23636363636363636,
+      "n": 55
+    },
+    {
+      "sign": "595",
+      "phoneme": "ci",
+      "rate": 0.23404255319148937,
+      "n": 47
+    },
+    {
+      "sign": "4",
+      "phoneme": "p\u016br",
+      "rate": 0.2191780821917808,
+      "n": 146
+    },
+    {
+      "sign": "844",
+      "phoneme": "i\u1e5f",
+      "rate": 0.21428571428571427,
+      "n": 14
+    },
+    {
+      "sign": "705",
+      "phoneme": "\u0101\u1e5f",
+      "rate": 0.21405750798722045,
+      "n": 313
+    },
+    {
+      "sign": "630",
+      "phoneme": "u\u1e37",
+      "rate": 0.20512820512820512,
+      "n": 39
+    },
+    {
+      "sign": "231",
+      "phoneme": "a\u1e37",
+      "rate": 0.20388349514563106,
+      "n": 103
+    },
+    {
+      "sign": "554",
+      "phoneme": "\u0113",
+      "rate": 0.2,
+      "n": 15
+    },
+    {
+      "sign": "503",
+      "phoneme": "\u1e37",
+      "rate": 0.1951219512195122,
+      "n": 82
+    },
+    {
+      "sign": "151",
+      "phoneme": "e\u1e93",
+      "rate": 0.1935483870967742,
+      "n": 93
+    },
+    {
+      "sign": "923",
+      "phoneme": "vi",
+      "rate": 0.17777777777777778,
+      "n": 45
+    },
+    {
+      "sign": "615",
+      "phoneme": "na",
+      "rate": 0.14084507042253522,
+      "n": 71
+    },
+    {
+      "sign": "752",
+      "phoneme": "il",
+      "rate": 0.1346153846153846,
+      "n": 52
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "id": "indus_v3_substitution_grid",
+  "name": "Indus V3 \u2014 Substitution Sets & Syllabic Grid (Linear B Method)",
+  "description": "338 substitution contexts found. Key grid pairs: ka~ki, mu~min, vi~va. Foundation for syllabary construction.",
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "CorpusReader",
+      "label": "ICIT Corpus",
+      "params": {},
+      "x": 60,
+      "y": 100
+    },
+    {
+      "id": "prof",
+      "type": "PositionalProfiler",
+      "label": "Positional Profiles",
+      "params": {},
+      "x": 300,
+      "y": 100
+    },
+    {
+      "id": "run",
+      "type": "ExperimentWrapper",
+      "label": "Substitution Grid",
+      "params": {
+        "experiment_id": "indus_v3_substitution_grid"
+      },
+      "x": 560,
+      "y": 100
+    },
+    {
+      "id": "out",
+      "type": "PassResult",
+      "label": "Output",
+      "params": {},
+      "x": 820,
+      "y": 100
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "prof",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "prof",
+      "target": "run",
+      "sourcePort": "profiles",
+      "targetPort": "upstream"
+    },
+    {
+      "id": "e3",
+      "source": "run",
+      "target": "out",
+      "sourcePort": "result",
+      "targetPort": "data"
+    }
+  ]
+}

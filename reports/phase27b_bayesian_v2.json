@@ -1,9 +1,9 @@
 {
   "n_seals": 11,
-  "n_phonemes_in_map": 28,
+  "n_phonemes_in_map": 33,
   "observed_total_score": 5.32,
-  "null_mean_score": 5.505,
-  "p_value": 0.406,
+  "null_mean_score": 5.372,
+  "p_value": 0.404,
   "n_perms": 1000,
   "obs_per_seal": [
     {
@@ -88,6 +88,6 @@
       "weighted_score": 5.32
     }
   ],
-  "verdict": "Bayesian decoder v2 (phoneme-VALUE permutation): observed total weighted score = 5.320 across 11 inscribed seals. Null mean = 5.505 (1000 value permutations). Global p-value = 0.4060. Lower p = the SPECIFIC Dravidian phoneme values that Parpola assigns to specific sign IDs produce more plausible compound names than chance value-assignments would.",
+  "verdict": "Bayesian decoder v2 (phoneme-VALUE permutation): observed total weighted score = 5.320 across 11 inscribed seals. Null mean = 5.372 (1000 value permutations). Global p-value = 0.4040. Lower p = the SPECIFIC Dravidian phoneme values that Parpola assigns to specific sign IDs produce more plausible compound names than chance value-assignments would.",
   "interpretation": "This extends Phase-26b: instead of permuting just confidence labels, we permute the actual Dravidian phoneme VALUES (miin, aru-, eZu-, vaTa-, muruku, etc.) across sign IDs. Significant p would mean Parpola's specific value-assignments produce more Dravidian-plausible compounds (aru-miin = Pleiades, vaTa-miin = north star, etc.) than randomized value-assignments. As with Phase-26b, this test is currently data-starved (1/11 readable seals) and will only become informative after CISI Vol 3 plate ingestion (Phase-28+)."
 }

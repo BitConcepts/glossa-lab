@@ -1,0 +1,337 @@
+{
+  "method": "MCMC Metropolis-Hastings with PDR bigram LM",
+  "iterations": 2000,
+  "accepted": 11,
+  "best_log_likelihood": -717.1633418406992,
+  "total_assignments": 74,
+  "fully_decoded": 2043,
+  "pdr_word_matches": 1418,
+  "best_mapping": {
+    "817": "um",
+    "920": "an",
+    "900": "al",
+    "740": "aN",
+    "700": "ko",
+    "400": "min",
+    "32": "i",
+    "220": "n",
+    "520": "ku",
+    "240": "a",
+    "861": "r",
+    "752": "il",
+    "2": "kōl",
+    "705": "āṟ",
+    "60": "o",
+    "235": "ā",
+    "31": "ī",
+    "820": "ka",
+    "1": "ō",
+    "590": "ēl",
+    "90": "po",
+    "176": "ū",
+    "34": "kal",
+    "741": "ta",
+    "415": "ar",
+    "233": "mān",
+    "798": "iṯ",
+    "390": "vēl",
+    "4": "pūr",
+    "100": "nāṭ",
+    "255": "aṭ",
+    "806": "nīr",
+    "760": "am",
+    "16": "ki",
+    "407": "uṇ",
+    "405": "eṯ",
+    "368": "oṭ",
+    "690": "ul",
+    "140": "ma",
+    "156": "to",
+    "550": "va",
+    "231": "aḷ",
+    "151": "eẓ",
+    "435": "l",
+    "892": "ṭ",
+    "803": "ṇ",
+    "503": "ḷ",
+    "142": "ẓ",
+    "617": "y",
+    "575": "v",
+    "615": "na",
+    "904": "ay",
+    "125": "mu",
+    "388": "tu",
+    "850": "u",
+    "790": "pi",
+    "154": "ti",
+    "742": "mi",
+    "595": "ci",
+    "923": "vi",
+    "153": "ni",
+    "832": "in",
+    "630": "uḷ",
+    "745": "pa",
+    "13": "ca",
+    "501": "en",
+    "645": "on",
+    "877": "ēr",
+    "838": "āṇ",
+    "831": "āl",
+    "137": "ōr",
+    "906": "e",
+    "554": "ē",
+    "844": "iṟ"
+  },
+  "sample_readings": [
+    {
+      "id": "Agr-1",
+      "reading": "ki-?",
+      "site": "Indus Sign List"
+    },
+    {
+      "id": "Agr-2",
+      "reading": "ki-?",
+      "site": "Indus Sign List"
+    },
+    {
+      "id": "Agr-3",
+      "reading": "ki-eṯ",
+      "site": "Indus Sign List"
+    },
+    {
+      "id": "",
+      "reading": "n",
+      "site": "Unknown"
+    },
+    {
+      "id": "",
+      "reading": "aN-ā",
+      "site": "Unknown"
+    },
+    {
+      "id": "",
+      "reading": "aN-ēl-vēl",
+      "site": "Unknown"
+    },
+    {
+      "id": "Ad-2",
+      "reading": "mu-i-oṭ-vēl",
+      "site": "Indus Sign List"
+    },
+    {
+      "id": "",
+      "reading": "aN-i-ā-āṟ-ay",
+      "site": "Unknown"
+    },
+    {
+      "id": "",
+      "reading": "aN-ta-?-ki-?-ā",
+      "site": "Unknown"
+    },
+    {
+      "id": "Ad-5",
+      "reading": "to-?-?",
+      "site": "Altyn Depe"
+    },
+    {
+      "id": "",
+      "reading": "aN-?-ca-?-?",
+      "site": "Unknown"
+    },
+    {
+      "id": "Ad-7",
+      "reading": "aN-tu-ẓ",
+      "site": "Altyn Depe"
+    },
+    {
+      "id": "Ad-8",
+      "reading": "aN-r-ḷ-kōl-?",
+      "site": "Altyn Depe"
+    },
+    {
+      "id": "",
+      "reading": "pūr-?",
+      "site": "Unknown"
+    },
+    {
+      "id": "Ad-11",
+      "reading": "ar",
+      "site": "Altyn Depe"
+    },
+    {
+      "id": "Alt-90",
+      "reading": "vēl-ar",
+      "site": "Altyn Depe"
+    },
+    {
+      "id": "Ai-7",
+      "reading": "kal-vēl",
+      "site": "Altyn Depe"
+    },
+    {
+      "id": "",
+      "reading": "r-?-kōl-i-eṯ-iṟ",
+      "site": "Unknown"
+    },
+    {
+      "id": "BIk-1",
+      "reading": "mu-kōl-kōl-?-?-?-?",
+      "site": "Altyn Depe"
+    },
+    {
+      "id": "Blk-2",
+      "reading": "kōl-o-oṭ-vēl-?-?",
+      "site": "Altyn Depe"
+    },
+    {
+      "id": "BIk-3",
+      "reading": "tu-mān",
+      "site": "Banawali"
+    },
+    {
+      "id": "Blk-4",
+      "reading": "?-?-oṭ-ē-?",
+      "site": "Banawali"
+    },
+    {
+      "id": "Blk-6",
+      "reading": "?-iṯ",
+      "site": "Banawali"
+    },
+    {
+      "id": "Bik-5",
+      "reading": "ar",
+      "site": "Banawali"
+    },
+    {
+      "id": "-",
+      "reading": "ku-ō",
+      "site": "Banawali"
+    },
+    {
+      "id": "B-l",
+      "reading": "aN-va-po-?-kōl-n-oṭ",
+      "site": "Banawali"
+    },
+    {
+      "id": "B-3",
+      "reading": "?-n",
+      "site": "Banawali"
+    },
+    {
+      "id": "B-4",
+      "reading": "aN-?",
+      "site": "Banawali"
+    },
+    {
+      "id": "B-5",
+      "reading": "kōl-um",
+      "site": "Banawali"
+    },
+    {
+      "id": "B-7",
+      "reading": "kōl-um",
+      "site": "Banawali"
+    },
+    {
+      "id": "B-8",
+      "reading": "aN-o",
+      "site": "Banawali"
+    },
+    {
+      "id": "B-9",
+      "reading": "pūr-vēl",
+      "site": "Banawali"
+    },
+    {
+      "id": "B-10",
+      "reading": "?",
+      "site": "Banawali"
+    },
+    {
+      "id": "B-12",
+      "reading": "?",
+      "site": "Banawali"
+    },
+    {
+      "id": "B-15",
+      "reading": "kōl-um",
+      "site": "Banawali"
+    },
+    {
+      "id": "BAT",
+      "reading": "po-kōl-ā-?",
+      "site": "Banawali"
+    },
+    {
+      "id": "B18",
+      "reading": "r-kōl",
+      "site": "Banawali"
+    },
+    {
+      "id": "B-19",
+      "reading": "aN-ṇ",
+      "site": "Banawali"
+    },
+    {
+      "id": "B-21",
+      "reading": "o-kōl-?-?",
+      "site": "Banawali"
+    },
+    {
+      "id": "",
+      "reading": "ku-kōl-n",
+      "site": "Unknown"
+    },
+    {
+      "id": "B-24",
+      "reading": "ni-po-?-?-al-e",
+      "site": "Banawali"
+    },
+    {
+      "id": "B-25",
+      "reading": "ko-ī",
+      "site": "Banawali"
+    },
+    {
+      "id": "B-28",
+      "reading": "?-?-?",
+      "site": "Banawali"
+    },
+    {
+      "id": "B-29",
+      "reading": "?",
+      "site": "Baror"
+    },
+    {
+      "id": "B-30",
+      "reading": "aN",
+      "site": "Baror"
+    },
+    {
+      "id": "B-32",
+      "reading": "mān",
+      "site": "Baror"
+    },
+    {
+      "id": "B-35",
+      "reading": "ko",
+      "site": "Baror"
+    },
+    {
+      "id": "-",
+      "reading": "kōl-vēl",
+      "site": "Baror"
+    },
+    {
+      "id": "-",
+      "reading": "?",
+      "site": "Baror"
+    },
+    {
+      "id": "-",
+      "reading": "ka-kōl-ā",
+      "site": "Baror"
+    }
+  ]
+}

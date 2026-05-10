@@ -174,14 +174,16 @@ def _ppubs_search(
     try:
         return _do_post()
     except urllib.error.HTTPError as exc:
-        if exc.code == 403:
-            # Session expired — re-establish and retry once
+        if exc.code in (401, 403):
+            # Session expired or unauthorized — re-establish and retry once
             _ppubs_case_id = None
             _ppubs_token = None
-            _establish_session(timeout=timeout)
-            payload["query"]["caseId"] = _ppubs_case_id
-            # Re-encode with new caseId
-            return _do_post()
+            try:
+                _establish_session(timeout=timeout)
+                payload["query"]["caseId"] = _ppubs_case_id
+                return _do_post()
+            except Exception as retry_exc:  # noqa: BLE001
+                raise FetcherError(f"PPUBS HTTP {exc.code}: session re-establish failed: {retry_exc}") from exc
         body_text = ""
         try:
             body_text = exc.read().decode("utf-8", errors="replace")[:300]

@@ -11,7 +11,7 @@
  */
 
 import { useEffect, useState } from "react";
-import { getDashboardDecipherment, type DeciphermentProgress, type DeciphermentRound } from "../api";
+import { getDashboardDecipherment, type DeciphermentProgress } from "../api";
 
 const LEVEL_COLORS: Record<string, { bg: string; fg: string; border: string }> = {
   "NEAR-COMPLETE": { bg: "#dcfce7", fg: "#15803d", border: "#86efac" },

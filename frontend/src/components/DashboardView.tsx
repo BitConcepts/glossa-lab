@@ -392,7 +392,7 @@ export function DashboardView() {
   // ── Apply: execute a structured insight action ───────────────
   // Tracks which actions are currently running (supports parallel execution).
   const [applyingSet, setApplyingSet] = useState<Set<string>>(new Set());
-  const applying = applyingSet.size > 0 ? Array.from(applyingSet)[0] : ""; // compat
+  const _applying = applyingSet.size > 0 ? Array.from(applyingSet)[0] : ""; void _applying; // compat — kept for debugging
   const isApplying = (key: string) => applyingSet.has(key);
   const applyAction = async (a: DashboardNextAction, key: string) => {
     if (isApplying(key)) return; // only block the SAME action, not others

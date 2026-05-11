@@ -118,7 +118,7 @@ works. That is not a coincidence — you shaped how I think about this problem.
 Warm regards,
 
 Tristen Pierson
-Layer1Labs Silicon, Inc.
+BitConcepts
 tristen@layer1labs.com
 https://github.com/layer1labs/glossa-lab
 

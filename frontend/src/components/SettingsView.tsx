@@ -491,17 +491,7 @@ export function SettingsView() {
 
       {/* ═════ TAB: Discovery ═════ */}
       {tab === "discovery" && (
-        <>
-          <section style={sectionStyle}>
-            <h3 style={sectionTitleStyle}>Discovery Source Keys</h3>
-            <p style={hintTextStyle}>
-              API keys for the continuous-discovery engine. Optional keys upgrade
-              keyless sources to higher rate limits.
-            </p>
-            {renderKeyGroup(DISCOVERY_KEY_LABELS)}
-          </section>
-          <AutoDiscoveryPanel />
-        </>
+        <AutoDiscoveryPanel />
       )}
 
       {/* ═════ TAB: Notifications ═════ */}

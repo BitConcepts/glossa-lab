@@ -1038,14 +1038,45 @@ async def _execute_action_inner(t: str, p: dict) -> dict[str, Any]:  # noqa: PLR
     # ── generate_report ──────────────────────────────────────────────────────────────
     if t == "generate_report":
         script = p.get("script", "")
-        if not script:
-            raise HTTPException(400, "Missing script name")
+        url = p.get("url", "")
+        if not script and not url:
+            raise HTTPException(400, "Missing script name or URL")
+
+        # If a URL is provided (e.g. arxiv paper), fetch and cache it instead of running a script
+        if url or (script and "fetch" in script.lower() and "paper" in script.lower()):
+            target_url = url or p.get("paper_url", "")
+            if not target_url:
+                return {"ok": False, "summary": "Paper fetching requested but no URL provided. "
+                        "Use the Discovery → Fetch feature or provide a direct URL."}
+            import urllib.request  # noqa: PLC0415
+            try:
+                req = urllib.request.Request(target_url, headers={"User-Agent": "GlossaLab/1.0"})
+                with urllib.request.urlopen(req, timeout=30) as resp:  # noqa: S310
+                    content_type = resp.headers.get("Content-Type", "")
+                    size = int(resp.headers.get("Content-Length", 0))
+                return {
+                    "ok": True,
+                    "summary": f"Paper accessible at {target_url} ({content_type}, ~{size//1024}KB). "
+                               f"Use Discovery → Fetch to ingest, or download manually.",
+                    "url": target_url,
+                    "content_type": content_type,
+                }
+            except Exception as exc:  # noqa: BLE001
+                return {"ok": False, "summary": f"Could not reach {target_url}: {exc}"}
+
         import subprocess  # noqa: PLC0415, S404
         import sys
         backend_dir = Path(__file__).resolve().parent.parent.parent
         script_path = backend_dir / script
         if not script_path.exists():
-            raise HTTPException(404, f"Script '{script}' not found. Use run_experiment with a valid experiment ID instead.")
+            # Try scripts/ subdirectory as fallback
+            script_path = backend_dir / "scripts" / script
+        if not script_path.exists():
+            return {
+                "ok": False,
+                "summary": f"Script '{script}' not found. Use run_experiment with a valid "
+                           f"experiment ID, or provide a URL for paper fetching.",
+            }
         proc = subprocess.run(  # noqa: S603
             [sys.executable, str(script_path)],
             capture_output=True, text=True, timeout=300,

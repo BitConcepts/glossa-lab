@@ -11,6 +11,7 @@ import { NotificationsPanel } from "./Notifications/NotificationsPanel";
 import { AutoDiscoveryPanel } from "./Settings/AutoDiscoveryPanel";
 import { ProvidersPanel } from "./Settings/ProvidersPanel";
 import { ModelAssignmentsPanel } from "./Settings/ModelAssignmentsPanel";
+import { ModelHubPanel } from "./Settings/ModelHubPanel";
 
 // Discovery key labels moved to AutoDiscoveryPanel.
 
@@ -274,6 +275,7 @@ export function SettingsView() {
         <>
           <ProvidersPanel />
           <ModelAssignmentsPanel />
+          <ModelHubPanel />
 
           <section style={sectionStyle}>
             <h3 style={sectionTitleStyle}>AI Behavior</h3>

@@ -72,6 +72,10 @@ KNOWN_KEYS = [
     # Resend shared sender.
     "resend_api_key",
     "resend_from",
+    # HuggingFace — optional token for higher rate limits on model scores sync.
+    # Free at huggingface.co/settings/tokens. Without it, the Datasets Server
+    # API may rate-limit or block the Open LLM Leaderboard sync.
+    "hf_api_token",
     # Discovery scheduler auto-start. "1" = run fetch+mine+digest every 24h
     # automatically when the backend lifespan boots. Surfaced in the
     # Notifications panel as a toggle so the user doesn't need shell access.
@@ -242,6 +246,13 @@ _VERIFY_ENDPOINTS: dict[str, dict[str, Any]] = {
         "url": "https://api.uspto.gov/api/v1/patent/status-codes?limit=1",
         "auth_header": "X-API-KEY",
         "auth_prefix": "",
+        "extra_headers": {},
+    },
+    "hf_api_token": {
+        "provider": "HuggingFace",
+        "url": "https://huggingface.co/api/whoami-v2",
+        "auth_header": "Authorization",
+        "auth_prefix": "Bearer ",
         "extra_headers": {},
     },
 }

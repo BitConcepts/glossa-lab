@@ -8,7 +8,6 @@
 
 ## 1. Project overview
 
-**Glossa Lab** is an open-source computational platform for structural analysis and
 hypothesis-driven decipherment of undeciphered writing systems. Available at:
 
 Core methodology: **compression as structure discovery.** Entropy profiles, spectral
@@ -194,7 +193,6 @@ BitConcepts
 tpierson@bitconcepts.tech
 
 *All results are reproducible. The repository contains the full experiment ledger,
-JSON output files, and source code under open-source license.*
 
 ---
 *Generated: 2026-05-11 | Citations: CITATIONS.md (A.1, A.9, A.12, A.13, C.1, C.2, E.1, E.2, E.3, F.2)*

@@ -1,0 +1,327 @@
+{
+  "title": "V9: Autonomous Round 2",
+  "timestamp": "2026-05-11T10:37:22.141806+00:00",
+  "round": {
+    "round": 2,
+    "upgraded": 0,
+    "new_assigned": 20,
+    "tamil_brahmi": {
+      "correlation": 0.759,
+      "shared_phonemes": 12,
+      "indus_top5": [
+        [
+          "a",
+          0.23996602251008706
+        ],
+        [
+          "k",
+          0.17625822892333828
+        ],
+        [
+          "m",
+          0.14758972180930133
+        ],
+        [
+          "i",
+          0.07772350817583351
+        ],
+        [
+          "p",
+          0.06583138670630707
+        ]
+      ],
+      "tamil_brahmi_top5": [
+        [
+          "a",
+          0.12
+        ],
+        [
+          "n",
+          0.1
+        ],
+        [
+          "k",
+          0.09
+        ],
+        [
+          "i",
+          0.08
+        ],
+        [
+          "t",
+          0.08
+        ]
+      ]
+    },
+    "confidence": {
+      "total_signs": 390,
+      "total_tokens": 7002,
+      "assigned": {
+        "HIGH": 9,
+        "MEDIUM": 26,
+        "LOW": 53,
+        "total": 88
+      },
+      "token_cov": {
+        "HIGH": 0.2624,
+        "MEDIUM": 0.466,
+        "LOW": 0.127,
+        "total": 0.8553
+      },
+      "weighted_pct": 58.0,
+      "fully_decoded_inscriptions": 936,
+      "fully_decoded_pct": 56.0
+    },
+    "level": "MODERATE",
+    "remaining": [
+      "Token coverage at 85.5%, need >95%",
+      "53 LOW-confidence signs need upgrading",
+      "302 unassigned signs remain",
+      "Gulf round seals from CISI Vol.3 needed for bilingual cross-reference",
+      "ICIT corpus (4,537 artefacts) \u2014 user working on access"
+    ]
+  },
+  "anchor_count": 88,
+  "anchors_snapshot": {
+    "M342": {
+      "reading": "ay/\u0101",
+      "confidence": "HIGH"
+    },
+    "M267": {
+      "reading": "min/m\u012bn",
+      "confidence": "HIGH"
+    },
+    "M099": {
+      "reading": "kol/ko\u1e37",
+      "confidence": "HIGH"
+    },
+    "M176": {
+      "reading": "an/a\u1e47",
+      "confidence": "HIGH"
+    },
+    "M211": {
+      "reading": "MED-M211",
+      "confidence": "MEDIUM"
+    },
+    "M328": {
+      "reading": "\u0101/\u0101l",
+      "confidence": "MEDIUM"
+    },
+    "M293": {
+      "reading": "MED-M293",
+      "confidence": "MEDIUM"
+    },
+    "M059": {
+      "reading": "\u0113\u1e37/e\u1e37",
+      "confidence": "MEDIUM"
+    },
+    "M162": {
+      "reading": "il/i\u1e37",
+      "confidence": "MEDIUM"
+    },
+    "M391": {
+      "reading": "ka/ka\u1e47",
+      "confidence": "MEDIUM"
+    },
+    "M367": {
+      "reading": "am/neuter",
+      "confidence": "MEDIUM"
+    },
+    "M233": {
+      "reading": "\u016br",
+      "confidence": "MEDIUM"
+    },
+    "M089": {
+      "reading": "tu/t\u016b",
+      "confidence": "MEDIUM"
+    },
+    "M051": {
+      "reading": "p\u016b/pu\u1e37",
+      "confidence": "MEDIUM"
+    },
+    "M336": {
+      "reading": "i\u1e49/locative",
+      "confidence": "MEDIUM"
+    },
+    "M048": {
+      "reading": "mu/mu\u1e49",
+      "confidence": "MEDIUM"
+    },
+    "M065": {
+      "reading": "TERM-M065",
+      "confidence": "MEDIUM"
+    },
+    "M012": {
+      "reading": "o\u1e49\u1e5fu/1",
+      "confidence": "MEDIUM"
+    },
+    "M125": {
+      "reading": "TERM-M125",
+      "confidence": "MEDIUM"
+    },
+    "M087": {
+      "reading": "TERM-M087",
+      "confidence": "MEDIUM"
+    },
+    "M305": {
+      "reading": "\u014d\u1e6du/comitative",
+      "confidence": "MEDIUM"
+    },
+    "M249": {
+      "reading": "TERM-M249",
+      "confidence": "MEDIUM"
+    },
+    "M220": {
+      "reading": "TERM-M220",
+      "confidence": "MEDIUM"
+    },
+    "M062": {
+      "reading": "erutu",
+      "confidence": "HIGH"
+    },
+    "M073": {
+      "reading": "k\u014d\u1e49",
+      "confidence": "MEDIUM"
+    },
+    "M079": {
+      "reading": "INIT-M079",
+      "confidence": "LOW"
+    },
+    "M045": {
+      "reading": "y\u0101nai",
+      "confidence": "HIGH"
+    },
+    "M016": {
+      "reading": "ka\u1e37i\u1e5fu",
+      "confidence": "HIGH"
+    },
+    "M013": {
+      "reading": "nakaram",
+      "confidence": "MEDIUM"
+    },
+    "M022": {
+      "reading": "INIT-M022",
+      "confidence": "LOW"
+    },
+    "M008": {
+      "reading": "INIT-M008",
+      "confidence": "LOW"
+    },
+    "M061": {
+      "reading": "INIT-M061",
+      "confidence": "LOW"
+    },
+    "M052": {
+      "reading": "INIT-M052",
+      "confidence": "LOW"
+    },
+    "M058": {
+      "reading": "INIT-M058",
+      "confidence": "LOW"
+    },
+    "M060": {
+      "reading": "k\u0101\u1e47\u1e6d\u0101mirukam",
+      "confidence": "MEDIUM"
+    },
+    "M019": {
+      "reading": "INIT-M019",
+      "confidence": "LOW"
+    },
+    "M044": {
+      "reading": "INIT-M044",
+      "confidence": "LOW"
+    },
+    "M035": {
+      "reading": "INIT-M035",
+      "confidence": "LOW"
+    },
+    "M053": {
+      "reading": "INIT-M053",
+      "confidence": "LOW"
+    },
+    "M003": {
+      "reading": "INIT-M003",
+      "confidence": "LOW"
+    },
+    "M080": {
+      "reading": "v\u0113\u1e45kai",
+      "confidence": "MEDIUM"
+    },
+    "M056": {
+      "reading": "INIT-M056",
+      "confidence": "LOW"
+    },
+    "M057": {
+      "reading": "m\u0101\u1e6du",
+      "confidence": "MEDIUM"
+    },
+    "M039": {
+      "reading": "\u0101\u1e49ai",
+      "confidence": "MEDIUM"
+    },
+    "M063": {
+      "reading": "mutalai",
+      "confidence": "HIGH"
+    },
+    "M077": {
+      "reading": "nal",
+      "confidence": "LOW"
+    },
+    "M018": {
+      "reading": "n\u0113r",
+      "confidence": "LOW"
+    },
+    "M030": {
+      "reading": "k\u014d",
+      "confidence": "LOW"
+    },
+    "M017": {
+      "reading": "kai",
+      "confidence": "LOW"
+    },
+    "M020": {
+      "reading": "ku\u1e49",
+      "confidence": "LOW"
+    },
+    "M004": {
+      "reading": "k\u0113\u1e37",
+      "confidence": "LOW"
+    },
+    "M014": {
+      "reading": "tiru",
+      "confidence": "LOW"
+    },
+    "M026": {
+      "reading": "m\u0101",
+      "confidence": "LOW"
+    },
+    "M034": {
+      "reading": "t\u014d\u1e37",
+      "confidence": "LOW"
+    },
+    "M027": {
+      "reading": "m\u0101\u1e5f",
+      "confidence": "LOW"
+    },
+    "M041": {
+      "reading": "p\u0113r",
+      "confidence": "LOW"
+    },
+    "M038": {
+      "reading": "p\u014dr",
+      "confidence": "LOW"
+    },
+    "M010": {
+      "reading": "pa\u1e6d",
+      "confidence": "LOW"
+    },
+    "M050": {
+      "reading": "p\u0101r",
+      "confidence": "LOW"
+    },
+    "M025": {
+      "reading": "cem",
+      "confidence": "LOW"
+    }
+  }
+}

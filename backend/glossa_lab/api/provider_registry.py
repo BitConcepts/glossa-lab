@@ -166,6 +166,42 @@ def _probe_anthropic(api_key: str) -> dict[str, Any]:
         return {"valid": False, "message": str(exc), "models": []}
 
 
+def _probe_google(api_key: str) -> dict[str, Any]:
+    """Probe Google Gemini API using its native models endpoint.
+
+    Google's models list endpoint is NOT behind the /openai compat path —
+    it lives at ``/v1beta/models`` and uses ``x-goog-api-key`` instead of
+    ``Authorization: Bearer``.  The /openai path is only for chat completions.
+    """
+    url = f"https://generativelanguage.googleapis.com/v1beta/models?key={api_key}"
+    try:
+        req = urllib.request.Request(url, headers={"Accept": "application/json"}, method="GET")
+        with urllib.request.urlopen(req, timeout=10, context=_ssl_context()) as resp:
+            data = json.loads(resp.read().decode())
+        models = []
+        for entry in data.get("models", []):
+            name = entry.get("name", "")
+            if name.startswith("models/"):
+                name = name[7:]  # strip 'models/' prefix
+            if name and "gemini" in name.lower():
+                models.append(name)
+        if not models:
+            # Include all models if no gemini ones found
+            for entry in data.get("models", []):
+                name = entry.get("name", "")
+                if name.startswith("models/"):
+                    name = name[7:]
+                if name:
+                    models.append(name)
+        return {"valid": True, "message": f"OK — {len(models)} model(s)", "models": models[:100]}
+    except urllib.error.HTTPError as exc:
+        if exc.code in (400, 403):
+            return {"valid": False, "message": f"API key invalid or restricted (HTTP {exc.code}). Check your Google AI Studio key.", "models": []}
+        return {"valid": False, "message": f"HTTP {exc.code}: {exc.reason}", "models": []}
+    except Exception as exc:  # noqa: BLE001
+        return {"valid": False, "message": f"Connection error: {exc}", "models": []}
+
+
 def probe_provider(
     provider_type: str, provider_id: str,
     base_url: str, api_key: str, headers: dict[str, str] | None = None,
@@ -175,6 +211,8 @@ def probe_provider(
         return _probe_ollama(base_url)
     if provider_type == "cloud" and provider_id == "anthropic":
         return _probe_anthropic(api_key)
+    if provider_type == "cloud" and provider_id == "google":
+        return _probe_google(api_key)
     # Everything else is OpenAI-compatible
     return _probe_openai_compatible(base_url, api_key, headers)
 

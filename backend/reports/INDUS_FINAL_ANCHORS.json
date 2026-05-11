@@ -1,0 +1,1245 @@
+{
+  "total": 248,
+  "anchors": {
+    "M342": {
+      "reading": "ay/\u0101",
+      "confidence": "HIGH",
+      "basis": "Terminal marker, Dravidian case suffix"
+    },
+    "M176": {
+      "reading": "an/a\u1e47",
+      "confidence": "HIGH",
+      "basis": "Masculine suffix"
+    },
+    "M267": {
+      "reading": "min/m\u012bn",
+      "confidence": "HIGH",
+      "basis": "Fish sign = star/planet (Parpola)"
+    },
+    "M099": {
+      "reading": "kol/ko\u1e37",
+      "confidence": "HIGH",
+      "basis": "Jar/vessel sign"
+    },
+    "M233": {
+      "reading": "\u016br",
+      "confidence": "MEDIUM",
+      "basis": "Settlement/place marker"
+    },
+    "M391": {
+      "reading": "ka/ka\u1e47",
+      "confidence": "MEDIUM",
+      "basis": "Numeral/stroke sign"
+    },
+    "M162": {
+      "reading": "il/i\u1e37",
+      "confidence": "MEDIUM",
+      "basis": "House/dwelling sign"
+    },
+    "M328": {
+      "reading": "\u0101/\u0101l",
+      "confidence": "MEDIUM",
+      "basis": "Man/person sign"
+    },
+    "M059": {
+      "reading": "\u0113\u1e37/e\u1e37",
+      "confidence": "MEDIUM",
+      "basis": "Numeral 7"
+    },
+    "M051": {
+      "reading": "p\u016b/pu\u1e37",
+      "confidence": "MEDIUM",
+      "basis": "Comb/flower sign"
+    },
+    "M089": {
+      "reading": "tu/t\u016b",
+      "confidence": "MEDIUM",
+      "basis": "Positional analysis; UPGRADED: high frequency (171); consistent TERMINAL position (n=171); collocates with HIGH anchor M342 (n=15); collocates with HIGH anchor M267 (n=6); collocates with HIGH anchor M176 (n=6); collocates with HIGH anchor M342 (n=13); collocates with HIGH anchor M176 (n=12); collocates with HIGH anchor M267 (n=10); has specific PDR reading"
+    },
+    "M048": {
+      "reading": "mu/mu\u1e49",
+      "confidence": "MEDIUM",
+      "basis": "Positional analysis; UPGRADED: high frequency (157); consistent TERMINAL position (n=157); collocates with HIGH anchor M342 (n=13); collocates with HIGH anchor M267 (n=7); collocates with HIGH anchor M176 (n=5); collocates with HIGH anchor M342 (n=17); collocates with HIGH anchor M176 (n=8); has specific PDR reading"
+    },
+    "M211": {
+      "reading": "MED-M211",
+      "confidence": "MEDIUM",
+      "basis": "medial (68%), freq=249; UPGRADED: high frequency (249); consistent MEDIAL position (n=249); collocates with HIGH anchor M342 (n=45); collocates with HIGH anchor M176 (n=12); collocates with HIGH anchor M099 (n=11); collocates with HIGH anchor M342 (n=24); collocates with HIGH anchor M267 (n=21); collocates with HIGH anchor M176 (n=16); collocates with HIGH anchor M099 (n=12)"
+    },
+    "M293": {
+      "reading": "MED-M293",
+      "confidence": "MEDIUM",
+      "basis": "medial (60%), freq=232; UPGRADED: high frequency (232); consistent MEDIAL position (n=232); collocates with HIGH anchor M267 (n=37); collocates with HIGH anchor M342 (n=13); collocates with HIGH anchor M176 (n=8); collocates with HIGH anchor M099 (n=14); collocates with HIGH anchor M267 (n=11); collocates with HIGH anchor M342 (n=11)"
+    },
+    "M367": {
+      "reading": "am/neuter",
+      "confidence": "MEDIUM",
+      "basis": "terminal diamond = neuter suffix; UPGRADED: high frequency (190); consistent TERMINAL position (n=190); collocates with HIGH anchor M176 (n=8); collocates with HIGH anchor M099 (n=6); collocates with HIGH anchor M267 (n=5); collocates with HIGH anchor M342 (n=16); collocates with HIGH anchor M176 (n=13); collocates with HIGH anchor M267 (n=12); collocates with HIGH anchor M099 (n=9); has specific PDR reading"
+    },
+    "M336": {
+      "reading": "i\u1e49/locative",
+      "confidence": "MEDIUM",
+      "basis": "chevron terminal = locative case marker; UPGRADED: high frequency (161); consistent TERMINAL position (n=161); collocates with HIGH anchor M342 (n=14); collocates with HIGH anchor M099 (n=6); collocates with HIGH anchor M267 (n=5); collocates with HIGH anchor M342 (n=13); collocates with HIGH anchor M267 (n=12); collocates with HIGH anchor M176 (n=8); has specific PDR reading"
+    },
+    "M065": {
+      "reading": "TERM-M065",
+      "confidence": "MEDIUM",
+      "basis": "terminal-biased (55%); UPGRADED: high frequency (154); consistent TERMINAL position (n=154); collocates with HIGH anchor M342 (n=12); collocates with HIGH anchor M267 (n=5); collocates with HIGH anchor M099 (n=11); collocates with HIGH anchor M342 (n=10); collocates with HIGH anchor M176 (n=9); collocates with HIGH anchor M267 (n=5)"
+    },
+    "M012": {
+      "reading": "o\u1e49\u1e5fu/1",
+      "confidence": "MEDIUM",
+      "basis": "single stroke = numeral 1"
+    },
+    "M125": {
+      "reading": "TERM-M125",
+      "confidence": "MEDIUM",
+      "basis": "terminal-biased (56%); UPGRADED: high frequency (132); consistent TERMINAL position (n=132); collocates with HIGH anchor M342 (n=6); collocates with HIGH anchor M342 (n=14); collocates with HIGH anchor M099 (n=12); collocates with HIGH anchor M267 (n=11)"
+    },
+    "M087": {
+      "reading": "TERM-M087",
+      "confidence": "MEDIUM",
+      "basis": "terminal-biased (48%); UPGRADED: high frequency (130); consistent TERMINAL position (n=130); collocates with HIGH anchor M342 (n=9); collocates with HIGH anchor M176 (n=5); collocates with HIGH anchor M342 (n=15); collocates with HIGH anchor M267 (n=7); collocates with HIGH anchor M099 (n=7); collocates with HIGH anchor M062 (n=5)"
+    },
+    "M305": {
+      "reading": "\u014d\u1e6du/comitative",
+      "confidence": "MEDIUM",
+      "basis": "terminal pinch mark; UPGRADED: moderate frequency (83); consistent TERMINAL position (n=83); collocates with HIGH anchor M342 (n=10); collocates with HIGH anchor M176 (n=7); has specific PDR reading"
+    },
+    "M249": {
+      "reading": "TERM-M249",
+      "confidence": "MEDIUM",
+      "basis": "terminal-biased (96%); UPGRADED: moderate frequency (73); consistent TERMINAL position (n=73); collocates with HIGH anchor M099 (n=6); collocates with HIGH anchor M176 (n=6); collocates with HIGH anchor M342 (n=6)"
+    },
+    "M220": {
+      "reading": "TERM-M220",
+      "confidence": "MEDIUM",
+      "basis": "terminal-biased (98%); UPGRADED: moderate frequency (62); consistent TERMINAL position (n=62); collocates with HIGH anchor M342 (n=6); collocates with HIGH anchor M267 (n=6); collocates with HIGH anchor M099 (n=5); collocates with HIGH anchor M176 (n=5)"
+    },
+    "M062": {
+      "reading": "erutu",
+      "confidence": "HIGH",
+      "basis": "Exclusive to zebu bull seals (lift > 5.0); PDR erutu = bull, ox"
+    },
+    "M073": {
+      "reading": "k\u014d\u1e49",
+      "confidence": "MEDIUM",
+      "basis": "Exclusive to zebu bull seals (lift > 5.0); PDR k\u014d\u1e49 = king (bull metaphor)"
+    },
+    "M079": {
+      "reading": "INIT-M079",
+      "confidence": "LOW",
+      "basis": "initial-biased (100%)"
+    },
+    "M045": {
+      "reading": "y\u0101nai",
+      "confidence": "HIGH",
+      "basis": "Exclusive to elephant seals (lift > 5.0); PDR y\u0101nai = elephant"
+    },
+    "M016": {
+      "reading": "ka\u1e37i\u1e5fu",
+      "confidence": "HIGH",
+      "basis": "Exclusive to elephant seals (lift > 5.0); PDR ka\u1e37i\u1e5fu = male elephant"
+    },
+    "M013": {
+      "reading": "nakaram",
+      "confidence": "MEDIUM",
+      "basis": "Exclusive to gharial seals (lift > 5.0); PDR nakaram = crocodile/makara"
+    },
+    "M022": {
+      "reading": "INIT-M022",
+      "confidence": "LOW",
+      "basis": "initial-biased (100%)"
+    },
+    "M008": {
+      "reading": "INIT-M008",
+      "confidence": "LOW",
+      "basis": "initial-biased (100%)"
+    },
+    "M061": {
+      "reading": "INIT-M061",
+      "confidence": "LOW",
+      "basis": "initial-biased (100%)"
+    },
+    "M052": {
+      "reading": "INIT-M052",
+      "confidence": "LOW",
+      "basis": "initial-biased (100%)"
+    },
+    "M058": {
+      "reading": "INIT-M058",
+      "confidence": "LOW",
+      "basis": "initial-biased (100%)"
+    },
+    "M060": {
+      "reading": "k\u0101\u1e47\u1e6d\u0101mirukam",
+      "confidence": "MEDIUM",
+      "basis": "Exclusive to rhinoceros seals (lift > 5.0); PDR k\u0101\u1e47\u1e6d\u0101mirukam = rhinoceros (horn-beast)"
+    },
+    "M019": {
+      "reading": "INIT-M019",
+      "confidence": "LOW",
+      "basis": "initial-biased (100%)"
+    },
+    "M044": {
+      "reading": "INIT-M044",
+      "confidence": "LOW",
+      "basis": "initial-biased (100%)"
+    },
+    "M035": {
+      "reading": "INIT-M035",
+      "confidence": "LOW",
+      "basis": "initial-biased (100%)"
+    },
+    "M053": {
+      "reading": "INIT-M053",
+      "confidence": "LOW",
+      "basis": "initial-biased (100%)"
+    },
+    "M003": {
+      "reading": "INIT-M003",
+      "confidence": "LOW",
+      "basis": "initial-biased (100%)"
+    },
+    "M080": {
+      "reading": "v\u0113\u1e45kai",
+      "confidence": "MEDIUM",
+      "basis": "Exclusive to tiger seals (lift > 5.0); PDR v\u0113\u1e45kai = tiger (poetic)"
+    },
+    "M056": {
+      "reading": "INIT-M056",
+      "confidence": "LOW",
+      "basis": "initial-biased (100%)"
+    },
+    "M057": {
+      "reading": "m\u0101\u1e6du",
+      "confidence": "MEDIUM",
+      "basis": "Exclusive to zebu bull seals (lift > 5.0); PDR m\u0101\u1e6du = cattle"
+    },
+    "M039": {
+      "reading": "\u0101\u1e49ai",
+      "confidence": "MEDIUM",
+      "basis": "Exclusive to elephant seals (lift > 5.0); PDR \u0101\u1e49ai = elephant (variant)"
+    },
+    "M067": {
+      "reading": "k\u014d\u1e6d\u1e6d\u0101\u1e49",
+      "confidence": "MEDIUM",
+      "basis": "Exclusive to rhinoceros seals (lift > 5.0); PDR k\u014d\u1e6d\u1e6d\u0101\u1e49 = horned one"
+    },
+    "M068": {
+      "reading": "ma\u1e5fi",
+      "confidence": "LOW",
+      "basis": "Exclusive to rhinoceros seals (lift > 5.0); PDR ma\u1e5fi = young animal/calf (generic)"
+    },
+    "M006": {
+      "reading": "puli",
+      "confidence": "HIGH",
+      "basis": "Exclusive to tiger seals (lift > 5.0); PDR puli = tiger"
+    },
+    "M063": {
+      "reading": "mutalai",
+      "confidence": "HIGH",
+      "basis": "Exclusive to gharial seals (lift > 5.0); PDR mutalai = crocodile"
+    },
+    "M077": {
+      "reading": "nal",
+      "confidence": "LOW",
+      "basis": "Round 1: INITIAL position (freq=18), distributional assignment"
+    },
+    "M018": {
+      "reading": "n\u0113r",
+      "confidence": "LOW",
+      "basis": "Round 1: INITIAL position (freq=18), distributional assignment"
+    },
+    "M030": {
+      "reading": "k\u014d",
+      "confidence": "LOW",
+      "basis": "Round 1: INITIAL position (freq=18), distributional assignment"
+    },
+    "M017": {
+      "reading": "kai",
+      "confidence": "LOW",
+      "basis": "Round 1: INITIAL position (freq=18), distributional assignment"
+    },
+    "M020": {
+      "reading": "ku\u1e49",
+      "confidence": "LOW",
+      "basis": "Round 1: INITIAL position (freq=18), distributional assignment"
+    },
+    "M004": {
+      "reading": "k\u0113\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment"
+    },
+    "M014": {
+      "reading": "tiru",
+      "confidence": "LOW",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment"
+    },
+    "M026": {
+      "reading": "m\u0101",
+      "confidence": "LOW",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment"
+    },
+    "M034": {
+      "reading": "t\u014d\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment"
+    },
+    "M027": {
+      "reading": "m\u0101\u1e5f",
+      "confidence": "LOW",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment"
+    },
+    "M041": {
+      "reading": "p\u0113r",
+      "confidence": "LOW",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment"
+    },
+    "M038": {
+      "reading": "p\u014dr",
+      "confidence": "LOW",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment"
+    },
+    "M010": {
+      "reading": "pa\u1e6d",
+      "confidence": "LOW",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment"
+    },
+    "M050": {
+      "reading": "p\u0101r",
+      "confidence": "LOW",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment"
+    },
+    "M025": {
+      "reading": "cem",
+      "confidence": "LOW",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment"
+    },
+    "M070": {
+      "reading": "v\u0113l",
+      "confidence": "LOW",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment"
+    },
+    "M078": {
+      "reading": "c\u0113r",
+      "confidence": "LOW",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment"
+    },
+    "M023": {
+      "reading": "va\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 1: INITIAL position (freq=16), distributional assignment"
+    },
+    "M066": {
+      "reading": "c\u014d\u1e3b",
+      "confidence": "LOW",
+      "basis": "Round 1: INITIAL position (freq=16), distributional assignment"
+    },
+    "M071": {
+      "reading": "nal",
+      "confidence": "LOW",
+      "basis": "Round 1: INITIAL position (freq=16), distributional assignment"
+    },
+    "M009": {
+      "reading": "\u0101\u1e47",
+      "confidence": "LOW",
+      "basis": "Round 2: INITIAL position (freq=16), distributional assignment"
+    },
+    "M069": {
+      "reading": "n\u0113r",
+      "confidence": "LOW",
+      "basis": "Round 2: INITIAL position (freq=16), distributional assignment"
+    },
+    "M021": {
+      "reading": "k\u014d",
+      "confidence": "LOW",
+      "basis": "Round 2: INITIAL position (freq=16), distributional assignment"
+    },
+    "M031": {
+      "reading": "kai",
+      "confidence": "LOW",
+      "basis": "Round 2: INITIAL position (freq=16), distributional assignment"
+    },
+    "M002": {
+      "reading": "ku\u1e49",
+      "confidence": "LOW",
+      "basis": "Round 2: INITIAL position (freq=16), distributional assignment"
+    },
+    "M037": {
+      "reading": "k\u0113\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 2: INITIAL position (freq=16), distributional assignment"
+    },
+    "M005": {
+      "reading": "k\u014d\u1e49",
+      "confidence": "LOW",
+      "basis": "Round 2: INITIAL position (freq=15), distributional assignment"
+    },
+    "M011": {
+      "reading": "ka\u1e37i\u1e5fu",
+      "confidence": "LOW",
+      "basis": "Round 2: INITIAL position (freq=15), distributional assignment"
+    },
+    "M036": {
+      "reading": "tiru",
+      "confidence": "LOW",
+      "basis": "Round 2: INITIAL position (freq=15), distributional assignment"
+    },
+    "M015": {
+      "reading": "m\u0101",
+      "confidence": "LOW",
+      "basis": "Round 2: INITIAL position (freq=15), distributional assignment"
+    },
+    "M001": {
+      "reading": "t\u014d\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 2: INITIAL position (freq=14), distributional assignment"
+    },
+    "M075": {
+      "reading": "m\u0101\u1e5f",
+      "confidence": "LOW",
+      "basis": "Round 2: INITIAL position (freq=14), distributional assignment"
+    },
+    "M042": {
+      "reading": "m\u0101\u1e6du",
+      "confidence": "LOW",
+      "basis": "Round 2: INITIAL position (freq=13), distributional assignment"
+    },
+    "M040": {
+      "reading": "mutalai",
+      "confidence": "LOW",
+      "basis": "Round 2: INITIAL position (freq=13), distributional assignment"
+    },
+    "M024": {
+      "reading": "p\u0113r",
+      "confidence": "LOW",
+      "basis": "Round 2: INITIAL position (freq=13), distributional assignment"
+    },
+    "M049": {
+      "reading": "p\u014dr",
+      "confidence": "LOW",
+      "basis": "Round 2: INITIAL position (freq=13), distributional assignment"
+    },
+    "M081": {
+      "reading": "pa\u1e6d",
+      "confidence": "LOW",
+      "basis": "Round 2: INITIAL position (freq=13), distributional assignment"
+    },
+    "M047": {
+      "reading": "p\u0101r",
+      "confidence": "LOW",
+      "basis": "Round 2: INITIAL position (freq=13), distributional assignment"
+    },
+    "M033": {
+      "reading": "puli",
+      "confidence": "LOW",
+      "basis": "Round 2: INITIAL position (freq=12), distributional assignment"
+    },
+    "M074": {
+      "reading": "cem",
+      "confidence": "LOW",
+      "basis": "Round 2: INITIAL position (freq=12), distributional assignment"
+    },
+    "M054": {
+      "reading": "v\u0113l",
+      "confidence": "LOW",
+      "basis": "Round 3: INITIAL position (freq=12), distributional assignment"
+    },
+    "M072": {
+      "reading": "c\u0113r",
+      "confidence": "LOW",
+      "basis": "Round 3: INITIAL position (freq=12), distributional assignment"
+    },
+    "M055": {
+      "reading": "va\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 3: INITIAL position (freq=12), distributional assignment"
+    },
+    "M028": {
+      "reading": "c\u014d\u1e3b",
+      "confidence": "LOW",
+      "basis": "Round 3: INITIAL position (freq=11), distributional assignment"
+    },
+    "M043": {
+      "reading": "erutu",
+      "confidence": "LOW",
+      "basis": "Round 3: INITIAL position (freq=11), distributional assignment"
+    },
+    "M029": {
+      "reading": "y\u0101nai",
+      "confidence": "LOW",
+      "basis": "Round 3: INITIAL position (freq=11), distributional assignment"
+    },
+    "M064": {
+      "reading": "nal",
+      "confidence": "LOW",
+      "basis": "Round 3: INITIAL position (freq=11), distributional assignment"
+    },
+    "M007": {
+      "reading": "nal",
+      "confidence": "LOW",
+      "basis": "Round 3: INITIAL position (freq=11), distributional assignment"
+    },
+    "M046": {
+      "reading": "nal",
+      "confidence": "LOW",
+      "basis": "Round 3: INITIAL position (freq=11), distributional assignment"
+    },
+    "M032": {
+      "reading": "nal",
+      "confidence": "LOW",
+      "basis": "Round 3: INITIAL position (freq=9), distributional assignment"
+    },
+    "M347": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 3: MEDIAL position (freq=8), distributional assignment"
+    },
+    "M169": {
+      "reading": "ney",
+      "confidence": "LOW",
+      "basis": "Round 3: MEDIAL position (freq=8), distributional assignment"
+    },
+    "M237": {
+      "reading": "na\u1e5f",
+      "confidence": "LOW",
+      "basis": "Round 3: MEDIAL position (freq=8), distributional assignment"
+    },
+    "M102": {
+      "reading": "n\u0101\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 3: MEDIAL position (freq=8), distributional assignment"
+    },
+    "M076": {
+      "reading": "nal",
+      "confidence": "LOW",
+      "basis": "Round 3: INITIAL position (freq=7), distributional assignment"
+    },
+    "M272": {
+      "reading": "kol",
+      "confidence": "LOW",
+      "basis": "Round 3: MEDIAL position (freq=7), distributional assignment"
+    },
+    "M128": {
+      "reading": "ka\u1e47",
+      "confidence": "LOW",
+      "basis": "Round 3: MEDIAL position (freq=7), distributional assignment"
+    },
+    "M082": {
+      "reading": "nal",
+      "confidence": "LOW",
+      "basis": "Round 3: INITIAL position (freq=7), distributional assignment"
+    },
+    "M235": {
+      "reading": "kal",
+      "confidence": "LOW",
+      "basis": "Round 3: MEDIAL position (freq=7), distributional assignment"
+    },
+    "M149": {
+      "reading": "ku\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 3: MEDIAL position (freq=7), distributional assignment"
+    },
+    "M185": {
+      "reading": "ku\u1e5f",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=7), distributional assignment"
+    },
+    "M383": {
+      "reading": "m\u012bn",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=7), distributional assignment"
+    },
+    "M375": {
+      "reading": "il",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=7), distributional assignment"
+    },
+    "M270": {
+      "reading": "mu\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+    },
+    "M401": {
+      "reading": "m\u0101\u1e49",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+    },
+    "M374": {
+      "reading": "t\u0113\u1e49",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+    },
+    "M127": {
+      "reading": "m\u0101\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+    },
+    "M252": {
+      "reading": "ti\u1e47",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+    },
+    "M386": {
+      "reading": "ma\u1e47",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+    },
+    "M351": {
+      "reading": "ta\u1e6d",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+    },
+    "M198": {
+      "reading": "po\u1e49",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+    },
+    "M168": {
+      "reading": "pa\u1e49",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+    },
+    "M332": {
+      "reading": "pa\u1e5f",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+    },
+    "M183": {
+      "reading": "v\u0113\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M222": {
+      "reading": "c\u0113l",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M365": {
+      "reading": "v\u0101\u1e49",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M412": {
+      "reading": "c\u016b\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M151": {
+      "reading": "vi\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M304": {
+      "reading": "v\u0113\u1e5f",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M355": {
+      "reading": "\u0101\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M350": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M178": {
+      "reading": "ney",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M163": {
+      "reading": "na\u1e5f",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M108": {
+      "reading": "n\u0101\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M231": {
+      "reading": "\u0113\u1e5f",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M321": {
+      "reading": "kol",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M153": {
+      "reading": "ka\u1e47",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M177": {
+      "reading": "kal",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M357": {
+      "reading": "ku\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M137": {
+      "reading": "ku\u1e5f",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M155": {
+      "reading": "m\u012bn",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M239": {
+      "reading": "il",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M223": {
+      "reading": "mu\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M103": {
+      "reading": "m\u0101\u1e49",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M254": {
+      "reading": "t\u0113\u1e49",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M262": {
+      "reading": "m\u0101\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M416": {
+      "reading": "ti\u1e47",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M143": {
+      "reading": "ma\u1e47",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M345": {
+      "reading": "ta\u1e6d",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M329": {
+      "reading": "po\u1e49",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M190": {
+      "reading": "pa\u1e49",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M295": {
+      "reading": "pa\u1e5f",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M402": {
+      "reading": "v\u0113\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M255": {
+      "reading": "c\u0113l",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M251": {
+      "reading": "v\u0101\u1e49",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M301": {
+      "reading": "c\u016b\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M406": {
+      "reading": "vi\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M387": {
+      "reading": "v\u0113\u1e5f",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M116": {
+      "reading": "\u016br",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M274": {
+      "reading": "\u0101\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M326": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M318": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M346": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M312": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M134": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M129": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M120": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M202": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M281": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M207": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M280": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 7: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M309": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 7: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M382": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 7: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M324": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 7: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M370": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 7: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M218": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 7: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M194": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 7: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M192": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 7: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M186": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 7: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M307": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 7: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M265": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 7: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M106": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 7: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M334": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 7: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M294": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 7: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M245": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 7: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M319": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 7: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M171": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 7: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M227": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 7: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M148": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 7: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M290": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 7: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M138": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 8: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M243": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 8: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M291": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 8: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M209": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 8: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M313": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 8: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M259": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 8: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M278": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 8: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M142": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 8: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M199": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 8: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M140": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 8: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M187": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 8: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M208": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 8: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M109": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 8: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M250": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 8: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M390": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 8: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M277": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 8: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M181": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 8: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M219": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 8: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M379": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 8: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M214": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 8: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M131": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 9: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M380": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 9: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M197": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 9: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M201": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 9: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M413": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 9: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M135": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 9: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M354": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 9: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M341": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 9: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M330": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 9: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M105": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 9: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M146": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 9: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M195": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 9: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M339": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 9: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M193": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 9: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M359": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 9: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M316": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 9: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M124": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 9: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M111": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 9: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M224": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 9: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M408": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 9: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M371": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 10: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M118": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 10: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M396": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 10: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M246": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 10: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M107": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 10: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M395": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 10: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M229": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 10: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M399": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 10: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M331": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 10: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M410": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 10: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M170": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 10: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M349": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 10: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M388": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 10: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M360": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 10: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M263": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 10: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M320": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 10: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M256": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 10: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M362": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 10: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M257": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 10: MEDIAL position (freq=3), distributional assignment"
+    },
+    "M338": {
+      "reading": "n\u012br",
+      "confidence": "LOW",
+      "basis": "Round 10: MEDIAL position (freq=3), distributional assignment"
+    }
+  }
+}

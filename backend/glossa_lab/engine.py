@@ -23,9 +23,12 @@ logger = logging.getLogger(__name__)
 
 # How long a running job can go without a heartbeat (updated_at) before being
 # marked as timed_out.  exp_run jobs update updated_at on every node completion.
-# Override via env GLOSSA_JOB_STALL_TIMEOUT_SECONDS (default: 30 min, generous for SA suites).
+# GPU SA experiments (e.g. indus_cisi_dravidian_vs_sanskrit with 8000 iterations,
+# 5 seeds, 3 restarts) can run a SINGLE NODE for 60+ minutes without producing
+# a heartbeat.  Default raised to 2 hours to accommodate these.
+# Override via env GLOSSA_JOB_STALL_TIMEOUT_SECONDS.
 _JOB_STALL_TIMEOUT_SECONDS = int(
-    _os_eng.environ.get("GLOSSA_JOB_STALL_TIMEOUT_SECONDS", "1800")
+    _os_eng.environ.get("GLOSSA_JOB_STALL_TIMEOUT_SECONDS", "7200")
 )
 
 # Pipeline registry — maps pipeline name to callable

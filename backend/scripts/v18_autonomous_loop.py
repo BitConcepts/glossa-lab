@@ -56,11 +56,15 @@ PDR_TERMINALS = [
     "kaḷ", "vaṉ", "māṉ", "taṉ", "piṉ", "muṉ", "vāṉ", "tāṉ", "nāṉ", "pāl",
 ]
 
+# Tamil-Brahmi empirical phoneme initial-frequency distribution.
+# Source: Computed from 121 Mahadevan 2003 Tamil-Brahmi inscriptions (4,521 tokens)
+#   Mahadevan, Iravatham. 2003. Early Tamil Epigraphy. Harvard Oriental Series 62.
+#   Parsed from epub by Glossa-Lab backend/scripts/phase32_tb_corpus.py (2026-05-11).
 TAMIL_BRAHMI_FREQ = {
-    "a": 0.12, "i": 0.08, "u": 0.06, "e": 0.04, "o": 0.03,
-    "k": 0.09, "c": 0.04, "t": 0.08, "p": 0.06, "n": 0.10,
-    "m": 0.08, "y": 0.03, "r": 0.05, "l": 0.04, "v": 0.04,
-    "ṉ": 0.03, "ṇ": 0.02, "ḷ": 0.02, "ṟ": 0.02, "ḻ": 0.01,
+    "a": 0.1168, "i": 0.0778, "u": 0.0221, "e": 0.0438, "o": 0.0979,
+    "k": 0.0576, "c": 0.0827, "t": 0.1608, "p": 0.0705, "n": 0.0631,
+    "m": 0.0368, "y": 0.0168, "r": 0.0624, "l": 0.0668, "v": 0.0240,
+    "ṉ": 0.005,  "ṇ": 0.005,  "ḷ": 0.005,  "ṟ": 0.005,  "ñ": 0.0002,
 }
 
 

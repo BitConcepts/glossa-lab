@@ -41,7 +41,7 @@ Mahadevan 1977 (M77, 1,669 inscriptions) for statistical analysis.
 | Fully decoded inscriptions | 96.7% (1,615 / 1,670) |
 | Weighted confidence score | 64.8% (H×1.0 + M×0.6 + L×0.3) |
 | Confidence breakdown | HIGH: 9 signs / MEDIUM: 63 / LOW: 261 |
-| Tamil-Brahmi phoneme correlation | **0.914** (Pearson r) |
+| Tamil-Brahmi phoneme correlation | **0.907** (Pearson r, post-correction; random baseline 0.470) |
 
 **The Tamil-Brahmi phoneme correlation of 0.914** measures the alignment between
 the phoneme frequency distribution implied by the current sign assignments and the
@@ -59,7 +59,7 @@ inventory and Tamil-Brahmi frequency modeling. They are NOT:
 - Verified phonetic readings
 - Cross-validated against bilingual material
 
-The 0.914 correlation is the strongest quantitative evidence produced so far that the
+The 0.907 correlation (vs random baseline 0.470) is the strongest quantitative evidence produced so far that the
 Indus script's phoneme distribution is structurally consistent with a Dravidian family
 script. It is consistent with, but does not prove, the Dravidian hypothesis.
 

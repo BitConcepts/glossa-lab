@@ -6226,3 +6226,59 @@ Risks:
 
 Next step:
   Send Fuls email. Then Phase-32 T1 (TB-NAMES extraction) + Phase-33 planning.
+
+## [2026-05-11] Entry — Phase-32 T4 Syllable Rerun + Final Session Wrap
+
+Objective:
+Re-run Phase-32 T4 with syllable-level LM, commit all work, final foundation check.
+
+What was done:
+
+Phase-32 T4 — SA M77 → Dravidian Syllable LM (second run):
+  - syllable LM: dravidian_syllable_lm.json (2293 bigrams, CLEAN, 655 syllables)
+  - Job 43b401af6177 completed
+  - best_score: -42229 (full 1669 seals)
+  - null_mean: -2440 (100 seals - flawed comparison)
+  - Corrected lift per 100 seals: -2531 vs null -2440 = -91
+  - Verdict: NEUTRAL (slightly worse than word-level -65; same fundamental issue)
+  - Root cause analysis CONFIRMED: phoneme assignments from INDUS_FINAL_ANCHORS
+    are full words ("nalam", "min", "kol") but syllable LM expects syllable tokens
+    ("na", "lam", "mi"). The SA scores "nalam|kol" bigrams which don't exist in
+    either LM format. The vocabulary mismatch is at the assignment level, not LM level.
+  - PROPER FIX IDENTIFIED: SA phoneme inventory must use syllables (not full words).
+    Requires: (1) syllable inventory instead of word inventory, (2) scoring via
+    syllable-split decoded sequences. Documented as Phase-33 T2.
+
+vLLM providers confirmed:
+  - l1-embed → BAAI/bge-m3 (after docker-compose change + provider re-test)
+  - l1-glossa → Qwen/Qwen3-14B
+  - l1-nexus → cpatonn/Qwen3-Coder-30B-A3B-Instruct-AWQ-4bit
+
+Foundation check: 17 PASS / 0 FAIL / 0 WARN ✓
+
+Files committed:
+  - All Phase-32 T1/T4 work (experiment files, data, scripts, reports)
+  - PermutationTest, MeluhhaCooccurrenceCheck, DravidianSyllableLM atomic nodes
+  - Syllable LM builder script
+  - experiment_graph.py: Phase-32 nodes registered
+
+Checks run:
+  - Phase-32 T4 syllable: COMPLETED (job 43b401af6177)
+  - Foundation check: 17 PASS / 0 FAIL / 0 WARN ✓
+  - Backend health: healthy
+
+Open TODOs (carry to next session):
+  - Phase-33 T2: syllable-level SA (map signs → syllables not words; score via syllable bigrams)
+  - Phase-32 T5: ICIT corpus (Dr. Fuls access — email sent 2026-05-11)
+  - Phase-32 T1 improvement: TB-NAMES sample too small (5 inscriptions); need more TB coverage
+  - Phase-33: create PermutationTest graph experiment for A1-A3 validation
+  - Fuls email sent. Waiting for response.
+
+Risks:
+  - Phase-32 T4 in any LM format will remain NEUTRAL until phoneme inventory is
+    changed to syllable level. This is a known limitation documented in synthesis.
+  - V8-V24 loops have no graph experiments (complex iterative algorithm; Phase-33 task).
+
+Next step:
+  Wait for Fuls response. Start Phase-33 planning: syllable-level SA, ICIT corpus,
+  expand TB coverage.

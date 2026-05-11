@@ -2449,6 +2449,14 @@ try:
 except Exception as _p30_exc:  # noqa: BLE001
     logger.warning("Phase-30 nodes not registered: %s", _p30_exc)
 
+# ── Phase-32 nodes (PermutationTest, MeluhhaCooccurrenceCheck, DravidianSyllableLM) ──
+try:
+    from glossa_lab.experiment_graph_phase30 import _phase30_phase32_node_defs as _p32_defs  # noqa: PLC0415
+    for _d in _p32_defs():
+        ATOMIC_NODES[_d.id] = _d
+except Exception as _p32_exc:  # noqa: BLE001
+    logger.warning("Phase-32 nodes not registered: %s", _p32_exc)
+
 
 # ── Graph execution ────────────────────────────────────────────────────────────────────
 

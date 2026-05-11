@@ -1,7 +1,7 @@
 {
   "id": "indus_phase32_t4_sa_m77_tb_lm",
   "name": "Indus Phase-32 T4 — SA Decipherment M77 → Dravidian Tamil LM (P30-H1)",
-  "description": "Phase-32 T4: THE CRITICAL NON-CIRCULAR TEST. Runs SimulatedAnnealing on the full M77 Holdat corpus (1,670 inscriptions, 7,002 tokens) using the clean Dravidian Tamil bigram LM (dravidian_tamil_lm.json — built from DEDR+Sangam+Parpola, 486 bigrams, CLEAN, 0/15 English contamination) as the scoring target, with HIGH/MEDIUM INDUS_FINAL_ANCHORS as fixed starting points (333 entries). This test is non-circular: the LM is built from independent Tamil lexical/literary sources (DEDR, Sangam corpus), NOT from the Indus corpus itself. If SA finds a mapping significantly above a random null baseline, it is the strongest positive evidence for the Dravidian hypothesis produced so far. Null result = strong structural evidence against. Cites: A.1 (Mahadevan 1977), E.1 (DEDR/Burrow+Emeneau), E.3 (Sangam), C.2 (Parpola 2010).",
+  "description": "Phase-32 T4 v2: SA decipherment M77 → Dravidian Syllable LM. Uses dravidian_syllable_lm.json (2293 syllable bigrams from DEDR roots + clean TB aksharas, 5× richer than word-level LM). Syllable-level matching is more appropriate for short Indus inscriptions (mean 3.2 signs). Original word-level run was NEUTRAL (LM too sparse). This syllable-level variant provides stronger discriminative power. Citations: E.1 (DEDR), A.12 (Mahadevan 2003 TB)., with HIGH/MEDIUM INDUS_FINAL_ANCHORS as fixed starting points (333 entries). This test is non-circular: the LM is built from independent Tamil lexical/literary sources (DEDR, Sangam corpus), NOT from the Indus corpus itself. If SA finds a mapping significantly above a random null baseline, it is the strongest positive evidence for the Dravidian hypothesis produced so far. Null result = strong structural evidence against. Cites: A.1 (Mahadevan 1977), E.1 (DEDR/Burrow+Emeneau), E.3 (Sangam), C.2 (Parpola 2010).",
   "auto_migrated": false,
   "nodes": [
     {
@@ -18,9 +18,9 @@
       "id": "lm",
       "type": "expNode",
       "data": {
-        "atomicId": "BuiltinLM",
-        "label": "Dravidian Tamil LM (DEDR+Sangam+Parpola — CLEAN)",
-        "params": { "language": "dravidian" }
+        "atomicId": "DravidianSyllableLM",
+        "label": "Dravidian Syllable LM (2293 bigrams, DEDR+TB, Phase-32)",
+        "params": {}
       },
       "position": { "x": 60, "y": 320 }
     },

@@ -39,7 +39,9 @@ export function ProvidersPanel() {
   }, []);
 
   const handleTest = async (id: string) => {
+    const provName = providers.find(p => p.id === id)?.name ?? "provider";
     setTesting(t => ({ ...t, [id]: true }));
+    toast(`Testing '${provName}'...`, "info");
     try { const r = await testProvider(id); toast(r.message, r.valid ? "success" : "error"); await refresh(); }
     catch (e: unknown) { toast(e instanceof Error ? e.message : "Test failed", "error"); }
     setTesting(t => ({ ...t, [id]: false }));

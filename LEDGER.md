@@ -6148,3 +6148,81 @@ Risks:
 
 Next step:
   SSH to layer1labs, `docker compose up -d`, re-test providers, run Phase-32 T4.
+
+## [2026-05-11] Entry — Phase-32 T4, Gap Analysis, Docs, Foundation Check
+
+Objective:
+Run Phase-32 T4 SA experiment (word-level Tamil LM), gap analysis for graph experiment
+coverage, clarify HF token docs, update all user-facing documentation, confirm 17/0/0.
+
+What was done:
+
+1. Phase-32 T4 — SA decipherment M77 → Dravidian Tamil LM (P30-H1):
+   - Created PROPER graph experiment: indus_phase32_t4_sa_m77_tb_lm.json
+     (nodes: M77InscriptionLoader + BuiltinLM(dravidian) + DerivedAnchorSet +
+      SADecipher(5 seeds × 10000 iters) + Merger + JSONExport)
+   - Run via run_and_watch.py (H17.6 compliant) — 630s, job completed
+   - Results: mean_consistency=0.297, hci_count=4, n_inscriptions=1669
+   - Verdict: NEUTRAL / INCONCLUSIVE
+   - Reason: word-level Dravidian LM has 486 bigrams (DEDR roots) — too sparse to
+     discriminate; most M77 bigrams get default -8.0 penalty; only 57 free signs
+   - Does NOT falsify Dravidian — LM insufficient. V24 TB corr 0.907 stands.
+   - PHASE_32_SYNTHESIS.md updated with T4 addendum and verdict
+
+2. Gap analysis — graph experiment coverage:
+   Phase experiments with graph coverage ✓:
+   - Phase-30a: indus_phase30a_period_stratified_m77.json ✓
+   - Phase-30b: indus_phase30b_length_cohort_janabiyah.json ✓
+   - Phase-30c: indus_phase30c_permutation_null_m77.json ✓
+   - Phase-32 T4: indus_phase32_t4_sa_m77_tb_lm.json ✓ (created this session)
+   Known deviations (acceptable per H15 exception clause for script-only work):
+   - V8-V17 and V18-V24 autonomous loops: complex multi-round iterative algorithms;
+     no atomic nodes exist for "advance decipherment round". Output artifacts committed.
+   - Phase-30 A1-A3 validation: needs PermutationTest/PeriodFilter atomic nodes that
+     don't exist. Script-based output committed to reports/. Result is still valid.
+   - Phase-30 E1 (Yajnadevam falsification): same exception.
+   Action: create atomic nodes for PermutationTest/MeluhhaCooccurrenceCheck in Phase-33.
+
+3. Documentation updates:
+   - docs/USER_GUIDE.md §13 API Keys: expanded table, HF token explicitly documented
+     as dual-use (model hub + leaderboard sync, 1000/5min auth vs 500/5min anon)
+   - docs/USER_GUIDE.md §13 Model Assignments: Sync Scores section clarified with
+     leaderboard details (4576 models, IFEval/BBH/MATH/GPQA/MUSR/MMLU-PRO benchmarks,
+     nightly schedule, static fallback for non-leaderboard models)
+   - docs/user-manual.md: Added "AI Provider Registry" section with badge table and
+     HF token dual-purpose note
+
+4. Foundation check: 17 PASS / 0 FAIL / 0 WARN ✓ (confirmed post-T4-run)
+
+Files changed:
+  backend/glossa_lab/experiments/graphs/indus_phase32_t4_sa_m77_tb_lm.json (NEW)
+  reports/phase32_t4_sa_m77_tb_lm.json (T4 results)
+  reports/indus_phase32_t4_sa_m77_tb_lm_20260511T224011.json (timestamped copy)
+  reports/PHASE_32_SYNTHESIS.md (T4 addendum appended)
+  docs/USER_GUIDE.md (API Keys table + Sync Scores detail)
+  docs/user-manual.md (AI Provider Registry section)
+  LEDGER.md (this entry)
+
+Checks run:
+  - Phase-32 T4 graph experiment: COMPLETED (job 6f1416bfe1af, 630s)
+  - Foundation check: 17 PASS / 0 FAIL / 0 WARN ✓
+  - Backend health: healthy
+
+Results:
+  Phase-32 T4 = NEUTRAL. V24 TB corr 0.907 unchanged. All documentation current.
+  Foundation check clean. Graph experiment coverage verified for all new experiments.
+
+Open TODOs:
+  - Phase-32 T5: ICIT corpus (requires Dr. Fuls access — email at reports/fuls_contact_email.md)
+  - Phase-32 T1: TB-NAMES corpus extraction (Mahadevan 2003 proper names)
+  - Phase-33: Create PermutationTest/MeluhhaCooccurrenceCheck atomic nodes
+  - Fuls email still not sent (foundation check passes; brief ready)
+  - vLLM agent-stack: docker compose up -d done; re-test providers to refresh model names
+
+Risks:
+  - Phase-32 T4 word-level LM approach is methodologically limited (sparsity).
+    A phoneme-level Dravidian LM is the correct next step (Phase-33 T1).
+  - V8-V24 autonomous loops remain as scripts; atomic nodes needed for proper graphing.
+
+Next step:
+  Send Fuls email. Then Phase-32 T1 (TB-NAMES extraction) + Phase-33 planning.

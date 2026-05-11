@@ -60,6 +60,9 @@ from glossa_lab.engine import run_engine_loop
 from glossa_lab.log_setup import setup_logging
 from glossa_lab.node_registry import router as node_registry_router
 
+import logging as _logging
+_log = _logging.getLogger("glossa_lab.main")
+
 # Repo root is two levels above this file (backend/glossa_lab/main.py)
 _REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 _FRONTEND_DIST = _REPO_ROOT / "frontend" / "dist"
@@ -125,6 +128,9 @@ async def lifespan(app: FastAPI):
     settings = get_settings()
     setup_logging(settings)
 
+    from glossa_lab import __version__ as _ver  # noqa: PLC0415
+    _log.info("=== Glossa Lab v%s starting up ===", _ver)
+
     # Initialize database
     await init_db(settings.data_dir)
 
@@ -161,11 +167,16 @@ async def lifespan(app: FastAPI):
         await seed_cas_models(_db)
 
     # Start Ollama in the background (no-op if not installed or already running)
+    _log.info("Checking Ollama availability...")
     await asyncio.get_event_loop().run_in_executor(None, _try_start_ollama)
+    if _ollama_installed:
+        _log.info("Ollama: %s", "already running" if _ollama_started else "started")
+    else:
+        _log.info("Ollama: not installed (skipped)")
 
     # Build RAG index in the background (non-blocking — completes while app starts)
     from glossa_lab.rag import build_index as _rag_build  # noqa: PLC0415
-
+    _log.info("RAG index build: starting in background...")
     asyncio.create_task(_rag_build(_db))  # fire and forget
 
     # Register graph experiments into the ExperimentBase discovery registry
@@ -194,6 +205,8 @@ async def lifespan(app: FastAPI):
             return
         try:
             provs = await _pdb.list_providers(enabled_only=True)
+            _log.info("Provider probe START — checking %d enabled provider(s)", len(provs))
+            ok = err = 0
             for prov in provs:
                 try:
                     result = await asyncio.get_event_loop().run_in_executor(
@@ -204,25 +217,40 @@ async def lifespan(app: FastAPI):
                         ),
                     )
                     from datetime import datetime as _dt, timezone as _tz  # noqa: PLC0415
+                    status = "reachable" if result["valid"] else "unreachable"
+                    models = result.get("models", [])
                     await _pdb.update_provider(
                         prov["id"],
-                        status="reachable" if result["valid"] else "unreachable",
-                        available_models=result.get("models", []),
+                        status=status,
+                        available_models=models,
                         last_probed_at=_dt.now(_tz.utc).isoformat(),
                     )
-                except Exception:  # noqa: BLE001
-                    pass
-        except Exception:  # noqa: BLE001
-            pass
+                    if result["valid"]:
+                        _log.info("Provider probe: '%s' → reachable (%d model(s))",
+                                  prov["name"], len(models))
+                        ok += 1
+                    else:
+                        _log.warning("Provider probe: '%s' → unreachable: %s",
+                                     prov["name"], result.get("message", ""))
+                        err += 1
+                except Exception as _exc:  # noqa: BLE001
+                    _log.warning("Provider probe: '%s' → error: %s", prov.get("name", "?"), _exc)
+                    err += 1
+            _log.info("Provider probe COMPLETE — %d OK, %d failed", ok, err)
+        except Exception as _exc:  # noqa: BLE001
+            _log.warning("Provider probe failed: %s", _exc)
     asyncio.create_task(_probe_all_providers())
 
     # Start model intelligence sync (HF leaderboard → model_scores)
+    _log.info("Model intelligence sync: will start in 15s...")
     from glossa_lab.model_intelligence import start_intelligence_sync  # noqa: PLC0415
     intel_task = asyncio.create_task(start_intelligence_sync())
 
     _start_time = time.time()
+    _log.info("=== Glossa Lab startup complete (%.1fs) ===", time.time() - _start_time)
     yield
     # Shutdown: stop engine + scheduler, close database, flush logs
+    _log.info("=== Glossa Lab shutting down ===")
     engine_task.cancel()
     try:
         await engine_task

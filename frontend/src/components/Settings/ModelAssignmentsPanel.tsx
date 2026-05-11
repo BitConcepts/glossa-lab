@@ -210,9 +210,10 @@ export function ModelAssignmentsPanel() {
 
   const handleSync = async () => {
     setSyncing(true);
+    toast("🔄 Syncing model scores from HuggingFace...", "info");
     try {
       const r = await syncModelIntelligence();
-      toast(r.message, "success");
+      toast(r.message, r.message.includes("unreachable") || r.message.includes("static") ? "info" : "success");
       await refresh();
     } catch (e: unknown) {
       toast(e instanceof Error ? e.message : "Sync failed", "error");

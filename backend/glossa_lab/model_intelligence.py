@@ -129,6 +129,7 @@ def _sync_hf_blocking() -> dict[str, Any]:
 
 def _sync_hf_inner() -> dict[str, Any]:
     """Inner sync logic — called under _sync_lock."""
+    _log.info("Model intelligence sync START — fetching HF Open LLM Leaderboard...")
     db = get_db()
     if db is None:
         return {"synced": 0, "errors": 0, "message": "Database not ready"}
@@ -263,7 +264,7 @@ def _sync_hf_inner() -> dict[str, Any]:
             _log.warning("HF leaderboard sync failed: %s", exc)
             return _sync_static_fallback()
 
-    _log.info("HF leaderboard sync: %d models scored, %d errors", synced, errors)
+    _log.info("Model intelligence sync COMPLETE — %d models scored, %d errors", synced, errors)
     if synced == 0:
         # HF returned data but no parseable entries — use static fallback
         return _sync_static_fallback()
@@ -372,20 +373,24 @@ def _sync_static_fallback() -> dict[str, Any]:
 async def start_intelligence_sync() -> None:
     """Run HF sync on startup (after a short delay) and then daily."""
     # Delay initial sync so rapid restarts don't hammer HF rate limits
+    _log.info("Model intelligence: initial sync will run in 15s")
     await asyncio.sleep(15)
+    _log.info("Model intelligence: starting initial sync now")
     try:
         result = await sync_from_huggingface()
         _log.info("Model intelligence initial sync: %s", result.get("message", ""))
     except Exception:  # noqa: BLE001
-        _log.debug("Model intelligence initial sync failed", exc_info=True)
+        _log.warning("Model intelligence initial sync failed", exc_info=False)
 
     # Schedule daily re-sync
     while True:
         await asyncio.sleep(86400)  # 24 hours
+        _log.info("Model intelligence: daily re-sync starting")
         try:
-            await sync_from_huggingface()
+            result = await sync_from_huggingface()
+            _log.info("Model intelligence daily sync: %s", result.get("message", ""))
         except Exception:  # noqa: BLE001
-            _log.debug("Model intelligence daily sync failed", exc_info=True)
+            _log.warning("Model intelligence daily sync failed", exc_info=False)
 
 
 # ── API routes ─────────────────────────────────────────────────────────────
@@ -443,6 +448,7 @@ async def get_recommendations(bucket: str = "reasoning") -> dict[str, Any]:
 @router.post("/sync")
 async def force_sync() -> dict[str, Any]:
     """Force re-sync from HuggingFace leaderboard."""
+    _log.info("Model intelligence sync triggered manually via API")
     result = await sync_from_huggingface()
     return result
 

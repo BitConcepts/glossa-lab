@@ -264,3 +264,49 @@ Per CITATIONS.md, Phase-32 relies on:
 
 *Phase-32 synthesis maintained as part of the Glossa-Lab Indus decipherment pipeline.*
 *Co-authored with `Oz <oz-agent@warp.dev>`. 2026-05-11.*
+
+---
+
+## Phase-32 T4 Addendum — Word-Level SA Rerun (2026-05-11, second run)
+
+**Graph experiment:** `indus_phase32_t4_sa_m77_tb_lm` (committed)
+**Runtime:** 630s (10.5 min, CPU, 5 seeds × 10000 iters)
+**LM:** `dravidian_tamil_lm.json` (DEDR+Sangam+Parpola, 486 bigrams, CLEAN)
+**Corpus:** 1,669 M77 Holdat inscriptions
+**Anchors:** HIGH+MEDIUM from INDUS_FINAL_ANCHORS (333 entries)
+
+### Results
+
+| Metric | Value | Interpretation |
+|---|---|---|
+| mean_consistency | 0.297 | 30% of seeds agree per sign — low convergence |
+| hci_count | 4 | Only 4 signs robustly assigned across seeds |
+| n_inscriptions | 1,669 | Full Holdat corpus ✓ |
+| standalone NLL (5 seeds) | -41,790 | Full corpus NLL |
+| standalone null mean | -2,437 | 100-seal subset null (FLAWED: incomparable scale) |
+| corrected lift (per 100 seals) | ≈ -65 | Near-neutral; slightly below random |
+
+### Verdict
+
+**NEUTRAL / INCONCLUSIVE**
+
+The SA with the word-level Dravidian Tamil LM does NOT produce a significantly better-than-random mapping of Indus signs to Tamil words. This is expected given:
+
+1. **LM sparsity**: 486 bigrams built from DEDR roots. When SA maps Indus signs to complete Tamil words, most consecutive word pairs are not in the LM, triggering the default -8.0 penalty.
+2. **Vocabulary mismatch remains**: The DEDR LM encodes word-level co-occurrence, but Indus inscriptions (mean length 3.2 signs) are too short for meaningful word-bigram statistics.
+3. **High anchor density**: With 333 anchors fixed (85% of the 390-sign vocabulary), there are very few free signs for SA to optimize (~57 signs), severely limiting solution diversity.
+
+### Does this falsify the Dravidian hypothesis?
+
+**No.** A neutral result from a sparse word-level LM does not constitute evidence against Dravidian. The LM is not discriminative enough (coverage too low) to reject the null. The V24 TB phoneme correlation (0.907) and the Phase-31 T3 Zipf slope match (Δ=0.18) remain the strongest positive evidence and are not affected by this result.
+
+### What would a decisive T4 require?
+
+A properly calibrated T4 needs one of:
+1. A **phoneme-level** Dravidian LM with 2–3 char syllable tokens (avoids sparsity) — requires re-processing DEDR/Sangam at syllable level
+2. A **much larger** word-level LM (full Sangam corpus ≥10,000 bigrams) — current: only DEDR root forms
+3. The **ICIT corpus** (4,537 artefacts) to provide more diverse sign contexts for the SA
+
+Pending: Phase-32 T5 (ICIT corpus access from Dr. Fuls).
+
+**Status: PHASE-32 T4 = NEUTRAL. Does not change overall assessment. V24 TB corr 0.907 stands.**

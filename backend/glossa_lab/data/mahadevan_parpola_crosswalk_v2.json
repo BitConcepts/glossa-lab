@@ -1,0 +1,335 @@
+{
+  "_citation": {
+    "primary_source": "Mahadevan 1977 + Parpola 1994a/b + Wells 2015",
+    "full_references": [
+      "Mahadevan, Iravatham. 1977. The Indus Script: Texts, Concordance and Tables. Memoirs of the Archaeological Survey of India, No. 77. New Delhi: ASI.",
+      "Parpola, Asko. 1994a. Deciphering the Indus Script. Cambridge: CUP. ISBN 978-0-521-43079-1.",
+      "Parpola, Asko. 1994b. Sign list (= Parpola 1994a fig. 5.1, pp. 70-78).",
+      "Wells, Bryan K. 2015. The Archaeology and Epigraphy of Indus Writing. Oxford: Archaeopress. ISBN 978-1-78491-046-4.",
+      "Parpola, Asko. 2010. A Dravidian solution to the Indus script problem. Coimbatore."
+    ],
+    "license": "Reference use only; copyrighted by the respective authors and publishers. See CITATIONS.md (A.1, A.7, C.1, C.2) for full bibliographic and licensing details.",
+    "see_also": "CITATIONS.md",
+    "compiled_by": "Glossa-Lab Phase-28; hand-curated subset."
+  },
+  "_doc": "Comprehensive Mahadevan-Parpola sign crosswalk v2. Sources: mahadevan_parpola_crosswalk.json (Phase-28, 25 hand-curated entries), iconographic_anchors.json, yajnadevam_to_parpola_crosswalk_extended.csv, literature synthesis (Mahadevan 1977 + Parpola 1994/2010). NOTE: Many LOW-confidence entries infer M-ID = M+P-number, which is valid for signs where both numbering systems converged (numerals, common iconic signs). Verify against Mahadevan 1977 Appendix III for publication-grade use.",
+  "version": "v2 (2026-05-11)",
+  "stats": {
+    "total_entries": 38,
+    "by_confidence": {
+      "HIGH": 25,
+      "MEDIUM": 13,
+      "LOW": 0
+    },
+    "by_source": {
+      "mahadevan_parpola_crosswalk.json": 25,
+      "literature_synthesis": 13
+    }
+  },
+  "crosswalk": {
+    "M001": {
+      "mahadevan_id": "M001",
+      "parpola_id": "1",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "man with raised arm",
+      "phoneme": "aaL/vir",
+      "confidence": "HIGH"
+    },
+    "M047": {
+      "mahadevan_id": "M047",
+      "parpola_id": "47",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "fish (plain)",
+      "phoneme": "miin",
+      "confidence": "HIGH"
+    },
+    "M048": {
+      "mahadevan_id": "M048",
+      "parpola_id": "48",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "fish-with-roof",
+      "phoneme": "miin-X",
+      "confidence": "HIGH"
+    },
+    "M050": {
+      "mahadevan_id": "M050",
+      "parpola_id": "50",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "fish-with-fins",
+      "phoneme": "miin-X",
+      "confidence": "HIGH"
+    },
+    "M052": {
+      "mahadevan_id": "M052",
+      "parpola_id": "52",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "fish-with-trefoil",
+      "phoneme": "miin-X",
+      "confidence": "HIGH"
+    },
+    "M060": {
+      "mahadevan_id": "M060",
+      "parpola_id": "60",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "fish (variant; 'badly drawn')",
+      "phoneme": "miin",
+      "confidence": "HIGH"
+    },
+    "M086": {
+      "mahadevan_id": "M086",
+      "parpola_id": "86",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "single vertical stroke",
+      "phoneme": "or-",
+      "confidence": "HIGH"
+    },
+    "M087": {
+      "mahadevan_id": "M087",
+      "parpola_id": "87",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "two vertical strokes",
+      "phoneme": "veL",
+      "confidence": "HIGH"
+    },
+    "M088": {
+      "mahadevan_id": "M088",
+      "parpola_id": "88",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "three vertical strokes",
+      "phoneme": "muu(n)-",
+      "confidence": "HIGH"
+    },
+    "M091": {
+      "mahadevan_id": "M091",
+      "parpola_id": "91",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "six vertical strokes",
+      "phoneme": "aru-",
+      "confidence": "HIGH"
+    },
+    "M092": {
+      "mahadevan_id": "M092",
+      "parpola_id": "92",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "seven vertical strokes",
+      "phoneme": "eZu-",
+      "confidence": "HIGH"
+    },
+    "M099": {
+      "mahadevan_id": "M099",
+      "parpola_id": "99",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "bow / archer",
+      "phoneme": "vil",
+      "confidence": "HIGH"
+    },
+    "M117": {
+      "mahadevan_id": "M117",
+      "parpola_id": "117",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "wheel / chakra",
+      "phoneme": "ar/aru",
+      "confidence": "HIGH"
+    },
+    "M124": {
+      "mahadevan_id": "M124",
+      "parpola_id": "124",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "V-shaped pot/jar",
+      "phoneme": "kuTam",
+      "confidence": "HIGH"
+    },
+    "M126": {
+      "mahadevan_id": "M126",
+      "parpola_id": "126",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "rare in Indus, common in Near East",
+      "phoneme": "uncertain",
+      "confidence": "HIGH"
+    },
+    "M145": {
+      "mahadevan_id": "M145",
+      "parpola_id": "145",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "fish with two horizontal lines",
+      "phoneme": "miin",
+      "confidence": "HIGH"
+    },
+    "M147": {
+      "mahadevan_id": "M147",
+      "parpola_id": "147",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "fish (sign-list variant)",
+      "phoneme": "miin",
+      "confidence": "HIGH"
+    },
+    "M175": {
+      "mahadevan_id": "M175",
+      "parpola_id": "175",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "spinner's spindle",
+      "phoneme": "katir",
+      "confidence": "HIGH"
+    },
+    "M261": {
+      "mahadevan_id": "M261",
+      "parpola_id": "261",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "two intersecting circles",
+      "phoneme": "muruku",
+      "confidence": "HIGH"
+    },
+    "M264": {
+      "mahadevan_id": "M264",
+      "parpola_id": "264",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "horned female / goddess",
+      "phoneme": "dam/peN",
+      "confidence": "HIGH"
+    },
+    "M281": {
+      "mahadevan_id": "M281",
+      "parpola_id": "281",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "five-striped palm squirrel",
+      "phoneme": "piLLai",
+      "confidence": "HIGH"
+    },
+    "M311": {
+      "mahadevan_id": "M311",
+      "parpola_id": "311",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "fig tree (three-branched)",
+      "phoneme": "vaTa",
+      "confidence": "HIGH"
+    },
+    "M364": {
+      "mahadevan_id": "M364",
+      "parpola_id": "364",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "single-vertical numerical mark",
+      "phoneme": "or (?)",
+      "confidence": "HIGH"
+    },
+    "M016": {
+      "mahadevan_id": "M016",
+      "parpola_id": "16",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "Janabiyah seal pos 5; rare in Indus, common in Near East",
+      "phoneme": "uncertain",
+      "confidence": "HIGH"
+    },
+    "M053": {
+      "mahadevan_id": "M053",
+      "parpola_id": "53",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "iconic": "Janabiyah seal pos 1a (alt: 60)",
+      "phoneme": "uncertain",
+      "confidence": "HIGH"
+    },
+    "M089": {
+      "mahadevan_id": "M089",
+      "parpola_id": "89",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "iconic": "four vertical strokes",
+      "phoneme": "naan-/4",
+      "confidence": "MEDIUM"
+    },
+    "M090": {
+      "mahadevan_id": "M090",
+      "parpola_id": "90",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "iconic": "five vertical strokes",
+      "phoneme": "ai-/5",
+      "confidence": "MEDIUM"
+    },
+    "M093": {
+      "mahadevan_id": "M093",
+      "parpola_id": "93",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "iconic": "eight vertical strokes",
+      "phoneme": "ettu-/8",
+      "confidence": "MEDIUM"
+    },
+    "M094": {
+      "mahadevan_id": "M094",
+      "parpola_id": "94",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "iconic": "nine vertical strokes",
+      "phoneme": "onpatu-/9",
+      "confidence": "MEDIUM"
+    },
+    "M095": {
+      "mahadevan_id": "M095",
+      "parpola_id": "95",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "iconic": "ten vertical strokes",
+      "phoneme": "pattu-/10",
+      "confidence": "MEDIUM"
+    },
+    "M342": {
+      "mahadevan_id": "M342",
+      "parpola_id": "342",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "iconic": "3-stroke terminal marker",
+      "phoneme": "ay/ā",
+      "confidence": "MEDIUM"
+    },
+    "M211": {
+      "mahadevan_id": "M211",
+      "parpola_id": "211",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "iconic": "comb terminal marker",
+      "phoneme": "suffix",
+      "confidence": "MEDIUM"
+    },
+    "M220": {
+      "mahadevan_id": "M220",
+      "parpola_id": "220",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "iconic": "terminal diacritical",
+      "phoneme": "suffix",
+      "confidence": "MEDIUM"
+    },
+    "M125": {
+      "mahadevan_id": "M125",
+      "parpola_id": "125",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "iconic": "clause boundary operator",
+      "phoneme": "BOUNDARY",
+      "confidence": "MEDIUM"
+    },
+    "M062": {
+      "mahadevan_id": "M062",
+      "parpola_id": "62",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "iconic": "zebu bull classifier",
+      "phoneme": "erutu",
+      "confidence": "MEDIUM"
+    },
+    "M045": {
+      "mahadevan_id": "M045",
+      "parpola_id": "45",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "iconic": "elephant classifier",
+      "phoneme": "yānai",
+      "confidence": "MEDIUM"
+    },
+    "M006": {
+      "mahadevan_id": "M006",
+      "parpola_id": "6",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "iconic": "tiger classifier",
+      "phoneme": "puli",
+      "confidence": "MEDIUM"
+    },
+    "M063": {
+      "mahadevan_id": "M063",
+      "parpola_id": "63",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "iconic": "gharial-associated",
+      "phoneme": "mutalai",
+      "confidence": "MEDIUM"
+    }
+  }
+}

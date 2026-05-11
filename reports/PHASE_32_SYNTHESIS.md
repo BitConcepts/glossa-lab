@@ -21,7 +21,7 @@ second 7-round continuation) advancing from near-zero to:
 | Tamil-Brahmi phoneme correlation | — | 0.884 | **0.914** |
 | Confidence breakdown | — | H:9 / M:26 / L:213 | H:9 / M:63 / L:261 |
 
-The Tamil-Brahmi phoneme correlation of **0.914** (Pearson r over shared phoneme inventory)
+The Tamil-Brahmi phoneme correlation of **0.907** (post-correction; was 0.914 before M267 fix) (Pearson r over shared phoneme inventory)
 is the strongest quantitative alignment signal produced so far. It exceeds the Phase-31 T3
 threshold (delta < 0.3 from TB Zipf slope) and is consistent with a shared syllabic/
 logo-syllabic script class.
@@ -107,7 +107,7 @@ T3 is the cleanest result: both M77 (slope 0.75) and Tamil-Brahmi (slope 0.93) f
 syllabic/logo-syllabic power-law regime (0.5–1.5), delta = 0.18 < preregistered threshold 0.3.
 T2 is genre-confounded (seal labels vs. votive cave inscriptions) and is not a valid test.
 
-**Verdict:** MIXED-SUPPORTIVE. TB correlation 0.914 at V24 now provides additional
+**Verdict:** MIXED-SUPPORTIVE. TB correlation 0.907 (post-correction, random baseline 0.470) at V24 now provides additional
 quantitative corroboration for the same Dravidian script-class hypothesis that T3 supports.
 
 ---

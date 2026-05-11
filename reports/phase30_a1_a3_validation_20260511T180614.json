@@ -1,0 +1,40 @@
+{
+  "enmenanak_score": 7.0,
+  "n_permutations": 1000,
+  "null_mean": 0.782,
+  "null_std": 0.653,
+  "percentile_rank": 1.0,
+  "a1_verdict": "SIGNIFICANT: score 7.0 > 95th percentile (1.000)",
+  "period_filtered_count": 4,
+  "period_filtered": [
+    {
+      "name": "Enmenanak",
+      "score": 7.0,
+      "period": "Early Dynastic",
+      "pos_matches": 3
+    },
+    {
+      "name": "Enheduana",
+      "score": 6.5,
+      "period": "Akkadian",
+      "pos_matches": 3
+    },
+    {
+      "name": "Enshakanna",
+      "score": 5.8,
+      "period": "Early Dynastic",
+      "pos_matches": 2
+    },
+    {
+      "name": "Enannatuma",
+      "score": 5.5,
+      "period": "Ur III",
+      "pos_matches": 2
+    }
+  ],
+  "a2_verdict": "FAVORABLE: 4 candidates survive period filter",
+  "meluhha_matches_count": 0,
+  "meluhha_matches": [],
+  "a3_verdict": "NEUTRAL: No direct Meluhha co-occurrence found (does not falsify)",
+  "overall_verdict": "SURVIVES A1+A2+A3 \u2014 Phase-29 finding is statistically robust"
+}

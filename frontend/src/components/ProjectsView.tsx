@@ -97,6 +97,24 @@ export function ProjectsView() {
     }
   };
 
+  const [editingLabel, setEditingLabel] = useState(false);
+  const [labelDraft, setLabelDraft] = useState("");
+
+  const onRenameProject = async (id: string, newLabel: string) => {
+    const proj = projects.find((p) => p.id === id);
+    if (!proj || !newLabel.trim() || newLabel.trim() === proj.label) {
+      setEditingLabel(false); return;
+    }
+    try {
+      await upsertProject(id, { ...proj, label: newLabel.trim() });
+      toast("Project renamed", "success");
+      window.dispatchEvent(new CustomEvent("glossa:project-changed"));
+      void refresh();
+    } catch (e) {
+      toast(e instanceof Error ? e.message : "Rename failed", "error");
+    } finally { setEditingLabel(false); }
+  };
+
   const active = projects.find((p) => p.id === selected);
 
   const navigate = (view: string) =>
@@ -167,9 +185,43 @@ export function ProjectsView() {
           <div style={{ border: "1px solid #e5e7eb", borderRadius: 10, background: "#fff",
             padding: "20px 24px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-              <h3 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: "#111827", flex: 1 }}>
-                {active.label}
-              </h3>
+              {editingLabel ? (
+                <div style={{ display: "flex", gap: 6, alignItems: "center", flex: 1 }}>
+                  <input
+                    value={labelDraft}
+                    onChange={(e) => setLabelDraft(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") void onRenameProject(active.id, labelDraft);
+                      if (e.key === "Escape") setEditingLabel(false);
+                    }}
+                    autoFocus
+                    style={{ fontSize: 16, fontWeight: 700, padding: "4px 8px",
+                      border: "1px solid #2563eb", borderRadius: 5, flex: 1 }}
+                  />
+                  <button onClick={() => void onRenameProject(active.id, labelDraft)}
+                    style={{ padding: "4px 10px", background: "#2563eb", color: "#fff",
+                      border: "none", borderRadius: 5, fontSize: 11, cursor: "pointer" }}>
+                    Rename
+                  </button>
+                  <button onClick={() => setEditingLabel(false)}
+                    style={{ padding: "4px 8px", border: "1px solid #d1d5db",
+                      borderRadius: 5, fontSize: 11, cursor: "pointer" }}>
+                    ✕
+                  </button>
+                </div>
+              ) : (
+                <h3
+                  onClick={() => { setLabelDraft(active.label); setEditingLabel(true); }}
+                  title="Click to rename"
+                  style={{ margin: 0, fontSize: 18, fontWeight: 700, color: "#111827",
+                    flex: 1, cursor: "pointer", borderBottom: "1px dashed transparent",
+                    transition: "border-color 0.15s" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.borderBottomColor = "#93c5fd")}
+                  onMouseLeave={(e) => (e.currentTarget.style.borderBottomColor = "transparent")}
+                >
+                  {active.label} <span style={{ fontSize: 11, color: "#93c5fd", fontWeight: 400 }}>✎</span>
+                </h3>
+              )}
               {!active.is_active && (
                 <button onClick={() => void onActivate(active.id)} style={{
                   padding: "5px 14px", border: "1px solid #2563eb", borderRadius: 6,

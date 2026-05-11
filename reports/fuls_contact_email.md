@@ -120,3 +120,7 @@ Warm regards,
 
 5. Reference his YouTube lecture "Mathematical epigraphy and the Interactive
    Corpus of Indus Texts" (available on YouTube) to demonstrate familiarity.
+
+
+---
+*Note (May 2026)*: A research report on acquiring the western Gulf INDUS seal corpus (Laursen 2010 Table 1, 23 objects) has been prepared. If helpful, I can share this analysis showing which primary sources to consult (Gadd 1932, Kjaerum 1983/1994, Al-Sindi 1999, Amiet 1972/1973) and which museum objects have confirmed accession numbers (BM 120228, 123059, 123208; Penn U.8685).*

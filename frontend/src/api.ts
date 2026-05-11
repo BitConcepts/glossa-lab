@@ -866,7 +866,19 @@ export const updateHypothesis = (id: string, body: Partial<Hypothesis>): Promise
 export const deleteHypothesis = (id: string): Promise<Hypothesis> =>
   request("DELETE", `/hypotheses/${id}`);
 
-// ── Research: Notebooks ─────────────────────────────────────────────
+/** Append an evidence item (free-form text, URL, experiment ID, etc.) to a hypothesis. */
+export const addHypothesisEvidence = (
+  id: string,
+  item: string,
+  label?: string,
+): Promise<Hypothesis> =>
+  request("POST", `/hypotheses/${id}/evidence`, { item, label: label ?? "" });
+
+/** Remove evidence item at index idx from a hypothesis. */
+export const removeHypothesisEvidence = (id: string, idx: number): Promise<Hypothesis> =>
+  request("DELETE", `/hypotheses/${id}/evidence/${idx}`);
+
+// ── Research: Notebooks
 
 export interface Notebook {
   id: string;

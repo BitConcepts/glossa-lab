@@ -1,0 +1,9 @@
+{
+  "sanskrit_corr_vs_tb_freq": 0.3872,
+  "sanskrit_corr_vs_skt_freq": 0.8735,
+  "dravidian_corr_vs_tb_freq": 0.2895,
+  "dravidian_corr_vs_skt_freq": 0.9248,
+  "verdict": "SANSKRIT SCORES HIGHER: Sanskrit (0.3872) > Dravidian (0.2895) \u2014 reconsider Dravidian hypothesis",
+  "n_signs_assigned_sanskrit": 390,
+  "n_signs_in_dravidian": 313
+}

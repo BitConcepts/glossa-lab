@@ -781,7 +781,14 @@ The Settings view contains five panels: API Keys, Provider Registry, Model Assig
 
 Store API keys for cloud AI providers. Keys are encrypted at rest and never sent to any service other than the specified provider.
 
-Common keys: `openai_api_key`, `anthropic_api_key`, `mistral_api_key`, `hf_api_token` (doubles HF rate limits for model score sync).
+| Key | Purpose |
+|-----|---------|
+| `openai_api_key` | OpenAI (GPT-4o, o1, etc.) |
+| `anthropic_api_key` | Anthropic Claude |
+| `mistral_api_key` | Mistral AI |
+| `hf_api_token` | **HuggingFace — used for TWO things:** (1) accessing gated/private model repos and (2) the **Open LLM Leaderboard score sync** (authenticated users get 1,000 req/5min vs 500 anonymous). Without a token, score sync still works but at a lower rate limit. Generate at https://huggingface.co/settings/tokens (read-only scope is sufficient). |
+| `brave_search_api_key` | Brave Search (Discovery engine) |
+| `serpapi_api_key` | SerpAPI (Google Scholar via Discovery) |
 
 ---
 
@@ -838,8 +845,9 @@ Each bucket has a **Primary** and **Fallback** slot. Glossa AI uses Primary firs
 - **HF Open LLM Leaderboard** (synced nightly, ~4,576 evaluated models)
 - **Static fallback** (cloud models + 50+ common Ollama/vLLM models)
 
-**🤗 Test HF** — tests your `hf_api_token` validity and datasets-server reachability.
-**🔄 Sync Scores** — manually triggers the HF leaderboard sync (also runs automatically 15s after startup and daily thereafter).
+**🤗 Test HF** — validates your `hf_api_token` and checks if the HF Datasets Server (which hosts the leaderboard data) is reachable. Reports token username, rate limit tier, and datasets-server status.
+
+**🔄 Sync Scores** — manually triggers a sync from the **HuggingFace Open LLM Leaderboard** (`open-llm-leaderboard/contents`). The leaderboard contains ~4,576 community-evaluated models with benchmark scores on IFEval, BBH, MATH Lvl 5, GPQA, MUSR, and MMLU-PRO. Glossa Lab computes bucket-specific fitness scores from these benchmarks. Sync also runs automatically 15 seconds after startup and then daily. Requires `hf_api_token` for best rate limits (1,000 req/5min authenticated vs 500 anonymous), but works without a token. Models NOT on the leaderboard (most cloud models, Ollama local models) use the built-in static fallback scores instead.
 
 **Note on vLLM model names:** If your vLLM provider shows `provider-name · provider-name` in the dropdown, your vLLM server is using a served-model-name alias. Remove `--served-model-name` from your docker-compose and re-test the provider to get real HF model IDs.
 

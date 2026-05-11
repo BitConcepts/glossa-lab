@@ -131,10 +131,9 @@ Re-read this block. It is at the top of AGENTS.md for exactly that reason.
 
 This repository uses a closed-loop, specification-first, constraint-governed agentic workflow.
 
-> **See also `WARP.md` at repo root for project rules governing how experiments
-> MUST run (graph executor / `ExperimentBase`, never standalone phase scripts).
-> AGENTS.md governs *how you record work*; WARP.md governs *how you build and
-> run the experiments*.**
+> **All experiment execution rules (graph executor / `ExperimentBase`, phase patterns,
+> report synthesis, commit format) are consolidated in this file under the G-series
+> rules below. There is no separate WARP.md.**
 
 Agents are **proposal generators**, not authorities.
 
@@ -706,6 +705,92 @@ Every NEW experiment added under `backend/glossa_lab/experiments/` MUST:
 
 Legacy experiments under `_legacy/` may bypass these rules ONLY for backward
 compatibility; new code MUST conform.
+
+---
+
+## EXPERIMENT EXECUTION RULES (G-SERIES)
+
+### G1 — All experiments MUST run through the Glossa-Lab graph executor (CRITICAL)
+
+Any "Phase-N" research run, any reusable analysis pipeline, and any new research
+workflow MUST be expressed as one of:
+
+1. **Graph experiment** — JSON DAG of atomic nodes under
+   `backend/glossa_lab/experiments/graphs/<id>.json`, composed from atomic nodes
+   in `backend/glossa_lab/experiment_graph*.py` and registered via the
+   `_phase{N}_node_defs()` factory pattern.
+2. **`ExperimentBase` subclass** — Python class under
+   `backend/glossa_lab/experiments/<name>.py` with `id`, `name`, `params_schema`,
+   and `run_cli()` per `docs/guides/building-experiments.md` (rules H12.1–H12.5).
+
+#### Forbidden
+
+- Standalone scripts under `scripts/phase{N}/` that bypass `ExperimentBase` and the
+  graph executor. Phases 16–19 are the canonical anti-pattern.
+- Running analyses via `python scripts/phaseN/foo.py` where `foo.py` does the work
+  directly. Any such file MUST be either a thin CLI shim calling `cls().run_cli()`,
+  or a true graph experiment invoked via
+  `shell.cmd python -m glossa_lab.experiments <graph_id>`.
+
+#### Required pattern when adding a new phase
+
+1. Add Phase-N atomic nodes to `backend/glossa_lab/experiment_graph_phase{N}.py`
+   following the Phase-14/15/20 template (`AtomicNodeDef` + `_phase{N}_node_defs()`).
+2. Wire them into `ATOMIC_NODES` from `experiment_graph.py` with a try/except import
+   block matching the existing Phase-14/15/20 blocks.
+3. Compose one or more graph JSON files in `backend/glossa_lab/experiments/graphs/`.
+   Use `auto_migrated: false` so `auto_migrate_hardcoded_experiments()` will NOT
+   overwrite them.
+4. Run each via `shell.cmd python -m glossa_lab.experiments <graph_id>`. This guarantees
+   a SQLite Job entry, a JSON report under `reports/`, and a timestamped run-trace.
+5. Write a Markdown synthesis to `reports/phase{N}_synthesis.md` summarising headline
+   findings + Phase-(N+1) candidate experiments.
+
+#### Acceptable exceptions
+
+- One-off data-extraction/OCR/scraping scripts producing fixed artifacts under
+  `corpora/downloads/` or `backend/glossa_lab/data/phase*_corpora/` may live as plain
+  scripts under `scripts/phase{N}/`. Document in the phase-N synthesis as data-acquisition
+  steps; treat their outputs as inputs to graph experiments.
+- Quick agent-side smoke tests of an atomic node may be run inline via
+  `shell.cmd python -c "..."` without registering a Job entry, for validation only.
+  Real research runs must use the graph executor.
+
+---
+
+### G3 — Reports and synthesis files
+
+- All experiment outputs MUST land under `reports/`.
+- Use a stable, descriptive filename for the JSONExport node (e.g.
+  `phase20a_length_strata.json`) so it can be diffed across runs.
+- Each phase MUST produce a `reports/phase{N}_synthesis.md` that:
+  * states verdict per prior-phase prediction,
+  * embeds key numerical results in tables,
+  * lists Phase-(N+1) candidate experiments.
+
+---
+
+### G4 — Commits and pushes
+
+- Commit messages for phase work follow the pattern
+  `PHASE-{N}: <one-line subject>` followed by a multi-paragraph body enumerating
+  deliverables and headline findings.
+- Every commit MUST include the co-author footer
+  `Co-Authored-By: Oz <oz-agent@warp.dev>`.
+- **Never** commit unless the user explicitly asks.
+
+---
+
+### Self-check before declaring a phase complete
+
+1. Is every analysis expressed as either a graph experiment or an `ExperimentBase`
+   subclass? (Rule G1)
+2. Did each run go through `shell.cmd python -m glossa_lab.experiments <id>` and
+   produce a Job entry + a `reports/...` file? (Rule G1)
+3. Is there a `reports/phase{N}_synthesis.md` with verdict + Phase-(N+1) plan? (Rule G3)
+4. Is the commit + push clean, with the co-author footer? (Rule G4)
+
+If any of these are NO, the phase is not done.
 
 ---
 

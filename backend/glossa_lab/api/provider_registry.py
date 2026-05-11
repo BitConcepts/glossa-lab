@@ -273,6 +273,37 @@ async def create_provider(body: ProviderCreate) -> dict[str, Any]:
     return row
 
 
+@router.get("/detect-ollama")
+async def detect_ollama() -> dict[str, Any]:
+    """Auto-detect Ollama on localhost and common LAN addresses."""
+    import asyncio  # noqa: PLC0415
+
+    candidates = [
+        "http://localhost:11434",
+        "http://127.0.0.1:11434",
+        "http://host.docker.internal:11434",
+    ]
+    for prefix in ("192.168.1", "192.168.0", "10.0.0", "10.0.1"):
+        candidates.append(f"http://{prefix}.1:11434")
+
+    results: list[dict[str, Any]] = []
+
+    def _check(url: str) -> dict[str, Any] | None:
+        r = _probe_ollama(url)
+        if r["valid"]:
+            return {"url": url, **r}
+        return None
+
+    loop = asyncio.get_event_loop()
+    tasks = [loop.run_in_executor(None, _check, url) for url in candidates]
+    for coro in asyncio.as_completed(tasks):
+        result = await coro
+        if result:
+            results.append(result)
+
+    return {"detected": results}
+
+
 @router.get("/{pid}")
 async def get_provider(pid: str) -> dict[str, Any]:
     db = get_db()
@@ -356,34 +387,3 @@ async def test_unsaved(body: TestRequest) -> dict[str, Any]:
     return result
 
 
-@router.get("/detect-ollama")
-async def detect_ollama() -> dict[str, Any]:
-    """Auto-detect Ollama on localhost and common LAN addresses."""
-    import asyncio  # noqa: PLC0415
-
-    candidates = [
-        "http://localhost:11434",
-        "http://127.0.0.1:11434",
-        "http://host.docker.internal:11434",
-    ]
-    # Add common LAN gateway addresses
-    for prefix in ("192.168.1", "192.168.0", "10.0.0", "10.0.1"):
-        candidates.append(f"http://{prefix}.1:11434")
-
-    results: list[dict[str, Any]] = []
-
-    def _check(url: str) -> dict[str, Any] | None:
-        r = _probe_ollama(url)
-        if r["valid"]:
-            return {"url": url, **r}
-        return None
-
-    loop = asyncio.get_event_loop()
-    # Probe in parallel with short timeout
-    tasks = [loop.run_in_executor(None, _check, url) for url in candidates]
-    for coro in asyncio.as_completed(tasks):
-        result = await coro
-        if result:
-            results.append(result)
-
-    return {"detected": results}

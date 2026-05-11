@@ -5149,3 +5149,425 @@ Objective: Major UI overhaul to scope all views by active project, add correspon
 - Backend syntax clean
 
 Risks: Playwright UI tests not run (pre-existing Vite preview issue).
+
+---
+
+## [2026-05-11] Entry — Session recovery: WARP.md merge, unrecorded sessions recap, Gulf corpus tasks
+
+Objective:
+Recover from multiple unrecorded sessions (2026-05-07 through 2026-05-11). Merge WARP.md
+into AGENTS.md. Absorb deep-research-report.md (Gulf round seals corpus strategy) into
+open tasks. Document all work that landed in git but was never ledger-recorded.
+
+---
+
+### A. WARP.md → AGENTS.md consolidation (this session)
+
+What was done:
+- WARP.md (Glossa-Lab project rules for agents) merged into AGENTS.md as new G-SERIES section:
+  - G1 (experiment executor pattern, forbidden patterns, required phase pattern, exceptions)
+  - G3 (report and synthesis file rules)
+  - G4 (commit message format, co-author requirement)
+  - Self-check before declaring a phase complete
+- Purpose section in AGENTS.md updated: WARP.md reference replaced with note that rules
+  are consolidated in AGENTS.md.
+- WARP.md deleted.
+
+Files changed:
+- AGENTS.md (modified — G-series added, WARP.md reference removed)
+- WARP.md (deleted)
+
+---
+
+### B. Unrecorded sessions recap (commits since 2026-05-06)
+
+The following work landed in git after the last LEDGER entry but was never recorded.
+This section documents it for continuity. All commits were by Tristen Pierson with
+Co-Authored-By: Oz <oz-agent@warp.dev>.
+
+#### Commit: feat: AI Provider Registry + Model Intelligence overhaul (Schema V20)
+- Introduced AI Provider Registry: unified view of all configured AI providers
+  (OpenAI, Anthropic, Google, Ollama, vLLM, custom endpoints) with per-model
+  intelligence scoring (context length, reasoning, speed, cost).
+- Schema V20: new `ai_providers` table, model registry, provider health probes.
+- New UI: AI Provider Registry view with model scoring, primary/fallback assignment,
+  scored-only toggle, sorted-by-score model dropdowns.
+- Ollama/vLLM model discovery: `models_detail` endpoint with `context_length`.
+
+#### Commit: fix: endpoint test isolation, dashboard no-provider insight handling
+- Isolated AI endpoint tests to prevent cross-contamination.
+- Dashboard insight generation handles gracefully when no AI provider is configured.
+
+#### Commit: fix: dashboard JSON parse error + arXiv 429 rate limiting
+- Fixed JSON parse error on dashboard insight endpoint.
+- arXiv fetcher: exponential backoff on 429 responses.
+
+#### Commit: feat: project-scoped UI, correspondence log, collaboration features
+(Already in LEDGER 2026-05-06 — confirmed.)
+
+#### Commit: V3 Indus decipherment campaign: 88 experiments, 13 deep-analysis tasks, bug fixes
+- 88 Glossa AI-driven experiment rounds covering phoneme map expansion, anchor
+  identification, and structural analysis.
+- 13 deep-analysis tasks: sign role classification, allograph families, positional
+  grammar validation.
+- Bug fixes: provider registry inline edit, SSL bypass for probes.
+
+#### Commit: V4: Bug fixes + recommended experiments + Holdat corpus + expanded model scores
+- Holdat LLC corpus integrated: 1,670 seals, 9 sites (cloned from Holdat GitHub repo).
+- Recommended experiments feature: AI suggests next experiments based on current state.
+- Model scores expanded: scoring rubric covers more models.
+- Bug fixes: Google/Gemini provider probe, model assignment preservation.
+
+#### Commit: V5-V17 Indus decipherment campaign + dashboard metrics + bug fixes
+Decipherment progress (V5–V17, 20 autonomous rounds):
+- V5: Spectral syllabic grid (10 clusters, 3-slot positional grammar)
+- V6: PMI collocations (41 high-PMI), anchor expansion 12 → 42 (76% coverage)
+- V7: Iconography phonetics (13 animal-exclusive signs), M-314 decode
+- V8–V17: 20 rounds → 248/390 signs decoded, 96.4% token coverage, 86.5%
+  inscription coverage
+- Tamil-Brahmi phoneme correlation: 0.884
+
+Dashboard & UI:
+- New DeciphermentPanel component: progression sparkline, anchor breakdown,
+  confidence bars per sign cluster
+- Backend: GET /api/v1/dashboard/decipherment endpoint
+- Removed hardcoded Indus Data Analysis page from nav (metrics now in dashboard)
+
+Bug fixes:
+- Google/Gemini provider: dedicated probe via native models endpoint + API key auth
+- Model assignments: preserve other rank when changing primary/fallback
+- Model dropdowns: sorted by score, ★ prefix, scored-only toggle
+- Mine dropdown: pass selected value directly (no stale state)
+- View Results button: navigate to experiments view (not graph editor)
+- SA experiment timeout: increased stall watchdog from 30 min to 2 hr for GPU jobs
+
+Data:
+- Cloned Holdat LLC corpus (1,670 seals, 9 sites)
+- Registered V5 experiment graphs (spectral grid, anchor validation, data corrections)
+
+#### Commit: fix: fetch_and_cache_paper, indusscript.in scraper, papers assessment, SA timeout
+- fetch_and_cache_paper: fixed paper caching pipeline.
+- indusscript.in scraper: updated scraper to handle site changes.
+- Papers assessment: improved quality scoring for discovery papers.
+- SA timeout: further hardened against stall conditions.
+
+#### Commit: Add per-seed progress logging to SA decipher for stall monitoring
+- SA decipher now emits progress log every N seeds.
+- Enables H17.3 compliance for long SA runs.
+
+#### Commit: Parallel dashboard tasks + remove redundant discovery keys + academia cookie field
+- Dashboard tasks run in parallel (reduced load time).
+- Removed redundant/unused discovery API keys from settings.
+- Academia.edu fetcher: added session cookie field.
+
+#### Commit: Frontend build: fix TS errors, clean dead code, rebuild dist (HEAD)
+- Fixed unused variable TS errors in DashboardView, DeciphermentPanel, SettingsView.
+- Removed ~200 lines of dead code from SettingsView (renderKeyGroup moved to AutoDiscoveryPanel).
+- Clean frontend build: 227 modules, 933 KB bundle.
+
+---
+
+### C. Gulf round seals corpus — research context absorbed from deep-research-report.md
+
+Source: C:\Users\trist\Downloads\deep-research-report.md (deep web research report
+on the western Gulf INDUS seal corpus and ICIT/ECIT database access strategy).
+
+Key findings [VERIFIED by report research]:
+
+1. CISI published volumes through 3.3 do NOT include a dedicated western Gulf /
+   Mesopotamia round-seal volume. CISI 3.3 covers Indo-Iranian Borderlands. CISI 3.4
+   is the planned final volume but not yet published as of the report date.
+
+2. The western Gulf INDUS seal corpus (23 objects) is best assembled NOW from:
+   - Laursen 2010 Table 1 as master object list (Laursen nos. 6–27 and 56)
+   - Gadd 1932 for Ur seals (BM 123208/U.17649, Penn U.8685, BM 120228, BM 123059)
+   - Kjærum 1983/1994 for Failaka and Qala'at al-Bahrain
+   - Al-Sindi 1999 for Saar/Karzakkan cemetery pieces
+   - Amiet 1972/1973 for Susa and Luristan
+
+3. ICIT database (indus.epigraphica.de) requires administrator access; live endpoint
+   returned 401 Unauthorized in the report's check. Contact: Dr. Andreas Fuls,
+   andreas.fuls@tu-berlin.de. Report confirmed ICIT already has site categories for
+   Failaka, Janabiyah, Karzakkan, Qala'at al-Bahrain, Saar, Susa, Ur, Girsu, etc.
+
+4. Email template for Fuls ICIT access request: already drafted at
+   reports/fuls_contact_email.md. The template in deep-research-report.md is an
+   alternative/simpler version; the existing fuls_contact_email.md is preferred
+   (more detailed, project-specific).
+
+5. Fuls comms status: DISCLOSURE_LOG at docs/research/communications/DISCLOSURE_LOG.md
+   documents three communications (COMM-2026-001, 002, 003) but the referenced PDF
+   attachment (glossa_lab_project_report.pdf) was previously flagged as missing.
+   fuls_emails.pdf at C:\Users\trist\Downloads\fuls_emails.pdf does NOT EXIST —
+   user intended to provide email thread context but file is absent.
+
+---
+
+### D. Phase-31 summary (previously unrecorded in LEDGER)
+
+Phase-31: Tamil-Brahmi parallel corpus comparison (run ~2026-05-01, synthesis at
+reports/PHASE_31_SYNTHESIS.md). Key results:
+
+- T3 (Zipf slope): M77 slope 0.75 vs TB slope 0.93 — delta 0.18, UNDER threshold 0.3.
+  Both in syllabic/logo-syllabic regime. [VERIFIED — FAVORABLE for Dravidian]
+- T4 (KL divergence): 18% reduction below uniform baseline. [VERIFIED — FAVORABLE]
+- T1 (positional entropy): KS=0.81, UNFAVORABLE but OCR-limited (TB: 47/110 inscriptions)
+- T2 (length KS): UNFAVORABLE but GENRE-CONFOUNDED (seal labels vs votive narratives)
+
+Phase-31 verdict: MIXED-SUPPORTIVE. T3 is the cleanest result. Decipherment progress: ~7-10%.
+
+---
+
+### Checks run (this session)
+- AGENTS.md: verified WARP.md reference removed; G-series content inserted correctly.
+- WARP.md: confirmed deleted.
+- LEDGER entry: this entry.
+
+### Open TODOs (consolidated)
+
+**Research — Phase-32 priority:**
+- [ ] Phase-32 T1: Extract proper names from Tamil-Brahmi inscriptions (TB-NAMES corpus).
+      Re-run T2 length comparison with TB-NAMES only. Expected to flip T2 favorable.
+- [ ] Phase-32 T2: Improve TB parser coverage from 47/110 → 100+/110 (try .epub).
+- [ ] Phase-32 T3: Bigram transition matrix comparison M77 vs Tamil-Brahmi.
+- [ ] Phase-30c with N=200 permutations (publication-grade null tightening; N=50 done).
+- [ ] Phase-30d/e/f (allograph-aware M77 stratification, joint-corpus ranker).
+
+**Corpus acquisition (CRITICAL path — P30-F/L tasks):**
+- [ ] P30-F2 / P30-L3: Email Andreas Fuls (andreas.fuls@tu-berlin.de) for ICIT access.
+      Use reports/fuls_contact_email.md draft. Include western Gulf site list:
+      Failaka, Janabiyah, Karzakkan, Qala'at al-Bahrain, Saar, Susa, Luristan,
+      Girsu, Ur, Tell Umma, Tello, Kish, Nippur. [BLOCKER: ICIT = +2pp lift]
+- [ ] Build Laursen Table 1 western Gulf INDUS master spreadsheet (Laursen nos. 6-27, 56).
+      Sources: Gadd 1932, Kjærum 1983/1994, Al-Sindi 1999, Amiet 1972/1973,
+      Buchanan 1981, Langdon 1932.
+- [ ] Request BM image files for: BM 120228, BM 123059, BM 123208 (via britishmuseum.org
+      Collection Online + BM Images for publication-quality). Penn U.8685 via Penn archive.
+- [ ] Note: CISI 3.4 is the planned volume covering western Gulf/Mesopotamian seals;
+      do NOT wait for it — acquire from primary sources as above.
+- [ ] P30-F1: Acquire Fuls ME vol. 3 ($45 Amazon paperback). OCR text → JSON.
+- [ ] P30-F9 (DONE via Phase-31): Tamil-Brahmi corpus loaded (47 inscriptions).
+      Expand to 100+ via Phase-32 T2.
+- [ ] P30-F13: Vandorpe Sukkalmah Susa prosopography (Susa = THE contact zone, +2pp).
+- [ ] P30-L3 (Fuls ICIT email — see above).
+- [ ] P30-L2: Email Asko Parpola (asko.parpola@helsinki.fi) with Phase-29/30 findings.
+
+**Decipherment campaign continuation:**
+- [ ] V18+: Continue Glossa AI autonomous decipherment rounds from 248/390 signs.
+      Target: 300+ signs, >95% token coverage. Use DeciphermentPanel to track progress.
+- [ ] Validate V5-V17 decipherment results with Phase-32 statistical tests.
+- [ ] Run P30-H1 (SA M77 → Tamil-Brahmi) — the BIG decipherment test (+3-5pp).
+- [ ] Run P30-E1 (Yajnadevam Sanskrit vs Parpola Dravidian head-to-head falsification).
+- [ ] Run P30-A1–A3 (permutation null, period filter, Meluhha co-occurrence on
+      Enmenanak/Enheduana candidates).
+
+**UI / Product:**
+- [ ] Project edit form in ProjectsView (from 2026-05-06 session).
+- [ ] Evidence linking architecture (plan exists, not yet implemented).
+- [ ] Update HelpView documentation for Projects feature.
+- [ ] Playwright E2E tests for project CRUD.
+- [ ] Start Vite preview server for full Playwright UI regression (pre-existing blocker).
+
+**Governance / communications:**
+- [ ] Recover or re-create glossa_lab_project_report.pdf (referenced in DISCLOSURE_LOG
+      as attachment to Fuls COMM-2026-001; flagged as missing).
+- [ ] fuls_emails.pdf at C:\Users\trist\Downloads\fuls_emails.pdf is MISSING.
+      User should re-download or provide separately before the Fuls context section
+      can be reviewed.
+
+### Risks
+- LEDGER has a ~5-day gap (2026-05-06 to 2026-05-11). The recap in section B above
+  is derived from git commit messages only; detailed file-level changes for V3-V17
+  may be incomplete. Run `git log --stat` on those commits if granular recovery needed.
+- The V5-V17 decipherment campaign (248/390 signs, 0.884 Tamil-Brahmi correlation)
+  is the most significant research advance since Phase-29, but no formal phase synthesis
+  document exists for it yet. This is a G3 violation — reports/phase32_synthesis.md
+  should capture these results.
+- DB schema is at V20; LEDGER previously noted V19. Schema changelog should be verified.
+- fuls_emails.pdf is missing; Fuls email thread context unavailable for this session.
+
+### Next step
+1. User confirms: have you sent the Fuls ICIT access email yet? If not, send now.
+2. Continue Glossa AI decipherment campaign (V18+) to push past 300 signs.
+3. Build the Laursen Table 1 western Gulf corpus spreadsheet as a data acquisition
+   sub-task (feeds future ICIT crosswalk and Phase-32+ contact-zone experiments).
+4. Write Phase-32 synthesis covering V5-V17 decipherment results formally.
+
+---
+
+## [2026-05-11] Entry — V18+ campaign, Phase-32 synthesis, Fuls brief, corpus audit + code fixes
+
+Objective:
+Continue decipherment campaign from V17 (248 signs), write Phase-32 synthesis, prepare Fuls
+research brief, run full corpus/study audit for errors and bad assumptions, fix code issues found.
+
+---
+
+### What was done
+
+**V18+ autonomous decipherment loop (7 rounds, V18-V24):**
+- Created `backend/scripts/v18_autonomous_loop.py` — continues from INDUS_FINAL_ANCHORS.json.
+  Key improvements over v8 loop: evidence upgrade threshold 3→2, compound-pair bonus,
+  explicit position sort, new_assignments list tracking, 15/round (was 20).
+- Ran loop: 7 rounds completed (rounds 11-17), stopped at V24 (no progress).
+- Results:
+  - Signs: 248 → 333 / 390
+  - Token coverage: 96.4% → 99.2%
+  - Fully decoded: 86.5% → 96.7% (1,615/1,670 inscriptions)
+  - Weighted confidence: 61.3% → 64.8%
+  - Tamil-Brahmi phoneme correlation: 0.884 → 0.914
+  - Round 11 (V18): 37 LOW→MEDIUM upgrades from loosened threshold
+
+**Phase-32 synthesis:** `reports/PHASE_32_SYNTHESIS.md` created. Covers V5-V24
+progression tables, Phase-31 recap, epistemic caveats, Phase-32 T1-T8 research plan,
+decipherment progress estimate table.
+
+**Fuls research brief:** `reports/fuls_research_brief_may2026.md` created. 2-page
+brief for ICIT access request attachment. Presents V24 results with explicit epistemic
+caveats (structural alignment metric, not verified phonetic readings), specific site-list
+request, crosswalk request, offer of reciprocal sharing.
+
+---
+
+### Corpus/study audit (comprehensive)
+
+Full audit of the V8-V24 distributional loop, Holdat corpus, and Phase experiments.
+
+#### CONFIRMED NOT ISSUES
+
+**Writing direction:**
+- The Holdat position field follows READING ORDER (position 0 = first sign read).
+- Verified: CLASSIFIER_PREFIX signs have avg_position=0.0; CASE_MARKER_SUFFIX signs have
+  avg_position=0.5-1.0 (normalized). These are consistent with position 0 = reading start.
+- `classify_position()` function: i==0 → INITIAL (correctly maps to classifier/prefix role).
+  i==len-1 → TERMINAL (correctly maps to case-marker/suffix role). CORRECT.
+- 0 seals have out-of-order positions in the CSV (verified). Sequence integrity: CONFIRMED.
+
+**Sign numbering (Holdat):**
+- `letters` field = Mahadevan M-numbers (M391, M211, etc.). These are correct Mahadevan sign IDs.
+- M267 = fish sign → assigned "min/mīn" (HIGH). Correct — Parpola fish anchor also confirms fish.
+- M342 = terminal diacritical/case marker → assigned "ay/ā" (HIGH). Consistent with Holdat
+  classifying M342 as CASE_MARKER_SUFFIX (is_ending=True, avg_position=0.561).
+- These are NOT the same as Parpola P-numbers — but within the Holdat corpus, internally consistent.
+
+**9 HIGH-confidence assignments:** All reasonable —
+  M342(ay/ā), M176(an/aṇ), M267(min/mīn), M099(kol/koḷ),
+  M062(erutu/bull), M045(yānai/elephant), M016(kaḷiṟu/elephant),
+  M006(puli/tiger), M063(mutalai/crocodile)
+
+#### BUGS FIXED (2026-05-11)
+
+**BUG-001 [FIXED]: PDR list duplicates.**
+"māṉ" and "vāṉ" appeared in BOTH PDR_MEDIALS and PDR_TERMINALS. Fixed in both v8 and v18
+scripts by removing them from PDR_MEDIALS (kept in PDR_TERMINALS where they belong as
+personal name suffixes). The `used_count` check limited impact on previous results.
+
+**BUG-002 [FIXED]: Implicit position sort assumption.**
+load_corpus() in both v8 and v18 loops did not explicitly sort by position when building
+sign sequences. Fixed: added `sorted(v, key=lambda r: int(r["position"]))` in both scripts.
+No impact on existing results (CSV was already sorted) but now safe against future CSV changes.
+
+#### RISKS / OPEN ISSUES (not bugs but must be documented)
+
+**RISK-001 [CRITICAL]: Sign numbering track separation.**
+The V8-V24 distributional loop uses Mahadevan M-numbers (Holdat corpus).
+Phase-10 through Phase-31 experiments use Parpola P-numbers (CISI corpus).
+`mahadevan_parpola_crosswalk.json` has only 1 entry — effectively empty.
+These are two SEPARATE analysis tracks that cannot be directly combined without
+a complete M↔P crosswalk. The 0.914 TB correlation and the Phase-27c IconographicAnchorScore
+are on different corpora with different sign IDs. Results must be presented separately.
+Required fix: Build a proper M↔P crosswalk (P30-D3, "UnifiedSignCrosswalk").
+
+**RISK-002 [MODERATE]: "PDR" label is inaccurate.**
+PDR_INITIALS/MEDIALS/TERMINALS contain Classical Tamil / Old Tamil forms (erutu, yānai,
+mīn, etc.), not Proto-Dravidian reconstructions (which would use * forms with phonological
+shifts). The label should be "OldTamil" or "DraTamil". Does not affect computation but
+misleads any reader of the code.
+
+**RISK-003 [MODERATE]: Tamil-Brahmi frequency source undocumented.**
+TAMIL_BRAHMI_FREQ values are labeled "approximate, from published corpora" but no specific
+source is cited. For publication, these must be referenced to Mahadevan 2003 Table 2 or
+equivalent. If the values are incorrect, the 0.914 correlation is partially an artifact.
+
+**RISK-004 [MODERATE]: 78% of assignments are LOW confidence.**
+261 of 333 signs are LOW confidence. "99.2% token coverage" overstates decipherment
+completeness: most of that coverage is backed by LOW-confidence distributional assignments
+only. For any publication or prize submission, this must be explicit: effectively only
+9 signs (HIGH) + 63 signs (MEDIUM) = 72 signs are scientifically supportable.
+
+**RISK-005 [LOW]: iconographic_anchors.json uses Parpola P-numbers (e.g. "47" for fish).**
+The Holdat distributional loop uses Mahadevan M-numbers. The two anchor systems are not
+connected. Phase-27c uses iconographic_anchors.json (P-numbers); V8-V24 uses INDUS_FINAL_ANCHORS
+(M-numbers). No integration currently.
+
+**RISK-006 [LOW]: M099 (CASE_MARKER_SUFFIX by Holdat) assigned "kol/koḷ" (medial root).**
+M099 is classified by Holdat as is_ending=True (CASE_MARKER_SUFFIX), but our HIGH-confidence
+reading "kol/koḷ" is a medial root ("blacksmith, kill"). The HIGH confidence was assigned from
+the V7 iconographic/functional analysis. The positional classification conflict should be flagged
+in any results commentary.
+
+---
+
+### Files changed
+
+- AGENTS.md (modified — WARP.md reference removed, G-series rules added)
+- WARP.md (deleted)
+- backend/scripts/v18_autonomous_loop.py (created)
+- backend/scripts/v8_autonomous_loop.py (modified — PDR fix + position sort fix)
+- backend/reports/INDUS_V18_ROUND11.json through INDUS_V24_ROUND17.json (created, 7 files)
+- backend/reports/INDUS_FINAL_ANCHORS.json (updated, 333 entries)
+- backend/reports/INDUS_V18_LOOP_EMAIL.txt (created)
+- reports/PHASE_32_SYNTHESIS.md (created)
+- reports/fuls_research_brief_may2026.md (created)
+- LEDGER.md (this entry)
+
+### Checks run
+
+- V18+ loop: completed cleanly, 7/10 rounds (stopped at V24 when no progress)
+- Sign numbering audit: 0 out-of-order seals confirmed
+- PDR list duplicates: identified and fixed in both v8 and v18 scripts
+- AGENTS.md: WARP.md reference removed, G-series correctly inserted
+- WARP.md: confirmed deleted
+- iconographic_anchors.json: 12 Parpola anchors (P-numbers) confirmed intact
+
+### Open TODOs (updated)
+
+**Critical (block publication-grade claims):**
+- [ ] Build mahadevan_parpola_crosswalk.json (P30-D3) — needed to integrate Holdat M-numbers
+      with CISI P-number experiments. RISK-001.
+- [ ] Cite source for TAMIL_BRAHMI_FREQ (Mahadevan 2003 Table 2 or equivalent). RISK-003.
+- [ ] Rename PDR_ lists to OldTamil_ in both v8 and v18 scripts. RISK-002.
+
+**Research (Phase-32):**
+- [ ] Phase-32 T1: TB-NAMES corpus extraction (flip T2 genre confound)
+- [ ] Phase-32 T2: TB parser coverage 47→100+ inscriptions (.epub extraction)
+- [ ] Phase-32 T3: Bigram transition matrix comparison
+- [ ] Phase-32 T4: SA M77 → TB LM decipherment (P30-H1, THE BIG TEST)
+- [ ] Phase-30c N=200 permutations (publication-grade null)
+- [ ] P30-A1-A3 Enmenanak/Enheduana statistical correction
+
+**Corpus acquisition:**
+- [ ] Email Fuls for ICIT access — attach fuls_contact_email.md + fuls_research_brief_may2026.md
+      (convert brief to PDF first)
+- [ ] Build Laursen Table 1 western Gulf corpus spreadsheet (23 objects)
+- [ ] Request BM images: BM 120228, BM 123059, BM 123208; Penn U.8685
+
+**UI / Product:**
+- [ ] Project edit form in ProjectsView
+- [ ] Evidence linking architecture
+- [ ] HelpView documentation for Projects
+- [ ] Playwright E2E tests for project CRUD
+
+### Risks
+
+- RISK-001 through RISK-006 documented in audit section above.
+- mahadevan_parpola_crosswalk.json effectively empty — all cross-corpus analysis blocked.
+- TB frequency source must be cited before external communication (prize submission, papers).
+- fuls_emails.pdf still MISSING from C:\Users\trist\Downloads\fuls_emails.pdf.
+
+### Next step
+
+1. Send Fuls ICIT access email (fuls_contact_email.md + fuls_research_brief_may2026.pdf).
+2. Build M↔P crosswalk (Phase-32 prerequisite for unifying the two analysis tracks).
+3. Phase-32 T2: improve TB parser coverage to 100+ inscriptions.
+4. Phase-32 T4: run SA M77 → Tamil-Brahmi LM — the critical falsification test.

@@ -124,24 +124,52 @@ async def resolve_assignment(
     }
 
 
+# Preferred provider types for fallback selection, in priority order.
+# vLLM/BYOE endpoints and Ollama are local/free, so prefer them.
+_FALLBACK_TYPE_PRIORITY = ["byoe", "ollama", "cloud", "huggingface"]
+
+
+# Provider type sets for each profile.
+_PROFILE_TYPES: dict[str, set[str]] = {
+    "mixed": {"cloud", "ollama", "byoe", "huggingface"},
+    "cloud": {"cloud"},
+    "local": {"ollama", "byoe", "huggingface"},
+}
+
+
 @router.post("/auto-configure")
-async def auto_configure() -> dict[str, Any]:
+async def auto_configure(profile: str = Query("mixed")) -> dict[str, Any]:
     """Auto-assign the best available models to each bucket.
 
-    Uses model_scores (from HF leaderboard or local benchmarks) to pick
-    the highest-scoring model for each bucket from the available providers.
-    Falls back to simple heuristics if no scores are available.
+    Profiles:
+      mixed (default) — uses all providers (cloud + local).
+      cloud           — only cloud API providers.
+      local           — only Ollama, vLLM/BYOE, HuggingFace.
+
+    Strategy per profile:
+      Primary   — highest-scored model from eligible providers.
+      Fallback  — highest-scored model from a DIFFERENT eligible provider,
+                  preferring local/free backends (vLLM → Ollama → cloud).
+      Global    — best overall as primary, different provider as fallback.
     """
+    allowed_types = _PROFILE_TYPES.get(profile, _PROFILE_TYPES["mixed"])
+
     db = get_db()
     if db is None:
         raise HTTPException(503, "Database not ready")
 
-    providers = await db.list_providers(enabled_only=True)
+    all_providers = await db.list_providers(enabled_only=True)
+    providers = [p for p in all_providers if p.get("provider_type", "cloud") in allowed_types]
     if not providers:
         return {
             "configured": False,
             "message": "No enabled providers found. Add a provider first.",
         }
+
+    # Build a quick provider-id → provider-type lookup
+    prov_type_map: dict[str, str] = {
+        p["id"]: p.get("provider_type", "cloud") for p in providers
+    }
 
     # Gather all available models across providers
     all_models: list[dict[str, Any]] = []
@@ -150,7 +178,7 @@ async def auto_configure() -> dict[str, Any]:
             all_models.append({
                 "provider_id": prov["id"],
                 "provider_name": prov["name"],
-                "provider_type": prov["provider_type"],
+                "provider_type": prov.get("provider_type", "cloud"),
                 "model": model_name,
             })
 
@@ -170,41 +198,87 @@ async def auto_configure() -> dict[str, Any]:
             "longform": s.get("longform_score", 0),
         }
 
-    def _best_for_bucket(bucket_key: str) -> dict[str, Any] | None:
+    def _ranked_for_bucket(bucket_key: str) -> list[tuple[float, dict[str, Any]]]:
+        """All models sorted by score for *bucket_key*, descending."""
         scored = []
         for m in all_models:
             s = score_map.get(m["model"], {}).get(bucket_key, 0)
             scored.append((s, m))
         scored.sort(key=lambda x: x[0], reverse=True)
-        return scored[0][1] if scored else None
+        return scored
+
+    def _pick_fallback(
+        ranked: list[tuple[float, dict[str, Any]]],
+        primary_provider_id: str,
+    ) -> dict[str, Any] | None:
+        """Pick the best fallback from a *different* provider than primary.
+
+        Strategy: pick the highest-scored model from a different provider.
+        If scores are tied, prefer local/free backends (byoe → ollama).
+        """
+        type_priority = {t: i for i, t in enumerate(_FALLBACK_TYPE_PRIORITY)}
+        candidates = [
+            (score, type_priority.get(m["provider_type"], 99), m)
+            for score, m in ranked
+            if m["provider_id"] != primary_provider_id
+        ]
+        if not candidates:
+            return None
+        # Sort by: score DESC first, then type-priority ASC as tiebreaker
+        candidates.sort(key=lambda x: (-x[0], x[1]))
+        return candidates[0][2]
 
     assignments: dict[str, Any] = {}
     for bucket in VALID_BUCKETS:
         if bucket == "global":
             continue
-        best = _best_for_bucket(bucket)
-        if best:
+        ranked = _ranked_for_bucket(bucket)
+        if not ranked:
+            continue
+        # ── Primary: highest score overall ──
+        best = ranked[0][1]
+        await db.upsert_model_assignment(
+            bucket=bucket, rank=1,
+            provider_registry_id=best["provider_id"],
+            model=best["model"],
+        )
+        assignments[bucket] = {
+            "primary": {"provider": best["provider_name"], "model": best["model"]},
+        }
+        # ── Fallback: best from a different provider ──
+        fb = _pick_fallback(ranked, best["provider_id"])
+        if fb:
             await db.upsert_model_assignment(
-                bucket=bucket, rank=1,
-                provider_registry_id=best["provider_id"],
-                model=best["model"],
+                bucket=bucket, rank=2,
+                provider_registry_id=fb["provider_id"],
+                model=fb["model"],
             )
-            assignments[bucket] = {
-                "provider": best["provider_name"],
-                "model": best["model"],
+            assignments[bucket]["fallback"] = {
+                "provider": fb["provider_name"], "model": fb["model"],
             }
 
-    # Set global default = first available model (fallback of last resort)
-    if all_models:
-        first = all_models[0]
+    # ── Global default ──
+    # Primary: best overall (any bucket), Fallback: different provider.
+    ranked_global = _ranked_for_bucket("conversational")  # good general-purpose proxy
+    if ranked_global:
+        gbest = ranked_global[0][1]
         await db.upsert_model_assignment(
             bucket="global", rank=1,
-            provider_registry_id=first["provider_id"],
-            model=first["model"],
+            provider_registry_id=gbest["provider_id"],
+            model=gbest["model"],
         )
         assignments["global"] = {
-            "provider": first["provider_name"],
-            "model": first["model"],
+            "primary": {"provider": gbest["provider_name"], "model": gbest["model"]},
         }
+        gfb = _pick_fallback(ranked_global, gbest["provider_id"])
+        if gfb:
+            await db.upsert_model_assignment(
+                bucket="global", rank=2,
+                provider_registry_id=gfb["provider_id"],
+                model=gfb["model"],
+            )
+            assignments["global"]["fallback"] = {
+                "provider": gfb["provider_name"], "model": gfb["model"],
+            }
 
-    return {"configured": True, "assignments": assignments}
+    return {"configured": True, "profile": profile, "assignments": assignments}

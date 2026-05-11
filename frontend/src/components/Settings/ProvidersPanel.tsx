@@ -56,6 +56,10 @@ export function ProvidersPanel() {
   };
 
   const handleSaveField = async (id: string, field: string, value: string) => {
+    if (field === "name" && !value.trim()) {
+      toast("Provider name cannot be empty", "error");
+      return;
+    }
     setSaving(s => ({ ...s, [`${id}_${field}`]: true }));
     try {
       await updateProvider(id, { [field]: value } as never);
@@ -92,24 +96,28 @@ export function ProvidersPanel() {
 
   const renderEditField = (p: ProviderEntry, field: string, label: string, type = "text", placeholder = "") => {
     const dk = `${p.id}_${field}`;
+    const hasDraft = dk in editDraft;  // true even when draft is empty string
     const draft = editDraft[dk] ?? "";
     const isSaving = saving[dk];
     const cur = field === "api_key" ? "" : (p as unknown as Record<string, string>)[field] || "";
+    const displayValue = hasDraft ? draft : (field === "api_key" ? "" : cur);
+    const isNameEmpty = field === "name" && hasDraft && !draft.trim();
     return (
       <div style={{ marginBottom: 8 }}>
         <label style={{ fontSize: 10, fontWeight: 600, color: "#6b7280", display: "block", marginBottom: 2 }}>{label}</label>
         <div style={{ display: "flex", gap: 4 }}>
-          <input type={type} value={draft || (field === "api_key" ? "" : cur)}
+          <input type={type} value={displayValue}
             onChange={e => setEditDraft(d => ({ ...d, [dk]: e.target.value }))}
             placeholder={field === "api_key" ? (p.api_key_set ? "••••••••  (paste new to replace)" : "Paste API key...") : placeholder || cur}
-            style={{ flex: 1, padding: "4px 8px", fontSize: 12, borderRadius: 4, border: "1px solid #d1d5db", fontFamily: type === "password" ? "monospace" : undefined }} />
-          {draft && (
-            <button onClick={() => handleSaveField(p.id, field, draft)} disabled={isSaving}
-              style={{ padding: "4px 10px", fontSize: 11, border: "none", borderRadius: 4, background: "#2563eb", color: "#fff", cursor: "pointer", fontWeight: 600 }}>
+            style={{ flex: 1, padding: "4px 8px", fontSize: 12, borderRadius: 4, border: `1px solid ${isNameEmpty ? "#f87171" : "#d1d5db"}`, fontFamily: type === "password" ? "monospace" : undefined }} />
+          {hasDraft && (
+            <button onClick={() => handleSaveField(p.id, field, draft)} disabled={isSaving || isNameEmpty}
+              style={{ padding: "4px 10px", fontSize: 11, border: "none", borderRadius: 4, background: isNameEmpty ? "#9ca3af" : "#2563eb", color: "#fff", cursor: isNameEmpty ? "not-allowed" : "pointer", fontWeight: 600 }}>
               {isSaving ? "..." : "Save"}
             </button>
           )}
         </div>
+        {isNameEmpty && <div style={{ fontSize: 10, color: "#ef4444", marginTop: 2 }}>Name cannot be empty</div>}
       </div>
     );
   };

@@ -46,10 +46,28 @@ _HF_DATASETS_API = (
     "?dataset=open-llm-leaderboard/contents"
     "&config=default&split=train"
 )
-_HF_PAGE_SIZE = 100   # max rows per request
-_HF_MAX_RETRIES = 3   # retries per page on 429
-_HF_PAGE_DELAY = 2.0  # seconds between pages to avoid rate limits
+_HF_PAGE_SIZE = 100   # max rows per request (API max)
+_HF_MAX_RETRIES = 4   # retries per page on 429
+_HF_PAGE_DELAY = 3.5  # seconds between pages — HF API bucket: 1000 req/5min with token
 _sync_lock = threading.Lock()  # prevent concurrent HF syncs
+
+
+def _parse_ratelimit_reset(headers: object) -> float | None:
+    """Parse HF's RateLimit header to extract seconds until reset.
+
+    Header format (IETF draft-09): ``'"api";r=X;t=Y'``  where ``t`` is seconds
+    until the fixed window resets.  Returns ``t`` if parseable, else ``None``.
+    """
+    import re  # noqa: PLC0415
+    try:
+        rl = headers.get("RateLimit") or headers.get("ratelimit") or ""  # type: ignore[attr-defined]
+        if rl:
+            m = re.search(r"t=(\d+(?:\.\d+)?)", rl)
+            if m:
+                return float(m.group(1)) + 1.0  # +1s safety margin
+    except Exception:  # noqa: BLE001
+        pass
+    return None
 
 # ── Scoring weights ────────────────────────────────────────────────────────
 
@@ -126,9 +144,14 @@ def _sync_hf_inner() -> dict[str, Any]:
         ssl_ctx.check_hostname = False
         ssl_ctx.verify_mode = ssl.CERT_NONE
 
-    # Optional HF token for higher rate limits
+    # Optional HF token — authenticated users get 1000 req/5min vs 500 anonymous
     from glossa_lab.api.settings import get_key  # noqa: PLC0415
     hf_token = get_key("hf_api_token") or ""
+    if not hf_token:
+        _log.warning(
+            "No hf_api_token configured. HF sync uses anonymous rate limits "
+            "(500 req/5min). Set hf_api_token in Settings to double the limit."
+        )
 
     synced = 0
     errors = 0
@@ -150,8 +173,12 @@ def _sync_hf_inner() -> dict[str, Any]:
                     return json.loads(rsp.read().decode())
             except urllib.error.HTTPError as he:
                 if he.code == 429 and attempt < _HF_MAX_RETRIES:
-                    retry_after = he.headers.get("Retry-After")
-                    wait = float(retry_after) if retry_after else (2 ** attempt) * 5
+                    # Prefer HF's RateLimit header t= (exact window reset) over Retry-After
+                    wait = (
+                        _parse_ratelimit_reset(he.headers)
+                        or (float(he.headers.get("Retry-After") or 0))
+                        or (2 ** attempt) * 5
+                    )
                     _log.info(
                         "HF rate-limited (429), waiting %.0fs (attempt %d/%d)",
                         wait, attempt + 1, _HF_MAX_RETRIES,
@@ -288,8 +315,14 @@ def _sync_static_fallback() -> dict[str, Any]:
         "deepseek-r1:14b": {"ifeval": 72.0, "bbh": 66.0, "math": 68.0, "gpqa": 35.0, "musr": 38.0, "mmlu_pro": 55.0},
         "phi4:14b": {"ifeval": 75.0, "bbh": 70.0, "math": 60.0, "gpqa": 38.0, "musr": 45.0, "mmlu_pro": 60.0},
         "command-r-plus": {"ifeval": 78.0, "bbh": 72.0, "math": 52.0, "gpqa": 38.0, "musr": 48.0, "mmlu_pro": 62.0},
-        # vLLM / custom
-        "l1-nexus": {"ifeval": 75.0, "bbh": 68.0, "math": 52.0, "gpqa": 35.0, "musr": 42.0, "mmlu_pro": 58.0},
+        # vLLM / self-hosted — use substrings that fuzzy-match real HF model IDs
+        # vLLM /v1/models returns the full HF repo ID, e.g.
+        #   cpatonn/Qwen3-Coder-30B-A3B-Instruct-AWQ-4bit
+        # Frontend fuzzy-match: modelName.includes(s.model_name) will hit these.
+        "Qwen3-Coder-30B": {"ifeval": 80.5, "bbh": 74.0, "math": 72.0, "gpqa": 43.0, "musr": 53.0, "mmlu_pro": 66.0},
+        "Qwen3-14B": {"ifeval": 79.5, "bbh": 73.0, "math": 68.0, "gpqa": 41.5, "musr": 52.0, "mmlu_pro": 64.5},
+        "Qwen3-8B": {"ifeval": 73.0, "bbh": 65.5, "math": 55.0, "gpqa": 32.0, "musr": 41.0, "mmlu_pro": 54.0},
+        "bge-m3": {"ifeval": 0.0, "bbh": 0.0, "math": 0.0, "gpqa": 0.0, "musr": 0.0, "mmlu_pro": 0.0},
     }
 
     db = get_db()
@@ -411,4 +444,102 @@ async def get_recommendations(bucket: str = "reasoning") -> dict[str, Any]:
 async def force_sync() -> dict[str, Any]:
     """Force re-sync from HuggingFace leaderboard."""
     result = await sync_from_huggingface()
+    return result
+
+
+@router.post("/test-hf")
+async def test_hf_connection() -> dict[str, Any]:
+    """Test HuggingFace API connectivity and token validity.
+
+    Checks:
+    1. Token validity via ``/api/whoami-v2`` (if token configured)
+    2. Datasets Server reachability via a minimal ``/is-valid`` probe
+    3. Returns rate-limit tier based on token presence
+    """
+    import os  # noqa: PLC0415
+    import ssl  # noqa: PLC0415
+
+    from glossa_lab.api.settings import get_key  # noqa: PLC0415
+
+    hf_token = get_key("hf_api_token") or ""
+
+    ssl_ctx: ssl.SSLContext | None = None
+    if os.environ.get("GLOSSA_SSL_VERIFY", "1").strip() in ("0", "false", "no"):
+        ssl_ctx = ssl.create_default_context()
+        ssl_ctx.check_hostname = False
+        ssl_ctx.verify_mode = ssl.CERT_NONE
+
+    result: dict[str, Any] = {
+        "valid": False,
+        "message": "",
+        "token_set": bool(hf_token),
+        "token_valid": False,
+        "username": None,
+        "rate_limit_tier": "anonymous (500 req/5min)" if not hf_token else "authenticated (1000 req/5min)",
+        "rate_limit_remaining": None,
+        "dataset_server_ok": False,
+    }
+
+    # ── 1. Validate token ─────────────────────────────────────────────────
+    if hf_token:
+        try:
+            req = urllib.request.Request(
+                "https://huggingface.co/api/whoami-v2",
+                headers={"Authorization": f"Bearer {hf_token}", "Accept": "application/json"},
+                method="GET",
+            )
+            with urllib.request.urlopen(req, timeout=10, context=ssl_ctx) as resp:
+                data = json.loads(resp.read().decode())
+                username = data.get("name") or data.get("fullname") or data.get("login") or "unknown"
+                result["token_valid"] = True
+                result["username"] = username
+                # Parse rate limit remaining if header present
+                rl_remaining = _parse_ratelimit_reset(resp.headers)
+                if rl_remaining:
+                    result["rate_limit_remaining"] = rl_remaining
+        except urllib.error.HTTPError as exc:
+            if exc.code == 401:
+                result["message"] = "HF token is invalid or expired (HTTP 401). Check Settings → hf_api_token."
+                return result
+            result["message"] = f"Token validation failed: HTTP {exc.code}"
+        except Exception as exc:  # noqa: BLE001
+            result["message"] = f"Cannot reach HuggingFace: {exc}"
+            return result
+    else:
+        result["message"] = "No hf_api_token set — using anonymous access (rate limits apply)."
+
+    # ── 2. Test Datasets Server reachability ──────────────────────────────
+    try:
+        hdrs: dict[str, str] = {"Accept": "application/json"}
+        if hf_token:
+            hdrs["Authorization"] = f"Bearer {hf_token}"
+        probe_url = (
+            "https://datasets-server.huggingface.co/is-valid"
+            "?dataset=open-llm-leaderboard/contents"
+        )
+        req = urllib.request.Request(probe_url, headers=hdrs, method="GET")
+        with urllib.request.urlopen(req, timeout=10, context=ssl_ctx) as resp:
+            data = json.loads(resp.read().decode())
+            result["dataset_server_ok"] = bool(data.get("viewer") or data.get("preview"))
+    except urllib.error.HTTPError as exc:
+        if exc.code == 429:
+            result["message"] += " Datasets Server rate-limited (429)."
+        else:
+            result["message"] += f" Datasets Server returned HTTP {exc.code}."
+    except Exception as exc:  # noqa: BLE001
+        result["message"] += f" Datasets Server unreachable: {exc}"
+
+    # ── Build final message ───────────────────────────────────────────────
+    parts = []
+    if result["token_valid"]:
+        parts.append(f"Token valid (user: {result['username']})")
+    elif result["token_set"]:
+        parts.append("Token invalid")
+    else:
+        parts.append("No token (anonymous)")
+    parts.append("Datasets Server " + ("OK" if result["dataset_server_ok"] else "unreachable"))
+    parts.append(result["rate_limit_tier"])
+    result["valid"] = result["dataset_server_ok"]
+    result["message"] = (result["message"].strip() + " " if result["message"].strip() else "") + " | ".join(parts)
+    result["message"] = result["message"].strip()
     return result

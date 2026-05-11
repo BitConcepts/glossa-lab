@@ -192,7 +192,7 @@ The following anti-circularity measures are explicitly implemented:
 
 **Tristen Pierson**
 BitConcepts
-tristen@layer1labs.com
+tpierson@bitconcepts.tech
 https://github.com/layer1labs/glossa-lab
 
 *All results are reproducible. The repository contains the full experiment ledger,

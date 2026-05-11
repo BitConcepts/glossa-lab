@@ -122,7 +122,6 @@ Warm regards,
 Tristen Pierson
 BitConcepts
 tpierson@bitconcepts.tech
-https://github.com/layer1labs/glossa-lab
 
 ---
 

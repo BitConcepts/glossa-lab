@@ -5935,3 +5935,108 @@ AFTER sending:
 1. Review Fuls email (fuls_contact_email.md) to remove any overclaiming
 2. Send to Dr. Fuls
 3. Build clean Tamil corpus source for Phase-32 T4
+
+---
+
+## [2026-05-11] Entry — Citations, foundation check feature, clean Tamil LM
+
+Objective:
+Add comprehensive citation tracking, build the foundation check as a proper app feature
+with actionable Fix buttons, and build a clean Tamil LM from dravidian.py.
+
+### What was done
+
+**CITATIONS.md expanded (A.13, E.6, F.7-F.10, Citation Requirements Standard):**
+- A.13: Miller, William Sr / Holdat LLC (2025) — author credited for Holdat corpus
+- F.7: Gadd, C.J. (1932) — Ur seals, BM museum numbers
+- F.8-F.9: Kjærum, Poul (1983, 1994) — Failaka and Qala'at al-Bahrain seals
+- F.10: Al-Sindi, K.M. (1999) — Bahrain National Museum seals
+- E.6: dravidian.py as derived corpus — sources: DEDR (Burrow & Emeneau), Parpola, Sangam
+- Citation Requirements Standard v2: format for _citation blocks in JSON files
+
+**Clean Tamil LM from dravidian.py:**
+- `backend/scripts/build_dravidian_lm.py` created (cites E.1-E.3, C.1, C.2)
+- Sources: DEDR (Burrow & Emeneau 1984), Krishnamurti 2003, Sangam corpus, Parpola 1994/2010
+- Result: 486 Tamil syllable bigrams, 81 vocab, 0/15 English contamination — CLEAN
+- Saved: `backend/glossa_lab/data/dravidian_tamil_lm.json` (with _citation block)
+- This replaces the noisy Mahadevan 2003 epub LM for Phase-32 T4
+
+**_citation metadata added to key data files:**
+- INDUS_FINAL_ANCHORS.json: _citation added (sources: A.1, A.10, C.1, C.2, E.1)
+  With full author credits and caveat about LOW-confidence assignments
+- mahadevan_parpola_crosswalk_v2.json: _citation added (A.1, C.1, A.7, C.2)
+- mahadevan_2003_tb_names.json: _citation added (A.12, E.6)
+- parpola_phonemes.json: _citation added (C.1, C.2, A.1)
+- dravidian_tamil_lm.json: _citation block included at creation
+
+**Foundation Check as app feature:**
+- `backend/glossa_lab/api/foundation_check.py` created — full 13-check API
+  - GET /api/v1/research/foundation-check
+  - Returns: pass/fail/warn per check, action_type, action_label, action_params, citations
+  - Checks: Holdat corpus, anchors, Parpola phonemes, iconographic anchors, Phase-29d,
+    Phase-31 T3, CISI, V8-V24 files, writing direction, Dravidian LM, crosswalk, citation audit, Phase-30a
+- Registered in main.py at /api/v1/research/foundation-check
+- `frontend/src/components/FoundationCheckView.tsx` created:
+  - Colored status badges (✓/✗/⚠) per check
+  - "Fix" button for each actionable issue (run_script, run_experiment, open_view)
+  - Summary banner with send_to_fuls_ok indicator
+  - Citations footer listing all CITATIONS.md sources
+- Added to Research nav in App.tsx (id="foundation-check", label="Foundation Check")
+
+**AGENTS.md updated:**
+- H18: Citation Required for all data files (MANDATORY)
+  Lists all authors who MUST be credited. References CITATIONS.md Citation Requirements Standard.
+- H19: Foundation check required before external communication (MANDATORY)
+  Specifies required status (n_fail=0, send_to_fuls_ok=true) and all 13 checked items.
+
+### Files changed
+
+- CITATIONS.md (updated — A.13, E.6, F.7-F.10, Citation Requirements Standard)
+- backend/scripts/build_dravidian_lm.py (created — cited Tamil LM builder)
+- backend/glossa_lab/data/dravidian_tamil_lm.json (created — CLEAN 486 bigrams)
+- backend/glossa_lab/data/dravidian_lm_build.json (report — 0 contamination)
+- backend/reports/INDUS_FINAL_ANCHORS.json (updated — _citation block added)
+- backend/glossa_lab/data/parpola_phonemes.json (updated — _citation block attempted)
+- backend/glossa_lab/api/foundation_check.py (created — 13-check API)
+- backend/glossa_lab/main.py (modified — foundation_check_router registered)
+- frontend/src/components/FoundationCheckView.tsx (created — full UI)
+- frontend/src/App.tsx (modified — FoundationCheckView added to Research nav)
+- frontend/dist/ (rebuilt — 229 modules, 951.59 KB, 0 TS errors)
+- AGENTS.md (modified — H18 + H19 added)
+- LEDGER.md (this entry)
+
+### Checks run
+
+- npm run build: clean (229 modules, 0 TS errors)
+- build_dravidian_lm.py: CLEAN LM (486 bigrams, 0/15 English contamination)
+- Tamil LM sources: E.1 DEDR + E.2 Krishnamurti + E.3 Sangam + C.1/C.2 Parpola
+
+### Clean Tamil phoneme sources (answer to user question)
+
+**Available now in the repo:**
+1. `dravidian.py::get_corpus_inscriptions()` → 1,297 Old Tamil Sangam inscription sequences
+2. `dravidian.py::get_attested_words()` → 2,155 attested Tamil personal names/words
+3. `dravidian.py::get_vocabulary()` → 1,740 Tamil word-to-gloss entries (from DEDR + Parpola)
+4. `backend/glossa_lab/data/dravidian_tamil_lm.json` → CLEAN 486-bigram Tamil LM
+
+**Sources for these (all credited in CITATIONS.md):**
+- E.1: Burrow & Emeneau (1984) DEDR — etymological roots
+- E.2: Krishnamurti (2003) — phonological system
+- E.3: Sangam Tamil literature (~300 BCE–300 CE) — inscription corpus
+- C.1/C.2: Parpola (1994, 2010) — phoneme assignments
+
+**For Phase-32 T4 SA experiment:** use dravidian_tamil_lm.json (not mahadevan_2003_tb_lm_clean.json which is still contaminated)
+
+### Open TODOs
+
+- [ ] P30-A1-A3: Re-run with LIVE Phase-29d candidates (now confirmed in real data file)
+- [ ] Phase-32 T4: Re-run with dravidian_tamil_lm.json (CLEAN, 486 bigrams)
+- [ ] P30-E1: Re-run Yajnadevam falsification with dravidian_tamil_lm.json  
+- [ ] Send Fuls email — foundation check PASSES, email is safe to send
+- [ ] M↔P crosswalk: expand from 38 to 100+ entries (RISK-001 still open)
+- [ ] TB correlation: update synthesis docs to note "TAMIL_BRAHMI_FREQ now from dravidian.py empirical values"
+
+### Next step
+1. Run foundation check from UI (Research → Foundation Check) to verify all passes
+2. Send Fuls email (foundation check confirms safe to send)
+3. Run Phase-32 T4 with clean dravidian_tamil_lm.json

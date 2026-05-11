@@ -51,7 +51,14 @@ export function ModelAssignmentsPanel() {
   const [testingHF, setTestingHF] = useState(false);
   const [configuring, setConfiguring] = useState(false);
   const [scoredOnly, setScoredOnly] = useState(false);
-  const [profile, setProfile] = useState<AutoConfigProfile>("mixed");
+  const [profile, setProfile] = useState<AutoConfigProfile>(
+    () => (localStorage.getItem("glossa_assignment_filter") as AutoConfigProfile) || "mixed"
+  );
+
+  const handleProfileChange = (p: AutoConfigProfile) => {
+    setProfile(p);
+    localStorage.setItem("glossa_assignment_filter", p);
+  };
 
   // Draft state: keyed "bucket_rank" -> "providerId|model"
   // Initialised (and reset) from server assignments on every refresh.
@@ -277,7 +284,7 @@ export function ModelAssignmentsPanel() {
           </button>
           <div style={{ display: "flex", alignItems: "center", gap: 2 }}>
             <span style={{ fontSize: 10, color: "#9ca3af", flexShrink: 0 }}>Filter:</span>
-            <select value={profile} onChange={e => setProfile(e.target.value as AutoConfigProfile)}
+            <select value={profile} onChange={e => handleProfileChange(e.target.value as AutoConfigProfile)}
               style={{ fontSize: 11, padding: "3px 4px", borderRadius: 4, border: "1px solid #d1d5db", background: "#fff" }}>
               <option value="mixed">🔀 All</option>
               <option value="cloud">☁️ Cloud only</option>

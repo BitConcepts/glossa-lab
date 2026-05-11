@@ -2247,6 +2247,18 @@ export const getModelRecommendations = (
 export const syncModelIntelligence = (): Promise<{ synced: number; errors: number; message: string }> =>
   request("POST", "/model-intelligence/sync");
 
+export const testHuggingFace = (): Promise<{
+  valid: boolean;
+  message: string;
+  token_set: boolean;
+  token_valid: boolean;
+  username: string | null;
+  rate_limit_tier: string;
+  rate_limit_remaining: number | null;
+  dataset_server_ok: boolean;
+}> =>
+  request("POST", "/model-intelligence/test-hf");
+
 // ── Email provider presets (frontend-only catalogue) ────────────────────────────────
 
 export interface EmailProviderPreset {

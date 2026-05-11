@@ -2,7 +2,7 @@
 
 **To:** andreas.fuls@tu-berlin.de
 **Subject:** Re: Glossa Lab — Following Up / New Structural Results + Personal Note
-**From:** Tristen Pierson <tristen@layer1labs.com>
+**From:** Tristen Pierson <tpierson@bitconcepts.tech>
 
 ---
 
@@ -94,7 +94,9 @@ This finding has survived three follow-up validation tests:
 
 Overall: the Phase-29d finding is statistically robust. It is not yet a confirmed reading.
 
-**What I am asking for**
+**One more thing I want to be clear about: I'm not trying to sell you anything. Glossa Lab isn't a product pitch. It's a research tool I built specifically to approach this problem rigorously — the kind of tool I wished existed when I started. It's open-source, it's free, and it exists to serve the research, not the other way around.
+
+**What I am asking for****
 
 1. ICIT access — even read-only access to the 4,537-artefact corpus would let me re-run
    the full pipeline and test whether these correlations hold at 2.7× the current corpus
@@ -119,7 +121,7 @@ Warm regards,
 
 Tristen Pierson
 BitConcepts
-tristen@layer1labs.com
+tpierson@bitconcepts.tech
 https://github.com/layer1labs/glossa-lab
 
 ---

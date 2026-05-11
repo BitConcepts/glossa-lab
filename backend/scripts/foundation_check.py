@@ -289,23 +289,33 @@ WARN("TB corpus quality", f"121 inscriptions from epub — BUT heavily contamina
 WARN("TB LM for Phase-32 T4", "Cannot build a valid bigram LM from this corpus; all attempts give English bigrams in top-10")
 WARN("TB correlation validity", "The 0.907 TB correlation was computed against hardcoded approximate TB frequencies (not verified from clean corpus)")
 
-clean_lm_path = DATA / "mahadevan_2003_tb_lm_clean.json"
+# Check the clean Dravidian Tamil LM (from dravidian.py - DEDR + Parpola + Sangam)
+clean_lm_path = DATA / "dravidian_tamil_lm.json"
+fallback_path  = DATA / "mahadevan_2003_tb_lm_clean.json"  # older, still noisy
 if clean_lm_path.exists():
     lm_data = json.loads(clean_lm_path.read_text(encoding="utf-8"))
-    n_clean_bigrams = lm_data.get("n_bigrams", 0)
-    top_bigrams = lm_data.get("top_10_bigrams", [])
+    n_bi    = lm_data.get("n_bigrams", 0)
+    verdict = lm_data.get("verdict", "?")
+    has_cit = "_citation" in lm_data
     ENG = {"of","the","and","in","line","cm","lower","ledge","racing",
            "left","right","tracing","estampage","plate","fig","vol","pp",
-           "th","at","to","is","be","was","are","by","pp","see"}
-    english_contamination = sum(
-        1 for b, _ in top_bigrams
-        if any(w in ENG for w in b)
+           "th","at","to","is","be","was","are","by","see"}
+    top = lm_data.get("top_15_bigrams", [])
+    contamination = sum(1 for b, _ in top if any(w in ENG for w in b))
+    CHECK(
+        f"Dravidian Tamil LM (clean, {n_bi} bigrams)",
+        n_bi >= 400 and contamination == 0,
+        f"dravidian_tamil_lm.json: {n_bi} bigrams, verdict={verdict}, "
+        f"contamination={contamination}/15 top bigrams, citation={'✓' if has_cit else '✗'}. "
+        f"Sources: DEDR (Burrow & Emeneau 1984) + Sangam corpus + Parpola 1994/2010."
     )
-    CHECK("Clean LM bigrams > 500", n_clean_bigrams > 500, f"{n_clean_bigrams} bigrams")
-    CHECK("Clean LM contamination", english_contamination <= 2,
-          f"{english_contamination}/10 top bigrams are English")
 else:
-    WARN("Clean LM file", "mahadevan_2003_tb_lm_clean.json not found")
+    CHECK("Dravidian Tamil LM (clean)", False,
+          "dravidian_tamil_lm.json not found — run: shell.cmd python backend/scripts/build_dravidian_lm.py")
+if fallback_path.exists():
+    WARN("mahadevan_2003_tb_lm_clean.json",
+         "Still exists but is contaminated (5/10 top bigrams English). "
+         "Use dravidian_tamil_lm.json instead for all Phase-32 T4 work.")
 
 # ── 9. WHAT WE CAN CLAIM ──────────────────────────────────────────────────
 print("\n── SUMMARY: What can we claim to Dr. Fuls? ──────────────────────────")

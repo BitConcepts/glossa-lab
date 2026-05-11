@@ -233,14 +233,31 @@ class Phase32SAM77TB(ExperimentBase):
         ]
 
     def _load_tb_lm(self) -> dict:
-        """Build a simple log-bigram LM from the Tamil-Brahmi corpus."""
+        """Load the clean Dravidian Tamil bigram LM.
+
+        Uses dravidian_tamil_lm.json (DEDR + Parpola + Sangam corpus, CLEAN).
+        See CITATIONS.md sections E.1 (DEDR/Burrow+Emeneau), E.2 (Krishnamurti),
+        E.3 (Sangam), C.1/C.2 (Parpola).
+        Built by: backend/scripts/build_dravidian_lm.py
+        """
+        # Primary: clean Dravidian LM from dravidian.py (DEDR + Sangam + Parpola)
+        clean_lm = REPO / "backend/glossa_lab/data/dravidian_tamil_lm.json"
+        if clean_lm.exists():
+            d = json.loads(clean_lm.read_text(encoding="utf-8"))
+            # Convert bigram keys back to native dict (already log-probs)
+            return {
+                "bigrams": d.get("bigrams", {}),
+                "vocab":   d.get("vocab", []),
+                "source":  "dravidian_tamil_lm.json (DEDR+Sangam+Parpola, CLEAN)",
+                "n_bigrams": d.get("n_bigrams", 0),
+            }
+        # Fallback: build from TB inscriptions (noisy but better than empty)
         import math as _math
         tb_json = REPO / "backend/glossa_lab/data/mahadevan_2003_tamil_brahmi.json"
         if not tb_json.exists():
             return {"bigrams": {}, "vocab": []}
         tb = json.loads(tb_json.read_text(encoding="utf-8"))
         inscriptions = tb.get("inscriptions", [])
-
         bigram_counts: Counter = Counter()
         unigram_counts: Counter = Counter()
         for insc in inscriptions:
@@ -251,17 +268,13 @@ class Phase32SAM77TB(ExperimentBase):
                 unigram_counts[a] += 1
             for i in range(len(aksharas) - 1):
                 bigram_counts[(aksharas[i], aksharas[i + 1])] += 1
-
-        # Compute log-probabilities with Laplace smoothing
-        vocab   = list(unigram_counts.keys())
-        V       = len(vocab)
-        N_total = sum(bigram_counts.values())
+        vocab = list(unigram_counts.keys())
+        V     = len(vocab)
         lm: dict[str, float] = {}
         for (a, b), cnt in bigram_counts.items():
-            prob     = (cnt + 1) / (unigram_counts.get(a, 0) + V + 1)
+            prob = (cnt + 1) / (unigram_counts.get(a, 0) + V + 1)
             lm[f"{a}|{b}"] = _math.log(prob)
-
-        return {"bigrams": lm, "vocab": vocab}
+        return {"bigrams": lm, "vocab": vocab, "source": "mahadevan_2003 (fallback, noisy)"}
 
     def _load_parpola_anchors(self) -> dict[str, str]:
         """Load Parpola phoneme map as sign→phoneme anchors (M-number format where possible)."""

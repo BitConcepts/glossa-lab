@@ -1,0 +1,24 @@
+{
+  "n_inscriptions": 121,
+  "n_with_names": 5,
+  "unique_names": [
+    "Cekkant",
+    "Ilanatag",
+    "Katalap Valuti",
+    "Nanta-siri Kuvan",
+    "Perunkiray",
+    "the chief kaviti of",
+    "to Nanta-siri Kuvan"
+  ],
+  "n_unique_names": 7,
+  "clean_inscriptions": 120,
+  "total_clean_aksharas": 3384,
+  "pct_clean": 74.9,
+  "m77_mean_length": 3.2,
+  "tb_mean_length_all": 37.36,
+  "tb_mean_length_named": 20.2,
+  "genre_confound_verdict": "FAVORABLE: name-bearing TB inscriptions closer in length to M77",
+  "citations": [
+    "A.12"
+  ]
+}

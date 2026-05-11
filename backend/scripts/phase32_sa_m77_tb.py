@@ -233,14 +233,28 @@ class Phase32SAM77TB(ExperimentBase):
         ]
 
     def _load_tb_lm(self) -> dict:
-        """Load the clean Dravidian Tamil bigram LM.
+        """Load the Dravidian Tamil bigram LM.
 
-        Uses dravidian_tamil_lm.json (DEDR + Parpola + Sangam corpus, CLEAN).
-        See CITATIONS.md sections E.1 (DEDR/Burrow+Emeneau), E.2 (Krishnamurti),
-        E.3 (Sangam), C.1/C.2 (Parpola).
-        Built by: backend/scripts/build_dravidian_lm.py
+        Priority order:
+        1. dravidian_syllable_lm.json  — syllable-level (2293 bigrams, CV chunks from
+           DEDR + clean TB aksharas).  More discriminative for short Indus inscriptions.
+        2. dravidian_tamil_lm.json — word-level fallback (486 bigrams, DEDR roots).
+        Citations: E.1 (DEDR/Burrow+Emeneau), A.12 (Mahadevan 2003 TB)
         """
-        # Primary: clean Dravidian LM from dravidian.py (DEDR + Sangam + Parpola)
+        # First choice: syllable-level LM (built by build_dravidian_syllable_lm.py)
+        syllable_lm = REPO / "backend/glossa_lab/data/dravidian_syllable_lm.json"
+        if syllable_lm.exists():
+            d = json.loads(syllable_lm.read_text(encoding="utf-8"))
+            if d.get("n_bigrams", 0) > 0:
+                print(f"  Using syllable LM: {d.get('n_bigrams', 0)} bigrams, "
+                      f"verdict={d.get('verdict', '?')}")
+                return {
+                    "bigrams": d.get("bigrams", {}),
+                    "vocab":   d.get("vocab", []),
+                    "source":  f"dravidian_syllable_lm.json ({d.get('n_bigrams',0)} syllable bigrams)",
+                    "n_bigrams": d.get("n_bigrams", 0),
+                }
+        # Fallback: word-level LM
         clean_lm = REPO / "backend/glossa_lab/data/dravidian_tamil_lm.json"
         if clean_lm.exists():
             d = json.loads(clean_lm.read_text(encoding="utf-8"))

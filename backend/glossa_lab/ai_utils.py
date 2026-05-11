@@ -403,13 +403,47 @@ def _dispatch_provider(
 
     # Everything else: OpenAI-compatible (cloud, byoe, huggingface)
     chat_url = _endpoint_chat_url(base_url)
-    payload = {
-        "model": model, "messages": messages,
-        "max_tokens": max_tokens, "temperature": temperature,
-    }
+
+    # ── OpenAI o1/o3 reasoning models need special parameters ────────
+    _model_lower = model.lower()
+    _is_o_series = any(
+        _model_lower.startswith(p)
+        for p in ("o1", "o3", "o4")
+    ) or any(t in _model_lower for t in ("-o1-", "-o3-", "-o4-"))
+
+    if _is_o_series:
+        # o-series: max_completion_tokens instead of max_tokens,
+        # temperature must be 1, system role → developer role.
+        adj_messages = []
+        for m in messages:
+            if m["role"] == "system":
+                adj_messages.append({"role": "developer", "content": m["content"]})
+            else:
+                adj_messages.append(m)
+        payload = {
+            "model": model, "messages": adj_messages,
+            "max_completion_tokens": max_tokens, "temperature": 1,
+        }
+    else:
+        payload = {
+            "model": model, "messages": messages,
+            "max_tokens": max_tokens, "temperature": temperature,
+        }
+
+    # ── JSON output mode ────────────────────────────────────────────────
     if json_schema and ptype in ("byoe", "huggingface"):
         payload["guided_json"] = json_schema
         payload["chat_template_kwargs"] = {"enable_thinking": False}
+    elif json_schema and ptype == "cloud" and pid == "openai":
+        # OpenAI structured-output: json_schema response format
+        payload["response_format"] = {
+            "type": "json_schema",
+            "json_schema": {
+                "name": "structured_output",
+                "strict": False,
+                "schema": json_schema,
+            },
+        }
     elif json_mode:
         payload["response_format"] = {"type": "json_object"}
         if ptype in ("byoe", "huggingface"):
@@ -697,10 +731,50 @@ def _call_remote(
             result: Any = data
             for key in response_path:
                 result = result[key]
-            return str(result)
-        return data["choices"][0]["message"]["content"]
+            return str(result) if result is not None else ""
+        # Robust extraction: some providers (Gemini 2.5 thinking mode)
+        # may omit "content" entirely or nest it differently.
+        choices = data.get("choices")
+        if not choices:
+            _log.warning("_call_remote: no 'choices' in response. Keys: %s", list(data.keys()))
+            return ""
+        msg = choices[0].get("message") or {}
+        content = msg.get("content")
+        # Gemini thinking models may put the answer in 'parts' instead.
+        if content is None and "parts" in msg:
+            parts = msg["parts"]
+            if isinstance(parts, list):
+                text_parts = [p.get("text", "") for p in parts if isinstance(p, dict) and p.get("text")]
+                content = "\n".join(text_parts)
+        if content is None:
+            _log.warning(
+                "_call_remote: message has no 'content'. Keys: %s  finish_reason=%s",
+                list(msg.keys()), choices[0].get("finish_reason", "?"),
+            )
+        return content or ""
     except urllib.error.HTTPError as exc:
-        body_text = exc.read().decode(errors="replace")[:300]
-        raise RuntimeError(f"LLM API error {exc.code}: {body_text}") from exc
+        raw_body = exc.read().decode(errors="replace")[:500]
+        # Parse the JSON error body into a clean, human-readable message
+        friendly = raw_body
+        try:
+            err_obj = json.loads(raw_body)
+            inner = err_obj.get("error", err_obj) if isinstance(err_obj, dict) else err_obj
+            if isinstance(inner, dict):
+                msg = inner.get("message") or inner.get("detail") or ""
+                etype = inner.get("type") or inner.get("code") or ""
+                if msg:
+                    # Strip verbose docs links
+                    import re as _re  # noqa: PLC0415
+                    msg = _re.sub(r"\s*For more information.*$", "", msg, flags=_re.IGNORECASE).strip()
+                    msg = _re.sub(r"\s*Please wait and try again.*$", "", msg, flags=_re.IGNORECASE).strip()
+                    friendly = f"{msg} [{etype}]" if etype else msg
+            elif isinstance(inner, list) and inner:
+                # Array of errors (some APIs)
+                first = inner[0]
+                if isinstance(first, dict):
+                    friendly = first.get("message") or str(first)
+        except (json.JSONDecodeError, ValueError, KeyError):
+            pass  # keep raw_body
+        raise RuntimeError(f"LLM API error {exc.code}: {friendly}") from exc
     except Exception as exc:  # noqa: BLE001
         raise RuntimeError(f"LLM request failed: {exc}") from exc

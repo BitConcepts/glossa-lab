@@ -2200,8 +2200,12 @@ export const resolveModelAssignment = (
 }> =>
   request("GET", `/model-assignments/resolve?bucket=${bucket}`);
 
-export const autoConfigureAssignments = (): Promise<{ configured: boolean; assignments?: Record<string, unknown>; message?: string }> =>
-  request("POST", "/model-assignments/auto-configure");
+export type AutoConfigProfile = "mixed" | "cloud" | "local";
+
+export const autoConfigureAssignments = (
+  profile: AutoConfigProfile = "mixed",
+): Promise<{ configured: boolean; profile?: string; assignments?: Record<string, unknown>; message?: string }> =>
+  request("POST", `/model-assignments/auto-configure?profile=${profile}`);
 
 // ── Model Intelligence (V20) ────────────────────────────────────────
 

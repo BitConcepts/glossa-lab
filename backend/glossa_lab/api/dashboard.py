@@ -406,19 +406,24 @@ async def _generate_insight(
                 ],
                 "model": "no-provider",
             }
-        except RuntimeError:
+        except RuntimeError as reason_exc:
             # RuntimeError from call_llm = API error (often empty/garbage response)
             # Retry with conversational bucket as fallback before giving up
+            _log.warning(
+                "dashboard insight: reasoning bucket failed (%s), retrying with conversational",
+                reason_exc,
+            )
             try:
-                _log.info("dashboard insight: reasoning bucket failed, retrying with conversational")
                 raw = await loop.run_in_executor(
                     None,
                     lambda: call_llm(
                         [
                             {"role": "system", "content": (
+                                "/no_think\n"
                                 "You produce concise JSON for a research dashboard. "
                                 "Output ONLY a JSON object with keys: highlights, what_it_means, impact, next_actions. "
-                                "No markdown. Be brief."
+                                "No other keys. No markdown. No explanation. "
+                                "Keep each string value under 120 characters. Be brief."
                             )},
                             {"role": "user", "content": prompt},
                         ],
@@ -427,7 +432,8 @@ async def _generate_insight(
                         max_tokens=1200, temperature=0.3,
                     ),
                 )
-            except Exception:  # noqa: BLE001
+            except Exception as conv_exc:  # noqa: BLE001
+                _log.warning("dashboard insight: conversational bucket also failed (%s)", conv_exc)
                 raw = ""
         # Guard against empty / whitespace-only LLM responses (observed
         # when the provider times out or returns no content).

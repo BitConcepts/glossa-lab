@@ -3,6 +3,7 @@ import {
   listProviders, listModelAssignments, setModelAssignment, autoConfigureAssignments,
   listModelScores, syncModelIntelligence,
   type ProviderEntry, type BucketGroup, type Bucket, type ModelScore,
+  type AutoConfigProfile,
 } from "../../api";
 import { useToast } from "../../hooks/useToast";
 
@@ -23,6 +24,7 @@ export function ModelAssignmentsPanel() {
   const [syncing, setSyncing] = useState(false);
   const [configuring, setConfiguring] = useState(false);
   const [scoredOnly, setScoredOnly] = useState(false);
+  const [profile, setProfile] = useState<AutoConfigProfile>("mixed");
 
   const allModels: { providerId: string; providerName: string; model: string }[] = [];
   for (const p of providers) {
@@ -84,9 +86,9 @@ export function ModelAssignmentsPanel() {
   const handleAutoConfig = async () => {
     setConfiguring(true);
     try {
-      const r = await autoConfigureAssignments();
+      const r = await autoConfigureAssignments(profile);
       if (r.configured) {
-        toast("Auto-configured model assignments", "success");
+        toast(`Auto-configured (${profile}) model assignments`, "success");
         await refresh();
       } else {
         toast(r.message || "No models available", "error");
@@ -125,7 +127,7 @@ export function ModelAssignmentsPanel() {
           value={currentVal}
           onChange={e => handleChange(bucket, rank, e.target.value)}
           disabled={isSaving}
-          style={{ flex: 1, fontSize: 12, padding: "4px 6px", borderRadius: 4, border: "1px solid #d1d5db", background: isSaving ? "#f3f4f6" : "#fff" }}
+          style={{ flex: 1, minWidth: 0, fontSize: 12, padding: "4px 6px", borderRadius: 4, border: "1px solid #d1d5db", background: isSaving ? "#f3f4f6" : "#fff", textOverflow: "ellipsis" }}
         >
           <option value="">— not set —</option>
           {allModels
@@ -155,6 +157,12 @@ export function ModelAssignmentsPanel() {
           <button onClick={handleSync} disabled={syncing} style={{ padding: "4px 10px", fontSize: 11, border: "1px solid #d1d5db", borderRadius: 4, cursor: "pointer", background: "#fff" }}>
             {syncing ? "Syncing..." : "🔄 Sync Scores"}
           </button>
+          <select value={profile} onChange={e => setProfile(e.target.value as AutoConfigProfile)}
+            style={{ fontSize: 11, padding: "3px 4px", borderRadius: 4, border: "1px solid #d1d5db", background: "#fff" }}>
+            <option value="mixed">🔀 Mixed</option>
+            <option value="cloud">☁️ Cloud</option>
+            <option value="local">🖥️ Local</option>
+          </select>
           <button onClick={handleAutoConfig} disabled={configuring} style={{ padding: "4px 10px", fontSize: 11, border: "none", borderRadius: 4, cursor: "pointer", background: "#7c3aed", color: "#fff", fontWeight: 600 }}>
             {configuring ? "Configuring..." : "✨ Auto-Configure"}
           </button>
@@ -169,11 +177,11 @@ export function ModelAssignmentsPanel() {
         </div>
       )}
 
-      <div style={{ display: "grid", gap: 10, gridTemplateColumns: "1fr 1fr" }}>
+      <div style={{ display: "grid", gap: 10, gridTemplateColumns: "1fr 1fr", minWidth: 0 }}>
         {(["reasoning", "conversational", "longform", "global"] as Bucket[]).map(bucket => {
           const meta = BUCKET_META[bucket];
           return (
-            <div key={bucket} style={{ border: "1px solid #e5e7eb", borderRadius: 6, padding: 12, background: "#fafafa" }}>
+            <div key={bucket} style={{ border: "1px solid #e5e7eb", borderRadius: 6, padding: 12, background: "#fafafa", minWidth: 0, overflow: "hidden" }}>
               <div style={{ display: "flex", gap: 6, alignItems: "center", marginBottom: 8 }}>
                 <span style={{ fontSize: 16 }}>{meta.icon}</span>
                 <div>

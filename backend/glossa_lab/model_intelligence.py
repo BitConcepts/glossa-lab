@@ -242,6 +242,29 @@ def _sync_hf_inner() -> dict[str, Any]:
                             now,
                         ),
                     )
+                    # Also store under the base name without org prefix
+                    # so "Qwen/Qwen3-14B" also matches as "Qwen3-14B"
+                    if "/" in model_name:
+                        base_name = model_name.split("/", 1)[1]
+                        if base_name and len(base_name) >= 3:
+                            conn.execute(
+                                """INSERT OR REPLACE INTO model_scores
+                                   (id, model_name, provider_type, reasoning_score,
+                                    conversational_score, longform_score, source,
+                                    raw_benchmarks_json, scored_at)
+                                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                                (
+                                    f"hf_base_{base_name[:76]}",
+                                    base_name,
+                                    "huggingface",
+                                    scores["reasoning"],
+                                    scores["conversational"],
+                                    scores["longform"],
+                                    "huggingface",
+                                    json.dumps(benchmarks),
+                                    now,
+                                ),
+                            )
                     synced += 1
                 except Exception:  # noqa: BLE001
                     errors += 1
@@ -316,6 +339,26 @@ def _sync_static_fallback() -> dict[str, Any]:
         "deepseek-r1:14b": {"ifeval": 72.0, "bbh": 66.0, "math": 68.0, "gpqa": 35.0, "musr": 38.0, "mmlu_pro": 55.0},
         "phi4:14b": {"ifeval": 75.0, "bbh": 70.0, "math": 60.0, "gpqa": 38.0, "musr": 45.0, "mmlu_pro": 60.0},
         "command-r-plus": {"ifeval": 78.0, "bbh": 72.0, "math": 52.0, "gpqa": 38.0, "musr": 48.0, "mmlu_pro": 62.0},
+        # Qwen 2.5 series (Ollama: qwen2.5:Xb)
+        "qwen2.5:72b": {"ifeval": 87.0, "bbh": 80.0, "math": 80.0, "gpqa": 50.0, "musr": 60.0, "mmlu_pro": 73.0},
+        "qwen2.5:32b": {"ifeval": 84.0, "bbh": 77.0, "math": 76.0, "gpqa": 46.0, "musr": 57.0, "mmlu_pro": 69.0},
+        "qwen2.5:14b": {"ifeval": 81.0, "bbh": 73.0, "math": 70.0, "gpqa": 41.0, "musr": 53.0, "mmlu_pro": 65.0},
+        "qwen2.5:7b":  {"ifeval": 74.0, "bbh": 66.0, "math": 55.0, "gpqa": 33.0, "musr": 43.0, "mmlu_pro": 56.0},
+        "qwen2.5-coder:32b": {"ifeval": 83.0, "bbh": 75.0, "math": 75.0, "gpqa": 44.0, "musr": 55.0, "mmlu_pro": 68.0},
+        # Llama 3.2 series
+        "llama3.2:3b":  {"ifeval": 64.0, "bbh": 55.0, "math": 30.0, "gpqa": 22.0, "musr": 30.0, "mmlu_pro": 43.0},
+        "llama3.2:1b":  {"ifeval": 52.0, "bbh": 42.0, "math": 15.0, "gpqa": 16.0, "musr": 22.0, "mmlu_pro": 32.0},
+        # DeepSeek extended
+        "deepseek-r1:32b": {"ifeval": 78.0, "bbh": 73.0, "math": 82.0, "gpqa": 50.0, "musr": 44.0, "mmlu_pro": 62.0},
+        "deepseek-r1:70b": {"ifeval": 82.0, "bbh": 77.0, "math": 88.0, "gpqa": 56.0, "musr": 50.0, "mmlu_pro": 68.0},
+        "deepseek-r1:8b":  {"ifeval": 68.0, "bbh": 61.0, "math": 60.0, "gpqa": 30.0, "musr": 33.0, "mmlu_pro": 48.0},
+        "deepseek-r1:671b": {"ifeval": 89.0, "bbh": 84.0, "math": 95.0, "gpqa": 68.0, "musr": 62.0, "mmlu_pro": 79.0},
+        # Mistral 7B
+        "mistral:7b": {"ifeval": 60.0, "bbh": 54.0, "math": 28.0, "gpqa": 19.0, "musr": 28.0, "mmlu_pro": 40.0},
+        "mistral:latest": {"ifeval": 60.0, "bbh": 54.0, "math": 28.0, "gpqa": 19.0, "musr": 28.0, "mmlu_pro": 40.0},
+        # Phi series
+        "phi3:14b": {"ifeval": 73.0, "bbh": 68.0, "math": 56.0, "gpqa": 36.0, "musr": 43.0, "mmlu_pro": 58.0},
+        "phi3.5:3.8b": {"ifeval": 64.0, "bbh": 56.0, "math": 42.0, "gpqa": 24.0, "musr": 34.0, "mmlu_pro": 47.0},
         # vLLM / self-hosted — use substrings that fuzzy-match real HF model IDs
         # vLLM /v1/models returns the full HF repo ID, e.g.
         #   cpatonn/Qwen3-Coder-30B-A3B-Instruct-AWQ-4bit

@@ -1,0 +1,132 @@
+{
+  "title": "Dravidian Tamil LM build from dravidian.py",
+  "timestamp": "2026-05-11T18:38:23.582299+00:00",
+  "sources": [
+    "E.1 DEDR",
+    "E.2 Krishnamurti 2003",
+    "E.3 Sangam",
+    "C.1 Parpola 1994",
+    "C.2 Parpola 2010"
+  ],
+  "n_inscription_seqs": 1295,
+  "n_compound_seqs": 23,
+  "n_bigrams": 486,
+  "vocab_size": 81,
+  "english_contamination": 0,
+  "verdict": "CLEAN",
+  "top_15_bigrams": [
+    [
+      [
+        "a",
+        "ra"
+      ],
+      138
+    ],
+    [
+      [
+        "na",
+        "la"
+      ],
+      91
+    ],
+    [
+      [
+        "a",
+        "na"
+      ],
+      83
+    ],
+    [
+      [
+        "la",
+        "la"
+      ],
+      78
+    ],
+    [
+      [
+        "va",
+        "ra"
+      ],
+      77
+    ],
+    [
+      [
+        "va",
+        "a"
+      ],
+      74
+    ],
+    [
+      [
+        "na",
+        "a"
+      ],
+      73
+    ],
+    [
+      [
+        "a",
+        "la"
+      ],
+      72
+    ],
+    [
+      [
+        "na",
+        "na"
+      ],
+      69
+    ],
+    [
+      [
+        "a",
+        "a"
+      ],
+      60
+    ],
+    [
+      [
+        "ka",
+        "a"
+      ],
+      48
+    ],
+    [
+      [
+        "la",
+        "ma"
+      ],
+      47
+    ],
+    [
+      [
+        "ta",
+        "a"
+      ],
+      45
+    ],
+    [
+      [
+        "ra",
+        "i"
+      ],
+      45
+    ],
+    [
+      [
+        "ma",
+        "i"
+      ],
+      42
+    ]
+  ],
+  "citations": [
+    "E.1",
+    "E.2",
+    "E.3",
+    "C.1",
+    "C.2",
+    "E.6"
+  ]
+}

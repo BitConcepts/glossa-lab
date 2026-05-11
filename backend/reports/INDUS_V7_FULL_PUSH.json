@@ -1,0 +1,1134 @@
+{
+  "title": "V7: Full Decipherment Push",
+  "timestamp": "2026-05-11T10:02:53.836719+00:00",
+  "task_a_gulf": {
+    "n_seals_analyzed": 1670,
+    "top_20_unusual_seals": [
+      {
+        "id": "H-0002",
+        "site": "Harappa",
+        "icon": "script only",
+        "signs": [
+          "M042",
+          "M012"
+        ],
+        "avg_surprise": 12.38
+      },
+      {
+        "id": "C-0002",
+        "site": "Chanhu-daro",
+        "icon": "rhinoceros",
+        "signs": [
+          "M060",
+          "M412",
+          "M211"
+        ],
+        "avg_surprise": 12.38
+      },
+      {
+        "id": "H-0006",
+        "site": "Harappa",
+        "icon": "unicorn",
+        "signs": [
+          "M018",
+          "M336"
+        ],
+        "avg_surprise": 12.38
+      },
+      {
+        "id": "M-0010",
+        "site": "Mohenjo-daro",
+        "icon": "rhinoceros",
+        "signs": [
+          "M233",
+          "M219",
+          "M158",
+          "M342"
+        ],
+        "avg_surprise": 12.38
+      },
+      {
+        "id": "M-0011",
+        "site": "Mohenjo-daro",
+        "icon": "unicorn",
+        "signs": [
+          "M019",
+          "M301",
+          "M087"
+        ],
+        "avg_surprise": 12.38
+      },
+      {
+        "id": "M-0017",
+        "site": "Mohenjo-daro",
+        "icon": "zebu bull",
+        "signs": [
+          "M001",
+          "M287",
+          "M305"
+        ],
+        "avg_surprise": 12.38
+      },
+      {
+        "id": "H-0009",
+        "site": "Harappa",
+        "icon": "script only",
+        "signs": [
+          "M023",
+          "M379",
+          "M125"
+        ],
+        "avg_surprise": 12.38
+      },
+      {
+        "id": "M-0020",
+        "site": "Mohenjo-daro",
+        "icon": "unicorn",
+        "signs": [
+          "M024",
+          "M267"
+        ],
+        "avg_surprise": 12.38
+      },
+      {
+        "id": "H-0010",
+        "site": "Harappa",
+        "icon": "zebu bull",
+        "signs": [
+          "M035",
+          "M089"
+        ],
+        "avg_surprise": 12.38
+      },
+      {
+        "id": "H-0011",
+        "site": "Harappa",
+        "icon": "zebu bull",
+        "signs": [
+          "M024",
+          "M211"
+        ],
+        "avg_surprise": 12.38
+      },
+      {
+        "id": "M-0023",
+        "site": "Mohenjo-daro",
+        "icon": "elephant",
+        "signs": [
+          "M039",
+          "M211"
+        ],
+        "avg_surprise": 12.38
+      },
+      {
+        "id": "H-0014",
+        "site": "Harappa",
+        "icon": "script only",
+        "signs": [
+          "M008",
+          "M197",
+          "M162"
+        ],
+        "avg_surprise": 12.38
+      },
+      {
+        "id": "H-0016",
+        "site": "Harappa",
+        "icon": "unicorn",
+        "signs": [
+          "M176",
+          "M274",
+          "M099"
+        ],
+        "avg_surprise": 12.38
+      },
+      {
+        "id": "H-0017",
+        "site": "Harappa",
+        "icon": "zebu bull",
+        "signs": [
+          "M081",
+          "M211"
+        ],
+        "avg_surprise": 12.38
+      },
+      {
+        "id": "H-0018",
+        "site": "Harappa",
+        "icon": "unicorn",
+        "signs": [
+          "M054",
+          "M336"
+        ],
+        "avg_surprise": 12.38
+      },
+      {
+        "id": "H-0024",
+        "site": "Harappa",
+        "icon": "elephant",
+        "signs": [
+          "M034",
+          "M089"
+        ],
+        "avg_surprise": 12.38
+      },
+      {
+        "id": "H-0028",
+        "site": "Harappa",
+        "icon": "unicorn",
+        "signs": [
+          "M017",
+          "M126",
+          "M267"
+        ],
+        "avg_surprise": 12.38
+      },
+      {
+        "id": "H-0031",
+        "site": "Harappa",
+        "icon": "rhinoceros",
+        "signs": [
+          "M099",
+          "M346",
+          "M233"
+        ],
+        "avg_surprise": 12.38
+      },
+      {
+        "id": "DK-0008",
+        "site": "Dholavira",
+        "icon": "tiger",
+        "signs": [
+          "M099",
+          "M134",
+          "M201",
+          "M233"
+        ],
+        "avg_surprise": 12.38
+      },
+      {
+        "id": "H-0036",
+        "site": "Harappa",
+        "icon": "gharial",
+        "signs": [
+          "M052",
+          "M355",
+          "M391"
+        ],
+        "avg_surprise": 12.38
+      }
+    ],
+    "meluhhan_name_patterns": {
+      "Lu-sunzida": {
+        "meaning": "Man of the just buffalo cow",
+        "dravidian": "erumai-n\u012bti-\u0101\u1e37",
+        "expected_signs": "bovine-sign + justice/truth-sign + person-sign",
+        "candidate_mapping": "Could match seals with initial bovine-related signs + M328(\u0101\u1e37)"
+      },
+      "Ur-Meluhha": {
+        "meaning": "Son/servant of Meluhha",
+        "pattern": "Patronymic \u2014 would be a single name-word"
+      },
+      "ibra_fragment": {
+        "meaning": "Unknown, from Naram-Sin inscription",
+        "note": "Could be Dravidian root like 'irumpu' (iron) or 'i\u1e5fai' (lord)"
+      }
+    },
+    "gulf_seal_note": "Holdat corpus does not include Gulf-found seals (Failaka, Bahrain, Ur). These ~40 seals need to be sourced from CISI Vol.3 or published catalogs. The 20 most statistically unusual seals above are candidates for non-standard usage."
+  },
+  "task_b_icon_phonetics": {
+    "M062": {
+      "reading": "erutu",
+      "meaning": "zebu bull: bull, ox",
+      "dedr": "DEDR 815",
+      "confidence": "HIGH",
+      "basis": "Exclusive to zebu bull seals (lift > 5.0); PDR erutu = bull, ox",
+      "animal": "zebu bull"
+    },
+    "M073": {
+      "reading": "k\u014d\u1e49",
+      "meaning": "zebu bull: king (bull metaphor)",
+      "dedr": "DEDR 2177",
+      "confidence": "MEDIUM",
+      "basis": "Exclusive to zebu bull seals (lift > 5.0); PDR k\u014d\u1e49 = king (bull metaphor)",
+      "animal": "zebu bull"
+    },
+    "M057": {
+      "reading": "m\u0101\u1e6du",
+      "meaning": "zebu bull: cattle",
+      "dedr": "DEDR 4796",
+      "confidence": "MEDIUM",
+      "basis": "Exclusive to zebu bull seals (lift > 5.0); PDR m\u0101\u1e6du = cattle",
+      "animal": "zebu bull"
+    },
+    "M045": {
+      "reading": "y\u0101nai",
+      "meaning": "elephant: elephant",
+      "dedr": "DEDR 5161",
+      "confidence": "HIGH",
+      "basis": "Exclusive to elephant seals (lift > 5.0); PDR y\u0101nai = elephant",
+      "animal": "elephant"
+    },
+    "M016": {
+      "reading": "ka\u1e37i\u1e5fu",
+      "meaning": "elephant: male elephant",
+      "dedr": "DEDR 1371",
+      "confidence": "HIGH",
+      "basis": "Exclusive to elephant seals (lift > 5.0); PDR ka\u1e37i\u1e5fu = male elephant",
+      "animal": "elephant"
+    },
+    "M039": {
+      "reading": "\u0101\u1e49ai",
+      "meaning": "elephant: elephant (variant)",
+      "dedr": "DEDR 5161",
+      "confidence": "MEDIUM",
+      "basis": "Exclusive to elephant seals (lift > 5.0); PDR \u0101\u1e49ai = elephant (variant)",
+      "animal": "elephant"
+    },
+    "M060": {
+      "reading": "k\u0101\u1e47\u1e6d\u0101mirukam",
+      "meaning": "rhinoceros: rhinoceros (horn-beast)",
+      "dedr": "composite",
+      "confidence": "MEDIUM",
+      "basis": "Exclusive to rhinoceros seals (lift > 5.0); PDR k\u0101\u1e47\u1e6d\u0101mirukam = rhinoceros (horn-beast)",
+      "animal": "rhinoceros"
+    },
+    "M067": {
+      "reading": "k\u014d\u1e6d\u1e6d\u0101\u1e49",
+      "meaning": "rhinoceros: horned one",
+      "dedr": "DEDR 2200",
+      "confidence": "MEDIUM",
+      "basis": "Exclusive to rhinoceros seals (lift > 5.0); PDR k\u014d\u1e6d\u1e6d\u0101\u1e49 = horned one",
+      "animal": "rhinoceros"
+    },
+    "M068": {
+      "reading": "ma\u1e5fi",
+      "meaning": "rhinoceros: young animal/calf (generic)",
+      "dedr": "DEDR 4766",
+      "confidence": "LOW",
+      "basis": "Exclusive to rhinoceros seals (lift > 5.0); PDR ma\u1e5fi = young animal/calf (generic)",
+      "animal": "rhinoceros"
+    },
+    "M006": {
+      "reading": "puli",
+      "meaning": "tiger: tiger",
+      "dedr": "DEDR 4322",
+      "confidence": "HIGH",
+      "basis": "Exclusive to tiger seals (lift > 5.0); PDR puli = tiger",
+      "animal": "tiger"
+    },
+    "M080": {
+      "reading": "v\u0113\u1e45kai",
+      "meaning": "tiger: tiger (poetic)",
+      "dedr": "DEDR 5530",
+      "confidence": "MEDIUM",
+      "basis": "Exclusive to tiger seals (lift > 5.0); PDR v\u0113\u1e45kai = tiger (poetic)",
+      "animal": "tiger"
+    },
+    "M063": {
+      "reading": "mutalai",
+      "meaning": "gharial: crocodile",
+      "dedr": "DEDR 4954",
+      "confidence": "HIGH",
+      "basis": "Exclusive to gharial seals (lift > 5.0); PDR mutalai = crocodile",
+      "animal": "gharial"
+    },
+    "M013": {
+      "reading": "nakaram",
+      "meaning": "gharial: crocodile/makara",
+      "dedr": "DEDR 3569",
+      "confidence": "MEDIUM",
+      "basis": "Exclusive to gharial seals (lift > 5.0); PDR nakaram = crocodile/makara",
+      "animal": "gharial"
+    }
+  },
+  "task_c_trigrams": {
+    "n_total": 3191,
+    "top_50": [
+      {
+        "trigram": [
+          "M304",
+          "M099",
+          "M342"
+        ],
+        "count": 2,
+        "pmi": 7.37
+      },
+      {
+        "trigram": [
+          "M375",
+          "M342",
+          "M176"
+        ],
+        "count": 2,
+        "pmi": 7.01
+      },
+      {
+        "trigram": [
+          "M028",
+          "M211",
+          "M342"
+        ],
+        "count": 2,
+        "pmi": 6.87
+      },
+      {
+        "trigram": [
+          "M004",
+          "M267",
+          "M099"
+        ],
+        "count": 3,
+        "pmi": 6.73
+      },
+      {
+        "trigram": [
+          "M035",
+          "M328",
+          "M267"
+        ],
+        "count": 2,
+        "pmi": 6.72
+      },
+      {
+        "trigram": [
+          "M033",
+          "M267",
+          "M099"
+        ],
+        "count": 2,
+        "pmi": 6.65
+      },
+      {
+        "trigram": [
+          "M045",
+          "M162",
+          "M099"
+        ],
+        "count": 2,
+        "pmi": 6.61
+      },
+      {
+        "trigram": [
+          "M075",
+          "M211",
+          "M342"
+        ],
+        "count": 2,
+        "pmi": 6.53
+      },
+      {
+        "trigram": [
+          "M022",
+          "M328",
+          "M267"
+        ],
+        "count": 2,
+        "pmi": 6.51
+      },
+      {
+        "trigram": [
+          "M021",
+          "M211",
+          "M342"
+        ],
+        "count": 2,
+        "pmi": 6.33
+      },
+      {
+        "trigram": [
+          "M014",
+          "M176",
+          "M099"
+        ],
+        "count": 2,
+        "pmi": 6.32
+      },
+      {
+        "trigram": [
+          "M057",
+          "M176",
+          "M099"
+        ],
+        "count": 2,
+        "pmi": 6.23
+      },
+      {
+        "trigram": [
+          "M030",
+          "M211",
+          "M342"
+        ],
+        "count": 2,
+        "pmi": 6.16
+      },
+      {
+        "trigram": [
+          "M024",
+          "M342",
+          "M176"
+        ],
+        "count": 2,
+        "pmi": 6.12
+      },
+      {
+        "trigram": [
+          "M060",
+          "M342",
+          "M328"
+        ],
+        "count": 2,
+        "pmi": 6.1
+      },
+      {
+        "trigram": [
+          "M055",
+          "M099",
+          "M342"
+        ],
+        "count": 2,
+        "pmi": 6.1
+      },
+      {
+        "trigram": [
+          "M035",
+          "M211",
+          "M342"
+        ],
+        "count": 2,
+        "pmi": 6.08
+      },
+      {
+        "trigram": [
+          "M013",
+          "M176",
+          "M099"
+        ],
+        "count": 2,
+        "pmi": 5.88
+      },
+      {
+        "trigram": [
+          "M031",
+          "M342",
+          "M176"
+        ],
+        "count": 2,
+        "pmi": 5.82
+      },
+      {
+        "trigram": [
+          "M013",
+          "M211",
+          "M342"
+        ],
+        "count": 2,
+        "pmi": 5.81
+      },
+      {
+        "trigram": [
+          "M030",
+          "M342",
+          "M176"
+        ],
+        "count": 2,
+        "pmi": 5.65
+      },
+      {
+        "trigram": [
+          "M012",
+          "M087",
+          "M162"
+        ],
+        "count": 2,
+        "pmi": 5.62
+      },
+      {
+        "trigram": [
+          "M058",
+          "M342",
+          "M176"
+        ],
+        "count": 2,
+        "pmi": 5.42
+      },
+      {
+        "trigram": [
+          "M016",
+          "M342",
+          "M176"
+        ],
+        "count": 2,
+        "pmi": 5.29
+      },
+      {
+        "trigram": [
+          "M125",
+          "M391",
+          "M162"
+        ],
+        "count": 2,
+        "pmi": 5.17
+      },
+      {
+        "trigram": [
+          "M342",
+          "M176",
+          "M099"
+        ],
+        "count": 29,
+        "pmi": 5.07
+      },
+      {
+        "trigram": [
+          "M336",
+          "M162",
+          "M233"
+        ],
+        "count": 2,
+        "pmi": 5.05
+      },
+      {
+        "trigram": [
+          "M051",
+          "M211",
+          "M012"
+        ],
+        "count": 2,
+        "pmi": 5.01
+      },
+      {
+        "trigram": [
+          "M391",
+          "M328",
+          "M087"
+        ],
+        "count": 2,
+        "pmi": 5.0
+      },
+      {
+        "trigram": [
+          "M328",
+          "M267",
+          "M125"
+        ],
+        "count": 4,
+        "pmi": 4.92
+      },
+      {
+        "trigram": [
+          "M048",
+          "M176",
+          "M089"
+        ],
+        "count": 3,
+        "pmi": 4.88
+      },
+      {
+        "trigram": [
+          "M162",
+          "M099",
+          "M342"
+        ],
+        "count": 13,
+        "pmi": 4.71
+      },
+      {
+        "trigram": [
+          "M328",
+          "M267",
+          "M211"
+        ],
+        "count": 6,
+        "pmi": 4.59
+      },
+      {
+        "trigram": [
+          "M211",
+          "M342",
+          "M305"
+        ],
+        "count": 3,
+        "pmi": 4.54
+      },
+      {
+        "trigram": [
+          "M087",
+          "M293",
+          "M267"
+        ],
+        "count": 3,
+        "pmi": 4.54
+      },
+      {
+        "trigram": [
+          "M267",
+          "M099",
+          "M125"
+        ],
+        "count": 5,
+        "pmi": 4.51
+      },
+      {
+        "trigram": [
+          "M328",
+          "M336",
+          "M059"
+        ],
+        "count": 2,
+        "pmi": 4.49
+      },
+      {
+        "trigram": [
+          "M099",
+          "M342",
+          "M176"
+        ],
+        "count": 19,
+        "pmi": 4.46
+      },
+      {
+        "trigram": [
+          "M342",
+          "M176",
+          "M305"
+        ],
+        "count": 4,
+        "pmi": 4.44
+      },
+      {
+        "trigram": [
+          "M367",
+          "M293",
+          "M267"
+        ],
+        "count": 4,
+        "pmi": 4.41
+      },
+      {
+        "trigram": [
+          "M267",
+          "M328",
+          "M012"
+        ],
+        "count": 3,
+        "pmi": 4.39
+      },
+      {
+        "trigram": [
+          "M211",
+          "M342",
+          "M220"
+        ],
+        "count": 2,
+        "pmi": 4.38
+      },
+      {
+        "trigram": [
+          "M176",
+          "M099",
+          "M125"
+        ],
+        "count": 4,
+        "pmi": 4.36
+      },
+      {
+        "trigram": [
+          "M048",
+          "M267",
+          "M099"
+        ],
+        "count": 5,
+        "pmi": 4.26
+      },
+      {
+        "trigram": [
+          "M059",
+          "M267",
+          "M099"
+        ],
+        "count": 7,
+        "pmi": 4.25
+      },
+      {
+        "trigram": [
+          "M059",
+          "M293",
+          "M391"
+        ],
+        "count": 2,
+        "pmi": 4.24
+      },
+      {
+        "trigram": [
+          "M293",
+          "M267",
+          "M336"
+        ],
+        "count": 3,
+        "pmi": 4.23
+      },
+      {
+        "trigram": [
+          "M176",
+          "M099",
+          "M342"
+        ],
+        "count": 16,
+        "pmi": 4.21
+      },
+      {
+        "trigram": [
+          "M293",
+          "M267",
+          "M099"
+        ],
+        "count": 7,
+        "pmi": 4.18
+      },
+      {
+        "trigram": [
+          "M328",
+          "M267",
+          "M099"
+        ],
+        "count": 7,
+        "pmi": 4.17
+      }
+    ]
+  },
+  "task_d_m314": {
+    "source": "Farmer (safarmer.com) + Pandita Naomi (substack) + CISI Vol.1",
+    "inscription_id": "M-314",
+    "site": "Mohenjo-daro",
+    "iconography": "rhinoceros",
+    "n_signs": 17,
+    "n_lines": 3,
+    "note": "Longest inscription on a single flat surface. 17 non-repeating symbols in 3 lines.",
+    "approximate_signs_mahadevan": [
+      "M037",
+      "M267",
+      "M267v",
+      "M267w",
+      "M267",
+      "M099",
+      "M342",
+      "M051",
+      "M249",
+      "M099v",
+      "M391",
+      "M293",
+      "M065",
+      "M328",
+      "M249v",
+      "M233",
+      "M060"
+    ],
+    "attempted_decode": "?M037 min/m\u012bn min/m\u012bn min/m\u012bn min/m\u012bn kol/ko\u1e37 ay/\u0101 p\u016b/pu\u1e37 TERM-M249 kol/ko\u1e37 ka/ka\u1e47 MED-M293 TERM-M065 \u0101/\u0101l TERM-M249 \u016br k\u0101\u1e47\u1e6d\u0101mirukam",
+    "caveat": "This reconstruction is APPROXIMATE. Exact Mahadevan numbers require consulting the original CISI photographs. Several signs may be misidentified.",
+    "decode_pct": 0.941
+  },
+  "task_e_confidence": {
+    "total_distinct_signs": 390,
+    "total_tokens": 7002,
+    "signs_with_readings": {
+      "HIGH": 9,
+      "MEDIUM": 14,
+      "LOW": 25,
+      "total": 48
+    },
+    "token_coverage": {
+      "HIGH": 0.2624,
+      "MEDIUM": 0.2098,
+      "LOW": 0.2935,
+      "total": 0.7656
+    },
+    "weighted_decipherment_score": 47.6,
+    "inscription_level": {
+      "fully_decoded": 557,
+      "partially_decoded": 1113,
+      "not_decoded": 0,
+      "fully_decoded_pct": 33.4
+    },
+    "zipf_coverage": {
+      "signs_for_80pct_tokens": 62,
+      "signs_for_90pct_tokens": 131,
+      "assigned_in_top_80pct": 45
+    },
+    "overall_assessment": {
+      "level": "MODERATE",
+      "weighted_score": 47.6,
+      "summary": "MODERATE decipherment at 47.6% weighted confidence. 48/390 signs assigned (9 HIGH, 14 MEDIUM, 25 LOW). Token coverage: 76.6% (26.2% HIGH). 33.4% of inscriptions fully covered by anchor set."
+    }
+  },
+  "task_f_substitution_site": {
+    "top_30_substitution_pairs": [
+      {
+        "pair": [
+          "M267",
+          "M342"
+        ],
+        "shared_contexts": 68
+      },
+      {
+        "pair": [
+          "M099",
+          "M342"
+        ],
+        "shared_contexts": 60
+      },
+      {
+        "pair": [
+          "M099",
+          "M267"
+        ],
+        "shared_contexts": 57
+      },
+      {
+        "pair": [
+          "M211",
+          "M342"
+        ],
+        "shared_contexts": 56
+      },
+      {
+        "pair": [
+          "M176",
+          "M342"
+        ],
+        "shared_contexts": 56
+      },
+      {
+        "pair": [
+          "M176",
+          "M267"
+        ],
+        "shared_contexts": 51
+      },
+      {
+        "pair": [
+          "M328",
+          "M342"
+        ],
+        "shared_contexts": 49
+      },
+      {
+        "pair": [
+          "M293",
+          "M342"
+        ],
+        "shared_contexts": 45
+      },
+      {
+        "pair": [
+          "M059",
+          "M342"
+        ],
+        "shared_contexts": 42
+      },
+      {
+        "pair": [
+          "M099",
+          "M162"
+        ],
+        "shared_contexts": 42
+      },
+      {
+        "pair": [
+          "M267",
+          "M328"
+        ],
+        "shared_contexts": 41
+      },
+      {
+        "pair": [
+          "M099",
+          "M176"
+        ],
+        "shared_contexts": 40
+      },
+      {
+        "pair": [
+          "M099",
+          "M211"
+        ],
+        "shared_contexts": 40
+      },
+      {
+        "pair": [
+          "M211",
+          "M267"
+        ],
+        "shared_contexts": 39
+      },
+      {
+        "pair": [
+          "M089",
+          "M267"
+        ],
+        "shared_contexts": 39
+      },
+      {
+        "pair": [
+          "M162",
+          "M342"
+        ],
+        "shared_contexts": 38
+      },
+      {
+        "pair": [
+          "M176",
+          "M328"
+        ],
+        "shared_contexts": 38
+      },
+      {
+        "pair": [
+          "M267",
+          "M391"
+        ],
+        "shared_contexts": 37
+      },
+      {
+        "pair": [
+          "M342",
+          "M367"
+        ],
+        "shared_contexts": 37
+      },
+      {
+        "pair": [
+          "M059",
+          "M267"
+        ],
+        "shared_contexts": 36
+      },
+      {
+        "pair": [
+          "M162",
+          "M267"
+        ],
+        "shared_contexts": 36
+      },
+      {
+        "pair": [
+          "M059",
+          "M099"
+        ],
+        "shared_contexts": 36
+      },
+      {
+        "pair": [
+          "M162",
+          "M176"
+        ],
+        "shared_contexts": 36
+      },
+      {
+        "pair": [
+          "M176",
+          "M211"
+        ],
+        "shared_contexts": 36
+      },
+      {
+        "pair": [
+          "M336",
+          "M342"
+        ],
+        "shared_contexts": 36
+      },
+      {
+        "pair": [
+          "M342",
+          "M391"
+        ],
+        "shared_contexts": 36
+      },
+      {
+        "pair": [
+          "M267",
+          "M336"
+        ],
+        "shared_contexts": 35
+      },
+      {
+        "pair": [
+          "M099",
+          "M233"
+        ],
+        "shared_contexts": 35
+      },
+      {
+        "pair": [
+          "M162",
+          "M211"
+        ],
+        "shared_contexts": 34
+      },
+      {
+        "pair": [
+          "M099",
+          "M328"
+        ],
+        "shared_contexts": 34
+      }
+    ],
+    "site_decode_rates": {
+      "Harappa": {
+        "seals": 492,
+        "tokens": 2079,
+        "decoded_tokens": 1570,
+        "decode_rate": 0.755
+      },
+      "Mohenjo-daro": {
+        "seals": 606,
+        "tokens": 2534,
+        "decoded_tokens": 1901,
+        "decode_rate": 0.75
+      },
+      "Dholavira": {
+        "seals": 106,
+        "tokens": 439,
+        "decoded_tokens": 341,
+        "decode_rate": 0.777
+      },
+      "Kalibangan": {
+        "seals": 110,
+        "tokens": 485,
+        "decoded_tokens": 339,
+        "decode_rate": 0.699
+      },
+      "Banawali": {
+        "seals": 60,
+        "tokens": 255,
+        "decoded_tokens": 196,
+        "decode_rate": 0.769
+      },
+      "Lothal": {
+        "seals": 124,
+        "tokens": 507,
+        "decoded_tokens": 387,
+        "decode_rate": 0.763
+      },
+      "Chanhu-daro": {
+        "seals": 78,
+        "tokens": 310,
+        "decoded_tokens": 231,
+        "decode_rate": 0.745
+      },
+      "Rakhigarhi": {
+        "seals": 33,
+        "tokens": 136,
+        "decoded_tokens": 95,
+        "decode_rate": 0.699
+      },
+      "Surkotada": {
+        "seals": 61,
+        "tokens": 257,
+        "decoded_tokens": 204,
+        "decode_rate": 0.794
+      }
+    }
+  }
+}

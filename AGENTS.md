@@ -596,6 +596,72 @@ To start the backend and tray as background services, use `setup-os.cmd start` (
 
 If a command produces no output, it has failed. Do not retry it. Do not wait for it. Treat it as broken and fix the invocation or replace the command. Commands that are known to hang or produce no output are **forbidden**.
 
+### H18 — Citation required for all data files (MANDATORY)
+
+Every data file, corpus file, and report generated or modified by Glossa Lab MUST
+include citation metadata traceable to CITATIONS.md.
+
+- **JSON data files**: include `"_citation"` key with at least `primary_sources` (list
+  of CITATIONS.md section IDs, e.g. `["A.1", "C.2"]`) and `derivation` (how the file
+  was created from the sources).
+- **Python scripts that load external data**: docstring must cite the data author(s)
+  and CITATIONS.md section ID.
+- **Generated reports** (`reports/*.json`): must include `"citations"` array with all
+  relevant CITATIONS.md section IDs.
+- **Corpus files**: must credit the original authors explicitly (not just a URL).
+
+Known authors who MUST be credited where their work is used:
+- Mahadevan, Iravatham (1977, 2003) — M77 concordance, Tamil-Brahmi epigraphy
+- Parpola, Asko (1994, 2010) — Decipherment hypothesis, CISI, phoneme map
+- Miller, William Sr / Holdat LLC (2025) — Holdat corpus
+- Wells, Bryan K. (2015) — ICIT co-author, sign catalog
+- Fuls, Andreas — ICIT co-author, Mathematica Epigraphica
+- Burrow, Thomas & Emeneau, Murray Barnson (1984) — DEDR
+- Laursen, Steffen Terp (2010) — Gulf-type seal corpus
+- Gadd, C.J. (1932) — Ur seals
+- Sangam poets (~300 BCE–300 CE) — Old Tamil inscription corpus
+
+The canonical source registry is **CITATIONS.md** at the repo root.
+See the *Citation Requirements Standard* section in CITATIONS.md for the exact format.
+
+Violations are flagged by the Foundation Check (`GET /api/v1/research/foundation-check`).
+
+---
+
+### H19 — Foundation check required before external communication (MANDATORY)
+
+> Before sending any communication to an external party (Dr. Fuls, Parpola,
+> prize panels, journal reviewers, collaborators), the foundation check MUST pass.
+
+The foundation check is available at:
+- **API**: `GET /api/v1/research/foundation-check`
+- **UI**: Research → Foundation Check (in the Glossa Lab sidebar)
+- **Script**: `shell.cmd python backend/scripts/foundation_check.py`
+
+**Required status before external communication:**
+- `summary.overall_status = "PASS"` (zero FAIL checks)
+- `summary.send_to_fuls_ok = true`
+
+**What the check verifies:**
+1. Holdat corpus integrity (1,670 seals, 7,002 tokens, 390 signs, positions sorted)
+2. INDUS_FINAL_ANCHORS (7 HIGH, M267 UNCERTAIN, M047 miin)
+3. Parpola phoneme map (33+ P-number entries, cited)
+4. Iconographic anchors (12, P47 fish confirmed)
+5. Phase-29d Enmenanak live data (score 7.0, p<0.001)
+6. Phase-31 T3 Zipf slope (delta 0.177 < 0.3 threshold)
+7. CISI corpus accessible
+8. V8-V24 round files complete (17/17)
+9. Writing direction verified (position 0 = INITIAL)
+10. Dravidian Tamil LM clean (≥400 bigrams, 0 English contamination)
+11. M↔P crosswalk tracked (completeness %)
+12. Citation audit (key data files have _citation)
+13. Phase-30a spectral gap result
+
+**If any check FAILS:** resolve the issue, re-run the check, and confirm PASS
+before proceeding with any external communication.
+
+---
+
 ### H17 — Job and test execution monitoring (MANDATORY)
 
 > Running a script is not the same as the work succeeding. Always verify status.

@@ -1666,5 +1666,23 @@
       "confidence": "LOW",
       "basis": "V18+ Round 16: MEDIAL (freq=2), distributional"
     }
+  },
+  "_citation": {
+    "primary_sources": [
+      "A.1",
+      "A.10",
+      "C.1",
+      "C.2"
+    ],
+    "derivation": "HIGH/MEDIUM confidence anchors from V7 iconographic analysis (Parpola 2010, C.2) and V8-V24 distributional analysis (Holdat corpus A.10 + Mahadevan M-numbers A.1). Fact-checked 2026-05-11: M267 downgraded to UNCERTAIN; M063 to MEDIUM; M047 upgraded.",
+    "authors_credited": [
+      "Mahadevan, Iravatham (1977) — M-number sign system",
+      "Miller, William Sr / Holdat LLC (2025) — corpus for distributional analysis",
+      "Parpola, Asko (1994, 2010) — iconographic anchors (animal-sign readings)",
+      "Burrow, T. & Emeneau, M.B. (1984) — DEDR: Tamil word readings (DEDR refs in basis fields)"
+    ],
+    "see_also": "CITATIONS.md sections A.1, A.10, C.1, C.2, E.1",
+    "caveat": "HIGH: 7 anchors — iconographic or terminal case-marker evidence. MEDIUM: 65 anchors — distributional + collocation evidence. LOW: 260 anchors — positional heuristic only, NOT verified phonetic readings. UNCERTAIN: 1 (M267 — high-frequency functional sign, identity unknown). For publication: report only HIGH + MEDIUM anchors as scientifically supportable.",
+    "glossa_lab_version": "2026-05-11"
   }
 }

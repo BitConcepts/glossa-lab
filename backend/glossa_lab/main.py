@@ -40,6 +40,7 @@ from glossa_lab.api.rag import router as rag_router
 from glossa_lab.api.report_templates import router as report_templates_router
 from glossa_lab.api.reports import router as reports_router
 from glossa_lab.api.research import router as research_router
+from glossa_lab.api.foundation_check import router as foundation_check_router
 from glossa_lab.api.results import router as results_router
 from glossa_lab.api.settings import router as settings_router
 from glossa_lab.api.shutdown import router as shutdown_router
@@ -277,6 +278,7 @@ def create_app() -> FastAPI:
     application.include_router(collab_router, prefix="/api/v1")
     application.include_router(analysis_router, prefix="/api/v1")
     application.include_router(research_router, prefix="/api/v1")
+    application.include_router(foundation_check_router, prefix="/api/v1/research")
     application.include_router(ai_tools_router, prefix="/api/v1")
     application.include_router(system_router, prefix="/api/v1")
     application.include_router(ollama_router, prefix="/api/v1")

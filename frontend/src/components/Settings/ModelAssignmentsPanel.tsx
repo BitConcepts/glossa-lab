@@ -335,26 +335,41 @@ export function ModelAssignmentsPanel() {
         })}
       </div>
 
-      {/* Apply / Revert bar — only shown when there are unsaved changes */}
-      {isDirty && (
-        <div style={{ marginTop: 10, display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", background: "#fffbeb", border: "1px solid #fcd34d", borderRadius: 6 }}>
-          <span style={{ fontSize: 12, color: "#92400e", flex: 1 }}>
-            ⚠️ Unsaved changes
-          </span>
-          <button
-            onClick={handleRevert}
-            disabled={applying}
-            style={{ padding: "4px 12px", fontSize: 12, border: "1px solid #d1d5db", borderRadius: 4, cursor: "pointer", background: "#fff", color: "#374151" }}>
-            Revert
-          </button>
-          <button
-            onClick={handleApply}
-            disabled={applying}
-            style={{ padding: "4px 16px", fontSize: 12, border: "none", borderRadius: 4, cursor: applying ? "wait" : "pointer", background: "#2563eb", color: "#fff", fontWeight: 700 }}>
-            {applying ? "Saving…" : "✓ Apply"}
-          </button>
-        </div>
-      )}
+      {/* Apply / Revert bar — always visible; buttons disabled when clean */}
+      <div style={{
+        marginTop: 10, display: "flex", alignItems: "center", gap: 8,
+        padding: "8px 12px", borderRadius: 6,
+        background: isDirty ? "#fffbeb" : "#f9fafb",
+        border: `1px solid ${isDirty ? "#fcd34d" : "#e5e7eb"}`,
+        transition: "background 0.2s, border-color 0.2s",
+      }}>
+        <span style={{ fontSize: 12, color: isDirty ? "#92400e" : "#9ca3af", flex: 1 }}>
+          {isDirty ? "⚠️ Unsaved changes" : "✓ All changes saved"}
+        </span>
+        <button
+          onClick={handleRevert}
+          disabled={!isDirty || applying}
+          style={{
+            padding: "4px 12px", fontSize: 12, border: "1px solid #d1d5db", borderRadius: 4,
+            cursor: isDirty && !applying ? "pointer" : "not-allowed",
+            background: "#fff", color: isDirty ? "#374151" : "#9ca3af",
+            opacity: isDirty ? 1 : 0.5,
+          }}>
+          Revert
+        </button>
+        <button
+          onClick={handleApply}
+          disabled={!isDirty || applying}
+          style={{
+            padding: "4px 16px", fontSize: 12, border: "none", borderRadius: 4,
+            cursor: isDirty && !applying ? "pointer" : "not-allowed",
+            background: isDirty ? "#2563eb" : "#93c5fd",
+            color: "#fff", fontWeight: 700,
+            opacity: isDirty ? 1 : 0.6,
+          }}>
+          {applying ? "Saving…" : "✓ Apply"}
+        </button>
+      </div>
 
       <div style={{ marginTop: 12, display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
         {scores.length > 0 && (

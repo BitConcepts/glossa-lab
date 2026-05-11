@@ -10,7 +10,6 @@
 
 **Glossa Lab** is an open-source computational platform for structural analysis and
 hypothesis-driven decipherment of undeciphered writing systems. Available at:
-https://github.com/layer1labs/glossa-lab
 
 Core methodology: **compression as structure discovery.** Entropy profiles, spectral
 analysis, and Zipf statistics are used as compression metrics — the goal is to minimize
@@ -193,7 +192,6 @@ The following anti-circularity measures are explicitly implemented:
 **Tristen Pierson**
 BitConcepts
 tpierson@bitconcepts.tech
-https://github.com/layer1labs/glossa-lab
 
 *All results are reproducible. The repository contains the full experiment ledger,
 JSON output files, and source code under open-source license.*

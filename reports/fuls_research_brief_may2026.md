@@ -1,7 +1,7 @@
 # Glossa Lab — Research Brief for Dr. Andreas Fuls
 ## May 2026 — Structural Analysis of the Indus Script
 
-*Prepared by Tristen Pierson, Layer1Labs Silicon, Inc.*
+*Prepared by Tristen Pierson*
 *Attachment to ICIT access request email.*
 
 ---
@@ -191,7 +191,7 @@ The following anti-circularity measures are explicitly implemented:
 ## 9. Contact and repository
 
 **Tristen Pierson**
-Layer1Labs Silicon, Inc.
+BitConcepts
 tristen@layer1labs.com
 https://github.com/layer1labs/glossa-lab
 

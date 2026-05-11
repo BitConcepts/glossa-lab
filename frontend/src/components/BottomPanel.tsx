@@ -51,27 +51,66 @@ function parseLogTimestamp(raw: string): string {
 
 /**
  * Extract a short, human-readable message from an embedded JSON error body.
- * E.g. OpenAI 429 → "Quota exceeded — check billing at platform.openai.com"
+ * Handles OpenAI, Anthropic, FastAPI, Pydantic validation, and generic errors.
  */
 function prettifyErrorBody(raw: string): string {
+  // If it looks like a Python traceback, return only the last meaningful line
+  if (raw.includes("Traceback (most recent call last)") || raw.includes("  File \"")) {
+    const lines = raw.split("\n").map(l => l.trim()).filter(Boolean);
+    // Find the last line that looks like an actual exception
+    for (let i = lines.length - 1; i >= 0; i--) {
+      const l = lines[i];
+      if (/^[A-Za-z].*Error:|^[A-Za-z].*Exception:|^ValueError:|^KeyError:|^TypeError:/.test(l)) {
+        return `\u274c ${l}`;
+      }
+    }
+    // Fall back to last non-empty line
+    return `\u274c ${lines[lines.length - 1] ?? raw}`;
+  }
+
   // Try to find embedded JSON in the message (e.g. "LLM API error 429: {...}")
   const jsonMatch = raw.match(/\{[\s\S]*\}/);
   if (!jsonMatch) return raw;
   try {
     const obj = JSON.parse(jsonMatch[0]) as Record<string, unknown>;
-    // OpenAI / generic: {error: {message, type}}
+
+    // FastAPI / Pydantic validation: {detail: [{msg, loc}]}
+    if (Array.isArray(obj.detail)) {
+      const msgs = (obj.detail as Record<string, unknown>[]).map(d => {
+        const loc = Array.isArray(d.loc) ? (d.loc as string[]).filter(p => p !== "body").join(".") : "";
+        const msg = typeof d.msg === "string" ? d.msg : JSON.stringify(d);
+        return loc ? `${loc}: ${msg}` : msg;
+      }).filter(Boolean);
+      if (msgs.length) {
+        const prefix = raw.match(/^(.*?)\{/)?.[1]?.trim();
+        return `${prefix ? prefix + " " : ""}${msgs.join("; ")}`;
+      }
+    }
+
+    // FastAPI single-string detail: {detail: "some message"}
+    if (typeof obj.detail === "string") {
+      const prefix = raw.match(/^(.*?)\{/)?.[1]?.trim();
+      return `${prefix ? prefix + " " : ""}${obj.detail}`;
+    }
+
+    // OpenAI / generic: {error: {message, type}} or flat {message, error}
     const inner = (obj.error ?? obj) as Record<string, unknown>;
     const msg = (inner.message ?? inner.detail ?? inner.error) as string | undefined;
     const type = (inner.type ?? inner.code ?? inner.status) as string | undefined;
-    if (msg) {
-      // Strip URLs and docs links for brevity
-      const short = msg.replace(/\s*For more information.*$/i, "").replace(/\s*Please wait and try again.*$/i, "").trim();
+    if (typeof msg === "string" && msg) {
+      const short = msg
+        .replace(/\s*For more information.*$/i, "")
+        .replace(/\s*Please wait and try again.*$/i, "")
+        .replace(/\s*See https?:\/\/.*$/i, "")
+        .trim();
       const prefix = raw.match(/^(.*?)\{/)?.[1]?.trim();
       const typeTag = type ? ` [${type}]` : "";
       return `${prefix ? prefix + " " : ""}${short}${typeTag}`;
     }
   } catch { /* not valid JSON, return as-is */ }
-  return raw;
+
+  // Truncate very long raw lines
+  return raw.length > 300 ? raw.slice(0, 297) + "\u2026" : raw;
 }
 
 /** Formatted line with embedded level for accurate coloring. */

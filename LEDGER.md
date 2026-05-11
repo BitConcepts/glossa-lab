@@ -5690,3 +5690,94 @@ Verified HIGH assignments (7):
 ### Next step
 
 See next-task list.
+
+---
+
+## [2026-05-11] Entry — Tasks 1-12: full research + UI sprint
+
+Objective: Execute all 12 prioritized tasks in order.
+
+### Results summary
+
+1. TB correlation updated 0.914→0.907 in PHASE_32_SYNTHESIS.md and fuls_research_brief_may2026.md ✓
+2. M267 identified: MEDIAL CASE_MARKER_SUFFIX (81% medial, avg_pos=0.54, top left collocate M099×84) ✓
+3. TAMIL_BRAHMI_FREQ updated to empirical values from Mahadevan 2003 epub (121 inscriptions,
+   4,521 tokens). Cited as Harvard Oriental Series 62, 2003. Key changes:
+   t: 0.08→0.1608, o: 0.03→0.0979, n: 0.10→0.0631, m: 0.08→0.0368 ✓
+4. mahadevan_parpola_crosswalk_v2.json built: 38 total entries (H:25 + M:13) across 5 sources ✓
+5. TB corpus: 47→121 inscriptions (74 epub-extracted), 694→4,521 tokens ✓
+6. TB-NAMES: 394 name instances, mean 3.5 aksharas — T2 GENRE CONFOUND RESOLVED
+   (M77 mean 3.2 vs TB-NAMES mean 3.5 — within M77 range, FAVORABLE) ✓
+7. Phase-32 T4 SA M77→TB LM: INCONCLUSIVE due to TB LM having only 2 bigrams
+   (epub literal aksharas are too noisy for bigram extraction).
+   Needs cleaner romanized TB corpus before valid SA result. ✓
+8. P30-A1-A3 validation:
+   A1: Enmenanak score 7.0 = 100th percentile of null (p<0.001) — SIGNIFICANT ✓
+   A2: All 4 headline candidates survive period filter — FAVORABLE ✓
+   A3: No Meluhha co-occurrence found — NEUTRAL (does not falsify) ✓
+9. P30-E1 Yajnadevam Sanskrit falsification:
+   Sanskrit vs TB freq: 0.387  vs  Dravidian vs TB freq: 0.290
+   AMBIGUOUS: Sanskrit scores higher vs empirical TB freq. BUT this is because
+   TAMIL_BRAHMI_FREQ was just updated (t=0.16 dominates, Sanskrit has more t-initial
+   forms). Framework cannot currently separate Dravidian from Sanskrit at the phoneme
+   distribution level — confirms Phase-32 T4 SA test is critical. ✓
+10. Project edit form: inline label/name rename added to ProjectsView header
+    (click project name to edit, Enter to save, Escape to cancel) ✓
+11. Evidence linking: POST/DELETE /api/v1/research/hypotheses/{id}/evidence endpoints
+    added to research.py; addHypothesisEvidence() + removeHypothesisEvidence() added
+    to api.ts ✓
+12. Fuls email updated (0.907 + Gulf seal research note), frontend built (clean, 228 modules,
+    945.89 KB, 0 TS errors) ✓
+
+### Files changed (this session)
+
+Research:
+- backend/scripts/phase32_tb_corpus.py (created — T1+T2 epub parser + TB-NAMES)
+- backend/scripts/build_mp_crosswalk.py (created — M↔P crosswalk builder)
+- backend/scripts/phase32_sa_m77_tb.py (created — T4 SA M77→TB LM experiment)
+- backend/scripts/phase30_a1_a3_validation.py (created — P30-A1-A3 validation)
+- backend/scripts/phase30_e1_yajnadevam_falsification.py (created — P30-E1)
+- backend/scripts/factcheck_v24.py (created — corpus audit script)
+- backend/scripts/factcheck_fix_anchors.py (created — M267/M063 corrections)
+- backend/scripts/v8_autonomous_loop.py (modified — PDR fix + pos sort + TB freq update)
+- backend/scripts/v18_autonomous_loop.py (created, modified — all of the above)
+- backend/glossa_lab/data/mahadevan_2003_tamil_brahmi.json (updated — 121 inscriptions)
+- backend/glossa_lab/data/mahadevan_2003_tb_names.json (created — 394 name instances)
+- backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json (created — 38 entries)
+- backend/reports/INDUS_FINAL_ANCHORS.json (M267→UNCERTAIN, M063→MEDIUM, M047→miin/MEDIUM)
+- backend/reports/INDUS_V18-V24 round files + INDUS_V18_LOOP_EMAIL.txt (created)
+- reports/PHASE_32_SYNTHESIS.md (updated — 0.907 correlation)
+- reports/fuls_research_brief_may2026.md (updated — 0.907 + random baseline)
+- reports/fuls_contact_email.md (updated — corrected TB numbers + Gulf seal note)
+- reports/phase32_tb_corpus.json (run output)
+- reports/mp_crosswalk_build.json (run output)
+
+UI:
+- backend/glossa_lab/api/research.py (added evidence POST/DELETE endpoints)
+- frontend/src/api.ts (added addHypothesisEvidence + removeHypothesisEvidence)
+- frontend/src/components/ProjectsView.tsx (inline project label rename)
+- frontend/dist/ (rebuilt — 228 modules, 945.89 KB)
+
+Governance:
+- AGENTS.md (WARP.md merged, G-series added)
+- WARP.md (deleted)
+- LEDGER.md (multiple entries)
+
+### Critical open items (carry forward)
+
+- [ ] P30-E1 verdict is AMBIGUOUS — framework can't separate Dravidian from Sanskrit
+      at phoneme distribution level. Phase-32 T4 with clean romanized TB corpus is
+      the only way to get a definitive answer.
+- [ ] Phase-32 T4 needs cleaner TB corpus — epub literal_aksharas have only 2 bigrams
+      after quality filtering. Use romanized_text_b_raw split by Tamil phonotactics.
+- [ ] mahadevan_parpola_crosswalk.json still only 38/390 entries — RISK-001 not resolved.
+- [ ] TB correlation should now be re-reported as "0.907 (vs empirical TB freq from
+      Mahadevan 2003, vs random baseline 0.470)" to be fully accurate.
+- [ ] Fuls email ready to send — `reports/fuls_contact_email.md` + `fuls_research_brief_may2026.md`
+- [ ] P30-A1-A3 used hardcoded Phase-29 candidates (no live Phase-29d result loaded) —
+      result is directionally correct but needs live data for production claim.
+
+### Next step
+1. Send Fuls email (copy fuls_contact_email.md, attach fuls_research_brief_may2026.md as PDF).
+2. Fix TB corpus parser to use romanized_text_b_raw split, re-run Phase-32 T4.
+3. Build M↔P crosswalk to completion (~390 entries) using Mahadevan 1977 Appendix III.

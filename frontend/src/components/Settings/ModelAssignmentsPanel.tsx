@@ -3,7 +3,7 @@ import {
   listProviders, listModelAssignments, setModelAssignment, autoConfigureAssignments,
   listModelScores, syncModelIntelligence, testHuggingFace,
   type ProviderEntry, type BucketGroup, type Bucket, type ModelScore,
-  type AutoConfigProfile,
+  type ModelAssignment, type AutoConfigProfile,
 } from "../../api";
 import { useToast } from "../../hooks/useToast";
 
@@ -35,18 +35,27 @@ const BUCKET_META: Record<string, { label: string; icon: string; desc: string }>
   global:         { label: "Global Default",  icon: "🌐", desc: "Used when no bucket-specific assignment exists" },
 };
 
+/** Build the canonical saved value string for a ModelAssignment. */
+function assignmentToVal(a: ModelAssignment | undefined): string {
+  return a ? `${a.provider_registry_id}|${a.model}` : "";
+}
+
 export function ModelAssignmentsPanel() {
   const { toast } = useToast();
   const [providers, setProviders] = useState<ProviderEntry[]>([]);
   const [assignments, setAssignments] = useState<BucketGroup[]>([]);
   const [scores, setScores] = useState<ModelScore[]>([]);
   const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState<Record<string, boolean>>({});
+  const [applying, setApplying] = useState(false);
   const [syncing, setSyncing] = useState(false);
   const [testingHF, setTestingHF] = useState(false);
   const [configuring, setConfiguring] = useState(false);
   const [scoredOnly, setScoredOnly] = useState(false);
   const [profile, setProfile] = useState<AutoConfigProfile>("mixed");
+
+  // Draft state: keyed "bucket_rank" -> "providerId|model"
+  // Initialised (and reset) from server assignments on every refresh.
+  const [draftVals, setDraftVals] = useState<Record<string, string>>({});
 
   const allModels: { providerId: string; providerName: string; model: string; providerType: string; baseUrl: string }[] = [];
   for (const p of providers) {
@@ -66,6 +75,16 @@ export function ModelAssignmentsPanel() {
     return true; // mixed: show all
   });
 
+  /** Recompute draft from a fresh assignments list (revert or initial load). */
+  const buildDraftFromAssignments = (a: BucketGroup[]) => {
+    const d: Record<string, string> = {};
+    for (const bg of a) {
+      d[`${bg.bucket}_primary`]  = assignmentToVal(bg.primary);
+      d[`${bg.bucket}_fallback`] = assignmentToVal(bg.fallback);
+    }
+    return d;
+  };
+
   const refresh = async () => {
     setLoading(true);
     try {
@@ -77,6 +96,8 @@ export function ModelAssignmentsPanel() {
       setProviders(prov.providers);
       setAssignments(assign.assignments);
       setScores(sc.scores);
+      // Sync draft to latest saved state
+      setDraftVals(buildDraftFromAssignments(assign.assignments));
     } catch { /* */ }
     setLoading(false);
   };
@@ -91,29 +112,66 @@ export function ModelAssignmentsPanel() {
   const getScoreForModel = (modelName: string): ModelScore | undefined =>
     scores.find(s => s.model_name === modelName || modelName.includes(s.model_name) || s.model_name.includes(modelName));
 
-  const handleChange = async (bucket: Bucket, rank: "primary" | "fallback", value: string) => {
-    setSaving(s => ({ ...s, [`${bucket}_${rank}`]: true }));
-    const [providerId, ...modelParts] = value.split("|");
-    const model = modelParts.join("|");
-    // CRITICAL: include BOTH ranks in the request so the backend doesn't
-    // clear the other rank.  Read the current assignment for the OTHER rank
-    // and echo it back unchanged.
-    const otherRank = rank === "primary" ? "fallback" : "primary";
-    const otherCurrent = getAssignment(bucket, otherRank);
-    const body: Record<string, string> = {
-      [`${rank}_provider_id`]: providerId || "",
-      [`${rank}_model`]: model || "",
-      [`${otherRank}_provider_id`]: otherCurrent?.provider_registry_id || "",
-      [`${otherRank}_model`]: otherCurrent?.model || "",
-    };
-    try {
-      await setModelAssignment(bucket, body as never);
-      await refresh();
-      toast(`${bucket} ${rank} updated`, "success");
-    } catch (e: unknown) {
-      toast(e instanceof Error ? e.message : "Save failed", "error");
+  /** Check if any draft value differs from the last saved assignment. */
+  const isDirty = (() => {
+    for (const bg of assignments) {
+      const pk = `${bg.bucket}_primary`;
+      const fk = `${bg.bucket}_fallback`;
+      if (draftVals[pk] !== assignmentToVal(bg.primary)) return true;
+      if (draftVals[fk] !== assignmentToVal(bg.fallback)) return true;
     }
-    setSaving(s => ({ ...s, [`${bucket}_${rank}`]: false }));
+    // also check if draftVals has entries for buckets not yet saved
+    for (const key of Object.keys(draftVals)) {
+      if (draftVals[key]) {
+        const [bucket, rank] = key.split("_");
+        const bg = assignments.find(a => a.bucket === bucket);
+        const saved = rank === "primary" ? assignmentToVal(bg?.primary) : assignmentToVal(bg?.fallback);
+        if (draftVals[key] !== saved) return true;
+      }
+    }
+    return false;
+  })();
+
+  /** Update draft on select change — NO backend call. */
+  const handleChange = (bucket: Bucket, rank: "primary" | "fallback", value: string) => {
+    setDraftVals(d => ({ ...d, [`${bucket}_${rank}`]: value }));
+  };
+
+  /** Apply all draft changes to the backend. */
+  const handleApply = async () => {
+    setApplying(true);
+    const buckets: Bucket[] = ["reasoning", "conversational", "longform", "global"];
+    let anyError = false;
+    for (const bucket of buckets) {
+      const pVal = draftVals[`${bucket}_primary`] ?? "";
+      const fVal = draftVals[`${bucket}_fallback`] ?? "";
+      const [pProv, ...pM] = pVal.split("|"); const pMod = pM.join("|");
+      const [fProv, ...fM] = fVal.split("|"); const fMod = fM.join("|");
+      const bg = assignments.find(a => a.bucket === bucket);
+      const savedP = assignmentToVal(bg?.primary);
+      const savedF = assignmentToVal(bg?.fallback);
+      if (pVal === savedP && fVal === savedF) continue; // no change for this bucket
+      try {
+        await setModelAssignment(bucket, {
+          primary_provider_id: pProv || "",
+          primary_model: pMod || "",
+          fallback_provider_id: fProv || "",
+          fallback_model: fMod || "",
+        } as never);
+      } catch (e: unknown) {
+        toast(`${bucket}: ${e instanceof Error ? e.message : "Save failed"}`, "error");
+        anyError = true;
+      }
+    }
+    await refresh(); // refresh syncs draft from server
+    if (!anyError) toast("Model assignments saved", "success");
+    setApplying(false);
+  };
+
+  /** Discard draft changes — reset to last saved state. */
+  const handleRevert = () => {
+    setDraftVals(buildDraftFromAssignments(assignments));
+    toast("Changes reverted", "info");
   };
 
   const handleAutoConfig = async () => {
@@ -132,24 +190,15 @@ export function ModelAssignmentsPanel() {
     setConfiguring(false);
   };
 
-  const handleSwap = async (bucket: Bucket) => {
-    const primary = getAssignment(bucket, "primary");
-    const fallback = getAssignment(bucket, "fallback");
-    if (!primary && !fallback) return;
-    setSaving(s => ({ ...s, [`${bucket}_swap`]: true }));
-    try {
-      await setModelAssignment(bucket, {
-        primary_provider_id:  fallback?.provider_registry_id || "",
-        primary_model:        fallback?.model || "",
-        fallback_provider_id: primary?.provider_registry_id || "",
-        fallback_model:       primary?.model || "",
-      } as never);
-      await refresh();
-      toast(`${bucket} primary ↔ fallback swapped`, "success");
-    } catch (e: unknown) {
-      toast(e instanceof Error ? e.message : "Swap failed", "error");
-    }
-    setSaving(s => ({ ...s, [`${bucket}_swap`]: false }));
+  /** Swap primary and fallback in draft (no API call). */
+  const handleSwap = (bucket: Bucket) => {
+    const pKey = `${bucket}_primary`;
+    const fKey = `${bucket}_fallback`;
+    const pVal = draftVals[pKey] ?? "";
+    const fVal = draftVals[fKey] ?? "";
+    if (!pVal && !fVal) return;
+    setDraftVals(d => ({ ...d, [pKey]: fVal, [fKey]: pVal }));
+    toast(`${bucket} primary ↔ fallback swapped (not saved yet)`, "info");
   };
 
   const handleSync = async () => {
@@ -178,17 +227,19 @@ export function ModelAssignmentsPanel() {
   const s = { section: { border: "1px solid #e5e7eb", borderRadius: 8, padding: 16, marginBottom: 16, background: "#fff" } as const };
 
   const renderSelector = (bucket: Bucket, rank: "primary" | "fallback") => {
-    const current = getAssignment(bucket, rank);
-    const currentVal = current ? `${current.provider_registry_id}|${current.model}` : "";
-    const isSaving = saving[`${bucket}_${rank}`];
+    const draftVal = draftVals[`${bucket}_${rank}`] ?? "";
+    const savedVal = assignmentToVal(getAssignment(bucket, rank));
+    const isChanged = draftVal !== savedVal;
+    const isSaving = applying;
 
     return (
       <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6 }}>
         <span style={{ fontSize: 10, fontWeight: 600, color: rank === "primary" ? "#2563eb" : "#9ca3af", width: 55, flexShrink: 0 }}>
           {rank === "primary" ? "⚡ Primary" : "⚠️ Fallback"}
+          {isChanged && <span style={{ color: "#f59e0b", marginLeft: 2 }}>●</span>}
         </span>
         <select
-          value={currentVal}
+          value={draftVal}
           onChange={e => handleChange(bucket, rank, e.target.value)}
           disabled={isSaving}
           style={{ flex: 1, minWidth: 0, fontSize: 12, padding: "4px 6px", borderRadius: 4, border: "1px solid #d1d5db", background: isSaving ? "#f3f4f6" : "#fff", textOverflow: "ellipsis" }}
@@ -250,8 +301,8 @@ export function ModelAssignmentsPanel() {
       <div style={{ display: "grid", gap: 10, gridTemplateColumns: "1fr 1fr", minWidth: 0 }}>
         {(["reasoning", "conversational", "longform", "global"] as Bucket[]).map(bucket => {
           const meta = BUCKET_META[bucket];
-          const isSwapping = saving[`${bucket}_swap`];
-          const hasBoth = !!getAssignment(bucket, "primary") && !!getAssignment(bucket, "fallback");
+          const hasBoth = !!(draftVals[`${bucket}_primary`] || getAssignment(bucket, "primary"))
+                       && !!(draftVals[`${bucket}_fallback`] || getAssignment(bucket, "fallback"));
           return (
             <div key={bucket} style={{ border: "1px solid #e5e7eb", borderRadius: 6, padding: 12, background: "#fafafa", minWidth: 0, overflow: "hidden" }}>
               <div style={{ display: "flex", gap: 6, alignItems: "center", marginBottom: 8 }}>
@@ -263,10 +314,10 @@ export function ModelAssignmentsPanel() {
                 {hasBoth && (
                   <button
                     onClick={() => handleSwap(bucket)}
-                    disabled={isSwapping}
-                    title="Swap primary ↔ fallback"
-                    style={{ padding: "2px 6px", fontSize: 11, border: "1px solid #d1d5db", borderRadius: 3, cursor: isSwapping ? "wait" : "pointer", background: "#fff", color: "#6b7280", flexShrink: 0 }}>
-                    {isSwapping ? "…" : "⇅"}
+                    disabled={applying}
+                    title="Swap primary ↔ fallback (draft)"
+                    style={{ padding: "2px 6px", fontSize: 11, border: "1px solid #d1d5db", borderRadius: 3, cursor: "pointer", background: "#fff", color: "#6b7280", flexShrink: 0 }}>
+                    ⇅
                   </button>
                 )}
               </div>
@@ -276,6 +327,27 @@ export function ModelAssignmentsPanel() {
           );
         })}
       </div>
+
+      {/* Apply / Revert bar — only shown when there are unsaved changes */}
+      {isDirty && (
+        <div style={{ marginTop: 10, display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", background: "#fffbeb", border: "1px solid #fcd34d", borderRadius: 6 }}>
+          <span style={{ fontSize: 12, color: "#92400e", flex: 1 }}>
+            ⚠️ Unsaved changes
+          </span>
+          <button
+            onClick={handleRevert}
+            disabled={applying}
+            style={{ padding: "4px 12px", fontSize: 12, border: "1px solid #d1d5db", borderRadius: 4, cursor: "pointer", background: "#fff", color: "#374151" }}>
+            Revert
+          </button>
+          <button
+            onClick={handleApply}
+            disabled={applying}
+            style={{ padding: "4px 16px", fontSize: 12, border: "none", borderRadius: 4, cursor: applying ? "wait" : "pointer", background: "#2563eb", color: "#fff", fontWeight: 700 }}>
+            {applying ? "Saving…" : "✓ Apply"}
+          </button>
+        </div>
+      )}
 
       <div style={{ marginTop: 12, display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
         {scores.length > 0 && (

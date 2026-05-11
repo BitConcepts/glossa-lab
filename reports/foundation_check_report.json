@@ -1,0 +1,126 @@
+{
+  "n_ok": 27,
+  "n_fail": 1,
+  "n_warn": 6,
+  "passed": [
+    "[OK]   Holdat seal count: 1670 seals (expected 1670)",
+    "[OK]   Holdat token count: 7002 tokens (expected 7002)",
+    "[OK]   Holdat sign count: 390 distinct signs (expected 390)",
+    "[OK]   Holdat M-prefix signs: all sign IDs are M-prefixed",
+    "[OK]   Holdat M-number range: M1-M416",
+    "[OK]   Holdat position order: 0 seals with out-of-order positions",
+    "[OK]   Anchor count: 333 total",
+    "[OK]   HIGH anchors: HIGH=7 (expected 7)",
+    "[OK]   UNCERTAIN count: UNCERTAIN=1 (M267)",
+    "[OK]   HIGH anchor M342=ay: reading='ay/\u0101' conf=HIGH",
+    "[OK]   HIGH anchor M176=an: reading='an/a\u1e47' conf=HIGH",
+    "[OK]   HIGH anchor M099=kol: reading='kol/ko\u1e37' conf=HIGH",
+    "[OK]   HIGH anchor M062=erutu: reading='erutu' conf=HIGH",
+    "[OK]   HIGH anchor M045=y\u0101nai: reading='y\u0101nai' conf=HIGH",
+    "[OK]   HIGH anchor M016=ka\u1e37i\u1e5fu: reading='ka\u1e37i\u1e5fu' conf=HIGH",
+    "[OK]   HIGH anchor M006=puli: reading='puli' conf=HIGH",
+    "[OK]   M267 is UNCERTAIN (not fish): conf=UNCERTAIN \u2014 was wrongly HIGH (miin) before fact-check",
+    "[OK]   M047 = miin (fish sign): reading='min/m\u012bn' conf=MEDIUM",
+    "[OK]   Iconographic anchors exist: 12 anchors (expected 12)",
+    "[OK]   Fish sign P47 in iconographic_anchors: fish anchor sign IDs: ['47', '47']",
+    "[OK]   Phase-29d file exists: phase29d_reverse_janabiyah_v3.json",
+    "[OK]   Enmenanak found in Phase-29d: in 30 candidates",
+    "[OK]   Enheduana found in Phase-29d: in 30 candidates",
+    "[OK]   Phase-31 T3 file exists: indus_phase31_t3_zipf_20260501T132656.json",
+    "[OK]   Zipf slope delta < 0.3: |delta| = 0.177 (threshold 0.3, FAVORABLE if <0.3)",
+    "[OK]   CISI corpus file exists: 179 inscriptions",
+    "[OK]   Clean LM bigrams > 500: 1002 bigrams"
+  ],
+  "failed": [
+    "[FAIL] Clean LM contamination: 5/10 top bigrams are English"
+  ],
+  "warnings": [
+    "[WARN] Site coverage: 9 sites only \u2014 no Gulf/western sites in Holdat (those require ICIT)",
+    "[WARN] Sign numbering (iconographic_anchors): Uses Parpola P-numbers (47, 87, 261, etc.); INDUS_FINAL_ANCHORS uses Mahadevan M-numbers \u2014 SEPARATE SYSTEMS",
+    "[WARN] Sign numbering CRITICAL: Holdat V8-V24 uses M-numbers; Phase-10/27c use P-numbers. Cross-corpus claims require a complete M\u2194P crosswalk (38/390 entries). CANNOT make unified claims without this crosswalk.",
+    "[WARN] TB corpus quality: 121 inscriptions from epub \u2014 BUT heavily contaminated with English/OCR",
+    "[WARN] TB LM for Phase-32 T4: Cannot build a valid bigram LM from this corpus; all attempts give English bigrams in top-10",
+    "[WARN] TB correlation validity: The 0.907 TB correlation was computed against hardcoded approximate TB frequencies (not verified from clean corpus)"
+  ],
+  "solid_claims": [
+    {
+      "claim": "Phase-31 T3 Zipf slope",
+      "detail": "M77 slope 0.75 vs TB slope 0.93, delta 0.18 < 0.3 threshold",
+      "status": "VERIFIED \u2014 does not require TB LM, just corpus-level statistics"
+    },
+    {
+      "claim": "Holdat corpus validity",
+      "detail": "1,670 seals, 7,002 tokens, 390 signs, all M-prefixed, position-sorted",
+      "status": "VERIFIED \u2014 data integrity checks passed"
+    },
+    {
+      "claim": "Animal classifiers",
+      "detail": "M062=erutu (100% zebu bull), M045=y\u0101nai (100% elephant), M006=puli (tiger lift 6.2)",
+      "status": "VERIFIED \u2014 from Holdat motif correlation data"
+    },
+    {
+      "claim": "M047=m\u012bn (fish sign)",
+      "detail": "M047 = Parpola P47 = fish, per crosswalk and iconographic anchors",
+      "status": "VERIFIED \u2014 crosswalk + Parpola 2010 iconographic anchor"
+    },
+    {
+      "claim": "Positional grammar",
+      "detail": "INITIAL/MEDIAL/TERMINAL structure confirmed across all phases",
+      "status": "VERIFIED \u2014 consistent across Phase-10 to Phase-30"
+    },
+    {
+      "claim": "Phase-29d reverse-Janabiyah",
+      "detail": "Enmenanak ranks as top candidate (score 7.0) vs 1,222 ePSD2 PNs",
+      "status": "VERIFIED if Phase-29d result file contains live data (check above)"
+    },
+    {
+      "claim": "P30-A1 permutation null",
+      "detail": "Enmenanak score 7.0 at 100th percentile of null (p<0.001)",
+      "status": "VERIFIED \u2014 but simulation used simplified model"
+    },
+    {
+      "claim": "Spectral anomaly",
+      "detail": "M77 shows corpus-wide spectral gap=0.0 (not short-inscription noise)",
+      "status": "VERIFIED \u2014 Phase-30a/c confirmed across all length strata"
+    },
+    {
+      "claim": "Gulf seal site coverage",
+      "detail": "ICIT database covers Failaka, Janabiyah, Saar, Susa, etc.",
+      "status": "CONFIRMED from Fuls 2023 preview \u2014 access needed for data"
+    }
+  ],
+  "caveated_claims": [
+    {
+      "claim": "TB correlation 0.907",
+      "detail": "Computed against approximate TB freq; clean corpus needed for verification",
+      "status": "NEEDS CAVEAT"
+    },
+    {
+      "claim": "333/390 signs 'assigned'",
+      "detail": "78% are LOW confidence distributional assignments, not phonetic readings",
+      "status": "MUST CLARIFY"
+    },
+    {
+      "claim": "Phase-32 T4",
+      "detail": "SA M77\u2192TB LM: INCONCLUSIVE \u2014 TB LM too noisy (2 or few bigrams)",
+      "status": "DO NOT CLAIM"
+    },
+    {
+      "claim": "V8-V24 decipherment campaign",
+      "detail": "Distributional hypothesis proposals only; not verified phonetic readings",
+      "status": "MUST CLARIFY"
+    },
+    {
+      "claim": "P30-E1 falsification",
+      "detail": "AMBIGUOUS after TB freq update \u2014 framework doesn't separate Dravidian from Sanskrit at phoneme distribution level",
+      "status": "NEEDS CAVEAT"
+    },
+    {
+      "claim": "mahadevan_parpola_crosswalk",
+      "detail": "Only 38/390 M\u2194P entries \u2014 Holdat M-number and CISI P-number phases are SEPARATE tracks",
+      "status": "RISK-001 not resolved"
+    }
+  ],
+  "verdict": "NEEDS FIXES BEFORE SEND",
+  "send_to_fuls": "YES \u2014 for ICIT access request only. Present Phase-31 T3, Phase-29d, anchor data. Caveat TB correlation and distributional assignments. DO NOT claim phonetic decipherment."
+}

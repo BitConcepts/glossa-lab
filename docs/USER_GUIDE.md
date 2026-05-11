@@ -773,31 +773,92 @@ uvicorn glossa_lab.main:create_app --factory --port 8001 --reload
 
 **Path**: sidebar → Settings (bottom of sidebar)
 
-### API keys
+The Settings view contains five panels: API Keys, Provider Registry, Model Assignments, Python Environment, and AI Profiles.
 
-Store API keys for cloud AI providers. Keys are stored locally (encrypted at
-rest) and never sent to any third-party service other than the specified provider.
+---
 
-| Key | Provider |
-|-----|----------|
-| `mistral_api_key` | Mistral AI (required for OCR experiments) |
-| `openai_api_key` | OpenAI |
-| `anthropic_api_key` | Anthropic Claude |
+### API Keys
 
-### Python environment
+Store API keys for cloud AI providers. Keys are encrypted at rest and never sent to any service other than the specified provider.
 
-View the current venv status, installed packages, and actions:
+Common keys: `openai_api_key`, `anthropic_api_key`, `mistral_api_key`, `hf_api_token` (doubles HF rate limits for model score sync).
+
+---
+
+### Provider Registry
+
+Manage all AI backends in one place. Supported types:
+
+| Badge | Type | Description |
+|-------|------|-------------|
+| 🦙 | **Ollama** | Local Ollama instance (auto-detects on `:11434`) |
+| ☁️ | **Cloud** | OpenAI, Anthropic, Mistral, Google, Groq, Together, etc. |
+| ⚡ | **vLLM / Custom** | Any OpenAI-compatible endpoint (vLLM, LM Studio, etc.) |
+| 🤗 | **HuggingFace** | HuggingFace Inference API |
+
+**Adding a provider:**
+1. Click **+ Add Provider** (or **🦙 Detect Ollama** for local)
+2. Select type, fill name and base URL
+3. Click **Add Provider**, then **Test** to probe the endpoint and fetch available models
+
+**Editing a provider:**
+- Click a provider row to expand it
+- Edit name, base URL, or API key inline; a **Save** button appears when you've made changes
+- Name field is validated — empty names are blocked
+- Click **↻ Refresh Models** to re-probe and update the available model list
+
+**Provider subtitle** shows `type · DisplayName` (e.g., `cloud · OpenAI`, not `cloud · openai`).
+
+---
+
+### Model Assignments
+
+Assign which AI model serves each **bucket** — the four task categories the system routes requests through:
+
+| Bucket | Purpose |
+|--------|---------|
+| 🧠 **Reasoning** | Decipherment, hypothesis generation, experiment planning |
+| 💬 **Conversational** | Chat, synthesis, general Q&A |
+| 📝 **Long-form** | Paper drafting, report generation |
+| 🌐 **Global Default** | Used when no bucket-specific assignment exists |
+
+Each bucket has a **Primary** and **Fallback** slot. Glossa AI uses Primary first; falls back to Fallback if Primary is unreachable.
+
+**How to assign models:**
+
+1. Use the **Filter** dropdown (top-right) to narrow the model list: **🔀 All**, **☁️ Cloud only**, **🖥️ Local only**. This preference is remembered.
+2. Select models in the dropdowns. Changes are **draft only** — nothing is saved yet.
+3. An amber **● dot** appears next to any modified slot.
+4. The **"⚠️ Unsaved changes"** bar appears below the grid when there are pending changes.
+5. Click **✓ Apply** to save all changes at once, or **Revert** to discard.
+
+**Per-bucket swap:** Click the **⇅** button (appears when both slots are filled) to swap Primary ↔ Fallback as a draft operation.
+
+**Model scores** (★ = bucket fitness, higher is better) are shown in the dropdown. Models are sorted highest-to-lowest. Scores come from:
+- **HF Open LLM Leaderboard** (synced nightly, ~4,576 evaluated models)
+- **Static fallback** (cloud models + 50+ common Ollama/vLLM models)
+
+**🤗 Test HF** — tests your `hf_api_token` validity and datasets-server reachability.
+**🔄 Sync Scores** — manually triggers the HF leaderboard sync (also runs automatically 15s after startup and daily thereafter).
+
+**Note on vLLM model names:** If your vLLM provider shows `provider-name · provider-name` in the dropdown, your vLLM server is using a served-model-name alias. Remove `--served-model-name` from your docker-compose and re-test the provider to get real HF model IDs.
+
+---
+
+### Python Environment
+
+View venv status, installed packages, and actions:
 - **Setup** — create or re-create the venv
 - **Rebuild** — reinstall all dependencies
 - **Upgrade** — upgrade packages to latest compatible versions
 
-### AI backend
-
-Configure the default AI provider and model. If no provider is selected,
-Glossa Lab uses Ollama (local) if running, or prompts to configure a provider.
-
 ---
 
+### AI Profiles & Endpoints
+
+Named bundles of backend + model + parameters for fine-grained control over which model is used for specific research tasks. Assigned via the Provider Registry / Model Assignments workflow.
+
+---
 ## 14. Advanced Usage
 
 ### Data flow in study graphs

@@ -1,132 +1,85 @@
 # glossa-lab
 
-Agentic research lab for decoding, translating, and modeling languages and scripts across ancient and modern systems through structure discovery, semantic analysis, and explainable workflows.
+Agentic computational linguistics research platform for statistical analysis, decipherment, and hypothesis testing of ancient and unknown writing systems — with a primary focus on the **Indus Script** (Mahadevan corpus, Holdat LLC dataset) using methods developed by Dr. Andreas Fuls (TU Berlin / ICIT).
+
+Built and maintained by **Layer1Labs Silicon, Inc.**
 
 ---
 
 ## Overview
 
-Glossa Lab is a cross-platform system designed for both research and product-style language workflows.
+Glossa Lab is a production research tool combining a Python backend, React frontend, and Windows/Linux/macOS service support. It provides an end-to-end environment for:
 
-It combines:
-
-- a **Python backend (runtime authority)**
-- a **React frontend UI (user interaction layer)**
-- a **tray application (local control surface)**
-- **Windows, Linux, and macOS service/startup support**
-
-The system is built to support:
-
-- modern translation and language tooling
-- ancient script analysis and decipherment
-- structure-aware semantic modeling
-- explainable hypothesis testing
-- long-running background processing
-- local-first services with deterministic behavior
+- **Corpus management** — upload, register, inspect, and sanitise sign-sequence corpora
+- **Statistical analysis** — entropy, Zipf, positional profiles (T/I/M), writing-system classification
+- **Decipherment experiments** — SA-based sign-to-phoneme hypothesis generation, benchmarks vs known scripts
+- **Experiment Builder** — composable graph experiments using atomic nodes (no coding required)
+- **Study Builder** — multi-experiment research workflows as visual graphs
+- **Glossa AI** — embedded research assistant that runs analyses, proposes hypotheses, and navigates the tool
+- **Discovery engine** — continuous literature discovery across arXiv, EuropePMC, CrossRef, DOAJ and more
+- **AI Provider Registry** — unified management of cloud (OpenAI, Anthropic, Mistral, Google…), local (Ollama), and self-hosted (vLLM) AI backends with model scoring and smart assignment
+- **Reports & Data** — PDF, Markdown, JSON, CSV export of all results
 
 ---
 
 ## System architecture
 
-Glossa Lab follows a **service-first architecture**:
-
 ```text
 [ Tray ] ─────┐
               │
-[ Frontend ] ─┼──→ [ Backend Service ] ───→ [ Pipelines / Jobs / Models ]
-              │
-[ CLI / Dev ] ┘
-````
+[ Frontend ] ─┼──→ [ Backend Service (FastAPI) ] ──→ [ Pipelines / Jobs / Models ]
+              │              │
+[ CLI / Dev ] ┘         [ SQLite DB ]
+                              │
+                    [ Provider Registry ] ──→ [ Cloud / Ollama / vLLM ]
+```
 
 ### Key principles
 
-* the backend is the **source of truth**
-* the tray and frontend are **interfaces**, not runtime owners
-* all communication occurs through **explicit interfaces**
-* service lifecycle is **deterministic and observable**
+- The backend is the **source of truth**
+- The tray and frontend are **interfaces**, not runtime owners
+- All communication occurs through **explicit REST APIs**
+- Service lifecycle is **deterministic and observable** — every background process logs START/COMPLETE
 
 ---
 
 ## Components
 
-### Backend (Python)
+### Backend (Python / FastAPI)
 
-The backend is the core system.
+- REST API + background job engine
+- SQLite database (providers, model scores, discovery items, experiments, studies)
+- AI provider registry with test/probe on startup and on-demand
+- HuggingFace Open LLM Leaderboard sync (nightly) + static fallback scores
+- Discovery engine with 10+ fetchers (arXiv, EuropePMC, CrossRef, PubMed, DOAJ…)
+- RAG index for research context injection
+- Ollama auto-detection and lifecycle management
 
-Responsibilities:
+### Frontend (React / TypeScript / Vite)
 
-* APIs and orchestration
-* background jobs and pipelines
-* translation and analysis workflows
-* config and state management
-* logging, health, and observability
+Built artefact (`frontend/dist/`) is committed to the repo so the server only needs `git pull` — no Node.js required on the deployment target.
 
-Characteristics:
+Key panels:
+- **Provider Registry** — add/test/manage AI providers; badges: 🦙 Ollama · ☁️ Cloud · ⚡ vLLM/Custom · 🤗 HuggingFace
+- **Model Assignments** — assign primary/fallback models per bucket (Reasoning / Conversational / Long-form / Global) with draft/apply workflow, scores, filter, and swap
+- **Experiment Builder** — visual DAG editor
+- **Study Builder** — multi-experiment graph workflows
+- **Discovery View** — literature feed with status management
+- **Foundation Check** — research integrity dashboard (17 checks; must be PASS before external communication)
+- **Bottom Panel** — structured Logs (JSON → human-readable), Jobs, Terminal
 
-* cross-platform
-* service-friendly
-* deterministic startup/shutdown
-* explicit configuration
+### Tray (Windows/macOS)
 
----
+Local control surface. Start/stop/restart backend, open UI, quick status.
 
-### Frontend (React)
+### Agent-Stack (layer1labs server — separate repo)
 
-The frontend is the primary UI layer.
+Three vLLM services on NVIDIA RTX PRO 5000 Blackwell (48 GB GDDR7):
+- **l1-nexus** (port 8000) — `cpatonn/Qwen3-Coder-30B-A3B-Instruct-AWQ-4bit` — primary coding/agentic
+- **l1-glossa** (port 8001) — `Qwen/Qwen3-14B` — research/long-context reasoning
+- **l1-embed** (port 8002) — `BAAI/bge-m3` — embeddings (RAG)
 
-Responsibilities:
-
-* dashboards and configuration
-* workflow and job management
-* results and visualization
-* service status visibility
-
-Rules:
-
-* communicates only via backend APIs
-* contains no core application logic
-* does not manage services
-
----
-
-### Tray
-
-The tray is a local control surface.
-
-Responsibilities:
-
-* quick system status
-* open UI
-* service control (start/stop/restart)
-* fast local access to common actions
-
-Rules:
-
-* does not contain backend logic
-* does not own application state
-* communicates via explicit interfaces
-
----
-
-## Platform behavior
-
-### Windows
-
-* tray starts automatically on login/startup
-* tray can control backend services
-* backend runs in a stable background service or managed process
-
-### Linux
-
-* backend supports systemd-based startup
-* user services preferred for local installs
-* tray behavior depends on desktop environment and is documented explicitly
-
-### macOS
-
-* tray is a first-class experience
-* backend uses macOS-native startup mechanisms (e.g., LaunchAgent)
-* startup/login behavior is explicit and documented
+Access via Tailscale (`100.118.107.3`). Repo: `layer1labs/agent-stack`.
 
 ---
 
@@ -134,89 +87,110 @@ Rules:
 
 ```text
 glossa-lab/
-├─ AGENTS.md
+├─ AGENTS.md            ← agent operating rules (read first, every session)
+├─ LEDGER.md            ← session ledger (sole continuity authority)
 ├─ README.md
-├─ .gitignore
-├─ .gitattributes
-├─ docs/
-│  ├─ architecture.md
-│  ├─ workflow.md
-│  └─ services.md
+├─ CITATIONS.md         ← citation registry for all research data
+├─ setup-os.cmd         ← canonical start/stop/restart (Windows)
+├─ shell.cmd            ← tool wrapper (pytest, ruff, python — Windows)
+├─ shell.sh             ← tool wrapper (Linux/macOS)
 ├─ backend/
+│  ├─ glossa_lab/       ← FastAPI app + all Python modules
+│  │  ├─ api/           ← REST route modules
+│  │  ├─ experiments/   ← ExperimentBase subclasses + graph JSONs
+│  │  ├─ discovery/     ← literature discovery engine + fetchers
+│  │  ├─ data/          ← corpora, anchor sets, LM files (cited per H18)
+│  │  └─ model_intelligence.py ← HF leaderboard sync + scoring
+│  ├─ reports/          ← experiment results, phase syntheses
+│  └─ scripts/          ← utility and research scripts
 ├─ frontend/
-├─ tray/
-├─ services/
-│  ├─ windows/
-│  ├─ linux/
-│  └─ macos/
-└─ scripts/
+│  ├─ src/              ← React source
+│  └─ dist/             ← built artefact (committed for server deploy)
+├─ tray/                ← system tray app
+├─ docs/
+│  ├─ USER_GUIDE.md
+│  ├─ user-manual.md
+│  ├─ architecture.md
+│  └─ research/         ← decipherment research docs
+├─ services/            ← systemd/launchd/Windows service definitions
+└─ corpora/             ← external corpus downloads (gitignored, ~3 GB)
 ```
 
 ---
 
-## Development model
+## Quick start
 
-This repository follows a **specification-first, proposal-driven workflow**.
+### Windows
 
-Before non-trivial work:
+```powershell
+# First-time install (registers autostart, installs deps)
+setup-os.cmd install
 
-1. load context
-2. restate objective
-3. define scope and constraints
-4. produce proposal
-5. execute bounded task
-6. verify results
-7. document outcomes and uncertainty
+# Start backend + tray
+setup-os.cmd start
 
-See `AGENTS.md` and `docs/workflow.md` for full rules.
+# Verify
+curl.exe -sf http://localhost:8001/api/v1/health
+```
+
+### Linux (systemd)
+
+```bash
+cd backend && python3 -m venv venv && venv/bin/pip install -e .
+sudo systemctl start glossa-lab
+curl -sf http://localhost:8001/api/v1/health
+```
+
+Open `http://localhost:8001` in your browser.
 
 ---
 
-## Design principles
+## Development workflow
 
-* service-first architecture
-* explicit ownership of state
-* deterministic lifecycle behavior
-* cross-platform clarity over shortcuts
-* explicit interfaces over implicit coupling
-* documentation as part of implementation
-* no silent architectural drift
+All non-trivial work follows the proposal-first cycle in `AGENTS.md`. **Frontend changes require a rebuild before they are visible:**
+
+```powershell
+cd frontend && npm run build
+# Verify served bundle:
+curl.exe -sf http://localhost:8001/ | Select-String 'index-[A-Za-z0-9]+\.js'
+```
+
+---
+
+## Research governance
+
+- **H18** — Every data file must have `_citation` traceable to `CITATIONS.md`
+- **H19** — Foundation check must PASS before external communication
+- Current: **17 PASS / 0 FAIL / 0 WARN** (`GET /api/v1/research/foundation-check`)
 
 ---
 
 ## Documentation
 
-* `docs/architecture.md` — system architecture
-* `docs/workflow.md` — development workflow
-* `docs/services.md` — service and startup expectations
-* `AGENTS.md` — agent operating rules
+| File | Purpose |
+|------|---------|
+| `AGENTS.md` | Agent rules, start/stop commands, hard rules |
+| `LEDGER.md` | Session ledger — sole continuity authority |
+| `CITATIONS.md` | Research data citation registry |
+| `docs/USER_GUIDE.md` | Full user guide (all panels) |
+| `docs/architecture.md` | System architecture |
+| `docs/REQUIREMENTS.md` | Formal requirements |
+| `docs/research/` | Decipherment research documents |
+| `docs/guides/` | How-to guides (experiments, pipelines, studies) |
 
 ---
 
-## Near-term goals
+## Current research status (May 2026)
 
-1. scaffold Python backend
-2. scaffold React frontend
-3. define backend ↔ frontend API boundary
-4. define tray ↔ backend interaction model
-5. implement Windows startup and tray behavior
-6. implement Linux systemd service support
-7. implement macOS startup model
-8. add packaging and smoke-test workflows
+- **333/390 signs assigned** — 85.4% coverage, 17 HIGH-confidence anchors
+- **99.2% token coverage** on Holdat corpus (1,670 seals / 7,002 tokens)
+- **Phase-29d**: Enmenanak confirmed top candidate (score 7.0, p<0.001)
+- **Phase-31 T3**: Indus Script and Tamil-Brahmi both in syllabic Zipf regime (δ=0.177)
+- **Phase-32**: Synthesis written; T4 word-level LM rerun pending
+- **TB correlation**: 0.907 (post M267 correction)
 
 ---
 
 ## Status
 
-This repository has completed Milestone 1 (scaffold + governance) and Milestone 2 (backend + frontend scaffold).
-
-Current state:
-
-* governance files complete (AGENTS.md, LEDGER.md, REQUIREMENTS.md, TEST_SPEC.md)
-* architecture extended with concrete interface specs and technology decisions
-* Python backend scaffold with FastAPI, health endpoint, config, structured logging
-* React frontend scaffold with Vite, TypeScript, health status display
-* Bootstrap scripts for Windows (.ps1) and Linux/macOS (.sh)
-* 25 formal requirements with linked test specifications
-
-Next milestones: run setup/tests, implement remaining API, tray scaffold, OS service integration.
+**Production — active research.** Backend and frontend fully operational at `http://localhost:8001`.

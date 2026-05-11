@@ -409,7 +409,10 @@ def _direction_normalizer(inputs: dict, params: dict) -> dict:
 
 def _sa_decipher(inputs: dict, params: dict) -> dict:
     """Simulated Annealing decipherment. Runs N seeds in parallel (GPU-aware BigramScorer)."""
+    import logging as _logging  # noqa: PLC0415
+    import time as _time  # noqa: PLC0415
     from collections import Counter as _C  # noqa: PLC0415
+    _sa_log = _logging.getLogger("glossa_lab.sa_decipher")
     sequences = inputs.get("sequences") or inputs.get("test_sequences") or []
     lm = inputs.get("lm")
     if not lm:
@@ -425,17 +428,28 @@ def _sa_decipher(inputs: dict, params: dict) -> dict:
     anchors    = inputs.get("anchors") or params.get("anchors") or None
     flat = [s for seq in sequences for s in seq]
 
+    _sa_log.info("SA decipher: %d signs, %d tokens, %d seeds × %d restarts × %d iter",
+                 len(set(flat)), len(flat), n_seeds, restarts, max_iter)
+
     from glossa_lab.experiments._parallel import run_seeds_parallel  # noqa: PLC0415
+
+    _sa_t0 = _time.time()
+    _completed = [0]  # mutable counter for progress logging
 
     def _one(seed: int) -> dict:
         # cipher_inscriptions=None keeps cipher_positional empty,
         # enabling the numpy/cupy BigramScorer GPU fast path.
         from glossa_lab.pipelines.decipher import decipher  # noqa: PLC0415
+        t0 = _time.time()
         r = decipher(flat, lm, seed=seed, max_iterations=max_iter, restarts=restarts,
                      cipher_inscriptions=None,  # None = GPU fast path
                      surjective=surjective,
                      ocp_weight=ocp_w, positional_weight=0.0,
                      anchors=anchors if anchors else None)
+        _completed[0] += 1
+        elapsed = _time.time() - t0
+        _sa_log.info("SA seed %d done in %.1fs (score=%.2f) [%d/%d seeds complete, total %.0fs]",
+                     seed, elapsed, r.get("score", 0), _completed[0], n_seeds, _time.time() - _sa_t0)
         return r.get("proposed_mapping", {})
 
     all_maps = run_seeds_parallel(_one, list(range(n_seeds)))

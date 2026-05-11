@@ -89,7 +89,7 @@ export function ProvidersPanel() {
       const r = await detectOllama();
       if (r.detected.length === 0) { toast("No Ollama instances found", "error"); return; }
       const first = r.detected[0];
-      setAddType("ollama"); setAddName("Ollama (local)"); setAddUrl(first.url); setShowAdd(true);
+      setAddType("ollama"); setAddName("Ollama"); setAddUrl(first.url); setShowAdd(true);
       toast(`Found Ollama at ${first.url} with ${first.models.length} model(s)`, "success");
     } catch { toast("Detection failed", "error"); }
   };
@@ -152,7 +152,14 @@ export function ProvidersPanel() {
                     {p.available_models.length > 0 && <span style={{ fontSize: 10, color: "#6b7280" }}>{p.available_models.length} model(s)</span>}
                   </div>
                   <div style={{ fontSize: 11, color: "#6b7280", marginTop: 1 }}>
-                    {p.provider_type}{p.provider_id !== p.provider_type ? ` · ${p.provider_id}` : ""}
+                    {(() => {
+                      // Use cloud catalog label for proper capitalisation (openai → OpenAI)
+                      const displayId = p.provider_type === "cloud"
+                        ? (cloudCatalog.find(c => c.id === p.provider_id)?.label ?? p.provider_id)
+                        : p.provider_id;
+                      const showId = displayId && displayId !== p.provider_type;
+                      return <>{p.provider_type}{showId ? ` · ${displayId}` : ""}</>;
+                    })()}
                     {p.base_url && <span> · {p.base_url.replace(/https?:\/\//, "").slice(0, 40)}</span>}
                   </div>
                 </div>

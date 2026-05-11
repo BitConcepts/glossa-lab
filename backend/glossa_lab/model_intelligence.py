@@ -24,6 +24,7 @@ from __future__ import annotations
 import asyncio
 import json
 import logging
+import threading
 import urllib.error
 import urllib.request
 from datetime import datetime, timezone
@@ -38,16 +39,17 @@ _log = logging.getLogger(__name__)
 
 # ── HuggingFace data source ────────────────────────────────────────────────
 
-# The OpenEvals/leaderboard-data dataset provides a single Parquet with
-# cross-benchmark scores.  We use the REST API instead of the datasets
-# library to avoid heavy dependencies.
-_HF_LEADERBOARD_API = (
-    "https://huggingface.co/api/datasets/open-llm-leaderboard/contents/leaderboard"
+# The Open LLM Leaderboard data lives on the HF Datasets Server.
+# We paginate with offset/length to fetch all rows.
+_HF_DATASETS_API = (
+    "https://datasets-server.huggingface.co/rows"
+    "?dataset=open-llm-leaderboard/contents"
+    "&config=default&split=train"
 )
-# Fallback: direct REST endpoint for the formatted leaderboard
-_HF_FORMATTED_API = (
-    "https://huggingface.co/api/datasets/open-llm-leaderboard/contents/leaderboard"
-)
+_HF_PAGE_SIZE = 100   # max rows per request
+_HF_MAX_RETRIES = 3   # retries per page on 429
+_HF_PAGE_DELAY = 2.0  # seconds between pages to avoid rate limits
+_sync_lock = threading.Lock()  # prevent concurrent HF syncs
 
 # ── Scoring weights ────────────────────────────────────────────────────────
 
@@ -98,103 +100,141 @@ async def sync_from_huggingface() -> dict[str, Any]:
 
 def _sync_hf_blocking() -> dict[str, Any]:
     """Blocking HF sync — fetches leaderboard data and stores scores."""
+    if not _sync_lock.acquire(blocking=False):
+        _log.info("HF sync already in progress, skipping")
+        return {"synced": 0, "errors": 0, "message": "Sync already in progress"}
+    try:
+        return _sync_hf_inner()
+    finally:
+        _sync_lock.release()
+
+
+def _sync_hf_inner() -> dict[str, Any]:
+    """Inner sync logic — called under _sync_lock."""
     db = get_db()
     if db is None:
         return {"synced": 0, "errors": 0, "message": "Database not ready"}
 
-    # Try to fetch from HF leaderboard API
-    try:
-        import ssl  # noqa: PLC0415
-        import os  # noqa: PLC0415
-        # Build SSL context — respect GLOSSA_SSL_VERIFY for corporate proxies
-        ssl_ctx: ssl.SSLContext | None = None
-        if os.environ.get("GLOSSA_SSL_VERIFY", "1").strip() in ("0", "false", "no"):
-            ssl_ctx = ssl.create_default_context()
-            ssl_ctx.check_hostname = False
-            ssl_ctx.verify_mode = ssl.CERT_NONE
+    import os  # noqa: PLC0415
+    import sqlite3  # noqa: PLC0415
+    import ssl  # noqa: PLC0415
 
-        # Fetch the leaderboard data
-        req = urllib.request.Request(
-            _HF_LEADERBOARD_API,
-            headers={"Accept": "application/json"},
-            method="GET",
-        )
-        with urllib.request.urlopen(req, timeout=30, context=ssl_ctx) as resp:
-            data = json.loads(resp.read().decode())
-    except Exception as exc:  # noqa: BLE001
-        _log.warning("HF leaderboard sync failed: %s", exc)
-        # Try alternate: fetch a static known-models list
-        return _sync_static_fallback()
+    # SSL context
+    ssl_ctx: ssl.SSLContext | None = None
+    if os.environ.get("GLOSSA_SSL_VERIFY", "1").strip() in ("0", "false", "no"):
+        ssl_ctx = ssl.create_default_context()
+        ssl_ctx.check_hostname = False
+        ssl_ctx.verify_mode = ssl.CERT_NONE
 
-    # Parse the leaderboard entries
-    entries = data if isinstance(data, list) else data.get("data", data.get("models", []))
+    # Optional HF token for higher rate limits
+    from glossa_lab.api.settings import get_key  # noqa: PLC0415
+    hf_token = get_key("hf_api_token") or ""
+
     synced = 0
     errors = 0
     now = datetime.now(timezone.utc).isoformat()
+    db_path = str(db._path)  # noqa: SLF001
+    offset = 0
 
-    for entry in entries:
-        try:
-            if isinstance(entry, dict):
-                model_name = (
-                    entry.get("fullname")
-                    or entry.get("Model")
-                    or entry.get("model", {}).get("name", "")
-                )
-                if not model_name:
+    import time  # noqa: PLC0415
+
+    def _fetch_page(page_url: str) -> dict[str, Any]:
+        """Fetch one page with retry + exponential backoff on 429."""
+        hdrs: dict[str, str] = {"Accept": "application/json"}
+        if hf_token:
+            hdrs["Authorization"] = f"Bearer {hf_token}"
+        for attempt in range(_HF_MAX_RETRIES + 1):
+            try:
+                rq = urllib.request.Request(page_url, headers=hdrs, method="GET")
+                with urllib.request.urlopen(rq, timeout=30, context=ssl_ctx) as rsp:
+                    return json.loads(rsp.read().decode())
+            except urllib.error.HTTPError as he:
+                if he.code == 429 and attempt < _HF_MAX_RETRIES:
+                    retry_after = he.headers.get("Retry-After")
+                    wait = float(retry_after) if retry_after else (2 ** attempt) * 5
+                    _log.info(
+                        "HF rate-limited (429), waiting %.0fs (attempt %d/%d)",
+                        wait, attempt + 1, _HF_MAX_RETRIES,
+                    )
+                    time.sleep(wait)
                     continue
+                raise
+        return {}  # unreachable
 
-                # Extract benchmark scores
-                benchmarks: dict[str, float] = {}
+    try:
+        while True:
+            url = f"{_HF_DATASETS_API}&offset={offset}&length={_HF_PAGE_SIZE}"
+            data = _fetch_page(url)
 
-                # Try formatted structure first (nested evaluations)
-                evals = entry.get("evaluations", {})
-                if evals:
+            rows = data.get("rows", [])
+            if not rows:
+                break
+
+            conn = sqlite3.connect(db_path, timeout=5)
+            for row_wrapper in rows:
+                try:
+                    entry = row_wrapper.get("row", row_wrapper)
+                    if not isinstance(entry, dict):
+                        continue
+                    model_name = (
+                        entry.get("fullname")
+                        or entry.get("Model")
+                        or entry.get("model_name")
+                        or ""
+                    )
+                    if not model_name:
+                        continue
+
+                    benchmarks: dict[str, float] = {}
                     for hf_key, our_key in _BENCHMARK_KEYS.items():
-                        eval_entry = evals.get(our_key, {})
-                        benchmarks[our_key] = float(eval_entry.get("normalized_score", 0))
-                else:
-                    # Flat structure
-                    for hf_key, our_key in _BENCHMARK_KEYS.items():
-                        val = entry.get(hf_key, 0)
+                        val = entry.get(hf_key)
                         if isinstance(val, (int, float)):
                             benchmarks[our_key] = float(val)
 
-                scores = _compute_bucket_scores(benchmarks)
+                    # Skip entries with no benchmark data at all
+                    if not any(v > 0 for v in benchmarks.values()):
+                        continue
 
-                # Store via sync sqlite3 (we're in a thread)
-                import sqlite3  # noqa: PLC0415
-                db_path = str(db._path)  # noqa: SLF001
-                conn = sqlite3.connect(db_path, timeout=3)
-                # Upsert
-                conn.execute(
-                    """INSERT INTO model_scores
-                       (id, model_name, provider_type, reasoning_score,
-                        conversational_score, longform_score, source,
-                        raw_benchmarks_json, scored_at)
-                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-                       ON CONFLICT(id) DO UPDATE SET
-                        reasoning_score=excluded.reasoning_score,
-                        conversational_score=excluded.conversational_score,
-                        longform_score=excluded.longform_score,
-                        raw_benchmarks_json=excluded.raw_benchmarks_json,
-                        scored_at=excluded.scored_at""",
-                    (
-                        f"hf_{model_name[:80]}",
-                        model_name,
-                        "huggingface",
-                        scores["reasoning"],
-                        scores["conversational"],
-                        scores["longform"],
-                        "huggingface",
-                        json.dumps(benchmarks),
-                        now,
-                    ),
-                )
-                conn.commit()
-                conn.close()
-                synced += 1
-        except Exception:  # noqa: BLE001
-            errors += 1
+                    scores = _compute_bucket_scores(benchmarks)
+                    conn.execute(
+                        """INSERT OR REPLACE INTO model_scores
+                           (id, model_name, provider_type, reasoning_score,
+                            conversational_score, longform_score, source,
+                            raw_benchmarks_json, scored_at)
+                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                        (
+                            f"hf_{model_name[:80]}",
+                            model_name,
+                            "huggingface",
+                            scores["reasoning"],
+                            scores["conversational"],
+                            scores["longform"],
+                            "huggingface",
+                            json.dumps(benchmarks),
+                            now,
+                        ),
+                    )
+                    synced += 1
+                except Exception:  # noqa: BLE001
+                    errors += 1
+            conn.commit()
+            conn.close()
+
+            # Check if there are more pages
+            total = data.get("num_rows_total", 0)
+            offset += len(rows)
+            if offset >= total or len(rows) < _HF_PAGE_SIZE:
+                break
+            # Courtesy delay between pages
+            time.sleep(_HF_PAGE_DELAY)
+
+    except Exception as exc:  # noqa: BLE001
+        if synced > 0:
+            # Partial sync is fine — we got data before the rate limit kicked in
+            _log.info("HF sync stopped after %d models (rate limit), continuing with partial data", synced)
+        else:
+            _log.warning("HF leaderboard sync failed: %s", exc)
+            return _sync_static_fallback()
 
     _log.info("HF leaderboard sync: %d models scored, %d errors", synced, errors)
     if synced == 0:
@@ -297,7 +337,9 @@ def _sync_static_fallback() -> dict[str, Any]:
 
 
 async def start_intelligence_sync() -> None:
-    """Run HF sync on startup and then daily."""
+    """Run HF sync on startup (after a short delay) and then daily."""
+    # Delay initial sync so rapid restarts don't hammer HF rate limits
+    await asyncio.sleep(15)
     try:
         result = await sync_from_huggingface()
         _log.info("Model intelligence initial sync: %s", result.get("message", ""))

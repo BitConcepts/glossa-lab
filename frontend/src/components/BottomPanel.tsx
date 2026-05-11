@@ -49,37 +49,83 @@ function parseLogTimestamp(raw: string): string {
   return raw.length >= 19 ? raw.slice(0, 19) : raw;
 }
 
-function formatLogLine(raw: string): string {
+/**
+ * Extract a short, human-readable message from an embedded JSON error body.
+ * E.g. OpenAI 429 → "Quota exceeded — check billing at platform.openai.com"
+ */
+function prettifyErrorBody(raw: string): string {
+  // Try to find embedded JSON in the message (e.g. "LLM API error 429: {...}")
+  const jsonMatch = raw.match(/\{[\s\S]*\}/);
+  if (!jsonMatch) return raw;
+  try {
+    const obj = JSON.parse(jsonMatch[0]) as Record<string, unknown>;
+    // OpenAI / generic: {error: {message, type}}
+    const inner = (obj.error ?? obj) as Record<string, unknown>;
+    const msg = (inner.message ?? inner.detail ?? inner.error) as string | undefined;
+    const type = (inner.type ?? inner.code ?? inner.status) as string | undefined;
+    if (msg) {
+      // Strip URLs and docs links for brevity
+      const short = msg.replace(/\s*For more information.*$/i, "").replace(/\s*Please wait and try again.*$/i, "").trim();
+      const prefix = raw.match(/^(.*?)\{/)?.[1]?.trim();
+      const typeTag = type ? ` [${type}]` : "";
+      return `${prefix ? prefix + " " : ""}${short}${typeTag}`;
+    }
+  } catch { /* not valid JSON, return as-is */ }
+  return raw;
+}
+
+/** Formatted line with embedded level for accurate coloring. */
+interface FormattedLine { text: string; level: string; }
+
+function formatLogLine(raw: string): FormattedLine {
   try {
     const d = JSON.parse(raw) as Record<string, unknown>;
-    if (typeof d.message !== "string") return raw;
+    if (typeof d.message !== "string") return { text: raw, level: "" };
     const ts  = typeof d.timestamp === "string" ? parseLogTimestamp(d.timestamp) : "";
-    const lvl = typeof d.level   === "string" ? d.level.padEnd(5) : "     ";
+    const lvl = typeof d.level   === "string" ? d.level : "";
     const mod = typeof d.module  === "string" ? `[${d.module}]` : "";
-    const msg = d.message;
+    let msg: string = d.message;
+    if (msg.includes('{"') || msg.includes('{ ')) {
+      msg = prettifyErrorBody(msg);
+    }
     const extras = Object.entries(d)
       .filter(([k]) => !["timestamp", "level", "module", "message"].includes(k))
-      .map(([k, v]) => `${k}=${JSON.stringify(v)}`)
+      .map(([k, v]) => {
+        if (typeof v === "string") return `${k}=${v}`;
+        if (typeof v === "number" || typeof v === "boolean") return `${k}=${v}`;
+        return `${k}=${JSON.stringify(v)}`;
+      })
       .join("  ");
-    return `${ts} ${lvl} ${mod} ${msg}${extras ? "  " + extras : ""}`;
+    return {
+      text: `${ts} ${lvl.padEnd(5)} ${mod} ${msg}${extras ? "  " + extras : ""}`,
+      level: lvl.toUpperCase(),
+    };
   } catch {
-    return stripAnsi(raw);
+    return { text: stripAnsi(raw), level: "" };
   }
 }
 
-function logLineColor(line: string): string {
-  const l = line.toLowerCase();
-  if (l.includes("error") || l.includes("exception") || l.includes("failed")) return "#f87171";
+/** Color by the actual log level first, then fall back to keyword heuristics. */
+function logLineColor(line: FormattedLine): string {
+  // Use the real log level when available — this prevents "INFO ... failed"
+  // from showing red when it's actually a successful info message.
+  switch (line.level) {
+    case "ERROR":   case "CRITICAL": return "#f87171"; // red
+    case "WARNING": return "#fbbf24"; // amber
+    case "INFO":    return "#86efac"; // green
+    case "DEBUG":   return "#94a3b8"; // gray
+  }
+  // No level available — keyword heuristic for non-JSON lines
+  const l = line.text.toLowerCase();
+  if (l.includes("error") || l.includes("exception")) return "#f87171";
   if (l.includes("warn")) return "#fbbf24";
-  if (l.includes("info") || l.includes("started") || l.includes("ready")) return "#86efac";
-  if (l.includes("debug")) return "#94a3b8";
   return "#e2e8f0";
 }
 
 // ── Log Panel ─────────────────────────────────────────────────────────────────
 
 function LogPanel() {
-  const [lines, setLines] = useState<string[]>([]);
+  const [lines, setLines] = useState<FormattedLine[]>([]);
   const [streaming, setStreaming] = useState(false);
   const [filter, setFilter] = useState("");
   // streamKey: incrementing this closes the old EventSource and opens a fresh one
@@ -109,7 +155,7 @@ function LogPanel() {
     if (autoScroll.current) bottomRef.current?.scrollIntoView({ behavior: "auto" });
   }, [lines]);
 
-  const visible = filter ? lines.filter((l) => l.toLowerCase().includes(filter.toLowerCase())) : lines;
+  const visible = filter ? lines.filter((l) => l.text.toLowerCase().includes(filter.toLowerCase())) : lines;
 
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
@@ -138,7 +184,7 @@ function LogPanel() {
         <button onClick={() => setLines([])} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#94a3b8", cursor: "pointer", fontSize: 10 }}>Clear</button>
         <button
           onClick={() => {
-            const text = visible.join("\n");
+            const text = visible.map(l => l.text).join("\n");
             navigator.clipboard.writeText(text).catch(() => {});
           }}
           title="Copy all visible log lines to clipboard"
@@ -155,7 +201,7 @@ function LogPanel() {
       >
         {visible.length === 0 && <div style={{ color: "#64748b", fontStyle: "italic" }}>Waiting for log output…</div>}
         {visible.map((line, i) => (
-          <div key={i} style={{ color: logLineColor(line), whiteSpace: "pre-wrap", wordBreak: "break-all" }}>{line}</div>
+          <div key={i} style={{ color: logLineColor(line), whiteSpace: "pre-wrap", wordBreak: "break-all" }}>{line.text}</div>
         ))}
         <div ref={bottomRef} />
       </div>

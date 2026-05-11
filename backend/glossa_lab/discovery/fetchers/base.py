@@ -132,6 +132,37 @@ class FetcherError(RuntimeError):
     """Raised when a fetcher cannot complete a request."""
 
 
+def _short_url(url: str) -> str:
+    """Return just scheme+host+path, dropping query string (keeps logs readable)."""
+    import re as _re  # noqa: PLC0415
+    try:
+        parsed = urllib.parse.urlparse(url)
+        return f"{parsed.scheme}://{parsed.netloc}{parsed.path}"
+    except Exception:  # noqa: BLE001
+        return url[:80]
+
+
+def _clean_body(raw: str) -> str:
+    """Extract a terse human-readable string from an HTTP error body.
+
+    Priority:
+    1. HTML <title> tag (e.g. "504 Gateway Time-out")
+    2. Strip all HTML tags, collapse whitespace
+    3. Truncate to 120 chars
+    """
+    import re as _re  # noqa: PLC0415
+    if not raw:
+        return ""
+    # Try HTML <title>
+    m = _re.search(r"<title[^>]*>([^<]{1,120})</title>", raw, _re.IGNORECASE)
+    if m:
+        return m.group(1).strip()
+    # Strip tags and collapse whitespace
+    no_tags = _re.sub(r"<[^>]+>", " ", raw)
+    clean = " ".join(no_tags.split())
+    return clean[:120] if clean else raw[:120]
+
+
 # Thread-local storage for rate-limit headers captured from the last response.
 # Fetchers can read this after http_get_json returns to feed the tracker.
 import threading as _threading
@@ -226,16 +257,22 @@ def http_get_json(
             _last_rate_headers.info = _parse_rate_headers(exc.headers)
         except Exception:  # noqa: BLE001
             pass
-        body = ""
+        raw_body = ""
         try:
-            body = exc.read().decode("utf-8", errors="replace")[:300]
+            raw_body = exc.read().decode("utf-8", errors="replace")[:2000]
         except Exception:  # noqa: BLE001
             pass
-        raise FetcherError(f"HTTP {exc.code} from {full_url}: {body}") from exc
+        clean = _clean_body(raw_body)
+        short = _short_url(full_url)
+        raise FetcherError(
+            f"HTTP {exc.code} ({exc.reason or 'error'}) from {short}"
+            + (f": {clean}" if clean else "")
+        ) from exc
     except urllib.error.URLError as exc:
-        raise FetcherError(f"URLError from {full_url}: {exc.reason}") from exc
+        reason = str(exc.reason) if exc.reason else "network error"
+        raise FetcherError(f"{reason} — {_short_url(full_url)}") from exc
     except json.JSONDecodeError as exc:
-        raise FetcherError(f"Bad JSON from {full_url}: {exc}") from exc
+        raise FetcherError(f"Invalid JSON from {_short_url(full_url)}: {exc.msg}") from exc
 
 
 async def run_in_thread(fn, *args, **kwargs):

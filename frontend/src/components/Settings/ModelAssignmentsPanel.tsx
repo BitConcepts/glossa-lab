@@ -116,8 +116,34 @@ export function ModelAssignmentsPanel() {
     return rank === "primary" ? bg?.primary : bg?.fallback;
   };
 
-  const getScoreForModel = (modelName: string): ModelScore | undefined =>
-    scores.find(s => s.model_name === modelName || modelName.includes(s.model_name) || s.model_name.includes(modelName));
+  /** Normalize a model name into several lookup variants for fuzzy matching.
+   *  Handles: HF org/name, Ollama name:tag, quantization suffixes, dots vs dashes. */
+  const getScoreForModel = (modelName: string): ModelScore | undefined => {
+    // Build a list of normalized variants to try, in order of specificity
+    const variants: string[] = [modelName];
+    // Strip HF org prefix: "Qwen/Qwen3-14B" → "Qwen3-14B"
+    if (modelName.includes("/")) variants.push(modelName.split("/").slice(1).join("/"));
+    // Normalize Ollama tag: "gemma3:27b" → "gemma3-27b" and "gemma3"
+    if (modelName.includes(":")) {
+      const base = modelName.split(":")[0];
+      const tag  = modelName.split(":")[1];
+      variants.push(`${base}-${tag}`);
+      variants.push(base);
+    }
+    // Normalize dots in model family names: "llama3.3" → "llama33", "llama-3.3"
+    variants.push(modelName.replace(/\./g, "-").replace(/:/, "-"));
+    variants.push(modelName.replace(/\./g, "").replace(/:/, "-"));
+
+    for (const v of variants) {
+      const hit = scores.find(s =>
+        s.model_name === v ||
+        v.toLowerCase().includes(s.model_name.toLowerCase()) ||
+        s.model_name.toLowerCase().includes(v.toLowerCase())
+      );
+      if (hit) return hit;
+    }
+    return undefined;
+  };
 
   /** Check if any draft value differs from the last saved assignment. */
   const isDirty = (() => {

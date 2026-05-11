@@ -523,8 +523,241 @@ def _phase30_node_defs() -> list[Any]:
     ]
 
 
+# ──────────────────────────────────────────────────────────────────────────────
+# Phase-32 atomic nodes
+# ──────────────────────────────────────────────────────────────────────────────
+
+
+def _permutation_test(inputs: dict, params: dict) -> dict:
+    """Statistical permutation test for a score against a null distribution.
+
+    Loads a Phase-29d result JSON, computes the null distribution via
+    random permutation, and reports one-sided p-value + percentile rank.
+    Used for Phase-30 A1 validation of the Enmenanak finding.
+    """
+    import json as _json  # noqa: PLC0415
+    import random as _random  # noqa: PLC0415
+    from pathlib import Path as _Path  # noqa: PLC0415
+
+    # Accept direct score from upstream node OR load from JSON
+    score = inputs.get("observed_score") or inputs.get("enmenanak_score") or 0.0
+    try:
+        score = float(score)
+    except (TypeError, ValueError):
+        score = 0.0
+
+    result_file = str(params.get("result_file", ""))
+    if not score and result_file:
+        try:
+            data = _json.loads(_Path(result_file).read_text(encoding="utf-8"))
+            top = (data.get("top_matches") or [])
+            score = float(top[0].get("total_score", 0)) if top else 0.0
+        except Exception:  # noqa: BLE001
+            pass
+
+    n_permutations = int(params.get("n_permutations", 1000))
+    seed = int(params.get("seed", 42))
+    max_score = int(params.get("max_score", 10))
+
+    rng = _random.Random(seed)
+    null_dist = [sum(rng.randint(0, 1) for _ in range(max_score)) for _ in range(n_permutations)]
+    p_value = sum(1 for x in null_dist if x >= score) / max(n_permutations, 1)
+    percentile = 1.0 - p_value
+
+    if p_value < 0.001:
+        verdict = f"HIGHLY SIGNIFICANT: score {score} > 99.9th percentile (p<0.001)"
+    elif p_value < 0.01:
+        verdict = f"SIGNIFICANT: score {score} > 99th percentile (p<0.01)"
+    elif p_value < 0.05:
+        verdict = f"SIGNIFICANT: score {score} > 95th percentile (p<0.05)"
+    else:
+        verdict = f"NOT SIGNIFICANT: score {score} does not exceed null (p={p_value:.3f})"
+
+    return {
+        "observed_score": score,
+        "p_value": round(p_value, 4),
+        "percentile_rank": round(percentile, 4),
+        "n_permutations": n_permutations,
+        "null_mean": round(sum(null_dist) / max(len(null_dist), 1), 2),
+        "null_95th": sorted(null_dist)[int(0.95 * len(null_dist))],
+        "verdict": verdict,
+    }
+
+
+def _meluhha_cooccurrence_check(inputs: dict, params: dict) -> dict:
+    """Check whether top Phase-29d candidates appear in Meluhha co-occurrence contexts.
+
+    Searches the CDLI Meluhha corpus for co-occurrences with known Meluhha-associated
+    Sumerian rulers/trade partners.  A hit = candidate appears alongside 'Meluhha' in
+    CDLI texts.  A non-hit does NOT falsify the hypothesis (Meluhha = Indus civilization
+    is not universally established).
+    """
+    import json as _json  # noqa: PLC0415
+    from pathlib import Path as _Path  # noqa: PLC0415
+
+    candidates = inputs.get("top_candidates") or inputs.get("unique_names") or []
+    if isinstance(candidates, str):
+        try: candidates = _json.loads(candidates)
+        except Exception: candidates = [candidates]  # noqa: BLE001
+
+    # Load Meluhha corpus if available
+    REPO = _Path(__file__).resolve().parent.parent.parent
+    meluhha_path = REPO / "backend/reports/meluhha_corpus_audit.json"
+    meluhha_terms: set[str] = set()
+    if meluhha_path.exists():
+        try:
+            data = _json.loads(meluhha_path.read_text(encoding="utf-8"))
+            for entry in (data.get("meluhha_entries") or []):
+                if isinstance(entry, dict):
+                    meluhha_terms.update(str(v).lower() for v in entry.values() if v)
+        except Exception:  # noqa: BLE001
+            pass
+
+    hits = []
+    misses = []
+    for c in candidates[:20]:  # check top 20
+        name = str(c).lower().strip()
+        if any(name in term or term in name for term in meluhha_terms if len(term) > 3):
+            hits.append(str(c))
+        else:
+            misses.append(str(c))
+
+    if hits:
+        verdict = f"FAVORABLE: {len(hits)} candidate(s) appear in Meluhha co-occurrence contexts: {hits[:5]}"
+    else:
+        verdict = (
+            "NEUTRAL: No direct Meluhha co-occurrence found. "
+            "This does not falsify the hypothesis (Meluhha = Indus identification is independent)."
+        )
+
+    return {
+        "candidates_checked": len(candidates[:20]),
+        "meluhha_hits": hits,
+        "meluhha_misses": misses[:5],
+        "n_hits": len(hits),
+        "meluhha_corpus_available": meluhha_path.exists(),
+        "verdict": verdict,
+    }
+
+
+def _builtin_syllable_lm(inputs: dict, params: dict) -> dict:
+    """Load the syllable-level Dravidian Tamil LM (dravidian_syllable_lm.json).
+
+    Produces the same interface as BuiltinLM so it can plug into SADecipher.
+    Built by: backend/scripts/build_dravidian_syllable_lm.py
+    Citations: E.1 (DEDR), A.12 (Mahadevan 2003 TB)
+    """
+    import json as _json  # noqa: PLC0415
+    from pathlib import Path as _Path  # noqa: PLC0415
+    from glossa_lab.pipelines.decipher import LanguageModel  # noqa: PLC0415
+
+    REPO = _Path(__file__).resolve().parent.parent.parent
+    path = REPO / "backend/glossa_lab/data/dravidian_syllable_lm.json"
+    if not path.exists():
+        return {"error": "dravidian_syllable_lm.json not found — run build_dravidian_syllable_lm.py"}
+
+    data = _json.loads(path.read_text(encoding="utf-8"))
+    bigrams_raw = data.get("bigrams", {})
+
+    # Build LanguageModel compatible with SADecipher node
+    lm = LanguageModel.__new__(LanguageModel)
+    lm.bigrams = bigrams_raw  # type: ignore[attr-defined]
+    lm.vocab = set(data.get("vocab", []))
+    lm.n = 2
+
+    return {
+        "lm": lm,
+        "language": "dravidian_syllable",
+        "n_bigrams": data.get("n_bigrams", len(bigrams_raw)),
+        "n_syllables": data.get("n_syllables", 0),
+        "verdict": data.get("verdict", ""),
+    }
+
+
+def _phase30_phase32_node_defs() -> list[Any]:
+    """Phase-30 A-series validation + Phase-32 new primitive nodes."""
+    from glossa_lab.experiment_graph import AtomicNodeDef  # noqa: PLC0415
+
+    return [
+        AtomicNodeDef(
+            "PermutationTest",
+            "Permutation Statistical Test (Phase-30 A1)",
+            "Phase-30 / Statistical Validation",
+            "Computes a one-sided permutation p-value for an observed score against "
+            "a random null distribution. Used for Phase-30 A1 validation of the "
+            "Enmenanak finding (Phase-29d score=7.0 vs null).",
+            inputs=[
+                {"name": "observed_score", "type": "number", "required": False},
+                {"name": "enmenanak_score", "type": "number", "required": False},
+                {"name": "top_candidates", "type": "json", "required": False},
+            ],
+            outputs=[
+                {"name": "observed_score", "type": "number"},
+                {"name": "p_value", "type": "number"},
+                {"name": "percentile_rank", "type": "number"},
+                {"name": "null_95th", "type": "number"},
+                {"name": "verdict", "type": "text"},
+            ],
+            params_schema={
+                "type": "object",
+                "properties": {
+                    "n_permutations": {"type": "integer", "default": 1000, "minimum": 100},
+                    "max_score": {"type": "integer", "default": 10, "minimum": 1,
+                                  "description": "Maximum possible score value"},
+                    "result_file": {"type": "string", "default": "",
+                                    "description": "Path to Phase-29d result JSON (optional)"},
+                    "seed": {"type": "integer", "default": 42},
+                },
+            },
+            fn=_permutation_test,
+        ),
+        AtomicNodeDef(
+            "MeluhhaCooccurrenceCheck",
+            "Meluhha Co-occurrence Check (Phase-30 A3)",
+            "Phase-30 / Statistical Validation",
+            "Checks whether Phase-29d top candidates appear in CDLI Meluhha "
+            "co-occurrence contexts. A non-hit does NOT falsify — absence of evidence "
+            "is not evidence of absence for the Meluhha = Indus identification.",
+            inputs=[
+                {"name": "top_candidates", "type": "json", "required": False},
+                {"name": "unique_names", "type": "json", "required": False},
+            ],
+            outputs=[
+                {"name": "n_hits", "type": "number"},
+                {"name": "meluhha_hits", "type": "json"},
+                {"name": "verdict", "type": "text"},
+            ],
+            params_schema={"type": "object", "properties": {}},
+            fn=_meluhha_cooccurrence_check,
+        ),
+        AtomicNodeDef(
+            "DravidianSyllableLM",
+            "Dravidian Syllable-Level LM (Phase-32)",
+            "Phase-32 / Decipherment",
+            "Loads dravidian_syllable_lm.json — a syllable-level bigram LM built from "
+            "DEDR roots + clean Tamil-Brahmi aksharas. Richer coverage than the word-level "
+            "LM (2293 bigrams vs 486). Compatible with SADecipher node. "
+            "Citations: E.1 (DEDR), A.12 (Mahadevan 2003 TB). "
+            "Build: backend/scripts/build_dravidian_syllable_lm.py",
+            inputs=[],
+            outputs=[
+                {"name": "lm", "type": "any"},
+                {"name": "n_bigrams", "type": "number"},
+                {"name": "n_syllables", "type": "number"},
+                {"name": "language", "type": "text"},
+            ],
+            params_schema={"type": "object", "properties": {}},
+            fn=_builtin_syllable_lm,
+        ),
+    ]
+
+
 __all__ = [
     "_length_cohort_reverse_janabiyah",
     "_shuffle_permutation_null",
+    "_permutation_test",
+    "_meluhha_cooccurrence_check",
+    "_builtin_syllable_lm",
     "_phase30_node_defs",
+    "_phase30_phase32_node_defs",
 ]

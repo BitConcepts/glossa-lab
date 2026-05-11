@@ -18,6 +18,7 @@ import { CitationManager } from "./components/CitationManager";
 import { CASModelView } from "./components/CASModelView";
 import { DashboardView } from "./components/DashboardView";
 import { CorrespondenceView } from "./components/CorrespondenceView";
+import { FoundationCheckView } from "./components/FoundationCheckView";
 import { DiscoveryView } from "./components/Discovery/DiscoveryView";
 import { CommandPalette, type PaletteCommand } from "./components/CommandPalette";
 import { AISidePanel } from "./components/AIChatWindow";
@@ -33,7 +34,7 @@ type Tab =
   | "status" | "builder" | "experiments" | "pipelines"
   | "corpora" | "jobs" | "reports" | "settings"
   | "entropy" | "hypotheses" | "notebooks" | "ai-tools" | "signs" | "timeline" | "citations" | "correspondence" | "help" | "models"
-  | "discovery"
+  | "discovery" | "foundation-check"
   | "exp-builder"; // legacy alias — still handled but not in nav
 
 interface NavItem { id: Tab; label: string; icon: string; }
@@ -78,6 +79,7 @@ const NAV_SECTIONS: NavSection[] = [
       { id: "citations",       label: "Citations",       icon: "📖" },
       { id: "correspondence",  label: "Correspondence",  icon: "✉" },
       { id: "ai-tools",        label: "AI Tools",        icon: "🔬" },
+      { id: "foundation-check", label: "Foundation Check", icon: "🔬" },
       { id: "help",       label: "Help",        icon: "📘" },
     ],
   },
@@ -624,8 +626,9 @@ function AppContent() {
               {tab === "timeline"    && <TimelineView onNavigate={(t) => setTab(t as Tab)} />}
               {tab === "citations"       && <CitationManager />}
               {tab === "correspondence"  && <CorrespondenceView />}
-              {tab === "discovery"   && <DiscoveryView />}
-              {tab === "help"        && <HelpView />}
+              {tab === "discovery"      && <DiscoveryView />}
+              {tab === "foundation-check" && <FoundationCheckView />}
+              {tab === "help"             && <HelpView />}
             </main>
           );
         })()}

@@ -1,0 +1,2789 @@
+{
+  "_citation": {
+    "primary_source": "Mahadevan 2003",
+    "full_reference": "Mahadevan, Iravatham. 2003. Early Tamil Epigraphy from the Earliest Times to the Sixth Century A.D. Harvard Oriental Series, Vol. 62. Cambridge, MA: The Department of Sanskrit and Indian Studies, Harvard University; Chennai: Cre-A. ISBN 0-674-01227-5. Pp. xxxiv + 720.",
+    "additional_sources": [
+      "Mahadevan, Iravatham. 1968. Corpus of the Tamil-Brahmi Inscriptions. Madras: State Department of Archaeology.",
+      "Cre-A: editorial team. 2003. Romanization scheme for Early Tamil-Brahmi (Mahadevan 2003 Appendix III)."
+    ],
+    "license": "Mahadevan 2003 corpus is copyrighted by Harvard University Press / Cre-A: Chennai. This derivative compilation is for reference use only. Source PDFs from Internet Archive (archive.org/details/iravatham-mahadevan-early-tamil-epigraphy...). Glossa-Lab Phase-31 ingestion uses the OCR'd djvu.txt under fair-use academic-research provisions.",
+    "see_also": "CITATIONS.md section A.12 (Mahadevan 2003) + Section E.1 (DEDR) for Dravidian etymology.",
+    "compiled_by": "Glossa-Lab Phase-31 Tamil-Brahmi corpus loader."
+  },
+  "_doc": "TB-NAMES: proper-name tokens extracted from Mahadevan 2003 Tamil-Brahmi inscriptions (donors, dedicatees, cave occupants). Used for T2 length comparison without genre confound.",
+  "names": [
+    {
+      "inscription_id": "M03-1",
+      "site": "MANGULAM",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-1",
+      "site": "MANGULAM",
+      "name": "Lieff",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-1",
+      "site": "MANGULAM",
+      "name": "Charity",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-1",
+      "site": "MANGULAM",
+      "name": "Nanta",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-1",
+      "site": "MANGULAM",
+      "name": "Kuvan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-1",
+      "site": "MANGULAM",
+      "name": "The",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-1",
+      "site": "MANGULAM",
+      "name": "Katalap",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-1",
+      "site": "MANGULAM",
+      "name": "Valuti",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-1",
+      "site": "MANGULAM",
+      "name": "Netufica",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "M03-1",
+      "site": "MANGULAM",
+      "name": "netuficaliyan",
+      "length": 1,
+      "n_aksharas": 7
+    },
+    {
+      "inscription_id": "M03-1",
+      "site": "MANGULAM",
+      "name": "uvan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "The",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Vellarai",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "M03-7",
+      "site": "MANGULAM",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-7",
+      "site": "MANGULAM",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-7",
+      "site": "MANGULAM",
+      "name": "Pls",
+      "length": 1,
+      "n_aksharas": 1
+    },
+    {
+      "inscription_id": "M03-7",
+      "site": "MANGULAM",
+      "name": "Opebv",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-7",
+      "site": "MANGULAM",
+      "name": "Atiggan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-7",
+      "site": "MANGULAM",
+      "name": "Veliyag",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-7",
+      "site": "MANGULAM",
+      "name": "Nelveli",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-7",
+      "site": "MANGULAM",
+      "name": "cilivan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-7",
+      "site": "MANGULAM",
+      "name": "atinan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-7",
+      "site": "MANGULAM",
+      "name": "veliyan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-7",
+      "site": "MANGULAM",
+      "name": "tiggan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Lia",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Upparuva",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "kotupitavan",
+      "length": 1,
+      "n_aksharas": 6
+    },
+    {
+      "inscription_id": "M03-12",
+      "site": "MANGULAM",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-12",
+      "site": "MANGULAM",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-12",
+      "site": "MANGULAM",
+      "name": "Cerratan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-12",
+      "site": "MANGULAM",
+      "name": "ittavan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-12",
+      "site": "MANGULAM",
+      "name": "atan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-12",
+      "site": "MANGULAM",
+      "name": "lar",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-12",
+      "site": "MANGULAM",
+      "name": "erratan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-17",
+      "site": "MANGULAM",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-17",
+      "site": "MANGULAM",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-17",
+      "site": "MANGULAM",
+      "name": "The",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-17",
+      "site": "MANGULAM",
+      "name": "Ilanatag",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-17",
+      "site": "MANGULAM",
+      "name": "ilanatan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Ariytag",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Eyil",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "iytan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "yil",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "cenkuviran",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Antai",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Iravatag",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "iravatan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "The",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Antai",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-29",
+      "site": "MANGULAM",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-29",
+      "site": "MANGULAM",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-29",
+      "site": "MANGULAM",
+      "name": "Cantantai",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "M03-29",
+      "site": "MANGULAM",
+      "name": "Cantag",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-29",
+      "site": "MANGULAM",
+      "name": "cantan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Cuito",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "The",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Kuvira",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Vēl",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "The",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-MANGULAM-1",
+      "site": "MANGULAM",
+      "name": "Titti",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-KARUNGALAKKUDI-14",
+      "site": "KARUNGALAKKUDI",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-KARUNGALAKKUDI-14",
+      "site": "KARUNGALAKKUDI",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-39",
+      "site": "KARUNGALAKKUDI",
+      "name": "Tracings",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-39",
+      "site": "KARUNGALAKKUDI",
+      "name": "Estampages",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-39",
+      "site": "KARUNGALAKKUDI",
+      "name": "viyakan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-42",
+      "site": "ALAGARMALAI",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-42",
+      "site": "ALAGARMALAI",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-42",
+      "site": "ALAGARMALAI",
+      "name": "Pls",
+      "length": 1,
+      "n_aksharas": 1
+    },
+    {
+      "inscription_id": "M03-42",
+      "site": "ALAGARMALAI",
+      "name": "Lites",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-42",
+      "site": "ALAGARMALAI",
+      "name": "Netumallan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "M03-42",
+      "site": "ALAGARMALAI",
+      "name": "netumalan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "M03-42",
+      "site": "ALAGARMALAI",
+      "name": "etumallan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "M03-44",
+      "site": "ALAGARMALAI",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-44",
+      "site": "ALAGARMALAI",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-44",
+      "site": "ALAGARMALAI",
+      "name": "Kalumara",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "M03-44",
+      "site": "ALAGARMALAI",
+      "name": "Natan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-44",
+      "site": "ALAGARMALAI",
+      "name": "natan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-44",
+      "site": "ALAGARMALAI",
+      "name": "avan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-44",
+      "site": "ALAGARMALAI",
+      "name": "atan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-ALAGARMALAI-18",
+      "site": "ALAGARMALAI",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-ALAGARMALAI-18",
+      "site": "ALAGARMALAI",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-ALAGARMALAI-18",
+      "site": "ALAGARMALAI",
+      "name": "The",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-52",
+      "site": "ALAGARMALAI",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-52",
+      "site": "ALAGARMALAI",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-52",
+      "site": "ALAGARMALAI",
+      "name": "Lieu",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-52",
+      "site": "ALAGARMALAI",
+      "name": "The",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-52",
+      "site": "ALAGARMALAI",
+      "name": "Erukkattu",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-58",
+      "site": "ALAGARMALAI",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-58",
+      "site": "ALAGARMALAI",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-58",
+      "site": "ALAGARMALAI",
+      "name": "kattan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-PUGALUR-1",
+      "site": "PUGALUR",
+      "name": "The",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-PUGALUR-1",
+      "site": "PUGALUR",
+      "name": "Arunattarmalai",
+      "length": 1,
+      "n_aksharas": 7
+    },
+    {
+      "inscription_id": "M03-62",
+      "site": "PUGALUR",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-62",
+      "site": "PUGALUR",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-62",
+      "site": "PUGALUR",
+      "name": "The",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-62",
+      "site": "PUGALUR",
+      "name": "The",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-70",
+      "site": "PUGALUR",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-70",
+      "site": "PUGALUR",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-70",
+      "site": "PUGALUR",
+      "name": "The",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-70",
+      "site": "PUGALUR",
+      "name": "Venni",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-70",
+      "site": "PUGALUR",
+      "name": "atan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-70",
+      "site": "PUGALUR",
+      "name": "oil",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-PUGALUR-1",
+      "site": "PUGALUR",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-PUGALUR-1",
+      "site": "PUGALUR",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-PUGALUR-1",
+      "site": "PUGALUR",
+      "name": "Perunkiray",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "M03-PUGALUR-1",
+      "site": "PUGALUR",
+      "name": "Nakan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-PUGALUR-1",
+      "site": "PUGALUR",
+      "name": "kan",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-PUGALUR-1",
+      "site": "PUGALUR",
+      "name": "akan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-78",
+      "site": "PUGALUR",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-78",
+      "site": "PUGALUR",
+      "name": "pan",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-80",
+      "site": "PUGALUR",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-80",
+      "site": "PUGALUR",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-80",
+      "site": "PUGALUR",
+      "name": "Katumiputta",
+      "length": 1,
+      "n_aksharas": 6
+    },
+    {
+      "inscription_id": "M03-PUGALUR-1",
+      "site": "PUGALUR",
+      "name": "The",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-PUGALUR-1",
+      "site": "PUGALUR",
+      "name": "Cekkant",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-PUGALUR-1",
+      "site": "PUGALUR",
+      "name": "Cekkanti",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-PUGALUR-1",
+      "site": "PUGALUR",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-PUGALUR-1",
+      "site": "PUGALUR",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-88",
+      "site": "PUGALUR",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-88",
+      "site": "PUGALUR",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-88",
+      "site": "PUGALUR",
+      "name": "Loser",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-88",
+      "site": "PUGALUR",
+      "name": "ceyvittan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-88",
+      "site": "PUGALUR",
+      "name": "makan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-88",
+      "site": "PUGALUR",
+      "name": "rran",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-88",
+      "site": "PUGALUR",
+      "name": "kurran",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-103",
+      "site": "PUGALUR",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-103",
+      "site": "PUGALUR",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-103",
+      "site": "PUGALUR",
+      "name": "Nakkap",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-103",
+      "site": "PUGALUR",
+      "name": "nakkan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-105",
+      "site": "PUGALUR",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-105",
+      "site": "PUGALUR",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-105",
+      "site": "PUGALUR",
+      "name": "Nos",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-105",
+      "site": "PUGALUR",
+      "name": "Campokal",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-106",
+      "site": "PUGALUR",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-106",
+      "site": "PUGALUR",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-106",
+      "site": "PUGALUR",
+      "name": "Nos",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-106",
+      "site": "PUGALUR",
+      "name": "Cirucennan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "M03-106",
+      "site": "PUGALUR",
+      "name": "cirucennan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "M03-106",
+      "site": "PUGALUR",
+      "name": "irucennan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "M03-107",
+      "site": "PUGALUR",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-107",
+      "site": "PUGALUR",
+      "name": "Katan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-107",
+      "site": "PUGALUR",
+      "name": "katan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-107",
+      "site": "PUGALUR",
+      "name": "atan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-108",
+      "site": "PUGALUR",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-108",
+      "site": "PUGALUR",
+      "name": "Kucalag",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-108",
+      "site": "PUGALUR",
+      "name": "Akaram",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-108",
+      "site": "PUGALUR",
+      "name": "kucalan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-109",
+      "site": "PUGALUR",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-109",
+      "site": "PUGALUR",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-109",
+      "site": "PUGALUR",
+      "name": "Centantan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-109",
+      "site": "PUGALUR",
+      "name": "centantan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-109",
+      "site": "PUGALUR",
+      "name": "entantan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-110",
+      "site": "PUGALUR",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-110",
+      "site": "PUGALUR",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-112",
+      "site": "PUGALUR",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-112",
+      "site": "PUGALUR",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-112",
+      "site": "PUGALUR",
+      "name": "The",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-112",
+      "site": "PUGALUR",
+      "name": "Megceri",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-114",
+      "site": "PUGALUR",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-114",
+      "site": "PUGALUR",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-114",
+      "site": "PUGALUR",
+      "name": "The",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-115",
+      "site": "PUGALUR",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-115",
+      "site": "PUGALUR",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-115",
+      "site": "PUGALUR",
+      "name": "Lyle",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-115",
+      "site": "PUGALUR",
+      "name": "Let",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-115",
+      "site": "PUGALUR",
+      "name": "The",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-115",
+      "site": "PUGALUR",
+      "name": "Vaccananti",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "M03-115",
+      "site": "PUGALUR",
+      "name": "Acariyar",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-115",
+      "site": "PUGALUR",
+      "name": "Panatu",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-115",
+      "site": "PUGALUR",
+      "name": "manakkar",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-115",
+      "site": "PUGALUR",
+      "name": "urgsil",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-115",
+      "site": "PUGALUR",
+      "name": "urar",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-115",
+      "site": "PUGALUR",
+      "name": "cariyar",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-116",
+      "site": "TIRUNATHARKUNRU",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-116",
+      "site": "TIRUNATHARKUNRU",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-116",
+      "site": "TIRUNATHARKUNRU",
+      "name": "The",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "M03-116",
+      "site": "TIRUNATHARKUNRU",
+      "name": "Cantirananti",
+      "length": 1,
+      "n_aksharas": 6
+    },
+    {
+      "inscription_id": "M03-116",
+      "site": "TIRUNATHARKUNRU",
+      "name": "canan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-117",
+      "site": "TIRUNATHARKUNRU",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-117",
+      "site": "TIRUNATHARKUNRU",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-117",
+      "site": "TIRUNATHARKUNRU",
+      "name": "Chieftain",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "M03-117",
+      "site": "TIRUNATHARKUNRU",
+      "name": "ekkattiru",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "M03-117",
+      "site": "TIRUNATHARKUNRU",
+      "name": "peruntacan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "M03-118",
+      "site": "EDAKAL",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-118",
+      "site": "EDAKAL",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-118",
+      "site": "EDAKAL",
+      "name": "Kari",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-118",
+      "site": "EDAKAL",
+      "name": "Palpuli",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-119",
+      "site": "EDAKAL",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-119",
+      "site": "EDAKAL",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-119",
+      "site": "EDAKAL",
+      "name": "Kaccavaqu",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "M03-119",
+      "site": "EDAKAL",
+      "name": "Catti",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-119",
+      "site": "EDAKAL",
+      "name": "Venkomalai",
+      "length": 1,
+      "n_aksharas": 6
+    },
+    {
+      "inscription_id": "M03-120",
+      "site": "EDAKAL",
+      "name": "Mouth",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-120",
+      "site": "EDAKAL",
+      "name": "Macakotu",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "M03-121",
+      "site": "EDAKAL",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "M03-121",
+      "site": "EDAKAL",
+      "name": "Estampage",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "M03-121",
+      "site": "EDAKAL",
+      "name": "Monala",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-MANGULAM-577995",
+      "site": "MANGULAM",
+      "name": "netuficaliyan",
+      "length": 1,
+      "n_aksharas": 7
+    },
+    {
+      "inscription_id": "EPUB-MANGULAM-577995",
+      "site": "MANGULAM",
+      "name": "uvan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-MANGULAM-581730",
+      "site": "MANGULAM",
+      "name": "netificaliyan",
+      "length": 1,
+      "n_aksharas": 7
+    },
+    {
+      "inscription_id": "EPUB-MANGULAM-581730",
+      "site": "MANGULAM",
+      "name": "ilancatikan",
+      "length": 1,
+      "n_aksharas": 6
+    },
+    {
+      "inscription_id": "EPUB-MANGULAM-581730",
+      "site": "MANGULAM",
+      "name": "catikan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-MANGULAM-581730",
+      "site": "MANGULAM",
+      "name": "atikan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-MANGULAM-581730",
+      "site": "MANGULAM",
+      "name": "etificaliyan",
+      "length": 1,
+      "n_aksharas": 7
+    },
+    {
+      "inscription_id": "EPUB-MANGULAM-583429",
+      "site": "MANGULAM",
+      "name": "asutan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-MANGULAM-585621",
+      "site": "MANGULAM",
+      "name": "avan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-MANGULAM-585621",
+      "site": "MANGULAM",
+      "name": "ahadevan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-MANGULAM-586787",
+      "site": "MANGULAM",
+      "name": "cantaritan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-MANGULAM-586787",
+      "site": "MANGULAM",
+      "name": "than",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "EPUB-MANGULAM-766204",
+      "site": "MANGULAM",
+      "name": "near",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-662430",
+      "site": "PUGALUR",
+      "name": "amannan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-662430",
+      "site": "PUGALUR",
+      "name": "cenkayapan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-662430",
+      "site": "PUGALUR",
+      "name": "atan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-662430",
+      "site": "PUGALUR",
+      "name": "makan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-662430",
+      "site": "PUGALUR",
+      "name": "makan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-662430",
+      "site": "PUGALUR",
+      "name": "riar",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-662430",
+      "site": "PUGALUR",
+      "name": "enkayapan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-664644",
+      "site": "PUGALUR",
+      "name": "mannan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-664644",
+      "site": "PUGALUR",
+      "name": "cenkayapan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-664644",
+      "site": "PUGALUR",
+      "name": "makan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-664644",
+      "site": "PUGALUR",
+      "name": "enkayapan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-666949",
+      "site": "PUGALUR",
+      "name": "cenkayapan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-666949",
+      "site": "PUGALUR",
+      "name": "avan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-668044",
+      "site": "PUGALUR",
+      "name": "amil",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-668202",
+      "site": "PUGALUR",
+      "name": "amil",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-668719",
+      "site": "PUGALUR",
+      "name": "pitan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-668719",
+      "site": "PUGALUR",
+      "name": "kiran",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-668719",
+      "site": "PUGALUR",
+      "name": "iran",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-668719",
+      "site": "PUGALUR",
+      "name": "ittan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-670386",
+      "site": "PUGALUR",
+      "name": "kiran",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-676365",
+      "site": "PUGALUR",
+      "name": "vanikan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-677456",
+      "site": "PUGALUR",
+      "name": "atan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-677456",
+      "site": "PUGALUR",
+      "name": "oil",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-678392",
+      "site": "PUGALUR",
+      "name": "Page",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-678392",
+      "site": "PUGALUR",
+      "name": "Late",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-678392",
+      "site": "PUGALUR",
+      "name": "Tamil",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-678392",
+      "site": "PUGALUR",
+      "name": "Inscriptions",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-678392",
+      "site": "PUGALUR",
+      "name": "amil",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-678995",
+      "site": "PUGALUR",
+      "name": "kan",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-678995",
+      "site": "PUGALUR",
+      "name": "akan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-678995",
+      "site": "PUGALUR",
+      "name": "appear",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-750868",
+      "site": "PUGALUR",
+      "name": "near",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-750868",
+      "site": "PUGALUR",
+      "name": "near",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-890603",
+      "site": "PUGALUR",
+      "name": "near",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-890603",
+      "site": "PUGALUR",
+      "name": "mutiyavan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-890603",
+      "site": "PUGALUR",
+      "name": "miutalar",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-PUGALUR-890603",
+      "site": "PUGALUR",
+      "name": "patarar",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-628668",
+      "site": "ALAGARMALAI",
+      "name": "amil",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-628668",
+      "site": "ALAGARMALAI",
+      "name": "kolvan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-628668",
+      "site": "ALAGARMALAI",
+      "name": "atan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-628668",
+      "site": "ALAGARMALAI",
+      "name": "atan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-628668",
+      "site": "ALAGARMALAI",
+      "name": "tan",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-628927",
+      "site": "ALAGARMALAI",
+      "name": "kolvan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-628927",
+      "site": "ALAGARMALAI",
+      "name": "atan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-628927",
+      "site": "ALAGARMALAI",
+      "name": "atan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-628927",
+      "site": "ALAGARMALAI",
+      "name": "tan",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-632527",
+      "site": "ALAGARMALAI",
+      "name": "viyakan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-633660",
+      "site": "ALAGARMALAI",
+      "name": "kanatikan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-633660",
+      "site": "ALAGARMALAI",
+      "name": "atan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-633660",
+      "site": "ALAGARMALAI",
+      "name": "makan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-633660",
+      "site": "ALAGARMALAI",
+      "name": "atan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-633660",
+      "site": "ALAGARMALAI",
+      "name": "atan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-633660",
+      "site": "ALAGARMALAI",
+      "name": "tan",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-633660",
+      "site": "ALAGARMALAI",
+      "name": "tan",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-636186",
+      "site": "ALAGARMALAI",
+      "name": "netumalan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-636186",
+      "site": "ALAGARMALAI",
+      "name": "etumallan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-639155",
+      "site": "ALAGARMALAI",
+      "name": "par",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-639155",
+      "site": "ALAGARMALAI",
+      "name": "vanikan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-639155",
+      "site": "ALAGARMALAI",
+      "name": "elacantan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-639155",
+      "site": "ALAGARMALAI",
+      "name": "lacantan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-639963",
+      "site": "ALAGARMALAI",
+      "name": "natan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-639963",
+      "site": "ALAGARMALAI",
+      "name": "avan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-639963",
+      "site": "ALAGARMALAI",
+      "name": "atan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-641725",
+      "site": "ALAGARMALAI",
+      "name": "kasapan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-641725",
+      "site": "ALAGARMALAI",
+      "name": "aar",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-641725",
+      "site": "ALAGARMALAI",
+      "name": "assapan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-643257",
+      "site": "ALAGARMALAI",
+      "name": "vanikan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-643257",
+      "site": "ALAGARMALAI",
+      "name": "ttan",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-644079",
+      "site": "ALAGARMALAI",
+      "name": "tiyan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-644079",
+      "site": "ALAGARMALAI",
+      "name": "cantan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-644079",
+      "site": "ALAGARMALAI",
+      "name": "iyan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-644079",
+      "site": "ALAGARMALAI",
+      "name": "antan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-644079",
+      "site": "ALAGARMALAI",
+      "name": "tiyan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-644079",
+      "site": "ALAGARMALAI",
+      "name": "amil",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-644578",
+      "site": "ALAGARMALAI",
+      "name": "iruvar",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-644578",
+      "site": "ALAGARMALAI",
+      "name": "prar",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-644578",
+      "site": "ALAGARMALAI",
+      "name": "atan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-749611",
+      "site": "ALAGARMALAI",
+      "name": "amil",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-833669",
+      "site": "ALAGARMALAI",
+      "name": "atan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-833669",
+      "site": "ALAGARMALAI",
+      "name": "atan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-833669",
+      "site": "ALAGARMALAI",
+      "name": "kollan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-833669",
+      "site": "ALAGARMALAI",
+      "name": "vanikan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-833669",
+      "site": "ALAGARMALAI",
+      "name": "kollan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-833669",
+      "site": "ALAGARMALAI",
+      "name": "tan",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-833669",
+      "site": "ALAGARMALAI",
+      "name": "tan",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-833669",
+      "site": "ALAGARMALAI",
+      "name": "atan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-833669",
+      "site": "ALAGARMALAI",
+      "name": "makan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-833669",
+      "site": "ALAGARMALAI",
+      "name": "atan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ALAGARMALAI-833669",
+      "site": "ALAGARMALAI",
+      "name": "atan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ARITTAPATTI-589464",
+      "site": "ARITTAPATTI",
+      "name": "aman",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ARITTAPATTI-589464",
+      "site": "ARITTAPATTI",
+      "name": "atinnan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-ARITTAPATTI-589464",
+      "site": "ARITTAPATTI",
+      "name": "atinnan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-ARITTAPATTI-589464",
+      "site": "ARITTAPATTI",
+      "name": "rishnan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ARITTAPATTI-790915",
+      "site": "ARITTAPATTI",
+      "name": "celiyan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-ARITTAPATTI-790915",
+      "site": "ARITTAPATTI",
+      "name": "atinnan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-ARITTAPATTI-790915",
+      "site": "ARITTAPATTI",
+      "name": "atinnan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-ARITTAPATTI-790915",
+      "site": "ARITTAPATTI",
+      "name": "tittan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ARITTAPATTI-790915",
+      "site": "ARITTAPATTI",
+      "name": "veliyan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-ARITTAPATTI-790915",
+      "site": "ARITTAPATTI",
+      "name": "veliyan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-ARITTAPATTI-790915",
+      "site": "ARITTAPATTI",
+      "name": "venman",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-645445",
+      "site": "SITTANNAVASAL",
+      "name": "cirupocil",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-645445",
+      "site": "SITTANNAVASAL",
+      "name": "ilayar",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-645445",
+      "site": "SITTANNAVASAL",
+      "name": "irupocil",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-645445",
+      "site": "SITTANNAVASAL",
+      "name": "near",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-710337",
+      "site": "SITTANNAVASAL",
+      "name": "tan",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-710337",
+      "site": "SITTANNAVASAL",
+      "name": "entotan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-710337",
+      "site": "SITTANNAVASAL",
+      "name": "ajan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-710508",
+      "site": "SITTANNAVASAL",
+      "name": "tan",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-710508",
+      "site": "SITTANNAVASAL",
+      "name": "entotan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-710508",
+      "site": "SITTANNAVASAL",
+      "name": "ajan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-711155",
+      "site": "SITTANNAVASAL",
+      "name": "nakkan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-711777",
+      "site": "SITTANNAVASAL",
+      "name": "kayvan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-712288",
+      "site": "SITTANNAVASAL",
+      "name": "amil",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-712288",
+      "site": "SITTANNAVASAL",
+      "name": "amil",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-718618",
+      "site": "SITTANNAVASAL",
+      "name": "tail",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-719329",
+      "site": "SITTANNAVASAL",
+      "name": "cirucennan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-719329",
+      "site": "SITTANNAVASAL",
+      "name": "irucennan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-719329",
+      "site": "SITTANNAVASAL",
+      "name": "ajan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-719894",
+      "site": "SITTANNAVASAL",
+      "name": "katan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-719894",
+      "site": "SITTANNAVASAL",
+      "name": "atan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-854371",
+      "site": "SITTANNAVASAL",
+      "name": "amil",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-854371",
+      "site": "SITTANNAVASAL",
+      "name": "atukar",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-854371",
+      "site": "SITTANNAVASAL",
+      "name": "rumaiyiran",
+      "length": 1,
+      "n_aksharas": 6
+    },
+    {
+      "inscription_id": "EPUB-SITTANNAVASAL-854371",
+      "site": "SITTANNAVASAL",
+      "name": "kamuntan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-TIRUMALAI-647673",
+      "site": "TIRUMALAI",
+      "name": "amil",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-TIRUMALAI-647673",
+      "site": "TIRUMALAI",
+      "name": "vesan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-TIRUMALAI-647673",
+      "site": "TIRUMALAI",
+      "name": "essan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-TIRUMALAI-647673",
+      "site": "TIRUMALAI",
+      "name": "atnagirisvarar",
+      "length": 1,
+      "n_aksharas": 7
+    },
+    {
+      "inscription_id": "EPUB-TIRUMALAI-648895",
+      "site": "TIRUMALAI",
+      "name": "asinathan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-TIRUMALAI-648895",
+      "site": "TIRUMALAI",
+      "name": "amil",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-TIRUMALAI-649519",
+      "site": "TIRUMALAI",
+      "name": "asinathan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-TIRUMALAI-862814",
+      "site": "TIRUMALAI",
+      "name": "can",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "EPUB-TIRUCHIRAPALLI-689564",
+      "site": "TIRUCHIRAPALLI",
+      "name": "pan",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "EPUB-TIRUCHIRAPALLI-720259",
+      "site": "TIRUCHIRAPALLI",
+      "name": "centantan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-TIRUCHIRAPALLI-720259",
+      "site": "TIRUCHIRAPALLI",
+      "name": "entantan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-TIRUCHIRAPALLI-720382",
+      "site": "TIRUCHIRAPALLI",
+      "name": "centantan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-TIRUCHIRAPALLI-720382",
+      "site": "TIRUCHIRAPALLI",
+      "name": "entantan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-TIRUCHIRAPALLI-720480",
+      "site": "TIRUCHIRAPALLI",
+      "name": "centantan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-TIRUCHIRAPALLI-720480",
+      "site": "TIRUCHIRAPALLI",
+      "name": "entantan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-TIRUCHIRAPALLI-720480",
+      "site": "TIRUCHIRAPALLI",
+      "name": "ahadevan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-TIRUCHIRAPALLI-720684",
+      "site": "TIRUCHIRAPALLI",
+      "name": "centantan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-TIRUCHIRAPALLI-720684",
+      "site": "TIRUCHIRAPALLI",
+      "name": "entantan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-TIRUCHIRAPALLI-720684",
+      "site": "TIRUCHIRAPALLI",
+      "name": "ahadevan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-TIRUCHIRAPALLI-720684",
+      "site": "TIRUCHIRAPALLI",
+      "name": "amil",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-TIRUCHIRAPALLI-721208",
+      "site": "TIRUCHIRAPALLI",
+      "name": "entantan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-TIRUCHIRAPALLI-721208",
+      "site": "TIRUCHIRAPALLI",
+      "name": "ahadevan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-TIRUCHIRAPALLI-929153",
+      "site": "TIRUCHIRAPALLI",
+      "name": "appear",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-TIRUCHIRAPALLI-966592",
+      "site": "TIRUCHIRAPALLI",
+      "name": "rahman",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-TIRUCHIRAPALLI-966592",
+      "site": "TIRUCHIRAPALLI",
+      "name": "rahman",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-TIRUCHIRAPALLI-966592",
+      "site": "TIRUCHIRAPALLI",
+      "name": "amil",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-TIRUCHIRAPALLI-966592",
+      "site": "TIRUCHIRAPALLI",
+      "name": "rahman",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-TIRUCHIRAPALLI-966592",
+      "site": "TIRUCHIRAPALLI",
+      "name": "iyil",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-TIRUCHIRAPALLI-966592",
+      "site": "TIRUCHIRAPALLI",
+      "name": "iruman",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-TIRUCHIRAPALLI-966592",
+      "site": "TIRUCHIRAPALLI",
+      "name": "rahman",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ANAIMALAI-660065",
+      "site": "ANAIMALAI",
+      "name": "Tracing",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ANAIMALAI-660065",
+      "site": "ANAIMALAI",
+      "name": "patantan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-ANAIMALAI-660065",
+      "site": "ANAIMALAI",
+      "name": "aritan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-ANAIMALAI-660065",
+      "site": "ANAIMALAI",
+      "name": "kayipan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-ANAIMALAI-660065",
+      "site": "ANAIMALAI",
+      "name": "near",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ANAIMALAI-886586",
+      "site": "ANAIMALAI",
+      "name": "near",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-ANAIMALAI-886586",
+      "site": "ANAIMALAI",
+      "name": "itankalil",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-JAMBAI-658682",
+      "site": "JAMBAI",
+      "name": "atiyan",
+      "length": 1,
+      "n_aksharas": 4
+    },
+    {
+      "inscription_id": "EPUB-JAMBAI-658682",
+      "site": "JAMBAI",
+      "name": "tiyan",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-JAMBAI-658682",
+      "site": "JAMBAI",
+      "name": "rear",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-JAMBAI-658682",
+      "site": "JAMBAI",
+      "name": "ahadevan",
+      "length": 1,
+      "n_aksharas": 5
+    },
+    {
+      "inscription_id": "EPUB-JAMBAI-882494",
+      "site": "JAMBAI",
+      "name": "clan",
+      "length": 1,
+      "n_aksharas": 2
+    },
+    {
+      "inscription_id": "EPUB-JAMBAI-882494",
+      "site": "JAMBAI",
+      "name": "irnar",
+      "length": 1,
+      "n_aksharas": 3
+    },
+    {
+      "inscription_id": "EPUB-JAMBAI-882494",
+      "site": "JAMBAI",
+      "name": "tiyaman",
+      "length": 1,
+      "n_aksharas": 4
+    }
+  ],
+  "stats": {
+    "n_name_instances": 394,
+    "n_inscriptions_with_names": 95,
+    "mean_name_aksharas": 3.5,
+    "length_distribution": {
+      "1": 2,
+      "2": 45,
+      "3": 175,
+      "4": 116,
+      "5": 44,
+      "6": 6,
+      "7": 6
+    },
+    "t2_verdict": "FAVORABLE: TB-NAMES mean length (3.5) within M77 range (2-8) → T2 genre confound RESOLVED"
+  }
+}

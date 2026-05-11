@@ -138,6 +138,46 @@ async def delete_hypothesis(hypothesis_id: str) -> dict[str, Any]:
     return hypothesis
 
 
+class EvidenceItem(BaseModel):
+    item: str  # Free-form evidence reference: URL, discovery item ID, experiment ID, etc.
+    label: str = ""  # Optional human-readable label
+
+
+@router.post("/hypotheses/{hypothesis_id}/evidence", status_code=201)
+async def add_evidence(hypothesis_id: str, body: EvidenceItem) -> dict[str, Any]:
+    """Append an evidence item to a hypothesis.  Idempotent — won't add duplicates."""
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+    hyp = await db.get_hypothesis(hypothesis_id)
+    if hyp is None:
+        raise HTTPException(status_code=404, detail="Hypothesis not found")
+    import json as _json
+    evidence: list[str] = _json.loads(hyp.get("evidence", "[]") or "[]")
+    entry = body.item if not body.label else f"{body.label}: {body.item}"
+    if entry not in evidence:
+        evidence.append(entry)
+    updated = await db.update_hypothesis(hypothesis_id, evidence=evidence)
+    return updated or hyp
+
+
+@router.delete("/hypotheses/{hypothesis_id}/evidence/{idx}")
+async def remove_evidence(hypothesis_id: str, idx: int) -> dict[str, Any]:
+    """Remove evidence item at index idx from a hypothesis."""
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+    hyp = await db.get_hypothesis(hypothesis_id)
+    if hyp is None:
+        raise HTTPException(status_code=404, detail="Hypothesis not found")
+    import json as _json
+    evidence: list[str] = _json.loads(hyp.get("evidence", "[]") or "[]")
+    if 0 <= idx < len(evidence):
+        evidence.pop(idx)
+    updated = await db.update_hypothesis(hypothesis_id, evidence=evidence)
+    return updated or hyp
+
+
 # ── Notebooks ──────────────────────────────────────────────────────────────────
 
 

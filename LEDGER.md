@@ -5571,3 +5571,122 @@ in any results commentary.
 2. Build M↔P crosswalk (Phase-32 prerequisite for unifying the two analysis tracks).
 3. Phase-32 T2: improve TB parser coverage to 100+ inscriptions.
 4. Phase-32 T4: run SA M77 → Tamil-Brahmi LM — the critical falsification test.
+
+---
+
+## [2026-05-11] Entry — Fact-check round: corpus audit, TB circularity, icon assignments
+
+Objective:
+Full second-pass fact-check of V8-V24 results. Verify TB correlation is genuine,
+iconographic HIGH assignments are data-backed, corpus identity is correct, and crosswalk
+status is accurate.
+
+### What was done
+
+Ran `backend/scripts/factcheck_v24.py` and a follow-up sign-detail script.
+
+---
+
+### CONFIRMED CORRECT
+
+1. **Corpus identity:**
+   - 1,670 seals, 7,002 tokens, 390 distinct M-numbers (range M1-M416), all M-prefixed
+   - Mahadevan 1977 base confirmed (417 signs in concordance; 390 appearing in 1,670-seal sample)
+   - Sites: Mohenjo-daro 606, Harappa 492, Dholavira 106, Kalibangan 110, Lothal 124,
+     Chanhu-daro 78, Banawali 60, Surkotada 61, Rakhigarhi 33
+
+2. **TB correlation is NOT purely circular (gap = 0.444):**
+   - Actual V24 correlation: 0.914
+   - Random 50-trial average: 0.470 ± 0.159
+   - Delta above random: **0.444** (threshold for "mostly genuine" was > 0.3)
+   - Max-TB-bias null (all signs assigned identical best reading): ~0.0 (spike on one char)
+   - Verdict: MOSTLY GENUINE. The algorithm achieves correlation substantially above chance
+     BECAUSE the corpus positional structure maps to a Tamil-like distribution — diversity
+     of readings is required to achieve it.
+   - Caveat retained: some portion of the gap is from the selection bias. Should always
+     report as "0.914 vs random baseline 0.47" not as an absolute metric.
+
+3. **Iconographic HIGH assignments:**
+   - M062 (erutu/zebu bull): 100% on zebu bull seals, lift >> 10 ✓ HIGH justified
+   - M045 (yānai/elephant): 100% on elephant seals, lift >> 10 ✓ HIGH justified
+   - M016 (kaḷiṟu/male elephant): 100% on elephant seals ✓ HIGH justified
+   - M006 (puli/tiger): 26.7% of M006 seals are tiger; true lift ~6.2 > 5.0 ✓ HIGH justified
+
+4. **Crosswalk:** mahadevan_parpola_crosswalk.json has 25 ACTUAL entries (a nested dict
+   misread as 1 entry before). Contains: M001, M047-M060 fish family, M086-M092 numerals,
+   M099, M117, M124, M126, M145, M147, M175, M261, M264, M281, M311, M364, M016, M053.
+
+---
+
+### CONFIRMED ERRORS — FIXED (2026-05-11)
+
+**ERROR-A: M267 = mīn (HIGH confidence) — WRONG**
+- M267 freq=400, appears on ALL motif types (unicorn 127, zebu bull 72, elephant 37, etc.)
+- NOT an iconographic fish sign. The Mahadevan-Parpola crosswalk identifies M047 (freq=13)
+  as P47 = "fish (plain)". M267 is most likely a high-frequency functional/suffixal sign.
+- Origin: V6 assigned M267=mīn based on "Fish sign = star/planet (Parpola)" — incorrect
+  identification.
+- **Fix applied:** M267 confidence → UNCERTAIN in INDUS_FINAL_ANCHORS.json
+- TB correlation impact: 0.914 → 0.907 without M267 (modest, ~0.7% drop)
+
+**ERROR-B: M063 = mutalai (HIGH confidence) — lift overstated**
+- True gharial lift = 4.35 (below 5.0 threshold stated in V7 assignment)
+- M063 appears on: unicorn 4, zebu bull 3, gharial 3, tiger 2, geometric 2 out of 18 total seals
+- Reading "mutalai" (crocodile, DEDR 4954) is plausible (gharial association exists) but
+  not exclusive enough for HIGH confidence
+- **Fix applied:** M063 confidence → MEDIUM in INDUS_FINAL_ANCHORS.json
+
+**ERROR-C: M047 = pār (LOW distributional) — overridden by crosswalk**
+- M047 was assigned 'pār' by the V9 distributional round (Round 2, INITIAL position)
+- mahadevan_parpola_crosswalk.json documents M047 = P47 = "fish (plain)", phoneme "mīn"
+- This is a scholarly crosswalk source, outranking distributional assignment
+- **Fix applied:** M047 → mīn (MEDIUM) in INDUS_FINAL_ANCHORS.json
+
+---
+
+### Updated INDUS_FINAL_ANCHORS.json state
+
+Before corrections: HIGH:9 / MEDIUM:63 / LOW:261
+After corrections:  HIGH:7 / MEDIUM:65 / LOW:260 / UNCERTAIN:1
+
+Verified HIGH assignments (7):
+- M342 → ay/ā  (terminal case suffix)
+- M176 → an/aṇ (masculine suffix)
+- M099 → kol/koḷ (jar/vessel; see RISK-006 re: positional conflict)
+- M062 → erutu (zebu bull exclusive, lift >> 10)
+- M045 → yānai (elephant exclusive, lift >> 10)
+- M016 → kaḷiṟu (elephant exclusive, lift >> 10)
+- M006 → puli (tiger, lift ~6.2)
+
+---
+
+### Files changed
+
+- backend/reports/INDUS_FINAL_ANCHORS.json (M267 → UNCERTAIN, M063 → MEDIUM, M047 → mīn/MEDIUM)
+- backend/scripts/factcheck_v24.py (created — fact-check script)
+- backend/scripts/factcheck_fix_anchors.py (created — correction script)
+
+### Checks run
+
+- factcheck_v24.py: TB circularity, iconographic lift, crosswalk, corpus identity — all checked
+- factcheck_fix_anchors.py: corrections applied and verified
+- Confidence breakdown post-fix: H:7 / M:65 / L:260 / UNCERTAIN:1
+
+### Open TODOs (updated — CRITICAL)
+
+- [ ] **TB correlation: report as "0.907 (post-correction, M267 UNCERTAIN)" not 0.914**
+      Update PHASE_32_SYNTHESIS.md, fuls_research_brief_may2026.md accordingly.
+- [ ] Build complete mahadevan_parpola_crosswalk.json (25 → 390 entries) — RISK-001
+- [ ] Source TAMIL_BRAHMI_FREQ (Mahadevan 2003 Table 2 or equivalent) — RISK-003
+- [ ] Rename PDR_ lists to OldTamil_ — RISK-002
+- [ ] Identify what M267 actually IS (high-frequency functional sign; prob. a suffix cluster)
+
+### Risks (updated)
+
+- M099 = kol/koḷ (HIGH) still has the positional conflict vs Holdat CASE_MARKER_SUFFIX — RISK-006 remains
+- TB correlation of 0.907 post-correction still well above random (0.470) but "mostly genuine"
+  qualifier must always accompany the claim
+
+### Next step
+
+See next-task list.

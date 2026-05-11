@@ -27,9 +27,11 @@ def load_corpus():
     with open(HOLDAT, encoding="utf-8") as f:
         for r in csv.DictReader(f):
             seals[r["cisi_number"]].append(r)
+    # Always sort by position within each seal so sequence order is deterministic
+    # even if the CSV rows are ever reordered.
     return [{
         "id": k, "site": v[0]["site"], "icon": v[0]["iconography"],
-        "signs": [s["letters"] for s in v],
+        "signs": [s["letters"] for s in sorted(v, key=lambda r: int(r["position"]))],
     } for k, v in seals.items()]
 
 
@@ -52,8 +54,10 @@ def load_latest_anchors():
 PDR_INITIALS = ["kō", "nal", "cem", "vēl", "kai", "pēr", "tiru", "cēr", "āṇ", "mā",
                 "nēr", "pōr", "kuṉ", "vaḷ", "kēḷ", "paṭ", "tōḷ", "māṟ", "pār", "cōḻ",
                 "erutu", "yānai", "puli", "kōṉ", "māṭu", "kaḷiṟu", "mutalai"]
+# NOTE: māṉ and vāṉ removed from PDR_MEDIALS — they appear in PDR_TERMINALS.
+# Bug fix 2026-05-11: PDR lists must be disjoint.
 PDR_MEDIALS = ["mīn", "kol", "ūr", "il", "āḷ", "kaṇ", "muḷ", "nīr", "poṉ", "kal",
-               "māṉ", "vēḷ", "ney", "cēl", "kuḷ", "tēṉ", "māḷ", "paṉ", "tiṇ", "vāṉ",
+               "vēḷ", "ney", "cēl", "kuḷ", "tēṉ", "māḷ", "paṉ", "tiṇ",
                "maṇ", "cūḷ", "naṟ", "viḷ", "taṭ", "kuṟ", "paṟ", "nāḷ", "vēṟ", "ēṟ"]
 PDR_TERMINALS = ["ay", "aṉ", "am", "iṉ", "āṟ", "ōṭu", "uḷ", "āl", "ēḷ", "pū",
                  "tu", "mu", "āku", "ār", "uṭai", "āṭi", "ēṟu", "ōr", "iḻ", "ūṉ",

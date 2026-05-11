@@ -63,7 +63,7 @@ node_modules/
 
 # ---- Frontend ----
 frontend/node_modules/
-frontend/dist/
+# frontend/dist/ intentionally tracked for deployment (server has no Node.js)
 frontend/build/
 frontend/.vite/
 frontend/.next/

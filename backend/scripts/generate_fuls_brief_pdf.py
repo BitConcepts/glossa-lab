@@ -41,7 +41,24 @@ doc = SimpleDocTemplate(
     author="Tristen Pierson / Layer1Labs Silicon",
 )
 
+from reportlab.lib.styles import ParagraphStyle  # noqa: E402
+
 styles = make_styles()
+
+# Override heading styles with visible colors
+styles["h1"] = ParagraphStyle(
+    "h1", fontName="Helvetica-Bold", fontSize=15, leading=20,
+    textColor=colors.HexColor("#1e3a5f"), spaceBefore=8, spaceAfter=4,
+)
+styles["h2"] = ParagraphStyle(
+    "h2", fontName="Helvetica-Bold", fontSize=12, leading=16,
+    textColor=colors.HexColor("#2563eb"), spaceBefore=6, spaceAfter=2,
+)
+styles["h3"] = ParagraphStyle(
+    "h3", fontName="Helvetica-Bold", fontSize=10, leading=14,
+    textColor=colors.HexColor("#1e40af"), spaceBefore=4, spaceAfter=2,
+)
+
 story = []
 
 text = SRC.read_text(encoding="utf-8")

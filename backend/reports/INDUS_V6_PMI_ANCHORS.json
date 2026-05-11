@@ -1,0 +1,1733 @@
+{
+  "title": "V6 Tasks 1-2: Bigram PMI + Anchor Expansion",
+  "timestamp": "2026-05-11T09:52:53.179109+00:00",
+  "task1_pmi": {
+    "n_bigrams": 638,
+    "n_collocations": 41,
+    "top_50_collocations": [
+      {
+        "pair": [
+          "M125",
+          "M329"
+        ],
+        "count": 3,
+        "pmi": 5.385,
+        "npmi": 0.499
+      },
+      {
+        "pair": [
+          "M054",
+          "M089"
+        ],
+        "count": 4,
+        "pmi": 4.164,
+        "npmi": 0.401
+      },
+      {
+        "pair": [
+          "M304",
+          "M099"
+        ],
+        "count": 3,
+        "pmi": 3.826,
+        "npmi": 0.354
+      },
+      {
+        "pair": [
+          "M068",
+          "M336"
+        ],
+        "count": 3,
+        "pmi": 3.72,
+        "npmi": 0.345
+      },
+      {
+        "pair": [
+          "M062",
+          "M087"
+        ],
+        "count": 5,
+        "pmi": 3.659,
+        "npmi": 0.364
+      },
+      {
+        "pair": [
+          "M002",
+          "M336"
+        ],
+        "count": 3,
+        "pmi": 3.421,
+        "npmi": 0.317
+      },
+      {
+        "pair": [
+          "M056",
+          "M089"
+        ],
+        "count": 3,
+        "pmi": 3.086,
+        "npmi": 0.286
+      },
+      {
+        "pair": [
+          "M039",
+          "M391"
+        ],
+        "count": 3,
+        "pmi": 2.989,
+        "npmi": 0.277
+      },
+      {
+        "pair": [
+          "M033",
+          "M267"
+        ],
+        "count": 4,
+        "pmi": 2.938,
+        "npmi": 0.283
+      },
+      {
+        "pair": [
+          "M045",
+          "M162"
+        ],
+        "count": 4,
+        "pmi": 2.902,
+        "npmi": 0.28
+      },
+      {
+        "pair": [
+          "M061",
+          "M089"
+        ],
+        "count": 3,
+        "pmi": 2.874,
+        "npmi": 0.266
+      },
+      {
+        "pair": [
+          "M021",
+          "M211"
+        ],
+        "count": 3,
+        "pmi": 2.792,
+        "npmi": 0.259
+      },
+      {
+        "pair": [
+          "M082",
+          "M342"
+        ],
+        "count": 3,
+        "pmi": 2.754,
+        "npmi": 0.255
+      },
+      {
+        "pair": [
+          "M022",
+          "M367"
+        ],
+        "count": 3,
+        "pmi": 2.722,
+        "npmi": 0.252
+      },
+      {
+        "pair": [
+          "M075",
+          "M267"
+        ],
+        "count": 4,
+        "pmi": 2.715,
+        "npmi": 0.262
+      },
+      {
+        "pair": [
+          "M034",
+          "M211"
+        ],
+        "count": 3,
+        "pmi": 2.704,
+        "npmi": 0.25
+      },
+      {
+        "pair": [
+          "M035",
+          "M328"
+        ],
+        "count": 3,
+        "pmi": 2.633,
+        "npmi": 0.244
+      },
+      {
+        "pair": [
+          "M018",
+          "M211"
+        ],
+        "count": 3,
+        "pmi": 2.622,
+        "npmi": 0.243
+      },
+      {
+        "pair": [
+          "M079",
+          "M367"
+        ],
+        "count": 3,
+        "pmi": 2.597,
+        "npmi": 0.241
+      },
+      {
+        "pair": [
+          "M055",
+          "M099"
+        ],
+        "count": 3,
+        "pmi": 2.563,
+        "npmi": 0.237
+      },
+      {
+        "pair": [
+          "M060",
+          "M328"
+        ],
+        "count": 3,
+        "pmi": 2.559,
+        "npmi": 0.237
+      },
+      {
+        "pair": [
+          "M019",
+          "M328"
+        ],
+        "count": 3,
+        "pmi": 2.559,
+        "npmi": 0.237
+      },
+      {
+        "pair": [
+          "M071",
+          "M267"
+        ],
+        "count": 4,
+        "pmi": 2.523,
+        "npmi": 0.243
+      },
+      {
+        "pair": [
+          "M074",
+          "M267"
+        ],
+        "count": 3,
+        "pmi": 2.523,
+        "npmi": 0.234
+      },
+      {
+        "pair": [
+          "M037",
+          "M267"
+        ],
+        "count": 4,
+        "pmi": 2.523,
+        "npmi": 0.243
+      },
+      {
+        "pair": [
+          "M342",
+          "M176"
+        ],
+        "count": 122,
+        "pmi": 2.432,
+        "npmi": 0.446
+      },
+      {
+        "pair": [
+          "M008",
+          "M328"
+        ],
+        "count": 3,
+        "pmi": 2.422,
+        "npmi": 0.224
+      },
+      {
+        "pair": [
+          "M016",
+          "M293"
+        ],
+        "count": 3,
+        "pmi": 2.37,
+        "npmi": 0.22
+      },
+      {
+        "pair": [
+          "M015",
+          "M176"
+        ],
+        "count": 3,
+        "pmi": 2.369,
+        "npmi": 0.219
+      },
+      {
+        "pair": [
+          "M267",
+          "M099"
+        ],
+        "count": 84,
+        "pmi": 2.311,
+        "npmi": 0.386
+      },
+      {
+        "pair": [
+          "M045",
+          "M293"
+        ],
+        "count": 3,
+        "pmi": 2.309,
+        "npmi": 0.214
+      },
+      {
+        "pair": [
+          "M031",
+          "M342"
+        ],
+        "count": 5,
+        "pmi": 2.299,
+        "npmi": 0.229
+      },
+      {
+        "pair": [
+          "M176",
+          "M099"
+        ],
+        "count": 74,
+        "pmi": 2.297,
+        "npmi": 0.372
+      },
+      {
+        "pair": [
+          "M068",
+          "M342"
+        ],
+        "count": 4,
+        "pmi": 2.276,
+        "npmi": 0.219
+      },
+      {
+        "pair": [
+          "M021",
+          "M176"
+        ],
+        "count": 3,
+        "pmi": 2.276,
+        "npmi": 0.211
+      },
+      {
+        "pair": [
+          "M013",
+          "M211"
+        ],
+        "count": 3,
+        "pmi": 2.268,
+        "npmi": 0.21
+      },
+      {
+        "pair": [
+          "M014",
+          "M176"
+        ],
+        "count": 3,
+        "pmi": 2.188,
+        "npmi": 0.203
+      },
+      {
+        "pair": [
+          "M057",
+          "M176"
+        ],
+        "count": 3,
+        "pmi": 2.106,
+        "npmi": 0.195
+      },
+      {
+        "pair": [
+          "M005",
+          "M342"
+        ],
+        "count": 4,
+        "pmi": 2.07,
+        "npmi": 0.199
+      },
+      {
+        "pair": [
+          "M061",
+          "M267"
+        ],
+        "count": 4,
+        "pmi": 2.063,
+        "npmi": 0.199
+      },
+      {
+        "pair": [
+          "M004",
+          "M267"
+        ],
+        "count": 3,
+        "pmi": 2.02,
+        "npmi": 0.187
+      }
+    ]
+  },
+  "task2_anchors": {
+    "existing_count": 12,
+    "new_count": 30,
+    "total_count": 42,
+    "full_anchor_set": {
+      "M342": {
+        "reading": "ay/\u0101",
+        "confidence": "HIGH",
+        "basis": "Terminal marker, Dravidian case suffix"
+      },
+      "M176": {
+        "reading": "an/a\u1e47",
+        "confidence": "HIGH",
+        "basis": "Masculine suffix"
+      },
+      "M267": {
+        "reading": "min/m\u012bn",
+        "confidence": "HIGH",
+        "basis": "Fish sign = star/planet (Parpola)"
+      },
+      "M099": {
+        "reading": "kol/ko\u1e37",
+        "confidence": "HIGH",
+        "basis": "Jar/vessel sign"
+      },
+      "M233": {
+        "reading": "\u016br",
+        "confidence": "MEDIUM",
+        "basis": "Settlement/place marker"
+      },
+      "M391": {
+        "reading": "ka/ka\u1e47",
+        "confidence": "MEDIUM",
+        "basis": "Numeral/stroke sign"
+      },
+      "M162": {
+        "reading": "il/i\u1e37",
+        "confidence": "MEDIUM",
+        "basis": "House/dwelling sign"
+      },
+      "M328": {
+        "reading": "\u0101/\u0101l",
+        "confidence": "MEDIUM",
+        "basis": "Man/person sign"
+      },
+      "M059": {
+        "reading": "\u0113\u1e37/e\u1e37",
+        "confidence": "MEDIUM",
+        "basis": "Numeral 7"
+      },
+      "M051": {
+        "reading": "p\u016b/pu\u1e37",
+        "confidence": "MEDIUM",
+        "basis": "Comb/flower sign"
+      },
+      "M089": {
+        "reading": "tu/t\u016b",
+        "confidence": "LOW",
+        "basis": "Positional analysis"
+      },
+      "M048": {
+        "reading": "mu/mu\u1e49",
+        "confidence": "LOW",
+        "basis": "Positional analysis"
+      },
+      "M211": {
+        "reading": "MED-M211",
+        "confidence": "LOW",
+        "basis": "medial (68%), freq=249"
+      },
+      "M293": {
+        "reading": "MED-M293",
+        "confidence": "LOW",
+        "basis": "medial (60%), freq=232"
+      },
+      "M367": {
+        "reading": "am/neuter",
+        "confidence": "LOW",
+        "basis": "terminal diamond = neuter suffix"
+      },
+      "M336": {
+        "reading": "i\u1e49/locative",
+        "confidence": "LOW",
+        "basis": "chevron terminal = locative case marker"
+      },
+      "M065": {
+        "reading": "TERM-M065",
+        "confidence": "LOW",
+        "basis": "terminal-biased (55%)"
+      },
+      "M012": {
+        "reading": "o\u1e49\u1e5fu/1",
+        "confidence": "MEDIUM",
+        "basis": "single stroke = numeral 1"
+      },
+      "M125": {
+        "reading": "TERM-M125",
+        "confidence": "LOW",
+        "basis": "terminal-biased (56%)"
+      },
+      "M087": {
+        "reading": "TERM-M087",
+        "confidence": "LOW",
+        "basis": "terminal-biased (48%)"
+      },
+      "M305": {
+        "reading": "\u014d\u1e6du/comitative",
+        "confidence": "LOW",
+        "basis": "terminal pinch mark"
+      },
+      "M249": {
+        "reading": "TERM-M249",
+        "confidence": "LOW",
+        "basis": "terminal-biased (96%)"
+      },
+      "M220": {
+        "reading": "TERM-M220",
+        "confidence": "LOW",
+        "basis": "terminal-biased (98%)"
+      },
+      "M062": {
+        "reading": "INIT-M062",
+        "confidence": "LOW",
+        "basis": "initial-biased (100%)"
+      },
+      "M073": {
+        "reading": "INIT-M073",
+        "confidence": "LOW",
+        "basis": "initial-biased (100%)"
+      },
+      "M079": {
+        "reading": "INIT-M079",
+        "confidence": "LOW",
+        "basis": "initial-biased (100%)"
+      },
+      "M045": {
+        "reading": "INIT-M045",
+        "confidence": "LOW",
+        "basis": "initial-biased (100%)"
+      },
+      "M016": {
+        "reading": "INIT-M016",
+        "confidence": "LOW",
+        "basis": "initial-biased (100%)"
+      },
+      "M013": {
+        "reading": "INIT-M013",
+        "confidence": "LOW",
+        "basis": "initial-biased (100%)"
+      },
+      "M022": {
+        "reading": "INIT-M022",
+        "confidence": "LOW",
+        "basis": "initial-biased (100%)"
+      },
+      "M008": {
+        "reading": "INIT-M008",
+        "confidence": "LOW",
+        "basis": "initial-biased (100%)"
+      },
+      "M061": {
+        "reading": "INIT-M061",
+        "confidence": "LOW",
+        "basis": "initial-biased (100%)"
+      },
+      "M052": {
+        "reading": "INIT-M052",
+        "confidence": "LOW",
+        "basis": "initial-biased (100%)"
+      },
+      "M058": {
+        "reading": "INIT-M058",
+        "confidence": "LOW",
+        "basis": "initial-biased (100%)"
+      },
+      "M060": {
+        "reading": "INIT-M060",
+        "confidence": "LOW",
+        "basis": "initial-biased (100%)"
+      },
+      "M019": {
+        "reading": "INIT-M019",
+        "confidence": "LOW",
+        "basis": "initial-biased (100%)"
+      },
+      "M044": {
+        "reading": "INIT-M044",
+        "confidence": "LOW",
+        "basis": "initial-biased (100%)"
+      },
+      "M035": {
+        "reading": "INIT-M035",
+        "confidence": "LOW",
+        "basis": "initial-biased (100%)"
+      },
+      "M053": {
+        "reading": "INIT-M053",
+        "confidence": "LOW",
+        "basis": "initial-biased (100%)"
+      },
+      "M003": {
+        "reading": "INIT-M003",
+        "confidence": "LOW",
+        "basis": "initial-biased (100%)"
+      },
+      "M080": {
+        "reading": "INIT-M080",
+        "confidence": "LOW",
+        "basis": "initial-biased (100%)"
+      },
+      "M056": {
+        "reading": "INIT-M056",
+        "confidence": "LOW",
+        "basis": "initial-biased (100%)"
+      }
+    },
+    "new_anchor_details": {
+      "M211": {
+        "reading": "MED-M211",
+        "confidence": "LOW",
+        "freq": 249,
+        "positional": {
+          "total": 249,
+          "initial": 0.048,
+          "medial": 0.683,
+          "terminal": 0.269,
+          "singleton": 0.0,
+          "dominant": "medial"
+        },
+        "cluster": 6,
+        "pictograph": "short-stroke-pair (numeral 2?)",
+        "basis": "medial (68%), freq=249",
+        "top_left_collocates": [
+          {
+            "partner": "M258",
+            "pmi": 5.207,
+            "count": 2
+          },
+          {
+            "partner": "M356",
+            "pmi": 4.622,
+            "count": 2
+          },
+          {
+            "partner": "M280",
+            "pmi": 4.207,
+            "count": 2
+          }
+        ],
+        "top_right_collocates": [
+          {
+            "partner": "M342",
+            "pmi": 1.509,
+            "count": 45
+          },
+          {
+            "partner": "M012",
+            "pmi": 0.854,
+            "count": 7
+          },
+          {
+            "partner": "M220",
+            "pmi": 0.837,
+            "count": 3
+          }
+        ]
+      },
+      "M293": {
+        "reading": "MED-M293",
+        "confidence": "LOW",
+        "freq": 232,
+        "positional": {
+          "total": 232,
+          "initial": 0.069,
+          "medial": 0.599,
+          "terminal": 0.332,
+          "singleton": 0.0,
+          "dominant": "medial"
+        },
+        "cluster": 4,
+        "pictograph": "crab-like terminal",
+        "basis": "medial (60%), freq=232",
+        "top_left_collocates": [
+          {
+            "partner": "M171",
+            "pmi": 4.309,
+            "count": 2
+          },
+          {
+            "partner": "M235",
+            "pmi": 3.501,
+            "count": 2
+          },
+          {
+            "partner": "M082",
+            "pmi": 3.501,
+            "count": 2
+          }
+        ],
+        "top_right_collocates": [
+          {
+            "partner": "M341",
+            "pmi": 4.724,
+            "count": 2
+          },
+          {
+            "partner": "M267",
+            "pmi": 1.874,
+            "count": 37
+          },
+          {
+            "partner": "M305",
+            "pmi": 1.741,
+            "count": 7
+          }
+        ]
+      },
+      "M367": {
+        "reading": "am/neuter",
+        "confidence": "LOW",
+        "freq": 190,
+        "positional": {
+          "total": 190,
+          "initial": 0.105,
+          "medial": 0.411,
+          "terminal": 0.484,
+          "singleton": 0.0,
+          "dominant": "terminal"
+        },
+        "cluster": 4,
+        "pictograph": "diamond/rhombus",
+        "basis": "terminal diamond = neuter suffix",
+        "top_left_collocates": [
+          {
+            "partner": "M081",
+            "pmi": 2.896,
+            "count": 2
+          },
+          {
+            "partner": "M022",
+            "pmi": 2.722,
+            "count": 3
+          },
+          {
+            "partner": "M079",
+            "pmi": 2.597,
+            "count": 3
+          }
+        ],
+        "top_right_collocates": [
+          {
+            "partner": "M249",
+            "pmi": 1.407,
+            "count": 4
+          },
+          {
+            "partner": "M087",
+            "pmi": 0.896,
+            "count": 5
+          },
+          {
+            "partner": "M305",
+            "pmi": 0.807,
+            "count": 3
+          }
+        ]
+      },
+      "M336": {
+        "reading": "i\u1e49/locative",
+        "confidence": "LOW",
+        "freq": 161,
+        "positional": {
+          "total": 161,
+          "initial": 0.081,
+          "medial": 0.447,
+          "terminal": 0.472,
+          "singleton": 0.0,
+          "dominant": "terminal"
+        },
+        "cluster": 4,
+        "pictograph": "chevron/arrow-down",
+        "basis": "chevron terminal = locative case marker",
+        "top_left_collocates": [
+          {
+            "partner": "M148",
+            "pmi": 4.836,
+            "count": 2
+          },
+          {
+            "partner": "M068",
+            "pmi": 3.72,
+            "count": 3
+          },
+          {
+            "partner": "M002",
+            "pmi": 3.421,
+            "count": 3
+          }
+        ],
+        "top_right_collocates": [
+          {
+            "partner": "M305",
+            "pmi": 1.461,
+            "count": 4
+          },
+          {
+            "partner": "M162",
+            "pmi": 0.964,
+            "count": 7
+          },
+          {
+            "partner": "M059",
+            "pmi": 0.849,
+            "count": 7
+          }
+        ]
+      },
+      "M065": {
+        "reading": "TERM-M065",
+        "confidence": "LOW",
+        "freq": 154,
+        "positional": {
+          "total": 154,
+          "initial": 0.234,
+          "medial": 0.221,
+          "terminal": 0.545,
+          "singleton": 0.0,
+          "dominant": "terminal"
+        },
+        "cluster": 4,
+        "pictograph": "double-bracket/gate",
+        "basis": "terminal-biased (55%)",
+        "top_left_collocates": [
+          {
+            "partner": "M038",
+            "pmi": 2.812,
+            "count": 2
+          },
+          {
+            "partner": "M061",
+            "pmi": 2.44,
+            "count": 2
+          },
+          {
+            "partner": "M089",
+            "pmi": 0.804,
+            "count": 5
+          }
+        ],
+        "top_right_collocates": [
+          {
+            "partner": "M336",
+            "pmi": 0.891,
+            "count": 5
+          },
+          {
+            "partner": "M328",
+            "pmi": 0.351,
+            "count": 5
+          },
+          {
+            "partner": "M367",
+            "pmi": 0.33,
+            "count": 4
+          }
+        ]
+      },
+      "M012": {
+        "reading": "o\u1e49\u1e5fu/1",
+        "confidence": "MEDIUM",
+        "freq": 143,
+        "positional": {
+          "total": 143,
+          "initial": 0.203,
+          "medial": 0.371,
+          "terminal": 0.427,
+          "singleton": 0.0,
+          "dominant": "terminal"
+        },
+        "cluster": 4,
+        "pictograph": "tall-stroke (numeral 1?)",
+        "basis": "single stroke = numeral 1",
+        "top_left_collocates": [
+          {
+            "partner": "M302",
+            "pmi": 6.007,
+            "count": 2
+          },
+          {
+            "partner": "M018",
+            "pmi": 2.837,
+            "count": 2
+          },
+          {
+            "partner": "M008",
+            "pmi": 2.547,
+            "count": 2
+          }
+        ],
+        "top_right_collocates": [
+          {
+            "partner": "M305",
+            "pmi": 1.217,
+            "count": 3
+          },
+          {
+            "partner": "M391",
+            "pmi": 0.999,
+            "count": 6
+          },
+          {
+            "partner": "M125",
+            "pmi": 0.962,
+            "count": 4
+          }
+        ]
+      },
+      "M125": {
+        "reading": "TERM-M125",
+        "confidence": "LOW",
+        "freq": 132,
+        "positional": {
+          "total": 132,
+          "initial": 0.076,
+          "medial": 0.364,
+          "terminal": 0.561,
+          "singleton": 0.0,
+          "dominant": "terminal"
+        },
+        "cluster": 4,
+        "pictograph": "boundary/divider (M125 per Holdat)",
+        "basis": "terminal-biased (56%)",
+        "top_left_collocates": [
+          {
+            "partner": "M402",
+            "pmi": 4.8,
+            "count": 2
+          },
+          {
+            "partner": "M027",
+            "pmi": 3.035,
+            "count": 2
+          },
+          {
+            "partner": "M053",
+            "pmi": 2.874,
+            "count": 2
+          }
+        ],
+        "top_right_collocates": [
+          {
+            "partner": "M329",
+            "pmi": 5.385,
+            "count": 3
+          },
+          {
+            "partner": "M211",
+            "pmi": 0.747,
+            "count": 6
+          },
+          {
+            "partner": "M391",
+            "pmi": 0.115,
+            "count": 3
+          }
+        ]
+      },
+      "M087": {
+        "reading": "TERM-M087",
+        "confidence": "LOW",
+        "freq": 130,
+        "positional": {
+          "total": 130,
+          "initial": 0.108,
+          "medial": 0.408,
+          "terminal": 0.485,
+          "singleton": 0.0,
+          "dominant": "terminal"
+        },
+        "cluster": 4,
+        "pictograph": "U-shape/bracket",
+        "basis": "terminal-biased (48%)",
+        "top_left_collocates": [
+          {
+            "partner": "M062",
+            "pmi": 3.659,
+            "count": 5
+          },
+          {
+            "partner": "M072",
+            "pmi": 3.559,
+            "count": 2
+          },
+          {
+            "partner": "M049",
+            "pmi": 3.444,
+            "count": 2
+          }
+        ],
+        "top_right_collocates": [
+          {
+            "partner": "M162",
+            "pmi": 0.465,
+            "count": 4
+          },
+          {
+            "partner": "M233",
+            "pmi": 0.311,
+            "count": 3
+          },
+          {
+            "partner": "M367",
+            "pmi": 0.159,
+            "count": 3
+          }
+        ]
+      },
+      "M305": {
+        "reading": "\u014d\u1e6du/comitative",
+        "confidence": "LOW",
+        "freq": 83,
+        "positional": {
+          "total": 83,
+          "initial": 0.0,
+          "medial": 0.024,
+          "terminal": 0.976,
+          "singleton": 0.0,
+          "dominant": "terminal"
+        },
+        "cluster": 4,
+        "pictograph": "pinch/squeeze mark",
+        "basis": "terminal pinch mark",
+        "top_left_collocates": [
+          {
+            "partner": "M072",
+            "pmi": 4.207,
+            "count": 2
+          },
+          {
+            "partner": "M056",
+            "pmi": 3.544,
+            "count": 2
+          },
+          {
+            "partner": "M293",
+            "pmi": 1.741,
+            "count": 7
+          }
+        ],
+        "top_right_collocates": []
+      },
+      "M249": {
+        "reading": "TERM-M249",
+        "confidence": "LOW",
+        "freq": 73,
+        "positional": {
+          "total": 73,
+          "initial": 0.0,
+          "medial": 0.041,
+          "terminal": 0.959,
+          "singleton": 0.0,
+          "dominant": "terminal"
+        },
+        "cluster": 4,
+        "pictograph": "fork/trident",
+        "basis": "terminal-biased (96%)",
+        "top_left_collocates": [
+          {
+            "partner": "M199",
+            "pmi": 5.977,
+            "count": 2
+          },
+          {
+            "partner": "M025",
+            "pmi": 3.889,
+            "count": 2
+          },
+          {
+            "partner": "M080",
+            "pmi": 3.729,
+            "count": 2
+          }
+        ],
+        "top_right_collocates": []
+      },
+      "M220": {
+        "reading": "TERM-M220",
+        "confidence": "LOW",
+        "freq": 62,
+        "positional": {
+          "total": 62,
+          "initial": 0.0,
+          "medial": 0.016,
+          "terminal": 0.984,
+          "singleton": 0.0,
+          "dominant": "terminal"
+        },
+        "cluster": 4,
+        "pictograph": "cross/plus",
+        "basis": "terminal-biased (98%)",
+        "top_left_collocates": [
+          {
+            "partner": "M048",
+            "pmi": 1.503,
+            "count": 3
+          },
+          {
+            "partner": "M267",
+            "pmi": 1.154,
+            "count": 6
+          },
+          {
+            "partner": "M176",
+            "pmi": 1.059,
+            "count": 5
+          }
+        ],
+        "top_right_collocates": []
+      },
+      "M062": {
+        "reading": "INIT-M062",
+        "confidence": "LOW",
+        "freq": 28,
+        "positional": {
+          "total": 28,
+          "initial": 1.0,
+          "medial": 0.0,
+          "terminal": 0.0,
+          "singleton": 0.0,
+          "dominant": "initial"
+        },
+        "cluster": 1,
+        "pictograph": "unknown",
+        "basis": "initial-biased (100%)",
+        "top_left_collocates": [],
+        "top_right_collocates": [
+          {
+            "partner": "M087",
+            "pmi": 3.659,
+            "count": 5
+          },
+          {
+            "partner": "M048",
+            "pmi": 2.065,
+            "count": 2
+          },
+          {
+            "partner": "M059",
+            "pmi": 1.565,
+            "count": 2
+          }
+        ]
+      },
+      "M073": {
+        "reading": "INIT-M073",
+        "confidence": "LOW",
+        "freq": 25,
+        "positional": {
+          "total": 25,
+          "initial": 1.0,
+          "medial": 0.0,
+          "terminal": 0.0,
+          "singleton": 0.0,
+          "dominant": "initial"
+        },
+        "cluster": 1,
+        "pictograph": "unknown",
+        "basis": "initial-biased (100%)",
+        "top_left_collocates": [],
+        "top_right_collocates": [
+          {
+            "partner": "M211",
+            "pmi": 1.563,
+            "count": 2
+          },
+          {
+            "partner": "M342",
+            "pmi": 0.918,
+            "count": 3
+          }
+        ]
+      },
+      "M079": {
+        "reading": "INIT-M079",
+        "confidence": "LOW",
+        "freq": 24,
+        "positional": {
+          "total": 24,
+          "initial": 1.0,
+          "medial": 0.0,
+          "terminal": 0.0,
+          "singleton": 0.0,
+          "dominant": "initial"
+        },
+        "cluster": 3,
+        "pictograph": "unknown",
+        "basis": "initial-biased (100%)",
+        "top_left_collocates": [],
+        "top_right_collocates": [
+          {
+            "partner": "M367",
+            "pmi": 2.597,
+            "count": 3
+          },
+          {
+            "partner": "M293",
+            "pmi": 1.724,
+            "count": 2
+          },
+          {
+            "partner": "M342",
+            "pmi": 1.392,
+            "count": 4
+          }
+        ]
+      },
+      "M045": {
+        "reading": "INIT-M045",
+        "confidence": "LOW",
+        "freq": 24,
+        "positional": {
+          "total": 24,
+          "initial": 1.0,
+          "medial": 0.0,
+          "terminal": 0.0,
+          "singleton": 0.0,
+          "dominant": "initial"
+        },
+        "cluster": 1,
+        "pictograph": "unknown",
+        "basis": "initial-biased (100%)",
+        "top_left_collocates": [],
+        "top_right_collocates": [
+          {
+            "partner": "M162",
+            "pmi": 2.902,
+            "count": 4
+          },
+          {
+            "partner": "M293",
+            "pmi": 2.309,
+            "count": 3
+          },
+          {
+            "partner": "M233",
+            "pmi": 2.164,
+            "count": 2
+          }
+        ]
+      },
+      "M016": {
+        "reading": "INIT-M016",
+        "confidence": "LOW",
+        "freq": 23,
+        "positional": {
+          "total": 23,
+          "initial": 1.0,
+          "medial": 0.0,
+          "terminal": 0.0,
+          "singleton": 0.0,
+          "dominant": "initial"
+        },
+        "cluster": 1,
+        "pictograph": "unknown",
+        "basis": "initial-biased (100%)",
+        "top_left_collocates": [],
+        "top_right_collocates": [
+          {
+            "partner": "M293",
+            "pmi": 2.37,
+            "count": 3
+          },
+          {
+            "partner": "M089",
+            "pmi": 2.225,
+            "count": 2
+          },
+          {
+            "partner": "M328",
+            "pmi": 1.773,
+            "count": 2
+          }
+        ]
+      },
+      "M013": {
+        "reading": "INIT-M013",
+        "confidence": "LOW",
+        "freq": 23,
+        "positional": {
+          "total": 23,
+          "initial": 1.0,
+          "medial": 0.0,
+          "terminal": 0.0,
+          "singleton": 0.0,
+          "dominant": "initial"
+        },
+        "cluster": 1,
+        "pictograph": "unknown",
+        "basis": "initial-biased (100%)",
+        "top_left_collocates": [],
+        "top_right_collocates": [
+          {
+            "partner": "M125",
+            "pmi": 2.599,
+            "count": 2
+          },
+          {
+            "partner": "M211",
+            "pmi": 2.268,
+            "count": 3
+          },
+          {
+            "partner": "M162",
+            "pmi": 1.964,
+            "count": 2
+          }
+        ]
+      },
+      "M022": {
+        "reading": "INIT-M022",
+        "confidence": "LOW",
+        "freq": 22,
+        "positional": {
+          "total": 22,
+          "initial": 1.0,
+          "medial": 0.0,
+          "terminal": 0.0,
+          "singleton": 0.0,
+          "dominant": "initial"
+        },
+        "cluster": 1,
+        "pictograph": "unknown",
+        "basis": "initial-biased (100%)",
+        "top_left_collocates": [],
+        "top_right_collocates": [
+          {
+            "partner": "M249",
+            "pmi": 3.517,
+            "count": 2
+          },
+          {
+            "partner": "M367",
+            "pmi": 2.722,
+            "count": 3
+          },
+          {
+            "partner": "M051",
+            "pmi": 2.358,
+            "count": 2
+          }
+        ]
+      },
+      "M008": {
+        "reading": "INIT-M008",
+        "confidence": "LOW",
+        "freq": 22,
+        "positional": {
+          "total": 22,
+          "initial": 1.0,
+          "medial": 0.0,
+          "terminal": 0.0,
+          "singleton": 0.0,
+          "dominant": "initial"
+        },
+        "cluster": 1,
+        "pictograph": "unknown",
+        "basis": "initial-biased (100%)",
+        "top_left_collocates": [],
+        "top_right_collocates": [
+          {
+            "partner": "M012",
+            "pmi": 2.547,
+            "count": 2
+          },
+          {
+            "partner": "M328",
+            "pmi": 2.422,
+            "count": 3
+          },
+          {
+            "partner": "M089",
+            "pmi": 2.289,
+            "count": 2
+          }
+        ]
+      },
+      "M061": {
+        "reading": "INIT-M061",
+        "confidence": "LOW",
+        "freq": 22,
+        "positional": {
+          "total": 22,
+          "initial": 1.0,
+          "medial": 0.0,
+          "terminal": 0.0,
+          "singleton": 0.0,
+          "dominant": "initial"
+        },
+        "cluster": 3,
+        "pictograph": "unknown",
+        "basis": "initial-biased (100%)",
+        "top_left_collocates": [],
+        "top_right_collocates": [
+          {
+            "partner": "M089",
+            "pmi": 2.874,
+            "count": 3
+          },
+          {
+            "partner": "M065",
+            "pmi": 2.44,
+            "count": 2
+          },
+          {
+            "partner": "M051",
+            "pmi": 2.358,
+            "count": 2
+          }
+        ]
+      },
+      "M052": {
+        "reading": "INIT-M052",
+        "confidence": "LOW",
+        "freq": 22,
+        "positional": {
+          "total": 22,
+          "initial": 1.0,
+          "medial": 0.0,
+          "terminal": 0.0,
+          "singleton": 0.0,
+          "dominant": "initial"
+        },
+        "cluster": 3,
+        "pictograph": "unknown",
+        "basis": "initial-biased (100%)",
+        "top_left_collocates": [],
+        "top_right_collocates": [
+          {
+            "partner": "M391",
+            "pmi": 2.115,
+            "count": 2
+          },
+          {
+            "partner": "M059",
+            "pmi": 1.913,
+            "count": 2
+          },
+          {
+            "partner": "M267",
+            "pmi": 1.063,
+            "count": 2
+          }
+        ]
+      },
+      "M058": {
+        "reading": "INIT-M058",
+        "confidence": "LOW",
+        "freq": 21,
+        "positional": {
+          "total": 21,
+          "initial": 1.0,
+          "medial": 0.0,
+          "terminal": 0.0,
+          "singleton": 0.0,
+          "dominant": "initial"
+        },
+        "cluster": 3,
+        "pictograph": "unknown",
+        "basis": "initial-biased (100%)",
+        "top_left_collocates": [],
+        "top_right_collocates": [
+          {
+            "partner": "M176",
+            "pmi": 1.299,
+            "count": 2
+          },
+          {
+            "partner": "M342",
+            "pmi": 1.169,
+            "count": 3
+          },
+          {
+            "partner": "M267",
+            "pmi": 1.13,
+            "count": 2
+          }
+        ]
+      },
+      "M060": {
+        "reading": "INIT-M060",
+        "confidence": "LOW",
+        "freq": 20,
+        "positional": {
+          "total": 20,
+          "initial": 1.0,
+          "medial": 0.0,
+          "terminal": 0.0,
+          "singleton": 0.0,
+          "dominant": "initial"
+        },
+        "cluster": 1,
+        "pictograph": "unknown",
+        "basis": "initial-biased (100%)",
+        "top_left_collocates": [],
+        "top_right_collocates": [
+          {
+            "partner": "M328",
+            "pmi": 2.559,
+            "count": 3
+          },
+          {
+            "partner": "M336",
+            "pmi": 2.514,
+            "count": 2
+          },
+          {
+            "partner": "M342",
+            "pmi": 1.977,
+            "count": 5
+          }
+        ]
+      },
+      "M019": {
+        "reading": "INIT-M019",
+        "confidence": "LOW",
+        "freq": 20,
+        "positional": {
+          "total": 20,
+          "initial": 1.0,
+          "medial": 0.0,
+          "terminal": 0.0,
+          "singleton": 0.0,
+          "dominant": "initial"
+        },
+        "cluster": 7,
+        "pictograph": "unknown",
+        "basis": "initial-biased (100%)",
+        "top_left_collocates": [],
+        "top_right_collocates": [
+          {
+            "partner": "M328",
+            "pmi": 2.559,
+            "count": 3
+          },
+          {
+            "partner": "M342",
+            "pmi": 1.655,
+            "count": 4
+          }
+        ]
+      },
+      "M044": {
+        "reading": "INIT-M044",
+        "confidence": "LOW",
+        "freq": 19,
+        "positional": {
+          "total": 19,
+          "initial": 1.0,
+          "medial": 0.0,
+          "terminal": 0.0,
+          "singleton": 0.0,
+          "dominant": "initial"
+        },
+        "cluster": 7,
+        "pictograph": "unknown",
+        "basis": "initial-biased (100%)",
+        "top_left_collocates": [],
+        "top_right_collocates": [
+          {
+            "partner": "M059",
+            "pmi": 2.124,
+            "count": 2
+          },
+          {
+            "partner": "M293",
+            "pmi": 2.061,
+            "count": 2
+          },
+          {
+            "partner": "M342",
+            "pmi": 0.729,
+            "count": 2
+          }
+        ]
+      },
+      "M035": {
+        "reading": "INIT-M035",
+        "confidence": "LOW",
+        "freq": 19,
+        "positional": {
+          "total": 19,
+          "initial": 1.0,
+          "medial": 0.0,
+          "terminal": 0.0,
+          "singleton": 0.0,
+          "dominant": "initial"
+        },
+        "cluster": 1,
+        "pictograph": "unknown",
+        "basis": "initial-biased (100%)",
+        "top_left_collocates": [],
+        "top_right_collocates": [
+          {
+            "partner": "M328",
+            "pmi": 2.633,
+            "count": 3
+          },
+          {
+            "partner": "M211",
+            "pmi": 1.959,
+            "count": 2
+          },
+          {
+            "partner": "M267",
+            "pmi": 1.86,
+            "count": 3
+          }
+        ]
+      },
+      "M053": {
+        "reading": "INIT-M053",
+        "confidence": "LOW",
+        "freq": 19,
+        "positional": {
+          "total": 19,
+          "initial": 1.0,
+          "medial": 0.0,
+          "terminal": 0.0,
+          "singleton": 0.0,
+          "dominant": "initial"
+        },
+        "cluster": 1,
+        "pictograph": "unknown",
+        "basis": "initial-biased (100%)",
+        "top_left_collocates": [],
+        "top_right_collocates": [
+          {
+            "partner": "M125",
+            "pmi": 2.874,
+            "count": 2
+          },
+          {
+            "partner": "M342",
+            "pmi": 0.729,
+            "count": 2
+          }
+        ]
+      },
+      "M003": {
+        "reading": "INIT-M003",
+        "confidence": "LOW",
+        "freq": 19,
+        "positional": {
+          "total": 19,
+          "initial": 1.0,
+          "medial": 0.0,
+          "terminal": 0.0,
+          "singleton": 0.0,
+          "dominant": "initial"
+        },
+        "cluster": 7,
+        "pictograph": "unknown",
+        "basis": "initial-biased (100%)",
+        "top_left_collocates": [],
+        "top_right_collocates": [
+          {
+            "partner": "M328",
+            "pmi": 2.048,
+            "count": 2
+          },
+          {
+            "partner": "M342",
+            "pmi": 1.729,
+            "count": 4
+          },
+          {
+            "partner": "M176",
+            "pmi": 1.443,
+            "count": 2
+          }
+        ]
+      },
+      "M080": {
+        "reading": "INIT-M080",
+        "confidence": "LOW",
+        "freq": 19,
+        "positional": {
+          "total": 19,
+          "initial": 1.0,
+          "medial": 0.0,
+          "terminal": 0.0,
+          "singleton": 0.0,
+          "dominant": "initial"
+        },
+        "cluster": 1,
+        "pictograph": "unknown",
+        "basis": "initial-biased (100%)",
+        "top_left_collocates": [],
+        "top_right_collocates": [
+          {
+            "partner": "M249",
+            "pmi": 3.729,
+            "count": 2
+          },
+          {
+            "partner": "M162",
+            "pmi": 2.239,
+            "count": 2
+          },
+          {
+            "partner": "M059",
+            "pmi": 2.124,
+            "count": 2
+          }
+        ]
+      },
+      "M056": {
+        "reading": "INIT-M056",
+        "confidence": "LOW",
+        "freq": 19,
+        "positional": {
+          "total": 19,
+          "initial": 1.0,
+          "medial": 0.0,
+          "terminal": 0.0,
+          "singleton": 0.0,
+          "dominant": "initial"
+        },
+        "cluster": 7,
+        "pictograph": "unknown",
+        "basis": "initial-biased (100%)",
+        "top_left_collocates": [],
+        "top_right_collocates": [
+          {
+            "partner": "M305",
+            "pmi": 3.544,
+            "count": 2
+          },
+          {
+            "partner": "M089",
+            "pmi": 3.086,
+            "count": 3
+          },
+          {
+            "partner": "M162",
+            "pmi": 2.239,
+            "count": 2
+          }
+        ]
+      }
+    },
+    "decode_rate_top50": 0.7604,
+    "corpus_token_coverage": 0.7518
+  }
+}

@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { StatusView } from "./components/StatusView";
 import { CorporaView } from "./components/CorporaView";
 import { JobsView } from "./components/JobsView";
-import { StudiesView } from "./components/StudiesView";
 import { PipelinesView } from "./components/PipelinesView";
 import { SettingsView } from "./components/SettingsView";
 import { ReportsView } from "./components/ReportsView";
@@ -31,7 +30,7 @@ import { getHealth, listJobs } from "./api";
 
 type Tab =
   | "dashboard"
-  | "status" | "indus-data" | "builder" | "experiments" | "pipelines"
+  | "status" | "builder" | "experiments" | "pipelines"
   | "corpora" | "jobs" | "reports" | "settings"
   | "entropy" | "hypotheses" | "notebooks" | "ai-tools" | "signs" | "timeline" | "citations" | "correspondence" | "help" | "models"
   | "discovery"
@@ -68,7 +67,6 @@ const NAV_SECTIONS: NavSection[] = [
       { id: "entropy",    label: "Entropy",     icon: "📊" },
       { id: "signs",      label: "Signs",       icon: "🔣" },
       { id: "timeline",   label: "Timeline",    icon: "📅" },
-      { id: "indus-data", label: "Indus Data",  icon: "📋" },
     ],
   },
   {
@@ -347,9 +345,9 @@ function AppContent() {
       let view = (e as CustomEvent<{ view: string }>).detail?.view as Tab | undefined;
       // Redirect legacy exp-builder links to the unified experiments canvas
       if (view === "exp-builder") view = "experiments";
-      // Redirect old "studies" (Indus data) to new id
-      if ((view as string) === "studies") view = "indus-data";
-      if (view && (allItems.some(i => i.id === view) || view === "indus-data" || view === "experiments")) setTab(view);
+      // Redirect old "studies" / "indus-data" to dashboard
+      if ((view as string) === "studies" || (view as string) === "indus-data") view = "dashboard" as Tab;
+      if (view && (allItems.some(i => i.id === view) || view === "experiments")) setTab(view);
     };
     window.addEventListener("glossa:navigate", handler);
     return () => window.removeEventListener("glossa:navigate", handler);
@@ -610,7 +608,6 @@ function AppContent() {
             }}>
               {tab === "dashboard"   && <DashboardView />}
               {tab === "status"      && <StatusView />}
-              {tab === "indus-data"   && <StudiesView />}
               {tab === "builder"      && <ProjectsView />}
               {(tab === "experiments" || tab === "exp-builder") && <ExperimentBuilderView darkMode={darkMode} />}
               {tab === "pipelines"   && <PipelinesView />}

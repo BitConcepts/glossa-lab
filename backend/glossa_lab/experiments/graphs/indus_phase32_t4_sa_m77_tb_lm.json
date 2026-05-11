@@ -1,0 +1,85 @@
+{
+  "id": "indus_phase32_t4_sa_m77_tb_lm",
+  "name": "Indus Phase-32 T4 — SA Decipherment M77 → Dravidian Tamil LM (P30-H1)",
+  "description": "Phase-32 T4: THE CRITICAL NON-CIRCULAR TEST. Runs SimulatedAnnealing on the full M77 Holdat corpus (1,670 inscriptions, 7,002 tokens) using the clean Dravidian Tamil bigram LM (dravidian_tamil_lm.json — built from DEDR+Sangam+Parpola, 486 bigrams, CLEAN, 0/15 English contamination) as the scoring target, with HIGH/MEDIUM INDUS_FINAL_ANCHORS as fixed starting points (333 entries). This test is non-circular: the LM is built from independent Tamil lexical/literary sources (DEDR, Sangam corpus), NOT from the Indus corpus itself. If SA finds a mapping significantly above a random null baseline, it is the strongest positive evidence for the Dravidian hypothesis produced so far. Null result = strong structural evidence against. Cites: A.1 (Mahadevan 1977), E.1 (DEDR/Burrow+Emeneau), E.3 (Sangam), C.2 (Parpola 2010).",
+  "auto_migrated": false,
+  "nodes": [
+    {
+      "id": "m77",
+      "type": "expNode",
+      "data": {
+        "atomicId": "M77InscriptionLoader",
+        "label": "Load M77 Holdat corpus",
+        "params": { "use_raw": false, "label": "indus_m77" }
+      },
+      "position": { "x": 60, "y": 120 }
+    },
+    {
+      "id": "lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Dravidian Tamil LM (DEDR+Sangam+Parpola — CLEAN)",
+        "params": { "language": "dravidian" }
+      },
+      "position": { "x": 60, "y": 320 }
+    },
+    {
+      "id": "anchors",
+      "type": "expNode",
+      "data": {
+        "atomicId": "DerivedAnchorSet",
+        "label": "INDUS_FINAL_ANCHORS (HIGH+MEDIUM, 333 entries)",
+        "params": { "min_confidence": "MEDIUM" }
+      },
+      "position": { "x": 60, "y": 520 }
+    },
+    {
+      "id": "sa",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA M77 → Tamil LM (5 seeds × 10000 iters)",
+        "params": {
+          "n_seeds": 5,
+          "max_iterations": 10000,
+          "restarts": 8,
+          "surjective": true,
+          "ocp_weight": 0.0
+        }
+      },
+      "position": { "x": 480, "y": 320 }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Collect SA results",
+        "params": {}
+      },
+      "position": { "x": 840, "y": 320 }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Phase-32 T4 results",
+        "params": { "filename": "phase32_t4_sa_m77_tb_lm.json" }
+      },
+      "position": { "x": 1120, "y": 320 }
+    }
+  ],
+  "edges": [
+    { "id": "e_m77_sa",     "source": "m77",     "target": "sa",    "sourcePort": "sequences",        "targetPort": "sequences" },
+    { "id": "e_lm_sa",      "source": "lm",      "target": "sa",    "sourcePort": "lm",               "targetPort": "lm" },
+    { "id": "e_anch_sa",    "source": "anchors",  "target": "sa",    "sourcePort": "anchor_dict",      "targetPort": "anchors" },
+    { "id": "e_sa_merge_pm","source": "sa",      "target": "merge", "sourcePort": "proposed_mapping", "targetPort": "a" },
+    { "id": "e_sa_merge_mc","source": "sa",      "target": "merge", "sourcePort": "mean_consistency", "targetPort": "b" },
+    { "id": "e_sa_merge_hci","source": "sa",     "target": "merge", "sourcePort": "hci_count",        "targetPort": "c" },
+    { "id": "e_m77_merge",  "source": "m77",     "target": "merge", "sourcePort": "n_inscriptions",   "targetPort": "d" },
+    { "id": "e_lm_merge",   "source": "lm",      "target": "merge", "sourcePort": "n_bigrams",        "targetPort": "e" },
+    { "id": "e_merge_out",  "source": "merge",   "target": "out",   "sourcePort": "json",             "targetPort": "data" }
+  ]
+}

@@ -1,11 +1,18 @@
 import { useEffect, useState } from "react";
 import {
   listProviders, listModelAssignments, setModelAssignment, autoConfigureAssignments,
-  listModelScores, syncModelIntelligence,
+  listModelScores, syncModelIntelligence, testHuggingFace,
   type ProviderEntry, type BucketGroup, type Bucket, type ModelScore,
   type AutoConfigProfile,
 } from "../../api";
 import { useToast } from "../../hooks/useToast";
+
+const PROVIDER_BADGES: Record<string, { icon: string; label: string; bg: string; color: string }> = {
+  ollama:       { icon: "🦙", label: "Ollama",       bg: "#fef3c7", color: "#92400e" },
+  cloud:        { icon: "☁️",  label: "Cloud",        bg: "#dbeafe", color: "#1e40af" },
+  byoe:         { icon: "⚡",  label: "vLLM/Custom",  bg: "#f3e8ff", color: "#6b21a8" },
+  huggingface:  { icon: "🤗", label: "HuggingFace",  bg: "#fce7f3", color: "#9d174d" },
+};
 
 const BUCKET_META: Record<string, { label: string; icon: string; desc: string }> = {
   reasoning:      { label: "Reasoning",      icon: "🧠", desc: "Decipher, hypotheses, experiment planning, discovery classification" },
@@ -22,14 +29,15 @@ export function ModelAssignmentsPanel() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState<Record<string, boolean>>({});
   const [syncing, setSyncing] = useState(false);
+  const [testingHF, setTestingHF] = useState(false);
   const [configuring, setConfiguring] = useState(false);
   const [scoredOnly, setScoredOnly] = useState(false);
   const [profile, setProfile] = useState<AutoConfigProfile>("mixed");
 
-  const allModels: { providerId: string; providerName: string; model: string }[] = [];
+  const allModels: { providerId: string; providerName: string; model: string; providerType: string }[] = [];
   for (const p of providers) {
     for (const m of (p.available_models || [])) {
-      allModels.push({ providerId: p.id, providerName: p.name, model: m });
+      allModels.push({ providerId: p.id, providerName: p.name, model: m, providerType: p.provider_type });
     }
   }
 
@@ -111,6 +119,17 @@ export function ModelAssignmentsPanel() {
     setSyncing(false);
   };
 
+  const handleTestHF = async () => {
+    setTestingHF(true);
+    try {
+      const r = await testHuggingFace();
+      toast(r.message, r.valid ? "success" : "error");
+    } catch (e: unknown) {
+      toast(e instanceof Error ? e.message : "HF test failed", "error");
+    }
+    setTestingHF(false);
+  };
+
   const s = { section: { border: "1px solid #e5e7eb", borderRadius: 8, padding: 16, marginBottom: 16, background: "#fff" } as const };
 
   const renderSelector = (bucket: Bucket, rank: "primary" | "fallback") => {
@@ -140,8 +159,8 @@ export function ModelAssignmentsPanel() {
             .filter(m => !scoredOnly || m.hasScore)
             .sort((a, b) => b.scoreVal - a.scoreVal)
             .map(m => (
-              <option key={`${m.providerId}|${m.model}`} value={`${m.providerId}|${m.model}`}>
-                {m.scoreVal > 0 ? `★${m.scoreVal.toFixed(0)} ` : m.hasScore ? "☆0 " : ""}{m.providerName} · {m.model}
+            <option key={`${m.providerId}|${m.model}`} value={`${m.providerId}|${m.model}`}>
+                {PROVIDER_BADGES[m.providerType]?.icon ?? "🔌"} {m.scoreVal > 0 ? `★${m.scoreVal.toFixed(0)} ` : m.hasScore ? "☆0 " : ""}{m.providerName} · {m.model}
               </option>
             ))}
         </select>
@@ -154,6 +173,9 @@ export function ModelAssignmentsPanel() {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
         <h3 style={{ margin: 0, fontSize: 15, fontWeight: 700 }}>🎯 Model Assignments</h3>
         <div style={{ display: "flex", gap: 6 }}>
+          <button onClick={handleTestHF} disabled={testingHF} style={{ padding: "4px 10px", fontSize: 11, border: "1px solid #d1d5db", borderRadius: 4, cursor: "pointer", background: "#fff" }}>
+            {testingHF ? "Testing..." : "🤗 Test HF"}
+          </button>
           <button onClick={handleSync} disabled={syncing} style={{ padding: "4px 10px", fontSize: 11, border: "1px solid #d1d5db", borderRadius: 4, cursor: "pointer", background: "#fff" }}>
             {syncing ? "Syncing..." : "🔄 Sync Scores"}
           </button>
@@ -196,7 +218,7 @@ export function ModelAssignmentsPanel() {
         })}
       </div>
 
-      <div style={{ marginTop: 12, display: "flex", alignItems: "center", gap: 12 }}>
+      <div style={{ marginTop: 12, display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
         {scores.length > 0 && (
           <span style={{ fontSize: 10, color: "#9ca3af" }}>
             📊 {scores.length} model(s) scored · ★ = bucket fitness score (higher = better)
@@ -206,6 +228,13 @@ export function ModelAssignmentsPanel() {
           <input type="checkbox" checked={scoredOnly} onChange={e => setScoredOnly(e.target.checked)} />
           Scored models only
         </label>
+        <div style={{ display: "flex", gap: 4, marginLeft: "auto", flexWrap: "wrap" }}>
+          {Object.values(PROVIDER_BADGES).map(b => (
+            <span key={b.label} style={{ fontSize: 10, padding: "2px 6px", borderRadius: 3, background: b.bg, color: b.color, fontWeight: 600 }}>
+              {b.icon} {b.label}
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );

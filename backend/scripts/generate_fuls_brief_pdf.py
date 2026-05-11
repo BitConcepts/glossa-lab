@@ -58,6 +58,10 @@ styles["h3"] = ParagraphStyle(
     "h3", fontName="Helvetica-Bold", fontSize=10, leading=14,
     textColor=colors.HexColor("#1e40af"), spaceBefore=4, spaceAfter=2,
 )
+styles["cell_white"] = ParagraphStyle(
+    "cell_white", fontName="Helvetica-Bold", fontSize=7.5, leading=11,
+    textColor=colors.white,
+)
 
 story = []
 
@@ -84,7 +88,7 @@ def _flush_table(story, rows, styles):
         return
     col_count = max(len(r) for r in rows)
     rows = [r + [""] * (col_count - len(r)) for r in rows]
-    header = [Paragraph(f"<b>{_safe(c)}</b>", styles["cell"]) for c in rows[0]]
+    header = [Paragraph(f"<b>{_safe(c)}</b>", styles["cell_white"]) for c in rows[0]]
     body = [[Paragraph(_safe(c), styles["cell"]) for c in r] for r in rows[1:]]
     from reportlab.lib.units import cm as _cm  # noqa: PLC0415
     from reportlab.lib.pagesizes import A4 as _A4  # noqa: PLC0415

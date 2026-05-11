@@ -14,6 +14,20 @@ const PROVIDER_BADGES: Record<string, { icon: string; label: string; bg: string;
   huggingface:  { icon: "🤗", label: "HuggingFace",  bg: "#fce7f3", color: "#9d174d" },
 };
 
+/** Detect effective provider type, using URL heuristic to catch Ollama
+ *  instances that were registered under the wrong type. */
+function effectiveType(providerType: string, baseUrl: string): string {
+  if (providerType === "ollama") return "ollama";
+  if (providerType === "huggingface") return "huggingface";
+  // Heuristic: if the URL looks like a local Ollama instance, use ollama badge
+  if (
+    baseUrl?.includes(":11434") ||
+    baseUrl?.toLowerCase().includes("ollama")
+  ) return "ollama";
+  if (providerType === "byoe") return "byoe";
+  return providerType; // cloud, etc.
+}
+
 const BUCKET_META: Record<string, { label: string; icon: string; desc: string }> = {
   reasoning:      { label: "Reasoning",      icon: "🧠", desc: "Decipher, hypotheses, experiment planning, discovery classification" },
   conversational: { label: "Conversational", icon: "💬", desc: "Chat, synthesis, general Q&A" },
@@ -34,12 +48,23 @@ export function ModelAssignmentsPanel() {
   const [scoredOnly, setScoredOnly] = useState(false);
   const [profile, setProfile] = useState<AutoConfigProfile>("mixed");
 
-  const allModels: { providerId: string; providerName: string; model: string; providerType: string }[] = [];
+  const allModels: { providerId: string; providerName: string; model: string; providerType: string; baseUrl: string }[] = [];
   for (const p of providers) {
     for (const m of (p.available_models || [])) {
-      allModels.push({ providerId: p.id, providerName: p.name, model: m, providerType: p.provider_type });
+      allModels.push({
+        providerId: p.id, providerName: p.name, model: m,
+        providerType: effectiveType(p.provider_type, p.base_url),
+        baseUrl: p.base_url,
+      });
     }
   }
+
+  /** Filter models shown in selectors based on the active profile. */
+  const filteredModels = allModels.filter(m => {
+    if (profile === "cloud") return m.providerType === "cloud";
+    if (profile === "local") return m.providerType === "ollama" || m.providerType === "byoe";
+    return true; // mixed: show all
+  });
 
   const refresh = async () => {
     setLoading(true);
@@ -107,6 +132,26 @@ export function ModelAssignmentsPanel() {
     setConfiguring(false);
   };
 
+  const handleSwap = async (bucket: Bucket) => {
+    const primary = getAssignment(bucket, "primary");
+    const fallback = getAssignment(bucket, "fallback");
+    if (!primary && !fallback) return;
+    setSaving(s => ({ ...s, [`${bucket}_swap`]: true }));
+    try {
+      await setModelAssignment(bucket, {
+        primary_provider_id:  fallback?.provider_registry_id || "",
+        primary_model:        fallback?.model || "",
+        fallback_provider_id: primary?.provider_registry_id || "",
+        fallback_model:       primary?.model || "",
+      } as never);
+      await refresh();
+      toast(`${bucket} primary ↔ fallback swapped`, "success");
+    } catch (e: unknown) {
+      toast(e instanceof Error ? e.message : "Swap failed", "error");
+    }
+    setSaving(s => ({ ...s, [`${bucket}_swap`]: false }));
+  };
+
   const handleSync = async () => {
     setSyncing(true);
     try {
@@ -149,7 +194,7 @@ export function ModelAssignmentsPanel() {
           style={{ flex: 1, minWidth: 0, fontSize: 12, padding: "4px 6px", borderRadius: 4, border: "1px solid #d1d5db", background: isSaving ? "#f3f4f6" : "#fff", textOverflow: "ellipsis" }}
         >
           <option value="">— not set —</option>
-          {allModels
+          {filteredModels
             .map(m => {
               const sc = getScoreForModel(m.model);
               const scoreKey = bucket === "conversational" ? "conversational_score" : bucket === "longform" ? "longform_score" : "reasoning_score";
@@ -179,12 +224,15 @@ export function ModelAssignmentsPanel() {
           <button onClick={handleSync} disabled={syncing} style={{ padding: "4px 10px", fontSize: 11, border: "1px solid #d1d5db", borderRadius: 4, cursor: "pointer", background: "#fff" }}>
             {syncing ? "Syncing..." : "🔄 Sync Scores"}
           </button>
-          <select value={profile} onChange={e => setProfile(e.target.value as AutoConfigProfile)}
-            style={{ fontSize: 11, padding: "3px 4px", borderRadius: 4, border: "1px solid #d1d5db", background: "#fff" }}>
-            <option value="mixed">🔀 Mixed</option>
-            <option value="cloud">☁️ Cloud</option>
-            <option value="local">🖥️ Local</option>
-          </select>
+          <div style={{ display: "flex", alignItems: "center", gap: 2 }}>
+            <span style={{ fontSize: 10, color: "#9ca3af", flexShrink: 0 }}>Filter:</span>
+            <select value={profile} onChange={e => setProfile(e.target.value as AutoConfigProfile)}
+              style={{ fontSize: 11, padding: "3px 4px", borderRadius: 4, border: "1px solid #d1d5db", background: "#fff" }}>
+              <option value="mixed">🔀 All</option>
+              <option value="cloud">☁️ Cloud only</option>
+              <option value="local">🖥️ Local only</option>
+            </select>
+          </div>
           <button onClick={handleAutoConfig} disabled={configuring} style={{ padding: "4px 10px", fontSize: 11, border: "none", borderRadius: 4, cursor: "pointer", background: "#7c3aed", color: "#fff", fontWeight: 600 }}>
             {configuring ? "Configuring..." : "✨ Auto-Configure"}
           </button>
@@ -202,14 +250,25 @@ export function ModelAssignmentsPanel() {
       <div style={{ display: "grid", gap: 10, gridTemplateColumns: "1fr 1fr", minWidth: 0 }}>
         {(["reasoning", "conversational", "longform", "global"] as Bucket[]).map(bucket => {
           const meta = BUCKET_META[bucket];
+          const isSwapping = saving[`${bucket}_swap`];
+          const hasBoth = !!getAssignment(bucket, "primary") && !!getAssignment(bucket, "fallback");
           return (
             <div key={bucket} style={{ border: "1px solid #e5e7eb", borderRadius: 6, padding: 12, background: "#fafafa", minWidth: 0, overflow: "hidden" }}>
               <div style={{ display: "flex", gap: 6, alignItems: "center", marginBottom: 8 }}>
                 <span style={{ fontSize: 16 }}>{meta.icon}</span>
-                <div>
+                <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ fontWeight: 700, fontSize: 13 }}>{meta.label}</div>
                   <div style={{ fontSize: 10, color: "#6b7280" }}>{meta.desc}</div>
                 </div>
+                {hasBoth && (
+                  <button
+                    onClick={() => handleSwap(bucket)}
+                    disabled={isSwapping}
+                    title="Swap primary ↔ fallback"
+                    style={{ padding: "2px 6px", fontSize: 11, border: "1px solid #d1d5db", borderRadius: 3, cursor: isSwapping ? "wait" : "pointer", background: "#fff", color: "#6b7280", flexShrink: 0 }}>
+                    {isSwapping ? "…" : "⇅"}
+                  </button>
+                )}
               </div>
               {renderSelector(bucket, "primary")}
               {renderSelector(bucket, "fallback")}

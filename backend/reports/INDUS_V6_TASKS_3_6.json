@@ -1,0 +1,692 @@
+{
+  "title": "V6 Tasks 3-6: Corpus/Bayesian/Iconography/Mesopotamian",
+  "timestamp": "2026-05-11T09:55:25.893386+00:00",
+  "task3_corpus": {
+    "status": "PARTIAL \u2014 ICIT requires administrator access",
+    "available_corpora": {
+      "holdat_llc": {
+        "seals": 1670,
+        "source": "GitHub holdatllc/Indus-scripts-deciphering",
+        "sign_system": "Mahadevan"
+      },
+      "cisi_mayig": {
+        "inscriptions": 179,
+        "source": "GitHub mayig/indus-valley-script-corpus",
+        "sign_system": "Parpola"
+      }
+    },
+    "needed_corpora": {
+      "fuls_icit": {
+        "inscriptions": "~4,537 artefacts, 5,509 texts, 19,616 sign tokens",
+        "access": "Email andreas.fuls@tu-berlin.de for database access",
+        "url": "https://www.epigraphica.de/indus/menueindus.htm",
+        "note": "Not freely downloadable. Requires registration."
+      },
+      "cisid_project": {
+        "status": "In development by Ameri, Jamison, Kenoyer, Uesugi",
+        "expected": "Post-2025 (final CISI volume by Parpola publishing 2025)",
+        "note": "Will be the definitive digital corpus"
+      }
+    },
+    "action": "Email sent request pattern: contact andreas.fuls@tu-berlin.de for ICIT guest access"
+  },
+  "task4_bayesian": {
+    "n_iterations": 2000,
+    "n_assigned": 42,
+    "best_score": 867.2000000001286,
+    "score_progression": [
+      867.2000000001286,
+      867.2000000001286,
+      867.2000000001286,
+      867.2000000001286,
+      867.2000000001286
+    ]
+  },
+  "task5_iconography": {
+    "elephant": {
+      "n_seals": 200,
+      "n_tokens": 859,
+      "enriched_signs": [
+        {
+          "sign": "M045",
+          "count_in_icon": 24,
+          "total_freq": 24,
+          "lift": 8.15,
+          "pct_of_icon": 0.028
+        },
+        {
+          "sign": "M016",
+          "count_in_icon": 23,
+          "total_freq": 23,
+          "lift": 8.15,
+          "pct_of_icon": 0.027
+        },
+        {
+          "sign": "M039",
+          "count_in_icon": 18,
+          "total_freq": 18,
+          "lift": 8.15,
+          "pct_of_icon": 0.021
+        },
+        {
+          "sign": "M069",
+          "count_in_icon": 5,
+          "total_freq": 16,
+          "lift": 2.55,
+          "pct_of_icon": 0.006
+        },
+        {
+          "sign": "M010",
+          "count_in_icon": 4,
+          "total_freq": 17,
+          "lift": 1.92,
+          "pct_of_icon": 0.005
+        },
+        {
+          "sign": "M020",
+          "count_in_icon": 4,
+          "total_freq": 18,
+          "lift": 1.81,
+          "pct_of_icon": 0.005
+        },
+        {
+          "sign": "M162",
+          "count_in_icon": 33,
+          "total_freq": 205,
+          "lift": 1.31,
+          "pct_of_icon": 0.038
+        }
+      ]
+    },
+    "geometric": {
+      "n_seals": 93,
+      "n_tokens": 397,
+      "enriched_signs": [
+        {
+          "sign": "M155",
+          "count_in_icon": 3,
+          "total_freq": 5,
+          "lift": 10.58,
+          "pct_of_icon": 0.008
+        },
+        {
+          "sign": "M023",
+          "count_in_icon": 4,
+          "total_freq": 16,
+          "lift": 4.41,
+          "pct_of_icon": 0.01
+        },
+        {
+          "sign": "M020",
+          "count_in_icon": 4,
+          "total_freq": 18,
+          "lift": 3.92,
+          "pct_of_icon": 0.01
+        },
+        {
+          "sign": "M014",
+          "count_in_icon": 3,
+          "total_freq": 17,
+          "lift": 3.11,
+          "pct_of_icon": 0.008
+        },
+        {
+          "sign": "M367",
+          "count_in_icon": 16,
+          "total_freq": 190,
+          "lift": 1.49,
+          "pct_of_icon": 0.04
+        },
+        {
+          "sign": "M233",
+          "count_in_icon": 14,
+          "total_freq": 171,
+          "lift": 1.44,
+          "pct_of_icon": 0.035
+        },
+        {
+          "sign": "M051",
+          "count_in_icon": 13,
+          "total_freq": 163,
+          "lift": 1.41,
+          "pct_of_icon": 0.033
+        },
+        {
+          "sign": "M099",
+          "count_in_icon": 29,
+          "total_freq": 389,
+          "lift": 1.31,
+          "pct_of_icon": 0.073
+        },
+        {
+          "sign": "M336",
+          "count_in_icon": 12,
+          "total_freq": 161,
+          "lift": 1.31,
+          "pct_of_icon": 0.03
+        }
+      ]
+    },
+    "script only": {
+      "n_seals": 138,
+      "n_tokens": 572,
+      "enriched_signs": [
+        {
+          "sign": "M102",
+          "count_in_icon": 4,
+          "total_freq": 8,
+          "lift": 6.12,
+          "pct_of_icon": 0.007
+        },
+        {
+          "sign": "M066",
+          "count_in_icon": 6,
+          "total_freq": 16,
+          "lift": 4.59,
+          "pct_of_icon": 0.01
+        },
+        {
+          "sign": "M050",
+          "count_in_icon": 6,
+          "total_freq": 17,
+          "lift": 4.32,
+          "pct_of_icon": 0.01
+        },
+        {
+          "sign": "M019",
+          "count_in_icon": 4,
+          "total_freq": 20,
+          "lift": 2.45,
+          "pct_of_icon": 0.007
+        },
+        {
+          "sign": "M008",
+          "count_in_icon": 4,
+          "total_freq": 22,
+          "lift": 2.23,
+          "pct_of_icon": 0.007
+        },
+        {
+          "sign": "M022",
+          "count_in_icon": 4,
+          "total_freq": 22,
+          "lift": 2.23,
+          "pct_of_icon": 0.007
+        },
+        {
+          "sign": "M013",
+          "count_in_icon": 4,
+          "total_freq": 23,
+          "lift": 2.13,
+          "pct_of_icon": 0.007
+        },
+        {
+          "sign": "M220",
+          "count_in_icon": 8,
+          "total_freq": 62,
+          "lift": 1.58,
+          "pct_of_icon": 0.014
+        }
+      ]
+    },
+    "zebu bull": {
+      "n_seals": 347,
+      "n_tokens": 1414,
+      "enriched_signs": [
+        {
+          "sign": "M062",
+          "count_in_icon": 28,
+          "total_freq": 28,
+          "lift": 4.95,
+          "pct_of_icon": 0.02
+        },
+        {
+          "sign": "M073",
+          "count_in_icon": 25,
+          "total_freq": 25,
+          "lift": 4.95,
+          "pct_of_icon": 0.018
+        },
+        {
+          "sign": "M057",
+          "count_in_icon": 18,
+          "total_freq": 18,
+          "lift": 4.95,
+          "pct_of_icon": 0.013
+        },
+        {
+          "sign": "M077",
+          "count_in_icon": 9,
+          "total_freq": 18,
+          "lift": 2.48,
+          "pct_of_icon": 0.006
+        },
+        {
+          "sign": "M003",
+          "count_in_icon": 7,
+          "total_freq": 19,
+          "lift": 1.82,
+          "pct_of_icon": 0.005
+        },
+        {
+          "sign": "M056",
+          "count_in_icon": 7,
+          "total_freq": 19,
+          "lift": 1.82,
+          "pct_of_icon": 0.005
+        },
+        {
+          "sign": "M030",
+          "count_in_icon": 6,
+          "total_freq": 18,
+          "lift": 1.65,
+          "pct_of_icon": 0.004
+        },
+        {
+          "sign": "M305",
+          "count_in_icon": 23,
+          "total_freq": 83,
+          "lift": 1.37,
+          "pct_of_icon": 0.016
+        },
+        {
+          "sign": "M089",
+          "count_in_icon": 45,
+          "total_freq": 171,
+          "lift": 1.3,
+          "pct_of_icon": 0.032
+        }
+      ]
+    },
+    "unicorn": {
+      "n_seals": 514,
+      "n_tokens": 2143,
+      "enriched_signs": [
+        {
+          "sign": "M071",
+          "count_in_icon": 11,
+          "total_freq": 16,
+          "lift": 2.25,
+          "pct_of_icon": 0.005
+        },
+        {
+          "sign": "M078",
+          "count_in_icon": 10,
+          "total_freq": 17,
+          "lift": 1.92,
+          "pct_of_icon": 0.005
+        },
+        {
+          "sign": "M004",
+          "count_in_icon": 9,
+          "total_freq": 17,
+          "lift": 1.73,
+          "pct_of_icon": 0.004
+        },
+        {
+          "sign": "M058",
+          "count_in_icon": 10,
+          "total_freq": 21,
+          "lift": 1.56,
+          "pct_of_icon": 0.005
+        },
+        {
+          "sign": "M014",
+          "count_in_icon": 8,
+          "total_freq": 17,
+          "lift": 1.54,
+          "pct_of_icon": 0.004
+        },
+        {
+          "sign": "M059",
+          "count_in_icon": 101,
+          "total_freq": 222,
+          "lift": 1.49,
+          "pct_of_icon": 0.047
+        },
+        {
+          "sign": "M079",
+          "count_in_icon": 10,
+          "total_freq": 24,
+          "lift": 1.36,
+          "pct_of_icon": 0.005
+        }
+      ]
+    },
+    "rhinoceros": {
+      "n_seals": 170,
+      "n_tokens": 726,
+      "enriched_signs": [
+        {
+          "sign": "M060",
+          "count_in_icon": 20,
+          "total_freq": 20,
+          "lift": 9.64,
+          "pct_of_icon": 0.028
+        },
+        {
+          "sign": "M067",
+          "count_in_icon": 15,
+          "total_freq": 15,
+          "lift": 9.64,
+          "pct_of_icon": 0.021
+        },
+        {
+          "sign": "M068",
+          "count_in_icon": 13,
+          "total_freq": 13,
+          "lift": 9.64,
+          "pct_of_icon": 0.018
+        },
+        {
+          "sign": "M350",
+          "count_in_icon": 3,
+          "total_freq": 5,
+          "lift": 5.79,
+          "pct_of_icon": 0.004
+        },
+        {
+          "sign": "M005",
+          "count_in_icon": 5,
+          "total_freq": 15,
+          "lift": 3.21,
+          "pct_of_icon": 0.007
+        },
+        {
+          "sign": "M006",
+          "count_in_icon": 4,
+          "total_freq": 15,
+          "lift": 2.57,
+          "pct_of_icon": 0.006
+        },
+        {
+          "sign": "M021",
+          "count_in_icon": 3,
+          "total_freq": 16,
+          "lift": 1.81,
+          "pct_of_icon": 0.004
+        },
+        {
+          "sign": "M034",
+          "count_in_icon": 3,
+          "total_freq": 17,
+          "lift": 1.7,
+          "pct_of_icon": 0.004
+        },
+        {
+          "sign": "M249",
+          "count_in_icon": 11,
+          "total_freq": 73,
+          "lift": 1.45,
+          "pct_of_icon": 0.015
+        },
+        {
+          "sign": "M051",
+          "count_in_icon": 24,
+          "total_freq": 163,
+          "lift": 1.42,
+          "pct_of_icon": 0.033
+        }
+      ]
+    },
+    "tiger": {
+      "n_seals": 72,
+      "n_tokens": 323,
+      "enriched_signs": [
+        {
+          "sign": "M006",
+          "count_in_icon": 4,
+          "total_freq": 15,
+          "lift": 5.78,
+          "pct_of_icon": 0.012
+        },
+        {
+          "sign": "M080",
+          "count_in_icon": 3,
+          "total_freq": 19,
+          "lift": 3.42,
+          "pct_of_icon": 0.009
+        },
+        {
+          "sign": "M065",
+          "count_in_icon": 12,
+          "total_freq": 154,
+          "lift": 1.69,
+          "pct_of_icon": 0.037
+        },
+        {
+          "sign": "M211",
+          "count_in_icon": 19,
+          "total_freq": 249,
+          "lift": 1.65,
+          "pct_of_icon": 0.059
+        },
+        {
+          "sign": "M391",
+          "count_in_icon": 13,
+          "total_freq": 193,
+          "lift": 1.46,
+          "pct_of_icon": 0.04
+        },
+        {
+          "sign": "M220",
+          "count_in_icon": 4,
+          "total_freq": 62,
+          "lift": 1.4,
+          "pct_of_icon": 0.012
+        }
+      ]
+    },
+    "buffalo": {
+      "n_seals": 72,
+      "n_tokens": 292,
+      "enriched_signs": [
+        {
+          "sign": "M075",
+          "count_in_icon": 3,
+          "total_freq": 14,
+          "lift": 5.14,
+          "pct_of_icon": 0.01
+        },
+        {
+          "sign": "M011",
+          "count_in_icon": 3,
+          "total_freq": 15,
+          "lift": 4.8,
+          "pct_of_icon": 0.01
+        },
+        {
+          "sign": "M023",
+          "count_in_icon": 3,
+          "total_freq": 16,
+          "lift": 4.5,
+          "pct_of_icon": 0.01
+        },
+        {
+          "sign": "M031",
+          "count_in_icon": 3,
+          "total_freq": 16,
+          "lift": 4.5,
+          "pct_of_icon": 0.01
+        },
+        {
+          "sign": "M061",
+          "count_in_icon": 4,
+          "total_freq": 22,
+          "lift": 4.36,
+          "pct_of_icon": 0.014
+        },
+        {
+          "sign": "M053",
+          "count_in_icon": 3,
+          "total_freq": 19,
+          "lift": 3.79,
+          "pct_of_icon": 0.01
+        },
+        {
+          "sign": "M013",
+          "count_in_icon": 3,
+          "total_freq": 23,
+          "lift": 3.13,
+          "pct_of_icon": 0.01
+        },
+        {
+          "sign": "M249",
+          "count_in_icon": 6,
+          "total_freq": 73,
+          "lift": 1.97,
+          "pct_of_icon": 0.021
+        },
+        {
+          "sign": "M065",
+          "count_in_icon": 12,
+          "total_freq": 154,
+          "lift": 1.87,
+          "pct_of_icon": 0.041
+        },
+        {
+          "sign": "M125",
+          "count_in_icon": 8,
+          "total_freq": 132,
+          "lift": 1.45,
+          "pct_of_icon": 0.027
+        },
+        {
+          "sign": "M233",
+          "count_in_icon": 10,
+          "total_freq": 171,
+          "lift": 1.4,
+          "pct_of_icon": 0.034
+        }
+      ]
+    },
+    "gharial": {
+      "n_seals": 64,
+      "n_tokens": 276,
+      "enriched_signs": [
+        {
+          "sign": "M063",
+          "count_in_icon": 3,
+          "total_freq": 18,
+          "lift": 4.23,
+          "pct_of_icon": 0.011
+        },
+        {
+          "sign": "M013",
+          "count_in_icon": 3,
+          "total_freq": 23,
+          "lift": 3.31,
+          "pct_of_icon": 0.011
+        },
+        {
+          "sign": "M220",
+          "count_in_icon": 7,
+          "total_freq": 62,
+          "lift": 2.86,
+          "pct_of_icon": 0.025
+        },
+        {
+          "sign": "M012",
+          "count_in_icon": 10,
+          "total_freq": 143,
+          "lift": 1.77,
+          "pct_of_icon": 0.036
+        },
+        {
+          "sign": "M249",
+          "count_in_icon": 4,
+          "total_freq": 73,
+          "lift": 1.39,
+          "pct_of_icon": 0.014
+        }
+      ]
+    }
+  },
+  "task6_mesopotamian": {
+    "key_evidence": [
+      {
+        "artifact": "Shu-ilishu cylinder seal",
+        "text": "Shu-Ilishu EME.BAL.ME.LUH.HA.KI (interpreter of Meluhha language)",
+        "date": "ca. 2200-2113 BCE (Late Akkadian/Ur III)",
+        "location": "Louvre AO 22310",
+        "significance": "Proves existence of Meluhhan interpreters in Mesopotamia. Implies literacy in both scripts. Bilingual tablets may exist.",
+        "source": "Possehl 2006, Collection de Clercq"
+      },
+      {
+        "artifact": "BIN VIII 298 tablet",
+        "text": "Reference to 'holder (li-dab\u2085) of a Meluhha ship'",
+        "date": "ca. 2200 BCE (Late Sargonic)",
+        "significance": "Documents physical Meluhhan maritime presence at Akkad"
+      },
+      {
+        "name": "Lu-sunzida",
+        "meaning": "Man of the just buffalo cow (Sumerian translation of Indian name)",
+        "text": "Akkadian text: Lu-sunzida 'a man of Meluhha' paid 10 shekels of silver",
+        "significance": "Sumerian rendering of an Indian personal name \u2014 potential phonetic clue. 'Buffalo cow' = erumai in Tamil/Dravidian. Could map to sign for bovine."
+      },
+      {
+        "name": "Meluhhan village at Lagash",
+        "text": "References to 'Meluhha village' near Girsu/Gu'abba",
+        "date": "Ur III period (22nd-21st cent. BCE)",
+        "significance": "Entire settlement of Indus traders with Sumerian-adapted names. Personal names are translations, not transliterations."
+      },
+      {
+        "name": "Naram-Sin inscription",
+        "text": "Lists '..ibra, man of Meluhha' among rebel kings",
+        "date": "2254-2218 BCE",
+        "significance": "Personal name fragment '-ibra' could encode Dravidian morpheme"
+      }
+    ],
+    "known_meluhhan_personal_names": [
+      {
+        "name": "Shu-ilishu",
+        "type": "Akkadian name of Meluhha interpreter"
+      },
+      {
+        "name": "Lu-sunzida",
+        "type": "Sumerian translation: 'Man of just buffalo cow'",
+        "dravidian_candidate": "erumai-n\u012bti-\u0101\u1e37?"
+      },
+      {
+        "name": "Ur-Meluhha",
+        "type": "patronymic: 'Son of Meluhha'"
+      },
+      {
+        "name": "Nin-ana-Meluhha",
+        "type": "female name associated with Meluhha village"
+      },
+      {
+        "name": "..ibra",
+        "type": "fragment from Naram-Sin inscription"
+      }
+    ],
+    "gulf_type_round_seals": {
+      "count": "~40 Harappan-type seals found in Mesopotamia/Gulf",
+      "key_finding": "Round seals from Gulf have NON-STANDARD sign sequences (unlike standard Mohenjo-daro patterns). Hunter 1932 noted: square seals show normal Indian sequences, circular seals show different language \u2014 likely Sumerian/Akkadian names written in Indus script.",
+      "implication": "If round seals encode Akkadian names in Indus signs, cross-referencing with known Akkadian personal name lists could yield phonetic values for specific signs."
+    },
+    "phonetic_clues": [
+      {
+        "word": "Meluhha / me-lu\u1e2b-\u1e2ba",
+        "dravidian": "mel-akam ('high abode/country') per Parpola",
+        "note": "Self-designation preserved in cuneiform"
+      },
+      {
+        "word": "sesame oil = illu (Sumerian) / ellu (Akkadian)",
+        "dravidian": "e\u1e37 / e\u1e37\u1e37u (Dravidian for sesame)",
+        "note": "Loanword from Meluhhan into Sumerian, confirming Dravidian substrate"
+      },
+      {
+        "word": "Lu-sunzida = 'Man of just buffalo cow'",
+        "dravidian": "erumai (buffalo) + n\u012bti (justice) + \u0101\u1e37 (person)",
+        "note": "If this is a translated Dravidian name, the Indus sign for bovine should map to erumai/erut"
+      }
+    ],
+    "action_items": [
+      "Cross-reference Gulf round seals (20+ with non-standard sequences) against Akkadian personal name patterns",
+      "Search CDLI/ORACC for all 'Meluhha' attestations with personal names (76 instances of me-lu\u1e2b-\u1e2ba in EPSD2)",
+      "Map sesame/illu loanword pattern to identify other Dravidian loanwords in Sumerian/Akkadian",
+      "Attempt phonetic mapping of '-ibra' fragment against Dravidian morphemes"
+    ]
+  }
+}

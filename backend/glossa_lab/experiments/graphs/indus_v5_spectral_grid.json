@@ -1,0 +1,96 @@
+{
+  "id": "indus_v5_spectral_grid",
+  "name": "Indus V5 \u2014 Spectral Syllabic Grid",
+  "description": "Spectral clustering (normalized Laplacian) on co-substitution matrix of 151 frequent signs from 1,670 Holdat corpus seals. Tests for consonant\u00d7vowel grid structure. Result: 10 clusters with positional specialization (Initial/Medial/Terminal) rather than C\u00d7V.",
+  "auto_migrated": false,
+  "nodes": [
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "HoldatCorpusLoader",
+        "label": "Load Holdat 1670",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 200
+      }
+    },
+    {
+      "id": "cosub",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CoSubstitutionMatrix",
+        "label": "Co-sub matrix (bigram contexts)",
+        "params": {
+          "freq_threshold": 5
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 200
+      }
+    },
+    {
+      "id": "spectral",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SpectralClustering",
+        "label": "Spectral clustering (k=4..10)",
+        "params": {
+          "k_range": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            10
+          ]
+        }
+      },
+      "position": {
+        "x": 660,
+        "y": 200
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save spectral grid",
+        "params": {
+          "filename": "INDUS_V5_SPECTRAL_GRID.json"
+        }
+      },
+      "position": {
+        "x": 960,
+        "y": 200
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "load",
+      "target": "cosub",
+      "sourcePort": "corpus",
+      "targetPort": "corpus"
+    },
+    {
+      "id": "e2",
+      "source": "cosub",
+      "target": "spectral",
+      "sourcePort": "matrix",
+      "targetPort": "matrix"
+    },
+    {
+      "id": "e3",
+      "source": "spectral",
+      "target": "out",
+      "sourcePort": "grid",
+      "targetPort": "data"
+    }
+  ]
+}

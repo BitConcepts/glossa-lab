@@ -1,0 +1,89 @@
+{
+  "id": "indus_v5_anchor_validation",
+  "name": "Indus V5 \u2014 Anchor Validation (SNR test)",
+  "description": "Decode top-50 longest inscriptions with 12 anchors. Scrambled control: randomly select 12 different signs as fake anchors across 100 trials. Real decode=57.1%, scrambled=11.3%\u00b15.7%, SNR=8.02.",
+  "auto_migrated": false,
+  "nodes": [
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "HoldatCorpusLoader",
+        "label": "Load Holdat 1670",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 200
+      }
+    },
+    {
+      "id": "decode",
+      "type": "expNode",
+      "data": {
+        "atomicId": "AnchorDecoder",
+        "label": "Decode with 12 anchors",
+        "params": {
+          "n_longest": 50
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 200
+      }
+    },
+    {
+      "id": "control",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ScrambledControl",
+        "label": "Scrambled control (100 trials)",
+        "params": {
+          "n_trials": 100
+        }
+      },
+      "position": {
+        "x": 660,
+        "y": 200
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save validation",
+        "params": {
+          "filename": "INDUS_V5_PHASES_1_3.json"
+        }
+      },
+      "position": {
+        "x": 960,
+        "y": 200
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "load",
+      "target": "decode",
+      "sourcePort": "corpus",
+      "targetPort": "corpus"
+    },
+    {
+      "id": "e2",
+      "source": "decode",
+      "target": "control",
+      "sourcePort": "results",
+      "targetPort": "real_results"
+    },
+    {
+      "id": "e3",
+      "source": "control",
+      "target": "out",
+      "sourcePort": "validation",
+      "targetPort": "data"
+    }
+  ]
+}

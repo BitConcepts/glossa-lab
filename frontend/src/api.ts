@@ -1687,6 +1687,33 @@ export const regenerateDashboardInsight = (
   return request("POST", `/dashboard/insight${s ? "?" + s : ""}`);
 };
 
+// ── Decipherment progress ────────────────────────────────────────────
+
+export interface DeciphermentRound {
+  round: number;
+  version: string;
+  level: string;
+  weighted_pct: number;
+  signs_assigned: number;
+  signs_total: number;
+  token_coverage: number;
+  fully_decoded_pct: number;
+  tamil_brahmi_corr: number;
+  remaining: string[];
+}
+
+export interface DeciphermentProgress {
+  available: boolean;
+  anchors: { total: number; by_confidence?: Record<string, number> };
+  progression: DeciphermentRound[];
+  n_rounds: number;
+  latest_reports: Record<string, string>;
+  current_state: DeciphermentRound | null;
+}
+
+export const getDashboardDecipherment = (): Promise<DeciphermentProgress> =>
+  request("GET", "/dashboard/decipherment");
+
 // ── AI profile suggestions ───────────────────────────────────────────
 
 export interface AIProfileSuggestion {

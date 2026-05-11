@@ -42,6 +42,7 @@ import {
 import { useAIChat } from "../hooks/useAIChat";
 import { useProject } from "../hooks/useProject";
 import { useToast } from "../hooks/useToast";
+import { DeciphermentPanel } from "./DeciphermentPanel";
 
 // ── Insight persistence ──────────────────────────────────────────────────
 // Insights are expensive to regenerate (LLM call). We cache the last result
@@ -756,7 +757,14 @@ export function DashboardView() {
               }}>
                 {MINE_LIMIT_OPTIONS.map((n) => (
                   <button key={n} onClick={() => {
-                    setMineLimit(n); setMineDropOpen(false); void onRunMine();
+                    setMineLimit(n); setMineDropOpen(false);
+                    // Run with the selected value directly — don't rely on
+                    // stale mineLimit state which hasn't re-rendered yet.
+                    setRunning("mine");
+                    startDiscoveryMine({ limit: n })
+                      .then(() => toast(`Mine started · classifying up to ${n} items`, "info"))
+                      .catch((e: unknown) => toast(e instanceof Error ? e.message : "Mine failed", "error"))
+                      .finally(() => { setRunning(""); void refresh(); });
                   }} style={{
                     display: "block", width: "100%", padding: "7px 14px",
                     border: "none", background: n === mineLimit ? "#f5f3ff" : "#fff",
@@ -795,6 +803,9 @@ export function DashboardView() {
           borderRadius: 7, padding: "10px 14px", fontSize: 13, color: "#b91c1c",
           marginBottom: 12 }}>{error}</div>
       )}
+
+      {/* Decipherment Progress Panel */}
+      <DeciphermentPanel />
 
       {/* Two-column main: AI insight (left) + RSS feed (right) */}
       <div style={{ display: "grid", gap: 14, marginBottom: 16,
@@ -937,12 +948,12 @@ export function DashboardView() {
                             return (
                               <button
                                 onClick={() => {
-                                  // Deep-link: open the experiment in the builder.
+                                  // Deep-link: open the experiment results (not the graph editor).
                                   localStorage.setItem(
                                     "glossa_exp_builder_open",
-                                    JSON.stringify({ action: "load", id: eid }),
+                                    JSON.stringify({ action: "load", id: eid, tab: "results" }),
                                   );
-                                  navigate("exp-builder");
+                                  navigate("experiments");
                                 }}
                                 title={`${res.completed}/${res.nodeCount} nodes completed${res.errors ? `, ${res.errors} errors` : ""} — click to open in builder`}
                                 style={{

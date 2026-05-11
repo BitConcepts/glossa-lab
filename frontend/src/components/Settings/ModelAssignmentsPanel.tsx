@@ -22,6 +22,7 @@ export function ModelAssignmentsPanel() {
   const [saving, setSaving] = useState<Record<string, boolean>>({});
   const [syncing, setSyncing] = useState(false);
   const [configuring, setConfiguring] = useState(false);
+  const [scoredOnly, setScoredOnly] = useState(false);
 
   const allModels: { providerId: string; providerName: string; model: string }[] = [];
   for (const p of providers) {
@@ -59,9 +60,17 @@ export function ModelAssignmentsPanel() {
     setSaving(s => ({ ...s, [`${bucket}_${rank}`]: true }));
     const [providerId, ...modelParts] = value.split("|");
     const model = modelParts.join("|");
-    const body: Record<string, string> = {};
-    body[`${rank}_provider_id`] = providerId || "";
-    body[`${rank}_model`] = model || "";
+    // CRITICAL: include BOTH ranks in the request so the backend doesn't
+    // clear the other rank.  Read the current assignment for the OTHER rank
+    // and echo it back unchanged.
+    const otherRank = rank === "primary" ? "fallback" : "primary";
+    const otherCurrent = getAssignment(bucket, otherRank);
+    const body: Record<string, string> = {
+      [`${rank}_provider_id`]: providerId || "",
+      [`${rank}_model`]: model || "",
+      [`${otherRank}_provider_id`]: otherCurrent?.provider_registry_id || "",
+      [`${otherRank}_model`]: otherCurrent?.model || "",
+    };
     try {
       await setModelAssignment(bucket, body as never);
       await refresh();
@@ -119,16 +128,20 @@ export function ModelAssignmentsPanel() {
           style={{ flex: 1, fontSize: 12, padding: "4px 6px", borderRadius: 4, border: "1px solid #d1d5db", background: isSaving ? "#f3f4f6" : "#fff" }}
         >
           <option value="">— not set —</option>
-          {allModels.map(m => {
-            const sc = getScoreForModel(m.model);
-            const scoreKey = bucket === "conversational" ? "conversational_score" : bucket === "longform" ? "longform_score" : "reasoning_score";
-            const scoreVal = sc ? (sc as unknown as Record<string, number>)[scoreKey] ?? 0 : 0;
-            return (
+          {allModels
+            .map(m => {
+              const sc = getScoreForModel(m.model);
+              const scoreKey = bucket === "conversational" ? "conversational_score" : bucket === "longform" ? "longform_score" : "reasoning_score";
+              const scoreVal = sc ? (sc as unknown as Record<string, number>)[scoreKey] ?? 0 : 0;
+              return { ...m, scoreVal, hasScore: !!sc };
+            })
+            .filter(m => !scoredOnly || m.hasScore)
+            .sort((a, b) => b.scoreVal - a.scoreVal)
+            .map(m => (
               <option key={`${m.providerId}|${m.model}`} value={`${m.providerId}|${m.model}`}>
-                {m.providerName} · {m.model}{scoreVal > 0 ? ` (${scoreVal.toFixed(0)})` : ""}
+                {m.scoreVal > 0 ? `★${m.scoreVal.toFixed(0)} ` : m.hasScore ? "☆0 " : ""}{m.providerName} · {m.model}
               </option>
-            );
-          })}
+            ))}
         </select>
       </div>
     );
@@ -175,11 +188,17 @@ export function ModelAssignmentsPanel() {
         })}
       </div>
 
-      {scores.length > 0 && (
-        <div style={{ marginTop: 12, fontSize: 10, color: "#9ca3af" }}>
-          📊 {scores.length} model(s) scored · Numbers in dropdowns = bucket fitness score (higher = better)
-        </div>
-      )}
+      <div style={{ marginTop: 12, display: "flex", alignItems: "center", gap: 12 }}>
+        {scores.length > 0 && (
+          <span style={{ fontSize: 10, color: "#9ca3af" }}>
+            📊 {scores.length} model(s) scored · ★ = bucket fitness score (higher = better)
+          </span>
+        )}
+        <label style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 11, color: "#6b7280", cursor: "pointer" }}>
+          <input type="checkbox" checked={scoredOnly} onChange={e => setScoredOnly(e.target.checked)} />
+          Scored models only
+        </label>
+      </div>
     </section>
   );
 }

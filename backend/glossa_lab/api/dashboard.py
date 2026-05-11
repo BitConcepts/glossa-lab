@@ -756,4 +756,77 @@ async def dashboard_feed(
     }
 
 
+@router.get("/decipherment")
+async def dashboard_decipherment() -> dict[str, Any]:
+    """Indus script decipherment progress metrics.
+
+    Returns the latest round results, anchor counts, confidence scores,
+    and progression history from all V5-V17 report files.  This powers
+    the "Decipherment Progress" panel on the dashboard.
+    """
+    import glob  # noqa: PLC0415
+    from pathlib import Path  # noqa: PLC0415
+
+    reports_dir = Path(__file__).resolve().parent.parent.parent / "reports"
+    if not reports_dir.is_dir():
+        return {"available": False, "reason": "No reports directory"}
+
+    # Load the final anchor set
+    final_path = reports_dir / "INDUS_FINAL_ANCHORS.json"
+    anchors_summary: dict[str, Any] = {"total": 0}
+    if final_path.exists():
+        try:
+            data = json.loads(final_path.read_text(encoding="utf-8"))
+            total = data.get("total", 0)
+            by_conf: dict[str, int] = {"HIGH": 0, "MEDIUM": 0, "LOW": 0}
+            for _s, info in (data.get("anchors") or {}).items():
+                c = (info.get("confidence") or "LOW").upper()
+                by_conf[c] = by_conf.get(c, 0) + 1
+            anchors_summary = {"total": total, "by_confidence": by_conf}
+        except Exception:  # noqa: BLE001
+            pass
+
+    # Collect round progression from V8-V17 reports
+    progression: list[dict[str, Any]] = []
+    round_files = sorted(reports_dir.glob("INDUS_V*_ROUND*.json"))
+    for rf in round_files:
+        try:
+            rd = json.loads(rf.read_text(encoding="utf-8"))
+            r = rd.get("round", {})
+            c = r.get("confidence", {})
+            progression.append({
+                "round": r.get("round"),
+                "version": rd.get("title", ""),
+                "level": r.get("level", ""),
+                "weighted_pct": c.get("weighted_pct", 0),
+                "signs_assigned": c.get("assigned", {}).get("total", 0),
+                "signs_total": c.get("total_signs", 390),
+                "token_coverage": c.get("token_cov", {}).get("total", 0),
+                "fully_decoded_pct": c.get("fully_decoded_pct", 0),
+                "tamil_brahmi_corr": r.get("tamil_brahmi", {}).get("correlation", 0),
+                "remaining": r.get("remaining", []),
+            })
+        except Exception:  # noqa: BLE001
+            continue
+
+    # Latest state from V5/V6/V7 reports
+    latest: dict[str, Any] = {}
+    for fn in ["INDUS_V7_FULL_PUSH.json", "INDUS_V6_PMI_ANCHORS.json", "INDUS_V5_PHASES_1_3.json"]:
+        p = reports_dir / fn
+        if p.exists():
+            try:
+                latest[fn.replace(".json", "")] = json.loads(p.read_text(encoding="utf-8")).get("timestamp", "")
+            except Exception:  # noqa: BLE001
+                pass
+
+    return {
+        "available": True,
+        "anchors": anchors_summary,
+        "progression": progression,
+        "n_rounds": len(progression),
+        "latest_reports": latest,
+        "current_state": progression[-1] if progression else None,
+    }
+
+
 __all__ = ["router"]

@@ -63,7 +63,10 @@ node_modules/
 
 # ---- Frontend ----
 frontend/node_modules/
-# frontend/dist/ intentionally tracked for deployment (server has no Node.js)
+# frontend/dist/ is intentionally TRACKED for deployment (server has no Node.js).
+# The root 'dist/' rule above would match it, so we explicitly un-ignore it:
+!frontend/dist/
+!frontend/dist/**
 frontend/build/
 frontend/.vite/
 frontend/.next/

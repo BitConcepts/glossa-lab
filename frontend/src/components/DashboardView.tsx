@@ -389,11 +389,14 @@ export function DashboardView() {
     });
   }, []);
 
-  // ── Apply: execute a structured insight action ───────────────────
-  const [applying, setApplying] = useState<string>("");
+  // ── Apply: execute a structured insight action ───────────────
+  // Tracks which actions are currently running (supports parallel execution).
+  const [applyingSet, setApplyingSet] = useState<Set<string>>(new Set());
+  const applying = applyingSet.size > 0 ? Array.from(applyingSet)[0] : ""; // compat
+  const isApplying = (key: string) => applyingSet.has(key);
   const applyAction = async (a: DashboardNextAction, key: string) => {
-    if (applying) return;
-    setApplying(key);
+    if (isApplying(key)) return; // only block the SAME action, not others
+    setApplyingSet(prev => new Set(prev).add(key));
     // Track outcome for the per-button checkmark/error indicator. Initially
     // assume success; downgrade on warning/error inside each branch.
     let outcome: ApplyResult = "success";
@@ -687,7 +690,7 @@ export function DashboardView() {
       if (outcome === "error" || outcome === "warn") {
         console.warn(`[Dashboard] action ${a.action_type} (${key}) outcome=${outcome}`);
       }
-      setApplying("");
+      setApplyingSet(prev => { const n = new Set(prev); n.delete(key); return n; });
       setApplyResult((prev) => ({ ...prev, [key]: outcome }));
       void refresh();
     }
@@ -933,11 +936,11 @@ export function DashboardView() {
                                 params: sp,
                                 rationale: im.impact,
                               }, k)}
-                              disabled={!!applying || applyResult[k] === "success"}
+                              disabled={isApplying(k) || applyResult[k] === "success"}
                               style={applyButtonStyle(applyResult[k])}
                               title={applyResultTitle(applyResult[k], at)}
                             >
-                              {renderApplyLabel(applying === k, applyResult[k], actionLabel(at))}
+                              {renderApplyLabel(isApplying(k), applyResult[k], actionLabel(at))}
                             </button>
                           )}
                           {/* Inline result highlight after experiment completes */}
@@ -998,11 +1001,11 @@ export function DashboardView() {
                             {isApplyable && (
                               <button
                                 onClick={() => void applyAction(a, k)}
-                                disabled={!!applying || applyResult[k] === "success"}
-                                style={applyButtonStyle(applyResult[k])}
-                                title={applyResultTitle(applyResult[k], a.action_type)}
-                              >
-                                {renderApplyLabel(applying === k, applyResult[k], actionLabel(a.action_type))}
+                              disabled={isApplying(k) || applyResult[k] === "success"}
+                              style={applyButtonStyle(applyResult[k])}
+                              title={applyResultTitle(applyResult[k], a.action_type)}
+                            >
+                              {renderApplyLabel(isApplying(k), applyResult[k], actionLabel(a.action_type))}
                               </button>
                             )}
                           </div>

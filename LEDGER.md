@@ -6282,3 +6282,89 @@ Risks:
 Next step:
   Wait for Fuls response. Start Phase-33 planning: syllable-level SA, ICIT corpus,
   expand TB coverage.
+
+---
+
+## Session: 2026-05-12 — Phase-32 T3/T7/T8 + Negative Controls
+
+**Session type:** Research / Experiment execution
+**Branch:** main
+
+### What was done:
+
+**Phase-32 Negative Controls (Phase A):**
+  - Created graph experiment indus_phase32_neg_controls (ShuffleControl × 2 + ZipfFitter + KLDivergence)
+  - Job 5cfbf66d165c completed in 10s
+  - Finding: Zipf exponent (0.9785) and KL divergence (0.0) UNCHANGED by shuffling
+  - Implication: Zipf-based metrics cannot distinguish real vs shuffled corpora; only positional
+    entropy and bigram transition entropy are informative negative controls
+  - Report: reports/phase32_neg_controls.json
+
+**Phase-32 T3 — Bigram Transition Matrix Comparison:**
+  - Script: backend/scripts/phase32_t3_bigram_transition.py
+  - M77: 1105 multi-sign inscriptions, 509 distinct bigrams, avg_transition_entropy=1.82
+  - TB full: 119 inscriptions, 1958 distinct bigrams, avg_transition_entropy=2.02
+  - TB length-matched (≤13): 36 inscriptions, avg_transition_entropy=2.06
+  - Verdict: MIXED — avg_transition_entropy FAVORABLE (10.9% delta < 30%); other metrics
+    confounded by inscription length (M77 mean 3.3 signs vs TB mean 37.4 aksharas)
+  - Report: reports/phase32_t3_bigram_transition.json
+
+**Phase-32 T7 — Sanskrit Falsification SA Run:**
+  - Graph experiment: indus_phase32_t7_sanskrit_falsification
+  - Job b091976aafbf, 460s runtime
+  - Sanskrit mean_consistency=0.7344, hci_count=31 vs Dravidian 0.297/4
+  - CRITICAL: Sanskrit LM is character-level (728K char tokens) vs Dravidian word-level (sparse)
+  - SA maps all signs to single characters (predominantly 'a') — not a valid linguistic comparison
+  - Verdict: INCONCLUSIVE due to granularity mismatch
+  - Phase-33 task: build Sanskrit syllable LM at same level as Dravidian (655 syllables, 2293 bigrams)
+  - Report: reports/phase32_t7_sanskrit_falsification.json
+
+**Phase-32 T8 — Permutation Null for Phase-29d Enmenanak:**
+  - Script: backend/scripts/phase32_t8_permutation_null.py
+  - 1222 PNs scored, 935 period-filtered (Ur III / Old Akkadian / ED III / Lagash II)
+  - Observed max = 5.0 (Enmenanak tied with Enheduana)
+  - p-value: 1.000 (100% of 1000 permutations achieve max ≥ 5.0)
+  - Verdict: NOT SIGNIFICANT — score consistent with random chance given common segments (an/na/me)
+  - Conservative action: Downgrade Enmenanak claim from [VERIFIED] to [INFERRED, low confidence]
+  - Caveat: Simplified scoring formula; original Phase-29d used 15-rendering × position weighting
+  - Report: reports/phase32_t8_permutation_null.json
+
+Foundation check: 27 PASS / 0 FAIL / 7 WARN (all pre-existing, no regression)
+
+### Files changed:
+  - backend/glossa_lab/experiments/graphs/indus_phase32_t7_sanskrit_falsification.json (NEW)
+  - backend/glossa_lab/experiments/graphs/indus_phase32_neg_controls.json (NEW)
+  - backend/scripts/phase32_t3_bigram_transition.py (NEW)
+  - backend/scripts/phase32_t8_permutation_null.py (NEW)
+  - reports/phase32_neg_controls.json (NEW)
+  - reports/phase32_t3_bigram_transition.json (NEW)
+  - reports/phase32_t7_sanskrit_falsification.json (NEW)
+  - reports/phase32_t8_permutation_null.json (NEW)
+  - reports/PHASE_32_ADDENDUM_2026-05-12.md (NEW)
+  - LEDGER.md (this entry)
+
+### Checks run:
+  - Foundation check: 27 PASS / 0 FAIL / 7 WARN ✓
+  - Backend health: healthy (uptime 251s at session start)
+  - Phase-32 neg controls: COMPLETED (job 5cfbf66d165c, 10s)
+  - Phase-32 T7 Sanskrit SA: COMPLETED (job b091976aafbf, 460s)
+  - Phase-32 T3 bigram: script ran successfully
+  - Phase-32 T8 permutation: script ran successfully (1000 perms)
+
+### Open TODOs (carry to next session):
+  - Phase-32 T2: Improve TB parser coverage (epub approach, target 100+/110 inscriptions)
+  - Phase-32 T7 redo: Build Sanskrit syllable LM for valid head-to-head comparison
+  - Phase-33 T1: Syllable-level SA phoneme inventory fix (syllable tokens vs word tokens)
+  - Phase-33 T2: PermutationTest graph experiment for A1-A3 validation
+  - Phase-32 T5: ICIT corpus (awaiting Dr. Fuls response)
+  - Enmenanak T8 redo with original Phase-29d scoring formula for rigorous null test
+
+### Risks:
+  - Phase-32 T4/T7 SA results remain inconclusive until phoneme granularity is standardized
+  - TB correlation 0.907 remains an approximate value (pre-existing risk)
+  - Enmenanak signal downgraded to [INFERRED, low confidence] pending rigorous null
+
+### Next steps:
+  - Phase-33: syllable inventory fix (high priority — unblocks T4/T7 re-runs)
+  - Build Sanskrit syllable LM for T7 redo
+  - Continue waiting for Dr. Fuls ICIT response

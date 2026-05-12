@@ -1,0 +1,136 @@
+{
+  "phase": "Phase-32 T8",
+  "test": "Permutation Null Model \u2014 Enmenanak / Janabiyah Inscription",
+  "observed": {
+    "n_pns_total": 1222,
+    "n_pns_period_filtered": 935,
+    "top_match": "Enheduana[1]PN",
+    "top_score_all": 5,
+    "top_score_period_filtered": 5,
+    "top5_all": [
+      {
+        "headword": "Enheduana[1]PN",
+        "pos_match": 1,
+        "free_miin": 3,
+        "score": 5,
+        "periods": [
+          "Old Akkadian",
+          "Old Babylonian"
+        ]
+      },
+      {
+        "headword": "Enmenanak[1]PN",
+        "pos_match": 1,
+        "free_miin": 3,
+        "score": 5,
+        "periods": [
+          "Old Akkadian"
+        ]
+      },
+      {
+        "headword": "Ayabaraganak[1]PN",
+        "pos_match": 1,
+        "free_miin": 2,
+        "score": 4,
+        "periods": [
+          "Early Dynastic IIIb"
+        ]
+      },
+      {
+        "headword": "Enanatuma[1]PN",
+        "pos_match": 1,
+        "free_miin": 2,
+        "score": 4,
+        "periods": [
+          "Old Babylonian"
+        ]
+      },
+      {
+        "headword": "Enanedu[1]PN",
+        "pos_match": 1,
+        "free_miin": 2,
+        "score": 4,
+        "periods": [
+          "Old Babylonian"
+        ]
+      }
+    ],
+    "top5_period": [
+      {
+        "headword": "Enheduana[1]PN",
+        "pos_match": 1,
+        "free_miin": 3,
+        "score": 5,
+        "periods": [
+          "Old Akkadian",
+          "Old Babylonian"
+        ]
+      },
+      {
+        "headword": "Enmenanak[1]PN",
+        "pos_match": 1,
+        "free_miin": 3,
+        "score": 5,
+        "periods": [
+          "Old Akkadian"
+        ]
+      },
+      {
+        "headword": "Ayabaraganak[1]PN",
+        "pos_match": 1,
+        "free_miin": 2,
+        "score": 4,
+        "periods": [
+          "Early Dynastic IIIb"
+        ]
+      },
+      {
+        "headword": "Ganana[1]PN",
+        "pos_match": 1,
+        "free_miin": 2,
+        "score": 4,
+        "periods": [
+          "Ur III"
+        ]
+      },
+      {
+        "headword": "Igianakezu[1]PN",
+        "pos_match": 1,
+        "free_miin": 2,
+        "score": 4,
+        "periods": [
+          "Ur III"
+        ]
+      }
+    ]
+  },
+  "permutation_null": {
+    "n_permutations": 1000,
+    "method": "Segment-position shuffle within each name; preserves name length and miin-compatible segment count",
+    "p_value_all_periods": 1.0,
+    "p_value_period_filtered": 1.0,
+    "mean_perm_max_all": 7.061,
+    "mean_perm_max_period": 7.009
+  },
+  "verdict_all_periods": "NOT SIGNIFICANT \u2014 max score consistent with random chance",
+  "verdict_period_filtered": "NOT SIGNIFICANT after period filter",
+  "period_filter": [
+    "Early Dynastic IIIa",
+    "Early Dynastic IIIb",
+    "Lagash II",
+    "Old Akkadian",
+    "Ur III"
+  ],
+  "janabiyah_positions": [
+    1,
+    3,
+    6
+  ],
+  "scoring_formula": "score = 2 * n_position_matches + 1 * n_free_miin",
+  "miin_criterion": "segment matches pattern: me|mi|min|men|meen|an|na",
+  "citations": [
+    "A.11",
+    "A.1"
+  ],
+  "interpretation": "The permutation test checks whether Enmenanak's top-scoring status could be explained by random positional alignment alone. A low p-value (< 0.05) supports the Phase-29d finding; a high p-value indicates the result is consistent with chance. Note: the scoring function is a simplified reconstruction of Phase-29d; results may differ from the original analysis. Period filter (Ur III / Old Akkadian) isolates the historically plausible window."
+}

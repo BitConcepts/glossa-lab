@@ -1,0 +1,86 @@
+{
+  "id": "indus_phase32_t7_sanskrit_falsification",
+  "name": "Indus Phase-32 T7 — Sanskrit Falsification (P30-E1)",
+  "description": "Phase-32 T7: SA decipherment M77 → Sanskrit LM. The identical pipeline to Phase-32 T4 (Dravidian) but with a Sanskrit target LM. If mean_consistency(Sanskrit) < mean_consistency(Dravidian 0.297) and hci_count(Sanskrit) < 4, the Dravidian hypothesis survives one head-to-head falsification round. This is a preregistered falsification experiment: the null hypothesis is H0='Sanskrit fits as well as Dravidian'. Rejection of H0 favours the Dravidian hypothesis. Citations: C.7 (Yajnadevam 2024), C.10 (S.R. Rao 1982), A.1 (M77), E.1 (DEDR).",
+  "auto_migrated": false,
+  "nodes": [
+    {
+      "id": "m77",
+      "type": "expNode",
+      "data": {
+        "atomicId": "M77InscriptionLoader",
+        "label": "Load M77 Holdat corpus (1669 inscriptions)",
+        "params": { "use_raw": false, "label": "indus_m77" }
+      },
+      "position": { "x": 60, "y": 120 }
+    },
+    {
+      "id": "lm_sk",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Sanskrit LM (Vedic corpus)",
+        "params": { "language": "sanskrit" }
+      },
+      "position": { "x": 60, "y": 320 }
+    },
+    {
+      "id": "sa",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA M77 → Sanskrit LM (5 seeds × 10000 iters)",
+        "params": {
+          "n_seeds": 5,
+          "max_iterations": 10000,
+          "restarts": 8,
+          "surjective": true,
+          "ocp_weight": 0.0
+        }
+      },
+      "position": { "x": 480, "y": 220 }
+    },
+    {
+      "id": "cons",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConsistencyScorer",
+        "label": "Per-sign consistency (Sanskrit)",
+        "params": {}
+      },
+      "position": { "x": 840, "y": 220 }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Collect T7 results",
+        "params": {}
+      },
+      "position": { "x": 1100, "y": 220 }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Phase-32 T7 Sanskrit falsification results",
+        "params": { "filename": "phase32_t7_sanskrit_falsification.json" }
+      },
+      "position": { "x": 1400, "y": 220 }
+    }
+  ],
+  "edges": [
+    { "id": "e_m77_sa",      "source": "m77",   "target": "sa",    "sourcePort": "sequences",        "targetPort": "sequences" },
+    { "id": "e_lm_sa",       "source": "lm_sk", "target": "sa",    "sourcePort": "lm",               "targetPort": "lm" },
+    { "id": "e_sa_cons_pm",  "source": "sa",    "target": "cons",  "sourcePort": "all_mappings",     "targetPort": "all_mappings" },
+    { "id": "e_sa_merge_pm", "source": "sa",    "target": "merge", "sourcePort": "proposed_mapping", "targetPort": "a" },
+    { "id": "e_sa_merge_mc", "source": "sa",    "target": "merge", "sourcePort": "mean_consistency", "targetPort": "b" },
+    { "id": "e_sa_merge_hci","source": "sa",    "target": "merge", "sourcePort": "hci_count",        "targetPort": "c" },
+    { "id": "e_m77_merge",   "source": "m77",   "target": "merge", "sourcePort": "n_inscriptions",   "targetPort": "d" },
+    { "id": "e_lm_merge_n",  "source": "lm_sk", "target": "merge", "sourcePort": "n_tokens",         "targetPort": "e" },
+    { "id": "e_cons_merge",  "source": "cons",  "target": "merge", "sourcePort": "mean_consistency", "targetPort": "f" },
+    { "id": "e_merge_out",   "source": "merge", "target": "out",   "sourcePort": "json",             "targetPort": "data" }
+  ]
+}

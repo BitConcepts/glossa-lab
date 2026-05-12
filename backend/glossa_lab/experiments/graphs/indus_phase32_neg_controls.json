@@ -1,0 +1,159 @@
+{
+  "id": "indus_phase32_neg_controls",
+  "name": "Indus Phase-32 Negative Controls — Shuffle Tests (Phase A)",
+  "description": "Phase A negative controls. Tests whether the sequential structure of the M77 corpus carries real signal vs. unigram noise. Pipeline: (1) Load real M77 corpus → FreqCounter + ZipfFitter (baseline); (2) Within-word token shuffle → FreqCounter + ZipfFitter (internal structure destroyed, word boundaries preserved); (3) Global token shuffle → FreqCounter + ZipfFitter (all structure destroyed). KL divergence between real and shuffled frequency maps quantifies information loss. Expected: Zipf exponent drops significantly for global shuffle, moderately for within-word. If Zipf exponent is preserved after shuffling, sequential patterns are epiphenomenal. CRITICAL H16 control: must run before any claim about sequential signal.",
+  "auto_migrated": false,
+  "nodes": [
+    {
+      "id": "m77",
+      "type": "expNode",
+      "data": {
+        "atomicId": "M77InscriptionLoader",
+        "label": "Load M77 Holdat corpus (baseline)",
+        "params": { "use_raw": false, "label": "indus_m77" }
+      },
+      "position": { "x": 60, "y": 200 }
+    },
+    {
+      "id": "freq_real",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FreqCounter",
+        "label": "Frequency (real corpus)",
+        "params": { "min_count": 1, "top_n": 0 }
+      },
+      "position": { "x": 400, "y": 80 }
+    },
+    {
+      "id": "zipf_real",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ZipfFitter",
+        "label": "Zipf exponent (real M77)",
+        "params": {}
+      },
+      "position": { "x": 700, "y": 80 }
+    },
+    {
+      "id": "shuffle_ww",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ShuffleControl",
+        "label": "Within-word shuffle (seed=42)",
+        "params": { "mode": "within_word", "seed": 42 }
+      },
+      "position": { "x": 400, "y": 240 }
+    },
+    {
+      "id": "freq_ww",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FreqCounter",
+        "label": "Frequency (within-word shuffled)",
+        "params": { "min_count": 1, "top_n": 0 }
+      },
+      "position": { "x": 700, "y": 240 }
+    },
+    {
+      "id": "zipf_ww",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ZipfFitter",
+        "label": "Zipf exponent (within-word shuffled)",
+        "params": {}
+      },
+      "position": { "x": 1000, "y": 240 }
+    },
+    {
+      "id": "shuffle_gl",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ShuffleControl",
+        "label": "Global shuffle (seed=42, destroys all structure)",
+        "params": { "mode": "global", "seed": 42 }
+      },
+      "position": { "x": 400, "y": 400 }
+    },
+    {
+      "id": "freq_gl",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FreqCounter",
+        "label": "Frequency (globally shuffled)",
+        "params": { "min_count": 1, "top_n": 0 }
+      },
+      "position": { "x": 700, "y": 400 }
+    },
+    {
+      "id": "zipf_gl",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ZipfFitter",
+        "label": "Zipf exponent (globally shuffled)",
+        "params": {}
+      },
+      "position": { "x": 1000, "y": 400 }
+    },
+    {
+      "id": "kl_ww",
+      "type": "expNode",
+      "data": {
+        "atomicId": "KLDivergence",
+        "label": "KL divergence: real || within-word-shuffled",
+        "params": {}
+      },
+      "position": { "x": 1000, "y": 160 }
+    },
+    {
+      "id": "kl_gl",
+      "type": "expNode",
+      "data": {
+        "atomicId": "KLDivergence",
+        "label": "KL divergence: real || globally-shuffled",
+        "params": {}
+      },
+      "position": { "x": 1000, "y": 520 }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Collect negative control results",
+        "params": {}
+      },
+      "position": { "x": 1300, "y": 300 }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Phase-32 negative controls results",
+        "params": { "filename": "phase32_neg_controls.json" }
+      },
+      "position": { "x": 1600, "y": 300 }
+    }
+  ],
+  "edges": [
+    { "id": "e_m77_freq_r",    "source": "m77",       "target": "freq_real",  "sourcePort": "sequences",    "targetPort": "sequences" },
+    { "id": "e_m77_shuf_ww",   "source": "m77",       "target": "shuffle_ww", "sourcePort": "sequences",    "targetPort": "sequences" },
+    { "id": "e_m77_shuf_gl",   "source": "m77",       "target": "shuffle_gl", "sourcePort": "sequences",    "targetPort": "sequences" },
+    { "id": "e_freq_r_zipf_r", "source": "freq_real", "target": "zipf_real",  "sourcePort": "freq_map",     "targetPort": "freq_map" },
+    { "id": "e_sww_fww",       "source": "shuffle_ww","target": "freq_ww",    "sourcePort": "sequences",    "targetPort": "sequences" },
+    { "id": "e_fww_zww",       "source": "freq_ww",   "target": "zipf_ww",    "sourcePort": "freq_map",     "targetPort": "freq_map" },
+    { "id": "e_sgl_fgl",       "source": "shuffle_gl","target": "freq_gl",    "sourcePort": "sequences",    "targetPort": "sequences" },
+    { "id": "e_fgl_zgl",       "source": "freq_gl",   "target": "zipf_gl",    "sourcePort": "freq_map",     "targetPort": "freq_map" },
+    { "id": "e_kl_ww_p",       "source": "freq_real", "target": "kl_ww",      "sourcePort": "freq_map",     "targetPort": "freq_map" },
+    { "id": "e_kl_ww_q",       "source": "freq_ww",   "target": "kl_ww",      "sourcePort": "freq_map",     "targetPort": "q" },
+    { "id": "e_kl_gl_p",       "source": "freq_real", "target": "kl_gl",      "sourcePort": "freq_map",     "targetPort": "freq_map" },
+    { "id": "e_kl_gl_q",       "source": "freq_gl",   "target": "kl_gl",      "sourcePort": "freq_map",     "targetPort": "q" },
+    { "id": "e_zr_merge",      "source": "zipf_real", "target": "merge",      "sourcePort": "zipf_exponent","targetPort": "zipf_real" },
+    { "id": "e_zww_merge",     "source": "zipf_ww",   "target": "merge",      "sourcePort": "zipf_exponent","targetPort": "zipf_within_word_shuffle" },
+    { "id": "e_zgl_merge",     "source": "zipf_gl",   "target": "merge",      "sourcePort": "zipf_exponent","targetPort": "zipf_global_shuffle" },
+    { "id": "e_klww_merge",    "source": "kl_ww",     "target": "merge",      "sourcePort": "kl_divergence","targetPort": "kl_real_vs_ww_shuffle" },
+    { "id": "e_klgl_merge",    "source": "kl_gl",     "target": "merge",      "sourcePort": "kl_divergence","targetPort": "kl_real_vs_global_shuffle" },
+    { "id": "e_m77_merge_n",   "source": "m77",       "target": "merge",      "sourcePort": "n_inscriptions","targetPort": "n_inscriptions" },
+    { "id": "e_merge_out",     "source": "merge",     "target": "out",        "sourcePort": "json",         "targetPort": "data" }
+  ]
+}

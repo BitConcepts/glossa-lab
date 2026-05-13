@@ -198,11 +198,77 @@ async def auto_configure(profile: str = Query("mixed")) -> dict[str, Any]:
             "longform": s.get("longform_score", 0),
         }
 
+    def _resolve_score(model_name: str, bucket_key: str) -> float:
+        """Resolve a score for *model_name* using multi-tier fuzzy matching.
+
+        Tiers (in priority order):
+        1. Exact match on the full model name.
+        2. Strip org prefix: "Org/ModelName" → "ModelName"
+        3. Strip Ollama tag: "model:tag" → "model"
+        4. Partial-name containment — score_map key is a substring of the
+           model name (catches quantized variants like
+           cpatonn/Qwen3-Coder-30B-A3B-Instruct-AWQ-4bit → Qwen3-Coder-30B)
+        5. Reverse containment — model name is a substring of a score key.
+        6. Family prefix match: strip suffixes like -Instruct, -AWQ, -4bit, -8B
+           and try again.
+        """
+        # Tier 1: exact
+        if model_name in score_map:
+            return score_map[model_name].get(bucket_key, 0)
+
+        # Tier 2: strip org prefix
+        base = model_name.split("/", 1)[-1] if "/" in model_name else model_name
+        if base in score_map:
+            return score_map[base].get(bucket_key, 0)
+
+        # Tier 3: strip Ollama ":tag" suffix
+        no_tag = model_name.split(":")[0]
+        if no_tag in score_map:
+            return score_map[no_tag].get(bucket_key, 0)
+        base_no_tag = base.split(":")[0]
+        if base_no_tag in score_map:
+            return score_map[base_no_tag].get(bucket_key, 0)
+
+        # Tier 4: score key is substring of model name (find longest match)
+        best_score: float = 0.0
+        best_match_len: int = 0
+        mn_lower = model_name.lower()
+        for key, scores in score_map.items():
+            if key.lower() in mn_lower and len(key) > best_match_len:
+                best_match_len = len(key)
+                best_score = scores.get(bucket_key, 0)
+        if best_match_len > 3:  # avoid trivially short matches like "qw"
+            return best_score
+
+        # Tier 5: model name is substring of score key
+        candidates: list[tuple[int, float]] = []
+        for key, scores in score_map.items():
+            if mn_lower in key.lower() and len(mn_lower) > 3:
+                candidates.append((len(key), scores.get(bucket_key, 0)))
+        if candidates:
+            return max(candidates, key=lambda x: x[1])[1]
+
+        # Tier 6: family prefix — strip common quantization / instruction tags
+        import re as _re  # noqa: PLC0415
+        family = _re.sub(
+            r"[_\-](instruct|chat|it|awq|gguf|gptq|4bit|8bit|fp16|bf16"
+            r"|coder|v\d|a\d+b|\d+b|\d+m)$",
+            "", base_no_tag, flags=_re.IGNORECASE,
+        ).strip("-_")
+        if family and family != base_no_tag:
+            if family in score_map:
+                return score_map[family].get(bucket_key, 0)
+            for key, scores in score_map.items():
+                if family.lower() in key.lower() and len(family) > 4:
+                    return scores.get(bucket_key, 0)
+
+        return 0.0
+
     def _ranked_for_bucket(bucket_key: str) -> list[tuple[float, dict[str, Any]]]:
         """All models sorted by score for *bucket_key*, descending."""
         scored = []
         for m in all_models:
-            s = score_map.get(m["model"], {}).get(bucket_key, 0)
+            s = _resolve_score(m["model"], bucket_key)
             scored.append((s, m))
         scored.sort(key=lambda x: x[0], reverse=True)
         return scored

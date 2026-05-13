@@ -125,7 +125,7 @@ export class ErrorBoundary extends Component<Props, State> {
           )}
 
           {/* Actions */}
-          <div style={{ display: "flex", gap: 10 }}>
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <button
               onClick={() => window.location.reload()}
               style={{
@@ -146,6 +146,44 @@ export class ErrorBoundary extends Component<Props, State> {
               }}
             >
               Try to recover
+            </button>
+            <button
+              onClick={() => {
+                const report = [
+                  `**Glossa Lab crash report**`,
+                  `Error: ${msg}`,
+                  ``,
+                  `**JS stack trace:**`,
+                  "```",
+                  stack || "(no stack)",
+                  "```",
+                  ``,
+                  `**Component stack:**`,
+                  "```",
+                  compStack || "(no component stack)",
+                  "```",
+                  ``,
+                  `URL: ${window.location.href}`,
+                  `Time: ${new Date().toISOString()}`,
+                ].join("\n");
+                navigator.clipboard.writeText(report).catch(() => {
+                  // fallback: select a hidden textarea
+                  const ta = document.createElement("textarea");
+                  ta.value = report;
+                  document.body.appendChild(ta);
+                  ta.select();
+                  document.execCommand("copy");
+                  document.body.removeChild(ta);
+                });
+              }}
+              style={{
+                padding: "8px 20px", borderRadius: 6,
+                border: "1px solid #334155",
+                background: "none", color: "#60a5fa", cursor: "pointer",
+                fontSize: 13,
+              }}
+            >
+              📋 Copy report
             </button>
             <div style={{ flex: 1 }} />
             <span style={{ fontSize: 11, color: "#475569", alignSelf: "center" }}>

@@ -713,6 +713,172 @@ Phase-29 ReverseJanabiyahSearchV3 reference.
 
 ## I. Comparative writing-system papers
 
+### I.3 Perna 2014 — Birth of Administration and Writing in Minoan Crete
+
+**Used in:** Phase-33 comparative methodology; supports administrative-logographic interpretation;
+parallel evidence for cretulae/sealing system functional to IVC.
+**Epistemic status:** HIGH — peer-reviewed book chapter, established Mycenologist.
+
+> Perna, Massimo. 2014. "The Birth of Administration and Writing in Minoan Crete:
+> Some Thoughts on Hieroglyphics and Linear A." Chapter 19 in *KE-RA-ME-JA:
+> Studies Presented to Cynthia W. Shelmerdine*, edited by Dimitri Nakassis,
+> Joann Gulizio, and Sarah A. James. Prehistory Monographs 46. Philadelphia:
+> INSTAP Academic Press. Pp. 251–259. ISBN 978-1-931534-76-5.
+
+**Key findings applicable to IVC research:**
+- The Minoan **cretulae** system (clay sealings on storage vessels, door pegs) tracks
+  commodity withdrawals without phonetic content — functions identically to the IVC
+  sealings on Lothal "warehouse" containers (Mukhopadhyay 2023, D.5c).
+- Cretan Hieroglyphic (96 signs, ~350 docs) and Linear A (97 signs, ~1,500 docs,
+  8,000 tokens) coexisted as functionally independent systems: CH on seals, Linear A
+  on clay tablets. **Direct comparative model for IVC's seal-vs-tablet distinction.**
+- 90% of Linear A tablets record only short economic entries (1–3 words). 708
+  flat-based nodules were shaped around folded parchment sheets — evidence that far
+  richer content was written on perishable materials.
+  **Strongly supports: IVC inscriptions = durable fraction of a larger administrative system.**
+- IVC sign count and token count are within normal range for Bronze Age logographic
+  writing systems (not anomalously large).
+- **Local PDF:** `C:\Users\trist\Downloads\The_Birth_of_Administration_and_Writing.pdf`
+
+### I.4 Tóth 2018 — Beginnings of the Epigraphical Tradition in India
+
+**Used in:** Phase-32/33 falsification context; confirms 1,500-year gap between IVC
+and Brāhmī; relevant to IVC→script descent questions.
+**Epistemic status:** MODERATE — doctoral dissertation summary (Eötvös Loránd University),
+peer-reviewed defence committee.
+
+> Tóth, Ibolya. 2018. *The Beginnings of the Epigraphical Tradition in India,
+> with special regard to the Cultural Exchange between India and the Hellenistic World.*
+> Summary of Doctoral Dissertation. Doctoral School of Linguistics.
+> Budapest: Eötvös Loránd University, Faculty of Humanities.
+
+**Key findings applicable to IVC research:**
+- **Confirms the 1,500-year gap:** IVC ends ~1900 BCE; earliest confirmed Brāhmī
+  inscriptions are Aśoka's Rock Edicts (~250 BCE). No epigraphic evidence bridges
+  this gap. Decisive against any IVC→Brāhmī phonetic lineage claim.
+- Kharoṣṭhī derives from **Aramaic** (Northwest India, Achaemenid period) — NOT
+  from IVC. If IVC encoded NW-Indian languages, the successor script tradition
+  was externally replaced, not organically evolved.
+- Pāṇini (~4th century BCE) mentions *lipikara* (scribe) and *yavanānī* (Greek
+  writing) — writing existed before Aśoka on perishable materials. Consistent with
+  the Minoan parchment model (Perna 2014, I.3).
+- Brāhmī's geometric character suggests possible adaptation of a pre-existing script;
+  Indian scholars' connections to IVC are treated as speculative in the literature.
+- **Local PDF:** `C:\Users\trist\Downloads\Summary_of_Doctoral_Dissertation_The_Beg.pdf`
+
+### I.5 Kalyanaraman (undated) — Nine IVS Inscriptions in the Ancient Near East
+
+**Used in:** Gulf corpus expansion reference; rebus decipherment alternative hypothesis.
+**Epistemic status:** LOW — unpublished working paper, no peer review; advocate of
+controversial rebus/Meluhha metalwork hypothesis. Use cautiously.
+
+> Kalyanaraman, S. (undated). "Nine Indus Script Inscriptions of Ancient Near East,
+> catalogues of metalwork, lapidary work repertoire."
+> Working paper. Available via Academia.edu and ANU Open Research Repository.
+> hdl: 1885/162902.
+
+**Points of limited value for Glossa Lab:**
+- Identifies Dilmun seals (Bahrain) and Failaka (Kuwait) seal as bearing Indus script
+  hieroglyphs, consistent with Laursen 2010 (F.2) and Gadd 1932 (F.7). The Dilmun
+  seal images discussed by Elisabeth C.L. During Caspers (*Proceedings of the Seminar
+  for Arabian Studies* 6, 1976, pp. 8–39) are an additional Gulf corpus reference.
+- Gadd Seal 1 from Ur (BM 120573): proposes the cuneiform text reads SAG KUSIDA
+  (Sumerian 'chief' + Meluhha borrowing 'money-lender') with Indus bull field symbol
+  = *bharata* 'metal alloy'. If correct, this would be the only bilingual IVC-cuneiform
+  seal, highly relevant to the Gulf contact zone hypothesis. **Speculative; not verified.**
+**Caution:** Rebus punning methodology (Munda/Dravidian phonetic punning on
+  pictographic readings) is not mainstream-accepted; etymological chains are long.
+  **Do NOT cite as established decipherment.**
+- **Local PDF:** `C:\Users\trist\Downloads\Nine_Indus_Script_Inscriptions_of_Ancien.pdf`
+
+### I.6 Anonymous (undated) — Linguistic Lineages and Lost Scripts
+
+**Used in:** Phase-32/33 cross-civilizational statistical benchmarking.
+**Epistemic status:** LOW — conference paper, no named authors, no peer review.
+
+> Anonymous. (undated). "Linguistic Lineages and Lost Scripts: A Cross-Civilizational
+> Analysis of the Indus Valley Script." Conference paper.
+
+**Statistical findings (replicable, useful):**
+- Based on Fuls (2019) *A Catalogue of Indus Signs* (~900 signs): Mean count 60.93,
+  SD 129.61, Median 8, Max 867. χ² = 10,157.98 (p < 0.001) against uniform
+  distribution. Confirms structured, non-random sign distribution consistent with a
+  formal writing system. Replicates our Phase-22 Zipf findings with a different dataset.
+- Primary Core Signs (high-frequency) vs. Secondary Composite Signs (rare) classification
+  mirrors the allograph-reduction methodology of Daggumati & Revesz 2021 (D.6).
+- Cross-script comparison: Oracle Bone Script (~50% visual similarity, highest), Egyptian
+  Hieroglyphs (~30%), Proto-Elamite (~20%). Both IVC and OBS share short inscriptions
+  (3–5 signs), core radical repetition, ideographic bases. **Convergent function, not
+  historical contact.**
+- Seals-as-Geographical-Indication-tags hypothesis aligns with Mukhopadhyay 2023 (D.5c).
+**Caution:** Similarity percentages are visual estimates, not formally quantified. Dholavira
+  "pottery" reading is speculative with no linguistic grounding.
+- **Local PDF:** `C:\Users\trist\Downloads\LINGUISTIC_LINEAGES_AND_LOST_SCRIPTS_A_C.pdf`
+
+### I.7 Steele & Boyes (eds.) — *Writing Around the Ancient Mediterranean* (CREWS project)
+
+**Used in:** Phase-33 comparative epigraphy methodology; Cypro-Minoan as IVC parallel;
+potmarks vs. script sign debates.
+**Epistemic status:** HIGH — Cambridge CREWS project, open access CC BY 3.0.
+
+> Steele, Philippa M. & Philip J. Boyes (eds.). (undated, ~2021). *Writing Around
+> the Ancient Mediterranean: Practices and Adaptations.* CREWS (Contexts of and
+> Relations between Early Writing Systems) project. Oxbow Books / Casemate.
+> Open access: https://books.casematepublishing.com/Writing_Around_the_Ancient_Mediterranean.pdf
+> License: CC BY 3.0.
+
+**Chapter 4 specifically:** "Cypro-Minoan and its potmarks and vessel inscriptions
+as challenges to Aegean Scripts corpora." Authors from the CREWS team.
+
+**Key findings applicable to IVC research:**
+- Methodological framework for distinguishing **potmarks** (makers' marks, possibly
+  non-linguistic) from **script** inscriptions on pottery — the *exact* debate for IVC.
+- Methodology for building a unified sign repertory from mixed media (seals, pottery,
+  tablets) with variant forms: directly applicable to IVC corpus construction.
+- **Cypro-Minoan** (~100 signs, ~230 inscriptions, 1550–1050 BCE, Cyprus trade context)
+  is a high-quality comparandum: undeciphered, short inscriptions (avg. ~5 signs),
+  traded objects as primary carriers. Structural profile matches IVC.
+- The CREWS methodological framework for allograph identification and sign classification
+  mirrors the Phase-32 allograph work (Daggumati & Revesz 2021, D.6).
+- **Local PDF:** `C:\Users\trist\Downloads\Ch_4_Cypro_Minoan_and_its_potmarks_and_v.pdf`
+
+### I.8 Debating Sign Repertory Construction — SE European signs methodology
+
+**Used in:** Phase-32/33 sign repertory validation methodology.
+**Epistemic status:** MODERATE — scholarly chapter from undetermined larger work.
+
+> Anonymous chapter (undated). "Debugging the Process of Building a Repertory of
+> the Southeastern European Signs." Chapter 4, Part I. (~23 pages).
+
+**Key findings applicable to IVC research:**
+- Explicit methodology for **testing a sign repertory** by using known scripts
+  (Linear B used as benchmark) to validate the repertory construction process.
+- Southeastern European signs (Vinča culture, ~5000–3500 BCE) as another undeciphered
+  prehistoric sign system — provides temporal and cultural comparanda outside the Near East.
+- The "debugging" approach — iterating a proposed sign list against known-answer systems
+  before applying to unknown — is directly applicable to Phase-32/33 foundation checking.
+**Caution:** Author and publication details unknown; treat as methodological reference only.
+- **Local PDF:** `C:\Users\trist\Downloads\Chapter_4_part_I_Debugging_the_process_o.pdf`
+
+### I.9 Kalyanaraman (undated) — Fish-fin and reed-mollusc signs as Bronze Age mint
+
+**Used in:** Phase-32/33 fish-sign family reassessment; alternative to Parpola mīn reading.
+**Epistemic status:** LOW — unpublished working paper, same author as I.5. Use cautiously.
+
+> Kalyanaraman, S. (undated). "Indus Script hieroglyphs 1. fish-fin 'khambhaṛā',
+> 2. reed-mollusc 'eraka-sippi' signify Bronze Age mint."
+> Working paper. (~25 pages).
+
+**Points of limited value for Glossa Lab:**
+- Fish-fin sign: khambhaṛā → kammaṭa 'mint, coiner, coinage' — a third interpretation
+  of the fish-sign family alongside (1) Parpola phonetic mīn and (2) Mukhopadhyay 2020
+  apotropaic eye-bead reading. All three agree the signs have commercial/craft significance.
+- Reed-mollusc sign: eraka 'molten metal' + sippi 'casting vessel' → smelting context.
+  Supports the Phase-32 finding that fish-sign Enmenanak signal is NOT SIGNIFICANT
+  under any of the three frameworks.
+**Caution:** Same methodological concerns as I.5; rebus chains are long and unverified.
+- **Local PDF:** `C:\Users\trist\Downloads\Indus_Script_hieroglyphs_1_fish_fin_kham.pdf`
+
 ### I.1 Knight & Sproat 2009 — Cipher decipherment
 
 > Knight, Kevin & Richard Sproat. 2009. "Writing systems, transliteration and
@@ -856,7 +1022,29 @@ any.*
 
 ---
 
-## A.13 Holdat LLC / Miller 2025 — Computational Indus Corpus
+### A.14 Seth & Kharakwal 2023 — Harappan Script Material from Kanmer, Gujarat
+
+**Used in:** Phase-32/33 peripheral IVC corpus; site-specific sign data from Rann of Kutch.
+**Epistemic status:** HIGH — peer-reviewed chapter in 2023 academic volume, CC BY 4.0 Open Access.
+
+> Seth, Hansmukh & J. S. Kharakwal. 2023. "Harappan Script Material from Kanmer,
+> Gujarat." In *Research on Indus Civilization in the Wake of Hundred Years of
+> Excavation at Harappa*, edited by [editors]. Thiruvananthapuram: Department of
+> Archaeology, University of Kerala. CC BY 4.0 Open Access.
+> **Local PDF:** `C:\Users\trist\Downloads\Indus_Script_Material_from_Kanmer_Gujara.pdf`
+
+**Key value:**
+- Provides inscription data from **Kanmer**, a coastal IVC site in Rann of Kutch,
+  Gujarat (~2500–1800 BCE), excavated 2005–2012 by MS University Vadodara + Deccan College.
+- Kanmer is geographically peripheral (Gujarat coast, near Arabian Sea trade routes) —
+  its sign usage pattern may reflect regional variation relevant to Phase-32 T3 bigram
+  transition analysis.
+- 2023 publication = post-ICIT — may include inscriptions not in M77 or Wells/Fuls corpus.
+- The parent volume covers the Harappa centenary (100 years since 1924 discovery), providing
+  historiographic breadth alongside the corpus data.
+- **License:** CC BY 4.0 — freely reusable with attribution.
+
+### A.13 Holdat LLC / Miller 2025 — Computational Indus Corpus
 
 **Used in:** V8-V24 autonomous decipherment campaign; foundation check corpus verification;
 all analyses in backend/scripts/v8_autonomous_loop.py and v18_autonomous_loop.py.

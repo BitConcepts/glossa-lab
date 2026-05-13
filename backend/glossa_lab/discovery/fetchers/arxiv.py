@@ -78,6 +78,7 @@ class ArxivFetcher(Fetcher):
     async def fetch(
         self, topic: TopicProfile, *, since: datetime | None = None,
     ) -> Iterable[RawItem]:
+        global _arxiv_last_ok_mono  # noqa: PLW0603 — must be declared before first read
         import asyncio as _asyncio  # noqa: PLC0415
 
         # Check global cooldown before attempting anything
@@ -108,7 +109,6 @@ class ArxivFetcher(Fetcher):
             try:
                 raw = await run_in_thread(http_get_json, _ENDPOINT, params=params, timeout=30.0)
                 # Update last-OK timestamp on success
-                global _arxiv_last_ok_mono  # noqa: PLW0603
                 _arxiv_last_ok_mono = _time_mod.monotonic()
                 break
             except FetcherError as exc:

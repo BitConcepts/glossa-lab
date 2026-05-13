@@ -33,6 +33,45 @@ _ENDPOINT = "https://api.semanticscholar.org/graph/v1/paper/search"
 _FIELDS = "paperId,title,url,abstract,authors,year,citationCount,externalIds,tldr,publicationDate"
 _FIELDS_LIST = _FIELDS.split(",")
 
+# ── SDK circuit breaker ─────────────────────────────────────────────────
+# After _SDK_MAX_CONSECUTIVE_FAILS consecutive network errors, skip the
+# SDK entirely and go straight to HTTP for _SDK_COOLDOWN_SECS seconds.
+# Resets on any SDK success.
+_sdk_consecutive_fails: int = 0
+_sdk_skip_until: float = 0.0
+_SDK_MAX_CONSECUTIVE_FAILS: int = 3
+_SDK_COOLDOWN_SECS: float = 600.0  # 10 minutes
+
+import time as _time_sdk  # noqa: E402
+
+
+def _sdk_record_success() -> None:
+    global _sdk_consecutive_fails, _sdk_skip_until  # noqa: PLW0603
+    _sdk_consecutive_fails = 0
+    _sdk_skip_until = 0.0
+
+
+def _sdk_record_failure() -> None:
+    global _sdk_consecutive_fails, _sdk_skip_until  # noqa: PLW0603
+    _sdk_consecutive_fails += 1
+    if _sdk_consecutive_fails >= _SDK_MAX_CONSECUTIVE_FAILS:
+        _sdk_skip_until = _time_sdk.monotonic() + _SDK_COOLDOWN_SECS
+        _log.info(
+            "SemanticScholar SDK circuit breaker OPEN (%d consecutive network errors); "
+            "using direct HTTP for %.0fs",
+            _sdk_consecutive_fails, _SDK_COOLDOWN_SECS,
+        )
+
+
+def _sdk_is_bypassed() -> bool:
+    """True when the circuit breaker is open — skip SDK, go to HTTP."""
+    if _sdk_skip_until <= 0.0:
+        return False
+    if _time_sdk.monotonic() >= _sdk_skip_until:
+        # Cooldown expired — allow one probe attempt
+        return False
+    return True
+
 
 def _sdk_search(
     query: str,
@@ -115,42 +154,52 @@ class SemanticScholarFetcher(Fetcher):
 
         # Try the PyPI SDK first — it handles pagination automatically, allowing
         # max_results > 100.  Fall back to a single-page REST call if the package
-        # is not installed.
+        # is not installed or the SDK circuit breaker is open.
         papers: list[dict] = []
-        try:
-            papers = await run_in_thread(
-                _sdk_search,
-                query,
-                api_key=s2_key,
-                max_results=max_results,
-                year_filter=year_filter,
-            )
-            _log.debug(
-                "SemanticScholar SDK returned %d results for topic %s",
-                len(papers), topic.id,
-            )
-        except ImportError:
-            # semanticscholar package not installed — fall back to direct HTTP.
-            _log.debug("semanticscholar PyPI package not found; using direct HTTP")
+        _sdk_used = False
 
-        except Exception as exc:  # noqa: BLE001
-            # Network/connection errors from the SDK are transient — fall through
-            # to the direct HTTP path instead of failing entirely.
-            err_lower = str(exc).lower()
-            is_network = any(k in err_lower for k in (
-                "network", "connect", "timeout", "unreachable", "reset",
-                "eof", "ssl", "socket", "host",
-            ))
-            if is_network:
-                _log.info(
-                    "SemanticScholar SDK network error for topic %s (%s: %s); "
-                    "falling back to direct HTTP",
-                    topic.id, type(exc).__name__, str(exc)[:120],
+        if _sdk_is_bypassed():
+            _log.debug(
+                "SemanticScholar SDK bypassed (circuit open, %d consecutive failures); "
+                "using direct HTTP for topic %s",
+                _sdk_consecutive_fails, topic.id,
+            )
+        else:
+            try:
+                papers = await run_in_thread(
+                    _sdk_search,
+                    query,
+                    api_key=s2_key,
+                    max_results=max_results,
+                    year_filter=year_filter,
                 )
-                # papers stays [] — will trigger the HTTP fallback below
-            else:
-                _log.warning("SemanticScholar SDK error for topic %s: %s", topic.id, exc)
-                return []
+                _sdk_record_success()
+                _sdk_used = True
+                _log.debug(
+                    "SemanticScholar SDK returned %d results for topic %s",
+                    len(papers), topic.id,
+                )
+            except ImportError:
+                # semanticscholar package not installed — fall back to direct HTTP.
+                _log.debug("semanticscholar PyPI package not found; using direct HTTP")
+
+            except Exception as exc:  # noqa: BLE001
+                err_lower = str(exc).lower()
+                is_network = any(k in err_lower for k in (
+                    "network", "connect", "timeout", "unreachable", "reset",
+                    "eof", "ssl", "socket", "host", "gateway",
+                ))
+                if is_network:
+                    _sdk_record_failure()
+                    _log.debug(
+                        "SemanticScholar SDK network error for topic %s (%s); "
+                        "falling back to direct HTTP (consecutive failures: %d)",
+                        topic.id, type(exc).__name__, _sdk_consecutive_fails,
+                    )
+                    # papers stays [] — HTTP fallback below
+                else:
+                    _log.warning("SemanticScholar SDK error for topic %s: %s", topic.id, exc)
+                    return []
 
         # ── HTTP fallback (SDK not installed OR network error from SDK) ──
         if not papers:

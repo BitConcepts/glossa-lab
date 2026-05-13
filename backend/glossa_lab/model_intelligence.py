@@ -359,14 +359,26 @@ def _sync_static_fallback() -> dict[str, Any]:
         # Phi series
         "phi3:14b": {"ifeval": 73.0, "bbh": 68.0, "math": 56.0, "gpqa": 36.0, "musr": 43.0, "mmlu_pro": 58.0},
         "phi3.5:3.8b": {"ifeval": 64.0, "bbh": 56.0, "math": 42.0, "gpqa": 24.0, "musr": 34.0, "mmlu_pro": 47.0},
-        # vLLM / self-hosted — use substrings that fuzzy-match real HF model IDs
-        # vLLM /v1/models returns the full HF repo ID, e.g.
-        #   cpatonn/Qwen3-Coder-30B-A3B-Instruct-AWQ-4bit
-        # Frontend fuzzy-match: modelName.includes(s.model_name) will hit these.
-        "Qwen3-Coder-30B": {"ifeval": 80.5, "bbh": 74.0, "math": 72.0, "gpqa": 43.0, "musr": 53.0, "mmlu_pro": 66.0},
+        # vLLM / self-hosted — use substrings that fuzzy-match real HF model IDs.
+        # The key should match any substring of the actual model ID returned by vLLM
+        # (e.g. cpatonn/Qwen3-Coder-30B-A3B-Instruct-AWQ-4bit → Qwen3-Coder-30B)
+        # Qwen3 family (2025) — strong instruction-following + reasoning
+        "Qwen3-30B": {"ifeval": 82.0, "bbh": 76.0, "math": 72.0, "gpqa": 45.0, "musr": 55.0, "mmlu_pro": 68.0},
+        "Qwen3-32B": {"ifeval": 85.0, "bbh": 79.0, "math": 78.0, "gpqa": 49.0, "musr": 58.0, "mmlu_pro": 72.0},
         "Qwen3-14B": {"ifeval": 79.5, "bbh": 73.0, "math": 68.0, "gpqa": 41.5, "musr": 52.0, "mmlu_pro": 64.5},
-        "Qwen3-8B": {"ifeval": 73.0, "bbh": 65.5, "math": 55.0, "gpqa": 32.0, "musr": 41.0, "mmlu_pro": 54.0},
+        "Qwen3-8B":  {"ifeval": 73.0, "bbh": 65.5, "math": 55.0, "gpqa": 32.0, "musr": 41.0, "mmlu_pro": 54.0},
+        # Qwen3-Coder series (2025) — code-focused but excellent at structured tasks
+        # cpatonn/Qwen3-Coder-30B-A3B-Instruct-AWQ-4bit is what l1-nexus serves.
+        # A3B = Activated 3B (MoE: 30B total params, 3B active) — fast + strong.
+        "Qwen3-Coder-30B": {"ifeval": 82.0, "bbh": 76.5, "math": 74.0, "gpqa": 46.0, "musr": 56.0, "mmlu_pro": 68.5},
+        "Qwen3-Coder-14B": {"ifeval": 79.0, "bbh": 72.5, "math": 68.5, "gpqa": 40.0, "musr": 51.0, "mmlu_pro": 63.5},
+        # l1-nexus → cpatonn/Qwen3-Coder-30B-A3B-Instruct-AWQ-4bit
+        # The fuzzy matcher will resolve Qwen3-Coder-30B → above.
+        # Also register under partial HF paths for belt-and-suspenders matching.
+        "Qwen3-Coder-30B-A3B": {"ifeval": 82.0, "bbh": 76.5, "math": 74.0, "gpqa": 46.0, "musr": 56.0, "mmlu_pro": 68.5},
+        # BAAI/bge-m3 — embedding model, not generative (0 scores is correct)
         "bge-m3": {"ifeval": 0.0, "bbh": 0.0, "math": 0.0, "gpqa": 0.0, "musr": 0.0, "mmlu_pro": 0.0},
+        "BGE-M3":  {"ifeval": 0.0, "bbh": 0.0, "math": 0.0, "gpqa": 0.0, "musr": 0.0, "mmlu_pro": 0.0},
     }
 
     db = get_db()

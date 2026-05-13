@@ -640,6 +640,57 @@ def _meluhha_cooccurrence_check(inputs: dict, params: dict) -> dict:
     }
 
 
+def _syllable_lm_from_json(data: dict) -> "Any":
+    """Build a proper LanguageModel from a syllable LM JSON dict.
+
+    The syllable LM JSON stores bigrams as {"a|b": log_prob}.  This helper
+    converts that to the tuple-key probability dict that LanguageModel and
+    BigramScorer expect, and populates all required attributes (ranked,
+    bigram_freq, unigram_freq, size) so SADecipher works correctly.
+    """
+    import math as _math  # noqa: PLC0415
+    from glossa_lab.pipelines.decipher import LanguageModel  # noqa: PLC0415
+
+    vocab: list[str] = data.get("vocab", [])
+    bigrams_raw: dict = data.get("bigrams", {})
+
+    # Convert "a|b" -> (a, b) keys; stored values are log-probs, need to convert to probs
+    bigram_freq: dict = {}
+    unigram_counts: dict = {}
+    for ab_str, lp in bigrams_raw.items():
+        parts = ab_str.split("|")
+        if len(parts) == 2:
+            a, b = parts
+            # Convert log-prob to prob (smoothed, so just exp it)
+            prob = _math.exp(float(lp)) if lp is not None else 1e-8
+            bigram_freq[(a, b)] = prob
+            unigram_counts[a] = unigram_counts.get(a, 0) + 1
+            unigram_counts[b] = unigram_counts.get(b, 0) + 1
+
+    # Build ranked from unigram counts (higher count = higher rank)
+    total_uni = max(sum(unigram_counts.values()), 1)
+    all_syms = vocab if vocab else sorted(unigram_counts.keys())
+    unigram_freq = {s: unigram_counts.get(s, 1) / total_uni for s in all_syms}
+    ranked = sorted(all_syms, key=lambda s: unigram_counts.get(s, 0), reverse=True)
+
+    # Build a minimal LanguageModel instance without calling __init__
+    lm = LanguageModel.__new__(LanguageModel)
+    lm.symbols = all_syms  # type: ignore[attr-defined]
+    lm.alphabet = sorted(set(all_syms))  # type: ignore[attr-defined]
+    lm.size = len(lm.alphabet)  # type: ignore[attr-defined]
+    lm.ranked = ranked  # type: ignore[attr-defined]
+    lm.unigram_freq = unigram_freq  # type: ignore[attr-defined]
+    lm.bigram_freq = bigram_freq  # type: ignore[attr-defined]
+    lm.word_bigram_freq = {}  # type: ignore[attr-defined]
+    lm.word_initial_freq = {}  # type: ignore[attr-defined]
+    lm.word_final_freq = {}  # type: ignore[attr-defined]
+    lm.ocp_rate = 0.0  # type: ignore[attr-defined]
+    lm.trigram_freq = {}  # type: ignore[attr-defined]
+    lm.positional = {}  # type: ignore[attr-defined]
+    lm.word_cooccur = {}  # type: ignore[attr-defined]
+    return lm
+
+
 def _builtin_syllable_lm(inputs: dict, params: dict) -> dict:
     """Load the syllable-level Dravidian Tamil LM (dravidian_syllable_lm.json).
 
@@ -649,7 +700,6 @@ def _builtin_syllable_lm(inputs: dict, params: dict) -> dict:
     """
     import json as _json  # noqa: PLC0415
     from pathlib import Path as _Path  # noqa: PLC0415
-    from glossa_lab.pipelines.decipher import LanguageModel  # noqa: PLC0415
 
     REPO = _Path(__file__).resolve().parent.parent.parent
     path = REPO / "backend/glossa_lab/data/dravidian_syllable_lm.json"
@@ -657,20 +707,182 @@ def _builtin_syllable_lm(inputs: dict, params: dict) -> dict:
         return {"error": "dravidian_syllable_lm.json not found — run build_dravidian_syllable_lm.py"}
 
     data = _json.loads(path.read_text(encoding="utf-8"))
-    bigrams_raw = data.get("bigrams", {})
-
-    # Build LanguageModel compatible with SADecipher node
-    lm = LanguageModel.__new__(LanguageModel)
-    lm.bigrams = bigrams_raw  # type: ignore[attr-defined]
-    lm.vocab = set(data.get("vocab", []))
-    lm.n = 2
+    lm = _syllable_lm_from_json(data)
 
     return {
         "lm": lm,
         "language": "dravidian_syllable",
-        "n_bigrams": data.get("n_bigrams", len(bigrams_raw)),
-        "n_syllables": data.get("n_syllables", 0),
+        "n_bigrams": data.get("n_bigrams", len(data.get("bigrams", {}))),
+        "n_syllables": data.get("n_syllables", len(data.get("vocab", []))),
         "verdict": data.get("verdict", ""),
+    }
+
+
+def _indus_anchor_set_syllable(inputs: dict, params: dict) -> dict:
+    """Load INDUS_FINAL_ANCHORS.json and map each reading to a syllable token.
+
+    For each anchor, the Tamil word reading is converted to its closest syllable-
+    level equivalent by:
+      1. Stripping diacritics (ā→a, ī→i, etc.)
+      2. If the result is already in the syllable LM vocab → use it directly
+      3. If the result is polysyllabic → split into CV chunks, use the first
+         chunk that appears in the syllable LM vocab
+      4. Skip positional-label anchors (term-*, med-*, init-*) and uncertain entries
+
+    Returns `anchor_dict` compatible with SADecipher.anchors port.
+    Citations: A.1 (Mahadevan 1977), C.2 (Parpola 2010)
+    """
+    import json as _json  # noqa: PLC0415
+    import re as _re  # noqa: PLC0415
+    from pathlib import Path as _Path  # noqa: PLC0415
+
+    REPO = _Path(__file__).resolve().parent.parent.parent
+    anchors_path = REPO / "backend/reports/INDUS_FINAL_ANCHORS.json"
+    syllable_lm_path = REPO / "backend/glossa_lab/data/dravidian_syllable_lm.json"
+
+    if not anchors_path.exists():
+        return {"anchor_dict": {}, "error": "INDUS_FINAL_ANCHORS.json not found"}
+
+    # Load syllable vocab for coverage check
+    syllable_vocab: set[str] = set()
+    if syllable_lm_path.exists():
+        lm_data = _json.loads(syllable_lm_path.read_text("utf-8"))
+        syllable_vocab = set(lm_data.get("vocab", []))
+
+    anchors_data = _json.loads(anchors_path.read_text("utf-8"))
+    min_conf = str(params.get("min_confidence", "MEDIUM")).upper()
+    conf_order = {"HIGH": 3, "MEDIUM": 2, "LOW": 1, "UNCERTAIN": 0}
+    min_conf_level = conf_order.get(min_conf, 2)
+
+    # Diacritic strip table (Tamil/Dravidian → ASCII)
+    _DIAC = str.maketrans(
+        "āīūṭṇḷṟṙāîÂṃẽõ",
+        "iiutnnrraiaamon",
+    )
+
+    def _strip_diacritics(s: str) -> str:
+        s = s.lower()
+        replacements = [
+            ("ā", "a"), ("ā", "a"), ("ī", "i"), ("ū", "u"), ("ṭ", "t"),
+            ("ṇ", "n"), ("ḷ", "l"), ("ṟ", "r"), ("ṙ", "r"), ("ñ", "n"),
+            ("ṅ", "n"), ("ḍ", "d"), ("ṉ", "n"), ("ḻ", "l"), ("ḥ", "h"),
+            ("ṃ", "m"), ("ö", "o"), ("ä", "a"), ("ü", "u"), ("é", "e"),
+            ("è", "e"), ("ê", "e"),
+        ]
+        for src, dst in replacements:
+            s = s.replace(src, dst)
+        return s
+
+    def _split_syllables(word: str) -> list[str]:
+        """Simple CV greedy syllable splitter."""
+        VOWELS = set("aeiouāīū")
+        CONSONANTS = set("bcdfghjklmnpqrstvwxyz")
+        syllables: list[str] = []
+        i = 0
+        current = ""
+        while i < len(word):
+            c = word[i]
+            current += c
+            if c in VOWELS:
+                if (i + 1 < len(word) and word[i+1] in CONSONANTS and
+                        (i + 2 >= len(word) or word[i+2] in VOWELS)):
+                    i += 1
+                    current += word[i]
+                syllables.append(current)
+                current = ""
+            elif len(current) >= 3:
+                syllables.append(current)
+                current = ""
+            i += 1
+        if current:
+            if syllables:
+                syllables[-1] += current
+            else:
+                syllables.append(current)
+        return [s for s in syllables if len(s) >= 1]
+
+    def _to_syllable(reading: str) -> str | None:
+        """Convert a Tamil word reading to a syllable token."""
+        # Take primary reading only (before /)
+        reading = reading.split("/")[0].strip()
+        # Remove parenthetical notes
+        reading = _re.sub(r"\(.*\)", "", reading).strip()
+        # Strip trailing uncertainty markers
+        reading = reading.rstrip("?")
+        # Skip positional/role labels like "term-m065", "init-m079"
+        if _re.match(r"(term|med|init|ctx|role)[-:]", reading.lower()):
+            return None
+        # Skip uncertain/empty
+        if not reading or "uncertain" in reading.lower() or reading in ("?", "-"):
+            return None
+        # Strip diacritics
+        clean = _strip_diacritics(reading)
+        clean = _re.sub(r"[^a-z]", "", clean)  # keep only ASCII letters
+        if not clean:
+            return None
+        # Direct lookup in syllable vocab
+        if clean in syllable_vocab:
+            return clean
+        # Try split and find first syllable in vocab
+        sylls = _split_syllables(clean)
+        for s in sylls:
+            if s in syllable_vocab:
+                return s
+        # Fallback: use first 2-3 chars if reasonable
+        if len(clean) >= 2:
+            for length in (2, 3, 1):
+                candidate = clean[:length]
+                if candidate in syllable_vocab:
+                    return candidate
+        # Last resort: return the (possibly truncated) clean reading
+        return clean[:3] if len(clean) > 3 else clean
+
+    anchor_dict: dict[str, str] = {}
+    skipped = 0
+    all_anchors = anchors_data.get("anchors", {})
+    for sign_id, info in all_anchors.items():
+        conf = str(info.get("confidence", "LOW")).upper()
+        if conf_order.get(conf, 0) < min_conf_level:
+            continue
+        reading = str(info.get("reading", ""))
+        syllable = _to_syllable(reading)
+        if syllable is None:
+            skipped += 1
+            continue
+        anchor_dict[sign_id] = syllable
+
+    return {
+        "anchor_dict": anchor_dict,
+        "n_anchors": len(anchor_dict),
+        "n_skipped": skipped,
+        "min_confidence": min_conf,
+        "verdict": f"Loaded {len(anchor_dict)} syllable-level anchors ({min_conf}+ confidence)",
+    }
+
+
+def _sanskrit_syllable_lm(inputs: dict, params: dict) -> dict:
+    """Load the Sanskrit syllable-level LM (sanskrit_syllable_lm.json).
+
+    Provides a comparable granularity LM to DravidianSyllableLM for valid
+    head-to-head SA falsification (Phase-32 T7 redo / Phase-33 T7).
+    Built by: backend/scripts/build_sanskrit_syllable_lm.py
+    """
+    import json as _json  # noqa: PLC0415
+    from pathlib import Path as _Path  # noqa: PLC0415
+
+    REPO = _Path(__file__).resolve().parent.parent.parent
+    path = REPO / "backend/glossa_lab/data/sanskrit_syllable_lm.json"
+    if not path.exists():
+        return {"error": "sanskrit_syllable_lm.json not found — run build_sanskrit_syllable_lm.py"}
+
+    data = _json.loads(path.read_text(encoding="utf-8"))
+    lm = _syllable_lm_from_json(data)
+
+    return {
+        "lm": lm,
+        "language": "sanskrit_syllable",
+        "n_bigrams": data.get("n_bigrams", len(data.get("bigrams", {}))),
+        "n_syllables": data.get("n_syllables", len(data.get("vocab", []))),
     }
 
 
@@ -732,11 +944,12 @@ def _phase30_phase32_node_defs() -> list[Any]:
         ),
         AtomicNodeDef(
             "DravidianSyllableLM",
-            "Dravidian Syllable-Level LM (Phase-32)",
+            "Dravidian Syllable-Level LM (Phase-32, fixed)",
             "Phase-32 / Decipherment",
             "Loads dravidian_syllable_lm.json — a syllable-level bigram LM built from "
-            "DEDR roots + clean Tamil-Brahmi aksharas. Richer coverage than the word-level "
-            "LM (2293 bigrams vs 486). Compatible with SADecipher node. "
+            "DEDR roots + clean Tamil-Brahmi aksharas (2293 bigrams, 655 syllables). "
+            "Fix (Phase-33): bigram_freq and ranked attributes now properly populated "
+            "so SADecipher BigamScorer works correctly. "
             "Citations: E.1 (DEDR), A.12 (Mahadevan 2003 TB). "
             "Build: backend/scripts/build_dravidian_syllable_lm.py",
             inputs=[],
@@ -749,6 +962,55 @@ def _phase30_phase32_node_defs() -> list[Any]:
             params_schema={"type": "object", "properties": {}},
             fn=_builtin_syllable_lm,
         ),
+        AtomicNodeDef(
+            "IndusAnchorSetSyllable",
+            "Indus Syllable Anchor Set (Phase-33 T1)",
+            "Phase-33 / Decipherment",
+            "Loads INDUS_FINAL_ANCHORS.json and maps each Tamil reading to a syllable "
+            "token compatible with the DravidianSyllableLM vocabulary. "
+            "Monosyllabic readings (min, kol, an, na) pass through unchanged. "
+            "Polysyllabic readings (erutu, yanai) are split and the first syllable in "
+            "the LM vocab is used. Positional labels (term-*, med-*, init-*) and "
+            "uncertain entries are skipped. Returns anchor_dict for SADecipher. "
+            "Citations: A.1 (M77), C.2 (Parpola 2010)",
+            inputs=[],
+            outputs=[
+                {"name": "anchor_dict", "type": "json"},
+                {"name": "n_anchors", "type": "number"},
+                {"name": "n_skipped", "type": "number"},
+                {"name": "verdict", "type": "text"},
+            ],
+            params_schema={
+                "type": "object",
+                "properties": {
+                    "min_confidence": {
+                        "type": "string",
+                        "default": "MEDIUM",
+                        "description": "Minimum anchor confidence: HIGH | MEDIUM | LOW",
+                    },
+                },
+            },
+            fn=_indus_anchor_set_syllable,
+        ),
+        AtomicNodeDef(
+            "SanskritSyllableLM",
+            "Sanskrit Syllable-Level LM (Phase-33 T7 redo)",
+            "Phase-33 / Decipherment",
+            "Loads sanskrit_syllable_lm.json — a Sanskrit syllable-level bigram LM "
+            "at the same granularity as DravidianSyllableLM (CV tokens, 2-3 chars). "
+            "Used for Phase-32 T7 redo: valid head-to-head SA comparison of "
+            "Dravidian vs Sanskrit as target language for the Indus script. "
+            "Build: backend/scripts/build_sanskrit_syllable_lm.py",
+            inputs=[],
+            outputs=[
+                {"name": "lm", "type": "any"},
+                {"name": "n_bigrams", "type": "number"},
+                {"name": "n_syllables", "type": "number"},
+                {"name": "language", "type": "text"},
+            ],
+            params_schema={"type": "object", "properties": {}},
+            fn=_sanskrit_syllable_lm,
+        ),
     ]
 
 
@@ -758,6 +1020,9 @@ __all__ = [
     "_permutation_test",
     "_meluhha_cooccurrence_check",
     "_builtin_syllable_lm",
+    "_syllable_lm_from_json",
+    "_indus_anchor_set_syllable",
+    "_sanskrit_syllable_lm",
     "_phase30_node_defs",
     "_phase30_phase32_node_defs",
 ]

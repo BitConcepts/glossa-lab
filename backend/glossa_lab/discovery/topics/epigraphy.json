@@ -1,0 +1,39 @@
+{
+  "id": "epigraphy",
+  "label": "Epigraphy and Script Decipherment",
+  "description": "Ancient inscription corpora, undeciphered script analyses, computational epigraphy, and comparative script studies including Cypro-Minoan, Proto-Elamite, Linear A/B, Proto-Sinaitic, and other Bronze Age writing systems relevant to the Indus context.",
+  "keywords": [
+    "undeciphered script",
+    "script decipherment",
+    "ancient inscription corpus",
+    "computational epigraphy",
+    "Bronze Age writing system",
+    "Cypro-Minoan decipherment",
+    "Proto-Elamite writing",
+    "Linear A decipherment",
+    "Proto-Sinaitic script",
+    "ancient script allograph",
+    "sign list ancient",
+    "bilingual inscription",
+    "script sign frequency",
+    "epigraphic methodology"
+  ],
+  "exclusions": [
+    "tattoo",
+    "graffiti art",
+    "cryptocurrency",
+    "Instagram font",
+    "calligraphy tutorial"
+  ],
+  "languages": ["en"],
+  "source_overrides": {
+    "newsapi": {"page_size": 20, "sort_by": "publishedAt", "search_in": "title,description"},
+    "brave":   {"count": 15, "search_endpoint": "web"},
+    "serpapi": {"engine": "google_scholar", "num": 20},
+    "openalex":{"per_page": 25, "sort": "cited_by_count:desc"},
+    "arxiv":   {"max_results": 15, "search_query_extra": "cat:cs.CL OR cat:cs.CV"},
+    "crossref":{"rows": 25},
+    "semanticscholar": {"max_results": 30},
+    "academia_rss": {"slugs": ["Epigraphy", "Ancient_Scripts", "Script_Decipherment", "Undeciphered_Scripts"]}
+  }
+}

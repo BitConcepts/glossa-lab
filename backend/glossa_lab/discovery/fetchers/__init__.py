@@ -28,6 +28,7 @@ from glossa_lab.discovery.fetchers.base import (
     to_iso,
 )
 from glossa_lab.discovery.fetchers.academia import AcademiaFetcher
+from glossa_lab.discovery.fetchers.academia_rss import AcademiaRSSFetcher
 from glossa_lab.discovery.fetchers.brave import BraveFetcher
 from glossa_lab.discovery.fetchers.crossref import CrossrefFetcher
 from glossa_lab.discovery.fetchers.doaj import DOAJFetcher
@@ -69,6 +70,8 @@ _REGISTRY: tuple[type[Fetcher], ...] = (
     # Academia.edu — keyless metadata search; auth-gated download requires
     # the user to paste a session cookie in Settings → Discovery.
     AcademiaFetcher,
+    # Academia.edu — topic-category RSS feeds (bypasses Cloudflare, no key needed).
+    AcademiaRSSFetcher,
 )
 
 

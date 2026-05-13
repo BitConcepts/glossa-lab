@@ -467,12 +467,75 @@ obtained via Academia.edu and is stored locally at
 `C:\Users\trist\Downloads\Ancient_Tax_Tokens_Trade_Licenses_and_Me.pdf`.
 NOT yet in the discovery database — add manually via Settings → Discovery → Import.
 
-### D.6 Daggumati & Revesz 2021 — Markov-chain allograph detection
+### D.5c Mukhopadhyay 2023 — Semantic scope of Indus inscriptions (full published paper)
 
-**Used in:** Phase-28 allograph family inspiration.
+**Used in:** Phase-33 semantic reanalysis; direct follow-up and peer-reviewed expansion of D.5b (2020 preprint).
+**Epistemic status:** HIGH — open-access peer-reviewed; 15k+ accesses, 147 Altmetric score.
 
-> Daggumati, Sruthi & Peter Z. Revesz. 2021. "An Indus Script Markov Chain
-> Language Model and the Identification of Indus Allographs."
+> Ansumali Mukhopadhyay, Bahata. 2023. "Semantic scope of Indus inscriptions
+> comprising taxation, trade and craft licensing, commodity control and access
+> control: archaeological and script-internal evidence."
+> *Humanities and Social Sciences Communications* 10: 972.
+> https://doi.org/10.1057/s41599-023-02320-7. Open access.
+
+**Key claims relevant to Glossa Lab research:**
+- Builds on the 2019 logographic/semasiographic structural analysis and the 2020
+  tax tokens preprint, providing archaeological cross-validation for the
+  administrative-commercial interpretation of Indus seals and tablets.
+- Seals found near city gates (Harappa), craft workshops (Chanhu-daro), and
+  public buildings (Mohenjo-daro) along with standardized weights → taxation.
+- Sealings on storage containers and "warehouse" chambers (Lothal) → commodity
+  control and licensing roles consistent with Mukhopadhyay 2020.
+- Two-sided tablets: obverse = commercial license type; reverse = fee/quantity
+  notations. Supports logographic NOT phonetic interpretation.
+- Strongly challenges any personal-name (anthroponym/toponym) reading approach;
+  no proper nouns encoded in ISC.
+- Directly supports the Phase-32 T8 finding (Enmenanak personal-name signal
+  NOT SIGNIFICANT under this framework).
+- **Local PDF:** `C:\Users\trist\Downloads\s41599-023-02320-7.pdf`
+
+### D.6 Daggumati & Revesz 2021 — Allograph detection via positional data mining
+
+**Used in:** Phase-28 allograph family inspiration; sign-list reduction methodology.
+
+> Daggumati, Shruti & Peter Z. Revesz. 2021. "A method of identifying allographs
+> in undeciphered scripts and its application to the Indus Valley Script."
+> *Humanities and Social Sciences Communications* 8: 50.
+> https://doi.org/10.1057/s41599-021-00713-0. Open access.
+
+**Key findings:**
+- General positional data-mining method for identifying redundant (allographic)
+  signs using sign position within inscriptions as the discriminating signal.
+- Applied to Indus Valley Script: finds 50 pairs (23 mirrored + 27 non-mirrored)
+  that can be merged, reducing the estimated sign list significantly.
+- Shows multi-directionality of IVS: mirrored signs denote writing direction
+  not semantic difference (except Type 5 grammatical marker cases).
+- Reduces sign count to ~417 unique graphemes; supports decipherment tractability.
+- **Local PDF:** `C:\Users\trist\Downloads\s41599-021-00713-0.pdf`
+
+### D.6b Daggumati & Revesz 2018 — CNN-based cross-script similarity
+
+**Used in:** Phase-30+ falsification context; comparative visual script analysis.
+
+> Daggumati, Shruti & Peter Z. Revesz. 2018. "Data Mining Ancient Script Image
+> Data Using Convolutional Neural Networks."
+> In *Proceedings of the 22nd International Database Engineering & Applications
+> Symposium (IDEAS 2018)*, Villa San Giovanni, Italy, June 18–20, pp. 1–6.
+> ACM. https://doi.org/10.1145/3216122.3216163.
+
+**Key findings relevant to Glossa Lab:**
+- Trained CNNs on Phoenician alphabet (22 symbols), Brahmi script (27 symbols),
+  and Indus Valley Script (25 symbols) using 3,552 images (25×25px each).
+- **Counterintuitive finding:** Indus Valley script symbols are visually CLOSER
+  to Phoenician alphabet than to Brahmi, despite geographic proximity to Brahmi.
+  - Phoenician avg. match strength (without duplicates): 0.6546
+  - Brahmi avg. match strength (without duplicates): 0.6490
+  - 14/22 Phoenician symbols uniquely mapped vs. only 13/27 Brahmi symbols.
+- Provides tentative phoneme assignments for 25 most-frequent Indus signs based
+  on CNN-derived Phoenician nearest-neighbour matches.
+- Supports NW Semitic / Phoenician contact hypothesis (relevant to Fuls NW
+  Semitic falsification experiments).
+- **Local PDF:** `C:\Users\trist\Downloads\3216122.3216163.pdf`
 
 ### D.7 Dixit et al. 2025 — ASR-net + MI-net (Florida Tech)
 
@@ -943,4 +1006,4 @@ Additional acknowledgements since the last update:
 
 ---
 
-*Last updated: 2026-05-11.*
+*Last updated: 2026-05-13.*

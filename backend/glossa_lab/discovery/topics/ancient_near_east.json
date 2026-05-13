@@ -1,0 +1,38 @@
+{
+  "id": "ancient_near_east",
+  "label": "Ancient Near East",
+  "description": "Mesopotamian archaeology, Sumerian and Akkadian studies, cuneiform tablets, Ur III administration, Early Dilmun seals, and Bronze Age trade networks connecting the Indus Valley Civilization with Mesopotamia via the Persian Gulf contact zone.",
+  "keywords": [
+    "Mesopotamia archaeology",
+    "Sumerian civilization",
+    "Akkadian language",
+    "cuneiform tablet Ur",
+    "Ur III administration",
+    "Early Dilmun seals",
+    "Meluhha Mesopotamia trade",
+    "ancient Near East Bronze Age",
+    "Persian Gulf Bronze Age",
+    "Susa archaeology",
+    "Harappan Mesopotamia contact",
+    "Proto-Cuneiform writing",
+    "Bahrain Dilmun archaeology",
+    "Gulf seals ancient"
+  ],
+  "exclusions": [
+    "Middle East politics",
+    "ISIS ISIL",
+    "tourism",
+    "modern Iraq Syria conflict"
+  ],
+  "languages": ["en"],
+  "source_overrides": {
+    "newsapi": {"page_size": 20, "sort_by": "publishedAt", "search_in": "title,description"},
+    "brave":   {"count": 15, "search_endpoint": "web"},
+    "serpapi": {"engine": "google_scholar", "num": 20},
+    "openalex":{"per_page": 25},
+    "arxiv":   {"max_results": 10},
+    "crossref":{"rows": 25},
+    "semanticscholar": {"max_results": 25},
+    "academia_rss": {"slugs": ["Assyriology", "Ancient_Mesopotamia", "Cuneiform", "Ancient_Near_East"]}
+  }
+}

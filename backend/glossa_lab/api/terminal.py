@@ -264,3 +264,53 @@ async def stream_log() -> StreamingResponse:
         media_type="text/event-stream",
         headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
     )
+
+
+class FrontendLogEntry(BaseModel):
+    level: str = "INFO"          # ERROR | WARN | INFO | DEBUG
+    message: str = ""
+    source: str = "FE"           # always "FE" from the browser
+    module: str = "frontend"     # component name or "frontend"
+    stack: str | None = None     # JS stack trace if available
+    url:   str | None = None     # window.location.href at time of error
+
+
+@router.post("/log/frontend")
+async def log_frontend(body: FrontendLogEntry) -> dict[str, str]:
+    """Receive a log entry from the frontend and write it to the backend log.
+
+    The entry is formatted as a standard structured JSON log line so it appears
+    in the BottomPanel log stream alongside backend messages, labelled [FE].
+    """
+    import datetime as _dt  # noqa: PLC0415
+    import logging  # noqa: PLC0415
+
+    # Use the same JSON format as the Python structlog handler
+    level = body.level.upper()
+    log_record = {
+        "timestamp": _dt.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S,%f")[:-3],
+        "level": level,
+        "module": body.module,
+        "source": body.source,
+        "message": body.message,
+    }
+    if body.stack:
+        log_record["stack"] = body.stack[:800]  # truncate very long stacks
+    if body.url:
+        log_record["url"] = body.url
+
+    # Write to the active log file directly as a JSON line
+    log_file = _active_log_file()
+    try:
+        log_file.parent.mkdir(parents=True, exist_ok=True)
+        with open(str(log_file), "a", encoding="utf-8") as fh:  # noqa: PTH123
+            fh.write(json.dumps(log_record) + "\n")
+    except Exception:  # noqa: BLE001
+        pass  # best-effort; never break the frontend because of a log failure
+
+    # Also emit via Python logging so it appears in any other log handlers
+    py_logger = logging.getLogger("glossa_lab.frontend")
+    py_level = getattr(logging, level, logging.INFO)
+    py_logger.log(py_level, "[FE] %s", body.message)
+
+    return {"ok": "logged"}

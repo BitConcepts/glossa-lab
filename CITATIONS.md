@@ -436,6 +436,37 @@ Key papers used:
 > inner logic of message conveyance." *Palgrave Communications.*
 > https://doi.org/10.2139/ssrn.3184583.
 
+### D.5b Mukhopadhyay 2020 — Tax tokens, trade licences, metrological records
+
+**Used in:** Phase-33 semantic reanalysis of fish-sign interpretation.
+**Epistemic status:** HIGH — directly challenges the fish-sign = mīn phonetic reading used in Phase-29d.
+
+> Ansumali Mukhopadhyay, Bahata. 2020. "Ancient Tax Tokens, Trade Licenses
+> and Metrological Records?: Making Sense of Indus Inscribed Objects Through
+> Script-Internal, Contextual, Linguistic, and Ethnohistorical Lenses."
+> Preprint. https://doi.org/10.2139/ssrn.3538764.
+
+**Key claims relevant to Glossa Lab research:**
+- Fish signs (M-047, M-306 etc.) signify **apotropaic eye-beads** (carnelian/agate
+  "fish-eye-beads" documented in Mesopotamian lexicons as NA4-IGI-KU6), NOT the
+  phonetic reading mīn (fish/star) used in Phase-29d reverse-Janabiyah search.
+  This supports the Phase-32 T8 finding (Enmenanak signal NOT SIGNIFICANT).
+- Bird signs signify lapis lazuli / precious stones via the ancient root
+  "Kapautaka" (pigeon-coloured, Sanskrit/Old Persian for lapis lazuli blue).
+- Sign `maṇi` (bead/eye/gem/amulet) connects Tamil, Sanskrit, and Akkadian
+  `maninnu` (Amarna letters), providing independent support for the IVC–
+  Mesopotamia trade network hypothesis.
+- 9 structural sign-classes (PF1, PF2, PPF, CM, PCL, NUM, MET, CROP, ENC)
+  with semantic roles in tax-administration — consistent with Phase-30 positional
+  grammar findings.
+- Inscriptions = logographic tax/trade records, NOT phonetic personal-name lists.
+  This is a strong alternative to the reverse-Janabiyah phonetic reading approach.
+
+**Citation note:** The PDF `Ancient_Tax_Tokens_Trade_Licenses_and_Me.pdf` was
+obtained via Academia.edu and is stored locally at
+`C:\Users\trist\Downloads\Ancient_Tax_Tokens_Trade_Licenses_and_Me.pdf`.
+NOT yet in the discovery database — add manually via Settings → Discovery → Import.
+
 ### D.6 Daggumati & Revesz 2021 — Markov-chain allograph detection
 
 **Used in:** Phase-28 allograph family inspiration.

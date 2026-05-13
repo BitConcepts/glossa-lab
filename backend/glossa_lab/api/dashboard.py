@@ -365,8 +365,11 @@ async def _generate_insight(
         from glossa_lab.ai_utils import call_llm  # noqa: PLC0415
 
         _log.info("dashboard insight: calling LLM (json_mode=True, %d items)", len(items))
+        loop = asyncio.get_event_loop()
+        raw = ""
+
+        # ── Attempt 1: reasoning bucket with full JSON schema ────────────
         try:
-            loop = asyncio.get_event_loop()
             raw = await loop.run_in_executor(
                 None,
                 lambda: call_llm(
@@ -386,7 +389,7 @@ async def _generate_insight(
                     bucket="reasoning",
                     json_mode=True,
                     json_schema=_INSIGHT_JSON_SCHEMA,
-                    max_tokens=1500, temperature=0.2,
+                    max_tokens=2000, temperature=0.2,
                 ),
             )
         except ValueError as ve:
@@ -406,13 +409,14 @@ async def _generate_insight(
                 ],
                 "model": "no-provider",
             }
-        except RuntimeError as reason_exc:
-            # RuntimeError from call_llm = API error (often empty/garbage response)
-            # Retry with conversational bucket as fallback before giving up
-            _log.warning(
-                "dashboard insight: reasoning bucket failed (%s), retrying with conversational",
-                reason_exc,
+        except Exception as exc:  # noqa: BLE001 — RuntimeError or other LLM error
+            _log.info(
+                "dashboard insight: reasoning bucket failed (%s), trying conversational",
+                type(exc).__name__,
             )
+
+        # ── Attempt 2: conversational bucket, no json_schema (wider compat) ─
+        if not raw or not raw.strip():
             try:
                 raw = await loop.run_in_executor(
                     None,
@@ -420,34 +424,65 @@ async def _generate_insight(
                         [
                             {"role": "system", "content": (
                                 "/no_think\n"
-                                "You produce concise JSON for a research dashboard. "
-                                "Output ONLY a JSON object with keys: highlights, what_it_means, impact, next_actions. "
-                                "No other keys. No markdown. No explanation. "
-                                "Keep each string value under 120 characters. Be brief."
+                                "Output ONLY a JSON object with exactly these keys: "
+                                "highlights (array), what_it_means (string), "
+                                "impact (array), next_actions (array). "
+                                "No markdown. No explanation. Max 120 chars per value."
                             )},
                             {"role": "user", "content": prompt},
                         ],
                         bucket="conversational",
                         json_mode=True,
-                        max_tokens=1200, temperature=0.3,
+                        max_tokens=1800, temperature=0.3,
                     ),
                 )
             except Exception as conv_exc:  # noqa: BLE001
-                _log.warning("dashboard insight: conversational bucket also failed (%s)", conv_exc)
-                raw = ""
-        # Guard against empty / whitespace-only LLM responses (observed
-        # when the provider times out or returns no content).
+                _log.info("dashboard insight: conversational bucket failed (%s)", type(conv_exc).__name__)
+
+        # ── Attempt 3: reasoning bucket, shorter prompt, no schema ──────
         if not raw or not raw.strip():
-            _log.warning("dashboard insight LLM returned empty response")
+            short_items = items[:8]  # minimal context to reduce token pressure
+            short_prompt = _build_insight_prompt(short_items, studies[:5], experiments[:20], goal=goal)
+            try:
+                raw = await loop.run_in_executor(
+                    None,
+                    lambda: call_llm(
+                        [
+                            {"role": "system", "content": (
+                                "/no_think\n"
+                                "Return a JSON object: {\"highlights\":[],\"what_it_means\":\"\","
+                                "\"impact\":[],\"next_actions\":[]}"
+                            )},
+                            {"role": "user", "content": short_prompt},
+                        ],
+                        bucket="reasoning",
+                        json_mode=True,
+                        max_tokens=1200, temperature=0.2,
+                    ),
+                )
+            except Exception as s_exc:  # noqa: BLE001
+                _log.info("dashboard insight: short-prompt attempt failed (%s)", type(s_exc).__name__)
+
+        # Guard against empty / whitespace-only LLM responses.
+        if not raw or not raw.strip():
+            _log.warning(
+                "dashboard insight LLM returned empty response after 3 attempts "
+                "(reasoning → conversational → short-prompt)"
+            )
             return {
                 "highlights": [],
                 "what_it_means": (
-                    "Insight generation returned empty \u2014 this usually means "
-                    "the LLM provider timed out or returned no content. "
-                    "Try regenerating."
+                    "Insight generation returned empty after 3 attempts \u2014 "
+                    "the LLM provider may be overloaded or the model assignments may "
+                    "not be configured. Try Auto-Configure in Settings \u2192 AI, "
+                    "then click Regenerate."
                 ),
                 "impact": [],
-                "next_actions": [],
+                "next_actions": [
+                    {"label": "Auto-Configure AI", "action_type": "open_view",
+                     "params": {"view": "settings", "tab": "ai"},
+                     "rationale": "Re-run auto-configure to assign the best available model."},
+                ],
                 "model": "empty-fallback",
             }
         _log.info("dashboard insight: got %d chars from LLM", len(raw))

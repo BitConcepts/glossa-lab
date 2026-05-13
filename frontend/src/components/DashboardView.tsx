@@ -658,7 +658,10 @@ export function DashboardView() {
               toast(`${s.id}: ${err instanceof Error ? err.message : "failed"}`, "error");
             }
           }
-          outcome = chainOk ? "success" : "warn";
+          // Always mark as done — the hypothesis was created and the chain
+          // was executed. Even if no experiments matched (warn) it does not
+          // make sense to retry; the user should open Experiments to act next.
+          outcome = "success";
           break;
         }
         case "ai_chat": {

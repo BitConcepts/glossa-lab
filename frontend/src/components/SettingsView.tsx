@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import {
   getEnvPackages,
   getEnvStatus,
+  getHealth,
   getSettings,
   runEnvRebuild, runEnvSetup, runEnvUpgrade,
   type EnvPackage, type EnvStatus,
@@ -228,12 +229,19 @@ export function SettingsView() {
   const setTab = (t: SettingsTab) => { setTabState(t); localStorage.setItem(SETTINGS_TAB_KEY, t); };
 
   const [dataDir, setDataDir] = useState("");
+  const [backendVersion, setBackendVersion] = useState("");
+  const [backendUptime, setBackendUptime] = useState("");
   const [error, setError] = useState("");
 
   const load = async () => {
     try {
-      const s = await getSettings();
+      const [s, h] = await Promise.all([getSettings(), getHealth()]);
       setDataDir(s.data_dir);
+      setBackendVersion(h.version ?? "");
+      const u = h.uptime_seconds ?? 0;
+      const mins = Math.floor(u / 60);
+      const hrs = Math.floor(mins / 60);
+      setBackendUptime(hrs > 0 ? `${hrs}h ${mins % 60}m` : mins > 0 ? `${mins}m` : `${Math.round(u)}s`);
       setError("");
     } catch {
       // Backend might not be available; localStorage still works
@@ -305,32 +313,13 @@ export function SettingsView() {
             <table style={{ borderCollapse: "collapse" }}>
               <tbody>
                 <InfoRow label="Data directory" value={dataDir || "—"} mono />
-                <InfoRow label="OCR pipeline" value="ocr_mahadevan.py (pixtral-12b)" />
-                <InfoRow label="Corpus" value="Mahadevan (1977) — Internet Archive" />
-                <InfoRow label="Sign mapping" value="Fuls (2023) Chapter 2.4 — 386 entries" />
+                {backendVersion && <InfoRow label="Backend version" value={backendVersion} />}
+                {backendUptime && <InfoRow label="Backend uptime" value={backendUptime} />}
               </tbody>
             </table>
-          </section>
-
-          <section style={sectionStyle}>
-            <h3 style={sectionTitleStyle}>OCR Quick Start</h3>
-            <p style={hintTextStyle}>
-              After setting your Mistral key, run OCR from the Experiments tab or from the terminal:
-            </p>
-            <pre style={codeStyle}>
-{`# Bigram + frequency tables (29 pages, fastest)
-python ocr_mahadevan.py --target tables
-
-# All inscription sequences (124 pages)
-python ocr_mahadevan.py --target texts`}
-            </pre>
-          </section>
-
-          <section style={sectionStyle}>
-            <h3 style={sectionTitleStyle}>About Glossa Lab</h3>
-            <p style={hintTextStyle}>
-              17 analysis pipelines for ancient script analysis. Real Indus data extracted
-              from Fuls (2023) <em>A Catalog of Indus Signs</em>: 713 signs, 17,990 token occurrences.
+            <p style={{ ...hintTextStyle, marginTop: 10, color: "#9ca3af" }}>
+              Corpus, sign mapping, and pipeline settings are project-specific.
+              Open or create a project to configure them.
             </p>
           </section>
         </>
@@ -450,14 +439,3 @@ const ollamaSection: React.CSSProperties = {
   background: "#fafffe",
 };
 
-const codeStyle: React.CSSProperties = {
-  background: "#1e293b",
-  color: "#e2e8f0",
-  padding: "12px 14px",
-  borderRadius: 6,
-  fontSize: 12,
-  fontFamily: "monospace",
-  margin: "8px 0 0",
-  overflowX: "auto",
-  lineHeight: 1.7,
-};

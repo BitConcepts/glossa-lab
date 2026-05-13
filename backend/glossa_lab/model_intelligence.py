@@ -389,6 +389,36 @@ def _sync_static_fallback() -> dict[str, Any]:
         "Qwen/Qwen3-14B":  {"ifeval": 79.5, "bbh": 73.0, "math": 68.0, "gpqa": 41.5, "musr": 52.0, "mmlu_pro": 64.5},
         # Qwen2.5-14B (HF org-prefixed form)
         "Qwen/Qwen2.5-14B-Instruct": {"ifeval": 81.0, "bbh": 73.0, "math": 70.0, "gpqa": 41.0, "musr": 53.0, "mmlu_pro": 65.0},
+        # ── Current-generation OpenAI models (2024-2025) ────────────────────────
+        # o1 — base name; o1-2024-12-17 normalises to "o1" via YYYY-MM-DD stripping
+        # and ALSO matches via T4 to o1-preview (both normalise to "o1")
+        "o1":      {"ifeval": 86.0, "bbh": 84.5, "math": 94.8, "gpqa": 73.3, "musr": 62.5, "mmlu_pro": 75.8},
+        "o1-pro":  {"ifeval": 91.0, "bbh": 86.0, "math": 96.0, "gpqa": 76.0, "musr": 68.0, "mmlu_pro": 81.0},
+        # o3 — OpenAI flagship reasoning model 2025; o3-2025-04-16 → normalises to "o3"
+        "o3":      {"ifeval": 91.0, "bbh": 87.0, "math": 97.0, "gpqa": 78.0, "musr": 68.0, "mmlu_pro": 82.0},
+        # o3-mini — efficient reasoning; o3-mini-2025-01-31 → normalises to "o3-mini"
+        "o3-mini": {"ifeval": 88.0, "bbh": 84.0, "math": 94.0, "gpqa": 70.0, "musr": 62.0, "mmlu_pro": 78.0},
+        # o4-mini — strong fast reasoning; o4-mini-2025-04-16 → normalises to "o4-mini"
+        "o4-mini": {"ifeval": 89.0, "bbh": 85.0, "math": 95.0, "gpqa": 72.0, "musr": 63.0, "mmlu_pro": 79.0},
+        # GPT-4.1 family (2025) — date-versioned variants normalise to these via YYYY-MM-DD strip
+        "gpt-4.1":      {"ifeval": 88.0, "bbh": 83.0, "math": 79.0, "gpqa": 56.0, "musr": 67.0, "mmlu_pro": 76.0},
+        "gpt-4.1-mini": {"ifeval": 83.0, "bbh": 77.0, "math": 66.0, "gpqa": 45.0, "musr": 55.0, "mmlu_pro": 67.0},
+        "gpt-4.1-nano": {"ifeval": 72.0, "bbh": 65.0, "math": 48.0, "gpqa": 30.0, "musr": 42.0, "mmlu_pro": 54.0},
+        # ── Current-generation Google Gemini models ─────────────────────────────
+        # gemini-2.5-pro and gemini-2.5-flash already handled by T4 normalisation
+        # matching gemini-2.5-pro-preview-05-06 → gemini-2-5-pro.
+        # Adding explicit T1 entries for belt-and-suspenders matching.
+        "gemini-2.5-pro":   {"ifeval": 88.0, "bbh": 84.0, "math": 85.0, "gpqa": 62.0, "musr": 65.0, "mmlu_pro": 78.0},
+        "gemini-2.5-flash": {"ifeval": 85.0, "bbh": 80.5, "math": 78.5, "gpqa": 52.0, "musr": 60.0, "mmlu_pro": 73.0},
+        # Gemini 3.x series (2025 frontier models)
+        "gemini-3-pro-preview":     {"ifeval": 92.0, "bbh": 88.0, "math": 89.0, "gpqa": 68.0, "musr": 73.0, "mmlu_pro": 84.0},
+        "gemini-3.1-pro-preview":   {"ifeval": 92.0, "bbh": 88.0, "math": 90.0, "gpqa": 69.0, "musr": 74.0, "mmlu_pro": 84.0},
+        "gemini-3-flash-preview":   {"ifeval": 87.0, "bbh": 82.0, "math": 81.0, "gpqa": 57.0, "musr": 65.0, "mmlu_pro": 78.0},
+        "gemini-3.1-flash-lite":    {"ifeval": 82.0, "bbh": 77.0, "math": 72.0, "gpqa": 47.0, "musr": 57.0, "mmlu_pro": 69.0},
+        "gemini-3.1-flash-lite-preview": {"ifeval": 82.0, "bbh": 77.0, "math": 72.0, "gpqa": 47.0, "musr": 57.0, "mmlu_pro": 69.0},
+        # gemini-pro-latest / gemini-flash-latest aliases
+        "gemini-pro-latest":   {"ifeval": 88.0, "bbh": 84.0, "math": 85.0, "gpqa": 62.0, "musr": 65.0, "mmlu_pro": 78.0},
+        "gemini-flash-latest": {"ifeval": 85.0, "bbh": 80.5, "math": 78.5, "gpqa": 52.0, "musr": 60.0, "mmlu_pro": 73.0},
     }
 
     db = get_db()

@@ -1,0 +1,98 @@
+{
+  "id": "indus_phase33_t1_sa_syllable",
+  "name": "Indus Phase-33 T1 — SA Decipherment M77 → Dravidian Syllable LM (Fixed)",
+  "description": "Phase-33 T1: The CORRECTED Phase-32 T4 run. Two bugs fixed: (1) DravidianSyllableLM now properly populates bigram_freq and ranked so BigramScorer works; (2) IndusAnchorSetSyllable maps INDUS_FINAL_ANCHORS to syllable tokens (not whole Tamil words) compatible with the syllable LM. Expected: SA should now converge meaningfully and produce syllable-level assignments (ka, ta, na, mi, etc.) rather than random word-level Tamil assignments. If mean_consistency > 0.5 and hci_count > 30, the syllable-level model is discriminative and supports the Dravidian hypothesis. Compare to Sanskrit T7 redo for falsification. Citations: E.1 (DEDR), A.12 (Mahadevan 2003 TB), A.1 (M77), C.2 (Parpola 2010).",
+  "auto_migrated": false,
+  "nodes": [
+    {
+      "id": "m77",
+      "type": "expNode",
+      "data": {
+        "atomicId": "M77InscriptionLoader",
+        "label": "Load M77 Holdat corpus (1669 inscriptions)",
+        "params": { "use_raw": false, "label": "indus_m77" }
+      },
+      "position": { "x": 60, "y": 120 }
+    },
+    {
+      "id": "lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "DravidianSyllableLM",
+        "label": "Dravidian Syllable LM (FIXED: bigram_freq + ranked)",
+        "params": {}
+      },
+      "position": { "x": 60, "y": 320 }
+    },
+    {
+      "id": "anchors",
+      "type": "expNode",
+      "data": {
+        "atomicId": "IndusAnchorSetSyllable",
+        "label": "Indus Syllable Anchors (MEDIUM+ confidence, from INDUS_FINAL_ANCHORS)",
+        "params": { "min_confidence": "MEDIUM" }
+      },
+      "position": { "x": 60, "y": 520 }
+    },
+    {
+      "id": "sa",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA M77 → Dravidian Syllable LM (5 seeds × 10000 iters)",
+        "params": {
+          "n_seeds": 5,
+          "max_iterations": 10000,
+          "restarts": 8,
+          "surjective": true,
+          "ocp_weight": 0.0
+        }
+      },
+      "position": { "x": 480, "y": 320 }
+    },
+    {
+      "id": "cons",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConsistencyScorer",
+        "label": "Per-sign consistency (Dravidian syllable)",
+        "params": {}
+      },
+      "position": { "x": 840, "y": 320 }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Collect Phase-33 T1 results",
+        "params": {}
+      },
+      "position": { "x": 1100, "y": 320 }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Phase-33 T1 results",
+        "params": { "filename": "phase33_t1_sa_syllable.json" }
+      },
+      "position": { "x": 1400, "y": 320 }
+    }
+  ],
+  "edges": [
+    { "id": "e_m77_sa",       "source": "m77",     "target": "sa",    "sourcePort": "sequences",        "targetPort": "sequences" },
+    { "id": "e_lm_sa",        "source": "lm",      "target": "sa",    "sourcePort": "lm",               "targetPort": "lm" },
+    { "id": "e_anch_sa",      "source": "anchors",  "target": "sa",    "sourcePort": "anchor_dict",      "targetPort": "anchors" },
+    { "id": "e_sa_cons",      "source": "sa",      "target": "cons",  "sourcePort": "all_mappings",     "targetPort": "all_mappings" },
+    { "id": "e_sa_merge_pm",  "source": "sa",      "target": "merge", "sourcePort": "proposed_mapping", "targetPort": "a" },
+    { "id": "e_sa_merge_mc",  "source": "sa",      "target": "merge", "sourcePort": "mean_consistency", "targetPort": "b" },
+    { "id": "e_sa_merge_hci", "source": "sa",      "target": "merge", "sourcePort": "hci_count",        "targetPort": "c" },
+    { "id": "e_m77_merge",    "source": "m77",     "target": "merge", "sourcePort": "n_inscriptions",   "targetPort": "d" },
+    { "id": "e_lm_merge",     "source": "lm",      "target": "merge", "sourcePort": "n_bigrams",        "targetPort": "e" },
+    { "id": "e_anch_merge",   "source": "anchors",  "target": "merge", "sourcePort": "n_anchors",        "targetPort": "f" },
+    { "id": "e_cons_merge",   "source": "cons",    "target": "merge", "sourcePort": "mean_consistency", "targetPort": "g" },
+    { "id": "e_merge_out",    "source": "merge",   "target": "out",   "sourcePort": "json",             "targetPort": "data" }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "id": "indus_phase33_t7_sanskrit_syllable",
+  "name": "Indus Phase-33 T7 — Sanskrit Syllable LM Falsification (T7 Redo)",
+  "description": "Phase-33 T7 redo: The CORRECTED Phase-32 T7 falsification. Previous T7 used a character-level Sanskrit LM (728K chars, SA assigned all signs to 'a') — methodologically invalid. This redo uses SanskritSyllableLM (424 syllables, 651 bigrams, same granularity as DravidianSyllableLM). Both experiments run WITHOUT anchors for a fair comparison: the SA searches the full 390-sign M77 space against each target LM. If Dravidian (T1) mean_consistency > Sanskrit (T7), the Dravidian hypothesis survives the head-to-head falsification. Null hypothesis H0: Sanskrit fits equally well as Dravidian. Citations: Sanskrit Vedic sources, A.1 (M77).",
+  "auto_migrated": false,
+  "nodes": [
+    {
+      "id": "m77",
+      "type": "expNode",
+      "data": {
+        "atomicId": "M77InscriptionLoader",
+        "label": "Load M77 Holdat corpus (1669 inscriptions)",
+        "params": { "use_raw": false, "label": "indus_m77" }
+      },
+      "position": { "x": 60, "y": 120 }
+    },
+    {
+      "id": "lm_sk",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SanskritSyllableLM",
+        "label": "Sanskrit Syllable LM (424 syllables, 651 bigrams, same granularity)",
+        "params": {}
+      },
+      "position": { "x": 60, "y": 320 }
+    },
+    {
+      "id": "sa",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA M77 → Sanskrit Syllable LM (5 seeds × 10000 iters, NO anchors)",
+        "params": {
+          "n_seeds": 5,
+          "max_iterations": 10000,
+          "restarts": 8,
+          "surjective": true,
+          "ocp_weight": 0.0
+        }
+      },
+      "position": { "x": 480, "y": 220 }
+    },
+    {
+      "id": "cons",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConsistencyScorer",
+        "label": "Per-sign consistency (Sanskrit syllable)",
+        "params": {}
+      },
+      "position": { "x": 840, "y": 220 }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Collect Phase-33 T7 results",
+        "params": {}
+      },
+      "position": { "x": 1100, "y": 220 }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Phase-33 T7 Sanskrit syllable results",
+        "params": { "filename": "phase33_t7_sanskrit_syllable.json" }
+      },
+      "position": { "x": 1400, "y": 220 }
+    }
+  ],
+  "edges": [
+    { "id": "e_m77_sa",      "source": "m77",   "target": "sa",    "sourcePort": "sequences",        "targetPort": "sequences" },
+    { "id": "e_lm_sa",       "source": "lm_sk", "target": "sa",    "sourcePort": "lm",               "targetPort": "lm" },
+    { "id": "e_sa_cons",     "source": "sa",    "target": "cons",  "sourcePort": "all_mappings",     "targetPort": "all_mappings" },
+    { "id": "e_sa_merge_pm", "source": "sa",    "target": "merge", "sourcePort": "proposed_mapping", "targetPort": "a" },
+    { "id": "e_sa_merge_mc", "source": "sa",    "target": "merge", "sourcePort": "mean_consistency", "targetPort": "b" },
+    { "id": "e_sa_merge_hci","source": "sa",    "target": "merge", "sourcePort": "hci_count",        "targetPort": "c" },
+    { "id": "e_m77_merge",   "source": "m77",   "target": "merge", "sourcePort": "n_inscriptions",   "targetPort": "d" },
+    { "id": "e_lm_merge",    "source": "lm_sk", "target": "merge", "sourcePort": "n_bigrams",        "targetPort": "e" },
+    { "id": "e_cons_merge",  "source": "cons",  "target": "merge", "sourcePort": "mean_consistency", "targetPort": "f" },
+    { "id": "e_merge_out",   "source": "merge", "target": "out",   "sourcePort": "json",             "targetPort": "data" }
+  ]
+}

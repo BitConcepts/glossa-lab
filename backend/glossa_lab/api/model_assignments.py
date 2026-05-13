@@ -51,8 +51,9 @@ def _normalize_model_id(name: str) -> str:
     n = n.split(":")[0]                                     # strip Ollama tag
     n = n.lower()
     n = _re.sub(r"[._]", "-", n)                           # normalise separators
-    n = _re.sub(r"-\d{8}$", "", n)                         # strip YYYYMMDD dates
-    n = _re.sub(r"-preview(-\d{2}-\d{2})?$", "", n)        # strip preview labels
+    n = _re.sub(r"-\d{8}$", "", n)                           # strip YYYYMMDD  (20250514)
+    n = _re.sub(r"-\d{4}-\d{2}-\d{2}$", "", n)              # strip YYYY-MM-DD (2025-04-16)
+    n = _re.sub(r"-preview(-\d{2}-\d{2})?$", "", n)          # strip preview labels
     n = _re.sub(r"-rc\d*$", "", n)                          # strip RC labels
     n = _re.sub(                                             # strip quant/precision
         r"-(awq|gptq|gguf|4bit|8bit|fp16|bf16|int4|int8|ggml)(-.+)?$",
@@ -243,15 +244,23 @@ async def auto_configure(profile: str = Query("mixed")) -> dict[str, Any]:
             "message": "No models found. Test your providers first to fetch model lists.",
         }
 
-    # Try to use model_scores for smart assignment
+    # Try to use model_scores for smart assignment.
+    # IMPORTANT: list_model_scores() returns all rows ordered by reasoning DESC.
+    # The same model_name can appear in multiple sources (static + HF).  We must
+    # keep the entry with the HIGHEST total score rather than last-write-wins,
+    # otherwise lower-quality HF partial data can silently overwrite the
+    # complete static baseline scores.
     raw_scores = await db.list_model_scores()
     score_map: dict[str, dict[str, float]] = {}
     for s in raw_scores:
-        score_map[s["model_name"]] = {
+        mn = s["model_name"]
+        new_bscores = {
             "reasoning": s.get("reasoning_score", 0.0),
             "conversational": s.get("conversational_score", 0.0),
             "longform": s.get("longform_score", 0.0),
         }
+        if mn not in score_map or sum(new_bscores.values()) > sum(score_map[mn].values()):
+            score_map[mn] = new_bscores
 
     # Pre-build a normalised lookup index.  When multiple raw keys normalise
     # to the same string, keep the entry with the highest aggregate score so

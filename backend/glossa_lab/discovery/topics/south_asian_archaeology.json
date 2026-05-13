@@ -1,0 +1,38 @@
+{
+  "id": "south_asian_archaeology",
+  "label": "South Asian Archaeology",
+  "description": "Bronze Age South Asian material culture, IVC urban planning and trade goods, Chalcolithic and proto-historic South Asian sites, ancient DNA and population genetics of the subcontinent, and the transition from IVC to post-urban periods.",
+  "keywords": [
+    "South Asian archaeology",
+    "Bronze Age South Asia",
+    "IVC material culture",
+    "Chalcolithic India Pakistan",
+    "proto-historic South Asia",
+    "Mehrgarh archaeology",
+    "IVC urban planning",
+    "Harappan weights measures",
+    "IVC collapse post-urban",
+    "ancient DNA South Asia aDNA",
+    "BMAC Bactria Margiana",
+    "Indus trade network lapis",
+    "Vedic archaeology",
+    "Painted Grey Ware"
+  ],
+  "exclusions": [
+    "real estate",
+    "tourism India",
+    "political India Pakistan",
+    "modern agriculture"
+  ],
+  "languages": ["en"],
+  "source_overrides": {
+    "newsapi": {"page_size": 20, "sort_by": "publishedAt", "search_in": "title,description"},
+    "brave":   {"count": 15, "search_endpoint": "web"},
+    "serpapi": {"engine": "google_scholar", "num": 20},
+    "openalex":{"per_page": 25},
+    "arxiv":   {"max_results": 10},
+    "crossref":{"rows": 25},
+    "semanticscholar": {"max_results": 25},
+    "academia_rss": {"slugs": ["South_Asian_Archaeology", "Bronze_Age_South_Asia", "Harappan_Civilization", "South_Asian_History"]}
+  }
+}

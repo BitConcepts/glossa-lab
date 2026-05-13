@@ -102,8 +102,9 @@ class GDELTFetcher(Fetcher):
     requires = ()  # keyless
     rate_delay: float = 60.0
     _MAX_RETRIES: int = 3  # retry up to 3 times with exponential backoff before tripping
-    # GDELT explicitly requires ≥5s between requests. We use 7s to be safe.
-    _RETRY_BASE: float = 7.0  # 7s → 14s → 28s backoff (all ≥5s GDELT minimum)
+    # GDELT explicitly requires ≥5s between requests; we use 12s to be safe.
+    # Exponential: 12s → 24s → 48s (all well above the 5s minimum).
+    _RETRY_BASE: float = 12.0
 
     async def fetch(
         self, topic: TopicProfile, *, since: datetime | None = None,
@@ -154,14 +155,14 @@ class GDELTFetcher(Fetcher):
                         or "connection" in err_str.lower()
                     )
                     if is_retryable and attempt < self._MAX_RETRIES:
-                        # Parse Retry-After header if present in the error message.
-                        backoff = self._RETRY_BASE * (2 ** attempt)  # 2s → 4s → 8s
-                        _log.info(
+                        backoff = self._RETRY_BASE * (2 ** attempt)  # 12s → 24s → 48s
+                        # Log 429 retries at DEBUG — they are managed by the
+                        # rate-delay + circuit breaker and are not errors.
+                        _log.debug(
                             "GDELT %s for topic %s (attempt %d/%d), "
-                            "retrying in %.1fs: %s",
-                            "429" if is_429 else "error", topic.id,
-                            attempt + 1, self._MAX_RETRIES,
-                            backoff, err_str[:200],
+                            "retrying in %.1fs",
+                            "429" if is_429 else "transient-error", topic.id,
+                            attempt + 1, self._MAX_RETRIES, backoff,
                         )
                         _update_last_request()
                         # Release lock, backoff, then loop to retry.

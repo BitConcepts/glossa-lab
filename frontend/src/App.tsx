@@ -347,8 +347,9 @@ function AppContent() {
       let view = (e as CustomEvent<{ view: string }>).detail?.view as Tab | undefined;
       // Redirect legacy exp-builder links to the unified experiments canvas
       if (view === "exp-builder") view = "experiments";
-      // Redirect old "studies" / "indus-data" to dashboard
-      if ((view as string) === "studies" || (view as string) === "indus-data") view = "dashboard" as Tab;
+      // Redirect "studies" to builder (Projects/Studies view); "indus-data" to dashboard
+      if ((view as string) === "studies") view = "builder" as Tab;
+      if ((view as string) === "indus-data") view = "dashboard" as Tab;
       if (view && (allItems.some(i => i.id === view) || view === "experiments")) setTab(view);
     };
     window.addEventListener("glossa:navigate", handler);

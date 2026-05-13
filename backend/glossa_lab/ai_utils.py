@@ -171,6 +171,33 @@ def _get_provider_prefs() -> dict[str, Any]:
     return _load_keys().get(_PROVIDERS_KEY, {})
 
 
+# Models known to use chain-of-thought / thinking tokens internally.
+# These require special handling with json_mode to avoid empty responses.
+_THINKING_MODEL_PATTERNS = (
+    "qwen3", "qwen2.5",   # Qwen3 and Qwen2.5 series use /think tokens
+    "deepseek-r",          # DeepSeek-R reasoning models
+    "deepseek-v",          # DeepSeek-V3+ reasoning variants
+    "qwq",                 # QwQ reasoning model
+    "thinking",            # any model with 'thinking' in the name
+)
+
+
+def _is_thinking_model(model: str) -> bool:
+    """Return True if this model generates internal thinking tokens."""
+    m = model.lower()
+    return any(p in m for p in _THINKING_MODEL_PATTERNS)
+
+
+def _strip_think_tags(text: str) -> str:
+    """Remove <think>...</think> reasoning blocks from model output."""
+    import re as _re  # noqa: PLC0415
+    # Remove full think blocks (including multiline)
+    cleaned = _re.sub(r"<think>.*?</think>", "", text, flags=_re.DOTALL)
+    # Also handle unclosed <think> blocks (truncated response)
+    cleaned = _re.sub(r"<think>.*$", "", cleaned, flags=_re.DOTALL)
+    return cleaned.strip()
+
+
 def _call_ollama(
     model: str,
     messages: list[dict[str, str]],
@@ -181,16 +208,36 @@ def _call_ollama(
 ) -> str:
     """Call an Ollama instance via its /api/chat endpoint."""
     base = (base_url or "http://localhost:11434").rstrip("/")
+    is_thinking = _is_thinking_model(model)
+
+    # For thinking models with json_mode: Ollama's format=json can produce
+    # empty responses because the model spends all tokens on <think> blocks.
+    # Strategy: don't set format=json for thinking models; instead rely on
+    # /no_think system directive + post-processing to extract the JSON.
+    use_native_json = json_mode and not is_thinking
+
+    # Inject /no_think into the system message for thinking models so they
+    # don't spend max_tokens on reasoning when we need a concise JSON reply.
+    adj_messages = list(messages)
+    if is_thinking and adj_messages:
+        first = adj_messages[0]
+        if first.get("role") == "system":
+            content = first["content"]
+            if "/no_think" not in content:
+                adj_messages[0] = {**first, "content": "/no_think\n" + content}
+        else:
+            adj_messages.insert(0, {"role": "system", "content": "/no_think"})
+
     payload: dict = {
         "model": model,
-        "messages": messages,
+        "messages": adj_messages,
         "stream": False,
         "options": {
             "temperature": temperature,
             "num_predict": max_tokens,
         },
     }
-    if json_mode:
+    if use_native_json:
         payload["format"] = "json"
     body = json.dumps(payload).encode()
     req = urllib.request.Request(
@@ -202,7 +249,16 @@ def _call_ollama(
     try:
         with urllib.request.urlopen(req, timeout=180) as resp:
             data = json.loads(resp.read().decode())
-        return data["message"]["content"]
+        content: str = data["message"]["content"]
+        # Always strip any leaked <think> blocks (Ollama may or may not strip them)
+        content = _strip_think_tags(content)
+        # For thinking models in json_mode: extract the JSON from the response
+        if json_mode and is_thinking and content:
+            try:
+                content = _extract_json(content)
+            except ValueError:
+                pass  # return as-is; caller will handle bad JSON
+        return content
     except urllib.error.URLError as exc:
         raise RuntimeError(
             f"Ollama not reachable at {base}. "

@@ -102,7 +102,8 @@ class GDELTFetcher(Fetcher):
     requires = ()  # keyless
     rate_delay: float = 60.0
     _MAX_RETRIES: int = 3  # retry up to 3 times with exponential backoff before tripping
-    _RETRY_BASE: float = 2.0  # 2s → 4s → 8s backoff
+    # GDELT explicitly requires ≥5s between requests. We use 7s to be safe.
+    _RETRY_BASE: float = 7.0  # 7s → 14s → 28s backoff (all ≥5s GDELT minimum)
 
     async def fetch(
         self, topic: TopicProfile, *, since: datetime | None = None,

@@ -81,9 +81,23 @@ class AcademiaFetcher(Fetcher):
     source = "academia"
     requires = ()  # keyless for search metadata
 
+    # NOTE (2024-2025): Academia.edu now uses Cloudflare's bot-protection
+    # challenge page, which always returns HTTP 403 ("Just a moment...") for
+    # programmatic/non-browser requests regardless of User-Agent.  The public
+    # search endpoint is no longer accessible without a real browser session
+    # or a Cloudflare clearance cookie.  Until Academia.edu provides a proper
+    # API, all fetches are permanently disabled to avoid log noise.
+    _CF_BLOCKED: bool = True
+
     async def fetch(
         self, topic: TopicProfile, *, since: datetime | None = None,
     ) -> Iterable[RawItem]:
+        if self._CF_BLOCKED:
+            _log.debug(
+                "Academia.edu fetch skipped (Cloudflare bot-protection blocks "
+                "programmatic access since 2024). Use manual import or RSS instead."
+            )
+            return []
         opts = topic.overrides_for(self.source)
         max_results = int(opts.get("max_results", 20))
         query = " ".join(topic.keywords[:6]) or topic.label

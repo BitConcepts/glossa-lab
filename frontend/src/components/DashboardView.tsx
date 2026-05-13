@@ -859,7 +859,8 @@ export function DashboardView() {
               <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.55,
                 margin: "4px 0 12px" }}>{insight.what_it_means}</p>
 
-              {insight.highlights.length > 0 && (
+              {/* Defensive: LLM may return non-arrays from a stale localStorage cache */}
+              {Array.isArray(insight.highlights) && insight.highlights.length > 0 && (
                 <>
                   <div style={subhead}>Highlights</div>
                   <ul style={{ margin: "4px 0 12px", paddingLeft: 18 }}>
@@ -876,7 +877,7 @@ export function DashboardView() {
                 </>
               )}
 
-              {insight.impact.length > 0 && (
+              {Array.isArray(insight.impact) && insight.impact.length > 0 && (
                 <>
                   <div style={subhead}>Impact on your studies / experiments</div>
                   <ul style={{ margin: "4px 0 12px", paddingLeft: 18 }}>
@@ -978,7 +979,7 @@ export function DashboardView() {
                 </>
               )}
 
-              {insight.next_actions.length > 0 && (
+              {Array.isArray(insight.next_actions) && insight.next_actions.length > 0 && (
                 <>
                   <div style={subhead}>Next actions</div>
                   <ul style={{ margin: "4px 0 0", paddingLeft: 18,

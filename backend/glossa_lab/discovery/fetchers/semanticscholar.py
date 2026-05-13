@@ -132,6 +132,28 @@ class SemanticScholarFetcher(Fetcher):
         except ImportError:
             # semanticscholar package not installed — fall back to direct HTTP.
             _log.debug("semanticscholar PyPI package not found; using direct HTTP")
+
+        except Exception as exc:  # noqa: BLE001
+            # Network/connection errors from the SDK are transient — fall through
+            # to the direct HTTP path instead of failing entirely.
+            err_lower = str(exc).lower()
+            is_network = any(k in err_lower for k in (
+                "network", "connect", "timeout", "unreachable", "reset",
+                "eof", "ssl", "socket", "host",
+            ))
+            if is_network:
+                _log.info(
+                    "SemanticScholar SDK network error for topic %s (%s: %s); "
+                    "falling back to direct HTTP",
+                    topic.id, type(exc).__name__, str(exc)[:120],
+                )
+                # papers stays [] — will trigger the HTTP fallback below
+            else:
+                _log.warning("SemanticScholar SDK error for topic %s: %s", topic.id, exc)
+                return []
+
+        # ── HTTP fallback (SDK not installed OR network error from SDK) ──
+        if not papers:
             headers: dict[str, str] | None = None
             if s2_key:
                 headers = {"x-api-key": s2_key}
@@ -148,14 +170,11 @@ class SemanticScholarFetcher(Fetcher):
                     headers=headers, timeout=25.0,
                 )
             except FetcherError as exc:
-                _log.warning("SemanticScholar error for topic %s: %s", topic.id, exc)
+                _log.warning("SemanticScholar HTTP error for topic %s: %s", topic.id, exc)
                 return []
             if not isinstance(data, dict):
                 return []
             papers = data.get("data") or []
-        except Exception as exc:  # noqa: BLE001
-            _log.warning("SemanticScholar SDK error for topic %s: %s", topic.id, exc)
-            return []
 
         items: list[RawItem] = []
         for p in papers:

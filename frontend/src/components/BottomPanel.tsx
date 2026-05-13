@@ -113,22 +113,25 @@ function prettifyErrorBody(raw: string): string {
   return raw.length > 300 ? raw.slice(0, 297) + "\u2026" : raw;
 }
 
-/** Formatted line with embedded level for accurate coloring. */
-interface FormattedLine { text: string; level: string; }
+/** Formatted line with embedded level, source, and text for accurate coloring. */
+interface FormattedLine { text: string; level: string; source: string; }
 
 function formatLogLine(raw: string): FormattedLine {
   try {
     const d = JSON.parse(raw) as Record<string, unknown>;
-    if (typeof d.message !== "string") return { text: raw, level: "" };
-    const ts  = typeof d.timestamp === "string" ? parseLogTimestamp(d.timestamp) : "";
-    const lvl = typeof d.level   === "string" ? d.level : "";
-    const mod = typeof d.module  === "string" ? `[${d.module}]` : "";
+    if (typeof d.message !== "string") return { text: raw, level: "", source: "BE" };
+    const ts     = typeof d.timestamp === "string" ? parseLogTimestamp(d.timestamp) : "";
+    const lvl    = typeof d.level     === "string" ? d.level : "";
+    const source = typeof d.source    === "string" ? d.source : "BE";
+    const mod    = typeof d.module    === "string" ? `[${d.module}]` : "";
+    // Source prefix: [FE] in amber, [BE] omitted (most lines are backend)
+    const srcTag = source === "FE" ? "[FE] " : "";
     let msg: string = d.message;
     if (msg.includes('{"') || msg.includes('{ ')) {
       msg = prettifyErrorBody(msg);
     }
     const extras = Object.entries(d)
-      .filter(([k]) => !["timestamp", "level", "module", "message"].includes(k))
+      .filter(([k]) => !["timestamp", "level", "module", "message", "source"].includes(k))
       .map(([k, v]) => {
         if (typeof v === "string") return `${k}=${v}`;
         if (typeof v === "number" || typeof v === "boolean") return `${k}=${v}`;
@@ -136,11 +139,12 @@ function formatLogLine(raw: string): FormattedLine {
       })
       .join("  ");
     return {
-      text: `${ts} ${lvl.padEnd(5)} ${mod} ${msg}${extras ? "  " + extras : ""}`,
+      text: `${ts} ${lvl.padEnd(5)} ${srcTag}${mod} ${msg}${extras ? "  " + extras : ""}`,
       level: lvl.toUpperCase(),
+      source,
     };
   } catch {
-    return { text: stripAnsi(raw), level: "" };
+    return { text: stripAnsi(raw), level: "", source: "BE" };
   }
 }
 
@@ -843,7 +847,7 @@ export function BottomPanel({ height, onHeightChange, minimized, onMinimizedChan
   const { isOpen: chatOpen, isDocked } = useAIChat();
 
   const TABS: Array<{ id: PanelTab; label: string; icon: string }> = [
-    { id: "logs", label: "Logs", icon: "📋" },
+    { id: "logs", label: "Logs (BE+FE)", icon: "📋" },
     { id: "jobs", label: "Jobs", icon: "📦" },
     { id: "terminal", label: "Terminal", icon: ">_" },
     ...(isDocked && chatOpen ? [{ id: "chat" as PanelTab, label: "AI Chat", icon: "✨" }] : []),

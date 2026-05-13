@@ -368,6 +368,27 @@ async def _generate_insight(
         loop = asyncio.get_event_loop()
         raw = ""
 
+        def _is_json_response(text: str) -> bool:
+            """Return True when *text* looks like JSON rather than conversational prose.
+
+            Some thinking models (e.g. qwen3) sometimes ignore json_mode and
+            produce an explanation rather than a JSON object.  Detecting this
+            early lets us skip to the next retry attempt immediately instead
+            of wasting parse attempts on clearly-wrong output.
+            """
+            if not text:
+                return False
+            # Strip any <think>...</think> block first (common in Qwen3 / DeepSeek-R1)
+            import re as _r  # noqa: PLC0415
+            cleaned = _r.sub(r"<think>.*?</think>", "", text, flags=_r.DOTALL).strip()
+            # Strip markdown code fences
+            if cleaned.startswith("```"):
+                cleaned = cleaned.split("```", 2)[1] if "```" in cleaned[3:] else cleaned[3:]
+                if cleaned.lower().startswith("json"):
+                    cleaned = cleaned[4:].lstrip()
+                cleaned = cleaned.rstrip("`").strip()
+            return cleaned.startswith("{")
+
         # ── Attempt 1: reasoning bucket with full JSON schema ────────────
         try:
             raw = await loop.run_in_executor(
@@ -415,6 +436,15 @@ async def _generate_insight(
                 type(exc).__name__,
             )
 
+        # If attempt 1 returned non-JSON prose (e.g. qwen3 ignoring json_mode),
+        # treat it as a miss so attempt 2 fires with a different provider.
+        if raw and not _is_json_response(raw):
+            _log.info(
+                "dashboard insight: attempt 1 returned non-JSON prose (%d chars), "
+                "skipping to attempt 2", len(raw),
+            )
+            raw = ""
+
         # ── Attempt 2: conversational bucket, no json_schema (wider compat) ─
         if not raw or not raw.strip():
             try:
@@ -438,6 +468,14 @@ async def _generate_insight(
                 )
             except Exception as conv_exc:  # noqa: BLE001
                 _log.info("dashboard insight: conversational bucket failed (%s)", type(conv_exc).__name__)
+
+        # Same non-JSON prose check for attempt 2.
+        if raw and not _is_json_response(raw):
+            _log.info(
+                "dashboard insight: attempt 2 returned non-JSON prose (%d chars), "
+                "skipping to attempt 3", len(raw),
+            )
+            raw = ""
 
         # ── Attempt 3: reasoning bucket, shorter prompt, no schema ──────
         if not raw or not raw.strip():

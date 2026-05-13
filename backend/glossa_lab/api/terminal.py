@@ -222,38 +222,81 @@ async def _tail_log() -> AsyncGenerator[str, None]:
 
 @router.post("/log/purge")
 async def purge_log() -> dict:
-    """Clear (truncate) the active backend log file. Returns bytes cleared.
+    """Clear the active log file and all rotated log backups.
 
-    Uses seek(0)+truncate() via open('r+b') rather than write_text() so
-    the file descriptor stays accessible to the logging handler that may
-    already have it open on Windows (avoid PermissionError).
+    Steps:
+    1. Truncate the active ``glossa.log`` in-place (keeps the inode so
+       the Python ``RotatingFileHandler`` stays valid on Windows).
+    2. Reset the ``RotatingFileHandler``\'s internal stream so the next
+       write goes to byte 0, not the pre-truncation offset.
+    3. Delete all rotated backups (``glossa.log.1`` … ``glossa.log.N``
+       and any legacy date-stamped variants) from the same directory.
     """
+    import logging as _logging  # noqa: PLC0415
+    import glob as _glob  # noqa: PLC0415
+    from logging.handlers import RotatingFileHandler as _RFH  # noqa: PLC0415
+
     log_file = _active_log_file()
-    if not log_file.exists():
-        return {"cleared": 0, "file": str(log_file)}
-    try:
-        size = log_file.stat().st_size
-        # r+b keeps the file open (compatible with an active logging handler)
-        # and truncates in-place without re-creating the inode.
-        with open(str(log_file), "r+b") as fh:  # noqa: PTH123
-            fh.seek(0)
-            fh.truncate()
-        return {"cleared": size, "file": str(log_file), "truncated": True}
-    except PermissionError:
-        # On Windows the logging handler may hold an exclusive lock.
-        # Fall back to renaming the file so a fresh one is created.
+    cleared = 0
+    deleted_rotated: list[str] = []
+
+    # ── 1. Truncate active log file ─────────────────────────────────
+    if log_file.exists():
         try:
-            renamed = log_file.with_suffix(".purged.log")
-            log_file.rename(renamed)
-            renamed.unlink(missing_ok=True)
-            return {"cleared": log_file.stat().st_size if log_file.exists() else 0,
-                    "file": str(log_file), "truncated": False, "renamed": True}
-        except Exception as exc2:  # noqa: BLE001
-            from fastapi import HTTPException  # noqa: PLC0415
-            raise HTTPException(500, f"Could not purge log: {exc2}") from exc2
-    except Exception as exc:  # noqa: BLE001
-        from fastapi import HTTPException  # noqa: PLC0415
-        raise HTTPException(500, f"Could not purge log: {exc}") from exc
+            cleared = log_file.stat().st_size
+            with open(str(log_file), "r+b") as fh:  # noqa: PTH123
+                fh.seek(0)
+                fh.truncate()
+        except PermissionError:
+            # Windows: handler holds exclusive lock — rename + recreate
+            try:
+                tmp = log_file.with_suffix(".purging")
+                log_file.rename(tmp)
+                tmp.unlink(missing_ok=True)
+            except Exception:  # noqa: BLE001
+                pass
+        except Exception:  # noqa: BLE001
+            pass
+
+    # ── 2. Reset the RotatingFileHandler so writes go to byte 0 ──────
+    # Without this the handler\'s internal stream position stays at the
+    # pre-truncation offset on Windows and pads the file with null bytes.
+    try:
+        root = _logging.getLogger()
+        for handler in root.handlers:
+            if isinstance(handler, _RFH):
+                handler.acquire()
+                try:
+                    if handler.stream:
+                        handler.stream.close()
+                    handler.stream = handler._open()  # noqa: SLF001
+                finally:
+                    handler.release()
+    except Exception:  # noqa: BLE001
+        pass  # best-effort; logging continues regardless
+
+    # ── 3. Delete rotated backups ──────────────────────────────────
+    log_dir = log_file.parent
+    base = log_file.name  # e.g. "glossa.log"
+    patterns = [
+        f"{base}.*",       # glossa.log.1, glossa.log.2026-04-07, …
+        f"{base}.purging", # any leftover tmp from PermissionError path
+    ]
+    for pattern in patterns:
+        for p in log_dir.glob(pattern):
+            if p != log_file:
+                try:
+                    p.unlink(missing_ok=True)
+                    deleted_rotated.append(p.name)
+                except Exception:  # noqa: BLE001
+                    pass
+
+    return {
+        "cleared": cleared,
+        "file": str(log_file),
+        "truncated": True,
+        "deleted_rotated": deleted_rotated,
+    }
 
 
 @router.get("/log/stream")

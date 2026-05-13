@@ -444,11 +444,13 @@ async def start_intelligence_sync() -> None:
     (different DB row ids: ``static_...`` vs ``hf_...``).
     """
     # Load built-in scores right away so auto-configure has data
-    # before the HF sync window opens.  Safe to call from async context
-    # because the function is synchronous and fast (~50 rows).
+    # before the HF sync window opens.
+    # IMPORTANT: _sync_static_fallback() does synchronous SQLite I/O so
+    # it MUST run in a thread executor to avoid blocking the event loop.
     _log.info("Model intelligence: loading static baseline scores")
     try:
-        _sync_static_fallback()
+        loop = asyncio.get_event_loop()
+        await loop.run_in_executor(None, _sync_static_fallback)
     except Exception:  # noqa: BLE001
         _log.warning("Static score baseline load failed", exc_info=False)
 

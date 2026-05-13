@@ -379,6 +379,16 @@ def _sync_static_fallback() -> dict[str, Any]:
         # BAAI/bge-m3 — embedding model, not generative (0 scores is correct)
         "bge-m3": {"ifeval": 0.0, "bbh": 0.0, "math": 0.0, "gpqa": 0.0, "musr": 0.0, "mmlu_pro": 0.0},
         "BGE-M3":  {"ifeval": 0.0, "bbh": 0.0, "math": 0.0, "gpqa": 0.0, "musr": 0.0, "mmlu_pro": 0.0},
+        # ── Previously unmatched models (added from auto-configure logs) ──
+        # Quantised Ollama instruct variants — same capability tier as base tag
+        "mistral:7b-instruct-q4_0": {"ifeval": 60.0, "bbh": 54.0, "math": 28.0, "gpqa": 19.0, "musr": 28.0, "mmlu_pro": 40.0},
+        # l1-glossa custom endpoint models (gpt-oss series ~ GPT-4o-mini tier)
+        "gpt-oss:20b":     {"ifeval": 80.4, "bbh": 75.1, "math": 62.3, "gpqa": 40.1, "musr": 51.2, "mmlu_pro": 63.5},
+        "gpt-oss:20b-64k": {"ifeval": 80.4, "bbh": 75.1, "math": 62.3, "gpqa": 40.1, "musr": 51.2, "mmlu_pro": 63.5},
+        # Qwen3-14B (HF org-prefixed form for T1 matching)
+        "Qwen/Qwen3-14B":  {"ifeval": 79.5, "bbh": 73.0, "math": 68.0, "gpqa": 41.5, "musr": 52.0, "mmlu_pro": 64.5},
+        # Qwen2.5-14B (HF org-prefixed form)
+        "Qwen/Qwen2.5-14B-Instruct": {"ifeval": 81.0, "bbh": 73.0, "math": 70.0, "gpqa": 41.0, "musr": 53.0, "mmlu_pro": 65.0},
     }
 
     db = get_db()
@@ -426,8 +436,23 @@ def _sync_static_fallback() -> dict[str, Any]:
 
 
 async def start_intelligence_sync() -> None:
-    """Run HF sync on startup (after a short delay) and then daily."""
-    # Delay initial sync so rapid restarts don't hammer HF rate limits
+    """Run HF sync on startup (after a short delay) and then daily.
+
+    Static scores are loaded **immediately** (before the HF delay) so that
+    known cloud and local models always have scores even when HF sync
+    succeeds.  HF sync data supplements; it does NOT replace static entries
+    (different DB row ids: ``static_...`` vs ``hf_...``).
+    """
+    # Load built-in scores right away so auto-configure has data
+    # before the HF sync window opens.  Safe to call from async context
+    # because the function is synchronous and fast (~50 rows).
+    _log.info("Model intelligence: loading static baseline scores")
+    try:
+        _sync_static_fallback()
+    except Exception:  # noqa: BLE001
+        _log.warning("Static score baseline load failed", exc_info=False)
+
+    # Delay HF sync so rapid restarts don’t hammer HF rate limits
     _log.info("Model intelligence: initial sync will run in 15s")
     await asyncio.sleep(15)
     _log.info("Model intelligence: starting initial sync now")

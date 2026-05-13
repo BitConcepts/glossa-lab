@@ -690,18 +690,22 @@ async def _generate_insight(
                 p = a.get("params", {})
                 if isinstance(p, dict):
                     eid = str(p.get("experiment_id", ""))
-                    resolved_na = _resolve_exp_id(eid)
+                    resolved_na = _resolve_exp_id(eid) if eid else ""
                     if resolved_na:
                         p["experiment_id"] = resolved_na
-                    elif eid:
-                        # Unresolvable — downgrade to open_view so button
-                        # still appears and points user to the experiments page.
+                    else:
+                        # Empty OR unresolvable experiment_id — downgrade to
+                        # open_view so the button still appears and navigates
+                        # the user to the Experiments page instead of firing
+                        # a backend call with a phantom / missing ID.
                         a["action_type"] = "open_view"
-                        a["params"] = {"view": "experiments", "experiment_id": eid}
-                        a["rationale"] = (
-                            f"{a.get('rationale', '')} "
-                            f"[experiment '{eid}' not in registry — open Experiments to find it]"
-                        ).strip()
+                        a["params"] = {"view": "experiments"}
+                        if eid:
+                            a["params"]["experiment_id"] = eid
+                            a["rationale"] = (
+                                f"{a.get('rationale', '')} "
+                                f"[experiment '{eid}' not in registry — open Experiments]"
+                            ).strip()
         parsed["next_actions"] = normalised
 
         parsed["model"] = "ai"

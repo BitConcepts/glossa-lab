@@ -40,17 +40,54 @@ def _build_search_query(topic: TopicProfile, extra: str = "") -> str:
     return base
 
 
+# ── Global arXiv rate tracking ────────────────────────────────────────────────
+# arXiv enforces a per-IP rate limit across ALL requests (not just per topic).
+# After a 429 we back off the ENTIRE arXiv pipeline for a cooling period.
+import threading as _threading  # noqa: E402
+import time as _time_mod  # noqa: E402
+
+_arxiv_lock = _threading.Lock()
+_arxiv_last_ok_mono: float = 0.0     # monotonic time of last successful request
+_arxiv_cooldown_until: float = 0.0   # monotonic time until we are allowed to try again
+_ARXIV_INTER_REQUEST_SECS: float = 10.0   # min 3s per arXiv docs; we use 10s to be safe
+
+
+def _arxiv_cb_trip(cooldown: float) -> None:
+    global _arxiv_cooldown_until  # noqa: PLW0603
+    _arxiv_cooldown_until = _time_mod.monotonic() + cooldown
+    _log.warning(
+        "arXiv rate-limit cooldown: pausing all arXiv requests for %.0fs", cooldown
+    )
+
+
+def _arxiv_cb_is_cooling() -> tuple[bool, float]:
+    """Returns (is_cooling, seconds_remaining)."""
+    remaining = _arxiv_cooldown_until - _time_mod.monotonic()
+    return remaining > 0, max(0.0, remaining)
+
+
 class ArxivFetcher(Fetcher):
     source = "arxiv"
     requires = ()  # keyless
-    rate_delay: float = 4.0  # arXiv asks for 3s between requests
-    _MAX_RETRIES: int = 3
-    _RETRY_BASE: float = 5.0  # 5s → 10s → 20s backoff
+    # arXiv policy (2024-2025): no more than 1 request per 3 seconds.
+    # We use 10s as our polite inter-request delay to avoid IP-level bans.
+    rate_delay: float = 10.0
+    _MAX_RETRIES: int = 2     # max 2 retries after initial 429
+    _RETRY_BASE: float = 60.0  # 60s → 120s exponential — respect the rate window
 
     async def fetch(
         self, topic: TopicProfile, *, since: datetime | None = None,
     ) -> Iterable[RawItem]:
         import asyncio as _asyncio  # noqa: PLC0415
+
+        # Check global cooldown before attempting anything
+        cooling, remaining = _arxiv_cb_is_cooling()
+        if cooling:
+            _log.debug(
+                "arXiv cooldown active for topic %s — skipping (%.0fs remaining)",
+                topic.id, remaining,
+            )
+            return []
 
         opts = topic.overrides_for(self.source)
         params = {
@@ -61,23 +98,43 @@ class ArxivFetcher(Fetcher):
         }
         raw = None
         for attempt in range(1 + self._MAX_RETRIES):
+            # Enforce minimum inter-request delay (polite crawling)
+            with _arxiv_lock:
+                elapsed = _time_mod.monotonic() - _arxiv_last_ok_mono
+                if elapsed < _ARXIV_INTER_REQUEST_SECS:
+                    import time as _t  # noqa: PLC0415
+                    _t.sleep(_ARXIV_INTER_REQUEST_SECS - elapsed)
+
             try:
-                raw = await run_in_thread(http_get_json, _ENDPOINT, params=params, timeout=25.0)
+                raw = await run_in_thread(http_get_json, _ENDPOINT, params=params, timeout=30.0)
+                # Update last-OK timestamp on success
+                global _arxiv_last_ok_mono  # noqa: PLW0603
+                _arxiv_last_ok_mono = _time_mod.monotonic()
                 break
             except FetcherError as exc:
                 err_str = str(exc)
-                is_429 = "429" in err_str
+                is_429 = "429" in err_str or "rate exceeded" in err_str.lower()
                 is_retryable = is_429 or "timed out" in err_str.lower()
                 if is_retryable and attempt < self._MAX_RETRIES:
-                    backoff = self._RETRY_BASE * (2 ** attempt)
-                    _log.info(
-                        "arXiv %s for topic %s (attempt %d/%d), retrying in %.0fs",
-                        "429" if is_429 else "error", topic.id,
-                        attempt + 1, self._MAX_RETRIES, backoff,
+                    # Parse Retry-After from error string if present
+                    import re as _re  # noqa: PLC0415
+                    ra_match = _re.search(r"Retry-After:\s*(\d+)", err_str)
+                    retry_after = int(ra_match.group(1)) + 2 if ra_match else 0
+                    backoff = max(retry_after, self._RETRY_BASE * (2 ** attempt))
+                    _log.warning(
+                        "arXiv 429 for topic %s (attempt %d/%d) — "
+                        "backing off %.0fs to respect rate window",
+                        topic.id, attempt + 1, self._MAX_RETRIES, backoff,
                     )
+                    if is_429:
+                        # Trip the global cooldown so OTHER topics don't pile in
+                        _arxiv_cb_trip(backoff)
                     await _asyncio.sleep(backoff)
                     continue
                 _log.warning("arXiv error for topic %s: %s", topic.id, exc)
+                if is_429:
+                    # Final 429 — set a longer cooldown (10 min)
+                    _arxiv_cb_trip(600.0)
                 return []
 
         if not isinstance(raw, (bytes, bytearray)):

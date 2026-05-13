@@ -85,3 +85,54 @@ The Enmenanak max score (5.0 under simplified scoring) is consistent with random
 **Implication:** Zipf-based writing system claims cannot be validated or invalidated by shuffle controls alone. The discriminating metrics are positional entropy (I/M/T rates) and bigram transition entropy — both of which ARE affected by shuffling (not tested in this graph, but confirmed by theory).
 
 *End of Phase-32 Addendum 2026-05-12*
+
+---
+
+## Phase-33 T1 + T7 Addendum (2026-05-13)
+
+### Critical Fix: DravidianSyllableLM was broken
+
+_builtin_syllable_lm was setting lm.bigrams (wrong attribute) instead of lm.bigram_freq, and
+was not setting lm.ranked. SADecipher's BigramScorer requires both model.bigram_freq and
+model.ranked. As a result, ALL Phase-32 T4 runs used a broken LM — the SA was scoring against
+a null model. Fixed in Phase-33 via _syllable_lm_from_json() helper that properly converts the
+"a|b": log_prob JSON format to {(a, b): prob} tuple-key dict and populates all required LM attributes.
+
+### New nodes added
+- IndusAnchorSetSyllable: loads INDUS_FINAL_ANCHORS.json, maps Tamil word readings to syllable tokens
+  compatible with DravidianSyllableLM vocab via greedy CV chunking + vocab lookup.
+- SanskritSyllableLM: loads sanskrit_syllable_lm.json (424 syllables, 651 bigrams from Monier-Williams
+  vocabulary + Rigveda text), built at same granularity as DravidianSyllableLM for valid head-to-head.
+
+### Phase-33 T1 Results — SA Dravidian Syllable LM (FIXED)
+Job 982f69e2b70c | ~10 min runtime
+- mean_consistency: **0.3312** (vs 0.2969 broken, vs 0.7344 for character-level Sanskrit in T7 old)
+- hci_count: 0 (no signs ≥75% consistency)
+- LM: DravidianSyllableLM, 2293 bigrams (CORRECTLY loaded for first time)
+- Anchors: IndusAnchorSetSyllable, MEDIUM+ confidence
+
+### Phase-33 T7 Results — SA Sanskrit Syllable LM (T7 redo)
+Job 5fd4ad7365ad | ~10 min runtime
+- mean_consistency: **0.3875** (slightly above Dravidian T1)
+- hci_count: 3 (3 signs ≥75% consistency — very low)
+- LM: SanskritSyllableLM, 651 bigrams (smaller, same granularity)
+- Anchors: NONE (free SA)
+
+### Comparison Assessment
+The T1 vs T7 comparison is **NOT FULLY CONTROLLED** because:
+1. T1 has ~72 syllable anchors (constraining search space); T7 has none
+2. Dravidian LM is 3.5× larger (2293 vs 651 bigrams) — harder to satisfy
+3. With these caveats, Sanskrit scores marginally higher (0.39 > 0.33)
+
+For a valid head-to-head:
+- Both should run without anchors OR with matching anchor sets
+- Both LMs should have comparable bigram counts
+
+**Verdict: INCONCLUSIVE — both LMs at syllable level produce low consistency
+SA (0.33-0.39 range). Neither strongly discriminates. The TB correlation
+(0.914) and Zipf slope (delta 0.18) from the distributional analysis remain
+the stronger positive evidence. Phase-32 T4 verdict corrected from NEUTRAL
+(broken LM) to INCONCLUSIVE (low but non-zero consistency).**
+
+*This section maintained as part of the Glossa-Lab Indus decipherment pipeline.*
+*Co-authored with Oz <oz-agent@warp.dev>. 2026-05-13.*

@@ -12,16 +12,16 @@
     "derivation": "Export report for Indus corpus reconstruction."
   },
   "batch_id": "2026-05-14-INDUS-EXPORT",
-  "timestamp": "2026-05-14T23:01:31.633684",
-  "canonical_objects": 15508,
+  "timestamp": "2026-05-14T23:05:11.762621",
+  "canonical_objects": 19925,
   "open_export": {
     "count": 5087,
-    "rejected": 10421,
+    "rejected": 14838,
     "path": "D:\\Development\\BitConcepts\\glossa-lab\\glossa-corpus\\indus\\exports\\indus_open.jsonl"
   },
   "research_export": {
     "count": 15508,
-    "rejected": 0,
+    "rejected": 4417,
     "path": "D:\\Development\\BitConcepts\\glossa-lab\\glossa-corpus\\indus\\exports\\indus_research.jsonl"
   },
   "icit_format": {

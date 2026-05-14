@@ -1,0 +1,22 @@
+confidence: '0.93'
+download_date: '2026-05-14'
+download_url: https://github.com/cbeta-org/xml-p5a
+item_id: cbeta/xml-p5a
+language: zho
+license: CC BY-SA 4.0
+license_class: open_license
+local_path: sources\cbeta\raw\2026-05-14
+period: 200 BCE - 1800 CE
+processing_stage: raw
+rights_status: open_license
+script: Han
+source_format: tei_xml
+source_name: CBETA — Chinese Buddhist Electronic Text Association
+source_score:
+  language_coverage: 4
+  license_clarity: 5
+  metadata_quality: 4
+  scholarly_reliability: 5
+  textual_value: 5
+source_url: https://www.cbeta.org
+status: keep

@@ -573,6 +573,28 @@ NOT yet in the discovery database — add manually via Settings → Discovery �
 > documentation of seals, sealings and seal impressions in the Ancient Near
 > East." *Studia Orientalia Electronica* 2: 37-68.
 
+### D.12 Tamburini 2025 — Coupled SA for Ancient Script Decipherment
+
+**Used in:** Phase-37 — CSA upgrade to Glossa Lab SA engine (k-permutations, chain coupling).
+
+> Tamburini, Fabio. 2025. "On automatic decipherment of lost ancient scripts
+> relying on combinatorial optimisation and coupled simulated annealing."
+> *Frontiers in Artificial Intelligence* 8: 1581129.
+> https://doi.org/10.3389/frai.2025.1581129. Open access (CC BY).
+> Code: https://github.com/ftamburin/CSA_OptMatcher
+
+**Key contributions:**
+- Coupled SA (CSA): multiple SA chains running simultaneously that communicate
+  periodically, converging to better solutions than independent parallel restarts.
+- k-permutations encoding: allows null mappings (signs left unassigned), one-to-many,
+  and many-to-one mappings between sign sets. More expressive than bijective SA.
+- Fixed-anchor injection: partial knowledge of sign-to-phoneme mappings can be
+  hard-coded as constraints — validates Glossa Lab's anchor approach.
+- Benchmarked on: Ugaritic→Hebrew (29/30 signs correct), Linear B→Mycenaean Greek,
+  Romance language cognate identification. All outperform prior state-of-the-art.
+- Limitations for Indus: method targets bilingual corpora; Indus has no known
+  bilingual text, so language identification remains the primary challenge.
+
 ---
 
 ## E. Dravidian / South Indian comparative

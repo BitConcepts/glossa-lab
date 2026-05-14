@@ -1,0 +1,33 @@
+{
+  "experiment": "Phase-38 T4: Crosswalk allograph reduction",
+  "allograph_merges": {
+    "147": "047"
+  },
+  "canonical_anchors_added": {
+    "047": "mi"
+  },
+  "n_signs_after_merge": 61,
+  "n_total_anchors": 4,
+  "dravidian": {
+    "z": 5.6,
+    "p": 0.0,
+    "nll_lift": 7.6576
+  },
+  "sanskrit": {
+    "z": 5.739,
+    "p": 0.0,
+    "nll_lift": 7.3102
+  },
+  "dravidian_wins": true,
+  "lift_ratio": 1.048,
+  "verdict": "Phase-38 T4 Crosswalk allograph (1 merges, 61 signs): Dravidian Z=5.60 lift=7.658 vs Sanskrit Z=5.74 lift=7.310. Dravidian WINS (1.05x). Runtime=125s.",
+  "_citation": {
+    "primary": [
+      "A.1",
+      "E.1",
+      "C.2",
+      "D.6"
+    ],
+    "phase": "Phase-38-T4"
+  }
+}

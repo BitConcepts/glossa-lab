@@ -1,0 +1,12 @@
+# Raw downloaded corpus content — too large for git (~5 GB+)
+# Keep: provenance.yaml, acquisition.log, reports/*.md
+**/raw/
+scans/
+ocr/
+alignments/
+annotations/
+works/
+editions/
+
+# Thumbs
+Thumbs.db

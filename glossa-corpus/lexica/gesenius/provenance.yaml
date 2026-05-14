@@ -1,0 +1,17 @@
+download_date: '2026-05-14'
+genre: lexicon
+item_id: lexica/gesenius
+language: hbo; arc
+license: CC BY 4.0
+license_class: open_license
+local_path: lexica\gesenius\raw\2026-05-14
+processing_stage: raw
+rights_status: open_license
+source_format: xml
+source_name: Gesenius / OpenScriptures Hebrew Lexicon
+source_score:
+  license_clarity: 5
+  metadata_quality: 4
+  scholarly_reliability: 5
+  textual_value: 5
+status: keep

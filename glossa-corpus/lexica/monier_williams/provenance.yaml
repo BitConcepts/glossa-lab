@@ -1,0 +1,17 @@
+download_date: '2026-05-14'
+genre: lexicon
+item_id: lexica/monier_williams
+language: san
+license: Public Domain / CC0
+license_class: public_domain
+local_path: lexica\monier_williams\raw\2026-05-14
+processing_stage: raw
+rights_status: public_domain
+source_format: xml; csv
+source_name: Monier-Williams Sanskrit-English Dictionary
+source_score:
+  license_clarity: 5
+  metadata_quality: 4
+  scholarly_reliability: 5
+  textual_value: 5
+status: keep

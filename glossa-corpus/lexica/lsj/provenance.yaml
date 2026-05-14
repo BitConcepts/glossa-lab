@@ -1,0 +1,19 @@
+download_date: '2026-05-14'
+download_url: https://github.com/helmadik/lsj
+genre: lexicon
+item_id: lexica/lsj
+language: grc
+license: Public Domain
+license_class: public_domain
+local_path: lexica\lsj\raw\2026-05-14
+processing_stage: raw
+rights_status: public_domain
+source_format: xml; json
+source_name: Liddell-Scott-Jones Greek Lexicon (LSJ)
+source_score:
+  license_clarity: 5
+  metadata_quality: 4
+  scholarly_reliability: 5
+  textual_value: 5
+source_url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.04.0057
+status: keep

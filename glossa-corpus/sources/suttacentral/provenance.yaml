@@ -1,0 +1,22 @@
+confidence: '0.97'
+download_date: '2026-05-14'
+download_url: https://github.com/suttacentral/sc-data
+item_id: suttacentral/sc-data
+language: pli; san; zho; jpn; kor; vie; mya; tha; khm; si
+license: CC0 1.0
+license_class: public_domain
+local_path: sources\suttacentral\raw\2026-05-14
+period: 500 BCE - 200 CE
+processing_stage: raw
+rights_status: public_domain
+script: multiple
+source_format: json; html
+source_name: SuttaCentral
+source_score:
+  language_coverage: 5
+  license_clarity: 5
+  metadata_quality: 5
+  scholarly_reliability: 5
+  textual_value: 5
+source_url: https://suttacentral.net
+status: keep

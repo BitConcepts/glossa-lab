@@ -1,0 +1,50 @@
+# STUB — PERMISSIONS REQUIRED
+# Contact: https://www.nationalmuseumindia.gov.in/en/contact-us
+item_id: indus/national-museum-nd
+source_name: "National Museum, New Delhi — Harappan Gallery"
+source_url: https://nationalmuseumindia.gov.in/en/harappan-civilization
+download_url: ""
+download_date: ""
+local_path: glossa-corpus/indus/sources/national-museum-nd/raw/
+checksum_sha256: ""
+license: "Permission required for reproduction"
+license_url: https://nationalmuseumindia.gov.in/en/contact-us
+rights_status: restricted
+license_class: restricted
+title: "National Museum New Delhi — Harappan Civilization Collection"
+author: "National Museum of India, New Delhi"
+publication_date: "ongoing"
+language: und
+script: Indus
+period: "2600–1900 BCE"
+region: India
+genre: epigraphy
+source_format: image
+processing_stage: raw
+confidence: "0.95"
+ocr_quality: n_a
+manually_reviewed: false
+status: review
+glossa_legacy_asset: false
+notes: >
+  STUB — FORMAL PERMISSIONS REQUIRED BEFORE ANY DATA USE.
+  Copyright policy requires permission for reproduction.
+  Excellent institutional partner for high-value India-held objects and metadata.
+  Contact paths:
+    https://nationalmuseumindia.gov.in/en/contact-us
+    JATAN digitization channel
+    Publication department
+  Priority: request high-res object images for Indus-script objects,
+  object metadata verification, gallery catalog support.
+  Harappan gallery: https://nationalmuseumindia.gov.in/en/collections/index/6
+source_score:
+  textual_value: 5
+  metadata_quality: 5
+  license_clarity: 2
+  language_coverage: 5
+  rarity: 5
+  ocr_quality: 5
+  scholarly_reliability: 5
+  alignment_potential: 5
+  annotation_depth: 4
+  acquisition_difficulty: 4

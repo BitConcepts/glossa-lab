@@ -1,0 +1,62 @@
+# STUB — NOT YET ACQUIRED
+# Decision required: purchase CISI bundle (€300 for vols 1+2+3.1+3.2) + CISI 3.3 (€220)
+# Purchase URL: https://tiedekirja.fi/en/corpus-of-indus-seals-and-inscriptions-1
+item_id: indus/cisi
+source_name: "Corpus of Indus Seals and Inscriptions (CISI) — Suomalainen Tiedeakatemia"
+source_url: https://tiedekirja.fi/en/corpus-of-indus-seals-and-inscriptions-1
+download_url: ""
+download_date: ""
+local_path: glossa-corpus/indus/sources/cisi/raw/
+checksum_sha256: ""
+license: "Purchasable academic publication — research use only"
+license_url: ""
+rights_status: proprietary
+license_class: proprietary
+title: "Corpus of Indus Seals and Inscriptions, Vols 1–3.3"
+author: >
+  Parpola, Asko; Koskenniemi, Seppo; Parpola, Simo; Aalto, Pentti (Vol. 1–2);
+  Parpola, Asko (Vol. 3.1–3.3)
+editor: ""
+publication_date: "1987–2010"
+language: und
+script: Indus
+period: "2600–1900 BCE"
+region: "Indus Valley"
+genre: epigraphy
+source_format: pdf
+processing_stage: raw
+confidence: "0.99"
+ocr_quality: n_a
+manually_reviewed: false
+status: review
+glossa_legacy_asset: false
+notes: >
+  STUB — PURCHASE REQUIRED BEFORE ANY DATA INGEST.
+  This is the single most important paid acquisition.
+  Price structure (official, as of research report 2026-05-14):
+    Vol. 1 (India collections): €50
+    Vol. 2 (Pakistan collections): €50
+    Vol. 3.1 (Mohenjo-daro/Harappa + new material): €70
+    Vol. 3.2 (Kalibangan, Ahar, Balathal, Gilund, Rojdi, etc.): €160
+    Bundle 1+2+3.1+3.2: €300 (official special offer — BEST VALUE)
+    Vol. 3.3 (Indo-Iranian Borderlands): €220
+  Total recommended purchase: €520
+  Volume scope:
+    Vol. 1 — India collections
+    Vol. 2 — Pakistan collections
+    Vol. 3.1 — Mohenjo-daro + Harappa (outside India/Pakistan) + new material
+    Vol. 3.2 — Kalibangan and other India-side sites
+    Vol. 3.3 — Indo-Iranian borderlands
+  Encoding: Parpola sign numbers; CISI object IDs need crosswalk to M77/Wells.
+  Contact Tiedekirja for digital rights status and scan/internal-use permission.
+source_score:
+  textual_value: 5
+  metadata_quality: 5
+  license_clarity: 4
+  language_coverage: 5
+  rarity: 5
+  ocr_quality: 5
+  scholarly_reliability: 5
+  alignment_potential: 5
+  annotation_depth: 5
+  acquisition_difficulty: 2

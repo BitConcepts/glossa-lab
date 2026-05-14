@@ -1,0 +1,25 @@
+confidence: '0.95'
+download_date: '2026-05-14'
+download_url: https://github.com/Sefaria/Sefaria-Export
+item_id: sefaria/export
+language: hbo; arc
+license: CC BY-NC 3.0
+license_class: research_use
+license_url: https://www.sefaria.org/terms
+local_path: sources\sefaria\raw\2026-05-14
+notes: CC BY-NC 3.0 — non-commercial research use. Store in production; check before
+  training.
+period: 1200 BCE - 1800 CE
+processing_stage: raw
+rights_status: research_use
+script: Hebrew; Aramaic
+source_format: json
+source_name: Sefaria — Library of Jewish Texts
+source_score:
+  language_coverage: 5
+  license_clarity: 4
+  metadata_quality: 5
+  scholarly_reliability: 5
+  textual_value: 5
+source_url: https://www.sefaria.org
+status: keep

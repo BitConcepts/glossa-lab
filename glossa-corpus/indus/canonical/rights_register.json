@@ -9,15 +9,16 @@
     ],
     "derivation": "Rights register for Indus corpus reconstruction."
   },
-  "total_objects": 15508,
+  "total_objects": 19925,
   "by_rights_status": {
     "MIT": 179,
     "CC0": 4908,
     "CC BY 4.0": 7515,
-    "rmrl-research": 2906
+    "rmrl-research": 2906,
+    "india-museum-restricted": 4417
   },
   "ml_training_cleared": 12602,
   "research_use_cleared": 15508,
   "quarantined": 0,
-  "last_updated": "2026-05-14T23:01:28.215323"
+  "last_updated": "2026-05-14T23:05:07.949334"
 }

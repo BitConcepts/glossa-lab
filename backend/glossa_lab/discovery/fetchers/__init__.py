@@ -227,22 +227,19 @@ async def run_all(
     only_sources: Iterable[str] | None = None,
     only_topics: Iterable[str] | None = None,
 ) -> dict[str, object]:
-    """Fetch every topic profile shipped with the package."""
+    """Fetch every topic profile shipped with the package.
+
+    Topics are run sequentially; each fetcher already manages its own
+    rate-limiting internally (e.g. GDELT holds a global asyncio.Lock and
+    enforces a 60 s inter-call delay itself), so no additional inter-topic
+    sleep is needed here.
+    """
     topics = list_topics()
     if only_topics is not None:
         wanted = {t.lower() for t in only_topics}
         topics = [t for t in topics if t.id.lower() in wanted]
-    # Collect rate-limited fetchers' delays so we can insert inter-topic
-    # cooldowns. This prevents 429s when multiple topics are queued.
-    max_rate_delay = 0.0
-    for cls in _REGISTRY:
-        d = getattr(cls, "rate_delay", 0) or 0
-        if d > max_rate_delay:
-            max_rate_delay = d
     summaries = []
-    for i, t in enumerate(topics):
-        if i > 0 and max_rate_delay > 0:
-            await asyncio.sleep(max_rate_delay)
+    for t in topics:
         summaries.append(await run_topic(t, since=since, only_sources=only_sources))
     agg = {
         "topics_run": [t.id for t in topics],

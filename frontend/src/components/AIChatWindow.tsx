@@ -82,19 +82,36 @@ function renderTableBlock(block: string): string {
   return `<div style='overflow-x:auto;margin:8px 0;border-radius:5px;border:1px solid #e5e7eb'><table style='border-collapse:collapse;width:100%;font-size:11px'>${thead}${tbody}</table></div>`;
 }
 
-function renderMd(raw: string): string {
+function renderMd(raw: string, dark = false): string {
+  // Colour palette — swap depending on background
+  const c = dark ? {
+    h6: "#94a3b8", h5: "#cbd5e1", h4: "#93c5fd", h3: "#e2e8f0", h2: "#f1f5f9", h1: "#f8fafc",
+    p: "#cbd5e1", link: "#60a5fa",
+    codeBg: "#0f172a", codeBorder: "#334155", codeColor: "#93c5fd",
+    hrColor: "#334155",
+    mathBg: "#1e293b", mathBorder: "#6366f1", mathColor: "#a5b4fc",
+    hBorder: "#334155",
+  } : {
+    h6: "#6b7280", h5: "#374151", h4: "#1e3a5f", h3: "#111827", h2: "#111827", h1: "#111827",
+    p: "inherit", link: "#2563eb",
+    codeBg: "#dbeafe", codeBorder: "#bfdbfe", codeColor: "#1e40af",
+    hrColor: "#e5e7eb",
+    mathBg: "#f0f4ff", mathBorder: "#6366f1", mathColor: "#312e81",
+    hBorder: "#e5e7eb",
+  };
+
   // Step 0: extract block + inline math BEFORE HTML-escaping to preserve symbols
   const mathBlocks: string[] = [];
   let src = raw;
   // Block math \[...\]
   src = src.replace(/\\\[([\s\S]+?)\\\]/g, (_, m) => {
     const rendered = _simplifyLatex(m.trim());
-    mathBlocks.push(`<div style='background:#f0f4ff;border-left:3px solid #6366f1;padding:6px 12px;margin:8px 0;font-family:monospace;font-size:12px;color:#312e81;border-radius:0 4px 4px 0;overflow-x:auto'>${rendered}</div>`);
+    mathBlocks.push(`<div style='background:${c.mathBg};border-left:3px solid ${c.mathBorder};padding:6px 12px;margin:8px 0;font-family:monospace;font-size:12px;color:${c.mathColor};border-radius:0 4px 4px 0;overflow-x:auto'>${rendered}</div>`);
     return `%%MBLOCK${mathBlocks.length - 1}%%`;
   });
   // Inline math \(...\)
   src = src.replace(/\\\(([^)]+?)\\\)/g, (_, m) =>
-    `<em style='font-family:monospace;font-style:normal;color:#4f46e5;background:#eef2ff;padding:1px 4px;border-radius:3px;font-size:11px'>${_simplifyLatex(m.trim())}</em>`
+    `<em style='font-family:monospace;font-style:normal;color:${c.mathColor};background:${c.mathBg};padding:1px 4px;border-radius:3px;font-size:11px'>${_simplifyLatex(m.trim())}</em>`
   );
 
   let html = src.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -110,25 +127,25 @@ function renderMd(raw: string): string {
     return `%%CODE${codeBlocks.length - 1}%%`;
   });
   html = html
-    .replace(/`([^`]+)`/g, "<code style='background:#dbeafe;color:#1e40af;border:1px solid #bfdbfe;padding:1px 5px;border-radius:4px;font-size:11px;font-family:monospace;font-weight:600;white-space:nowrap'>$1</code>")
+    .replace(/`([^`]+)`/g, `<code style='background:${c.codeBg};color:${c.codeColor};border:1px solid ${c.codeBorder};padding:1px 5px;border-radius:4px;font-size:11px;font-family:monospace;font-weight:600;white-space:nowrap'>$1</code>`)
     // Headers: h1–h6 (#### must come before ### which must come before ## etc.)
-    .replace(/^###### (.+)$/gm, "<div style='font-size:10px;font-weight:700;color:#6b7280;margin:6px 0 2px;letter-spacing:0.5px;text-transform:uppercase'>$1</div>")
-    .replace(/^##### (.+)$/gm,  "<div style='font-size:11px;font-weight:700;color:#374151;margin:7px 0 2px'>$1</div>")
-    .replace(/^#### (.+)$/gm,   "<div style='font-size:12px;font-weight:700;color:#1e3a5f;margin:9px 0 3px;border-bottom:1px solid #e5e7eb;padding-bottom:2px'>$1</div>")
-    .replace(/^### (.+)$/gm,    "<div style='font-size:13px;font-weight:700;margin:10px 0 4px;color:#111827'>$1</div>")
-    .replace(/^## (.+)$/gm,     "<div style='font-size:14px;font-weight:700;margin:12px 0 5px;color:#111827'>$1</div>")
-    .replace(/^# (.+)$/gm,      "<div style='font-size:15px;font-weight:800;margin:14px 0 6px;color:#111827'>$1</div>")
+    .replace(/^###### (.+)$/gm, `<div style='font-size:10px;font-weight:700;color:${c.h6};margin:6px 0 2px;letter-spacing:0.5px;text-transform:uppercase'>$1</div>`)
+    .replace(/^##### (.+)$/gm,  `<div style='font-size:11px;font-weight:700;color:${c.h5};margin:7px 0 2px'>$1</div>`)
+    .replace(/^#### (.+)$/gm,   `<div style='font-size:12px;font-weight:700;color:${c.h4};margin:9px 0 3px;border-bottom:1px solid ${c.hBorder};padding-bottom:2px'>$1</div>`)
+    .replace(/^### (.+)$/gm,    `<div style='font-size:13px;font-weight:700;margin:10px 0 4px;color:${c.h3}'>$1</div>`)
+    .replace(/^## (.+)$/gm,     `<div style='font-size:14px;font-weight:700;margin:12px 0 5px;color:${c.h2}'>$1</div>`)
+    .replace(/^# (.+)$/gm,      `<div style='font-size:15px;font-weight:800;margin:14px 0 6px;color:${c.h1}'>$1</div>`)
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     .replace(/\*(.+?)\*/g,     "<em>$1</em>")
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "<a href='$2' target='_blank' rel='noopener noreferrer' style='color:#2563eb'>$1</a>")
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, `<a href='$2' target='_blank' rel='noopener noreferrer' style='color:${c.link}'>$1</a>`)
     // Lists: group consecutive li into ul
     .replace(/^[-*] (.+)$/gm, "<li style='margin:2px 0;margin-left:16px'>$1</li>")
     .replace(/^\d+\. (.+)$/gm, "<li style='margin:2px 0;margin-left:16px;list-style-type:decimal'>$1</li>")
     .replace(/(<li[^>]*>.*<\/li>\n?)+/g, m => `<ul style='margin:4px 0;padding-left:0'>${m}</ul>`)
-    .replace(/^---$/gm, "<hr style='border:none;border-top:1px solid #e5e7eb;margin:10px 0'>")
-    .replace(/\n\n/g, "</p><p style='margin:5px 0'>")
+    .replace(/^---$/gm, `<hr style='border:none;border-top:1px solid ${c.hrColor};margin:10px 0'>`)
+    .replace(/\n\n/g, `</p><p style='margin:5px 0${dark ? ";color:" + c.p : ""}'>`)
     .replace(/\n/g, "<br>")
-    .replace(/^/, "<p style='margin:0'>").replace(/$/, "</p>");
+    .replace(/^/, `<p style='margin:0${dark ? ";color:" + c.p : ""}'>`).replace(/$/, "</p>");
   codeBlocks.forEach((cb, i) => { html = html.replace(`%%CODE${i}%%`, cb); });
   tables.forEach((t, i) => { html = html.replace(`%%TBL${i}%%`, t); });
   mathBlocks.forEach((mb, i) => { html = html.replace(`%%MBLOCK${i}%%`, mb); });
@@ -1122,7 +1139,7 @@ export function ChatInline() {
                     ? <span style={{ color: "#94a3b8" }}>&#x2728;...</span>
                     : msg.role === "user"
                       ? <span style={{ whiteSpace: "pre-wrap" }}>{displayContent}</span>
-                      : <div dangerouslySetInnerHTML={{ __html: renderMd(displayContent) }} />
+                      : <div dangerouslySetInnerHTML={{ __html: renderMd(displayContent, true) }} />
                   }
                 </div>
               </div>

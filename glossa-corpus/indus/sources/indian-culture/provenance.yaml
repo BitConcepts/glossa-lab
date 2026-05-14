@@ -1,0 +1,47 @@
+item_id: indus/indian-culture
+source_name: "Indian Culture Portal — Government of India"
+source_url: https://indianculture.gov.in
+download_url: https://indianculture.gov.in/mohenjo-daro-and-indus-civilization
+download_date: "2026-05-14"
+local_path: "glossa-corpus/indus/sources/indian-culture/raw/2026-05-14"
+checksum_sha256: ""
+license: "Government of India — cultural portal"
+license_url: https://indianculture.gov.in/terms-and-conditions
+rights_status: research_use
+license_class: restricted
+title: "Indian Culture Portal — Harappan / Indus Civilization materials"
+author: "Government of India, Ministry of Culture"
+publication_date: "ongoing"
+language: und
+script: Indus
+period: "2600–1900 BCE"
+region: India
+genre: epigraphy
+source_format: pdf
+processing_stage: raw
+confidence: "0.85"
+ocr_quality: low
+manually_reviewed: false
+status: keep
+glossa_legacy_asset: false
+notes: >
+  Government of India cultural portal. Rights must be tracked per item and source
+  repository. Suitable for OCR bootstrapping and provenance capture.
+  Reproduction without permission may be restricted — flag all as india-gov-cultural.
+  Key target URLs:
+    https://indianculture.gov.in/mohenjo-daro-and-indus-civilization
+    https://indianculture.gov.in/rarebooks/mohenjo-daro-and-indus-civilization
+    https://indianculture.gov.in/ebooks/excavations-harappa
+    https://indianculture.gov.in/antiquities-dholavira-excavations-10
+  Use for OCR seed data; do not redistribute without verification.
+source_score:
+  textual_value: 4
+  metadata_quality: 3
+  license_clarity: 2
+  language_coverage: 4
+  rarity: 5
+  ocr_quality: 2
+  scholarly_reliability: 5
+  alignment_potential: 3
+  annotation_depth: 2
+  acquisition_difficulty: 3

@@ -1,0 +1,11 @@
+{
+  "batch_id": "2026-05-14-INDUS-MAYIG",
+  "source": "mayig",
+  "timestamp": "2026-05-14T20:55:58.205200",
+  "results": {
+    "success": true,
+    "local_path": "D:\\Development\\BitConcepts\\glossa-lab\\glossa-corpus\\indus\\sources\\mayig-cisi\\raw\\2026-05-14",
+    "json_files_found": 582,
+    "inscription_candidates": 0
+  }
+}

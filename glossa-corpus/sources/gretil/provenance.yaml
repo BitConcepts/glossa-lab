@@ -1,0 +1,22 @@
+confidence: '0.85'
+download_date: '2026-05-14'
+download_url: https://github.com/fractalmandala/gretil
+item_id: gretil/main
+language: san; pra; tam; ben
+license: CC BY 4.0 / various
+license_class: open_license
+local_path: sources\gretil\raw\2026-05-14
+period: 1500 BCE - 1800 CE
+processing_stage: raw
+rights_status: open_license
+script: Devanagari; Latin transliteration
+source_format: plain_text
+source_name: GRETIL — Göttingen Register of Electronic Texts in Indian Languages
+source_score:
+  language_coverage: 5
+  license_clarity: 3
+  metadata_quality: 3
+  scholarly_reliability: 4
+  textual_value: 5
+source_url: http://gretil.sub.uni-goettingen.de
+status: keep

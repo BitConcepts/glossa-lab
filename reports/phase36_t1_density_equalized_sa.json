@@ -1,0 +1,54 @@
+{
+  "experiment": "Phase-36 T1: Bigram density equalized SA",
+  "dravidian": {
+    "n_vocab": 424,
+    "n_bigrams": 651,
+    "n_anchors": 5,
+    "best_score": -51540.113,
+    "null_mean": -64616.138,
+    "null_std": 2223.36,
+    "z_score": 5.881,
+    "p_value": 0.0,
+    "nll_lift_per_inscription": 7.8346,
+    "significant": true,
+    "seed_scores": [
+      -60459.9,
+      -65642.7,
+      -51540.1,
+      -60865.1,
+      -56133.1
+    ]
+  },
+  "sanskrit": {
+    "n_vocab": 424,
+    "n_bigrams": 651,
+    "n_anchors": 5,
+    "best_score": -52886.139,
+    "null_mean": -65264.99,
+    "null_std": 1952.822,
+    "z_score": 6.339,
+    "p_value": 0.0,
+    "nll_lift_per_inscription": 7.4169,
+    "significant": true,
+    "seed_scores": [
+      -59271.5,
+      -65065.5,
+      -58526.0,
+      -65066.8,
+      -52886.1
+    ]
+  },
+  "dravidian_wins": true,
+  "lift_ratio_drav_over_skt": 1.056,
+  "n_bigrams_equalized": 651,
+  "verdict": "Phase-36 T1 density-equalized (424 syl, 651 bigrams each): Dravidian Z=5.88/lift=7.835 vs Sanskrit Z=6.34/lift=7.417. Dravidian WINS (ratio 1.06x). Both SIGNIFICANT.",
+  "runtime_seconds": 131.6,
+  "_citation": {
+    "primary": [
+      "A.1",
+      "E.1",
+      "C.2"
+    ],
+    "phase": "Phase-36-T1"
+  }
+}

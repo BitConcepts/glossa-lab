@@ -1,0 +1,22 @@
+confidence: '0.90'
+download_date: '2026-05-14'
+download_url: https://github.com/OpenITI
+item_id: openiti/main
+language: ara; per; tur; urd
+license: CC BY 4.0
+license_class: open_license
+local_path: sources\openiti\raw\2026-05-14
+period: 600 CE - 1900 CE
+processing_stage: raw
+rights_status: open_license
+script: Arabic
+source_format: plain_text
+source_name: OpenITI — Open Islamicate Texts Initiative
+source_score:
+  language_coverage: 5
+  license_clarity: 5
+  metadata_quality: 4
+  scholarly_reliability: 5
+  textual_value: 5
+source_url: https://openiti.org
+status: keep

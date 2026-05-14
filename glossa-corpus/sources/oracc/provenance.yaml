@@ -1,0 +1,22 @@
+confidence: '0.95'
+download_date: '2026-05-14'
+download_url: https://oracc.museum.upenn.edu/json/
+item_id: oracc/bulk
+language: sux; akk; xhu; elx
+license: CC BY-SA 3.0
+license_class: open_license
+local_path: sources\oracc\raw\2026-05-14
+period: 3100 BCE - 100 CE
+processing_stage: raw
+rights_status: open_license
+script: Cuneiform
+source_format: json
+source_name: ORACC — Open Richly Annotated Cuneiform Corpus
+source_score:
+  language_coverage: 5
+  license_clarity: 5
+  metadata_quality: 5
+  scholarly_reliability: 5
+  textual_value: 5
+source_url: https://oracc.museum.upenn.edu
+status: keep

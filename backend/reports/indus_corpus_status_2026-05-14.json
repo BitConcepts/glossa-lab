@@ -1,0 +1,49 @@
+{
+  "_citation": {
+    "primary_sources": [
+      "A.1",
+      "A.7",
+      "I.1",
+      "I.2",
+      "I.3",
+      "I.4",
+      "I.5"
+    ],
+    "derivation": "Corpus status report for ICIT-scale Indus reconstruction."
+  },
+  "timestamp": "2026-05-14T23:01:33.136204",
+  "icit_target": {
+    "objects": 4537,
+    "texts": 5509,
+    "sign_occurrences": 19616
+  },
+  "pipeline": {
+    "staging": 18414,
+    "quarantine": 2591,
+    "canonical": 15508,
+    "open_export": 5087,
+    "research_export": 15508,
+    "icit_sequences": 3085,
+    "sign_instances_total": 13642
+  },
+  "coverage_pct": {
+    "objects": 341.8,
+    "texts": 56.0,
+    "sign_occurrences": 66.0
+  },
+  "by_source": {
+    "mayig-cisi": 179,
+    "MetOpenAccess": 4904,
+    "ClevelandArtOpenAccess": 4,
+    "PennMuseum": 7515,
+    "indusscript-m77": 2906
+  },
+  "by_rights": {
+    "MIT": 179,
+    "CC0": 4908,
+    "CC BY 4.0": 7515,
+    "rmrl-research": 2906
+  },
+  "diplomatic_coverage_pct": 19.9,
+  "avg_crosswalk_coverage": 0.954
+}

@@ -1,0 +1,53 @@
+# STUB — PERMISSIONS REQUIRED
+# Contact: https://asi.nic.in/pages/archive
+item_id: indus/asi-archive
+source_name: "Archaeological Survey of India — Archive and Central Archaeological Library"
+source_url: https://asi.nic.in/pages/archive
+download_url: ""
+download_date: ""
+local_path: glossa-corpus/indus/sources/asi-archive/raw/
+checksum_sha256: ""
+license: "ASI copyright — permission required for reproduction"
+license_url: https://asi.nic.in/pages/archive
+rights_status: restricted
+license_class: restricted
+title: "ASI Archive — Harappan excavation photos, drawings, glass negatives, D-forms"
+author: "Archaeological Survey of India"
+publication_date: "1920s–ongoing"
+language: und
+script: Indus
+period: "2600–1900 BCE"
+region: India
+genre: epigraphy
+source_format: image
+processing_stage: raw
+confidence: "0.90"
+ocr_quality: n_a
+manually_reviewed: false
+status: review
+glossa_legacy_asset: false
+notes: >
+  STUB — FORMAL PERMISSIONS REQUIRED BEFORE ANY DATA USE.
+  ASI copyright policy requires permission for reproduction.
+  Top permissions target for glass negatives, excavation photos, and legacy reports.
+  Key resources:
+    Archive page: https://asi.nic.in/pages/archive
+    Collection: https://asi.nic.in/pages/archive/collection
+    Central Archaeological Library: https://asi.nic.in/pages/Central-Archaelogical-Library/HQ
+    Publications: https://asi.nic.in/pages/Publications/stateLocator/
+  What to request:
+    - High-res historical photos of Mohenjo-daro/Harappa/Dholavira excavations
+    - Permission to reproduce/report for corpus use
+    - Access to excavation documentation and D-forms
+    - Bulk metadata reconciliation
+source_score:
+  textual_value: 5
+  metadata_quality: 4
+  license_clarity: 2
+  language_coverage: 5
+  rarity: 5
+  ocr_quality: 3
+  scholarly_reliability: 5
+  alignment_potential: 4
+  annotation_depth: 3
+  acquisition_difficulty: 5

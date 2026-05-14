@@ -1,0 +1,15 @@
+{
+  "batch_id": "2026-05-14-INDUS-MUSEUMS-OF-INDIA",
+  "source": "museums-of-india",
+  "timestamp": "2026-05-14T20:57:17.438027",
+  "results": {
+    "museum_list": {
+      "status": "OK",
+      "count": 1
+    },
+    "search_harappan": "FAIL",
+    "search_indus": "FAIL",
+    "search_mohenjo-daro": "FAIL",
+    "search_seal": "FAIL"
+  }
+}

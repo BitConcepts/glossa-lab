@@ -1,0 +1,42 @@
+item_id: indus/cleveland-art
+source_name: "Cleveland Museum of Art — Open Access API"
+source_url: https://openaccess-api.clevelandart.org
+download_url: https://openaccess-api.clevelandart.org/api/artworks/?q=indus&limit=100
+download_date: "2026-05-14"
+local_path: "glossa-corpus/indus/sources/cleveland-art/raw/2026-05-14"
+checksum_sha256: "51e5fa706ed64e90efa0c75169782f22c5c76b9e8981a3064e71ec10a9ce06ba"
+license: CC0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
+rights_status: public_domain
+license_class: open_license
+title: "Cleveland Museum of Art — Indus-related objects (Open Access)"
+author: "Cleveland Museum of Art"
+publication_date: "ongoing"
+language: und
+script: Indus
+period: "2600–1900 BCE"
+region: "Indus Valley"
+genre: epigraphy
+source_format: json
+processing_stage: raw
+confidence: "0.95"
+ocr_quality: n_a
+manually_reviewed: false
+status: keep
+glossa_legacy_asset: false
+notes: >
+  Public-domain artworks have unrestricted metadata and images via the API.
+  Returned records expose web, print, and full TIFF image assets.
+  Sample Indus object: https://www.clevelandart.org/art/1973.160
+  API docs: https://openaccess-api.clevelandart.org
+source_score:
+  textual_value: 3
+  metadata_quality: 5
+  license_clarity: 5
+  language_coverage: 3
+  rarity: 4
+  ocr_quality: 5
+  scholarly_reliability: 5
+  alignment_potential: 5
+  annotation_depth: 3
+  acquisition_difficulty: 1

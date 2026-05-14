@@ -1217,3 +1217,121 @@ Additional acknowledgements since the last update:
 ---
 
 *Last updated: 2026-05-13.*
+
+---
+
+## Section I — ICIT-Scale Indus Corpus Reconstruction Sources (2026-05-14)
+
+This section covers all sources acquired or planned for the ICIT-scale Indus
+corpus reconstruction project. Branch: `corpus/icit-scale-reconstruction`.
+All sources are cited per H18. Rights classes and acquisition status are tracked
+in `glossa-corpus/indus/sources/*/provenance.yaml`.
+
+### I.1 — mayig/indus-valley-script-corpus (GitHub, MIT)
+
+- **Author**: mcskware (GitHub: mayig)
+- **Title**: Indus Valley Script Corpus — digitization of CISI in JSON format
+- **Repository**: https://github.com/mayig/indus-valley-script-corpus
+- **License**: MIT
+- **Accessed**: 2026-05-14
+- **Coverage**: 179 Mohenjo-daro inscriptions (Parpola P-numbers); full repo may contain additional sites
+- **Original corpus**: Parpola, A. et al. (1987-2010). *Corpus of Indus Seals and Inscriptions*, Vols. 1-3. Suomalainen Tiedeakatemia, Helsinki.
+- **Used in**: `indus_cisi.py` (existing), `corpus_indus_objectize.py` (expanded), `indus_corpus_v2.py`
+- **Rights gate**: ML training OK (MIT); redistribution OK with attribution
+
+### I.2 — The Metropolitan Museum of Art Open Access
+
+- **Author**: The Metropolitan Museum of Art
+- **Title**: Met Museum Collections Open Access API
+- **URL**: https://collectionapi.metmuseum.org
+- **License**: CC0 (public domain objects)
+- **Accessed**: 2026-05-14 (ongoing)
+- **Search endpoint**: `/public/collection/v1/search?hasImages=true&q=Indus+Valley`
+- **Object endpoint**: `/public/collection/v1/objects/{objectID}`
+- **Used in**: `corpus_indus_acquire_free.py`, `corpus_indus_objectize.py`
+- **Rights gate**: CC0 objects: ML training OK, redistribution OK. Per-object `isPublicDomain` flag must be verified.
+
+### I.3 — Cleveland Museum of Art Open Access API
+
+- **Author**: Cleveland Museum of Art
+- **Title**: Cleveland Museum of Art Open Access
+- **URL**: https://openaccess-api.clevelandart.org
+- **License**: CC0 (public domain artworks)
+- **Accessed**: 2026-05-14 (ongoing)
+- **API endpoint**: `https://openaccess-api.clevelandart.org/api/artworks/?q=indus`
+- **Sample object**: https://www.clevelandart.org/art/1973.160
+- **Used in**: `corpus_indus_acquire_free.py`, `corpus_indus_objectize.py`
+- **Rights gate**: CC0 public-domain objects: ML training OK, redistribution OK. Unrestricted metadata and images via API.
+
+### I.4 — Penn Museum Collections Open Data
+
+- **Author**: Penn Museum (University of Pennsylvania Museum of Archaeology and Anthropology)
+- **Title**: Penn Museum Collections Open Data
+- **URL**: https://www.penn.museum/collections/
+- **Data endpoint**: https://www.penn.museum/collections/objects/data.php
+- **License**: CC BY 4.0 (metadata dataset); images: noncommercial-educational (without further permission)
+- **Publication-quality images**: formal request required (https://www.penn.museum/collections/permission-to-reproduce.php)
+- **Accessed**: 2026-05-14
+- **Used in**: `corpus_indus_acquire_free.py`, `corpus_indus_objectize.py`
+- **Rights gate**: Metadata CC BY 4.0: ML OK with attribution. Images: research use; publication requires request.
+
+### I.5 — Indian Culture Portal (Government of India)
+
+- **Author**: Ministry of Culture, Government of India
+- **Title**: Indian Culture Portal — Harappan / Indus Civilization materials
+- **URL**: https://indianculture.gov.in
+- **Key target URLs**:
+  - https://indianculture.gov.in/mohenjo-daro-and-indus-civilization
+  - https://indianculture.gov.in/rarebooks/mohenjo-daro-and-indus-civilization
+  - https://indianculture.gov.in/ebooks/excavations-harappa
+  - https://indianculture.gov.in/antiquities-dholavira-excavations-10
+- **License**: Government of India cultural portal — rights tracked per item
+- **Accessed**: 2026-05-14
+- **Rights class**: `india-gov-cultural` — research use; redistribution requires verification
+- **Used in**: `corpus_indus_acquire_free.py` (OCR seed data only)
+- **Rights gate**: Research use OK; no ML training or redistribution without explicit per-item rights clearance.
+
+### I.6 — Roja Muthiah Research Library / Indus Research Centre
+
+- **Author**: Roja Muthiah Research Library, Chennai; Indus Research Centre
+- **Title**: RMRL Indus Script Portal + Bulletins (Mahadevan 1977 concordance based)
+- **URL**: https://rmrl.in/en/irc
+- **Portal**: https://indusscript.in
+- **Bulletins**: https://rmrl.in/bulletin/bulletin-No-{1-6}-{date}.pdf
+- **License**: RMRL research use — contact required for concordance export
+- **Accessed**: 2026-05-14
+- **Rights class**: `rmrl-research` — research use; redistribution requires contact
+- **Note**: RMRL states a new expanded concordance is in development — highest priority institutional contact.
+- **Used in**: `corpus_indus_acquire_free.py`, future concordance cooperation
+- **Rights gate**: Research use; contact RMRL (https://rmrl.in/en/irc) before any export or redistribution.
+
+### I.7 — Museums of India Repository
+
+- **Author**: Ministry of Culture, Government of India; C-DAC
+- **Title**: Museums of India Repository
+- **URL**: https://www.museumsofindia.gov.in/repository/
+- **Endpoints**:
+  - Museum list: `https://museumsofindia.gov.in/repository/collection/musuemList`
+  - Search: `https://museumsofindia.gov.in/repository/search-api`
+- **License**: Restrictive assumed; rights tracked per record
+- **Rights class**: `india-museum-restricted` — discovery and metadata reconciliation only
+- **Used in**: `corpus_indus_acquire_free.py` (metadata discovery only)
+- **Rights gate**: No ML training or redistribution without explicit per-record rights clearance.
+
+### I.8 — Internet Archive — Indus Script IIIF Sources
+
+- **Author**: Various (Mahadevan 1977 scan; corpus-vol-2 scan; other scans)
+- **Title**: Internet Archive IIIF — Indus Script OCR sources
+- **URL**: https://archive.org
+- **Key items**:
+  - `archive.org/details/TheIndusScript.TextConcordanceAndTablesIravathanMahadevan`
+  - `archive.org/details/corpus-vol-2`
+- **IIIF manifest pattern**: `https://iiif.archive.org/iiif/{identifier}/manifest.json`
+- **License**: Varies per item; treat as derivative fallback
+- **Rights class**: `internet-archive-derivative` — OCR seeding only
+- **Used in**: `corpus_indus_acquire_free.py` (IIIF manifests for OCR seed data)
+- **Rights gate**: Do NOT canonicalize readings without reconciliation against official editions. Do NOT include in ML training or redistribution.
+
+---
+
+*Section I added: 2026-05-14. Branch: corpus/icit-scale-reconstruction.*

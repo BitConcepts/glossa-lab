@@ -1,0 +1,15 @@
+{
+  "batch_id": "2026-05-14-INDUS-INDIAN-CULTURE",
+  "source": "indian-culture",
+  "timestamp": "2026-05-14T21:07:22.519242",
+  "results": {
+    "pages": {
+      "mohenjo-daro-civ": "FAIL",
+      "mohenjo-daro-rare": "FAIL",
+      "harappa-excavations": "FAIL",
+      "dholavira-antiquities": "FAIL"
+    },
+    "pdfs_downloaded": 0,
+    "pdfs_failed": 0
+  }
+}

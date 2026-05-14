@@ -1,0 +1,476 @@
+{
+  "n_signs_analysed": 61,
+  "min_freq": 5,
+  "class_breakdown": {
+    "INITIAL": 7,
+    "MEDIAL": 30,
+    "MIXED": 15,
+    "TERMINAL": 9
+  },
+  "n_corpus_inscriptions": 1669,
+  "suffix_term_count": 0,
+  "suffix_total": 2,
+  "nonsuffix_term_count": 0,
+  "nonsuffix_total": 0,
+  "annotated_anchors": [
+    {
+      "sign": "047",
+      "reading": "miin",
+      "pos_class": "INITIAL",
+      "t_rate": 0.0573,
+      "i_rate": 0.4177,
+      "m_rate": 0.2495,
+      "count": 541,
+      "is_dravidian_suffix": true
+    },
+    {
+      "sign": "147",
+      "reading": "miin",
+      "pos_class": "INITIAL",
+      "t_rate": 0.0,
+      "i_rate": 0.8,
+      "m_rate": 0.0,
+      "count": 5,
+      "is_dravidian_suffix": true
+    }
+  ],
+  "all_profiles": {
+    "047": {
+      "count": 541,
+      "t_rate": 0.0573,
+      "i_rate": 0.4177,
+      "m_rate": 0.2495,
+      "pos_class": "INITIAL"
+    },
+    "820": {
+      "count": 121,
+      "t_rate": 0.2231,
+      "i_rate": 0.2231,
+      "m_rate": 0.5372,
+      "pos_class": "MEDIAL"
+    },
+    "520": {
+      "count": 196,
+      "t_rate": 0.1071,
+      "i_rate": 0.0663,
+      "m_rate": 0.8112,
+      "pos_class": "MEDIAL"
+    },
+    "034": {
+      "count": 80,
+      "t_rate": 0.375,
+      "i_rate": 0.0875,
+      "m_rate": 0.475,
+      "pos_class": "MEDIAL"
+    },
+    "307": {
+      "count": 14,
+      "t_rate": 0.2143,
+      "i_rate": 0.0,
+      "m_rate": 0.7857,
+      "pos_class": "MEDIAL"
+    },
+    "461": {
+      "count": 56,
+      "t_rate": 0.3036,
+      "i_rate": 0.0893,
+      "m_rate": 0.5714,
+      "pos_class": "MEDIAL"
+    },
+    "790": {
+      "count": 48,
+      "t_rate": 0.3333,
+      "i_rate": 0.1667,
+      "m_rate": 0.0,
+      "pos_class": "MIXED"
+    },
+    "256": {
+      "count": 73,
+      "t_rate": 0.3014,
+      "i_rate": 0.3014,
+      "m_rate": 0.1507,
+      "pos_class": "MIXED"
+    },
+    "455": {
+      "count": 48,
+      "t_rate": 0.1875,
+      "i_rate": 0.3542,
+      "m_rate": 0.25,
+      "pos_class": "MIXED"
+    },
+    "872": {
+      "count": 34,
+      "t_rate": 0.3235,
+      "i_rate": 0.2647,
+      "m_rate": 0.2059,
+      "pos_class": "MIXED"
+    },
+    "503": {
+      "count": 63,
+      "t_rate": 0.4444,
+      "i_rate": 0.4762,
+      "m_rate": 0.0,
+      "pos_class": "TERMINAL"
+    },
+    "427": {
+      "count": 147,
+      "t_rate": 0.2789,
+      "i_rate": 0.0612,
+      "m_rate": 0.5374,
+      "pos_class": "MEDIAL"
+    },
+    "817": {
+      "count": 107,
+      "t_rate": 0.1963,
+      "i_rate": 0.1402,
+      "m_rate": 0.6636,
+      "pos_class": "MEDIAL"
+    },
+    "858": {
+      "count": 105,
+      "t_rate": 0.2476,
+      "i_rate": 0.219,
+      "m_rate": 0.4476,
+      "pos_class": "MEDIAL"
+    },
+    "237": {
+      "count": 41,
+      "t_rate": 0.4878,
+      "i_rate": 0.1707,
+      "m_rate": 0.3415,
+      "pos_class": "TERMINAL"
+    },
+    "874": {
+      "count": 219,
+      "t_rate": 0.1963,
+      "i_rate": 0.1096,
+      "m_rate": 0.6712,
+      "pos_class": "MEDIAL"
+    },
+    "400": {
+      "count": 211,
+      "t_rate": 0.2038,
+      "i_rate": 0.1232,
+      "m_rate": 0.4834,
+      "pos_class": "MEDIAL"
+    },
+    "692": {
+      "count": 171,
+      "t_rate": 0.1754,
+      "i_rate": 0.386,
+      "m_rate": 0.3684,
+      "pos_class": "MIXED"
+    },
+    "861": {
+      "count": 138,
+      "t_rate": 0.3116,
+      "i_rate": 0.0435,
+      "m_rate": 0.4493,
+      "pos_class": "MEDIAL"
+    },
+    "045": {
+      "count": 92,
+      "t_rate": 0.2283,
+      "i_rate": 0.2283,
+      "m_rate": 0.5,
+      "pos_class": "MEDIAL"
+    },
+    "841": {
+      "count": 38,
+      "t_rate": 0.2368,
+      "i_rate": 0.1579,
+      "m_rate": 0.0263,
+      "pos_class": "MIXED"
+    },
+    "035": {
+      "count": 46,
+      "t_rate": 0.2174,
+      "i_rate": 0.2391,
+      "m_rate": 0.0217,
+      "pos_class": "MIXED"
+    },
+    "147": {
+      "count": 5,
+      "t_rate": 0.0,
+      "i_rate": 0.8,
+      "m_rate": 0.0,
+      "pos_class": "INITIAL"
+    },
+    "106": {
+      "count": 39,
+      "t_rate": 0.3333,
+      "i_rate": 0.1026,
+      "m_rate": 0.5128,
+      "pos_class": "MEDIAL"
+    },
+    "413": {
+      "count": 59,
+      "t_rate": 0.2373,
+      "i_rate": 0.0169,
+      "m_rate": 0.7288,
+      "pos_class": "MEDIAL"
+    },
+    "156": {
+      "count": 73,
+      "t_rate": 0.3973,
+      "i_rate": 0.4932,
+      "m_rate": 0.0137,
+      "pos_class": "INITIAL"
+    },
+    "074": {
+      "count": 45,
+      "t_rate": 0.7333,
+      "i_rate": 0.1556,
+      "m_rate": 0.0444,
+      "pos_class": "TERMINAL"
+    },
+    "129": {
+      "count": 40,
+      "t_rate": 0.4,
+      "i_rate": 0.1,
+      "m_rate": 0.5,
+      "pos_class": "TERMINAL"
+    },
+    "157": {
+      "count": 35,
+      "t_rate": 0.2286,
+      "i_rate": 0.1429,
+      "m_rate": 0.6286,
+      "pos_class": "MEDIAL"
+    },
+    "003": {
+      "count": 124,
+      "t_rate": 0.3468,
+      "i_rate": 0.0403,
+      "m_rate": 0.6129,
+      "pos_class": "MEDIAL"
+    },
+    "481": {
+      "count": 179,
+      "t_rate": 0.0279,
+      "i_rate": 0.3966,
+      "m_rate": 0.4804,
+      "pos_class": "MEDIAL"
+    },
+    "708": {
+      "count": 40,
+      "t_rate": 0.05,
+      "i_rate": 0.65,
+      "m_rate": 0.3,
+      "pos_class": "INITIAL"
+    },
+    "866": {
+      "count": 35,
+      "t_rate": 0.3429,
+      "i_rate": 0.0286,
+      "m_rate": 0.6286,
+      "pos_class": "MEDIAL"
+    },
+    "617": {
+      "count": 61,
+      "t_rate": 0.2787,
+      "i_rate": 0.1803,
+      "m_rate": 0.4754,
+      "pos_class": "MEDIAL"
+    },
+    "173": {
+      "count": 61,
+      "t_rate": 0.3115,
+      "i_rate": 0.1311,
+      "m_rate": 0.4918,
+      "pos_class": "MEDIAL"
+    },
+    "712": {
+      "count": 43,
+      "t_rate": 0.1163,
+      "i_rate": 0.4651,
+      "m_rate": 0.3256,
+      "pos_class": "INITIAL"
+    },
+    "375": {
+      "count": 32,
+      "t_rate": 0.25,
+      "i_rate": 0.25,
+      "m_rate": 0.0625,
+      "pos_class": "MIXED"
+    },
+    "090": {
+      "count": 102,
+      "t_rate": 0.3039,
+      "i_rate": 0.3039,
+      "m_rate": 0.3824,
+      "pos_class": "MIXED"
+    },
+    "480": {
+      "count": 48,
+      "t_rate": 0.4375,
+      "i_rate": 0.2917,
+      "m_rate": 0.2708,
+      "pos_class": "TERMINAL"
+    },
+    "718": {
+      "count": 19,
+      "t_rate": 0.2105,
+      "i_rate": 0.0526,
+      "m_rate": 0.7368,
+      "pos_class": "MEDIAL"
+    },
+    "855": {
+      "count": 36,
+      "t_rate": 0.1944,
+      "i_rate": 0.3889,
+      "m_rate": 0.3889,
+      "pos_class": "MIXED"
+    },
+    "176": {
+      "count": 16,
+      "t_rate": 0.375,
+      "i_rate": 0.1875,
+      "m_rate": 0.4375,
+      "pos_class": "MEDIAL"
+    },
+    "920": {
+      "count": 76,
+      "t_rate": 0.0921,
+      "i_rate": 0.1842,
+      "m_rate": 0.3553,
+      "pos_class": "MIXED"
+    },
+    "430": {
+      "count": 50,
+      "t_rate": 0.14,
+      "i_rate": 0.14,
+      "m_rate": 0.66,
+      "pos_class": "MEDIAL"
+    },
+    "506": {
+      "count": 43,
+      "t_rate": 0.4651,
+      "i_rate": 0.1395,
+      "m_rate": 0.3953,
+      "pos_class": "TERMINAL"
+    },
+    "876": {
+      "count": 32,
+      "t_rate": 0.5,
+      "i_rate": 0.5,
+      "m_rate": 0.0,
+      "pos_class": "TERMINAL"
+    },
+    "138": {
+      "count": 48,
+      "t_rate": 0.3125,
+      "i_rate": 0.3542,
+      "m_rate": 0.1042,
+      "pos_class": "MIXED"
+    },
+    "203": {
+      "count": 85,
+      "t_rate": 0.1294,
+      "i_rate": 0.0824,
+      "m_rate": 0.7765,
+      "pos_class": "MEDIAL"
+    },
+    "440": {
+      "count": 52,
+      "t_rate": 0.1731,
+      "i_rate": 0.2115,
+      "m_rate": 0.5192,
+      "pos_class": "MEDIAL"
+    },
+    "700": {
+      "count": 355,
+      "t_rate": 0.1099,
+      "i_rate": 0.0535,
+      "m_rate": 0.8338,
+      "pos_class": "MEDIAL"
+    },
+    "394": {
+      "count": 47,
+      "t_rate": 0.1489,
+      "i_rate": 0.1489,
+      "m_rate": 0.617,
+      "pos_class": "MEDIAL"
+    },
+    "387": {
+      "count": 40,
+      "t_rate": 0.325,
+      "i_rate": 0.425,
+      "m_rate": 0.2,
+      "pos_class": "INITIAL"
+    },
+    "527": {
+      "count": 60,
+      "t_rate": 0.45,
+      "i_rate": 0.45,
+      "m_rate": 0.1,
+      "pos_class": "TERMINAL"
+    },
+    "416": {
+      "count": 55,
+      "t_rate": 0.2182,
+      "i_rate": 0.2182,
+      "m_rate": 0.5636,
+      "pos_class": "MEDIAL"
+    },
+    "719": {
+      "count": 41,
+      "t_rate": 0.1707,
+      "i_rate": 0.1951,
+      "m_rate": 0.0732,
+      "pos_class": "MIXED"
+    },
+    "740": {
+      "count": 432,
+      "t_rate": 0.0463,
+      "i_rate": 0.0185,
+      "m_rate": 0.9352,
+      "pos_class": "MEDIAL"
+    },
+    "169": {
+      "count": 68,
+      "t_rate": 0.25,
+      "i_rate": 0.25,
+      "m_rate": 0.5,
+      "pos_class": "MEDIAL"
+    },
+    "151": {
+      "count": 64,
+      "t_rate": 0.2812,
+      "i_rate": 0.2812,
+      "m_rate": 0.0,
+      "pos_class": "MIXED"
+    },
+    "723": {
+      "count": 41,
+      "t_rate": 0.1951,
+      "i_rate": 0.4634,
+      "m_rate": 0.2927,
+      "pos_class": "INITIAL"
+    },
+    "782": {
+      "count": 39,
+      "t_rate": 0.5385,
+      "i_rate": 0.2564,
+      "m_rate": 0.1026,
+      "pos_class": "TERMINAL"
+    },
+    "526": {
+      "count": 46,
+      "t_rate": 0.3043,
+      "i_rate": 0.2826,
+      "m_rate": 0.3043,
+      "pos_class": "MIXED"
+    }
+  },
+  "verdict": "Positional profiles: 61 signs (freq≥5). Class breakdown: {'INITIAL': 7, 'MEDIAL': 30, 'MIXED': 15, 'TERMINAL': 9}. Suffix anchors TERMINAL: 0/2 vs non-suffix TERMINAL: 0/0.",
+  "runtime_seconds": 0.0,
+  "_citation": {
+    "primary": [
+      "A.1",
+      "E.1",
+      "C.2"
+    ],
+    "phase": "Phase-33"
+  }
+}

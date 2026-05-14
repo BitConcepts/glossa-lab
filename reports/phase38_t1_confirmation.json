@@ -1,0 +1,66 @@
+{
+  "experiment": "Phase-38 T1: Confirmation 10x60K+1000null",
+  "n_seeds": 10,
+  "n_iters": 60000,
+  "dravidian": {
+    "n_anchors": 5,
+    "best_score": -51540.113,
+    "null_mean": -64447.538,
+    "null_std": 2325.338,
+    "z_score": 5.551,
+    "p_value": 0.0,
+    "nll_lift": 7.7336,
+    "ci95": [
+      -67100.3,
+      -58557.1
+    ],
+    "seed_scores": [
+      -60459.9,
+      -65642.7,
+      -51540.1,
+      -60865.1,
+      -56133.1,
+      -66024.0,
+      -54926.6,
+      -65529.0,
+      -60136.5,
+      -60439.3
+    ]
+  },
+  "sanskrit": {
+    "n_anchors": 5,
+    "best_score": -52885.734,
+    "null_mean": -65103.624,
+    "null_std": 2004.291,
+    "z_score": 6.096,
+    "p_value": 0.0,
+    "nll_lift": 7.3205,
+    "ci95": [
+      -67377.4,
+      -59994.8
+    ],
+    "seed_scores": [
+      -59271.5,
+      -65065.5,
+      -58526.0,
+      -65066.8,
+      -52885.7,
+      -65556.3,
+      -65127.1,
+      -64600.9,
+      -55381.7,
+      -58535.1
+    ]
+  },
+  "dravidian_wins": true,
+  "lift_ratio": 1.0564,
+  "verdict": "Phase-38 T1 CONFIRMATION (10 seeds × 60000 iters, 1000 null perms): Dravidian lift=7.7336 (Z=5.55, 95% CI=[-67100.3,-58557.1]) vs Sanskrit lift=7.3205 (Z=6.10). Dravidian WINS (ratio 1.056x). Both p<0.001. Runtime=498s.",
+  "_citation": {
+    "primary": [
+      "A.1",
+      "E.1",
+      "C.2"
+    ],
+    "phase": "Phase-38-T1"
+  }
+}

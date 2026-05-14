@@ -1,0 +1,37 @@
+{
+  "_citation": {
+    "primary_sources": [
+      "A.1",
+      "A.7",
+      "I.1",
+      "I.2",
+      "I.3",
+      "I.4",
+      "I.5"
+    ],
+    "derivation": "Export report for Indus corpus reconstruction."
+  },
+  "batch_id": "2026-05-14-INDUS-EXPORT",
+  "timestamp": "2026-05-14T23:01:31.633684",
+  "canonical_objects": 15508,
+  "open_export": {
+    "count": 5087,
+    "rejected": 10421,
+    "path": "D:\\Development\\BitConcepts\\glossa-lab\\glossa-corpus\\indus\\exports\\indus_open.jsonl"
+  },
+  "research_export": {
+    "count": 15508,
+    "rejected": 0,
+    "path": "D:\\Development\\BitConcepts\\glossa-lab\\glossa-corpus\\indus\\exports\\indus_research.jsonl"
+  },
+  "icit_format": {
+    "sequences": 3085,
+    "coverage_pct": 56.0,
+    "path": "D:\\Development\\BitConcepts\\glossa-lab\\glossa-corpus\\indus\\exports\\indus_icit_format.json"
+  },
+  "icit_target": {
+    "objects": 4537,
+    "texts": 5509,
+    "sign_occurrences": 19616
+  }
+}

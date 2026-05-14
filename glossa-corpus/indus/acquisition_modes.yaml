@@ -1,0 +1,154 @@
+# Glossa-Lab Indus Corpus — Acquisition Mode Registry
+# Based on recovery plan from deep-research session 2026-05-14
+# Branch: corpus/icit-scale-reconstruction
+
+acquisition_modes:
+
+  raw_http:
+    description: "Direct Python urllib/requests download. No JS execution."
+    use_for:
+      - Stable PDFs and static files with known direct URLs
+      - Known JSON REST APIs with stable endpoints
+      - GitHub raw file downloads
+      - S3/CDN-served assets
+    not_for:
+      - Sites that check TLS fingerprint (Indian Culture Portal)
+      - JavaScript-rendered SPAs
+      - Sites requiring session cookies
+    script: corpus_indus_acquire_free.py
+    examples:
+      - Penn Museum: https://www.penn.museum/collections/assets/data/Penn_Museum_Collections_Data.csv
+      - Met GitHub CSV: https://media.githubusercontent.com/media/metmuseum/openaccess/master/MetObjects.csv
+      - RMRL bulletins 1 and 6
+      - Internet Archive IIIF manifests
+
+  browser_rendered:
+    description: "Playwright Chromium headless. Full JS execution, real browser TLS."
+    use_for:
+      - Sites blocking Python HTTP (503 from urllib but 200 from browser)
+      - JavaScript-rendered SPAs where content is in the DOM after JS runs
+      - Sites needing real browser TLS fingerprint
+    not_for:
+      - Sites requiring login (use authorized_session instead)
+      - Sites where content is loaded via authenticated AJAX (use browser_network_capture)
+    script: acquire_indian_culture_playwright.py
+    examples:
+      - Indian Culture Portal (indianculture.gov.in) — 503 to urllib, 200 to Playwright
+
+  browser_network_capture:
+    description: "Playwright + response interception to discover real API endpoints."
+    use_for:
+      - Undocumented APIs behind SPA/React/Angular frontends
+      - Search portals where actual data comes from AJAX calls
+      - Sites where DevTools Network panel shows useful API calls
+    requires: manual_interaction
+    script: acquire_museums_of_india_playwright.py
+    examples:
+      - Museums of India repository (real search endpoint unknown)
+      - Any portal where search results are loaded via XHR/fetch
+
+  authorized_session:
+    description: "Playwright with saved session/cookies for authenticated access."
+    use_for:
+      - Sites where user has legitimate login credentials
+      - Export tools behind account walls
+      - Firestore apps with authenticated reads
+    requires:
+      - Valid account at target site
+      - Login before session capture
+    script: probe_indusscript.py --phase C
+    examples:
+      - indusscript.in (Flutter + Firestore, requires Google account)
+      - National Museum ND (after permission is granted)
+
+  iiif_batch:
+    description: "IIIF manifest parsing + batch image download with rate limiting."
+    use_for:
+      - Manuscript scans and book page images
+      - Internet Archive items with IIIF v2 or v3 manifests
+      - OCR seeding image pipelines
+    note: "Always rewrite URLs to 1800px width, not max. Rate limit: 4 workers, 0.3s sleep."
+    script: acquire_ia_iiif_images.py
+    examples:
+      - Internet Archive mahadevan1977 (842 pages)
+      - Internet Archive corpus-vol-2 (431 pages)
+
+  correspondence_required:
+    description: "No automated acquisition possible. Requires human outreach."
+    use_for:
+      - Missing PDFs never hosted online (RMRL bulletins 2-5)
+      - Restricted datasets requiring institutional permission
+      - Non-public research exports (indusscript.in Firestore data)
+    tracking: "glossa-corpus/indus/sources/*/bulletin_status.yaml"
+    contact_list:
+      - "RMRL: rmrl@rmrl.in (bulletins 2-5, concordance export)"
+      - "National Museum ND: https://nationalmuseumindia.gov.in/en/contact-us"
+      - "ASI Archive: https://asi.nic.in/pages/archive"
+      - "Tiedekirja/CISI: https://tiedekirja.fi (CISI bundle purchase)"
+
+# Failure record template (per AGENTS.md requirement)
+failure_record_template:
+  url: ""
+  timestamp: ""
+  method: ""       # raw_http | browser_rendered | browser_network_capture | iiif_batch
+  status_code: 0
+  content_type: ""
+  error: ""
+  retry_count: 0
+  next_mode: ""    # the acquisition mode to try next
+
+# Source status summary (as of 2026-05-14)
+source_status:
+  mayig_cisi:
+    mode: raw_http
+    status: acquired
+    notes: "179 inscriptions with Parpola grapheme sequences (MIT)"
+
+  met_open_access:
+    mode: raw_http
+    status: acquired
+    notes: "8,295 objects via GitHub bulk CSV (CC0) + API supplement"
+
+  cleveland_art:
+    mode: raw_http
+    status: acquired
+    notes: "4 Indus-relevant objects (CC0)"
+
+  penn_museum:
+    mode: raw_http
+    status: acquired
+    notes: "7,515 objects via direct asset CSV URL (CC BY 4.0)"
+
+  indian_culture:
+    mode: browser_rendered
+    status: partial
+    notes: |
+      Playwright: 200 OK on all pages, HTML saved.
+      Content is React SPA — actual ebooks/PDFs require SPA navigation.
+      Main bundle downloaded; next: navigate within SPA to ebook pages.
+      Script: acquire_indian_culture_playwright.py
+
+  rmrl_bulletins:
+    mode: raw_http
+    status: partial
+    notes: "Bulletins 1 and 6 acquired. 2-5 need correspondence."
+
+  indusscript_firebase:
+    mode: authorized_session
+    status: pending
+    notes: |
+      Bundle downloaded (3.55MB). Key fields extracted: textnum, posnum, inscobj.
+      im77intro.pdf (2.7MB) bundled in app and downloaded.
+      Firestore requires Google account login.
+      Script: probe_indusscript.py --phase C
+
+  museums_of_india:
+    mode: browser_network_capture
+    status: pending
+    notes: "Script ready: acquire_museums_of_india_playwright.py. Requires manual search navigation."
+
+  internet_archive:
+    mode: iiif_batch
+    status: ready
+    notes: "1,273 image URLs staged. Script ready: acquire_ia_iiif_images.py"
+    command: "shell.cmd python backend/scripts/acquire_ia_iiif_images.py --resolution 1800"

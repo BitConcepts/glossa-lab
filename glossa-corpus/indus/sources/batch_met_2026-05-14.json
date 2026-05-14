@@ -1,0 +1,13 @@
+{
+  "batch_id": "2026-05-14-INDUS-MET",
+  "source": "met",
+  "timestamp": "2026-05-14T21:09:58.845631",
+  "results": {
+    "csv_indus_rows": 8250,
+    "api_supplement": 45,
+    "api_failed": 0,
+    "total_objects": 8295,
+    "local_path": "D:\\Development\\BitConcepts\\glossa-lab\\glossa-corpus\\indus\\sources\\met-open-access\\raw\\2026-05-14\\met_indus_filtered.csv",
+    "checksum_sha256": "af25989d3049bce32c52d60ddb1ddec4073c251f4c368cb858b031beed51346f"
+  }
+}

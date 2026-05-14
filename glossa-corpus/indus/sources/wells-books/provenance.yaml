@@ -1,0 +1,56 @@
+# STUB — NOT YET ACQUIRED
+# Decision required: purchase Wells Archaeopress (£25 paperback / £16 PDF) + Wells Oxbow (£35)
+item_id: indus/wells-books
+source_name: "Wells, Bryan K. — Indus Writing monographs (Archaeopress + Oxbow)"
+source_url: https://www.archaeopress.com
+download_url: ""
+download_date: ""
+local_path: glossa-corpus/indus/sources/wells-books/raw/
+checksum_sha256: ""
+license: "Academic monograph — reference use only"
+license_url: ""
+rights_status: proprietary
+license_class: proprietary
+title: >
+  (1) Epigraphic Approaches to Indus Writing (Oxbow, 2015);
+  (2) The Archaeology and Epigraphy of Indus Writing (Archaeopress, 2015)
+author: "Wells, Bryan K."
+publication_date: "2015"
+language: eng
+script: Roman
+period: "2600–1900 BCE"
+region: "Indus Valley"
+genre: scholarly_reference
+source_format: pdf
+processing_stage: raw
+confidence: "0.99"
+ocr_quality: n_a
+manually_reviewed: false
+status: review
+glossa_legacy_asset: false
+notes: >
+  STUB — PURCHASE REQUIRED BEFORE ANY DATA INGEST.
+  These are sign-list and methodology reconstruction aids, not direct corpus data.
+  Price structure (official, as of research report 2026-05-14):
+    Epigraphic Approaches to Indus Writing (Oxbow): £35 paperback
+    The Archaeology and Epigraphy of Indus Writing (Archaeopress): £25 paperback
+    The Archaeology and Epigraphy of Indus Writing (Archaeopress): £16 personal PDF
+  Recommended minimum: £51 (Archaeopress PDF + Oxbow paperback)
+  These books provide:
+    - Wells 2006/2015 sign catalog (676 signs, 3-digit codes)
+    - Methodology for sign-list reconstruction
+    - Corpus logic not available elsewhere in open form
+  Purchase URLs:
+    Oxbow: https://www.oxbowbooks.com
+    Archaeopress: https://www.archaeopress.com
+source_score:
+  textual_value: 4
+  metadata_quality: 5
+  license_clarity: 3
+  language_coverage: 3
+  rarity: 5
+  ocr_quality: 5
+  scholarly_reliability: 5
+  alignment_potential: 4
+  annotation_depth: 4
+  acquisition_difficulty: 2

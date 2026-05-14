@@ -1,0 +1,47 @@
+item_id: indus/internet-archive
+source_name: "Internet Archive — Indus Script OCR sources"
+source_url: https://archive.org
+download_url: https://archive.org/details/TheIndusScript.TextConcordanceAndTablesIravathanMahadevan
+download_date: "2026-05-14"
+local_path: "glossa-corpus/indus/sources/internet-archive/raw/2026-05-14"
+checksum_sha256: ""
+license: "Varies per item — treat as derivative fallback"
+license_url: https://archive.org/about/terms.php
+rights_status: unclear
+license_class: restricted
+title: "Internet Archive — Indus Script IIIF OCR sources (derivative fallback)"
+author: "Various (Mahadevan 1977, corpus-vol-2, other scans)"
+publication_date: "ongoing"
+language: und
+script: Indus
+period: "2600–1900 BCE"
+region: "Indus Valley"
+genre: epigraphy
+source_format: iiif_manifest
+processing_stage: raw
+confidence: "0.60"
+ocr_quality: low
+manually_reviewed: false
+status: keep
+glossa_legacy_asset: false
+notes: >
+  USE ONLY FOR OCR SEED DATA AND GAP-FILLING.
+  Do not canonicalize readings from Internet Archive without reconciliation
+  against official editions. Verify against official sources before any
+  canonical or training use.
+  Flag all as internet-archive-derivative.
+  IIIF manifest pattern: https://iiif.archive.org/iiif/{identifier}/manifest.json
+  Key items:
+    archive.org/details/TheIndusScript.TextConcordanceAndTablesIravathanMahadevan
+    archive.org/details/corpus-vol-2
+source_score:
+  textual_value: 3
+  metadata_quality: 2
+  license_clarity: 1
+  language_coverage: 4
+  rarity: 4
+  ocr_quality: 1
+  scholarly_reliability: 3
+  alignment_potential: 2
+  annotation_depth: 1
+  acquisition_difficulty: 1

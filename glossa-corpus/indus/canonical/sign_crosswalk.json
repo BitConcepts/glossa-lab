@@ -1,0 +1,614 @@
+{
+  "_citation": {
+    "primary_sources": [
+      "A.1",
+      "A.7",
+      "C.1",
+      "C.2"
+    ],
+    "derivation": "Multi-scheme crosswalk for Indus corpus reconstruction. Extends mahadevan_parpola_crosswalk_v2.json with Wells/Fuls dimension. See CITATIONS.md sections A.1, A.7, C.1, C.2."
+  },
+  "version": "v1 (2026-05-14)",
+  "stats": {
+    "m77_to_parpola": 38,
+    "m77_to_parpola_high_confidence": 25,
+    "m77_to_wells_fuls": 22,
+    "m77_to_wells_fuls_high_confidence": 7,
+    "allograph_relations": 6,
+    "wells_676_coverage_pct": 3.3,
+    "note": "Wells/Fuls column is incomplete until Wells 2015 (Archaeopress) is digitized. Purchase required for full coverage."
+  },
+  "crosswalk": {
+    "M001": {
+      "mahadevan_id": "M001",
+      "parpola_id": "1",
+      "wells_id": "001",
+      "fuls_id": "411",
+      "iconic": "man with raised arm",
+      "phoneme": "aaL/vir",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": []
+    },
+    "M006": {
+      "mahadevan_id": "M006",
+      "parpola_id": "6",
+      "wells_id": null,
+      "fuls_id": null,
+      "iconic": "tiger classifier",
+      "phoneme": "puli",
+      "confidence": "MEDIUM",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "allograph_relations": []
+    },
+    "M016": {
+      "mahadevan_id": "M016",
+      "parpola_id": "16",
+      "wells_id": null,
+      "fuls_id": null,
+      "iconic": "Janabiyah seal pos 5; rare in Indus, common in Near East",
+      "phoneme": "uncertain",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": []
+    },
+    "M045": {
+      "mahadevan_id": "M045",
+      "parpola_id": "45",
+      "wells_id": null,
+      "fuls_id": null,
+      "iconic": "elephant classifier",
+      "phoneme": "yānai",
+      "confidence": "MEDIUM",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "allograph_relations": []
+    },
+    "M047": {
+      "mahadevan_id": "M047",
+      "parpola_id": "47",
+      "wells_id": "047",
+      "fuls_id": "159",
+      "iconic": "fish (plain)",
+      "phoneme": "miin",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": [
+        {
+          "from_id": "M048",
+          "from_scheme": "Mahadevan1977",
+          "to_id": "M047",
+          "to_scheme": "Mahadevan1977",
+          "relation": "allograph_of",
+          "confidence": 0.75,
+          "citation": "Parpola 1994; fish-with-roof as variant of plain fish"
+        },
+        {
+          "from_id": "M050",
+          "from_scheme": "Mahadevan1977",
+          "to_id": "M047",
+          "to_scheme": "Mahadevan1977",
+          "relation": "allograph_of",
+          "confidence": 0.75,
+          "citation": "Parpola 1994; fish-with-fins as variant of plain fish"
+        },
+        {
+          "from_id": "M052",
+          "from_scheme": "Mahadevan1977",
+          "to_id": "M047",
+          "to_scheme": "Mahadevan1977",
+          "relation": "allograph_of",
+          "confidence": 0.7,
+          "citation": "Parpola 1994; fish-with-trefoil as variant"
+        },
+        {
+          "from_id": "M060",
+          "from_scheme": "Mahadevan1977",
+          "to_id": "M047",
+          "to_scheme": "Mahadevan1977",
+          "relation": "graphic_variant_of",
+          "confidence": 0.65,
+          "citation": "Mahadevan 1977; 'badly drawn' fish"
+        }
+      ]
+    },
+    "M048": {
+      "mahadevan_id": "M048",
+      "parpola_id": "48",
+      "wells_id": "048",
+      "fuls_id": "160",
+      "iconic": "fish-with-roof",
+      "phoneme": "miin-X",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": [
+        {
+          "from_id": "M048",
+          "from_scheme": "Mahadevan1977",
+          "to_id": "M047",
+          "to_scheme": "Mahadevan1977",
+          "relation": "allograph_of",
+          "confidence": 0.75,
+          "citation": "Parpola 1994; fish-with-roof as variant of plain fish"
+        }
+      ]
+    },
+    "M050": {
+      "mahadevan_id": "M050",
+      "parpola_id": "50",
+      "wells_id": "050",
+      "fuls_id": "161",
+      "iconic": "fish-with-fins",
+      "phoneme": "miin-X",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": [
+        {
+          "from_id": "M050",
+          "from_scheme": "Mahadevan1977",
+          "to_id": "M047",
+          "to_scheme": "Mahadevan1977",
+          "relation": "allograph_of",
+          "confidence": 0.75,
+          "citation": "Parpola 1994; fish-with-fins as variant of plain fish"
+        }
+      ]
+    },
+    "M052": {
+      "mahadevan_id": "M052",
+      "parpola_id": "52",
+      "wells_id": "052",
+      "fuls_id": "162",
+      "iconic": "fish-with-trefoil",
+      "phoneme": "miin-X",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": [
+        {
+          "from_id": "M052",
+          "from_scheme": "Mahadevan1977",
+          "to_id": "M047",
+          "to_scheme": "Mahadevan1977",
+          "relation": "allograph_of",
+          "confidence": 0.7,
+          "citation": "Parpola 1994; fish-with-trefoil as variant"
+        }
+      ]
+    },
+    "M053": {
+      "mahadevan_id": "M053",
+      "parpola_id": "53",
+      "wells_id": null,
+      "fuls_id": null,
+      "iconic": "Janabiyah seal pos 1a (alt: 60)",
+      "phoneme": "uncertain",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": []
+    },
+    "M060": {
+      "mahadevan_id": "M060",
+      "parpola_id": "60",
+      "wells_id": "060",
+      "fuls_id": "070",
+      "iconic": "fish (variant; 'badly drawn')",
+      "phoneme": "miin",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": [
+        {
+          "from_id": "M060",
+          "from_scheme": "Mahadevan1977",
+          "to_id": "M047",
+          "to_scheme": "Mahadevan1977",
+          "relation": "graphic_variant_of",
+          "confidence": 0.65,
+          "citation": "Mahadevan 1977; 'badly drawn' fish"
+        }
+      ]
+    },
+    "M062": {
+      "mahadevan_id": "M062",
+      "parpola_id": "62",
+      "wells_id": null,
+      "fuls_id": null,
+      "iconic": "zebu bull classifier",
+      "phoneme": "erutu",
+      "confidence": "MEDIUM",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "allograph_relations": []
+    },
+    "M063": {
+      "mahadevan_id": "M063",
+      "parpola_id": "63",
+      "wells_id": null,
+      "fuls_id": null,
+      "iconic": "gharial-associated",
+      "phoneme": "mutalai",
+      "confidence": "MEDIUM",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "allograph_relations": []
+    },
+    "M086": {
+      "mahadevan_id": "M086",
+      "parpola_id": "86",
+      "wells_id": "086",
+      "fuls_id": "017",
+      "iconic": "single vertical stroke",
+      "phoneme": "or-",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": [
+        {
+          "from_id": "M086",
+          "from_scheme": "Mahadevan1977",
+          "to_id": "M087",
+          "to_scheme": "Mahadevan1977",
+          "relation": "graphic_variant_of",
+          "confidence": 0.5,
+          "citation": "Additive stroke system; Mahadevan 1977"
+        }
+      ]
+    },
+    "M087": {
+      "mahadevan_id": "M087",
+      "parpola_id": "87",
+      "wells_id": "087",
+      "fuls_id": "018",
+      "iconic": "two vertical strokes",
+      "phoneme": "veL",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": [
+        {
+          "from_id": "M086",
+          "from_scheme": "Mahadevan1977",
+          "to_id": "M087",
+          "to_scheme": "Mahadevan1977",
+          "relation": "graphic_variant_of",
+          "confidence": 0.5,
+          "citation": "Additive stroke system; Mahadevan 1977"
+        }
+      ]
+    },
+    "M088": {
+      "mahadevan_id": "M088",
+      "parpola_id": "88",
+      "wells_id": "088",
+      "fuls_id": "019",
+      "iconic": "three vertical strokes",
+      "phoneme": "muu(n)-",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": []
+    },
+    "M089": {
+      "mahadevan_id": "M089",
+      "parpola_id": "89",
+      "wells_id": "089",
+      "fuls_id": "020",
+      "iconic": "four vertical strokes",
+      "phoneme": "naan-/4",
+      "confidence": "MEDIUM",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "allograph_relations": []
+    },
+    "M090": {
+      "mahadevan_id": "M090",
+      "parpola_id": "90",
+      "wells_id": "090",
+      "fuls_id": "021",
+      "iconic": "five vertical strokes",
+      "phoneme": "ai-/5",
+      "confidence": "MEDIUM",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "allograph_relations": []
+    },
+    "M091": {
+      "mahadevan_id": "M091",
+      "parpola_id": "91",
+      "wells_id": "091",
+      "fuls_id": "022",
+      "iconic": "six vertical strokes",
+      "phoneme": "aru-",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": []
+    },
+    "M092": {
+      "mahadevan_id": "M092",
+      "parpola_id": "92",
+      "wells_id": "092",
+      "fuls_id": "023",
+      "iconic": "seven vertical strokes",
+      "phoneme": "eZu-",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": []
+    },
+    "M093": {
+      "mahadevan_id": "M093",
+      "parpola_id": "93",
+      "wells_id": null,
+      "fuls_id": null,
+      "iconic": "eight vertical strokes",
+      "phoneme": "ettu-/8",
+      "confidence": "MEDIUM",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "allograph_relations": []
+    },
+    "M094": {
+      "mahadevan_id": "M094",
+      "parpola_id": "94",
+      "wells_id": null,
+      "fuls_id": null,
+      "iconic": "nine vertical strokes",
+      "phoneme": "onpatu-/9",
+      "confidence": "MEDIUM",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "allograph_relations": []
+    },
+    "M095": {
+      "mahadevan_id": "M095",
+      "parpola_id": "95",
+      "wells_id": null,
+      "fuls_id": null,
+      "iconic": "ten vertical strokes",
+      "phoneme": "pattu-/10",
+      "confidence": "MEDIUM",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "allograph_relations": []
+    },
+    "M099": {
+      "mahadevan_id": "M099",
+      "parpola_id": "99",
+      "wells_id": "099",
+      "fuls_id": "099",
+      "iconic": "bow / archer",
+      "phoneme": "vil",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": []
+    },
+    "M117": {
+      "mahadevan_id": "M117",
+      "parpola_id": "117",
+      "wells_id": "117",
+      "fuls_id": "550",
+      "iconic": "wheel / chakra",
+      "phoneme": "ar/aru",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": []
+    },
+    "M124": {
+      "mahadevan_id": "M124",
+      "parpola_id": "124",
+      "wells_id": "124",
+      "fuls_id": "100",
+      "iconic": "V-shaped pot/jar",
+      "phoneme": "kuTam",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": []
+    },
+    "M125": {
+      "mahadevan_id": "M125",
+      "parpola_id": "125",
+      "wells_id": null,
+      "fuls_id": null,
+      "iconic": "clause boundary operator",
+      "phoneme": "BOUNDARY",
+      "confidence": "MEDIUM",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "allograph_relations": [
+        {
+          "from_id": "M125",
+          "from_scheme": "Mahadevan1977",
+          "to_id": "M211",
+          "to_scheme": "Mahadevan1977",
+          "relation": "disputed_relation_to",
+          "confidence": 0.4,
+          "citation": "Phase-37 allograph reduction experiment; see LEDGER Phase-37"
+        }
+      ]
+    },
+    "M126": {
+      "mahadevan_id": "M126",
+      "parpola_id": "126",
+      "wells_id": null,
+      "fuls_id": null,
+      "iconic": "rare in Indus, common in Near East",
+      "phoneme": "uncertain",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": []
+    },
+    "M145": {
+      "mahadevan_id": "M145",
+      "parpola_id": "145",
+      "wells_id": null,
+      "fuls_id": null,
+      "iconic": "fish with two horizontal lines",
+      "phoneme": "miin",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": []
+    },
+    "M147": {
+      "mahadevan_id": "M147",
+      "parpola_id": "147",
+      "wells_id": null,
+      "fuls_id": null,
+      "iconic": "fish (sign-list variant)",
+      "phoneme": "miin",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": []
+    },
+    "M175": {
+      "mahadevan_id": "M175",
+      "parpola_id": "175",
+      "wells_id": "175",
+      "fuls_id": "175",
+      "iconic": "spinner's spindle",
+      "phoneme": "katir",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": []
+    },
+    "M211": {
+      "mahadevan_id": "M211",
+      "parpola_id": "211",
+      "wells_id": "211",
+      "fuls_id": "321",
+      "iconic": "comb terminal marker",
+      "phoneme": "suffix",
+      "confidence": "MEDIUM",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "allograph_relations": [
+        {
+          "from_id": "M125",
+          "from_scheme": "Mahadevan1977",
+          "to_id": "M211",
+          "to_scheme": "Mahadevan1977",
+          "relation": "disputed_relation_to",
+          "confidence": 0.4,
+          "citation": "Phase-37 allograph reduction experiment; see LEDGER Phase-37"
+        }
+      ]
+    },
+    "M220": {
+      "mahadevan_id": "M220",
+      "parpola_id": "220",
+      "wells_id": null,
+      "fuls_id": null,
+      "iconic": "terminal diacritical",
+      "phoneme": "suffix",
+      "confidence": "MEDIUM",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "allograph_relations": []
+    },
+    "M261": {
+      "mahadevan_id": "M261",
+      "parpola_id": "261",
+      "wells_id": "261",
+      "fuls_id": "261",
+      "iconic": "two intersecting circles",
+      "phoneme": "muruku",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": []
+    },
+    "M264": {
+      "mahadevan_id": "M264",
+      "parpola_id": "264",
+      "wells_id": null,
+      "fuls_id": null,
+      "iconic": "horned female / goddess",
+      "phoneme": "dam/peN",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": []
+    },
+    "M281": {
+      "mahadevan_id": "M281",
+      "parpola_id": "281",
+      "wells_id": "281",
+      "fuls_id": "281",
+      "iconic": "five-striped palm squirrel",
+      "phoneme": "piLLai",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": []
+    },
+    "M311": {
+      "mahadevan_id": "M311",
+      "parpola_id": "311",
+      "wells_id": "311",
+      "fuls_id": "311",
+      "iconic": "fig tree (three-branched)",
+      "phoneme": "vaTa",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": []
+    },
+    "M342": {
+      "mahadevan_id": "M342",
+      "parpola_id": "342",
+      "wells_id": "342",
+      "fuls_id": "342",
+      "iconic": "3-stroke terminal marker",
+      "phoneme": "ay/ā",
+      "confidence": "MEDIUM",
+      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
+      "allograph_relations": []
+    },
+    "M364": {
+      "mahadevan_id": "M364",
+      "parpola_id": "364",
+      "wells_id": null,
+      "fuls_id": null,
+      "iconic": "single-vertical numerical mark",
+      "phoneme": "or (?)",
+      "confidence": "HIGH",
+      "source": "mahadevan_parpola_crosswalk.json Phase-28",
+      "allograph_relations": []
+    }
+  },
+  "allograph_relations": [
+    {
+      "from_id": "M048",
+      "from_scheme": "Mahadevan1977",
+      "to_id": "M047",
+      "to_scheme": "Mahadevan1977",
+      "relation": "allograph_of",
+      "confidence": 0.75,
+      "citation": "Parpola 1994; fish-with-roof as variant of plain fish"
+    },
+    {
+      "from_id": "M050",
+      "from_scheme": "Mahadevan1977",
+      "to_id": "M047",
+      "to_scheme": "Mahadevan1977",
+      "relation": "allograph_of",
+      "confidence": 0.75,
+      "citation": "Parpola 1994; fish-with-fins as variant of plain fish"
+    },
+    {
+      "from_id": "M052",
+      "from_scheme": "Mahadevan1977",
+      "to_id": "M047",
+      "to_scheme": "Mahadevan1977",
+      "relation": "allograph_of",
+      "confidence": 0.7,
+      "citation": "Parpola 1994; fish-with-trefoil as variant"
+    },
+    {
+      "from_id": "M060",
+      "from_scheme": "Mahadevan1977",
+      "to_id": "M047",
+      "to_scheme": "Mahadevan1977",
+      "relation": "graphic_variant_of",
+      "confidence": 0.65,
+      "citation": "Mahadevan 1977; 'badly drawn' fish"
+    },
+    {
+      "from_id": "M086",
+      "from_scheme": "Mahadevan1977",
+      "to_id": "M087",
+      "to_scheme": "Mahadevan1977",
+      "relation": "graphic_variant_of",
+      "confidence": 0.5,
+      "citation": "Additive stroke system; Mahadevan 1977"
+    },
+    {
+      "from_id": "M125",
+      "from_scheme": "Mahadevan1977",
+      "to_id": "M211",
+      "to_scheme": "Mahadevan1977",
+      "relation": "disputed_relation_to",
+      "confidence": 0.4,
+      "citation": "Phase-37 allograph reduction experiment; see LEDGER Phase-37"
+    }
+  ]
+}

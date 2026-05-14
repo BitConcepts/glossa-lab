@@ -1,0 +1,49 @@
+item_id: indus/rmrl
+source_name: "Roja Muthiah Research Library / Indus Research Centre"
+source_url: https://rmrl.in/en/irc
+download_url: https://indusscript.in
+download_date: "2026-05-14"
+local_path: "glossa-corpus/indus/sources/rmrl/raw/2026-05-14"
+checksum_sha256: ""
+license: "RMRL research use — contact required for concordance export"
+license_url: https://rmrl.in
+rights_status: research_use
+license_class: restricted
+title: "RMRL Indus Script Portal + Bulletins (Mahadevan 1977 concordance based)"
+author: "Roja Muthiah Research Library, Chennai; Indus Research Centre"
+publication_date: "2009–2025"
+language: und
+script: Indus
+period: "2600–1900 BCE"
+region: India
+genre: epigraphy
+source_format: html
+processing_stage: raw
+confidence: "0.92"
+ocr_quality: n_a
+manually_reviewed: false
+status: keep
+glossa_legacy_asset: false
+notes: >
+  IndusScript portal explicitly based on Mahadevan 1977 (The Indus Script: Texts,
+  Concordance and Tables). RMRL states a new expanded concordance is in development —
+  this is the most important institutional relationship to establish.
+  Bulletins 1–6 are downloadable PDFs from rmrl.in.
+  Contact RMRL early for concordance cooperation and portal export possibilities.
+  Key URLs:
+    https://rmrl.in/en/irc
+    https://indusscript.in
+    https://rmrl.in/bulletin/bulletin-No-1-Sept-2009.pdf
+    https://rmrl.in/bulletin/bulletin-No-6-June-2025.pdf
+  Flag all records as rmrl-research; do not redistribute without contact.
+source_score:
+  textual_value: 5
+  metadata_quality: 4
+  license_clarity: 2
+  language_coverage: 5
+  rarity: 5
+  ocr_quality: 3
+  scholarly_reliability: 5
+  alignment_potential: 5
+  annotation_depth: 4
+  acquisition_difficulty: 3

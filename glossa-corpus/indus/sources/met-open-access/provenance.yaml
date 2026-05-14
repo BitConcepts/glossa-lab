@@ -1,0 +1,42 @@
+item_id: indus/met-open-access
+source_name: "The Metropolitan Museum of Art — Open Access"
+source_url: https://www.metmuseum.org/about-the-met/policies-and-documents/open-access
+download_url: https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=Indus
+download_date: "2026-05-14"
+local_path: "glossa-corpus/indus/sources/met-open-access/raw/2026-05-14"
+checksum_sha256: "af25989d3049bce32c52d60ddb1ddec4073c251f4c368cb858b031beed51346f"
+license: CC0
+license_url: https://creativecommons.org/publicdomain/zero/1.0/
+rights_status: public_domain
+license_class: open_license
+title: "Metropolitan Museum of Art — Indus-related objects (Open Access)"
+author: "The Metropolitan Museum of Art"
+publication_date: "ongoing"
+language: und
+script: Indus
+period: "2600–1900 BCE"
+region: "Indus Valley"
+genre: epigraphy
+source_format: json
+processing_stage: raw
+confidence: "0.95"
+ocr_quality: n_a
+manually_reviewed: false
+status: keep
+glossa_legacy_asset: false
+notes: >
+  CC0 public-domain images and metadata for qualifying objects.
+  API: collectionapi.metmuseum.org. Search endpoint returns objectIDs;
+  per-object fetch returns full metadata including primaryImage URLs.
+  Rights apply per-object — verify isPublicDomain flag before training use.
+source_score:
+  textual_value: 3
+  metadata_quality: 5
+  license_clarity: 5
+  language_coverage: 3
+  rarity: 4
+  ocr_quality: 5
+  scholarly_reliability: 5
+  alignment_potential: 4
+  annotation_depth: 3
+  acquisition_difficulty: 1

@@ -165,13 +165,19 @@ class SemanticScholarFetcher(Fetcher):
                 _sdk_consecutive_fails, topic.id,
             )
         else:
+            # Cap total SDK time — the SDK auto-paginates and can hang for many
+            # minutes when the S2 API is slow or returning 5xx errors.
+            _SDK_TOTAL_TIMEOUT = 90.0
             try:
-                papers = await run_in_thread(
-                    _sdk_search,
-                    query,
-                    api_key=s2_key,
-                    max_results=max_results,
-                    year_filter=year_filter,
+                papers = await asyncio.wait_for(
+                    run_in_thread(
+                        _sdk_search,
+                        query,
+                        api_key=s2_key,
+                        max_results=max_results,
+                        year_filter=year_filter,
+                    ),
+                    timeout=_SDK_TOTAL_TIMEOUT,
                 )
                 _sdk_record_success()
                 _sdk_used = True
@@ -183,16 +189,29 @@ class SemanticScholarFetcher(Fetcher):
                 # semanticscholar package not installed — fall back to direct HTTP.
                 _log.debug("semanticscholar PyPI package not found; using direct HTTP")
 
+            except asyncio.TimeoutError:
+                # SDK took too long (pagination + slow S2) — trip circuit breaker
+                # so subsequent topics skip SDK and go straight to HTTP.
+                _sdk_record_failure()
+                _log.warning(
+                    "SemanticScholar SDK timeout (>%.0fs) for topic %s; "
+                    "tripping circuit breaker (consecutive: %d)",
+                    _SDK_TOTAL_TIMEOUT, topic.id, _sdk_consecutive_fails,
+                )
+                # papers stays [] — HTTP fallback below
+
             except Exception as exc:  # noqa: BLE001
                 err_lower = str(exc).lower()
-                is_network = any(k in err_lower for k in (
+                is_circuit_breaker = any(k in err_lower for k in (
                     "network", "connect", "timeout", "unreachable", "reset",
                     "eof", "ssl", "socket", "host", "gateway",
+                    # S2 server errors also warrant circuit-breaker + HTTP fallback
+                    "server error", "internal server", "bad gateway", "service unavailable",
                 ))
-                if is_network:
+                if is_circuit_breaker:
                     _sdk_record_failure()
                     _log.debug(
-                        "SemanticScholar SDK network error for topic %s (%s); "
+                        "SemanticScholar SDK error for topic %s (%s); "
                         "falling back to direct HTTP (consecutive failures: %d)",
                         topic.id, type(exc).__name__, _sdk_consecutive_fails,
                     )

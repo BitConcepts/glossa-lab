@@ -1,0 +1,24 @@
+{
+  "observed_r": 0.0,
+  "n_pairs": 2,
+  "n_permutations": 5000,
+  "null_mean": 0.0,
+  "null_std": 0.0,
+  "null_95pct_ci": [
+    0.0,
+    0.0
+  ],
+  "z_score": 0.0,
+  "p_value_two_sided": 2.0,
+  "significant_at_05": false,
+  "verdict": "Observed Pearson r=0.0000 (n=2 anchor pairs). Null 5000 perms: mean=0.0000 ± 0.0000, Z=0.00, p=2.0000. NOT SIGNIFICANT.",
+  "runtime_seconds": 0.0,
+  "_citation": {
+    "primary": [
+      "A.1",
+      "A.12",
+      "C.2"
+    ],
+    "phase": "Phase-33"
+  }
+}

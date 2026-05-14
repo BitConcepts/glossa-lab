@@ -1,0 +1,46 @@
+{
+  "beam_width": 30,
+  "n_beam_anchors": 0,
+  "beam_anchors": {},
+  "beam_score": -46428.812,
+  "observed_nll": -33623.517,
+  "null_mean": -57741.152,
+  "null_std": 3109.823,
+  "z_score": 7.755,
+  "p_value": 0.0,
+  "significant_at_05": true,
+  "sa_t1_score": -51491.53,
+  "sa_t1_z": 8.009,
+  "best_mapping_top20": {
+    "047": "na",
+    "740": "a",
+    "700": "ta",
+    "874": "ka",
+    "400": "ma",
+    "520": "ti",
+    "481": "ko",
+    "692": "ya",
+    "427": "la",
+    "861": "i",
+    "003": "ra",
+    "820": "ri",
+    "817": "pa",
+    "858": "ca",
+    "090": "o",
+    "045": "u",
+    "203": "iy",
+    "034": "ce",
+    "920": "ig",
+    "256": "an"
+  },
+  "verdict": "Phase-33 Beam Decoder: beam_width=30, 0 anchors. Observed NLL=-33623.5, null=-57741.2±3109.8, Z=7.76, p=0.0000. SA-T1 score=-51491.5 for comparison. SIGNIFICANT (p<0.05). Runtime=4s.",
+  "runtime_seconds": 4.3,
+  "_citation": {
+    "primary": [
+      "A.1",
+      "A.12",
+      "C.2"
+    ],
+    "phase": "Phase-33-Beam"
+  }
+}

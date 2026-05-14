@@ -1,0 +1,30 @@
+{
+  "best_score": -22106.928,
+  "null_mean": -34824.047,
+  "null_std": 3107.796,
+  "z_score": 4.092,
+  "p_value": 0.0,
+  "n_permutations": 500,
+  "nll_lift_per_inscription": 7.6196,
+  "significant_at_05": true,
+  "dravidian_t1_score": -51491.53,
+  "dravidian_t1_lift": 8.6788,
+  "dravidian_wins": true,
+  "alphabet_vocab_size": 22,
+  "seed_scores": [
+    -23375.1,
+    -22929.6,
+    -22727.7,
+    -23442.9,
+    -22106.9
+  ],
+  "verdict": "Phase-33 Alphabetic Falsification: score=-22106.9, null=-34824.0±3107.8, Z=4.09, p=0.0000. Lift/inscription=7.620 vs Dravidian=8.679. Dravidian WINS (syllabic > alphabetic). Runtime=72s.",
+  "runtime_seconds": 72.3,
+  "_citation": {
+    "primary": [
+      "A.1",
+      "D.6b"
+    ],
+    "phase": "Phase-33-Alphabet"
+  }
+}

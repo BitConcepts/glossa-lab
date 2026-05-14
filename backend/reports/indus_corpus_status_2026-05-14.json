@@ -11,23 +11,23 @@
     ],
     "derivation": "Corpus status report for ICIT-scale Indus reconstruction."
   },
-  "timestamp": "2026-05-14T23:01:33.136204",
+  "timestamp": "2026-05-14T23:05:14.376630",
   "icit_target": {
     "objects": 4537,
     "texts": 5509,
     "sign_occurrences": 19616
   },
   "pipeline": {
-    "staging": 18414,
+    "staging": 27248,
     "quarantine": 2591,
-    "canonical": 15508,
+    "canonical": 19925,
     "open_export": 5087,
     "research_export": 15508,
     "icit_sequences": 3085,
     "sign_instances_total": 13642
   },
   "coverage_pct": {
-    "objects": 341.8,
+    "objects": 439.2,
     "texts": 56.0,
     "sign_occurrences": 66.0
   },
@@ -36,14 +36,16 @@
     "MetOpenAccess": 4904,
     "ClevelandArtOpenAccess": 4,
     "PennMuseum": 7515,
-    "indusscript-m77": 2906
+    "indusscript-m77": 2906,
+    "MuseumsOfIndia": 4417
   },
   "by_rights": {
     "MIT": 179,
     "CC0": 4908,
     "CC BY 4.0": 7515,
-    "rmrl-research": 2906
+    "rmrl-research": 2906,
+    "india-museum-restricted": 4417
   },
-  "diplomatic_coverage_pct": 19.9,
+  "diplomatic_coverage_pct": 15.5,
   "avg_crosswalk_coverage": 0.954
 }

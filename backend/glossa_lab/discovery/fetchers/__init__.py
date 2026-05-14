@@ -199,14 +199,12 @@ async def run_topic(
         )
 
     # Split fetchers into parallel (no rate limit) and sequential (rate-limited)
-    # groups. Rate-limited fetchers are run one at a time with an inter-call
-    # delay so they don't immediately 429 when multiple topics fire.
+    # groups. Rate-limited fetchers are run one at a time; each fetcher already
+    # manages its own inter-call delay internally, so no extra sleep is needed.
     parallel = [f for f in fetchers if getattr(f, "rate_delay", 0) <= 0]
     sequential = [f for f in fetchers if getattr(f, "rate_delay", 0) > 0]
     await asyncio.gather(*[_one(f) for f in parallel])
-    for i, f in enumerate(sequential):
-        if i > 0:
-            await asyncio.sleep(f.rate_delay)
+    for f in sequential:
         await _one(f)
 
     return {

@@ -1,0 +1,24 @@
+{
+  "batch_id": "2026-05-14-INDUS-INTERNET-ARCHIVE",
+  "source": "internet-archive",
+  "timestamp": "2026-05-14T21:07:40.671395",
+  "results": {
+    "manifests": {
+      "mahadevan1977": {
+        "status": "OK",
+        "sha256": "7fa4552eec4e7b39",
+        "total_pages": 842,
+        "iiif_version": "v3",
+        "image_url_list": "glossa-corpus\\indus\\sources\\internet-archive\\raw\\2026-05-14\\mahadevan1977_page_image_urls.json"
+      },
+      "corpus-vol-2": {
+        "status": "OK",
+        "sha256": "8c14fd63c70cb461",
+        "total_pages": 431,
+        "iiif_version": "v3",
+        "image_url_list": "glossa-corpus\\indus\\sources\\internet-archive\\raw\\2026-05-14\\corpus-vol-2_page_image_urls.json"
+      }
+    },
+    "page_images_fetched": 0
+  }
+}

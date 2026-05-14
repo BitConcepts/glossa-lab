@@ -1,0 +1,23 @@
+{
+  "_citation": {
+    "primary_sources": [
+      "I.1",
+      "I.2",
+      "I.3",
+      "I.4",
+      "I.5"
+    ],
+    "derivation": "Rights register for Indus corpus reconstruction."
+  },
+  "total_objects": 15508,
+  "by_rights_status": {
+    "MIT": 179,
+    "CC0": 4908,
+    "CC BY 4.0": 7515,
+    "rmrl-research": 2906
+  },
+  "ml_training_cleared": 12602,
+  "research_use_cleared": 15508,
+  "quarantined": 0,
+  "last_updated": "2026-05-14T23:01:28.215323"
+}

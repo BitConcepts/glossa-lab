@@ -1,0 +1,43 @@
+item_id: indus/penn-museum
+source_name: "Penn Museum — Collections Open Data"
+source_url: https://www.penn.museum/collections/
+download_url: https://www.penn.museum/collections/objects/data.php
+download_date: "2026-05-14"
+local_path: "glossa-corpus/indus/sources/penn-museum/raw/2026-05-14"
+checksum_sha256: "814a45edb4ae62b5fbd4ba1dc34022300c26143dd68afc375290320feede809f"
+license: CC BY 4.0
+license_url: https://creativecommons.org/licenses/by/4.0/
+rights_status: open_license
+license_class: open_license
+title: "Penn Museum Collections Open Data — Indus objects"
+author: "Penn Museum (University of Pennsylvania Museum of Archaeology and Anthropology)"
+publication_date: "ongoing"
+language: und
+script: Indus
+period: "2600–1900 BCE"
+region: "Indus Valley"
+genre: epigraphy
+source_format: csv
+processing_stage: raw
+confidence: "0.90"
+ocr_quality: n_a
+manually_reviewed: false
+status: keep
+glossa_legacy_asset: false
+notes: >
+  Collections dataset is CC BY 4.0; downloaded datasets exclude images.
+  Downloadable images (from object pages) are limited to non-profit, educational,
+  or personal use without further permission; flag as noncommercial-educational.
+  Publication-quality image rights require a formal request path.
+  Images: https://www.penn.museum/collections/permission-to-reproduce.php
+source_score:
+  textual_value: 3
+  metadata_quality: 5
+  license_clarity: 5
+  language_coverage: 3
+  rarity: 4
+  ocr_quality: 5
+  scholarly_reliability: 5
+  alignment_potential: 4
+  annotation_depth: 3
+  acquisition_difficulty: 1

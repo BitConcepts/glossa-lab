@@ -1,0 +1,43 @@
+item_id: indus/mayig-cisi
+source_name: "mayig/indus-valley-script-corpus (GitHub)"
+source_url: https://github.com/mayig/indus-valley-script-corpus
+download_url: https://github.com/mayig/indus-valley-script-corpus/archive/refs/heads/main.zip
+download_date: "2026-05-14"
+local_path: "glossa-corpus/indus/sources/mayig-cisi/raw/2026-05-14"
+checksum_sha256: ""
+license: MIT
+license_url: https://opensource.org/licenses/MIT
+rights_status: open_license
+license_class: open_license
+title: "Indus Valley Script Corpus — digitization of CISI"
+author: "mcskware (mayig)"
+editor: ""
+publication_date: "2024-2025"
+language: und
+script: Indus
+period: "2600–1900 BCE"
+region: "Indus Valley"
+genre: epigraphy
+source_format: json
+processing_stage: raw
+confidence: "0.90"
+ocr_quality: n_a
+manually_reviewed: false
+status: keep
+glossa_legacy_asset: true
+notes: >
+  Digitization of Corpus of Indus Seals and Inscriptions (CISI) in JSON format.
+  179 inscriptions (Mohenjo-daro) loaded in indus_cisi.py as of April 2026.
+  Full repo may contain additional sites. Sign IDs use Parpola 1982 (P-numbers).
+  Original CISI: Parpola, A. et al. (1987–2010). Helsinki: Suomalainen Tiedeakatemia.
+source_score:
+  textual_value: 5
+  metadata_quality: 4
+  license_clarity: 5
+  language_coverage: 5
+  rarity: 5
+  ocr_quality: 5
+  scholarly_reliability: 4
+  alignment_potential: 5
+  annotation_depth: 3
+  acquisition_difficulty: 1

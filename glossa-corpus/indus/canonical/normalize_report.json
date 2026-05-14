@@ -12,8 +12,8 @@
     "derivation": "Normalization report for Indus corpus reconstruction."
   },
   "batch_id": "2026-05-14-INDUS-NORMALIZE",
-  "timestamp": "2026-05-14T23:01:29.084184",
-  "objects_normalized": 15508,
+  "timestamp": "2026-05-14T23:05:09.190012",
+  "objects_normalized": 19925,
   "objects_with_diplomatic": 3085,
   "objects_with_canonical_graphemes": 3085,
   "sign_instances_total": 13642,
@@ -29,16 +29,17 @@
       ],
       "derivation": "Rights register for Indus corpus reconstruction."
     },
-    "total_objects": 15508,
+    "total_objects": 19925,
     "by_rights_status": {
       "MIT": 179,
       "CC0": 4908,
       "CC BY 4.0": 7515,
-      "rmrl-research": 2906
+      "rmrl-research": 2906,
+      "india-museum-restricted": 4417
     },
     "ml_training_cleared": 12602,
     "research_use_cleared": 15508,
     "quarantined": 0,
-    "last_updated": "2026-05-14T23:01:28.215323"
+    "last_updated": "2026-05-14T23:05:07.949334"
   }
 }

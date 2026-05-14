@@ -1,0 +1,11 @@
+{
+  "batch_id": "2026-05-14-INDUS-PENN",
+  "source": "penn",
+  "timestamp": "2026-05-14T21:08:42.541480",
+  "results": {
+    "total_rows": 474538,
+    "indus_rows": 19711,
+    "local_path": "D:\\Development\\BitConcepts\\glossa-lab\\glossa-corpus\\indus\\sources\\penn-museum\\raw\\2026-05-14\\penn_collections.csv",
+    "checksum_sha256": "814a45edb4ae62b5fbd4ba1dc34022300c26143dd68afc375290320feede809f"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "batch_id": "2026-05-14-INDUS-CLEVELAND",
+  "source": "cleveland",
+  "timestamp": "2026-05-14T20:56:43.760034",
+  "results": {
+    "objects_fetched": 10,
+    "local_path": "D:\\Development\\BitConcepts\\glossa-lab\\glossa-corpus\\indus\\sources\\cleveland-art\\raw\\2026-05-14\\cleveland_indus_objects.json",
+    "checksum_sha256": "51e5fa706ed64e90efa0c75169782f22c5c76b9e8981a3064e71ec10a9ce06ba"
+  }
+}

@@ -1,0 +1,87 @@
+# RMRL Indus Research Centre — Bulletin Acquisition Status
+# Investigation date: 2026-05-14
+# Branch: corpus/icit-scale-reconstruction
+
+investigation_summary:
+  method: "Probed 6+ URL variants per bulletin. Only bulletins 1 and 6 are hosted on rmrl.in."
+  conclusion: "Bulletins 2-5 were never uploaded to the public website. Contact RMRL directly."
+  contact: "rmrl@rmrl.in | https://rmrl.in/en/irc"
+
+bulletin_1:
+  status: acquired
+  url: "https://rmrl.in/bulletin/bulletin-No-1-Sept-2009.pdf"
+  local_path: "glossa-corpus/indus/sources/rmrl/raw/2026-05-14/bulletin-1.pdf"
+  size_kb: 824
+  date_acquired: "2026-05-14"
+  rights: rmrl-research
+
+bulletin_2:
+  status: contact_required
+  note: "404 on all URL variants. Not publicly hosted. Contact RMRL."
+  date: "March 2010"
+  email_template: |
+    Subject: Request for Indus Research Centre Bulletins 2-5
+
+    Dear RMRL team,
+
+    I am building a research corpus focused on Indus texts, inscriptions,
+    and related archaeological publications.
+
+    I was able to locate Bulletin 1 (Sept 2009) and Bulletin 6 (June 2025)
+    on your website, but Bulletins 2-5 appear not to be publicly available.
+
+    Would it be possible to obtain digital copies, or know whether they exist
+    in print or email-distributed form?
+
+    I am happy to cite RMRL clearly and preserve any attribution or usage
+    restrictions you require.
+
+    Best,
+    Tristen Pierson / Layer1Labs Silicon / Glossa-Lab
+
+bulletin_3:
+  status: contact_required
+  note: "404 on all URL variants. Not publicly hosted. Contact RMRL."
+  date: "September 2010"
+
+bulletin_4:
+  status: contact_required
+  note: "404 on all URL variants. Not publicly hosted. Contact RMRL."
+  date: "March 2011"
+
+bulletin_5:
+  status: contact_required
+  note: "404 on all URL variants. Not publicly hosted. Contact RMRL."
+  date: "June 2024"
+
+bulletin_6:
+  status: acquired
+  url: "https://rmrl.in/bulletin/bulletin-No-6-June-2025.pdf"
+  local_path: "glossa-corpus/indus/sources/rmrl/raw/2026-05-14/bulletin-6.pdf"
+  size_kb: 10604
+  date_acquired: "2026-05-14"
+  rights: rmrl-research
+
+indusscript_firebase:
+  status: authorized_export_required
+  framework: "Flutter Web + Cloud Firestore (firebase_firestore.js)"
+  project_id: "theindusscript"
+  confirmed_NOT_realtime_db: true
+  note: |
+    The app uses Cloud Firestore, NOT Firebase Realtime Database.
+    Anonymous auth succeeds but Firestore rules deny anonymous reads.
+    Key field names found in bundle: textnum, posnum, inscobj, signnum, fsymbols
+    Text numbering: 4-digit (IM77 style, e.g. 0001-9999)
+    bundled_asset: assets/assets/im77intro.pdf (2.7MB, downloaded)
+  next_actions:
+    - Create account at indusscript.in (Google Sign-In)
+    - Run probe_indusscript.py --phase C to capture Firestore network calls
+    - Send formal export request to RMRL: rmrl@rmrl.in
+  firestore_field_names:
+    textnum: "Primary text number (4-digit IM77 numbering)"
+    posnum: "Position number within text"
+    inscobj: "Inscription object"
+    signnum: "Sign number"
+    fsymbols: "Field symbols"
+    tnum: "Text number (short form)"
+    orderBy: "Firestore ordering — confirms structured queries"

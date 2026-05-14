@@ -1,0 +1,51 @@
+# STUB — LICENSED ACQUISITION REQUIRED
+# Browse: https://www.britishmuseum.org/collection/search
+# Licensing: https://britishmuseumimages.com/
+item_id: indus/british-museum
+source_name: "British Museum / BM Images — Indus objects"
+source_url: https://www.britishmuseum.org/collection/search
+download_url: ""
+download_date: ""
+local_path: glossa-corpus/indus/sources/british-museum/raw/
+checksum_sha256: ""
+license: "BM Images commercial licensing — publication/commercial use requires license"
+license_url: https://britishmuseumimages.com/
+rights_status: proprietary
+license_class: proprietary
+title: "British Museum Collection — Indus-script objects"
+author: "The British Museum"
+publication_date: "ongoing"
+language: und
+script: Indus
+period: "2600–1900 BCE"
+region: "Indus Valley"
+genre: epigraphy
+source_format: image
+processing_stage: raw
+confidence: "0.95"
+ocr_quality: n_a
+manually_reviewed: false
+status: review
+glossa_legacy_asset: false
+notes: >
+  STUB — IMAGE LICENSING REQUIRED BEFORE ANY IMAGE USE.
+  Collection records are open to browse (no license needed for metadata).
+  Publication/commercial image licensing goes through BM Images.
+  Important for iconic Indus seals and authoritative catalog records.
+  Strategy:
+    1. Browse and catalog Indus-script objects via collection search
+    2. Extract metadata from browse pages (no license needed)
+    3. Request targeted licensing package for specific high-value seals
+  Browse: https://www.britishmuseum.org/collection/search
+  License: https://britishmuseumimages.com/
+source_score:
+  textual_value: 3
+  metadata_quality: 5
+  license_clarity: 3
+  language_coverage: 3
+  rarity: 4
+  ocr_quality: 5
+  scholarly_reliability: 5
+  alignment_potential: 4
+  annotation_depth: 3
+  acquisition_difficulty: 4

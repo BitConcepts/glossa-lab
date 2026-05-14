@@ -1,0 +1,57 @@
+{
+  "experiment": "Phase-36 T2: Positional anchor injection",
+  "n_lm_anchors": 5,
+  "n_positional_added": 9,
+  "n_total_anchors": 14,
+  "positional_anchor_map": {
+    "074": "an",
+    "782": "al",
+    "876": "am",
+    "237": "ay",
+    "506": "in",
+    "527": "il",
+    "503": "ar",
+    "480": "on",
+    "129": "an"
+  },
+  "terminal_signs_used": {
+    "074": 0.733,
+    "782": 0.538,
+    "876": 0.5,
+    "237": 0.488,
+    "506": 0.465,
+    "527": 0.45,
+    "503": 0.444,
+    "480": 0.438,
+    "129": 0.4
+  },
+  "best_score": -55251.072,
+  "null_mean": -64041.422,
+  "null_std": 2496.389,
+  "z_score": 3.521,
+  "p_value": 0.004,
+  "nll_lift_per_inscription": 5.2668,
+  "significant": true,
+  "dravidian_lift": 5.2668,
+  "sanskrit_lift": 7.4169,
+  "dravidian_wins": false,
+  "lift_ratio": 0.71,
+  "seed_scores": [
+    -55693.8,
+    -65420.1,
+    -55800.9,
+    -60040.3,
+    -55251.1
+  ],
+  "verdict": "Phase-36 T2 Positional Dravidian SA (14 anchors, 9 new positional): Z=3.52, p=0.0040, lift=5.267. vs Sanskrit lift=7.417. Dravidian loses (ratio 0.71x).",
+  "runtime_seconds": 65.4,
+  "_citation": {
+    "primary": [
+      "A.1",
+      "E.1",
+      "C.2",
+      "A.12"
+    ],
+    "phase": "Phase-36-T2"
+  }
+}

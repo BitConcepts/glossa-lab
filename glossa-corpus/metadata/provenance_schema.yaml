@@ -1,0 +1,68 @@
+# Glossa-Corpus Provenance Schema v1.0
+# Every corpus item MUST include these fields.
+# Use 'unknown' for any field that cannot be determined.
+
+item_id: ""                    # Unique stable ID: source_shortname/work_id/edition_id
+source_name: ""                # Human-readable source name (e.g. "Perseus Digital Library")
+source_url: ""                 # Canonical URL of the source
+download_url: ""               # Exact download URL or API endpoint used
+download_date: ""              # ISO 8601 date of acquisition
+local_path: ""                 # Path within glossa-corpus/
+checksum_sha256: ""            # SHA-256 of raw downloaded file(s)
+
+# Licensing
+license: ""                    # SPDX expression or prose (e.g. "CC BY 4.0", "CC0", "Public Domain")
+license_url: ""                # URL of license text
+rights_status: ""              # public_domain | open_license | research_use | restricted | unclear | proprietary
+license_class: ""              # See licensing gate rules
+
+# Content metadata
+title: ""                      # Title of the work or collection
+work_id: ""                    # Canonical work identifier (CTS URN preferred for Greek/Latin)
+cts_urn: ""                    # CTS URN if applicable
+author: ""                     # Author(s)
+author_dates: ""               # Floruit / birth-death dates
+editor: ""                     # Editor(s) of this edition
+translator: ""                 # Translator(s) if translation
+publication_date: ""           # Date of this edition/publication
+language: ""                   # ISO 639-3 code(s)
+script: ""                     # Script name (Greek, Latin, Devanagari, Cuneiform, etc.)
+dialect: ""                    # Dialect or register if applicable
+period: ""                     # Approximate historical period
+composition_date: ""           # When the text was composed (not published)
+region: ""                     # Region of origin
+genre: ""                      # Genre/text type
+tradition: ""                  # Scholarly tradition/collection
+
+# Edition specifics
+edition: ""                    # Edition name/number
+shelfmark: ""                  # Library shelfmark if manuscript
+manuscript_id: ""              # Manuscript identifier
+edition_id: ""                 # Edition identifier within this source
+
+# Format
+source_format: ""              # tei_xml | plain_text | json | jsonl | alto_xml | hocr | pdf | image | epub | html | csv | marc | iiif_manifest | unknown
+processing_stage: ""          # raw | extracted | cleaned | normalized | lemmatized | aligned | annotated
+
+# Quality
+confidence: ""                 # 0.0-1.0 — confidence in content quality
+ocr_quality: ""                # unknown | high | medium | low | n_a (for born-digital)
+manually_reviewed: false
+
+# Asset management
+status: ""                     # keep | replace | merge | deprecated | review
+glossa_legacy_asset: false     # true if replacing/supplementing an existing Glossa-Lab asset
+notes: ""
+
+# Source score (1-5 per criterion)
+source_score:
+  textual_value: 0
+  metadata_quality: 0
+  license_clarity: 0
+  language_coverage: 0
+  rarity: 0
+  ocr_quality: 0
+  scholarly_reliability: 0
+  alignment_potential: 0
+  annotation_depth: 0
+  acquisition_difficulty: 0

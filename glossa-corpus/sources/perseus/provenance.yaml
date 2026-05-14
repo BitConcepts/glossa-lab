@@ -1,0 +1,22 @@
+confidence: '0.95'
+download_date: '2026-05-14'
+download_url: https://github.com/PerseusDL/canonical-greekLit
+item_id: perseus/canonical
+language: grc; lat
+license: CC BY-SA 3.0
+license_class: open_license
+local_path: sources\perseus\raw\2026-05-14
+period: 750 BCE - 600 CE
+processing_stage: raw
+rights_status: open_license
+script: Greek; Latin
+source_format: tei_xml
+source_name: Perseus Digital Library
+source_score:
+  language_coverage: 5
+  license_clarity: 5
+  metadata_quality: 5
+  scholarly_reliability: 5
+  textual_value: 5
+source_url: https://www.perseus.tufts.edu
+status: keep

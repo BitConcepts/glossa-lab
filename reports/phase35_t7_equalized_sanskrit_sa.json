@@ -1,0 +1,33 @@
+{
+  "experiment": "Phase-35 T7: Equalized Sanskrit SA",
+  "n_vocab_sanskrit": 424,
+  "n_fixed_anchors": 5,
+  "n_free_signs": 57,
+  "best_score": -52886.139,
+  "null_mean": -65264.99,
+  "null_std": 1952.822,
+  "z_score": 6.339,
+  "p_value": 0.0,
+  "nll_lift_per_inscription": 7.4169,
+  "significant_at_05": true,
+  "dravidian_t1_equalized_lift": 6.2412,
+  "dravidian_t1_equalized_z": 5.872,
+  "dravidian_wins": false,
+  "lift_ratio_drav_over_skt": 0.841,
+  "seed_scores": [
+    -59271.5,
+    -65065.5,
+    -58526.0,
+    -65066.8,
+    -52886.1
+  ],
+  "verdict": "Phase-35 T7 Equalized Sanskrit SA (vocab=424 syllables): score=-52886.1, null=-65265.0±1952.8, Z=6.34, p=0.0000, lift/insc=7.417. Dravidian lift=6.241 — Sanskrit >= Dravidian — weakens hypothesis. Runtime=62s.",
+  "runtime_seconds": 62.4,
+  "_citation": {
+    "primary": [
+      "A.1",
+      "E.1"
+    ],
+    "phase": "Phase-35-T7"
+  }
+}

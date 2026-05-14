@@ -1,0 +1,37 @@
+{
+  "experiment": "Phase-35 T1: Equalized Dravidian SA",
+  "n_vocab_equalized": 424,
+  "n_bigrams_after_truncation": 1049,
+  "n_fixed_anchors": 4,
+  "n_free_signs": 58,
+  "best_score": -55250.993,
+  "null_mean": -65667.479,
+  "null_std": 1773.971,
+  "z_score": 5.872,
+  "p_value": 0.0,
+  "nll_lift_per_inscription": 6.2412,
+  "significant_at_05": true,
+  "fixed_anchors": {
+    "047": "min",
+    "147": "mi",
+    "176": "an",
+    "090": "ai"
+  },
+  "seed_scores": [
+    -61636.9,
+    -55302.7,
+    -55251.0,
+    -56356.5,
+    -61197.0
+  ],
+  "verdict": "Phase-35 T1 Equalized Dravidian SA (vocab=424 syllables): score=-55251.0, null=-65667.5±1774.0, Z=5.87, p=0.0000, lift/insc=6.241. Anchors=4, free=58. SIGNIFICANT (p<0.05). Runtime=62s.",
+  "runtime_seconds": 62.4,
+  "_citation": {
+    "primary": [
+      "A.1",
+      "E.1",
+      "C.2"
+    ],
+    "phase": "Phase-35-T1"
+  }
+}

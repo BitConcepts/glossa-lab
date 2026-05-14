@@ -1,0 +1,24 @@
+confidence: '0.98'
+download_date: '2026-05-14'
+download_url: https://github.com/ETCBC/bhsa
+item_id: etcbc/bhsa
+language: hbo
+license: CC BY-NC 4.0
+license_class: research_use
+local_path: sources\etcbc\raw\2026-05-14
+notes: CC BY-NC 4.0 — non-commercial. Full morphological + syntactic annotation.
+period: 1200 BCE - 100 BCE
+processing_stage: raw
+rights_status: research_use
+script: Hebrew
+source_format: json; tf
+source_name: ETCBC — Biblia Hebraica Stuttgartensia Amstelodamensis
+source_score:
+  annotation_depth: 5
+  language_coverage: 5
+  license_clarity: 4
+  metadata_quality: 5
+  scholarly_reliability: 5
+  textual_value: 5
+source_url: https://etcbc.github.io/bhsa/
+status: keep

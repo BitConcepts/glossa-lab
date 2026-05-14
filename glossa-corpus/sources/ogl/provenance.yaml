@@ -1,0 +1,23 @@
+confidence: '0.95'
+download_date: '2026-05-14'
+download_url: https://github.com/OpenGreekAndLatin/First1KGreek
+item_id: ogl/first1k
+language: grc
+license: CC BY-SA 3.0
+license_class: open_license
+license_url: https://creativecommons.org/licenses/by-sa/3.0/
+local_path: sources\ogl\raw\2026-05-14
+period: 750 BCE - 400 CE
+processing_stage: raw
+rights_status: open_license
+script: Greek
+source_format: tei_xml
+source_name: Open Greek and Latin / First1K Greek
+source_score:
+  language_coverage: 5
+  license_clarity: 5
+  metadata_quality: 4
+  scholarly_reliability: 5
+  textual_value: 5
+source_url: https://opengreekandlatin.org
+status: keep

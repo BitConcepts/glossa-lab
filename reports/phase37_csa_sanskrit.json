@@ -1,0 +1,32 @@
+{
+  "experiment": "Phase-37 B: CSA Sanskrit",
+  "n_total_anchors": 19,
+  "n_free_signs": 33,
+  "best_score": -47913.33,
+  "null_mean": -64383.303,
+  "null_std": 2383.71,
+  "z_score": 6.909,
+  "p_value": 0.0,
+  "nll_lift_per_inscription": 9.8682,
+  "significant": true,
+  "dravidian_lift": 8.677,
+  "dravidian_z": 4.102,
+  "dravidian_wins": false,
+  "lift_ratio_drav_over_skt": 0.879,
+  "seed_scores": [
+    -47913.3,
+    -50734.3,
+    -50525.4,
+    -50518.1
+  ],
+  "verdict": "Phase-37 CSA Sanskrit: Z=6.91, p=0.0000, lift=9.868. Dravidian lift=8.677 (0.88x). Dravidian loses. Runtime=217s.",
+  "runtime_seconds": 217.2,
+  "_citation": {
+    "primary": [
+      "A.1",
+      "E.1",
+      "D.12"
+    ],
+    "phase": "Phase-37-B"
+  }
+}

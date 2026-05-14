@@ -1,0 +1,17 @@
+download_date: '2026-05-14'
+genre: lexicon
+item_id: lexica/lewis_short
+language: lat
+license: Public Domain
+license_class: public_domain
+local_path: lexica\lewis_short\raw\2026-05-14
+processing_stage: raw
+rights_status: public_domain
+source_format: xml
+source_name: Lewis & Short Latin Dictionary
+source_score:
+  license_clarity: 5
+  metadata_quality: 4
+  scholarly_reliability: 5
+  textual_value: 5
+status: keep

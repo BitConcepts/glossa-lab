@@ -1,0 +1,22 @@
+confidence: '0.90'
+download_date: '2026-05-14'
+download_url: https://github.com/mandoku/kanseki-repository
+item_id: ctext/kanseki
+language: zho; jpn
+license: CC0 1.0
+license_class: public_domain
+local_path: sources\ctext\raw\2026-05-14
+period: 600 BCE - 1900 CE
+processing_stage: raw
+rights_status: public_domain
+script: Han
+source_format: tei_xml; plain_text
+source_name: Chinese Text Project + Kanseki Repository
+source_score:
+  language_coverage: 5
+  license_clarity: 4
+  metadata_quality: 3
+  scholarly_reliability: 4
+  textual_value: 5
+source_url: https://ctext.org; https://github.com/mandoku/kanseki-repository
+status: keep

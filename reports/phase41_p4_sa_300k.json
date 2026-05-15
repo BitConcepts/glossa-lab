@@ -1,0 +1,54 @@
+{
+  "label": "M77-300K",
+  "n_inscs": 1669,
+  "n_cipher": 62,
+  "min_freq": 3,
+  "n_seeds": 5,
+  "n_iters": 300000,
+  "dravidian": {
+    "z": 5.557,
+    "p": 0.0,
+    "nll_lift": 7.7351,
+    "ci95": [
+      -67121.3,
+      -58544.5
+    ],
+    "n_anchors": 5,
+    "seed_scores": [
+      -60459.9,
+      -65642.7,
+      -51540.1,
+      -60865.1,
+      -56133.1
+    ]
+  },
+  "sanskrit": {
+    "z": 6.096,
+    "p": 0.0,
+    "nll_lift": 7.3205,
+    "ci95": [
+      -67377.4,
+      -59994.8
+    ],
+    "n_anchors": 5,
+    "seed_scores": [
+      -59271.5,
+      -65065.5,
+      -58617.4,
+      -65066.8,
+      -52885.7
+    ]
+  },
+  "dravidian_wins": true,
+  "lift_ratio": 1.0566,
+  "runtime_s": 1493.9,
+  "experiment": "Phase-41 P4: M77 300K iterations",
+  "_citation": {
+    "primary": [
+      "A.1",
+      "E.1",
+      "C.2"
+    ],
+    "phase": "Phase-41-P4"
+  }
+}

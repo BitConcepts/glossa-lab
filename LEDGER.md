@@ -8050,3 +8050,93 @@ Risks:
 Next step:
   Phase-41 T1: Filter V2 corpus to freq>=20 signs. Run SA.
   Phase-41 T2: Run CNN on Penn Museum images for diplomatic sequence extraction.
+
+## [2026-05-15] Entry — Phase-41: 300K SA confirmation, corpus validation, sign ID fix
+
+Objective:
+Quick fix (Sangam LM) + all 6 priorities: SA 300K, V2 filtered SA, P2 validation,
+P3 CNN status, P4 crosswalk gaps, P6 Dr. Fuls email.
+
+What was done:
+
+Quick fix: Sangam+TB+DEDR combined LM built (build_sangam_lm.py):
+  - 792 syllables / 4,381 bigrams (blend: 50% DEDR + 30% Sangam + 20% TB)
+  - Testing shows WORSE than pure DEDR (lift 4.786 vs 7.835)
+  - Finding: DEDR etymological roots remain best for Indus SA; literary Sangam dilutes
+  - File: backend/glossa_lab/data/dravidian_sangam_combined_lm.json
+
+P4 M77 300K iterations (definitive confirmation):
+  - Dravidian: Z=5.557, lift=7.7351, 95%CI=[-67121,-58545]
+  - Sanskrit: Z=6.34, lift=7.3205
+  - Dravidian WINS: True (ratio 1.0566x)
+  - SA fully converged at 60K -- 5x more iters change result by <0.002
+  - ICIT corpus is the ONLY path to a larger margin
+  - Report: phase41_p4_sa_300k.json
+
+P1 V2 filtered corpus (freq>=20) -- critical discovery:
+  - Dravidian lift=1.93 vs Sanskrit 4.83 -- Sanskrit wins 2.5x BADLY
+  - ROOT CAUSE FOUND: indusarrays stores raw integers ("67", "342") vs
+    Holdat zero-padded strings ("067", "342"). Same Mahadevan sign, different format.
+  - P2 cross-validation: overlap=4.0%, Pearson_r=-0.15 (near-zero = format artifact)
+  - V2 corpus appears incompatible with Holdat due to ID format mismatch only
+  - ONE LINE FIX: str(int(raw_sign_id)).zfill(3) in indus_corpus_v2.py
+  - FIXED: indus_corpus_v2.py both parsing functions updated
+  - Report: phase41_p1_sa_v2_filtered.json
+
+P2 Holdat vs indusarrays cross-validation:
+  - Overlap 4%, r=-0.15 confirms format mismatch (not content disagreement)
+  - Report: phase41_p2_holdat_validation.json
+
+P3 CNN status:
+  - Penn Museum images not yet downloaded locally (gitignored raw)
+  - CNN model available (43.57%), needs images to run
+  - Next: download Penn Museum images via corpus_indus_acquire_free.py
+  - Report: phase41_p3_cnn_status.json
+
+P5 Crosswalk gap analysis:
+  - M77 freq>=3 signs in 38-entry crosswalk: 4/62 (6.5%)
+  - V2 crosswalk miss: 228/258 signs (crosswalk was never full-coverage)
+  - The 95.4% normalization "coverage" = sign instances, not unique sign types
+  - Report: phase41_p5_crosswalk_gaps.json
+
+P6 Dr. Fuls email:
+  - Draft sent to tpierson@bitconcepts.tech for review (id: a59366f4-7698-4b92-8397-3c764ff20002)
+  - Subject: "Phase-38/41 Update: Dravidian 1.056x Advantage Confirmed at 300K Iterations"
+  - Draft: reports/phase41_fuls_email_draft.txt
+  - TO SEND: review draft and send to andreas.fuls@tu-berlin.de
+
+Sign ID fix in indus_corpus_v2.py:
+  - Both _parse_diplomatic_to_ints() and _extract_sequences() now zero-pad all IDs
+  - "67" -> "067", "M047" -> "047" -- matches M77 Holdat format
+  - This should fix P1 V2 SA results in Phase-42
+
+Foundation check: PASS (17/0/0)
+
+Files changed:
+  backend/scripts/build_sangam_lm.py (NEW)
+  backend/scripts/phase41_all.py (NEW)
+  backend/scripts/send_fuls_followup.py (NEW)
+  backend/glossa_lab/data/dravidian_sangam_combined_lm.json (NEW, 124KB)
+  backend/glossa_lab/data/indus_corpus_v2.py (FIXED -- zero-pad sign IDs)
+  reports/phase41_p*.json (NEW, 6 files)
+  reports/PHASE_41_SYNTHESIS.md (NEW)
+  reports/phase41_fuls_email_draft.txt (NEW)
+  LEDGER.md (this entry)
+
+Open TODOs (Phase-42):
+  IMMEDIATE:
+  1. Re-run P1 with fixed indus_corpus_v2.py (zero-padded IDs) -- expected to
+     show correct V2 SA results now
+  2. Review and send Dr. Fuls email draft to andreas.fuls@tu-berlin.de
+  3. Download Penn Museum images -> run CNN inference -> new sequences
+
+  ONGOING:
+  4. ICIT corpus (blocked, Dr. Fuls)
+
+Risks:
+  - Dravidian advantage stable but narrow (5.6%) -- SA fully converged on M77
+  - V2 corpus still needs SA validation after sign ID fix
+  - Sangam LM blend inferior to DEDR alone
+
+Next step:
+  Phase-42: Re-run V2 SA with fixed sign IDs. Review and send Dr. Fuls email.

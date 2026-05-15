@@ -10,3 +10,6 @@ editions/
 
 # Thumbs
 Thumbs.db
+
+# Glyph crops: 125 MB of extracted glyph PNGs, regenerable via glyph_segment.py --all
+indus/ocr_results/glyph_crops/

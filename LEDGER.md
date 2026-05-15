@@ -7499,3 +7499,47 @@ Next step:
   - Get fresh token from indusscript.in to probe for additional data
   - Await RMRL response re: concordance export
   - Decide on CISI purchase for final 44% text gap
+
+---
+
+## [2026-05-15] Entry — OCR Pipeline Ready + All IIIF Images Downloaded
+
+Objective:
+Set up full Tesseract OCR pipeline for Mahadevan 1977 text number extraction.
+Verify all IIIF images are downloaded.
+
+What was done:
+1. IIIF download confirmed complete:
+   - mahadevan1977: 1,672 images (842 pages × 2 recto/verso per page)
+   - corpus-vol-2:  431 images (431 pages = CISI Vol.1 Collections in India)
+   Total: 2,103 page images on disk (local only — not in git, raw/ gitignored)
+2. Installed Tesseract 5.5.0 via scoop + eng.traineddata + pytesseract + opencv
+3. Discovered corpus-vol-2 is actually CISI Vol.1 (photographic atlas, seal photos)
+   NOT useful for sign sequence OCR. Good for object-level image data.
+4. Built OCR pipeline for Mahadevan 1977 text number extraction:
+   - ocr_m77_test.py: verify stack + one-page smoke test
+   - ocr_m77_classify.py: classify each page as TEXTS/CONCORDANCE/PLATE
+   - ocr_m77_extract_textnums.py: extract 4-digit IM77 textnums from left column
+5. Test result: 5 pages -> 32 textnums, 2 new not in Firestore (1627, 1817)
+   Confirms gap data exists in scanned pages.
+
+Files committed:
+  backend/scripts/ocr_m77_test.py
+  backend/scripts/ocr_m77_classify.py
+  backend/scripts/ocr_m77_extract_textnums.py
+
+Open TODOs for full extraction:
+  1. Run classify: shell.cmd python backend/scripts/ocr_m77_classify.py --all
+  2. Run extract: shell.cmd python backend/scripts/ocr_m77_extract_textnums.py --all --type both
+  3. Review textnums_missing.json -> forward to RMRL
+  4. Phase 2 (harder): visual sign recognition from glyph images -> full sequences
+  5. Decide: CISI purchase (euro 520) for guaranteed sequence data
+
+Risks:
+  - [INFERRED] M77 scan quality varies — some pages may have low OCR accuracy
+  - [INFERRED] 9263 false positive shows textnum filter needs tuning after full run
+  - [RISK] Sign sequence extraction requires ML glyph classifier, not just OCR
+
+Next step:
+  Full OCR run: classify + extract all 1,672 pages.
+  Expected output: ~5,000+ unique textnums, ~2,600 new beyond Firestore.

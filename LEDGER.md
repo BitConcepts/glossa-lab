@@ -7620,3 +7620,86 @@ Next step:
   Option A: CNN fine-tuning on labeled crops (improve accuracy to ~75%)
   Option B: Await RMRL official concordance export (fills gap properly)
   Option C: CISI purchase (covers all 5,509 texts with verified sequences)
+
+
+---
+
+## [2026-05-15] Entry — Option A: CNN Classifier (Negative Result) + Corpus Alignment Audit
+
+Objective:
+Pursue Option A: train CNN to improve glyph classification accuracy beyond the 29.8%
+IoU k-NN baseline. Also audit the git repo to ensure regenerable artifacts are not tracked
+and all corpus data is committed.
+
+What was done:
+
+### 1. Corpus alignment audit
+- Removed regenerable artifacts from git tracking:
+  geometry_probe/ (debug visualization, 545 KB)
+  glyph_templates/feature_cache.npy (EfficientNet feature cache, regenerable)
+  glyph_templates/feature_ids.json (EfficientNet index, regenerable)
+- Updated glossa-corpus/.gitignore with explicit patterns:
+  geometry_probe/, feature_cache.npy, feature_ids.json, glyph_cnn.pt
+- Confirmed all corpus data correctly tracked:
+  staging/*.jsonl, canonical/, glyph_templates/PNGs, ocr_results/*.json
+
+### 2. CNN classifier (glyph_train.py) — negative result
+
+Attempt 1: Custom 4-block CNN from scratch
+  - Architecture: 4x(Conv3x3 + BN + ReLU + MaxPool) → FC(226)
+  - Params: 446k, ~1.8 MB
+  - Result: 10.8% training val, 5.5% on 50-text external validation
+  - IoU k-NN baseline: 29.8% on same validation
+  - WORSE than baseline
+
+Attempt 2: EfficientNet-B0 pretrained + head (Option A)
+  - Phase 1 (frozen backbone): train only 1280→226 FC head
+  - Phase 2 (unfreeze last 2 MBConv blocks at epoch 30)
+  - Result: 9.9% training val, 5.5% on 50-text external validation
+  - WORSE than baseline
+
+Root cause analysis:
+  - 226 sign classes, only ~8 labeled examples per class (1,774 total)
+  - Train/val imbalance: exact-match is only 427/3,547 texts (12%)
+  - CNN learns class frequency bias (predicts "342" most often = most frequent sign)
+  - IoU k-NN uses direct pixel comparison of consistent printed glyphs — better suited
+    to this low-data, printed-typeface domain
+  - Both approaches share the over-segmentation problem: glyph count ≠ sign count
+    for ~65% of texts, creating alignment noise
+
+Validation comparison (n=50 texts, same set):
+  IoU k-NN:       sign_acc=29.8%,  seq_acc=30.0%
+  EfficientNet-B0: sign_acc=5.5%,  seq_acc=0.0%
+
+Conclusion: Option A (CNN fine-tuning) DOES NOT improve over IoU k-NN
+with current data. The IoU k-NN at 29.8% remains the best classifier.
+
+Files:
+  backend/scripts/glyph_train.py        — EfficientNet-B0 training pipeline
+  backend/scripts/glyph_match.py        — Updated: --model iou|cnn, model-specific validation files
+  glossa-corpus/indus/ocr_results/glyph_cnn_training.json — Training log (gittracked)
+  glossa-corpus/indus/ocr_results/glyph_match_validation_iou.json — IoU baseline record
+  glossa-corpus/indus/ocr_results/glyph_match_validation_cnn.json — CNN record
+  glossa-corpus/indus/ocr_results/glyph_cnn.pt — 17.5 MB model (gitignored, not useful)
+
+### 3. True path to accuracy improvement
+The bottleneck is NOT the classifier — it is the glyph segmentation:
+  - Over-segmentation: ~65% of texts have wrong glyph count → classifier sees wrong glyphs
+  - Only 427/3,547 texts have exact glyph count = sign count (12%)
+  - Fix: improve glyph_segment.py to merge split strokes / detect glyph boundaries better
+  - Expected impact: fixing segmentation from 12% to 50%+ exact-match would
+    give IoU k-NN 60-80% accuracy without any ML changes
+
+Open TODOs:
+  1. Improve glyph segmentation (glyph_segment.py):
+     - Horizontal projection may split strokes within a sign
+     - Consider morphological closing before segmentation
+     - Target: raise exact-match rate from 12% → 40%+
+  2. Await RMRL official concordance (fills gap with verified data)
+  3. Consider CISI purchase for all 5,509 verified sequences
+
+Risks:
+  - [VERIFIED] CNN approach failed at current data scale
+  - [INFERRED] Segmentation improvement would have highest impact on accuracy
+  - [INFERRED] 308 missing textnums with IoU inferred sequences have ~29.8% sign accuracy
+    and inflated sign counts due to over-segmentation

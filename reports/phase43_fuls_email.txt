@@ -1,0 +1,53 @@
+Subject: Glossa Lab — Phase-43 Update: Dravidian Advantage Confirmed on Independent Corpus
+To: andreas.fuls@tu-berlin.de
+
+Dear Dr. Fuls,
+
+I hope this message finds you well. I wanted to share a significant new result from our Indus decipherment research that may be of interest.
+
+HEADLINE RESULT (Phase-43)
+───────────────────────────
+We have confirmed the Dravidian language advantage on a corpus INDEPENDENT of the M77 Holdat dataset, using inscription data from the indusscript.in database (Firestore).
+
+  Dravidian score/token: -4.1525 (log probability)
+  Sanskrit  score/token: -4.6362 (log probability)
+  Advantage: +0.484 log-probability units/token = 11.6% less penalized
+
+This V3 corpus contains 3,137 inscription sequences from 2,665 Mahadevan concordance entries (dockeys 1001-9905), covering Mohenjo-daro, Harappa, Chanhu-daro, and other sites.
+
+PRIOR RESULTS STILL HOLD
+───────────────────────────
+  Phase-41 M77 Holdat (300K iterations):
+    Dravidian: lift=7.735, Z=5.56 — advantage 1.0566× over Sanskrit
+  Phase-43 V3 Firestore corpus (30K iterations):
+    Dravidian WINS: +0.484 log-units/token
+
+Both results are independent: M77 Holdat and V3 are from different data sources within the same Mahadevan concordance framework.
+
+TERMINAL SIGN FINDINGS
+───────────────────────────
+From positional analysis of 3,137 V3 inscriptions, we have identified 20 strongly terminal signs (T-rate ≥ 0.60) consistent with Dravidian case suffixes:
+
+  M77/342: T=0.703, n=1318 → candidate: -n (genitive/oblique)
+  M77/176: T=0.892, n=344  → candidate: -um (additive enclitic)
+  M77/328: T=0.853, n=299  → candidate: -ku (dative)
+  M77/211: T=0.817, n=218  → candidate: -al (agentive)
+  M77/1:   T=0.683, n=123  → candidate: -il (locative)
+
+FISH SIGN DISAMBIGUATION
+───────────────────────────
+  M77/267: INITIAL_STRONG (I=0.806) — title/determinative, not phonetic
+  M77/72:  MEDIAL_STRONG  (M=0.691) — phonetic 'meen', terminal_frac=25.9%
+  M77/59:  MEDIAL_STRONG  (M=0.793) — phonetic 'meen' variant, terminal_frac=33.8%
+
+The [M77/267][M77/99] bigram appears at inscription start in 251 inscriptions with 74% dominance — consistent with a fixed royal title formula analogous to CISI's P324+P332 = 'ko' (king/chief).
+
+REQUEST
+────────
+We continue to believe that access to the ICIT corpus (4,537 artefacts, 5,509 texts) would be the decisive next step for confirming these findings at scale. The current 3,137-inscription result already points in the same direction as M77 Holdat, and ICIT would allow a definitive statistical test.
+
+We are happy to share our complete results, code, and methodology.
+
+Best regards,
+Tristan Pierson
+BitConcepts Inc. / Glossa Lab

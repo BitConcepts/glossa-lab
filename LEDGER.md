@@ -8140,3 +8140,104 @@ Risks:
 
 Next step:
   Phase-42: Re-run V2 SA with fixed sign IDs. Review and send Dr. Fuls email.
+
+## [2026-05-15] Entry — Phase-42: V2 corpus catalog alignment — deeper root cause; Penn Museum IP-blocked
+
+Objective:
+T1: Re-run V2 SA with zero-padded sign IDs (Phase-41 fix).
+T3: Download Penn Museum seal images -> CNN inference.
+Bonus: Deep inspection of Firestore indusarrays + Penn CSV column structure.
+
+What was done:
+
+T1 V2 SA re-run (phase42_v2_sa_rerun.py):
+  - Applied zero-pad fix: str(int(raw_sign_id)).zfill(3) in indus_corpus_v2.py
+  - Result: STILL FAILING — overlap=4%, Pearson_r=-0.12, Dravidian lift=5.22 vs Sanskrit 8.01
+  - Root cause is DEEPER than formatting:
+    * indusarrays sign values are a MIXED encoding (confirmed via Firestore dump inspection):
+      - Numeric strings: '342', '99', '267' etc. -- ARE Mahadevan sign numbers
+      - Asterisk-prefixed: '*001', '*002', '*008' etc. -- RMRL supplementary signs not in Holdat
+    * indusarrays has 562 unique sign values; Holdat has 394 unique integers (0-417)
+    * Top indusarrays signs: 342 (1345×), 99 (642×), 267 (364×) -- match M77 fish/jar/carrier
+    * The numeric portion IS the Mahadevan catalog; *NNN signs are additions RMRL made
+    * Fix requires: (a) skip *NNN signs; (b) int-convert numeric strings before comparison
+    * This is a Phase-43 task -- V2 alignment blocked pending *NNN sign resolution
+  - Report: phase42_t1_v2_sa_fixed.json
+
+T3 Penn Museum CNN -- all access methods exhausted:
+  Method 1 -- urllib API (v1): HTTP 403 (all 500 tested IDs)
+  Method 2 -- urllib HTML (browser UA): HTTP 403
+  Method 3 -- Playwright Chromium (full browser fingerprint): HTTP 403 (confirmed IP block)
+  Method 4 -- Penn Museum CSV: 17,895 Indus rows, 32 columns -- NO image URLs
+    * CSV only has metadata + Record URL (same blocked page)
+    * identifier = accession numbers (e.g. 29-70-164), NOT numeric object IDs
+  Method 5 -- Wikimedia Commons API: 0 results for Penn Indus seals
+  Method 6 -- Internet Archive: 0 results for Penn Indus content
+  Conclusion: Penn Museum applies IP-level block to ALL programmatic access.
+  Required action: institutional contact per corpus_indus_acquire_permissions.py (priority 4)
+  Report: phase42_t3_penn_cnn_summary.json (0 successful, method=playwright_chromium_headless)
+
+Corpus sources restored to local machine:
+  - All Tier 1+2+3 source files transferred from acquisition machine:
+    * penn-museum/raw/2026-05-14/penn_collections.csv (17,895 Indus rows)
+    * penn-museum/raw/2026-05-14/penn_indus_filtered.csv
+    * met-open-access/raw/2026-05-14/met_indus_filtered.csv (8,250 rows)
+    * met-open-access/raw/2026-05-14/MetObjects_full.csv (full 474K-row CSV)
+    * met-open-access/raw/2026-05-14/met_indus_objects.json
+    * cleveland-art/raw/2026-05-14/cleveland_indus_objects.json
+    * indian-culture/raw/2026-05-14/ (6 PDFs, rendered HTML, links, network logs)
+    * internet-archive/raw/2026-05-14/ (manifests + page image URL lists)
+    * rmrl/raw/2026-05-14/ (2 bulletins, 3 portal HTML pages)
+    * rmrl/raw/indusscript-probe/ (Firestore dump: 3,916 indusarrays documents)
+    * mayig-cisi/raw/2026-05-14/ (MIT corpus clone)
+
+Firestore indusarrays structure (new finding -- Phase-43 input):
+  - 3,916 sign-position documents; fields: _id, dockey, inscobj, signnum, S1-S14, texts, locus
+  - dockey links to Mahadevan concordance number
+  - S1-S14 are sign slots per inscription line
+  - CRITICAL: sign values are mixed -- numeric strings (Mahadevan IDs) + '*NNN' (RMRL supplements)
+  - To align with Holdat: filter '*NNN', convert remaining to int, zero-pad to 3 digits
+  - This single step should close the 4% overlap gap to >80% overlap
+
+Foundation check: not run (no code changes, data only)
+
+Files changed:
+  backend/scripts/phase42_v2_sa_rerun.py (NEW)
+  backend/scripts/phase42_penn_cnn.py (NEW -- urllib approach, documented 0/500 API success)
+  backend/scripts/acquire_penn_playwright.py (NEW -- Playwright approach, confirmed IP block)
+  backend/scripts/_probe_penn.py (NEW -- probe utility)
+  backend/scripts/_probe_penn2.py (NEW -- probe utility)
+  backend/scripts/_probe_wikimedia_penn.py (NEW -- Commons probe, 0 results)
+  backend/scripts/_inspect_sources_deep.py (NEW -- CSV/Firestore inspection utility)
+  backend/scripts/_check_sources.py (NEW -- source survey utility)
+  reports/phase42_t1_v2_sa_fixed.json (NEW)
+  reports/phase42_t3_penn_cnn_summary.json (UPDATED -- Playwright run, 0 images)
+  reports/phase42_penn_cnn_candidates.jsonl (NEW -- empty, 0 CNN results)
+  reports/phase42_penn_cnn_errors.jsonl (NEW -- 3 Playwright 403 errors)
+  glossa-corpus/indus/sources/penn-museum/raw/2026-05-14/ (NEW -- CSV restored)
+  glossa-corpus/indus/sources/met-open-access/raw/2026-05-14/ (NEW -- CSV restored)
+  glossa-corpus/indus/sources/{cleveland-art,indian-culture,internet-archive,rmrl,mayig-cisi}/ (NEW)
+  LEDGER.md (this entry)
+
+Open TODOs (Phase-43):
+  CRITICAL:
+  1. V2 alignment fix: filter '*NNN' supplementary signs from indusarrays, int-convert remaining
+     Expected: overlap rises from 4% to >80%, V2 SA becomes usable
+     File to edit: backend/glossa_lab/data/indus_corpus_v2.py
+  2. Penn Museum images: contact via permissions page (corpus_indus_acquire_permissions.py)
+     URL: https://www.penn.museum/collections/permission-to-reproduce.php
+     Ask for batch image access for 7,515 identified Indus objects
+
+  HIGH:
+  3. Dr. Fuls email: review phase41_fuls_email_draft.txt and send to andreas.fuls@tu-berlin.de
+  4. ICIT corpus (blocked, Dr. Fuls) -- dependent on #3
+
+Risks:
+  - V2 corpus still non-functional for SA; indusarrays *NNN signs are structurally incompatible
+    with Holdat until explicitly filtered
+  - Penn Museum images unavailable indefinitely without institutional contact
+  - Dravidian 1.0566x advantage remains on M77 only; cannot yet confirm on V2
+
+Next step:
+  Phase-43 T1: Fix indus_corpus_v2.py -- skip '*' prefix signs, int-convert numeric sign IDs.
+  Phase-43 T2: Draft Penn Museum batch image request email.

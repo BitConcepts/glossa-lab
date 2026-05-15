@@ -68,6 +68,8 @@ def _parse_diplomatic_to_ints(diplomatic: str, scheme: Optional[str] = None) -> 
     for p in parts:
         if p == "000" or p == "":
             continue  # skip eroded signs
+        if p.startswith("*"):
+            continue  # FIX Phase-43: skip RMRL *NNN supplementary signs (not in Holdat)
         try:
             # FIX: zero-pad to 3 digits to match M77 Holdat format
             # "67" -> "067", "342" -> "342", "8" -> "008"
@@ -99,7 +101,9 @@ def _extract_sequences(objects: list) -> List[List[int]]:
         if canonical:
             ids = []
             for cid in canonical:
-                if cid and cid not in ("000", "++"):
+                if cid and cid not in ("000", "+"):
+                    if isinstance(cid, str) and str(cid).startswith("*"):
+                        continue  # FIX Phase-43: skip RMRL *NNN supplementary signs
                     try:
                         # FIX: normalize to 3-digit zero-padded string (M77 format)
                         # "M047" -> "047", "67" -> "067", 342 -> "342"

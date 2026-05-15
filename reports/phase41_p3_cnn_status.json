@@ -1,0 +1,9 @@
+{
+  "experiment": "Phase-41 P3: CNN Penn Museum availability check",
+  "cnn_model_exists": true,
+  "cnn_val_accuracy": 0.4357,
+  "penn_museum_source_dir": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\glossa-corpus\\indus\\sources\\penn-museum",
+  "penn_museum_image_count": 0,
+  "status": "images_not_available_locally",
+  "next_step": "Run corpus_indus_acquire_free.py to download Penn Museum images, then run CNN inference"
+}

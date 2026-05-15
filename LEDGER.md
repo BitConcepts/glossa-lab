@@ -5055,24 +5055,24 @@ Next step: User testing of the Projects view, then project edit form and E2E tes
 
 ---
 
-## [2026-05-06] Entry — Dashboard polish: experiment ID resolution, action buttons, error logging, Results deep-link
+## [2026-05-06] Entry ï¿½ Dashboard polish: experiment ID resolution, action buttons, error logging, Results deep-link
 
 Objective: Fix multiple dashboard regressions around experiment action buttons, error handling, and result navigation.
 
 ### What was done
 
 **Backend (dashboard.py):**
-- Switched experiment registry from discover_experiments() (includes hidden primitives) to list_graph_experiments() — counts and insight validation now match what user sees in Experiment Builder
+- Switched experiment registry from discover_experiments() (includes hidden primitives) to list_graph_experiments() ï¿½ counts and insight validation now match what user sees in Experiment Builder
 - Added 
 _hypotheses to highlights payload from actual hypothesis tracker DB (was previously counting discovery items tagged 'hypothesis')
 - Improved _resolve_exp_id fuzzy matcher with prefix similarity (>=70% of longer string) in addition to substring containment; logs unresolvable IDs with first 20 registered experiments at WARNING level
 - Changed unresolvable un_experiment actions to downgrade to open_view (experiments page) instead of 
-o_op — buttons stay visible with informational rationale instead of disappearing
+o_op ï¿½ buttons stay visible with informational rationale instead of disappearing
 - Added GDELT circuit breaker awareness to the experiment list for insight prompt
 
 **Frontend (DashboardView.tsx):**
-- Handled LLM-invented action types open_study, open_experiment, open_hypothesis in switch statement — maps to builder/experiments/hypotheses views instead of falling to backend xecuteAiAction which rejected them
-- Persisted xpResults (experiment run result snapshots) in localStorage alongside insight cache —  Results ? buttons now survive navigation away from dashboard
+- Handled LLM-invented action types open_study, open_experiment, open_hypothesis in switch statement ï¿½ maps to builder/experiments/hypotheses views instead of falling to backend xecuteAiAction which rejected them
+- Persisted xpResults (experiment run result snapshots) in localStorage alongside insight cache ï¿½  Results ? buttons now survive navigation away from dashboard
 - Results ? button now deep-links to Experiment Builder via glossa_exp_builder_open localStorage pattern instead of generic experiments gallery
 - Added console.error/console.warn logging in all pplyAction error paths (missing experiment_id, unregistered experiment, action failures)
 - ctionLabel returns Open for all open_* action types instead of generic Apply
@@ -5085,18 +5085,18 @@ _hypotheses from backend (actual tracked count)
 o_op (legacy) with not in registry rationale
 
 ### Files changed
-- ackend/glossa_lab/api/dashboard.py (modified — graph experiment registry, hypothesis count, fuzzy matcher, action downgrade, logging)
-- ackend/glossa_lab/discovery/fetchers/gdelt.py (modified — prior session)
-- ackend/glossa_lab/discovery/fetchers/crossref.py (modified — prior session)
-- rontend/src/components/DashboardView.tsx (modified — all frontend fixes above)
-- rontend/src/api.ts (modified — added n_hypotheses to DashboardHighlights type)
-- rontend/src/components/CASModelView.tsx (modified — prior session: horizontal resize)
-- rontend/src/components/SettingsView.tsx (modified — prior session: tabbed layout)
-- rontend/e2e/dashboard-actions.spec.ts (modified — updated open_view assertion)
-- rontend/e2e/backend-integration.spec.ts (modified — prior session)
+- ackend/glossa_lab/api/dashboard.py (modified ï¿½ graph experiment registry, hypothesis count, fuzzy matcher, action downgrade, logging)
+- ackend/glossa_lab/discovery/fetchers/gdelt.py (modified ï¿½ prior session)
+- ackend/glossa_lab/discovery/fetchers/crossref.py (modified ï¿½ prior session)
+- rontend/src/components/DashboardView.tsx (modified ï¿½ all frontend fixes above)
+- rontend/src/api.ts (modified ï¿½ added n_hypotheses to DashboardHighlights type)
+- rontend/src/components/CASModelView.tsx (modified ï¿½ prior session: horizontal resize)
+- rontend/src/components/SettingsView.tsx (modified ï¿½ prior session: tabbed layout)
+- rontend/e2e/dashboard-actions.spec.ts (modified ï¿½ updated open_view assertion)
+- rontend/e2e/backend-integration.spec.ts (modified ï¿½ prior session)
 
 ### Checks run
-- 	sc -b && vite build — frontend compiles clean ?
+- 	sc -b && vite build ï¿½ frontend compiles clean ?
 - Playwright API-level tests (4/4 passed): experiment registry sanity, insight structure, impact ID validation, next_actions ID validation ?
 - Playwright UI-level tests skipped (pre-existing: Vite preview server not running)
 
@@ -5104,7 +5104,7 @@ Results: All dashboard experiment action bugs fixed. Error logging now in both c
 Open TODOs:
 - [ ] Start Vite preview server for full Playwright UI regression
 - [ ] Evidence linking architecture (plan exists, not yet implemented)
-Risks: UI-level Playwright tests not run due to missing Vite preview server — same pre-existing issue.
+Risks: UI-level Playwright tests not run due to missing Vite preview server ï¿½ same pre-existing issue.
 Next step: Start Vite preview for full E2E regression, then begin evidence linking implementation.
 
 
@@ -7037,7 +7037,146 @@ Next step:
   Phase-39: Fix Sangam LM + Meroitic imports -> re-run T2/T3 with correct data.
   Then corpus Batch 2 retries.
 
+# [2026-05-15] Entry â€” Phase-39: Sangam LM, Multi-Language Falsification, Corpus Batch 2
+
+Objective: Address all open issues from Phase-38 except #3 (ICIT):
+  1. Fix dravidian.py Sangam LM (get_corpus_text, not INSCRIPTIONS)
+  2. Fix Meroitic/Coptic imports (get_line_inscriptions, get_coptic_symbols)
+  3. Corpus Batch 2 retries (GRETIL, ORACC, SuttaCentral, CBETA)
+  4. Re-run T2/T3 with fixes
+
+What was done:
+
+1. T2 FIX: True Sangam syllable LM:
+   - get_corpus_text() returns 1297 words -> 3849 syllable tokens -> 381 unique syl
+   - Blended with TB clean LM (1128 bigrams); equalized to 651 bigrams
+   - Results: Sangam lift=5.017 < DEDR lift=7.835 < Sanskrit lift=7.417
+   - Sangam LM WORSE than DEDR and loses to Sanskrit
+   - Finding: DEDR (etymological roots) is a better Indus Script model than
+     Sangam literary corpus. Indus ~2000 years older than Sangam poetry.
+   - Report: reports/phase39_t2_true_sangam_lm.json
+
+2. T3 FIX: Multi-language falsification (correct imports):
+   - Fixed: use get_line_inscriptions(encoded=False) for Meroitic
+   - Fixed: use get_coptic_symbols() running text for Coptic
+   - Added: Sumerian UR3 (39K tokens, 107 unique phonemes)
+   - Results ranking:
+     1. Coptic (21 syl/136 bg): lift=12.84 [CONFOUND]
+     2. Meroitic (17 syl/83 bg): lift=11.87 [CONFOUND]
+     3. Sumerian (107 syl/651 bg): lift=8.87 [PARTIALLY CONFOUNDED]
+     4. Dravidian DEDR (424 syl/651 bg): lift=7.83 [VALID]
+     5. Sanskrit (424 syl/651 bg): lift=7.42 [VALID]
+     6. Sangam Tamil (381 syl/651 bg): lift=5.02 [SLIGHTLY CONFOUNDED]
+   - CRITICAL FINDING: Small-alphabet languages (17-21 symbols) score highest
+     because the SA trivially maps 62 Indus signs to a tiny set. This is the
+     same vocabulary-size confound, now in extreme form (17x17=289 possible
+     bigrams, 83 covered = 29% -- much easier than 424x424 Dravidian space)
+   - Valid comparisons: Dravidian (424/651) vs Sanskrit (424/651) ONLY
+   - Fix for Phase-40: phoneme-level LMs for all languages at same inventory size
+   - Report: reports/phase39_t3_multilang_fixed.json
+
+3. Corpus Batch 2 retries (background, completed):
+   - GRETIL/DCS Sanskrit: OK (24,312 files) -- shreevatsa + OliverHellwig repos
+   - SuttaCentral Pali: OK (156,882 files) -- timeout=600 worked!
+   - CDLI GitHub: OK (46 files)
+   - CBETA: FAIL (cbeta-org + cbeta-git repos not found)
+   - Papyri.info: FAIL (timeout, partial 303K files)
+   - Total new: ~181K clean files
+   - Key asset: DCS Sanskrit (OliverHellwig/sanskrit, CC BY 4.0)
+
+4. Synthesis: reports/PHASE_39_SYNTHESIS.md
+
+5. Foundation check: PASS (17/0/0)
+
+Files changed:
+  backend/scripts/phase39_fixes.py (NEW)
+  backend/scripts/corpus_batch2_retry.py (NEW)
+  reports/phase39_t2_true_sangam_lm.json (NEW)
+  reports/phase39_t3_multilang_fixed.json (NEW)
+  reports/PHASE_39_SYNTHESIS.md (NEW)
+  glossa-corpus/sources/gretil/raw/2026-05-15/ (NEW -- DCS Sanskrit)
+  glossa-corpus/sources/suttacentral/raw/2026-05-15/ (NEW -- Pali)
+  glossa-corpus/sources/cdli/raw/2026-05-15/ (NEW -- CDLI transliterations)
+  glossa-corpus/reports/2026-05-15_corpus_batch2_retry.md (NEW)
+  LEDGER.md (this entry)
+
+Open TODOs (Phase-40):
+  CRITICAL:
+  1. Phoneme-level LMs for valid multi-language comparison:
+     - Dravidian ~30 phonemes (Tamil phoneme inventory)
+     - Sanskrit ~35 phonemes (from DCS corpus)
+     - Meroitic 19 phonemes (already phonetic -- Griffith values)
+     - Coptic 24 phonemes (Sahidic alphabet)
+     - Run equalized SA at identical phoneme inventory size
+  2. CBETA: find correct repo URL
+  3. DCS Sanskrit LM: build from OliverHellwig/sanskrit corpus data
+
+  ONGOING:
+  4. ICIT-scale corpus reconstruction (features/governance-tool branch in progress)
+  5. Papyri.info: sparse checkout to avoid timeout
+
+Risks:
+  - T3 multi-language comparison invalid until phoneme-level normalization done
+  - Sangam LM underperforms DEDR -- this may simply reflect that DEDR etymological
+    roots are a better proxy for Proto-Dravidian (Indus era) than Sangam literary Tamil
+  - CBETA (Chinese Buddhist) acquisition still failing
+
+Next step:
+  Phase-40 T1: Build phoneme-level LMs for Dravidian, Sanskrit, Meroitic, Coptic.
+  Run equalized multi-language SA at 30-phoneme level.
+
+## [2026-05-15] Entry â€” CBETA Repository Investigation and Correct Acquisition
+
+Objective:
+Find why CBETA acquisition failed in Batch 1 and 2. Extensive search to map
+the full CBETA repository ecosystem. Acquire with correct URLs.
+
+Root cause of previous failures:
+  1. cbeta-org/xml-p5a: WRONG URL â€” the internal xml-p5a is under cbeta-git (USER
+     account), NOT cbeta-org (ORGANIZATION). cbeta-org was created 2026-02-21 (new).
+  2. cbeta-git/cbeta-open-data: WRONG â€” this repo never existed.
+  3. cbeta-org/xml-p5a: Also WRONG â€” p5a doesn't exist under the org at all.
+
+CBETA repository ecosystem (fully documented):
+  cbeta-org/xml-p5         â†’ OFFICIAL public TEI P5, updated 2025-12-25, ~2GB
+  cbeta-git/xml-p5a        â†’ Internal editing version (NOT recommended for public)
+  DILA-edu/cbeta-normal-text â†’ Plain text ä¸€å·ä¸€æª”, created 2025-08, updated 2025-12
+  DILA-edu/CBETA-txt       â†’ TAF plain text (T/X/J canons), stats-friendly
+  mahawu/BM_u8             â†’ Basic Markup UTF-8
+  cbeta-org/cbeta_gaiji    â†’ Missing characters (gaiji) database
+  License: CC BY-NC-SA 3.0 Taiwan (non-commercial, research use permitted)
+
+CBETA acquisition results (5 repos):
+  cbeta-normal-text (DILA-edu): OK  21,961 plain text files âœ“
+  BM_u8 (mahawu):               OK   1,763 BM format files âœ“
+  xml-p5 (cbeta-org):           FAIL (timeout 300s, but 3,707 XML files partial) âœ“~
+  CBETA-txt (DILA-edu):         OK  23,420 TAF plain text files âœ“
+  cbeta_gaiji (cbeta-org):      OK      41 gaiji DB files âœ“
+  TOTAL: 4/5 OK, 50,892 files
+
+Key new assets:
+  - 21,961 plain text Buddhist texts (cbeta-normal-text)
+  - 23,420 TAF plain text files (statistics-friendly, T/X/J canons)
+  - Gaiji character database
+  - 3,707 TEI P5 XML files (partial T+X from sparse checkout)
+
+Foundation check: PASS (17/0/0)
+
+Files changed:
+  backend/scripts/corpus_cbeta_acquire.py (NEW)
+  glossa-corpus/sources/cbeta/provenance.yaml (NEW)
+  glossa-corpus/sources/cbeta/raw/2026-05-15/ (NEW - 50K files, gitignored)
+  glossa-corpus/reports/2026-05-15_cbeta_acquisition.md (NEW)
+  LEDGER.md (this entry)
+
+Open TODOs:
+  - xml-p5 full clone: run with timeout=600+ to complete T+X sparse checkout
+  - Phase-40: phoneme-level LMs for multi-language comparison
+  - Chinese Buddhist LM: build from CBETA-txt/cbeta-normal-text plain text
+  - ICIT-scale corpus reconstruction (branch in progress)
+
 ---
+--
 
 ## [2026-05-14] Entry â€” ICIT-Scale Indus Corpus Reconstruction (Branch Setup + Full Pipeline)
 

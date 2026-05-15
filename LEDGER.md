@@ -7124,3 +7124,53 @@ Risks:
 Next step:
   Phase-40 T1: Build phoneme-level LMs for Dravidian, Sanskrit, Meroitic, Coptic.
   Run equalized multi-language SA at 30-phoneme level.
+
+## [2026-05-15] Entry — CBETA Repository Investigation and Correct Acquisition
+
+Objective:
+Find why CBETA acquisition failed in Batch 1 and 2. Extensive search to map
+the full CBETA repository ecosystem. Acquire with correct URLs.
+
+Root cause of previous failures:
+  1. cbeta-org/xml-p5a: WRONG URL — the internal xml-p5a is under cbeta-git (USER
+     account), NOT cbeta-org (ORGANIZATION). cbeta-org was created 2026-02-21 (new).
+  2. cbeta-git/cbeta-open-data: WRONG — this repo never existed.
+  3. cbeta-org/xml-p5a: Also WRONG — p5a doesn't exist under the org at all.
+
+CBETA repository ecosystem (fully documented):
+  cbeta-org/xml-p5         → OFFICIAL public TEI P5, updated 2025-12-25, ~2GB
+  cbeta-git/xml-p5a        → Internal editing version (NOT recommended for public)
+  DILA-edu/cbeta-normal-text → Plain text 一卷一檔, created 2025-08, updated 2025-12
+  DILA-edu/CBETA-txt       → TAF plain text (T/X/J canons), stats-friendly
+  mahawu/BM_u8             → Basic Markup UTF-8
+  cbeta-org/cbeta_gaiji    → Missing characters (gaiji) database
+  License: CC BY-NC-SA 3.0 Taiwan (non-commercial, research use permitted)
+
+CBETA acquisition results (5 repos):
+  cbeta-normal-text (DILA-edu): OK  21,961 plain text files ✓
+  BM_u8 (mahawu):               OK   1,763 BM format files ✓
+  xml-p5 (cbeta-org):           FAIL (timeout 300s, but 3,707 XML files partial) ✓~
+  CBETA-txt (DILA-edu):         OK  23,420 TAF plain text files ✓
+  cbeta_gaiji (cbeta-org):      OK      41 gaiji DB files ✓
+  TOTAL: 4/5 OK, 50,892 files
+
+Key new assets:
+  - 21,961 plain text Buddhist texts (cbeta-normal-text)
+  - 23,420 TAF plain text files (statistics-friendly, T/X/J canons)
+  - Gaiji character database
+  - 3,707 TEI P5 XML files (partial T+X from sparse checkout)
+
+Foundation check: PASS (17/0/0)
+
+Files changed:
+  backend/scripts/corpus_cbeta_acquire.py (NEW)
+  glossa-corpus/sources/cbeta/provenance.yaml (NEW)
+  glossa-corpus/sources/cbeta/raw/2026-05-15/ (NEW - 50K files, gitignored)
+  glossa-corpus/reports/2026-05-15_cbeta_acquisition.md (NEW)
+  LEDGER.md (this entry)
+
+Open TODOs:
+  - xml-p5 full clone: run with timeout=600+ to complete T+X sparse checkout
+  - Phase-40: phoneme-level LMs for multi-language comparison
+  - Chinese Buddhist LM: build from CBETA-txt/cbeta-normal-text plain text
+  - ICIT-scale corpus reconstruction (branch in progress)

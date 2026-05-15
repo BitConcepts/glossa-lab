@@ -1139,6 +1139,26 @@ Do not re-implement these helpers inline.
 * Use CuPy when available (`import cupy as cp`), falling back to NumPy only when CuPy is absent.
 * The `BigramScorer` in `glossa_lab.pipelines.decipher` already implements this pattern — follow it everywhere.
 * When falling back to CPU, log it explicitly: `logger.info("GPU unavailable — using NumPy CPU path")`.
+* **Before installing PyTorch or any GPU library**: run `nvidia-smi` to detect the GPU and CUDA
+  driver version, then install the matching CUDA wheel. **NEVER install the CPU-only wheel**
+  (`+cpu`) unless `nvidia-smi` confirms no GPU is present.
+* **Before running any PyTorch/TensorFlow script**: assert `torch.cuda.is_available()` and
+  raise a descriptive warning (not a silent fallback) if CUDA is absent.
+
+```python
+# Mandatory PyTorch GPU enforcement pattern
+if torch.cuda.is_available():
+    device = torch.device("cuda")
+    print(f"GPU: {torch.cuda.get_device_name(0)} ({torch.cuda.get_device_properties(0).total_memory//1024**2} MB)")
+else:
+    import warnings
+    warnings.warn(
+        "CUDA not available — falling back to CPU (~20x slower). "
+        "Install CUDA PyTorch: pip install torch --index-url https://download.pytorch.org/whl/cu126",
+        stacklevel=2,
+    )
+    device = torch.device("cpu")
+```
 
 ```python
 try:

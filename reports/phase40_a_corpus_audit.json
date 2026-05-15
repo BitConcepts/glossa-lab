@@ -1,0 +1,28 @@
+{
+  "experiment": "Phase-40 A: Corpus status audit",
+  "m77_baseline": {
+    "inscriptions": 1669,
+    "tokens": 5361,
+    "signs_freq3": 62
+  },
+  "v2_expanded": {
+    "inscriptions": 2784,
+    "tokens": 11705,
+    "signs_freq3": 258,
+    "tier": "real-corpus (n=15508 objects from indus_research.jsonl)"
+  },
+  "multiplier_inscriptions": 1.67,
+  "multiplier_tokens": 2.18,
+  "coverage_texts_pct": 56.0,
+  "_citation": {
+    "primary": [
+      "A.1",
+      "I.1",
+      "I.2",
+      "I.3",
+      "I.4",
+      "I.5"
+    ],
+    "phase": "Phase-40-A"
+  }
+}

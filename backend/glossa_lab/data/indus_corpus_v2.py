@@ -69,7 +69,9 @@ def _parse_diplomatic_to_ints(diplomatic: str, scheme: Optional[str] = None) -> 
         if p == "000" or p == "":
             continue  # skip eroded signs
         try:
-            ids.append(int(p))
+            # FIX: zero-pad to 3 digits to match M77 Holdat format
+            # "67" -> "067", "342" -> "342", "8" -> "008"
+            ids.append(str(int(p)).zfill(3))
         except ValueError:
             continue
     return ids
@@ -99,12 +101,15 @@ def _extract_sequences(objects: list) -> List[List[int]]:
             for cid in canonical:
                 if cid and cid not in ("000", "++"):
                     try:
-                        # M77 IDs are like "M047" -> extract integer 47
+                        # FIX: normalize to 3-digit zero-padded string (M77 format)
+                        # "M047" -> "047", "67" -> "067", 342 -> "342"
                         if isinstance(cid, str) and cid.startswith("M"):
-                            ids.append(int(cid[1:]))
+                            ids.append(str(int(cid[1:])).zfill(3))
+                        elif isinstance(cid, int):
+                            ids.append(str(cid).zfill(3))
                         else:
-                            ids.append(int(str(cid).lstrip("0") or "0"))
-                    except ValueError:
+                            ids.append(str(int(str(cid))).zfill(3))
+                    except (ValueError, TypeError):
                         pass
             if ids:
                 sequences.append(ids)

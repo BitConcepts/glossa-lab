@@ -1,0 +1,27 @@
+{
+  "experiment": "Phase-42 Task 3: Penn Museum CNN via Playwright",
+  "method": "playwright_chromium_headless",
+  "cnn_model": "glyph_cnn_augmented.pt",
+  "cnn_val_accuracy": 0.4357,
+  "n_classes": 226,
+  "output_file": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\reports\\phase42_penn_cnn_candidates.jsonl",
+  "stats": {
+    "processed": 3,
+    "page_success": 0,
+    "image_found": 0,
+    "download_success": 0,
+    "cnn_success": 0,
+    "page_fail_403": 3,
+    "page_fail_other": 0,
+    "image_not_found": 0,
+    "download_fail": 0
+  },
+  "_citation": {
+    "primary": [
+      "I.1",
+      "I.2",
+      "I.3"
+    ],
+    "phase": "Phase-42-T3-Playwright"
+  }
+}

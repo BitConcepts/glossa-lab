@@ -1,0 +1,72 @@
+{
+  "experiment": "Phase-42 Task 1: V2 SA with fixed zero-padded sign IDs",
+  "fix_applied": "str(int(raw_sign_id)).zfill(3) in indus_corpus_v2.py",
+  "p2_revalidation": {
+    "top50_overlap_pct": 4.0,
+    "pearson_r": -0.1239,
+    "fix_confirmed": false
+  },
+  "v2_corpus": {
+    "inscriptions": 2784,
+    "cipher_signs": 258,
+    "multiplier_vs_m77": 1.67
+  },
+  "dravidian": {
+    "z": 12.935,
+    "p": 0.0,
+    "nll_lift": 5.2181,
+    "ci95": [
+      -160003.2,
+      -155515.2
+    ],
+    "n_anchors": 69,
+    "seed_scores": [
+      -146658.6,
+      -145289.3,
+      -146262.6,
+      -146282.6,
+      -147492.0,
+      -147750.7,
+      -144322.3,
+      -146791.8,
+      -149976.3,
+      -147952.0
+    ]
+  },
+  "sanskrit": {
+    "z": 14.458,
+    "p": 0.0,
+    "nll_lift": 8.0087,
+    "ci95": [
+      -159784.4,
+      -153528.8
+    ],
+    "n_anchors": 65,
+    "seed_scores": [
+      -135986.9,
+      -136728.2,
+      -138099.7,
+      -136980.1,
+      -138096.2,
+      -137253.6,
+      -138148.3,
+      -136585.3,
+      -138406.7,
+      -137346.1
+    ]
+  },
+  "dravidian_wins": false,
+  "lift_ratio": 0.6516,
+  "runtime_s": 1322.9,
+  "verdict": "V2 fixed SA: Dravidian lift=5.2181 Z=12.94 vs Sanskrit lift=8.0087 Z=14.46. Dravidian loses (0.652x). P2 overlap: 4.0%, r=-0.1239 (STILL LOW).",
+  "_citation": {
+    "primary": [
+      "A.1",
+      "E.1",
+      "C.2",
+      "I.1",
+      "I.2"
+    ],
+    "phase": "Phase-42-T1"
+  }
+}

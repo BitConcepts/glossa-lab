@@ -7036,3 +7036,91 @@ Risks:
 Next step:
   Phase-39: Fix Sangam LM + Meroitic imports -> re-run T2/T3 with correct data.
   Then corpus Batch 2 retries.
+
+## [2026-05-15] Entry — Phase-39: Sangam LM, Multi-Language Falsification, Corpus Batch 2
+
+Objective: Address all open issues from Phase-38 except #3 (ICIT):
+  1. Fix dravidian.py Sangam LM (get_corpus_text, not INSCRIPTIONS)
+  2. Fix Meroitic/Coptic imports (get_line_inscriptions, get_coptic_symbols)
+  3. Corpus Batch 2 retries (GRETIL, ORACC, SuttaCentral, CBETA)
+  4. Re-run T2/T3 with fixes
+
+What was done:
+
+1. T2 FIX: True Sangam syllable LM:
+   - get_corpus_text() returns 1297 words -> 3849 syllable tokens -> 381 unique syl
+   - Blended with TB clean LM (1128 bigrams); equalized to 651 bigrams
+   - Results: Sangam lift=5.017 < DEDR lift=7.835 < Sanskrit lift=7.417
+   - Sangam LM WORSE than DEDR and loses to Sanskrit
+   - Finding: DEDR (etymological roots) is a better Indus Script model than
+     Sangam literary corpus. Indus ~2000 years older than Sangam poetry.
+   - Report: reports/phase39_t2_true_sangam_lm.json
+
+2. T3 FIX: Multi-language falsification (correct imports):
+   - Fixed: use get_line_inscriptions(encoded=False) for Meroitic
+   - Fixed: use get_coptic_symbols() running text for Coptic
+   - Added: Sumerian UR3 (39K tokens, 107 unique phonemes)
+   - Results ranking:
+     1. Coptic (21 syl/136 bg): lift=12.84 [CONFOUND]
+     2. Meroitic (17 syl/83 bg): lift=11.87 [CONFOUND]
+     3. Sumerian (107 syl/651 bg): lift=8.87 [PARTIALLY CONFOUNDED]
+     4. Dravidian DEDR (424 syl/651 bg): lift=7.83 [VALID]
+     5. Sanskrit (424 syl/651 bg): lift=7.42 [VALID]
+     6. Sangam Tamil (381 syl/651 bg): lift=5.02 [SLIGHTLY CONFOUNDED]
+   - CRITICAL FINDING: Small-alphabet languages (17-21 symbols) score highest
+     because the SA trivially maps 62 Indus signs to a tiny set. This is the
+     same vocabulary-size confound, now in extreme form (17x17=289 possible
+     bigrams, 83 covered = 29% -- much easier than 424x424 Dravidian space)
+   - Valid comparisons: Dravidian (424/651) vs Sanskrit (424/651) ONLY
+   - Fix for Phase-40: phoneme-level LMs for all languages at same inventory size
+   - Report: reports/phase39_t3_multilang_fixed.json
+
+3. Corpus Batch 2 retries (background, completed):
+   - GRETIL/DCS Sanskrit: OK (24,312 files) -- shreevatsa + OliverHellwig repos
+   - SuttaCentral Pali: OK (156,882 files) -- timeout=600 worked!
+   - CDLI GitHub: OK (46 files)
+   - CBETA: FAIL (cbeta-org + cbeta-git repos not found)
+   - Papyri.info: FAIL (timeout, partial 303K files)
+   - Total new: ~181K clean files
+   - Key asset: DCS Sanskrit (OliverHellwig/sanskrit, CC BY 4.0)
+
+4. Synthesis: reports/PHASE_39_SYNTHESIS.md
+
+5. Foundation check: PASS (17/0/0)
+
+Files changed:
+  backend/scripts/phase39_fixes.py (NEW)
+  backend/scripts/corpus_batch2_retry.py (NEW)
+  reports/phase39_t2_true_sangam_lm.json (NEW)
+  reports/phase39_t3_multilang_fixed.json (NEW)
+  reports/PHASE_39_SYNTHESIS.md (NEW)
+  glossa-corpus/sources/gretil/raw/2026-05-15/ (NEW -- DCS Sanskrit)
+  glossa-corpus/sources/suttacentral/raw/2026-05-15/ (NEW -- Pali)
+  glossa-corpus/sources/cdli/raw/2026-05-15/ (NEW -- CDLI transliterations)
+  glossa-corpus/reports/2026-05-15_corpus_batch2_retry.md (NEW)
+  LEDGER.md (this entry)
+
+Open TODOs (Phase-40):
+  CRITICAL:
+  1. Phoneme-level LMs for valid multi-language comparison:
+     - Dravidian ~30 phonemes (Tamil phoneme inventory)
+     - Sanskrit ~35 phonemes (from DCS corpus)
+     - Meroitic 19 phonemes (already phonetic -- Griffith values)
+     - Coptic 24 phonemes (Sahidic alphabet)
+     - Run equalized SA at identical phoneme inventory size
+  2. CBETA: find correct repo URL
+  3. DCS Sanskrit LM: build from OliverHellwig/sanskrit corpus data
+
+  ONGOING:
+  4. ICIT-scale corpus reconstruction (features/governance-tool branch in progress)
+  5. Papyri.info: sparse checkout to avoid timeout
+
+Risks:
+  - T3 multi-language comparison invalid until phoneme-level normalization done
+  - Sangam LM underperforms DEDR -- this may simply reflect that DEDR etymological
+    roots are a better proxy for Proto-Dravidian (Indus era) than Sangam literary Tamil
+  - CBETA (Chinese Buddhist) acquisition still failing
+
+Next step:
+  Phase-40 T1: Build phoneme-level LMs for Dravidian, Sanskrit, Meroitic, Coptic.
+  Run equalized multi-language SA at 30-phoneme level.

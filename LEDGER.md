@@ -7543,3 +7543,80 @@ Risks:
 Next step:
   Full OCR run: classify + extract all 1,672 pages.
   Expected output: ~5,000+ unique textnums, ~2,600 new beyond Firestore.
+
+
+---
+
+## [2026-05-15] Entry — Glyph Classifier Pipeline (IoU k-NN) + 93 Inferred Sequences
+
+Objective:
+Build a visual glyph classifier to recover sign sequences for the 308 IM77 textnums
+missing from Firestore. Phase 2 (harder) of the M77 gap reconstruction.
+
+What was done:
+1. Geometry probe (glyph_probe_geometry.py): Discovered M77 TEXTS page column layout:
+   - 0–15%:  textnum column (4-digit: e.g. 3227)
+   - 15–42%: catalog number column (6-digit: e.g. 219709)
+   - 42–100%: sign drawing area
+2. Glyph segmenter (glyph_segment.py):
+   - Anchor-based: Tesseract bbox finds textnum position, sign column extracted right of x=0.42
+   - Ran --all on 149 TEXTS pages -> 3,547 textnum crop directories
+   - Output: glossa-corpus/indus/ocr_results/glyph_crops/{textnum}/glyph_NNN.png
+3. Template labeler (glyph_label.py):
+   - Uses Firestore known texts (exact-match only: 388 texts)
+   - Selects sharpest sample as canonical per sign class
+   - Produced 226 clean sign classes (of 417+ in M77)
+   - Output: glossa-corpus/indus/ocr_results/glyph_templates/{sign_id}/canonical.png + samples
+4. Classifier (glyph_match.py): Binary IoU k-NN approach
+   - Glyph binarized (threshold=160, ink=1, background=0)
+   - For each query: max IoU over all samples for each sign class
+   - Validation (n=50): 29.8% sign-level accuracy, 30.0% sequence accuracy
+   - Bimodal result: perfect accuracy when segmentation glyph count matches, 0% otherwise
+   - Root cause: over-segmentation splits compound signs; only 226/417 classes covered
+5. Ran --missing: classified 93/308 missing textnums (215 had no crops from segmentation)
+   Output: glossa-corpus/indus/ocr_results/missing_sequences.json
+6. Glyph reconstruct (glyph_reconstruct.py):
+   - Converts missing_sequences.json -> staging JSONL with [INFERRED] corpus records
+   - 93 records, 955 sign tokens, avg 10.3 signs/text (high due to over-segmentation)
+   Output: glossa-corpus/indus/staging/objects_2026-05-15_inferred.jsonl
+
+Corpus delta (inferred, unverified):
+  +93 [INFERRED] IM77 texts  (taking total inferred+verified to ~3,178 / 5,509 = 57.7%)
+  +955 [INFERRED] sign tokens (taking total inferred+verified to ~13,898 / 19,616 = 70.9%)
+
+Validation report: glossa-corpus/indus/ocr_results/glyph_match_validation.json
+  sign_accuracy_pct:     29.8%
+  sequence_accuracy_pct: 30.0%
+  texts_validated:       50
+
+Files created:
+  backend/scripts/glyph_probe_geometry.py
+  backend/scripts/glyph_segment.py
+  backend/scripts/glyph_label.py
+  backend/scripts/glyph_match.py
+  backend/scripts/glyph_reconstruct.py
+  glossa-corpus/indus/ocr_results/missing_sequences.json
+  glossa-corpus/indus/ocr_results/glyph_match_validation.json
+  glossa-corpus/indus/staging/objects_2026-05-15_inferred.jsonl
+
+Open TODOs:
+  1. Accuracy improvement path: Fine-tune CNN (ResNet-18) on labeled glyph crops
+     - Expected: 70–85% sign accuracy vs current 29.8%
+     - Blocker: needs GPU or Colab session
+  2. Segmentation fix: Better glyph splitting for compound signs (reduces over-segmentation)
+     - Current avg 10.3 signs/inferred text vs 4.3 verified — factor ~2.4 over-count
+  3. 215 missing textnums still have no crops — pages may not have been in TEXTS classification
+     - May be in CONCORDANCE pages or scan quality too low for segmentation
+  4. Re-run segmentation after accuracy fixes for full 308 coverage
+
+Risks:
+  - [INFERRED] 93 new texts carry ~29.8% sign accuracy — sign IDs unreliable
+  - [INFERRED] Over-segmentation means sign counts inflated ~2.4×
+  - [VERIFIED] 215/308 textnums have no crop data — those remain as gap
+  - [RISK] Inferred sequences must NOT be used for statistical/linguistic analysis without
+    verification against CISI or RMRL official concordance
+
+Next step:
+  Option A: CNN fine-tuning on labeled crops (improve accuracy to ~75%)
+  Option B: Await RMRL official concordance export (fills gap properly)
+  Option C: CISI purchase (covers all 5,509 texts with verified sequences)

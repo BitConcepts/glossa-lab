@@ -1,28 +1,33 @@
-"""Mahadevan 1977 — Template matching classifier.
+"""Mahadevan 1977 — Glyph classifier (IoU k-NN + CNN).
 
-Classifies extracted glyph crops against canonical sign templates using
-Normalized Cross-Correlation (NCC). No training required — the consistent
-printed typeface means NCC works reliably.
+Two classifier modes:
 
-Strategy:
-  For each query glyph:
-    1. Preprocess to binary (threshold + normalize)
-    2. Compute NCC with every canonical template
-    3. Return the sign_id with highest NCC score
+  iou  (default / baseline)
+       Binary IoU k-NN against canonical sign templates.
+       No training needed. ~29.8% sign accuracy.
+
+  cnn  (Option A — higher accuracy)
+       Lightweight 4-block CNN trained on labeled glyph crops.
+       Requires glyph_cnn.pt produced by glyph_train.py.
+       Expected ~60-75% sign accuracy.
 
 Validation mode (--validate):
   For textnums where we KNOW the sign sequence (Firestore),
   run the classifier and report accuracy.
 
 Usage:
-    # Validate on known texts
+    # Validate IoU k-NN baseline
     shell.cmd python backend/scripts/glyph_match.py --validate --n 50
+
+    # Validate CNN (requires trained model)
+    shell.cmd python backend/scripts/glyph_match.py --validate --model cnn --n 50
 
     # Classify unknown textnums (the 308 missing ones)
     shell.cmd python backend/scripts/glyph_match.py --missing
+    shell.cmd python backend/scripts/glyph_match.py --missing --model cnn
 
     # Classify all textnums with crops
-    shell.cmd python backend/scripts/glyph_match.py --all
+    shell.cmd python backend/scripts/glyph_match.py --all --model cnn
 """
 from __future__ import annotations
 import json, re, sys
@@ -37,9 +42,70 @@ TMPL_DIR  = REPO / "glossa-corpus/indus/ocr_results/glyph_templates"
 FIRESTORE = (REPO / "glossa-corpus/indus/sources/rmrl/raw/indusscript-probe"
              / "firestore_indusarrays_full.json")
 MISSING_F = REPO / "glossa-corpus/indus/ocr_results/m77_textnums_missing.json"
+CNN_MODEL = REPO / "glossa-corpus/indus/ocr_results/glyph_cnn.pt"
 OUT_DIR   = REPO / "glossa-corpus/indus/ocr_results"
 
 GLYPH_SIZE = 64
+
+
+# ── CNN inference ──────────────────────────────────────────────────────────────
+
+_CNN_MODEL = None      # lazy-loaded checkpoint dict
+_CNN_NET   = None      # lazy-loaded GlyphCNN module
+
+
+def _load_cnn():
+    """Lazy-load the trained GlyphCNN model."""
+    global _CNN_MODEL, _CNN_NET
+    if _CNN_NET is not None:
+        return _CNN_NET, _CNN_MODEL
+
+    if not CNN_MODEL.exists():
+        raise FileNotFoundError(
+            f"CNN model not found: {CNN_MODEL}\n"
+            "Run: shell.cmd python backend/scripts/glyph_train.py"
+        )
+
+    import torch
+    from glyph_train import GlyphCNN
+
+    ckpt = torch.load(str(CNN_MODEL), map_location="cpu", weights_only=False)
+    model = GlyphCNN(ckpt["num_classes"])
+    model.load_state_dict(ckpt["model_state_dict"])
+    model.eval()
+    _CNN_MODEL = ckpt
+    _CNN_NET   = model
+    print(f"  CNN loaded: {ckpt['num_classes']} classes, "
+          f"val_acc={ckpt.get('val_accuracy', '?'):.1%}")
+    return _CNN_NET, _CNN_MODEL
+
+
+def classify_glyph_cnn(glyph_bgr: np.ndarray) -> list[tuple[str, float]]:
+    """Classify a single glyph image using the trained CNN."""
+    import torch
+    import torchvision.transforms as T
+
+    model, ckpt = _load_cnn()
+    idx_to_class = ckpt["idx_to_class"]
+
+    gray = cv2.cvtColor(glyph_bgr, cv2.COLOR_BGR2GRAY)
+    gray_3ch = cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR)
+
+    transform = T.Compose([
+        T.ToPILImage(),
+        T.ToTensor(),
+        T.Lambda(lambda x: x.mean(0, keepdim=True) if x.shape[0] == 3 else x),
+        T.Normalize(mean=[0.5], std=[0.5]),
+    ])
+    tensor = transform(gray_3ch).unsqueeze(0)  # (1, 1, H, W)
+
+    with torch.no_grad():
+        logits = model(tensor)[0]
+        probs  = torch.softmax(logits, dim=0)
+
+    top3 = probs.topk(min(3, len(probs)))
+    return [(idx_to_class[int(i.item())], p.item())
+            for i, p in zip(top3.indices, top3.values)]
 
 
 def sanitize_sign(s: str) -> str:
@@ -109,8 +175,8 @@ def classify_glyph(glyph: np.ndarray, templates: dict[str, list[np.ndarray]],
     return scores[:top_k]
 
 
-def classify_textnum(textnum: int, templates: dict[str, np.ndarray]
-                      ) -> list[str] | None:
+def classify_textnum(textnum: int, templates: dict[str, np.ndarray],
+                       mode: str = "iou") -> list[str] | None:
     """Classify all glyphs for a textnum. Returns predicted sign sequence."""
     d = CROPS_DIR / str(textnum)
     if not d.exists():
@@ -123,7 +189,10 @@ def classify_textnum(textnum: int, templates: dict[str, np.ndarray]
         img = cv2.imread(str(f))
         if img is None:
             continue
-        top = classify_glyph(img, templates, top_k=1)
+        if mode == "cnn":
+            top = classify_glyph_cnn(img)
+        else:
+            top = classify_glyph(img, templates, top_k=1)
         if top:
             sequence.append(top[0][0])
     return sequence if sequence else None
@@ -163,21 +232,35 @@ def main():
                         help="Classify all textnums with crops")
     parser.add_argument("--n", type=int, default=50,
                         help="Number of texts for validation (default 50)")
+    parser.add_argument("--model", choices=["iou", "cnn"], default="iou",
+                        help="Classifier: iou (default) or cnn (requires glyph_cnn.pt)")
     args = parser.parse_args()
 
-    print("=== M77 Glyph Template Matcher ===")
-    print("Loading templates...")
-    templates = load_templates()
-    print(f"Templates loaded: {len(templates)} sign classes")
+    print(f"=== M77 Glyph Classifier  [mode: {args.model}] ===")
 
-    if not templates:
-        print("ERROR: No templates found. Run glyph_label.py first.")
-        return 1
+    # Load templates (always needed for iou; harmless to load for cnn too)
+    templates = {}
+    if args.model == "iou":
+        print("Loading IoU templates...")
+        templates = load_templates()
+        print(f"Templates loaded: {len(templates)} sign classes")
+        if not templates:
+            print("ERROR: No templates found. Run glyph_label.py first.")
+            return 1
+    else:
+        # Pre-load CNN to fail early with a clear message
+        try:
+            _load_cnn()
+        except FileNotFoundError as e:
+            print(f"ERROR: {e}")
+            return 1
+
+    def classify(tn: int) -> list[str] | None:
+        return classify_textnum(tn, templates, mode=args.model)
 
     if args.validate:
         print(f"\n--- Validation mode (n={args.n}) ---")
         known = load_firestore_known()
-        # Only validate textnums that have crops
         crop_textnums = [int(d.name) for d in CROPS_DIR.iterdir()
                          if d.is_dir() and d.name.isdigit()]
         validate_textnums = [tn for tn in sorted(known.keys())
@@ -191,10 +274,9 @@ def main():
 
         for tn in validate_textnums:
             true_signs = known[tn]
-            pred_signs = classify_textnum(tn, templates)
+            pred_signs = classify(tn)
             if pred_signs is None:
                 continue
-            # Compare element-wise (trim to shorter length)
             min_len = min(len(true_signs), len(pred_signs))
             matches = sum(1 for t, p in zip(true_signs[:min_len], pred_signs[:min_len]) if t == p)
             correct_signs += matches
@@ -211,29 +293,33 @@ def main():
 
         sign_acc = correct_signs / max(total_signs, 1) * 100
         seq_acc  = correct_seqs / max(len(results), 1) * 100
-        print(f"\n=== Validation Results ===")
+        print(f"\n=== Validation Results ({args.model}) ===")
         print(f"  Sign-level accuracy:     {sign_acc:.1f}%  ({correct_signs}/{total_signs})")
         print(f"  Sequence-level accuracy: {seq_acc:.1f}%  ({correct_seqs}/{len(results)})")
         print(f"\nSample predictions:")
         for r in results[:5]:
             print(f"  Text {r['textnum']:>5}: true={r['true'][:5]} pred={r['pred'][:5]}")
 
-        # Save validation report
+        # Save to model-specific file so both baselines are preserved
+        fname = f"glyph_match_validation_{args.model}.json"
         report = {
             "_citation": {"primary_sources": ["I.8", "A.1"]},
             "generated_at": datetime.utcnow().isoformat(),
+            "model": args.model,
             "sign_accuracy_pct": round(sign_acc, 1),
             "sequence_accuracy_pct": round(seq_acc, 1),
             "texts_validated": len(results),
-            "results": results[:20],  # sample
+            "results": results[:20],
         }
-        (OUT_DIR / "glyph_match_validation.json").write_text(
-            json.dumps(report, indent=2), encoding="utf-8"
-        )
-        print(f"\nValidation report: {OUT_DIR / 'glyph_match_validation.json'}")
+        (OUT_DIR / fname).write_text(json.dumps(report, indent=2), encoding="utf-8")
+        print(f"\nValidation report: {OUT_DIR / fname}")
 
     elif args.missing:
-        print("\n--- Classifying 308 missing textnums ---")
+        method_desc = {
+            "iou": "Binary IoU k-NN template matching on M77 IIIF scan pages.",
+            "cnn": "GlyphCNN (4-block CNN) trained on Firestore exact-match labeled crops.",
+        }[args.model]
+        print(f"\n--- Classifying 308 missing textnums [{args.model}] ---")
         missing_data = json.loads(MISSING_F.read_text())
         missing_tns = [int(t) for t in missing_data.get("new_not_in_firestore", [])]
         print(f"Missing textnums: {len(missing_tns)}")
@@ -241,7 +327,7 @@ def main():
         results = []
         found = 0
         for tn in missing_tns:
-            pred = classify_textnum(tn, templates)
+            pred = classify(tn)
             if pred:
                 results.append({"textnum": tn, "predicted_signs": pred, "sign_count": len(pred)})
                 found += 1
@@ -254,26 +340,28 @@ def main():
         out.write_text(json.dumps({
             "_citation": {
                 "primary_sources": ["I.8", "A.1"],
-                "derivation": ("Predicted sign sequences for 308 IM77 textnums missing from "
-                               "indusscript.in. Method: template matching on M77 IIIF scan pages. "
-                               "Confidence: requires validation against CISI/RMRL data."),
+                "derivation": (f"Predicted sign sequences for 308 IM77 textnums missing from "
+                               f"indusscript.in. Method: {method_desc} "
+                               f"Confidence: requires validation against CISI/RMRL data."),
                 "status": "[INFERRED] — not verified against official sources",
+                "classifier": args.model,
             },
             "generated_at": datetime.utcnow().isoformat(),
             "total_missing": len(missing_tns),
             "classified": found,
+            "classifier": args.model,
             "results": results,
         }, indent=2, ensure_ascii=False), encoding="utf-8")
         print(f"  Saved: {out}")
 
     elif args.all:
-        print("\n--- Classifying all textnums with crops ---")
+        print(f"\n--- Classifying all textnums [{args.model}] ---")
         crop_textnums = sorted(int(d.name) for d in CROPS_DIR.iterdir()
                                if d.is_dir() and d.name.isdigit())
         print(f"Textnums with crops: {len(crop_textnums)}")
         results = []
         for i, tn in enumerate(crop_textnums):
-            pred = classify_textnum(tn, templates)
+            pred = classify(tn)
             if pred:
                 results.append({"textnum": tn, "predicted_signs": pred})
             if (i + 1) % 100 == 0:
@@ -283,6 +371,7 @@ def main():
         out.write_text(json.dumps({
             "_citation": {"primary_sources": ["I.8", "A.1"]},
             "generated_at": datetime.utcnow().isoformat(),
+            "classifier": args.model,
             "total": len(results),
             "results": results,
         }, indent=2), encoding="utf-8")

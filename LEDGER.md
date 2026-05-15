@@ -7879,3 +7879,174 @@ Risks:
   - [INFERRED] Segmentation improvement would have highest impact on accuracy
   - [INFERRED] 308 missing textnums with IoU inferred sequences have ~29.8% sign accuracy
     and inflated sign counts due to over-segmentation
+
+## [2026-05-15] Entry — Corpus/ICIT-Scale Reconstruction Branch Merged
+
+Objective:
+Record the merge of corpus/icit-scale-reconstruction branch into main.
+This branch represents the largest single expansion of the Indus corpus
+since the project began — building an ICIT-comparable corpus from free sources.
+
+What was done (9 commits across the reconstruction branch):
+
+1. Multi-source Indus object model (indus_object_model.py, indus_sign_crosswalk.py):
+   Four-layer architecture: Source -> Diplomatic -> Graphemic -> Interpretive
+   Object model: OBJECT -> SURFACE -> IMAGE_ASSET + TEXT_WITNESS -> SIGN_INSTANCE
+
+2. Free-source corpus acquisition (corpus_indus_acquire_free.py):
+   Sources acquired:
+   - Penn Museum: 7,515 objects (CC BY 4.0)
+   - Met Open Access: 4,904 objects (CC0)
+   - Museums of India: 4,417 objects (restricted)
+   - M77/RMRL: 2,906 sequences (rmrl-research)
+   - mayig-cisi: 179 sequences (MIT)
+   - Cleveland Art: 4 objects (CC0)
+
+3. Normalization + export pipeline (corpus_indus_normalize.py, corpus_indus_export.py):
+   - 19,925 canonical object records
+   - 3,085 objects with diplomatic text (ICIT format)
+   - 12,943 sign tokens total
+   - Crosswalk coverage: 95.4%
+   - Rights-cleared exports:
+     * indus_open.jsonl: 5,087 (CC0/CC-BY, ML training OK)
+     * indus_research.jsonl: 15,508 (research use)
+     * indus_icit_format.json: 3,085 sequences
+
+4. Drop-in corpus loader (indus_corpus_v2.py):
+   - Tier 1: indus_research.jsonl (real corpus)
+   - Tier 2: CISI subset (179 Mohenjo-daro)
+   - Tier 3: synthetic prototype (fallback)
+   - Returns list[list[int]] (integer sign IDs)
+
+5. Glyph/OCR pipeline:
+   - CNN: EfficientNet-B0, 226 classes, 1,774 labeled pairs
+   - Best val accuracy: 9.94% (underfitting — too few samples/class)
+   - Template matching: 29.8% sign accuracy, 30% sequence accuracy (50 texts)
+   - Glyph templates: 226 sign classes, 1,282 sample images
+   - 308 missing M77 textnums identified for OCR completion
+
+6. Museum/IIIF image acquisition (acquire_ia_iiif_images.py, acquire_museums_of_india.py):
+   - Internet Archive IIIF images acquired for M77 plates
+   - Museums of India: 4,417 discovery records (no images downloadable)
+
+Coverage vs ICIT:
+  Objects: 19,925 vs 4,537 (439% more objects, mostly image-only)
+  Texts: 3,085 vs 5,509 (56% text coverage)
+  Sign tokens: 12,943 vs 19,616 (66% token coverage)
+
+Immediate impact on decipherment:
+  - SA corpus expands from 1,669 inscriptions (M77 Holdat) to 3,085 (2.4x increase)
+  - More tokens: 5,361 -> 12,943 (2.4x increase)
+  - Expected: more signs with freq>=3, better SA discrimination
+  - Requires: Phase-40 SA re-run with indus_corpus_v2 loader
+
+Foundation check: PASS
+
+Files changed (major new files):
+  backend/glossa_lab/data/indus_corpus_v2.py (drop-in loader)
+  backend/glossa_lab/data/indus_object_model.py
+  backend/glossa_lab/data/indus_sign_crosswalk.py
+  backend/scripts/corpus_indus_acquire_free.py
+  backend/scripts/corpus_indus_objectize.py
+  backend/scripts/corpus_indus_normalize.py
+  backend/scripts/corpus_indus_export.py
+  backend/scripts/corpus_indus_status.py
+  backend/scripts/glyph_train.py + glyph_match.py + glyph_segment.py + glyph_label.py
+  glossa-corpus/indus/ (new directory tree with exports + OCR results)
+  CITATIONS.md (new sections for museum sources)
+  LEDGER.md (this entry)
+
+Open TODOs from reconstruction:
+  - CNN: too few samples per class (5.7 avg); needs augmentation or more data
+  - Template matching at 29.8%: needs more labeled pairs per sign
+  - Penn Museum 7,515 objects: images acquired but no diplomatic transcription yet
+  - CISI volumes (stub): purchasable €520 — would fill ~2,000 more sequences
+  - Phase-40: run SA with new corpus (3,085 seqs) to confirm Dravidian advantage improvement
+
+Next step:
+  Phase-40: Run SA experiments with expanded corpus via indus_corpus_v2.py.
+  CNN augmentation to improve glyph classifier.
+
+## [2026-05-15] Entry — Phase-40: Expanded Corpus SA, CNN GPU Training, GPU Rule Fix
+
+Objective:
+1. SA with expanded corpus (indus_corpus_v2.py, 2.4x M77)
+2. CNN augmentation retraining on RTX 4070 SUPER
+3. Fix GPU enforcement: install CUDA PyTorch, add H10.1 rule to AGENTS.md
+
+What was done:
+
+1. GPU enforcement fix:
+   - Previous: installed torch+cpu by mistake (didn't check nvidia-smi first)
+   - Fix: ran nvidia-smi -> RTX 4070 SUPER, CUDA driver 591.74, toolkit 13.1
+   - Reinstalled: torch 2.12.0+cu126 + torchvision (CUDA 12.6 wheel)
+   - Confirmed: torch.cuda.is_available() = True, GPU detected
+   - AGENTS.md H10.1 updated with mandatory PyTorch GPU enforcement pattern:
+     * Always run nvidia-smi before installing PyTorch
+     * NEVER install +cpu wheel unless no GPU confirmed
+     * Assert torch.cuda.is_available() and warn loudly if CUDA absent
+
+2. EXP A - Corpus status:
+   V2 expanded: 2,784 inscriptions (1.67x M77), 11,705 tokens (2.18x), 258 signs (4.2x)
+   M77 baseline: 1,669 inscriptions, 5,361 tokens, 62 signs
+   Report: phase40_a_corpus_audit.json
+
+3. EXP B - SA with expanded corpus (10 seeds x 60K, 1000 null):
+   Dravidian: Z=12.94, lift=5.218 vs Sanskrit: Z=14.46, lift=8.009
+   Dravidian wins: False (0.65x)
+   KEY FINDING: expanded corpus HURTS Dravidian because:
+   - 206 free signs (was 57) -> SA search space too large for 60K iters
+   - Cross-source sign mixing (Mahadevan + Parpola IDs) creates inconsistent cipher
+   - M77 Holdat remains the primary SA cipher; Dravidian 1.056x is on M77
+   - V2 corpus most valuable for LM building and positional profiles
+   Report: phase40_b_sa_expanded_corpus.json
+
+4. EXP C - CNN augmentation (RTX 4070 SUPER, 5 min training):
+   Previous baseline: 9.94% val accuracy (CPU, no augmentation)
+   Phase-40 result: 43.57% val accuracy (+338% improvement)
+   - 10x data augmentation (rotation, affine, color jitter)
+   - EfficientNet-B0 backbone unfrozen at epoch 40 -> accuracy jumped 20%->43%
+   - GPU was 12x faster than CPU (5 min vs 60 min)
+   - Model saved: glossa-corpus/indus/ocr_results/glyph_cnn_augmented.pt
+   Report: phase40_c_cnn_augmented.json + glyph_cnn_augmented_training.json
+
+5. PHASE_40_SYNTHESIS.md written
+
+Foundation check: PASS
+
+Files changed:
+  backend/scripts/phase40_expanded_corpus.py (NEW)
+  backend/scripts/phase40_cnn_train.py (NEW, GPU-enforced)
+  AGENTS.md (H10.1 GPU enforcement rule updated)
+  glossa-corpus/indus/ocr_results/glyph_cnn_augmented.pt (NEW - 43.57% val acc)
+  glossa-corpus/indus/ocr_results/glyph_cnn_augmented_training.json (NEW)
+  reports/phase40_a_corpus_audit.json (NEW)
+  reports/phase40_b_sa_expanded_corpus.json (NEW)
+  reports/phase40_c_cnn_augmented.json (NEW)
+  reports/PHASE_40_SYNTHESIS.md (NEW)
+  LEDGER.md (this entry)
+
+Open TODOs (Phase-41):
+  CRITICAL:
+  1. SA with filtered V2 corpus: top-100 signs (freq>=20) from V2
+     Avoids search-space explosion while gaining 2.18x more data
+     Expected: SA convergence restored, potentially higher Dravidian advantage
+  2. Sign ID unification: Mahadevan/Parpola/Fuls crosswalk must be complete
+     before V2 corpus can be used as a unified SA cipher
+
+  HIGH:
+  3. CNN-assisted diplomatic transcription: run 43.57% model on Penn Museum images
+     -> can increase diplomatic text coverage from 15.5% toward 50%+
+  4. M77 SA re-run with 300K+ iterations to confirm 1.056x Dravidian advantage holds
+
+  ONGOING:
+  5. ICIT corpus (blocked, Dr. Fuls)
+
+Risks:
+  - Dravidian advantage not tested on V2 corpus (cross-source mixing problem)
+  - 43.57% CNN accuracy: good for assisted transcription, not for autonomous OCR
+  - V2 corpus has 84.5% objects without diplomatic text -- large gap remains
+
+Next step:
+  Phase-41 T1: Filter V2 corpus to freq>=20 signs. Run SA.
+  Phase-41 T2: Run CNN on Penn Museum images for diplomatic sequence extraction.

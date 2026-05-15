@@ -2641,7 +2641,8 @@ ew Date(...).toLocaleTimeString(). Falls back to raw HH:MM:SS if parsing fails.
 - Log timestamps now match the Jobs panel format.
 
 **Clear Done button** (backend + frontend):
-- database.py: Added clear_finished_jobs() — deletes only jobs with status completed, cancelled, or ailed; leaves pending and unning jobs intact.
+- database.py: Added clear_finished_jobs() — deletes only jobs with status completed, cancelled, or ailed; leaves pending and 
+unning jobs intact.
 - pi/jobs.py: Added ?finished_only=true query param to DELETE /jobs. When set, calls clear_finished_jobs() instead of clear_jobs().
 - pi.ts: Updated clearJobs(finishedOnly = false) to pass the query param.
 - BottomPanel.tsx: Added handleClearDone() and "Clear Done (N)" button in Jobs panel header; appears only when there are finished jobs; always shown alongside the existing "Delete All" button.
@@ -4452,7 +4453,8 @@ Per the instructions document: build the best possible corpus, normalize and cro
 
 Phase 0 — Research directory structure created:
 - data_raw/{mahadevan_1977, parpola_1982, cisi_vol1_india, cisi_vol2_pakistan, fuls_wells, harappa_excavation_reports, dholavira, other_sites}/
-- data_normalized/, crosswalks/, nalysis/, eports/, logs/, scripts/, xports/, images/{signs,inscriptions,plates}/
+- data_normalized/, crosswalks/, nalysis/, 
+eports/, logs/, scripts/, xports/, images/{signs,inscriptions,plates}/
 - SHA-256 manifest in logs/file_manifest.json
 
 Phase 1 — Corpus ingested from available sources:
@@ -4461,7 +4463,8 @@ Phase 1 — Corpus ingested from available sources:
 - logs/corpus_ingestion_log.md — sources, gaps, limitations documented
 
 Phase 2 — Source catalog built:
-- eports/source_catalog.md — 17 sources documented with: title, author, year, publisher, type, access_status, reliability_notes, contribution, limitations
+- 
+eports/source_catalog.md — 17 sources documented with: title, author, year, publisher, type, access_status, reliability_notes, contribution, limitations
 - All priority A sources (Mahadevan 1977, Parpola 1979, CISI Vols. 1-3, Fuls/Wells) documented; access status noted for each
 
 Phase 3 — Sign registry and crosswalk:
@@ -4472,7 +4475,8 @@ Phase 4 — Corpus normalization:
 - All 7 required sequence fields added to corpus_master (non-destructive): sequence_source_exact, sequence_registry_ids, sequence_variant_sensitive, sequence_variant_collapsed_light, sequence_unknown_markers, sequence_damage_markers, sequence_direction_normalized
 
 Phase 5 — Data quality report:
-- eports/data_quality_report.md — hard review checklist, site coverage gaps, duplicate detection (zero exact duplicates within source), sign identity conflicts
+- 
+eports/data_quality_report.md — hard review checklist, site coverage gaps, duplicate detection (zero exact duplicates within source), sign identity conflicts
 
 Phase 6 — Full structural analysis (all 6 sub-analyses):
 - 6.1 Frequency: 1,003 tokens, 182 distinct signs, 56.6% hapax, H1=6.08 bits, mean length=5.6 signs
@@ -4481,20 +4485,24 @@ Phase 6 — Full structural analysis (all 6 sub-analyses):
 - 6.4 Segmentation: recurrent templates (count≥3) documented; >50% of inscriptions end in a candidate terminal sign
 - 6.5 Graph: hub signs, bidirectional adjacency pairs, high-Jaccard neighbor pairs computed
 - 6.6 Cross-site: deferred — only Mohenjo-daro in corpus
-- eports/sequence_analysis_report.md, eports/candidate_prefix_suffix_report.md
+- 
+eports/sequence_analysis_report.md, 
+eports/candidate_prefix_suffix_report.md
 - nalysis/structural_stats.json — full machine-readable stats
 
 Phase 7 — Latent sign class discovery:
 - Feature vectors: (freq, start_rate, end_rate, internal_rate) per sign
 - Classes assigned by threshold rules: TERMINAL_STRONG, INITIAL_STRONG, MEDIAL_STRONG, BIMODAL_INIT_TERM, HAPAX, LOW_FREQUENCY, MIXED
 - Entropy reduction: sign ID → class label reduces description entropy by ~31%
-- eports/latent_sign_class_report.md — per-class profiles, members, stability metrics
+- 
+eports/latent_sign_class_report.md — per-class profiles, members, stability metrics
 
 Phase 8 — Candidate DoF recovery:
 - Inscriptions mapped to class sequences; class-space templates computed
 - Sequence entropy: raw sign space vs class space — entropy reduction confirms structural classes capture real patterns
 - Candidate slot schema: INITIAL_SLOT, MEDIAL_SLOT, TERMINAL_SLOT, HAPAX_SLOT
-- eports/decipherment_readiness_report.md
+- 
+eports/decipherment_readiness_report.md
 
 **REVIEW GATE: Phase 9 BLOCKED**
 
@@ -4532,12 +4540,18 @@ Minimum conditions for Phase 9 clearance:
 - crosswalks/sign_crosswalk_master.csv (created — 205 entries)
 - logs/corpus_ingestion_log.md (created)
 - logs/file_manifest.json (created — SHA-256 hashes)
-- eports/source_catalog.md (created — 17 sources)
-- eports/data_quality_report.md (created)
-- eports/sequence_analysis_report.md (created)
-- eports/candidate_prefix_suffix_report.md (created)
-- eports/latent_sign_class_report.md (created)
-- eports/decipherment_readiness_report.md (created)
+- 
+eports/source_catalog.md (created — 17 sources)
+- 
+eports/data_quality_report.md (created)
+- 
+eports/sequence_analysis_report.md (created)
+- 
+eports/candidate_prefix_suffix_report.md (created)
+- 
+eports/latent_sign_class_report.md (created)
+- 
+eports/decipherment_readiness_report.md (created)
 - nalysis/structural_stats.json (created)
 - scripts/build_corpus_pipeline.py (created)
 - scripts/structural_analysis.py (created)
@@ -4968,7 +4982,8 @@ Objective: Recover and complete the UI polish mega-bundle from the crashed 2026-
 
 What was done:
 - **Session recovery.** The prior session (2026-05-04 evening) crashed mid-flight with repeated 403 errors while creating files. 14 modified files + 1 untracked file survived on disk but were uncommitted. This session assessed what landed, identified what was broken, and completed the remaining work.
-- **7 no-key Discovery fetchers (6 new + 1 prior).** The crashed session updated __init__.py to import 7 new fetcher classes but only created pubmed.py before dying. The backend could not start (ImportError on the missing 6 modules). Created: uropepmc.py (Europe PMC ebi.ac.uk REST API), doaj.py (Directory of Open Access Journals search), semanticscholar.py (Semantic Scholar graph API with TLDR + citations), gdelt.py (GDELT DOC 2.0 global news monitoring), ss.py (RSS/Atom feed parser from topic-override URLs), cademia.py (Academia.edu JSON-LD metadata scrape). All 13 fetchers now load and appear in /api/v1/discovery/sources.
+- **7 no-key Discovery fetchers (6 new + 1 prior).** The crashed session updated __init__.py to import 7 new fetcher classes but only created pubmed.py before dying. The backend could not start (ImportError on the missing 6 modules). Created: uropepmc.py (Europe PMC ebi.ac.uk REST API), doaj.py (Directory of Open Access Journals search), semanticscholar.py (Semantic Scholar graph API with TLDR + citations), gdelt.py (GDELT DOC 2.0 global news monitoring), 
+ss.py (RSS/Atom feed parser from topic-override URLs), cademia.py (Academia.edu JSON-LD metadata scrape). All 13 fetchers now load and appear in /api/v1/discovery/sources.
 - **Settings tab reorg.** Reorganized SettingsView into 3 logical groups with a jump-nav strip at the top: AI Configuration (API keys, provider toggles, endpoints, profiles, Ollama, AI behavior), Discovery & Email (auto discovery, notifications), Environment & System (Python env, system info, OCR, about). Each group has a section header with anchor ID.
 - **Surviving changes from crashed session (uncommitted, now included).** Brave query truncation (48-word cap in _build_brave_query), tighter insight regen (localStorage persistence, no auto-regen on reload/restart, "Last regen" pill), show-packages toggle, ChatInline auto-grow textarea with "Shift+Enter" caption, Mine N selector (10/25/50/100/200/500), Apply/Run completion indicators (per-action outcome tracking + experiment ID registry pre-validation), feed left-justified with kind in meta line, persisted insight cache, vLLM/Ollama model discovery (models_detail with context_length), default AI profile preset (multi-role local Ollama stack), placeholder key detection in settings.py.
 - **Test-saves-as-Add bug.** Investigated all panels with Test+Add buttons (NotificationsPanel, AIEndpointsPanel, AutoDiscoveryPanel, PresetsView). All handlers are properly separated — could not reproduce. Likely fixed by other changes or was a transient UX observation.
@@ -5066,7 +5081,8 @@ Objective: Fix multiple dashboard regressions around experiment action buttons, 
 - Added 
 _hypotheses to highlights payload from actual hypothesis tracker DB (was previously counting discovery items tagged 'hypothesis')
 - Improved _resolve_exp_id fuzzy matcher with prefix similarity (>=70% of longer string) in addition to substring containment; logs unresolvable IDs with first 20 registered experiments at WARNING level
-- Changed unresolvable un_experiment actions to downgrade to open_view (experiments page) instead of 
+- Changed unresolvable 
+un_experiment actions to downgrade to open_view (experiments page) instead of 
 o_op � buttons stay visible with informational rationale instead of disappearing
 - Added GDELT circuit breaker awareness to the experiment list for insight prompt
 
@@ -7037,146 +7053,8 @@ Next step:
   Phase-39: Fix Sangam LM + Meroitic imports -> re-run T2/T3 with correct data.
   Then corpus Batch 2 retries.
 
-# [2026-05-15] Entry — Phase-39: Sangam LM, Multi-Language Falsification, Corpus Batch 2
-
-Objective: Address all open issues from Phase-38 except #3 (ICIT):
-  1. Fix dravidian.py Sangam LM (get_corpus_text, not INSCRIPTIONS)
-  2. Fix Meroitic/Coptic imports (get_line_inscriptions, get_coptic_symbols)
-  3. Corpus Batch 2 retries (GRETIL, ORACC, SuttaCentral, CBETA)
-  4. Re-run T2/T3 with fixes
-
-What was done:
-
-1. T2 FIX: True Sangam syllable LM:
-   - get_corpus_text() returns 1297 words -> 3849 syllable tokens -> 381 unique syl
-   - Blended with TB clean LM (1128 bigrams); equalized to 651 bigrams
-   - Results: Sangam lift=5.017 < DEDR lift=7.835 < Sanskrit lift=7.417
-   - Sangam LM WORSE than DEDR and loses to Sanskrit
-   - Finding: DEDR (etymological roots) is a better Indus Script model than
-     Sangam literary corpus. Indus ~2000 years older than Sangam poetry.
-   - Report: reports/phase39_t2_true_sangam_lm.json
-
-2. T3 FIX: Multi-language falsification (correct imports):
-   - Fixed: use get_line_inscriptions(encoded=False) for Meroitic
-   - Fixed: use get_coptic_symbols() running text for Coptic
-   - Added: Sumerian UR3 (39K tokens, 107 unique phonemes)
-   - Results ranking:
-     1. Coptic (21 syl/136 bg): lift=12.84 [CONFOUND]
-     2. Meroitic (17 syl/83 bg): lift=11.87 [CONFOUND]
-     3. Sumerian (107 syl/651 bg): lift=8.87 [PARTIALLY CONFOUNDED]
-     4. Dravidian DEDR (424 syl/651 bg): lift=7.83 [VALID]
-     5. Sanskrit (424 syl/651 bg): lift=7.42 [VALID]
-     6. Sangam Tamil (381 syl/651 bg): lift=5.02 [SLIGHTLY CONFOUNDED]
-   - CRITICAL FINDING: Small-alphabet languages (17-21 symbols) score highest
-     because the SA trivially maps 62 Indus signs to a tiny set. This is the
-     same vocabulary-size confound, now in extreme form (17x17=289 possible
-     bigrams, 83 covered = 29% -- much easier than 424x424 Dravidian space)
-   - Valid comparisons: Dravidian (424/651) vs Sanskrit (424/651) ONLY
-   - Fix for Phase-40: phoneme-level LMs for all languages at same inventory size
-   - Report: reports/phase39_t3_multilang_fixed.json
-
-3. Corpus Batch 2 retries (background, completed):
-   - GRETIL/DCS Sanskrit: OK (24,312 files) -- shreevatsa + OliverHellwig repos
-   - SuttaCentral Pali: OK (156,882 files) -- timeout=600 worked!
-   - CDLI GitHub: OK (46 files)
-   - CBETA: FAIL (cbeta-org + cbeta-git repos not found)
-   - Papyri.info: FAIL (timeout, partial 303K files)
-   - Total new: ~181K clean files
-   - Key asset: DCS Sanskrit (OliverHellwig/sanskrit, CC BY 4.0)
-
-4. Synthesis: reports/PHASE_39_SYNTHESIS.md
-
-5. Foundation check: PASS (17/0/0)
-
-Files changed:
-  backend/scripts/phase39_fixes.py (NEW)
-  backend/scripts/corpus_batch2_retry.py (NEW)
-  reports/phase39_t2_true_sangam_lm.json (NEW)
-  reports/phase39_t3_multilang_fixed.json (NEW)
-  reports/PHASE_39_SYNTHESIS.md (NEW)
-  glossa-corpus/sources/gretil/raw/2026-05-15/ (NEW -- DCS Sanskrit)
-  glossa-corpus/sources/suttacentral/raw/2026-05-15/ (NEW -- Pali)
-  glossa-corpus/sources/cdli/raw/2026-05-15/ (NEW -- CDLI transliterations)
-  glossa-corpus/reports/2026-05-15_corpus_batch2_retry.md (NEW)
-  LEDGER.md (this entry)
-
-Open TODOs (Phase-40):
-  CRITICAL:
-  1. Phoneme-level LMs for valid multi-language comparison:
-     - Dravidian ~30 phonemes (Tamil phoneme inventory)
-     - Sanskrit ~35 phonemes (from DCS corpus)
-     - Meroitic 19 phonemes (already phonetic -- Griffith values)
-     - Coptic 24 phonemes (Sahidic alphabet)
-     - Run equalized SA at identical phoneme inventory size
-  2. CBETA: find correct repo URL
-  3. DCS Sanskrit LM: build from OliverHellwig/sanskrit corpus data
-
-  ONGOING:
-  4. ICIT-scale corpus reconstruction (features/specsmith branch in progress)
-  5. Papyri.info: sparse checkout to avoid timeout
-
-Risks:
-  - T3 multi-language comparison invalid until phoneme-level normalization done
-  - Sangam LM underperforms DEDR -- this may simply reflect that DEDR etymological
-    roots are a better proxy for Proto-Dravidian (Indus era) than Sangam literary Tamil
-  - CBETA (Chinese Buddhist) acquisition still failing
-
-Next step:
-  Phase-40 T1: Build phoneme-level LMs for Dravidian, Sanskrit, Meroitic, Coptic.
-  Run equalized multi-language SA at 30-phoneme level.
-
-## [2026-05-15] Entry — CBETA Repository Investigation and Correct Acquisition
-
-Objective:
-Find why CBETA acquisition failed in Batch 1 and 2. Extensive search to map
-the full CBETA repository ecosystem. Acquire with correct URLs.
-
-Root cause of previous failures:
-  1. cbeta-org/xml-p5a: WRONG URL — the internal xml-p5a is under cbeta-git (USER
-     account), NOT cbeta-org (ORGANIZATION). cbeta-org was created 2026-02-21 (new).
-  2. cbeta-git/cbeta-open-data: WRONG — this repo never existed.
-  3. cbeta-org/xml-p5a: Also WRONG — p5a doesn't exist under the org at all.
-
-CBETA repository ecosystem (fully documented):
-  cbeta-org/xml-p5         → OFFICIAL public TEI P5, updated 2025-12-25, ~2GB
-  cbeta-git/xml-p5a        → Internal editing version (NOT recommended for public)
-  DILA-edu/cbeta-normal-text → Plain text 一卷一檔, created 2025-08, updated 2025-12
-  DILA-edu/CBETA-txt       → TAF plain text (T/X/J canons), stats-friendly
-  mahawu/BM_u8             → Basic Markup UTF-8
-  cbeta-org/cbeta_gaiji    → Missing characters (gaiji) database
-  License: CC BY-NC-SA 3.0 Taiwan (non-commercial, research use permitted)
-
-CBETA acquisition results (5 repos):
-  cbeta-normal-text (DILA-edu): OK  21,961 plain text files ✓
-  BM_u8 (mahawu):               OK   1,763 BM format files ✓
-  xml-p5 (cbeta-org):           FAIL (timeout 300s, but 3,707 XML files partial) ✓~
-  CBETA-txt (DILA-edu):         OK  23,420 TAF plain text files ✓
-  cbeta_gaiji (cbeta-org):      OK      41 gaiji DB files ✓
-  TOTAL: 4/5 OK, 50,892 files
-
-Key new assets:
-  - 21,961 plain text Buddhist texts (cbeta-normal-text)
-  - 23,420 TAF plain text files (statistics-friendly, T/X/J canons)
-  - Gaiji character database
-  - 3,707 TEI P5 XML files (partial T+X from sparse checkout)
-
-Foundation check: PASS (17/0/0)
-
-Files changed:
-  backend/scripts/corpus_cbeta_acquire.py (NEW)
-  glossa-corpus/sources/cbeta/provenance.yaml (NEW)
-  glossa-corpus/sources/cbeta/raw/2026-05-15/ (NEW - 50K files, gitignored)
-  glossa-corpus/reports/2026-05-15_cbeta_acquisition.md (NEW)
-  LEDGER.md (this entry)
-
-Open TODOs:
-  - xml-p5 full clone: run with timeout=600+ to complete T+X sparse checkout
-  - Phase-40: phoneme-level LMs for multi-language comparison
-  - Chinese Buddhist LM: build from CBETA-txt/cbeta-normal-text plain text
-  - ICIT-scale corpus reconstruction (branch in progress)
 
 ---
---
 
 ## [2026-05-14] Entry — ICIT-Scale Indus Corpus Reconstruction (Branch Setup + Full Pipeline)
 
@@ -7289,6 +7167,8 @@ Next step:
 
 ---
 
+---
+
 ## [2026-05-14] Entry — ICIT Corpus: Free Source Acquisition + Failure Diagnosis + All Fixes
 
 Objective:
@@ -7375,6 +7255,8 @@ Next step:
   Decision point: Purchase CISI (€520)? Contact RMRL?
   For immediate value: Contact RMRL (free, highest strategic value).
   For corpus scale: Buy CISI bundle — it adds inscription sequences to objects we already have cataloged.
+
+---
 
 ---
 
@@ -7472,6 +7354,8 @@ Next step:
   Then run Museums of India capture (manual interaction):
     shell.cmd python backend/scripts/acquire_museums_of_india_playwright.py
   Then: Phase C indusscript.in Firestore probe with Google account.
+
+---
 
 ## [2026-05-14] Entry — Museums of India: full API acquisition (4,417 records)
 
@@ -7576,6 +7460,8 @@ Next step:
 
 ---
 
+---
+
 ## [2026-05-14] Entry — BREAKTHROUGH: indusscript.in Firestore dump — 3,085 IM77 texts acquired
 
 Objective:
@@ -7641,6 +7527,153 @@ Next step:
 
 ---
 
+---
+
+## [2026-05-15] Entry — Phase-39: Sangam LM, Multi-Language Falsification, Corpus Batch 2
+
+Objective: Address all open issues from Phase-38 except #3 (ICIT):
+  1. Fix dravidian.py Sangam LM (get_corpus_text, not INSCRIPTIONS)
+  2. Fix Meroitic/Coptic imports (get_line_inscriptions, get_coptic_symbols)
+  3. Corpus Batch 2 retries (GRETIL, ORACC, SuttaCentral, CBETA)
+  4. Re-run T2/T3 with fixes
+
+What was done:
+
+1. T2 FIX: True Sangam syllable LM:
+   - get_corpus_text() returns 1297 words -> 3849 syllable tokens -> 381 unique syl
+   - Blended with TB clean LM (1128 bigrams); equalized to 651 bigrams
+   - Results: Sangam lift=5.017 < DEDR lift=7.835 < Sanskrit lift=7.417
+   - Sangam LM WORSE than DEDR and loses to Sanskrit
+   - Finding: DEDR (etymological roots) is a better Indus Script model than
+     Sangam literary corpus. Indus ~2000 years older than Sangam poetry.
+   - Report: reports/phase39_t2_true_sangam_lm.json
+
+2. T3 FIX: Multi-language falsification (correct imports):
+   - Fixed: use get_line_inscriptions(encoded=False) for Meroitic
+   - Fixed: use get_coptic_symbols() running text for Coptic
+   - Added: Sumerian UR3 (39K tokens, 107 unique phonemes)
+   - Results ranking:
+     1. Coptic (21 syl/136 bg): lift=12.84 [CONFOUND]
+     2. Meroitic (17 syl/83 bg): lift=11.87 [CONFOUND]
+     3. Sumerian (107 syl/651 bg): lift=8.87 [PARTIALLY CONFOUNDED]
+     4. Dravidian DEDR (424 syl/651 bg): lift=7.83 [VALID]
+     5. Sanskrit (424 syl/651 bg): lift=7.42 [VALID]
+     6. Sangam Tamil (381 syl/651 bg): lift=5.02 [SLIGHTLY CONFOUNDED]
+   - CRITICAL FINDING: Small-alphabet languages (17-21 symbols) score highest
+     because the SA trivially maps 62 Indus signs to a tiny set. This is the
+     same vocabulary-size confound, now in extreme form (17x17=289 possible
+     bigrams, 83 covered = 29% -- much easier than 424x424 Dravidian space)
+   - Valid comparisons: Dravidian (424/651) vs Sanskrit (424/651) ONLY
+   - Fix for Phase-40: phoneme-level LMs for all languages at same inventory size
+   - Report: reports/phase39_t3_multilang_fixed.json
+
+3. Corpus Batch 2 retries (background, completed):
+   - GRETIL/DCS Sanskrit: OK (24,312 files) -- shreevatsa + OliverHellwig repos
+   - SuttaCentral Pali: OK (156,882 files) -- timeout=600 worked!
+   - CDLI GitHub: OK (46 files)
+   - CBETA: FAIL (cbeta-org + cbeta-git repos not found)
+   - Papyri.info: FAIL (timeout, partial 303K files)
+   - Total new: ~181K clean files
+   - Key asset: DCS Sanskrit (OliverHellwig/sanskrit, CC BY 4.0)
+
+4. Synthesis: reports/PHASE_39_SYNTHESIS.md
+
+5. Foundation check: PASS (17/0/0)
+
+Files changed:
+  backend/scripts/phase39_fixes.py (NEW)
+  backend/scripts/corpus_batch2_retry.py (NEW)
+  reports/phase39_t2_true_sangam_lm.json (NEW)
+  reports/phase39_t3_multilang_fixed.json (NEW)
+  reports/PHASE_39_SYNTHESIS.md (NEW)
+  glossa-corpus/sources/gretil/raw/2026-05-15/ (NEW -- DCS Sanskrit)
+  glossa-corpus/sources/suttacentral/raw/2026-05-15/ (NEW -- Pali)
+  glossa-corpus/sources/cdli/raw/2026-05-15/ (NEW -- CDLI transliterations)
+  glossa-corpus/reports/2026-05-15_corpus_batch2_retry.md (NEW)
+  LEDGER.md (this entry)
+
+Open TODOs (Phase-40):
+  CRITICAL:
+  1. Phoneme-level LMs for valid multi-language comparison:
+     - Dravidian ~30 phonemes (Tamil phoneme inventory)
+     - Sanskrit ~35 phonemes (from DCS corpus)
+     - Meroitic 19 phonemes (already phonetic -- Griffith values)
+     - Coptic 24 phonemes (Sahidic alphabet)
+     - Run equalized SA at identical phoneme inventory size
+  2. CBETA: find correct repo URL
+  3. DCS Sanskrit LM: build from OliverHellwig/sanskrit corpus data
+
+  ONGOING:
+  4. ICIT-scale corpus reconstruction (features/specsmith branch in progress)
+  5. Papyri.info: sparse checkout to avoid timeout
+
+Risks:
+  - T3 multi-language comparison invalid until phoneme-level normalization done
+  - Sangam LM underperforms DEDR -- this may simply reflect that DEDR etymological
+    roots are a better proxy for Proto-Dravidian (Indus era) than Sangam literary Tamil
+  - CBETA (Chinese Buddhist) acquisition still failing
+
+Next step:
+  Phase-40 T1: Build phoneme-level LMs for Dravidian, Sanskrit, Meroitic, Coptic.
+  Run equalized multi-language SA at 30-phoneme level.
+
+---
+
+## [2026-05-15] Entry — CBETA Repository Investigation and Correct Acquisition
+
+Objective:
+Find why CBETA acquisition failed in Batch 1 and 2. Extensive search to map
+the full CBETA repository ecosystem. Acquire with correct URLs.
+
+Root cause of previous failures:
+  1. cbeta-org/xml-p5a: WRONG URL — the internal xml-p5a is under cbeta-git (USER
+     account), NOT cbeta-org (ORGANIZATION). cbeta-org was created 2026-02-21 (new).
+  2. cbeta-git/cbeta-open-data: WRONG — this repo never existed.
+  3. cbeta-org/xml-p5a: Also WRONG — p5a doesn't exist under the org at all.
+
+CBETA repository ecosystem (fully documented):
+  cbeta-org/xml-p5         → OFFICIAL public TEI P5, updated 2025-12-25, ~2GB
+  cbeta-git/xml-p5a        → Internal editing version (NOT recommended for public)
+  DILA-edu/cbeta-normal-text → Plain text 一卷一檔, created 2025-08, updated 2025-12
+  DILA-edu/CBETA-txt       → TAF plain text (T/X/J canons), stats-friendly
+  mahawu/BM_u8             → Basic Markup UTF-8
+  cbeta-org/cbeta_gaiji    → Missing characters (gaiji) database
+  License: CC BY-NC-SA 3.0 Taiwan (non-commercial, research use permitted)
+
+CBETA acquisition results (5 repos):
+  cbeta-normal-text (DILA-edu): OK  21,961 plain text files ✓
+  BM_u8 (mahawu):               OK   1,763 BM format files ✓
+  xml-p5 (cbeta-org):           FAIL (timeout 300s, but 3,707 XML files partial) ✓~
+  CBETA-txt (DILA-edu):         OK  23,420 TAF plain text files ✓
+  cbeta_gaiji (cbeta-org):      OK      41 gaiji DB files ✓
+  TOTAL: 4/5 OK, 50,892 files
+
+Key new assets:
+  - 21,961 plain text Buddhist texts (cbeta-normal-text)
+  - 23,420 TAF plain text files (statistics-friendly, T/X/J canons)
+  - Gaiji character database
+  - 3,707 TEI P5 XML files (partial T+X from sparse checkout)
+
+Foundation check: PASS (17/0/0)
+
+Files changed:
+  backend/scripts/corpus_cbeta_acquire.py (NEW)
+  glossa-corpus/sources/cbeta/provenance.yaml (NEW)
+  glossa-corpus/sources/cbeta/raw/2026-05-15/ (NEW - 50K files, gitignored)
+  glossa-corpus/reports/2026-05-15_cbeta_acquisition.md (NEW)
+  LEDGER.md (this entry)
+
+Open TODOs:
+  - xml-p5 full clone: run with timeout=600+ to complete T+X sparse checkout
+  - Phase-40: phoneme-level LMs for multi-language comparison
+  - Chinese Buddhist LM: build from CBETA-txt/cbeta-normal-text plain text
+  - ICIT-scale corpus reconstruction (branch in progress)
+
+---
+--
+
+---
+
 ## [2026-05-15] Entry — OCR Pipeline Ready + All IIIF Images Downloaded
 
 Objective:
@@ -7683,6 +7716,8 @@ Next step:
   Full OCR run: classify + extract all 1,672 pages.
   Expected output: ~5,000+ unique textnums, ~2,600 new beyond Firestore.
 
+
+---
 
 ---
 
@@ -7760,6 +7795,8 @@ Next step:
   Option B: Await RMRL official concordance export (fills gap properly)
   Option C: CISI purchase (covers all 5,509 texts with verified sequences)
 
+
+---
 
 ---
 

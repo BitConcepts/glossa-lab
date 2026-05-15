@@ -11,5 +11,22 @@ editions/
 # Thumbs
 Thumbs.db
 
-# Glyph crops: 125 MB of extracted glyph PNGs, regenerable via glyph_segment.py --all
+# ── Indus glyph pipeline: regenerable intermediates ──────────────────────────
+# glyph_crops: 125 MB of extracted glyph PNGs, regenerable via glyph_segment.py --all
 indus/ocr_results/glyph_crops/
+
+# geometry_probe: debug visualizations from glyph_probe_geometry.py
+indus/ocr_results/geometry_probe/
+
+# ML feature caches and trained models: regenerable
+indus/ocr_results/glyph_templates/feature_cache.npy
+indus/ocr_results/glyph_templates/feature_ids.json
+# glyph_cnn.pt: 17.5 MB, CNN underperforms IoU k-NN at current data scale;
+# regenerable via glyph_train.py. Commit only when accuracy exceeds IoU baseline.
+indus/ocr_results/glyph_cnn.pt
+
+# ── Corpus artifacts that SHOULD be tracked ──────────────────────────────────
+# glyph_templates/   — canonical sign reference images (not regenerable without raw scans)
+# staging/*.jsonl    — processed corpus objects
+# canonical/         — final canonical corpus
+# ocr_results/*.json — textnum indexes, validation reports, training logs

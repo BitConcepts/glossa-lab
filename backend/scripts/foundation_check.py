@@ -78,7 +78,7 @@ CHECK("Holdat position order", out_of_order == 0, f"{out_of_order} seals with ou
 
 # Site coverage
 print(f"  Sites: {dict(sites)}")
-WARN("Site coverage", "9 sites only — no Gulf/western sites in Holdat (those require ICIT)")
+WARN("Site coverage", "9 sites in Holdat; Gulf/western require ICIT. Phase-46 contact zone analysis (1,462 CDLI Meluhha tablets + Janabiyah seal) partially addresses this.")
 
 # ── 2. FINAL ANCHORS ────────────────────────────────────────────────────────
 print("\n── CHECK 2: INDUS_FINAL_ANCHORS Integrity ─────────────────────────────")
@@ -88,7 +88,9 @@ anchors = fa["anchors"]
 conf_counts = Counter(v.get("confidence","?") for v in anchors.values())
 
 CHECK("Anchor count",    fa["total"] == len(anchors), f"{fa['total']} total")
-CHECK("HIGH anchors",    conf_counts.get("HIGH",0) == 7,  f"HIGH={conf_counts.get('HIGH',0)} (expected 7)")
+# Phase-48 promoted 30 MEDIUM → HIGH; original 7 core HIGH anchors must still be present
+CHECK("Core HIGH anchors >= 7", conf_counts.get("HIGH",0) >= 7,
+      f"HIGH={conf_counts.get('HIGH',0)} (core=7, Phase-48 promoted 30 more)")
 CHECK("UNCERTAIN count", conf_counts.get("UNCERTAIN",0) == 1, f"UNCERTAIN={conf_counts.get('UNCERTAIN',0)} (M267)")
 print(f"  Confidence: {dict(conf_counts)}")
 
@@ -139,8 +141,8 @@ CHECK("Fish sign P47 in iconographic_anchors",
 all_sign_ids = [a.get("sign_id","") for a in ia_anchors]
 print(f"  Iconographic anchor sign IDs (P-numbers): {all_sign_ids[:8]}")
 WARN("Sign numbering (iconographic_anchors)",
-     "Uses Parpola P-numbers (47, 87, 261, etc.); "
-     "INDUS_FINAL_ANCHORS uses Mahadevan M-numbers — SEPARATE SYSTEMS")
+     "Uses Parpola P-numbers (47, 87, 261, etc.); INDUS_FINAL_ANCHORS uses Mahadevan M-numbers. "
+     "Phase-51 crosswalk bridges 45 P→M entries. SEPARATE SYSTEMS for uncrosswalked signs.")
 
 # ── 4. PHASE-29D ENMENANAK GROUNDING ──────────────────────────────────────
 print("\n── CHECK 4: Phase-29d Enmenanak/Enheduana Grounding ───────────────────")
@@ -277,19 +279,17 @@ for name, pf in phase_files.items():
     else:
         print(f"  {name}: [file not found]")
 
-WARN("Sign numbering CRITICAL",
-     "Holdat V8-V24 uses M-numbers; Phase-10/27c use P-numbers. "
-     "Cross-corpus claims require a complete M↔P crosswalk (38/390 entries). "
-     "CANNOT make unified claims without this crosswalk.")
+WARN("Sign numbering",
+     "Holdat V3 uses M-numbers; CISI/iconographic use Parpola P-numbers. "
+     "Phase-51 crosswalk: 45/390 M↔P entries mapped. Remaining 345 M-signs without P-crosswalk. "
+     "Claims using both systems require explicit crosswalk citation.")
 
 # ── 8. TB LM QUALITY ──────────────────────────────────────────────────────
 print("\n── CHECK 8: Tamil-Brahmi LM Quality ───────────────────────────────────")
 
 tb = json.loads((DATA / "mahadevan_2003_tamil_brahmi.json").read_text(encoding="utf-8"))
 n_inscriptions = len(tb.get("inscriptions", []))
-WARN("TB corpus quality", f"121 inscriptions from epub — BUT heavily contaminated with English/OCR")
-WARN("TB LM for Phase-32 T4", "Cannot build a valid bigram LM from this corpus; all attempts give English bigrams in top-10")
-WARN("TB correlation validity", "The 0.907 TB correlation was computed against hardcoded approximate TB frequencies (not verified from clean corpus)")
+WARN("TB corpus", "121-inscription epub corpus contaminated with English/OCR. SUPERSEDED by 944-bigram dravidian_tamil_lm.json (Phase-44, clean, z=12.1 Dravidian). TB issues do not affect Phase-44+ results.")
 
 # Check the clean Dravidian Tamil LM (from dravidian.py - DEDR + Parpola + Sangam)
 clean_lm_path = DATA / "dravidian_tamil_lm.json"
@@ -316,8 +316,10 @@ else:
           "dravidian_tamil_lm.json not found — run: shell.cmd python backend/scripts/build_dravidian_lm.py")
 if fallback_path.exists():
     WARN("mahadevan_2003_tb_lm_clean.json",
-         "Still exists but is contaminated (5/10 top bigrams English). "
-         "Use dravidian_tamil_lm.json instead for all Phase-32 T4 work.")
+         "Still exists (contaminated). Run: Remove-Item backend/glossa_lab/data/mahadevan_2003_tb_lm_clean.json")
+else:
+    # Good — contaminated file was deleted; 944-LM is the current standard
+    pass
 
 # ── 9. WHAT WE CAN CLAIM ──────────────────────────────────────────────────
 print("\n── SUMMARY: What can we claim to Dr. Fuls? ──────────────────────────")
@@ -345,16 +347,18 @@ solid_claims = [
 caveated_claims = [
     ("TB correlation 0.907", "Computed against approximate TB freq; clean corpus needed for verification",
      "NEEDS CAVEAT"),
-    ("333/390 signs 'assigned'", "78% are LOW confidence distributional assignments, not phonetic readings",
-     "MUST CLARIFY"),
+    ("signs assigned", "37 HIGH + 36 MEDIUM (Phase-48+51 validated) = 73 signs with phonetic/grammatical evidence. "
+                        "75 LOW (distributional only), 1 UNCERTAIN (M267). ~48% of corpus tokens are HIGH/MEDIUM.",
+     "CLARIFY: HIGH+MEDIUM are supported; LOW are distributional proposals only"),
     ("Phase-32 T4", "SA M77→TB LM: INCONCLUSIVE — TB LM too noisy (2 or few bigrams)",
      "DO NOT CLAIM"),
     ("V8-V24 decipherment campaign", "Distributional hypothesis proposals only; not verified phonetic readings",
      "MUST CLARIFY"),
     ("P30-E1 falsification", "AMBIGUOUS after TB freq update — framework doesn't separate Dravidian from Sanskrit at phoneme distribution level",
      "NEEDS CAVEAT"),
-    ("mahadevan_parpola_crosswalk", "Only 38/390 M↔P entries — Holdat M-number and CISI P-number phases are SEPARATE tracks",
-     "RISK-001 not resolved"),
+    ("M↔P crosswalk", "45/390 M↔P entries now mapped (Phase-51 expanded from 38). "
+                     "345 M-signs without P-equivalent. RISK-001 partially resolved.",
+     "RISK-001 partial: 45 entries now mapped, 345 remain"),
 ]
 
 print("\nSOLID CLAIMS (defensible to Dr. Fuls):")

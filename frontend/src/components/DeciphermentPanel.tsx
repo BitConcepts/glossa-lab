@@ -70,48 +70,67 @@ export function DeciphermentPanel() {
   if (!data?.available) return null;
   const byConf = data.anchors.by_confidence || {};
 
-  if (data.archived) {
+  // Archived = no round progression AND no current_state (works with both old and
+  // new backend responses — old backend omits the `archived` field but still
+  // returns current_state: null when the V8-V24 round files are gone).
+  const isArchived = data.archived || (data.n_rounds === 0 && !data.current_state && data.anchors.total > 0);
+
+  if (isArchived) {
+    const totalSigns = 390;
+    const total = data.anchors.total || 0;
+    const high   = byConf.HIGH   ?? 0;
+    const medium = byConf.MEDIUM ?? 0;
+    const low    = byConf.LOW    ?? 0;
+    const allCoverage    = Math.round((total / totalSigns) * 100);
+    const solidCoverage  = Math.round(((high + medium) / totalSigns) * 100);
+    const highCoverage   = Math.round((high / totalSigns) * 100);
+    const nRounds        = data.n_rounds_completed ?? 17;
+
     return (
       <div style={{ border: "1px solid #d1d5db", borderRadius: 8, padding: 16, background: "#fff", marginBottom: 16 }}>
+
+        {/* Header */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
           <div>
             <span style={{ fontSize: 16, fontWeight: 700, color: "#111827" }}>🔤 Indus Script Decipherment</span>
-            <span
-              style={{
-                marginLeft: 8,
-                padding: "2px 8px",
-                borderRadius: 4,
-                fontSize: 11,
-                fontWeight: 600,
-                background: "#f3f4f6",
-                color: "#6b7280",
-                border: "1px solid #d1d5db",
-              }}
-            >
-              📦 Campaign Archived
-            </span>
+            <span style={{
+              marginLeft: 8, padding: "2px 8px", borderRadius: 4,
+              fontSize: 11, fontWeight: 600,
+              background: "#f3f4f6", color: "#6b7280", border: "1px solid #d1d5db",
+            }}>📦 Archived — Phase 43</span>
           </div>
-          <span style={{ fontSize: 12, color: "#9ca3af" }}>{data.n_rounds_completed ?? 17} rounds completed</span>
+          <span style={{ fontSize: 12, color: "#9ca3af" }}>{nRounds} rounds</span>
         </div>
-        <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 10 }}>
-          The V8–V24 autonomous loop campaign completed on {data.archived_at ?? "2026-05-17"}.
-          Active research now continues via the Evidence Graph.
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8 }}>
-          {[
-            { label: "HIGH", value: byConf.HIGH ?? 0, color: "#15803d" },
-            { label: "MEDIUM", value: byConf.MEDIUM ?? 0, color: "#2563eb" },
-            { label: "LOW", value: byConf.LOW ?? 0, color: "#d97706" },
-            { label: "UNCERTAIN", value: byConf.UNCERTAIN ?? 0, color: "#6b7280" },
-          ].map(({ label, value, color }) => (
-            <div key={label} style={{ textAlign: "center", padding: "6px 4px", background: "#f9fafb", borderRadius: 6 }}>
-              <div style={{ fontSize: 18, fontWeight: 700, color }}>{value}</div>
-              <div style={{ fontSize: 10, color: "#6b7280", marginTop: 2 }}>{label}</div>
+
+        {/* Metrics grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}>
+          <div>
+            <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>Signs with Readings</div>
+            <div style={{ fontSize: 20, fontWeight: 700, color: "#111827" }}>
+              {total} <span style={{ fontSize: 13, color: "#9ca3af" }}>/ {totalSigns}</span>
             </div>
-          ))}
+            <div style={{ fontSize: 11, marginTop: 2 }}>
+              <span style={{ color: "#15803d", fontWeight: 600 }}>H:{high}</span>{" "}
+              <span style={{ color: "#2563eb", fontWeight: 600 }}>M:{medium}</span>{" "}
+              <span style={{ color: "#d97706", fontWeight: 600 }}>L:{low}</span>
+            </div>
+          </div>
+          <div>
+            <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>Confirmed Readings</div>
+            <div style={{ fontSize: 20, fontWeight: 700, color: high >= 7 ? "#15803d" : "#b45309" }}>
+              {high + medium}
+            </div>
+            <div style={{ fontSize: 11, color: "#6b7280" }}>{solidCoverage}% of sign inventory</div>
+          </div>
         </div>
-        <div style={{ marginTop: 8, fontSize: 11, color: "#9ca3af", textAlign: "right" }}>
-          Final anchors: {data.anchors.total} total · `INDUS_FINAL_ANCHORS.json`
+
+        {/* Progress bars */}
+        <ProgressBar value={allCoverage}   color="#8b5cf6" label={`Total sign coverage (${total}/${totalSigns})`} />
+        <ProgressBar value={solidCoverage} color="#3b82f6" label={`HIGH + MEDIUM confidence (${high + medium} signs)`} />
+        <ProgressBar value={highCoverage}  color="#15803d" label={`HIGH confidence only (${high} signs)`} />
+
+        <div style={{ marginTop: 10, fontSize: 11, color: "#9ca3af" }}>
+          Campaign concluded 2026-05-17 · Active research via Evidence Graph
         </div>
       </div>
     );

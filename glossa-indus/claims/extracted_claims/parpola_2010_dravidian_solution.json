@@ -1,7 +1,7 @@
 {
   "document_id": "parpola_2010_dravidian_solution",
   "title": "A Dravidian solution to the Indus script problem",
-  "extraction_date": "2026-05-17T19:16:49.186924",
+  "extraction_date": "2026-05-17T20:51:25.460790",
   "total_claims": 2,
   "auto_extracted": 2,
   "manually_curated": 2,
@@ -16,7 +16,7 @@
       "falsification_condition": "If Dravidian phonotactics do not fit Indus sign bigrams better than Sanskrit.",
       "glossa_lab_evidence": "Phase-41: 1.0566x SA advantage; Phase-43: +0.484 log-units on V3 corpus [VERIFIED]",
       "confidence_in_source": 0.85,
-      "extracted_at": "2026-05-17T19:16:49.186924"
+      "extracted_at": "2026-05-17T20:51:25.460790"
     },
     {
       "claim_id": "parpola_2010_dravidian_solution_manual_002",
@@ -41,7 +41,7 @@
       "falsification_condition": "If fish signs do not show terminal-sign followers consistent with case suffixes.",
       "glossa_lab_evidence": "Phase-43 T2.4: M77/72 terminal_frac=25.9% [SUPPORTED]",
       "confidence_in_source": 0.75,
-      "extracted_at": "2026-05-17T19:16:49.186924"
+      "extracted_at": "2026-05-17T20:51:25.460790"
     }
   ],
   "_citation": {

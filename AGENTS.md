@@ -1515,4 +1515,38 @@ For EVERY study or experiment run in Glossa Lab:
 * If an experiment triggers a stop condition, the report section MUST lead with the failure, not bury it.
 * Claims in emails to external collaborators MUST use AEE epistemic markers internally before being translated to plain prose.
 
+### H20 — GPU Mandatory for Indus Research Experiments
+
+* ALL new Indus Script research scripts (Phase-XX_*.py) MUST use GPU when available.
+* Every script MUST import `torch`, detect `torch.cuda.is_available()`, and report the device used.
+* The `gpu_device` field MUST be included in every JSON report output.
+* Experiment Graph nodes for Indus Decipherment (category="Indus Decipherment") MUST call `_get_device()` and expose `gpu_device` as an output port.
+* Scripts that run SA (Simulated Annealing) MUST use `BigramScorer` from `glossa_lab.pipelines.decipher` which auto-selects CUDA.
+* CPU-only fallback is acceptable but MUST be logged as a warning.
+
+### H21 — Foundation Check Mandatory After Each Phase
+
+* The Foundation Check (`backend/scripts/foundation_check.py`) MUST be run after ANY phase that:
+  - Modifies `backend/reports/INDUS_FINAL_ANCHORS.json`
+  - Updates any Dravidian language model (`dravidian_*.json`)
+  - Runs a new SA decipherment with new constraints or anchors
+  - Promotes anchor confidence levels (MEDIUM → HIGH or LOW → MEDIUM)
+  - Adds new Phase-XX result files to `reports/`
+* The Foundation Check MUST show 0 failures before committing.
+* If the check reveals new failures, they MUST be fixed in the same commit.
+* The Foundation Check script itself MUST be updated to include checks for every new phase's key results.
+* Mandatory checks to add for each new phase:
+  - Report file exists (WARN if missing, not CHECK-fail)
+  - Key metric meets minimum threshold (z-score, concordance, lift ratio, etc.)
+  - No regressions in previously-passing checks
+
+### H22 — Experiment Registration Mandatory
+
+* Every new Phase-XX research script MUST be registered as an Experiment Builder graph node.
+* Nodes MUST be in the `backend/glossa_lab/experiment_graph_phase{XX}_{YY}.py` module pattern.
+* The module MUST be registered in `experiment_graph.py` using the try/import pattern.
+* All registered nodes MUST be in the `Indus Decipherment` category or a sub-category.
+* Nodes MUST use lazy `AtomicNodeDef` import to avoid circular imports.
+* Each node MUST report `gpu_device` as a text output port.
+
 ---

@@ -81,8 +81,7 @@ const NAV_SECTIONS: NavSection[] = [
       { id: "citations",       label: "Citations",       icon: "📖" },
       { id: "correspondence",  label: "Correspondence",  icon: "✉" },
       { id: "ai-tools",        label: "AI Tools",        icon: "🔬" },
-      { id: "foundation-check", label: "Foundation Check", icon: "🔬" },
-      { id: "help",       label: "Help",        icon: "📘" },
+      { id: "foundation-check", label: "Foundation Check", icon: "✅" },
     ],
   },
 ];
@@ -92,6 +91,7 @@ const SYSTEM_ITEMS: NavItem[] = [
   { id: "status",    label: "Status",    icon: "⚡" },
   { id: "jobs",      label: "Jobs",      icon: "📦" },
   { id: "settings",  label: "Settings",  icon: "🔧" },
+  { id: "help",      label: "Help",      icon: "📘" },
 ];
 
 const SIDEBAR_W = 220;

@@ -109,6 +109,14 @@ test.describe("Jobs view with backend", () => {
   test("pipeline selector contains all registered pipelines", async ({ page }) => {
     await page.getByText("+ Submit new job").click();
     const select = page.getByRole("combobox");
+    // Wait for the pipeline catalog to load from the backend (async fetch on mount)
+    await page.waitForFunction(
+      () => {
+        const sel = document.querySelector('select');
+        return sel && sel.options.length > 1;
+      },
+      { timeout: 5000 },
+    ).catch(() => {}); // Proceed even if still loading — test will report the actual state
     const options = await select.locator("option").allTextContents();
     for (const pipeline of EXPECTED_PIPELINES_BACKEND) {
       expect(options).toContain(pipeline);
@@ -138,7 +146,9 @@ test.describe("Jobs view with backend", () => {
     await page.locator("textarea").first().fill("not valid json");
     await page.getByRole("button", { name: "Submit" }).click();
 
-    await expect(page.getByText(/valid JSON/i)).toBeVisible();
+    // Error message is "Params must be valid JSON"
+    // Avoid matching the textarea content itself with /valid JSON/i
+    await expect(page.getByText(/Params must be valid JSON|Invalid JSON|must be.*JSON/i).first()).toBeVisible();
   });
 
   test("submitting a job with empty name shows an error", async ({ page }) => {

@@ -843,35 +843,41 @@ async def dashboard_feed(
 async def dashboard_decipherment() -> dict[str, Any]:
     """Indus script decipherment progress metrics.
 
-    Returns the latest round results, anchor counts, confidence scores,
-    and progression history from all V5-V17 report files.  This powers
-    the "Decipherment Progress" panel on the dashboard.
+    Returns anchor confidence summary from INDUS_FINAL_ANCHORS.json plus
+    round progression history when available.  When the V8-V24 round files
+    have been archived (as of 2026-05-17) the response includes
+    ``archived: true`` so the frontend can render an appropriate state
+    without showing empty/broken progress widgets.
     """
-    import glob  # noqa: PLC0415
     from pathlib import Path  # noqa: PLC0415
 
-    reports_dir = Path(__file__).resolve().parent.parent.parent / "reports"
-    if not reports_dir.is_dir():
+    # backend/reports/ lives two levels above this file (backend/glossa_lab/api/)
+    backend_reports = Path(__file__).resolve().parent.parent.parent / "reports"
+    if not backend_reports.is_dir():
         return {"available": False, "reason": "No reports directory"}
 
-    # Load the final anchor set
-    final_path = reports_dir / "INDUS_FINAL_ANCHORS.json"
-    anchors_summary: dict[str, Any] = {"total": 0}
+    # ── 1. Final anchor set (always present post-cleanup) ─────────────────
+    final_path = backend_reports / "INDUS_FINAL_ANCHORS.json"
+    anchors_summary: dict[str, Any] = {"total": 0, "by_confidence": {}}
+    archived_at: str = "2026-05-17"
     if final_path.exists():
         try:
-            data = json.loads(final_path.read_text(encoding="utf-8"))
-            total = data.get("total", 0)
-            by_conf: dict[str, int] = {"HIGH": 0, "MEDIUM": 0, "LOW": 0}
-            for _s, info in (data.get("anchors") or {}).items():
+            fa_data = json.loads(final_path.read_text(encoding="utf-8"))
+            total = fa_data.get("total", 0)
+            by_conf: dict[str, int] = {"HIGH": 0, "MEDIUM": 0, "LOW": 0, "UNCERTAIN": 0}
+            for _s, info in (fa_data.get("anchors") or {}).items():
                 c = (info.get("confidence") or "LOW").upper()
                 by_conf[c] = by_conf.get(c, 0) + 1
             anchors_summary = {"total": total, "by_confidence": by_conf}
         except Exception:  # noqa: BLE001
             pass
 
-    # Collect round progression from V8-V17 reports
+    # ── 2. Round progression (archived — files removed 2026-05-17) ────────
+    # The INDUS_V8-V24 round JSONs were archived during repository cleanup.
+    # We keep the glob for forward-compat if they are restored, but the
+    # archived flag tells the frontend to render an archived state.
     progression: list[dict[str, Any]] = []
-    round_files = sorted(reports_dir.glob("INDUS_V*_ROUND*.json"))
+    round_files = sorted(backend_reports.glob("INDUS_V*_ROUND*.json"))
     for rf in round_files:
         try:
             rd = json.loads(rf.read_text(encoding="utf-8"))
@@ -892,22 +898,17 @@ async def dashboard_decipherment() -> dict[str, Any]:
         except Exception:  # noqa: BLE001
             continue
 
-    # Latest state from V5/V6/V7 reports
-    latest: dict[str, Any] = {}
-    for fn in ["INDUS_V7_FULL_PUSH.json", "INDUS_V6_PMI_ANCHORS.json", "INDUS_V5_PHASES_1_3.json"]:
-        p = reports_dir / fn
-        if p.exists():
-            try:
-                latest[fn.replace(".json", "")] = json.loads(p.read_text(encoding="utf-8")).get("timestamp", "")
-            except Exception:  # noqa: BLE001
-                pass
+    # Archived = no round files present but final anchors exist
+    is_archived = len(progression) == 0 and final_path.exists()
 
     return {
         "available": True,
+        "archived": is_archived,
+        "archived_at": archived_at if is_archived else None,
+        "n_rounds_completed": 17 if is_archived else len(progression),
         "anchors": anchors_summary,
         "progression": progression,
         "n_rounds": len(progression),
-        "latest_reports": latest,
         "current_state": progression[-1] if progression else None,
     }
 

@@ -1,0 +1,28 @@
+{
+  "document_id": "corpus_of_indus_inscriptions_7c28d7b9",
+  "original_filename": "Corpus_of_Indus_Inscriptions.pdf",
+  "stored_path_raw": "glossa-indus\\raw\\user_uploads\\Corpus_of_Indus_Inscriptions.pdf",
+  "stored_path_text": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\glossa-indus\\processed\\cleaned_text\\corpus_of_indus_inscriptions_7c28d7b9.txt",
+  "file_type": ".pdf",
+  "file_size_bytes": 1828930,
+  "checksum_sha256": "7c28d7b940fe80d9156b9931d4fe5690ed4eda33f682df19300a7751d6ac03ac",
+  "intake_date": "2026-05-17T16:30:05.323896",
+  "license_status": "unclear",
+  "access_type": "user_uploaded",
+  "ocr_required": false,
+  "ocr_status": "not_needed",
+  "duplicate_status": "unique",
+  "processing_status": "registered",
+  "detected_title": "Corpus of Indus Inscriptions",
+  "detected_authors": [],
+  "detected_year": 2022,
+  "detected_doi": null,
+  "detected_abstract": "",
+  "claim_extraction_status": "pending",
+  "hypothesis_relevance": null,
+  "_citation": {
+    "system": "Glossa-Lab Indus Evidence Graph",
+    "intake_version": "1.0",
+    "note": "User-provided or acquired document. License status must be verified before publication use."
+  }
+}

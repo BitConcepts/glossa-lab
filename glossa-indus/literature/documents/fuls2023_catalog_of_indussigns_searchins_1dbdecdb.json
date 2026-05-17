@@ -1,0 +1,28 @@
+{
+  "document_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb",
+  "original_filename": "Fuls2023_Catalog_of_IndusSigns_SearchInside.pdf",
+  "stored_path_raw": "glossa-indus\\raw\\user_uploads\\Fuls2023_Catalog_of_IndusSigns_SearchInside.pdf",
+  "stored_path_text": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\glossa-indus\\processed\\cleaned_text\\fuls2023_catalog_of_indussigns_searchins_1dbdecdb.txt",
+  "file_type": ".pdf",
+  "file_size_bytes": 9814734,
+  "checksum_sha256": "1dbdecdb14854b57d7d6a7a4b978ef814312cc3f6bf246f8cf0313acdbbd6f2a",
+  "intake_date": "2026-05-17T16:30:05.625180",
+  "license_status": "unclear",
+  "access_type": "user_uploaded",
+  "ocr_required": false,
+  "ocr_status": "not_needed",
+  "duplicate_status": "unique",
+  "processing_status": "registered",
+  "detected_title": "Fuls2023 Catalog of IndusSigns SearchInside",
+  "detected_authors": [],
+  "detected_year": 2008,
+  "detected_doi": null,
+  "detected_abstract": "",
+  "claim_extraction_status": "pending",
+  "hypothesis_relevance": null,
+  "_citation": {
+    "system": "Glossa-Lab Indus Evidence Graph",
+    "intake_version": "1.0",
+    "note": "User-provided or acquired document. License status must be verified before publication use."
+  }
+}

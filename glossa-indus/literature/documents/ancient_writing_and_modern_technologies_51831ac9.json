@@ -1,0 +1,28 @@
+{
+  "document_id": "ancient_writing_and_modern_technologies_51831ac9",
+  "original_filename": "Ancient_Writing_and_Modern_Technologies.pdf",
+  "stored_path_raw": "glossa-indus\\raw\\user_uploads\\Ancient_Writing_and_Modern_Technologies.pdf",
+  "stored_path_text": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\glossa-indus\\processed\\cleaned_text\\ancient_writing_and_modern_technologies_51831ac9.txt",
+  "file_type": ".pdf",
+  "file_size_bytes": 3565316,
+  "checksum_sha256": "51831ac997f54782fc6483e04c06d6b60f08af81101b39bfe00daa5556b88b04",
+  "intake_date": "2026-05-17T16:30:04.985382",
+  "license_status": "unclear",
+  "access_type": "user_uploaded",
+  "ocr_required": false,
+  "ocr_status": "not_needed",
+  "duplicate_status": "unique",
+  "processing_status": "registered",
+  "detected_title": "Ancient Writing and Modern Technologies",
+  "detected_authors": [],
+  "detected_year": null,
+  "detected_doi": "10.13109/hisp.2015.128.1.42",
+  "detected_abstract": "",
+  "claim_extraction_status": "pending",
+  "hypothesis_relevance": null,
+  "_citation": {
+    "system": "Glossa-Lab Indus Evidence Graph",
+    "intake_version": "1.0",
+    "note": "User-provided or acquired document. License status must be verified before publication use."
+  }
+}

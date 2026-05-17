@@ -1,0 +1,780 @@
+57
+Ancient W riting and Modern 
+T echnologies – Structural Analysis of 
+Numerical Indus Inscriptions
+Dr. Andreas Fuls
+Andreas Fuls, T echnische Universität Berlin (Germany)
+The Indus culture (2600 to 1700 BCE) developed a writing system that still remains 
+mostly undeciphered. The inscriptions found on several artefacts (i.e. seals, tablets, 
+pots, bangles, tags, and other types of artefacts) show a distinct pattern of Indus 
+signs. An Interactive Concordance of Indus T exts (ICIT) has been developed 
+and is accessible through a web-interface. It contains at present 5318 Indus texts 
+on 4351 artefacts and additional 869 artefacts with iconography. The signs are 
+coded according to an extended sign list with 702 distinct signs (W ells 2015). This 
+interactive-searchable database facilitates the study of specific sets of iconographic 
+elements, signs, and artefacts. Several tools allow for the statistical and spatial analysis 
+of inscribed artefacts and Indus signs. The aim is to make all Indus inscriptions 
+accessible to scholars worldwide and to stimulate further research on Indus writing 
+and Indus culture in general.
+A detailed study of sign sequences has become possible through the Multivariate 
+Segmentation method. It enables one to perform structural analysis and the 
+identification of segments of Indus inscriptions with similar meaning. The structural 
+analysis focuses on texts with numerical signs and allows to have a better understanding 
+of the economic content of many Indus inscriptions.
+GENERAL FEA TURES OF INDUS WRITING
+Sign sequences in Indus writing are arranged in a linear order on seals, tablets, pottery, 
+bangles, and other artefacts. Seals are impressed into clay (tags) fulfilling severa l 
+functions such as door and container sealings. However, inscriptions on perishable 
+material have not survived due to climatic conditions.
+58
+TEXT CORPUS
+An Interactive Concordance of Indus T exts (ICIT) has been developed (Fuls 2010) 
+containing at present 5318 Indus texts on 4351 artefacts and additional 869 artefacts 
+with iconography. Most data records based on the Interactive Corpus of Indus T exts 
+(ICIT) were collected by W ells (2011) and have been constantly updated as soon as 
+new inscriptions become available. At present (September 2019), the inscriptions 
+come from 57 sites, foremost from Harappa (42.9%) and Mohenjo-daro (40.5%). 
+Middle sized sites with less inscribed artefacts are Dholavira (5.1%), Lothal (3.9%), 
+Kalibangan (2.1%), and Chanhujo-daro (1.5%). The rest are small or Non-Indus sites 
+forming together a total of 156 inscribed artefacts, or 3.6% (Figure 1). The location 
+of 12 inscribed artefacts is unknown.
+Not all inscriptions are in good condition. About 1.7% of the 5318 available texts are 
+in fine condition, 21.5% are in good condition, and the condition of about 23.8% 
+texts can be classified as fairly good. However, about 52% of the texts are in poor 
+condition. In case when signs cannot be securely identified they are coded as 000 
+(eroded), even if parts of the grapheme are visible.
+Figure 1: Map of artefacts inscribed with signs of the Indus script. The artefact 
+frequency at each site is indicated by circle size with logarithmic scaling. One Indus text 
+was found as north as in Gonur Depe (T urkmenistan) and 27 others were found in 
+Mesopotamia and the Persian Gulf.
+
+59
+SIGN LIST 
+The sign list by W ells (2011, 2015) has been extended to currently 702 distinct signs 
+after adding new inscriptions from Dholavira, Lothal and other small sites (Appendix 
+A). On the whole, there are 19115 sign occurrences, but 1757 of them are eroded or 
+cannot be identified.
+The frequency distribution shows that most signs occur very seldom: 384 of 702 signs 
+occur not more than 3 times in the corpus and 588 signs less than 20 times (Figure 2). 
+Only 42 signs have a frequency greater than 100. Sign 740   is the most frequent one.
+The core of Indus signs that occur at least once at Harappa, Mohenjo-daro, Dholavira 
+and Lothal totals 92 distinct signs. They account for about 73% of all sign occurrences 
+in the text corpus.
+TYPE OF WRITING AND DEGREE OF PHONETISA TION
+The comparison of the sign frequency distribution of Indus writing with many known 
+writing systems indicates that it is a logographic-syllabic writing system wit h about 
+48% syllables and 52% logograms (Fuls 2019:12-13). 
+The statistical comparison is provisional for several reasons. The first reason is 
+the size of the text corpus. The total number of 17360 legible signs is too small to 
+provide a complete sign list, since more signs may appear later with the discovery and 
+publication of new inscriptions. Moreover, extending the text corpus increases the 
+number of rare logograms but not the number of frequent syllabic signs. Another 
+problem is the artefact preservation and thus the restricted subject matter that 
+eliminates certain signs not present in the sign list. Apart from these problems, 
+Figure 2: Frequency distribution of Indus signs grouped into 17 classes from frequency 1 
+to 1868.
+
+60
+some signs might be polyvalent or poly functional, i.e. used as a logogram as well 
+as a syllable depending on context. Nevertheless, it is certain that Indus writing uses 
+syllabic as well as logographic signs, even if we cannot tell for sure the exact ratio 
+between both. Therefore, we can only estimate the degree of phonetization that falls 
+in the range between 50% and 80% syllables.
+READING DIRECTION
+The direction of writing can be detected through overlapping incised signs on 
+pottery, squeezing signs at the end of a text because of restricted space on the artefact 
+surface, and the continuity of writing below the last sign. Besides, the ratio between 
+left to right end sign frequencies shows that Indus writing must be read from right 
+to left (Ashraf and Sinha 2018). These factors indicate that the direction of writing 
+was mostly from right to left. Since we do not assume that the writing was done 
+backwards, the direction of reading was also from right to left (R/L).
+Thus, all sign sequences are coded in a way to be read from right to left, whatever 
+the original writing looks like (for all seals the reading direction is determined from 
+the impression in clay, otherwise structural analysis would not be possible). Original 
+reading direction is indicated by the parameter “direction” in the ICIT. Therefore, 
+most times we can find R/L, but also L/R (221 times left to right), T/B (13 times top 
+to bottom), or BUS (8 times boustrophedon).
+SEGMENT A TION METHODS
+T ext segmentation is a process that breaks longer sign sequences into smaller units by 
+means of determining morphological boundaries and bounded sign clusters within 
+each text. After the segmentation process is over, the results must be evaluated by 
+comparing the segmentation trees with the results derived from paradigmatic cluster 
+analysis, structural analysis, or positional analysis of signs. The aim is to determine 
+meaningful units (e.g. syntactic elements).
+Several methods have been proposed and applied to segmenting Indus texts into 
+smaller units. Most of these methods use statistical behaviour of signs, counting the 
+frequencies of signs and sign pairs.
+Parpola (1994) applies Harris’ approach to Indus inscriptions. Each text is compared 
+to similar sign sequences and the frequency of sign pairs starting first from the right 
+and then from the left of a text. The method requires a huge amount of similar texts 
+not available for Indus writing. A detailed description of this approach is given by 
+Parpola (1994: 98-99).
+61
+Bonta (1996:17) suggests the comparative method and compares similar sign 
+sequences in order to determine morphological boundaries within those sequences. 
+It is similar to Harris’ approach, but it does not account for the frequency of sign 
+pairs as in Harris’ approach.
+Korvink (2007:7) uses the elimination process that is similar to the comparative 
+method. The only difference is that the elimination process is iterative and starts at 
+both sides of the text, namely with the initial and the terminal signs. The elimination 
+process can be summarized in the following way:
+determination of Initial Marker
+determination of T erminal Marker
+determination of groups of signs used together
+determination of meaningful single signs
+determination of bounded sign clusters
+segmentation of texts.
+The process of elimination also includes complete solo signs and sign pairs that most 
+probably represent a meaningful unit (morpheme).
+This method works only for Patterned texts with typical initial and terminal markers, 
+bounded clusters, and known sign groups such as fish signs and numerical signs. No 
+pattern can be recognized by the process of elimination in a Complex text (defined 
+by W ells (2011) as a text written with an unusual sequence of signs) or text parts with 
+a low frequency of sign sequences.
+Sinha et al.  (2010) developed a segmentation method using z-scores. It is based 
+only on the frequency of sign pairs.  This is efficient for bounded cluster but does 
+not account for repetitive sign sequences in Indus texts. The resulting segmentation 
+trees differ from the results of structural analysis (W ells 2015) and are not useful for 
+understanding the pattern of Indus sign sequences.
+MUL TIV ARIA TE SEGMENT A TION METHOD
+Previous methods discussed so far have been based mostly on the frequency of signs 
+and sign sequences. Because there are many short texts that are often segments of 
+longer texts and because signs or sign pairs are often used solo or in initial or terminal 
+positions in short texts, these well-defined segments can be used in order to search for 
+morphological boundaries within longer texts. The following parameter can be used 
+to segment signs sequences:
+62
+frequency of each sign in initial position
+frequency of each sign in terminal position
+frequency of each sign pair in initial position
+frequency of each sign pair in terminal position
+frequency of bounded sign pairs
+frequency of solo sign pairs
+ratio between initial and terminal sign frequency indicating either a strong sign pair 
+or a boundary between the sign pair.
+The combination of these parameters leads to the Multivariate Segmentation Method, 
+which is described in detail in Fuls (2015, 2019). It uses a model of connectivity with 
+a value representing the strength of connection between each sign pair.
+It is also possible to draw a segmentation tree based on the connectivity values, where 
+a high connectivity value corresponds to a high z-score. The tree height depends on 
+the length of the text and the number of directly connected sign pairs. This means 
+that a small tree index shows a well-structured text (Figure 26), while a high tree 
+index shows a less structured text. If a text remains less structured, this is due to the 
+low frequency of signs, sign pairs or unusual sign sequences.
+NUMERICAL SIGNS
+The role of numerical systems in the process of decipherments is important as can be 
+shown for the decipherment of many ancient writing systems. The first Maya signs 
+identified by Rafinezque (1832) were the numerical signs for one and for five. Bennet 
+analysed the numerals in Linear B, thereby helping to identify lists of quantities 
+(Chadwick 1967). Nissen et al. (1993) used a special method to distinguish between 
+different numerical systems in Early Sumerian writing. In all cases, analysing 
+numerical signs was the first step towards a successful decipherment.
+The Indus sign list contains different kinds of strokes: short strokes, short stacked 
+strokes, long strokes, and special stroke signs (Figures 3-6). It is often assumed that 
+stroke signs represent numerical values as in other cultures (Parpola 1994, Korvink 
+2007, W ells 2011). 
+The most obvious reason to assume that stroke signs represent numbers is the use 
+of strokes in other cultures for counting. Another reason is that sequences of stroke 
+signs most likely represent a complex numerical expression as in numerical systems 
+of other cultures. 
+63
+There exist several special signs that often co-occur with stroke signs, and, therefore, 
+are used in a numerical context (W ells 2015:73-76). They are also regarded as 
+numerical signs with special values or restricted usage. 
+At present, we don’t know for sure the base of the Indus number system or if there 
+exist more than one base as is the case in Cuneiform writing. It has been suggested 
+that Indus numerals are based on a decimal system because there are no more than 9 
+long or short stacked strokes (W ells 2011:135; Das Gupta 2019:7). An octal system 
+with base 8 is favoured by others, since the root for ‘eight’ in Dravidian *en also 
+means ‘to count’ and ‘number’ (McAlpin 1981:40-41; Fairservis 1992:61). This is 
+supported by the maximum of 7 short strokes in Indus writing.
+Figure 6: Special strokes and numerical signs (SPN) and their frequencies.
+Figure 3: Short strokes (SHN) and their frequencies.
+Figure 4: Short stacked strokes (SSN) and their frequencies.
+Figure 5: Long strokes (LON) and their frequencies.
+64
+However, the frequencies of numerical signs are not equal but follow roughly a 
+power law known as the Newcomb-Bendford-Law. According to the Newcomb-
+Bendford-Law the numbers in first position have decreasing frequencies from one to 
+the highest possible number depending on the base. In a decimal system number one 
+occurs about 30.1% in first position, number two 17.6%, number three 12.5%, and 
+so on up to number nine (4.6%). In second and higher positions the frequencies are 
+about the same for all numbers. The relative frequencies in other numerical systems 
+(base 5 to 12) are shown in Figure 7 in comparison with the relative frequencies of 
+long, short and stacked stroke signs and some special numerical signs.
+Figure 7: Relative frequencies of long, short and stacked stroke signs and some 
+special numerical signs in comparison with the expected frequencies for numbers 
+in first position according to the Newcomb-Bendford-Law for numerical systems 
+of base 5 to 12.
+
+65
+NON-NUMERICAL SIGN PAIRS
+There are frequent number-sign pairs with a high frequency of one numerical sign. 
+The sign pairs 033-705 (101x), 033-706 (43x), and 100-415 (41x) are already 
+recognized by Korvink (2007) and W ells (2011:135) as specific terms. Other sign 
+pairs also have a high pair frequency to one specific numerical sign (Figure 8).
+A second indicator of a non-numerical context is the case when a sign is affixed 
+Figure 8: Possible non-numerical frequent sign pairs. The keyword only indicates that the 
+sign is only affixed by that numerical sign.
+66
+by only one specific numerical sign. Since we can expect that a countable object 
+or measurements may co-occur with different numbers, the limitation to only one 
+number most likely indicates a non-numerical context.
+The high frequency of three strokes not only influences the relative frequencies of all 
+other numerical signs in Figure 7, but also may indicate that in the Indus language the 
+word for three can also be used as a homophone, non-numerical expression or word.
+POSITIONAL NOT A TIONS
+Stroke signs can be combined to a sequence of stroke signs representing positional 
+notation. Not all combinations of stroke signs can be found as shown in Figure 9.
+The text on seal M-1745 contains a sequence of four numerical signs. However, the 
+first three signs of the text represent an initial cluster with sign pair 031-892 as a 
+bounded cluster and Sign 2 as a grammatical marker of initial cluster. Only two of the 
+stroke signs are used as numbers.
+The only example of a combination of two special numerical signs can be found on 
+pottery graffiti (M-2006). There Sign 415 is followed by Sign 900 (Figure 11, ID 
+2203).
+The absolute numerical position of signs is a complicated question, since signs 
+could represent a value in the next higher position because of the absence of a sign 
+for zero (e.g. Sign 32 could be read as 2 or 2.0) 1.  Another question is how to read 
+the combination of stroke signs and special numerical signs. Shall they be read in an 
+additive manner (like Roman numerals) or in a positional manner?
+Figure 9: Sequences of different types of numerical signs that may represent positional 
+notation of numbers.
+1 In this paper numbers in positional notation are listed with a dot in between, e.g. 
+(decimal) 120 is written 1.2.0.
+67
+Another question is related to the internal reading order of numerical sign sequences. 
+W e know from Maya hieroglyphic writing that calendar dates start with the highest 
+unit in positional notation (Bak’tun, K’atun, T uun, Winal, K’in), but with the lowest 
+unit in a distance number (K’in, Winal, T uun, K’atun, Bak’tun). A similar flexibility 
+may occur in Indus writing where numbers in different context are used.
+SPECIAL NUMERICAL SIGNS
+The numerical value of stroke signs is most likely the number of strokes. Stacked 
+strokes are used only in first position, which means that they do not represent any 
+higher numerical position. Other stroke signs represent the value depending on the 
+position and the base of the numerical system.
+Sign 415
+Sign 415 is often used together with stroke signs (Figure 10) or is used instead of a 
+numerical sign, e.g. the sign pair 220-415 replaces 220-032. It is therefore suggested 
+that Sign 415 is a special numerical sign, at least in some context (Bonta 1996; W ells 
+2011:123).
+The numerical value of Sign 415 is unknown. Its grapheme looks like a generalized 
+hand with five fingers, but in context with ‘fish’-signs it is supposed to have a value of 
+14 (Figures 20, 21, 23).
+Figure 10: Examples of the numerical Sign 415.
+68
+Sign 900
+Sign 900 may well be regarded as a special numerical sign (Figure 11). Its frequent 
+use in combination with stroke signs, Sign 415, as well as the repetition of Sign 900 
+as Signs 904 and 908 indicates its use as a number. Sign 900 is only prefixed by one 
+to five short strokes. The absence of numbers greater than five may indicate that Sign 
+900 represents number six. Signs 904, 914 and 908 are repetitions of Sign 900 and 
+most likely represent multiples of the numerical value, i.e. 2x6=12, 4x6=24, and 
+5x6=30, respectively (Figure 12). Evidences for the numerical value six of Sign 900 
+will be shown in Figures 16, 18 and 21.
+Figure 11: Examples of the numerical Sign 900.
+69
+Sign 70
+Sign 70 may also be regarded as a numerical sign. It often appears together with 
+stroke signs in positional notations (Figure 13). Since Sign 70 often follows two long 
+or short strokes (Sign 2 or 32), a non-numerical interpretation as a bounded cluster 
+is possible as well.
+Figure 12: Special numerical Signs 904, 908, and 914.
+Figure 13: Sign 70 as a numerical candidate or bounded cluster with two strokes.
+70
+SIGN 700 WITH NUMBERS
+Numerical signs before or after Sign 700 are limited to Signs 1 to 4, 31 to 34 and 
+36, 14 and 17. However, their frequency distribution does not agree with the New 
+comb-Bend ford-Law (Figure 14). Sign 700 has a very low frequency in combination 
+with one stroke, but has an unusually high frequency with three and four strokes.
+W ells (2018) demonstrates that Sign 700 represents a volumetric system with a unit 
+of 40.4 litre for one long stroke. However, if a long stroke is 10 as will be shown in the 
+next sections, then one volumetric unit equals 4.04 litre (Figure 16). 
+NUMERICAL V ALUES OF SIGNS
+T o determine the numerical values of signs several inscriptions can be used that 
+contain some numerical signs as well as other information about the counted objects. 
+Both parts of information can be compared on the basis of ‘equations’ . Even if the 
+objects represented by Indus signs remain unknown, the numerical values should 
+fulfil mathematical laws.
+Counting bangles in a pot
+In 1985 a pot used for firing stoneware bangles was found in Mohenjo-daro. 82 
+fragments of bangles were discovered inside the pot. About 15 to 20 complete bangles 
+are reconstructed from these fragments (W ells 2015:94-95).
+Near the rim of the pot a seal impression is still partly legible. While the beginning of 
+the text is eroded (the first three signs are reconstructed), the rest of the sign sequence 
+can be read (Figure 15).
+Figure 14: Relative frequency of numbers attached to Sign 700 in comparison with the 
+expected frequency according to the Newcomb-Bendford-Law for bases 5 to 12.
+
+71
+W ells (2015:94-95) suggests that the two numerical signs 017-031 represent the 
+original number of stoneware bangles once fired inside the pot. If this is correct, then 
+the number should fall in the range between 15 and 20. The two numerical signs 
+must therefore fulfil the equation 
+15 <= 7+1 x baseL <=20 (1)
+with baseL representing the base of long strokes. The possible solutions for baseL fall 
+between 8 and 13. 
+Then taking the maximum number of 9 long stokes into account (Sign 039) the base 
+should be 10 or greater. The result is that baseL is either 10 or 12, excluding uneven 
+numbers such as 11 or 13 as the base of long strokes because they would be prime 
+numbers and impractical for a base of a numerical system.
+Numerical value of Sign 900
+The numerical value of Sign 900 can be derived from inscriptions on 3 two-sided 
+tablets. Each of them lists the count of units of Sign 700 (Side 1) and the count of 
+Sign 840 (Side 2). The first two tablets give the same number on both sides, 20 and 30 
+(in a decimal system), respectively, expressed by long or short stacked strokes (Figure 
+16). They do not offer the chance to detect the numerical system and its base.
+Figure 16: Numerical relationships between Sign 700 and Sign 840. The bases of long 
+and stacked strokes are identical. Sign 700 represents a unit of 4.04 litre.
+Figure 15: Inscription on pot with 15 to 20 bangles (M-1383). 
+The value of baseL is either 10 or 12.
+
+72
+2 From Formula 2 we can derive the equation baseS = (v+baseL)/2. Since baseS must 
+be a whole number, baseS is an even number. Furthermore, v and baseL must be both 
+either even or uneven numbers, so that their sum is divisible by two.
+However, the third tablet (ID 3786) gives a more complex numerical expression. On 
+Side 1 the count of Sign 700 units is expressed by two numerical signs, Sign 032 
+(three long strokes) and Sign 900. The numerical signs on Side 2 before and after 
+Sign 840 are two long strokes and two short strokes. Because of the other tablets with 
+identical number on both sides we can expect the same equivalency on this tablet. 
+Therefore, the equation 3 x baseL + v = 2 x baseL + 2 x baseS must be fulfilled, with 
+v being the numerical value of Sign 900 greater than zero. This gives us the equation
+v = 2 x baseS - 1 x baseL  (2)
+Possible solutions for baseL of long strokes, baseS of short strokes, and value v of Sign 
+900 are listed in T able 1. If short and long strokes use the same base, then the value of 
+Sign 900 equals the base. As indicated by the count of bangles (Figure 15) baseL is 10 
+or 12, excluding an uneven base for practical reasons.
+T able 1: Possible solutions for baseL of long strokes, baseS of short strokes, and Sign 
+900 value v. If baseL is an even number it is either 10 or 12 because of Formula 1. 
+Only Solution B will meet the requirement in Figure 18 of an equation between three 
+numerical expressions.
+The maximum number of short strokes equals seven (Sign 7). W e can, therefore, expect 
+that the base of short strokes is 8 or greater. For long strokes the maximum number 
+is nine (Sign 39). This is in agreement with a decimal system (Base 10). T aking these 
+considerations into account, the calculations result into possible solutions of 4, 6, 8, 
+10, or 12 for the value of Sign 900, but never an uneven number such as 5, if the bases 
+of both stroke systems are divisible by two2.  
+73
+W ells (2011:128) argues that the value of Sign 900 should be five, since Sign 900 plus 
+Sign 2 replace seven stacked strokes (Sign 17) in front of Sign 585 on H-472. The 
+argument is that sign pair 585-017 is a strong cluster with a pair frequency of 29 in 17 
+distinct texts, for example on M-547, M-1534, and M-1138 (Figure 17).
+However, Sign 585 has a frequency of 59 and is not always prefixed by Sign 17. One 
+example can be found on seal M-98 with sign pair 017-900 in front of Sign 585. On 
+M-798 and M-2106 no numerical sign is used in front of Sign 585. And on M-722 
+and M-1112 no Sign 17 is written but other signs with numerical connotations. 
+Therefore, the usage of sign pair 900-002 in front of Sign 585 is not necessarily a 
+replacement of Sign 17.
+Because of the rare frequency of six short and long strokes (Signs 6 and 36) Sign 900 
+would be a good replacement for values of six. This and the base of short and long 
+strokes are supported by another text as shown in Figure 18.
+Another argument in favour of value six is the special fish sign 221 which is twice 
+enclosed by Sign 900 (Figure 20). W ells has associated Sign 221 with a weight of 
+1/3 of the basic fish sign (Sign 220). If Sign 900 has a value of six but represents the 
+fraction 1/6 then enclosing the basic fish sign, the sum of both enclosing signs would 
+be 2 x 1/6 = 1/3 of the weight of the basic fish sign, or about 2.27 grams (Figure 20).
+Finally, a value of six for Sign 900 requires a decimal system for long strokes (T able 
+1) which is in agreement with two long strokes representing the number 2x10=20
+(Figures 20, 21, 22, 23).
+Figure 17: Combinations of Sign 585 with and without numeri-
+cal signs.
+74
+List of items on a four-sided seal
+Some inscriptions consist of several parts of texts with numerical signs and non-
+numerical signs in between. They can be interpreted as a list of items. From Sumerian 
+inscriptions list of items are well known to list also the sum of all items.
+Seal M-331 is a cuboid without boss inscribed on four sides: obverse (Side 1), reverse 
+(Side 2), and two lateral faces (Sides 3 and 4). The texts contain several numerical 
+signs, which can be analysed for the numerical system and its base (Figure 18). 
+The second line of Side 1 contains five stacked and four short strokes (Sign 14), 
+separated by Sign 492 with unknown meaning. If Sign 14 is in second position of 
+base 8, then it represents the number 4x8=32. Thus, Line 2 contains the numerical 
+value 5+32=37. 
+Side 2 bears two numerical signs. Reading from right to left Sign 900 is in the second 
+and Sign 1 in the first position. Therefore, they represent number 6x10+1=61 (if 
+Sign 900 is number 6).
+On Side 3 there are three short strokes with the possible value of 3x8=24 that again 
+make use of an octal system for short strokes as on Side 1. They might be related to 
+Side 4 listing the counted items. Comparing all numbers of the tablet leads to the 
+equation 6x10+1=3x8+5+4x8=61. Therefore, Side 2 represents the sum of all items 
+listed on the tablet.
+The numerical expressions on the seal indicate that an octal system is used for short 
+strokes, while Sign 900 represents the value 6 and belongs to the decimal system of 
+long strokes. The mixture of different base systems is known from Sumerian writing 
+and explains the different frequencies of stroke signs used as numbers (Figure 7).
+Figure 18: Positional notation on a four-sided seal with bases 8 and 10 of counted items 
+(Side 1 Line 2, Side 3) and the sum of all items (Side 2).
+
+75
+‘FISH’-SIGNS AND INDUS WEIGHTS
+In the inscriptions of Indus writing we can find several different signs that look like 
+a ‘fish’ . They are nicknamed ‘fish’-signs. As shown in Figure 19 ‘fish’-signs are marked 
+by great difference in the frequencies of occurrence; some are very frequent while 
+others are very rare.
+The so-called ‘fish’-signs have been associated with weights by Bonta (1996). His 
+argument based on the homophony of the Dravidian word for ‘fish’ (min) and 
+ancient weight systems from Southwest Asia called minas. As known from several 
+excavations, the Indus culture also used a weight system ranging from several grams 
+up to kilograms (Marshall 1931, Mackay 1998, V ats 1940).
+As shown by Korvink (2007) ‘fish’-signs occur in a certain order. This is what we 
+can expect when weights are put onto a scale. One will start with the heaviest weight 
+and add smaller weights until the scale indicates the balance between weights and 
+measured item(s).
+W ells (this volume) recognized a cluster of weights in Harappa, Mound F together 
+with inscribed artefacts where the texts contain several ‘fish’-signs, in fact more than 
+maybe expected for a random sign distribution. This confirms a relationship between 
+‘fish’-signs and weights.
+The question is, which ‘fish’-sign represents which weight? The association of certain 
+‘fish’-signs with Indus weights is proposed by W ells (this volume). He based his 
+approach on a set of five ‘fish’-signs in comparison with five weights in sequence from 
+the cubic weight system defining the relation between ‘fish’-signs and weights. The 
+basic ‘fish’-sign is Sign 220 corresponding to a weight of about 6.82 grams (W eight E 
+in the cubic weight system as defined by Marshall (1931:590).
+Figure 19: ‘Fish’-signs with sign numbers and their frequencies.
+
+76
+In the following sections his associations will be tested within the Indus writing 
+system in search of what can be called ‘equations’ between ‘fish’-signs and counted 
+items.
+SIGN SEQUENCES OF COUNTING AND WEIGHING
+There are several inscriptions listing the similar item (Signs 390, 405, and 407). They 
+often follow directly Sign 590. In some texts we can find also one or more ‘fish’-signs. 
+In the sections that follow we will analyse these co-occurrences of the numerical count 
+of (unknown) items and ‘fish’-signs presumably representing some kind of weighing.
+W eighing items of sign pair 407-590
+On some inscriptions one can find the sign pair 407-590 preceded by numerical signs 
+as well as ‘fish’-signs in the first part of the text. In order to determine the existence of 
+a constant ratio between the number of the item and the weight represented by the 
+‘fish’-signs we will analyse the texts given in Figure 21.
+On the rectangular seal M-1310 (ID 3615) the text contains the ‘fish’-sign 235 
+representing a weight of about 54.56 grams. It is followed by the sign pair 407-590 
+and Sign 740, the later terminates the first part of the text. There are two numerical 
+signs in Part 2, Sign 1 and Sign 4, followed by Sign 407. Thus, Sign 407 appears twice 
+in the text, once with and once without Sign 590. This appears quite unique when 
+we compare the sequence of two short strokes with other numerical inscriptions. If 
+Sign 1 is not a word divider as suggested by W ells (2011:99), then it should be part of 
+Figure 20: ‘Fish’-signs and associated weights.
+77
+a numerical expression. Since both numerical signs are of the same type, they should 
+be added together to represent the value of 1+4=5. Calculating the ratio between 
+the number of five items of Sign 407 and the weight of 8 E results in 8E/5 = 1.6E, or 
+10.91 grams for each item.
+In the text of the rectangular seal L-114 (ID 2063) Sign 904 is given in the 3rd part 
+of the text. As was already argued before, Sign 904 represents the doubled value 
+of Sign 900: 6+6=12. Sign 60 functions as an ICTM followed by Sign 803 (with 
+infixed Sign 390). In part 2 the basic fish sign 220 is given with Sign 32, representing 
+2x10=20 fish units of W eight E (2 fish units would be expressed by Sign 240). If the 
+text contains the equation 20E (about 136.4 grams) equal 12 items, then one item 
+has a weight of 20/12=1.67E (11.37 grams).
+The last example is again a rectangular seal from Mohenjo-daro, M-1954 (ID 2422). 
+sign pair 220-415 is used in the medial part of the text. It is a special sign combination 
+associated with a weight of 14E (about 95.48 grams). In the terminal part of the text 
+the sign pair 407-590 is prefixed by one long stroke (Sign 31). Since Sign 31 is a 
+long stroke it belongs to the base 10 system, therefore representing value ten. The 
+calculation of the ratio results in 14E / 10 = 1.4 E for one item, or about 9.55 grams.
+Figure 21: Relation between counted items of sign 
+pair 407-590 and ‘fish’-signs representing multiples 
+of W eight E (6.82 grams).
+
+78
+Then calculating the ratio between the count of sign pair 407-590 as an unknown 
+item and the weight represented by the ‘fish’-signs, we get fractions of 1.6, 1.67, 
+and 1.4 for all three examples. They correspond to a weight of about 10.91 grams, 
+11.37 grams, and 9.55 grams for one item. It is important to emphasise, that all 
+three inscriptions dealing with sign pair 407-590 give about the same ratio between 
+counting and weighing. This confirms that sign pair 407-590 represents a specific 
+item with a specific weight. The average weight for the unknown item equals 1.56 E 
+(±0.08 E), or about 10.62 grams (±0.55 grams).
+W eighing items of sign pair 405-590
+Sign pair 405-590 looks graphically similar to sign pair 407-590 but behaves in a 
+different way with respect to the Bounded clusters 033-705 and 033-706. It never 
+co-occurs with the Bounded cluster 033-705 but with the Bounded cluster 033-706. 
+Therefore, we must analyse the two sign pairs separately.
+There are several inscriptions with sign pair 405-590 that have no number. However, 
+these inscriptions include different ‘fish’-signs representing weights of 3E, 8E and 
+20E. It is interesting to note that the three weights describe a series with an almost 
+constant factor of 2.67 and 2.5, respectively:
+8/3=2.67 and 
+20/8=2.5.
+Therefore, sign pair 405-590 is used in these texts in a general way, not with an 
+explicit count, since the weight may already represent the implicit count of the item. 
+Figure 22: Examples of ‘fish’-signs and sign pair 405-590 in 
+the terminal part of the text.
+79
+It is interesting to note that the ratio between the specific weights for sign pairs 407-
+590 and 590 is 10.62 grams/4.12 grams=2.58, a value close to the ratio mentioned 
+above.
+W eight of Sign 590
+Sign 590 also occurs by itself on one side of a tablet, while some ‘fish’-signs can be 
+found on the reverse side on two identical tablets (Figure 23). The texts on the two 
+sides, obverse and reverse, may represent again an ‘equation’ between the number and 
+the weight of items.
+The first example shows two ‘fish’-signs on side 1 that express the total weight of 
+4+8=12E, which is equivalent to about 81.84 grams. On side 2, Sign 32 represents 
+the number 20 in front of Sign 590 (in this context Sign 220 most likely stands for a 
+general term such as ‘weighing’). Therefore, 20 items are equivalent to 12E, or 81.84 
+grams. Thus, one item would weigh about 4.09 grams.
+In the second example there is a special combination of ‘fish’-sign and a number. It 
+is sign pair 220-415 representing a weight of 14E, or 95.48 grams. The numerical 
+expression on the reverse side (side 2) includes Sign 3 (number 3), Sign 645 of 
+unknown meaning, and Sign 32 (number 20). The sum of the two numerical signs 
+equals 3+20=23. Therefore, the ‘equation’ of 23 items corresponding to a weight 
+of 14E (95.48 grams) results in about the same weight of one item as in the first 
+example: 4.15 grams.
+Figure 23: Relation between counted items of Sign 590 and ‘fish’-signs 
+representing multiples of W eight E (6.82 grams).
+80
+Since the two derived weights for one item are nearly identical (4.09 and 4.15 grams), 
+we can calculate an average of 4.12 grams (±0.03 grams) per item represented by Sign 
+590. The agreement of both examples indicates that Sign 645 of unknown meaning 
+is not used as a number in this context.
+As can be shown for several other inscriptions there does not exist always a 
+mathematical relationship between ‘fish’-signs and other counted or measured items, 
+e.g. on many tablets for Sign 700 + number inscriptions. As known from other 
+cultures, economic relations are influenced by several factors depending on time and/
+or region, thereby creating sometimes a more flexible relation between counted items 
+and their weight or monetary value.
+STRUCTURAL ANALYSIS OF INDUS TEXTS
+In the following section we present the syntactic analysis of long patterned texts with 
+numerical expressions or ‘fish’-signs.
+SYNT ACTIC POSITION OF NUMERICAL SIGNS
+Numerical signs are mostly used for counting or measuring items. Only in some cases 
+numerical signs might be used in a non-numerical context. T o analyse the syntactic 
+position of numerical signs with a known numerical context, we use only clear-cut 
+examples of long patterned texts (Figure 24). As can be seen numerical signs appear 
+in initial, medial or terminal text parts. It follows that the syntax in long patterned 
+texts is very flexible. Nouns represented by numbers, countable or measurable items 
+occur in any part of the text. 
+81
+Figure 24: Syntactic position of numerical signs in long patterned texts.
+The question remains, especially what concerns the last examples if there always 
+should be a verb. Or is it possible to write complete statements without a verb in the 
+Indus language? As for lists of items, verbs are certainly not necessary there.
+SYNT ACTIC POSITION OF ‘FISH’-SIGNS
+Within the Initial cluster that is terminated by Signs 1, 2, or 60 only the basic ‘fish’-
+sign, Sign 220, can be found. In this context, Sign 220 presumably functions not 
+as a specific weight but as a general term related to weighing. Other ‘fish’-signs 
+representing the weight of unknown items occur only in medial and terminal text 
+parts (Figure 25). This means that the syntactic position of weighted objects is medial 
+or terminal in Indus writing, in contrast to words with numbers that may also occur 
+in initial position (Figure 24).
+82
+Figure 25: Syntactic position of ‘fish’-signs in patterned texts.
+
+83
+SEGMENT A TION OF H-1657 (ID 1020)
+Square seal H-1657 was found at Area F, T rench 43 during the Harappa Archaeological 
+Research Project (HARP) listed as H99-4064 3.  The artefact belongs to Period 3C 
+and has 13 signs inscribed on the top part of the surface of the seal. The iconography 
+is that of a Bull:i:W symbol and a SAN cult object as classified by W ells (2011).
+The following MVS tree shows the division of the text into five parts: 
+It is a typical Long Patterned text containing an Initial cluster that ends with Sign 
+2, a sequence of ‘fish’-signs, an oval sign, a sequence of numerical signs, and finally a 
+T erminal cluster with Sign 740 at the end.
+The segmentation process starts with the analysis of solo signs. Seven distinct signs are 
+solo signs that occur at least once as a complete text in the corpus and are, therefore, 
+potential logograms: Signs 2, 3, 32, 220, 235, 405, and 740. Then searching for solo 
+sign pairs that are part of this text we can find three secure and one presumable solo 
+sign pair (Figure 27). The sign pairs 220-032, 405-590, and 740-405 can be found 
+on other artefacts as complete solo texts. Sign 220 prefixed with Sign 32 is a frequent 
+pair which is known from the analysis of ‘fish’-sign sequences by W ells (2011). Sign 
+pair 235-220 on H-2012 might be a complete or incomplete text, since the artefact is 
+a fragment. Nevertheless, the end of the ‘fish’-sign sequence after Sign 235 represents, 
+no doubt, a morphological border.
+Figure 26: Multivariate segmentation tree of the inscription on seal H-1657 with a low tree index of 0.38 
+(reading direction is from right to left).
+84
+Figure 27: Segmentation of the Long Pattern text on H-1657 (ICIT ID 1020). For solo signs 
+their frequency as a solo text is listed.
+Figure 28: Comparison of two similar texts.
+Shown in Figure 27 is also the Sign triplet 740-405-590 on M-1922, a square seal 
+without any iconography from Mohenjo-daro found in the DK.G (South) area. The 
+triplet proves that all three signs belong together forming one word or phrase.
+There exists an interesting text on H-8 (ID 1069) that is similar to the one on H-1657. 
+Both of them are Long Pattern texts starting with the same three signs: 002-690-921. 
+Besides, both contain the Sign triplet 740-405-590. In the text H-8 the frequent sign 
+pair 033-706 is located between both parts. In post-terminal position are Signs 354-
+001, an appendix that also occurs in text M-1340.
+On the whole, the segmentation of the Long Patterned text on seal H-1657 shows 
+that the text has an Initial cluster with three signs of unknown meaning, a ‘fish’-sign 
+sequence most likely representing information about the weight (20E+8E=28E, or 
+about 193.2 grams), Sign 806 infixed with a sign of Set 28 similar to Sign 405 that 
+occurs near the end of the text, a sequence of numerical signs that may represent the 
+number 3+6+20=29 or 3x8+6+20=50, and finally the T erminal cluster with a focus 
+on Sign 405 in the centre of the triplet.
+85
+SUMMARY
+Indus inscriptions can mostly be read from right to left. They involve a sign list of 
+about 702 distinct signs, although only less than 100 signs belong to the ‘core’ of 
+Indus signs of high frequency or widespread usage. It is a logographic-syllabic writing 
+system with roughly 50% of logograms and 50% of syllables.
+About 3976 texts with numerical signs and 1237 texts with ‘fish’-signs have been 
+found so far. The numerical base of long and short strokes as well as the numerical 
+value of some special signs can be detected through ‘equations’ found on tablets and 
+seals. The numerical value of Sign 900 is six as verified in Figures 16, 18, and 21. 
+There are several pieces of internal evidence that a decimal and an octal system were 
+in parallel use in Indus writing differentiated only by the length of the strokes. Long 
+strokes are use in a decimal system while short strokes are used in an octal system. 
+The numerical system of stacked strokes is less secure (Figure 16, ID 1805) but most 
+likely also a decimal system. Short or stacked strokes are used in combination with 
+long strokes to represent numbers smaller than ten (Figure 29).
+Figure 29: Signs used in the analysis of the Indus number system and the Indus weight system.
+86
+Because of the absence of a sign for zero, it is sometimes difficult to decide whether 
+sequences of numbers should be added or they represent positional notation. 
+At present no rule on this issue can be traced because of the small sample size of 
+‘equations’ . However, Sign 645 may indicate that the sum of the numbers should be 
+calculated as demonstrated on two examples (Figures 16 and 23).
+At least five ‘equations’ between ‘fish’-signs and counted items confirm the associated 
+weights proposed by W ells (this volume) for several ‘fish’-signs. They confirm that 
+Sign 32 in right position of Sign 220 represents number 20; confirming therefore a 
+decimal system of long strokes. The weights represented in the inscriptions are usually 
+very small, falling in the range between 3 and 136 grams. The implication is that small 
+or light items are listed in the inscriptions with a specific weight of about 4.1 grams 
+and 10.6 grams for each item, respectively.
+The syntactic analysis shows that stroke signs are used in all positions of Long 
+Patterned texts while ‘fish’-signs, except the basic ‘fish’-sign 220, occur only in medial 
+and terminal positions. This means that weighted items follow the Initial cluster and 
+that the syntactic position of objects is medial and terminal in the Indus language. It 
+does not necessarily indicate, however, that the initial position represents a predicate, 
+since a list of items usually does not require a verb. This is confirmed by the initial 
+position of numerical expressions in several Long Patterned texts, since subjects can 
+be counted in the same way as objects.
+LITERA TURE
+Ashraf, Md. Izhar; Sinha, Sitabhra: The “handedness” of language: Directional 
+symmetry breaking of sign usage in words. PLOS ONE 13(1) (2018), 1-16.
+Bonta, Christopher Steven: T opics in the Study of the Indus V alley Script. Brigham 
+Y oung University 1996.
+Chadwick, John:  The Decipherment of Linear B . Cambridge University press, 
+Cambridge 1958 (2nd edition 1967).
+Nissen, Hans J. ; Peter Damerow, Robert K. Englund: Archaic Bookkeeping: Early 
+Writing and T echniques of Economic Administration in the Ancient Near East . 
+University of Chicago Press, 1993.
+Das Gupta, T apan Kumar: Induskultur: Zahlen, Sprachen, Schrift. Books on Demand, 
+2019.
+Fairservis, W alter A.: The Harappan Civilization and its Writing. A Model for the 
+Decipherment of the Indus Script . New Delhi: Oxford and IBN Publishing Co. Pvt. 
+Ltd. 1992.
+87
+Fuls, Andreas: Entwicklung einer geographisch-epigraphischen Datenbank 
+der Indusschrift. In: Sven W eisbrich and Robert Kaden (Ed.), Entwicklerforum 
+Geoinformationstechnik 2010, Shaker V erlag, Aachen 2010, pp. 29-45.
+Fuls, Andreas: Positional Analysis of Indus Signs. V oprosi Epigrafiki, V ol. 7 (1) 2013, 
+pp. 253-275.
+Fuls, Andreas: Appendix I: Automated Segmentation of Indus T exts. In: Bryan K. 
+W ells, The Archaeology and Epigraphy of Indus Writing. Archaeopress, Oxford 2015, 
+pp. 100-118.
+Fuls, Andreas: Classifying Undeciphered W riting Systems. Historical Linguistics , 
+V ol. 128 (1), 2015, pp. 42-58. DOI: 10.13109/hisp.2015.128.1.42.
+Korvink, Michael P.: The Indus Script. A Positional-Statistical Approach. Gilund Press, 
+2007.
+Mackay, E. J. H.: Further Excavations at Mohenjo-daro . Munshiram Manoharlal 
+Publishers Pvt., Ltd., Delhi 1938.
+Marshall, Sir John: Mohenjo-daro and the Indus Civilization . London: Arthur 
+Probsthian 1931.
+McAlpin, David W.: Proto-Elamo-Dravidian: The Evidence and its Implications . 
+Philadelphia: The American Philosophical Society 1981.
+W ells, Bryan: Epigraphic Approaches T o Indus Writing. Oxbow Books, Oakville and 
+Oxford 2011.
+W ells, Bryan: The Archaeology and Epigraphy of Indus Writing. Archaeopress, Oxford 
+2015.
+W ells, Bryan: The V olumetric System of Harappa. In: Dennys Frenez, Gregg M. 
+Jamison, Randall W. Law, Massimo Vidale and Richard H. Meadow, W alking with 
+the Unicorn: Social Organization and Material Culture in Ancient South Asia, Oxford: 
+Archaeopress 2018, pp. 623-627.
+88
+APPENDIX A: SIGN LIST WITH 702 SIGNS OF THE ICIT DA T ABASE.
+
+89
+
+90
+
+III
+National Fund for Mohenjodaro
+Culture, T ourism, Antiquities and Archives Department 
+Government of Sindh
+Studies on Indus Script
+Conference on Indus Script
+Mohenjodaro 2020
+IV
+Printed By: SEAS; Art & Design
+Designing and Formatting By: Faraz Nazar
+Title by:  Zahid Hussain Detho
+Composed on Core i7,
+Fonts - Garamound Premier Pro
+Point size - Headline 24pt, Sub Headline 18pt, and 14pt, for T ext 11pt 
+Published Provisionally 2020
+Publisher
+National Fund for Mohenjodaro
+Publisher asserts the Intellectual Rights of Contributors and Publisher
+Conference Committee
+Syed Sardar Ali Shah
+Patron
+Kaleemullah Lashari
+Convener
+Dr. Jonathan Mark Kenoyer
+Member
+Dr. Asma Ibrahim,
+Member 
+Mr. Ghulam Akbar Laghari
+Member 
+Mr. Manzoor Ahmed Kanasro
+Member / Secretary
+Mr. Sajid Hussain Khan
+Staff Officer /Liaison
+V
+CONTENTS
+Kaleemullah Lashari Introduction vii-xvi
+Jonathan Mark Kenoyer Origin and Development of the Indus 
+Script: Insights from Harappa and other 
+sites 
+1-20
+Dennys Frenez Mirrored signs: Administrative and 
+Scriptorial information in the Indus 
+Civilization Clay Sealings
+21-38
+Ayumu Konasukawa, Ph.D. Indus Scripts Incised on the Seals 
+Discovered from theInitial Phase of 
+Harappa Period in the Ghaggar Basin: 
+Their Significance for Understanding 
+the Chronology, the Context and the 
+Interpretation of Indus W riting System 
+39-55
+Andreas Fuls Ancient W riting and Modern T echnologies 
+– Structural Analysis of Numerical Indus
+Inscriptions 
+57-90
+Bryan K. W ells, Indus W eights and “Fish” (Set 11) Signs 91-114
+Gregg Jamison Multifaceted studies of Indus seals: style, 
+technology, and inscriptions 
+115-142
+Asko Parpola Survival of Harappan Crocodile Cult in 
+Present-Day Gujarat and Sindh
+143-157
+VI
+M N V ahia,
+Rajesh P. N. Rao
+Nisha Y adav
+Indus Script and Indus Culture 159-165
+Massimo Vidale An Informal Comment on The 
+Decipherment of the Indus Script
+167-171
+Nisha Y adav Computational Studies of the Indus Script 173-185
+Qasid H. Mallah Lakhan-Jo-Daro Seals, Sealing, and 
+inscribed objects
+187-213
+P. K. Choudhary Study of The Indus V alley Scripts Through 
+Socio-Economic Approaches
+215-227
+Steffen T erp Laursen The Indus Script - through the lens of 
+Dilmun Archaeology
+229-245
+Jonathan Mark Kenoyer
+The Indus Script: Origins, Use and 
+Disappearance
+247-277
+Prof. Dr. Michael Jansen Indus seals; when where and why?
+Further studies on their spacial relation 
+in the urban context of Mohenjodaro
+278-280

@@ -1,0 +1,58 @@
+{
+  "document_id": "ancient_writing_and_modern_technologies_51831ac9",
+  "title": "",
+  "extraction_date": "2026-05-17T16:30:50.282314",
+  "total_claims": 4,
+  "auto_extracted": 4,
+  "manually_curated": 0,
+  "claims": [
+    {
+      "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+      "source_document_id": "ancient_writing_and_modern_technologies_51831ac9",
+      "claim_type": "sign_value_claim",
+      "normalized_claim": "Sign value: 900 / number six",
+      "quote_fragment": "900 / number six",
+      "claim_status": "untested",
+      "testability": "directly_testable",
+      "confidence_in_source": 0.6,
+      "extracted_at": "2026-05-17T16:30:50.266488"
+    },
+    {
+      "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
+      "source_document_id": "ancient_writing_and_modern_technologies_51831ac9",
+      "claim_type": "sign_value_claim",
+      "normalized_claim": "Sign value: 700 / a volumetric system with a unit \nof 40",
+      "quote_fragment": "700 / a volumetric system with a unit \nof 40",
+      "claim_status": "untested",
+      "testability": "directly_testable",
+      "confidence_in_source": 0.6,
+      "extracted_at": "2026-05-17T16:30:50.266488"
+    },
+    {
+      "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
+      "source_document_id": "ancient_writing_and_modern_technologies_51831ac9",
+      "claim_type": "sign_value_claim",
+      "normalized_claim": "Sign value: 700 / a unit of 4",
+      "quote_fragment": "700 / a unit of 4",
+      "claim_status": "untested",
+      "testability": "directly_testable",
+      "confidence_in_source": 0.6,
+      "extracted_at": "2026-05-17T16:30:50.266488"
+    },
+    {
+      "claim_id": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004",
+      "source_document_id": "ancient_writing_and_modern_technologies_51831ac9",
+      "claim_type": "statistical_claim",
+      "normalized_claim": "Statistical finding: positional analysis",
+      "quote_fragment": "positional analysis",
+      "claim_status": "untested",
+      "testability": "directly_testable",
+      "confidence_in_source": 0.8,
+      "extracted_at": "2026-05-17T16:30:50.266488"
+    }
+  ],
+  "_citation": {
+    "system": "Glossa-Lab Indus Evidence Graph Batch 4",
+    "source_doc": "ancient_writing_and_modern_technologies_51831ac9"
+  }
+}

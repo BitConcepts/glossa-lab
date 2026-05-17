@@ -1,0 +1,28 @@
+{
+  "document_id": "positional_analysis_of_indus_signs_a2bedc93",
+  "original_filename": "Positional_Analysis_of_Indus_Signs.pdf",
+  "stored_path_raw": "glossa-indus\\raw\\user_uploads\\Positional_Analysis_of_Indus_Signs.pdf",
+  "stored_path_text": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\glossa-indus\\processed\\cleaned_text\\positional_analysis_of_indus_signs_a2bedc93.txt",
+  "file_type": ".pdf",
+  "file_size_bytes": 468669,
+  "checksum_sha256": "a2bedc93d9c0fc7dfae53ea0b93859c2ac2110639d7ab53d5daab3cd034d6f6c",
+  "intake_date": "2026-05-17T16:30:05.743974",
+  "license_status": "unclear",
+  "access_type": "user_uploaded",
+  "ocr_required": false,
+  "ocr_status": "not_needed",
+  "duplicate_status": "unique",
+  "processing_status": "registered",
+  "detected_title": "Positional Analysis of Indus Signs",
+  "detected_authors": [],
+  "detected_year": 2013,
+  "detected_doi": null,
+  "detected_abstract": "",
+  "claim_extraction_status": "pending",
+  "hypothesis_relevance": null,
+  "_citation": {
+    "system": "Glossa-Lab Indus Evidence Graph",
+    "intake_version": "1.0",
+    "note": "User-provided or acquired document. License status must be verified before publication use."
+  }
+}

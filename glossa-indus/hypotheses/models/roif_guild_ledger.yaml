@@ -1,23 +1,46 @@
 # Hypothesis Model: Roif Economic/Guild Ledger
 # Glossa-Lab Indus Evidence Graph
-# STATUS: STUB — awaiting paper upload to raw/user_uploads/
+# STATUS: PARTIALLY ENCODED — paper processed 2026-05-17
 
 model_id: roif_guild_ledger
-model_name: "Roif Economic/Guild Ledger Model"
+model_name: "Roif — Akkadian Trade Mnemonic / Guild Ledger Model"
 model_type: phonetic_mnemonic_economic_ledger
-status: stub
+status: partially_encoded
 
-awaiting_upload:
-  file: "Roif paper (title TBD)"
-  destination: "raw/user_uploads/"
-  intake_command: "python scripts/indus_intake.py --file raw/user_uploads/<roif_paper>.pdf"
+source_document:
+  document_id: indus_valley_script_deci.pdf"
+  title: "Indus Valley Script deciphered — From Mythology to History using the Akkadian shorthand approach"
+  author: "Roif, Avishai"
+  doi: "10.2307/595168"
 
-# Known claims from instruction plan description
+core_thesis: >
+  The Indus Valley Script functioned primarily as a living economic ledger
+  encoding tribute, trade, guild interactions, and enforcement arrangements.
+  Methodology pairs Akkadian trade mnemonics with Proto-Dravidian phonetics.
+  Proposed by Avishai Roif as a socioeconomic ledger, not ritual codex.
+
+# Sign assignments extracted from paper
+sign_assignments:
+  - sign_visual: "fish" ; site_context: "Coastal (Lothal); trade guilds"
+  - sign_visual: "jar/pot"; proposed_value: "storage/tribute"
+  - sign_visual: "horned deity"; site_context: "Kalibangan fire-altars; tribute intermediaries"
+  - sign_visual: "arrow"; proposed_value: "tir = enforcement/conflict resolution"; site_context: "border/riverine sites"
+  - sign_visual: "boat"; proposed_value: "maritime trade"
+  - sign_visual: "cattle/bull"; proposed_value: "livestock tribute"
+  - sign_visual: "plough"; proposed_value: "agricultural production"
+  - sign_visual: "serpent"; proposed_value: "boundary/ritual marker"
+  - sign_visual: "grid/checker"; proposed_value: "accounting/ledger structure"
+
+glossa_lab_prior_result_fish: >
+  Phase-4x CISI: fish NOT coastal-enriched (coastal rate 5.7% below baseline).
+  Fish signs appear at inland sites (Harappa, Mohenjo-daro) above chance.
+  This PARTIALLY FALSIFIES Roif's coastal-controller claim for fish.
+
 known_claims_summary: >
   Indus script encodes guild, tribute, trade, and enforcement relations using
   Proto-Dravidian phonetics and Akkadian trade-mnemonic parallels.
-  Sign table on final page maps: fish, jar, horned deity, arrow, boat, cattle,
-  plough, serpent, rodent, grid → proposed values.
+  Sign table maps: fish (coastal guild), jar (tribute), horned deity (intermediary),
+  arrow (enforcement), boat (maritime trade), cattle, plough, serpent, grid.
 
 core_claims:
   - claim_id: roif_economic_001

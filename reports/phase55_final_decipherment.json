@@ -1,0 +1,6242 @@
+[
+  {
+    "sign": "M342",
+    "n_corpus": 584,
+    "ensemble_reading": "ி",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ி",
+      "Tamil_syllabic": "ay",
+      "Proto_Dravidian": "ay",
+      "Sanskrit": "ay"
+    },
+    "confirmed_reading": "ay/ā",
+    "confirmed_confidence": "HIGH"
+  },
+  {
+    "sign": "M267",
+    "n_corpus": 400,
+    "ensemble_reading": "த",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "த",
+      "Tamil_syllabic": "na",
+      "Proto_Dravidian": "av",
+      "Sanskrit": "at"
+    },
+    "confirmed_reading": "?/uncertain",
+    "confirmed_confidence": "UNCERTAIN"
+  },
+  {
+    "sign": "M099",
+    "n_corpus": 389,
+    "ensemble_reading": "?261",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?261",
+      "Tamil_syllabic": "ko",
+      "Proto_Dravidian": "ko",
+      "Sanskrit": "a"
+    },
+    "confirmed_reading": "kol/koḷ",
+    "confirmed_confidence": "HIGH"
+  },
+  {
+    "sign": "M176",
+    "n_corpus": 356,
+    "ensemble_reading": "ச",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ச",
+      "Tamil_syllabic": "an",
+      "Proto_Dravidian": "an",
+      "Sanskrit": "an"
+    },
+    "confirmed_reading": "an/aṇ",
+    "confirmed_confidence": "HIGH"
+  },
+  {
+    "sign": "M211",
+    "n_corpus": 249,
+    "ensemble_reading": "?289",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?289",
+      "Tamil_syllabic": "ra",
+      "Proto_Dravidian": "al",
+      "Sanskrit": "it"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M328",
+    "n_corpus": 234,
+    "ensemble_reading": "வ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "வ",
+      "Tamil_syllabic": "ku",
+      "Proto_Dravidian": "ar",
+      "Sanskrit": "a"
+    },
+    "confirmed_reading": "ā/āl",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M293",
+    "n_corpus": 232,
+    "ensemble_reading": "்",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "்",
+      "Tamil_syllabic": "la",
+      "Proto_Dravidian": "ak",
+      "Sanskrit": "vi"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M059",
+    "n_corpus": 222,
+    "ensemble_reading": "ு",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ு",
+      "Tamil_syllabic": "ta",
+      "Proto_Dravidian": "pa",
+      "Sanskrit": "ma"
+    },
+    "confirmed_reading": "ēḷ/eḷ",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M162",
+    "n_corpus": 205,
+    "ensemble_reading": "ப",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ப",
+      "Tamil_syllabic": "ga",
+      "Proto_Dravidian": "na",
+      "Sanskrit": "shiv"
+    },
+    "confirmed_reading": "il/iḷ",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M391",
+    "n_corpus": 193,
+    "ensemble_reading": "ம",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ம",
+      "Tamil_syllabic": "ri",
+      "Proto_Dravidian": "mu",
+      "Sanskrit": "u"
+    },
+    "confirmed_reading": "ka/kaṇ",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M367",
+    "n_corpus": 190,
+    "ensemble_reading": "?185",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?185",
+      "Tamil_syllabic": "va",
+      "Proto_Dravidian": "ni",
+      "Sanskrit": "i"
+    },
+    "confirmed_reading": "am/neuter",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M089",
+    "n_corpus": 171,
+    "ensemble_reading": "?359",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?359",
+      "Tamil_syllabic": "ni",
+      "Proto_Dravidian": "in",
+      "Sanskrit": "pran"
+    },
+    "confirmed_reading": "tu/tū",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M233",
+    "n_corpus": 171,
+    "ensemble_reading": "?232",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?232",
+      "Tamil_syllabic": "i",
+      "Proto_Dravidian": "ra",
+      "Sanskrit": "as"
+    },
+    "confirmed_reading": "ūr",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M051",
+    "n_corpus": 163,
+    "ensemble_reading": "க",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "க",
+      "Tamil_syllabic": "ku",
+      "Proto_Dravidian": "ak",
+      "Sanskrit": "iv"
+    },
+    "confirmed_reading": "pū/puḷ",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M336",
+    "n_corpus": 161,
+    "ensemble_reading": "ன",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ன",
+      "Tamil_syllabic": "ru",
+      "Proto_Dravidian": "or",
+      "Sanskrit": "ah"
+    },
+    "confirmed_reading": "iṉ/locative",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M048",
+    "n_corpus": 157,
+    "ensemble_reading": "ட",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ட",
+      "Tamil_syllabic": "li",
+      "Proto_Dravidian": "at",
+      "Sanskrit": "sha"
+    },
+    "confirmed_reading": "mu/muṉ",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M065",
+    "n_corpus": 154,
+    "ensemble_reading": "?347",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?347",
+      "Tamil_syllabic": "ti",
+      "Proto_Dravidian": "er",
+      "Sanskrit": "va"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M012",
+    "n_corpus": 143,
+    "ensemble_reading": "?349",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?349",
+      "Tamil_syllabic": "di",
+      "Proto_Dravidian": "ma",
+      "Sanskrit": "ar"
+    },
+    "confirmed_reading": "oṉṟu/1",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M125",
+    "n_corpus": 132,
+    "ensemble_reading": "?316",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?316",
+      "Tamil_syllabic": "ma",
+      "Proto_Dravidian": "am",
+      "Sanskrit": "av"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M087",
+    "n_corpus": 130,
+    "ensemble_reading": "?304",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?304",
+      "Tamil_syllabic": "ke",
+      "Proto_Dravidian": "ir",
+      "Sanskrit": "o"
+    },
+    "confirmed_reading": "veL",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M305",
+    "n_corpus": 83,
+    "ensemble_reading": "?259",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?259",
+      "Tamil_syllabic": "cu",
+      "Proto_Dravidian": "pl",
+      "Sanskrit": "rtu"
+    },
+    "confirmed_reading": "ōṭu/comitative",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M249",
+    "n_corpus": 73,
+    "ensemble_reading": "?305",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?305",
+      "Tamil_syllabic": "sa",
+      "Proto_Dravidian": "lu",
+      "Sanskrit": "sa"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M220",
+    "n_corpus": 62,
+    "ensemble_reading": "ா",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ா",
+      "Tamil_syllabic": "pa",
+      "Proto_Dravidian": "re",
+      "Sanskrit": "em"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M062",
+    "n_corpus": 28,
+    "ensemble_reading": "e",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": false,
+    "per_lm": {
+      "Tamil_char": "e",
+      "Tamil_syllabic": "e",
+      "Proto_Dravidian": "ea",
+      "Sanskrit": "e"
+    },
+    "confirmed_reading": "erutu",
+    "confirmed_confidence": "HIGH"
+  },
+  {
+    "sign": "M073",
+    "n_corpus": 25,
+    "ensemble_reading": "?268",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?268",
+      "Tamil_syllabic": "ci",
+      "Proto_Dravidian": "du",
+      "Sanskrit": "tri"
+    },
+    "confirmed_reading": "kōṉ",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M045",
+    "n_corpus": 24,
+    "ensemble_reading": "?273",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?273",
+      "Tamil_syllabic": "ya",
+      "Proto_Dravidian": "ya",
+      "Sanskrit": "ya"
+    },
+    "confirmed_reading": "yānai",
+    "confirmed_confidence": "HIGH"
+  },
+  {
+    "sign": "M079",
+    "n_corpus": 24,
+    "ensemble_reading": "?93",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?93",
+      "Tamil_syllabic": "le",
+      "Proto_Dravidian": "pi",
+      "Sanskrit": "nti"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M013",
+    "n_corpus": 23,
+    "ensemble_reading": "?157",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?157",
+      "Tamil_syllabic": "mu",
+      "Proto_Dravidian": "nd",
+      "Sanskrit": "ta"
+    },
+    "confirmed_reading": "nakaram",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M016",
+    "n_corpus": 23,
+    "ensemble_reading": "?98",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?98",
+      "Tamil_syllabic": "ka",
+      "Proto_Dravidian": "ka",
+      "Sanskrit": "ka"
+    },
+    "confirmed_reading": "kaḷiṟu",
+    "confirmed_confidence": "HIGH"
+  },
+  {
+    "sign": "M008",
+    "n_corpus": 22,
+    "ensemble_reading": "?70",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?70",
+      "Tamil_syllabic": "mū",
+      "Proto_Dravidian": "im",
+      "Sanskrit": "ur"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M022",
+    "n_corpus": 22,
+    "ensemble_reading": "?128",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?128",
+      "Tamil_syllabic": "rap",
+      "Proto_Dravidian": "cc",
+      "Sanskrit": "ut"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M052",
+    "n_corpus": 22,
+    "ensemble_reading": "?147",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?147",
+      "Tamil_syllabic": "ki",
+      "Proto_Dravidian": "ai",
+      "Sanskrit": "dva"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M061",
+    "n_corpus": 22,
+    "ensemble_reading": "?178",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?178",
+      "Tamil_syllabic": "de",
+      "Proto_Dravidian": "iy",
+      "Sanskrit": "er"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M058",
+    "n_corpus": 21,
+    "ensemble_reading": "?163",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?163",
+      "Tamil_syllabic": "si",
+      "Proto_Dravidian": "kk",
+      "Sanskrit": "tma"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M019",
+    "n_corpus": 20,
+    "ensemble_reading": "?376",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?376",
+      "Tamil_syllabic": "da",
+      "Proto_Dravidian": "ek",
+      "Sanskrit": "rjun"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M060",
+    "n_corpus": 20,
+    "ensemble_reading": "?301",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?301",
+      "Tamil_syllabic": "kar",
+      "Proto_Dravidian": "ng",
+      "Sanskrit": "prav"
+    },
+    "confirmed_reading": "kāṇṭāmirukam",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M003",
+    "n_corpus": 19,
+    "ensemble_reading": "?311",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?311",
+      "Tamil_syllabic": "rik",
+      "Proto_Dravidian": "it",
+      "Sanskrit": "shu"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M035",
+    "n_corpus": 19,
+    "ensemble_reading": "?74",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?74",
+      "Tamil_syllabic": "ja",
+      "Proto_Dravidian": "pp",
+      "Sanskrit": "stey"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M044",
+    "n_corpus": 19,
+    "ensemble_reading": "?150",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?150",
+      "Tamil_syllabic": "il",
+      "Proto_Dravidian": "cu",
+      "Sanskrit": "theh"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M053",
+    "n_corpus": 19,
+    "ensemble_reading": "?217",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?217",
+      "Tamil_syllabic": "ce",
+      "Proto_Dravidian": "as",
+      "Sanskrit": "sya"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M056",
+    "n_corpus": 19,
+    "ensemble_reading": "?179",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?179",
+      "Tamil_syllabic": "nu",
+      "Proto_Dravidian": "ol",
+      "Sanskrit": "nci"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M080",
+    "n_corpus": 19,
+    "ensemble_reading": "?250",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?250",
+      "Tamil_syllabic": "ha",
+      "Proto_Dravidian": "la",
+      "Sanskrit": "pri"
+    },
+    "confirmed_reading": "vēṅkai",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M017",
+    "n_corpus": 18,
+    "ensemble_reading": "?201",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?201",
+      "Tamil_syllabic": "ba",
+      "Proto_Dravidian": "mb",
+      "Sanskrit": "sam"
+    },
+    "confirmed_reading": "kai",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M018",
+    "n_corpus": 18,
+    "ensemble_reading": "?186",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?186",
+      "Tamil_syllabic": "o",
+      "Proto_Dravidian": "di",
+      "Sanskrit": "dyo"
+    },
+    "confirmed_reading": "nēr",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M020",
+    "n_corpus": 18,
+    "ensemble_reading": "?113",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?113",
+      "Tamil_syllabic": "pi",
+      "Proto_Dravidian": "ne",
+      "Sanskrit": "nga"
+    },
+    "confirmed_reading": "kuṉ",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M030",
+    "n_corpus": 18,
+    "ensemble_reading": "?109",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?109",
+      "Tamil_syllabic": "ram",
+      "Proto_Dravidian": "ll",
+      "Sanskrit": "dya"
+    },
+    "confirmed_reading": "kō",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M039",
+    "n_corpus": 18,
+    "ensemble_reading": "?107",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?107",
+      "Tamil_syllabic": "mir",
+      "Proto_Dravidian": "ce",
+      "Sanskrit": "ac"
+    },
+    "confirmed_reading": "āṉai",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M057",
+    "n_corpus": 18,
+    "ensemble_reading": "?158",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?158",
+      "Tamil_syllabic": "u",
+      "Proto_Dravidian": "ba",
+      "Sanskrit": "dhar"
+    },
+    "confirmed_reading": "māṭu",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M063",
+    "n_corpus": 18,
+    "ensemble_reading": "?167",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?167",
+      "Tamil_syllabic": "rī",
+      "Proto_Dravidian": "ad",
+      "Sanskrit": "msa"
+    },
+    "confirmed_reading": "mutalai",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M077",
+    "n_corpus": 18,
+    "ensemble_reading": "?72",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?72",
+      "Tamil_syllabic": "du",
+      "Proto_Dravidian": "mi",
+      "Sanskrit": "dha"
+    },
+    "confirmed_reading": "nal",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M004",
+    "n_corpus": 17,
+    "ensemble_reading": "?207",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?207",
+      "Tamil_syllabic": "in",
+      "Proto_Dravidian": "ki",
+      "Sanskrit": "crif"
+    },
+    "confirmed_reading": "kēḷ",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M010",
+    "n_corpus": 17,
+    "ensemble_reading": "?256",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?256",
+      "Tamil_syllabic": "nā",
+      "Proto_Dravidian": "ag",
+      "Sanskrit": "un"
+    },
+    "confirmed_reading": "paṭ",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M014",
+    "n_corpus": 17,
+    "ensemble_reading": "?361",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?361",
+      "Tamil_syllabic": "ne",
+      "Proto_Dravidian": "il",
+      "Sanskrit": "rgun"
+    },
+    "confirmed_reading": "tiru",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M025",
+    "n_corpus": 17,
+    "ensemble_reading": "?298",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?298",
+      "Tamil_syllabic": "nē",
+      "Proto_Dravidian": "ip",
+      "Sanskrit": "gam"
+    },
+    "confirmed_reading": "cem",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M026",
+    "n_corpus": 17,
+    "ensemble_reading": "?300",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?300",
+      "Tamil_syllabic": "mi",
+      "Proto_Dravidian": "ke",
+      "Sanskrit": "stu"
+    },
+    "confirmed_reading": "mā",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M027",
+    "n_corpus": 17,
+    "ensemble_reading": "?210",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?210",
+      "Tamil_syllabic": "gā",
+      "Proto_Dravidian": "iv",
+      "Sanskrit": "vay"
+    },
+    "confirmed_reading": "māṟ",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M034",
+    "n_corpus": 17,
+    "ensemble_reading": "?170",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?170",
+      "Tamil_syllabic": "mar",
+      "Proto_Dravidian": "po",
+      "Sanskrit": "dev"
+    },
+    "confirmed_reading": "tōḷ",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M038",
+    "n_corpus": 17,
+    "ensemble_reading": "?71",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?71",
+      "Tamil_syllabic": "rak",
+      "Proto_Dravidian": "ap",
+      "Sanskrit": "ttam"
+    },
+    "confirmed_reading": "pōr",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M041",
+    "n_corpus": 17,
+    "ensemble_reading": "?339",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?339",
+      "Tamil_syllabic": "tā",
+      "Proto_Dravidian": "ic",
+      "Sanskrit": "spe"
+    },
+    "confirmed_reading": "pēr",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M050",
+    "n_corpus": 17,
+    "ensemble_reading": "?299",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?299",
+      "Tamil_syllabic": "me",
+      "Proto_Dravidian": "el",
+      "Sanskrit": "tha"
+    },
+    "confirmed_reading": "pār",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M070",
+    "n_corpus": 17,
+    "ensemble_reading": "?195",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?195",
+      "Tamil_syllabic": "re",
+      "Proto_Dravidian": "nj",
+      "Sanskrit": "gnor"
+    },
+    "confirmed_reading": "vēl",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M078",
+    "n_corpus": 17,
+    "ensemble_reading": "?285",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?285",
+      "Tamil_syllabic": "lan",
+      "Proto_Dravidian": "gi",
+      "Sanskrit": "uty"
+    },
+    "confirmed_reading": "cēr",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M002",
+    "n_corpus": 16,
+    "ensemble_reading": "?81",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?81",
+      "Tamil_syllabic": "te",
+      "Proto_Dravidian": "ge",
+      "Sanskrit": "cti"
+    },
+    "confirmed_reading": "kuṉ",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M009",
+    "n_corpus": 16,
+    "ensemble_reading": "?240",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?240",
+      "Tamil_syllabic": "kū",
+      "Proto_Dravidian": "mo",
+      "Sanskrit": "im"
+    },
+    "confirmed_reading": "āṇ",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M021",
+    "n_corpus": 16,
+    "ensemble_reading": "?368",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?368",
+      "Tamil_syllabic": "pā",
+      "Proto_Dravidian": "rp",
+      "Sanskrit": "tcit"
+    },
+    "confirmed_reading": "kō",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M023",
+    "n_corpus": 16,
+    "ensemble_reading": "?303",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?303",
+      "Tamil_syllabic": "go",
+      "Proto_Dravidian": "ih",
+      "Sanskrit": "jnan"
+    },
+    "confirmed_reading": "vaḷ",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M031",
+    "n_corpus": 16,
+    "ensemble_reading": "?132",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?132",
+      "Tamil_syllabic": "se",
+      "Proto_Dravidian": "nt",
+      "Sanskrit": "nya"
+    },
+    "confirmed_reading": "kai",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M037",
+    "n_corpus": 16,
+    "ensemble_reading": "?129",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?129",
+      "Tamil_syllabic": "gi",
+      "Proto_Dravidian": "lk",
+      "Sanskrit": "aj"
+    },
+    "confirmed_reading": "kēḷ",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M066",
+    "n_corpus": 16,
+    "ensemble_reading": "?68",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?68",
+      "Tamil_syllabic": "lup",
+      "Proto_Dravidian": "ga",
+      "Sanskrit": "jna"
+    },
+    "confirmed_reading": "cōḻ",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M069",
+    "n_corpus": 16,
+    "ensemble_reading": "?325",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?325",
+      "Tamil_syllabic": "su",
+      "Proto_Dravidian": "ek",
+      "Sanskrit": "mat"
+    },
+    "confirmed_reading": "nēr",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M071",
+    "n_corpus": 16,
+    "ensemble_reading": "?83",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?83",
+      "Tamil_syllabic": "gu",
+      "Proto_Dravidian": "nn",
+      "Sanskrit": "da"
+    },
+    "confirmed_reading": "nal",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M005",
+    "n_corpus": 15,
+    "ensemble_reading": "?134",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?134",
+      "Tamil_syllabic": "ruk",
+      "Proto_Dravidian": "mm",
+      "Sanskrit": "ra"
+    },
+    "confirmed_reading": "kōṉ",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M006",
+    "n_corpus": 15,
+    "ensemble_reading": "?152",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?152",
+      "Tamil_syllabic": "pu",
+      "Proto_Dravidian": "pu",
+      "Sanskrit": "pu"
+    },
+    "confirmed_reading": "puli",
+    "confirmed_confidence": "HIGH"
+  },
+  {
+    "sign": "M011",
+    "n_corpus": 15,
+    "ensemble_reading": "?168",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?168",
+      "Tamil_syllabic": "kī",
+      "Proto_Dravidian": "rk",
+      "Sanskrit": "nce"
+    },
+    "confirmed_reading": "kaḷiṟu",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M015",
+    "n_corpus": 15,
+    "ensemble_reading": "?187",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?187",
+      "Tamil_syllabic": "kal",
+      "Proto_Dravidian": "ha",
+      "Sanskrit": "ap"
+    },
+    "confirmed_reading": "mā",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M036",
+    "n_corpus": 15,
+    "ensemble_reading": "?378",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?378",
+      "Tamil_syllabic": "to",
+      "Proto_Dravidian": "ci",
+      "Sanskrit": "par"
+    },
+    "confirmed_reading": "tiru",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M067",
+    "n_corpus": 15,
+    "ensemble_reading": "?246",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?246",
+      "Tamil_syllabic": "tu",
+      "Proto_Dravidian": "ik",
+      "Sanskrit": "stam"
+    },
+    "confirmed_reading": "kōṭṭāṉ",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M001",
+    "n_corpus": 14,
+    "ensemble_reading": "?260",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?260",
+      "Tamil_syllabic": "var",
+      "Proto_Dravidian": "ca",
+      "Sanskrit": "uh"
+    },
+    "confirmed_reading": "tōḷ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M075",
+    "n_corpus": 14,
+    "ensemble_reading": "?228",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?228",
+      "Tamil_syllabic": "pe",
+      "Proto_Dravidian": "ah",
+      "Sanskrit": "cre"
+    },
+    "confirmed_reading": "māṟ",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M024",
+    "n_corpus": 13,
+    "ensemble_reading": "?236",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?236",
+      "Tamil_syllabic": "ro",
+      "Proto_Dravidian": "pk",
+      "Sanskrit": "tra"
+    },
+    "confirmed_reading": "pēr",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M040",
+    "n_corpus": 13,
+    "ensemble_reading": "?146",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?146",
+      "Tamil_syllabic": "rum",
+      "Proto_Dravidian": "ac",
+      "Sanskrit": "gur"
+    },
+    "confirmed_reading": "mutalai",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M042",
+    "n_corpus": 13,
+    "ensemble_reading": "?177",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?177",
+      "Tamil_syllabic": "ge",
+      "Proto_Dravidian": "ri",
+      "Sanskrit": "ndav"
+    },
+    "confirmed_reading": "māṭu",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M047",
+    "n_corpus": 13,
+    "ensemble_reading": "?310",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?310",
+      "Tamil_syllabic": "kā",
+      "Proto_Dravidian": "lv",
+      "Sanskrit": "sti"
+    },
+    "confirmed_reading": "min/mīn",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M049",
+    "n_corpus": 13,
+    "ensemble_reading": "?341",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?341",
+      "Tamil_syllabic": "tar",
+      "Proto_Dravidian": "rg",
+      "Sanskrit": "vraj"
+    },
+    "confirmed_reading": "pōr",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M068",
+    "n_corpus": 13,
+    "ensemble_reading": "?280",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?280",
+      "Tamil_syllabic": "rā",
+      "Proto_Dravidian": "dd",
+      "Sanskrit": "nar"
+    },
+    "confirmed_reading": "maṟi",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M081",
+    "n_corpus": 13,
+    "ensemble_reading": "?382",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?382",
+      "Tamil_syllabic": "lu",
+      "Proto_Dravidian": "is",
+      "Sanskrit": "ir"
+    },
+    "confirmed_reading": "paṭ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M033",
+    "n_corpus": 12,
+    "ensemble_reading": "?112",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?112",
+      "Tamil_syllabic": "lā",
+      "Proto_Dravidian": "od",
+      "Sanskrit": "ga"
+    },
+    "confirmed_reading": "puli",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M054",
+    "n_corpus": 12,
+    "ensemble_reading": "?192",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?192",
+      "Tamil_syllabic": "bo",
+      "Proto_Dravidian": "nc",
+      "Sanskrit": "do"
+    },
+    "confirmed_reading": "vēl",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M055",
+    "n_corpus": 12,
+    "ensemble_reading": "?120",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?120",
+      "Tamil_syllabic": "sī",
+      "Proto_Dravidian": "ja",
+      "Sanskrit": "mah"
+    },
+    "confirmed_reading": "vaḷ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M072",
+    "n_corpus": 12,
+    "ensemble_reading": "ய",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ய",
+      "Tamil_syllabic": "rip",
+      "Proto_Dravidian": "pe",
+      "Sanskrit": "bhav"
+    },
+    "confirmed_reading": "cēr",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M074",
+    "n_corpus": 12,
+    "ensemble_reading": "?348",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?348",
+      "Tamil_syllabic": "do",
+      "Proto_Dravidian": "rt",
+      "Sanskrit": "cha"
+    },
+    "confirmed_reading": "cem",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M007",
+    "n_corpus": 11,
+    "ensemble_reading": "?266",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?266",
+      "Tamil_syllabic": "mā",
+      "Proto_Dravidian": "es",
+      "Sanskrit": "pit"
+    },
+    "confirmed_reading": "nal",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M028",
+    "n_corpus": 11,
+    "ensemble_reading": "?99",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?99",
+      "Tamil_syllabic": "dā",
+      "Proto_Dravidian": "ji",
+      "Sanskrit": "tya"
+    },
+    "confirmed_reading": "cōḻ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M029",
+    "n_corpus": 11,
+    "ensemble_reading": "?223",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?223",
+      "Tamil_syllabic": "ji",
+      "Proto_Dravidian": "en",
+      "Sanskrit": "pta"
+    },
+    "confirmed_reading": "yānai",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M043",
+    "n_corpus": 11,
+    "ensemble_reading": "?140",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?140",
+      "Tamil_syllabic": "bi",
+      "Proto_Dravidian": "mp",
+      "Sanskrit": "us"
+    },
+    "confirmed_reading": "erutu",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M046",
+    "n_corpus": 11,
+    "ensemble_reading": "?78",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?78",
+      "Tamil_syllabic": "hu",
+      "Proto_Dravidian": "rn",
+      "Sanskrit": "gnin"
+    },
+    "confirmed_reading": "nal",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M064",
+    "n_corpus": 11,
+    "ensemble_reading": "?379",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?379",
+      "Tamil_syllabic": "gur",
+      "Proto_Dravidian": "bb",
+      "Sanskrit": "kva"
+    },
+    "confirmed_reading": "nal",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M032",
+    "n_corpus": 9,
+    "ensemble_reading": "?169",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?169",
+      "Tamil_syllabic": "ca",
+      "Proto_Dravidian": "aa",
+      "Sanskrit": "tyash"
+    },
+    "confirmed_reading": "nal",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M102",
+    "n_corpus": 8,
+    "ensemble_reading": "?287",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?287",
+      "Tamil_syllabic": "cī",
+      "Proto_Dravidian": "mn",
+      "Sanskrit": "net"
+    },
+    "confirmed_reading": "nāḷ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M169",
+    "n_corpus": 8,
+    "ensemble_reading": "?369",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?369",
+      "Tamil_syllabic": "nan",
+      "Proto_Dravidian": "hi",
+      "Sanskrit": "dhu"
+    },
+    "confirmed_reading": "ney",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M237",
+    "n_corpus": 8,
+    "ensemble_reading": "?358",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?358",
+      "Tamil_syllabic": "mo",
+      "Proto_Dravidian": "ro",
+      "Sanskrit": "dhid"
+    },
+    "confirmed_reading": "naṟ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M347",
+    "n_corpus": 8,
+    "ensemble_reading": "?284",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?284",
+      "Tamil_syllabic": "gar",
+      "Proto_Dravidian": "on",
+      "Sanskrit": "dam"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M076",
+    "n_corpus": 7,
+    "ensemble_reading": "?123",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?123",
+      "Tamil_syllabic": "ric",
+      "Proto_Dravidian": "nu",
+      "Sanskrit": "nten"
+    },
+    "confirmed_reading": "nal",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M082",
+    "n_corpus": 7,
+    "ensemble_reading": "?126",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?126",
+      "Tamil_syllabic": "nal",
+      "Proto_Dravidian": "lp",
+      "Sanskrit": "nti"
+    },
+    "confirmed_reading": "nal",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M128",
+    "n_corpus": 7,
+    "ensemble_reading": "?159",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?159",
+      "Tamil_syllabic": "pan",
+      "Proto_Dravidian": "ec",
+      "Sanskrit": "jniy"
+    },
+    "confirmed_reading": "kaṇ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M149",
+    "n_corpus": 7,
+    "ensemble_reading": "?309",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?309",
+      "Tamil_syllabic": "ik",
+      "Proto_Dravidian": "rm",
+      "Sanskrit": "pra"
+    },
+    "confirmed_reading": "kuḷ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M185",
+    "n_corpus": 7,
+    "ensemble_reading": "?116",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?116",
+      "Tamil_syllabic": "par",
+      "Proto_Dravidian": "ed",
+      "Sanskrit": "dhig"
+    },
+    "confirmed_reading": "kuṟ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M235",
+    "n_corpus": 7,
+    "ensemble_reading": "?119",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?119",
+      "Tamil_syllabic": "k",
+      "Proto_Dravidian": "li",
+      "Sanskrit": "wi"
+    },
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M272",
+    "n_corpus": 7,
+    "ensemble_reading": "?380",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?380",
+      "Tamil_syllabic": "po",
+      "Proto_Dravidian": "ev",
+      "Sanskrit": "gya"
+    },
+    "confirmed_reading": "kol",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M375",
+    "n_corpus": 7,
+    "ensemble_reading": "?372",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?372",
+      "Tamil_syllabic": "ad",
+      "Proto_Dravidian": "pt",
+      "Sanskrit": "spic"
+    },
+    "confirmed_reading": "il",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M383",
+    "n_corpus": 7,
+    "ensemble_reading": "?355",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?355",
+      "Tamil_syllabic": "al",
+      "Proto_Dravidian": "oy",
+      "Sanskrit": "tyam"
+    },
+    "confirmed_reading": "mīn",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M127",
+    "n_corpus": 6,
+    "ensemble_reading": "?319",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?319",
+      "Tamil_syllabic": "gin",
+      "Proto_Dravidian": "nm",
+      "Sanskrit": "ity"
+    },
+    "confirmed_reading": "māḷ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M168",
+    "n_corpus": 6,
+    "ensemble_reading": "?184",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?184",
+      "Tamil_syllabic": "ken",
+      "Proto_Dravidian": "ho",
+      "Sanskrit": "aw"
+    },
+    "confirmed_reading": "paṉ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M198",
+    "n_corpus": 6,
+    "ensemble_reading": "?238",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?238",
+      "Tamil_syllabic": "be",
+      "Proto_Dravidian": "ey",
+      "Sanskrit": "ved"
+    },
+    "confirmed_reading": "poṉ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M252",
+    "n_corpus": 6,
+    "ensemble_reading": "?173",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?173",
+      "Tamil_syllabic": "hī",
+      "Proto_Dravidian": "bi",
+      "Sanskrit": "spe"
+    },
+    "confirmed_reading": "tiṇ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M270",
+    "n_corpus": 6,
+    "ensemble_reading": "?320",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?320",
+      "Tamil_syllabic": "muk",
+      "Proto_Dravidian": "kw",
+      "Sanskrit": "nna"
+    },
+    "confirmed_reading": "muḷ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M332",
+    "n_corpus": 6,
+    "ensemble_reading": "?295",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?295",
+      "Tamil_syllabic": "kan",
+      "Proto_Dravidian": "lm",
+      "Sanskrit": "vis"
+    },
+    "confirmed_reading": "paṟ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M351",
+    "n_corpus": 6,
+    "ensemble_reading": "?118",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?118",
+      "Tamil_syllabic": "man",
+      "Proto_Dravidian": "os",
+      "Sanskrit": "is"
+    },
+    "confirmed_reading": "taṭ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M374",
+    "n_corpus": 6,
+    "ensemble_reading": "?267",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?267",
+      "Tamil_syllabic": "uk",
+      "Proto_Dravidian": "ig",
+      "Sanskrit": "ent"
+    },
+    "confirmed_reading": "tēṉ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M386",
+    "n_corpus": 6,
+    "ensemble_reading": "?156",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?156",
+      "Tamil_syllabic": "kok",
+      "Proto_Dravidian": "em",
+      "Sanskrit": "jig"
+    },
+    "confirmed_reading": "maṇ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M401",
+    "n_corpus": 6,
+    "ensemble_reading": "?387",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?387",
+      "Tamil_syllabic": "ran",
+      "Proto_Dravidian": "ee",
+      "Sanskrit": "chi"
+    },
+    "confirmed_reading": "māṉ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M103",
+    "n_corpus": 5,
+    "ensemble_reading": "?224",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?224",
+      "Tamil_syllabic": "bu",
+      "Proto_Dravidian": "ot",
+      "Sanskrit": "mim"
+    },
+    "confirmed_reading": "māṉ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M108",
+    "n_corpus": 5,
+    "ensemble_reading": "?86",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?86",
+      "Tamil_syllabic": "cū",
+      "Proto_Dravidian": "oh",
+      "Sanskrit": "van"
+    },
+    "confirmed_reading": "nāḷ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M137",
+    "n_corpus": 5,
+    "ensemble_reading": "?190",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?190",
+      "Tamil_syllabic": "met",
+      "Proto_Dravidian": "by",
+      "Sanskrit": "shah"
+    },
+    "confirmed_reading": "kuṟ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M143",
+    "n_corpus": 5,
+    "ensemble_reading": "?166",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?166",
+      "Tamil_syllabic": "lap",
+      "Proto_Dravidian": "et",
+      "Sanskrit": "nge"
+    },
+    "confirmed_reading": "maṇ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M151",
+    "n_corpus": 5,
+    "ensemble_reading": "?110",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?110",
+      "Tamil_syllabic": "kel",
+      "Proto_Dravidian": "kl",
+      "Sanskrit": "ndiv"
+    },
+    "confirmed_reading": "viḷ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M153",
+    "n_corpus": 5,
+    "ensemble_reading": "?121",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?121",
+      "Tamil_syllabic": "nik",
+      "Proto_Dravidian": "nb",
+      "Sanskrit": "be"
+    },
+    "confirmed_reading": "kaṇ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M155",
+    "n_corpus": 5,
+    "ensemble_reading": "?326",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?326",
+      "Tamil_syllabic": "tip",
+      "Proto_Dravidian": "go",
+      "Sanskrit": "viv"
+    },
+    "confirmed_reading": "mīn",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M163",
+    "n_corpus": 5,
+    "ensemble_reading": "?202",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?202",
+      "Tamil_syllabic": "mē",
+      "Proto_Dravidian": "eh",
+      "Sanskrit": "ca"
+    },
+    "confirmed_reading": "naṟ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M177",
+    "n_corpus": 5,
+    "ensemble_reading": "?117",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?117",
+      "Tamil_syllabic": "mal",
+      "Proto_Dravidian": "ry",
+      "Sanskrit": "nyak"
+    },
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M178",
+    "n_corpus": 5,
+    "ensemble_reading": "?386",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?386",
+      "Tamil_syllabic": "kun",
+      "Proto_Dravidian": "rd",
+      "Sanskrit": "iz"
+    },
+    "confirmed_reading": "ney",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M183",
+    "n_corpus": 5,
+    "ensemble_reading": "?162",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?162",
+      "Tamil_syllabic": "tār",
+      "Proto_Dravidian": "jj",
+      "Sanskrit": "bhum"
+    },
+    "confirmed_reading": "vēḷ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M190",
+    "n_corpus": 5,
+    "ensemble_reading": "?252",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?252",
+      "Tamil_syllabic": "jo",
+      "Proto_Dravidian": "ov",
+      "Sanskrit": "nam"
+    },
+    "confirmed_reading": "paṉ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M222",
+    "n_corpus": 5,
+    "ensemble_reading": "ண",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ண",
+      "Tamil_syllabic": "rē",
+      "Proto_Dravidian": "be",
+      "Sanskrit": "sar"
+    },
+    "confirmed_reading": "cēl",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M223",
+    "n_corpus": 5,
+    "ensemble_reading": "?208",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?208",
+      "Tamil_syllabic": "pun",
+      "Proto_Dravidian": "ob",
+      "Sanskrit": "bhu"
+    },
+    "confirmed_reading": "muḷ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M231",
+    "n_corpus": 5,
+    "ensemble_reading": "?269",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?269",
+      "Tamil_syllabic": "l",
+      "Proto_Dravidian": "de",
+      "Sanskrit": "sah"
+    },
+    "confirmed_reading": "ēṟ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M239",
+    "n_corpus": 5,
+    "ensemble_reading": "?374",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?374",
+      "Tamil_syllabic": "en",
+      "Proto_Dravidian": "mr",
+      "Sanskrit": "ot"
+    },
+    "confirmed_reading": "il",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M254",
+    "n_corpus": 5,
+    "ensemble_reading": "?354",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?354",
+      "Tamil_syllabic": "ho",
+      "Proto_Dravidian": "gp",
+      "Sanskrit": "vyan"
+    },
+    "confirmed_reading": "tēṉ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M262",
+    "n_corpus": 5,
+    "ensemble_reading": "?257",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?257",
+      "Tamil_syllabic": "ral",
+      "Proto_Dravidian": "co",
+      "Sanskrit": "hav"
+    },
+    "confirmed_reading": "māḷ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M295",
+    "n_corpus": 5,
+    "ensemble_reading": "?235",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?235",
+      "Tamil_syllabic": "on",
+      "Proto_Dravidian": "hk",
+      "Sanskrit": "dhas"
+    },
+    "confirmed_reading": "paṟ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M304",
+    "n_corpus": 5,
+    "ensemble_reading": "?241",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?241",
+      "Tamil_syllabic": "min",
+      "Proto_Dravidian": "bl",
+      "Sanskrit": "shas"
+    },
+    "confirmed_reading": "vēṟ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M321",
+    "n_corpus": 5,
+    "ensemble_reading": "?103",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?103",
+      "Tamil_syllabic": "tal",
+      "Proto_Dravidian": "cp",
+      "Sanskrit": "prem"
+    },
+    "confirmed_reading": "kol",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M329",
+    "n_corpus": 5,
+    "ensemble_reading": "?127",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?127",
+      "Tamil_syllabic": "kup",
+      "Proto_Dravidian": "ia",
+      "Sanskrit": "ad"
+    },
+    "confirmed_reading": "poṉ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M345",
+    "n_corpus": 5,
+    "ensemble_reading": "?149",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?149",
+      "Tamil_syllabic": "kat",
+      "Proto_Dravidian": "op",
+      "Sanskrit": "wle"
+    },
+    "confirmed_reading": "taṭ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M350",
+    "n_corpus": 5,
+    "ensemble_reading": "?144",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?144",
+      "Tamil_syllabic": "tir",
+      "Proto_Dravidian": "cy",
+      "Sanskrit": "krit"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M355",
+    "n_corpus": 5,
+    "ensemble_reading": "?227",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?227",
+      "Tamil_syllabic": "ur",
+      "Proto_Dravidian": "id",
+      "Sanskrit": "tman"
+    },
+    "confirmed_reading": "āḷ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M357",
+    "n_corpus": 5,
+    "ensemble_reading": "?342",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?342",
+      "Tamil_syllabic": "h",
+      "Proto_Dravidian": "eg",
+      "Sanskrit": "hra"
+    },
+    "confirmed_reading": "kuḷ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M365",
+    "n_corpus": 5,
+    "ensemble_reading": "?278",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?278",
+      "Tamil_syllabic": "sā",
+      "Proto_Dravidian": "om",
+      "Sanskrit": "lay"
+    },
+    "confirmed_reading": "vāṉ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M402",
+    "n_corpus": 5,
+    "ensemble_reading": "?220",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?220",
+      "Tamil_syllabic": "lū",
+      "Proto_Dravidian": "lt",
+      "Sanskrit": "du"
+    },
+    "confirmed_reading": "vēḷ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M412",
+    "n_corpus": 5,
+    "ensemble_reading": "?196",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?196",
+      "Tamil_syllabic": "kip",
+      "Proto_Dravidian": "kh",
+      "Sanskrit": "ndo"
+    },
+    "confirmed_reading": "cūḷ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M416",
+    "n_corpus": 5,
+    "ensemble_reading": "?294",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?294",
+      "Tamil_syllabic": "sin",
+      "Proto_Dravidian": "kt",
+      "Sanskrit": "pur"
+    },
+    "confirmed_reading": "tiṇ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M106",
+    "n_corpus": 4,
+    "ensemble_reading": "?389",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?389",
+      "Tamil_syllabic": "kam",
+      "Proto_Dravidian": "ii",
+      "Sanskrit": "niy"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M109",
+    "n_corpus": 4,
+    "ensemble_reading": "?274",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?274",
+      "Tamil_syllabic": "may",
+      "Proto_Dravidian": "fa",
+      "Sanskrit": "ndar"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M116",
+    "n_corpus": 4,
+    "ensemble_reading": "?253",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?253",
+      "Tamil_syllabic": "ju",
+      "Proto_Dravidian": "pn",
+      "Sanskrit": "di"
+    },
+    "confirmed_reading": "ūr",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M120",
+    "n_corpus": 4,
+    "ensemble_reading": "?329",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?329",
+      "Tamil_syllabic": "lak",
+      "Proto_Dravidian": "he",
+      "Sanskrit": "hman"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M129",
+    "n_corpus": 4,
+    "ensemble_reading": "ல",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ல",
+      "Tamil_syllabic": "bā",
+      "Proto_Dravidian": "ju",
+      "Sanskrit": "nma"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M134",
+    "n_corpus": 4,
+    "ensemble_reading": "?189",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?189",
+      "Tamil_syllabic": "rū",
+      "Proto_Dravidian": "me",
+      "Sanskrit": "shi"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M138",
+    "n_corpus": 4,
+    "ensemble_reading": "?84",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?84",
+      "Tamil_syllabic": "tam",
+      "Proto_Dravidian": "kr",
+      "Sanskrit": "vir"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M140",
+    "n_corpus": 4,
+    "ensemble_reading": "?206",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?206",
+      "Tamil_syllabic": "kay",
+      "Proto_Dravidian": "pv",
+      "Sanskrit": "gay"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M142",
+    "n_corpus": 4,
+    "ensemble_reading": "ே",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ே",
+      "Tamil_syllabic": "lip",
+      "Proto_Dravidian": "oi",
+      "Sanskrit": "ndash"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M148",
+    "n_corpus": 4,
+    "ensemble_reading": "?73",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?73",
+      "Tamil_syllabic": "tū",
+      "Proto_Dravidian": "fu",
+      "Sanskrit": "ngir"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M171",
+    "n_corpus": 4,
+    "ensemble_reading": "?105",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?105",
+      "Tamil_syllabic": "pas",
+      "Proto_Dravidian": "hc",
+      "Sanskrit": "ak"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M186",
+    "n_corpus": 4,
+    "ensemble_reading": "?307",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?307",
+      "Tamil_syllabic": "kuk",
+      "Proto_Dravidian": "az",
+      "Sanskrit": "bhim"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M187",
+    "n_corpus": 4,
+    "ensemble_reading": "?172",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?172",
+      "Tamil_syllabic": "tit",
+      "Proto_Dravidian": "rx",
+      "Sanskrit": "ryan"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M192",
+    "n_corpus": 4,
+    "ensemble_reading": "?133",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?133",
+      "Tamil_syllabic": "pū",
+      "Proto_Dravidian": "cv",
+      "Sanskrit": "raj"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M194",
+    "n_corpus": 4,
+    "ensemble_reading": "?91",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?91",
+      "Tamil_syllabic": "lin",
+      "Proto_Dravidian": "gt",
+      "Sanskrit": "man"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M199",
+    "n_corpus": 4,
+    "ensemble_reading": "?247",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?247",
+      "Tamil_syllabic": "no",
+      "Proto_Dravidian": "pb",
+      "Sanskrit": "es"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M202",
+    "n_corpus": 4,
+    "ensemble_reading": "?385",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?385",
+      "Tamil_syllabic": "ril",
+      "Proto_Dravidian": "gn",
+      "Sanskrit": "stur"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M207",
+    "n_corpus": 4,
+    "ensemble_reading": "?244",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?244",
+      "Tamil_syllabic": "pen",
+      "Proto_Dravidian": "cr",
+      "Sanskrit": "jnam"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M208",
+    "n_corpus": 4,
+    "ensemble_reading": "?200",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?200",
+      "Tamil_syllabic": "un",
+      "Proto_Dravidian": "nr",
+      "Sanskrit": "in"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M209",
+    "n_corpus": 4,
+    "ensemble_reading": "?265",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?265",
+      "Tamil_syllabic": "kka",
+      "Proto_Dravidian": "qu",
+      "Sanskrit": "dge"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M218",
+    "n_corpus": 4,
+    "ensemble_reading": "?281",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?281",
+      "Tamil_syllabic": "tol",
+      "Proto_Dravidian": "kp",
+      "Sanskrit": "plan"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M227",
+    "n_corpus": 4,
+    "ensemble_reading": "?293",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?293",
+      "Tamil_syllabic": "tī",
+      "Proto_Dravidian": "og",
+      "Sanskrit": "prar"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M243",
+    "n_corpus": 4,
+    "ensemble_reading": "?97",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?97",
+      "Tamil_syllabic": "van",
+      "Proto_Dravidian": "bo",
+      "Sanskrit": "rna"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M245",
+    "n_corpus": 4,
+    "ensemble_reading": "?302",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?302",
+      "Tamil_syllabic": "pon",
+      "Proto_Dravidian": "rv",
+      "Sanskrit": "rma"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M250",
+    "n_corpus": 4,
+    "ensemble_reading": "?89",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?89",
+      "Tamil_syllabic": "pul",
+      "Proto_Dravidian": "le",
+      "Sanskrit": "rtav"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M251",
+    "n_corpus": 4,
+    "ensemble_reading": "?362",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?362",
+      "Tamil_syllabic": "ot",
+      "Proto_Dravidian": "qe",
+      "Sanskrit": "lib"
+    },
+    "confirmed_reading": "vāṉ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M255",
+    "n_corpus": 4,
+    "ensemble_reading": "?216",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?216",
+      "Tamil_syllabic": "cē",
+      "Proto_Dravidian": "dg",
+      "Sanskrit": "yam"
+    },
+    "confirmed_reading": "cēl",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M259",
+    "n_corpus": 4,
+    "ensemble_reading": "?346",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?346",
+      "Tamil_syllabic": "hi",
+      "Proto_Dravidian": "nw",
+      "Sanskrit": "ppin"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M265",
+    "n_corpus": 4,
+    "ensemble_reading": "?251",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?251",
+      "Tamil_syllabic": "can",
+      "Proto_Dravidian": "kd",
+      "Sanskrit": "grat"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M274",
+    "n_corpus": 4,
+    "ensemble_reading": "?115",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?115",
+      "Tamil_syllabic": "it",
+      "Proto_Dravidian": "dr",
+      "Sanskrit": "tvo"
+    },
+    "confirmed_reading": "āḷ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M278",
+    "n_corpus": 4,
+    "ensemble_reading": "?323",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?323",
+      "Tamil_syllabic": "rin",
+      "Proto_Dravidian": "rr",
+      "Sanskrit": "mi"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M280",
+    "n_corpus": 4,
+    "ensemble_reading": "?209",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?209",
+      "Tamil_syllabic": "nī",
+      "Proto_Dravidian": "rh",
+      "Sanskrit": "med"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M281",
+    "n_corpus": 4,
+    "ensemble_reading": "ீ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ீ",
+      "Tamil_syllabic": "lar",
+      "Proto_Dravidian": "dl",
+      "Sanskrit": "bhir"
+    },
+    "confirmed_reading": "piLLai",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M290",
+    "n_corpus": 4,
+    "ensemble_reading": "ோ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ோ",
+      "Tamil_syllabic": "sal",
+      "Proto_Dravidian": "lb",
+      "Sanskrit": "spa"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M291",
+    "n_corpus": 4,
+    "ensemble_reading": "?182",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?182",
+      "Tamil_syllabic": "jā",
+      "Proto_Dravidian": "fk",
+      "Sanskrit": "ska"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M294",
+    "n_corpus": 4,
+    "ensemble_reading": "?315",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?315",
+      "Tamil_syllabic": "kil",
+      "Proto_Dravidian": "gn",
+      "Sanskrit": "bhut"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M301",
+    "n_corpus": 4,
+    "ensemble_reading": "?333",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?333",
+      "Tamil_syllabic": "kon",
+      "Proto_Dravidian": "gd",
+      "Sanskrit": "saj"
+    },
+    "confirmed_reading": "cūḷ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M307",
+    "n_corpus": 4,
+    "ensemble_reading": "?122",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?122",
+      "Tamil_syllabic": "pay",
+      "Proto_Dravidian": "ei",
+      "Sanskrit": "svat"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M309",
+    "n_corpus": 4,
+    "ensemble_reading": "?211",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?211",
+      "Tamil_syllabic": "cum",
+      "Proto_Dravidian": "aj",
+      "Sanskrit": "iy"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M312",
+    "n_corpus": 4,
+    "ensemble_reading": "?290",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?290",
+      "Tamil_syllabic": "bē",
+      "Proto_Dravidian": "rs",
+      "Sanskrit": "sva"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M313",
+    "n_corpus": 4,
+    "ensemble_reading": "?297",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?297",
+      "Tamil_syllabic": "um",
+      "Proto_Dravidian": "gr",
+      "Sanskrit": "som"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M318",
+    "n_corpus": 4,
+    "ensemble_reading": "?321",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?321",
+      "Tamil_syllabic": "fem",
+      "Proto_Dravidian": "jp",
+      "Sanskrit": "eh"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M319",
+    "n_corpus": 4,
+    "ensemble_reading": "?230",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?230",
+      "Tamil_syllabic": "v",
+      "Proto_Dravidian": "np",
+      "Sanskrit": "os"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M324",
+    "n_corpus": 4,
+    "ensemble_reading": "?243",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?243",
+      "Tamil_syllabic": "so",
+      "Proto_Dravidian": "ej",
+      "Sanskrit": "ets"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M326",
+    "n_corpus": 4,
+    "ensemble_reading": "?155",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?155",
+      "Tamil_syllabic": "et",
+      "Proto_Dravidian": "fl",
+      "Sanskrit": "shar"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M334",
+    "n_corpus": 4,
+    "ensemble_reading": "?108",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?108",
+      "Tamil_syllabic": "us",
+      "Proto_Dravidian": "nb",
+      "Sanskrit": "nut"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M346",
+    "n_corpus": 4,
+    "ensemble_reading": "?237",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?237",
+      "Tamil_syllabic": "pol",
+      "Proto_Dravidian": "if",
+      "Sanskrit": "rse"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M370",
+    "n_corpus": 4,
+    "ensemble_reading": "?160",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?160",
+      "Tamil_syllabic": "mun",
+      "Proto_Dravidian": "nv",
+      "Sanskrit": "en"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M382",
+    "n_corpus": 4,
+    "ensemble_reading": "?245",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?245",
+      "Tamil_syllabic": "pik",
+      "Proto_Dravidian": "rl",
+      "Sanskrit": "tva"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M387",
+    "n_corpus": 4,
+    "ensemble_reading": "?271",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?271",
+      "Tamil_syllabic": "rat",
+      "Proto_Dravidian": "fo",
+      "Sanskrit": "smi"
+    },
+    "confirmed_reading": "vēṟ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M390",
+    "n_corpus": 4,
+    "ensemble_reading": "?69",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?69",
+      "Tamil_syllabic": "del",
+      "Proto_Dravidian": "nh",
+      "Sanskrit": "sdom"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M406",
+    "n_corpus": 4,
+    "ensemble_reading": "?106",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?106",
+      "Tamil_syllabic": "cil",
+      "Proto_Dravidian": "gg",
+      "Sanskrit": "tvij"
+    },
+    "confirmed_reading": "viḷ",
+    "confirmed_confidence": "LOW"
+  },
+  {
+    "sign": "M104",
+    "n_corpus": 3,
+    "ensemble_reading": "?292",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?292",
+      "Tamil_syllabic": "ek",
+      "Proto_Dravidian": "af",
+      "Sanskrit": "gop"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M105",
+    "n_corpus": 3,
+    "ensemble_reading": "?258",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?258",
+      "Tamil_syllabic": "tan",
+      "Proto_Dravidian": "gv",
+      "Sanskrit": "rman"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M107",
+    "n_corpus": 3,
+    "ensemble_reading": "?388",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?388",
+      "Tamil_syllabic": "dal",
+      "Proto_Dravidian": "oo",
+      "Sanskrit": "sat"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M110",
+    "n_corpus": 3,
+    "ensemble_reading": "?141",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?141",
+      "Tamil_syllabic": "g",
+      "Proto_Dravidian": "bc",
+      "Sanskrit": "dra"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M111",
+    "n_corpus": 3,
+    "ensemble_reading": "?151",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?151",
+      "Tamil_syllabic": "hā",
+      "Proto_Dravidian": "lo",
+      "Sanskrit": "hir"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M117",
+    "n_corpus": 3,
+    "ensemble_reading": "?174",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?174",
+      "Tamil_syllabic": "run",
+      "Proto_Dravidian": "ep",
+      "Sanskrit": "dhiy"
+    },
+    "confirmed_reading": "ar",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M118",
+    "n_corpus": 3,
+    "ensemble_reading": "?85",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?85",
+      "Tamil_syllabic": "lo",
+      "Proto_Dravidian": "au",
+      "Sanskrit": "nsa"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M121",
+    "n_corpus": 3,
+    "ensemble_reading": "?183",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?183",
+      "Tamil_syllabic": "ppu",
+      "Proto_Dravidian": "of",
+      "Sanskrit": "ja"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M124",
+    "n_corpus": 3,
+    "ensemble_reading": "?204",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?204",
+      "Tamil_syllabic": "gun",
+      "Proto_Dravidian": "hg",
+      "Sanskrit": "rvan"
+    },
+    "confirmed_reading": "kuTam",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M130",
+    "n_corpus": 3,
+    "ensemble_reading": "?193",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?193",
+      "Tamil_syllabic": "tē",
+      "Proto_Dravidian": "ox",
+      "Sanskrit": "dhid"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M131",
+    "n_corpus": 3,
+    "ensemble_reading": "?340",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?340",
+      "Tamil_syllabic": "kē",
+      "Proto_Dravidian": "ix",
+      "Sanskrit": "vad"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M135",
+    "n_corpus": 3,
+    "ensemble_reading": "?272",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?272",
+      "Tamil_syllabic": "mur",
+      "Proto_Dravidian": "hr",
+      "Sanskrit": "bha"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M141",
+    "n_corpus": 3,
+    "ensemble_reading": "?225",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?225",
+      "Tamil_syllabic": "rup",
+      "Proto_Dravidian": "lf",
+      "Sanskrit": "kra"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M145",
+    "n_corpus": 3,
+    "ensemble_reading": "?270",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?270",
+      "Tamil_syllabic": "c",
+      "Proto_Dravidian": "je",
+      "Sanskrit": "dram"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M146",
+    "n_corpus": 3,
+    "ensemble_reading": "?188",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?188",
+      "Tamil_syllabic": "tik",
+      "Proto_Dravidian": "ib",
+      "Sanskrit": "vrat"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M164",
+    "n_corpus": 3,
+    "ensemble_reading": "?336",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?336",
+      "Tamil_syllabic": "pis",
+      "Proto_Dravidian": "qy",
+      "Sanskrit": "gnih"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M170",
+    "n_corpus": 3,
+    "ensemble_reading": "?276",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?276",
+      "Tamil_syllabic": "gel",
+      "Proto_Dravidian": "hp",
+      "Sanskrit": "gi"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M181",
+    "n_corpus": 3,
+    "ensemble_reading": "?164",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?164",
+      "Tamil_syllabic": "mī",
+      "Proto_Dravidian": "lj",
+      "Sanskrit": "cu"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M188",
+    "n_corpus": 3,
+    "ensemble_reading": "?331",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?331",
+      "Tamil_syllabic": "pē",
+      "Proto_Dravidian": "dj",
+      "Sanskrit": "ip"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M193",
+    "n_corpus": 3,
+    "ensemble_reading": "?381",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?381",
+      "Tamil_syllabic": "gil",
+      "Proto_Dravidian": "gy",
+      "Sanskrit": "id"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M195",
+    "n_corpus": 3,
+    "ensemble_reading": "?264",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?264",
+      "Tamil_syllabic": "tup",
+      "Proto_Dravidian": "do",
+      "Sanskrit": "bra"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M197",
+    "n_corpus": 3,
+    "ensemble_reading": "?80",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?80",
+      "Tamil_syllabic": "gal",
+      "Proto_Dravidian": "hn",
+      "Sanskrit": "ag"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M201",
+    "n_corpus": 3,
+    "ensemble_reading": "?352",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?352",
+      "Tamil_syllabic": "vak",
+      "Proto_Dravidian": "cm",
+      "Sanskrit": "tap"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M214",
+    "n_corpus": 3,
+    "ensemble_reading": "?136",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?136",
+      "Tamil_syllabic": "dī",
+      "Proto_Dravidian": "db",
+      "Sanskrit": "ij"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M216",
+    "n_corpus": 3,
+    "ensemble_reading": "?139",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?139",
+      "Tamil_syllabic": "rut",
+      "Proto_Dravidian": "ln",
+      "Sanskrit": "shik"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M217",
+    "n_corpus": 3,
+    "ensemble_reading": "?171",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?171",
+      "Tamil_syllabic": "or",
+      "Proto_Dravidian": "lh",
+      "Sanskrit": "on"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M219",
+    "n_corpus": 3,
+    "ensemble_reading": "?153",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?153",
+      "Tamil_syllabic": "riv",
+      "Proto_Dravidian": "pr",
+      "Sanskrit": "mha"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M224",
+    "n_corpus": 3,
+    "ensemble_reading": "?242",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?242",
+      "Tamil_syllabic": "net",
+      "Proto_Dravidian": "nk",
+      "Sanskrit": "stat"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M228",
+    "n_corpus": 3,
+    "ensemble_reading": "?154",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?154",
+      "Tamil_syllabic": "lit",
+      "Proto_Dravidian": "ao",
+      "Sanskrit": "nca"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M229",
+    "n_corpus": 3,
+    "ensemble_reading": "?104",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?104",
+      "Tamil_syllabic": "cir",
+      "Proto_Dravidian": "dt",
+      "Sanskrit": "gne"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M244",
+    "n_corpus": 3,
+    "ensemble_reading": "?373",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?373",
+      "Tamil_syllabic": "pel",
+      "Proto_Dravidian": "no",
+      "Sanskrit": "kno"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M246",
+    "n_corpus": 3,
+    "ensemble_reading": "?145",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?145",
+      "Tamil_syllabic": "ker",
+      "Proto_Dravidian": "bu",
+      "Sanskrit": "har"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M247",
+    "n_corpus": 3,
+    "ensemble_reading": "?343",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?343",
+      "Tamil_syllabic": "pad",
+      "Proto_Dravidian": "jk",
+      "Sanskrit": "mri"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M256",
+    "n_corpus": 3,
+    "ensemble_reading": "?138",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?138",
+      "Tamil_syllabic": "cū",
+      "Proto_Dravidian": "qr",
+      "Sanskrit": "gnim"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M257",
+    "n_corpus": 3,
+    "ensemble_reading": "?176",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?176",
+      "Tamil_syllabic": "sū",
+      "Proto_Dravidian": "br",
+      "Sanskrit": "jya"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M263",
+    "n_corpus": 3,
+    "ensemble_reading": "?254",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?254",
+      "Tamil_syllabic": "mul",
+      "Proto_Dravidian": "rb",
+      "Sanskrit": "gram"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M268",
+    "n_corpus": 3,
+    "ensemble_reading": "ை",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ை",
+      "Tamil_syllabic": "pot",
+      "Proto_Dravidian": "kn",
+      "Sanskrit": "grah"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M277",
+    "n_corpus": 3,
+    "ensemble_reading": "?350",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?350",
+      "Tamil_syllabic": "kir",
+      "Proto_Dravidian": "mh",
+      "Sanskrit": "nta"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M284",
+    "n_corpus": 3,
+    "ensemble_reading": "?335",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?335",
+      "Tamil_syllabic": "vam",
+      "Proto_Dravidian": "dy",
+      "Sanskrit": "ttah"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M288",
+    "n_corpus": 3,
+    "ensemble_reading": "?205",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?205",
+      "Tamil_syllabic": "em",
+      "Proto_Dravidian": "fp",
+      "Sanskrit": "trim"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M289",
+    "n_corpus": 3,
+    "ensemble_reading": "?199",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?199",
+      "Tamil_syllabic": "ok",
+      "Proto_Dravidian": "ok",
+      "Sanskrit": "rtat"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M292",
+    "n_corpus": 3,
+    "ensemble_reading": "?364",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?364",
+      "Tamil_syllabic": "ir",
+      "Proto_Dravidian": "rw",
+      "Sanskrit": "tur"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M296",
+    "n_corpus": 3,
+    "ensemble_reading": "?175",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?175",
+      "Tamil_syllabic": "lī",
+      "Proto_Dravidian": "rj",
+      "Sanskrit": "pa"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M316",
+    "n_corpus": 3,
+    "ensemble_reading": "?383",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?383",
+      "Tamil_syllabic": "lam",
+      "Proto_Dravidian": "pg",
+      "Sanskrit": "phil"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M320",
+    "n_corpus": 3,
+    "ensemble_reading": "?332",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?332",
+      "Tamil_syllabic": "bū",
+      "Proto_Dravidian": "jm",
+      "Sanskrit": "gun"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M325",
+    "n_corpus": 3,
+    "ensemble_reading": "?337",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?337",
+      "Tamil_syllabic": "mel",
+      "Proto_Dravidian": "ab",
+      "Sanskrit": "bhar"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M330",
+    "n_corpus": 3,
+    "ensemble_reading": "ள",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ள",
+      "Tamil_syllabic": "cci",
+      "Proto_Dravidian": "bg",
+      "Sanskrit": "ess"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M331",
+    "n_corpus": 3,
+    "ensemble_reading": "?233",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?233",
+      "Tamil_syllabic": "nak",
+      "Proto_Dravidian": "ru",
+      "Sanskrit": "rpa"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M338",
+    "n_corpus": 3,
+    "ensemble_reading": "?286",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?286",
+      "Tamil_syllabic": "d",
+      "Proto_Dravidian": "eu",
+      "Sanskrit": "sag"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M339",
+    "n_corpus": 3,
+    "ensemble_reading": "?363",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?363",
+      "Tamil_syllabic": "git",
+      "Proto_Dravidian": "gc",
+      "Sanskrit": "ctic"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M341",
+    "n_corpus": 3,
+    "ensemble_reading": "?124",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?124",
+      "Tamil_syllabic": "iv",
+      "Proto_Dravidian": "hu",
+      "Sanskrit": "ghu"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M348",
+    "n_corpus": 3,
+    "ensemble_reading": "?296",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?296",
+      "Tamil_syllabic": "am",
+      "Proto_Dravidian": "fe",
+      "Sanskrit": "gar"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M349",
+    "n_corpus": 3,
+    "ensemble_reading": "?275",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?275",
+      "Tamil_syllabic": "es",
+      "Proto_Dravidian": "ex",
+      "Sanskrit": "ri"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M354",
+    "n_corpus": 3,
+    "ensemble_reading": "?87",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?87",
+      "Tamil_syllabic": "gū",
+      "Proto_Dravidian": "ls",
+      "Sanskrit": "rya"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M356",
+    "n_corpus": 3,
+    "ensemble_reading": "?219",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?219",
+      "Tamil_syllabic": "cā",
+      "Proto_Dravidian": "cn",
+      "Sanskrit": "smic"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M359",
+    "n_corpus": 3,
+    "ensemble_reading": "?180",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?180",
+      "Tamil_syllabic": "cal",
+      "Proto_Dravidian": "oc",
+      "Sanskrit": "priy"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M360",
+    "n_corpus": 3,
+    "ensemble_reading": "?148",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?148",
+      "Tamil_syllabic": "nū",
+      "Proto_Dravidian": "pc",
+      "Sanskrit": "ev"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M362",
+    "n_corpus": 3,
+    "ensemble_reading": "?328",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?328",
+      "Tamil_syllabic": "cap",
+      "Proto_Dravidian": "eo",
+      "Sanskrit": "gir"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M369",
+    "n_corpus": 3,
+    "ensemble_reading": "?92",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?92",
+      "Tamil_syllabic": "mac",
+      "Proto_Dravidian": "ez",
+      "Sanskrit": "tav"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M371",
+    "n_corpus": 3,
+    "ensemble_reading": "ூ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ூ",
+      "Tamil_syllabic": "kul",
+      "Proto_Dravidian": "fw",
+      "Sanskrit": "fir"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M373",
+    "n_corpus": 3,
+    "ensemble_reading": "?314",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?314",
+      "Tamil_syllabic": "pak",
+      "Proto_Dravidian": "dv",
+      "Sanskrit": "yav"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M379",
+    "n_corpus": 3,
+    "ensemble_reading": "?101",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?101",
+      "Tamil_syllabic": "kum",
+      "Proto_Dravidian": "iq",
+      "Sanskrit": "mun"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M380",
+    "n_corpus": 3,
+    "ensemble_reading": "?222",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?222",
+      "Tamil_syllabic": "je",
+      "Proto_Dravidian": "ky",
+      "Sanskrit": "al"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M381",
+    "n_corpus": 3,
+    "ensemble_reading": "?308",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?308",
+      "Tamil_syllabic": "kot",
+      "Proto_Dravidian": "jh",
+      "Sanskrit": "su"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M388",
+    "n_corpus": 3,
+    "ensemble_reading": "?125",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?125",
+      "Tamil_syllabic": "kor",
+      "Proto_Dravidian": "mk",
+      "Sanskrit": "rve"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M395",
+    "n_corpus": 3,
+    "ensemble_reading": "?94",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?94",
+      "Tamil_syllabic": "val",
+      "Proto_Dravidian": "gm",
+      "Sanskrit": "ntam"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M396",
+    "n_corpus": 3,
+    "ensemble_reading": "?356",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?356",
+      "Tamil_syllabic": "hū",
+      "Proto_Dravidian": "ft",
+      "Sanskrit": "she"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M398",
+    "n_corpus": 3,
+    "ensemble_reading": "?212",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?212",
+      "Tamil_syllabic": "nin",
+      "Proto_Dravidian": "ph",
+      "Sanskrit": "up"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M399",
+    "n_corpus": 3,
+    "ensemble_reading": "?313",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?313",
+      "Tamil_syllabic": "cit",
+      "Proto_Dravidian": "kj",
+      "Sanskrit": "krat"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M408",
+    "n_corpus": 3,
+    "ensemble_reading": "?334",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?334",
+      "Tamil_syllabic": "ptt",
+      "Proto_Dravidian": "fc",
+      "Sanskrit": "lav"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M410",
+    "n_corpus": 3,
+    "ensemble_reading": "?322",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?322",
+      "Tamil_syllabic": "ton",
+      "Proto_Dravidian": "rf",
+      "Sanskrit": "nas"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M413",
+    "n_corpus": 3,
+    "ensemble_reading": "?277",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?277",
+      "Tamil_syllabic": "kol",
+      "Proto_Dravidian": "jo",
+      "Sanskrit": "rder"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M100",
+    "n_corpus": 2,
+    "ensemble_reading": "?218",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?218",
+      "Tamil_syllabic": "pit",
+      "Proto_Dravidian": "nq",
+      "Sanskrit": "vya"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M101",
+    "n_corpus": 2,
+    "ensemble_reading": "?214",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?214",
+      "Tamil_syllabic": "lum",
+      "Proto_Dravidian": "ml",
+      "Sanskrit": "gnir"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M112",
+    "n_corpus": 2,
+    "ensemble_reading": "?239",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?239",
+      "Tamil_syllabic": "ris",
+      "Proto_Dravidian": "jd",
+      "Sanskrit": "ud"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M123",
+    "n_corpus": 2,
+    "ensemble_reading": "?324",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?324",
+      "Tamil_syllabic": "kār",
+      "Proto_Dravidian": "ly",
+      "Sanskrit": "gna"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M147",
+    "n_corpus": 2,
+    "ensemble_reading": "?142",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?142",
+      "Tamil_syllabic": "cak",
+      "Proto_Dravidian": "dm",
+      "Sanskrit": "sut"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M154",
+    "n_corpus": 2,
+    "ensemble_reading": "?137",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?137",
+      "Tamil_syllabic": "nt",
+      "Proto_Dravidian": "mf",
+      "Sanskrit": "che"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M156",
+    "n_corpus": 2,
+    "ensemble_reading": "?366",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?366",
+      "Tamil_syllabic": "dar",
+      "Proto_Dravidian": "gk",
+      "Sanskrit": "hom"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M157",
+    "n_corpus": 2,
+    "ensemble_reading": "?248",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?248",
+      "Tamil_syllabic": "koy",
+      "Proto_Dravidian": "bn",
+      "Sanskrit": "ru"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M158",
+    "n_corpus": 2,
+    "ensemble_reading": "ஸ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ஸ",
+      "Tamil_syllabic": "ar",
+      "Proto_Dravidian": "qo",
+      "Sanskrit": "yog"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M159",
+    "n_corpus": 2,
+    "ensemble_reading": "n",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "n",
+      "Tamil_syllabic": "tor",
+      "Proto_Dravidian": "hw",
+      "Sanskrit": "sham"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M165",
+    "n_corpus": 2,
+    "ensemble_reading": "?191",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?191",
+      "Tamil_syllabic": "sil",
+      "Proto_Dravidian": "kw",
+      "Sanskrit": "rit"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M172",
+    "n_corpus": 2,
+    "ensemble_reading": "?357",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?357",
+      "Tamil_syllabic": "nen",
+      "Proto_Dravidian": "gj",
+      "Sanskrit": "oh"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M174",
+    "n_corpus": 2,
+    "ensemble_reading": "?229",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?229",
+      "Tamil_syllabic": "at",
+      "Proto_Dravidian": "ew",
+      "Sanskrit": "sir"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M175",
+    "n_corpus": 2,
+    "ensemble_reading": "?114",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?114",
+      "Tamil_syllabic": "s",
+      "Proto_Dravidian": "gh",
+      "Sanskrit": "kar"
+    },
+    "confirmed_reading": "katir",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M179",
+    "n_corpus": 2,
+    "ensemble_reading": "?213",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?213",
+      "Tamil_syllabic": "ic",
+      "Proto_Dravidian": "py",
+      "Sanskrit": "ve"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M184",
+    "n_corpus": 2,
+    "ensemble_reading": "?226",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?226",
+      "Tamil_syllabic": "t",
+      "Proto_Dravidian": "jg",
+      "Sanskrit": "mpa"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M200",
+    "n_corpus": 2,
+    "ensemble_reading": "?279",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?279",
+      "Tamil_syllabic": "lē",
+      "Proto_Dravidian": "dp",
+      "Sanskrit": "duh"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M203",
+    "n_corpus": 2,
+    "ensemble_reading": "?371",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?371",
+      "Tamil_syllabic": "nup",
+      "Proto_Dravidian": "fm",
+      "Sanskrit": "tam"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M204",
+    "n_corpus": 2,
+    "ensemble_reading": "?351",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?351",
+      "Tamil_syllabic": "pal",
+      "Proto_Dravidian": "io",
+      "Sanskrit": "cat"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M210",
+    "n_corpus": 2,
+    "ensemble_reading": "?203",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?203",
+      "Tamil_syllabic": "ky",
+      "Proto_Dravidian": "ns",
+      "Sanskrit": "hma"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M215",
+    "n_corpus": 2,
+    "ensemble_reading": "r",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "r",
+      "Tamil_syllabic": "tap",
+      "Proto_Dravidian": "mg",
+      "Sanskrit": "ndal"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M226",
+    "n_corpus": 2,
+    "ensemble_reading": "?197",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?197",
+      "Tamil_syllabic": "tum",
+      "Proto_Dravidian": "dk",
+      "Sanskrit": "dhi"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M238",
+    "n_corpus": 2,
+    "ensemble_reading": "?353",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?353",
+      "Tamil_syllabic": "pok",
+      "Proto_Dravidian": "lw",
+      "Sanskrit": "sup"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M240",
+    "n_corpus": 2,
+    "ensemble_reading": "?365",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?365",
+      "Tamil_syllabic": "ter",
+      "Proto_Dravidian": "kv",
+      "Sanskrit": "and"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M241",
+    "n_corpus": 2,
+    "ensemble_reading": "?283",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?283",
+      "Tamil_syllabic": "ap",
+      "Proto_Dravidian": "fy",
+      "Sanskrit": "ssol"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M242",
+    "n_corpus": 2,
+    "ensemble_reading": "?102",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?102",
+      "Tamil_syllabic": "as",
+      "Proto_Dravidian": "bp",
+      "Sanskrit": "la"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M248",
+    "n_corpus": 2,
+    "ensemble_reading": "?384",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?384",
+      "Tamil_syllabic": "rnā",
+      "Proto_Dravidian": "ms",
+      "Sanskrit": "ray"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M258",
+    "n_corpus": 2,
+    "ensemble_reading": "?161",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?161",
+      "Tamil_syllabic": "car",
+      "Proto_Dravidian": "lg",
+      "Sanskrit": "trad"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M260",
+    "n_corpus": 2,
+    "ensemble_reading": "?82",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?82",
+      "Tamil_syllabic": "ded",
+      "Proto_Dravidian": "ql",
+      "Sanskrit": "ek"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M261",
+    "n_corpus": 2,
+    "ensemble_reading": "?76",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?76",
+      "Tamil_syllabic": "sar",
+      "Proto_Dravidian": "nz",
+      "Sanskrit": "ul"
+    },
+    "confirmed_reading": "muruku",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M264",
+    "n_corpus": 2,
+    "ensemble_reading": "?194",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?194",
+      "Tamil_syllabic": "gan",
+      "Proto_Dravidian": "dc",
+      "Sanskrit": "sra"
+    },
+    "confirmed_reading": "peN",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M266",
+    "n_corpus": 2,
+    "ensemble_reading": "?100",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?100",
+      "Tamil_syllabic": "cca",
+      "Proto_Dravidian": "gl",
+      "Sanskrit": "bhih"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M271",
+    "n_corpus": 2,
+    "ensemble_reading": "?330",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?330",
+      "Tamil_syllabic": "kit",
+      "Proto_Dravidian": "ct",
+      "Sanskrit": "si"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M276",
+    "n_corpus": 2,
+    "ensemble_reading": "ந",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ந",
+      "Tamil_syllabic": "kap",
+      "Proto_Dravidian": "cg",
+      "Sanskrit": "mna"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M282",
+    "n_corpus": 2,
+    "ensemble_reading": "?231",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?231",
+      "Tamil_syllabic": "pnt",
+      "Proto_Dravidian": "rc",
+      "Sanskrit": "nyay"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M283",
+    "n_corpus": 2,
+    "ensemble_reading": "?327",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?327",
+      "Tamil_syllabic": "len",
+      "Proto_Dravidian": "ef",
+      "Sanskrit": "na"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M285",
+    "n_corpus": 2,
+    "ensemble_reading": "?181",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?181",
+      "Tamil_syllabic": "pī",
+      "Proto_Dravidian": "ae",
+      "Sanskrit": "rva"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M286",
+    "n_corpus": 2,
+    "ensemble_reading": "?377",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?377",
+      "Tamil_syllabic": "nar",
+      "Proto_Dravidian": "my",
+      "Sanskrit": "rno"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M302",
+    "n_corpus": 2,
+    "ensemble_reading": "?135",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?135",
+      "Tamil_syllabic": "tin",
+      "Proto_Dravidian": "qa",
+      "Sanskrit": "das"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M303",
+    "n_corpus": 2,
+    "ensemble_reading": "?345",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?345",
+      "Tamil_syllabic": "mut",
+      "Proto_Dravidian": "ld",
+      "Sanskrit": "tho"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M308",
+    "n_corpus": 2,
+    "ensemble_reading": "?318",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?318",
+      "Tamil_syllabic": "im",
+      "Proto_Dravidian": "jx",
+      "Sanskrit": "civ"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M327",
+    "n_corpus": 2,
+    "ensemble_reading": "?90",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?90",
+      "Tamil_syllabic": "er",
+      "Proto_Dravidian": "pf",
+      "Sanskrit": "bah"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M333",
+    "n_corpus": 2,
+    "ensemble_reading": "?255",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?255",
+      "Tamil_syllabic": "mak",
+      "Proto_Dravidian": "mq",
+      "Sanskrit": "ha"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M343",
+    "n_corpus": 2,
+    "ensemble_reading": "?198",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?198",
+      "Tamil_syllabic": "bur",
+      "Proto_Dravidian": "cl",
+      "Sanskrit": "vas"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M344",
+    "n_corpus": 2,
+    "ensemble_reading": "?111",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?111",
+      "Tamil_syllabic": "ip",
+      "Proto_Dravidian": "hm",
+      "Sanskrit": "kal"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M353",
+    "n_corpus": 2,
+    "ensemble_reading": "?88",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?88",
+      "Tamil_syllabic": "b",
+      "Proto_Dravidian": "bd",
+      "Sanskrit": "pe"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M363",
+    "n_corpus": 2,
+    "ensemble_reading": "?221",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?221",
+      "Tamil_syllabic": "por",
+      "Proto_Dravidian": "ff",
+      "Sanskrit": "mo"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M378",
+    "n_corpus": 2,
+    "ensemble_reading": "?95",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?95",
+      "Tamil_syllabic": "tuk",
+      "Proto_Dravidian": "oj",
+      "Sanskrit": "jiv"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M384",
+    "n_corpus": 2,
+    "ensemble_reading": "?306",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?306",
+      "Tamil_syllabic": "pac",
+      "Proto_Dravidian": "oq",
+      "Sanskrit": "pna"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M385",
+    "n_corpus": 2,
+    "ensemble_reading": "?75",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?75",
+      "Tamil_syllabic": "ec",
+      "Proto_Dravidian": "eb",
+      "Sanskrit": "gni"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M389",
+    "n_corpus": 2,
+    "ensemble_reading": "?262",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?262",
+      "Tamil_syllabic": "op",
+      "Proto_Dravidian": "hv",
+      "Sanskrit": "pad"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M392",
+    "n_corpus": 2,
+    "ensemble_reading": "?263",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?263",
+      "Tamil_syllabic": "p",
+      "Proto_Dravidian": "iu",
+      "Sanskrit": "lya"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M397",
+    "n_corpus": 2,
+    "ensemble_reading": "?370",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?370",
+      "Tamil_syllabic": "ney",
+      "Proto_Dravidian": "rq",
+      "Sanskrit": "hot"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M400",
+    "n_corpus": 2,
+    "ensemble_reading": "?130",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?130",
+      "Tamil_syllabic": "gul",
+      "Proto_Dravidian": "dn",
+      "Sanskrit": "div"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M403",
+    "n_corpus": 2,
+    "ensemble_reading": "?312",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?312",
+      "Tamil_syllabic": "lik",
+      "Proto_Dravidian": "lq",
+      "Sanskrit": "gan"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M405",
+    "n_corpus": 2,
+    "ensemble_reading": "?79",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?79",
+      "Tamil_syllabic": "bī",
+      "Proto_Dravidian": "lx",
+      "Sanskrit": "nda"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M409",
+    "n_corpus": 2,
+    "ensemble_reading": "?215",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?215",
+      "Tamil_syllabic": "san",
+      "Proto_Dravidian": "ck",
+      "Sanskrit": "il"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M415",
+    "n_corpus": 2,
+    "ensemble_reading": "?375",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?375",
+      "Tamil_syllabic": "j",
+      "Proto_Dravidian": "ie",
+      "Sanskrit": "rvam"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M113",
+    "n_corpus": 1,
+    "ensemble_reading": "?367",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?367",
+      "Tamil_syllabic": "pin",
+      "Proto_Dravidian": "nl",
+      "Sanskrit": "mu"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M114",
+    "n_corpus": 1,
+    "ensemble_reading": "j",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "j",
+      "Tamil_syllabic": "bar",
+      "Proto_Dravidian": "kc",
+      "Sanskrit": "rvat"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M115",
+    "n_corpus": 1,
+    "ensemble_reading": "ர",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ர",
+      "Tamil_syllabic": "cam",
+      "Proto_Dravidian": "mv",
+      "Sanskrit": "ram"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M119",
+    "n_corpus": 1,
+    "ensemble_reading": "z",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "z",
+      "Tamil_syllabic": "bil",
+      "Proto_Dravidian": "aq",
+      "Sanskrit": "kul"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M122",
+    "n_corpus": 1,
+    "ensemble_reading": "ழ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ழ",
+      "Tamil_syllabic": "ac",
+      "Proto_Dravidian": "nf",
+      "Sanskrit": "pi"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M126",
+    "n_corpus": 1,
+    "ensemble_reading": "?77",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?77",
+      "Tamil_syllabic": "cin",
+      "Proto_Dravidian": "iz",
+      "Sanskrit": "ssi"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M132",
+    "n_corpus": 1,
+    "ensemble_reading": "i",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "i",
+      "Tamil_syllabic": "tel",
+      "Proto_Dravidian": "hq",
+      "Sanskrit": "ku"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M133",
+    "n_corpus": 1,
+    "ensemble_reading": "h",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "h",
+      "Tamil_syllabic": "kūr",
+      "Proto_Dravidian": "hh",
+      "Sanskrit": "ing"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M136",
+    "n_corpus": 1,
+    "ensemble_reading": "?360",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?360",
+      "Tamil_syllabic": "he",
+      "Proto_Dravidian": "ks",
+      "Sanskrit": "gat"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M139",
+    "n_corpus": 1,
+    "ensemble_reading": "ஐ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ஐ",
+      "Tamil_syllabic": "per",
+      "Proto_Dravidian": "qd",
+      "Sanskrit": "stay"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M144",
+    "n_corpus": 1,
+    "ensemble_reading": "ௌ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ௌ",
+      "Tamil_syllabic": "dur",
+      "Proto_Dravidian": "fd",
+      "Sanskrit": "ksa"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M150",
+    "n_corpus": 1,
+    "ensemble_reading": "d",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "d",
+      "Tamil_syllabic": "qe",
+      "Proto_Dravidian": "ps",
+      "Sanskrit": "na"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M152",
+    "n_corpus": 1,
+    "ensemble_reading": "ெ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ெ",
+      "Tamil_syllabic": "jī",
+      "Proto_Dravidian": "jr",
+      "Sanskrit": "jan"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M160",
+    "n_corpus": 1,
+    "ensemble_reading": "ஷ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ஷ",
+      "Tamil_syllabic": "pil",
+      "Proto_Dravidian": "cj",
+      "Sanskrit": "rmony"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M161",
+    "n_corpus": 1,
+    "ensemble_reading": "?143",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?143",
+      "Tamil_syllabic": "ner",
+      "Proto_Dravidian": "gb",
+      "Sanskrit": "ghe"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M166",
+    "n_corpus": 1,
+    "ensemble_reading": "t",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "t",
+      "Tamil_syllabic": "el",
+      "Proto_Dravidian": "qx",
+      "Sanskrit": "rti"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M167",
+    "n_corpus": 1,
+    "ensemble_reading": "m",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "m",
+      "Tamil_syllabic": "r",
+      "Proto_Dravidian": "mc",
+      "Sanskrit": "kam"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M180",
+    "n_corpus": 1,
+    "ensemble_reading": "ொ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ொ",
+      "Tamil_syllabic": "hē",
+      "Proto_Dravidian": "oa",
+      "Sanskrit": "sta"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M182",
+    "n_corpus": 1,
+    "ensemble_reading": "c",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "c",
+      "Tamil_syllabic": "nil",
+      "Proto_Dravidian": "qt",
+      "Sanskrit": "sav"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M189",
+    "n_corpus": 1,
+    "ensemble_reading": "?249",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?249",
+      "Tamil_syllabic": "kāy",
+      "Proto_Dravidian": "qk",
+      "Sanskrit": "jyot"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M206",
+    "n_corpus": 1,
+    "ensemble_reading": "ற",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ற",
+      "Tamil_syllabic": "ut",
+      "Proto_Dravidian": "hf",
+      "Sanskrit": "puj"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M212",
+    "n_corpus": 1,
+    "ensemble_reading": "o",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "o",
+      "Tamil_syllabic": "pat",
+      "Proto_Dravidian": "px",
+      "Sanskrit": "bal"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M213",
+    "n_corpus": 1,
+    "ensemble_reading": "ஞ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ஞ",
+      "Tamil_syllabic": "tur",
+      "Proto_Dravidian": "fr",
+      "Sanskrit": "kav"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M221",
+    "n_corpus": 1,
+    "ensemble_reading": "இ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "இ",
+      "Tamil_syllabic": "luk",
+      "Proto_Dravidian": "dz",
+      "Sanskrit": "ltur"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M230",
+    "n_corpus": 1,
+    "ensemble_reading": "y",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "y",
+      "Tamil_syllabic": "muc",
+      "Proto_Dravidian": "pd",
+      "Sanskrit": "ngal"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M232",
+    "n_corpus": 1,
+    "ensemble_reading": "?234",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?234",
+      "Tamil_syllabic": "sē",
+      "Proto_Dravidian": "ax",
+      "Sanskrit": "itr"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M236",
+    "n_corpus": 1,
+    "ensemble_reading": "g",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "g",
+      "Tamil_syllabic": "pptt",
+      "Proto_Dravidian": "jn",
+      "Sanskrit": "sness"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M253",
+    "n_corpus": 1,
+    "ensemble_reading": "v",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "v",
+      "Tamil_syllabic": "kin",
+      "Proto_Dravidian": "lq",
+      "Sanskrit": "po"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M269",
+    "n_corpus": 1,
+    "ensemble_reading": "ஹ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ஹ",
+      "Tamil_syllabic": "m",
+      "Proto_Dravidian": "ny",
+      "Sanskrit": "pti"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M273",
+    "n_corpus": 1,
+    "ensemble_reading": "ஓ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ஓ",
+      "Tamil_syllabic": "cel",
+      "Proto_Dravidian": "ht",
+      "Sanskrit": "et"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M275",
+    "n_corpus": 1,
+    "ensemble_reading": "a",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "a",
+      "Tamil_syllabic": "bat",
+      "Proto_Dravidian": "aw",
+      "Sanskrit": "yu"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M279",
+    "n_corpus": 1,
+    "ensemble_reading": "s",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "s",
+      "Tamil_syllabic": "h",
+      "Proto_Dravidian": "dx",
+      "Sanskrit": "nad"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M287",
+    "n_corpus": 1,
+    "ensemble_reading": "ஜ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ஜ",
+      "Tamil_syllabic": "ttu",
+      "Proto_Dravidian": "rz",
+      "Sanskrit": "gaj"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M297",
+    "n_corpus": 1,
+    "ensemble_reading": "?291",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?291",
+      "Tamil_syllabic": "ak",
+      "Proto_Dravidian": "jv",
+      "Sanskrit": "gha"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M298",
+    "n_corpus": 1,
+    "ensemble_reading": "p",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "p",
+      "Tamil_syllabic": "rel",
+      "Proto_Dravidian": "md",
+      "Sanskrit": "ic"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M299",
+    "n_corpus": 1,
+    "ensemble_reading": "உ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "உ",
+      "Tamil_syllabic": "men",
+      "Proto_Dravidian": "gs",
+      "Sanskrit": "ntu"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M300",
+    "n_corpus": 1,
+    "ensemble_reading": "u",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "u",
+      "Tamil_syllabic": "kac",
+      "Proto_Dravidian": "bk",
+      "Sanskrit": "kri"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M310",
+    "n_corpus": 1,
+    "ensemble_reading": "ஈ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ஈ",
+      "Tamil_syllabic": "tak",
+      "Proto_Dravidian": "jw",
+      "Sanskrit": "mul"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M311",
+    "n_corpus": 1,
+    "ensemble_reading": "b",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "b",
+      "Tamil_syllabic": "nam",
+      "Proto_Dravidian": "qw",
+      "Sanskrit": "ksin"
+    },
+    "confirmed_reading": "vaTamiin",
+    "confirmed_confidence": "MEDIUM"
+  },
+  {
+    "sign": "M314",
+    "n_corpus": 1,
+    "ensemble_reading": "ஏ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ஏ",
+      "Tamil_syllabic": "rit",
+      "Proto_Dravidian": "ou",
+      "Sanskrit": "me"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M315",
+    "n_corpus": 1,
+    "ensemble_reading": "l",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "l",
+      "Tamil_syllabic": "ten",
+      "Proto_Dravidian": "oe",
+      "Sanskrit": "var"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M322",
+    "n_corpus": 1,
+    "ensemble_reading": "?288",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?288",
+      "Tamil_syllabic": "pam",
+      "Proto_Dravidian": "fg",
+      "Sanskrit": "ni"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M323",
+    "n_corpus": 1,
+    "ensemble_reading": "அ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "அ",
+      "Tamil_syllabic": "key",
+      "Proto_Dravidian": "hy",
+      "Sanskrit": "nav"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M335",
+    "n_corpus": 1,
+    "ensemble_reading": "ஊ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ஊ",
+      "Tamil_syllabic": "kom",
+      "Proto_Dravidian": "mw",
+      "Sanskrit": "kha"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M337",
+    "n_corpus": 1,
+    "ensemble_reading": "ங",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ங",
+      "Tamil_syllabic": "kur",
+      "Proto_Dravidian": "bh",
+      "Sanskrit": "tna"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M340",
+    "n_corpus": 1,
+    "ensemble_reading": "ஃ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ஃ",
+      "Tamil_syllabic": "gī",
+      "Proto_Dravidian": "bs",
+      "Sanskrit": "pat"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M361",
+    "n_corpus": 1,
+    "ensemble_reading": "?338",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?338",
+      "Tamil_syllabic": "cik",
+      "Proto_Dravidian": "ds",
+      "Sanskrit": "srav"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M364",
+    "n_corpus": 1,
+    "ensemble_reading": "?344",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?344",
+      "Tamil_syllabic": "ol",
+      "Proto_Dravidian": "fn",
+      "Sanskrit": "mor"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M368",
+    "n_corpus": 1,
+    "ensemble_reading": "?165",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?165",
+      "Tamil_syllabic": "up",
+      "Proto_Dravidian": "pm",
+      "Sanskrit": "jay"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M376",
+    "n_corpus": 1,
+    "ensemble_reading": "?96",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?96",
+      "Tamil_syllabic": "kut",
+      "Proto_Dravidian": "eu",
+      "Sanskrit": "te"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M377",
+    "n_corpus": 1,
+    "ensemble_reading": "?317",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?317",
+      "Tamil_syllabic": "tti",
+      "Proto_Dravidian": "ow",
+      "Sanskrit": "hiv"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M393",
+    "n_corpus": 1,
+    "ensemble_reading": "?131",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?131",
+      "Tamil_syllabic": "mik",
+      "Proto_Dravidian": "km",
+      "Sanskrit": "kul"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M394",
+    "n_corpus": 1,
+    "ensemble_reading": "?282",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "?282",
+      "Tamil_syllabic": "mār",
+      "Proto_Dravidian": "jc",
+      "Sanskrit": "co"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M404",
+    "n_corpus": 1,
+    "ensemble_reading": "ஆ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ஆ",
+      "Tamil_syllabic": "kak",
+      "Proto_Dravidian": "mt",
+      "Sanskrit": "vyo"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M407",
+    "n_corpus": 1,
+    "ensemble_reading": "எ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "எ",
+      "Tamil_syllabic": "co",
+      "Proto_Dravidian": "fi",
+      "Sanskrit": "rga"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M411",
+    "n_corpus": 1,
+    "ensemble_reading": "k",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "k",
+      "Tamil_syllabic": "kān",
+      "Proto_Dravidian": "nx",
+      "Sanskrit": "pray"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  },
+  {
+    "sign": "M414",
+    "n_corpus": 1,
+    "ensemble_reading": "ஒ",
+    "ensemble_confidence": "ENSEMBLE_LOW",
+    "dravidian_consensus": false,
+    "sanskrit_differs": true,
+    "per_lm": {
+      "Tamil_char": "ஒ",
+      "Tamil_syllabic": "pur",
+      "Proto_Dravidian": "rz",
+      "Sanskrit": "tyu"
+    },
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD"
+  }
+]

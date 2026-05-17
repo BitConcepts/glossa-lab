@@ -2468,6 +2468,15 @@ try:
 except Exception as _ev_exc:  # noqa: BLE001
     logger.warning("Evidence Graph nodes not registered: %s", _ev_exc)
 
+# ── Phase-48-55 nodes (full Indus decipherment pipeline — GPU mandatory) ──────────────
+try:
+    from glossa_lab.experiment_graph_phase48_55 import _phase48_55_node_defs as _p4855_defs  # noqa: PLC0415
+    for _d in _p4855_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-48-55 decipherment nodes (GPU mandatory)", len(list(_p4855_defs())))
+except Exception as _p4855_exc:  # noqa: BLE001
+    logger.warning("Phase-48-55 decipherment nodes not registered: %s", _p4855_exc)
+
 
 # ── Graph execution
 

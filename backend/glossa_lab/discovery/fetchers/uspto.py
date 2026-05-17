@@ -20,8 +20,10 @@ from glossa_lab.discovery.fetchers.base import (
     Fetcher,
     FetcherError,
     TopicProfile,
+    _429_cooldown,
     http_get_json,
     run_in_thread,
+    source_is_cooling,
 )
 from glossa_lab.discovery.store import RawItem
 
@@ -57,6 +59,10 @@ class USPTOFetcher(Fetcher):
         api_key = get_key("uspto_api_key")
         if not api_key:
             return []
+        cooling, remaining = source_is_cooling(self.source)
+        if cooling:
+            _log.debug("uspto cooldown active — skipping (%.0fs remaining)", remaining)
+            return []
 
         opts = topic.overrides_for(self.source)
         max_results = int(opts.get("max_results", 25))
@@ -80,6 +86,7 @@ class USPTOFetcher(Fetcher):
                 timeout=25.0,
             )
         except FetcherError as exc:
+            _429_cooldown(str(exc), self.source)
             _log.warning("ODP error for topic %s: %s", topic.id, exc)
             return []
         if not isinstance(data, dict):

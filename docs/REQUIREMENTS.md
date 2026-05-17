@@ -148,10 +148,22 @@
 
 ---
 
+## R15 — Database Reliability
+
+> Last updated: 2026-05-17
+
+- DB-WAL-1: The SQLite database connection MUST enable WAL (Write-Ahead Logging) journal mode immediately after opening: `PRAGMA journal_mode=WAL`.
+- DB-WAL-2: The connection MUST set `PRAGMA busy_timeout=5000` to retry for up to 5 seconds before raising `OperationalError` on lock contention.
+- DB-WAL-3: The connection SHOULD set `PRAGMA synchronous=NORMAL` for performance while retaining crash safety.
+- DB-WAL-4: These PRAGMAs MUST be applied in `Database.connect()` before `_apply_schema()` so they take effect for all subsequent operations including seeding and migrations.
+- DB-WAL-5: The application MUST NOT raise `sqlite3.OperationalError: database is locked` during the standard test suite when background tasks (discovery, model intelligence, provider probes) are running concurrently.
+
+---
+
 ## Test Coverage Targets
 
 | Area | Min Coverage |
-|------|-------------|
+|------|--------------|
 | `experiment_graph.py` — atomic node functions | 80% |
 | `experiment_graph.py` — `execute_graph()` | 90% |
 | `rag.py` — `build_index()` + `query()` | 75% |

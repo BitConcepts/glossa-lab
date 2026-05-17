@@ -132,7 +132,7 @@ def main() -> None:
                         break
         print(f"\nWells 2015 relevant passages ({len(fuls_notes)} found):")
         for note in fuls_notes[:5]:
-            print(f"  "{note[:100]}…"")
+            print(f'  "{note[:100]}..."')
 
     result = {
         "_citation": {"primary_sources": ["A.1", "A.13"], "fuls_sources": ["wells_2015"]},

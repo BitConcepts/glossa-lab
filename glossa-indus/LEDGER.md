@@ -85,3 +85,91 @@ Results:
 - **Freq-preserved null**: 0.13/20 top bigrams reproduced — bigrams NOT explained by frequency alone
 - **Site-preserved null**: 1.58σ cross-site recurrence
 - **Hunt tripartite test**: formula_rate=35.5% vs null=0.6% → **59× lift** [VERIFIED]
+
+---
+
+## Batch 6 — Automated Sweep, New Atomic Nodes, and Full UX Integration
+**Date**: 2026-05-17  
+**Commit**: `f80e2c3`
+
+### Sweep configuration schema
+- `config/sweep.yaml` created: per-project sweep config with tiered keywords
+  (primary/secondary/expansions), per-source enable/max_results, exclusions,
+  filters (min_year, languages, open_access), and output settings.
+- Schema is generic — any project can have its own `sweep.yaml`.
+
+### Backend evidence graph API
+- `backend/glossa_lab/api/indus_evidence.py`: 11 REST endpoints covering library,
+  claims, hypotheses, sweep config (GET/PUT), sweep run, sweep candidates, sweep
+  intake, upload, import-url, and intake/run.
+- Sweep engine builds a `TopicProfile` from `sweep.yaml` and runs the existing
+  discovery fetchers directly, deduplicating against registered papers.
+- All background tasks; sweep stores candidates in `logs/sweep_candidates_latest.json`.
+
+### 7 new Evidence Graph atomic nodes
+- `backend/glossa_lab/experiment_graph_indus_evidence.py`
+- Category: `Evidence Graph`; two new port colors (`claims` #b45309, `papers` #0891b2).
+
+| Node | Description |
+|------|-------------|
+| IndusLiteratureLoader | Load papers from `literature/documents/` |
+| IndusClaimsLoader | Load claims with type/status/sign filters |
+| CrossHypothesisMatrix | Agree/conflict verdicts grouped by sign or type |
+| HiddenHypothesisGen | Cross-paper compound hypotheses (≥2 source papers) |
+| IndusClaimTester | Test positional claims against corpus sequences |
+| IndusNullModelTest | Shuffle null model for sign-position enrichment |
+| IndusIntakeRunner | Trigger intake + claims pipeline |
+
+### Frontend — Evidence Graph view
+- `frontend/src/components/IndusEvidenceView.tsx`: 3-tab workspace
+  - Library: paper list, stats, drag-drop PDF dropzone, URL import, Re-run intake
+  - Claims: filterable by type/status/sign, expandable claim cards
+  - Sweep: config editor (keywords, exclusions, sources), Run Sweep, candidates + Import
+- `frontend/src/App.tsx`: `evidence` tab added under Research section.
+- `frontend/src/components/Discovery/DiscoveryView.tsx`: `🗂 → Evidence` action
+  added to Indus/Harappan discovery card items.
+
+---
+
+## Batch 7 — Tests, CI/CD, and Full Documentation
+**Date**: 2026-05-17  
+**Commit**: `7d44d85`
+
+### Test coverage
+- `backend/tests/test_indus_evidence_api.py`: 20 tests, all 11 API endpoints covered.
+- `backend/tests/test_evidence_atomic_nodes.py`: 45 tests (44 registered + 1 real-corpus
+  integration test), all 7 Evidence Graph nodes.
+- `frontend/e2e/evidence-graph.spec.ts`: 39 Playwright tests, all pass offline.
+- `frontend/e2e/navigation.spec.ts`: 2 new Evidence Graph nav tests; 5 pre-existing
+  failures fixed (Studies→Projects, Indus Data removed, title changes).
+- `frontend/e2e/backend-integration.spec.ts`: 14 new Evidence Graph API integration tests.
+
+### CI/CD
+- `.github/workflows/ci.yml`: 3-job GitHub Actions pipeline.
+  - `backend-tests`: Python 3.12, pytest --tb=short, pip cache
+  - `frontend-tests`: Node 20, npm build + Playwright Chromium
+  - `indus-evidence-scripts`: smoke test intake/claims scripts + sweep.yaml validation
+
+### Documentation updates
+- `README.md`: Evidence Graph in overview, repo structure, components, research status.
+- `docs/USER_GUIDE.md`: Section 16 (Evidence Graph) added; navigation table updated;
+  last-updated 2026-05-17.
+- `docs/REQUIREMENTS.md`: R14 Evidence Graph API requirements (R14.1–R14.7) added;
+  test coverage table updated.
+- `docs/TEST_SPEC.md`: TEST-IEA-001–020, TEST-EV-REAL-01, TEST-EV-001–044,
+  TEST-PW-EG-001–039, and backend integration block added.
+- `docs/architecture.md`: Evidence Graph layer in system diagram; Evidence Graph
+  subsystem section; frontend key UI modules table.
+
+### Gap analysis summary (all gaps closed)
+
+| Gap | Status |
+|-----|--------|
+| Pre-existing nav test failures (Studies, Indus Data, etc.) | ✅ Fixed |
+| IndusClaimTester tested only on synthetic corpus | ✅ Real CISI corpus integration test added |
+| No CI/CD pipeline | ✅ 3-job GitHub Actions workflow added |
+| README missing Evidence Graph | ✅ Updated |
+| USER_GUIDE missing Evidence Graph | ✅ Section 16 added |
+| REQUIREMENTS.md missing R14 | ✅ R14.1–7 added |
+| TEST_SPEC.md missing Evidence Graph specs | ✅ TEST-IEA/EV/PW-EG added |
+| architecture.md missing Evidence Graph | ✅ Updated |

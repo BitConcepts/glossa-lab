@@ -352,7 +352,78 @@ def test_ev025_hypo_gen_total_matches_list():
     assert r["total_hypotheses"] == len(r["hypotheses"])
 
 
-# ── IndusClaimTester ──────────────────────────────────────────────────────────
+# ── IndusClaimTester (real corpus integration) ───────────────────────────────
+
+def test_ev_claim_tester_real_indus_cisi_corpus():
+    """TEST-EV-REAL-01: IndusClaimTester against the actual indus_cisi corpus.
+
+    Tests the gap identified in gap analysis: bridge synthetic fixture tests
+    to real corpus behaviour. Uses the built-in CISI corpus for positional
+    claim testing, which provides genuine Parpola-concordance sequences.
+    """
+    import pytest  # noqa: PLC0415
+
+    # Load real sequences from the built-in indus_cisi corpus
+    try:
+        from glossa_lab.data.indus_cisi import get_corpus_inscriptions  # noqa: PLC0415
+        real_sequences = get_corpus_inscriptions()
+    except Exception:  # noqa: BLE001
+        pytest.skip("indus_cisi corpus not available in this environment")
+
+    if len(real_sequences) < 10:
+        pytest.skip("indus_cisi corpus too small for meaningful test")
+
+    # Craft a claim using an actual Parpola sign code from the corpus
+    # P1 (unicorn seal composite sign) is one of the most common initial signs
+    from collections import Counter  # noqa: PLC0415
+    flat = [s for seq in real_sequences for s in seq]
+    freq = Counter(flat)
+    top_signs = [s for s, _ in freq.most_common(10)]
+
+    if not top_signs:
+        pytest.skip("No signs found in corpus")
+
+    most_common = top_signs[0]
+    test_claim = [
+        {
+            "claim_id": "real_corpus_test_001",
+            "source_document_id": "parpola_test_source",
+            "claim_type": "sign_position_claim",
+            "normalized_claim": f"{most_common} sign is initial",
+            "claim_status": "untested",
+            "signs_involved": [most_common],
+        }
+    ]
+
+    r = _run("IndusClaimTester",
+             {"claims": test_claim, "sequences": real_sequences}, {})
+
+    # Core assertions — should run without error on real data
+    assert "test_results" in r, f"Missing test_results key. Got: {list(r.keys())}"
+    assert "n_tested" in r
+    assert "support_rate" in r
+    assert 0.0 <= r["support_rate"] <= 1.0
+
+    # The most-common sign in the real corpus should have enough occurrences
+    # to register at least one testable result
+    assert r["n_tested"] >= 1, (
+        f"Expected at least 1 testable result on real corpus sign '{most_common}', "
+        f"got {r['n_tested']}. Corpus size: {len(real_sequences)} sequences, "
+        f"{len(flat)} tokens."
+    )
+
+    # Verify result keys are complete
+    if r["test_results"]:
+        result = r["test_results"][0]
+        for key in ("sign", "predicted_pos", "observed_rate", "corpus_avg_rate",
+                     "lift", "test_verdict"):
+            assert key in result, f"Missing key '{key}' in real-corpus test result"
+        assert result["test_verdict"] in ("supported", "not_supported")
+
+
+# ── IndusClaimTester (synthetic fixture) ─────────────────────────────────────
+
+# Original synthetic tests below
 
 _TEST_SEQUENCES = [
     ["fish", "jar", "unicorn"], ["fish", "arrow"], ["unicorn", "fish", "jar"],

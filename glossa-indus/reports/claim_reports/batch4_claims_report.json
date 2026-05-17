@@ -1,7 +1,7 @@
 {
   "batch_id": "BATCH4-CLAIMS-20260517",
-  "timestamp": "2026-05-17T11:56:31.497332",
-  "total_documents": 11,
+  "timestamp": "2026-05-17T12:47:13.219336",
+  "total_documents": 12,
   "total_claims": 22,
   "results": [
     {
@@ -41,6 +41,11 @@
     },
     {
       "doc_id": "sinha_2010_network_arxiv",
+      "status": "no_claims",
+      "text_available": false
+    },
+    {
+      "doc_id": "test_e2e_b49bf665",
       "status": "no_claims",
       "text_available": false
     },

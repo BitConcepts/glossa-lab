@@ -213,14 +213,75 @@
 
 ---
 
-## Test Coverage Targets (updated)
+## R14 — Evidence Graph API
 
-| Area | Min Coverage |
-|------|-------------|
-| `experiment_graph.py` — atomic node functions | 80% |
-| `experiment_graph.py` — `execute_graph()` | 90% |
-| `database.py` — report_templates / anchor_sets / corpus_catalogue CRUD | 90% |
-| `api/report_templates.py` | 90% |
-| `api/anchor_sets.py` | 90% |
-| `api/corpus_catalogue.py` | 80% |
-| Playwright — corpora, reports, experiment builder | Core interactions per view |
+> Last updated: 2026-05-17
+
+### R14.1 Library endpoints
+- EG-L1: `GET /api/v1/indus-evidence/library` returns `{documents, total, limit, offset}` with document metadata and claim counts.
+- EG-L2: Supports `?q=`, `?status=`, `?limit=`, `?offset=` query params.
+- EG-L3: `POST /api/v1/indus-evidence/upload` accepts multipart PDF; queues intake pipeline in background. Non-PDF returns 400.
+- EG-L4: `POST /api/v1/indus-evidence/import-url` accepts `{url}` JSON; downloads PDF and queues intake. Empty url returns 400.
+- EG-L5: `POST /api/v1/indus-evidence/intake/run` triggers full intake + claims extraction pipeline in background; returns `{status: 'queued'}`.
+
+### R14.2 Claims endpoints
+- EG-C1: `GET /api/v1/indus-evidence/claims` returns `{claims, total, limit, offset}`.
+- EG-C2: Supports `?claim_type=`, `?claim_status=`, `?doc_id=`, `?sign=`, `?q=`, `?limit=`, `?offset=`.
+- EG-C3: Each claim record includes `claim_id`, `source_document_id`, `claim_type`, `normalized_claim`, `claim_status`.
+
+### R14.3 Hypotheses endpoint
+- EG-H1: `GET /api/v1/indus-evidence/hypotheses` returns `{models}` list of hypothesis model summaries.
+- EG-H2: Each model summary includes `model_id`, `model_name`, `status`, `n_claims`, `n_tests`, `file`.
+
+### R14.4 Sweep config
+- EG-S1: `GET /api/v1/indus-evidence/sweep/config` reads and returns `glossa-indus/config/sweep.yaml`. Returns 404 if file not found.
+- EG-S2: `PUT /api/v1/indus-evidence/sweep/config` saves updated config to `sweep.yaml`. Returns `{status: 'saved'}`.
+- EG-S3: `POST /api/v1/indus-evidence/sweep/run` builds a TopicProfile from sweep.yaml and runs enabled discovery fetchers in a background task. Returns `{status: 'running'}`.
+- EG-S4: `GET /api/v1/indus-evidence/sweep/candidates` returns latest sweep candidates from log file. Returns empty list if no sweep has run.
+- EG-S5: `POST /api/v1/indus-evidence/sweep/intake` accepts candidate metadata; downloads PDF if URL is direct PDF; logs to `pending_imports.jsonl` otherwise.
+
+### R14.5 Sweep configuration schema (sweep.yaml)
+- EG-SC1: `schema_version` field specifies config format version.
+- EG-SC2: `sweep.keywords` has three tiers: `primary`, `secondary`, `expansions`.
+- EG-SC3: `sweep.sources` is a dict keyed by source name; each has `enabled` boolean and `max_results` integer.
+- EG-SC4: `sweep.exclusions` is a list of phrase strings to filter from results.
+- EG-SC5: `sweep.filters.min_year`, `sweep.filters.languages`, `sweep.filters.require_open_access` filter the candidate list.
+- EG-SC6: `sweep.output.auto_intake` and `sweep.output.max_candidates` control auto-processing behaviour.
+- EG-SC7: The sweep.yaml schema is generic — any project can provide its own config file with the same structure.
+
+### R14.6 Evidence Graph atomic nodes
+- EG-N1: Seven atomic nodes registered in `ATOMIC_NODES` under category `Evidence Graph`.
+- EG-N2: `IndusLiteratureLoader` loads papers from `glossa-indus/literature/documents/`.
+- EG-N3: `IndusClaimsLoader` loads extracted claims with type/status/sign filters.
+- EG-N4: `CrossHypothesisMatrix` groups claims by sign or type and computes agree/conflict verdicts.
+- EG-N5: `HiddenHypothesisGen` derives compound cross-paper hypotheses requiring ≥2 source papers.
+- EG-N6: `IndusClaimTester` tests positional claims against corpus sequences.
+- EG-N7: `IndusNullModelTest` runs shuffle null model for sign-position enrichment.
+- EG-N8: `IndusIntakeRunner` triggers intake + claims pipeline on pending uploads.
+- EG-N9: New port types `claims` (#b45309) and `papers` (#0891b2) are registered in PORT_COLORS.
+
+### R14.7 Frontend Evidence Graph workspace
+- EG-UI1: Evidence Graph nav item visible in Research sidebar section.
+- EG-UI2: Library tab: stat row, drag-drop dropzone, URL import, Re-run intake, search, paper list, hypothesis models.
+- EG-UI3: Claims tab: filterable by type, status, sign; expandable claim cards.
+- EG-UI4: Sweep tab: config editor (name, keywords, exclusions, enabled sources), Save Config, Run Sweep, candidates list with Import action.
+- EG-UI5: Discovery view shows `🗂 → Evidence` action on Indus/Harappan classified items.
+
+---
+
+## Test Coverage Targets (updated May 2026)
+
+| Area | Tests | Min Coverage |
+|------|-------|--------------|
+| `experiment_graph.py` — atomic node functions | ✅ 44+ tests | 80% |
+| `experiment_graph.py` — `execute_graph()` | ✅ 10+ tests | 90% |
+| `database.py` — report_templates / anchor_sets / corpus_catalogue CRUD | ✅ | 90% |
+| `api/report_templates.py` | ✅ | 90% |
+| `api/anchor_sets.py` | ✅ | 90% |
+| `api/corpus_catalogue.py` | ✅ | 80% |
+| `api/indus_evidence.py` — all 11 endpoints | ✅ 20 tests | 100% |
+| `experiment_graph_indus_evidence.py` — 7 nodes | ✅ 44 tests | 100% |
+| Playwright — navigation | ✅ 28 tests | All nav items |
+| Playwright — evidence graph | ✅ 39 tests | All 3 tabs, all features |
+| Playwright — backend integration (Evidence Graph API) | ✅ 14 tests | All endpoints |
+| CI/CD — GitHub Actions | ✅ 3-job workflow | push + PR |

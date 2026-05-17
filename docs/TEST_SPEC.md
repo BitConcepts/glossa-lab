@@ -841,3 +841,206 @@ Test cases for Glossa Lab, linked to requirements in `docs/REQUIREMENTS.md`.
 **Expected result:** Manual tag persisted and retrievable
 **Pass criteria:** Tag stored and returned correctly
 **Fail criteria:** Tag lost or incorrect
+
+---
+
+## Evidence Graph API (R14)
+
+> All tests in this section are **automated** (`backend/tests/test_indus_evidence_api.py`).
+> Run: `pytest tests/test_indus_evidence_api.py -v`
+
+### TEST-IEA-001 — Library endpoint shape
+**Requirement:** R14.1 EG-L1
+**Type:** smoke · **Automated:** yes
+**Pass criteria:** `GET /api/v1/indus-evidence/library` returns 200 with `{documents, total, limit, offset}`
+
+### TEST-IEA-002 — Library total non-negative
+**Requirement:** R14.1 EG-L1
+**Type:** unit · **Automated:** yes
+**Pass criteria:** `total` is always an integer >= 0
+
+### TEST-IEA-003 — Library query filter
+**Requirement:** R14.1 EG-L2
+**Type:** unit · **Automated:** yes
+**Pass criteria:** Bogus `?q=` returns empty list with total=0
+
+### TEST-IEA-004 — Library limit param
+**Requirement:** R14.1 EG-L2
+**Type:** unit · **Automated:** yes
+**Pass criteria:** `?limit=1` returns at most 1 document
+
+### TEST-IEA-005 — Claims endpoint shape
+**Requirement:** R14.2 EG-C1
+**Type:** smoke · **Automated:** yes
+**Pass criteria:** Returns `{claims, total, limit, offset}` with list values
+
+### TEST-IEA-006 — Claims total non-negative
+**Requirement:** R14.2 EG-C1
+**Type:** unit · **Automated:** yes
+
+### TEST-IEA-007 — Claims type filter
+**Requirement:** R14.2 EG-C2
+**Type:** unit · **Automated:** yes
+**Pass criteria:** Bogus type returns empty claims
+
+### TEST-IEA-008 — Claims status filter
+**Requirement:** R14.2 EG-C2
+**Type:** unit · **Automated:** yes
+
+### TEST-IEA-009 — Hypotheses endpoint shape
+**Requirement:** R14.3 EG-H1
+**Type:** smoke · **Automated:** yes
+**Pass criteria:** Returns `{models: [...]}`
+
+### TEST-IEA-010 — Hypotheses model keys
+**Requirement:** R14.3 EG-H2
+**Type:** unit · **Automated:** yes
+**Pass criteria:** Each model has `model_id`, `model_name`, `status`, `n_claims`, `n_tests`, `file`
+
+### TEST-IEA-011 — Sweep config GET shape
+**Requirement:** R14.4 EG-S1
+**Type:** smoke · **Automated:** yes
+**Pass criteria:** Returns `{schema_version, sweep: {name, keywords, exclusions, sources}}`
+
+### TEST-IEA-012 — Sweep config PUT round-trip
+**Requirement:** R14.4 EG-S2
+**Type:** integration · **Automated:** yes
+**Pass criteria:** PUT saves, GET reflects the change
+
+### TEST-IEA-013 — Sweep run returns ack
+**Requirement:** R14.4 EG-S3
+**Type:** smoke · **Automated:** yes
+**Pass criteria:** POST returns `{status: 'running', message: ...}`
+
+### TEST-IEA-014 — Sweep candidates shape
+**Requirement:** R14.4 EG-S4
+**Type:** unit · **Automated:** yes
+**Pass criteria:** Returns `{candidates: [...]}` even when empty
+
+### TEST-IEA-015 — Sweep intake missing url
+**Requirement:** R14.4 EG-S5
+**Type:** boundary · **Automated:** yes
+**Pass criteria:** Empty body returns 400 or 422
+
+### TEST-IEA-016 — Sweep intake non-PDF url
+**Requirement:** R14.4 EG-S5
+**Type:** unit · **Automated:** yes
+**Pass criteria:** Non-PDF URL returns `{status: 'pending_manual'}`
+
+### TEST-IEA-017 — Import URL empty body
+**Requirement:** R14.1 EG-L4
+**Type:** boundary · **Automated:** yes
+**Pass criteria:** Empty url returns 400
+
+### TEST-IEA-018 — Intake run returns queued
+**Requirement:** R14.1 EG-L5
+**Type:** smoke · **Automated:** yes
+**Pass criteria:** Returns `{status: 'queued'}`
+
+### TEST-IEA-019 — Upload non-PDF returns 400
+**Requirement:** R14.1 EG-L3
+**Type:** boundary · **Automated:** yes
+**Pass criteria:** `.txt` file returns 400 with detail containing 'PDF'
+
+### TEST-IEA-020 — Library offset pagination
+**Requirement:** R14.1 EG-L2
+**Type:** unit · **Automated:** yes
+**Pass criteria:** Out-of-bounds offset returns empty list, not error
+
+---
+
+## Evidence Graph Atomic Nodes (R14.6)
+
+> All tests automated in `backend/tests/test_evidence_atomic_nodes.py`.
+> Run: `pytest tests/test_evidence_atomic_nodes.py -v`
+
+### TEST-EV-REAL-01 — ClaimTester against real CISI corpus
+**Requirement:** R14.6 EG-N6
+**Type:** integration · **Automated:** yes
+**Pass criteria:** IndusClaimTester runs on real `indus_cisi` sequences; n_tested >= 1; all result keys present
+
+### TEST-EV-038 through TEST-EV-044 — Node registration checks
+**Requirement:** R14.6 EG-N1, EG-N9
+**Type:** smoke · **Automated:** yes
+**Covers:** All 7 nodes registered, category='Evidence Graph', descriptions non-empty, port types valid, `claims`+`papers` colors defined, params_schema valid
+
+### TEST-EV-001 through TEST-EV-006 — IndusLiteratureLoader
+**Requirement:** R14.6 EG-N2
+**Type:** unit · **Automated:** yes
+**Covers:** returns papers list, total matches, max_papers respected, query filter, paper keys, text output
+
+### TEST-EV-007 through TEST-EV-013 — IndusClaimsLoader
+**Requirement:** R14.6 EG-N3
+**Type:** unit · **Automated:** yes
+**Covers:** returns claims, total matches, type/status filters, upstream papers filter, max_claims, type_counts shape
+
+### TEST-EV-014 through TEST-EV-019 — CrossHypothesisMatrix
+**Requirement:** R14.6 EG-N4
+**Type:** unit · **Automated:** yes
+**Covers:** requires claims, returns matrix, conflict detection for fish sign, n_conflicts bounds, group_by types, json output
+
+### TEST-EV-020 through TEST-EV-025 — HiddenHypothesisGen
+**Requirement:** R14.6 EG-N5
+**Type:** unit · **Automated:** yes
+**Covers:** requires claims, returns hypotheses, cross-paper >=2 sources, hypothesis keys, testability values, total matches
+
+### TEST-EV-026 through TEST-EV-030 — IndusClaimTester
+**Requirement:** R14.6 EG-N6
+**Type:** unit · **Automated:** yes
+**Covers:** requires sequences, requires claims, returns test_results, result keys, verdict values
+
+### TEST-EV-031 through TEST-EV-034 — IndusNullModelTest
+**Requirement:** R14.6 EG-N7
+**Type:** unit · **Automated:** yes
+**Covers:** requires sequences, requires target_sign, returns z_score/p_approx/verdict, verdict in valid set
+
+### TEST-EV-035 through TEST-EV-037 — IndusIntakeRunner
+**Requirement:** R14.6 EG-N8
+**Type:** smoke · **Automated:** yes
+**Covers:** returns pipeline_results, result shape, text output
+
+---
+
+## Evidence Graph Playwright Tests (R14.7)
+
+> All tests automated in `frontend/e2e/evidence-graph.spec.ts`.
+> Run (offline): `npx playwright test e2e/evidence-graph.spec.ts`
+
+### TEST-PW-EG-001 through TEST-PW-EG-003 — Navigation
+**Requirement:** R14.7 EG-UI1
+**Type:** smoke · **Automated:** yes
+**Covers:** nav item visible, clicking renders view header, subtitle text
+
+### TEST-PW-EG-004 through TEST-PW-EG-010 — Tab bar
+**Requirement:** R14.7 EG-UI2/3/4
+**Type:** unit · **Automated:** yes
+**Covers:** Library/Claims/Sweep buttons visible, Library default, Claims tab switches, Sweep tab switches, Library restores
+
+### TEST-PW-EG-011 through TEST-PW-EG-020 — Library tab
+**Requirement:** R14.7 EG-UI2
+**Type:** integration · **Automated:** yes
+**Covers:** stats row, dropzone text, secondary text, URL field, Import button, Re-run button, search field, search updates, button disabled state, paper list state
+
+### TEST-PW-EG-021 through TEST-PW-EG-026 — Claims tab
+**Requirement:** R14.7 EG-UI3
+**Type:** integration · **Automated:** yes
+**Covers:** total counter, search input, type dropdown, sign filter, filter typing, expand on click
+
+### TEST-PW-EG-027 through TEST-PW-EG-035 — Sweep tab
+**Requirement:** R14.7 EG-UI4
+**Type:** integration · **Automated:** yes
+**Covers:** Config heading, Save Config, Run Sweep, Sweep Name, Primary Keywords, Exclusions, Candidates heading, Refresh button, empty state
+
+### TEST-PW-EG-036 through TEST-PW-EG-039 — Backend integration
+**Requirement:** R14.7 all
+**Type:** integration · **Automated:** yes (requires backend)
+**Covers:** paper count, hypothesis models stat, claims count, sweep config name
+
+---
+
+## Evidence Graph Backend Integration Tests (R14)
+
+> Tests in `frontend/e2e/backend-integration.spec.ts` → Evidence Graph API describe block.
+> Run: `npx playwright test --config=playwright.backend.config.ts`
+
+**Covers (14 tests):** library shape, total>=11, limit param, claims list total>=22, claims type filter, claims bogus type, hypotheses list >=2, hypotheses shape, sweep config shape, candidates shape, intake run queued, sweep run running, upload non-PDF 400, import-url 400, sweep intake pending_manual

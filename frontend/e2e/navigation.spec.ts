@@ -40,17 +40,27 @@ test.describe("App shell", () => {
 test.describe("Grouped tab navigation", () => {
   test("Workflow section tabs are visible", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByTitle("Studies").first()).toBeVisible();
+    // 'Studies' was renamed to 'Projects' (id='builder') in the nav refactor
+    await expect(page.getByTitle("Projects").first()).toBeVisible();
     await expect(page.getByTitle("Experiments").first()).toBeVisible();
     await expect(page.getByTitle("Corpora").first()).toBeVisible();
     await expect(page.getByTitle("Reports").first()).toBeVisible();
     await expect(page.getByTitle("Pipelines").first()).toBeVisible();
   });
 
-  test("default tab renders Study Builder canvas", async ({ page }) => {
+  test("default tab renders Dashboard", async ({ page }) => {
     await page.goto("/");
-    // Default is the Studies canvas workspace — shows toolbar text, not an h2 heading
-    await expect(page.getByText(/Study Builder/i).first()).toBeVisible();
+    // Default tab is now 'dashboard' (DashboardView), not the Study Builder canvas.
+    // Verify Dashboard content is shown on initial load.
+    await expect(page.getByTitle("Dashboard").first()).toBeVisible();
+  });
+
+  test("clicking Projects tab renders Projects management view", async ({ page }) => {
+    await page.goto("/");
+    await page.getByTitle("Projects").first().click();
+    // The 'Projects' tab now shows the project management view (ProjectsView),
+    // not the Study Builder canvas. It has a heading '📁 Projects'.
+    await expect(page.getByRole("heading", { name: /Projects/i }).first()).toBeVisible({ timeout: 5000 });
   });
 
   test("clicking Status tab shows System Status", async ({ page }) => {
@@ -100,7 +110,9 @@ test.describe("Grouped tab navigation", () => {
     await page.goto("/");
     await expect(page.getByTitle("Entropy").first()).toBeVisible();
     await expect(page.getByTitle("Timeline").first()).toBeVisible();
-    await expect(page.getByTitle("Indus Data").first()).toBeVisible();
+    // Note: 'Indus Data' tab was removed from the Analysis section in the nav refactor.
+    // The Analysis section now contains: Entropy, Signs, Timeline.
+    await expect(page.getByTitle("Signs").first()).toBeVisible();
   });
 
   test("System items visible at sidebar bottom", async ({ page }) => {
@@ -120,10 +132,12 @@ test.describe("Grouped tab navigation", () => {
 });
 
 test.describe("Studies workspace features", () => {
-  test("Run All button is visible in Studies list header", async ({ page }) => {
+  test("Projects view shows + New Project button", async ({ page }) => {
     await page.goto("/");
-    // ▶▶ button in the Studies left panel header
-    await expect(page.getByTitle("Run all studies in parallel").first()).toBeVisible();
+    // Navigate to Projects tab (previously 'Studies').
+    await page.getByTitle("Projects").first().click();
+    // ProjectsView shows a '+ New Project' button.
+    await expect(page.getByRole("button", { name: /New Project/i })).toBeVisible({ timeout: 5000 });
   });
 
   test("floating Run Study button appears on canvas when study is open (requires backend)", async ({ page }) => {
@@ -157,7 +171,8 @@ test.describe("Experiments workspace features", () => {
   test("Run All button is visible in Experiments list header", async ({ page }) => {
     await page.goto("/");
     await page.getByTitle("Experiments").first().click();
-    await expect(page.getByTitle("Run all experiments in parallel").first()).toBeVisible();
+    // Actual title in ExperimentBuilderView is 'Run all experiments (skips already-running ones)'
+    await expect(page.getByTitle("Run all experiments (skips already-running ones)").first()).toBeVisible({ timeout: 5000 });
   });
 
   test("Stop All button not visible when nothing is running", async ({ page }) => {

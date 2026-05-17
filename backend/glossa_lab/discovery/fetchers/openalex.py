@@ -71,7 +71,7 @@ class OpenAlexFetcher(Fetcher):
         if oa_email:
             params["mailto"] = oa_email
         try:
-            data = await run_in_thread(http_get_json, _ENDPOINT, params=params, timeout=25.0)
+            data = await run_in_thread(http_get_json, _ENDPOINT, params=params, timeout=15.0)
         except FetcherError as exc:
             _log.warning("OpenAlex error for topic %s: %s", topic.id, exc)
             return []

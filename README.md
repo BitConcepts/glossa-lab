@@ -1,5 +1,7 @@
 # glossa-lab
 
+![CI](https://github.com/layer1labs/glossa-lab/actions/workflows/ci.yml/badge.svg)
+
 Agentic computational linguistics research platform for statistical analysis, decipherment, and hypothesis testing of ancient and unknown writing systems — with a primary focus on the **Indus Script** (Mahadevan corpus, Holdat LLC dataset) using methods developed by Dr. Andreas Fuls (TU Berlin / ICIT).
 
 Built and maintained by **Layer1Labs Silicon, Inc.**
@@ -13,10 +15,11 @@ Glossa Lab is a production research tool combining a Python backend, React front
 - **Corpus management** — upload, register, inspect, and sanitise sign-sequence corpora
 - **Statistical analysis** — entropy, Zipf, positional profiles (T/I/M), writing-system classification
 - **Decipherment experiments** — SA-based sign-to-phoneme hypothesis generation, benchmarks vs known scripts
-- **Experiment Builder** — composable graph experiments using atomic nodes (no coding required)
+- **Experiment Builder** — composable graph experiments using atomic nodes (no coding required); new **Evidence Graph** category with 7 nodes for comparative literature analysis
 - **Study Builder** — multi-experiment research workflows as visual graphs
 - **Glossa AI** — embedded research assistant that runs analyses, proposes hypotheses, and navigates the tool
 - **Discovery engine** — continuous literature discovery across arXiv, EuropePMC, CrossRef, DOAJ and more
+- **Evidence Graph** — per-project literature library, automated paper sweep (configurable via `sweep.yaml`), claim extraction, cross-hypothesis falsification matrix, and hidden hypothesis generation
 - **AI Provider Registry** — unified management of cloud (OpenAI, Anthropic, Mistral, Google…), local (Ollama), and self-hosted (vLLM) AI backends with model scoring and smart assignment
 - **Reports & Data** — PDF, Markdown, JSON, CSV export of all results
 
@@ -62,9 +65,10 @@ Built artefact (`frontend/dist/`) is committed to the repo so the server only ne
 Key panels:
 - **Provider Registry** — add/test/manage AI providers; badges: 🦙 Ollama · ☁️ Cloud · ⚡ vLLM/Custom · 🤗 HuggingFace
 - **Model Assignments** — assign primary/fallback models per bucket (Reasoning / Conversational / Long-form / Global) with draft/apply workflow, scores, filter, and swap
-- **Experiment Builder** — visual DAG editor
-- **Study Builder** — multi-experiment graph workflows
-- **Discovery View** — literature feed with status management
+- **Experiment Builder** — visual DAG editor with `Evidence Graph` palette category (7 nodes)
+- **Study Builder** — multi-experiment research workflows (accessible via Projects)
+- **Discovery View** — literature feed with `→ Evidence` import action for Indus/Harappan items
+- **Evidence Graph** — three-tab workspace: Library (PDF upload, URL import), Claims (filterable), Sweep (configurable sweep + candidate import)
 - **Foundation Check** — research integrity dashboard (17 checks; must be PASS before external communication)
 - **Bottom Panel** — structured Logs (JSON → human-readable), Jobs, Terminal
 
@@ -94,10 +98,14 @@ glossa-lab/
 ├─ setup-os.cmd         ← canonical start/stop/restart (Windows)
 ├─ shell.cmd            ← tool wrapper (pytest, ruff, python — Windows)
 ├─ shell.sh             ← tool wrapper (Linux/macOS)
+├─ .github/
+│  └─ workflows/ci.yml  ← GitHub Actions CI (pytest + Playwright + evidence scripts)
 ├─ backend/
 │  ├─ glossa_lab/       ← FastAPI app + all Python modules
 │  │  ├─ api/           ← REST route modules
+│  │  │  └─ indus_evidence.py ← Evidence Graph API (library, claims, sweep)
 │  │  ├─ experiments/   ← ExperimentBase subclasses + graph JSONs
+│  │  ├─ experiment_graph_indus_evidence.py ← 7 Evidence Graph atomic nodes
 │  │  ├─ discovery/     ← literature discovery engine + fetchers
 │  │  ├─ data/          ← corpora, anchor sets, LM files (cited per H18)
 │  │  └─ model_intelligence.py ← HF leaderboard sync + scoring
@@ -105,7 +113,15 @@ glossa-lab/
 │  └─ scripts/          ← utility and research scripts
 ├─ frontend/
 │  ├─ src/              ← React source
+│  │  └─ components/IndusEvidenceView.tsx ← Evidence Graph three-tab workspace
 │  └─ dist/             ← built artefact (committed for server deploy)
+├─ glossa-indus/        ← Indus Evidence Graph data store
+│  ├─ config/sweep.yaml ← per-project sweep configuration (editable)
+│  ├─ literature/       ← registered papers (JSON metadata)
+│  ├─ claims/           ← extracted claims per document
+│  ├─ hypotheses/       ← hypothesis model YAMLs
+│  ├─ raw/user_uploads/ ← user-uploaded PDFs
+│  └─ scripts/          ← intake + claims extraction pipeline
 ├─ tray/                ← system tray app
 ├─ docs/
 │  ├─ USER_GUIDE.md
@@ -172,11 +188,13 @@ curl.exe -sf http://localhost:8001/ | Select-String 'index-[A-Za-z0-9]+\.js'
 | `AGENTS.md` | Agent rules, start/stop commands, hard rules |
 | `LEDGER.md` | Session ledger — sole continuity authority |
 | `CITATIONS.md` | Research data citation registry |
-| `docs/USER_GUIDE.md` | Full user guide (all panels) |
-| `docs/architecture.md` | System architecture |
-| `docs/REQUIREMENTS.md` | Formal requirements |
+| `docs/USER_GUIDE.md` | Full user guide (all panels) including Evidence Graph |
+| `docs/architecture.md` | System architecture including Evidence Graph layer |
+| `docs/REQUIREMENTS.md` | Formal requirements (R1–R14, incl. R13 Evidence Graph) |
+| `docs/TEST_SPEC.md` | Test specification (TEST-IEA, TEST-EV, TEST-PW-EG) |
 | `docs/research/` | Decipherment research documents |
 | `docs/guides/` | How-to guides (experiments, pipelines, studies) |
+| `glossa-indus/LEDGER.md` | Evidence Graph batch work log |
 
 ---
 
@@ -186,7 +204,8 @@ curl.exe -sf http://localhost:8001/ | Select-String 'index-[A-Za-z0-9]+\.js'
 - **99.2% token coverage** on Holdat corpus (1,670 seals / 7,002 tokens)
 - **Phase-29d**: Enmenanak confirmed top candidate (score 7.0, p<0.001)
 - **Phase-31 T3**: Indus Script and Tamil-Brahmi both in syllabic Zipf regime (δ=0.177)
-- **Phase-32**: Synthesis written; T4 word-level LM rerun pending
+- **Phase-43 (May 2026)**: 231.9σ positional structure confirmed; Hunt tripartite formula 59× lift
+- **Evidence Graph (May 2026)**: 11 papers registered, 22 claims extracted across Parpola/FSW/Yadav/Roif/Hunt
 - **TB correlation**: 0.907 (post M267 correction)
 
 ---

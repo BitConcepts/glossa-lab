@@ -1,0 +1,9 @@
+{
+  "test": "null_random_shuffle",
+  "real_positional_entropy": 1.0223,
+  "null_mean_positional_entropy": 1.4765,
+  "null_std": 0.002,
+  "effect_size_d": 231.889,
+  "n_samples": 100,
+  "interpretation": "Real corpus positional entropy (1.0223) is 231.89\u03c3 below random shuffle null (1.4765). SIGNIFICANT structure above random baseline."
+}

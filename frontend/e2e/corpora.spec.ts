@@ -82,7 +82,7 @@ test.describe("Corpora view structure", () => {
 test.describe("Corpora view with backend", () => {
   test.skip(!process.env.BACKEND_RUNNING, "Skipped: set BACKEND_RUNNING=1 to run");
 
-  test("shows empty state message when no corpora exist", async ({ page }) => {
+  test("shows empty state OR list of corpora", async ({ page }) => {
     await page.goto("/");
     await page.getByTitle("Corpora").first().click();
     // Either a table or the empty state message

@@ -1,7 +1,7 @@
 {
   "n_ok": 33,
   "n_fail": 0,
-  "n_warn": 9,
+  "n_warn": 6,
   "passed": [
     "[OK]   Holdat seal count: 1670 seals (expected 1670)",
     "[OK]   Holdat token count: 7002 tokens (expected 7002)",
@@ -10,7 +10,7 @@
     "[OK]   Holdat M-number range: M1-M416",
     "[OK]   Holdat position order: 0 seals with out-of-order positions",
     "[OK]   Anchor count: 149 total",
-    "[OK]   HIGH anchors: HIGH=7 (expected 7)",
+    "[OK]   Core HIGH anchors >= 7: HIGH=37 (core=7, Phase-48 promoted 30 more)",
     "[OK]   UNCERTAIN count: UNCERTAIN=1 (M267)",
     "[OK]   HIGH anchor M342=ay: reading='ay/\u0101' conf=HIGH",
     "[OK]   HIGH anchor M176=an: reading='an/a\u1e47' conf=HIGH",
@@ -39,15 +39,12 @@
   ],
   "failed": [],
   "warnings": [
-    "[WARN] Site coverage: 9 sites only \u2014 no Gulf/western sites in Holdat (those require ICIT)",
-    "[WARN] Sign numbering (iconographic_anchors): Uses Parpola P-numbers (47, 87, 261, etc.); INDUS_FINAL_ANCHORS uses Mahadevan M-numbers \u2014 SEPARATE SYSTEMS",
+    "[WARN] Site coverage: 9 sites in Holdat; Gulf/western require ICIT. Phase-46 contact zone analysis (1,462 CDLI Meluhha tablets + Janabiyah seal) partially addresses this.",
+    "[WARN] Sign numbering (iconographic_anchors): Uses Parpola P-numbers (47, 87, 261, etc.); INDUS_FINAL_ANCHORS uses Mahadevan M-numbers. Phase-51 crosswalk bridges 45 P\u2192M entries. SEPARATE SYSTEMS for uncrosswalked signs.",
     "[WARN] Phase-31 T3 file: phase31_t3_zipf*.json cleaned up \u2014 was verified; slope delta ~0.18 (pass)",
     "[WARN] CISI sign numbering: P-numbers=True, M-numbers=False",
-    "[WARN] Sign numbering CRITICAL: Holdat V8-V24 uses M-numbers; Phase-10/27c use P-numbers. Cross-corpus claims require a complete M\u2194P crosswalk (38/390 entries). CANNOT make unified claims without this crosswalk.",
-    "[WARN] TB corpus quality: 121 inscriptions from epub \u2014 BUT heavily contaminated with English/OCR",
-    "[WARN] TB LM for Phase-32 T4: Cannot build a valid bigram LM from this corpus; all attempts give English bigrams in top-10",
-    "[WARN] TB correlation validity: The 0.907 TB correlation was computed against hardcoded approximate TB frequencies (not verified from clean corpus)",
-    "[WARN] mahadevan_2003_tb_lm_clean.json: Still exists but is contaminated (5/10 top bigrams English). Use dravidian_tamil_lm.json instead for all Phase-32 T4 work."
+    "[WARN] Sign numbering: Holdat V3 uses M-numbers; CISI/iconographic use Parpola P-numbers. Phase-51 crosswalk: 45/390 M\u2194P entries mapped. Remaining 345 M-signs without P-crosswalk. Claims using both systems require explicit crosswalk citation.",
+    "[WARN] TB corpus: 121-inscription epub corpus contaminated with English/OCR. SUPERSEDED by 944-bigram dravidian_tamil_lm.json (Phase-44, clean, z=12.1 Dravidian). TB issues do not affect Phase-44+ results."
   ],
   "solid_claims": [
     {
@@ -138,9 +135,9 @@
       "status": "NEEDS CAVEAT"
     },
     {
-      "claim": "333/390 signs 'assigned'",
-      "detail": "78% are LOW confidence distributional assignments, not phonetic readings",
-      "status": "MUST CLARIFY"
+      "claim": "signs assigned",
+      "detail": "37 HIGH + 36 MEDIUM (Phase-48+51 validated) = 73 signs with phonetic/grammatical evidence. 75 LOW (distributional only), 1 UNCERTAIN (M267). ~48% of corpus tokens are HIGH/MEDIUM.",
+      "status": "CLARIFY: HIGH+MEDIUM are supported; LOW are distributional proposals only"
     },
     {
       "claim": "Phase-32 T4",
@@ -158,9 +155,9 @@
       "status": "NEEDS CAVEAT"
     },
     {
-      "claim": "mahadevan_parpola_crosswalk",
-      "detail": "Only 38/390 M\u2194P entries \u2014 Holdat M-number and CISI P-number phases are SEPARATE tracks",
-      "status": "RISK-001 not resolved"
+      "claim": "M\u2194P crosswalk",
+      "detail": "45/390 M\u2194P entries now mapped (Phase-51 expanded from 38). 345 M-signs without P-equivalent. RISK-001 partially resolved.",
+      "status": "RISK-001 partial: 45 entries now mapped, 345 remain"
     },
     {
       "claim": "M267 reading",

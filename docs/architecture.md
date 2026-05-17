@@ -23,12 +23,16 @@ The system is designed as a **service-first architecture** where:
 At runtime, the system behaves as:
 
 ```text
-[ Tray ] ─────┐
+[ Tray ] ─────┌
               │
-[ Frontend ] ─┼──→ [ Backend Service ] ───→ [ Pipelines / Jobs / Models ]
-              │
-[ CLI / Dev ] ┘
-````
+[ Frontend ] ─┼──→ [ Backend Service (FastAPI) ] ─→ [ Pipelines / Jobs / Models ]
+              │              │
+[ CLI / Dev ] ┘         [ SQLite DB ]
+                               │
+                    [ Evidence Graph Layer ] ─→ [ glossa-indus/ file store ]
+                         discovery fetchers        literature/ claims/ hypotheses/
+                         sweep.yaml config         sweep_candidates.json
+```
 
 Key rule:
 
@@ -50,9 +54,18 @@ The backend is the **core system authority**.
 * language/script analysis pipelines
 * translation orchestration
 * research workflows
-* local APIs
+* local APIs (including Evidence Graph API at `/api/v1/indus-evidence/`)
 * background task execution
 * config and state management
+
+#### Evidence Graph subsystem
+
+The Evidence Graph is a filesystem-backed research layer implemented in:
+- `backend/glossa_lab/api/indus_evidence.py` — REST API (11 endpoints)
+- `backend/glossa_lab/experiment_graph_indus_evidence.py` — 7 Experiment Builder atomic nodes
+- `glossa-indus/` — project-specific data store (literature, claims, hypotheses, sweep config)
+
+The sweep engine reuses the existing discovery fetcher infrastructure (`glossa_lab/discovery/fetchers/`) with a per-project `TopicProfile` built from `sweep.yaml`. Results are stored as filesystem JSON rather than in SQLite to keep them project-portable.
 
 #### Expected characteristics
 
@@ -83,6 +96,15 @@ The frontend is the **primary user interface**.
 * workflow/job management
 * result inspection
 * service visibility
+* Evidence Graph workspace (Library, Claims, Sweep tabs via `IndusEvidenceView.tsx`)
+
+#### Key UI modules
+
+| Module | Path | Purpose |
+|--------|------|---------|
+| `IndusEvidenceView` | `frontend/src/components/IndusEvidenceView.tsx` | Three-tab Evidence Graph workspace |
+| `ExperimentBuilderView` | `frontend/src/components/ExperimentBuilderView.tsx` | Visual graph experiment editor |
+| `DiscoveryView` | `frontend/src/components/Discovery/DiscoveryView.tsx` | Literature feed with → Evidence import |
 
 #### Rules
 

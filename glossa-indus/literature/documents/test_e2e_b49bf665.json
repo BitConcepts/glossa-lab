@@ -1,0 +1,28 @@
+{
+  "document_id": "test_e2e_b49bf665",
+  "original_filename": "test_e2e.pdf",
+  "stored_path_raw": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\glossa-indus\\raw\\user_uploads\\test_e2e.pdf",
+  "stored_path_text": null,
+  "file_type": ".pdf",
+  "file_size_bytes": 30,
+  "checksum_sha256": "b49bf665430ecda76f327c6230627dad446cbfb11248a325522a20bff77a634d",
+  "intake_date": "2026-05-17T20:51:25.846507",
+  "license_status": "unclear",
+  "access_type": "user_uploaded",
+  "ocr_required": true,
+  "ocr_status": "pending",
+  "duplicate_status": "unique",
+  "processing_status": "registered",
+  "detected_title": "test e2e",
+  "detected_authors": [],
+  "detected_year": null,
+  "detected_doi": null,
+  "detected_abstract": "",
+  "claim_extraction_status": "pending",
+  "hypothesis_relevance": null,
+  "_citation": {
+    "system": "Glossa-Lab Indus Evidence Graph",
+    "intake_version": "1.0",
+    "note": "User-provided or acquired document. License status must be verified before publication use."
+  }
+}

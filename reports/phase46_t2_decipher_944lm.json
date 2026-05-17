@@ -1,0 +1,166 @@
+{
+  "_citation": {
+    "primary_sources": [
+      "A.1"
+    ],
+    "phase44_t3_lift": 3.13
+  },
+  "gpu_device": "cuda",
+  "corpus": {
+    "n_inscriptions": 1670,
+    "n_signs_flat": 7002,
+    "n_unique_signs": 390
+  },
+  "lm": {
+    "n_bigrams": 944
+  },
+  "null_model": {
+    "mean": -72152.335,
+    "std": 5292.602
+  },
+  "sa_params": {
+    "n_restarts": 5,
+    "max_iter": 20000,
+    "temp": 1.0,
+    "cooling": 0.9997,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "conditions": {
+    "BASELINE": {
+      "m267_token": null,
+      "pinned_mappings": {},
+      "seed_scores": [
+        -52745.953125,
+        -52598.859375,
+        -52678.796875,
+        -52468.53125,
+        -52943.5234375
+      ],
+      "best_score": -52468.531,
+      "mean_score": -52687.133,
+      "z_score": 3.678,
+      "lift": 0.7302,
+      "elapsed_secs": 49.4
+    },
+    "in": {
+      "m267_token": "in",
+      "pinned_mappings": {
+        "M267": "in"
+      },
+      "seed_scores": [
+        -53223.21875,
+        -52837.04296875,
+        -52678.078125,
+        -52594.24609375,
+        -52647.79296875
+      ],
+      "best_score": -52594.246,
+      "mean_score": -52796.076,
+      "z_score": 3.657,
+      "lift": 0.7317,
+      "elapsed_secs": 48.8
+    },
+    "um": {
+      "m267_token": "um",
+      "pinned_mappings": {
+        "M267": "um"
+      },
+      "seed_scores": [
+        -53223.21875,
+        -52837.04296875,
+        -52678.078125,
+        -52594.24609375,
+        -52647.79296875
+      ],
+      "best_score": -52594.246,
+      "mean_score": -52796.076,
+      "z_score": 3.657,
+      "lift": 0.7317,
+      "elapsed_secs": 48.5
+    },
+    "e": {
+      "m267_token": "e",
+      "pinned_mappings": {
+        "M267": "e"
+      },
+      "seed_scores": [
+        -61112.72265625,
+        -61082.78515625,
+        -61111.1640625,
+        -61001.3203125,
+        -61120.875
+      ],
+      "best_score": -61001.32,
+      "mean_score": -61085.773,
+      "z_score": 2.091,
+      "lift": 0.8466,
+      "elapsed_secs": 48.5
+    },
+    "al": {
+      "m267_token": "al",
+      "pinned_mappings": {
+        "M267": "al"
+      },
+      "seed_scores": [
+        -53223.21875,
+        -52837.04296875,
+        -52678.078125,
+        -52594.24609375,
+        -52647.79296875
+      ],
+      "best_score": -52594.246,
+      "mean_score": -52796.076,
+      "z_score": 3.657,
+      "lift": 0.7317,
+      "elapsed_secs": 47.0
+    },
+    "atu": {
+      "m267_token": "atu",
+      "pinned_mappings": {
+        "M267": "atu"
+      },
+      "seed_scores": [
+        -53223.21875,
+        -52837.04296875,
+        -52678.078125,
+        -52594.24609375,
+        -52647.79296875
+      ],
+      "best_score": -52594.246,
+      "mean_score": -52796.076,
+      "z_score": 3.657,
+      "lift": 0.7317,
+      "elapsed_secs": 50.8
+    },
+    "ir": {
+      "m267_token": "ir",
+      "pinned_mappings": {
+        "M267": "ir"
+      },
+      "seed_scores": [
+        -53223.21875,
+        -52837.04296875,
+        -52678.078125,
+        -52594.24609375,
+        -52647.79296875
+      ],
+      "best_score": -52594.246,
+      "mean_score": -52796.076,
+      "z_score": 3.657,
+      "lift": 0.7317,
+      "elapsed_secs": 89.0
+    }
+  },
+  "best_condition": "e",
+  "baseline_lift": 0.7302,
+  "best_lift": 0.8466,
+  "improvement_over_baseline": 0.1594,
+  "verdict": "CONSTRAINT_IMPROVES_FIT",
+  "verdict_note": "Pinning M267 = 'e' improves Dravidian lift by 15.9% (0.730x → 0.847x). Supports this as the M267 reading."
+}

@@ -1,0 +1,103 @@
+{
+  "_citation": {
+    "primary": [
+      "A.1"
+    ]
+  },
+  "gpu_device": "cuda",
+  "n_tests": 7,
+  "n_pass": 1,
+  "n_weak": 2,
+  "n_fail": 4,
+  "support_rate": 0.429,
+  "test_results": [
+    {
+      "sign": "M233",
+      "reading": "ūr",
+      "gloss": "town/settlement",
+      "prediction": "M233 should be enriched at sites with multiple seal impressions (administrative contexts vs individual owner seals)",
+      "test_type": "iconography_enrichment",
+      "nonanimal_rate_with_sign": 0.185,
+      "nonanimal_rate_without_sign": 0.133,
+      "chi2": 2.884,
+      "p_value": 0.5,
+      "expected_met": true,
+      "verdict": "WEAK"
+    },
+    {
+      "sign": "M012",
+      "reading": "oṉṟu",
+      "gloss": "one (numerical)",
+      "prediction": "M012 should appear disproportionately in short (1-3 sign) inscriptions if it's a numerical sign",
+      "test_type": "inscription_length",
+      "mean_length_with": 4.38,
+      "mean_length_without": 4.18,
+      "chi2": 1.685,
+      "p_value": 0.5,
+      "expected_met": false,
+      "verdict": "FAIL"
+    },
+    {
+      "sign": "M073",
+      "reading": "kōṉ",
+      "gloss": "king/chieftain",
+      "prediction": "M073 (CLASSIFIER_PREFIX, pos=0.0) should be enriched at Mohenjo-daro (administrative centre) vs peripheral sites",
+      "test_type": "site_enrichment",
+      "coastal_rate": 0.0043,
+      "inland_rate": 0.0171,
+      "rr": 0.254,
+      "chi2": 1.358,
+      "p_value": 0.5,
+      "expected_met": false,
+      "verdict": "FAIL"
+    },
+    {
+      "sign": "M059",
+      "reading": "ēḷ/eḷ",
+      "gloss": "personal name marker / person",
+      "prediction": "M059 (PERSON_OR_OWNER) should immediately precede CASE_MARKER_SUFFIX signs more than CLASSIFIER_PREFIX",
+      "test_type": "successor_role",
+      "follows_suffix_pct": 0.667,
+      "follows_classifier_pct": 0.0,
+      "total_transitions": 147,
+      "expected_met": true,
+      "verdict": "PASS"
+    },
+    {
+      "sign": "M391",
+      "reading": "ka/kaṇ",
+      "gloss": "case marker suffix",
+      "prediction": "M391 (CASE_MARKER_SUFFIX, pos=0.6) should follow faunal classifier signs at rate > 50%",
+      "test_type": "predecessor_role",
+      "preceded_by_classifier_pct": 0.181,
+      "total": 171,
+      "expected_met": false,
+      "verdict": "FAIL"
+    },
+    {
+      "sign": "M047",
+      "reading": "mīn",
+      "gloss": "fish",
+      "prediction": "M047 (fish) should appear on seals with coastal trade contexts (Lothal, Dholavira) more than inland",
+      "test_type": "site_enrichment",
+      "coastal_rate": 0.0087,
+      "inland_rate": 0.007,
+      "rr": 1.243,
+      "chi2": 0.0,
+      "p_value": 0.5,
+      "expected_met": true,
+      "verdict": "WEAK"
+    },
+    {
+      "sign": "M099",
+      "reading": "kol/koḷ",
+      "gloss": "title/hammer",
+      "prediction": "M099 should appear in >80% of inscriptions that contain HIGH-confidence PERSON_OR_OWNER signs",
+      "test_type": "co_occurrence",
+      "co_occur_rate_with_person": 0.202,
+      "n_person_inscriptions": 430,
+      "expected_met": false,
+      "verdict": "FAIL"
+    }
+  ]
+}

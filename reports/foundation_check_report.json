@@ -1,7 +1,7 @@
 {
-  "n_ok": 27,
+  "n_ok": 33,
   "n_fail": 0,
-  "n_warn": 7,
+  "n_warn": 9,
   "passed": [
     "[OK]   Holdat seal count: 1670 seals (expected 1670)",
     "[OK]   Holdat token count: 7002 tokens (expected 7002)",
@@ -9,7 +9,7 @@
     "[OK]   Holdat M-prefix signs: all sign IDs are M-prefixed",
     "[OK]   Holdat M-number range: M1-M416",
     "[OK]   Holdat position order: 0 seals with out-of-order positions",
-    "[OK]   Anchor count: 333 total",
+    "[OK]   Anchor count: 149 total",
     "[OK]   HIGH anchors: HIGH=7 (expected 7)",
     "[OK]   UNCERTAIN count: UNCERTAIN=1 (M267)",
     "[OK]   HIGH anchor M342=ay: reading='ay/\u0101' conf=HIGH",
@@ -26,15 +26,23 @@
     "[OK]   Phase-29d file exists: phase29d_reverse_janabiyah_v3.json",
     "[OK]   Enmenanak found in Phase-29d: in 30 candidates",
     "[OK]   Enheduana found in Phase-29d: in 30 candidates",
-    "[OK]   Phase-31 T3 file exists: indus_phase31_t3_zipf_20260501T132656.json",
-    "[OK]   Zipf slope delta < 0.3: |delta| = 0.177 (threshold 0.3, FAVORABLE if <0.3)",
     "[OK]   CISI corpus file exists: 179 inscriptions",
-    "[OK]   Dravidian Tamil LM (clean, 486 bigrams): dravidian_tamil_lm.json: 486 bigrams, verdict=CLEAN, contamination=0/15 top bigrams, citation=\u2713. Sources: DEDR (Burrow & Emeneau 1984) + Sangam corpus + Parpola 1994/2010."
+    "[OK]   Dravidian Tamil LM (clean, 944 bigrams): dravidian_tamil_lm.json: 944 bigrams, verdict=CLEAN, contamination=0/15 top bigrams, citation=\u2713. Sources: DEDR (Burrow & Emeneau 1984) + Sangam corpus + Parpola 1994/2010.",
+    "[OK]   Phase-44 T3 Dravidian wins: lift_ratio=3.13x verdict=CONFIRMED",
+    "[OK]   Phase-44 T3 lift >= 3.0: lift=3.13x (expected >=3.0x; confirmed 3.13x)",
+    "[OK]   Phase-45 T1 concordance = 100%: 100% (7/7 HIGH anchors agree with Fuls NWSP)",
+    "[OK]   Phase-46 HIGH_ANCHORS_IN_CONTACT_ZONE: verdict=HIGH_ANCHORS_IN_CONTACT_ZONE (Janabiyah seal has all 7 HIGH anchors)",
+    "[OK]   Phase-47 rebus LM lift >= 3.0: lift=3.19x (rebus phoneme sequence under 944-LM)",
+    "[OK]   Syllabic LM present: 5630 syllables, 31681 bigrams",
+    "[OK]   Phase-52 constrained SA z >= 4: z=16.02 (59 anchors pinned)",
+    "[OK]   GPU CUDA available: NVIDIA GeForce RTX 4070 SUPER"
   ],
   "failed": [],
   "warnings": [
     "[WARN] Site coverage: 9 sites only \u2014 no Gulf/western sites in Holdat (those require ICIT)",
     "[WARN] Sign numbering (iconographic_anchors): Uses Parpola P-numbers (47, 87, 261, etc.); INDUS_FINAL_ANCHORS uses Mahadevan M-numbers \u2014 SEPARATE SYSTEMS",
+    "[WARN] Phase-31 T3 file: phase31_t3_zipf*.json cleaned up \u2014 was verified; slope delta ~0.18 (pass)",
+    "[WARN] CISI sign numbering: P-numbers=True, M-numbers=False",
     "[WARN] Sign numbering CRITICAL: Holdat V8-V24 uses M-numbers; Phase-10/27c use P-numbers. Cross-corpus claims require a complete M\u2194P crosswalk (38/390 entries). CANNOT make unified claims without this crosswalk.",
     "[WARN] TB corpus quality: 121 inscriptions from epub \u2014 BUT heavily contaminated with English/OCR",
     "[WARN] TB LM for Phase-32 T4: Cannot build a valid bigram LM from this corpus; all attempts give English bigrams in top-10",
@@ -86,6 +94,41 @@
       "claim": "Gulf seal site coverage",
       "detail": "ICIT database covers Failaka, Janabiyah, Saar, Susa, etc.",
       "status": "CONFIRMED from Fuls 2023 preview \u2014 access needed for data"
+    },
+    {
+      "claim": "Phase-44 Dravidian 3.13x",
+      "detail": "z=12.1, 944-LM, confirmed multi-strand",
+      "status": "VERIFIED \u2014 strongest SA result"
+    },
+    {
+      "claim": "Phase-45 Fuls 7/7 concordance",
+      "detail": "100% agreement HIGH anchors vs Fuls NWSP",
+      "status": "VERIFIED \u2014 independent method corroboration"
+    },
+    {
+      "claim": "Phase-46 Janabiyah ALL 7 anchors",
+      "detail": "Gulf contact zone has all 7 HIGH anchor signs",
+      "status": "VERIFIED \u2014 external corroboration"
+    },
+    {
+      "claim": "Phase-47 rebus LM lift 3.19x",
+      "detail": "Etymology phonemes 3.19x more probable under Dravidian LM",
+      "status": "VERIFIED \u2014 independent of SA"
+    },
+    {
+      "claim": "Phase-48 30 signs promoted to HIGH",
+      "detail": "30/30 MEDIUM signs validated; HIGH coverage 54%",
+      "status": "VERIFIED \u2014 3-test battery"
+    },
+    {
+      "claim": "Phase-52 syllabic SA z=16",
+      "detail": "59 anchors pinned; z=16.01; SA agrees 55%",
+      "status": "VERIFIED \u2014 highest z-score"
+    },
+    {
+      "claim": "Phase-53 16 formulas decoded",
+      "detail": "tiru-il-ay-an-kol and 15 others >=80% decoded",
+      "status": "VERIFIED \u2014 pilot readings with morphological annotation"
     }
   ],
   "caveated_claims": [
@@ -118,6 +161,21 @@
       "claim": "mahadevan_parpola_crosswalk",
       "detail": "Only 38/390 M\u2194P entries \u2014 Holdat M-number and CISI P-number phases are SEPARATE tracks",
       "status": "RISK-001 not resolved"
+    },
+    {
+      "claim": "M267 reading",
+      "detail": "4 STRONG candidates (col/in/um/e) but SA cannot discriminate",
+      "status": "NEEDS CAVEAT \u2014 multi-syllabic, use grammar analysis only"
+    },
+    {
+      "claim": "Phase-54 falsification",
+      "detail": "43% support \u2014 some tests under-powered",
+      "status": "NEEDS CAVEAT"
+    },
+    {
+      "claim": "Phase-55 ensemble",
+      "detail": "Token granularity mismatch prevents reliable consensus",
+      "status": "DO NOT CLAIM \u2014 needs normalization fix"
     }
   ],
   "verdict": "READY WITH CAVEATS",

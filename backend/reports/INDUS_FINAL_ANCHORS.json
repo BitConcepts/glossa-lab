@@ -1,5 +1,5 @@
 {
-  "total": 137,
+  "total": 149,
   "anchors": {
     "M342": {
       "reading": "ay/ā",
@@ -299,7 +299,8 @@
     "M001": {
       "reading": "tōḷ",
       "confidence": "LOW",
-      "basis": "Round 2: INITIAL position (freq=14), distributional assignment"
+      "basis": "Round 2: INITIAL position (freq=14), distributional assignment",
+      "source": "+Parpola_1994"
     },
     "M075": {
       "reading": "māṟ",
@@ -685,6 +686,78 @@
       "reading": "āḷ",
       "confidence": "LOW",
       "basis": "Round 6: MEDIAL position (freq=4), distributional assignment"
+    },
+    "M086": {
+      "reading": "oru",
+      "confidence": "MEDIUM",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "one (numerical)"
+    },
+    "M087": {
+      "reading": "veL",
+      "confidence": "MEDIUM",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "white / two strokes"
+    },
+    "M091": {
+      "reading": "aru",
+      "confidence": "MEDIUM",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "six (numerical)"
+    },
+    "M092": {
+      "reading": "elu",
+      "confidence": "MEDIUM",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "seven (numerical)"
+    },
+    "M124": {
+      "reading": "kuTam",
+      "confidence": "MEDIUM",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "pot / jar"
+    },
+    "M175": {
+      "reading": "katir",
+      "confidence": "MEDIUM",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "spindle / rays"
+    },
+    "M261": {
+      "reading": "muruku",
+      "confidence": "MEDIUM",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "young man / god"
+    },
+    "M264": {
+      "reading": "peN",
+      "confidence": "MEDIUM",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "female / woman"
+    },
+    "M281": {
+      "reading": "piLLai",
+      "confidence": "MEDIUM",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "child / squirrel"
+    },
+    "M311": {
+      "reading": "vaTamiin",
+      "confidence": "MEDIUM",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "north star"
+    },
+    "M117": {
+      "reading": "ar",
+      "confidence": "MEDIUM",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "wheel spoke"
+    },
+    "M088": {
+      "reading": "muu(n)-",
+      "confidence": "MEDIUM",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "three vertical strokes, possibly 'three' or 'three worlds'"
     }
   },
   "_citation": {

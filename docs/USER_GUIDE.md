@@ -1,6 +1,6 @@
 # Glossa Lab — User Guide
 
-> **Version**: current `main` branch
+> **Version**: current `main` branch — Phase 44 (May 2026)
 > **Last updated**: 2026-05-17
 
 ---
@@ -116,8 +116,8 @@ The tray icon provides Start / Stop / Restart controls.
 | **Overview** | Dashboard |
 | **Workflow** | Corpora · CAS Models · Experiments · Pipelines · Projects · Reports |
 | **Analysis** | Entropy · Signs · Timeline |
-| **Research** | Discovery · **Evidence Graph** · Hypotheses · Notebooks · Citations · Correspondence · AI Tools · Foundation Check · Help |
-| **System** | Status · Jobs · Settings |
+| **Research** | Discovery · **Evidence Graph** · Hypotheses · Notebooks · Citations · Correspondence · AI Tools · Foundation Check |
+| **System** (bottom) | Status · Jobs · Settings · **Help** |
 
 **Key name changes (vs older versions)**:
 - "Study Builder" → accessible via **Projects** tab (project management)

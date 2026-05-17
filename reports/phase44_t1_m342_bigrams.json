@@ -1,0 +1,379 @@
+{
+  "_citation": {
+    "primary_sources": [
+      "A.1",
+      "A.13"
+    ],
+    "derivation": "Holdat corpus bigram analysis for M342 genitive case marker hypothesis"
+  },
+  "analysis": {
+    "target": "M342",
+    "n_occurrences": 584,
+    "n_inscriptions": 502,
+    "avg_relative_position": 0.561,
+    "pre_target_bigrams": {
+      "M099": 81,
+      "M211": 45,
+      "M342": 35,
+      "M267": 31,
+      "M176": 15,
+      "M328": 15,
+      "M089": 15,
+      "M336": 14,
+      "M048": 13,
+      "M293": 13
+    },
+    "post_target_bigrams": {
+      "M176": 122,
+      "M342": 35,
+      "M162": 25,
+      "M211": 24,
+      "M328": 24,
+      "M099": 18,
+      "M391": 17,
+      "M233": 17,
+      "M048": 17,
+      "M267": 17
+    },
+    "pre_total": 572,
+    "post_total": 514,
+    "sites_distribution": {
+      "Mohenjo-daro": 208,
+      "Harappa": 186,
+      "Chanhu-daro": 20,
+      "Dholavira": 31,
+      "Banawali": 18,
+      "Lothal": 48,
+      "Surkotada": 20,
+      "Rakhigarhi": 12,
+      "Kalibangan": 41
+    },
+    "pre_top_20": [
+      [
+        "M099",
+        81
+      ],
+      [
+        "M211",
+        45
+      ],
+      [
+        "M342",
+        35
+      ],
+      [
+        "M267",
+        31
+      ],
+      [
+        "M176",
+        15
+      ],
+      [
+        "M328",
+        15
+      ],
+      [
+        "M089",
+        15
+      ],
+      [
+        "M336",
+        14
+      ],
+      [
+        "M048",
+        13
+      ],
+      [
+        "M293",
+        13
+      ],
+      [
+        "M065",
+        12
+      ],
+      [
+        "M051",
+        11
+      ],
+      [
+        "M162",
+        10
+      ],
+      [
+        "M391",
+        10
+      ],
+      [
+        "M059",
+        10
+      ],
+      [
+        "M233",
+        10
+      ],
+      [
+        "M012",
+        9
+      ],
+      [
+        "M087",
+        9
+      ],
+      [
+        "M125",
+        6
+      ],
+      [
+        "M367",
+        5
+      ]
+    ],
+    "post_top_10": [
+      [
+        "M176",
+        122
+      ],
+      [
+        "M342",
+        35
+      ],
+      [
+        "M162",
+        25
+      ],
+      [
+        "M211",
+        24
+      ],
+      [
+        "M328",
+        24
+      ],
+      [
+        "M099",
+        18
+      ],
+      [
+        "M391",
+        17
+      ],
+      [
+        "M233",
+        17
+      ],
+      [
+        "M048",
+        17
+      ],
+      [
+        "M267",
+        17
+      ]
+    ],
+    "site_pre_distribution": {
+      "Mohenjo-daro": {
+        "M099": 28,
+        "M211": 13,
+        "M342": 12,
+        "M176": 11,
+        "M336": 9
+      },
+      "Harappa": {
+        "M099": 25,
+        "M211": 13,
+        "M267": 12,
+        "M342": 11,
+        "M233": 7
+      },
+      "Chanhu-daro": {
+        "M211": 2,
+        "M267": 1,
+        "M367": 1,
+        "M256": 1,
+        "M058": 1
+      },
+      "Dholavira": {
+        "M099": 6,
+        "M211": 4,
+        "M391": 2,
+        "M089": 2,
+        "M342": 2
+      },
+      "Banawali": {
+        "M099": 4,
+        "M211": 2,
+        "M051": 2,
+        "M059": 1,
+        "M063": 1
+      },
+      "Lothal": {
+        "M099": 6,
+        "M211": 5,
+        "M328": 3,
+        "M342": 3,
+        "M065": 2
+      },
+      "Surkotada": {
+        "M211": 2,
+        "M293": 2,
+        "M099": 2,
+        "M267": 2,
+        "M053": 1
+      },
+      "Rakhigarhi": {
+        "M342": 2,
+        "M051": 1,
+        "M102": 1,
+        "M011": 1,
+        "M048": 1
+      },
+      "Kalibangan": {
+        "M099": 8,
+        "M342": 5,
+        "M211": 3,
+        "M267": 3,
+        "M280": 1
+      }
+    },
+    "sample_inscriptions": [
+      {
+        "seal": "M-0001",
+        "site": "Mohenjo-daro",
+        "signs": [
+          "M022",
+          "M270",
+          "M342",
+          "M211",
+          "M087"
+        ],
+        "target_position": 2
+      },
+      {
+        "seal": "M-0005",
+        "site": "Mohenjo-daro",
+        "signs": [
+          "M028",
+          "M211",
+          "M342",
+          "M391",
+          "M226",
+          "M125",
+          "M051"
+        ],
+        "target_position": 2
+      },
+      {
+        "seal": "H-0004",
+        "site": "Harappa",
+        "signs": [
+          "M014",
+          "M162",
+          "M342",
+          "M176",
+          "M099",
+          "M125"
+        ],
+        "target_position": 2
+      },
+      {
+        "seal": "C-0001",
+        "site": "Chanhu-daro",
+        "signs": [
+          "M391",
+          "M267",
+          "M342"
+        ],
+        "target_position": 2
+      },
+      {
+        "seal": "M-0007",
+        "site": "Mohenjo-daro",
+        "signs": [
+          "M077",
+          "M342",
+          "M162"
+        ],
+        "target_position": 1
+      },
+      {
+        "seal": "M-0009",
+        "site": "Mohenjo-daro",
+        "signs": [
+          "M009",
+          "M267",
+          "M342",
+          "M342",
+          "M367",
+          "M251",
+          "M012"
+        ],
+        "target_position": 2
+      },
+      {
+        "seal": "M-0010",
+        "site": "Mohenjo-daro",
+        "signs": [
+          "M233",
+          "M219",
+          "M158",
+          "M342"
+        ],
+        "target_position": 3
+      },
+      {
+        "seal": "H-0008",
+        "site": "Harappa",
+        "signs": [
+          "M176",
+          "M342",
+          "M233",
+          "M391",
+          "M162",
+          "M342",
+          "M336"
+        ],
+        "target_position": 1
+      },
+      {
+        "seal": "M-0013",
+        "site": "Mohenjo-daro",
+        "signs": [
+          "M016",
+          "M342",
+          "M176",
+          "M125",
+          "M233"
+        ],
+        "target_position": 1
+      },
+      {
+        "seal": "DK-0004",
+        "site": "Dholavira",
+        "signs": [
+          "M022",
+          "M342",
+          "M176",
+          "M305"
+        ],
+        "target_position": 1
+      }
+    ]
+  },
+  "interpretation": {
+    "verdict": "UNCERTAIN",
+    "findings": [
+      "[UNCERTAIN] M342 avg position = 0.561 (< expected 0.6 for terminal case marker)",
+      "Top-3 pre-M342 signs account for 77.8% of preceding contexts (['M099', 'M211', 'M342'])",
+      "[NOTE] Top-3 dominate — possible noun-class restriction",
+      "[EVIDENCE] Anchor signs appearing before M342: ['M099', 'M342', 'M267', 'M176'] — these confirmed-reading signs form genitive constructions",
+      "Cross-site pre-M342 Jaccard (Mohenjo-daro vs Harappa): 0.429 (shared vocabulary)"
+    ],
+    "verdicts": [
+      "ANCHOR_SIGNS_IN_GENITIVE_CONTEXT",
+      "CROSS_SITE_CONSISTENCY_CONFIRMED"
+    ],
+    "genitive_reading_status": "M342 = genitive suffix [status: UNCERTAIN]"
+  }
+}

@@ -169,7 +169,12 @@ async def export_corpus(
     if text is None:
         raise HTTPException(status_code=404, detail="Text not found")
 
-    safe_name = text["name"].replace(" ", "_").replace("/", "_")[:40]
+    # Sanitise filename to ASCII — HTTP Content-Disposition headers must be latin-1;
+    # corpus names may contain curly quotes or non-ASCII chars (e.g. Ge\u2019ez).
+    import unicodedata as _ud  # noqa: PLC0415
+    _raw = _ud.normalize("NFKD", text["name"])
+    _ascii = _raw.encode("ascii", "ignore").decode("ascii")
+    safe_name = _ascii.replace(" ", "_").replace("/", "_").replace("'", "")[:40] or "corpus"
 
     if fmt == "json":
         body = json.dumps(

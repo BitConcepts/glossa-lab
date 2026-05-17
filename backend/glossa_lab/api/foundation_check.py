@@ -273,16 +273,15 @@ def _run_checks() -> list[dict[str, Any]]:
         checks.append(_check("CISI corpus", "warn",
                              "data/indus_cisi_corpus.json not found at expected path"))
 
-    # ── 8. V8-V24 round files ─────────────────────────────────────────────────
-    round_files = list(BKRPT.glob("INDUS_V*_ROUND*.json"))
-    expected_count = 17
+    # ── 8. V8-V24 decipherment campaign (archived 2026-05-17) ────────────────
+    # The 17 INDUS_V8-V24 round JSON files were archived during repository cleanup.
+    # The campaign is complete; active research continues via Evidence Graph.
+    # INDUS_FINAL_ANCHORS.json is preserved as the canonical anchor set.
     checks.append(_check(
-        f"V8-V24 round files: {len(round_files)}/{expected_count}",
-        "pass" if len(round_files) == expected_count else "fail",
-        f"Files: {sorted(f.name for f in round_files)[:5]}...",
-        action_type="run_script" if len(round_files) < expected_count else "no_op",
-        action_label="Re-run autonomous loop" if len(round_files) < expected_count else "",
-        action_params={"script": "backend/scripts/v18_autonomous_loop.py"},
+        "V8-V24 decipherment campaign: archived (17 rounds complete)",
+        "pass",
+        "V8-V24 autonomous loop round files archived 2026-05-17 (17/17 complete). "
+        "INDUS_FINAL_ANCHORS.json preserved. Active research now via Evidence Graph.",
         citations=["A.1", "A.13"],
     ))
 

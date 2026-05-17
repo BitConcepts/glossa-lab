@@ -1,7 +1,7 @@
 # Glossa Lab — Functional Requirements
 
-> Last updated: 2026-04-08
-> Covers the April 2026 development cycle.  Keep this in sync with every feature change.
+> Last updated: 2026-05-17
+> Keep this in sync with every feature change.
 
 ---
 
@@ -278,6 +278,19 @@
 - EG-UI3: Claims tab: filterable by type, status, sign; expandable claim cards.
 - EG-UI4: Sweep tab: config editor (name, keywords, exclusions, enabled sources), Save Config, Run Sweep, candidates list with Import action.
 - EG-UI5: Discovery view shows `🗂 → Evidence` action on Indus/Harappan classified items.
+
+---
+
+## R16 — CI/CD Pipeline
+
+> Last updated: 2026-05-17
+
+- CICD-1: A GitHub Actions workflow (``.github/workflows/ci.yml``) MUST run on every push and pull request to `main`.
+- CICD-2: The pipeline MUST have three jobs: `backend-tests`, `playwright-tests`, and `lint`.
+- CICD-3: `backend-tests` MUST run `pytest` on the full `backend/tests/` suite with zero failures as the pass criterion.
+- CICD-4: `playwright-tests` MUST run `npx playwright test` against a running backend instance; all 39 Evidence Graph tests and all navigation tests MUST pass.
+- CICD-5: `lint` MUST run `ruff check` on the backend codebase with zero errors as the pass criterion.
+- CICD-6: All three jobs MUST complete without error before a PR may be merged.
 
 ---
 

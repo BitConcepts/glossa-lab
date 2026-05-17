@@ -467,6 +467,15 @@ class Database:
         self._path.parent.mkdir(parents=True, exist_ok=True)
         self._conn = await aiosqlite.connect(str(self._path))
         self._conn.row_factory = aiosqlite.Row
+        # WAL mode allows concurrent readers + one writer without "database is locked"
+        # errors, which previously caused 14 test failures when background tasks
+        # (provider probes, model intelligence sync, discovery scheduler) wrote to
+        # the DB at the same time as test write operations.
+        await self._conn.execute("PRAGMA journal_mode=WAL")
+        # Wait up to 5 seconds for a lock to clear before raising OperationalError.
+        await self._conn.execute("PRAGMA busy_timeout=5000")
+        # NORMAL sync is safe with WAL and faster than the default FULL.
+        await self._conn.execute("PRAGMA synchronous=NORMAL")
         await self._apply_schema()
         logger.info("Database ready", extra={"path": str(self._path)})
 

@@ -20,6 +20,7 @@ import { DashboardView } from "./components/DashboardView";
 import { CorrespondenceView } from "./components/CorrespondenceView";
 import { FoundationCheckView } from "./components/FoundationCheckView";
 import { DiscoveryView } from "./components/Discovery/DiscoveryView";
+import { IndusEvidenceView } from "./components/IndusEvidenceView";
 import { CommandPalette, type PaletteCommand } from "./components/CommandPalette";
 import { AISidePanel } from "./components/AIChatWindow";
 import { BottomPanel } from "./components/BottomPanel";
@@ -34,7 +35,7 @@ type Tab =
   | "status" | "builder" | "experiments" | "pipelines"
   | "corpora" | "jobs" | "reports" | "settings"
   | "entropy" | "hypotheses" | "notebooks" | "ai-tools" | "signs" | "timeline" | "citations" | "correspondence" | "help" | "models"
-  | "discovery" | "foundation-check"
+  | "discovery" | "foundation-check" | "evidence"
   | "exp-builder"; // legacy alias — still handled but not in nav
 
 interface NavItem { id: Tab; label: string; icon: string; }
@@ -74,6 +75,7 @@ const NAV_SECTIONS: NavSection[] = [
     title: "Research",
     items: [
       { id: "discovery",  label: "Discovery",  icon: "🔭" },
+      { id: "evidence",   label: "Evidence Graph", icon: "🗂️" },
       { id: "hypotheses", label: "Hypotheses", icon: "💡" },
       { id: "notebooks",  label: "Notebooks",  icon: "📓" },
       { id: "citations",       label: "Citations",       icon: "📖" },
@@ -628,6 +630,7 @@ function AppContent() {
               {tab === "citations"       && <CitationManager />}
               {tab === "correspondence"  && <CorrespondenceView />}
               {tab === "discovery"      && <DiscoveryView />}
+              {tab === "evidence"        && <IndusEvidenceView darkMode={darkMode} />}
               {tab === "foundation-check" && <FoundationCheckView />}
               {tab === "help"             && <HelpView />}
             </main>

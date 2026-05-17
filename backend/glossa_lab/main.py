@@ -41,6 +41,7 @@ from glossa_lab.api.report_templates import router as report_templates_router
 from glossa_lab.api.reports import router as reports_router
 from glossa_lab.api.research import router as research_router
 from glossa_lab.api.foundation_check import router as foundation_check_router
+from glossa_lab.api.indus_evidence import router as indus_evidence_router
 from glossa_lab.api.results import router as results_router
 from glossa_lab.api.settings import router as settings_router
 from glossa_lab.api.shutdown import router as shutdown_router
@@ -333,6 +334,7 @@ def create_app() -> FastAPI:
     application.include_router(provider_registry_router)  # /api/v1/providers
     application.include_router(model_assignments_router)  # /api/v1/model-assignments
     application.include_router(model_intelligence_router)  # /api/v1/model-intelligence
+    application.include_router(indus_evidence_router)  # already prefixed at /api/v1/indus-evidence
 
     # Serve built frontend
     # Skipped silently in dev if the dist directory does not yet exist.

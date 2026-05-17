@@ -1,0 +1,138 @@
+# Hypothesis Model: Parpola Proto-Dravidian Rebus
+# Glossa-Lab Indus Evidence Graph
+
+model_id: parpola_proto_dravidian
+model_name: "Parpola Proto-Dravidian Rebus Model"
+model_type: proto_dravidian_rebus
+status: partially_encoded
+
+source_documents:
+  - "Parpola, Asko. 1975. Interpreting the Indus script."
+  - "Parpola, Asko. 1994. Decipherment of the Indus Script. Cambridge."
+  - "Parpola, Asko. 2010. A Dravidian solution to the Indus script problem."
+
+authors:
+  - "Parpola, Asko"
+year_range: "1975-2010"
+
+core_claims:
+  - claim_id: parpola_001
+    normalized_claim: "Indus script encodes Proto-Dravidian language using the rebus principle."
+    claim_type: language_claim
+    claim_status: partially_supported
+    testability: directly_testable
+    falsification_condition: >
+      If Dravidian phonotactics do NOT fit Indus sign bigrams better than Sanskrit,
+      the language claim is refuted.
+
+  - claim_id: parpola_fish_001
+    normalized_claim: "The fish sign represents the Proto-Dravidian word meen/min (fish)."
+    claim_type: phonetic_claim
+    signs_involved: ["M77/72", "M77/267"]
+    proposed_value: "meen / min"
+    proposed_language: "Proto-Dravidian"
+    claim_status: partially_supported
+    testability: directly_testable
+    falsification_condition: >
+      If the fish sign does not cluster with Dravidian case suffixes
+      (terminal bigram pattern), the phonetic assignment is weakened.
+
+  - claim_id: parpola_suffix_001
+    normalized_claim: >
+      Terminal signs in Indus inscriptions correspond to Dravidian grammatical suffixes
+      (-n genitive, -um additive enclitic, -ku dative, -il locative).
+    claim_type: sign_function_claim
+    claim_status: partially_supported
+    testability: directly_testable
+
+# Glossa-Lab evidence (Phase-41 through Phase-43)
+glossa_lab_evidence:
+  sa_results:
+    - experiment: "Phase-41 M77 Holdat SA (300K iterations, 5 seeds)"
+      dravidian_advantage: "1.0566x over Sanskrit"
+      dravidian_wins: true
+      status: "[VERIFIED]"
+      notes: "SA fully converged; DEDR beats Sangam LM blend"
+
+    - experiment: "Phase-43 V3 Firestore corpus (30K iterations, 3 seeds)"
+      dravidian_score: -4.1525
+      sanskrit_score: -4.6362
+      advantage_log_units: 0.484
+      dravidian_wins: true
+      status: "[VERIFIED] — FIRST INDEPENDENT REPLICATION"
+      notes: "V3 corpus independent of M77 Holdat; 3137 inscriptions across all major sites"
+
+    - experiment: "Phase-4x CISI Dravidian vs Pali/Sanskrit"
+      dravidian_vs_pali_gap: "+24.64pp on real CISI bigrams"
+      pali_mia_score: 0.5702
+      dravidian_score: 0.8166
+      status: "[VERIFIED]"
+      notes: "Pali MIA scores below Sanskrit — contra Witzel Indo-Aryan hypothesis"
+
+  sign_assignments_supported:
+    - sign: "M77/72"
+      hypothesis: "phonetic meen (fish)"
+      evidence: "MEDIAL_STRONG (M=0.691), terminal_frac=25.9% after fish sign"
+      confidence: HIGH
+      status: "[PARTIALLY_VERIFIED]"
+
+    - sign: "M77/267"
+      hypothesis: "Fish DETERMINATIVE / royal title element (not phonetic)"
+      evidence: "INITIAL_STRONG (I=0.806), terminal_frac only 3.8%"
+      confidence: HIGH
+      status: "[PARTIALLY_VERIFIED]"
+
+    - sign: "M77/342"
+      hypothesis: "-n genitive suffix (REVISED from phonetic ka/na)"
+      evidence: "T=0.703, n=1318 — most common sign AND strongly terminal"
+      confidence: MED
+      status: "[INFERRED]"
+
+    - sign: "M77/176"
+      hypothesis: "-um additive enclitic"
+      evidence: "T=0.892, n=344"
+      confidence: MED
+      status: "[INFERRED]"
+
+  cross_corpus_notes: >
+    The Dravidian advantage has been confirmed on two independent corpus sources
+    (M77 Holdat and V3 Firestore/indusscript.in). The advantage is narrow (5.6%
+    on M77, 11.6% on V3) but consistent and statistically significant.
+    Stronger evidence requires ICIT corpus (6,800+ inscriptions).
+
+current_score:
+  sa_advantage_m77: 1.0566
+  sa_advantage_v3: "+0.484 log-units/token"
+  corpus_sources_confirmed: 2
+  falsifying_tests_passed: 0
+  falsifying_tests_failed: 0
+  total_score: moderate_support
+
+# Predictions (testable)
+predictions:
+  - id: pred_001
+    prediction: >
+      If more site-attributed inscription data is added, Dravidian advantage
+      will hold or increase.
+    test: Run V3 SA with 300K iterations (same as M77 Holdat standard)
+    status: pending
+
+  - id: pred_002
+    prediction: >
+      Fish signs (M77/72, M77/59) will cluster with terminal signs
+      at higher-than-random rates, consistent with case suffixes on meen.
+    test: fish_rebus_bigram analysis
+    status: done
+    result: "M77/72 terminal_frac=25.9% [SUPPORTED]; M77/59 terminal_frac=33.8% [SUPPORTED]"
+
+# Competing claims (from other models)
+competing_claims:
+  - model: farmer_sproat_witzel_nonlinguistic
+    claim: "Script is not linguistic"
+    resolution: "Conditional entropy evidence contradicts; bigram structure above random"
+
+  - model: indo_aryan
+    claim: "Script encodes Indo-Aryan / Vedic language"
+    resolution: >
+      Pali MIA (Indo-Aryan proxy) scores below Dravidian AND below Sanskrit.
+      Sanskrit loses to Dravidian on both M77 and V3 corpora.

@@ -43,7 +43,8 @@ test.describe("Reports & Data tab bar", () => {
       return;
     }
     await dataTab.click();
-    await expect(page.getByText(/JSON results/i)).toBeVisible();
+    // Data tab description: "JSON data, CSV exports, markdown documents"
+    await expect(page.getByText(/JSON.*data|JSON.*CSV|CSV.*export/i).first()).toBeVisible({ timeout: 5000 });
   });
 
   test("clicking Reports tab shows PDF description", async ({ page }) => {

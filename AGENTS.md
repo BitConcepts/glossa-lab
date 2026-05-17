@@ -650,7 +650,7 @@ The foundation check is available at:
 5. Phase-29d Enmenanak live data (score 7.0, p<0.001)
 6. Phase-31 T3 Zipf slope (delta 0.177 < 0.3 threshold)
 7. CISI corpus accessible
-8. V8-V24 round files complete (17/17)
+8. V8-V24 campaign archived (17 rounds complete, files archived 2026-05-17)
 9. Writing direction verified (position 0 = INITIAL)
 10. Dravidian Tamil LM clean (≥400 bigrams, 0 English contamination)
 11. M↔P crosswalk tracked (completeness %)
@@ -970,6 +970,18 @@ Key assets currently implemented. Reference when planning new experiments or cor
 | Module | Purpose |
 |---|---|
 | `_parallel.py` | `run_seeds_parallel()` — ThreadPoolExecutor for SA seeds; `compute_device_label()` for GPU/CPU detection. ALL seed loops MUST use this. |
+
+### Evidence Graph subsystem
+
+| Component | Path | Purpose |
+|---|---|---|
+| REST API | `backend/glossa_lab/api/indus_evidence.py` | 11 endpoints: library, upload, claims, hypotheses, sweep |
+| Atomic nodes | `backend/glossa_lab/experiment_graph_indus_evidence.py` | 7 Evidence Graph nodes for Experiment Builder |
+| Frontend workspace | `frontend/src/components/IndusEvidenceView.tsx` | 3-tab UI: Library, Claims, Sweep |
+| Project data store | `glossa-indus/` | literature/, claims/, hypotheses/, config/ |
+| Sweep config | `glossa-indus/config/sweep.yaml` | Per-project keyword sweep configuration |
+
+---
 
 ### AI capabilities (`backend/glossa_lab/api/ai_tools.py`)
 

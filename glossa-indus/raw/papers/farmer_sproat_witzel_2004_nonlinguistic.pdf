@@ -1,0 +1,664 @@
+  <!DOCTYPE html>
+  <html >
+    <head>
+      <meta charset="utf-8">
+      <meta rel="search"
+            type="application/opensearchdescription+xml"
+            href="/open_search.xml"
+            title="Academia.edu">
+      <meta content="width=device-width, initial-scale=1" name="viewport">
+      <meta name="google-site-verification" content="bKJMBZA7E43xhDOopFZkssMMkBRjvYERV-NaN4R6mrs">
+
+      <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="fzLmzHZDM-ZUkirndMr6-5EYu4ySm6vcCLb00Y2aOqVa5SVnlp5X-uLGBGE4MyR2gSUkdhAzVZ2M6vANHOoFaQ" />
+      <meta name="citation_title" content="(With Gerald Holton and Edward Jurkowitz), “How a Scientific Discovery is Made: A Case History”, American Scientist 84 (1996), 364–375" />
+<meta name="citation_publication_date" content="1996/01/01" />
+<meta name="citation_journal_title" content="American Scientist" />
+<meta name="citation_author" content="Hasok Chang" />
+<meta name="citation_author" content="J. Holton" />
+<meta property="fb:app_id" content="2369844204" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.academia.edu/4530410/_With_Gerald_Holton_and_Edward_Jurkowitz_How_a_Scientific_Discovery_is_Made_A_Case_History_American_Scientist_84_1996_364_375" />
+<meta property="og:title" content="(With Gerald Holton and Edward Jurkowitz), “How a Scientific Discovery is Made: A Case History”, American Scientist 84 (1996), 364–375" />
+<meta property="og:image" content="http://a.academia-assets.com/images/open-graph-icons/fb-paper.gif" />
+<meta property="og:description" content="(With Gerald Holton and Edward Jurkowitz), “How a Scientific Discovery is Made: A Case History”, American Scientist 84 (1996), 364–375" />
+<meta property="article:author" content="https://cambridge.academia.edu/HasokChang" />
+<meta property="article:author" content="https://harvard.academia.edu/JHolton" />
+<meta name="description" content="(With Gerald Holton and Edward Jurkowitz), “How a Scientific Discovery is Made: A Case History”, American Scientist 84 (1996), 364–375" />
+
+        <script>
+    window.__autoProps = window.__autoProps || {};
+  </script>
+
+
+
+      <title>(PDF) (With Gerald Holton and Edward Jurkowitz), “How a Scientific Discovery is Made: A Case History”, American Scientist 84 (1996), 364–375</title>
+
+        <link rel="canonical" href="https://www.academia.edu/4530410/_With_Gerald_Holton_and_Edward_Jurkowitz_How_a_Scientific_Discovery_is_Made_A_Case_History_American_Scientist_84_1996_364_375" />
+
+
+      
+
+      
+<script>
+  var $controller_name = 'single_work';
+  var $action_name = "show";
+  var $rails_env = 'production';
+  var $app_rev = '994354309368801eef90aa7b6f5d0877adae3383';
+  var $domain = 'academia.edu';
+  var $app_host = "academia.edu";
+  var $asset_host = "academia-assets.com";
+  var $recaptcha_key = "6LfLk-osAAAAAFuhbSY4gPnOXTM4JYsLl7kpQvyL";
+  var $recaptcha_invisible_key = "6LeJmeosAAAAABEwpWXKEFUpUbNJ2biFmZmhSQ70";
+  var $disableClientRecordHit = false;
+  // auvid cookie used for analytics tracking - must be globally available for all bundles
+  var $auvid = "MTc3OTAxNzk4MDI3MTowLjYyMDgxMjc2NTkxOTAyMTk=";
+  var $route_uri_pattern = '(/:language)/:id(/:slug)(.:format)';
+
+</script>
+
+
+      <script>
+        window.Aedu = window.Aedu || {};
+        window.Aedu.hit_data = null;
+        window.Aedu.serverRenderTime = new Date(1779017980000);
+      </script>
+
+        <link rel="stylesheet" href="//a.academia-assets.com/assets/simpler/logged_out_header-9f7827bfc7309050387f37e20c507019a67b460d951dc731a22b65aba4dc5940.css" media="all" />
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-5VKX33P2DS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5VKX33P2DS', {
+    cookie_domain: 'academia.edu',
+    send_page_view: false,
+  });
+  gtag('event', 'page_view', {
+    'controller': "single_work",
+    'action': "show",
+    'controller_action': 'single_work#show',
+    'logged_in': 'false',
+    'edge': 'unknown',
+    // Send nil if there is no A/B test bucket, in case some records get logged
+    // with missing data - that way we can distinguish between the two cases.
+    // ab_test_bucket should be of the form <ab_test_name>:<bucket>
+    'ab_test_bucket': null,
+  })
+</script>
+
+
+
+      
+
+
+      <script>
+        window.Aedu.SiteStats = {"monthly_visitor_count_in_millions":31,"paper_count_in_millions":55}
+      </script>
+
+
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"ScholarlyArticle","author":[{"@context":"https://schema.org","@type":"Person","name":"Hasok Chang","url":"https://cambridge.academia.edu/HasokChang","image":"https://0.academia-photos.com/5514119/2417990/2813007/s200_hasok.chang.jpg","sameAs":["http://www.hps.cam.ac.uk/people/chang/"]},{"@context":"https://schema.org","@type":"Person","name":"J. Holton","url":"https://harvard.academia.edu/JHolton","sameAs":[]}],"contributor":[{"@context":"https://schema.org","@type":"Person","name":"J. Holton","url":"https://harvard.academia.edu/JHolton","sameAs":[]}],"dateCreated":"2013-09-19","dateModified":"2015-10-30","datePublished":"1996-01-01","headline":"(With Gerald Holton and Edward Jurkowitz), “How a Scientific Discovery is Made: A Case History”, American Scientist 84 (1996), 364–375","image":"https://attachments.academia-assets.com/49802974/thumbnails/1.jpg","inLanguage":"en","keywords":[],"publication":"American Scientist","publisher":{"@context":"https://schema.org","@type":"Organization","name":null},"sourceOrganization":[{"@context":"https://schema.org","@type":"EducationalOrganization","name":"cambridge"},{"@context":"https://schema.org","@type":"EducationalOrganization","name":"harvard"}],"thumbnailUrl":"https://attachments.academia-assets.com/49802974/thumbnails/1.jpg","url":"https://www.academia.edu/4530410/_With_Gerald_Holton_and_Edward_Jurkowitz_How_a_Scientific_Discovery_is_Made_A_Case_History_American_Scientist_84_1996_364_375"}</script><link rel="stylesheet" href="//a.academia-assets.com/assets/design_system/default_tokens/default-e25c09b05330c17d437cdf22fc7ce18ffc9347b25a5c6a4e533f2a219ecac70d.css" media="all" /><link rel="stylesheet" href="//a.academia-assets.com/assets/single_work_page/loswp_redesigns/outline_variant-cc19244eb0e5e31be762bc3d886b13bf5cf9a26c4a7e7ea9c6ecdd1bda095b04.css" media="all" /><link rel="stylesheet" href="//a.academia-assets.com/assets/single_work_page/outline-99e35147ae0314b2494a1b283ca3ca8b9d6b489c2a5c121d0e9827a8369ed011.css" media="all" /><link rel="stylesheet" href="//a.academia-assets.com/assets/design_system/body-49aa1568dcfb4df74b8135251bcd4d42cf0da361af3de0f2af85ad74e88dba99.css" media="all" /><link rel="stylesheet" href="//a.academia-assets.com/assets/design_system/button-80d93fb4fd1606cd6c8381044b828f718c4e46c21332c67a3e35e645c5a0f157.css" media="all" /><link rel="stylesheet" href="//a.academia-assets.com/assets/design_system/heading-4dcbd24c81b9b851cdfb834f5d280c69a96ade531d01962c44b26864e454d4f3.css" media="all" /><link rel="stylesheet" href="//a.academia-assets.com/assets/design_system/text_button-e97ddb9c3bf10b39283db942f97966e52a57c5d27b34cdb995e939dee2e49451.css" media="all" /><link rel="stylesheet" href="//a.academia-assets.com/assets/single_work_page/figure_carousel-5e3a912c754c52c0df0557c6e1f9e2e4aed691afe7eac87c1a9ab452ce01c6cf.css" media="all" /><link rel="stylesheet" href="//a.academia-assets.com/assets/design_system/pill_button-d019652201344bcbb650625ce99024dc14c8f832b75621ceb10003b6dbebf182.css" media="all" /><link rel="stylesheet" href="//a.academia-assets.com/assets/about_hiring/footer-22aa592ae3ab7f8b66d3750d45cf6ae3fb67cedbdbb2853063a1cceb0761967d.css" media="all" /><link rel="preload" href="//a.academia-assets.com/fonts/design_system/DM-Sans_100-1000_normal_latin.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preload" href="//a.academia-assets.com/fonts/design_system/Gupter_400_normal_latin.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preload" href="//a.academia-assets.com/fonts/design_system/Material-Symbols-Outlined.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preload" href="//a.academia-assets.com/fonts/design_system/Roboto_100-900_normal_latin.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="stylesheet" href="//a.academia-assets.com/assets/design_system/font-faces-2356cee1de094354769ab30bf9bb930e5f4cdeb0a4f2cce7272a440eecfa7de9.css" media="all" /><style>.material-symbols-outlined {
+  visibility: hidden;
+  max-width: 20px; /* Our default icon size */
+}
+html.ms-loaded .material-symbols-outlined {
+  visibility: visible;
+  max-width: none;
+}</style><script>(async () => {
+  await document.fonts.load('24px "Material Symbols Outlined"');
+  document.documentElement.classList.add("ms-loaded");
+})();</script><link rel="stylesheet" href="//a.academia-assets.com/assets/design_system/common-ae6595f765bfa5b551eb44e15de4953d346eabbc005f6ab5a79f366ea5d2b70b.css" media="all" />
+
+      <script src="https://a.academia-assets.com/webpack_bundles/js/runtime-19982b7657c2a85a.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/design_system-8aca6707f0c6cc6c.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/7989-877a46756b36e3db.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/1533-554f7ab079b6cab4.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/178-9b35b49059e5f94b.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/6293-8026757520874110.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/5537-ec1d14065f9ce114.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/2631-5f4d429b31c0d383.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/8092-3501c426f3d9a0e2.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/4753-bd5bfc0e7308ec2b.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/249-45cabb3cd5fc9424.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/3309-9055d28160306948.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/5466-ee21098f1c931f8e.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/7628-a8f840cd7184720e.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/8076-deded705c3fc0fb2.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/4857-a634806968155422.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/357-ac56d9d6c0f236b2.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/4107-5c5b6ad31ec86f3c.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/8074-f0fc11f9063d35bc.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/3009-c2dbb76d544702f8.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/9366-b616cc761d6eff46.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/6120-9a30ed477babfc82.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/3891-4ac5f1a4a7cc7ed7.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/4894-f5898bdc78a5e4db.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/fast_loswp-9270bb71fa57e7ee.js" defer="defer"></script>
+<script src="https://a.academia-assets.com/webpack_bundles/js/qualaroo-074f1ec1fd3cf40e.js" defer="defer"></script>
+      <link rel="stylesheet" href="https://a.academia-assets.com/webpack_bundles/css/design_system-fe6d336f0ff060f3.css" />
+<link rel="stylesheet" href="https://a.academia-assets.com/webpack_bundles/css/fast_loswp-030632412793f9d8.css" />
+    </head>
+
+    <body>
+
+      <div id='react-modal'></div>
+
+
+
+
+        <div id="google-root"></div><script>window.loadGoogle = function() {
+  if (window.InitGoogle) {
+    // google.ts already loaded, set it up.
+    window.InitGoogle("331998490334-rsn3chp12mbkiqhl6e7lu2q0mlbu0f1b.apps.googleusercontent.com");
+  } else {
+    // Set a flag for google.ts to use when it loads.
+    window.GoogleClientID = "331998490334-rsn3chp12mbkiqhl6e7lu2q0mlbu0f1b.apps.googleusercontent.com";
+  }
+};</script>
+
+      <script>window.facebookAppId = "2369844204";</script>
+
+        <link rel="stylesheet" href="//a.academia-assets.com/assets/simpler/logged_out_header-9f7827bfc7309050387f37e20c507019a67b460d951dc731a22b65aba4dc5940.css" media="all" /><div class="header--container" id="main-header-container"><div class="header--inner-container header--inner-container-ds2"><div class="header-ds2--left-wrapper"><div class="header-ds2--left-wrapper-inner"><a data-main-header-link-target="logo_home" href="https://www.academia.edu/"><img class="hide-on-desktop-redesign" style="height: 24px; width: 24px;" alt="Academia.edu" src="//a.academia-assets.com/images/academia-logo-redesign-2015-A.svg" width="24" height="24" /><img width="145.2" height="18" class="hide-on-mobile-redesign" style="height: 24px;" alt="Academia.edu" src="//a.academia-assets.com/images/academia-logo-redesign-2015.svg" /></a><div class="header--search-container header--search-container-ds2"><form class="js-SiteSearch-form select2-no-default-pills" action="https://www.academia.edu/search" accept-charset="UTF-8" method="get"><svg style="width: 14px; height: 14px;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="header--search-icon svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg><input class="header--search-input header--search-input-ds2 js-SiteSearch-form-input" data-main-header-click-target="search_input" name="q" placeholder="Search" type="text" /></form></div></div></div><nav class="header--nav-buttons header--nav-buttons-ds2 js-main-nav"><button class="ds2-5-button ds2-5-button--secondary js-header-login-url header-button-ds2 header-login-ds2 hide-on-mobile-redesign react-login-modal-opener" data-signup-modal="{&quot;location&quot;:&quot;login-button--header&quot;}" rel="nofollow">Log In</button><button class="ds2-5-button ds2-5-button--secondary header-button-ds2 hide-on-mobile-redesign react-login-modal-opener" data-signup-modal="{&quot;location&quot;:&quot;signup-button--header&quot;}" rel="nofollow">Sign Up</button><button class="header--hamburger-button header--hamburger-button-ds2 hide-on-desktop-redesign js-header-hamburger-button"><div class="icon-bar"></div><div class="icon-bar" style="margin-top: 4px;"></div><div class="icon-bar" style="margin-top: 4px;"></div></button></nav></div><ul class="header--dropdown-container js-header-dropdown"><li class="header--dropdown-row"><a class="header--dropdown-link" href="https://www.academia.edu/login" rel="nofollow">Log In</a></li><li class="header--dropdown-row"><a class="header--dropdown-link" href="https://www.academia.edu/signup" rel="nofollow">Sign Up</a></li><li class="header--dropdown-row js-header-dropdown-expand-button"><button class="header--dropdown-button">more<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" class="header--dropdown-button-icon svg-inline--fa fa-caret-down fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"></path></svg></button></li><li><ul class="header--expanded-dropdown-container"><li class="header--dropdown-row"><a class="header--dropdown-link" href="https://www.academia.edu/about">About</a></li><li class="header--dropdown-row"><a class="header--dropdown-link" href="https://www.academia.edu/press">Press</a></li><li class="header--dropdown-row"><a class="header--dropdown-link" href="https://www.academia.edu/documents">Papers</a></li><li class="header--dropdown-row"><a class="header--dropdown-link" href="https://www.academia.edu/terms">Terms</a></li><li class="header--dropdown-row"><a class="header--dropdown-link" href="https://www.academia.edu/privacy">Privacy</a></li><li class="header--dropdown-row"><a class="header--dropdown-link" href="https://www.academia.edu/copyright">Copyright</a></li><li class="header--dropdown-row"><a class="header--dropdown-link" href="https://www.academia.edu/hiring"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="briefcase" class="header--dropdown-row-icon svg-inline--fa fa-briefcase fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48H0v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48V288H320v48zm144-208h-80V80c0-25.6-22.4-48-48-48H176c-25.6 0-48 22.4-48 48v48H48c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0H192V96h128v32z"></path></svg>We&#39;re Hiring!</a></li><li class="header--dropdown-row"><a class="header--dropdown-link" href="https://support.academia.edu/hc/en-us"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="question-circle" class="header--dropdown-row-icon svg-inline--fa fa-question-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zM262.655 90c-54.497 0-89.255 22.957-116.549 63.758-3.536 5.286-2.353 12.415 2.715 16.258l34.699 26.31c5.205 3.947 12.621 3.008 16.665-2.122 17.864-22.658 30.113-35.797 57.303-35.797 20.429 0 45.698 13.148 45.698 32.958 0 14.976-12.363 22.667-32.534 33.976C247.128 238.528 216 254.941 216 296v4c0 6.627 5.373 12 12 12h56c6.627 0 12-5.373 12-12v-1.333c0-28.462 83.186-29.647 83.186-106.667 0-58.002-60.165-102-116.531-102zM256 338c-25.365 0-46 20.635-46 46 0 25.364 20.635 46 46 46s46-20.636 46-46c0-25.365-20.635-46-46-46z"></path></svg>Help Center</a></li><li class="header--dropdown-row js-header-dropdown-collapse-button"><button class="header--dropdown-button">less<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-up" class="header--dropdown-button-icon svg-inline--fa fa-caret-up fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M288.662 352H31.338c-17.818 0-26.741-21.543-14.142-34.142l128.662-128.662c7.81-7.81 20.474-7.81 28.284 0l128.662 128.662c12.6 12.599 3.676 34.142-14.142 34.142z"></path></svg></button></li></ul></li></ul></div>
+
+      
+
+      <script></script><script>window.loswp = {};
+window.loswp.shouldDetectTimezone = true;
+window.loswp.work = {"work":{"id":4530410,"created_at":"2013-09-19T07:55:31.481-07:00","from_world_paper_id":119650708,"updated_at":"2021-01-12T16:05:14.398-08:00","_data":{"publication_date":"1996,,","publication_name":"American Scientist"},"document_type":"other","pre_hit_view_count_baseline":0,"quality":"low","language":"en","title":"(With Gerald Holton and Edward Jurkowitz), “How a Scientific Discovery is Made: A Case History”, American Scientist 84 (1996), 364–375","broadcastable":true,"draft":null,"has_indexable_attachment":true,"indexable":true,"seo_quality":10,"owner_type":"USER_OWNED"}}["work"];
+window.loswp.previewableAttachments = [{"id":49802974,"identifier":"Attachment_49802974","shouldShowBulkDownload":false}];
+window.loswp.hasViewableAttachments = true;
+window.loswp.cwvAbTestBucket = "";
+window.loswp.designVariant = "outline";
+window.loswp.useOptimizedScribd4genScript = false;
+window.loswp.abTestBuckets = {};
+
+window.loginModal = {};
+window.loginModal.appleClientId = 'edu.academia.applesignon';
+window.userInChina = "false";
+window.facebookLoginDisabled = 'true';</script><script defer="" src="https://accounts.google.com/gsi/client"></script><div class="safe-loswp--grid-container"><div class="left-rail--container"><div class="outline--wrapper  outline-variant--outline"><div class="outline--heading"><p class="ds2-5-body-md-bold">Outline</p><button aria-controls="outline" aria-expanded="false" aria-label="Expand outline" class="ds2-5-button ds2-5-button--inverse js-tc-loswp--outline-toggle outline--toggle js-outline-toggle"><span class="material-symbols-outlined" style="font-size: 20px" translate="no">keyboard_arrow_down</span></button><script>document.addEventListener('DOMContentLoaded', () => {
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  const csrfToken = document.querySelector("[name='csrf-token']")?.content ??
+    getCookie('masked_csrf_token');
+  if (!csrfToken) {
+    throw 'click tracking disabled due to missing CSRF token (button)';
+  }
+
+  const options = {"source":"loswp--outline-toggle"};
+  const button = document.querySelector('.js-tc-loswp--outline-toggle');
+  button.addEventListener('click', () => {
+    fetch('/v0/clicks?subdomain_param=api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken,
+      },
+      keepalive: true,
+      mode: 'same-origin',
+      body: JSON.stringify({
+        ...options,
+        occurred_at: new Date(),
+        hit_id: window.Aedu?.hit_data?.id,
+      }),
+    });
+  });
+});</script></div><div class="outline--container js-outline-container" id="outline"><div class="outline--progress-container"><div class="outline--progress-line js-outline-progress-line"></div></div><div class="outline--elements-container"><div class="outline--element js-outline-element-title primary" data-target-id="title"><div class="outline--progress-dot"></div><a class="outline--element-label js-tc-loswp--outline-navigation" href="#title">Title</a></div><div class="outline--element js-outline-element-figures " data-target-id="figures"><div class="outline--progress-dot"></div><a class="outline--element-label js-tc-loswp--outline-navigation" href="#figures">Figures</a></div></div></div></div><script>document.addEventListener('DOMContentLoaded', () => {
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  const csrfToken = document.querySelector("[name='csrf-token']")?.content ??
+    getCookie('masked_csrf_token');
+  if (!csrfToken) {
+    throw 'click tracking disabled due to missing CSRF token (outline)';
+  }
+
+  const outlineElements = {"Title":"title","Figures":"figures"};
+  Object.entries(outlineElements).forEach(([elementName, elementId]) => {
+    const button = document.querySelector(`.js-outline-element-${elementId} .js-tc-loswp--outline-navigation`);
+    if (!button) return;
+    button.addEventListener('click', () => {
+      fetch('/v0/clicks?subdomain_param=api', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': csrfToken,
+        },
+        keepalive: true,
+        mode: 'same-origin',
+        body: JSON.stringify({
+          source: 'loswp--outline-navigation',
+          extra: { element_name: elementName },
+          occurred_at: new Date(),
+          hit_id: window.Aedu?.hit_data?.id,
+        }),
+      });
+    });
+  });
+});</script></div><div class="main-content--container"><div class="safe-work-card--container js-loswp-work-card" id="loswp-work-card"><div class="safe-work-card--cover"><div class="ds-work-cover--wrapper"><div class="ds-work-cover--container"><style>.login-ghost-button {
+  background: none;
+  border: none;
+  padding: 0;
+  width: 100%;
+
+  display: block;
+  cursor: pointer;
+  position: relative;
+}</style><button class="js-login-button--fc509ea1 login-ghost-button ds-work-cover--clickable"><img alt="First page of “(With Gerald Holton and Edward Jurkowitz), “How a Scientific Discovery is Made: A Case History”, American Scientist 84 (1996), 364–375”" class="ds-work-cover--cover-thumbnail" src="https://0.academia-photos.com/attachment_thumbnails/49802974/mini_magick20190130-1357-3157d8.png?1548881798" /><img alt="PDF Icon" class="ds-work-cover--file-icon" src="//a.academia-assets.com/images/single_work_splash/adobe_icon.svg" /><div class="ds-work-cover--hover-container"><span class="material-symbols-outlined" style="font-size: 20px" translate="no">download</span><p>Download Free PDF</p></div><div class="ds-work-cover--ribbon-container">Download Free PDF</div><div class="ds-work-cover--ribbon-triangle"></div></button><script>document.addEventListener('DOMContentLoaded', () => { const loginButton = document.querySelector('.js-login-button--fc509ea1'); if (!loginButton) { throw new Error('Login button not found'); } const options = { detail: {"postLoginRedirectUrl":"https://www.academia.edu/4530410/_With_Gerald_Holton_and_Edward_Jurkowitz_How_a_Scientific_Discovery_is_Made_A_Case_History_American_Scientist_84_1996_364_375","clickTrackingContext":{"source":"loswp--swp-splash-paper-cover","bucket":"outline","entity_id":4530410,"extra":{"source_work_id":4530410}},"configuredText":{"buttonsPage":{"header":"Read your PDF for free"},"emailEntryPage":{"subheader":"Sign up or log in to continue reading."},"emailLoginPage":{"subheader":"Log in to continue reading."},"emailRegistrationPage":{"subheader":"Sign up to continue reading."}},"registrationParams":{"user_source":"download","doc_id":49802974}} }; loginButton.addEventListener('click', () => { document.dispatchEvent(new CustomEvent('open-login-modal', options)); }); });</script></div></div></div><div class="safe-work-card--work-information"><h1 class="ds-work-card--work-title ds2-5-heading-sans-serif-lg" id="title">(With Gerald Holton and Edward Jurkowitz), “How a Scientific Discovery is Made: A Case History”, American Scientist 84 (1996), 364–375</h1><div class="ds-work-card--work-authors ds-work-card--detail ds-work-card--work-authors--mobile-only"><a class="ds-work-card--author js-wsj-grid-card-author ds2-5-body-md ds2-5-body-link" data-author-id="5514119" href="https://cambridge.academia.edu/HasokChang"><img alt="Profile image of Hasok Chang" class="ds-work-card--author-avatar" src="https://0.academia-photos.com/5514119/2417990/2813007/tiny_hasok.chang.jpg" />Hasok Chang</a><a class="ds-work-card--author js-wsj-grid-card-author ds2-5-body-md ds2-5-body-link" data-author-id="37293242" href="https://harvard.academia.edu/JHolton"><img alt="Profile image of J. Holton" class="ds-work-card--author-avatar" src="//a.academia-assets.com/images/tiny_no_pic.png" />J. Holton</a></div><p class="ds-work-card--detail ds2-5-body-sm">1996, American Scientist</p><div class="ds-work-card--work-metadata"><div class="ds-work-card--work-metadata__stat"><span class="material-symbols-outlined" style="font-size: 20px" translate="no">visibility</span><p class="ds2-5-body-sm" id="work-metadata-view-count">…</p></div><div class="ds-work-card--work-metadata__stat"><span class="material-symbols-outlined" style="font-size: 20px" translate="no">description</span><p class="ds2-5-body-sm">12 pages</p></div></div><script>(async () => {
+  const workId = 4530410;
+  const worksViewsPath = "/v0/works/views?subdomain_param=api&amp;work_ids%5B%5D=4530410";
+
+  const getWorkViews = async (workId) => {
+    const response = await fetch(worksViewsPath);
+
+    if (!response.ok) {
+      throw new Error('Failed to load work views');
+    }
+
+    const data = await response.json();
+
+    return data.views[workId];
+  };
+  // Get the view count for the work - we send this immediately rather than waiting for
+  // the DOM to load, so it can be available as soon as possible (but without holding up
+  // the backend or other resource requests, because it's a bit expensive and not critical).
+  const viewCount = await getWorkViews(workId);
+
+  const updateViewCount = (viewCount) => {
+    try {
+      const viewCountNumber = parseInt(viewCount, 10);
+      if (viewCountNumber === 0) {
+        // Remove the whole views element if there are zero views.
+        document.getElementById('work-metadata-view-count')?.parentNode?.remove();
+        return;
+      }
+
+      const commaizedViewCount = viewCountNumber.toLocaleString();
+
+      const viewCountBody = document.getElementById('work-metadata-view-count');
+
+      if (!viewCountBody) {
+        throw new Error('Failed to find work views element');
+      }
+
+      viewCountBody.textContent = `${commaizedViewCount} views`;
+    } catch (error) {
+      // Remove the whole views element if there was some issue parsing.
+      document.getElementById('work-metadata-view-count')?.parentNode?.remove();
+      throw new Error(`Failed to parse view count: ${viewCount}`, error);
+    }
+  };
+
+  // If the DOM is still loading, wait for it to be ready before updating the view count.
+  if (document.readyState === "loading") {
+    document.addEventListener('DOMContentLoaded', () => {
+      updateViewCount(viewCount);
+    });
+  // Otherwise, just update it immediately.
+  } else {
+    updateViewCount(viewCount);
+  }
+})();</script><div class="ds-work-card--button-container"><div class="primary-buttons"><button class="ds2-5-button js-tc-loswp--continue-reading-button--work-card js-login-button--58cf8e6f"><span class="material-symbols-outlined" style="font-size: 20px" translate="no">description</span>See full PDF</button><script>document.addEventListener('DOMContentLoaded', () => {
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  const csrfToken = document.querySelector("[name='csrf-token']")?.content ??
+    getCookie('masked_csrf_token');
+  if (!csrfToken) {
+    throw 'click tracking disabled due to missing CSRF token (button)';
+  }
+
+  const options = {"source":"loswp--continue-reading-button--work-card","bucket":"outline","entity_id":4530410,"extra":{"source_work_id":4530410}};
+  const button = document.querySelector('.js-tc-loswp--continue-reading-button--work-card');
+  button.addEventListener('click', () => {
+    fetch('/v0/clicks?subdomain_param=api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken,
+      },
+      keepalive: true,
+      mode: 'same-origin',
+      body: JSON.stringify({
+        ...options,
+        occurred_at: new Date(),
+        hit_id: window.Aedu?.hit_data?.id,
+      }),
+    });
+  });
+});</script><script>document.addEventListener('DOMContentLoaded', () => { const loginButton = document.querySelector('.js-login-button--58cf8e6f'); if (!loginButton) { throw new Error('Login button not found'); } const options = { detail: {"postLoginRedirectUrl":"https://www.academia.edu/4530410/_With_Gerald_Holton_and_Edward_Jurkowitz_How_a_Scientific_Discovery_is_Made_A_Case_History_American_Scientist_84_1996_364_375","clickTrackingContext":{"source":"loswp--continue-reading-button--work-card","bucket":"outline","entity_id":4530410,"extra":{"source_work_id":4530410}},"configuredText":{"buttonsPage":{"header":"Read your PDF for free"},"emailEntryPage":{"subheader":"Sign up or log in to continue reading."},"emailLoginPage":{"subheader":"Log in to continue reading."},"emailRegistrationPage":{"subheader":"Sign up to continue reading."}},"registrationParams":{"user_source":"download","doc_id":49802974}} }; loginButton.addEventListener('click', () => { document.dispatchEvent(new CustomEvent('open-login-modal', options)); }); });</script><button class="ds2-5-button ds2-5-button--secondary js-tc-loswp--download-pdf-button--work-card js-login-button--496aae84"><span class="material-symbols-outlined" style="font-size: 20px" translate="no">download</span>Download PDF</button><script>document.addEventListener('DOMContentLoaded', () => {
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  const csrfToken = document.querySelector("[name='csrf-token']")?.content ??
+    getCookie('masked_csrf_token');
+  if (!csrfToken) {
+    throw 'click tracking disabled due to missing CSRF token (button)';
+  }
+
+  const options = {"source":"loswp--download-pdf-button--work-card","bucket":"outline","entity_id":4530410,"extra":{"source_work_id":4530410}};
+  const button = document.querySelector('.js-tc-loswp--download-pdf-button--work-card');
+  button.addEventListener('click', () => {
+    fetch('/v0/clicks?subdomain_param=api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken,
+      },
+      keepalive: true,
+      mode: 'same-origin',
+      body: JSON.stringify({
+        ...options,
+        occurred_at: new Date(),
+        hit_id: window.Aedu?.hit_data?.id,
+      }),
+    });
+  });
+});</script><script>document.addEventListener('DOMContentLoaded', () => { const loginButton = document.querySelector('.js-login-button--496aae84'); if (!loginButton) { throw new Error('Login button not found'); } const options = { detail: {"postLoginRedirectUrl":"https://www.academia.edu/4530410/_With_Gerald_Holton_and_Edward_Jurkowitz_How_a_Scientific_Discovery_is_Made_A_Case_History_American_Scientist_84_1996_364_375?auto=download","clickTrackingContext":{"source":"loswp--download-pdf-button--work-card","bucket":"outline","entity_id":4530410,"extra":{"source_work_id":4530410}},"configuredText":{"buttonsPage":{"header":"Download your PDF for free"},"emailEntryPage":{"subheader":"Sign up or log in to continue with your free download."},"emailLoginPage":{"subheader":"Log in to continue with your free download."},"emailRegistrationPage":{"subheader":"Sign up to continue with your free download.","submit":"Start Download"}},"registrationParams":{"user_source":"download","doc_id":49802974,"auto":"download"}} }; loginButton.addEventListener('click', () => { document.dispatchEvent(new CustomEvent('open-login-modal', options)); }); });</script><!-- Powered by React on Rails Pro (c) ShakaCode | UNLICENSED -->
+<script type="application/json" id="js-react-on-rails-context">{"componentRegistryTimeout":5000,"railsEnv":"production","inMailer":false,"i18nLocale":"en","i18nDefaultLocale":"en","rorVersion":"16.6.0","rorPro":true,"rorProVersion":"16.6.0","href":"https://www.academia.edu/4530410/_With_Gerald_Holton_and_Edward_Jurkowitz_How_a_Scientific_Discovery_is_Made_A_Case_History_American_Scientist_84_1996_364_375","location":"/4530410/_With_Gerald_Holton_and_Edward_Jurkowitz_How_a_Scientific_Discovery_is_Made_A_Case_History_American_Scientist_84_1996_364_375","scheme":"https","host":"www.academia.edu","port":null,"pathname":"/4530410/_With_Gerald_Holton_and_Edward_Jurkowitz_How_a_Scientific_Discovery_is_Made_A_Case_History_American_Scientist_84_1996_364_375","search":null,"httpAcceptLanguage":null,"autoProps":{},"serverSide":false}</script>
+<div id="CitationButton-react-component-ce27ebc7-e66a-4851-aeaf-00854dc944e2"></div>
+<script type="application/json" class="js-react-on-rails-component" id="js-react-on-rails-component-CitationButton-react-component-ce27ebc7-e66a-4851-aeaf-00854dc944e2" data-component-name="CitationButton" data-dom-id="CitationButton-react-component-ce27ebc7-e66a-4851-aeaf-00854dc944e2">{"workId":4530410,"source":"swp_citation_modal","buttonClassName":"ds-work-card--citation-button"}</script>
+<script>
+          typeof ReactOnRails === 'object' && ReactOnRails.reactOnRailsComponentLoaded('CitationButton-react-component-ce27ebc7-e66a-4851-aeaf-00854dc944e2');
+        </script></div><div class="share-and-save-buttons"><button class="ds2-5-text-link ds2-5-text-link--inline js-tc-loswp--bookmark-button--work-card js-login-button--b6c9030f"><span class="material-symbols-outlined" style="font-size: 18px" translate="no">bookmark</span><span class="ds2-5-text-link__content">Save to Library</span></button><script>document.addEventListener('DOMContentLoaded', () => {
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  const csrfToken = document.querySelector("[name='csrf-token']")?.content ??
+    getCookie('masked_csrf_token');
+  if (!csrfToken) {
+    throw 'click tracking disabled due to missing CSRF token (text button)';
+  }
+
+  const options = {"source":"loswp--bookmark-button--work-card","bucket":"outline","entity_id":4530410,"extra":{"source_work_id":4530410}};
+  const button = document.querySelector('.js-tc-loswp--bookmark-button--work-card');
+  button.addEventListener('click', () => {
+    fetch('/v0/clicks?subdomain_param=api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken,
+      },
+      keepalive: true,
+      mode: 'same-origin',
+      body: JSON.stringify({
+        ...options,
+        occurred_at: new Date(),
+        hit_id: window.Aedu?.hit_data?.id,
+      }),
+    });
+  });
+});</script><script>document.addEventListener('DOMContentLoaded', () => { const loginButton = document.querySelector('.js-login-button--b6c9030f'); if (!loginButton) { throw new Error('Login button not found'); } const options = { detail: {"postLoginRedirectUrl":"https://www.academia.edu/4530410/_With_Gerald_Holton_and_Edward_Jurkowitz_How_a_Scientific_Discovery_is_Made_A_Case_History_American_Scientist_84_1996_364_375","clickTrackingContext":{"source":"loswp--bookmark-button--work-card","bucket":"outline","entity_id":4530410,"extra":{"source_work_id":4530410}},"configuredText":{"buttonsPage":{"header":"Read your PDF for free"},"emailEntryPage":{"subheader":"Sign up or log in to continue reading."},"emailLoginPage":{"subheader":"Log in to continue reading."},"emailRegistrationPage":{"subheader":"Sign up to continue reading."}},"registrationParams":{"user_source":"download","doc_id":49802974}} }; loginButton.addEventListener('click', () => { document.dispatchEvent(new CustomEvent('open-login-modal', options)); }); });</script><button class="ds2-5-text-link ds2-5-text-link--inline js-tc-loswp--share-button--work-card js-login-button--4d457da8"><span class="material-symbols-outlined" style="font-size: 18px" translate="no">share</span><span class="ds2-5-text-link__content">Share</span></button><script>document.addEventListener('DOMContentLoaded', () => {
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  const csrfToken = document.querySelector("[name='csrf-token']")?.content ??
+    getCookie('masked_csrf_token');
+  if (!csrfToken) {
+    throw 'click tracking disabled due to missing CSRF token (text button)';
+  }
+
+  const options = {"source":"loswp--share-button--work-card","bucket":"outline","entity_id":4530410,"extra":{"source_work_id":4530410}};
+  const button = document.querySelector('.js-tc-loswp--share-button--work-card');
+  button.addEventListener('click', () => {
+    fetch('/v0/clicks?subdomain_param=api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken,
+      },
+      keepalive: true,
+      mode: 'same-origin',
+      body: JSON.stringify({
+        ...options,
+        occurred_at: new Date(),
+        hit_id: window.Aedu?.hit_data?.id,
+      }),
+    });
+  });
+});</script><script>document.addEventListener('DOMContentLoaded', () => { const loginButton = document.querySelector('.js-login-button--4d457da8'); if (!loginButton) { throw new Error('Login button not found'); } const options = { detail: {"postLoginRedirectUrl":"https://www.academia.edu/4530410/_With_Gerald_Holton_and_Edward_Jurkowitz_How_a_Scientific_Discovery_is_Made_A_Case_History_American_Scientist_84_1996_364_375","clickTrackingContext":{"source":"loswp--share-button--work-card","bucket":"outline","entity_id":4530410,"extra":{"source_work_id":4530410}},"configuredText":{"buttonsPage":{"header":"Read your PDF for free"},"emailEntryPage":{"subheader":"Sign up or log in to continue reading."},"emailLoginPage":{"subheader":"Log in to continue reading."},"emailRegistrationPage":{"subheader":"Sign up to continue reading."}},"registrationParams":{"user_source":"download","doc_id":49802974}} }; loginButton.addEventListener('click', () => { document.dispatchEvent(new CustomEvent('open-login-modal', options)); }); });</script></div></div><div class="ds-signup-banner-trigger-container"><div class="ds-signup-banner-trigger ds-signup-banner-trigger-control"></div></div><div class="ds-signup-banner ds-signup-banner-control"><div id="ds-signup-banner-close-button"><button class="ds2-5-button ds2-5-button--secondary ds2-5-button--inverse"><span class="material-symbols-outlined" style="font-size: 20px" translate="no">close</span></button></div><div class="ds-signup-banner-ctas" data-impression-entity-id="4530410" data-impression-entity-type="2" data-impression-source="signup-banner"><img src="//a.academia-assets.com/images/academia-logo-capital-white.svg" /><h4 class="ds2-5-heading-serif-sm">Sign up for access to the world's latest research</h4><button class="ds2-5-button ds2-5-button--inverse ds2-5-button--full-width js-tc-loswp--signup-banner js-login-button--fdc1311d">Sign up for free<span class="material-symbols-outlined" style="font-size: 20px" translate="no">arrow_forward</span></button><script>document.addEventListener('DOMContentLoaded', () => {
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  const csrfToken = document.querySelector("[name='csrf-token']")?.content ??
+    getCookie('masked_csrf_token');
+  if (!csrfToken) {
+    throw 'click tracking disabled due to missing CSRF token (button)';
+  }
+
+  const options = {"source":"loswp--signup-banner","bucket":"outline","entity_id":4530410,"extra":{"source_work_id":4530410}};
+  const button = document.querySelector('.js-tc-loswp--signup-banner');
+  button.addEventListener('click', () => {
+    fetch('/v0/clicks?subdomain_param=api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken,
+      },
+      keepalive: true,
+      mode: 'same-origin',
+      body: JSON.stringify({
+        ...options,
+        occurred_at: new Date(),
+        hit_id: window.Aedu?.hit_data?.id,
+      }),
+    });
+  });
+});</script><script>document.addEventListener('DOMContentLoaded', () => { const loginButton = document.querySelector('.js-login-button--fdc1311d'); if (!loginButton) { throw new Error('Login button not found'); } const options = { detail: {"postLoginRedirectUrl":"https://www.academia.edu/4530410/_With_Gerald_Holton_and_Edward_Jurkowitz_How_a_Scientific_Discovery_is_Made_A_Case_History_American_Scientist_84_1996_364_375","clickTrackingContext":{"source":"loswp--signup-banner","bucket":"outline","entity_id":4530410,"extra":{"source_work_id":4530410}},"configuredText":{"buttonsPage":{"header":"Read your PDF for free"},"emailEntryPage":{"subheader":"Sign up or log in to continue reading."},"emailLoginPage":{"subheader":"Log in to continue reading."},"emailRegistrationPage":{"subheader":"Sign up to continue reading."}},"registrationParams":{"user_source":"download","doc_id":49802974}} }; loginButton.addEventListener('click', () => { document.dispatchEvent(new CustomEvent('open-login-modal', options)); }); });</script></div><div class="ds-signup-banner-divider"></div><div class="ds-signup-banner-reasons"><div class="ds-signup-banner-reasons-item"><span class="material-symbols-outlined" style="font-size: 24px" translate="no">check</span><span>Get notified about relevant papers</span></div><div class="ds-signup-banner-reasons-item"><span class="material-symbols-outlined" style="font-size: 24px" translate="no">check</span><span>Save papers to use in your research</span></div><div class="ds-signup-banner-reasons-item"><span class="material-symbols-outlined" style="font-size: 24px" translate="no">check</span><span>Join the discussion with peers</span></div><div class="ds-signup-banner-reasons-item"><span class="material-symbols-outlined" style="font-size: 24px" translate="no">check</span><span>Track your impact</span></div></div></div><script>(() => {
+  // Set up signup banner show/hide behavior:
+  // 1. If the signup banner trigger (a 242px-high* invisible div underneath the 'See Full PDF' / 'Download PDF' buttons)
+  //    is already fully scrolled above the viewport, show the banner by default
+  // 2. If the signup banner trigger is fully visible, show the banner
+  // 3. If the signup banner trigger has even a few pixels scrolled below the viewport, hide the banner
+  //
+  // * 242px is the empirically determined height of the signup banner. It's better to be a bit taller than
+  //   necessary than too short, so it's fine that the mobile (small breakpoint) banner is shorter.
+
+  // First check session storage for the signup banner's visibility state
+  const signupBannerHidden = sessionStorage.getItem('ds-signup-banner-hidden');
+  if (signupBannerHidden === 'true') {
+    return;
+  }
+
+  const signupBanner = document.querySelector('.ds-signup-banner');
+  const signupBannerTrigger = document.querySelector('.ds-signup-banner-trigger');
+
+  let footerShown = false;
+
+  window.addEventListener('load', () => {
+    const rect = signupBannerTrigger.getBoundingClientRect();
+    // If page loaded up already scrolled below the trigger (via scroll restoration), show the banner by default
+    if (rect.bottom < 0) {
+      footerShown = true;
+      signupBanner.classList.add('ds-signup-banner-visible');
+    }
+  });
+
+  // Wait for trigger to fully enter viewport before showing banner (ensures PDF CTAs are never covered by banner)
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !footerShown) {
+        footerShown = true;
+        signupBanner.classList.add('ds-signup-banner-visible');
+      } else if (!entry.isIntersecting && footerShown) {
+        if (signupBannerTrigger.getBoundingClientRect().bottom > 0) {
+          footerShown = false;
+          signupBanner.classList.remove('ds-signup-banner-visible');
+        }
+      }
+    });
+  });
+  observer.observe(signupBannerTrigger);
+
+  // Set up signup banner close button event handler:
+  const signupBannerCloseButton = document.querySelector('#ds-signup-banner-close-button');
+  signupBannerCloseButton.addEventListener('click', () => {
+    signupBanner.classList.remove('ds-signup-banner-visible');
+    observer.unobserve(signupBannerTrigger);
+
+    // Store the signup banner's visibility state in session storage
+    sessionStorage.setItem('ds-signup-banner-hidden', 'true');
+  });
+})();</script></div></div><style>@media screen and (min-width: 568px) and (max-width: 621px) {  .ds-work-card--button-container .primary-buttons .ds2-5-button, .ds-work-card--citation-button {    font-size: var(--font-size-small);    line-height: var(--line-height-small);    padding: 0 var(--buttons-small-buttons-l-r-padding, 12px);    height: var(--buttons-small-buttons-height, 44px);    gap: var(--buttons-small-buttons-gap, 8px);    border-radius: var(--buttons-small-buttons-corner-radius, 8px);  }}@media screen and (min-width: 1280px) and (max-width: 1515px) {  .ds-work-card--button-container .primary-buttons .ds2-5-button, .ds-work-card--citation-button {    font-size: var(--font-size-small);    line-height: var(--line-height-small);    padding: 0 var(--buttons-small-buttons-l-r-padding, 12px);    height: var(--buttons-small-buttons-height, 44px);    gap: var(--buttons-small-buttons-gap, 8px);    border-radius: var(--buttons-small-buttons-corner-radius, 8px);  } .ds-work-card--button-container {   flex-direction: column !important; } .ds-work-card--button-container .share-and-save-buttons {   align-self: start; }}@media screen and (min-width: 1280px) {  .ds-work-card--work-authors.ds-work-card--work-authors--mobile-only {    display: none !important;  }}</style><div data-auto_select="false" data-client_id="331998490334-rsn3chp12mbkiqhl6e7lu2q0mlbu0f1b" data-doc_id="49802974" data-landing_url="https://www.academia.edu/4530410/_With_Gerald_Holton_and_Edward_Jurkowitz_How_a_Scientific_Discovery_is_Made_A_Case_History_American_Scientist_84_1996_364_375" data-login_uri="https://www.academia.edu/registrations/google_one_tap" data-use_fedcm_for_prompt="true" id="g_id_onload"></div><div class="safe-figure-carousel-section--container"><div class="safe-figure-carousel-section--heading" id="figures">Figures (12)</div><div class="safe-figure-carousel--container"><div class="carousel-container js-figure-carousel carousel-container--md" id="loswp-figures"><div class="prev-slide-container js-prev-button-container"><button aria-label="Previous" class="carousel-navigation-button js-loswp-figures-prev"><span class="material-symbols-outlined" style="font-size: 24px" translate="no">arrow_back_ios</span></button></div><div class="slides-container js-slides-container"><figure class="figure-slide-container"><a href="https://www.academia.edu/figures/48604768/figure-1-ductivity-had-the-affective-power-of-mandala-the"><img alt="ductivity had the affective power of a mandala, the highly symmetrical visual symbol of the universe used in Hinduism and Buddhism as a guide to meditation. Miiller later chose the Dharmaraja mandala, above, to illustrate an introspective essay on his sources of inspiration. " class="figure-slide-image" loading="eager" src="https://figures.academia-assets.com/49802974/figure_001.jpg" width="236" height="141" /></a><figcaption class="figure-slide-caption ds2-5-body-xs">ductivity had the affective power of a mandala, the highly symmetrical visual symbol of the universe used in Hinduism and Buddhism as a guide to meditation. Miiller later chose the Dharmaraja mandala, above, to illustrate an introspective essay on his sources of inspiration. </figcaption></figure><figure class="figure-slide-container"><a href="https://www.academia.edu/figures/48604786/figure-2-superconductivity-the-loss-of-electrical-resistance"><img alt="Figure 2. Superconductivity, the loss of electrical resistance in a material, was discovered by the Dutch physicist Heike Kamerlingh Onnes (right, shown with colleague G. J. Flim and their helium-liquefying apparatus in 1922). Onnes found that mercury becomes supercon- ducting at 4.2 degrees Kelvin (above absolute zero). Until Karl Alex Miller and Georg Bednorz published papers in 1986 describing a material that becomes superconducting at 30 Kelvin, the discovery of superconductivity appeared to have little practical use. Onnes is only one of a large number of scientific “ancestors” to Miiller and Bednorz. (Photograph courtesy of the Deutsches Museum, Munich.) " class="figure-slide-image" loading="eager" src="https://figures.academia-assets.com/49802974/figure_002.jpg" width="236" height="141" /></a><figcaption class="figure-slide-caption ds2-5-body-xs">Figure 2. Superconductivity, the loss of electrical resistance in a material, was discovered by the Dutch physicist Heike Kamerlingh Onnes (right, shown with colleague G. J. Flim and their helium-liquefying apparatus in 1922). Onnes found that mercury becomes supercon- ducting at 4.2 degrees Kelvin (above absolute zero). Until Karl Alex Miller and Georg Bednorz published papers in 1986 describing a material that becomes superconducting at 30 Kelvin, the discovery of superconductivity appeared to have little practical use. Onnes is only one of a large number of scientific “ancestors” to Miiller and Bednorz. (Photograph courtesy of the Deutsches Museum, Munich.) </figcaption></figure><figure class="figure-slide-container"><a href="https://www.academia.edu/figures/48604803/figure-3-but-the-seeds-of-fascination-with-the-field-had"><img alt="But the seeds of fascination with the field had been sown, and when Miller asked Bednorz in 1983 to join him in the search for a new superconductor, Bednorz accepted with such alacrity " class="figure-slide-image" loading="eager" src="https://figures.academia-assets.com/49802974/figure_003.jpg" width="236" height="141" /></a><figcaption class="figure-slide-caption ds2-5-body-xs">But the seeds of fascination with the field had been sown, and when Miller asked Bednorz in 1983 to join him in the search for a new superconductor, Bednorz accepted with such alacrity </figcaption></figure><figure class="figure-slide-container"><a href="https://www.academia.edu/figures/48604812/figure-4-discovery-of-the-first-high-temperature"><img alt="Figure 4. Discovery of the first high-temperature superconductor, barium-doped lan- thanum cuprate, was published in Zeitschrift fiir Physik B, a journal read by few supercon- ductivity researchers. Although there was good evidence that the compound was supercon- ducting, confirming measurements of magnetic susceptibility and the determination of the Meissner effect had yet to be made. The crucial figure showed the temperature depen- dence of the resistivity of lanthanum cuprates doped with varying amounts of barium (Ba,Lag_,Cu,O5y_,)- (The two upper curves should be read against the left scale and the lower one against the right scale.) After initially increasing as the temperature was low- ered, resistivity suddenly plunged to zero. The figure’s shock value, however, lay in its abscissa: The materials underwent this transition at temperatures well above absolute  zero. (Reprinted with permission of Springer-Verlag.) " class="figure-slide-image" loading="eager" src="https://figures.academia-assets.com/49802974/figure_004.jpg" width="236" height="141" /></a><figcaption class="figure-slide-caption ds2-5-body-xs">Figure 4. Discovery of the first high-temperature superconductor, barium-doped lan- thanum cuprate, was published in Zeitschrift fiir Physik B, a journal read by few supercon- ductivity researchers. Although there was good evidence that the compound was supercon- ducting, confirming measurements of magnetic susceptibility and the determination of the Meissner effect had yet to be made. The crucial figure showed the temperature depen- dence of the resistivity of lanthanum cuprates doped with varying amounts of barium (Ba,Lag_,Cu,O5y_,)- (The two upper curves should be read against the left scale and the lower one against the right scale.) After initially increasing as the temperature was low- ered, resistivity suddenly plunged to zero. The figure’s shock value, however, lay in its abscissa: The materials underwent this transition at temperatures well above absolute  zero. (Reprinted with permission of Springer-Verlag.) </figcaption></figure><figure class="figure-slide-container"><a href="https://www.academia.edu/figures/48604819/figure-5-miiller-decided-to-investigate-the-lanthanum"><img alt="Figure 5. Miiller decided to investigate the lanthanum cuprates in part because he thought they were perovskites, a class of ceramics characterized by a highly symmetrical crystal structure. A crystal can be described as a lattice, or space-filling construct, adhering to certain operations that define the relations among points in the lattice. These operations include, for example, rotations about a point and reflections about a plane. Each of seven crystal systems—the cubic, tetragonal, orthorhombic, hexagonal, trigonal, monoclinic and triclinic—is defined by a set of symmetry elements. By analogy, the manner in which a crystal system exhibits a set of symme- try elements can be grasped by examining M. C. Escher’s “Study for Regular Division of the Plane with Angels and Devils,” a two-dimensional space-filling construct. The pattern, which has twofold and fourfold rotational symmetry (a) and mirror symmetry (b,c), can be construct- ed by repetition of a square motif (d). " class="figure-slide-image" loading="eager" src="https://figures.academia-assets.com/49802974/figure_005.jpg" width="236" height="141" /></a><figcaption class="figure-slide-caption ds2-5-body-xs">Figure 5. Miiller decided to investigate the lanthanum cuprates in part because he thought they were perovskites, a class of ceramics characterized by a highly symmetrical crystal structure. A crystal can be described as a lattice, or space-filling construct, adhering to certain operations that define the relations among points in the lattice. These operations include, for example, rotations about a point and reflections about a plane. Each of seven crystal systems—the cubic, tetragonal, orthorhombic, hexagonal, trigonal, monoclinic and triclinic—is defined by a set of symmetry elements. By analogy, the manner in which a crystal system exhibits a set of symme- try elements can be grasped by examining M. C. Escher’s “Study for Regular Division of the Plane with Angels and Devils,” a two-dimensional space-filling construct. The pattern, which has twofold and fourfold rotational symmetry (a) and mirror symmetry (b,c), can be construct- ed by repetition of a square motif (d). </figcaption></figure><figure class="figure-slide-container"><a href="https://www.academia.edu/figures/48604827/figure-6-symmetries-of-the-perovskites-upper-left-and"><img alt="Figure 6. Symmetries of the perovskites (upper left) and lanthanum superconductors (right) are often explained with polyhedral models. In an ABO, perovskite six oxygen atoms (blue splieres) surround the B cations, which form an octahedron. A cations are shown in yellow, forming a network linked by green “bonds.” Lanthanum cuprate (La,CuO,) has a similar structure, but the copper-bearing octahedra shaxe four rather than six corners, and thus form Cu-O planes tha‘  enhance the potential for superconductivity. " class="figure-slide-image" loading="eager" src="https://figures.academia-assets.com/49802974/figure_006.jpg" width="236" height="141" /></a><figcaption class="figure-slide-caption ds2-5-body-xs">Figure 6. Symmetries of the perovskites (upper left) and lanthanum superconductors (right) are often explained with polyhedral models. In an ABO, perovskite six oxygen atoms (blue splieres) surround the B cations, which form an octahedron. A cations are shown in yellow, forming a network linked by green “bonds.” Lanthanum cuprate (La,CuO,) has a similar structure, but the copper-bearing octahedra shaxe four rather than six corners, and thus form Cu-O planes tha‘  enhance the potential for superconductivity. </figcaption></figure><figure class="figure-slide-container"><a href="https://www.academia.edu/figures/48604836/figure-7-with-gerald-holton-and-edward-jurkowitz-how"><img alt="" class="figure-slide-image" loading="eager" src="https://figures.academia-assets.com/49802974/figure_007.jpg" width="236" height="141" /></a><figcaption class="figure-slide-caption ds2-5-body-xs"></figcaption></figure><figure class="figure-slide-container"><a href="https://www.academia.edu/figures/48604848/figure-8-oe-fo-determine-the-immediate-intellectual-and"><img alt="_ oe ¢ fo determine the immediate intellectual and material “ancestry” of the discovery of high-temperature superconductors, the autho! traced implicit and explicit citations (“+” indicates additional coauthors) in five papers that can be regarded as the essential core of th  ture superconductivity: schema, the theoretical framework in which the scientists phrased their inquiry; production, the experimental tech niques and material resources needed to produce the superconducting compound; observation, the means of gathering and analyzing dat about the compound&#39;s properties; and interpretation, the theoretical concepts needed to interpret the data they obtained. Although intellectu  al Ptimacy is often given to theory, the proper apparatus can play at least as important a role in scientific advances; all work with supercon ductors, for example, was predicated on the development of the means to reach temperatures near absolute zero. " class="figure-slide-image" loading="eager" src="https://figures.academia-assets.com/49802974/figure_008.jpg" width="236" height="141" /></a><figcaption class="figure-slide-caption ds2-5-body-xs">_ oe ¢ fo determine the immediate intellectual and material “ancestry” of the discovery of high-temperature superconductors, the autho! traced implicit and explicit citations (“+” indicates additional coauthors) in five papers that can be regarded as the essential core of th  ture superconductivity: schema, the theoretical framework in which the scientists phrased their inquiry; production, the experimental tech niques and material resources needed to produce the superconducting compound; observation, the means of gathering and analyzing dat about the compound&#39;s properties; and interpretation, the theoretical concepts needed to interpret the data they obtained. Although intellectu  al Ptimacy is often given to theory, the proper apparatus can play at least as important a role in scientific advances; all work with supercon ductors, for example, was predicated on the development of the means to reach temperatures near absolute zero. </figcaption></figure><figure class="figure-slide-container"><a href="https://www.academia.edu/figures/48604863/figure-8-borrowing-of-resources-routinely-takes-place"><img alt="Borrowing of resources routinely takes place between different traditions within a conventionally defined discipline. For in- stance, among the theoretical ancestors of the Bednorz-Miiller work are ideas from thermodynamics, statistical me- chanics, the old quantum theory, quantum mechanics and quantum field theory. Even when a given work superficially appears to be the result of a narrow line of research, it is likely to have a deep and broad ancestry. When scientists borrow from different sub- fields, these can blend together or be transformed in an alchemical process that turns them into gold. One may also note that the unpredictable way scien-  Figure 8. More complete genealogical analysis of the Bednorz-Miiller achieve- ment quickly uncovered a broad and deep network of intellectual and material ances- tors, grouped here generally as in Figure 7, with schema resources at the top and inter- pretive work at the bottom. For illustrative " class="figure-slide-image" loading="eager" src="https://figures.academia-assets.com/49802974/figure_009.jpg" width="236" height="141" /></a><figcaption class="figure-slide-caption ds2-5-body-xs">Borrowing of resources routinely takes place between different traditions within a conventionally defined discipline. For in- stance, among the theoretical ancestors of the Bednorz-Miiller work are ideas from thermodynamics, statistical me- chanics, the old quantum theory, quantum mechanics and quantum field theory. Even when a given work superficially appears to be the result of a narrow line of research, it is likely to have a deep and broad ancestry. When scientists borrow from different sub- fields, these can blend together or be transformed in an alchemical process that turns them into gold. One may also note that the unpredictable way scien-  Figure 8. More complete genealogical analysis of the Bednorz-Miiller achieve- ment quickly uncovered a broad and deep network of intellectual and material ances- tors, grouped here generally as in Figure 7, with schema resources at the top and inter- pretive work at the bottom. For illustrative </figcaption></figure><figure class="figure-slide-container"><a href="https://www.academia.edu/figures/48604876/figure-10-our-findings-emphasize-the-great-impor-tance-for"><img alt="Our findings emphasize the great impor- tance for scientific research of unintended  Purposes, the first-generation ancestors (red lines) are shown in more detail than earlier generations (green lines). The genealogical tree has been arbitrarily truncated; each generation, of course, has its own ancestors. Even without the ability to indicate every traceable “ances- tor,” the figure embodies the central argument of this article, namely that every scientific advance depends on many previous advances in a variety of unrelated disciplines. Likewise resources interconnect: Observation leads to new theory and vice versa. Schemes for directing funds solely to “strategic” research areas ignore the dense interconnectedness of the scientific enterprise. Note that the horizontal scale is compressed as one passes into the 19th century (facing page). Also, some important work in this field is absent in this representative ‘sketch of the authors’ genealogical tracing because of lack of space, or because Miiller and Bednorz did not refer to it.  basic research borrows resources from applied research, and applied research bor- rows resources from basic research. A good example of this symmetrical exchange is Bednorz and Miiller’s use of a SQUID (superconducting quantum interference device) to measure changes in magnetic fields. The initial pursuit of superconductivity can be regarded as asic, Or “curiosity-driven.” So can Bri- an. Josephson’s prediction that super- conducting currents can tunnel across in insulating film. But then the Joseph- on effect led to the production of " class="figure-slide-image" loading="eager" src="https://figures.academia-assets.com/49802974/figure_010.jpg" width="236" height="141" /></a><figcaption class="figure-slide-caption ds2-5-body-xs">Our findings emphasize the great impor- tance for scientific research of unintended  Purposes, the first-generation ancestors (red lines) are shown in more detail than earlier generations (green lines). The genealogical tree has been arbitrarily truncated; each generation, of course, has its own ancestors. Even without the ability to indicate every traceable “ances- tor,” the figure embodies the central argument of this article, namely that every scientific advance depends on many previous advances in a variety of unrelated disciplines. Likewise resources interconnect: Observation leads to new theory and vice versa. Schemes for directing funds solely to “strategic” research areas ignore the dense interconnectedness of the scientific enterprise. Note that the horizontal scale is compressed as one passes into the 19th century (facing page). Also, some important work in this field is absent in this representative ‘sketch of the authors’ genealogical tracing because of lack of space, or because Miiller and Bednorz did not refer to it.  basic research borrows resources from applied research, and applied research bor- rows resources from basic research. A good example of this symmetrical exchange is Bednorz and Miiller’s use of a SQUID (superconducting quantum interference device) to measure changes in magnetic fields. The initial pursuit of superconductivity can be regarded as asic, Or “curiosity-driven.” So can Bri- an. Josephson’s prediction that super- conducting currents can tunnel across in insulating film. But then the Joseph- on effect led to the production of </figcaption></figure><figure class="figure-slide-container"><a href="https://www.academia.edu/figures/48604889/figure-9-density-of-connections-that-characterizes"><img alt="Figure 9. Density of connections that characterizes genealogical analysis of scientific WOrK iS demonstrated by focusing on one node in Figure 8—the BCS theory for low-temperature superconductivity—which explodes to reveal its own dense network of ancestors. This fig; ure also illustrates a quixotic aspect of scientific discovery: The BCS theory in its original form is now widely thought not to apply to high-temperature superconductors, but ideas do  not have to be correct to be fruitful. " class="figure-slide-image" loading="eager" src="https://figures.academia-assets.com/49802974/figure_011.jpg" width="236" height="141" /></a><figcaption class="figure-slide-caption ds2-5-body-xs">Figure 9. Density of connections that characterizes genealogical analysis of scientific WOrK iS demonstrated by focusing on one node in Figure 8—the BCS theory for low-temperature superconductivity—which explodes to reveal its own dense network of ancestors. This fig; ure also illustrates a quixotic aspect of scientific discovery: The BCS theory in its original form is now widely thought not to apply to high-temperature superconductors, but ideas do  not have to be correct to be fruitful. </figcaption></figure><figure class="figure-slide-container"><a href="https://www.academia.edu/figures/48604906/figure-12-with-gerald-holton-and-edward-jurkowitz-how"><img alt="" class="figure-slide-image" loading="eager" src="https://figures.academia-assets.com/49802974/figure_012.jpg" width="236" height="141" /></a><figcaption class="figure-slide-caption ds2-5-body-xs"></figcaption></figure></div><div class="next-slide-container js-next-button-container"><button aria-label="Next" class="carousel-navigation-button js-loswp-figures-next"><span class="material-symbols-outlined" style="font-size: 24px" translate="no">arrow_forward_ios</span></button></div></div></div></div><div class="safe-sticky-ctas--container js-loswp-sticky-ctas hidden"><button class="ds2-5-button js-tc-loswp--continue-reading-button--sticky-ctas js-login-button--e69c6bbc">See full PDF</button><script>document.addEventListener('DOMContentLoaded', () => {
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  const csrfToken = document.querySelector("[name='csrf-token']")?.content ??
+    getCookie('masked_csrf_token');
+  if (!csrfToken) {
+    throw 'click tracking disabled due to missing CSRF token (button)';
+  }
+
+  const options = {"source":"loswp--continue-reading-button--sticky-ctas","bucket":"outline","entity_id":4530410,"extra":{"source_work_id":4530410}};
+  const button = document.querySelector('.js-tc-loswp--continue-reading-button--sticky-ctas');
+  button.addEventListener('click', () => {
+    fetch('/v0/clicks?subdomain_param=api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken,
+      },
+      keepalive: true,
+      mode: 'same-origin',
+      body: JSON.stringify({
+        ...options,
+        occurred_at: new Date(),
+        hit_id: window.Aedu?.hit_data?.id,
+      }),
+    });
+  });
+});</script><script>document.addEventListener('DOMContentLoaded', () => { const loginButton = document.querySelector('.js-login-button--e69c6bbc'); if (!loginButton) { throw new Error('Login button not found'); } const options = { detail: {"postLoginRedirectUrl":"https://www.academia.edu/4530410/_With_Gerald_Holton_and_Edward_Jurkowitz_How_a_Scientific_Discovery_is_Made_A_Case_History_American_Scientist_84_1996_364_375","clickTrackingContext":{"source":"loswp--continue-reading-button--sticky-ctas","bucket":"outline","entity_id":4530410,"extra":{"source_work_id":4530410}},"configuredText":{"buttonsPage":{"header":"Read your PDF for free"},"emailEntryPage":{"subheader":"Sign up or log in to continue reading."},"emailLoginPage":{"subheader":"Log in to continue reading."},"emailRegistrationPage":{"subheader":"Sign up to continue reading."}},"registrationParams":{"user_source":"download","doc_id":49802974}} }; loginButton.addEventListener('click', () => { document.dispatchEvent(new CustomEvent('open-login-modal', options)); }); });</script><button class="ds2-5-button ds2-5-button--secondary js-tc-loswp--download-pdf-button--sticky-ctas js-login-button--b8a63b4f"><span class="material-symbols-outlined" style="font-size: 20px" translate="no">download</span>Download PDF</button><script>document.addEventListener('DOMContentLoaded', () => {
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  const csrfToken = document.querySelector("[name='csrf-token']")?.content ??
+    getCookie('masked_csrf_token');
+  if (!csrfToken) {
+    throw 'click tracking disabled due to missing CSRF token (button)';
+  }
+
+  const options = {"source":"loswp--download-pdf-button--sticky-ctas","bucket":"outline","entity_id":4530410,"extra":{"source_work_id":4530410}};
+  const button = document.querySelector('.js-tc-loswp--download-pdf-button--sticky-ctas');
+  button.addEventListener('click', () => {
+    fetch('/v0/clicks?subdomain_param=api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken,
+      },
+      keepalive: true,
+      mode: 'same-origin',
+      body: JSON.stringify({
+        ...options,
+        occurred_at: new Date(),
+        hit_id: window.Aedu?.hit_data?.id,
+      }),
+    });
+  });
+});</script><script>document.addEventListener('DOMContentLoaded', () => { const loginButton = document.querySelector('.js-login-button--b8a63b4f'); if (!loginButton) { throw new Error('Login button not found'); } const options = { detail: {"postLoginRedirectUrl":"https://www.academia.edu/4530410/_With_Gerald_Holton_and_Edward_Jurkowitz_How_a_Scientific_Discovery_is_Made_A_Case_History_American_Scientist_84_1996_364_375?auto=download","clickTrackingContext":{"source":"loswp--download-pdf-button--sticky-ctas","bucket":"outline","entity_id":4530410,"extra":{"source_work_id":4530410}},"configuredText":{"buttonsPage":{"header":"Download your PDF for free"},"emailEntryPage":{"subheader":"Sign up or log in to continue with your free download."},"emailLoginPage":{"subheader":"Log in to continue with your free download."},"emailRegistrationPage":{"subheader":"Sign up to continue with your free download.","submit":"Start Download"}},"registrationParams":{"user_source":"download","doc_id":49802974,"auto":"download"}} }; loginButton.addEventListener('click', () => { document.dispatchEvent(new CustomEvent('open-login-modal', options)); }); });</script></div><div class="ds-work--container js-loswp-embedded-document" id="loswp-embedded-document"><div class="attachment_preview" data-attachment="Attachment_49802974"><div class="js-scribd-document-container"><div class="scribd--document-loading js-scribd-document-loader" style="display: block;"><img alt="Loading..." src="//a.academia-assets.com/images/loaders/paper-load.gif" /><p>Loading Preview</p></div></div><div style="text-align: center;"><div class="scribd--no-preview-alert js-preview-unavailable"><p>Sorry, preview is currently unavailable. You can download the paper by clicking the button above.</p></div></div></div></div></div><div class="right-rail--container"><!-- Powered by React on Rails Pro (c) ShakaCode | UNLICENSED -->
+<script type="application/json" id="js-react-on-rails-context">{"componentRegistryTimeout":5000,"railsEnv":"production","inMailer":false,"i18nLocale":"en","i18nDefaultLocale":"en","rorVersion":"16.6.0","rorPro":true,"rorProVersion":"16.6.0","href":"https://www.academia.edu/4530410/_With_Gerald_Holton_and_Edward_Jurkowitz_How_a_Scientific_Discovery_is_Made_A_Case_History_American_Scientist_84_1996_364_375","location":"/4530410/_With_Gerald_Holton_and_Edward_Jurkowitz_How_a_Scientific_Discovery_is_Made_A_Case_History_American_Scientist_84_1996_364_375","scheme":"https","host":"www.academia.edu","port":null,"pathname":"/4530410/_With_Gerald_Holton_and_Edward_Jurkowitz_How_a_Scientific_Discovery_is_Made_A_Case_History_American_Scientist_84_1996_364_375","search":null,"httpAcceptLanguage":null,"autoProps":{},"serverSide":false}</script>
+<div id="AboutTheAuthorsSSR-react-component-948f2560-86f5-4e58-98af-cf65b1b68405"><div class="AboutTheAuthorsSSR-cls2_Yk9 AboutTheAuthorsSSR-cls1_c2J"><section style="gap:var(--spacing-sm-24, 24px)" class="SidebarSection-cls2_48y SidebarSection-cls1_sjk"><header class="SidebarSection-cls2_y03 SidebarSection-cls1_08-">About the authors</header><div class="UserCard-cls2_j80 UserCard-cls1_lJx"><img src="https://0.academia-photos.com/5514119/2417990/2813007/s65_hasok.chang.jpg" width="48" height="48" class="UserAvatar-cls2_NlM UserAvatar-cls1_C6Z"/><div class="UserCard-cls2_lsu UserCard-cls1_3Lh"><div class="UserCard-cls2_7GZ UserCard-cls1_OMn"><a href="https://cambridge.academia.edu/HasokChang" class="ds2-5-body-md ds2-5-body-link">Hasok Chang</a></div><div class="UserCard-cls2_dRF UserCard-cls1_6gN">University of Cambridge, Faculty Member</div><div class="UserCard-cls2_W7U UserCard-cls1_3FG"><div class="AuthorCard-cls2_ZvH AuthorCard-cls1_M61"><button class="ds2-5-text-link ds2-5-text-link--inline"><span class="material-symbols-outlined" style="font-size:20px" translate="no">add</span><span class="ds2-5-text-link__content">Follow</span></button><button class="ds2-5-text-link ds2-5-text-link--inline"><span class="material-symbols-outlined" style="font-size:20px" translate="no">mail</span><span class="ds2-5-text-link__content">Message</span></button></div></div></div></div><div class="UserCard-cls2_j80 UserCard-cls1_lJx"><img src="//a.academia-assets.com/images/s65_no_pic.png" width="48" height="48" class="UserAvatar-cls2_NlM UserAvatar-cls1_C6Z"/><div class="UserCard-cls2_lsu UserCard-cls1_3Lh"><div class="UserCard-cls2_7GZ UserCard-cls1_OMn"><a href="https://harvard.academia.edu/JHolton" class="ds2-5-body-md ds2-5-body-link">J. Holton</a></div><div class="UserCard-cls2_dRF UserCard-cls1_6gN">Harvard University, Emeritus</div><div class="UserCard-cls2_W7U UserCard-cls1_3FG"><div class="AuthorCard-cls2_ZvH AuthorCard-cls1_M61"><button class="ds2-5-text-link ds2-5-text-link--inline"><span class="material-symbols-outlined" style="font-size:20px" translate="no">add</span><span class="ds2-5-text-link__content">Follow</span></button><button class="ds2-5-text-link ds2-5-text-link--inline"><span class="material-symbols-outlined" style="font-size:20px" translate="no">mail</span><span class="ds2-5-text-link__content">Message</span></button></div></div></div></div></section></div></div>
+<script type="application/json" class="js-react-on-rails-component" id="js-react-on-rails-component-AboutTheAuthorsSSR-react-component-948f2560-86f5-4e58-98af-cf65b1b68405" data-component-name="AboutTheAuthorsSSR" data-dom-id="AboutTheAuthorsSSR-react-component-948f2560-86f5-4e58-98af-cf65b1b68405">{"authors":[{"id":5514119,"displayName":"Hasok Chang","bio":"","photo":"https://0.academia-photos.com/5514119/2417990/2813007/s65_hasok.chang.jpg","url":"https://cambridge.academia.edu/HasokChang","position":"Faculty Member","university":"University of Cambridge","followers":null,"papers":null,"following":false,"show_premium_badge":false},{"id":37293242,"displayName":"J. Holton","bio":"","photo":"//a.academia-assets.com/images/s65_no_pic.png","url":"https://harvard.academia.edu/JHolton","position":"Emeritus","university":"Harvard University","followers":null,"papers":null,"following":false,"show_premium_badge":false}],"workId":4530410}</script>
+<script>
+          typeof ReactOnRails === 'object' && ReactOnRails.reactOnRailsComponentLoaded('AboutTheAuthorsSSR-react-component-948f2560-86f5-4e58-98af-cf65b1b68405');
+        </script><div class="safe-related-topics--container"><h2 class="safe-related-topics--heading">Related topics</h2><div class="safe-related-topics--list"><div class="safe-related-topics--subgroup"><li class="safe-related-topics--list-item"><a class="ds2-5-body-sm ds2-5-body-link js-related-research-interest" data-entity_id="446643" href="https://www.academia.edu/Documents/in/Scientific_Discovery">Scientific Discovery</a><button class="ds-pill-button ds-pill-button--small js-tc-loswp--related-topics--follow js-login-button--9a46c9ef safe-related-topics--pill"><span class="material-symbols-outlined" style="font-size: 16px" translate="no">add</span>Follow</button><script>document.addEventListener('DOMContentLoaded', () => {
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  const csrfToken = document.querySelector("[name='csrf-token']")?.content ??
+    getCookie('masked_csrf_token');
+  if (!csrfToken) {
+    throw 'click tracking disabled due to missing CSRF token (pill button)';
+  }
+
+  const options = {"source":"loswp--related-topics--follow","bucket":"outline","entity_id":4530410,"extra":{"source_work_id":4530410}};
+  const button = document.querySelector('.js-tc-loswp--related-topics--follow');
+  button.addEventListener('click', () => {
+    fetch('/v0/clicks?subdomain_param=api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken,
+      },
+      keepalive: true,
+      mode: 'same-origin',
+      body: JSON.stringify({
+        ...options,
+        occurred_at: new Date(),
+        hit_id: window.Aedu?.hit_data?.id,
+      }),
+    });
+  });
+});</script><script>document.addEventListener('DOMContentLoaded', () => { const loginButton = document.querySelector('.js-login-button--9a46c9ef'); if (!loginButton) { throw new Error('Login button not found'); } const options = { detail: {"postLoginRedirectUrl":"https://www.academia.edu/Documents/in/Scientific_Discovery","clickTrackingContext":{"source":"loswp--related-topics--follow","bucket":"outline","entity_id":4530410,"extra":{"source_work_id":4530410}},"configuredText":{"buttonsPage":{"header":"Follow topics to stay up-to-date"},"emailEntryPage":{"subheader":"Sign up or log in to follow this topic."},"emailLoginPage":{"subheader":"Log in to follow this topic."},"emailRegistrationPage":{"subheader":"Sign up to follow this topic."}},"registrationParams":{"user_source":"download","doc_id":49802974}} }; loginButton.addEventListener('click', () => { document.dispatchEvent(new CustomEvent('open-login-modal', options)); }); });</script></li></div><div class="safe-related-topics--subgroup"><li class="safe-related-topics--list-item"><a class="ds2-5-body-sm ds2-5-body-link js-related-research-interest" data-entity_id="637006" href="https://www.academia.edu/Documents/in/American_Scientist">American Scientist</a><button class="ds-pill-button ds-pill-button--small js-tc-loswp--related-topics--follow js-login-button--4ea61abb safe-related-topics--pill"><span class="material-symbols-outlined" style="font-size: 16px" translate="no">add</span>Follow</button><script>document.addEventListener('DOMContentLoaded', () => {
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  const csrfToken = document.querySelector("[name='csrf-token']")?.content ??
+    getCookie('masked_csrf_token');
+  if (!csrfToken) {
+    throw 'click tracking disabled due to missing CSRF token (pill button)';
+  }
+
+  const options = {"source":"loswp--related-topics--follow","bucket":"outline","entity_id":4530410,"extra":{"source_work_id":4530410}};
+  const button = document.querySelector('.js-tc-loswp--related-topics--follow');
+  button.addEventListener('click', () => {
+    fetch('/v0/clicks?subdomain_param=api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken,
+      },
+      keepalive: true,
+      mode: 'same-origin',
+      body: JSON.stringify({
+        ...options,
+        occurred_at: new Date(),
+        hit_id: window.Aedu?.hit_data?.id,
+      }),
+    });
+  });
+});</script><script>document.addEventListener('DOMContentLoaded', () => { const loginButton = document.querySelector('.js-login-button--4ea61abb'); if (!loginButton) { throw new Error('Login button not found'); } const options = { detail: {"postLoginRedirectUrl":"https://www.academia.edu/Documents/in/American_Scientist","clickTrackingContext":{"source":"loswp--related-topics--follow","bucket":"outline","entity_id":4530410,"extra":{"source_work_id":4530410}},"configuredText":{"buttonsPage":{"header":"Follow topics to stay up-to-date"},"emailEntryPage":{"subheader":"Sign up or log in to follow this topic."},"emailLoginPage":{"subheader":"Log in to follow this topic."},"emailRegistrationPage":{"subheader":"Sign up to follow this topic."}},"registrationParams":{"user_source":"download","doc_id":49802974}} }; loginButton.addEventListener('click', () => { document.dispatchEvent(new CustomEvent('open-login-modal', options)); }); });</script></li></div></div></div></div></div><!-- Powered by React on Rails Pro (c) ShakaCode | UNLICENSED -->
+<script type="application/json" id="js-react-on-rails-context">{"componentRegistryTimeout":5000,"railsEnv":"production","inMailer":false,"i18nLocale":"en","i18nDefaultLocale":"en","rorVersion":"16.6.0","rorPro":true,"rorProVersion":"16.6.0","href":"https://www.academia.edu/4530410/_With_Gerald_Holton_and_Edward_Jurkowitz_How_a_Scientific_Discovery_is_Made_A_Case_History_American_Scientist_84_1996_364_375","location":"/4530410/_With_Gerald_Holton_and_Edward_Jurkowitz_How_a_Scientific_Discovery_is_Made_A_Case_History_American_Scientist_84_1996_364_375","scheme":"https","host":"www.academia.edu","port":null,"pathname":"/4530410/_With_Gerald_Holton_and_Edward_Jurkowitz_How_a_Scientific_Discovery_is_Made_A_Case_History_American_Scientist_84_1996_364_375","search":null,"httpAcceptLanguage":null,"autoProps":{},"serverSide":false}</script>
+<div id="LoginModalManager-react-component-51fe5ad7-e5c9-46cc-84c1-e77f15af29d6"></div>
+<script type="application/json" class="js-react-on-rails-component" id="js-react-on-rails-component-LoginModalManager-react-component-51fe5ad7-e5c9-46cc-84c1-e77f15af29d6" data-component-name="LoginModalManager" data-dom-id="LoginModalManager-react-component-51fe5ad7-e5c9-46cc-84c1-e77f15af29d6">{}</script>
+<script>
+          typeof ReactOnRails === 'object' && ReactOnRails.reactOnRailsComponentLoaded('LoginModalManager-react-component-51fe5ad7-e5c9-46cc-84c1-e77f15af29d6');
+        </script><script>window.qualarooInitialization = {"route__controller":"single_work","route__action":"show","user_id":"auvid_MTc3OTAxNzk4MDI3MTowLjYyMDgxMjc2NTkxOTAyMTk=","premium":null,"author":null,"country":null,"is_faculty":false,"over_1_week_old":null,"account_age_in_days":null,"role":null,"is_author":null,"is_published":false,"num_works_uploaded":null,"in_ehcc":false,"in_hcc":false,"in_row":false,"premium_age_in_days":null,"num_premium_sessions":null}</script>
+
+        <div class="about-footer-container"><div class="footer-grid"><div class="links-row"><div class="text-column"><div class="academia-logo"><a href="https://www.academia.edu/"><img alt="Academia" src="//a.academia-assets.com/images/design_system/academia_logo_short_white.svg" /></a></div></div><div class="responsive-two-column-container"><div class="inner-two-column-container"><ul class="single-column"><li class="header">Explore</li><li><a href="https://www.academia.edu/documents">Papers</a></li><li><a href="https://www.academia.edu/topics">Topics</a></li></ul><ul class="single-column"><li class="header">Features</li><li><a href="https://www.academia.edu/login?post_login_redirect_url=https%3A%2F%2Fwww.academia.edu%2Fmentions">Mentions</a></li><li><a href="https://www.academia.edu/login?post_login_redirect_url=https%3A%2F%2Fwww.academia.edu%2Fanalytics">Analytics</a></li><li><a href="https://www.academia.edu/login?post_login_redirect_url=https%3A%2F%2Fwww.academia.edu%2Fresearch">PDF Packages</a></li><li><a href="https://www.academia.edu/login?post_login_redirect_url=https%3A%2F%2Fwww.academia.edu%2Fsearch%2Fadvanced">Advanced Search</a></li><li><a href="https://www.academia.edu/login?post_login_redirect_url=https%3A%2F%2Fwww.academia.edu%2Fsaved_searches">Search Alerts</a></li></ul></div><div class="inner-two-column-container"><ul class="single-column"><li class="header">Journals</li><li><a href="https://www.academia.edu/journals">Academia.edu Journals</a></li><li><a href="https://www.academia.edu/login?post_login_redirect_url=https%3A%2F%2Fwww.academia.edu%2Fjournals%2Fsubmissions">My submissions</a></li><li><a href="https://www.academia.edu/login?post_login_redirect_url=https%3A%2F%2Fwww.academia.edu%2Fjournals%2Fsubmissions%23reviewer%2Finvitations">Reviewer Hub</a></li><li><a href="https://www.academia.edu/journals/about/why-publish-with-us">Why publish with us</a></li><li><a href="https://www.academia.edu/journals/about/testimonials">Testimonials</a></li></ul><ul class="single-column"><li class="header">Company</li><li><a href="https://www.academia.edu/about">About</a></li><li><a href="https://www.academia.edu/hiring">Careers</a></li><li><a href="https://www.academia.edu/press">Press</a></li><li><a href="https://support.academia.edu/hc/en-us">Help Center</a></li><li><a href="https://www.academia.edu/terms">Terms</a></li><li><a href="https://www.academia.edu/privacy">Privacy</a></li><li><a href="https://www.academia.edu/copyright">Copyright</a></li><li><a href="https://www.academia.edu/content_policy">Content Policy</a></li></ul></div></div></div><div class="subfooter-row"><div class="academia-logo"><a href="https://www.academia.edu/"><img alt="Academia" src="//a.academia-assets.com/images/design_system/academia_logo_white.svg" /></a></div><div class="text"><div>580 California St., Suite 400</div><div>San Francisco, CA, 94104</div></div><div class="text"><div><a href="https://www.academia.edu/copyright">© 2026 Academia. All rights reserved</a></div></div></div></div></div>
+
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fd257c86e63c5e4',t:'MTc3OTAxNzk4MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+  </html>

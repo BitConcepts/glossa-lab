@@ -1,0 +1,27 @@
+{
+  "document_id": "farmer_sproat_witzel_2004",
+  "title": "The Collapse of the Indus-Script Thesis: The Myth of a Literate Harappan Civilization",
+  "authors": [
+    "Farmer S",
+    "Sproat R",
+    "Witzel M"
+  ],
+  "year": 2004,
+  "journal": "Electronic Journal of Vedic Studies",
+  "doi": null,
+  "arxiv": null,
+  "license_status": "open_access_ejvs",
+  "access_type": "open_access",
+  "source_url": "https://www.academia.edu/4530410/The_Collapse_of_the_Indus-Script_Thesis_The_Myth_of_a_Literate_Harappan_Civilization",
+  "stored_path_raw": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\glossa-indus\\raw\\papers\\farmer_sproat_witzel_2004_nonlinguistic.pdf",
+  "checksum_sha256": "92c9677d5273161c3090bec859f04187ffa7a98fba960411126352519ae8672b",
+  "intake_date": "2026-05-17T11:39:43.188045",
+  "relevance": "core_critique",
+  "notes": "The main non-linguistic hypothesis paper. Must be registered as hypothesis stub.",
+  "metadata_only": false,
+  "claim_extraction_status": "pending",
+  "_citation": {
+    "system": "Glossa-Lab Indus Evidence Graph Batch 3",
+    "note": "Literature sweep 2026-05-17"
+  }
+}

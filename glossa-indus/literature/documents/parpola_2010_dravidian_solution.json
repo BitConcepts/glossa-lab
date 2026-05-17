@@ -1,0 +1,25 @@
+{
+  "document_id": "parpola_2010_dravidian_solution",
+  "title": "A Dravidian solution to the Indus script problem",
+  "authors": [
+    "Parpola A"
+  ],
+  "year": 2010,
+  "journal": "World Classical Tamil Conference keynote",
+  "doi": null,
+  "arxiv": null,
+  "license_status": "institutional_repository",
+  "access_type": "open_access",
+  "source_url": "https://tuhat.helsinki.fi/ws/portalfiles/portal/127256525/Parpola_A_2010._A_Dravidian_solution_to_the_Indus_script_problem.pdf",
+  "stored_path_raw": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\glossa-indus\\raw\\papers\\parpola_2010_dravidian_solution.pdf",
+  "checksum_sha256": "c58137e54cdde3f2acdcfaf05293dfc5f5ba33def3e0b12585c451f76bd4ba84",
+  "intake_date": "2026-05-17T11:39:38.957059",
+  "relevance": "core_decipherment_hypothesis",
+  "notes": "Parpola's accessible summary of the Dravidian hypothesis; rebus principle; fish sign",
+  "metadata_only": false,
+  "claim_extraction_status": "pending",
+  "_citation": {
+    "system": "Glossa-Lab Indus Evidence Graph Batch 3",
+    "note": "Literature sweep 2026-05-17"
+  }
+}

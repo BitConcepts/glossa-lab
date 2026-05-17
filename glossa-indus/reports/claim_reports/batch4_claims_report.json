@@ -1,0 +1,53 @@
+{
+  "batch_id": "BATCH4-CLAIMS-20260517",
+  "timestamp": "2026-05-17T11:40:22.480436",
+  "total_documents": 9,
+  "total_claims": 7,
+  "results": [
+    {
+      "doc_id": "farmer_sproat_witzel_2004",
+      "status": "extracted",
+      "n_claims": 1
+    },
+    {
+      "doc_id": "mahadevan_2009_signs",
+      "status": "no_claims",
+      "text_available": false
+    },
+    {
+      "doc_id": "parpola_2010_dravidian_solution",
+      "status": "extracted",
+      "n_claims": 2
+    },
+    {
+      "doc_id": "rao_2009_pnas_markov",
+      "status": "no_claims",
+      "text_available": false
+    },
+    {
+      "doc_id": "rao_2009_science_entropic",
+      "status": "no_claims",
+      "text_available": false
+    },
+    {
+      "doc_id": "rao_2010_coli_entropy",
+      "status": "no_claims",
+      "text_available": false
+    },
+    {
+      "doc_id": "sinha_2010_network_arxiv",
+      "status": "no_claims",
+      "text_available": false
+    },
+    {
+      "doc_id": "yadav_2009_arxiv",
+      "status": "extracted",
+      "n_claims": 2
+    },
+    {
+      "doc_id": "yadav_2010_ngrams",
+      "status": "extracted",
+      "n_claims": 2
+    }
+  ]
+}

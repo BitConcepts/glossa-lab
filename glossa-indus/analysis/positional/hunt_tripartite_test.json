@@ -1,0 +1,22 @@
+{
+  "test": "hunt_tripartite_grammar",
+  "hunt_prediction": "Prefix(faunal/initial) + Medial(action/domain) + Suffix(celestial/terminal)",
+  "glossa_lab_note": "Cannot directly classify faunal/celestial without visual catalog crosswalk",
+  "structural_test": {
+    "initial_strong_signs": 40,
+    "terminal_strong_signs": 20,
+    "medial_strong_signs": 61,
+    "mean_i_rate_of_initial_signs": 0.757,
+    "mean_t_rate_of_terminal_signs": 0.805,
+    "expected_i_by_chance": 0.251,
+    "lift_above_chance": 3.01
+  },
+  "formula_test": {
+    "inscriptions_with_imit_structure": 805,
+    "total_inscriptions_len3plus": 2267,
+    "formula_rate": 0.355,
+    "null_expected_rate": 0.006,
+    "lift_above_null": 59.09
+  },
+  "verdict": "STRUCTURAL PREFIX-MEDIAL-SUFFIX PATTERN EXISTS (lift > 2x null). Consistent with BOTH Hunt model and Dravidian suffix model. Cannot distinguish between them without visual sign classification."
+}

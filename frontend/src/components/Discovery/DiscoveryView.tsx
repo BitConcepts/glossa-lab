@@ -18,6 +18,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   getDiscoveryStats,
+  intakeSweepCandidate,
   listDiscoveryItems,
   listDiscoverySources,
   listDiscoveryTopics,
@@ -79,11 +80,18 @@ function stripTags(s: string): string {
 interface CardProps {
   item: DiscoveryItem;
   onStatus: (id: string, status: string) => Promise<void>;
+  onImportToEvidence?: (item: DiscoveryItem) => Promise<void>;
 }
 
-function ItemCard({ item, onStatus }: CardProps) {
+function ItemCard({ item, onStatus, onImportToEvidence }: CardProps) {
   const { openChat } = useAIChat();
   const [busy, setBusy] = useState<string | null>(null);
+  const [evidenceBusy, setEvidenceBusy] = useState(false);
+
+  // Check if this item is Indus-related
+  const isIndus = (item.topic || "").toLowerCase().includes("indus") ||
+    (item.title || "").toLowerCase().includes("indus") ||
+    (item.title || "").toLowerCase().includes("harappan");
 
   const kc = KIND_COLORS[item.kind] ?? KIND_COLORS.other;
   const sc = STATUS_COLORS[item.status] ?? STATUS_COLORS.new;
@@ -217,6 +225,21 @@ function ItemCard({ item, onStatus }: CardProps) {
           <button onClick={sendToAI} style={btnSecondary} title="Discuss this item with Glossa AI">
             ✨ Send to AI
           </button>
+          {isIndus && onImportToEvidence && (
+            <button
+              onClick={async () => {
+                setEvidenceBusy(true);
+                try { await onImportToEvidence(item); }
+                finally { setEvidenceBusy(false); }
+              }}
+              disabled={evidenceBusy}
+              title="Import to Evidence Graph library"
+              style={{ ...btnSecondary, color: "#7c3aed", borderColor: "#7c3aed66",
+                opacity: evidenceBusy ? 0.5 : 1 }}
+            >
+              {evidenceBusy ? "…" : "🗂 → Evidence"}
+            </button>
+          )}
           <span style={{ flex: 1 }} />
           <button onClick={() => void setStatus("saved")} disabled={busy !== null}
             style={{ ...btnSecondary, color: "#15803d", borderColor: "#86efac" }}
@@ -637,7 +660,23 @@ export function DiscoveryView() {
 
       {/* Card list */}
       <div style={{ display: "grid", gap: 10, gridTemplateColumns: "repeat(auto-fill, minmax(380px, 1fr))" }}>
-        {visible.map((it) => <ItemCard key={it.id} item={it} onStatus={onStatus} />)}
+        {visible.map((it) => (
+          <ItemCard key={it.id} item={it} onStatus={onStatus}
+            onImportToEvidence={async (item) => {
+              try {
+                const r = await intakeSweepCandidate({
+                  url: item.url,
+                  title: item.title,
+                  doi: (item.raw_json as Record<string, string>)?.doi || "",
+                  source: item.source,
+                });
+                toast(r.message || "Queued for evidence intake", "success");
+              } catch (e) {
+                toast(e instanceof Error ? e.message : "Import failed", "error");
+              }
+            }}
+          />
+        ))}
       </div>
     </div>
   );

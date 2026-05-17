@@ -38,12 +38,9 @@ _ANCHORS = _REPO / "backend/reports/INDUS_FINAL_ANCHORS.json"
 
 
 def _get_device() -> str:
-    """Return CUDA device string if available, else 'cpu'."""
-    try:
-        import torch  # noqa: PLC0415
-        return "cuda" if torch.cuda.is_available() else "cpu"
-    except ImportError:
-        return "cpu"
+    """Return best available compute device; see glossa_lab.gpu_utils for behaviour."""
+    from glossa_lab.gpu_utils import detect_device  # noqa: PLC0415
+    return detect_device()
 
 
 def _run_phase_script(script_name: str) -> dict[str, Any]:

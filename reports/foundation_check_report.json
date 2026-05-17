@@ -1,5 +1,5 @@
 {
-  "n_ok": 33,
+  "n_ok": 41,
   "n_fail": 0,
   "n_warn": 6,
   "passed": [
@@ -9,7 +9,7 @@
     "[OK]   Holdat M-prefix signs: all sign IDs are M-prefixed",
     "[OK]   Holdat M-number range: M1-M416",
     "[OK]   Holdat position order: 0 seals with out-of-order positions",
-    "[OK]   Anchor count: 149 total",
+    "[OK]   Anchor count: 163 total",
     "[OK]   Core HIGH anchors >= 7: HIGH=37 (core=7, Phase-48 promoted 30 more)",
     "[OK]   UNCERTAIN count: UNCERTAIN=1 (M267)",
     "[OK]   HIGH anchor M342=ay: reading='ay/\u0101' conf=HIGH",
@@ -35,7 +35,15 @@
     "[OK]   Phase-47 rebus LM lift >= 3.0: lift=3.19x (rebus phoneme sequence under 944-LM)",
     "[OK]   Syllabic LM present: 5630 syllables, 31681 bigrams",
     "[OK]   Phase-52 constrained SA z >= 4: z=16.02 (59 anchors pinned)",
-    "[OK]   GPU CUDA available: NVIDIA GeForce RTX 4070 SUPER"
+    "[OK]   GPU CUDA available: NVIDIA GeForce RTX 4070 SUPER",
+    "[OK]   Phase-56 new MEDIUM anchors > 0: 14 added, 4 upgraded via EXTENDED_PARPOLA_MAP",
+    "[OK]   Phase-56 MEDIUM anchor count >= 40: after_medium=49 (expanded from ~36 at Phase-52)",
+    "[OK]   Phase-57 expanded SA z >= 15: z=19.07 (53 anchors pinned \u2014 improved from z=16.01 at Phase-52)",
+    "[OK]   Phase-58 phonotactic verdict VALID: verdict=VALID, 0 violations, 16 distinct initials",
+    "[OK]   Phase-58 distinct initials >= 10: 16 distinct initial phonemes (expected >=10 for plausible syllabary)",
+    "[OK]   Phase-59 pilot readings >= 10 formulas: 22 formulas >=80% decoded from top-50 (expected >=10)",
+    "[OK]   Phase-61 verdict VALID or MOSTLY_VALID: verdict=MOSTLY_VALID (violation_rate=12%)",
+    "[OK]   Phase-61 sequence vowel harmony >= 85%: 94.0% of inscriptions pass vowel harmony (expected >=85%)"
   ],
   "failed": [],
   "warnings": [
@@ -126,6 +134,31 @@
       "claim": "Phase-53 16 formulas decoded",
       "detail": "tiru-il-ay-an-kol and 15 others >=80% decoded",
       "status": "VERIFIED \u2014 pilot readings with morphological annotation"
+    },
+    {
+      "claim": "Phase-56 expanded Parpola crosswalk",
+      "detail": "14 new MEDIUM anchors added; 75-entry EXTENDED_PARPOLA_MAP; total anchors 163",
+      "status": "VERIFIED \u2014 Parpola 1994/2010 sources cross-referenced with DEDR"
+    },
+    {
+      "claim": "Phase-57 z=19.07 (best SA result)",
+      "detail": "53 pinned anchors; z=19.07 > Phase-52 z=16.01; 5-seed consensus",
+      "status": "VERIFIED \u2014 highest z-score in the project"
+    },
+    {
+      "claim": "Phase-58 phonotactic VALID",
+      "detail": "0 violations in HIGH/MEDIUM set; 16 distinct initials; max phoneme share 24.7% (<30%)",
+      "status": "VERIFIED \u2014 Krishnamurti 2003 Dravidian phonotactic rules"
+    },
+    {
+      "claim": "Phase-59 22 formulas decoded",
+      "detail": "22 formulas >=80% decoded incl. tiru-il-ay-an-kol-vil, \u0113\u1e37-tu, p\u0101r-kol",
+      "status": "VERIFIED \u2014 pilot readings with morphological annotation and per-slot confidence"
+    },
+    {
+      "claim": "Phase-61 94% vowel harmony",
+      "detail": "94% of inscriptions (500-seal sample) pass Dravidian vowel harmony constraint",
+      "status": "VERIFIED \u2014 consistent with Dravidian hypothesis"
     }
   ],
   "caveated_claims": [
@@ -173,6 +206,16 @@
       "claim": "Phase-55 ensemble",
       "detail": "Token granularity mismatch prevents reliable consensus",
       "status": "DO NOT CLAIM \u2014 needs normalization fix"
+    },
+    {
+      "claim": "Phase-61 12% initial-consonant violation rate",
+      "detail": "47/390 SA-assigned readings use voiced stops (g/b/d) as initials; invalid in Proto-Dravidian. SA-only readings not phonotactically filtered \u2014 HIGH/MEDIUM set has 0 violations.",
+      "status": "NEEDS CAVEAT \u2014 SA proposals only; HIGH+MEDIUM readings are phonotactically clean"
+    },
+    {
+      "claim": "Phase-60 P-number mining: 0 new readings",
+      "detail": "Pattern matching found no P-number readings in 10 contact-zone publications \u2014 likely OCR noise or paywall-protected texts. High-density passages scored but no pattern match.",
+      "status": "NEEDS INVESTIGATION \u2014 does not invalidate other Phase-56-61 results"
     }
   ],
   "verdict": "READY WITH CAVEATS",

@@ -2478,6 +2478,16 @@ except Exception as _p4855_exc:  # noqa: BLE001
     logger.warning("Phase-48-55 decipherment nodes not registered: %s", _p4855_exc)
 
 
+# ── Phase-56-61 nodes (expanded Parpola, phonotactic falsification — GPU mandatory) ──
+try:
+    from glossa_lab.experiment_graph_phase56_61 import _phase56_61_node_defs as _p5661_defs  # noqa: PLC0415
+    for _d in _p5661_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-56-61 decipherment nodes (GPU mandatory)", len(list(_p5661_defs())))
+except Exception as _p5661_exc:  # noqa: BLE001
+    logger.warning("Phase-56-61 decipherment nodes not registered: %s", _p5661_exc)
+
+
 # ── Graph execution
 
 def _topo_sort(nodes: list[dict], edges: list[dict]) -> list[dict]:

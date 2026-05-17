@@ -310,3 +310,68 @@
 | Playwright — evidence graph | ✅ 39 tests | All 3 tabs, all features |
 | Playwright — backend integration (Evidence Graph API) | ✅ 14 tests | All endpoints |
 | CI/CD — GitHub Actions | ✅ 3-job workflow | push + PR |
+
+---
+
+## R17 — Experiment Registration Gate (H23 — MANDATORY)
+
+> Last updated: 2026-05-17
+> Enforces the 5-step gate from AGENTS.md H23. These requirements apply to every
+> new research phase script added to `backend/scripts/phase*.py`.
+
+### R17.1 — Script requirements
+- EXP-S1: Every `backend/scripts/phase*.py` MUST import `torch`, detect `torch.cuda.is_available()`, and expose GPU device in its JSON output.
+- EXP-S2: Every script MUST write a JSON report to `reports/` with a `_citation` key and `gpu_device` field.
+- EXP-S3: Scripts that run SA MUST use `BigramScorer` from `glossa_lab.pipelines.decipher`.
+
+### R17.2 — Graph node module requirements
+- EXP-G1: Every new phase group MUST have a corresponding `backend/glossa_lab/experiment_graph_phaseNN_MM.py` module created BEFORE the scripts are run.
+- EXP-G2: The module MUST use a lazy `from glossa_lab.experiment_graph import AtomicNodeDef` inside the `_node_defs()` factory function to avoid circular imports.
+- EXP-G3: Every node MUST declare `gpu_device` as a text output port.
+- EXP-G4: All nodes MUST use category `"Indus Decipherment"` or an approved sub-category.
+- EXP-G5: The `_run_phase_script()` helper MUST use `subprocess.run` with a 900s timeout.
+
+### R17.3 — Registration in experiment_graph.py
+- EXP-R1: The `_phaseNN_MM_node_defs()` factory MUST be imported in `experiment_graph.py` via a try/except block matching the existing Phase-14/15/20 pattern.
+- EXP-R2: Registration MUST be verified by running `python -c "from glossa_lab.experiment_graph_phaseNN_MM import _phaseNN_MM_node_defs; print(len(_phaseNN_MM_node_defs()), 'nodes')"` and confirming N > 0 nodes printed with no error.
+- EXP-R3: The ATOMIC_NODES dict MUST contain the new node IDs after module load.
+
+### R17.4 — Phase execution order
+- EXP-O1: The 5-step gate order is MANDATORY: (1) write script, (2) create graph module, (3) register in experiment_graph.py, (4) verify registration, (5) run script.
+- EXP-O2: Running a phase script before completing Steps 2-4 is a violation of R17 and H23.
+- EXP-O3: The Foundation Check (`foundation_check.py`) MUST be run after every phase that modifies INDUS_FINAL_ANCHORS.json or adds new phase result files.
+
+### R17.5 — Indus Decipherment pipeline phases (Phase-44–61)
+- EXP-P1: All Phase-44 through Phase-61 research scripts have been registered as `AtomicNodeDef` nodes in the `Indus Decipherment` category.
+- EXP-P2: Phase-48-55 nodes registered in `experiment_graph_phase48_55.py` (8 nodes).
+- EXP-P3: Phase-56-61 nodes MUST be registered in `experiment_graph_phase56_61.py` (6 nodes) before those scripts run.
+- EXP-P4: The syllabic LM (`dravidian_syllabic_lm.json`) MUST exist before Phase-52/57 SA nodes are invoked.
+
+---
+
+## R18 — GPU Enforcement (H20)
+
+> Last updated: 2026-05-17
+
+- GPU-1: All Indus Decipherment atomic nodes MUST call `_get_device()` returning `"cuda"` or `"cpu"`.
+- GPU-2: All SA-based phase scripts MUST use `BigramScorer` from `glossa_lab.pipelines.decipher` which auto-selects CUDA.
+- GPU-3: The `gpu_device` field MUST appear in every JSON report written by a phase script.
+- GPU-4: Foundation Check `CHECK NEW-G` MUST pass (`GPU CUDA available: <device name>`).
+- GPU-5: CPU-only fallback is acceptable but MUST print a warning; silent CPU fallback is forbidden.
+
+---
+
+## R19 — Foundation Check (H21)
+
+> Last updated: 2026-05-17
+
+- FC-1: `backend/scripts/foundation_check.py` MUST be run and pass (0 failures) after any phase that:
+  - Modifies `backend/reports/INDUS_FINAL_ANCHORS.json`
+  - Updates any `dravidian_*.json` language model
+  - Adds new `phase*.json` result files to `reports/`
+  - Promotes anchor confidence (MEDIUM→HIGH or LOW→MEDIUM)
+- FC-2: The Foundation Check MUST include a CHECK for every new phase's key metric (z-score, concordance, coverage %).
+- FC-3: Checks NEW-A through NEW-G (Phase-44 through Phase-52 results) MUST all pass.
+- FC-4: Foundation Check MUST show `RESULT: N checks passed, 0 failed` before any commit involving phase results.
+- FC-5: The check for HIGH anchor count MUST use `>= 7` not `== 7` to accommodate Phase-48 promotions.
+

@@ -630,3 +630,91 @@ The architecture must support:
 * hypothesis testing for phonetic value assignments to undeciphered signs
 
 The current design should not block these capabilities.
+
+---
+
+## Indus Script Decipherment Pipeline (Phase-44–61)
+
+> Added: 2026-05-17
+
+### Overview
+
+The decipherment pipeline is a multi-phase research workflow running on GPU (CUDA).
+All phases are registered as atomic `AtomicNodeDef` nodes in the Experiment Builder
+under the `Indus Decipherment` category.
+
+```text
+[Holdat Corpus V3] ──→ [Anchor Set]   ──→ [Syllabic LM]  ──→ [Constrained SA]
+ 1,670 seals          INDUS_FINAL_ANCHORS  dravidian_        z=16+ with 59+ pins
+ 7,002 tokens          .json               syllabic_lm.json
+
+[Parpola Crosswalk] ──→ [DEDR Catalogue] ──→ [Phoneme Assignment] ──→ [Pilot Readings]
+ P→M mapping            Sign depiction       Rebus principle          50 formulas decoded
+ 45 entries             → DEDR word          3.19x LM lift            16 ≥80% decoded
+
+[Contact Zone]      ──→ [Publication Mining] ──→ [Falsification Battery]
+ CDLI Meluhha            P-number patterns       Phonotactic constraints
+ 1,462 tablets           Parpola 1994/2010       Dravidian grammar rules
+```
+
+### Phase Registry (Phase-44 through Phase-61)
+
+| Phase | Script | Graph Module | Node ID | Key Output |
+|-------|--------|--------------|---------|------------|
+| 44-T3 | `phase44_t3_v3_sa_300k.py` | `experiment_graph_phase48_55.py` | (legacy) | Dravidian 3.13x |
+| 48 | `phase48_medium_validation.py` | `experiment_graph_phase48_55.py` | `IndusMediumValidator` | 37 HIGH anchors |
+| 49 | `phase49_syllabic_lm.py` | `experiment_graph_phase48_55.py` | `IndusSyllabicLMBuilder` | 5,630 syllables |
+| 50 | `phase50_dedr_sign_catalogue.py` | `experiment_graph_phase48_55.py` | `IndusDEDRCatalogue` | 19 candidates |
+| 51 | `phase51_parpola_crosswalk.py` | `experiment_graph_phase48_55.py` | `IndusParpolaImporter` | 149 anchors total |
+| 52 | `phase52_syllabic_sa.py` | `experiment_graph_phase48_55.py` | `IndusConstrainedSA` | z=16.01 |
+| 53 | `phase53_formula_pilot.py` | `experiment_graph_phase48_55.py` | `IndusFormulaPilot` | 16 formulas decoded |
+| 54 | `phase54_falsification.py` | `experiment_graph_phase48_55.py` | `IndusFalsificationBattery` | 43% support |
+| 55 | `phase55_ensemble.py` | `experiment_graph_phase48_55.py` | `IndusEnsembleDecipher` | 4-LM ensemble |
+| 56 | `phase56_parpola_expansion.py` | `experiment_graph_phase56_61.py` (PENDING) | `IndusParpola56Expansion` | Extended P→M |
+| 57 | `phase57_expanded_sa.py` | `experiment_graph_phase56_61.py` (PENDING) | `IndusExpandedSA` | z>20 expected |
+| 58 | `phase58_phonological_gap.py` | `experiment_graph_phase56_61.py` (PENDING) | `IndusPhonologicalGap` | Phonotactic validity |
+| 59 | `phase59_pilot_readings.py` | `experiment_graph_phase56_61.py` (PENDING) | `IndusFormulaPilot59` | Full pilot translations |
+| 60 | `phase60_contact_deep.py` | `experiment_graph_phase56_61.py` (PENDING) | `IndusContactDeep` | P-number mining |
+| 61 | `phase61_phonotactic.py` | `experiment_graph_phase56_61.py` (PENDING) | `IndusPhonotactic` | Falsification battery |
+
+**PENDING**: Phase-56-61 graph module `experiment_graph_phase56_61.py` must be created
+and registered before those scripts run (H23 requirement).
+
+### Mandatory Registration Pattern
+
+Every phase group follows this two-layer architecture:
+
+```
+Layer 1: backend/scripts/phaseNN_name.py
+         ├── imports torch, detects GPU
+         ├── runs analysis
+         └── writes reports/phaseNN_name.json
+
+Layer 2: backend/glossa_lab/experiment_graph_phaseNN_MM.py
+         ├── _get_device() helper
+         ├── _run_phase_script(script_name) helper
+         ├── def _phaseNN_fn(inputs, params) -> dict  [calls Layer 1]
+         └── def _phaseNN_MM_node_defs() -> list[AtomicNodeDef]
+                  └── lazy import: from glossa_lab.experiment_graph import AtomicNodeDef
+
+Registered in experiment_graph.py:
+         try:
+             from glossa_lab.experiment_graph_phaseNN_MM import _phaseNN_MM_node_defs
+             for _d in _phaseNN_MM_node_defs():
+                 ATOMIC_NODES[_d.id] = _d
+         except Exception as exc:
+             logger.warning("Phase-NN-MM nodes not registered: %s", exc)
+```
+
+### Key Data Assets
+
+| Asset | Path | Purpose |
+|-------|------|---------|
+| Holdat Corpus | `corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv` | Primary corpus (1,670 seals) |
+| Anchor Set | `backend/reports/INDUS_FINAL_ANCHORS.json` | Canonical sign readings (149 total) |
+| Tamil Char LM | `backend/glossa_lab/data/dravidian_tamil_lm.json` | 944-bigram char LM |
+| Tamil Syllabic LM | `backend/glossa_lab/data/dravidian_syllabic_lm.json` | 31,681-bigram syllabic LM |
+| Contact Zone | `corpora/downloads/contact_zone/` | Gulf/Mesopotamia corpus + publications |
+| DEDR | `reports/jambu-dedr/data/dedr/dedr_new.csv` | Dravidian etymology dictionary |
+| Parpola Crosswalk | `reports/phase51_parpola_crosswalk.json` | P→M sign number mapping |
+

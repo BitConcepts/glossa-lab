@@ -1,0 +1,28 @@
+{
+  "document_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
+  "original_filename": "The Archaeology and Epigraphy of Indus Writing.pdf",
+  "stored_path_raw": "glossa-indus\\raw\\user_uploads\\The Archaeology and Epigraphy of Indus Writing.pdf",
+  "stored_path_text": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\glossa-indus\\processed\\cleaned_text\\the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+  "file_type": ".pdf",
+  "file_size_bytes": 8357942,
+  "checksum_sha256": "27f45a680c021d75bc757fecb948e63ddc1bbcc5af5cd9130369a959d857fedc",
+  "intake_date": "2026-05-17T16:30:06.532709",
+  "license_status": "unclear",
+  "access_type": "user_uploaded",
+  "ocr_required": false,
+  "ocr_status": "not_needed",
+  "duplicate_status": "unique",
+  "processing_status": "registered",
+  "detected_title": "The Archaeology and Epigraphy of Indus Writing",
+  "detected_authors": [],
+  "detected_year": null,
+  "detected_doi": null,
+  "detected_abstract": "",
+  "claim_extraction_status": "pending",
+  "hypothesis_relevance": null,
+  "_citation": {
+    "system": "Glossa-Lab Indus Evidence Graph",
+    "intake_version": "1.0",
+    "note": "User-provided or acquired document. License status must be verified before publication use."
+  }
+}

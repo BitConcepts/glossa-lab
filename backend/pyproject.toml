@@ -8,7 +8,8 @@ version = "0.1.0"
 description = "Backend service for Glossa Lab — agentic research lab for language and script analysis"
 requires-python = ">=3.11"
 dependencies = [
-    "python-multipart>=0.0.9",\n    "fastapi>=0.115,<1",
+    "python-multipart>=0.0.9",
+    "fastapi>=0.115,<1",
     "uvicorn[standard]>=0.34,<1",
     "python-json-logger>=3,<4",
     "aiosqlite>=0.20,<1",

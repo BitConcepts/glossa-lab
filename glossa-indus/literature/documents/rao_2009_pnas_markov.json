@@ -1,0 +1,30 @@
+{
+  "document_id": "rao_2009_pnas_markov",
+  "title": "A Markov model of the Indus script",
+  "authors": [
+    "Rao RPN",
+    "Yadav N",
+    "Vahia MN",
+    "Joglekar H",
+    "Adhikari R",
+    "Mahadevan I"
+  ],
+  "year": 2009,
+  "journal": "PNAS",
+  "doi": "10.1073/pnas.0906237106",
+  "arxiv": null,
+  "license_status": "open_access_pnas",
+  "access_type": "open_access",
+  "source_url": "https://www.pnas.org/doi/pdf/10.1073/pnas.0906237106",
+  "stored_path_raw": null,
+  "checksum_sha256": null,
+  "intake_date": "2026-05-17T11:39:34.495453",
+  "relevance": "core_computational",
+  "notes": "Markov model; contact-zone inscriptions; sign restoration",
+  "metadata_only": false,
+  "claim_extraction_status": "pending",
+  "_citation": {
+    "system": "Glossa-Lab Indus Evidence Graph Batch 3",
+    "note": "Literature sweep 2026-05-17"
+  }
+}

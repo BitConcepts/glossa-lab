@@ -1,0 +1,28 @@
+{
+  "document_id": "sinha_2010_network_arxiv",
+  "title": "Network analysis of a corpus of undeciphered Indus civilization inscriptions indicates syntactic organization",
+  "authors": [
+    "Sinha S",
+    "Ashraf MI",
+    "Pan RK",
+    "Wells BK"
+  ],
+  "year": 2010,
+  "journal": "Computer Speech and Language",
+  "doi": "10.1016/j.csl.2010.05.007",
+  "arxiv": "1005.4997",
+  "license_status": "arXiv (non-exclusive)",
+  "access_type": "open_access",
+  "source_url": "https://arxiv.org/pdf/1005.4997",
+  "stored_path_raw": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\glossa-indus\\raw\\papers\\sinha_2010_network_arxiv.pdf",
+  "checksum_sha256": "7e87136c1915a3940a44cb91b994bb60b8f7d94cf75fb628e7c2a2a00589a17e",
+  "intake_date": "2026-05-17T11:39:40.671089",
+  "relevance": "core_computational",
+  "notes": "Complex network analysis; syntactic structure; Wells corpus; recursive segmentation",
+  "metadata_only": false,
+  "claim_extraction_status": "pending",
+  "_citation": {
+    "system": "Glossa-Lab Indus Evidence Graph Batch 3",
+    "note": "Literature sweep 2026-05-17"
+  }
+}

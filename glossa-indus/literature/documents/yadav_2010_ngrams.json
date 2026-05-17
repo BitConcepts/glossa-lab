@@ -1,0 +1,30 @@
+{
+  "document_id": "yadav_2010_ngrams",
+  "title": "Statistical Analysis of the Indus Script Using n-Grams",
+  "authors": [
+    "Yadav N",
+    "Joglekar H",
+    "Rao RPN",
+    "Vahia MN",
+    "Adhikari R",
+    "Mahadevan I"
+  ],
+  "year": 2010,
+  "journal": "PLoS ONE",
+  "doi": "10.1371/journal.pone.0009506",
+  "arxiv": null,
+  "license_status": "CC BY 4.0",
+  "access_type": "open_access",
+  "source_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0009506&type=printable",
+  "stored_path_raw": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\glossa-indus\\raw\\papers\\yadav_2010_ngrams_plosone.pdf",
+  "checksum_sha256": "b3e79817db04dfd86897604ba7776cf0c5c1200341f30fc3dd91722e07e76eb6",
+  "intake_date": "2026-05-17T11:39:30.645963",
+  "relevance": "core_computational",
+  "notes": "n-gram analysis of Indus script; EBUDS corpus; bigram model",
+  "metadata_only": false,
+  "claim_extraction_status": "pending",
+  "_citation": {
+    "system": "Glossa-Lab Indus Evidence Graph Batch 3",
+    "note": "Literature sweep 2026-05-17"
+  }
+}

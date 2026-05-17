@@ -1,0 +1,204 @@
+{
+  "batch": "BATCH5-ANALYSIS",
+  "timestamp": "2026-05-17T11:40:35.460763",
+  "corpus": "Firestore supplementary (2026-05-14)",
+  "n_sequences": 3137,
+  "n_dockeys": 2665,
+  "n_signs_profiled": 201,
+  "results": {
+    "null_random_shuffle": {
+      "test": "null_random_shuffle",
+      "real_positional_entropy": 1.0223,
+      "null_mean_positional_entropy": 1.4765,
+      "null_std": 0.002,
+      "effect_size_d": 231.889,
+      "n_samples": 100,
+      "interpretation": "Real corpus positional entropy (1.0223) is 231.89\u03c3 below random shuffle null (1.4765). SIGNIFICANT structure above random baseline."
+    },
+    "null_frequency_preserved": {
+      "test": "null_frequency_preserved",
+      "top_20_real_bigrams_preserved": {
+        "(267, 99)": 0.0297,
+        "(342, 176)": 0.0191,
+        "(336, 89)": 0.013,
+        "(89, 328)": 0.0128,
+        "(48, 342)": 0.0115,
+        "(347, 342)": 0.0106,
+        "(8, 342)": 0.0095,
+        "(391, 99)": 0.0087,
+        "(342, 1)": 0.0087,
+        "(171, 59)": 0.0079
+      },
+      "null_mean_top20_matches": 0.13,
+      "n_samples": 100,
+      "interpretation": "On average 0.1/20 top bigrams appear at >50% rate in shuffled null. HIGH bigram structure above frequency baseline."
+    },
+    "null_site_preserved": {
+      "test": "null_site_preserved",
+      "sites_analysed": [
+        "mohenjo_daro",
+        "harappa",
+        "chanhu_daro"
+      ],
+      "real_cross_site_shared_bigrams": 436,
+      "null_mean_cross_site_shared": 415.5,
+      "effect_size_d": 1.58,
+      "n_samples": 50,
+      "interpretation": "Real 436 shared bigrams between mohenjo_daro and harappa. Null: 415.5 (effect_size=1.58\u03c3). WEAK cross-site recurrence above null."
+    },
+    "contact_zone": {
+      "test": "contact_zone_mohenjo_harappa",
+      "mohenjo_dockeys": 502,
+      "harappa_dockeys": 727,
+      "mohenjo_sign_types": 245,
+      "harappa_sign_types": 279,
+      "shared_signs": 197,
+      "mohenjo_only": 48,
+      "harappa_only": 82,
+      "jaccard_similarity": 0.602,
+      "harappa_exclusive_signs": [
+        {
+          "sign": 277,
+          "harappa_freq": 8,
+          "role": "TERMINAL_STRONG",
+          "hypothesis": "trade/administrative logogram"
+        },
+        {
+          "sign": 3,
+          "harappa_freq": 5,
+          "role": "MIXED",
+          "hypothesis": "unclear"
+        },
+        {
+          "sign": 38,
+          "harappa_freq": 5,
+          "role": "TERMINAL_MODERATE",
+          "hypothesis": "unclear"
+        },
+        {
+          "sign": 201,
+          "harappa_freq": 5,
+          "role": "INITIAL_STRONG",
+          "hypothesis": "trade/administrative logogram"
+        },
+        {
+          "sign": 384,
+          "harappa_freq": 5,
+          "role": "MIXED",
+          "hypothesis": "unclear"
+        },
+        {
+          "sign": 398,
+          "harappa_freq": 5,
+          "role": "INITIAL_STRONG",
+          "hypothesis": "trade/administrative logogram"
+        },
+        {
+          "sign": 217,
+          "harappa_freq": 4,
+          "role": "MIXED",
+          "hypothesis": "unclear"
+        },
+        {
+          "sign": 6,
+          "harappa_freq": 3,
+          "role": "INITIAL_STRONG",
+          "hypothesis": "trade/administrative logogram"
+        },
+        {
+          "sign": 113,
+          "harappa_freq": 3,
+          "role": "MEDIAL_STRONG",
+          "hypothesis": "unclear"
+        },
+        {
+          "sign": 30,
+          "harappa_freq": 2,
+          "role": "unknown",
+          "hypothesis": "unclear"
+        }
+      ],
+      "mohenjo_exclusive_top10": [
+        {
+          "sign": 221,
+          "freq": 3,
+          "role": "?"
+        },
+        {
+          "sign": 282,
+          "freq": 2,
+          "role": "?"
+        },
+        {
+          "sign": 183,
+          "freq": 2,
+          "role": "MEDIAL_STRONG"
+        },
+        {
+          "sign": 189,
+          "freq": 2,
+          "role": "?"
+        },
+        {
+          "sign": 223,
+          "freq": 2,
+          "role": "MIXED"
+        },
+        {
+          "sign": 107,
+          "freq": 2,
+          "role": "TERMINAL_MODERATE"
+        },
+        {
+          "sign": 240,
+          "freq": 2,
+          "role": "?"
+        },
+        {
+          "sign": 257,
+          "freq": 1,
+          "role": "?"
+        },
+        {
+          "sign": 132,
+          "freq": 1,
+          "role": "?"
+        },
+        {
+          "sign": 5,
+          "freq": 1,
+          "role": "?"
+        }
+      ],
+      "interpretation": "M\u2194H Jaccard=0.602. 82 Harappa-exclusive signs (contact zone candidates). 197 shared signs confirm same civilization script inventory."
+    },
+    "hunt_tripartite": {
+      "test": "hunt_tripartite_grammar",
+      "hunt_prediction": "Prefix(faunal/initial) + Medial(action/domain) + Suffix(celestial/terminal)",
+      "glossa_lab_note": "Cannot directly classify faunal/celestial without visual catalog crosswalk",
+      "structural_test": {
+        "initial_strong_signs": 40,
+        "terminal_strong_signs": 20,
+        "medial_strong_signs": 61,
+        "mean_i_rate_of_initial_signs": 0.757,
+        "mean_t_rate_of_terminal_signs": 0.805,
+        "expected_i_by_chance": 0.251,
+        "lift_above_chance": 3.01
+      },
+      "formula_test": {
+        "inscriptions_with_imit_structure": 805,
+        "total_inscriptions_len3plus": 2267,
+        "formula_rate": 0.355,
+        "null_expected_rate": 0.006,
+        "lift_above_null": 59.09
+      },
+      "verdict": "STRUCTURAL PREFIX-MEDIAL-SUFFIX PATTERN EXISTS (lift > 2x null). Consistent with BOTH Hunt model and Dravidian suffix model. Cannot distinguish between them without visual sign classification."
+    }
+  },
+  "_citation": {
+    "primary_sources": [
+      "I.6"
+    ],
+    "note": "Formal null model analysis; contact zone; Hunt model test"
+  }
+}

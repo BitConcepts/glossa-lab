@@ -1,0 +1,30 @@
+{
+  "document_id": "yadav_2009_arxiv",
+  "title": "Statistical analysis of the Indus script using n-grams (preprint)",
+  "authors": [
+    "Yadav N",
+    "Joglekar H",
+    "Rao RPN",
+    "Vahia MN",
+    "Mahadevan I",
+    "Adhikari R"
+  ],
+  "year": 2009,
+  "journal": null,
+  "doi": null,
+  "arxiv": "0901.3017",
+  "license_status": "arXiv (non-exclusive)",
+  "access_type": "open_access",
+  "source_url": "https://arxiv.org/pdf/0901.3017",
+  "stored_path_raw": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\glossa-indus\\raw\\papers\\yadav_2009_ngrams_arxiv.pdf",
+  "checksum_sha256": "6043d62916daa7c26aca1658698cde6ccf297c315e381de6f0ccc5f3bcfe0548",
+  "intake_date": "2026-05-17T11:39:32.344325",
+  "relevance": "core_computational",
+  "notes": "arXiv preprint of PLoS ONE paper",
+  "metadata_only": false,
+  "claim_extraction_status": "pending",
+  "_citation": {
+    "system": "Glossa-Lab Indus Evidence Graph Batch 3",
+    "note": "Literature sweep 2026-05-17"
+  }
+}

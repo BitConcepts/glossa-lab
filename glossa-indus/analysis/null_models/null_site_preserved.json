@@ -1,0 +1,13 @@
+{
+  "test": "null_site_preserved",
+  "sites_analysed": [
+    "mohenjo_daro",
+    "harappa",
+    "chanhu_daro"
+  ],
+  "real_cross_site_shared_bigrams": 436,
+  "null_mean_cross_site_shared": 415.5,
+  "effect_size_d": 1.58,
+  "n_samples": 50,
+  "interpretation": "Real 436 shared bigrams between mohenjo_daro and harappa. Null: 415.5 (effect_size=1.58\u03c3). WEAK cross-site recurrence above null."
+}

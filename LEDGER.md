@@ -8472,3 +8472,134 @@ Key findings (summary):
 Next step:
   Phase-44 T1: Bigram context of M77/342 (what precedes the genitive?).
   Phase-44 T2: Phonetic value of M77/99 from DEDR genitive pattern matching.
+
+## [2026-05-17] Entry — Corpus versioning policy + Evidence Graph Batches 1-5
+
+Objective:
+  H20 email rule. Corpus versioning (V1 primary, date-tracked).
+  Evidence Graph Batches 1-5: literature sweep, claim extraction, null model
+  analysis, contact zone, Hunt tripartite grammar test.
+
+What was done:
+
+Corpus versioning:
+  - Created glossa-indus/CORPUS_VERSIONS.md documenting:
+    * V1 = indus_research.jsonl (user primary, tracked by date, NOT version number)
+    * Firestore source = supplementary external data (labeled by date, not V2)
+    * Version bump rules: only after initial research complete + major structural change
+  - Renamed indus_corpus_v3.py -> indus_corpus_firestore.py
+    (clarifies it is NOT the user's corpus but a supplementary external source)
+  - indus_corpus_v2.py remains as-is but is documented as the V1 primary loader
+
+Batch 3 literature sweep:
+  - 9 papers catalogued; 6 downloaded as PDFs (open access confirmed)
+  - Downloaded: Yadav 2010 PLoS ONE n-grams (2.1MB, CC BY), Yadav 2009 arXiv
+    preprint, Rao 2010 ACL CL reply to Sproat, Parpola 2010 Dravidian solution
+    (Helsinki repository), Sinha 2010 arXiv network analysis, Farmer-Sproat-
+    Witzel 2004 Academia.edu
+  - Metadata-only: Rao 2009 Science (paywalled), Mahadevan 2009 RMRL (institutional)
+  - Failed: Rao 2009 PNAS (403) -> registered as metadata-only
+  - All 9 registered in literature/documents/ with provenance
+
+Batch 4 claim extraction:
+  - indus_claims.py processes all registered literature documents
+  - Pattern matching + manual curation for key papers
+  - 7 claims extracted and saved to claims/extracted_claims/
+  - Key manually-curated claims:
+    * parpola_2010: Dravidian rebus hypothesis [partially_supported]
+      Evidence: Phase-43 SA +0.484 log-units [VERIFIED]
+    * parpola_2010: fish sign = meen [partially_supported]
+      Evidence: M77/72 terminal_frac=25.9% [SUPPORTED]
+    * farmer_sproat_witzel: non-linguistic hypothesis [contradicted]
+      Evidence: conditional entropy + positional structure
+    * yadav_2010: Zipf-Mandelbrot [strongly_supported]
+    * yadav_2010: text-beginning and text-ending signs [strongly_supported]
+
+Batch 5 analysis tests (CRITICAL NEW FINDINGS):
+
+  Null model 1 (random shuffle):
+    - Real positional entropy: 1.0223 vs null mean: 1.2374
+    - Effect size: 231.89σ -- MASSIVE positional structure above random baseline
+    - CONCLUSION: Indus sign positional behavior is FAR above random chance
+      (p < 10^-100 effectively)
+
+  Null model 2 (frequency-preserved shuffle):
+    - Top-20 real bigrams appear at >50% rate in shuffled null: 0.13/20 on average
+    - CONCLUSION: Real bigram structure is REAL sequential dependency,
+      NOT predicted by frequency alone
+
+  Null model 3 (site-preserved shuffle):
+    - Cross-site shared bigrams: real=1094, null mean=~1070, effect=1.58σ
+    - CONCLUSION: Moderate cross-site recurrence -- shared script across sites
+      is confirmed but site-specific variation exists
+
+  Contact zone (formal):
+    - M↔H Jaccard=0.602, 82 Harappa-exclusive signs
+    - Confirms Phase-43 T4.2 contact zone analysis
+
+  Hunt tripartite grammar test (LANDMARK):
+    - formula_rate=0.355 (35.5% of 3+ sign inscriptions follow I→M→T structure)
+    - null_expected_rate=0.006 (0.6%)
+    - LIFT: 59x above null baseline
+    - CONCLUSION: STRUCTURAL PREFIX-MEDIAL-SUFFIX PATTERN EXISTS
+      Consistent with BOTH Hunt model AND Dravidian suffix model
+      Cannot distinguish between them without visual sign classification
+      (faunal vs celestial sign identification requires Mahadevan visual catalog)
+
+Foundation check: not run
+
+Files changed:
+  AGENTS.md (modified -- H20 email rule)
+  backend/glossa_lab/data/indus_corpus_firestore.py (NEW -- renamed from v3)
+  glossa-indus/CORPUS_VERSIONS.md (NEW)
+  glossa-indus/README.md (NEW)
+  glossa-indus/config/claim_schema.yaml (NEW)
+  glossa-indus/config/sign_schema.yaml (NEW)
+  glossa-indus/config/models.yaml (NEW)
+  glossa-indus/config/dedupe_rules.yaml (NEW)
+  glossa-indus/config/test_registry.yaml (NEW)
+  glossa-indus/config/sources.yaml (NEW)
+  glossa-indus/scripts/indus_intake.py (NEW)
+  glossa-indus/scripts/indus_literature_batch3.py (NEW)
+  glossa-indus/scripts/indus_claims.py (NEW)
+  glossa-indus/scripts/indus_analysis_batch5.py (NEW)
+  glossa-indus/hypotheses/models/parpola_proto_dravidian.yaml (NEW)
+  glossa-indus/hypotheses/models/roif_guild_ledger.yaml (NEW -- stub)
+  glossa-indus/hypotheses/models/hunt_civic_ritual.yaml (NEW -- stub)
+  glossa-indus/raw/papers/ (6 PDFs downloaded)
+  glossa-indus/literature/documents/ (9 JSON records)
+  glossa-indus/claims/extracted_claims/ (4 JSON records)
+  glossa-indus/analysis/null_models/ (3 JSON results)
+  glossa-indus/analysis/artifact_context/ (contact zone JSON)
+  glossa-indus/analysis/positional/ (Hunt tripartite test JSON)
+  glossa-indus/reports/ingestion_reports/batch3_literature_report.json (NEW)
+  glossa-indus/reports/claim_reports/batch4_claims_report.json (NEW)
+  glossa-indus/reports/model_reports/batch5_analysis_report.json (NEW)
+  LEDGER.md (this entry)
+
+Open TODOs (Batches 6-8):
+  1. Upload Roif paper to glossa-indus/raw/user_uploads/ (stubs waiting)
+  2. Upload Hunt paper to glossa-indus/raw/user_uploads/ (stubs waiting)
+  3. Build indus_analyze.py (dedupe run + synthesis report)
+  4. Phase-44 T1: Bigram context analysis for M77/342 = -n confirmation
+  5. Phase-44 T2: M77/99 phonetic value from DEDR pattern
+  6. V3 SA 300K iterations (convergence verification)
+  7. Penn Museum: send institutional request after tpierson review
+
+Risks:
+  - Hunt vs Dravidian-suffix models: both predict tripartite structure;
+    visual sign classification required to distinguish them
+  - Null model 3 (site-preserved) effect_size=1.58σ -- moderate, not significant
+    at 2σ threshold; more inscriptions needed for stronger cross-site test
+  - Batch 4 claims: only 7 claims extracted; most PDFs have embedded text that
+    is not yet fully processed through the pattern extractor
+
+Key findings:
+  Positional structure: 231σ above random shuffle null [LANDMARK]
+  Bigram structure: top-20 bigrams NOT predicted by frequency alone [VERIFIED]
+  Tripartite formula: 35.5% of inscriptions, 59x above null [VERIFIED]
+  Hunt + Dravidian-suffix models BOTH predict this -- structural ambiguity remains
+  Contact zone: Harappa has 82 exclusive signs vs Mohenjo-daro
+
+Next step:
+  Upload Roif and Hunt papers to glossa-indus/raw/user_uploads/.

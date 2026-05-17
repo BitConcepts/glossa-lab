@@ -1,0 +1,18 @@
+{
+  "test": "null_frequency_preserved",
+  "top_20_real_bigrams_preserved": {
+    "(267, 99)": 0.0297,
+    "(342, 176)": 0.0191,
+    "(336, 89)": 0.013,
+    "(89, 328)": 0.0128,
+    "(48, 342)": 0.0115,
+    "(347, 342)": 0.0106,
+    "(8, 342)": 0.0095,
+    "(391, 99)": 0.0087,
+    "(342, 1)": 0.0087,
+    "(171, 59)": 0.0079
+  },
+  "null_mean_top20_matches": 0.13,
+  "n_samples": 100,
+  "interpretation": "On average 0.1/20 top bigrams appear at >50% rate in shuffled null. HIGH bigram structure above frequency baseline."
+}

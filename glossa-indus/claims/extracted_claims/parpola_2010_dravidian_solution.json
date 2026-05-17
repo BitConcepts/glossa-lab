@@ -1,0 +1,51 @@
+{
+  "document_id": "parpola_2010_dravidian_solution",
+  "title": "A Dravidian solution to the Indus script problem",
+  "extraction_date": "2026-05-17T11:40:22.458048",
+  "total_claims": 2,
+  "auto_extracted": 2,
+  "manually_curated": 2,
+  "claims": [
+    {
+      "claim_id": "parpola_2010_dravidian_solution_manual_001",
+      "source_document_id": "parpola_2010_dravidian_solution",
+      "claim_type": "language_claim",
+      "normalized_claim": "Indus script encodes Proto-Dravidian language using the rebus principle.",
+      "claim_status": "partially_supported",
+      "testability": "directly_testable",
+      "falsification_condition": "If Dravidian phonotactics do not fit Indus sign bigrams better than Sanskrit.",
+      "glossa_lab_evidence": "Phase-41: 1.0566x SA advantage; Phase-43: +0.484 log-units on V3 corpus [VERIFIED]",
+      "confidence_in_source": 0.85,
+      "extracted_at": "2026-05-17T11:40:22.458048"
+    },
+    {
+      "claim_id": "parpola_2010_dravidian_solution_manual_002",
+      "source_document_id": "parpola_2010_dravidian_solution",
+      "claim_type": "sign_value_claim",
+      "normalized_claim": "The fish sign (meen in Dravidian) is the primary rebus sign in the Indus script.",
+      "signs_involved": [
+        "fish sign family"
+      ],
+      "sign_ids": {
+        "mahadevan": [
+          "72",
+          "64",
+          "70"
+        ],
+        "glossa_note": "M77/72=phonetic meen [PARTIALLY_VERIFIED Phase-43]"
+      },
+      "proposed_value": "meen/min (fish; also star, lightning in Proto-Dravidian)",
+      "proposed_language": "Proto-Dravidian",
+      "claim_status": "partially_supported",
+      "testability": "directly_testable",
+      "falsification_condition": "If fish signs do not show terminal-sign followers consistent with case suffixes.",
+      "glossa_lab_evidence": "Phase-43 T2.4: M77/72 terminal_frac=25.9% [SUPPORTED]",
+      "confidence_in_source": 0.75,
+      "extracted_at": "2026-05-17T11:40:22.458048"
+    }
+  ],
+  "_citation": {
+    "system": "Glossa-Lab Indus Evidence Graph Batch 4",
+    "source_doc": "parpola_2010_dravidian_solution"
+  }
+}

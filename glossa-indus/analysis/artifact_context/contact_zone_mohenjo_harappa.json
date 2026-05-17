@@ -1,0 +1,126 @@
+{
+  "test": "contact_zone_mohenjo_harappa",
+  "mohenjo_dockeys": 502,
+  "harappa_dockeys": 727,
+  "mohenjo_sign_types": 245,
+  "harappa_sign_types": 279,
+  "shared_signs": 197,
+  "mohenjo_only": 48,
+  "harappa_only": 82,
+  "jaccard_similarity": 0.602,
+  "harappa_exclusive_signs": [
+    {
+      "sign": 277,
+      "harappa_freq": 8,
+      "role": "TERMINAL_STRONG",
+      "hypothesis": "trade/administrative logogram"
+    },
+    {
+      "sign": 3,
+      "harappa_freq": 5,
+      "role": "MIXED",
+      "hypothesis": "unclear"
+    },
+    {
+      "sign": 38,
+      "harappa_freq": 5,
+      "role": "TERMINAL_MODERATE",
+      "hypothesis": "unclear"
+    },
+    {
+      "sign": 201,
+      "harappa_freq": 5,
+      "role": "INITIAL_STRONG",
+      "hypothesis": "trade/administrative logogram"
+    },
+    {
+      "sign": 384,
+      "harappa_freq": 5,
+      "role": "MIXED",
+      "hypothesis": "unclear"
+    },
+    {
+      "sign": 398,
+      "harappa_freq": 5,
+      "role": "INITIAL_STRONG",
+      "hypothesis": "trade/administrative logogram"
+    },
+    {
+      "sign": 217,
+      "harappa_freq": 4,
+      "role": "MIXED",
+      "hypothesis": "unclear"
+    },
+    {
+      "sign": 6,
+      "harappa_freq": 3,
+      "role": "INITIAL_STRONG",
+      "hypothesis": "trade/administrative logogram"
+    },
+    {
+      "sign": 113,
+      "harappa_freq": 3,
+      "role": "MEDIAL_STRONG",
+      "hypothesis": "unclear"
+    },
+    {
+      "sign": 30,
+      "harappa_freq": 2,
+      "role": "unknown",
+      "hypothesis": "unclear"
+    }
+  ],
+  "mohenjo_exclusive_top10": [
+    {
+      "sign": 221,
+      "freq": 3,
+      "role": "?"
+    },
+    {
+      "sign": 282,
+      "freq": 2,
+      "role": "?"
+    },
+    {
+      "sign": 183,
+      "freq": 2,
+      "role": "MEDIAL_STRONG"
+    },
+    {
+      "sign": 189,
+      "freq": 2,
+      "role": "?"
+    },
+    {
+      "sign": 223,
+      "freq": 2,
+      "role": "MIXED"
+    },
+    {
+      "sign": 107,
+      "freq": 2,
+      "role": "TERMINAL_MODERATE"
+    },
+    {
+      "sign": 240,
+      "freq": 2,
+      "role": "?"
+    },
+    {
+      "sign": 257,
+      "freq": 1,
+      "role": "?"
+    },
+    {
+      "sign": 132,
+      "freq": 1,
+      "role": "?"
+    },
+    {
+      "sign": 5,
+      "freq": 1,
+      "role": "?"
+    }
+  ],
+  "interpretation": "M\u2194H Jaccard=0.602. 82 Harappa-exclusive signs (contact zone candidates). 197 shared signs confirm same civilization script inventory."
+}

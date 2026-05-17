@@ -1,2 +1,2 @@
-pystray>=0.19,<1
+pystray>=0.19.5,<1
 Pillow>=10,<12

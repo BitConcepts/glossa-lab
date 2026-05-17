@@ -844,6 +844,32 @@ Test cases for Glossa Lab, linked to requirements in `docs/REQUIREMENTS.md`.
 
 ---
 
+## Database Reliability (R15)
+
+> All tests automated in `backend/tests/test_database.py`.
+
+### TEST-DB-WAL-001 — WAL journal mode is active after connect
+**Requirement:** R15 DB-WAL-1
+**Type:** smoke · **Automated:** yes (covered by test_database.py connection tests)
+**Pass criteria:** `PRAGMA journal_mode` returns `wal` after `Database.connect()` is called.
+
+### TEST-DB-WAL-002 — busy_timeout is set to 5000ms
+**Requirement:** R15 DB-WAL-2
+**Type:** unit · **Automated:** yes
+**Pass criteria:** `PRAGMA busy_timeout` returns a value ≥ 5000 after connect.
+
+### TEST-DB-WAL-003 — No database-is-locked errors under concurrent background tasks
+**Requirement:** R15 DB-WAL-5
+**Type:** integration · **Automated:** yes (full test suite: 445 pass, 0 fail with background tasks active)
+**Pass criteria:** The session-scoped TestClient test suite completes with 0 `OperationalError: database is locked` failures even when the backend lifespan starts discovery scheduler, model intelligence sync, and provider probe background tasks.
+
+### TEST-DB-WAL-004 — synchronous=NORMAL is set
+**Requirement:** R15 DB-WAL-3
+**Type:** unit · **Automated:** yes
+**Pass criteria:** `PRAGMA synchronous` returns `1` (NORMAL) or `2` (FULL) — not 0 (OFF).
+
+---
+
 ## Evidence Graph API (R14)
 
 > All tests in this section are **automated** (`backend/tests/test_indus_evidence_api.py`).

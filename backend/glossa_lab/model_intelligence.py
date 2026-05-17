@@ -404,6 +404,9 @@ def _sync_static_fallback() -> dict[str, Any]:
         "gpt-4.1":      {"ifeval": 88.0, "bbh": 83.0, "math": 79.0, "gpqa": 56.0, "musr": 67.0, "mmlu_pro": 76.0},
         "gpt-4.1-mini": {"ifeval": 83.0, "bbh": 77.0, "math": 66.0, "gpqa": 45.0, "musr": 55.0, "mmlu_pro": 67.0},
         "gpt-4.1-nano": {"ifeval": 72.0, "bbh": 65.0, "math": 48.0, "gpqa": 30.0, "musr": 42.0, "mmlu_pro": 54.0},
+        # gpt-5.4 — high-tier research/enterprise model; listed in specsmith rpm=60 tpm=500k
+        # Benchmarks estimated at top-of-class tier (exceeds gpt-4.1 on reasoning)
+        "gpt-5.4":  {"ifeval": 91.0, "bbh": 87.0, "math": 88.0, "gpqa": 72.0, "musr": 74.0, "mmlu_pro": 84.0},
         # ── Current-generation Google Gemini models ─────────────────────────────
         # gemini-2.5-pro and gemini-2.5-flash already handled by T4 normalisation
         # matching gemini-2.5-pro-preview-05-06 → gemini-2-5-pro.

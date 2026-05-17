@@ -173,3 +173,43 @@ Results:
 | REQUIREMENTS.md missing R14 | ✅ R14.1–7 added |
 | TEST_SPEC.md missing Evidence Graph specs | ✅ TEST-IEA/EV/PW-EG added |
 | architecture.md missing Evidence Graph | ✅ Updated |
+
+---
+
+## Batch 8 — SQLite WAL Fix + Specsmith Migration
+**Date**: 2026-05-17  
+**Commit**: `438cc69` (WAL) + staged
+
+### SQLite WAL mode fix (database.py)
+- Root cause: 14 backend tests failing with `sqlite3.OperationalError: database is locked`.
+  Background tasks started by the app lifespan (provider probes, model intelligence
+  sync, RAG index build, discovery scheduler) were writing to the DB concurrently
+  with test write operations. Default DELETE journal mode with `busy_timeout=0`
+  caused instant failures.
+- Fix: Three PRAGMAs added to `Database.connect()` right after opening the connection:
+  - `PRAGMA journal_mode=WAL` — Write-Ahead Logging, concurrent readers + writers
+  - `PRAGMA busy_timeout=5000` — retry up to 5 seconds before raising
+  - `PRAGMA synchronous=NORMAL` — crash-safe with WAL, faster than FULL
+- Result: **445 passed, 0 failed** (was 428 passed, 16 failed).
+
+### Specsmith migration (model-rate-limits.json)
+Both `.specsmith/model-rate-limits.json` files updated to current-gen model landscape:
+
+| Added | Provider |
+|-------|----------|
+| `o3` | OpenAI |
+| `o4-mini` | OpenAI |
+| `gpt-4.1`, `gpt-4.1-mini`, `gpt-4.1-nano` | OpenAI |
+| `claude-sonnet-4-20250514` | Anthropic |
+| `gemini-2.5-flash` | Google |
+| `gemini-2.5-flash-preview-05-20` | Google |
+| `gemini-2.5-pro-preview-05-06` | Google |
+| `gemini-3-pro-preview`, `gemini-3.1-pro-preview` | Google |
+| `gemini-3-flash-preview` | Google |
+
+### model_intelligence.py static fallback migration
+- Added `gpt-5.4` to `_sync_static_fallback()` known_models dict.
+  Previously appeared in specsmith (rpm=60, tpm=500k) and in pacing test
+  messages but had no benchmark scores, causing it to show as unscored
+  in the Model Assignments UI.
+- Scored at top-tier reasoning class (exceeds gpt-4.1 on reasoning bucket).

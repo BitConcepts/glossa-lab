@@ -305,11 +305,9 @@ def _sync_hf_inner() -> dict[str, Any]:
     return {"synced": synced, "errors": errors, "message": f"Synced {synced} models from HF"}
 
 
-def _sync_static_fallback() -> dict[str, Any]:
-    """Fallback when HF API is unreachable — use built-in known model scores."""
-    # Hard-coded scores for popular models (from HF leaderboard 2025 data)
-    # Expanded to cover all commonly-used models across cloud + local providers
-    known_models = {
+# ── Module-level model score table (shared by sync and async write paths) ────
+
+_KNOWN_MODELS: dict[str, dict[str, float]] = {
         # OpenAI
         "gpt-4o": {"ifeval": 87.5, "bbh": 83.2, "math": 76.4, "gpqa": 53.6, "musr": 65.3, "mmlu_pro": 74.0},
         "gpt-4o-mini": {"ifeval": 80.4, "bbh": 75.1, "math": 62.3, "gpqa": 40.1, "musr": 51.2, "mmlu_pro": 63.5},
@@ -435,6 +433,8 @@ def _sync_static_fallback() -> dict[str, Any]:
         "gemini-flash-latest": {"ifeval": 85.0, "bbh": 80.5, "math": 78.5, "gpqa": 52.0, "musr": 60.0, "mmlu_pro": 73.0},
     }
 
+def _sync_static_fallback() -> dict[str, Any]:
+    """Fallback when HF API is unreachable (called from _sync_hf_inner in thread executor)."""
     db = get_db()
     if db is None:
         return {"synced": 0, "errors": 0, "message": "Database not ready"}
@@ -443,18 +443,11 @@ def _sync_static_fallback() -> dict[str, Any]:
     db_path = str(db._path)  # noqa: SLF001
     now = datetime.now(timezone.utc).isoformat()
     synced = 0
-
-    # Use ONE connection + ONE transaction for all inserts.
-    # Previously a new connection was opened per model, creating ~80 short
-    # write transactions that raced with the aiosqlite connection and caused
-    # "database is locked" failures in tests (CI).
     try:
         conn = sqlite3.connect(db_path, timeout=30)
-        # Enable WAL on this sync connection so it co-operates with the
-        # aiosqlite WAL connection rather than conflicting with it.
         conn.execute("PRAGMA journal_mode=WAL")
         conn.execute("PRAGMA busy_timeout=30000")
-        for model_name, benchmarks in known_models.items():
+        for model_name, benchmarks in _KNOWN_MODELS.items():
             scores = _compute_bucket_scores(benchmarks)
             try:
                 conn.execute(
@@ -465,14 +458,9 @@ def _sync_static_fallback() -> dict[str, Any]:
                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
                     (
                         f"static_{model_name[:80]}",
-                        model_name,
-                        "static",
-                        scores["reasoning"],
-                        scores["conversational"],
-                        scores["longform"],
-                        "static_fallback",
-                        json.dumps(benchmarks),
-                        now,
+                        model_name, "static",
+                        scores["reasoning"], scores["conversational"], scores["longform"],
+                        "static_fallback", json.dumps(benchmarks), now,
                     ),
                 )
                 synced += 1
@@ -482,12 +470,51 @@ def _sync_static_fallback() -> dict[str, Any]:
         conn.close()
     except Exception:  # noqa: BLE001
         pass
-
     _log.info("Static model scores loaded: %d models", synced)
     return {"synced": synced, "errors": 0, "message": f"Loaded {synced} static model scores (HF unreachable)"}
 
 
-# ── Background sync task ──────────────────────────────────────────────────
+async def _sync_static_fallback_async() -> dict[str, Any]:
+    """Async variant — writes through the single aiosqlite connection.
+
+    Eliminates the competing synchronous sqlite3 connection that caused
+    SQLITE_BUSY / SQLITE_BUSY_SNAPSHOT ('database is locked') in CI when
+    the thread-executor sync raced with aiosqlite write operations.
+    Since _KNOWN_MODELS is pure in-memory data, no thread executor is needed.
+    """
+    db = get_db()
+    if db is None or db._conn is None:  # noqa: SLF001
+        return {"synced": 0, "errors": 0, "message": "Database not ready"}
+    now = datetime.now(timezone.utc).isoformat()
+    synced = 0
+    for model_name, benchmarks in _KNOWN_MODELS.items():
+        scores = _compute_bucket_scores(benchmarks)
+        try:
+            await db._conn.execute(  # noqa: SLF001
+                """INSERT OR REPLACE INTO model_scores
+                   (id, model_name, provider_type, reasoning_score,
+                    conversational_score, longform_score, source,
+                    raw_benchmarks_json, scored_at)
+                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                (
+                    f"static_{model_name[:80]}",
+                    model_name, "static",
+                    scores["reasoning"], scores["conversational"], scores["longform"],
+                    "static_fallback", json.dumps(benchmarks), now,
+                ),
+            )
+            synced += 1
+        except Exception:  # noqa: BLE001
+            pass
+    try:
+        await db._conn.commit()  # noqa: SLF001
+    except Exception:  # noqa: BLE001
+        pass
+    _log.info("Static model scores (async) loaded: %d models", synced)
+    return {"synced": synced, "errors": 0, "message": f"Loaded {synced} static model scores"}
+
+
+# ── Background sync task ────────────────────────────────────────────────────────────────
 
 
 async def start_intelligence_sync() -> None:
@@ -498,14 +525,11 @@ async def start_intelligence_sync() -> None:
     succeeds.  HF sync data supplements; it does NOT replace static entries
     (different DB row ids: ``static_...`` vs ``hf_...``).
     """
-    # Load built-in scores right away so auto-configure has data
-    # before the HF sync window opens.
-    # IMPORTANT: _sync_static_fallback() does synchronous SQLite I/O so
-    # it MUST run in a thread executor to avoid blocking the event loop.
+    # Use the async variant so all DB writes go through the single aiosqlite
+    # connection — no competing synchronous sqlite3 connection in a thread.
     _log.info("Model intelligence: loading static baseline scores")
     try:
-        loop = asyncio.get_event_loop()
-        await loop.run_in_executor(None, _sync_static_fallback)
+        await _sync_static_fallback_async()
     except Exception:  # noqa: BLE001
         _log.warning("Static score baseline load failed", exc_info=False)
 

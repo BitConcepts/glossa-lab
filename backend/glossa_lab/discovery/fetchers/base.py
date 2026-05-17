@@ -353,7 +353,52 @@ def get_rate_tracker() -> RateLimitTracker:
     return _rate_tracker
 
 
-# ── Fetcher contract ────────────────────────────────────────────────────────
+# ── Generic per-source cooldown registry ────────────────────────────────────────
+# Rate limits are per-IP and global across all tasks and topics.
+# When any fetch() receives a 429 it calls source_cooldown_trip() so that
+# ALL subsequent requests to that source's endpoints are skipped until the
+# window resets — regardless of which topic or coroutine is calling.
+#
+# Usage in a fetcher:
+#   # Check at entry:
+#   if source_is_cooling(self.source): return []
+#   # On 429 FetcherError:
+#   source_cooldown_trip(self.source, retry_after_secs or 120.0)
+
+import time as _time_global  # noqa: E402
+
+_source_cooldowns: dict[str, float] = {}   # source -> monotonic deadline
+_DEFAULT_COOLDOWN = 120.0                   # 2 min when no Retry-After header
+
+
+def source_cooldown_trip(source: str, secs: float = _DEFAULT_COOLDOWN) -> None:
+    """Record a rate-limit event for *source*.  All subsequent calls to
+    :func:`source_is_cooling` return True until *secs* have elapsed."""
+    import logging as _lg  # noqa: PLC0415
+    _source_cooldowns[source] = _time_global.monotonic() + secs
+    _lg.getLogger("glossa_lab.discovery.fetchers").warning(
+        "fetcher %s global cooldown: pausing all requests for %.0fs", source, secs
+    )
+
+
+def source_is_cooling(source: str) -> tuple[bool, float]:
+    """Return ``(is_cooling, seconds_remaining)`` for *source*."""
+    remaining = _source_cooldowns.get(source, 0.0) - _time_global.monotonic()
+    return remaining > 0, max(0.0, remaining)
+
+
+def _429_cooldown(err_str: str, source: str, default: float = _DEFAULT_COOLDOWN) -> bool:
+    """If *err_str* contains '429', trip the cooldown and return True."""
+    if "429" not in err_str:
+        return False
+    import re as _re  # noqa: PLC0415
+    ra = _re.search(r"Retry-After:\s*(\d+)", err_str)
+    secs = int(ra.group(1)) + 5 if ra else default
+    source_cooldown_trip(source, secs)
+    return True
+
+
+# ── Fetcher contract ────────────────────────────────────────────
 
 
 class Fetcher(ABC):

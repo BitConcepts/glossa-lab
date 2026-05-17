@@ -1,0 +1,130 @@
+{
+  "_citation": {
+    "primary_sources": [
+      "A.1",
+      "A.13"
+    ],
+    "fuls_sources": [
+      "wells_2015"
+    ]
+  },
+  "summary": {
+    "total_high_anchors": 7,
+    "checked_against_fuls": 7,
+    "agreements": 7,
+    "concordance_pct": 100.0,
+    "verdict": "STRONG_AGREEMENT",
+    "note": "Figure 3.28 Contexts of Set 17 signs initial and terminal contexts pairing with sign 350 i. ........................43"
+  },
+  "anchor_results": [
+    {
+      "sign": "M006",
+      "reading": "puli",
+      "expected_fn": "CLASSIFIER_PREFIX",
+      "avg_position": 0.0,
+      "is_starter": true,
+      "is_ending": false,
+      "holdat_semantic_role": "CLASSIFIER_PREFIX",
+      "pos_in_range": true,
+      "starter_matches": true,
+      "ending_matches": true,
+      "role_matches": true,
+      "agrees": true
+    },
+    {
+      "sign": "M016",
+      "reading": "kaḷiṟu",
+      "expected_fn": "CLASSIFIER_PREFIX",
+      "avg_position": 0.0,
+      "is_starter": true,
+      "is_ending": false,
+      "holdat_semantic_role": "CLASSIFIER_PREFIX",
+      "pos_in_range": true,
+      "starter_matches": true,
+      "ending_matches": true,
+      "role_matches": true,
+      "agrees": true
+    },
+    {
+      "sign": "M045",
+      "reading": "yānai",
+      "expected_fn": "CLASSIFIER_PREFIX",
+      "avg_position": 0.0,
+      "is_starter": true,
+      "is_ending": false,
+      "holdat_semantic_role": "CLASSIFIER_PREFIX",
+      "pos_in_range": true,
+      "starter_matches": true,
+      "ending_matches": true,
+      "role_matches": true,
+      "agrees": true
+    },
+    {
+      "sign": "M062",
+      "reading": "erutu",
+      "expected_fn": "CLASSIFIER_PREFIX",
+      "avg_position": 0.0,
+      "is_starter": true,
+      "is_ending": false,
+      "holdat_semantic_role": "CLASSIFIER_PREFIX",
+      "pos_in_range": true,
+      "starter_matches": true,
+      "ending_matches": true,
+      "role_matches": true,
+      "agrees": true
+    },
+    {
+      "sign": "M099",
+      "reading": "kol/koḷ",
+      "expected_fn": "CASE_MARKER_SUFFIX",
+      "avg_position": 0.598,
+      "is_starter": false,
+      "is_ending": true,
+      "holdat_semantic_role": "CASE_MARKER_SUFFIX",
+      "pos_in_range": true,
+      "starter_matches": true,
+      "ending_matches": true,
+      "role_matches": true,
+      "agrees": true
+    },
+    {
+      "sign": "M176",
+      "reading": "an/aṇ",
+      "expected_fn": "CASE_MARKER_SUFFIX",
+      "avg_position": 0.607,
+      "is_starter": false,
+      "is_ending": true,
+      "holdat_semantic_role": "CASE_MARKER_SUFFIX",
+      "pos_in_range": true,
+      "starter_matches": true,
+      "ending_matches": true,
+      "role_matches": true,
+      "agrees": true
+    },
+    {
+      "sign": "M342",
+      "reading": "ay/ā",
+      "expected_fn": "CASE_MARKER_SUFFIX",
+      "avg_position": 0.561,
+      "is_starter": false,
+      "is_ending": true,
+      "holdat_semantic_role": "CASE_MARKER_SUFFIX",
+      "pos_in_range": true,
+      "starter_matches": true,
+      "ending_matches": true,
+      "role_matches": true,
+      "agrees": true
+    }
+  ],
+  "fuls_wells_passages": [
+    "eventual identification of 17 signs with various levels of certainty. These readings",
+    "Chapter 2: The Indus Sign List ................................................................................13",
+    "Chapter 6: Proto-Dravidian and the Indus Script ....................................................77",
+    "Figure 2.6 An Indus Sign List .......................................................................................................................19",
+    "Figure 3.28 Contexts of Set 17 signs initial and terminal contexts pairing with sign 350 i. ........................43",
+    "Figure 6.6. Possible reading of M-30. .........................................................................................................89",
+    "Figure 6.8. The Dholavira signboard with photo reversed to reflect reading order. ...................................90",
+    "Figure 6.11. Suggested readings for Dholavira signboard signs. ................................................................ 92"
+  ],
+  "methodology": "Fuls NWSP (Normalised Weighted Sign Position): avg_position 0=initial, 1=terminal. is_starter/is_ending from Holdat all_symbol_semantic_roles CSV. Expected: CLASSIFIER_PREFIX signs avg_pos≈0 & is_starter=True; CASE_MARKER_SUFFIX signs avg_pos≥0.5 & is_ending=True."
+}

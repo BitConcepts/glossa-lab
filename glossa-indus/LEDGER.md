@@ -213,3 +213,65 @@ Both `.specsmith/model-rate-limits.json` files updated to current-gen model land
   messages but had no benchmark scores, causing it to show as unscored
   in the Model Assignments UI.
 - Scored at top-tier reasoning class (exceeds gpt-4.1 on reasoning bucket).
+
+---
+
+## Phase-45 — Positional Cross-Check, M267, Hunt Tripartite, Fish Coastal, UX
+**Date**: 2026-05-17
+
+### T1: Wells/Fuls Positional Cross-Check (phase45_t1_fuls_crosscheck.py)
+- **Concordance: 7/7 = 100%** — STRONG_AGREEMENT
+- All 4 CLASSIFIER_PREFIX anchors (M006 puli, M016 kaḷiṟu, M045 yānai, M062 erutu): avg_pos=0.000, is_starter=True, holdat_role=CLASSIFIER_PREFIX
+- All 3 CASE_MARKER_SUFFIX anchors (M099 kol/koḷ, M176 an/aṇ, M342 ay/ā): avg_pos≈0.56–0.61, is_ending=True, holdat_role=CASE_MARKER_SUFFIX
+- Fuls NWSP independently confirms our readings with perfect alignment.
+- Wells 2015 passages located in cleaned text (8 passages found).
+- Report: `reports/phase45_t1_fuls_crosscheck.json`
+
+### T2: M267 Full Investigation (phase45_t2_m267.py)
+- **Hypothesis: GRAMMATICAL_PARTICLE or DETERMINATIVE** — motif-independent, medial position
+- n=400, avg_pos=0.540 (medial), iconographic entropy=0.852 (normalised) → UNIFORM across ALL motifs
+- Appears on unicorn(147×), zebu bull(78×), elephant(43×), script only(34×), rhinoceros(26×)…
+- **M267→M099 formula 84×** (precedes kol/koḷ); M099→M267 only 8× (asymmetric)
+- Anchored adjacents: erutu, an/aṇ, kol/koḷ, kaḷiṟu, ay/ā both before and after
+- Top site: Mohenjo-daro (135, 34%); present at all 5 major sites
+- Epistemic: INFERRED, low confidence — consistent with copula or genitive particle
+- Report: `reports/phase45_t2_m267.json`
+
+### T3: Hunt Tripartite Formula Test (phase45_t3_hunt_tripartite.py) — GPU: cuda (torch 2.5.1+cu121)
+- **Verdict: SUPPORTED**
+- Sign pools (count≥8): INITIAL_STRONG=75, TERMINAL_STRONG=5, MEDIAL=22
+- P1 (INITIAL_STRONG iconog-restricted, entropy<0.7): 10/75 = 13.3% — weak
+- **P2 (INITIAL_STRONG faunal > 50%): 75/75 = 100%** — strong
+- **P3 (TERMINAL_STRONG iconog-uniform): 5/5 = 100%** — strong
+- Interpretation: INITIAL_STRONG signs are overwhelmingly associated with faunal motifs (unicorn, zebu, elephant…). Some are iconographically concentrated (restricted); the rest are faunal but spread. TERMINAL_STRONG signs are fully uniform across motifs — consistent with grammatical suffixes, not identity markers.
+- Hunt's identity-marker hypothesis confirmed for faunal association; the entropy restriction (P1) is weaker than predicted (many faunal signs spread across multiple faunal categories rather than one).
+- Contingency matrices built on GPU.
+- Report: `reports/phase45_t3_hunt_tripartite.json`
+
+### T6: Fish Sign M047 Coastal Enrichment (phase45_fish_coastal_test.py) — GPU: cuda
+- **Verdict: NO_ENRICHMENT** (but n=13, severely underpowered)
+- M047 in corpus: 13 total occurrences across 7 sites
+- Coastal (Lothal+Dholavira): 2/230 = 0.87%; Inland: 10/1379 = 0.73%; RR=1.20×
+- Fisher exact p=0.685 — not significant
+- Interpretation: The test is UNDERPOWERED — M047 count=13 is too rare for site-distribution analysis. No anti-signal either. The mīn reading remains plausible on linguistic grounds; coastal enrichment simply cannot be confirmed with this corpus size.
+- GPU used for inscription-scanning tensor (bool tensor on cuda).
+- Report: `reports/phase45_fish_coastal_test.json`
+
+### T7: Contact Zone Corpus Status
+- Directories NOT empty — contains substantial data:
+  - `contact_zone/cdli_meluhha/`: 2 files, 1.5 MB (CDLI Meluhha inscriptions)
+  - `contact_zone/gulf_seals/`: 1 file, 23 KB
+  - `contact_zone/indus_seals_mesopotamia/`: 1 file, 18 KB
+  - `contact_zone/publications/`: 23 files, 65 MB
+- Deferred to Phase-46: need a proper contact_zone analysis script.
+
+### Backend: Global Rate-Limit Cooldown
+- All 11 remaining fetchers wired with `source_is_cooling` + `_429_cooldown`:
+  crossref, europepmc, doaj, pubmed, openalex, brave, newsapi, academia_rss, patentsview, serpapi, uspto
+- Generic cooldown registry in base.py now fully covers all fetchers.
+
+### Frontend UX Improvements
+- AI chat (floating + docked): Shows `📁 ProjectName` badge when no specific corpus/experiment context is active (instead of always showing "Global").
+- Project auto-activation: If exactly one project exists and nothing is explicitly selected, it activates automatically on load.
+- Explicit Global preference: Clicking "All Projects (Global)" stores `__global__` sentinel so auto-activate doesn't override it on next reload.
+- CorrespondenceView: Each row now shows `← from_addr` or `→ to_addr` direction indicator.

@@ -15,8 +15,10 @@ from glossa_lab.discovery.fetchers.base import (
     Fetcher,
     FetcherError,
     TopicProfile,
+    _429_cooldown,
     http_get_json,
     run_in_thread,
+    source_is_cooling,
 )
 from glossa_lab.discovery.store import RawItem
 
@@ -93,6 +95,10 @@ class BraveFetcher(Fetcher):
         api_key = get_key("brave_search_api_key")
         if not api_key:
             return []
+        cooling, remaining = source_is_cooling(self.source)
+        if cooling:
+            _log.debug("brave cooldown active — skipping (%.0fs remaining)", remaining)
+            return []
 
         opts = topic.overrides_for(self.source)
         endpoint_kind = str(opts.get("search_endpoint", "news")).lower()
@@ -130,6 +136,7 @@ class BraveFetcher(Fetcher):
                 http_get_json, endpoint, params=params, headers=headers, timeout=20.0,
             )
         except FetcherError as exc:
+            _429_cooldown(str(exc), self.source)
             _log.warning("Brave error for topic %s: %s", topic.id, exc)
             return []
 

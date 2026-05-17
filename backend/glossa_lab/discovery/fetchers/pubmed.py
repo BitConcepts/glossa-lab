@@ -16,9 +16,11 @@ from glossa_lab.discovery.fetchers.base import (
     Fetcher,
     FetcherError,
     TopicProfile,
+    _429_cooldown,
     build_query,
     http_get_json,
     run_in_thread,
+    source_is_cooling,
 )
 from glossa_lab.discovery.store import RawItem
 
@@ -46,9 +48,14 @@ class PubMedFetcher(Fetcher):
             "retmode": "json",
             "sort": opts.get("sort", "date"),
         }
+        cooling, remaining = source_is_cooling(self.source)
+        if cooling:
+            _log.debug("pubmed cooldown active — skipping (%.0fs remaining)", remaining)
+            return []
         try:
             search = await run_in_thread(http_get_json, _ESEARCH, params=params, timeout=12.0)
         except FetcherError as exc:
+            _429_cooldown(str(exc), self.source)
             _log.warning("PubMed esearch error for topic %s: %s", topic.id, exc)
             return []
         if not isinstance(search, dict):
@@ -65,6 +72,7 @@ class PubMedFetcher(Fetcher):
         try:
             summary = await run_in_thread(http_get_json, _ESUMMARY, params=sum_params, timeout=15.0)
         except FetcherError as exc:
+            _429_cooldown(str(exc), self.source)
             _log.warning("PubMed esummary error for topic %s: %s", topic.id, exc)
             return []
         if not isinstance(summary, dict):

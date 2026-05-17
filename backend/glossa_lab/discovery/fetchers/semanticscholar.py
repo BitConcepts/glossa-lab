@@ -42,7 +42,30 @@ _sdk_skip_until: float = 0.0
 _SDK_MAX_CONSECUTIVE_FAILS: int = 2  # open circuit after 2 consecutive timeouts
 _SDK_COOLDOWN_SECS: float = 900.0  # 15 minutes
 
+# ── Global S2 endpoint cooldown (mirrors arXiv pattern) ─────────────────
+# Rate limits are per-IP and global — a 429 from ANY task/topic blocks ALL
+# future S2 requests until the window resets.  This prevents the pattern
+# where the SDK exhausts the budget, then the HTTP fallback immediately
+# fires and also gets 429.
+_s2_cooldown_until: float = 0.0
+_S2_DEFAULT_COOLDOWN: float = 120.0  # 2 min default when no Retry-After header
+
 import time as _time_sdk  # noqa: E402
+
+
+def _s2_cooldown_trip(secs: float) -> None:
+    """Set the global S2 cooldown.  All fetches check this before starting."""
+    global _s2_cooldown_until  # noqa: PLW0603
+    _s2_cooldown_until = _time_sdk.monotonic() + secs
+    _log.warning(
+        "SemanticScholar global cooldown: pausing ALL S2 requests for %.0fs", secs
+    )
+
+
+def _s2_is_cooling() -> tuple[bool, float]:
+    """Returns (is_cooling, seconds_remaining)."""
+    remaining = _s2_cooldown_until - _time_sdk.monotonic()
+    return remaining > 0, max(0.0, remaining)
 
 
 def _sdk_record_success() -> None:
@@ -136,6 +159,16 @@ class SemanticScholarFetcher(Fetcher):
     async def fetch(
         self, topic: TopicProfile, *, since: datetime | None = None,
     ) -> Iterable[RawItem]:
+        # Check global S2 cooldown first — rate limits are per-IP, shared across
+        # all tasks and topics.  If any previous call was 429'd, skip entirely.
+        cooling, remaining = _s2_is_cooling()
+        if cooling:
+            _log.debug(
+                "SemanticScholar global cooldown active for topic %s — skipping (%.0fs remaining)",
+                topic.id, remaining,
+            )
+            return []
+
         # With an API key the limit is 1 req/sec; without it use conservative 6s.
         from glossa_lab.api.settings import get_key as _gk  # noqa: PLC0415
         s2_key = _gk("semantic_scholar_api_key")
@@ -190,15 +223,20 @@ class SemanticScholarFetcher(Fetcher):
                 _log.debug("semanticscholar PyPI package not found; using direct HTTP")
 
             except asyncio.TimeoutError:
-                # SDK took too long (pagination + slow S2) — trip circuit breaker
-                # so subsequent topics skip SDK and go straight to HTTP.
+                # SDK took too long — the SDK made multiple paginated requests
+                # internally while timing out, which consumed the rate limit budget.
+                # Trip circuit breaker AND set a global cooldown before HTTP fallback
+                # so we don't immediately fire another request into a depleted window.
                 _sdk_record_failure()
+                _s2_cooldown_trip(60.0)  # 60s: let the per-IP window partially reset
                 _log.warning(
                     "SemanticScholar SDK timeout (>%.0fs) for topic %s; "
-                    "tripping circuit breaker (consecutive: %d)",
+                    "tripping circuit breaker + 60s global cooldown (consecutive: %d)",
                     _SDK_TOTAL_TIMEOUT, topic.id, _sdk_consecutive_fails,
                 )
-                # papers stays [] — HTTP fallback below
+                # papers stays [] — HTTP fallback is SKIPPED because cooldown is now active;
+                # subsequent topics will also skip via the cooldown check at fetch() start.
+                return []
 
             except Exception as exc:  # noqa: BLE001
                 err_lower = str(exc).lower()
@@ -238,6 +276,15 @@ class SemanticScholarFetcher(Fetcher):
                     headers=headers, timeout=25.0,
                 )
             except FetcherError as exc:
+                err_str = str(exc)
+                is_429 = "429" in err_str
+                if is_429:
+                    # 429 on HTTP fallback — trip global cooldown so all parallel
+                    # and subsequent tasks know the IP-wide budget is exhausted.
+                    import re as _re  # noqa: PLC0415
+                    ra_match = _re.search(r"Retry-After:\s*(\d+)", err_str)
+                    cooldown = int(ra_match.group(1)) + 5 if ra_match else _S2_DEFAULT_COOLDOWN
+                    _s2_cooldown_trip(cooldown)
                 _log.warning("SemanticScholar HTTP error for topic %s: %s", topic.id, exc)
                 return []
             if not isinstance(data, dict):

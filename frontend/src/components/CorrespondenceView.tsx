@@ -74,7 +74,13 @@ function CorrCard({ c, onUpdated, onDeleted }: {
         <span style={{ flex: 1, fontWeight: 600, fontSize: 13, color: "#111827" }}>
           {c.subject || "(no subject)"}
         </span>
-        <span style={{ fontSize: 11, color: "#6b7280" }}>{c.from_addr.split("<")[0].trim() || c.from_addr}</span>
+        {/* Direction-aware contact: outbound shows To, inbound/internal shows From */}
+        <span style={{ fontSize: 11, color: "#6b7280", whiteSpace: "nowrap", maxWidth: 200, overflow: "hidden", textOverflow: "ellipsis" }}>
+          {c.direction === "inbound"
+            ? <>{"\u2190 "}{c.from_addr.split("<")[0].trim() || c.from_addr}</>
+            : <>{"\u2192 "}{c.to_addr.split("<")[0].trim() || c.to_addr || c.from_addr}</>
+          }
+        </span>
         <span style={{ fontSize: 10, padding: "1px 6px", borderRadius: 6, background: sc.bg, color: sc.fg, fontWeight: 700 }}>
           {c.reply_status}
         </span>

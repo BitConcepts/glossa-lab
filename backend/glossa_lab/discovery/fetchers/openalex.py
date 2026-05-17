@@ -18,8 +18,10 @@ from glossa_lab.discovery.fetchers.base import (
     Fetcher,
     FetcherError,
     TopicProfile,
+    _429_cooldown,
     http_get_json,
     run_in_thread,
+    source_is_cooling,
 )
 from glossa_lab.discovery.store import RawItem
 
@@ -70,9 +72,14 @@ class OpenAlexFetcher(Fetcher):
         oa_email = get_key("openalex_email")
         if oa_email:
             params["mailto"] = oa_email
+        cooling, remaining = source_is_cooling(self.source)
+        if cooling:
+            _log.debug("openalex cooldown active — skipping (%.0fs remaining)", remaining)
+            return []
         try:
             data = await run_in_thread(http_get_json, _ENDPOINT, params=params, timeout=15.0)
         except FetcherError as exc:
+            _429_cooldown(str(exc), self.source)
             _log.warning("OpenAlex error for topic %s: %s", topic.id, exc)
             return []
 

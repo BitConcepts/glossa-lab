@@ -52,8 +52,16 @@ SAMPLE_SEQUENCES = [
 
 
 def test_port_colors_complete():
-    expected = {"sequences", "freq_map", "profiles", "clusters", "number", "text", "json", "any"}
-    assert expected == set(PORT_COLORS)
+    # Core port types (original set)
+    core = {"sequences", "freq_map", "profiles", "clusters", "number", "text", "json", "any"}
+    # Evidence Graph port types added in this session
+    evidence = {"claims", "papers"}
+    expected = core | evidence
+    assert expected == set(PORT_COLORS), (
+        f"PORT_COLORS mismatch.\n"
+        f"Extra in actual: {set(PORT_COLORS) - expected}\n"
+        f"Missing from actual: {expected - set(PORT_COLORS)}"
+    )
 
 
 def test_port_colors_are_hex():

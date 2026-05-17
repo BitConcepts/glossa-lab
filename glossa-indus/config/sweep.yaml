@@ -1,148 +1,103 @@
-# Glossa-Lab Evidence Graph — Sweep Configuration
-# schema_version: 1.0
-#
-# This file controls the automated literature sweep for this evidence-graph project.
-# Edit keywords, sources, and filters to tailor what gets discovered.
-#
-# Structure
-# ---------
-# sweep.name            Human-readable name for this sweep profile.
-# sweep.keywords        Search terms split into primary / secondary / expansions tiers.
-#   .primary            High-precision terms used in ALL sources (short-circuit match).
-#   .secondary          Broader terms that increase recall at some noise cost.
-#   .expansions         Long-tail terms; useful when the primary pool is exhausted.
-# sweep.exclusions      Terms that cause a candidate to be dropped regardless of other matches.
-# sweep.sources         Per-source toggle and per-source max_results cap.
-# sweep.filters         Post-fetch filters applied to the raw candidate list.
-#   .min_year           Drop papers published before this year (0 = no lower bound).
-#   .languages          Keep only these language codes (empty list = keep all).
-#   .require_open_access  If true, keep only papers with an open-access PDF link.
-# sweep.output
-#   .auto_intake        If true, automatically run intake on downloaded PDF candidates.
-#   .intake_dir         Relative path (from evidence base) for downloaded sweep candidates.
-#   .candidate_format   Output format for the candidate list file ("json").
-#   .max_candidates     Cap on returned candidates per sweep run.
-
-schema_version: "1.0"
-
+schema_version: '1.0'
 sweep:
-  name: "Indus Script Research Sweep"
-  description: >
-    Automated sweep for academic papers on Indus script decipherment,
-    Harappan civilization, computational sign analysis, and related
-    archaeological studies. Targets 40–60 papers across multiple
-    theoretical frameworks to enable cross-hypothesis comparison.
+  description: 'Automated sweep for academic papers on Indus script decipherment,
+    Harappan civilization, computational sign analysis, and related archaeological
+    studies. Targets 40–60 papers across multiple theoretical frameworks to enable
+    cross-hypothesis comparison.
 
-  # ── Keywords ────────────────────────────────────────────────────────────────
-  keywords:
-    primary:
-      - "Indus script"
-      - "Harappan script"
-      - "Indus Valley script"
-      - "Indus decipherment"
-      - "CISI corpus"
-      - "Indus seal inscription"
-
-    secondary:
-      - "Mahadevan Indus"
-      - "Parpola Indus"
-      - "Rao Indus"
-      - "Yadav Indus script"
-      - "Wells Indus"
-      - "Indus positional analysis"
-      - "Indus script entropy"
-      - "Mohenjo-daro inscription"
-      - "Harappa seal"
-      - "Proto-Dravidian Indus"
-      - "Indus trade signs"
-      - "Farmer Sproat Witzel Indus"
-      - "Indus civic ritual"
-      - "Indus non-linguistic"
-
-    expansions:
-      - "CISI Parpola"
-      - "M77 Mahadevan concordance"
-      - "Indus Valley computational linguistics"
-      - "Harappan archaeology script"
-      - "Meluhha Mesopotamia"
-      - "Lothal seal inscription"
-      - "Dholavira sign"
-      - "Indus bigram"
-      - "Indus sign function"
-      - "Indus script rebus"
-      - "Indus sign list"
-
-  # ── Exclusions ───────────────────────────────────────────────────────────────
+    '
   exclusions:
-    - "stock market"
-    - "Indus Towers"
-    - "Indus Hospital"
-    - "Indus Motors"
-    - "Indus River water treaty"
-    - "Indus basin irrigation"
-    - "Indus Waters Treaty"
-    - "crypto"
-    - "blockchain"
-
-  # ── Sources ──────────────────────────────────────────────────────────────────
-  # Set enabled: false to skip a source. max_results caps candidates per run.
+  - stock market
+  - Indus Towers
+  - Indus Hospital
+  - Indus Motors
+  - Indus River water treaty
+  - Indus basin irrigation
+  - Indus Waters Treaty
+  - crypto
+  - blockchain
+  filters:
+    languages:
+    - en
+    min_year: 1970
+    require_abstract: false
+    require_open_access: false
+  keywords:
+    expansions:
+    - CISI Parpola
+    - M77 Mahadevan concordance
+    - Indus Valley computational linguistics
+    - Harappan archaeology script
+    - Meluhha Mesopotamia
+    - Lothal seal inscription
+    - Dholavira sign
+    - Indus bigram
+    - Indus sign function
+    - Indus script rebus
+    - Indus sign list
+    primary:
+    - Indus script
+    - Harappan script
+    - Indus Valley script
+    - Indus decipherment
+    - CISI corpus
+    - Indus seal inscription
+    secondary:
+    - Mahadevan Indus
+    - Parpola Indus
+    - Rao Indus
+    - Yadav Indus script
+    - Wells Indus
+    - Indus positional analysis
+    - Indus script entropy
+    - Mohenjo-daro inscription
+    - Harappa seal
+    - Proto-Dravidian Indus
+    - Indus trade signs
+    - Farmer Sproat Witzel Indus
+    - Indus civic ritual
+    - Indus non-linguistic
+  name: Indus Script Research Sweep
+  output:
+    auto_intake: false
+    candidate_format: json
+    intake_dir: raw/sweep_candidates
+    max_candidates: 200
   sources:
-    openalex:
-      enabled: true
-      max_results: 50
-
-    arxiv:
-      enabled: true
-      max_results: 30
-      # arXiv category hints (passed via source_overrides → search_query_extra)
-      categories: ["cs.CL", "stat.AP", "cs.LG"]
-
-    semanticscholar:
-      enabled: true
-      max_results: 50
-
-    crossref:
-      enabled: true
-      max_results: 50
-
-    doaj:
-      enabled: true
-      max_results: 25
-
-    europepmc:
-      enabled: true
-      max_results: 25
-
     academia_rss:
       enabled: true
       max_results: 20
-
+    arxiv:
+      categories:
+      - cs.CL
+      - stat.AP
+      - cs.LG
+      enabled: true
+      max_results: 30
+    brave:
+      enabled: false
+      max_results: 20
+    crossref:
+      enabled: true
+      max_results: 50
+    doaj:
+      enabled: true
+      max_results: 25
+    europepmc:
+      enabled: true
+      max_results: 25
+    gdelt:
+      enabled: false
+      max_results: 10
+    newsapi:
+      enabled: false
+      max_results: 20
+    openalex:
+      enabled: true
+      max_results: 50
     pubmed:
       enabled: false
       max_results: 20
-
-    brave:
-      enabled: false   # requires Brave Search API key
-      max_results: 20
-
-    newsapi:
-      enabled: false   # not appropriate for academic papers
-      max_results: 20
-
-    gdelt:
-      enabled: false   # news-focused, low signal for academic papers
-      max_results: 10
-
-  # ── Post-fetch filters ───────────────────────────────────────────────────────
-  filters:
-    min_year: 1970          # drop papers before 1970
-    languages: ["en"]       # empty list keeps all languages
-    require_open_access: false
-    require_abstract: false
-
-  # ── Output ───────────────────────────────────────────────────────────────────
-  output:
-    auto_intake: false              # when true, automatically runs intake on found PDFs
-    intake_dir: "raw/sweep_candidates"
-    candidate_format: "json"
-    max_candidates: 200             # cap on the candidates returned per sweep run
+    semanticscholar:
+      enabled: true
+      max_results: 50

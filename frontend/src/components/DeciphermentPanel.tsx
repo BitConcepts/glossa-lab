@@ -68,11 +68,57 @@ export function DeciphermentPanel() {
   if (loading) return <div style={{ padding: 16, color: "#9ca3af" }}>Loading decipherment metrics…</div>;
   if (error) return <div style={{ padding: 16, color: "#ef4444" }}>Error: {error}</div>;
   if (!data?.available) return null;
+  const byConf = data.anchors.by_confidence || {};
+
+  if (data.archived) {
+    return (
+      <div style={{ border: "1px solid #d1d5db", borderRadius: 8, padding: 16, background: "#fff", marginBottom: 16 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
+          <div>
+            <span style={{ fontSize: 16, fontWeight: 700, color: "#111827" }}>🔤 Indus Script Decipherment</span>
+            <span
+              style={{
+                marginLeft: 8,
+                padding: "2px 8px",
+                borderRadius: 4,
+                fontSize: 11,
+                fontWeight: 600,
+                background: "#f3f4f6",
+                color: "#6b7280",
+                border: "1px solid #d1d5db",
+              }}
+            >
+              📦 Campaign Archived
+            </span>
+          </div>
+          <span style={{ fontSize: 12, color: "#9ca3af" }}>{data.n_rounds_completed ?? 17} rounds completed</span>
+        </div>
+        <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 10 }}>
+          The V8–V24 autonomous loop campaign completed on {data.archived_at ?? "2026-05-17"}.
+          Active research now continues via the Evidence Graph.
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8 }}>
+          {[
+            { label: "HIGH", value: byConf.HIGH ?? 0, color: "#15803d" },
+            { label: "MEDIUM", value: byConf.MEDIUM ?? 0, color: "#2563eb" },
+            { label: "LOW", value: byConf.LOW ?? 0, color: "#d97706" },
+            { label: "UNCERTAIN", value: byConf.UNCERTAIN ?? 0, color: "#6b7280" },
+          ].map(({ label, value, color }) => (
+            <div key={label} style={{ textAlign: "center", padding: "6px 4px", background: "#f9fafb", borderRadius: 6 }}>
+              <div style={{ fontSize: 18, fontWeight: 700, color }}>{value}</div>
+              <div style={{ fontSize: 10, color: "#6b7280", marginTop: 2 }}>{label}</div>
+            </div>
+          ))}
+        </div>
+        <div style={{ marginTop: 8, fontSize: 11, color: "#9ca3af", textAlign: "right" }}>
+          Final anchors: {data.anchors.total} total · `INDUS_FINAL_ANCHORS.json`
+        </div>
+      </div>
+    );
+  }
 
   const cur = data.current_state;
   const levelStyle = cur ? LEVEL_COLORS[cur.level] || LEVEL_COLORS.EARLY : LEVEL_COLORS.EARLY;
-  const anchors = data.anchors;
-  const byConf = anchors.by_confidence || {};
 
   return (
     <div style={{ border: `1px solid ${levelStyle.border}`, borderRadius: 8, padding: 16, background: "#fff", marginBottom: 16 }}>

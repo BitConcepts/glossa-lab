@@ -1719,10 +1719,12 @@ export interface DeciphermentRound {
 
 export interface DeciphermentProgress {
   available: boolean;
+  archived?: boolean;
+  archived_at?: string | null;
+  n_rounds_completed?: number;
   anchors: { total: number; by_confidence?: Record<string, number> };
   progression: DeciphermentRound[];
   n_rounds: number;
-  latest_reports: Record<string, string>;
   current_state: DeciphermentRound | null;
 }
 

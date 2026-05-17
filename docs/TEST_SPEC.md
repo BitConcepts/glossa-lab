@@ -1096,3 +1096,132 @@ Test cases for Glossa Lab, linked to requirements in `docs/REQUIREMENTS.md`.
 > Run: `npx playwright test --config=playwright.backend.config.ts`
 
 **Covers (14 tests):** library shape, total>=11, limit param, claims list total>=22, claims type filter, claims bogus type, hypotheses list >=2, hypotheses shape, sweep config shape, candidates shape, intake run queued, sweep run running, upload non-PDF 400, import-url 400, sweep intake pending_manual
+
+---
+
+## Experiment Registration Gate Tests (R17 / R18 / R19)
+
+> Added: 2026-05-17  |  Requirement refs: R17, R18, R19
+
+These test cases verify that the mandatory 5-step H23 gate is enforced for all new
+experiments and that every phase node is properly registered in the Experiment Graph.
+
+---
+
+### TEST-EXP-001 — Node Module Exists Before Script Execution
+
+**Requirement**: R17
+**Precondition**: A new phase script `phaseNN_*.py` has been written.
+**Steps**:
+1. Check that `backend/glossa_lab/experiment_graph_phaseNN_MM.py` exists.
+2. Confirm it exports `_phaseNN_MM_node_defs() -> list[AtomicNodeDef]`.
+**Expected**: File exists and function is callable before phase script is executed.
+**Failure**: Script is run but graph module does not exist (H23 cardinal violation).
+
+---
+
+### TEST-EXP-002 — Node Registered in experiment_graph.py
+
+**Requirement**: R17
+**Precondition**: `experiment_graph_phaseNN_MM.py` exists.
+**Steps**:
+1. Open `experiment_graph.py`.
+2. Verify a `try/except` import block for `_phaseNN_MM_node_defs` is present.
+3. Verify `ATOMIC_NODES[_d.id] = _d` is called for each def.
+**Expected**: Import block present with valid try/except guard.
+**Failure**: Node defs not imported into ATOMIC_NODES.
+
+---
+
+### TEST-EXP-003 — Python Import Verification Passes
+
+**Requirement**: R17
+**Precondition**: Registration block added to experiment_graph.py.
+**Steps**:
+1. Run: `python -c "from glossa_lab.experiment_graph import ATOMIC_NODES; ids=[k for k in ATOMIC_NODES if 'NN' in k]; assert len(ids)>0, ids"`
+**Expected**: Exit 0, node IDs printed.
+**Failure**: ImportError, KeyError, or empty list.
+
+---
+
+### TEST-EXP-004 — GPU Detected in Phase Script
+
+**Requirement**: R18
+**Precondition**: Phase script executed in GPU environment.
+**Steps**:
+1. Run the phase script.
+2. Check output JSON for `"gpu_device"` key.
+3. Verify value is `"cuda:0"` (or another valid CUDA device).
+**Expected**: `gpu_device` key present and value starts with `"cuda"`.
+**Failure**: `gpu_device` missing or value is `"cpu"`.
+
+---
+
+### TEST-EXP-005 — Foundation Check After Phase Execution
+
+**Requirement**: R19
+**Precondition**: Phase script has been run and results committed.
+**Steps**:
+1. Run `foundation_check.py`.
+2. Check summary line for `FAILURES: 0`.
+**Expected**: 0 failures in foundation check output.
+**Failure**: Any failures present after new phase execution.
+
+---
+
+### TEST-EXP-006 — Phase Report Written to reports/
+
+**Requirement**: R17
+**Precondition**: Phase script executed successfully.
+**Steps**:
+1. Check that `reports/phaseNN_name.json` (or `.txt`) was written.
+2. Verify file is non-empty and valid JSON.
+**Expected**: Report file exists with valid content.
+**Failure**: No report file written, or file is empty/malformed.
+
+---
+
+### TEST-EXP-007 — Node Function Callable (Integration)
+
+**Requirement**: R17
+**Precondition**: Node registered in ATOMIC_NODES.
+**Steps**:
+1. Retrieve node def: `node = ATOMIC_NODES["IndusPhasNNName"]`
+2. Call `node.fn(inputs={}, params={})` in a subprocess or test harness.
+**Expected**: Returns a dict with `"gpu_device"` key.
+**Failure**: Exception raised or dict missing expected keys.
+
+---
+
+### TEST-EXP-008 — All Phase-48-55 Nodes Registered
+
+**Requirement**: R17
+**Steps**:
+1. Run: `python -c "from glossa_lab.experiment_graph import ATOMIC_NODES; nodes=[k for k in ATOMIC_NODES if k.startswith('Indus')]; print(len(nodes), nodes)"`
+**Expected**: ≥ 8 Indus nodes (IndusMediumValidator, IndusSyllabicLMBuilder, IndusDEDRCatalogue, IndusParpolaImporter, IndusConstrainedSA, IndusFormulaPilot, IndusFalsificationBattery, IndusEnsembleDecipher).
+**Failure**: Fewer than 8 nodes or any listed node missing.
+
+---
+
+### TEST-EXP-009 — All Phase-56-61 Nodes Registered
+
+**Requirement**: R17
+**Precondition**: `experiment_graph_phase56_61.py` created and registered.
+**Steps**:
+1. Run: `python -c "from glossa_lab.experiment_graph import ATOMIC_NODES; needed=['IndusParpola56Expansion','IndusExpandedSA','IndusPhonologicalGap','IndusFormulaPilot59','IndusContactDeep','IndusPhonotactic']; missing=[n for n in needed if n not in ATOMIC_NODES]; assert not missing, missing"`
+**Expected**: Exit 0, no missing nodes.
+**Failure**: Any of the 6 Phase-56-61 nodes not registered.
+
+---
+
+### TEST-EXP-010 — ANCHORS.json Reflects Post-Phase State
+
+**Requirement**: R19
+**Precondition**: Phase-56+ has been run.
+**Steps**:
+1. Load `backend/reports/INDUS_FINAL_ANCHORS.json`.
+2. Count entries where `"confidence": "HIGH"`.
+3. Compare against baseline (≥ 37 HIGH from Phase-48).
+**Expected**: HIGH anchor count ≥ 37, total anchors ≥ 149.
+**Failure**: Anchor counts regressed from baseline.
+

@@ -1,0 +1,761 @@
+{
+  "_citation": {
+    "primary": [
+      "A.1",
+      "A.13"
+    ],
+    "parpola_1994": true
+  },
+  "gpu_device": "cuda",
+  "n_master_entries": 75,
+  "n_added": 14,
+  "n_upgraded": 4,
+  "after_high": 37,
+  "after_medium": 49,
+  "high_coverage_pct": 54.9,
+  "high_medium_coverage_pct": 72.0,
+  "master_crosswalk": {
+    "86": {
+      "parpola_sign": "86",
+      "m_number": "M086",
+      "reading": "oru",
+      "gloss": "one",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "87": {
+      "parpola_sign": "87",
+      "m_number": "M087",
+      "reading": "veLLi",
+      "gloss": "silver/white [veLLi]",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "88": {
+      "parpola_sign": "88",
+      "m_number": "M088",
+      "reading": "muu(n)",
+      "gloss": "three",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "89": {
+      "parpola_sign": "89",
+      "m_number": "M089",
+      "reading": "tu",
+      "gloss": "suffix/case [tu/tuu]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "90": {
+      "parpola_sign": "90",
+      "m_number": "M090",
+      "reading": "aintu",
+      "gloss": "five",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "91": {
+      "parpola_sign": "91",
+      "m_number": "M091",
+      "reading": "aaru",
+      "gloss": "six",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "92": {
+      "parpola_sign": "92",
+      "m_number": "M092",
+      "reading": "eeLu",
+      "gloss": "seven",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "93": {
+      "parpola_sign": "93",
+      "m_number": "M093",
+      "reading": "eTTu",
+      "gloss": "eight",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "94": {
+      "parpola_sign": "94",
+      "m_number": "M094",
+      "reading": "onpatu",
+      "gloss": "nine",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "1": {
+      "parpola_sign": "1",
+      "m_number": "M001",
+      "reading": "aaL",
+      "gloss": "man/person [aaL = person]",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "6": {
+      "parpola_sign": "6",
+      "m_number": "M006",
+      "reading": "puli",
+      "gloss": "tiger/leopard",
+      "source": "Parpola 1994+Phase47",
+      "confidence": "HIGH"
+    },
+    "8": {
+      "parpola_sign": "8",
+      "m_number": "M008",
+      "reading": "erumai",
+      "gloss": "buffalo [erumai = female buffalo]",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "16": {
+      "parpola_sign": "16",
+      "m_number": "M016",
+      "reading": "kaLiru",
+      "gloss": "young elephant [kaLiRu]",
+      "source": "Parpola 1994+Phase47",
+      "confidence": "HIGH"
+    },
+    "28": {
+      "parpola_sign": "28",
+      "m_number": "M028",
+      "reading": "mayil",
+      "gloss": "peacock [mayil]",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "29": {
+      "parpola_sign": "29",
+      "m_number": "M029",
+      "reading": "kaakam",
+      "gloss": "crow/raven [kaakam]",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "31": {
+      "parpola_sign": "31",
+      "m_number": "M031",
+      "reading": "toTi",
+      "gloss": "ring/bangle [toTi]",
+      "source": "Parpola 2010",
+      "confidence": "MEDIUM"
+    },
+    "40": {
+      "parpola_sign": "40",
+      "m_number": "M040",
+      "reading": "van",
+      "gloss": "bow [vil → van alternate]",
+      "source": "Parpola 1994",
+      "confidence": "LOW"
+    },
+    "47": {
+      "parpola_sign": "47",
+      "m_number": "M047",
+      "reading": "miin",
+      "gloss": "fish/star [miin]",
+      "source": "Parpola 1994+Phase47",
+      "confidence": "MEDIUM"
+    },
+    "50": {
+      "parpola_sign": "50",
+      "m_number": "M050",
+      "reading": "miin",
+      "gloss": "fish+modifier",
+      "source": "Parpola 2010",
+      "confidence": "MEDIUM"
+    },
+    "53": {
+      "parpola_sign": "53",
+      "m_number": "M047",
+      "reading": "miin",
+      "gloss": "fish variant",
+      "source": "Laursen 2010",
+      "confidence": "MEDIUM"
+    },
+    "59": {
+      "parpola_sign": "59",
+      "m_number": "M059",
+      "reading": "eeL",
+      "gloss": "person/owner [eeL = to rule]",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "60": {
+      "parpola_sign": "60",
+      "m_number": "M060",
+      "reading": "miin",
+      "gloss": "star (fish=star rebus)",
+      "source": "Parpola 2010",
+      "confidence": "MEDIUM"
+    },
+    "62": {
+      "parpola_sign": "62",
+      "m_number": "M062",
+      "reading": "erutu",
+      "gloss": "zebu bull [erutu]",
+      "source": "Parpola 1994+Phase47",
+      "confidence": "HIGH"
+    },
+    "99": {
+      "parpola_sign": "99",
+      "m_number": "M099",
+      "reading": "vil",
+      "gloss": "bow → vil; also kol",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "100": {
+      "parpola_sign": "100",
+      "m_number": "M100",
+      "reading": "maa",
+      "gloss": "doe/deer [maa]",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "101": {
+      "parpola_sign": "101",
+      "m_number": "M101",
+      "reading": "kaTTai",
+      "gloss": "stick/post [kaTTai]",
+      "source": "Parpola 1994",
+      "confidence": "LOW"
+    },
+    "117": {
+      "parpola_sign": "117",
+      "m_number": "M117",
+      "reading": "ar",
+      "gloss": "wheel spoke [ar]",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "124": {
+      "parpola_sign": "124",
+      "m_number": "M124",
+      "reading": "kuTam",
+      "gloss": "pot/jar [kuTam]",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "125": {
+      "parpola_sign": "125",
+      "m_number": "M125",
+      "reading": "vil",
+      "gloss": "bow [vil]",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "126": {
+      "parpola_sign": "126",
+      "m_number": "M062",
+      "reading": "erutu",
+      "gloss": "bull variant",
+      "source": "Parpola 1994",
+      "confidence": "HIGH"
+    },
+    "128": {
+      "parpola_sign": "128",
+      "m_number": "M128",
+      "reading": "muLai",
+      "gloss": "sprout/corner [muLai]",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "145": {
+      "parpola_sign": "145",
+      "m_number": "M342",
+      "reading": "ay",
+      "gloss": "fish/star = āy suffix",
+      "source": "Parpola 1994",
+      "confidence": "HIGH"
+    },
+    "147": {
+      "parpola_sign": "147",
+      "m_number": "M045",
+      "reading": "yaanai",
+      "gloss": "elephant",
+      "source": "Parpola 1994+Phase47",
+      "confidence": "HIGH"
+    },
+    "162": {
+      "parpola_sign": "162",
+      "m_number": "M162",
+      "reading": "il",
+      "gloss": "house/place [il/iL]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "175": {
+      "parpola_sign": "175",
+      "m_number": "M175",
+      "reading": "katir",
+      "gloss": "spindle/ray [katir]",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "176": {
+      "parpola_sign": "176",
+      "m_number": "M176",
+      "reading": "an",
+      "gloss": "masculine suffix [-an]",
+      "source": "Parpola 1994+Phase47",
+      "confidence": "HIGH"
+    },
+    "202": {
+      "parpola_sign": "202",
+      "m_number": "M202",
+      "reading": "vaTTam",
+      "gloss": "circle [vaTTam]",
+      "source": "Parpola 1994",
+      "confidence": "LOW"
+    },
+    "211": {
+      "parpola_sign": "211",
+      "m_number": "M211",
+      "reading": "kol",
+      "gloss": "unicorn = kol/lord [rebus]",
+      "source": "Phase-46+Parpola",
+      "confidence": "MEDIUM"
+    },
+    "233": {
+      "parpola_sign": "233",
+      "m_number": "M233",
+      "reading": "uur",
+      "gloss": "town/place [uur]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "249": {
+      "parpola_sign": "249",
+      "m_number": "M249",
+      "reading": "tii",
+      "gloss": "scorpion [tee/tii]",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "261": {
+      "parpola_sign": "261",
+      "m_number": "M261",
+      "reading": "muruku",
+      "gloss": "young man/Murukan [muruku]",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "264": {
+      "parpola_sign": "264",
+      "m_number": "M264",
+      "reading": "peN",
+      "gloss": "female [peN]",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "267": {
+      "parpola_sign": "267",
+      "m_number": "M267",
+      "reading": "col",
+      "gloss": "particle: say/call [col]",
+      "source": "Phase-46+46T3",
+      "confidence": "UNCERTAIN"
+    },
+    "281": {
+      "parpola_sign": "281",
+      "m_number": "M281",
+      "reading": "piLLai",
+      "gloss": "child/squirrel [piLLai]",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "293": {
+      "parpola_sign": "293",
+      "m_number": "M293",
+      "reading": "vil",
+      "gloss": "comb [vil = bow/tooth]",
+      "source": "Phase-50",
+      "confidence": "LOW"
+    },
+    "305": {
+      "parpola_sign": "305",
+      "m_number": "M305",
+      "reading": "ooTu",
+      "gloss": "comitative [ooTu/oTu]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "311": {
+      "parpola_sign": "311",
+      "m_number": "M087",
+      "reading": "vaTa",
+      "gloss": "north/fig tree [vaTa]",
+      "source": "Parpola 1994",
+      "confidence": "MEDIUM"
+    },
+    "328": {
+      "parpola_sign": "328",
+      "m_number": "M328",
+      "reading": "aaL",
+      "gloss": "suffix ā/āl [aaL = person suffix]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "336": {
+      "parpola_sign": "336",
+      "m_number": "M336",
+      "reading": "in",
+      "gloss": "locative [iN/in]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "342": {
+      "parpola_sign": "342",
+      "m_number": "M342",
+      "reading": "ay",
+      "gloss": "honorific suffix [āy]",
+      "source": "Parpola 1994+Phase47",
+      "confidence": "HIGH"
+    },
+    "364": {
+      "parpola_sign": "364",
+      "m_number": "M006",
+      "reading": "puli",
+      "gloss": "tiger variant",
+      "source": "Parpola 1994",
+      "confidence": "HIGH"
+    },
+    "367": {
+      "parpola_sign": "367",
+      "m_number": "M367",
+      "reading": "am",
+      "gloss": "neuter suffix [am]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "391": {
+      "parpola_sign": "391",
+      "m_number": "M391",
+      "reading": "ka",
+      "gloss": "case marker [kaaN/ka]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "4": {
+      "parpola_sign": "4",
+      "m_number": "M004",
+      "reading": "keeL",
+      "gloss": "hear/question [keeL]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "12": {
+      "parpola_sign": "12",
+      "m_number": "M012",
+      "reading": "oNRu",
+      "gloss": "one [oNRu/oTTai]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "13": {
+      "parpola_sign": "13",
+      "m_number": "M013",
+      "reading": "nakaram",
+      "gloss": "town/n-place [nakaram]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "17": {
+      "parpola_sign": "17",
+      "m_number": "M017",
+      "reading": "kai",
+      "gloss": "hand [kai]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "18": {
+      "parpola_sign": "18",
+      "m_number": "M018",
+      "reading": "neer",
+      "gloss": "straight/right [neer]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "20": {
+      "parpola_sign": "20",
+      "m_number": "M020",
+      "reading": "kun",
+      "gloss": "hill/small [kun]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "26": {
+      "parpola_sign": "26",
+      "m_number": "M026",
+      "reading": "maa",
+      "gloss": "great/horse [maa]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "27": {
+      "parpola_sign": "27",
+      "m_number": "M027",
+      "reading": "maaRu",
+      "gloss": "opposite/change [maaRu]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "30": {
+      "parpola_sign": "30",
+      "m_number": "M030",
+      "reading": "koo",
+      "gloss": "king/lord [koo]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "34": {
+      "parpola_sign": "34",
+      "m_number": "M034",
+      "reading": "tooL",
+      "gloss": "shoulder [tooL]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "039": {
+      "parpola_sign": "039",
+      "m_number": "M039",
+      "reading": "aanai",
+      "gloss": "elephant variant [aaNai]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "41": {
+      "parpola_sign": "41",
+      "m_number": "M041",
+      "reading": "peer",
+      "gloss": "name/big [peer]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "48": {
+      "parpola_sign": "48",
+      "m_number": "M048",
+      "reading": "mun",
+      "gloss": "front/before [mun]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "51": {
+      "parpola_sign": "51",
+      "m_number": "M051",
+      "reading": "puu",
+      "gloss": "flower [puu/puL]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "57": {
+      "parpola_sign": "57",
+      "m_number": "M057",
+      "reading": "maaTu",
+      "gloss": "cow [maaTu]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "58": {
+      "parpola_sign": "58",
+      "m_number": "M058",
+      "reading": "kaNTam",
+      "gloss": "piece/section [kaN]",
+      "source": "Parpola 1994",
+      "confidence": "LOW"
+    },
+    "63": {
+      "parpola_sign": "63",
+      "m_number": "M063",
+      "reading": "mutalai",
+      "gloss": "crocodile [mutalai]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "65": {
+      "parpola_sign": "65",
+      "m_number": "M065",
+      "reading": "kuTam",
+      "gloss": "jar/pot [kuTam]",
+      "source": "Phase-50+Parpola",
+      "confidence": "MEDIUM"
+    },
+    "73": {
+      "parpola_sign": "73",
+      "m_number": "M073",
+      "reading": "koon",
+      "gloss": "king/chief [koon]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "77": {
+      "parpola_sign": "77",
+      "m_number": "M077",
+      "reading": "nal",
+      "gloss": "good [nal]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "80": {
+      "parpola_sign": "80",
+      "m_number": "M080",
+      "reading": "veenkai",
+      "gloss": "kino tree [veeNkai]",
+      "source": "Phase-48",
+      "confidence": "HIGH"
+    },
+    "DEDR_M220": {
+      "parpola_sign": "M220",
+      "m_number": "M220",
+      "reading": "ke",
+      "gloss": "to gore with horns (said of buffaloes and bison, which sway the horns from side to side)",
+      "source": "Phase-50 DEDR",
+      "confidence": "LOW"
+    }
+  },
+  "similar_phoneme_pairs": [
+    {
+      "s1": "M001",
+      "r1": "aaL",
+      "s2": "M328",
+      "r2": "aaL",
+      "sim": 1.0
+    },
+    {
+      "s1": "M006",
+      "r1": "puli",
+      "s2": "M006",
+      "r2": "puli",
+      "sim": 1.0
+    },
+    {
+      "s1": "M029",
+      "r1": "kaakam",
+      "s2": "M391",
+      "r2": "ka",
+      "sim": 1.0
+    },
+    {
+      "s1": "M047",
+      "r1": "miin",
+      "s2": "M050",
+      "r2": "miin",
+      "sim": 1.0
+    },
+    {
+      "s1": "M047",
+      "r1": "miin",
+      "s2": "M047",
+      "r2": "miin",
+      "sim": 1.0
+    },
+    {
+      "s1": "M047",
+      "r1": "miin",
+      "s2": "M060",
+      "r2": "miin",
+      "sim": 1.0
+    },
+    {
+      "s1": "M050",
+      "r1": "miin",
+      "s2": "M047",
+      "r2": "miin",
+      "sim": 1.0
+    },
+    {
+      "s1": "M050",
+      "r1": "miin",
+      "s2": "M060",
+      "r2": "miin",
+      "sim": 1.0
+    },
+    {
+      "s1": "M047",
+      "r1": "miin",
+      "s2": "M060",
+      "r2": "miin",
+      "sim": 1.0
+    },
+    {
+      "s1": "M062",
+      "r1": "erutu",
+      "s2": "M062",
+      "r2": "erutu",
+      "sim": 1.0
+    },
+    {
+      "s1": "M099",
+      "r1": "vil",
+      "s2": "M125",
+      "r2": "vil",
+      "sim": 1.0
+    },
+    {
+      "s1": "M099",
+      "r1": "vil",
+      "s2": "M293",
+      "r2": "vil",
+      "sim": 1.0
+    },
+    {
+      "s1": "M100",
+      "r1": "maa",
+      "s2": "M026",
+      "r2": "maa",
+      "sim": 1.0
+    },
+    {
+      "s1": "M124",
+      "r1": "kuTam",
+      "s2": "M065",
+      "r2": "kuTam",
+      "sim": 1.0
+    },
+    {
+      "s1": "M125",
+      "r1": "vil",
+      "s2": "M293",
+      "r2": "vil",
+      "sim": 1.0
+    },
+    {
+      "s1": "M342",
+      "r1": "ay",
+      "s2": "M342",
+      "r2": "ay",
+      "sim": 1.0
+    },
+    {
+      "s1": "M100",
+      "r1": "maa",
+      "s2": "M367",
+      "r2": "am",
+      "sim": 0.949
+    },
+    {
+      "s1": "M367",
+      "r1": "am",
+      "s2": "M026",
+      "r2": "maa",
+      "sim": 0.949
+    },
+    {
+      "s1": "M092",
+      "r1": "eeLu",
+      "s2": "M059",
+      "r2": "eeL",
+      "sim": 0.913
+    },
+    {
+      "s1": "M059",
+      "r1": "eeL",
+      "s2": "M004",
+      "r2": "keeL",
+      "sim": 0.913
+    }
+  ]
+}

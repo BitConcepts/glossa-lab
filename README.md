@@ -110,7 +110,8 @@ glossa-lab/
 │  │  ├─ data/          ← corpora, anchor sets, LM files (cited per H18)
 │  │  └─ model_intelligence.py ← HF leaderboard sync + scoring
 │  ├─ reports/          ← experiment results, phase syntheses
-│  └─ scripts/          ← utility and research scripts
+│  ├─ data/          ← corpus data files (indus_cisi_corpus.json, dravidian_tamil_lm.json, ...)
+│  └─ scripts/          ← utility and research scripts (phase44_*.py, build_*.py, ...)
 ├─ frontend/
 │  ├─ src/              ← React source
 │  │  └─ components/IndusEvidenceView.tsx ← Evidence Graph three-tab workspace
@@ -177,7 +178,8 @@ curl.exe -sf http://localhost:8001/ | Select-String 'index-[A-Za-z0-9]+\.js'
 
 - **H18** — Every data file must have `_citation` traceable to `CITATIONS.md`
 - **H19** — Foundation check must PASS before external communication
-- Current: **17 PASS / 0 FAIL / 0 WARN** (`GET /api/v1/research/foundation-check`)
+- Current: **13 PASS (archived) / 0 FAIL** (`GET /api/v1/research/foundation-check`)
+- V8-V24 decipherment campaign archived 2026-05-17; INDUS_FINAL_ANCHORS.json (137 anchors) preserved
 
 ---
 
@@ -190,23 +192,26 @@ curl.exe -sf http://localhost:8001/ | Select-String 'index-[A-Za-z0-9]+\.js'
 | `CITATIONS.md` | Research data citation registry |
 | `docs/USER_GUIDE.md` | Full user guide (all panels) including Evidence Graph |
 | `docs/architecture.md` | System architecture including Evidence Graph layer |
-| `docs/REQUIREMENTS.md` | Formal requirements (R1–R14, incl. R13 Evidence Graph) |
-| `docs/TEST_SPEC.md` | Test specification (TEST-IEA, TEST-EV, TEST-PW-EG) |
+| `docs/REQUIREMENTS.md` | Formal requirements (R1–R16, incl. R14 Evidence Graph, R15 DB reliability, R16 CI/CD) |
+| `docs/TEST_SPEC.md` | Test specification (TEST-IEA, TEST-EV, TEST-PW-EG, TEST-CI) |
 | `docs/research/` | Decipherment research documents |
 | `docs/guides/` | How-to guides (experiments, pipelines, studies) |
 | `glossa-indus/LEDGER.md` | Evidence Graph batch work log |
 
 ---
 
-## Current research status (May 2026)
+## Current research status (May 2026 — Phase-44)
 
-- **333/390 signs assigned** — 85.4% coverage, 17 HIGH-confidence anchors
-- **99.2% token coverage** on Holdat corpus (1,670 seals / 7,002 tokens)
-- **Phase-29d**: Enmenanak confirmed top candidate (score 7.0, p<0.001)
-- **Phase-31 T3**: Indus Script and Tamil-Brahmi both in syllabic Zipf regime (δ=0.177)
+- **137 verified anchors** (7 HIGH, 54 MEDIUM, 75 LOW; 196 nīr-placeholder entries from V8-V24 archive removed)
+- **7 HIGH-confidence readings**: M342=ay/ā, M176=an/aṇ, M099=kol/koḷ, M062=erutu, M045=yānai, M016=kaḷiṟu, M006=puli
+- **CISI corpus rebuilt**: 179 inscriptions / 1003 tokens / 182 distinct signs
+- **Dravidian LM expanded**: 944 bigrams (from 184) via TamilTB v0.1 integration
+- **Phase-44 T1 (M342 genitive)**: UNCERTAIN — cross-site Jaccard 0.429; anchor signs confirmed in genitive context
+- **Phase-44 T2 (M99 phonetic)**: SUPPORTED — kol/koḷ (DEDR 2173/2174); M267→M099 title formula 84×
 - **Phase-43 (May 2026)**: 231.9σ positional structure confirmed; Hunt tripartite formula 59× lift
 - **Evidence Graph (May 2026)**: 11 papers registered, 22 claims extracted across Parpola/FSW/Yadav/Roif/Hunt
 - **TB correlation**: 0.907 (post M267 correction)
+- V8-V24 autonomous campaign **archived** 2026-05-17; INDUS_FINAL_ANCHORS.json preserved at 137 entries
 
 ---
 

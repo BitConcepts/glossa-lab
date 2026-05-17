@@ -8739,3 +8739,139 @@ Risks:
 Next step:
   Phase-44 T1: Run bigram context analysis for M77/342 to confirm -n genitive reading.
   Upload Roif/Hunt papers via Evidence Graph UI.
+
+---
+
+## [2026-05-17] Entry — Phase-44: Infrastructure Fix, TamilTB LM Expansion, M342/M99 Phonetic Experiments, Dashboard + UI Fixes
+
+Objective:
+Clean anchor set noise from V8-V24 archive, rebuild CISI corpus, expand Dravidian LM with
+TamilTB data, run two targeted phonetic experiments (M342 genitive, M99 DEDR), fix the
+decipherment dashboard for archived campaign state, and update UI navigation.
+
+What was done:
+
+1. ANCHOR SET CLEAN (phase44_infrastructure.py):
+   - Removed 196 nir-placeholder entries added by V8-V24 autonomous loop
+   - Kept 137 real assignments: 7 HIGH, 54 MEDIUM, 75 LOW, 1 UNCERTAIN
+   - 7 HIGH reads: M342=ay/a, M176=an/an, M099=kol/kol, M062=erutu, M045=yanai, M016=kaliru, M006=puli
+   - Report: reports/phase44_infrastructure.json
+
+2. CISI CORPUS REBUILD (phase44_infrastructure.py):
+   - Rebuilt indus_cisi_corpus.json from mayig/CISI data
+   - 179 inscriptions / 1003 sign tokens / 182 distinct signs
+   - Mean inscription length: 5.6 signs
+   - Top-5: P324(99), P122(76), P385(35), P086(35), P050(32)
+   - Gulf corpus: PARTIAL (laursen_2010_table1.json exists but contains no sign sequences)
+
+3. DRAVIDIAN LM EXPANSION (phase44_rebuild_dravidian_lm.py):
+   - Integrated TamilTB v0.1 (morphologically annotated Tamil TreeBank, ~3,489 words, CC-SA 3.0)
+   - LM bigrams: 184 -> 944 (+413%, zero English contamination)
+   - New _citation added: E.1 (DEDR), E.2, E.3 (TamilTB)
+   - Report: reports/phase44_dravidian_lm_rebuild.json
+
+4. PHASE-44 T1 — M342 BIGRAM CONTEXT / GENITIVE READING (phase44_t1_m342_bigrams.py):
+   - Target: M342 (candidate reading: ay/a or genitive suffix -n)
+   - Corpus: 584 occurrences across 502 inscriptions, 9 sites
+   - Avg relative position: 0.561 (expected 0.6+ for terminal case marker)
+   - Top pre-M342 signs: M099(81), M211(45), M342(35), M267(31)
+   - Top post-M342 sign: M176(122) by large margin
+   - Cross-site pre-M342 Jaccard (Mohenjo-daro vs Harappa): 0.429 (shared vocabulary)
+   - Verdict: UNCERTAIN
+     Findings: anchor signs M099/M267/M176 appear in genitive contexts; top-3 pre-signs
+     account for 77.8% of preceding contexts (possible noun-class restriction);
+     avg position < 0.6 weakens strict terminal case-marker hypothesis
+   - Epistemic status: [UNCERTAIN] — consistent with but not decisive for genitive reading
+   - Report: reports/phase44_t1_m342_bigrams.json
+
+5. PHASE-44 T2 — M99 PHONETIC VALUE FROM DEDR (phase44_t2_m99_dedr.py):
+   - Target: M99 in the fixed M267->M099 title formula
+   - Formula count: 84 of 389 occurrences (21.6%); across all 9 sites
+   - 96.4% of formula instances have pre-extension (not bare 2-sign formula)
+   - Top pre-M267 sign in formula context: M059(7), M293(7), M328(7)
+   - Top post-M099 sign: M342(81 in full corpus) — genitive follows M99
+   - DEDR search: 'kol' root found 50 hits in DEDR OCR text
+   - Best candidates:
+       DEDR 2173: kol = rod, staff, city, hold (all Dravidian)
+       DEDR 2174: kol = take, receive, have (Tamil reflexive auxiliary)
+       DEDR 2209: kon/kor = kill, cut (less likely for title formula)
+   - Verdict: SUPPORTED
+     M99 = kol/kol (Dravidian reflexive auxiliary; title formula context)
+     kol as title element could encode: holder/taker (kol=take), or fort/dwelling (kol=city)
+   - Epistemic status: [SUPPORTED, medium confidence]
+   - Report: reports/phase44_t2_m99_dedr.json
+
+6. FRONTEND: DeciphermentPanel archived state fix (frontend/src/components/DeciphermentPanel.tsx):
+   - Panel now detects archived decipherment campaign via backend response shape
+   - Shows real coverage metrics (anchors: 7 HIGH / 137 total) rather than NA/0%
+   - Displays archive banner when V8-V24 campaign data not present
+
+7. UI NAVIGATION: Help panel moved to sidebar bottom section (frontend/src/App.tsx):
+   - Help link relocated from Research section to bottom persistent sidebar area
+   - Foundation Check icon adjusted
+
+8. FRONTEND REBUILD:
+   - npm run build completed; new bundle: index-DMsLPwTh.js replaces index-jwv6u_va.js
+   - Old bundle deleted, dist/index.html updated
+
+9. DOCUMENTATION:
+   - README.md: fixed box-drawing character formatting error (lines 113-114 inside code fence);
+     updated Current Research Status section to reflect Phase-44 findings
+   - docs/USER_GUIDE.md: updated to reflect Phase-44 research state, UI navigation changes,
+     and current anchor/corpus counts
+
+Files changed:
+  backend/glossa_lab/data/indus_cisi_corpus.json (NEW — 179 inscriptions, 1003 tokens)
+  backend/glossa_lab/data/dravidian_tamil_lm.json (MODIFIED — 944 bigrams, TamilTB integrated)
+  backend/reports/INDUS_FINAL_ANCHORS.json (MODIFIED — 137 real anchors, 196 placeholders removed)
+  backend/scripts/phase44_infrastructure.py (NEW)
+  backend/scripts/phase44_rebuild_dravidian_lm.py (NEW)
+  backend/scripts/phase44_t1_m342_bigrams.py (NEW)
+  backend/scripts/phase44_t2_m99_dedr.py (NEW)
+  reports/phase44_infrastructure.json (NEW)
+  reports/phase44_dravidian_lm_rebuild.json (NEW)
+  reports/phase44_t1_m342_bigrams.json (NEW)
+  reports/phase44_t2_m99_dedr.json (NEW)
+  frontend/src/components/DeciphermentPanel.tsx (MODIFIED — archived state)
+  frontend/src/App.tsx (MODIFIED — Help navigation)
+  frontend/dist/index.html (MODIFIED — new bundle hash)
+  frontend/dist/assets/index-DMsLPwTh.js (NEW — rebuilt bundle)
+  frontend/dist/assets/index-jwv6u_va.js (DELETED — old bundle)
+  README.md (MODIFIED — formatting fix + Phase-44 research status)
+  docs/USER_GUIDE.md (MODIFIED — Phase-44 state, UI nav)
+  LEDGER.md (this entry)
+
+Checks run:
+  - phase44_infrastructure.py: exit 0; 196 anchors removed, CISI rebuilt
+  - phase44_rebuild_dravidian_lm.py: exit 0; 944 bigrams, 0% contamination
+  - phase44_t1_m342_bigrams.py: exit 0; UNCERTAIN verdict
+  - phase44_t2_m99_dedr.py: exit 0; SUPPORTED verdict
+  - Frontend rebuild: npm run build success
+  - README.md formatting verified: no remaining || lines in code fences
+
+HEADLINE RESULTS:
+  [SUPPORTED, medium confidence] M99 = kol/kol (DEDR 2173/2174)
+    - Title formula M267->M099 attested 84x across all 9 major Indus sites
+    - DEDR root confirmed present in Tamil/Dravidian lexicon
+  [UNCERTAIN] M342 genitive reading: anchor signs in context but position < 0.6 threshold
+  [INFRASTRUCTURE] Anchor set purged: 333 -> 137 (real assignments only)
+  [INFRASTRUCTURE] CISI corpus rebuilt: 179 inscriptions, 1003 tokens
+  [INFRASTRUCTURE] Dravidian LM 5.1x expanded: 184 -> 944 bigrams
+
+Open TODOs:
+  1. V3 SA 300K iterations for convergence verification (phase-44 T3 pending)
+  2. Run indus_intake.py on user_uploads PDFs (2 papers pending)
+  3. Fetch Wells ICIT, Hunt 2014, Fuls papers for Evidence Graph
+  4. Expand Sangam LM further (current 944 bigrams still thin vs ICIT-scale corpora)
+  5. Gulf seal corpus: source laursen_2010 data with inscription sequences
+
+Risks:
+  - M342 genitive UNCERTAIN: avg position 0.561 is lower than expected for a pure terminal marker;
+    need larger corpus or clearer positional criterion
+  - Gulf corpus: Laursen 2010 table1 data has no sign sequences; need OCR or transcription source
+  - Dravidian LM at 944 bigrams still sparse for high-n SA convergence; Phase-38 SA used equalized LM
+  - H19: Phase-44 results are internal only; not publishable without ICIT corpus validation
+
+Next step:
+  Phase-44 T3: V3 corpus SA at 300K iterations for independent replication.
+  Literature intake: upload Roif + Hunt papers via Evidence Graph UI.

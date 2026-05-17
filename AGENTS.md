@@ -774,6 +774,44 @@ compatibility; new code MUST conform.
 
 ---
 
+### H20 — Email sending rule (ABSOLUTE)
+
+> The agent MUST NEVER autonomously send any email to a third party.
+
+#### H20.1 — Only one permitted recipient for autonomous sends
+
+The agent may send emails **only** to `tpierson@bitconcepts.tech` (the user's
+own inbox), and only for the following purposes:
+- Insights / research reports addressed directly to the user
+- Drafts of third-party emails for the user's review before they send them
+
+#### H20.2 — Third-party emails are ALWAYS drafts
+
+For ANY email intended for a person or institution other than the user
+(examples: Dr. Fuls, Penn Museum, journal editors, prize panels, collaborators,
+archaeologists, licensing bodies), the agent MUST:
+1. Write the draft email body as plain text in the conversation or save it to
+   `reports/<context>_draft_email.txt`
+2. Present it to the user for review
+3. STOP — the user will send it themselves
+
+The agent MUST NOT:
+- Call `resend()`, `Notifier.send()`, SMTP, Graph API, or any transport layer
+  for a third-party recipient
+- Pre-fill a `to:` field with a non-user address and trigger sending
+- Use any automated batch-send script to reach external parties
+
+#### H20.3 — Violation remediation
+
+Phase-43 T3.1 sent an email directly to `andreas.fuls@tu-berlin.de` in
+violation of this rule. This must not recur.
+
+If the user asks the agent to "send" something to a third party, the agent
+should respond: *"I can draft that for you. Here is the draft — please review
+and send from your email client."*
+
+---
+
 ## EXPERIMENT EXECUTION RULES (G-SERIES)
 
 ### G1 — All experiments MUST run through the Glossa-Lab graph executor (CRITICAL)

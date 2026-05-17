@@ -1,0 +1,117 @@
+# Hypothesis Model: Hunt Civic-Ritual Operational Code
+# Glossa-Lab Indus Evidence Graph
+# STATUS: STUB — awaiting paper upload to raw/user_uploads/
+
+model_id: hunt_civic_ritual
+model_name: "Hunt Civic-Ritual Operational Code Model"
+model_type: symbolic_operational_civic_code
+status: stub
+
+awaiting_upload:
+  file: "Hunt paper (title TBD)"
+  destination: "raw/user_uploads/"
+  intake_command: "python scripts/indus_intake.py --file raw/user_uploads/<hunt_paper>.pdf"
+
+# Known claims from instruction plan description
+known_claims_summary: >
+  Indus script is a civic-ritual operational code, not primarily phonetic writing
+  or royal titulature. Proposes tripartite grammar: prefix (identity/commodity/office)
+  + medial (action/transaction/domain) + suffix (cycle/jurisdiction/logistics).
+  Claims a 24-cluster translation atlas. Faunal signs as identity/guild/commodity prefixes;
+  botanical signs as agricultural/ritual medials; celestial signs as suffix/cycle markers;
+  hydrological signs correlating with waterworks/docks/canals.
+
+core_claims:
+  - claim_id: hunt_syntax_001
+    normalized_claim: "Indus inscriptions follow prefix-medial-suffix grammar."
+    claim_type: sign_position_claim
+    claim_status: untested
+    testability: directly_testable
+    falsification_condition: >
+      If faunal signs are NOT statistically initial and celestial signs are NOT
+      statistically terminal across the corpus, the tripartite syntax claim fails.
+
+  - claim_id: hunt_faunal_001
+    normalized_claim: "Faunal signs often function as identity/guild/commodity prefixes."
+    claim_type: sign_function_claim
+    claim_status: untested
+    testability: directly_testable
+    falsification_condition: >
+      If faunal signs are not enriched in initial position above random baseline.
+
+  - claim_id: hunt_celestial_001
+    normalized_claim: "Celestial signs often function as suffix/cycle markers."
+    claim_type: sign_function_claim
+    claim_status: untested
+    testability: directly_testable
+    falsification_condition: >
+      If celestial signs are not enriched in terminal position above random baseline.
+
+  - claim_id: hunt_hydro_001
+    normalized_claim: >
+      Hydrological signs correlate with waterworks, docks, canals, and tidal contexts.
+    claim_type: archaeological_context_claim
+    claim_status: untested
+    testability: indirectly_testable
+    required_data: "Site metadata with waterworks/dock classification"
+    falsification_condition: >
+      Hydrological signs do not cluster at water-related sites above random.
+
+  - claim_id: hunt_civic_001
+    normalized_claim: >
+      Governance signs correlate with gates, citadels, civic offices, and control points.
+    claim_type: archaeological_context_claim
+    claim_status: untested
+    testability: indirectly_testable
+    required_data: "Site metadata with gate/citadel/control classification"
+
+# Tests to run once paper is uploaded and encoded
+tests_planned:
+  - id: hunt_test_001
+    description: "Are faunal signs statistically initial?"
+    method: "Compare faunal sign I-rates vs corpus average. Null model comparison."
+    status: pending_encoding
+
+  - id: hunt_test_002
+    description: "Are celestial signs statistically terminal?"
+    method: "Compare celestial sign T-rates vs corpus average. Null model comparison."
+    status: pending_encoding
+
+  - id: hunt_test_003
+    description: "Are water signs enriched in hydrological site contexts?"
+    method: "Chi-squared test on sign frequency by site_type=water_management"
+    required_data: "Site type metadata"
+    status: pending_data
+
+  - id: hunt_test_004
+    description: "Are governance signs enriched at gates/citadels/control points?"
+    required_data: "Site type metadata"
+    status: pending_data
+
+  - id: hunt_test_005
+    description: >
+      Does prefix-medial-suffix structure outperform random and frequency-preserved null models?
+    method: >
+      Build positional sequence templates. Compare positional entropy of actual
+      inscriptions vs frequency-preserved shuffled sequences.
+    status: pending_encoding
+
+# Comparison with Phase-43 structural findings
+comparison_with_glossa_lab:
+  positional_analysis: >
+    Phase-43 T2.2 confirms 20 TERMINAL_STRONG signs and 40 INITIAL_STRONG signs
+    exist in the V3 corpus. This is consistent with the prefix-medial-suffix hypothesis
+    but does not confirm it — the same pattern is also predicted by the Dravidian suffix
+    model. The two models make the same structural prediction; they differ in interpretation.
+  key_question: >
+    Can faunal/celestial/botanical/hydrological sign IDENTITY be confirmed from
+    sign visual descriptions? This requires a visual crosswalk (Mahadevan catalog images)
+    which is not yet fully digitized in this system.
+
+next_steps:
+  1: "Upload Hunt paper to raw/user_uploads/"
+  2: "Run: python scripts/indus_intake.py --file raw/user_uploads/<hunt>.pdf"
+  3: "Extract 24-cluster translation atlas from paper"
+  4: "Classify top-20 signs by Hunt taxonomy (faunal/botanical/celestial/hydrological/governance)"
+  5: "Run positional tests (hunt_test_001, hunt_test_002)"
+  6: "Update model status from stub to partially_encoded"

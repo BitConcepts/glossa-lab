@@ -1,0 +1,25 @@
+{
+  "document_id": "positional_analysis_of_indus_signs_a2bedc93",
+  "title": "",
+  "extraction_date": "2026-05-17T16:30:50.329926",
+  "total_claims": 1,
+  "auto_extracted": 1,
+  "manually_curated": 0,
+  "claims": [
+    {
+      "claim_id": "positional_analysis_of_indus_signs_a2bedc93_statisti_0001",
+      "source_document_id": "positional_analysis_of_indus_signs_a2bedc93",
+      "claim_type": "statistical_claim",
+      "normalized_claim": "Statistical finding: Positional Analysis",
+      "quote_fragment": "Positional Analysis",
+      "claim_status": "untested",
+      "testability": "directly_testable",
+      "confidence_in_source": 0.8,
+      "extracted_at": "2026-05-17T16:30:50.314375"
+    }
+  ],
+  "_citation": {
+    "system": "Glossa-Lab Indus Evidence Graph Batch 4",
+    "source_doc": "positional_analysis_of_indus_signs_a2bedc93"
+  }
+}

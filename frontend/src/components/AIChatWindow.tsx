@@ -29,6 +29,7 @@ import {
   type ChatMessage,
 } from "../api";
 import { useAIChat, type ChatRequest } from "../hooks/useAIChat";
+import { useProject } from "../hooks/useProject";
 import { useToast } from "../hooks/useToast";
 
 // ── LaTeX math simplifier (no MathJax needed) ────────────────────────────────
@@ -394,6 +395,7 @@ function ActionCard({ action, status, onApprove, onCancel, onAutoApproveAll }: {
 
 export function AIChatWindow() {
   const { isOpen, request, closeChat, setDocked, isDocked } = useAIChat();
+  const { activeProject } = useProject();
   const { toast } = useToast();
 
   const [messages, setMessages] = useState<MsgUI[]>([]);
@@ -736,6 +738,13 @@ export function AIChatWindow() {
               style={{ border: "none", background: "none", cursor: "pointer", fontSize: 11, color: "#6b7280", padding: 0, lineHeight: 1 }}
               title="Clear to Global">×</button>
           </span>
+        ) : activeProject ? (
+          <span style={{ fontSize: 10, padding: "2px 8px", borderRadius: 10,
+            background: "linear-gradient(90deg,#dcfce7,#d1fae5)", color: "#065f46",
+            fontWeight: 700, border: "1px solid #6ee7b7", display: "flex", alignItems: "center", gap: 4 }}
+            title={`Active project: ${activeProject.label}`}>
+            📁 <span style={{ maxWidth: 160, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{activeProject.label}</span>
+          </span>
         ) : (
           <span style={{ fontSize: 10, color: "#9ca3af", fontStyle: "italic" }}
             title="Context auto-infers when you open a corpus, experiment, or study">
@@ -939,6 +948,7 @@ function _actionViewHint(action: AIAction): string | null {
 
 export function ChatInline() {
   const { setDocked, request } = useAIChat();
+  const { activeProject } = useProject();
   const [messages, setMessages] = useState<MsgUI[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
@@ -1104,6 +1114,13 @@ export function ChatInline() {
             ⚡ {contextType}: <span style={{ maxWidth: 100, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{autoContextLabel}</span>
             <button onClick={() => { setContextType(""); setContextId(""); setAutoContextLabel(null); }}
               style={{ border: "none", background: "none", cursor: "pointer", fontSize: 10, color: "#64748b", padding: 0, lineHeight: 1 }}>×</button>
+          </span>
+        ) : activeProject ? (
+          <span style={{ fontSize: 9, padding: "1px 6px", borderRadius: 8,
+            background: "linear-gradient(90deg,#064e3b,#065f46)", color: "#6ee7b7",
+            fontWeight: 700, border: "1px solid #059669", display: "flex", alignItems: "center", gap: 3 }}
+            title={`Active project: ${activeProject.label}`}>
+            📁 <span style={{ maxWidth: 100, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{activeProject.label}</span>
           </span>
         ) : (
           <span style={{ fontSize: 9, color: "#475569", fontStyle: "italic" }}

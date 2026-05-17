@@ -51,6 +51,26 @@ _HF_MAX_RETRIES = 4   # retries per page on 429
 _HF_PAGE_DELAY = 3.5  # seconds between pages — HF API bucket: 1000 req/5min with token
 _sync_lock = threading.Lock()  # prevent concurrent HF syncs
 
+# ── Global HF endpoint cooldown ────────────────────────────────────────────
+# Rate limits are per-IP.  When the 429 retry budget is exhausted the
+# remaining cool-off period is recorded here so that:
+#   1. Concurrent callers (manual sync endpoint) skip instead of piling in.
+#   2. The daily re-sync respects the window instead of immediately retrying.
+_hf_cooldown_until: float = 0.0
+
+import time as _time_hf  # noqa: E402
+
+
+def _hf_cooldown_trip(secs: float) -> None:
+    global _hf_cooldown_until  # noqa: PLW0603
+    _hf_cooldown_until = _time_hf.monotonic() + secs
+    _log.warning("HF global cooldown: pausing HF requests for %.0fs", secs)
+
+
+def _hf_is_cooling() -> tuple[bool, float]:
+    remaining = _hf_cooldown_until - _time_hf.monotonic()
+    return remaining > 0, max(0.0, remaining)
+
 
 def _parse_ratelimit_reset(headers: object) -> float | None:
     """Parse HF's RateLimit header to extract seconds until reset.
@@ -118,6 +138,14 @@ async def sync_from_huggingface() -> dict[str, Any]:
 
 def _sync_hf_blocking() -> dict[str, Any]:
     """Blocking HF sync — fetches leaderboard data and stores scores."""
+    # Check global cooldown first — rate limits are per-IP and global.
+    # A previous 429-exhaustion sets _hf_cooldown_until; respect it here
+    # so that the manual sync endpoint and the daily scheduler both back off.
+    cooling, remaining = _hf_is_cooling()
+    if cooling:
+        msg = f"HF global cooldown active ({remaining:.0f}s remaining) — skipping sync"
+        _log.info(msg)
+        return {"synced": 0, "errors": 0, "message": msg}
     if not _sync_lock.acquire(blocking=False):
         _log.info("HF sync already in progress, skipping")
         return {"synced": 0, "errors": 0, "message": "Sync already in progress"}
@@ -173,19 +201,27 @@ def _sync_hf_inner() -> dict[str, Any]:
                 with urllib.request.urlopen(rq, timeout=30, context=ssl_ctx) as rsp:
                     return json.loads(rsp.read().decode())
             except urllib.error.HTTPError as he:
-                if he.code == 429 and attempt < _HF_MAX_RETRIES:
-                    # Prefer HF's RateLimit header t= (exact window reset) over Retry-After
+                if he.code == 429:
+                    # Parse the exact window-reset time from HF's RateLimit header.
+                    # This is the ground truth for how long we must wait.
                     wait = (
                         _parse_ratelimit_reset(he.headers)
                         or (float(he.headers.get("Retry-After") or 0))
                         or (2 ** attempt) * 5
                     )
-                    _log.info(
-                        "HF rate-limited (429), waiting %.0fs (attempt %d/%d)",
-                        wait, attempt + 1, _HF_MAX_RETRIES,
-                    )
-                    time.sleep(wait)
-                    continue
+                    if attempt < _HF_MAX_RETRIES:
+                        _log.info(
+                            "HF rate-limited (429), waiting %.0fs (attempt %d/%d)",
+                            wait, attempt + 1, _HF_MAX_RETRIES,
+                        )
+                        time.sleep(wait)
+                        continue
+                    else:
+                        # All retries exhausted.  Record the remaining cooldown
+                        # globally so ANY subsequent call (concurrent or scheduled)
+                        # skips rather than firing into the same depleted window.
+                        _hf_cooldown_trip(max(wait, 60.0))
+                        raise
                 raise
         return {}  # unreachable
 

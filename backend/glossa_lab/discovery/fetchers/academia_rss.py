@@ -28,8 +28,10 @@ from glossa_lab.discovery.fetchers.base import (
     Fetcher,
     FetcherError,
     TopicProfile,
+    _429_cooldown,
     http_get_json,
     run_in_thread,
+    source_is_cooling,
 )
 from glossa_lab.discovery.store import RawItem
 
@@ -142,6 +144,10 @@ class AcademiaRSSFetcher(Fetcher):
     ) -> Iterable[RawItem]:
         import asyncio as _asyncio  # noqa: PLC0415
 
+        cooling, remaining = source_is_cooling(self.source)
+        if cooling:
+            _log.debug("academia_rss cooldown active — skipping (%.0fs remaining)", remaining)
+            return []
         opts = topic.overrides_for(self.source)
         # Allow per-topic slug overrides
         slugs: list[str] = list(opts.get("slugs") or [])
@@ -165,6 +171,7 @@ class AcademiaRSSFetcher(Fetcher):
                     http_get_json, url, headers=_HEADERS, timeout=20.0,
                 )
             except FetcherError as exc:
+                _429_cooldown(str(exc), self.source)
                 _log.debug("Academia RSS error for slug %s: %s", slug, exc)
                 continue
 

@@ -1,5 +1,5 @@
 {
-  "total": 149,
+  "total": 163,
   "anchors": {
     "M342": {
       "reading": "ay/ā",
@@ -328,9 +328,9 @@
     },
     "M001": {
       "reading": "tōḷ",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Round 2: INITIAL position (freq=14), distributional assignment",
-      "source": "+Parpola_1994"
+      "source": "Parpola 1994++Parpola_1994"
     },
     "M075": {
       "reading": "māṟ",
@@ -394,8 +394,9 @@
     },
     "M028": {
       "reading": "cōḻ",
-      "confidence": "LOW",
-      "basis": "Round 3: INITIAL position (freq=11), distributional assignment"
+      "confidence": "MEDIUM",
+      "basis": "Round 3: INITIAL position (freq=11), distributional assignment",
+      "source": "Parpola 1994+"
     },
     "M043": {
       "reading": "erutu",
@@ -404,8 +405,9 @@
     },
     "M029": {
       "reading": "yānai",
-      "confidence": "LOW",
-      "basis": "Round 3: INITIAL position (freq=11), distributional assignment"
+      "confidence": "MEDIUM",
+      "basis": "Round 3: INITIAL position (freq=11), distributional assignment",
+      "source": "Parpola 1994+"
     },
     "M064": {
       "reading": "nal",
@@ -454,8 +456,9 @@
     },
     "M128": {
       "reading": "kaṇ",
-      "confidence": "LOW",
-      "basis": "Round 3: MEDIAL position (freq=7), distributional assignment"
+      "confidence": "MEDIUM",
+      "basis": "Round 3: MEDIAL position (freq=7), distributional assignment",
+      "source": "Parpola 1994+"
     },
     "M082": {
       "reading": "nal",
@@ -788,6 +791,90 @@
       "confidence": "MEDIUM",
       "source": "Parpola_1994_via_phase51",
       "gloss": "three vertical strokes, possibly 'three' or 'three worlds'"
+    },
+    "M090": {
+      "reading": "aintu",
+      "confidence": "MEDIUM",
+      "source": "Parpola 1994",
+      "gloss": "five"
+    },
+    "M093": {
+      "reading": "eTTu",
+      "confidence": "MEDIUM",
+      "source": "Parpola 1994",
+      "gloss": "eight"
+    },
+    "M094": {
+      "reading": "onpatu",
+      "confidence": "MEDIUM",
+      "source": "Parpola 1994",
+      "gloss": "nine"
+    },
+    "M008": {
+      "reading": "erumai",
+      "confidence": "MEDIUM",
+      "source": "Parpola 1994",
+      "gloss": "buffalo [erumai = female buffalo]"
+    },
+    "M100": {
+      "reading": "maa",
+      "confidence": "MEDIUM",
+      "source": "Parpola 1994",
+      "gloss": "doe/deer [maa]"
+    },
+    "M101": {
+      "reading": "kaTTai",
+      "confidence": "LOW",
+      "source": "Parpola 1994",
+      "gloss": "stick/post [kaTTai]"
+    },
+    "M125": {
+      "reading": "vil",
+      "confidence": "MEDIUM",
+      "source": "Parpola 1994",
+      "gloss": "bow [vil]"
+    },
+    "M202": {
+      "reading": "vaTTam",
+      "confidence": "LOW",
+      "source": "Parpola 1994",
+      "gloss": "circle [vaTTam]"
+    },
+    "M211": {
+      "reading": "kol",
+      "confidence": "MEDIUM",
+      "source": "Phase-46+Parpola",
+      "gloss": "unicorn = kol/lord [rebus]"
+    },
+    "M249": {
+      "reading": "tii",
+      "confidence": "MEDIUM",
+      "source": "Parpola 1994",
+      "gloss": "scorpion [tee/tii]"
+    },
+    "M293": {
+      "reading": "vil",
+      "confidence": "LOW",
+      "source": "Phase-50",
+      "gloss": "comb [vil = bow/tooth]"
+    },
+    "M058": {
+      "reading": "kaNTam",
+      "confidence": "LOW",
+      "source": "Parpola 1994",
+      "gloss": "piece/section [kaN]"
+    },
+    "M065": {
+      "reading": "kuTam",
+      "confidence": "MEDIUM",
+      "source": "Phase-50+Parpola",
+      "gloss": "jar/pot [kuTam]"
+    },
+    "M220": {
+      "reading": "ke",
+      "confidence": "LOW",
+      "source": "Phase-50 DEDR",
+      "gloss": "to gore with horns (said of buffaloes and bison, which sway the horns from side to side)"
     }
   },
   "_citation": {

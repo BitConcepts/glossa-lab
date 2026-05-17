@@ -86,6 +86,37 @@ _ppubs_token: str | None = None
 _cookie_jar: http.cookiejar.CookieJar = http.cookiejar.CookieJar()
 _opener: urllib.request.OpenerDirector | None = None
 
+# Circuit breaker — disable PPUBS after consecutive session failures
+import time as _time_cb  # noqa: E402
+_ppubs_consecutive_fails: int = 0
+_ppubs_skip_until: float = 0.0
+_PPUBS_MAX_FAILS: int = 2
+_PPUBS_COOLDOWN_SECS: float = 1800.0  # 30 min — PPUBS session issues are persistent
+
+
+def _ppubs_cb_record_failure() -> None:
+    global _ppubs_consecutive_fails, _ppubs_skip_until  # noqa: PLW0603
+    _ppubs_consecutive_fails += 1
+    if _ppubs_consecutive_fails >= _PPUBS_MAX_FAILS:
+        _ppubs_skip_until = _time_cb.monotonic() + _PPUBS_COOLDOWN_SECS
+        _log.warning(
+            "PPUBS circuit breaker OPEN (%d consecutive auth failures); "
+            "disabling for %.0fs",
+            _ppubs_consecutive_fails, _PPUBS_COOLDOWN_SECS,
+        )
+
+
+def _ppubs_cb_record_success() -> None:
+    global _ppubs_consecutive_fails, _ppubs_skip_until  # noqa: PLW0603
+    _ppubs_consecutive_fails = 0
+    _ppubs_skip_until = 0.0
+
+
+def _ppubs_cb_is_open() -> bool:
+    if _ppubs_skip_until <= 0.0:
+        return False
+    return _time_cb.monotonic() < _ppubs_skip_until
+
 
 def _get_opener() -> urllib.request.OpenerDirector:
     global _opener  # noqa: PLW0603
@@ -181,8 +212,11 @@ def _ppubs_search(
             try:
                 _establish_session(timeout=timeout)
                 payload["query"]["caseId"] = _ppubs_case_id
-                return _do_post()
+                result = _do_post()
+                _ppubs_cb_record_success()
+                return result
             except Exception as retry_exc:  # noqa: BLE001
+                _ppubs_cb_record_failure()
                 raise FetcherError(f"PPUBS HTTP {exc.code}: session re-establish failed: {retry_exc}") from exc
         body_text = ""
         try:
@@ -240,12 +274,18 @@ class PatentsViewFetcher(Fetcher):
             date_str = since.strftime("%Y%m%d")
             query_text = f"({query_text}) AND ISD/{date_str}->"
 
+        # Skip if circuit breaker is open
+        if _ppubs_cb_is_open():
+            _log.debug("PPUBS circuit breaker open — skipping topic %s", topic.id)
+            return []
+
         try:
             data = await run_in_thread(
                 _ppubs_search, query_text,
                 max_results=min(max_results, 50),
                 timeout=25.0,
             )
+            _ppubs_cb_record_success()
         except FetcherError as exc:
             _log.warning("PPUBS error for topic %s: %s", topic.id, exc)
             return []

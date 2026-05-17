@@ -39,8 +39,8 @@ _FIELDS_LIST = _FIELDS.split(",")
 # Resets on any SDK success.
 _sdk_consecutive_fails: int = 0
 _sdk_skip_until: float = 0.0
-_SDK_MAX_CONSECUTIVE_FAILS: int = 3
-_SDK_COOLDOWN_SECS: float = 600.0  # 10 minutes
+_SDK_MAX_CONSECUTIVE_FAILS: int = 2  # open circuit after 2 consecutive timeouts
+_SDK_COOLDOWN_SECS: float = 900.0  # 15 minutes
 
 import time as _time_sdk  # noqa: E402
 
@@ -167,7 +167,7 @@ class SemanticScholarFetcher(Fetcher):
         else:
             # Cap total SDK time — the SDK auto-paginates and can hang for many
             # minutes when the S2 API is slow or returning 5xx errors.
-            _SDK_TOTAL_TIMEOUT = 90.0
+            _SDK_TOTAL_TIMEOUT = 45.0
             try:
                 papers = await asyncio.wait_for(
                     run_in_thread(

@@ -545,6 +545,186 @@ test.describe("Settings - Ollama", () => {
   });
 });
 
+// ── Indus Evidence Graph API ──────────────────────────────────────────────────
+
+test.describe("Evidence Graph API", () => {
+  test("library endpoint returns document list", async ({ request }) => {
+    const resp = await request.get("/api/v1/indus-evidence/library");
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body).toHaveProperty("documents");
+    expect(body).toHaveProperty("total");
+    expect(body).toHaveProperty("limit");
+    expect(body).toHaveProperty("offset");
+    expect(Array.isArray(body.documents)).toBeTruthy();
+    expect(typeof body.total).toBe("number");
+    expect(body.total).toBeGreaterThanOrEqual(0);
+  });
+
+  test("library endpoint total >= 11 (from Batch 1+2 intake)", async ({ request }) => {
+    const resp = await request.get("/api/v1/indus-evidence/library");
+    const body = await resp.json();
+    // We have 11 registered documents from Batches 1-2
+    expect(body.total).toBeGreaterThanOrEqual(11);
+  });
+
+  test("library limit param works", async ({ request }) => {
+    const resp = await request.get("/api/v1/indus-evidence/library?limit=2");
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body.documents.length).toBeLessThanOrEqual(2);
+  });
+
+  test("claims endpoint returns claim list", async ({ request }) => {
+    const resp = await request.get("/api/v1/indus-evidence/claims");
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body).toHaveProperty("claims");
+    expect(body).toHaveProperty("total");
+    expect(Array.isArray(body.claims)).toBeTruthy();
+    expect(body.total).toBeGreaterThanOrEqual(22); // 22 extracted claims
+  });
+
+  test("claims type filter returns only matching type", async ({ request }) => {
+    const resp = await request.get("/api/v1/indus-evidence/claims?claim_type=language_claim");
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    for (const claim of body.claims) {
+      expect(claim.claim_type).toBe("language_claim");
+    }
+  });
+
+  test("claims bogus type returns empty list", async ({ request }) => {
+    const resp = await request.get("/api/v1/indus-evidence/claims?claim_type=zzz_no_such_type");
+    expect(resp.status()).toBe(200);
+    expect((await resp.json()).claims).toHaveLength(0);
+  });
+
+  test("hypotheses endpoint returns models list", async ({ request }) => {
+    const resp = await request.get("/api/v1/indus-evidence/hypotheses");
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body).toHaveProperty("models");
+    expect(Array.isArray(body.models)).toBeTruthy();
+    // Should have at least 2 models (parpola + hunt or roif)
+    expect(body.models.length).toBeGreaterThanOrEqual(2);
+  });
+
+  test("hypotheses models have expected shape", async ({ request }) => {
+    const resp = await request.get("/api/v1/indus-evidence/hypotheses");
+    const models = (await resp.json()).models;
+    for (const m of models) {
+      expect(m).toHaveProperty("model_id");
+      expect(m).toHaveProperty("model_name");
+      expect(m).toHaveProperty("status");
+      expect(m).toHaveProperty("n_claims");
+      expect(m).toHaveProperty("n_tests");
+    }
+  });
+
+  test("sweep config endpoint returns schema_version and sweep", async ({ request }) => {
+    const resp = await request.get("/api/v1/indus-evidence/sweep/config");
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body).toHaveProperty("schema_version");
+    expect(body).toHaveProperty("sweep");
+    expect(body.sweep).toHaveProperty("name");
+    expect(body.sweep).toHaveProperty("keywords");
+    expect(body.sweep).toHaveProperty("exclusions");
+    expect(body.sweep).toHaveProperty("sources");
+  });
+
+  test("sweep candidates endpoint returns shape even when empty", async ({ request }) => {
+    const resp = await request.get("/api/v1/indus-evidence/sweep/candidates");
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body).toHaveProperty("candidates");
+    expect(Array.isArray(body.candidates)).toBeTruthy();
+  });
+
+  test("intake run endpoint returns queued ack", async ({ request }) => {
+    const resp = await request.post("/api/v1/indus-evidence/intake/run");
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body.status).toBe("queued");
+    expect(body).toHaveProperty("message");
+  });
+
+  test("sweep run endpoint returns running ack", async ({ request }) => {
+    const resp = await request.post("/api/v1/indus-evidence/sweep/run");
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body.status).toBe("running");
+  });
+
+  test("upload non-PDF returns 400", async ({ request }) => {
+    const resp = await request.post("/api/v1/indus-evidence/upload", {
+      multipart: { file: { name: "test.txt", mimeType: "text/plain", buffer: Buffer.from("hello") } },
+    });
+    expect(resp.status()).toBe(400);
+    expect((await resp.json()).detail).toContain("PDF");
+  });
+
+  test("import-url with empty url returns 400", async ({ request }) => {
+    const resp = await request.post("/api/v1/indus-evidence/import-url", {
+      data: { url: "" },
+    });
+    expect(resp.status()).toBe(400);
+  });
+
+  test("sweep intake with non-PDF url returns pending_manual", async ({ request }) => {
+    const resp = await request.post("/api/v1/indus-evidence/sweep/intake", {
+      data: { url: "https://example.com/paper", title: "Playwright Test Paper" },
+    });
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body.status).toBe("pending_manual");
+  });
+});
+
+// ── Evidence Graph UI ─────────────────────────────────────────────────────────
+
+test.describe("Evidence Graph UI (with backend)", () => {
+  test("Evidence Graph tab is reachable and shows library stats", async ({ page }) => {
+    await page.goto("/");
+    await page.getByTitle("Evidence Graph").first().click();
+    await page.waitForTimeout(3000);
+    await expect(page.getByText(/Registered Papers/i).first()).toBeVisible();
+  });
+
+  test("claims count in stats row is >= 22", async ({ page }) => {
+    await page.goto("/");
+    await page.getByTitle("Evidence Graph").first().click();
+    await page.getByText(/🔖 Claims/).first().click();
+    await page.waitForTimeout(3000);
+    // Should show total count in the counter text
+    const counterText = await page.getByText(/\d+ total claims/).textContent();
+    if (counterText) {
+      const match = counterText.match(/(\d+)/);
+      if (match) {
+        expect(parseInt(match[1])).toBeGreaterThanOrEqual(22);
+      }
+    }
+  });
+
+  test("Sweep tab config loads from backend", async ({ page }) => {
+    await page.goto("/");
+    await page.getByTitle("Evidence Graph").first().click();
+    await page.getByText(/🔭 Sweep/).first().click();
+    await page.waitForTimeout(4000);
+    // Should either show config form or loading state
+    const hasConfig = await page.getByText(/Sweep Name|Primary Keywords|Exclusions/).count() > 0;
+    expect(hasConfig).toBeTruthy();
+  });
+
+  test("command palette includes Evidence Graph command", async ({ page }) => {
+    await page.goto("/");
+    await page.keyboard.press("Control+k");
+    await page.getByPlaceholder(/Search commands/i).fill("Evidence");
+    await expect(page.getByText(/Go to Evidence Graph/i)).toBeVisible({ timeout: 2000 });
+  });
+});
+
 test.describe("Status view - system metrics", () => {
   test("status page shows system metrics sections", async ({ page }) => {
     await page.goto("/");

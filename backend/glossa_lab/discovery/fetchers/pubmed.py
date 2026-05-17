@@ -47,7 +47,7 @@ class PubMedFetcher(Fetcher):
             "sort": opts.get("sort", "date"),
         }
         try:
-            search = await run_in_thread(http_get_json, _ESEARCH, params=params, timeout=20.0)
+            search = await run_in_thread(http_get_json, _ESEARCH, params=params, timeout=12.0)
         except FetcherError as exc:
             _log.warning("PubMed esearch error for topic %s: %s", topic.id, exc)
             return []
@@ -63,7 +63,7 @@ class PubMedFetcher(Fetcher):
             "retmode": "json",
         }
         try:
-            summary = await run_in_thread(http_get_json, _ESUMMARY, params=sum_params, timeout=25.0)
+            summary = await run_in_thread(http_get_json, _ESUMMARY, params=sum_params, timeout=15.0)
         except FetcherError as exc:
             _log.warning("PubMed esummary error for topic %s: %s", topic.id, exc)
             return []

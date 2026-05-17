@@ -1,0 +1,55 @@
+{
+  "batch_id": "BATCH3-LITERATURE-20260517",
+  "timestamp": "2026-05-17T11:39:29.765647",
+  "papers": [
+    {
+      "id": "yadav_2010_ngrams",
+      "status": "downloaded",
+      "size_kb": 2157,
+      "checksum": "b3e79817db04dfd8"
+    },
+    {
+      "id": "yadav_2009_arxiv",
+      "status": "downloaded",
+      "size_kb": 663,
+      "checksum": "6043d62916daa7c2"
+    },
+    {
+      "id": "rao_2009_pnas_markov",
+      "status": "failed",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "id": "rao_2010_coli_entropy",
+      "status": "downloaded",
+      "size_kb": 178,
+      "checksum": "27f146b84eeddd91"
+    },
+    {
+      "id": "parpola_2010_dravidian_solution",
+      "status": "downloaded",
+      "size_kb": 4862,
+      "checksum": "c58137e54cdde3f2"
+    },
+    {
+      "id": "sinha_2010_network_arxiv",
+      "status": "downloaded",
+      "size_kb": 1476,
+      "checksum": "7e87136c1915a394"
+    },
+    {
+      "id": "farmer_sproat_witzel_2004",
+      "status": "downloaded",
+      "size_kb": 89,
+      "checksum": "92c9677d5273161c"
+    },
+    {
+      "id": "rao_2009_science_entropic",
+      "status": "metadata_only"
+    },
+    {
+      "id": "mahadevan_2009_signs",
+      "status": "metadata_only"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "document_id": "farmer_sproat_witzel_2004",
+  "title": "The Collapse of the Indus-Script Thesis: The Myth of a Literate Harappan Civilization",
+  "extraction_date": "2026-05-17T11:40:22.458048",
+  "total_claims": 1,
+  "auto_extracted": 1,
+  "manually_curated": 1,
+  "claims": [
+    {
+      "claim_id": "farmer_sproat_witzel_2004_manual_001",
+      "source_document_id": "farmer_sproat_witzel_2004",
+      "claim_type": "non_linguistic_claim",
+      "normalized_claim": "The Indus script is not a writing system encoding language but consists of non-linguistic symbols.",
+      "claim_status": "contradicted",
+      "testability": "directly_testable",
+      "falsification_condition": "Conditional entropy data in linguistic range; positional pattern above random baseline.",
+      "contradicting_evidence": [
+        "Rao et al. 2009: conditional entropy falls in linguistic range",
+        "Phase-43: 20 TERMINAL_STRONG signs consistent with morphological suffixes",
+        "Phase-43: [M77/267][M77/99] = fixed title formula at inscription start"
+      ],
+      "confidence_in_source": 0.9,
+      "extracted_at": "2026-05-17T11:40:22.458048"
+    }
+  ],
+  "_citation": {
+    "system": "Glossa-Lab Indus Evidence Graph Batch 4",
+    "source_doc": "farmer_sproat_witzel_2004"
+  }
+}

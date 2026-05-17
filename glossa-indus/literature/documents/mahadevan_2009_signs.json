@@ -1,0 +1,25 @@
+{
+  "document_id": "mahadevan_2009_signs",
+  "title": "The Indus Script: A Synthesis",
+  "authors": [
+    "Mahadevan I"
+  ],
+  "year": 2009,
+  "journal": "Annual Report 2007-2008, Indus Research Centre, RMRL",
+  "doi": null,
+  "arxiv": null,
+  "license_status": "institutional",
+  "access_type": "institutional",
+  "source_url": "https://rmrl.in/irc-publications",
+  "stored_path_raw": null,
+  "checksum_sha256": null,
+  "intake_date": "2026-05-17T11:39:44.691313",
+  "relevance": "core_sign_catalog",
+  "notes": "Mahadevan's own summary of the sign list and concordance. Register metadata.",
+  "metadata_only": true,
+  "claim_extraction_status": "metadata_only",
+  "_citation": {
+    "system": "Glossa-Lab Indus Evidence Graph Batch 3",
+    "note": "Literature sweep 2026-05-17"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "document_id": "rao_2010_coli_entropy",
+  "title": "Entropy, the Indus Script, and Language: A Reply to R. Sproat",
+  "authors": [
+    "Rao RPN",
+    "Yadav N",
+    "Vahia MN",
+    "Joglekar H",
+    "Adhikari R",
+    "Mahadevan I"
+  ],
+  "year": 2010,
+  "journal": "Computational Linguistics",
+  "doi": null,
+  "arxiv": null,
+  "license_status": "open_access_acl",
+  "access_type": "open_access",
+  "source_url": "https://aclanthology.org/J10-4016.pdf",
+  "stored_path_raw": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\glossa-indus\\raw\\papers\\rao_2010_entropy_coli.pdf",
+  "checksum_sha256": "27f146b84eeddd91711e8b0eb3135f5bf4581323c0afc80c68e4c224be018787",
+  "intake_date": "2026-05-17T11:39:36.251189",
+  "relevance": "critique_response",
+  "notes": "Reply to Sproat 2010; block entropy argument; Farmer-Sproat-Witzel critique response",
+  "metadata_only": false,
+  "claim_extraction_status": "pending",
+  "_citation": {
+    "system": "Glossa-Lab Indus Evidence Graph Batch 3",
+    "note": "Literature sweep 2026-05-17"
+  }
+}

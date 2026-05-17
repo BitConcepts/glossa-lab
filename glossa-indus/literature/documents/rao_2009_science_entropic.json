@@ -1,0 +1,30 @@
+{
+  "document_id": "rao_2009_science_entropic",
+  "title": "Entropic Evidence for Linguistic Structure in the Indus Script",
+  "authors": [
+    "Rao RPN",
+    "Yadav N",
+    "Vahia MN",
+    "Joglekar H",
+    "Adhikari R",
+    "Mahadevan I"
+  ],
+  "year": 2009,
+  "journal": "Science",
+  "doi": "10.1126/science.1170391",
+  "arxiv": null,
+  "license_status": "paywalled_aaas",
+  "access_type": "paywalled",
+  "source_url": null,
+  "stored_path_raw": null,
+  "checksum_sha256": null,
+  "intake_date": "2026-05-17T11:39:44.691313",
+  "relevance": "landmark_statistical",
+  "notes": "The foundational Science paper on conditional entropy. Paywalled — register metadata only.",
+  "metadata_only": true,
+  "claim_extraction_status": "metadata_only",
+  "_citation": {
+    "system": "Glossa-Lab Indus Evidence Graph Batch 3",
+    "note": "Literature sweep 2026-05-17"
+  }
+}

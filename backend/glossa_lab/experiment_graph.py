@@ -48,6 +48,9 @@ PORT_COLORS: dict[str, str] = {
     "text":      "#0d9488",
     "json":      "#4f46e5",
     "any":       "#64748b",
+    # Evidence Graph port types
+    "claims":    "#b45309",  # amber — list of claim records
+    "papers":    "#0891b2",  # cyan  — list of paper/document records
 }
 
 
@@ -2457,8 +2460,16 @@ try:
 except Exception as _p32_exc:  # noqa: BLE001
     logger.warning("Phase-32 nodes not registered: %s", _p32_exc)
 
+# ── Evidence Graph nodes (glossa-indus evidence graph operations) ─────────────────────
+try:
+    from glossa_lab.experiment_graph_indus_evidence import _evidence_node_defs as _ev_defs  # noqa: PLC0415
+    for _d in _ev_defs():
+        ATOMIC_NODES[_d.id] = _d
+except Exception as _ev_exc:  # noqa: BLE001
+    logger.warning("Evidence Graph nodes not registered: %s", _ev_exc)
 
-# ── Graph execution ────────────────────────────────────────────────────────────────────
+
+# ── Graph execution
 
 def _topo_sort(nodes: list[dict], edges: list[dict]) -> list[dict]:
     id2n = {n["id"]: n for n in nodes}

@@ -249,6 +249,9 @@ export const PORT_COLORS: Record<string, string> = {
   text:      "#0d9488",
   json:      "#4f46e5",
   any:       "#64748b",
+  // Evidence Graph port types
+  claims:    "#b45309",  // amber — list of claim records
+  papers:    "#0891b2",  // cyan  — list of paper/document records
 };
 
 export const getAtomicNodeCatalog = (): Promise<AtomicNodeDef[]> =>
@@ -2397,3 +2400,172 @@ export const EMAIL_PROVIDER_PRESETS: EmailProviderPreset[] = [
     notes: "Fill in your provider's host, port, and TLS settings manually.",
   },
 ];
+
+// ── Indus Evidence Graph API ─────────────────────────────────────────────────
+
+export interface IndusDoc {
+  document_id: string;
+  title: string;
+  authors: string[];
+  year: number | null;
+  doi: string | null;
+  file_size_bytes: number;
+  access_type: string;
+  license_status: string;
+  processing_status: string;
+  ocr_required: boolean;
+  intake_date: string;
+  claim_count: number;
+  claim_extraction_status: string;
+}
+
+export interface IndusClaim {
+  claim_id: string;
+  source_document_id: string;
+  claim_type: string;
+  normalized_claim: string;
+  claim_status: string;
+  testability?: string;
+  falsification_condition?: string;
+  signs_involved?: string[];
+  proposed_value?: string;
+  glossa_lab_evidence?: string;
+  confidence_in_source?: number;
+  extracted_at?: string;
+  _source_file?: string;
+}
+
+export interface IndusHypothesisModel {
+  file: string;
+  model_id: string;
+  model_name: string;
+  status: string;
+  model_type: string;
+  n_claims: number;
+  n_tests: number;
+}
+
+export interface SweepSourceConfig {
+  enabled: boolean;
+  max_results: number;
+  categories?: string[];
+}
+
+export interface SweepKeywords {
+  primary: string[];
+  secondary: string[];
+  expansions?: string[];
+}
+
+export interface SweepConfig {
+  schema_version?: string;
+  sweep: {
+    name: string;
+    description?: string;
+    keywords: SweepKeywords;
+    exclusions: string[];
+    sources: Record<string, SweepSourceConfig>;
+    filters: {
+      min_year: number;
+      languages: string[];
+      require_open_access: boolean;
+    };
+    output: {
+      auto_intake: boolean;
+      intake_dir: string;
+      max_candidates: number;
+    };
+  };
+}
+
+export interface SweepCandidate {
+  source: string;
+  title: string;
+  url: string;
+  doi: string;
+  authors: string[];
+  published_at: string;
+  summary: string;
+  pdf_url: string;
+  open_access: boolean;
+  kind: string;
+  fetched_at: string;
+}
+
+export interface SweepRunResult {
+  sweep_date: string | null;
+  total_fetched?: number;
+  total_unique?: number;
+  total_new: number;
+  candidates: SweepCandidate[];
+  error?: string;
+}
+
+export const listIndusLibrary = (
+  params: { q?: string; status?: string; limit?: number; offset?: number } = {}
+): Promise<{ documents: IndusDoc[]; total: number; limit: number; offset: number }> => {
+  const qs = new URLSearchParams();
+  if (params.q) qs.set("q", params.q);
+  if (params.status) qs.set("status", params.status);
+  if (params.limit !== undefined) qs.set("limit", String(params.limit));
+  if (params.offset !== undefined) qs.set("offset", String(params.offset));
+  const q = qs.toString();
+  return request("GET", `/indus-evidence/library${q ? `?${q}` : ""}`);
+};
+
+export const listIndusClaims = (
+  params: { q?: string; claim_type?: string; claim_status?: string; doc_id?: string; sign?: string; limit?: number; offset?: number } = {}
+): Promise<{ claims: IndusClaim[]; total: number; limit: number; offset: number }> => {
+  const qs = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== "") qs.set(k, String(v));
+  });
+  const q = qs.toString();
+  return request("GET", `/indus-evidence/claims${q ? `?${q}` : ""}`);
+};
+
+export const listIndusHypotheses = (): Promise<{ models: IndusHypothesisModel[] }> =>
+  request("GET", "/indus-evidence/hypotheses");
+
+export const getIndusSweepConfig = (): Promise<SweepConfig> =>
+  request("GET", "/indus-evidence/sweep/config");
+
+export const saveIndusSweepConfig = (body: SweepConfig): Promise<{ status: string; path: string }> =>
+  request("PUT", "/indus-evidence/sweep/config", body);
+
+export const runIndusSweep = (): Promise<{ status: string; message: string }> =>
+  request("POST", "/indus-evidence/sweep/run");
+
+export const getIndusSweepCandidates = (): Promise<SweepRunResult> =>
+  request("GET", "/indus-evidence/sweep/candidates");
+
+export const intakeSweepCandidate = (body: {
+  url?: string;
+  pdf_url?: string;
+  title?: string;
+  doi?: string;
+  authors?: string[];
+  year?: number | null;
+  source?: string;
+}): Promise<{ status: string; message: string; filename?: string; size_bytes?: number }> =>
+  request("POST", "/indus-evidence/sweep/intake", body);
+
+export const importIndusUrl = (body: {
+  url: string;
+  title?: string;
+  doi?: string;
+  authors?: string[];
+  year?: number | null;
+}): Promise<{ status: string; message: string; filename?: string; size_bytes?: number }> =>
+  request("POST", "/indus-evidence/import-url", body);
+
+export const runIndusIntake = (): Promise<{ status: string; message: string }> =>
+  request("POST", "/indus-evidence/intake/run");
+
+/** Upload a PDF file to the Indus evidence library.
+ *  Returns a fetch Response — caller must check .ok and parse JSON. */
+export const uploadIndusPaper = (file: File): Promise<Response> => {
+  const fd = new FormData();
+  fd.append("file", file);
+  return fetch(`${BASE}/indus-evidence/upload`, { method: "POST", body: fd });
+};

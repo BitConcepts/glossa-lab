@@ -1,5 +1,93 @@
 # AGENTS.md
 
+## 🔴🔴🔴 H23 — EXPERIMENT REGISTRATION: MANDATORY 5-STEP GATE 🔴🔴🔴
+
+> **THIS RULE FIRES EVERY TIME YOU WRITE A PHASE SCRIPT OR RESEARCH EXPERIMENT.**
+> You have violated this before. Do not skip it. Do not defer it. Do not say
+> "I'll register it later." Registration happens BEFORE the script runs.
+
+### The 5-Step Gate (ALL 5 must complete before running anything)
+
+**STEP 1 — Write the phase script**
+```
+backend/scripts/phaseNN_<name>.py
+```
+Script MUST: import torch, detect GPU, include `_get_device()`, write JSON report to `reports/`.
+
+**STEP 2 — Create the graph node module** (NEW file every phase group)
+```
+backend/glossa_lab/experiment_graph_phaseNN_MM.py
+```
+Module MUST contain:
+- `_get_device()` helper
+- `_run_phase_script(script_name)` helper  
+- One `def _phaseNN_fn(inputs, params) -> dict:` per script
+- `def _phaseNN_MM_node_defs() -> list:` factory — uses **lazy import** of `AtomicNodeDef`:
+  ```python
+  def _phaseNN_MM_node_defs():
+      from glossa_lab.experiment_graph import AtomicNodeDef  # lazy — avoids circular import
+      return [AtomicNodeDef(id="...", category="Indus Decipherment", ...gpu_device output...)]  
+  ```
+
+**STEP 3 — Register in experiment_graph.py**
+Add this block at the bottom of the phase module registration section:
+```python
+# ── Phase-NN nodes ──────────────────────────────────────────────────────────
+try:
+    from glossa_lab.experiment_graph_phaseNN_MM import _phaseNN_MM_node_defs as _pNNMM_defs
+    for _d in _pNNMM_node_defs():
+        ATOMIC_NODES[_d.id] = _d
+except Exception as _pNNMM_exc:
+    logger.warning("Phase-NN-MM nodes not registered: %s", _pNNMM_exc)
+```
+
+**STEP 4 — Verify registration**
+```python
+python -c "
+import sys; sys.path.insert(0,'backend')
+from glossa_lab.experiment_graph_phaseNN_MM import _phaseNN_MM_node_defs
+nodes = _phaseNN_MM_node_defs()
+print(f'Registered {len(nodes)} nodes:')
+for n in nodes: print(' ', n.id, '[', n.category, ']')
+"
+```
+If this fails: **FIX IT BEFORE PROCEEDING**.
+
+**STEP 5 — THEN run the script**
+Only after Steps 1-4 are complete:
+```powershell
+python backend/scripts/phaseNN_<name>.py
+```
+
+### Self-check before declaring any phase complete
+- [ ] `experiment_graph_phaseNN_MM.py` file EXISTS
+- [ ] Module registered in `experiment_graph.py` try/except block
+- [ ] `python -c "..." ` verification printed N nodes with no error
+- [ ] All nodes have `gpu_device` as an output port
+- [ ] All nodes use lazy `from glossa_lab.experiment_graph import AtomicNodeDef`
+- [ ] Foundation check passes 0 failures after phase
+
+### What counts as an "experiment" requiring this gate
+ANY of these triggers the 5-step gate:
+- A new `backend/scripts/phase*.py` file
+- A new analysis script that writes to `reports/`
+- A new SA run, decipherment run, or LM build script
+- A new statistical test or falsification battery
+- Any script called by a phase number (Phase-N, Phase-NN)
+
+### What does NOT require this gate
+- One-off data acquisition scripts (acquire_*.py, corpus_*.py)
+- Infrastructure scripts (setup, install, migration)
+- Test/debug utilities
+
+### The cardinal violation (has happened multiple times)
+> Writing phase56_foo.py, phase57_bar.py, etc. and running them **without**
+> creating experiment_graph_phase56_57.py first.
+> The scripts exist. The nodes don't. The UI can't access the results.
+> This defeats the entire graph-first architecture.
+
+---
+
 ## ⛔ OPERATOR PLAYBOOK — READ FIRST, EVERY SESSION ⛔
 
 > The agent has repeatedly forgotten how to start services on Windows and how the

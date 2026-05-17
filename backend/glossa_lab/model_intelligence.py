@@ -190,15 +190,22 @@ def _sync_hf_inner() -> dict[str, Any]:
         return {}  # unreachable
 
     try:
+        # Open ONE connection for the entire HF sync (all pages).
+        # Previously a new connection was opened per page, causing brief
+        # write-lock contention with the aiosqlite connection.
+        conn = sqlite3.connect(db_path, timeout=30)
+        conn.execute("PRAGMA journal_mode=WAL")
+        conn.execute("PRAGMA busy_timeout=30000")
         while True:
             url = f"{_HF_DATASETS_API}&offset={offset}&length={_HF_PAGE_SIZE}"
             data = _fetch_page(url)
 
             rows = data.get("rows", [])
             if not rows:
+                conn.close()
                 break
 
-            conn = sqlite3.connect(db_path, timeout=5)
+            # (conn is already open from above)
             for row_wrapper in rows:
                 try:
                     entry = row_wrapper.get("row", row_wrapper)
@@ -269,17 +276,21 @@ def _sync_hf_inner() -> dict[str, Any]:
                 except Exception:  # noqa: BLE001
                     errors += 1
             conn.commit()
-            conn.close()
 
             # Check if there are more pages
             total = data.get("num_rows_total", 0)
             offset += len(rows)
             if offset >= total or len(rows) < _HF_PAGE_SIZE:
+                conn.close()
                 break
             # Courtesy delay between pages
             time.sleep(_HF_PAGE_DELAY)
 
     except Exception as exc:  # noqa: BLE001
+        try:
+            conn.close()  # noqa: F821
+        except Exception:  # noqa: BLE001
+            pass
         if synced > 0:
             # Partial sync is fine — we got data before the rate limit kicked in
             _log.info("HF sync stopped after %d models (rate limit), continuing with partial data", synced)
@@ -433,33 +444,44 @@ def _sync_static_fallback() -> dict[str, Any]:
     now = datetime.now(timezone.utc).isoformat()
     synced = 0
 
-    for model_name, benchmarks in known_models.items():
-        scores = _compute_bucket_scores(benchmarks)
-        try:
-            conn = sqlite3.connect(db_path, timeout=3)
-            conn.execute(
-                """INSERT OR REPLACE INTO model_scores
-                   (id, model_name, provider_type, reasoning_score,
-                    conversational_score, longform_score, source,
-                    raw_benchmarks_json, scored_at)
-                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
-                (
-                    f"static_{model_name[:80]}",
-                    model_name,
-                    "static",
-                    scores["reasoning"],
-                    scores["conversational"],
-                    scores["longform"],
-                    "static_fallback",
-                    json.dumps(benchmarks),
-                    now,
-                ),
-            )
-            conn.commit()
-            conn.close()
-            synced += 1
-        except Exception:  # noqa: BLE001
-            pass
+    # Use ONE connection + ONE transaction for all inserts.
+    # Previously a new connection was opened per model, creating ~80 short
+    # write transactions that raced with the aiosqlite connection and caused
+    # "database is locked" failures in tests (CI).
+    try:
+        conn = sqlite3.connect(db_path, timeout=30)
+        # Enable WAL on this sync connection so it co-operates with the
+        # aiosqlite WAL connection rather than conflicting with it.
+        conn.execute("PRAGMA journal_mode=WAL")
+        conn.execute("PRAGMA busy_timeout=30000")
+        for model_name, benchmarks in known_models.items():
+            scores = _compute_bucket_scores(benchmarks)
+            try:
+                conn.execute(
+                    """INSERT OR REPLACE INTO model_scores
+                       (id, model_name, provider_type, reasoning_score,
+                        conversational_score, longform_score, source,
+                        raw_benchmarks_json, scored_at)
+                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                    (
+                        f"static_{model_name[:80]}",
+                        model_name,
+                        "static",
+                        scores["reasoning"],
+                        scores["conversational"],
+                        scores["longform"],
+                        "static_fallback",
+                        json.dumps(benchmarks),
+                        now,
+                    ),
+                )
+                synced += 1
+            except Exception:  # noqa: BLE001
+                pass
+        conn.commit()
+        conn.close()
+    except Exception:  # noqa: BLE001
+        pass
 
     _log.info("Static model scores loaded: %d models", synced)
     return {"synced": synced, "errors": 0, "message": f"Loaded {synced} static model scores (HF unreachable)"}

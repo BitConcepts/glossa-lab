@@ -1,0 +1,186 @@
+{
+  "_citation": {
+    "primary_sources": [
+      "A.1",
+      "A.13"
+    ]
+  },
+  "sign": "M267",
+  "n_occurrences": 400,
+  "avg_relative_position": 0.54,
+  "site_distribution": {
+    "Mohenjo-daro": 135,
+    "Harappa": 116,
+    "Kalibangan": 29,
+    "Lothal": 29,
+    "Chanhu-daro": 26,
+    "Dholavira": 23,
+    "Surkotada": 17,
+    "Banawali": 17,
+    "Rakhigarhi": 8
+  },
+  "iconography_distribution": {
+    "unicorn": 147,
+    "zebu bull": 78,
+    "elephant": 43,
+    "script only": 34,
+    "rhinoceros": 26,
+    "buffalo": 20,
+    "geometric": 19,
+    "tiger": 17,
+    "gharial": 16
+  },
+  "iconography_entropy": 2.699,
+  "iconography_normalised_entropy": 0.852,
+  "iconography_interpretation": "UNIFORM across all motifs — consistent with function word/grammar sign",
+  "top_pre_signs": [
+    [
+      "M328",
+      40
+    ],
+    [
+      "M293",
+      37
+    ],
+    [
+      "M059",
+      30
+    ],
+    [
+      "M176",
+      17
+    ],
+    [
+      "M342",
+      17
+    ],
+    [
+      "M267",
+      13
+    ],
+    [
+      "M162",
+      12
+    ],
+    [
+      "M391",
+      11
+    ],
+    [
+      "M233",
+      9
+    ],
+    [
+      "M099",
+      8
+    ]
+  ],
+  "top_post_signs": [
+    [
+      "M099",
+      84
+    ],
+    [
+      "M342",
+      31
+    ],
+    [
+      "M211",
+      21
+    ],
+    [
+      "M328",
+      18
+    ],
+    [
+      "M059",
+      13
+    ],
+    [
+      "M267",
+      13
+    ],
+    [
+      "M367",
+      12
+    ],
+    [
+      "M336",
+      12
+    ],
+    [
+      "M125",
+      11
+    ],
+    [
+      "M162",
+      11
+    ]
+  ],
+  "formula_m267_m099": 84,
+  "formula_m099_m267": 8,
+  "anchored_signs_adjacent": {
+    "before": [
+      [
+        "M062",
+        "erutu"
+      ],
+      [
+        "M176",
+        "an/aṇ"
+      ],
+      [
+        "M099",
+        "kol/koḷ"
+      ],
+      [
+        "M016",
+        "kaḷiṟu"
+      ],
+      [
+        "M342",
+        "ay/ā"
+      ]
+    ],
+    "after": [
+      [
+        "M342",
+        "ay/ā"
+      ],
+      [
+        "M099",
+        "kol/koḷ"
+      ],
+      [
+        "M176",
+        "an/aṇ"
+      ]
+    ]
+  },
+  "holdat_role": {
+    "symbol": "M267",
+    "count": "400",
+    "num_sequences": "359",
+    "num_prefixes": "93",
+    "num_suffixes": "23",
+    "num_shells": "351",
+    "avg_length": "5.16",
+    "avg_position": "0.54",
+    "position_variance": "0.0778",
+    "context_diversity": "116",
+    "shell_density": "0.978",
+    "is_starter": "False",
+    "is_ending": "True",
+    "is_known_role": "True",
+    "semantic_role": "CASE_MARKER_SUFFIX"
+  },
+  "reading_hypothesis": "GRAMMATICAL_PARTICLE or DETERMINATIVE — motif-independent, medial position",
+  "epistemic_status": "[INFERRED, low confidence]",
+  "findings": [
+    "M267 appears 400× across ALL 9 iconographic categories",
+    "Iconographic entropy 0.85 (>0.85 = uniform = grammar sign)",
+    "Average position 0.540 — medial, not clearly initial or terminal",
+    "M267→M099 title formula: 84× — M267 precedes kol/koḷ",
+    "Top site: ('Mohenjo-daro', 135) (33.8%)"
+  ]
+}

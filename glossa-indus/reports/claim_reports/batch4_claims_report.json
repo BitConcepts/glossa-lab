@@ -1,13 +1,18 @@
 {
   "batch_id": "BATCH4-CLAIMS-20260517",
-  "timestamp": "2026-05-17T11:40:22.480436",
-  "total_documents": 9,
-  "total_claims": 7,
+  "timestamp": "2026-05-17T11:56:31.497332",
+  "total_documents": 11,
+  "total_claims": 22,
   "results": [
     {
       "doc_id": "farmer_sproat_witzel_2004",
       "status": "extracted",
       "n_claims": 1
+    },
+    {
+      "doc_id": "indus_valley_script_deciphered_from_myth_65ff0a26",
+      "status": "extracted",
+      "n_claims": 6
     },
     {
       "doc_id": "mahadevan_2009_signs",
@@ -38,6 +43,11 @@
       "doc_id": "sinha_2010_network_arxiv",
       "status": "no_claims",
       "text_available": false
+    },
+    {
+      "doc_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+      "status": "extracted",
+      "n_claims": 9
     },
     {
       "doc_id": "yadav_2009_arxiv",

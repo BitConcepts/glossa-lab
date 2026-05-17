@@ -1,7 +1,7 @@
 # Glossa Lab — User Guide
 
 > **Version**: current `main` branch
-> **Last updated**: 2026-04-09
+> **Last updated**: 2026-05-17
 
 ---
 
@@ -22,7 +22,8 @@
 13. [Settings](#13-settings)
 14. [Advanced Usage](#14-advanced-usage)
 15. [Example Workflows](#15-example-workflows)
-16. [Troubleshooting](#16-troubleshooting)
+16. [**Evidence Graph**](#16-evidence-graph) ← _literature library, claims, automated sweep_
+17. [Troubleshooting](#17-troubleshooting)
 
 ---
 
@@ -111,16 +112,18 @@ The tray icon provides Start / Stop / Restart controls.
 ### Sidebar sections
 
 | Section | Items |
-|---------|-------|
-| **Workflow** | Corpora · Experiments · Pipelines · Studies · Reports |
-| **Analysis** | Entropy · Signs · Timeline · Indus Data |
-| **Research** | Hypotheses · Notebooks · Citations · AI Tools |
+|---------|---------|
+| **Overview** | Dashboard |
+| **Workflow** | Corpora · CAS Models · Experiments · Pipelines · Projects · Reports |
+| **Analysis** | Entropy · Signs · Timeline |
+| **Research** | Discovery · **Evidence Graph** · Hypotheses · Notebooks · Citations · Correspondence · AI Tools · Foundation Check · Help |
 | **System** | Status · Jobs · Settings |
 
 **Key name changes (vs older versions)**:
-- "Study Builder" → **Studies** (unified workspace: study list + graph editor)
+- "Study Builder" → accessible via **Projects** tab (project management)
 - "Exp. Builder" merged into **Experiments** (unified workspace: experiment list + graph editor)
-- "Studies" (Indus statistical data) → **Indus Data** (moved to Analysis)
+- "Studies" (Indus statistical data) → removed; use the **Evidence Graph** or **Entropy** tabs instead
+- New: **Evidence Graph** in Research section — literature library, claims, and automated sweep
 
 ### Nav indicator dots
 
@@ -610,6 +613,134 @@ tagging for later retrieval.
 
 Manage academic references with BibTeX import/export. Link citations to
 experiments and studies.
+
+---
+
+## 16. Evidence Graph
+
+**Path**: sidebar → Evidence Graph (Research section)
+
+The Evidence Graph workspace manages the literature library for comparative
+hypothesis analysis. It stores academic papers, extracted claims, and
+operates an automated paper sweep driven by a per-project `sweep.yaml`
+configuration file.
+
+### Three-tab workspace
+
+#### Library tab
+
+Shows all registered papers with metadata, claim counts, and hypothesis models.
+
+- **Upload PDFs**: drag-and-drop onto the dropzone, or click to browse.
+  PDFs are saved to `glossa-indus/raw/user_uploads/` and processed by the
+  intake pipeline automatically.
+- **Import from URL**: paste a direct PDF link in the URL field and click **Import**.
+- **Re-run intake**: click **⟳ Re-run intake** to reprocess all pending uploads
+  and re-extract claims.
+- **Search papers**: filter the paper list by title or author.
+- **Hypothesis Models**: a summary of all encoded hypothesis model YAMLs is
+  shown at the bottom of the tab with status badges (stub / partially_encoded).
+
+#### Claims tab
+
+All extracted claims across all registered papers, with filters:
+
+| Filter | What it does |
+|--------|--------------|
+| Search claim text | Free-text search on the normalized claim field |
+| Claim type | `sign_value_claim`, `language_claim`, `sign_position_claim`, etc. |
+| Claim status | `untested`, `partially_supported`, `partially_falsified`, `contradicted`, etc. |
+| Filter by sign | Show only claims mentioning a specific sign |
+
+Click any claim card to expand it and see falsification conditions,
+Glossa-Lab corpus evidence, proposed values, and source confidence.
+
+#### Sweep tab
+
+The automated paper discovery interface.
+
+**Sweep configuration** (loaded from `glossa-indus/config/sweep.yaml`):
+
+| Field | Purpose |
+|-------|---------|
+| Sweep Name | Human-readable label for this sweep profile |
+| Enabled Sources | Read-only display of sources enabled in `sweep.yaml` |
+| Primary Keywords | High-precision search terms, comma-separated |
+| Secondary Keywords | Broader terms for increased recall |
+| Exclusions | Phrases to filter out (e.g. "Indus Towers", "stock market") |
+
+Edits to keywords and exclusions can be saved with **💾 Save Config**, which
+writes back to `glossa-indus/config/sweep.yaml`.
+
+**Running a sweep**: click **▶ Run Sweep**. The backend runs the enabled
+discovery fetchers (OpenAlex, arXiv, CrossRef, SemanticScholar, DOAJ,
+EuropePMC, Academia RSS) against your keywords, deduplicates against
+already-registered papers, and saves candidates to
+`glossa-indus/logs/sweep_candidates_latest.json`.
+
+Refresh the candidates list with **↻ Refresh** after the sweep completes
+(typically 10–30 seconds). Each candidate shows title, source, authors,
+publication date, and an open-access badge if a PDF link is available.
+
+Click **→ Import** on a candidate to download its PDF (if available) and
+queue it for intake. Non-PDF URLs are logged to
+`glossa-indus/logs/pending_imports.jsonl` for manual upload.
+
+### Sweep configuration schema
+
+The `sweep.yaml` file supports the following structure:
+
+```yaml
+schema_version: "1.0"
+sweep:
+  name: "My Project Sweep"
+  keywords:
+    primary: ["term 1", "term 2"]
+    secondary: ["broader term"]
+    expansions: ["long-tail term"]
+  exclusions: ["noise term"]
+  sources:
+    openalex: {enabled: true, max_results: 50}
+    arxiv:    {enabled: true, max_results: 30}
+    # ... per-source settings ...
+  filters:
+    min_year: 1970
+    languages: ["en"]
+    require_open_access: false
+  output:
+    auto_intake: false
+    max_candidates: 200
+```
+
+This file is project-specific. Different research projects in `glossa-indus/`
+(or equivalent directories) can have their own `sweep.yaml` with tailored keywords.
+
+### Evidence Graph in the Experiment Builder
+
+The **Evidence Graph** palette category in the Experiment Builder provides
+7 atomic nodes for visual pipeline construction:
+
+| Node | Purpose |
+|------|---------|
+| **Literature Loader** | Load registered papers from the library |
+| **Claims Loader** | Load extracted claims with type/status/sign filters |
+| **Cross-Hypothesis Matrix** | Group claims by sign/type and detect agree/conflict |
+| **Hidden Hypothesis Generator** | Derive compound cross-paper testable hypotheses |
+| **Claim Tester** | Test positional claims against a corpus (sign initial/terminal rates) |
+| **Null Model Test** | Run shuffle null model for a sign's positional enrichment |
+| **Intake Runner** | Trigger the intake + claims extraction pipeline |
+
+Connect `Literature Loader` → `Claims Loader` → `Cross-Hypothesis Matrix` →
+`Hidden Hypothesis Generator` for a full comparative analysis pipeline.
+Add `BuiltinCorpus(indus_cisi)` → `Claim Tester` to test positional claims
+against the real corpus.
+
+### Discovery View integration
+
+In the Discovery tab, any item classified as Indus or Harappan-related shows a
+**🗂 → Evidence** button in its action row. Clicking it sends the item's URL
+and metadata to the Evidence Graph intake pipeline, logging it for import if
+the URL is not a direct PDF.
 
 ---
 

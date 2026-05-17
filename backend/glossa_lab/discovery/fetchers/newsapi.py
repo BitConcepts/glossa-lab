@@ -14,9 +14,11 @@ from glossa_lab.discovery.fetchers.base import (
     Fetcher,
     FetcherError,
     TopicProfile,
+    _429_cooldown,
     build_query,
     http_get_json,
     run_in_thread,
+    source_is_cooling,
     to_iso,
 )
 from glossa_lab.discovery.store import RawItem
@@ -38,6 +40,10 @@ class NewsAPIFetcher(Fetcher):
         api_key = get_key("news_api_key")
         if not api_key:
             return []
+        cooling, remaining = source_is_cooling(self.source)
+        if cooling:
+            _log.debug("newsapi cooldown active — skipping (%.0fs remaining)", remaining)
+            return []
 
         opts = topic.overrides_for(self.source)
         params = {
@@ -55,6 +61,7 @@ class NewsAPIFetcher(Fetcher):
         try:
             data = await run_in_thread(http_get_json, _ENDPOINT, params=params, timeout=20.0)
         except FetcherError as exc:
+            _429_cooldown(str(exc), self.source)
             _log.warning("NewsAPI error for topic %s: %s", topic.id, exc)
             return []
 

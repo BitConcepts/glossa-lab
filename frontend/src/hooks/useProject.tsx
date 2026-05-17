@@ -21,6 +21,9 @@ import {
 } from "../api";
 
 const LS_KEY = "glossa_active_project";
+// Sentinel stored when the user explicitly chooses global mode.
+// Prevents auto-activate from overriding a deliberate "no project" preference.
+const LS_PREFER_GLOBAL = "__global__";
 
 interface ProjectCtx {
   /** The currently selected project, or null for global scope. */
@@ -60,8 +63,10 @@ export function ProjectProvider({ children }: { children: React.ReactNode }) {
       //   3. null (global)
       const storedId = localStorage.getItem(LS_KEY);
       let resolved: Project | null = null;
+      // User deliberately chose global mode — respect it, skip auto-activate.
+      const preferGlobal = storedId === LS_PREFER_GLOBAL;
 
-      if (storedId) {
+      if (storedId && !preferGlobal) {
         resolved = ps.find((p) => p.id === storedId) ?? null;
       }
       if (!resolved) {
@@ -71,6 +76,12 @@ export function ProjectProvider({ children }: { children: React.ReactNode }) {
         } catch {
           // No active project on backend — stay global.
         }
+      }
+      // Auto-activate when there's exactly one project and nothing is explicitly
+      // selected — researchers always have a project open in this scenario.
+      // Skip if the user explicitly chose "Global" (stored sentinel).
+      if (!resolved && ps.length === 1 && !preferGlobal) {
+        resolved = ps[0];
       }
       setActive(resolved);
       if (resolved) {
@@ -96,7 +107,8 @@ export function ProjectProvider({ children }: { children: React.ReactNode }) {
   const setActiveProject = useCallback(async (id: string | null) => {
     if (id === null) {
       setActive(null);
-      localStorage.removeItem(LS_KEY);
+      // Store sentinel so auto-activate doesn't override this choice on reload.
+      localStorage.setItem(LS_KEY, LS_PREFER_GLOBAL);
     } else {
       // Activate on backend so dashboard/insight/mine pick it up.
       try { await apiActivate(id); } catch { /* best-effort */ }

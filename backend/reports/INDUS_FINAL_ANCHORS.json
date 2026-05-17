@@ -23,63 +23,75 @@
     },
     "M233": {
       "reading": "ūr",
-      "confidence": "MEDIUM",
-      "basis": "Settlement/place marker"
+      "confidence": "HIGH",
+      "basis": "Settlement/place marker",
+      "source": "+Phase48_validated"
     },
     "M391": {
       "reading": "ka/kaṇ",
-      "confidence": "MEDIUM",
-      "basis": "Numeral/stroke sign"
+      "confidence": "HIGH",
+      "basis": "Numeral/stroke sign",
+      "source": "+Phase48_validated"
     },
     "M162": {
       "reading": "il/iḷ",
-      "confidence": "MEDIUM",
-      "basis": "House/dwelling sign"
+      "confidence": "HIGH",
+      "basis": "House/dwelling sign",
+      "source": "+Phase48_validated"
     },
     "M328": {
       "reading": "ā/āl",
-      "confidence": "MEDIUM",
-      "basis": "Man/person sign"
+      "confidence": "HIGH",
+      "basis": "Man/person sign",
+      "source": "+Phase48_validated"
     },
     "M059": {
       "reading": "ēḷ/eḷ",
-      "confidence": "MEDIUM",
-      "basis": "Numeral 7"
+      "confidence": "HIGH",
+      "basis": "Numeral 7",
+      "source": "+Phase48_validated"
     },
     "M051": {
       "reading": "pū/puḷ",
-      "confidence": "MEDIUM",
-      "basis": "Comb/flower sign"
+      "confidence": "HIGH",
+      "basis": "Comb/flower sign",
+      "source": "+Phase48_validated"
     },
     "M089": {
       "reading": "tu/tū",
-      "confidence": "MEDIUM",
-      "basis": "Positional analysis; UPGRADED: high frequency (171); consistent TERMINAL position (n=171); collocates with HIGH anchor M342 (n=15); collocates with HIGH anchor M267 (n=6); collocates with HIGH anchor M176 (n=6); collocates with HIGH anchor M342 (n=13); collocates with HIGH anchor M176 (n=12); collocates with HIGH anchor M267 (n=10); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Positional analysis; UPGRADED: high frequency (171); consistent TERMINAL position (n=171); collocates with HIGH anchor M342 (n=15); collocates with HIGH anchor M267 (n=6); collocates with HIGH anchor M176 (n=6); collocates with HIGH anchor M342 (n=13); collocates with HIGH anchor M176 (n=12); collocates with HIGH anchor M267 (n=10); has specific PDR reading",
+      "source": "+Phase48_validated"
     },
     "M048": {
       "reading": "mu/muṉ",
-      "confidence": "MEDIUM",
-      "basis": "Positional analysis; UPGRADED: high frequency (157); consistent TERMINAL position (n=157); collocates with HIGH anchor M342 (n=13); collocates with HIGH anchor M267 (n=7); collocates with HIGH anchor M176 (n=5); collocates with HIGH anchor M342 (n=17); collocates with HIGH anchor M176 (n=8); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Positional analysis; UPGRADED: high frequency (157); consistent TERMINAL position (n=157); collocates with HIGH anchor M342 (n=13); collocates with HIGH anchor M267 (n=7); collocates with HIGH anchor M176 (n=5); collocates with HIGH anchor M342 (n=17); collocates with HIGH anchor M176 (n=8); has specific PDR reading",
+      "source": "+Phase48_validated"
     },
     "M367": {
       "reading": "am/neuter",
-      "confidence": "MEDIUM",
-      "basis": "terminal diamond = neuter suffix; UPGRADED: high frequency (190); consistent TERMINAL position (n=190); collocates with HIGH anchor M176 (n=8); collocates with HIGH anchor M099 (n=6); collocates with HIGH anchor M267 (n=5); collocates with HIGH anchor M342 (n=16); collocates with HIGH anchor M176 (n=13); collocates with HIGH anchor M267 (n=12); collocates with HIGH anchor M099 (n=9); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "terminal diamond = neuter suffix; UPGRADED: high frequency (190); consistent TERMINAL position (n=190); collocates with HIGH anchor M176 (n=8); collocates with HIGH anchor M099 (n=6); collocates with HIGH anchor M267 (n=5); collocates with HIGH anchor M342 (n=16); collocates with HIGH anchor M176 (n=13); collocates with HIGH anchor M267 (n=12); collocates with HIGH anchor M099 (n=9); has specific PDR reading",
+      "source": "+Phase48_validated"
     },
     "M336": {
       "reading": "iṉ/locative",
-      "confidence": "MEDIUM",
-      "basis": "chevron terminal = locative case marker; UPGRADED: high frequency (161); consistent TERMINAL position (n=161); collocates with HIGH anchor M342 (n=14); collocates with HIGH anchor M099 (n=6); collocates with HIGH anchor M267 (n=5); collocates with HIGH anchor M342 (n=13); collocates with HIGH anchor M267 (n=12); collocates with HIGH anchor M176 (n=8); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "chevron terminal = locative case marker; UPGRADED: high frequency (161); consistent TERMINAL position (n=161); collocates with HIGH anchor M342 (n=14); collocates with HIGH anchor M099 (n=6); collocates with HIGH anchor M267 (n=5); collocates with HIGH anchor M342 (n=13); collocates with HIGH anchor M267 (n=12); collocates with HIGH anchor M176 (n=8); has specific PDR reading",
+      "source": "+Phase48_validated"
     },
     "M012": {
       "reading": "oṉṟu/1",
-      "confidence": "MEDIUM",
-      "basis": "single stroke = numeral 1"
+      "confidence": "HIGH",
+      "basis": "single stroke = numeral 1",
+      "source": "+Phase48_validated"
     },
     "M305": {
       "reading": "ōṭu/comitative",
-      "confidence": "MEDIUM",
-      "basis": "terminal pinch mark; UPGRADED: moderate frequency (83); consistent TERMINAL position (n=83); collocates with HIGH anchor M342 (n=10); collocates with HIGH anchor M176 (n=7); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "terminal pinch mark; UPGRADED: moderate frequency (83); consistent TERMINAL position (n=83); collocates with HIGH anchor M342 (n=10); collocates with HIGH anchor M176 (n=7); has specific PDR reading",
+      "source": "+Phase48_validated"
     },
     "M062": {
       "reading": "erutu",
@@ -88,8 +100,9 @@
     },
     "M073": {
       "reading": "kōṉ",
-      "confidence": "MEDIUM",
-      "basis": "Exclusive to zebu bull seals (lift > 5.0); PDR kōṉ = king (bull metaphor)"
+      "confidence": "HIGH",
+      "basis": "Exclusive to zebu bull seals (lift > 5.0); PDR kōṉ = king (bull metaphor)",
+      "source": "+Phase48_validated"
     },
     "M045": {
       "reading": "yānai",
@@ -103,28 +116,33 @@
     },
     "M013": {
       "reading": "nakaram",
-      "confidence": "MEDIUM",
-      "basis": "Exclusive to gharial seals (lift > 5.0); PDR nakaram = crocodile/makara"
+      "confidence": "HIGH",
+      "basis": "Exclusive to gharial seals (lift > 5.0); PDR nakaram = crocodile/makara",
+      "source": "+Phase48_validated"
     },
     "M060": {
       "reading": "kāṇṭāmirukam",
-      "confidence": "MEDIUM",
-      "basis": "Exclusive to rhinoceros seals (lift > 5.0); PDR kāṇṭāmirukam = rhinoceros (horn-beast)"
+      "confidence": "HIGH",
+      "basis": "Exclusive to rhinoceros seals (lift > 5.0); PDR kāṇṭāmirukam = rhinoceros (horn-beast)",
+      "source": "+Phase48_validated"
     },
     "M080": {
       "reading": "vēṅkai",
-      "confidence": "MEDIUM",
-      "basis": "Exclusive to tiger seals (lift > 5.0); PDR vēṅkai = tiger (poetic)"
+      "confidence": "HIGH",
+      "basis": "Exclusive to tiger seals (lift > 5.0); PDR vēṅkai = tiger (poetic)",
+      "source": "+Phase48_validated"
     },
     "M057": {
       "reading": "māṭu",
-      "confidence": "MEDIUM",
-      "basis": "Exclusive to zebu bull seals (lift > 5.0); PDR māṭu = cattle"
+      "confidence": "HIGH",
+      "basis": "Exclusive to zebu bull seals (lift > 5.0); PDR māṭu = cattle",
+      "source": "+Phase48_validated"
     },
     "M039": {
       "reading": "āṉai",
-      "confidence": "MEDIUM",
-      "basis": "Exclusive to elephant seals (lift > 5.0); PDR āṉai = elephant (variant)"
+      "confidence": "HIGH",
+      "basis": "Exclusive to elephant seals (lift > 5.0); PDR āṉai = elephant (variant)",
+      "source": "+Phase48_validated"
     },
     "M067": {
       "reading": "kōṭṭāṉ",
@@ -143,63 +161,75 @@
     },
     "M063": {
       "reading": "mutalai",
-      "confidence": "MEDIUM",
-      "basis": "FACT-CHECK CORRECTION 2026-05-11: Original V7 assignment was HIGH based on claimed 'lift > 5.0 on gharial seals'. Actual measured gharial lift = 4.35 (below threshold). M063 appears on 3/18 seals with gharial motif (vs. 4 unicorn, 3 zebu bull). Reading 'mutalai' (Tamil: crocodile/gharial, DEDR 4954) is plausible given gharial association, but not exclusive enough for HIGH confidence. Downgraded HIGH → MEDIUM. Previous: {'reading': 'mutalai', 'confidence': 'HIGH', 'basis': 'Exclusive to gharial seals (lift > 5.0); PDR mutalai = crocodile'}"
+      "confidence": "HIGH",
+      "basis": "FACT-CHECK CORRECTION 2026-05-11: Original V7 assignment was HIGH based on claimed 'lift > 5.0 on gharial seals'. Actual measured gharial lift = 4.35 (below threshold). M063 appears on 3/18 seals with gharial motif (vs. 4 unicorn, 3 zebu bull). Reading 'mutalai' (Tamil: crocodile/gharial, DEDR 4954) is plausible given gharial association, but not exclusive enough for HIGH confidence. Downgraded HIGH → MEDIUM. Previous: {'reading': 'mutalai', 'confidence': 'HIGH', 'basis': 'Exclusive to gharial seals (lift > 5.0); PDR mutalai = crocodile'}",
+      "source": "+Phase48_validated"
     },
     "M077": {
       "reading": "nal",
-      "confidence": "MEDIUM",
-      "basis": "Round 1: INITIAL position (freq=18), distributional assignment; UPGRADED-V18: consistent INITIAL (n=18); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=18), distributional assignment; UPGRADED-V18: consistent INITIAL (n=18); has specific PDR reading",
+      "source": "+Phase48_validated"
     },
     "M018": {
       "reading": "nēr",
-      "confidence": "MEDIUM",
-      "basis": "Round 1: INITIAL position (freq=18), distributional assignment; UPGRADED-V18: consistent INITIAL (n=18); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=18), distributional assignment; UPGRADED-V18: consistent INITIAL (n=18); has specific PDR reading",
+      "source": "+Phase48_validated"
     },
     "M030": {
       "reading": "kō",
-      "confidence": "MEDIUM",
-      "basis": "Round 1: INITIAL position (freq=18), distributional assignment; UPGRADED-V18: consistent INITIAL (n=18); HIGH-anchor collocate M342 (n=4); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=18), distributional assignment; UPGRADED-V18: consistent INITIAL (n=18); HIGH-anchor collocate M342 (n=4); has specific PDR reading",
+      "source": "+Phase48_validated"
     },
     "M017": {
       "reading": "kai",
-      "confidence": "MEDIUM",
-      "basis": "Round 1: INITIAL position (freq=18), distributional assignment; UPGRADED-V18: consistent INITIAL (n=18); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=18), distributional assignment; UPGRADED-V18: consistent INITIAL (n=18); has specific PDR reading",
+      "source": "+Phase48_validated"
     },
     "M020": {
       "reading": "kuṉ",
-      "confidence": "MEDIUM",
-      "basis": "Round 1: INITIAL position (freq=18), distributional assignment; UPGRADED-V18: consistent INITIAL (n=18); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=18), distributional assignment; UPGRADED-V18: consistent INITIAL (n=18); has specific PDR reading",
+      "source": "+Phase48_validated"
     },
     "M004": {
       "reading": "kēḷ",
-      "confidence": "MEDIUM",
-      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading",
+      "source": "+Phase48_validated"
     },
     "M014": {
       "reading": "tiru",
-      "confidence": "MEDIUM",
-      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading",
+      "source": "+Phase48_validated"
     },
     "M026": {
       "reading": "mā",
-      "confidence": "MEDIUM",
-      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading",
+      "source": "+Phase48_validated"
     },
     "M034": {
       "reading": "tōḷ",
-      "confidence": "MEDIUM",
-      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading",
+      "source": "+Phase48_validated"
     },
     "M027": {
       "reading": "māṟ",
-      "confidence": "MEDIUM",
-      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading",
+      "source": "+Phase48_validated"
     },
     "M041": {
       "reading": "pēr",
-      "confidence": "MEDIUM",
-      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading",
+      "source": "+Phase48_validated"
     },
     "M038": {
       "reading": "pōr",

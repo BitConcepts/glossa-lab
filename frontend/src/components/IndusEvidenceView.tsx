@@ -464,8 +464,8 @@ function ClaimsTab({ cardBg, border, fg, muted, inputBg, inputBdr }: {
 
 // ── Sweep Tab ──────────────────────────────────────────────────────────────
 
-function SweepTab({ darkMode, cardBg, border, fg, muted, inputBg, inputBdr, toast }: {
-  darkMode: boolean; cardBg: string; border: string; fg: string; muted: string;
+function SweepTab({ cardBg, border, fg, muted, inputBg, inputBdr, toast }: {
+  darkMode?: boolean; cardBg: string; border: string; fg: string; muted: string;
   inputBg: string; inputBdr: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   toast: (msg: string, kind?: any) => void;

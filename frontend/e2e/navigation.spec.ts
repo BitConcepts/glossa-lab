@@ -77,6 +77,18 @@ test.describe("Grouped tab navigation", () => {
     await expect(page.getByRole("button", { name: /AI Tools/i })).toBeVisible();
   });
 
+  test("Evidence Graph tab is visible in Research section", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.getByTitle("Evidence Graph").first()).toBeVisible();
+  });
+
+  test("clicking Evidence Graph tab renders the evidence workspace", async ({ page }) => {
+    await page.goto("/");
+    await page.getByTitle("Evidence Graph").first().click();
+    // Should show the Evidence Graph header
+    await expect(page.getByText("Evidence Graph").first()).toBeVisible({ timeout: 5000 });
+  });
+
   test("Research group tabs are visible", async ({ page }) => {
     await page.goto("/");
     await expect(page.getByTitle("Hypotheses").first()).toBeVisible();

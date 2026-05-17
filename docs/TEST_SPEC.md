@@ -1064,6 +1064,32 @@ Test cases for Glossa Lab, linked to requirements in `docs/REQUIREMENTS.md`.
 
 ---
 
+## CI/CD Pipeline (R16)
+
+> All tests in this section verify the GitHub Actions workflow in `.github/workflows/ci.yml`.
+
+### TEST-CI-001 — Backend tests job passes
+**Requirement:** R16 CICD-3
+**Type:** integration · **Automated:** yes (GitHub Actions `backend-tests` job)
+**Pass criteria:** `pytest backend/tests/` exits 0 with 0 failures on every push to `main`.
+
+### TEST-CI-002 — Playwright tests job passes
+**Requirement:** R16 CICD-4
+**Type:** integration · **Automated:** yes (GitHub Actions `playwright-tests` job)
+**Pass criteria:** `npx playwright test` exits 0; all 39 Evidence Graph tests and all navigation tests pass against a live backend.
+
+### TEST-CI-003 — Lint job passes
+**Requirement:** R16 CICD-5
+**Type:** smoke · **Automated:** yes (GitHub Actions `lint` job)
+**Pass criteria:** `ruff check` exits 0 with zero lint errors on the backend codebase.
+
+### TEST-CI-004 — All three jobs required before merge
+**Requirement:** R16 CICD-6
+**Type:** boundary · **Automated:** yes (branch protection rule)
+**Pass criteria:** PRs targeting `main` cannot be merged unless `backend-tests`, `playwright-tests`, and `lint` all pass.
+
+---
+
 ## Evidence Graph Backend Integration Tests (R14)
 
 > Tests in `frontend/e2e/backend-integration.spec.ts` → Evidence Graph API describe block.

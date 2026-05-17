@@ -438,17 +438,30 @@ async def _bg_sweep() -> None:
             try:
                 items = list(await f.fetch(profile))
                 for item in items:
+                    # RawItem stores extra metadata in item.raw dict
+                    # (doi, abstract/summary, authors, pdf_url, kind)
+                    # — these fields are NOT direct attributes of RawItem
+                    _raw = item.raw or {}
+                    _doi = (_raw.get("doi") or "").strip()
+                    _summary = (
+                        _raw.get("abstract") or
+                        _raw.get("summary") or
+                        _raw.get("tldr") or ""
+                    )
+                    _authors = _raw.get("authors") or []
+                    _pdf_url = _raw.get("pdf_url") or _raw.get("open_access_pdf") or ""
+                    _kind = _raw.get("kind") or "study"
                     raw_items.append({
                         "source":        f.source,
                         "title":         item.title or "",
                         "url":           item.url or "",
-                        "doi":           item.doi or "",
-                        "authors":       list(item.authors or []),
+                        "doi":           _doi,
+                        "authors":       list(_authors),
                         "published_at":  item.published_at or "",
-                        "summary":       (item.summary or "")[:400],
-                        "pdf_url":       item.pdf_url or "",
-                        "open_access":   bool(item.pdf_url),
-                        "kind":          item.kind or "study",
+                        "summary":       str(_summary)[:400],
+                        "pdf_url":       _pdf_url,
+                        "open_access":   bool(_pdf_url),
+                        "kind":          _kind,
                         "fetched_at":    fetched_at,
                     })
             except Exception as exc:  # noqa: BLE001

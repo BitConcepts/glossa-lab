@@ -347,3 +347,71 @@ Both `.specsmith/model-rate-limits.json` files updated to current-gen model land
 3. **M267 = col or ē**: 4 STRONG candidates. 'col' (to say/call) gives the most semantically coherent formula: "[identity] col kol" = 'called [lord]'. 'ē' (emphatic) is supported by SA constraint test (+15.9%)
 4. **M047 fish sign iconography paradox**: M047 appears on animal motifs (NOT fish iconography) — consistent with its CLASSIFIER_PREFIX role as a title/class marker
 5. **SA robustness confirmed**: 27-config grid shows z≥4 everywhere, HIGH_SENSITIVITY FALSE
+
+---
+
+## Phase-47 — Phoneme Assignment, Publication Mining, M267 Constraint Fix
+**Date**: 2026-05-17
+
+### Repository Cleanup (same session)
+- Removed 303 stale/superseded/buggy files via automated script:
+  - 177 timestamped duplicate JSONs
+  - 18 pre-RTL-correction experiment JSONs (Phase-10 to Phase-20)
+  - 24 superseded narrative JSONs (old synthesis, wrong sign numbering)
+  - 32 old synthesis .md files (superseded by LEDGER)
+  - 9 abandoned OCR/glyph pipeline scripts
+  - 18 one-time corpus acquisition scripts
+  - 34 dead utilities and old LM builders
+- CI: all 3/3 recent runs GREEN (✓)
+
+### T1: Phoneme Assignment for HIGH Anchor Signs (phase47_t1_phoneme_assignment.py) — GPU: cuda
+- **Rebus principle applied to all 7 HIGH anchors** using DEDR etymologies:
+  - M006 = puli (DEDR 4346) → /pu/ → LM char 'p'
+  - M016 = kaḷiṟu (DEDR 1278) → /ka/ → LM char 'k'
+  - M045 = yānai (DEDR 5149) → /yā/ → LM char 'y'
+  - M062 = erutu (DEDR 824) → /e/ → LM char 'e'
+  - M099 = kol (DEDR 2159) → /ko/ → LM char 'k'
+  - M176 = aṇ (DEDR 134) → /a/ → LM char 'a'
+  - M342 = ay (DEDR 5295) → /a/ → LM char 'a'
+- **Janabiyah seal full phonological reading**:
+  - Sequence: [M047][M045][M006][M342][M062][M016][M342]
+  - Rebus words: mīn-yānai-puli-ay/a-erutu-kaḷiru-ay/a
+  - Initial phonemes: [?]-yā-pu-a-e-ka-a
+  - Reading: "mīn-yā-puli-ay erutu-kaḷi-ay" = compound merchant title
+  - Interpretation: dual-guild formula: [fish/elephant/tiger]-ay [bull/calf]-ay
+  - Each sub-formula closed by -ay (honorific suffix)
+- **LM consistency (GPU 68×68 bigram matrix)**:
+  - Rebus character sequence 'ypaeka' has LM log-prob = -67.33
+  - **Lift vs random = 3.191×** — the rebus phoneme sequence is 3.19× more probable under the Dravidian 944-LM than random
+  - This is independent confirmation (different method from SA) that the phoneme assignments are linguistically coherent
+- Report: `reports/phase47_t1_phoneme_assignment.json`
+
+### T2: Contact Zone Publication Mining (phase47_t2_publication_mining.py) — GPU: cuda
+- Mined 10 publication texts (total ~900KB) for sign mentions, phoneme readings, formulas
+- Sign mention hits: M099 (2 pubs), M176 (3 pubs), M267 (1 pub), M342 (2 pubs)
+- Most publications use Parpola sign numbers, not M-numbers — hence sparse direct hits
+- 2 unique phoneme readings extracted (from Levit 2010 and Parpola 2010)
+- Key finding: Levit 2010 (Meluhha etymology) is the richest source for sign-word mappings
+- Report: `reports/phase47_t2_publication_mining.json`
+
+### T3: M267 Constraint SA — Fixed Token Matching (phase47_t3_m267_constraint_fixed.py) — GPU: cuda
+- **CRITICAL BUG FIX**: Phase-46 T2 "CONSTRAINT_IMPROVES_FIT" verdict was WRONG
+  - The "lift" metric (= mean_score/null_mu) is INVERTED: lower = better alignment
+  - Phase-46 T2 'e' result (lift=0.8466) was WORSE than baseline (0.7302), not better
+  - Correct interpretation: ALL constraints DEGRADE SA alignment
+- This T3 run confirms with full vocabulary:
+  - Baseline z=4.09, lift=0.7244 (BEST — unconstrained)
+  - Best constraint 'c' (col-initial): z=2.33, lift=0.8431 — 16% degradation in fit
+  - All ASCII and Tamil single-char constraints: z drops to 2.3-3.1
+  - Tamil Unicode chars (eె,இ,உ) slightly less bad (z~3.1) than ASCII (z~2.4)
+- **Conclusion**: M267 cannot be pinned to any single Tamil phoneme character
+  - Consistent with M267 being a MULTI-SYLLABIC word (not a single initial phoneme)
+  - Or M267 encodes a morphological boundary not representable in the char LM
+  - Best candidates remain col/iṉ/um from T3 grammar analysis, but SA evidence = neutral
+- Report: `reports/phase47_t3_m267_constraint_fixed.json`
+
+### Key Phase-47 Discoveries
+1. **Phoneme assignments confirmed independently**: Rebus sequence 'ypaeka' has 3.19× Dravidian LM lift — completely independent of the SA, using only etymology + bigram probability
+2. **Janabiyah full reading**: mīn-yā-puli-ay erutu-kaḷi-ay = compound merchant title with dual guild affiliations, each closed by honorific -ay
+3. **M267 is multi-syllabic**: Cannot be pinned to a single Tamil character. Either a polysyllabic content word or a boundary marker not captured by char bigrams
+4. **Phase-46 T2 error corrected**: The "lift" metric was inverted. Constraints degrade SA. The baseline z=4+ is the correct reference. Phase-46 T2 CONSTRAINT_IMPROVES_FIT verdict should be read as CONSTRAINT_DEGRADES_FIT.

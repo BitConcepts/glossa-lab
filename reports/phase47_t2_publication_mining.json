@@ -1,0 +1,209 @@
+{
+  "_citation": {
+    "sources_mined": [
+      "cisi_vol3_part3_2022_desset.txt",
+      "frenez_2005_lothal_sealings.txt",
+      "frenez_2018_private_person_public_persona.txt",
+      "frenez_2020_indus_oman_trade.txt",
+      "laursen_2010_westward_transmission_AAE.txt",
+      "levit_2010_meluhha_etymology_studia_orientalia.txt",
+      "parpola_1994a_deciphering_indus_script.txt",
+      "parpola_2010_dravidian_solution.txt",
+      "vidale_2004_melammu_iv_meluhha_villages.txt",
+      "vidale_desset_frenez_2021_jalalabad.txt"
+    ],
+    "total_kb": 918
+  },
+  "gpu_device": "cuda",
+  "per_publication": [
+    {
+      "file": "cisi_vol3_part3_2022_desset.txt",
+      "size_kb": 123.0,
+      "sign_mentions": {},
+      "phoneme_readings": [],
+      "dravidian_contexts": [
+        "[dravidian×1] me two dozen signs and to identify the language underlying  the script as Proto-Dravidian (Parpola 1994 – for the literature referred to in this preface, see the bibliog",
+        "[proto-dravidian×1] for some two dozen signs and to identify the language underlying  the script as Proto-Dravidian (Parpola 1994 – for the literature referred to in this preface, see the bibliog",
+        "[rebus×1] ystem like all the other earliest scripts, basically pictographic and using the rebus principle  to express phonetic shapes of words. Starting from this hypothesis i"
+      ],
+      "formula_contexts": [],
+      "high_value_passages": []
+    },
+    {
+      "file": "frenez_2005_lothal_sealings.txt",
+      "size_kb": 71.8,
+      "sign_mentions": {},
+      "phoneme_readings": [],
+      "dravidian_contexts": [],
+      "formula_contexts": [],
+      "high_value_passages": []
+    },
+    {
+      "file": "frenez_2018_private_person_public_persona.txt",
+      "size_kb": 118.9,
+      "sign_mentions": {},
+      "phoneme_readings": [],
+      "dravidian_contexts": [],
+      "formula_contexts": [],
+      "high_value_passages": []
+    },
+    {
+      "file": "frenez_2020_indus_oman_trade.txt",
+      "size_kb": 31.0,
+      "sign_mentions": {},
+      "phoneme_readings": [],
+      "dravidian_contexts": [],
+      "formula_contexts": [],
+      "high_value_passages": []
+    },
+    {
+      "file": "laursen_2010_westward_transmission_AAE.txt",
+      "size_kb": 141.8,
+      "sign_mentions": {
+        "M099": [
+          "be ‘bow’ seems to be the fourth short vertical stroke of the lowest row of the sign 145, and the remaining part of the ‘bow’ may be the roughly drawn sign 125 or 128. The sign 125 also occurs frequently on the Near Eastern Indus seals (see Parpola 1994a: nos. 29 [twice, once after 145], 18, 34, 39, 15 and 3",
+          "the fourth short vertical stroke of the lowest row of the sign 145, and the remaining part of the ‘bow’ may be the roughly drawn sign 125 or 128. The sign 125 also occurs frequently on the Near Eastern Indus seals (see Parpola 1994a: nos. 29 [twice, once after 145], 18, 34, 39, 15 and 36). Seal 31 from Luri"
+        ],
+        "M342": [
+          "ins’ looks like the ‘bowman’ sign 38, but the lowest part of the would-be ‘bow’ seems to be the fourth short vertical stroke of the lowest row of the sign 145, and the remaining part of the ‘bow’ may be the roughly drawn sign 125 or 128. The sign 125 also occurs frequently on the Near Eastern Indus seals (s",
+          "ogether in the unicorn seal with the three-sign inscription M-798 from Mohenjo-Daro (Shah & Parpola A 1991: 68). In the Near Eastern Indus texts, the sign 145 is also found in Parpola 1994a: nos. 5, 8 and 29. To summarise, there seems to be one sequence (16–145) also occurring in the Indus Valley (Kalibanga"
+        ]
+      },
+      "phoneme_readings": [],
+      "dravidian_contexts": [
+        "[genitive×1] where the picture of ‘‘man’’ follows what can be presumed to be a god’s name in genitive case…’ could be compared with similar grammar in Sumerian (1977: 164 and n. 57)"
+      ],
+      "formula_contexts": [],
+      "high_value_passages": []
+    },
+    {
+      "file": "levit_2010_meluhha_etymology_studia_orientalia.txt",
+      "size_kb": 128.4,
+      "sign_mentions": {
+        "M099": [
+          "compare the etyma in DEDR 2552 “Ta. iravu, ira, irā, rā night;  iru black; iruṭci, iruṭṭu, iruṇmai, irumai darkness; iruḷ darkness, dark color, […]  Kol. (Kin.) cirum very dark; sindi soot. Pa. ciruŋ charcoal. Ga. (Oll.) siriŋg black;  […] siriŋ (pl. sirŋil) charcoal, cinders; […] Go. (Mu.) hirk, (S.)",
+          "rface is not very strong, but compare the  etyma in DEDR 533 “Ta. ī fly, bee; […] Ma. īcca fly. Ir. i·ppi id. […] To. i·py id.  […] Te. ī̃ga id.; […] Kol. ni-ŋga fly. Nk. niŋga id.” In this set of etyma we have  suffixes ‑k‑, ‑ṅk‑, ‑cc‑, and ‑pp‑ side-by-side in forms of roughly comparable shape  (see",
+          "mparable to the alternation in Afroasiatic of  r, l, and n. By Tamil rules of euphonic combination l + the common suffix ‑nt‑ >  ‑ṉṟ‑. Assadian and Hakola (2003: 77) would relate Sum. kur to DEDR 2178 “Ta.  kō mountain […]” and DEDR 2887 “Kui sōru hill, mountain […]”. These may  ultimately also be rela"
+        ],
+        "M176": [
+          "form to the usual Hindu institutions’ does  not have an etymology within Sanskrit. Its oft-cited first occurrence is in the late  Vedic Śatapathabrāhmaṇa 3.2.1.24 where it refers to demoniacal beings who speak  indistinctly, like a foreigner or barbarian. A related verbal formation, mlecchad, 3rd  sin",
+          "r may perhaps be dated to ca. 350 bc  (HOIL 3.2: 423). The Mādhavīya-Dhātuvṛtti by Mādhava, the brother of the great  14th c. ad Vedic commentator Sāyaṇa (HOIL 1:70; 3.2: 438), put forward what is  perhaps chronologically the first hypothetical reconstruction of mlecchá, the form  mlekṣi. 19th c. ad E",
+          "”\t 147 of his interpretation of Skt. mlecchá and cognate forms in Middle and New Indo- Aryan languages a form *mlekṣ-, *mlikṣ-, tracing Śatapathabrāhmaṇa mlecchá to  an older *mlekṣa. Master (1943: 38 n. 3) had noted that many derivations had been suggested,  and he offered *melepsu ‘devotee of darkne"
+        ],
+        "M342": [
+          "ūkku (ūkki-) to make an effort, act with  energy; n. zeal, spirit; ukkam […] effort, strength, power, […]”, or to the etyma in  DEDR 333 “Ta. ā (āṉ‑, āyi-), āku (āki-) to come into existence, happen, be, […] ākku  1\t In the instance of the Brahui forms, the reference is incorrect. It should be to JAOS",
+          "re are in fact references to the boomerang, in  Aiṅkuṟunūṟu 421, lines 1–2, Aiṅkuṟunūṟu 87, line 2, Cilappatikāram, Book 1  (Pukār Kāṇṭam), Canto 17 (Āycciyar Kuravai, “The Dance of the Cowgirls”),  stanza 17, and Puṟanāṉūṟu 339, line 4, for instance. The most usual Tamil term for  the boomerang of th",
+          "urs in the same passage. A verbal base as such,  mlech-, from which the form might be explained internally within Sanskrit occurs  first in the Aṣṭādyāyī of Pāṇini, which grammar may perhaps be dated to ca. 350 bc  (HOIL 3.2: 423). The Mādhavīya-Dhātuvṛtti by Mādhava, the brother of the great  14th c."
+        ]
+      },
+      "phoneme_readings": [
+        {
+          "reading": "c-",
+          "context": "au: 197–249. Stanford, California: Stanford  University Press, 1980.) Emeneau, Murray Barnson 1988. Proto-Dravidian *c- and Its Developments. Journal of the American  Oriental Society 108(2): 239–68. (Reprint in: Murray"
+        }
+      ],
+      "dravidian_contexts": [
+        "[dravidian×216] a Thapar in consultation with Bhadriraju  Krishnamurti. All three proposals are Dravidian. For an argument as to the general  reasonableness of suspecting a Dravidian et",
+        "[proto-dravidian×20] ncope pointed out by Zvelebil (1970: 75; see also 120–123) could be applied  to Proto-Dravidian.2 It is also argued that the vowel in the Pali and Prakrit  cognates of Skt. ml",
+        "[old tamil×3] the possessive sense: ‘one’s own, their own’,  and is in this sense attested in Old Tamil also before the word nāṭu ‘country’. The  etymon of the [… second element] coul",
+        "[tamil×46] ]”.  This etymological set as listed in DEDR has cognates in South Dravidian in Tamil,  Malayalam, Kota, Toda, Kannada, Koḍagu, Tulu, in Central Dravidian in Telugu"
+      ],
+      "formula_contexts": [],
+      "high_value_passages": []
+    },
+    {
+      "file": "parpola_1994a_deciphering_indus_script.txt",
+      "size_kb": 137.1,
+      "sign_mentions": {
+        "M176": [
+          "‘phonograms’ or phonetic  signs, which express a meaning through the sound of the  respective words in a specific language. Some of the archaic Sumerian signs are unmistakable  pictures of natural objects. For example, the sign > 4^   represents ‘fish’. But even when it is used ideographically, a  sign doe"
+        ]
+      },
+      "phoneme_readings": [],
+      "dravidian_contexts": [
+        "[dravidian×16] idian  languages and the H arappan culture 160 9.1 The Brahui problem and North Dravidian 160 9.2 Linguistic convergence in South Asia 167 9.3 Dravidian substratum influ",
+        "[proto-dravidian×2] substratum influence on Old Indo-Aryan 167 9.4 Archaeological identification of Proto-Dravidian speakers 169 9.5 South Dravidian and the archaeology of peninsular India 171 9."
+      ],
+      "formula_contexts": [],
+      "high_value_passages": []
+    },
+    {
+      "file": "parpola_2010_dravidian_solution.txt",
+      "size_kb": 67.5,
+      "sign_mentions": {
+        "M176": [
+          "rm throughout South Asia. This argument is reinforced by the Indus seals found in the Near East. Some of them have native Harappan and some non-Harappan sign sequences. One would expect that the most frequently attested Indus sign would very often occur next to itself, but this is never the case in the Ind"
+        ]
+      },
+      "phoneme_readings": [
+        {
+          "reading": "vaLay",
+          "context": "ar-ring, bangle’ derived from the Dravidian verbal root *murV  ‘to bend or to be bent’. (Similarly, Proto-Dravidian *vaLay ‘ring, circle, bracelet’ comes from the root vaLay ‘to bend or to be bent, be curved, turn around,"
+        }
+      ],
+      "dravidian_contexts": [
+        "[dravidian×75] A Dravidian solution to the Indus script problem   A Dravidian solution to the Indus script",
+        "[proto-dravidian×12] kely known language. (Method demands strictness with  homophony; in the case of Proto-Dravidian, variation in the length of vowels and consonants is allowed, but not much else",
+        "[old tamil×16] m Mohenjo-daro. (After CISI 1: 383.)  19 Asko Parpola Particularly important is Old Tamil literature, the only ancient Dravidian source not much contaminated by Indo-Ary",
+        "[tamil×40] avidian solution to the Indus script problem Kalaignar M. Karunanidhi Classical Tamil Research Endowment Lecture World Classical Tamil Conference 25-6-2010 Coimbator",
+        "[rebus×11] ainly consists of iconic word signs or logograms occasionally complemented with rebus-based syllabic signs which also initially expressed “words”.  Grammatical marke"
+      ],
+      "formula_contexts": [],
+      "high_value_passages": []
+    },
+    {
+      "file": "vidale_2004_melammu_iv_meluhha_villages.txt",
+      "size_kb": 66.6,
+      "sign_mentions": {
+        "M267": [
+          "RY OF THE “MELUHHA VILLAGES” IN MESOPOTAMIA 269 centered descent. But there is at least one seal (Gadd’s nr. 18) where the gaur is substituted by two copulating bulls, thus involving sexuality and the female sex in the same semantic sphere. At any rate, after considering the name Lu-sunzida I would ventur"
+        ]
+      },
+      "phoneme_readings": [],
+      "dravidian_contexts": [],
+      "formula_contexts": [],
+      "high_value_passages": []
+    },
+    {
+      "file": "vidale_desset_frenez_2021_jalalabad.txt",
+      "size_kb": 1.4,
+      "sign_mentions": {},
+      "phoneme_readings": [],
+      "dravidian_contexts": [],
+      "formula_contexts": [],
+      "high_value_passages": []
+    }
+  ],
+  "aggregated": {
+    "sign_mention_by_publication_count": {
+      "M099": 2,
+      "M342": 2,
+      "M176": 3,
+      "M267": 1
+    },
+    "unique_phoneme_readings": [
+      {
+        "source": "levit_2010_meluhha_etymology_studia_orientalia.txt",
+        "reading": "c-",
+        "context": "au: 197–249. Stanford, California: Stanford  University Press, 1980.) Emeneau, Murray Barnson 1988. Proto-Dravidian *c- and Its Developments. Journal of the American  Oriental Society 108(2): 239–68. (Reprint in: Murray"
+      },
+      {
+        "source": "parpola_2010_dravidian_solution.txt",
+        "reading": "vaLay",
+        "context": "ar-ring, bangle’ derived from the Dravidian verbal root *murV  ‘to bend or to be bent’. (Similarly, Proto-Dravidian *vaLay ‘ring, circle, bracelet’ comes from the root vaLay ‘to bend or to be bent, be curved, turn around,"
+      }
+    ],
+    "top_high_value_passages": []
+  },
+  "summary": {
+    "n_publications": 10,
+    "n_unique_readings": 2,
+    "n_high_value_passages": 0,
+    "most_discussed_signs": [
+      "M176",
+      "M099",
+      "M342",
+      "M267"
+    ]
+  }
+}

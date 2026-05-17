@@ -17,9 +17,11 @@ from glossa_lab.discovery.fetchers.base import (
     Fetcher,
     FetcherError,
     TopicProfile,
+    _429_cooldown,
     build_query,
     http_get_json,
     run_in_thread,
+    source_is_cooling,
 )
 from glossa_lab.discovery.store import RawItem
 
@@ -40,6 +42,10 @@ class SerpAPIFetcher(Fetcher):
         api_key = get_key("serp_api_key")
         if not api_key:
             return []
+        cooling, remaining = source_is_cooling(self.source)
+        if cooling:
+            _log.debug("serpapi cooldown active — skipping (%.0fs remaining)", remaining)
+            return []
 
         opts = topic.overrides_for(self.source)
         engine = str(opts.get("engine", "google_news"))
@@ -57,6 +63,7 @@ class SerpAPIFetcher(Fetcher):
         try:
             data = await run_in_thread(http_get_json, _ENDPOINT, params=params, timeout=25.0)
         except FetcherError as exc:
+            _429_cooldown(str(exc), self.source)
             _log.warning("SerpAPI error for topic %s (engine=%s): %s", topic.id, engine, exc)
             return []
 

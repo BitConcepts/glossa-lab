@@ -31,7 +31,9 @@ from glossa_lab.discovery.fetchers.base import (
     Fetcher,
     FetcherError,
     TopicProfile,
+    _429_cooldown,
     run_in_thread,
+    source_is_cooling,
 )
 from glossa_lab.discovery.store import RawItem
 
@@ -274,6 +276,10 @@ class PatentsViewFetcher(Fetcher):
             date_str = since.strftime("%Y%m%d")
             query_text = f"({query_text}) AND ISD/{date_str}->"
 
+        cooling, remaining = source_is_cooling(self.source)
+        if cooling:
+            _log.debug("patentsview cooldown active — skipping (%.0fs remaining)", remaining)
+            return []
         # Skip if circuit breaker is open
         if _ppubs_cb_is_open():
             _log.debug("PPUBS circuit breaker open — skipping topic %s", topic.id)
@@ -287,6 +293,7 @@ class PatentsViewFetcher(Fetcher):
             )
             _ppubs_cb_record_success()
         except FetcherError as exc:
+            _429_cooldown(str(exc), self.source)
             _log.warning("PPUBS error for topic %s: %s", topic.id, exc)
             return []
         if not isinstance(data, dict):

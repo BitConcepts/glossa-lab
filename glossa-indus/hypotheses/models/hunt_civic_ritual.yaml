@@ -1,25 +1,51 @@
 # Hypothesis Model: Hunt Civic-Ritual Operational Code
 # Glossa-Lab Indus Evidence Graph
-# STATUS: STUB — awaiting paper upload to raw/user_uploads/
+# STATUS: PARTIALLY ENCODED — paper processed 2026-05-17
 
 model_id: hunt_civic_ritual
-model_name: "Hunt Civic-Ritual Operational Code Model"
+model_name: "Hunt — Civic-Ritual Continuity System (Without Kings or Conquests)"
 model_type: symbolic_operational_civic_code
-status: stub
+status: partially_encoded
 
-awaiting_upload:
-  file: "Hunt paper (title TBD)"
-  destination: "raw/user_uploads/"
-  intake_command: "python scripts/indus_intake.py --file raw/user_uploads/<hunt_paper>.pdf"
+source_document:
+  document_id: without_kings_or_conquests_the_indus_scr_ce9d98cc
+  file: "raw/user_uploads/Without_Kings_or_Conquests_The_Indus_Scr.pdf"
+  title: "Without Kings or Conquests: The Indus Script Deciphered and a Civilization Reconstructed"
+  author: "Hunt, Treasure A."
+  year: 2025
+  affiliation: "FelineMind Behavior Labs (Independent Researcher)"
+  doi: "10.1002/(SICI)1099-..."  # partial
+  contact: "felinemindbehaviorlabs@gmail.com"
 
-# Known claims from instruction plan description
+core_thesis: >
+  The Indus script functioned as a civic-ritual continuity system, NOT phonetic writing
+  or royal titulature. Inscriptions encode ecological cycles, distributed governance,
+  and civic identity. The system uses a tripartite inscription grammar:
+    prefix (identity/office/commodity) + medial (action/transaction/domain)
+    + suffix (cycle/jurisdiction/logistics)
+  Notably ABSENT: titulature, conquest narratives, palace propaganda.
+  The framework is consistent with archaeological evidence of urban planning without kingship.
+
+methods:
+  - glyph normalization and clustering
+  - positional syntax modeling (prefix/medial/suffix)
+  - contextual integration (hydrology, residues, archaeoastronomy)
+  - ethology-inspired coherence tests
+  - Translation Atlas with canonical forms, frequencies, co-occurrence sets
+
+testable_predictions:
+  - lipid residues in vessel inscriptions
+  - isotopic assays for trade goods
+  - archaeoastronomy alignments with celestial suffix signs
+
 known_claims_summary: >
-  Indus script is a civic-ritual operational code, not primarily phonetic writing
-  or royal titulature. Proposes tripartite grammar: prefix (identity/commodity/office)
-  + medial (action/transaction/domain) + suffix (cycle/jurisdiction/logistics).
-  Claims a 24-cluster translation atlas. Faunal signs as identity/guild/commodity prefixes;
-  botanical signs as agricultural/ritual medials; celestial signs as suffix/cycle markers;
-  hydrological signs correlating with waterworks/docks/canals.
+  Indus script is a civic-ritual continuity system encoding ecological cycles,
+  distributed governance, and civic identity. Proposes tripartite grammar:
+  prefix (identity/commodity/office) + medial (action/transaction/domain)
+  + suffix (cycle/jurisdiction/logistics). 24-cluster Translation Atlas.
+  Faunal signs = identity/guild/commodity prefixes. Botanical signs = agricultural/
+  ritual medials. Celestial signs = suffix/cycle markers. Hydrological signs
+  correlate with waterworks/docks/canals. Governance signs at gates/citadels.
 
 core_claims:
   - claim_id: hunt_syntax_001

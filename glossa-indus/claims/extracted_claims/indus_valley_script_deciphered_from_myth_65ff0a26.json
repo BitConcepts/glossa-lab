@@ -1,0 +1,94 @@
+{
+  "document_id": "indus_valley_script_deciphered_from_myth_65ff0a26",
+  "title": "",
+  "extraction_date": "2026-05-17T11:56:31.469224",
+  "total_claims": 6,
+  "auto_extracted": 6,
+  "manually_curated": 4,
+  "claims": [
+    {
+      "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001",
+      "source_document_id": "indus_valley_script_deciphered_from_myth_65ff0a26",
+      "claim_type": "critique_claim",
+      "normalized_claim": "Critique: myth of a \nliterate Harappan",
+      "quote_fragment": "myth of a \nliterate Harappan",
+      "claim_status": "untested",
+      "testability": "directly_testable",
+      "confidence_in_source": 0.8,
+      "extracted_at": "2026-05-17T11:56:31.469224"
+    },
+    {
+      "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002",
+      "source_document_id": "indus_valley_script_deciphered_from_myth_65ff0a26",
+      "claim_type": "critique_claim",
+      "normalized_claim": "Critique: collapse of the Indus script thesis",
+      "quote_fragment": "collapse of the Indus script thesis",
+      "claim_status": "untested",
+      "testability": "directly_testable",
+      "confidence_in_source": 0.8,
+      "extracted_at": "2026-05-17T11:56:31.469224"
+    },
+    {
+      "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_001",
+      "source_document_id": "indus_valley_script_deciphered_from_myth_65ff0a26",
+      "claim_type": "sign_function_claim",
+      "normalized_claim": "The Indus script encodes an economic ledger of trade guilds, tribute, and guild authority using Akkadian-influenced mnemonics.",
+      "claim_status": "untested",
+      "testability": "indirectly_testable",
+      "falsification_condition": "If sign distributions are not correlated with trade/economic contexts at excavation sites.",
+      "author": "Roif, Avishai",
+      "confidence_in_source": 0.5,
+      "extracted_at": "2026-05-17T11:56:31.469224"
+    },
+    {
+      "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_002",
+      "source_document_id": "indus_valley_script_deciphered_from_myth_65ff0a26",
+      "claim_type": "sign_value_claim",
+      "normalized_claim": "The fish sign encodes a coastal guild controller or maritime trader identity (Lothal-linked).",
+      "signs_involved": [
+        "fish sign family"
+      ],
+      "proposed_value": "coastal guild / maritime trader",
+      "claim_status": "partially_falsified",
+      "testability": "directly_testable",
+      "falsification_condition": "Fish sign should cluster at coastal/maritime sites (Lothal, Dholavira). Phase-4x CISI data shows fish NOT coastal-enriched.",
+      "glossa_lab_evidence": "Phase-4x CISI analysis: fish sign not statistically enriched at coastal sites [PARTIALLY FALSIFIED]",
+      "confidence_in_source": 0.45,
+      "extracted_at": "2026-05-17T11:56:31.469224"
+    },
+    {
+      "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_003",
+      "source_document_id": "indus_valley_script_deciphered_from_myth_65ff0a26",
+      "claim_type": "sign_function_claim",
+      "normalized_claim": "The arrow sign (tīr) encodes border enforcement or guild authority.",
+      "signs_involved": [
+        "arrow sign"
+      ],
+      "proposed_value": "tīr (enforcement at borders)",
+      "claim_status": "untested",
+      "testability": "directly_testable",
+      "falsification_condition": "If arrow sign does not cluster at gateway/border sites.",
+      "confidence_in_source": 0.5,
+      "extracted_at": "2026-05-17T11:56:31.469224"
+    },
+    {
+      "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_004",
+      "source_document_id": "indus_valley_script_deciphered_from_myth_65ff0a26",
+      "claim_type": "archaeological_context_claim",
+      "normalized_claim": "The horned deity sign encodes fire-altar intermediary roles (Kalibangan fire-altars).",
+      "signs_involved": [
+        "horned deity sign"
+      ],
+      "claim_status": "untested",
+      "testability": "indirectly_testable",
+      "required_data": "Site metadata with fire-altar classification (Kalibangan)",
+      "falsification_condition": "Horned deity sign does not cluster at fire-altar sites.",
+      "confidence_in_source": 0.5,
+      "extracted_at": "2026-05-17T11:56:31.469224"
+    }
+  ],
+  "_citation": {
+    "system": "Glossa-Lab Indus Evidence Graph Batch 4",
+    "source_doc": "indus_valley_script_deciphered_from_myth_65ff0a26"
+  }
+}

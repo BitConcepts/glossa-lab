@@ -1,0 +1,130 @@
+{
+  "document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+  "title": "",
+  "extraction_date": "2026-05-17T11:56:31.490321",
+  "total_claims": 9,
+  "auto_extracted": 9,
+  "manually_curated": 5,
+  "claims": [
+    {
+      "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001",
+      "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+      "claim_type": "language_claim",
+      "normalized_claim": "Language hypothesis: non-linguistic symbol",
+      "quote_fragment": "non-linguistic symbol",
+      "claim_status": "untested",
+      "testability": "directly_testable",
+      "confidence_in_source": 0.7,
+      "extracted_at": "2026-05-17T11:56:31.481238"
+    },
+    {
+      "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002",
+      "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+      "claim_type": "statistical_claim",
+      "normalized_claim": "Statistical finding: Positional analysis",
+      "quote_fragment": "Positional analysis",
+      "claim_status": "untested",
+      "testability": "directly_testable",
+      "confidence_in_source": 0.8,
+      "extracted_at": "2026-05-17T11:56:31.481238"
+    },
+    {
+      "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0003",
+      "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+      "claim_type": "critique_claim",
+      "normalized_claim": "Critique: Myth of a Literate Harappan",
+      "quote_fragment": "Myth of a Literate Harappan",
+      "claim_status": "untested",
+      "testability": "directly_testable",
+      "confidence_in_source": 0.8,
+      "extracted_at": "2026-05-17T11:56:31.481238"
+    },
+    {
+      "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0004",
+      "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+      "claim_type": "critique_claim",
+      "normalized_claim": "Critique: Collapse of the \nIndus-Script Thesis",
+      "quote_fragment": "Collapse of the \nIndus-Script Thesis",
+      "claim_status": "untested",
+      "testability": "directly_testable",
+      "confidence_in_source": 0.8,
+      "extracted_at": "2026-05-17T11:56:31.481238"
+    },
+    {
+      "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001",
+      "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+      "claim_type": "inscription_structure_claim",
+      "normalized_claim": "Indus inscriptions follow a tripartite grammar: prefix (identity/office/commodity) + medial (action/transaction/domain) + suffix (cycle/jurisdiction/logistics).",
+      "claim_status": "partially_supported",
+      "testability": "directly_testable",
+      "falsification_condition": "If faunal signs are NOT enriched in initial position and celestial signs are NOT enriched in terminal position.",
+      "glossa_lab_evidence": "Phase-43 Batch 5: formula_rate=35.5% vs null 0.6% (59x lift). 20 TERMINAL_STRONG + 40 INITIAL_STRONG signs. [STRUCTURALLY SUPPORTED]",
+      "author": "Hunt, Treasure A.",
+      "confidence_in_source": 0.75,
+      "extracted_at": "2026-05-17T11:56:31.490321"
+    },
+    {
+      "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_002",
+      "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+      "claim_type": "interpretation_claim",
+      "normalized_claim": "The Indus script functioned as a civic-ritual continuity system, not a phonetic script or royal propaganda — encoding ecological cycles, distributed governance, and civic identity.",
+      "claim_status": "untested",
+      "testability": "indirectly_testable",
+      "falsification_condition": "If sign distributions correlate with palatial/royal contexts rather than civic/infrastructure contexts.",
+      "confidence_in_source": 0.65,
+      "extracted_at": "2026-05-17T11:56:31.490321"
+    },
+    {
+      "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003",
+      "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+      "claim_type": "sign_function_claim",
+      "normalized_claim": "Faunal signs function as identity/guild/commodity prefixes (initial position).",
+      "signs_involved": [
+        "fish",
+        "unicorn",
+        "buffalo",
+        "rhinoceros",
+        "tiger",
+        "elephant"
+      ],
+      "claim_status": "partially_supported",
+      "testability": "directly_testable",
+      "falsification_condition": "Faunal signs not enriched in initial position above random baseline.",
+      "glossa_lab_evidence": "Phase-43: 40 INITIAL_STRONG signs identified; faunal-initial enrichment not yet sign-classified [STRUCTURAL SUPPORT ONLY]",
+      "confidence_in_source": 0.7,
+      "extracted_at": "2026-05-17T11:56:31.490321"
+    },
+    {
+      "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004",
+      "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+      "claim_type": "sign_function_claim",
+      "normalized_claim": "Celestial signs function as suffix/cycle markers (terminal position).",
+      "signs_involved": [
+        "star",
+        "sun",
+        "crescent",
+        "seven-petaled"
+      ],
+      "claim_status": "untested",
+      "testability": "directly_testable",
+      "falsification_condition": "Celestial signs not enriched in terminal position above random baseline.",
+      "confidence_in_source": 0.7,
+      "extracted_at": "2026-05-17T11:56:31.490321"
+    },
+    {
+      "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_005",
+      "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+      "claim_type": "methodological_claim",
+      "normalized_claim": "A 24-cluster Translation Atlas provides canonical sign forms, frequencies, and co-occurrence sets.",
+      "claim_status": "untested",
+      "testability": "indirectly_testable",
+      "falsification_condition": "If the 24 clusters do not correspond to statistically distinct positional/co-occurrence profiles.",
+      "confidence_in_source": 0.6,
+      "extracted_at": "2026-05-17T11:56:31.490321"
+    }
+  ],
+  "_citation": {
+    "system": "Glossa-Lab Indus Evidence Graph Batch 4",
+    "source_doc": "without_kings_or_conquests_the_indus_scr_ce9d98cc"
+  }
+}

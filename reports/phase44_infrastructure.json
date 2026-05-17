@@ -1,0 +1,76 @@
+{
+  "anchor_fix": {
+    "status": "done",
+    "original_count": 333,
+    "kept_count": 137,
+    "removed_count": 196,
+    "by_confidence": {
+      "HIGH": 7,
+      "UNCERTAIN": 1,
+      "MEDIUM": 54,
+      "LOW": 75
+    },
+    "sample_removed": [
+      "M211(MED-M211/MEDIUM)",
+      "M293(MED-M293/MEDIUM)",
+      "M065(TERM-M065/MEDIUM)",
+      "M125(TERM-M125/MEDIUM)",
+      "M087(TERM-M087/MEDIUM)",
+      "M249(TERM-M249/MEDIUM)",
+      "M220(TERM-M220/MEDIUM)",
+      "M079(INIT-M079/MEDIUM)",
+      "M022(INIT-M022/LOW)",
+      "M008(INIT-M008/LOW)"
+    ],
+    "kept_high": [
+      "M342=ay/ā",
+      "M176=an/aṇ",
+      "M099=kol/koḷ",
+      "M062=erutu",
+      "M045=yānai",
+      "M016=kaḷiṟu",
+      "M006=puli"
+    ]
+  },
+  "cisi_rebuild": {
+    "status": "done",
+    "n_inscriptions": 179,
+    "n_sign_tokens": 1003,
+    "n_distinct_signs": 182,
+    "sites": [
+      "M"
+    ],
+    "top_5_signs": [
+      [
+        "P324",
+        99
+      ],
+      [
+        "P122",
+        76
+      ],
+      [
+        "P385",
+        35
+      ],
+      [
+        "P086",
+        35
+      ],
+      [
+        "P050",
+        32
+      ]
+    ],
+    "mean_length": 5.6
+  },
+  "gulf_corpus": {
+    "status": "partial",
+    "reason": "No inscription data found in Gulf seal sources",
+    "sources_checked": [
+      "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\corpora\\downloads\\contact_zone\\gulf_seals",
+      "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\corpora\\downloads\\contact_zone\\meluhha_tablets.json",
+      "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\corpora\\downloads\\contact_zone\\laursen_2010_table1.json"
+    ]
+  }
+}

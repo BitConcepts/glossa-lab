@@ -8242,6 +8242,89 @@ Next step:
   Phase-43 T1: Fix indus_corpus_v2.py -- skip '*' prefix signs, int-convert numeric sign IDs.
   Phase-43 T2: Draft Penn Museum batch image request email.
 
+## [2026-05-17] Entry — AGENTS.md H20 + Glossa-Lab Indus Evidence Graph infrastructure (Batch 1+2)
+
+Objective:
+(1) Correct email rule violation from Phase-43: add H20 (never send to third parties).
+(2) Build the Glossa-Lab Indus Evidence Graph system per the agentic instruction plan.
+
+What was done:
+
+AGENTS.md H20 (email rule):
+  - Added H20.1-H20.3: agent may only send to tpierson@bitconcepts.tech;
+    all third-party emails (Fuls, Penn Museum, etc.) are drafts only,
+    user sends them from their own client.
+  - Documented Phase-43 T3.1 violation (Fuls email sent directly) as remediation.
+
+glossa-indus/ Evidence Graph (Batch 1 infrastructure):
+  - Created 59 directories per instruction plan folder structure
+  - README.md: system purpose, pipeline order, component overview, upload guide
+  - config/claim_schema.yaml: claim types, status vocabulary, full claim record schema
+  - config/sign_schema.yaml: sign systems, sign record schema, Phase-43 working catalog
+  - config/models.yaml: hypothesis families, model status vocabulary, all 8 registered models
+  - config/dedupe_rules.yaml: document/inscription/claim dedup rules at all levels
+  - config/test_registry.yaml: all analysis tests with status and Phase-43 results populated
+  - config/sources.yaml: acquisition priority, source categories, currently acquired/blocked
+  - scripts/indus_intake.py: document intake pipeline (checksum dedup, PDF text extraction,
+    metadata detection, literature/documents/ registration, claim queue entry)
+
+glossa-indus/ Evidence Graph (Batch 2 hypothesis models):
+  - hypotheses/models/parpola_proto_dravidian.yaml:
+    Full model encoding with Glossa-Lab Phase-41/43 evidence
+    (SA results, fish sign disambiguation, terminal suffix assignments)
+  - hypotheses/models/roif_guild_ledger.yaml:
+    Stub model — 5 test plans encoded, awaiting paper upload
+  - hypotheses/models/hunt_civic_ritual.yaml:
+    Stub model — 5 test plans encoded including tripartite grammar tests,
+    comparison with Phase-43 T/I/M findings
+
+System summary:
+  The Evidence Graph is an evidence-grounded research database that:
+  - Preserves ALL competing interpretations (never collapses to one theory)
+  - Treats every decipherment as a hypothesis with claim_status vocabulary
+  - Enforces falsifiability (every claim has falsification_condition)
+  - Separates evidence from interpretation at every layer
+  - Layers storage: raw/ → processed/ → corpus/ → claims/ → hypotheses/
+  - Accepts user-uploaded PDFs via scripts/indus_intake.py
+  - Deduplicates documents, inscriptions, and claims per config/dedupe_rules.yaml
+
+Foundation check: not run (data/config only)
+
+Files changed:
+  AGENTS.md (modified -- H20 added after H17)
+  glossa-indus/README.md (NEW)
+  glossa-indus/config/claim_schema.yaml (NEW)
+  glossa-indus/config/sign_schema.yaml (NEW)
+  glossa-indus/config/models.yaml (NEW)
+  glossa-indus/config/dedupe_rules.yaml (NEW)
+  glossa-indus/config/test_registry.yaml (NEW)
+  glossa-indus/config/sources.yaml (NEW)
+  glossa-indus/scripts/indus_intake.py (NEW)
+  glossa-indus/hypotheses/models/parpola_proto_dravidian.yaml (NEW)
+  glossa-indus/hypotheses/models/roif_guild_ledger.yaml (NEW -- stub)
+  glossa-indus/hypotheses/models/hunt_civic_ritual.yaml (NEW -- stub)
+  glossa-indus/{59 subdirectories with .gitkeep} (NEW)
+  LEDGER.md (this entry)
+
+Open TODOs (Batch 3 — core corpus sources):
+  1. Upload Roif paper to glossa-indus/raw/user_uploads/ and run intake script
+  2. Upload Hunt paper to glossa-indus/raw/user_uploads/ and run intake script
+  3. Create indus_claims.py (claim extraction from uploaded PDFs)
+  4. Create indus_analyze.py (run positional/cooccurrence/null-model tests)
+  5. Search and download all open Indus script papers (literature sweep)
+  6. Penn Museum image request: draft email to photos@pennmuseum.org (H20 -- do not send)
+  7. Phase-44 T1: V3 SA with 300K iterations to confirm lift ratio
+  8. Phase-44 T2: M77/342 bigram context analysis (confirm -n genitive hypothesis)
+
+Risks:
+  - Roif and Hunt papers not yet uploaded; their models are stubs
+  - indus_intake.py requires pypdf (pip install pypdf) for PDF text extraction
+  - Phase-43 Fuls email was sent in violation of H20; policy now documented
+
+Next step:
+  Upload Roif and Hunt papers to glossa-indus/raw/user_uploads/.
+  Run: python glossa-indus/scripts/indus_intake.py --file <path>
+
 ## [2026-05-15] Entry — Phase-43: V3 corpus built; Dravidian confirmed independent; terminal signs mapped
 
 Objective:

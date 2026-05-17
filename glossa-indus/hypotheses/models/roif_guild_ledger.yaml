@@ -1,0 +1,89 @@
+# Hypothesis Model: Roif Economic/Guild Ledger
+# Glossa-Lab Indus Evidence Graph
+# STATUS: STUB — awaiting paper upload to raw/user_uploads/
+
+model_id: roif_guild_ledger
+model_name: "Roif Economic/Guild Ledger Model"
+model_type: phonetic_mnemonic_economic_ledger
+status: stub
+
+awaiting_upload:
+  file: "Roif paper (title TBD)"
+  destination: "raw/user_uploads/"
+  intake_command: "python scripts/indus_intake.py --file raw/user_uploads/<roif_paper>.pdf"
+
+# Known claims from instruction plan description
+known_claims_summary: >
+  Indus script encodes guild, tribute, trade, and enforcement relations using
+  Proto-Dravidian phonetics and Akkadian trade-mnemonic parallels.
+  Sign table on final page maps: fish, jar, horned deity, arrow, boat, cattle,
+  plough, serpent, rodent, grid → proposed values.
+
+core_claims:
+  - claim_id: roif_economic_001
+    normalized_claim: >
+      Indus script primarily records guild, tribute, trade, and enforcement relations.
+    claim_type: decipherment_model_claim
+    claim_status: untested
+    testability: indirectly_testable
+    falsification_condition: >
+      Proposed economic signs do not correlate with expected trade/storage contexts
+      at higher-than-chance rates.
+
+  - claim_id: roif_fish_001
+    normalized_claim: "Fish sign relates to mīn / value marker / controller."
+    claim_type: sign_value_claim
+    signs_involved: ["fish family"]
+    claim_status: untested
+    testability: directly_testable
+    falsification_condition: >
+      If fish signs do not cluster at trade/merchant contexts more than random,
+      or if phonetic assignment is inconsistent with bigram patterns.
+
+  - claim_id: roif_jar_001
+    normalized_claim: "Jar sign relates to storage or tribute."
+    claim_type: sign_value_claim
+    claim_status: untested
+
+  - claim_id: roif_arrow_001
+    normalized_claim: "Arrow sign relates to transaction completion or enforcement."
+    claim_type: sign_value_claim
+    claim_status: untested
+
+# Tests to run once paper is uploaded and encoded
+tests_planned:
+  - id: roif_test_001
+    description: "Do proposed economic signs cluster in trade/storage contexts?"
+    required_data:
+      - sign sequences
+      - site type metadata (trade/storage/craft)
+    status: pending_data
+
+  - id: roif_test_002
+    description: "Are enforcement signs enriched at gates/boundaries/frontier sites?"
+    required_data:
+      - site type metadata (gateway/border)
+    status: pending_data
+
+  - id: roif_test_003
+    description: "Do fish/jar/boat signs cluster at port or water-related sites?"
+    required_data:
+      - site hydrological metadata
+    status: pending_data
+
+  - id: roif_test_004
+    description: "Do proposed sequences recur above chance null model?"
+    status: pending_encoding
+
+  - id: roif_test_005
+    description: "Are phonetic assignments consistent across sequences?"
+    status: pending_encoding
+
+next_steps:
+  1: "Upload Roif paper to raw/user_uploads/"
+  2: "Run: python scripts/indus_intake.py --file raw/user_uploads/<roif>.pdf"
+  3: "Extract sign table from final page of paper"
+  4: "Encode sign assignments as claims in claims/extracted_claims/"
+  5: "Map proposed sign values to Mahadevan M77 IDs where possible"
+  6: "Update this model status from stub to partially_encoded"
+  7: "Run roif_test_001 through roif_test_005"

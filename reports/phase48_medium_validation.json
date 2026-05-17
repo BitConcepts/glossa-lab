@@ -1,0 +1,676 @@
+{
+  "_citation": {
+    "primary": [
+      "A.1"
+    ]
+  },
+  "gpu_device": "cuda",
+  "n_medium_tested": 30,
+  "n_promoted": 30,
+  "promoted_signs": [
+    "M328",
+    "M059",
+    "M162",
+    "M391",
+    "M367",
+    "M233",
+    "M089",
+    "M051",
+    "M336",
+    "M048",
+    "M012",
+    "M305",
+    "M073",
+    "M013",
+    "M060",
+    "M080",
+    "M057",
+    "M039",
+    "M063",
+    "M077",
+    "M018",
+    "M030",
+    "M017",
+    "M020",
+    "M004",
+    "M014",
+    "M026",
+    "M034",
+    "M027",
+    "M041"
+  ],
+  "additional_coverage_pct": 34.6,
+  "new_total_high_coverage_pct": 54.9,
+  "results": [
+    {
+      "sign": "M328",
+      "reading": "ā/āl",
+      "n_corpus": 234,
+      "holdat_role": "CASE_MARKER_SUFFIX",
+      "avg_position": 0.595,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "too_short_pass"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "char_not_in_lm—pass_by_default"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M059",
+      "reading": "ēḷ/eḷ",
+      "n_corpus": 222,
+      "holdat_role": "PERSON_OR_OWNER",
+      "avg_position": 0.578,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "too_short_pass"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "char_not_in_lm—pass_by_default"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M162",
+      "reading": "il/iḷ",
+      "n_corpus": 205,
+      "holdat_role": "CASE_MARKER_SUFFIX",
+      "avg_position": 0.608,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "exact_match_7"
+      },
+      "test3_bigram": {
+        "pass": false,
+        "detail": "neighbour_match=0/3=0.0%"
+      },
+      "score": 2,
+      "promote": true
+    },
+    {
+      "sign": "M391",
+      "reading": "ka/kaṇ",
+      "n_corpus": 193,
+      "holdat_role": "CASE_MARKER_SUFFIX",
+      "avg_position": 0.6,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "exact_match_9"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "neighbour_match=2/4=50.0%"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M367",
+      "reading": "am/neuter",
+      "n_corpus": 190,
+      "holdat_role": "CASE_MARKER_SUFFIX",
+      "avg_position": 0.695,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "prefix_match_348"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "neighbour_match=2/3=66.7%"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M233",
+      "reading": "ūr",
+      "n_corpus": 171,
+      "holdat_role": "CASE_MARKER_SUFFIX",
+      "avg_position": 0.712,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "too_short_pass"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "char_not_in_lm—pass_by_default"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M089",
+      "reading": "tu/tū",
+      "n_corpus": 171,
+      "holdat_role": "CASE_MARKER_SUFFIX",
+      "avg_position": 0.684,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "prefix_match_381"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "neighbour_match=2/3=66.7%"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M051",
+      "reading": "pū/puḷ",
+      "n_corpus": 163,
+      "holdat_role": "CASE_MARKER_SUFFIX",
+      "avg_position": 0.653,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "exact_match_9"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "neighbour_match=2/3=66.7%"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M336",
+      "reading": "iṉ/locative",
+      "n_corpus": 161,
+      "holdat_role": "CASE_MARKER_SUFFIX",
+      "avg_position": 0.681,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "prefix_match_280"
+      },
+      "test3_bigram": {
+        "pass": false,
+        "detail": "neighbour_match=0/4=0.0%"
+      },
+      "score": 2,
+      "promote": true
+    },
+    {
+      "sign": "M048",
+      "reading": "mu/muṉ",
+      "n_corpus": 157,
+      "holdat_role": "CASE_MARKER_SUFFIX",
+      "avg_position": 0.627,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "exact_match_3"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "neighbour_match=3/4=75.0%"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M012",
+      "reading": "oṉṟu/1",
+      "n_corpus": 143,
+      "holdat_role": "CASE_MARKER_SUFFIX",
+      "avg_position": 0.605,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "exact_match_73"
+      },
+      "test3_bigram": {
+        "pass": false,
+        "detail": "neighbour_match=0/4=0.0%"
+      },
+      "score": 2,
+      "promote": true
+    },
+    {
+      "sign": "M305",
+      "reading": "ōṭu/comitative",
+      "n_corpus": 83,
+      "holdat_role": "CASE_MARKER_SUFFIX",
+      "avg_position": 0.988,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "prefix_match_329"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "char_not_in_lm—pass_by_default"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M073",
+      "reading": "kōṉ",
+      "n_corpus": 25,
+      "holdat_role": "CLASSIFIER_PREFIX",
+      "avg_position": 0.0,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "too_short_pass"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "neighbour_match=2/3=66.7%"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M013",
+      "reading": "nakaram",
+      "n_corpus": 23,
+      "holdat_role": "CLASSIFIER_PREFIX",
+      "avg_position": 0.0,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "prefix_match_382"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "neighbour_match=2/2=100.0%"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M060",
+      "reading": "kāṇṭāmirukam",
+      "n_corpus": 20,
+      "holdat_role": "CLASSIFIER_PREFIX",
+      "avg_position": 0.0,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "prefix_match_257"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "neighbour_match=2/3=66.7%"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M080",
+      "reading": "vēṅkai",
+      "n_corpus": 19,
+      "holdat_role": "CLASSIFIER_PREFIX",
+      "avg_position": 0.0,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "exact_match_6"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "neighbour_match=2/4=50.0%"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M057",
+      "reading": "māṭu",
+      "n_corpus": 18,
+      "holdat_role": "CLASSIFIER_PREFIX",
+      "avg_position": 0.0,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "exact_match_138"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "neighbour_match=2/3=66.7%"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M039",
+      "reading": "āṉai",
+      "n_corpus": 18,
+      "holdat_role": "CLASSIFIER_PREFIX",
+      "avg_position": 0.0,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "exact_match_86"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "char_not_in_lm—pass_by_default"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M063",
+      "reading": "mutalai",
+      "n_corpus": 18,
+      "holdat_role": "CLASSIFIER_PREFIX",
+      "avg_position": 0.0,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "exact_match_1"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "neighbour_match=2/2=100.0%"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M077",
+      "reading": "nal",
+      "n_corpus": 18,
+      "holdat_role": "CLASSIFIER_PREFIX",
+      "avg_position": 0.0,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "exact_match_18"
+      },
+      "test3_bigram": {
+        "pass": false,
+        "detail": "neighbour_match=1/3=33.3%"
+      },
+      "score": 2,
+      "promote": true
+    },
+    {
+      "sign": "M018",
+      "reading": "nēr",
+      "n_corpus": 18,
+      "holdat_role": "CLASSIFIER_PREFIX",
+      "avg_position": 0.0,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "exact_match_62"
+      },
+      "test3_bigram": {
+        "pass": false,
+        "detail": "neighbour_match=1/3=33.3%"
+      },
+      "score": 2,
+      "promote": true
+    },
+    {
+      "sign": "M030",
+      "reading": "kō",
+      "n_corpus": 18,
+      "holdat_role": "CLASSIFIER_PREFIX",
+      "avg_position": 0.0,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "too_short_pass"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "neighbour_match=2/3=66.7%"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M017",
+      "reading": "kai",
+      "n_corpus": 18,
+      "holdat_role": "CLASSIFIER_PREFIX",
+      "avg_position": 0.0,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "exact_match_116"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "neighbour_match=3/3=100.0%"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M020",
+      "reading": "kuṉ",
+      "n_corpus": 18,
+      "holdat_role": "CLASSIFIER_PREFIX",
+      "avg_position": 0.0,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "exact_match_147"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "neighbour_match=3/5=60.0%"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M004",
+      "reading": "kēḷ",
+      "n_corpus": 17,
+      "holdat_role": "CLASSIFIER_PREFIX",
+      "avg_position": 0.0,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "too_short_pass"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "neighbour_match=3/4=75.0%"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M014",
+      "reading": "tiru",
+      "n_corpus": 17,
+      "holdat_role": "CLASSIFIER_PREFIX",
+      "avg_position": 0.0,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "exact_match_3"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "neighbour_match=3/4=75.0%"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M026",
+      "reading": "mā",
+      "n_corpus": 17,
+      "holdat_role": "CLASSIFIER_PREFIX",
+      "avg_position": 0.0,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "too_short_pass"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "neighbour_match=1/2=50.0%"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M034",
+      "reading": "tōḷ",
+      "n_corpus": 17,
+      "holdat_role": "CLASSIFIER_PREFIX",
+      "avg_position": 0.0,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "too_short_pass"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "neighbour_match=2/2=100.0%"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M027",
+      "reading": "māṟ",
+      "n_corpus": 17,
+      "holdat_role": "CLASSIFIER_PREFIX",
+      "avg_position": 0.0,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "too_short_pass"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "neighbour_match=1/2=50.0%"
+      },
+      "score": 3,
+      "promote": true
+    },
+    {
+      "sign": "M041",
+      "reading": "pēr",
+      "n_corpus": 17,
+      "holdat_role": "CLASSIFIER_PREFIX",
+      "avg_position": 0.0,
+      "test1_positional": {
+        "pass": true,
+        "detail": "PASS"
+      },
+      "test2_dedr": {
+        "pass": true,
+        "detail": "exact_match_67"
+      },
+      "test3_bigram": {
+        "pass": true,
+        "detail": "neighbour_match=2/3=66.7%"
+      },
+      "score": 3,
+      "promote": true
+    }
+  ]
+}

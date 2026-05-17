@@ -1,0 +1,2170 @@
+{
+  "_citation": {
+    "primary": [
+      "A.1"
+    ]
+  },
+  "gpu_device": "cuda",
+  "n_inscriptions": 1670,
+  "n_unique_formulas": 1650,
+  "n_signs_with_readings": 394,
+  "top_50_formulas": [
+    {
+      "pattern": [
+        "M059",
+        "M089"
+      ],
+      "count": 3,
+      "length": 2,
+      "n_known_slots": 2,
+      "coverage_pct": 100.0,
+      "rendered": "ēḷ/eḷ[✓] · tu/tū[✓]",
+      "morphological": "ēḷ/eḷ-tu/tū",
+      "slots": [
+        {
+          "sign": "M059",
+          "reading": "ēḷ/eḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M089",
+          "reading": "tu/tū",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M059",
+        "M293",
+        "M391"
+      ],
+      "count": 2,
+      "length": 3,
+      "n_known_slots": 2,
+      "coverage_pct": 66.7,
+      "rendered": "ēḷ/eḷ[✓] · ta[?] · ka/kaṇ[✓]",
+      "morphological": "ēḷ/eḷ-(ta)-ka/kaṇ",
+      "slots": [
+        {
+          "sign": "M059",
+          "reading": "ēḷ/eḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M293",
+          "reading": "ta",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M391",
+          "reading": "ka/kaṇ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M050",
+        "M211"
+      ],
+      "count": 2,
+      "length": 2,
+      "n_known_slots": 1,
+      "coverage_pct": 50.0,
+      "rendered": "pār[✓] · ga[?]",
+      "morphological": "pār-(ga)",
+      "slots": [
+        {
+          "sign": "M050",
+          "reading": "pār",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M211",
+          "reading": "ga",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M061",
+        "M065"
+      ],
+      "count": 2,
+      "length": 2,
+      "n_known_slots": 0,
+      "coverage_pct": 0.0,
+      "rendered": "gi[?] · lu[?]",
+      "morphological": "(gi)-(lu)",
+      "slots": [
+        {
+          "sign": "M061",
+          "reading": "gi",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M065",
+          "reading": "lu",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M012",
+        "M391"
+      ],
+      "count": 2,
+      "length": 2,
+      "n_known_slots": 2,
+      "coverage_pct": 100.0,
+      "rendered": "oṉṟu/1[✓] · ka/kaṇ[✓]",
+      "morphological": "oṉṟu/1-ka/kaṇ",
+      "slots": [
+        {
+          "sign": "M012",
+          "reading": "oṉṟu/1",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M391",
+          "reading": "ka/kaṇ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M367",
+        "M162"
+      ],
+      "count": 2,
+      "length": 2,
+      "n_known_slots": 2,
+      "coverage_pct": 100.0,
+      "rendered": "am/neuter[✓] · il/iḷ[✓]",
+      "morphological": "am/neuter-il/iḷ",
+      "slots": [
+        {
+          "sign": "M367",
+          "reading": "am/neuter",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M162",
+          "reading": "il/iḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M056",
+        "M305"
+      ],
+      "count": 2,
+      "length": 2,
+      "n_known_slots": 1,
+      "coverage_pct": 50.0,
+      "rendered": "ke[?] · ōṭu/comitative[✓]",
+      "morphological": "(ke)-ōṭu/comitative",
+      "slots": [
+        {
+          "sign": "M056",
+          "reading": "ke",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M305",
+          "reading": "ōṭu/comitative",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M072",
+        "M305"
+      ],
+      "count": 2,
+      "length": 2,
+      "n_known_slots": 1,
+      "coverage_pct": 50.0,
+      "rendered": "cēr[~] · ōṭu/comitative[✓]",
+      "morphological": "cēr-ōṭu/comitative",
+      "slots": [
+        {
+          "sign": "M072",
+          "reading": "cēr",
+          "confidence": "LOW",
+          "gloss": ""
+        },
+        {
+          "sign": "M305",
+          "reading": "ōṭu/comitative",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M065",
+        "M342"
+      ],
+      "count": 2,
+      "length": 2,
+      "n_known_slots": 1,
+      "coverage_pct": 50.0,
+      "rendered": "lu[?] · ay/ā[✓✓]",
+      "morphological": "(lu)-ay/ā",
+      "slots": [
+        {
+          "sign": "M065",
+          "reading": "lu",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M342",
+          "reading": "ay/ā",
+          "confidence": "HIGH",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M078",
+        "M099"
+      ],
+      "count": 2,
+      "length": 2,
+      "n_known_slots": 2,
+      "coverage_pct": 100.0,
+      "rendered": "cēr[✓] · kol/koḷ[✓✓]",
+      "morphological": "cēr-kol/koḷ",
+      "slots": [
+        {
+          "sign": "M078",
+          "reading": "cēr",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M099",
+          "reading": "kol/koḷ",
+          "confidence": "HIGH",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M080",
+        "M249"
+      ],
+      "count": 2,
+      "length": 2,
+      "n_known_slots": 1,
+      "coverage_pct": 50.0,
+      "rendered": "vēṅkai[✓] · ru[?]",
+      "morphological": "vēṅkai-(ru)",
+      "slots": [
+        {
+          "sign": "M080",
+          "reading": "vēṅkai",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M249",
+          "reading": "ru",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M025",
+        "M249"
+      ],
+      "count": 2,
+      "length": 2,
+      "n_known_slots": 1,
+      "coverage_pct": 50.0,
+      "rendered": "cem[✓] · ru[?]",
+      "morphological": "cem-(ru)",
+      "slots": [
+        {
+          "sign": "M025",
+          "reading": "cem",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M249",
+          "reading": "ru",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M233",
+        "M293"
+      ],
+      "count": 2,
+      "length": 2,
+      "n_known_slots": 1,
+      "coverage_pct": 50.0,
+      "rendered": "ūr[✓] · ta[?]",
+      "morphological": "ūr-(ta)",
+      "slots": [
+        {
+          "sign": "M233",
+          "reading": "ūr",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M293",
+          "reading": "ta",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M048",
+        "M220"
+      ],
+      "count": 2,
+      "length": 2,
+      "n_known_slots": 1,
+      "coverage_pct": 50.0,
+      "rendered": "mu/muṉ[✓] · ga[?]",
+      "morphological": "mu/muṉ-(ga)",
+      "slots": [
+        {
+          "sign": "M048",
+          "reading": "mu/muṉ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M220",
+          "reading": "ga",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M022",
+        "M249"
+      ],
+      "count": 2,
+      "length": 2,
+      "n_known_slots": 0,
+      "coverage_pct": 0.0,
+      "rendered": "du[?] · ru[?]",
+      "morphological": "(du)-(ru)",
+      "slots": [
+        {
+          "sign": "M022",
+          "reading": "du",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M249",
+          "reading": "ru",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M027",
+        "M367"
+      ],
+      "count": 2,
+      "length": 2,
+      "n_known_slots": 2,
+      "coverage_pct": 100.0,
+      "rendered": "māṟ[✓] · am/neuter[✓]",
+      "morphological": "māṟ-am/neuter",
+      "slots": [
+        {
+          "sign": "M027",
+          "reading": "māṟ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M367",
+          "reading": "am/neuter",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M048",
+        "M176",
+        "M089"
+      ],
+      "count": 2,
+      "length": 3,
+      "n_known_slots": 3,
+      "coverage_pct": 100.0,
+      "rendered": "mu/muṉ[✓] · an/aṇ[✓✓] · tu/tū[✓]",
+      "morphological": "mu/muṉ-an/aṇ-tu/tū",
+      "slots": [
+        {
+          "sign": "M048",
+          "reading": "mu/muṉ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M176",
+          "reading": "an/aṇ",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M089",
+          "reading": "tu/tū",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M003",
+        "M176"
+      ],
+      "count": 2,
+      "length": 2,
+      "n_known_slots": 1,
+      "coverage_pct": 50.0,
+      "rendered": "o[?] · an/aṇ[✓✓]",
+      "morphological": "(o)-an/aṇ",
+      "slots": [
+        {
+          "sign": "M003",
+          "reading": "o",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M176",
+          "reading": "an/aṇ",
+          "confidence": "HIGH",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M048",
+        "M267"
+      ],
+      "count": 2,
+      "length": 2,
+      "n_known_slots": 1,
+      "coverage_pct": 50.0,
+      "rendered": "mu/muṉ[✓] · ?/uncertain[??]",
+      "morphological": "mu/muṉ-?/uncertain",
+      "slots": [
+        {
+          "sign": "M048",
+          "reading": "mu/muṉ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M267",
+          "reading": "?/uncertain",
+          "confidence": "UNCERTAIN",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M391",
+        "M211",
+        "M099",
+        "M220"
+      ],
+      "count": 1,
+      "length": 4,
+      "n_known_slots": 2,
+      "coverage_pct": 50.0,
+      "rendered": "ka/kaṇ[✓] · ga[?] · kol/koḷ[✓✓] · ga[?]",
+      "morphological": "ka/kaṇ-(ga)-kol/koḷ-(ga)",
+      "slots": [
+        {
+          "sign": "M391",
+          "reading": "ka/kaṇ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M211",
+          "reading": "ga",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M099",
+          "reading": "kol/koḷ",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M220",
+          "reading": "ga",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M022",
+        "M270",
+        "M342",
+        "M211",
+        "M087"
+      ],
+      "count": 1,
+      "length": 5,
+      "n_known_slots": 2,
+      "coverage_pct": 40.0,
+      "rendered": "du[?] · muḷ[~] · ay/ā[✓✓] · ga[?] · veL[✓]",
+      "morphological": "(du)-muḷ-ay/ā-(ga)-veL",
+      "slots": [
+        {
+          "sign": "M022",
+          "reading": "du",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M270",
+          "reading": "muḷ",
+          "confidence": "LOW",
+          "gloss": ""
+        },
+        {
+          "sign": "M342",
+          "reading": "ay/ā",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M211",
+          "reading": "ga",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M087",
+          "reading": "veL",
+          "confidence": "MEDIUM",
+          "gloss": "white / two strokes"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M042",
+        "M012"
+      ],
+      "count": 1,
+      "length": 2,
+      "n_known_slots": 1,
+      "coverage_pct": 50.0,
+      "rendered": "māṭu[~] · oṉṟu/1[✓]",
+      "morphological": "māṭu-oṉṟu/1",
+      "slots": [
+        {
+          "sign": "M042",
+          "reading": "māṭu",
+          "confidence": "LOW",
+          "gloss": ""
+        },
+        {
+          "sign": "M012",
+          "reading": "oṉṟu/1",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M062",
+        "M162",
+        "M267"
+      ],
+      "count": 1,
+      "length": 3,
+      "n_known_slots": 2,
+      "coverage_pct": 66.7,
+      "rendered": "erutu[✓✓] · il/iḷ[✓] · ?/uncertain[??]",
+      "morphological": "erutu-il/iḷ-?/uncertain",
+      "slots": [
+        {
+          "sign": "M062",
+          "reading": "erutu",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M162",
+          "reading": "il/iḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M267",
+          "reading": "?/uncertain",
+          "confidence": "UNCERTAIN",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M073",
+        "M378",
+        "M328",
+        "M099",
+        "M125",
+        "M089"
+      ],
+      "count": 1,
+      "length": 6,
+      "n_known_slots": 4,
+      "coverage_pct": 66.7,
+      "rendered": "kōṉ[✓] · kur[?] · ā/āl[✓] · kol/koḷ[✓✓] · li[?] · tu/tū[✓]",
+      "morphological": "kōṉ-(kur)-ā/āl-kol/koḷ-(li)-tu/tū",
+      "slots": [
+        {
+          "sign": "M073",
+          "reading": "kōṉ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M378",
+          "reading": "kur",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M328",
+          "reading": "ā/āl",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M099",
+          "reading": "kol/koḷ",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M125",
+          "reading": "li",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M089",
+          "reading": "tu/tū",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M059",
+        "M059"
+      ],
+      "count": 1,
+      "length": 2,
+      "n_known_slots": 2,
+      "coverage_pct": 100.0,
+      "rendered": "ēḷ/eḷ[✓] · ēḷ/eḷ[✓]",
+      "morphological": "ēḷ/eḷ-ēḷ/eḷ",
+      "slots": [
+        {
+          "sign": "M059",
+          "reading": "ēḷ/eḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M059",
+          "reading": "ēḷ/eḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M004",
+        "M391",
+        "M099"
+      ],
+      "count": 1,
+      "length": 3,
+      "n_known_slots": 3,
+      "coverage_pct": 100.0,
+      "rendered": "kēḷ[✓] · ka/kaṇ[✓] · kol/koḷ[✓✓]",
+      "morphological": "kēḷ-ka/kaṇ-kol/koḷ",
+      "slots": [
+        {
+          "sign": "M004",
+          "reading": "kēḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M391",
+          "reading": "ka/kaṇ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M099",
+          "reading": "kol/koḷ",
+          "confidence": "HIGH",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M012",
+        "M183",
+        "M391",
+        "M048"
+      ],
+      "count": 1,
+      "length": 4,
+      "n_known_slots": 3,
+      "coverage_pct": 75.0,
+      "rendered": "oṉṟu/1[✓] · vēḷ[~] · ka/kaṇ[✓] · mu/muṉ[✓]",
+      "morphological": "oṉṟu/1-vēḷ-ka/kaṇ-mu/muṉ",
+      "slots": [
+        {
+          "sign": "M012",
+          "reading": "oṉṟu/1",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M183",
+          "reading": "vēḷ",
+          "confidence": "LOW",
+          "gloss": ""
+        },
+        {
+          "sign": "M391",
+          "reading": "ka/kaṇ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M048",
+          "reading": "mu/muṉ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M048",
+        "M328",
+        "M328"
+      ],
+      "count": 1,
+      "length": 3,
+      "n_known_slots": 3,
+      "coverage_pct": 100.0,
+      "rendered": "mu/muṉ[✓] · ā/āl[✓] · ā/āl[✓]",
+      "morphological": "mu/muṉ-ā/āl-ā/āl",
+      "slots": [
+        {
+          "sign": "M048",
+          "reading": "mu/muṉ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M328",
+          "reading": "ā/āl",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M328",
+          "reading": "ā/āl",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M008",
+        "M328",
+        "M277",
+        "M211"
+      ],
+      "count": 1,
+      "length": 4,
+      "n_known_slots": 1,
+      "coverage_pct": 25.0,
+      "rendered": "nā[?] · ā/āl[✓] · cum[?] · ga[?]",
+      "morphological": "(nā)-ā/āl-(cum)-(ga)",
+      "slots": [
+        {
+          "sign": "M008",
+          "reading": "nā",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M328",
+          "reading": "ā/āl",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M277",
+          "reading": "cum",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M211",
+          "reading": "ga",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M028",
+        "M211",
+        "M342",
+        "M391",
+        "M226",
+        "M125",
+        "M051"
+      ],
+      "count": 1,
+      "length": 7,
+      "n_known_slots": 3,
+      "coverage_pct": 42.9,
+      "rendered": "cōḻ[~] · ga[?] · ay/ā[✓✓] · ka/kaṇ[✓] · nū[?] · li[?] · pū/puḷ[✓]",
+      "morphological": "cōḻ-(ga)-ay/ā-ka/kaṇ-(nū)-(li)-pū/puḷ",
+      "slots": [
+        {
+          "sign": "M028",
+          "reading": "cōḻ",
+          "confidence": "LOW",
+          "gloss": ""
+        },
+        {
+          "sign": "M211",
+          "reading": "ga",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M342",
+          "reading": "ay/ā",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M391",
+          "reading": "ka/kaṇ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M226",
+          "reading": "nū",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M125",
+          "reading": "li",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M051",
+          "reading": "pū/puḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M014",
+        "M162",
+        "M342",
+        "M176",
+        "M099",
+        "M125"
+      ],
+      "count": 1,
+      "length": 6,
+      "n_known_slots": 5,
+      "coverage_pct": 83.3,
+      "rendered": "tiru[✓] · il/iḷ[✓] · ay/ā[✓✓] · an/aṇ[✓✓] · kol/koḷ[✓✓] · li[?]",
+      "morphological": "tiru-il/iḷ-ay/ā-an/aṇ-kol/koḷ-(li)",
+      "slots": [
+        {
+          "sign": "M014",
+          "reading": "tiru",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M162",
+          "reading": "il/iḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M342",
+          "reading": "ay/ā",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M176",
+          "reading": "an/aṇ",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M099",
+          "reading": "kol/koḷ",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M125",
+          "reading": "li",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M023",
+        "M176",
+        "M099",
+        "M328"
+      ],
+      "count": 1,
+      "length": 4,
+      "n_known_slots": 4,
+      "coverage_pct": 100.0,
+      "rendered": "vaḷ[✓] · an/aṇ[✓✓] · kol/koḷ[✓✓] · ā/āl[✓]",
+      "morphological": "vaḷ-an/aṇ-kol/koḷ-ā/āl",
+      "slots": [
+        {
+          "sign": "M023",
+          "reading": "vaḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M176",
+          "reading": "an/aṇ",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M099",
+          "reading": "kol/koḷ",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M328",
+          "reading": "ā/āl",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M066",
+        "M162",
+        "M087"
+      ],
+      "count": 1,
+      "length": 3,
+      "n_known_slots": 3,
+      "coverage_pct": 100.0,
+      "rendered": "cōḻ[✓] · il/iḷ[✓] · veL[✓]",
+      "morphological": "cōḻ-il/iḷ-veL",
+      "slots": [
+        {
+          "sign": "M066",
+          "reading": "cōḻ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M162",
+          "reading": "il/iḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M087",
+          "reading": "veL",
+          "confidence": "MEDIUM",
+          "gloss": "white / two strokes"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M391",
+        "M267",
+        "M342"
+      ],
+      "count": 1,
+      "length": 3,
+      "n_known_slots": 2,
+      "coverage_pct": 66.7,
+      "rendered": "ka/kaṇ[✓] · ?/uncertain[??] · ay/ā[✓✓]",
+      "morphological": "ka/kaṇ-?/uncertain-ay/ā",
+      "slots": [
+        {
+          "sign": "M391",
+          "reading": "ka/kaṇ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M267",
+          "reading": "?/uncertain",
+          "confidence": "UNCERTAIN",
+          "gloss": ""
+        },
+        {
+          "sign": "M342",
+          "reading": "ay/ā",
+          "confidence": "HIGH",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M077",
+        "M342",
+        "M162"
+      ],
+      "count": 1,
+      "length": 3,
+      "n_known_slots": 3,
+      "coverage_pct": 100.0,
+      "rendered": "nal[✓] · ay/ā[✓✓] · il/iḷ[✓]",
+      "morphological": "nal-ay/ā-il/iḷ",
+      "slots": [
+        {
+          "sign": "M077",
+          "reading": "nal",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M342",
+          "reading": "ay/ā",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M162",
+          "reading": "il/iḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M044",
+        "M059",
+        "M267",
+        "M125"
+      ],
+      "count": 1,
+      "length": 4,
+      "n_known_slots": 1,
+      "coverage_pct": 25.0,
+      "rendered": "mā[?] · ēḷ/eḷ[✓] · ?/uncertain[??] · li[?]",
+      "morphological": "(mā)-ēḷ/eḷ-?/uncertain-(li)",
+      "slots": [
+        {
+          "sign": "M044",
+          "reading": "mā",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M059",
+          "reading": "ēḷ/eḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M267",
+          "reading": "?/uncertain",
+          "confidence": "UNCERTAIN",
+          "gloss": ""
+        },
+        {
+          "sign": "M125",
+          "reading": "li",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M125",
+        "M267",
+        "M059",
+        "M065"
+      ],
+      "count": 1,
+      "length": 4,
+      "n_known_slots": 1,
+      "coverage_pct": 25.0,
+      "rendered": "li[?] · ?/uncertain[??] · ēḷ/eḷ[✓] · lu[?]",
+      "morphological": "(li)-?/uncertain-ēḷ/eḷ-(lu)",
+      "slots": [
+        {
+          "sign": "M125",
+          "reading": "li",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M267",
+          "reading": "?/uncertain",
+          "confidence": "UNCERTAIN",
+          "gloss": ""
+        },
+        {
+          "sign": "M059",
+          "reading": "ēḷ/eḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M065",
+          "reading": "lu",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M001",
+        "M059",
+        "M401",
+        "M255",
+        "M328",
+        "M051",
+        "M222",
+        "M012"
+      ],
+      "count": 1,
+      "length": 8,
+      "n_known_slots": 4,
+      "coverage_pct": 50.0,
+      "rendered": "tōḷ[~] · ēḷ/eḷ[✓] · māṉ[~] · cēl[~] · ā/āl[✓] · pū/puḷ[✓] · cēl[~] · oṉṟu/1[✓]",
+      "morphological": "tōḷ-ēḷ/eḷ-māṉ-cēl-ā/āl-pū/puḷ-cēl-oṉṟu/1",
+      "slots": [
+        {
+          "sign": "M001",
+          "reading": "tōḷ",
+          "confidence": "LOW",
+          "gloss": ""
+        },
+        {
+          "sign": "M059",
+          "reading": "ēḷ/eḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M401",
+          "reading": "māṉ",
+          "confidence": "LOW",
+          "gloss": ""
+        },
+        {
+          "sign": "M255",
+          "reading": "cēl",
+          "confidence": "LOW",
+          "gloss": ""
+        },
+        {
+          "sign": "M328",
+          "reading": "ā/āl",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M051",
+          "reading": "pū/puḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M222",
+          "reading": "cēl",
+          "confidence": "LOW",
+          "gloss": ""
+        },
+        {
+          "sign": "M012",
+          "reading": "oṉṟu/1",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M059",
+        "M267",
+        "M099",
+        "M261",
+        "M267"
+      ],
+      "count": 1,
+      "length": 5,
+      "n_known_slots": 3,
+      "coverage_pct": 60.0,
+      "rendered": "ēḷ/eḷ[✓] · ?/uncertain[??] · kol/koḷ[✓✓] · muruku[✓] · ?/uncertain[??]",
+      "morphological": "ēḷ/eḷ-?/uncertain-kol/koḷ-muruku-?/uncertain",
+      "slots": [
+        {
+          "sign": "M059",
+          "reading": "ēḷ/eḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M267",
+          "reading": "?/uncertain",
+          "confidence": "UNCERTAIN",
+          "gloss": ""
+        },
+        {
+          "sign": "M099",
+          "reading": "kol/koḷ",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M261",
+          "reading": "muruku",
+          "confidence": "MEDIUM",
+          "gloss": "young man / god"
+        },
+        {
+          "sign": "M267",
+          "reading": "?/uncertain",
+          "confidence": "UNCERTAIN",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M071",
+        "M267",
+        "M367",
+        "M087",
+        "M365",
+        "M267"
+      ],
+      "count": 1,
+      "length": 6,
+      "n_known_slots": 3,
+      "coverage_pct": 50.0,
+      "rendered": "nal[✓] · ?/uncertain[??] · am/neuter[✓] · veL[✓] · vāṉ[~] · ?/uncertain[??]",
+      "morphological": "nal-?/uncertain-am/neuter-veL-vāṉ-?/uncertain",
+      "slots": [
+        {
+          "sign": "M071",
+          "reading": "nal",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M267",
+          "reading": "?/uncertain",
+          "confidence": "UNCERTAIN",
+          "gloss": ""
+        },
+        {
+          "sign": "M367",
+          "reading": "am/neuter",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M087",
+          "reading": "veL",
+          "confidence": "MEDIUM",
+          "gloss": "white / two strokes"
+        },
+        {
+          "sign": "M365",
+          "reading": "vāṉ",
+          "confidence": "LOW",
+          "gloss": ""
+        },
+        {
+          "sign": "M267",
+          "reading": "?/uncertain",
+          "confidence": "UNCERTAIN",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M060",
+        "M412",
+        "M211"
+      ],
+      "count": 1,
+      "length": 3,
+      "n_known_slots": 1,
+      "coverage_pct": 33.3,
+      "rendered": "kāṇṭāmirukam[✓] · cūḷ[~] · ga[?]",
+      "morphological": "kāṇṭāmirukam-cūḷ-(ga)",
+      "slots": [
+        {
+          "sign": "M060",
+          "reading": "kāṇṭāmirukam",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M412",
+          "reading": "cūḷ",
+          "confidence": "LOW",
+          "gloss": ""
+        },
+        {
+          "sign": "M211",
+          "reading": "ga",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M009",
+        "M267",
+        "M342",
+        "M342",
+        "M367",
+        "M251",
+        "M012"
+      ],
+      "count": 1,
+      "length": 7,
+      "n_known_slots": 5,
+      "coverage_pct": 71.4,
+      "rendered": "āṇ[✓] · ?/uncertain[??] · ay/ā[✓✓] · ay/ā[✓✓] · am/neuter[✓] · vāṉ[~] · oṉṟu/1[✓]",
+      "morphological": "āṇ-?/uncertain-ay/ā-ay/ā-am/neuter-vāṉ-oṉṟu/1",
+      "slots": [
+        {
+          "sign": "M009",
+          "reading": "āṇ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M267",
+          "reading": "?/uncertain",
+          "confidence": "UNCERTAIN",
+          "gloss": ""
+        },
+        {
+          "sign": "M342",
+          "reading": "ay/ā",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M342",
+          "reading": "ay/ā",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M367",
+          "reading": "am/neuter",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M251",
+          "reading": "vāṉ",
+          "confidence": "LOW",
+          "gloss": ""
+        },
+        {
+          "sign": "M012",
+          "reading": "oṉṟu/1",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M018",
+        "M336"
+      ],
+      "count": 1,
+      "length": 2,
+      "n_known_slots": 2,
+      "coverage_pct": 100.0,
+      "rendered": "nēr[✓] · iṉ/locative[✓]",
+      "morphological": "nēr-iṉ/locative",
+      "slots": [
+        {
+          "sign": "M018",
+          "reading": "nēr",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M336",
+          "reading": "iṉ/locative",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M061",
+        "M267",
+        "M099",
+        "M125"
+      ],
+      "count": 1,
+      "length": 4,
+      "n_known_slots": 1,
+      "coverage_pct": 25.0,
+      "rendered": "gi[?] · ?/uncertain[??] · kol/koḷ[✓✓] · li[?]",
+      "morphological": "(gi)-?/uncertain-kol/koḷ-(li)",
+      "slots": [
+        {
+          "sign": "M061",
+          "reading": "gi",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M267",
+          "reading": "?/uncertain",
+          "confidence": "UNCERTAIN",
+          "gloss": ""
+        },
+        {
+          "sign": "M099",
+          "reading": "kol/koḷ",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M125",
+          "reading": "li",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M067",
+        "M181",
+        "M051",
+        "M051"
+      ],
+      "count": 1,
+      "length": 4,
+      "n_known_slots": 3,
+      "coverage_pct": 75.0,
+      "rendered": "kōṭṭāṉ[✓] · ney[?] · pū/puḷ[✓] · pū/puḷ[✓]",
+      "morphological": "kōṭṭāṉ-(ney)-pū/puḷ-pū/puḷ",
+      "slots": [
+        {
+          "sign": "M067",
+          "reading": "kōṭṭāṉ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M181",
+          "reading": "ney",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M051",
+          "reading": "pū/puḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M051",
+          "reading": "pū/puḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M233",
+        "M219",
+        "M158",
+        "M342"
+      ],
+      "count": 1,
+      "length": 4,
+      "n_known_slots": 2,
+      "coverage_pct": 50.0,
+      "rendered": "ūr[✓] · kū[?] · tir[?] · ay/ā[✓✓]",
+      "morphological": "ūr-(kū)-(tir)-ay/ā",
+      "slots": [
+        {
+          "sign": "M233",
+          "reading": "ūr",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M219",
+          "reading": "kū",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M158",
+          "reading": "tir",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M342",
+          "reading": "ay/ā",
+          "confidence": "HIGH",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M019",
+        "M301",
+        "M087"
+      ],
+      "count": 1,
+      "length": 3,
+      "n_known_slots": 1,
+      "coverage_pct": 33.3,
+      "rendered": "ri[?] · cūḷ[~] · veL[✓]",
+      "morphological": "(ri)-cūḷ-veL",
+      "slots": [
+        {
+          "sign": "M019",
+          "reading": "ri",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        },
+        {
+          "sign": "M301",
+          "reading": "cūḷ",
+          "confidence": "LOW",
+          "gloss": ""
+        },
+        {
+          "sign": "M087",
+          "reading": "veL",
+          "confidence": "MEDIUM",
+          "gloss": "white / two strokes"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M176",
+        "M342",
+        "M233",
+        "M391",
+        "M162",
+        "M342",
+        "M336"
+      ],
+      "count": 1,
+      "length": 7,
+      "n_known_slots": 7,
+      "coverage_pct": 100.0,
+      "rendered": "an/aṇ[✓✓] · ay/ā[✓✓] · ūr[✓] · ka/kaṇ[✓] · il/iḷ[✓] · ay/ā[✓✓] · iṉ/locative[✓]",
+      "morphological": "an/aṇ-ay/ā-ūr-ka/kaṇ-il/iḷ-ay/ā-iṉ/locative",
+      "slots": [
+        {
+          "sign": "M176",
+          "reading": "an/aṇ",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M342",
+          "reading": "ay/ā",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M233",
+          "reading": "ūr",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M391",
+          "reading": "ka/kaṇ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M162",
+          "reading": "il/iḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M342",
+          "reading": "ay/ā",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M336",
+          "reading": "iṉ/locative",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M267",
+        "M099",
+        "M406",
+        "M293"
+      ],
+      "count": 1,
+      "length": 4,
+      "n_known_slots": 1,
+      "coverage_pct": 25.0,
+      "rendered": "?/uncertain[??] · kol/koḷ[✓✓] · viḷ[~] · ta[?]",
+      "morphological": "?/uncertain-kol/koḷ-viḷ-(ta)",
+      "slots": [
+        {
+          "sign": "M267",
+          "reading": "?/uncertain",
+          "confidence": "UNCERTAIN",
+          "gloss": ""
+        },
+        {
+          "sign": "M099",
+          "reading": "kol/koḷ",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M406",
+          "reading": "viḷ",
+          "confidence": "LOW",
+          "gloss": ""
+        },
+        {
+          "sign": "M293",
+          "reading": "ta",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M033",
+        "M267",
+        "M162",
+        "M089",
+        "M099",
+        "M059"
+      ],
+      "count": 1,
+      "length": 6,
+      "n_known_slots": 5,
+      "coverage_pct": 83.3,
+      "rendered": "puli[✓] · ?/uncertain[??] · il/iḷ[✓] · tu/tū[✓] · kol/koḷ[✓✓] · ēḷ/eḷ[✓]",
+      "morphological": "puli-?/uncertain-il/iḷ-tu/tū-kol/koḷ-ēḷ/eḷ",
+      "slots": [
+        {
+          "sign": "M033",
+          "reading": "puli",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M267",
+          "reading": "?/uncertain",
+          "confidence": "UNCERTAIN",
+          "gloss": ""
+        },
+        {
+          "sign": "M162",
+          "reading": "il/iḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M089",
+          "reading": "tu/tū",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M099",
+          "reading": "kol/koḷ",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M059",
+          "reading": "ēḷ/eḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    }
+  ],
+  "fully_decoded": [
+    {
+      "pattern": [
+        "M059",
+        "M089"
+      ],
+      "count": 3,
+      "length": 2,
+      "n_known_slots": 2,
+      "coverage_pct": 100.0,
+      "rendered": "ēḷ/eḷ[✓] · tu/tū[✓]",
+      "morphological": "ēḷ/eḷ-tu/tū",
+      "slots": [
+        {
+          "sign": "M059",
+          "reading": "ēḷ/eḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M089",
+          "reading": "tu/tū",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M012",
+        "M391"
+      ],
+      "count": 2,
+      "length": 2,
+      "n_known_slots": 2,
+      "coverage_pct": 100.0,
+      "rendered": "oṉṟu/1[✓] · ka/kaṇ[✓]",
+      "morphological": "oṉṟu/1-ka/kaṇ",
+      "slots": [
+        {
+          "sign": "M012",
+          "reading": "oṉṟu/1",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M391",
+          "reading": "ka/kaṇ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M367",
+        "M162"
+      ],
+      "count": 2,
+      "length": 2,
+      "n_known_slots": 2,
+      "coverage_pct": 100.0,
+      "rendered": "am/neuter[✓] · il/iḷ[✓]",
+      "morphological": "am/neuter-il/iḷ",
+      "slots": [
+        {
+          "sign": "M367",
+          "reading": "am/neuter",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M162",
+          "reading": "il/iḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M078",
+        "M099"
+      ],
+      "count": 2,
+      "length": 2,
+      "n_known_slots": 2,
+      "coverage_pct": 100.0,
+      "rendered": "cēr[✓] · kol/koḷ[✓✓]",
+      "morphological": "cēr-kol/koḷ",
+      "slots": [
+        {
+          "sign": "M078",
+          "reading": "cēr",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M099",
+          "reading": "kol/koḷ",
+          "confidence": "HIGH",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M027",
+        "M367"
+      ],
+      "count": 2,
+      "length": 2,
+      "n_known_slots": 2,
+      "coverage_pct": 100.0,
+      "rendered": "māṟ[✓] · am/neuter[✓]",
+      "morphological": "māṟ-am/neuter",
+      "slots": [
+        {
+          "sign": "M027",
+          "reading": "māṟ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M367",
+          "reading": "am/neuter",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M048",
+        "M176",
+        "M089"
+      ],
+      "count": 2,
+      "length": 3,
+      "n_known_slots": 3,
+      "coverage_pct": 100.0,
+      "rendered": "mu/muṉ[✓] · an/aṇ[✓✓] · tu/tū[✓]",
+      "morphological": "mu/muṉ-an/aṇ-tu/tū",
+      "slots": [
+        {
+          "sign": "M048",
+          "reading": "mu/muṉ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M176",
+          "reading": "an/aṇ",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M089",
+          "reading": "tu/tū",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M059",
+        "M059"
+      ],
+      "count": 1,
+      "length": 2,
+      "n_known_slots": 2,
+      "coverage_pct": 100.0,
+      "rendered": "ēḷ/eḷ[✓] · ēḷ/eḷ[✓]",
+      "morphological": "ēḷ/eḷ-ēḷ/eḷ",
+      "slots": [
+        {
+          "sign": "M059",
+          "reading": "ēḷ/eḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M059",
+          "reading": "ēḷ/eḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M004",
+        "M391",
+        "M099"
+      ],
+      "count": 1,
+      "length": 3,
+      "n_known_slots": 3,
+      "coverage_pct": 100.0,
+      "rendered": "kēḷ[✓] · ka/kaṇ[✓] · kol/koḷ[✓✓]",
+      "morphological": "kēḷ-ka/kaṇ-kol/koḷ",
+      "slots": [
+        {
+          "sign": "M004",
+          "reading": "kēḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M391",
+          "reading": "ka/kaṇ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M099",
+          "reading": "kol/koḷ",
+          "confidence": "HIGH",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M048",
+        "M328",
+        "M328"
+      ],
+      "count": 1,
+      "length": 3,
+      "n_known_slots": 3,
+      "coverage_pct": 100.0,
+      "rendered": "mu/muṉ[✓] · ā/āl[✓] · ā/āl[✓]",
+      "morphological": "mu/muṉ-ā/āl-ā/āl",
+      "slots": [
+        {
+          "sign": "M048",
+          "reading": "mu/muṉ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M328",
+          "reading": "ā/āl",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M328",
+          "reading": "ā/āl",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M014",
+        "M162",
+        "M342",
+        "M176",
+        "M099",
+        "M125"
+      ],
+      "count": 1,
+      "length": 6,
+      "n_known_slots": 5,
+      "coverage_pct": 83.3,
+      "rendered": "tiru[✓] · il/iḷ[✓] · ay/ā[✓✓] · an/aṇ[✓✓] · kol/koḷ[✓✓] · li[?]",
+      "morphological": "tiru-il/iḷ-ay/ā-an/aṇ-kol/koḷ-(li)",
+      "slots": [
+        {
+          "sign": "M014",
+          "reading": "tiru",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M162",
+          "reading": "il/iḷ",
+          "confidence": "MEDIUM",
+          "gloss": ""
+        },
+        {
+          "sign": "M342",
+          "reading": "ay/ā",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M176",
+          "reading": "an/aṇ",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M099",
+          "reading": "kol/koḷ",
+          "confidence": "HIGH",
+          "gloss": ""
+        },
+        {
+          "sign": "M125",
+          "reading": "li",
+          "confidence": "SA_CANDIDATE",
+          "gloss": "SA-derived candidate"
+        }
+      ]
+    }
+  ],
+  "formula_clusters": {
+    "0": [
+      0,
+      24,
+      49
+    ],
+    "1": [
+      1
+    ],
+    "2": [
+      2
+    ],
+    "3": [
+      3
+    ],
+    "4": [
+      4,
+      26
+    ],
+    "5": [
+      5
+    ],
+    "6": [
+      6
+    ],
+    "7": [
+      7
+    ],
+    "8": [
+      8
+    ],
+    "9": [
+      9
+    ]
+  }
+}

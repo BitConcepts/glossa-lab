@@ -1,0 +1,2054 @@
+{
+  "_citation": {
+    "primary": [
+      "A.1",
+      "A.13"
+    ],
+    "dedr": "DEDR Burrow & Emeneau",
+    "parpola": "Parpola 1994"
+  },
+  "gpu_device": "cuda",
+  "n_signs_catalogued": 33,
+  "n_new_candidates": 19,
+  "catalogue": [
+    {
+      "sign_id": "M006",
+      "depiction_terms": [
+        "tiger",
+        "puli",
+        "leopard"
+      ],
+      "best_dedr_word": "rēcu",
+      "best_dedr_gloss": "a sort of ounce or lynx said to climb trees and to destroy tigers; (b.) a hound or wild dog",
+      "rebus_phoneme": "rēc",
+      "existing_reading": "puli",
+      "existing_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Telugu",
+          "word": "rēcu",
+          "gloss": "a sort of ounce or lynx said to climb trees and to destroy tigers; (b.) a hound or wild dog",
+          "word_norm": "rcu",
+          "search_term": "tiger"
+        },
+        {
+          "lang": "Gondi",
+          "word": "ḍuvvu",
+          "gloss": "tiger; ?",
+          "word_norm": "uvvu",
+          "search_term": "tiger"
+        },
+        {
+          "lang": "adil",
+          "word": "ḍuhkyā",
+          "gloss": "leopard",
+          "word_norm": "uhky",
+          "search_term": "leopard"
+        }
+      ],
+      "rebus_agrees_with_existing": false
+    },
+    {
+      "sign_id": "M016",
+      "depiction_terms": [
+        "calf",
+        "kaliru",
+        "young elephant"
+      ],
+      "best_dedr_word": "ambā",
+      "best_dedr_gloss": "the cry of cow or calf",
+      "rebus_phoneme": "a",
+      "existing_reading": "kaḷiṟu",
+      "existing_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Kannada",
+          "word": "ambā",
+          "gloss": "the cry of cow or calf",
+          "word_norm": "amb",
+          "search_term": "calf"
+        },
+        {
+          "lang": "Kannada",
+          "word": "aṃhā",
+          "gloss": "the cry of cow or calf",
+          "word_norm": "ah",
+          "search_term": "calf"
+        },
+        {
+          "lang": "Konda",
+          "word": "lēŋa",
+          "gloss": "calf",
+          "word_norm": "la",
+          "search_term": "calf"
+        }
+      ],
+      "rebus_agrees_with_existing": false
+    },
+    {
+      "sign_id": "M045",
+      "depiction_terms": [
+        "elephant",
+        "yanai"
+      ],
+      "best_dedr_word": "amaram",
+      "best_dedr_gloss": "stern of a vessel, elephant's hind part, abaft",
+      "rebus_phoneme": "am",
+      "existing_reading": "yānai",
+      "existing_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Mal",
+          "word": "amaram",
+          "gloss": "stern of a vessel, elephant's hind part, abaft",
+          "word_norm": "amaram",
+          "search_term": "elephant"
+        },
+        {
+          "lang": "Mal",
+          "word": "alaṟuka",
+          "gloss": "to roar, bellow, cry (as elephant, tiger, woman in labour)",
+          "word_norm": "alauka",
+          "search_term": "elephant"
+        },
+        {
+          "lang": "Tam",
+          "word": "alliyaṉ",
+          "gloss": "stray elephant separated from the fold",
+          "word_norm": "alliya",
+          "search_term": "elephant"
+        }
+      ],
+      "rebus_agrees_with_existing": false
+    },
+    {
+      "sign_id": "M062",
+      "depiction_terms": [
+        "bull",
+        "zebu",
+        "eru",
+        "ox"
+      ],
+      "best_dedr_word": "imil",
+      "best_dedr_gloss": "hump on bull",
+      "rebus_phoneme": "im",
+      "existing_reading": "erutu",
+      "existing_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Tam",
+          "word": "imil",
+          "gloss": "hump on bull",
+          "word_norm": "imil",
+          "search_term": "bull"
+        },
+        {
+          "lang": "Mal",
+          "word": "uṇṭa",
+          "gloss": "ball, globe, clot, bullet",
+          "word_norm": "ua",
+          "search_term": "bull"
+        },
+        {
+          "lang": "Telugu",
+          "word": "eṭṭam",
+          "gloss": "packs of cut or fencing branches/ bushes collected and piled up on bullock carts",
+          "word_norm": "eam",
+          "search_term": "bull"
+        }
+      ],
+      "rebus_agrees_with_existing": false
+    },
+    {
+      "sign_id": "M099",
+      "depiction_terms": [
+        "hammer",
+        "kol",
+        "chisel",
+        "forge"
+      ],
+      "best_dedr_word": "dā",
+      "best_dedr_gloss": "this, undifferentiated for gender or number (krishnamurti 1969.67, penzl 1955.90, §80.2); the br. declensional and derivational forms are similar to those of the other br. demonstrative pronouns, based on pdr",
+      "rebus_phoneme": "dā",
+      "existing_reading": "kol/koḷ",
+      "existing_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Brah",
+          "word": "dā",
+          "gloss": "this, undifferentiated for gender or number (krishnamurti 1969.67, penzl 1955.90, §80.2); the br. declensional and derivational forms are similar to those of the other br. demonstrative pronouns, based on pdr",
+          "word_norm": "d",
+          "search_term": "forge"
+        },
+        {
+          "lang": "Malto",
+          "word": "asye",
+          "gloss": "to chisel. ?",
+          "word_norm": "asye",
+          "search_term": "chisel"
+        },
+        {
+          "lang": "Naiki",
+          "word": "accir",
+          "gloss": "day before yesterday (cf. 2553 kol.siḍ); atanthere",
+          "word_norm": "accir",
+          "search_term": "kol"
+        }
+      ],
+      "rebus_agrees_with_existing": false
+    },
+    {
+      "sign_id": "M176",
+      "depiction_terms": [
+        "male",
+        "man",
+        "an",
+        "masculine"
+      ],
+      "best_dedr_word": "aniŋ",
+      "best_dedr_gloss": "that many males, females, things",
+      "rebus_phoneme": "an",
+      "existing_reading": "an/aṇ",
+      "existing_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Kolami",
+          "word": "aniŋ",
+          "gloss": "that many males, females, things",
+          "word_norm": "ani",
+          "search_term": "male"
+        },
+        {
+          "lang": "Kolami",
+          "word": "andar",
+          "gloss": "that many males, females, things",
+          "word_norm": "andar",
+          "search_term": "male"
+        },
+        {
+          "lang": "Kolami",
+          "word": "andav",
+          "gloss": "that many males, females, things",
+          "word_norm": "andav",
+          "search_term": "male"
+        }
+      ],
+      "rebus_agrees_with_existing": true
+    },
+    {
+      "sign_id": "M342",
+      "depiction_terms": [
+        "pronoun",
+        "suffix",
+        "ay"
+      ],
+      "best_dedr_word": "ī-",
+      "best_dedr_gloss": "a base declined for case, to which the enclitic suffix pronouns are added (cf. mbe 1961a). for forms with initial",
+      "rebus_phoneme": "ī",
+      "existing_reading": "ay/ā",
+      "existing_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Brah",
+          "word": "ī-",
+          "gloss": "a base declined for case, to which the enclitic suffix pronouns are added (cf. mbe 1961a). for forms with initial",
+          "word_norm": "",
+          "search_term": "pronoun"
+        },
+        {
+          "lang": "Brah",
+          "word": "dā",
+          "gloss": "this, undifferentiated for gender or number (krishnamurti 1969.67, penzl 1955.90, §80.2); the br. declensional and derivational forms are similar to those of the other br. demonstrative pronouns, based on pdr",
+          "word_norm": "d",
+          "search_term": "pronoun"
+        },
+        {
+          "lang": "Tam",
+          "word": "āka",
+          "gloss": "completely, in that fashion; adverbial suffix",
+          "word_norm": "ka",
+          "search_term": "suffix"
+        }
+      ],
+      "rebus_agrees_with_existing": false
+    },
+    {
+      "sign_id": "M047",
+      "depiction_terms": [
+        "fish",
+        "min",
+        "meen"
+      ],
+      "best_dedr_word": "aṭal",
+      "best_dedr_gloss": "a kind of fish",
+      "rebus_phoneme": "aṭ",
+      "existing_reading": "min/mīn",
+      "existing_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Tam",
+          "word": "aṭal",
+          "gloss": "a kind of fish",
+          "word_norm": "aal",
+          "search_term": "fish"
+        },
+        {
+          "lang": "Mal",
+          "word": "aila",
+          "gloss": "a fish",
+          "word_norm": "aila",
+          "search_term": "fish"
+        },
+        {
+          "lang": "Malto",
+          "word": "aṛage",
+          "gloss": "curry made of meat, fish, or vegetable. deds 12",
+          "word_norm": "aage",
+          "search_term": "fish"
+        }
+      ],
+      "rebus_agrees_with_existing": false
+    },
+    {
+      "sign_id": "M073",
+      "depiction_terms": [
+        "king",
+        "kon",
+        "chief"
+      ],
+      "best_dedr_word": "aṭkā",
+      "best_dedr_gloss": "earthen pot used for cooking",
+      "rebus_phoneme": "a",
+      "existing_reading": "kōṉ",
+      "existing_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "betul",
+          "word": "aṭkā",
+          "gloss": "earthen pot used for cooking",
+          "word_norm": "ak",
+          "search_term": "king"
+        },
+        {
+          "lang": "gommu",
+          "word": "aṛka",
+          "gloss": "cooking pot",
+          "word_norm": "aka",
+          "search_term": "king"
+        },
+        {
+          "lang": "Gondi",
+          "word": "arro",
+          "gloss": "taboo, used chiefly of food (3<i>sg.. neg.</i> = it is not correct)",
+          "word_norm": "arro",
+          "search_term": "chief"
+        }
+      ],
+      "rebus_agrees_with_existing": false
+    },
+    {
+      "sign_id": "M013",
+      "depiction_terms": [
+        "town",
+        "ur",
+        "settlement"
+      ],
+      "best_dedr_word": "haṛsēfing",
+      "best_dedr_gloss": "to make to return, withhold; (all forms have town variant withrforṛ) (<i>bdcg</i>, p. 10)",
+      "rebus_phoneme": "has",
+      "existing_reading": "nakaram",
+      "existing_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Brah",
+          "word": "haṛsēfing",
+          "gloss": "to make to return, withhold; (all forms have town variant withrforṛ) (<i>bdcg</i>, p. 10)",
+          "word_norm": "hasfing",
+          "search_term": "town"
+        },
+        {
+          "lang": "Tam",
+          "word": "ūr",
+          "gloss": "village, town, city",
+          "word_norm": "r",
+          "search_term": "town"
+        },
+        {
+          "lang": "Tulu",
+          "word": "ūru",
+          "gloss": "village, town. te",
+          "word_norm": "ru",
+          "search_term": "town"
+        }
+      ],
+      "rebus_agrees_with_existing": false
+    },
+    {
+      "sign_id": "M060",
+      "depiction_terms": [
+        "rhinoceros",
+        "erumai",
+        "buffalo"
+      ],
+      "best_dedr_word": "aṛpïn",
+      "best_dedr_gloss": "dowry (of buffaloes given by girl's father)",
+      "rebus_phoneme": "a",
+      "existing_reading": "kāṇṭāmirukam",
+      "existing_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Toda",
+          "word": "aṛpïn",
+          "gloss": "dowry (of buffaloes given by girl's father)",
+          "word_norm": "apn",
+          "search_term": "buffalo"
+        },
+        {
+          "lang": "Tam",
+          "word": "erumai",
+          "gloss": "female buffalo",
+          "word_norm": "erumai",
+          "search_term": "erumai"
+        },
+        {
+          "lang": "Kannada",
+          "word": "eḍru",
+          "gloss": "impediment, hindrance, trouble, enmity",
+          "word_norm": "eru",
+          "search_term": "erumai"
+        }
+      ],
+      "rebus_agrees_with_existing": false
+    },
+    {
+      "sign_id": "M211",
+      "depiction_terms": [
+        "unicorn",
+        "kol",
+        "one-horn"
+      ],
+      "best_dedr_word": "ācin",
+      "best_dedr_gloss": "that day, day before yesterday (cf. 2553 kol.siḍ)",
+      "rebus_phoneme": "āc",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "salur",
+          "word": "ācin",
+          "gloss": "that day, day before yesterday (cf. 2553 kol.siḍ)",
+          "word_norm": "cin",
+          "search_term": "kol"
+        },
+        {
+          "lang": "Naiki",
+          "word": "accir",
+          "gloss": "day before yesterday (cf. 2553 kol.siḍ); atanthere",
+          "word_norm": "accir",
+          "search_term": "kol"
+        },
+        {
+          "lang": "durg",
+          "word": "onḍe",
+          "gloss": "leech (<i>voc.</i> 407)",
+          "word_norm": "one",
+          "search_term": "one-horn"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "M293",
+      "depiction_terms": [
+        "comb",
+        "vil",
+        "teeth"
+      ],
+      "best_dedr_word": "accu",
+      "best_dedr_gloss": "weaver's reed instrument for pressing down the threads of the woof; comb-like frame in a loom through which the warp threads are passed and by which they are pressed or battened together",
+      "rebus_phoneme": "a",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Tam",
+          "word": "accu",
+          "gloss": "weaver's reed instrument for pressing down the threads of the woof; comb-like frame in a loom through which the warp threads are passed and by which they are pressed or battened together",
+          "word_norm": "accu",
+          "search_term": "comb"
+        },
+        {
+          "lang": "koya",
+          "word": "īṛs-",
+          "gloss": "to comb the hair (<i>voc.</i> 215)",
+          "word_norm": "s",
+          "search_term": "comb"
+        },
+        {
+          "lang": "Brah",
+          "word": "iris",
+          "gloss": "a comb. ded(s) 419",
+          "word_norm": "iris",
+          "search_term": "comb"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "M065",
+      "depiction_terms": [
+        "jar",
+        "pot",
+        "kuTam"
+      ],
+      "best_dedr_word": "akaḷam",
+      "best_dedr_gloss": "jar, large earthen pot, bucket, body of the lute as shaped like a bowl",
+      "rebus_phoneme": "ak",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Tam",
+          "word": "akaḷam",
+          "gloss": "jar, large earthen pot, bucket, body of the lute as shaped like a bowl",
+          "word_norm": "akaam",
+          "search_term": "jar"
+        },
+        {
+          "lang": "Tulu",
+          "word": "aḍḍyara",
+          "gloss": "earthen jar or pot",
+          "word_norm": "ayara",
+          "search_term": "jar"
+        },
+        {
+          "lang": "Kurux",
+          "word": "hūrī",
+          "gloss": "mud receptacle [i.e. unbaked clay jar] for storing fodder, etc. deds 91",
+          "word_norm": "hr",
+          "search_term": "jar"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "M125",
+      "depiction_terms": [
+        "bow",
+        "vil",
+        "arrow"
+      ],
+      "best_dedr_word": "anḍ-",
+      "best_dedr_gloss": "to attach string to bow",
+      "rebus_phoneme": "a",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Parji",
+          "word": "anḍ-",
+          "gloss": "to attach string to bow",
+          "word_norm": "an",
+          "search_term": "bow"
+        },
+        {
+          "lang": "Kuwi",
+          "word": "ambu",
+          "gloss": "bow (<i>sic</i>). ded(s) 150",
+          "word_norm": "ambu",
+          "search_term": "bow"
+        },
+        {
+          "lang": "Telugu",
+          "word": "alle",
+          "gloss": "bow-string",
+          "word_norm": "alle",
+          "search_term": "bow"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "M087",
+      "depiction_terms": [
+        "pipal",
+        "fig",
+        "tree",
+        "arasu"
+      ],
+      "best_dedr_word": "ēl meri",
+      "best_dedr_gloss": "pipal tree. <i>",
+      "rebus_phoneme": "ē",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Parji",
+          "word": "ēl meri",
+          "gloss": "pipal tree. <i>",
+          "word_norm": "lmeri",
+          "search_term": "pipal"
+        },
+        {
+          "lang": "Gondi",
+          "word": "āli mrānu",
+          "gloss": "pipal tree. pe",
+          "word_norm": "limrnu",
+          "search_term": "pipal"
+        },
+        {
+          "lang": "Tam",
+          "word": "ficus religiosa; arai",
+          "gloss": "a tree, prob. pipal (tolk.)",
+          "word_norm": "ficusreligiosaarai",
+          "search_term": "pipal"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "M249",
+      "depiction_terms": [
+        "scorpion",
+        "tee",
+        "teel"
+      ],
+      "best_dedr_word": "iṭukki",
+      "best_dedr_gloss": "pincers, tongs, tweezers, steel trap, prehensile chela of a crab or a scorpion",
+      "rebus_phoneme": "iṭ",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Tam",
+          "word": "iṭukki",
+          "gloss": "pincers, tongs, tweezers, steel trap, prehensile chela of a crab or a scorpion",
+          "word_norm": "iukki",
+          "search_term": "scorpion"
+        },
+        {
+          "lang": "Tulu",
+          "word": "alavu",
+          "gloss": "steel",
+          "word_norm": "alavu",
+          "search_term": "teel"
+        },
+        {
+          "lang": "Tam",
+          "word": "aṭimai",
+          "gloss": "slavery, servitude, slave, servant, devotee",
+          "word_norm": "aimai",
+          "search_term": "tee"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "M220",
+      "depiction_terms": [
+        "bison",
+        "erumai",
+        "buffalo"
+      ],
+      "best_dedr_word": "kett- (ketti-)",
+      "best_dedr_gloss": "to gore with horns (said of buffaloes and bison, which sway the horns from side to side)",
+      "rebus_phoneme": "ke",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Kodagu",
+          "word": "kett- (ketti-)",
+          "gloss": "to gore with horns (said of buffaloes and bison, which sway the horns from side to side)",
+          "word_norm": "kettketti",
+          "search_term": "bison"
+        },
+        {
+          "lang": "Konda",
+          "word": "gura",
+          "gloss": "bison. deds 235",
+          "word_norm": "gura",
+          "search_term": "bison"
+        },
+        {
+          "lang": "Pengo",
+          "word": "homa",
+          "gloss": "bison",
+          "word_norm": "homa",
+          "search_term": "bison"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "M305",
+      "depiction_terms": [
+        "seated figure",
+        "iru",
+        "sit"
+      ],
+      "best_dedr_word": "āpe",
+      "best_dedr_gloss": "yonder, opposite",
+      "rebus_phoneme": "āp",
+      "existing_reading": "ōṭu/comitative",
+      "existing_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Tulu",
+          "word": "āpe",
+          "gloss": "yonder, opposite",
+          "word_norm": "pe",
+          "search_term": "sit"
+        },
+        {
+          "lang": "Tam",
+          "word": "ar̤i (-v-, -nt-)",
+          "gloss": "to perish, be ruined, decay, be mutilated, fail, be defeated, suffer, be used up; (-pp-, -tt-) to destroy, spend, ruin, damage, efface, bring to a close; <i>n.</i> ruin, destruction",
+          "word_norm": "arivnt",
+          "search_term": "iru"
+        },
+        {
+          "lang": "Kannada",
+          "word": "seṟapu",
+          "gloss": "hospitality, honour, festival. ?",
+          "word_norm": "seapu",
+          "search_term": "seated figure"
+        }
+      ],
+      "rebus_agrees_with_existing": false
+    },
+    {
+      "sign_id": "M367",
+      "depiction_terms": [
+        "squirrel",
+        "pilLai",
+        "rat"
+      ],
+      "best_dedr_word": "karapu",
+      "best_dedr_gloss": "to gnaw with the teeth, as rats or squirrels do with a fruit",
+      "rebus_phoneme": "kar",
+      "existing_reading": "am/neuter",
+      "existing_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Tulu",
+          "word": "karapu",
+          "gloss": "to gnaw with the teeth, as rats or squirrels do with a fruit",
+          "word_norm": "karapu",
+          "search_term": "squirrel"
+        },
+        {
+          "lang": "Kannada",
+          "word": "a-",
+          "gloss": "remote demonstrative base",
+          "word_norm": "a",
+          "search_term": "rat"
+        },
+        {
+          "lang": "Kodagu",
+          "word": "kem-",
+          "gloss": "red (in a few cpds.:ken-deŋgebrown coconut; (in song) coconut;ken-na·ywild dog;keñ-jerired squirrel;kem-buttïred anthill (in song);keñ-jo·pïa dull red)",
+          "word_norm": "kem",
+          "search_term": "squirrel"
+        }
+      ],
+      "rebus_agrees_with_existing": false
+    },
+    {
+      "sign_id": "M233",
+      "depiction_terms": [
+        "dot",
+        "oru",
+        "one",
+        "point"
+      ],
+      "best_dedr_word": "íne",
+      "best_dedr_gloss": "to do thus (cf.áneto think, say, or do thus s.v. 868 ta.eṉ; isánea contamination ofeṉto say and the demonstrativea-, or isínea new formation, analogical toáne, reinterpreted as if it had something to do witha-?)",
+      "rebus_phoneme": "ne",
+      "existing_reading": "ūr",
+      "existing_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Malto",
+          "word": "íne",
+          "gloss": "to do thus (cf.áneto think, say, or do thus s.v. 868 ta.eṉ; isánea contamination ofeṉto say and the demonstrativea-, or isínea new formation, analogical toáne, reinterpreted as if it had something to do witha-?)",
+          "word_norm": "ne",
+          "search_term": "dot"
+        },
+        {
+          "lang": "Kannada",
+          "word": "uppu",
+          "gloss": "love, esp. doting affection; being, abiding; protection, esp. of a place marked out by lines in a game",
+          "word_norm": "uppu",
+          "search_term": "dot"
+        },
+        {
+          "lang": "Tam",
+          "word": "amai (-v-, -nt-)",
+          "gloss": "to crowd together, be close, be attached, connected, joined, suffice, prepare (oneself), be suitable, appropriate, be complete, prepare; (-pp-, -tt-) to effect, accomplish, create, appoint, institute, bring together, prepare, get ready; <i>n.</i> fitness, beauty",
+          "word_norm": "amaivnt",
+          "search_term": "point"
+        }
+      ],
+      "rebus_agrees_with_existing": false
+    },
+    {
+      "sign_id": "P001",
+      "depiction_terms": [
+        "man",
+        "person",
+        "aal"
+      ],
+      "best_dedr_word": "av",
+      "best_dedr_gloss": "that man, that woman, those persons/that person (<i>hon.</i>), that thing, those things",
+      "rebus_phoneme": "av",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Tam",
+          "word": "av",
+          "gloss": "that man, that woman, those persons/that person (<i>hon.</i>), that thing, those things",
+          "word_norm": "av",
+          "search_term": "man"
+        },
+        {
+          "lang": "Tam",
+          "word": "avai",
+          "gloss": "that man, that woman, those persons/that person (<i>hon.</i>), that thing, those things",
+          "word_norm": "avai",
+          "search_term": "man"
+        },
+        {
+          "lang": "Mal",
+          "word": "avan",
+          "gloss": "that man, that woman, those persons, that thing, those things",
+          "word_norm": "avan",
+          "search_term": "man"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P099",
+      "depiction_terms": [
+        "bow",
+        "vil"
+      ],
+      "best_dedr_word": "anḍ-",
+      "best_dedr_gloss": "to attach string to bow",
+      "rebus_phoneme": "a",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Parji",
+          "word": "anḍ-",
+          "gloss": "to attach string to bow",
+          "word_norm": "an",
+          "search_term": "bow"
+        },
+        {
+          "lang": "Kuwi",
+          "word": "ambu",
+          "gloss": "bow (<i>sic</i>). ded(s) 150",
+          "word_norm": "ambu",
+          "search_term": "bow"
+        },
+        {
+          "lang": "pottangi",
+          "word": "anḍal",
+          "gloss": "bowstring",
+          "word_norm": "anal",
+          "search_term": "bow"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P086",
+      "depiction_terms": [
+        "one",
+        "oru",
+        "single"
+      ],
+      "best_dedr_word": "ná",
+      "best_dedr_gloss": "that one here (used when the party referred to is present; <santali <b=\"\">na- the nearest in the remote zone; mbe 1980b)",
+      "rebus_phoneme": "n",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Malto",
+          "word": "ná",
+          "gloss": "that one here (used when the party referred to is present; <santali <b=\"\">na- the nearest in the remote zone; mbe 1980b)",
+          "word_norm": "n",
+          "search_term": "one"
+        },
+        {
+          "lang": "Konda",
+          "word": "nanu",
+          "gloss": "one (woman or thing) like that",
+          "word_norm": "nanu",
+          "search_term": "one"
+        },
+        {
+          "lang": "Konda",
+          "word": "nasok",
+          "gloss": "id., such big ones",
+          "word_norm": "nasok",
+          "search_term": "one"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P087",
+      "depiction_terms": [
+        "two",
+        "iru",
+        "white"
+      ],
+      "best_dedr_word": "av",
+      "best_dedr_gloss": "that man, that woman, those persons/that person (<i>hon.</i>), that thing, those things",
+      "rebus_phoneme": "av",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Tam",
+          "word": "av",
+          "gloss": "that man, that woman, those persons/that person (<i>hon.</i>), that thing, those things",
+          "word_norm": "av",
+          "search_term": "two"
+        },
+        {
+          "lang": "Kota",
+          "word": "ad",
+          "gloss": "that man, that woman, those persons, that thing/those things",
+          "word_norm": "ad",
+          "search_term": "two"
+        },
+        {
+          "lang": "Mal",
+          "word": "atu",
+          "gloss": "that man, that woman, those persons, that thing, those things",
+          "word_norm": "atu",
+          "search_term": "two"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P091",
+      "depiction_terms": [
+        "six",
+        "aru"
+      ],
+      "best_dedr_word": "āṟu",
+      "best_dedr_gloss": "six",
+      "rebus_phoneme": "āṟ",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Tam",
+          "word": "āṟu",
+          "gloss": "six",
+          "word_norm": "u",
+          "search_term": "six"
+        },
+        {
+          "lang": "Telugu",
+          "word": "kāni",
+          "gloss": "one sixtyfourth part; a quarter of an anna; a cawny of land",
+          "word_norm": "kni",
+          "search_term": "six"
+        },
+        {
+          "lang": "Telugu",
+          "word": "kāṇi",
+          "gloss": "one sixtyfourth part; a quarter of an anna; a cawny of land",
+          "word_norm": "ki",
+          "search_term": "six"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P092",
+      "depiction_terms": [
+        "seven",
+        "elu"
+      ],
+      "best_dedr_word": "al",
+      "best_dedr_gloss": "night, darkness, evening",
+      "rebus_phoneme": "al",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Tam",
+          "word": "al",
+          "gloss": "night, darkness, evening",
+          "word_norm": "al",
+          "search_term": "seven"
+        },
+        {
+          "lang": "Kannada",
+          "word": "aḍḍa",
+          "gloss": "two aṇas and four pays, seven duḍḍus",
+          "word_norm": "aa",
+          "search_term": "seven"
+        },
+        {
+          "lang": "Tam",
+          "word": "ēr̤u",
+          "gloss": "seven",
+          "word_norm": "ru",
+          "search_term": "seven"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P124",
+      "depiction_terms": [
+        "pot",
+        "kuTam"
+      ],
+      "best_dedr_word": "áṭi",
+      "best_dedr_gloss": "that place or spot",
+      "rebus_phoneme": "ṭi",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "kuTam",
+      "dedr_matches": [
+        {
+          "lang": "Malto",
+          "word": "áṭi",
+          "gloss": "that place or spot",
+          "word_norm": "i",
+          "search_term": "pot"
+        },
+        {
+          "lang": "Tam",
+          "word": "akal",
+          "gloss": "small earthen pot having a wide mouth, hollow earthen lamp, a measure of capacity",
+          "word_norm": "akal",
+          "search_term": "pot"
+        },
+        {
+          "lang": "Gadaba",
+          "word": "agle",
+          "gloss": "pot. ded 10",
+          "word_norm": "agle",
+          "search_term": "pot"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P175",
+      "depiction_terms": [
+        "spindle",
+        "katir"
+      ],
+      "best_dedr_word": "ēku",
+      "best_dedr_gloss": "to pick, beat, or clean (cotton), expose or publish the faults of, defame; <i>n.</i> roll of cleaned cotton prepared for the spindle",
+      "rebus_phoneme": "ēk",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "katir",
+      "dedr_matches": [
+        {
+          "lang": "Telugu",
+          "word": "ēku",
+          "gloss": "to pick, beat, or clean (cotton), expose or publish the faults of, defame; <i>n.</i> roll of cleaned cotton prepared for the spindle",
+          "word_norm": "ku",
+          "search_term": "spindle"
+        },
+        {
+          "lang": "Tam",
+          "word": "katir",
+          "gloss": "spinner's spindle",
+          "word_norm": "katir",
+          "search_term": "spindle"
+        },
+        {
+          "lang": "Tulu",
+          "word": "nūloḍu",
+          "gloss": "a spindle",
+          "word_norm": "nlou",
+          "search_term": "spindle"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P261",
+      "depiction_terms": [
+        "circle",
+        "muruku"
+      ],
+      "best_dedr_word": "ār̤i",
+      "best_dedr_gloss": "circle, ring, wheel, discus weapon",
+      "rebus_phoneme": "ār",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "muruku",
+      "dedr_matches": [
+        {
+          "lang": "Tam",
+          "word": "ār̤i",
+          "gloss": "circle, ring, wheel, discus weapon",
+          "word_norm": "ri",
+          "search_term": "circle"
+        },
+        {
+          "lang": "Tam",
+          "word": "iṇṭai",
+          "gloss": "circlet of flowers, variety of garland",
+          "word_norm": "iai",
+          "search_term": "circle"
+        },
+        {
+          "lang": "Tam",
+          "word": "uruł̣i",
+          "gloss": "wheel, circle, small vessel of bell-metal that is circular in shape",
+          "word_norm": "urui",
+          "search_term": "circle"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P264",
+      "depiction_terms": [
+        "female",
+        "pen"
+      ],
+      "best_dedr_word": "dā",
+      "best_dedr_gloss": "this, undifferentiated for gender or number (krishnamurti 1969.67, penzl 1955.90, §80.2); the br. declensional and derivational forms are similar to those of the other br. demonstrative pronouns, based on pdr",
+      "rebus_phoneme": "dā",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "dam/peN",
+      "dedr_matches": [
+        {
+          "lang": "Brah",
+          "word": "dā",
+          "gloss": "this, undifferentiated for gender or number (krishnamurti 1969.67, penzl 1955.90, §80.2); the br. declensional and derivational forms are similar to those of the other br. demonstrative pronouns, based on pdr",
+          "word_norm": "d",
+          "search_term": "pen"
+        },
+        {
+          "lang": "Kota",
+          "word": "akn",
+          "gloss": "elder sister or female parallel cousin",
+          "word_norm": "akn",
+          "search_term": "female"
+        },
+        {
+          "lang": "Kolami",
+          "word": "aniŋ",
+          "gloss": "that many males, females, things",
+          "word_norm": "ani",
+          "search_term": "female"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P281",
+      "depiction_terms": [
+        "squirrel",
+        "piLLai"
+      ],
+      "best_dedr_word": "kem-",
+      "best_dedr_gloss": "red (in a few cpds.:ken-deŋgebrown coconut; (in song) coconut;ken-na·ywild dog;keñ-jerired squirrel;kem-buttïred anthill (in song);keñ-jo·pïa dull red)",
+      "rebus_phoneme": "kem",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "piLLai",
+      "dedr_matches": [
+        {
+          "lang": "Kodagu",
+          "word": "kem-",
+          "gloss": "red (in a few cpds.:ken-deŋgebrown coconut; (in song) coconut;ken-na·ywild dog;keñ-jerired squirrel;kem-buttïred anthill (in song);keñ-jo·pïa dull red)",
+          "word_norm": "kem",
+          "search_term": "squirrel"
+        },
+        {
+          "lang": "Kannada",
+          "word": "uḍute",
+          "gloss": "squirrel",
+          "word_norm": "uute",
+          "search_term": "squirrel"
+        },
+        {
+          "lang": "Telugu",
+          "word": "uṟuta",
+          "gloss": "squirrel",
+          "word_norm": "uuta",
+          "search_term": "squirrel"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P311",
+      "depiction_terms": [
+        "fig star",
+        "vaTa miin",
+        "north"
+      ],
+      "best_dedr_word": "a",
+      "best_dedr_gloss": "demonstr. base expr. the remoter person or thing; pref. to nouns, expr. remoteness [",
+      "rebus_phoneme": "a",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "vaTa-miin (?)",
+      "dedr_matches": [
+        {
+          "lang": "Tam",
+          "word": "a",
+          "gloss": "demonstr. base expr. the remoter person or thing; pref. to nouns, expr. remoteness [",
+          "word_norm": "a",
+          "search_term": "north"
+        },
+        {
+          "lang": "Tam",
+          "word": "vaṭātu",
+          "gloss": "that which is in the north, north",
+          "word_norm": "vatu",
+          "search_term": "vaTa miin"
+        },
+        {
+          "lang": "Mal",
+          "word": "āvati",
+          "gloss": "breath, life, vapour, steam",
+          "word_norm": "vati",
+          "search_term": "vaTa miin"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    }
+  ],
+  "new_rebus_candidates": [
+    {
+      "sign_id": "M211",
+      "depiction_terms": [
+        "unicorn",
+        "kol",
+        "one-horn"
+      ],
+      "best_dedr_word": "ācin",
+      "best_dedr_gloss": "that day, day before yesterday (cf. 2553 kol.siḍ)",
+      "rebus_phoneme": "āc",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "salur",
+          "word": "ācin",
+          "gloss": "that day, day before yesterday (cf. 2553 kol.siḍ)",
+          "word_norm": "cin",
+          "search_term": "kol"
+        },
+        {
+          "lang": "Naiki",
+          "word": "accir",
+          "gloss": "day before yesterday (cf. 2553 kol.siḍ); atanthere",
+          "word_norm": "accir",
+          "search_term": "kol"
+        },
+        {
+          "lang": "durg",
+          "word": "onḍe",
+          "gloss": "leech (<i>voc.</i> 407)",
+          "word_norm": "one",
+          "search_term": "one-horn"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "M293",
+      "depiction_terms": [
+        "comb",
+        "vil",
+        "teeth"
+      ],
+      "best_dedr_word": "accu",
+      "best_dedr_gloss": "weaver's reed instrument for pressing down the threads of the woof; comb-like frame in a loom through which the warp threads are passed and by which they are pressed or battened together",
+      "rebus_phoneme": "a",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Tam",
+          "word": "accu",
+          "gloss": "weaver's reed instrument for pressing down the threads of the woof; comb-like frame in a loom through which the warp threads are passed and by which they are pressed or battened together",
+          "word_norm": "accu",
+          "search_term": "comb"
+        },
+        {
+          "lang": "koya",
+          "word": "īṛs-",
+          "gloss": "to comb the hair (<i>voc.</i> 215)",
+          "word_norm": "s",
+          "search_term": "comb"
+        },
+        {
+          "lang": "Brah",
+          "word": "iris",
+          "gloss": "a comb. ded(s) 419",
+          "word_norm": "iris",
+          "search_term": "comb"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "M065",
+      "depiction_terms": [
+        "jar",
+        "pot",
+        "kuTam"
+      ],
+      "best_dedr_word": "akaḷam",
+      "best_dedr_gloss": "jar, large earthen pot, bucket, body of the lute as shaped like a bowl",
+      "rebus_phoneme": "ak",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Tam",
+          "word": "akaḷam",
+          "gloss": "jar, large earthen pot, bucket, body of the lute as shaped like a bowl",
+          "word_norm": "akaam",
+          "search_term": "jar"
+        },
+        {
+          "lang": "Tulu",
+          "word": "aḍḍyara",
+          "gloss": "earthen jar or pot",
+          "word_norm": "ayara",
+          "search_term": "jar"
+        },
+        {
+          "lang": "Kurux",
+          "word": "hūrī",
+          "gloss": "mud receptacle [i.e. unbaked clay jar] for storing fodder, etc. deds 91",
+          "word_norm": "hr",
+          "search_term": "jar"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "M125",
+      "depiction_terms": [
+        "bow",
+        "vil",
+        "arrow"
+      ],
+      "best_dedr_word": "anḍ-",
+      "best_dedr_gloss": "to attach string to bow",
+      "rebus_phoneme": "a",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Parji",
+          "word": "anḍ-",
+          "gloss": "to attach string to bow",
+          "word_norm": "an",
+          "search_term": "bow"
+        },
+        {
+          "lang": "Kuwi",
+          "word": "ambu",
+          "gloss": "bow (<i>sic</i>). ded(s) 150",
+          "word_norm": "ambu",
+          "search_term": "bow"
+        },
+        {
+          "lang": "Telugu",
+          "word": "alle",
+          "gloss": "bow-string",
+          "word_norm": "alle",
+          "search_term": "bow"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "M087",
+      "depiction_terms": [
+        "pipal",
+        "fig",
+        "tree",
+        "arasu"
+      ],
+      "best_dedr_word": "ēl meri",
+      "best_dedr_gloss": "pipal tree. <i>",
+      "rebus_phoneme": "ē",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Parji",
+          "word": "ēl meri",
+          "gloss": "pipal tree. <i>",
+          "word_norm": "lmeri",
+          "search_term": "pipal"
+        },
+        {
+          "lang": "Gondi",
+          "word": "āli mrānu",
+          "gloss": "pipal tree. pe",
+          "word_norm": "limrnu",
+          "search_term": "pipal"
+        },
+        {
+          "lang": "Tam",
+          "word": "ficus religiosa; arai",
+          "gloss": "a tree, prob. pipal (tolk.)",
+          "word_norm": "ficusreligiosaarai",
+          "search_term": "pipal"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "M249",
+      "depiction_terms": [
+        "scorpion",
+        "tee",
+        "teel"
+      ],
+      "best_dedr_word": "iṭukki",
+      "best_dedr_gloss": "pincers, tongs, tweezers, steel trap, prehensile chela of a crab or a scorpion",
+      "rebus_phoneme": "iṭ",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Tam",
+          "word": "iṭukki",
+          "gloss": "pincers, tongs, tweezers, steel trap, prehensile chela of a crab or a scorpion",
+          "word_norm": "iukki",
+          "search_term": "scorpion"
+        },
+        {
+          "lang": "Tulu",
+          "word": "alavu",
+          "gloss": "steel",
+          "word_norm": "alavu",
+          "search_term": "teel"
+        },
+        {
+          "lang": "Tam",
+          "word": "aṭimai",
+          "gloss": "slavery, servitude, slave, servant, devotee",
+          "word_norm": "aimai",
+          "search_term": "tee"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "M220",
+      "depiction_terms": [
+        "bison",
+        "erumai",
+        "buffalo"
+      ],
+      "best_dedr_word": "kett- (ketti-)",
+      "best_dedr_gloss": "to gore with horns (said of buffaloes and bison, which sway the horns from side to side)",
+      "rebus_phoneme": "ke",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Kodagu",
+          "word": "kett- (ketti-)",
+          "gloss": "to gore with horns (said of buffaloes and bison, which sway the horns from side to side)",
+          "word_norm": "kettketti",
+          "search_term": "bison"
+        },
+        {
+          "lang": "Konda",
+          "word": "gura",
+          "gloss": "bison. deds 235",
+          "word_norm": "gura",
+          "search_term": "bison"
+        },
+        {
+          "lang": "Pengo",
+          "word": "homa",
+          "gloss": "bison",
+          "word_norm": "homa",
+          "search_term": "bison"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P001",
+      "depiction_terms": [
+        "man",
+        "person",
+        "aal"
+      ],
+      "best_dedr_word": "av",
+      "best_dedr_gloss": "that man, that woman, those persons/that person (<i>hon.</i>), that thing, those things",
+      "rebus_phoneme": "av",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Tam",
+          "word": "av",
+          "gloss": "that man, that woman, those persons/that person (<i>hon.</i>), that thing, those things",
+          "word_norm": "av",
+          "search_term": "man"
+        },
+        {
+          "lang": "Tam",
+          "word": "avai",
+          "gloss": "that man, that woman, those persons/that person (<i>hon.</i>), that thing, those things",
+          "word_norm": "avai",
+          "search_term": "man"
+        },
+        {
+          "lang": "Mal",
+          "word": "avan",
+          "gloss": "that man, that woman, those persons, that thing, those things",
+          "word_norm": "avan",
+          "search_term": "man"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P099",
+      "depiction_terms": [
+        "bow",
+        "vil"
+      ],
+      "best_dedr_word": "anḍ-",
+      "best_dedr_gloss": "to attach string to bow",
+      "rebus_phoneme": "a",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Parji",
+          "word": "anḍ-",
+          "gloss": "to attach string to bow",
+          "word_norm": "an",
+          "search_term": "bow"
+        },
+        {
+          "lang": "Kuwi",
+          "word": "ambu",
+          "gloss": "bow (<i>sic</i>). ded(s) 150",
+          "word_norm": "ambu",
+          "search_term": "bow"
+        },
+        {
+          "lang": "pottangi",
+          "word": "anḍal",
+          "gloss": "bowstring",
+          "word_norm": "anal",
+          "search_term": "bow"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P086",
+      "depiction_terms": [
+        "one",
+        "oru",
+        "single"
+      ],
+      "best_dedr_word": "ná",
+      "best_dedr_gloss": "that one here (used when the party referred to is present; <santali <b=\"\">na- the nearest in the remote zone; mbe 1980b)",
+      "rebus_phoneme": "n",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Malto",
+          "word": "ná",
+          "gloss": "that one here (used when the party referred to is present; <santali <b=\"\">na- the nearest in the remote zone; mbe 1980b)",
+          "word_norm": "n",
+          "search_term": "one"
+        },
+        {
+          "lang": "Konda",
+          "word": "nanu",
+          "gloss": "one (woman or thing) like that",
+          "word_norm": "nanu",
+          "search_term": "one"
+        },
+        {
+          "lang": "Konda",
+          "word": "nasok",
+          "gloss": "id., such big ones",
+          "word_norm": "nasok",
+          "search_term": "one"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P087",
+      "depiction_terms": [
+        "two",
+        "iru",
+        "white"
+      ],
+      "best_dedr_word": "av",
+      "best_dedr_gloss": "that man, that woman, those persons/that person (<i>hon.</i>), that thing, those things",
+      "rebus_phoneme": "av",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Tam",
+          "word": "av",
+          "gloss": "that man, that woman, those persons/that person (<i>hon.</i>), that thing, those things",
+          "word_norm": "av",
+          "search_term": "two"
+        },
+        {
+          "lang": "Kota",
+          "word": "ad",
+          "gloss": "that man, that woman, those persons, that thing/those things",
+          "word_norm": "ad",
+          "search_term": "two"
+        },
+        {
+          "lang": "Mal",
+          "word": "atu",
+          "gloss": "that man, that woman, those persons, that thing, those things",
+          "word_norm": "atu",
+          "search_term": "two"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P091",
+      "depiction_terms": [
+        "six",
+        "aru"
+      ],
+      "best_dedr_word": "āṟu",
+      "best_dedr_gloss": "six",
+      "rebus_phoneme": "āṟ",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Tam",
+          "word": "āṟu",
+          "gloss": "six",
+          "word_norm": "u",
+          "search_term": "six"
+        },
+        {
+          "lang": "Telugu",
+          "word": "kāni",
+          "gloss": "one sixtyfourth part; a quarter of an anna; a cawny of land",
+          "word_norm": "kni",
+          "search_term": "six"
+        },
+        {
+          "lang": "Telugu",
+          "word": "kāṇi",
+          "gloss": "one sixtyfourth part; a quarter of an anna; a cawny of land",
+          "word_norm": "ki",
+          "search_term": "six"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P092",
+      "depiction_terms": [
+        "seven",
+        "elu"
+      ],
+      "best_dedr_word": "al",
+      "best_dedr_gloss": "night, darkness, evening",
+      "rebus_phoneme": "al",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "dedr_matches": [
+        {
+          "lang": "Tam",
+          "word": "al",
+          "gloss": "night, darkness, evening",
+          "word_norm": "al",
+          "search_term": "seven"
+        },
+        {
+          "lang": "Kannada",
+          "word": "aḍḍa",
+          "gloss": "two aṇas and four pays, seven duḍḍus",
+          "word_norm": "aa",
+          "search_term": "seven"
+        },
+        {
+          "lang": "Tam",
+          "word": "ēr̤u",
+          "gloss": "seven",
+          "word_norm": "ru",
+          "search_term": "seven"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P124",
+      "depiction_terms": [
+        "pot",
+        "kuTam"
+      ],
+      "best_dedr_word": "áṭi",
+      "best_dedr_gloss": "that place or spot",
+      "rebus_phoneme": "ṭi",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "kuTam",
+      "dedr_matches": [
+        {
+          "lang": "Malto",
+          "word": "áṭi",
+          "gloss": "that place or spot",
+          "word_norm": "i",
+          "search_term": "pot"
+        },
+        {
+          "lang": "Tam",
+          "word": "akal",
+          "gloss": "small earthen pot having a wide mouth, hollow earthen lamp, a measure of capacity",
+          "word_norm": "akal",
+          "search_term": "pot"
+        },
+        {
+          "lang": "Gadaba",
+          "word": "agle",
+          "gloss": "pot. ded 10",
+          "word_norm": "agle",
+          "search_term": "pot"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P175",
+      "depiction_terms": [
+        "spindle",
+        "katir"
+      ],
+      "best_dedr_word": "ēku",
+      "best_dedr_gloss": "to pick, beat, or clean (cotton), expose or publish the faults of, defame; <i>n.</i> roll of cleaned cotton prepared for the spindle",
+      "rebus_phoneme": "ēk",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "katir",
+      "dedr_matches": [
+        {
+          "lang": "Telugu",
+          "word": "ēku",
+          "gloss": "to pick, beat, or clean (cotton), expose or publish the faults of, defame; <i>n.</i> roll of cleaned cotton prepared for the spindle",
+          "word_norm": "ku",
+          "search_term": "spindle"
+        },
+        {
+          "lang": "Tam",
+          "word": "katir",
+          "gloss": "spinner's spindle",
+          "word_norm": "katir",
+          "search_term": "spindle"
+        },
+        {
+          "lang": "Tulu",
+          "word": "nūloḍu",
+          "gloss": "a spindle",
+          "word_norm": "nlou",
+          "search_term": "spindle"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P261",
+      "depiction_terms": [
+        "circle",
+        "muruku"
+      ],
+      "best_dedr_word": "ār̤i",
+      "best_dedr_gloss": "circle, ring, wheel, discus weapon",
+      "rebus_phoneme": "ār",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "muruku",
+      "dedr_matches": [
+        {
+          "lang": "Tam",
+          "word": "ār̤i",
+          "gloss": "circle, ring, wheel, discus weapon",
+          "word_norm": "ri",
+          "search_term": "circle"
+        },
+        {
+          "lang": "Tam",
+          "word": "iṇṭai",
+          "gloss": "circlet of flowers, variety of garland",
+          "word_norm": "iai",
+          "search_term": "circle"
+        },
+        {
+          "lang": "Tam",
+          "word": "uruł̣i",
+          "gloss": "wheel, circle, small vessel of bell-metal that is circular in shape",
+          "word_norm": "urui",
+          "search_term": "circle"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P264",
+      "depiction_terms": [
+        "female",
+        "pen"
+      ],
+      "best_dedr_word": "dā",
+      "best_dedr_gloss": "this, undifferentiated for gender or number (krishnamurti 1969.67, penzl 1955.90, §80.2); the br. declensional and derivational forms are similar to those of the other br. demonstrative pronouns, based on pdr",
+      "rebus_phoneme": "dā",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "dam/peN",
+      "dedr_matches": [
+        {
+          "lang": "Brah",
+          "word": "dā",
+          "gloss": "this, undifferentiated for gender or number (krishnamurti 1969.67, penzl 1955.90, §80.2); the br. declensional and derivational forms are similar to those of the other br. demonstrative pronouns, based on pdr",
+          "word_norm": "d",
+          "search_term": "pen"
+        },
+        {
+          "lang": "Kota",
+          "word": "akn",
+          "gloss": "elder sister or female parallel cousin",
+          "word_norm": "akn",
+          "search_term": "female"
+        },
+        {
+          "lang": "Kolami",
+          "word": "aniŋ",
+          "gloss": "that many males, females, things",
+          "word_norm": "ani",
+          "search_term": "female"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P281",
+      "depiction_terms": [
+        "squirrel",
+        "piLLai"
+      ],
+      "best_dedr_word": "kem-",
+      "best_dedr_gloss": "red (in a few cpds.:ken-deŋgebrown coconut; (in song) coconut;ken-na·ywild dog;keñ-jerired squirrel;kem-buttïred anthill (in song);keñ-jo·pïa dull red)",
+      "rebus_phoneme": "kem",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "piLLai",
+      "dedr_matches": [
+        {
+          "lang": "Kodagu",
+          "word": "kem-",
+          "gloss": "red (in a few cpds.:ken-deŋgebrown coconut; (in song) coconut;ken-na·ywild dog;keñ-jerired squirrel;kem-buttïred anthill (in song);keñ-jo·pïa dull red)",
+          "word_norm": "kem",
+          "search_term": "squirrel"
+        },
+        {
+          "lang": "Kannada",
+          "word": "uḍute",
+          "gloss": "squirrel",
+          "word_norm": "uute",
+          "search_term": "squirrel"
+        },
+        {
+          "lang": "Telugu",
+          "word": "uṟuta",
+          "gloss": "squirrel",
+          "word_norm": "uuta",
+          "search_term": "squirrel"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    },
+    {
+      "sign_id": "P311",
+      "depiction_terms": [
+        "fig star",
+        "vaTa miin",
+        "north"
+      ],
+      "best_dedr_word": "a",
+      "best_dedr_gloss": "demonstr. base expr. the remoter person or thing; pref. to nouns, expr. remoteness [",
+      "rebus_phoneme": "a",
+      "existing_reading": "",
+      "existing_confidence": "UNREAD",
+      "parpola_phoneme": "vaTa-miin (?)",
+      "dedr_matches": [
+        {
+          "lang": "Tam",
+          "word": "a",
+          "gloss": "demonstr. base expr. the remoter person or thing; pref. to nouns, expr. remoteness [",
+          "word_norm": "a",
+          "search_term": "north"
+        },
+        {
+          "lang": "Tam",
+          "word": "vaṭātu",
+          "gloss": "that which is in the north, north",
+          "word_norm": "vatu",
+          "search_term": "vaTa miin"
+        },
+        {
+          "lang": "Mal",
+          "word": "āvati",
+          "gloss": "breath, life, vapour, steam",
+          "word_norm": "vati",
+          "search_term": "vaTa miin"
+        }
+      ],
+      "rebus_agrees_with_existing": null
+    }
+  ],
+  "similar_sign_pairs": [
+    {
+      "s1": "M016",
+      "p1": "a",
+      "s2": "M073",
+      "p2": "a",
+      "sim": 1.0
+    },
+    {
+      "s1": "M016",
+      "p1": "a",
+      "s2": "M060",
+      "p2": "a",
+      "sim": 1.0
+    },
+    {
+      "s1": "M016",
+      "p1": "a",
+      "s2": "M293",
+      "p2": "a",
+      "sim": 1.0
+    },
+    {
+      "s1": "M016",
+      "p1": "a",
+      "s2": "M125",
+      "p2": "a",
+      "sim": 1.0
+    },
+    {
+      "s1": "M016",
+      "p1": "a",
+      "s2": "P099",
+      "p2": "a",
+      "sim": 1.0
+    },
+    {
+      "s1": "M016",
+      "p1": "a",
+      "s2": "P311",
+      "p2": "a",
+      "sim": 1.0
+    },
+    {
+      "s1": "M073",
+      "p1": "a",
+      "s2": "M060",
+      "p2": "a",
+      "sim": 1.0
+    },
+    {
+      "s1": "M073",
+      "p1": "a",
+      "s2": "M293",
+      "p2": "a",
+      "sim": 1.0
+    },
+    {
+      "s1": "M073",
+      "p1": "a",
+      "s2": "M125",
+      "p2": "a",
+      "sim": 1.0
+    },
+    {
+      "s1": "M073",
+      "p1": "a",
+      "s2": "P099",
+      "p2": "a",
+      "sim": 1.0
+    }
+  ]
+}

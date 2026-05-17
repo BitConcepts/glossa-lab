@@ -1,0 +1,1142 @@
+
+Corpus of Indus Inscriptions
+Mathematica Epigraphica
+No. 3
+Editor
+Andreas Fuls
+
+Corpus of Indus Inscriptions
+Andreas Fuls
+Berlin 2022
+Fuls, Andreas:
+Corpus of Indus Inscriptions/Andreas Fuls.- Berlin: Self-publis hing (Mathematica
+Epigraphica, No. 3), 2022
+ISBN: 978-1-671-80486-9
+Independently published
+Copyright ➞ 2022 by Andreas Fuls, Berlin (Germany)
+All rights preserved.
+ISBN: 978-1-671-80486-9
+Contents
+F orword 1
+1 Corpus of inscribed Indus artefacts 3
+1.1 Inscribed Indus artefacts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+1.2 The length of Indus texts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+1.3 Temporal distribution of inscribed artefacts . . . . . . . . . . . . . . . . . . . . 10
+1.4 Spatial distribution of inscribed artefacts . . . . . . . . . . . . . . . . . . . . . 14
+2 Introduction to Indus writing 16
+2.1 How many Indus signs are there? . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+2.2 Reading direction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+2.3 The ICIT database . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+2.4 Type of writing system . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+2.5 Indus sign list . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+3 Inscriptions 25
+3.1 Alamgirpur . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+3.2 Allahdino . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+3.3 Altyn Depe . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+3.4 Amri . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+3.5 Bakkar Buthi . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+3.6 Bala-kot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+3.7 Banawali . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+3.8 Baror . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+3.9 Bhirrana . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+3.10 Chandigarh . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+3.11 Chanhujo-daro . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+3.12 Daimabad . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 41
+3.13 Derawar Ther . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 41
+3.14 Desalpur . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 41
+3.15 Dholavira . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 42
+3.16 Failaka . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 58
+3.17 Farmana . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 59
+3.18 Ganweriwala . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 59
+3.19 Gharo Bhiro . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 60
+3.20 Girsu . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 60
+v
+3.21 Gola Dhoro (Bagasra) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 60
+3.22 Gonur Depe . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 61
+3.23 Guddal A . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 61
+3.24 Gumla . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 61
+3.25 Hajar . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 62
+3.26 Harappa . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 62
+3.27 Hissam-dheri . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 256
+3.28 Hulas . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 257
+3.29 Janabiyah . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 257
+3.30 Jhukar . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 257
+3.31 Kalibangan . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 258
+3.32 Kanmer . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 273
+3.33 Karanpura . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 274
+3.34 Karzakan . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 274
+3.35 Khirsara . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 274
+3.36 Kish . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 275
+3.37 Kot-Diji . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 275
+3.38 Lakhanjo-daro . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 276
+3.39 Lohumjo-daro . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 278
+3.40 Lothal . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 278
+3.41 Luristan . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 293
+3.42 Miri Qalat . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 293
+3.43 Mohenjo-daro . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 294
+3.44 Naru-Waro-dharo . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 436
+3.45 Nausharo . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 436
+3.46 Nindowari-damb . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 439
+3.47 Nippur . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 440
+3.48 Nuhato . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 440
+3.49 Pabumath . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 441
+3.50 Pirak . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 441
+3.51 Qala’at Al-Bahrain . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 441
+3.52 Ra’s Al-Junayz . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 441
+3.53 Rahman-deri . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 442
+3.54 Rajanpur . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 442
+3.55 Rakhigarhi . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 443
+3.56 Rappwala Ther . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 443
+3.57 Rodji . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 444
+3.58 Rupar . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 444
+3.59 Saar . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 445
+3.60 Salut . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 445
+3.61 Shikarpur . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 445
+3.62 Shortughai . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 446
+3.63 Sibri . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 446
+3.64 Surkotada . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 446
+3.65 Susa . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 447
+3.66 Tarkhanewala-dera . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 447
+vi
+3.67 Tell Umma . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 448
+3.68 Tello . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 448
+3.69 Tepe Yahya . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 448
+3.70 Tigrana . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 449
+3.71 Unknown . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 449
+3.72 Ur . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 451
+3.73 Wattoowala . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 451
+Index of ICIT artefacts 452
+Index of CISI numbers 477
+Index of excavation numbers 500
+Index of M77 text numbers 548
+Bibliography . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 569
+vii
+List of Figures
+1.1 Text length histogram of all texts . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+1.2 Text length histogram of all sealing, graﬃti and painting on pottery . . . . . . 8
+1.3 Text length histogram of sealing, graﬃti and painting on pottery (dedpue d) . . 8
+1.4 Text length histogram of all texts on tablets . . . . . . . . . . . . . . . . . . . . 9
+1.5 Text length histogram of deduped texts on tablets . . . . . . . . . . . . . . . . 9
+1.6 Text length histogram of texts on seals and tags . . . . . . . . . . . . . . . . . 10
+1.7 Text length histogram of all texts corrected for multi-line texts . . . . . . . . . 11
+1.8 Temporal distribution of artefacts at Mohenjo-daro, DK.G area . . . . . . . . . 12
+1.9 Temporal distribution of artefacts at Harappa . . . . . . . . . . . . . . . . . . . 13
+1.10 Spatial distribution of inscribed artefacts . . . . . . . . . . . . . . . . . . . . . 15
+3.1 Regions with Indus inscriptions . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+viii
+List of Tables
+1.1 Development of the Indus corpus . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+1.2 Number of inscribed sides on artefacts . . . . . . . . . . . . . . . . . . . . . . . 6
+1.3 Frequency distribution of text lengths . . . . . . . . . . . . . . . . . . . . . . . 7
+2.1 Reading direction on seals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+2.2 Examples of boustrophedon reading direction on square seals . . . . . . . . . . 18
+2.3 Reading direction on tablets . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+2.4 Identical or parallel text passages on multi-sided tablets . . . . . . . . . . . . . 19
+2.5 Statistics of reading directions . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+2.6 Sign list part 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+2.7 Sign list part 2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+2.8 Sign list part 3 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+ix
+x
+Forword
+This volume is part of a series dedicated to the analysis of Indus writ ing. In 2008 an online
+epigraphic database of Indus inscriptions (ICIT) was developed in coop eration with Dr. Bryan
+K. Wells. At the same time new mathematical methods and tools were de veloped in order to
+analyse the statistical and positional behaviour of Indus signs, to map th e spatial distributions
+of signs and inscribed artefacts, and to deﬁne sets of signs with simil ar positional behaviour.
+The ﬁrst volume called Corpus of Indus Inscriptions lists all Indus inscriptions that are
+currently available and presents the temporal as well as spatial distr ibution of inscribed arte-
+facts. The inscriptions are indexed in the volume by their identi ﬁer in the ICIT database, the
+CISI number or the excavation number.
+The second volume called A Catalog of Indus Signs presents a description of each sign, its
+frequency and positional behaviour. All sign occurrences on inscrib ed artefacts are listed in
+the volume with reference to sign sequences on inscribed artefact s in the volume Corpus of
+Indus Inscriptions . Here separate sections focus on discussing the type of the Indus wr iting
+system, the ’core’ signs at diﬀerent sites and on various artefact type s, as well as the expected
+number of new signs that may be discovered in the future. The book p resents a new method of
+positional sign analysis that accounts for diﬀerent text lengths and makes it possible to classify
+Indus signs according to their positions within texts.
+The two volumes can be used concurrently, since the same sign numbe rs and text identiﬁers
+refer to each other. They represent the most up-to-date corpus of Ind us inscriptions.
+1
+Acknowledgments
+The present book contains a most complete collection of inscriptions of the Indus culture,
+which was ﬁrst started about 30 years ago by Dr. Bryan K. Wells when he was w riting his
+Master’s thesis at the University of Calgary and later continued in the c ontext of his doctorate
+at Harvard University. Since 2009, the resulting database of Indus texts has been continuously
+expanded in our joint cooperation and made available to the public as an onli ne database. I
+am also very grateful to Dr. Wells for our discussions in the course of wh ich a lot of details in
+the inscriptions were clariﬁed and elaborated. Without his prelimi nary work and his invaluable
+suggestions, the present work would not have been possible.
+All inscriptions and the encoding of the signs have been checked on t he basis of photographs.
+I would like to express special thanks to Prof. Dr. Asko Parpola, Dr. De nnys Frenez, Prof.
+Dr. Farzand Masih and Dr. Hansmukh Seth for supporting this work by givin g me access to
+the relevant materials.
+With numerous inscriptions and associated metadata, it was next to imp ossible that errors
+should not creep in from time to time. Many of these inconsistencies in the database have been
+discovered through the careful eye of database users, especially Pall avee Gokhale and Prof.
+Dr. Rama Viswanathan. I would like to thank them most warmly for their sugge stions and
+corrections.
+A concordance of the inscriptions in the ICIT database with the texts i n the Mahadevan
+corpus (IDF80) has been achieved in collaboration with Prof. Dr. Rama Viswan athan (see
+Appendix ’Index of M77 text numbers’). Thus, it is now possible to compare both text corpora,
+for which I am very grateful.
+I would also like to thank Irina Poljakova for reviewing the manuscri pt and making linguistic
+corrections, so that I hope the reader will ﬁnd this book a comprehens ible introduction to the
+writing system of the Indus culture.
+2
+Chapter 1
+Corpus of inscribed Indus artefacts
+The analysis and understanding of an ancient writing system require s a complete corpus of
+inscriptions. It is the basis for creating a sign list and for any furth er research of the writing
+system and its imbedded language. In the case of the Indus script, the ﬁrst excavations at
+Harappa and at Mohenjo-daro discovered thousands of artefacts. Many of them ar e inscribed
+with an unknown writing system. Further excavations at Mohenjo-dar o, Harappa and other
+sites such as Kalibangan, Lothal, Dholavira, etc. brought still more inscr iptions to light (Figure
+3.1). They constitute the corpus of Indus texts.
+About nine years after the start of the excavations at Mohenjo-daro by Mr. B anerji in
+December 1922, the ﬁrst systematically excavated inscriptions were published by Marshall
+(1931), together with the ﬁrst sign list by Langdon (1931) based on 541 photos of seals and
+their impressions. The size of Langdon’s corpus was about 566 texts with es timated 2500
+signs in total. This may be considered the starting point for the compi lation of a corpus of
+Indus culture inscriptions. Further corpora by Meriggi (1934) and Hunte r (1934) with 750 and
+760 inscribed objects, respectively, followed, diﬀering mainly in the number of identiﬁed signs
+(Table 1.1).
+The ﬁrst comprehensive corpus ever published was the one by Mahadev an (1977). It in-
+cluded 2906 inscribed objects with 3548 lines of text (not counting the n umber of lines in the
+corpus with iconography but without a text). At the time of its public ation Mahadevan’s
+corpus of inscriptions was a major step forward in Indus research. The re are, however, a few
+drawbacks in this corpus such as the wrong or misleading typology of artef acts and the merging
+of graphically similar but structurally distinct signs into one sign, which reduces the number
+of distinct signs in the sign list to only 417. Five new texts with two ne w signs were added
+shortly before the publication of the corpus, therefore this sign lis t has 419 signs written on
+2911 inscribed objects with 3554 lines of text (Mahadevan, 1977, p. 19, 24–25). 1 In 1980 the
+M77 corpus was updated improving the category of ﬁeld symbols, which re sulted in the digital
+IDF80 corpus. The Roja Muthiah Research Library in Chennai, India mad e the IDF80 corpus
+available as a web application since 2021.
+Shortly afterwards another corpus of Indus texts was published by Kosk enniemi and Parpola
+(1979, 1982). They make use of an even shorter sign list of 386 signs based on about 3700 legi ble
+inscriptions. Unfortunally, their corpus is not available in a digital format.
+Parpola collected a photographic corpus of seals and inscribed artefacts t hat was published
+1There is a disagreement in the number of lines in the printed corpus by Mahadevan (1977), who lists 5473
+lines, and his digital corpus IDF80 of 3554 lines (Ansumali Mukh opadhyay, 2019).
+3
+4 CHAPTER 1. CORPUS OF INSCRIBED INDUS ARTEF ACTS
+Table 1.1: Development of the Indus corpus. The number of sign variants r efers to the number
+of additional graphemes (allographs).
+Publication or
+author
+Year Inscribed
+artefacts
+Texts Total number
+of signs
+Sign list
+Langdon 1931 541 c. 566 c. 2500 288 signs
+Meriggi 1934 750 - - 270 signs
+Hunter 1934 760 885 - 234 signs
+Mahadevan
+(M77/IDF80)
+1977-
+1980
+2911 3579 14163 (13383
+legible signs)
+419 signs with
+459 variants
+Parpola (Pairs
+Concordance)
+1973 3204 2942 14616 396 signs
+Parpola 1982 3265 c. 3700 - 394 signs with
+281 variants
+Fairservis 1992 c. 4000 - - 419 signs
+Wells (ICIT) 1999 2153 2301 10004 610 signs with
+218 variants
+Wells (ICIT) 2011 3835 3898 17423 676 signs
+Wells (ICIT) 2015 3903 4794 17650 694 signs
+Fuls (ICIT) 2020 4351 5318 19115 (17358
+legible signs)
+702 signs
+Fuls (ICIT) 2022 4660 5644 19831 (17957
+legible signs)
+709 signs
+in four volumes (Joshi and Parpola, 1987; Shah and Parpola, 1991; Parpola et al., 2010, 2019).
+The photographic corpus shows 3964 artefacts with at least one text and is use d as a standard
+reference in the literature on Indus writing. Two additional volume s (CISI 3.3 and 3.4) are
+planned to be published in 2022 (Parpola, pers. com. 2021).
+Another corpus of Indus inscriptions has been developed since 1998 by Br yan Wells. It is
+based on the photographic corpus (CISI volume 1 and 2) and a new methodology, w hich enables
+him to create his own sign list and coding system eliminating the s hortcomings of previously
+published corpora (Wells, 1998, 2006, 2011). It resulted in the Interactive C orpus of Indus
+Texts (ICIT). Since 2009 the ICIT has been available to the public as an online database with
+various tools to analyse Indus sign sequences (Fuls, 2010). 2 The ICIT currently in use is based
+on an updated sign list from Wells (2015) with 709 signs (last update May 2022, vers ion 2.8).
+At present a total of 4660 inscribed artefacts and 5644 texts with 17957 legible s igns are stored
+in the ICIT database.
+There is also an Extended Corpus of Indus Texts (ECIT) containing add itional information
+of about 888 artefacts with iconography but without any text. It is connected with the ICIT
+database to analyse all iconographic elements shown on seals and tablets of th e Indus culture.
+Inscriptions of unknown provenience are a special problem for any te xt corpus. In addition,
+possibly fake inscriptions should not be included in any corpus. A re d ﬂag indicating (modern)
+fabrication of a sign sequence occurs when the sequence is directl y copied from a photograph
+2The ICIT is online since October 2009: https://www.epigraphica.de/
+1.1. INSCRIBED INDUS ARTEF ACTS 5
+of the seal, ignoring the requirement that the actual sign sequence mu st be read from the seal
+impression. The so-called ’Kabul manuscript’ is an example of this ki nd (Fuls, 2012), since signs
+are copied from the CISI photos of seals and the copyist of the ’Kabul manusc ript’ mistakenly
+used the mirror image for his copy on birch bark paper.
+Other cases subject to criticism are incised copper plates from a p rivate collection (Shinde
+and Willis, 2014) having too many signs that have never appeared before on an y other Indus
+artefact. Whereas the use of a few new signs is quite possible, for exam ple, during the input
+of 1148 new texts from the HARP expedition into the ICIT database, the freq uent occurrence
+of many new signs contradicts epigraphic experience and the logarithmic decrease of new signs
+while the corpus size increases (Fuls, 2022, Chapter 2.4). Since one cann ot be sure that these
+inscriptions are originals, they have been excluded from the ICIT c orpus.
+1.1 Inscribed Indus artefacts
+About 82% of the inscribed artefacts are complete. Some of the artefacts are p artly damaged
+or slightly chipped (0.7%). The rest of them are either fragments (16%) or chipped artefacts
+(0.5%).
+Artefacts are classiﬁed according to Wells (2011, p. 3). The typology of inscr ibed arte-
+facts includes miniature tablets (TAB), pot sherds or ceramic vesse ls (POT), intaglio carved
+seals (SEAL), clay objects with impressions of intaglio seals (TAG), b angles (BNGL), cylin-
+drical shaped artefacts of any material (ROD), implements or tools (IMP L), beads (BEAD),
+medallions (MDLN), and ﬁnally, artefact types not included in the other categories (MISC).
+Some categories of the above mentioned are divided into smaller classes . Miniature tablets
+have three subtypes: bas-relief tablets (TAB:B), incised table ts (TAB:I), and cooper tablets
+(TAB:C). Seals are distinguished by their shape: square seals (SEAL:S ), rectangular seals
+(SEAL:R), circular seals (SEAL:C), oval seals (SEAL:O), cylindrical se als (SEAL:CY), lentic-
+ular seals (SEAL:L), and others (SEAL:Ot). Fragments of seals that cannot be ass igned to one
+of the subtypes are labelled as SEAL. Pot sherds or ceramic vessels with any text (POT:T) are
+distinguished from those with drawings (POT:D) and with potter’s m arks (POT:M). Pottery
+with text is still further subdivided depending on the fabricat ion of the text: seal impression
+(POT:T:s), graﬃti (POT:T:g), and painting (POT:T:p). Depending on the type of clay seal-
+ing we can distinguish between palm sealing (TAG:P), cube sealing (TAG:C), pot rim sealing
+(TAG:R), the sealing on textile or reed (TAG:L), wooden strips or p oles (TAG:W), sealing on
+box (TAG:B), and others (TAG:Ot).
+The number of inscribed sides on the artefact varies from one to ﬁve (T able 1.2). Square
+seals (SEAL:S) inscribed on one side of the artefact are most frequent (36. 6% of all inscribed
+artefacts). There are, however, square seals with a secondary text al ong the small edges of the
+seal and/or on the boss. Therefore, these square seals have more than one in scribed side. Most
+of the rectangular seals (SEAL:R) are also inscribed on one side, with a fe w exceptions when
+a text can also be found on the reverse side.
+The majority of bas-relief tablets (TAB:B) and incised tablets (TAB: I) have the text on
+two sides. Many other tablets have the text only on one side and iconograph y on the other
+side. There are also some tablets with three sides (triangular prism s) and four sides (cubic or
+rectangular bars). They are not, however, necessarily inscribed on al l sides. Some of them also
+have iconographic elements, either on a separate side or next to the in scription.
+The condition of texts varies from poor to ﬁne. There are 3016 texts in poor condition with
+1.4. SPATIAL DISTRIBUTION OF INSCRIBED ARTEF ACTS 15
+(a) Seals
+ (b) Tablets
+(c) Inscribed Pottery
+ (d) Tags
+Figure 1.10: Spatial distribution of inscribed artefacts. The frequen cy at each site is shown by
+the size of the circle where the size depends on a logarithmic scale.
+Chapter 2
+Introduction to Indus writing
+2.1 How many Indus signs are there?
+Since the excavations in Harappa and Mohenjo-daro (Mackay (1998); Marshall (1931) ; Vats
+(1940)) Indus signs have been tabulated and distinguished by graphic feat ures (graphemes).
+This resulted in the sign lists published by Mahadevan (1977) (419 signs) and Parpola (1994)
+(386 signs), as well as by Hunter (1934); Meriggi (1934); Fairservis (1992); Rao (1982); Dan i
+(1963). The question remains: Which are distinct signs and which are allogr aphs with the same
+meaning? The identiﬁcation of allographs is a time consuming task involvi ng the search of sign
+replacement patterns and requiring a large corpus of texts. This can b e done by structural
+analysis developed by Forrer (1932) and applied by Wells (2006, pp. 67–93) to create a detailed
+sign list that has nowadays been extend to 709 signs. For those who belie ve that the Indus
+sign list should be as short as possible, Wells’ sign list looks like a s tep backwards. But as
+long as allographs cannot be distinguished from graphically similar but dis tinct signs, this is
+the surest way to move forward, especially for low frequency signs . In the future, however, I
+intend to reduce the sign list step by step, analysing the behavi our of signs in order to identify
+allographs and graphic variants.
+The research presented here is based on an updated sign list from Well s (1998, 2006, 2011,
+2015) with 709 signs (last update May 2022). Inscriptions are stored in the ICIT database
+(Interactive Corpus of Indus Texts) with a total of 4660 inscribed artef acts. Since some artefacts
+are inscribed on more than one side there are in total 5644 texts and 19831 sign occ urrences.
+3657 texts are complete with 13672 sign occurrences.
+2.2 Reading direction
+The reading direction of Indus texts is mostly from right to left (abou t 87% of the texts have
+a known reading direction) as indicated by blank space, squeezed si gns on the left side of
+inscriptions, or incised signs on pottery overlapping the previous sign located on the right.
+Besides, the number of signs at the right side of texts is more randomly distributed than at the
+left side indicating a reading direction from right to left (Ashraf an d Sinha, 2018). But there
+are exceptions. About 215 texts should be read from left to right, 16 texts from top to bottom,
+and 10 texts should be read boustrophedon.
+While the reading order of sign sequences can be directly copied from tablets, the texts
+on seals should be obtained from the seal impression (Table 2.1). Finally, in the database
+16
+20 CHAPTER 2. INTRODUCTION TO INDUS WRITING
+Table 2.5: Statistics of reading directions.
+Reading direction Texts Lines Sign occurrences Legible signs
+Right to left 4235 4328 17030 15737
+Left to right 215 216 661 617
+Top to bottom 16 18 51 45
+Boustrophedon 10 15 74 72
+Single sign text line 376 377 385 376
+Symmetrical sign sequence 8 8 18 18
+Unknown, doubtful 784 807 1612 1092
+Sum 5644 5769 19831 17957
+❼ Search through the text corpus.
+❼ Comparison of the ICIT with the IDF80 corpus by Mahadevan.
+❼ Sign cluster analysis through the corpus of Indus text.
+❼ Mapping the spatial distribution of signs, texts, iconographic elemen ts, and artefacts.
+❼ Statistical analysis of texts, artefacts, and iconographic elements.
+In addition to inscribed artefacts there are 888 artefacts only with icon ography but without a
+text that are also stored in the database. The purpose of this extension i s to provide a complete
+analysis not only of inscriptions but also of the iconography depicted on se als, tablets, etc. with
+the help of some of the same statistical tools that are used for inscribed artefacts.
+2.4 Type of writing system
+The primary concern is to classify the type of the Indus writing sy stem. The number of distinct
+signs is a ﬁrst indication of how to discriminate between alphabets, syllabic and logographic
+writing systems. Diﬀerent sign lists have been proposed, ranging from only 62 signs (Rao,
+1982) up to 694 signs (Wells, 2015). The sign list by Mahadevan (1977) with 419 signs and
+that by Parpola (1994) with 386 signs falls within this range. The question is : which graphemes
+are distinct signs and which are allographs? Because of the low frequenc y of many signs the
+question often remains unanswered, since a detailed structural anal ysis of each sign requires an
+adequate sample size. Therefore, we need to keep graphemes separate as long as they cannot
+be identiﬁed with certainty as sign variants (allographs), thus recei ving a preliminary sign list
+of about 709 signs.
+Most scholars agree that Indus writing is a mixed logographic-syllabic wr iting system, which
+can be conﬁrmed by comparing the sign frequency distribution of Indu s writing with that of
+known writing systems. To estimate the percentage of syllables and logograms in a sign list,
+the sign frequency distribution should be compared to known writi ng systems (Fuls, 2015a,b).
+The analysis shows that about 19% to 22% of all Indus signs in the sign list are s yllables,
+whereas 78% to 81% are logograms. In the corpus, however, the ratio of syllable s to logograms
+is less certain and may vary between 71% and 77% phonetic signs in the whole corpus of Indus
+inscriptions (see Chapter 4.5 in A Catalog of Indus Signs , Fuls (2022)).
+2.5. INDUS SIGN LIST 21
+The structural analysis leads to an average word length of about 1.7 signs for I ndus writing
+(Fuls, 2015a, p. 138). This topic will be discussed in more detail in a separ ate volume dealing
+with the analysis of Multivariante Segmentation trees of Indus inscri ptions.
+2.5 Indus sign list
+The sign list is based on the previous epigraphic analysis by Wells (1998, 2011, 2015). At
+present it contains 709 diﬀerent signs (Tables 2.6–2.8). They are encoded as a three-digit
+number. Sign numbers range from 001 to 958, but not all sign numbers are used. There are
+gaps in the numbering of signs for further extension of the sign list. A complete description of
+the Indus sign list currently in use is given in A Catalog of Indus Signs (Fuls, 2022).
+The corpus totals 19831 sign occurrences, although 1874 of them are eroded or not i denti-
+ﬁable. Illegible signs are encoded as 000.
+Some texts contain blank spaces between signs. These spaces are encod ed as 999, for
+example at the graﬃti on the pottery of H-2265 (ID 605). There are in total 14 spaces e ncoded
+in the corpus, 13 found on pottery (POT:T:g) and one on a miscellaneous arte fact type (K-472,
+ID 5503).
+The next chapter contains all available inscriptions sorted by the nam e of the site. Within
+each section of a site, inscriptions are ordered by artefact types and b y the ID of the artefact.
+24 CHAPTER 2. INTRODUCTION TO INDUS WRITING
+Table 2.8: Sign list part 3
+703 704 705 706 707 708 709 710 711 712 713 714 715 716
+717 718 719 720 721 722
+ 723 725 727 728 729
+ 731 732 733
+734 735 736
+ 740 741 742 743 744 745 746 747 748 749 750
+751 752 753 760 761 762 763 764 765 766 767 768 770 772
+773 775 776 777 778 780 781 782 783 784 785 786 790
+ 791
+792 793 794 795 796 797 798
+ 799 801 803 804 805 806 807
+808 809 810 811 812 813 814 815 816 817 818 820 821 822
+823 824 825 826 827 828 829 830 831 832 833 834 835 836
+837 838
+ 839 840 841 842
+ 843 844 845 849 850 851 852 853
+854 855 856 857 858 859 860 861 862 863 864 865 866 868
+869 870 871 872 874 875 876 877 878 879 880 890 891 892
+893 894 895 896 897 898 899 900 901 902 903 904 905 906
+907 908 909 910 911 912 913 914 918 919 920 921 922 923
+924 925 926 927 928 930 931 932 933
+ 940 942 943
+ 944 945
+946
+ 947 950 951 952 953
+ 956 957 958
+Chapter 3
+Inscriptions
+This chapter includes all currently known Indus inscriptions. The inscriptions are arranged in
+sections according to the site in alphabetic order. For each site addit ional information such as
+the region and the geographic coordinates is given.
+Figure 3.1: Regions with ﬁnd spots of Indus inscriptions. Find spots are classiﬁed by circle
+size according to the size of the site from small settlements to large cities.
+Each region includes the following sites.
+Eastern Headwaters: Alamgirpur, Banawali, Bhirrana, Chandigarh, Farmana, Hulas, Rakhi-
+garhi, Rupar.
+Gujarat/Kutch: Desalpur, Dholavira, Gola Dhoro (Bagasra), Kanmer, Khirsara, Kuntasi,
+Lothal, Pabumath, Rodji, Surkotada.
+25
+26 CHAPTER 3. INSCRIPTIONS
+Inter-Riverine: Baror, Derawar Ther, Ganweriwala, Guddal A, Harappa, Kalibangan, Karan-
+pura, Rajanpur, Rappwala Ther, Tarkhanewala-dera, Tigrana, Wattoowala.
+Iranian Plateau: Miri Qalat, Sibri, Tepe Yahya.
+Lower Indus: Allahdino, Amri, Bakkar Buthi, Bala-kot, Chanhujo-daro, Gharo Bhiro, Jhukar ,
+Kot-Diji, Lakhanjo-daro, Lohumjo-daro, Mohenjo-daro, Naru-Waro-dharo, Nausharo,
+Nindowari-damb, Nuhato, Pirak.
+Mesopotamia: Girsu, Kish, Luristan, Nippur, Susa, Tell Umma, Tello, Ur.
+Persian Gulf: Failaka, Hajar, Janabiyah, Karzakan, Qala’at al-Bahrain, Ra’s al-Junayz, Saar,
+Salut.
+South India: Daimabad.
+Upper Indus: Gumla, Hissam-dheri, Rehman-deri.
+other: Altin Tepe, Gonur Depe, Shortughai, and unknown provenience.
+Within one section the inscriptions are ordered ﬁrstly by the type of artefact and then by
+the ID of the artefact. Each table of inscriptions shows the following information.
+ID: Identiﬁer of the ICIT database.
+CISI: Identiﬁer used in the photographic corpus of Indus inscriptions pub lished by Joshi and
+Parpola (1987); Shah and Parpola (1991); Parpola et al. (2010, 2019).
+Type: Type of artefact as deﬁned by Wells (2011), see also page 5.
+Dir.: Direction of reading on the original artefact (Chapter 2.2). In the list of i nscriptions all
+sign sequences are arranged in the same way to be read from right to left.
+Cpl.: Completeness of text (Y: yes, N: no, ?: unknown). Texts are either com plete with all
+signs readable or incomplete if at least one sign cannot be identiﬁed. In t he case of
+fragmentary artefacts with signs on the edge of artefacts and with the danger of missing
+signs, the text completeness is labelled as unknown.
+Symbol: Symbol according to Wells (2011). If there was no symbol it is labeled as ’Non e’.
+When there was a symbol which cannot be identiﬁed it is labelled as ’- ’.
+Cult: Cult object according to Wells (2011). If there was no cult object it is l abelled as ’None’.
+When there was a cult object which cannot be identiﬁed it is labelle d as ’-’.
+T ext: List of sign graphs (Tables 2.6-2.8). Eroded and illegible signs:
+.
+Code: List of sign codes according to the sign list (Chapter 2.5). Eroded and il legible signs
+are encoded as 000 and blank space between signs is encoded as 999. Complete t exts
+start and end with a plus sign (’+’) on both sides. The plus sign is rep laced by square
+brackets when it is doubtful whether the left (’]’) or the right (’ [’) end of a sign sequence
+is complete or not due to erosion or whether it is written on a fragment.
+27
+Some artefacts have more than one line of text on the same side. In this cas e the lines are
+shown below each other as, for example, in ID 2832 (M-314) which is a square s eal with three
+separate texts.
+Many texts are written on a fragment or the surface of the artefact may be p artly eroded. In
+these cases, we cannot be sure if the text is complete or not and the unc ertainty of completeness
+is indicated by ’ ?’ (column Cpl.). To indicate which part of a sign se quence might have once
+continued, a square bracket is used, ’]’ at the left end and ’[’ at the right end of the sequence.
+For example, the text on the rectangular seal ID 1562 (H-647) is recorded as ]368-632-706- 140+
+and, therefore, shows that the text is complete at the right end (begi nning with sign 140), but
+the text may have continued after the leftmost recognizable sign (si gn 368), since the seal is
+a fragment. It is also possible that the text on a fragment may have been continued on both
+ends, for example on ID 1528 (H-578) with only two signs legible from a middle p art of a longer
+text: ]742-060[.
+There are also many artefacts, especially tablets, with inscription s on more than one side.
+These inscriptions are listed as separate texts, for example ID 222 (H-1354) with diﬀerent texts
+on three sides of the four-sided tablet from Harappa.
+At the end of the book one index of ICIT ID’s and one of CISI numbers is giv en. They can
+be used for a quick text search. The ICIT ID is a unique identiﬁer also used in the volume A
+Catalog of Indus Signs and provides linking sign numbers to their occurrences in text s. The
+CISI number can be used to refer to the photo of artefacts, see Joshi an d Parpola (1987); Shah
+and Parpola (1991); Parpola et al. (2010, 2019).
+Another index lists the excavation numbers (as well as plate numbers from previous publi-
+cations).
+The ﬁnal index correlates the inscriptions from Mahadevan (1977) with tex ts of the ICIT
+database. The text numbers in the corpus by Mahadevan frequently occ urs in former publica-
+tions, therefore, the index allows one to ﬁnd these texts in the IC IT corpus by means of the
+ICIT ID’s.
+28 CHAPTER 3. INSCRIPTIONS
+3.1 Alamgirpur
+Region: Eastern Headwaters
+Longitude: 77 ➦ 28’, Latitude: 28 ➦ 59’
+ID CISI Dir. Symbol T ext
+Type Cpl. Cult Code
+1 Agr-1 L/R None
+POT:T:g Y None +410-017+
+2 Agr-2 L/R None
+POT:T:g Y None +410-017+
+3 Agr-3 L/R None
+POT:T:g Y None +405-017+
+3.2 Allahdino
+Region: Lower Indus
+Longitude: 67 ➦ 18’, Latitude: 24 ➦ 51’
+ID CISI Dir. Symbol T ext
+Type Cpl. Cult Code
+4 - - None
+POT:T:g N None +220-000+
+5 - R/L Bull
+TAG Y - +740-235+
+6 Ad-1 R/L Bull1
+SEAL:S Y - +740-390-590+
+7 Ad-2 R/L Bull1:J
+SEAL:S Y SAN +368-390-125-033+
+8 Ad-3 R/L Bull1:II
+SEAL:S Y SAN +740-904-033-705-235+
+9 Ad-4 R/L Bull1:II
+SEAL:S Y SAN +740-017-495-235-741-066+
+continue next page
+3.3. ALTYN DEPE 29
+ID CISI Dir. Symbol T ext
+Type Cpl. Cult Code
+10 Ad-5 R/L Bull1
+SEAL:S Y SAN +156-460-510+
+11 Ad-6 R/L Rhin
+SEAL:S Y Trough +072-170-740-840-013+
+12 Ad-7 R/L None
+SEAL:S N None +000-388-000+
++740-142-000+
+13 Ad-8 R/L Elep
+MISC N SAN +740-440-503-002-861-000+
+14 Ad-9 - None
+POT:T:g N None ]000-004-455+
+15 Ad-11 - None
+MISC N None ]000-415+
+3.3 Altyn Depe
+Region: Other
+Longitude: 60 ➦ 12’, Latitude: 35 ➦ 41’
+ID CISI Dir. Symbol T ext
+Type Cpl. Cult Code
+16 - L/R None
+SEAL:S Y None +390-415+
+3.4 Amri
+Region: Lower Indus
+Longitude: 67 ➦ 55’, Latitude: 25 ➦ 54’
+30 CHAPTER 3. INSCRIPTIONS
+ID CISI Dir. Symbol T ext
+Type Cpl. Cult Code
+17 Ai-7 L/R None
+POT:T:g Y None +390-034+
+5412 - R/L -
+POT:T:g N - ]000-000-416[
+5413 - R/L -
+POT:T:g ? - +515-849[
+5414 Ai-1 NR -
+POT:T:g Y - +515+
+5415 Ai-2 NR -
+POT:T:g Y - +480+
+3.5 Bakkar Buthi
+Region: Lower Indus
+Longitude: 66 ➦ 34’, Latitude: 25 ➦ 45’
+ID CISI Dir. Symbol T ext
+Type Cpl. Cult Code
+18 - R/L None
+POT:T:g Y None +405-844-032-840-002-861+
+3.6 Bala-kot
+Region: Lower Indus
+Longitude: 66 ➦ 37’, Latitude: 25 ➦ 31’
+ID CISI Dir. Symbol T ext
+Type Cpl. Cult Code
+19 Blk-1 R/L Bull1
+SEAL:S Y - +226-003-002-297-350-125-413+
+20 Blk-2 R/L Bull1
+SEAL:S Y R +390-717-061-002-368-634+
+continue next page
+312 CHAPTER 3. INSCRIPTIONS
+ID CISI Dir. Symbol T ext
+Type Cpl. Cult Code
+2372 M-1740 R/L Bull1:S
+SEAL:S Y SAN +151-061+
+2373 M-1695 R/L Bull1:J
+SEAL:S Y SAN +740-337-484-031-060-891+
+2374 M-1733 - Bull1:S
+SEAL:S N SAN ]000-002-735+
+2375 M-1759 R/L Bull1:S
+SEAL:S Y SAN +740-032-840-002-768+
+2376 M-1842 R/L Bull1
+SEAL:S N RBF +520-000-235-002-861+
+2377 M-707 R/L Bull1:W
+SEAL:S Y SAN +740-760-001-220-415-798-803+
+2378 M-1701 R/L Bull1:W
+SEAL:S Y SAN +820-297-861+
+2379 M-1960 R/L None
+SEAL:R N None +740-000-000-002-820+
+2380 M-2026 R/L Cros
+TAB:B Y None +090-740-240-235-590-645-104+
+2381 M-1686 R/L Bull1:W
+SEAL:S Y SAN +740-904-220-032-002-142+
+2382 M-2040 R/L None
+TAB:I Y None +690-322+
+2382 M-2040 R/L None
+TAB:I Y None +740-690-060-550+
+2383 M-2083 NR None
+BNGL Y None +840+
+2384 M-1918 R/L Scene
+SEAL:S N S621 +390-090-000[
+continue next page
+3.43. MOHENJO-DARO 313
+ID CISI Dir. Symbol T ext
+Type Cpl. Cult Code
+2385 M-1715 R/L Bull1:J
+SEAL:S Y RAF +740-923-033-705-060-692+
+2386 M-1729 R/L Bull1:W
+SEAL:S Y SAN +390-003-002-820+
+2387 M-1904 SYM Goat
+SEAL:S Y S390 +003-003+
+2388 - R/L Bull1:S
+SEAL:S Y RAN +740-637-240-002-861+
+2389 M-1681 R/L Bull1:W
+SEAL:S Y SAN +520-072-233-740-798-002-861-832+
+2390 M-1707 R/L Bull1:I
+SEAL:S Y RAN +298-350-761-032-060-572+
+2391 M-1837 R/L Bull1
+SEAL:S Y RAN +151-219+
+2392 M-1876 - Gaur
+SEAL:S N Trough ]000-415-233-853+
+2393 M-1745 R/L Bull1:L
+SEAL:S Y SAN +368-821-055-031-002-031-892+
+2394 M-2106 R/L None
+ROD Y None +400-740-585-838-240+
+2395 M-1663 R/L Bull1
+SEAL:S N - +740-760-840-416-175-742-000+
+2396 M-1921 - None
+SEAL Y None +400-750-090+
+2397 M-1927 R/L Mult
+SEAL:S N None ]000-005-002-817+
+2397 M-1927 R/L Mult
+SEAL:S Y None +390-005-002-817+
+continue next page
+Index of ICIT Artefacts
+The index of the IDs referring to the ICIT database (Interactive Cor pus of Indus Texts).
+ID 1, 28
+ID 2, 28
+ID 3, 28
+ID 4, 28
+ID 5, 28
+ID 6, 28
+ID 7, 28
+ID 8, 28
+ID 9, 28
+ID 10, 29
+ID 11, 29
+ID 12, 29
+ID 13, 29
+ID 14, 29
+ID 15, 29
+ID 16, 29
+ID 17, 30
+ID 18, 30
+ID 19, 30
+ID 20, 30
+ID 21, 31
+ID 22, 31
+ID 23, 31
+ID 24, 31
+ID 26, 31
+ID 27, 31
+ID 28, 31
+ID 29, 31
+ID 30, 31
+ID 31, 31
+ID 32, 32
+ID 33, 32
+ID 34, 32
+ID 35, 32
+ID 36, 32
+ID 37, 32
+ID 38, 32
+ID 39, 32
+ID 40, 32
+ID 41, 32
+ID 42, 32
+ID 43, 32
+ID 44, 32
+ID 45, 33
+ID 46, 33
+ID 47, 33
+ID 48, 33
+ID 50, 33
+ID 51, 33
+ID 52, 33
+ID 53, 34
+ID 54, 34
+ID 55, 34
+ID 56, 34
+ID 57, 34
+ID 58, 34
+ID 59, 35
+ID 60, 35
+ID 61, 35
+ID 62, 35
+ID 63, 35
+ID 64, 35
+ID 65, 35
+ID 66, 35
+ID 67, 35
+ID 68, 35
+ID 69, 35
+ID 70, 35
+ID 71, 36
+ID 72, 36
+ID 73, 36
+ID 74, 36
+ID 75, 36
+ID 76, 36
+ID 77, 36
+ID 78, 36
+ID 79, 37
+ID 80, 37
+ID 81, 37
+ID 82, 37
+ID 83, 37
+ID 84, 37
+ID 85, 37
+ID 86, 37
+ID 87, 37
+ID 88, 37
+ID 89, 37
+ID 90, 38
+ID 91, 38
+ID 92, 38
+ID 93, 38
+ID 94, 38
+ID 95, 38
+ID 96, 38
+ID 97, 38
+ID 98, 38
+ID 99, 38
+ID 100, 38
+ID 101, 38
+ID 102, 39
+ID 103, 39
+ID 104, 39
+ID 105, 39
+ID 106, 39
+ID 107, 39
+ID 108, 39
+ID 109, 39
+ID 110, 39
+ID 111, 39
+ID 112, 39
+ID 113, 40
+ID 114, 40
+ID 115, 40
+ID 116, 40
+ID 117, 40
+ID 118, 40
+ID 119, 40
+ID 120, 40
+ID 121, 40
+ID 122, 41
+ID 123, 42
+ID 124, 42
+ID 125, 42
+ID 126, 42
+ID 127, 42
+ID 128, 42
+ID 129, 42
+ID 130, 42
+ID 131, 42
+ID 132, 43
+ID 133, 43
+ID 134, 43
+ID 135, 43
+ID 136, 43
+ID 137, 43
+ID 138, 43
+452
+Index of CISI numbers
+The index of CISI numbers referring to Joshi and Parpola (1987); Shah and P arpola (1991); Parpola
+et al. (2010, 2019).
+?-3, 449
+?-4, 450
+?-5, 450
+?-6, 450
+Ad-1, 28
+Ad-2, 28
+Ad-3, 28
+Ad-4, 28
+Ad-5, 29
+Ad-6, 29
+Ad-7, 29
+Ad-8, 29
+Ad-9, 29
+Ad-11, 29
+Agr-1, 28
+Agr-2, 28
+Agr-3, 28
+Ai-1, 30
+Ai-2, 30
+Ai-7, 30
+B-1, 31
+B-3, 31
+B-4, 31
+B-5, 31
+B-7, 31
+B-8, 32
+B-9, 32
+B-10, 32
+B-12, 32
+B-15, 32
+B-17, 32
+B-18, 32
+B-19, 32
+B-21, 32
+B-23, 32
+B-24, 32
+B-25, 32
+B-28, 32
+B-29, 33
+B-30, 33
+B-32, 33
+B-35, 33
+Blk-1, 30
+Blk-2, 30
+Blk-3, 31
+Blk-4, 31
+Blk-5, 31
+Blk-6, 31
+C-1, 37
+C-2, 38
+C-3, 38
+C-4, 38
+C-5, 38
+C-6, 38
+C-7, 38
+C-8, 38
+C-9, 38
+C-10, 38
+C-11, 38
+C-12, 38
+C-13, 38
+C-14, 39
+C-15, 39
+C-16, 39
+C-17, 39
+C-18, 39
+C-19, 40
+C-20, 39
+C-21, 39
+C-22, 39
+C-23, 39
+C-24, 39
+C-29, 39
+C-30, 40
+C-32, 40
+C-33, 40
+C-34, 40
+C-35, 40
+C-36, 40
+C-37, 40
+C-38, 40
+C-39, 40
+C-40, 40
+C-51, 36
+C-52, 35
+C-53, 36
+C-54, 35
+C-55, 35
+C-56, 37
+C-57, 37
+C-58, 36
+C-59, 35
+C-60, 35
+C-61, 37
+C-62, 37
+C-63, 37
+C-64, 35
+C-65, 35
+C-66, 35
+C-67, 37
+C-68, 36
+C-69, 35
+C-70, 35
+C-71, 36
+C-72, 34
+C-74, 36
+C-75, 35
+C-76, 36
+C-77, 37
+C-78, 37
+C-79, 36
+C-80, 35
+C-85, 37
+C-87, 34
+C-88, 34
+C-89, 37
+C-91, 40
+C-94, 41
+Ch-1, 34
+Ch-2, 34
+Ch-4, 34
+Dlp-1, 42
+Dlp-2, 42
+Dlp-3, 42
+Dlv-1, 43
+Dlv-2, 44
+Dmd-1, 41
+Dmd-8, 41
+G-8, 61
+478
+Index of M77 text numbers
+The index of M77 text numbers referring to Mahadevan (1977). At present , not all M77 text numbers
+are linked to ICIT inscriptions.
+1001: ID 3396, 391
+1002: ID 2415, 315
+1003: ID 2526, 323
+1004: ID 3078, 368
+1005: ID 3258, 381
+1006: ID 2539, 324
+1007: ID 3380, 390
+1008: ID 3081, 368
+1010: ID 2464, 319
+1011: ID 2536, 324
+1012: ID 3077, 368
+1013: ID 3345, 387
+1014: ID 3146, 373
+1015: ID 3075, 368
+1016: ID 3083, 368
+1017: ID 3082, 368
+1018: ID 3553, 404
+1019: ID 2603, 329
+1020: ID 2497, 321
+1021: ID 3110, 370
+1022: ID 2542, 324
+1023: ID 2550, 325
+1024: ID 3091, 369
+1025: ID 3112, 371
+1026: ID 3352, 388
+1027: ID 3076, 368
+1028: ID 3179, 376
+1029: ID 2587, 328
+1030: ID 3109, 370
+1031: ID 3123, 371
+1032: ID 3094, 369
+1033: ID 3079, 368
+1034: ID 3086, 369
+1035: ID 2545, 325
+1036: ID 2431, 316
+1037: ID 2544, 325
+1038: ID 2537, 324
+1039: ID 3099, 369
+1040: ID 3111, 370
+1041: ID 2516, 322
+1042: ID 2561, 326
+1043: ID 2199, 298
+1044: ID 2266, 303
+1045: ID 2264, 303
+1046: ID 2601, 329
+1047: ID 2577, 327
+1048: ID 2598, 329
+1049: ID 2224, 300
+1050: ID 3126, 371
+1051: ID 2568, 326
+1052: ID 2594, 328
+1053: ID 2484, 320
+1054: ID 2548, 325
+1055: ID 2271, 303
+1056: ID 2553, 325
+1057: ID 3096, 369
+1058: ID 2562, 326
+1059: ID 3128, 372
+1060: ID 3159, 374
+1061: ID 3101, 370
+1065: ID 2473, 319
+1066: ID 3116, 371
+1067: ID 2531, 324
+1068: ID 3113, 371
+1069: ID 2541, 324
+1070: ID 2517, 323
+1071: ID 2697, 336
+1072: ID 2197, 298
+1074: ID 2261, 303
+1075: ID 2615, 330
+1076: ID 2630, 331
+1077: ID 2193, 297
+1078: ID 3142, 373
+1079: ID 2417, 315
+1080: ID 2691, 336
+1081: ID 3169, 375
+1082: ID 3144, 373
+1083: ID 2242, 301
+1084: ID 3212, 378
+1085: ID 2547, 325
+1086: ID 3236, 380
+1087: ID 2566, 326
+1088: ID 2506, 322
+1089: ID 3231, 379
+1090: ID 3164, 374
+1091: ID 3137, 372
+1092: ID 3286, 383
+1093: ID 2182, 297
+1094: ID 2178, 296
+1095: ID 2597, 329
+1096: ID 2570, 326
+1097: ID 3133, 372
+1098: ID 2575, 327
+1099: ID 2647, 332
+1100: ID 2673, 334
+1101: ID 2260, 303
+1102: ID 3174, 375
+1103: ID 2485, 320
+1104: ID 2645, 332
+548
+Bibliography
+Ansumali Mukhopadhyay, Bahata
+2019 Interrogating Indus inscriptions to unravel their mechanisms of meaning con-
+veyance. Palgrave Communications 5(73).
+Ashraf, Md. Izhar and Sitabhra Sinha
+2018 The ”handedness” of language: Directional symmetry breaking of sign usage
+in words. PLOS ONE 13(1), pp. 1–16.
+Bisht, Ravindra Singh
+2015 Excavations at Dholavira (1989-90 to 2004-2005).
+Dani, A. H.
+1963 Indian Palaeography. Oxford: Clarendon Press.
+Fairservis, Walter A.
+1992 The Harappan Civilization and its Writing. A Model for the Decipher ment of
+the Indus Script. New Delhi: Oxford and IBN Publishing Co. Pvt. Ltd.
+Forrer, Emil O.
+1932 Die hethitische Bilderschrift. Chicago: University of Chicago Press.
+Fuls, Andreas
+2010 Entwicklung einer geographisch-epigraphischen Datenbank der Ind usschrift.
+In: Weisbrich, Sven and Robert Kaden (Eds.): Entwicklerforum Geod¨ asie und
+Geoinformationstechnik 2010, pp. 29–45 Aachen: Shaker Verlag.
+2012 Das Kabuler Manuskript: Eine F¨ alschung der Indusschrift? Antike Welt -
+Zeitschrift f¨ ur Arch¨ aologie und Kulturgeschichte (online).
+2015a Appendix III: Classifying Undeciphered Writing Systems. In: Wells, Bryan
+(Ed..): The Archaeology and Epigraphy of Indus Writing , pp. 134–140 Oxford:
+Archaeopress.
+2015b Classifying Undeciphered Writing Systems. Historical Linguistics 128(1),
+pp. 42–58.
+2022 A Catalogue of Indus Signs. No. 4 in Mathematica Epigraphica. Berlin: Inde-
+pendently published.
+Hunter, G. R.
+1934 The Script of Harappa and Mohenjodaro and its Connection with Oth er
+Scripts. London: Trubner & Co. Ltd.
+569
+570 BIBLIOGRAPHY
+Jansen, Michael and G. Urban
+1985 Mohenjo-Daro: Report of the Aachen University Mission 1979-1985. Leiden:
+E.J. Brill.
+Joshi, Jagat Pati and Asko Parpola
+1987 Corpus of Indus Seals and Inscriptions. Collections in India ( Vol. 1). Helsinki:
+Suomalainen Tiedeakatemia.
+Koskenniemi, Kimmo and Asko Parpola
+1979 Corpus of Texts in the Indus Script. No. 1 in Research Report. Helsinki: De-
+partment of Asian and African Studies, University of Helsinki.
+1982 Concordance to the texts in the Indus script. No. 3 in Research Report.
+Helsinki: Department of Asian and African Studies, University of Helsin ki.
+Langdon, St. H.
+1931 Mohenjo-daro and the Indus Civilization. Chap. The Indus script, pp. 423–455
+Arthur Probsthian.
+Mackay, E. J. H.
+1998 Further Excavations at Mohenjo-daro. New Dehli: Munshiram Manoharlal
+Publishers Pvt. Ltd. originally published 1938, Delhi.
+Mahadevan, Iravatham
+1977 The Indus Script: Texts, Concordance and Tables. No. 77 in Memoirs of the
+Archaeological Survey of India. New Delhi: Archaeological Survey of India.
+Marshall, Sir John
+1931 Mohenjo-daro and the Indus Civilization. London: Arthur Probsthian.
+Meadow, Richard H. and J. M. Kenoyer
+2001 Recent Discoveries and Highlights from Excavations at Harappa: 1998 -2000.
+Vol. 22 of Indo Koko Kenkyu. Tokyo: Indian Archaeological Society.
+Meriggi, Piero
+1934 Zur Indusschrift. Zeitschrift der Deutschen Morgenl¨ andischen Gesellschaft
+87(NF 12), pp. 198–241.
+Parpola, Asko
+1994 Deciphering the Indus Script. Cambridge: Cambridge University Press.
+Parpola, Asko; B.M. Pande and Petteri Koskikallio (Eds.)
+2010 Corpus of Indus Seals and Inscriptions. Volume 3: New material, untraced
+objects, and collections outside India and Pakistan. Part 1: Moh enjo-daro
+and Harappa (Vol. 3.1). Helsinki: Suomalainen Tiedeakatemia.
+2019 Corpus of Indus Seals and Inscriptions. Volume 3: New material, un-
+traced objects, and collections outside India and Pakistan. Par t 2: Shar-i
+Sokthta, Mundigak, Mehrgarh, Nausharo, Sibri, Dauda-damb, Chanhu- daro,
+Ahar, Balathal, Gilund, Kalibangan, Rojdi. (Vol. 3.2). Helsinki: Suomalainen
+Tiedeakatemia.
+Rao, S. R.
+1982 The Decipherment of the Indus Script. Bombay: Suomalainen Tiedeakatemia.
+BIBLIOGRAPHY 571
+Shah, Sayid Ghulam Mustafa and Asko Parpola
+1991 Corpus of Indus Seals and Inscriptions. Collections in Pakistan (Vol. 2).
+Helsinki: Suomalainen Tiedeakatemia.
+Shinde, Vasant and Rick J. Willis
+2014 A new type of incised copper plate from Indus valley (Harrappan) civil isation.
+Ancient Asia 5(1), pp. 1–10.
+Vats, Madho Sarup
+1940 Excavations at Harappa. Delhi: Munshiram Manoharlal Publishers Pvt. Ltd.
+Wells, Bryan
+1998 An Introduction to Indus writing. M.A. thesis The University of Calgary URL:
+http://www.nlc-bnc.ca/obj/s4/f2/dsk2/ftp03/MQ31309.pdf.
+2006 Epigraphic Approaches to Indus Writing. Dissertation Harvard University.
+2011 Epigraphic Approaches to Indus Writing. Oakville and Oxford: Oxbow Books.
+2015 The Archaeology and Epigraphy of Indus Writing. Oxford: Archaeopress.

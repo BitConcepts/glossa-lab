@@ -1,11 +1,26 @@
 {
   "batch_id": "BATCH4-CLAIMS-20260517",
-  "timestamp": "2026-05-17T15:30:36.361148",
-  "total_documents": 11,
-  "total_claims": 22,
+  "timestamp": "2026-05-17T16:30:50.406662",
+  "total_documents": 16,
+  "total_claims": 31,
   "results": [
     {
+      "doc_id": "ancient_writing_and_modern_technologies_51831ac9",
+      "status": "extracted",
+      "n_claims": 4
+    },
+    {
+      "doc_id": "corpus_of_indus_inscriptions_7c28d7b9",
+      "status": "no_claims",
+      "text_available": true
+    },
+    {
       "doc_id": "farmer_sproat_witzel_2004",
+      "status": "extracted",
+      "n_claims": 1
+    },
+    {
+      "doc_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb",
       "status": "extracted",
       "n_claims": 1
     },
@@ -23,6 +38,11 @@
       "doc_id": "parpola_2010_dravidian_solution",
       "status": "extracted",
       "n_claims": 2
+    },
+    {
+      "doc_id": "positional_analysis_of_indus_signs_a2bedc93",
+      "status": "extracted",
+      "n_claims": 1
     },
     {
       "doc_id": "rao_2009_pnas_markov",
@@ -43,6 +63,11 @@
       "doc_id": "sinha_2010_network_arxiv",
       "status": "no_claims",
       "text_available": false
+    },
+    {
+      "doc_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
+      "status": "extracted",
+      "n_claims": 3
     },
     {
       "doc_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",

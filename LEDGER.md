@@ -8875,3 +8875,77 @@ Risks:
 Next step:
   Phase-44 T3: V3 corpus SA at 300K iterations for independent replication.
   Literature intake: upload Roif + Hunt papers via Evidence Graph UI.
+
+---
+
+## [2026-05-17] Entry — CI fixes, sweep bug, Playwright tests
+
+Objective:
+Fix all CI failures, repair evidence sweep fetcher bug, complete Playwright test suite.
+
+What was done:
+
+1. FOUNDATION CHECK: 17/17 PASS (was 16/17). Backend reload applied permanent
+   PASS for V8-V24 archived campaign check (check #8).
+
+2. pyproject.toml: Fixed malformed python-multipart dependency entry (\n was
+   literal text not a newline) — caused pip install to fail with parse error.
+
+3. CI: Added backend startup to Playwright job (previously backend was missing,
+   causing ECONNREFUSED on all /api/v1/* calls and job timeout).
+
+4. model_intelligence.py: Eliminated competing sqlite3 connection from
+   start_intelligence_sync() startup path. Old code opened ~80 synchronous
+   sqlite3 connections (one per model) via run_in_executor, causing
+   SQLITE_BUSY_SNAPSHOT race with aiosqlite — broke test_create_anchor_set_minimal.
+   Fix: async _sync_static_fallback_async() writes through the single aiosqlite
+   connection; _KNOWN_MODELS extracted as module-level constant.
+
+5. analysis.py: Export endpoint returned 500 on corpora with non-ASCII names
+   (e.g. Ge'ez with U+2019). HTTP Content-Disposition headers must be latin-1.
+   Fix: NFKD normalize + ASCII encode before building the filename.
+
+6. indus_evidence.py: Sweep fetcher silently fetched 0 items every run due to
+   'RawItem object has no attribute doi'. RawItem only has title/url/source/topic/
+   published_at/lang/raw. Fixed: extract doi/authors/summary/pdf_url/kind from
+   item.raw dict.
+
+7. Playwright tests: 132 tests, 0 failures locally after fixes. Key fixes:
+   - AI Chat textarea: getByRole('textbox') instead of CSS [placeholder*='anything']
+   - Sign search: check count text (\d+ signs) instead of invisible <option>
+   - Command palette: body.click() before Ctrl+K to ensure focus
+   - Jobs invalid JSON: specific error text, not /valid JSON/i (matched textarea)
+   - Settings Ollama: navigate to 'AI' tab (actual tab name, not 'Local AI')
+   - Reports Data tab: 'JSON data' not 'JSON results'
+   - Jobs pipeline wait: waitForFunction on select.options.length > 1
+
+Files changed:
+  backend/glossa_lab/api/analysis.py (export filename ASCII fix)
+  backend/glossa_lab/api/indus_evidence.py (sweep RawItem.doi bug fix)
+  backend/glossa_lab/model_intelligence.py (async static fallback, no competing conn)
+  backend/pyproject.toml (python-multipart formatting fix)
+  .github/workflows/ci.yml (backend startup in Playwright job)
+  frontend/e2e/backend-integration.spec.ts (8 selector/timing fixes)
+  frontend/e2e/experiment-builder.spec.ts (getByTitle for button selectors)
+  frontend/e2e/jobs.spec.ts (strict mode + pipeline wait fixes)
+  frontend/e2e/status.spec.ts (navigate to Status before checking)
+  frontend/e2e/corpora.spec.ts (resilient state check)
+  frontend/e2e/reports.spec.ts (correct Data tab text)
+
+Checks run:
+  - Backend tests: PASS (4m)
+  - Evidence Graph smoke tests: PASS (17s)
+  - Playwright (local): 132 passed, 0 failed
+
+Open TODOs:
+  - CI Playwright job still running (in progress at time of writing)
+  - Phase-44 T3 SA 300K: CONFIRMED, Dravidian 3.13x improvement ratio over Sanskrit
+  - V3 SA 300K result committed to reports/phase44_t3_v3_sa_300k.json
+
+Risks:
+  - Evidence sweep now fetches items but needs a re-run to verify correct data
+  - model_intelligence async path has not been load-tested in production
+
+Next step:
+  Run evidence sweep to verify fetcher fix.
+  Consider Specsmith GitHub issues (documented in prior session analysis).

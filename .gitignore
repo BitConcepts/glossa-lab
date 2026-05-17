@@ -176,3 +176,12 @@ backend/glossa_lab/data/phase16_corpora/kalyanaraman_devanagari_corpus.txt
 # Phase-18 derived: large stream txt regenerable from CSV
 backend/glossa_lab/data/phase18_corpora/rv_padapatha_stream.txt
 
+# ---- ML model weights (large binaries, not for version control) ----
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# ---- User-uploaded PDFs (binary research docs ingested via Evidence Graph) ----
+glossa-indus/raw/user_uploads/*.pdf
+

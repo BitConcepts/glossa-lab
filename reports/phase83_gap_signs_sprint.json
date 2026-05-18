@@ -1,0 +1,322 @@
+{
+  "_citation": {
+    "primary": [
+      "A.1"
+    ]
+  },
+  "gpu_device": "cpu",
+  "n_signs_analysed": 5,
+  "n_new_proposals": 5,
+  "n_promoted_to_medium": 4,
+  "promoted_to_medium": [
+    "M079",
+    "M022",
+    "M019",
+    "M044"
+  ],
+  "total_high_medium_after": 101,
+  "proposals": [
+    {
+      "sign": "M220",
+      "depiction": "abstract compound sign",
+      "corpus_freq": 62,
+      "freq_pct": 0.89,
+      "positional_class": "TERMINAL",
+      "pos_initial_rate": 0.0,
+      "pos_medial_rate": 0.016,
+      "pos_terminal_rate": 0.984,
+      "left_anchor_rate": 0.726,
+      "right_anchor_rate": 0.0,
+      "top_left_neighbors": {
+        "M342": 6,
+        "M267": 6,
+        "M099": 5,
+        "M176": 5,
+        "M211": 3
+      },
+      "top_right_neighbors": {
+        "_END_": 61,
+        "M140": 1
+      },
+      "candidates": [
+        {
+          "reading": "al",
+          "dedr_id": "DEDR 0180",
+          "meaning": "not/other",
+          "icon_plausibility": "MEDIUM — abstract compound often negation",
+          "pd_valid": true,
+          "evidence_score": 1.75
+        },
+        {
+          "reading": "van",
+          "dedr_id": "DEDR 5260",
+          "meaning": "sky/heaven",
+          "icon_plausibility": "LOW — abstract form",
+          "pd_valid": true,
+          "evidence_score": 1.25
+        },
+        {
+          "reading": "ke",
+          "dedr_id": "DEDR 1975",
+          "meaning": "below/under",
+          "icon_plausibility": "LOW — SA prior from Phase-80 ke mapping",
+          "pd_valid": true,
+          "evidence_score": 0.75
+        },
+        {
+          "reading": "ur",
+          "dedr_id": "DEDR 0702",
+          "meaning": "form/body",
+          "icon_plausibility": "LOW — abstract compound",
+          "pd_valid": true,
+          "evidence_score": 0.75
+        }
+      ],
+      "proposed_reading": "al",
+      "proposed_confidence": "LOW",
+      "evidence_score": 1.75,
+      "promoted": false
+    },
+    {
+      "sign": "M079",
+      "depiction": "double stroke / two vertical bars",
+      "corpus_freq": 24,
+      "freq_pct": 0.34,
+      "positional_class": "INITIAL",
+      "pos_initial_rate": 1.0,
+      "pos_medial_rate": 0.0,
+      "pos_terminal_rate": 0.0,
+      "left_anchor_rate": 0.0,
+      "right_anchor_rate": 0.667,
+      "top_left_neighbors": {
+        "_START_": 24
+      },
+      "top_right_neighbors": {
+        "M342": 4,
+        "M367": 3,
+        "M293": 2,
+        "M267": 2,
+        "M176": 2
+      },
+      "candidates": [
+        {
+          "reading": "ir",
+          "dedr_id": "DEDR 0488",
+          "meaning": "two/pair",
+          "icon_plausibility": "HIGH — double stroke = numeral 2 (ir)",
+          "pd_valid": true,
+          "evidence_score": 2.0
+        },
+        {
+          "reading": "iru",
+          "dedr_id": "DEDR 0488",
+          "meaning": "two",
+          "icon_plausibility": "HIGH — rebus: two strokes = iru",
+          "pd_valid": true,
+          "evidence_score": 2.0
+        },
+        {
+          "reading": "i",
+          "dedr_id": "DEDR none",
+          "meaning": "short syllable",
+          "icon_plausibility": "MEDIUM — minimal phoneme i",
+          "pd_valid": true,
+          "evidence_score": 1.25
+        },
+        {
+          "reading": "ti",
+          "dedr_id": "DEDR 3208",
+          "meaning": "fire/self",
+          "icon_plausibility": "LOW — two strokes fire?",
+          "pd_valid": true,
+          "evidence_score": 0.75
+        }
+      ],
+      "proposed_reading": "ir",
+      "proposed_confidence": "MEDIUM",
+      "evidence_score": 2.0,
+      "promoted": true
+    },
+    {
+      "sign": "M022",
+      "depiction": "jar variant / vessel with handles",
+      "corpus_freq": 22,
+      "freq_pct": 0.31,
+      "positional_class": "INITIAL",
+      "pos_initial_rate": 1.0,
+      "pos_medial_rate": 0.0,
+      "pos_terminal_rate": 0.0,
+      "left_anchor_rate": 0.0,
+      "right_anchor_rate": 0.727,
+      "top_left_neighbors": {
+        "_START_": 22
+      },
+      "top_right_neighbors": {
+        "M367": 3,
+        "M051": 2,
+        "M176": 2,
+        "M328": 2,
+        "M249": 2
+      },
+      "candidates": [
+        {
+          "reading": "kalam",
+          "dedr_id": "DEDR 1284",
+          "meaning": "vessel/pot",
+          "icon_plausibility": "HIGH — kalam=pot rebus (DEDR 1284)",
+          "pd_valid": true,
+          "evidence_score": 2.3
+        },
+        {
+          "reading": "kal",
+          "dedr_id": "DEDR 1284",
+          "meaning": "vessel",
+          "icon_plausibility": "HIGH — short form kalam->kal",
+          "pd_valid": true,
+          "evidence_score": 2.3
+        },
+        {
+          "reading": "mu",
+          "dedr_id": "DEDR 4930",
+          "meaning": "jar base",
+          "icon_plausibility": "MEDIUM — mu=base (Phase-80 anchor M043=mu)",
+          "pd_valid": true,
+          "evidence_score": 1.55
+        },
+        {
+          "reading": "pa",
+          "dedr_id": "DEDR 3893",
+          "meaning": "protect/vessel",
+          "icon_plausibility": "LOW — pa=protect in Phase-80",
+          "pd_valid": true,
+          "evidence_score": 0.75
+        }
+      ],
+      "proposed_reading": "kalam",
+      "proposed_confidence": "MEDIUM",
+      "evidence_score": 2.3,
+      "promoted": true
+    },
+    {
+      "sign": "M019",
+      "depiction": "arrow / thorn / pointed sign",
+      "corpus_freq": 20,
+      "freq_pct": 0.29,
+      "positional_class": "INITIAL",
+      "pos_initial_rate": 1.0,
+      "pos_medial_rate": 0.0,
+      "pos_terminal_rate": 0.0,
+      "left_anchor_rate": 0.0,
+      "right_anchor_rate": 0.85,
+      "top_left_neighbors": {
+        "_START_": 20
+      },
+      "top_right_neighbors": {
+        "M342": 4,
+        "M328": 3,
+        "M301": 1,
+        "M087": 1,
+        "M367": 1
+      },
+      "candidates": [
+        {
+          "reading": "ampu",
+          "dedr_id": "DEDR 0169",
+          "meaning": "arrow",
+          "icon_plausibility": "HIGH — ampu=arrow (DEDR 0169, Tamil)",
+          "pd_valid": true,
+          "evidence_score": 2.3
+        },
+        {
+          "reading": "am",
+          "dedr_id": "DEDR 0169",
+          "meaning": "arrow short",
+          "icon_plausibility": "HIGH — short form ampu->am",
+          "pd_valid": true,
+          "evidence_score": 2.3
+        },
+        {
+          "reading": "muḷ",
+          "dedr_id": "DEDR 4948",
+          "meaning": "thorn/spike",
+          "icon_plausibility": "MEDIUM — muḷ=thorn (DEDR 4948)",
+          "pd_valid": true,
+          "evidence_score": 1.55
+        },
+        {
+          "reading": "vil",
+          "dedr_id": "DEDR 5428",
+          "meaning": "bow (cf M293)",
+          "icon_plausibility": "LOW — vil=bow, different from arrow",
+          "pd_valid": true,
+          "evidence_score": 1.05
+        }
+      ],
+      "proposed_reading": "ampu",
+      "proposed_confidence": "MEDIUM",
+      "evidence_score": 2.3,
+      "promoted": true
+    },
+    {
+      "sign": "M044",
+      "depiction": "jar with internal mark",
+      "corpus_freq": 19,
+      "freq_pct": 0.27,
+      "positional_class": "INITIAL",
+      "pos_initial_rate": 1.0,
+      "pos_medial_rate": 0.0,
+      "pos_terminal_rate": 0.0,
+      "left_anchor_rate": 0.0,
+      "right_anchor_rate": 0.632,
+      "top_left_neighbors": {
+        "_START_": 19
+      },
+      "top_right_neighbors": {
+        "M059": 2,
+        "M342": 2,
+        "M293": 2,
+        "M391": 1,
+        "M099": 1
+      },
+      "candidates": [
+        {
+          "reading": "ku",
+          "dedr_id": "DEDR 1715",
+          "meaning": "inside/hollow",
+          "icon_plausibility": "HIGH — ku=hollow/inside (DEDR 1715), mark inside jar",
+          "pd_valid": true,
+          "evidence_score": 2.3
+        },
+        {
+          "reading": "uḷ",
+          "dedr_id": "DEDR 0724",
+          "meaning": "inside/within",
+          "icon_plausibility": "HIGH — uL=inside (DEDR 0724), mark inside",
+          "pd_valid": true,
+          "evidence_score": 2.0
+        },
+        {
+          "reading": "kalam",
+          "dedr_id": "DEDR 1284",
+          "meaning": "pot/vessel",
+          "icon_plausibility": "MEDIUM — jar iconography -> kalam",
+          "pd_valid": true,
+          "evidence_score": 1.55
+        },
+        {
+          "reading": "mu",
+          "dedr_id": "DEDR 4930",
+          "meaning": "base",
+          "icon_plausibility": "LOW — already assigned M043",
+          "pd_valid": true,
+          "evidence_score": 1.05
+        }
+      ],
+      "proposed_reading": "ku",
+      "proposed_confidence": "MEDIUM",
+      "evidence_score": 2.3,
+      "promoted": true
+    }
+  ],
+  "verdict": "Phase-83: 5 gap signs analysed. 4 promoted to MEDIUM. Total HIGH+MEDIUM anchors now 101. Key find: M079=ir (two strokes=numeral 2) and M022=kalam (pot) have strong iconographic rebus support."
+}

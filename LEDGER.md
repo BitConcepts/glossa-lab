@@ -21,7 +21,7 @@ Open TODOs:
 - [ ] Harden AGENTS.md with context window management, session boundaries, authority hierarchy
 - [ ] Extend docs/architecture.md with concrete interface specifications
 - [ ] Create docs/REQUIREMENTS.md with formal numbered requirements
-- [ ] Create docs/TEST_SPEC.md with test cases linked to requirements
+- [ ] Create docs/TESTS.md with test cases linked to requirements
 - [ ] Fix .gitignore missing entries (services/macos/.gitkeep, root node_modules/)
 - [ ] Create bootstrap scripts (setup.ps1, setup.sh, run.ps1, run.sh)
 - [ ] Scaffold Python backend (pyproject.toml, package structure, entrypoint, health endpoint)
@@ -40,7 +40,7 @@ What was done:
 - Hardened AGENTS.md: added context window management, conversation summarization recovery, session boundary rules, document authority hierarchy, agent role definition, drafting assistance rules, conflict/consistency handling protocol; fixed backtick formatting error on line 55
 - Extended docs/architecture.md: added API boundary spec (REST, /api/v1/, core endpoints), health/status contract (JSON schema, timing requirements), configuration model (TOML, platform paths, env var overrides), logging model (structured JSON, platform paths, rotation), state model (SQLite + filesystem, platform paths), IPC model (HTTP REST only, no implicit coupling), process lifecycle contract (startup sequence, shutdown sequence, signal handling, timeouts), security model (localhost-only, no auth for local, no secrets in responses/logs), technology decisions (DEC-001 through DEC-006)
 - Created docs/REQUIREMENTS.md: 25 formal requirements across 10 component categories (BE, API, CFG, LOG, SEC, FE, TRAY, SVC, XP, INT)
-- Created docs/TEST_SPEC.md: 25 test cases linked 1:1 to requirements, covering smoke, unit, integration, platform, and boundary types
+- Created docs/TESTS.md: 25 test cases linked 1:1 to requirements, covering smoke, unit, integration, platform, and boundary types
 - Fixed .gitignore: added services/macos/.gitkeep to keep-placeholders, added root node_modules/, added dev-mode data/config/logs directories
 - Created bootstrap scripts: scripts/setup.ps1, setup.sh (create venv, install deps, idempotent), scripts/run.ps1, run.sh (start backend/frontend, support --all flag)
 - Scaffolded Python backend: pyproject.toml (FastAPI + uvicorn + python-json-logger), glossa_lab package with __init__.py, main.py (FastAPI app, lifespan, CORS), config.py (TOML + env vars + platform paths), logging.py (structured JSON), api/health.py (GET /api/v1/health per REQ-API-001), tests/test_health.py (3 tests covering TEST-API-001, TEST-API-003, TEST-INT-002)
@@ -52,7 +52,7 @@ Files changed:
 - AGENTS.md (edited — 7 new sections, 1 fix)
 - docs/architecture.md (edited — 10 new sections)
 - docs/REQUIREMENTS.md (created)
-- docs/TEST_SPEC.md (created)
+- docs/TESTS.md (created)
 - .gitignore (edited)
 - scripts/setup.ps1 (created)
 - scripts/setup.sh (created)
@@ -88,7 +88,7 @@ Checks run:
 Results:
 - Milestone 1 (repo scaffold + docs scaffold + boundaries) complete
 - Milestone 2 (Python backend + React frontend scaffold) complete
-- All governance files present: AGENTS.md, LEDGER.md, README.md, architecture.md, workflow.md, services.md, REQUIREMENTS.md, TEST_SPEC.md
+- All governance files present: AGENTS.md, LEDGER.md, README.md, architecture.md, workflow.md, services.md, REQUIREMENTS.md, TESTS.md
 - Backend has working FastAPI app with health endpoint
 - Frontend has Vite + React app with health status display
 - Bootstrap scripts ready for both Windows and POSIX
@@ -223,7 +223,7 @@ Files changed:
 - .github/workflows/ci.yml (created)
 - docs/architecture.md (modified — DEC-005 accepted)
 - docs/REQUIREMENTS.md (modified — REQ-XP-002 .cmd)
-- docs/TEST_SPEC.md (modified — TEST-XP-002 .cmd)
+- docs/TESTS.md (modified — TEST-XP-002 .cmd)
 - docs/services.md (modified — resolved decisions)
 - tray/.gitkeep, services/*/.gitkeep (deleted)
 
@@ -8670,7 +8670,7 @@ Documentation/governance updates (this session):
   - AGENTS.md H19 check #8: updated to reflect archived status
   - AGENTS.md DECIPHERMENT RESEARCH ASSET REGISTRY: added Evidence Graph subsystem table
   - docs/REQUIREMENTS.md: updated header date; added R16 CI/CD Pipeline section
-  - docs/TEST_SPEC.md: added TEST-CI-001 through TEST-CI-004 section
+  - docs/TESTS.md: added TEST-CI-001 through TEST-CI-004 section
 
 Commits this session:
   b8bcec7 — Evidence Graph Batch 6 (API)
@@ -8700,7 +8700,7 @@ Files changed:
   backend/glossa_lab/ai/model_intelligence.py (MODIFIED — gpt-5.4)
   backend/glossa_lab/api/foundation_check.py (MODIFIED — check #8 archived)
   docs/REQUIREMENTS.md (MODIFIED — date + R16)
-  docs/TEST_SPEC.md (MODIFIED — TEST-CI section)
+  docs/TESTS.md (MODIFIED — TEST-CI section)
   AGENTS.md (MODIFIED — H19, Evidence Graph registry)
   LEDGER.md (this entry)
   .gitignore (MODIFIED — *.pt, user_uploads/*.pdf)

@@ -193,7 +193,7 @@ curl.exe -sf http://localhost:8001/ | Select-String 'index-[A-Za-z0-9]+\.js'
 | `docs/USER_GUIDE.md` | Full user guide (all panels) including Evidence Graph |
 | `docs/architecture.md` | System architecture including Evidence Graph layer |
 | `docs/REQUIREMENTS.md` | Formal requirements (R1–R16, incl. R14 Evidence Graph, R15 DB reliability, R16 CI/CD) |
-| `docs/TEST_SPEC.md` | Test specification (TEST-IEA, TEST-EV, TEST-PW-EG, TEST-CI) |
+| `docs/TESTS.md` | Test specification (TEST-IEA, TEST-EV, TEST-PW-EG, TEST-CI) |
 | `docs/research/` | Decipherment research documents |
 | `docs/guides/` | How-to guides (experiments, pipelines, studies) |
 | `glossa-indus/LEDGER.md` | Evidence Graph batch work log |

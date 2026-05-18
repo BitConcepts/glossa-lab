@@ -1,0 +1,970 @@
+{
+  "_citation": {
+    "primary": [
+      "A.1"
+    ]
+  },
+  "gpu_device": "cpu",
+  "n_glossed": 20,
+  "n_formula_types": 3,
+  "formula_types": {
+    "UNCERTAIN": 8,
+    "PLACE_FORMULA": 9,
+    "TITLE_FORMULA": 3
+  },
+  "translations": [
+    {
+      "pattern": [
+        "M012",
+        "M391"
+      ],
+      "count": 2,
+      "morphological": "oṉṟu/1-ka/kaṇ",
+      "coverage_pct": 100.0,
+      "formula_type": "PLACE_FORMULA",
+      "english_gloss": "Place reference: oNRu -ka/kaṇ",
+      "slot_table": [
+        {
+          "sign": "M012",
+          "reading": "oṉṟu/1",
+          "confidence": "HIGH",
+          "morph_role": "NUMBER",
+          "dedr": "DEDR 3940",
+          "gloss": "oNRu/oTTai (one)"
+        },
+        {
+          "sign": "M391",
+          "reading": "ka/kaṇ",
+          "confidence": "HIGH",
+          "morph_role": "CASE",
+          "dedr": "DEDR 1384",
+          "gloss": "ka/kaN (case marker)"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M367",
+        "M162"
+      ],
+      "count": 2,
+      "morphological": "am/neuter-il/iḷ",
+      "coverage_pct": 100.0,
+      "formula_type": "PLACE_FORMULA",
+      "english_gloss": "Place reference: -am/neuter -il/iḷ",
+      "slot_table": [
+        {
+          "sign": "M367",
+          "reading": "am/neuter",
+          "confidence": "HIGH",
+          "morph_role": "SUFFIX",
+          "dedr": "DEDR 192",
+          "gloss": "am (neuter suffix)"
+        },
+        {
+          "sign": "M162",
+          "reading": "il/iḷ",
+          "confidence": "HIGH",
+          "morph_role": "CASE",
+          "dedr": "DEDR 464",
+          "gloss": "il/iL (locative 'in/at')"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M004",
+        "M391",
+        "M099"
+      ],
+      "count": 1,
+      "morphological": "kēḷ-ka/kaṇ-kol/koḷ",
+      "coverage_pct": 100.0,
+      "formula_type": "PLACE_FORMULA",
+      "english_gloss": "Place reference: keeL -ka/kaṇ kol",
+      "slot_table": [
+        {
+          "sign": "M004",
+          "reading": "kēḷ",
+          "confidence": "HIGH",
+          "morph_role": "ROOT",
+          "dedr": "DEDR 1967",
+          "gloss": "keeL (hear/question)"
+        },
+        {
+          "sign": "M391",
+          "reading": "ka/kaṇ",
+          "confidence": "HIGH",
+          "morph_role": "CASE",
+          "dedr": "DEDR 1384",
+          "gloss": "ka/kaN (case marker)"
+        },
+        {
+          "sign": "M099",
+          "reading": "kol/koḷ",
+          "confidence": "HIGH",
+          "morph_role": "TITLE",
+          "dedr": "DEDR 2159",
+          "gloss": "kol/koL (lord/chieftain)"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M014",
+        "M162",
+        "M342",
+        "M176",
+        "M099",
+        "M125"
+      ],
+      "count": 1,
+      "morphological": "tiru-il/iḷ-ay/ā-an/aṇ-kol/koḷ-vil",
+      "coverage_pct": 100.0,
+      "formula_type": "PLACE_FORMULA",
+      "english_gloss": "Place reference: tiru -il/iḷ -ay/ā -an/aṇ kol vil",
+      "slot_table": [
+        {
+          "sign": "M014",
+          "reading": "tiru",
+          "confidence": "HIGH",
+          "morph_role": "UNKNOWN",
+          "dedr": "",
+          "gloss": ""
+        },
+        {
+          "sign": "M162",
+          "reading": "il/iḷ",
+          "confidence": "HIGH",
+          "morph_role": "CASE",
+          "dedr": "DEDR 464",
+          "gloss": "il/iL (locative 'in/at')"
+        },
+        {
+          "sign": "M342",
+          "reading": "ay/ā",
+          "confidence": "HIGH",
+          "morph_role": "SUFFIX",
+          "dedr": "DEDR 5295",
+          "gloss": "ay/aay (honorific suffix)"
+        },
+        {
+          "sign": "M176",
+          "reading": "an/aṇ",
+          "confidence": "HIGH",
+          "morph_role": "SUFFIX",
+          "dedr": "DEDR 134",
+          "gloss": "an/aN (masculine suffix)"
+        },
+        {
+          "sign": "M099",
+          "reading": "kol/koḷ",
+          "confidence": "HIGH",
+          "morph_role": "TITLE",
+          "dedr": "DEDR 2159",
+          "gloss": "kol/koL (lord/chieftain)"
+        },
+        {
+          "sign": "M125",
+          "reading": "vil",
+          "confidence": "MEDIUM",
+          "morph_role": "UNKNOWN",
+          "dedr": "",
+          "gloss": ""
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M066",
+        "M162",
+        "M087"
+      ],
+      "count": 1,
+      "morphological": "cōḻ-il/iḷ-veL",
+      "coverage_pct": 100.0,
+      "formula_type": "PLACE_FORMULA",
+      "english_gloss": "Place reference: cōḻ -il/iḷ veL",
+      "slot_table": [
+        {
+          "sign": "M066",
+          "reading": "cōḻ",
+          "confidence": "MEDIUM",
+          "morph_role": "UNKNOWN",
+          "dedr": "",
+          "gloss": ""
+        },
+        {
+          "sign": "M162",
+          "reading": "il/iḷ",
+          "confidence": "HIGH",
+          "morph_role": "CASE",
+          "dedr": "DEDR 464",
+          "gloss": "il/iL (locative 'in/at')"
+        },
+        {
+          "sign": "M087",
+          "reading": "veL",
+          "confidence": "MEDIUM",
+          "morph_role": "NUMBER",
+          "dedr": "DEDR 5509",
+          "gloss": "veL/iru (two/white)"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M077",
+        "M342",
+        "M162"
+      ],
+      "count": 1,
+      "morphological": "nal-ay/ā-il/iḷ",
+      "coverage_pct": 100.0,
+      "formula_type": "PLACE_FORMULA",
+      "english_gloss": "Place reference: nal -ay/ā -il/iḷ",
+      "slot_table": [
+        {
+          "sign": "M077",
+          "reading": "nal",
+          "confidence": "HIGH",
+          "morph_role": "ROOT",
+          "dedr": "DEDR 3599",
+          "gloss": "nal (good)"
+        },
+        {
+          "sign": "M342",
+          "reading": "ay/ā",
+          "confidence": "HIGH",
+          "morph_role": "SUFFIX",
+          "dedr": "DEDR 5295",
+          "gloss": "ay/aay (honorific suffix)"
+        },
+        {
+          "sign": "M162",
+          "reading": "il/iḷ",
+          "confidence": "HIGH",
+          "morph_role": "CASE",
+          "dedr": "DEDR 464",
+          "gloss": "il/iL (locative 'in/at')"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M018",
+        "M336"
+      ],
+      "count": 1,
+      "morphological": "nēr-iṉ/locative",
+      "coverage_pct": 100.0,
+      "formula_type": "PLACE_FORMULA",
+      "english_gloss": "Place reference: nēr -iṉ/locative",
+      "slot_table": [
+        {
+          "sign": "M018",
+          "reading": "nēr",
+          "confidence": "HIGH",
+          "morph_role": "UNKNOWN",
+          "dedr": "",
+          "gloss": ""
+        },
+        {
+          "sign": "M336",
+          "reading": "iṉ/locative",
+          "confidence": "HIGH",
+          "morph_role": "CASE",
+          "dedr": "DEDR 459",
+          "gloss": "iN/in (locative particle)"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M176",
+        "M342",
+        "M233",
+        "M391",
+        "M162",
+        "M342",
+        "M336"
+      ],
+      "count": 1,
+      "morphological": "an/aṇ-ay/ā-ūr-ka/kaṇ-il/iḷ-ay/ā-iṉ/locative",
+      "coverage_pct": 100.0,
+      "formula_type": "PLACE_FORMULA",
+      "english_gloss": "Place reference: -an/aṇ -ay/ā uur -ka/kaṇ -il/iḷ -ay/ā -iṉ/locative",
+      "slot_table": [
+        {
+          "sign": "M176",
+          "reading": "an/aṇ",
+          "confidence": "HIGH",
+          "morph_role": "SUFFIX",
+          "dedr": "DEDR 134",
+          "gloss": "an/aN (masculine suffix)"
+        },
+        {
+          "sign": "M342",
+          "reading": "ay/ā",
+          "confidence": "HIGH",
+          "morph_role": "SUFFIX",
+          "dedr": "DEDR 5295",
+          "gloss": "ay/aay (honorific suffix)"
+        },
+        {
+          "sign": "M233",
+          "reading": "ūr",
+          "confidence": "HIGH",
+          "morph_role": "ROOT",
+          "dedr": "DEDR 5506",
+          "gloss": "uur (settlement/town)"
+        },
+        {
+          "sign": "M391",
+          "reading": "ka/kaṇ",
+          "confidence": "HIGH",
+          "morph_role": "CASE",
+          "dedr": "DEDR 1384",
+          "gloss": "ka/kaN (case marker)"
+        },
+        {
+          "sign": "M162",
+          "reading": "il/iḷ",
+          "confidence": "HIGH",
+          "morph_role": "CASE",
+          "dedr": "DEDR 464",
+          "gloss": "il/iL (locative 'in/at')"
+        },
+        {
+          "sign": "M342",
+          "reading": "ay/ā",
+          "confidence": "HIGH",
+          "morph_role": "SUFFIX",
+          "dedr": "DEDR 5295",
+          "gloss": "ay/aay (honorific suffix)"
+        },
+        {
+          "sign": "M336",
+          "reading": "iṉ/locative",
+          "confidence": "HIGH",
+          "morph_role": "CASE",
+          "dedr": "DEDR 459",
+          "gloss": "iN/in (locative particle)"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M028",
+        "M211",
+        "M342",
+        "M391",
+        "M226",
+        "M125",
+        "M051"
+      ],
+      "count": 1,
+      "morphological": "cōḻ-kol-ay/ā-ka/kaṇ-(iv)-vil-pū/puḷ",
+      "coverage_pct": 85.7,
+      "formula_type": "PLACE_FORMULA",
+      "english_gloss": "Place reference: cōḻ kol -ay/ā -ka/kaṇ (iv?) vil puu",
+      "slot_table": [
+        {
+          "sign": "M028",
+          "reading": "cōḻ",
+          "confidence": "MEDIUM",
+          "morph_role": "UNKNOWN",
+          "dedr": "",
+          "gloss": ""
+        },
+        {
+          "sign": "M211",
+          "reading": "kol",
+          "confidence": "MEDIUM",
+          "morph_role": "ROOT",
+          "dedr": "DEDR 2159",
+          "gloss": "kol (unicorn-lord, title)"
+        },
+        {
+          "sign": "M342",
+          "reading": "ay/ā",
+          "confidence": "HIGH",
+          "morph_role": "SUFFIX",
+          "dedr": "DEDR 5295",
+          "gloss": "ay/aay (honorific suffix)"
+        },
+        {
+          "sign": "M391",
+          "reading": "ka/kaṇ",
+          "confidence": "HIGH",
+          "morph_role": "CASE",
+          "dedr": "DEDR 1384",
+          "gloss": "ka/kaN (case marker)"
+        },
+        {
+          "sign": "M226",
+          "reading": "iv",
+          "confidence": "SA_CANDIDATE",
+          "morph_role": "UNKNOWN",
+          "dedr": "",
+          "gloss": ""
+        },
+        {
+          "sign": "M125",
+          "reading": "vil",
+          "confidence": "MEDIUM",
+          "morph_role": "UNKNOWN",
+          "dedr": "",
+          "gloss": ""
+        },
+        {
+          "sign": "M051",
+          "reading": "pū/puḷ",
+          "confidence": "HIGH",
+          "morph_role": "ROOT",
+          "dedr": "DEDR 4277",
+          "gloss": "puu (flower)"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M048",
+        "M176",
+        "M089"
+      ],
+      "count": 2,
+      "morphological": "mu/muṉ-an/aṇ-tu/tū",
+      "coverage_pct": 100.0,
+      "formula_type": "TITLE_FORMULA",
+      "english_gloss": "Title inscription: mun -an/aṇ -tu/tū",
+      "slot_table": [
+        {
+          "sign": "M048",
+          "reading": "mu/muṉ",
+          "confidence": "HIGH",
+          "morph_role": "ROOT",
+          "dedr": "DEDR 4927",
+          "gloss": "mun (front/before)"
+        },
+        {
+          "sign": "M176",
+          "reading": "an/aṇ",
+          "confidence": "HIGH",
+          "morph_role": "SUFFIX",
+          "dedr": "DEDR 134",
+          "gloss": "an/aN (masculine suffix)"
+        },
+        {
+          "sign": "M089",
+          "reading": "tu/tū",
+          "confidence": "HIGH",
+          "morph_role": "SUFFIX",
+          "dedr": "DEDR 3476",
+          "gloss": "tu/tuu (verbal/nominal suffix)"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M048",
+        "M328",
+        "M328"
+      ],
+      "count": 1,
+      "morphological": "mu/muṉ-ā/āl-ā/āl",
+      "coverage_pct": 100.0,
+      "formula_type": "TITLE_FORMULA",
+      "english_gloss": "Title inscription: mun -ā/āl -ā/āl",
+      "slot_table": [
+        {
+          "sign": "M048",
+          "reading": "mu/muṉ",
+          "confidence": "HIGH",
+          "morph_role": "ROOT",
+          "dedr": "DEDR 4927",
+          "gloss": "mun (front/before)"
+        },
+        {
+          "sign": "M328",
+          "reading": "ā/āl",
+          "confidence": "HIGH",
+          "morph_role": "SUFFIX",
+          "dedr": "DEDR 327",
+          "gloss": "aa/aaL (agentive suffix, feminine)"
+        },
+        {
+          "sign": "M328",
+          "reading": "ā/āl",
+          "confidence": "HIGH",
+          "morph_role": "SUFFIX",
+          "dedr": "DEDR 327",
+          "gloss": "aa/aaL (agentive suffix, feminine)"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M023",
+        "M176",
+        "M099",
+        "M328"
+      ],
+      "count": 1,
+      "morphological": "vaḷ-an/aṇ-kol/koḷ-ā/āl",
+      "coverage_pct": 100.0,
+      "formula_type": "TITLE_FORMULA",
+      "english_gloss": "Title inscription: vaḷ -an/aṇ kol -ā/āl",
+      "slot_table": [
+        {
+          "sign": "M023",
+          "reading": "vaḷ",
+          "confidence": "MEDIUM",
+          "morph_role": "UNKNOWN",
+          "dedr": "",
+          "gloss": ""
+        },
+        {
+          "sign": "M176",
+          "reading": "an/aṇ",
+          "confidence": "HIGH",
+          "morph_role": "SUFFIX",
+          "dedr": "DEDR 134",
+          "gloss": "an/aN (masculine suffix)"
+        },
+        {
+          "sign": "M099",
+          "reading": "kol/koḷ",
+          "confidence": "HIGH",
+          "morph_role": "TITLE",
+          "dedr": "DEDR 2159",
+          "gloss": "kol/koL (lord/chieftain)"
+        },
+        {
+          "sign": "M328",
+          "reading": "ā/āl",
+          "confidence": "HIGH",
+          "morph_role": "SUFFIX",
+          "dedr": "DEDR 327",
+          "gloss": "aa/aaL (agentive suffix, feminine)"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M059",
+        "M089"
+      ],
+      "count": 3,
+      "morphological": "ēḷ/eḷ-tu/tū",
+      "coverage_pct": 100.0,
+      "formula_type": "UNCERTAIN",
+      "english_gloss": "eeL -tu/tū",
+      "slot_table": [
+        {
+          "sign": "M059",
+          "reading": "ēḷ/eḷ",
+          "confidence": "HIGH",
+          "morph_role": "ROOT",
+          "dedr": "DEDR 907",
+          "gloss": "eeL/eL (person/owner/rule)"
+        },
+        {
+          "sign": "M089",
+          "reading": "tu/tū",
+          "confidence": "HIGH",
+          "morph_role": "SUFFIX",
+          "dedr": "DEDR 3476",
+          "gloss": "tu/tuu (verbal/nominal suffix)"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M050",
+        "M211"
+      ],
+      "count": 2,
+      "morphological": "pār-kol",
+      "coverage_pct": 100.0,
+      "formula_type": "UNCERTAIN",
+      "english_gloss": "pār kol",
+      "slot_table": [
+        {
+          "sign": "M050",
+          "reading": "pār",
+          "confidence": "MEDIUM",
+          "morph_role": "UNKNOWN",
+          "dedr": "",
+          "gloss": ""
+        },
+        {
+          "sign": "M211",
+          "reading": "kol",
+          "confidence": "MEDIUM",
+          "morph_role": "ROOT",
+          "dedr": "DEDR 2159",
+          "gloss": "kol (unicorn-lord, title)"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M065",
+        "M342"
+      ],
+      "count": 2,
+      "morphological": "kuTam-ay/ā",
+      "coverage_pct": 100.0,
+      "formula_type": "UNCERTAIN",
+      "english_gloss": "kuTam -ay/ā",
+      "slot_table": [
+        {
+          "sign": "M065",
+          "reading": "kuTam",
+          "confidence": "MEDIUM",
+          "morph_role": "UNKNOWN",
+          "dedr": "",
+          "gloss": ""
+        },
+        {
+          "sign": "M342",
+          "reading": "ay/ā",
+          "confidence": "HIGH",
+          "morph_role": "SUFFIX",
+          "dedr": "DEDR 5295",
+          "gloss": "ay/aay (honorific suffix)"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M078",
+        "M099"
+      ],
+      "count": 2,
+      "morphological": "cēr-kol/koḷ",
+      "coverage_pct": 100.0,
+      "formula_type": "UNCERTAIN",
+      "english_gloss": "cēr kol",
+      "slot_table": [
+        {
+          "sign": "M078",
+          "reading": "cēr",
+          "confidence": "MEDIUM",
+          "morph_role": "UNKNOWN",
+          "dedr": "",
+          "gloss": ""
+        },
+        {
+          "sign": "M099",
+          "reading": "kol/koḷ",
+          "confidence": "HIGH",
+          "morph_role": "TITLE",
+          "dedr": "DEDR 2159",
+          "gloss": "kol/koL (lord/chieftain)"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M080",
+        "M249"
+      ],
+      "count": 2,
+      "morphological": "vēṅkai-tii",
+      "coverage_pct": 100.0,
+      "formula_type": "UNCERTAIN",
+      "english_gloss": "veeNkai tii",
+      "slot_table": [
+        {
+          "sign": "M080",
+          "reading": "vēṅkai",
+          "confidence": "HIGH",
+          "morph_role": "ROOT",
+          "dedr": "DEDR 5500",
+          "gloss": "veeNkai (kino-tree)"
+        },
+        {
+          "sign": "M249",
+          "reading": "tii",
+          "confidence": "MEDIUM",
+          "morph_role": "ROOT",
+          "dedr": "DEDR 3494",
+          "gloss": "tii/tee (scorpion)"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M025",
+        "M249"
+      ],
+      "count": 2,
+      "morphological": "cem-tii",
+      "coverage_pct": 100.0,
+      "formula_type": "UNCERTAIN",
+      "english_gloss": "cem tii",
+      "slot_table": [
+        {
+          "sign": "M025",
+          "reading": "cem",
+          "confidence": "MEDIUM",
+          "morph_role": "UNKNOWN",
+          "dedr": "",
+          "gloss": ""
+        },
+        {
+          "sign": "M249",
+          "reading": "tii",
+          "confidence": "MEDIUM",
+          "morph_role": "ROOT",
+          "dedr": "DEDR 3494",
+          "gloss": "tii/tee (scorpion)"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M027",
+        "M367"
+      ],
+      "count": 2,
+      "morphological": "māṟ-am/neuter",
+      "coverage_pct": 100.0,
+      "formula_type": "UNCERTAIN",
+      "english_gloss": "māṟ -am/neuter",
+      "slot_table": [
+        {
+          "sign": "M027",
+          "reading": "māṟ",
+          "confidence": "HIGH",
+          "morph_role": "UNKNOWN",
+          "dedr": "",
+          "gloss": ""
+        },
+        {
+          "sign": "M367",
+          "reading": "am/neuter",
+          "confidence": "HIGH",
+          "morph_role": "SUFFIX",
+          "dedr": "DEDR 192",
+          "gloss": "am (neuter suffix)"
+        }
+      ]
+    },
+    {
+      "pattern": [
+        "M059",
+        "M059"
+      ],
+      "count": 1,
+      "morphological": "ēḷ/eḷ-ēḷ/eḷ",
+      "coverage_pct": 100.0,
+      "formula_type": "UNCERTAIN",
+      "english_gloss": "eeL eeL",
+      "slot_table": [
+        {
+          "sign": "M059",
+          "reading": "ēḷ/eḷ",
+          "confidence": "HIGH",
+          "morph_role": "ROOT",
+          "dedr": "DEDR 907",
+          "gloss": "eeL/eL (person/owner/rule)"
+        },
+        {
+          "sign": "M059",
+          "reading": "ēḷ/eḷ",
+          "confidence": "HIGH",
+          "morph_role": "ROOT",
+          "dedr": "DEDR 907",
+          "gloss": "eeL/eL (person/owner/rule)"
+        }
+      ]
+    }
+  ],
+  "morph_role_legend": {
+    "M006": {
+      "role": "CLASSIFIER",
+      "dedr": "DEDR 4346",
+      "gloss": "puli (tiger) -> title-class marker"
+    },
+    "M016": {
+      "role": "CLASSIFIER",
+      "dedr": "DEDR 1278",
+      "gloss": "kaLiRu (elephant-calf) -> title-class marker"
+    },
+    "M045": {
+      "role": "CLASSIFIER",
+      "dedr": "DEDR 5149",
+      "gloss": "yaanai (elephant) -> title-class marker"
+    },
+    "M062": {
+      "role": "CLASSIFIER",
+      "dedr": "DEDR 824",
+      "gloss": "erutu (zebu-bull) -> title-class marker"
+    },
+    "M047": {
+      "role": "CLASSIFIER",
+      "dedr": "DEDR 4839",
+      "gloss": "miin (fish) -> title-class marker"
+    },
+    "M039": {
+      "role": "CLASSIFIER",
+      "dedr": "DEDR 327",
+      "gloss": "aaNai (elephant) -> title-class marker"
+    },
+    "M060": {
+      "role": "ROOT",
+      "dedr": "DEDR 824",
+      "gloss": "eRu (bull/male)"
+    },
+    "M099": {
+      "role": "TITLE",
+      "dedr": "DEDR 2159",
+      "gloss": "kol/koL (lord/chieftain)"
+    },
+    "M059": {
+      "role": "ROOT",
+      "dedr": "DEDR 907",
+      "gloss": "eeL/eL (person/owner/rule)"
+    },
+    "M211": {
+      "role": "ROOT",
+      "dedr": "DEDR 2159",
+      "gloss": "kol (unicorn-lord, title)"
+    },
+    "M073": {
+      "role": "ROOT",
+      "dedr": "DEDR 2159",
+      "gloss": "koon (king/chief)"
+    },
+    "M030": {
+      "role": "ROOT",
+      "dedr": "DEDR 2159",
+      "gloss": "koo (king/lord)"
+    },
+    "M233": {
+      "role": "ROOT",
+      "dedr": "DEDR 5506",
+      "gloss": "uur (settlement/town)"
+    },
+    "M013": {
+      "role": "ROOT",
+      "dedr": "DEDR 3590",
+      "gloss": "nakaram (town-place, na-)"
+    },
+    "M004": {
+      "role": "ROOT",
+      "dedr": "DEDR 1967",
+      "gloss": "keeL (hear/question)"
+    },
+    "M077": {
+      "role": "ROOT",
+      "dedr": "DEDR 3599",
+      "gloss": "nal (good)"
+    },
+    "M041": {
+      "role": "ROOT",
+      "dedr": "DEDR 4375",
+      "gloss": "peer (name/big)"
+    },
+    "M080": {
+      "role": "ROOT",
+      "dedr": "DEDR 5500",
+      "gloss": "veeNkai (kino-tree)"
+    },
+    "M249": {
+      "role": "ROOT",
+      "dedr": "DEDR 3494",
+      "gloss": "tii/tee (scorpion)"
+    },
+    "M261": {
+      "role": "ROOT",
+      "dedr": "DEDR 4867",
+      "gloss": "muruku (Murukan/young-man)"
+    },
+    "M342": {
+      "role": "SUFFIX",
+      "dedr": "DEDR 5295",
+      "gloss": "ay/aay (honorific suffix)"
+    },
+    "M176": {
+      "role": "SUFFIX",
+      "dedr": "DEDR 134",
+      "gloss": "an/aN (masculine suffix)"
+    },
+    "M367": {
+      "role": "SUFFIX",
+      "dedr": "DEDR 192",
+      "gloss": "am (neuter suffix)"
+    },
+    "M391": {
+      "role": "CASE",
+      "dedr": "DEDR 1384",
+      "gloss": "ka/kaN (case marker)"
+    },
+    "M336": {
+      "role": "CASE",
+      "dedr": "DEDR 459",
+      "gloss": "iN/in (locative particle)"
+    },
+    "M089": {
+      "role": "SUFFIX",
+      "dedr": "DEDR 3476",
+      "gloss": "tu/tuu (verbal/nominal suffix)"
+    },
+    "M328": {
+      "role": "SUFFIX",
+      "dedr": "DEDR 327",
+      "gloss": "aa/aaL (agentive suffix, feminine)"
+    },
+    "M162": {
+      "role": "CASE",
+      "dedr": "DEDR 464",
+      "gloss": "il/iL (locative 'in/at')"
+    },
+    "M267": {
+      "role": "PARTICLE",
+      "dedr": "DEDR 460",
+      "gloss": "iN (genitive 'of') [UNCERTAIN]"
+    },
+    "M086": {
+      "role": "NUMBER",
+      "dedr": "DEDR 993",
+      "gloss": "oru (one)"
+    },
+    "M087": {
+      "role": "NUMBER",
+      "dedr": "DEDR 5509",
+      "gloss": "veL/iru (two/white)"
+    },
+    "M012": {
+      "role": "NUMBER",
+      "dedr": "DEDR 3940",
+      "gloss": "oNRu/oTTai (one)"
+    },
+    "M048": {
+      "role": "ROOT",
+      "dedr": "DEDR 4927",
+      "gloss": "mun (front/before)"
+    },
+    "M051": {
+      "role": "ROOT",
+      "dedr": "DEDR 4277",
+      "gloss": "puu (flower)"
+    },
+    "M305": {
+      "role": "ROOT",
+      "dedr": "DEDR 473",
+      "gloss": "iru/ooTu (seated/comitative)"
+    }
+  },
+  "formula_type_legend": {
+    "TITLE_FORMULA": "Sign [Classifier]-[Root-title]-[Suffix] — identifies a person by title",
+    "OWNERSHIP_FORMULA": "Sign [Owner-mark]-[Particle]-[Title] — '[owner's] [title]'",
+    "PLACE_FORMULA": "Sign [Root-place]-[Locative] — '[place] + locative'",
+    "TRADE_FORMULA": "Sign [Commodity]-[Number/Measure]-[Title]",
+    "UNCERTAIN": "Formula type unclear from current readings"
+  }
+}

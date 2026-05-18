@@ -46,15 +46,6 @@ Examples of violating patterns: `while True:` / `while ($true)` / `for (;;)` wit
 ### H12 — Windows multi-step automation via .cmd files
 On Windows, multi-step or heavily-quoted automation sequences MUST be written to a temporary `.cmd` file and executed from there. Do NOT emit these as inline shell invocations or as `.ps1` files unless there is a concrete PowerShell-only requirement. Inline multi-line quoting on Windows is fragile and causes avoidable hangs.
 
-### H13 — Epistemic Boundaries Required
-All proposals MUST state their epistemic boundaries. A proposal without explicit assumptions is a stop condition, not a warning. Before executing, ask:
-- What BeliefArtifact IDs does this proposal rely on?
-- What are the hidden assumptions?
-- What adversarial challenge could break this proposal?
-- Are any P1 requirements in scope and at LOW confidence?
-
-Hidden assumptions are not acceptable. Declare all epistemic boundaries in the `Assumptions:` field of every proposal.
-
 ---
 
 ## Stop Conditions
@@ -71,6 +62,3 @@ Agents MUST stop and request clarification if ANY of the following are true:
 - Architecture contradicts requirements
 - Proposed work would violate a hard rule
 - Proposed work would silently expand scope
-- **Logic Knot detected** (conflicting accepted requirements without a resolution path)
-- **P1 belief artifact below MEDIUM confidence** (H13 stop condition)
-- **Trace chain integrity failure** (run `specsmith trace verify`)

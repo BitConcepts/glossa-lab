@@ -1,5 +1,5 @@
 {
-  "total": 182,
+  "total": 184,
   "anchors": {
     "M342": {
       "reading": "ay/ā",
@@ -354,9 +354,10 @@
       "basis": "Round 2: INITIAL position (freq=13), distributional assignment"
     },
     "M024": {
-      "reading": "pēr",
-      "confidence": "LOW",
-      "basis": "Round 2: INITIAL position (freq=13), distributional assignment"
+      "reading": "nē",
+      "confidence": "MEDIUM",
+      "basis": "Phase-73 SA syl_modal='nē' (Dravidian syllabic LM). Iconography: potted-plant/sprout sign ~ nē (sprouting). Phase-103: appears in 13 name slots; NAME_AY_AN pattern. DEDR 3741 nē = 'you (formal)' or nēr = 'straight/true'. Personal name component: Nē-an (true man). Freq=13; Pos=INITIAL; name_slots=5.",
+      "source": "Phase-105"
     },
     "M049": {
       "reading": "pu",
@@ -531,9 +532,10 @@
       "basis": "Round 4: MEDIAL position (freq=7), distributional assignment"
     },
     "M375": {
-      "reading": "il",
-      "confidence": "LOW",
-      "basis": "Round 4: MEDIAL position (freq=7), distributional assignment"
+      "reading": "taṇ",
+      "confidence": "MEDIUM",
+      "basis": "Folded-arm sign ~ taṇ 'cool/refreshing' (DEDR 3009) or taṇṭu 'staff/rod'. Phase-103 NAME_AY_AN pattern: [M375]-M342-M176 (taṇ-ay-an = 'cool/noble man'). Sangam Akam poetry: taṇ- is a common personal name prefix. Freq=7; Pos=MEDIAL; name_slots=4.",
+      "source": "Phase-105"
     },
     "M270": {
       "reading": "muḷ",
@@ -581,9 +583,10 @@
       "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
     },
     "M332": {
-      "reading": "paṟ",
-      "confidence": "LOW",
-      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+      "reading": "intu",
+      "confidence": "MEDIUM",
+      "basis": "Phase-106 name SA sprint: SA modal='intu', consistency=0.50, PD-valid. DEDR : . Freq=6.",
+      "source": "Phase-108"
     },
     "M183": {
       "reading": "vēḷ",
@@ -1074,6 +1077,18 @@
       "dedr_id": "DEDR 4836",
       "meaning": "fish+mark2",
       "source": "Phase-95 retroflex expansion (score=1.90)"
+    },
+    "M362": {
+      "reading": "aṇi",
+      "confidence": "MEDIUM",
+      "basis": "Starburst / asterisk iconography ~ aṇi 'ornament/adorn' (DEDR 0145). Phase-103: appears in name-slot patterns between animal classifiers and titles. Sangam literature: aṇi- prefix in personal names (Aṇi-van, Aṇi-tan). Positional: predominantly MEDIAL in personal name sequences. Freq=3; Pos=MEDIAL; name_slots=2.",
+      "source": "Phase-105"
+    },
+    "M398": {
+      "reading": "kuṟi",
+      "confidence": "MEDIUM",
+      "basis": "Hook+ring iconography ~ kuṟi 'mark/sign' (DEDR 1769) or kuṟu 'small/short'. Phase-103: NAME_AY_AN + GENITIVE_NAME_SUFFIX patterns. Pattern [M267]-[M398]-[M342]: 'of-kuṟi-belonging' = genitive personal name. Score 1.2 (highest name_score in Phase-103 top candidates). Freq=3; Pos=MEDIAL; name_slots=3.",
+      "source": "Phase-105"
     }
   },
   "_citation": {

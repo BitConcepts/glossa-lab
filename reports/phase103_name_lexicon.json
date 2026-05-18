@@ -1,0 +1,1055 @@
+{
+  "_citation": {
+    "primary": [
+      "A.1"
+    ]
+  },
+  "gpu_device": "cpu",
+  "n_confirmed_anchors": 125,
+  "n_name_candidates": 45,
+  "n_high_name_score": 18,
+  "name_candidates": [
+    {
+      "sign": "M375",
+      "corpus_freq": 7,
+      "name_slot_count": 7,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 1,
+      "ay_an_pattern_count": 2,
+      "name_score": 1.143,
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "ANIMAL_NAME_TITLE",
+        "NAME_AY_AN"
+      ],
+      "sample_patterns": [
+        "M059-[M375]-M342",
+        "[M375]-M342-M176",
+        "M367-[M375]-M267",
+        "M045-[M375]-M342",
+        "M233-[M375]-M065"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M102",
+      "corpus_freq": 8,
+      "name_slot_count": 7,
+      "genitive_pattern_count": 2,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.857,
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "GENITIVE_NAME_SUFFIX"
+      ],
+      "sample_patterns": [
+        "M032-[M102]-M342",
+        "M311-[M102]-M089",
+        "M267-[M102]-M367",
+        "M267-[M102]-M089",
+        "M022-[M102]-M311"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M169",
+      "corpus_freq": 8,
+      "name_slot_count": 7,
+      "genitive_pattern_count": 1,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.429,
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "GENITIVE_NAME_SUFFIX"
+      ],
+      "sample_patterns": [
+        "M176-[M169]-M367",
+        "M048-[M169]-M162",
+        "M050-[M169]-M267",
+        "M059-[M169]-M342",
+        "M267-[M169]-M089"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M153",
+      "corpus_freq": 5,
+      "name_slot_count": 6,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 1,
+      "ay_an_pattern_count": 1,
+      "name_score": 0.833,
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "NAME_AY_AN",
+        "ANIMAL_NAME_TITLE"
+      ],
+      "sample_patterns": [
+        "M028-[M153]-M328",
+        "M233-[M153]-M176",
+        "[M153]-M342-M176",
+        "M044-[M153]-M051",
+        "M060-[M153]-M342"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M398",
+      "corpus_freq": 3,
+      "name_slot_count": 5,
+      "genitive_pattern_count": 1,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 1,
+      "name_score": 1.2,
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "NAME_AY_AN",
+        "GENITIVE_NAME_SUFFIX"
+      ],
+      "sample_patterns": [
+        "M002-[M398]-M176",
+        "M267-[M398]-M342",
+        "M036-[M398]-M162",
+        "[M398]-M342-M176"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M365",
+      "corpus_freq": 5,
+      "name_slot_count": 6,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 1,
+      "name_score": 0.5,
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "NAME_AY_AN"
+      ],
+      "sample_patterns": [
+        "[M365]-M342-M176",
+        "M087-[M365]-M267",
+        "M050-[M365]-M391",
+        "M034-[M365]-M342",
+        "M050-[M365]-M220"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M386",
+      "corpus_freq": 6,
+      "name_slot_count": 6,
+      "genitive_pattern_count": 1,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.5,
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "GENITIVE_NAME_SUFFIX"
+      ],
+      "sample_patterns": [
+        "M267-[M386]-M342",
+        "M025-[M386]-M391",
+        "M078-[M386]-M048",
+        "M391-[M386]-M117",
+        "M029-[M386]-M328"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M347",
+      "corpus_freq": 8,
+      "name_slot_count": 7,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.0,
+      "pattern_types": [
+        "HIGH_CONTEXT"
+      ],
+      "sample_patterns": [
+        "M006-[M347]-M211",
+        "M028-[M347]-M367",
+        "M051-[M347]-M162",
+        "M342-[M347]-M293",
+        "M046-[M347]-M145"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M198",
+      "corpus_freq": 6,
+      "name_slot_count": 6,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 1,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.333,
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "ANIMAL_NAME_TITLE"
+      ],
+      "sample_patterns": [
+        "M045-[M198]-M367",
+        "M336-[M198]-M099",
+        "M051-[M198]-M087",
+        "M027-[M198]-M211",
+        "M051-[M198]-M089"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M332",
+      "corpus_freq": 6,
+      "name_slot_count": 5,
+      "genitive_pattern_count": 1,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.6,
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "GENITIVE_NAME_SUFFIX"
+      ],
+      "sample_patterns": [
+        "M281-[M332]-M176",
+        "M267-[M332]-M328",
+        "M099-[M332]-M267",
+        "M004-[M332]-M065"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M362",
+      "corpus_freq": 3,
+      "name_slot_count": 4,
+      "genitive_pattern_count": 1,
+      "animal_pattern_count": 1,
+      "ay_an_pattern_count": 0,
+      "name_score": 1.25,
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "ANIMAL_NAME_TITLE",
+        "GENITIVE_NAME_SUFFIX"
+      ],
+      "sample_patterns": [
+        "M006-[M362]-M059",
+        "M267-[M362]-M391"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M304",
+      "corpus_freq": 5,
+      "name_slot_count": 5,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 1,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.4,
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "ANIMAL_NAME_TITLE"
+      ],
+      "sample_patterns": [
+        "M162-[M304]-M293",
+        "M062-[M304]-M099",
+        "M059-[M304]-M059",
+        "M342-[M304]-M099"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M354",
+      "corpus_freq": 3,
+      "name_slot_count": 4,
+      "genitive_pattern_count": 1,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.75,
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "GENITIVE_NAME_SUFFIX"
+      ],
+      "sample_patterns": [
+        "M053-[M354]-M051",
+        "M267-[M354]-M176",
+        "M099-[M354]-M089"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M351",
+      "corpus_freq": 6,
+      "name_slot_count": 6,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.0,
+      "pattern_types": [
+        "HIGH_CONTEXT"
+      ],
+      "sample_patterns": [
+        "M009-[M351]-M176",
+        "M176-[M351]-M267",
+        "M023-[M351]-M342",
+        "M064-[M351]-M211",
+        "M336-[M351]-M059"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M149",
+      "corpus_freq": 7,
+      "name_slot_count": 6,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.0,
+      "pattern_types": [
+        "HIGH_CONTEXT"
+      ],
+      "sample_patterns": [
+        "M342-[M149]-M051",
+        "M391-[M149]-M176",
+        "M054-[M149]-M342",
+        "M367-[M149]-M176",
+        "M073-[M149]-M087"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M185",
+      "corpus_freq": 7,
+      "name_slot_count": 5,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 1,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.4,
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "ANIMAL_NAME_TITLE"
+      ],
+      "sample_patterns": [
+        "M328-[M185]-M328",
+        "M039-[M185]-M391",
+        "M249-[M185]-M328",
+        "M003-[M185]-M342"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M245",
+      "corpus_freq": 4,
+      "name_slot_count": 5,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 1,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.4,
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "ANIMAL_NAME_TITLE"
+      ],
+      "sample_patterns": [
+        "M077-[M245]-M305",
+        "M012-[M245]-M211",
+        "M026-[M245]-M099",
+        "M016-[M245]-M059"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M383",
+      "corpus_freq": 7,
+      "name_slot_count": 6,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.0,
+      "pattern_types": [
+        "HIGH_CONTEXT"
+      ],
+      "sample_patterns": [
+        "M051-[M383]-M048",
+        "M010-[M383]-M087",
+        "M249-[M383]-M367",
+        "M048-[M383]-M176",
+        "M060-[M383]-M211"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M024",
+      "corpus_freq": 13,
+      "name_slot_count": 2,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 2,
+      "name_score": 3.0,
+      "pattern_types": [
+        "NAME_AY_AN"
+      ],
+      "sample_patterns": [
+        "[M024]-M342-M176"
+      ],
+      "sa_modal": "nē",
+      "sa_tier": "ENSEMBLE_LOW",
+      "proposed_reading": "nē",
+      "reading_basis": "SA modal 'nē' (ENSEMBLE_LOW)"
+    },
+    {
+      "sign": "M277",
+      "corpus_freq": 3,
+      "name_slot_count": 3,
+      "genitive_pattern_count": 1,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 1.0,
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "GENITIVE_NAME_SUFFIX"
+      ],
+      "sample_patterns": [
+        "M328-[M277]-M211",
+        "M267-[M277]-M162"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M355",
+      "corpus_freq": 5,
+      "name_slot_count": 5,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.0,
+      "pattern_types": [
+        "HIGH_CONTEXT"
+      ],
+      "sample_patterns": [
+        "M342-[M355]-M336",
+        "M293-[M355]-M012",
+        "M052-[M355]-M391",
+        "M043-[M355]-M267",
+        "M065-[M355]-M048"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M374",
+      "corpus_freq": 6,
+      "name_slot_count": 5,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.0,
+      "pattern_types": [
+        "HIGH_CONTEXT"
+      ],
+      "sample_patterns": [
+        "M125-[M374]-M211",
+        "M328-[M374]-M065",
+        "M073-[M374]-M099",
+        "M162-[M374]-M267",
+        "M056-[M374]-M048"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M350",
+      "corpus_freq": 5,
+      "name_slot_count": 4,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 1,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.5,
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "ANIMAL_NAME_TITLE"
+      ],
+      "sample_patterns": [
+        "M062-[M350]-M328",
+        "M342-[M350]-M233",
+        "M060-[M350]-M391"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M272",
+      "corpus_freq": 7,
+      "name_slot_count": 5,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.0,
+      "pattern_types": [
+        "HIGH_CONTEXT"
+      ],
+      "sample_patterns": [
+        "M176-[M272]-M267",
+        "M328-[M272]-M293",
+        "M018-[M272]-M293",
+        "M293-[M272]-M211",
+        "M025-[M272]-M249"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M321",
+      "corpus_freq": 5,
+      "name_slot_count": 4,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 1,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.5,
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "ANIMAL_NAME_TITLE"
+      ],
+      "sample_patterns": [
+        "M176-[M321]-M099",
+        "M342-[M321]-M342",
+        "M016-[M321]-M342"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M155",
+      "corpus_freq": 5,
+      "name_slot_count": 5,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.0,
+      "pattern_types": [
+        "HIGH_CONTEXT"
+      ],
+      "sample_patterns": [
+        "M048-[M155]-M367",
+        "M391-[M155]-M267",
+        "M099-[M155]-M220",
+        "M099-[M155]-M162",
+        "M125-[M155]-M342"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M103",
+      "corpus_freq": 5,
+      "name_slot_count": 5,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.0,
+      "pattern_types": [
+        "HIGH_CONTEXT"
+      ],
+      "sample_patterns": [
+        "M035-[M103]-M211",
+        "M328-[M103]-M162",
+        "M391-[M103]-M099",
+        "M051-[M103]-M293",
+        "M051-[M103]-M328"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M388",
+      "corpus_freq": 3,
+      "name_slot_count": 3,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 1,
+      "name_score": 1.0,
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "NAME_AY_AN"
+      ],
+      "sample_patterns": [
+        "M162-[M388]-M342",
+        "[M388]-M342-M176",
+        "M066-[M388]-M099"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M137",
+      "corpus_freq": 5,
+      "name_slot_count": 4,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 1,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.5,
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "ANIMAL_NAME_TITLE"
+      ],
+      "sample_patterns": [
+        "M125-[M137]-M130",
+        "M038-[M137]-M342",
+        "M040-[M137]-M391",
+        "M058-[M137]-M367"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M217",
+      "corpus_freq": 3,
+      "name_slot_count": 3,
+      "genitive_pattern_count": 1,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 1.0,
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "GENITIVE_NAME_SUFFIX"
+      ],
+      "sample_patterns": [
+        "M267-[M217]-M162",
+        "M036-[M217]-M267"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M318",
+      "corpus_freq": 4,
+      "name_slot_count": 3,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 1,
+      "name_score": 1.0,
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "NAME_AY_AN"
+      ],
+      "sample_patterns": [
+        "M053-[M318]-M342",
+        "[M318]-M342-M176",
+        "M010-[M318]-M293"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M295",
+      "corpus_freq": 5,
+      "name_slot_count": 5,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.0,
+      "pattern_types": [
+        "HIGH_CONTEXT"
+      ],
+      "sample_patterns": [
+        "M065-[M295]-M220",
+        "M099-[M295]-M176",
+        "M267-[M295]-M087",
+        "M089-[M295]-M336",
+        "M342-[M295]-M089"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M148",
+      "corpus_freq": 4,
+      "name_slot_count": 3,
+      "genitive_pattern_count": 1,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 1.0,
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "GENITIVE_NAME_SUFFIX"
+      ],
+      "sample_patterns": [
+        "M028-[M148]-M099",
+        "M267-[M148]-M336"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M251",
+      "corpus_freq": 4,
+      "name_slot_count": 4,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.0,
+      "pattern_types": [
+        "HIGH_CONTEXT"
+      ],
+      "sample_patterns": [
+        "M087-[M251]-M099",
+        "M011-[M251]-M124",
+        "M342-[M251]-M059",
+        "M367-[M251]-M012"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M301",
+      "corpus_freq": 4,
+      "name_slot_count": 4,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.0,
+      "pattern_types": [
+        "HIGH_CONTEXT"
+      ],
+      "sample_patterns": [
+        "M070-[M301]-M267",
+        "M081-[M301]-M099",
+        "M233-[M301]-M267",
+        "M019-[M301]-M087"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M346",
+      "corpus_freq": 4,
+      "name_slot_count": 4,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.0,
+      "pattern_types": [
+        "HIGH_CONTEXT"
+      ],
+      "sample_patterns": [
+        "M053-[M346]-M162",
+        "M099-[M346]-M233",
+        "M176-[M346]-M391",
+        "M162-[M346]-M391"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M127",
+      "corpus_freq": 6,
+      "name_slot_count": 4,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.0,
+      "pattern_types": [
+        "HIGH_CONTEXT"
+      ],
+      "sample_patterns": [
+        "M391-[M127]-M048",
+        "M059-[M127]-M089",
+        "M211-[M127]-M051",
+        "M012-[M127]-M342"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M120",
+      "corpus_freq": 4,
+      "name_slot_count": 4,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.0,
+      "pattern_types": [
+        "HIGH_CONTEXT"
+      ],
+      "sample_patterns": [
+        "M043-[M120]-M099",
+        "M051-[M120]-M342",
+        "M060-[M120]-M099",
+        "M267-[M120]-M059"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M178",
+      "corpus_freq": 5,
+      "name_slot_count": 4,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.0,
+      "pattern_types": [
+        "HIGH_CONTEXT"
+      ],
+      "sample_patterns": [
+        "M059-[M178]-M267",
+        "M048-[M178]-M342",
+        "M009-[M178]-M176",
+        "M063-[M178]-M267"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M218",
+      "corpus_freq": 4,
+      "name_slot_count": 4,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.0,
+      "pattern_types": [
+        "HIGH_CONTEXT"
+      ],
+      "sample_patterns": [
+        "M233-[M218]-M176",
+        "M034-[M218]-M293",
+        "M099-[M218]-M048",
+        "M087-[M218]-M059"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M294",
+      "corpus_freq": 4,
+      "name_slot_count": 4,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.0,
+      "pattern_types": [
+        "HIGH_CONTEXT"
+      ],
+      "sample_patterns": [
+        "M065-[M294]-M089",
+        "M125-[M294]-M293",
+        "M342-[M294]-M328",
+        "M176-[M294]-M342"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M291",
+      "corpus_freq": 4,
+      "name_slot_count": 4,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.0,
+      "pattern_types": [
+        "HIGH_CONTEXT"
+      ],
+      "sample_patterns": [
+        "M099-[M291]-M267",
+        "M053-[M291]-M391",
+        "M099-[M291]-M051",
+        "M039-[M291]-M267"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M313",
+      "corpus_freq": 4,
+      "name_slot_count": 4,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.0,
+      "pattern_types": [
+        "HIGH_CONTEXT"
+      ],
+      "sample_patterns": [
+        "M065-[M313]-M342",
+        "M012-[M313]-M125",
+        "M211-[M313]-M087",
+        "M068-[M313]-M176"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M329",
+      "corpus_freq": 5,
+      "name_slot_count": 4,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.0,
+      "pattern_types": [
+        "HIGH_CONTEXT"
+      ],
+      "sample_patterns": [
+        "M125-[M329]-M336",
+        "M211-[M329]-M342",
+        "M125-[M329]-M089",
+        "M051-[M329]-M342"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    },
+    {
+      "sign": "M177",
+      "corpus_freq": 5,
+      "name_slot_count": 4,
+      "genitive_pattern_count": 0,
+      "animal_pattern_count": 0,
+      "ay_an_pattern_count": 0,
+      "name_score": 0.0,
+      "pattern_types": [
+        "HIGH_CONTEXT"
+      ],
+      "sample_patterns": [
+        "M026-[M177]-M267",
+        "M293-[M177]-M048",
+        "M342-[M177]-M293",
+        "M336-[M177]-M391"
+      ],
+      "sa_modal": "",
+      "sa_tier": "UNKNOWN",
+      "proposed_reading": null,
+      "reading_basis": ""
+    }
+  ],
+  "top_unread_bigrams": [],
+  "m293_analysis": null,
+  "pd_name_elements_reference": {
+    "vel": "DEDR 5469 (spear/victory) — common name element: Vel-an, Vel-ir",
+    "pon": "DEDR 4533 (gold) — Pon-an, Pon-tan",
+    "nal": "DEDR 3569 (good) — Nal-an",
+    "iru": "DEDR 0488 (two/great) — Iru-van",
+    "van": "DEDR 5231 (strong) — Van-an",
+    "kan": "DEDR 1145 (eye/lord) — Kan-nan",
+    "cey": "DEDR 2796 (to do/make) — name element",
+    "vil": "DEDR 5428 (bow) — Vil-an=archer",
+    "ta": "DEDR 3003 (self) — name element",
+    "tan": "DEDR 3136 (self/cool) — personal name",
+    "nar": "DEDR 3569 (good) — Nar-an",
+    "per": "DEDR 4442 (great) — Per-an",
+    "tiru": "DEDR 3243 (sacred) — Tiru-van"
+  },
+  "pd_name_suffixes": {
+    "-an": "masculine personal name suffix (DEDR 0149)",
+    "-ay": "oblique/belonging (DEDR 0206)",
+    "-am": "collective/name (DEDR 0200)",
+    "-ka": "nominative marker (DEDR 1145)"
+  },
+  "interpretation": "Personal names in the Indus script are encoded as: [ANIMAL_CLAN]-[NAME_ELEMENT1]-...-[TITLE]-[CASE_SUFFIX]. The name element appears in MEDIAL position between the clan marker (INITIAL, e.g., fish/bull/elephant) and the title+suffix (TERMINAL). Identifying these name elements is the key to resolving the remaining UNCERTAIN seals. Top candidate M293 (freq=232) is the most common unread personal name element.",
+  "verdict": "Phase-103: Personal name lexicon built. 45 name candidates identified. Top: M293 (name_score=1.14) with proposed reading 'None'. This framework explains the remaining 86 UNCERTAIN seals — they contain unread personal name components in name-element slots."
+}

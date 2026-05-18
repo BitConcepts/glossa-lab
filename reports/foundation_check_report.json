@@ -11,7 +11,7 @@
     "[OK]   Holdat position order: 0 seals with out-of-order positions",
     "[OK]   Anchor count: 182 total",
     "[OK]   Core HIGH anchors >= 7: HIGH=37 (core=7, Phase-48 promoted 30 more)",
-    "[OK]   M267 resolved: UNCERTAIN=0, MEDIUM=87 (M267 promoted Phase-74)",
+    "[OK]   M267 resolved: UNCERTAIN=0, MEDIUM=88 (M267 promoted Phase-74)",
     "[OK]   HIGH anchor M342=ay: reading='ay/\u0101' conf=HIGH",
     "[OK]   HIGH anchor M176=an: reading='an/a\u1e47' conf=HIGH",
     "[OK]   HIGH anchor M099=kol: reading='kol/ko\u1e37' conf=HIGH",

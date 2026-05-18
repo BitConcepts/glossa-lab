@@ -1,0 +1,5742 @@
+[
+  {
+    "sign": "M342",
+    "n_corpus": 584,
+    "sa_reading": "ay",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "ay/ā",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ay": 5
+    }
+  },
+  {
+    "sign": "M267",
+    "n_corpus": 400,
+    "sa_reading": "ta",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "?/uncertain",
+    "confirmed_confidence": "UNCERTAIN",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ta": 2,
+      "ru": 1,
+      "ri": 1
+    }
+  },
+  {
+    "sign": "M099",
+    "n_corpus": 389,
+    "sa_reading": "ko",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kol/koḷ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ko": 5
+    }
+  },
+  {
+    "sign": "M176",
+    "n_corpus": 356,
+    "sa_reading": "an",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "an/aṇ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "an": 5
+    }
+  },
+  {
+    "sign": "M211",
+    "n_corpus": 249,
+    "sa_reading": "ko",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kol",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ko": 5
+    }
+  },
+  {
+    "sign": "M328",
+    "n_corpus": 234,
+    "sa_reading": "ri",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "ā/āl",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ri": 2,
+      "ru": 1,
+      "ta": 1
+    }
+  },
+  {
+    "sign": "M293",
+    "n_corpus": 232,
+    "sa_reading": "ra",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "vil",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ra": 2,
+      "la": 1,
+      "li": 1
+    }
+  },
+  {
+    "sign": "M059",
+    "n_corpus": 222,
+    "sa_reading": "ta",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "ēḷ/eḷ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ta": 2,
+      "ra": 1,
+      "ri": 1
+    }
+  },
+  {
+    "sign": "M162",
+    "n_corpus": 205,
+    "sa_reading": "il",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "il/iḷ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "il": 5
+    }
+  },
+  {
+    "sign": "M391",
+    "n_corpus": 193,
+    "sa_reading": "ka",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "ka/kaṇ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ka": 5
+    }
+  },
+  {
+    "sign": "M367",
+    "n_corpus": 190,
+    "sa_reading": "am",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "am/neuter",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "am": 5
+    }
+  },
+  {
+    "sign": "M089",
+    "n_corpus": 171,
+    "sa_reading": "tu",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "tu/tū",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tu": 5
+    }
+  },
+  {
+    "sign": "M233",
+    "n_corpus": 171,
+    "sa_reading": "li",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "ūr",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "li": 2,
+      "si": 1,
+      "la": 1
+    }
+  },
+  {
+    "sign": "M051",
+    "n_corpus": 163,
+    "sa_reading": "pu",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "pū/puḷ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pu": 5
+    }
+  },
+  {
+    "sign": "M336",
+    "n_corpus": 161,
+    "sa_reading": "i",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "iṉ/locative",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "i": 5
+    }
+  },
+  {
+    "sign": "M048",
+    "n_corpus": 157,
+    "sa_reading": "mu",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "mu/muṉ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "mu": 5
+    }
+  },
+  {
+    "sign": "M065",
+    "n_corpus": 154,
+    "sa_reading": "ku",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kuTam",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ku": 5
+    }
+  },
+  {
+    "sign": "M012",
+    "n_corpus": 143,
+    "sa_reading": "o",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "oṉṟu/1",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "o": 5
+    }
+  },
+  {
+    "sign": "M125",
+    "n_corpus": 132,
+    "sa_reading": "vi",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "vil",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "vi": 5
+    }
+  },
+  {
+    "sign": "M087",
+    "n_corpus": 130,
+    "sa_reading": "ve",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "veL",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ve": 5
+    }
+  },
+  {
+    "sign": "M305",
+    "n_corpus": 83,
+    "sa_reading": "ir",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "ōṭu/comitative",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ir": 5
+    }
+  },
+  {
+    "sign": "M249",
+    "n_corpus": 73,
+    "sa_reading": "ti",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "tii",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ti": 5
+    }
+  },
+  {
+    "sign": "M220",
+    "n_corpus": 62,
+    "sa_reading": "li",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "ke",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "li": 1,
+      "ni": 1,
+      "ri": 1
+    }
+  },
+  {
+    "sign": "M062",
+    "n_corpus": 28,
+    "sa_reading": "e",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "erutu",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "e": 5
+    }
+  },
+  {
+    "sign": "M073",
+    "n_corpus": 25,
+    "sa_reading": "ko",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kōṉ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ko": 5
+    }
+  },
+  {
+    "sign": "M045",
+    "n_corpus": 24,
+    "sa_reading": "ya",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "yānai",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ya": 5
+    }
+  },
+  {
+    "sign": "M079",
+    "n_corpus": 24,
+    "sa_reading": "re",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "re": 2,
+      "ci": 1,
+      "a": 1
+    }
+  },
+  {
+    "sign": "M016",
+    "n_corpus": 23,
+    "sa_reading": "ka",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kaḷiṟu",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ka": 5
+    }
+  },
+  {
+    "sign": "M013",
+    "n_corpus": 23,
+    "sa_reading": "na",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "nakaram",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "na": 5
+    }
+  },
+  {
+    "sign": "M008",
+    "n_corpus": 22,
+    "sa_reading": "er",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "erumai",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "er": 5
+    }
+  },
+  {
+    "sign": "M022",
+    "n_corpus": 22,
+    "sa_reading": "a",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "a": 2,
+      "rā": 1,
+      "ce": 1
+    }
+  },
+  {
+    "sign": "M052",
+    "n_corpus": 22,
+    "sa_reading": "ni",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ni": 1,
+      "po": 1,
+      "pa": 1
+    }
+  },
+  {
+    "sign": "M061",
+    "n_corpus": 22,
+    "sa_reading": "lu",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "lu": 1,
+      "li": 1,
+      "su": 1
+    }
+  },
+  {
+    "sign": "M058",
+    "n_corpus": 21,
+    "sa_reading": "ki",
+    "sa_consensus_pct": 0.6,
+    "confirmed_reading": "kaNTam",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ki": 3,
+      "u": 1,
+      "sa": 1
+    }
+  },
+  {
+    "sign": "M060",
+    "n_corpus": 20,
+    "sa_reading": "er",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kāṇṭāmirukam",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "er": 5
+    }
+  },
+  {
+    "sign": "M019",
+    "n_corpus": 20,
+    "sa_reading": "nu",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "nu": 2,
+      "sa": 1,
+      "lu": 1
+    }
+  },
+  {
+    "sign": "M080",
+    "n_corpus": 19,
+    "sa_reading": "ve",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "vēṅkai",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ve": 5
+    }
+  },
+  {
+    "sign": "M003",
+    "n_corpus": 19,
+    "sa_reading": "le",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "le": 2,
+      "yi": 1,
+      "var": 1
+    }
+  },
+  {
+    "sign": "M035",
+    "n_corpus": 19,
+    "sa_reading": "po",
+    "sa_consensus_pct": 0.6,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "po": 3,
+      "mū": 1,
+      "se": 1
+    }
+  },
+  {
+    "sign": "M044",
+    "n_corpus": 19,
+    "sa_reading": "te",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "te": 2,
+      "mo": 2,
+      "nā": 1
+    }
+  },
+  {
+    "sign": "M053",
+    "n_corpus": 19,
+    "sa_reading": "re",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "re": 1,
+      "u": 1,
+      "kā": 1
+    }
+  },
+  {
+    "sign": "M056",
+    "n_corpus": 19,
+    "sa_reading": "ru",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ru": 1,
+      "su": 1,
+      "ha": 1
+    }
+  },
+  {
+    "sign": "M077",
+    "n_corpus": 18,
+    "sa_reading": "na",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "nal",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "na": 5
+    }
+  },
+  {
+    "sign": "M030",
+    "n_corpus": 18,
+    "sa_reading": "ko",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kō",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ko": 5
+    }
+  },
+  {
+    "sign": "M017",
+    "n_corpus": 18,
+    "sa_reading": "ka",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kai",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ka": 5
+    }
+  },
+  {
+    "sign": "M020",
+    "n_corpus": 18,
+    "sa_reading": "ku",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kuṉ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ku": 5
+    }
+  },
+  {
+    "sign": "M018",
+    "n_corpus": 18,
+    "sa_reading": "ne",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "nēr",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ne": 5
+    }
+  },
+  {
+    "sign": "M063",
+    "n_corpus": 18,
+    "sa_reading": "mu",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "mutalai",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "mu": 5
+    }
+  },
+  {
+    "sign": "M057",
+    "n_corpus": 18,
+    "sa_reading": "ma",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "māṭu",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ma": 5
+    }
+  },
+  {
+    "sign": "M039",
+    "n_corpus": 18,
+    "sa_reading": "se",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "āṉai",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "se": 1,
+      "ā": 1,
+      "lā": 1
+    }
+  },
+  {
+    "sign": "M004",
+    "n_corpus": 17,
+    "sa_reading": "ke",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kēḷ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ke": 5
+    }
+  },
+  {
+    "sign": "M014",
+    "n_corpus": 17,
+    "sa_reading": "ti",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "tiru",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ti": 5
+    }
+  },
+  {
+    "sign": "M026",
+    "n_corpus": 17,
+    "sa_reading": "ma",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "mā",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ma": 5
+    }
+  },
+  {
+    "sign": "M034",
+    "n_corpus": 17,
+    "sa_reading": "to",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "tōḷ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "to": 5
+    }
+  },
+  {
+    "sign": "M027",
+    "n_corpus": 17,
+    "sa_reading": "ma",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "māṟ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ma": 5
+    }
+  },
+  {
+    "sign": "M041",
+    "n_corpus": 17,
+    "sa_reading": "pe",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "pēr",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pe": 5
+    }
+  },
+  {
+    "sign": "M050",
+    "n_corpus": 17,
+    "sa_reading": "mi",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "pār",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "mi": 5
+    }
+  },
+  {
+    "sign": "M010",
+    "n_corpus": 17,
+    "sa_reading": "hi",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "paṭ",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "hi": 1,
+      "sa": 1,
+      "yā": 1
+    }
+  },
+  {
+    "sign": "M025",
+    "n_corpus": 17,
+    "sa_reading": "si",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "cem",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "si": 2,
+      "ki": 1,
+      "ca": 1
+    }
+  },
+  {
+    "sign": "M038",
+    "n_corpus": 17,
+    "sa_reading": "yu",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "pōr",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "yu": 2,
+      "sā": 1,
+      "si": 1
+    }
+  },
+  {
+    "sign": "M070",
+    "n_corpus": 17,
+    "sa_reading": "ro",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "vēl",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ro": 2,
+      "ha": 1,
+      "pa": 1
+    }
+  },
+  {
+    "sign": "M078",
+    "n_corpus": 17,
+    "sa_reading": "su",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "cēr",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "su": 1,
+      "ci": 1,
+      "ni": 1
+    }
+  },
+  {
+    "sign": "M031",
+    "n_corpus": 16,
+    "sa_reading": "to",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kai",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "to": 5
+    }
+  },
+  {
+    "sign": "M002",
+    "n_corpus": 16,
+    "sa_reading": "rī",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kuṉ",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "rī": 1,
+      "le": 1,
+      "ā": 1
+    }
+  },
+  {
+    "sign": "M009",
+    "n_corpus": 16,
+    "sa_reading": "kā",
+    "sa_consensus_pct": 0.6,
+    "confirmed_reading": "āṇ",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kā": 3,
+      "a": 1,
+      "ha": 1
+    }
+  },
+  {
+    "sign": "M021",
+    "n_corpus": 16,
+    "sa_reading": "cu",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kō",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "cu": 1,
+      "ca": 1,
+      "ro": 1
+    }
+  },
+  {
+    "sign": "M023",
+    "n_corpus": 16,
+    "sa_reading": "lu",
+    "sa_consensus_pct": 0.6,
+    "confirmed_reading": "vaḷ",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "lu": 3,
+      "rip": 1,
+      "ci": 1
+    }
+  },
+  {
+    "sign": "M037",
+    "n_corpus": 16,
+    "sa_reading": "ja",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "kēḷ",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ja": 2,
+      "ce": 1,
+      "tak": 1
+    }
+  },
+  {
+    "sign": "M066",
+    "n_corpus": 16,
+    "sa_reading": "ruk",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "cōḻ",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ruk": 2,
+      "ral": 1,
+      "rip": 1
+    }
+  },
+  {
+    "sign": "M069",
+    "n_corpus": 16,
+    "sa_reading": "nu",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "nēr",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "nu": 2,
+      "pā": 1,
+      "u": 1
+    }
+  },
+  {
+    "sign": "M071",
+    "n_corpus": 16,
+    "sa_reading": "yā",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "nal",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "yā": 1,
+      "vu": 1,
+      "me": 1
+    }
+  },
+  {
+    "sign": "M006",
+    "n_corpus": 15,
+    "sa_reading": "pu",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "puli",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pu": 5
+    }
+  },
+  {
+    "sign": "M005",
+    "n_corpus": 15,
+    "sa_reading": "ā",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "kōṉ",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ā": 2,
+      "cu": 1,
+      "tar": 1
+    }
+  },
+  {
+    "sign": "M011",
+    "n_corpus": 15,
+    "sa_reading": "ē",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kaḷiṟu",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ē": 1,
+      "ha": 1,
+      "u": 1
+    }
+  },
+  {
+    "sign": "M015",
+    "n_corpus": 15,
+    "sa_reading": "nā",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "mā",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "nā": 1,
+      "ce": 1,
+      "te": 1
+    }
+  },
+  {
+    "sign": "M036",
+    "n_corpus": 15,
+    "sa_reading": "vē",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "tiru",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "vē": 1,
+      "me": 1,
+      "rap": 1
+    }
+  },
+  {
+    "sign": "M067",
+    "n_corpus": 15,
+    "sa_reading": "yi",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "kōṭṭāṉ",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "yi": 2,
+      "pā": 1,
+      "ki": 1
+    }
+  },
+  {
+    "sign": "M001",
+    "n_corpus": 14,
+    "sa_reading": "rā",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "tōḷ",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "rā": 1,
+      "se": 1,
+      "kal": 1
+    }
+  },
+  {
+    "sign": "M075",
+    "n_corpus": 14,
+    "sa_reading": "le",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "māṟ",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "le": 1,
+      "tar": 1,
+      "cu": 1
+    }
+  },
+  {
+    "sign": "M047",
+    "n_corpus": 13,
+    "sa_reading": "mi",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min/mīn",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "mi": 5
+    }
+  },
+  {
+    "sign": "M024",
+    "n_corpus": 13,
+    "sa_reading": "yi",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "pēr",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "yi": 2,
+      "kar": 1,
+      "tum": 1
+    }
+  },
+  {
+    "sign": "M040",
+    "n_corpus": 13,
+    "sa_reading": "vu",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "mutalai",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "vu": 1,
+      "rip": 1,
+      "yu": 1
+    }
+  },
+  {
+    "sign": "M042",
+    "n_corpus": 13,
+    "sa_reading": "sā",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "māṭu",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "sā": 1,
+      "re": 1,
+      "net": 1
+    }
+  },
+  {
+    "sign": "M049",
+    "n_corpus": 13,
+    "sa_reading": "ja",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "pōr",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ja": 2,
+      "lā": 1,
+      "sī": 1
+    }
+  },
+  {
+    "sign": "M068",
+    "n_corpus": 13,
+    "sa_reading": "ruk",
+    "sa_consensus_pct": 0.6,
+    "confirmed_reading": "maṟi",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ruk": 3,
+      "ro": 1,
+      "ho": 1
+    }
+  },
+  {
+    "sign": "M081",
+    "n_corpus": 13,
+    "sa_reading": "var",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "paṭ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "var": 1,
+      "rum": 1,
+      "yam": 1
+    }
+  },
+  {
+    "sign": "M033",
+    "n_corpus": 12,
+    "sa_reading": "tar",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "puli",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tar": 1,
+      "kar": 1,
+      "vu": 1
+    }
+  },
+  {
+    "sign": "M054",
+    "n_corpus": 12,
+    "sa_reading": "tuk",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "vēl",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tuk": 1,
+      "run": 1,
+      "tā": 1
+    }
+  },
+  {
+    "sign": "M055",
+    "n_corpus": 12,
+    "sa_reading": "pa",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "vaḷ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pa": 1,
+      "rap": 1,
+      "nā": 1
+    }
+  },
+  {
+    "sign": "M072",
+    "n_corpus": 12,
+    "sa_reading": "tip",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "cēr",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tip": 2,
+      "tir": 1,
+      "tit": 1
+    }
+  },
+  {
+    "sign": "M074",
+    "n_corpus": 12,
+    "sa_reading": "lā",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "cem",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "lā": 1,
+      "ja": 1,
+      "nē": 1
+    }
+  },
+  {
+    "sign": "M028",
+    "n_corpus": 11,
+    "sa_reading": "ma",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "cōḻ",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ma": 5
+    }
+  },
+  {
+    "sign": "M029",
+    "n_corpus": 11,
+    "sa_reading": "ka",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "yānai",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ka": 5
+    }
+  },
+  {
+    "sign": "M007",
+    "n_corpus": 11,
+    "sa_reading": "tā",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "nal",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tā": 1,
+      "vē": 1,
+      "ē": 1
+    }
+  },
+  {
+    "sign": "M043",
+    "n_corpus": 11,
+    "sa_reading": "ro",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "erutu",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ro": 1,
+      "yā": 1,
+      "var": 1
+    }
+  },
+  {
+    "sign": "M046",
+    "n_corpus": 11,
+    "sa_reading": "me",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "nal",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "me": 1,
+      "ē": 1,
+      "rū": 1
+    }
+  },
+  {
+    "sign": "M064",
+    "n_corpus": 11,
+    "sa_reading": "so",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "nal",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "so": 1,
+      "hā": 1,
+      "sā": 1
+    }
+  },
+  {
+    "sign": "M032",
+    "n_corpus": 9,
+    "sa_reading": "nal",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "nal",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "nal": 2,
+      "rak": 2,
+      "yal": 1
+    }
+  },
+  {
+    "sign": "M102",
+    "n_corpus": 8,
+    "sa_reading": "rin",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "nāḷ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "rin": 1,
+      "ran": 1,
+      "kit": 1
+    }
+  },
+  {
+    "sign": "M169",
+    "n_corpus": 8,
+    "sa_reading": "ad",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "ney",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ad": 1,
+      "cā": 1,
+      "ji": 1
+    }
+  },
+  {
+    "sign": "M237",
+    "n_corpus": 8,
+    "sa_reading": "ji",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "naṟ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ji": 1,
+      "mo": 1,
+      "ī": 1
+    }
+  },
+  {
+    "sign": "M347",
+    "n_corpus": 8,
+    "sa_reading": "rap",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "rap": 1,
+      "rak": 1,
+      "rup": 1
+    }
+  },
+  {
+    "sign": "M128",
+    "n_corpus": 7,
+    "sa_reading": "mu",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kaṇ",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "mu": 5
+    }
+  },
+  {
+    "sign": "M076",
+    "n_corpus": 7,
+    "sa_reading": "al",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "nal",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "al": 2,
+      "rel": 1,
+      "key": 1
+    }
+  },
+  {
+    "sign": "M082",
+    "n_corpus": 7,
+    "sa_reading": "cal",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "nal",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "cal": 1,
+      "kam": 1,
+      "kur": 1
+    }
+  },
+  {
+    "sign": "M149",
+    "n_corpus": 7,
+    "sa_reading": "jā",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "kuḷ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "jā": 2,
+      "van": 2,
+      "im": 1
+    }
+  },
+  {
+    "sign": "M185",
+    "n_corpus": 7,
+    "sa_reading": "kak",
+    "sa_consensus_pct": 0.6,
+    "confirmed_reading": "kuṟ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kak": 3,
+      "kam": 1,
+      "rū": 1
+    }
+  },
+  {
+    "sign": "M235",
+    "n_corpus": 7,
+    "sa_reading": "al",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "al": 1,
+      "por": 1,
+      "pul": 1
+    }
+  },
+  {
+    "sign": "M272",
+    "n_corpus": 7,
+    "sa_reading": "nal",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kol",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "nal": 1,
+      "tī": 1,
+      "kū": 1
+    }
+  },
+  {
+    "sign": "M375",
+    "n_corpus": 7,
+    "sa_reading": "kam",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "il",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kam": 2,
+      "co": 1,
+      "pā": 1
+    }
+  },
+  {
+    "sign": "M383",
+    "n_corpus": 7,
+    "sa_reading": "rut",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "mīn",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "rut": 1,
+      "nam": 1,
+      "kar": 1
+    }
+  },
+  {
+    "sign": "M127",
+    "n_corpus": 6,
+    "sa_reading": "lam",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "māḷ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "lam": 1,
+      "kan": 1,
+      "ip": 1
+    }
+  },
+  {
+    "sign": "M168",
+    "n_corpus": 6,
+    "sa_reading": "no",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "paṉ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "no": 1,
+      "ho": 1,
+      "he": 1
+    }
+  },
+  {
+    "sign": "M198",
+    "n_corpus": 6,
+    "sa_reading": "in",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "poṉ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "in": 1,
+      "hi": 1,
+      "kir": 1
+    }
+  },
+  {
+    "sign": "M252",
+    "n_corpus": 6,
+    "sa_reading": "iv",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "tiṇ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "iv": 2,
+      "ip": 1,
+      "cak": 1
+    }
+  },
+  {
+    "sign": "M270",
+    "n_corpus": 6,
+    "sa_reading": "es",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "muḷ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "es": 1,
+      "pon": 1,
+      "c": 1
+    }
+  },
+  {
+    "sign": "M332",
+    "n_corpus": 6,
+    "sa_reading": "lak",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "paṟ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "lak": 1,
+      "yu": 1,
+      "vā": 1
+    }
+  },
+  {
+    "sign": "M351",
+    "n_corpus": 6,
+    "sa_reading": "mē",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "taṭ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "mē": 1,
+      "riv": 1,
+      "mur": 1
+    }
+  },
+  {
+    "sign": "M374",
+    "n_corpus": 6,
+    "sa_reading": "ok",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "tēṉ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ok": 1,
+      "pī": 1,
+      "mē": 1
+    }
+  },
+  {
+    "sign": "M386",
+    "n_corpus": 6,
+    "sa_reading": "lik",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "maṇ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "lik": 2,
+      "us": 2,
+      "kol": 1
+    }
+  },
+  {
+    "sign": "M401",
+    "n_corpus": 6,
+    "sa_reading": "yar",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "māṉ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "yar": 1,
+      "en": 1,
+      "mak": 1
+    }
+  },
+  {
+    "sign": "M103",
+    "n_corpus": 5,
+    "sa_reading": "lap",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "māṉ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "lap": 1,
+      "vā": 1,
+      "nam": 1
+    }
+  },
+  {
+    "sign": "M108",
+    "n_corpus": 5,
+    "sa_reading": "kok",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "nāḷ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kok": 2,
+      "ū": 1,
+      "he": 1
+    }
+  },
+  {
+    "sign": "M137",
+    "n_corpus": 5,
+    "sa_reading": "kat",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kuṟ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kat": 1,
+      "vī": 1,
+      "ut": 1
+    }
+  },
+  {
+    "sign": "M143",
+    "n_corpus": 5,
+    "sa_reading": "ak",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "maṇ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ak": 1,
+      "tup": 1,
+      "in": 1
+    }
+  },
+  {
+    "sign": "M151",
+    "n_corpus": 5,
+    "sa_reading": "rum",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "viḷ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "rum": 1,
+      "cī": 1,
+      "rā": 1
+    }
+  },
+  {
+    "sign": "M153",
+    "n_corpus": 5,
+    "sa_reading": "tap",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "kaṇ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tap": 2,
+      "sī": 1,
+      "it": 1
+    }
+  },
+  {
+    "sign": "M155",
+    "n_corpus": 5,
+    "sa_reading": "run",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "mīn",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "run": 2,
+      "car": 1,
+      "rup": 1
+    }
+  },
+  {
+    "sign": "M163",
+    "n_corpus": 5,
+    "sa_reading": "it",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "naṟ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "it": 1,
+      "kī": 1,
+      "ū": 1
+    }
+  },
+  {
+    "sign": "M177",
+    "n_corpus": 5,
+    "sa_reading": "sī",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "sī": 1,
+      "it": 1,
+      "sē": 1
+    }
+  },
+  {
+    "sign": "M178",
+    "n_corpus": 5,
+    "sa_reading": "jo",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "ney",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "jo": 2,
+      "ran": 1,
+      "cal": 1
+    }
+  },
+  {
+    "sign": "M183",
+    "n_corpus": 5,
+    "sa_reading": "ju",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "vēḷ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ju": 1,
+      "tal": 1,
+      "tir": 1
+    }
+  },
+  {
+    "sign": "M190",
+    "n_corpus": 5,
+    "sa_reading": "uk",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "paṉ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "uk": 1,
+      "ju": 1,
+      "um": 1
+    }
+  },
+  {
+    "sign": "M222",
+    "n_corpus": 5,
+    "sa_reading": "kot",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "cēl",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kot": 2,
+      "mo": 1,
+      "val": 1
+    }
+  },
+  {
+    "sign": "M223",
+    "n_corpus": 5,
+    "sa_reading": "met",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "muḷ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "met": 1,
+      "nik": 1,
+      "par": 1
+    }
+  },
+  {
+    "sign": "M231",
+    "n_corpus": 5,
+    "sa_reading": "cak",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "ēṟ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "cak": 1,
+      "no": 1,
+      "kor": 1
+    }
+  },
+  {
+    "sign": "M239",
+    "n_corpus": 5,
+    "sa_reading": "ptt",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "il",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ptt": 1,
+      "min": 1,
+      "lī": 1
+    }
+  },
+  {
+    "sign": "M254",
+    "n_corpus": 5,
+    "sa_reading": "met",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "tēṉ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "met": 2,
+      "cin": 1,
+      "tū": 1
+    }
+  },
+  {
+    "sign": "M262",
+    "n_corpus": 5,
+    "sa_reading": "lē",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "māḷ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "lē": 1,
+      "kor": 1,
+      "pal": 1
+    }
+  },
+  {
+    "sign": "M295",
+    "n_corpus": 5,
+    "sa_reading": "tip",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "paṟ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tip": 2,
+      "ur": 1,
+      "rat": 1
+    }
+  },
+  {
+    "sign": "M304",
+    "n_corpus": 5,
+    "sa_reading": "el",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "vēṟ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "el": 1,
+      "je": 1,
+      "hu": 1
+    }
+  },
+  {
+    "sign": "M321",
+    "n_corpus": 5,
+    "sa_reading": "pat",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kol",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pat": 1,
+      "vār": 1,
+      "nal": 1
+    }
+  },
+  {
+    "sign": "M329",
+    "n_corpus": 5,
+    "sa_reading": "run",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "poṉ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "run": 2,
+      "cak": 1,
+      "tuk": 1
+    }
+  },
+  {
+    "sign": "M345",
+    "n_corpus": 5,
+    "sa_reading": "hā",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "taṭ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "hā": 1,
+      "rē": 1,
+      "lam": 1
+    }
+  },
+  {
+    "sign": "M350",
+    "n_corpus": 5,
+    "sa_reading": "yak",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "yak": 1,
+      "k": 1,
+      "el": 1
+    }
+  },
+  {
+    "sign": "M355",
+    "n_corpus": 5,
+    "sa_reading": "mā",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "āḷ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "mā": 2,
+      "lik": 1,
+      "mur": 1
+    }
+  },
+  {
+    "sign": "M357",
+    "n_corpus": 5,
+    "sa_reading": "m",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kuḷ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "m": 1,
+      "net": 1,
+      "ttu": 1
+    }
+  },
+  {
+    "sign": "M365",
+    "n_corpus": 5,
+    "sa_reading": "hī",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "vāṉ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "hī": 2,
+      "ji": 1,
+      "kat": 1
+    }
+  },
+  {
+    "sign": "M402",
+    "n_corpus": 5,
+    "sa_reading": "ter",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "vēḷ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ter": 1,
+      "lo": 1,
+      "sil": 1
+    }
+  },
+  {
+    "sign": "M412",
+    "n_corpus": 5,
+    "sa_reading": "r",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "cūḷ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "r": 1,
+      "t": 1,
+      "ik": 1
+    }
+  },
+  {
+    "sign": "M416",
+    "n_corpus": 5,
+    "sa_reading": "pik",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "tiṇ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pik": 1,
+      "pen": 1,
+      "so": 1
+    }
+  },
+  {
+    "sign": "M281",
+    "n_corpus": 4,
+    "sa_reading": "pi",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "piLLai",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pi": 5
+    }
+  },
+  {
+    "sign": "M106",
+    "n_corpus": 4,
+    "sa_reading": "pay",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pay": 1,
+      "ik": 1,
+      "ek": 1
+    }
+  },
+  {
+    "sign": "M109",
+    "n_corpus": 4,
+    "sa_reading": "kot",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kot": 2,
+      "h": 1,
+      "ok": 1
+    }
+  },
+  {
+    "sign": "M116",
+    "n_corpus": 4,
+    "sa_reading": "rat",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "ūr",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "rat": 1,
+      "rut": 1,
+      "tor": 1
+    }
+  },
+  {
+    "sign": "M120",
+    "n_corpus": 4,
+    "sa_reading": "ik",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ik": 1,
+      "mē": 1,
+      "s": 1
+    }
+  },
+  {
+    "sign": "M129",
+    "n_corpus": 4,
+    "sa_reading": "kel",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kel": 2,
+      "key": 1,
+      "vī": 1
+    }
+  },
+  {
+    "sign": "M134",
+    "n_corpus": 4,
+    "sa_reading": "ram",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ram": 1,
+      "lar": 1,
+      "lan": 1
+    }
+  },
+  {
+    "sign": "M138",
+    "n_corpus": 4,
+    "sa_reading": "sar",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "sar": 2,
+      "mik": 1,
+      "ī": 1
+    }
+  },
+  {
+    "sign": "M140",
+    "n_corpus": 4,
+    "sa_reading": "he",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "he": 1,
+      "jī": 1,
+      "ven": 1
+    }
+  },
+  {
+    "sign": "M142",
+    "n_corpus": 4,
+    "sa_reading": "ttu",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ttu": 1,
+      "kut": 1,
+      "mun": 1
+    }
+  },
+  {
+    "sign": "M148",
+    "n_corpus": 4,
+    "sa_reading": "lan",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "lan": 1,
+      "hu": 1,
+      "jī": 1
+    }
+  },
+  {
+    "sign": "M171",
+    "n_corpus": 4,
+    "sa_reading": "cil",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "cil": 1,
+      "nak": 1,
+      "hi": 1
+    }
+  },
+  {
+    "sign": "M186",
+    "n_corpus": 4,
+    "sa_reading": "rū",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "rū": 1,
+      "ū": 1,
+      "cir": 1
+    }
+  },
+  {
+    "sign": "M187",
+    "n_corpus": 4,
+    "sa_reading": "kun",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kun": 1,
+      "pok": 1,
+      "y": 1
+    }
+  },
+  {
+    "sign": "M192",
+    "n_corpus": 4,
+    "sa_reading": "up",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "up": 1,
+      "ap": 1,
+      "hē": 1
+    }
+  },
+  {
+    "sign": "M194",
+    "n_corpus": 4,
+    "sa_reading": "ner",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ner": 2,
+      "rū": 1,
+      "yak": 1
+    }
+  },
+  {
+    "sign": "M199",
+    "n_corpus": 4,
+    "sa_reading": "nē",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "nē": 1,
+      "kē": 1,
+      "kun": 1
+    }
+  },
+  {
+    "sign": "M202",
+    "n_corpus": 4,
+    "sa_reading": "tel",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "vaTTam",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tel": 1,
+      "muc": 1,
+      "vir": 1
+    }
+  },
+  {
+    "sign": "M207",
+    "n_corpus": 4,
+    "sa_reading": "pam",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pam": 2,
+      "tor": 1,
+      "h": 1
+    }
+  },
+  {
+    "sign": "M208",
+    "n_corpus": 4,
+    "sa_reading": "kan",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kan": 2,
+      "kok": 1,
+      "kū": 1
+    }
+  },
+  {
+    "sign": "M209",
+    "n_corpus": 4,
+    "sa_reading": "cca",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "cca": 1,
+      "v": 1,
+      "koy": 1
+    }
+  },
+  {
+    "sign": "M218",
+    "n_corpus": 4,
+    "sa_reading": "jā",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "jā": 2,
+      "pel": 1,
+      "jo": 1
+    }
+  },
+  {
+    "sign": "M227",
+    "n_corpus": 4,
+    "sa_reading": "sil",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "sil": 1,
+      "nī": 1,
+      "vē": 1
+    }
+  },
+  {
+    "sign": "M243",
+    "n_corpus": 4,
+    "sa_reading": "mul",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "mul": 1,
+      "kū": 1,
+      "kē": 1
+    }
+  },
+  {
+    "sign": "M245",
+    "n_corpus": 4,
+    "sa_reading": "lap",
+    "sa_consensus_pct": 0.6,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "lap": 3,
+      "yan": 2
+    }
+  },
+  {
+    "sign": "M250",
+    "n_corpus": 4,
+    "sa_reading": "ho",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ho": 1,
+      "tam": 1,
+      "ram": 1
+    }
+  },
+  {
+    "sign": "M251",
+    "n_corpus": 4,
+    "sa_reading": "mār",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "vāṉ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "mār": 1,
+      "ye": 1,
+      "ner": 1
+    }
+  },
+  {
+    "sign": "M255",
+    "n_corpus": 4,
+    "sa_reading": "c",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "cēl",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "c": 1,
+      "mī": 1,
+      "ச": 1
+    }
+  },
+  {
+    "sign": "M259",
+    "n_corpus": 4,
+    "sa_reading": "mut",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "mut": 1,
+      "kip": 1,
+      "vel": 1
+    }
+  },
+  {
+    "sign": "M265",
+    "n_corpus": 4,
+    "sa_reading": "pan",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pan": 1,
+      "man": 1,
+      "ad": 1
+    }
+  },
+  {
+    "sign": "M274",
+    "n_corpus": 4,
+    "sa_reading": "lin",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "āḷ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "lin": 1,
+      "in": 1,
+      "pad": 1
+    }
+  },
+  {
+    "sign": "M278",
+    "n_corpus": 4,
+    "sa_reading": "ken",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ken": 1,
+      "len": 1,
+      "kān": 1
+    }
+  },
+  {
+    "sign": "M280",
+    "n_corpus": 4,
+    "sa_reading": "yan",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "yan": 2,
+      "im": 1,
+      "ye": 1
+    }
+  },
+  {
+    "sign": "M290",
+    "n_corpus": 4,
+    "sa_reading": "kār",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kār": 1,
+      "im": 1,
+      "kum": 1
+    }
+  },
+  {
+    "sign": "M291",
+    "n_corpus": 4,
+    "sa_reading": "tum",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tum": 1,
+      "mar": 1,
+      "yil": 1
+    }
+  },
+  {
+    "sign": "M294",
+    "n_corpus": 4,
+    "sa_reading": "tū",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tū": 1,
+      "yam": 1,
+      "por": 1
+    }
+  },
+  {
+    "sign": "M301",
+    "n_corpus": 4,
+    "sa_reading": "ut",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "cūḷ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ut": 1,
+      "lē": 1,
+      "cū": 1
+    }
+  },
+  {
+    "sign": "M307",
+    "n_corpus": 4,
+    "sa_reading": "mal",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "mal": 1,
+      "cir": 1,
+      "ptt": 1
+    }
+  },
+  {
+    "sign": "M309",
+    "n_corpus": 4,
+    "sa_reading": "rak",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "rak": 1,
+      "nū": 1,
+      "lar": 1
+    }
+  },
+  {
+    "sign": "M312",
+    "n_corpus": 4,
+    "sa_reading": "cam",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "cam": 1,
+      "yal": 1,
+      "mū": 1
+    }
+  },
+  {
+    "sign": "M313",
+    "n_corpus": 4,
+    "sa_reading": "kur",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kur": 1,
+      "mā": 1,
+      "ric": 1
+    }
+  },
+  {
+    "sign": "M318",
+    "n_corpus": 4,
+    "sa_reading": "sū",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "sū": 1,
+      "pē": 1,
+      "cci": 1
+    }
+  },
+  {
+    "sign": "M319",
+    "n_corpus": 4,
+    "sa_reading": "t",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "t": 1,
+      "ec": 1,
+      "op": 1
+    }
+  },
+  {
+    "sign": "M324",
+    "n_corpus": 4,
+    "sa_reading": "por",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "por": 1,
+      "ol": 1,
+      "tī": 1
+    }
+  },
+  {
+    "sign": "M326",
+    "n_corpus": 4,
+    "sa_reading": "pptt",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pptt": 1,
+      "sū": 1,
+      "sal": 1
+    }
+  },
+  {
+    "sign": "M334",
+    "n_corpus": 4,
+    "sa_reading": "kuk",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kuk": 2,
+      "may": 1,
+      "vik": 1
+    }
+  },
+  {
+    "sign": "M346",
+    "n_corpus": 4,
+    "sa_reading": "mar",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "mar": 1,
+      "pal": 1,
+      "cā": 1
+    }
+  },
+  {
+    "sign": "M370",
+    "n_corpus": 4,
+    "sa_reading": "sar",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "sar": 2,
+      "kok": 1,
+      "car": 1
+    }
+  },
+  {
+    "sign": "M382",
+    "n_corpus": 4,
+    "sa_reading": "van",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "van": 1,
+      "vir": 1,
+      "mar": 1
+    }
+  },
+  {
+    "sign": "M387",
+    "n_corpus": 4,
+    "sa_reading": "ppu",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "vēṟ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ppu": 1,
+      "yil": 1,
+      "no": 1
+    }
+  },
+  {
+    "sign": "M390",
+    "n_corpus": 4,
+    "sa_reading": "pī",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pī": 2,
+      "tan": 1,
+      "lak": 1
+    }
+  },
+  {
+    "sign": "M406",
+    "n_corpus": 4,
+    "sa_reading": "rik",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "viḷ",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "rik": 2,
+      "ral": 1,
+      "lak": 1
+    }
+  },
+  {
+    "sign": "M117",
+    "n_corpus": 3,
+    "sa_reading": "ar",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "ar",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ar": 5
+    }
+  },
+  {
+    "sign": "M124",
+    "n_corpus": 3,
+    "sa_reading": "ku",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kuTam",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ku": 5
+    }
+  },
+  {
+    "sign": "M104",
+    "n_corpus": 3,
+    "sa_reading": "இ",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "இ": 1,
+      "p": 1,
+      "pan": 1
+    }
+  },
+  {
+    "sign": "M105",
+    "n_corpus": 3,
+    "sa_reading": "kal",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kal": 1,
+      "cam": 1,
+      "rum": 1
+    }
+  },
+  {
+    "sign": "M107",
+    "n_corpus": 3,
+    "sa_reading": "hē",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "hē": 1,
+      "may": 1,
+      "ppu": 1
+    }
+  },
+  {
+    "sign": "M110",
+    "n_corpus": 3,
+    "sa_reading": "nū",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "nū": 1,
+      "cca": 1,
+      "luk": 1
+    }
+  },
+  {
+    "sign": "M111",
+    "n_corpus": 3,
+    "sa_reading": "tam",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tam": 1,
+      "pay": 1,
+      "cī": 1
+    }
+  },
+  {
+    "sign": "M118",
+    "n_corpus": 3,
+    "sa_reading": "hā",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "hā": 2,
+      "mū": 1,
+      "cil": 1
+    }
+  },
+  {
+    "sign": "M121",
+    "n_corpus": 3,
+    "sa_reading": "p",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "p": 2,
+      "l": 1,
+      "pē": 1
+    }
+  },
+  {
+    "sign": "M130",
+    "n_corpus": 3,
+    "sa_reading": "kuk",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kuk": 1,
+      "tū": 1,
+      "cik": 1
+    }
+  },
+  {
+    "sign": "M131",
+    "n_corpus": 3,
+    "sa_reading": "lo",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "lo": 1,
+      "hī": 1,
+      "ver": 1
+    }
+  },
+  {
+    "sign": "M135",
+    "n_corpus": 3,
+    "sa_reading": "mac",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "mac": 1,
+      "cik": 1,
+      "kuk": 1
+    }
+  },
+  {
+    "sign": "M141",
+    "n_corpus": 3,
+    "sa_reading": "vam",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "vam": 2,
+      "mir": 1,
+      "vār": 1
+    }
+  },
+  {
+    "sign": "M145",
+    "n_corpus": 3,
+    "sa_reading": "pē",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pē": 1,
+      "hū": 1,
+      "kip": 1
+    }
+  },
+  {
+    "sign": "M146",
+    "n_corpus": 3,
+    "sa_reading": "cā",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "cā": 1,
+      "sē": 1,
+      "nī": 1
+    }
+  },
+  {
+    "sign": "M164",
+    "n_corpus": 3,
+    "sa_reading": "ker",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ker": 1,
+      "sal": 1,
+      "mut": 1
+    }
+  },
+  {
+    "sign": "M170",
+    "n_corpus": 3,
+    "sa_reading": "rup",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "rup": 1,
+      "lan": 1,
+      "car": 1
+    }
+  },
+  {
+    "sign": "M181",
+    "n_corpus": 3,
+    "sa_reading": "um",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "um": 1,
+      "cū": 1,
+      "tin": 1
+    }
+  },
+  {
+    "sign": "M188",
+    "n_corpus": 3,
+    "sa_reading": "tal",
+    "sa_consensus_pct": 0.6,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tal": 3,
+      "lip": 2
+    }
+  },
+  {
+    "sign": "M193",
+    "n_corpus": 3,
+    "sa_reading": "lar",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "lar": 1,
+      "cē": 1,
+      "nil": 1
+    }
+  },
+  {
+    "sign": "M195",
+    "n_corpus": 3,
+    "sa_reading": "mī",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "mī": 1,
+      "tē": 1,
+      "nū": 1
+    }
+  },
+  {
+    "sign": "M197",
+    "n_corpus": 3,
+    "sa_reading": "s",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "s": 1,
+      "lum": 1,
+      "எ": 1
+    }
+  },
+  {
+    "sign": "M201",
+    "n_corpus": 3,
+    "sa_reading": "pam",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pam": 1,
+      "nil": 1,
+      "im": 1
+    }
+  },
+  {
+    "sign": "M214",
+    "n_corpus": 3,
+    "sa_reading": "op",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "op": 1,
+      "pul": 1,
+      "lo": 1
+    }
+  },
+  {
+    "sign": "M216",
+    "n_corpus": 3,
+    "sa_reading": "nak",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "nak": 1,
+      "கட்": 1,
+      "un": 1
+    }
+  },
+  {
+    "sign": "M217",
+    "n_corpus": 3,
+    "sa_reading": "kut",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kut": 1,
+      "at": 1,
+      "pū": 1
+    }
+  },
+  {
+    "sign": "M219",
+    "n_corpus": 3,
+    "sa_reading": "kāy",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kāy": 1,
+      "key": 1,
+      "iv": 1
+    }
+  },
+  {
+    "sign": "M224",
+    "n_corpus": 3,
+    "sa_reading": "ton",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ton": 2,
+      "pol": 1,
+      "ris": 1
+    }
+  },
+  {
+    "sign": "M228",
+    "n_corpus": 3,
+    "sa_reading": "nup",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "nup": 1,
+      "ip": 1,
+      "lum": 1
+    }
+  },
+  {
+    "sign": "M229",
+    "n_corpus": 3,
+    "sa_reading": "cē",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "cē": 2,
+      "rit": 1,
+      "ac": 1
+    }
+  },
+  {
+    "sign": "M244",
+    "n_corpus": 3,
+    "sa_reading": "kit",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kit": 1,
+      "m": 1,
+      "cil": 1
+    }
+  },
+  {
+    "sign": "M246",
+    "n_corpus": 3,
+    "sa_reading": "kip",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kip": 1,
+      "nan": 1,
+      "pel": 1
+    }
+  },
+  {
+    "sign": "M247",
+    "n_corpus": 3,
+    "sa_reading": "muk",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "muk": 1,
+      "mak": 1,
+      "val": 1
+    }
+  },
+  {
+    "sign": "M256",
+    "n_corpus": 3,
+    "sa_reading": "cī",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "cī": 1,
+      "val": 1,
+      "kel": 1
+    }
+  },
+  {
+    "sign": "M257",
+    "n_corpus": 3,
+    "sa_reading": "tit",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tit": 2,
+      "kul": 1,
+      "ris": 1
+    }
+  },
+  {
+    "sign": "M263",
+    "n_corpus": 3,
+    "sa_reading": "pal",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pal": 1,
+      "pur": 1,
+      "or": 1
+    }
+  },
+  {
+    "sign": "M268",
+    "n_corpus": 3,
+    "sa_reading": "per",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "per": 2,
+      "ār": 1,
+      "cī": 1
+    }
+  },
+  {
+    "sign": "M277",
+    "n_corpus": 3,
+    "sa_reading": "yam",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "yam": 2,
+      "ric": 1,
+      "man": 1
+    }
+  },
+  {
+    "sign": "M284",
+    "n_corpus": 3,
+    "sa_reading": "tār",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tār": 1,
+      "as": 1,
+      "kol": 1
+    }
+  },
+  {
+    "sign": "M288",
+    "n_corpus": 3,
+    "sa_reading": "mak",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "mak": 1,
+      "pol": 1,
+      "tap": 1
+    }
+  },
+  {
+    "sign": "M289",
+    "n_corpus": 3,
+    "sa_reading": "pon",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pon": 1,
+      "kun": 1,
+      "al": 1
+    }
+  },
+  {
+    "sign": "M292",
+    "n_corpus": 3,
+    "sa_reading": "kup",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kup": 1,
+      "ton": 1,
+      "kul": 1
+    }
+  },
+  {
+    "sign": "M296",
+    "n_corpus": 3,
+    "sa_reading": "lip",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "lip": 1,
+      "kūr": 1,
+      "kap": 1
+    }
+  },
+  {
+    "sign": "M316",
+    "n_corpus": 3,
+    "sa_reading": "கு",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "கு": 1,
+      "tik": 1,
+      "mul": 1
+    }
+  },
+  {
+    "sign": "M320",
+    "n_corpus": 3,
+    "sa_reading": "ril",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ril": 1,
+      "cit": 1,
+      "kup": 1
+    }
+  },
+  {
+    "sign": "M325",
+    "n_corpus": 3,
+    "sa_reading": "rī",
+    "sa_consensus_pct": 0.6,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "rī": 3,
+      "val": 1,
+      "ī": 1
+    }
+  },
+  {
+    "sign": "M330",
+    "n_corpus": 3,
+    "sa_reading": "ten",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ten": 1,
+      "vel": 1,
+      "lū": 1
+    }
+  },
+  {
+    "sign": "M331",
+    "n_corpus": 3,
+    "sa_reading": "lup",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "lup": 2,
+      "rik": 1,
+      "pī": 1
+    }
+  },
+  {
+    "sign": "M338",
+    "n_corpus": 3,
+    "sa_reading": "kap",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kap": 1,
+      "kup": 1,
+      "tē": 1
+    }
+  },
+  {
+    "sign": "M339",
+    "n_corpus": 3,
+    "sa_reading": "cik",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "cik": 1,
+      "pik": 1,
+      "muk": 1
+    }
+  },
+  {
+    "sign": "M341",
+    "n_corpus": 3,
+    "sa_reading": "kin",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kin": 1,
+      "ken": 1,
+      "kī": 1
+    }
+  },
+  {
+    "sign": "M348",
+    "n_corpus": 3,
+    "sa_reading": "kay",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kay": 1,
+      "ek": 1,
+      "ak": 1
+    }
+  },
+  {
+    "sign": "M349",
+    "n_corpus": 3,
+    "sa_reading": "cē",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "cē": 1,
+      "vat": 1,
+      "kut": 1
+    }
+  },
+  {
+    "sign": "M354",
+    "n_corpus": 3,
+    "sa_reading": "pit",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pit": 1,
+      "lam": 1,
+      "pas": 1
+    }
+  },
+  {
+    "sign": "M356",
+    "n_corpus": 3,
+    "sa_reading": "lū",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "lū": 2,
+      "rel": 1,
+      "ac": 1
+    }
+  },
+  {
+    "sign": "M359",
+    "n_corpus": 3,
+    "sa_reading": "kī",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kī": 1,
+      "yak": 1,
+      "nik": 1
+    }
+  },
+  {
+    "sign": "M360",
+    "n_corpus": 3,
+    "sa_reading": "hu",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "hu": 1,
+      "ad": 1,
+      "es": 1
+    }
+  },
+  {
+    "sign": "M362",
+    "n_corpus": 3,
+    "sa_reading": "nik",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "nik": 1,
+      "hē": 1,
+      "pok": 1
+    }
+  },
+  {
+    "sign": "M369",
+    "n_corpus": 3,
+    "sa_reading": "hū",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "hū": 1,
+      "sin": 1,
+      "san": 1
+    }
+  },
+  {
+    "sign": "M371",
+    "n_corpus": 3,
+    "sa_reading": "em",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "em": 1,
+      "ker": 1,
+      "pot": 1
+    }
+  },
+  {
+    "sign": "M373",
+    "n_corpus": 3,
+    "sa_reading": "tup",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tup": 2,
+      "yar": 1,
+      "kāy": 1
+    }
+  },
+  {
+    "sign": "M379",
+    "n_corpus": 3,
+    "sa_reading": "jo",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "jo": 1,
+      "kka": 1,
+      "tal": 1
+    }
+  },
+  {
+    "sign": "M380",
+    "n_corpus": 3,
+    "sa_reading": "nar",
+    "sa_consensus_pct": 0.8,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "nar": 4,
+      "இ": 1
+    }
+  },
+  {
+    "sign": "M381",
+    "n_corpus": 3,
+    "sa_reading": "vī",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "vī": 1,
+      "us": 1,
+      "rē": 1
+    }
+  },
+  {
+    "sign": "M388",
+    "n_corpus": 3,
+    "sa_reading": "ven",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ven": 1,
+      "tan": 1,
+      "pnt": 1
+    }
+  },
+  {
+    "sign": "M395",
+    "n_corpus": 3,
+    "sa_reading": "ye",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ye": 1,
+      "lin": 1,
+      "pis": 1
+    }
+  },
+  {
+    "sign": "M396",
+    "n_corpus": 3,
+    "sa_reading": "on",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "on": 2,
+      "kū": 1,
+      "mī": 1
+    }
+  },
+  {
+    "sign": "M398",
+    "n_corpus": 3,
+    "sa_reading": "vak",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "vak": 1,
+      "mul": 1,
+      "t": 1
+    }
+  },
+  {
+    "sign": "M399",
+    "n_corpus": 3,
+    "sa_reading": "pur",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pur": 2,
+      "uk": 1,
+      "luk": 1
+    }
+  },
+  {
+    "sign": "M408",
+    "n_corpus": 3,
+    "sa_reading": "or",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "or": 1,
+      "ner": 1,
+      "அ": 1
+    }
+  },
+  {
+    "sign": "M410",
+    "n_corpus": 3,
+    "sa_reading": "vat",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "vat": 1,
+      "kin": 1,
+      "yan": 1
+    }
+  },
+  {
+    "sign": "M413",
+    "n_corpus": 3,
+    "sa_reading": "at",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "at": 1,
+      "kit": 1,
+      "mal": 1
+    }
+  },
+  {
+    "sign": "M175",
+    "n_corpus": 2,
+    "sa_reading": "ka",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "katir",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ka": 5
+    }
+  },
+  {
+    "sign": "M100",
+    "n_corpus": 2,
+    "sa_reading": "ma",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "maa",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ma": 5
+    }
+  },
+  {
+    "sign": "M261",
+    "n_corpus": 2,
+    "sa_reading": "mu",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "muruku",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "mu": 5
+    }
+  },
+  {
+    "sign": "M264",
+    "n_corpus": 2,
+    "sa_reading": "pe",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "peN",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pe": 5
+    }
+  },
+  {
+    "sign": "M101",
+    "n_corpus": 2,
+    "sa_reading": "net",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kaTTai",
+    "confirmed_confidence": "LOW",
+    "sa_agrees": false,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "net": 1,
+      "kat": 1,
+      "nan": 1
+    }
+  },
+  {
+    "sign": "M112",
+    "n_corpus": 2,
+    "sa_reading": "mel",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "mel": 1,
+      "or": 1,
+      "pik": 1
+    }
+  },
+  {
+    "sign": "M123",
+    "n_corpus": 2,
+    "sa_reading": "on",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "on": 1,
+      "rin": 1,
+      "tum": 1
+    }
+  },
+  {
+    "sign": "M147",
+    "n_corpus": 2,
+    "sa_reading": "rē",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "rē": 1,
+      "pil": 1,
+      "je": 1
+    }
+  },
+  {
+    "sign": "M154",
+    "n_corpus": 2,
+    "sa_reading": "pun",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pun": 2,
+      "tti": 1,
+      "cam": 1
+    }
+  },
+  {
+    "sign": "M156",
+    "n_corpus": 2,
+    "sa_reading": "tē",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tē": 1,
+      "et": 1,
+      "tan": 1
+    }
+  },
+  {
+    "sign": "M157",
+    "n_corpus": 2,
+    "sa_reading": "கா",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "கா": 1,
+      "rī": 1,
+      "riv": 1
+    }
+  },
+  {
+    "sign": "M158",
+    "n_corpus": 2,
+    "sa_reading": "tti",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tti": 2,
+      "ril": 1,
+      "kel": 1
+    }
+  },
+  {
+    "sign": "M159",
+    "n_corpus": 2,
+    "sa_reading": "cel",
+    "sa_consensus_pct": 0.8,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "cel": 4,
+      "ven": 1
+    }
+  },
+  {
+    "sign": "M165",
+    "n_corpus": 2,
+    "sa_reading": "tī",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tī": 1,
+      "இ": 1,
+      "men": 1
+    }
+  },
+  {
+    "sign": "M172",
+    "n_corpus": 2,
+    "sa_reading": "pok",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pok": 1,
+      "mik": 1,
+      "l": 1
+    }
+  },
+  {
+    "sign": "M174",
+    "n_corpus": 2,
+    "sa_reading": "ol",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ol": 1,
+      "mun": 1,
+      "mel": 1
+    }
+  },
+  {
+    "sign": "M179",
+    "n_corpus": 2,
+    "sa_reading": "as",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "as": 2,
+      "ec": 1,
+      "sil": 1
+    }
+  },
+  {
+    "sign": "M184",
+    "n_corpus": 2,
+    "sa_reading": "up",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "up": 2,
+      "j": 1,
+      "tin": 1
+    }
+  },
+  {
+    "sign": "M200",
+    "n_corpus": 2,
+    "sa_reading": "can",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "can": 1,
+      "rit": 1,
+      "ur": 1
+    }
+  },
+  {
+    "sign": "M203",
+    "n_corpus": 2,
+    "sa_reading": "sin",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "sin": 1,
+      "mal": 1,
+      "kam": 1
+    }
+  },
+  {
+    "sign": "M204",
+    "n_corpus": 2,
+    "sa_reading": "vnt",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "vnt": 1,
+      "ot": 1,
+      "pon": 1
+    }
+  },
+  {
+    "sign": "M210",
+    "n_corpus": 2,
+    "sa_reading": "tik",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tik": 2,
+      "par": 1,
+      "rap": 1
+    }
+  },
+  {
+    "sign": "M215",
+    "n_corpus": 2,
+    "sa_reading": "ter",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ter": 2,
+      "us": 1,
+      "ril": 1
+    }
+  },
+  {
+    "sign": "M226",
+    "n_corpus": 2,
+    "sa_reading": "san",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "san": 1,
+      "pat": 1,
+      "us": 1
+    }
+  },
+  {
+    "sign": "M238",
+    "n_corpus": 2,
+    "sa_reading": "pin",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pin": 1,
+      "pun": 1,
+      "en": 1
+    }
+  },
+  {
+    "sign": "M240",
+    "n_corpus": 2,
+    "sa_reading": "k",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "k": 2,
+      "ver": 1,
+      "s": 1
+    }
+  },
+  {
+    "sign": "M241",
+    "n_corpus": 2,
+    "sa_reading": "kon",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kon": 1,
+      "kur": 1,
+      "ol": 1
+    }
+  },
+  {
+    "sign": "M242",
+    "n_corpus": 2,
+    "sa_reading": "vat",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "vat": 2,
+      "pī": 1,
+      "கு": 1
+    }
+  },
+  {
+    "sign": "M248",
+    "n_corpus": 2,
+    "sa_reading": "lī",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "lī": 2,
+      "kon": 2,
+      "nen": 1
+    }
+  },
+  {
+    "sign": "M258",
+    "n_corpus": 2,
+    "sa_reading": "kor",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kor": 1,
+      "men": 1,
+      "uk": 1
+    }
+  },
+  {
+    "sign": "M260",
+    "n_corpus": 2,
+    "sa_reading": "ris",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ris": 1,
+      "vam": 1,
+      "yar": 1
+    }
+  },
+  {
+    "sign": "M266",
+    "n_corpus": 2,
+    "sa_reading": "tur",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tur": 2,
+      "ot": 1,
+      "mut": 1
+    }
+  },
+  {
+    "sign": "M271",
+    "n_corpus": 2,
+    "sa_reading": "mir",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "mir": 1,
+      "pin": 1,
+      "kil": 1
+    }
+  },
+  {
+    "sign": "M276",
+    "n_corpus": 2,
+    "sa_reading": "nam",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "nam": 1,
+      "um": 1,
+      "kār": 1
+    }
+  },
+  {
+    "sign": "M282",
+    "n_corpus": 2,
+    "sa_reading": "pū",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pū": 1,
+      "nt": 1,
+      "pun": 1
+    }
+  },
+  {
+    "sign": "M283",
+    "n_corpus": 2,
+    "sa_reading": "ār",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ār": 1,
+      "tār": 1,
+      "nak": 1
+    }
+  },
+  {
+    "sign": "M285",
+    "n_corpus": 2,
+    "sa_reading": "kum",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kum": 1,
+      "kap": 1,
+      "lup": 1
+    }
+  },
+  {
+    "sign": "M286",
+    "n_corpus": 2,
+    "sa_reading": "cal",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "cal": 2,
+      "pad": 1,
+      "ptt": 1
+    }
+  },
+  {
+    "sign": "M302",
+    "n_corpus": 2,
+    "sa_reading": "கி",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "கி": 1,
+      "pel": 1,
+      "ho": 1
+    }
+  },
+  {
+    "sign": "M303",
+    "n_corpus": 2,
+    "sa_reading": "mik",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "mik": 1,
+      "mār": 1,
+      "கி": 1
+    }
+  },
+  {
+    "sign": "M308",
+    "n_corpus": 2,
+    "sa_reading": "kul",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kul": 1,
+      "tur": 1,
+      "tel": 1
+    }
+  },
+  {
+    "sign": "M327",
+    "n_corpus": 2,
+    "sa_reading": "kil",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kil": 1,
+      "kay": 1,
+      "pin": 1
+    }
+  },
+  {
+    "sign": "M333",
+    "n_corpus": 2,
+    "sa_reading": "sal",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "sal": 1,
+      "ur": 1,
+      "pol": 1
+    }
+  },
+  {
+    "sign": "M343",
+    "n_corpus": 2,
+    "sa_reading": "ric",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ric": 1,
+      "ral": 1,
+      "ter": 1
+    }
+  },
+  {
+    "sign": "M344",
+    "n_corpus": 2,
+    "sa_reading": "kir",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kir": 2,
+      "kac": 1,
+      "lin": 1
+    }
+  },
+  {
+    "sign": "M353",
+    "n_corpus": 2,
+    "sa_reading": "ton",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ton": 1,
+      "̤": 1,
+      "v": 1
+    }
+  },
+  {
+    "sign": "M363",
+    "n_corpus": 2,
+    "sa_reading": "tār",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tār": 2,
+      "yil": 1,
+      "ven": 1
+    }
+  },
+  {
+    "sign": "M378",
+    "n_corpus": 2,
+    "sa_reading": "je",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "je": 1,
+      "luk": 1,
+      "rin": 1
+    }
+  },
+  {
+    "sign": "M384",
+    "n_corpus": 2,
+    "sa_reading": "pil",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pil": 1,
+      "pit": 1,
+      "cum": 1
+    }
+  },
+  {
+    "sign": "M385",
+    "n_corpus": 2,
+    "sa_reading": "nī",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "nī": 1,
+      "koy": 1,
+      "ten": 1
+    }
+  },
+  {
+    "sign": "M389",
+    "n_corpus": 2,
+    "sa_reading": "kom",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kom": 1,
+      "pak": 1,
+      "mir": 1
+    }
+  },
+  {
+    "sign": "M392",
+    "n_corpus": 2,
+    "sa_reading": "ek",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ek": 1,
+      "nen": 1,
+      "lit": 1
+    }
+  },
+  {
+    "sign": "M397",
+    "n_corpus": 2,
+    "sa_reading": "len",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "len": 2,
+      "riv": 1,
+      "rel": 1
+    }
+  },
+  {
+    "sign": "M400",
+    "n_corpus": 2,
+    "sa_reading": "muc",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "muc": 1,
+      "ok": 1,
+      "pen": 1
+    }
+  },
+  {
+    "sign": "M403",
+    "n_corpus": 2,
+    "sa_reading": "jī",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "jī": 1,
+      "ky": 1,
+      "kka": 1
+    }
+  },
+  {
+    "sign": "M405",
+    "n_corpus": 2,
+    "sa_reading": "pis",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pis": 2,
+      "lē": 2,
+      "ek": 1
+    }
+  },
+  {
+    "sign": "M409",
+    "n_corpus": 2,
+    "sa_reading": "ap",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ap": 2,
+      "op": 2,
+      "nup": 1
+    }
+  },
+  {
+    "sign": "M415",
+    "n_corpus": 2,
+    "sa_reading": "pan",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pan": 2,
+      "nan": 1,
+      "met": 1
+    }
+  },
+  {
+    "sign": "M311",
+    "n_corpus": 1,
+    "sa_reading": "va",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "vaTamiin",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees": true,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "va": 5
+    }
+  },
+  {
+    "sign": "M113",
+    "n_corpus": 1,
+    "sa_reading": "et",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "et": 1,
+      "க": 1,
+      "hī": 1
+    }
+  },
+  {
+    "sign": "M114",
+    "n_corpus": 1,
+    "sa_reading": "lit",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "lit": 1,
+      "tuk": 1,
+      "tit": 1
+    }
+  },
+  {
+    "sign": "M115",
+    "n_corpus": 1,
+    "sa_reading": "tol",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tol": 2,
+      "el": 1,
+      "ip": 1
+    }
+  },
+  {
+    "sign": "M119",
+    "n_corpus": 1,
+    "sa_reading": "em",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "em": 2,
+      "k": 1,
+      "j": 1
+    }
+  },
+  {
+    "sign": "M122",
+    "n_corpus": 1,
+    "sa_reading": "ky",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ky": 1,
+      "pptt": 1,
+      "kin": 1
+    }
+  },
+  {
+    "sign": "M126",
+    "n_corpus": 1,
+    "sa_reading": "எ",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "எ": 1,
+      "kāy": 1,
+      "muc": 1
+    }
+  },
+  {
+    "sign": "M132",
+    "n_corpus": 1,
+    "sa_reading": "as",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "as": 1,
+      "ten": 1,
+      "̄": 1
+    }
+  },
+  {
+    "sign": "M133",
+    "n_corpus": 1,
+    "sa_reading": "உ",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "உ": 1,
+      "கா": 1,
+      "க": 1
+    }
+  },
+  {
+    "sign": "M136",
+    "n_corpus": 1,
+    "sa_reading": "cci",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "cci": 1,
+      "ச": 1,
+      "tup": 1
+    }
+  },
+  {
+    "sign": "M139",
+    "n_corpus": 1,
+    "sa_reading": "cit",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "cit": 1,
+      "cin": 1,
+      "கட்": 1
+    }
+  },
+  {
+    "sign": "M144",
+    "n_corpus": 1,
+    "sa_reading": "lum",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "lum": 1,
+      "kil": 1,
+      "mār": 1
+    }
+  },
+  {
+    "sign": "M150",
+    "n_corpus": 1,
+    "sa_reading": "cir",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "cir": 1,
+      "கும்": 1,
+      "n": 1
+    }
+  },
+  {
+    "sign": "M152",
+    "n_corpus": 1,
+    "sa_reading": "tin",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tin": 2,
+      "nup": 1,
+      "pas": 1
+    }
+  },
+  {
+    "sign": "M160",
+    "n_corpus": 1,
+    "sa_reading": "mun",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "mun": 1,
+      "es": 1,
+      "cit": 1
+    }
+  },
+  {
+    "sign": "M161",
+    "n_corpus": 1,
+    "sa_reading": "kē",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kē": 1,
+      "vik": 1,
+      "vak": 1
+    }
+  },
+  {
+    "sign": "M166",
+    "n_corpus": 1,
+    "sa_reading": "ney",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ney": 1,
+      "nup": 1,
+      "may": 1
+    }
+  },
+  {
+    "sign": "M167",
+    "n_corpus": 1,
+    "sa_reading": "vik",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "vik": 1,
+      "mac": 1,
+      "kūr": 1
+    }
+  },
+  {
+    "sign": "M180",
+    "n_corpus": 1,
+    "sa_reading": "pot",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pot": 1,
+      "tor": 1,
+      "rit": 1
+    }
+  },
+  {
+    "sign": "M182",
+    "n_corpus": 1,
+    "sa_reading": "pnt",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pnt": 1,
+      "ஆ": 1,
+      "cca": 1
+    }
+  },
+  {
+    "sign": "M189",
+    "n_corpus": 1,
+    "sa_reading": "pen",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pen": 1,
+      "கி": 1,
+      "ney": 1
+    }
+  },
+  {
+    "sign": "M206",
+    "n_corpus": 1,
+    "sa_reading": "vār",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "vār": 1,
+      "san": 1,
+      "lak": 1
+    }
+  },
+  {
+    "sign": "M212",
+    "n_corpus": 1,
+    "sa_reading": "kka",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kka": 1,
+      "kac": 1,
+      "sin": 1
+    }
+  },
+  {
+    "sign": "M213",
+    "n_corpus": 1,
+    "sa_reading": "m",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "m": 2,
+      "y": 1,
+      "n": 1
+    }
+  },
+  {
+    "sign": "M221",
+    "n_corpus": 1,
+    "sa_reading": "len",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "len": 1,
+      "cci": 1,
+      "pptt": 1
+    }
+  },
+  {
+    "sign": "M230",
+    "n_corpus": 1,
+    "sa_reading": "h",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "h": 1,
+      "kār": 1,
+      "கத்": 1
+    }
+  },
+  {
+    "sign": "M232",
+    "n_corpus": 1,
+    "sa_reading": "p",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "p": 2,
+      "nin": 1,
+      "கத்": 1
+    }
+  },
+  {
+    "sign": "M236",
+    "n_corpus": 1,
+    "sa_reading": "vnt",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "vnt": 2,
+      "கத்": 1,
+      "mac": 1
+    }
+  },
+  {
+    "sign": "M253",
+    "n_corpus": 1,
+    "sa_reading": "un",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "un": 1,
+      "can": 1,
+      "kon": 1
+    }
+  },
+  {
+    "sign": "M269",
+    "n_corpus": 1,
+    "sa_reading": "koy",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "koy": 1,
+      "pas": 1,
+      "pak": 1
+    }
+  },
+  {
+    "sign": "M273",
+    "n_corpus": 1,
+    "sa_reading": "̤",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "̤": 1,
+      "உ": 1,
+      "ac": 1
+    }
+  },
+  {
+    "sign": "M275",
+    "n_corpus": 1,
+    "sa_reading": "cum",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "cum": 1,
+      "எ": 1,
+      "sū": 1
+    }
+  },
+  {
+    "sign": "M279",
+    "n_corpus": 1,
+    "sa_reading": "nil",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "nil": 1,
+      "கப்": 1,
+      "per": 1
+    }
+  },
+  {
+    "sign": "M287",
+    "n_corpus": 1,
+    "sa_reading": "கை",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "கை": 1,
+      "rnā": 1,
+      "vnt": 1
+    }
+  },
+  {
+    "sign": "M297",
+    "n_corpus": 1,
+    "sa_reading": "ஆ",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ஆ": 1,
+      "y": 1,
+      "உ": 1
+    }
+  },
+  {
+    "sign": "M298",
+    "n_corpus": 1,
+    "sa_reading": "ச",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ச": 1,
+      "nin": 1,
+      "̤": 1
+    }
+  },
+  {
+    "sign": "M299",
+    "n_corpus": 1,
+    "sa_reading": "ac",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ac": 2,
+      "ic": 2,
+      "கை": 1
+    }
+  },
+  {
+    "sign": "M300",
+    "n_corpus": 1,
+    "sa_reading": "cap",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "cap": 1,
+      "kum": 1,
+      "tak": 1
+    }
+  },
+  {
+    "sign": "M310",
+    "n_corpus": 1,
+    "sa_reading": "cū",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "cū": 1,
+      "pad": 1,
+      "at": 1
+    }
+  },
+  {
+    "sign": "M314",
+    "n_corpus": 1,
+    "sa_reading": "கப்",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "கப்": 1,
+      "hna": 1,
+      "nin": 1
+    }
+  },
+  {
+    "sign": "M315",
+    "n_corpus": 1,
+    "sa_reading": "kel",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kel": 1,
+      "ver": 1,
+      "ker": 1
+    }
+  },
+  {
+    "sign": "M322",
+    "n_corpus": 1,
+    "sa_reading": "vel",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "vel": 1,
+      "ut": 1,
+      "கள்": 1
+    }
+  },
+  {
+    "sign": "M323",
+    "n_corpus": 1,
+    "sa_reading": "men",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "men": 1,
+      "ppu": 1,
+      "ஆ": 1
+    }
+  },
+  {
+    "sign": "M335",
+    "n_corpus": 1,
+    "sa_reading": "pac",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pac": 2,
+      "iv": 1,
+      "tel": 1
+    }
+  },
+  {
+    "sign": "M337",
+    "n_corpus": 1,
+    "sa_reading": "mur",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "mur": 2,
+      "cin": 1,
+      "cit": 1
+    }
+  },
+  {
+    "sign": "M340",
+    "n_corpus": 1,
+    "sa_reading": "hna",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "hna": 2,
+      "j": 1,
+      "கு": 1
+    }
+  },
+  {
+    "sign": "M361",
+    "n_corpus": 1,
+    "sa_reading": "rnā",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "rnā": 2,
+      "க": 1,
+      "ney": 1
+    }
+  },
+  {
+    "sign": "M364",
+    "n_corpus": 1,
+    "sa_reading": "pul",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "pul": 1,
+      "cap": 1,
+      "pil": 1
+    }
+  },
+  {
+    "sign": "M368",
+    "n_corpus": 1,
+    "sa_reading": "may",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "may": 2,
+      "அ": 1,
+      "pac": 1
+    }
+  },
+  {
+    "sign": "M376",
+    "n_corpus": 1,
+    "sa_reading": "rnā",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "rnā": 2,
+      "key": 2,
+      "̄": 1
+    }
+  },
+  {
+    "sign": "M377",
+    "n_corpus": 1,
+    "sa_reading": "l",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "l": 1,
+      "கள்": 1,
+      "ky": 1
+    }
+  },
+  {
+    "sign": "M393",
+    "n_corpus": 1,
+    "sa_reading": "tur",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "tur": 1,
+      "kān": 1,
+      "ot": 1
+    }
+  },
+  {
+    "sign": "M394",
+    "n_corpus": 1,
+    "sa_reading": "ppu",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "ppu": 2,
+      "v": 1,
+      "tol": 1
+    }
+  },
+  {
+    "sign": "M404",
+    "n_corpus": 1,
+    "sa_reading": "kān",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kān": 1,
+      "lit": 1,
+      "ken": 1
+    }
+  },
+  {
+    "sign": "M407",
+    "n_corpus": 1,
+    "sa_reading": "en",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "en": 1,
+      "van": 1,
+      "pit": 1
+    }
+  },
+  {
+    "sign": "M411",
+    "n_corpus": 1,
+    "sa_reading": "kol",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "kol": 1,
+      "r": 1,
+      "kom": 1
+    }
+  },
+  {
+    "sign": "M414",
+    "n_corpus": 1,
+    "sa_reading": "nt",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees": null,
+    "pd_phonotactic_valid": true,
+    "vote_dist": {
+      "nt": 1,
+      "pnt": 1,
+      "கா": 1
+    }
+  }
+]

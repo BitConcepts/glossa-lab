@@ -185,3 +185,12 @@ backend/glossa_lab/data/phase18_corpora/rv_padapatha_stream.txt
 # ---- User-uploaded PDFs (binary research docs ingested via Evidence Graph) ----
 glossa-indus/raw/user_uploads/*.pdf
 
+
+# specsmith migration backups — regeneratable, never commit
+*.bak
+.specsmith/*.bak
+docs/governance/*.bak
+docs/*.bak
+
+# ChronoMemory ESDB runtime files — regenerated automatically
+.chronomemory/

@@ -223,7 +223,7 @@ def main():
         signs = seal["signs"]
         n_dec = sum(1 for s in signs if s in confirmed)
         cov = n_dec / len(signs) * 100 if signs else 0
-        if cov < 85: continue  # need high coverage for scholarly grade
+        if cov < 80: continue  # 80% threshold for expanded scholarly set
 
         # Score for formula complexity
         has_title = any(s in TITLE_SIGNS for s in signs)
@@ -244,7 +244,7 @@ def main():
     # Select 10 with site diversity
     selected: list[tuple] = []
     sites_used: Counter = Counter()
-    MAX_PER_SITE = 3
+    MAX_PER_SITE = 12
 
     for item in candidates:
         _, cisi_id, cov, n_signs, seal, _ = item
@@ -252,7 +252,7 @@ def main():
         if sites_used[site] < MAX_PER_SITE:
             selected.append(item)
             sites_used[site] += 1
-        if len(selected) >= 10:
+        if len(selected) >= 50:
             break
 
     print(f"  Selected {len(selected)} seals for scholarly translation")

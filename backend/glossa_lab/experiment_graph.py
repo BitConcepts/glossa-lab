@@ -2586,6 +2586,15 @@ try:
 except Exception as _p122123_exc:  # noqa: BLE001
     logger.warning("Phase-122-123 decipherment nodes not registered: %s", _p122123_exc)
 
+# ── Phase-124-125 nodes (fish polysemy, Arthasastra mining) ──
+try:
+    from glossa_lab.experiment_graph_phase124_125 import _phase124_125_node_defs as _p124125_defs  # noqa: PLC0415
+    for _d in _p124125_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-124-125 decipherment nodes", len(list(_p124125_defs())))
+except Exception as _p124125_exc:  # noqa: BLE001
+    logger.warning("Phase-124-125 decipherment nodes not registered: %s", _p124125_exc)
+
 
 # ── Graph execution
 

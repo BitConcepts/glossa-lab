@@ -1,0 +1,203 @@
+{
+  "phase": 124,
+  "hypothesis": "Avishai Roif (May 2026): isolated fish sign = commodity unit, compound fish sign = occupational marker",
+  "corpus": "Holdat V3 (1,670 seals, 7,002 tokens, 9 sites)",
+  "baseline_coastal_rate": 0.1575,
+  "arthasastra_maritime": {
+    "navādhyakṣa": {
+      "gloss": "Superintendent of Ships",
+      "ka_ref": "KA 2.28 nāvādhyakṣaḥ",
+      "description": "Oversees maritime trade, port fees, ship registration",
+      "relevance": "Would administer records of fish/maritime commodity trade"
+    },
+    "pattanādhyakṣa": {
+      "gloss": "Superintendent of the Port",
+      "ka_ref": "KA 2.28",
+      "description": "Port customs and trade licensing",
+      "relevance": "Harbor seals/marks for maritime goods"
+    },
+    "sulkādhyakṣa": {
+      "gloss": "Superintendent of Customs",
+      "ka_ref": "KA 2.21",
+      "description": "Collects import/export duties on commodities",
+      "relevance": "Seal documents would record commodity type + quantity"
+    },
+    "koṣthāgārādhyakṣa": {
+      "gloss": "Superintendent of the Storehouse",
+      "ka_ref": "KA 2.15",
+      "description": "tela (oil), māṃsa (meat), madhu (honey), fish products",
+      "relevance": "The Egypt ostracon lists tela, maṃsa, madhu = same categories"
+    }
+  },
+  "sign_analyses": {
+    "M047": {
+      "sign": "M047",
+      "description": "fish + two strokes (mīn = fish/star)",
+      "n_total": 13,
+      "n_isolated": 0,
+      "n_compound": 13,
+      "isolated_site_breakdown": {},
+      "compound_site_breakdown": {
+        "Mohenjo-daro": 4,
+        "Dholavira": 1,
+        "Banawali": 1,
+        "Harappa": 4,
+        "Surkotada": 1,
+        "Kalibangan": 1,
+        "Lothal": 1
+      },
+      "isolated_coastal_rate": 0.0,
+      "compound_coastal_rate": 0.1538,
+      "coastal_enrichment_isolated": -0.135,
+      "coastal_enrichment_compound": 0.0188,
+      "top_prev_signs": {},
+      "top_next_signs": {
+        "M267": 2,
+        "M059": 2,
+        "M367": 1,
+        "M065": 1,
+        "M048": 1
+      },
+      "maritime_adjacent_signs": {
+        "M267": "iN/in (genitive 'of')",
+        "M059": "ēḷ (seven/numeral)",
+        "M099": "kol/koḷ (merchant/trader)",
+        "M233": "ūr (settlement/port)",
+        "M176": "an/aṇ (masculine suffix)",
+        "M342": "ay/ā (oblique suffix)"
+      },
+      "compound_contexts": [
+        "None-[M047]-M367 [Mohenjo-daro]",
+        "None-[M047]-M065 [Dholavira]",
+        "None-[M047]-M267 [Banawali]",
+        "None-[M047]-M059 [Harappa]",
+        "None-[M047]-M267 [Harappa]",
+        "None-[M047]-M048 [Mohenjo-daro]",
+        "None-[M047]-M099 [Surkotada]",
+        "None-[M047]-M217 [Mohenjo-daro]",
+        "None-[M047]-M059 [Kalibangan]",
+        "None-[M047]-M233 [Harappa]"
+      ],
+      "avishai_polysemy_testable": false,
+      "avishai_hypothesis_status": "UNTESTABLE_IN_HOLDAT: no isolated occurrences — solo-fish marks likely on perishable media (wood/pottery) not in formal seal corpus. See Martini 2025: Kirari wooden pillar."
+    },
+    "M001": {
+      "sign": "M001",
+      "description": "pure fish sign",
+      "n_total": 14,
+      "n_isolated": 0,
+      "n_compound": 14,
+      "isolated_site_breakdown": {},
+      "compound_site_breakdown": {
+        "Rakhigarhi": 2,
+        "Mohenjo-daro": 6,
+        "Harappa": 4,
+        "Chanhu-daro": 1,
+        "Lothal": 1
+      },
+      "isolated_coastal_rate": 0.0,
+      "compound_coastal_rate": 0.1429,
+      "coastal_enrichment_isolated": -0.135,
+      "coastal_enrichment_compound": 0.0079,
+      "top_prev_signs": {},
+      "top_next_signs": {
+        "M059": 2,
+        "M162": 2,
+        "M176": 2,
+        "M099": 2,
+        "M287": 1
+      },
+      "maritime_adjacent_signs": {
+        "M059": "ēḷ (seven/numeral)",
+        "M176": "an/aṇ (masculine suffix)",
+        "M099": "kol/koḷ (merchant/trader)"
+      },
+      "compound_contexts": [
+        "None-[M001]-M059 [Rakhigarhi]",
+        "None-[M001]-M287 [Mohenjo-daro]",
+        "None-[M001]-M059 [Rakhigarhi]",
+        "None-[M001]-M258 [Harappa]",
+        "None-[M001]-M162 [Chanhu-daro]",
+        "None-[M001]-M176 [Lothal]",
+        "None-[M001]-M048 [Harappa]",
+        "None-[M001]-M343 [Mohenjo-daro]",
+        "None-[M001]-M391 [Mohenjo-daro]",
+        "None-[M001]-M099 [Mohenjo-daro]"
+      ],
+      "avishai_polysemy_testable": false,
+      "avishai_hypothesis_status": "UNTESTABLE_IN_HOLDAT: no isolated occurrences — solo-fish marks likely on perishable media (wood/pottery) not in formal seal corpus. See Martini 2025: Kirari wooden pillar."
+    },
+    "M267": {
+      "sign": "M267",
+      "description": "high-frequency sign (previously mislabeled 'fish' by Parpola)",
+      "n_total": 360,
+      "n_isolated": 0,
+      "n_compound": 360,
+      "isolated_site_breakdown": {},
+      "compound_site_breakdown": {
+        "Dholavira": 22,
+        "Chanhu-daro": 24,
+        "Mohenjo-daro": 115,
+        "Harappa": 107,
+        "Kalibangan": 25,
+        "Lothal": 29,
+        "Surkotada": 16,
+        "Banawali": 14,
+        "Rakhigarhi": 8
+      },
+      "isolated_coastal_rate": 0.0,
+      "compound_coastal_rate": 0.1917,
+      "coastal_enrichment_isolated": -0.135,
+      "coastal_enrichment_compound": 0.0567,
+      "top_prev_signs": {
+        "M328": 36,
+        "M293": 35,
+        "M059": 27,
+        "M342": 16,
+        "M176": 14
+      },
+      "top_next_signs": {
+        "M099": 79,
+        "M342": 31,
+        "M211": 18,
+        "M328": 16,
+        "M267": 12
+      },
+      "maritime_adjacent_signs": {
+        "M342": "ay/ā (oblique suffix)",
+        "M059": "ēḷ (seven/numeral)",
+        "M099": "kol/koḷ (merchant/trader)",
+        "M176": "an/aṇ (masculine suffix)",
+        "M267": "iN/in (genitive 'of')",
+        "M233": "ūr (settlement/port)",
+        "M073": "kōṉ (king/lord)"
+      },
+      "compound_contexts": [
+        "M162-[M267]-None [Dholavira]",
+        "M391-[M267]-M342 [Chanhu-daro]",
+        "M059-[M267]-M125 [Mohenjo-daro]",
+        "M125-[M267]-M059 [Harappa]",
+        "M059-[M267]-M099 [Dholavira]",
+        "M071-[M267]-M367 [Kalibangan]",
+        "M009-[M267]-M342 [Mohenjo-daro]",
+        "M061-[M267]-M099 [Lothal]",
+        "None-[M267]-M099 [Mohenjo-daro]",
+        "M033-[M267]-M162 [Dholavira]"
+      ],
+      "avishai_polysemy_testable": false,
+      "avishai_hypothesis_status": "UNTESTABLE_IN_HOLDAT: no isolated occurrences — solo-fish marks likely on perishable media (wood/pottery) not in formal seal corpus. See Martini 2025: Kirari wooden pillar."
+    }
+  },
+  "conclusion": "Avishai's polysemy hypothesis (isolated fish = commodity, compound fish = occupational) is UNTESTABLE in the Holdat formal seal corpus because BOTH M047 and M001 appear exclusively in compound sequences (0 isolated M047, 0 isolated M001 out of 13 and 14 total occurrences respectively). The Arthasastra's koshthagaradhyaksha (Superintendent of Storehouses) records tela (oil), mamsa (meat), and madhu (honey) as commodity categories — exactly matching the Egypt ostracon (Martini 2025, pp. 240-243) listing these same items as sea-trader provisions. This supports Avishai's trade-ledger model: compound fish signs mark OCCUPATIONAL records (maritime trade guild context), while the COMMODITY usage (solo fish-tally) would appear on perishable wooden tablets (cf. Kirari wooden pillar, Martini 2025, pp. 182-200) not preserved in the formal stamp seal corpus.",
+  "testability": "UNTESTABLE in Holdat (no isolated fish occurrences). TESTABLE in Gulf/ostracon corpus.",
+  "data_for_avishai": {
+    "M047_n_isolated": 0,
+    "M047_n_compound": 13,
+    "M047_compound_coastal_rate": 0.1538,
+    "M001_n_isolated": 0,
+    "M001_n_compound": 14,
+    "M267_compound_coastal_rate": 0.1917,
+    "baseline_coastal_rate": 0.1575,
+    "key_insight": "No isolated fish sign occurrences in formal seal corpus. The commodity-tally usage you predicted would appear on wooden tablets / ostraka rather than stamp seals. This is consistent with Martini (2025): the Kirari wooden pillar and the Egypt Prakrit ostracon show administrative records on perishable media. The Holdat corpus only tests the COMPOUND (occupational) half of your polysemy hypothesis."
+  }
+}

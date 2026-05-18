@@ -1,0 +1,10 @@
+{
+  "phase": 117,
+  "min_contexts": 2,
+  "n_added": 2,
+  "n_skipped": 238,
+  "added_signs": [
+    "M347",
+    "M350"
+  ]
+}

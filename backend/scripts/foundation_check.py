@@ -87,7 +87,11 @@ fa = json.loads((BKRPT / "INDUS_FINAL_ANCHORS.json").read_text(encoding="utf-8")
 anchors = fa["anchors"]
 conf_counts = Counter(v.get("confidence","?") for v in anchors.values())
 
-CHECK("Anchor count",    fa["total"] == len(anchors), f"{fa['total']} total")
+# fa["total"] = H+M confirmed count; len(anchors) = all entries incl. LOW
+# After Phase-122, total=263 H+M, len(anchors)=~390 (includes LOW allographs)
+n_hm_confirmed = sum(1 for v in anchors.values() if v.get("confidence") in ("HIGH","MEDIUM"))
+CHECK("Anchor H+M count", fa["total"] == n_hm_confirmed,
+      f"total={fa['total']} H+M confirmed={n_hm_confirmed} (total_all={len(anchors)} incl. LOW)")
 # Phase-48 promoted 30 MEDIUM → HIGH; original 7 core HIGH anchors must still be present
 CHECK("Core HIGH anchors >= 7", conf_counts.get("HIGH",0) >= 7,
       f"HIGH={conf_counts.get('HIGH',0)} (core=7, Phase-48 promoted 30 more)")

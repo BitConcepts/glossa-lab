@@ -1,5 +1,5 @@
 {
-  "total": 243,
+  "total": 263,
   "anchors": {
     "M342": {
       "reading": "ay/ā",
@@ -350,9 +350,10 @@
       "basis": " [Phase-116 recal: SA-cons=0.62✓ DEDR✓]"
     },
     "M040": {
-      "reading": "mutalai",
-      "confidence": "LOW",
-      "basis": "Round 2: INITIAL position (freq=13), distributional assignment"
+      "reading": "ri",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='ri' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=13.",
+      "source": "Phase-122"
     },
     "M024": {
       "reading": "nē",
@@ -477,19 +478,22 @@
       "basis": " [Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
     },
     "M169": {
-      "reading": "ney",
-      "confidence": "LOW",
-      "basis": "Round 3: MEDIAL position (freq=8), distributional assignment"
+      "reading": "rā",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='rā' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=8.",
+      "source": "Phase-122"
     },
     "M237": {
-      "reading": "naṟ",
-      "confidence": "LOW",
-      "basis": "Round 3: MEDIAL position (freq=8), distributional assignment"
+      "reading": "ce",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='ce' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=8.",
+      "source": "Phase-122"
     },
     "M102": {
-      "reading": "nāḷ",
-      "confidence": "LOW",
-      "basis": "Round 3: MEDIAL position (freq=8), distributional assignment"
+      "reading": "ni",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='ni' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR 3596: water. freq=8.",
+      "source": "Phase-122"
     },
     "M076": {
       "confidence": "HIGH",
@@ -501,9 +505,10 @@
       "basis": " [Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
     },
     "M272": {
-      "reading": "kol",
-      "confidence": "LOW",
-      "basis": "Round 3: MEDIAL position (freq=7), distributional assignment"
+      "reading": "ma",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='ma' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR 4751: great. freq=7.",
+      "source": "Phase-122"
     },
     "M128": {
       "reading": "kaṇ",
@@ -520,9 +525,10 @@
       "bigram_consistency": 0.0211
     },
     "M235": {
-      "reading": "kal",
-      "confidence": "LOW",
-      "basis": "Round 3: MEDIAL position (freq=7), distributional assignment"
+      "reading": "vē",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='vē' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=7.",
+      "source": "Phase-122"
     },
     "M149": {
       "reading": "kuḷ",
@@ -535,9 +541,10 @@
       "basis": "Round 4: MEDIAL position (freq=7), distributional assignment"
     },
     "M383": {
-      "reading": "mīn",
-      "confidence": "LOW",
-      "basis": "Round 4: MEDIAL position (freq=7), distributional assignment"
+      "reading": "kol",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='kol' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=7.",
+      "source": "Phase-122"
     },
     "M375": {
       "reading": "taṇ",
@@ -551,9 +558,10 @@
       "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
     },
     "M401": {
-      "reading": "māṉ",
-      "confidence": "LOW",
-      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+      "reading": "vē",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='vē' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=6.",
+      "source": "Phase-122"
     },
     "M374": {
       "reading": "tēṉ",
@@ -561,14 +569,16 @@
       "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
     },
     "M127": {
-      "reading": "māḷ",
-      "confidence": "LOW",
-      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+      "reading": "vē",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='vē' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=6.",
+      "source": "Phase-122"
     },
     "M252": {
-      "reading": "tiṇ",
-      "confidence": "LOW",
-      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+      "reading": "kur",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='kur' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=6.",
+      "source": "Phase-122"
     },
     "M386": {
       "reading": "maṇ",
@@ -630,14 +640,16 @@
       "basis": "Round 4: MEDIAL position (freq=5), distributional assignment"
     },
     "M355": {
-      "reading": "āḷ",
-      "confidence": "LOW",
-      "basis": "Round 4: MEDIAL position (freq=5), distributional assignment"
+      "reading": "lu",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='lu' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=5.",
+      "source": "Phase-122"
     },
     "M178": {
-      "reading": "ney",
-      "confidence": "LOW",
-      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+      "reading": "i",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='i' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=5.",
+      "source": "Phase-122"
     },
     "M163": {
       "confidence": "HIGH",
@@ -658,9 +670,10 @@
       "basis": " [Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
     },
     "M231": {
-      "reading": "ēṟ",
-      "confidence": "LOW",
-      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+      "reading": "kur",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='kur' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=5.",
+      "source": "Phase-122"
     },
     "M321": {
       "reading": "kol",
@@ -668,14 +681,16 @@
       "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
     },
     "M153": {
-      "reading": "kaṇ",
-      "confidence": "LOW",
-      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+      "reading": "pu",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='pu' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR 4317: flower. freq=5.",
+      "source": "Phase-122"
     },
     "M177": {
-      "reading": "kal",
-      "confidence": "LOW",
-      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+      "reading": "na",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='na' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR 3549: word. freq=5.",
+      "source": "Phase-122"
     },
     "M357": {
       "reading": "kuḷ",
@@ -688,9 +703,10 @@
       "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
     },
     "M155": {
-      "reading": "mīn",
-      "confidence": "LOW",
-      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+      "reading": "ka",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='ka' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR 1145: eye. freq=5.",
+      "source": "Phase-122"
     },
     "M239": {
       "reading": "il",
@@ -703,9 +719,10 @@
       "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
     },
     "M103": {
-      "reading": "māṉ",
-      "confidence": "LOW",
-      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+      "reading": "kol",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='kol' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=5.",
+      "source": "Phase-122"
     },
     "M254": {
       "reading": "tēṉ",
@@ -713,14 +730,16 @@
       "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
     },
     "M262": {
-      "reading": "māḷ",
-      "confidence": "LOW",
-      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+      "reading": "i",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='i' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=5.",
+      "source": "Phase-122"
     },
     "M416": {
-      "reading": "tiṇ",
-      "confidence": "LOW",
-      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+      "reading": "na",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='na' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR 3549: word. freq=5.",
+      "source": "Phase-122"
     },
     "M143": {
       "reading": "maṇ",
@@ -2404,10 +2423,10 @@
       "source": "Phase-117"
     },
     "M350": {
-      "reading": "vel",
-      "confidence": "LOW",
-      "basis": "Phase-117 grammar inference: slot=NAME_AFTER_ANIMAL, n_contexts=3, patterns=['M062-[M350]-M328', 'M060-[M350]-M391', 'M342-[M350]-M233']. Inferred from Dravidian grammar slot model (Phases 74-112).",
-      "source": "Phase-117"
+      "reading": "vē",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='vē' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=5.",
+      "source": "Phase-122"
     }
   },
   "_citation": {
@@ -2447,6 +2466,6 @@
   "n_low": 154,
   "corpus_signs": 390,
   "corpus_tokens": 7002,
-  "corpus_token_coverage": 0.883,
+  "corpus_token_coverage": 0.9566,
   "_note": "total = H+M confirmed anchors. total_all_entries includes LOW allographs/grammar inferences. DO NOT use total/corpus_signs for % coverage — use corpus_token_coverage instead."
 }

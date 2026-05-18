@@ -2577,6 +2577,15 @@ try:
 except Exception as _p116121_exc:  # noqa: BLE001
     logger.warning("Phase-116-121 decipherment nodes not registered: %s", _p116121_exc)
 
+# ── Phase-122-123 nodes (syllabic SA, Munda/BMAC substrate) ──
+try:
+    from glossa_lab.experiment_graph_phase122_123 import _phase122_123_node_defs as _p122123_defs  # noqa: PLC0415
+    for _d in _p122123_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-122-123 decipherment nodes", len(list(_p122123_defs())))
+except Exception as _p122123_exc:  # noqa: BLE001
+    logger.warning("Phase-122-123 decipherment nodes not registered: %s", _p122123_exc)
+
 
 # ── Graph execution
 

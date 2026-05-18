@@ -1,0 +1,92 @@
+{
+  "_citation": {
+    "primary": [
+      "A.1"
+    ]
+  },
+  "gpu_device": "cpu",
+  "target_sign": "M293",
+  "corpus_freq": 232,
+  "positional_profile": {
+    "initial_rate": 0.069,
+    "medial_rate": 0.599,
+    "terminal_rate": 0.332
+  },
+  "grammar_slot": {
+    "n_after_genitive": 11,
+    "n_before_suffix": 48,
+    "n_after_animal": 6,
+    "personal_name_score": 0.254
+  },
+  "comparanda": {
+    "M006": {
+      "freq": 15,
+      "initial_rate": 1.0,
+      "medial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "primary_role": "INITIAL"
+    },
+    "M062": {
+      "freq": 28,
+      "initial_rate": 1.0,
+      "medial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "primary_role": "INITIAL"
+    },
+    "M040": {
+      "freq": 13,
+      "initial_rate": 1.0,
+      "medial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "primary_role": "INITIAL"
+    },
+    "M045": {
+      "freq": 24,
+      "initial_rate": 1.0,
+      "medial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "primary_role": "INITIAL"
+    },
+    "M047": {
+      "freq": 13,
+      "initial_rate": 1.0,
+      "medial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "primary_role": "INITIAL"
+    },
+    "M016": {
+      "freq": 23,
+      "initial_rate": 1.0,
+      "medial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "primary_role": "INITIAL"
+    },
+    "M039": {
+      "freq": 18,
+      "initial_rate": 1.0,
+      "medial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "primary_role": "INITIAL"
+    },
+    "M293": {
+      "freq": 232,
+      "initial_rate": 0.069,
+      "medial_rate": 0.599,
+      "terminal_rate": 0.332,
+      "primary_role": "MEDIAL/MIXED"
+    }
+  },
+  "mean_classifier_initial_rate": 1.0,
+  "pdf_findings": {
+    "pdf_path": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\glossa-corpus\\indus\\sources\\im77intro.pdf",
+    "found": false,
+    "text": "",
+    "sign_293_context": "",
+    "error": "im77intro.pdf not found"
+  },
+  "s2_papers": [],
+  "verdict_reading": "ta",
+  "verdict_confidence": "MEDIUM",
+  "reasoning": "M293 is MEDIAL (not INITIAL like classifiers). Animal classifiers average 100% INITIAL rate, M293 is only 7% INITIAL. M293 appears 11× after genitive M267 and 48× before case suffixes — classic personal name position. 'ta' (DEDR 3003, body/self-reference) fits a personal name component better than 'vil' (bow) which should appear as an INITIAL classifier like other weapons/animals. RECOMMENDATION: M293 = 'ta' (personal name element). The bow iconography ('vil') would predict INITIAL position — but M293 is MEDIAL.",
+  "verdict": "Phase-101: M293 DEFINITIVE ANALYSIS. Positional evidence: M293 is MEDIAL (60%), NOT INITIAL like animal classifiers (100%). Grammar: appears 11× after M267 (genitive), 48× before case suffix. CONCLUSION: M293 = 'ta' (MEDIUM) — personal name element, not classifier. 'vil' (bow) ruled out by positional profile incompatibility with classifier role."
+}

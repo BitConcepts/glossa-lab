@@ -906,10 +906,11 @@
       "gloss": "scorpion [tee/tii]"
     },
     "M293": {
-      "reading": "vil",
-      "confidence": "LOW",
-      "source": "Phase-50",
-      "gloss": "comb [vil = bow/tooth]"
+      "confidence": "MEDIUM",
+      "reading": "ta",
+      "dedr_id": "DEDR 3003",
+      "meaning": "body/self — personal name element",
+      "source": "Phase-101 positional adjudication"
     },
     "M058": {
       "reading": "ke",
@@ -1103,7 +1104,7 @@
   "metadata": {
     "total_count": 182,
     "high_count": 37,
-    "medium_count": 87,
+    "medium_count": 88,
     "low_count": 66
   }
 }

@@ -1,5 +1,5 @@
 {
-  "total": 174,
+  "total": 177,
   "anchors": {
     "M342": {
       "reading": "ay/ā",
@@ -340,9 +340,13 @@
       "basis": "Round 2: INITIAL position (freq=14), distributional assignment; UPGRADED-V18: HIGH-anchor collocate M267 (n=4); has specific PDR reading"
     },
     "M042": {
-      "reading": "māṭu",
-      "confidence": "LOW",
-      "basis": "Round 2: INITIAL position (freq=13), distributional assignment"
+      "confidence": "MEDIUM",
+      "reading": "vaN",
+      "dedr_id": "DEDR 5231",
+      "meaning": "arch/bow",
+      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+      "corpus_freq": 13,
+      "evidence_score": 1.7
     },
     "M040": {
       "reading": "mutalai",
@@ -401,9 +405,13 @@
       "basis": "Round 3: INITIAL position (freq=12), distributional assignment"
     },
     "M055": {
-      "reading": "vaḷ",
-      "confidence": "LOW",
-      "basis": "Round 3: INITIAL position (freq=12), distributional assignment"
+      "confidence": "MEDIUM",
+      "reading": "miN3",
+      "dedr_id": "DEDR 4826",
+      "meaning": "fish+3",
+      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+      "corpus_freq": 12,
+      "evidence_score": 1.7
     },
     "M028": {
       "reading": "cōḻ",
@@ -443,14 +451,22 @@
       "evidence_score": 2.2
     },
     "M046": {
-      "reading": "nal",
-      "confidence": "LOW",
-      "basis": "Round 3: INITIAL position (freq=11), distributional assignment"
+      "confidence": "MEDIUM",
+      "reading": "kaL",
+      "dedr_id": "DEDR 1286",
+      "meaning": "leg/stem",
+      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+      "corpus_freq": 11,
+      "evidence_score": 1.7
     },
     "M032": {
-      "reading": "nal",
-      "confidence": "LOW",
-      "basis": "Round 3: INITIAL position (freq=9), distributional assignment"
+      "confidence": "MEDIUM",
+      "reading": "koL",
+      "dedr_id": "DEDR 2173",
+      "meaning": "take/hold",
+      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+      "corpus_freq": 9,
+      "evidence_score": 1.6
     },
     "M169": {
       "reading": "ney",
@@ -616,9 +632,13 @@
       "evidence_score": 2.5
     },
     "M108": {
-      "reading": "nāḷ",
-      "confidence": "LOW",
-      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+      "confidence": "MEDIUM",
+      "reading": "kaL",
+      "dedr_id": "DEDR 1286",
+      "meaning": "wheel/circle",
+      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+      "corpus_freq": 5,
+      "evidence_score": 1.6
     },
     "M231": {
       "reading": "ēṟ",
@@ -903,10 +923,13 @@
       "gloss": "jar/pot [kuTam]"
     },
     "M220": {
-      "reading": "ke",
-      "confidence": "LOW",
-      "source": "Phase-50 DEDR",
-      "gloss": "to gore with horns (said of buffaloes and bison, which sway the horns from side to side)"
+      "confidence": "MEDIUM",
+      "reading": "al",
+      "dedr_id": "DEDR 0180",
+      "meaning": "not/without",
+      "source": "Phase-89 systematic DEDR (PHON, MEDIUM)",
+      "corpus_freq": 62,
+      "evidence_score": 1.6
     },
     "M052": {
       "reading": "ta",
@@ -985,6 +1008,33 @@
       "source": "Phase-89 systematic DEDR (ICON, HIGH)",
       "corpus_freq": 3,
       "evidence_score": 2.1
+    },
+    "M056": {
+      "confidence": "MEDIUM",
+      "reading": "miN4",
+      "dedr_id": "DEDR 4826",
+      "meaning": "fish+4",
+      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+      "corpus_freq": 19,
+      "evidence_score": 1.7
+    },
+    "M118": {
+      "confidence": "MEDIUM",
+      "reading": "car",
+      "dedr_id": "DEDR 2446",
+      "meaning": "turn/wheel",
+      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+      "corpus_freq": 3,
+      "evidence_score": 1.6
+    },
+    "M130": {
+      "confidence": "MEDIUM",
+      "reading": "mui",
+      "dedr_id": "DEDR 4951",
+      "meaning": "sprout/shoot",
+      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+      "corpus_freq": 3,
+      "evidence_score": 1.6
     }
   },
   "_citation": {
@@ -1013,9 +1063,9 @@
   },
   "_cleanup_note": "2026-05-17: Removed 196 nīr/INIT/TERM/MED placeholder entries from V8-V24 autonomous loops. Retained 137 real anchors.",
   "metadata": {
-    "total_count": 174,
+    "total_count": 177,
     "high_count": 37,
-    "medium_count": 72,
+    "medium_count": 81,
     "low_count": 66
   }
 }

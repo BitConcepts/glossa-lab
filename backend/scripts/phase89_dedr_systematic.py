@@ -214,8 +214,8 @@ def main():
         print(f"  {c['sign']:6s} {c['reading']:8s} {c['evidence_score']:4.1f}  "
               f"{c['corpus_freq']:5d} {mine_mark:4s}  {c['basis']} ({c['icon_confidence']})")
 
-    # Promote top candidates with score >= 1.8
-    PROMOTION_THRESHOLD = 1.8
+    # Promote top candidates with score >= 1.6 (expanded sprint to reach 120)
+    PROMOTION_THRESHOLD = 1.6
     promoted = []
     for c in candidates:
         if c["evidence_score"] < PROMOTION_THRESHOLD: break

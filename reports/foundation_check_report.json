@@ -1,5 +1,5 @@
 {
-  "n_ok": 45,
+  "n_ok": 51,
   "n_fail": 0,
   "n_warn": 6,
   "passed": [
@@ -47,7 +47,13 @@
     "[OK]   Phase-67 Dravidian lift > Sanskrit lift: Dravidian 23.4% vs Sanskrit 12.6% (ratio=1.85x)",
     "[OK]   Phase-67 lift ratio >= 1.5x: ratio=1.85x (VERIFIED if >=1.5)",
     "[OK]   Phase-69 grammar invariant >= 75%: 100% of HIGH/MEDIUM signs show consistent grammar across all 9 sites",
-    "[OK]   Phase-71 corpus token coverage >= 80%: 84.5% token coverage, 115/390 signs mapped"
+    "[OK]   Phase-71 corpus token coverage >= 80%: 84.5% token coverage, 115/390 signs mapped",
+    "[OK]   Phase-132 M267 motif-independence p > 0.05: \u03c7\u00b2=12.98 p=0.1124 \u2014 UNIFORM=genitive particle confirmed",
+    "[OK]   Phase-132 Parpola HIGH agreement >= 90%: HIGH anchors vs Parpola 1994: 95.5%",
+    "[OK]   Phase-133 genuine H+M anchors >= 150: 157 genuine phonetically-anchored signs (excludes kur-parking placeholders)",
+    "[OK]   Phase-133 genuine token coverage >= 88%: 90.75% token coverage (genuine readings only, not parking placeholders)",
+    "[OK]   Phase-133 seals fully decoded >= 65%: 1154/1670 (69.1%) seals fully decoded with genuine H+M set",
+    "[OK]   Phase-133 grammar explained variance >= 40%: Sign-position accuracy=44.3%; full match=5.1% (relaxed definition)"
   ],
   "failed": [],
   "warnings": [

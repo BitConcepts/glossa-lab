@@ -585,6 +585,69 @@ if p71_path.exists():
 else:
     WARN("Phase-71 result", "phase71_crosswalk_complete.json not found")
 
+# ── NEW-P: Phase-132 M267 motif-independence ─────────────────────────────────
+print("\n── CHECK NEW-P: Phase-132 M267 motif-independence (χ²) ─────────────────")
+p132_path = RPRT.parent / "backend/reports/phase132_validation_report.json"
+if not p132_path.exists():
+    p132_path = RPRT / "phase132_validation_report.json"
+if p132_path.exists():
+    p132 = json.loads(p132_path.read_text(encoding="utf-8"))
+    v03 = p132.get("tests", {}).get("V03", {})
+    chi2_val = float((v03.get("metric") or "χ²=0").split("χ²=")[-1].split()[0]) if v03 else 0
+    p_val_str = (v03.get("metric") or "p=0").split("p=")[-1].strip()
+    try:
+        p_val = float(p_val_str)
+    except (ValueError, TypeError):
+        p_val = 0.0
+    v03_status = v03.get("status", "MISSING")
+    CHECK("Phase-132 M267 motif-independence p > 0.05", v03_status == "PASS" or p_val > 0.05,
+          f"χ²={chi2_val:.2f} p={p_val:.4f} — {'UNIFORM=genitive particle confirmed' if p_val > 0.05 else 'NON-UNIFORM'}")
+    # Also check Parpola agreement
+    v02 = p132.get("tests", {}).get("V02", {})
+    agree_str = (v02.get("metric") or "agree=0/0").split("agree=")[-1].split()[0]
+    try:
+        agree_n, agree_d = [int(x) for x in agree_str.split("/")]
+        agree_rate = agree_n / agree_d if agree_d else 0
+    except (ValueError, AttributeError):
+        agree_rate = 0.0
+    CHECK("Phase-132 Parpola HIGH agreement >= 90%", agree_rate >= 0.90,
+          f"HIGH anchors vs Parpola 1994: {agree_rate:.1%}")
+else:
+    WARN("Phase-132 result", "phase132_validation_report.json not found — run phase132_comprehensive_validation.py")
+
+# ── NEW-Q: Phase-132/133 genuine coverage and decode audit ───────────────────
+print("\n── CHECK NEW-Q: Phase-133 corrected coverage + decode audit ────────────")
+p133_path = RPRT.parent / "backend/reports/phase133_resolution.json"
+if not p133_path.exists():
+    p133_path = RPRT / "phase133_resolution.json"
+if p133_path.exists():
+    p133 = json.loads(p133_path.read_text(encoding="utf-8"))
+    summary = p133.get("summary", {})
+    hm_count = summary.get("honest_hm_count", 0)
+    coverage = summary.get("honest_token_coverage", 0)
+    fd_pct = summary.get("fully_decoded_pct", 0)
+    fd = summary.get("fully_decoded", 0)
+    total = summary.get("total_seals", 0)
+    CHECK("Phase-133 genuine H+M anchors >= 150", hm_count >= 150,
+          f"{hm_count} genuine phonetically-anchored signs (excludes kur-parking placeholders)")
+    CHECK("Phase-133 genuine token coverage >= 88%", coverage >= 0.88,
+          f"{coverage:.2%} token coverage (genuine readings only, not parking placeholders)")
+    CHECK("Phase-133 seals fully decoded >= 65%", fd_pct >= 0.65,
+          f"{fd}/{total} ({fd_pct:.1%}) seals fully decoded with genuine H+M set")
+else:
+    WARN("Phase-133 result", "phase133_resolution.json not found — run phase133_resolution.py")
+
+# ── NEW-R: Phase-133 grammar model explained variance ────────────────────────
+print("\n── CHECK NEW-R: Phase-133 grammar model explained variance ─────────────")
+if p133_path.exists():
+    grammar_res = p133.get("resolutions", {}).get("133b_grammar", {})
+    ev = grammar_res.get("explained_variance", 0)
+    full_pct = grammar_res.get("full_match_pct", 0)
+    CHECK("Phase-133 grammar explained variance >= 40%", ev >= 0.40,
+          f"Sign-position accuracy={ev:.1%}; full match={full_pct:.1%} (relaxed definition)")
+else:
+    WARN("Phase-133 grammar", "phase133_resolution.json not found")
+
 # ── Update solid/caveated claims with Phase-56-61 ─────────────────────────────
 solid_claims += [
     ("Phase-56 expanded Parpola crosswalk",

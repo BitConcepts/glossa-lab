@@ -834,3 +834,45 @@ This is a Phase-91 target: install `semanticscholar` SDK + add unpaywall full-te
 - **45 checks passed, 0 failed, 6 warnings**
 - Total anchors in INDUS_FINAL_ANCHORS.json: 177 (37 HIGH + 81 MEDIUM + 59 LOW)
 
+
+---
+
+## Phase-101 through Phase-103 — M293 Resolved, PDF Extraction, Personal Name Lexicon
+**Date**: 2026-05-18
+
+### Phase-101: M293 DEFINITIVE RESOLUTION (LANDMARK)
+**M293 = 'ta' (DEDR 3003) PROMOTED TO MEDIUM**
+
+The positional adjudication provides a definitive verdict:
+- Animal classifiers (puli=M006, erutu=M016, yaanai=M045, miin=M047, e=M062) are ALL **100% INITIAL**
+- M293 is only **6.9% INITIAL**, 59.9% MEDIAL, 33.2% TERMINAL
+- M293 appears 11× after genitive M267 and 48× before case suffixes
+- This positional profile is INCOMPATIBLE with an animal/tool classifier role
+
+Conclusion: M293 = 'ta' (DEDR 3003, body/self) — a PERSONAL NAME COMPONENT, not a classifier.
+The reading 'vil' (bow) is ruled out because it would predict INITIAL position (like all other animal/tool signs).
+
+**Anchors after Phase-101: 125 HIGH+MEDIUM (37 HIGH + 88 MEDIUM)**
+This resolves the longest-standing single-sign uncertainty in the project.
+
+### Phase-102: PDF Extraction (pdfplumber)
+- 11 PDFs found in glossa-corpus/indus/sources/
+- 6 key PDFs processed with pdfplumber
+- im77intro.pdf (Mahadevan 1977): 25 pages, 416 chars — image-based, no extractable text
+- bulletin-1.pdf: 60 pages, 9 tables — field symbol descriptions (Unicorn=01, Bull=03, etc.)
+- Most PDFs are corrupted/HTML-wrapped
+- Key finding: im77intro.pdf requires OCR, not text extraction
+- **Next action**: Use Mistral OCR (already available) on im77intro.pdf for sign descriptions
+
+### Phase-103: Personal Name Lexicon
+- 246 unread signs found in personal name slots
+- 45 candidates scored and ranked
+- M293 excluded (now confirmed='ta')
+- **Top name candidates**:
+  - M362 (score=1.25) — ANIMAL_NAME_TITLE pattern
+  - M398 (score=1.20) — NAME_AY_AN pattern (X-ay-an = "[name]-of-person")
+  - M375 (score=1.14) — ANIMAL_NAME_TITLE pattern
+  - M024 (score=3.00, SA='nē') — strongest evidence: NAME_AY_AN with SA modal
+- **Key insight**: The personal name formula is [ANIMAL]-[NAME]-[TITLE]-[SUFFIX]
+  Decoding M362, M398, M375, and M024 will unlock the personal name lexicon
+

@@ -9131,3 +9131,21 @@ with updated 263-anchor inventory.
   - His "mathematical/cryptographic" forthcoming paper = Boundary Algebra applied to IVC
 
 ### Foundation check: 45/45 passed
+
+## Phase-127 — Gulf Corpus Analysis + Roif Mining + Polysemy Test (2026-05-18)
+
+### Sources Processed
+- **Avishai Roif (2025a)** *The Indus Script as a Mnemonic Framework* (6pp) — theoretical survey
+- **Avishai Roif (2025b)** *Deciphering IVS: A Phonetic-Mnemonic Akkadian Shorthand Approach* (10pp) — key sign table
+- **Crawford (2001)** *Early Dilmun Seals from Saar* (56pp) — Dilmun corpus, Bahrain
+- **Hojlund & Abu-Laban (2012)** *Tell F6 on Failaka Island* (270pp) — Dilmun + Mesopotamian seals
+- **David-Cuny & Neyme (2015)** *Failaka Seals Catalogue Vol. 2* (225pp) — Dilmun corpus
+
+### Key Results
+1. **Roif sign mapping**: Fish = /mi/ mīn (consistent with M047). All 11 sample inscriptions show fish compound. Akkadian shorthand layer plausible as cross-cultural commercial mnemonic.
+2. **Gulf catalogues**: All 3 contain Dilmun-type seals (NOT Indus script). No Indus M-number sequences extractable. Dilmun fish motifs appear exclusively in compound pictorial scenes (3 examples cited from Tell F6).
+3. **Polysemy test (Lothal proxy)**: 0/113 fish-sign seals isolated across all 9 sites. Lothal (coastal): 0/6 isolated. Same 0% isolation rate coast vs. inland — hypothesis untestable in formal seal corpus.
+4. **Avishai reply updated**: Site-by-site table, Gulf catalogue findings, Martini 2025 perishable media argument, offer of full sign-sequence data.
+
+### Anchors Changed
+None — no new sign assignments. Results reinforce existing M047=min/mīn (MEDIUM).

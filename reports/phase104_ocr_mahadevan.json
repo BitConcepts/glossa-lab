@@ -1,0 +1,834 @@
+{
+  "phase": 104,
+  "method": "embedded sign database",
+  "pdf_path": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\glossa-corpus\\indus\\sources\\im77intro.pdf",
+  "pdf_found": false,
+  "n_ocr_mentions": 0,
+  "n_total_entries": 87,
+  "n_actionable_proposals": 14,
+  "n_new_medium": 4,
+  "n_new_low": 10,
+  "proposals": [
+    {
+      "sign": "M001",
+      "ocr_description": "fish sign (single fish, horizontal)",
+      "ocr_reading": "",
+      "iconographic_reading": "mīn",
+      "dedr": "DEDR 5009",
+      "basis": "fish = mīn (star/fish ambiguity resolved for M001 as pure fish)",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M002",
+      "ocr_description": "double fish sign",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M003",
+      "ocr_description": "three fish, vertical",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M004",
+      "ocr_description": "fish + suffix stroke",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M005",
+      "ocr_description": "crab / pincer sign",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M006",
+      "ocr_description": "tiger sign (head right)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M007",
+      "ocr_description": "short-horned bull (bison)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M008",
+      "ocr_description": "antelope (V-horns)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M009",
+      "ocr_description": "water buffalo",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M010",
+      "ocr_description": "hare sign",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M011",
+      "ocr_description": "crocodile",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M012",
+      "ocr_description": "single stroke (1)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M013",
+      "ocr_description": "gharial / makara",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M015",
+      "ocr_description": "two strokes (2)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M016",
+      "ocr_description": "elephant (full body)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M017",
+      "ocr_description": "hand / palm sign",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M018",
+      "ocr_description": "arrow / pointed sign",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M019",
+      "ocr_description": "bow sign",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M020",
+      "ocr_description": "mountain sign",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M022",
+      "ocr_description": "comb sign (5 tines)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M024",
+      "ocr_description": "potted-plant / sprout sign",
+      "ocr_reading": "",
+      "iconographic_reading": "nē",
+      "dedr": "DEDR 3741",
+      "basis": "potted-plant/sprout ~ nē 'sprout'; SA modal confirms nē (Phase-73)",
+      "confidence": "MEDIUM"
+    },
+    {
+      "sign": "M025",
+      "ocr_description": "sun / circle",
+      "ocr_reading": "",
+      "iconographic_reading": "vēl",
+      "dedr": "DEDR 5469",
+      "basis": "circle/sun ~ vel 'bright/victory'",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M026",
+      "ocr_description": "cross / plus sign",
+      "ocr_reading": "",
+      "iconographic_reading": "naṭu",
+      "dedr": "DEDR 3572",
+      "basis": "cross ~ naṭu 'middle/centre'",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M027",
+      "ocr_description": "leaf sign",
+      "ocr_reading": "",
+      "iconographic_reading": "ilaï",
+      "dedr": "DEDR 0486",
+      "basis": "leaf ~ ilaï",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M028",
+      "ocr_description": "triangle (pointing up)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M029",
+      "ocr_description": "triangle + stroke",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M030",
+      "ocr_description": "circled cross",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M031",
+      "ocr_description": "jar / vessel (plain)",
+      "ocr_reading": "",
+      "iconographic_reading": "kalam",
+      "dedr": "DEDR 1278",
+      "basis": "vessel/jar ~ kalam 'vessel'",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M032",
+      "ocr_description": "jar + stroke",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M033",
+      "ocr_description": "double jar",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M034",
+      "ocr_description": "U-sign / cup",
+      "ocr_reading": "",
+      "iconographic_reading": "kuṭam",
+      "dedr": "DEDR 1626",
+      "basis": "U-cup ~ kuṭam 'pot/cup'",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M036",
+      "ocr_description": "hook sign",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M037",
+      "ocr_description": "S-sign / scroll",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M039",
+      "ocr_description": "elephant (head only)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M040",
+      "ocr_description": "zebu bull (short)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M041",
+      "ocr_description": "club / mace",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M044",
+      "ocr_description": "comb (3 tines)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M045",
+      "ocr_description": "elephant (long tusks)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M046",
+      "ocr_description": "twig / branch",
+      "ocr_reading": "",
+      "iconographic_reading": "maram",
+      "dedr": "DEDR 4711",
+      "basis": "twig/branch ~ maram 'tree'",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M047",
+      "ocr_description": "fish + two strokes",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M048",
+      "ocr_description": "loop / oval sign",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M050",
+      "ocr_description": "double-stroke jar",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M051",
+      "ocr_description": "flower / petal sign",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M057",
+      "ocr_description": "bull (full body, large)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M059",
+      "ocr_description": "7-stroke numeral or ruler",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M060",
+      "ocr_description": "rhinoceros",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M062",
+      "ocr_description": "zebu bull (head, large)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M063",
+      "ocr_description": "gharial (small)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M065",
+      "ocr_description": "open bracket",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M067",
+      "ocr_description": "rhino + stroke",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M068",
+      "ocr_description": "rhino + diacritic",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M073",
+      "ocr_description": "bull head + stroke (crown?)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M075",
+      "ocr_description": "ladder / grid sign",
+      "ocr_reading": "",
+      "iconographic_reading": "vaṭṭam",
+      "dedr": "DEDR 5230",
+      "basis": "ladder/grid ~ vaṭam 'grid/net'",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M077",
+      "ocr_description": "round-top sign",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M080",
+      "ocr_description": "tiger (crouching)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M086",
+      "ocr_description": "forked sign",
+      "ocr_reading": "",
+      "iconographic_reading": "piḷai",
+      "dedr": "DEDR 4178",
+      "basis": "forked sign ~ piḷai 'branch/fork'",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M087",
+      "ocr_description": "angle + bar",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M089",
+      "ocr_description": "dotted oval",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M099",
+      "ocr_description": "jar (tall, wide)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M102",
+      "ocr_description": "stacked strokes sign",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M107",
+      "ocr_description": "bow + arrow composite",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M117",
+      "ocr_description": "looped-head sign",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M125",
+      "ocr_description": "bow (drawn)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M145",
+      "ocr_description": "pincered/claw composite",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M153",
+      "ocr_description": "composite comb",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M162",
+      "ocr_description": "house/gate sign",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M169",
+      "ocr_description": "triangle composite",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M176",
+      "ocr_description": "man/person sign (standing)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M211",
+      "ocr_description": "tall loop composite",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M220",
+      "ocr_description": "star + diacritic",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M233",
+      "ocr_description": "settlement/town (walled)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M249",
+      "ocr_description": "boat / raft sign",
+      "ocr_reading": "",
+      "iconographic_reading": "tōṇi",
+      "dedr": "DEDR 3556",
+      "basis": "boat shape ~ tōṇi 'boat'",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M267",
+      "ocr_description": "fish + stroke (high-freq)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M293",
+      "ocr_description": "human figure (seated/praying)",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M305",
+      "ocr_description": "pinch / inverted V",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M311",
+      "ocr_description": "comb + stroke",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M328",
+      "ocr_description": "person + arm gesture",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M336",
+      "ocr_description": "chevron terminal",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M342",
+      "ocr_description": "terminal diamond / dot",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M347",
+      "ocr_description": "double triangle composite",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M362",
+      "ocr_description": "star burst / asterisk",
+      "ocr_reading": "",
+      "iconographic_reading": "aṇi",
+      "dedr": "DEDR 0145",
+      "basis": "starburst ~ aṇi 'ornament/adorn'; name-slot evidence (Phase-103)",
+      "confidence": "MEDIUM"
+    },
+    {
+      "sign": "M365",
+      "ocr_description": "comb + tail",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M367",
+      "ocr_description": "terminal ball / diamond large",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M375",
+      "ocr_description": "folded-arm sign",
+      "ocr_reading": "",
+      "iconographic_reading": "taṇṭu",
+      "dedr": "DEDR 3009",
+      "basis": "folded-arm ~ taṇṭu 'rod/staff'; NAME_AY_AN pattern (Phase-103)",
+      "confidence": "MEDIUM"
+    },
+    {
+      "sign": "M386",
+      "ocr_description": "angular composite",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M391",
+      "ocr_description": "numeral stroke composite",
+      "ocr_reading": "",
+      "iconographic_reading": "",
+      "dedr": "",
+      "basis": "",
+      "confidence": "LOW"
+    },
+    {
+      "sign": "M398",
+      "ocr_description": "hook + ring",
+      "ocr_reading": "",
+      "iconographic_reading": "kuṟi",
+      "dedr": "DEDR 1769",
+      "basis": "hook+ring ~ kuṟi 'mark/sign'; NAME_AY_AN+GENITIVE_NAME pattern (Phase-103)",
+      "confidence": "MEDIUM"
+    }
+  ],
+  "new_medium_proposals": [
+    {
+      "sign": "M024",
+      "ocr_description": "potted-plant / sprout sign",
+      "ocr_reading": "",
+      "iconographic_reading": "nē",
+      "dedr": "DEDR 3741",
+      "basis": "potted-plant/sprout ~ nē 'sprout'; SA modal confirms nē (Phase-73)",
+      "confidence": "MEDIUM"
+    },
+    {
+      "sign": "M362",
+      "ocr_description": "star burst / asterisk",
+      "ocr_reading": "",
+      "iconographic_reading": "aṇi",
+      "dedr": "DEDR 0145",
+      "basis": "starburst ~ aṇi 'ornament/adorn'; name-slot evidence (Phase-103)",
+      "confidence": "MEDIUM"
+    },
+    {
+      "sign": "M375",
+      "ocr_description": "folded-arm sign",
+      "ocr_reading": "",
+      "iconographic_reading": "taṇṭu",
+      "dedr": "DEDR 3009",
+      "basis": "folded-arm ~ taṇṭu 'rod/staff'; NAME_AY_AN pattern (Phase-103)",
+      "confidence": "MEDIUM"
+    },
+    {
+      "sign": "M398",
+      "ocr_description": "hook + ring",
+      "ocr_reading": "",
+      "iconographic_reading": "kuṟi",
+      "dedr": "DEDR 1769",
+      "basis": "hook+ring ~ kuṟi 'mark/sign'; NAME_AY_AN+GENITIVE_NAME pattern (Phase-103)",
+      "confidence": "MEDIUM"
+    }
+  ]
+}

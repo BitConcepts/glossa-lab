@@ -2550,6 +2550,15 @@ try:
 except Exception as _p101103_exc:  # noqa: BLE001
     logger.warning("Phase-101-103 decipherment nodes not registered: %s", _p101103_exc)
 
+# ── Phase-104-109 nodes (OCR, name signs, name SA, TB check, phon exhaustion, academic submit) ──
+try:
+    from glossa_lab.experiment_graph_phase104_109 import _phase104_109_node_defs as _p104109_defs  # noqa: PLC0415
+    for _d in _p104109_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-104-109 decipherment nodes", len(list(_p104109_defs())))
+except Exception as _p104109_exc:  # noqa: BLE001
+    logger.warning("Phase-104-109 decipherment nodes not registered: %s", _p104109_exc)
+
 
 # ── Graph execution
 

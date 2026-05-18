@@ -1,0 +1,889 @@
+{
+  "phase": 107,
+  "n_proposals_checked": 45,
+  "n_tb_matched": 26,
+  "n_strong_match": 26,
+  "match_rate": 0.578,
+  "strong_match_rate": 0.578,
+  "validation_verdict": "STRONG",
+  "interpretation": "26 of 45 proposed Indus personal name readings (58%) match known Tamil-Brahmi personal name roots from the Sangam corpus (300 BCE–300 CE), supporting the Dravidian hypothesis.",
+  "check_results": [
+    {
+      "sign": "M024",
+      "proposed_reading": "nē",
+      "n_tb_matches": 1,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "nē",
+        "similarity": "exact",
+        "dedr": "3741",
+        "period": "Sangam",
+        "attested": "Nē-yan, Nē-yan-an",
+        "meaning": "you/true"
+      },
+      "all_matches": [
+        {
+          "tb_name": "nē",
+          "similarity": "exact",
+          "dedr": "3741",
+          "period": "Sangam",
+          "attested": "Nē-yan, Nē-yan-an",
+          "meaning": "you/true"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M362",
+      "proposed_reading": "aṇi",
+      "n_tb_matches": 2,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "aṇi",
+        "similarity": "exact",
+        "dedr": "0145",
+        "period": "Sangam",
+        "attested": "Aṇi-van, Aṇi-tan",
+        "meaning": "ornament/adorn"
+      },
+      "all_matches": [
+        {
+          "tb_name": "aṇi",
+          "similarity": "exact",
+          "dedr": "0145",
+          "period": "Sangam",
+          "attested": "Aṇi-van, Aṇi-tan",
+          "meaning": "ornament/adorn"
+        },
+        {
+          "tb_name": "aṇ",
+          "similarity": "strong",
+          "dedr": "0145",
+          "period": "Sangam",
+          "attested": "Aṇ-an, Aṇi-van",
+          "meaning": "ornament"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M375",
+      "proposed_reading": "taṇ",
+      "n_tb_matches": 3,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "taṇ",
+        "similarity": "exact",
+        "dedr": "3009",
+        "period": "Sangam",
+        "attested": "Taṇ-van, Taṇ-avan",
+        "meaning": "cool/refreshing"
+      },
+      "all_matches": [
+        {
+          "tb_name": "taṇ",
+          "similarity": "exact",
+          "dedr": "3009",
+          "period": "Sangam",
+          "attested": "Taṇ-van, Taṇ-avan",
+          "meaning": "cool/refreshing"
+        },
+        {
+          "tb_name": "ta",
+          "similarity": "strong",
+          "dedr": "3003",
+          "period": "Sangam",
+          "attested": "Ta-van, Ta-man",
+          "meaning": "self"
+        },
+        {
+          "tb_name": "tan",
+          "similarity": "partial",
+          "dedr": "3136",
+          "period": "Sangam",
+          "attested": "Tan-van, Tan-ai",
+          "meaning": "self/cool"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M398",
+      "proposed_reading": "kuṟi",
+      "n_tb_matches": 1,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "kuṟi",
+        "similarity": "exact",
+        "dedr": "1769",
+        "period": "Sangam",
+        "attested": "Kuṟi-van, Kuṟi-van",
+        "meaning": "mark/sign"
+      },
+      "all_matches": [
+        {
+          "tb_name": "kuṟi",
+          "similarity": "exact",
+          "dedr": "1769",
+          "period": "Sangam",
+          "attested": "Kuṟi-van, Kuṟi-van",
+          "meaning": "mark/sign"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M102",
+      "proposed_reading": "campakam",
+      "n_tb_matches": 0,
+      "has_strong_match": false,
+      "best_tb_match": null,
+      "all_matches": [],
+      "external_matches": []
+    },
+    {
+      "sign": "M169",
+      "proposed_reading": "mu",
+      "n_tb_matches": 2,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "mu",
+        "similarity": "exact",
+        "dedr": "5012",
+        "period": "Sangam",
+        "attested": "Mu-van, Muṉ-an",
+        "meaning": "face/three"
+      },
+      "all_matches": [
+        {
+          "tb_name": "mu",
+          "similarity": "exact",
+          "dedr": "5012",
+          "period": "Sangam",
+          "attested": "Mu-van, Muṉ-an",
+          "meaning": "face/three"
+        },
+        {
+          "tb_name": "mur",
+          "similarity": "strong",
+          "dedr": "5011",
+          "period": "Sangam",
+          "attested": "Mur-an, Mur-ugan",
+          "meaning": "young/divine"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M153",
+      "proposed_reading": "arut",
+      "n_tb_matches": 1,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "ar",
+        "similarity": "strong",
+        "dedr": "0359",
+        "period": "Sangam",
+        "attested": "Ar-an, Ār-van",
+        "meaning": "rare/great"
+      },
+      "all_matches": [
+        {
+          "tb_name": "ar",
+          "similarity": "strong",
+          "dedr": "0359",
+          "period": "Sangam",
+          "attested": "Ar-an, Ār-van",
+          "meaning": "rare/great"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M365",
+      "proposed_reading": "tetukal",
+      "n_tb_matches": 0,
+      "has_strong_match": false,
+      "best_tb_match": null,
+      "all_matches": [],
+      "external_matches": []
+    },
+    {
+      "sign": "M386",
+      "proposed_reading": "itanai",
+      "n_tb_matches": 0,
+      "has_strong_match": false,
+      "best_tb_match": null,
+      "all_matches": [],
+      "external_matches": []
+    },
+    {
+      "sign": "M347",
+      "proposed_reading": "vel",
+      "n_tb_matches": 1,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "vel",
+        "similarity": "exact",
+        "dedr": "5469",
+        "period": "Sangam (300 BCE–300 CE)",
+        "attested": "Vel-an, Vel-ir clan",
+        "meaning": "spear/victory"
+      },
+      "all_matches": [
+        {
+          "tb_name": "vel",
+          "similarity": "exact",
+          "dedr": "5469",
+          "period": "Sangam (300 BCE–300 CE)",
+          "attested": "Vel-an, Vel-ir clan",
+          "meaning": "spear/victory"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M198",
+      "proposed_reading": "ko",
+      "n_tb_matches": 1,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "ko",
+        "similarity": "exact",
+        "dedr": "1570",
+        "period": "Sangam-coin",
+        "attested": "Ko-cen, Ko-pperu",
+        "meaning": "king"
+      },
+      "all_matches": [
+        {
+          "tb_name": "ko",
+          "similarity": "exact",
+          "dedr": "1570",
+          "period": "Sangam-coin",
+          "attested": "Ko-cen, Ko-pperu",
+          "meaning": "king"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M332",
+      "proposed_reading": "intu",
+      "n_tb_matches": 0,
+      "has_strong_match": false,
+      "best_tb_match": null,
+      "all_matches": [],
+      "external_matches": []
+    },
+    {
+      "sign": "M304",
+      "proposed_reading": "ko",
+      "n_tb_matches": 1,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "ko",
+        "similarity": "exact",
+        "dedr": "1570",
+        "period": "Sangam-coin",
+        "attested": "Ko-cen, Ko-pperu",
+        "meaning": "king"
+      },
+      "all_matches": [
+        {
+          "tb_name": "ko",
+          "similarity": "exact",
+          "dedr": "1570",
+          "period": "Sangam-coin",
+          "attested": "Ko-cen, Ko-pperu",
+          "meaning": "king"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M354",
+      "proposed_reading": "van",
+      "n_tb_matches": 1,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "van",
+        "similarity": "exact",
+        "dedr": "5231",
+        "period": "Sangam",
+        "attested": "Van-an, Van-avar",
+        "meaning": "strong/mighty"
+      },
+      "all_matches": [
+        {
+          "tb_name": "van",
+          "similarity": "exact",
+          "dedr": "5231",
+          "period": "Sangam",
+          "attested": "Van-an, Van-avar",
+          "meaning": "strong/mighty"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M351",
+      "proposed_reading": "kuṟi",
+      "n_tb_matches": 1,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "kuṟi",
+        "similarity": "exact",
+        "dedr": "1769",
+        "period": "Sangam",
+        "attested": "Kuṟi-van, Kuṟi-van",
+        "meaning": "mark/sign"
+      },
+      "all_matches": [
+        {
+          "tb_name": "kuṟi",
+          "similarity": "exact",
+          "dedr": "1769",
+          "period": "Sangam",
+          "attested": "Kuṟi-van, Kuṟi-van",
+          "meaning": "mark/sign"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M149",
+      "proposed_reading": "nal",
+      "n_tb_matches": 2,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "nal",
+        "similarity": "exact",
+        "dedr": "3569",
+        "period": "Sangam",
+        "attested": "Nal-an, Nal-li",
+        "meaning": "good/excellent"
+      },
+      "all_matches": [
+        {
+          "tb_name": "nal",
+          "similarity": "exact",
+          "dedr": "3569",
+          "period": "Sangam",
+          "attested": "Nal-an, Nal-li",
+          "meaning": "good/excellent"
+        },
+        {
+          "tb_name": "na",
+          "similarity": "strong",
+          "dedr": "3549",
+          "period": "Sangam",
+          "attested": "Na-van, Nā-van",
+          "meaning": "tongue/word"
+        }
+      ],
+      "external_matches": [
+        {
+          "tb_name": "names"
+        }
+      ]
+    },
+    {
+      "sign": "M185",
+      "proposed_reading": "uruva",
+      "n_tb_matches": 1,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "ur",
+        "similarity": "strong",
+        "dedr": "0728",
+        "period": "Sangam-TB",
+        "attested": "Ur-an, Ūr-an",
+        "meaning": "settlement/bold"
+      },
+      "all_matches": [
+        {
+          "tb_name": "ur",
+          "similarity": "strong",
+          "dedr": "0728",
+          "period": "Sangam-TB",
+          "attested": "Ur-an, Ūr-an",
+          "meaning": "settlement/bold"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M245",
+      "proposed_reading": "atkku",
+      "n_tb_matches": 0,
+      "has_strong_match": false,
+      "best_tb_match": null,
+      "all_matches": [],
+      "external_matches": []
+    },
+    {
+      "sign": "M383",
+      "proposed_reading": "pirappokkum",
+      "n_tb_matches": 0,
+      "has_strong_match": false,
+      "best_tb_match": null,
+      "all_matches": [],
+      "external_matches": []
+    },
+    {
+      "sign": "M277",
+      "proposed_reading": "arut",
+      "n_tb_matches": 1,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "ar",
+        "similarity": "strong",
+        "dedr": "0359",
+        "period": "Sangam",
+        "attested": "Ar-an, Ār-van",
+        "meaning": "rare/great"
+      },
+      "all_matches": [
+        {
+          "tb_name": "ar",
+          "similarity": "strong",
+          "dedr": "0359",
+          "period": "Sangam",
+          "attested": "Ar-an, Ār-van",
+          "meaning": "rare/great"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M355",
+      "proposed_reading": "arici",
+      "n_tb_matches": 1,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "ar",
+        "similarity": "strong",
+        "dedr": "0359",
+        "period": "Sangam",
+        "attested": "Ar-an, Ār-van",
+        "meaning": "rare/great"
+      },
+      "all_matches": [
+        {
+          "tb_name": "ar",
+          "similarity": "strong",
+          "dedr": "0359",
+          "period": "Sangam",
+          "attested": "Ar-an, Ār-van",
+          "meaning": "rare/great"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M374",
+      "proposed_reading": "tuyarinum",
+      "n_tb_matches": 1,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "tu",
+        "similarity": "strong",
+        "dedr": "3385",
+        "period": "Sangam",
+        "attested": "Tu-van, Tuṉ-an",
+        "meaning": "pierce/noble"
+      },
+      "all_matches": [
+        {
+          "tb_name": "tu",
+          "similarity": "strong",
+          "dedr": "3385",
+          "period": "Sangam",
+          "attested": "Tu-van, Tuṉ-an",
+          "meaning": "pierce/noble"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M350",
+      "proposed_reading": "ma",
+      "n_tb_matches": 1,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "ma",
+        "similarity": "exact",
+        "dedr": "4751",
+        "period": "Sangam",
+        "attested": "Ma-van, Maṟ-avan",
+        "meaning": "tree/great"
+      },
+      "all_matches": [
+        {
+          "tb_name": "ma",
+          "similarity": "exact",
+          "dedr": "4751",
+          "period": "Sangam",
+          "attested": "Ma-van, Maṟ-avan",
+          "meaning": "tree/great"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M272",
+      "proposed_reading": "arivaal",
+      "n_tb_matches": 1,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "ar",
+        "similarity": "strong",
+        "dedr": "0359",
+        "period": "Sangam",
+        "attested": "Ar-an, Ār-van",
+        "meaning": "rare/great"
+      },
+      "all_matches": [
+        {
+          "tb_name": "ar",
+          "similarity": "strong",
+          "dedr": "0359",
+          "period": "Sangam",
+          "attested": "Ar-an, Ār-van",
+          "meaning": "rare/great"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M321",
+      "proposed_reading": "udan",
+      "n_tb_matches": 0,
+      "has_strong_match": false,
+      "best_tb_match": null,
+      "all_matches": [],
+      "external_matches": []
+    },
+    {
+      "sign": "M155",
+      "proposed_reading": "van",
+      "n_tb_matches": 1,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "van",
+        "similarity": "exact",
+        "dedr": "5231",
+        "period": "Sangam",
+        "attested": "Van-an, Van-avar",
+        "meaning": "strong/mighty"
+      },
+      "all_matches": [
+        {
+          "tb_name": "van",
+          "similarity": "exact",
+          "dedr": "5231",
+          "period": "Sangam",
+          "attested": "Van-an, Van-avar",
+          "meaning": "strong/mighty"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M103",
+      "proposed_reading": "par",
+      "n_tb_matches": 1,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "par",
+        "similarity": "exact",
+        "dedr": "3955",
+        "period": "Sangam",
+        "attested": "Par-an, Par-iyar",
+        "meaning": "great/old"
+      },
+      "all_matches": [
+        {
+          "tb_name": "par",
+          "similarity": "exact",
+          "dedr": "3955",
+          "period": "Sangam",
+          "attested": "Par-an, Par-iyar",
+          "meaning": "great/old"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M388",
+      "proposed_reading": "tharavan",
+      "n_tb_matches": 0,
+      "has_strong_match": false,
+      "best_tb_match": null,
+      "all_matches": [],
+      "external_matches": []
+    },
+    {
+      "sign": "M137",
+      "proposed_reading": "imu",
+      "n_tb_matches": 0,
+      "has_strong_match": false,
+      "best_tb_match": null,
+      "all_matches": [],
+      "external_matches": []
+    },
+    {
+      "sign": "M217",
+      "proposed_reading": "nal",
+      "n_tb_matches": 2,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "nal",
+        "similarity": "exact",
+        "dedr": "3569",
+        "period": "Sangam",
+        "attested": "Nal-an, Nal-li",
+        "meaning": "good/excellent"
+      },
+      "all_matches": [
+        {
+          "tb_name": "nal",
+          "similarity": "exact",
+          "dedr": "3569",
+          "period": "Sangam",
+          "attested": "Nal-an, Nal-li",
+          "meaning": "good/excellent"
+        },
+        {
+          "tb_name": "na",
+          "similarity": "strong",
+          "dedr": "3549",
+          "period": "Sangam",
+          "attested": "Na-van, Nā-van",
+          "meaning": "tongue/word"
+        }
+      ],
+      "external_matches": [
+        {
+          "tb_name": "names"
+        }
+      ]
+    },
+    {
+      "sign": "M318",
+      "proposed_reading": "orcu",
+      "n_tb_matches": 0,
+      "has_strong_match": false,
+      "best_tb_match": null,
+      "all_matches": [],
+      "external_matches": []
+    },
+    {
+      "sign": "M295",
+      "proposed_reading": "par",
+      "n_tb_matches": 1,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "par",
+        "similarity": "exact",
+        "dedr": "3955",
+        "period": "Sangam",
+        "attested": "Par-an, Par-iyar",
+        "meaning": "great/old"
+      },
+      "all_matches": [
+        {
+          "tb_name": "par",
+          "similarity": "exact",
+          "dedr": "3955",
+          "period": "Sangam",
+          "attested": "Par-an, Par-iyar",
+          "meaning": "great/old"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M148",
+      "proposed_reading": "pon",
+      "n_tb_matches": 1,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "pon",
+        "similarity": "exact",
+        "dedr": "4533",
+        "period": "Sangam",
+        "attested": "Pon-an",
+        "meaning": "gold"
+      },
+      "all_matches": [
+        {
+          "tb_name": "pon",
+          "similarity": "exact",
+          "dedr": "4533",
+          "period": "Sangam",
+          "attested": "Pon-an",
+          "meaning": "gold"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M251",
+      "proposed_reading": "akkam",
+      "n_tb_matches": 0,
+      "has_strong_match": false,
+      "best_tb_match": null,
+      "all_matches": [],
+      "external_matches": []
+    },
+    {
+      "sign": "M301",
+      "proposed_reading": "innaatha",
+      "n_tb_matches": 0,
+      "has_strong_match": false,
+      "best_tb_match": null,
+      "all_matches": [],
+      "external_matches": []
+    },
+    {
+      "sign": "M346",
+      "proposed_reading": "aalvar",
+      "n_tb_matches": 0,
+      "has_strong_match": false,
+      "best_tb_match": null,
+      "all_matches": [],
+      "external_matches": []
+    },
+    {
+      "sign": "M127",
+      "proposed_reading": "alanku",
+      "n_tb_matches": 0,
+      "has_strong_match": false,
+      "best_tb_match": null,
+      "all_matches": [],
+      "external_matches": []
+    },
+    {
+      "sign": "M120",
+      "proposed_reading": "onru",
+      "n_tb_matches": 0,
+      "has_strong_match": false,
+      "best_tb_match": null,
+      "all_matches": [],
+      "external_matches": []
+    },
+    {
+      "sign": "M178",
+      "proposed_reading": "vil",
+      "n_tb_matches": 1,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "vil",
+        "similarity": "exact",
+        "dedr": "5428",
+        "period": "Sangam",
+        "attested": "Vil-an, Vil-li",
+        "meaning": "bow/archer"
+      },
+      "all_matches": [
+        {
+          "tb_name": "vil",
+          "similarity": "exact",
+          "dedr": "5428",
+          "period": "Sangam",
+          "attested": "Vil-an, Vil-li",
+          "meaning": "bow/archer"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M218",
+      "proposed_reading": "ariv",
+      "n_tb_matches": 1,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "ar",
+        "similarity": "strong",
+        "dedr": "0359",
+        "period": "Sangam",
+        "attested": "Ar-an, Ār-van",
+        "meaning": "rare/great"
+      },
+      "all_matches": [
+        {
+          "tb_name": "ar",
+          "similarity": "strong",
+          "dedr": "0359",
+          "period": "Sangam",
+          "attested": "Ar-an, Ār-van",
+          "meaning": "rare/great"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M294",
+      "proposed_reading": "aana",
+      "n_tb_matches": 0,
+      "has_strong_match": false,
+      "best_tb_match": null,
+      "all_matches": [],
+      "external_matches": []
+    },
+    {
+      "sign": "M291",
+      "proposed_reading": "tuti",
+      "n_tb_matches": 1,
+      "has_strong_match": true,
+      "best_tb_match": {
+        "tb_name": "tu",
+        "similarity": "strong",
+        "dedr": "3385",
+        "period": "Sangam",
+        "attested": "Tu-van, Tuṉ-an",
+        "meaning": "pierce/noble"
+      },
+      "all_matches": [
+        {
+          "tb_name": "tu",
+          "similarity": "strong",
+          "dedr": "3385",
+          "period": "Sangam",
+          "attested": "Tu-van, Tuṉ-an",
+          "meaning": "pierce/noble"
+        }
+      ],
+      "external_matches": []
+    },
+    {
+      "sign": "M313",
+      "proposed_reading": "cinkam",
+      "n_tb_matches": 0,
+      "has_strong_match": false,
+      "best_tb_match": null,
+      "all_matches": [],
+      "external_matches": []
+    },
+    {
+      "sign": "M329",
+      "proposed_reading": "solvan",
+      "n_tb_matches": 0,
+      "has_strong_match": false,
+      "best_tb_match": null,
+      "all_matches": [],
+      "external_matches": []
+    },
+    {
+      "sign": "M177",
+      "proposed_reading": "ivan",
+      "n_tb_matches": 0,
+      "has_strong_match": false,
+      "best_tb_match": null,
+      "all_matches": [],
+      "external_matches": []
+    }
+  ]
+}

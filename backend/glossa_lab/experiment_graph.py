@@ -2496,6 +2496,15 @@ try:
 except Exception as _p6266_exc:  # noqa: BLE001
     logger.warning("Phase-62-66 decipherment nodes not registered: %s", _p6266_exc)
 
+# ── Phase-67-73 nodes (Sanskrit norm, formula translation, M267 validation, site strat, crosswalk, parser) ──
+try:
+    from glossa_lab.experiment_graph_phase67_73 import _phase67_73_node_defs as _p6773_defs  # noqa: PLC0415
+    for _d in _p6773_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-67-73 decipherment nodes (GPU mandatory)", len(list(_p6773_defs())))
+except Exception as _p6773_exc:  # noqa: BLE001
+    logger.warning("Phase-67-73 decipherment nodes not registered: %s", _p6773_exc)
+
 
 # ── Graph execution
 

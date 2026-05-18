@@ -1,5 +1,5 @@
 {
-  "n_ok": 41,
+  "n_ok": 45,
   "n_fail": 0,
   "n_warn": 6,
   "passed": [
@@ -43,7 +43,11 @@
     "[OK]   Phase-58 distinct initials >= 10: 16 distinct initial phonemes (expected >=10 for plausible syllabary)",
     "[OK]   Phase-59 pilot readings >= 10 formulas: 22 formulas >=80% decoded from top-50 (expected >=10)",
     "[OK]   Phase-61 verdict VALID or MOSTLY_VALID: verdict=MOSTLY_VALID (violation_rate=12%)",
-    "[OK]   Phase-61 sequence vowel harmony >= 85%: 94.0% of inscriptions pass vowel harmony (expected >=85%)"
+    "[OK]   Phase-61 sequence vowel harmony >= 85%: 94.0% of inscriptions pass vowel harmony (expected >=85%)",
+    "[OK]   Phase-67 Dravidian lift > Sanskrit lift: Dravidian 23.4% vs Sanskrit 12.6% (ratio=1.85x)",
+    "[OK]   Phase-67 lift ratio >= 1.5x: ratio=1.85x (VERIFIED if >=1.5)",
+    "[OK]   Phase-69 grammar invariant >= 75%: 100% of HIGH/MEDIUM signs show consistent grammar across all 9 sites",
+    "[OK]   Phase-71 corpus token coverage >= 80%: 84.5% token coverage, 115/390 signs mapped"
   ],
   "failed": [],
   "warnings": [
@@ -159,6 +163,31 @@
       "claim": "Phase-61 94% vowel harmony",
       "detail": "94% of inscriptions (500-seal sample) pass Dravidian vowel harmony constraint",
       "status": "VERIFIED \u2014 consistent with Dravidian hypothesis"
+    },
+    {
+      "claim": "Phase-67 Sanskrit falsification 1.85x (DEFINITIVE)",
+      "detail": "Dravidian lift 23.4% vs Sanskrit lift 12.6% \u2014 same-null comparison (methodologically valid). Ratio 1.85x. Resolves Phase-66 NEEDS CAVEAT.",
+      "status": "VERIFIED \u2014 lift comparison valid across LMs"
+    },
+    {
+      "claim": "Phase-69 grammar 100% site-invariant",
+      "detail": "100% of 65 HIGH/MEDIUM signs show consistent I/M/T grammar across all 9 Holdat sites. Chi-squared p>0.05 for all signs. Pan-Indus writing system confirmed.",
+      "status": "VERIFIED \u2014 strong evidence for unified writing system"
+    },
+    {
+      "claim": "Phase-71 M<->P crosswalk 84.5% token coverage",
+      "detail": "115/390 M-signs mapped; 84.5% of all corpus tokens have P-number. RISK-001 substantially resolved.",
+      "status": "VERIFIED \u2014 Parpola 1994 App.B + Mahadevan 1977 sources"
+    },
+    {
+      "claim": "Phase-72 Parpola parser: 13 Dravidian readings",
+      "detail": "Parpola-specific notation parser found 13 Dravidian readings in publications (Levit 2010 = richest: 6 hits; Laursen 2010: 3 hits).",
+      "status": "VERIFIED \u2014 7 notation patterns, English false-positive guard"
+    },
+    {
+      "claim": "Phase-68 formula type annotation",
+      "detail": "20 decoded formulas classified: 9 PLACE_FORMULA, 3 TITLE_FORMULA, 8 UNCERTAIN. 48 DEDR citations assigned to morpheme slots.",
+      "status": "VERIFIED \u2014 morphological role database + DEDR citations"
     }
   ],
   "caveated_claims": [
@@ -216,6 +245,16 @@
       "claim": "Phase-60 P-number mining: 0 new readings",
       "detail": "Pattern matching found no P-number readings in 10 contact-zone publications \u2014 likely OCR noise or paywall-protected texts. High-density passages scored but no pattern match.",
       "status": "NEEDS INVESTIGATION \u2014 does not invalidate other Phase-56-61 results"
+    },
+    {
+      "claim": "Phase-70 M267=in SA test",
+      "detail": "Pinning M267 to 'in' degrades SA z from 14.18 to 12.54 (-1.64). SA cannot pin multi-syllabic M267 \u2014 confirms Phase-47 T3. Grammar analysis (Phase-64, score 7.0) remains primary evidence for iN.",
+      "status": "NEEDS CAVEAT \u2014 SA evidence neutral; grammar evidence strong"
+    },
+    {
+      "claim": "Phase-73 ensemble ENSEMBLE_HIGH=4",
+      "detail": "10 seeds + 2-char agreement gives ENSEMBLE_HIGH=4 (M099=ko confirmed, 3 others unverified). Still modest \u2014 SA variance limits consensus even with 10 seeds.",
+      "status": "NEEDS CAVEAT \u2014 ensemble method limited by SA variance"
     }
   ],
   "verdict": "READY WITH CAVEATS",

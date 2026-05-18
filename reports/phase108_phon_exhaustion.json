@@ -1,0 +1,455 @@
+{
+  "phase": 108,
+  "min_freq_threshold": 5,
+  "consistency_threshold": 0.4,
+  "n_confirmed_before": 129,
+  "n_candidates_swept": 48,
+  "n_newly_promoted": 1,
+  "newly_promoted_signs": [
+    "M332"
+  ],
+  "n_confirmed_after": 130,
+  "token_coverage": 0.882,
+  "estimated_decipherment_pct": 88.2,
+  "sweep_log": [
+    {
+      "sign": "M040",
+      "freq": 13,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M072",
+      "freq": 12,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M347",
+      "freq": 8,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M169",
+      "freq": 8,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M237",
+      "freq": 8,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M102",
+      "freq": 8,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M272",
+      "freq": 7,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M235",
+      "freq": 7,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M149",
+      "freq": 7,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M185",
+      "freq": 7,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M383",
+      "freq": 7,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M270",
+      "freq": 6,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M401",
+      "freq": 6,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M374",
+      "freq": 6,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M127",
+      "freq": 6,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M252",
+      "freq": 6,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M386",
+      "freq": 6,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M351",
+      "freq": 6,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M198",
+      "freq": 6,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M168",
+      "freq": 6,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M332",
+      "freq": 6,
+      "reading": "intu",
+      "source": "Phase-106",
+      "basis": "name_sa_sprint",
+      "dedr": "",
+      "confidence": "MEDIUM"
+    },
+    {
+      "sign": "M183",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M365",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M412",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M151",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M304",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M355",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M350",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M178",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M231",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M321",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M153",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M177",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M357",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M137",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M155",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M239",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M223",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M103",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M254",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M262",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M416",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M143",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M345",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M329",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M190",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M295",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    },
+    {
+      "sign": "M402",
+      "freq": 5,
+      "reading": "",
+      "source": "none",
+      "basis": "no_pd_valid_reading",
+      "ensemble_tier": "UNKNOWN",
+      "skipped": true
+    }
+  ],
+  "coverage_breakdown": {
+    "M332": {
+      "reading": "intu",
+      "confidence": "MEDIUM",
+      "freq": 6
+    }
+  }
+}

@@ -1,0 +1,329 @@
+{
+  "_citation": {
+    "primary": [
+      "A.1"
+    ]
+  },
+  "gpu_device": "cpu",
+  "n_anchors_processed": 101,
+  "n_consonants": 10,
+  "n_vowels": 6,
+  "pd_consonant_coverage_pct": 52.6,
+  "pd_vowel_coverage_pct": 50.0,
+  "pd_coverage_pct": 51.6,
+  "attested_consonants": [
+    "c",
+    "k",
+    "l",
+    "m",
+    "n",
+    "p",
+    "r",
+    "t",
+    "v",
+    "y",
+    "ḷ",
+    "ḻ",
+    "ṅ",
+    "ṇ",
+    "ṉ",
+    "ṟ",
+    "ṭ"
+  ],
+  "attested_vowels": [
+    "a",
+    "ai",
+    "e",
+    "i",
+    "o",
+    "u",
+    "ā",
+    "ē",
+    "ō",
+    "ū"
+  ],
+  "missing_consonants": [
+    "w",
+    "ñ",
+    "ḷ",
+    "ḻ",
+    "ṅ",
+    "ṇ",
+    "ṉ",
+    "ṟ",
+    "ṭ"
+  ],
+  "missing_vowels": [
+    "au",
+    "ā",
+    "ē",
+    "ī",
+    "ō",
+    "ū"
+  ],
+  "feature_contrasts": {
+    "dental_retroflex_stop": false,
+    "lateral_contrast": true,
+    "rhotic_contrast": true,
+    "long_vowels": true,
+    "front_back_vowel": true,
+    "nasal_contrast": true
+  },
+  "syllable_structure_distribution": {
+    "CV": 32,
+    "CVC": 31,
+    "V": 1,
+    "CVCV+": 29,
+    "CVV": 8
+  },
+  "per_reading_phonemes": [
+    {
+      "sign": "M342",
+      "reading": "ay/ā",
+      "consonants": [
+        "y"
+      ],
+      "vowels": [
+        "a"
+      ]
+    },
+    {
+      "sign": "M176",
+      "reading": "an/aṇ",
+      "consonants": [
+        "n"
+      ],
+      "vowels": [
+        "a"
+      ]
+    },
+    {
+      "sign": "M267",
+      "reading": "iN/in (genitive of)",
+      "consonants": [
+        "n"
+      ],
+      "vowels": [
+        "i"
+      ]
+    },
+    {
+      "sign": "M099",
+      "reading": "kol/koḷ",
+      "consonants": [
+        "k",
+        "l"
+      ],
+      "vowels": [
+        "o"
+      ]
+    },
+    {
+      "sign": "M233",
+      "reading": "ūr",
+      "consonants": [
+        "r"
+      ],
+      "vowels": [
+        "ū"
+      ]
+    },
+    {
+      "sign": "M391",
+      "reading": "ka/kaṇ",
+      "consonants": [
+        "k"
+      ],
+      "vowels": [
+        "a"
+      ]
+    },
+    {
+      "sign": "M162",
+      "reading": "il/iḷ",
+      "consonants": [
+        "l"
+      ],
+      "vowels": [
+        "i"
+      ]
+    },
+    {
+      "sign": "M328",
+      "reading": "ā/āl",
+      "consonants": [],
+      "vowels": [
+        "ā"
+      ]
+    },
+    {
+      "sign": "M059",
+      "reading": "ēḷ/eḷ",
+      "consonants": [
+        "ḷ"
+      ],
+      "vowels": [
+        "ē"
+      ]
+    },
+    {
+      "sign": "M051",
+      "reading": "pū/puḷ",
+      "consonants": [
+        "p"
+      ],
+      "vowels": [
+        "ū"
+      ]
+    },
+    {
+      "sign": "M089",
+      "reading": "tu/tū",
+      "consonants": [
+        "t"
+      ],
+      "vowels": [
+        "u"
+      ]
+    },
+    {
+      "sign": "M048",
+      "reading": "mu/muṉ",
+      "consonants": [
+        "m"
+      ],
+      "vowels": [
+        "u"
+      ]
+    },
+    {
+      "sign": "M367",
+      "reading": "am/neuter",
+      "consonants": [
+        "m"
+      ],
+      "vowels": [
+        "a"
+      ]
+    },
+    {
+      "sign": "M336",
+      "reading": "iṉ/locative",
+      "consonants": [
+        "ṉ"
+      ],
+      "vowels": [
+        "i"
+      ]
+    },
+    {
+      "sign": "M012",
+      "reading": "oṉṟu/1",
+      "consonants": [
+        "ṉ",
+        "ṟ"
+      ],
+      "vowels": [
+        "o",
+        "u"
+      ]
+    },
+    {
+      "sign": "M305",
+      "reading": "ōṭu/comitative",
+      "consonants": [
+        "ṭ"
+      ],
+      "vowels": [
+        "ō",
+        "u"
+      ]
+    },
+    {
+      "sign": "M062",
+      "reading": "erutu",
+      "consonants": [
+        "r",
+        "t"
+      ],
+      "vowels": [
+        "e",
+        "u",
+        "u"
+      ]
+    },
+    {
+      "sign": "M073",
+      "reading": "kōṉ",
+      "consonants": [
+        "k",
+        "ṉ"
+      ],
+      "vowels": [
+        "ō"
+      ]
+    },
+    {
+      "sign": "M045",
+      "reading": "yānai",
+      "consonants": [
+        "y",
+        "n"
+      ],
+      "vowels": [
+        "ā",
+        "ai"
+      ]
+    },
+    {
+      "sign": "M016",
+      "reading": "kaḷiṟu",
+      "consonants": [
+        "k",
+        "ḷ",
+        "ṟ"
+      ],
+      "vowels": [
+        "a",
+        "i",
+        "u"
+      ]
+    }
+  ],
+  "zvelebil_1970_consonant_inventory": [
+    "k",
+    "c",
+    "t",
+    "ṭ",
+    "p",
+    "m",
+    "n",
+    "ṅ",
+    "ñ",
+    "ṇ",
+    "l",
+    "ḷ",
+    "ḻ",
+    "r",
+    "ṟ",
+    "v",
+    "y",
+    "w",
+    "ṉ"
+  ],
+  "krishnamurti_2003_vowel_inventory": [
+    "a",
+    "ā",
+    "i",
+    "ī",
+    "u",
+    "ū",
+    "e",
+    "ē",
+    "o",
+    "ō",
+    "ai",
+    "au"
+  ],
+  "verdict": "Phase-86: PD phonological reconstruction from 101 anchors. 10/19 consonants, 6/12 vowels attested. Overall PD coverage: 51.6%. Core contrasts attested: stops (k,c,t,p), nasals (m,n), laterals (l), rhotics (r), vowels (a,i,u,e,o + lengths). Missing: full retroflex series (ṭ,ṇ,ḷ), lateral ḻ, uvular ṟ. CV and CVC syllables dominant (>85%). Phonological profile consistent with early Proto-Dravidian (pre-Tamil stage, ~2500 BCE)."
+}

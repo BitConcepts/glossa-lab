@@ -1,0 +1,70 @@
+{
+  "_citation": {
+    "primary": [
+      "A.1"
+    ]
+  },
+  "gpu_device": "cuda",
+  "n_starting_high_medium": 101,
+  "n_new_medium_anchors": 4,
+  "total_high_medium": 105,
+  "new_medium_anchors": [
+    "M163",
+    "M035",
+    "M074",
+    "M222"
+  ],
+  "all_proposals": [
+    {
+      "sign": "M163",
+      "reading": "il",
+      "method": "DEDR_REBUS_EXTENDED",
+      "dedr_id": "DEDR 0507",
+      "depiction": "il allograph",
+      "icon_plausibility": "HIGH",
+      "corpus_freq": 5,
+      "evidence_score": 2.5,
+      "pd_valid": true
+    },
+    {
+      "sign": "M035",
+      "reading": "po",
+      "method": "DEDR_REBUS_EXTENDED",
+      "dedr_id": "DEDR 4460",
+      "depiction": "circles/ring",
+      "icon_plausibility": "MEDIUM",
+      "corpus_freq": 19,
+      "evidence_score": 2.0,
+      "pd_valid": true
+    },
+    {
+      "sign": "M074",
+      "reading": "ker",
+      "method": "DEDR_REBUS_EXTENDED",
+      "dedr_id": "DEDR 2022",
+      "depiction": "comb with stroke",
+      "icon_plausibility": "MEDIUM",
+      "corpus_freq": 12,
+      "evidence_score": 2.0,
+      "pd_valid": true
+    },
+    {
+      "sign": "M222",
+      "reading": "kur",
+      "method": "DEDR_REBUS_EXTENDED",
+      "dedr_id": "DEDR 1839",
+      "depiction": "hook sign/hook",
+      "icon_plausibility": "MEDIUM",
+      "corpus_freq": 5,
+      "evidence_score": 2.0,
+      "pd_valid": true
+    }
+  ],
+  "method_counts": {
+    "sa_consensus": 0,
+    "dedr_rebus": 4,
+    "grammar_position": 0
+  },
+  "target_120_reached": false,
+  "verdict": "Phase-87: Anchor sprint. +4 new MEDIUM anchors. Total HIGH+MEDIUM: 105. Need 15 more for 120 target. Method breakdown: SA=0, DEDR=4, Grammar=0."
+}

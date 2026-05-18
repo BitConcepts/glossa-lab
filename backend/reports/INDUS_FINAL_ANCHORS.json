@@ -1,5 +1,5 @@
 {
-  "total": 397,
+  "total": 243,
   "anchors": {
     "M342": {
       "reading": "ay/ā",
@@ -2440,5 +2440,13 @@
     "high_count": 37,
     "medium_count": 88,
     "low_count": 66
-  }
+  },
+  "total_all_entries": 397,
+  "n_high": 75,
+  "n_medium": 168,
+  "n_low": 154,
+  "corpus_signs": 390,
+  "corpus_tokens": 7002,
+  "corpus_token_coverage": 0.883,
+  "_note": "total = H+M confirmed anchors. total_all_entries includes LOW allographs/grammar inferences. DO NOT use total/corpus_signs for % coverage — use corpus_token_coverage instead."
 }

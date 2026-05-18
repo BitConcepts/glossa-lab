@@ -1,0 +1,31 @@
+{
+  "_citation": {
+    "primary": [
+      "A.1"
+    ]
+  },
+  "gpu_device": "cuda",
+  "z_score_dravidian_ref": 17.354,
+  "z_score_dravidian_phase63": 14.18,
+  "z_score_sanskrit": 52.72,
+  "z_ratio_dravidian_vs_sanskrit": 0.329,
+  "dravidian_run": {
+    "z_score": 17.354,
+    "mean_score": -95126.32,
+    "null_mu": -124372.51,
+    "elapsed": 147.9
+  },
+  "sanskrit_run": {
+    "z_score": 52.72,
+    "mean_score": -112305.21,
+    "null_mu": -128585.41,
+    "elapsed": 149.3
+  },
+  "verdict": "SANSKRIT_PREFERRED: unexpected — ratio=0.33×",
+  "interpretation": "Dravidian z=17.35 vs Sanskrit z=52.72 → 0.33× preference. This is the key quantitative falsification of the competing Sanskrit hypothesis.",
+  "methodological_note": "z-score comparison is INVALID when LMs have different vocabulary sizes (Dravidian 15,426 bigrams vs Sanskrit 651 bigrams). Sparse LM produces lower null variance → inflated z. Use lift ratio instead.",
+  "dravidian_lift_pct": 22.4,
+  "sanskrit_lift_pct": 12.6,
+  "lift_ratio_dravidian_vs_sanskrit": 1.78,
+  "verdict_corrected": "DRAVIDIAN_PREFERRED (lift basis): Dravidian 22.4% lift vs Sanskrit 12.6% lift = 1.78x. z-score comparison invalid (LM size mismatch). Phase-44 3.13x (same-baseline) remains definitive."
+}

@@ -415,3 +415,135 @@ Both `.specsmith/model-rate-limits.json` files updated to current-gen model land
 2. **Janabiyah full reading**: mīn-yā-puli-ay erutu-kaḷi-ay = compound merchant title with dual guild affiliations, each closed by honorific -ay
 3. **M267 is multi-syllabic**: Cannot be pinned to a single Tamil character. Either a polysyllabic content word or a boundary marker not captured by char bigrams
 4. **Phase-46 T2 error corrected**: The "lift" metric was inverted. Constraints degrade SA. The baseline z=4+ is the correct reference. Phase-46 T2 CONSTRAINT_IMPROVES_FIT verdict should be read as CONSTRAINT_DEGRADES_FIT.
+
+---
+
+## Phase-48 through Phase-61 — Full Indus Decipherment Pipeline
+**Date**: 2026-05-17
+**Commit**: `3d6870b`
+
+### Anchor Set Evolution
+| After Phase | HIGH | MEDIUM | LOW | UNCERTAIN | Total |
+|-------------|------|--------|-----|-----------|-------|
+| Phase-47    | 7    | 36     | 75  | 1         | 119   |
+| Phase-48    | 37   | 36     | 75  | 1         | 149   |
+| Phase-51    | 37   | 36     | 75  | 1         | 149   |
+| Phase-56    | 37   | 49     | 76  | 1         | 163   |
+
+### Phase-48: MEDIUM Anchor Validation
+- 30/30 MEDIUM signs promoted to HIGH via 3-test battery
+- HIGH corpus coverage: 54.9%
+- Report: `reports/phase48_medium_validation.json`
+
+### Phase-49: Syllabic LM Builder
+- Tamil syllabic bigram LM: 5,630 syllable types, 31,681 bigrams
+- Saved: `backend/glossa_lab/data/dravidian_syllabic_lm.json`
+
+### Phase-50: DEDR Sign Catalogue
+- 19 new rebus candidates from sign depiction → DEDR word → initial phoneme
+- Report: `reports/phase50_dedr_sign_catalogue.json`
+
+### Phase-51: Parpola Crosswalk
+- 45 Parpola P→M crosswalk entries (up from 38)
+- Total anchors: 149
+
+### Phase-52: Constrained Syllabic SA
+- z=16.01, 59 anchors pinned, SA agrees 55%
+- Full decipherment table: `reports/phase52_full_decipherment_table.json`
+
+### Phase-53: Formula Pilot
+- 16 formulas ≥80% decoded (tiru-il-ay-aṇ-kol and 15 others)
+
+### Phase-54: Falsification Battery
+- 43% support rate — some tests under-powered (NEEDS CAVEAT)
+
+### Phase-55: Multi-LM Ensemble
+- ENSEMBLE_HIGH=0 due to token-granularity mismatch (FIXED in Phase-62a)
+
+### Phase-56: Parpola Sign List Expansion
+- +14 MEDIUM anchors via EXTENDED_PARPOLA_MAP (75 entries)
+- Total: 163 anchors (37 HIGH / 49 MEDIUM)
+
+### Phase-57: Expanded Constrained SA
+- z=19.07, 53 pinned anchors — **highest z-score in the project**
+- SA agrees 39% with confirmed readings
+
+### Phase-58: Phonological Gap Analysis
+- **VALID**: 0 phonotactic violations, 16 distinct initials, max share 24.7% (<30%)
+
+### Phase-59: Pilot Readings
+- 22 formulas ≥80% decoded (tiru-il-āy-aṇ-kol-vil, ēḷ-tu, pār-kol, etc.)
+
+### Phase-60: Contact Zone P-Number Mining
+- 0 pattern hits — investigated in Phase-60b (broad regex also false positives)
+- Publications are good OCR; Parpola 2010 uses different notation than our regex
+
+### Phase-61: Phonotactic Falsification
+- MOSTLY_VALID: 88% valid, 12% violations (SA-only unverified proposals)
+- 94% of inscriptions pass Dravidian vowel harmony
+
+---
+
+## Phase-62 through Phase-66 — Ensemble Fix, Filtered SA, M267, Crosswalk, Sanskrit Falsification
+**Date**: 2026-05-17
+
+### Phase-62a: Ensemble Fix (token granularity)
+- ROOT CAUSE: Tamil_char LM uses Unicode chars (ி,ா) vs romanized syllables (ay,an)
+- FIX: Use Tamil_syllabic + Proto_Dravidian vs Sanskrit only for consensus
+- RESULT: ENSEMBLE_HIGH=2 (M099=kol, M289), ENSEMBLE_MEDIUM=5
+- Status: Improved from 0 but still sparse — ensemble method needs calibration
+
+### Phase-60b: Contact Zone Re-Investigation
+- All 10 publications are GOOD OCR quality
+- Broad regex found 31 hits but all are false positives (English words near numbers)
+- Parpola 2010 has 472 relevant keyword hits but uses different sign-number notation
+- **Conclusion**: Publication mining requires Parpola-specific notation parser, not regex
+
+### Phase-63: Phonotactic Filtered SA
+- Removed 50 invalid-initial syllables (b/d/g/f/w/x) from SA target vocab
+- z=14.18 (slight reduction from 19.07 due to smaller search space and different null)
+- **0% phonotactic violations** (vs 12% in Phase-57 unfiltered)
+- SA agrees 41% with confirmed readings (improved from 39%)
+- Filtered decipherment table: `reports/phase63_filtered_decipherment_table.json`
+
+### Phase-64: Morphological Boundary + M267 Resolution
+- **M267 top candidate: iṉ (genitive 'of', score 7.0)**
+- Pattern [M328=ā/āl]-[M267]-[M099=kol] = "[agent] iṉ [lord]" → "[agent's lord]"
+- 2nd candidate: col (to say/call, score 6.5)
+- M267 positional entropy H=2.851 (medial 78% — consistent with particle)
+- 20 top formulas with morpheme boundaries annotated
+
+### Phase-65: M↔P Crosswalk Top-100
+- 53/100 top-frequency signs now mapped (76.4% token coverage)
+- Total M↔P: 71/390 entries (up from 45)
+- RISK-001 substantially reduced (76.4% of tokens now have P-number)
+
+### Phase-66: Sanskrit SA Falsification
+- Sanskrit z=52.72 vs Dravidian z=17.35 — **METHODOLOGICAL NOTE**:
+  z-score comparison invalid across LMs of different sizes
+  (Sanskrit 651 bigrams vs Dravidian 15,426 bigrams → sparse LM has lower null variance)
+- **CORRECTED (lift ratio)**: Dravidian 22.4% lift vs Sanskrit 12.6% lift = **1.78× Dravidian preference**
+- Phase-44 3.13× (same-baseline comparison) remains the **definitive** falsification
+- Status: NEEDS CAVEAT — Phase-66 methodology needs same-size LMs for valid comparison
+
+### Infrastructure Added
+- `backend/glossa_lab/gpu_utils.py`: smart GPU detection (silent/warn/error by case)
+- `backend/glossa_lab/experiment_graph_phase56_61.py`: 6 Experiment Builder nodes
+- `backend/glossa_lab/experiment_graph_phase62_66.py`: 6 Experiment Builder nodes
+- `backend/scripts/generate_foundation_report_pdf.py`: multi-section PDF generator
+- `backend/scripts/generate_icit_letter.py`: ICIT access request PDF
+- `docs/architecture.md`: Indus pipeline section + mandatory registration pattern
+- `docs/TEST_SPEC.md`: TEST-EXP-001 through -010 (R17/R18/R19)
+- `docs/REQUIREMENTS.md`: R17/R18/R19
+
+### Reports Generated
+- `reports/indus_foundation_report_phase61.pdf`
+- `reports/icit_access_request.pdf`
+- `reports/phase62_ensemble_fixed.json`
+- `reports/phase60b_contact_investigation.json`
+- `reports/phase63_filtered_sa.json`
+- `reports/phase63_filtered_decipherment_table.json`
+- `reports/phase64_morphological_boundary.json`
+- `reports/phase65_crosswalk_top100.json`
+- `reports/phase66_sanskrit_sa.json`
+

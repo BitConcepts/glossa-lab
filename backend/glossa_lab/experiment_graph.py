@@ -2514,6 +2514,15 @@ try:
 except Exception as _p7480_exc:  # noqa: BLE001
     logger.warning("Phase-74-80 decipherment nodes not registered: %s", _p7480_exc)
 
+# ── Phase-81-87 nodes (M293 deep-dive, seal translation, gap sprint, formula lexicon, CISI crossval, phonology, sprint-120) ──
+try:
+    from glossa_lab.experiment_graph_phase81_87 import _phase81_87_node_defs as _p8187_defs  # noqa: PLC0415
+    for _d in _p8187_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-81-87 decipherment nodes", len(list(_p8187_defs())))
+except Exception as _p8187_exc:  # noqa: BLE001
+    logger.warning("Phase-81-87 decipherment nodes not registered: %s", _p8187_exc)
+
 
 # ── Graph execution
 

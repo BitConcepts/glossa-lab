@@ -1,5 +1,5 @@
 {
-  "total": 166,
+  "total": 171,
   "anchors": {
     "M342": {
       "reading": "ay/ā",
@@ -381,9 +381,11 @@
       "basis": "Round 2: INITIAL position (freq=12), distributional assignment; UPGRADED-V18: HIGH-anchor collocate M267 (n=4); has specific PDR reading"
     },
     "M074": {
-      "reading": "cem",
-      "confidence": "LOW",
-      "basis": "Round 2: INITIAL position (freq=12), distributional assignment"
+      "confidence": "MEDIUM",
+      "reading": "ker",
+      "source": "Phase-87 DEDR_REBUS_EXTENDED",
+      "corpus_freq": 12,
+      "evidence_score": 2.0
     },
     "M054": {
       "reading": "mi",
@@ -566,9 +568,11 @@
       "basis": "Round 4: MEDIAL position (freq=5), distributional assignment"
     },
     "M222": {
-      "reading": "cēl",
-      "confidence": "LOW",
-      "basis": "Round 4: MEDIAL position (freq=5), distributional assignment"
+      "confidence": "MEDIUM",
+      "reading": "kur",
+      "source": "Phase-87 DEDR_REBUS_EXTENDED",
+      "corpus_freq": 5,
+      "evidence_score": 2.0
     },
     "M365": {
       "reading": "vāṉ",
@@ -601,9 +605,11 @@
       "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
     },
     "M163": {
-      "reading": "naṟ",
-      "confidence": "LOW",
-      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+      "confidence": "MEDIUM",
+      "reading": "il",
+      "source": "Phase-87 DEDR_REBUS_EXTENDED",
+      "corpus_freq": 5,
+      "evidence_score": 2.5
     },
     "M108": {
       "reading": "nāḷ",
@@ -921,6 +927,33 @@
       "gloss": "bull+sign -> kaNan (bull+marker)",
       "dedr": "DEDR 1166",
       "bigram_consistency": 0.1685
+    },
+    "M079": {
+      "confidence": "MEDIUM",
+      "reading": "ir",
+      "source": "Phase-83 gap sprint"
+    },
+    "M022": {
+      "confidence": "MEDIUM",
+      "reading": "kalam",
+      "source": "Phase-83 gap sprint"
+    },
+    "M019": {
+      "confidence": "MEDIUM",
+      "reading": "ampu",
+      "source": "Phase-83 gap sprint"
+    },
+    "M044": {
+      "confidence": "MEDIUM",
+      "reading": "ku",
+      "source": "Phase-83 gap sprint"
+    },
+    "M035": {
+      "confidence": "MEDIUM",
+      "reading": "po",
+      "source": "Phase-87 DEDR_REBUS_EXTENDED",
+      "corpus_freq": 19,
+      "evidence_score": 2.0
     }
   },
   "_citation": {
@@ -947,5 +980,11 @@
     "MEDIUM": 54,
     "LOW": 75
   },
-  "_cleanup_note": "2026-05-17: Removed 196 nīr/INIT/TERM/MED placeholder entries from V8-V24 autonomous loops. Retained 137 real anchors."
+  "_cleanup_note": "2026-05-17: Removed 196 nīr/INIT/TERM/MED placeholder entries from V8-V24 autonomous loops. Retained 137 real anchors.",
+  "metadata": {
+    "total_count": 171,
+    "high_count": 37,
+    "medium_count": 68,
+    "low_count": 66
+  }
 }

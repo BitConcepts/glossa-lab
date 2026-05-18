@@ -1,0 +1,40 @@
+{
+  "_citation": {
+    "primary": [
+      "A.1"
+    ]
+  },
+  "gpu_device": "cuda",
+  "target_sign": "M293",
+  "n_m293_inscriptions": 218,
+  "configs": {
+    "free": {
+      "m293_modal": "bik",
+      "m293_consistency": 0.125,
+      "n_seeds": 8,
+      "mean_score": -19286.4551,
+      "elapsed_s": 2.1
+    },
+    "ta_pinned": {
+      "m293_modal": "ta",
+      "m293_consistency": 1.0,
+      "n_seeds": 8,
+      "mean_score": -19286.4551,
+      "elapsed_s": 1.9
+    },
+    "vil_pinned": {
+      "m293_modal": "vi",
+      "m293_consistency": 1.0,
+      "n_seeds": 8,
+      "mean_score": -19286.4551,
+      "elapsed_s": 1.9
+    }
+  },
+  "free_modal_reading": "bik",
+  "ta_score_loss": 0.0,
+  "vil_score_loss": 0.0,
+  "verdict_reading": "bik",
+  "resolution": "INCONCLUSIVE — ta and vil equally compatible under grammar-constrained SA",
+  "m293_promoted": false,
+  "verdict": "Phase-93: M293 grammar-constrained SA. Free-run modal='bik'. Score loss: ta=0.0000, vil=0.0000. INCONCLUSIVE — ta and vil equally compatible under grammar-constrained SA. Insufficient confidence for promotion."
+}

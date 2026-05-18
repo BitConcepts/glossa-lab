@@ -2532,6 +2532,15 @@ try:
 except Exception as _p8890_exc:  # noqa: BLE001
     logger.warning("Phase-88-90 decipherment nodes not registered: %s", _p8890_exc)
 
+# ── Phase-91-100 nodes (anchor-120, uncertain reduce, M293 SA, fulltext, retroflex, crosswalk, trigram, grammar, academic, full-corpus) ──
+try:
+    from glossa_lab.experiment_graph_phase91_100 import _phase91_100_node_defs as _p91100_defs  # noqa: PLC0415
+    for _d in _p91100_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-91-100 decipherment nodes", len(list(_p91100_defs())))
+except Exception as _p91100_exc:  # noqa: BLE001
+    logger.warning("Phase-91-100 decipherment nodes not registered: %s", _p91100_exc)
+
 
 # ── Graph execution
 

@@ -5,7 +5,7 @@
     ]
   },
   "gpu_device": "cpu",
-  "n_papers_fetched": 132,
+  "n_papers_fetched": 212,
   "n_unique_findings": 0,
   "n_actionable_findings": 0,
   "n_new_sign_proposals": 0,
@@ -28,8 +28,8 @@
   "new_crosswalk_entries": [],
   "dedr_entries": [],
   "paper_source_breakdown": {
-    "openalex": 129,
-    "semanticscholar": 3
+    "semanticscholar": 85,
+    "openalex": 127
   },
-  "verdict": "Phase-88: 132 papers mined from SemanticScholar/OpenAlex/EuropePMC. 0 unique findings extracted. 0 new sign proposals (not yet in anchor set). 0 M293-specific evidence items found. 0 new P→M crosswalk entries. Top finding actionability: 0.0/5.0."
+  "verdict": "Phase-88: 212 papers mined from SemanticScholar/OpenAlex/EuropePMC. 0 unique findings extracted. 0 new sign proposals (not yet in anchor set). 0 M293-specific evidence items found. 0 new P→M crosswalk entries. Top finding actionability: 0.0/5.0."
 }

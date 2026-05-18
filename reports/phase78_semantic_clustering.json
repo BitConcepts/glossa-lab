@@ -1,0 +1,260 @@
+{
+  "_citation": {
+    "primary": [
+      "A.1"
+    ]
+  },
+  "gpu_device": "cuda",
+  "n_seals_total": 1670,
+  "n_classified": 1208,
+  "corpus_type_dist": {
+    "TITLE_FORMULA": 431,
+    "UNCERTAIN": 462,
+    "SUFFIX_ONLY": 396,
+    "PLACE_FORMULA": 381
+  },
+  "site_type_dist": {
+    "Harappa": {
+      "TITLE_FORMULA": 124,
+      "UNCERTAIN": 135,
+      "PLACE_FORMULA": 114,
+      "SUFFIX_ONLY": 119
+    },
+    "Mohenjo-daro": {
+      "TITLE_FORMULA": 158,
+      "SUFFIX_ONLY": 144,
+      "PLACE_FORMULA": 138,
+      "UNCERTAIN": 166
+    },
+    "Dholavira": {
+      "TITLE_FORMULA": 28,
+      "UNCERTAIN": 29,
+      "PLACE_FORMULA": 28,
+      "SUFFIX_ONLY": 21
+    },
+    "Kalibangan": {
+      "SUFFIX_ONLY": 24,
+      "UNCERTAIN": 36,
+      "PLACE_FORMULA": 23,
+      "TITLE_FORMULA": 27
+    },
+    "Banawali": {
+      "TITLE_FORMULA": 12,
+      "UNCERTAIN": 21,
+      "SUFFIX_ONLY": 14,
+      "PLACE_FORMULA": 13
+    },
+    "Lothal": {
+      "TITLE_FORMULA": 40,
+      "UNCERTAIN": 31,
+      "PLACE_FORMULA": 27,
+      "SUFFIX_ONLY": 26
+    },
+    "Chanhu-daro": {
+      "SUFFIX_ONLY": 24,
+      "UNCERTAIN": 21,
+      "TITLE_FORMULA": 15,
+      "PLACE_FORMULA": 18
+    },
+    "Rakhigarhi": {
+      "TITLE_FORMULA": 13,
+      "SUFFIX_ONLY": 10,
+      "UNCERTAIN": 6,
+      "PLACE_FORMULA": 4
+    },
+    "Surkotada": {
+      "UNCERTAIN": 17,
+      "TITLE_FORMULA": 14,
+      "PLACE_FORMULA": 16,
+      "SUFFIX_ONLY": 14
+    }
+  },
+  "chi2_p_value": 0.855281,
+  "site_variation_found": false,
+  "verdict": "FORMULA_DISTRIBUTION_INVARIANT: No significant site variation (p=0.8553). Consistent with unified writing system.",
+  "title_formula_pct": 25.8,
+  "place_formula_pct": 22.8,
+  "uncertain_pct": 27.7,
+  "sample_seals": [
+    {
+      "seal_id": "H-0001",
+      "site": "Harappa",
+      "n_signs": 4,
+      "formula_type": "TITLE_FORMULA"
+    },
+    {
+      "seal_id": "M-0001",
+      "site": "Mohenjo-daro",
+      "n_signs": 5,
+      "formula_type": "TITLE_FORMULA"
+    },
+    {
+      "seal_id": "H-0002",
+      "site": "Harappa",
+      "n_signs": 2,
+      "formula_type": "UNCERTAIN"
+    },
+    {
+      "seal_id": "DK-0001",
+      "site": "Dholavira",
+      "n_signs": 3,
+      "formula_type": "TITLE_FORMULA"
+    },
+    {
+      "seal_id": "M-0002",
+      "site": "Mohenjo-daro",
+      "n_signs": 6,
+      "formula_type": "TITLE_FORMULA"
+    },
+    {
+      "seal_id": "H-0003",
+      "site": "Harappa",
+      "n_signs": 2,
+      "formula_type": "UNCERTAIN"
+    },
+    {
+      "seal_id": "M-0003",
+      "site": "Mohenjo-daro",
+      "n_signs": 3,
+      "formula_type": "TITLE_FORMULA"
+    },
+    {
+      "seal_id": "K-0001",
+      "site": "Kalibangan",
+      "n_signs": 4,
+      "formula_type": "SUFFIX_ONLY"
+    },
+    {
+      "seal_id": "M-0004",
+      "site": "Mohenjo-daro",
+      "n_signs": 3,
+      "formula_type": "SUFFIX_ONLY"
+    },
+    {
+      "seal_id": "BN-0001",
+      "site": "Banawali",
+      "n_signs": 4,
+      "formula_type": "TITLE_FORMULA"
+    },
+    {
+      "seal_id": "M-0005",
+      "site": "Mohenjo-daro",
+      "n_signs": 7,
+      "formula_type": "TITLE_FORMULA"
+    },
+    {
+      "seal_id": "H-0004",
+      "site": "Harappa",
+      "n_signs": 6,
+      "formula_type": "PLACE_FORMULA"
+    },
+    {
+      "seal_id": "L-0001",
+      "site": "Lothal",
+      "n_signs": 4,
+      "formula_type": "TITLE_FORMULA"
+    },
+    {
+      "seal_id": "M-0006",
+      "site": "Mohenjo-daro",
+      "n_signs": 3,
+      "formula_type": "PLACE_FORMULA"
+    },
+    {
+      "seal_id": "C-0001",
+      "site": "Chanhu-daro",
+      "n_signs": 3,
+      "formula_type": "SUFFIX_ONLY"
+    },
+    {
+      "seal_id": "M-0007",
+      "site": "Mohenjo-daro",
+      "n_signs": 3,
+      "formula_type": "PLACE_FORMULA"
+    },
+    {
+      "seal_id": "M-0008",
+      "site": "Mohenjo-daro",
+      "n_signs": 4,
+      "formula_type": "UNCERTAIN"
+    },
+    {
+      "seal_id": "H-0005",
+      "site": "Harappa",
+      "n_signs": 4,
+      "formula_type": "UNCERTAIN"
+    },
+    {
+      "seal_id": "RGR-0001",
+      "site": "Rakhigarhi",
+      "n_signs": 8,
+      "formula_type": "TITLE_FORMULA"
+    },
+    {
+      "seal_id": "DK-0002",
+      "site": "Dholavira",
+      "n_signs": 5,
+      "formula_type": "UNCERTAIN"
+    },
+    {
+      "seal_id": "K-0002",
+      "site": "Kalibangan",
+      "n_signs": 6,
+      "formula_type": "SUFFIX_ONLY"
+    },
+    {
+      "seal_id": "C-0002",
+      "site": "Chanhu-daro",
+      "n_signs": 3,
+      "formula_type": "UNCERTAIN"
+    },
+    {
+      "seal_id": "M-0009",
+      "site": "Mohenjo-daro",
+      "n_signs": 7,
+      "formula_type": "SUFFIX_ONLY"
+    },
+    {
+      "seal_id": "H-0006",
+      "site": "Harappa",
+      "n_signs": 2,
+      "formula_type": "PLACE_FORMULA"
+    },
+    {
+      "seal_id": "L-0002",
+      "site": "Lothal",
+      "n_signs": 4,
+      "formula_type": "UNCERTAIN"
+    },
+    {
+      "seal_id": "H-0007",
+      "site": "Harappa",
+      "n_signs": 4,
+      "formula_type": "UNCERTAIN"
+    },
+    {
+      "seal_id": "M-0010",
+      "site": "Mohenjo-daro",
+      "n_signs": 4,
+      "formula_type": "PLACE_FORMULA"
+    },
+    {
+      "seal_id": "M-0011",
+      "site": "Mohenjo-daro",
+      "n_signs": 3,
+      "formula_type": "UNCERTAIN"
+    },
+    {
+      "seal_id": "H-0008",
+      "site": "Harappa",
+      "n_signs": 7,
+      "formula_type": "PLACE_FORMULA"
+    },
+    {
+      "seal_id": "M-0012",
+      "site": "Mohenjo-daro",
+      "n_signs": 4,
+      "formula_type": "UNCERTAIN"
+    }
+  ]
+}

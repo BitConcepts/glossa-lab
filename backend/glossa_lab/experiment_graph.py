@@ -2505,6 +2505,15 @@ try:
 except Exception as _p6773_exc:  # noqa: BLE001
     logger.warning("Phase-67-73 decipherment nodes not registered: %s", _p6773_exc)
 
+# ── Phase-74-80 nodes (grammar test, Levit, place formula, SA agreement, semantic cluster, gap, DEDR) ──
+try:
+    from glossa_lab.experiment_graph_phase74_80 import _phase74_80_node_defs as _p7480_defs  # noqa: PLC0415
+    for _d in _p7480_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-74-80 decipherment nodes", len(list(_p7480_defs())))
+except Exception as _p7480_exc:  # noqa: BLE001
+    logger.warning("Phase-74-80 decipherment nodes not registered: %s", _p7480_exc)
+
 
 # ── Graph execution
 

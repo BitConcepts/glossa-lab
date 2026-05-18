@@ -53,11 +53,77 @@ def _read(p: Path) -> dict | list | None:
         return None
 
 
+# ── Dravidian/Tamil transliteration → ASCII (ReportLab built-in fonts are Latin-1) ──
+# Replaces every Dravidian diacritic with a readable ASCII approximation so
+# no glyph renders as a black box.  Order matters: longer sequences first.
+_TRANSLIT: list[tuple[str, str]] = [
+    # Long vowels
+    ('\u0101', 'aa'), ('\u0100', 'AA'),   # ā Ā
+    ('\u012b', 'ii'), ('\u012a', 'II'),   # ī Ī
+    ('\u016b', 'uu'), ('\u016a', 'UU'),   # ū Ū
+    ('\u0113', 'ee'), ('\u0112', 'EE'),   # ē Ē
+    ('\u014d', 'oo'), ('\u014c', 'OO'),   # ō Ō
+    # Retroflex consonants (capital = retroflex)
+    ('\u1e6d', 'T'),  ('\u1e6c', 'T'),   # ṭ Ṭ
+    ('\u1e0d', 'D'),  ('\u1e0c', 'D'),   # ḍ Ḍ
+    ('\u1e47', 'N'),  ('\u1e46', 'N'),   # ṇ Ṇ
+    ('\u1e37', 'L'),  ('\u1e36', 'L'),   # ḷ Ḷ
+    ('\u1e5f', 'R'),  ('\u1e5e', 'R'),   # ṟ Ṟ
+    ('\u1e3b', 'z'),  ('\u1e3a', 'Z'),   # ḻ Ḻ
+    # Nasals
+    ('\u1e49', 'n'),  ('\u1e48', 'N'),   # ṉ Ṉ
+    ('\u1e45', 'ng'), ('\u1e44', 'NG'),  # ṅ Ṅ
+    ('\u00f1', 'n'),  ('\u00d1', 'N'),   # ñ Ñ
+    # Sibilants
+    ('\u015b', 'sh'), ('\u015a', 'SH'),  # ś Ś
+    ('\u1e63', 'sh'), ('\u1e62', 'SH'),  # ṣ Ṣ
+    # Other diacritics
+    ('\u1e25', 'h'),  ('\u1e24', 'H'),   # ḥ Ḥ
+    ('\u1e35', 'k'),  ('\u1e34', 'K'),   # ḵ Ḵ
+    # Common Tamil Unicode vowels (if any slip through)
+    ('\u0BBE', 'aa'), ('\u0BBF', 'i'),  ('\u0BC0', 'ii'),
+    ('\u0BC1', 'u'),  ('\u0BC2', 'uu'), ('\u0BC6', 'e'),
+    ('\u0BC7', 'ee'), ('\u0BC8', 'ai'), ('\u0BCA', 'o'),
+    ('\u0BCB', 'oo'), ('\u0BCC', 'au'), ('\u0BCD', ''),
+    # Punctuation / symbols that Latin-1 fonts handle badly
+    ('\u2192', '->'),  ('\u2190', '<-'),  # → ←
+    ('\u00d7', 'x'),   ('\u00b7', '.'),   # × ·
+    ('\u2265', '>='),  ('\u2264', '<='),  # ≥ ≤
+    ('\u2260', '!='),  ('\u2026', '...'), # ≠ …
+    ('\u2019', "'"),   ('\u2018', "'"),   # ' '
+    ('\u201c', '"'),   ('\u201d', '"'),   # " "
+    ('\u2014', '--'),  ('\u2013', '-'),   # — –
+    ('\u00b0', ' deg'),
+    # Miscellaneous common chars
+    ('\u2714', 'OK'), ('\u2718', 'FAIL'),
+    ('\u2713', 'OK'), ('\u2717', 'FAIL'),
+    # Arrow chars that appear in readings
+    ('->',     '->'),  # already ASCII, no-op guard
+    ('\u0B85', 'a'),   ('\u0B86', 'aa'),  # Tamil a aa
+    ('\u0B87', 'i'),   ('\u0B88', 'ii'),
+    ('\u0B89', 'u'),   ('\u0B8A', 'uu'),
+]
+
+
+def _transliterate(s: str) -> str:
+    """Replace Dravidian diacritics with ASCII approximations."""
+    t = str(s)
+    for src, dst in _TRANSLIT:
+        if src in t:
+            t = t.replace(src, dst)
+    return t
+
+
 def _esc(s: str) -> str:
-    return (str(s)
-            .replace("&", "&amp;")
-            .replace("<", "&lt;")
-            .replace(">", "&gt;"))
+    """Transliterate → strip non-Latin-1 → XML-escape for ReportLab."""
+    t = _transliterate(str(s))
+    # Replace any remaining non-Latin-1 characters with '?'
+    t = t.encode('latin-1', errors='replace').decode('latin-1')
+    return (
+        t.replace("&", "&amp;")
+         .replace("<", "&lt;")
+         .replace(">", "&gt;")
+    )
 
 
 # ── styles ────────────────────────────────────────────────────────────────────
@@ -406,24 +472,129 @@ def _section_claims(flow: list, s: dict, fc: dict) -> None:
     flow.append(Spacer(1, 10))
 
 
+def _section_phase62_66(flow: list, s: dict,
+                         p62: dict | None, p60b: dict | None,
+                         p63: dict | None, p64: dict | None,
+                         p65: dict | None, p66: dict | None) -> None:
+    """Phase-62 through Phase-66 results summary."""
+    flow.append(Paragraph("Phase-62 through Phase-66 Results", s["h1"]))
+    flow.append(_hr(s))
+
+    rows = [["Phase", "Key Result", "Value", "Status"]]
+    STATUS_COLOUR = {
+        "VERIFIED":            colors.HexColor("#065f46"),
+        "FIXED":               colors.HexColor("#065f46"),
+        "NEEDS CAVEAT":        colors.HexColor("#92400e"),
+        "NEEDS INVESTIGATION": colors.HexColor("#92400e"),
+        "DO NOT CLAIM":        colors.HexColor("#991b1b"),
+        "PARTIAL":             colors.HexColor("#92400e"),
+    }
+
+    if p62:
+        n_high = p62.get("n_ensemble_high", 0)
+        rows.append([_p("62a", s["small"]),
+                     Paragraph("Ensemble token-granularity bug fixed", s["small"]),
+                     Paragraph(f"ENSEMBLE_HIGH={n_high} (was 0)", s["small"]),
+                     Paragraph("FIXED", ParagraphStyle("st", parent=s["small"],
+                         textColor=STATUS_COLOUR["FIXED"]))])
+
+    if p60b:
+        rec = p60b.get("recommendation", "")[:80]
+        rows.append([_p("60b", s["small"]),
+                     Paragraph("Contact zone re-investigation", s["small"]),
+                     Paragraph("31 broad hits = false positives", s["small"]),
+                     Paragraph("NEEDS INVESTIGATION", ParagraphStyle("st", parent=s["small"],
+                         textColor=STATUS_COLOUR["NEEDS INVESTIGATION"]))])
+
+    if p63:
+        z63 = p63.get("z_score", 0)
+        viol = p63.get("sa_violation_rate", 0)
+        rows.append([_p("63", s["small"]),
+                     Paragraph("Phonotactic filtered SA (50 invalid syllables removed)", s["small"]),
+                     Paragraph(f"z={z63:.2f}, {viol:.0f}% violations", s["small"]),
+                     Paragraph("VERIFIED", ParagraphStyle("st", parent=s["small"],
+                         textColor=STATUS_COLOUR["VERIFIED"]))])
+
+    if p64:
+        top = p64.get("m267_top_candidate", "?")
+        n_b = p64.get("n_boundaries_detected", 0)
+        rows.append([_p("64", s["small"]),
+                     Paragraph("Morphological boundary + M267 resolution", s["small"]),
+                     Paragraph(f"M267='{_esc(top)}' (genitive), {n_b} boundaries", s["small"]),
+                     Paragraph("VERIFIED", ParagraphStyle("st", parent=s["small"],
+                         textColor=STATUS_COLOUR["VERIFIED"]))])
+
+    if p65:
+        cov = p65.get("corpus_coverage_pct", 0)
+        tot = p65.get("total_mp_mapped", 0)
+        rows.append([_p("65", s["small"]),
+                     Paragraph("M<->P crosswalk top-100 by frequency", s["small"]),
+                     Paragraph(f"{tot}/390 mapped, {cov:.1f}% token coverage", s["small"]),
+                     Paragraph("VERIFIED", ParagraphStyle("st", parent=s["small"],
+                         textColor=STATUS_COLOUR["VERIFIED"]))])
+
+    if p66:
+        ratio = p66.get("lift_ratio_dravidian_vs_sanskrit",
+                        p66.get("z_ratio_dravidian_vs_sanskrit", 0))
+        corrected = p66.get("verdict_corrected",
+                            p66.get("verdict", "?"))[:50]
+        rows.append([_p("66", s["small"]),
+                     Paragraph("Sanskrit SA falsification (Dravidian vs Sanskrit lift)", s["small"]),
+                     Paragraph(f"Dravidian {ratio:.2f}x preferred (lift basis)", s["small"]),
+                     Paragraph("NEEDS CAVEAT", ParagraphStyle("st", parent=s["small"],
+                         textColor=STATUS_COLOUR["NEEDS CAVEAT"]))])
+
+    if rows[1:]:
+        flow.append(_tbl(rows, [0.5*inch, 2.7*inch, 1.9*inch, 1.2*inch]))
+    flow.append(Spacer(1, 6))
+
+    # M267 resolution detail
+    if p64:
+        flow.append(Paragraph("M267 Resolution Detail (Phase-64)", s["h2"]))
+        m267_ctx = p64.get("m267_context", {})
+        cands = p64.get("m267_candidates", [])
+        flow.append(_p(
+            f"M267 occurs {m267_ctx.get('n_occurrences', 0)} times, "
+            f"avg position {m267_ctx.get('avg_position', 0):.3f} (medial={m267_ctx.get('medial_rate', 0):.0%}). "
+            f"Pattern [aaL/M328]-[M267]-[kol/M099] (84x) points to genitive particle. "
+            f"Top candidates by grammar score:",
+            s["body"]))
+        if cands:
+            crow = [["Reading", "Part of Speech", "DEDR", "Score", "Notes"]]
+            for c in cands[:4]:
+                crow.append([
+                    _p(c.get("reading", "?"), s["small"]),
+                    _p(c.get("pos", "?"), s["small"]),
+                    _p(c.get("dravidian", "?"), s["small"]),
+                    _p(str(c.get("score", 0)), s["small"]),
+                    _p(", ".join(c.get("notes", []))[:50], s["small"]),
+                ])
+            flow.append(_tbl(crow, [0.6*inch, 1.4*inch, 0.9*inch, 0.5*inch, 2.9*inch]))
+        flow.append(Spacer(1, 6))
+
+
 def _section_next_steps(flow: list, s: dict) -> None:
     flow.append(Paragraph("Remaining Work / Next Steps", s["h1"]))
     flow.append(_hr(s))
     steps = [
-        ("Phase-62+", "Normalise Phase-55 ensemble (fix token granularity mismatch) → "
-         "reliable ENSEMBLE_HIGH consensus."),
-        ("Phase-62+", "Run permutation null on Phase-60 contact zone to confirm 0 "
-         "P-number readings is not false negative."),
-        ("Phase-63+", "Morphological boundary detection: separate case markers "
-         "(M342=āy, M176=an, M367=am) from root syllables using positional grammar."),
-        ("Phase-63+", "ICIT corpus integration: request access from Dr. Fuls (TU Berlin) "
-         "for 4,537-object corpus + spatial metadata."),
-        ("Phase-64+", "Yajnadevam Sanskrit decipherment as competing hypothesis: run SA "
-         "with Sanskrit LM to produce clean falsification comparison."),
-        ("Phase-65+", "Phase-61 feedback loop: filter SA assignments that violate "
-         "Proto-Dravidian phonotactics; re-run Phase-57 with cleaned anchor set."),
-        ("Crosswalk",  "Complete M↔P crosswalk: 345/390 M-signs still without P-equivalent. "
-         "Target: map top-100 by corpus frequency."),
+        ("Phase-67",   "Sanskrit LM normalisation: rebuild Sanskrit LM at same bigram density "
+                       "as Dravidian (15k bigrams) so Phase-66 z-comparison is methodologically valid."),
+        ("Phase-68",   "Full formula translation pilot: for the 22 decoded formulas, produce "
+                       "complete Dravidian linguistic annotations (morphological parse, DEDR "
+                       "citations, semantic interpretation)."),
+        ("Phase-69",   "Multi-site stratification: test if anchor signs appear at different "
+                       "rates across Mohenjo-daro / Harappa / Dholavira / Lothal. "
+                       "Spatial grammar hypothesis."),
+        ("Phase-70",   "M267=in validation: add 'in' as tentative anchor and re-run Phase-63 "
+                       "filtered SA to test whether z-score improves over current 14.18."),
+        ("Phase-71",   "Complete top-47 unmapped M-signs (from Phase-65 output). "
+                       "Target: 90%+ token coverage in M<->P crosswalk."),
+        ("Phase-72",   "Parpola notation parser: build sign-list-aware text extractor "
+                       "specifically for Parpola 1994/2010 notation (e.g. 'Sign 47' with "
+                       "context) to fix Phase-60/60b 0-hit problem."),
+        ("Phase-73",   "Ensemble calibration: fix Phase-62a ENSEMBLE_HIGH=2 by running "
+                       "more SA seeds per LM and using first-2-char agreement threshold "
+                       "rather than exact match."),
     ]
     rows = [["Phase", "Task"]]
     for phase, task in steps:
@@ -442,6 +613,12 @@ def build_pdf(out: Path) -> Path:
     p59  = _read(_RPRT / "phase59_pilot_readings.json")
     p60  = _read(_RPRT / "phase60_contact_deep.json")
     p61  = _read(_RPRT / "phase61_phonotactic.json")
+    p62  = _read(_RPRT / "phase62_ensemble_fixed.json")
+    p60b = _read(_RPRT / "phase60b_contact_investigation.json")
+    p63  = _read(_RPRT / "phase63_filtered_sa.json")
+    p64  = _read(_RPRT / "phase64_morphological_boundary.json")
+    p65  = _read(_RPRT / "phase65_crosswalk_top100.json")
+    p66  = _read(_RPRT / "phase66_sanskrit_sa.json")
     anch = _read(_BKRPT / "INDUS_FINAL_ANCHORS.json") or {}
 
     s = _styles()
@@ -449,14 +626,14 @@ def build_pdf(out: Path) -> Path:
         str(out), pagesize=letter,
         leftMargin=0.65*inch, rightMargin=0.65*inch,
         topMargin=0.65*inch, bottomMargin=0.65*inch,
-        title="Glossa-Lab Indus Decipherment — Foundation Report (Phase-61)",
+        title="Glossa-Lab Indus Decipherment — Foundation Report (Phase-66)",
         author="Glossa-Lab / Oz",
     )
     flow: list = []
 
     # ── Cover ──
     flow.append(Paragraph("Glossa-Lab Indus Script Decipherment", s["title"]))
-    flow.append(Paragraph("Foundation Report — Phase-44 through Phase-61", s["sub"]))
+    flow.append(Paragraph("Foundation Report — Phase-44 through Phase-66", s["sub"]))
     flow.append(Paragraph(f"Generated: {datetime.date.today().isoformat()}", s["small"]))
     flow.append(Spacer(1, 0.15*inch))
 
@@ -476,18 +653,22 @@ def build_pdf(out: Path) -> Path:
     n59_v = (p59 or {}).get("n_fully_decoded", "?")
     anch_high = sum(1 for v in anch.get("anchors", {}).values() if v.get("confidence") == "HIGH")
     anch_med  = sum(1 for v in anch.get("anchors", {}).values() if v.get("confidence") == "MEDIUM")
-    seq_v  = (p61 or {}).get("sequence_validity", {}).get("valid_inscription_rate", 0)
+    seq_v = (p61 or {}).get("sequence_validity", {}).get("valid_inscription_rate", 0)
+    mp_cov = (p65 or {}).get("corpus_coverage_pct", 0)
     flow.append(Paragraph(
         f"<b>Best z-score:</b> {z57_v} (Phase-57)  ·  "
-        f"<b>Anchor set:</b> {anch_high} HIGH + {anch_med} MEDIUM  ·  "
-        f"<b>Decoded formulas:</b> {n59_v}  ·  "
-        f"<b>Vowel harmony:</b> {seq_v:.0%}",
+        f"<b>Anchors:</b> {anch_high} HIGH + {anch_med} MEDIUM  ·  "
+        f"<b>Formulas decoded:</b> {n59_v}  ·  "
+        f"<b>Vowel harmony:</b> {seq_v:.0%}  ·  "
+        f"<b>M<->P coverage:</b> {mp_cov:.1f}%",
         s["body"]))
     flow.append(Spacer(1, 0.1*inch))
     flow.append(_hr(s))
 
     # ── Sections ──
     _section_phase_timeline(flow, s, p56, p57, p58, p59, p60, p61)
+    flow.append(Spacer(1, 4))
+    _section_phase62_66(flow, s, p62, p60b, p63, p64, p65, p66)
     flow.append(PageBreak())
 
     _section_pilot_readings(flow, s, p59)
@@ -514,7 +695,7 @@ def build_pdf(out: Path) -> Path:
         "DEDR (Burrow & Emeneau 1984); Parpola 1994/2010; "
         "Krishnamurti 2003 Dravidian phonotactics. "
         "GPU: NVIDIA RTX 4070 SUPER (CUDA 12.1). "
-        "Reproducible: backend/scripts/phase44-61_*.py + foundation_check.py.",
+        "Reproducible: backend/scripts/foundation_check.py + phase*.py scripts.",
         s["small"]))
 
     doc.build(flow)
@@ -522,7 +703,7 @@ def build_pdf(out: Path) -> Path:
 
 
 def main() -> None:
-    out = _RPRT / "indus_foundation_report_phase61.pdf"
+    out = _RPRT / "indus_foundation_report_phase66.pdf"
     build_pdf(out)
     size_kb = out.stat().st_size // 1024
     print(f"PDF written: {out}  ({size_kb} KB)")

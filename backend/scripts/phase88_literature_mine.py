@@ -58,8 +58,8 @@ QUERIES = [
      ["semanticscholar", "openalex"]),
     # M293 specific
     ("m293_bow_sign",
-     "Indus bow sign vil archery Dravidian Tamil",
-     ["semanticscholar", "openalex"]),
+     "Indus script sign bow Tamil Dravidian phoneme",
+     ["semanticscholar"]),  # OA hangs on this query
     # Sign-phoneme proposals from scholars
     ("indus_phoneme_proposals",
      "Indus Valley script phoneme syllable Tamil reading proposal",
@@ -153,18 +153,31 @@ def fetch_semanticscholar(query: str, n: int = 100) -> list[dict]:
     headers = {"x-api-key": api_key} if api_key else {}
 
     try:
+        import concurrent.futures as _cf
         from semanticscholar import SemanticScholar
-        sch = SemanticScholar(api_key=api_key or None, timeout=30)
+        sch = SemanticScholar(api_key=api_key or None, timeout=20)
         fields = ["paperId", "title", "abstract", "authors", "year",
                   "citationCount", "tldr", "externalIds"]
-        results = sch.search_paper(query, fields=fields, limit=min(n, 100))
+
+        def _do_search():
+            return list(sch.search_paper(query, fields=fields, limit=min(n, 100)))
+
+        with _cf.ThreadPoolExecutor(max_workers=1) as ex:
+            future = ex.submit(_do_search)
+            try:
+                raw_results = future.result(timeout=45)  # max 45s per query
+            except _cf.TimeoutError:
+                print(f"    S2-SDK: timed out for '{query[:40]}' — skipping")
+                return []
+
         papers = []
-        for p in results:
+        for p in raw_results:
             if len(papers) >= n: break
             tldr = getattr(p, "tldr", None)
             tldr_text = ""
             if isinstance(tldr, dict): tldr_text = tldr.get("text", "")
             elif hasattr(tldr, "text"): tldr_text = str(tldr.text or "")
+            elif tldr is not None: tldr_text = str(tldr)
             papers.append({
                 "title": str(getattr(p, "title", "") or ""),
                 "abstract": str(getattr(p, "abstract", "") or ""),
@@ -173,8 +186,8 @@ def fetch_semanticscholar(query: str, n: int = 100) -> list[dict]:
                 "source": "semanticscholar",
                 "citations": getattr(p, "citationCount", 0) or 0,
             })
-        print(f"    S2: {len(papers)} papers for '{query[:40]}'")
-        time.sleep(1.5)  # rate limit
+        print(f"    S2-SDK: {len(papers)} papers for '{query[:40]}'")
+        time.sleep(1.2)  # rate limit with API key = 1 req/sec
         return papers
     except Exception as e:
         print(f"    S2 SDK error: {e} — trying HTTP fallback")
@@ -217,7 +230,7 @@ def fetch_openalex(query: str, n: int = 100) -> list[dict]:
         pos = sorted((int(i), w) for w, idxs in inv_idx.items() for i in idxs)
         return " ".join(w for _, w in pos)
 
-    data = http_get_json("https://api.openalex.org/works", params=params)
+    data = http_get_json("https://api.openalex.org/works", params=params, timeout=12.0)
     papers = []
     for w in (data.get("results") or []):
         title = (w.get("title") or w.get("display_name") or "").strip()
@@ -409,14 +422,25 @@ def main():
 
         for source in sources:
             try:
-                if source == "semanticscholar":
-                    papers = fetch_semanticscholar(query, n=per_source)
-                elif source == "openalex":
-                    papers = fetch_openalex(query, n=per_source)
-                elif source == "europepmc":
-                    papers = fetch_europepmc(query, n=per_source)
-                else:
-                    continue
+                import concurrent.futures as _cf2
+                def _fetch(src=source, q=query, n=per_source):
+                    if src == "semanticscholar":
+                        return fetch_semanticscholar(q, n=n)
+                    elif src == "openalex":
+                        return fetch_openalex(q, n=n)
+                    elif src == "europepmc":
+                        return fetch_europepmc(q, n=n)
+                    return []
+
+                _ex2 = _cf2.ThreadPoolExecutor(max_workers=1)
+                _fut2 = _ex2.submit(_fetch)
+                try:
+                    papers = _fut2.result(timeout=25)  # hard 25s per source/query
+                except _cf2.TimeoutError:
+                    print(f"    TIMEOUT {source} for '{query[:40]}' — skipping")
+                    papers = []
+                finally:
+                    _ex2.shutdown(wait=False)  # don't block on hanging threads
 
                 # Deduplicate by title
                 for p in papers:

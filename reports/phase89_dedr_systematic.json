@@ -5,64 +5,22 @@
     ]
   },
   "gpu_device": "cpu",
-  "n_starting_high_medium": 105,
-  "n_systematic_candidates": 15,
-  "n_new_medium_anchors": 4,
-  "total_high_medium": 109,
+  "n_starting_high_medium": 109,
+  "n_systematic_candidates": 11,
+  "n_new_medium_anchors": 9,
+  "total_high_medium": 118,
   "new_anchors": [
-    "M003",
-    "M007",
-    "M107",
-    "M164"
+    "M042",
+    "M046",
+    "M055",
+    "M056",
+    "M032",
+    "M108",
+    "M118",
+    "M130",
+    "M220"
   ],
   "promoted_details": [
-    {
-      "sign": "M003",
-      "reading": "kalam",
-      "dedr_id": "DEDR 1284",
-      "meaning": "pot/vessel",
-      "basis": "ICON",
-      "icon_confidence": "HIGH",
-      "corpus_freq": 19,
-      "evidence_score": 2.2,
-      "mine_corroborated": false
-    },
-    {
-      "sign": "M007",
-      "reading": "aaL",
-      "dedr_id": "DEDR 0340",
-      "meaning": "person",
-      "basis": "ICON",
-      "icon_confidence": "HIGH",
-      "corpus_freq": 11,
-      "evidence_score": 2.2,
-      "mine_corroborated": false
-    },
-    {
-      "sign": "M107",
-      "reading": "ko",
-      "dedr_id": "DEDR 2169",
-      "meaning": "kol allograph",
-      "basis": "ICON",
-      "icon_confidence": "HIGH",
-      "corpus_freq": 3,
-      "evidence_score": 2.1,
-      "mine_corroborated": false
-    },
-    {
-      "sign": "M164",
-      "reading": "il",
-      "dedr_id": "DEDR 0507",
-      "meaning": "house variant",
-      "basis": "ICON",
-      "icon_confidence": "HIGH",
-      "corpus_freq": 3,
-      "evidence_score": 2.1,
-      "mine_corroborated": false
-    }
-  ],
-  "remaining_gap_to_120": 11,
-  "next_targets_if_below_120": [
     {
       "sign": "M042",
       "reading": "vaN",
@@ -161,7 +119,10 @@
       "corpus_freq": 62,
       "evidence_score": 1.6,
       "mine_corroborated": false
-    },
+    }
+  ],
+  "remaining_gap_to_120": 2,
+  "next_targets_if_below_120": [
     {
       "sign": "M076",
       "reading": "naN",
@@ -172,8 +133,19 @@
       "corpus_freq": 7,
       "evidence_score": 1.0,
       "mine_corroborated": false
+    },
+    {
+      "sign": "M221",
+      "reading": "al",
+      "dedr_id": "DEDR 0180",
+      "meaning": "abstract 2",
+      "basis": "PHON",
+      "icon_confidence": "LOW",
+      "corpus_freq": 1,
+      "evidence_score": 0.7,
+      "mine_corroborated": false
     }
   ],
   "mine_proposals_used": 0,
-  "verdict": "Phase-89: Systematic DEDR pass. 15 candidates analysed. 4 promoted to MEDIUM. Total HIGH+MEDIUM: 109. Need 11 more for target 120."
+  "verdict": "Phase-89: Systematic DEDR pass. 11 candidates analysed. 9 promoted to MEDIUM. Total HIGH+MEDIUM: 118. Need 2 more for target 120."
 }

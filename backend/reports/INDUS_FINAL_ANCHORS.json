@@ -1,5 +1,5 @@
 {
-  "total": 177,
+  "total": 182,
   "anchors": {
     "M342": {
       "reading": "ay/ā",
@@ -484,9 +484,12 @@
       "basis": "Round 3: MEDIAL position (freq=8), distributional assignment"
     },
     "M076": {
-      "reading": "nal",
-      "confidence": "LOW",
-      "basis": "Round 3: INITIAL position (freq=7), distributional assignment"
+      "confidence": "MEDIUM",
+      "reading": "naN",
+      "dedr_id": "DEDR 3537",
+      "meaning": "comb+3 strokes",
+      "source": "Phase-91 threshold-1.0 (score=1.00)",
+      "corpus_freq": 7
     },
     "M272": {
       "reading": "kol",
@@ -1035,6 +1038,41 @@
       "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
       "corpus_freq": 3,
       "evidence_score": 1.6
+    },
+    "M221": {
+      "confidence": "MEDIUM",
+      "reading": "al",
+      "dedr_id": "DEDR 0180",
+      "meaning": "abstract variant",
+      "source": "Phase-91 threshold completion"
+    },
+    "M192": {
+      "confidence": "MEDIUM",
+      "reading": "ṇā",
+      "dedr_id": "DEDR 3540",
+      "meaning": "approach",
+      "source": "Phase-95 retroflex expansion (score=1.90)"
+    },
+    "M193": {
+      "confidence": "MEDIUM",
+      "reading": "ḷā",
+      "dedr_id": "DEDR 0507",
+      "meaning": "inside",
+      "source": "Phase-95 retroflex expansion (score=1.90)"
+    },
+    "M194": {
+      "confidence": "MEDIUM",
+      "reading": "kaṭ",
+      "dedr_id": "DEDR 1161",
+      "meaning": "pass/cross",
+      "source": "Phase-95 retroflex expansion (score=1.90)"
+    },
+    "M145": {
+      "confidence": "MEDIUM",
+      "reading": "miṭ",
+      "dedr_id": "DEDR 4836",
+      "meaning": "fish+mark2",
+      "source": "Phase-95 retroflex expansion (score=1.90)"
     }
   },
   "_citation": {
@@ -1063,9 +1101,9 @@
   },
   "_cleanup_note": "2026-05-17: Removed 196 nīr/INIT/TERM/MED placeholder entries from V8-V24 autonomous loops. Retained 137 real anchors.",
   "metadata": {
-    "total_count": 177,
+    "total_count": 182,
     "high_count": 37,
-    "medium_count": 81,
+    "medium_count": 87,
     "low_count": 66
   }
 }

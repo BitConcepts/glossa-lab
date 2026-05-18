@@ -1,5 +1,5 @@
 {
-  "total": 268,
+  "total": 157,
   "anchors": {
     "M342": {
       "reading": "ay/ā",
@@ -795,45 +795,52 @@
     },
     "M255": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M251": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M301": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M406": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M387": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M116": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M274": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M086": {
       "reading": "oru",
@@ -961,9 +968,10 @@
     },
     "M202": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M211": {
       "reading": "kol",
@@ -1174,621 +1182,724 @@
     },
     "M326": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M318": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M346": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M312": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M134": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M129": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M120": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M207": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M280": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M309": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M382": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M324": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M370": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M218": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M186": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M307": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M265": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M106": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M334": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M294": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M245": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M319": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M171": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M227": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M148": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M290": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M138": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M243": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M291": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M209": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M313": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M259": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M278": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M142": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M199": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M140": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M187": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M208": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M109": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M250": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M390": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M277": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M181": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M219": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M379": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M214": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M131": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M380": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M197": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M201": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M413": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M135": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M354": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M341": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M330": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M105": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M146": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M195": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M339": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M359": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M316": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M111": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M224": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M408": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M371": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M396": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M246": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M395": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M229": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M399": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M331": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M410": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M170": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M349": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M388": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M360": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M263": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M320": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M256": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M257": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M338": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M288": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M244": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M247": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M284": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M121": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M381": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M373": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M110": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M104": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M217": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M228": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M356": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M292": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M141": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M188": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M296": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M216": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M348": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M268": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M325": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M289": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M369": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M378": {
       "reading": "kur",
@@ -2488,7 +2599,8 @@
   "n_low": 154,
   "corpus_signs": 390,
   "corpus_tokens": 7002,
-  "corpus_token_coverage": 0.962,
+  "corpus_token_coverage": 0.9075,
   "_note": "total = H+M confirmed anchors. total_all_entries includes LOW allographs/grammar inferences. DO NOT use total/corpus_signs for % coverage — use corpus_token_coverage instead.",
-  "_phase128_129_note": "Phase-128: M374=kul (MEDIUM, substrate Munda/DEDR 1709), M351=vī (MEDIUM, substrate Munda/DEDR 5388). Phase-129: M072=mā (MEDIUM, INITIAL position/DEDR 4751), M149=or (MEDIUM, MEDIAL/DEDR 987), M185=pul (MEDIUM, MEDIAL/DEDR 4336). Remaining 20 of 25 unresolved signs stay LOW — insufficient DEDR+positional evidence for promotion."
+  "_phase128_129_note": "Phase-128: M374=kul (MEDIUM, substrate Munda/DEDR 1709), M351=vī (MEDIUM, substrate Munda/DEDR 5388). Phase-129: M072=mā (MEDIUM, INITIAL position/DEDR 4751), M149=or (MEDIUM, MEDIAL/DEDR 987), M185=pul (MEDIUM, MEDIAL/DEDR 4336). Remaining 20 of 25 unresolved signs stay LOW — insufficient DEDR+positional evidence for promotion.",
+  "_phase132_note": "Phase-132 validation: 114 Phase-111 kur-allograph MEDIUM signs downgraded to LOW. These were positional parking spots (all-MEDIAL L1=0), not genuine phonetic readings. New H+M=157, coverage=0.9075. Genuine phonetically-anchored coverage (H+M, non-parking) = 90.75%."
 }

@@ -9082,3 +9082,52 @@ AtomicNodeDef nodes. Wrote and executed all 6 scripts for the coverage-closing s
   - Phase-117: Promote Phase-112 grammar inferences to LOW confidence in anchors
   - Phase-118: Site-stratified semantic field analysis (using Phase-114 translations)
   - Phase-119: arXiv paper draft using Phase-115 statistics
+
+---
+
+## 2026-05-18 — Phases 124-126: Fish Polysemy, Martini Mining, ICIT Plan
+
+### Summary
+Responded to Avishai Roif's polysemy hypothesis with formal experiment (Phase-124),
+mined Martini 2025 PhD thesis for Arthasastra admin terminology (Phase-125),
+and created ICIT Gulf corpus access plan (Phase-126). Also re-ran Phase-114 and 115
+with updated 263-anchor inventory.
+
+### Phase updates
+- **Phase-114 re-run (263 anchors)**: 1,394/1,670 seals (83%) fully decoded (up from 1,048/63%)
+  Mean seal confidence: 98.1%
+- **Phase-115 re-run (263 anchors)**: p=0.0048, verdict still MODERATE
+
+### Phase-124: Fish-Sign Polysemy (Avishai Roif hypothesis)
+  - M047 and M001: 0 isolated, 13/14 compound — hypothesis UNTESTABLE in Holdat
+  - Arthasastra nāvādhyakṣa (Ship Superintendent) administers maritime trade records
+  - Compound fish signs = occupational/guild context (not commodity tally)
+  - Commodity-tally usage would appear on perishable wood/pottery, not formal seals
+  - Confirmed by Martini 2025: Kirari wooden pillar + Egypt ostracon show such records
+
+### Phase-125: Martini 2025 Arthasastra Mining
+  - 12 AdhP terms cross-referenced with DEDR anchor readings
+  - HIGH connections: koshthagaradhyaksha → M099=kol (tela/oil, mamsa/meat, madhu/honey)
+                       śreṇī → M062=erutu (guild seal)
+  - Egypt ostracon parallel: [tela][mamsa][madhu][mūla/capital] = same format as Indus seals
+  - Key synthesis: Arthasastra administrative vocabulary matches our Indus sign readings
+
+### Phase-126: ICIT Corpus Building Plan
+  - ICIT = Dr. Andreas Fuls' database (our Phase-109 contact!)
+  - 4,537 objects, 5,509 texts, 19,616 occurrences
+  - Gulf sites: Failaka (400 seals), Saar (200+ seals), Janabiyah
+  - Access: email fuls@epigraphica.de with fish-polysemy context + research offer
+  - Required user downloads: Kjaerum 1983, Tell F6 2012, Crawford 1997 (from Academia.edu)
+
+### Avishai correspondence
+  - Full fish-sign analysis ready for reply email
+  - Key finding: no isolated fish signs → hypothesis untestable with Holdat corpus
+  - Arthasastra context strengthens his trade-ledger model
+
+### Avishai Roif profile intelligence
+  - BGU alumnus, primarily mathematician (Boundary Algebra, Collatz conjecture)
+  - Also: Shakespearean authorship, Elizabethan, Phoenician maritime history
+  - Indus work is application of his mathematical framework
+  - His "mathematical/cryptographic" forthcoming paper = Boundary Algebra applied to IVC
+
+### Foundation check: 45/45 passed

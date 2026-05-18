@@ -4,30 +4,30 @@
   "n_bootstrap": 2000,
   "test_1_permutation": {
     "observed_score": 0.664,
-    "null_mean": 0.2556,
-    "null_std": 0.1477,
+    "null_mean": 0.257,
+    "null_std": 0.1484,
     "n_permutations": 5000,
-    "n_exceed": 17,
-    "p_value": 0.003599,
+    "n_exceed": 23,
+    "p_value": 0.004799,
     "significant": false,
     "verdict": "SIGNIFICANT (p<0.05)"
   },
   "test_2_bootstrap_ci": {
-    "point_estimate": 0.8829,
-    "ci_95_lo": 0.8754,
-    "ci_95_hi": 0.8906,
+    "point_estimate": 0.9566,
+    "ci_95_lo": 0.9518,
+    "ci_95_hi": 0.9612,
     "n_bootstrap": 2000,
-    "interpretation": "Token coverage = 88.3% [95% CI: 87.5% – 89.1%]"
+    "interpretation": "Token coverage = 95.7% [95% CI: 95.2% – 96.1%]"
   },
   "test_3_chi_square": {
     "terminal_position": {
-      "chi2": 290.893,
+      "chi2": 99.5352,
       "p_approx": 0.0,
-      "conf_term_rate": 0.2701,
+      "conf_term_rate": 0.2493,
       "unconf_term_rate": 0.0,
       "significant": true
     },
-    "interpretation": "Confirmed signs are significantly more terminal (27.0%) than unconfirmed signs (0.0%), χ²=290.893, p≈0.0000"
+    "interpretation": "Confirmed signs are significantly more terminal (24.9%) than unconfirmed signs (0.0%), χ²=99.5352, p≈0.0000"
   },
   "test_4_tb_concordance": {
     "n_checked": 45,
@@ -41,5 +41,5 @@
   },
   "n_significant_tests": 2,
   "overall_verdict": "MODERATE STATISTICAL SUPPORT",
-  "conclusion": "The Indus Script Dravidian decipherment achieves 88.3% token coverage [87.5%–89.1%] 95% CI. Grammar slot assignments are statistically significant (p=0.0036). Tamil-Brahmi name concordance rate of 58% significantly exceeds null expectation. Overall: MODERATE STATISTICAL SUPPORT."
+  "conclusion": "The Indus Script Dravidian decipherment achieves 95.7% token coverage [95.2%–96.1%] 95% CI. Grammar slot assignments are statistically significant (p=0.0048). Tamil-Brahmi name concordance rate of 58% significantly exceeds null expectation. Overall: MODERATE STATISTICAL SUPPORT."
 }

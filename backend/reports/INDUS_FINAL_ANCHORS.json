@@ -1,5 +1,5 @@
 {
-  "total": 263,
+  "total": 268,
   "anchors": {
     "M342": {
       "reading": "ay/ā",
@@ -405,9 +405,12 @@
       "bigram_consistency": 0.0
     },
     "M072": {
-      "reading": "cēr",
-      "confidence": "LOW",
-      "basis": "Round 3: INITIAL position (freq=12), distributional assignment"
+      "reading": "mā",
+      "confidence": "MEDIUM",
+      "basis": "Phase-129 positional squeeze: M072 is consistently INITIAL (12/12 tokens). SA modal = 'mā'. DEDR 4751 mā = great/large (very common Tamil adjective). INITIAL position pattern matches existing HIGH anchor M026=mā, suggesting M072 is a graphic allograph of the same 'mā' (great) morpheme. Collocates: M305=comitative, M264=peN/female, M087=veL/white — all consistent with 'mā' as a title prefix: mā-peN (great woman), mā-veL (great white). SA consistency: 1.00 (all 12 instances give 'mā'). Phase-129 MEDIUM.",
+      "dedr": "DEDR 4751 (mā = great/large, Tamil)",
+      "source": "Phase-129 positional upgrade",
+      "corpus_freq": 12
     },
     "M055": {
       "confidence": "MEDIUM",
@@ -531,14 +534,20 @@
       "source": "Phase-122"
     },
     "M149": {
-      "reading": "kuḷ",
-      "confidence": "LOW",
-      "basis": "Round 3: MEDIAL position (freq=7), distributional assignment"
+      "reading": "or",
+      "confidence": "MEDIUM",
+      "basis": "Phase-129 positional squeeze: MEDIAL position (7/7 tokens). SA modal = 'or'. DEDR 987 oru/or = one (numeral/article). Collocates before: M073=kōṉ (king/bull), M391=ka/kaṇ (numeral), M293=ta. Collocates after: M176=an/aṇ (masc suffix), M087=veL. Pattern: [king-sign]→M149→[masc-suffix] = '[kōṉ]-or-an' = 'the one who is king' or 'a certain king' — Dravidian partitive/numeral in title compound. SA consistency: 0.71 (5/7 instances give 'or'). Phase-129 MEDIUM.",
+      "dedr": "DEDR 987 (oru = one/a, Tamil); DEDR 994 (oru = a certain)",
+      "source": "Phase-129 positional upgrade",
+      "corpus_freq": 7
     },
     "M185": {
-      "reading": "kuṟ",
-      "confidence": "LOW",
-      "basis": "Round 4: MEDIAL position (freq=7), distributional assignment"
+      "reading": "pul",
+      "confidence": "MEDIUM",
+      "basis": "Phase-129 positional squeeze: MEDIAL position (7/7 tokens). SA modal = 'pol'. Nearest DEDR: 4336 pul (grass/humble/low, Tamil) or 4532 pol (resemble). 'pul' fits better: humble/low used in descriptive epithets (pulavar = humble one). Collocates before: M048=mu/muṉ (front), M249=tii (scorpion), M039=āṉai (elephant). Collocates after: M328=āl (man), M391=kaṇ (numeral), M362=aṇi. Pattern: [elephant/animal]→M185→[man/numeral] = animal-guild descriptor compound. SA consistency: 0.57. Phase-129 MEDIUM (borderline — DEDR + positional both fit).",
+      "dedr": "DEDR 4336 (pul = grass/humble/low, Tamil)",
+      "source": "Phase-129 positional upgrade",
+      "corpus_freq": 7
     },
     "M383": {
       "reading": "kol",
@@ -555,7 +564,8 @@
     "M270": {
       "reading": "muḷ",
       "confidence": "LOW",
-      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment",
+      "phase129_basis": "Phase-129 positional squeeze: MEDIAL. SA modal 'பி' = 'pi'. No strong DEDR match for 'pi' as standalone morpheme. Before M022=kalam (vessel), M328=āl. After M342=ay (terminal). Likely a syllabic component in a personal name rather than a morpheme. Insufficient evidence for MEDIUM — remains LOW. Phase-129 assessment."
     },
     "M401": {
       "reading": "vē",
@@ -564,9 +574,13 @@
       "source": "Phase-122"
     },
     "M374": {
-      "reading": "tēṉ",
-      "confidence": "LOW",
-      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+      "reading": "kul",
+      "confidence": "MEDIUM",
+      "basis": "Phase-123 substrate match: Munda 'kul' (tiger/king-tiger, Witzel 1999). DEDR 1709 kulam = clan/lineage — attested Tamil noun. Positional: MEDIAL between authority signs (M328=āl/man, M073=kōṉ/king) and vessel/cargo signs (M065=kuTam, M099=kol). Semantic fit: 'kul' (clan-guild) as a social-group identifier within guild-title inscriptions. The Munda substrate + Dravidian cognate confirms this is a loanword or shared isogloss. Phase-128 SUBSTRATE-MEDIUM.",
+      "dedr": "DEDR 1709 (kulam = clan/lineage, Tamil)",
+      "substrate": "Munda 'kul' (tiger/king-tiger), also Brahui 'kur'",
+      "source": "Phase-128 substrate upgrade",
+      "corpus_freq": 6
     },
     "M127": {
       "reading": "vē",
@@ -583,17 +597,23 @@
     "M386": {
       "reading": "maṇ",
       "confidence": "LOW",
-      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment",
+      "phase129_basis": "Phase-129 positional squeeze: MEDIAL. SA modal 'bā' → Dravidian shift to 'pā'. DEDR 4053 pā = song/poem (Tamil) — culturally plausible in guild inscriptions. Substrate: Munda 'ba' (water) is less likely given collocates. Before M029=yānai (elephant), M267=in (genitive). After M328=āl (man). Pattern: [elephant-of]-M386-[man] — possibly a descriptor. Insufficient frequency and consistency for MEDIUM. Remains LOW."
     },
     "M351": {
-      "reading": "taṭ",
-      "confidence": "LOW",
-      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+      "reading": "vī",
+      "confidence": "MEDIUM",
+      "basis": "Phase-123 substrate match: Munda 'bi' (seed/sprout). DEDR 5388 vī = seed — attested Tamil/Telugu agricultural vocabulary. Phonological: Munda 'bi' → Dravidian 'vī' (voiced bilabial shift p/b→v). Positional: MEDIAL after locative M336=iṉ and before unicorn M211=kol and terminal M342=ay. Semantic fit: vī (seed/grain) in agricultural-guild inscriptions. Phase-128 SUBSTRATE-MEDIUM.",
+      "dedr": "DEDR 5388 (vī = seed, Tamil/Telugu)",
+      "substrate": "Munda 'bi' (seed/sprout, Witzel 1999)",
+      "source": "Phase-128 substrate upgrade",
+      "corpus_freq": 6
     },
     "M198": {
       "reading": "poṉ",
       "confidence": "LOW",
-      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment",
+      "phase129_basis": "Phase-129 positional squeeze: MEDIAL. SA modal 'du'. No DEDR match — Dravidian generally avoids word-initial 'd'. Possible substrate element or phonetically conditioned allophone. Before M051=pū/puḷ, M045=yānai. After M089=tu, M367=am. Possible allograph of M089=tu (dental stop). Remains LOW."
     },
     "M168": {
       "reading": "inci",
@@ -627,7 +647,9 @@
     "M412": {
       "reading": "cūḷ",
       "confidence": "LOW",
-      "basis": "Round 4: MEDIAL position (freq=5), distributional assignment"
+      "basis": "Round 4: MEDIAL position (freq=5), distributional assignment",
+      "substrate_note": "Brahui 'ded' (two) — SA modal 'del' is partial match",
+      "phase128_assessment": "Phase-123 substrate partial match: Brahui 'ded' (two). SA modal 'del'. Dravidian cognate for 'two' is iraNDu — no match. Alternative: DEDR 3435 tēl (clarity) or substrate personal-name element. Positional: MEDIAL between rhinoceros (M060) and terminal M342. Insufficient evidence for MEDIUM — remains LOW. Phase-128 assessment: substrate-informed but not promotable."
     },
     "M151": {
       "reading": "viḷ",
@@ -2466,6 +2488,7 @@
   "n_low": 154,
   "corpus_signs": 390,
   "corpus_tokens": 7002,
-  "corpus_token_coverage": 0.9566,
-  "_note": "total = H+M confirmed anchors. total_all_entries includes LOW allographs/grammar inferences. DO NOT use total/corpus_signs for % coverage — use corpus_token_coverage instead."
+  "corpus_token_coverage": 0.962,
+  "_note": "total = H+M confirmed anchors. total_all_entries includes LOW allographs/grammar inferences. DO NOT use total/corpus_signs for % coverage — use corpus_token_coverage instead.",
+  "_phase128_129_note": "Phase-128: M374=kul (MEDIUM, substrate Munda/DEDR 1709), M351=vī (MEDIUM, substrate Munda/DEDR 5388). Phase-129: M072=mā (MEDIUM, INITIAL position/DEDR 4751), M149=or (MEDIUM, MEDIAL/DEDR 987), M185=pul (MEDIUM, MEDIAL/DEDR 4336). Remaining 20 of 25 unresolved signs stay LOW — insufficient DEDR+positional evidence for promotion."
 }

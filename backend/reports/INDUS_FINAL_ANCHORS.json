@@ -1,5 +1,5 @@
 {
-  "total": 395,
+  "total": 397,
   "anchors": {
     "M342": {
       "reading": "ay/ā",
@@ -275,8 +275,8 @@
     },
     "M071": {
       "reading": "nal",
-      "confidence": "MEDIUM",
-      "basis": "Round 1: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); HIGH-anchor collocate M267 (n=4); HIGH-anchor collocate M342 (n=4); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); HIGH-anchor collocate M267 (n=4); HIGH-anchor collocate M342 (n=4); has specific PDR reading [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M009": {
       "reading": "āṇ",
@@ -295,8 +295,8 @@
     },
     "M031": {
       "reading": "kai",
-      "confidence": "MEDIUM",
-      "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); HIGH-anchor collocate M342 (n=5); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); HIGH-anchor collocate M342 (n=5); has specific PDR reading [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M002": {
       "reading": "kuṉ",
@@ -315,8 +315,8 @@
     },
     "M011": {
       "reading": "kaḷiṟu",
-      "confidence": "MEDIUM",
-      "basis": "Round 2: INITIAL position (freq=15), distributional assignment; UPGRADED-V18: consistent INITIAL (n=15); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 2: INITIAL position (freq=15), distributional assignment; UPGRADED-V18: consistent INITIAL (n=15); has specific PDR reading [Phase-116 recal: SA-cons=0.50✓ DEDR✓]"
     },
     "M036": {
       "reading": "tiru",
@@ -340,13 +340,14 @@
       "basis": "Round 2: INITIAL position (freq=14), distributional assignment; UPGRADED-V18: HIGH-anchor collocate M267 (n=4); has specific PDR reading"
     },
     "M042": {
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "reading": "vaN",
       "dedr_id": "DEDR 5231",
       "meaning": "arch/bow",
       "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
       "corpus_freq": 13,
-      "evidence_score": 1.7
+      "evidence_score": 1.7,
+      "basis": " [Phase-116 recal: SA-cons=0.62✓ DEDR✓]"
     },
     "M040": {
       "reading": "mutalai",
@@ -361,19 +362,21 @@
     },
     "M049": {
       "reading": "pu",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Phase-80 DEDR rebus (puL = DEDR 4349)",
       "gloss": "fish+mark -> puL (bird/mark on fish)",
       "dedr": "DEDR 4349",
-      "bigram_consistency": 0.0421
+      "bigram_consistency": 0.0421,
+      "basis": " [Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
     },
     "M081": {
       "reading": "ve",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Phase-80 DEDR rebus (veeNkai = DEDR 5500)",
       "gloss": "kino variant -> veeNkai (kino tree variant)",
       "dedr": "DEDR 5500",
-      "bigram_consistency": 0.0
+      "bigram_consistency": 0.0,
+      "basis": " [Phase-116 recal: SA-cons=0.50✓ DEDR✓]"
     },
     "M047": {
       "reading": "min/mīn",
@@ -382,8 +385,8 @@
     },
     "M033": {
       "reading": "puli",
-      "confidence": "MEDIUM",
-      "basis": "Round 2: INITIAL position (freq=12), distributional assignment; UPGRADED-V18: HIGH-anchor collocate M267 (n=4); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 2: INITIAL position (freq=12), distributional assignment; UPGRADED-V18: HIGH-anchor collocate M267 (n=4); has specific PDR reading [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M074": {
       "confidence": "MEDIUM",
@@ -422,11 +425,12 @@
     },
     "M043": {
       "reading": "mu",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Phase-80 DEDR rebus (muukku = DEDR 5009)",
       "gloss": "trident -> muukku (three-pronged)",
       "dedr": "DEDR 5009",
-      "bigram_consistency": 0.0421
+      "bigram_consistency": 0.0421,
+      "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M029": {
       "reading": "yānai",
@@ -436,11 +440,12 @@
     },
     "M064": {
       "reading": "va",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Phase-80 DEDR rebus (vaai = DEDR 5243)",
       "gloss": "wide mouth -> vaai (mouth sign)",
       "dedr": "DEDR 5243",
-      "bigram_consistency": 0.0421
+      "bigram_consistency": 0.0421,
+      "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M007": {
       "confidence": "MEDIUM",
@@ -452,22 +457,24 @@
       "evidence_score": 2.2
     },
     "M046": {
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "reading": "kaL",
       "dedr_id": "DEDR 1286",
       "meaning": "leg/stem",
       "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
       "corpus_freq": 11,
-      "evidence_score": 1.7
+      "evidence_score": 1.7,
+      "basis": " [Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
     },
     "M032": {
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "reading": "koL",
       "dedr_id": "DEDR 2173",
       "meaning": "take/hold",
       "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
       "corpus_freq": 9,
-      "evidence_score": 1.6
+      "evidence_score": 1.6,
+      "basis": " [Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
     },
     "M169": {
       "reading": "ney",
@@ -485,12 +492,13 @@
       "basis": "Round 3: MEDIAL position (freq=8), distributional assignment"
     },
     "M076": {
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "reading": "naN",
       "dedr_id": "DEDR 3537",
       "meaning": "comb+3 strokes",
       "source": "Phase-91 threshold-1.0 (score=1.00)",
-      "corpus_freq": 7
+      "corpus_freq": 7,
+      "basis": " [Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
     },
     "M272": {
       "reading": "kol",
@@ -499,8 +507,8 @@
     },
     "M128": {
       "reading": "kaṇ",
-      "confidence": "MEDIUM",
-      "basis": "Round 3: MEDIAL position (freq=7), distributional assignment",
+      "confidence": "HIGH",
+      "basis": "Round 3: MEDIAL position (freq=7), distributional assignment [Phase-116 recal: SA-cons=0.12✓ DEDR✓]",
       "source": "Parpola 1994+"
     },
     "M082": {
@@ -632,20 +640,22 @@
       "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
     },
     "M163": {
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "reading": "il",
       "source": "Phase-87 DEDR_REBUS_EXTENDED",
       "corpus_freq": 5,
-      "evidence_score": 2.5
+      "evidence_score": 2.5,
+      "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M108": {
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "reading": "kaL",
       "dedr_id": "DEDR 1286",
       "meaning": "wheel/circle",
       "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
       "corpus_freq": 5,
-      "evidence_score": 1.6
+      "evidence_score": 1.6,
+      "basis": " [Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
     },
     "M231": {
       "reading": "ēṟ",
@@ -744,44 +754,44 @@
     },
     "M255": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M251": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M301": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M406": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M387": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M116": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M274": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M086": {
@@ -792,15 +802,17 @@
     },
     "M087": {
       "reading": "veL",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Parpola_1994_via_phase51",
-      "gloss": "white / two strokes"
+      "gloss": "white / two strokes",
+      "basis": " [Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
     },
     "M091": {
       "reading": "aru",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Parpola_1994_via_phase51",
-      "gloss": "six (numerical)"
+      "gloss": "six (numerical)",
+      "basis": " [Phase-116 recal: SA-cons=0.00✓ DEDR✓]"
     },
     "M092": {
       "reading": "elu",
@@ -816,21 +828,24 @@
     },
     "M175": {
       "reading": "katir",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Parpola_1994_via_phase51",
-      "gloss": "spindle / rays"
+      "gloss": "spindle / rays",
+      "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M261": {
       "reading": "muruku",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Parpola_1994_via_phase51",
-      "gloss": "young man / god"
+      "gloss": "young man / god",
+      "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M264": {
       "reading": "peN",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Parpola_1994_via_phase51",
-      "gloss": "female / woman"
+      "gloss": "female / woman",
+      "basis": " [Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
     },
     "M281": {
       "reading": "piLLai",
@@ -840,21 +855,24 @@
     },
     "M311": {
       "reading": "vaTamiin",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Parpola_1994_via_phase51",
-      "gloss": "north star"
+      "gloss": "north star",
+      "basis": " [Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
     },
     "M117": {
       "reading": "ar",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Parpola_1994_via_phase51",
-      "gloss": "wheel spoke"
+      "gloss": "wheel spoke",
+      "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M088": {
       "reading": "muu(n)-",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Parpola_1994_via_phase51",
-      "gloss": "three vertical strokes, possibly 'three' or 'three worlds'"
+      "gloss": "three vertical strokes, possibly 'three' or 'three worlds'",
+      "basis": " [Phase-116 recal: SA-cons=0.00✓ DEDR✓]"
     },
     "M090": {
       "reading": "aintu",
@@ -882,9 +900,10 @@
     },
     "M100": {
       "reading": "maa",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Parpola 1994",
-      "gloss": "doe/deer [maa]"
+      "gloss": "doe/deer [maa]",
+      "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M101": {
       "reading": "kur",
@@ -894,21 +913,23 @@
     },
     "M125": {
       "reading": "vil",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Parpola 1994",
-      "gloss": "bow [vil]"
+      "gloss": "bow [vil]",
+      "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M202": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M211": {
       "reading": "kol",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Phase-46+Parpola",
-      "gloss": "unicorn = kol/lord [rebus]"
+      "gloss": "unicorn = kol/lord [rebus]",
+      "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M249": {
       "reading": "tii",
@@ -917,11 +938,12 @@
       "gloss": "scorpion [tee/tii]"
     },
     "M293": {
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "reading": "ta",
       "dedr_id": "DEDR 3003",
       "meaning": "body/self — personal name element",
-      "source": "Phase-101 positional adjudication"
+      "source": "Phase-101 positional adjudication",
+      "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M058": {
       "reading": "ke",
@@ -948,11 +970,12 @@
     },
     "M052": {
       "reading": "ta",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Phase-80 DEDR rebus (taNal = DEDR 3036)",
       "gloss": "fish+stroke -> taNal (mark on fish)",
       "dedr": "DEDR 3036",
-      "bigram_consistency": 0.1264
+      "bigram_consistency": 0.1264,
+      "basis": " [Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
     },
     "M053": {
       "reading": "mi",
@@ -964,26 +987,30 @@
     },
     "M061": {
       "reading": "ka",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Phase-80 DEDR rebus (kaNan = DEDR 1166)",
       "gloss": "bull+sign -> kaNan (bull+marker)",
       "dedr": "DEDR 1166",
-      "bigram_consistency": 0.1685
+      "bigram_consistency": 0.1685,
+      "basis": " [Phase-116 recal: SA-cons=0.25✓ DEDR✓]"
     },
     "M079": {
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "reading": "ir",
-      "source": "Phase-83 gap sprint"
+      "source": "Phase-83 gap sprint",
+      "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M022": {
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "reading": "kalam",
-      "source": "Phase-83 gap sprint"
+      "source": "Phase-83 gap sprint",
+      "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M019": {
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "reading": "ampu",
-      "source": "Phase-83 gap sprint"
+      "source": "Phase-83 gap sprint",
+      "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M044": {
       "confidence": "MEDIUM",
@@ -991,38 +1018,42 @@
       "source": "Phase-83 gap sprint"
     },
     "M035": {
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "reading": "po",
       "source": "Phase-87 DEDR_REBUS_EXTENDED",
       "corpus_freq": 19,
-      "evidence_score": 2.0
+      "evidence_score": 2.0,
+      "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M003": {
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "reading": "kalam",
       "dedr_id": "DEDR 1284",
       "meaning": "pot/vessel",
       "source": "Phase-89 systematic DEDR (ICON, HIGH)",
       "corpus_freq": 19,
-      "evidence_score": 2.2
+      "evidence_score": 2.2,
+      "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M107": {
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "reading": "ko",
       "dedr_id": "DEDR 2169",
       "meaning": "kol allograph",
       "source": "Phase-89 systematic DEDR (ICON, HIGH)",
       "corpus_freq": 3,
-      "evidence_score": 2.1
+      "evidence_score": 2.1,
+      "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M164": {
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "reading": "il",
       "dedr_id": "DEDR 0507",
       "meaning": "house variant",
       "source": "Phase-89 systematic DEDR (ICON, HIGH)",
       "corpus_freq": 3,
-      "evidence_score": 2.1
+      "evidence_score": 2.1,
+      "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M056": {
       "confidence": "MEDIUM",
@@ -1043,13 +1074,14 @@
       "evidence_score": 1.6
     },
     "M130": {
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "reading": "mui",
       "dedr_id": "DEDR 4951",
       "meaning": "sprout/shoot",
       "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
       "corpus_freq": 3,
-      "evidence_score": 1.6
+      "evidence_score": 1.6,
+      "basis": " [Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
     },
     "M221": {
       "confidence": "MEDIUM",
@@ -1073,11 +1105,12 @@
       "source": "Phase-95 retroflex expansion (score=1.90)"
     },
     "M194": {
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "reading": "kaṭ",
       "dedr_id": "DEDR 1161",
       "meaning": "pass/cross",
-      "source": "Phase-95 retroflex expansion (score=1.90)"
+      "source": "Phase-95 retroflex expansion (score=1.90)",
+      "basis": " [Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
     },
     "M145": {
       "confidence": "MEDIUM",
@@ -1100,620 +1133,620 @@
     },
     "M326": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M318": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M346": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M312": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M134": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M129": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M120": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M207": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M280": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M309": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M382": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M324": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M370": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M218": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M186": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M307": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M265": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M106": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M334": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M294": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M245": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M319": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M171": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M227": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M148": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M290": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M138": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M243": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M291": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M209": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M313": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M259": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M278": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M142": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M199": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M140": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M187": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M208": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M109": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M250": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M390": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M277": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M181": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M219": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M379": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M214": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M131": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M380": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M197": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M201": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M413": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M135": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M354": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M341": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M330": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M105": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M146": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M195": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M339": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M359": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M316": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M111": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M224": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M408": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M371": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M396": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M246": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M395": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M229": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M399": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M331": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M410": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M170": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M349": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M388": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M360": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M263": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M320": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M256": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M257": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M338": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M288": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M244": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M247": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M284": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M121": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M381": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M373": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M110": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M104": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M217": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M228": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M356": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M292": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M141": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M188": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M296": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M216": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M348": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M268": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M325": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M289": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M369": {
       "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3.",
+      "confidence": "MEDIUM",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111"
     },
     "M378": {
@@ -2363,6 +2396,18 @@
       "confidence": "LOW",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
       "source": "Phase-111"
+    },
+    "M347": {
+      "reading": "ka",
+      "confidence": "MEDIUM",
+      "basis": "Phase-117 grammar inference: slot=MEDIAL_BETWEEN_CONF, n_contexts=7, patterns=['M342-[M347]-M293', 'M028-[M347]-M367', 'M211-[M347]-M099']. Inferred from Dravidian grammar slot model (Phases 74-112). [Phase-120: grammar n_ctx=7≥4 → MEDIUM]",
+      "source": "Phase-117"
+    },
+    "M350": {
+      "reading": "vel",
+      "confidence": "LOW",
+      "basis": "Phase-117 grammar inference: slot=NAME_AFTER_ANIMAL, n_contexts=3, patterns=['M062-[M350]-M328', 'M060-[M350]-M391', 'M342-[M350]-M233']. Inferred from Dravidian grammar slot model (Phases 74-112).",
+      "source": "Phase-117"
     }
   },
   "_citation": {

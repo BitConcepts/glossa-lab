@@ -29,139 +29,156 @@
   "crosswalk": {
     "M001": {
       "mahadevan_id": "M001",
-      "parpola_id": "1",
-      "source": "mahadevan_parpola_crosswalk.json Phase-28",
-      "iconic": "man with raised arm",
-      "phoneme": "aaL/vir",
-      "confidence": "HIGH"
+      "parpola_id": "P001",
+      "parpola_num": 1,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "tōḷ",
+      "anchor_confidence": "MEDIUM"
     },
     "M047": {
       "mahadevan_id": "M047",
-      "parpola_id": "47",
-      "source": "mahadevan_parpola_crosswalk.json Phase-28",
-      "iconic": "fish (plain)",
-      "phoneme": "miin",
-      "confidence": "HIGH"
+      "parpola_id": "P047",
+      "parpola_num": 47,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "min/mīn",
+      "anchor_confidence": "MEDIUM"
     },
     "M048": {
       "mahadevan_id": "M048",
-      "parpola_id": "48",
-      "source": "mahadevan_parpola_crosswalk.json Phase-28",
-      "iconic": "fish-with-roof",
-      "phoneme": "miin-X",
-      "confidence": "HIGH"
+      "parpola_id": "P048",
+      "parpola_num": 48,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "mu/muṉ",
+      "anchor_confidence": "HIGH"
     },
     "M050": {
       "mahadevan_id": "M050",
-      "parpola_id": "50",
-      "source": "mahadevan_parpola_crosswalk.json Phase-28",
-      "iconic": "fish-with-fins",
-      "phoneme": "miin-X",
-      "confidence": "HIGH"
+      "parpola_id": "P050",
+      "parpola_num": 50,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "pār",
+      "anchor_confidence": "MEDIUM"
     },
     "M052": {
       "mahadevan_id": "M052",
-      "parpola_id": "52",
-      "source": "mahadevan_parpola_crosswalk.json Phase-28",
-      "iconic": "fish-with-trefoil",
-      "phoneme": "miin-X",
-      "confidence": "HIGH"
+      "parpola_id": "P052",
+      "parpola_num": 52,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "ta",
+      "anchor_confidence": "MEDIUM"
     },
     "M060": {
       "mahadevan_id": "M060",
-      "parpola_id": "60",
-      "source": "mahadevan_parpola_crosswalk.json Phase-28",
-      "iconic": "fish (variant; 'badly drawn')",
-      "phoneme": "miin",
-      "confidence": "HIGH"
+      "parpola_id": "P060",
+      "parpola_num": 60,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "kāṇṭāmirukam",
+      "anchor_confidence": "HIGH"
     },
     "M086": {
       "mahadevan_id": "M086",
-      "parpola_id": "86",
-      "source": "mahadevan_parpola_crosswalk.json Phase-28",
-      "iconic": "single vertical stroke",
-      "phoneme": "or-",
-      "confidence": "HIGH"
+      "parpola_id": "P086",
+      "parpola_num": 86,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "oru",
+      "anchor_confidence": "MEDIUM"
     },
     "M087": {
       "mahadevan_id": "M087",
-      "parpola_id": "87",
-      "source": "mahadevan_parpola_crosswalk.json Phase-28",
-      "iconic": "two vertical strokes",
-      "phoneme": "veL",
-      "confidence": "HIGH"
+      "parpola_id": "P087",
+      "parpola_num": 87,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "veL",
+      "anchor_confidence": "MEDIUM"
     },
     "M088": {
       "mahadevan_id": "M088",
-      "parpola_id": "88",
-      "source": "mahadevan_parpola_crosswalk.json Phase-28",
-      "iconic": "three vertical strokes",
-      "phoneme": "muu(n)-",
-      "confidence": "HIGH"
+      "parpola_id": "P088",
+      "parpola_num": 88,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "muu(n)-",
+      "anchor_confidence": "MEDIUM"
     },
     "M091": {
       "mahadevan_id": "M091",
-      "parpola_id": "91",
-      "source": "mahadevan_parpola_crosswalk.json Phase-28",
-      "iconic": "six vertical strokes",
-      "phoneme": "aru-",
-      "confidence": "HIGH"
+      "parpola_id": "P091",
+      "parpola_num": 91,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "aru",
+      "anchor_confidence": "MEDIUM"
     },
     "M092": {
       "mahadevan_id": "M092",
-      "parpola_id": "92",
-      "source": "mahadevan_parpola_crosswalk.json Phase-28",
-      "iconic": "seven vertical strokes",
-      "phoneme": "eZu-",
-      "confidence": "HIGH"
+      "parpola_id": "P092",
+      "parpola_num": 92,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "elu",
+      "anchor_confidence": "MEDIUM"
     },
     "M099": {
       "mahadevan_id": "M099",
-      "parpola_id": "99",
-      "source": "mahadevan_parpola_crosswalk.json Phase-28",
-      "iconic": "bow / archer",
-      "phoneme": "vil",
-      "confidence": "HIGH"
+      "parpola_id": "P099",
+      "parpola_num": 99,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "kol/koḷ",
+      "anchor_confidence": "HIGH"
     },
     "M117": {
       "mahadevan_id": "M117",
-      "parpola_id": "117",
-      "source": "mahadevan_parpola_crosswalk.json Phase-28",
-      "iconic": "wheel / chakra",
-      "phoneme": "ar/aru",
-      "confidence": "HIGH"
+      "parpola_id": "P117",
+      "parpola_num": 117,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "ar",
+      "anchor_confidence": "MEDIUM"
     },
     "M124": {
       "mahadevan_id": "M124",
-      "parpola_id": "124",
-      "source": "mahadevan_parpola_crosswalk.json Phase-28",
-      "iconic": "V-shaped pot/jar",
-      "phoneme": "kuTam",
-      "confidence": "HIGH"
+      "parpola_id": "P124",
+      "parpola_num": 124,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "kuTam",
+      "anchor_confidence": "MEDIUM"
     },
     "M126": {
       "mahadevan_id": "M126",
-      "parpola_id": "126",
-      "source": "mahadevan_parpola_crosswalk.json Phase-28",
-      "iconic": "rare in Indus, common in Near East",
-      "phoneme": "uncertain",
-      "confidence": "HIGH"
+      "parpola_id": "P126",
+      "parpola_num": 126,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
     },
     "M145": {
       "mahadevan_id": "M145",
-      "parpola_id": "145",
-      "source": "mahadevan_parpola_crosswalk.json Phase-28",
-      "iconic": "fish with two horizontal lines",
-      "phoneme": "miin",
-      "confidence": "HIGH"
+      "parpola_id": "P145",
+      "parpola_num": 145,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "miṭ",
+      "anchor_confidence": "MEDIUM"
     },
     "M147": {
       "mahadevan_id": "M147",
-      "parpola_id": "147",
-      "source": "mahadevan_parpola_crosswalk.json Phase-28",
-      "iconic": "fish (sign-list variant)",
-      "phoneme": "miin",
-      "confidence": "HIGH"
+      "parpola_id": "P147",
+      "parpola_num": 147,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
     },
     "M175": {
       "mahadevan_id": "M175",
@@ -213,67 +230,75 @@
     },
     "M016": {
       "mahadevan_id": "M016",
-      "parpola_id": "16",
-      "source": "mahadevan_parpola_crosswalk.json Phase-28",
-      "iconic": "Janabiyah seal pos 5; rare in Indus, common in Near East",
-      "phoneme": "uncertain",
-      "confidence": "HIGH"
+      "parpola_id": "P016",
+      "parpola_num": 16,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "kaḷiṟu",
+      "anchor_confidence": "HIGH"
     },
     "M053": {
       "mahadevan_id": "M053",
-      "parpola_id": "53",
-      "source": "mahadevan_parpola_crosswalk.json Phase-28",
-      "iconic": "Janabiyah seal pos 1a (alt: 60)",
-      "phoneme": "uncertain",
-      "confidence": "HIGH"
+      "parpola_id": "P053",
+      "parpola_num": 53,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "mi",
+      "anchor_confidence": "MEDIUM"
     },
     "M089": {
       "mahadevan_id": "M089",
-      "parpola_id": "89",
-      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
-      "iconic": "four vertical strokes",
-      "phoneme": "naan-/4",
-      "confidence": "MEDIUM"
+      "parpola_id": "P089",
+      "parpola_num": 89,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "tu/tū",
+      "anchor_confidence": "HIGH"
     },
     "M090": {
       "mahadevan_id": "M090",
-      "parpola_id": "90",
-      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
-      "iconic": "five vertical strokes",
-      "phoneme": "ai-/5",
-      "confidence": "MEDIUM"
+      "parpola_id": "P090",
+      "parpola_num": 90,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "aintu",
+      "anchor_confidence": "MEDIUM"
     },
     "M093": {
       "mahadevan_id": "M093",
-      "parpola_id": "93",
-      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
-      "iconic": "eight vertical strokes",
-      "phoneme": "ettu-/8",
-      "confidence": "MEDIUM"
+      "parpola_id": "P093",
+      "parpola_num": 93,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "eTTu",
+      "anchor_confidence": "MEDIUM"
     },
     "M094": {
       "mahadevan_id": "M094",
-      "parpola_id": "94",
-      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
-      "iconic": "nine vertical strokes",
-      "phoneme": "onpatu-/9",
-      "confidence": "MEDIUM"
+      "parpola_id": "P094",
+      "parpola_num": 94,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "onpatu",
+      "anchor_confidence": "MEDIUM"
     },
     "M095": {
       "mahadevan_id": "M095",
-      "parpola_id": "95",
-      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
-      "iconic": "ten vertical strokes",
-      "phoneme": "pattu-/10",
-      "confidence": "MEDIUM"
+      "parpola_id": "P095",
+      "parpola_num": 95,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
     },
     "M342": {
       "mahadevan_id": "M342",
-      "parpola_id": "342",
-      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
-      "iconic": "3-stroke terminal marker",
-      "phoneme": "ay/ā",
-      "confidence": "MEDIUM"
+      "parpola_id": "P342",
+      "parpola_num": 342,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "ay/ā",
+      "anchor_confidence": "HIGH"
     },
     "M211": {
       "mahadevan_id": "M211",
@@ -293,43 +318,1317 @@
     },
     "M125": {
       "mahadevan_id": "M125",
-      "parpola_id": "125",
-      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
-      "iconic": "clause boundary operator",
-      "phoneme": "BOUNDARY",
-      "confidence": "MEDIUM"
+      "parpola_id": "P125",
+      "parpola_num": 125,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "vil",
+      "anchor_confidence": "MEDIUM"
     },
     "M062": {
       "mahadevan_id": "M062",
-      "parpola_id": "62",
-      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
-      "iconic": "zebu bull classifier",
-      "phoneme": "erutu",
-      "confidence": "MEDIUM"
+      "parpola_id": "P104",
+      "parpola_num": 104,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "erutu",
+      "anchor_confidence": "HIGH"
     },
     "M045": {
       "mahadevan_id": "M045",
-      "parpola_id": "45",
-      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
-      "iconic": "elephant classifier",
-      "phoneme": "yānai",
-      "confidence": "MEDIUM"
+      "parpola_id": "P103",
+      "parpola_num": 103,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "yānai",
+      "anchor_confidence": "HIGH"
     },
     "M006": {
       "mahadevan_id": "M006",
-      "parpola_id": "6",
-      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
-      "iconic": "tiger classifier",
-      "phoneme": "puli",
-      "confidence": "MEDIUM"
+      "parpola_id": "P101",
+      "parpola_num": 101,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "puli",
+      "anchor_confidence": "HIGH"
     },
     "M063": {
       "mahadevan_id": "M063",
-      "parpola_id": "63",
-      "source": "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)",
-      "iconic": "gharial-associated",
-      "phoneme": "mutalai",
-      "confidence": "MEDIUM"
+      "parpola_id": "P063",
+      "parpola_num": 63,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "HIGH",
+      "reading": "mutalai",
+      "anchor_confidence": "HIGH"
+    },
+    "M002": {
+      "mahadevan_id": "M002",
+      "parpola_id": "P002",
+      "parpola_num": 2,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "kuṉ",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M003": {
+      "mahadevan_id": "M003",
+      "parpola_id": "P003",
+      "parpola_num": 3,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "kalam",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M004": {
+      "mahadevan_id": "M004",
+      "parpola_id": "P004",
+      "parpola_num": 4,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "kēḷ",
+      "anchor_confidence": "HIGH"
+    },
+    "M005": {
+      "mahadevan_id": "M005",
+      "parpola_id": "P005",
+      "parpola_num": 5,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "kōṉ",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M007": {
+      "mahadevan_id": "M007",
+      "parpola_id": "P007",
+      "parpola_num": 7,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "aaL",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M008": {
+      "mahadevan_id": "M008",
+      "parpola_id": "P008",
+      "parpola_num": 8,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "erumai",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M009": {
+      "mahadevan_id": "M009",
+      "parpola_id": "P009",
+      "parpola_num": 9,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "āṇ",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M010": {
+      "mahadevan_id": "M010",
+      "parpola_id": "P010",
+      "parpola_num": 10,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "paṭ",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M049": {
+      "mahadevan_id": "M049",
+      "parpola_id": "P049",
+      "parpola_num": 49,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "pu",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M051": {
+      "mahadevan_id": "M051",
+      "parpola_id": "P051",
+      "parpola_num": 51,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "pū/puḷ",
+      "anchor_confidence": "HIGH"
+    },
+    "M054": {
+      "mahadevan_id": "M054",
+      "parpola_id": "P054",
+      "parpola_num": 54,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "mi",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M055": {
+      "mahadevan_id": "M055",
+      "parpola_id": "P055",
+      "parpola_num": 55,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "miN3",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M056": {
+      "mahadevan_id": "M056",
+      "parpola_id": "P056",
+      "parpola_num": 56,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "miN4",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M057": {
+      "mahadevan_id": "M057",
+      "parpola_id": "P057",
+      "parpola_num": 57,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "māṭu",
+      "anchor_confidence": "HIGH"
+    },
+    "M058": {
+      "mahadevan_id": "M058",
+      "parpola_id": "P058",
+      "parpola_num": 58,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "ke",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M059": {
+      "mahadevan_id": "M059",
+      "parpola_id": "P059",
+      "parpola_num": 59,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "ēḷ/eḷ",
+      "anchor_confidence": "HIGH"
+    },
+    "M039": {
+      "mahadevan_id": "M039",
+      "parpola_id": "P105",
+      "parpola_num": 105,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "āṉai",
+      "anchor_confidence": "HIGH"
+    },
+    "M176": {
+      "mahadevan_id": "M176",
+      "parpola_id": "P176",
+      "parpola_num": 176,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "an/aṇ",
+      "anchor_confidence": "HIGH"
+    },
+    "M367": {
+      "mahadevan_id": "M367",
+      "parpola_id": "P367",
+      "parpola_num": 367,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "am/neuter",
+      "anchor_confidence": "HIGH"
+    },
+    "M391": {
+      "mahadevan_id": "M391",
+      "parpola_id": "P391",
+      "parpola_num": 391,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "ka/kaṇ",
+      "anchor_confidence": "HIGH"
+    },
+    "M336": {
+      "mahadevan_id": "M336",
+      "parpola_id": "P336",
+      "parpola_num": 336,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "iṉ/locative",
+      "anchor_confidence": "HIGH"
+    },
+    "M328": {
+      "mahadevan_id": "M328",
+      "parpola_id": "P328",
+      "parpola_num": 328,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "ā/āl",
+      "anchor_confidence": "HIGH"
+    },
+    "M162": {
+      "mahadevan_id": "M162",
+      "parpola_id": "P162",
+      "parpola_num": 162,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "il/iḷ",
+      "anchor_confidence": "HIGH"
+    },
+    "M073": {
+      "mahadevan_id": "M073",
+      "parpola_id": "P073",
+      "parpola_num": 73,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "kōṉ",
+      "anchor_confidence": "HIGH"
+    },
+    "M030": {
+      "mahadevan_id": "M030",
+      "parpola_id": "P030",
+      "parpola_num": 30,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "kō",
+      "anchor_confidence": "HIGH"
+    },
+    "M267": {
+      "mahadevan_id": "M267",
+      "parpola_id": "P267",
+      "parpola_num": 267,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "iN/in (genitive of)",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M233": {
+      "mahadevan_id": "M233",
+      "parpola_id": "P233",
+      "parpola_num": 233,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "ūr",
+      "anchor_confidence": "HIGH"
+    },
+    "M249": {
+      "mahadevan_id": "M249",
+      "parpola_id": "P249",
+      "parpola_num": 249,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "tii",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M096": {
+      "mahadevan_id": "M096",
+      "parpola_id": "P096",
+      "parpola_num": 96,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M097": {
+      "mahadevan_id": "M097",
+      "parpola_id": "P097",
+      "parpola_num": 97,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M098": {
+      "mahadevan_id": "M098",
+      "parpola_id": "P098",
+      "parpola_num": 98,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M079": {
+      "mahadevan_id": "M079",
+      "parpola_id": "P079",
+      "parpola_num": 79,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "ir",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M011": {
+      "mahadevan_id": "M011",
+      "parpola_id": "P011",
+      "parpola_num": 11,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "kaḷiṟu",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M012": {
+      "mahadevan_id": "M012",
+      "parpola_id": "P012",
+      "parpola_num": 12,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "oṉṟu/1",
+      "anchor_confidence": "HIGH"
+    },
+    "M013": {
+      "mahadevan_id": "M013",
+      "parpola_id": "P013",
+      "parpola_num": 13,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "nakaram",
+      "anchor_confidence": "HIGH"
+    },
+    "M014": {
+      "mahadevan_id": "M014",
+      "parpola_id": "P014",
+      "parpola_num": 14,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "tiru",
+      "anchor_confidence": "HIGH"
+    },
+    "M015": {
+      "mahadevan_id": "M015",
+      "parpola_id": "P015",
+      "parpola_num": 15,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "mā",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M017": {
+      "mahadevan_id": "M017",
+      "parpola_id": "P017",
+      "parpola_num": 17,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "kai",
+      "anchor_confidence": "HIGH"
+    },
+    "M018": {
+      "mahadevan_id": "M018",
+      "parpola_id": "P018",
+      "parpola_num": 18,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "nēr",
+      "anchor_confidence": "HIGH"
+    },
+    "M019": {
+      "mahadevan_id": "M019",
+      "parpola_id": "P019",
+      "parpola_num": 19,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "ampu",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M020": {
+      "mahadevan_id": "M020",
+      "parpola_id": "P020",
+      "parpola_num": 20,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "kuṉ",
+      "anchor_confidence": "HIGH"
+    },
+    "M021": {
+      "mahadevan_id": "M021",
+      "parpola_id": "P021",
+      "parpola_num": 21,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "kō",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M022": {
+      "mahadevan_id": "M022",
+      "parpola_id": "P022",
+      "parpola_num": 22,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "kalam",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M023": {
+      "mahadevan_id": "M023",
+      "parpola_id": "P023",
+      "parpola_num": 23,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "vaḷ",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M024": {
+      "mahadevan_id": "M024",
+      "parpola_id": "P024",
+      "parpola_num": 24,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "pēr",
+      "anchor_confidence": "LOW"
+    },
+    "M025": {
+      "mahadevan_id": "M025",
+      "parpola_id": "P025",
+      "parpola_num": 25,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "cem",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M026": {
+      "mahadevan_id": "M026",
+      "parpola_id": "P026",
+      "parpola_num": 26,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "mā",
+      "anchor_confidence": "HIGH"
+    },
+    "M027": {
+      "mahadevan_id": "M027",
+      "parpola_id": "P027",
+      "parpola_num": 27,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "māṟ",
+      "anchor_confidence": "HIGH"
+    },
+    "M028": {
+      "mahadevan_id": "M028",
+      "parpola_id": "P028",
+      "parpola_num": 28,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "cōḻ",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M029": {
+      "mahadevan_id": "M029",
+      "parpola_id": "P029",
+      "parpola_num": 29,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "yānai",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M031": {
+      "mahadevan_id": "M031",
+      "parpola_id": "P031",
+      "parpola_num": 31,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "kai",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M032": {
+      "mahadevan_id": "M032",
+      "parpola_id": "P032",
+      "parpola_num": 32,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "koL",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M033": {
+      "mahadevan_id": "M033",
+      "parpola_id": "P033",
+      "parpola_num": 33,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "puli",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M034": {
+      "mahadevan_id": "M034",
+      "parpola_id": "P034",
+      "parpola_num": 34,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "tōḷ",
+      "anchor_confidence": "HIGH"
+    },
+    "M035": {
+      "mahadevan_id": "M035",
+      "parpola_id": "P035",
+      "parpola_num": 35,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "po",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M036": {
+      "mahadevan_id": "M036",
+      "parpola_id": "P036",
+      "parpola_num": 36,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "tiru",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M037": {
+      "mahadevan_id": "M037",
+      "parpola_id": "P037",
+      "parpola_num": 37,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "kēḷ",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M038": {
+      "mahadevan_id": "M038",
+      "parpola_id": "P038",
+      "parpola_num": 38,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "pōr",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M040": {
+      "mahadevan_id": "M040",
+      "parpola_id": "P040",
+      "parpola_num": 40,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "mutalai",
+      "anchor_confidence": "LOW"
+    },
+    "M041": {
+      "mahadevan_id": "M041",
+      "parpola_id": "P041",
+      "parpola_num": 41,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "pēr",
+      "anchor_confidence": "HIGH"
+    },
+    "M042": {
+      "mahadevan_id": "M042",
+      "parpola_id": "P042",
+      "parpola_num": 42,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "vaN",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M043": {
+      "mahadevan_id": "M043",
+      "parpola_id": "P043",
+      "parpola_num": 43,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "mu",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M044": {
+      "mahadevan_id": "M044",
+      "parpola_id": "P044",
+      "parpola_num": 44,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "ku",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M046": {
+      "mahadevan_id": "M046",
+      "parpola_id": "P046",
+      "parpola_num": 46,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "kaL",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M061": {
+      "mahadevan_id": "M061",
+      "parpola_id": "P061",
+      "parpola_num": 61,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "ka",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M064": {
+      "mahadevan_id": "M064",
+      "parpola_id": "P064",
+      "parpola_num": 64,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "va",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M065": {
+      "mahadevan_id": "M065",
+      "parpola_id": "P065",
+      "parpola_num": 65,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "kuTam",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M066": {
+      "mahadevan_id": "M066",
+      "parpola_id": "P066",
+      "parpola_num": 66,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "cōḻ",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M067": {
+      "mahadevan_id": "M067",
+      "parpola_id": "P067",
+      "parpola_num": 67,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "kōṭṭāṉ",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M068": {
+      "mahadevan_id": "M068",
+      "parpola_id": "P068",
+      "parpola_num": 68,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "maṟi",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M069": {
+      "mahadevan_id": "M069",
+      "parpola_id": "P069",
+      "parpola_num": 69,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "nēr",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M070": {
+      "mahadevan_id": "M070",
+      "parpola_id": "P070",
+      "parpola_num": 70,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "vēl",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M071": {
+      "mahadevan_id": "M071",
+      "parpola_id": "P071",
+      "parpola_num": 71,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "nal",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M072": {
+      "mahadevan_id": "M072",
+      "parpola_id": "P072",
+      "parpola_num": 72,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "cēr",
+      "anchor_confidence": "LOW"
+    },
+    "M074": {
+      "mahadevan_id": "M074",
+      "parpola_id": "P074",
+      "parpola_num": 74,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "ker",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M075": {
+      "mahadevan_id": "M075",
+      "parpola_id": "P075",
+      "parpola_num": 75,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "māṟ",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M076": {
+      "mahadevan_id": "M076",
+      "parpola_id": "P076",
+      "parpola_num": 76,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "naN",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M077": {
+      "mahadevan_id": "M077",
+      "parpola_id": "P077",
+      "parpola_num": 77,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "nal",
+      "anchor_confidence": "HIGH"
+    },
+    "M078": {
+      "mahadevan_id": "M078",
+      "parpola_id": "P078",
+      "parpola_num": 78,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "cēr",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M080": {
+      "mahadevan_id": "M080",
+      "parpola_id": "P080",
+      "parpola_num": 80,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "vēṅkai",
+      "anchor_confidence": "HIGH"
+    },
+    "M081": {
+      "mahadevan_id": "M081",
+      "parpola_id": "P081",
+      "parpola_num": 81,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "ve",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M082": {
+      "mahadevan_id": "M082",
+      "parpola_id": "P082",
+      "parpola_num": 82,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "pa",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M083": {
+      "mahadevan_id": "M083",
+      "parpola_id": "P083",
+      "parpola_num": 83,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M084": {
+      "mahadevan_id": "M084",
+      "parpola_id": "P084",
+      "parpola_num": 84,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M085": {
+      "mahadevan_id": "M085",
+      "parpola_id": "P085",
+      "parpola_num": 85,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M100": {
+      "mahadevan_id": "M100",
+      "parpola_id": "P100",
+      "parpola_num": 100,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "maa",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M107": {
+      "mahadevan_id": "M107",
+      "parpola_id": "P107",
+      "parpola_num": 107,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "ko",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M108": {
+      "mahadevan_id": "M108",
+      "parpola_id": "P108",
+      "parpola_num": 108,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "kaL",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M109": {
+      "mahadevan_id": "M109",
+      "parpola_id": "P109",
+      "parpola_num": 109,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M110": {
+      "mahadevan_id": "M110",
+      "parpola_id": "P110",
+      "parpola_num": 110,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M111": {
+      "mahadevan_id": "M111",
+      "parpola_id": "P111",
+      "parpola_num": 111,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M112": {
+      "mahadevan_id": "M112",
+      "parpola_id": "P112",
+      "parpola_num": 112,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M113": {
+      "mahadevan_id": "M113",
+      "parpola_id": "P113",
+      "parpola_num": 113,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M114": {
+      "mahadevan_id": "M114",
+      "parpola_id": "P114",
+      "parpola_num": 114,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M115": {
+      "mahadevan_id": "M115",
+      "parpola_id": "P115",
+      "parpola_num": 115,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M116": {
+      "mahadevan_id": "M116",
+      "parpola_id": "P116",
+      "parpola_num": 116,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "ūr",
+      "anchor_confidence": "LOW"
+    },
+    "M118": {
+      "mahadevan_id": "M118",
+      "parpola_id": "P118",
+      "parpola_num": 118,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "car",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M119": {
+      "mahadevan_id": "M119",
+      "parpola_id": "P119",
+      "parpola_num": 119,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M120": {
+      "mahadevan_id": "M120",
+      "parpola_id": "P120",
+      "parpola_num": 120,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M121": {
+      "mahadevan_id": "M121",
+      "parpola_id": "P121",
+      "parpola_num": 121,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M122": {
+      "mahadevan_id": "M122",
+      "parpola_id": "P122",
+      "parpola_num": 122,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M123": {
+      "mahadevan_id": "M123",
+      "parpola_id": "P123",
+      "parpola_num": 123,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M127": {
+      "mahadevan_id": "M127",
+      "parpola_id": "P127",
+      "parpola_num": 127,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "māḷ",
+      "anchor_confidence": "LOW"
+    },
+    "M128": {
+      "mahadevan_id": "M128",
+      "parpola_id": "P128",
+      "parpola_num": 128,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "kaṇ",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M129": {
+      "mahadevan_id": "M129",
+      "parpola_id": "P129",
+      "parpola_num": 129,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M130": {
+      "mahadevan_id": "M130",
+      "parpola_id": "P130",
+      "parpola_num": 130,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "mui",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M131": {
+      "mahadevan_id": "M131",
+      "parpola_id": "P131",
+      "parpola_num": 131,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M132": {
+      "mahadevan_id": "M132",
+      "parpola_id": "P132",
+      "parpola_num": 132,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M133": {
+      "mahadevan_id": "M133",
+      "parpola_id": "P133",
+      "parpola_num": 133,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M134": {
+      "mahadevan_id": "M134",
+      "parpola_id": "P134",
+      "parpola_num": 134,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M135": {
+      "mahadevan_id": "M135",
+      "parpola_id": "P135",
+      "parpola_num": 135,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M136": {
+      "mahadevan_id": "M136",
+      "parpola_id": "P136",
+      "parpola_num": 136,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M137": {
+      "mahadevan_id": "M137",
+      "parpola_id": "P137",
+      "parpola_num": 137,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "kuṟ",
+      "anchor_confidence": "LOW"
+    },
+    "M138": {
+      "mahadevan_id": "M138",
+      "parpola_id": "P138",
+      "parpola_num": 138,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M139": {
+      "mahadevan_id": "M139",
+      "parpola_id": "P139",
+      "parpola_num": 139,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M140": {
+      "mahadevan_id": "M140",
+      "parpola_id": "P140",
+      "parpola_num": 140,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M141": {
+      "mahadevan_id": "M141",
+      "parpola_id": "P141",
+      "parpola_num": 141,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M142": {
+      "mahadevan_id": "M142",
+      "parpola_id": "P142",
+      "parpola_num": 142,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M143": {
+      "mahadevan_id": "M143",
+      "parpola_id": "P143",
+      "parpola_num": 143,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "maṇ",
+      "anchor_confidence": "LOW"
+    },
+    "M144": {
+      "mahadevan_id": "M144",
+      "parpola_id": "P144",
+      "parpola_num": 144,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M146": {
+      "mahadevan_id": "M146",
+      "parpola_id": "P146",
+      "parpola_num": 146,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M148": {
+      "mahadevan_id": "M148",
+      "parpola_id": "P148",
+      "parpola_num": 148,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M149": {
+      "mahadevan_id": "M149",
+      "parpola_id": "P149",
+      "parpola_num": 149,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "kuḷ",
+      "anchor_confidence": "LOW"
+    },
+    "M150": {
+      "mahadevan_id": "M150",
+      "parpola_id": "P150",
+      "parpola_num": 150,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M151": {
+      "mahadevan_id": "M151",
+      "parpola_id": "P151",
+      "parpola_num": 151,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "viḷ",
+      "anchor_confidence": "LOW"
+    },
+    "M152": {
+      "mahadevan_id": "M152",
+      "parpola_id": "P152",
+      "parpola_num": 152,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M153": {
+      "mahadevan_id": "M153",
+      "parpola_id": "P153",
+      "parpola_num": 153,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "kaṇ",
+      "anchor_confidence": "LOW"
+    },
+    "M154": {
+      "mahadevan_id": "M154",
+      "parpola_id": "P154",
+      "parpola_num": 154,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M155": {
+      "mahadevan_id": "M155",
+      "parpola_id": "P155",
+      "parpola_num": 155,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "mīn",
+      "anchor_confidence": "LOW"
+    },
+    "M156": {
+      "mahadevan_id": "M156",
+      "parpola_id": "P156",
+      "parpola_num": 156,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M157": {
+      "mahadevan_id": "M157",
+      "parpola_id": "P157",
+      "parpola_num": 157,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M158": {
+      "mahadevan_id": "M158",
+      "parpola_id": "P158",
+      "parpola_num": 158,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M159": {
+      "mahadevan_id": "M159",
+      "parpola_id": "P159",
+      "parpola_num": 159,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M160": {
+      "mahadevan_id": "M160",
+      "parpola_id": "P160",
+      "parpola_num": 160,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M161": {
+      "mahadevan_id": "M161",
+      "parpola_id": "P161",
+      "parpola_num": 161,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M163": {
+      "mahadevan_id": "M163",
+      "parpola_id": "P163",
+      "parpola_num": 163,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "il",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M164": {
+      "mahadevan_id": "M164",
+      "parpola_id": "P164",
+      "parpola_num": 164,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "il",
+      "anchor_confidence": "MEDIUM"
+    },
+    "M165": {
+      "mahadevan_id": "M165",
+      "parpola_id": "P165",
+      "parpola_num": 165,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M166": {
+      "mahadevan_id": "M166",
+      "parpola_id": "P166",
+      "parpola_num": 166,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M167": {
+      "mahadevan_id": "M167",
+      "parpola_id": "P167",
+      "parpola_num": 167,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "",
+      "anchor_confidence": "UNREAD"
+    },
+    "M168": {
+      "mahadevan_id": "M168",
+      "parpola_id": "P168",
+      "parpola_num": 168,
+      "source": "Parpola 1994 Appendix B",
+      "confidence": "MEDIUM",
+      "reading": "paṉ",
+      "anchor_confidence": "LOW"
     }
   }
 }

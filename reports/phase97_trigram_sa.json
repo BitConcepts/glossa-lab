@@ -1,0 +1,29 @@
+{
+  "_citation": {
+    "primary": [
+      "A.1"
+    ]
+  },
+  "gpu_device": "cuda",
+  "n_low_signs_tested": 2,
+  "n_converged": 0,
+  "n_reading_changed": 2,
+  "sign_results": [
+    {
+      "sign": "M293",
+      "trigram_modal": "duv",
+      "bigram_modal": "ta",
+      "consistency": 0.125,
+      "reading_changed": true
+    },
+    {
+      "sign": "M024",
+      "trigram_modal": "di",
+      "bigram_modal": "nē",
+      "consistency": 0.125,
+      "reading_changed": true
+    }
+  ],
+  "elapsed_s": 8.1,
+  "verdict": "Phase-97: Trigram SA upgrade. 2 ENSEMBLE_LOW signs tested. 0 converged (>=70%). 2 readings changed vs bigram. Trigram+positional weighting partially improves sign resolution for stuck cases."
+}

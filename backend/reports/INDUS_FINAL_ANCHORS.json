@@ -1,5 +1,5 @@
 {
-  "total": 171,
+  "total": 174,
   "anchors": {
     "M342": {
       "reading": "ay/ā",
@@ -434,9 +434,13 @@
       "bigram_consistency": 0.0421
     },
     "M007": {
-      "reading": "nal",
-      "confidence": "LOW",
-      "basis": "Round 3: INITIAL position (freq=11), distributional assignment"
+      "confidence": "MEDIUM",
+      "reading": "aaL",
+      "dedr_id": "DEDR 0340",
+      "meaning": "person",
+      "source": "Phase-89 systematic DEDR (ICON, HIGH)",
+      "corpus_freq": 11,
+      "evidence_score": 2.2
     },
     "M046": {
       "reading": "nal",
@@ -954,6 +958,33 @@
       "source": "Phase-87 DEDR_REBUS_EXTENDED",
       "corpus_freq": 19,
       "evidence_score": 2.0
+    },
+    "M003": {
+      "confidence": "MEDIUM",
+      "reading": "kalam",
+      "dedr_id": "DEDR 1284",
+      "meaning": "pot/vessel",
+      "source": "Phase-89 systematic DEDR (ICON, HIGH)",
+      "corpus_freq": 19,
+      "evidence_score": 2.2
+    },
+    "M107": {
+      "confidence": "MEDIUM",
+      "reading": "ko",
+      "dedr_id": "DEDR 2169",
+      "meaning": "kol allograph",
+      "source": "Phase-89 systematic DEDR (ICON, HIGH)",
+      "corpus_freq": 3,
+      "evidence_score": 2.1
+    },
+    "M164": {
+      "confidence": "MEDIUM",
+      "reading": "il",
+      "dedr_id": "DEDR 0507",
+      "meaning": "house variant",
+      "source": "Phase-89 systematic DEDR (ICON, HIGH)",
+      "corpus_freq": 3,
+      "evidence_score": 2.1
     }
   },
   "_citation": {
@@ -982,9 +1013,9 @@
   },
   "_cleanup_note": "2026-05-17: Removed 196 nīr/INIT/TERM/MED placeholder entries from V8-V24 autonomous loops. Retained 137 real anchors.",
   "metadata": {
-    "total_count": 171,
+    "total_count": 174,
     "high_count": 37,
-    "medium_count": 68,
+    "medium_count": 72,
     "low_count": 66
   }
 }

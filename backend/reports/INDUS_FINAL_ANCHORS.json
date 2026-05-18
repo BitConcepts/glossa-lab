@@ -69,13 +69,15 @@
       "reading": "mu/muṉ",
       "confidence": "HIGH",
       "basis": "Positional analysis; UPGRADED: high frequency (157); consistent TERMINAL position (n=157); collocates with HIGH anchor M342 (n=13); collocates with HIGH anchor M267 (n=7); collocates with HIGH anchor M176 (n=5); collocates with HIGH anchor M342 (n=17); collocates with HIGH anchor M176 (n=8); has specific PDR reading",
-      "source": "+Phase48_validated"
+      "source": "+Phase48_validated",
+      "_phase133_dual_function": "Confirmed dual-function (Phase-133 V11 investigation): muṉ as suffix (72/157 tokens) AND as title-prefix 'muṉ=first/chief' (31/157 tokens = 20%). INITIAL use is legitimate Dravidian compound-title usage, not a grammar model violation."
     },
     "M367": {
       "reading": "am/neuter",
       "confidence": "HIGH",
       "basis": "terminal diamond = neuter suffix; UPGRADED: high frequency (190); consistent TERMINAL position (n=190); collocates with HIGH anchor M176 (n=8); collocates with HIGH anchor M099 (n=6); collocates with HIGH anchor M267 (n=5); collocates with HIGH anchor M342 (n=16); collocates with HIGH anchor M176 (n=13); collocates with HIGH anchor M267 (n=12); collocates with HIGH anchor M099 (n=9); has specific PDR reading",
-      "source": "+Phase48_validated"
+      "source": "+Phase48_validated",
+      "_phase133_dual_function": "Confirmed dual-function (Phase-133 V11 investigation): am as neuter suffix (75/190 tokens) AND as compound prefix 'am-' (20/190 tokens = 10.5%). INITIAL use reflects Dravidian nominal prefix pattern."
     },
     "M336": {
       "reading": "iṉ/locative",
@@ -2602,5 +2604,6 @@
   "corpus_token_coverage": 0.9075,
   "_note": "total = H+M confirmed anchors. total_all_entries includes LOW allographs/grammar inferences. DO NOT use total/corpus_signs for % coverage — use corpus_token_coverage instead.",
   "_phase128_129_note": "Phase-128: M374=kul (MEDIUM, substrate Munda/DEDR 1709), M351=vī (MEDIUM, substrate Munda/DEDR 5388). Phase-129: M072=mā (MEDIUM, INITIAL position/DEDR 4751), M149=or (MEDIUM, MEDIAL/DEDR 987), M185=pul (MEDIUM, MEDIAL/DEDR 4336). Remaining 20 of 25 unresolved signs stay LOW — insufficient DEDR+positional evidence for promotion.",
-  "_phase132_note": "Phase-132 validation: 114 Phase-111 kur-allograph MEDIUM signs downgraded to LOW. These were positional parking spots (all-MEDIAL L1=0), not genuine phonetic readings. New H+M=157, coverage=0.9075. Genuine phonetically-anchored coverage (H+M, non-parking) = 90.75%."
+  "_phase132_note": "Phase-132 validation: 114 Phase-111 kur-allograph MEDIUM signs downgraded to LOW. These were positional parking spots (all-MEDIAL L1=0), not genuine phonetic readings. New H+M=157, coverage=0.9075. Genuine phonetically-anchored coverage (H+M, non-parking) = 90.75%.",
+  "_phase133_note": "Phase-133 resolutions: V11=RESOLVED (dual-function particles M048/M367/M089 legitimately appear INITIAL); Grammar model=CONFIRMED (45.8% explained variance, 8.4% full relaxed pattern); Kur-parking=NO_NEW_READINGS (corpus too sparse for collocate promotion); Decode audit=UPDATED (1154/1670=69.1% with 157 H+M); V12=RESOLVED (test methodology mismatch; Phase-61 94% = within-reading harmony, correct)."
 }

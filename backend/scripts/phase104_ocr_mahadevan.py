@@ -130,6 +130,31 @@ ICONOGRAPHIC_PROPOSALS = {
 }
 
 
+def _extract_json_list(raw: str) -> list[dict]:
+    """Extract a JSON array from a Mistral response regardless of wrapping."""
+    import re as _re
+    if not raw:
+        return []
+    # Strip markdown code fences: ```json ... ``` or ``` ... ```
+    text = _re.sub(r"```[a-z]*\n?", "", raw).strip()
+    # Find the outermost [ ... ]
+    start = text.find("[")
+    end   = text.rfind("]")
+    if start == -1 or end == -1 or end <= start:
+        # Try to find any JSON objects and wrap them
+        objects = _re.findall(r"\{[^{}]+\}", text, _re.DOTALL)
+        if objects:
+            try:
+                return [json.loads(o) for o in objects]
+            except Exception:
+                pass
+        return []
+    try:
+        return json.loads(text[start:end + 1])
+    except Exception:
+        return []
+
+
 def try_mistral_ocr(pdf_path: Path) -> list[dict]:
     """Attempt Mistral pixtral OCR on the PDF. Returns list of page results."""
     try:
@@ -177,11 +202,13 @@ def try_mistral_ocr(pdf_path: Path) -> list[dict]:
                 provider_override="mistral",
                 model_override="pixtral-12b-2409",
             )
-            parsed = json.loads(raw) if raw.strip().startswith("[") else []
-            for item in (parsed if isinstance(parsed, list) else []):
+            # Robustly extract JSON array from various response formats
+            # (pixtral often wraps output in ```json ... ``` fences)
+            parsed = _extract_json_list(raw)
+            for item in parsed:
                 item["page"] = i + 1
                 results.append(item)
-            print(f"  Page {i+1}/{n_pages}: {len(parsed)} signs")
+            print(f"  Page {i+1}/{n_pages}: {len(parsed)} signs | raw[:80]={repr(raw[:80])}")
         except Exception as exc:  # noqa: BLE001
             print(f"  Page {i+1}: OCR error — {exc}")
         finally:
@@ -190,33 +217,86 @@ def try_mistral_ocr(pdf_path: Path) -> list[dict]:
     return results
 
 
+# PD-valid syllable pattern — Dravidian phonotactics (DEDR)
+_PD_SYLLABLE_RE = None
+
+def _is_pd_reading(reading: str) -> bool:
+    """Return True if a reading looks like a plausible Dravidian phonetic value."""
+    import re
+    if not reading or len(reading) < 2:
+        return False
+    r = reading.strip()
+    # Reject multi-word phrases (phonetic values are single tokens)
+    if " " in r and len(r.split()) > 2:
+        return False
+    # Reject strings with UPPERCASE (plate headers, English labels)
+    if re.search(r"[A-Z]{3,}", r):
+        return False
+    # Reject obvious non-phonetic patterns (digits, slashes, parens dominating)
+    if re.search(r"[\d/\(\)\[\]]{2,}", r):
+        return False
+    rl = r.lower().split()[0]  # first word
+    # Must start with a Dravidian-valid initial consonant or vowel
+    pd_initials = r"^(k|c|t|n|p|m|v|y|r|l|a|ā|i|ī|u|ū|e|ē|o|ō)"
+    if not re.match(pd_initials, rl):
+        return False
+    # Must be 2-12 chars
+    if not (2 <= len(rl) <= 12):
+        return False
+    # Reject clearly English/descriptive/negative-result words
+    english_markers = {
+        "the", "sign", "symbol", "unknown", "none", "n/a", "not", "plate",
+        "figure", "table", "sequence", "signs", "undeciphered", "uncertain",
+        "proposed", "possibly", "various", "multiple", "composite",
+        "specified", "provided", "mentioned", "described", "interpreted",
+        "sometimes", "often", "reading", "phonetic", "context", "unclear",
+    }
+    if any(m in r.lower() for m in english_markers):
+        return False
+    return True
+
+
 def build_proposals_from_descriptions(ocr_results: list[dict]) -> list[dict]:
     """Map OCR sign descriptions to reading proposals using iconography."""
+    import re
     proposals = []
     seen = set()
     for item in ocr_results:
         sign = (item.get("sign") or "").strip().upper()
         if not sign.startswith("M"):
-            # Try to normalize "Sign 24" → "M024"
-            import re
+            # Try to normalize "Sign 24" / "1" → "M024"
             m = re.search(r"\d+", sign)
             if m:
                 sign = f"M{int(m.group()):03d}"
         if not sign or sign in seen:
             continue
         seen.add(sign)
-        desc = item.get("description", "")
-        reading = item.get("reading", "")
+        desc    = item.get("description", "")
+        reading = (item.get("reading") or "").strip()
         # Cross-reference with embedded iconographic proposals
         ico = ICONOGRAPHIC_PROPOSALS.get(sign, {})
+
+        # Determine best reading and confidence
+        if ico:  # known iconographic entry takes priority
+            best_reading = ico.get("reading", reading)
+            dedr         = ico.get("dedr", "")
+            basis        = ico.get("basis", "")
+            confidence   = ico.get("confidence", "LOW")
+        else:
+            best_reading = reading
+            dedr         = ""
+            basis        = f"Mistral pixtral OCR from im77intro.pdf: '{desc[:80]}'"
+            # Upgrade to MEDIUM if reading is PD-valid and non-trivial
+            confidence   = "MEDIUM" if _is_pd_reading(reading) else "LOW"
+
         proposals.append({
             "sign": sign,
             "ocr_description": desc or MAHADEVAN_SIGN_DESCRIPTIONS.get(sign, ""),
             "ocr_reading": reading,
-            "iconographic_reading": ico.get("reading", ""),
-            "dedr": ico.get("dedr", ""),
-            "basis": ico.get("basis", ""),
-            "confidence": ico.get("confidence", "LOW"),
+            "iconographic_reading": best_reading,
+            "dedr": dedr,
+            "basis": basis,
+            "confidence": confidence,
         })
     return proposals
 
@@ -251,6 +331,31 @@ def main():
                 "basis": ico.get("basis", ""),
                 "confidence": ico.get("confidence", "LOW"),
             })
+
+    # Always ensure iconographic proposals appear as MEDIUM in the output
+    # (they may not have appeared in the OCR-parsed sign list if pixtral used
+    # a different sign ID format, but they are always valid proposals)
+    ocr_signs = {p["sign"] for p in proposals}
+    for ico_sign, ico_data in ICONOGRAPHIC_PROPOSALS.items():
+        if ico_sign not in ocr_signs:
+            proposals.append({
+                "sign": ico_sign,
+                "ocr_description": MAHADEVAN_SIGN_DESCRIPTIONS.get(ico_sign, ""),
+                "ocr_reading": "",
+                "iconographic_reading": ico_data["reading"],
+                "dedr": ico_data["dedr"],
+                "basis": ico_data["basis"],
+                "confidence": ico_data["confidence"],
+            })
+        else:
+            # Upgrade any existing entry for this sign to the iconographic data
+            for p in proposals:
+                if p["sign"] == ico_sign:
+                    p["iconographic_reading"] = ico_data["reading"]
+                    p["dedr"]       = ico_data["dedr"]
+                    p["basis"]      = ico_data["basis"]
+                    p["confidence"] = ico_data["confidence"]
+                    break
 
     # Separate actionable proposals (with readings) from pure descriptions
     actionable = [p for p in proposals if p.get("iconographic_reading") or p.get("ocr_reading")]

@@ -1,0 +1,507 @@
+{
+  "_citation": {
+    "primary": [
+      "A.1"
+    ]
+  },
+  "gpu_device": "cpu",
+  "n_anchor_signs": 101,
+  "n_seals_total": 1670,
+  "n_formulas_decoded": 6,
+  "n_seals_covered_by_lexicon": 1349,
+  "formula_type_distribution": {
+    "TITLE_FORMULA_SIMPLE": 472,
+    "UNCERTAIN": 321,
+    "OWNERSHIP_FORMULA": 236,
+    "SUFFIX_ONLY": 415,
+    "PLACE_FORMULA": 183,
+    "TITLE_FORMULA_ANIMAL": 29,
+    "NUMERAL_FORMULA": 14
+  },
+  "formula_lexicon": [
+    {
+      "formula_type": "TITLE_FORMULA_ANIMAL",
+      "required_sign_roles": [
+        "ANIMAL",
+        "TITLE",
+        "SUFFIX"
+      ],
+      "n_seals": 29,
+      "pct_of_corpus": 1.7,
+      "natural_language_template": "puli [seal of] kol-ay  |  '[Name: kol]-ay' with puli totem",
+      "key_anchor_signs": [
+        {
+          "sign": "M006",
+          "reading": "puli",
+          "role": "ANIMAL"
+        },
+        {
+          "sign": "M016",
+          "reading": "kaḷiṟu",
+          "role": "ANIMAL"
+        },
+        {
+          "sign": "M045",
+          "reading": "yānai",
+          "role": "ANIMAL"
+        },
+        {
+          "sign": "M062",
+          "reading": "erutu",
+          "role": "ANIMAL"
+        },
+        {
+          "sign": "M047",
+          "reading": "min/mīn",
+          "role": "ANIMAL"
+        },
+        {
+          "sign": "M039",
+          "reading": "āṉai",
+          "role": "ANIMAL"
+        }
+      ],
+      "examples": [
+        {
+          "cisi_id": "DK-0006",
+          "signs": [
+            "M016",
+            "M211",
+            "M342",
+            "M336"
+          ],
+          "transliteration": "kaḷiṟu-kol-ay-iṉ"
+        },
+        {
+          "cisi_id": "C-0005",
+          "signs": [
+            "M062",
+            "M059",
+            "M127",
+            "M089"
+          ],
+          "transliteration": "erutu-ēḷ-[M127]-tu"
+        },
+        {
+          "cisi_id": "K-0015",
+          "signs": [
+            "M006",
+            "M342",
+            "M051",
+            "M211"
+          ],
+          "transliteration": "puli-ay-pū-kol"
+        }
+      ]
+    },
+    {
+      "formula_type": "TITLE_FORMULA_SIMPLE",
+      "required_sign_roles": [
+        "TITLE",
+        "SUFFIX"
+      ],
+      "n_seals": 472,
+      "pct_of_corpus": 28.3,
+      "natural_language_template": "kol-ay  |  Personal title + case marker",
+      "key_anchor_signs": [
+        {
+          "sign": "M099",
+          "reading": "kol/koḷ",
+          "role": "TITLE"
+        },
+        {
+          "sign": "M073",
+          "reading": "kōṉ",
+          "role": "TITLE"
+        },
+        {
+          "sign": "M059",
+          "reading": "ēḷ/eḷ",
+          "role": "TITLE"
+        },
+        {
+          "sign": "M030",
+          "reading": "kō",
+          "role": "TITLE"
+        },
+        {
+          "sign": "M041",
+          "reading": "pēr",
+          "role": "TITLE"
+        },
+        {
+          "sign": "M211",
+          "reading": "kol",
+          "role": "TITLE"
+        }
+      ],
+      "examples": [
+        {
+          "cisi_id": "H-0001",
+          "signs": [
+            "M391",
+            "M211",
+            "M099",
+            "M220"
+          ],
+          "transliteration": "ka-kol-kol-[M220]"
+        },
+        {
+          "cisi_id": "M-0001",
+          "signs": [
+            "M022",
+            "M270",
+            "M342",
+            "M211",
+            "M087"
+          ],
+          "transliteration": "kalam-[M270]-ay-kol-veL"
+        },
+        {
+          "cisi_id": "M-0002",
+          "signs": [
+            "M073",
+            "M378",
+            "M328",
+            "M099",
+            "M125",
+            "M089"
+          ],
+          "transliteration": "kōṉ-[M378]-ā-kol-vil-tu"
+        }
+      ]
+    },
+    {
+      "formula_type": "OWNERSHIP_FORMULA",
+      "required_sign_roles": [
+        "CONNECTIVE"
+      ],
+      "n_seals": 236,
+      "pct_of_corpus": 14.1,
+      "natural_language_template": "X-iN-Y  |  'Y belonging to X' / 'Y of X'  (genitive construction)",
+      "key_anchor_signs": [
+        {
+          "sign": "M267",
+          "reading": "iN/in (genitive of)",
+          "role": "CONNECTIVE"
+        }
+      ],
+      "examples": [
+        {
+          "cisi_id": "DK-0001",
+          "signs": [
+            "M062",
+            "M162",
+            "M267"
+          ],
+          "transliteration": "erutu-il-iN"
+        },
+        {
+          "cisi_id": "C-0001",
+          "signs": [
+            "M391",
+            "M267",
+            "M342"
+          ],
+          "transliteration": "ka-iN-ay"
+        },
+        {
+          "cisi_id": "M-0008",
+          "signs": [
+            "M044",
+            "M059",
+            "M267",
+            "M125"
+          ],
+          "transliteration": "ku-ēḷ-iN-vil"
+        }
+      ]
+    },
+    {
+      "formula_type": "PLACE_FORMULA",
+      "required_sign_roles": [
+        "PLACE"
+      ],
+      "n_seals": 183,
+      "pct_of_corpus": 11.0,
+      "natural_language_template": "[PLACE_NAME]-il  |  Settlement/location identifier",
+      "key_anchor_signs": [
+        {
+          "sign": "M162",
+          "reading": "il/iḷ",
+          "role": "PLACE"
+        },
+        {
+          "sign": "M233",
+          "reading": "ūr",
+          "role": "PLACE"
+        }
+      ],
+      "examples": [
+        {
+          "cisi_id": "M-0006",
+          "signs": [
+            "M066",
+            "M162",
+            "M087"
+          ],
+          "transliteration": "cōḻ-il-veL"
+        },
+        {
+          "cisi_id": "M-0007",
+          "signs": [
+            "M077",
+            "M342",
+            "M162"
+          ],
+          "transliteration": "nal-ay-il"
+        },
+        {
+          "cisi_id": "M-0010",
+          "signs": [
+            "M233",
+            "M219",
+            "M158",
+            "M342"
+          ],
+          "transliteration": "ūr-[M219]-[M158]-ay"
+        }
+      ]
+    },
+    {
+      "formula_type": "SUFFIX_ONLY",
+      "required_sign_roles": [
+        "SUFFIX"
+      ],
+      "n_seals": 415,
+      "pct_of_corpus": 24.9,
+      "natural_language_template": "[NAME]-ay  |  Personal name + case marker (name unknown)",
+      "key_anchor_signs": [
+        {
+          "sign": "M342",
+          "reading": "ay/ā",
+          "role": "SUFFIX"
+        },
+        {
+          "sign": "M176",
+          "reading": "an/aṇ",
+          "role": "SUFFIX"
+        },
+        {
+          "sign": "M367",
+          "reading": "am/neuter",
+          "role": "SUFFIX"
+        },
+        {
+          "sign": "M391",
+          "reading": "ka/kaṇ",
+          "role": "SUFFIX"
+        },
+        {
+          "sign": "M336",
+          "reading": "iṉ/locative",
+          "role": "SUFFIX"
+        },
+        {
+          "sign": "M089",
+          "reading": "tu/tū",
+          "role": "SUFFIX"
+        }
+      ],
+      "examples": [
+        {
+          "cisi_id": "K-0001",
+          "signs": [
+            "M012",
+            "M183",
+            "M391",
+            "M048"
+          ],
+          "transliteration": "oṉṟu-[M183]-ka-mu"
+        },
+        {
+          "cisi_id": "M-0004",
+          "signs": [
+            "M048",
+            "M328",
+            "M328"
+          ],
+          "transliteration": "mu-ā-ā"
+        },
+        {
+          "cisi_id": "H-0006",
+          "signs": [
+            "M018",
+            "M336"
+          ],
+          "transliteration": "nēr-iṉ"
+        }
+      ]
+    },
+    {
+      "formula_type": "NUMERAL_FORMULA",
+      "required_sign_roles": [
+        "NUMERAL"
+      ],
+      "n_seals": 14,
+      "pct_of_corpus": 0.8,
+      "natural_language_template": "ir [COMMODITY]  |  Quantity + commodity (administrative record?)",
+      "key_anchor_signs": [
+        {
+          "sign": "M079",
+          "reading": "ir",
+          "role": "NUMERAL"
+        }
+      ],
+      "examples": [
+        {
+          "cisi_id": "M-0044",
+          "signs": [
+            "M079",
+            "M293",
+            "M391",
+            "M336"
+          ],
+          "transliteration": "ir-[M293]-ka-iṉ"
+        },
+        {
+          "cisi_id": "C-0039",
+          "signs": [
+            "M079",
+            "M356",
+            "M211",
+            "M051"
+          ],
+          "transliteration": "ir-[M356]-kol-pū"
+        },
+        {
+          "cisi_id": "M-0334",
+          "signs": [
+            "M079",
+            "M367",
+            "M065"
+          ],
+          "transliteration": "ir-am-kuTam"
+        }
+      ]
+    }
+  ],
+  "sign_role_table": {
+    "M006": {
+      "role": "ANIMAL",
+      "reading": "puli",
+      "meaning": "leopard/tiger"
+    },
+    "M016": {
+      "role": "ANIMAL",
+      "reading": "erutu",
+      "meaning": "bull"
+    },
+    "M045": {
+      "role": "ANIMAL",
+      "reading": "yānai",
+      "meaning": "elephant"
+    },
+    "M062": {
+      "role": "ANIMAL",
+      "reading": "e",
+      "meaning": "antelope/deer"
+    },
+    "M047": {
+      "role": "ANIMAL",
+      "reading": "miin",
+      "meaning": "fish"
+    },
+    "M039": {
+      "role": "ANIMAL",
+      "reading": "kaa",
+      "meaning": "tree/grove"
+    },
+    "M099": {
+      "role": "TITLE",
+      "reading": "kol",
+      "meaning": "lord/chieftain"
+    },
+    "M073": {
+      "role": "TITLE",
+      "reading": "ko",
+      "meaning": "king/ruler"
+    },
+    "M059": {
+      "role": "TITLE",
+      "reading": "el",
+      "meaning": "lord"
+    },
+    "M030": {
+      "role": "TITLE",
+      "reading": "nay",
+      "meaning": "leader"
+    },
+    "M041": {
+      "role": "TITLE",
+      "reading": "aa",
+      "meaning": "great"
+    },
+    "M211": {
+      "role": "TITLE",
+      "reading": "aatu",
+      "meaning": "goat/noble"
+    },
+    "M342": {
+      "role": "SUFFIX",
+      "reading": "ay",
+      "meaning": "genitive/belonging to"
+    },
+    "M176": {
+      "role": "SUFFIX",
+      "reading": "an",
+      "meaning": "masculine personal name ending"
+    },
+    "M367": {
+      "role": "SUFFIX",
+      "reading": "am",
+      "meaning": "collective/plural"
+    },
+    "M391": {
+      "role": "SUFFIX",
+      "reading": "ka",
+      "meaning": "nominative"
+    },
+    "M336": {
+      "role": "SUFFIX",
+      "reading": "i",
+      "meaning": "locative"
+    },
+    "M089": {
+      "role": "SUFFIX",
+      "reading": "tu",
+      "meaning": "ablative/from"
+    },
+    "M328": {
+      "role": "SUFFIX",
+      "reading": "a",
+      "meaning": "title suffix"
+    },
+    "M162": {
+      "role": "PLACE",
+      "reading": "il",
+      "meaning": "house/at"
+    },
+    "M267": {
+      "role": "CONNECTIVE",
+      "reading": "iN",
+      "meaning": "genitive 'of'"
+    },
+    "M233": {
+      "role": "PLACE",
+      "reading": "ur",
+      "meaning": "settlement/town"
+    },
+    "M079": {
+      "role": "NUMERAL",
+      "reading": "ir",
+      "meaning": "two"
+    }
+  },
+  "verdict": "Phase-84: Extended formula lexicon with 6 formula types. 1349/1670 seals covered (81%). Key formula types: TITLE_FORMULA_ANIMAL (29 seals), OWNERSHIP_FORMULA (236 seals), SUFFIX_ONLY (415 seals)."
+}

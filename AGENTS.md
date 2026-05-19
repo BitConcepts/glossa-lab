@@ -54,3 +54,12 @@ All specsmith governance operations should be invoked through the
 
 These are all equivalent: ``specsmith_run("save")``,
 ``specsmith_run("/specsmith save")``, ``specsmith_run("specsmith save")``.
+
+---
+## Supplementary Rule Files
+
+The following project-specific rule files are auto-loaded by agents and apply
+alongside the primary governance docs:
+
+- `docs/research/NORMALIZATION_RULES.md` — Indus sign normalization rules for
+  corpus processing and sign-ID canonicalization.

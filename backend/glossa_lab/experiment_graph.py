@@ -2596,6 +2596,15 @@ except Exception as _p124125_exc:  # noqa: BLE001
     logger.warning("Phase-124-125 decipherment nodes not registered: %s", _p124125_exc)
 
 
+# ── Phase-134-141 nodes (falsification suite, advancement, extended battery, master scorecard) ──
+try:
+    from glossa_lab.experiment_graph_phase134_141 import _phase134_141_node_defs as _p134141_defs  # noqa: PLC0415
+    for _d in _p134141_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-134-141 falsification nodes", len(_p134141_defs()))
+except Exception as _p134141_exc:  # noqa: BLE001
+    logger.warning("Phase-134-141 falsification nodes not registered: %s", _p134141_exc)
+
 # ── Graph execution
 
 def _topo_sort(nodes: list[dict], edges: list[dict]) -> list[dict]:

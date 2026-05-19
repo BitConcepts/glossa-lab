@@ -200,7 +200,7 @@ class SemanticScholarFetcher(Fetcher):
         else:
             # Cap total SDK time — the SDK auto-paginates and can hang for many
             # minutes when the S2 API is slow or returning 5xx errors.
-            _SDK_TOTAL_TIMEOUT = 45.0
+            _SDK_TOTAL_TIMEOUT = 90.0  # increased from 45s — S2 can be legitimately slow
             try:
                 papers = await asyncio.wait_for(
                     run_in_thread(

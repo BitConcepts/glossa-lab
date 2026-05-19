@@ -32,6 +32,7 @@
     "serpapi": {"engine": "google_news", "num": 20},
     "openalex":{"per_page": 25, "filter": "concepts.id:C2778407484|C2779033659"},
     "arxiv":   {"max_results": 25, "search_query_extra": "cat:cs.CL OR cat:stat.AP"},
-    "crossref":{"rows": 25}
+    "crossref":{"rows": 25},
+    "patentsview": {"enabled": false}
   }
 }

@@ -93,3 +93,11 @@ rules:
     ## Stop Conditions
 
     '
+- id: H14
+  name: No direct email
+  description: Agents MUST NOT send, compose, or trigger emails to any external party
+    directly (e.g. via SMTP, API calls, or shell commands). All outbound email MUST
+    be routed exclusively through the glossa-lab backend email system, and only to
+    recipients configured in the project email report settings. This applies to scholar
+    outreach, collaboration messages, and any other external communication. Violation
+    is an immediate stop condition.

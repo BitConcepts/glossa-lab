@@ -1,6 +1,6 @@
 {
   "phase": 134,
-  "date": "2026-05-18",
+  "date": "2026-05-19",
   "corpus_stats": {
     "n_seals": 1670,
     "n_tokens": 7002,
@@ -50,21 +50,21 @@
       "pearson_r_terminal_rate": 0.9939,
       "mean_positional_correlation": 0.9963,
       "class_agreements": {
-        "MEDIAL": {
-          "correct": 5,
-          "total": 5
-        },
-        "TERMINAL": {
-          "correct": 3,
-          "total": 3
-        },
         "INITIAL": {
           "correct": 64,
           "total": 64
         },
+        "MEDIAL": {
+          "correct": 5,
+          "total": 5
+        },
         "MIXED": {
           "correct": 13,
           "total": 15
+        },
+        "TERMINAL": {
+          "correct": 3,
+          "total": 3
         }
       },
       "verdict": "STRONGLY_CONFIRMED",
@@ -182,15 +182,15 @@
           "drv_favored": true
         },
         {
-          "sign": "M089",
-          "reading": "tu/t\u016b",
+          "sign": "M034",
+          "reading": "t\u014d\u1e37",
           "drv_score": -5.301408097397732,
           "skt_score": -16.11809565095832,
           "drv_favored": true
         },
         {
-          "sign": "M034",
-          "reading": "t\u014d\u1e37",
+          "sign": "M089",
+          "reading": "tu/t\u016b",
           "drv_score": -5.301408097397732,
           "skt_score": -16.11809565095832,
           "drv_favored": true
@@ -217,15 +217,15 @@
           "drv_favored": true
         },
         {
-          "sign": "M328",
-          "reading": "\u0101/\u0101l",
+          "sign": "M009",
+          "reading": "\u0101\u1e47",
           "drv_score": -5.828475377492355,
           "skt_score": -16.11809565095832,
           "drv_favored": true
         },
         {
-          "sign": "M039",
-          "reading": "\u0101\u1e49ai",
+          "sign": "M328",
+          "reading": "\u0101/\u0101l",
           "drv_score": -5.828475377492355,
           "skt_score": -16.11809565095832,
           "drv_favored": true
@@ -233,14 +233,14 @@
       ],
       "top_10_skt_favored": [
         {
-          "sign": "M163",
+          "sign": "M164",
           "reading": "il",
           "drv_score": -7.405312128551056,
           "skt_score": -6.049733455231958,
           "drv_favored": false
         },
         {
-          "sign": "M164",
+          "sign": "M163",
           "reading": "il",
           "drv_score": -7.405312128551056,
           "skt_score": -6.049733455231958,
@@ -296,10 +296,10 @@
           "drv_favored": false
         },
         {
-          "sign": "M185",
-          "reading": "pul",
-          "drv_score": -7.298066598197459,
-          "skt_score": -6.742880635791903,
+          "sign": "M221",
+          "reading": "al",
+          "drv_score": -6.604919417637514,
+          "skt_score": -6.049733455231958,
           "drv_favored": false
         }
       ],

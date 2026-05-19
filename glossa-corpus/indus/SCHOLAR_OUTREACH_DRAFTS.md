@@ -68,8 +68,11 @@ A review from Parpola would be the gold standard for the preprint.
 ### Draft Email (Updated Phase-141)
 
 ```
-To: asko.parpola@helsinki.fi
-Subject: Computational re-examination of Dravidian Indus decipherment — requesting methodological review
+To: aparpola@gmail.com
+Subject: Computational re-examination of Dravidian Indus decipherment - requesting methodological review
+
+NOTE: asko.parpola@helsinki.fi bounced (account deactivated after retirement).
+Correct address confirmed from INDOLOGY mailing list (2017): aparpola@gmail.com
 
 Dear Professor Parpola,
 

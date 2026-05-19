@@ -24,15 +24,45 @@
     "political India Pakistan",
     "modern agriculture"
   ],
-  "languages": ["en"],
+  "languages": [
+    "en"
+  ],
   "source_overrides": {
-    "newsapi": {"page_size": 20, "sort_by": "publishedAt", "search_in": "title,description"},
-    "brave":   {"count": 15, "search_endpoint": "web"},
-    "serpapi": {"engine": "google_scholar", "num": 20},
-    "openalex":{"per_page": 25},
-    "arxiv":   {"max_results": 10},
-    "crossref":{"rows": 25},
-    "semanticscholar": {"max_results": 25},
-    "academia_rss": {"slugs": ["South_Asian_Archaeology", "Bronze_Age_South_Asia", "Harappan_Civilization", "South_Asian_History"]}
+    "newsapi": {
+      "page_size": 20,
+      "sort_by": "publishedAt",
+      "search_in": "title,description"
+    },
+    "brave": {
+      "count": 15,
+      "search_endpoint": "web"
+    },
+    "serpapi": {
+      "engine": "google_scholar",
+      "num": 20
+    },
+    "openalex": {
+      "per_page": 25
+    },
+    "arxiv": {
+      "max_results": 10
+    },
+    "crossref": {
+      "rows": 25
+    },
+    "semanticscholar": {
+      "max_results": 25
+    },
+    "academia_rss": {
+      "slugs": [
+        "South_Asian_Archaeology",
+        "Bronze_Age_South_Asia",
+        "Harappan_Civilization",
+        "South_Asian_History"
+      ]
+    },
+    "patentsview": {
+      "enabled": false
+    }
   }
 }

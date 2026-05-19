@@ -1722,7 +1722,19 @@ export interface DeciphermentProgress {
   archived?: boolean;
   archived_at?: string | null;
   n_rounds_completed?: number;
-  anchors: { total: number; by_confidence?: Record<string, number> };
+  anchors: {
+    total: number;
+    total_all?: number;
+    by_confidence?: Record<string, number>;
+    n_high?: number;
+    n_medium?: number;
+    n_low?: number;
+    corpus_signs?: number;
+    corpus_tokens?: number;
+    corpus_token_coverage?: number;
+    corpus_sign_coverage?: number;
+    pct_confirmed?: number;
+  };
   progression: DeciphermentRound[];
   n_rounds: number;
   current_state: DeciphermentRound | null;

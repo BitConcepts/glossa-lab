@@ -93,7 +93,7 @@ import time as _time_cb  # noqa: E402
 _ppubs_consecutive_fails: int = 0
 _ppubs_skip_until: float = 0.0
 _PPUBS_MAX_FAILS: int = 2
-_PPUBS_COOLDOWN_SECS: float = 1800.0  # 30 min — PPUBS session issues are persistent
+_PPUBS_COOLDOWN_SECS: float = 28800.0  # 8 h — PPUBS auth failures are persistent; avoid spam
 
 
 def _ppubs_cb_record_failure() -> None:
@@ -155,8 +155,9 @@ def _establish_session(timeout: float = 15.0) -> tuple[int, str]:
     )
     opener.open(req1, timeout=timeout)  # we only care about cookies
 
-    # Step 2 — POST /api/users/me/session to get caseId + token
-    body = json.dumps(-1).encode("utf-8")
+    # Step 2 — POST /api/users/me/session to get caseId + token.
+    # Body: null (not -1) — USPTO changed their API; sending -1 returns 400.
+    body = b"null"
     req2 = urllib.request.Request(
         f"{_PPUBS_BASE}/api/users/me/session",
         data=body,

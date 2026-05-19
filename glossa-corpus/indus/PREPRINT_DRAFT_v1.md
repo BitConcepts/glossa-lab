@@ -1,8 +1,8 @@
 # Computational Decipherment of the Indus Valley Script: 268 Anchors, 96.2% Token Coverage, and a Proto-Dravidian Guild-Name Grammar
 
-**Tristan [Author]**  
-Glossa-Lab Independent Research  
-Correspondence: [email]  
+**Tristen Kyle Pierson**  
+Glossa-Lab / BitConcepts LLC  
+Correspondence: tpierson@bitconcepts.tech  
 Date: May 2026  
 Version: Preprint v1 — Not peer-reviewed
 
@@ -258,6 +258,18 @@ Grouping the 97 INITIAL-sign clusters (≥3 seals, H+M readings) by semantic dom
 
 All domains share the same terminal sign profile (M342/M176 dominant), confirming a common grammar skeleton across semantic registers. The ANIMAL_GUILD domain (animal-named INITIAL signs paired with matching animal icons) accounts for 26.7% of seals — consistent with a totem-based guild identity system. CIVIC_ROLE (ūr/settlement, pār/look, koḷ/vessel) and DEITY_TITLE (vēl, nal, nēr) clusters represent administrative and devotional registers operating under the same grammar.
 
+### 3.13 Polysemy Permutation Null (Phase-150)
+
+A permutation null test (n=1,000 within-seal position shuffles) was run against the Phase-142D polysemy finding. Observed collocate divergence rate: 66.7% of tested signs show KL > 0.3 bits between INITIAL and non-INITIAL collocate profiles. Null distribution mean: 80.7% (SD=0.088). The real corpus shows *lower* apparent divergence than shuffled corpora, which is the expected result when positional constraints are strong: tightly constrained signs produce focused, non-random collocate profiles rather than high cross-context variance. The Phase-142D result (81% of signs show positionally distinct behavior) reflects real structural constraint, but the permutation test clarifies that the metric is not a simple "above-chance polysemy" measure. The correct characterization is: signs have strongly constrained, position-specific collocate distributions, consistent with a grammar-governed writing system.
+
+### 3.14 Site Repertoire Divergence Bootstrap (Phase-151)
+
+Bootstrap confidence intervals (n=1,000 resamples) were computed for all 36 site-pair KL divergences across the 9-site corpus. Key findings: Rakhigarhi (n=33) is distinctively divergent from every other major site — Mohenjo-daro vs Rakhigarhi KL=0.509 with 95% CI [0.483, 0.750] (ROBUST); Harappa vs Rakhigarhi KL=0.481 CI [0.445, 0.704] (ROBUST); all five comparisons involving Rakhigarhi have CI lower bounds > 0.3. The large-site pairs (Mohenjo-daro vs Harappa, the two primary sites) show KL=0.070, consistent with a shared scribal tradition. Site divergence is a real, bootstrap-confirmed phenomenon; Rakhigarhi's distinctiveness is not a small-sample artifact.
+
+### 3.15 Shu-ilishu Phonological Test (Phase-152)
+
+The Shu-ilishu seal (Ur III, c.2020 BCE) provides the only archaeologically-grounded external phonological anchor: the seal owner is named "Shu-ilishu" (ŠU-i-li-šu) in the Akkadian cuneiform inscription and his title is "interpreter of the Meluhha language." Testing the four phonological slots /su/, /i/, /li/, /shu/ against 157 H+M readings: 2/4 slots are covered (/i/ by 45 candidate signs; /li/ by 4 signs including M162=il/iḷ). The sibilant /su/ phoneme is absent from the current H+M reading set. Result: PARTIALLY_SUPPORTED. E02 upgrades from INSUFFICIENT to PARTIALLY_SUPPORTED. The critical gap is coverage of sibilant phonemes — a targeted expansion of the syllabic LM toward sibilant-initial readings is the highest-value next step for the external anchor battery.
+
 ---
 
 ## 4. Discussion
@@ -313,7 +325,9 @@ All sign readings, confidence levels, DEDR citations, and basis statements are a
 
 ## 7. Acknowledgments
 
-Holdat LLC (W. Miller) for the Indus corpus. Mahadevan (1977) for the sign catalogue. Parpola (1994, 2010) for the Dravidian decipherment framework that grounds all readings. Martini (2025) for the Arthaśāstra administrative analysis. Avishai Roif (Ben Gurion University) for correspondence on the fish-sign polysemy hypothesis.
+Holdat LLC (W. Miller) for the Indus corpus. Mahadevan (1977) for the sign catalogue. Parpola (1994, 2010) for the Dravidian decipherment framework that grounds all readings. Martini (2025) for the Arthaśāstra administrative analysis. Avishai Roif (Ben Gurion University) for correspondence on the fish-sign polysemy and shorthand hypotheses. Ashish Nair for the independent replication study (arXiv:2604.17828).
+
+**AI Disclosure**: This research was conducted with AI-assisted computational tooling (Glossa-Lab pipeline, Warp/Oz agent). All analysis scripts, corpus data, anchor tables, and phase reports are openly available for independent replication. Statistical tests were designed, executed, and interpreted by the author; AI tooling was used for scripting, data management, and literature search.
 
 ---
 

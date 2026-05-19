@@ -52,7 +52,7 @@ All code (GitHub: glossa-lab), data, and anchor tables with DEDR citations are a
 I am not seeking co-authorship — only honest critical review before public submission.
 
 With respect,
-Tristan Pierson
+Tristen Kyle Pierson
 Glossa Lab / BitConcepts LLC
 tpierson@bitconcepts.tech
 ```
@@ -108,7 +108,7 @@ attention before submitting a preprint to arXiv (cs.CL).
 All data and code are openly available. I am not seeking co-authorship.
 
 With deep respect for your scholarship,
-Tristan Pierson
+Tristen Kyle Pierson
 Glossa Lab / BitConcepts LLC
 tpierson@bitconcepts.tech
 ```
@@ -158,7 +158,7 @@ I have prepared a preprint and would be grateful for:
 The full data, code, and phase reports are openly available at request.
 
 With thanks for your foundational work,
-Tristan Pierson
+Tristen Kyle Pierson
 Glossa Lab / BitConcepts LLC
 tpierson@bitconcepts.tech
 ```

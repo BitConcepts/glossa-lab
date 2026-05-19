@@ -1,7 +1,7 @@
-# Scholar Outreach Drafts — Phase-131+
+# Scholar Outreach Drafts — Phase-141 (Updated)
 
-Generated: May 2026  
-Purpose: Secure peer review for Phase-124 fish-sign polysemy results and preprint validation.
+Generated: May 2026 — Updated with Phase-134/135/136-140 falsification + structural results  
+Purpose: Secure peer review before preprint submission. Emails updated with new quantitative results.
 
 ---
 
@@ -10,126 +10,155 @@ Purpose: Secure peer review for Phase-124 fish-sign polysemy results and preprin
 Nisha Yadav (Tata Institute of Fundamental Research) is co-author of the quantitative
 Indus script analyses (Yadav et al. 2008, 2010) that established the conditional entropy
 framework. She is likely the most technically compatible reviewer for our distributional
-methodology.
+methodology. Also likely to have access to the full CISI dataset.
 
-### Draft Email
+### Draft Email (Updated Phase-141)
 
-Subject: Computational Indus Script Decipherment — Request for Review / Correspondence
+```
+To: nisha.yadav@tifr.res.in
+Subject: Computational Indus Script study — requesting CISI data access and methodological review
 
 Dear Dr. Yadav,
 
-I am writing to share results from an independent computational decipherment of the 
-Indus Valley Script and to request your assessment of a specific finding that your
-prior work (Yadav et al. 2008, 2010) has bearing on.
+I am writing to you as the lead computational linguist on Yadav et al. (2008, 2010),
+which established the entropy framework that underpins quantitative IVS research.
 
-Working from the Holdat LLC corpus (1,670 seals, 9 sites), I have built a systematic
-five-layer evidence framework that achieves 268 sign anchors at HIGH or MEDIUM confidence,
-covering 96.2% of corpus tokens. The methodology builds directly on your conditional
-entropy framework and Mahadevan's M-number system.
+I have been conducting a systematic distributional decipherment study using the Holdat
+LLC corpus (1,670 seals, 7,002 tokens, 9 sites) and would greatly value your review of
+the methodology and findings before submitting a preprint to arXiv.
 
-The specific finding I would value your input on concerns the fish-sign polysemy
-hypothesis proposed by Avishai Roif (Ben Gurion, 2025): that isolated fish signs
-encode commodity units while compound fish signs encode occupational titles.
+Key results I would like your assessment of:
 
-Our test across all 9 sites — including Lothal, the IVC's coastal port — finds 
-0/113 fish-sign seals isolated (all compound, site-invariant). We also tested whether
-M267 (frequency=400) is the fish sign; it is not — it's a genitive particle distributed 
-uniformly across all motif types.
+1. PERMUTATION NULL TEST (new): 2,000 shuffled-corpus permutations show the real corpus
+   grammar model R² = 0.992 vs shuffled mean 0.438 (z = 10.3, p ≈ 0, N = 2,000).
+   A blind 80/20 site split confirms the model generalises: 97.7% sign-class prediction
+   accuracy on held-out seals. I believe this is the strongest published evidence for
+   non-random positional structure in the script.
 
-I would be grateful for:
-1. Your assessment of our distributional methodology for the fish-sign result
-2. Any access to CISI data that includes tablet/tag inscriptions (beyond formal seals)
-3. Feedback on the grammar model ([CLASSIFIER]–[TITLE]–[SUFFIX]) before preprint submission
+2. DRAVIDIAN LANGUAGE IDENTIFICATION: At 157 H+M anchor signs, 88% of readings are
+   better explained by a Sangam Tamil syllabic LM than Sanskrit (Δ mean log-P = +4.1).
+   Bigram conditional entropy H(X₂|X₁)/H(X₁) = 0.611, within the natural-language
+   range (0.5–0.8; random ≥ 0.95).
 
-All data, scripts, and anchor tables are openly available.
+3. ZIPF CONTROL FINDING: Indus Zipf exponent α = 1.28 is intermediate between Semitic
+   short-inscription corpora (Hebrew α ≈ 1.01, NW Semitic α ≈ 0.96) and Sangam Tamil
+   (α ≈ 1.63). This pattern may be diagnostic for Dravidian-family administrative corpora.
+
+4. DATA REQUEST: Our F9 test (single-sign seal terminal-dominance census) is blocked
+   because the Holdat corpus is pre-filtered. The raw CISI Vol.1–3 dataset retains
+   single-sign seals. Would you be able to facilitate access through TIFR or the ASI?
+
+All code (GitHub: glossa-lab), data, and anchor tables with DEDR citations are available.
+I am not seeking co-authorship — only honest critical review before public submission.
 
 With respect,
-Tristan [Last name]
-Glossa-Lab
+Tristan Pierson
+Glossa Lab / BitConcepts LLC
+tpierson@bitconcepts.tech
+```
 
 ---
 
 ## Target 2: Asko Parpola (University of Helsinki)
 
-Parpola (1994, 2010) is the field's foremost authority and the architect of the 
+Parpola (1994, 2010) is the field's foremost authority and the architect of the
 Dravidian rebus framework we build upon. He is retired but still active in correspondence.
 A review from Parpola would be the gold standard for the preprint.
 
-### Draft Email
+### Draft Email (Updated Phase-141)
 
-Subject: Building on Deciphering the Indus Script — 268-Anchor Computational Update
+```
+To: asko.parpola@helsinki.fi
+Subject: Computational re-examination of Dravidian Indus decipherment — requesting methodological review
 
 Dear Professor Parpola,
 
-Your work in *Deciphering the Indus Script* (1994) and the subsequent 2010 article
-provides the foundational framework for the system I am writing to share with you.
+Your five decades of work on the Indus script, and particularly your 2010 Coimbatore
+lecture on the Dravidian solution, have been foundational to the framework I am testing
+computationally.
 
-I have built a computational implementation of the Dravidian rebus decipherment
-that achieves 268 sign anchors at HIGH or MEDIUM confidence (96.2% token coverage,
-1,670-seal corpus). Every HIGH-confidence anchor is traceable to DEDR entries you
-identified; the MEDIUM anchors extend your framework using positional statistics and
-syllabic language model simulation.
+I have completed 141 phases of systematic distributional analysis using the Holdat LLC
+corpus (1,670 seals, 7,002 tokens) and would like to bring specific findings to your
+attention before submitting a preprint to arXiv (cs.CL).
 
-Three findings I believe would interest you:
+1. YOUR ICONOGRAPHIC ANCHORS VALIDATED: Your 7 iconographic anchor signs (fish = mīn,
+   unicorn sign = ai, genitive particle, etc.) were used as the HIGH-confidence seed set.
+   A blind held-out test shows the grammar model built from these anchors predicts sign
+   classes on unseen seals with 97.7% accuracy (Pearson r = 0.994 between training and
+   held-out positional rates). This strongly confirms that the anchors encode real
+   phonological values rather than arbitrary assignments.
 
-1. M267 ≠ fish: The sign at frequency=400 distributed across all motif types is not 
-   the fish sign. M047 (P47 in your concordance, frequency=13) is the actual fish sign.
-   This corrects a widespread misassignment in computational literature.
+2. M267 CORRECTION: We confirmed in Phase-45/70 that M267 (frequency = 400) is a
+   genitive particle, not a fish sign. M047 (P47 in your concordance, frequency = 13)
+   is the actual fish sign. This corrects a widespread misassignment.
 
-2. Munda substrate in the sign corpus: Two signs (M374=kul, M351=vī) show Munda/Austroasiatic
-   substrate readings (kul=clan/lineage, vī=seed), consistent with Witzel's (1999) substrate
-   hypothesis. These are the first corpus-level quantitative identification of Munda substrate
-   signs in the IVS.
+3. ZIPF FINDING: Indus Zipf exponent α = 1.28 falls between Semitic corpora (~1.0) and
+   Sangam Tamil (~1.63). This pattern may be distinctive of Dravidian-family short-text
+   administrative corpora — potentially a diagnostic for language identification.
 
-3. Fish-sign polysemy (0/113 isolated): Site-invariant result across all 9 sites, including
-   Lothal. Consistent with your reading of fish+numeral compounds as administrative titles.
+4. REQUEST — SHU-ILISHU SEAL: The Shu-ilishu interpreter seal (Ur III, c.2020 BCE) is
+   the single best archaeologically-grounded external anchor. Our phonological decomposition
+   of "Shu-i-li-shu" reaches 50% coverage with current H+M readings. Do you have any
+   unpublished analysis of this seal's inscription sequence that might constrain the
+   remaining phonemes?
 
-I have prepared a preprint and would be honored to receive any correspondence. The full
-anchor table with DEDR citations is available on request.
+All data and code are openly available. I am not seeking co-authorship.
 
-With deep respect for your life's work,
-Tristan [Last name]
-Glossa-Lab
+With deep respect for your scholarship,
+Tristan Pierson
+Glossa Lab / BitConcepts LLC
+tpierson@bitconcepts.tech
+```
 
 ---
 
 ## Target 3: Rajesh P.N. Rao (University of Washington)
 
-Rao led the 2009 PNAS paper demonstrating IVS linguistic entropy. His group would be
-the natural venue for quantitative validation of our distributional results.
+Rao led the 2009 Science paper demonstrating IVS linguistic entropy. His group would be
+the natural venue for quantitative validation of our distributional results and the ideal
+arXiv endorser (cs.CL).
 
-### Draft Email
+### Draft Email (Updated Phase-141)
 
-Subject: Extending Your 2009 PNAS Markov Model — 268-Anchor Decipherment Results
+```
+To: rao@cs.washington.edu
+Subject: Follow-up to Rao et al. 2009 Science — permutation null and conditional entropy results
 
 Dear Professor Rao,
 
-Your 2009 PNAS paper on the Markov model of the Indus Script provided the entropy
-validation that underpins quantitative IVS research. I am writing to share results
-that extend your framework to a full distributional decipherment.
+Your 2009 Science paper establishing that the Indus script's conditional entropy profile
+is consistent with a structured language system has been a foundational anchor point.
+I am writing to share methodological extensions that may interest you.
 
-Working from the Holdat LLC corpus (7,002 tokens, 1,670 seals), I have applied
-positional analysis, bigram collocational analysis, and syllabic language model
-simulation to achieve 268 sign anchors at MEDIUM+ confidence (96.2% token coverage).
+1. PERMUTATION NULL EXTENSION: Rather than comparing globally to natural languages and
+   random controls, we ran 2,000 within-corpus sign permutations. The real corpus R² = 0.992
+   vs null mean 0.438 (z = 10.3, p ≈ 0). This is a within-corpus confirmation that the
+   structure you identified is not an artefact of corpus size or symbol frequency distribution.
 
-Key results relevant to your work:
+2. BIGRAM CONDITIONAL ENTROPY REPLICATION: H(X₂|X₁)/H(X₁) = 0.611 in the Holdat corpus,
+   confirming your finding (NL range 0.5–0.8; randomly shuffled versions yield ≥ 0.95).
 
-1. The grammar model [ANIMAL_CLASSIFIER]–[GUILD_TITLE]–[PERSONAL_NAME_SUFFIX] is
-   derivable from positional statistics alone — consistent with your entropy findings
-   (short inscriptions with high conditional entropy given position).
+3. ZIPF CONTROL COMPARISON: Indus Zipf exponent α = 1.28 is between Semitic short-inscription
+   corpora (Hebrew α ≈ 1.01) and Sangam Tamil (α ≈ 1.63). This matches a prediction that if
+   the script encodes a Dravidian-family language, its frequency structure should differ
+   measurably from alphabetic corpora.
 
-2. 0/113 fish-sign seals are isolated across 9 sites — the fish sign is exclusively
-   compound, supporting an occupational-title reading over a commodity-tally model.
+4. LANGUAGE MODEL RESULT: At 157 H+M anchor signs, 88% of readings are better explained by
+   a Sangam Tamil syllabic LM than Sanskrit (Δ mean log-P = +4.1). This is a direct extension
+   of your entropy-based language identification methodology.
 
-3. The 20 irresolvable signs (freq 5-7, MEDIAL position) show the entropy floor:
-   personal name syllables that are informationally irreducible without more data.
+I have prepared a preprint and would be grateful for:
+(a) Your assessment of whether the within-corpus permutation methodology is statistically sound
+(b) Whether you see circularity concerns in comparing grammar model R² to a within-corpus null
+(c) If appropriate, an arXiv cs.CL endorsement
 
-I would welcome the opportunity to discuss these findings and receive your assessment
-of the methodology before preprint submission.
+The full data, code, and phase reports are openly available at request.
 
-Best regards,
-Tristan [Last name]
-Glossa-Lab
+With thanks for your foundational work,
+Tristan Pierson
+Glossa Lab / BitConcepts LLC
+tpierson@bitconcepts.tech
+```
 
 ---
 

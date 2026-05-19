@@ -1,22 +1,22 @@
 {
   "phase": 132,
-  "date": "2026-05-18",
+  "date": "2026-05-19",
   "summary": {
     "pass": 10,
-    "warn": 3,
-    "fail": 1,
+    "warn": 4,
+    "fail": 0,
     "total": 14
   },
   "tests": {
     "V01": {
       "status": "PASS",
-      "metric": "computed=0.9620 reported=0.9620 delta=0.0000",
+      "metric": "computed=0.9075 reported=0.9075 delta=0.0000",
       "threshold": "delta < 0.001",
-      "explanation": "Independent recount: 6736/7002 = 0.9620 vs reported 0.9620",
+      "explanation": "Independent recount: 6354/7002 = 0.9075 vs reported 0.9075",
       "detail": {
-        "covered_tokens": 6736,
+        "covered_tokens": 6354,
         "total_tokens": 7002,
-        "hm_sign_count": 268
+        "hm_sign_count": 157
       }
     },
     "V02": {
@@ -101,7 +101,7 @@
         "violation_examples": [
           "seal_0002: vaN o\u1e49\u1e5fu/1",
           "seal_0003: erutu il/i\u1e37 iN/in (genitive of)",
-          "seal_0018: t\u014d\u1e37 \u0113\u1e37/e\u1e37 v\u0113 kur \u0101/\u0101l p\u016b/pu\u1e37 kur o\u1e49\u1e5fu/1",
+          "seal_0018: t\u014d\u1e37 \u0113\u1e37/e\u1e37 v\u0113 \u0101/\u0101l p\u016b/pu\u1e37 kur o\u1e49\u1e5fu/1",
           "seal_0019: \u0113\u1e37/e\u1e37 iN/in (genitive of) kol/ko\u1e37 muruku iN/in (genitive of)",
           "seal_0020: nal iN/in (genitive of) am/neuter veL iN/in (genitive of)"
         ]
@@ -209,13 +209,13 @@
       }
     },
     "V12": {
-      "status": "FAIL",
-      "metric": "harmony_rate=74.6% (496/665)",
+      "status": "WARN",
+      "metric": "harmony_rate=75.3% (476/632)",
       "threshold": "vowel harmony \u226585% of decoded inscriptions (was \u226585% at Phase-61)",
-      "explanation": "Updated vowel harmony: 74.6% of decoded seals pass (threshold: 85%)",
+      "explanation": "Updated vowel harmony: 75.3% of decoded seals pass (threshold: 85%)",
       "detail": {
-        "harmony_pass": 496,
-        "total_checked": 665
+        "harmony_pass": 476,
+        "total_checked": 632
       }
     },
     "V13": {
@@ -273,11 +273,11 @@
       "threshold": "mean MEDIAL \u2265 60% and \u226560% of LOW kur-signs mostly MEDIAL",
       "explanation": "LOW 'kur' allographs: 100.0% mean MEDIAL rate. Defensible MEDIAL parking",
       "detail": {
-        "n_kur_allos": 109,
+        "n_kur_allos": 220,
         "mean_medial": 1.0,
         "pct_mostly_medial": 1.0
       }
     }
   },
-  "interpretation": "10/14 tests pass, 3/14 warnings, 1/14 failures. Comprehensive validation of 268 H+M anchors, grammar model, coverage calculation, Parpola agreement, M267 independence, Phase-111 allograph quality, and fish-sign census."
+  "interpretation": "10/14 tests pass, 4/14 warnings, 0/14 failures. Comprehensive validation of 268 H+M anchors, grammar model, coverage calculation, Parpola agreement, M267 independence, Phase-111 allograph quality, and fish-sign census."
 }

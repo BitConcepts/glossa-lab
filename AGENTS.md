@@ -54,3 +54,12 @@ check governance status             # show governance status
 
 These are all equivalent: ``governance_run("save")``,
 ``governance_run("/# commit governance state")``, ``governance_run("governance-tool save")``.
+
+---
+## Supplementary Rule Files
+
+The following project-specific rule files are auto-loaded by agents and apply
+alongside the primary governance docs:
+
+- `docs/research/NORMALIZATION_RULES.md` — Indus sign normalization rules for
+  corpus processing and sign-ID canonicalization.

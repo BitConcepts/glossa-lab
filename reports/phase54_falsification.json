@@ -57,7 +57,7 @@
       "gloss": "personal name marker / person",
       "prediction": "M059 (PERSON_OR_OWNER) should immediately precede CASE_MARKER_SUFFIX signs more than CLASSIFIER_PREFIX",
       "test_type": "successor_role",
-      "follows_suffix_pct": 0.667,
+      "follows_suffix_pct": 0.837,
       "follows_classifier_pct": 0.0,
       "total_transitions": 147,
       "expected_met": true,
@@ -69,7 +69,7 @@
       "gloss": "case marker suffix",
       "prediction": "M391 (CASE_MARKER_SUFFIX, pos=0.6) should follow faunal classifier signs at rate > 50%",
       "test_type": "predecessor_role",
-      "preceded_by_classifier_pct": 0.181,
+      "preceded_by_classifier_pct": 0.222,
       "total": 171,
       "expected_met": false,
       "verdict": "FAIL"
@@ -94,8 +94,8 @@
       "gloss": "title/hammer",
       "prediction": "M099 should appear in >80% of inscriptions that contain HIGH-confidence PERSON_OR_OWNER signs",
       "test_type": "co_occurrence",
-      "co_occur_rate_with_person": 0.202,
-      "n_person_inscriptions": 430,
+      "co_occur_rate_with_person": 0.2,
+      "n_person_inscriptions": 441,
       "expected_met": false,
       "verdict": "FAIL"
     }

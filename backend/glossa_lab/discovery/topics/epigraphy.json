@@ -25,15 +25,47 @@
     "Instagram font",
     "calligraphy tutorial"
   ],
-  "languages": ["en"],
+  "languages": [
+    "en"
+  ],
   "source_overrides": {
-    "newsapi": {"page_size": 20, "sort_by": "publishedAt", "search_in": "title,description"},
-    "brave":   {"count": 15, "search_endpoint": "web"},
-    "serpapi": {"engine": "google_scholar", "num": 20},
-    "openalex":{"per_page": 25, "sort": "cited_by_count:desc"},
-    "arxiv":   {"max_results": 15, "search_query_extra": "cat:cs.CL OR cat:cs.CV"},
-    "crossref":{"rows": 25},
-    "semanticscholar": {"max_results": 30},
-    "academia_rss": {"slugs": ["Epigraphy", "Ancient_Scripts", "Script_Decipherment", "Undeciphered_Scripts"]}
+    "newsapi": {
+      "page_size": 20,
+      "sort_by": "publishedAt",
+      "search_in": "title,description"
+    },
+    "brave": {
+      "count": 15,
+      "search_endpoint": "web"
+    },
+    "serpapi": {
+      "engine": "google_scholar",
+      "num": 20
+    },
+    "openalex": {
+      "per_page": 25,
+      "sort": "cited_by_count:desc"
+    },
+    "arxiv": {
+      "max_results": 15,
+      "search_query_extra": "cat:cs.CL OR cat:cs.CV"
+    },
+    "crossref": {
+      "rows": 25
+    },
+    "semanticscholar": {
+      "max_results": 30
+    },
+    "academia_rss": {
+      "slugs": [
+        "Epigraphy",
+        "Ancient_Scripts",
+        "Script_Decipherment",
+        "Undeciphered_Scripts"
+      ]
+    },
+    "patentsview": {
+      "enabled": false
+    }
   }
 }

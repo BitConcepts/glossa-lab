@@ -55,6 +55,9 @@ All proposals MUST state their epistemic boundaries. A proposal without explicit
 
 Hidden assumptions are not acceptable. Declare all epistemic boundaries in the `Assumptions:` field of every proposal.
 
+### H14 — No direct email
+Agents MUST NOT send, compose, or trigger emails to any external party directly (e.g. via SMTP, API calls, or shell commands). All outbound email MUST be routed exclusively through the glossa-lab backend email system, and only to recipients configured in the project email report settings. This applies to scholar outreach, collaboration messages, and any other external communication. Violation is an immediate stop condition.
+
 ---
 
 ## Stop Conditions

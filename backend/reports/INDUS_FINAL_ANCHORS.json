@@ -612,9 +612,9 @@
       "corpus_freq": 6
     },
     "M198": {
-      "reading": "poṉ",
-      "confidence": "LOW",
-      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment",
+      "reading": "co",
+      "confidence": "MEDIUM",
+      "basis": "Phase-163 sibilant discovery: reading 'co' found in literature (3 mentions across sources: Wells_2015). Provides partial coverage for Shu-ilishu /su/ phonological slot.",
       "phase129_basis": "Phase-129 positional squeeze: MEDIAL. SA modal 'du'. No DEDR match — Dravidian generally avoids word-initial 'd'. Possible substrate element or phonetically conditioned allophone. Before M051=pū/puḷ, M045=yānai. After M089=tu, M367=am. Possible allograph of M089=tu (dental stop). Remains LOW."
     },
     "M168": {
@@ -969,9 +969,9 @@
       "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M202": {
-      "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "reading": "can",
+      "confidence": "MEDIUM",
+      "basis": "Phase-163 sibilant discovery: reading 'can' found in literature (4 mentions across sources: Mahadevan_2009_vestiges). Provides partial coverage for Shu-ilishu /su/ phonological slot.",
       "source": "Phase-111",
       "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
@@ -1561,9 +1561,9 @@
       "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
     "M330": {
-      "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "reading": "can",
+      "confidence": "MEDIUM",
+      "basis": "Phase-163 sibilant discovery: reading 'can' found in literature (4 mentions across sources: Parpola_1994). Provides partial coverage for Shu-ilishu /su/ phonological slot.",
       "source": "Phase-111",
       "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
     },
@@ -1922,9 +1922,9 @@
       "source": "Phase-111"
     },
     "M165": {
-      "reading": "kur",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "reading": "cul",
+      "confidence": "MEDIUM",
+      "basis": "Phase-163 sibilant discovery: reading 'cul' found in literature (4 mentions across sources: Parpola_1994). Provides partial coverage for Shu-ilishu /su/ phonological slot.",
       "source": "Phase-111"
     },
     "M123": {

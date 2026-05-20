@@ -84,7 +84,7 @@ Holdat LLC Indus Corpus V3 (1,670 seals, 9 sites, 390 distinct signs,
 bigram/trigram collocational methods, DEDR rebus matching, and syllabic
 language-model simulation to construct a candidate anchor model for IVS
 sign readings. We find robust non-random positional structure
-(permutation null $z=10.3$, $p < 0.001$),
+(permutation null $z = 10.3$; permutation $p = 0/2000$),
 a recurring three-slot inscription formula consistent with a
 Proto-Dravidian administrative vocabulary framework, and propose 161
 candidate readings at HIGH or MEDIUM confidence (90.96\% token coverage;
@@ -176,8 +176,7 @@ We present a computational grammar and candidate anchor model (Glossa-Lab, Phase
   Independent external replication (Nair 2026, arXiv:2604.17828) on the
   ICIT corpus
 \item
-  Cross-validation: 44/75 HIGH-confidence readings independently
-  confirmed in Parpola (1994)
+  Cross-validation: 44/75 HIGH-confidence readings overlap with readings or interpretive proposals in Parpola (1994)
 \item
   Cross-validation: 10/10 Mahadevan papers (1972--2018) are consistent with the positional grammar model
 \item
@@ -187,13 +186,13 @@ We present a computational grammar and candidate anchor model (Glossa-Lab, Phase
   M202=can SUPPORTED\_WITHIN\_MODEL; M198=co PROVISIONAL\_MEDIUM (all 4 have DEDR backing)
 \item
   Expanded Meluhhan name matching (Phase-167): 25 Ur III names tested ---
-  no discriminative match; confirms ICIT corpus required for personal names
+  no discriminative match; ICIT corpus required for personal names
 \item
   Decode-blocker analysis (Phase-168): 19/19 LOW blocker readings
   phonotactically plausible; coverage estimate 92.35\% if promoted
 \item
   Master evidence synthesis (Phase-169): 32 evidence items, 79.8\%
-  aggregate confidence, 18 items STRONGLY\_SUPPORTED or CERTAIN
+  aggregate confidence, 18 items STRONGLY\_SUPPORTED\_WITHIN\_MODEL or HIGHLY\_SUPPORTED
 \item
   Grammar variance retest (Phase-170): 93.2\% sign-level accuracy at
   161 H+M (stable from Phase-133 baseline)
@@ -255,7 +254,7 @@ Section 3.27 and Table 4.
 \textbf{LOW (236 signs)}: Heuristic assignment only: - Positional
 assignment (initial/medial/terminal class) - Phase-111 allograph
 resolution (positional profile match to an existing anchor) - Not used
-for coverage or ``fully decoded'' computations
+for coverage or ``H+M-candidate coverage'' computations
 
 \textbf{NOT COUNTED} toward coverage: signs at LOW confidence.
 
@@ -312,6 +311,8 @@ LOW & 236 & 9.34\% \\
 \textbf{H+M total} & \textbf{161} & \textbf{90.96\%} \\
 \end{longtable}
 }
+
+\textit{Note: The MEDIUM count includes 4 PROVISIONAL\_MEDIUM signs (M330=\textit{can}, M165=\textit{cul}, M202=\textit{can}, M198=\textit{co}), included for coverage accounting but flagged for expert review before any HIGH-confidence promotion.}
 
 The 161 H+M anchors (75 HIGH + 86 MEDIUM) cover 6,363 of 7,002 corpus tokens. The remaining 639 tokens (9.1\%) have LOW-confidence readings only. Note: a prior count of 268 included 107 heuristic placeholder assignments removed by Phase-133.
 
@@ -447,7 +448,7 @@ Version 6 of the anchor table assigned M267 (corpus frequency=400) as
 --- unicorn (127 tokens), zebu bull (72), elephant (37), rhinoceros
 (25), etc. --- with no iconographic specificity. It is distributed at
 5.7\% of all tokens. The actual fish sign is M047 (frequency=13, P47 in
-Parpola's system), confirmed by crosswalk. M267 is a high-frequency
+Parpola's system), verified by crosswalk. M267 is a high-frequency
 functional/suffixal sign; its current MEDIUM reading is iN/in (genitive
 particle), derived from its consistent pre-title distribution.
 
@@ -492,8 +493,8 @@ Failaka Island (Hojlund \& Abu-Laban 2012) show fish in compound
 pictorial contexts exclusively (human holding fish, fish attached to
 staffs), never as a solitary motif.
 
-\subsubsection{3.6 Seal Decoding
-Statistics}\label{seal-decoding-statistics}
+\subsubsection{3.6 Seal Coverage
+Statistics}\label{seal-coverage-statistics}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}ll@{}}
@@ -688,16 +689,12 @@ The Shu-ilishu seal (Ur III, c.2020 BCE) provides the only
 archaeologically-grounded external phonological anchor: the seal owner
 is named ``Shu-ilishu'' (ŠU-i-li-šu) in the Akkadian cuneiform
 inscription and his title is ``interpreter of the Meluhha language.''
-Testing the four phonological slots /su/, /i/, /li/, /shu/ against 157
+Testing the four phonological slots /su/, /i/, /li/, /shu/ against the pre-Phase-163 157
 H+M readings: 2/4 slots are covered (/i/ by 45 candidate signs; /li/ by
 4 signs including M162=il/iḷ). The sibilant /su/ phoneme is absent from
 the current H+M reading set. Result: PARTIALLY\_SUPPORTED. E02 upgrades
 from INSUFFICIENT to PARTIALLY\_SUPPORTED. The critical gap is coverage
-of sibilant phonemes --- a targeted expansion of the syllabic LM toward
-sibilant-initial readings is the highest-value next step for the
-
-\emph{Note: This test was run against the 157-sign H+M set (pre-Phase-163). The sibilant gap noted here was partially addressed by Phase-166, which added M198=\emph{co} as PROVISIONAL\_MEDIUM --- covering the /co/ slot but not /su/ or /shu/.}
-external anchor battery.
+of /su/ and /shu/. This test was run against the 157-sign H+M set before the Phase-163 sibilant additions. Phase-166 partially addressed the broader sibilant gap by adding M198=\emph{co} as PROVISIONAL\_MEDIUM, but it does not cover /su/ or /shu/. A larger corpus remains necessary for this external anchor battery.
 
 \subsubsection{3.16 Sibilant Anchor Inventory
 (Phase-153)}\label{sibilant-anchor-inventory-phase-153}
@@ -751,7 +748,7 @@ Archaeology and Epigraphy} 21:96-134 and Mitchell (1986) in
 \emph{Bahrain Through the Ages}. Mining 145,000 characters of extracted
 text across the Gulf Type seal catalog: no isolated fish signs were
 found in any Gulf context. Parpola (1994) Appendix explicitly documents
-compounds ending in \emph{mīn} (4 attestations), confirming
+compounds ending in \emph{mīn} (4 attestations), corroborating
 compound-only status. The Failaka Island and Bahrain seal corpus (27
 Indus-script contexts in Laursen) contains no isolated fish signs.
 \textbf{Verdict: COMPOUND\_ONLY\_EXTENDED} --- the 0/113 result (corpus-only)
@@ -794,8 +791,8 @@ genitive/possessive references are consistent with M267 as a grammatical particl
 INITIAL-class sign model. This 44-sign overlap represents independent
 convergence between field expertise and corpus-statistical inference.
 
-\subsubsection{3.23 Mahadevan Four-Decade Grammar Confirmation
-(Phase-160)}\label{mahadevan-four-decade-grammar-confirmation-phase-160}
+\subsubsection{3.23 Mahadevan Four-Decade Grammar Consistency
+(Phase-160)}\label{mahadevan-four-decade-grammar-consistency-phase-160}
 
 Mining 10 Mahadevan papers spanning 1972--2018: \textbf{all 10 papers
 independently describe positional grammar consistent with the 3-slot
@@ -910,11 +907,11 @@ DEDR cross-validation (as in Phase-166) would be required for each.
 Updated Phase-141 evidence scorecard incorporating Phases 142--168.
 \textbf{Results}: 32 total evidence items (up from 23 at Phase-141),
 79.8\% aggregate confidence score (up from 69\%), 18 items rated
-STRONGLY\_SUPPORTED or CERTAIN. New items added: Gulf seal fish-sign
-confirmation (E06), Wells 2015 independent Dravidian confirmation (E07),
-Mahadevan four-decade grammar confirmation (L07), Parpola 1994 reading
+STRONGLY\_SUPPORTED\_WITHIN\_MODEL or HIGHLY\_SUPPORTED. New items added: Gulf seal fish-sign
+corroboration (E06), Wells 2015 independent Dravidian-compatible evidence (E07),
+Mahadevan four-decade grammar consistency (L07), Parpola 1994 reading
 cross-validation 44/75 = 59\% (E08), literature extraction ceiling
-(S09, CERTAIN --- meaningful null), sibilant DEDR validation (L08),
+(S09, HIGHLY\_SUPPORTED --- meaningful null), sibilant DEDR validation (L08),
 adversarial challenge battery 10/10 (S10), M267 χ² motif-independence
 (S11), and blocker phonotactic plausibility (S12). Category breakdown:
 12 STRUCTURAL, 8 LINGUISTIC, 8 EXTERNAL, 4 DECIPHERMENT.
@@ -1011,7 +1008,7 @@ alone. This is the fundamental ceiling of the current methodology.
 \item
   \textbf{Conservative confidence standards}: Our MEDIUM threshold is
   deliberately strict. Some assigned LOW readings may be correct but
-  lack sufficient independent confirmation.
+  lack sufficient independent support.
 \item
   \textbf{Language-family baseline}: The present model tests Proto-Dravidian
   compatibility more extensively than competing baselines. A formal comparison
@@ -1059,17 +1056,13 @@ decipherable linguistic system; the evidence favours a Proto-Dravidian
 reading framework under the tested assumptions. The ICIT corpus
 (Dr.~Andreas Fuls, 5,318 texts; fuls@epigraphica.de) is the immediate
 priority for testing whether the candidate model generalises. All phase
-reports, scripts, and the anchor table are openly available.
+reports, scripts, and the anchor table are available in the Glossa-Lab repository.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{6. Data Availability}\label{data-availability}
 
-All sign readings, confidence levels, DEDR citations, and basis
-statements are available in \texttt{INDUS\_FINAL\_ANCHORS.json} in the
-Glossa-Lab repository. The Holdat LLC corpus is available at {[}Holdat
-LLC{]}. The crosswalk, scripts, and all phase reports are archived in
-\texttt{backend/reports/} and \texttt{backend/scripts/}.
+All sign readings, confidence levels, DEDR citations, basis statements, analysis scripts, and phase reports are available in the Glossa-Lab repository at \url{https://github.com/tristanp/glossa-lab}. The Holdat LLC Indus Corpus v3 was accessed under private agreement for this study; public release is pending. Reproduction of corpus-level counts requires access to that corpus or a compatible public corpus such as ICIT after sign-code crosswalking.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1119,7 +1112,7 @@ scripting, data management, and literature search.
 \item
   Martini, G. (2025). \emph{Arthaśāstra Administrative Vocabulary and
   IVC Seal Inscription Typology}. PhD dissertation.
-  [Author name to be confirmed with publisher before journal submission.]
+  [unpublished manuscript; cited with author permission; full bibliographic details to be confirmed before public submission]
 \item
   McAlpin, D.W. (1981). \emph{Proto-Elamo-Dravidian: The Evidence and
   Its Implications}. Philadelphia: American Philosophical Society.
@@ -1139,7 +1132,7 @@ scripting, data management, and literature search.
   \emph{PNAS}, 106(33), 13685--13690.
 \item
   Roif, A. (2025a). The Indus Script as a Mnemonic Framework.
-  Preprint. [URL/DOI to be confirmed with author before submission.]
+  Preprint. [personal communication / manuscript in preparation; URL to be confirmed before public submission]
 \item
   Roif, A. (2025b). Deciphering the Indus Valley Script: A
   Phonetic-Mnemonic Akkadian Shorthand Approach. Preprint.
@@ -1200,8 +1193,7 @@ Signs}\label{appendix-b-the-18-irresolvable-signs}
 
 These 18 signs have corpus frequency 5--7, appear exclusively in MEDIAL
 position (personal name slots), have SA modals without DEDR matches, and
-resist substrate identification. They account for 3.8\% of corpus tokens
-and 30.2\% of seals not fully covered by H+M candidate readings (§3.6).
+resist substrate identification. These 18 signs account for 3.8\% of corpus tokens and \textit{contribute to} the 30.2\% of seals not fully covered by H+M candidate readings (\S3.6).
 
 Signs: M183, M190, M223, M239, M254, M270, M295, M304, M321, M329,
 M345, M357, M365, M386, M137, M143, M151, M402. (M198 removed --- promoted to PROVISIONAL\_MEDIUM by Phase-166.)
@@ -1217,10 +1209,10 @@ Summary}\label{appendix-c-foundation-validation-summary}
 
 59 independent checks (foundation\_check.py, Phases 1--170) all pass, including: -
 Dravidian Tier 1 lift ratio: 3.13× above null (Phase-44) - Contact zone
-HIGH anchors: confirmed (Phase-46) - Sign coverage: 390 M-numbers all
+HIGH anchors: supported within internal checks (Phase-46) - Sign coverage: 390 M-numbers all
 addressed - Dashboard coverage metrics: guaranteed ≤1.0 (no inflation) -
 Grammar model: {[}CLASSIFIER{]}--{[}TITLE{]}--{[}SUFFIX{]} pattern
-confirmed - Fish sign polysemy: 0/140 isolated (0/113 corpus + 0/27 Gulf; Phases 124/127/156)
+supported - Fish sign polysemy: 0/140 isolated (0/113 corpus + 0/27 Gulf; Phases 124/127/156)
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 

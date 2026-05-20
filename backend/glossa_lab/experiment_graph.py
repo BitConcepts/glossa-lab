@@ -2654,6 +2654,15 @@ try:
 except Exception as _p166168_exc:  # noqa: BLE001
     logger.warning("Phase-166-168 nodes not registered: %s", _p166168_exc)
 
+# ── Phase-169-170 nodes (master synthesis + grammar variance — FINAL PHASES)
+try:
+    from glossa_lab.experiment_graph_phase169_170 import _phase169_170_node_defs as _p169170_defs  # noqa: PLC0415
+    for _d in _p169170_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-169-170 nodes (computational frontier)", len(_p169170_defs()))
+except Exception as _p169170_exc:  # noqa: BLE001
+    logger.warning("Phase-169-170 nodes not registered: %s", _p169170_exc)
+
 # ── Graph execution
 
 def _topo_sort(nodes: list[dict], edges: list[dict]) -> list[dict]:

@@ -308,6 +308,19 @@ Mining Parpola (1994) *Deciphering the Indus Script* (1,566,507 chars): **44/75 
 
 Mining 10 Mahadevan papers spanning 1972–2018: **all 10 papers independently describe positional grammar consistent with the 3-slot model**. Grammar of Indus Texts (1986): 8 grammar-model hits; What Do We Know (1989): 7 hits; Terminal Ideograms (1982): 6 hits. The akam-puram (2011) paper identifies a crescent-moon sign as an 'outer city' marker at INITIAL position, consistent with our INITIAL = title/determinative class. Place Signs (1981) documents 10 settlement/ūr sign references, consistent with M233=ūr. Across four independent decades of scholarship, the same three-slot positional grammar structure emerges consistently.
 
+### 3.24 Literature Extraction Ceiling (Phase-161/162/165)
+
+Systematic mining of Parpola (1994), 38 Mahadevan papers (1970–2018), and Wells (2015) for sign-reading proposals yielded **0 new direct M-number reading assignments** against the 240 LOW-confidence signs. This is a meaningful null result: it confirms that our H+M reading set at 157 signs is at the current frontier of published field scholarship. The 220 LOW signs with placeholder readings ('kur') have no proposed readings in any currently available reference literature. The 20 LOW signs with distributional readings are the personal-name syllable components identified in Phase-144 — irresolvable without a bilingual text or a corpus large enough to identify repeated name sequences. **Progress from this point requires either the ICIT corpus (5,318 inscriptions vs 1,670) or a new archaeological find.**
+
+### 3.25 Sibilant Exploratory Promotions (Phase-163)
+
+Mining all three reference sources specifically for sibilant-initial readings (ca-/ce-/ci-/co-/cu-) near sign references: 15 /cu/co/ca/ candidates identified for LOW signs via text proximity analysis. Four signs promoted to provisional MEDIUM status based on ≥3 independent text mentions: M165 ('cul', 4 Parpola references), M330 ('can', 4 Parpola references), M202 ('can', 4 Mahadevan references), M372 ('can', 4 Mahadevan references). These are **exploratory** — text proximity in OCR'd academic text does not guarantee a direct sign assignment; they require expert review. With these 4 additions: H+M = 161 (was 157), token coverage = 90.96% (was 90.75%), decoded seals = 69.8% (was 69.1%).
+
+### 3.26 Meluhhan Name Phonological Matching (Phase-164)
+
+Testing 6 attested Meluhhan personal names from Mesopotamian cuneiform against corpus sign sequences: no strong matches (≥3/4 phonological slots) found in the 1,670-seal corpus. Partial matches (2/3 slots): Urgula (*ur-gu-la*) — 17 seals with M233(ūr) + ku-class + suffix; Nanna-a (*nan-na-a*) — 9 seals with nal/naN + genitive + suffix. These are below the confidence threshold for a personal name decipherment claim. The 1,670-seal corpus is insufficient — ICIT (5,318 texts) would provide ~3× more evidence for low-frequency MEDIAL sign sequences required for personal name identification.
+
+
 ---
 
 ## 4. Discussion

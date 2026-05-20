@@ -3,28 +3,238 @@
   "name": "Fuls Independence Suite — Shuffle vs Real",
   "description": "Tests whether NW Semitic sign sequences carry genuine linguistic signal (not random). Runs SA on both the real RTL-corrected corpus and a within-word shuffled control. Compares mean consistency: if real >> shuffled, sequential structure is informative.",
   "nodes": [
-    {"id": "corpus", "type": "expNode", "data": {"atomicId": "BuiltinCorpus", "label": "NW Semitic", "params": {"corpus": "nw_semitic"}}, "position": {"x": 60, "y": 260}},
-    {"id": "rtl", "type": "expNode", "data": {"atomicId": "DirectionNormalizer", "label": "RTL", "params": {"direction": "rtl"}}, "position": {"x": 280, "y": 260}},
-    {"id": "lm", "type": "expNode", "data": {"atomicId": "BuiltinLM", "label": "Hebrew LM", "params": {"language": "hebrew"}}, "position": {"x": 60, "y": 480}},
-    {"id": "shuffle", "type": "expNode", "data": {"atomicId": "ShuffleControl", "label": "Shuffle Control", "params": {"mode": "within_word", "seed": 42}}, "position": {"x": 520, "y": 120}},
-    {"id": "dec_real", "type": "expNode", "data": {"atomicId": "SADecipher", "label": "SA Real (5 seeds)", "params": {"n_seeds": 5, "max_iterations": 5000, "restarts": 3, "surjective": true, "ocp_weight": 0.0}}, "position": {"x": 520, "y": 320}},
-    {"id": "dec_shuf", "type": "expNode", "data": {"atomicId": "SADecipher", "label": "SA Shuffled (5 seeds)", "params": {"n_seeds": 5, "max_iterations": 5000, "restarts": 3, "surjective": true, "ocp_weight": 0.0}}, "position": {"x": 520, "y": 120}},
-    {"id": "cons_real", "type": "expNode", "data": {"atomicId": "ConsistencyScorer", "label": "Consistency (real)", "params": {}}, "position": {"x": 780, "y": 320}},
-    {"id": "cons_shuf", "type": "expNode", "data": {"atomicId": "ConsistencyScorer", "label": "Consistency (shuffled)", "params": {}}, "position": {"x": 780, "y": 120}},
-    {"id": "merge", "type": "expNode", "data": {"atomicId": "Merger", "label": "Merge Comparison", "params": {}}, "position": {"x": 1020, "y": 220}},
-    {"id": "out", "type": "expNode", "data": {"atomicId": "JSONExport", "label": "Save", "params": {"filename": "fuls_independence_suite.json"}}, "position": {"x": 1260, "y": 220}}
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "NW Semitic",
+        "params": {
+          "corpus": "nw_semitic"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 260
+      }
+    },
+    {
+      "id": "rtl",
+      "type": "expNode",
+      "data": {
+        "atomicId": "DirectionNormalizer",
+        "label": "RTL",
+        "params": {
+          "direction": "rtl"
+        }
+      },
+      "position": {
+        "x": 280,
+        "y": 260
+      }
+    },
+    {
+      "id": "lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Hebrew LM",
+        "params": {
+          "language": "hebrew"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 480
+      }
+    },
+    {
+      "id": "shuffle",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ShuffleControl",
+        "label": "Shuffle Control",
+        "params": {
+          "mode": "within_word",
+          "seed": 42
+        }
+      },
+      "position": {
+        "x": 520,
+        "y": 120
+      }
+    },
+    {
+      "id": "dec_real",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA Real (5 seeds)",
+        "params": {
+          "n_seeds": 5,
+          "max_iterations": 5000,
+          "restarts": 3,
+          "surjective": true,
+          "ocp_weight": 0.0
+        }
+      },
+      "position": {
+        "x": 520,
+        "y": 320
+      }
+    },
+    {
+      "id": "dec_shuf",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA Shuffled (5 seeds)",
+        "params": {
+          "n_seeds": 5,
+          "max_iterations": 5000,
+          "restarts": 3,
+          "surjective": true,
+          "ocp_weight": 0.0
+        }
+      },
+      "position": {
+        "x": 520,
+        "y": 120
+      }
+    },
+    {
+      "id": "cons_real",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConsistencyScorer",
+        "label": "Consistency (real)",
+        "params": {}
+      },
+      "position": {
+        "x": 780,
+        "y": 320
+      }
+    },
+    {
+      "id": "cons_shuf",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConsistencyScorer",
+        "label": "Consistency (shuffled)",
+        "params": {}
+      },
+      "position": {
+        "x": 780,
+        "y": 120
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge Comparison",
+        "params": {}
+      },
+      "position": {
+        "x": 1020,
+        "y": 220
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save",
+        "params": {
+          "filename": "fuls_independence_suite.json"
+        }
+      },
+      "position": {
+        "x": 1260,
+        "y": 220
+      }
+    }
   ],
   "edges": [
-    {"id": "e1", "source": "corpus", "target": "rtl", "sourcePort": "sequences", "targetPort": "sequences"},
-    {"id": "e2", "source": "rtl", "target": "dec_real", "sourcePort": "sequences", "targetPort": "sequences"},
-    {"id": "e3", "source": "rtl", "target": "shuffle", "sourcePort": "sequences", "targetPort": "sequences"},
-    {"id": "e4", "source": "shuffle", "target": "dec_shuf", "sourcePort": "sequences", "targetPort": "sequences"},
-    {"id": "e5", "source": "lm", "target": "dec_real", "sourcePort": "lm", "targetPort": "lm"},
-    {"id": "e6", "source": "lm", "target": "dec_shuf", "sourcePort": "lm", "targetPort": "lm"},
-    {"id": "e7", "source": "dec_real", "target": "cons_real", "sourcePort": "all_mappings", "targetPort": "all_mappings"},
-    {"id": "e8", "source": "dec_shuf", "target": "cons_shuf", "sourcePort": "all_mappings", "targetPort": "all_mappings"},
-    {"id": "e9", "source": "cons_real", "target": "merge", "sourcePort": "mean_consistency", "targetPort": "a"},
-    {"id": "e10", "source": "cons_shuf", "target": "merge", "sourcePort": "mean_consistency", "targetPort": "b"},
-    {"id": "e11", "source": "merge", "target": "out", "sourcePort": "json", "targetPort": "data"}
-  ]
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "rtl",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "rtl",
+      "target": "dec_real",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "rtl",
+      "target": "shuffle",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e4",
+      "source": "shuffle",
+      "target": "dec_shuf",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e5",
+      "source": "lm",
+      "target": "dec_real",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e6",
+      "source": "lm",
+      "target": "dec_shuf",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e7",
+      "source": "dec_real",
+      "target": "cons_real",
+      "sourcePort": "all_mappings",
+      "targetPort": "all_mappings"
+    },
+    {
+      "id": "e8",
+      "source": "dec_shuf",
+      "target": "cons_shuf",
+      "sourcePort": "all_mappings",
+      "targetPort": "all_mappings"
+    },
+    {
+      "id": "e9",
+      "source": "cons_real",
+      "target": "merge",
+      "sourcePort": "mean_consistency",
+      "targetPort": "a"
+    },
+    {
+      "id": "e10",
+      "source": "cons_shuf",
+      "target": "merge",
+      "sourcePort": "mean_consistency",
+      "targetPort": "b"
+    },
+    {
+      "id": "e11",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

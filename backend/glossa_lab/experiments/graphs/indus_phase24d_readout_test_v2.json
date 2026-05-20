@@ -1,27 +1,178 @@
 {
   "id": "indus_phase24d_readout_test_v2",
-  "name": "Indus Phase-24d \u2014 bilingual readout test v2 (bipartite)",
+  "name": "Indus Phase-24d — bilingual readout test v2 (bipartite)",
   "description": "Phase-24d: Phase-23 readout test with the multiset-invariance flaw fixed. Statistic = sum of greedy bipartite-assignment length-scores (each seal used at most once). Null = random one-to-one name<->seal assignments (2000 perms, seed=42). Unlike Phase-23c which always returned p=1.0, this null genuinely varies. Output: reports/phase24d_readout_test_v2.json.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "load",     "type": "expNode", "data": { "atomicId": "RefinedSealLoaderV2",                "label": "Load augmented seals + persons v2", "params": {} },                                                       "position": { "x": 60,   "y": 100 } },
-    { "id": "extract",  "type": "expNode", "data": { "atomicId": "RefinedMeluhhanPersonsExtractorV2", "label": "Refined persons v2",                "params": { "min_freq": 1 } },                                         "position": { "x": 360,  "y": 100 } },
-    { "id": "matcher",  "type": "expNode", "data": { "atomicId": "EnhancedNameMatcherV2",             "label": "Bipartite matcher v2",              "params": { "min_name_freq": 1, "tolerance": 2 } },                     "position": { "x": 660,  "y": 60 } },
-    { "id": "readout",  "type": "expNode", "data": { "atomicId": "BilingualReadoutTestV2",            "label": "Bipartite readout test v2 (2k perms)","params": { "n_permutations": 2000, "min_name_freq": 1, "tolerance": 2, "seed": 42 } }, "position": { "x": 660, "y": 200 } },
-    { "id": "merge",    "type": "expNode", "data": { "atomicId": "Merger",                            "label": "Merge",                              "params": {} },                                                       "position": { "x": 960,  "y": 130 } },
-    { "id": "out",      "type": "expNode", "data": { "atomicId": "JSONExport",                        "label": "Save Phase-24d results",             "params": { "filename": "phase24d_readout_test_v2.json" } },           "position": { "x": 1260, "y": 130 } }
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "RefinedSealLoaderV2",
+        "label": "Load augmented seals + persons v2",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "extract",
+      "type": "expNode",
+      "data": {
+        "atomicId": "RefinedMeluhhanPersonsExtractorV2",
+        "label": "Refined persons v2",
+        "params": {
+          "min_freq": 1
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    },
+    {
+      "id": "matcher",
+      "type": "expNode",
+      "data": {
+        "atomicId": "EnhancedNameMatcherV2",
+        "label": "Bipartite matcher v2",
+        "params": {
+          "min_name_freq": 1,
+          "tolerance": 2
+        }
+      },
+      "position": {
+        "x": 660,
+        "y": 60
+      }
+    },
+    {
+      "id": "readout",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BilingualReadoutTestV2",
+        "label": "Bipartite readout test v2 (2k perms)",
+        "params": {
+          "n_permutations": 2000,
+          "min_name_freq": 1,
+          "tolerance": 2,
+          "seed": 42
+        }
+      },
+      "position": {
+        "x": 660,
+        "y": 200
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge",
+        "params": {}
+      },
+      "position": {
+        "x": 960,
+        "y": 130
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Phase-24d results",
+        "params": {
+          "filename": "phase24d_readout_test_v2.json"
+        }
+      },
+      "position": {
+        "x": 1260,
+        "y": 130
+      }
+    }
   ],
   "edges": [
-    { "id": "e_load_extract",      "source": "load",    "target": "extract", "sourcePort": "persons_v2",        "targetPort": "persons_v2" },
-    { "id": "e_extract_match_r",   "source": "extract", "target": "matcher", "sourcePort": "rows_all",          "targetPort": "rows_all" },
-    { "id": "e_load_match_s",      "source": "load",    "target": "matcher", "sourcePort": "inscribed_seals",   "targetPort": "inscribed_seals" },
-    { "id": "e_extract_read_r",    "source": "extract", "target": "readout", "sourcePort": "rows_all",          "targetPort": "rows_all" },
-    { "id": "e_load_read_s",       "source": "load",    "target": "readout", "sourcePort": "inscribed_seals",   "targetPort": "inscribed_seals" },
-    { "id": "e_match_merge_v",     "source": "matcher", "target": "merge",   "sourcePort": "verdict",           "targetPort": "a" },
-    { "id": "e_match_merge_p",     "source": "matcher", "target": "merge",   "sourcePort": "pairings",          "targetPort": "b" },
-    { "id": "e_match_merge_t",     "source": "matcher", "target": "merge",   "sourcePort": "total_length_score","targetPort": "c" },
-    { "id": "e_read_merge_v",      "source": "readout", "target": "merge",   "sourcePort": "verdict",           "targetPort": "d" },
-    { "id": "e_read_merge_p",      "source": "readout", "target": "merge",   "sourcePort": "p_value",           "targetPort": "e" },
-    { "id": "e_merge_out",         "source": "merge",   "target": "out",     "sourcePort": "json",              "targetPort": "data" }
-  ]
+    {
+      "id": "e_load_extract",
+      "source": "load",
+      "target": "extract",
+      "sourcePort": "persons_v2",
+      "targetPort": "persons_v2"
+    },
+    {
+      "id": "e_extract_match_r",
+      "source": "extract",
+      "target": "matcher",
+      "sourcePort": "rows_all",
+      "targetPort": "rows_all"
+    },
+    {
+      "id": "e_load_match_s",
+      "source": "load",
+      "target": "matcher",
+      "sourcePort": "inscribed_seals",
+      "targetPort": "inscribed_seals"
+    },
+    {
+      "id": "e_extract_read_r",
+      "source": "extract",
+      "target": "readout",
+      "sourcePort": "rows_all",
+      "targetPort": "rows_all"
+    },
+    {
+      "id": "e_load_read_s",
+      "source": "load",
+      "target": "readout",
+      "sourcePort": "inscribed_seals",
+      "targetPort": "inscribed_seals"
+    },
+    {
+      "id": "e_match_merge_v",
+      "source": "matcher",
+      "target": "merge",
+      "sourcePort": "verdict",
+      "targetPort": "a"
+    },
+    {
+      "id": "e_match_merge_p",
+      "source": "matcher",
+      "target": "merge",
+      "sourcePort": "pairings",
+      "targetPort": "b"
+    },
+    {
+      "id": "e_match_merge_t",
+      "source": "matcher",
+      "target": "merge",
+      "sourcePort": "total_length_score",
+      "targetPort": "c"
+    },
+    {
+      "id": "e_read_merge_v",
+      "source": "readout",
+      "target": "merge",
+      "sourcePort": "verdict",
+      "targetPort": "d"
+    },
+    {
+      "id": "e_read_merge_p",
+      "source": "readout",
+      "target": "merge",
+      "sourcePort": "p_value",
+      "targetPort": "e"
+    },
+    {
+      "id": "e_merge_out",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

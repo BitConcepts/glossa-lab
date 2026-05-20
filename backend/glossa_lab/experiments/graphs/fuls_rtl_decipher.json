@@ -1,6 +1,6 @@
 {
   "id": "fuls_rtl_decipher",
-  "name": "NW Semitic \u2014 RTL Corrected Decipherment (Dr. Fuls)",
+  "name": "NW Semitic — RTL Corrected Decipherment (Dr. Fuls)",
   "description": "Applies RTL direction normalisation to the Fuls NW Semitic test1 corpus, then runs SA mapping inference with 5 parallel seeds against the Hebrew LM. Implements the Ashraf (2018) auto-detection for confirmation.",
   "auto_migrated": true,
   "nodes": [
@@ -127,5 +127,6 @@
       "sourcePort": "consistency_per_sign",
       "targetPort": "data"
     }
-  ]
+  ],
+  "graph_type": "experiment"
 }

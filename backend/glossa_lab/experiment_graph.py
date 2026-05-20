@@ -2605,6 +2605,46 @@ try:
 except Exception as _p134141_exc:  # noqa: BLE001
     logger.warning("Phase-134-141 falsification nodes not registered: %s", _p134141_exc)
 
+try:
+    from glossa_lab.experiment_graph_phase126 import _phase126_node_defs as _p126_defs  # noqa: PLC0415
+    for _d in _p126_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-126 ICIT nodes", len(_p126_defs()))
+except Exception as _p126_exc:  # noqa: BLE001
+    logger.warning("Phase-126 ICIT nodes not registered: %s", _p126_exc)
+
+try:
+    from glossa_lab.experiment_graph_phase128_133 import _phase128_133_node_defs as _p128133_defs  # noqa: PLC0415
+    for _d in _p128133_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-128-133 nodes", len(_p128133_defs()))
+except Exception as _p128133_exc:  # noqa: BLE001
+    logger.warning("Phase-128-133 nodes not registered: %s", _p128133_exc)
+
+try:
+    from glossa_lab.experiment_graph_phase142_145 import _phase142_145_node_defs as _p142145_defs  # noqa: PLC0415
+    for _d in _p142145_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-142-145 nodes", len(_p142145_defs()))
+except Exception as _p142145_exc:  # noqa: BLE001
+    logger.warning("Phase-142-145 nodes not registered: %s", _p142145_exc)
+
+try:
+    from glossa_lab.experiment_graph_phase146_155 import _phase146_155_node_defs as _p146155_defs  # noqa: PLC0415
+    for _d in _p146155_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-146-155 nodes", len(_p146155_defs()))
+except Exception as _p146155_exc:  # noqa: BLE001
+    logger.warning("Phase-146-155 nodes not registered: %s", _p146155_exc)
+
+try:
+    from glossa_lab.experiment_graph_phase156_165 import _phase156_165_node_defs as _p156165_defs  # noqa: PLC0415
+    for _d in _p156165_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-156-165 nodes", len(_p156165_defs()))
+except Exception as _p156165_exc:  # noqa: BLE001
+    logger.warning("Phase-156-165 nodes not registered: %s", _p156165_exc)
+
 # ── Graph execution
 
 def _topo_sort(nodes: list[dict], edges: list[dict]) -> list[dict]:

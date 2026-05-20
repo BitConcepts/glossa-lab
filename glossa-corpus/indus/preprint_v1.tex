@@ -1,4 +1,4 @@
-% Options for packages loaded elsewhere
+﻿% Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \documentclass[
@@ -13,6 +13,7 @@
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
   \usepackage{unicode-math} % this also loads fontspec
+  \setmathfont{Latin Modern Math} % ensures proper Unicode math glyph rendering
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
@@ -50,6 +51,7 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage[margin=1in,top=1in,bottom=1in]{geometry}
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
@@ -62,8 +64,8 @@
 
 \begin{document}
 
-\section{Computational Decipherment of the Indus Valley Script: 268
-Anchors, 96.2\% Token Coverage, and a Proto-Dravidian Guild-Name
+\section{Computational Decipherment of the Indus Valley Script: 161
+H+M Anchors, 90.96\% Token Coverage, and a Proto-Dravidian Guild-Name
 Grammar}\label{computational-decipherment-of-the-indus-valley-script-268-anchors-96.2-token-coverage-and-a-proto-dravidian-guild-name-grammar}
 
 \textbf{Tristen Kyle Pierson}\\
@@ -77,9 +79,11 @@ Version: Preprint v1 --- Not peer-reviewed
 \subsection{Abstract}\label{abstract}
 
 We report a computational decipherment of the Indus Valley Script (IVS)
-achieving 268 sign anchors at HIGH or MEDIUM confidence, 96.2\% token
-coverage across 7,002 corpus tokens, and full decoding of 1,429/1,670
-(85.6\%) seals. Working from the Holdat LLC corpus (1,670 seals, 9
+achieving 161 sign anchors at HIGH or MEDIUM confidence (75 HIGH, 86 MEDIUM),
+90.96\% token coverage across 7,002 corpus tokens, and full decoding of
+1,165/1,670 (69.8\%) seals using genuine phonetically-grounded readings
+(Phase-133 corrected a prior inflated count of 268 that included heuristic
+placeholders; see \S3.1).
 sites, 390 distinct signs) and Mahadevan's M-number sign catalogue, we
 apply a five-layer evidence framework --- iconographic anchors,
 distributional positional analysis, bigram/trigram collocational
@@ -94,7 +98,7 @@ signs, confirm that the fish sign (M047=mīn) is exclusively compound
 across all 9 sites including the coastal port of Lothal (0/113
 isolated), and correct the major V6 error of assigning M267 as
 ``fish/mīn'' --- it is a high-frequency genitive particle. Foundation
-validation (45/45 independent checks) confirms the Dravidian phonetic
+validation (59/59 independent checks, Phases 1--170) confirms the Dravidian phonetic
 hypothesis. The system is described, all sign readings are published,
 and a falsifiable path to validation via Rosetta-Stone discovery or
 Wells-catalog Gulf-deposit seal analysis is specified.
@@ -163,8 +167,8 @@ We present a computational decipherment pipeline (Glossa-Lab, Phases
 \item
   Correction of M267: genitive particle, not fish sign
 \item
-  A publish-read anchor table covering all 268 H+M signs with DEDR
-  citations
+  A publish-read anchor table covering all 161 genuine H+M signs with DEDR
+  citations (161 phonetically grounded; 107 prior heuristic placeholders removed by Phase-133)
 \item
   Bootstrap confidence intervals confirming site repertoire divergence
   (Rakhigarhi robustly distinct)
@@ -307,8 +311,7 @@ LOW & 129 & 3.8\% \\
 \end{longtable}
 }
 
-The 268 H+M anchors cover 6,733 of 7,002 corpus tokens. The remaining
-269 tokens (3.8\%) have LOW-confidence readings only.
+The 161 H+M anchors (75 HIGH + 86 MEDIUM) cover 6,363 of 7,002 corpus tokens. The remaining 639 tokens (9.1\%) have LOW-confidence readings only. Note: a prior count of 268 included 107 heuristic placeholder assignments removed by Phase-133.
 
 \subsubsection{3.2 Grammar Model}\label{grammar-model}
 
@@ -1203,7 +1206,7 @@ sequences across related inscriptions.
 \subsection{Appendix C: Foundation Validation
 Summary}\label{appendix-c-foundation-validation-summary}
 
-45 independent checks (foundation\_check.py) all pass, including: -
+59 independent checks (foundation\_check.py, Phases 1--170) all pass, including: -
 Dravidian Tier 1 lift ratio: 3.13× above null (Phase-44) - Contact zone
 HIGH anchors: confirmed (Phase-46) - Sign coverage: 390 M-numbers all
 addressed - Dashboard coverage metrics: guaranteed ≤1.0 (no inflation) -

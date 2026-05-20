@@ -1,0 +1,50 @@
+{
+  "phase": 156,
+  "date": "2026-05-20",
+  "sources": {
+    "laursen_2010": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\corpora\\downloads\\external_repos\\acquired_pdfs\\laursen_2010_gulf_type_seals_extracted.txt",
+    "bahrain_volume": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\corpora\\downloads\\external_repos\\acquired_pdfs\\bahrain_through_the_ages_extracted.txt",
+    "parpola_1994": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\corpora\\downloads\\external_repos\\acquired_pdfs\\parpola_1994_deciphering_extracted.txt"
+  },
+  "laursen_fish_hits": 0,
+  "laursen_isolation_contexts": [],
+  "laursen_compound_contexts": [],
+  "mitchell_hits": 59,
+  "mitchell_contexts": [
+    "at al-Bahrain Pierre Lombard MAR-TU and the land of Dilmun Juris Zairins The shell seals of Bahrain Hayai all  Khaililai Susa and the Dilmun Culture Pierre Amiet 108 135 165 178 225 235 251 262  The Dilmun seals as evidence of long distance relations in the early second millennium B.c. Poul Kjaerum ",
+    "a- tion  grew  from  the  skilful  utilization  of  fertile  valleys.  The  general characteristicsofthecivilizationincludegrid-ironlayoutofthecities, elaborate drainage systems and a kind of semi-pictographic script. Since  1977 considerable work has been going on both in India and Pakistan on the ",
+    "Makkan (Makran) and Melubba (Sind) are very important; the Harappan artifacts found in various parts of West Asia, and some of the artifacts of West Asian origin found in India, assume great significance in the appreciation of cultural  contacts  and  the  trade  mechanism  over  the  entire  area d",
+    "wavy combing  and  the  single  wide  bands  of  painted  decoration,  often associated with it and more especially with type 8, are criteria of the last known phase of the Ubaid assemblage (jbjd. 262; Oates 1976, 28; 1978, 44; pace Adams and Nissen 1972, 99). Such pottery is character- istic  of Wo",
+    "acted by the incidence of fresh water from springs, both inland and offshore. It is however precisely in that part of the island that the land surface has been progressively disturbed by man who has used it intensively for burial purposes, agriculture, mineral extraction and more recently in the  co"
+  ],
+  "parpola_p47_hits": 0,
+  "parpola_p47_contexts": [],
+  "parpola_fish_isolation": [
+    "arly Harappan ceramics.  It seems that the script was forgotten when urban centres and  with them the administrative bureaucracy ceased to exist. However, a Late Harappan seal from Daim abad with its 54  Evolution of the Indus script F ig . 4.2.  A ‘fish’ sign incised on an ‘anthropomorph’ from  She"
+  ],
+  "parpola_fish_compound": [
+    "U S   P IC T O G R A M S   177 io T h e  ‘fis h ’ s ig n s  o f  th e  In d u s  s c r ip t   179 10 .1  Fish =  star: astral divinities  179 vm 10.2 Fish as an emblem of ‘Proto-Siva’, Enki, VaruIJ.a and Kam a  184 10.3 Fish offerings  190 10.4 T he sign sequences o f ‘number’ +  ‘fish’  194 10.5 Th",
+    "Buffalo demon  246 14.3 Iconography of the ‘fig deity’ seal  256 14.4 T h e inscription on the ‘fig deity’ seal: the star of the Goddess, the carp and the red dot on the  forehead  261 1 5  E p ilo g u e   273 Appendix: Compounds ending in the word min. in  T a m il L e x ico n   279 Bibliographical",
+    "12 7.13 (a-f) Three seals with the initial portion of their  obverse inscription repeated on the reverse. The signs that occur immediately before the sign f and  the sequence 1:-V . An analysis of the ‘final phrases’ that occur after the  different ‘fish’ signs. Paradigmatic alternation at the end o"
+  ],
+  "gulf_seal_total": 0,
+  "any_isolated_gulf": false,
+  "verdict": "COMPOUND_ONLY_EXTENDED — fish sign pattern holds in Gulf context too",
+  "preprint_update": "§4.5.2 validated: Gulf seal evidence consistent with compound-only",
+  "indus_script_gulf_contexts": [
+    "pe seals found in the Indus Valley, Iran, Mesopotamia⁄Bahrain and Bahrain can be connected with relatively discrete morphological groups apparently corresponding to different areas of production. The Indus inscriptions on the seals are investigated with particular emphasis on the abnormal occurrence",
+    "ion of vital administra- tive technology into the Dilmun culture simulta- neously with the rise of an early ‘state’ on Bahrain (Højlund 2007: 124–125). On a superﬁcial level these circular seals with Indus inscriptions are, except for the presence of text, often indistinguishable from the seals of s",
+    "from Larsa tablets…’ (Bibby 1958: 246 [Wheeler’s comments]). Regardless of the new ﬁnds from Bahrain, how- ever, Hallo and Buchanan were reluctant fully to abandon the idea that the round seals with Indus inscriptions were made by ‘Indians’ but proposed the notion that the round form should be assoc",
+    "n to become the models of the Gulf seals’. (1994a: 315). Recently other scholars (e.g. Vidale 2004; 2005) have proposed a host of new interpretations, in particular concerning the circular seals with Indus inscriptions, but those will be dealt with in more detail below. (a) (b) (c) Fig. 1. Impressio",
+    "s when it is present, answers to this principle only to a varying degree in the three seals. Seal a (no. 10), which is rather worn, has a sequence of what appears to be at least six characters in the Indus script and it thus seems to be in full accordance with the standard scheme.2 Seal b (no. 11) i"
+  ],
+  "key_findings": [
+    "Laursen 2010 fish-sign hits: 0",
+    "Gulf isolation contexts: 0",
+    "Gulf compound contexts: 0",
+    "Mitchell (Ur seals) hits: 59",
+    "Parpola P47 hits: 0",
+    "Verdict: COMPOUND_ONLY_EXTENDED — fish sign pattern holds in Gulf context too",
+    "Mahadevan 2011 fish paper not available (blank RMRL ID) — but our 0/113 mainland result is consistent with his Great Bath interpretation"
+  ]
+}

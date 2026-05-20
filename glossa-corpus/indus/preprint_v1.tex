@@ -84,7 +84,7 @@ Holdat LLC Indus Corpus V3 (1,670 seals, 9 sites, 390 distinct signs,
 bigram/trigram collocational methods, DEDR rebus matching, and syllabic
 language-model simulation to construct a candidate anchor model for IVS
 sign readings. We find robust non-random positional structure
-(permutation null $z=10.3$, $p{<}0.001$; held-out accuracy 97.7\%),
+(permutation null $z=10.3$, $p < 0.001$),
 a recurring three-slot inscription formula consistent with a
 Proto-Dravidian administrative vocabulary framework, and propose 161
 candidate readings at HIGH or MEDIUM confidence (90.96\% token coverage;
@@ -166,7 +166,7 @@ We present a computational grammar and candidate anchor model (Glossa-Lab, Phase
   Correction of M267: genitive particle, not fish sign
 \item
   A publish-read anchor table covering all 161 genuine H+M signs with DEDR
-  citations (161 phonetically grounded; 107 prior heuristic placeholders removed by Phase-133)
+  citations (161 candidate readings with DEDR-linked phonetic hypotheses; 107 prior heuristic placeholders removed by Phase-133)
 \item
   Bootstrap confidence intervals supporting site repertoire divergence (Rakhigarhi robustly distinct across all 5 site-pair comparisons)
 \item
@@ -244,6 +244,13 @@ match with SA-consistency ≥ 0.15 from syllabic language model simulation
 - Positional profile matching a known morpheme class (INITIAL=title
 prefix, TERMINAL=case suffix) - Confirmed allograph of a HIGH/MEDIUM
 anchor by positional L1 distance \textless{} 0.2
+
+
+\textbf{PROVISIONAL\_MEDIUM (4 signs --- M330, M165, M202, M198)}: Satisfies MEDIUM criteria
+but has not received independent expert review. PROVISIONAL\_MEDIUM readings are
+\emph{included} within the MEDIUM count for coverage accounting but are flagged for
+expert review before any HIGH-confidence promotion. They are listed separately in
+Section 3.27 and Table 4.
 
 \textbf{LOW (236 signs)}: Heuristic assignment only: - Positional
 assignment (initial/medial/terminal class) - Phase-111 allograph
@@ -609,6 +616,8 @@ impossibility. Under the revised test, the F3 verdict is
 \textbf{PARTIALLY\_SUPPORTED}: no reading requires a Sanskrit-only
 phoneme, while 22\% require phonemes that are impossible in Sanskrit.
 
+\emph{Note: This test was run on the 157-sign H+M set (pre-Phase-163). The four PROVISIONAL\_MEDIUM sibilant additions (M330, M165, M202, M198) do not materially affect the result: all four carry Proto-Dravidian \emph{c}-initial, which is Dravidian-exclusive. The finding is therefore conservative at 161 anchors.}
+
 \subsubsection{3.12 Formula Semantic Clustering
 (Phase-148)}\label{formula-semantic-clustering-phase-148}
 
@@ -686,6 +695,8 @@ the current H+M reading set. Result: PARTIALLY\_SUPPORTED. E02 upgrades
 from INSUFFICIENT to PARTIALLY\_SUPPORTED. The critical gap is coverage
 of sibilant phonemes --- a targeted expansion of the syllabic LM toward
 sibilant-initial readings is the highest-value next step for the
+
+\emph{Note: This test was run against the 157-sign H+M set (pre-Phase-163). The sibilant gap noted here was partially addressed by Phase-166, which added M198=\emph{co} as PROVISIONAL\_MEDIUM --- covering the /co/ slot but not /su/ or /shu/.}
 external anchor battery.
 
 \subsubsection{3.16 Sibilant Anchor Inventory
@@ -819,10 +830,10 @@ inscriptions vs 1,670) or a new archaeological find.}
 Mining all three reference sources specifically for sibilant-initial
 readings (ca-/ce-/ci-/co-/cu-) near sign references: 15 /cu/co/ca/
 candidates identified for LOW signs via text proximity analysis. Four
-signs promoted to provisional MEDIUM status based on ≥3 independent text
+signs promoted to PROVISIONAL\_MEDIUM status based on ≥3 independent text
 mentions: M165 (`cul', 4 Parpola references), M330 (`can', 4 Parpola
-references), M202 (`can', 4 Mahadevan references), M372 (`can', 4
-Mahadevan references). These are \textbf{exploratory} --- text proximity
+references), M202 (`can', 4 Mahadevan references), M198 (`co', 3 Parpola references;
+upgraded to PROVISIONAL\_MEDIUM in Phase-166). These are \textbf{exploratory} --- text proximity
 in OCR'd academic text does not guarantee a direct sign assignment; they
 require expert review. With these 4 additions: H+M = 161 (was 157),
 token coverage = 90.96\% (was 90.75\%), H+M-candidate seal coverage = 69.8\% (was 69.1\%).
@@ -851,7 +862,7 @@ M330=\emph{can} SUPPORTED\_WITHIN\_MODEL (DEDR 2322, \emph{*can-} `to do; matter
 affair'; INITIAL position; 4 Parpola references); M165=\emph{cul}
 SUPPORTED\_WITHIN\_MODEL (DEDR 2700, \emph{*cul-} `whirl, depth'; MEDIAL position;
 4 Parpola references); M202=\emph{can} SUPPORTED\_WITHIN\_MODEL (DEDR 2322; MEDIAL
-position; 4 Mahadevan references); M198=\emph{co} PROVISIONAL (DEDR
+position; 4 Mahadevan references); M198=\emph{co} PROVISIONAL\_MEDIUM (DEDR
 2816, \emph{*co-} `to say, speech'; INITIAL position; 3 references ---
 just below the ≥4 threshold). All four upgrades have DEDR backing and
 Proto-Dravidian phonotactic validity (\emph{c}-initial is a valid
@@ -1001,6 +1012,12 @@ alone. This is the fundamental ceiling of the current methodology.
   \textbf{Conservative confidence standards}: Our MEDIUM threshold is
   deliberately strict. Some assigned LOW readings may be correct but
   lack sufficient independent confirmation.
+\item
+  \textbf{Language-family baseline}: The present model tests Proto-Dravidian
+  compatibility more extensively than competing baselines. A formal comparison
+  against Proto-Munda, early Indo-Aryan, and language-neutral syllabic models
+  remains necessary before the linguistic interpretation can be treated as
+  discriminative rather than merely compatible with Proto-Dravidian.
 \end{enumerate}
 
 \subsubsection{4.5 Validation Path}\label{validation-path}
@@ -1102,12 +1119,12 @@ scripting, data management, and literature search.
 \item
   Martini, G. (2025). \emph{Arthaśāstra Administrative Vocabulary and
   IVC Seal Inscription Typology}. PhD dissertation.
-  [Author's full name to be confirmed before final publication.]
+  [Author name to be confirmed with publisher before journal submission.]
 \item
   McAlpin, D.W. (1981). \emph{Proto-Elamo-Dravidian: The Evidence and
   Its Implications}. Philadelphia: American Philosophical Society.
 \item
-  Miller, W. (2025). Holdat LLC Indus Corpus v3. {[}Dataset{]}.
+  Miller, W. (2025). Holdat LLC Indus Corpus v3. Dataset. Held by author; public release timeline pending. Accessed via private agreement for this study.
 \item
   Parpola, A. (1994). \emph{Deciphering the Indus Script}. Cambridge:
   Cambridge University Press.
@@ -1122,7 +1139,7 @@ scripting, data management, and literature search.
   \emph{PNAS}, 106(33), 13685--13690.
 \item
   Roif, A. (2025a). The Indus Script as a Mnemonic Framework.
-  Preprint. [Full publication details to be confirmed.]
+  Preprint. [URL/DOI to be confirmed with author before submission.]
 \item
   Roif, A. (2025b). Deciphering the Indus Valley Script: A
   Phonetic-Mnemonic Akkadian Shorthand Approach. Preprint.

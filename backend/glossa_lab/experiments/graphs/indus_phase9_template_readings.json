@@ -9,7 +9,9 @@
       "data": {
         "atomicId": "BuiltinCorpus",
         "label": "CISI Corpus",
-        "params": {"corpus": "indus_cisi"}
+        "params": {
+          "corpus": "indus_cisi"
+        }
       }
     },
     {
@@ -18,7 +20,9 @@
       "data": {
         "atomicId": "BuiltinLM",
         "label": "Dravidian LM",
-        "params": {"language": "dravidian"}
+        "params": {
+          "language": "dravidian"
+        }
       }
     },
     {
@@ -27,7 +31,9 @@
       "data": {
         "atomicId": "PositionalProfiler",
         "label": "Sign Profiles",
-        "params": {"min_count": 3}
+        "params": {
+          "min_count": 3
+        }
       }
     },
     {
@@ -36,7 +42,11 @@
       "data": {
         "atomicId": "CASIndusEngine",
         "label": "CAS: Classify Sign Roles",
-        "params": {"terminal_threshold": 0.55, "initial_threshold": 0.45, "engine": "iterative"}
+        "params": {
+          "terminal_threshold": 0.55,
+          "initial_threshold": 0.45,
+          "engine": "iterative"
+        }
       }
     },
     {
@@ -54,7 +64,10 @@
       "data": {
         "atomicId": "StructuralTemplateAnalyzer",
         "label": "Extract Templates",
-        "params": {"min_count": 3, "max_template_length": 5}
+        "params": {
+          "min_count": 3,
+          "max_template_length": 5
+        }
       }
     },
     {
@@ -63,7 +76,10 @@
       "data": {
         "atomicId": "FreqCounter",
         "label": "Sign Frequency",
-        "params": {"min_count": 1, "top_n": 20}
+        "params": {
+          "min_count": 1,
+          "top_n": 20
+        }
       }
     },
     {
@@ -99,26 +115,125 @@
       "data": {
         "atomicId": "JSONExport",
         "label": "Export Template Readings",
-        "params": {"filename": "phase9_template_readings.json"}
+        "params": {
+          "filename": "phase9_template_readings.json"
+        }
       }
     }
   ],
   "edges": [
-    {"id": "e1",  "source": "n1",  "sourcePort": "sequences",          "target": "n3",  "targetPort": "sequences"},
-    {"id": "e2",  "source": "n1",  "sourcePort": "sequences",          "target": "n4",  "targetPort": "sequences"},
-    {"id": "e3",  "source": "n1",  "sourcePort": "sequences",          "target": "n5",  "targetPort": "sequences"},
-    {"id": "e4",  "source": "n1",  "sourcePort": "sequences",          "target": "n7a", "targetPort": "sequences"},
-    {"id": "e5",  "source": "n7a", "sourcePort": "freq_map",           "target": "n7b", "targetPort": "freq_map"},
-    {"id": "e6",  "source": "n7a", "sourcePort": "distinct_symbols",   "target": "n7",  "targetPort": "distinct_symbols"},
-    {"id": "e7",  "source": "n7b", "sourcePort": "h1",                 "target": "n7",  "targetPort": "h1"},
-    {"id": "e8",  "source": "n2",  "sourcePort": "lm",                 "target": "n4",  "targetPort": "lm"},
-    {"id": "e9",  "source": "n3",  "sourcePort": "profiles",           "target": "n4",  "targetPort": "profiles"},
-    {"id": "e10", "source": "n5",  "sourcePort": "cluster_sequences",  "target": "n6",  "targetPort": "cluster_sequences"},
-    {"id": "e11", "source": "n4",  "sourcePort": "sign_roles",         "target": "n8",  "targetPort": "a"},
-    {"id": "e12", "source": "n4",  "sourcePort": "phoneme_candidates", "target": "n8",  "targetPort": "b"},
-    {"id": "e13", "source": "n6",  "sourcePort": "recurrent_templates","target": "n8",  "targetPort": "c"},
-    {"id": "e14", "source": "n6",  "sourcePort": "slot_occupancy",     "target": "n8",  "targetPort": "d"},
-    {"id": "e15", "source": "n7",  "sourcePort": "tier_classification","target": "n8",  "targetPort": "e"},
-    {"id": "e16", "source": "n8",  "sourcePort": "json",               "target": "n9",  "targetPort": "data"}
-  ]
+    {
+      "id": "e1",
+      "source": "n1",
+      "sourcePort": "sequences",
+      "target": "n3",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "n1",
+      "sourcePort": "sequences",
+      "target": "n4",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "n1",
+      "sourcePort": "sequences",
+      "target": "n5",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e4",
+      "source": "n1",
+      "sourcePort": "sequences",
+      "target": "n7a",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e5",
+      "source": "n7a",
+      "sourcePort": "freq_map",
+      "target": "n7b",
+      "targetPort": "freq_map"
+    },
+    {
+      "id": "e6",
+      "source": "n7a",
+      "sourcePort": "distinct_symbols",
+      "target": "n7",
+      "targetPort": "distinct_symbols"
+    },
+    {
+      "id": "e7",
+      "source": "n7b",
+      "sourcePort": "h1",
+      "target": "n7",
+      "targetPort": "h1"
+    },
+    {
+      "id": "e8",
+      "source": "n2",
+      "sourcePort": "lm",
+      "target": "n4",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e9",
+      "source": "n3",
+      "sourcePort": "profiles",
+      "target": "n4",
+      "targetPort": "profiles"
+    },
+    {
+      "id": "e10",
+      "source": "n5",
+      "sourcePort": "cluster_sequences",
+      "target": "n6",
+      "targetPort": "cluster_sequences"
+    },
+    {
+      "id": "e11",
+      "source": "n4",
+      "sourcePort": "sign_roles",
+      "target": "n8",
+      "targetPort": "a"
+    },
+    {
+      "id": "e12",
+      "source": "n4",
+      "sourcePort": "phoneme_candidates",
+      "target": "n8",
+      "targetPort": "b"
+    },
+    {
+      "id": "e13",
+      "source": "n6",
+      "sourcePort": "recurrent_templates",
+      "target": "n8",
+      "targetPort": "c"
+    },
+    {
+      "id": "e14",
+      "source": "n6",
+      "sourcePort": "slot_occupancy",
+      "target": "n8",
+      "targetPort": "d"
+    },
+    {
+      "id": "e15",
+      "source": "n7",
+      "sourcePort": "tier_classification",
+      "target": "n8",
+      "targetPort": "e"
+    },
+    {
+      "id": "e16",
+      "source": "n8",
+      "sourcePort": "json",
+      "target": "n9",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

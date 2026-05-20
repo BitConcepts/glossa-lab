@@ -4,13 +4,72 @@
   "description": "Phase-27 #4: phoneme-VALUE permutation null with Dravidian compound plausibility.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "load",  "type": "expNode", "data": { "atomicId": "Phase27CorpusLoader", "label": "Load",   "params": {} },                              "position": { "x": 60, "y": 100 } },
-    { "id": "dec",   "type": "expNode", "data": { "atomicId": "BayesianDecoderV2",   "label": "v2 decoder","params": { "n_permutations": 1000, "seed": 2727 } }, "position": { "x": 360, "y": 100 } },
-    { "id": "out",   "type": "expNode", "data": { "atomicId": "JSONExport",          "label": "Save",   "params": { "filename": "phase27b_bayesian_v2.json" } }, "position": { "x": 660, "y": 100 } }
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Phase27CorpusLoader",
+        "label": "Load",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "dec",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BayesianDecoderV2",
+        "label": "v2 decoder",
+        "params": {
+          "n_permutations": 1000,
+          "seed": 2727
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save",
+        "params": {
+          "filename": "phase27b_bayesian_v2.json"
+        }
+      },
+      "position": {
+        "x": 660,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e1", "source": "load", "target": "dec", "sourcePort": "inscribed_seals", "targetPort": "inscribed_seals" },
-    { "id": "e2", "source": "load", "target": "dec", "sourcePort": "phoneme_map",     "targetPort": "phoneme_map" },
-    { "id": "e3", "source": "dec",  "target": "out", "targetPort": "data" }
-  ]
+    {
+      "id": "e1",
+      "source": "load",
+      "target": "dec",
+      "sourcePort": "inscribed_seals",
+      "targetPort": "inscribed_seals"
+    },
+    {
+      "id": "e2",
+      "source": "load",
+      "target": "dec",
+      "sourcePort": "phoneme_map",
+      "targetPort": "phoneme_map"
+    },
+    {
+      "id": "e3",
+      "source": "dec",
+      "target": "out",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

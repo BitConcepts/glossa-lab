@@ -3,16 +3,103 @@
   "name": "Indus: CAS Bigram Phoneme Projection — P122→P385 Genitive Reading",
   "description": "Uses CPSC CASProjector with the indus_bigram_phoneme CAS model to project optimal phoneme ranks for the dominant CISI bigram P122→P385 (n=29, 83% of P385 occurrences). DoF values represent the normalized Dravidian phoneme frequency ranks: p122_rank=0.82 (high-frequency medial phoneme like 'a'/'ka'), p385_rank=0.88 (high-frequency terminal phoneme like genitive -n/in). The CPSC IterativeEngine projects these onto the Dravidian morphological constraint manifold and reports the combined_confidence score. If combined_confidence >= 0.70, the P122→P385 = STEM+genitive reading is linguistically confirmed by the constraint system.",
   "nodes": [
-    {"id": "model",     "type": "expNode", "data": {"atomicId": "CASModelLoader", "label": "Bigram Phoneme Model",               "params": {"builtin": "indus_bigram_phoneme"}},                                           "position": {"x": 60,  "y": 200}},
-    {"id": "proj",      "type": "expNode", "data": {"atomicId": "CASProjector",   "label": "CPSC Projection (p122=0.82, p385=0.88)", "params": {"engine": "iterative", "max_iterations": 300, "dof_values": "[0.82, 0.88]"}}, "position": {"x": 420, "y": 200}},
-    {"id": "merge",     "type": "expNode", "data": {"atomicId": "Merger",          "label": "Merge Projection State",              "params": {}},                                                                           "position": {"x": 760, "y": 200}},
-    {"id": "out",       "type": "expNode", "data": {"atomicId": "JSONExport",      "label": "Save Bigram Phoneme Results",         "params": {"filename": "indus_cas_bigram_phoneme.json"}},                               "position": {"x": 1060, "y": 200}}
+    {
+      "id": "model",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CASModelLoader",
+        "label": "Bigram Phoneme Model",
+        "params": {
+          "builtin": "indus_bigram_phoneme"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 200
+      }
+    },
+    {
+      "id": "proj",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CASProjector",
+        "label": "CPSC Projection (p122=0.82, p385=0.88)",
+        "params": {
+          "engine": "iterative",
+          "max_iterations": 300,
+          "dof_values": "[0.82, 0.88]"
+        }
+      },
+      "position": {
+        "x": 420,
+        "y": 200
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge Projection State",
+        "params": {}
+      },
+      "position": {
+        "x": 760,
+        "y": 200
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Bigram Phoneme Results",
+        "params": {
+          "filename": "indus_cas_bigram_phoneme.json"
+        }
+      },
+      "position": {
+        "x": 1060,
+        "y": 200
+      }
+    }
   ],
   "edges": [
-    {"id": "e1", "source": "model", "target": "proj",  "sourcePort": "model",          "targetPort": "model"},
-    {"id": "e2", "source": "proj",  "target": "merge",  "sourcePort": "state",         "targetPort": "a"},
-    {"id": "e3", "source": "proj",  "target": "merge",  "sourcePort": "success",       "targetPort": "b"},
-    {"id": "e4", "source": "proj",  "target": "merge",  "sourcePort": "max_violation", "targetPort": "c"},
-    {"id": "e5", "source": "merge", "target": "out",    "sourcePort": "json",          "targetPort": "data"}
-  ]
+    {
+      "id": "e1",
+      "source": "model",
+      "target": "proj",
+      "sourcePort": "model",
+      "targetPort": "model"
+    },
+    {
+      "id": "e2",
+      "source": "proj",
+      "target": "merge",
+      "sourcePort": "state",
+      "targetPort": "a"
+    },
+    {
+      "id": "e3",
+      "source": "proj",
+      "target": "merge",
+      "sourcePort": "success",
+      "targetPort": "b"
+    },
+    {
+      "id": "e4",
+      "source": "proj",
+      "target": "merge",
+      "sourcePort": "max_violation",
+      "targetPort": "c"
+    },
+    {
+      "id": "e5",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

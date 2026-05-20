@@ -132,5 +132,6 @@
       "sourcePort": "all_ranked",
       "targetPort": "data"
     }
-  ]
+  ],
+  "graph_type": "experiment"
 }

@@ -1,13 +1,50 @@
 {
   "id": "indus_phase16_measure_signature_dofs",
-  "name": "Indus Phase-16 \u2014 measure signature DoFs (legacy migration)",
+  "name": "Indus Phase-16 — measure signature DoFs (legacy migration)",
   "description": "Retroactive migration of scripts/phase16/measure_signature_dofs.py into a one-node graph experiment so it appears in the Jobs panel and re-runs through the standard executor (per WARP.md rule G1). Measures the 8 free DoFs (zipf alpha/r2, MI gamma/r2, epistatic 2nd/3rd norm, h1 norm/nats) on the Phase-15 measured-corpora set and writes backend/glossa_lab/data/phase16_corpora/phase16_measured_dofs.json.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "run", "type": "expNode", "data": { "atomicId": "LegacyPhaseScriptRunner", "label": "Run Phase-16 measure_signature_dofs", "params": { "script_path": "scripts/phase16/measure_signature_dofs.py", "output_path": "backend/glossa_lab/data/phase16_corpora/phase16_measured_dofs.json", "timeout_s": 1800 } }, "position": { "x": 60, "y": 100 } },
-    { "id": "out", "type": "expNode", "data": { "atomicId": "JSONExport",            "label": "Save run summary", "params": { "filename": "phase16_measure_signature_dofs.json" } }, "position": { "x": 360, "y": 100 } }
+    {
+      "id": "run",
+      "type": "expNode",
+      "data": {
+        "atomicId": "LegacyPhaseScriptRunner",
+        "label": "Run Phase-16 measure_signature_dofs",
+        "params": {
+          "script_path": "scripts/phase16/measure_signature_dofs.py",
+          "output_path": "backend/glossa_lab/data/phase16_corpora/phase16_measured_dofs.json",
+          "timeout_s": 1800
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save run summary",
+        "params": {
+          "filename": "phase16_measure_signature_dofs.json"
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e_run_out", "source": "run", "target": "out", "sourcePort": "verdict", "targetPort": "data" }
-  ]
+    {
+      "id": "e_run_out",
+      "source": "run",
+      "target": "out",
+      "sourcePort": "verdict",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

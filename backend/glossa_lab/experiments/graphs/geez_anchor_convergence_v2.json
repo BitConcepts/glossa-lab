@@ -9,9 +9,14 @@
       "data": {
         "atomicId": "BuiltinCorpus",
         "label": "Geez Genesis (clean, no punct)",
-        "params": { "corpus": "geez_clean" }
+        "params": {
+          "corpus": "geez_clean"
+        }
       },
-      "position": { "x": 60, "y": 240 }
+      "position": {
+        "x": 60,
+        "y": 240
+      }
     },
     {
       "id": "split",
@@ -19,9 +24,14 @@
       "data": {
         "atomicId": "CorpusSplitter",
         "label": "75/25 Split",
-        "params": { "train_ratio": 0.75 }
+        "params": {
+          "train_ratio": 0.75
+        }
       },
-      "position": { "x": 300, "y": 240 }
+      "position": {
+        "x": 300,
+        "y": 240
+      }
     },
     {
       "id": "lm",
@@ -31,7 +41,10 @@
         "label": "Syllabic LM (train)",
         "params": {}
       },
-      "position": { "x": 560, "y": 100 }
+      "position": {
+        "x": 560,
+        "y": 100
+      }
     },
     {
       "id": "cipher",
@@ -39,9 +52,15 @@
       "data": {
         "atomicId": "CipherConstructor",
         "label": "Random Cipher",
-        "params": { "cipher_seed": 42, "max_tokens": 15000 }
+        "params": {
+          "cipher_seed": 42,
+          "max_tokens": 15000
+        }
       },
-      "position": { "x": 560, "y": 380 }
+      "position": {
+        "x": 560,
+        "y": 380
+      }
     },
     {
       "id": "benchmark",
@@ -50,7 +69,12 @@
         "atomicId": "AnchorConvergenceBenchmark",
         "label": "Anchor Sweep (freq + word-final)",
         "params": {
-          "anchor_counts": [0, 3, 10, 20],
+          "anchor_counts": [
+            0,
+            3,
+            10,
+            20
+          ],
           "n_structured": 3,
           "n_random": 5,
           "n_seeds_base": 5,
@@ -61,7 +85,10 @@
           "use_word_final_anchors": true
         }
       },
-      "position": { "x": 820, "y": 240 }
+      "position": {
+        "x": 820,
+        "y": 240
+      }
     },
     {
       "id": "out",
@@ -69,20 +96,80 @@
       "data": {
         "atomicId": "JSONExport",
         "label": "Save Results v2",
-        "params": { "filename": "geez_anchor_convergence_v2.json" }
+        "params": {
+          "filename": "geez_anchor_convergence_v2.json"
+        }
       },
-      "position": { "x": 1080, "y": 240 }
+      "position": {
+        "x": 1080,
+        "y": 240
+      }
     }
   ],
   "edges": [
-    { "id": "e1", "source": "corpus", "target": "split", "sourcePort": "sequences", "targetPort": "sequences" },
-    { "id": "e2", "source": "split", "target": "lm", "sourcePort": "train_sequences", "targetPort": "sequences" },
-    { "id": "e3", "source": "split", "target": "cipher", "sourcePort": "test_sequences", "targetPort": "sequences" },
-    { "id": "e4", "source": "lm", "target": "cipher", "sourcePort": "lm", "targetPort": "lm" },
-    { "id": "e5", "source": "cipher", "target": "benchmark", "sourcePort": "cipher_sequences", "targetPort": "cipher_sequences" },
-    { "id": "e6", "source": "cipher", "target": "benchmark", "sourcePort": "true_mapping", "targetPort": "true_mapping" },
-    { "id": "e7", "source": "cipher", "target": "benchmark", "sourcePort": "sign_inventory", "targetPort": "sign_inventory" },
-    { "id": "e8", "source": "lm", "target": "benchmark", "sourcePort": "lm", "targetPort": "lm" },
-    { "id": "e9", "source": "benchmark", "target": "out", "sourcePort": "summary_table", "targetPort": "data" }
-  ]
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "split",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "split",
+      "target": "lm",
+      "sourcePort": "train_sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "split",
+      "target": "cipher",
+      "sourcePort": "test_sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e4",
+      "source": "lm",
+      "target": "cipher",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e5",
+      "source": "cipher",
+      "target": "benchmark",
+      "sourcePort": "cipher_sequences",
+      "targetPort": "cipher_sequences"
+    },
+    {
+      "id": "e6",
+      "source": "cipher",
+      "target": "benchmark",
+      "sourcePort": "true_mapping",
+      "targetPort": "true_mapping"
+    },
+    {
+      "id": "e7",
+      "source": "cipher",
+      "target": "benchmark",
+      "sourcePort": "sign_inventory",
+      "targetPort": "sign_inventory"
+    },
+    {
+      "id": "e8",
+      "source": "lm",
+      "target": "benchmark",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e9",
+      "source": "benchmark",
+      "target": "out",
+      "sourcePort": "summary_table",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

@@ -1,6 +1,6 @@
 {
   "id": "indus_v3_site_stratified",
-  "name": "Indus V3 \u2014 Site-Stratified Decipherment (Harappa vs Mohenjo-daro)",
+  "name": "Indus V3 — Site-Stratified Decipherment (Harappa vs Mohenjo-daro)",
   "description": "Independent decipherment on Harappa (1718) and Mohenjo-daro (1551) subcorpora. 76% top-50 sign overlap confirms unified script.",
   "nodes": [
     {
@@ -60,5 +60,6 @@
       "sourcePort": "result",
       "targetPort": "data"
     }
-  ]
+  ],
+  "graph_type": "experiment"
 }

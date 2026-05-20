@@ -1,6 +1,6 @@
 {
   "id": "indus_v5_data_corrections",
-  "name": "Indus V5 \u2014 Data Corrections & Corpus Unification",
+  "name": "Indus V5 — Data Corrections & Corpus Unification",
   "description": "Phase 1: Fix Dholavira signboard count (10 signs, not 26), document M-314 (17-sign longest single-face), M-494/495 (26-sign 3-face amulet). Unified corpus: 1,670 seals from 9 sites, 390 signs, 7,002 tokens.",
   "auto_migrated": false,
   "nodes": [
@@ -61,5 +61,6 @@
       "sourcePort": "corpus",
       "targetPort": "data"
     }
-  ]
+  ],
+  "graph_type": "experiment"
 }

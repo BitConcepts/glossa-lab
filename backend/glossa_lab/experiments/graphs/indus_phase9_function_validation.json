@@ -9,7 +9,9 @@
       "data": {
         "atomicId": "BuiltinCorpus",
         "label": "CISI Inscription Corpus",
-        "params": {"corpus": "indus_cisi"}
+        "params": {
+          "corpus": "indus_cisi"
+        }
       }
     },
     {
@@ -18,7 +20,9 @@
       "data": {
         "atomicId": "PositionalProfiler",
         "label": "Positional Profiler (NWSP)",
-        "params": {"min_count": 3}
+        "params": {
+          "min_count": 3
+        }
       }
     },
     {
@@ -36,7 +40,10 @@
       "data": {
         "atomicId": "CanonicalSignLoader",
         "label": "Canonical Registry (ICIT functions)",
-        "params": {"in_corpus_only": true, "numbering_system": "parpola_1982"}
+        "params": {
+          "in_corpus_only": true,
+          "numbering_system": "parpola_1982"
+        }
       }
     },
     {
@@ -45,7 +52,11 @@
       "data": {
         "atomicId": "CASIndusEngine",
         "label": "CAS Indus Role Classifier",
-        "params": {"terminal_threshold": 0.55, "initial_threshold": 0.45, "engine": "iterative"}
+        "params": {
+          "terminal_threshold": 0.55,
+          "initial_threshold": 0.45,
+          "engine": "iterative"
+        }
       }
     },
     {
@@ -63,19 +74,76 @@
       "data": {
         "atomicId": "JSONExport",
         "label": "Export Function Validation",
-        "params": {"filename": "phase9_function_validation.json"}
+        "params": {
+          "filename": "phase9_function_validation.json"
+        }
       }
     }
   ],
   "edges": [
-    {"id": "e1", "source": "n1", "sourcePort": "sequences", "target": "n2", "targetPort": "sequences"},
-    {"id": "e2", "source": "n1", "sourcePort": "sequences", "target": "n3", "targetPort": "sequences"},
-    {"id": "e3", "source": "n1", "sourcePort": "sequences", "target": "n5", "targetPort": "sequences"},
-    {"id": "e4", "source": "n2", "sourcePort": "profiles", "target": "n5", "targetPort": "profiles"},
-    {"id": "e5", "source": "n2", "sourcePort": "class_summary", "target": "n6", "targetPort": "a"},
-    {"id": "e6", "source": "n3", "sourcePort": "sign_to_cluster", "target": "n6", "targetPort": "b"},
-    {"id": "e7", "source": "n4", "sourcePort": "registry", "target": "n6", "targetPort": "c"},
-    {"id": "e8", "source": "n5", "sourcePort": "sign_roles", "target": "n6", "targetPort": "d"},
-    {"id": "e9", "source": "n6", "sourcePort": "json", "target": "n7", "targetPort": "data"}
-  ]
+    {
+      "id": "e1",
+      "source": "n1",
+      "sourcePort": "sequences",
+      "target": "n2",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "n1",
+      "sourcePort": "sequences",
+      "target": "n3",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "n1",
+      "sourcePort": "sequences",
+      "target": "n5",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e4",
+      "source": "n2",
+      "sourcePort": "profiles",
+      "target": "n5",
+      "targetPort": "profiles"
+    },
+    {
+      "id": "e5",
+      "source": "n2",
+      "sourcePort": "class_summary",
+      "target": "n6",
+      "targetPort": "a"
+    },
+    {
+      "id": "e6",
+      "source": "n3",
+      "sourcePort": "sign_to_cluster",
+      "target": "n6",
+      "targetPort": "b"
+    },
+    {
+      "id": "e7",
+      "source": "n4",
+      "sourcePort": "registry",
+      "target": "n6",
+      "targetPort": "c"
+    },
+    {
+      "id": "e8",
+      "source": "n5",
+      "sourcePort": "sign_roles",
+      "target": "n6",
+      "targetPort": "d"
+    },
+    {
+      "id": "e9",
+      "source": "n6",
+      "sourcePort": "json",
+      "target": "n7",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

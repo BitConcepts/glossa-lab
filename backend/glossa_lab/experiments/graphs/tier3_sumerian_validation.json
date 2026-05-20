@@ -191,5 +191,6 @@
       "sourcePort": "json",
       "targetPort": "data"
     }
-  ]
+  ],
+  "graph_type": "experiment"
 }

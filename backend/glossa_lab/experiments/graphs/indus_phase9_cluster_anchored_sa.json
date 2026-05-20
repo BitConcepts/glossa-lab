@@ -1,7 +1,7 @@
 {
   "id": "indus_phase9_cluster_anchored_sa",
   "name": "Phase 9: Cluster-Class Anchored SA (Dravidian)",
-  "description": "Tests Hypothesis H6: that anchoring structural CLUSTERS to phoneme classes (not individual signs) produces more stable SA decipherment. The DB 6-anchor set maps: P385\u2192n (TERMINAL suffix), P324\u2192k (INITIAL title), P122\u2192a (MEDIAL vowel), P086\u2192m, P060\u2192i, P332\u2192o. SA is run against the Dravidian LM on real CISI multi-sign inscription data. Consistency and HCI metrics measure how well Dravidian phonotactics fit the cluster-constrained search space. Compare: South Dravidian vs Pali vs Sanskrit under the same cluster anchoring.",
+  "description": "Tests Hypothesis H6: that anchoring structural CLUSTERS to phoneme classes (not individual signs) produces more stable SA decipherment. The DB 6-anchor set maps: P385→n (TERMINAL suffix), P324→k (INITIAL title), P122→a (MEDIAL vowel), P086→m, P060→i, P332→o. SA is run against the Dravidian LM on real CISI multi-sign inscription data. Consistency and HCI metrics measure how well Dravidian phonotactics fit the cluster-constrained search space. Compare: South Dravidian vs Pali vs Sanskrit under the same cluster anchoring.",
   "nodes": [
     {
       "id": "n1",
@@ -199,5 +199,6 @@
       "sourcePort": "json",
       "targetPort": "data"
     }
-  ]
+  ],
+  "graph_type": "experiment"
 }

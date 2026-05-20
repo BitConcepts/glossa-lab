@@ -4,13 +4,69 @@
   "description": "Phase-27 #3: score 12 iconographic anchors (Parpola 2010 figs 5/6/7/9/14/17/19/20) against the phoneme map.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "load",  "type": "expNode", "data": { "atomicId": "Phase27CorpusLoader",      "label": "Load",   "params": {} },                                    "position": { "x": 60, "y": 100 } },
-    { "id": "ic",    "type": "expNode", "data": { "atomicId": "IconographicAnchorScore", "label": "Anchors","params": {} },                                    "position": { "x": 360, "y": 100 } },
-    { "id": "out",   "type": "expNode", "data": { "atomicId": "JSONExport",               "label": "Save",   "params": { "filename": "phase27c_iconographic_anchors.json" } }, "position": { "x": 660, "y": 100 } }
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Phase27CorpusLoader",
+        "label": "Load",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "ic",
+      "type": "expNode",
+      "data": {
+        "atomicId": "IconographicAnchorScore",
+        "label": "Anchors",
+        "params": {}
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save",
+        "params": {
+          "filename": "phase27c_iconographic_anchors.json"
+        }
+      },
+      "position": {
+        "x": 660,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e1", "source": "load", "target": "ic", "sourcePort": "iconographic_anchors", "targetPort": "iconographic_anchors" },
-    { "id": "e2", "source": "load", "target": "ic", "sourcePort": "phoneme_map",          "targetPort": "phoneme_map" },
-    { "id": "e3", "source": "ic",   "target": "out", "targetPort": "data" }
-  ]
+    {
+      "id": "e1",
+      "source": "load",
+      "target": "ic",
+      "sourcePort": "iconographic_anchors",
+      "targetPort": "iconographic_anchors"
+    },
+    {
+      "id": "e2",
+      "source": "load",
+      "target": "ic",
+      "sourcePort": "phoneme_map",
+      "targetPort": "phoneme_map"
+    },
+    {
+      "id": "e3",
+      "source": "ic",
+      "target": "out",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

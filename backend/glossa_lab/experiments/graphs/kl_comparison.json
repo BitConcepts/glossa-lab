@@ -123,5 +123,6 @@
       "sourcePort": "kl_divergence",
       "targetPort": "data"
     }
-  ]
+  ],
+  "graph_type": "experiment"
 }

@@ -1,7 +1,7 @@
 {
   "id": "indus_v5_spectral_grid",
-  "name": "Indus V5 \u2014 Spectral Syllabic Grid",
-  "description": "Spectral clustering (normalized Laplacian) on co-substitution matrix of 151 frequent signs from 1,670 Holdat corpus seals. Tests for consonant\u00d7vowel grid structure. Result: 10 clusters with positional specialization (Initial/Medial/Terminal) rather than C\u00d7V.",
+  "name": "Indus V5 — Spectral Syllabic Grid",
+  "description": "Spectral clustering (normalized Laplacian) on co-substitution matrix of 151 frequent signs from 1,670 Holdat corpus seals. Tests for consonant×vowel grid structure. Result: 10 clusters with positional specialization (Initial/Medial/Terminal) rather than C×V.",
   "auto_migrated": false,
   "nodes": [
     {
@@ -92,5 +92,6 @@
       "sourcePort": "grid",
       "targetPort": "data"
     }
-  ]
+  ],
+  "graph_type": "experiment"
 }

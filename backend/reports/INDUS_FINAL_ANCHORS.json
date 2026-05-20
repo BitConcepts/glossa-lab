@@ -1,5 +1,5 @@
 {
-  "total": 157,
+  "total": 161,
   "anchors": {
     "M342": {
       "reading": "ay/ā",
@@ -2583,10 +2583,9 @@
     "glossa_lab_version": "2026-05-11"
   },
   "by_confidence": {
-    "HIGH": 7,
-    "UNCERTAIN": 1,
-    "MEDIUM": 54,
-    "LOW": 75
+    "HIGH": 75,
+    "MEDIUM": 86,
+    "LOW": 236
   },
   "_cleanup_note": "2026-05-17: Removed 196 nīr/INIT/TERM/MED placeholder entries from V8-V24 autonomous loops. Retained 137 real anchors.",
   "metadata": {
@@ -2597,13 +2596,14 @@
   },
   "total_all_entries": 397,
   "n_high": 75,
-  "n_medium": 168,
-  "n_low": 154,
+  "n_medium": 86,
+  "n_low": 236,
   "corpus_signs": 390,
   "corpus_tokens": 7002,
   "corpus_token_coverage": 0.9075,
   "_note": "total = H+M confirmed anchors. total_all_entries includes LOW allographs/grammar inferences. DO NOT use total/corpus_signs for % coverage — use corpus_token_coverage instead.",
   "_phase128_129_note": "Phase-128: M374=kul (MEDIUM, substrate Munda/DEDR 1709), M351=vī (MEDIUM, substrate Munda/DEDR 5388). Phase-129: M072=mā (MEDIUM, INITIAL position/DEDR 4751), M149=or (MEDIUM, MEDIAL/DEDR 987), M185=pul (MEDIUM, MEDIAL/DEDR 4336). Remaining 20 of 25 unresolved signs stay LOW — insufficient DEDR+positional evidence for promotion.",
   "_phase132_note": "Phase-132 validation: 114 Phase-111 kur-allograph MEDIUM signs downgraded to LOW. These were positional parking spots (all-MEDIAL L1=0), not genuine phonetic readings. New H+M=157, coverage=0.9075. Genuine phonetically-anchored coverage (H+M, non-parking) = 90.75%.",
-  "_phase133_note": "Phase-133 resolutions: V11=RESOLVED (dual-function particles M048/M367/M089 legitimately appear INITIAL); Grammar model=CONFIRMED (45.8% explained variance, 8.4% full relaxed pattern); Kur-parking=NO_NEW_READINGS (corpus too sparse for collocate promotion); Decode audit=UPDATED (1154/1670=69.1% with 157 H+M); V12=RESOLVED (test methodology mismatch; Phase-61 94% = within-reading harmony, correct)."
+  "_phase133_note": "Phase-133 resolutions: V11=RESOLVED (dual-function particles M048/M367/M089 legitimately appear INITIAL); Grammar model=CONFIRMED (45.8% explained variance, 8.4% full relaxed pattern); Kur-parking=NO_NEW_READINGS (corpus too sparse for collocate promotion); Decode audit=UPDATED (1154/1670=69.1% with 157 H+M); V12=RESOLVED (test methodology mismatch; Phase-61 94% = within-reading harmony, correct).",
+  "_phase163_note": "Phase-163 sibilant discovery: 4 MEDIUM upgrades (M165=cul, M330=can, M202=can, M372=can). total updated 157->161."
 }

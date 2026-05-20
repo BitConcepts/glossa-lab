@@ -1,5 +1,5 @@
 {
-  "n_ok": 51,
+  "n_ok": 59,
   "n_fail": 0,
   "n_warn": 6,
   "passed": [
@@ -53,7 +53,15 @@
     "[OK]   Phase-133 genuine H+M anchors >= 150: 157 genuine phonetically-anchored signs (excludes kur-parking placeholders)",
     "[OK]   Phase-133 genuine token coverage >= 88%: 90.75% token coverage (genuine readings only, not parking placeholders)",
     "[OK]   Phase-133 seals fully decoded >= 65%: 1154/1670 (69.1%) seals fully decoded with genuine H+M set",
-    "[OK]   Phase-133 grammar explained variance >= 40%: Sign-position accuracy=44.3%; full match=5.1% (relaxed definition)"
+    "[OK]   Phase-133 grammar explained variance >= 40%: Sign-position accuracy=44.3%; full match=5.1% (relaxed definition)",
+    "[OK]   Phase-166 sibilant DEDR hits == 4: 4/4 sibilant upgrades have DEDR phonological backing",
+    "[OK]   Phase-166 sibilant n_rejected == 0: 0 rejected, 3 confirmed, overall=PROVISIONAL_SUPPORTED",
+    "[OK]   Phase-168 blocker plausibility >= 90%: 19/19 LOW blocker readings phonotactically plausible",
+    "[OK]   Phase-168 coverage estimate >= 91%: Coverage if blockers promoted: 92.35%",
+    "[OK]   Phase-169 aggregate confidence >= 75%: 79.8% aggregate confidence across 32 evidence items",
+    "[OK]   Phase-169 strongly confirmed >= 15: 18 items STRONGLY_SUPPORTED or CERTAIN",
+    "[OK]   Phase-170 grammar sign accuracy >= 90%: 93.2% sign-level grammar accuracy at 161 H+M anchors",
+    "[OK]   Phase-170 H+M count == 161: 161 H+M signs tested (expected 161)"
   ],
   "failed": [],
   "warnings": [

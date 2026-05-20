@@ -58,6 +58,45 @@ Hidden assumptions are not acceptable. Declare all epistemic boundaries in the `
 ### H14 — No direct email
 Agents MUST NOT send, compose, or trigger emails to any external party directly (e.g. via SMTP, API calls, or shell commands). All outbound email MUST be routed exclusively through the glossa-lab backend email system, and only to recipients configured in the project email report settings. This applies to scholar outreach, collaboration messages, and any other external communication. Violation is an immediate stop condition.
 
+### H15 — Graph-first: no new hardcoded experiments
+All new research phase experiments MUST be expressed as `AtomicNodeDef` nodes in a dedicated `experiment_graph_phaseNN_MM.py` module. Agents MUST NOT:
+- Define new `ExperimentBase` subclasses for phase research scripts.
+- Hardcode anchor dicts, report titles, or phase logic inside `experiment_graph.py` directly.
+- Run a phase script before its graph module is created and registered (see H23).
+
+The only valid pattern is: phase script → reads pre-computed JSON report; graph node → loads that report or runs script via `subprocess`. Every phase must be navigable from the Experiment Builder palette. Violation is an immediate stop condition.
+
+### H16 — No hardcoded user data in experiments
+Experiments MUST NOT hardcode corpus data, language model data, anchor sets, or report templates that should be user-configurable. All such data MUST be loaded from the database (via `CorpusLM`, `AnchorSetLoader`, `ReportGenerator`) or from registered JSON files. New experiments that bypass the database for user-owned data violate the H16 user-definable principle and must be refactored before merging.
+
+### H20 — GPU enforcement in phase scripts
+All Indus Decipherment phase scripts that run SA or compute-intensive analysis MUST:
+- Import `torch` and detect `torch.cuda.is_available()`.
+- Expose `gpu_device` in their JSON report output.
+- Use `BigramScorer` from `glossa_lab.pipelines.decipher` for SA (auto-selects CUDA).
+- Print a WARNING (never silently fall back) if GPU is not available.
+
+Foundation Check NEW-G (`GPU CUDA available`) MUST pass. Silent CPU fallback is forbidden.
+
+### H21 — Foundation check gate
+`backend/scripts/foundation_check.py` MUST be run and show `0 failures` after any phase that:
+- Modifies `backend/reports/INDUS_FINAL_ANCHORS.json`
+- Promotes anchor confidence (LOW→MEDIUM or MEDIUM→HIGH)
+- Updates any `dravidian_*.json` language model
+- Adds new `phase*.json` result files to `reports/`
+
+No commit touching anchor or phase data may be pushed with a failing foundation check. This check is the primary regression guard for the decipherment state.
+
+### H23 — Mandatory 5-step experiment gate
+Before running ANY new phase script, the following 5 steps are MANDATORY in order:
+1. **Write the script** (`backend/scripts/phaseNN_name.py`)
+2. **Create the graph module** (`backend/glossa_lab/experiment_graph_phaseNN_MM.py`) with `AtomicNodeDef` nodes
+3. **Register in `experiment_graph.py`** via a `try/except` import block
+4. **Verify registration**: `python -c "from glossa_lab.experiment_graph import ATOMIC_NODES; assert 'NodeID' in ATOMIC_NODES"`
+5. **Run the script**
+
+Skipping steps 2–4 before step 5 is a cardinal H23 violation. Running a script before its graph node exists means the phase is unnavigable in the Experiment Builder and violates R17.
+
 ---
 
 ## Stop Conditions

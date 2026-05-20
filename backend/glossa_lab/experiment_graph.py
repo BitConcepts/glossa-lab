@@ -2645,6 +2645,15 @@ try:
 except Exception as _p156165_exc:  # noqa: BLE001
     logger.warning("Phase-156-165 nodes not registered: %s", _p156165_exc)
 
+# ── Phase-166-168 nodes (sibilant validation, Meluhhan expansion, blocker SA) — FINAL PHASE GROUP
+try:
+    from glossa_lab.experiment_graph_phase166_168 import _phase166_168_node_defs as _p166168_defs  # noqa: PLC0415
+    for _d in _p166168_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-166-168 nodes (final pre-ICIT phase group)", len(_p166168_defs()))
+except Exception as _p166168_exc:  # noqa: BLE001
+    logger.warning("Phase-166-168 nodes not registered: %s", _p166168_exc)
+
 # ── Graph execution
 
 def _topo_sort(nodes: list[dict], edges: list[dict]) -> list[dict]:

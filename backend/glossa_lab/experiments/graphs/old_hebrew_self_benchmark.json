@@ -136,5 +136,6 @@
       "sourcePort": "accuracy",
       "targetPort": "data"
     }
-  ]
+  ],
+  "graph_type": "experiment"
 }

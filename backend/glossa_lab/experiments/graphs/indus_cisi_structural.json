@@ -3,33 +3,260 @@
   "name": "Indus CISI: Structural Analysis on Real Multi-Sign Inscriptions (Parpola)",
   "description": "P1: Full structural atlas of the CISI corpus (179 Mohenjo-daro inscriptions, 1,003 tokens, 182 distinct Parpola signs). Unlike BuiltinCorpus('indus') which returns single-sign sequences, indus_cisi provides real multi-sign inscription sequences enabling meaningful positional profiling (I/M/T rates per sign), bigram statistics, and writing system classification. Source: mayig/indus-valley-script-corpus (MIT, 2024-2025).",
   "nodes": [
-    {"id": "corpus",   "type": "expNode", "data": {"atomicId": "BuiltinCorpus",          "label": "Indus CISI (Parpola, 179 inscriptions)", "params": {"corpus": "indus_cisi"}},  "position": {"x": 60,  "y": 200}},
-    {"id": "freq",     "type": "expNode", "data": {"atomicId": "FreqCounter",             "label": "Sign Frequencies",                       "params": {}},                        "position": {"x": 300, "y": 80}},
-    {"id": "entropy",  "type": "expNode", "data": {"atomicId": "EntropyCalc",             "label": "Entropy H1",                             "params": {}},                        "position": {"x": 520, "y": 80}},
-    {"id": "zipf",     "type": "expNode", "data": {"atomicId": "ZipfFitter",              "label": "Zipf Exponent",                          "params": {}},                        "position": {"x": 300, "y": 200}},
-    {"id": "profiler", "type": "expNode", "data": {"atomicId": "PositionalProfiler",      "label": "I/M/T Profiles (Parpola signs)",          "params": {"min_count": 3}},         "position": {"x": 520, "y": 200}},
-    {"id": "bigrams",  "type": "expNode", "data": {"atomicId": "NgramCounter",            "label": "Bigrams (n=2)",                          "params": {"n": 2}},                  "position": {"x": 300, "y": 340}},
-    {"id": "trigrams", "type": "expNode", "data": {"atomicId": "NgramCounter",            "label": "Trigrams (n=3)",                         "params": {"n": 3}},                  "position": {"x": 520, "y": 340}},
-    {"id": "wsc",      "type": "expNode", "data": {"atomicId": "WritingSystemClassifier", "label": "Writing System Tier",                    "params": {}},                        "position": {"x": 740, "y": 80}},
-    {"id": "merge",    "type": "expNode", "data": {"atomicId": "Merger",                  "label": "Merge CISI Structural Atlas",            "params": {}},                        "position": {"x": 960, "y": 220}},
-    {"id": "out",      "type": "expNode", "data": {"atomicId": "JSONExport",              "label": "Save Results",                           "params": {"filename": "indus_cisi_structural.json"}}, "position": {"x": 1200, "y": 220}}
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "Indus CISI (Parpola, 179 inscriptions)",
+        "params": {
+          "corpus": "indus_cisi"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 200
+      }
+    },
+    {
+      "id": "freq",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FreqCounter",
+        "label": "Sign Frequencies",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
+        "y": 80
+      }
+    },
+    {
+      "id": "entropy",
+      "type": "expNode",
+      "data": {
+        "atomicId": "EntropyCalc",
+        "label": "Entropy H1",
+        "params": {}
+      },
+      "position": {
+        "x": 520,
+        "y": 80
+      }
+    },
+    {
+      "id": "zipf",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ZipfFitter",
+        "label": "Zipf Exponent",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
+        "y": 200
+      }
+    },
+    {
+      "id": "profiler",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PositionalProfiler",
+        "label": "I/M/T Profiles (Parpola signs)",
+        "params": {
+          "min_count": 3
+        }
+      },
+      "position": {
+        "x": 520,
+        "y": 200
+      }
+    },
+    {
+      "id": "bigrams",
+      "type": "expNode",
+      "data": {
+        "atomicId": "NgramCounter",
+        "label": "Bigrams (n=2)",
+        "params": {
+          "n": 2
+        }
+      },
+      "position": {
+        "x": 300,
+        "y": 340
+      }
+    },
+    {
+      "id": "trigrams",
+      "type": "expNode",
+      "data": {
+        "atomicId": "NgramCounter",
+        "label": "Trigrams (n=3)",
+        "params": {
+          "n": 3
+        }
+      },
+      "position": {
+        "x": 520,
+        "y": 340
+      }
+    },
+    {
+      "id": "wsc",
+      "type": "expNode",
+      "data": {
+        "atomicId": "WritingSystemClassifier",
+        "label": "Writing System Tier",
+        "params": {}
+      },
+      "position": {
+        "x": 740,
+        "y": 80
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge CISI Structural Atlas",
+        "params": {}
+      },
+      "position": {
+        "x": 960,
+        "y": 220
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Results",
+        "params": {
+          "filename": "indus_cisi_structural.json"
+        }
+      },
+      "position": {
+        "x": 1200,
+        "y": 220
+      }
+    }
   ],
   "edges": [
-    {"id": "e1",  "source": "corpus",   "target": "freq",     "sourcePort": "sequences",          "targetPort": "sequences"},
-    {"id": "e2",  "source": "corpus",   "target": "zipf",     "sourcePort": "sequences",          "targetPort": "sequences"},
-    {"id": "e3",  "source": "corpus",   "target": "profiler", "sourcePort": "sequences",          "targetPort": "sequences"},
-    {"id": "e4",  "source": "corpus",   "target": "bigrams",  "sourcePort": "sequences",          "targetPort": "sequences"},
-    {"id": "e5",  "source": "corpus",   "target": "trigrams", "sourcePort": "sequences",          "targetPort": "sequences"},
-    {"id": "e6",  "source": "freq",     "target": "entropy",  "sourcePort": "freq_map",           "targetPort": "freq_map"},
-    {"id": "e7",  "source": "freq",     "target": "zipf",     "sourcePort": "freq_map",           "targetPort": "freq_map"},
-    {"id": "e8",  "source": "freq",     "target": "wsc",      "sourcePort": "distinct_symbols",   "targetPort": "distinct_symbols"},
-    {"id": "e9",  "source": "entropy",  "target": "wsc",      "sourcePort": "h1",                 "targetPort": "h1"},
-    {"id": "e10", "source": "freq",     "target": "merge",    "sourcePort": "top_10",             "targetPort": "a"},
-    {"id": "e11", "source": "profiler", "target": "merge",    "sourcePort": "class_summary",      "targetPort": "b"},
-    {"id": "e12", "source": "bigrams",  "target": "merge",    "sourcePort": "top_10",             "targetPort": "c"},
-    {"id": "e13", "source": "trigrams", "target": "merge",    "sourcePort": "top_10",             "targetPort": "d"},
-    {"id": "e14", "source": "wsc",      "target": "merge",    "sourcePort": "tier_classification","targetPort": "e"},
-    {"id": "e15", "source": "zipf",     "target": "merge",    "sourcePort": "zipf_exponent",      "targetPort": "f"},
-    {"id": "e16", "source": "merge",    "target": "out",      "sourcePort": "json",               "targetPort": "data"}
-  ]
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "freq",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "corpus",
+      "target": "zipf",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "corpus",
+      "target": "profiler",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e4",
+      "source": "corpus",
+      "target": "bigrams",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e5",
+      "source": "corpus",
+      "target": "trigrams",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e6",
+      "source": "freq",
+      "target": "entropy",
+      "sourcePort": "freq_map",
+      "targetPort": "freq_map"
+    },
+    {
+      "id": "e7",
+      "source": "freq",
+      "target": "zipf",
+      "sourcePort": "freq_map",
+      "targetPort": "freq_map"
+    },
+    {
+      "id": "e8",
+      "source": "freq",
+      "target": "wsc",
+      "sourcePort": "distinct_symbols",
+      "targetPort": "distinct_symbols"
+    },
+    {
+      "id": "e9",
+      "source": "entropy",
+      "target": "wsc",
+      "sourcePort": "h1",
+      "targetPort": "h1"
+    },
+    {
+      "id": "e10",
+      "source": "freq",
+      "target": "merge",
+      "sourcePort": "top_10",
+      "targetPort": "a"
+    },
+    {
+      "id": "e11",
+      "source": "profiler",
+      "target": "merge",
+      "sourcePort": "class_summary",
+      "targetPort": "b"
+    },
+    {
+      "id": "e12",
+      "source": "bigrams",
+      "target": "merge",
+      "sourcePort": "top_10",
+      "targetPort": "c"
+    },
+    {
+      "id": "e13",
+      "source": "trigrams",
+      "target": "merge",
+      "sourcePort": "top_10",
+      "targetPort": "d"
+    },
+    {
+      "id": "e14",
+      "source": "wsc",
+      "target": "merge",
+      "sourcePort": "tier_classification",
+      "targetPort": "e"
+    },
+    {
+      "id": "e15",
+      "source": "zipf",
+      "target": "merge",
+      "sourcePort": "zipf_exponent",
+      "targetPort": "f"
+    },
+    {
+      "id": "e16",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

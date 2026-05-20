@@ -1,6 +1,6 @@
 {
   "id": "indus_v3_numeral_id",
-  "name": "Indus V3 \u2014 Numeral Sign Identification",
+  "name": "Indus V3 — Numeral Sign Identification",
   "description": "Identify numeral signs from repetitive stroke patterns. 164 (3.7%) purely numerical inscriptions separated. Signs 32,240,34,4,60,100,140 = 1-7.",
   "nodes": [
     {
@@ -60,5 +60,6 @@
       "sourcePort": "result",
       "targetPort": "data"
     }
-  ]
+  ],
+  "graph_type": "experiment"
 }

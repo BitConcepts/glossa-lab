@@ -1,7 +1,7 @@
 {
   "id": "indus_v3_bayesian_mcmc",
-  "name": "Indus V3 \u2014 Bayesian MCMC Decoder with PDR Bigram LM",
-  "description": "MCMC Metropolis-Hastings decoder optimizing sign\u2192phoneme assignments against 1365-root Proto-Dravidian bigram language model. 2000 iterations.",
+  "name": "Indus V3 — Bayesian MCMC Decoder with PDR Bigram LM",
+  "description": "MCMC Metropolis-Hastings decoder optimizing sign→phoneme assignments against 1365-root Proto-Dravidian bigram language model. 2000 iterations.",
   "nodes": [
     {
       "id": "corpus",
@@ -77,5 +77,6 @@
       "sourcePort": "result",
       "targetPort": "data"
     }
-  ]
+  ],
+  "graph_type": "experiment"
 }

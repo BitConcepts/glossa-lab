@@ -4,14 +4,76 @@
   "description": "Phase-26 #1+#6: report CISI Vol 3 Part 3 site-prefix find-spot map (24 contact-zone sites + 7 core-Indus sites) and identify which Phase-22 inscribed seals can be assigned a site via prefix matching.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "load",  "type": "expNode", "data": { "atomicId": "Phase26CorpusLoader",   "label": "Load Phase-26 corpus", "params": {} },                                            "position": { "x": 60,   "y": 100 } },
-    { "id": "rep",   "type": "expNode", "data": { "atomicId": "CISIFindspotReporter", "label": "CISI find-spot",        "params": {} },                                            "position": { "x": 360,  "y": 100 } },
-    { "id": "out",   "type": "expNode", "data": { "atomicId": "JSONExport",            "label": "Save results",         "params": { "filename": "phase26d_cisi_findspot.json" } }, "position": { "x": 660, "y": 100 } }
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Phase26CorpusLoader",
+        "label": "Load Phase-26 corpus",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "rep",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CISIFindspotReporter",
+        "label": "CISI find-spot",
+        "params": {}
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save results",
+        "params": {
+          "filename": "phase26d_cisi_findspot.json"
+        }
+      },
+      "position": {
+        "x": 660,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e_load_rep_fm",  "source": "load", "target": "rep", "sourcePort": "findspot_map",          "targetPort": "findspot_map" },
-    { "id": "e_load_rep_cz",  "source": "load", "target": "rep", "sourcePort": "contact_zone_prefixes", "targetPort": "contact_zone_prefixes" },
-    { "id": "e_load_rep_is",  "source": "load", "target": "rep", "sourcePort": "inscribed_seals",       "targetPort": "inscribed_seals" },
-    { "id": "e_rep_out",      "source": "rep",  "target": "out", "targetPort": "data" }
-  ]
+    {
+      "id": "e_load_rep_fm",
+      "source": "load",
+      "target": "rep",
+      "sourcePort": "findspot_map",
+      "targetPort": "findspot_map"
+    },
+    {
+      "id": "e_load_rep_cz",
+      "source": "load",
+      "target": "rep",
+      "sourcePort": "contact_zone_prefixes",
+      "targetPort": "contact_zone_prefixes"
+    },
+    {
+      "id": "e_load_rep_is",
+      "source": "load",
+      "target": "rep",
+      "sourcePort": "inscribed_seals",
+      "targetPort": "inscribed_seals"
+    },
+    {
+      "id": "e_rep_out",
+      "source": "rep",
+      "target": "out",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

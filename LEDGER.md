@@ -956,3 +956,23 @@ None — no new sign assignments. Results reinforce existing M047=min/mīn (MEDI
 - **Type**: migration
 - **Status**: complete
 - **Chain hash**: `78fa487f3eef016d...`
+
+## 2026-05-20T10:53 — governance migration: 0.11.3 → 0.11.5
+- **Author**: specsmith
+- **Type**: migration
+- **Status**: complete
+- **Chain hash**: `3864f5e82369827f...`
+
+## 2026-05-20T10:53 — governance-preflight accepted utterance "recovering from interrupted session - reviewing what experiments were in progress" (work_item_id=WI-63F5E1BE, confidence_target=0.7).
+- **Author**: specsmith
+- **Type**: preflight
+- **REQs affected**: REQ-085
+- **Status**: complete
+- **Chain hash**: `4a41c81b2954f789...`
+
+## 2026-05-20T10:53 — work_proposal WI-63F5E1BE: recovering from interrupted session - reviewing what experiments were in progress
+- **Author**: specsmith
+- **Type**: work_proposal
+- **REQs affected**: REQ-044,REQ-085
+- **Status**: complete
+- **Chain hash**: `22c0ae3777703952...`

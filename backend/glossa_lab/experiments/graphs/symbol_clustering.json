@@ -81,5 +81,6 @@
       "sourcePort": "clusters",
       "targetPort": "data"
     }
-  ]
+  ],
+  "graph_type": "experiment"
 }

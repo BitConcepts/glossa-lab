@@ -4,10 +4,42 @@
   "description": "Phase-28 final aggregator: outputs Phase-28 summary + Phase-29 priority list.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "v",   "type": "expNode", "data": { "atomicId": "Phase28Verdict", "label": "Verdict", "params": {} }, "position": { "x": 60, "y": 100 } },
-    { "id": "out", "type": "expNode", "data": { "atomicId": "JSONExport",     "label": "Save",    "params": { "filename": "phase28f_verdict.json" } }, "position": { "x": 360, "y": 100 } }
+    {
+      "id": "v",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Phase28Verdict",
+        "label": "Verdict",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save",
+        "params": {
+          "filename": "phase28f_verdict.json"
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e1", "source": "v", "target": "out", "targetPort": "data" }
-  ]
+    {
+      "id": "e1",
+      "source": "v",
+      "target": "out",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

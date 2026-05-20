@@ -3,27 +3,208 @@
   "name": "Indus CISI: CPSC Sign Role Classification (CASIndusEngine)",
   "description": "Uses the CASIndusEngine — our custom engine built on CPSC IterativeEngine. For each sign in the CISI corpus: observes I/M/T rates from real Mohenjo-daro inscription sequences, then builds a CasModel with Dravidian morphological constraints (case suffixes terminal-biased, determinatives initial-biased, phonetic syllables medial-biased). CPSC projects each sign's observed rates onto this constraint manifold to produce principled role classifications. BuiltinLM(dravidian) provides phoneme candidate matching for terminal (case suffix) and initial (determinative) signs. This is a fundamentally different approach from black-box SA: constraints are transparent, user-editable in the CAS Models editor.",
   "nodes": [
-    {"id": "corpus",    "type": "expNode", "data": {"atomicId": "BuiltinCorpus",       "label": "Indus CISI (179 inscriptions, Parpola)", "params": {"corpus": "indus_cisi"}},               "position": {"x": 60,   "y": 200}},
-    {"id": "freq",      "type": "expNode", "data": {"atomicId": "FreqCounter",          "label": "Sign Frequencies",                        "params": {}},                                     "position": {"x": 300,  "y": 80}},
-    {"id": "entropy",   "type": "expNode", "data": {"atomicId": "EntropyCalc",          "label": "Entropy H1",                             "params": {}},                                     "position": {"x": 520,  "y": 80}},
-    {"id": "profiler",  "type": "expNode", "data": {"atomicId": "PositionalProfiler",   "label": "I/M/T Profiles (Parpola signs)",          "params": {"min_count": 3}},                       "position": {"x": 520,  "y": 200}},
-    {"id": "drav_lm",   "type": "expNode", "data": {"atomicId": "BuiltinLM",            "label": "Dravidian LM (phoneme matching)",         "params": {"language": "dravidian"}},              "position": {"x": 60,   "y": 380}},
-    {"id": "engine",    "type": "expNode", "data": {"atomicId": "CASIndusEngine",       "label": "CAS Indus Engine (CPSC IterativeEngine)", "params": {"terminal_threshold": 0.55, "initial_threshold": 0.45, "engine": "iterative"}}, "position": {"x": 800,  "y": 240}},
-    {"id": "merge",     "type": "expNode", "data": {"atomicId": "Merger",               "label": "Merge Results",                          "params": {}},                                     "position": {"x": 1080, "y": 240}},
-    {"id": "out",       "type": "expNode", "data": {"atomicId": "JSONExport",           "label": "Save Classification",                    "params": {"filename": "indus_cas_sign_roles.json"}}, "position": {"x": 1340, "y": 240}}
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "Indus CISI (179 inscriptions, Parpola)",
+        "params": {
+          "corpus": "indus_cisi"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 200
+      }
+    },
+    {
+      "id": "freq",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FreqCounter",
+        "label": "Sign Frequencies",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
+        "y": 80
+      }
+    },
+    {
+      "id": "entropy",
+      "type": "expNode",
+      "data": {
+        "atomicId": "EntropyCalc",
+        "label": "Entropy H1",
+        "params": {}
+      },
+      "position": {
+        "x": 520,
+        "y": 80
+      }
+    },
+    {
+      "id": "profiler",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PositionalProfiler",
+        "label": "I/M/T Profiles (Parpola signs)",
+        "params": {
+          "min_count": 3
+        }
+      },
+      "position": {
+        "x": 520,
+        "y": 200
+      }
+    },
+    {
+      "id": "drav_lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Dravidian LM (phoneme matching)",
+        "params": {
+          "language": "dravidian"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 380
+      }
+    },
+    {
+      "id": "engine",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CASIndusEngine",
+        "label": "CAS Indus Engine (CPSC IterativeEngine)",
+        "params": {
+          "terminal_threshold": 0.55,
+          "initial_threshold": 0.45,
+          "engine": "iterative"
+        }
+      },
+      "position": {
+        "x": 800,
+        "y": 240
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge Results",
+        "params": {}
+      },
+      "position": {
+        "x": 1080,
+        "y": 240
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Classification",
+        "params": {
+          "filename": "indus_cas_sign_roles.json"
+        }
+      },
+      "position": {
+        "x": 1340,
+        "y": 240
+      }
+    }
   ],
   "edges": [
-    {"id": "e1",  "source": "corpus",   "target": "freq",     "sourcePort": "sequences",       "targetPort": "sequences"},
-    {"id": "e2",  "source": "corpus",   "target": "profiler", "sourcePort": "sequences",       "targetPort": "sequences"},
-    {"id": "e3",  "source": "corpus",   "target": "engine",   "sourcePort": "sequences",       "targetPort": "sequences"},
-    {"id": "e4",  "source": "freq",     "target": "entropy",  "sourcePort": "freq_map",        "targetPort": "freq_map"},
-    {"id": "e5",  "source": "profiler", "target": "engine",   "sourcePort": "profiles",        "targetPort": "profiles"},
-    {"id": "e6",  "source": "drav_lm",  "target": "engine",   "sourcePort": "lm",              "targetPort": "lm"},
-    {"id": "e7",  "source": "engine",   "target": "merge",    "sourcePort": "terminal_signs",  "targetPort": "a"},
-    {"id": "e8",  "source": "engine",   "target": "merge",    "sourcePort": "initial_signs",   "targetPort": "b"},
-    {"id": "e9",  "source": "engine",   "target": "merge",    "sourcePort": "constraint_summary", "targetPort": "c"},
-    {"id": "e10", "source": "engine",   "target": "merge",    "sourcePort": "phoneme_candidates", "targetPort": "d"},
-    {"id": "e11", "source": "entropy",  "target": "merge",    "sourcePort": "h1",              "targetPort": "e"},
-    {"id": "e12", "source": "merge",    "target": "out",      "sourcePort": "json",            "targetPort": "data"}
-  ]
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "freq",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "corpus",
+      "target": "profiler",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "corpus",
+      "target": "engine",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e4",
+      "source": "freq",
+      "target": "entropy",
+      "sourcePort": "freq_map",
+      "targetPort": "freq_map"
+    },
+    {
+      "id": "e5",
+      "source": "profiler",
+      "target": "engine",
+      "sourcePort": "profiles",
+      "targetPort": "profiles"
+    },
+    {
+      "id": "e6",
+      "source": "drav_lm",
+      "target": "engine",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e7",
+      "source": "engine",
+      "target": "merge",
+      "sourcePort": "terminal_signs",
+      "targetPort": "a"
+    },
+    {
+      "id": "e8",
+      "source": "engine",
+      "target": "merge",
+      "sourcePort": "initial_signs",
+      "targetPort": "b"
+    },
+    {
+      "id": "e9",
+      "source": "engine",
+      "target": "merge",
+      "sourcePort": "constraint_summary",
+      "targetPort": "c"
+    },
+    {
+      "id": "e10",
+      "source": "engine",
+      "target": "merge",
+      "sourcePort": "phoneme_candidates",
+      "targetPort": "d"
+    },
+    {
+      "id": "e11",
+      "source": "entropy",
+      "target": "merge",
+      "sourcePort": "h1",
+      "targetPort": "e"
+    },
+    {
+      "id": "e12",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

@@ -3,18 +3,135 @@
   "name": "Ugaritic vs Hebrew — Cross-Script SA",
   "description": "SA decipherment of Ugaritic (NW Semitic test corpus, RTL corrected) against Old Hebrew as the target language model. Tests cross-script hypothesis: Ugaritic phonotactics should be recoverable from Hebrew bigram constraints. 5 parallel seeds.",
   "nodes": [
-    {"id": "corpus", "type": "expNode", "data": {"atomicId": "BuiltinCorpus", "label": "Ugaritic (NW Semitic)", "params": {"corpus": "nw_semitic"}}, "position": {"x": 60, "y": 200}},
-    {"id": "rtl", "type": "expNode", "data": {"atomicId": "DirectionNormalizer", "label": "RTL", "params": {"direction": "rtl"}}, "position": {"x": 280, "y": 200}},
-    {"id": "lm", "type": "expNode", "data": {"atomicId": "BuiltinLM", "label": "Hebrew LM", "params": {"language": "hebrew"}}, "position": {"x": 60, "y": 380}},
-    {"id": "decipher", "type": "expNode", "data": {"atomicId": "SADecipher", "label": "SA (5 seeds, GPU)", "params": {"n_seeds": 5, "max_iterations": 8000, "restarts": 5, "surjective": true, "ocp_weight": 0.0}}, "position": {"x": 520, "y": 280}},
-    {"id": "cons", "type": "expNode", "data": {"atomicId": "ConsistencyScorer", "label": "Consistency", "params": {}}, "position": {"x": 760, "y": 280}},
-    {"id": "out", "type": "expNode", "data": {"atomicId": "JSONExport", "label": "Save", "params": {"filename": "ugaritic_vs_hebrew.json"}}, "position": {"x": 1000, "y": 280}}
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "Ugaritic (NW Semitic)",
+        "params": {
+          "corpus": "nw_semitic"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 200
+      }
+    },
+    {
+      "id": "rtl",
+      "type": "expNode",
+      "data": {
+        "atomicId": "DirectionNormalizer",
+        "label": "RTL",
+        "params": {
+          "direction": "rtl"
+        }
+      },
+      "position": {
+        "x": 280,
+        "y": 200
+      }
+    },
+    {
+      "id": "lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Hebrew LM",
+        "params": {
+          "language": "hebrew"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 380
+      }
+    },
+    {
+      "id": "decipher",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA (5 seeds, GPU)",
+        "params": {
+          "n_seeds": 5,
+          "max_iterations": 8000,
+          "restarts": 5,
+          "surjective": true,
+          "ocp_weight": 0.0
+        }
+      },
+      "position": {
+        "x": 520,
+        "y": 280
+      }
+    },
+    {
+      "id": "cons",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConsistencyScorer",
+        "label": "Consistency",
+        "params": {}
+      },
+      "position": {
+        "x": 760,
+        "y": 280
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save",
+        "params": {
+          "filename": "ugaritic_vs_hebrew.json"
+        }
+      },
+      "position": {
+        "x": 1000,
+        "y": 280
+      }
+    }
   ],
   "edges": [
-    {"id": "e1", "source": "corpus", "target": "rtl", "sourcePort": "sequences", "targetPort": "sequences"},
-    {"id": "e2", "source": "rtl", "target": "decipher", "sourcePort": "sequences", "targetPort": "sequences"},
-    {"id": "e3", "source": "lm", "target": "decipher", "sourcePort": "lm", "targetPort": "lm"},
-    {"id": "e4", "source": "decipher", "target": "cons", "sourcePort": "all_mappings", "targetPort": "all_mappings"},
-    {"id": "e5", "source": "cons", "target": "out", "sourcePort": "mean_consistency", "targetPort": "data"}
-  ]
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "rtl",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "rtl",
+      "target": "decipher",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "lm",
+      "target": "decipher",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e4",
+      "source": "decipher",
+      "target": "cons",
+      "sourcePort": "all_mappings",
+      "targetPort": "all_mappings"
+    },
+    {
+      "id": "e5",
+      "source": "cons",
+      "target": "out",
+      "sourcePort": "mean_consistency",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

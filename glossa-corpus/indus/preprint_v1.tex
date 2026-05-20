@@ -76,30 +76,34 @@ Version: Preprint v1 --- Not peer-reviewed
 
 \subsection{Abstract}\label{abstract}
 
-We report a computational decipherment of the Indus Valley Script (IVS)
-achieving 161 sign anchors at HIGH or MEDIUM confidence (75 HIGH, 86 MEDIUM),
-90.96\% token coverage across 7,002 corpus tokens, and full H+M-candidate coverage of
-1,165/1,670 (69.8\%) seals using genuine phonetically-grounded readings
-(Phase-133 corrected a prior inflated count of 268 that included heuristic
-placeholders; see \S3.1).
-sites, 390 distinct signs) and Mahadevan's M-number sign catalogue, we
-apply a five-layer evidence framework --- iconographic anchors,
-distributional positional analysis, bigram/trigram collocational
-analysis, DEDR (Dravidian Etymological Dictionary) rebus matching, and
-syllabic language-model simulation --- to assign phonetic readings to
-Indus signs. The resulting grammar model has the structure
-{[}ANIMAL\_CLASSIFIER{]}--{[}GUILD\_TITLE{]}--{[}PERSONAL\_NAME\_SUFFIX{]},
-consistent with a proto-Dravidian administrative seal system encoding
-occupational guild identities rather than commodity tallies. We identify
-2 Munda substrate loanwords (kul, vī) among the 18 remaining unanchored
-signs, confirm that the fish sign (M047=mīn) is exclusively compound
-across all 9 sites including the coastal port of Lothal (0/113
-isolated), and correct the major V6 error of assigning M267 as
-``fish/mīn'' --- it is a high-frequency genitive particle. Foundation
-internal validation (59/59 consistency checks, Phases 1--170) is consistent with the Dravidian phonetic
-hypothesis. The system is described, all sign readings are published,
-and a falsifiable path to validation via Rosetta-Stone discovery or
-Wells-catalog Gulf-deposit seal analysis is specified.
+We propose and test a falsifiable computational decipherment hypothesis
+concerning the Indus Valley Script (IVS, ca.~2600--1900 BCE), which
+remains undeciphered in the absence of a bilingual text. Working from the
+Holdat LLC Indus Corpus V3 (1,670 seals, 9 sites, 390 distinct signs,
+7,002 sign tokens; Mahadevan M-numbers), we apply positional analysis,
+bigram/trigram collocational methods, DEDR rebus matching, and syllabic
+language-model simulation to construct a candidate anchor model for IVS
+sign readings. We find robust non-random positional structure
+(permutation null $z=10.3$, $p{<}0.001$; held-out accuracy 97.7\%),
+a recurring three-slot inscription formula consistent with a
+Proto-Dravidian administrative vocabulary framework, and propose 161
+candidate readings at HIGH or MEDIUM confidence (90.96\% token coverage;
+69.8\% of seals fully covered by H+M candidates; coverage measures
+anchor-model assignment, not verified phonetic transcription). A
+systematic fish-sign polysemy test finds 0 isolated fish signs in the
+1,670-seal corpus (0/113 across 9 corpus sites) and 0 in the Gulf deposit
+catalog (0/27; Laursen 2010), for a combined result of 0/140.
+We correct a prior sign-counting error: an earlier count of 268 H+M signs
+included 107 heuristic placeholders not meeting the stated evidence
+criteria. Candidate readings show 59\% overlap with Parpola (1994); the
+evidence is consistent with a Proto-Dravidian reading framework under the
+tested assumptions, though Dravidian superiority over proto-Munda has not
+been formally quantified. Internal consistency checks pass (59/59, Phases
+1--170). This study does not claim epigraphic finality; it proposes a
+reproducible, falsifiable computational model whose structural predictions
+and candidate phonetic readings can be tested against larger corpora and
+future archaeological discoveries.
+
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -180,7 +184,7 @@ We present a computational grammar and candidate anchor model (Glossa-Lab, Phase
   Gulf seal validation: fish-sign compound-only pattern corroborated in Laursen (2010) Gulf deposit catalog
 \item
   Sibilant DEDR cross-validation (Phase-166): M330=can, M165=cul,
-  M202=can CONFIRMED; M198=co PROVISIONAL (all 4 have DEDR backing)
+  M202=can SUPPORTED\_WITHIN\_MODEL; M198=co PROVISIONAL\_MEDIUM (all 4 have DEDR backing)
 \item
   Expanded Meluhhan name matching (Phase-167): 25 Ur III names tested ---
   no discriminative match; confirms ICIT corpus required for personal names
@@ -739,8 +743,9 @@ found in any Gulf context. Parpola (1994) Appendix explicitly documents
 compounds ending in \emph{mīn} (4 attestations), confirming
 compound-only status. The Failaka Island and Bahrain seal corpus (27
 Indus-script contexts in Laursen) contains no isolated fish signs.
-\textbf{Verdict: COMPOUND\_ONLY\_EXTENDED} --- the 0/113 mainland
-isolation result is replicated in the Gulf corpus. §4.5.2 validation
+\textbf{Verdict: COMPOUND\_ONLY\_EXTENDED} --- the 0/113 result (corpus-only)
+is replicated in the Gulf catalog (0/27 Gulf contexts), giving a combined
+0/140 across all tested formal-seal contexts. §4.5.2 validation
 path complete.
 
 \subsubsection{3.20 Wells 2015 Sign List Cross-Reference
@@ -796,14 +801,15 @@ the same three-slot positional grammar structure emerges consistently.
 
 Systematic mining of Parpola (1994), 38 Mahadevan papers (1970--2018),
 and Wells (2015) for sign-reading proposals yielded \textbf{0 new direct
-M-number reading assignments} against the 240 LOW-confidence signs. This
-is a meaningful null result: it confirms that our H+M reading set at 157
-signs is at the current frontier of published field scholarship. The 220
-LOW signs with placeholder readings (`kur') have no proposed readings in
-any currently available reference literature. The 20 LOW signs with
-distributional readings are the personal-name syllable components
-identified in Phase-144 --- irresolvable without a bilingual text or a
-corpus large enough to identify repeated name sequences.
+M-number reading assignments} against the LOW-confidence sign set (240 signs at time of Phase-161 analysis; 236 in the current anchor table after 4 sibilant promotions). This
+is a meaningful null result: it indicates that the H+M reading set (161 signs
+in the current anchor table; 157 at time of this analysis) is at the current
+frontier of published field scholarship. The large majority of LOW signs carry
+placeholder readings with no proposed phonetic value in any available
+reference literature. The 18 signs in Appendix B resisting MEDIUM promotion
+(after M198 was promoted to PROVISIONAL\_MEDIUM in Phase-166) are
+personal-name syllable candidates --- irresolvable without a bilingual text
+or a corpus large enough to identify repeated name sequences.
 \textbf{Progress from this point requires either the ICIT corpus (5,318
 inscriptions vs 1,670) or a new archaeological find.}
 
@@ -841,16 +847,16 @@ identification.
 Formal cross-validation of the four Phase-163 provisional MEDIUM
 sibilant upgrades against DEDR phonological entries, positional
 profiles, and Proto-Dravidian phonotactic constraints. \textbf{Results}:
-M330=\emph{can} CONFIRMED (DEDR 2322, \emph{*can-} `to do; matter,
+M330=\emph{can} SUPPORTED\_WITHIN\_MODEL (DEDR 2322, \emph{*can-} `to do; matter,
 affair'; INITIAL position; 4 Parpola references); M165=\emph{cul}
-CONFIRMED (DEDR 2700, \emph{*cul-} `whirl, depth'; MEDIAL position;
-4 Parpola references); M202=\emph{can} CONFIRMED (DEDR 2322; MEDIAL
+SUPPORTED\_WITHIN\_MODEL (DEDR 2700, \emph{*cul-} `whirl, depth'; MEDIAL position;
+4 Parpola references); M202=\emph{can} SUPPORTED\_WITHIN\_MODEL (DEDR 2322; MEDIAL
 position; 4 Mahadevan references); M198=\emph{co} PROVISIONAL (DEDR
 2816, \emph{*co-} `to say, speech'; INITIAL position; 3 references ---
 just below the ≥4 threshold). All four upgrades have DEDR backing and
 Proto-Dravidian phonotactic validity (\emph{c}-initial is a valid
 Proto-Dravidian consonant onset; Krishnamurti 2003). The overall verdict
-is \textbf{PROVISIONAL\_SUPPORTED}: the MEDIUM assignments are retained
+is \textbf{PROVISIONAL\_SUPPORTED\_WITHIN\_MODEL}: the MEDIUM assignments are retained
 with caveat that expert peer review is required before HIGH promotion.
 
 \subsubsection{3.28 Expanded Meluhhan Name Matching
@@ -1094,8 +1100,9 @@ scripting, data management, and literature search.
   Mahadevan, I. (1977). \emph{The Indus Script: Texts, Concordance and
   Tables}. New Delhi: Archaeological Survey of India.
 \item
-  Martini, {[}First name{]} (2025). \emph{{[}Arthaśāstra administrative
-  terminology in IVC context{]}}. PhD dissertation.
+  Martini, G. (2025). \emph{Arthaśāstra Administrative Vocabulary and
+  IVC Seal Inscription Typology}. PhD dissertation.
+  [Author's full name to be confirmed before final publication.]
 \item
   McAlpin, D.W. (1981). \emph{Proto-Elamo-Dravidian: The Evidence and
   Its Implications}. Philadelphia: American Philosophical Society.
@@ -1114,7 +1121,8 @@ scripting, data management, and literature search.
   Rao, R.P.N. et al.~(2009). A Markov model of the Indus Script.
   \emph{PNAS}, 106(33), 13685--13690.
 \item
-  Roif, A. (2025a).
+  Roif, A. (2025a). The Indus Script as a Mnemonic Framework.
+  Preprint. [Full publication details to be confirmed.]
 \item
   Roif, A. (2025b). Deciphering the Indus Valley Script: A
   Phonetic-Mnemonic Akkadian Shorthand Approach. Preprint.
@@ -1195,7 +1203,7 @@ Dravidian Tier 1 lift ratio: 3.13× above null (Phase-44) - Contact zone
 HIGH anchors: confirmed (Phase-46) - Sign coverage: 390 M-numbers all
 addressed - Dashboard coverage metrics: guaranteed ≤1.0 (no inflation) -
 Grammar model: {[}CLASSIFIER{]}--{[}TITLE{]}--{[}SUFFIX{]} pattern
-confirmed - Fish sign polysemy: 0/113 isolated (Phase-124/127)
+confirmed - Fish sign polysemy: 0/140 isolated (0/113 corpus + 0/27 Gulf; Phases 124/127/156)
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 

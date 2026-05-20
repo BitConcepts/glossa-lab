@@ -212,7 +212,7 @@ Chanhu-daro (n=78), Surkotada (n=61), Banawali (n=60), Rakhigarhi
 excavated IVC sites and represents the primary published formal-seal
 assemblage.
 
-\textbf{Sign catalogue}: 390 distinct M-number signs. Frequency
+\textbf{Sign catalogue}: 390 distinct M-number signs attested in the corpus; the anchor table assigns readings to all 397 signs in the Mahadevan catalogue (the additional 7 have zero corpus tokens and are included for catalogue completeness). Frequency
 distribution follows Zipf's law (exponent ≈ 1.7), consistent with a
 natural language writing system (Rao et al.~2009).
 
@@ -226,7 +226,7 @@ phonetic-mnemonic model; Parpola (1994, 2010) iconographic readings.
 
 \subsubsection{2.2 Evidence Hierarchy}\label{evidence-hierarchy}
 
-Sign readings are assigned at one of three confidence levels:
+Sign readings are assigned to three primary confidence levels, with PROVISIONAL\_MEDIUM used as a flagged subcategory of MEDIUM:
 
 \textbf{HIGH (75 signs)}: Two or more independent evidence sources
 converge: - Iconographic match: sign shape unambiguously depicts a known
@@ -249,7 +249,7 @@ anchor by positional L1 distance \textless{} 0.2
 but has not received independent expert review. PROVISIONAL\_MEDIUM readings are
 \emph{included} within the MEDIUM count for coverage accounting but are flagged for
 expert review before any HIGH-confidence promotion. They are listed separately in
-Section 3.27 and Table 4.
+Section 3.27.
 
 \textbf{LOW (236 signs)}: Heuristic assignment only: - Positional
 assignment (initial/medial/terminal class) - Phase-111 allograph
@@ -312,7 +312,7 @@ LOW & 236 & 9.34\% \\
 \end{longtable}
 }
 
-\textit{Note: The MEDIUM count includes 4 PROVISIONAL\_MEDIUM signs (M330=\textit{can}, M165=\textit{cul}, M202=\textit{can}, M198=\textit{co}), included for coverage accounting but flagged for expert review before any HIGH-confidence promotion.}
+\textit{Note: The confidence table covers all 397 Mahadevan catalogue signs (75 HIGH + 86 MEDIUM + 236 LOW); the corpus attests 390 of these. The 7 catalogue-only signs (zero corpus tokens) are included for completeness and do not affect token or seal coverage metrics. The MEDIUM count includes 4 PROVISIONAL\_MEDIUM signs (M330=\textit{can}, M165=\textit{cul}, M202=\textit{can}, M198=\textit{co}), included for coverage accounting but flagged for expert review before any HIGH-confidence promotion.}
 
 The 161 H+M anchors (75 HIGH + 86 MEDIUM) cover 6,363 of 7,002 corpus tokens. The remaining 639 tokens (9.1\%) have LOW-confidence readings only. Note: a prior count of 268 included 107 heuristic placeholder assignments removed by Phase-133.
 
@@ -1040,7 +1040,7 @@ model.
 We propose a reproducible computational grammar and candidate
 Proto-Dravidian anchor model for the Indus Valley Script. The
 strongest findings --- robust non-random positional structure
-(permutation $z=10.3$), a recurring three-slot inscription formula,
+($z = 10.3$; permutation $p = 0/2000$), a recurring three-slot inscription formula,
 fish-sign compound-only pattern (0/140 tested contexts), and correction
 of the M267 misassignment --- are Tier~1 structural claims that can be
 stated with high confidence. The candidate Proto-Dravidian readings
@@ -1062,7 +1062,7 @@ reports, scripts, and the anchor table are available in the Glossa-Lab repositor
 
 \subsection{6. Data Availability}\label{data-availability}
 
-All sign readings, confidence levels, DEDR citations, basis statements, analysis scripts, and phase reports are available in the Glossa-Lab repository at \url{https://github.com/tristanp/glossa-lab}. The Holdat LLC Indus Corpus v3 was accessed under private agreement for this study; public release is pending. Reproduction of corpus-level counts requires access to that corpus or a compatible public corpus such as ICIT after sign-code crosswalking.
+All sign readings, confidence levels, DEDR citations, basis statements, analysis scripts, and phase reports are available in the Glossa-Lab repository at \url{https://github.com/layer1labs/glossa-lab}. The Holdat LLC Indus Corpus v3 was accessed under private agreement for this study; public release is pending. Reproduction of corpus-level counts requires access to that corpus or a compatible public corpus such as ICIT after sign-code crosswalking.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1076,9 +1076,7 @@ correspondence on the fish-sign polysemy and shorthand hypotheses.
 Ashish Nair for the independent replication study (arXiv:2604.17828).
 
 \textbf{AI Disclosure}: This research was conducted with AI-assisted
-computational tooling (Glossa-Lab pipeline, Warp/Oz agent). All analysis
-scripts, corpus data, anchor tables, and phase reports are openly
-available for independent replication. Statistical tests were designed,
+computational tooling (Glossa-Lab pipeline, Warp/Oz agent). Analysis scripts, anchor tables, and phase reports are available in the Glossa-Lab repository. The Holdat LLC Indus Corpus v3 was accessed under private agreement and is not yet publicly released; full corpus-level replication requires access to that corpus or a compatible public corpus after sign-code crosswalking. Statistical tests were designed,
 executed, and interpreted by the author; AI tooling was used for
 scripting, data management, and literature search.
 
@@ -1209,7 +1207,7 @@ Summary}\label{appendix-c-foundation-validation-summary}
 
 59 independent checks (foundation\_check.py, Phases 1--170) all pass, including: -
 Dravidian Tier 1 lift ratio: 3.13× above null (Phase-44) - Contact zone
-HIGH anchors: supported within internal checks (Phase-46) - Sign coverage: 390 M-numbers all
+HIGH anchors: supported within internal checks (Phase-46) - Sign coverage: 397 M-numbers all
 addressed - Dashboard coverage metrics: guaranteed ≤1.0 (no inflation) -
 Grammar model: {[}CLASSIFIER{]}--{[}TITLE{]}--{[}SUFFIX{]} pattern
 supported - Fish sign polysemy: 0/140 isolated (0/113 corpus + 0/27 Gulf; Phases 124/127/156)

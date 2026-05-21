@@ -24,8 +24,9 @@ GPU: torch for batch chi-squared computations.
 Output: reports/phase54_falsification.json
 """
 from __future__ import annotations
-import csv, json, math
-from collections import Counter
+
+import csv
+import json
 from pathlib import Path
 
 try:
@@ -289,7 +290,7 @@ def main():
         elif v == "FAIL": n_fail += 1
         print(f"  {pred['sign']:6s} {pred['reading']:15s} → {v:12s} | {pred['gloss'][:40]}")
 
-    print(f"\n=== Falsification Summary ===")
+    print("\n=== Falsification Summary ===")
     print(f"  PASS: {n_pass}, WEAK: {n_weak}, FAIL: {n_fail}")
     total = n_pass + n_weak + n_fail
     print(f"  Support rate: {(n_pass+n_weak)/total:.0%}")

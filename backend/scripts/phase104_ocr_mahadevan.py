@@ -6,7 +6,11 @@ pages of Mahadevan (1977). Generates 30-50 new anchor proposals.
 CPU + Mistral API. Output: reports/phase104_ocr_mahadevan.json
 """
 from __future__ import annotations
-import base64, json, os, sys
+
+import base64
+import json
+import os
+import sys
 from pathlib import Path
 
 REPO    = Path(__file__).parents[2]

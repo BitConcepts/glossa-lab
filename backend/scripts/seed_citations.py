@@ -8,9 +8,11 @@ Run:
     python backend/scripts/seed_citations.py
 """
 from __future__ import annotations
-import asyncio, json, sys
-from pathlib import Path
+
+import asyncio
+import sys
 from datetime import datetime, timezone
+from pathlib import Path
 
 REPO = Path(__file__).parents[2]
 sys.path.insert(0, str(REPO / "backend"))
@@ -259,8 +261,7 @@ CITATIONS: list[dict] = [
 
 async def seed() -> None:
     from glossa_lab.config import get_settings
-    from glossa_lab.database import Database, close_db, init_db
-    from datetime import datetime, timezone
+    from glossa_lab.database import close_db, init_db
 
     settings = get_settings()
     db = await init_db(settings.data_dir)

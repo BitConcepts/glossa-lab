@@ -16,8 +16,8 @@ Examples:
 
 from __future__ import annotations
 
-import sys
 import os
+import sys
 
 _HERE    = os.path.dirname(os.path.abspath(__file__))
 _BACKEND = os.path.dirname(os.path.dirname(_HERE))
@@ -52,7 +52,7 @@ def _run(experiment_id: str) -> None:
     # Strip surrogate/emoji chars that can crash Windows console
     safe_name = cls.name.encode("ascii", errors="replace").decode("ascii")
     print(f"\n  Running: {safe_name}  [{cls.estimated_time}]")
-    print(f"  This run is registered as a Job in the Glossa Lab UI.\n")
+    print("  This run is registered as a Job in the Glossa Lab UI.\n")
     result = cls().run_cli()
     print(f"\n  Done. Result keys: {list(result.keys()) if isinstance(result, dict) else type(result)}")
 

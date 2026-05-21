@@ -13,9 +13,7 @@ Verdicts: CONFIRMED / PROVISIONAL / REJECTED
 
 import csv
 import json
-import sys
 import warnings
-from collections import Counter
 from pathlib import Path
 
 import torch

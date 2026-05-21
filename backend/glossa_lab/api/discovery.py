@@ -23,6 +23,7 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
 from glossa_lab.database import get_db
+from glossa_lab.discovery import scheduler as _scheduler
 from glossa_lab.discovery import store
 from glossa_lab.discovery.fetchers import (
     available_fetchers,
@@ -32,7 +33,6 @@ from glossa_lab.discovery.fetchers import (
 )
 from glossa_lab.discovery.llm import LLMClient
 from glossa_lab.discovery.mine import mine_pending
-from glossa_lab.discovery import scheduler as _scheduler
 
 router = APIRouter(prefix="/api/v1/discovery", tags=["discovery"])
 

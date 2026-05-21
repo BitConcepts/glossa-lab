@@ -21,8 +21,11 @@ Output: backend/glossa_lab/data/dravidian_syllabic_lm.json
         reports/phase49_syllabic_lm.json (stats)
 """
 from __future__ import annotations
-import json, re, unicodedata
-from collections import Counter, defaultdict
+
+import json
+import re
+import unicodedata
+from collections import Counter
 from pathlib import Path
 
 try:

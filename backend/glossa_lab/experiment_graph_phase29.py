@@ -56,20 +56,24 @@ def _phase29_corpus_loader(inputs: dict, params: dict) -> dict:
     """Phase-29 loader: extends Phase-28 with Mahadevan 1977 corpus + ePSD2 names."""
     try:
         from glossa_lab.data.mesopotamian_contact import (  # noqa: PLC0415
-            get_indus_seals_at_mesopotamia, get_seals_with_inscription,
-            get_meluhhan_persons_v3, get_parpola_phoneme_map,
-            get_janabiyah_seal_reading, get_meluhha_tablets,
-            get_cisi_findspot_map, get_contact_zone_prefix_set,
-            get_phase27_seal_findspot_overrides,
-            get_iconographic_anchors,
-            get_mahadevan_parpola_crosswalk,
             get_allograph_families,
+            get_cisi_findspot_map,
             get_cisi_vol3_ocr_results,
+            get_contact_zone_prefix_set,
+            get_epsd2_metadata,
             get_epsd2_names,
             get_epsd2_personal_names,
-            get_epsd2_metadata,
+            get_iconographic_anchors,
+            get_indus_seals_at_mesopotamia,
+            get_janabiyah_seal_reading,
             get_mahadevan_inscriptions,
             get_mahadevan_metadata,
+            get_mahadevan_parpola_crosswalk,
+            get_meluhha_tablets,
+            get_meluhhan_persons_v3,
+            get_parpola_phoneme_map,
+            get_phase27_seal_findspot_overrides,
+            get_seals_with_inscription,
         )
     except Exception as exc:  # noqa: BLE001
         return {"error": f"data module not available: {exc}"}
@@ -110,7 +114,8 @@ def _mahadevan_inscription_loader(inputs: dict, params: dict) -> dict:
     min_length = max(1, _safe_int(params.get("min_length", 1), 1))
     try:
         from glossa_lab.data.mesopotamian_contact import (  # noqa: PLC0415
-            get_mahadevan_inscriptions, get_mahadevan_metadata,
+            get_mahadevan_inscriptions,
+            get_mahadevan_metadata,
         )
     except Exception as exc:  # noqa: BLE001
         return {"error": f"data module not available: {exc}"}
@@ -139,7 +144,8 @@ def _epsd2_names_loader(inputs: dict, params: dict) -> dict:
     pos_filter = params.get("pos_filter") or ""
     try:
         from glossa_lab.data.mesopotamian_contact import (  # noqa: PLC0415
-            get_epsd2_names, get_epsd2_metadata,
+            get_epsd2_metadata,
+            get_epsd2_names,
         )
     except Exception as exc:  # noqa: BLE001
         return {"error": f"data module not available: {exc}"}

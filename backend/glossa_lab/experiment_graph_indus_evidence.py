@@ -208,7 +208,7 @@ def _hidden_hypothesis_gen(inputs: dict, params: dict) -> dict:
         hypothesis, testable via site-stratified positional analysis
     """
     claims = inputs.get("claims") or []
-    matrix = inputs.get("matrix") or []  # from CrossHypothesisMatrix
+    inputs.get("matrix") or []  # from CrossHypothesisMatrix
     min_sources = int(params.get("min_sources_per_hypothesis", 2) or 2)
 
     if not claims:
@@ -318,7 +318,7 @@ def _claim_tester(inputs: dict, params: dict) -> dict:
     tc  = Counter(s for seq in sequences for s in seq)
     ic  = Counter(seq[0]  for seq in sequences if len(seq) > 1)
     te  = Counter(seq[-1] for seq in sequences if len(seq) > 1)
-    total = len(sequences)
+    len(sequences)
 
     results: list[dict] = []
     for claim in claims:
@@ -377,7 +377,7 @@ def _null_model_test(inputs: dict, params: dict) -> dict:
     Tests whether the observed initial/terminal rate for a sign is explained
     by random shuffling alone (shuffle null) or frequency alone (freq null).
     """
-    import math    # noqa: PLC0415
+    import math  # noqa: PLC0415
     import random  # noqa: PLC0415
     from collections import Counter  # noqa: PLC0415
 
@@ -443,7 +443,7 @@ def _null_model_test(inputs: dict, params: dict) -> dict:
 def _intake_runner(inputs: dict, params: dict) -> dict:
     """Trigger the glossa-indus intake + claims extraction pipeline."""
     import subprocess  # noqa: PLC0415
-    import sys          # noqa: PLC0415
+    import sys  # noqa: PLC0415
 
     intake = _SCRIPTS / "indus_intake.py"
     claims = _SCRIPTS / "indus_claims.py"

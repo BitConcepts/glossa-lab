@@ -35,12 +35,17 @@ for _p in (_BACKEND, _TESTS):
 def _load_shared():
     """Load all shared corpus data once."""
     from corpora.ugaritic import _BAAL_CYCLE_LINES, _SIGN_TO_ID, get_answer_key
+
+    from glossa_lab.data.old_hebrew import (
+        get_corpus_inscriptions as heb_inscriptions,
+    )
     from glossa_lab.data.old_hebrew import (
         get_corpus_symbols as heb_symbols,
-        get_corpus_inscriptions as heb_inscriptions,
+    )
+    from glossa_lab.data.old_hebrew import (
         get_ugaritic_to_hebrew_map,
     )
-    from glossa_lab.pipelines.decipher import LanguageModel, score_accuracy, _score_mapping
+    from glossa_lab.pipelines.decipher import LanguageModel, _score_mapping, score_accuracy
 
     def _parse(line):
         return [ch for ch in line.split() if ch != "."]
@@ -89,7 +94,6 @@ def exp_multi_seed_stability(d: dict, n_seeds: int = 10) -> dict[str, Any]:
       - High variance (some seeds good, some bad) → SA is inconsistent
       - Low variance at ~6.7%                     → 6.7% is the true expected value
     """
-    from glossa_lab.pipelines.decipher import decipher
 
     LanguageModel  = d["LanguageModel"]
     score_accuracy = d["score_accuracy"]
@@ -167,7 +171,7 @@ def exp_bigram_oracle(d: dict) -> dict[str, Any]:
     similarity? (Uses the unigram-rank proxy — bigrams can't be directly compared
     across different alphabets without a mapping.)
     """
-    from glossa_lab.pipelines.decipher import decipher, LanguageModel
+    from glossa_lab.pipelines.decipher import LanguageModel, decipher
 
     _score_mapping = d["_score_mapping"]
     score_accuracy = d["score_accuracy"]
@@ -266,7 +270,7 @@ def exp_bigram_oracle(d: dict) -> dict[str, Any]:
     print("\n" + "=" * 65)
     print("  Exp B — Bigram Oracle Analysis")
     print("=" * 65)
-    print(f"\n  Score comparisons  (higher = better model fit):")
+    print("\n  Score comparisons  (higher = better model fit):")
     print(f"    Correct mapping (ground truth):  {score_correct:.1f}")
     print(f"    SA-found mapping (seed=42):      {score_sa:.1f}  ({acc_sa['correct']}/30 correct)")
     print(f"    Frequency-rank seeded mapping:   {score_freq_rank:.1f}  ({acc_freq_rank['correct']}/30 correct)")
@@ -298,7 +302,7 @@ def exp_bigram_oracle(d: dict) -> dict[str, Any]:
 
     print(f"\n  VERDICT: {verdict}")
 
-    print(f"\n  Bigram phonotactic overlap (correct mapping applied):")
+    print("\n  Bigram phonotactic overlap (correct mapping applied):")
     print(f"    Cosine similarity (translated Ugaritic vs Hebrew bigrams): {bigram_cosine:.4f}")
     print(f"    Bigram overlap:   {overlap_count}/{len(trans_bigrams)} = {overlap_frac:.1%} of translated Ugaritic bigrams exist in Hebrew LM")
 
@@ -348,7 +352,7 @@ def exp_corpus_scaling(d: dict) -> dict[str, Any]:
     decipherment? If accuracy rises steadily, more Hebrew data will help.
     If accuracy is flat, data size is not the bottleneck — it's the model.
     """
-    from glossa_lab.pipelines.decipher import decipher, LanguageModel
+    from glossa_lab.pipelines.decipher import LanguageModel, decipher
 
     score_accuracy = d["score_accuracy"]
     heb_flat       = d["heb_flat"]
@@ -648,7 +652,7 @@ def run_all_diagnostics(verbose: bool = True) -> dict[str, Any]:
     print("█" * 65)
 
     d = _load_shared()
-    print(f"\n  Shared data loaded:")
+    print("\n  Shared data loaded:")
     print(f"    Hebrew LM:  {len(d['heb_flat'])} tokens, {len(set(d['heb_flat']))} signs")
     print(f"    Ugaritic:   {len(d['cipher_flat'])} tokens, {len(set(d['cipher_flat']))} signs")
     print(f"    GT mappings: {len(d['ground_truth'])}/30")

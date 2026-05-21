@@ -19,15 +19,16 @@ B. Tamil-Brahmi phonotactic extension
      Locative:       -il, -iṉ
      Genitive:       -aṉ, -iṉ, -āṉ (of), -ai (acc)
      Comitative:     -oṭu, -uṭaṉ
-   
+
    Expected: H+M TERMINAL readings should match TB terminal inventory.
    If mismatch > 20%, there is a systematic phonological inconsistency.
 
 Output: backend/reports/phase155_phonotactic_sibilant.json
 """
-import sys, json, re
-from pathlib import Path
+import json
+import sys
 from collections import Counter
+from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "backend"))
@@ -144,7 +145,7 @@ TB_TERMINALS = {
 }
 
 print(f"\n  Tamil-Brahmi terminal inventory: {len(TB_TERMINALS)} categories")
-print(f"  Checking H+M TERMINAL readings against TB inventory...")
+print("  Checking H+M TERMINAL readings against TB inventory...")
 
 # Map each H+M terminal reading to TB categories
 reading_to_tb = {}
@@ -188,7 +189,7 @@ for seq in all_seqs:
 v07_rate = violations / total_decoded_multi if total_decoded_multi else 0
 print(f"\n  Fully decoded multi-sign seals: {total_decoded_multi}")
 print(f"  Seals ending with non-TERMINAL H+M sign: {violations} ({100*v07_rate:.1f}%)")
-print(f"\n  Most frequent non-TERMINAL final signs:")
+print("\n  Most frequent non-TERMINAL final signs:")
 for sign, count in violation_finals.most_common(8):
     reading = anchors.get(sign,{}).get("reading","?")
     t_r = tc.get(sign,0)/sign_freq.get(sign,1)
@@ -196,7 +197,7 @@ for sign, count in violation_finals.most_common(8):
     print(f"    {sign:<8} '{reading}'  (t_rate={t_r:.3f}, class={pc}) count={count}")
 
 # Classification of violation causes
-print(f"\n  Violation cause analysis:")
+print("\n  Violation cause analysis:")
 for sign, count in violation_finals.most_common(5):
     reading = anchors.get(sign,{}).get("reading","?")
     t_r     = tc.get(sign,0)/sign_freq.get(sign,1)
@@ -215,7 +216,7 @@ print("SUMMARY")
 print("─"*70)
 print(f"\n  A. TB terminal match rate: {100*tb_match_rate:.1f}% ({covered}/{total_terminal} by TB category)")
 print(f"  B. V07 violation rate (redefined): {100*v07_rate:.1f}% (threshold from V07: 7%)")
-print(f"  C. Most violations are MIXED-class signs in abbreviated seals (expected)")
+print("  C. Most violations are MIXED-class signs in abbreviated seals (expected)")
 
 v07_verdict = ("V07_CONFIRMED" if v07_rate <= 0.10
                else "V07_ELEVATED")
@@ -247,7 +248,7 @@ output = {
     "key_findings": [
         f"Tamil-Brahmi terminal match rate: {100*tb_match_rate:.1f}% (TB inventory cross-validated)",
         f"V07 phonotactic violation rate: {100*v07_rate:.1f}% (n={violations}/{total_decoded_multi})",
-        f"Most V07 violations: MIXED-class signs in abbreviated seals — expected, not misreadings",
+        "Most V07 violations: MIXED-class signs in abbreviated seals — expected, not misreadings",
         f"V07 verdict: {v07_verdict}",
         "Wells PDF acquired but image-only — Gulf seal fish-sign test requires OCR or alternate source",
         "Phase-153: /su/ sibilant gap not closeable from current H+M corpus alone — target for ICIT corpus",

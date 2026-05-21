@@ -19,8 +19,10 @@ GPU: torch for formula pattern clustering.
 Output: reports/phase53_formula_pilot.json
 """
 from __future__ import annotations
-import csv, json
-from collections import Counter, defaultdict
+
+import csv
+import json
+from collections import Counter
 from pathlib import Path
 
 try:
@@ -200,7 +202,7 @@ def main() -> None:
 
     # Print most complete readings
     best_decoded = sorted(decoded_formulas, key=lambda x: (-x["coverage_pct"], -x["count"]))
-    print(f"\n=== Best-Decoded Formulas ===")
+    print("\n=== Best-Decoded Formulas ===")
     for f in best_decoded[:20]:
         print(f"  [{f['count']:4d}×] ({f['n_known_slots']}/{f['length']}) {f['rendered']}")
 

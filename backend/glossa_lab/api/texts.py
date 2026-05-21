@@ -8,8 +8,8 @@ from typing import Any
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from glossa_lab.database import get_db
 from glossa_lab.corpus_utils import run_ashraf_detection
+from glossa_lab.database import get_db
 
 router = APIRouter()
 

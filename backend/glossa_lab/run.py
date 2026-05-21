@@ -113,7 +113,7 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     # Discover experiment
-    from glossa_lab.experiment_base import get_experiment, discover_experiments
+    from glossa_lab.experiment_base import discover_experiments, get_experiment
     discover_experiments()   # warm cache with all files
     cls = get_experiment(args.experiment_id)
     if cls is None:
@@ -126,7 +126,7 @@ def main(argv: list[str] | None = None) -> int:
     exp_name = getattr(cls, "name", args.experiment_id)
     est_time = getattr(cls, "estimated_time", "unknown")
 
-    print(f"\n  Glossa Lab — running experiment via CLI")
+    print("\n  Glossa Lab — running experiment via CLI")
     print(f"  ID:           {args.experiment_id}")
     print(f"  Name:         {exp_name}")
     print(f"  Est. time:    {est_time}")

@@ -357,7 +357,7 @@ def run_rtl_corrected(verbose: bool = True) -> dict[str, Any]:
 
     # ── 5. Comparison with original LTR ──────────────────────────────────────
     _pr("\n  5. Comparison: original LTR (incorrect) vs RTL corrected...")
-    _pr(f"  Original LTR, no anchors:  mc=59.9%  (from fuls_nw_semitic_decipher_run)")
+    _pr("  Original LTR, no anchors:  mc=59.9%  (from fuls_nw_semitic_decipher_run)")
     _pr(f"  RTL corrected, no anchors: mc={mc_a:.1%}  HCI={hci_a}")
     _pr(f"  RTL corrected + anchors:   mc={mc_b:.1%}  HCI={hci_b}")
 

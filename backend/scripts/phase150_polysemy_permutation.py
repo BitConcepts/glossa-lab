@@ -18,9 +18,12 @@ This phase runs the proper corpus-shuffled permutation null:
 
 Output: backend/reports/phase150_polysemy_permutation.json
 """
-import sys, json, random, math
-from pathlib import Path
+import json
+import math
+import random
+import sys
 from collections import Counter, defaultdict
+from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "backend"))

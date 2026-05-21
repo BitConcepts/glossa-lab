@@ -85,7 +85,8 @@ class TestRequest(BaseModel):
 
 def _ssl_context():
     """Return an SSL context that respects GLOSSA_SSL_VERIFY env var."""
-    import os, ssl  # noqa: PLC0415,E401
+    import os  # noqa: PLC0415,E401
+    import ssl
     if os.environ.get("GLOSSA_SSL_VERIFY", "1").strip() in ("0", "false", "no"):
         ctx = ssl.create_default_context()
         ctx.check_hostname = False

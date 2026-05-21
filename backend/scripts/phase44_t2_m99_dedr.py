@@ -13,15 +13,16 @@ This test:
 
 koḷ in Tamil is a reflexive verbal auxiliary:
   tiṉ + koḷ = "eat (to oneself)" / reflexive
-  pāṭṭu koḷ = "sing (reflexively)" 
+  pāṭṭu koḷ = "sing (reflexively)"
   As a standalone morpheme in older Tamil it can appear as a genitive form too.
 """
 from __future__ import annotations
+
 import csv
 import json
 import re
 import sys
-from collections import Counter, defaultdict
+from collections import Counter
 from pathlib import Path
 
 REPO = Path(__file__).parents[2]
@@ -195,7 +196,7 @@ if __name__ == "__main__":
           f"({m99_profile['formula_pct_of_occurrences']:.1%} of M99 occurrences)")
     print(f"   Pre-M99: {m99_profile['pre_top_15'][:5]}")
 
-    print(f"\n2. Analyzing [M267][M99] formula...")
+    print("\n2. Analyzing [M267][M99] formula...")
     formula = analyze_m267_m99_formula(inscriptions)
     print(f"   Formula occurs {formula['n_occurrences']}x at {formula['site_distribution']}")
     print(f"   At inscription START: {formula['at_inscription_start']} "

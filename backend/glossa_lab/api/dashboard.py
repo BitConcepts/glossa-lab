@@ -26,7 +26,7 @@ import re
 from datetime import datetime, timedelta, timezone
 from typing import Any
 
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, Query
 
 from glossa_lab.database import get_db
 

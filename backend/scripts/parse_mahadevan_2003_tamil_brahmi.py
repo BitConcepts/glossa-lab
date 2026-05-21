@@ -18,7 +18,6 @@ from __future__ import annotations
 
 import json
 import re
-import sys
 from collections import Counter
 from pathlib import Path
 
@@ -318,7 +317,7 @@ def build_corpus_json(inscriptions: list[dict]) -> dict:
 
 
 def main() -> int:
-    print(f"=== Parsing Mahadevan 2003 Tamil-Brahmi corpus ===")
+    print("=== Parsing Mahadevan 2003 Tamil-Brahmi corpus ===")
     print(f"Source: {_TXT}")
     inscriptions = parse_corpus()
     print(f"Extracted {len(inscriptions)} inscriptions.")

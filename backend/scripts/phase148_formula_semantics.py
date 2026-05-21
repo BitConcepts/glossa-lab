@@ -17,9 +17,10 @@ Then assigns each cluster to one of 5 semantic domains:
 
 Output: backend/reports/phase148_formula_semantics.json
 """
-import sys, json, math
-from pathlib import Path
+import json
+import sys
 from collections import Counter, defaultdict
+from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "backend"))
@@ -200,12 +201,12 @@ for sign, c in sorted(clusters.items(), key=lambda x: -len(x[1]["seals"])):
 # Print domain breakdown
 # ─────────────────────────────────────────────────────────────────────────────
 print(f"\n  Total INITIAL-sign clusters (≥3 seals, H+M signs): {len(cluster_summaries)}")
-print(f"\n  Domain breakdown:")
+print("\n  Domain breakdown:")
 for domain, count in domain_counts.most_common():
     pct = 100 * count / len(cluster_summaries) if cluster_summaries else 0
     print(f"    {domain:<18} {count:>3}  ({pct:.1f}%)")
 
-print(f"\n  Top clusters by domain:\n")
+print("\n  Top clusters by domain:\n")
 for domain in ["ANIMAL_GUILD","DEITY_TITLE","CIVIC_ROLE","MATERIAL","UNRESOLVED"]:
     domain_items = [c for c in cluster_summaries if c["domain"] == domain]
     if not domain_items: continue
@@ -219,7 +220,7 @@ for domain in ["ANIMAL_GUILD","DEITY_TITLE","CIVIC_ROLE","MATERIAL","UNRESOLVED"
 # ─────────────────────────────────────────────────────────────────────────────
 # Cross-domain bigram analysis
 # ─────────────────────────────────────────────────────────────────────────────
-print(f"\n  Cross-domain formula patterns (INITIAL → 2nd sign):")
+print("\n  Cross-domain formula patterns (INITIAL → 2nd sign):")
 cross_domain = defaultdict(Counter)
 for item in cluster_summaries:
     d   = item["domain"]
@@ -236,7 +237,7 @@ for domain in ["ANIMAL_GUILD","DEITY_TITLE","CIVIC_ROLE"]:
 # ─────────────────────────────────────────────────────────────────────────────
 # Terminal diversity by domain
 # ─────────────────────────────────────────────────────────────────────────────
-print(f"\n  Terminal sign diversity by domain:")
+print("\n  Terminal sign diversity by domain:")
 domain_terminals = defaultdict(Counter)
 for form, data in seals.items():
     seq = data["signs"]
@@ -261,8 +262,8 @@ domain_seal_counts = defaultdict(int)
 for c in cluster_summaries:
     domain_seal_counts[c["domain"]] += c["n_seals"]
 
-print(f"\n" + "─"*70)
-print(f"SEMANTIC ARCHITECTURE SUMMARY")
+print("\n" + "─"*70)
+print("SEMANTIC ARCHITECTURE SUMMARY")
 print("─"*70)
 print(f"\n  {total_seals_in_clusters}/{n_seals} ({100*total_seals_in_clusters/n_seals:.1f}%) seals in classified clusters")
 for domain, count in sorted(domain_seal_counts.items(), key=lambda x: -x[1]):

@@ -9,16 +9,20 @@ Phase-144: Top blocking signs DEDR collocate profile analysis
 
 Phase-145: CISI corpus formula comparison
   Run the same INITIAL-sign formula classification on the CISI corpus (179 seals,
-  Parpola P-numbers). Do the formula types agree with the Holdat corpus? 
+  Parpola P-numbers). Do the formula types agree with the Holdat corpus?
   Agreement = the same positional grammar holds across both corpora.
   Disagreement = corpus-specific artifacts or sign numbering differences.
 
 Real corpus only (Holdat LLC v3 + CISI). No synthetic data.
 Output: backend/reports/phase144_145_deep_dive.json
 """
-import sys, json, os, datetime, math
+import datetime
+import json
+import math
+import os
+import sys
+from collections import Counter
 from pathlib import Path
-from collections import Counter, defaultdict
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "backend"))
@@ -172,13 +176,13 @@ for bl in top_blockers:
 promotion_candidates = [b for b in blocker_profiles if b["promotion_criteria_met"]]
 print(f"\n  Blocker profiles computed: {len(blocker_profiles)}")
 print(f"  With rich H+M collocate context (promotion candidates): {len(promotion_candidates)}")
-print(f"\n  Top blockers by seal impact:")
+print("\n  Top blockers by seal impact:")
 print(f"  {'Sign':<8} {'Freq':>5} {'Slot':<10} {'Blk':>5} {'Reading':<12} {'DEDR hypothesis'}")
 for b in blocker_profiles[:12]:
     print(f"  {b['sign']:<8} {b['corpus_freq']:>5} {b['positional_slot']:<10} "
           f"{b['seals_blocked']:>5} {b['current_reading']:<12} {b['dedr_hypothesis'][:35]}")
 
-print(f"\n  Promotion candidates (rich collocate context):")
+print("\n  Promotion candidates (rich collocate context):")
 for b in promotion_candidates[:8]:
     left_str  = "+".join(f"{x['reading']}" for x in b['top_hm_left_neighbors'][:2]) or "—"
     right_str = "+".join(f"{x['reading']}" for x in b['top_hm_right_neighbors'][:2]) or "—"
@@ -241,11 +245,11 @@ print(f"  CISI sign types: {len(cisi_classes)} (≥3 occ)")
 print(f"  CISI INITIAL-dominant: {sum(1 for d in cisi_classes.values() if d['slot']=='INITIAL')}")
 print(f"  CISI TERMINAL-dominant: {sum(1 for d in cisi_classes.values() if d['slot']=='TERMINAL')}")
 
-print(f"\n  Top INITIAL signs in CISI (title/determinative vocabulary):")
+print("\n  Top INITIAL signs in CISI (title/determinative vocabulary):")
 for sign, data in cisi_initials[:10]:
     print(f"    {sign:<8} n={data['n']:<4} i_rate={data['i_rate']:.3f}")
 
-print(f"\n  Top TERMINAL signs in CISI (suffix/particle vocabulary):")
+print("\n  Top TERMINAL signs in CISI (suffix/particle vocabulary):")
 for sign, data in cisi_terminals[:10]:
     print(f"    {sign:<8} n={data['n']:<4} t_rate={data['t_rate']:.3f}")
 
@@ -260,7 +264,7 @@ for seq in cisi_seqs:
         cisi_bigrams[(seq[i],seq[i+1])] += 1
 
 top_cisi_bigrams = cisi_bigrams.most_common(15)
-print(f"\n  Top CISI bigrams:")
+print("\n  Top CISI bigrams:")
 for (a,b),c in top_cisi_bigrams[:10]:
     print(f"    {a} · {b}: {c}")
 
@@ -268,7 +272,7 @@ for (a,b),c in top_cisi_bigrams[:10]:
 cisi_initial_seals = sum(1 for seq in cisi_seqs if len(seq)>1 and seq[0] in cisi_classes and cisi_classes[seq[0]]["slot"]=="INITIAL")
 cisi_initial_seal_pct = 100 * cisi_initial_seals / max(sum(1 for seq in cisi_seqs if len(seq)>1),1)
 
-print(f"\n  CISI formula structure:")
+print("\n  CISI formula structure:")
 print(f"    Multi-sign inscriptions: {sum(1 for seq in cisi_seqs if len(seq)>1)}")
 print(f"    Starting with INITIAL-class sign: {cisi_initial_seals} ({cisi_initial_seal_pct:.0f}%)")
 print(f"    Mean length: {sum(len(s) for s in cisi_seqs)/max(n_cisi,1):.2f}")
@@ -288,7 +292,7 @@ cisi_class_dist = Counter(d["slot"] for d in cisi_classes.values())
 cisi_total = max(sum(cisi_class_dist.values()),1)
 cisi_pcts = {k:100*cisi_class_dist.get(k,0)/cisi_total for k in ["INITIAL","TERMINAL","MEDIAL","MIXED"]}
 
-print(f"\n  Positional class distribution comparison:")
+print("\n  Positional class distribution comparison:")
 print(f"  {'Class':<10} {'Holdat':>8} {'CISI':>8}")
 for cls in ["INITIAL","TERMINAL","MEDIAL","MIXED"]:
     h = holdat_pcts.get(cls,0); c = cisi_pcts.get(cls,0)
@@ -298,7 +302,7 @@ for cls in ["INITIAL","TERMINAL","MEDIAL","MIXED"]:
 kl_hc = sum(holdat_pcts[k]/100 * math.log2((holdat_pcts[k]+0.001)/(cisi_pcts[k]+0.001))
              for k in ["INITIAL","TERMINAL","MEDIAL","MIXED"])
 print(f"\n  KL divergence (Holdat || CISI positional classes): {kl_hc:.3f}")
-print(f"  (0=identical, <0.1=very similar, >0.5=significantly different)")
+print("  (0=identical, <0.1=very similar, >0.5=significantly different)")
 
 results["Phase145_cisi_comparison"] = {
     "n_cisi_inscriptions": n_cisi,

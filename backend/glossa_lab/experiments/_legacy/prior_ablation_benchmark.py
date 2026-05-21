@@ -59,17 +59,29 @@ for _p in (_BACKEND, _TESTS):
 
 def _load() -> dict[str, Any]:
     from corpora.ugaritic import (
-        _BAAL_CYCLE_LINES, _SIGN_TO_ID,
-        get_answer_key, get_word_level_inscriptions,
+        _BAAL_CYCLE_LINES,
+        _SIGN_TO_ID,
+        get_answer_key,
+        get_word_level_inscriptions,
+    )
+
+    from glossa_lab.data.old_hebrew import (
+        get_corpus_inscriptions as heb_line_inscr,
     )
     from glossa_lab.data.old_hebrew import (
-        get_corpus_symbols     as heb_sym,
-        get_corpus_inscriptions as heb_line_inscr,
-        get_word_inscriptions   as heb_word_inscr,
+        get_corpus_symbols as heb_sym,
+    )
+    from glossa_lab.data.old_hebrew import (
         get_ugaritic_to_hebrew_map,
     )
+    from glossa_lab.data.old_hebrew import (
+        get_word_inscriptions as heb_word_inscr,
+    )
     from glossa_lab.pipelines.decipher import (
-        LanguageModel, decipher, score_accuracy, _score_mapping,
+        LanguageModel,
+        _score_mapping,
+        decipher,
+        score_accuracy,
     )
 
     def _parse(line: str) -> list[str]:
@@ -109,7 +121,6 @@ def _freq_rank_mapping(
     target_model: "LanguageModel",
 ) -> dict[str, str]:
     """Build the initial frequency-rank seed mapping and return it as-is."""
-    from collections import Counter
     cipher_counts = Counter(cipher_flat)
     cipher_ranked = [s for s, _ in cipher_counts.most_common()]
     target_ranked = list(target_model.ranked[: len(cipher_ranked)])

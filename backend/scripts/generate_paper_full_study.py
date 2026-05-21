@@ -12,7 +12,10 @@ This generates a full academic paper covering:
   - Assumption-free phoneme discovery (new work)
   - Discussion, future work, and honest conclusions
 """
-import sys, os, json, math
+import sys
+import os
+import json
+import math
 from pathlib import Path
 from datetime import datetime, timezone
 from collections import Counter
@@ -72,7 +75,7 @@ doc = SimpleDocTemplate(
     leftMargin=3*cm, rightMargin=3*cm,
     topMargin=2.5*cm, bottomMargin=2.5*cm,
     title="Glossa Lab: Computational Decipherment and the Linear A Problem",
-    author=\"BitConcepts LLC\",
+    author="BitConcepts LLC",
 )
 
 styles = getSampleStyleSheet()
@@ -439,19 +442,19 @@ c.append(Paragraph(
 
 scoring_data = [
     ["Scoring mode","Greek","Hurrian","Luwian","Semitic","Winner"],
-    [f"A: Full (bigram+Kandles+vocab)",
+    ["A: Full (bigram+Kandles+vocab)",
      f"{e5_full['full']['scores'].get('greek',0):.2f}",
      f"{e5_full['full']['scores'].get('hurrian',0):.2f}",
      f"{e5_full['full']['scores'].get('luwian',0):.2f}",
      f"{e5_full['full']['scores'].get('semitic',0):.2f}",
      "Greek"],
-    [f"B: No-vocab (bigram+Kandles)",
+    ["B: No-vocab (bigram+Kandles)",
      f"{sc_nv.get('greek',0):.2f}",
      f"{sc_nv.get('hurrian',0):.2f}",
      f"{sc_nv.get('luwian',0):.2f}",
      f"{sc_nv.get('semitic',0):.2f}",
      "Luwian"],
-    [f"C: Kandles only",
+    ["C: Kandles only",
      f"{sc_k.get('greek',0):.2f}",
      f"{sc_k.get('hurrian',0):.2f}",
      f"{sc_k.get('luwian',0):.2f}",
@@ -761,7 +764,7 @@ c.append(Paragraph("References", H1))
 refs = [
     "Godart, L. & Olivier, J-P. (1976\u20131985). Recueil des inscriptions en Linéaire A (GORILA). 5 vols. Paris: Geuthner.",
     "Mahadevan, I. (1977). The Indus Script: Texts, Concordance and Tables. Memoirs of the Archaeological Survey of India, No. 77.",
-    
+
     "Packard, D.W. (1974). Minoan Linear A. University of California Press.",
     "Palmer, L.R. (1958). Luvian and Linear A. Transactions of the Philological Society, 75\u2013100.",
     "Parpola, A. (1994). Deciphering the Indus Script. Cambridge University Press.",

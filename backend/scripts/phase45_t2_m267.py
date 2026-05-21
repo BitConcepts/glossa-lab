@@ -15,8 +15,11 @@ This script:
 Output: reports/phase45_t2_m267.json
 """
 from __future__ import annotations
-import csv, json, math
-from collections import Counter, defaultdict
+
+import csv
+import json
+import math
+from collections import Counter
 from pathlib import Path
 
 REPO    = Path(__file__).parents[2]

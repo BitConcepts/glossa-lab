@@ -101,16 +101,21 @@ PROTO_SINAITIC_PHONO_BROAD: dict[str, frozenset] = {
 
 
 def _load() -> dict[str, Any]:
-    from glossa_lab.data.proto_sinaitic import (
-        get_corpus_symbols, get_corpus_inscriptions, get_line_inscriptions,
-        get_full_answer_key, get_partial_answer_key,
+    from glossa_lab.data.old_hebrew import (
+        get_corpus_symbols as heb_sym,
     )
     from glossa_lab.data.old_hebrew import (
-        get_corpus_symbols     as heb_sym,
-        get_word_inscriptions   as heb_word_inscr,
+        get_word_inscriptions as heb_word_inscr,
     )
-    from glossa_lab.pipelines.decipher import LanguageModel, decipher, score_accuracy
+    from glossa_lab.data.proto_sinaitic import (
+        get_corpus_inscriptions,
+        get_corpus_symbols,
+        get_full_answer_key,
+        get_line_inscriptions,
+        get_partial_answer_key,
+    )
     from glossa_lab.pipelines.beam_decipher import beam_decipher
+    from glossa_lab.pipelines.decipher import LanguageModel, decipher, score_accuracy
 
     cipher_flat  = get_corpus_symbols(encoded=True)
     cipher_words = get_corpus_inscriptions(encoded=True)

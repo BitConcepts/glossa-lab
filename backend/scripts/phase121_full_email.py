@@ -8,7 +8,10 @@ CPU only. Output: reports/phase121_full_email.json
 Sends email via Resend API.
 """
 from __future__ import annotations
-import json, os, sys
+
+import json
+import os
+import sys
 from datetime import datetime
 from pathlib import Path
 

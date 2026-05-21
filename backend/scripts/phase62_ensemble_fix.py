@@ -21,8 +21,9 @@ GPU: torch for loading the phase55_final_decipherment.json tensor operations.
 Output: reports/phase62_ensemble_fixed.json
 """
 from __future__ import annotations
-import json, sys
-from collections import Counter
+
+import json
+import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parents[1]))
@@ -72,7 +73,7 @@ def main():
     anchors = json.loads(ANCHORS.read_text("utf-8"))["anchors"]
 
     print(f"  Signs in phase55 table: {len(table)}")
-    print(f"  Fix: using Tamil_syllabic + Proto_Dravidian vs Sanskrit only")
+    print("  Fix: using Tamil_syllabic + Proto_Dravidian vs Sanskrit only")
     print()
 
     fixed_table = []
@@ -158,7 +159,7 @@ def main():
     fixed_table.sort(key=lambda x: (tier_order.get(x["ensemble_confidence"], 9),
                                     -x["n_corpus"]))
 
-    print(f"=== Phase-62a Results ===")
+    print("=== Phase-62a Results ===")
     print(f"  ENSEMBLE_HIGH:   {n_high} signs")
     print(f"  ENSEMBLE_MEDIUM: {n_medium} signs")
     print(f"  ENSEMBLE_LOW:    {n_low} signs")
@@ -166,7 +167,7 @@ def main():
 
     # Show top ENSEMBLE_HIGH signs
     high_signs = [e for e in fixed_table if e["ensemble_confidence"] == "ENSEMBLE_HIGH"]
-    print(f"  Top ENSEMBLE_HIGH signs (Dravidian consensus, Sanskrit diverges):")
+    print("  Top ENSEMBLE_HIGH signs (Dravidian consensus, Sanskrit diverges):")
     for e in high_signs[:15]:
         conf_marker = "✓✓" if e["confirmed_confidence"] in ("HIGH","MEDIUM") else "SA"
         agree_mark  = "✓" if e.get("confirmed_reading","")[:3] == e["Tamil_syllabic"][:3] else "?"

@@ -119,8 +119,8 @@ def _long_tail_verdict(inputs: dict, params: dict) -> dict:
     mi_full = inputs.get("mi_decay_full") or {}
     mi_long = inputs.get("mi_decay_long") or {}
     hed_long = inputs.get("hed_long") or {}
-    zipf_long = inputs.get("zipf_long") or {}
-    cond_long = inputs.get("conditional_entropy_long") or {}
+    inputs.get("zipf_long") or {}
+    inputs.get("conditional_entropy_long") or {}
     filter_summary = inputs.get("filter_summary") or {}
 
     full_regime = str(mi_full.get("regime", "unknown"))

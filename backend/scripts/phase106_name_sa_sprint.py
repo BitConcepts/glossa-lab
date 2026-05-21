@@ -7,7 +7,11 @@ personal name candidates from Phase-103. Assigns SA modal readings
 GPU if available, else CPU. Output: reports/phase106_name_sa_sprint.json
 """
 from __future__ import annotations
-import csv, json, os, sys
+
+import csv
+import json
+import os
+import sys
 from collections import Counter
 from pathlib import Path
 
@@ -203,8 +207,8 @@ def main():
     # Try to build dravidian LM
     lm = None
     try:
-        from glossa_lab.pipelines.decipher import LanguageModel  # noqa: PLC0415
         from glossa_lab.data.dravidian import get_word_symbols  # noqa: PLC0415
+        from glossa_lab.pipelines.decipher import LanguageModel  # noqa: PLC0415
         syl_syms = get_word_symbols()
         lm = LanguageModel(syl_syms)
         print(f"  LM: Dravidian syllabic, {lm.size} signs")

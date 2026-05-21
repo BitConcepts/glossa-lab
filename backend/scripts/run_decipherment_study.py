@@ -16,7 +16,6 @@ Usage:
 
 from __future__ import annotations
 
-import asyncio
 import json
 import math
 import sys
@@ -805,19 +804,19 @@ def main() -> None:
     print(f"  {s['evidence']}")
 
     lh = synth["language_hypothesis"]
-    print(f"\nLanguage hypothesis:")
+    print("\nLanguage hypothesis:")
     print(f"  #1 {lh['ranked_1']['language']} (KL={lh['ranked_1']['kl']})")
     print(f"  #2 {lh['ranked_2']['language']} (KL={lh['ranked_2']['kl']})")
     print(f"  {lh['assessment']}")
 
     sc = synth["sign_categories"]
-    print(f"\nSign categories:")
+    print("\nSign categories:")
     print(f"  TMK terminal markers ({sc['total_tmk']}): {sc['tmk_terminal_markers']}")
     print(f"  Initial determinatives ({sc['total_initial']}): {sc['initial_determinatives']}")
     print(f"  Probable numerals: {sc['probable_numerals']}")
     print(f"  Compound units: {sc['compound_units']}")
 
-    print(f"\nTop paradigmatic alternations (candidate allophones/inflections):")
+    print("\nTop paradigmatic alternations (candidate allophones/inflections):")
     for a in synth["paradigmatic_alternations"][:6]:
         print(f"  {a}")
 
@@ -825,7 +824,7 @@ def main() -> None:
     print(f"\nContact zone: {cz['assessment']}")
     print(f"  Exclusive trade-site signs: {cz['exclusive_contact_signs']}")
 
-    print(f"\nDecipherment roadmap:")
+    print("\nDecipherment roadmap:")
     for step in synth["decipherment_roadmap"]:
         print(f"  {step}")
 

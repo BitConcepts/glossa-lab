@@ -197,9 +197,11 @@ backend/glossa_lab/data/phase18_corpora/rv_padapatha_stream.txt
 glossa-indus/raw/user_uploads/*.pdf
 
 
-# specsmith migration backups — regeneratable, never commit
+# specsmith — internal agent governance state; not for public repos
+.specsmith/
+
+# specsmith / general backup files — regeneratable, never commit
 *.bak
-.specsmith/*.bak
 docs/governance/*.bak
 docs/*.bak
 

@@ -1,0 +1,673 @@
+{
+  "phase": 146,
+  "date": "2026-05-19",
+  "test": "F3_redesign_drv_exclusive_consonant_matrix",
+  "methodology": {
+    "drv_exclusive_chars": [
+      "ḷ",
+      "ṟ",
+      "ṉ",
+      "ḻ"
+    ],
+    "drv_exclusive_endings": [
+      "āl",
+      "al",
+      "aḷ",
+      "iḷ",
+      "uḷ",
+      "eḷ",
+      "aṟ",
+      "iṟ",
+      "uṟ",
+      "aṉ",
+      "iṉ",
+      "uṉ",
+      "eṉ",
+      "āl",
+      "koḷ",
+      "tiḷ"
+    ],
+    "skt_exclusive_patterns": [
+      "kh",
+      "gh",
+      "jh",
+      "ph",
+      "bh",
+      "dh",
+      "ṭh",
+      "ḍh",
+      "ñ",
+      "ḥ",
+      "śr",
+      "skr"
+    ],
+    "null_hypothesis_p": 0.35,
+    "description": "Phonemes that are physically absent from Sanskrit phoneme inventory (not merely uncommon). DRV chars: retroflex lateral ḷ, alveolar trill ṟ, alveolar nasal ṉ, retroflex approximant ḻ. Sanskrit-exclusive: aspirated stops (kh/gh/bh/dh/ph), palatal nasal ñ, visarga ḥ."
+  },
+  "results": {
+    "high_readings": {
+      "n_classified": 75,
+      "drv_exclusive": 20,
+      "skt_exclusive": 0,
+      "mixed": 0,
+      "neutral": 55,
+      "drv_supporting": 20,
+      "skt_supporting": 0,
+      "obs_drv_rate": 0.2667,
+      "null_p": 0.35,
+      "binomial_p_val": 0.9349,
+      "exclusivity_ratio_drv_skt": 20.0
+    },
+    "hm_readings": {
+      "n_classified": 157,
+      "drv_exclusive": 35,
+      "skt_exclusive": 0,
+      "mixed": 0,
+      "neutral": 122,
+      "drv_supporting": 35,
+      "skt_supporting": 0,
+      "obs_drv_rate": 0.2229,
+      "binomial_p_val": 0.9996,
+      "exclusivity_ratio_drv_skt": 35.0
+    },
+    "marker_frequency": {
+      "char:ḷ": 8,
+      "char:ṉ": 6,
+      "char:ṟ": 4,
+      "ending:al": 4,
+      "ending:uṉ": 2,
+      "ending:āl": 2,
+      "ending:uḷ": 1,
+      "ending:eḷ": 1,
+      "ending:koḷ": 1,
+      "ending:iḷ": 1
+    },
+    "verdict": "INCONCLUSIVE",
+    "f3_status": "INCONCLUSIVE",
+    "classified_readings": [
+      {
+        "sign": "M003",
+        "reading": "kalam",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M004",
+        "reading": "kēḷ",
+        "category": "DRV_EXCLUSIVE",
+        "drv_markers": [
+          "char:ḷ"
+        ],
+        "skt_markers": []
+      },
+      {
+        "sign": "M006",
+        "reading": "puli",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M011",
+        "reading": "kaḷiṟu",
+        "category": "DRV_EXCLUSIVE",
+        "drv_markers": [
+          "char:ḷ",
+          "char:ṟ"
+        ],
+        "skt_markers": []
+      },
+      {
+        "sign": "M012",
+        "reading": "oṉṟu/1",
+        "category": "DRV_EXCLUSIVE",
+        "drv_markers": [
+          "char:ṟ",
+          "char:ṉ"
+        ],
+        "skt_markers": []
+      },
+      {
+        "sign": "M013",
+        "reading": "nakaram",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M014",
+        "reading": "tiru",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M016",
+        "reading": "kaḷiṟu",
+        "category": "DRV_EXCLUSIVE",
+        "drv_markers": [
+          "char:ḷ",
+          "char:ṟ"
+        ],
+        "skt_markers": []
+      },
+      {
+        "sign": "M017",
+        "reading": "kai",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M018",
+        "reading": "nēr",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M019",
+        "reading": "ampu",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M020",
+        "reading": "kuṉ",
+        "category": "DRV_EXCLUSIVE",
+        "drv_markers": [
+          "char:ṉ",
+          "ending:uṉ"
+        ],
+        "skt_markers": []
+      },
+      {
+        "sign": "M022",
+        "reading": "kalam",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M026",
+        "reading": "mā",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M027",
+        "reading": "māṟ",
+        "category": "DRV_EXCLUSIVE",
+        "drv_markers": [
+          "char:ṟ"
+        ],
+        "skt_markers": []
+      },
+      {
+        "sign": "M030",
+        "reading": "kō",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M031",
+        "reading": "kai",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M032",
+        "reading": "koL",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M033",
+        "reading": "puli",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M034",
+        "reading": "tōḷ",
+        "category": "DRV_EXCLUSIVE",
+        "drv_markers": [
+          "char:ḷ"
+        ],
+        "skt_markers": []
+      },
+      {
+        "sign": "M035",
+        "reading": "po",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M039",
+        "reading": "āṉai",
+        "category": "DRV_EXCLUSIVE",
+        "drv_markers": [
+          "char:ṉ"
+        ],
+        "skt_markers": []
+      },
+      {
+        "sign": "M041",
+        "reading": "pēr",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M042",
+        "reading": "vaN",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M043",
+        "reading": "mu",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M045",
+        "reading": "yānai",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M046",
+        "reading": "kaL",
+        "category": "DRV_EXCLUSIVE",
+        "drv_markers": [
+          "ending:al"
+        ],
+        "skt_markers": []
+      },
+      {
+        "sign": "M048",
+        "reading": "mu/muṉ",
+        "category": "DRV_EXCLUSIVE",
+        "drv_markers": [
+          "char:ṉ",
+          "ending:uṉ"
+        ],
+        "skt_markers": []
+      },
+      {
+        "sign": "M049",
+        "reading": "pu",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M051",
+        "reading": "pū/puḷ",
+        "category": "DRV_EXCLUSIVE",
+        "drv_markers": [
+          "char:ḷ",
+          "ending:uḷ"
+        ],
+        "skt_markers": []
+      },
+      {
+        "sign": "M052",
+        "reading": "ta",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M057",
+        "reading": "māṭu",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M059",
+        "reading": "ēḷ/eḷ",
+        "category": "DRV_EXCLUSIVE",
+        "drv_markers": [
+          "char:ḷ",
+          "ending:eḷ"
+        ],
+        "skt_markers": []
+      },
+      {
+        "sign": "M060",
+        "reading": "kāṇṭāmirukam",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M061",
+        "reading": "ka",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M062",
+        "reading": "erutu",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M063",
+        "reading": "mutalai",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M064",
+        "reading": "va",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M071",
+        "reading": "nal",
+        "category": "DRV_EXCLUSIVE",
+        "drv_markers": [
+          "ending:al"
+        ],
+        "skt_markers": []
+      },
+      {
+        "sign": "M073",
+        "reading": "kōṉ",
+        "category": "DRV_EXCLUSIVE",
+        "drv_markers": [
+          "char:ṉ"
+        ],
+        "skt_markers": []
+      },
+      {
+        "sign": "M076",
+        "reading": "naN",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M077",
+        "reading": "nal",
+        "category": "DRV_EXCLUSIVE",
+        "drv_markers": [
+          "ending:al"
+        ],
+        "skt_markers": []
+      },
+      {
+        "sign": "M079",
+        "reading": "ir",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M080",
+        "reading": "vēṅkai",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M081",
+        "reading": "ve",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M087",
+        "reading": "veL",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M088",
+        "reading": "muu(n)-",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M089",
+        "reading": "tu/tū",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M091",
+        "reading": "aru",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M099",
+        "reading": "kol/koḷ",
+        "category": "DRV_EXCLUSIVE",
+        "drv_markers": [
+          "char:ḷ",
+          "ending:koḷ"
+        ],
+        "skt_markers": []
+      },
+      {
+        "sign": "M100",
+        "reading": "maa",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M107",
+        "reading": "ko",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M108",
+        "reading": "kaL",
+        "category": "DRV_EXCLUSIVE",
+        "drv_markers": [
+          "ending:al"
+        ],
+        "skt_markers": []
+      },
+      {
+        "sign": "M117",
+        "reading": "ar",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M125",
+        "reading": "vil",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M128",
+        "reading": "kaṇ",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M130",
+        "reading": "mui",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M162",
+        "reading": "il/iḷ",
+        "category": "DRV_EXCLUSIVE",
+        "drv_markers": [
+          "char:ḷ",
+          "ending:iḷ"
+        ],
+        "skt_markers": []
+      },
+      {
+        "sign": "M163",
+        "reading": "il",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M164",
+        "reading": "il",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M175",
+        "reading": "katir",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M176",
+        "reading": "an/aṇ",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M194",
+        "reading": "kaṭ",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M211",
+        "reading": "kol",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M233",
+        "reading": "ūr",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M261",
+        "reading": "muruku",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M264",
+        "reading": "peN",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M293",
+        "reading": "ta",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M305",
+        "reading": "ōṭu/comitative",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M311",
+        "reading": "vaTamiin",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M328",
+        "reading": "ā/āl",
+        "category": "DRV_EXCLUSIVE",
+        "drv_markers": [
+          "ending:āl",
+          "ending:āl"
+        ],
+        "skt_markers": []
+      },
+      {
+        "sign": "M336",
+        "reading": "iṉ/locative",
+        "category": "DRV_EXCLUSIVE",
+        "drv_markers": [
+          "char:ṉ"
+        ],
+        "skt_markers": []
+      },
+      {
+        "sign": "M342",
+        "reading": "ay/ā",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M367",
+        "reading": "am/neuter",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      },
+      {
+        "sign": "M391",
+        "reading": "ka/kaṇ",
+        "category": "NEUTRAL",
+        "drv_markers": [],
+        "skt_markers": []
+      }
+    ]
+  },
+  "key_findings": [
+    "HIGH readings: 20/75 DRV_EXCLUSIVE, 0/75 SKT_EXCLUSIVE",
+    "Drv:Skt exclusivity ratio = 20.0:1 (HIGH anchors)",
+    "H+M ratio = 35.0:1",
+    "Binomial p-value vs null(p=0.35): HIGH=0.9349, H+M=0.9996",
+    "F3 verdict: INCONCLUSIVE"
+  ],
+  "_note": "F3 redesign uses only phonemes physically absent from Sanskrit. Prior Phase-136 F3 was INCONCLUSIVE because markers overlapped. This matrix uses ḷ/ṟ/ṉ/ḻ (Dravidian-exclusive) vs kh/gh/bh/dh/ñ/ḥ (Sanskrit-exclusive)."
+}

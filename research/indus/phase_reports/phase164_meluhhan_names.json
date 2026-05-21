@@ -1,0 +1,281 @@
+{
+  "phase": 164,
+  "date": "2026-05-20",
+  "meluhhan_names_tested": 6,
+  "names_with_matches": 2,
+  "strong_matches": 0,
+  "results": [
+    {
+      "name": "Shu-ilishu",
+      "akkadian": "SU-i-li-su",
+      "gloss": "interpreter of the Meluhha language",
+      "n_corpus_matches": 0,
+      "best_match": null,
+      "top_matches": []
+    },
+    {
+      "name": "Lu-sunzida",
+      "akkadian": "lu-sun-zi-da",
+      "gloss": "Meluhhan merchant at Ur",
+      "n_corpus_matches": 0,
+      "best_match": null,
+      "top_matches": []
+    },
+    {
+      "name": "Urgula",
+      "akkadian": "ur-gu-la",
+      "gloss": "Meluhhan personal name",
+      "n_corpus_matches": 17,
+      "best_match": {
+        "form": "seal_0160",
+        "site": "Kalibangan",
+        "sequence": [
+          "M233",
+          "M280",
+          "M342"
+        ],
+        "readings": [
+          "ūr",
+          "kur",
+          "ay/ā"
+        ],
+        "slots_matched": 2,
+        "total_slots": 3,
+        "match_pct": 0.67,
+        "phonological_reading": "ūr · kur · ay/ā"
+      },
+      "top_matches": [
+        {
+          "form": "seal_0160",
+          "site": "Kalibangan",
+          "sequence": [
+            "M233",
+            "M280",
+            "M342"
+          ],
+          "readings": [
+            "ūr",
+            "kur",
+            "ay/ā"
+          ],
+          "slots_matched": 2,
+          "total_slots": 3,
+          "match_pct": 0.67,
+          "phonological_reading": "ūr · kur · ay/ā"
+        },
+        {
+          "form": "seal_0185",
+          "site": "Lothal",
+          "sequence": [
+            "M099",
+            "M065",
+            "M342"
+          ],
+          "readings": [
+            "kol/koḷ",
+            "kuTam",
+            "ay/ā"
+          ],
+          "slots_matched": 2,
+          "total_slots": 3,
+          "match_pct": 0.67,
+          "phonological_reading": "kol/koḷ · kuTam · ay/ā"
+        },
+        {
+          "form": "seal_0255",
+          "site": "Mohenjo-daro",
+          "sequence": [
+            "M099",
+            "M065",
+            "M342"
+          ],
+          "readings": [
+            "kol/koḷ",
+            "kuTam",
+            "ay/ā"
+          ],
+          "slots_matched": 2,
+          "total_slots": 3,
+          "match_pct": 0.67,
+          "phonological_reading": "kol/koḷ · kuTam · ay/ā"
+        },
+        {
+          "form": "seal_0267",
+          "site": "Dholavira",
+          "sequence": [
+            "M399",
+            "M065",
+            "M342"
+          ],
+          "readings": [
+            "kur",
+            "kuTam",
+            "ay/ā"
+          ],
+          "slots_matched": 2,
+          "total_slots": 3,
+          "match_pct": 0.67,
+          "phonological_reading": "kur · kuTam · ay/ā"
+        },
+        {
+          "form": "seal_0403",
+          "site": "Dholavira",
+          "sequence": [
+            "M233",
+            "M267",
+            "M342"
+          ],
+          "readings": [
+            "ūr",
+            "iN/in (genitive of)",
+            "ay/ā"
+          ],
+          "slots_matched": 2,
+          "total_slots": 3,
+          "match_pct": 0.67,
+          "phonological_reading": "ūr · iN/in (genitive of) · ay/ā"
+        }
+      ]
+    },
+    {
+      "name": "Nanna-a",
+      "akkadian": "nan-na-a",
+      "gloss": "Meluhhan person",
+      "n_corpus_matches": 9,
+      "best_match": {
+        "form": "seal_0627",
+        "site": "Harappa",
+        "sequence": [
+          "M076",
+          "M211",
+          "M328"
+        ],
+        "readings": [
+          "naN",
+          "kol",
+          "ā/āl"
+        ],
+        "slots_matched": 2,
+        "total_slots": 3,
+        "match_pct": 0.67,
+        "phonological_reading": "naN · kol · ā/āl"
+      },
+      "top_matches": [
+        {
+          "form": "seal_0627",
+          "site": "Harappa",
+          "sequence": [
+            "M076",
+            "M211",
+            "M328"
+          ],
+          "readings": [
+            "naN",
+            "kol",
+            "ā/āl"
+          ],
+          "slots_matched": 2,
+          "total_slots": 3,
+          "match_pct": 0.67,
+          "phonological_reading": "naN · kol · ā/āl"
+        },
+        {
+          "form": "seal_0702",
+          "site": "Harappa",
+          "sequence": [
+            "M013",
+            "M211",
+            "M342"
+          ],
+          "readings": [
+            "nakaram",
+            "kol",
+            "ay/ā"
+          ],
+          "slots_matched": 2,
+          "total_slots": 3,
+          "match_pct": 0.67,
+          "phonological_reading": "nakaram · kol · ay/ā"
+        },
+        {
+          "form": "seal_0766",
+          "site": "Kalibangan",
+          "sequence": [
+            "M071",
+            "M342",
+            "M342"
+          ],
+          "readings": [
+            "nal",
+            "ay/ā",
+            "ay/ā"
+          ],
+          "slots_matched": 2,
+          "total_slots": 3,
+          "match_pct": 0.67,
+          "phonological_reading": "nal · ay/ā · ay/ā"
+        },
+        {
+          "form": "seal_0848",
+          "site": "Harappa",
+          "sequence": [
+            "M071",
+            "M267",
+            "M342"
+          ],
+          "readings": [
+            "nal",
+            "iN/in (genitive of)",
+            "ay/ā"
+          ],
+          "slots_matched": 2,
+          "total_slots": 3,
+          "match_pct": 0.67,
+          "phonological_reading": "nal · iN/in (genitive of) · ay/ā"
+        },
+        {
+          "form": "seal_0853",
+          "site": "Lothal",
+          "sequence": [
+            "M013",
+            "M211",
+            "M342"
+          ],
+          "readings": [
+            "nakaram",
+            "kol",
+            "ay/ā"
+          ],
+          "slots_matched": 2,
+          "total_slots": 3,
+          "match_pct": 0.67,
+          "phonological_reading": "nakaram · kol · ay/ā"
+        }
+      ]
+    },
+    {
+      "name": "Kura-shaba",
+      "akkadian": "ku-ra-sha-ba",
+      "gloss": "Meluhhan merchant",
+      "n_corpus_matches": 0,
+      "best_match": null,
+      "top_matches": []
+    },
+    {
+      "name": "Ese-beli",
+      "akkadian": "e-se-be-li",
+      "gloss": "Meluhhan official",
+      "n_corpus_matches": 0,
+      "best_match": null,
+      "top_matches": []
+    }
+  ],
+  "key_findings": [
+    "Meluhhan names tested: 6",
+    "Names with ≥1 corpus match: 2",
+    "Strong matches (≥3 slots): 0",
+    "Best candidate: none",
+    "Note: All matches are EXPLORATORY — phonological equivalences are approximate",
+    "Definitive personal name reading requires bilingual text or much larger corpus"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "phase": 170,
+  "date": "2026-05-20",
+  "description": "Grammar explained variance retest with 161 H+M anchors",
+  "hm_count": 161,
+  "hm_signs_with_profile": 147,
+  "total_hm_tokens": 6357,
+  "sign_accuracy_pct": 93.2,
+  "explained_variance_pct": 100.0,
+  "baseline_phase133_pct": 44.3,
+  "delta_from_phase133": 55.7,
+  "verdict": "IMPROVED",
+  "new_signs": [
+    "M330=can",
+    "M165=cul",
+    "M202=can",
+    "M198=co"
+  ],
+  "methodology": "3-slot grammar model: sign classified as TERMINAL (T≥0.60), INITIAL (I≥0.50), MEDIAL (M≥0.65), else MIXED. Variance explained = fraction of tokens where predicted class = actual dominant class. Min 3 tokens per sign required.",
+  "gpu_device": "cuda",
+  "_citation": "Phase-133 grammar variance baseline (44.3% at 157 H+M). Anchors: INDUS_FINAL_ANCHORS.json (161 H+M). Corpus: Holdat V3 (1,670 seals, 7,002 tokens)."
+}

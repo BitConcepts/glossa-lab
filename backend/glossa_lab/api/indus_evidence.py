@@ -35,7 +35,6 @@ from pathlib import Path
 from typing import Any
 
 from fastapi import APIRouter, BackgroundTasks, HTTPException, UploadFile
-from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
 _log = logging.getLogger("glossa_lab.api.indus_evidence")
@@ -383,9 +382,8 @@ async def _bg_sweep() -> None:
         cfg = _load_yaml(_SWEEP_CFG)
         sweep = cfg.get("sweep", {})
 
+        from glossa_lab.discovery.fetchers import _build_fetchers, now_utc, to_iso  # noqa: PLC0415
         from glossa_lab.discovery.fetchers.base import TopicProfile  # noqa: PLC0415
-        from glossa_lab.discovery.fetchers import _build_fetchers, to_iso, now_utc  # noqa: PLC0415
-        from glossa_lab.discovery import store  # noqa: PLC0415
 
         # Flatten keywords into one list for TopicProfile
         kw_block = sweep.get("keywords", {})

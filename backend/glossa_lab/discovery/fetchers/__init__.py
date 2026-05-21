@@ -17,6 +17,8 @@ from datetime import datetime
 from typing import Iterable
 
 from glossa_lab.discovery import store
+from glossa_lab.discovery.fetchers.academia import AcademiaFetcher
+from glossa_lab.discovery.fetchers.academia_rss import AcademiaRSSFetcher
 from glossa_lab.discovery.fetchers.arxiv import ArxivFetcher
 from glossa_lab.discovery.fetchers.base import (
     Fetcher,
@@ -27,8 +29,6 @@ from glossa_lab.discovery.fetchers.base import (
     now_utc,
     to_iso,
 )
-from glossa_lab.discovery.fetchers.academia import AcademiaFetcher
-from glossa_lab.discovery.fetchers.academia_rss import AcademiaRSSFetcher
 from glossa_lab.discovery.fetchers.brave import BraveFetcher
 from glossa_lab.discovery.fetchers.crossref import CrossrefFetcher
 from glossa_lab.discovery.fetchers.doaj import DOAJFetcher
@@ -79,8 +79,8 @@ _RUN_ALL_LOCK = asyncio.Lock()
 
 def available_fetchers() -> list[dict[str, object]]:
     """Return a status snapshot for each registered fetcher, including rate-limit health."""
-    from glossa_lab.discovery.fetchers.base import get_rate_tracker  # noqa: PLC0415
     from glossa_lab.api.settings import get_key  # noqa: PLC0415
+    from glossa_lab.discovery.fetchers.base import get_rate_tracker  # noqa: PLC0415
     tracker = get_rate_tracker()
     out: list[dict[str, object]] = []
     for cls in _REGISTRY:

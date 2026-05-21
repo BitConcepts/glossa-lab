@@ -9,6 +9,7 @@ from pathlib import Path
 # Add backend to path so imports work
 sys.path.insert(0, str(Path(__file__).parent))
 
+from glossa_lab.pipelines.report import generate_report
 from tests.corpora.real import (
     load_dna,
     load_english,
@@ -18,8 +19,6 @@ from tests.corpora.real import (
     load_tamil,
 )
 from tests.corpora.synthetic import generate_markov, generate_ordered, generate_random
-
-from glossa_lab.pipelines.report import generate_report
 
 # Define all corpora
 corpora = {

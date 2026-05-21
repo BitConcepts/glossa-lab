@@ -1,7 +1,10 @@
 """Phase-133 data gathering for all sub-tasks."""
-import json, sys, os
-from pathlib import Path
+import json
+import os
+import sys
 from collections import Counter, defaultdict
+from pathlib import Path
+
 import pandas as pd
 
 REPO = Path(__file__).resolve().parents[2]
@@ -211,4 +214,4 @@ for form, signs in list(seal_groups.items())[:1000]:
 harmony_rate = harmony_pass / harmony_seals if harmony_seals else 0
 print(f"Harmony check (no F-B transitions): {harmony_pass}/{harmony_seals} = {harmony_rate:.3f} ({harmony_rate*100:.1f}%)")
 print(f"Examples of violations: {harmony_violations[:3]}")
-print(f"(Phase-61 target: >=85%; Phase-132 V12 used different method and got 74.6%)")
+print("(Phase-61 target: >=85%; Phase-132 V12 used different method and got 74.6%)")

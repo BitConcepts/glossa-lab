@@ -9,7 +9,10 @@ match at score >= 1.0 to maximally expand the anchor set.
 CPU only. Output: reports/phase91_anchor_120.json
 """
 from __future__ import annotations
-import csv, json, re
+
+import csv
+import json
+import re
 from collections import Counter
 from pathlib import Path
 
@@ -136,7 +139,7 @@ def main():
     if promoted:
         ANCHORS.write_text(json.dumps(anchors_data, indent=2, ensure_ascii=False), "utf-8")
 
-    print(f"\n=== Phase-91 Results ===")
+    print("\n=== Phase-91 Results ===")
     print(f"  New MEDIUM anchors: {len(promoted)}")
     print(f"  Total HIGH+MEDIUM:  {total_hm}")
     print(f"  Target 120: {'REACHED!' if total_hm >= 120 else f'need {120-total_hm} more'}")

@@ -16,7 +16,13 @@ GPU: BigramScorer CUDA. ~5 min.
 Output: reports/phase63_filtered_sa.json
 """
 from __future__ import annotations
-import csv, json, math, random, sys, time
+
+import csv
+import json
+import math
+import random
+import sys
+import time
 from collections import Counter, defaultdict
 from pathlib import Path
 from types import SimpleNamespace
@@ -246,7 +252,7 @@ def main():
     n_invalid = sum(1 for t in table if not t["pd_phonotactic_valid"])
     violation_rate = n_invalid / max(len(table), 1)
 
-    print(f"\n=== Phase-63 Results ===")
+    print("\n=== Phase-63 Results ===")
     print(f"  z={z:.2f}, {len(pinned)} anchors pinned, {n_filtered} vocab tokens filtered")
     print(f"  SA agrees with confirmed: {n_agree}/{n_confirmed} = {agree_rate:.0%}")
     print(f"  Phonotactic violations in SA: {n_invalid}/{len(table)} = {violation_rate:.0%}")

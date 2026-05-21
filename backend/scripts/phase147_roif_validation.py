@@ -12,14 +12,14 @@ Roif proposes an "Akkadian shorthand" model where:
 We score EACH of his explicitly testable claims against our Phase-134-145 results.
 
 Roif claims we can score formally:
-  R1. Fish sign is an occupational/title marker (not isolated commodity) 
+  R1. Fish sign is an occupational/title marker (not isolated commodity)
       → Test: M047 in-corpus isolation rate
   R2. Same sign = different meaning in different positional contexts (shorthand)
       → Test: polysemy divergence rate (Phase-142D)
   R3. Animal icons co-select with specific INITIAL signs (guild identity)
       → Test: Phase-143 INITIAL×iconography enrichments
   R4. The script is not a commodity ledger but an identity credential system
-      → Test: 0% isolation of fish sign at all sites; grammar model  
+      → Test: 0% isolation of fish sign at all sites; grammar model
   R5. Sign compounds encode professional role, not quantities
       → Test: compound-only distribution of fish family
   R6. The top bigram formula represents a title compound
@@ -31,9 +31,10 @@ Roif claims we can score formally:
 
 Output: backend/reports/phase147_roif_validation.json
 """
-import sys, json, math
+import json
+import sys
+from collections import Counter
 from pathlib import Path
-from collections import Counter, defaultdict
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "backend"))
@@ -183,7 +184,7 @@ score_claim(
     f"{n_enriched_pairs}/{n_pairs_tested} pairs enriched; top chi2={top_chi2:.1f}",
     f"enrichment_rate={n_enriched_pairs/n_pairs_tested:.3f}",
     "CONFIRMED" if n_enriched_pairs >= 50 else "PARTIALLY_CONFIRMED",
-    f"Strongest: M045(yānai)×elephant chi2=155, M062(erutu)×zebu chi2=84, M060(rhinoceros)×rhinoceros chi2=158"
+    "Strongest: M045(yānai)×elephant chi2=155, M062(erutu)×zebu chi2=84, M060(rhinoceros)×rhinoceros chi2=158"
 )
 
 # ── R4: Script encodes identity credentials, not commodity tallies ─────────────
@@ -225,7 +226,7 @@ score_claim(
     f"Top bigram {top1_pair}: count={top1_count} ({top1_pct:.1f}% of seals), PMI={top1_pmi:.3f}",
     f"top_bigram_count={top1_count},pmi={top1_pmi}",
     "CONFIRMED" if top1_pmi > 2.0 and top1_pct > 5 else "PARTIALLY_CONFIRMED",
-    f"M342·M176 (ay/ā · an/aṇ) = masculine genitive suffix compound — personal name formula"
+    "M342·M176 (ay/ā · an/aṇ) = masculine genitive suffix compound — personal name formula"
 )
 
 # ── R7: M267 genitive creates possessive title constructions ──────────────────

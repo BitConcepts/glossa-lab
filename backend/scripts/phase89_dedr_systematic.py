@@ -16,7 +16,10 @@ Previous phases used spot-checking; this phase is EXHAUSTIVE:
 CPU only. Output: reports/phase89_dedr_systematic.json
 """
 from __future__ import annotations
-import csv, json, re
+
+import csv
+import json
+import re
 from collections import Counter
 from pathlib import Path
 
@@ -247,7 +250,7 @@ def main():
 
     total_high_medium = len(confirmed)
 
-    print(f"\n=== Phase-89 Results ===")
+    print("\n=== Phase-89 Results ===")
     print(f"  Signs analysed:         {len(candidates)}")
     print(f"  Promoted to MEDIUM:     {len(promoted)}")
     print(f"  Total HIGH+MEDIUM:      {total_high_medium}")

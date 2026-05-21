@@ -8,7 +8,12 @@ GPU if available. Output: reports/phase116_sa_recalibration.json
 Also updates backend/reports/INDUS_FINAL_ANCHORS.json
 """
 from __future__ import annotations
-import csv, json, os, sys, re
+
+import csv
+import json
+import os
+import re
+import sys
 from collections import Counter
 from pathlib import Path
 
@@ -86,8 +91,8 @@ def main():
 
     lm = None
     try:
+        from glossa_lab.data.dravidian import get_word_symbols  # noqa: PLC0415
         from glossa_lab.pipelines.decipher import LanguageModel  # noqa: PLC0415
-        from glossa_lab.data.dravidian import get_word_symbols   # noqa: PLC0415
         lm = LanguageModel(get_word_symbols())
         print(f"  LM: Dravidian, {lm.size} signs")
     except Exception as exc:  # noqa: BLE001
@@ -97,8 +102,8 @@ def main():
     recal_table = {}
     if lm:
         try:
-            from glossa_lab.pipelines.decipher import decipher  # noqa: PLC0415
             from glossa_lab.experiments._parallel import run_seeds_parallel  # noqa: PLC0415
+            from glossa_lab.pipelines.decipher import decipher  # noqa: PLC0415
 
             def _one(seed: int) -> dict:
                 r = decipher(flat, lm, seed=seed, max_iterations=6000, restarts=4,

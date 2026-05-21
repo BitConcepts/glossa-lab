@@ -1,5 +1,7 @@
 """List corpora non-blocking."""
-import sqlite3, json
+import json
+import sqlite3
+
 conn = sqlite3.connect("data/glossa.db")
 rows = conn.execute("SELECT id, name, corpus_type, content FROM texts ORDER BY created_at DESC").fetchall()
 print(f"\n{'ID':12} {'Tokens':>8} {'Type':12} Name")

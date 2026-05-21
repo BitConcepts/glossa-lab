@@ -556,7 +556,7 @@ export function DashboardView() {
 
           // External views: open in a new tab instead of internal navigation
           if (view === "wiki" || view === "github_wiki") {
-            window.open("https://github.com/layer1labs/glossa-lab/wiki", "_blank");
+            window.open("https://github.com/BitConcepts/glossa-lab/wiki", "_blank");
             toast("Opened wiki in new tab", "info");
           } else if (view.startsWith("http://") || view.startsWith("https://")) {
             window.open(view, "_blank");

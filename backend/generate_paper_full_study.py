@@ -155,7 +155,7 @@ c.append(Paragraph("Abstract", ABSTRACT_TITLE))
 c.append(Paragraph(
     "We present Glossa Lab, a cross-platform computational toolkit for ancient-script analysis "
     "incorporating twelve analysis pipelines: block entropy, character frequency, Kandles "
-    "phonetic fingerprinting (Merkur patent [REDACTED-PATENT-PUB]), positional analysis, "
+    "phonetic fingerprinting (phonetic distribution comparison), positional analysis, "
     "sign clustering, paradigm detection, co-occurrence networks, numeral identification, "
     "substitution-cipher decipherment, constraint-projection decipherment, hypothesis-driven "
     "decipherment, and logosyllabic analysis. We validate the toolkit on two historically "
@@ -245,15 +245,15 @@ c.append(Paragraph(
     "Glossa Lab is a cross-platform (Windows, Linux, macOS) Python backend (FastAPI) with a "
     "React frontend, SQLite persistence, and a background pipeline engine. All analysis "
     "pipelines are registered by name and executed asynchronously through a job queue. "
-    "The system incorporates patented technologies ([REDACTED-PATENT-PUB], US Provisional "
-    "[REDACTED-PATENT-NO]) and has been validated under CI across all three platforms.", BODY))
+    "The system incorporates patented technologies (, US Provisional "
+    ") and has been validated under CI across all three platforms.", BODY))
 
 c.append(Paragraph("3.1 Analysis Pipelines", H2))
 pipe_data = [
     ["Pipeline","Function","Type"],
     ["block_entropy","Normalised H_N/ln(L) for N=1..6 (Rao et al. 2009)","Statistical"],
     ["char_freq","Zipf distribution, rank-frequency, Zipf exponent","Statistical"],
-    ["kandles","Phonetic colour-coding grid ([REDACTED-PATENT-PUB])","Phonetic"],
+    ["kandles","Phonetic colour-coding grid ()","Phonetic"],
     ["positional","Sign frequencies at initial/medial/terminal positions","Structural"],
     ["sign_cluster","Distributional clustering (Kober method)","Structural"],
     ["paradigm","Inflectional paradigm detection (Ventris/Kober)","Structural"],

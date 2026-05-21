@@ -33,9 +33,11 @@ Scoring:
 
 Output: backend/reports/phase146_f3_redesign.json
 """
-import sys, json, re, math
-from pathlib import Path
+import json
+import math
+import sys
 from collections import Counter
+from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "backend"))
@@ -148,11 +150,11 @@ skt_supporting = skt_only + both
 print(f"\n  Readings with ≥1 DRV-exclusive marker: {drv_supporting}/{n_high_valid} ({100*drv_supporting/n_high_valid:.1f}%)")
 print(f"  Readings with ≥1 SKT-exclusive marker: {skt_supporting}/{n_high_valid} ({100*skt_supporting/n_high_valid:.1f}%)")
 
-print(f"\n  DRV_EXCLUSIVE examples:")
+print("\n  DRV_EXCLUSIVE examples:")
 for r in [x for x in results_high if x["category"] == "DRV_EXCLUSIVE"][:12]:
     print(f"    {r['sign']}: \"{r['reading']}\" markers={r['drv_markers']}")
 
-print(f"\n  NEUTRAL examples (no exclusive markers either direction):")
+print("\n  NEUTRAL examples (no exclusive markers either direction):")
 for r in [x for x in results_high if x["category"] == "NEUTRAL"][:8]:
     print(f"    {r['sign']}: \"{r['reading']}\"")
 
@@ -223,7 +225,7 @@ p_val_hm      = binomial_p(n_hm_valid, hm_drv_support, null_p)
 excl_ratio_high = drv_only / max(skt_only, 1)
 excl_ratio_hm   = hm_drv_only / max(hm_skt_only, 1)
 
-print(f"\n" + "─"*70)
+print("\n" + "─"*70)
 print("STATISTICAL VERDICT")
 print("─"*70)
 print(f"\n  Null hypothesis: p(Drv-exclusive marker) = {null_p} for random readings")
@@ -251,7 +253,7 @@ for r in results_high:
     for m in r["drv_markers"]:
         all_drv_markers[m] += 1
 
-print(f"\n  Most frequent Drv-exclusive markers in HIGH readings:")
+print("\n  Most frequent Drv-exclusive markers in HIGH readings:")
 for marker, count in all_drv_markers.most_common(10):
     print(f"    {marker}: {count}")
 

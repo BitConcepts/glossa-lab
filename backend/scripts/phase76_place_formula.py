@@ -25,8 +25,8 @@ CPU only.
 Output: reports/phase76_place_formula.json
 """
 from __future__ import annotations
-import csv, json
-from collections import Counter
+
+import json
 from pathlib import Path
 
 REPO    = Path(__file__).parents[2]
@@ -143,18 +143,18 @@ def main():
             )
             print(f"    Interpretation: {formula_match['interpretation']}")
         else:
-            print(f"    No geographic match found (ROOT readings unread or unmatched)")
+            print("    No geographic match found (ROOT readings unread or unmatched)")
 
         matches.append(formula_match)
 
-    print(f"\n=== Phase-76 Results ===")
+    print("\n=== Phase-76 Results ===")
     print(f"  PLACE_FORMULAs analysed: {len(place_formulas)}")
     print(f"  Geographic matches:      {n_matched}")
-    print(f"\n  Key insight: Place formulas likely encode:")
-    print(f"    - Settlement names (uur, nakar + locative il/in)")
-    print(f"    - Administrative region markers")
-    print(f"    - Ownership of place (agent-of-place + kol/lord)")
-    print(f"    These are consistent with merchant/administrative seal function")
+    print("\n  Key insight: Place formulas likely encode:")
+    print("    - Settlement names (uur, nakar + locative il/in)")
+    print("    - Administrative region markers")
+    print("    - Ownership of place (agent-of-place + kol/lord)")
+    print("    These are consistent with merchant/administrative seal function")
 
     result = {
         "_citation": {"primary": ["A.1"], "krishnamurti": "Krishnamurti 2003"},

@@ -30,7 +30,12 @@ try:
     from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
     from reportlab.lib.units import inch
     from reportlab.platypus import (
-        HRFlowable, PageBreak, Paragraph, SimpleDocTemplate, Spacer, Table,
+        HRFlowable,
+        PageBreak,
+        Paragraph,
+        SimpleDocTemplate,
+        Spacer,
+        Table,
         TableStyle,
     )
 except ImportError:
@@ -297,7 +302,7 @@ def _section_phase_timeline(flow: list, s: dict,
     if p56:
         n_add = p56.get("n_added", 0) or p56.get("n_new_anchors", 0)
         n_med = p56.get("after_medium", p56.get("n_medium", "?"))
-        timeline.append(("56", f"New MEDIUM anchors via Parpola crosswalk",
+        timeline.append(("56", "New MEDIUM anchors via Parpola crosswalk",
                          f"+{n_add} ({n_med} total MEDIUM)", "VERIFIED"))
     if p57:
         z57 = p57.get("z_score", "?")
@@ -322,7 +327,7 @@ def _section_phase_timeline(flow: list, s: dict,
     if p61:
         seq = p61.get("sequence_validity", {}).get("valid_inscription_rate", 0)
         viol = p61.get("violation_rate", 0)
-        timeline.append(("61", f"Vowel harmony / phonotactic falsification",
+        timeline.append(("61", "Vowel harmony / phonotactic falsification",
                          f"{seq:.0%} vowel harmony, {viol:.0%} violations",
                          p61.get("verdict", "?")))
 

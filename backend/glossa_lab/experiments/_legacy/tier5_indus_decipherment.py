@@ -114,22 +114,28 @@ def classify_indus_signs(
 # ── Shared setup ─────────────────────────────────────
 
 def _load():
-    from glossa_lab.data.dravidian  import get_corpus_symbols as drav_sym
-    from glossa_lab.data.sanskrit   import get_corpus_symbols as skt_sym
-    from glossa_lab.data.sumerian_ur3 import (
-        get_corpus_symbols as sum_sym,
-        get_corpus_inscriptions as sum_ins,
-    )
-    from glossa_lab.data.old_hebrew  import (
-        get_corpus_symbols as heb_sym,
-        get_corpus_inscriptions as heb_ins,
+    from glossa_lab.data.dravidian import get_corpus_symbols as drav_sym
+    from glossa_lab.data.indus_public_corpus import (
+        get_corpus_inscriptions as ind_ins,
     )
     from glossa_lab.data.indus_public_corpus import (
         get_corpus_symbols as ind_sym,
-        get_corpus_inscriptions as ind_ins,
     )
-    from glossa_lab.pipelines.decipher import LanguageModel, _score_mapping
+    from glossa_lab.data.old_hebrew import (
+        get_corpus_inscriptions as heb_ins,
+    )
+    from glossa_lab.data.old_hebrew import (
+        get_corpus_symbols as heb_sym,
+    )
+    from glossa_lab.data.sanskrit import get_corpus_symbols as skt_sym
+    from glossa_lab.data.sumerian_ur3 import (
+        get_corpus_inscriptions as sum_ins,
+    )
+    from glossa_lab.data.sumerian_ur3 import (
+        get_corpus_symbols as sum_sym,
+    )
     from glossa_lab.pipelines.beam_decipher import beam_decipher
+    from glossa_lab.pipelines.decipher import LanguageModel, _score_mapping
 
     lm_drav = LanguageModel(drav_sym())
     lm_skt  = LanguageModel(skt_sym())
@@ -248,7 +254,7 @@ def _score_hypothesis(
         print(f"    Random mean ± std: {mean_rand:.1f} ± {std_rand:.1f}")
         print(f"    Z-score:           {z_score:+.2f}")
         print(f"    Kandles:           {kandles:.4f}")
-        print(f"    Top 10 proposed readings (sign \u2192 phoneme):")
+        print("    Top 10 proposed readings (sign \u2192 phoneme):")
         for s, cnt, ph in top10_readings:
             cls = sign_classes.get(s, {}).get('type', '?')
             print(f"      {s:6} ({cls:10}) n={cnt:4}  \u2192  {ph}")
@@ -288,8 +294,8 @@ def run_tier5_indus(verbose: bool = True, top_n: int = 30) -> dict[str, Any]:
     _pr(f"\n  Indus corpus: {len(d['indus_flat'])} tokens  "
         f"V={len(d['indus_freq'])} signs  "
         f"{len(d['indus_inscr'])} inscriptions")
-    _pr(f"\n  Sign classification (terminal≥50%→LOGOGRAM, initial≥60%→INITIAL, "
-        f"entropy≥0.50→PHONOGRAM, else MEDIAL):")
+    _pr("\n  Sign classification (terminal≥50%→LOGOGRAM, initial≥60%→INITIAL, "
+        "entropy≥0.50→PHONOGRAM, else MEDIAL):")
     for t in ("LOGOGRAM", "INITIAL", "PHONOGRAM", "MEDIAL", "RARE"):
         signs = by_type.get(t, [])
         top5 = sorted(signs, key=lambda x: -x[1])[:5]

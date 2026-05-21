@@ -158,7 +158,6 @@ def _consistency_report(
 
 
 def run_nw_semitic_decipher_run(verbose: bool = True) -> dict[str, Any]:
-    from glossa_lab.pipelines.decipher import LanguageModel
 
     def _pr(*a, **kw):
         if verbose:

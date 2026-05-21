@@ -14,10 +14,7 @@ TEST-GPU-010  _parallel run_seeds_parallel runs N seeds in parallel.
 from __future__ import annotations
 
 import sys
-import importlib
 from pathlib import Path
-
-import pytest
 
 # Allow importing from backend/scripts/
 _BACKEND = Path(__file__).resolve().parent.parent

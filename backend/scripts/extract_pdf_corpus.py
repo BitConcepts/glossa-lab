@@ -232,7 +232,6 @@ def parse_catalog_pdf(pdf_path: Path) -> dict[str, dict]:
 
 
 def main() -> None:
-    import pypdf
 
     # ── 1. Diagnose both PDFs ──────────────────────────────────────────
     print("=" * 60)
@@ -282,7 +281,7 @@ def main() -> None:
         else:
             print("  Run parse_kindle_corpus.py first.")
     else:
-        print(f"\n  ✓ Found real sign sequences!")
+        print("\n  ✓ Found real sign sequences!")
         # Sample a few
         sample_ids = list(sequences.keys())[:5]
         for sid in sample_ids:
@@ -307,7 +306,7 @@ def main() -> None:
             (_REPORTS / "icit_sign_stats_pdf.json").write_text(
                 json.dumps(signs, indent=2), encoding="utf-8"
             )
-            print(f"  Saved icit_sign_stats_pdf.json")
+            print("  Saved icit_sign_stats_pdf.json")
 
     # ── 4. Save whatever we got ────────────────────────────────────────
     print("\n" + "=" * 60)
@@ -326,7 +325,7 @@ def main() -> None:
     (_REPORTS / "icit_pdf_extraction.json").write_text(
         json.dumps(output, indent=2), encoding="utf-8"
     )
-    print(f"\nSaved icit_pdf_extraction.json")
+    print("\nSaved icit_pdf_extraction.json")
     print(f"\n{'Real sequences extracted' if n_with_seqs > 0 else 'No sequences in text layer — PDF uses image-based glyphs'}")
     print("\nDone.")
 

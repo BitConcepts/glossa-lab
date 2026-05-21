@@ -25,7 +25,12 @@ Output: reports/phase46_t2_decipher_944lm.json
 """
 from __future__ import annotations
 
-import csv, json, math, random, sys, time
+import csv
+import json
+import math
+import random
+import sys
+import time
 from collections import Counter
 from pathlib import Path
 from types import SimpleNamespace
@@ -224,7 +229,7 @@ def main() -> None:
                     pinned = {"M267": match}
                     m267_token = match
             else:
-                print(f"  [SKIP] M267 not in corpus — cannot pin")
+                print("  [SKIP] M267 not in corpus — cannot pin")
                 pinned = None
 
         print(f"\n[{cond_name}] M267 → {m267_token or 'free'}, "
@@ -268,7 +273,7 @@ def main() -> None:
     best_cond_name, best_lift = best_cond
     improvement = (best_lift - baseline_lift) / abs(baseline_lift) if baseline_lift else 0
 
-    print(f"\n=== M267 Constraint Results ===")
+    print("\n=== M267 Constraint Results ===")
     print(f"Baseline lift: {baseline_lift:.4f}x")
     print(f"Best constraint: {best_cond_name} → {best_lift:.4f}x (+{improvement:.1%})")
 

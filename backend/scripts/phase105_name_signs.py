@@ -8,8 +8,10 @@ CPU only. Output: reports/phase105_name_signs.json
 Also updates backend/reports/INDUS_FINAL_ANCHORS.json
 """
 from __future__ import annotations
-import csv, json
-from collections import Counter, defaultdict
+
+import csv
+import json
+from collections import Counter
 from pathlib import Path
 
 REPO    = Path(__file__).parents[2]
@@ -217,7 +219,7 @@ def main():
                 "source": "Phase-105",
             }
             newly_added.append(sign)
-            print(f"    ✓ Added/promoted to MEDIUM")
+            print("    ✓ Added/promoted to MEDIUM")
         else:
             print(f"    Already confirmed at {anchors[sign].get('confidence')}, skipping")
 

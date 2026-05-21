@@ -10,6 +10,7 @@ match the root of a known TB personal name.
 CPU only. Output: reports/phase107_tb_name_check.json
 """
 from __future__ import annotations
+
 import json
 from pathlib import Path
 
@@ -194,7 +195,7 @@ def main():
     match_rate = round(n_matched / max(1, len(check_results)), 3)
     strong_rate = round(n_strong / max(1, len(check_results)), 3)
 
-    print(f"\n  Cross-reference summary:")
+    print("\n  Cross-reference summary:")
     print(f"    Total proposals: {len(check_results)}")
     print(f"    With any TB match: {n_matched} ({match_rate:.1%})")
     print(f"    Strong/exact matches: {n_strong} ({strong_rate:.1%})")

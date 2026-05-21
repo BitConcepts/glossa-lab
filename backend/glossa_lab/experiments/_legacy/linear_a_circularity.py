@@ -35,7 +35,11 @@ for _p in (_BACKEND, _TESTS):
     if _p not in sys.path:
         sys.path.insert(0, _p)
 
-from glossa_lab.experiments._legacy.stats import bootstrap_ci, empirical_p_value, z_score  # noqa: E402
+from glossa_lab.experiments._legacy.stats import (  # noqa: E402
+    bootstrap_ci,
+    empirical_p_value,
+    z_score,
+)
 from glossa_lab.pipelines.decipher import LanguageModel  # noqa: E402
 from glossa_lab.pipelines.hypothesis import Hypothesis, HypothesisEngine  # noqa: E402
 

@@ -65,7 +65,8 @@ async def _maybe_notify_experiment(
     """Fire an experiment_complete email; never raises."""
     try:
         from glossa_lab.notifications import (  # noqa: PLC0415
-            format_experiment_complete, get_notifier,
+            format_experiment_complete,
+            get_notifier,
         )
         notifier = get_notifier()
         if not notifier.is_configured():
@@ -235,7 +236,6 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                     try:
                         # Run node in thread; send SSE heartbeats every 30s
                         # to prevent browser/proxy timeouts on long nodes.
-                        import concurrent.futures  # noqa: PLC0415
                         future = loop.run_in_executor(
                             None, atomic.fn, node_inputs, params
                         )

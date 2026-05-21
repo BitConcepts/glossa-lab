@@ -21,9 +21,10 @@ modal is a sibilant reading, and pair with DEDR entries.
 
 Output: backend/reports/phase153_sibilant_anchors.json
 """
-import sys, json
+import json
+import sys
+from collections import Counter
 from pathlib import Path
-from collections import Counter, defaultdict
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "backend"))
@@ -173,12 +174,12 @@ print(f"\n  Unanchored corpus signs (freq 3-50, MEDIAL≥50%): {len(unanchored)}
 print(f"  LOW-confidence MEDIAL signs: {len(low_medial)}")
 
 # For each DEDR sibilant, suggest candidate signs
-print(f"\n  SIBILANT CANDIDATE ASSIGNMENTS:")
-print(f"  (signs that could receive a sibilant reading)")
+print("\n  SIBILANT CANDIDATE ASSIGNMENTS:")
+print("  (signs that could receive a sibilant reading)")
 
 # Sort unanchored by frequency descending — higher frequency = more data
 unanchored.sort(key=lambda x: -x[1])
-print(f"\n  Top 15 unanchored MEDIAL signs (no current reading):")
+print("\n  Top 15 unanchored MEDIAL signs (no current reading):")
 print(f"  {'Sign':<8} {'Freq':>5} {'i_rate':>7} {'m_rate':>7} {'t_rate':>7}")
 for sign, freq, pp in unanchored[:15]:
     print(f"  {sign:<8} {freq:>5} {pp['i']:>7.3f} {pp['m']:>7.3f} {pp['t']:>7.3f}")
@@ -205,7 +206,7 @@ for seq in all_seqs:
         if seq[i] in initial_hm and seq[i+1] in unanchored_set:
             follows_initial[seq[i+1]] += 1
 
-print(f"\n  Unanchored signs that follow INITIAL signs (potential name syllables):")
+print("\n  Unanchored signs that follow INITIAL signs (potential name syllables):")
 print(f"  {'Sign':<8} {'Count':>7} {'Total freq':>10} {'% after INITIAL':>15}")
 for sign, count in follows_initial.most_common(10):
     total = sign_freq.get(sign, 0)

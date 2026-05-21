@@ -17,6 +17,7 @@ Key terms from Martini 2025 that map onto Indus sign readings:
 CPU only. Output: reports/phase125_arthasastra_mine.json
 """
 from __future__ import annotations
+
 import json
 from pathlib import Path
 
@@ -229,7 +230,7 @@ def main():
     print(f"  Reading matches: {n_match}/{len(mapped)}")
 
     # Print Egypt ostracon parallel
-    print(f"\n  Egypt Ostracon Parallel (Martini 2025, pp. 240-243):")
+    print("\n  Egypt Ostracon Parallel (Martini 2025, pp. 240-243):")
     print(f"    Contents: {EGYPT_OSTRACON_PARALLELS['contents']}")
     print(f"    Parallel: {EGYPT_OSTRACON_PARALLELS['parallel_to_indus'][:200]}...")
 

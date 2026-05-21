@@ -9,9 +9,14 @@ Phase-136 through Phase-140: Remaining falsification & structural validation bat
 
 Output: backend/reports/phase136_140_battery.json
 """
-import sys, json, os, datetime, math, random
+import datetime
+import json
+import math
+import os
+import random
+import sys
+from collections import Counter
 from pathlib import Path
-from collections import Counter, defaultdict
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "backend"))
@@ -83,7 +88,7 @@ print("\n"+"─"*70); print("PHASE-136: F3 FIX — CV-SKELETON PHONOLOGICAL EXCL
 
 DRV_EXCLUSIVE = {
     # These phonemes/clusters appear in Dravidian but NOT Sanskrit
-    "zh": "retroflex_liquid_zh",     # Tamil ழ்  
+    "zh": "retroflex_liquid_zh",     # Tamil ழ்
     "zhl": "retroflex_liquid_cluster",
     "L": "retroflex_lateral",         # Tamil ள்
     "N": "alveolar_nasal",            # Tamil ண்
@@ -95,7 +100,7 @@ DRV_EXCLUSIVE = {
     "kku": "geminate_kk",
     "ppu": "geminate_pp",
     "-an": "suffix_an",   # Tamil/Dravidian personal suffix
-    "-al": "suffix_al",   # Tamil/Dravidian verbal noun suffix  
+    "-al": "suffix_al",   # Tamil/Dravidian verbal noun suffix
     "-in": "suffix_in",   # Dravidian locative/possessive
     "-um": "suffix_um",   # Dravidian inclusive particle
     "ul": "body_inner",   # DEDR 662 (uḷ = inside)
@@ -611,7 +616,7 @@ cond_entropy_ratio = H_cond_proper / max(H1, 1e-10)
 print(f"  H1 (marginal): {H1:.3f} bits")
 print(f"  H(X2|X1) conditional: {H_cond_proper:.3f} bits")
 print(f"  Conditional/Marginal ratio: {cond_entropy_ratio:.3f}")
-print(f"  (Natural language ≈ 0.5–0.8; random ≈ 1.0)")
+print("  (Natural language ≈ 0.5–0.8; random ≈ 1.0)")
 
 # ── B. Type-Token Ratio (TTR) ──────────────────────────────────────────────────
 ttr = len(sign_freq) / n_tokens
@@ -654,7 +659,7 @@ if len(freq_pos_data) >= 10:
     spearman_r = num / max(den_f * den_t, 1e-10)
     # Expected: NEGATIVE (higher frequency → lower rank number → higher terminal rate)
     print(f"\n  Frequency-Position Spearman r: {spearman_r:.4f}")
-    print(f"  (Expected < 0 for Dravidian: high-freq signs should be terminal-biased)")
+    print("  (Expected < 0 for Dravidian: high-freq signs should be terminal-biased)")
     fp_verdict = (
         "STRONGLY_DRAVIDIAN" if spearman_r < -0.3 else
         "DRAVIDIAN"          if spearman_r < -0.1 else

@@ -11,7 +11,7 @@ from __future__ import annotations
 import html
 from collections import Counter
 from datetime import datetime, timezone
-from typing import Any, Iterable
+from typing import Any
 
 
 def _now_human() -> str:

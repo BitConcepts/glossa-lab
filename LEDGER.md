@@ -738,7 +738,7 @@ Risks:
 
 Next step:
   Run evidence sweep to verify fetcher fix.
-  Consider Specsmith GitHub issues (documented in prior session analysis).
+  Consider GitHub issues (documented in prior session analysis).
 
 ---
 

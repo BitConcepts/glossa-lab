@@ -176,7 +176,7 @@ Results:
 
 ---
 
-## Batch 8 — SQLite WAL Fix + Specsmith Migration
+## Batch 8 — SQLite WAL Fix + Governance-Tool Migration
 **Date**: 2026-05-17  
 **Commit**: `438cc69` (WAL) + staged
 
@@ -192,7 +192,7 @@ Results:
   - `PRAGMA synchronous=NORMAL` — crash-safe with WAL, faster than FULL
 - Result: **445 passed, 0 failed** (was 428 passed, 16 failed).
 
-### Specsmith migration (model-rate-limits.json)
+### governance-tool migration (model-rate-limits.json)
 Both `.governance-tool/model-rate-limits.json` files updated to current-gen model landscape:
 
 | Added | Provider |

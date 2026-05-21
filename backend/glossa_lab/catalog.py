@@ -10,6 +10,7 @@ from glossa_lab.engine import get_registered_pipeline_info
 
 _REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 _REPORTS_DIR = _REPO_ROOT / "reports"
+_OUTPUTS_DIR = _REPO_ROOT / "outputs"
 
 _PIPELINE_METADATA: dict[str, dict[str, Any]] = {
     "block_entropy": {
@@ -467,31 +468,34 @@ def _build_report_experiment_map() -> dict[str, str]:
 
 
 def list_report_catalog() -> list[dict[str, Any]]:
-    """Return discovered report artifacts enriched with experiment_id where known."""
-    if not _REPORTS_DIR.exists():
-        return []
+    """Return discovered report artifacts enriched with experiment_id where known.
 
+    Scans both reports/ (PDFs, markdown, CSV human-readable reports) and
+    outputs/ (generated JSON/JSONL computational artifacts).
+    """
     exp_map = _build_report_experiment_map()
     entries: list[dict[str, Any]] = []
-    for path in sorted(_REPORTS_DIR.rglob("*")):
-        if not path.is_file():
-            continue
-        stat = path.stat()
-        suffix = path.suffix.lower()
-        entries.append(
-            {
-                "id": path.stem,
-                "name": path.name,
-                "kind": _report_kind_for_suffix(suffix),
-                "relative_path": path.relative_to(_REPO_ROOT).as_posix(),
-                "size_bytes": stat.st_size,
-                "updated_at": datetime.fromtimestamp(
-                    stat.st_mtime,
-                    tz=timezone.utc,
-                ).isoformat(),
-                "experiment_id": exp_map.get(path.stem, ""),
-            }
-        )
+    scan_dirs = [d for d in (_REPORTS_DIR, _OUTPUTS_DIR) if d.exists()]
+    for scan_dir in scan_dirs:
+        for path in sorted(scan_dir.rglob("*")):
+            if not path.is_file():
+                continue
+            stat = path.stat()
+            suffix = path.suffix.lower()
+            entries.append(
+                {
+                    "id": path.stem,
+                    "name": path.name,
+                    "kind": _report_kind_for_suffix(suffix),
+                    "relative_path": path.relative_to(_REPO_ROOT).as_posix(),
+                    "size_bytes": stat.st_size,
+                    "updated_at": datetime.fromtimestamp(
+                        stat.st_mtime,
+                        tz=timezone.utc,
+                    ).isoformat(),
+                    "experiment_id": exp_map.get(path.stem, ""),
+                }
+            )
     return entries
 
 

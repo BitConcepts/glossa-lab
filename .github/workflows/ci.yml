@@ -109,7 +109,7 @@ jobs:
           curl -sf http://127.0.0.1:8001/api/v1/health || echo "Backend may not be running"
 
       - name: Set up Node.js 20
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "20"
           cache: npm

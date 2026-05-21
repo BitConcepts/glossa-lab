@@ -13,7 +13,9 @@ Produces formula_lexicon: a sorted table of pattern → translation with confide
 CPU only. Output: reports/phase84_formula_lexicon.json
 """
 from __future__ import annotations
-import csv, json, re
+
+import csv
+import json
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -179,7 +181,7 @@ def main():
                 "transliteration": reading["transliteration"],
             })
 
-    print(f"\n  Formula type distribution:")
+    print("\n  Formula type distribution:")
     for ft, count in sorted(formula_type_dist.items(), key=lambda x: -x[1]):
         print(f"    {ft:30s}: {count:4d} seals ({count/len(seals)*100:.1f}%)")
 
@@ -227,7 +229,7 @@ def main():
         lexicon.append(entry)
 
     # Add a worked example translation
-    print(f"\n  Sample formula translations:")
+    print("\n  Sample formula translations:")
     for entry in lexicon[:4]:
         if entry["n_seals"] > 0:
             print(f"    {entry['formula_type']} ({entry['n_seals']} seals):")
@@ -240,7 +242,7 @@ def main():
     n_formulas_decoded = sum(1 for e in lexicon if e["n_seals"] > 0)
     total_covered = sum(e["n_seals"] for e in lexicon if e["formula_type"] != "UNCERTAIN")
 
-    print(f"\n=== Phase-84 Results ===")
+    print("\n=== Phase-84 Results ===")
     print(f"  Formula types in lexicon: {len(lexicon)}")
     print(f"  Non-UNCERTAIN formulas: {n_formulas_decoded}")
     print(f"  Seals covered by lexicon: {total_covered}/{len(seals)} ({total_covered/len(seals)*100:.1f}%)")

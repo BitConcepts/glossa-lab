@@ -9,7 +9,9 @@ Target: UNCERTAIN count below 200 (from current ~320).
 CPU only. Output: reports/phase92_uncertain_reduction.json
 """
 from __future__ import annotations
-import csv, json
+
+import csv
+import json
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -32,7 +34,7 @@ def classify_seal(signs: list, anchors: dict, confirmed: set) -> str:
     roles = set()
     n_confirmed = sum(1 for s in signs if s in confirmed)
     coverage = n_confirmed / len(signs) if signs else 0
-    
+
     for s in signs:
         if s in TITLE_SIGNS: roles.add("TITLE")
         if s in SUFFIX_SIGNS: roles.add("SUFFIX")

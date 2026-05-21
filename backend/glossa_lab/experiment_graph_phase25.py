@@ -12,7 +12,6 @@ from __future__ import annotations
 
 import math
 import random
-import re
 from collections import Counter
 from typing import Any
 
@@ -42,10 +41,13 @@ def _phase25_corpus_loader(inputs: dict, params: dict) -> dict:
     """Load all Phase-25 contact-zone artefacts."""
     try:
         from glossa_lab.data.mesopotamian_contact import (  # noqa: PLC0415
-            get_indus_seals_at_mesopotamia, get_seals_with_inscription,
-            get_meluhhan_persons_v2, get_meluhhan_persons_v3,
-            get_parpola_phoneme_map, get_janabiyah_seal_reading,
+            get_indus_seals_at_mesopotamia,
+            get_janabiyah_seal_reading,
             get_meluhha_tablets,
+            get_meluhhan_persons_v2,
+            get_meluhhan_persons_v3,
+            get_parpola_phoneme_map,
+            get_seals_with_inscription,
         )
     except Exception as exc:  # noqa: BLE001
         return {"error": f"data module not available: {exc}"}

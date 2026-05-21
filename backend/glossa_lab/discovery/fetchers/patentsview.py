@@ -90,6 +90,7 @@ _opener: urllib.request.OpenerDirector | None = None
 
 # Circuit breaker — disable PPUBS after consecutive session failures
 import time as _time_cb  # noqa: E402
+
 _ppubs_consecutive_fails: int = 0
 _ppubs_skip_until: float = 0.0
 _PPUBS_MAX_FAILS: int = 2

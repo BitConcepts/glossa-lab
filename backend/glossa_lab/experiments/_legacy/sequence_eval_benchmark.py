@@ -87,16 +87,23 @@ def _word_boundary_coherence(
 
 def _load() -> dict[str, Any]:
     from corpora.ugaritic import (
-        _BAAL_CYCLE_LINES, _SIGN_TO_ID,
-        get_answer_key, get_word_level_inscriptions,
+        _BAAL_CYCLE_LINES,
+        _SIGN_TO_ID,
+        get_answer_key,
+        get_word_level_inscriptions,
+    )
+
+    from glossa_lab.data.old_hebrew import (
+        get_corpus_symbols as heb_sym,
     )
     from glossa_lab.data.old_hebrew import (
-        get_corpus_symbols     as heb_sym,
-        get_word_inscriptions   as heb_word_inscr,
         get_ugaritic_to_hebrew_map,
     )
+    from glossa_lab.data.old_hebrew import (
+        get_word_inscriptions as heb_word_inscr,
+    )
+    from glossa_lab.pipelines.beam_decipher import UGARITIC_PHONO_GROUPS_TIGHT, beam_decipher
     from glossa_lab.pipelines.decipher import LanguageModel, score_accuracy
-    from glossa_lab.pipelines.beam_decipher import beam_decipher, UGARITIC_PHONO_GROUPS_TIGHT
 
     def _parse(line: str) -> list[str]:
         return [ch for ch in line.split() if ch != "."]

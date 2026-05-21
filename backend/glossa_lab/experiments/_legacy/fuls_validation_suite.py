@@ -48,7 +48,7 @@ import math
 import os
 import random
 import sys
-from collections import Counter, defaultdict
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -305,7 +305,7 @@ def run_validation_suite(verbose: bool = True) -> dict[str, Any]:
         "mean_bigram_plausibility": None,
         "note": "Measured from fuls_tier_validation_report (beam+phono groups, 0 anchors)",
     })
-    _pr(f"  (Ugaritic reference at 31.5 tok/sign: consistency=86.7%)")
+    _pr("  (Ugaritic reference at 31.5 tok/sign: consistency=86.7%)")
 
     # ─────────────────────────────────────────────────────────────────────
     # RISK 2 — Assignment distribution analysis

@@ -65,17 +65,23 @@ def _std(xs):
 
 
 def run_anchor_simulation(verbose: bool = True) -> dict[str, Any]:
-    from glossa_lab.pipelines.beam_decipher import (
-        beam_decipher, UGARITIC_PHONO_GROUPS_TIGHT,
-    )
-    from glossa_lab.pipelines.decipher import LanguageModel, score_accuracy
-    from glossa_lab.data.old_hebrew import (
-        get_corpus_symbols, get_word_inscriptions, get_ugaritic_to_hebrew_map,
-    )
     from corpora.ugaritic import (
-        _BAAL_CYCLE_LINES, _SIGN_TO_ID, get_answer_key,
+        _BAAL_CYCLE_LINES,
+        _SIGN_TO_ID,
+        get_answer_key,
         get_word_level_inscriptions,
     )
+
+    from glossa_lab.data.old_hebrew import (
+        get_corpus_symbols,
+        get_ugaritic_to_hebrew_map,
+        get_word_inscriptions,
+    )
+    from glossa_lab.pipelines.beam_decipher import (
+        UGARITIC_PHONO_GROUPS_TIGHT,
+        beam_decipher,
+    )
+    from glossa_lab.pipelines.decipher import LanguageModel, score_accuracy
 
     def _pr(*a, **kw):
         if verbose:
@@ -131,7 +137,7 @@ def run_anchor_simulation(verbose: bool = True) -> dict[str, Any]:
     _pr("  Fuls Anchor Simulation — Ugaritic->Hebrew (proxy for NW Semitic)")
     _pr("=" * 72)
     _pr(f"  Corpus: {len(cipher_flat)} tokens, 30 signs   GT: {len(gt)} mappings")
-    _pr(f"  Engine: beam_decipher width=200, tight phonological groups, OCP")
+    _pr("  Engine: beam_decipher width=200, tight phonological groups, OCP")
     _pr(f"  Ordered pan-Semitic anchors available: {len(ORDERED_ANCHORS)}")
     _pr()
     _pr(f"  {'Anchors':>7}  {'Best Acc':>9}  {'Rand Mean':>10}  {'Rand Std':>9}  {'Time(best)':>10}")

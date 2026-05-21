@@ -78,7 +78,7 @@ doc = SimpleDocTemplate(
     leftMargin=3*cm, rightMargin=3*cm,
     topMargin=2.5*cm, bottomMargin=2.5*cm,
     title="Glossa Lab Tier Validation — Report for Dr. Fuls",
-    author=\"BitConcepts LLC\",
+    author="BitConcepts LLC",
 )
 
 styles = getSampleStyleSheet()

@@ -17,9 +17,11 @@ GPU: torch for passage scoring.
 Output: reports/phase72_parpola_parser.json
 """
 from __future__ import annotations
-import json, re, sys
+
+import json
+import re
+import sys
 from pathlib import Path
-from collections import Counter
 
 sys.path.insert(0, str(Path(__file__).parents[1]))
 from glossa_lab.gpu_utils import detect_device as _detect_device  # noqa: E402
@@ -73,7 +75,7 @@ PAT_WORD_SIGN = re.compile(
     r'([a-z\u0100-\u024f\-]{2,20})\s+\(?sign\s+(?:no\.?\s*)?(\d{1,3})\)?',
     re.IGNORECASE)
 
-# Pattern 7: Dravidian word + P-number in the same sentence  
+# Pattern 7: Dravidian word + P-number in the same sentence
 PAT_DRAV_P = re.compile(
     r'([a-z\u0101\u012b\u016b\u0113\u014d\-]{3,20})\s*'
     r'(?:\([Pp]\.?\s*(\d{1,3})\)|P\.?\s*(\d{1,3}))',
@@ -230,14 +232,14 @@ def main():
                     if f["p_num"] not in known_readings or
                     known_readings[f["p_num"]].lower()[:3] != f["reading"].lower()[:3]]
 
-    print(f"\n=== Phase-72 Results ===")
+    print("\n=== Phase-72 Results ===")
     print(f"  Total findings:       {len(all_findings)}")
     print(f"  Dravidian readings:   {len(dravidian_findings)}")
     print(f"  Confirmed vs. P56:    {len(confirmed)}")
     print(f"  Potentially new:      {len(new_readings)}")
 
     if dravidian_findings:
-        print(f"\n  Dravidian findings:")
+        print("\n  Dravidian findings:")
         for f in dravidian_findings[:10]:
             known = known_readings.get(f["p_num"], "")
             match = "✓" if known[:3].lower() == f["reading"].lower()[:3] else "?"

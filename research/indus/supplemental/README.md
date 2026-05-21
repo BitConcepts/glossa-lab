@@ -82,37 +82,6 @@ Referenced in preprint §3.9, §3.10, §3.12.
 
 ---
 
-### `ivs_sign_network.html`
-Interactive co-occurrence network of 22 selected H+M anchors, contributed by Avishai Roif
-(Ben-Gurion University of the Negev / BGU Research Institute for Israel and Zionism Studies).
-
-**Open in any browser — no dependencies required.**
-
-The network applies Roif's betweenness centrality and community detection methodology
-(developed for the Phoenician Spatial Empire study, under review at the *Journal of
-World-Systems Research*) to the IVS co-occurrence data.
-
-Key findings independently produced by the network:
-- The three-slot positional grammar (INITIAL classifier / MEDIAL guild title / TERMINAL suffix)
-  reproduces as three distinct betweenness centrality clusters.
-- MEDIAL signs — in particular **M099=kol/koḷ** and **M267=iN/in (genitive)** — function as
-  **structural bridges** between the classifier and suffix clusters, with markedly higher
-  betweenness than signs in either flanking cluster.
-- In Roif's Phoenician model, precisely this network-frontier high-betweenness medial position
-  is the signature of **protocol-based authority encoding** rather than hierarchical or
-  commodity-based encoding.
-
-**Node encoding:** node size ∝ corpus frequency; edges = confirmed bigrams (PMI > 1.5, ≥ 15 seals).
-Interactive: click any node to see its reading, confidence, and confirmed co-occurrence partners.
-Filter buttons isolate the three grammatical slots.
-
-**Attribution:**
-- Network method: Roif, A. (under review). *Journal of World-Systems Research*.
-  Correspondence: avishai.roif@gmail.com
-- Corpus data: Pierson, T.K. (2026). Preprint v1. BitConcepts LLC / Glossa-Lab.
-
----
-
 ## Notes on corpus access
 
 The underlying corpus is the **Holdat LLC Indus Corpus v3** (Miller 2025), which is not

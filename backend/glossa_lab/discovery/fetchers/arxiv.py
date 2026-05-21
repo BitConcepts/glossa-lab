@@ -47,9 +47,9 @@ import threading as _threading  # noqa: E402
 import time as _time_mod  # noqa: E402
 
 _arxiv_lock = _threading.Lock()
-_arxiv_last_ok_mono: float = 0.0     # monotonic time of last successful request
+_arxiv_last_attempt_mono: float = 0.0  # monotonic time of last attempted request
 _arxiv_cooldown_until: float = 0.0   # monotonic time until we are allowed to try again
-_ARXIV_INTER_REQUEST_SECS: float = 15.0   # min 3s per arXiv docs; we use 15s to stay well clear of IP bans
+_ARXIV_INTER_REQUEST_SECS: float = 20.0   # min 3s per arXiv docs; use 20s to stay clear of IP bans
 
 
 def _arxiv_cb_trip(cooldown: float) -> None:
@@ -72,13 +72,14 @@ class ArxivFetcher(Fetcher):
     # arXiv policy (2024-2025): no more than 1 request per 3 seconds.
     # We use 10s as our polite inter-request delay to avoid IP-level bans.
     rate_delay: float = 15.0
-    _MAX_RETRIES: int = 1     # max 1 retry — second 429 means we're in a rate window; stop
-    _RETRY_BASE: float = 90.0  # 90s → trip global cooldown immediately on first 429
+    _MAX_RETRIES: int = 0     # do not retry inside a scheduler tick; cooldown skips later topics
+    _RETRY_BASE: float = 900.0  # 15m cooldown on 429 when no Retry-After is available
+    _TIMEOUT_COOLDOWN: float = 600.0  # 10m cooldown on network/read timeouts
 
     async def fetch(
         self, topic: TopicProfile, *, since: datetime | None = None,
     ) -> Iterable[RawItem]:
-        global _arxiv_last_ok_mono  # noqa: PLW0603 — must be declared before first read
+        global _arxiv_last_attempt_mono  # noqa: PLW0603 — must be declared before first read
         import asyncio as _asyncio  # noqa: PLC0415
 
         # Check global cooldown before attempting anything
@@ -99,22 +100,22 @@ class ArxivFetcher(Fetcher):
         }
         raw = None
         for attempt in range(1 + self._MAX_RETRIES):
-            # Enforce minimum inter-request delay (polite crawling)
+            # Reserve a request slot and sleep asynchronously outside the lock.
             with _arxiv_lock:
-                elapsed = _time_mod.monotonic() - _arxiv_last_ok_mono
-                if elapsed < _ARXIV_INTER_REQUEST_SECS:
-                    import time as _t  # noqa: PLC0415
-                    _t.sleep(_ARXIV_INTER_REQUEST_SECS - elapsed)
+                now_mono = _time_mod.monotonic()
+                elapsed = now_mono - _arxiv_last_attempt_mono
+                wait_secs = max(0.0, _ARXIV_INTER_REQUEST_SECS - elapsed)
+                _arxiv_last_attempt_mono = now_mono + wait_secs
+            if wait_secs > 0:
+                await _asyncio.sleep(wait_secs)
 
             try:
-                raw = await run_in_thread(http_get_json, _ENDPOINT, params=params, timeout=30.0)
-                # Update last-OK timestamp on success
-                _arxiv_last_ok_mono = _time_mod.monotonic()
+                raw = await run_in_thread(http_get_json, _ENDPOINT, params=params, timeout=20.0)
                 break
             except FetcherError as exc:
                 err_str = str(exc)
                 is_429 = "429" in err_str or "rate exceeded" in err_str.lower()
-                is_timeout = "timed out" in err_str.lower()
+                is_timeout = "timed out" in err_str.lower() or "timeout" in err_str.lower()
                 is_retryable = (is_429 or is_timeout) and attempt < self._MAX_RETRIES
                 if is_429:
                     # Trip the global cooldown immediately — ALL topics must back off
@@ -130,6 +131,13 @@ class ArxivFetcher(Fetcher):
                     if is_retryable:
                         await _asyncio.sleep(backoff)
                         continue
+                    return []
+                if is_timeout:
+                    _arxiv_cb_trip(self._TIMEOUT_COOLDOWN)
+                    _log.warning(
+                        "arXiv timeout for topic %s — global cooldown set to %.0fs",
+                        topic.id, self._TIMEOUT_COOLDOWN,
+                    )
                     return []
                 if is_retryable:
                     await _asyncio.sleep(15.0)

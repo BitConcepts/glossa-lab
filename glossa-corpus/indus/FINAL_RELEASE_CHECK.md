@@ -2,7 +2,7 @@
 **Generated**: 2026-05-21  
 **Branch**: preprint-last-mechanical-polish  
 **File checked**: `glossa-corpus/indus/preprint_v1.tex`  
-**PDF artifact**: `preprint_v1_FINAL_FRIENDLY_REVIEW.pdf` (105,829 bytes)
+**PDF artifact**: `preprint_v1.pdf` (105,829 bytes)
 
 ---
 
@@ -86,7 +86,7 @@
 ### D1. Compile Result
 - [x] XeLaTeX pass 1 — **exit 0**, no fatal errors
 - [x] XeLaTeX pass 2 — **exit 0**, no LaTeX errors or undefined references
-- [x] PDF produced: `preprint_v1_FINAL_FRIENDLY_REVIEW.pdf` (105,829 bytes)
+- [x] PDF produced: `preprint_v1.pdf` (105,829 bytes)
 - [x] Font: Noto Serif (text) + Latin Modern Math (math) — active in preamble
 - [x] Overfull hboxes — **3 minor overflows** (≤60pt in §1.3 list, ≤8pt in tables; non-critical for review draft)
 - [ ] Longtable width warnings — **6 longtable warnings** (column widths converged on 2nd pass; standard behaviour, non-blocking)
@@ -165,7 +165,7 @@
   "check_date": "2026-05-21",
   "branch": "preprint-last-mechanical-polish",
   "tex_file": "glossa-corpus/indus/preprint_v1.tex",
-  "pdf_artifact": "glossa-corpus/indus/preprint_v1_FINAL_FRIENDLY_REVIEW.pdf",
+  "pdf_artifact": "glossa-corpus/indus/preprint_v1.pdf",
   "pdf_bytes": 105829,
   "compile_passes": 2,
   "compile_errors": 0,

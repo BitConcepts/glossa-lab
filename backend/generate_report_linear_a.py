@@ -243,7 +243,7 @@ content.append(Paragraph("5. Language Family Hypothesis Testing", H2))
 content.append(Paragraph(
     "The hypothesis engine tests three competing theories for the Minoan language family "
     "by building language models from each and measuring how well they explain the Linear A "
-    "sign sequence. The Kandles phonetic fingerprint (Merkur patent [REDACTED-PATENT-PUB]) "
+    "sign sequence. The Kandles phonetic fingerprint (phonetic distribution comparison) "
     "provides the primary signal: it compares the phonetic colour-distribution of the "
     "proposed decipherment against the target language.",
     BODY,
@@ -354,7 +354,7 @@ refs = [
     "[5] Rao et al. (2009). Entropic Evidence for Linguistic Structure. Science, 324, 1165.",
     "[6] Palmer, L.R. (1958). Luvian and Linear A. Transactions of the Philological Society, 75–100.",
     "[7] Dietrich, M. & Loretz, O. (2001). Das Ugaritische und das Phönizische und die Entzifferung des Lineären A.",
-    "[8] Merkur, M. (2024). [REDACTED-PATENT-PUB].",
+    "[8] Merkur, M. (2024). .",
     "[9] SigLA database: https://sigla.phis.me/ (Salgarella & Castellan, 2020).",
     "[10] van Soesbergen, P. (2022). The Decipherment of Minoan Linear A. 8 vols.",
 ]

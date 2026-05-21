@@ -117,6 +117,5 @@
       "sourcePort": "consistency_curve",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

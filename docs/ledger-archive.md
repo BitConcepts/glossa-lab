@@ -878,7 +878,7 @@ Next step: Build richer Luwian language model using ETCSL/Hittite corpus texts t
 
 ## [2026-04-03] Entry — Rate-limit pacing, admin dashboard backend, and frontend CRUD expansion
 
-Objective: (1) Add a shared AI model rate-limit pacing layer with pre-dispatch budgeting and 429 recovery. (2) Expand the backend with a live pipeline registry, catalog API, richer CRUD, and provider preferences. (3) Upgrade the frontend API client and Jobs view. (4) Open a Specsmith GitHub issue for the same pacing feature.
+Objective: (1) Add a shared AI model rate-limit pacing layer with pre-dispatch budgeting and 429 recovery. (2) Expand the backend with a live pipeline registry, catalog API, richer CRUD, and provider preferences. (3) Upgrade the frontend API client and Jobs view. (4) Open a GitHub issue for the same pacing feature.
 
 What was done:
 - Created backend/glossa_lab/ai_pacing.py: AIModelPacer with rolling 60s RPM/TPM window, pre-dispatch token estimation, 429 retry-after parsing, exponential backoff+jitter, dynamic concurrency reduction, and EMA utilization tracking

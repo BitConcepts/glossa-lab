@@ -50,7 +50,7 @@ OUT.parent.mkdir(exist_ok=True)
 
 doc = SimpleDocTemplate(str(OUT), pagesize=A4,
     leftMargin=3*cm, rightMargin=3*cm, topMargin=2.5*cm, bottomMargin=2.5*cm,
-    title="Glossa Lab Tier Validation v3 - Dr. Fuls", author=\"BitConcepts LLC\")
+    title="Glossa Lab Tier Validation v3 - Dr. Fuls", author="BitConcepts LLC")
 
 SS = getSampleStyleSheet()
 def s(n,**k):

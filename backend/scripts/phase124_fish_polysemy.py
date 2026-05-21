@@ -17,8 +17,10 @@ Key finding from prior analysis:
 CPU only. Output: reports/phase124_fish_polysemy.json
 """
 from __future__ import annotations
-import csv, json
-from collections import Counter, defaultdict
+
+import csv
+import json
+from collections import Counter
 from pathlib import Path
 
 REPO    = Path(__file__).parents[2]
@@ -279,7 +281,7 @@ def main():
     }
     OUT.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"\n  Saved → {OUT}")
-    print(f"  Phase-124 complete: fish polysemy hypothesis analyzed, data ready for Avishai")
+    print("  Phase-124 complete: fish polysemy hypothesis analyzed, data ready for Avishai")
     return result
 
 

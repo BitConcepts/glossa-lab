@@ -14,9 +14,14 @@ Tests:
 
 Output: backend/reports/phase134_falsification_suite.json
 """
-import sys, json, os, datetime, math, random
-from pathlib import Path
+import datetime
+import json
+import math
+import os
+import random
+import sys
 from collections import Counter, defaultdict
+from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "backend"))
@@ -513,7 +518,7 @@ else:
     class_counts = Counter(cls for _, cls in single_sign_classes)
     total_classified = sum(v for k, v in class_counts.items() if k != "UNKNOWN")
 
-    print(f"  Class distribution of single-sign seals:")
+    print("  Class distribution of single-sign seals:")
     for cls, cnt in class_counts.most_common():
         pct = 100 * cnt / max(len(single_seals), 1)
         print(f"    {cls}: {cnt} ({pct:.1f}%)")
@@ -639,7 +644,7 @@ print(f"  Gap ratio (actual/expected): {gap_ratio:.3f}")
 print(f"  Signs needed for 90.75% coverage: actual={actual_signs_for_90}, Zipf_predicted={expected_signs_for_90}")
 
 # Top 10 non-H+M signs by frequency
-print(f"\n  Top 10 uncovered signs by frequency:")
+print("\n  Top 10 uncovered signs by frequency:")
 for sign, freq in non_hm_signs[:10]:
     conf = anchors.get(sign, {}).get("confidence", "MISSING")
     reading = anchors.get(sign, {}).get("reading", "?")

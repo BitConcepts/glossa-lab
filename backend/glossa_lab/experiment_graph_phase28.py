@@ -25,7 +25,6 @@ from __future__ import annotations
 
 import base64
 import json
-import os
 import re
 from collections import Counter
 from pathlib import Path
@@ -47,15 +46,19 @@ def _phase28_corpus_loader(inputs: dict, params: dict) -> dict:
     allograph-family map, and CISI Vol 3 OCR results."""
     try:
         from glossa_lab.data.mesopotamian_contact import (  # noqa: PLC0415
-            get_indus_seals_at_mesopotamia, get_seals_with_inscription,
-            get_meluhhan_persons_v3, get_parpola_phoneme_map,
-            get_janabiyah_seal_reading, get_meluhha_tablets,
-            get_cisi_findspot_map, get_contact_zone_prefix_set,
-            get_phase27_seal_findspot_overrides,
-            get_iconographic_anchors,
-            get_mahadevan_parpola_crosswalk,
             get_allograph_families,
+            get_cisi_findspot_map,
             get_cisi_vol3_ocr_results,
+            get_contact_zone_prefix_set,
+            get_iconographic_anchors,
+            get_indus_seals_at_mesopotamia,
+            get_janabiyah_seal_reading,
+            get_mahadevan_parpola_crosswalk,
+            get_meluhha_tablets,
+            get_meluhhan_persons_v3,
+            get_parpola_phoneme_map,
+            get_phase27_seal_findspot_overrides,
+            get_seals_with_inscription,
         )
     except Exception as exc:  # noqa: BLE001
         return {"error": f"data module not available: {exc}"}

@@ -2,20 +2,21 @@
 Run: shell.cmd python backend/generate_report_linear_a_circularity.py
 Output: reports/linear_a_circularity_analysis.pdf
 """
-import sys, os, json
-from pathlib import Path
+import json
+import os
+import sys
 from datetime import datetime, timezone
+from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'tests'))
 
-from reportlab.lib.pagesizes import A4
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.lib.units import cm
 from reportlab.lib.colors import HexColor, white
-from reportlab.platypus import (SimpleDocTemplate, Paragraph, Spacer, Table,
-                                 TableStyle, HRFlowable)
 from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
+from reportlab.lib.units import cm
+from reportlab.platypus import HRFlowable, Paragraph, SimpleDocTemplate, Table, TableStyle
 
 NAVY  = HexColor("#1e3a5f"); BLUE  = HexColor("#2563eb"); GREEN = HexColor("#15803d")
 RED   = HexColor("#dc2626"); AMBER = HexColor("#d97706"); LGREY = HexColor("#f1f5f9")
@@ -345,7 +346,7 @@ for ref in [
     "[5] Palmer, L.R. (1958). Luvian and Linear A. Trans. Philological Society.",
     "[6] van Soesbergen, P. (2022). The Decipherment of Minoan Linear A. 8 vols.",
     "[7] Rao et al. (2009). Entropic Evidence for Linguistic Structure. Science 324:1165.",
-    
+
 ]:
     c.append(Paragraph(ref, SMALL))
 

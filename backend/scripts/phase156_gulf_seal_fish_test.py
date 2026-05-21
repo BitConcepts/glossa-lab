@@ -22,7 +22,8 @@ Also mine Parpola 1994 Chapter 10 for his fish-sign analysis.
 
 Output: backend/reports/phase156_gulf_seal_fish_test.json
 """
-import sys, json, re
+import json
+import re
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
@@ -54,7 +55,7 @@ laursen_text  = load_text(PDF_DIR / "laursen_2010_gulf_type_seals_extracted.txt"
 bahrain_text  = load_text(PDF_DIR / "bahrain_through_the_ages_extracted.txt")
 parpola_text  = load_text(PDF_DIR / "parpola_1994_deciphering_extracted.txt")
 
-print(f"\nLoaded texts:")
+print("\nLoaded texts:")
 print(f"  Laursen 2010:    {len(laursen_text):,} chars")
 print(f"  Bahrain vol.:    {len(bahrain_text):,} chars")
 print(f"  Parpola 1994:    {len(parpola_text):,} chars")
@@ -234,10 +235,10 @@ maha_fish_text += load_text(MAHA_DIR / "2011_fish_bath.txt")
 if len(maha_fish_text) > 100:
     print(f"\n  Mahadevan fish paper text available: {len(maha_fish_text)} chars")
 else:
-    print(f"\n  Mahadevan fish paper (2011): NOT AVAILABLE (blank S3 ID)")
-    print(f"  Note: Paper title 'The Indus Fish Swam in the Great Bath' (2011)")
-    print(f"  argues fish sign relates to Great Bath ritual, not commodity.")
-    print(f"  Our finding (0/113 isolated) is consistent with his interpretation.")
+    print("\n  Mahadevan fish paper (2011): NOT AVAILABLE (blank S3 ID)")
+    print("  Note: Paper title 'The Indus Fish Swam in the Great Bath' (2011)")
+    print("  argues fish sign relates to Great Bath ritual, not commodity.")
+    print("  Our finding (0/113 isolated) is consistent with his interpretation.")
 
 # Final verdict
 if any_isolated_gulf:

@@ -24,14 +24,20 @@ from pathlib import Path
 sys.path.insert(0, os.path.dirname(__file__))
 
 from reportlab.lib.colors import HexColor, white
-from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_LEFT
+from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import cm
 from reportlab.pdfbase import pdfmetrics as _pdfm
 from reportlab.pdfbase.ttfonts import TTFont as _TTF
 from reportlab.platypus import (
-    HRFlowable, PageBreak, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle,
+    HRFlowable,
+    PageBreak,
+    Paragraph,
+    SimpleDocTemplate,
+    Spacer,
+    Table,
+    TableStyle,
 )
 
 
@@ -974,13 +980,13 @@ if i_e2:
         tbl(cal_rows, w=[2.5*cm, 2.5*cm, 4*cm, 4*cm]),
         P("Table 21. Synthetic calibration curve. Accuracy measured against known ground-truth "
           "mapping on a 78-sign synthetic corpus at each token density.", CAP),
-        P(f"<b>IMPORTANT: Calibration failure — consistency is NOT a reliable accuracy proxy.</b>  "
-          f"At all tested token densities, the synthetic calibration shows 3–6% accuracy despite "
-          f"40–62% consistency. This confirms a fundamental limitation: in the surjective sparse regime "
-          f"(78 signs → 22 consonants, 4 tok/sign), the solution space is massively underdetermined. "
-          f"Multiple mappings are statistically equivalent and the algorithm cannot distinguish between them. "
-          f"<b>Mapping consistency measures statistical structure detection, NOT sign-assignment correctness.</b>  "
-          f"The only reliable path to accuracy is via anchor injection from external linguistic knowledge.", BODY),
+        P("<b>IMPORTANT: Calibration failure — consistency is NOT a reliable accuracy proxy.</b>  "
+          "At all tested token densities, the synthetic calibration shows 3–6% accuracy despite "
+          "40–62% consistency. This confirms a fundamental limitation: in the surjective sparse regime "
+          "(78 signs → 22 consonants, 4 tok/sign), the solution space is massively underdetermined. "
+          "Multiple mappings are statistically equivalent and the algorithm cannot distinguish between them. "
+          "<b>Mapping consistency measures statistical structure detection, NOT sign-assignment correctness.</b>  "
+          "The only reliable path to accuracy is via anchor injection from external linguistic knowledge.", BODY),
     ]
 
 # 6.3 Stability clustering (honest fragmentation)

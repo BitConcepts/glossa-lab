@@ -32,10 +32,8 @@ Usage:
 """
 from __future__ import annotations
 
-import math
 import os
 import sys
-from collections import Counter
 from typing import Any
 
 _HERE    = os.path.dirname(os.path.abspath(__file__))
@@ -50,18 +48,29 @@ for _p in (_BACKEND, _TESTS):
 
 def _load() -> dict[str, Any]:
     from corpora.ugaritic import (
-        _BAAL_CYCLE_LINES, _SIGN_TO_ID,
+        _BAAL_CYCLE_LINES,
+        _SIGN_TO_ID,
         get_answer_key,
         get_word_level_inscriptions,
     )
+
     from glossa_lab.data.old_hebrew import (
-        get_corpus_symbols     as heb_syms,
         get_corpus_inscriptions as heb_line_inscr,
-        get_word_inscriptions   as heb_word_inscr,
+    )
+    from glossa_lab.data.old_hebrew import (
+        get_corpus_symbols as heb_syms,
+    )
+    from glossa_lab.data.old_hebrew import (
         get_ugaritic_to_hebrew_map,
     )
+    from glossa_lab.data.old_hebrew import (
+        get_word_inscriptions as heb_word_inscr,
+    )
     from glossa_lab.pipelines.decipher import (
-        LanguageModel, decipher, score_accuracy, _score_mapping,
+        LanguageModel,
+        _score_mapping,
+        decipher,
+        score_accuracy,
     )
 
     # ── Ugaritic cipher (LINE-level) ──────────────────────────────

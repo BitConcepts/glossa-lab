@@ -23,7 +23,6 @@ from pydantic import BaseModel
 
 from glossa_lab.database import get_db
 
-
 # ── Model-name normalisation helpers ───────────────────────────────────────
 
 def _normalize_model_id(name: str) -> str:
@@ -223,7 +222,7 @@ async def auto_configure(profile: str = Query("mixed")) -> dict[str, Any]:
         }
 
     # Build a quick provider-id → provider-type lookup
-    prov_type_map: dict[str, str] = {
+    {
         p["id"]: p.get("provider_type", "cloud") for p in providers
     }
 

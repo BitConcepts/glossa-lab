@@ -1,12 +1,14 @@
 """Quick test to debug the notebooks 500 error."""
 import asyncio
+import sys
 import traceback
 
-import sys
 sys.path.insert(0, ".")
 
-from glossa_lab.database import Database, init_db, get_db
 from pathlib import Path
+
+from glossa_lab.database import get_db, init_db
+
 
 async def main():
     await init_db(Path("data"))

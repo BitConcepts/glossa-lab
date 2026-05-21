@@ -4,7 +4,10 @@ Uses Phase-57 decipherment table + all confirmed anchors.
 GPU: torch for formula clustering. Output: reports/phase59_pilot_readings.json
 """
 from __future__ import annotations
-import csv, json, sys
+
+import csv
+import json
+import sys
 from collections import Counter
 from pathlib import Path
 
@@ -143,10 +146,10 @@ def main():
     decoded.sort(key=lambda x: (-x["coverage_pct"], -x["count"]))
     # Fully decoded (≥80%) pilot readings
     fully_decoded = [d for d in decoded if d["coverage_pct"] >= 80]
-    print(f"\n=== Phase-59 Results ===")
+    print("\n=== Phase-59 Results ===")
     print(f"  Total unique formulas: {len(formula_counter)}")
     print(f"  Top-50 coverage: {len(fully_decoded)} formulas ≥80% decoded")
-    print(f"\n  BEST PILOT READINGS:")
+    print("\n  BEST PILOT READINGS:")
     for d in fully_decoded[:15]:
         print(f"  [{d['count']:3d}×] ({d['coverage_pct']:.0f}%) {d['morphological']}")
     result = {

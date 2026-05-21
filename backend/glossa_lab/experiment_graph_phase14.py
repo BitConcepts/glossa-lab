@@ -51,7 +51,6 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
-
 # ── Helpers ──────────────────────────────────────────────────────────────
 
 
@@ -225,7 +224,7 @@ def _zipf_mandelbrot_fit(inputs: dict, params: dict) -> dict:
                 "verdict": "Too few distinct symbols for a fit."}
 
     # Search a coarse grid then refine with parabolic minimisation.
-    log_r = [math.log(r + 1) for r in range(n)]
+    [math.log(r + 1) for r in range(n)]
     log_f = [math.log(c) if c > 0 else -1e9 for c in counts]
     mean_log_f = sum(log_f) / n
 
@@ -433,7 +432,8 @@ def _reference_corpus_loader(inputs: dict, params: dict) -> dict:
     try:
         if lang in ("hebrew", "old_hebrew"):
             from glossa_lab.data.old_hebrew import (  # noqa: PLC0415
-                get_corpus_inscriptions, get_corpus_symbols,
+                get_corpus_inscriptions,
+                get_corpus_symbols,
             )
             try:
                 seqs = list(get_corpus_inscriptions())
@@ -441,7 +441,8 @@ def _reference_corpus_loader(inputs: dict, params: dict) -> dict:
                 flat = list(get_corpus_symbols())
         elif lang == "geez":
             from glossa_lab.data.geez import (  # noqa: PLC0415
-                get_corpus_inscriptions, get_corpus_symbols,
+                get_corpus_inscriptions,
+                get_corpus_symbols,
             )
             try:
                 seqs = list(get_corpus_inscriptions())
@@ -449,7 +450,8 @@ def _reference_corpus_loader(inputs: dict, params: dict) -> dict:
                 flat = list(get_corpus_symbols())
         elif lang == "phoenician":
             from glossa_lab.data.phoenician import (  # noqa: PLC0415
-                get_corpus_inscriptions, get_corpus_symbols,
+                get_corpus_inscriptions,
+                get_corpus_symbols,
             )
             try:
                 seqs = list(get_corpus_inscriptions())
@@ -457,7 +459,8 @@ def _reference_corpus_loader(inputs: dict, params: dict) -> dict:
                 flat = list(get_corpus_symbols())
         elif lang in ("hieroglyphic_luwian", "luwian"):
             from glossa_lab.data.hieroglyphic_luwian import (  # noqa: PLC0415
-                get_corpus_inscriptions, get_corpus_symbols,
+                get_corpus_inscriptions,
+                get_corpus_symbols,
             )
             try:
                 seqs = list(get_corpus_inscriptions())

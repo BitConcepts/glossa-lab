@@ -20,9 +20,13 @@ Extends Phase-142 by:
 Real corpus only. No synthetic data.
 Output: backend/reports/phase143_iconographic_formula.json
 """
-import sys, json, os, datetime, math
-from pathlib import Path
+import datetime
+import json
+import math
+import os
+import sys
 from collections import Counter, defaultdict
+from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "backend"))
@@ -136,7 +140,7 @@ for initial, icon_counts in icon_by_initial.items():
 
 chi2_contributions.sort(key=lambda x: -x["chi2"])
 print(f"  H+M INITIAL × iconography pairs tested: {len(chi2_contributions)}")
-print(f"\n  Top associations (enriched INITIAL × iconography):")
+print("\n  Top associations (enriched INITIAL × iconography):")
 print(f"  {'Initial':<8} {'Reading':<12} {'Icon':<15} {'Obs':>5} {'Exp':>6} {'χ²':>7} Dir")
 for c in chi2_contributions[:20]:
     print(f"  {c['initial']:<8} {c['reading']:<12} {c['icon']:<15} {c['observed']:>5} "
@@ -170,7 +174,7 @@ results["A_iconographic_cross_tab"] = {
 print("\n"+"─"*70); print("B: PMI BIGRAM FORMULA INTERPRETATION"); print("─"*70)
 
 # Map top bigrams to readings
-print(f"  Top recurring bigrams interpreted:")
+print("  Top recurring bigrams interpreted:")
 print(f"  {'Bigram':25s} {'Count':>7} {'PMI':>7} Reading")
 
 formula_interpretations = []
@@ -253,13 +257,13 @@ length_stats.sort(key=lambda x: -x["mean_length"])
 overall_mean = sum(len(d["signs"]) for d in seals.values() if len(d["signs"])>1) / max(sum(1 for d in seals.values() if len(d["signs"])>1),1)
 
 print(f"  Overall mean inscription length (multi-sign): {overall_mean:.2f}")
-print(f"\n  INITIAL signs with longest formula sequences (potential high-status titles):")
+print("\n  INITIAL signs with longest formula sequences (potential high-status titles):")
 for s in length_stats[:10]:
     delta = s["mean_length"] - overall_mean
     print(f"  {s['sign']:<8} {s['reading']:<14} n={s['n_seals']:<4} mean={s['mean_length']:.2f} "
           f"({delta:+.2f} vs avg)")
 
-print(f"\n  INITIAL signs with shortest formula sequences (simple markers?):")
+print("\n  INITIAL signs with shortest formula sequences (simple markers?):")
 for s in sorted(length_stats, key=lambda x: x["mean_length"])[:5]:
     delta = s["mean_length"] - overall_mean
     print(f"  {s['sign']:<8} {s['reading']:<14} n={s['n_seals']:<4} mean={s['mean_length']:.2f} "
@@ -321,7 +325,7 @@ stable_low = [e for e in low_entropy if e["is_cross_site_stable"]]
 print(f"  H+M INITIAL signs analyzed: {len(initial_entropy)}")
 print(f"  Low right-neighbor entropy (<1.5 bits): {len(low_entropy)}")
 print(f"  Of those, cross-site stable: {len(stable_low)}")
-print(f"\n  Most formula-consistent INITIAL signs (low entropy = rigid formula):")
+print("\n  Most formula-consistent INITIAL signs (low entropy = rigid formula):")
 print(f"  {'Sign':<8} {'Reading':<14} {'N':>5} {'Entropy':>8} {'Stable':>7} {'Top-right'}")
 for e in initial_entropy[:12]:
     print(f"  {e['sign']:<8} {e['reading']:<14} {e['n_initial_uses']:>5} "

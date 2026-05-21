@@ -3,8 +3,11 @@ Tests all assigned phoneme values against Dravidian phonotactic constraints.
 GPU: torch for sequence validity matrix. Output: reports/phase61_phonotactic.json
 """
 from __future__ import annotations
-import csv, json, math, re, sys
-from collections import Counter
+
+import csv
+import json
+import re
+import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parents[1]))  # add backend/ to sys.path
@@ -123,7 +126,7 @@ def main():
     # Overall verdict
     violation_rate = n_issues / max(n_valid + n_issues, 1)
     verdict = "VALID" if violation_rate < 0.1 else ("MOSTLY_VALID" if violation_rate < 0.25 else "ISSUES_FOUND")
-    print(f"\n=== Phase-61 Results ===")
+    print("\n=== Phase-61 Results ===")
     print(f"  Readings tested: {len(results)}")
     print(f"  Valid: {n_valid}, Issues: {n_issues} ({violation_rate:.0%} violation rate)")
     print(f"  Sequence validity: {seq_validity.get('valid_inscription_rate',0):.1%}")

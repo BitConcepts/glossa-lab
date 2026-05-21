@@ -11,7 +11,6 @@ Uses the same methodology as Phase-133.
 
 import csv
 import json
-from collections import Counter
 from pathlib import Path
 
 import torch
@@ -108,7 +107,7 @@ n_correct_signs = sum(1 for s, p in profiles.items()
                       if predict_class(p) == actual_class(p))
 sign_accuracy_pct = n_correct_signs / len(profiles) * 100 if profiles else 0
 
-print(f"\nGrammar variance retest:")
+print("\nGrammar variance retest:")
 print(f"  H+M signs with profile: {len(profiles)}")
 print(f"  Total H+M tokens: {total_hm_tokens}")
 print(f"  Grammar model accuracy (sign-level): {sign_accuracy_pct:.1f}%")

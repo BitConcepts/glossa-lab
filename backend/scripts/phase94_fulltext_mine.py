@@ -9,8 +9,10 @@ Expected yield: 20-50 sign proposals from Parpola/Mahadevan/Levit appendices.
 CPU only. Output: reports/phase94_fulltext_mine.json
 """
 from __future__ import annotations
-import json, re, time
-from collections import Counter
+
+import json
+import re
+import time
 from pathlib import Path
 
 REPO    = Path(__file__).parents[2]
@@ -20,7 +22,9 @@ REPORTS = REPO / "reports"
 REPORTS.mkdir(exist_ok=True)
 OUT     = REPORTS / "phase94_fulltext_mine.json"
 
-import sys, os
+import os
+import sys
+
 sys.path.insert(0, str(REPO / "backend"))
 os.environ.setdefault("GLOSSA_DATA_DIR", str(REPO / "backend/data"))
 
@@ -44,7 +48,8 @@ def is_pd_valid(r: str) -> bool:
 
 
 def http_get(url: str, timeout: float = 20.0) -> dict:
-    import urllib.request, urllib.error
+    import urllib.error
+    import urllib.request
     req = urllib.request.Request(url, headers={
         "User-Agent": "GlossaLab/0.1 (+glossa-lab@bitconcepts.tech)"
     })
@@ -134,7 +139,7 @@ def main():
         # Re-fetch the paper list from Phase-88 context (it saved the corpus)
         # For now we'll use the actionable_findings' paper titles to reconstruct
         # and re-query their DOIs via SemanticScholar
-        print(f"  Phase-88 report loaded")
+        print("  Phase-88 report loaded")
     else:
         print("  Phase-88 report not found — running fresh SemanticScholar query")
 
@@ -191,7 +196,7 @@ def main():
         print(f"  Fetching: {paper.get('title','?')[:50]}...")
         text = fetch_fulltext(oa_url)
         if not text:
-            print(f"    Empty text")
+            print("    Empty text")
             continue
 
         n_fetched += 1
@@ -213,7 +218,7 @@ def main():
     new_candidates = [f for f in unique if f.get("new_anchor_candidate")]
     m293_evidence = [f for f in unique if "M293" in f.get("type","")]
 
-    print(f"\n=== Phase-94 Results ===")
+    print("\n=== Phase-94 Results ===")
     print(f"  DOIs queried:     {len(doi_results)}")
     print(f"  Papers fetched:   {n_fetched}")
     print(f"  With findings:    {n_with_findings}")
@@ -222,7 +227,7 @@ def main():
     print(f"  M293 evidence:    {len(m293_evidence)}")
 
     if m293_evidence:
-        print(f"\n  M293 findings:")
+        print("\n  M293 findings:")
         for f in m293_evidence[:3]:
             print(f"    reading='{f.get('reading','')}' from '{f.get('paper_title','')[:40]}'")
             print(f"    context: {f.get('context','')[:80]}")

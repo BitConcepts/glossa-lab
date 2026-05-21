@@ -13,7 +13,6 @@ This is the final personal-name experiment achievable without ICIT corpus.
 import csv
 import json
 import warnings
-from collections import Counter
 from pathlib import Path
 
 import torch

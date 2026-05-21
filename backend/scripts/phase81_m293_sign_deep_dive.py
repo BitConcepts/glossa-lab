@@ -14,8 +14,11 @@ This phase applies a four-pronged analysis:
 CPU only. Output: reports/phase81_m293_sign_deep_dive.json
 """
 from __future__ import annotations
-import csv, json, re
-from collections import Counter, defaultdict
+
+import csv
+import json
+import re
+from collections import Counter
 from pathlib import Path
 
 REPO    = Path(__file__).parents[2]
@@ -76,7 +79,7 @@ def load_holdat_corpus():
 
 
 def main():
-    print(f"Phase-81: M293 Sign Deep-Dive\n")
+    print("Phase-81: M293 Sign Deep-Dive\n")
 
     inscriptions = load_holdat_corpus()
     flat = [s for ins in inscriptions for s in ins]
@@ -109,7 +112,7 @@ def main():
     else:
         positional_class = "MIXED"
 
-    print(f"\n  Positional profile:")
+    print("\n  Positional profile:")
     print(f"    INITIAL:  {n_initial:3d} ({i_rate:.2%})")
     print(f"    MEDIAL:   {n_medial:3d} ({m_rate:.2%})")
     print(f"    TERMINAL: {n_terminal:3d} ({t_rate:.2%})")
@@ -136,7 +139,7 @@ def main():
     left_anchor_rate  = n_confirmed_left  / n_total_occ if n_total_occ else 0
     right_anchor_rate = n_confirmed_right / n_total_occ if n_total_occ else 0
 
-    print(f"\n  N-gram context:")
+    print("\n  N-gram context:")
     print(f"    Confirmed left neighbors:  {n_confirmed_left}/{n_total_occ} ({left_anchor_rate:.1%})")
     print(f"    Confirmed right neighbors: {n_confirmed_right}/{n_total_occ} ({right_anchor_rate:.1%})")
     print(f"    Top 8 left:  {left_neighbors.most_common(8)}")
@@ -153,7 +156,7 @@ def main():
     n_in_suffix_pos  = sum(1 for ins in inscriptions for i, s in enumerate(ins)
                           if s == TARGET and i == len(ins)-1)  # terminal = suffix-like
 
-    print(f"\n  Grammar slot analysis:")
+    print("\n  Grammar slot analysis:")
     print(f"    After AGENT sign:    {n_after_agent} ({n_after_agent/n_total_occ:.1%})")
     print(f"    Before TITLE sign:   {n_before_title} ({n_before_title/n_total_occ:.1%})")
     print(f"    After GENITIVE (M267): {n_after_genitive} ({n_after_genitive/n_total_occ:.1%})")
@@ -177,11 +180,11 @@ def main():
     sa_proto_modal = "ar"
     sa_tier = "ENSEMBLE_LOW"
 
-    print(f"\n  SA consensus (Phase-73):")
+    print("\n  SA consensus (Phase-73):")
     print(f"    Tamil syllabic modal: {sa_syl_modal}")
     print(f"    Proto-Dravidian modal: {sa_proto_modal}")
     print(f"    Ensemble tier: {sa_tier}")
-    print(f"    (SA disagreement between 'ta' and 'ar' — ENSEMBLE_LOW)")
+    print("    (SA disagreement between 'ta' and 'ar' — ENSEMBLE_LOW)")
 
     candidate_scores = []
     for reading, dedr_id, meaning, icon_plaus in DEDR_CANDIDATES:
@@ -214,7 +217,7 @@ def main():
 
     candidate_scores.sort(key=lambda x: -x["evidence_score"])
 
-    print(f"\n  DEDR candidates (ranked by evidence):")
+    print("\n  DEDR candidates (ranked by evidence):")
     for c in candidate_scores:
         print(f"    {c['reading']:8s} score={c['evidence_score']:.2f}  {c['dedr_id']}  {c['meaning']}")
 
@@ -226,7 +229,7 @@ def main():
     promoted = best["evidence_score"] >= 2.5 and best["pd_valid"]
     proposed_confidence = "MEDIUM" if promoted else "LOW"
 
-    print(f"\n=== Phase-81 Results ===")
+    print("\n=== Phase-81 Results ===")
     print(f"  Target sign:       M293 (freq={freq.get(TARGET,0)}, {freq.get(TARGET,0)/total_tokens*100:.1f}% tokens)")
     print(f"  Positional class:  {positional_class}")
     print(f"  Formula slot:      {formula_slot}")
@@ -239,8 +242,8 @@ def main():
     else:
         print(f"  -> Insufficient evidence for MEDIUM promotion (score={best['evidence_score']:.2f}, need >=2.5)")
         print(f"     M293 = '{best['reading']}' remains LOW confidence")
-        print(f"     Key gap: SA disagreement between syl='ta' and proto='ar' weakens certainty")
-        print(f"     Recommendation: run targeted DEDR iconographic search for M293 depiction")
+        print("     Key gap: SA disagreement between syl='ta' and proto='ar' weakens certainty")
+        print("     Recommendation: run targeted DEDR iconographic search for M293 depiction")
 
     # Update anchors if promoted
     if promoted:

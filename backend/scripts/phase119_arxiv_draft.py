@@ -6,6 +6,7 @@ Outputs LaTeX-ready abstract + section text + JSON metadata.
 CPU only. Output: reports/phase119_arxiv_draft.json + phase119_arxiv_draft.txt
 """
 from __future__ import annotations
+
 import json
 from datetime import datetime
 from pathlib import Path
@@ -203,7 +204,7 @@ to date and provides an open, reproducible pipeline for future validation."""
     }
     OUT_JSON.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"  Draft JSON → {OUT_JSON}")
-    print(f"  Phase-119 complete: arXiv preprint draft generated")
+    print("  Phase-119 complete: arXiv preprint draft generated")
     return result
 
 

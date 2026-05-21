@@ -11,8 +11,10 @@ CPU only. Output: reports/phase113_medium_to_high_upgrade.json
 Also updates backend/reports/INDUS_FINAL_ANCHORS.json
 """
 from __future__ import annotations
-import csv, json, re
-from collections import Counter
+
+import csv
+import json
+import re
 from pathlib import Path
 
 REPO    = Path(__file__).parents[2]

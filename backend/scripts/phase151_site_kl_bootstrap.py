@@ -12,9 +12,12 @@ This phase:
 
 Output: backend/reports/phase151_site_kl_bootstrap.json
 """
-import sys, json, math, random
-from pathlib import Path
+import json
+import math
+import random
+import sys
 from collections import Counter, defaultdict
+from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "backend"))
@@ -156,7 +159,7 @@ else:
 print(f"\n  Verdict: {kl_verdict} — {kl_note}")
 
 # ─── All site pairs with CI ─────────────────────────────────────────────────
-print(f"\n  Top 5 most divergent pairs (observed KL):")
+print("\n  Top 5 most divergent pairs (observed KL):")
 for (sa2, sb2), kl in sorted_pairs[:5]:
     n_a = len(site_seals[sa2]); n_b = len(site_seals[sb2])
     # Quick bootstrap (200 samples) for all pairs

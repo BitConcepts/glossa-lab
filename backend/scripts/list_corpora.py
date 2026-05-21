@@ -1,9 +1,12 @@
 """List all available corpora in the database."""
 import asyncio
 import sys
+
 sys.path.insert(0, ".")
-from glossa_lab.database import init_db, get_db
 from pathlib import Path
+
+from glossa_lab.database import get_db, init_db
+
 
 async def main():
     await init_db(Path("data"))

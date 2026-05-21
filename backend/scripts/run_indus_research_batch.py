@@ -14,7 +14,6 @@ Run: python backend/run_indus_research_batch.py
 from __future__ import annotations
 
 import json
-import os
 import sys
 import time
 from pathlib import Path
@@ -32,7 +31,7 @@ REPORTS_DIR = _REPO / "reports"
 REPORTS_DIR.mkdir(exist_ok=True)
 
 # ── Import graph runner ───────────────────────────────────────────────────────
-from glossa_lab.experiment_graph import get_graph_experiment, execute_graph  # noqa: E402
+from glossa_lab.experiment_graph import execute_graph, get_graph_experiment  # noqa: E402
 
 
 def run_experiment(exp_id: str) -> dict:

@@ -51,8 +51,8 @@ def _xp():
     return None
 
 
-from glossa_lab.engine import register_pipeline
 from glossa_lab.corpus_utils import normalise_sequences
+from glossa_lab.engine import register_pipeline
 
 # ── Vectorised bigram scorer ─────────────────────────────────────────────
 

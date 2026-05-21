@@ -3,9 +3,11 @@ Re-mines publications using Parpola P-number patterns (not M-numbers).
 GPU: torch for passage relevance scoring. Output: reports/phase60_contact_deep.json
 """
 from __future__ import annotations
-import json, re, sys
+
+import json
+import re
+import sys
 from pathlib import Path
-from collections import defaultdict
 
 sys.path.insert(0, str(Path(__file__).parents[1]))  # add backend/ to sys.path
 from glossa_lab.gpu_utils import detect_device as _detect_device  # noqa: E402
@@ -108,7 +110,7 @@ def main():
     # New readings not in Phase-56
     new_readings = [f for f in all_findings
                     if f.get("known_m_number") and not f.get("reading_match", True)]
-    print(f"\n=== Phase-60 Results ===")
+    print("\n=== Phase-60 Results ===")
     print(f"  Total P-number findings: {len(all_findings)}")
     print(f"  Potential new/corrected readings: {len(new_readings)}")
     print(f"  High-density passages: {len(top_passages)}")

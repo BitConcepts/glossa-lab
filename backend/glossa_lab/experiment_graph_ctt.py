@@ -682,9 +682,11 @@ def _build_old_tamil_role_map() -> dict[str, str]:
         "onpatu", "pattu", "nuru", "ayir",
     }
     try:
+        from glossa_lab.data.dravidian import (
+            TAMIL_BRAHMI_ATTESTED,
+        )
         from glossa_lab.data.dravidian import (  # noqa: PLC0415
             VOCABULARY as TAMIL_VOCAB,
-            TAMIL_BRAHMI_ATTESTED,
         )
     except Exception:  # noqa: BLE001
         TAMIL_VOCAB, TAMIL_BRAHMI_ATTESTED = {}, []

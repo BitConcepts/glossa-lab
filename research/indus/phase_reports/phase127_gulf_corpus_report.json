@@ -1,0 +1,49 @@
+{
+  "phase": 127,
+  "title": "Gulf Corpus Analysis + Roif Paper Mining + Fish-Sign Polysemy Test",
+  "date": "2026-05-18",
+  "key_findings": {
+    "roif_akkadian_model": {
+      "fish_reading": "min/m\u012bn (CONSISTENT with M047)",
+      "model_type": "Proto-Dravidian syllabic + Old Akkadian mnemonic shorthand",
+      "fish_in_compounds": true,
+      "fish_isolated_in_sample": false,
+      "consistency_with_glossa": "HIGH for fish reading, MEDIUM for overall model"
+    },
+    "gulf_catalogues": {
+      "saar_crawford_2001": "Dilmun seals, NOT Indus script",
+      "failaka_hojlund_2012": "Dilmun seals, fish in compound pictorial scenes",
+      "failaka_v2_david_cuny": "Dilmun seals (poor text extraction)",
+      "indus_script_seals_found": false,
+      "dilmun_fish_pattern": "0 isolated fish motifs, all compound (parallels Indus finding)"
+    },
+    "polysemy_test": {
+      "corpus": "Holdat (9 sites, 1390+ seals)",
+      "fish_signs_tested": [
+        "M047",
+        "M049",
+        "M052",
+        "M053",
+        "M054",
+        "M055",
+        "M056",
+        "M145"
+      ],
+      "total_fish_seals": 113,
+      "isolated": 0,
+      "compound": 113,
+      "lothal_coastal": {
+        "total": 6,
+        "isolated": 0,
+        "compound": 6
+      },
+      "inland_all": {
+        "total": 107,
+        "isolated": 0,
+        "compound": 107
+      },
+      "conclusion": "Fish sign is exclusively compound across ALL sites (0/113 isolated). Coastal Lothal shows same pattern as inland sites. Polysemy hypothesis cannot be tested in formal stamp seal corpus. Consistent with Martini 2025: commodity tallies on perishable media."
+    }
+  },
+  "reply_to_avishai": "updated \u2014 includes site table, Gulf catalogue findings, perishable media argument"
+}

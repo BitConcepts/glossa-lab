@@ -1,22 +1,121 @@
 {
   "id": "indus_phase24a_laursen_table1_audit",
-  "name": "Indus Phase-24a \u2014 Laursen 2010 Table 1 audit",
+  "name": "Indus Phase-24a — Laursen 2010 Table 1 audit",
   "description": "Phase-24a: parse + audit Laursen 2010's canonical 121-row Gulf-Type seal catalogue (Arabian Archaeology and Epigraphy 21:96-134). Reports rows parsed, inscribed Gulf-INDUS subset, distribution by site, and the 1 Parpola sign-by-sign reading (seal #10 = Janabiyah Cemetery). Output: reports/phase24a_laursen_table1_audit.json.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "load",   "type": "expNode", "data": { "atomicId": "LaursenTable1Loader", "label": "Load Laursen 2010 Table 1", "params": {} },                                "position": { "x": 60,   "y": 100 } },
-    { "id": "audit",  "type": "expNode", "data": { "atomicId": "LaursenTable1Auditor", "label": "Laursen Table 1 auditor",   "params": {} },                                "position": { "x": 360,  "y": 100 } },
-    { "id": "merge",  "type": "expNode", "data": { "atomicId": "Merger",               "label": "Merge",                     "params": {} },                                "position": { "x": 660,  "y": 100 } },
-    { "id": "out",    "type": "expNode", "data": { "atomicId": "JSONExport",           "label": "Save Phase-24a results",    "params": { "filename": "phase24a_laursen_table1_audit.json" } }, "position": { "x": 960, "y": 100 } }
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "LaursenTable1Loader",
+        "label": "Load Laursen 2010 Table 1",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "audit",
+      "type": "expNode",
+      "data": {
+        "atomicId": "LaursenTable1Auditor",
+        "label": "Laursen Table 1 auditor",
+        "params": {}
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge",
+        "params": {}
+      },
+      "position": {
+        "x": 660,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Phase-24a results",
+        "params": {
+          "filename": "phase24a_laursen_table1_audit.json"
+        }
+      },
+      "position": {
+        "x": 960,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e_load_audit_r",   "source": "load",  "target": "audit", "sourcePort": "rows",              "targetPort": "rows" },
-    { "id": "e_load_audit_p",   "source": "load",  "target": "audit", "sourcePort": "parpola_readings",  "targetPort": "parpola_readings" },
-    { "id": "e_audit_merge_v",  "source": "audit", "target": "merge", "sourcePort": "verdict",           "targetPort": "a" },
-    { "id": "e_audit_merge_n",  "source": "audit", "target": "merge", "sourcePort": "n_inscribed",       "targetPort": "b" },
-    { "id": "e_audit_merge_t",  "source": "audit", "target": "merge", "sourcePort": "by_gulf_type",      "targetPort": "c" },
-    { "id": "e_audit_merge_s",  "source": "audit", "target": "merge", "sourcePort": "by_site_top10",     "targetPort": "d" },
-    { "id": "e_audit_merge_x",  "source": "audit", "target": "merge", "sourcePort": "sample_rows",       "targetPort": "e" },
-    { "id": "e_merge_out",      "source": "merge", "target": "out",   "sourcePort": "json",              "targetPort": "data" }
-  ]
+    {
+      "id": "e_load_audit_r",
+      "source": "load",
+      "target": "audit",
+      "sourcePort": "rows",
+      "targetPort": "rows"
+    },
+    {
+      "id": "e_load_audit_p",
+      "source": "load",
+      "target": "audit",
+      "sourcePort": "parpola_readings",
+      "targetPort": "parpola_readings"
+    },
+    {
+      "id": "e_audit_merge_v",
+      "source": "audit",
+      "target": "merge",
+      "sourcePort": "verdict",
+      "targetPort": "a"
+    },
+    {
+      "id": "e_audit_merge_n",
+      "source": "audit",
+      "target": "merge",
+      "sourcePort": "n_inscribed",
+      "targetPort": "b"
+    },
+    {
+      "id": "e_audit_merge_t",
+      "source": "audit",
+      "target": "merge",
+      "sourcePort": "by_gulf_type",
+      "targetPort": "c"
+    },
+    {
+      "id": "e_audit_merge_s",
+      "source": "audit",
+      "target": "merge",
+      "sourcePort": "by_site_top10",
+      "targetPort": "d"
+    },
+    {
+      "id": "e_audit_merge_x",
+      "source": "audit",
+      "target": "merge",
+      "sourcePort": "sample_rows",
+      "targetPort": "e"
+    },
+    {
+      "id": "e_merge_out",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

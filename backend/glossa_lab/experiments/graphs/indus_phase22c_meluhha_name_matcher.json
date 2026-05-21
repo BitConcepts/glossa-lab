@@ -1,24 +1,143 @@
 {
   "id": "indus_phase22c_meluhha_name_matcher",
-  "name": "Indus Phase-22c \u2014 Meluhha name-to-seal matcher (prototype)",
+  "name": "Indus Phase-22c — Meluhha name-to-seal matcher (prototype)",
   "description": "Phase-22c contact-zone bilingual prototype: scores candidate Indus-seal-inscription <-> Meluhhan-name pairings by length and structural compatibility. Currently surfaces the gap (no Mesopotamia-found Indus seals have ingested sign sequences yet) as a verdict, defining the Phase-23 prerequisite of CISI Vol 3 / Frenez 2018 sign ingestion. First proof-of-concept toward a real bilingual anchor. Output: reports/phase22c_meluhha_name_matcher.json.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "load",     "type": "expNode", "data": { "atomicId": "ContactCorpusLoader",            "label": "Load contact corpus",                  "params": {} },                                                "position": { "x": 60,   "y": 100 } },
-    { "id": "seals",    "type": "expNode", "data": { "atomicId": "IndusSealsAtMesopotamiaSummary","label": "Indus seals summary",                  "params": {} },                                                "position": { "x": 360,  "y": 220 } },
-    { "id": "matcher",  "type": "expNode", "data": { "atomicId": "MeluhhaNameMatcher",            "label": "Meluhha name matcher (prototype)",     "params": { "min_name_freq": 2 } },                            "position": { "x": 660,  "y": 100 } },
-    { "id": "merge",    "type": "expNode", "data": { "atomicId": "Merger",                        "label": "Merge results",                        "params": {} },                                                "position": { "x": 960,  "y": 160 } },
-    { "id": "out",      "type": "expNode", "data": { "atomicId": "JSONExport",                    "label": "Save Phase-22c results",               "params": { "filename": "phase22c_meluhha_name_matcher.json" } }, "position": { "x": 1260, "y": 160 } }
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ContactCorpusLoader",
+        "label": "Load contact corpus",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "seals",
+      "type": "expNode",
+      "data": {
+        "atomicId": "IndusSealsAtMesopotamiaSummary",
+        "label": "Indus seals summary",
+        "params": {}
+      },
+      "position": {
+        "x": 360,
+        "y": 220
+      }
+    },
+    {
+      "id": "matcher",
+      "type": "expNode",
+      "data": {
+        "atomicId": "MeluhhaNameMatcher",
+        "label": "Meluhha name matcher (prototype)",
+        "params": {
+          "min_name_freq": 2
+        }
+      },
+      "position": {
+        "x": 660,
+        "y": 100
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge results",
+        "params": {}
+      },
+      "position": {
+        "x": 960,
+        "y": 160
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Phase-22c results",
+        "params": {
+          "filename": "phase22c_meluhha_name_matcher.json"
+        }
+      },
+      "position": {
+        "x": 1260,
+        "y": 160
+      }
+    }
   ],
   "edges": [
-    { "id": "e_load_match_p",     "source": "load",    "target": "matcher", "sourcePort": "persons",              "targetPort": "persons" },
-    { "id": "e_load_match_s",     "source": "load",    "target": "matcher", "sourcePort": "seals_at_mesopotamia", "targetPort": "seals_at_mesopotamia" },
-    { "id": "e_load_seals_s",     "source": "load",    "target": "seals",   "sourcePort": "seals_at_mesopotamia", "targetPort": "seals_at_mesopotamia" },
-    { "id": "e_seals_merge_v",    "source": "seals",   "target": "merge",   "sourcePort": "verdict",              "targetPort": "a" },
-    { "id": "e_seals_merge_rows", "source": "seals",   "target": "merge",   "sourcePort": "rows",                 "targetPort": "b" },
-    { "id": "e_match_merge_v",    "source": "matcher", "target": "merge",   "sourcePort": "verdict",              "targetPort": "c" },
-    { "id": "e_match_merge_p",    "source": "matcher", "target": "merge",   "sourcePort": "pairings_top50",       "targetPort": "d" },
-    { "id": "e_match_merge_np",   "source": "matcher", "target": "merge",   "sourcePort": "n_pairings",           "targetPort": "e" },
-    { "id": "e_merge_out",        "source": "merge",   "target": "out",     "sourcePort": "json",                 "targetPort": "data" }
-  ]
+    {
+      "id": "e_load_match_p",
+      "source": "load",
+      "target": "matcher",
+      "sourcePort": "persons",
+      "targetPort": "persons"
+    },
+    {
+      "id": "e_load_match_s",
+      "source": "load",
+      "target": "matcher",
+      "sourcePort": "seals_at_mesopotamia",
+      "targetPort": "seals_at_mesopotamia"
+    },
+    {
+      "id": "e_load_seals_s",
+      "source": "load",
+      "target": "seals",
+      "sourcePort": "seals_at_mesopotamia",
+      "targetPort": "seals_at_mesopotamia"
+    },
+    {
+      "id": "e_seals_merge_v",
+      "source": "seals",
+      "target": "merge",
+      "sourcePort": "verdict",
+      "targetPort": "a"
+    },
+    {
+      "id": "e_seals_merge_rows",
+      "source": "seals",
+      "target": "merge",
+      "sourcePort": "rows",
+      "targetPort": "b"
+    },
+    {
+      "id": "e_match_merge_v",
+      "source": "matcher",
+      "target": "merge",
+      "sourcePort": "verdict",
+      "targetPort": "c"
+    },
+    {
+      "id": "e_match_merge_p",
+      "source": "matcher",
+      "target": "merge",
+      "sourcePort": "pairings_top50",
+      "targetPort": "d"
+    },
+    {
+      "id": "e_match_merge_np",
+      "source": "matcher",
+      "target": "merge",
+      "sourcePort": "n_pairings",
+      "targetPort": "e"
+    },
+    {
+      "id": "e_merge_out",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

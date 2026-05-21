@@ -1,6 +1,6 @@
 {
   "id": "indus_v3_pmi_bigrams",
-  "name": "Indus V3 \u2014 Bigram PMI Analysis (Frozen Combinations)",
+  "name": "Indus V3 — Bigram PMI Analysis (Frozen Combinations)",
   "description": "High-PMI sign pairs identified as frozen morphemes. 20+ pairs with PMI>7.0.",
   "nodes": [
     {
@@ -60,5 +60,6 @@
       "sourcePort": "result",
       "targetPort": "data"
     }
-  ]
+  ],
+  "graph_type": "experiment"
 }

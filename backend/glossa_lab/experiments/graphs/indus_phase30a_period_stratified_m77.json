@@ -4,19 +4,162 @@
   "description": "Phase-30 #1: re-runs the Phase-20a M77 length-stratified spectral analysis with finer 8-bucket length bins ([[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,8],[9,9999]]) on the full M77 corpus. Goal: pin down whether the spectral gap rises smoothly with inscription length or jumps at a specific token threshold — a sharper test of the Phase-19 'short-inscriptions dominate the anomaly' hypothesis. Output: reports/phase30a_period_stratified_m77.json.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "load",     "type": "expNode", "data": { "atomicId": "M77InscriptionLoader",  "label": "Load M77 inscriptions",        "params": { "use_raw": false, "label": "indus_m77" } }, "position": { "x":   60, "y": 100 } },
-    { "id": "strat",    "type": "expNode", "data": { "atomicId": "LengthStratifier",      "label": "Stratify by length (8 bins)",   "params": { "bins": [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,8],[9,9999]] } }, "position": { "x":  360, "y": 100 } },
-    { "id": "spectral", "type": "expNode", "data": { "atomicId": "BinSpectralFingerprint", "label": "Per-bin spectral fingerprint", "params": {} }, "position": { "x":  660, "y": 100 } },
-    { "id": "merge",    "type": "expNode", "data": { "atomicId": "Merger",                 "label": "Merge results",                 "params": {} }, "position": { "x":  960, "y": 100 } },
-    { "id": "out",      "type": "expNode", "data": { "atomicId": "JSONExport",             "label": "Save Phase-30a results",        "params": { "filename": "phase30a_period_stratified_m77.json" } }, "position": { "x": 1240, "y": 100 } }
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "M77InscriptionLoader",
+        "label": "Load M77 inscriptions",
+        "params": {
+          "use_raw": false,
+          "label": "indus_m77"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "strat",
+      "type": "expNode",
+      "data": {
+        "atomicId": "LengthStratifier",
+        "label": "Stratify by length (8 bins)",
+        "params": {
+          "bins": [
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ],
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              8
+            ],
+            [
+              9,
+              9999
+            ]
+          ]
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    },
+    {
+      "id": "spectral",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BinSpectralFingerprint",
+        "label": "Per-bin spectral fingerprint",
+        "params": {}
+      },
+      "position": {
+        "x": 660,
+        "y": 100
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge results",
+        "params": {}
+      },
+      "position": {
+        "x": 960,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Phase-30a results",
+        "params": {
+          "filename": "phase30a_period_stratified_m77.json"
+        }
+      },
+      "position": {
+        "x": 1240,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e_load_strat",      "source": "load",     "target": "strat",    "sourcePort": "sequences",       "targetPort": "sequences" },
-    { "id": "e_strat_spectral",  "source": "strat",    "target": "spectral", "sourcePort": "stratifications", "targetPort": "stratifications" },
-    { "id": "e_strat_merge",     "source": "strat",    "target": "merge",    "sourcePort": "summary",         "targetPort": "a" },
-    { "id": "e_spec_merge",      "source": "spectral", "target": "merge",    "sourcePort": "per_bin",         "targetPort": "b" },
-    { "id": "e_spec_v_merge",    "source": "spectral", "target": "merge",    "sourcePort": "verdict",         "targetPort": "c" },
-    { "id": "e_load_merge",      "source": "load",     "target": "merge",    "sourcePort": "n_inscriptions",  "targetPort": "d" },
-    { "id": "e_merge_out",       "source": "merge",    "target": "out",      "sourcePort": "json",            "targetPort": "data" }
-  ]
+    {
+      "id": "e_load_strat",
+      "source": "load",
+      "target": "strat",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e_strat_spectral",
+      "source": "strat",
+      "target": "spectral",
+      "sourcePort": "stratifications",
+      "targetPort": "stratifications"
+    },
+    {
+      "id": "e_strat_merge",
+      "source": "strat",
+      "target": "merge",
+      "sourcePort": "summary",
+      "targetPort": "a"
+    },
+    {
+      "id": "e_spec_merge",
+      "source": "spectral",
+      "target": "merge",
+      "sourcePort": "per_bin",
+      "targetPort": "b"
+    },
+    {
+      "id": "e_spec_v_merge",
+      "source": "spectral",
+      "target": "merge",
+      "sourcePort": "verdict",
+      "targetPort": "c"
+    },
+    {
+      "id": "e_load_merge",
+      "source": "load",
+      "target": "merge",
+      "sourcePort": "n_inscriptions",
+      "targetPort": "d"
+    },
+    {
+      "id": "e_merge_out",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

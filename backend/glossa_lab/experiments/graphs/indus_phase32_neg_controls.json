@@ -10,9 +10,15 @@
       "data": {
         "atomicId": "M77InscriptionLoader",
         "label": "Load M77 Holdat corpus (baseline)",
-        "params": { "use_raw": false, "label": "indus_m77" }
+        "params": {
+          "use_raw": false,
+          "label": "indus_m77"
+        }
       },
-      "position": { "x": 60, "y": 200 }
+      "position": {
+        "x": 60,
+        "y": 200
+      }
     },
     {
       "id": "freq_real",
@@ -20,9 +26,15 @@
       "data": {
         "atomicId": "FreqCounter",
         "label": "Frequency (real corpus)",
-        "params": { "min_count": 1, "top_n": 0 }
+        "params": {
+          "min_count": 1,
+          "top_n": 0
+        }
       },
-      "position": { "x": 400, "y": 80 }
+      "position": {
+        "x": 400,
+        "y": 80
+      }
     },
     {
       "id": "zipf_real",
@@ -32,7 +44,10 @@
         "label": "Zipf exponent (real M77)",
         "params": {}
       },
-      "position": { "x": 700, "y": 80 }
+      "position": {
+        "x": 700,
+        "y": 80
+      }
     },
     {
       "id": "shuffle_ww",
@@ -40,9 +55,15 @@
       "data": {
         "atomicId": "ShuffleControl",
         "label": "Within-word shuffle (seed=42)",
-        "params": { "mode": "within_word", "seed": 42 }
+        "params": {
+          "mode": "within_word",
+          "seed": 42
+        }
       },
-      "position": { "x": 400, "y": 240 }
+      "position": {
+        "x": 400,
+        "y": 240
+      }
     },
     {
       "id": "freq_ww",
@@ -50,9 +71,15 @@
       "data": {
         "atomicId": "FreqCounter",
         "label": "Frequency (within-word shuffled)",
-        "params": { "min_count": 1, "top_n": 0 }
+        "params": {
+          "min_count": 1,
+          "top_n": 0
+        }
       },
-      "position": { "x": 700, "y": 240 }
+      "position": {
+        "x": 700,
+        "y": 240
+      }
     },
     {
       "id": "zipf_ww",
@@ -62,7 +89,10 @@
         "label": "Zipf exponent (within-word shuffled)",
         "params": {}
       },
-      "position": { "x": 1000, "y": 240 }
+      "position": {
+        "x": 1000,
+        "y": 240
+      }
     },
     {
       "id": "shuffle_gl",
@@ -70,9 +100,15 @@
       "data": {
         "atomicId": "ShuffleControl",
         "label": "Global shuffle (seed=42, destroys all structure)",
-        "params": { "mode": "global", "seed": 42 }
+        "params": {
+          "mode": "global",
+          "seed": 42
+        }
       },
-      "position": { "x": 400, "y": 400 }
+      "position": {
+        "x": 400,
+        "y": 400
+      }
     },
     {
       "id": "freq_gl",
@@ -80,9 +116,15 @@
       "data": {
         "atomicId": "FreqCounter",
         "label": "Frequency (globally shuffled)",
-        "params": { "min_count": 1, "top_n": 0 }
+        "params": {
+          "min_count": 1,
+          "top_n": 0
+        }
       },
-      "position": { "x": 700, "y": 400 }
+      "position": {
+        "x": 700,
+        "y": 400
+      }
     },
     {
       "id": "zipf_gl",
@@ -92,7 +134,10 @@
         "label": "Zipf exponent (globally shuffled)",
         "params": {}
       },
-      "position": { "x": 1000, "y": 400 }
+      "position": {
+        "x": 1000,
+        "y": 400
+      }
     },
     {
       "id": "kl_ww",
@@ -102,7 +147,10 @@
         "label": "KL divergence: real || within-word-shuffled",
         "params": {}
       },
-      "position": { "x": 1000, "y": 160 }
+      "position": {
+        "x": 1000,
+        "y": 160
+      }
     },
     {
       "id": "kl_gl",
@@ -112,7 +160,10 @@
         "label": "KL divergence: real || globally-shuffled",
         "params": {}
       },
-      "position": { "x": 1000, "y": 520 }
+      "position": {
+        "x": 1000,
+        "y": 520
+      }
     },
     {
       "id": "merge",
@@ -122,7 +173,10 @@
         "label": "Collect negative control results",
         "params": {}
       },
-      "position": { "x": 1300, "y": 300 }
+      "position": {
+        "x": 1300,
+        "y": 300
+      }
     },
     {
       "id": "out",
@@ -130,30 +184,150 @@
       "data": {
         "atomicId": "JSONExport",
         "label": "Save Phase-32 negative controls results",
-        "params": { "filename": "phase32_neg_controls.json" }
+        "params": {
+          "filename": "phase32_neg_controls.json"
+        }
       },
-      "position": { "x": 1600, "y": 300 }
+      "position": {
+        "x": 1600,
+        "y": 300
+      }
     }
   ],
   "edges": [
-    { "id": "e_m77_freq_r",    "source": "m77",       "target": "freq_real",  "sourcePort": "sequences",    "targetPort": "sequences" },
-    { "id": "e_m77_shuf_ww",   "source": "m77",       "target": "shuffle_ww", "sourcePort": "sequences",    "targetPort": "sequences" },
-    { "id": "e_m77_shuf_gl",   "source": "m77",       "target": "shuffle_gl", "sourcePort": "sequences",    "targetPort": "sequences" },
-    { "id": "e_freq_r_zipf_r", "source": "freq_real", "target": "zipf_real",  "sourcePort": "freq_map",     "targetPort": "freq_map" },
-    { "id": "e_sww_fww",       "source": "shuffle_ww","target": "freq_ww",    "sourcePort": "sequences",    "targetPort": "sequences" },
-    { "id": "e_fww_zww",       "source": "freq_ww",   "target": "zipf_ww",    "sourcePort": "freq_map",     "targetPort": "freq_map" },
-    { "id": "e_sgl_fgl",       "source": "shuffle_gl","target": "freq_gl",    "sourcePort": "sequences",    "targetPort": "sequences" },
-    { "id": "e_fgl_zgl",       "source": "freq_gl",   "target": "zipf_gl",    "sourcePort": "freq_map",     "targetPort": "freq_map" },
-    { "id": "e_kl_ww_p",       "source": "freq_real", "target": "kl_ww",      "sourcePort": "freq_map",     "targetPort": "freq_map" },
-    { "id": "e_kl_ww_q",       "source": "freq_ww",   "target": "kl_ww",      "sourcePort": "freq_map",     "targetPort": "q" },
-    { "id": "e_kl_gl_p",       "source": "freq_real", "target": "kl_gl",      "sourcePort": "freq_map",     "targetPort": "freq_map" },
-    { "id": "e_kl_gl_q",       "source": "freq_gl",   "target": "kl_gl",      "sourcePort": "freq_map",     "targetPort": "q" },
-    { "id": "e_zr_merge",      "source": "zipf_real", "target": "merge",      "sourcePort": "zipf_exponent","targetPort": "zipf_real" },
-    { "id": "e_zww_merge",     "source": "zipf_ww",   "target": "merge",      "sourcePort": "zipf_exponent","targetPort": "zipf_within_word_shuffle" },
-    { "id": "e_zgl_merge",     "source": "zipf_gl",   "target": "merge",      "sourcePort": "zipf_exponent","targetPort": "zipf_global_shuffle" },
-    { "id": "e_klww_merge",    "source": "kl_ww",     "target": "merge",      "sourcePort": "kl_divergence","targetPort": "kl_real_vs_ww_shuffle" },
-    { "id": "e_klgl_merge",    "source": "kl_gl",     "target": "merge",      "sourcePort": "kl_divergence","targetPort": "kl_real_vs_global_shuffle" },
-    { "id": "e_m77_merge_n",   "source": "m77",       "target": "merge",      "sourcePort": "n_inscriptions","targetPort": "n_inscriptions" },
-    { "id": "e_merge_out",     "source": "merge",     "target": "out",        "sourcePort": "json",         "targetPort": "data" }
-  ]
+    {
+      "id": "e_m77_freq_r",
+      "source": "m77",
+      "target": "freq_real",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e_m77_shuf_ww",
+      "source": "m77",
+      "target": "shuffle_ww",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e_m77_shuf_gl",
+      "source": "m77",
+      "target": "shuffle_gl",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e_freq_r_zipf_r",
+      "source": "freq_real",
+      "target": "zipf_real",
+      "sourcePort": "freq_map",
+      "targetPort": "freq_map"
+    },
+    {
+      "id": "e_sww_fww",
+      "source": "shuffle_ww",
+      "target": "freq_ww",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e_fww_zww",
+      "source": "freq_ww",
+      "target": "zipf_ww",
+      "sourcePort": "freq_map",
+      "targetPort": "freq_map"
+    },
+    {
+      "id": "e_sgl_fgl",
+      "source": "shuffle_gl",
+      "target": "freq_gl",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e_fgl_zgl",
+      "source": "freq_gl",
+      "target": "zipf_gl",
+      "sourcePort": "freq_map",
+      "targetPort": "freq_map"
+    },
+    {
+      "id": "e_kl_ww_p",
+      "source": "freq_real",
+      "target": "kl_ww",
+      "sourcePort": "freq_map",
+      "targetPort": "freq_map"
+    },
+    {
+      "id": "e_kl_ww_q",
+      "source": "freq_ww",
+      "target": "kl_ww",
+      "sourcePort": "freq_map",
+      "targetPort": "q"
+    },
+    {
+      "id": "e_kl_gl_p",
+      "source": "freq_real",
+      "target": "kl_gl",
+      "sourcePort": "freq_map",
+      "targetPort": "freq_map"
+    },
+    {
+      "id": "e_kl_gl_q",
+      "source": "freq_gl",
+      "target": "kl_gl",
+      "sourcePort": "freq_map",
+      "targetPort": "q"
+    },
+    {
+      "id": "e_zr_merge",
+      "source": "zipf_real",
+      "target": "merge",
+      "sourcePort": "zipf_exponent",
+      "targetPort": "zipf_real"
+    },
+    {
+      "id": "e_zww_merge",
+      "source": "zipf_ww",
+      "target": "merge",
+      "sourcePort": "zipf_exponent",
+      "targetPort": "zipf_within_word_shuffle"
+    },
+    {
+      "id": "e_zgl_merge",
+      "source": "zipf_gl",
+      "target": "merge",
+      "sourcePort": "zipf_exponent",
+      "targetPort": "zipf_global_shuffle"
+    },
+    {
+      "id": "e_klww_merge",
+      "source": "kl_ww",
+      "target": "merge",
+      "sourcePort": "kl_divergence",
+      "targetPort": "kl_real_vs_ww_shuffle"
+    },
+    {
+      "id": "e_klgl_merge",
+      "source": "kl_gl",
+      "target": "merge",
+      "sourcePort": "kl_divergence",
+      "targetPort": "kl_real_vs_global_shuffle"
+    },
+    {
+      "id": "e_m77_merge_n",
+      "source": "m77",
+      "target": "merge",
+      "sourcePort": "n_inscriptions",
+      "targetPort": "n_inscriptions"
+    },
+    {
+      "id": "e_merge_out",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

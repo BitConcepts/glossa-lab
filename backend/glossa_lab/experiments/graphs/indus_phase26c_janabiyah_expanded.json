@@ -4,16 +4,90 @@
   "description": "Phase-26 #2: re-run Janabiyah readout with EXPANDED phonetic search vocabulary (mul-/kakkab-/imin- translation candidates added to direct mi-in/me-en transliterations).",
   "auto_migrated": false,
   "nodes": [
-    { "id": "load",  "type": "expNode", "data": { "atomicId": "Phase26CorpusLoader",         "label": "Load Phase-26 corpus",   "params": {} },                                            "position": { "x": 60,   "y": 100 } },
-    { "id": "read",  "type": "expNode", "data": { "atomicId": "JanabiyahPhoneticReadoutV2",  "label": "Janabiyah readout v2",   "params": {} },                                            "position": { "x": 360,  "y": 100 } },
-    { "id": "out",   "type": "expNode", "data": { "atomicId": "JSONExport",                  "label": "Save results",           "params": { "filename": "phase26c_janabiyah_expanded.json" } }, "position": { "x": 660, "y": 100 } }
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Phase26CorpusLoader",
+        "label": "Load Phase-26 corpus",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "read",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JanabiyahPhoneticReadoutV2",
+        "label": "Janabiyah readout v2",
+        "params": {}
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save results",
+        "params": {
+          "filename": "phase26c_janabiyah_expanded.json"
+        }
+      },
+      "position": {
+        "x": 660,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e_load_read_j",  "source": "load", "target": "read", "sourcePort": "janabiyah_reading",            "targetPort": "janabiyah_reading" },
-    { "id": "e_load_read_pm", "source": "load", "target": "read", "sourcePort": "phoneme_map",                   "targetPort": "phoneme_map" },
-    { "id": "e_load_read_t",  "source": "load", "target": "read", "sourcePort": "tablets",                       "targetPort": "tablets" },
-    { "id": "e_load_read_mr", "source": "load", "target": "read", "sourcePort": "miin_renderings",                "targetPort": "miin_renderings" },
-    { "id": "e_load_read_md", "source": "load", "target": "read", "sourcePort": "miin_renderings_direct_only",   "targetPort": "miin_renderings_direct_only" },
-    { "id": "e_read_out",     "source": "read", "target": "out",  "targetPort": "data" }
-  ]
+    {
+      "id": "e_load_read_j",
+      "source": "load",
+      "target": "read",
+      "sourcePort": "janabiyah_reading",
+      "targetPort": "janabiyah_reading"
+    },
+    {
+      "id": "e_load_read_pm",
+      "source": "load",
+      "target": "read",
+      "sourcePort": "phoneme_map",
+      "targetPort": "phoneme_map"
+    },
+    {
+      "id": "e_load_read_t",
+      "source": "load",
+      "target": "read",
+      "sourcePort": "tablets",
+      "targetPort": "tablets"
+    },
+    {
+      "id": "e_load_read_mr",
+      "source": "load",
+      "target": "read",
+      "sourcePort": "miin_renderings",
+      "targetPort": "miin_renderings"
+    },
+    {
+      "id": "e_load_read_md",
+      "source": "load",
+      "target": "read",
+      "sourcePort": "miin_renderings_direct_only",
+      "targetPort": "miin_renderings_direct_only"
+    },
+    {
+      "id": "e_read_out",
+      "source": "read",
+      "target": "out",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

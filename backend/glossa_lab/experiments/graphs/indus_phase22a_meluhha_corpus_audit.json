@@ -1,24 +1,135 @@
 {
   "id": "indus_phase22a_meluhha_corpus_audit",
-  "name": "Indus Phase-22a \u2014 CDLI Meluhha-mention corpus audit",
+  "name": "Indus Phase-22a — CDLI Meluhha-mention corpus audit",
   "description": "Phase-22a contact-zone audit: loads the 1,462 cuneiform tablets that mention Meluhha / Magan / Dilmun / Guabba (extracted from the 135,255-tablet CDLI ATF dump) and reports keyword distribution, top periods + proveniences, and the top-10 most-mentioned tablets. First step of the Phase-22 contact-zone anchor pipeline. Output: reports/phase22a_meluhha_corpus_audit.json.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "load",     "type": "expNode", "data": { "atomicId": "ContactCorpusLoader",    "label": "Load contact-zone corpus", "params": {} },                                          "position": { "x": 60,   "y": 100 } },
-    { "id": "report",   "type": "expNode", "data": { "atomicId": "MeluhhaCorpusReporter",  "label": "Meluhha audit reporter",    "params": {} },                                          "position": { "x": 360,  "y": 100 } },
-    { "id": "merge",    "type": "expNode", "data": { "atomicId": "Merger",                 "label": "Merge results",             "params": {} },                                          "position": { "x": 660,  "y": 100 } },
-    { "id": "out",      "type": "expNode", "data": { "atomicId": "JSONExport",             "label": "Save Phase-22a results",    "params": { "filename": "phase22a_meluhha_corpus_audit.json" } }, "position": { "x": 960,  "y": 100 } }
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ContactCorpusLoader",
+        "label": "Load contact-zone corpus",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "report",
+      "type": "expNode",
+      "data": {
+        "atomicId": "MeluhhaCorpusReporter",
+        "label": "Meluhha audit reporter",
+        "params": {}
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge results",
+        "params": {}
+      },
+      "position": {
+        "x": 660,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Phase-22a results",
+        "params": {
+          "filename": "phase22a_meluhha_corpus_audit.json"
+        }
+      },
+      "position": {
+        "x": 960,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e_load_report_t",   "source": "load",   "target": "report", "sourcePort": "tablets",            "targetPort": "tablets" },
-    { "id": "e_load_report_k",   "source": "load",   "target": "report", "sourcePort": "keyword_counts",     "targetPort": "keyword_counts" },
-    { "id": "e_load_report_p",   "source": "load",   "target": "report", "sourcePort": "period_counts",      "targetPort": "period_counts" },
-    { "id": "e_load_report_pr",  "source": "load",   "target": "report", "sourcePort": "provenience_counts", "targetPort": "provenience_counts" },
-    { "id": "e_load_merge_n",    "source": "load",   "target": "merge",  "sourcePort": "n_tablets",          "targetPort": "a" },
-    { "id": "e_report_merge_v",  "source": "report", "target": "merge",  "sourcePort": "verdict",            "targetPort": "b" },
-    { "id": "e_report_merge_kc", "source": "report", "target": "merge",  "sourcePort": "keyword_counts",     "targetPort": "c" },
-    { "id": "e_report_merge_tp", "source": "report", "target": "merge",  "sourcePort": "top_5_periods",      "targetPort": "d" },
-    { "id": "e_report_merge_tpv","source": "report", "target": "merge",  "sourcePort": "top_10_provenience", "targetPort": "e" },
-    { "id": "e_merge_out",       "source": "merge",  "target": "out",    "sourcePort": "json",               "targetPort": "data" }
-  ]
+    {
+      "id": "e_load_report_t",
+      "source": "load",
+      "target": "report",
+      "sourcePort": "tablets",
+      "targetPort": "tablets"
+    },
+    {
+      "id": "e_load_report_k",
+      "source": "load",
+      "target": "report",
+      "sourcePort": "keyword_counts",
+      "targetPort": "keyword_counts"
+    },
+    {
+      "id": "e_load_report_p",
+      "source": "load",
+      "target": "report",
+      "sourcePort": "period_counts",
+      "targetPort": "period_counts"
+    },
+    {
+      "id": "e_load_report_pr",
+      "source": "load",
+      "target": "report",
+      "sourcePort": "provenience_counts",
+      "targetPort": "provenience_counts"
+    },
+    {
+      "id": "e_load_merge_n",
+      "source": "load",
+      "target": "merge",
+      "sourcePort": "n_tablets",
+      "targetPort": "a"
+    },
+    {
+      "id": "e_report_merge_v",
+      "source": "report",
+      "target": "merge",
+      "sourcePort": "verdict",
+      "targetPort": "b"
+    },
+    {
+      "id": "e_report_merge_kc",
+      "source": "report",
+      "target": "merge",
+      "sourcePort": "keyword_counts",
+      "targetPort": "c"
+    },
+    {
+      "id": "e_report_merge_tp",
+      "source": "report",
+      "target": "merge",
+      "sourcePort": "top_5_periods",
+      "targetPort": "d"
+    },
+    {
+      "id": "e_report_merge_tpv",
+      "source": "report",
+      "target": "merge",
+      "sourcePort": "top_10_provenience",
+      "targetPort": "e"
+    },
+    {
+      "id": "e_merge_out",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

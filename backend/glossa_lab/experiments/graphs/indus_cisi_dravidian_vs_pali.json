@@ -3,30 +3,255 @@
   "name": "Indus CISI: Dravidian vs Pali (MIA) SA on Real Multi-Sign Inscriptions",
   "description": "Tests whether the Dravidian advantage over Pali (Middle Indo-Aryan) observed on ICIT single-sign sequences (+27.8pp) is replicated on real CISI multi-sign inscription data with genuine bigram structure. Pali is the closest attested proxy for Proto-Indo-Aryan (Witzel hypothesis). If the gap shrinks on real bigram data, it would suggest the ICIT result was partly an artifact of degenerate sequences. If it holds or widens, it further confirms the Dravidian hypothesis on structural grounds. GPU: n_seeds=5, max_iter=8000.",
   "nodes": [
-    {"id": "corpus",    "type": "expNode", "data": {"atomicId": "BuiltinCorpus",     "label": "Indus CISI (178 real inscriptions)", "params": {"corpus": "indus_cisi"}},                                                                                      "position": {"x": 60,   "y": 240}},
-    {"id": "freq",      "type": "expNode", "data": {"atomicId": "FreqCounter",       "label": "Sign Frequency",                     "params": {}},                                                                                                             "position": {"x": 300,  "y": 80}},
-    {"id": "entropy",   "type": "expNode", "data": {"atomicId": "EntropyCalc",       "label": "H1",                                 "params": {}},                                                                                                             "position": {"x": 520,  "y": 80}},
-    {"id": "drav_lm",   "type": "expNode", "data": {"atomicId": "BuiltinLM",         "label": "South Dravidian LM",                 "params": {"language": "south_dravidian"}},                                                                               "position": {"x": 60,   "y": 440}},
-    {"id": "pali_lm",   "type": "expNode", "data": {"atomicId": "BuiltinLM",         "label": "Pali MIA LM",                        "params": {"language": "pali"}},                                                                                          "position": {"x": 60,   "y": 600}},
-    {"id": "sa_drav",   "type": "expNode", "data": {"atomicId": "SADecipher",        "label": "SA vs Dravidian (GPU)",              "params": {"n_seeds": 5, "max_iterations": 8000, "restarts": 3, "surjective": true, "ocp_weight": 0.0}},                   "position": {"x": 840,  "y": 400}},
-    {"id": "sa_pali",   "type": "expNode", "data": {"atomicId": "SADecipher",        "label": "SA vs Pali (GPU)",                   "params": {"n_seeds": 5, "max_iterations": 8000, "restarts": 3, "surjective": true, "ocp_weight": 0.0}},                   "position": {"x": 840,  "y": 600}},
-    {"id": "cons_drav", "type": "expNode", "data": {"atomicId": "ConsistencyScorer", "label": "Consistency (Dravidian)",            "params": {}},                                                                                                             "position": {"x": 1120, "y": 400}},
-    {"id": "cons_pali", "type": "expNode", "data": {"atomicId": "ConsistencyScorer", "label": "Consistency (Pali)",                 "params": {}},                                                                                                             "position": {"x": 1120, "y": 600}},
-    {"id": "merge",     "type": "expNode", "data": {"atomicId": "Merger",            "label": "Merge A/B",                         "params": {}},                                                                                                             "position": {"x": 1380, "y": 380}},
-    {"id": "out",       "type": "expNode", "data": {"atomicId": "JSONExport",        "label": "Save",                               "params": {"filename": "indus_cisi_dravidian_vs_pali.json"}},                                                              "position": {"x": 1660, "y": 380}}
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "Indus CISI (178 real inscriptions)",
+        "params": {
+          "corpus": "indus_cisi"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 240
+      }
+    },
+    {
+      "id": "freq",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FreqCounter",
+        "label": "Sign Frequency",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
+        "y": 80
+      }
+    },
+    {
+      "id": "entropy",
+      "type": "expNode",
+      "data": {
+        "atomicId": "EntropyCalc",
+        "label": "H1",
+        "params": {}
+      },
+      "position": {
+        "x": 520,
+        "y": 80
+      }
+    },
+    {
+      "id": "drav_lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "South Dravidian LM",
+        "params": {
+          "language": "south_dravidian"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 440
+      }
+    },
+    {
+      "id": "pali_lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Pali MIA LM",
+        "params": {
+          "language": "pali"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 600
+      }
+    },
+    {
+      "id": "sa_drav",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA vs Dravidian (GPU)",
+        "params": {
+          "n_seeds": 5,
+          "max_iterations": 8000,
+          "restarts": 3,
+          "surjective": true,
+          "ocp_weight": 0.0
+        }
+      },
+      "position": {
+        "x": 840,
+        "y": 400
+      }
+    },
+    {
+      "id": "sa_pali",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA vs Pali (GPU)",
+        "params": {
+          "n_seeds": 5,
+          "max_iterations": 8000,
+          "restarts": 3,
+          "surjective": true,
+          "ocp_weight": 0.0
+        }
+      },
+      "position": {
+        "x": 840,
+        "y": 600
+      }
+    },
+    {
+      "id": "cons_drav",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConsistencyScorer",
+        "label": "Consistency (Dravidian)",
+        "params": {}
+      },
+      "position": {
+        "x": 1120,
+        "y": 400
+      }
+    },
+    {
+      "id": "cons_pali",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConsistencyScorer",
+        "label": "Consistency (Pali)",
+        "params": {}
+      },
+      "position": {
+        "x": 1120,
+        "y": 600
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge A/B",
+        "params": {}
+      },
+      "position": {
+        "x": 1380,
+        "y": 380
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save",
+        "params": {
+          "filename": "indus_cisi_dravidian_vs_pali.json"
+        }
+      },
+      "position": {
+        "x": 1660,
+        "y": 380
+      }
+    }
   ],
   "edges": [
-    {"id": "e1",  "source": "corpus",    "target": "freq",      "sourcePort": "sequences",        "targetPort": "sequences"},
-    {"id": "e2",  "source": "corpus",    "target": "sa_drav",   "sourcePort": "sequences",        "targetPort": "sequences"},
-    {"id": "e3",  "source": "corpus",    "target": "sa_pali",   "sourcePort": "sequences",        "targetPort": "sequences"},
-    {"id": "e4",  "source": "freq",      "target": "entropy",   "sourcePort": "freq_map",         "targetPort": "freq_map"},
-    {"id": "e5",  "source": "drav_lm",   "target": "sa_drav",   "sourcePort": "lm",               "targetPort": "lm"},
-    {"id": "e6",  "source": "pali_lm",   "target": "sa_pali",   "sourcePort": "lm",               "targetPort": "lm"},
-    {"id": "e7",  "source": "sa_drav",   "target": "cons_drav", "sourcePort": "all_mappings",     "targetPort": "all_mappings"},
-    {"id": "e8",  "source": "sa_pali",   "target": "cons_pali", "sourcePort": "all_mappings",     "targetPort": "all_mappings"},
-    {"id": "e9",  "source": "entropy",   "target": "merge",     "sourcePort": "h1",               "targetPort": "a"},
-    {"id": "e10", "source": "cons_drav", "target": "merge",     "sourcePort": "mean_consistency", "targetPort": "b"},
-    {"id": "e11", "source": "cons_pali", "target": "merge",     "sourcePort": "mean_consistency", "targetPort": "c"},
-    {"id": "e12", "source": "merge",     "target": "out",       "sourcePort": "json",             "targetPort": "data"}
-  ]
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "freq",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "corpus",
+      "target": "sa_drav",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "corpus",
+      "target": "sa_pali",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e4",
+      "source": "freq",
+      "target": "entropy",
+      "sourcePort": "freq_map",
+      "targetPort": "freq_map"
+    },
+    {
+      "id": "e5",
+      "source": "drav_lm",
+      "target": "sa_drav",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e6",
+      "source": "pali_lm",
+      "target": "sa_pali",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e7",
+      "source": "sa_drav",
+      "target": "cons_drav",
+      "sourcePort": "all_mappings",
+      "targetPort": "all_mappings"
+    },
+    {
+      "id": "e8",
+      "source": "sa_pali",
+      "target": "cons_pali",
+      "sourcePort": "all_mappings",
+      "targetPort": "all_mappings"
+    },
+    {
+      "id": "e9",
+      "source": "entropy",
+      "target": "merge",
+      "sourcePort": "h1",
+      "targetPort": "a"
+    },
+    {
+      "id": "e10",
+      "source": "cons_drav",
+      "target": "merge",
+      "sourcePort": "mean_consistency",
+      "targetPort": "b"
+    },
+    {
+      "id": "e11",
+      "source": "cons_pali",
+      "target": "merge",
+      "sourcePort": "mean_consistency",
+      "targetPort": "c"
+    },
+    {
+      "id": "e12",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

@@ -1,7 +1,7 @@
 {
   "document_id": "indus_valley_script_deciphered_from_myth_65ff0a26",
   "title": "",
-  "extraction_date": "2026-05-21T13:24:23.335480",
+  "extraction_date": "2026-05-21T14:17:27.712293",
   "total_claims": 6,
   "auto_extracted": 6,
   "manually_curated": 4,
@@ -15,7 +15,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-05-21T13:24:23.331974"
+      "extracted_at": "2026-05-21T14:17:27.709288"
     },
     {
       "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002",
@@ -26,7 +26,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-05-21T13:24:23.331974"
+      "extracted_at": "2026-05-21T14:17:27.709288"
     },
     {
       "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_001",
@@ -38,7 +38,7 @@
       "falsification_condition": "If sign distributions are not correlated with trade/economic contexts at excavation sites.",
       "author": "Roif, Avishai",
       "confidence_in_source": 0.5,
-      "extracted_at": "2026-05-21T13:24:23.335480"
+      "extracted_at": "2026-05-21T14:17:27.712293"
     },
     {
       "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_002",
@@ -54,7 +54,7 @@
       "falsification_condition": "Fish sign should cluster at coastal/maritime sites (Lothal, Dholavira). Phase-4x CISI data shows fish NOT coastal-enriched.",
       "glossa_lab_evidence": "Phase-4x CISI analysis: fish sign not statistically enriched at coastal sites [PARTIALLY FALSIFIED]",
       "confidence_in_source": 0.45,
-      "extracted_at": "2026-05-21T13:24:23.335480"
+      "extracted_at": "2026-05-21T14:17:27.712293"
     },
     {
       "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_003",
@@ -69,7 +69,7 @@
       "testability": "directly_testable",
       "falsification_condition": "If arrow sign does not cluster at gateway/border sites.",
       "confidence_in_source": 0.5,
-      "extracted_at": "2026-05-21T13:24:23.335480"
+      "extracted_at": "2026-05-21T14:17:27.712293"
     },
     {
       "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_004",
@@ -84,7 +84,7 @@
       "required_data": "Site metadata with fire-altar classification (Kalibangan)",
       "falsification_condition": "Horned deity sign does not cluster at fire-altar sites.",
       "confidence_in_source": 0.5,
-      "extracted_at": "2026-05-21T13:24:23.335480"
+      "extracted_at": "2026-05-21T14:17:27.712293"
     }
   ],
   "_citation": {

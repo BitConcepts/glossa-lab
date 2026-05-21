@@ -584,7 +584,7 @@ BENCHMARK SCORE FACTS (use EXACTLY these, never approximate):
 
     lines.append("""
 === DOMAIN KNOWLEDGE: KANDLES SYSTEM ===
-The Kandles system (Merkur patent) assigns each phoneme a colour based on
+The Kandles system (phonetic distribution) assigns each phoneme a colour based on
 the articulatory/acoustic features of the consonant. It provides an
 independent cross-validation channel: if a proposed decipherment maps Indus
 sign frequencies to phoneme frequencies, the Kandles colour distribution of

@@ -1,13 +1,46 @@
 {
   "id": "indus_phase25e_shu_ilishu_anchor",
-  "name": "Indus Phase-25e \u2014 Shu-ilishu biographical anchor search",
+  "name": "Indus Phase-25e — Shu-ilishu biographical anchor search",
   "description": "Phase-25e Tier D10: searches CISI Indus seal corpus for short (3-7 sign) inscriptions that could plausibly encode the bilingual translator Shu-ilishu's Indus-script counterpart name. Output: reports/phase25e_shu_ilishu_anchor.json.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "search", "type": "expNode", "data": { "atomicId": "ShuIlishuAnchorSearch", "label": "Shu-ilishu anchor search", "params": {} },                                  "position": { "x": 60,  "y": 100 } },
-    { "id": "out",    "type": "expNode", "data": { "atomicId": "JSONExport",            "label": "Save Phase-25e results",   "params": { "filename": "phase25e_shu_ilishu_anchor.json" } }, "position": { "x": 360, "y": 100 } }
+    {
+      "id": "search",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ShuIlishuAnchorSearch",
+        "label": "Shu-ilishu anchor search",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Phase-25e results",
+        "params": {
+          "filename": "phase25e_shu_ilishu_anchor.json"
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e_s_out", "source": "search", "target": "out", "sourcePort": "verdict", "targetPort": "data" }
-  ]
+    {
+      "id": "e_s_out",
+      "source": "search",
+      "target": "out",
+      "sourcePort": "verdict",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

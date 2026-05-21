@@ -3,28 +3,234 @@
   "name": "Beam Decipher Benchmark — NW Semitic SA vs Beam",
   "description": "Compares Beam Search decipherment against Simulated Annealing on the NW Semitic (Ugaritic) corpus with Hebrew as the target LM. 75/25 train-test split. SA runs 5 parallel seeds (GPU-aware); Beam runs at width 200. Results are merged and exported.",
   "nodes": [
-    {"id": "corpus",   "type": "expNode", "data": {"atomicId": "BuiltinCorpus", "label": "NW Semitic (Ugaritic)", "params": {"corpus": "nw_semitic"}}, "position": {"x": 60,  "y": 100}},
-    {"id": "rtl",      "type": "expNode", "data": {"atomicId": "DirectionNormalizer", "label": "RTL Normalize", "params": {"direction": "rtl"}}, "position": {"x": 280, "y": 100}},
-    {"id": "split",    "type": "expNode", "data": {"atomicId": "CorpusSplitter", "label": "75/25 Split", "params": {"train_ratio": 0.75}}, "position": {"x": 500, "y": 100}},
-    {"id": "lm",       "type": "expNode", "data": {"atomicId": "LMBuilder", "label": "LM (train 75%)", "params": {}}, "position": {"x": 500, "y": 280}},
-    {"id": "heb_lm",   "type": "expNode", "data": {"atomicId": "BuiltinLM", "label": "Hebrew Reference LM", "params": {"language": "hebrew"}}, "position": {"x": 60,  "y": 420}},
-    {"id": "sa",       "type": "expNode", "data": {"atomicId": "SADecipher", "label": "SA (5 seeds, GPU)", "params": {"n_seeds": 5, "max_iterations": 8000, "restarts": 5, "surjective": true, "ocp_weight": 0.0}}, "position": {"x": 780, "y": 180}},
-    {"id": "beam",     "type": "expNode", "data": {"atomicId": "BeamDecipher", "label": "Beam (width 200)", "params": {"beam_width": 200, "surjective": true}}, "position": {"x": 780, "y": 380}},
-    {"id": "cons",     "type": "expNode", "data": {"atomicId": "ConsistencyScorer", "label": "SA Consistency", "params": {}}, "position": {"x": 1040, "y": 180}},
-    {"id": "merge",    "type": "expNode", "data": {"atomicId": "Merger", "label": "Merge Results", "params": {}}, "position": {"x": 1040, "y": 380}},
-    {"id": "out",      "type": "expNode", "data": {"atomicId": "JSONExport", "label": "Save", "params": {"filename": "beam_decipher_benchmark.json"}}, "position": {"x": 1300, "y": 280}}
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "NW Semitic (Ugaritic)",
+        "params": {
+          "corpus": "nw_semitic"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "rtl",
+      "type": "expNode",
+      "data": {
+        "atomicId": "DirectionNormalizer",
+        "label": "RTL Normalize",
+        "params": {
+          "direction": "rtl"
+        }
+      },
+      "position": {
+        "x": 280,
+        "y": 100
+      }
+    },
+    {
+      "id": "split",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CorpusSplitter",
+        "label": "75/25 Split",
+        "params": {
+          "train_ratio": 0.75
+        }
+      },
+      "position": {
+        "x": 500,
+        "y": 100
+      }
+    },
+    {
+      "id": "lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "LMBuilder",
+        "label": "LM (train 75%)",
+        "params": {}
+      },
+      "position": {
+        "x": 500,
+        "y": 280
+      }
+    },
+    {
+      "id": "heb_lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Hebrew Reference LM",
+        "params": {
+          "language": "hebrew"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 420
+      }
+    },
+    {
+      "id": "sa",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA (5 seeds, GPU)",
+        "params": {
+          "n_seeds": 5,
+          "max_iterations": 8000,
+          "restarts": 5,
+          "surjective": true,
+          "ocp_weight": 0.0
+        }
+      },
+      "position": {
+        "x": 780,
+        "y": 180
+      }
+    },
+    {
+      "id": "beam",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BeamDecipher",
+        "label": "Beam (width 200)",
+        "params": {
+          "beam_width": 200,
+          "surjective": true
+        }
+      },
+      "position": {
+        "x": 780,
+        "y": 380
+      }
+    },
+    {
+      "id": "cons",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConsistencyScorer",
+        "label": "SA Consistency",
+        "params": {}
+      },
+      "position": {
+        "x": 1040,
+        "y": 180
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge Results",
+        "params": {}
+      },
+      "position": {
+        "x": 1040,
+        "y": 380
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save",
+        "params": {
+          "filename": "beam_decipher_benchmark.json"
+        }
+      },
+      "position": {
+        "x": 1300,
+        "y": 280
+      }
+    }
   ],
   "edges": [
-    {"id": "e1",  "source": "corpus",  "target": "rtl",    "sourcePort": "sequences",        "targetPort": "sequences"},
-    {"id": "e2",  "source": "rtl",     "target": "split",  "sourcePort": "sequences",        "targetPort": "sequences"},
-    {"id": "e3",  "source": "split",   "target": "lm",     "sourcePort": "train_sequences",  "targetPort": "sequences"},
-    {"id": "e4",  "source": "split",   "target": "sa",     "sourcePort": "test_sequences",   "targetPort": "sequences"},
-    {"id": "e5",  "source": "split",   "target": "beam",   "sourcePort": "test_sequences",   "targetPort": "sequences"},
-    {"id": "e6",  "source": "heb_lm",  "target": "sa",     "sourcePort": "lm",               "targetPort": "lm"},
-    {"id": "e7",  "source": "heb_lm",  "target": "beam",   "sourcePort": "lm",               "targetPort": "lm"},
-    {"id": "e8",  "source": "sa",      "target": "cons",   "sourcePort": "all_mappings",     "targetPort": "all_mappings"},
-    {"id": "e9",  "source": "cons",    "target": "merge",  "sourcePort": "mean_consistency", "targetPort": "a"},
-    {"id": "e10", "source": "beam",    "target": "merge",  "sourcePort": "score",            "targetPort": "b"},
-    {"id": "e11", "source": "merge",   "target": "out",    "sourcePort": "json",             "targetPort": "data"}
-  ]
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "rtl",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "rtl",
+      "target": "split",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "split",
+      "target": "lm",
+      "sourcePort": "train_sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e4",
+      "source": "split",
+      "target": "sa",
+      "sourcePort": "test_sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e5",
+      "source": "split",
+      "target": "beam",
+      "sourcePort": "test_sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e6",
+      "source": "heb_lm",
+      "target": "sa",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e7",
+      "source": "heb_lm",
+      "target": "beam",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e8",
+      "source": "sa",
+      "target": "cons",
+      "sourcePort": "all_mappings",
+      "targetPort": "all_mappings"
+    },
+    {
+      "id": "e9",
+      "source": "cons",
+      "target": "merge",
+      "sourcePort": "mean_consistency",
+      "targetPort": "a"
+    },
+    {
+      "id": "e10",
+      "source": "beam",
+      "target": "merge",
+      "sourcePort": "score",
+      "targetPort": "b"
+    },
+    {
+      "id": "e11",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

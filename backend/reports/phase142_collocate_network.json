@@ -1,0 +1,4189 @@
+{
+  "phase": 142,
+  "date": "2026-05-19",
+  "corpus_stats": {
+    "n_seals": 1670,
+    "n_tokens": 7002,
+    "n_signs": 390
+  },
+  "results": {
+    "A_collocate_network": {
+      "n_distinct_bigrams": 2647,
+      "n_hm_hm_bigrams": 1485,
+      "top_30_hm_bigrams": [
+        {
+          "pair": "M342\u00b7M176",
+          "count": 122,
+          "pmi": 2.432,
+          "a_reading": "ay/\u0101",
+          "b_reading": "an/a\u1e47"
+        },
+        {
+          "pair": "M267\u00b7M099",
+          "count": 84,
+          "pmi": 2.311,
+          "a_reading": "iN/in (genitive of)",
+          "b_reading": "kol/ko\u1e37"
+        },
+        {
+          "pair": "M099\u00b7M342",
+          "count": 81,
+          "pmi": 1.713,
+          "a_reading": "kol/ko\u1e37",
+          "b_reading": "ay/\u0101"
+        },
+        {
+          "pair": "M176\u00b7M099",
+          "count": 74,
+          "pmi": 2.297,
+          "a_reading": "an/a\u1e47",
+          "b_reading": "kol/ko\u1e37"
+        },
+        {
+          "pair": "M211\u00b7M342",
+          "count": 45,
+          "pmi": 1.509,
+          "a_reading": "kol",
+          "b_reading": "ay/\u0101"
+        },
+        {
+          "pair": "M328\u00b7M267",
+          "count": 40,
+          "pmi": 1.974,
+          "a_reading": "\u0101/\u0101l",
+          "b_reading": "iN/in (genitive of)"
+        },
+        {
+          "pair": "M293\u00b7M267",
+          "count": 37,
+          "pmi": 1.874,
+          "a_reading": "ta",
+          "b_reading": "iN/in (genitive of)"
+        },
+        {
+          "pair": "M342\u00b7M342",
+          "count": 35,
+          "pmi": -0.084,
+          "a_reading": "ay/\u0101",
+          "b_reading": "ay/\u0101"
+        },
+        {
+          "pair": "M267\u00b7M342",
+          "count": 31,
+          "pmi": 0.287,
+          "a_reading": "iN/in (genitive of)",
+          "b_reading": "ay/\u0101"
+        },
+        {
+          "pair": "M059\u00b7M267",
+          "count": 30,
+          "pmi": 1.635,
+          "a_reading": "\u0113\u1e37/e\u1e37",
+          "b_reading": "iN/in (genitive of)"
+        },
+        {
+          "pair": "M162\u00b7M099",
+          "count": 26,
+          "pmi": 1.584,
+          "a_reading": "il/i\u1e37",
+          "b_reading": "kol/ko\u1e37"
+        },
+        {
+          "pair": "M342\u00b7M162",
+          "count": 25,
+          "pmi": 0.941,
+          "a_reading": "ay/\u0101",
+          "b_reading": "il/i\u1e37"
+        },
+        {
+          "pair": "M342\u00b7M211",
+          "count": 24,
+          "pmi": 0.602,
+          "a_reading": "ay/\u0101",
+          "b_reading": "kol"
+        },
+        {
+          "pair": "M342\u00b7M328",
+          "count": 24,
+          "pmi": 0.691,
+          "a_reading": "ay/\u0101",
+          "b_reading": "\u0101/\u0101l"
+        },
+        {
+          "pair": "M267\u00b7M211",
+          "count": 21,
+          "pmi": 0.955,
+          "a_reading": "iN/in (genitive of)",
+          "b_reading": "kol"
+        },
+        {
+          "pair": "M267\u00b7M328",
+          "count": 18,
+          "pmi": 0.822,
+          "a_reading": "iN/in (genitive of)",
+          "b_reading": "\u0101/\u0101l"
+        },
+        {
+          "pair": "M342\u00b7M099",
+          "count": 18,
+          "pmi": -0.457,
+          "a_reading": "ay/\u0101",
+          "b_reading": "kol/ko\u1e37"
+        },
+        {
+          "pair": "M342\u00b7M391",
+          "count": 17,
+          "pmi": 0.472,
+          "a_reading": "ay/\u0101",
+          "b_reading": "ka/ka\u1e47"
+        },
+        {
+          "pair": "M342\u00b7M233",
+          "count": 17,
+          "pmi": 0.646,
+          "a_reading": "ay/\u0101",
+          "b_reading": "\u016br"
+        },
+        {
+          "pair": "M342\u00b7M048",
+          "count": 17,
+          "pmi": 0.77,
+          "a_reading": "ay/\u0101",
+          "b_reading": "mu/mu\u1e49"
+        },
+        {
+          "pair": "M176\u00b7M267",
+          "count": 17,
+          "pmi": 0.135,
+          "a_reading": "an/a\u1e47",
+          "b_reading": "iN/in (genitive of)"
+        },
+        {
+          "pair": "M342\u00b7M267",
+          "count": 17,
+          "pmi": -0.58,
+          "a_reading": "ay/\u0101",
+          "b_reading": "iN/in (genitive of)"
+        },
+        {
+          "pair": "M342\u00b7M367",
+          "count": 16,
+          "pmi": 0.407,
+          "a_reading": "ay/\u0101",
+          "b_reading": "am/neuter"
+        },
+        {
+          "pair": "M176\u00b7M211",
+          "count": 16,
+          "pmi": 0.731,
+          "a_reading": "an/a\u1e47",
+          "b_reading": "kol"
+        },
+        {
+          "pair": "M342\u00b7M012",
+          "count": 16,
+          "pmi": 0.817,
+          "a_reading": "ay/\u0101",
+          "b_reading": "o\u1e49\u1e5fu/1"
+        },
+        {
+          "pair": "M176\u00b7M342",
+          "count": 15,
+          "pmi": -0.592,
+          "a_reading": "an/a\u1e47",
+          "b_reading": "ay/\u0101"
+        },
+        {
+          "pair": "M328\u00b7M342",
+          "count": 15,
+          "pmi": 0.013,
+          "a_reading": "\u0101/\u0101l",
+          "b_reading": "ay/\u0101"
+        },
+        {
+          "pair": "M089\u00b7M342",
+          "count": 15,
+          "pmi": 0.466,
+          "a_reading": "tu/t\u016b",
+          "b_reading": "ay/\u0101"
+        },
+        {
+          "pair": "M099\u00b7M162",
+          "count": 15,
+          "pmi": 0.79,
+          "a_reading": "kol/ko\u1e37",
+          "b_reading": "il/i\u1e37"
+        },
+        {
+          "pair": "M342\u00b7M087",
+          "count": 15,
+          "pmi": 0.861,
+          "a_reading": "ay/\u0101",
+          "b_reading": "veL"
+        }
+      ],
+      "high_pmi_pairs": [
+        {
+          "a": "M125",
+          "b": "M329",
+          "count": 3,
+          "pmi": 5.385,
+          "a_conf": "HIGH",
+          "b_conf": "LOW",
+          "a_reading": "vil",
+          "b_reading": "po\u1e49"
+        },
+        {
+          "a": "M054",
+          "b": "M089",
+          "count": 4,
+          "pmi": 4.164,
+          "a_conf": "MEDIUM",
+          "b_conf": "HIGH",
+          "a_reading": "mi",
+          "b_reading": "tu/t\u016b"
+        },
+        {
+          "a": "M304",
+          "b": "M099",
+          "count": 3,
+          "pmi": 3.826,
+          "a_conf": "LOW",
+          "b_conf": "HIGH",
+          "a_reading": "v\u0113\u1e5f",
+          "b_reading": "kol/ko\u1e37"
+        },
+        {
+          "a": "M068",
+          "b": "M336",
+          "count": 3,
+          "pmi": 3.72,
+          "a_conf": "MEDIUM",
+          "b_conf": "HIGH",
+          "a_reading": "ma\u1e5fi",
+          "b_reading": "i\u1e49/locative"
+        },
+        {
+          "a": "M062",
+          "b": "M087",
+          "count": 5,
+          "pmi": 3.659,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "erutu",
+          "b_reading": "veL"
+        },
+        {
+          "a": "M002",
+          "b": "M336",
+          "count": 3,
+          "pmi": 3.421,
+          "a_conf": "MEDIUM",
+          "b_conf": "HIGH",
+          "a_reading": "ku\u1e49",
+          "b_reading": "i\u1e49/locative"
+        },
+        {
+          "a": "M056",
+          "b": "M089",
+          "count": 3,
+          "pmi": 3.086,
+          "a_conf": "MEDIUM",
+          "b_conf": "HIGH",
+          "a_reading": "miN4",
+          "b_reading": "tu/t\u016b"
+        },
+        {
+          "a": "M039",
+          "b": "M391",
+          "count": 3,
+          "pmi": 2.989,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "\u0101\u1e49ai",
+          "b_reading": "ka/ka\u1e47"
+        },
+        {
+          "a": "M033",
+          "b": "M267",
+          "count": 4,
+          "pmi": 2.938,
+          "a_conf": "HIGH",
+          "b_conf": "MEDIUM",
+          "a_reading": "puli",
+          "b_reading": "iN/in (genitive of)"
+        },
+        {
+          "a": "M045",
+          "b": "M162",
+          "count": 4,
+          "pmi": 2.902,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "y\u0101nai",
+          "b_reading": "il/i\u1e37"
+        },
+        {
+          "a": "M061",
+          "b": "M089",
+          "count": 3,
+          "pmi": 2.874,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "ka",
+          "b_reading": "tu/t\u016b"
+        },
+        {
+          "a": "M021",
+          "b": "M211",
+          "count": 3,
+          "pmi": 2.792,
+          "a_conf": "MEDIUM",
+          "b_conf": "HIGH",
+          "a_reading": "k\u014d",
+          "b_reading": "kol"
+        },
+        {
+          "a": "M082",
+          "b": "M342",
+          "count": 3,
+          "pmi": 2.754,
+          "a_conf": "MEDIUM",
+          "b_conf": "HIGH",
+          "a_reading": "pa",
+          "b_reading": "ay/\u0101"
+        },
+        {
+          "a": "M022",
+          "b": "M367",
+          "count": 3,
+          "pmi": 2.722,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "kalam",
+          "b_reading": "am/neuter"
+        },
+        {
+          "a": "M075",
+          "b": "M267",
+          "count": 4,
+          "pmi": 2.715,
+          "a_conf": "MEDIUM",
+          "b_conf": "MEDIUM",
+          "a_reading": "m\u0101\u1e5f",
+          "b_reading": "iN/in (genitive of)"
+        },
+        {
+          "a": "M034",
+          "b": "M211",
+          "count": 3,
+          "pmi": 2.704,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "t\u014d\u1e37",
+          "b_reading": "kol"
+        },
+        {
+          "a": "M035",
+          "b": "M328",
+          "count": 3,
+          "pmi": 2.633,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "po",
+          "b_reading": "\u0101/\u0101l"
+        },
+        {
+          "a": "M018",
+          "b": "M211",
+          "count": 3,
+          "pmi": 2.622,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "n\u0113r",
+          "b_reading": "kol"
+        },
+        {
+          "a": "M079",
+          "b": "M367",
+          "count": 3,
+          "pmi": 2.597,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "ir",
+          "b_reading": "am/neuter"
+        },
+        {
+          "a": "M055",
+          "b": "M099",
+          "count": 3,
+          "pmi": 2.563,
+          "a_conf": "MEDIUM",
+          "b_conf": "HIGH",
+          "a_reading": "miN3",
+          "b_reading": "kol/ko\u1e37"
+        },
+        {
+          "a": "M060",
+          "b": "M328",
+          "count": 3,
+          "pmi": 2.559,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "k\u0101\u1e47\u1e6d\u0101mirukam",
+          "b_reading": "\u0101/\u0101l"
+        },
+        {
+          "a": "M019",
+          "b": "M328",
+          "count": 3,
+          "pmi": 2.559,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "ampu",
+          "b_reading": "\u0101/\u0101l"
+        },
+        {
+          "a": "M071",
+          "b": "M267",
+          "count": 4,
+          "pmi": 2.523,
+          "a_conf": "HIGH",
+          "b_conf": "MEDIUM",
+          "a_reading": "nal",
+          "b_reading": "iN/in (genitive of)"
+        },
+        {
+          "a": "M074",
+          "b": "M267",
+          "count": 3,
+          "pmi": 2.523,
+          "a_conf": "MEDIUM",
+          "b_conf": "MEDIUM",
+          "a_reading": "ker",
+          "b_reading": "iN/in (genitive of)"
+        },
+        {
+          "a": "M037",
+          "b": "M267",
+          "count": 4,
+          "pmi": 2.523,
+          "a_conf": "MEDIUM",
+          "b_conf": "MEDIUM",
+          "a_reading": "k\u0113\u1e37",
+          "b_reading": "iN/in (genitive of)"
+        },
+        {
+          "a": "M342",
+          "b": "M176",
+          "count": 122,
+          "pmi": 2.432,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "ay/\u0101",
+          "b_reading": "an/a\u1e47"
+        },
+        {
+          "a": "M008",
+          "b": "M328",
+          "count": 3,
+          "pmi": 2.422,
+          "a_conf": "MEDIUM",
+          "b_conf": "HIGH",
+          "a_reading": "erumai",
+          "b_reading": "\u0101/\u0101l"
+        },
+        {
+          "a": "M016",
+          "b": "M293",
+          "count": 3,
+          "pmi": 2.37,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "ka\u1e37i\u1e5fu",
+          "b_reading": "ta"
+        },
+        {
+          "a": "M015",
+          "b": "M176",
+          "count": 3,
+          "pmi": 2.369,
+          "a_conf": "MEDIUM",
+          "b_conf": "HIGH",
+          "a_reading": "m\u0101",
+          "b_reading": "an/a\u1e47"
+        },
+        {
+          "a": "M267",
+          "b": "M099",
+          "count": 84,
+          "pmi": 2.311,
+          "a_conf": "MEDIUM",
+          "b_conf": "HIGH",
+          "a_reading": "iN/in (genitive of)",
+          "b_reading": "kol/ko\u1e37"
+        },
+        {
+          "a": "M045",
+          "b": "M293",
+          "count": 3,
+          "pmi": 2.309,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "y\u0101nai",
+          "b_reading": "ta"
+        },
+        {
+          "a": "M031",
+          "b": "M342",
+          "count": 5,
+          "pmi": 2.299,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "kai",
+          "b_reading": "ay/\u0101"
+        },
+        {
+          "a": "M176",
+          "b": "M099",
+          "count": 74,
+          "pmi": 2.297,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "an/a\u1e47",
+          "b_reading": "kol/ko\u1e37"
+        },
+        {
+          "a": "M068",
+          "b": "M342",
+          "count": 4,
+          "pmi": 2.276,
+          "a_conf": "MEDIUM",
+          "b_conf": "HIGH",
+          "a_reading": "ma\u1e5fi",
+          "b_reading": "ay/\u0101"
+        },
+        {
+          "a": "M021",
+          "b": "M176",
+          "count": 3,
+          "pmi": 2.276,
+          "a_conf": "MEDIUM",
+          "b_conf": "HIGH",
+          "a_reading": "k\u014d",
+          "b_reading": "an/a\u1e47"
+        },
+        {
+          "a": "M013",
+          "b": "M211",
+          "count": 3,
+          "pmi": 2.268,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "nakaram",
+          "b_reading": "kol"
+        },
+        {
+          "a": "M014",
+          "b": "M176",
+          "count": 3,
+          "pmi": 2.188,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "tiru",
+          "b_reading": "an/a\u1e47"
+        },
+        {
+          "a": "M057",
+          "b": "M176",
+          "count": 3,
+          "pmi": 2.106,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "m\u0101\u1e6du",
+          "b_reading": "an/a\u1e47"
+        },
+        {
+          "a": "M005",
+          "b": "M342",
+          "count": 4,
+          "pmi": 2.07,
+          "a_conf": "MEDIUM",
+          "b_conf": "HIGH",
+          "a_reading": "k\u014d\u1e49",
+          "b_reading": "ay/\u0101"
+        },
+        {
+          "a": "M061",
+          "b": "M267",
+          "count": 4,
+          "pmi": 2.063,
+          "a_conf": "HIGH",
+          "b_conf": "MEDIUM",
+          "a_reading": "ka",
+          "b_reading": "iN/in (genitive of)"
+        },
+        {
+          "a": "M004",
+          "b": "M267",
+          "count": 3,
+          "pmi": 2.02,
+          "a_conf": "HIGH",
+          "b_conf": "MEDIUM",
+          "a_reading": "k\u0113\u1e37",
+          "b_reading": "iN/in (genitive of)"
+        },
+        {
+          "a": "M060",
+          "b": "M342",
+          "count": 5,
+          "pmi": 1.977,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "k\u0101\u1e47\u1e6d\u0101mirukam",
+          "b_reading": "ay/\u0101"
+        },
+        {
+          "a": "M071",
+          "b": "M342",
+          "count": 4,
+          "pmi": 1.977,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "nal",
+          "b_reading": "ay/\u0101"
+        },
+        {
+          "a": "M328",
+          "b": "M267",
+          "count": 40,
+          "pmi": 1.974,
+          "a_conf": "HIGH",
+          "b_conf": "MEDIUM",
+          "a_reading": "\u0101/\u0101l",
+          "b_reading": "iN/in (genitive of)"
+        },
+        {
+          "a": "M293",
+          "b": "M267",
+          "count": 37,
+          "pmi": 1.874,
+          "a_conf": "HIGH",
+          "b_conf": "MEDIUM",
+          "a_reading": "ta",
+          "b_reading": "iN/in (genitive of)"
+        },
+        {
+          "a": "M081",
+          "b": "M342",
+          "count": 3,
+          "pmi": 1.861,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "ve",
+          "b_reading": "ay/\u0101"
+        },
+        {
+          "a": "M035",
+          "b": "M267",
+          "count": 3,
+          "pmi": 1.86,
+          "a_conf": "HIGH",
+          "b_conf": "MEDIUM",
+          "a_reading": "po",
+          "b_reading": "iN/in (genitive of)"
+        },
+        {
+          "a": "M063",
+          "b": "M342",
+          "count": 4,
+          "pmi": 1.807,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "mutalai",
+          "b_reading": "ay/\u0101"
+        },
+        {
+          "a": "M030",
+          "b": "M342",
+          "count": 4,
+          "pmi": 1.807,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "k\u014d",
+          "b_reading": "ay/\u0101"
+        },
+        {
+          "a": "M293",
+          "b": "M305",
+          "count": 7,
+          "pmi": 1.741,
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "a_reading": "ta",
+          "b_reading": "\u014d\u1e6du/comitative"
+        }
+      ],
+      "interpretation": "1485 distinct H+M \u00d7 H+M bigrams. 60 strong collocate pairs (PMI > 1.5, \u22653 occurrences). High-PMI pairs represent recurring compound title formulas."
+    },
+    "B_initial_vocabulary": {
+      "n_initial_signs_total": 77,
+      "n_initial_hm": 77,
+      "initial_vocabulary": [
+        {
+          "sign": "M062",
+          "freq": 28,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "erutu",
+          "basis": "Exclusive to zebu bull seals (lift > 5.0); PDR erutu = bull,",
+          "top_right_neighbors": [
+            {
+              "sign": "M087",
+              "count": 5,
+              "reading": "veL"
+            },
+            {
+              "sign": "M267",
+              "count": 3,
+              "reading": "iN/in (genitive of)"
+            },
+            {
+              "sign": "M059",
+              "count": 2,
+              "reading": "\u0113\u1e37/e\u1e37"
+            },
+            {
+              "sign": "M328",
+              "count": 2,
+              "reading": "\u0101/\u0101l"
+            },
+            {
+              "sign": "M048",
+              "count": 2,
+              "reading": "mu/mu\u1e49"
+            }
+          ]
+        },
+        {
+          "sign": "M073",
+          "freq": 25,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "k\u014d\u1e49",
+          "basis": "Exclusive to zebu bull seals (lift > 5.0); PDR k\u014d\u1e49 = king (b",
+          "top_right_neighbors": [
+            {
+              "sign": "M342",
+              "count": 3,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M211",
+              "count": 2,
+              "reading": "kol"
+            },
+            {
+              "sign": "M378",
+              "count": 1,
+              "reading": "kur"
+            },
+            {
+              "sign": "M176",
+              "count": 1,
+              "reading": "an/a\u1e47"
+            },
+            {
+              "sign": "M051",
+              "count": 1,
+              "reading": "p\u016b/pu\u1e37"
+            }
+          ]
+        },
+        {
+          "sign": "M079",
+          "freq": 24,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "ir",
+          "basis": " [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]",
+          "top_right_neighbors": [
+            {
+              "sign": "M342",
+              "count": 4,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M367",
+              "count": 3,
+              "reading": "am/neuter"
+            },
+            {
+              "sign": "M293",
+              "count": 2,
+              "reading": "ta"
+            },
+            {
+              "sign": "M267",
+              "count": 2,
+              "reading": "iN/in (genitive of)"
+            },
+            {
+              "sign": "M176",
+              "count": 2,
+              "reading": "an/a\u1e47"
+            }
+          ]
+        },
+        {
+          "sign": "M045",
+          "freq": 24,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "y\u0101nai",
+          "basis": "Exclusive to elephant seals (lift > 5.0); PDR y\u0101nai = elepha",
+          "top_right_neighbors": [
+            {
+              "sign": "M162",
+              "count": 4,
+              "reading": "il/i\u1e37"
+            },
+            {
+              "sign": "M293",
+              "count": 3,
+              "reading": "ta"
+            },
+            {
+              "sign": "M176",
+              "count": 3,
+              "reading": "an/a\u1e47"
+            },
+            {
+              "sign": "M328",
+              "count": 2,
+              "reading": "\u0101/\u0101l"
+            },
+            {
+              "sign": "M233",
+              "count": 2,
+              "reading": "\u016br"
+            }
+          ]
+        },
+        {
+          "sign": "M016",
+          "freq": 23,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "ka\u1e37i\u1e5fu",
+          "basis": "Exclusive to elephant seals (lift > 5.0); PDR ka\u1e37i\u1e5fu = male ",
+          "top_right_neighbors": [
+            {
+              "sign": "M293",
+              "count": 3,
+              "reading": "ta"
+            },
+            {
+              "sign": "M342",
+              "count": 2,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M089",
+              "count": 2,
+              "reading": "tu/t\u016b"
+            },
+            {
+              "sign": "M328",
+              "count": 2,
+              "reading": "\u0101/\u0101l"
+            },
+            {
+              "sign": "M211",
+              "count": 1,
+              "reading": "kol"
+            }
+          ]
+        },
+        {
+          "sign": "M013",
+          "freq": 23,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "nakaram",
+          "basis": "Exclusive to gharial seals (lift > 5.0); PDR nakaram = croco",
+          "top_right_neighbors": [
+            {
+              "sign": "M211",
+              "count": 3,
+              "reading": "kol"
+            },
+            {
+              "sign": "M125",
+              "count": 2,
+              "reading": "vil"
+            },
+            {
+              "sign": "M293",
+              "count": 2,
+              "reading": "ta"
+            },
+            {
+              "sign": "M176",
+              "count": 2,
+              "reading": "an/a\u1e47"
+            },
+            {
+              "sign": "M162",
+              "count": 2,
+              "reading": "il/i\u1e37"
+            }
+          ]
+        },
+        {
+          "sign": "M022",
+          "freq": 22,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "kalam",
+          "basis": " [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]",
+          "top_right_neighbors": [
+            {
+              "sign": "M367",
+              "count": 3,
+              "reading": "am/neuter"
+            },
+            {
+              "sign": "M051",
+              "count": 2,
+              "reading": "p\u016b/pu\u1e37"
+            },
+            {
+              "sign": "M176",
+              "count": 2,
+              "reading": "an/a\u1e47"
+            },
+            {
+              "sign": "M328",
+              "count": 2,
+              "reading": "\u0101/\u0101l"
+            },
+            {
+              "sign": "M249",
+              "count": 2,
+              "reading": "tii"
+            }
+          ]
+        },
+        {
+          "sign": "M008",
+          "freq": 22,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "MEDIUM",
+          "reading": "erumai",
+          "basis": "",
+          "top_right_neighbors": [
+            {
+              "sign": "M328",
+              "count": 3,
+              "reading": "\u0101/\u0101l"
+            },
+            {
+              "sign": "M342",
+              "count": 3,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M012",
+              "count": 2,
+              "reading": "o\u1e49\u1e5fu/1"
+            },
+            {
+              "sign": "M089",
+              "count": 2,
+              "reading": "tu/t\u016b"
+            },
+            {
+              "sign": "M059",
+              "count": 2,
+              "reading": "\u0113\u1e37/e\u1e37"
+            }
+          ]
+        },
+        {
+          "sign": "M061",
+          "freq": 22,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "ka",
+          "basis": " [Phase-116 recal: SA-cons=0.25\u2713 DEDR\u2713]",
+          "top_right_neighbors": [
+            {
+              "sign": "M267",
+              "count": 4,
+              "reading": "iN/in (genitive of)"
+            },
+            {
+              "sign": "M089",
+              "count": 3,
+              "reading": "tu/t\u016b"
+            },
+            {
+              "sign": "M065",
+              "count": 2,
+              "reading": "kuTam"
+            },
+            {
+              "sign": "M342",
+              "count": 2,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M051",
+              "count": 2,
+              "reading": "p\u016b/pu\u1e37"
+            }
+          ]
+        },
+        {
+          "sign": "M052",
+          "freq": 22,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "ta",
+          "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]",
+          "top_right_neighbors": [
+            {
+              "sign": "M391",
+              "count": 2,
+              "reading": "ka/ka\u1e47"
+            },
+            {
+              "sign": "M267",
+              "count": 2,
+              "reading": "iN/in (genitive of)"
+            },
+            {
+              "sign": "M342",
+              "count": 2,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M059",
+              "count": 2,
+              "reading": "\u0113\u1e37/e\u1e37"
+            },
+            {
+              "sign": "M051",
+              "count": 1,
+              "reading": "p\u016b/pu\u1e37"
+            }
+          ]
+        },
+        {
+          "sign": "M058",
+          "freq": 21,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "MEDIUM",
+          "reading": "ke",
+          "basis": "",
+          "top_right_neighbors": [
+            {
+              "sign": "M342",
+              "count": 3,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M176",
+              "count": 2,
+              "reading": "an/a\u1e47"
+            },
+            {
+              "sign": "M267",
+              "count": 2,
+              "reading": "iN/in (genitive of)"
+            },
+            {
+              "sign": "M293",
+              "count": 1,
+              "reading": "ta"
+            },
+            {
+              "sign": "M378",
+              "count": 1,
+              "reading": "kur"
+            }
+          ]
+        },
+        {
+          "sign": "M060",
+          "freq": 20,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "k\u0101\u1e47\u1e6d\u0101mirukam",
+          "basis": "Exclusive to rhinoceros seals (lift > 5.0); PDR k\u0101\u1e47\u1e6d\u0101mirukam",
+          "top_right_neighbors": [
+            {
+              "sign": "M342",
+              "count": 5,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M328",
+              "count": 3,
+              "reading": "\u0101/\u0101l"
+            },
+            {
+              "sign": "M336",
+              "count": 2,
+              "reading": "i\u1e49/locative"
+            },
+            {
+              "sign": "M412",
+              "count": 1,
+              "reading": "c\u016b\u1e37"
+            },
+            {
+              "sign": "M350",
+              "count": 1,
+              "reading": "v\u0113"
+            }
+          ]
+        },
+        {
+          "sign": "M019",
+          "freq": 20,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "ampu",
+          "basis": " [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]",
+          "top_right_neighbors": [
+            {
+              "sign": "M342",
+              "count": 4,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M328",
+              "count": 3,
+              "reading": "\u0101/\u0101l"
+            },
+            {
+              "sign": "M301",
+              "count": 1,
+              "reading": "kur"
+            },
+            {
+              "sign": "M087",
+              "count": 1,
+              "reading": "veL"
+            },
+            {
+              "sign": "M367",
+              "count": 1,
+              "reading": "am/neuter"
+            }
+          ]
+        },
+        {
+          "sign": "M044",
+          "freq": 19,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "MEDIUM",
+          "reading": "ku",
+          "basis": "",
+          "top_right_neighbors": [
+            {
+              "sign": "M059",
+              "count": 2,
+              "reading": "\u0113\u1e37/e\u1e37"
+            },
+            {
+              "sign": "M342",
+              "count": 2,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M293",
+              "count": 2,
+              "reading": "ta"
+            },
+            {
+              "sign": "M391",
+              "count": 1,
+              "reading": "ka/ka\u1e47"
+            },
+            {
+              "sign": "M099",
+              "count": 1,
+              "reading": "kol/ko\u1e37"
+            }
+          ]
+        },
+        {
+          "sign": "M035",
+          "freq": 19,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "po",
+          "basis": " [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]",
+          "top_right_neighbors": [
+            {
+              "sign": "M342",
+              "count": 3,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M267",
+              "count": 3,
+              "reading": "iN/in (genitive of)"
+            },
+            {
+              "sign": "M328",
+              "count": 3,
+              "reading": "\u0101/\u0101l"
+            },
+            {
+              "sign": "M211",
+              "count": 2,
+              "reading": "kol"
+            },
+            {
+              "sign": "M089",
+              "count": 1,
+              "reading": "tu/t\u016b"
+            }
+          ]
+        },
+        {
+          "sign": "M053",
+          "freq": 19,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "MEDIUM",
+          "reading": "mi",
+          "basis": "",
+          "top_right_neighbors": [
+            {
+              "sign": "M342",
+              "count": 2,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M125",
+              "count": 2,
+              "reading": "vil"
+            },
+            {
+              "sign": "M354",
+              "count": 1,
+              "reading": "kur"
+            },
+            {
+              "sign": "M211",
+              "count": 1,
+              "reading": "kol"
+            },
+            {
+              "sign": "M357",
+              "count": 1,
+              "reading": "ku\u1e37"
+            }
+          ]
+        },
+        {
+          "sign": "M003",
+          "freq": 19,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "kalam",
+          "basis": " [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]",
+          "top_right_neighbors": [
+            {
+              "sign": "M342",
+              "count": 4,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M328",
+              "count": 2,
+              "reading": "\u0101/\u0101l"
+            },
+            {
+              "sign": "M176",
+              "count": 2,
+              "reading": "an/a\u1e47"
+            },
+            {
+              "sign": "M099",
+              "count": 1,
+              "reading": "kol/ko\u1e37"
+            },
+            {
+              "sign": "M236",
+              "count": 1,
+              "reading": "kur"
+            }
+          ]
+        },
+        {
+          "sign": "M080",
+          "freq": 19,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "v\u0113\u1e45kai",
+          "basis": "Exclusive to tiger seals (lift > 5.0); PDR v\u0113\u1e45kai = tiger (p",
+          "top_right_neighbors": [
+            {
+              "sign": "M328",
+              "count": 2,
+              "reading": "\u0101/\u0101l"
+            },
+            {
+              "sign": "M162",
+              "count": 2,
+              "reading": "il/i\u1e37"
+            },
+            {
+              "sign": "M249",
+              "count": 2,
+              "reading": "tii"
+            },
+            {
+              "sign": "M059",
+              "count": 2,
+              "reading": "\u0113\u1e37/e\u1e37"
+            },
+            {
+              "sign": "M176",
+              "count": 1,
+              "reading": "an/a\u1e47"
+            }
+          ]
+        },
+        {
+          "sign": "M056",
+          "freq": 19,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "MEDIUM",
+          "reading": "miN4",
+          "basis": "",
+          "top_right_neighbors": [
+            {
+              "sign": "M089",
+              "count": 3,
+              "reading": "tu/t\u016b"
+            },
+            {
+              "sign": "M305",
+              "count": 2,
+              "reading": "\u014d\u1e6du/comitative"
+            },
+            {
+              "sign": "M162",
+              "count": 2,
+              "reading": "il/i\u1e37"
+            },
+            {
+              "sign": "M342",
+              "count": 2,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M211",
+              "count": 1,
+              "reading": "kol"
+            }
+          ]
+        },
+        {
+          "sign": "M077",
+          "freq": 18,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "nal",
+          "basis": "Round 1: INITIAL position (freq=18), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M342",
+              "count": 2,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M127",
+              "count": 1,
+              "reading": "v\u0113"
+            },
+            {
+              "sign": "M012",
+              "count": 1,
+              "reading": "o\u1e49\u1e5fu/1"
+            },
+            {
+              "sign": "M105",
+              "count": 1,
+              "reading": "kur"
+            },
+            {
+              "sign": "M099",
+              "count": 1,
+              "reading": "kol/ko\u1e37"
+            }
+          ]
+        },
+        {
+          "sign": "M018",
+          "freq": 18,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "n\u0113r",
+          "basis": "Round 1: INITIAL position (freq=18), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M211",
+              "count": 3,
+              "reading": "kol"
+            },
+            {
+              "sign": "M012",
+              "count": 2,
+              "reading": "o\u1e49\u1e5fu/1"
+            },
+            {
+              "sign": "M099",
+              "count": 2,
+              "reading": "kol/ko\u1e37"
+            },
+            {
+              "sign": "M293",
+              "count": 2,
+              "reading": "ta"
+            },
+            {
+              "sign": "M336",
+              "count": 1,
+              "reading": "i\u1e49/locative"
+            }
+          ]
+        },
+        {
+          "sign": "M039",
+          "freq": 18,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "\u0101\u1e49ai",
+          "basis": "Exclusive to elephant seals (lift > 5.0); PDR \u0101\u1e49ai = elephan",
+          "top_right_neighbors": [
+            {
+              "sign": "M391",
+              "count": 3,
+              "reading": "ka/ka\u1e47"
+            },
+            {
+              "sign": "M328",
+              "count": 2,
+              "reading": "\u0101/\u0101l"
+            },
+            {
+              "sign": "M059",
+              "count": 2,
+              "reading": "\u0113\u1e37/e\u1e37"
+            },
+            {
+              "sign": "M211",
+              "count": 1,
+              "reading": "kol"
+            },
+            {
+              "sign": "M176",
+              "count": 1,
+              "reading": "an/a\u1e47"
+            }
+          ]
+        },
+        {
+          "sign": "M063",
+          "freq": 18,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "mutalai",
+          "basis": "FACT-CHECK CORRECTION 2026-05-11: Original V7 assignment was",
+          "top_right_neighbors": [
+            {
+              "sign": "M342",
+              "count": 4,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M211",
+              "count": 2,
+              "reading": "kol"
+            },
+            {
+              "sign": "M176",
+              "count": 2,
+              "reading": "an/a\u1e47"
+            },
+            {
+              "sign": "M293",
+              "count": 1,
+              "reading": "ta"
+            },
+            {
+              "sign": "M231",
+              "count": 1,
+              "reading": "kur"
+            }
+          ]
+        },
+        {
+          "sign": "M030",
+          "freq": 18,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "k\u014d",
+          "basis": "Round 1: INITIAL position (freq=18), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M342",
+              "count": 4,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M099",
+              "count": 2,
+              "reading": "kol/ko\u1e37"
+            },
+            {
+              "sign": "M211",
+              "count": 2,
+              "reading": "kol"
+            },
+            {
+              "sign": "M048",
+              "count": 2,
+              "reading": "mu/mu\u1e49"
+            },
+            {
+              "sign": "M243",
+              "count": 1,
+              "reading": "kur"
+            }
+          ]
+        },
+        {
+          "sign": "M017",
+          "freq": 18,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "kai",
+          "basis": "Round 1: INITIAL position (freq=18), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M176",
+              "count": 2,
+              "reading": "an/a\u1e47"
+            },
+            {
+              "sign": "M342",
+              "count": 2,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M126",
+              "count": 1,
+              "reading": "kur"
+            },
+            {
+              "sign": "M012",
+              "count": 1,
+              "reading": "o\u1e49\u1e5fu/1"
+            },
+            {
+              "sign": "M125",
+              "count": 1,
+              "reading": "vil"
+            }
+          ]
+        },
+        {
+          "sign": "M057",
+          "freq": 18,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "m\u0101\u1e6du",
+          "basis": "Exclusive to zebu bull seals (lift > 5.0); PDR m\u0101\u1e6du = cattle",
+          "top_right_neighbors": [
+            {
+              "sign": "M176",
+              "count": 3,
+              "reading": "an/a\u1e47"
+            },
+            {
+              "sign": "M342",
+              "count": 2,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M293",
+              "count": 1,
+              "reading": "ta"
+            },
+            {
+              "sign": "M012",
+              "count": 1,
+              "reading": "o\u1e49\u1e5fu/1"
+            },
+            {
+              "sign": "M406",
+              "count": 1,
+              "reading": "kur"
+            }
+          ]
+        },
+        {
+          "sign": "M020",
+          "freq": 18,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "ku\u1e49",
+          "basis": "Round 1: INITIAL position (freq=18), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M176",
+              "count": 2,
+              "reading": "an/a\u1e47"
+            },
+            {
+              "sign": "M342",
+              "count": 2,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M089",
+              "count": 1,
+              "reading": "tu/t\u016b"
+            },
+            {
+              "sign": "M391",
+              "count": 1,
+              "reading": "ka/ka\u1e47"
+            },
+            {
+              "sign": "M059",
+              "count": 1,
+              "reading": "\u0113\u1e37/e\u1e37"
+            }
+          ]
+        },
+        {
+          "sign": "M004",
+          "freq": 17,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "k\u0113\u1e37",
+          "basis": "Round 1: INITIAL position (freq=17), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M267",
+              "count": 3,
+              "reading": "iN/in (genitive of)"
+            },
+            {
+              "sign": "M342",
+              "count": 2,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M391",
+              "count": 1,
+              "reading": "ka/ka\u1e47"
+            },
+            {
+              "sign": "M176",
+              "count": 1,
+              "reading": "an/a\u1e47"
+            },
+            {
+              "sign": "M089",
+              "count": 1,
+              "reading": "tu/t\u016b"
+            }
+          ]
+        },
+        {
+          "sign": "M014",
+          "freq": 17,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "tiru",
+          "basis": "Round 1: INITIAL position (freq=17), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M176",
+              "count": 3,
+              "reading": "an/a\u1e47"
+            },
+            {
+              "sign": "M328",
+              "count": 2,
+              "reading": "\u0101/\u0101l"
+            },
+            {
+              "sign": "M267",
+              "count": 2,
+              "reading": "iN/in (genitive of)"
+            },
+            {
+              "sign": "M162",
+              "count": 1,
+              "reading": "il/i\u1e37"
+            },
+            {
+              "sign": "M089",
+              "count": 1,
+              "reading": "tu/t\u016b"
+            }
+          ]
+        },
+        {
+          "sign": "M026",
+          "freq": 17,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "m\u0101",
+          "basis": "Round 1: INITIAL position (freq=17), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M267",
+              "count": 2,
+              "reading": "iN/in (genitive of)"
+            },
+            {
+              "sign": "M336",
+              "count": 2,
+              "reading": "i\u1e49/locative"
+            },
+            {
+              "sign": "M293",
+              "count": 1,
+              "reading": "ta"
+            },
+            {
+              "sign": "M252",
+              "count": 1,
+              "reading": "kur"
+            },
+            {
+              "sign": "M059",
+              "count": 1,
+              "reading": "\u0113\u1e37/e\u1e37"
+            }
+          ]
+        },
+        {
+          "sign": "M034",
+          "freq": 17,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "t\u014d\u1e37",
+          "basis": "Round 1: INITIAL position (freq=17), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M211",
+              "count": 3,
+              "reading": "kol"
+            },
+            {
+              "sign": "M342",
+              "count": 2,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M151",
+              "count": 1,
+              "reading": "vi\u1e37"
+            },
+            {
+              "sign": "M089",
+              "count": 1,
+              "reading": "tu/t\u016b"
+            },
+            {
+              "sign": "M218",
+              "count": 1,
+              "reading": "kur"
+            }
+          ]
+        },
+        {
+          "sign": "M027",
+          "freq": 17,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "m\u0101\u1e5f",
+          "basis": "Round 1: INITIAL position (freq=17), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M099",
+              "count": 2,
+              "reading": "kol/ko\u1e37"
+            },
+            {
+              "sign": "M211",
+              "count": 2,
+              "reading": "kol"
+            },
+            {
+              "sign": "M342",
+              "count": 2,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M125",
+              "count": 2,
+              "reading": "vil"
+            },
+            {
+              "sign": "M267",
+              "count": 2,
+              "reading": "iN/in (genitive of)"
+            }
+          ]
+        },
+        {
+          "sign": "M041",
+          "freq": 17,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "p\u0113r",
+          "basis": "Round 1: INITIAL position (freq=17), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M342",
+              "count": 3,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M087",
+              "count": 2,
+              "reading": "veL"
+            },
+            {
+              "sign": "M336",
+              "count": 1,
+              "reading": "i\u1e49/locative"
+            },
+            {
+              "sign": "M233",
+              "count": 1,
+              "reading": "\u016br"
+            },
+            {
+              "sign": "M260",
+              "count": 1,
+              "reading": "kur"
+            }
+          ]
+        },
+        {
+          "sign": "M038",
+          "freq": 17,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "MEDIUM",
+          "reading": "p\u014dr",
+          "basis": "Round 1: INITIAL position (freq=17), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M099",
+              "count": 2,
+              "reading": "kol/ko\u1e37"
+            },
+            {
+              "sign": "M342",
+              "count": 2,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M065",
+              "count": 2,
+              "reading": "kuTam"
+            },
+            {
+              "sign": "M367",
+              "count": 1,
+              "reading": "am/neuter"
+            },
+            {
+              "sign": "M197",
+              "count": 1,
+              "reading": "kur"
+            }
+          ]
+        },
+        {
+          "sign": "M010",
+          "freq": 17,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "MEDIUM",
+          "reading": "pa\u1e6d",
+          "basis": "Round 1: INITIAL position (freq=17), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M087",
+              "count": 2,
+              "reading": "veL"
+            },
+            {
+              "sign": "M328",
+              "count": 2,
+              "reading": "\u0101/\u0101l"
+            },
+            {
+              "sign": "M342",
+              "count": 2,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M176",
+              "count": 1,
+              "reading": "an/a\u1e47"
+            },
+            {
+              "sign": "M293",
+              "count": 1,
+              "reading": "ta"
+            }
+          ]
+        },
+        {
+          "sign": "M050",
+          "freq": 17,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "MEDIUM",
+          "reading": "p\u0101r",
+          "basis": "Round 1: INITIAL position (freq=17), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M211",
+              "count": 2,
+              "reading": "kol"
+            },
+            {
+              "sign": "M342",
+              "count": 2,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M365",
+              "count": 2,
+              "reading": "v\u0101\u1e49"
+            },
+            {
+              "sign": "M169",
+              "count": 1,
+              "reading": "r\u0101"
+            },
+            {
+              "sign": "M334",
+              "count": 1,
+              "reading": "kur"
+            }
+          ]
+        },
+        {
+          "sign": "M025",
+          "freq": 17,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "MEDIUM",
+          "reading": "cem",
+          "basis": "Round 1: INITIAL position (freq=17), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M267",
+              "count": 2,
+              "reading": "iN/in (genitive of)"
+            },
+            {
+              "sign": "M293",
+              "count": 2,
+              "reading": "ta"
+            },
+            {
+              "sign": "M249",
+              "count": 2,
+              "reading": "tii"
+            },
+            {
+              "sign": "M342",
+              "count": 2,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M099",
+              "count": 2,
+              "reading": "kol/ko\u1e37"
+            }
+          ]
+        },
+        {
+          "sign": "M070",
+          "freq": 17,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "MEDIUM",
+          "reading": "v\u0113l",
+          "basis": "Round 1: INITIAL position (freq=17), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M176",
+              "count": 2,
+              "reading": "an/a\u1e47"
+            },
+            {
+              "sign": "M328",
+              "count": 2,
+              "reading": "\u0101/\u0101l"
+            },
+            {
+              "sign": "M367",
+              "count": 1,
+              "reading": "am/neuter"
+            },
+            {
+              "sign": "M322",
+              "count": 1,
+              "reading": "kur"
+            },
+            {
+              "sign": "M293",
+              "count": 1,
+              "reading": "ta"
+            }
+          ]
+        },
+        {
+          "sign": "M078",
+          "freq": 17,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "MEDIUM",
+          "reading": "c\u0113r",
+          "basis": "Round 1: INITIAL position (freq=17), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M391",
+              "count": 2,
+              "reading": "ka/ka\u1e47"
+            },
+            {
+              "sign": "M342",
+              "count": 2,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M099",
+              "count": 2,
+              "reading": "kol/ko\u1e37"
+            },
+            {
+              "sign": "M059",
+              "count": 2,
+              "reading": "\u0113\u1e37/e\u1e37"
+            },
+            {
+              "sign": "M223",
+              "count": 1,
+              "reading": "mu\u1e37"
+            }
+          ]
+        },
+        {
+          "sign": "M023",
+          "freq": 16,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "MEDIUM",
+          "reading": "va\u1e37",
+          "basis": "Round 1: INITIAL position (freq=16), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M099",
+              "count": 2,
+              "reading": "kol/ko\u1e37"
+            },
+            {
+              "sign": "M211",
+              "count": 2,
+              "reading": "kol"
+            },
+            {
+              "sign": "M089",
+              "count": 2,
+              "reading": "tu/t\u016b"
+            },
+            {
+              "sign": "M176",
+              "count": 1,
+              "reading": "an/a\u1e47"
+            },
+            {
+              "sign": "M379",
+              "count": 1,
+              "reading": "kur"
+            }
+          ]
+        },
+        {
+          "sign": "M066",
+          "freq": 16,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "MEDIUM",
+          "reading": "c\u014d\u1e3b",
+          "basis": "Round 1: INITIAL position (freq=16), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M162",
+              "count": 2,
+              "reading": "il/i\u1e37"
+            },
+            {
+              "sign": "M342",
+              "count": 2,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M135",
+              "count": 1,
+              "reading": "kur"
+            },
+            {
+              "sign": "M220",
+              "count": 1,
+              "reading": "al"
+            },
+            {
+              "sign": "M176",
+              "count": 1,
+              "reading": "an/a\u1e47"
+            }
+          ]
+        },
+        {
+          "sign": "M071",
+          "freq": 16,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "nal",
+          "basis": "Round 1: INITIAL position (freq=16), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M267",
+              "count": 4,
+              "reading": "iN/in (genitive of)"
+            },
+            {
+              "sign": "M342",
+              "count": 4,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M176",
+              "count": 2,
+              "reading": "an/a\u1e47"
+            },
+            {
+              "sign": "M336",
+              "count": 1,
+              "reading": "i\u1e49/locative"
+            },
+            {
+              "sign": "M065",
+              "count": 1,
+              "reading": "kuTam"
+            }
+          ]
+        },
+        {
+          "sign": "M009",
+          "freq": 16,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "MEDIUM",
+          "reading": "\u0101\u1e47",
+          "basis": "Round 2: INITIAL position (freq=16), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M293",
+              "count": 2,
+              "reading": "ta"
+            },
+            {
+              "sign": "M233",
+              "count": 2,
+              "reading": "\u016br"
+            },
+            {
+              "sign": "M336",
+              "count": 2,
+              "reading": "i\u1e49/locative"
+            },
+            {
+              "sign": "M267",
+              "count": 1,
+              "reading": "iN/in (genitive of)"
+            },
+            {
+              "sign": "M146",
+              "count": 1,
+              "reading": "kur"
+            }
+          ]
+        },
+        {
+          "sign": "M069",
+          "freq": 16,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "MEDIUM",
+          "reading": "n\u0113r",
+          "basis": "Round 2: INITIAL position (freq=16), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M211",
+              "count": 2,
+              "reading": "kol"
+            },
+            {
+              "sign": "M391",
+              "count": 1,
+              "reading": "ka/ka\u1e47"
+            },
+            {
+              "sign": "M125",
+              "count": 1,
+              "reading": "vil"
+            },
+            {
+              "sign": "M342",
+              "count": 1,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M209",
+              "count": 1,
+              "reading": "kur"
+            }
+          ]
+        },
+        {
+          "sign": "M021",
+          "freq": 16,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "MEDIUM",
+          "reading": "k\u014d",
+          "basis": "Round 2: INITIAL position (freq=16), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M211",
+              "count": 3,
+              "reading": "kol"
+            },
+            {
+              "sign": "M176",
+              "count": 3,
+              "reading": "an/a\u1e47"
+            },
+            {
+              "sign": "M162",
+              "count": 1,
+              "reading": "il/i\u1e37"
+            },
+            {
+              "sign": "M391",
+              "count": 1,
+              "reading": "ka/ka\u1e47"
+            },
+            {
+              "sign": "M233",
+              "count": 1,
+              "reading": "\u016br"
+            }
+          ]
+        },
+        {
+          "sign": "M031",
+          "freq": 16,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "HIGH",
+          "reading": "kai",
+          "basis": "Round 2: INITIAL position (freq=16), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M342",
+              "count": 5,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M089",
+              "count": 2,
+              "reading": "tu/t\u016b"
+            },
+            {
+              "sign": "M397",
+              "count": 1,
+              "reading": "kur"
+            },
+            {
+              "sign": "M267",
+              "count": 1,
+              "reading": "iN/in (genitive of)"
+            },
+            {
+              "sign": "M158",
+              "count": 1,
+              "reading": "kur"
+            }
+          ]
+        },
+        {
+          "sign": "M002",
+          "freq": 16,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "MEDIUM",
+          "reading": "ku\u1e49",
+          "basis": "Round 2: INITIAL position (freq=16), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M336",
+              "count": 3,
+              "reading": "i\u1e49/locative"
+            },
+            {
+              "sign": "M162",
+              "count": 1,
+              "reading": "il/i\u1e37"
+            },
+            {
+              "sign": "M293",
+              "count": 1,
+              "reading": "ta"
+            },
+            {
+              "sign": "M239",
+              "count": 1,
+              "reading": "il"
+            },
+            {
+              "sign": "M012",
+              "count": 1,
+              "reading": "o\u1e49\u1e5fu/1"
+            }
+          ]
+        },
+        {
+          "sign": "M037",
+          "freq": 16,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "MEDIUM",
+          "reading": "k\u0113\u1e37",
+          "basis": "Round 2: INITIAL position (freq=16), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M267",
+              "count": 4,
+              "reading": "iN/in (genitive of)"
+            },
+            {
+              "sign": "M065",
+              "count": 1,
+              "reading": "kuTam"
+            },
+            {
+              "sign": "M293",
+              "count": 1,
+              "reading": "ta"
+            },
+            {
+              "sign": "M048",
+              "count": 1,
+              "reading": "mu/mu\u1e49"
+            },
+            {
+              "sign": "M391",
+              "count": 1,
+              "reading": "ka/ka\u1e47"
+            }
+          ]
+        },
+        {
+          "sign": "M067",
+          "freq": 15,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "MEDIUM",
+          "reading": "k\u014d\u1e6d\u1e6d\u0101\u1e49",
+          "basis": "Exclusive to rhinoceros seals (lift > 5.0); PDR k\u014d\u1e6d\u1e6d\u0101\u1e49 = hor",
+          "top_right_neighbors": [
+            {
+              "sign": "M211",
+              "count": 2,
+              "reading": "kol"
+            },
+            {
+              "sign": "M267",
+              "count": 2,
+              "reading": "iN/in (genitive of)"
+            },
+            {
+              "sign": "M181",
+              "count": 1,
+              "reading": "kur"
+            },
+            {
+              "sign": "M367",
+              "count": 1,
+              "reading": "am/neuter"
+            },
+            {
+              "sign": "M391",
+              "count": 1,
+              "reading": "ka/ka\u1e47"
+            }
+          ]
+        },
+        {
+          "sign": "M005",
+          "freq": 15,
+          "i_rate": 1.0,
+          "t_rate": 0.0,
+          "confidence": "MEDIUM",
+          "reading": "k\u014d\u1e49",
+          "basis": "Round 2: INITIAL position (freq=15), distributional assignme",
+          "top_right_neighbors": [
+            {
+              "sign": "M342",
+              "count": 4,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M326",
+              "count": 1,
+              "reading": "kur"
+            },
+            {
+              "sign": "M336",
+              "count": 1,
+              "reading": "i\u1e49/locative"
+            },
+            {
+              "sign": "M065",
+              "count": 1,
+              "reading": "kuTam"
+            },
+            {
+              "sign": "M267",
+              "count": 1,
+              "reading": "iN/in (genitive of)"
+            }
+          ]
+        }
+      ],
+      "interpretation": "77 H+M signs have INITIAL-dominant positional profile (i_rate \u2265 0.50). These constitute the title/determinative vocabulary: professional roles, clan markers, place names. Their top right-neighbors reveal what types of name components follow each title."
+    },
+    "C_formula_classification": {
+      "n_distinct_initial_signs": 97,
+      "formula_types": [
+        {
+          "initial_sign": "M059",
+          "n_seals": 43,
+          "avg_seq_length": 3.95,
+          "confidence": "HIGH",
+          "reading": "\u0113\u1e37/e\u1e37",
+          "top_site": "Mohenjo-daro",
+          "top_iconography": "unicorn",
+          "site_distribution": {
+            "Mohenjo-daro": 18,
+            "Harappa": 11,
+            "Dholavira": 7,
+            "Lothal": 2,
+            "Kalibangan": 2
+          },
+          "icon_distribution": {
+            "unicorn": 43
+          }
+        },
+        {
+          "initial_sign": "M065",
+          "n_seals": 36,
+          "avg_seq_length": 4.28,
+          "confidence": "MEDIUM",
+          "reading": "kuTam",
+          "top_site": "Harappa",
+          "top_iconography": "unicorn",
+          "site_distribution": {
+            "Harappa": 13,
+            "Mohenjo-daro": 12,
+            "Dholavira": 4,
+            "Lothal": 3,
+            "Kalibangan": 2
+          },
+          "icon_distribution": {
+            "unicorn": 11,
+            "zebu bull": 7,
+            "tiger": 4,
+            "buffalo": 4,
+            "rhinoceros": 4
+          }
+        },
+        {
+          "initial_sign": "M051",
+          "n_seals": 33,
+          "avg_seq_length": 4.42,
+          "confidence": "HIGH",
+          "reading": "p\u016b/pu\u1e37",
+          "top_site": "Harappa",
+          "top_iconography": "unicorn",
+          "site_distribution": {
+            "Harappa": 12,
+            "Mohenjo-daro": 8,
+            "Lothal": 3,
+            "Banawali": 3,
+            "Surkotada": 2
+          },
+          "icon_distribution": {
+            "unicorn": 9,
+            "rhinoceros": 6,
+            "zebu bull": 5,
+            "elephant": 5,
+            "tiger": 2
+          }
+        },
+        {
+          "initial_sign": "M048",
+          "n_seals": 31,
+          "avg_seq_length": 4.29,
+          "confidence": "HIGH",
+          "reading": "mu/mu\u1e49",
+          "top_site": "Mohenjo-daro",
+          "top_iconography": "unicorn",
+          "site_distribution": {
+            "Mohenjo-daro": 11,
+            "Harappa": 7,
+            "Lothal": 4,
+            "Kalibangan": 3,
+            "Banawali": 2
+          },
+          "icon_distribution": {
+            "unicorn": 14,
+            "zebu bull": 6,
+            "rhinoceros": 3,
+            "elephant": 3,
+            "script only": 2
+          }
+        },
+        {
+          "initial_sign": "M012",
+          "n_seals": 29,
+          "avg_seq_length": 4.28,
+          "confidence": "HIGH",
+          "reading": "o\u1e49\u1e5fu/1",
+          "top_site": "Mohenjo-daro",
+          "top_iconography": "unicorn",
+          "site_distribution": {
+            "Mohenjo-daro": 9,
+            "Harappa": 8,
+            "Kalibangan": 5,
+            "Chanhu-daro": 2,
+            "Surkotada": 2
+          },
+          "icon_distribution": {
+            "unicorn": 11,
+            "zebu bull": 5,
+            "elephant": 3,
+            "gharial": 3,
+            "rhinoceros": 3
+          }
+        },
+        {
+          "initial_sign": "M062",
+          "n_seals": 28,
+          "avg_seq_length": 3.96,
+          "confidence": "HIGH",
+          "reading": "erutu",
+          "top_site": "Mohenjo-daro",
+          "top_iconography": "zebu bull",
+          "site_distribution": {
+            "Mohenjo-daro": 15,
+            "Harappa": 6,
+            "Dholavira": 2,
+            "Chanhu-daro": 2,
+            "Lothal": 2
+          },
+          "icon_distribution": {
+            "zebu bull": 28
+          }
+        },
+        {
+          "initial_sign": "M073",
+          "n_seals": 25,
+          "avg_seq_length": 4.36,
+          "confidence": "HIGH",
+          "reading": "k\u014d\u1e49",
+          "top_site": "Harappa",
+          "top_iconography": "zebu bull",
+          "site_distribution": {
+            "Harappa": 14,
+            "Mohenjo-daro": 7,
+            "Dholavira": 1,
+            "Surkotada": 1,
+            "Kalibangan": 1
+          },
+          "icon_distribution": {
+            "zebu bull": 25
+          }
+        },
+        {
+          "initial_sign": "M099",
+          "n_seals": 24,
+          "avg_seq_length": 4.21,
+          "confidence": "HIGH",
+          "reading": "kol/ko\u1e37",
+          "top_site": "Mohenjo-daro",
+          "top_iconography": "unicorn",
+          "site_distribution": {
+            "Mohenjo-daro": 7,
+            "Lothal": 5,
+            "Harappa": 5,
+            "Dholavira": 3,
+            "Rakhigarhi": 1
+          },
+          "icon_distribution": {
+            "unicorn": 10,
+            "zebu bull": 6,
+            "rhinoceros": 2,
+            "tiger": 2,
+            "geometric": 2
+          }
+        },
+        {
+          "initial_sign": "M079",
+          "n_seals": 24,
+          "avg_seq_length": 3.71,
+          "confidence": "HIGH",
+          "reading": "ir",
+          "top_site": "Mohenjo-daro",
+          "top_iconography": "unicorn",
+          "site_distribution": {
+            "Mohenjo-daro": 9,
+            "Harappa": 4,
+            "Chanhu-daro": 3,
+            "Kalibangan": 2,
+            "Rakhigarhi": 2
+          },
+          "icon_distribution": {
+            "unicorn": 10,
+            "script only": 4,
+            "elephant": 3,
+            "geometric": 2,
+            "rhinoceros": 2
+          }
+        },
+        {
+          "initial_sign": "M045",
+          "n_seals": 24,
+          "avg_seq_length": 4.42,
+          "confidence": "HIGH",
+          "reading": "y\u0101nai",
+          "top_site": "Mohenjo-daro",
+          "top_iconography": "elephant",
+          "site_distribution": {
+            "Mohenjo-daro": 12,
+            "Harappa": 6,
+            "Surkotada": 2,
+            "Dholavira": 2,
+            "Lothal": 2
+          },
+          "icon_distribution": {
+            "elephant": 24
+          }
+        },
+        {
+          "initial_sign": "M016",
+          "n_seals": 23,
+          "avg_seq_length": 4.65,
+          "confidence": "HIGH",
+          "reading": "ka\u1e37i\u1e5fu",
+          "top_site": "Harappa",
+          "top_iconography": "elephant",
+          "site_distribution": {
+            "Harappa": 11,
+            "Mohenjo-daro": 6,
+            "Dholavira": 2,
+            "Banawali": 1,
+            "Lothal": 1
+          },
+          "icon_distribution": {
+            "elephant": 23
+          }
+        },
+        {
+          "initial_sign": "M013",
+          "n_seals": 23,
+          "avg_seq_length": 3.87,
+          "confidence": "HIGH",
+          "reading": "nakaram",
+          "top_site": "Mohenjo-daro",
+          "top_iconography": "unicorn",
+          "site_distribution": {
+            "Mohenjo-daro": 11,
+            "Harappa": 7,
+            "Rakhigarhi": 1,
+            "Lothal": 1,
+            "Surkotada": 1
+          },
+          "icon_distribution": {
+            "unicorn": 6,
+            "script only": 4,
+            "zebu bull": 4,
+            "gharial": 3,
+            "buffalo": 3
+          }
+        },
+        {
+          "initial_sign": "M391",
+          "n_seals": 22,
+          "avg_seq_length": 4.27,
+          "confidence": "HIGH",
+          "reading": "ka/ka\u1e47",
+          "top_site": "Mohenjo-daro",
+          "top_iconography": "unicorn",
+          "site_distribution": {
+            "Mohenjo-daro": 10,
+            "Harappa": 6,
+            "Lothal": 2,
+            "Dholavira": 2,
+            "Chanhu-daro": 1
+          },
+          "icon_distribution": {
+            "unicorn": 9,
+            "zebu bull": 4,
+            "script only": 3,
+            "tiger": 2,
+            "elephant": 1
+          }
+        },
+        {
+          "initial_sign": "M022",
+          "n_seals": 22,
+          "avg_seq_length": 4.05,
+          "confidence": "HIGH",
+          "reading": "kalam",
+          "top_site": "Mohenjo-daro",
+          "top_iconography": "unicorn",
+          "site_distribution": {
+            "Mohenjo-daro": 6,
+            "Harappa": 6,
+            "Kalibangan": 3,
+            "Surkotada": 3,
+            "Banawali": 2
+          },
+          "icon_distribution": {
+            "unicorn": 8,
+            "zebu bull": 5,
+            "script only": 4,
+            "geometric": 2,
+            "elephant": 2
+          }
+        },
+        {
+          "initial_sign": "M008",
+          "n_seals": 22,
+          "avg_seq_length": 4.14,
+          "confidence": "MEDIUM",
+          "reading": "erumai",
+          "top_site": "Harappa",
+          "top_iconography": "unicorn",
+          "site_distribution": {
+            "Harappa": 9,
+            "Mohenjo-daro": 7,
+            "Kalibangan": 2,
+            "Dholavira": 2,
+            "Banawali": 1
+          },
+          "icon_distribution": {
+            "unicorn": 6,
+            "script only": 4,
+            "zebu bull": 3,
+            "geometric": 2,
+            "buffalo": 2
+          }
+        },
+        {
+          "initial_sign": "M061",
+          "n_seals": 22,
+          "avg_seq_length": 4.27,
+          "confidence": "HIGH",
+          "reading": "ka",
+          "top_site": "Mohenjo-daro",
+          "top_iconography": "unicorn",
+          "site_distribution": {
+            "Mohenjo-daro": 8,
+            "Harappa": 8,
+            "Surkotada": 2,
+            "Lothal": 1,
+            "Chanhu-daro": 1
+          },
+          "icon_distribution": {
+            "unicorn": 7,
+            "buffalo": 4,
+            "elephant": 3,
+            "gharial": 2,
+            "geometric": 2
+          }
+        },
+        {
+          "initial_sign": "M052",
+          "n_seals": 22,
+          "avg_seq_length": 4.36,
+          "confidence": "HIGH",
+          "reading": "ta",
+          "top_site": "Harappa",
+          "top_iconography": "zebu bull",
+          "site_distribution": {
+            "Harappa": 10,
+            "Mohenjo-daro": 5,
+            "Chanhu-daro": 3,
+            "Kalibangan": 2,
+            "Dholavira": 1
+          },
+          "icon_distribution": {
+            "zebu bull": 5,
+            "unicorn": 4,
+            "elephant": 3,
+            "script only": 3,
+            "gharial": 2
+          }
+        },
+        {
+          "initial_sign": "M058",
+          "n_seals": 21,
+          "avg_seq_length": 4.19,
+          "confidence": "MEDIUM",
+          "reading": "ke",
+          "top_site": "Mohenjo-daro",
+          "top_iconography": "unicorn",
+          "site_distribution": {
+            "Mohenjo-daro": 7,
+            "Harappa": 4,
+            "Surkotada": 3,
+            "Banawali": 2,
+            "Lothal": 2
+          },
+          "icon_distribution": {
+            "unicorn": 10,
+            "rhinoceros": 3,
+            "script only": 2,
+            "elephant": 2,
+            "zebu bull": 1
+          }
+        },
+        {
+          "initial_sign": "M060",
+          "n_seals": 20,
+          "avg_seq_length": 4.45,
+          "confidence": "HIGH",
+          "reading": "k\u0101\u1e47\u1e6d\u0101mirukam",
+          "top_site": "Mohenjo-daro",
+          "top_iconography": "rhinoceros",
+          "site_distribution": {
+            "Mohenjo-daro": 8,
+            "Harappa": 3,
+            "Lothal": 3,
+            "Dholavira": 3,
+            "Chanhu-daro": 1
+          },
+          "icon_distribution": {
+            "rhinoceros": 20
+          }
+        },
+        {
+          "initial_sign": "M019",
+          "n_seals": 20,
+          "avg_seq_length": 4.25,
+          "confidence": "HIGH",
+          "reading": "ampu",
+          "top_site": "Mohenjo-daro",
+          "top_iconography": "unicorn",
+          "site_distribution": {
+            "Mohenjo-daro": 10,
+            "Lothal": 3,
+            "Harappa": 3,
+            "Dholavira": 2,
+            "Banawali": 1
+          },
+          "icon_distribution": {
+            "unicorn": 7,
+            "script only": 4,
+            "elephant": 3,
+            "zebu bull": 2,
+            "gharial": 1
+          }
+        }
+      ],
+      "icon_divergence_by_initial": {
+        "M059": [
+          "unicorn"
+        ],
+        "M065": [
+          "unicorn",
+          "zebu bull"
+        ],
+        "M051": [
+          "unicorn",
+          "rhinoceros"
+        ],
+        "M048": [
+          "unicorn",
+          "zebu bull"
+        ],
+        "M012": [
+          "unicorn",
+          "zebu bull"
+        ],
+        "M062": [
+          "zebu bull"
+        ],
+        "M073": [
+          "zebu bull"
+        ],
+        "M099": [
+          "unicorn",
+          "zebu bull"
+        ],
+        "M079": [
+          "unicorn",
+          "script only"
+        ],
+        "M045": [
+          "elephant"
+        ],
+        "M016": [
+          "elephant"
+        ],
+        "M013": [
+          "unicorn",
+          "script only"
+        ],
+        "M391": [
+          "unicorn",
+          "zebu bull"
+        ],
+        "M022": [
+          "unicorn",
+          "zebu bull"
+        ],
+        "M008": [
+          "unicorn",
+          "script only"
+        ]
+      },
+      "interpretation": "97 distinct INITIAL signs act as formula-type headers. Cross-tabulation with iconography tests whether different professional titles (different INITIAL signs) appear on seals with different motif types. Systematic divergence = formula type \u2194 seal function correlation."
+    },
+    "D_polysemy_test": {
+      "n_multi_slot_candidates": 21,
+      "n_divergent": 17,
+      "divergent_signs": [
+        {
+          "sign": "M249",
+          "reading": "tii",
+          "confidence": "MEDIUM",
+          "freq": 73,
+          "slots": [
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.0,
+          "t_rate": 0.959,
+          "m_rate": 0.041,
+          "init_right_top3": [],
+          "term_left_top3": [
+            "M099",
+            "M342",
+            "M176"
+          ],
+          "divergence_score": 1.0,
+          "is_divergent": true
+        },
+        {
+          "sign": "M233",
+          "reading": "\u016br",
+          "confidence": "HIGH",
+          "freq": 171,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.111,
+          "t_rate": 0.538,
+          "m_rate": 0.351,
+          "init_right_top3": [
+            "M059",
+            "M267",
+            "M293"
+          ],
+          "term_left_top3": [
+            "M099",
+            "M342",
+            "M391"
+          ],
+          "divergence_score": 1.0,
+          "is_divergent": true
+        },
+        {
+          "sign": "M336",
+          "reading": "i\u1e49/locative",
+          "confidence": "HIGH",
+          "freq": 161,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.081,
+          "t_rate": 0.472,
+          "m_rate": 0.447,
+          "init_right_top3": [
+            "M176",
+            "M162",
+            "M211"
+          ],
+          "term_left_top3": [
+            "M342",
+            "M267",
+            "M099"
+          ],
+          "divergence_score": 1.0,
+          "is_divergent": true
+        },
+        {
+          "sign": "M099",
+          "reading": "kol/ko\u1e37",
+          "confidence": "HIGH",
+          "freq": 389,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.062,
+          "t_rate": 0.172,
+          "m_rate": 0.766,
+          "init_right_top3": [
+            "M342",
+            "M162",
+            "M012"
+          ],
+          "term_left_top3": [
+            "M267",
+            "M211",
+            "M342"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M065",
+          "reading": "kuTam",
+          "confidence": "MEDIUM",
+          "freq": 154,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.234,
+          "t_rate": 0.545,
+          "m_rate": 0.221,
+          "init_right_top3": [
+            "M342",
+            "M267",
+            "M059"
+          ],
+          "term_left_top3": [
+            "M099",
+            "M176",
+            "M342"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M367",
+          "reading": "am/neuter",
+          "confidence": "HIGH",
+          "freq": 190,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.105,
+          "t_rate": 0.484,
+          "m_rate": 0.411,
+          "init_right_top3": [
+            "M162",
+            "M342",
+            "M267"
+          ],
+          "term_left_top3": [
+            "M176",
+            "M099",
+            "M342"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M293",
+          "reading": "ta",
+          "confidence": "HIGH",
+          "freq": 232,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.069,
+          "t_rate": 0.332,
+          "m_rate": 0.599,
+          "init_right_top3": [
+            "M267",
+            "M176",
+            "M162"
+          ],
+          "term_left_top3": [
+            "M099",
+            "M342",
+            "M267"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M125",
+          "reading": "vil",
+          "confidence": "HIGH",
+          "freq": 132,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.076,
+          "t_rate": 0.561,
+          "m_rate": 0.364,
+          "init_right_top3": [
+            "M267",
+            "M162",
+            "M391"
+          ],
+          "term_left_top3": [
+            "M099",
+            "M342",
+            "M267"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M087",
+          "reading": "veL",
+          "confidence": "HIGH",
+          "freq": 130,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.108,
+          "t_rate": 0.485,
+          "m_rate": 0.408,
+          "init_right_top3": [
+            "M342",
+            "M087",
+            "M367"
+          ],
+          "term_left_top3": [
+            "M342",
+            "M099",
+            "M267"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M176",
+          "reading": "an/a\u1e47",
+          "confidence": "HIGH",
+          "freq": 356,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.037,
+          "t_rate": 0.191,
+          "m_rate": 0.772,
+          "init_right_top3": [
+            "M099",
+            "M342",
+            "M274"
+          ],
+          "term_left_top3": [
+            "M342",
+            "M211",
+            "M176"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M342",
+          "reading": "ay/\u0101",
+          "confidence": "HIGH",
+          "freq": 584,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.021,
+          "t_rate": 0.12,
+          "m_rate": 0.86,
+          "init_right_top3": [
+            "M176",
+            "M312",
+            "M162"
+          ],
+          "term_left_top3": [
+            "M342",
+            "M176",
+            "M099"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M211",
+          "reading": "kol",
+          "confidence": "HIGH",
+          "freq": 249,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.048,
+          "t_rate": 0.269,
+          "m_rate": 0.683,
+          "init_right_top3": [
+            "M342",
+            "M099",
+            "M162"
+          ],
+          "term_left_top3": [
+            "M176",
+            "M342",
+            "M267"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M059",
+          "reading": "\u0113\u1e37/e\u1e37",
+          "confidence": "HIGH",
+          "freq": 222,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.194,
+          "t_rate": 0.338,
+          "m_rate": 0.468,
+          "init_right_top3": [
+            "M267",
+            "M089",
+            "M293"
+          ],
+          "term_left_top3": [
+            "M099",
+            "M267",
+            "M342"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M267",
+          "reading": "iN/in (genitive of)",
+          "confidence": "MEDIUM",
+          "freq": 400,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.043,
+          "t_rate": 0.147,
+          "m_rate": 0.81,
+          "init_right_top3": [
+            "M099",
+            "M367",
+            "M162"
+          ],
+          "term_left_top3": [
+            "M176",
+            "M328",
+            "M162"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M089",
+          "reading": "tu/t\u016b",
+          "confidence": "HIGH",
+          "freq": 171,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.099,
+          "t_rate": 0.439,
+          "m_rate": 0.462,
+          "init_right_top3": [
+            "M293",
+            "M342",
+            "M267"
+          ],
+          "term_left_top3": [
+            "M176",
+            "M342",
+            "M391"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M162",
+          "reading": "il/i\u1e37",
+          "confidence": "HIGH",
+          "freq": 205,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.068,
+          "t_rate": 0.351,
+          "m_rate": 0.58,
+          "init_right_top3": [
+            "M267",
+            "M293",
+            "M176"
+          ],
+          "term_left_top3": [
+            "M342",
+            "M099",
+            "M267"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M048",
+          "reading": "mu/mu\u1e49",
+          "confidence": "HIGH",
+          "freq": 157,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.197,
+          "t_rate": 0.459,
+          "m_rate": 0.344,
+          "init_right_top3": [
+            "M342",
+            "M267",
+            "M328"
+          ],
+          "term_left_top3": [
+            "M342",
+            "M176",
+            "M211"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        }
+      ],
+      "all_candidates": [
+        {
+          "sign": "M249",
+          "reading": "tii",
+          "confidence": "MEDIUM",
+          "freq": 73,
+          "slots": [
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.0,
+          "t_rate": 0.959,
+          "m_rate": 0.041,
+          "init_right_top3": [],
+          "term_left_top3": [
+            "M099",
+            "M342",
+            "M176"
+          ],
+          "divergence_score": 1.0,
+          "is_divergent": true
+        },
+        {
+          "sign": "M233",
+          "reading": "\u016br",
+          "confidence": "HIGH",
+          "freq": 171,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.111,
+          "t_rate": 0.538,
+          "m_rate": 0.351,
+          "init_right_top3": [
+            "M059",
+            "M267",
+            "M293"
+          ],
+          "term_left_top3": [
+            "M099",
+            "M342",
+            "M391"
+          ],
+          "divergence_score": 1.0,
+          "is_divergent": true
+        },
+        {
+          "sign": "M336",
+          "reading": "i\u1e49/locative",
+          "confidence": "HIGH",
+          "freq": 161,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.081,
+          "t_rate": 0.472,
+          "m_rate": 0.447,
+          "init_right_top3": [
+            "M176",
+            "M162",
+            "M211"
+          ],
+          "term_left_top3": [
+            "M342",
+            "M267",
+            "M099"
+          ],
+          "divergence_score": 1.0,
+          "is_divergent": true
+        },
+        {
+          "sign": "M099",
+          "reading": "kol/ko\u1e37",
+          "confidence": "HIGH",
+          "freq": 389,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.062,
+          "t_rate": 0.172,
+          "m_rate": 0.766,
+          "init_right_top3": [
+            "M342",
+            "M162",
+            "M012"
+          ],
+          "term_left_top3": [
+            "M267",
+            "M211",
+            "M342"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M065",
+          "reading": "kuTam",
+          "confidence": "MEDIUM",
+          "freq": 154,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.234,
+          "t_rate": 0.545,
+          "m_rate": 0.221,
+          "init_right_top3": [
+            "M342",
+            "M267",
+            "M059"
+          ],
+          "term_left_top3": [
+            "M099",
+            "M176",
+            "M342"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M367",
+          "reading": "am/neuter",
+          "confidence": "HIGH",
+          "freq": 190,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.105,
+          "t_rate": 0.484,
+          "m_rate": 0.411,
+          "init_right_top3": [
+            "M162",
+            "M342",
+            "M267"
+          ],
+          "term_left_top3": [
+            "M176",
+            "M099",
+            "M342"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M293",
+          "reading": "ta",
+          "confidence": "HIGH",
+          "freq": 232,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.069,
+          "t_rate": 0.332,
+          "m_rate": 0.599,
+          "init_right_top3": [
+            "M267",
+            "M176",
+            "M162"
+          ],
+          "term_left_top3": [
+            "M099",
+            "M342",
+            "M267"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M125",
+          "reading": "vil",
+          "confidence": "HIGH",
+          "freq": 132,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.076,
+          "t_rate": 0.561,
+          "m_rate": 0.364,
+          "init_right_top3": [
+            "M267",
+            "M162",
+            "M391"
+          ],
+          "term_left_top3": [
+            "M099",
+            "M342",
+            "M267"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M087",
+          "reading": "veL",
+          "confidence": "HIGH",
+          "freq": 130,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.108,
+          "t_rate": 0.485,
+          "m_rate": 0.408,
+          "init_right_top3": [
+            "M342",
+            "M087",
+            "M367"
+          ],
+          "term_left_top3": [
+            "M342",
+            "M099",
+            "M267"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M176",
+          "reading": "an/a\u1e47",
+          "confidence": "HIGH",
+          "freq": 356,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.037,
+          "t_rate": 0.191,
+          "m_rate": 0.772,
+          "init_right_top3": [
+            "M099",
+            "M342",
+            "M274"
+          ],
+          "term_left_top3": [
+            "M342",
+            "M211",
+            "M176"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M342",
+          "reading": "ay/\u0101",
+          "confidence": "HIGH",
+          "freq": 584,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.021,
+          "t_rate": 0.12,
+          "m_rate": 0.86,
+          "init_right_top3": [
+            "M176",
+            "M312",
+            "M162"
+          ],
+          "term_left_top3": [
+            "M342",
+            "M176",
+            "M099"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M211",
+          "reading": "kol",
+          "confidence": "HIGH",
+          "freq": 249,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.048,
+          "t_rate": 0.269,
+          "m_rate": 0.683,
+          "init_right_top3": [
+            "M342",
+            "M099",
+            "M162"
+          ],
+          "term_left_top3": [
+            "M176",
+            "M342",
+            "M267"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M059",
+          "reading": "\u0113\u1e37/e\u1e37",
+          "confidence": "HIGH",
+          "freq": 222,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.194,
+          "t_rate": 0.338,
+          "m_rate": 0.468,
+          "init_right_top3": [
+            "M267",
+            "M089",
+            "M293"
+          ],
+          "term_left_top3": [
+            "M099",
+            "M267",
+            "M342"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M267",
+          "reading": "iN/in (genitive of)",
+          "confidence": "MEDIUM",
+          "freq": 400,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.043,
+          "t_rate": 0.147,
+          "m_rate": 0.81,
+          "init_right_top3": [
+            "M099",
+            "M367",
+            "M162"
+          ],
+          "term_left_top3": [
+            "M176",
+            "M328",
+            "M162"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M089",
+          "reading": "tu/t\u016b",
+          "confidence": "HIGH",
+          "freq": 171,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.099,
+          "t_rate": 0.439,
+          "m_rate": 0.462,
+          "init_right_top3": [
+            "M293",
+            "M342",
+            "M267"
+          ],
+          "term_left_top3": [
+            "M176",
+            "M342",
+            "M391"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M162",
+          "reading": "il/i\u1e37",
+          "confidence": "HIGH",
+          "freq": 205,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.068,
+          "t_rate": 0.351,
+          "m_rate": 0.58,
+          "init_right_top3": [
+            "M267",
+            "M293",
+            "M176"
+          ],
+          "term_left_top3": [
+            "M342",
+            "M099",
+            "M267"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M048",
+          "reading": "mu/mu\u1e49",
+          "confidence": "HIGH",
+          "freq": 157,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.197,
+          "t_rate": 0.459,
+          "m_rate": 0.344,
+          "init_right_top3": [
+            "M342",
+            "M267",
+            "M328"
+          ],
+          "term_left_top3": [
+            "M342",
+            "M176",
+            "M211"
+          ],
+          "divergence_score": 0.8,
+          "is_divergent": true
+        },
+        {
+          "sign": "M391",
+          "reading": "ka/ka\u1e47",
+          "confidence": "HIGH",
+          "freq": 193,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.114,
+          "t_rate": 0.311,
+          "m_rate": 0.575,
+          "init_right_top3": [
+            "M267",
+            "M211",
+            "M342"
+          ],
+          "term_left_top3": [
+            "M342",
+            "M176",
+            "M267"
+          ],
+          "divergence_score": 0.5,
+          "is_divergent": false
+        },
+        {
+          "sign": "M051",
+          "reading": "p\u016b/pu\u1e37",
+          "confidence": "HIGH",
+          "freq": 163,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.202,
+          "t_rate": 0.515,
+          "m_rate": 0.282,
+          "init_right_top3": [
+            "M342",
+            "M328",
+            "M267"
+          ],
+          "term_left_top3": [
+            "M099",
+            "M342",
+            "M267"
+          ],
+          "divergence_score": 0.5,
+          "is_divergent": false
+        },
+        {
+          "sign": "M012",
+          "reading": "o\u1e49\u1e5fu/1",
+          "confidence": "HIGH",
+          "freq": 143,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.203,
+          "t_rate": 0.427,
+          "m_rate": 0.371,
+          "init_right_top3": [
+            "M328",
+            "M391",
+            "M342"
+          ],
+          "term_left_top3": [
+            "M342",
+            "M328",
+            "M099"
+          ],
+          "divergence_score": 0.5,
+          "is_divergent": false
+        },
+        {
+          "sign": "M328",
+          "reading": "\u0101/\u0101l",
+          "confidence": "HIGH",
+          "freq": 234,
+          "slots": [
+            "INITIAL",
+            "TERMINAL",
+            "MEDIAL"
+          ],
+          "i_rate": 0.064,
+          "t_rate": 0.299,
+          "m_rate": 0.637,
+          "init_right_top3": [
+            "M267",
+            "M342",
+            "M099"
+          ],
+          "term_left_top3": [
+            "M267",
+            "M342",
+            "M099"
+          ],
+          "divergence_score": 0.0,
+          "is_divergent": false
+        }
+      ],
+      "interpretation": "17/21 multi-slot H+M signs show divergent neighbor profiles by positional slot (Roif polysemy test). A sign with high divergence score has systematically different compounds depending on whether it appears in INITIAL, MEDIAL, or TERMINAL position \u2014 consistent with shorthand polysemy: same sign, context-dependent meaning."
+    },
+    "E_M267_genitive": {
+      "n_occurrences": 400,
+      "slot_distribution": {
+        "TERMINAL": 59,
+        "MEDIAL": 324,
+        "INITIAL": 17
+      },
+      "medial_pct": 81.0,
+      "left_initial_class_pct": 21.67,
+      "top_left_neighbors": {
+        "M328": 40,
+        "M293": 37,
+        "M059": 30,
+        "M176": 17,
+        "M342": 17,
+        "M267": 13,
+        "M162": 12,
+        "M391": 11,
+        "M233": 9,
+        "M099": 8
+      },
+      "top_right_neighbors": {
+        "M099": 84,
+        "M342": 31,
+        "M211": 21,
+        "M328": 18,
+        "M059": 13,
+        "M267": 13,
+        "M367": 12,
+        "M336": 12,
+        "M125": 11,
+        "M162": 11
+      },
+      "verdict": "GENITIVE_SUPPORTED",
+      "sample_contexts": [
+        {
+          "seal": "seal_0003",
+          "site": "Dholavira",
+          "slot": "TERMINAL",
+          "left": "M162",
+          "right": "\u2014",
+          "left_conf": "HIGH",
+          "right_conf": "?",
+          "left_reading": "il/i\u1e37",
+          "right_reading": "?",
+          "sequence": "M062 \u00b7 M162 \u00b7 M267"
+        },
+        {
+          "seal": "seal_0014",
+          "site": "Chanhu-daro",
+          "slot": "MEDIAL",
+          "left": "M391",
+          "right": "M342",
+          "left_conf": "HIGH",
+          "right_conf": "HIGH",
+          "left_reading": "ka/ka\u1e47",
+          "right_reading": "ay/\u0101",
+          "sequence": "M391 \u00b7 M267 \u00b7 M342"
+        },
+        {
+          "seal": "seal_0016",
+          "site": "Mohenjo-daro",
+          "slot": "MEDIAL",
+          "left": "M059",
+          "right": "M125",
+          "left_conf": "HIGH",
+          "right_conf": "HIGH",
+          "left_reading": "\u0113\u1e37/e\u1e37",
+          "right_reading": "vil",
+          "sequence": "M044 \u00b7 M059 \u00b7 M267 \u00b7 M125"
+        },
+        {
+          "seal": "seal_0017",
+          "site": "Harappa",
+          "slot": "MEDIAL",
+          "left": "M125",
+          "right": "M059",
+          "left_conf": "HIGH",
+          "right_conf": "HIGH",
+          "left_reading": "vil",
+          "right_reading": "\u0113\u1e37/e\u1e37",
+          "sequence": "M125 \u00b7 M267 \u00b7 M059 \u00b7 M065"
+        },
+        {
+          "seal": "seal_0019",
+          "site": "Dholavira",
+          "slot": "MEDIAL",
+          "left": "M059",
+          "right": "M099",
+          "left_conf": "HIGH",
+          "right_conf": "HIGH",
+          "left_reading": "\u0113\u1e37/e\u1e37",
+          "right_reading": "kol/ko\u1e37",
+          "sequence": "M059 \u00b7 M267 \u00b7 M099 \u00b7 M261 \u00b7 M267"
+        },
+        {
+          "seal": "seal_0019",
+          "site": "Dholavira",
+          "slot": "TERMINAL",
+          "left": "M261",
+          "right": "\u2014",
+          "left_conf": "HIGH",
+          "right_conf": "?",
+          "left_reading": "muruku",
+          "right_reading": "?",
+          "sequence": "M059 \u00b7 M267 \u00b7 M099 \u00b7 M261 \u00b7 M267"
+        },
+        {
+          "seal": "seal_0020",
+          "site": "Kalibangan",
+          "slot": "MEDIAL",
+          "left": "M071",
+          "right": "M367",
+          "left_conf": "HIGH",
+          "right_conf": "HIGH",
+          "left_reading": "nal",
+          "right_reading": "am/neuter",
+          "sequence": "M071 \u00b7 M267 \u00b7 M367 \u00b7 M087 \u00b7 M365 \u00b7 M267"
+        },
+        {
+          "seal": "seal_0020",
+          "site": "Kalibangan",
+          "slot": "TERMINAL",
+          "left": "M365",
+          "right": "\u2014",
+          "left_conf": "LOW",
+          "right_conf": "?",
+          "left_reading": "v\u0101\u1e49",
+          "right_reading": "?",
+          "sequence": "M071 \u00b7 M267 \u00b7 M367 \u00b7 M087 \u00b7 M365 \u00b7 M267"
+        },
+        {
+          "seal": "seal_0022",
+          "site": "Mohenjo-daro",
+          "slot": "MEDIAL",
+          "left": "M009",
+          "right": "M342",
+          "left_conf": "MEDIUM",
+          "right_conf": "HIGH",
+          "left_reading": "\u0101\u1e47",
+          "right_reading": "ay/\u0101",
+          "sequence": "M009 \u00b7 M267 \u00b7 M342 \u00b7 M342 \u00b7 M367 \u00b7 M251 \u00b7 M012"
+        },
+        {
+          "seal": "seal_0024",
+          "site": "Lothal",
+          "slot": "MEDIAL",
+          "left": "M061",
+          "right": "M099",
+          "left_conf": "HIGH",
+          "right_conf": "HIGH",
+          "left_reading": "ka",
+          "right_reading": "kol/ko\u1e37",
+          "sequence": "M061 \u00b7 M267 \u00b7 M099 \u00b7 M125"
+        }
+      ],
+      "interpretation": "M267 (freq=400): 81% MEDIAL, 83/383 left-neighbors are INITIAL-class (title/determinative) signs. Pattern [INITIAL_sign] \u00b7 M267 \u00b7 [X] is consistent with genitive construction '[NAME]-of-[TITLE]' in Dravidian SOV administrative formula. Verdict: GENITIVE_SUPPORTED."
+    }
+  },
+  "key_findings": [
+    "A. Collocate network: 1485 H+M\u00d7H+M bigrams; 60 strong collocate pairs (PMI>1.5)",
+    "B. INITIAL vocabulary: 77 H+M title/determinative signs identified",
+    "C. Formula classification: 97 distinct formula types by INITIAL sign",
+    "D. Polysemy test: 17/21 multi-slot signs show Roif-predicted divergence",
+    "E. M267 genitive: 81% MEDIAL; 83/383 left-neighbors are INITIAL-class \u2192 GENITIVE_SUPPORTED"
+  ],
+  "_note": "Phase-142: Collocate network, INITIAL vocabulary, formula classification, Roif polysemy test, M267 genitive validation. Real corpus only, no synthetic data."
+}

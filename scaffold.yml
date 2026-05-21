@@ -1,12 +1,12 @@
 extends: ''
 name: glossa-lab
-type: backend-frontend-tray
+type: backend-frontend
 platforms:
 - windows
 - linux
 - macos
 language: python
-spec_version: 0.2.3.dev55
+spec_version: 0.11.5
 description: Imported project (119 files detected)
 services: false
 shell_wrappers: false
@@ -24,5 +24,6 @@ use_remote_rules: false
 verification_tools: {}
 detected_build_system: pyproject
 detected_test_framework: pytest
+ledger_line_threshold: 1000
 integrations:
 - agents-md

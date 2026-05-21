@@ -104,6 +104,10 @@
 - [x] Data Availability section acknowledges private repository status
 - [x] Anchor table, scripts, and phase reports flagged for pre-posting release
 
+**Pre-arXiv checklist — do before making repo public:**
+- [ ] Populate repository with: anchor table, confidence labels, DEDR citations, basis statements, scripts, phase reports, and a README explaining the Holdat corpus access limitation
+- [ ] Once repo is live and populated, change `"will be released"` → `"are available"` in **§6 Data Availability** and **AI Disclosure** (both instances in `preprint_v1.tex`)
+
 ### E2. Holdat Corpus
 - [x] Holdat corpus availability caveat in Data Availability and AI Disclosure
 - [x] Miller (2025) reference entry includes "Not publicly released at time of writing"

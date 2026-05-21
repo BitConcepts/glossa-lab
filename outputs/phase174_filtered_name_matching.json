@@ -1,0 +1,1212 @@
+{
+  "phase": 174,
+  "date": "2026-05-21",
+  "description": "Betweenness-filtered Meluhhan personal name phonological matching",
+  "method": "Restrict name matching to betweenness=0 MEDIAL signs (name-syllable candidates). Phase-167 tested all MEDIAL signs including grammar, diluting the signal. This test isolates the phonetic register.",
+  "n_bc0_candidates": 114,
+  "bc0_candidate_signs": [
+    "M003",
+    "M004",
+    "M005",
+    "M006",
+    "M007",
+    "M009",
+    "M010",
+    "M011",
+    "M013",
+    "M018",
+    "M019",
+    "M020",
+    "M021",
+    "M022",
+    "M023",
+    "M024",
+    "M026",
+    "M027",
+    "M029",
+    "M030",
+    "M031",
+    "M032",
+    "M034",
+    "M035",
+    "M036",
+    "M037",
+    "M038",
+    "M039",
+    "M040",
+    "M041",
+    "M042",
+    "M043",
+    "M044",
+    "M046",
+    "M047",
+    "M049",
+    "M050",
+    "M052",
+    "M054",
+    "M055",
+    "M056",
+    "M057",
+    "M061",
+    "M063",
+    "M064",
+    "M066",
+    "M068",
+    "M069",
+    "M070",
+    "M071",
+    "M074",
+    "M075",
+    "M076",
+    "M077",
+    "M078",
+    "M079",
+    "M080",
+    "M082",
+    "M088",
+    "M090",
+    "M091",
+    "M092",
+    "M093",
+    "M094",
+    "M100",
+    "M103",
+    "M107",
+    "M108",
+    "M117",
+    "M118",
+    "M125",
+    "M128",
+    "M130",
+    "M145",
+    "M153",
+    "M155",
+    "M163",
+    "M164",
+    "M165",
+    "M168",
+    "M175",
+    "M177",
+    "M178",
+    "M185",
+    "M192",
+    "M193",
+    "M194",
+    "M198",
+    "M202",
+    "M220",
+    "M221",
+    "M222",
+    "M231",
+    "M233",
+    "M235",
+    "M237",
+    "M262",
+    "M264",
+    "M272",
+    "M281",
+    "M305",
+    "M311",
+    "M330",
+    "M332",
+    "M350",
+    "M351",
+    "M355",
+    "M362",
+    "M374",
+    "M375",
+    "M383",
+    "M398",
+    "M401",
+    "M416"
+  ],
+  "name_results": [
+    {
+      "name": "Nanna-a",
+      "n_slots": 3,
+      "n_covered": 3,
+      "coverage": 1.0,
+      "slots": [
+        {
+          "phoneme": "nan",
+          "candidates": [
+            "M076"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "na",
+          "candidates": [
+            "M013",
+            "M071",
+            "M076",
+            "M077",
+            "M177",
+            "M192",
+            "M416"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "a",
+          "candidates": [
+            "M007",
+            "M009",
+            "M019",
+            "M039",
+            "M090",
+            "M091",
+            "M117",
+            "M220",
+            "M221",
+            "M362"
+          ],
+          "covered": true
+        }
+      ]
+    },
+    {
+      "name": "Anana",
+      "n_slots": 3,
+      "n_covered": 3,
+      "coverage": 1.0,
+      "slots": [
+        {
+          "phoneme": "a",
+          "candidates": [
+            "M007",
+            "M009",
+            "M019",
+            "M039",
+            "M090",
+            "M091",
+            "M117",
+            "M220",
+            "M221",
+            "M362"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "na",
+          "candidates": [
+            "M013",
+            "M071",
+            "M076",
+            "M077",
+            "M177",
+            "M192",
+            "M416"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "na",
+          "candidates": [
+            "M013",
+            "M071",
+            "M076",
+            "M077",
+            "M177",
+            "M192",
+            "M416"
+          ],
+          "covered": true
+        }
+      ]
+    },
+    {
+      "name": "Ama-e-a",
+      "n_slots": 4,
+      "n_covered": 4,
+      "coverage": 1.0,
+      "slots": [
+        {
+          "phoneme": "a",
+          "candidates": [
+            "M007",
+            "M009",
+            "M019",
+            "M039",
+            "M090",
+            "M091",
+            "M117",
+            "M220",
+            "M221",
+            "M362"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "ma",
+          "candidates": [
+            "M026",
+            "M027",
+            "M057",
+            "M068",
+            "M075",
+            "M100",
+            "M272"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "e",
+          "candidates": [
+            "M092",
+            "M093"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "a",
+          "candidates": [
+            "M007",
+            "M009",
+            "M019",
+            "M039",
+            "M090",
+            "M091",
+            "M117",
+            "M220",
+            "M221",
+            "M362"
+          ],
+          "covered": true
+        }
+      ]
+    },
+    {
+      "name": "A-a-kal-la",
+      "n_slots": 4,
+      "n_covered": 4,
+      "coverage": 1.0,
+      "slots": [
+        {
+          "phoneme": "a",
+          "candidates": [
+            "M007",
+            "M009",
+            "M019",
+            "M039",
+            "M090",
+            "M091",
+            "M117",
+            "M220",
+            "M221",
+            "M362"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "a",
+          "candidates": [
+            "M007",
+            "M009",
+            "M019",
+            "M039",
+            "M090",
+            "M091",
+            "M117",
+            "M220",
+            "M221",
+            "M362"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "kal",
+          "candidates": [
+            "M003",
+            "M011",
+            "M022",
+            "M046",
+            "M108"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "la",
+          "candidates": [
+            "M193"
+          ],
+          "covered": true
+        }
+      ]
+    },
+    {
+      "name": "Ku-ku",
+      "n_slots": 2,
+      "n_covered": 2,
+      "coverage": 1.0,
+      "slots": [
+        {
+          "phoneme": "ku",
+          "candidates": [
+            "M020",
+            "M044",
+            "M222",
+            "M231",
+            "M374",
+            "M398"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "ku",
+          "candidates": [
+            "M020",
+            "M044",
+            "M222",
+            "M231",
+            "M374",
+            "M398"
+          ],
+          "covered": true
+        }
+      ]
+    },
+    {
+      "name": "Su-kalama",
+      "n_slots": 4,
+      "n_covered": 3,
+      "coverage": 0.75,
+      "slots": [
+        {
+          "phoneme": "su",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "ka",
+          "candidates": [
+            "M003",
+            "M011",
+            "M022",
+            "M031",
+            "M046",
+            "M061",
+            "M108",
+            "M128",
+            "M155",
+            "M175",
+            "M194"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "la",
+          "candidates": [
+            "M193"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "ma",
+          "candidates": [
+            "M026",
+            "M027",
+            "M057",
+            "M068",
+            "M075",
+            "M100",
+            "M272"
+          ],
+          "covered": true
+        }
+      ]
+    },
+    {
+      "name": "Urgula",
+      "n_slots": 3,
+      "n_covered": 2,
+      "coverage": 0.667,
+      "slots": [
+        {
+          "phoneme": "ur",
+          "candidates": [
+            "M233"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "gu",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "la",
+          "candidates": [
+            "M193"
+          ],
+          "covered": true
+        }
+      ]
+    },
+    {
+      "name": "Utukku",
+      "n_slots": 3,
+      "n_covered": 2,
+      "coverage": 0.667,
+      "slots": [
+        {
+          "phoneme": "u",
+          "candidates": [
+            "M233"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "tu",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "ku",
+          "candidates": [
+            "M020",
+            "M044",
+            "M222",
+            "M231",
+            "M374",
+            "M398"
+          ],
+          "covered": true
+        }
+      ]
+    },
+    {
+      "name": "Ur-namma",
+      "n_slots": 3,
+      "n_covered": 2,
+      "coverage": 0.667,
+      "slots": [
+        {
+          "phoneme": "ur",
+          "candidates": [
+            "M233"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "nam",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "ma",
+          "candidates": [
+            "M026",
+            "M027",
+            "M057",
+            "M068",
+            "M075",
+            "M100",
+            "M272"
+          ],
+          "covered": true
+        }
+      ]
+    },
+    {
+      "name": "Inanna-mansum",
+      "n_slots": 5,
+      "n_covered": 3,
+      "coverage": 0.6,
+      "slots": [
+        {
+          "phoneme": "in",
+          "candidates": [
+            "M168",
+            "M332"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "an",
+          "candidates": [
+            "M009",
+            "M362"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "na",
+          "candidates": [
+            "M013",
+            "M071",
+            "M076",
+            "M077",
+            "M177",
+            "M192",
+            "M416"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "man",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "sum",
+          "candidates": [],
+          "covered": false
+        }
+      ]
+    },
+    {
+      "name": "Ta-ra-am-Adad",
+      "n_slots": 5,
+      "n_covered": 3,
+      "coverage": 0.6,
+      "slots": [
+        {
+          "phoneme": "ta",
+          "candidates": [
+            "M052",
+            "M375"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "ra",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "am",
+          "candidates": [
+            "M019"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "a",
+          "candidates": [
+            "M007",
+            "M009",
+            "M019",
+            "M039",
+            "M090",
+            "M091",
+            "M117",
+            "M220",
+            "M221",
+            "M362"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "dad",
+          "candidates": [],
+          "covered": false
+        }
+      ]
+    },
+    {
+      "name": "Lu-enlilla",
+      "n_slots": 4,
+      "n_covered": 2,
+      "coverage": 0.5,
+      "slots": [
+        {
+          "phoneme": "lu",
+          "candidates": [
+            "M355"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "en",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "lil",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "la",
+          "candidates": [
+            "M193"
+          ],
+          "covered": true
+        }
+      ]
+    },
+    {
+      "name": "Nanna-abba",
+      "n_slots": 4,
+      "n_covered": 2,
+      "coverage": 0.5,
+      "slots": [
+        {
+          "phoneme": "nan",
+          "candidates": [
+            "M076"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "na",
+          "candidates": [
+            "M013",
+            "M071",
+            "M076",
+            "M077",
+            "M177",
+            "M192",
+            "M416"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "ab",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "ba",
+          "candidates": [],
+          "covered": false
+        }
+      ]
+    },
+    {
+      "name": "Enmenanka",
+      "n_slots": 4,
+      "n_covered": 2,
+      "coverage": 0.5,
+      "slots": [
+        {
+          "phoneme": "en",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "me",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "nan",
+          "candidates": [
+            "M076"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "ka",
+          "candidates": [
+            "M003",
+            "M011",
+            "M022",
+            "M031",
+            "M046",
+            "M061",
+            "M108",
+            "M128",
+            "M155",
+            "M175",
+            "M194"
+          ],
+          "covered": true
+        }
+      ]
+    },
+    {
+      "name": "A-bi-si-im-ti",
+      "n_slots": 5,
+      "n_covered": 2,
+      "coverage": 0.4,
+      "slots": [
+        {
+          "phoneme": "a",
+          "candidates": [
+            "M007",
+            "M009",
+            "M019",
+            "M039",
+            "M090",
+            "M091",
+            "M117",
+            "M220",
+            "M221",
+            "M362"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "bi",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "si",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "im",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "ti",
+          "candidates": [
+            "M036"
+          ],
+          "covered": true
+        }
+      ]
+    },
+    {
+      "name": "Aabba",
+      "n_slots": 3,
+      "n_covered": 1,
+      "coverage": 0.333,
+      "slots": [
+        {
+          "phoneme": "a",
+          "candidates": [
+            "M007",
+            "M009",
+            "M019",
+            "M039",
+            "M090",
+            "M091",
+            "M117",
+            "M220",
+            "M221",
+            "M362"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "ab",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "ba",
+          "candidates": [],
+          "covered": false
+        }
+      ]
+    },
+    {
+      "name": "Niggina",
+      "n_slots": 3,
+      "n_covered": 1,
+      "coverage": 0.333,
+      "slots": [
+        {
+          "phoneme": "ni",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "gi",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "na",
+          "candidates": [
+            "M013",
+            "M071",
+            "M076",
+            "M077",
+            "M177",
+            "M192",
+            "M416"
+          ],
+          "covered": true
+        }
+      ]
+    },
+    {
+      "name": "Hu-na-ba",
+      "n_slots": 3,
+      "n_covered": 1,
+      "coverage": 0.333,
+      "slots": [
+        {
+          "phoneme": "hu",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "na",
+          "candidates": [
+            "M013",
+            "M071",
+            "M076",
+            "M077",
+            "M177",
+            "M192",
+            "M416"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "ba",
+          "candidates": [],
+          "covered": false
+        }
+      ]
+    },
+    {
+      "name": "Shu-ilishu",
+      "n_slots": 4,
+      "n_covered": 1,
+      "coverage": 0.25,
+      "slots": [
+        {
+          "phoneme": "su",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "i",
+          "candidates": [
+            "M079",
+            "M163",
+            "M164",
+            "M168",
+            "M178",
+            "M262",
+            "M332"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "li",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "shu",
+          "candidates": [],
+          "covered": false
+        }
+      ]
+    },
+    {
+      "name": "Enlil-apin",
+      "n_slots": 4,
+      "n_covered": 1,
+      "coverage": 0.25,
+      "slots": [
+        {
+          "phoneme": "en",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "lil",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "a",
+          "candidates": [
+            "M007",
+            "M009",
+            "M019",
+            "M039",
+            "M090",
+            "M091",
+            "M117",
+            "M220",
+            "M221",
+            "M362"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "pin",
+          "candidates": [],
+          "covered": false
+        }
+      ]
+    },
+    {
+      "name": "Sin-iqisham",
+      "n_slots": 4,
+      "n_covered": 1,
+      "coverage": 0.25,
+      "slots": [
+        {
+          "phoneme": "sin",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "i",
+          "candidates": [
+            "M079",
+            "M163",
+            "M164",
+            "M168",
+            "M178",
+            "M262",
+            "M332"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "qi",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "sham",
+          "candidates": [],
+          "covered": false
+        }
+      ]
+    },
+    {
+      "name": "Amar-Su-en",
+      "n_slots": 4,
+      "n_covered": 1,
+      "coverage": 0.25,
+      "slots": [
+        {
+          "phoneme": "a",
+          "candidates": [
+            "M007",
+            "M009",
+            "M019",
+            "M039",
+            "M090",
+            "M091",
+            "M117",
+            "M220",
+            "M221",
+            "M362"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "mar",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "su",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "en",
+          "candidates": [],
+          "covered": false
+        }
+      ]
+    },
+    {
+      "name": "Dumuzi-gamil",
+      "n_slots": 5,
+      "n_covered": 1,
+      "coverage": 0.2,
+      "slots": [
+        {
+          "phoneme": "du",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "mu",
+          "candidates": [
+            "M043",
+            "M063",
+            "M088",
+            "M130"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "zi",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "ga",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "mil",
+          "candidates": [],
+          "covered": false
+        }
+      ]
+    },
+    {
+      "name": "Enki-mansum",
+      "n_slots": 4,
+      "n_covered": 0,
+      "coverage": 0.0,
+      "slots": [
+        {
+          "phoneme": "en",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "ki",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "man",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "sum",
+          "candidates": [],
+          "covered": false
+        }
+      ]
+    },
+    {
+      "name": "Ia-tum",
+      "n_slots": 2,
+      "n_covered": 0,
+      "coverage": 0.0,
+      "slots": [
+        {
+          "phoneme": "ia",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "tum",
+          "candidates": [],
+          "covered": false
+        }
+      ]
+    }
+  ],
+  "top_name_match": {
+    "name": "Nanna-a",
+    "n_slots": 3,
+    "n_covered": 3,
+    "coverage": 1.0,
+    "slots": [
+      {
+        "phoneme": "nan",
+        "candidates": [
+          "M076"
+        ],
+        "covered": true
+      },
+      {
+        "phoneme": "na",
+        "candidates": [
+          "M013",
+          "M071",
+          "M076",
+          "M077",
+          "M177",
+          "M192",
+          "M416"
+        ],
+        "covered": true
+      },
+      {
+        "phoneme": "a",
+        "candidates": [
+          "M007",
+          "M009",
+          "M019",
+          "M039",
+          "M090",
+          "M091",
+          "M117",
+          "M220",
+          "M221",
+          "M362"
+        ],
+        "covered": true
+      }
+    ]
+  },
+  "phonemes_not_covered": [
+    "su",
+    "li",
+    "shu",
+    "gu",
+    "ab",
+    "ba",
+    "du",
+    "zi",
+    "ga",
+    "mil",
+    "ni",
+    "gi",
+    "tu",
+    "en",
+    "ki",
+    "man",
+    "sum",
+    "ia",
+    "tum",
+    "lil",
+    "hu",
+    "bi",
+    "si",
+    "im",
+    "pin",
+    "nam",
+    "sin",
+    "qi",
+    "sham",
+    "me",
+    "mar",
+    "ra",
+    "dad"
+  ],
+  "shu_ilishu_assessment": {
+    "name": "Shu-ilishu",
+    "n_slots": 4,
+    "n_covered": 1,
+    "coverage": 0.25,
+    "slots": [
+      {
+        "phoneme": "su",
+        "candidates": [],
+        "covered": false
+      },
+      {
+        "phoneme": "i",
+        "candidates": [
+          "M079",
+          "M163",
+          "M164",
+          "M168",
+          "M178",
+          "M262",
+          "M332"
+        ],
+        "covered": true
+      },
+      {
+        "phoneme": "li",
+        "candidates": [],
+        "covered": false
+      },
+      {
+        "phoneme": "shu",
+        "candidates": [],
+        "covered": false
+      }
+    ]
+  },
+  "interpretation": "Coverage reflects how many phonological slots of each Meluhhan name are representable by BC=0 MEDIAL sign readings. Uncovered phonemes identify gaps in the current H+M set that ICIT corpus analysis should prioritise."
+}

@@ -110,6 +110,5 @@
       "sourcePort": "proposed_mapping",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

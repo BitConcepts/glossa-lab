@@ -1,7 +1,7 @@
 {
   "id": "positional_profile_analysis",
   "name": "Positional Profile Analysis",
-  "description": "Computes I/M/T position rates per symbol using the Fuls (2013) NWSP method. Works on any corpus — unknown scripts, languages, DNA, or any tokenised system.",
+  "description": "Computes I/M/T position rates per symbol using the Fuls (2013) NWSP method. Works on any corpus \u2014 unknown scripts, languages, DNA, or any tokenised system.",
   "auto_migrated": true,
   "nodes": [
     {
@@ -61,6 +61,5 @@
       "sourcePort": "profiles",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

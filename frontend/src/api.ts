@@ -1388,62 +1388,6 @@ export const deleteCollabMessage = (
 ): Promise<{ deleted: boolean; id: string }> =>
   request("DELETE", `/studies/${studyId}/messages/${msgId}`);
 
-// ── CAS Models (CPSC) ────────────────────────────────────────────────
-
-export interface CASModel {
-  id: string;
-  name: string;
-  description: string;
-  yaml_text: string;
-  engine_hint: string;    // auto | iterative | cellular
-  is_builtin: number;     // 0 = user, 1 = built-in (protected)
-  created_at: string;
-  updated_at: string;
-}
-
-export interface CASModelCreate {
-  name: string;
-  description?: string;
-  yaml_text: string;
-  engine_hint?: string;
-}
-
-export interface CASModelUpdate {
-  name?: string;
-  description?: string;
-  yaml_text?: string;
-  engine_hint?: string;
-}
-
-export interface CASValidateResult {
-  valid: boolean;
-  error: string | null;
-  model_id: string;
-  n_variables: number;
-  n_constraints: number;
-  dof_vars: string[];
-  dry_run_success?: boolean;
-  dry_run_violation?: number;
-}
-
-export const listCASModels = (builtinOnly = false): Promise<CASModel[]> =>
-  request("GET", `/cas-models${builtinOnly ? "?builtin_only=true" : ""}`);
-
-export const getCASModel = (id: string): Promise<CASModel> =>
-  request("GET", `/cas-models/${id}`);
-
-export const createCASModel = (body: CASModelCreate): Promise<CASModel> =>
-  request("POST", "/cas-models", body);
-
-export const updateCASModel = (id: string, body: CASModelUpdate): Promise<CASModel> =>
-  request("PUT", `/cas-models/${id}`, body);
-
-export const deleteCASModel = (id: string): Promise<{ deleted: boolean; id: string }> =>
-  request("DELETE", `/cas-models/${id}`);
-
-export const validateCASModel = (id: string): Promise<CASValidateResult> =>
-  request("POST", `/cas-models/${id}/validate`);
-
 // ── AG2 Research Agent ────────────────────────────────────────────
 
 export interface AG2Status {

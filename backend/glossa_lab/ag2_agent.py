@@ -50,7 +50,6 @@ CURRENT RESEARCH STATE (key findings):
 - CV pair structure: P324(/k/) + P332(/o/) = 'ko' (king/chief, DEDR 2147)
 - M-148A = royal title formula: 'ko-n' = 'of the king'
 - 179 CISI Mohenjo-daro inscriptions available; need 3,000+ for full decipherment
-- CPSC (CASModelLoader/CASProjector/CASIndusEngine) nodes available in Experiment Builder
 
 TOOLS YOU CAN USE:
 - run_experiment: run any graph experiment (e.g. indus_cisi_dravidian_vs_sanskrit)

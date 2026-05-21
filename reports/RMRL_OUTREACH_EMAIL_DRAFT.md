@@ -20,7 +20,7 @@
 > I am writing on behalf of the Glossa-Lab project, an open computational
 > research effort developing statistical-linguistic methods for the analysis
 > and possible decipherment of the Indus script. Project repository:
-> https://github.com/layer1labs/glossa-lab.
+> https://github.com/BitConcepts/glossa-lab.
 >
 > Our current work — Phases 22 through 31 — has built a reproducible
 > pipeline that combines:
@@ -88,7 +88,7 @@
 > [YOUR NAME]
 > Glossa-Lab Indus Decipherment Project
 > [YOUR EMAIL]
-> https://github.com/layer1labs/glossa-lab
+> https://github.com/BitConcepts/glossa-lab
 
 ---
 
@@ -96,7 +96,7 @@
 
 > Dear RMRL Digital Archives Team,
 >
-> I lead the Glossa-Lab project (https://github.com/layer1labs/glossa-lab),
+> I lead the Glossa-Lab project (https://github.com/BitConcepts/glossa-lab),
 > an open computational-linguistic effort applying statistical methods to
 > the Indus script and its possible Dravidian linguistic context. Our
 > current phase (31) is using Mahadevan 2003 *Early Tamil Epigraphy* as a

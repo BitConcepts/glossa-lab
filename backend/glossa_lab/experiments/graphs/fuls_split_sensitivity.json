@@ -3,30 +3,259 @@
   "name": "Fuls Split Sensitivity — Train/Test Ratio Investigation",
   "description": "Investigates how decipherment accuracy varies with train/test split ratio (Dr. Fuls question: does 66.7% accuracy simply track the 2/3 training fraction?). Runs SA at 50/50 and 75/25 splits on NW Semitic corpus. Both paths use the Hebrew reference LM. Compare the two consistency scores to test whether learning is structural or artefactual.",
   "nodes": [
-    {"id": "corpus",   "type": "expNode", "data": {"atomicId": "BuiltinCorpus", "label": "NW Semitic (Ugaritic)", "params": {"corpus": "nw_semitic"}}, "position": {"x": 60,  "y": 200}},
-    {"id": "rtl",      "type": "expNode", "data": {"atomicId": "DirectionNormalizer", "label": "RTL Normalize", "params": {"direction": "rtl"}}, "position": {"x": 280, "y": 200}},
-    {"id": "heb_lm",   "type": "expNode", "data": {"atomicId": "BuiltinLM", "label": "Hebrew Reference LM", "params": {"language": "hebrew"}}, "position": {"x": 60,  "y": 480}},
-    {"id": "split50",  "type": "expNode", "data": {"atomicId": "CorpusSplitter", "label": "50/50 Split", "params": {"train_ratio": 0.50}}, "position": {"x": 500, "y": 80}},
-    {"id": "split75",  "type": "expNode", "data": {"atomicId": "CorpusSplitter", "label": "75/25 Split", "params": {"train_ratio": 0.75}}, "position": {"x": 500, "y": 320}},
-    {"id": "sa50",     "type": "expNode", "data": {"atomicId": "SADecipher", "label": "SA @ 50% train (5 seeds)", "params": {"n_seeds": 5, "max_iterations": 8000, "restarts": 5, "surjective": true, "ocp_weight": 0.0}}, "position": {"x": 760, "y": 80}},
-    {"id": "sa75",     "type": "expNode", "data": {"atomicId": "SADecipher", "label": "SA @ 75% train (5 seeds)", "params": {"n_seeds": 5, "max_iterations": 8000, "restarts": 5, "surjective": true, "ocp_weight": 0.0}}, "position": {"x": 760, "y": 320}},
-    {"id": "cons50",   "type": "expNode", "data": {"atomicId": "ConsistencyScorer", "label": "Consistency @ 50%", "params": {}}, "position": {"x": 1020, "y": 80}},
-    {"id": "cons75",   "type": "expNode", "data": {"atomicId": "ConsistencyScorer", "label": "Consistency @ 75%", "params": {}}, "position": {"x": 1020, "y": 320}},
-    {"id": "merge",    "type": "expNode", "data": {"atomicId": "Merger", "label": "Merge Split Comparison", "params": {}}, "position": {"x": 1280, "y": 200}},
-    {"id": "out",      "type": "expNode", "data": {"atomicId": "JSONExport", "label": "Save", "params": {"filename": "fuls_split_sensitivity.json"}}, "position": {"x": 1520, "y": 200}}
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "NW Semitic (Ugaritic)",
+        "params": {
+          "corpus": "nw_semitic"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 200
+      }
+    },
+    {
+      "id": "rtl",
+      "type": "expNode",
+      "data": {
+        "atomicId": "DirectionNormalizer",
+        "label": "RTL Normalize",
+        "params": {
+          "direction": "rtl"
+        }
+      },
+      "position": {
+        "x": 280,
+        "y": 200
+      }
+    },
+    {
+      "id": "heb_lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Hebrew Reference LM",
+        "params": {
+          "language": "hebrew"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 480
+      }
+    },
+    {
+      "id": "split50",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CorpusSplitter",
+        "label": "50/50 Split",
+        "params": {
+          "train_ratio": 0.5
+        }
+      },
+      "position": {
+        "x": 500,
+        "y": 80
+      }
+    },
+    {
+      "id": "split75",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CorpusSplitter",
+        "label": "75/25 Split",
+        "params": {
+          "train_ratio": 0.75
+        }
+      },
+      "position": {
+        "x": 500,
+        "y": 320
+      }
+    },
+    {
+      "id": "sa50",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA @ 50% train (5 seeds)",
+        "params": {
+          "n_seeds": 5,
+          "max_iterations": 8000,
+          "restarts": 5,
+          "surjective": true,
+          "ocp_weight": 0.0
+        }
+      },
+      "position": {
+        "x": 760,
+        "y": 80
+      }
+    },
+    {
+      "id": "sa75",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA @ 75% train (5 seeds)",
+        "params": {
+          "n_seeds": 5,
+          "max_iterations": 8000,
+          "restarts": 5,
+          "surjective": true,
+          "ocp_weight": 0.0
+        }
+      },
+      "position": {
+        "x": 760,
+        "y": 320
+      }
+    },
+    {
+      "id": "cons50",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConsistencyScorer",
+        "label": "Consistency @ 50%",
+        "params": {}
+      },
+      "position": {
+        "x": 1020,
+        "y": 80
+      }
+    },
+    {
+      "id": "cons75",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConsistencyScorer",
+        "label": "Consistency @ 75%",
+        "params": {}
+      },
+      "position": {
+        "x": 1020,
+        "y": 320
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge Split Comparison",
+        "params": {}
+      },
+      "position": {
+        "x": 1280,
+        "y": 200
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save",
+        "params": {
+          "filename": "fuls_split_sensitivity.json"
+        }
+      },
+      "position": {
+        "x": 1520,
+        "y": 200
+      }
+    }
   ],
   "edges": [
-    {"id": "e1",  "source": "corpus",  "target": "rtl",    "sourcePort": "sequences",        "targetPort": "sequences"},
-    {"id": "e2",  "source": "rtl",     "target": "split50","sourcePort": "sequences",        "targetPort": "sequences"},
-    {"id": "e3",  "source": "rtl",     "target": "split75","sourcePort": "sequences",        "targetPort": "sequences"},
-    {"id": "e4",  "source": "split50", "target": "sa50",   "sourcePort": "test_sequences",   "targetPort": "sequences"},
-    {"id": "e5",  "source": "split75", "target": "sa75",   "sourcePort": "test_sequences",   "targetPort": "sequences"},
-    {"id": "e6",  "source": "heb_lm",  "target": "sa50",   "sourcePort": "lm",               "targetPort": "lm"},
-    {"id": "e7",  "source": "heb_lm",  "target": "sa75",   "sourcePort": "lm",               "targetPort": "lm"},
-    {"id": "e8",  "source": "sa50",    "target": "cons50", "sourcePort": "all_mappings",     "targetPort": "all_mappings"},
-    {"id": "e9",  "source": "sa75",    "target": "cons75", "sourcePort": "all_mappings",     "targetPort": "all_mappings"},
-    {"id": "e10", "source": "cons50",  "target": "merge",  "sourcePort": "mean_consistency", "targetPort": "a"},
-    {"id": "e11", "source": "cons75",  "target": "merge",  "sourcePort": "mean_consistency", "targetPort": "b"},
-    {"id": "e12", "source": "merge",   "target": "out",    "sourcePort": "json",             "targetPort": "data"}
-  ]
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "rtl",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "rtl",
+      "target": "split50",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "rtl",
+      "target": "split75",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e4",
+      "source": "split50",
+      "target": "sa50",
+      "sourcePort": "test_sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e5",
+      "source": "split75",
+      "target": "sa75",
+      "sourcePort": "test_sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e6",
+      "source": "heb_lm",
+      "target": "sa50",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e7",
+      "source": "heb_lm",
+      "target": "sa75",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e8",
+      "source": "sa50",
+      "target": "cons50",
+      "sourcePort": "all_mappings",
+      "targetPort": "all_mappings"
+    },
+    {
+      "id": "e9",
+      "source": "sa75",
+      "target": "cons75",
+      "sourcePort": "all_mappings",
+      "targetPort": "all_mappings"
+    },
+    {
+      "id": "e10",
+      "source": "cons50",
+      "target": "merge",
+      "sourcePort": "mean_consistency",
+      "targetPort": "a"
+    },
+    {
+      "id": "e11",
+      "source": "cons75",
+      "target": "merge",
+      "sourcePort": "mean_consistency",
+      "targetPort": "b"
+    },
+    {
+      "id": "e12",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

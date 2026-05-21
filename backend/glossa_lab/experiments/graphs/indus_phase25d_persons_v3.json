@@ -1,15 +1,68 @@
 {
   "id": "indus_phase25d_persons_v3",
-  "name": "Indus Phase-25d \u2014 refined persons extractor v3",
+  "name": "Indus Phase-25d — refined persons extractor v3",
   "description": "Phase-25d Tier B5+B6: persons-v3 with extended Akkadian-fragment stoplist (drops lu-ti/lu-na/lu-ma-ku noise) + 3-segment minimum + 6-segment regex (captures ur-{d}suen-me-luh-ha). Output: reports/phase25d_persons_v3.json.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "load",     "type": "expNode", "data": { "atomicId": "Phase25CorpusLoader",  "label": "Load Phase-25 corpus",   "params": {} },                                "position": { "x": 60,   "y": 100 } },
-    { "id": "extract",  "type": "expNode", "data": { "atomicId": "Persons_v3_Extractor","label": "Persons-v3 extractor",   "params": { "min_freq": 1 } },                  "position": { "x": 360,  "y": 100 } },
-    { "id": "out",      "type": "expNode", "data": { "atomicId": "JSONExport",          "label": "Save Phase-25d results", "params": { "filename": "phase25d_persons_v3.json" } }, "position": { "x": 660, "y": 100 } }
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Phase25CorpusLoader",
+        "label": "Load Phase-25 corpus",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "extract",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Persons_v3_Extractor",
+        "label": "Persons-v3 extractor",
+        "params": {
+          "min_freq": 1
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Phase-25d results",
+        "params": {
+          "filename": "phase25d_persons_v3.json"
+        }
+      },
+      "position": {
+        "x": 660,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e_load_e",  "source": "load",    "target": "extract", "sourcePort": "persons_v3",    "targetPort": "persons_v3" },
-    { "id": "e_e_out",   "source": "extract", "target": "out",     "sourcePort": "rows_top50",    "targetPort": "data" }
-  ]
+    {
+      "id": "e_load_e",
+      "source": "load",
+      "target": "extract",
+      "sourcePort": "persons_v3",
+      "targetPort": "persons_v3"
+    },
+    {
+      "id": "e_e_out",
+      "source": "extract",
+      "target": "out",
+      "sourcePort": "rows_top50",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

@@ -3,9 +3,10 @@ REM glossa-lab — Windows Setup
 setlocal
 
 set "PROJECT_ROOT=%~dp0.."
-set "VENV_DIR=%PROJECT_ROOT%\.venv"
 
 echo glossa-lab setup (Windows)
+REM Python project: create virtual environment and install
+set "VENV_DIR=%PROJECT_ROOT%\.venv"
 
 where python >nul 2>nul
 if %ERRORLEVEL% neq 0 (
@@ -19,5 +20,5 @@ if not exist "%VENV_DIR%" (
 )
 
 call "%VENV_DIR%\Scripts\activate.bat"
-pip install -e "%PROJECT_ROOT%"
+pip install -e "%PROJECT_ROOT%[dev]" 2>nul || pip install -e "%PROJECT_ROOT%"
 echo Setup complete.

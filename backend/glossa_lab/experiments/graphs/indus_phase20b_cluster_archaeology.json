@@ -1,24 +1,167 @@
 {
   "id": "indus_phase20b_cluster_archaeology",
-  "name": "Indus Phase-20b \u2014 16-sign cluster archaeology",
+  "name": "Indus Phase-20b — 16-sign cluster archaeology",
   "description": "Phase-20 follow-up to Phase-19 finding 5 (a single Daggumati-style distributional cluster of 16 M77 signs absorbs 26% of all eligible signs). This graph (a) re-runs AllographDetector on M77 mapped to confirm the cluster, and (b) computes per-site distribution + chi-squared independence test for the canonical 16-sign cluster {034, 106, 157, 237, 307, 427, 461, 520, 617, 708, 712, 718, 817, 855, 858, 866}. Output: reports/phase20b_cluster_archaeology.json.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "load",       "type": "expNode", "data": { "atomicId": "M77InscriptionLoader", "label": "Load M77 inscriptions", "params": { "use_raw": false, "label": "indus_m77" } }, "position": { "x": 60,  "y": 200 } },
-    { "id": "allograph",  "type": "expNode", "data": { "atomicId": "AllographDetector",     "label": "Daggumati clustering", "params": { "min_count": 5, "cos_threshold": 0.55, "pos_threshold": 0.50 } }, "position": { "x": 360, "y": 60 } },
-    { "id": "archaeology","type": "expNode", "data": { "atomicId": "ClusterArchaeology",    "label": "Per-site / per-length archaeology", "params": { "fixed_members": ["034", "106", "157", "237", "307", "427", "461", "520", "617", "708", "712", "718", "817", "855", "858", "866"] } }, "position": { "x": 660, "y": 200 } },
-    { "id": "merge",      "type": "expNode", "data": { "atomicId": "Merger", "label": "Merge results", "params": {} }, "position": { "x": 960, "y": 200 } },
-    { "id": "out",        "type": "expNode", "data": { "atomicId": "JSONExport", "label": "Save Phase-20b results", "params": { "filename": "phase20b_cluster_archaeology.json" } }, "position": { "x": 1240, "y": 200 } }
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "M77InscriptionLoader",
+        "label": "Load M77 inscriptions",
+        "params": {
+          "use_raw": false,
+          "label": "indus_m77"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 200
+      }
+    },
+    {
+      "id": "allograph",
+      "type": "expNode",
+      "data": {
+        "atomicId": "AllographDetector",
+        "label": "Daggumati clustering",
+        "params": {
+          "min_count": 5,
+          "cos_threshold": 0.55,
+          "pos_threshold": 0.5
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 60
+      }
+    },
+    {
+      "id": "archaeology",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ClusterArchaeology",
+        "label": "Per-site / per-length archaeology",
+        "params": {
+          "fixed_members": [
+            "034",
+            "106",
+            "157",
+            "237",
+            "307",
+            "427",
+            "461",
+            "520",
+            "617",
+            "708",
+            "712",
+            "718",
+            "817",
+            "855",
+            "858",
+            "866"
+          ]
+        }
+      },
+      "position": {
+        "x": 660,
+        "y": 200
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge results",
+        "params": {}
+      },
+      "position": {
+        "x": 960,
+        "y": 200
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Phase-20b results",
+        "params": {
+          "filename": "phase20b_cluster_archaeology.json"
+        }
+      },
+      "position": {
+        "x": 1240,
+        "y": 200
+      }
+    }
   ],
   "edges": [
-    { "id": "e_load_allo",   "source": "load",       "target": "allograph",   "sourcePort": "sequences",     "targetPort": "sequences" },
-    { "id": "e_load_arch",   "source": "load",       "target": "archaeology", "sourcePort": "inscriptions",  "targetPort": "inscriptions" },
-    { "id": "e_allo_arch",   "source": "allograph",  "target": "archaeology", "sourcePort": "sign_to_cluster","targetPort": "sign_to_cluster" },
-    { "id": "e_allo_merge",  "source": "allograph",  "target": "merge",       "sourcePort": "biggest_cluster","targetPort": "a" },
-    { "id": "e_arch_merge",  "source": "archaeology","target": "merge",       "sourcePort": "site_table",     "targetPort": "b" },
-    { "id": "e_arch_l_merge","source": "archaeology","target": "merge",       "sourcePort": "length_table",   "targetPort": "c" },
-    { "id": "e_arch_chi",    "source": "archaeology","target": "merge",       "sourcePort": "chi_squared",    "targetPort": "d" },
-    { "id": "e_arch_v",      "source": "archaeology","target": "merge",       "sourcePort": "verdict",        "targetPort": "e" },
-    { "id": "e_merge_out",   "source": "merge",      "target": "out",         "sourcePort": "json",           "targetPort": "data" }
-  ]
+    {
+      "id": "e_load_allo",
+      "source": "load",
+      "target": "allograph",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e_load_arch",
+      "source": "load",
+      "target": "archaeology",
+      "sourcePort": "inscriptions",
+      "targetPort": "inscriptions"
+    },
+    {
+      "id": "e_allo_arch",
+      "source": "allograph",
+      "target": "archaeology",
+      "sourcePort": "sign_to_cluster",
+      "targetPort": "sign_to_cluster"
+    },
+    {
+      "id": "e_allo_merge",
+      "source": "allograph",
+      "target": "merge",
+      "sourcePort": "biggest_cluster",
+      "targetPort": "a"
+    },
+    {
+      "id": "e_arch_merge",
+      "source": "archaeology",
+      "target": "merge",
+      "sourcePort": "site_table",
+      "targetPort": "b"
+    },
+    {
+      "id": "e_arch_l_merge",
+      "source": "archaeology",
+      "target": "merge",
+      "sourcePort": "length_table",
+      "targetPort": "c"
+    },
+    {
+      "id": "e_arch_chi",
+      "source": "archaeology",
+      "target": "merge",
+      "sourcePort": "chi_squared",
+      "targetPort": "d"
+    },
+    {
+      "id": "e_arch_v",
+      "source": "archaeology",
+      "target": "merge",
+      "sourcePort": "verdict",
+      "targetPort": "e"
+    },
+    {
+      "id": "e_merge_out",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

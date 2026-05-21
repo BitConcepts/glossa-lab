@@ -1,0 +1,1201 @@
+{
+  "phases": "144-145",
+  "date": "2026-05-19",
+  "results": {
+    "Phase144_blocking_signs": {
+      "n_analyzed": 15,
+      "n_promotion_candidates": 15,
+      "blocker_profiles": [
+        {
+          "sign": "M270",
+          "corpus_freq": 6,
+          "seals_blocked": 6,
+          "current_confidence": "LOW",
+          "current_reading": "mu\u1e37",
+          "current_basis": "Round 4: MEDIAL position (freq=6), distributional assignment",
+          "positional_slot": "MEDIAL",
+          "i_rate": 0.0,
+          "t_rate": 0.0,
+          "m_rate": 1.0,
+          "top_hm_left_neighbors": [
+            {
+              "sign": "M022",
+              "count": 1,
+              "reading": "kalam"
+            },
+            {
+              "sign": "M328",
+              "count": 1,
+              "reading": "\u0101/\u0101l"
+            },
+            {
+              "sign": "M059",
+              "count": 1,
+              "reading": "\u0113\u1e37/e\u1e37"
+            }
+          ],
+          "top_hm_right_neighbors": [
+            {
+              "sign": "M342",
+              "count": 2,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M099",
+              "count": 1,
+              "reading": "kol/ko\u1e37"
+            },
+            {
+              "sign": "M176",
+              "count": 1,
+              "reading": "an/a\u1e47"
+            },
+            {
+              "sign": "M267",
+              "count": 1,
+              "reading": "iN/in (genitive of)"
+            }
+          ],
+          "site_distribution": {
+            "Mohenjo-daro": 2,
+            "Harappa": 2,
+            "Rakhigarhi": 1,
+            "Kalibangan": 1
+          },
+          "mean_seq_length": 5.5,
+          "n_seals": 6,
+          "dedr_hypothesis": "Dravidian content sign / personal name component",
+          "promotion_criteria_met": true
+        },
+        {
+          "sign": "M386",
+          "corpus_freq": 6,
+          "seals_blocked": 6,
+          "current_confidence": "LOW",
+          "current_reading": "ma\u1e47",
+          "current_basis": "Round 4: MEDIAL position (freq=6), distributional assignment",
+          "positional_slot": "MEDIAL",
+          "i_rate": 0.0,
+          "t_rate": 0.0,
+          "m_rate": 1.0,
+          "top_hm_left_neighbors": [
+            {
+              "sign": "M029",
+              "count": 1,
+              "reading": "y\u0101nai"
+            },
+            {
+              "sign": "M267",
+              "count": 1,
+              "reading": "iN/in (genitive of)"
+            },
+            {
+              "sign": "M078",
+              "count": 1,
+              "reading": "c\u0113r"
+            },
+            {
+              "sign": "M025",
+              "count": 1,
+              "reading": "cem"
+            },
+            {
+              "sign": "M391",
+              "count": 1,
+              "reading": "ka/ka\u1e47"
+            }
+          ],
+          "top_hm_right_neighbors": [
+            {
+              "sign": "M328",
+              "count": 1,
+              "reading": "\u0101/\u0101l"
+            },
+            {
+              "sign": "M342",
+              "count": 1,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M048",
+              "count": 1,
+              "reading": "mu/mu\u1e49"
+            },
+            {
+              "sign": "M391",
+              "count": 1,
+              "reading": "ka/ka\u1e47"
+            },
+            {
+              "sign": "M117",
+              "count": 1,
+              "reading": "ar"
+            }
+          ],
+          "site_distribution": {
+            "Mohenjo-daro": 3,
+            "Harappa": 2,
+            "Rakhigarhi": 1
+          },
+          "mean_seq_length": 5.67,
+          "n_seals": 6,
+          "dedr_hypothesis": "Dravidian content sign / personal name component",
+          "promotion_criteria_met": true
+        },
+        {
+          "sign": "M198",
+          "corpus_freq": 6,
+          "seals_blocked": 6,
+          "current_confidence": "LOW",
+          "current_reading": "po\u1e49",
+          "current_basis": "Round 4: MEDIAL position (freq=6), distributional assignment",
+          "positional_slot": "MEDIAL",
+          "i_rate": 0.0,
+          "t_rate": 0.0,
+          "m_rate": 1.0,
+          "top_hm_left_neighbors": [
+            {
+              "sign": "M051",
+              "count": 2,
+              "reading": "p\u016b/pu\u1e37"
+            },
+            {
+              "sign": "M045",
+              "count": 1,
+              "reading": "y\u0101nai"
+            },
+            {
+              "sign": "M044",
+              "count": 1,
+              "reading": "ku"
+            },
+            {
+              "sign": "M336",
+              "count": 1,
+              "reading": "i\u1e49/locative"
+            },
+            {
+              "sign": "M027",
+              "count": 1,
+              "reading": "m\u0101\u1e5f"
+            }
+          ],
+          "top_hm_right_neighbors": [
+            {
+              "sign": "M089",
+              "count": 1,
+              "reading": "tu/t\u016b"
+            },
+            {
+              "sign": "M367",
+              "count": 1,
+              "reading": "am/neuter"
+            },
+            {
+              "sign": "M087",
+              "count": 1,
+              "reading": "veL"
+            },
+            {
+              "sign": "M099",
+              "count": 1,
+              "reading": "kol/ko\u1e37"
+            }
+          ],
+          "site_distribution": {
+            "Harappa": 4,
+            "Dholavira": 1,
+            "Lothal": 1
+          },
+          "mean_seq_length": 5.0,
+          "n_seals": 6,
+          "dedr_hypothesis": "Dravidian content sign / personal name component",
+          "promotion_criteria_met": true
+        },
+        {
+          "sign": "M183",
+          "corpus_freq": 5,
+          "seals_blocked": 5,
+          "current_confidence": "LOW",
+          "current_reading": "v\u0113\u1e37",
+          "current_basis": "Round 4: MEDIAL position (freq=5), distributional assignment",
+          "positional_slot": "MEDIAL",
+          "i_rate": 0.0,
+          "t_rate": 0.0,
+          "m_rate": 1.0,
+          "top_hm_left_neighbors": [
+            {
+              "sign": "M012",
+              "count": 1,
+              "reading": "o\u1e49\u1e5fu/1"
+            },
+            {
+              "sign": "M087",
+              "count": 1,
+              "reading": "veL"
+            },
+            {
+              "sign": "M391",
+              "count": 1,
+              "reading": "ka/ka\u1e47"
+            },
+            {
+              "sign": "M235",
+              "count": 1,
+              "reading": "v\u0113"
+            },
+            {
+              "sign": "M080",
+              "count": 1,
+              "reading": "v\u0113\u1e45kai"
+            }
+          ],
+          "top_hm_right_neighbors": [
+            {
+              "sign": "M391",
+              "count": 1,
+              "reading": "ka/ka\u1e47"
+            },
+            {
+              "sign": "M267",
+              "count": 1,
+              "reading": "iN/in (genitive of)"
+            },
+            {
+              "sign": "M125",
+              "count": 1,
+              "reading": "vil"
+            },
+            {
+              "sign": "M261",
+              "count": 1,
+              "reading": "muruku"
+            }
+          ],
+          "site_distribution": {
+            "Kalibangan": 2,
+            "Lothal": 1,
+            "Mohenjo-daro": 1,
+            "Rakhigarhi": 1
+          },
+          "mean_seq_length": 5.8,
+          "n_seals": 5,
+          "dedr_hypothesis": "Dravidian content sign / personal name component",
+          "promotion_criteria_met": true
+        },
+        {
+          "sign": "M365",
+          "corpus_freq": 5,
+          "seals_blocked": 5,
+          "current_confidence": "LOW",
+          "current_reading": "v\u0101\u1e49",
+          "current_basis": "Round 4: MEDIAL position (freq=5), distributional assignment",
+          "positional_slot": "MEDIAL",
+          "i_rate": 0.0,
+          "t_rate": 0.0,
+          "m_rate": 1.0,
+          "top_hm_left_neighbors": [
+            {
+              "sign": "M050",
+              "count": 2,
+              "reading": "p\u0101r"
+            },
+            {
+              "sign": "M087",
+              "count": 1,
+              "reading": "veL"
+            },
+            {
+              "sign": "M034",
+              "count": 1,
+              "reading": "t\u014d\u1e37"
+            },
+            {
+              "sign": "M035",
+              "count": 1,
+              "reading": "po"
+            }
+          ],
+          "top_hm_right_neighbors": [
+            {
+              "sign": "M267",
+              "count": 1,
+              "reading": "iN/in (genitive of)"
+            },
+            {
+              "sign": "M342",
+              "count": 1,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M328",
+              "count": 1,
+              "reading": "\u0101/\u0101l"
+            },
+            {
+              "sign": "M220",
+              "count": 1,
+              "reading": "al"
+            },
+            {
+              "sign": "M391",
+              "count": 1,
+              "reading": "ka/ka\u1e47"
+            }
+          ],
+          "site_distribution": {
+            "Mohenjo-daro": 3,
+            "Kalibangan": 1,
+            "Lothal": 1
+          },
+          "mean_seq_length": 4.2,
+          "n_seals": 5,
+          "dedr_hypothesis": "Dravidian content sign / personal name component",
+          "promotion_criteria_met": true
+        },
+        {
+          "sign": "M412",
+          "corpus_freq": 5,
+          "seals_blocked": 5,
+          "current_confidence": "LOW",
+          "current_reading": "c\u016b\u1e37",
+          "current_basis": "Round 4: MEDIAL position (freq=5), distributional assignment",
+          "positional_slot": "MEDIAL",
+          "i_rate": 0.0,
+          "t_rate": 0.0,
+          "m_rate": 1.0,
+          "top_hm_left_neighbors": [
+            {
+              "sign": "M060",
+              "count": 1,
+              "reading": "k\u0101\u1e47\u1e6d\u0101mirukam"
+            },
+            {
+              "sign": "M328",
+              "count": 1,
+              "reading": "\u0101/\u0101l"
+            },
+            {
+              "sign": "M391",
+              "count": 1,
+              "reading": "ka/ka\u1e47"
+            },
+            {
+              "sign": "M072",
+              "count": 1,
+              "reading": "m\u0101"
+            }
+          ],
+          "top_hm_right_neighbors": [
+            {
+              "sign": "M342",
+              "count": 2,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M211",
+              "count": 1,
+              "reading": "kol"
+            },
+            {
+              "sign": "M367",
+              "count": 1,
+              "reading": "am/neuter"
+            },
+            {
+              "sign": "M267",
+              "count": 1,
+              "reading": "iN/in (genitive of)"
+            }
+          ],
+          "site_distribution": {
+            "Chanhu-daro": 1,
+            "Harappa": 1,
+            "Mohenjo-daro": 1,
+            "Surkotada": 1,
+            "Kalibangan": 1
+          },
+          "mean_seq_length": 5.2,
+          "n_seals": 5,
+          "dedr_hypothesis": "Dravidian content sign / personal name component",
+          "promotion_criteria_met": true
+        },
+        {
+          "sign": "M151",
+          "corpus_freq": 5,
+          "seals_blocked": 5,
+          "current_confidence": "LOW",
+          "current_reading": "vi\u1e37",
+          "current_basis": "Round 4: MEDIAL position (freq=5), distributional assignment",
+          "positional_slot": "MEDIAL",
+          "i_rate": 0.0,
+          "t_rate": 0.0,
+          "m_rate": 1.0,
+          "top_hm_left_neighbors": [
+            {
+              "sign": "M034",
+              "count": 1,
+              "reading": "t\u014d\u1e37"
+            },
+            {
+              "sign": "M367",
+              "count": 1,
+              "reading": "am/neuter"
+            },
+            {
+              "sign": "M058",
+              "count": 1,
+              "reading": "ke"
+            },
+            {
+              "sign": "M066",
+              "count": 1,
+              "reading": "c\u014d\u1e3b"
+            },
+            {
+              "sign": "M391",
+              "count": 1,
+              "reading": "ka/ka\u1e47"
+            }
+          ],
+          "top_hm_right_neighbors": [
+            {
+              "sign": "M048",
+              "count": 1,
+              "reading": "mu/mu\u1e49"
+            },
+            {
+              "sign": "M220",
+              "count": 1,
+              "reading": "al"
+            },
+            {
+              "sign": "M125",
+              "count": 1,
+              "reading": "vil"
+            }
+          ],
+          "site_distribution": {
+            "Mohenjo-daro": 3,
+            "Harappa": 1,
+            "Surkotada": 1
+          },
+          "mean_seq_length": 4.4,
+          "n_seals": 5,
+          "dedr_hypothesis": "Dravidian content sign / personal name component",
+          "promotion_criteria_met": true
+        },
+        {
+          "sign": "M304",
+          "corpus_freq": 5,
+          "seals_blocked": 5,
+          "current_confidence": "LOW",
+          "current_reading": "v\u0113\u1e5f",
+          "current_basis": "Round 4: MEDIAL position (freq=5), distributional assignment",
+          "positional_slot": "MEDIAL",
+          "i_rate": 0.0,
+          "t_rate": 0.0,
+          "m_rate": 1.0,
+          "top_hm_left_neighbors": [
+            {
+              "sign": "M342",
+              "count": 1,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M059",
+              "count": 1,
+              "reading": "\u0113\u1e37/e\u1e37"
+            },
+            {
+              "sign": "M062",
+              "count": 1,
+              "reading": "erutu"
+            },
+            {
+              "sign": "M162",
+              "count": 1,
+              "reading": "il/i\u1e37"
+            },
+            {
+              "sign": "M416",
+              "count": 1,
+              "reading": "na"
+            }
+          ],
+          "top_hm_right_neighbors": [
+            {
+              "sign": "M099",
+              "count": 3,
+              "reading": "kol/ko\u1e37"
+            },
+            {
+              "sign": "M059",
+              "count": 1,
+              "reading": "\u0113\u1e37/e\u1e37"
+            },
+            {
+              "sign": "M293",
+              "count": 1,
+              "reading": "ta"
+            }
+          ],
+          "site_distribution": {
+            "Mohenjo-daro": 2,
+            "Dholavira": 1,
+            "Harappa": 1,
+            "Lothal": 1
+          },
+          "mean_seq_length": 5.8,
+          "n_seals": 5,
+          "dedr_hypothesis": "Dravidian content sign / personal name component",
+          "promotion_criteria_met": true
+        },
+        {
+          "sign": "M321",
+          "corpus_freq": 5,
+          "seals_blocked": 5,
+          "current_confidence": "LOW",
+          "current_reading": "kol",
+          "current_basis": "Round 5: MEDIAL position (freq=5), distributional assignment",
+          "positional_slot": "MEDIAL",
+          "i_rate": 0.0,
+          "t_rate": 0.0,
+          "m_rate": 1.0,
+          "top_hm_left_neighbors": [
+            {
+              "sign": "M342",
+              "count": 1,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M016",
+              "count": 1,
+              "reading": "ka\u1e37i\u1e5fu"
+            },
+            {
+              "sign": "M039",
+              "count": 1,
+              "reading": "\u0101\u1e49ai"
+            },
+            {
+              "sign": "M176",
+              "count": 1,
+              "reading": "an/a\u1e47"
+            }
+          ],
+          "top_hm_right_neighbors": [
+            {
+              "sign": "M342",
+              "count": 2,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M416",
+              "count": 1,
+              "reading": "na"
+            },
+            {
+              "sign": "M220",
+              "count": 1,
+              "reading": "al"
+            },
+            {
+              "sign": "M099",
+              "count": 1,
+              "reading": "kol/ko\u1e37"
+            }
+          ],
+          "site_distribution": {
+            "Harappa": 2,
+            "Mohenjo-daro": 1,
+            "Dholavira": 1,
+            "Kalibangan": 1
+          },
+          "mean_seq_length": 5.6,
+          "n_seals": 5,
+          "dedr_hypothesis": "Dravidian content sign / personal name component",
+          "promotion_criteria_met": true
+        },
+        {
+          "sign": "M357",
+          "corpus_freq": 5,
+          "seals_blocked": 5,
+          "current_confidence": "LOW",
+          "current_reading": "ku\u1e37",
+          "current_basis": "Round 5: MEDIAL position (freq=5), distributional assignment",
+          "positional_slot": "MEDIAL",
+          "i_rate": 0.0,
+          "t_rate": 0.0,
+          "m_rate": 1.0,
+          "top_hm_left_neighbors": [
+            {
+              "sign": "M053",
+              "count": 1,
+              "reading": "mi"
+            },
+            {
+              "sign": "M194",
+              "count": 1,
+              "reading": "ka\u1e6d"
+            },
+            {
+              "sign": "M076",
+              "count": 1,
+              "reading": "naN"
+            }
+          ],
+          "top_hm_right_neighbors": [
+            {
+              "sign": "M089",
+              "count": 1,
+              "reading": "tu/t\u016b"
+            },
+            {
+              "sign": "M293",
+              "count": 1,
+              "reading": "ta"
+            },
+            {
+              "sign": "M342",
+              "count": 1,
+              "reading": "ay/\u0101"
+            }
+          ],
+          "site_distribution": {
+            "Mohenjo-daro": 2,
+            "Harappa": 1,
+            "Rakhigarhi": 1,
+            "Kalibangan": 1
+          },
+          "mean_seq_length": 5.6,
+          "n_seals": 5,
+          "dedr_hypothesis": "Dravidian content sign / personal name component",
+          "promotion_criteria_met": true
+        },
+        {
+          "sign": "M137",
+          "corpus_freq": 5,
+          "seals_blocked": 5,
+          "current_confidence": "LOW",
+          "current_reading": "ku\u1e5f",
+          "current_basis": "Round 5: MEDIAL position (freq=5), distributional assignment",
+          "positional_slot": "MEDIAL",
+          "i_rate": 0.0,
+          "t_rate": 0.0,
+          "m_rate": 1.0,
+          "top_hm_left_neighbors": [
+            {
+              "sign": "M038",
+              "count": 1,
+              "reading": "p\u014dr"
+            },
+            {
+              "sign": "M058",
+              "count": 1,
+              "reading": "ke"
+            },
+            {
+              "sign": "M040",
+              "count": 1,
+              "reading": "ri"
+            },
+            {
+              "sign": "M125",
+              "count": 1,
+              "reading": "vil"
+            }
+          ],
+          "top_hm_right_neighbors": [
+            {
+              "sign": "M249",
+              "count": 1,
+              "reading": "tii"
+            },
+            {
+              "sign": "M342",
+              "count": 1,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M367",
+              "count": 1,
+              "reading": "am/neuter"
+            },
+            {
+              "sign": "M391",
+              "count": 1,
+              "reading": "ka/ka\u1e47"
+            },
+            {
+              "sign": "M130",
+              "count": 1,
+              "reading": "mui"
+            }
+          ],
+          "site_distribution": {
+            "Chanhu-daro": 1,
+            "Kalibangan": 1,
+            "Lothal": 1,
+            "Mohenjo-daro": 1,
+            "Harappa": 1
+          },
+          "mean_seq_length": 5.0,
+          "n_seals": 5,
+          "dedr_hypothesis": "Dravidian content sign / personal name component",
+          "promotion_criteria_met": true
+        },
+        {
+          "sign": "M239",
+          "corpus_freq": 5,
+          "seals_blocked": 5,
+          "current_confidence": "LOW",
+          "current_reading": "il",
+          "current_basis": "Round 5: MEDIAL position (freq=5), distributional assignment",
+          "positional_slot": "MEDIAL",
+          "i_rate": 0.0,
+          "t_rate": 0.0,
+          "m_rate": 1.0,
+          "top_hm_left_neighbors": [
+            {
+              "sign": "M002",
+              "count": 1,
+              "reading": "ku\u1e49"
+            },
+            {
+              "sign": "M074",
+              "count": 1,
+              "reading": "ker"
+            },
+            {
+              "sign": "M010",
+              "count": 1,
+              "reading": "pa\u1e6d"
+            }
+          ],
+          "top_hm_right_neighbors": [
+            {
+              "sign": "M342",
+              "count": 1,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M367",
+              "count": 1,
+              "reading": "am/neuter"
+            },
+            {
+              "sign": "M059",
+              "count": 1,
+              "reading": "\u0113\u1e37/e\u1e37"
+            },
+            {
+              "sign": "M176",
+              "count": 1,
+              "reading": "an/a\u1e47"
+            }
+          ],
+          "site_distribution": {
+            "Harappa": 3,
+            "Kalibangan": 1,
+            "Lothal": 1
+          },
+          "mean_seq_length": 5.2,
+          "n_seals": 5,
+          "dedr_hypothesis": "Dravidian content sign / personal name component",
+          "promotion_criteria_met": true
+        },
+        {
+          "sign": "M223",
+          "corpus_freq": 5,
+          "seals_blocked": 5,
+          "current_confidence": "LOW",
+          "current_reading": "mu\u1e37",
+          "current_basis": "Round 5: MEDIAL position (freq=5), distributional assignment",
+          "positional_slot": "MEDIAL",
+          "i_rate": 0.0,
+          "t_rate": 0.0,
+          "m_rate": 1.0,
+          "top_hm_left_neighbors": [
+            {
+              "sign": "M367",
+              "count": 1,
+              "reading": "am/neuter"
+            },
+            {
+              "sign": "M078",
+              "count": 1,
+              "reading": "c\u0113r"
+            },
+            {
+              "sign": "M065",
+              "count": 1,
+              "reading": "kuTam"
+            },
+            {
+              "sign": "M176",
+              "count": 1,
+              "reading": "an/a\u1e47"
+            }
+          ],
+          "top_hm_right_neighbors": [
+            {
+              "sign": "M391",
+              "count": 1,
+              "reading": "ka/ka\u1e47"
+            },
+            {
+              "sign": "M267",
+              "count": 1,
+              "reading": "iN/in (genitive of)"
+            },
+            {
+              "sign": "M211",
+              "count": 1,
+              "reading": "kol"
+            },
+            {
+              "sign": "M089",
+              "count": 1,
+              "reading": "tu/t\u016b"
+            }
+          ],
+          "site_distribution": {
+            "Harappa": 2,
+            "Rakhigarhi": 1,
+            "Mohenjo-daro": 1,
+            "Dholavira": 1
+          },
+          "mean_seq_length": 5.0,
+          "n_seals": 5,
+          "dedr_hypothesis": "Dravidian content sign / personal name component",
+          "promotion_criteria_met": true
+        },
+        {
+          "sign": "M254",
+          "corpus_freq": 5,
+          "seals_blocked": 5,
+          "current_confidence": "LOW",
+          "current_reading": "t\u0113\u1e49",
+          "current_basis": "Round 5: MEDIAL position (freq=5), distributional assignment",
+          "positional_slot": "MEDIAL",
+          "i_rate": 0.0,
+          "t_rate": 0.0,
+          "m_rate": 1.0,
+          "top_hm_left_neighbors": [
+            {
+              "sign": "M033",
+              "count": 1,
+              "reading": "puli"
+            },
+            {
+              "sign": "M332",
+              "count": 1,
+              "reading": "intu"
+            },
+            {
+              "sign": "M089",
+              "count": 1,
+              "reading": "tu/t\u016b"
+            }
+          ],
+          "top_hm_right_neighbors": [
+            {
+              "sign": "M051",
+              "count": 1,
+              "reading": "p\u016b/pu\u1e37"
+            },
+            {
+              "sign": "M211",
+              "count": 1,
+              "reading": "kol"
+            },
+            {
+              "sign": "M089",
+              "count": 1,
+              "reading": "tu/t\u016b"
+            },
+            {
+              "sign": "M162",
+              "count": 1,
+              "reading": "il/i\u1e37"
+            }
+          ],
+          "site_distribution": {
+            "Mohenjo-daro": 1,
+            "Dholavira": 1,
+            "Banawali": 1,
+            "Rakhigarhi": 1,
+            "Lothal": 1
+          },
+          "mean_seq_length": 5.2,
+          "n_seals": 5,
+          "dedr_hypothesis": "Dravidian content sign / personal name component",
+          "promotion_criteria_met": true
+        },
+        {
+          "sign": "M143",
+          "corpus_freq": 5,
+          "seals_blocked": 5,
+          "current_confidence": "LOW",
+          "current_reading": "ma\u1e47",
+          "current_basis": "Round 5: MEDIAL position (freq=5), distributional assignment",
+          "positional_slot": "MEDIAL",
+          "i_rate": 0.0,
+          "t_rate": 0.0,
+          "m_rate": 1.0,
+          "top_hm_left_neighbors": [
+            {
+              "sign": "M130",
+              "count": 1,
+              "reading": "mui"
+            },
+            {
+              "sign": "M176",
+              "count": 1,
+              "reading": "an/a\u1e47"
+            },
+            {
+              "sign": "M070",
+              "count": 1,
+              "reading": "v\u0113l"
+            },
+            {
+              "sign": "M051",
+              "count": 1,
+              "reading": "p\u016b/pu\u1e37"
+            },
+            {
+              "sign": "M328",
+              "count": 1,
+              "reading": "\u0101/\u0101l"
+            }
+          ],
+          "top_hm_right_neighbors": [
+            {
+              "sign": "M048",
+              "count": 1,
+              "reading": "mu/mu\u1e49"
+            },
+            {
+              "sign": "M342",
+              "count": 1,
+              "reading": "ay/\u0101"
+            },
+            {
+              "sign": "M211",
+              "count": 1,
+              "reading": "kol"
+            },
+            {
+              "sign": "M099",
+              "count": 1,
+              "reading": "kol/ko\u1e37"
+            }
+          ],
+          "site_distribution": {
+            "Mohenjo-daro": 2,
+            "Banawali": 2,
+            "Harappa": 1
+          },
+          "mean_seq_length": 5.4,
+          "n_seals": 5,
+          "dedr_hypothesis": "Dravidian content sign / personal name component",
+          "promotion_criteria_met": true
+        }
+      ],
+      "promotion_candidates": [
+        "M270",
+        "M386",
+        "M198",
+        "M183",
+        "M365",
+        "M412",
+        "M151",
+        "M304",
+        "M321",
+        "M357",
+        "M137",
+        "M239",
+        "M223",
+        "M254",
+        "M143"
+      ],
+      "interpretation": "15/15 top blocking signs have rich enough H+M collocate context to suggest DEDR-compatible readings. Positional classification: TERMINAL=0, INITIAL=0, MEDIAL=15, MIXED=0. Each slot suggests a DEDR morpheme class that could be promoted with additional corpus evidence."
+    },
+    "Phase145_cisi_comparison": {
+      "n_cisi_inscriptions": 179,
+      "n_cisi_sign_types": 80,
+      "cisi_initial_seal_pct": 87.08,
+      "cisi_mean_length": 5.603,
+      "top_cisi_initials": [
+        {
+          "sign": "P324",
+          "n": 99,
+          "i_rate": 0.778
+        },
+        {
+          "sign": "P086",
+          "n": 35,
+          "i_rate": 0.543
+        },
+        {
+          "sign": "P000",
+          "n": 19,
+          "i_rate": 0.579
+        },
+        {
+          "sign": "P217",
+          "n": 18,
+          "i_rate": 0.778
+        },
+        {
+          "sign": "P013",
+          "n": 9,
+          "i_rate": 1.0
+        },
+        {
+          "sign": "P301",
+          "n": 6,
+          "i_rate": 0.833
+        },
+        {
+          "sign": "P004",
+          "n": 6,
+          "i_rate": 1.0
+        },
+        {
+          "sign": "P051",
+          "n": 5,
+          "i_rate": 1.0
+        },
+        {
+          "sign": "P001",
+          "n": 4,
+          "i_rate": 1.0
+        },
+        {
+          "sign": "P098",
+          "n": 4,
+          "i_rate": 0.75
+        }
+      ],
+      "top_cisi_terminals": [
+        {
+          "sign": "P385",
+          "n": 35,
+          "t_rate": 0.829
+        },
+        {
+          "sign": "P256",
+          "n": 12,
+          "t_rate": 0.75
+        },
+        {
+          "sign": "P076",
+          "n": 6,
+          "t_rate": 0.667
+        },
+        {
+          "sign": "P108",
+          "n": 5,
+          "t_rate": 0.6
+        },
+        {
+          "sign": "P095",
+          "n": 4,
+          "t_rate": 0.75
+        },
+        {
+          "sign": "P226",
+          "n": 4,
+          "t_rate": 1.0
+        }
+      ],
+      "top_cisi_bigrams": [
+        {
+          "pair": "P122\u00b7P385",
+          "count": 29
+        },
+        {
+          "pair": "P147\u00b7P316",
+          "count": 10
+        },
+        {
+          "pair": "P324\u00b7P332",
+          "count": 10
+        },
+        {
+          "pair": "P062\u00b7P060",
+          "count": 9
+        },
+        {
+          "pair": "P364\u00b7P122",
+          "count": 9
+        },
+        {
+          "pair": "P013\u00b7P324",
+          "count": 9
+        },
+        {
+          "pair": "P050\u00b7P145",
+          "count": 8
+        },
+        {
+          "pair": "P120\u00b7P256",
+          "count": 7
+        },
+        {
+          "pair": "P145\u00b7P122",
+          "count": 7
+        },
+        {
+          "pair": "P217\u00b7P050",
+          "count": 6
+        },
+        {
+          "pair": "P060\u00b7P122",
+          "count": 6
+        },
+        {
+          "pair": "P122\u00b7P086",
+          "count": 6
+        },
+        {
+          "pair": "P122\u00b7P378",
+          "count": 6
+        },
+        {
+          "pair": "P268\u00b7P268",
+          "count": 5
+        },
+        {
+          "pair": "P060\u00b7P364",
+          "count": 5
+        }
+      ],
+      "holdat_class_pcts": {
+        "INITIAL": 19.861286254728878,
+        "TERMINAL": 3.4363177805800755,
+        "MEDIAL": 34.80453972257251,
+        "MIXED": 41.897856242118536
+      },
+      "cisi_class_pcts": {
+        "INITIAL": 13.75,
+        "TERMINAL": 7.5,
+        "MEDIAL": 68.75,
+        "MIXED": 10.0
+      },
+      "kl_divergence_holdat_cisi": 0.5908,
+      "structural_agreement": "LOW",
+      "interpretation": "CISI corpus (179 inscriptions, Parpola P-numbers) vs Holdat (1670 seals, M-numbers). KL divergence on positional class distribution: 0.591 \u2192 some structural difference. 87% of CISI multi-sign inscriptions open with INITIAL-class sign, consistent with the Holdat pattern. Note: P-numbers \u2260 M-numbers; direct sign comparison requires crosswalk."
+    }
+  },
+  "key_findings": [
+    "Phase-144: 15/15 top blocking signs have rich H+M collocate context for potential promotion",
+    "Phase-144: Slot breakdown \u2014 T=0, I=0, M=15, X=0",
+    "Phase-145: CISI vs Holdat KL divergence = 0.591 (structural agreement: LOW)",
+    "Phase-145: CISI 87% of inscriptions start with INITIAL-class sign \u2014 consistent with Holdat grammar"
+  ],
+  "_note": "Phase-144: Blocking sign collocate profiles. Phase-145: CISI corpus formula comparison. Real corpus only."
+}

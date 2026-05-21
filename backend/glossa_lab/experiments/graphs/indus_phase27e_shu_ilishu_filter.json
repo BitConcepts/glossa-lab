@@ -4,13 +4,69 @@
   "description": "Phase-27 (#6+#1): finally filter Phase-25e candidates using catalogue_id-aware indus_cisi accessor.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "load",  "type": "expNode", "data": { "atomicId": "Phase27CorpusLoader",         "label": "Load",   "params": {} },                                    "position": { "x": 60, "y": 100 } },
-    { "id": "filt",  "type": "expNode", "data": { "atomicId": "ShuIlishuContactZoneFilter", "label": "Filter", "params": {} },                                    "position": { "x": 360, "y": 100 } },
-    { "id": "out",   "type": "expNode", "data": { "atomicId": "JSONExport",                  "label": "Save",   "params": { "filename": "phase27e_shu_ilishu_filter.json" } }, "position": { "x": 660, "y": 100 } }
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Phase27CorpusLoader",
+        "label": "Load",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "filt",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ShuIlishuContactZoneFilter",
+        "label": "Filter",
+        "params": {}
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save",
+        "params": {
+          "filename": "phase27e_shu_ilishu_filter.json"
+        }
+      },
+      "position": {
+        "x": 660,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e1", "source": "load", "target": "filt", "sourcePort": "contact_zone_prefixes", "targetPort": "contact_zone_prefixes" },
-    { "id": "e2", "source": "load", "target": "filt", "sourcePort": "findspot_map",          "targetPort": "findspot_map" },
-    { "id": "e3", "source": "filt", "target": "out",  "targetPort": "data" }
-  ]
+    {
+      "id": "e1",
+      "source": "load",
+      "target": "filt",
+      "sourcePort": "contact_zone_prefixes",
+      "targetPort": "contact_zone_prefixes"
+    },
+    {
+      "id": "e2",
+      "source": "load",
+      "target": "filt",
+      "sourcePort": "findspot_map",
+      "targetPort": "findspot_map"
+    },
+    {
+      "id": "e3",
+      "source": "filt",
+      "target": "out",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

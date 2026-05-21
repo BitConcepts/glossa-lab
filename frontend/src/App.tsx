@@ -15,7 +15,6 @@ import { HelpView } from "./components/HelpView";
 import { SignDictionary } from "./components/SignDictionary";
 import { TimelineView } from "./components/TimelineView";
 import { CitationManager } from "./components/CitationManager";
-import { CASModelView } from "./components/CASModelView";
 import { DashboardView } from "./components/DashboardView";
 import { CorrespondenceView } from "./components/CorrespondenceView";
 import { FoundationCheckView } from "./components/FoundationCheckView";
@@ -34,7 +33,7 @@ type Tab =
   | "dashboard"
   | "status" | "builder" | "experiments" | "pipelines"
   | "corpora" | "jobs" | "reports" | "settings"
-  | "entropy" | "hypotheses" | "notebooks" | "ai-tools" | "signs" | "timeline" | "citations" | "correspondence" | "help" | "models"
+  | "entropy" | "hypotheses" | "notebooks" | "ai-tools" | "signs" | "timeline" | "citations" | "correspondence" | "help"
   | "discovery" | "foundation-check" | "evidence"
   | "exp-builder"; // legacy alias — still handled but not in nav
 
@@ -56,7 +55,6 @@ const NAV_SECTIONS: NavSection[] = [
     title: "Workflow",
     items: [
       { id: "corpora",     label: "Corpora",      icon: "📚" },  // 1. Upload data
-      { id: "models",      label: "CAS Models",   icon: "🔢" },  // 2. CPSC constraint models
       { id: "experiments", label: "Experiments",  icon: "🔀" },  // 3. Build + browse graph experiments
       { id: "pipelines",   label: "Pipelines",    icon: "⚙️" },  // 4. Async jobs
       { id: "builder",     label: "Projects",     icon: "📁" },  // 5. Project overview + management
@@ -620,7 +618,6 @@ function AppContent() {
               {tab === "jobs"        && <JobsView />}
               {tab === "reports"     && <ReportsView />}
               {tab === "settings"    && <SettingsView />}
-              {tab === "models"      && <CASModelView />}
               {tab === "entropy"     && <EntropyDashboard />}
               {tab === "hypotheses"  && <HypothesisTracker />}
               {tab === "notebooks"   && <ResearchNotebook />}

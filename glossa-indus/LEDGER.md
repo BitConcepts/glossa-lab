@@ -176,7 +176,7 @@ Results:
 
 ---
 
-## Batch 8 — SQLite WAL Fix + Specsmith Migration
+## Batch 8 — SQLite WAL Fix + Governance-Tool Migration
 **Date**: 2026-05-17  
 **Commit**: `438cc69` (WAL) + staged
 
@@ -192,8 +192,8 @@ Results:
   - `PRAGMA synchronous=NORMAL` — crash-safe with WAL, faster than FULL
 - Result: **445 passed, 0 failed** (was 428 passed, 16 failed).
 
-### Specsmith migration (model-rate-limits.json)
-Both `.specsmith/model-rate-limits.json` files updated to current-gen model landscape:
+### governance-tool migration (model-rate-limits.json)
+Both `.governance-tool/model-rate-limits.json` files updated to current-gen model landscape:
 
 | Added | Provider |
 |-------|----------|
@@ -283,7 +283,7 @@ Both `.specsmith/model-rate-limits.json` files updated to current-gen model land
 
 ### Backend build
 - pystray bumped to 0.19.5 (Dependabot PR #4, squash-merged)
-- Stale branches deleted: `corpus/icit-scale-reconstruction`, `features/specsmith`
+- Stale branches deleted: `corpus/icit-scale-reconstruction`, `features/governance-tool`
 - `backend/` tests: 464 passed, 3 skipped (0 failures)
 
 ### T1: Contact Zone Corpus Analysis (phase46_t1_contact_zone.py) — GPU: cuda

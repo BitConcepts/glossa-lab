@@ -1,13 +1,50 @@
 {
   "id": "indus_phase18_measure_and_rerun",
-  "name": "Indus Phase-18 \u2014 RV padapatha measure + rerun (legacy migration)",
+  "name": "Indus Phase-18 — RV padapatha measure + rerun (legacy migration)",
   "description": "Retroactive migration of scripts/phase18/measure_and_rerun.py. Measures DoFs on RV padapatha + mayig CISI corpora and re-runs the multi-hypothesis ranker. Output: reports/phase18_measure_and_rerun.json.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "run", "type": "expNode", "data": { "atomicId": "LegacyPhaseScriptRunner", "label": "Run Phase-18 measure_and_rerun", "params": { "script_path": "scripts/phase18/measure_and_rerun.py", "output_path": "reports/phase18_measure_and_rerun.json", "timeout_s": 1200 } }, "position": { "x": 60, "y": 100 } },
-    { "id": "out", "type": "expNode", "data": { "atomicId": "JSONExport",            "label": "Save run summary", "params": { "filename": "phase18_measure_and_rerun.json" } }, "position": { "x": 360, "y": 100 } }
+    {
+      "id": "run",
+      "type": "expNode",
+      "data": {
+        "atomicId": "LegacyPhaseScriptRunner",
+        "label": "Run Phase-18 measure_and_rerun",
+        "params": {
+          "script_path": "scripts/phase18/measure_and_rerun.py",
+          "output_path": "reports/phase18_measure_and_rerun.json",
+          "timeout_s": 1200
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save run summary",
+        "params": {
+          "filename": "phase18_measure_and_rerun.json"
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e_run_out", "source": "run", "target": "out", "sourcePort": "verdict", "targetPort": "data" }
-  ]
+    {
+      "id": "e_run_out",
+      "source": "run",
+      "target": "out",
+      "sourcePort": "verdict",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

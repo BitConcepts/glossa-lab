@@ -4,14 +4,76 @@
   "description": "Phase-28 #5: extends Phase-27c so all fish-family allographs (47/48/50/52/60/145/147) score against the M-410 fish anchor. Expands anchor coverage 7 -> ~14 sign IDs.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "load", "type": "expNode", "data": { "atomicId": "Phase28CorpusLoader",          "label": "Load",   "params": {} }, "position": { "x": 60,  "y": 100 } },
-    { "id": "ic",   "type": "expNode", "data": { "atomicId": "AllographAwareIconographicScore","label": "Score","params": {} }, "position": { "x": 360, "y": 100 } },
-    { "id": "out",  "type": "expNode", "data": { "atomicId": "JSONExport",                    "label": "Save",   "params": { "filename": "phase28c_allograph_iconographic.json" } }, "position": { "x": 660, "y": 100 } }
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Phase28CorpusLoader",
+        "label": "Load",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "ic",
+      "type": "expNode",
+      "data": {
+        "atomicId": "AllographAwareIconographicScore",
+        "label": "Score",
+        "params": {}
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save",
+        "params": {
+          "filename": "phase28c_allograph_iconographic.json"
+        }
+      },
+      "position": {
+        "x": 660,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e1", "source": "load", "target": "ic", "sourcePort": "iconographic_anchors", "targetPort": "iconographic_anchors" },
-    { "id": "e2", "source": "load", "target": "ic", "sourcePort": "phoneme_map",          "targetPort": "phoneme_map" },
-    { "id": "e3", "source": "load", "target": "ic", "sourcePort": "allograph_families",    "targetPort": "allograph_families" },
-    { "id": "e4", "source": "ic",   "target": "out", "targetPort": "data" }
-  ]
+    {
+      "id": "e1",
+      "source": "load",
+      "target": "ic",
+      "sourcePort": "iconographic_anchors",
+      "targetPort": "iconographic_anchors"
+    },
+    {
+      "id": "e2",
+      "source": "load",
+      "target": "ic",
+      "sourcePort": "phoneme_map",
+      "targetPort": "phoneme_map"
+    },
+    {
+      "id": "e3",
+      "source": "load",
+      "target": "ic",
+      "sourcePort": "allograph_families",
+      "targetPort": "allograph_families"
+    },
+    {
+      "id": "e4",
+      "source": "ic",
+      "target": "out",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

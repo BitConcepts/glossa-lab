@@ -4,13 +4,73 @@
   "description": "Phase-26 #4: re-run Phase-25c bipartite readout test split by CDLI provenience (Girsu/Nippur/Ur/Umma/Susa/Nineveh/etc). Output: reports/phase26a_provenience_stratified.json.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "load",  "type": "expNode", "data": { "atomicId": "Phase26CorpusLoader",            "label": "Load Phase-26 corpus",         "params": {} },                                          "position": { "x": 60,   "y": 100 } },
-    { "id": "test",  "type": "expNode", "data": { "atomicId": "ProvenienceStratifiedReadout",  "label": "Provenience-stratified readout","params": { "n_permutations": 1000, "tolerance": 2 } },   "position": { "x": 360,  "y": 100 } },
-    { "id": "out",   "type": "expNode", "data": { "atomicId": "JSONExport",                    "label": "Save Phase-26a results",        "params": { "filename": "phase26a_provenience_stratified.json" } }, "position": { "x": 660, "y": 100 } }
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Phase26CorpusLoader",
+        "label": "Load Phase-26 corpus",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "test",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ProvenienceStratifiedReadout",
+        "label": "Provenience-stratified readout",
+        "params": {
+          "n_permutations": 1000,
+          "tolerance": 2
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Phase-26a results",
+        "params": {
+          "filename": "phase26a_provenience_stratified.json"
+        }
+      },
+      "position": {
+        "x": 660,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e_load_t_p",    "source": "load", "target": "test", "sourcePort": "persons_v3",      "targetPort": "persons_v3" },
-    { "id": "e_load_t_s",    "source": "load", "target": "test", "sourcePort": "inscribed_seals", "targetPort": "inscribed_seals" },
-    { "id": "e_t_out",       "source": "test", "target": "out",  "sourcePort": "results",         "targetPort": "data" }
-  ]
+    {
+      "id": "e_load_t_p",
+      "source": "load",
+      "target": "test",
+      "sourcePort": "persons_v3",
+      "targetPort": "persons_v3"
+    },
+    {
+      "id": "e_load_t_s",
+      "source": "load",
+      "target": "test",
+      "sourcePort": "inscribed_seals",
+      "targetPort": "inscribed_seals"
+    },
+    {
+      "id": "e_t_out",
+      "source": "test",
+      "target": "out",
+      "sourcePort": "results",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

@@ -1,13 +1,50 @@
 {
   "id": "indus_phase16_rerun_indus_grounded",
-  "name": "Indus Phase-16 \u2014 grounded rerun (legacy migration)",
+  "name": "Indus Phase-16 — grounded rerun (legacy migration)",
   "description": "Retroactive migration of scripts/phase16/rerun_indus_grounded.py. Re-runs the Phase-15 multi-hypothesis ranker on M77 with empirically-grounded morphology CAS-YAMLs (5 competing hypotheses incl. vedic_kalyanaraman). Output: reports/phase16_indus_grounded_rerun.json.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "run", "type": "expNode", "data": { "atomicId": "LegacyPhaseScriptRunner", "label": "Run Phase-16 rerun_indus_grounded", "params": { "script_path": "scripts/phase16/rerun_indus_grounded.py", "output_path": "reports/phase16_indus_grounded_rerun.json", "timeout_s": 1800 } }, "position": { "x": 60, "y": 100 } },
-    { "id": "out", "type": "expNode", "data": { "atomicId": "JSONExport",            "label": "Save run summary", "params": { "filename": "phase16_rerun_indus_grounded.json" } }, "position": { "x": 360, "y": 100 } }
+    {
+      "id": "run",
+      "type": "expNode",
+      "data": {
+        "atomicId": "LegacyPhaseScriptRunner",
+        "label": "Run Phase-16 rerun_indus_grounded",
+        "params": {
+          "script_path": "scripts/phase16/rerun_indus_grounded.py",
+          "output_path": "reports/phase16_indus_grounded_rerun.json",
+          "timeout_s": 1800
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save run summary",
+        "params": {
+          "filename": "phase16_rerun_indus_grounded.json"
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e_run_out", "source": "run", "target": "out", "sourcePort": "verdict", "targetPort": "data" }
-  ]
+    {
+      "id": "e_run_out",
+      "source": "run",
+      "target": "out",
+      "sourcePort": "verdict",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

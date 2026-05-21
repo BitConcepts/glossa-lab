@@ -1,0 +1,1173 @@
+{
+  "phase": 143,
+  "date": "2026-05-19",
+  "results": {
+    "A_iconographic_cross_tab": {
+      "n_pairs_tested": 394,
+      "n_enriched": 63,
+      "top_20_associations": [
+        {
+          "initial": "M060",
+          "reading": "k\u0101\u1e47\u1e6d\u0101mirukam",
+          "icon": "rhinoceros",
+          "observed": 20,
+          "expected": 2.04,
+          "chi2": 158.507,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M045",
+          "reading": "y\u0101nai",
+          "icon": "elephant",
+          "observed": 24,
+          "expected": 2.87,
+          "chi2": 155.274,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M016",
+          "reading": "ka\u1e37i\u1e5fu",
+          "icon": "elephant",
+          "observed": 23,
+          "expected": 2.75,
+          "chi2": 148.804,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M067",
+          "reading": "k\u014d\u1e6d\u1e6d\u0101\u1e49",
+          "icon": "rhinoceros",
+          "observed": 15,
+          "expected": 1.53,
+          "chi2": 118.88,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M039",
+          "reading": "\u0101\u1e49ai",
+          "icon": "elephant",
+          "observed": 18,
+          "expected": 2.16,
+          "chi2": 116.456,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M068",
+          "reading": "ma\u1e5fi",
+          "icon": "rhinoceros",
+          "observed": 13,
+          "expected": 1.32,
+          "chi2": 103.029,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M062",
+          "reading": "erutu",
+          "icon": "zebu",
+          "observed": 28,
+          "expected": 5.82,
+          "chi2": 84.573,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M073",
+          "reading": "k\u014d\u1e49",
+          "icon": "zebu",
+          "observed": 25,
+          "expected": 5.19,
+          "chi2": 75.512,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M059",
+          "reading": "\u0113\u1e37/e\u1e37",
+          "icon": "unicorn",
+          "observed": 43,
+          "expected": 13.23,
+          "chi2": 66.943,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M057",
+          "reading": "m\u0101\u1e6du",
+          "icon": "zebu",
+          "observed": 18,
+          "expected": 3.74,
+          "chi2": 54.368,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M267",
+          "reading": "iN/in (genitive of)",
+          "icon": "unicorn",
+          "observed": 17,
+          "expected": 5.23,
+          "chi2": 26.466,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M342",
+          "reading": "ay/\u0101",
+          "icon": "unicorn",
+          "observed": 12,
+          "expected": 3.69,
+          "chi2": 18.682,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M066",
+          "reading": "c\u014d\u1e3b",
+          "icon": "script only",
+          "observed": 6,
+          "expected": 1.32,
+          "chi2": 16.55,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M050",
+          "reading": "p\u0101r",
+          "icon": "script only",
+          "observed": 6,
+          "expected": 1.4,
+          "chi2": 15.031,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M020",
+          "reading": "ku\u1e49",
+          "icon": "geometric",
+          "observed": 4,
+          "expected": 1.0,
+          "chi2": 8.964,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M005",
+          "reading": "k\u014d\u1e49",
+          "icon": "rhinoceros",
+          "observed": 5,
+          "expected": 1.53,
+          "chi2": 7.899,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M071",
+          "reading": "nal",
+          "icon": "unicorn",
+          "observed": 11,
+          "expected": 4.92,
+          "chi2": 7.495,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M077",
+          "reading": "nal",
+          "icon": "zebu",
+          "observed": 9,
+          "expected": 3.74,
+          "chi2": 7.397,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M069",
+          "reading": "n\u0113r",
+          "icon": "elephant",
+          "observed": 5,
+          "expected": 1.92,
+          "chi2": 4.963,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M054",
+          "reading": "mi",
+          "icon": "zebu",
+          "observed": 6,
+          "expected": 2.49,
+          "chi2": 4.931,
+          "direction": "enriched"
+        }
+      ],
+      "top_enrichments": [
+        {
+          "initial": "M060",
+          "reading": "k\u0101\u1e47\u1e6d\u0101mirukam",
+          "icon": "rhinoceros",
+          "observed": 20,
+          "expected": 2.04,
+          "chi2": 158.507,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M045",
+          "reading": "y\u0101nai",
+          "icon": "elephant",
+          "observed": 24,
+          "expected": 2.87,
+          "chi2": 155.274,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M016",
+          "reading": "ka\u1e37i\u1e5fu",
+          "icon": "elephant",
+          "observed": 23,
+          "expected": 2.75,
+          "chi2": 148.804,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M067",
+          "reading": "k\u014d\u1e6d\u1e6d\u0101\u1e49",
+          "icon": "rhinoceros",
+          "observed": 15,
+          "expected": 1.53,
+          "chi2": 118.88,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M039",
+          "reading": "\u0101\u1e49ai",
+          "icon": "elephant",
+          "observed": 18,
+          "expected": 2.16,
+          "chi2": 116.456,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M068",
+          "reading": "ma\u1e5fi",
+          "icon": "rhinoceros",
+          "observed": 13,
+          "expected": 1.32,
+          "chi2": 103.029,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M062",
+          "reading": "erutu",
+          "icon": "zebu",
+          "observed": 28,
+          "expected": 5.82,
+          "chi2": 84.573,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M073",
+          "reading": "k\u014d\u1e49",
+          "icon": "zebu",
+          "observed": 25,
+          "expected": 5.19,
+          "chi2": 75.512,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M059",
+          "reading": "\u0113\u1e37/e\u1e37",
+          "icon": "unicorn",
+          "observed": 43,
+          "expected": 13.23,
+          "chi2": 66.943,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M057",
+          "reading": "m\u0101\u1e6du",
+          "icon": "zebu",
+          "observed": 18,
+          "expected": 3.74,
+          "chi2": 54.368,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M267",
+          "reading": "iN/in (genitive of)",
+          "icon": "unicorn",
+          "observed": 17,
+          "expected": 5.23,
+          "chi2": 26.466,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M342",
+          "reading": "ay/\u0101",
+          "icon": "unicorn",
+          "observed": 12,
+          "expected": 3.69,
+          "chi2": 18.682,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M066",
+          "reading": "c\u014d\u1e3b",
+          "icon": "script only",
+          "observed": 6,
+          "expected": 1.32,
+          "chi2": 16.55,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M050",
+          "reading": "p\u0101r",
+          "icon": "script only",
+          "observed": 6,
+          "expected": 1.4,
+          "chi2": 15.031,
+          "direction": "enriched"
+        },
+        {
+          "initial": "M020",
+          "reading": "ku\u1e49",
+          "icon": "geometric",
+          "observed": 4,
+          "expected": 1.0,
+          "chi2": 8.964,
+          "direction": "enriched"
+        }
+      ],
+      "interpretation": "63 strong enrichments (\u03c7\u00b2>1.0) between H+M INITIAL signs and seal iconography. Systematic enrichments confirm that different professional titles (INITIAL signs) appear preferentially on seals with different animal motifs \u2014 the inscription and image co-encode the same professional identity."
+    },
+    "B_formula_interpretation": {
+      "top_20_interpreted": [
+        {
+          "bigram": "M342 \u00b7 M176",
+          "a": "M342",
+          "b": "M176",
+          "a_reading": "ay/\u0101",
+          "b_reading": "an/a\u1e47",
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "count": 122,
+          "pmi": 2.432,
+          "formula_reading": "ay/\u0101 + an/a\u1e47"
+        },
+        {
+          "bigram": "M267 \u00b7 M099",
+          "a": "M267",
+          "b": "M099",
+          "a_reading": "iN/in (genitive of)",
+          "b_reading": "kol/ko\u1e37",
+          "a_conf": "MEDIUM",
+          "b_conf": "HIGH",
+          "count": 84,
+          "pmi": 2.311,
+          "formula_reading": "iN/in (genitive of) + kol/ko\u1e37"
+        },
+        {
+          "bigram": "M099 \u00b7 M342",
+          "a": "M099",
+          "b": "M342",
+          "a_reading": "kol/ko\u1e37",
+          "b_reading": "ay/\u0101",
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "count": 81,
+          "pmi": 1.713,
+          "formula_reading": "kol/ko\u1e37 + ay/\u0101"
+        },
+        {
+          "bigram": "M176 \u00b7 M099",
+          "a": "M176",
+          "b": "M099",
+          "a_reading": "an/a\u1e47",
+          "b_reading": "kol/ko\u1e37",
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "count": 74,
+          "pmi": 2.297,
+          "formula_reading": "an/a\u1e47 + kol/ko\u1e37"
+        },
+        {
+          "bigram": "M211 \u00b7 M342",
+          "a": "M211",
+          "b": "M342",
+          "a_reading": "kol",
+          "b_reading": "ay/\u0101",
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "count": 45,
+          "pmi": 1.509,
+          "formula_reading": "kol + ay/\u0101"
+        },
+        {
+          "bigram": "M328 \u00b7 M267",
+          "a": "M328",
+          "b": "M267",
+          "a_reading": "\u0101/\u0101l",
+          "b_reading": "iN/in (genitive of)",
+          "a_conf": "HIGH",
+          "b_conf": "MEDIUM",
+          "count": 40,
+          "pmi": 1.974,
+          "formula_reading": "\u0101/\u0101l + iN/in (genitive of)"
+        },
+        {
+          "bigram": "M293 \u00b7 M267",
+          "a": "M293",
+          "b": "M267",
+          "a_reading": "ta",
+          "b_reading": "iN/in (genitive of)",
+          "a_conf": "HIGH",
+          "b_conf": "MEDIUM",
+          "count": 37,
+          "pmi": 1.874,
+          "formula_reading": "ta + iN/in (genitive of)"
+        },
+        {
+          "bigram": "M342 \u00b7 M342",
+          "a": "M342",
+          "b": "M342",
+          "a_reading": "ay/\u0101",
+          "b_reading": "ay/\u0101",
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "count": 35,
+          "pmi": -0.084,
+          "formula_reading": "ay/\u0101 + ay/\u0101"
+        },
+        {
+          "bigram": "M267 \u00b7 M342",
+          "a": "M267",
+          "b": "M342",
+          "a_reading": "iN/in (genitive of)",
+          "b_reading": "ay/\u0101",
+          "a_conf": "MEDIUM",
+          "b_conf": "HIGH",
+          "count": 31,
+          "pmi": 0.287,
+          "formula_reading": "iN/in (genitive of) + ay/\u0101"
+        },
+        {
+          "bigram": "M059 \u00b7 M267",
+          "a": "M059",
+          "b": "M267",
+          "a_reading": "\u0113\u1e37/e\u1e37",
+          "b_reading": "iN/in (genitive of)",
+          "a_conf": "HIGH",
+          "b_conf": "MEDIUM",
+          "count": 30,
+          "pmi": 1.635,
+          "formula_reading": "\u0113\u1e37/e\u1e37 + iN/in (genitive of)"
+        },
+        {
+          "bigram": "M162 \u00b7 M099",
+          "a": "M162",
+          "b": "M099",
+          "a_reading": "il/i\u1e37",
+          "b_reading": "kol/ko\u1e37",
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "count": 26,
+          "pmi": 1.584,
+          "formula_reading": "il/i\u1e37 + kol/ko\u1e37"
+        },
+        {
+          "bigram": "M342 \u00b7 M162",
+          "a": "M342",
+          "b": "M162",
+          "a_reading": "ay/\u0101",
+          "b_reading": "il/i\u1e37",
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "count": 25,
+          "pmi": 0.941,
+          "formula_reading": "ay/\u0101 + il/i\u1e37"
+        },
+        {
+          "bigram": "M342 \u00b7 M211",
+          "a": "M342",
+          "b": "M211",
+          "a_reading": "ay/\u0101",
+          "b_reading": "kol",
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "count": 24,
+          "pmi": 0.602,
+          "formula_reading": "ay/\u0101 + kol"
+        },
+        {
+          "bigram": "M342 \u00b7 M328",
+          "a": "M342",
+          "b": "M328",
+          "a_reading": "ay/\u0101",
+          "b_reading": "\u0101/\u0101l",
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "count": 24,
+          "pmi": 0.691,
+          "formula_reading": "ay/\u0101 + \u0101/\u0101l"
+        },
+        {
+          "bigram": "M267 \u00b7 M211",
+          "a": "M267",
+          "b": "M211",
+          "a_reading": "iN/in (genitive of)",
+          "b_reading": "kol",
+          "a_conf": "MEDIUM",
+          "b_conf": "HIGH",
+          "count": 21,
+          "pmi": 0.955,
+          "formula_reading": "iN/in (genitive of) + kol"
+        },
+        {
+          "bigram": "M267 \u00b7 M328",
+          "a": "M267",
+          "b": "M328",
+          "a_reading": "iN/in (genitive of)",
+          "b_reading": "\u0101/\u0101l",
+          "a_conf": "MEDIUM",
+          "b_conf": "HIGH",
+          "count": 18,
+          "pmi": 0.822,
+          "formula_reading": "iN/in (genitive of) + \u0101/\u0101l"
+        },
+        {
+          "bigram": "M342 \u00b7 M099",
+          "a": "M342",
+          "b": "M099",
+          "a_reading": "ay/\u0101",
+          "b_reading": "kol/ko\u1e37",
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "count": 18,
+          "pmi": -0.457,
+          "formula_reading": "ay/\u0101 + kol/ko\u1e37"
+        },
+        {
+          "bigram": "M342 \u00b7 M391",
+          "a": "M342",
+          "b": "M391",
+          "a_reading": "ay/\u0101",
+          "b_reading": "ka/ka\u1e47",
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "count": 17,
+          "pmi": 0.472,
+          "formula_reading": "ay/\u0101 + ka/ka\u1e47"
+        },
+        {
+          "bigram": "M342 \u00b7 M233",
+          "a": "M342",
+          "b": "M233",
+          "a_reading": "ay/\u0101",
+          "b_reading": "\u016br",
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "count": 17,
+          "pmi": 0.646,
+          "formula_reading": "ay/\u0101 + \u016br"
+        },
+        {
+          "bigram": "M342 \u00b7 M048",
+          "a": "M342",
+          "b": "M048",
+          "a_reading": "ay/\u0101",
+          "b_reading": "mu/mu\u1e49",
+          "a_conf": "HIGH",
+          "b_conf": "HIGH",
+          "count": 17,
+          "pmi": 0.77,
+          "formula_reading": "ay/\u0101 + mu/mu\u1e49"
+        }
+      ],
+      "most_frequent_bigram": {
+        "pair": "M342 \u00b7 M176",
+        "a_reading": "ay/\u0101",
+        "b_reading": "an/a\u1e47",
+        "count": 122,
+        "pct_corpus": 7.3
+      },
+      "interpretation": "Top recurring H+M bigram: M342\u00b7M176 (ay/\u0101+an/a\u1e47, 122 seals). This is the backbone formula slot \u2014 a standardised sign pair appearing in 7.3% of multi-sign seals."
+    },
+    "C_formula_length": {
+      "overall_mean_length": 4.193,
+      "by_initial_sign": [
+        {
+          "sign": "M014",
+          "reading": "tiru",
+          "confidence": "HIGH",
+          "n_seals": 17,
+          "mean_length": 5.18,
+          "max_length": 8,
+          "min_length": 2
+        },
+        {
+          "sign": "M125",
+          "reading": "vil",
+          "confidence": "HIGH",
+          "n_seals": 10,
+          "mean_length": 5.0,
+          "max_length": 8,
+          "min_length": 3
+        },
+        {
+          "sign": "M176",
+          "reading": "an/a\u1e47",
+          "confidence": "HIGH",
+          "n_seals": 13,
+          "mean_length": 5.0,
+          "max_length": 8,
+          "min_length": 2
+        },
+        {
+          "sign": "M021",
+          "reading": "k\u014d",
+          "confidence": "MEDIUM",
+          "n_seals": 16,
+          "mean_length": 5.0,
+          "max_length": 8,
+          "min_length": 2
+        },
+        {
+          "sign": "M046",
+          "reading": "kaL",
+          "confidence": "HIGH",
+          "n_seals": 11,
+          "mean_length": 5.0,
+          "max_length": 8,
+          "min_length": 3
+        },
+        {
+          "sign": "M066",
+          "reading": "c\u014d\u1e3b",
+          "confidence": "MEDIUM",
+          "n_seals": 16,
+          "mean_length": 4.94,
+          "max_length": 7,
+          "min_length": 2
+        },
+        {
+          "sign": "M028",
+          "reading": "c\u014d\u1e3b",
+          "confidence": "MEDIUM",
+          "n_seals": 11,
+          "mean_length": 4.82,
+          "max_length": 8,
+          "min_length": 2
+        },
+        {
+          "sign": "M053",
+          "reading": "mi",
+          "confidence": "MEDIUM",
+          "n_seals": 19,
+          "mean_length": 4.79,
+          "max_length": 8,
+          "min_length": 2
+        },
+        {
+          "sign": "M026",
+          "reading": "m\u0101",
+          "confidence": "HIGH",
+          "n_seals": 17,
+          "mean_length": 4.76,
+          "max_length": 8,
+          "min_length": 2
+        },
+        {
+          "sign": "M328",
+          "reading": "\u0101/\u0101l",
+          "confidence": "HIGH",
+          "n_seals": 15,
+          "mean_length": 4.67,
+          "max_length": 7,
+          "min_length": 3
+        },
+        {
+          "sign": "M016",
+          "reading": "ka\u1e37i\u1e5fu",
+          "confidence": "HIGH",
+          "n_seals": 23,
+          "mean_length": 4.65,
+          "max_length": 8,
+          "min_length": 2
+        },
+        {
+          "sign": "M010",
+          "reading": "pa\u1e6d",
+          "confidence": "MEDIUM",
+          "n_seals": 17,
+          "mean_length": 4.65,
+          "max_length": 7,
+          "min_length": 2
+        },
+        {
+          "sign": "M069",
+          "reading": "n\u0113r",
+          "confidence": "MEDIUM",
+          "n_seals": 16,
+          "mean_length": 4.62,
+          "max_length": 8,
+          "min_length": 2
+        },
+        {
+          "sign": "M293",
+          "reading": "ta",
+          "confidence": "HIGH",
+          "n_seals": 16,
+          "mean_length": 4.62,
+          "max_length": 8,
+          "min_length": 2
+        },
+        {
+          "sign": "M027",
+          "reading": "m\u0101\u1e5f",
+          "confidence": "HIGH",
+          "n_seals": 17,
+          "mean_length": 4.59,
+          "max_length": 8,
+          "min_length": 2
+        },
+        {
+          "sign": "M074",
+          "reading": "ker",
+          "confidence": "MEDIUM",
+          "n_seals": 12,
+          "mean_length": 4.58,
+          "max_length": 7,
+          "min_length": 2
+        },
+        {
+          "sign": "M007",
+          "reading": "aaL",
+          "confidence": "MEDIUM",
+          "n_seals": 11,
+          "mean_length": 4.55,
+          "max_length": 8,
+          "min_length": 2
+        },
+        {
+          "sign": "M068",
+          "reading": "ma\u1e5fi",
+          "confidence": "MEDIUM",
+          "n_seals": 13,
+          "mean_length": 4.54,
+          "max_length": 7,
+          "min_length": 3
+        },
+        {
+          "sign": "M233",
+          "reading": "\u016br",
+          "confidence": "HIGH",
+          "n_seals": 19,
+          "mean_length": 4.53,
+          "max_length": 8,
+          "min_length": 2
+        },
+        {
+          "sign": "M031",
+          "reading": "kai",
+          "confidence": "HIGH",
+          "n_seals": 16,
+          "mean_length": 4.5,
+          "max_length": 7,
+          "min_length": 2
+        },
+        {
+          "sign": "M005",
+          "reading": "k\u014d\u1e49",
+          "confidence": "MEDIUM",
+          "n_seals": 15,
+          "mean_length": 4.47,
+          "max_length": 7,
+          "min_length": 2
+        },
+        {
+          "sign": "M049",
+          "reading": "pu",
+          "confidence": "HIGH",
+          "n_seals": 13,
+          "mean_length": 4.46,
+          "max_length": 6,
+          "min_length": 2
+        },
+        {
+          "sign": "M060",
+          "reading": "k\u0101\u1e47\u1e6d\u0101mirukam",
+          "confidence": "HIGH",
+          "n_seals": 20,
+          "mean_length": 4.45,
+          "max_length": 8,
+          "min_length": 2
+        },
+        {
+          "sign": "M001",
+          "reading": "t\u014d\u1e37",
+          "confidence": "MEDIUM",
+          "n_seals": 14,
+          "mean_length": 4.43,
+          "max_length": 8,
+          "min_length": 2
+        },
+        {
+          "sign": "M082",
+          "reading": "pa",
+          "confidence": "MEDIUM",
+          "n_seals": 7,
+          "mean_length": 4.43,
+          "max_length": 8,
+          "min_length": 2
+        },
+        {
+          "sign": "M051",
+          "reading": "p\u016b/pu\u1e37",
+          "confidence": "HIGH",
+          "n_seals": 33,
+          "mean_length": 4.42,
+          "max_length": 7,
+          "min_length": 2
+        },
+        {
+          "sign": "M045",
+          "reading": "y\u0101nai",
+          "confidence": "HIGH",
+          "n_seals": 24,
+          "mean_length": 4.42,
+          "max_length": 8,
+          "min_length": 2
+        },
+        {
+          "sign": "M073",
+          "reading": "k\u014d\u1e49",
+          "confidence": "HIGH",
+          "n_seals": 25,
+          "mean_length": 4.36,
+          "max_length": 7,
+          "min_length": 2
+        },
+        {
+          "sign": "M052",
+          "reading": "ta",
+          "confidence": "HIGH",
+          "n_seals": 22,
+          "mean_length": 4.36,
+          "max_length": 7,
+          "min_length": 2
+        },
+        {
+          "sign": "M067",
+          "reading": "k\u014d\u1e6d\u1e6d\u0101\u1e49",
+          "confidence": "MEDIUM",
+          "n_seals": 15,
+          "mean_length": 4.33,
+          "max_length": 7,
+          "min_length": 2
+        }
+      ],
+      "interpretation": "Mean inscription length varies by INITIAL sign from 3.5 to 5.2 signs. High-status titles (if any) should head longer sequences \u2014 more name components and modifiers. Simple trade markers should head shorter ones."
+    },
+    "D_stability_consistency": {
+      "n_analyzed": 97,
+      "n_low_entropy": 0,
+      "n_stable_and_low_entropy": 0,
+      "initial_entropy_ranking": [
+        {
+          "sign": "M082",
+          "reading": "pa",
+          "confidence": "MEDIUM",
+          "n_initial_uses": 7,
+          "right_neighbor_entropy": 1.842,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M342",
+          "top_right_count": 3
+        },
+        {
+          "sign": "M033",
+          "reading": "puli",
+          "confidence": "HIGH",
+          "n_initial_uses": 12,
+          "right_neighbor_entropy": 2.585,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M267",
+          "top_right_count": 4
+        },
+        {
+          "sign": "M342",
+          "reading": "ay/\u0101",
+          "confidence": "HIGH",
+          "n_initial_uses": 12,
+          "right_neighbor_entropy": 2.617,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M176",
+          "top_right_count": 5
+        },
+        {
+          "sign": "M068",
+          "reading": "ma\u1e5fi",
+          "confidence": "MEDIUM",
+          "n_initial_uses": 13,
+          "right_neighbor_entropy": 2.719,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M342",
+          "top_right_count": 4
+        },
+        {
+          "sign": "M125",
+          "reading": "vil",
+          "confidence": "HIGH",
+          "n_initial_uses": 10,
+          "right_neighbor_entropy": 2.722,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M267",
+          "top_right_count": 2
+        },
+        {
+          "sign": "M054",
+          "reading": "mi",
+          "confidence": "MEDIUM",
+          "n_initial_uses": 12,
+          "right_neighbor_entropy": 2.752,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M089",
+          "top_right_count": 4
+        },
+        {
+          "sign": "M076",
+          "reading": "naN",
+          "confidence": "HIGH",
+          "n_initial_uses": 7,
+          "right_neighbor_entropy": 2.807,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M293",
+          "top_right_count": 1
+        },
+        {
+          "sign": "M075",
+          "reading": "m\u0101\u1e5f",
+          "confidence": "MEDIUM",
+          "n_initial_uses": 14,
+          "right_neighbor_entropy": 2.807,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M267",
+          "top_right_count": 4
+        },
+        {
+          "sign": "M211",
+          "reading": "kol",
+          "confidence": "HIGH",
+          "n_initial_uses": 12,
+          "right_neighbor_entropy": 2.855,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M342",
+          "top_right_count": 3
+        },
+        {
+          "sign": "M071",
+          "reading": "nal",
+          "confidence": "HIGH",
+          "n_initial_uses": 16,
+          "right_neighbor_entropy": 2.875,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M267",
+          "top_right_count": 4
+        },
+        {
+          "sign": "M293",
+          "reading": "ta",
+          "confidence": "HIGH",
+          "n_initial_uses": 16,
+          "right_neighbor_entropy": 2.899,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M267",
+          "top_right_count": 5
+        },
+        {
+          "sign": "M176",
+          "reading": "an/a\u1e47",
+          "confidence": "HIGH",
+          "n_initial_uses": 13,
+          "right_neighbor_entropy": 2.931,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M099",
+          "top_right_count": 4
+        },
+        {
+          "sign": "M032",
+          "reading": "koL",
+          "confidence": "HIGH",
+          "n_initial_uses": 9,
+          "right_neighbor_entropy": 2.948,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M391",
+          "top_right_count": 2
+        },
+        {
+          "sign": "M087",
+          "reading": "veL",
+          "confidence": "HIGH",
+          "n_initial_uses": 14,
+          "right_neighbor_entropy": 2.978,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M342",
+          "top_right_count": 5
+        },
+        {
+          "sign": "M074",
+          "reading": "ker",
+          "confidence": "MEDIUM",
+          "n_initial_uses": 12,
+          "right_neighbor_entropy": 3.022,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M267",
+          "top_right_count": 3
+        },
+        {
+          "sign": "M055",
+          "reading": "miN3",
+          "confidence": "MEDIUM",
+          "n_initial_uses": 12,
+          "right_neighbor_entropy": 3.022,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M099",
+          "top_right_count": 3
+        },
+        {
+          "sign": "M328",
+          "reading": "\u0101/\u0101l",
+          "confidence": "HIGH",
+          "n_initial_uses": 15,
+          "right_neighbor_entropy": 3.057,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M267",
+          "top_right_count": 4
+        },
+        {
+          "sign": "M162",
+          "reading": "il/i\u1e37",
+          "confidence": "HIGH",
+          "n_initial_uses": 14,
+          "right_neighbor_entropy": 3.093,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M267",
+          "top_right_count": 4
+        },
+        {
+          "sign": "M064",
+          "reading": "va",
+          "confidence": "HIGH",
+          "n_initial_uses": 11,
+          "right_neighbor_entropy": 3.096,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M328",
+          "top_right_count": 2
+        },
+        {
+          "sign": "M043",
+          "reading": "mu",
+          "confidence": "HIGH",
+          "n_initial_uses": 11,
+          "right_neighbor_entropy": 3.096,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M336",
+          "top_right_count": 2
+        },
+        {
+          "sign": "M046",
+          "reading": "kaL",
+          "confidence": "HIGH",
+          "n_initial_uses": 11,
+          "right_neighbor_entropy": 3.096,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M293",
+          "top_right_count": 2
+        },
+        {
+          "sign": "M031",
+          "reading": "kai",
+          "confidence": "HIGH",
+          "n_initial_uses": 16,
+          "right_neighbor_entropy": 3.149,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M342",
+          "top_right_count": 5
+        },
+        {
+          "sign": "M081",
+          "reading": "ve",
+          "confidence": "HIGH",
+          "n_initial_uses": 13,
+          "right_neighbor_entropy": 3.181,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M342",
+          "top_right_count": 3
+        },
+        {
+          "sign": "M099",
+          "reading": "kol/ko\u1e37",
+          "confidence": "HIGH",
+          "n_initial_uses": 24,
+          "right_neighbor_entropy": 3.22,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M342",
+          "top_right_count": 8
+        },
+        {
+          "sign": "M001",
+          "reading": "t\u014d\u1e37",
+          "confidence": "MEDIUM",
+          "n_initial_uses": 14,
+          "right_neighbor_entropy": 3.236,
+          "is_cross_site_stable": true,
+          "top_right_neighbor": "M059",
+          "top_right_count": 2
+        },
+        {
+          "sign": "M072",
+          "reading": "m\u0101",
+          "confidence": "MEDIUM",
+          "n_initial_uses": 12,
+          "right_neighbor_entropy": 3.252,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M305",
+          "top_right_count": 2
+        },
+        {
+          "sign": "M028",
+          "reading": "c\u014d\u1e3b",
+          "confidence": "MEDIUM",
+          "n_initial_uses": 11,
+          "right_neighbor_entropy": 3.278,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M211",
+          "top_right_count": 2
+        },
+        {
+          "sign": "M007",
+          "reading": "aaL",
+          "confidence": "MEDIUM",
+          "n_initial_uses": 11,
+          "right_neighbor_entropy": 3.278,
+          "is_cross_site_stable": true,
+          "top_right_neighbor": "M328",
+          "top_right_count": 2
+        },
+        {
+          "sign": "M089",
+          "reading": "tu/t\u016b",
+          "confidence": "HIGH",
+          "n_initial_uses": 17,
+          "right_neighbor_entropy": 3.293,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M293",
+          "top_right_count": 3
+        },
+        {
+          "sign": "M015",
+          "reading": "m\u0101",
+          "confidence": "MEDIUM",
+          "n_initial_uses": 15,
+          "right_neighbor_entropy": 3.323,
+          "is_cross_site_stable": false,
+          "top_right_neighbor": "M176",
+          "top_right_count": 3
+        }
+      ],
+      "interpretation": "0 H+M INITIAL signs have low right-neighbor entropy (<1.5 bits) \u2014 rigid formula structure. 0 of these are also cross-site stable. A sign that is both geographically stable AND follows a consistent formula structure is the strongest candidate for a pan-Harappan standardised professional title."
+    }
+  },
+  "key_findings": [
+    "A. 63 enriched INITIAL \u00d7 iconography pairs (\u03c7\u00b2>1.0): titles co-encode with motifs",
+    "B. Most frequent H+M bigram: M342\u00b7M176 = ay/\u0101+an/a\u1e47 (122 seals, 7.3%)",
+    "C. Formula length range: 3.5\u20135.2 by INITIAL sign",
+    "D. 0 signs are both cross-site stable AND formula-consistent (strongest title candidates)"
+  ],
+  "_note": "Phase-143: Iconographic cross-tab, formula interpretation, length distribution, stability. Real corpus only."
+}

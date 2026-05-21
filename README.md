@@ -94,6 +94,10 @@ research/indus/
 See [`research/indus/README.md`](research/indus/README.md) for full details,
 corpus access notes, and citation.
 
+**Supplemental datasets** for direct use (fish-sign compound-context, iconographic formula
+enrichment, formula bigram table, polysemy divergence test) are in
+[`research/indus/supplemental/`](research/indus/supplemental/).
+
 ---
 
 ## Repository structure

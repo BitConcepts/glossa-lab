@@ -17,7 +17,7 @@ Three orthogonal validation experiments:
       applying to Indus.
 
   Step 3 — MultiHypothesisRanker
-      Take N CASHypothesisProjector outputs (one per language hypothesis)
+      Take N hypothesis projection outputs (one per language hypothesis)
       and rank by max_violation. The hypothesis with the lowest violation
       is the empirically best fit to the corpus's measured DoFs.
 
@@ -390,7 +390,7 @@ def _cipher_self_test_runner(inputs: dict, params: dict) -> dict:
 
 
 def _multi_hypothesis_ranker(inputs: dict, params: dict) -> dict:
-    """Take up to 6 CASHypothesisProjector outputs (each a result dict
+    """Take up to 6 hypothesis projection outputs (each a result dict
     with success / max_violation / model_source) and rank by max_violation.
 
     Param `labels` names the hypotheses in port order.
@@ -640,7 +640,7 @@ def _phase15_node_defs() -> list[Any]:
         AtomicNodeDef(
             "MultiHypothesisRanker", "Multi-Hypothesis Ranker (Phase-15 step 3)",
             "Phase-15 / Hypothesis comparison",
-            "Take up to 6 CASHypothesisProjector outputs (each a different "
+            "Take up to 6 hypothesis projection outputs (each a different "
             "language hypothesis) and rank by max_violation. Lowest violation "
             "wins. Returns winner, runner-up, and confidence text.",
             inputs=[

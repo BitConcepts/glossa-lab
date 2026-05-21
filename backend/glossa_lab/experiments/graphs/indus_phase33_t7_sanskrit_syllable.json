@@ -10,9 +10,15 @@
       "data": {
         "atomicId": "M77InscriptionLoader",
         "label": "Load M77 Holdat corpus (1669 inscriptions)",
-        "params": { "use_raw": false, "label": "indus_m77" }
+        "params": {
+          "use_raw": false,
+          "label": "indus_m77"
+        }
       },
-      "position": { "x": 60, "y": 120 }
+      "position": {
+        "x": 60,
+        "y": 120
+      }
     },
     {
       "id": "lm_sk",
@@ -22,7 +28,10 @@
         "label": "Sanskrit Syllable LM (424 syllables, 651 bigrams, same granularity)",
         "params": {}
       },
-      "position": { "x": 60, "y": 320 }
+      "position": {
+        "x": 60,
+        "y": 320
+      }
     },
     {
       "id": "sa",
@@ -38,7 +47,10 @@
           "ocp_weight": 0.0
         }
       },
-      "position": { "x": 480, "y": 220 }
+      "position": {
+        "x": 480,
+        "y": 220
+      }
     },
     {
       "id": "cons",
@@ -48,7 +60,10 @@
         "label": "Per-sign consistency (Sanskrit syllable)",
         "params": {}
       },
-      "position": { "x": 840, "y": 220 }
+      "position": {
+        "x": 840,
+        "y": 220
+      }
     },
     {
       "id": "merge",
@@ -58,7 +73,10 @@
         "label": "Collect Phase-33 T7 results",
         "params": {}
       },
-      "position": { "x": 1100, "y": 220 }
+      "position": {
+        "x": 1100,
+        "y": 220
+      }
     },
     {
       "id": "out",
@@ -66,21 +84,87 @@
       "data": {
         "atomicId": "JSONExport",
         "label": "Save Phase-33 T7 Sanskrit syllable results",
-        "params": { "filename": "phase33_t7_sanskrit_syllable.json" }
+        "params": {
+          "filename": "phase33_t7_sanskrit_syllable.json"
+        }
       },
-      "position": { "x": 1400, "y": 220 }
+      "position": {
+        "x": 1400,
+        "y": 220
+      }
     }
   ],
   "edges": [
-    { "id": "e_m77_sa",      "source": "m77",   "target": "sa",    "sourcePort": "sequences",        "targetPort": "sequences" },
-    { "id": "e_lm_sa",       "source": "lm_sk", "target": "sa",    "sourcePort": "lm",               "targetPort": "lm" },
-    { "id": "e_sa_cons",     "source": "sa",    "target": "cons",  "sourcePort": "all_mappings",     "targetPort": "all_mappings" },
-    { "id": "e_sa_merge_pm", "source": "sa",    "target": "merge", "sourcePort": "proposed_mapping", "targetPort": "a" },
-    { "id": "e_sa_merge_mc", "source": "sa",    "target": "merge", "sourcePort": "mean_consistency", "targetPort": "b" },
-    { "id": "e_sa_merge_hci","source": "sa",    "target": "merge", "sourcePort": "hci_count",        "targetPort": "c" },
-    { "id": "e_m77_merge",   "source": "m77",   "target": "merge", "sourcePort": "n_inscriptions",   "targetPort": "d" },
-    { "id": "e_lm_merge",    "source": "lm_sk", "target": "merge", "sourcePort": "n_bigrams",        "targetPort": "e" },
-    { "id": "e_cons_merge",  "source": "cons",  "target": "merge", "sourcePort": "mean_consistency", "targetPort": "f" },
-    { "id": "e_merge_out",   "source": "merge", "target": "out",   "sourcePort": "json",             "targetPort": "data" }
-  ]
+    {
+      "id": "e_m77_sa",
+      "source": "m77",
+      "target": "sa",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e_lm_sa",
+      "source": "lm_sk",
+      "target": "sa",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e_sa_cons",
+      "source": "sa",
+      "target": "cons",
+      "sourcePort": "all_mappings",
+      "targetPort": "all_mappings"
+    },
+    {
+      "id": "e_sa_merge_pm",
+      "source": "sa",
+      "target": "merge",
+      "sourcePort": "proposed_mapping",
+      "targetPort": "a"
+    },
+    {
+      "id": "e_sa_merge_mc",
+      "source": "sa",
+      "target": "merge",
+      "sourcePort": "mean_consistency",
+      "targetPort": "b"
+    },
+    {
+      "id": "e_sa_merge_hci",
+      "source": "sa",
+      "target": "merge",
+      "sourcePort": "hci_count",
+      "targetPort": "c"
+    },
+    {
+      "id": "e_m77_merge",
+      "source": "m77",
+      "target": "merge",
+      "sourcePort": "n_inscriptions",
+      "targetPort": "d"
+    },
+    {
+      "id": "e_lm_merge",
+      "source": "lm_sk",
+      "target": "merge",
+      "sourcePort": "n_bigrams",
+      "targetPort": "e"
+    },
+    {
+      "id": "e_cons_merge",
+      "source": "cons",
+      "target": "merge",
+      "sourcePort": "mean_consistency",
+      "targetPort": "f"
+    },
+    {
+      "id": "e_merge_out",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

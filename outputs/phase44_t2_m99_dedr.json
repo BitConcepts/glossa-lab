@@ -1,0 +1,421 @@
+{
+  "_citation": {
+    "primary_sources": [
+      "A.1",
+      "A.13",
+      "E.1"
+    ],
+    "derivation": "M99 positional analysis + DEDR pattern search"
+  },
+  "m99_profile": {
+    "sign": "M099",
+    "n_occurrences": 389,
+    "avg_relative_position": 0.598,
+    "terminal_dominant": false,
+    "initial_dominant": false,
+    "sites": {
+      "Harappa": 116,
+      "Mohenjo-daro": 132,
+      "Lothal": 35,
+      "Dholavira": 25,
+      "Surkotada": 14,
+      "Banawali": 18,
+      "Rakhigarhi": 5,
+      "Kalibangan": 31,
+      "Chanhu-daro": 13
+    },
+    "pre_top_15": [
+      [
+        "M267",
+        84
+      ],
+      [
+        "M176",
+        74
+      ],
+      [
+        "M162",
+        26
+      ],
+      [
+        "M342",
+        18
+      ],
+      [
+        "M211",
+        11
+      ],
+      [
+        "M328",
+        8
+      ],
+      [
+        "M367",
+        6
+      ],
+      [
+        "M336",
+        6
+      ],
+      [
+        "M293",
+        6
+      ],
+      [
+        "M099",
+        6
+      ],
+      [
+        "M391",
+        5
+      ],
+      [
+        "M048",
+        5
+      ],
+      [
+        "M089",
+        4
+      ],
+      [
+        "M059",
+        4
+      ],
+      [
+        "M304",
+        3
+      ]
+    ],
+    "post_top_10": [
+      [
+        "M342",
+        81
+      ],
+      [
+        "M162",
+        15
+      ],
+      [
+        "M293",
+        14
+      ],
+      [
+        "M233",
+        13
+      ],
+      [
+        "M391",
+        13
+      ],
+      [
+        "M125",
+        12
+      ],
+      [
+        "M059",
+        12
+      ],
+      [
+        "M211",
+        12
+      ],
+      [
+        "M065",
+        11
+      ],
+      [
+        "M051",
+        10
+      ]
+    ],
+    "formula_m267_m99_count": 84,
+    "formula_pct_of_occurrences": 0.216
+  },
+  "formula_analysis": {
+    "formula": "M267 → M099",
+    "n_occurrences": 84,
+    "at_inscription_start": 3,
+    "at_inscription_end": 8,
+    "with_pre_extension": 81,
+    "pre_m267_signs": [
+      [
+        "M059",
+        7
+      ],
+      [
+        "M293",
+        7
+      ],
+      [
+        "M328",
+        7
+      ],
+      [
+        "M048",
+        5
+      ],
+      [
+        "M391",
+        4
+      ],
+      [
+        "M004",
+        3
+      ],
+      [
+        "M099",
+        3
+      ],
+      [
+        "M342",
+        3
+      ],
+      [
+        "M065",
+        2
+      ],
+      [
+        "M012",
+        2
+      ]
+    ],
+    "post_m99_signs": [
+      [
+        "M342",
+        15
+      ],
+      [
+        "M125",
+        5
+      ],
+      [
+        "M233",
+        5
+      ],
+      [
+        "M065",
+        4
+      ],
+      [
+        "M012",
+        4
+      ],
+      [
+        "M267",
+        3
+      ],
+      [
+        "M211",
+        3
+      ],
+      [
+        "M162",
+        3
+      ],
+      [
+        "M305",
+        2
+      ],
+      [
+        "M176",
+        2
+      ]
+    ],
+    "dominance_pct": 0.036,
+    "formula_length_2_only": 0,
+    "site_distribution": {
+      "Dholavira": 6,
+      "Lothal": 6,
+      "Mohenjo-daro": 32,
+      "Surkotada": 6,
+      "Banawali": 3,
+      "Harappa": 18,
+      "Kalibangan": 6,
+      "Chanhu-daro": 5,
+      "Rakhigarhi": 2
+    },
+    "sample": [
+      {
+        "seal": "DK-0002",
+        "site": "Dholavira",
+        "pre_m267": "M059",
+        "post_m99": "M261",
+        "full_inscription": [
+          "M059",
+          "M267",
+          "M099",
+          "M261",
+          "M267"
+        ],
+        "formula_position": 1,
+        "formula_at_start": false,
+        "formula_at_end": false
+      },
+      {
+        "seal": "L-0002",
+        "site": "Lothal",
+        "pre_m267": "M061",
+        "post_m99": "M125",
+        "full_inscription": [
+          "M061",
+          "M267",
+          "M099",
+          "M125"
+        ],
+        "formula_position": 1,
+        "formula_at_start": false,
+        "formula_at_end": false
+      },
+      {
+        "seal": "M-0012",
+        "site": "Mohenjo-daro",
+        "pre_m267": null,
+        "post_m99": "M406",
+        "full_inscription": [
+          "M267",
+          "M099",
+          "M406",
+          "M293"
+        ],
+        "formula_position": 0,
+        "formula_at_start": true,
+        "formula_at_end": false
+      },
+      {
+        "seal": "SK-0001",
+        "site": "Surkotada",
+        "pre_m267": "M293",
+        "post_m99": "M065",
+        "full_inscription": [
+          "M026",
+          "M293",
+          "M267",
+          "M099",
+          "M065"
+        ],
+        "formula_position": 2,
+        "formula_at_start": false,
+        "formula_at_end": false
+      },
+      {
+        "seal": "BN-0003",
+        "site": "Banawali",
+        "pre_m267": "M059",
+        "post_m99": "M342",
+        "full_inscription": [
+          "M059",
+          "M267",
+          "M099",
+          "M342",
+          "M387",
+          "M125"
+        ],
+        "formula_position": 1,
+        "formula_at_start": false,
+        "formula_at_end": false
+      },
+      {
+        "seal": "L-0009",
+        "site": "Lothal",
+        "pre_m267": "M065",
+        "post_m99": "M305",
+        "full_inscription": [
+          "M065",
+          "M267",
+          "M099",
+          "M305"
+        ],
+        "formula_position": 1,
+        "formula_at_start": false,
+        "formula_at_end": false
+      },
+      {
+        "seal": "DK-0009",
+        "site": "Dholavira",
+        "pre_m267": "M012",
+        "post_m99": "M176",
+        "full_inscription": [
+          "M065",
+          "M012",
+          "M267",
+          "M099",
+          "M176",
+          "M367"
+        ],
+        "formula_position": 2,
+        "formula_at_start": false,
+        "formula_at_end": false
+      },
+      {
+        "seal": "DK-0010",
+        "site": "Dholavira",
+        "pre_m267": "M079",
+        "post_m99": "M391",
+        "full_inscription": [
+          "M079",
+          "M267",
+          "M099",
+          "M391",
+          "M211"
+        ],
+        "formula_position": 1,
+        "formula_at_start": false,
+        "formula_at_end": false
+      }
+    ]
+  },
+  "dedr_results": {
+    "status": "done",
+    "file_size_kb": 3738,
+    "results": {
+      "koḷ": {
+        "n_hits": 0,
+        "sample_contexts": []
+      },
+      "kol": {
+        "n_hits": 50,
+        "sample_contexts": [
+          "075-2263) 101 Appendix (1-61) INDEXES Dravidian Dravidian (continued) Tamil 516 Kolami Malayalam 550 Naikri Iruja 574 Naiki of Chanda Palu Kurumba 574 Payji Alu Ku",
+          "the correspondences have not yet been found)  Ta. Ma. Ko To,* Ka, Kod. Tu. Te. Kol. Nk, (Ch.) Pa Ga. (Ol) Go. Konda Pe, Mand. Kui Kuwi Kur. Malt. Br. Hal a a a 0,",
+          "nyam, Indian Linguistics 40.243~5 (1979). many instances of loss of initial n-; Kol. and (even more) Nk. (Ch.) seem to carry this tendency furthest (e.g. * Kor ‘Te",
+          "ple is Te. cerugu ‘to winnow’ in contrast with Ma. céruka, To. ko-r-, Ka. kéru, Kol. Nk. (Ch.) ke-d-, Pa. kéd-, (NE) kéd-, Ga. kéy-, Pe. jéc-, Kur. késn@, Malt. ké",
+          "le is found in § 4: Te. cer-ugu contrasting with Ma. cér-, To. ké-r-, Ka. ker-, Kol. Nk. ke-d-, etc.; the suffix -ug- in Te. conditions the short vowel in the prec"
+        ]
+      },
+      "koṭ": {
+        "n_hits": 0,
+        "sample_contexts": []
+      },
+      "koṟ": {
+        "n_hits": 0,
+        "sample_contexts": []
+      },
+      "koṉ": {
+        "n_hits": 0,
+        "sample_contexts": []
+      },
+      "koṅ": {
+        "n_hits": 0,
+        "sample_contexts": []
+      },
+      "kōn": {
+        "n_hits": 0,
+        "sample_contexts": []
+      }
+    }
+  },
+  "interpretation": {
+    "verdict": "SUPPORTED",
+    "findings": [
+      "[NOTE] Most common pre-M267 sign: M059 (reading: ēḷ/eḷ) — may be the specific title type",
+      "koḷ = Dravidian reflexive auxiliary verb (Old Tamil: 'do to oneself'). As a fixed terminal element in a title formula it could encode: (a) a title meaning 'taker/holder' (koḷ = 'take/hold'),  (b) a reflexive nominal suffix, or  (c) the word for 'fort/dwelling' (kol, cf. DEDR 2173 kōl = 'city/hold')"
+    ],
+    "verdicts": [],
+    "current_reading": "kol/koḷ (confirmed reflexive/auxiliary; title formula context)",
+    "dedr_candidates": [
+      "DEDR 2173: kōl = 'rod, staff, city, hold' (all Dravidian)",
+      "DEDR 2174: koḷ = 'take, receive, have' (Tamil reflexive auxiliary)",
+      "DEDR 2209: koṉ/koṟ = 'kill, cut' (less likely for title formula)"
+    ]
+  }
+}

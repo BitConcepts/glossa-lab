@@ -3,16 +3,120 @@
   "name": "Fuls NW Semitic Anchor Simulation",
   "description": "Anchor injection simulation on the NW Semitic (Ugaritic test1) corpus with RTL correction and Hebrew LM. Uses ConstraintSweep to show how mean consistency evolves with 0-10 anchor injections. Replicates the Fuls study anchor-amplification question in the graph framework.",
   "nodes": [
-    {"id": "corpus", "type": "expNode", "data": {"atomicId": "BuiltinCorpus", "label": "NW Semitic", "params": {"corpus": "nw_semitic"}}, "position": {"x": 60, "y": 200}},
-    {"id": "rtl", "type": "expNode", "data": {"atomicId": "DirectionNormalizer", "label": "RTL Correction", "params": {"direction": "rtl"}}, "position": {"x": 300, "y": 200}},
-    {"id": "lm", "type": "expNode", "data": {"atomicId": "BuiltinLM", "label": "Hebrew LM", "params": {"language": "hebrew"}}, "position": {"x": 60, "y": 380}},
-    {"id": "sweep", "type": "expNode", "data": {"atomicId": "ConstraintSweep", "label": "Anchor Sweep", "params": {"anchor_counts": [0, 1, 3, 6, 10], "n_seeds": 5, "max_iterations": 5000, "restarts": 3}}, "position": {"x": 540, "y": 280}},
-    {"id": "out", "type": "expNode", "data": {"atomicId": "JSONExport", "label": "Save Curve", "params": {"filename": "fuls_anchor_simulation.json"}}, "position": {"x": 800, "y": 280}}
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "NW Semitic",
+        "params": {
+          "corpus": "nw_semitic"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 200
+      }
+    },
+    {
+      "id": "rtl",
+      "type": "expNode",
+      "data": {
+        "atomicId": "DirectionNormalizer",
+        "label": "RTL Correction",
+        "params": {
+          "direction": "rtl"
+        }
+      },
+      "position": {
+        "x": 300,
+        "y": 200
+      }
+    },
+    {
+      "id": "lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Hebrew LM",
+        "params": {
+          "language": "hebrew"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 380
+      }
+    },
+    {
+      "id": "sweep",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConstraintSweep",
+        "label": "Anchor Sweep",
+        "params": {
+          "anchor_counts": [
+            0,
+            1,
+            3,
+            6,
+            10
+          ],
+          "n_seeds": 5,
+          "max_iterations": 5000,
+          "restarts": 3
+        }
+      },
+      "position": {
+        "x": 540,
+        "y": 280
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Curve",
+        "params": {
+          "filename": "fuls_anchor_simulation.json"
+        }
+      },
+      "position": {
+        "x": 800,
+        "y": 280
+      }
+    }
   ],
   "edges": [
-    {"id": "e1", "source": "corpus", "target": "rtl", "sourcePort": "sequences", "targetPort": "sequences"},
-    {"id": "e2", "source": "rtl", "target": "sweep", "sourcePort": "sequences", "targetPort": "sequences"},
-    {"id": "e3", "source": "lm", "target": "sweep", "sourcePort": "lm", "targetPort": "lm"},
-    {"id": "e4", "source": "sweep", "target": "out", "sourcePort": "consistency_curve", "targetPort": "data"}
-  ]
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "rtl",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "rtl",
+      "target": "sweep",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "lm",
+      "target": "sweep",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e4",
+      "source": "sweep",
+      "target": "out",
+      "sourcePort": "consistency_curve",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

@@ -363,7 +363,7 @@ for stage, desc in [
      "randomly swapped; improvements are kept, others reverted. Multiple restarts escape "
      "local optima (5 restarts, 8,000 iterations each)."),
     ("Stage 3 — Validate",
-     "Kandles phonetic fingerprint comparison (Merkur patent [REDACTED-PATENT-PUB]). "
+     "Kandles phonetic fingerprint comparison (phonetic distribution comparison). "
      "Cosine similarity of the 8-dimensional phonetic colour-distribution vector between "
      "deciphered text and target corpus. Confirms the mapping is phonetically coherent."),
 ]:
@@ -375,7 +375,7 @@ refs = [
     "[1] Ventris, M. & Chadwick, J. (1973). Documents in Mycenaean Greek (2nd ed.). Cambridge University Press.",
     "[2] Aurora, F. (2015). DĀMOS (Database of Mycenaean at Oslo). Procedia Social and Behavioral Sciences, 198, 21–31.",
     "[3] Rao et al. (2009). Science, 324, 1165.",
-    "[4] Merkur, M. (2024). [REDACTED-PATENT-PUB].",
+    "[4] Merkur, M. (2024). .",
     "[5] DĀMOS corpus: https://damos.hf.uio.no/ (CC BY-NC-SA 4.0, University of Oslo).",
 ]
 for r in refs:

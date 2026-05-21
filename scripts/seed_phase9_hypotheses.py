@@ -216,7 +216,7 @@ From CGSA Phases 1–8:
 2. Does the 'ko-yil' (temple) reading of M-5A hold cross-validation?
 3. Which MEDIAL cluster signs are phonemic vs logographic?
 4. What is the reading of the Dholavira signboard inscription?
-5. Can the CPSC constraint engine distinguish phoneme-carrier signs from logograms?
+5. Can the constraint analysis engine distinguish phoneme-carrier signs from logograms?
 """
 
 

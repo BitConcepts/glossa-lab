@@ -28,7 +28,6 @@ import asyncio
 import json
 import subprocess
 import sys
-import time
 from pathlib import Path
 from typing import Any, AsyncGenerator
 
@@ -45,7 +44,7 @@ _SYSTEM_PROMPT = """You are Glossa Research Assistant, an expert in:
 - The Glossa Lab experiment platform
 
 CURRENT RESEARCH STATE (key findings):
-- Dravidian phonotactics: SA consistency 0.8166 vs Sanskrit 0.5602 (+25.64pp) on real CISI bigrams [VERIFIED]
+- Dravidian phonotactics: SA 0.8166 vs Sanskrit 0.5602 (+25.64pp) on CISI bigrams [VERIFIED]
 - Optimal anchor set: P385=n, P324=k, P122=a, P086=m, P060=i, P332=o (peak HCI 88.4%)
 - CV pair structure: P324(/k/) + P332(/o/) = 'ko' (king/chief, DEDR 2147)
 - M-148A = royal title formula: 'ko-n' = 'of the king'

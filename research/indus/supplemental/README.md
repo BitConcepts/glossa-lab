@@ -21,6 +21,12 @@ Per-seal compound-context listing for M047 and M001 (the primary fish-family sig
 - 0/27 isolated; 0/113 isolated across all fish-family signs in the 9-site corpus
 - Referenced in preprint §3.5, §3.19 and in correspondence with A. Roif (2026)
 
+**Note on M001 rows:** The 14 M001 sequences are representative reconstructions
+from bigram probability data (the Holdat corpus was not directly queried for
+per-seal M001 detail). The aggregate stats (14 occurrences, 100% INITIAL,
+site distribution) are from the corpus. Per-seal sequences will be confirmed
+when ICIT corpus access is obtained.
+
 **Key finding:** Both M047 and M001 are exclusively compound-initial, consistent with a
 professional-title reading (occupational marker) rather than a commodity sign.
 The formula `M047 · M267 · [X]` reads structurally as `[fish-title] of [name]`.

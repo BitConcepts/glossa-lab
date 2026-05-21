@@ -24,12 +24,12 @@ ATOMIC_NODES registry:
 """
 from __future__ import annotations
 
-import pytest
 from glossa_lab.experiment_graph import (
-    ATOMIC_NODES, AtomicNodeDef,
-    _build_proper_graph_specs, _topo_sort, execute_graph,
+    ATOMIC_NODES,
+    _build_proper_graph_specs,
+    _topo_sort,
+    execute_graph,
 )
-
 
 # ── Graph spec validation ─────────────────────────────────────────────────────
 
@@ -252,7 +252,8 @@ def test_report_generator_no_template_id():
 
 def test_catalog_returns_only_graph_experiments():
     """TEST-GE-017: H16 catalog reform — list_experiment_catalog returns only graph experiments."""
-    import sys, os
+    import os
+    import sys
     sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
     from glossa_lab.catalog import list_experiment_catalog
     exps = list_experiment_catalog()

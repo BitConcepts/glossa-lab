@@ -16,7 +16,9 @@ Output: reports/phase51_parpola_crosswalk.json
         updates backend/reports/INDUS_FINAL_ANCHORS.json
 """
 from __future__ import annotations
-import json, re
+
+import json
+import re
 from pathlib import Path
 
 REPO     = Path(__file__).parents[2]

@@ -13,7 +13,9 @@ Extraction targets:
 CPU only. Output: reports/phase102_pdf_extraction.json
 """
 from __future__ import annotations
-import json, re
+
+import json
+import re
 from pathlib import Path
 
 REPO    = Path(__file__).parents[2]
@@ -159,12 +161,12 @@ def main():
     print(f"  Tables found:                  {len(all_tables)}")
 
     if new_candidates:
-        print(f"\n  Top new candidates:")
+        print("\n  Top new candidates:")
         for c in new_candidates[:10]:
             print(f"    {c['m_sign']:6s} -> '{c['reading']}' | {c.get('context','')[:60]}")
 
     if all_tables:
-        print(f"\n  Sample table (first found):")
+        print("\n  Sample table (first found):")
         t = all_tables[0]
         print(f"    Page {t['page']}, {len(t['rows'])} rows")
         for row in t["rows"][:5]:
@@ -186,7 +188,7 @@ def main():
     for ctx in m293_contexts[:3]:
         print(f"    [{ctx['pdf']}] {ctx['context'][:100]}")
 
-    print(f"\n=== Phase-102 Results ===")
+    print("\n=== Phase-102 Results ===")
     print(f"  PDFs processed:     {len(all_results)}")
     print(f"  Sign readings:      {len(all_sign_readings)}")
     print(f"  New candidates:     {len(new_candidates)}")

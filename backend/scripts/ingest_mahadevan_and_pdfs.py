@@ -11,9 +11,13 @@ Output locations:
   - Acquired PDFs:     corpora/downloads/external_repos/acquired_pdfs/<name>.pdf
   - Extraction report: corpora/downloads/external_repos/acquired_pdfs/extraction_report.json
 """
-import sys, json, re, time, shutil
+import json
+import re
+import shutil
+import time
+import urllib.parse
+import urllib.request
 from pathlib import Path
-import urllib.request, urllib.parse
 
 REPO = Path(__file__).resolve().parents[2]
 MAHADEVAN_DIR = REPO / "corpora/downloads/external_repos/mahadevan_papers"
@@ -121,7 +125,7 @@ for slug, paper_id in all_papers:
         print(f" OK ({kb}KB)")
         results[slug] = f"downloaded_{kb}KB"
     else:
-        print(f" FAIL (id not found)")
+        print(" FAIL (id not found)")
         results[slug] = "not_found"
     time.sleep(0.3)  # polite rate limit
 

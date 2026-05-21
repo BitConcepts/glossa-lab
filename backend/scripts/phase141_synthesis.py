@@ -8,9 +8,12 @@ producing the master pre-publication falsification record.
 Output: backend/reports/phase141_synthesis.json
         glossa-corpus/indus/DECIPHERMENT_MASTER_SCORECARD.md
 """
-import sys, json, os, datetime, glob
-from pathlib import Path
+import datetime
+import json
+import os
+import sys
 from collections import Counter
+from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "backend"))
@@ -78,13 +81,13 @@ def add_evidence(category, test_id, description, verdict, metric, phase,
 # ── STRUCTURAL EVIDENCE ────────────────────────────────────────────────────────
 add_evidence("STRUCTURAL", "S01", "Positional structure non-random (permutation null)",
     p134_verdicts.get("F1_permutation_null", "STRONGLY_CONFIRMED"),
-    f"R²=0.992 real vs 0.438 shuffled (z=10.3, p≈0)",
+    "R²=0.992 real vs 0.438 shuffled (z=10.3, p≈0)",
     "Phase-134 F1", "CERTAIN",
     "2000 permutations; p-value = 0/2000 (no null R² reached real R²)")
 
 add_evidence("STRUCTURAL", "S02", "Positional model generalises to unseen seals (held-out)",
     p134_verdicts.get("F7_blind_held_out", "STRONGLY_CONFIRMED"),
-    f"97.7% accuracy, r=0.999/0.994 on blind 20%",
+    "97.7% accuracy, r=0.999/0.994 on blind 20%",
     "Phase-134 F7", "CERTAIN",
     "80/20 site split; model not overfit to training corpus")
 
@@ -97,19 +100,19 @@ add_evidence("STRUCTURAL", "S03", "Grammar model pan-Harappan (cross-site stabil
 add_evidence("STRUCTURAL", "S04", "Bigram conditional entropy confirms sequential structure",
     p136_verdicts.get("P140_structural",
         p136.get("test_results",{}).get("P140_structural",{}).get("sub_verdicts",{}).get("bigram_conditional_entropy","UNKNOWN")),
-    f"H(X2|X1)/H(X1) ratio (NL expect 0.5-0.8; random=1.0)",
+    "H(X2|X1)/H(X1) ratio (NL expect 0.5-0.8; random=1.0)",
     "Phase-140", "STRONGLY_SUPPORTED" if p136 else "PENDING",
     "Conditional entropy << marginal entropy confirms word-order structure")
 
 add_evidence("STRUCTURAL", "S05", "Type-Token Ratio consistent with administrative corpus",
     p136.get("test_results",{}).get("P140_structural",{}).get("ttr_verdict","PENDING"),
-    f"TTR ≈ 0.056 (expected 0.02-0.10 for short-text admin seals)",
+    "TTR ≈ 0.056 (expected 0.02-0.10 for short-text admin seals)",
     "Phase-140", "STRONGLY_SUPPORTED" if p136 else "PENDING",
     "Not a random symbol set; consistent with reused administrative vocabulary")
 
 add_evidence("STRUCTURAL", "S06", "Sign frequency Zipf exponent consistent with control corpora",
     p136_verdicts.get("P137_F10_fix", "PENDING"),
-    f"Indus α=1.28; comparison with Meroitic, Old Hebrew, Dravidian",
+    "Indus α=1.28; comparison with Meroitic, Old Hebrew, Dravidian",
     "Phase-137", "SUPPORTED" if p136 else "PENDING",
     "F10 SYSTEMATIC_GAP may be corpus-type artifact — controls needed")
 
@@ -121,7 +124,7 @@ add_evidence("STRUCTURAL", "S07", "Entropy profile (Rao 2009) consistent with la
 
 add_evidence("STRUCTURAL", "S08", "Frequency-position anti-correlation (Dravidian SOV prediction)",
     p136.get("test_results",{}).get("P140_structural",{}).get("freq_pos_verdict","PENDING"),
-    f"Spearman r between freq rank and terminal rate (expected r < 0)",
+    "Spearman r between freq rank and terminal rate (expected r < 0)",
     "Phase-140", "SUPPORTED" if p136 else "PENDING",
     "High-frequency signs should be terminal (case suffixes) in Dravidian SOV")
 
@@ -279,7 +282,7 @@ open_items = [
      "why": "New bilingual seals, longer inscriptions, or contact-zone artifacts"},
 ]
 
-print(f"\n  Open items for full proof:")
+print("\n  Open items for full proof:")
 for item in open_items:
     print(f"    [{item['priority']:8s}] {item['item']}")
 

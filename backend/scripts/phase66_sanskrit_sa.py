@@ -15,8 +15,14 @@ GPU: BigramScorer CUDA. ~5 min.
 Output: reports/phase66_sanskrit_sa.json
 """
 from __future__ import annotations
-import csv, json, math, random, sys, time
-from collections import Counter, defaultdict
+
+import csv
+import json
+import math
+import random
+import sys
+import time
+from collections import Counter
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -316,7 +322,7 @@ def main():
     else:
         verdict = f"SANSKRIT_PREFERRED: unexpected — ratio={ratio:.2f}×"
 
-    print(f"\n=== Phase-66 Results ===")
+    print("\n=== Phase-66 Results ===")
     print(f"  Dravidian z:        {z_drav:.2f} (Phase-63 reference: {p63_z:.2f})")
     print(f"  Sanskrit z:         {z_skt:.2f}")
     print(f"  Ratio (D/S):        {ratio:.2f}×")

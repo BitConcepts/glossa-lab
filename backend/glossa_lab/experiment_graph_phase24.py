@@ -60,7 +60,8 @@ def _safe_int(x: Any, default: int = 0) -> int:
 def _laursen_table1_loader(inputs: dict, params: dict) -> dict:
     try:
         from glossa_lab.data.mesopotamian_contact import (  # noqa: PLC0415
-            get_laursen_table1, get_laursen_parpola_readings,
+            get_laursen_parpola_readings,
+            get_laursen_table1,
         )
     except Exception as exc:  # noqa: BLE001
         return {"error": f"data module not available: {exc}"}
@@ -78,10 +79,13 @@ def _refined_seal_loader_v2(inputs: dict, params: dict) -> dict:
     """Phase-24 augmented seals + persons-v2 + Laursen Table 1."""
     try:
         from glossa_lab.data.mesopotamian_contact import (  # noqa: PLC0415
-            get_indus_seals_at_mesopotamia, get_seals_with_inscription,
-            get_seal_sign_metadata, get_seal_sign_upgrade_metadata,
-            get_meluhhan_persons_v2, get_laursen_table1,
+            get_indus_seals_at_mesopotamia,
             get_laursen_parpola_readings,
+            get_laursen_table1,
+            get_meluhhan_persons_v2,
+            get_seal_sign_metadata,
+            get_seal_sign_upgrade_metadata,
+            get_seals_with_inscription,
         )
     except Exception as exc:  # noqa: BLE001
         return {"error": f"data module not available: {exc}"}
@@ -474,7 +478,7 @@ def _bilingual_readout_test_v2(inputs: dict, params: dict) -> dict:
     for _ in range(n_perms):
         # Pick which names get assigned (random subset of size
         # min(n_names, n_seals))
-        k = min(n_names, n_seals)
+        min(n_names, n_seals)
         shuffled_seal_idxs = list(range(n_seals))
         rng.shuffle(shuffled_seal_idxs)
         # Randomly select which k names participate

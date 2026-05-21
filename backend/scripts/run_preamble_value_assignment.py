@@ -77,7 +77,7 @@ for sign, profile in sign_profiles.items():
 
     print(f"\nSign {sign}  (T={profile[0]:.3f}  I={profile[1]:.3f}  M={profile[2]:.3f})")
     print(f"  Formula role: {role}")
-    print(f"  Top M77 matches:")
+    print("  Top M77 matches:")
     for code, dist, desc, rebus in matches:
         marker = " ← BEST" if dist == best[1] else ""
         print(f"    {code}  dist={dist:.3f}  {desc:<30}  {rebus}{marker}")

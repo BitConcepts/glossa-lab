@@ -11,9 +11,10 @@ Chapter 6 (proto-Dravidian phonology) for sibilant phoneme attestations.
 
 Output: backend/reports/phase163_sibilant_discovery.json
 """
-import sys, json, re
-from pathlib import Path
+import json
+import re
 from collections import defaultdict
+from pathlib import Path
 
 REPO      = Path(__file__).resolve().parents[2]
 PDF_DIR   = REPO / "corpora/downloads/external_repos/acquired_pdfs"
@@ -58,7 +59,7 @@ print(f"\nExisting H+M sibilant signs: {len(current_sib)}")
 for k,v in sorted(current_sib.items()):
     print(f"  {k}: '{v.get('reading','')}' ({v.get('confidence','')})")
 
-print(f"\n/su/ or /shu/ covered: NO (gap remains from Phase-152)")
+print("\n/su/ or /shu/ covered: NO (gap remains from Phase-152)")
 
 # ─── Search each source for sibilant + sign number associations ───────────
 print("\n" + "─"*70)
@@ -135,7 +136,7 @@ print(f"\n  Total signs with sibilant associations: {len(sibilant_proposals)}")
 print(f"  LOW/unanchored signs with sibilant proposals: {len(sib_low_proposals)}")
 
 # Find the /cu/ and /co/ proposals (closest to /su/ gap)
-print(f"\n  Signs with cu/co/ca proposals (closest to /su/ gap):")
+print("\n  Signs with cu/co/ca proposals (closest to /su/ gap):")
 su_gap_candidates = []
 for sign_id, data in sib_low_proposals.items():
     for reading, rdata in data["sibilant_proposals"].items():
@@ -159,9 +160,9 @@ covered_slots = 2  # from Phase-152: /i/ and /li/ covered
 if su_gap_candidates:
     best_su = su_gap_candidates[0]
     covered_slots = 3  # adding /cu/ covers the /su/ slot
-    print(f"\n  Shu-ilishu coverage update:")
+    print("\n  Shu-ilishu coverage update:")
     print(f"  Best /su/-slot candidate: {best_su['sign_id']} = '{best_su['reading']}'")
-    print(f"  Coverage: 2/4 → 3/4 slots (E02: PARTIALLY_SUPPORTED → more strongly)")
+    print("  Coverage: 2/4 → 3/4 slots (E02: PARTIALLY_SUPPORTED → more strongly)")
 
 # Save
 output = {

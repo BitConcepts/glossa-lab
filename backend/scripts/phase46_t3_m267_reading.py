@@ -25,7 +25,10 @@ GPU: torch used for vectorised constraint scoring.
 Output: reports/phase46_t3_m267_reading.json
 """
 from __future__ import annotations
-import csv, json, math, re
+
+import csv
+import json
+import re
 from collections import Counter
 from pathlib import Path
 
@@ -317,7 +320,7 @@ def main() -> None:
     best = ranked[0]
     runner_up = ranked[1] if len(ranked) > 1 else {}
 
-    print(f"\n=== M267 Reading Assessment ===")
+    print("\n=== M267 Reading Assessment ===")
     print(f"Best candidate:   {best['token']} ({best['gloss'][:60]})")
     print(f"Epistemic status: {best['epistemic']}")
     print(f"Formula:          {best['formula']}")

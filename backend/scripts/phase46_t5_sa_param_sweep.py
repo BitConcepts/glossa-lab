@@ -20,7 +20,12 @@ Output: reports/phase46_t5_sa_param_sweep.json
 """
 from __future__ import annotations
 
-import csv, json, math, random, sys, time
+import csv
+import json
+import math
+import random
+import sys
+import time
 from collections import Counter
 from itertools import product
 from pathlib import Path
@@ -241,7 +246,7 @@ def main() -> None:
     best_config = sweep_results[best_idx]
     worst_config = sweep_results[worst_idx]
 
-    print(f"\n=== SA Parameter Sweep Results ===")
+    print("\n=== SA Parameter Sweep Results ===")
     print(f"Total time: {total_elapsed:.1f}s")
     print(f"Best config:  {best_config['config']} — lift={best_config['lift']:.4f}x z={best_config['z_score']:.2f}")
     print(f"Worst config: {worst_config['config']} — lift={worst_config['lift']:.4f}x z={worst_config['z_score']:.2f}")

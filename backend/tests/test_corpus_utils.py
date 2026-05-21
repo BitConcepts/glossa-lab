@@ -25,9 +25,7 @@ TEST-CU-016  High-entropy endpoint gives confidence=high for large delta.
 
 from __future__ import annotations
 
-import pytest
 from glossa_lab.corpus_utils import normalise_sequences, run_ashraf_detection
-
 
 # ── normalise_sequences ──────────────────────────────────────────────────────
 

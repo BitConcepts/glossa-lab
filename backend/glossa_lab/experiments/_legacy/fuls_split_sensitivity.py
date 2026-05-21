@@ -101,8 +101,11 @@ def _run_one(decoded_lines, encoded_lines, answer_key, train_indices):
 
 def run_split_sensitivity(verbose: bool = True) -> dict[str, Any]:
     from corpora.ugaritic import (
-        _BAAL_CYCLE_LINES, _SIGN_TO_ID, get_answer_key,
+        _BAAL_CYCLE_LINES,
+        _SIGN_TO_ID,
+        get_answer_key,
     )
+
     from glossa_lab.data.old_hebrew import get_ugaritic_to_hebrew_map
 
     def _pr(*a, **kw):

@@ -212,7 +212,7 @@ async def suggest_profiles() -> dict[str, Any]:
     shows previews; the user clicks Create on the ones they want, which
     POSTs back to the standard ``POST /ai-profiles`` endpoint.
     """
-    from glossa_lab.api.settings import _load_keys, get_key  # noqa: PLC0415
+    from glossa_lab.api.settings import get_key  # noqa: PLC0415
 
     suggestions: list[SuggestedProfile] = []
 

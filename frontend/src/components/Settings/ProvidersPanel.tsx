@@ -235,7 +235,7 @@ export function ProvidersPanel() {
             <input value={addName} onChange={e => setAddName(e.target.value)} placeholder="My vLLM server"
               style={{ width: "100%", padding: "6px 8px", borderRadius: 4, border: "1px solid #d1d5db", marginBottom: 10, fontSize: 13 }} />
             <label style={{ fontSize: 11, fontWeight: 600, display: "block", marginBottom: 4 }}>Base URL</label>
-            <input value={addUrl} onChange={e => setAddUrl(e.target.value)} placeholder={addType === "ollama" ? "http://localhost:11434" : "http://layer1labs:8000/v1"}
+            <input value={addUrl} onChange={e => setAddUrl(e.target.value)} placeholder={addType === "ollama" ? "http://localhost:11434" : "http://BitConcepts:8000/v1"}
               style={{ width: "100%", padding: "6px 8px", borderRadius: 4, border: "1px solid #d1d5db", marginBottom: 10, fontSize: 13 }} />
             <label style={{ fontSize: 11, fontWeight: 600, display: "block", marginBottom: 4 }}>API Key (optional)</label>
             <input value={addKey} onChange={e => setAddKey(e.target.value)} type="password" placeholder="sk-..."

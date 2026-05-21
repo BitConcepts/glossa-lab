@@ -1273,7 +1273,7 @@ def _dof_extractor(inputs: dict, params: dict) -> dict:
     """Read multiple profiler outputs and emit a flat dict of DoF values
     keyed by the names that the language_signature CAS model expects.
 
-    Used to feed CASHypothesisProjector. Fields read:
+    Collects measured corpus metrics. Fields read:
       - block_entropies (BlockEntropyProfile)
       - zipf (ZipfMandelbrotFit)
       - mi_decay (MutualInformationDecay)

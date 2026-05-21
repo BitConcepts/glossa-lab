@@ -1,7 +1,7 @@
 # indusscript.in Gap Report — Mahadevan 1977 OCR Analysis
 **Generated:** 2026-05-15
 **Method:** Tesseract OCR of 1,231 pages from the Mahadevan 1977 Internet Archive scan
-**Prepared by:** Glossa-Lab / Layer1Labs Silicon
+**Prepared by:** Glossa-Lab / BitConcepts LLC
 
 ---
 

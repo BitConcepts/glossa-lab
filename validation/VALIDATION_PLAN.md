@@ -1,7 +1,7 @@
 # VALIDATION_PLAN
 **Version**: 1.0  
 **Date**: 2026-04-23  
-**Owner**: Tristen Pierson / Layer1Labs Silicon, Inc.  
+**Owner**: Tristen Pierson / BitConcepts LLC  
 **Confidentiality**: INTERNAL
 
 ---

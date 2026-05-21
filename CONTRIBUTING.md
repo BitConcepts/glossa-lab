@@ -42,4 +42,4 @@ This project's governance is defined in `AGENTS.md` with modular details in `doc
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the project's MIT license.
+By contributing, you agree that your contributions will be licensed under the **MIT License** (see `LICENSE`). Research output contributions (preprint, data, reports) are licensed under CC BY 4.0 (see `research/indus/LICENSE-CC-BY-4.0`).

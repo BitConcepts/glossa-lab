@@ -131,6 +131,5 @@
       "sourcePort": "consistency_per_sign",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

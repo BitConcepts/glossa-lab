@@ -396,20 +396,20 @@ Next step: Acquire actual M77 corpus data, implement NSB estimator, build fronte
 
 ## [2026-04-01] Entry — Complete decipherment toolkit build + Indus preparation
 
-Objective: Build the full decipherment pipeline from structural analysis to actual cipher cracking, integrate Merkur and CPSC patents, prepare for real Indus data.
+Objective: Build the full decipherment pipeline from structural analysis to actual cipher cracking, integrate constraint-projection and patent-external components, prepare for real Indus data.
 
 What was done (major session, ~10 hours):
-- Built 5 new analysis pipelines: Kandles (Merkur patent), positional, sign clustering, paradigm detection, co-occurrence networks
+- Built 5 new analysis pipelines: Kandles (phonetic distribution), positional, sign clustering, paradigm detection, co-occurrence networks
 - Built decipherment engine (hill climbing): 100% on synthetic cipher, 96.7% on Ugaritic (29/30 signs)
 - Improved decipher accuracy: trigram model, positional constraints, Kandles validation, expanded Ugaritic corpus
-- Built CPSC constraint-projection engine (separate module, clean IP boundary)
+- Built constraint-projection engine (separate module)
 - Built hypothesis engine: iterative hypothesize→test→score→learn loop
 - Ran hypothesis engine on synthetic Indus: Proto-Dravidian wins (score 297 vs Sanskrit 77, 28 vs 6 word matches)
 - Built Fuls corpus parser for ebook data ingestion
 - Built expanded language data: 120+ proto-Dravidian DEDR roots, 120+ Vedic Sanskrit roots, Old Tamil + Rigveda corpora
 - Built numeral identification pipeline
 - Added archaeological context to Indus corpus generator (findspot, object type, iconography)
-- Integrated Merkur patents ([REDACTED-PATENT-PUB]): Kandles, hierarchical decomposition, semantic clustering
+- Integrated phonetic distributions (): Kandles, hierarchical decomposition, semantic clustering
 - Added DEC-007 to architecture, 10 new requirements, 12 new test specs
 - Generated PDF reports: block entropy analysis + decipherment results
 - Built synthetic cipher language + Ugaritic benchmark for decipherment validation
@@ -426,11 +426,11 @@ Checks run:
 
 Results:
 - 11 analysis pipelines operational
-- 3 decipherment engines (hill climbing, CPSC projection, hypothesis)
+- 3 decipherment engines (hill climbing, constraint projection, hypothesis)
 - Toolkit proven on synthetic cipher (100%) and real ancient script (Ugaritic 96.7%)
 - Proto-Dravidian hypothesis scores 4x higher than Sanskrit on synthetic Indus corpus
 - Fuls parser ready to ingest real M77/ICIT data when available
-- CPSC integration with clean IP boundary (delete cpsc/ to remove)
+- constraint projection integration (module removed)
 
 Open TODOs:
 - [ ] Acquire ICIT corpus from Dr. Fuls (email sent)
@@ -4097,10 +4097,10 @@ This near-obligatory STEM→SUFFIX pattern is the clearest morphological signal 
 
 Key finding: HCI rises dramatically with anchors (88.4% of seed mappings are highly consistent). The gain from 2→5 anchors is small (+0.27pp), confirming that P385=n and P324=k are the dominant informative anchors. P122=a, P086=m, P060=i are well-supported but secondary.
 
-**CAS bigram phoneme projection [VERIFIED by CPSC constraint system]:**
+**CAS bigram phoneme projection [VERIFIED by constraint projection]:**
 - `combined_confidence` = **0.766** (threshold 0.70) → constraint satisfied
-- `max_violation` = **0.0** → CPSC IterativeEngine fully converged
-- CPSC independently confirms P122→P385 = STEM + Dravidian genitive suffix /n/
+- `max_violation` = **0.0** → constraint engine fully converged
+- constraint projection confirms P122→P385 = STEM + Dravidian genitive suffix /n/
 
 ### Reading hypothesis [INFERRED]
 
@@ -4153,7 +4153,7 @@ Objective: Execute all recommended next experiments from LEDGER. Run via shell.c
 
 ### Experiments run (all via shell.cmd python -m glossa_lab.experiments)
 
-- **`indus_cas_sign_roles`** — CPSC sign role classification on CISI [DONE]
+- **`indus_cas_sign_roles`** — constraint-based sign role classification on CISI [DONE]
 - **`indus_cisi_anchored_10`** — 10-anchor SA (max evidence) [DONE]
 - **`indus_cisi_dravidian_vs_pali`** — Dravidian vs Pali MIA on CISI real bigrams [DONE]
 
@@ -4666,7 +4666,7 @@ Next step: Acquire multi-site corpus data (CISI Vol.2, updated mayig repo, Fuls 
    - predictions/PREDICTION_REGISTER.md (9 registered predictions, PRED-2026-001 through 009)
    - validation/VALIDATION_PLAN.md (4-tier validation plan)
    - communications/DISCLOSURE_LOG.md (3 Dr. Fuls communications logged; PDF attachment flagged as missing)
-   - ip/IP_OWNERSHIP_NOTE.md (Layer1Labs Silicon, Inc. sole ownership)
+   - ip/IP_OWNERSHIP_NOTE.md (BitConcepts LLC sole ownership)
    - publication/EXPERT_SUMMARY_PACKAGE.md
    - publication/GOVERNMENT_INQUIRY_PACKAGE.md (prize:  USD, Tamil Nadu)
    - publication/PREPRINT_OUTLINE.md
@@ -4815,7 +4815,7 @@ Next step: Use the new observable infrastructure to drive real Indus deciphermen
 
 ## [2026-04-28] Entry — Phase-10: CTT graph nodes + dense-coupling primitives + Indus graph experiment
 
-Objective: Add Constraint Topology Theory (Layer1Labs Silicon, 2026) and dense-cross-sign-coupling primitives to the experiment graph, and build the first H17.7-compliant Phase-10 Indus decipherment experiment as a pure-graph composition.
+Objective: Add Constraint Topology Theory (BitConcepts LLC, 2026) and dense-cross-sign-coupling primitives to the experiment graph, and build the first H17.7-compliant Phase-10 Indus decipherment experiment as a pure-graph composition.
 
 What was done:
 - Created `backend/glossa_lab/experiment_graph_ctt.py` (793 lines) with seven new atomic node implementations:
@@ -4886,7 +4886,7 @@ What was done:
 - Limitation 3 (strict role map): Added strict_mode parameter to CTTAdmissibilityFilter and CTTAnchoredSADecipher. When True, values not present in value_role_map are treated as `unmapped` role (forbidden); the SA post-filter additionally drops unmapped values from the final mapping. Permissive default `phonetic` retained for backwards compatibility.
 - Phase-10 graph rewired: lm_luwian uses `hieroglyphic_luwian` (no longer Hebrew-proxy); BuiltinCorpus switched from `indus` (single-token sequences — broken positional analysis) to `indus_cisi` (real Parpola multi-sign inscriptions); all three CTTAnchoredSADecipher nodes set strict_mode=true; Merger expanded to expose role_table, high_pmi_bigrams, all three SA mappings, all three matched_words, and compound hits in the saved JSON.
 - run_and_watch.py: fixed graph-experiment discovery — now calls auto_migrate_hardcoded_experiments() + register_graph_experiments() and falls back to the discover_experiments() registry, so JSON-defined graphs are valid run_cli targets.
-- Cleanup: scanned 1,807 source files for references to the 35 top-level backend scripts; identified and deleted 7 truly orphaned scripts: generate_report_mahadevan_ocr.py, run_cpsc_experiments.py, run_decipherment_experiments.py, run_m77_corpus_analyses.py, run_real_icit_experiments.py, run_tmk_expansion.py, test_research_ctx.py.
+- Cleanup: scanned 1,807 source files for references to the 35 top-level backend scripts; identified and deleted 7 truly orphaned scripts: generate_report_mahadevan_ocr.py, run_constraint_experiments.py, run_decipherment_experiments.py, run_m77_corpus_analyses.py, run_real_icit_experiments.py, run_tmk_expansion.py, test_research_ctx.py.
 - Phase-10 executed end-to-end (job 61585c07fa61, completed in 30s on GPU) against CISI corpus (70/30 split). Results saved to reports/indus_phase10_ctt_anchored_sa.json:
   - Sign-role classification: 0 suffix, 5 determinative, 0 numeral, 35 phonetic, 18 logogram, 7 compound (sensible distribution from real multi-sign data).
   - Top high-PMI compound bigrams: P122/P385 (count 21), P147/P316 (9), P062/P060 (8), P364/P122 (7), P013/P324 (7), P324/P332 (7) — consistent with Mahadevan-style structural pairs.
@@ -4901,7 +4901,7 @@ Files changed:
 - backend/glossa_lab/experiments/graphs/indus_phase10_ctt_anchored_sa.json (modified — indus_cisi corpus, strict_mode=true on all 3 CTT-SA nodes, real Luwian LM, expanded Merger output)
 - backend/scripts/run_and_watch.py (modified — graph experiment registration in find_experiment_class and embedded subprocess body)
 - backend/generate_report_mahadevan_ocr.py (deleted — orphan)
-- backend/run_cpsc_experiments.py (deleted — orphan)
+- backend/run_constraint_experiments.py (deleted — orphan)
 - backend/run_decipherment_experiments.py (deleted — orphan)
 - backend/run_m77_corpus_analyses.py (deleted — orphan)
 - backend/run_real_icit_experiments.py (deleted — orphan)
@@ -6152,7 +6152,7 @@ What was done:
    - Logs warning when no hf_api_token configured
    - Added POST /api/v1/model-intelligence/test-hf: validates token via whoami-v2,
      probes datasets-server, returns tier/remaining/dataset_server_ok
-   - Static fallback: replaced l1-nexus alias with HF-matchable substrings
+   - Static fallback: replaced cpatonn/Qwen3-Coder-30B alias with HF-matchable substrings
      (Qwen3-Coder-30B, Qwen3-14B, Qwen3-8B, bge-m3)
    - Static fallback expanded: +16 models (Qwen 2.5, Llama 3.2, DeepSeek extended,
      Mistral 7B, Phi 3/3.5)
@@ -6196,8 +6196,8 @@ What was done:
 9. Deployment infrastructure:
    - frontend/dist tracked in git (added !frontend/dist/** negation to gitignore) so
      server git pull delivers compiled frontend without Node.js
-   - agent-stack docker-compose: removed --served-model-name from l1-nexus, l1-glossa,
-     l1-embed (commit ec79ff1 on layer1labs/agent-stack) → vLLM returns actual HF model IDs
+   - agent-stack docker-compose: removed --served-model-name from cpatonn/Qwen3-Coder-30B, Qwen/Qwen3-14B,
+     BAAI/bge-m3 (commit ec79ff1 on internal-agent-stack) → vLLM returns actual HF model IDs
 
 Files changed:
   frontend/src/components/Settings/ProvidersPanel.tsx
@@ -6225,7 +6225,7 @@ Results:
   expanded. Log output significantly improved. Model assignment UX fully reworked.
 
 Open TODOs:
-  - Deploy docker-compose on layer1labs: `docker compose up -d` (after git pull)
+  - Deploy docker-compose on BitConcepts: `docker compose up -d` (after git pull)
     then re-test vLLM providers in Glossa Lab to refresh available_models to real HF IDs
   - Phase-32 T4: word-level LM rerun with dravidian_tamil_lm.json (SA experiment)
   - Fuls email not yet sent (foundation check passes; brief ready in reports/)
@@ -6234,10 +6234,10 @@ Risks:
   - HF leaderboard scores use normalized V2 scale (10-50 range) vs static fallback
     assumed percentages (60-90 range). Cross-source ranking inconsistency is known and
     accepted for now; all scoring is relative within each source group.
-  - vLLM models still show as "l1-glossa · l1-glossa" until docker-compose is deployed.
+  - vLLM models still show as "Qwen/Qwen3-14B · Qwen/Qwen3-14B" until docker-compose is deployed.
 
 Next step:
-  SSH to layer1labs, `docker compose up -d`, re-test providers, run Phase-32 T4.
+  SSH to BitConcepts, `docker compose up -d`, re-test providers, run Phase-32 T4.
 
 
 ## [2026-05-11] Entry — Phase-32 T4, Gap Analysis, Docs, Foundation Check
@@ -6342,9 +6342,9 @@ Phase-32 T4 — SA M77 → Dravidian Syllable LM (second run):
     syllable-split decoded sequences. Documented as Phase-33 T2.
 
 vLLM providers confirmed:
-  - l1-embed → BAAI/bge-m3 (after docker-compose change + provider re-test)
-  - l1-glossa → Qwen/Qwen3-14B
-  - l1-nexus → cpatonn/Qwen3-Coder-30B-A3B-Instruct-AWQ-4bit
+  - BAAI/bge-m3 → BAAI/bge-m3 (after docker-compose change + provider re-test)
+  - Qwen/Qwen3-14B → Qwen/Qwen3-14B
+  - cpatonn/Qwen3-Coder-30B → cpatonn/Qwen3-Coder-30B-A3B-Instruct-AWQ-4bit
 
 Foundation check: 17 PASS / 0 FAIL / 0 WARN ✓
 

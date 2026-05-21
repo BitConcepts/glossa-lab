@@ -4,7 +4,7 @@ These nodes plug into the experiment graph engine to add:
 
 - IndusSignRoleClassifier   : derive 6-bit role mask per sign from corpus stats
 - CTTAdmissibilityFilter    : per-sign feasibility filter (Constraint Topology Theory,
-                              Layer1Labs Silicon, 2026) — masks SA proposals that
+                              BitConcepts LLC, 2026) — masks SA proposals that
                               violate positional/role constraints
 - HoldoutWordRecall         : non-circular cognate recall against external attested
                               vocabulary (Snyder/Berg-Kirkpatrick/Luo paradigm)
@@ -17,7 +17,7 @@ These nodes plug into the experiment graph engine to add:
 
 References
 ----------
-- Constraint Topology Theory (CTT) Technical Report v1.0, Layer1Labs Silicon, 2026-04-27.
+- Constraint Topology Theory (CTT) Technical Report v1.0, BitConcepts LLC, 2026-04-27.
 - Cotterell, Peng, Eisner. "Dual Decomposition Inference for Graphical Models over
   Strings." EMNLP 2015. — for the cross-sign coupling layer.
 - Luo, Cao, Barzilay. "Neural Decipherment via Minimum-Cost Flow." ACL 2019.
@@ -2624,7 +2624,7 @@ def _ctt_node_defs() -> list[Any]:
             "CTTAdmissibilityFilter",
             "CTT Admissibility Filter",
             "CTT / Constraint Topology",
-            "Per-sign feasibility oracle (Constraint Topology Theory, Layer1Labs 2026). "
+            "Per-sign feasibility oracle (Constraint Topology Theory, BitConcepts 2026). "
             "Filters a proposed sign-to-value mapping by checking each (sign, value) "
             "pair against the sign's admissible roles. O(K) per Theorem 1 of CTT TR. "
             "Connects: IndusSignRoleClassifier → role_table; SADecipher → proposed_mapping.",

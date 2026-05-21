@@ -3,16 +3,113 @@
   "name": "Meroitic Benchmark (Coptic LM)",
   "description": "Tests SA decipherment of the Meroitic corpus (551 tokens, 19 distinct signs) against a Coptic language model. Meroitic writing system is partially deciphered; Coptic is the closest deciphered relative. Measures consistency across 5 parallel SA seeds.",
   "nodes": [
-    {"id": "corpus", "type": "expNode", "data": {"atomicId": "BuiltinCorpus", "label": "Meroitic Corpus", "params": {"corpus": "meroitic"}}, "position": {"x": 60, "y": 200}},
-    {"id": "lm", "type": "expNode", "data": {"atomicId": "BuiltinLM", "label": "Coptic LM", "params": {"language": "coptic"}}, "position": {"x": 60, "y": 380}},
-    {"id": "decipher", "type": "expNode", "data": {"atomicId": "SADecipher", "label": "SA (5 seeds)", "params": {"n_seeds": 5, "max_iterations": 8000, "restarts": 5, "surjective": true, "ocp_weight": 0.0}}, "position": {"x": 340, "y": 280}},
-    {"id": "cons", "type": "expNode", "data": {"atomicId": "ConsistencyScorer", "label": "Consistency", "params": {}}, "position": {"x": 600, "y": 280}},
-    {"id": "out", "type": "expNode", "data": {"atomicId": "JSONExport", "label": "Save Results", "params": {"filename": "meroitic_benchmark.json"}}, "position": {"x": 840, "y": 280}}
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "Meroitic Corpus",
+        "params": {
+          "corpus": "meroitic"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 200
+      }
+    },
+    {
+      "id": "lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Coptic LM",
+        "params": {
+          "language": "coptic"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 380
+      }
+    },
+    {
+      "id": "decipher",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA (5 seeds)",
+        "params": {
+          "n_seeds": 5,
+          "max_iterations": 8000,
+          "restarts": 5,
+          "surjective": true,
+          "ocp_weight": 0.0
+        }
+      },
+      "position": {
+        "x": 340,
+        "y": 280
+      }
+    },
+    {
+      "id": "cons",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConsistencyScorer",
+        "label": "Consistency",
+        "params": {}
+      },
+      "position": {
+        "x": 600,
+        "y": 280
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Results",
+        "params": {
+          "filename": "meroitic_benchmark.json"
+        }
+      },
+      "position": {
+        "x": 840,
+        "y": 280
+      }
+    }
   ],
   "edges": [
-    {"id": "e1", "source": "corpus", "target": "decipher", "sourcePort": "sequences", "targetPort": "sequences"},
-    {"id": "e2", "source": "lm", "target": "decipher", "sourcePort": "lm", "targetPort": "lm"},
-    {"id": "e3", "source": "decipher", "target": "cons", "sourcePort": "all_mappings", "targetPort": "all_mappings"},
-    {"id": "e4", "source": "cons", "target": "out", "sourcePort": "consistency_per_sign", "targetPort": "data"}
-  ]
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "decipher",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "lm",
+      "target": "decipher",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e3",
+      "source": "decipher",
+      "target": "cons",
+      "sourcePort": "all_mappings",
+      "targetPort": "all_mappings"
+    },
+    {
+      "id": "e4",
+      "source": "cons",
+      "target": "out",
+      "sourcePort": "consistency_per_sign",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

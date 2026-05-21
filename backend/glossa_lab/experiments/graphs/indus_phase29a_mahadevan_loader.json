@@ -4,10 +4,42 @@
   "description": "Phase-29 #1: load the 1,669-inscription M77 corpus (5,361 sign tokens, M77 numeric codes, 9.4x CISI scale).",
   "auto_migrated": false,
   "nodes": [
-    { "id": "load", "type": "expNode", "data": { "atomicId": "MahadevanInscriptionLoader", "label": "M77 corpus", "params": {} }, "position": { "x": 60, "y": 100 } },
-    { "id": "out",  "type": "expNode", "data": { "atomicId": "JSONExport",                  "label": "Save",       "params": { "filename": "phase29a_mahadevan_loader.json" } }, "position": { "x": 360, "y": 100 } }
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "MahadevanInscriptionLoader",
+        "label": "M77 corpus",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save",
+        "params": {
+          "filename": "phase29a_mahadevan_loader.json"
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e1", "source": "load", "target": "out", "targetPort": "data" }
-  ]
+    {
+      "id": "e1",
+      "source": "load",
+      "target": "out",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

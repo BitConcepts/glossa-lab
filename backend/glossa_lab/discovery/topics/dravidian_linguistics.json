@@ -21,13 +21,35 @@
     "Bollywood",
     "Tamil cinema"
   ],
-  "languages": ["en"],
+  "languages": [
+    "en"
+  ],
   "source_overrides": {
-    "newsapi": {"page_size": 50, "sort_by": "publishedAt", "search_in": "title,description"},
-    "brave":   {"count": 20, "search_endpoint": "web"},
-    "serpapi": {"engine": "google_scholar", "num": 20},
-    "openalex":{"per_page": 25},
-    "arxiv":   {"max_results": 15, "search_query_extra": "cat:cs.CL"},
-    "crossref":{"rows": 25}
+    "newsapi": {
+      "page_size": 50,
+      "sort_by": "publishedAt",
+      "search_in": "title,description"
+    },
+    "brave": {
+      "count": 20,
+      "search_endpoint": "web"
+    },
+    "serpapi": {
+      "engine": "google_scholar",
+      "num": 20
+    },
+    "openalex": {
+      "per_page": 25
+    },
+    "arxiv": {
+      "max_results": 15,
+      "search_query_extra": "cat:cs.CL"
+    },
+    "crossref": {
+      "rows": 25
+    },
+    "patentsview": {
+      "enabled": false
+    }
   }
 }

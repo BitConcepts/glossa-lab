@@ -17,7 +17,10 @@
           "seed": 42
         }
       },
-      "position": { "x": 80, "y": 120 }
+      "position": {
+        "x": 80,
+        "y": 120
+      }
     },
     {
       "id": "meluhha",
@@ -27,7 +30,10 @@
         "label": "A3 — Meluhha co-occurrence check (top Phase-29d candidates)",
         "params": {}
       },
-      "position": { "x": 80, "y": 340 }
+      "position": {
+        "x": 80,
+        "y": 340
+      }
     },
     {
       "id": "merge",
@@ -37,7 +43,10 @@
         "label": "Collect A1+A3 validation results",
         "params": {}
       },
-      "position": { "x": 560, "y": 230 }
+      "position": {
+        "x": 560,
+        "y": 230
+      }
     },
     {
       "id": "out",
@@ -45,20 +54,80 @@
       "data": {
         "atomicId": "JSONExport",
         "label": "Save Phase-33 T2 A1-A3 validation",
-        "params": { "filename": "phase33_t2_a1_a3_validation.json" }
+        "params": {
+          "filename": "phase33_t2_a1_a3_validation.json"
+        }
       },
-      "position": { "x": 860, "y": 230 }
+      "position": {
+        "x": 860,
+        "y": 230
+      }
     }
   ],
   "edges": [
-    { "id": "e_perm_obs",      "source": "perm",    "target": "merge", "sourcePort": "observed_score",   "targetPort": "a" },
-    { "id": "e_perm_pval",     "source": "perm",    "target": "merge", "sourcePort": "p_value",          "targetPort": "b" },
-    { "id": "e_perm_pct",      "source": "perm",    "target": "merge", "sourcePort": "percentile_rank",  "targetPort": "c" },
-    { "id": "e_perm_null95",   "source": "perm",    "target": "merge", "sourcePort": "null_95th",        "targetPort": "d" },
-    { "id": "e_perm_verd",     "source": "perm",    "target": "merge", "sourcePort": "verdict",          "targetPort": "e" },
-    { "id": "e_mel_hits",      "source": "meluhha", "target": "merge", "sourcePort": "n_hits",           "targetPort": "f" },
-    { "id": "e_mel_mhits",     "source": "meluhha", "target": "merge", "sourcePort": "meluhha_hits",     "targetPort": "g" },
-    { "id": "e_mel_verd",      "source": "meluhha", "target": "merge", "sourcePort": "verdict",          "targetPort": "h" },
-    { "id": "e_merge_out",     "source": "merge",   "target": "out",   "sourcePort": "json",             "targetPort": "data" }
-  ]
+    {
+      "id": "e_perm_obs",
+      "source": "perm",
+      "target": "merge",
+      "sourcePort": "observed_score",
+      "targetPort": "a"
+    },
+    {
+      "id": "e_perm_pval",
+      "source": "perm",
+      "target": "merge",
+      "sourcePort": "p_value",
+      "targetPort": "b"
+    },
+    {
+      "id": "e_perm_pct",
+      "source": "perm",
+      "target": "merge",
+      "sourcePort": "percentile_rank",
+      "targetPort": "c"
+    },
+    {
+      "id": "e_perm_null95",
+      "source": "perm",
+      "target": "merge",
+      "sourcePort": "null_95th",
+      "targetPort": "d"
+    },
+    {
+      "id": "e_perm_verd",
+      "source": "perm",
+      "target": "merge",
+      "sourcePort": "verdict",
+      "targetPort": "e"
+    },
+    {
+      "id": "e_mel_hits",
+      "source": "meluhha",
+      "target": "merge",
+      "sourcePort": "n_hits",
+      "targetPort": "f"
+    },
+    {
+      "id": "e_mel_mhits",
+      "source": "meluhha",
+      "target": "merge",
+      "sourcePort": "meluhha_hits",
+      "targetPort": "g"
+    },
+    {
+      "id": "e_mel_verd",
+      "source": "meluhha",
+      "target": "merge",
+      "sourcePort": "verdict",
+      "targetPort": "h"
+    },
+    {
+      "id": "e_merge_out",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

@@ -1,0 +1,819 @@
+{
+  "phases": "161-162-165",
+  "date": "2026-05-20",
+  "parpola_proposals": {},
+  "mahadevan_proposals": {
+    "M203": [
+      {
+        "reading": "in",
+        "source": "Mahadevan_1970-2018",
+        "context": "000d\\u000aREFERENCE SIGN 203 (No, 165 IN GADD-SMITH SIGN LIST) \\u000d\\u000aLINE NUMBER \\u000d\\u000a281510 \\u"
+      },
+      {
+        "reading": "in",
+        "source": "Mahadevan_1970-2018",
+        "context": "000d\\u000aREFERENCE SIGN 203 (No\\\" 165 IN GADD-SMITH SIGN-LIST) \\u000d\\u000aLINE NUMBER \\u000d\\u000a543910 \\"
+      }
+    ],
+    "M119": [
+      {
+        "reading": "numeral",
+        "source": "Mahadevan_1970-2018",
+        "context": "s; \\u000d\\u000a(ii) Sign 119 with variable number of strokes cannot represent \\u000d\\u000aa numeral; \\u000d\\"
+      }
+    ],
+    "M121": [
+      {
+        "reading": "numeral",
+        "source": "Mahadevan_1970-2018",
+        "context": "; \\u000d\\u000a(iii) Sign 121 occurs sometimes doubled unlike the numeral \\u000d\\u000asigns; \\u000d\\u000a(iv)"
+      }
+    ],
+    "M211": [
+      {
+        "reading": "mahadevan",
+        "source": "Mahadevan_1970-2018",
+        "context": "e ' ARROW' suffix. (Sign 211) \\u000d\\u000aindicating non-masculine gender. I. Mahadevan 1998. \\u000d\\u000a6."
+      }
+    ],
+    "M328": [
+      {
+        "reading": "cup",
+        "source": "Mahadevan_1970-2018",
+        "context": "B is identical with Sign 328 C cup ') of the Indus Script. This is also one of the \\u000d\\u000amore frequent"
+      },
+      {
+        "reading": "cup",
+        "source": "Mahadevan_1970-2018",
+        "context": "hich do not include Sign 328 (' cup'). \\u000d\\u000aHowever if the last two symbols in the dish are read as D"
+      },
+      {
+        "reading": "in",
+        "source": "Mahadevan_1970-2018",
+        "context": "hich do not include Sign 328 (' cup'). \\u000d\\u000aHowever if the last two symbols in the dish are read as D"
+      },
+      {
+        "reading": "cup",
+        "source": "Mahadevan_1970-2018",
+        "context": "ical with the Indus sign 328 ('cup'). \\u000d\\u000aSymbol D is identical with the Indus sign 89 ('three tall "
+      },
+      {
+        "reading": "identical",
+        "source": "Mahadevan_1970-2018",
+        "context": "ical with the Indus sign 328 ('cup'). \\u000d\\u000aSymbol D is identical with the Indus sign 89 ('three tall "
+      }
+    ],
+    "M342": [
+      {
+        "reading": "jar",
+        "source": "Mahadevan_1970-2018",
+        "context": "obably a variant of Sign 342 ('jar'). This is the most frequent sign in the \\u000d\\u000aIndus Script with 13"
+      },
+      {
+        "reading": "in",
+        "source": "Mahadevan_1970-2018",
+        "context": "obably a variant of Sign 342 ('jar'). This is the most frequent sign in the \\u000d\\u000aIndus Script with 13"
+      },
+      {
+        "reading": "jar",
+        "source": "Mahadevan_1970-2018",
+        "context": "ariant of the Indus sign 342 ('jar'). \\u000d\\u000aSymbol B is identical with a variant of the Indus sign 176"
+      },
+      {
+        "reading": "identical",
+        "source": "Mahadevan_1970-2018",
+        "context": "ariant of the Indus sign 342 ('jar'). \\u000d\\u000aSymbol B is identical with a variant of the Indus sign 176"
+      }
+    ],
+    "M176": [
+      {
+        "reading": "cup",
+        "source": "Mahadevan_1970-2018",
+        "context": "n this case however Sign 176 (,harrow') is facing Sign 328 ('cup') unlike in \\u000d\\u000athe Sulur Dish wher"
+      },
+      {
+        "reading": "in",
+        "source": "Mahadevan_1970-2018",
+        "context": "n this case however Sign 176 (,harrow') is facing Sign 328 ('cup') unlike in \\u000d\\u000athe Sulur Dish wher"
+      }
+    ],
+    "M137": [
+      {
+        "reading": "in",
+        "source": "Mahadevan_1970-2018",
+        "context": "study is the X-like sign 137, one of the \\u000d\\u000asimplest in the Indus script. It invites comparison wit"
+      },
+      {
+        "reading": "in",
+        "source": "Mahadevan_1970-2018",
+        "context": "as grain)' (Fig.2). Sign 137 and the modified compound \\u000d\\u000asigns derived from it (in col. I of the C"
+      },
+      {
+        "reading": "jar",
+        "source": "Mahadevan_1970-2018",
+        "context": "e \\u000d\\u000aIndus sign 137. The sequence 'X-jar' (137-342) is known to occur in an Indus Text \\u000d\\u000a"
+      },
+      {
+        "reading": "in",
+        "source": "Mahadevan_1970-2018",
+        "context": "e \\u000d\\u000aIndus sign 137. The sequence 'X-jar' (137-342) is known to occur in an Indus Text \\u000d\\u000a"
+      },
+      {
+        "reading": "an",
+        "source": "Mahadevan_1970-2018",
+        "context": "e \\u000d\\u000aIndus sign 137. The sequence 'X-jar' (137-342) is known to occur in an Indus Text \\u000d\\u000a"
+      }
+    ],
+    "M141": [
+      {
+        "reading": "in",
+        "source": "Mahadevan_1970-2018",
+        "context": " signs derived from sign 141 (in col. n of the Chan) also \\u000d\\u000ahave similar variants (e.g. 2098, 3107"
+      },
+      {
+        "reading": "chan",
+        "source": "Mahadevan_1970-2018",
+        "context": " signs derived from sign 141 (in col. n of the Chan) also \\u000d\\u000ahave similar variants (e.g. 2098, 3107"
+      },
+      {
+        "reading": "similar",
+        "source": "Mahadevan_1970-2018",
+        "context": " signs derived from sign 141 (in col. n of the Chan) also \\u000d\\u000ahave similar variants (e.g. 2098, 3107"
+      },
+      {
+        "reading": "dravidian",
+        "source": "Mahadevan_1970-2018",
+        "context": "\\u00b73 Variants of sign 141 \\u000d\\u000a'share of crop' \\u000d\\u000a10. Many Dravidian languages have speci"
+      }
+    ],
+    "M162": [
+      {
+        "reading": "ideogram",
+        "source": "Mahadevan_1970-2018",
+        "context": "' r \\u000d\\u000aII. Sign 162 is a self-evident ideogram for 'crop' as may be seen from its \\u000d\\u000agraph"
+      }
+    ],
+    "M142": [
+      {
+        "reading": "or",
+        "source": "Mahadevan_1970-2018",
+        "context": "0afrom that of 139. Sign 142 may depict the voluntary offerings of small \\u000d\\u000afanners or tenants of f"
+      }
+    ],
+    "M144": [
+      {
+        "reading": "can",
+        "source": "Mahadevan_1970-2018",
+        "context": "u000d\\u000aCompound sign 144: 'streets' share' \\u000d\\u000a20. The compound sign 144 can be analysed as foll"
+      }
+    ],
+    "M232": [
+      {
+        "reading": "pipal",
+        "source": "Mahadevan_1970-2018",
+        "context": "s no longer in use, Sign 232 was understood literally \\u000d\\u000aas a symbol 'pipal on the summit of a thre"
+      }
+    ],
+    "M267": [
+      {
+        "reading": "initial",
+        "source": "Mahadevan_1970-2018",
+        "context": "erpretation oflndus Sign 267 with the top to the West. \\u000d\\u000aSign 267 ~ Frequency Initial: 298. Total:"
+      },
+      {
+        "reading": "total",
+        "source": "Mahadevan_1970-2018",
+        "context": "erpretation oflndus Sign 267 with the top to the West. \\u000d\\u000aSign 267 ~ Frequency Initial: 298. Total:"
+      }
+    ]
+  },
+  "wells_proposals": {
+    "M550": [
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": ".13 Distribution of sign 550 in long Patterned texts\b�������������������������������������������������������"
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "II.10. Histogram of sign 550 with two maxima at position 1 and 8 in various text classes.\b��������131"
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": ".13 Distribution of sign 550 in long Patterned texts"
+      },
+      {
+        "reading": "initial",
+        "source": "Wells_2015",
+        "context": "nitial  Clusters is sign 550. This sign’s distribution is polarized between its initial and semi-"
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "classes separately. Sign 550 also appears often in first position in about 46% of all complete texts (n = 82"
+      }
+    ],
+    "M817": [
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": ".14 Distribution of sign 817 in long Patterned texts\b�������������������������������������������������������"
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": ".14 Distribution of sign 817 in long Patterned texts"
+      }
+    ],
+    "M220": [
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "�����36 Figure 3.21 Sign 220 plus number clusters in medial contexts\b���������������������������������������"
+      },
+      {
+        "reading": "medial",
+        "source": "Wells_2015",
+        "context": "�����36 Figure 3.21 Sign 220 plus number clusters in medial contexts\b���������������������������������������"
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "medial clusters use sign 220 and only sign 220 is used in Initial Clusters."
+      },
+      {
+        "reading": "initial",
+        "source": "Wells_2015",
+        "context": "medial clusters use sign 220 and only sign 220 is used in Initial Clusters."
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "f initial clusters, sign 220 (the basic Fish sign) is attested in initial clusters. "
+      }
+    ],
+    "M900": [
+      {
+        "reading": "numeral",
+        "source": "Wells_2015",
+        "context": "ure 5.7 Examples of sign 900 as a numeral in positional notation\b�������������������������������������������"
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "ure 5.7 Examples of sign 900 as a numeral in positional notation\b�������������������������������������������"
+      },
+      {
+        "reading": "positional",
+        "source": "Wells_2015",
+        "context": "ure 5.7 Examples of sign 900 as a numeral in positional notation\b�������������������������������������������"
+      },
+      {
+        "reading": "numeral",
+        "source": "Wells_2015",
+        "context": "ure 5.7 Examples of sign 900 as a numeral in positional notation"
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "ure 5.7 Examples of sign 900 as a numeral in positional notation"
+      }
+    ],
+    "M820": [
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "2. Some examples of sign 820 in various contexts.\b����������������������������������������������������������"
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "itional analysis of sign 820 in Patterned, Long Complex and Short Segment texts texts.\b����87"
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "2. Some examples of sign 820 in various contexts."
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": " Figure 6.2 is that sign 820 occurs terminally in short (Segment) texts "
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "ts given above show sign 820 in initial, medial and terminal contexts. Figure "
+      }
+    ],
+    "M798": [
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "The distribution of sign 798 in all complete text in which it occurs.\b��������������������������������������"
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "The distribution of sign 798 in all complete text in which it occurs.\b��������������������������������������"
+      },
+      {
+        "reading": "or",
+        "source": "Wells_2015",
+        "context": "s 82% of the  time. Sign 798 may be functioning as part of (or all of) a Bonded Cluster (discussed below). "
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "The distribution of sign 798 in all complete text in which it occurs."
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "The distribution of sign 798 in all complete text in which it occurs."
+      }
+    ],
+    "M400": [
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "types. For  example sign 400  occurs in 442 Indus texts. Of these 358 come from Harappa, while "
+      }
+    ],
+    "M740": [
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "tions, as styles of sign 740 fall in and out of fashion.  In the end "
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "tions, as styles of sign 740 fall in and out of fashion.  In the end "
+      },
+      {
+        "reading": "an",
+        "source": "Wells_2015",
+        "context": "se signs consist of sign 740 (the most common Indus sign) with an infixed number "
+      },
+      {
+        "reading": "can",
+        "source": "Wells_2015",
+        "context": "ion  and reading of sign 740 and related signs (Figure 3.5) are unknown, we can see that their "
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "will recognize that sign 740 is very often in this context, while 820 is found in several "
+      }
+    ],
+    "M768": [
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": " conflated to  form sign 768, but with the sign elements in reverse order, perhaps to make it fit in a "
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": " conflated to  form sign 768, but with the sign elements in reverse order, perhaps to make it fit in a "
+      }
+    ],
+    "M803": [
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "represented  by the sign 803 graph. This results in "
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "ns 82% of the time. Sign 803 is found 40% of the time in medial clusters collocating with fish signs. Of the"
+      },
+      {
+        "reading": "medial",
+        "source": "Wells_2015",
+        "context": "ns 82% of the time. Sign 803 is found 40% of the time in medial clusters collocating with fish signs. Of the"
+      }
+    ],
+    "M060": [
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "unique character of sign 060 is further evident in its distribution in texts, where it "
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "unique character of sign 060 is further evident in its distribution in texts, where it "
+      }
+    ],
+    "M861": [
+      {
+        "reading": "initial",
+        "source": "Wells_2015",
+        "context": "ample (Figure 3.10) sign 861, that is most often a single sign initial cluster, "
+      },
+      {
+        "reading": "typical",
+        "source": "Wells_2015",
+        "context": " sign usage left of sign 861 is typical of "
+      }
+    ],
+    "M350": [
+      {
+        "reading": "can",
+        "source": "Wells_2015",
+        "context": "t this pair (Set 17+sign  350) can occur in initial clusters (ICs) and in terminal clusters. They take the af"
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "t this pair (Set 17+sign  350) can occur in initial clusters (ICs) and in terminal clusters. They take the af"
+      },
+      {
+        "reading": "initial",
+        "source": "Wells_2015",
+        "context": "t this pair (Set 17+sign  350) can occur in initial clusters (ICs) and in terminal clusters. They take the af"
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "t this pair (Set 17+sign  350) can occur in initial clusters (ICs) and in terminal clusters. They take the af"
+      },
+      {
+        "reading": "terminal",
+        "source": "Wells_2015",
+        "context": "t this pair (Set 17+sign  350) can occur in initial clusters (ICs) and in terminal clusters. They take the af"
+      }
+    ],
+    "M226": [
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "s enclosed (to form sign 226). The differences in sign arrangement suggest that "
+      }
+    ],
+    "M002": [
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "haps because of the sign 002 affix in e’s IC, or the fact that sign 220 is "
+      },
+      {
+        "reading": "or",
+        "source": "Wells_2015",
+        "context": "haps because of the sign 002 affix in e’s IC, or the fact that sign 220 is "
+      },
+      {
+        "reading": "an",
+        "source": "Wells_2015",
+        "context": "re than once  (like sign 002 falling into relative sign position 9 and 10, Figure 1). To avoid an "
+      },
+      {
+        "reading": "initial",
+        "source": "Wells_2015",
+        "context": " signs (Figure  6). Sign 002 and 060 are known as a marker after initial signs or initial sign clusters. As "
+      },
+      {
+        "reading": "or",
+        "source": "Wells_2015",
+        "context": " signs (Figure  6). Sign 002 and 060 are known as a marker after initial signs or initial sign clusters. As "
+      }
+    ],
+    "M625": [
+      {
+        "reading": "original",
+        "source": "Wells_2015",
+        "context": " the  equivalent of sign 625. It may be that sign 625 was the original form and that sign 850 "
+      }
+    ],
+    "M031": [
+      {
+        "reading": "or",
+        "source": "Wells_2015",
+        "context": "amples have shorted sign  031 to save space, or for esthetic reasons. The rotation of sign 625 to be sign 850"
+      }
+    ],
+    "M700": [
+      {
+        "reading": "numeral",
+        "source": "Wells_2015",
+        "context": "un+Number that bear sign 700 and a stroke numeral (700+#). Other "
+      },
+      {
+        "reading": "clear",
+        "source": "Wells_2015",
+        "context": "tial collocation of sign  700 and signs 034 (87), 033 (137) and 032 (105) is clear. What is also clear is tha"
+      },
+      {
+        "reading": "clear",
+        "source": "Wells_2015",
+        "context": "tial collocation of sign  700 and signs 034 (87), 033 (137) and 032 (105) is clear. What is also clear is tha"
+      }
+    ],
+    "M003": [
+      {
+        "reading": "set",
+        "source": "Wells_2015",
+        "context": "r types of numbers. Sign 003 has the widest set of collocations of this class of "
+      }
+    ],
+    "M006": [
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "of Indus Writing 70 Sign 006 occurs three times. In two of these contexts they are found on copper tools, an"
+      },
+      {
+        "reading": "an",
+        "source": "Wells_2015",
+        "context": "of Indus Writing 70 Sign 006 occurs three times. In two of these contexts they are found on copper tools, an"
+      }
+    ],
+    "M012": [
+      {
+        "reading": "numeral",
+        "source": "Wells_2015",
+        "context": "ng by its contexts, sign 012 may not always be a numeral. With the possible "
+      }
+    ],
+    "M017": [
+      {
+        "reading": "special",
+        "source": "Wells_2015",
+        "context": "ncy collocations of sign 017 with both 575 and 585 points to a special "
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "d by the numeral   (sign 017). In at least one "
+      }
+    ],
+    "M415": [
+      {
+        "reading": "numeral",
+        "source": "Wells_2015",
+        "context": "e identification of sign 415 as a numeral. It collocates right adjacent "
+      },
+      {
+        "reading": "an",
+        "source": "Wells_2015",
+        "context": "100-415 (pair  40x, sign 415 132x / sign 100 105x), but did not offer an objective measurement of the "
+      }
+    ],
+    "M055": [
+      {
+        "reading": "numeral",
+        "source": "Wells_2015",
+        "context": " sets. Evidence for Sign 055 as a Numeral"
+      }
+    ],
+    "M821": [
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "suggested here that sign 821, in the Dholavira signboard contexts, has a meaning of "
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "nt places. Whatever sign 821 reads it is used in a variety of contexts (Figure 6.13). While eyil-ay "
+      },
+      {
+        "reading": "eyil",
+        "source": "Wells_2015",
+        "context": "nt places. Whatever sign 821 reads it is used in a variety of contexts (Figure 6.13). While eyil-ay "
+      },
+      {
+        "reading": "ay",
+        "source": "Wells_2015",
+        "context": "nt places. Whatever sign 821 reads it is used in a variety of contexts (Figure 6.13). While eyil-ay "
+      },
+      {
+        "reading": "initial",
+        "source": "Wells_2015",
+        "context": "ition. The  doubled sign 821 is still often initial, but also frequently in late medial or terminal position"
+      }
+    ],
+    "M575": [
+      {
+        "reading": "clear",
+        "source": "Wells_2015",
+        "context": " of the contexts of sign 575. It is clear from these contexts that this "
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "terminal context of sign 575 (i.e. with 740 omitted) it might be intended as a noun. In "
+      }
+    ],
+    "M532": [
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "the Indus Script 97 Sign 532 and sign 297 are positioned in such a way as to resemble the position of "
+      }
+    ],
+    "M297": [
+      {
+        "reading": "or",
+        "source": "Wells_2015",
+        "context": "ic figure and that  sign 297 represents the horned tiger, or perhaps just ‘tiger’ generically. The bull/man "
+      },
+      {
+        "reading": "man",
+        "source": "Wells_2015",
+        "context": "ic figure and that  sign 297 represents the horned tiger, or perhaps just ‘tiger’ generically. The bull/man "
+      }
+    ],
+    "M231": [
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "hat the second fish sign  231 belongs to the first fish sign 240. In sum, Korvink’s result is partially wrong"
+      },
+      {
+        "reading": "sum",
+        "source": "Wells_2015",
+        "context": "hat the second fish sign  231 belongs to the first fish sign 240. In sum, Korvink’s result is partially wrong"
+      }
+    ],
+    "M156": [
+      {
+        "reading": "appear",
+        "source": "Wells_2015",
+        "context": "requency (Table 3). Sign 156 and 158 appear anywhere at the second half "
+      }
+    ],
+    "M741": [
+      {
+        "reading": "similar",
+        "source": "Wells_2015",
+        "context": " of text positions. Sign 741 is similar to sign 740 with a maximum at position 5 but not "
+      },
+      {
+        "reading": "maximum",
+        "source": "Wells_2015",
+        "context": " of text positions. Sign 741 is similar to sign 740 with a maximum at position 5 but not "
+      }
+    ],
+    "M090": [
+      {
+        "reading": "terminal",
+        "source": "Wells_2015",
+        "context": "f Indus Writing 126 sign 090, 400, 621, and 679 (Figure 3). Other Terminal or Post-Terminal signs are sign "
+      },
+      {
+        "reading": "or",
+        "source": "Wells_2015",
+        "context": "f Indus Writing 126 sign 090, 400, 621, and 679 (Figure 3). Other Terminal or Post-Terminal signs are sign "
+      },
+      {
+        "reading": "terminal",
+        "source": "Wells_2015",
+        "context": "f Indus Writing 126 sign 090, 400, 621, and 679 (Figure 3). Other Terminal or Post-Terminal signs are sign "
+      },
+      {
+        "reading": "typical",
+        "source": "Wells_2015",
+        "context": " in Indus writing.  Sign 090 is a typical terminal sign, but sign 091 is used in any position with a maximum"
+      },
+      {
+        "reading": "terminal",
+        "source": "Wells_2015",
+        "context": " in Indus writing.  Sign 090 is a typical terminal sign, but sign 091 is used in any position with a maximum"
+      }
+    ],
+    "M368": [
+      {
+        "reading": "or",
+        "source": "Wells_2015",
+        "context": "l sign distribution Sign 368 and 595 are more or less uniform but almost never initial (Figure 5). The reaso"
+      },
+      {
+        "reading": "initial",
+        "source": "Wells_2015",
+        "context": "l sign distribution Sign 368 and 595 are more or less uniform but almost never initial (Figure 5). The reaso"
+      }
+    ],
+    "M001": [
+      {
+        "reading": "initial",
+        "source": "Wells_2015",
+        "context": "them, together with sign 001, Initial Cluster Terminal Markers (ICTM), since they "
+      },
+      {
+        "reading": "terminal",
+        "source": "Wells_2015",
+        "context": "them, together with sign 001, Initial Cluster Terminal Markers (ICTM), since they "
+      }
+    ],
+    "M555": [
+      {
+        "reading": "medial",
+        "source": "Wells_2015",
+        "context": "-Medial signs (e.g. sign  555 and 752; Figure 8). Another Late-Medial sign is sign 590, but only in long patt"
+      },
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "-Medial signs (e.g. sign  555 and 752; Figure 8). Another Late-Medial sign is sign 590, but only in long patt"
+      }
+    ],
+    "M615": [
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "The last example is sign 615, which is mostly in late medial position, but can occur "
+      },
+      {
+        "reading": "medial",
+        "source": "Wells_2015",
+        "context": "The last example is sign 615, which is mostly in late medial position, but can occur "
+      },
+      {
+        "reading": "can",
+        "source": "Wells_2015",
+        "context": "The last example is sign 615, which is mostly in late medial position, but can occur "
+      }
+    ],
+    "M617": [
+      {
+        "reading": "in",
+        "source": "Wells_2015",
+        "context": "sition. The doubled sign 617 is mostly in terminal "
+      },
+      {
+        "reading": "terminal",
+        "source": "Wells_2015",
+        "context": "sition. The doubled sign 617 is mostly in terminal "
+      }
+    ],
+    "M920": [
+      {
+        "reading": "can",
+        "source": "Wells_2015",
+        "context": "s The comparison of sign 920 to sign 921 has already shown, that mirroring of signs can "
+      }
+    ],
+    "M407": [
+      {
+        "reading": "or",
+        "source": "Wells_2015",
+        "context": " Other examples are sign 407 versus 408, or "
+      }
+    ],
+    "M526": [
+      {
+        "reading": "similar",
+        "source": "Wells_2015",
+        "context": "le 5). In contrast, sign 526 and its mirrored sign (527) have a similar "
+      }
+    ],
+    "M590": [
+      {
+        "reading": "histogram",
+        "source": "Wells_2015",
+        "context": "t text classes. The sign 590 histogram of positional frequency for all complete texts shows a maximum "
+      },
+      {
+        "reading": "positional",
+        "source": "Wells_2015",
+        "context": "t text classes. The sign 590 histogram of positional frequency for all complete texts shows a maximum "
+      },
+      {
+        "reading": "maximum",
+        "source": "Wells_2015",
+        "context": "t text classes. The sign 590 histogram of positional frequency for all complete texts shows a maximum "
+      },
+      {
+        "reading": "typical",
+        "source": "Wells_2015",
+        "context": "egment texts (MS),  sign 590 shows a typical behaviour of an initial sign (Figure 9d), and in Long Complex "
+      },
+      {
+        "reading": "an",
+        "source": "Wells_2015",
+        "context": "egment texts (MS),  sign 590 shows a typical behaviour of an initial sign (Figure 9d), and in Long Complex "
+      }
+    ]
+  },
+  "n_parpola": 0,
+  "n_mahadevan": 14,
+  "n_wells": 41,
+  "n_genuine_upgrades": 0,
+  "n_medium_upgrades": 0,
+  "n_high_upgrades": 0,
+  "n_kur_upgrades": 0,
+  "key_findings": [
+    "Parpola 1994 proposes readings for 0 signs",
+    "Mahadevan papers propose readings for 14 signs",
+    "Wells 2015 proposes readings for 41 signs",
+    "LOW→MEDIUM upgrades: 0",
+    "LOW→HIGH upgrades (3 sources): 0",
+    "kur→specific upgrades: 0"
+  ]
+}

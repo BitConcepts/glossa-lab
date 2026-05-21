@@ -870,63 +870,39 @@ async def dashboard_decipherment() -> dict[str, Any]:
 
             n_hm = by_conf.get("HIGH", 0) + by_conf.get("MEDIUM", 0)
 
-            # ── Accurate corpus-based coverage (fixes >100% display bug) ──
-            # The Holdat corpus has 390 distinct signs and 7,002 tokens.
-            # Some anchor entries cover signs NOT in the corpus (e.g. numeral
-            # variants M086-M094). We must intersect with the corpus inventory
-            # and use token coverage, not raw anchor count / corpus sign count.
-            _CORPUS_SIGNS = 390
-            _CORPUS_TOKENS = 7002
+            _CORPUS_SIGNS = int(fa_data.get("corpus_signs", 390))
+            _CORPUS_TOKENS = int(fa_data.get("corpus_tokens", 7002))
 
-            # Load per-sign token frequencies from Phase-114 or Phase-108
-            # reports (both record token_coverage at ~88-94%).
-            token_cov: float = 0.0
-            sign_cov: float = 0.0
-            hm_in_corpus: int = 0
-            for phase_report in ["phase116_sa_recalibration.json",
-                                  "phase114_full_seal_translations.json",
-                                  "phase108_phon_exhaustion.json"]:
-                rp = backend_reports.parent / "reports" / phase_report
-                if not rp.exists():
+            # ── Authoritative coverage: read from anchors file first ───────
+            # corpus_token_coverage is written by Phase-132 validation and
+            # is the canonical metric (90.75% post-cleanup). Fall back to
+            # phase report files only when the field is absent.
+            token_cov: float = float(fa_data.get("corpus_token_coverage", 0.0) or 0.0)
+            sign_cov: float = min(1.0, n_hm / max(1, _CORPUS_SIGNS))
+
+            if token_cov <= 0:
+                # Fallback: scan recent phase reports
+                for phase_report in [
+                    "phase132_comprehensive_validation.json",
+                    "phase133_resolution.json",
+                    "phase116_sa_recalibration.json",
+                    "phase114_full_seal_translations.json",
+                    "phase108_phon_exhaustion.json",
+                ]:
                     rp = backend_reports / phase_report
-                if rp.exists():
-                    try:
-                        rd = json.loads(rp.read_text(encoding="utf-8"))
-                        # phase116 → hm_token_coverage
-                        # phase114 → mean_seal_confidence (not the right metric)
-                        # phase108 → token_coverage
-                        cov_key = ("hm_token_coverage" if "hm_token_coverage" in rd
-                                   else "token_coverage")
-                        if cov_key in rd:
-                            token_cov = float(rd[cov_key])
-                            break
-                    except Exception:  # noqa: BLE001
-                        pass
-
-            # Sign coverage: H+M anchors whose sign ID appears in corpus
-            # Use the corpus_sign_set embedded in Phase-108 sweep log if available,
-            # otherwise estimate from anchor count (cap at 1.0).
-            if token_cov > 0:
-                # Estimated: sign coverage ≈ 60-65% for H+M (confirmed by diag)
-                # Use direct count if we can, else approximate from token coverage
-                sign_cov = min(1.0, n_hm / max(1, _CORPUS_SIGNS))  # approximate
-                # Load the definitive sign coverage from Phase-115 bootstrap if available
-                p115 = backend_reports.parent / "reports" / "phase115_significance_tests.json"
-                if not p115.exists():
-                    p115 = backend_reports / "phase115_significance_tests.json"
-                if p115.exists():
-                    try:
-                        p115d = json.loads(p115.read_text(encoding="utf-8"))
-                        ci = p115d.get("test_2_bootstrap_ci", {})
-                        token_cov = float(ci.get("point_estimate", token_cov))
-                    except Exception:  # noqa: BLE001
-                        pass
-                # True sign coverage from diagnosis: 236/390 = 60.5% for H+M
-                # We cap at 1.0 to never show >100%
-                sign_cov = min(1.0, sign_cov)
-            else:
-                token_cov = 0.0
-                sign_cov  = 0.0
+                    if rp.exists():
+                        try:
+                            rd = json.loads(rp.read_text(encoding="utf-8"))
+                            cov_key = (
+                                "hm_token_coverage" if "hm_token_coverage" in rd
+                                else "corpus_token_coverage" if "corpus_token_coverage" in rd
+                                else "token_coverage"
+                            )
+                            if cov_key in rd:
+                                token_cov = float(rd[cov_key])
+                                break
+                        except Exception:  # noqa: BLE001
+                            pass
 
             anchors_summary = {
                 # n_hm = confirmed H+M count (the meaningful decipherment metric)

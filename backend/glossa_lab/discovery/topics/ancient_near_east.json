@@ -24,15 +24,45 @@
     "tourism",
     "modern Iraq Syria conflict"
   ],
-  "languages": ["en"],
+  "languages": [
+    "en"
+  ],
   "source_overrides": {
-    "newsapi": {"page_size": 20, "sort_by": "publishedAt", "search_in": "title,description"},
-    "brave":   {"count": 15, "search_endpoint": "web"},
-    "serpapi": {"engine": "google_scholar", "num": 20},
-    "openalex":{"per_page": 25},
-    "arxiv":   {"max_results": 10},
-    "crossref":{"rows": 25},
-    "semanticscholar": {"max_results": 25},
-    "academia_rss": {"slugs": ["Assyriology", "Ancient_Mesopotamia", "Cuneiform", "Ancient_Near_East"]}
+    "newsapi": {
+      "page_size": 20,
+      "sort_by": "publishedAt",
+      "search_in": "title,description"
+    },
+    "brave": {
+      "count": 15,
+      "search_endpoint": "web"
+    },
+    "serpapi": {
+      "engine": "google_scholar",
+      "num": 20
+    },
+    "openalex": {
+      "per_page": 25
+    },
+    "arxiv": {
+      "max_results": 10
+    },
+    "crossref": {
+      "rows": 25
+    },
+    "semanticscholar": {
+      "max_results": 25
+    },
+    "academia_rss": {
+      "slugs": [
+        "Assyriology",
+        "Ancient_Mesopotamia",
+        "Cuneiform",
+        "Ancient_Near_East"
+      ]
+    },
+    "patentsview": {
+      "enabled": false
+    }
   }
 }

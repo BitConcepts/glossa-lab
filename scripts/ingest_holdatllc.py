@@ -195,7 +195,7 @@ def write_consolidated_grammar(
         "1. **CISI corpus (mayig digitization)** — 179 Mohenjo-daro inscriptions (Parpola P-numbers, MIT)",
         "2. **Yajnadevam corpus** — 2,543 multi-site inscriptions from 52 sites (GPL-3.0)",
         "3. **CGSA Phase 5-8** — 40 structural clusters, 85.3% cross-site stability",
-        "4. **CAS Phase 9** — CPSC constraint projection, 80 signs classified, 0 violations",
+        "4. **CAS Phase 9** — positional constraint analysis, 80 signs classified, 0 violations",
         "5. **holdatllc analysis** (MIT) — 1,670 seal sequences, 151 Mahadevan signs with roles",
         "",
         "---",

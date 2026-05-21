@@ -1,15 +1,15 @@
-"""Language-specific Kandles phoneme-color profiles.
+"""Language-specific phoneme-type profiles.
 
-The default Kandles system ([REDACTED-PATENT-PUB]) uses a single
+The default profile uses a single
 Greek/English-calibrated phoneme→color mapping for all comparisons.
 This is appropriate when both corpora are transcribed in the same
 phonological system, but introduces a systematic bias when comparing
 deciphered texts from different language families.
 
-Each profile redefines the 8 Kandles color groups using the phonological
-categories natural to that language family. The 8 groups remain fixed
-(they are the Kandles patent categories), but which phonemes fall into
-which group changes according to the target language's phonology.
+Each profile redefines the 8 phoneme-type color groups using the phonological
+categories natural to that language family. The 8 groups remain fixed,
+but which phonemes fall into which group changes according to the target
+language's phonology.
 
 BIAS CORRECTION PRINCIPLE:
   When testing hypothesis X (e.g. Luwian), the Kandles similarity score
@@ -26,7 +26,7 @@ USAGE:
     # profile.description: str
 
 PHONOLOGICAL SOURCES:
-  Greek/Default: Extended Soundex (Merkur patent baseline)
+  Greek/Default: Extended Soundex grouping
   Luwian:        Melchert (1994) Anatolian Historical Phonology; Yakubovich (2010)
   Hurrian:       Wilhelm (1989) The Hurrians; Wegner (2007) Hurritisch
   Semitic:       Huehnergard (2005) Proto-Semitic; Fox (2003)
@@ -65,7 +65,7 @@ class KandlesProfile:
 
 
 # ── Profile 0: Default / Mycenaean Greek ─────────────────────────────
-# The original Kandles mapping from [REDACTED-PATENT-PUB].
+    # Default phoneme-type mapping.
 # Calibrated for Greek/English phonological categories.
 _DEFAULT_GROUPS: dict[int, dict[str, Any]] = {
     0: {"letters": set("AEIOU"), "color": "White", "nature": "Vowel", "description": "All vowels"},
@@ -122,10 +122,7 @@ _DEFAULT_GROUPS: dict[int, dict[str, Any]] = {
 
 PROFILE_DEFAULT = KandlesProfile(
     name="default",
-    description=(
-        "Greek/English baseline (Merkur patent [REDACTED-PATENT-PUB]). "
-        "Calibrated for Mycenaean Greek syllabary comparison."
-    ),
+    description="Greek/English baseline. Calibrated for Mycenaean Greek syllabary comparison.",
     groups=_DEFAULT_GROUPS,
 )
 

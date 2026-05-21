@@ -1,6 +1,6 @@
 # Glossa Lab — User Manual
 
-**Version**: 1.0 · Layer1Labs Silicon, Inc. Research Platform
+**Version**: 1.0 · BitConcepts LLC Research Platform
 
 ---
 
@@ -616,4 +616,4 @@ If the backend does not start:
 
 ---
 
-*Glossa Lab — Layer1Labs Silicon, Inc. Research Programme*
+*Glossa Lab — BitConcepts LLC Research Programme*

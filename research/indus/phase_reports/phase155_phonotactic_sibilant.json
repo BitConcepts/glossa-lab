@@ -1,0 +1,156 @@
+{
+  "phase": 155,
+  "date": "2026-05-19",
+  "part_a_tb_terminal_match_rate": 0.5714,
+  "part_a_tb_valid": 4,
+  "part_a_tb_invalid": 3,
+  "part_a_terminal_signs": [
+    {
+      "sign": "M233",
+      "reading": "ūr",
+      "t_rate": 0.538,
+      "freq": 171,
+      "tb_valid": false
+    },
+    {
+      "sign": "M051",
+      "reading": "pū/puḷ",
+      "t_rate": 0.515,
+      "freq": 163,
+      "tb_valid": false
+    },
+    {
+      "sign": "M065",
+      "reading": "kuTam",
+      "t_rate": 0.545,
+      "freq": 154,
+      "tb_valid": true
+    },
+    {
+      "sign": "M305",
+      "reading": "ōṭu/comitative",
+      "t_rate": 0.976,
+      "freq": 83,
+      "tb_valid": true
+    },
+    {
+      "sign": "M125",
+      "reading": "vil",
+      "t_rate": 0.561,
+      "freq": 132,
+      "tb_valid": true
+    },
+    {
+      "sign": "M249",
+      "reading": "tii",
+      "t_rate": 0.959,
+      "freq": 73,
+      "tb_valid": false
+    },
+    {
+      "sign": "M220",
+      "reading": "al",
+      "t_rate": 0.984,
+      "freq": 62,
+      "tb_valid": true
+    }
+  ],
+  "part_b_tb_coverage": "4/7",
+  "part_b_reading_tb_map": {
+    "M051": {
+      "reading": "pū/puḷ",
+      "tb_categories": []
+    },
+    "M305": {
+      "reading": "ōṭu/comitative",
+      "tb_categories": [
+        "-oṭu"
+      ]
+    },
+    "M233": {
+      "reading": "ūr",
+      "tb_categories": []
+    },
+    "M125": {
+      "reading": "vil",
+      "tb_categories": [
+        "-il"
+      ]
+    },
+    "M249": {
+      "reading": "tii",
+      "tb_categories": []
+    },
+    "M220": {
+      "reading": "al",
+      "tb_categories": [
+        "-al"
+      ]
+    },
+    "M065": {
+      "reading": "kuTam",
+      "tb_categories": [
+        "-am"
+      ]
+    }
+  },
+  "part_c_v07_rate": 0.234,
+  "part_c_violations": 270,
+  "part_c_total_decoded": 1154,
+  "part_c_top_offenders": [
+    {
+      "sign": "M328",
+      "reading": "ā/āl",
+      "count": 53,
+      "t_rate": 0.299,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "M211",
+      "reading": "kol",
+      "count": 49,
+      "t_rate": 0.269,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "M176",
+      "reading": "an/aṇ",
+      "count": 46,
+      "t_rate": 0.191,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "M342",
+      "reading": "ay/ā",
+      "count": 45,
+      "t_rate": 0.12,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "M099",
+      "reading": "kol/koḷ",
+      "count": 43,
+      "t_rate": 0.172,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "M267",
+      "reading": "iN/in (genitive of)",
+      "count": 34,
+      "t_rate": 0.147,
+      "pos_class": "MEDIAL"
+    }
+  ],
+  "v07_verdict": "V07_ELEVATED",
+  "wells_phd_status": "IMAGE_PDF_NOT_TEXT_EXTRACTABLE",
+  "wells_acquisition": "Downloaded 18.4MB PDF from Internet Archive but it is a scanned image — requires OCR for text extraction. DjVu OCR text is corrupted (wrong language settings). Gulf seal data not directly accessible from this source.",
+  "key_findings": [
+    "Tamil-Brahmi terminal match rate: 57.1% (TB inventory cross-validated)",
+    "V07 phonotactic violation rate: 23.4% (n=270/1154)",
+    "Most V07 violations: MIXED-class signs in abbreviated seals — expected, not misreadings",
+    "V07 verdict: V07_ELEVATED",
+    "Wells PDF acquired but image-only — Gulf seal fish-sign test requires OCR or alternate source",
+    "Phase-153: /su/ sibilant gap not closeable from current H+M corpus alone — target for ICIT corpus",
+    "Phase-154: V12 is a methodology artifact — slash-notation readings + cross-morpheme harmony"
+  ]
+}

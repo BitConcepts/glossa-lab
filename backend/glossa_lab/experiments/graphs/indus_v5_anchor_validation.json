@@ -1,7 +1,7 @@
 {
   "id": "indus_v5_anchor_validation",
-  "name": "Indus V5 \u2014 Anchor Validation (SNR test)",
-  "description": "Decode top-50 longest inscriptions with 12 anchors. Scrambled control: randomly select 12 different signs as fake anchors across 100 trials. Real decode=57.1%, scrambled=11.3%\u00b15.7%, SNR=8.02.",
+  "name": "Indus V5 — Anchor Validation (SNR test)",
+  "description": "Decode top-50 longest inscriptions with 12 anchors. Scrambled control: randomly select 12 different signs as fake anchors across 100 trials. Real decode=57.1%, scrambled=11.3%±5.7%, SNR=8.02.",
   "auto_migrated": false,
   "nodes": [
     {
@@ -85,5 +85,6 @@
       "sourcePort": "validation",
       "targetPort": "data"
     }
-  ]
+  ],
+  "graph_type": "experiment"
 }

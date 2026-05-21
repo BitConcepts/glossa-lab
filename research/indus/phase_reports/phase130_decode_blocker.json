@@ -1,0 +1,272 @@
+{
+  "phase": 130,
+  "date": "2026-05-18",
+  "total_seals": 1670,
+  "fully_decoded": 1429,
+  "fully_decoded_pct": 85.6,
+  "low_blocked": 241,
+  "unknown_blocked": 0,
+  "phase128_129_net_unlocked": 35,
+  "pre_upgrade_fully_decoded": 1394,
+  "hm_anchor_count": 268,
+  "top_30_blockers": [
+    {
+      "sign": "M270",
+      "confidence": "LOW",
+      "reading": "mu\u1e37",
+      "corpus_freq": 6,
+      "seals_blocked": 6
+    },
+    {
+      "sign": "M386",
+      "confidence": "LOW",
+      "reading": "ma\u1e47",
+      "corpus_freq": 6,
+      "seals_blocked": 6
+    },
+    {
+      "sign": "M198",
+      "confidence": "LOW",
+      "reading": "po\u1e49",
+      "corpus_freq": 6,
+      "seals_blocked": 6
+    },
+    {
+      "sign": "M183",
+      "confidence": "LOW",
+      "reading": "v\u0113\u1e37",
+      "corpus_freq": 5,
+      "seals_blocked": 5
+    },
+    {
+      "sign": "M365",
+      "confidence": "LOW",
+      "reading": "v\u0101\u1e49",
+      "corpus_freq": 5,
+      "seals_blocked": 5
+    },
+    {
+      "sign": "M412",
+      "confidence": "LOW",
+      "reading": "c\u016b\u1e37",
+      "corpus_freq": 5,
+      "seals_blocked": 5
+    },
+    {
+      "sign": "M151",
+      "confidence": "LOW",
+      "reading": "vi\u1e37",
+      "corpus_freq": 5,
+      "seals_blocked": 5
+    },
+    {
+      "sign": "M304",
+      "confidence": "LOW",
+      "reading": "v\u0113\u1e5f",
+      "corpus_freq": 5,
+      "seals_blocked": 5
+    },
+    {
+      "sign": "M321",
+      "confidence": "LOW",
+      "reading": "kol",
+      "corpus_freq": 5,
+      "seals_blocked": 5
+    },
+    {
+      "sign": "M357",
+      "confidence": "LOW",
+      "reading": "ku\u1e37",
+      "corpus_freq": 5,
+      "seals_blocked": 5
+    },
+    {
+      "sign": "M137",
+      "confidence": "LOW",
+      "reading": "ku\u1e5f",
+      "corpus_freq": 5,
+      "seals_blocked": 5
+    },
+    {
+      "sign": "M239",
+      "confidence": "LOW",
+      "reading": "il",
+      "corpus_freq": 5,
+      "seals_blocked": 5
+    },
+    {
+      "sign": "M223",
+      "confidence": "LOW",
+      "reading": "mu\u1e37",
+      "corpus_freq": 5,
+      "seals_blocked": 5
+    },
+    {
+      "sign": "M254",
+      "confidence": "LOW",
+      "reading": "t\u0113\u1e49",
+      "corpus_freq": 5,
+      "seals_blocked": 5
+    },
+    {
+      "sign": "M143",
+      "confidence": "LOW",
+      "reading": "ma\u1e47",
+      "corpus_freq": 5,
+      "seals_blocked": 5
+    },
+    {
+      "sign": "M345",
+      "confidence": "LOW",
+      "reading": "ta\u1e6d",
+      "corpus_freq": 5,
+      "seals_blocked": 5
+    },
+    {
+      "sign": "M329",
+      "confidence": "LOW",
+      "reading": "po\u1e49",
+      "corpus_freq": 5,
+      "seals_blocked": 5
+    },
+    {
+      "sign": "M190",
+      "confidence": "LOW",
+      "reading": "pa\u1e49",
+      "corpus_freq": 5,
+      "seals_blocked": 5
+    },
+    {
+      "sign": "M295",
+      "confidence": "LOW",
+      "reading": "pa\u1e5f",
+      "corpus_freq": 5,
+      "seals_blocked": 5
+    },
+    {
+      "sign": "M402",
+      "confidence": "LOW",
+      "reading": "v\u0113\u1e37",
+      "corpus_freq": 5,
+      "seals_blocked": 5
+    },
+    {
+      "sign": "M378",
+      "confidence": "LOW",
+      "reading": "kur",
+      "corpus_freq": 2,
+      "seals_blocked": 2
+    },
+    {
+      "sign": "M226",
+      "confidence": "LOW",
+      "reading": "kur",
+      "corpus_freq": 2,
+      "seals_blocked": 2
+    },
+    {
+      "sign": "M158",
+      "confidence": "LOW",
+      "reading": "kur",
+      "corpus_freq": 2,
+      "seals_blocked": 2
+    },
+    {
+      "sign": "M165",
+      "confidence": "LOW",
+      "reading": "kur",
+      "corpus_freq": 2,
+      "seals_blocked": 2
+    },
+    {
+      "sign": "M123",
+      "confidence": "LOW",
+      "reading": "kur",
+      "corpus_freq": 2,
+      "seals_blocked": 2
+    },
+    {
+      "sign": "M397",
+      "confidence": "LOW",
+      "reading": "kur",
+      "corpus_freq": 2,
+      "seals_blocked": 2
+    },
+    {
+      "sign": "M203",
+      "confidence": "LOW",
+      "reading": "kur",
+      "corpus_freq": 2,
+      "seals_blocked": 2
+    },
+    {
+      "sign": "M405",
+      "confidence": "LOW",
+      "reading": "kur",
+      "corpus_freq": 2,
+      "seals_blocked": 2
+    },
+    {
+      "sign": "M240",
+      "confidence": "LOW",
+      "reading": "kur",
+      "corpus_freq": 2,
+      "seals_blocked": 2
+    },
+    {
+      "sign": "M303",
+      "confidence": "LOW",
+      "reading": "kur",
+      "corpus_freq": 2,
+      "seals_blocked": 2
+    }
+  ],
+  "by_site": {
+    "Banawali": {
+      "fully_decoded": 55,
+      "total": 60,
+      "pct": 91.7
+    },
+    "Chanhu-daro": {
+      "fully_decoded": 70,
+      "total": 78,
+      "pct": 89.7
+    },
+    "Dholavira": {
+      "fully_decoded": 99,
+      "total": 106,
+      "pct": 93.4
+    },
+    "Harappa": {
+      "fully_decoded": 421,
+      "total": 492,
+      "pct": 85.6
+    },
+    "Kalibangan": {
+      "fully_decoded": 84,
+      "total": 110,
+      "pct": 76.4
+    },
+    "Lothal": {
+      "fully_decoded": 107,
+      "total": 124,
+      "pct": 86.3
+    },
+    "Mohenjo-daro": {
+      "fully_decoded": 518,
+      "total": 606,
+      "pct": 85.5
+    },
+    "Rakhigarhi": {
+      "fully_decoded": 23,
+      "total": 33,
+      "pct": 69.7
+    },
+    "Surkotada": {
+      "fully_decoded": 52,
+      "total": 61,
+      "pct": 85.2
+    }
+  },
+  "interpretation": "After Phases 128-129, 1429/1670 seals (85.6%) are fully decoded (all signs at MEDIUM+ confidence). The primary blocker class is LOW-confidence signs (134 signs, mostly rare allographs assigned 'kur' from Phase-111 allograph resolution). Unknown signs (not in ANCHORS at any level) block 0 seals. The remaining gap is structurally limited: 20 signs with freq 5-7 cannot be promoted without bilingual text or larger corpus. The seal decoding percentage (85.6%) represents the practical ceiling of what the current corpus and methodology can achieve."
+}

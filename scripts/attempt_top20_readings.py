@@ -1,7 +1,7 @@
 """
 Phase 9: Attempt structured readings of the top 20 most frequent CISI inscriptions.
 
-Uses confirmed sign role assignments from Phase 9 CAS experiments:
+Uses confirmed sign role assignments from Phase 9 constraint analysis experiments:
   TERMINAL signs → candidate Dravidian case suffixes
   INITIAL signs  → candidate title/determinative markers
   MEDIAL signs   → candidate phonetic stems
@@ -23,7 +23,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 NOW = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
-# ── Sign role assignments from Phase 9 CAS experiments ───────────────────────
+# ── Sign role assignments from Phase 9 constraint analysis experiments ───────────────────────
 # Source: reports/phase9_function_validation.json + phase9_template_readings.json
 SIGN_ROLES: dict[str, str] = {
     # TERMINAL signs (CAS engine, zero violations)
@@ -152,7 +152,7 @@ def main() -> None:
         "",
         "**CRITICAL**: All phoneme assignments are INFERRED from structural evidence.",
         "Only HIGH confidence anchors are verified. LOW/MED are hypotheses for falsification.",
-        "CAS = CPSC Constraint projection; SA = Simulated Annealing phonotactic fit.",
+        "CAS = positional constraint analysis; SA = Simulated Annealing phonotactic fit.",
         "",
         "## Legend",
         "- `[I=k]` → INITIAL sign, phoneme candidate /k/",

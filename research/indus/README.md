@@ -98,6 +98,22 @@ Glossa Lab UI (Corpora tab → Upload) and select it in the relevant experiment 
 
 ---
 
+## License
+
+All materials in this directory (preprint PDF, anchor table, phase reports, crosswalk) are
+released under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** license.
+
+See [`LICENSE-CC-BY-4.0`](LICENSE-CC-BY-4.0) for the full license text.
+
+> **arXiv**: CC BY 4.0 is fully compatible with arXiv submission requirements. When submitting
+> the preprint to arXiv, select "Creative Commons Attribution 4.0 International (CC BY 4.0)"
+> as the license. This allows free reuse with attribution.
+
+The Glossa Lab **source code** (`backend/`, `frontend/`, `tray/`, etc.) is separately
+licensed under the MIT License — see the root [`LICENSE`](../../LICENSE) file.
+
+---
+
 ## Citation
 
 ```

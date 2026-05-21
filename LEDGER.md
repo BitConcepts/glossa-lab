@@ -433,7 +433,7 @@ GitHub Actions CI/CD (.github/workflows/ci.yml):
   - Triggers on push + PR to main
   - All 445 backend tests + 39 Playwright Evidence Graph tests covered
 
-governance-tool model-rate-limits.json update (both root and backend/.specsmith/):
+governance-tool model-rate-limits.json update (both root and backend/.governance-tool/):
   - Added: o3, o4-mini, gpt-4.1/mini/nano, gemini-2.5-flash variants,
     gemini-2.5-pro-preview-05-06, claude-sonnet-4-20250514, claude-opus-4-5,
     gemini-3-pro-preview, gpt-5.4 preview aliases
@@ -483,8 +483,8 @@ Files changed:
   frontend/e2e/evidence-graph.spec.ts (NEW — 39 tests)
   backend/glossa_lab/database.py (MODIFIED — WAL PRAGMAs)
   .github/workflows/ci.yml (NEW — 3-job CI pipeline)
-  .specsmith/model-rate-limits.json (MODIFIED)
-  backend/.specsmith/model-rate-limits.json (MODIFIED)
+  .governance-tool/model-rate-limits.json (MODIFIED)
+  backend/.governance-tool/model-rate-limits.json (MODIFIED)
   backend/glossa_lab/ai/model_intelligence.py (MODIFIED — gpt-5.4)
   backend/glossa_lab/api/foundation_check.py (MODIFIED — check #8 archived)
   docs/REQUIREMENTS.md (MODIFIED — date + R16)
@@ -946,32 +946,32 @@ None — no new sign assignments. Results reinforce existing M047=min/mīn (MEDI
 
 
 ## 2026-05-18T20:15 — governance migration: 0.11.3 → 0.11.3.dev420
-- **Author**: specsmith
+- **Author**: governance-tool
 - **Type**: migration
 - **Status**: complete
 - **Chain hash**: `924850c24eae73da...`
 
 ## 2026-05-18T20:42 — governance migration: 0.11.3.dev420 → 0.11.3
-- **Author**: specsmith
+- **Author**: governance-tool
 - **Type**: migration
 - **Status**: complete
 - **Chain hash**: `78fa487f3eef016d...`
 
 ## 2026-05-20T10:53 — governance migration: 0.11.3 → 0.11.5
-- **Author**: specsmith
+- **Author**: governance-tool
 - **Type**: migration
 - **Status**: complete
 - **Chain hash**: `3864f5e82369827f...`
 
 ## 2026-05-20T10:53 — governance-preflight accepted utterance "recovering from interrupted session - reviewing what experiments were in progress" (work_item_id=WI-63F5E1BE, confidence_target=0.7).
-- **Author**: specsmith
+- **Author**: governance-tool
 - **Type**: preflight
 - **REQs affected**: REQ-085
 - **Status**: complete
 - **Chain hash**: `4a41c81b2954f789...`
 
 ## 2026-05-20T10:53 — work_proposal WI-63F5E1BE: recovering from interrupted session - reviewing what experiments were in progress
-- **Author**: specsmith
+- **Author**: governance-tool
 - **Type**: work_proposal
 - **REQs affected**: REQ-044,REQ-085
 - **Status**: complete

@@ -3,9 +3,9 @@
 # Wraps external commands with PID tracking, timeout enforcement, and abort support.
 # Usage: ./scripts/exec.sh <timeout_seconds> <command...>
 #
-# PID files: .specsmith/pids/<pid>.json (for governance-tool ps / governance-tool abort)
-# Logs:      .specsmith/logs/exec_<timestamp>.stdout/.stderr
-# Prefer:    governance-tool exec "<command>" --timeout <N>  (Python-based, full tracking)
+# PID files: logs/pids/<pid>.json
+# Logs:      logs/exec_<timestamp>.stdout/.stderr
+
 set -uo pipefail
 
 TIMEOUT_SECONDS="${1:?Usage: exec.sh <timeout_seconds> <command...>}"
@@ -13,8 +13,8 @@ shift
 COMMAND="$*"
 
 PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-PID_DIR="$PROJECT_ROOT/.specsmith/pids"
-LOG_DIR="$PROJECT_ROOT/.specsmith/logs"
+PID_DIR="$PROJECT_ROOT/logs/pids"
+LOG_DIR="$PROJECT_ROOT/logs/exec"
 mkdir -p "$PID_DIR" "$LOG_DIR"
 
 TIMESTAMP=$(date -u +%Y%m%d_%H%M%S)
@@ -28,7 +28,7 @@ echo "[exec] Timeout : ${TIMEOUT_SECONDS}s"
 bash -c "$COMMAND" > "$STDOUT_LOG" 2> "$STDERR_LOG" &
 CMD_PID=$!
 
-# Write PID file for governance-tool ps/abort
+# Write PID file for tracking
 cat > "$PID_DIR/${CMD_PID}.json" <<EOF
 {"pid": ${CMD_PID}, "command": "$COMMAND", "started": "$(date -u +%Y-%m-%dT%H:%M:%SZ)", "timeout": ${TIMEOUT_SECONDS}}
 EOF

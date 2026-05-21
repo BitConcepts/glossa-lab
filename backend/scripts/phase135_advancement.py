@@ -11,9 +11,13 @@ Builds on the post-Phase-133 decipherment state to:
 
 Output: backend/reports/phase135_advancement.json
 """
-import sys, json, os, datetime, math
-from pathlib import Path
+import datetime
+import json
+import math
+import os
+import sys
 from collections import Counter, defaultdict
+from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "backend"))
@@ -359,7 +363,7 @@ print(f"  Unstable (<50% agreement): {len(unstable)}")
 print(f"  Mean stability: {mean_stab:.3f}")
 
 if unstable:
-    print(f"\n  Most unstable signs (possible misclassifications):")
+    print("\n  Most unstable signs (possible misclassifications):")
     for s in sorted(unstable, key=lambda x: x["stability"])[:5]:
         print(f"    {s['sign']:10s} {s['reading']:10s} stability={s['stability']:.2f} "
               f"(global={s['global_class']}, {s['n_agree']}/{s['n_sites']} sites)")
@@ -399,7 +403,7 @@ non_hm = sorted(
 
 # Simulate: what coverage do we get if we promote top N non-H+M signs?
 print(f"\n  Current H+M token coverage: {current_cov:.2%}")
-print(f"\n  Coverage gain from promoting top-N blocking signs:")
+print("\n  Coverage gain from promoting top-N blocking signs:")
 print(f"  {'N promoted':>12} {'New coverage':>14} {'Gain':>8} {'Cumulative gain':>16}")
 cumulative_extra = 0
 promotion_scenarios = []
@@ -412,7 +416,7 @@ for n in [1, 3, 5, 10, 20, 50]:
                                  "gain": round(gain, 4), "extra_tokens": extra_tokens})
 
 # What does the top blocker look like?
-print(f"\n  Top 15 non-H+M signs (highest unlock potential):")
+print("\n  Top 15 non-H+M signs (highest unlock potential):")
 top_blockers_detail = []
 for sign, freq in non_hm[:15]:
     info = anchors.get(sign, {})

@@ -43,7 +43,7 @@ from __future__ import annotations
 import math
 import os
 import sys
-from collections import Counter, defaultdict
+from collections import Counter
 from pathlib import Path
 from typing import Any
 
@@ -193,13 +193,13 @@ def run_nw_semitic_benchmark(verbose: bool = True) -> dict[str, Any]:
     avg_wlen = sum(wlens) / len(wlens)
     len_dist = Counter(wlens)
 
-    _pr(f"\n  [1a] CORPUS STATISTICS")
+    _pr("\n  [1a] CORPUS STATISTICS")
     _pr(f"       Words (sequences): {len(corpus)}")
     _pr(f"       Total sign tokens: {n_tok}")
     _pr(f"       Distinct signs:    {n_types}  (full inventory stated: 78)")
     _pr(f"       Type/token ratio:  {n_types/n_tok:.4f}")
     _pr(f"       Average word length: {avg_wlen:.2f} signs/word")
-    _pr(f"       Word length distribution:")
+    _pr("       Word length distribution:")
     for wl in sorted(len_dist):
         bar = "#" * len_dist[wl]
         _pr(f"         {wl:2d} signs: {len_dist[wl]:3d} words  {bar}")
@@ -209,7 +209,7 @@ def run_nw_semitic_benchmark(verbose: bool = True) -> dict[str, Any]:
     top5     = freq.most_common(5)
     zipf_r2  = _zipf_r2(freq)
 
-    _pr(f"\n  [1b] FREQUENCY / ZIPF")
+    _pr("\n  [1b] FREQUENCY / ZIPF")
     _pr(f"       Hapax legomena (freq=1): {hapax}  ({hapax/n_types*100:.1f}% of types)")
     _pr(f"       Top 5 signs: {top5}")
     _pr(f"       Zipf R^2: {zipf_r2:.4f}  "
@@ -236,15 +236,15 @@ def run_nw_semitic_benchmark(verbose: bool = True) -> dict[str, Any]:
     ini = sorted([(s, p) for s, p in profiles.items() if p["I"] > 0.4],
                  key=lambda x: -x[1]["I"])
 
-    _pr(f"\n  [1c] POSITIONAL PROFILES (signs with n>=2)")
-    _pr(f"       TERMINAL MARKERS (T-rate > 0.50)  — likely grammatical suffixes:")
+    _pr("\n  [1c] POSITIONAL PROFILES (signs with n>=2)")
+    _pr("       TERMINAL MARKERS (T-rate > 0.50)  — likely grammatical suffixes:")
     if tmk:
         for s, p in tmk[:8]:
             _pr(f"         Sign {s}: T={p['T']:.3f}  I={p['I']:.3f}  M={p['M']:.3f}  n={p['n']}")
     else:
         _pr("         (none above threshold)")
 
-    _pr(f"       HIGH-INITIAL signs (I-rate > 0.40)  — likely word-initial markers:")
+    _pr("       HIGH-INITIAL signs (I-rate > 0.40)  — likely word-initial markers:")
     if ini:
         for s, p in ini[:8]:
             _pr(f"         Sign {s}: T={p['T']:.3f}  I={p['I']:.3f}  M={p['M']:.3f}  n={p['n']}")
@@ -268,14 +268,14 @@ def run_nw_semitic_benchmark(verbose: bool = True) -> dict[str, Any]:
     h1_max   = math.log2(n_types) if n_types > 1 else 1.0
     h1_ratio = h1 / h1_max
 
-    _pr(f"\n  [1d] ENTROPY")
+    _pr("\n  [1d] ENTROPY")
     _pr(f"       H1 (unigram):           {h1:.4f} bits  (max for {n_types} types = {h1_max:.2f})")
     _pr(f"       H1/H1_max:              {h1_ratio:.4f}  "
         f"({'near uniform' if h1_ratio > 0.92 else 'structured/compressed'})")
     _pr(f"       H2 (joint bigram):      {h2_joint:.4f} bits")
     _pr(f"       H2|H1 (conditional):    {h2_cond:.4f} bits")
     _pr(f"       Redundancy:             {(1-h1_ratio)*100:.1f}%")
-    _pr(f"       Reference: Ugaritic alphabet H1~4.5, syllabic H1~5.5-6.5, logographic H1>7")
+    _pr("       Reference: Ugaritic alphabet H1~4.5, syllabic H1~5.5-6.5, logographic H1>7")
 
     # ── 1e. Clustering by positional behaviour ────────────────────────
     # Group signs by dominant function: T-dominant, I-dominant, M-dominant, mixed
@@ -288,13 +288,13 @@ def run_nw_semitic_benchmark(verbose: bool = True) -> dict[str, Any]:
             key = "MIXED"
         clusters[key].append(sign)
 
-    _pr(f"\n  [1e] SIGN FUNCTIONAL CLUSTERS (positional behaviour)")
+    _pr("\n  [1e] SIGN FUNCTIONAL CLUSTERS (positional behaviour)")
     for cname, members in clusters.items():
         _pr(f"       {cname:10s} ({len(members):2d} signs): {', '.join(sorted(members)[:12])}"
             f"{'...' if len(members) > 12 else ''}")
 
     # ── 2a. Writing system tier comparison ────────────────────────────
-    _pr(f"\n  [2a] WRITING SYSTEM TIER ASSESSMENT")
+    _pr("\n  [2a] WRITING SYSTEM TIER ASSESSMENT")
     if n_types <= 35:
         tier_guess = "Alphabetic (<=35 distinct signs)"
     elif n_types <= 100:
@@ -302,7 +302,7 @@ def run_nw_semitic_benchmark(verbose: bool = True) -> dict[str, Any]:
     else:
         tier_guess = "Logo-syllabic or logographic (>100 signs)"
     _pr(f"       Distinct signs in corpus: {n_types}  -> {tier_guess}")
-    _pr(f"       Full stated inventory:    78  -> Syllabic confirmed")
+    _pr("       Full stated inventory:    78  -> Syllabic confirmed")
 
     nws_syllabic_avg_wlen = 2.8  # typical NW Semitic syllabic word: 2-4 syllables
     _pr(f"       Avg word length {avg_wlen:.2f} signs vs NW Semitic syllabic expected ~2.5-4.0")
@@ -310,20 +310,20 @@ def run_nw_semitic_benchmark(verbose: bool = True) -> dict[str, Any]:
     _pr(f"       Word-length assessment: {match} with NW Semitic syllabic")
 
     # ── 2c. Terminal marker interpretation ───────────────────────────
-    _pr(f"\n  [2c] TERMINAL MARKER INTERPRETATION")
-    _pr(f"       NW Semitic languages use pronominal suffixes and case markers")
-    _pr(f"       at word end. Expected: 2-5 high-T signs in a syllabic NW Semitic corpus.")
+    _pr("\n  [2c] TERMINAL MARKER INTERPRETATION")
+    _pr("       NW Semitic languages use pronominal suffixes and case markers")
+    _pr("       at word end. Expected: 2-5 high-T signs in a syllabic NW Semitic corpus.")
     _pr(f"       Found {len(tmk)} terminal-dominant signs (T > 0.50).")
     if 1 <= len(tmk) <= 7:
         _pr("       -> COUNT CONSISTENT with NW Semitic grammatical suffix system.")
     elif len(tmk) == 0:
         _pr("       -> WARNING: No terminal-dominant signs. May indicate very short corpus.")
     else:
-        _pr(f"       -> HIGH COUNT: may reflect restricted word classes in this corpus.")
+        _pr("       -> HIGH COUNT: may reflect restricted word classes in this corpus.")
 
     # ── 3. Syllabic decipherment attempt ──────────────────────────────
-    _pr(f"\n  [3] SYLLABIC DECIPHERMENT ATTEMPT")
-    _pr(f"      Building Hebrew CV-syllable language model ...")
+    _pr("\n  [3] SYLLABIC DECIPHERMENT ATTEMPT")
+    _pr("      Building Hebrew CV-syllable language model ...")
 
     syllables, bigram_freq, unigram = _build_syllabic_lm()
     _pr(f"      Syllable types in LM: {len(syllables)}")
@@ -354,9 +354,9 @@ def run_nw_semitic_benchmark(verbose: bool = True) -> dict[str, Any]:
         if candidates:
             proposed_mapping[sign] = candidates[0]
 
-    _pr(f"\n  [3] PROPOSED SIGN -> SYLLABLE MAPPING (frequency-rank + positional refinement)")
-    _pr(f"      NOTE: No answer key available. This is a hypothesis seed only.")
-    _pr(f"      Notation: sign_id -> consonant_vowel  (e.g. 'l_a' = syllable 'la')")
+    _pr("\n  [3] PROPOSED SIGN -> SYLLABLE MAPPING (frequency-rank + positional refinement)")
+    _pr("      NOTE: No answer key available. This is a hypothesis seed only.")
+    _pr("      Notation: sign_id -> consonant_vowel  (e.g. 'l_a' = syllable 'la')")
     _pr()
     _pr(f"      {'Sign':>5}  {'->':2}  {'Syllable':<10}  {'T-rate':>7}  {'I-rate':>7}  {'Freq':>5}")
     _pr("      " + "-" * 48)
@@ -366,8 +366,8 @@ def run_nw_semitic_benchmark(verbose: bool = True) -> dict[str, Any]:
             f"{p['T']:>7.3f}  {p['I']:>7.3f}  {freq.get(sign,0):>5}")
 
     # ── Summary ───────────────────────────────────────────────────────
-    _pr(f"\n  SUMMARY FOR DR. FULS")
-    _pr(f"  =====================")
+    _pr("\n  SUMMARY FOR DR. FULS")
+    _pr("  =====================")
     _pr(f"  Corpus:      {len(corpus)} words, {n_tok} tokens, {n_types} distinct signs")
     _pr(f"  Inventory:   {n_types} signs observed (78 stated in full inventory)")
     _pr(f"  Entropy H1:  {h1:.3f} bits  (ratio {h1_ratio:.3f} — {'structured' if h1_ratio < 0.92 else 'near-random'})")
@@ -375,7 +375,7 @@ def run_nw_semitic_benchmark(verbose: bool = True) -> dict[str, Any]:
     _pr(f"  Word length: {avg_wlen:.2f} signs avg  (NW Semitic syllabic: 2.5–4.0 expected)")
     _pr(f"  TMK signs:   {len(tmk)} terminal-dominant (expected 2–5 for NW Semitic)")
     _pr(f"  Tier:        SYLLABIC confirmed ({n_types} signs in corpus)")
-    _pr(f"  Decipherment: proposed mapping provided above (hypothesis only; no GT validation)")
+    _pr("  Decipherment: proposed mapping provided above (hypothesis only; no GT validation)")
     _pr()
 
     return {
@@ -396,9 +396,9 @@ def run_nw_semitic_benchmark(verbose: bool = True) -> dict[str, Any]:
         "terminal_markers": [(s, p) for s, p in tmk],
         "proposed_mapping": proposed_mapping,
         "notes": [
-            f"No answer key available — proposed mapping is frequency-rank hypothesis only.",
+            "No answer key available — proposed mapping is frequency-rank hypothesis only.",
             f"Corpus size ({n_tok} tokens) is small; statistical estimates have high variance.",
-            f"78 sign inventory is consistent with 22-consonant NW Semitic syllabary × 4 vowels.",
+            "78 sign inventory is consistent with 22-consonant NW Semitic syllabary × 4 vowels.",
         ],
     }
 

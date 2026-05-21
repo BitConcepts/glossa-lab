@@ -16,9 +16,6 @@ This is the FINAL computationally-achievable experiment before ICIT corpus.
 
 import csv
 import json
-import sys
-import time
-import warnings
 from collections import Counter
 from pathlib import Path
 

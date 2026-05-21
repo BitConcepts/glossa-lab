@@ -11,7 +11,9 @@ derived from Phases 74-108:
 CPU only. Output: reports/phase112_grammar_slot_inference.json
 """
 from __future__ import annotations
-import csv, json
+
+import csv
+import json
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -64,15 +66,15 @@ def infer_from_context(prev: str, nxt: str, confirmed: set) -> dict:
     if prev_is_animal and nxt_is_suffix:
         return {"slot": "NAME_AFTER_ANIMAL", "confidence": "INFERRED",
                 "candidates": SLOT_CANDIDATES["NAME_AFTER_ANIMAL"],
-                "pattern": f"[ANIMAL]-[X]-[SUFFIX]"}
+                "pattern": "[ANIMAL]-[X]-[SUFFIX]"}
     elif prev_is_genitive and nxt_is_suffix:
         return {"slot": "NAME_AFTER_GENITIVE", "confidence": "INFERRED",
                 "candidates": SLOT_CANDIDATES["NAME_AFTER_GENITIVE"],
-                "pattern": f"[GENITIVE]-[X]-[SUFFIX]"}
+                "pattern": "[GENITIVE]-[X]-[SUFFIX]"}
     elif prev in confirmed and nxt in confirmed:
         return {"slot": "MEDIAL_BETWEEN_CONF", "confidence": "INFERRED",
                 "candidates": SLOT_CANDIDATES["MEDIAL_BETWEEN_CONF"],
-                "pattern": f"[CONF]-[X]-[CONF]"}
+                "pattern": "[CONF]-[X]-[CONF]"}
     return {}
 
 

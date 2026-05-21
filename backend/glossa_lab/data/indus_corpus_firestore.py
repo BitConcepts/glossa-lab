@@ -220,6 +220,6 @@ if __name__ == "__main__":
     print(json.dumps(stats, indent=2, default=str))
     seqs = load_corpus()
     print(f"\nLoaded {len(seqs)} sequences (min_length=2)")
-    print(f"Sample sequences:")
+    print("Sample sequences:")
     for s in seqs[:5]:
         print(f"  {s}")

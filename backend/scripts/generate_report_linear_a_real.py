@@ -2,30 +2,34 @@
 Run: shell.cmd python backend/generate_report_linear_a_real.py
 Output: reports/linear_a_real_analysis.pdf
 """
-import sys, os
-from pathlib import Path
-from datetime import datetime, timezone
+import os
+import sys
 from collections import Counter
+from datetime import datetime, timezone
+from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'tests'))
 
-from reportlab.lib.pagesizes import A4
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.lib.units import cm
 from reportlab.lib.colors import HexColor, white
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable
 from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
+from reportlab.lib.units import cm
+from reportlab.platypus import HRFlowable, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
-from tests.corpora.linear_a_real_corpus import (
-    generate_real_linear_a_sequence, translate_sequence_to_phonemes,
-    extract_phoneme_only_words, KNOWN_LINEAR_A_WORDS,
-    GORILA_TO_PHONEME, _ALREADY_PHONETIC,
-)
+from glossa_lab.data.linear_b_language import get_corpus_symbols
 from glossa_lab.pipelines.block_entropy import compute_block_entropies
 from glossa_lab.pipelines.decipher import LanguageModel
-from glossa_lab.pipelines.hypothesis import HypothesisEngine, Hypothesis
-from glossa_lab.data.linear_b_language import get_corpus_symbols
+from glossa_lab.pipelines.hypothesis import Hypothesis, HypothesisEngine
+from tests.corpora.linear_a_real_corpus import (
+    _ALREADY_PHONETIC,
+    GORILA_TO_PHONEME,
+    KNOWN_LINEAR_A_WORDS,
+    extract_phoneme_only_words,
+    generate_real_linear_a_sequence,
+    translate_sequence_to_phonemes,
+)
 
 NAVY = HexColor("#1e3a5f"); BLUE = HexColor("#2563eb"); GREEN = HexColor("#15803d")
 RED  = HexColor("#dc2626"); AMBER= HexColor("#d97706"); LGREY= HexColor("#f1f5f9")
@@ -243,7 +247,7 @@ for r in [
     "[5] van Soesbergen, P. (2022). The Decipherment of Minoan Linear A. 8 vols.",
     "[6] Palmer, L.R. (1958). Luvian and Linear A. Transactions of the Philological Society.",
     "[7] Rao et al. (2009). Science 324:1165.",
-    
+
 ]:
     c.append(Paragraph(r, SMALL))
 

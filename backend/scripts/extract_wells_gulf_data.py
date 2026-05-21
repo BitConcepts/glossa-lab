@@ -1,6 +1,8 @@
 """Extract Gulf-context seal data from Wells PhD thesis."""
-import fitz, json
+import json
 from pathlib import Path
+
+import fitz
 
 PDF = Path(r"C:\Users\trist\Development\BitConcepts\glossa-lab\corpora\downloads\external_repos\wells_epigraphic_approaches_phd.pdf")
 OUT = Path(r"C:\Users\trist\Development\BitConcepts\glossa-lab\corpora\downloads\external_repos\wells_gulf_excerpts.json")

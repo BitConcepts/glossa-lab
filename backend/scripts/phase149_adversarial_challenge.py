@@ -17,9 +17,11 @@ For each claim in the Roif draft message:
 
 Output: backend/reports/phase149_adversarial_challenge.json
 """
-import sys, json, math
+import json
+import math
+import sys
+from collections import Counter
 from pathlib import Path
-from collections import Counter, defaultdict
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "backend"))
@@ -120,7 +122,8 @@ high_freq_count = sum(1 for k in hm_set if sign_freq.get(k,0) >= 30)
 
 # Also: is the rate 17/21 significantly above chance (would 81% occur by random collocate shuffling)?
 # Null: random collocates should give divergence in ~50% of signs
-from math import comb, log2
+from math import comb
+
 null_p_poly = 0.50
 n_trials = n_tested
 k_obs = n_poly
@@ -161,9 +164,9 @@ challenge(
     "63 enriched INITIAL×icon pairs (chi-square with Bonferroni correction)",
     f"Expected false positives at alpha=0.05 without correction: {expected_by_chance:.1f}. "
     f"Top-20 associations with chi2>{bonferroni_threshold_chi2} (Bonferroni threshold): {n_above_bonferroni}/20",
-    f"All top-20 pairs (chi2 range 4.9-158.5) survive Bonferroni. "
-    f"Expected false positives ~20 — 63 enriched means ~43 genuinely significant. "
-    f"Top 5 pairs (chi2 66-158) are unreachable by chance at ANY reasonable threshold.",
+    "All top-20 pairs (chi2 range 4.9-158.5) survive Bonferroni. "
+    "Expected false positives ~20 — 63 enriched means ~43 genuinely significant. "
+    "Top 5 pairs (chi2 66-158) are unreachable by chance at ANY reasonable threshold.",
     "SURVIVES",
     "63 total enriched pairs likely includes some near-threshold cases. "
     "The top ~40 pairs are robust; the bottom ~20 are marginal. "
@@ -200,9 +203,9 @@ challenge(
     f"M342 is common ({m342_pct:.1f}% of tokens) — bigrams with M342 are frequent by design. "
     f"PMI=2.43 controls for marginal frequencies. This is a genuine collocate, not frequency artifact.",
     "SURVIVES_WITH_CAVEAT",
-    f"M342 is the corpus's most frequent sign. ANY bigram with M342 will have elevated counts. "
-    f"The PMI of 2.43 is the relevant metric (not raw count). "
-    f"Caveat: PMI is inflated by corpus size; should note 'highest-PMI bigram' not just 'most frequent bigram'.",
+    "M342 is the corpus's most frequent sign. ANY bigram with M342 will have elevated counts. "
+    "The PMI of 2.43 is the relevant metric (not raw count). "
+    "Caveat: PMI is inflated by corpus size; should note 'highest-PMI bigram' not just 'most frequent bigram'.",
     True
 )
 
@@ -230,10 +233,10 @@ challenge(
     f"Among eligible multi-sign seals the partial match rate is {v06_partial}%. "
     f"Many 2-sign seals are [TITLE][CASE] (abbreviated form), still consistent with grammar.",
     "SURVIVES_WITH_CAVEAT",
-    f"The 3-slot grammar is a structural TEMPLATE, not an expected frequency. "
-    f"Short seals (median=3-4 signs) typically show [TITLE][SUFFIX] pairs. "
-    f"The grammar model predicts SLOT ORDER, not mandatory slot occupation. "
-    f"Must clarify in message: 'formula structure' applies to multi-sign seals, not all 1670.",
+    "The 3-slot grammar is a structural TEMPLATE, not an expected frequency. "
+    "Short seals (median=3-4 signs) typically show [TITLE][SUFFIX] pairs. "
+    "The grammar model predicts SLOT ORDER, not mandatory slot occupation. "
+    "Must clarify in message: 'formula structure' applies to multi-sign seals, not all 1670.",
     True
 )
 
@@ -303,10 +306,10 @@ challenge(
     f"Coastal enrichment: {'YES' if rr>1.2 else 'NO'} (RR={rr:.2f}). "
     f"Fish sign is NOT significantly enriched at coastal vs inland sites.",
     "SURVIVES_WITH_CAVEAT",
-    f"The '0/113 isolated' claim SURVIVES strongly. "
-    f"The coastal-specific claim does NOT hold (fish signs appear at ALL sites equally). "
-    f"The Roif message correctly says '100% compound across all sites including Lothal' — "
-    f"this is accurate. Must NOT imply fish = maritime guild specifically; it's compound everywhere.",
+    "The '0/113 isolated' claim SURVIVES strongly. "
+    "The coastal-specific claim does NOT hold (fish signs appear at ALL sites equally). "
+    "The Roif message correctly says '100% compound across all sites including Lothal' — "
+    "this is accurate. Must NOT imply fish = maritime guild specifically; it's compound everywhere.",
     True
 )
 
@@ -332,14 +335,14 @@ challenge(
     f"HIGH anchors (n={high_count}) assigned from iconographic/independent evidence only. "
     f"Drv-exclusive phonemes in HIGH readings alone: {drv_high}/{high_count} ({100*drv_high/high_count:.1f}%). "
     f"SKT-exclusive in HIGH readings: 0/{high_count}.",
-    f"HIGH readings are iconographically assigned (independent of LM). "
-    f"0/75 HIGH readings have Sanskrit-exclusive phonemes → not circular for this subset. "
-    f"MEDIUM readings may be circular (Dravidian LM bias). "
-    f"Safe claim: restrict to HIGH-confidence readings only.",
+    "HIGH readings are iconographically assigned (independent of LM). "
+    "0/75 HIGH readings have Sanskrit-exclusive phonemes → not circular for this subset. "
+    "MEDIUM readings may be circular (Dravidian LM bias). "
+    "Safe claim: restrict to HIGH-confidence readings only.",
     "SURVIVES_WITH_CAVEAT",
-    f"The DRV:SKT = 35:0 stat includes MEDIUM anchors, which are Dravidian-LM assigned (circular). "
-    f"The non-circular version: HIGH anchors alone show 0/75 Sanskrit-exclusive phonemes and 20/75 Drv-exclusive. "
-    f"This is NOT in the Roif message (message doesn't mention F3). Safe to omit from Roif message.",
+    "The DRV:SKT = 35:0 stat includes MEDIUM anchors, which are Dravidian-LM assigned (circular). "
+    "The non-circular version: HIGH anchors alone show 0/75 Sanskrit-exclusive phonemes and 20/75 Drv-exclusive. "
+    "This is NOT in the Roif message (message doesn't mention F3). Safe to omit from Roif message.",
     True  # F3 not in the Roif message, so safe regardless
 )
 
@@ -392,10 +395,10 @@ challenge(
     f"Rakhigarhi is particularly small (n={rakhi_n}). KL=0.708 at this sample size is uncertain. "
     f"Phase-135 also reports grammar 90% STABLE across all 9 sites — contradicts strong specialization.",
     "SURVIVES_WITH_CAVEAT",
-    f"KL=0.708 between two of the SMALLEST sites in the corpus. "
-    f"Bootstrapped confidence interval not computed. "
-    f"Claim should be softened: 'sign repertoire differs between sites' rather than 'maritime vs admin'. "
-    f"The functional interpretation (maritime vs admin) is speculative given sample sizes.",
+    "KL=0.708 between two of the SMALLEST sites in the corpus. "
+    "Bootstrapped confidence interval not computed. "
+    "Claim should be softened: 'sign repertoire differs between sites' rather than 'maritime vs admin'. "
+    "The functional interpretation (maritime vs admin) is speculative given sample sizes.",
     True
 )
 
@@ -406,16 +409,16 @@ print("─"*70)
 challenge(
     "C10",
     "Readings are phonologically consistent (implicit in all phonetic claims)",
-    f"V12 (Phase-132): Vowel harmony rate 75.3% (476/632 decoded seals), threshold=85%. "
-    f"Below threshold suggests some phonological inconsistency in readings.",
-    f"V12 WARNING: 24.7% of decoded seals FAIL vowel harmony test. "
-    f"Caveat applies to phonetic claims but NOT to structural/positional claims. "
-    f"Roif message makes structural claims (polysemy, icon co-encoding, formula backbone). "
-    f"No phonetic claims in the Roif message → V12 does not challenge the message content.",
+    "V12 (Phase-132): Vowel harmony rate 75.3% (476/632 decoded seals), threshold=85%. "
+    "Below threshold suggests some phonological inconsistency in readings.",
+    "V12 WARNING: 24.7% of decoded seals FAIL vowel harmony test. "
+    "Caveat applies to phonetic claims but NOT to structural/positional claims. "
+    "Roif message makes structural claims (polysemy, icon co-encoding, formula backbone). "
+    "No phonetic claims in the Roif message → V12 does not challenge the message content.",
     "SURVIVES_WITH_CAVEAT",
-    f"V12 is a caveat for phonetic/reading accuracy. Phase-133 resolution: "
-    f"Tamil LM trained on modern Tamil; Proto-Dravidian vowel harmony may differ from modern patterns. "
-    f"Does NOT affect structural claims to Roif. Must not make strong phonetic claims.",
+    "V12 is a caveat for phonetic/reading accuracy. Phase-133 resolution: "
+    "Tamil LM trained on modern Tamil; Proto-Dravidian vowel harmony may differ from modern patterns. "
+    "Does NOT affect structural claims to Roif. Must not make strong phonetic claims.",
     True
 )
 
@@ -439,12 +442,12 @@ print(f"  WEAKENED:              {weakened}")
 print(f"  FAILS:                 {fails}")
 print(f"  Safe to send to Roif:  {safe_count}/{len(challenges)}")
 
-print(f"\n  Claims requiring caveat or modification:")
+print("\n  Claims requiring caveat or modification:")
 for c in challenges:
     if c["verdict"] in ("SURVIVES_WITH_CAVEAT","WEAKENED","FAILS"):
         print(f"    {c['claim_id']}: {c['verdict']} — {c['caveats'][:80]}")
 
-print(f"\n  Key modifications needed for Roif message:")
+print("\n  Key modifications needed for Roif message:")
 mods = []
 if any(c["claim_id"]=="C3" for c in challenges if c["verdict"]=="SURVIVES_WITH_CAVEAT"):
     mods.append("C3: Cite 'highest-PMI bigram' (PMI=2.43) not just raw count of 122 seals")

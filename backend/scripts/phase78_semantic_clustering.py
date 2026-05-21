@@ -12,7 +12,11 @@ GPU: torch for formula classification matrix and site comparison.
 Output: reports/phase78_semantic_clustering.json
 """
 from __future__ import annotations
-import csv, json, math, sys
+
+import csv
+import json
+import math
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -135,13 +139,13 @@ def main():
             "formula_type": formula_type,
         })
 
-    print(f"\n  Classification results:")
+    print("\n  Classification results:")
     for ftype, count in corpus_type_dist.most_common():
         pct = count / len(seals) * 100
         print(f"    {ftype:20s}: {count:4d} ({pct:.1f}%)")
 
     # Site distribution
-    print(f"\n  Site x Formula-type breakdown:")
+    print("\n  Site x Formula-type breakdown:")
     sites = sorted(site_dist.keys())
     types = ["TITLE_FORMULA", "PLACE_FORMULA", "SUFFIX_ONLY", "UNCERTAIN"]
     for site in sites:
@@ -189,7 +193,7 @@ def main():
     place_pct = corpus_type_dist.get("PLACE_FORMULA", 0) / total * 100
     uncertain_pct = corpus_type_dist.get("UNCERTAIN", 0) / total * 100
 
-    print(f"\n=== Phase-78 Results ===")
+    print("\n=== Phase-78 Results ===")
     print(f"  Seals classified:   {n_classified}/{total} ({n_classified/total:.0%})")
     print(f"  TITLE_FORMULA:      {title_pct:.1f}%")
     print(f"  PLACE_FORMULA:      {place_pct:.1f}%")

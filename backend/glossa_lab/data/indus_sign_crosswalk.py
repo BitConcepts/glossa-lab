@@ -24,9 +24,9 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 
-from glossa_lab.data.indus_object_model import RelationType, SignIdScheme
+from glossa_lab.data.indus_object_model import SignIdScheme
 
 _DATA = Path(__file__).parent
 
@@ -368,7 +368,6 @@ def get_crosswalk() -> IndusSignCrosswalk:
 
 
 if __name__ == "__main__":
-    import json as _json
     xw = get_crosswalk()
     stats = xw.coverage_stats()
     print("=== Indus Sign Crosswalk Coverage ===")

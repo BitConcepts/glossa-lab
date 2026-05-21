@@ -16,7 +16,13 @@ Approach:
 GPU: BigramScorer. Output: reports/phase93_m293_sa.json
 """
 from __future__ import annotations
-import csv, json, math, random, re, time
+
+import csv
+import json
+import math
+import random
+import re
+import time
 from collections import Counter
 from pathlib import Path
 
@@ -85,8 +91,9 @@ def build_syllabic_lm():
 def run_constrained_sa(flat: list, lm_prob: dict, pins: dict,
                        n_seeds: int, vocab: list) -> list[dict]:
     """Run SA with pinned anchors and return proposed mappings."""
-    from glossa_lab.pipelines.decipher import BigramScorer
     from types import SimpleNamespace
+
+    from glossa_lab.pipelines.decipher import BigramScorer
 
     tc = Counter(flat)
     ranked = [t for t, _ in tc.most_common()]
@@ -199,8 +206,9 @@ def main():
         consistency = Counter(m293_proposals).most_common(1)[0][1] / len(maps) if maps else 0
 
         # Measure total score
-        from glossa_lab.pipelines.decipher import BigramScorer
         from types import SimpleNamespace
+
+        from glossa_lab.pipelines.decipher import BigramScorer
         tc = Counter(m293_flat); ranked = [t for t, _ in tc.most_common()]
         scorer = BigramScorer(SimpleNamespace(ranked=ranked, bigram_freq=lm_prob), m293_flat)
         scores = [scorer.score_full(m) for m in maps if m]
@@ -237,7 +245,7 @@ def main():
         verdict_reading = "vil"
         resolution = f"SA SUPPORTS 'vil' — pin degrades score by {vil_loss:.4f} vs ta {ta_loss:.4f}"
 
-    print(f"\n=== Phase-93 Results ===")
+    print("\n=== Phase-93 Results ===")
     print(f"  Free-run M293 modal: '{free_modal}'")
     print(f"  Score: free={free_score:.4f}, ta_pin={ta_score:.4f}, vil_pin={vil_score:.4f}")
     print(f"  Loss: ta={ta_loss:.4f}, vil={vil_loss:.4f}")

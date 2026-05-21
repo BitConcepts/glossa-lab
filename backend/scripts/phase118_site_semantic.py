@@ -7,7 +7,9 @@ Compares Harappa vs Mohenjo-daro vs Dholavira.
 CPU only. Output: reports/phase118_site_semantic.json
 """
 from __future__ import annotations
-import csv, json
+
+import csv
+import json
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -141,7 +143,7 @@ def main():
                 "diff": round(h_rate - m_rate, 4),
                 "dominant": "Harappa" if h_rate > m_rate else "Mohenjo-daro",
             }
-        print(f"\n  Harappa vs Mohenjo-daro field comparison:")
+        print("\n  Harappa vs Mohenjo-daro field comparison:")
         for f, c in comparison.items():
             if abs(c["diff"]) > 0.005:
                 print(f"    {f}: H={c['harappa']:.1%} M={c['mohenjo_daro']:.1%} → {c['dominant']}")

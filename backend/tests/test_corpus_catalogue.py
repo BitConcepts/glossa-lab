@@ -1,6 +1,5 @@
 """Tests for the world language corpus catalogue API (H16 Phase 3)."""
 
-import pytest
 
 
 # ── Seeder ─────────────────────────────────────────────────────────────────────

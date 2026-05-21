@@ -189,7 +189,10 @@ def _load_corpus(corpus_id: str) -> dict | None:
 
         elif corpus_id == "nw_semitic":
             from glossa_lab.data.nw_semitic import (
-                corpus_statistics, get_corpus_inscriptions, get_corpus_symbols, FULS_ANCHORS
+                FULS_ANCHORS,
+                corpus_statistics,
+                get_corpus_inscriptions,
+                get_corpus_symbols,
             )
             flat  = get_corpus_symbols()
             inscs = get_corpus_inscriptions()
@@ -218,7 +221,9 @@ def _load_corpus(corpus_id: str) -> dict | None:
 
         elif corpus_id == "geez":
             from glossa_lab.data.geez import (
-                corpus_statistics, get_corpus_inscriptions, get_corpus_symbols
+                corpus_statistics,
+                get_corpus_inscriptions,
+                get_corpus_symbols,
             )
 
             flat  = get_corpus_symbols()

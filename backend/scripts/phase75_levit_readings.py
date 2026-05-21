@@ -15,7 +15,9 @@ Output: reports/phase75_levit_readings.json
         updates INDUS_FINAL_ANCHORS.json with confirmed readings
 """
 from __future__ import annotations
-import csv, json
+
+import csv
+import json
 from collections import Counter
 from pathlib import Path
 
@@ -179,7 +181,7 @@ def main():
                 existing_conf = anchors[m_num].get("confidence","?")
                 if existing_conf in ("LOW", "UNCERTAIN"):
                     anchors[m_num]["confidence"] = "MEDIUM"
-                    anchors[m_num]["source"] += f"+Levit2010"
+                    anchors[m_num]["source"] += "+Levit2010"
                     print(f"    UPGRADED: {m_num} confidence -> MEDIUM")
 
     # Save updated anchors
@@ -187,12 +189,12 @@ def main():
     anchors_data["total"]   = len(anchors)
     ANCHORS.write_text(json.dumps(anchors_data, indent=2, ensure_ascii=False), "utf-8")
 
-    print(f"\n=== Phase-75 Results ===")
+    print("\n=== Phase-75 Results ===")
     print(f"  Levit readings processed: {len(LEVIT_READINGS)}")
     print(f"  Validated (confirmed):    {n_validated}")
     print(f"  New anchors added:        {n_added}")
-    print(f"  Levit 2010 is valuable because: 6 HIGH/MEDIUM-quality corroborations")
-    print(f"  Most valuable: Confirms ay, an, aaL, kol, miin — all our core anchors")
+    print("  Levit 2010 is valuable because: 6 HIGH/MEDIUM-quality corroborations")
+    print("  Most valuable: Confirms ay, an, aaL, kol, miin — all our core anchors")
 
     result = {
         "_citation": {"primary": ["A.1"], "levit_2010": "Levit 2010 Studia Orientalia 110"},

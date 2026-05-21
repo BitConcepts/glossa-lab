@@ -18,9 +18,10 @@ For each LOW-confidence sign (240 total, 220 with placeholder "kur"):
 Output: backend/reports/phase161_162_165_reading_extraction.json
         backend/reports/phase161_162_165_upgrade_proposals.json
 """
-import sys, json, re
+import json
+import re
+from collections import defaultdict
 from pathlib import Path
-from collections import defaultdict, Counter
 
 REPO      = Path(__file__).resolve().parents[2]
 PDF_DIR   = REPO / "corpora/downloads/external_repos/acquired_pdfs"
@@ -228,14 +229,14 @@ genuine_upgrades = [c for c in upgrade_candidates
 
 print(f"\n  Total signs with literature proposals: {len(all_proposals)}")
 print(f"  LOW signs with upgrade proposals: {len(genuine_upgrades)}")
-print(f"\n  TOP UPGRADE CANDIDATES:")
+print("\n  TOP UPGRADE CANDIDATES:")
 print(f"  {'Sign':<8} {'Current':>8} {'Target':>8} {'N':>4} {'Reading':<15} {'Sources'}")
 for c in genuine_upgrades[:20]:
     print(f"  {c['sign_id']:<8} {c['current_confidence']:>8} {c['target_confidence']:>8} "
           f"{c['n_sources']:>4} {c['proposed_reading']:<15} {c['sources']}")
 
 # ─── Also: check NEW readings for LOW "kur" signs ────────────────────────
-print(f"\n  Signs proposed for kur→specific upgrade:")
+print("\n  Signs proposed for kur→specific upgrade:")
 kur_upgrades = [c for c in upgrade_candidates
                 if anchors.get(c["sign_id"],{}).get("reading","") == "kur"
                 and c["promote"]]
@@ -244,7 +245,7 @@ for c in kur_upgrades[:10]:
     print(f"    {c['sign_id']}: kur → {c['proposed_reading']} ({c['n_sources']} sources: {c['sources']})")
 
 # Summary
-print(f"\n  SUMMARY:")
+print("\n  SUMMARY:")
 print(f"  Parpola proposals: {len(parpola_proposals)} signs")
 print(f"  Mahadevan proposals: {len(maha_proposals)} signs")
 print(f"  Wells proposals: {len(wells_proposals)} signs")
@@ -286,7 +287,7 @@ upgrades_out = {
 }
 OUT_UPGRD.write_text(json.dumps(upgrades_out, ensure_ascii=False, indent=2), encoding="utf-8")
 
-print(f"\nReports saved:")
+print("\nReports saved:")
 print(f"  {OUT_FULL}")
 print(f"  {OUT_UPGRD}")
 print("="*70)

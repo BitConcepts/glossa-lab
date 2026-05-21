@@ -8,7 +8,10 @@ CPU only. Output: reports/phase109_academic_submit.json
 Also sends email via Resend API.
 """
 from __future__ import annotations
-import json, os, sys
+
+import json
+import os
+import sys
 from datetime import datetime
 from pathlib import Path
 
@@ -60,7 +63,7 @@ INDUS SCRIPT DECIPHERMENT: PHASES 101–109 MILESTONE REPORT
 
 Dear Dr. Fuls,
 
-We write to share significant progress in our Indus Script decipherment 
+We write to share significant progress in our Indus Script decipherment
 effort using the Glossa Lab computational linguistics platform.
 
 ────────────────────────────────────────────────────────────────────
@@ -98,9 +101,9 @@ Key Phase 105 decipherments:
   M375 = taṇ   (DEDR 3009, cool; NAME_AY_AN pattern)
   M398 = kuṟi  (DEDR 1769, mark/sign; GENITIVE_NAME_SUFFIX pattern)
 
-Phase 107 Tamil-Brahmi cross-validation confirmed that the majority 
-of proposed name-sign readings match attested TB personal name roots 
-from the Sangam corpus (300 BCE–300 CE), directly supporting 
+Phase 107 Tamil-Brahmi cross-validation confirmed that the majority
+of proposed name-sign readings match attested TB personal name roots
+from the Sangam corpus (300 BCE–300 CE), directly supporting
 continuity of Dravidian personal name morphology across 2,000 years.
 
 ────────────────────────────────────────────────────────────────────
@@ -109,10 +112,10 @@ continuity of Dravidian personal name morphology across 2,000 years.
 
 Phase 108 swept all unread signs with corpus frequency ≥ 5.
 Each sign's Phase-73 SA modal was checked for Proto-Dravidian
-phonotactic validity (DEDR initials filter). Signs passing both 
+phonotactic validity (DEDR initials filter). Signs passing both
 tests were promoted to MEDIUM confidence.
 
-Result: Significant expansion of decoded inventory, pushing token 
+Result: Significant expansion of decoded inventory, pushing token
 coverage beyond 75%.
 
 ────────────────────────────────────────────────────────────────────
@@ -135,21 +138,21 @@ Our decipherment pipeline (Glossa Lab v3.0) implements:
 
   1. Positional Profile Analysis (Fuls 2013 NWSP method)
      — I/M/T rates per sign across 1,670 inscriptions
-  
+
   2. Simulated Annealing (SA) mapping inference
      — Dravidian syllabic LM target; 125+ pinned anchors
      — GPU-accelerated via CuPy BigramScorer
-  
+
   3. Proto-Dravidian phonotactic filter (DEDR validity)
      — All proposed readings validated against DEDR database
-  
+
   4. Grammatical pattern mining
-     — Six pattern types: SUFFIX, GENITIVE, ANIMAL, TITLE, 
+     — Six pattern types: SUFFIX, GENITIVE, ANIMAL, TITLE,
        NUMERAL, NAME slots
-  
+
   5. Tamil-Brahmi cross-validation (Phase 107)
      — Mahadevan (2003) TB personal name concordance
-  
+
   6. Iconographic anchoring
      — Direct sign → referent → DEDR reading chains
      — Verified against Parpola (1994) and Mahadevan (1977)
@@ -163,12 +166,12 @@ We would value your expert review of:
   b) The 125-anchor reading table
   c) The Tamil-Brahmi name cross-validation results
 
-Our full dataset, code, and reports are available for independent 
-verification. We believe this computational approach complements 
-traditional epigraphic analysis and would benefit greatly from 
+Our full dataset, code, and reports are available for independent
+verification. We believe this computational approach complements
+traditional epigraphic analysis and would benefit greatly from
 expert review by the academic decipherment community.
 
-We remain eager to discuss methodology, share data, and collaborate 
+We remain eager to discuss methodology, share data, and collaborate
 on validation experiments.
 
 Respectfully submitted,
@@ -298,7 +301,7 @@ def main():
     # Re-save with email status
     OUT.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
 
-    print(f"\n  Phase-109 complete:")
+    print("\n  Phase-109 complete:")
     print(f"    Total anchors: {len(anchors)} ({n_high} HIGH + {n_medium} MEDIUM)")
     print(f"    Token coverage: {coverage:.1%}")
     print(f"    Email status: {result.get('email_status', 'unknown')}")

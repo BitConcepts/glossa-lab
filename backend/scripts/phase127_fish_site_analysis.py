@@ -3,8 +3,11 @@ Phase-127: Fish sign site-level polysemy test.
 Compare fish sign distribution at Lothal (coastal IVC port) vs. inland sites.
 Tests Avishai Roif's hypothesis: isolated fish = commodity unit, compound = occupational.
 """
-import sys, json, os
+import json
+import os
+import sys
 from pathlib import Path
+
 import pandas as pd
 
 REPO = Path(__file__).resolve().parents[2]

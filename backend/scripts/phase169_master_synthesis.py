@@ -162,7 +162,7 @@ n_strongly_supported = sum(1 for item in all_items
                             if item.get("confidence_level") in
                             ("CERTAIN", "STRONGLY_SUPPORTED"))
 
-print(f"\nPhase-169 updated synthesis:")
+print("\nPhase-169 updated synthesis:")
 print(f"  Evidence items: {n_items} (was {len(baseline_scorecard)} at Phase-141)")
 print(f"  New items added: {len(NEW_ITEMS)}")
 print(f"  Aggregate confidence: {agg_conf:.1f}% (was {baseline_conf:.0f}%)")
@@ -188,7 +188,7 @@ headline = {
     "icit_required":         True,
 }
 
-print(f"\nHeadline metrics:")
+print("\nHeadline metrics:")
 print(f"  H+M: {headline['hm_count']} ({headline['high_count']} HIGH + {headline['medium_count']} MEDIUM)")
 print(f"  Token coverage: {headline['token_coverage_hm']:.2%}")
 print(f"  Decoded seals: {headline['seals_fully_decoded_pct']:.1f}%")
@@ -200,6 +200,7 @@ print(f"  Phases completed: {headline['phases_completed']}")
 # ── By-category summary ───────────────────────────────────────────────────────
 
 from collections import Counter
+
 cat_counts = Counter(item["category"] for item in all_items)
 print(f"\nBy category: {dict(cat_counts)}")
 
@@ -211,8 +212,8 @@ print("="*70)
 print(f"  {n_items} total evidence items across Phases 1-168")
 print(f"  {agg_conf:.1f}% aggregate confidence")
 print(f"  {n_strongly_supported} items STRONGLY_SUPPORTED or CERTAIN")
-print(f"  Literature mining ceiling: CONFIRMED (Phase 162 null result)")
-print(f"  Next required: ICIT corpus access (fuls@epigraphica.de)")
+print("  Literature mining ceiling: CONFIRMED (Phase 162 null result)")
+print("  Next required: ICIT corpus access (fuls@epigraphica.de)")
 
 # ── Save ─────────────────────────────────────────────────────────────────────
 

@@ -16,8 +16,12 @@ GPU: torch for frequency matrices.
 Output: reports/phase69_site_stratification.json
 """
 from __future__ import annotations
-import csv, json, math, sys
-from collections import Counter, defaultdict
+
+import csv
+import json
+import math
+import sys
+from collections import defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parents[1]))
@@ -46,7 +50,6 @@ def chi2_test(observed: list[list[float]]) -> tuple[float, float]:
     observed[site][position_bin] = count
     Returns (chi2_statistic, p_value_approx).
     """
-    import math
     n_sites = len(observed)
     if n_sites < 2:
         return 0.0, 1.0
@@ -223,13 +226,13 @@ def main():
     variant_signs = [r for r in sign_results if r["verdict"] == "SITE_VARIANT"]
     invariant_signs = [r for r in sign_results if r["verdict"] == "INVARIANT"]
 
-    print(f"\n=== Phase-69 Results ===")
+    print("\n=== Phase-69 Results ===")
     print(f"  Signs tested:     {total_tested}")
     print(f"  INVARIANT:        {n_invariant} ({invariant_rate:.0%})")
     print(f"  SITE_VARIANT:     {n_variant}")
     print(f"  Verdict:          {verdict}")
     if variant_signs:
-        print(f"\n  SITE_VARIANT signs (grammar differs across sites):")
+        print("\n  SITE_VARIANT signs (grammar differs across sites):")
         for r in variant_signs[:8]:
             print(f"  {r['sign']} {r['reading']!r}: chi2={r['chi2']:.1f} p={r['p_value']:.3f}")
 

@@ -22,7 +22,7 @@ from __future__ import annotations
 import logging
 import re
 from dataclasses import dataclass, field
-from typing import Any, Iterable
+from typing import Any
 
 from glossa_lab.discovery import store
 from glossa_lab.discovery.llm import LLMClient, LLMError, LLMResult

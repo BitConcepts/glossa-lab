@@ -3,30 +3,34 @@
 Run with: shell.cmd python backend/generate_report_linear_a.py
 Output:   reports/linear_a_analysis.pdf
 """
-import sys
 import os
-from pathlib import Path
+import sys
 from collections import Counter
 from datetime import datetime, timezone
+from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'tests'))
 
-from reportlab.lib.pagesizes import A4
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.lib.units import cm
-from reportlab.lib.colors import HexColor, white, black
-from reportlab.platypus import (
-    SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable,
-)
+from reportlab.lib.colors import HexColor, white
 from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
+from reportlab.lib.units import cm
+from reportlab.platypus import (
+    HRFlowable,
+    Paragraph,
+    SimpleDocTemplate,
+    Spacer,
+    Table,
+    TableStyle,
+)
 
+from glossa_lab.data.linear_b_language import get_corpus_symbols
 from glossa_lab.pipelines.block_entropy import compute_block_entropies
 from glossa_lab.pipelines.decipher import LanguageModel
-from glossa_lab.pipelines.hypothesis import HypothesisEngine, Hypothesis
-from glossa_lab.data.linear_b_language import get_corpus_symbols
+from glossa_lab.pipelines.hypothesis import Hypothesis, HypothesisEngine
 from tests.corpora.real import load_linear_a_signs, load_linear_b_signs
-from tests.corpora.linear_a_corpus import get_sign_frequencies
 
 # ── Colours ───────────────────────────────────────────────────────────
 NAVY  = HexColor("#1e3a5f")

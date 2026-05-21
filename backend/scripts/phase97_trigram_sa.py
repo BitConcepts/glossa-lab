@@ -12,7 +12,12 @@ Approach:
 GPU: BigramScorer / trigram extension. Output: reports/phase97_trigram_sa.json
 """
 from __future__ import annotations
-import csv, json, math, random, re, time
+
+import csv
+import json
+import math
+import random
+import time
 from collections import Counter
 from pathlib import Path
 
@@ -85,8 +90,9 @@ def compute_positional_weights(inscs: list) -> dict:
 def run_trigram_sa(flat: list, inscs: list, lm: dict, vocab: list,
                    pins: dict, pos_weights: dict, n_seeds: int) -> list[dict]:
     """Run SA with trigram scoring + positional weighting."""
-    from glossa_lab.pipelines.decipher import BigramScorer
     from types import SimpleNamespace
+
+    from glossa_lab.pipelines.decipher import BigramScorer
 
     tc = Counter(flat); ranked = [t for t, _ in tc.most_common()]
     cipher_alpha = sorted(set(flat))
@@ -203,7 +209,7 @@ def main():
     converged = [r for r in results if r["consistency"] >= 0.7]
     changed = [r for r in results if r["reading_changed"]]
 
-    print(f"\n=== Phase-97 Results ===")
+    print("\n=== Phase-97 Results ===")
     print(f"  ENSEMBLE_LOW signs tested: {len(results)}")
     print(f"  Converged (>=70% consistency): {len(converged)}")
     print(f"  Reading changed vs Phase-73: {len(changed)}")

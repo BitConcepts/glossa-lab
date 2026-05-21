@@ -10,9 +10,12 @@ GPU: torch for passage scoring.
 Output: reports/phase60b_contact_investigation.json
 """
 from __future__ import annotations
-import json, re, sys
-from pathlib import Path
+
+import json
+import re
+import sys
 from collections import Counter
+from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parents[1]))
 from glossa_lab.gpu_utils import detect_device as _detect_device  # noqa: E402
@@ -182,7 +185,7 @@ def main():
     n_no_content = quality_summary.get("NO_RELEVANT_CONTENT", 0)
     n_poor_ocr   = quality_summary.get("POOR_OCR", 0) + quality_summary.get("MOSTLY_GARBLED", 0)
 
-    print(f"\n=== Phase-60b Results ===")
+    print("\n=== Phase-60b Results ===")
     print(f"  Files analysed:      {len(pub_files)}")
     print(f"  Good quality:        {n_good_files}")
     print(f"  Poor OCR/garbled:    {n_poor_ocr}")
@@ -191,7 +194,7 @@ def main():
     print(f"  High-relevance passages: {len(high_relevance_passages)}")
 
     if all_broad_findings:
-        print(f"\n  Sample findings:")
+        print("\n  Sample findings:")
         for f in all_broad_findings[:5]:
             print(f"  P{f['p_num']} = {f['reading']!r} (source: {f['source']})")
 

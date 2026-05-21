@@ -17,7 +17,10 @@ Output: reports/phase65_crosswalk_top100.json
          updates backend/reports/INDUS_FINAL_ANCHORS.json crosswalk metadata
 """
 from __future__ import annotations
-import csv, json, sys
+
+import csv
+import json
+import sys
 from collections import Counter
 from pathlib import Path
 
@@ -219,12 +222,12 @@ def main():
         coverage_pct = n_mapped
         token_cov = mapped_tokens / total_tokens * 100
 
-    print(f"\n=== Phase-65 Results ===")
+    print("\n=== Phase-65 Results ===")
     print(f"  Signs in top-100 mapped:  {n_mapped}/100 ({coverage_pct:.1f}%)")
     print(f"  New mappings this phase:  {n_newly_mapped}")
     print(f"  Total M↔P mapped:         {len(mp_map)}/390")
     print(f"  Token coverage:           {token_cov:.1f}%")
-    print(f"\n  Unmapped top-100 signs:")
+    print("\n  Unmapped top-100 signs:")
     for e in unmapped_signs[:10]:
         print(f"  {e['m_number']} (rank {e['rank']}, freq={e['corpus_freq']}, "
               f"reading={e['reading']!r})")

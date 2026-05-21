@@ -16,12 +16,12 @@ CPU only. Output: reports/phase88_literature_mine.json
 Note: May take 5-10 minutes due to API rate limiting.
 """
 from __future__ import annotations
-import asyncio
+
 import json
 import re
 import sys
 import time
-from collections import Counter, defaultdict
+from collections import Counter
 from pathlib import Path
 
 REPO    = Path(__file__).parents[2]
@@ -33,6 +33,7 @@ OUT     = REPORTS / "phase88_literature_mine.json"
 # Add backend to path for fetchers
 sys.path.insert(0, str(REPO / "backend"))
 import os
+
 os.environ.setdefault("GLOSSA_DATA_DIR",
                       str(REPO / "backend/data"))
 
@@ -130,7 +131,9 @@ def is_pd_plausible(reading: str) -> bool:
 
 def http_get_json(url: str, params: dict = None, timeout: float = 15.0) -> dict:
     """Simple synchronous JSON GET with User-Agent."""
-    import urllib.request, urllib.parse, urllib.error
+    import urllib.error
+    import urllib.parse
+    import urllib.request
     if params:
         url = url + "?" + urllib.parse.urlencode(params)
     req = urllib.request.Request(
@@ -154,6 +157,7 @@ def fetch_semanticscholar(query: str, n: int = 100) -> list[dict]:
 
     try:
         import concurrent.futures as _cf
+
         from semanticscholar import SemanticScholar
         sch = SemanticScholar(api_key=api_key or None, timeout=20)
         fields = ["paperId", "title", "abstract", "authors", "year",
@@ -411,7 +415,7 @@ def main():
     confirmed = {s for s, v in anchors.items() if v.get("confidence") in ("HIGH", "MEDIUM")}
     print(f"  Current HIGH+MEDIUM anchors: {len(confirmed)}")
     print(f"  Target queries: {len(QUERIES)}")
-    print(f"  Sources: SemanticScholar, OpenAlex, EuropePMC\n")
+    print("  Sources: SemanticScholar, OpenAlex, EuropePMC\n")
 
     all_papers: list[dict] = []
     seen_titles: set = set()
@@ -455,7 +459,7 @@ def main():
     print(f"\n  Total unique papers fetched: {len(all_papers)}")
 
     # Apply extraction pipeline
-    print(f"\n  Applying Indus extraction pipeline...")
+    print("\n  Applying Indus extraction pipeline...")
     all_findings: list[dict] = []
     n_with_findings = 0
 
@@ -510,7 +514,7 @@ def main():
     new_crosswalk = [f for f in crosswalk_entries
                      if f.get("parpola_id") not in existing_crosswalk]
 
-    print(f"\n  Extraction results:")
+    print("\n  Extraction results:")
     print(f"    Total unique findings:    {len(unique_findings)}")
     print(f"    Sign reading proposals:   {len(sign_readings)}")
     print(f"    New sign proposals:       {len(new_sign_proposals)}")
@@ -520,7 +524,7 @@ def main():
     print(f"    DEDR references:          {len(dedr_entries)}")
 
     # Top actionable findings
-    print(f"\n  Top 20 actionable findings:")
+    print("\n  Top 20 actionable findings:")
     for i, f in enumerate(unique_findings[:20]):
         print(f"    {i+1:2d}. [{f['type']:20s}] score={f['actionability_score']:.1f}  "
               f"{f.get('paper_title','?')[:50]} ({f.get('paper_year','?')})")
@@ -536,7 +540,7 @@ def main():
             print(f"    [{f.get('paper_year','?')}] {f.get('paper_title','?')[:60]}")
             print(f"    Context: {f.get('context','?')[:100]}")
 
-    print(f"\n=== Phase-88 Results ===")
+    print("\n=== Phase-88 Results ===")
     print(f"  Papers fetched:           {len(all_papers)}")
     print(f"  Unique findings:          {len(unique_findings)}")
     print(f"  New sign proposals:       {len(new_sign_proposals)}")

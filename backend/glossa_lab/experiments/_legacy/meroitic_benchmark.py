@@ -48,12 +48,19 @@ for _p in (_BACKEND, _TESTS):
 
 def _load() -> dict[str, Any]:
     from glossa_lab.data.meroitic import (
-        get_corpus_symbols, get_corpus_inscriptions, get_line_inscriptions,
+        get_coptic_inscriptions,
+        get_coptic_symbols,
+        get_corpus_inscriptions,
+        get_corpus_symbols,
         get_full_answer_key,
-        get_coptic_symbols, get_coptic_inscriptions,
     )
-    from glossa_lab.pipelines.decipher import LanguageModel, decipher, score_accuracy, _score_mapping
     from glossa_lab.pipelines.beam_decipher import beam_decipher
+    from glossa_lab.pipelines.decipher import (
+        LanguageModel,
+        _score_mapping,
+        decipher,
+        score_accuracy,
+    )
 
     cipher_flat  = get_corpus_symbols(encoded=True)
     cipher_words = get_corpus_inscriptions(encoded=True)
@@ -166,8 +173,8 @@ def run_meroitic_benchmark(verbose: bool = True) -> dict[str, Any]:
     n_gt     = len(d["gt"])
     _pr(f"\n  Meroitic corpus: {n_tokens} tokens  {n_signs} distinct signs")
     _pr(f"  Answer key: {n_gt} Griffith phoneme assignments (Griffith 1911)")
-    _pr(f"\n  Two targets:")
-    _pr(f"    Self-model:   Meroitic phoneme statistics (correct LM)")
+    _pr("\n  Two targets:")
+    _pr("    Self-model:   Meroitic phoneme statistics (correct LM)")
     _pr(f"    Coptic model: {len(d['lm_coptic'].bigram_freq)} bigrams (wrong hypothesis)")
 
     results: dict[str, Any] = {}

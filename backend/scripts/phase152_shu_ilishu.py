@@ -32,9 +32,10 @@ Also test the two competing decompositions:
 
 Output: backend/reports/phase152_shu_ilishu.json
 """
-import sys, json, re
-from pathlib import Path
+import json
+import sys
 from collections import Counter
+from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "backend"))
@@ -126,7 +127,7 @@ for slot, variants in TARGETS.items():
         if len(matches) > 6:
             print(f"        ... and {len(matches)-6} more")
     else:
-        print(f"        ✗ NO MATCHING H+M READING FOUND")
+        print("        ✗ NO MATCHING H+M READING FOUND")
 
 # ─── Coverage score ─────────────────────────────────────────────────────────
 print("\n" + "─"*70)
@@ -167,7 +168,7 @@ for form, data in seals.items():
 
 candidate_seals.sort(key=lambda x: -x[2])
 print(f"\n  Seals with ≥3/4 slots covered: {len(candidate_seals)}")
-print(f"  Top candidates:")
+print("  Top candidates:")
 for form, seq, hits in candidate_seals[:8]:
     readings = [anchors.get(s,{}).get("reading","?") for s in seq]
     print(f"    {form}: {seq} → {readings} ({hits}/4 slots)")
@@ -218,13 +219,13 @@ print(f"  E02 upgrade: {e02_upgrade}")
 print(f"  Candidate seals: {len(candidate_seals)} seals with ≥3/4 phonological slots covered")
 
 if coverage_pct >= 50:
-    print(f"\n  INTERPRETATION: The 'Shu-ilishu' phonological test is PARTIALLY SUPPORTED.")
+    print("\n  INTERPRETATION: The 'Shu-ilishu' phonological test is PARTIALLY SUPPORTED.")
     print(f"  At least {slots_covered}/4 syllabic slots of the name have H+M readings that")
-    print(f"  are phonologically compatible. This is not a decipherment but confirms our")
-    print(f"  reading set is phonologically compatible with the external anchor.")
+    print("  are phonologically compatible. This is not a decipherment but confirms our")
+    print("  reading set is phonologically compatible with the external anchor.")
 else:
-    print(f"\n  INTERPRETATION: Coverage insufficient. The Shu-ilishu anchor requires")
-    print(f"  additional phonological work (specifically: better /su/ and /li/ readings).")
+    print("\n  INTERPRETATION: Coverage insufficient. The Shu-ilishu anchor requires")
+    print("  additional phonological work (specifically: better /su/ and /li/ readings).")
 
 # Save
 output = {

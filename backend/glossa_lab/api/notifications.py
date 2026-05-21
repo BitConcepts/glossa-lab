@@ -22,14 +22,13 @@ from datetime import datetime, timezone
 from typing import Any
 
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 from glossa_lab.api.settings import _load_keys, _save_keys, get_key
 from glossa_lab.database import get_db
 from glossa_lab.notifications import format_test, get_notifier
 from glossa_lab.notifications.graph import (
     GraphAuthPending,
-    GraphConfig,
     GraphError,
     poll_device_flow,
     start_device_flow,

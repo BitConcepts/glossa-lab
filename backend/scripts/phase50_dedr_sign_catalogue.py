@@ -24,8 +24,10 @@ GPU: torch for cosine similarity matrix over DEDR word embeddings (TF-IDF approx
 Output: reports/phase50_dedr_sign_catalogue.json
 """
 from __future__ import annotations
-import csv, json, math, re
-from collections import Counter
+
+import csv
+import json
+import re
 from pathlib import Path
 
 try:

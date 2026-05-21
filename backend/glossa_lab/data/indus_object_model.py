@@ -30,9 +30,9 @@ from __future__ import annotations
 
 from datetime import datetime
 from enum import Enum
-from typing import Any, List, Optional
-from pydantic import BaseModel, Field
+from typing import List, Optional
 
+from pydantic import BaseModel, Field
 
 # ── Enumerations ─────────────────────────────────────────────────────────────
 
@@ -291,7 +291,6 @@ class IndusObject(BaseModel):
                 if tw.text_code_diplomatic:
                     return tw.text_code_diplomatic
                 if tw.sign_instances:
-                    parts = []
                     ids = [si.source_sign_id for si in tw.sign_instances]
                     return "+" + "-".join(ids) + "+"
         return ""

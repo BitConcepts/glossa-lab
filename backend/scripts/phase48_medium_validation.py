@@ -27,7 +27,10 @@ Output: reports/phase48_medium_validation.json
         updates INDUS_FINAL_ANCHORS.json (promoted_to_high section)
 """
 from __future__ import annotations
-import csv, json, math, re
+
+import csv
+import json
+import re
 from collections import Counter
 from pathlib import Path
 
@@ -235,7 +238,7 @@ def main() -> None:
     promoted_coverage = sum(freq.get(s,0) for s in promoted)
     total_tokens = sum(freq.values())
     new_cov = sum(freq.get(s,0) for s in anchors if anchors[s].get("confidence")=="HIGH") + promoted_coverage
-    print(f"\n=== Validation Summary ===")
+    print("\n=== Validation Summary ===")
     print(f"  Promoted to HIGH: {n_promoted} signs: {promoted}")
     print(f"  Additional coverage: {promoted_coverage}/{total_tokens} = {promoted_coverage/total_tokens:.1%}")
     print(f"  New total HIGH coverage: {new_cov/total_tokens:.1%}")

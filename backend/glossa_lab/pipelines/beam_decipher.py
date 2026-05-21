@@ -49,11 +49,10 @@ from collections import Counter, defaultdict
 from typing import Any
 
 from glossa_lab.pipelines.decipher import (
-    LanguageModel,
-    BigramScorer,
-    _kandles_validate,
-    score_accuracy,
     _HAS_NUMPY,
+    BigramScorer,
+    LanguageModel,
+    _kandles_validate,
 )
 
 # ── Ugaritic phonological group constraints ─────────────────────────────

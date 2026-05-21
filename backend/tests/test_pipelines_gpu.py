@@ -13,10 +13,8 @@ TEST-PL-010  _parallel.parallel_map handles empty list.
 """
 from __future__ import annotations
 
-import pytest
 from glossa_lab.pipelines.block_entropy import compute_block_entropies
 from glossa_lab.pipelines.cooccurrence import build_cooccurrence_network
-
 
 _SYMBOLS = list("abcdeabcdeabcde" * 30)   # 450 symbols
 _LONG    = list("abcdeabcdeabcde" * 100)  # 1500 symbols (triggers numpy path)
@@ -55,7 +53,6 @@ def test_block_entropy_parallel_matches_sequential():
     """TEST-PL-005: Parallel and sequential (fallback) produce identical results."""
     r1 = compute_block_entropies(_SYMBOLS, max_n=3)
     # Force sequential by patching parallel_map temporarily
-    import glossa_lab.pipelines.block_entropy as _be
     orig = None
     try:
         import glossa_lab.experiments._parallel as _pm

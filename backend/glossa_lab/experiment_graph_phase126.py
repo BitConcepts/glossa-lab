@@ -59,7 +59,7 @@ def _icit_corpus_plan(inputs: dict, params: dict) -> dict[str, Any]:
     Gulf sites: Failaka (400 seals), Saar (200+ seals), Janabiyah.
     Returns access plan, site list, and recommended contact strategy.
     """
-    report = _load_report("phase127_gulf_corpus_report.json")  # closest available proxy
+    _load_report("phase127_gulf_corpus_report.json")  # closest available proxy
     plan_text = (
         "ICIT access plan: Contact fuls@epigraphica.de with fish-polysemy context + research offer. "
         "Required downloads: Kjaerum 1983, Tell F6 2012, Crawford 1997. "

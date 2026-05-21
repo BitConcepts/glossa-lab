@@ -11,9 +11,9 @@ against our INDUS_FINAL_ANCHORS.json to count independent confirmations.
 
 Output: backend/reports/phase157_160_reference_mining.json
 """
-import sys, json, re
+import json
+import re
 from pathlib import Path
-from collections import defaultdict
 
 REPO     = Path(__file__).resolve().parents[2]
 PDF_DIR  = REPO / "corpora/downloads/external_repos/acquired_pdfs"

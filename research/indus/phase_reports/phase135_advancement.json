@@ -1,0 +1,921 @@
+{
+  "phase": 135,
+  "date": "2026-05-18",
+  "results": {
+    "A_site_semantic_clustering": {
+      "site_profiles": {
+        "Mohenjo-daro": {
+          "n_seals": 606,
+          "n_tokens": 2534,
+          "hm_token_coverage": 0.906,
+          "semantic_profile": {
+            "uncategorized": 0.481,
+            "grammar_particle": 0.241,
+            "title_honorific": 0.03,
+            "commodity_trade": 0.122,
+            "numeral_tally": 0.093,
+            "place_clan": 0.027,
+            "personal_name_marker": 0.005
+          },
+          "dominant_semantic_cat": "uncategorized",
+          "top_5_signs": [
+            {
+              "sign": "M342",
+              "freq": 208,
+              "reading": "ay/\u0101",
+              "semantic_cat": "grammar_particle"
+            },
+            {
+              "sign": "M267",
+              "freq": 135,
+              "reading": "iN/in (genitive of)",
+              "semantic_cat": "commodity_trade"
+            },
+            {
+              "sign": "M176",
+              "freq": 133,
+              "reading": "an/a\u1e47",
+              "semantic_cat": "grammar_particle"
+            },
+            {
+              "sign": "M099",
+              "freq": 132,
+              "reading": "kol/ko\u1e37",
+              "semantic_cat": "commodity_trade"
+            },
+            {
+              "sign": "M328",
+              "freq": 98,
+              "reading": "\u0101/\u0101l",
+              "semantic_cat": "uncategorized"
+            }
+          ]
+        },
+        "Harappa": {
+          "n_seals": 492,
+          "n_tokens": 2079,
+          "hm_token_coverage": 0.909,
+          "semantic_profile": {
+            "numeral_tally": 0.086,
+            "uncategorized": 0.493,
+            "commodity_trade": 0.128,
+            "title_honorific": 0.029,
+            "grammar_particle": 0.231,
+            "place_clan": 0.029,
+            "personal_name_marker": 0.004
+          },
+          "dominant_semantic_cat": "uncategorized",
+          "top_5_signs": [
+            {
+              "sign": "M342",
+              "freq": 186,
+              "reading": "ay/\u0101",
+              "semantic_cat": "grammar_particle"
+            },
+            {
+              "sign": "M099",
+              "freq": 116,
+              "reading": "kol/ko\u1e37",
+              "semantic_cat": "commodity_trade"
+            },
+            {
+              "sign": "M267",
+              "freq": 116,
+              "reading": "iN/in (genitive of)",
+              "semantic_cat": "commodity_trade"
+            },
+            {
+              "sign": "M176",
+              "freq": 103,
+              "reading": "an/a\u1e47",
+              "semantic_cat": "grammar_particle"
+            },
+            {
+              "sign": "M211",
+              "freq": 76,
+              "reading": "kol",
+              "semantic_cat": "uncategorized"
+            }
+          ]
+        },
+        "Lothal": {
+          "n_seals": 124,
+          "n_tokens": 507,
+          "hm_token_coverage": 0.923,
+          "semantic_profile": {
+            "uncategorized": 0.479,
+            "grammar_particle": 0.241,
+            "commodity_trade": 0.143,
+            "place_clan": 0.024,
+            "numeral_tally": 0.081,
+            "title_honorific": 0.03,
+            "personal_name_marker": 0.002
+          },
+          "dominant_semantic_cat": "uncategorized",
+          "top_5_signs": [
+            {
+              "sign": "M342",
+              "freq": 48,
+              "reading": "ay/\u0101",
+              "semantic_cat": "grammar_particle"
+            },
+            {
+              "sign": "M099",
+              "freq": 35,
+              "reading": "kol/ko\u1e37",
+              "semantic_cat": "commodity_trade"
+            },
+            {
+              "sign": "M176",
+              "freq": 29,
+              "reading": "an/a\u1e47",
+              "semantic_cat": "grammar_particle"
+            },
+            {
+              "sign": "M267",
+              "freq": 29,
+              "reading": "iN/in (genitive of)",
+              "semantic_cat": "commodity_trade"
+            },
+            {
+              "sign": "M293",
+              "freq": 22,
+              "reading": "ta",
+              "semantic_cat": "uncategorized"
+            }
+          ]
+        },
+        "Kalibangan": {
+          "n_seals": 110,
+          "n_tokens": 485,
+          "hm_token_coverage": 0.88,
+          "semantic_profile": {
+            "numeral_tally": 0.087,
+            "uncategorized": 0.504,
+            "commodity_trade": 0.15,
+            "grammar_particle": 0.206,
+            "title_honorific": 0.028,
+            "place_clan": 0.021,
+            "personal_name_marker": 0.005
+          },
+          "dominant_semantic_cat": "uncategorized",
+          "top_5_signs": [
+            {
+              "sign": "M342",
+              "freq": 41,
+              "reading": "ay/\u0101",
+              "semantic_cat": "grammar_particle"
+            },
+            {
+              "sign": "M099",
+              "freq": 31,
+              "reading": "kol/ko\u1e37",
+              "semantic_cat": "commodity_trade"
+            },
+            {
+              "sign": "M267",
+              "freq": 29,
+              "reading": "iN/in (genitive of)",
+              "semantic_cat": "commodity_trade"
+            },
+            {
+              "sign": "M176",
+              "freq": 25,
+              "reading": "an/a\u1e47",
+              "semantic_cat": "grammar_particle"
+            },
+            {
+              "sign": "M293",
+              "freq": 16,
+              "reading": "ta",
+              "semantic_cat": "uncategorized"
+            }
+          ]
+        },
+        "Dholavira": {
+          "n_seals": 106,
+          "n_tokens": 439,
+          "hm_token_coverage": 0.909,
+          "semantic_profile": {
+            "grammar_particle": 0.223,
+            "uncategorized": 0.476,
+            "commodity_trade": 0.128,
+            "numeral_tally": 0.095,
+            "title_honorific": 0.038,
+            "place_clan": 0.033,
+            "personal_name_marker": 0.008
+          },
+          "dominant_semantic_cat": "uncategorized",
+          "top_5_signs": [
+            {
+              "sign": "M342",
+              "freq": 31,
+              "reading": "ay/\u0101",
+              "semantic_cat": "grammar_particle"
+            },
+            {
+              "sign": "M099",
+              "freq": 25,
+              "reading": "kol/ko\u1e37",
+              "semantic_cat": "commodity_trade"
+            },
+            {
+              "sign": "M267",
+              "freq": 23,
+              "reading": "iN/in (genitive of)",
+              "semantic_cat": "commodity_trade"
+            },
+            {
+              "sign": "M176",
+              "freq": 21,
+              "reading": "an/a\u1e47",
+              "semantic_cat": "grammar_particle"
+            },
+            {
+              "sign": "M211",
+              "freq": 21,
+              "reading": "kol",
+              "semantic_cat": "uncategorized"
+            }
+          ]
+        },
+        "Chanhu-daro": {
+          "n_seals": 78,
+          "n_tokens": 310,
+          "hm_token_coverage": 0.916,
+          "semantic_profile": {
+            "numeral_tally": 0.07,
+            "commodity_trade": 0.141,
+            "grammar_particle": 0.239,
+            "title_honorific": 0.032,
+            "uncategorized": 0.475,
+            "personal_name_marker": 0.011,
+            "place_clan": 0.032
+          },
+          "dominant_semantic_cat": "uncategorized",
+          "top_5_signs": [
+            {
+              "sign": "M267",
+              "freq": 26,
+              "reading": "iN/in (genitive of)",
+              "semantic_cat": "commodity_trade"
+            },
+            {
+              "sign": "M342",
+              "freq": 20,
+              "reading": "ay/\u0101",
+              "semantic_cat": "grammar_particle"
+            },
+            {
+              "sign": "M176",
+              "freq": 19,
+              "reading": "an/a\u1e47",
+              "semantic_cat": "grammar_particle"
+            },
+            {
+              "sign": "M367",
+              "freq": 13,
+              "reading": "am/neuter",
+              "semantic_cat": "grammar_particle"
+            },
+            {
+              "sign": "M099",
+              "freq": 13,
+              "reading": "kol/ko\u1e37",
+              "semantic_cat": "commodity_trade"
+            }
+          ]
+        },
+        "Surkotada": {
+          "n_seals": 61,
+          "n_tokens": 257,
+          "hm_token_coverage": 0.914,
+          "semantic_profile": {
+            "title_honorific": 0.03,
+            "uncategorized": 0.443,
+            "commodity_trade": 0.14,
+            "grammar_particle": 0.264,
+            "numeral_tally": 0.098,
+            "place_clan": 0.017,
+            "personal_name_marker": 0.009
+          },
+          "dominant_semantic_cat": "uncategorized",
+          "top_5_signs": [
+            {
+              "sign": "M342",
+              "freq": 20,
+              "reading": "ay/\u0101",
+              "semantic_cat": "grammar_particle"
+            },
+            {
+              "sign": "M267",
+              "freq": 17,
+              "reading": "iN/in (genitive of)",
+              "semantic_cat": "commodity_trade"
+            },
+            {
+              "sign": "M176",
+              "freq": 15,
+              "reading": "an/a\u1e47",
+              "semantic_cat": "grammar_particle"
+            },
+            {
+              "sign": "M099",
+              "freq": 14,
+              "reading": "kol/ko\u1e37",
+              "semantic_cat": "commodity_trade"
+            },
+            {
+              "sign": "M293",
+              "freq": 12,
+              "reading": "ta",
+              "semantic_cat": "uncategorized"
+            }
+          ]
+        },
+        "Banawali": {
+          "n_seals": 60,
+          "n_tokens": 255,
+          "hm_token_coverage": 0.922,
+          "semantic_profile": {
+            "uncategorized": 0.511,
+            "commodity_trade": 0.162,
+            "numeral_tally": 0.068,
+            "grammar_particle": 0.196,
+            "place_clan": 0.034,
+            "title_honorific": 0.026,
+            "personal_name_marker": 0.004
+          },
+          "dominant_semantic_cat": "uncategorized",
+          "top_5_signs": [
+            {
+              "sign": "M099",
+              "freq": 18,
+              "reading": "kol/ko\u1e37",
+              "semantic_cat": "commodity_trade"
+            },
+            {
+              "sign": "M342",
+              "freq": 18,
+              "reading": "ay/\u0101",
+              "semantic_cat": "grammar_particle"
+            },
+            {
+              "sign": "M267",
+              "freq": 17,
+              "reading": "iN/in (genitive of)",
+              "semantic_cat": "commodity_trade"
+            },
+            {
+              "sign": "M328",
+              "freq": 12,
+              "reading": "\u0101/\u0101l",
+              "semantic_cat": "uncategorized"
+            },
+            {
+              "sign": "M211",
+              "freq": 10,
+              "reading": "kol",
+              "semantic_cat": "uncategorized"
+            }
+          ]
+        },
+        "Rakhigarhi": {
+          "n_seals": 33,
+          "n_tokens": 136,
+          "hm_token_coverage": 0.882,
+          "semantic_profile": {
+            "uncategorized": 0.567,
+            "numeral_tally": 0.083,
+            "grammar_particle": 0.225,
+            "title_honorific": 0.017,
+            "commodity_trade": 0.108
+          },
+          "dominant_semantic_cat": "uncategorized",
+          "top_5_signs": [
+            {
+              "sign": "M342",
+              "freq": 12,
+              "reading": "ay/\u0101",
+              "semantic_cat": "grammar_particle"
+            },
+            {
+              "sign": "M267",
+              "freq": 8,
+              "reading": "iN/in (genitive of)",
+              "semantic_cat": "commodity_trade"
+            },
+            {
+              "sign": "M328",
+              "freq": 7,
+              "reading": "\u0101/\u0101l",
+              "semantic_cat": "uncategorized"
+            },
+            {
+              "sign": "M089",
+              "freq": 7,
+              "reading": "tu/t\u016b",
+              "semantic_cat": "uncategorized"
+            },
+            {
+              "sign": "M059",
+              "freq": 6,
+              "reading": "\u0113\u1e37/e\u1e37",
+              "semantic_cat": "numeral_tally"
+            }
+          ]
+        }
+      },
+      "kl_divergences": {
+        "Mohenjo-daro|Harappa": -0.0,
+        "Mohenjo-daro|Lothal": 0.0032,
+        "Mohenjo-daro|Kalibangan": 0.0062,
+        "Mohenjo-daro|Dholavira": 0.002,
+        "Mohenjo-daro|Chanhu-daro": 0.0063,
+        "Mohenjo-daro|Surkotada": 0.0065,
+        "Mohenjo-daro|Banawali": 0.0154,
+        "Mohenjo-daro|Rakhigarhi": 0.5191,
+        "Harappa|Lothal": 0.0027,
+        "Harappa|Kalibangan": 0.0048,
+        "Harappa|Dholavira": 0.0035,
+        "Harappa|Chanhu-daro": 0.006,
+        "Harappa|Surkotada": 0.0114,
+        "Harappa|Banawali": 0.0099,
+        "Harappa|Rakhigarhi": 0.5365,
+        "Lothal|Kalibangan": 0.0053,
+        "Lothal|Dholavira": 0.0081,
+        "Lothal|Chanhu-daro": 0.0076,
+        "Lothal|Surkotada": 0.0093,
+        "Lothal|Banawali": 0.0107,
+        "Lothal|Rakhigarhi": 0.4278,
+        "Kalibangan|Dholavira": 0.0082,
+        "Kalibangan|Chanhu-daro": 0.0099,
+        "Kalibangan|Surkotada": 0.0135,
+        "Kalibangan|Banawali": 0.0063,
+        "Kalibangan|Rakhigarhi": 0.4196,
+        "Dholavira|Chanhu-daro": 0.0062,
+        "Dholavira|Surkotada": 0.0121,
+        "Dholavira|Banawali": 0.0156,
+        "Dholavira|Rakhigarhi": 0.6767,
+        "Chanhu-daro|Surkotada": 0.0123,
+        "Chanhu-daro|Banawali": 0.012,
+        "Chanhu-daro|Rakhigarhi": 0.7076,
+        "Surkotada|Banawali": 0.0305,
+        "Surkotada|Rakhigarhi": 0.4282,
+        "Banawali|Rakhigarhi": 0.6318
+      },
+      "interpretation": "Semantic profiles computed for 9 sites with \u22655 seals. Site-level token coverage ranges 88%\u201392%. Most semantically distinct: Chanhu-daro|Rakhigarhi (KL=0.708), suggesting real functional differences between sites."
+    },
+    "B_meluhhan_name_alignment": {
+      "n_names_tested": 14,
+      "n_plausible": 6,
+      "n_partial": 5,
+      "n_no_match": 3,
+      "plausible_pct": 42.9,
+      "name_results": [
+        {
+          "name": "Shu-ilishu",
+          "syllables": [
+            "shu",
+            "i",
+            "li",
+            "shu"
+          ],
+          "source": "Shu-ilishu interpreter seal, c.2020 BCE",
+          "alignment_score": 0.25,
+          "status": "NO_MATCH"
+        },
+        {
+          "name": "Nikanku",
+          "syllables": [
+            "ni",
+            "kan",
+            "ku"
+          ],
+          "source": "Ur III record, NPN",
+          "alignment_score": 1.0,
+          "status": "PLAUSIBLE"
+        },
+        {
+          "name": "Turam-Adad",
+          "syllables": [
+            "tu",
+            "ram",
+            "a",
+            "dad"
+          ],
+          "source": "Ur III, Drehem archive",
+          "alignment_score": 0.5,
+          "status": "PARTIAL"
+        },
+        {
+          "name": "Ilum-Gamil",
+          "syllables": [
+            "i",
+            "lum",
+            "ga",
+            "mil"
+          ],
+          "source": "Old Babylonian, Dilmun trade",
+          "alignment_score": 0.75,
+          "status": "PLAUSIBLE"
+        },
+        {
+          "name": "Tezel",
+          "syllables": [
+            "te",
+            "zel"
+          ],
+          "source": "Ur III merchant archive",
+          "alignment_score": 0.0,
+          "status": "NO_MATCH"
+        },
+        {
+          "name": "Gimillum",
+          "syllables": [
+            "gi",
+            "mil",
+            "lum"
+          ],
+          "source": "Ur III, ePSD2",
+          "alignment_score": 0.667,
+          "status": "PLAUSIBLE"
+        },
+        {
+          "name": "Kuruba",
+          "syllables": [
+            "ku",
+            "ru",
+            "ba"
+          ],
+          "source": "Meluhha mention text",
+          "alignment_score": 0.333,
+          "status": "PARTIAL"
+        },
+        {
+          "name": "Numan",
+          "syllables": [
+            "nu",
+            "man"
+          ],
+          "source": "Ur III tablet",
+          "alignment_score": 0.5,
+          "status": "PARTIAL"
+        },
+        {
+          "name": "Ayakum",
+          "syllables": [
+            "a",
+            "ya",
+            "kum"
+          ],
+          "source": "Akkadian period Meluhha name",
+          "alignment_score": 0.667,
+          "status": "PLAUSIBLE"
+        },
+        {
+          "name": "Lirishtu",
+          "syllables": [
+            "li",
+            "rish",
+            "tu"
+          ],
+          "source": "Ur III merchant",
+          "alignment_score": 0.667,
+          "status": "PLAUSIBLE"
+        },
+        {
+          "name": "Puzur-Inshushnak",
+          "syllables": [
+            "pu",
+            "zur",
+            "in",
+            "shu",
+            "shnak"
+          ],
+          "source": "Elam/trade contact",
+          "alignment_score": 0.4,
+          "status": "PARTIAL"
+        },
+        {
+          "name": "Urshum",
+          "syllables": [
+            "ur",
+            "shum"
+          ],
+          "source": "Ur III geographical name, Meluhha direction",
+          "alignment_score": 0.0,
+          "status": "NO_MATCH"
+        },
+        {
+          "name": "Isbierra",
+          "syllables": [
+            "is",
+            "bi",
+            "er",
+            "ra"
+          ],
+          "source": "Isin-Larsa period trade",
+          "alignment_score": 0.5,
+          "status": "PARTIAL"
+        },
+        {
+          "name": "Manishtusu",
+          "syllables": [
+            "ma",
+            "nish",
+            "tu",
+            "su"
+          ],
+          "source": "Akkadian, Meluhha booty record",
+          "alignment_score": 0.75,
+          "status": "PLAUSIBLE"
+        }
+      ],
+      "interpretation": "6/14 Meluhhan personal names from Mesopotamian texts (43%) show plausible phonological alignment with current H+M readings. 5 show partial alignment. Partial validation \u2014 some attested names fit, others do not."
+    },
+    "C_grammar_slot_stability": {
+      "n_signs_analyzed": 90,
+      "n_stable": 81,
+      "n_unstable": 1,
+      "mean_stability": 0.944,
+      "most_unstable": [
+        {
+          "sign": "M048",
+          "reading": "mu/mu\u1e49",
+          "confidence": "HIGH",
+          "global_class": "MIXED",
+          "stability": 0.375,
+          "n_sites": 8,
+          "n_agree": 3
+        }
+      ],
+      "most_stable": [
+        {
+          "sign": "M001",
+          "reading": "t\u014d\u1e37",
+          "confidence": "MEDIUM",
+          "global_class": "INITIAL",
+          "stability": 1.0,
+          "n_sites": 2,
+          "n_agree": 2
+        },
+        {
+          "sign": "M002",
+          "reading": "ku\u1e49",
+          "confidence": "MEDIUM",
+          "global_class": "INITIAL",
+          "stability": 1.0,
+          "n_sites": 2,
+          "n_agree": 2
+        },
+        {
+          "sign": "M003",
+          "reading": "kalam",
+          "confidence": "HIGH",
+          "global_class": "INITIAL",
+          "stability": 1.0,
+          "n_sites": 3,
+          "n_agree": 3
+        },
+        {
+          "sign": "M005",
+          "reading": "k\u014d\u1e49",
+          "confidence": "MEDIUM",
+          "global_class": "INITIAL",
+          "stability": 1.0,
+          "n_sites": 3,
+          "n_agree": 3
+        },
+        {
+          "sign": "M006",
+          "reading": "puli",
+          "confidence": "HIGH",
+          "global_class": "INITIAL",
+          "stability": 1.0,
+          "n_sites": 2,
+          "n_agree": 2
+        },
+        {
+          "sign": "M007",
+          "reading": "aaL",
+          "confidence": "MEDIUM",
+          "global_class": "INITIAL",
+          "stability": 1.0,
+          "n_sites": 2,
+          "n_agree": 2
+        },
+        {
+          "sign": "M008",
+          "reading": "erumai",
+          "confidence": "MEDIUM",
+          "global_class": "INITIAL",
+          "stability": 1.0,
+          "n_sites": 2,
+          "n_agree": 2
+        },
+        {
+          "sign": "M009",
+          "reading": "\u0101\u1e47",
+          "confidence": "MEDIUM",
+          "global_class": "INITIAL",
+          "stability": 1.0,
+          "n_sites": 2,
+          "n_agree": 2
+        },
+        {
+          "sign": "M010",
+          "reading": "pa\u1e6d",
+          "confidence": "MEDIUM",
+          "global_class": "INITIAL",
+          "stability": 1.0,
+          "n_sites": 2,
+          "n_agree": 2
+        },
+        {
+          "sign": "M011",
+          "reading": "ka\u1e37i\u1e5fu",
+          "confidence": "HIGH",
+          "global_class": "INITIAL",
+          "stability": 1.0,
+          "n_sites": 2,
+          "n_agree": 2
+        }
+      ],
+      "interpretation": "81/90 H+M signs (90%) maintain consistent positional class across sites (mean stability=0.94). 1 signs show unstable classification \u2014 candidates for re-evaluation or dual-function (context-dependent) usage."
+    },
+    "D_coverage_ceiling": {
+      "current_hm_token_coverage": 0.9075,
+      "promotion_scenarios": [
+        {
+          "n_promoted": 1,
+          "new_coverage": 0.9083,
+          "gain": 0.0009,
+          "extra_tokens": 6
+        },
+        {
+          "n_promoted": 3,
+          "new_coverage": 0.91,
+          "gain": 0.0026,
+          "extra_tokens": 18
+        },
+        {
+          "n_promoted": 5,
+          "new_coverage": 0.9115,
+          "gain": 0.004,
+          "extra_tokens": 28
+        },
+        {
+          "n_promoted": 10,
+          "new_coverage": 0.915,
+          "gain": 0.0076,
+          "extra_tokens": 53
+        },
+        {
+          "n_promoted": 20,
+          "new_coverage": 0.9222,
+          "gain": 0.0147,
+          "extra_tokens": 103
+        },
+        {
+          "n_promoted": 50,
+          "new_coverage": 0.9393,
+          "gain": 0.0318,
+          "extra_tokens": 223
+        }
+      ],
+      "top_15_blocking_signs": [
+        {
+          "sign": "M270",
+          "freq": 6,
+          "confidence": "LOW",
+          "reading": "mu\u1e37",
+          "pct_of_remaining_gap": 0.93,
+          "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+        },
+        {
+          "sign": "M386",
+          "freq": 6,
+          "confidence": "LOW",
+          "reading": "ma\u1e47",
+          "pct_of_remaining_gap": 0.93,
+          "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+        },
+        {
+          "sign": "M198",
+          "freq": 6,
+          "confidence": "LOW",
+          "reading": "po\u1e49",
+          "pct_of_remaining_gap": 0.93,
+          "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+        },
+        {
+          "sign": "M183",
+          "freq": 5,
+          "confidence": "LOW",
+          "reading": "v\u0113\u1e37",
+          "pct_of_remaining_gap": 0.77,
+          "basis": "Round 4: MEDIAL position (freq=5), distributional assignment"
+        },
+        {
+          "sign": "M365",
+          "freq": 5,
+          "confidence": "LOW",
+          "reading": "v\u0101\u1e49",
+          "pct_of_remaining_gap": 0.77,
+          "basis": "Round 4: MEDIAL position (freq=5), distributional assignment"
+        },
+        {
+          "sign": "M412",
+          "freq": 5,
+          "confidence": "LOW",
+          "reading": "c\u016b\u1e37",
+          "pct_of_remaining_gap": 0.77,
+          "basis": "Round 4: MEDIAL position (freq=5), distributional assignment"
+        },
+        {
+          "sign": "M151",
+          "freq": 5,
+          "confidence": "LOW",
+          "reading": "vi\u1e37",
+          "pct_of_remaining_gap": 0.77,
+          "basis": "Round 4: MEDIAL position (freq=5), distributional assignment"
+        },
+        {
+          "sign": "M304",
+          "freq": 5,
+          "confidence": "LOW",
+          "reading": "v\u0113\u1e5f",
+          "pct_of_remaining_gap": 0.77,
+          "basis": "Round 4: MEDIAL position (freq=5), distributional assignment"
+        },
+        {
+          "sign": "M321",
+          "freq": 5,
+          "confidence": "LOW",
+          "reading": "kol",
+          "pct_of_remaining_gap": 0.77,
+          "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+        },
+        {
+          "sign": "M357",
+          "freq": 5,
+          "confidence": "LOW",
+          "reading": "ku\u1e37",
+          "pct_of_remaining_gap": 0.77,
+          "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+        },
+        {
+          "sign": "M137",
+          "freq": 5,
+          "confidence": "LOW",
+          "reading": "ku\u1e5f",
+          "pct_of_remaining_gap": 0.77,
+          "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+        },
+        {
+          "sign": "M239",
+          "freq": 5,
+          "confidence": "LOW",
+          "reading": "il",
+          "pct_of_remaining_gap": 0.77,
+          "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+        },
+        {
+          "sign": "M223",
+          "freq": 5,
+          "confidence": "LOW",
+          "reading": "mu\u1e37",
+          "pct_of_remaining_gap": 0.77,
+          "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+        },
+        {
+          "sign": "M254",
+          "freq": 5,
+          "confidence": "LOW",
+          "reading": "t\u0113\u1e49",
+          "pct_of_remaining_gap": 0.77,
+          "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+        },
+        {
+          "sign": "M143",
+          "freq": 5,
+          "confidence": "LOW",
+          "reading": "ma\u1e47",
+          "pct_of_remaining_gap": 0.77,
+          "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+        }
+      ],
+      "coverage_if_all_low_promoted": 1.0,
+      "remaining_gap_even_with_low": 0.0,
+      "interpretation": "Current coverage: 90.75%. Promoting the top 5 blocking signs would add +0.40% to 91.15%. Even promoting ALL 240 LOW signs would reach 100.00% \u2014 the corpus itself limits maximum coverage due to unresolved signs."
+    }
+  },
+  "key_findings": [
+    "Site semantics: 9 sites profiled; most distinct: Chanhu-daro|Rakhigarhi",
+    "Meluhhan names: 6/14 plausible alignments (43%)",
+    "Grammar stability: 81/90 signs stable across sites (mean=0.94)",
+    "Coverage ceiling: promoting top 10 blockers \u2192 ++0.76% gain"
+  ],
+  "_note": "Phase-135 advancement analysis: site semantics, Meluhhan alignment, grammar stability, coverage ceiling."
+}

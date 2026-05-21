@@ -375,3 +375,119 @@
 - FC-4: Foundation Check MUST show `RESULT: N checks passed, 0 failed` before any commit involving phase results.
 - FC-5: The check for HIGH anchor count MUST use `>= 7` not `== 7` to accommodate Phase-48 promotions.
 
+---
+
+## REQ-BE — Backend Process
+
+- REQ-BE-001: The backend MUST start successfully in foreground mode and respond to `GET /api/v1/health` within 10 seconds.
+- REQ-BE-002: The backend MUST support background/service mode, running detached from the terminal with identical health behaviour.
+- REQ-BE-003: The backend MUST shut down cleanly (exit code 0) on SIGTERM / CTRL_C_EVENT within 60 seconds, releasing all database locks.
+- REQ-BE-004: The backend MUST create the SQLite database file and apply the full schema automatically on first start if no database exists.
+
+---
+
+## REQ-API — HTTP API
+
+- REQ-API-001: `GET /api/v1/health` MUST return HTTP 200 with valid JSON containing `status`, `version`, and `uptime_seconds` within 1 second.
+- REQ-API-002: `GET /api/v1/status` MUST return HTTP 200 with system status fields including job count and pipeline state.
+- REQ-API-003: All API routes MUST use the `/api/v1/` prefix; unprefixed routes MUST return 404.
+- REQ-API-004: CORS headers MUST allow `http://localhost:5173` (and other configured localhost origins) when the backend runs in development mode.
+
+---
+
+## REQ-CFG — Configuration
+
+- REQ-CFG-001: The backend MUST start with safe defaults when no config file exists; it MUST NOT crash on a missing config file.
+- REQ-CFG-002: Environment variables (e.g. `GLOSSA_LOG_LEVEL`) MUST override file-based configuration values.
+- REQ-CFG-003: Configuration file paths MUST be platform-specific: `%APPDATA%\GlossaLab\config.toml` on Windows, `$XDG_CONFIG_HOME/glossa-lab/config.toml` on Linux, `~/Library/Application Support/GlossaLab/config.toml` on macOS; dev mode always uses `./config/glossa.toml`.
+
+---
+
+## REQ-LOG — Logging
+
+- REQ-LOG-001: Log output MUST be structured JSON with each line containing `timestamp`, `level`, `module`, and `message`.
+- REQ-LOG-002: Log files MUST be written to the platform-appropriate path; dev mode writes to `./logs/glossa.log`.
+- REQ-LOG-003: Secret values (API keys, passwords) MUST NOT appear in any log output.
+
+---
+
+## REQ-SEC — Security
+
+- REQ-SEC-001: The backend HTTP server MUST bind to `127.0.0.1` (localhost only) by default and MUST NOT be accessible from external network addresses without explicit configuration.
+- REQ-SEC-002: API responses MUST NOT include secret values (API keys, credentials, tokens) in any field.
+
+---
+
+## REQ-FE — Frontend
+
+- REQ-FE-001: The frontend MUST communicate with backend exclusively through the versioned API (`/api/v1/`); no business logic may execute outside API calls.
+- REQ-FE-002: The frontend MUST display the correct backend health status (`healthy` / `down`) reflecting the current backend state.
+- REQ-FE-003: The frontend dev server (`npm run dev`) MUST start on port 5173 and serve a renderable page.
+
+---
+
+## REQ-TRAY — System Tray
+
+- REQ-TRAY-001: The system tray application MUST reflect backend status (running/stopped) and update when the backend state changes.
+- REQ-TRAY-002: The tray application MUST NOT contain backend logic; all interaction with the backend MUST go through HTTP or CLI invocation; no database access, pipeline logic, or job execution is permitted in the tray code.
+
+---
+
+## REQ-SVC — Service and Startup
+
+- REQ-SVC-001: On Windows, the tray application MUST support registration as a startup item so that it launches automatically at login.
+- REQ-SVC-002: On Linux, the backend MUST be controllable via a systemd user service unit (`systemctl --user start/stop/status glossa-lab`).
+- REQ-SVC-003: On macOS, the backend MUST be controllable via a LaunchAgent plist (`launchctl load/unload`).
+
+---
+
+## REQ-XP — Cross-Platform
+
+- REQ-XP-001: The backend MUST start and respond to the health endpoint identically on Windows, Linux, and macOS.
+- REQ-XP-002: The setup scripts (`scripts/setup.cmd` / `scripts/setup.sh`) MUST create the virtual environment and install dependencies in a single invocation; running them a second time MUST be idempotent.
+- REQ-XP-003: All backend dependencies MUST resolve from within the virtual environment; no globally-installed Python packages may be required.
+
+---
+
+## REQ-INT — Integration and Boundary
+
+- REQ-INT-001: The frontend MUST NOT contain process management code (spawn, exec, kill); all service lifecycle operations are the tray's responsibility.
+- REQ-INT-002: The `version` field returned by `GET /api/v1/health` MUST exactly match the version string declared in `backend/pyproject.toml`.
+
+---
+
+## REQ-PIPE — Analysis Pipelines
+
+- REQ-PIPE-001: The block entropy pipeline MUST return a `block_entropies` array with entries for N=1..6, each having `raw_nats` and `normalized` fields within a valid numeric range.
+- REQ-PIPE-002: The character frequency pipeline MUST return `total_symbols`, `unique_symbols`, `frequencies`, and `zipf_exponent`; frequencies MUST sum to `total_symbols`.
+- REQ-PIPE-003: The pipeline engine MUST transition submitted jobs to `completed` status and make results retrievable via `GET /api/v1/jobs/{id}/results`.
+
+---
+
+## REQ-KDL — Kandles Phonetic-Visual Analysis
+
+> Patent: 
+
+- REQ-KDL-001: The Kandles phonetic mapping MUST assign each English word to the correct consonant group (1–7) and vowel-initial group (0) based on its initial phoneme.
+- REQ-KDL-002: Kandles color-coded text output MUST include the correct color name and hex code for each word.
+- REQ-KDL-003: Kandles grid generation MUST produce a 6×6 grid from a 36-word input with correct color assignments and group numbers per cell.
+- REQ-KDL-004: Cross-language Kandles comparison MUST compute a similarity metric in [0, 1] between grids generated from texts in different languages.
+
+---
+
+## REQ-HTD — Hierarchical Text Decomposition
+
+> Patent: 
+
+- REQ-HTD-001: Text decomposition MUST split a multi-section text into independently addressable slices each with a unique ID; individual slices MUST be retrievable by that ID.
+- REQ-HTD-002: Slice filtering MUST support single-cluster, multi-cluster AND, and multi-cluster OR predicates and return the correct subset in each case.
+
+---
+
+## REQ-SEM — Semantic Cluster Tagging
+
+> Patent: 
+
+- REQ-SEM-001: The default semantic taxonomy MUST include at least: Culture, Nations, Nature, Religion, People, Spiritual.
+- REQ-SEM-002: Manual tags applied to a text segment MUST be persisted and returned correctly when the segment is retrieved.
+

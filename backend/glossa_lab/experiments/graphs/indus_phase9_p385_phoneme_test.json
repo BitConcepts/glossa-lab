@@ -1,7 +1,7 @@
 {
   "id": "indus_phase9_p385_phoneme_test",
-  "name": "Phase 9: P385 Phoneme Test \u2014 /n/ vs /ku/ (H1 Resolution)",
-  "description": "Resolves the P385 phoneme conflict: SA evidence assigns P385=/n/ (genitive, consistency 0.8591) while CAS assigns P385=/ku/ (dative). Runs two SA arms with identical settings against South Dravidian LM, differing only in P385 anchor assignment. Higher consistency identifies the structurally supported phoneme. Both are valid Dravidian suffixes \u2014 the corpus structure decides. Also tests P385=/n/ against Pali as falsification control.",
+  "name": "Phase 9: P385 Phoneme Test — /n/ vs /ku/ (H1 Resolution)",
+  "description": "Resolves the P385 phoneme conflict: SA evidence assigns P385=/n/ (genitive, consistency 0.8591) while CAS assigns P385=/ku/ (dative). Runs two SA arms with identical settings against South Dravidian LM, differing only in P385 anchor assignment. Higher consistency identifies the structurally supported phoneme. Both are valid Dravidian suffixes — the corpus structure decides. Also tests P385=/n/ against Pali as falsification control.",
   "nodes": [
     {
       "id": "n1",
@@ -233,5 +233,6 @@
       "sourcePort": "json",
       "targetPort": "data"
     }
-  ]
+  ],
+  "graph_type": "experiment"
 }

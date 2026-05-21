@@ -1,35 +1,303 @@
 {
   "id": "indus_phase20_synthesis",
-  "name": "Indus Phase-20 \u2014 synthesis (length / archaeology / Ferrara / Fuls)",
+  "name": "Indus Phase-20 — synthesis (length / archaeology / Ferrara / Fuls)",
   "description": "Phase-20 master graph: re-runs all four sub-experiments (length-stratified spectral, 16-sign cluster archaeology, Ferrara CM extraction, Fuls positional classifier) inline and aggregates verdicts via Phase20Verdict. Produces the headline yes/no/partially-confirmed verdict per Phase-19 prediction. Output: reports/phase20_synthesis.json.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "load",      "type": "expNode", "data": { "atomicId": "M77InscriptionLoader",      "label": "Load M77",                       "params": { "use_raw": false } }, "position": { "x": 60,   "y": 320 } },
-    { "id": "strat",     "type": "expNode", "data": { "atomicId": "LengthStratifier",          "label": "Length stratify",                 "params": { "bins": [[1,2],[3,4],[5,6],[7,9999]] } }, "position": { "x": 360,  "y": 80 } },
-    { "id": "spectral",  "type": "expNode", "data": { "atomicId": "BinSpectralFingerprint",    "label": "Per-bin spectral",                "params": {} }, "position": { "x": 660,  "y": 80 } },
-    { "id": "allograph", "type": "expNode", "data": { "atomicId": "AllographDetector",         "label": "Allograph detector",              "params": { "min_count": 5 } }, "position": { "x": 360,  "y": 240 } },
-    { "id": "arch",      "type": "expNode", "data": { "atomicId": "ClusterArchaeology",        "label": "Cluster archaeology (16-sign)",   "params": { "fixed_members": ["034","106","157","237","307","427","461","520","617","708","712","718","817","855","858","866"] } }, "position": { "x": 660,  "y": 240 } },
-    { "id": "fpath",     "type": "expNode", "data": { "atomicId": "StaticValue",                "label": "Ferrara PDF path",                "params": { "value": "C:/Users/trist/Development/BitConcepts/glossa-lab/corpora/downloads/ferrara_2006_phd_cyprominoan.pdf" } }, "position": { "x": 60,   "y": 480 } },
-    { "id": "pdf",       "type": "expNode", "data": { "atomicId": "PDFTextExtractor",          "label": "PDF text extractor",              "params": { "max_pages": 600, "start_page": 0 } }, "position": { "x": 360,  "y": 480 } },
-    { "id": "cmparser",  "type": "expNode", "data": { "atomicId": "CMCatalogParser",            "label": "CM catalog parser",                "params": {} }, "position": { "x": 660,  "y": 480 } },
-    { "id": "fuls",      "type": "expNode", "data": { "atomicId": "FulsPositionalClassifier",   "label": "Fuls positional classifier",       "params": { "min_count": 5 } }, "position": { "x": 360,  "y": 640 } },
-    { "id": "verdict",   "type": "expNode", "data": { "atomicId": "Phase20Verdict",             "label": "Phase-20 verdict aggregator",      "params": {} }, "position": { "x": 960,  "y": 360 } },
-    { "id": "out",       "type": "expNode", "data": { "atomicId": "JSONExport",                  "label": "Save Phase-20 synthesis",          "params": { "filename": "phase20_synthesis.json" } }, "position": { "x": 1240, "y": 360 } }
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "M77InscriptionLoader",
+        "label": "Load M77",
+        "params": {
+          "use_raw": false
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 320
+      }
+    },
+    {
+      "id": "strat",
+      "type": "expNode",
+      "data": {
+        "atomicId": "LengthStratifier",
+        "label": "Length stratify",
+        "params": {
+          "bins": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              5,
+              6
+            ],
+            [
+              7,
+              9999
+            ]
+          ]
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 80
+      }
+    },
+    {
+      "id": "spectral",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BinSpectralFingerprint",
+        "label": "Per-bin spectral",
+        "params": {}
+      },
+      "position": {
+        "x": 660,
+        "y": 80
+      }
+    },
+    {
+      "id": "allograph",
+      "type": "expNode",
+      "data": {
+        "atomicId": "AllographDetector",
+        "label": "Allograph detector",
+        "params": {
+          "min_count": 5
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 240
+      }
+    },
+    {
+      "id": "arch",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ClusterArchaeology",
+        "label": "Cluster archaeology (16-sign)",
+        "params": {
+          "fixed_members": [
+            "034",
+            "106",
+            "157",
+            "237",
+            "307",
+            "427",
+            "461",
+            "520",
+            "617",
+            "708",
+            "712",
+            "718",
+            "817",
+            "855",
+            "858",
+            "866"
+          ]
+        }
+      },
+      "position": {
+        "x": 660,
+        "y": 240
+      }
+    },
+    {
+      "id": "fpath",
+      "type": "expNode",
+      "data": {
+        "atomicId": "StaticValue",
+        "label": "Ferrara PDF path",
+        "params": {
+          "value": "C:/Users/trist/Development/BitConcepts/glossa-lab/corpora/downloads/ferrara_2006_phd_cyprominoan.pdf"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 480
+      }
+    },
+    {
+      "id": "pdf",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PDFTextExtractor",
+        "label": "PDF text extractor",
+        "params": {
+          "max_pages": 600,
+          "start_page": 0
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 480
+      }
+    },
+    {
+      "id": "cmparser",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CMCatalogParser",
+        "label": "CM catalog parser",
+        "params": {}
+      },
+      "position": {
+        "x": 660,
+        "y": 480
+      }
+    },
+    {
+      "id": "fuls",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FulsPositionalClassifier",
+        "label": "Fuls positional classifier",
+        "params": {
+          "min_count": 5
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 640
+      }
+    },
+    {
+      "id": "verdict",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Phase20Verdict",
+        "label": "Phase-20 verdict aggregator",
+        "params": {}
+      },
+      "position": {
+        "x": 960,
+        "y": 360
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Phase-20 synthesis",
+        "params": {
+          "filename": "phase20_synthesis.json"
+        }
+      },
+      "position": {
+        "x": 1240,
+        "y": 360
+      }
+    }
   ],
   "edges": [
-    { "id": "e_load_strat",       "source": "load",      "target": "strat",     "sourcePort": "sequences",        "targetPort": "sequences" },
-    { "id": "e_strat_spectral",   "source": "strat",     "target": "spectral",  "sourcePort": "stratifications",  "targetPort": "stratifications" },
-    { "id": "e_load_allo",        "source": "load",      "target": "allograph", "sourcePort": "sequences",        "targetPort": "sequences" },
-    { "id": "e_load_arch",        "source": "load",      "target": "arch",      "sourcePort": "inscriptions",     "targetPort": "inscriptions" },
-    { "id": "e_allo_arch",        "source": "allograph", "target": "arch",      "sourcePort": "sign_to_cluster",  "targetPort": "sign_to_cluster" },
-    { "id": "e_path_pdf",         "source": "fpath",     "target": "pdf",       "sourcePort": "value",            "targetPort": "file_path" },
-    { "id": "e_pdf_cm",           "source": "pdf",       "target": "cmparser",  "sourcePort": "pages",            "targetPort": "pages" },
-    { "id": "e_load_fuls",        "source": "load",      "target": "fuls",      "sourcePort": "sequences",        "targetPort": "sequences" },
-    { "id": "e_v_strat",          "source": "spectral",  "target": "verdict",   "sourcePort": "verdict",          "targetPort": "length_strata" },
-    { "id": "e_v_arch",           "source": "arch",      "target": "verdict",   "sourcePort": "verdict",          "targetPort": "cluster_archaeology" },
-    { "id": "e_v_cm",             "source": "cmparser",  "target": "verdict",   "sourcePort": "verdict",          "targetPort": "ferrara_cm" },
-    { "id": "e_v_fuls",           "source": "fuls",      "target": "verdict",   "sourcePort": "verdict",          "targetPort": "fuls_positional" },
-    { "id": "e_v_fuls_counts",    "source": "fuls",      "target": "verdict",   "sourcePort": "counts_by_class",  "targetPort": "fuls_positional_counts" },
-    { "id": "e_verdict_out",      "source": "verdict",   "target": "out",       "sourcePort": "summary",          "targetPort": "data" }
-  ]
+    {
+      "id": "e_load_strat",
+      "source": "load",
+      "target": "strat",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e_strat_spectral",
+      "source": "strat",
+      "target": "spectral",
+      "sourcePort": "stratifications",
+      "targetPort": "stratifications"
+    },
+    {
+      "id": "e_load_allo",
+      "source": "load",
+      "target": "allograph",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e_load_arch",
+      "source": "load",
+      "target": "arch",
+      "sourcePort": "inscriptions",
+      "targetPort": "inscriptions"
+    },
+    {
+      "id": "e_allo_arch",
+      "source": "allograph",
+      "target": "arch",
+      "sourcePort": "sign_to_cluster",
+      "targetPort": "sign_to_cluster"
+    },
+    {
+      "id": "e_path_pdf",
+      "source": "fpath",
+      "target": "pdf",
+      "sourcePort": "value",
+      "targetPort": "file_path"
+    },
+    {
+      "id": "e_pdf_cm",
+      "source": "pdf",
+      "target": "cmparser",
+      "sourcePort": "pages",
+      "targetPort": "pages"
+    },
+    {
+      "id": "e_load_fuls",
+      "source": "load",
+      "target": "fuls",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e_v_strat",
+      "source": "spectral",
+      "target": "verdict",
+      "sourcePort": "verdict",
+      "targetPort": "length_strata"
+    },
+    {
+      "id": "e_v_arch",
+      "source": "arch",
+      "target": "verdict",
+      "sourcePort": "verdict",
+      "targetPort": "cluster_archaeology"
+    },
+    {
+      "id": "e_v_cm",
+      "source": "cmparser",
+      "target": "verdict",
+      "sourcePort": "verdict",
+      "targetPort": "ferrara_cm"
+    },
+    {
+      "id": "e_v_fuls",
+      "source": "fuls",
+      "target": "verdict",
+      "sourcePort": "verdict",
+      "targetPort": "fuls_positional"
+    },
+    {
+      "id": "e_v_fuls_counts",
+      "source": "fuls",
+      "target": "verdict",
+      "sourcePort": "counts_by_class",
+      "targetPort": "fuls_positional_counts"
+    },
+    {
+      "id": "e_verdict_out",
+      "source": "verdict",
+      "target": "out",
+      "sourcePort": "summary",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

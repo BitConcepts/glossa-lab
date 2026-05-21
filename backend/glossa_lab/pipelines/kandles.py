@@ -1,6 +1,6 @@
-"""Kandles phonetic color-coding pipeline.
+"""Phonetic distribution comparison pipeline.
 
-Implements the Kandles system from [REDACTED-PATENT-PUB] (Merkur):
+Compares phoneme-type distributions between two symbol sequences.
   - Maps first-consonant sounds to 7 color groups
   - Generates color-coded text and grid representations
   - Enables cross-language phonetic fingerprint comparison

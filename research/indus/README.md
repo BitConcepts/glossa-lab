@@ -15,6 +15,7 @@
 | `anchor_table.json` | Same table in JSON with full metadata |
 | `mahadevan_parpola_crosswalk.json` | 45-entry M-number ↔ P-number sign crosswalk |
 | `phase_reports/` | 35 computational phase reports (Phases 127–170) |
+| `supplemental/` | 4 derived datasets for direct use by collaborators (fish-sign context, iconographic pairs, formula bigrams, polysemy test) |
 
 The LaTeX source for the preprint is in `glossa-corpus/indus/preprint_v1.tex`.
 

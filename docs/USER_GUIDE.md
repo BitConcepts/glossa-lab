@@ -1,7 +1,8 @@
 # Glossa Lab — User Guide
 
-> **Version**: current `main` branch — Phase 44 (May 2026)
-> **Last updated**: 2026-05-17
+> **Version**: current `main` branch — Phase 170 (May 2026)
+> **Last updated**: 2026-05-21
+> **Maintained by**: BitConcepts LLC
 
 ---
 
@@ -114,7 +115,7 @@ The tray icon provides Start / Stop / Restart controls.
 | Section | Items |
 |---------|---------|
 | **Overview** | Dashboard |
-| **Workflow** | Corpora · CAS Models · Experiments · Pipelines · Projects · Reports |
+| **Workflow** | Corpora · Experiments · Pipelines · Projects · Reports |
 | **Analysis** | Entropy · Signs · Timeline |
 | **Research** | Discovery · **Evidence Graph** · Hypotheses · Notebooks · Citations · Correspondence · AI Tools · Foundation Check |
 | **System** (bottom) | Status · Jobs · Settings · **Help** |
@@ -123,6 +124,7 @@ The tray icon provides Start / Stop / Restart controls.
 - "Study Builder" → accessible via **Projects** tab (project management)
 - "Exp. Builder" merged into **Experiments** (unified workspace: experiment list + graph editor)
 - "Studies" (Indus statistical data) → removed; use the **Evidence Graph** or **Entropy** tabs instead
+- "CAS Models" → removed (constraint projection engine removed)
 - New: **Evidence Graph** in Research section — literature library, claims, and automated sweep
 
 ### Nav indicator dots
@@ -302,7 +304,7 @@ background jobs. Unlike experiments, pipelines are invoked by submitting a job
 
 | Pipeline         | Description |
 |-----------------|-------------|
-| Kandles Fingerprint | Merkur phonological colour fingerprint |
+| Kandles Fingerprint | Phonetic distribution colour fingerprint |
 | Decipher (Substitution) | Hill-climbing substitution cipher solver |
 | Hypothesis Engine | Iterative hypothesis-test-score loop |
 

@@ -29,7 +29,7 @@ session. Read the following before any non-trivial action:
 **Before any action that modifies production code or data:** verify the proposed
 change against docs/governance/rules.md.
 
-**Governance data** is gitignored and lives in .specsmith/ and .chronomemory/
+**Governance data** is gitignored and lives in local runtime directories (`.specsmith/`, `.chronomemory/`)
 (local runtime only — never committed).
 
 ---

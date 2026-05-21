@@ -1,0 +1,93 @@
+{
+  "phase": 127,
+  "test": "fish_sign_polysemy_by_site",
+  "fish_signs": [
+    "M047",
+    "M052",
+    "M053",
+    "M054",
+    "M055",
+    "M056",
+    "M049",
+    "M145"
+  ],
+  "by_site": [
+    {
+      "site": "Banawali",
+      "type": "inland",
+      "total": 4,
+      "isolated": 0,
+      "compound": 4,
+      "pct_isolated": 0.0
+    },
+    {
+      "site": "Chanhu-daro",
+      "type": "inland",
+      "total": 5,
+      "isolated": 0,
+      "compound": 5,
+      "pct_isolated": 0.0
+    },
+    {
+      "site": "Dholavira",
+      "type": "inland",
+      "total": 11,
+      "isolated": 0,
+      "compound": 11,
+      "pct_isolated": 0.0
+    },
+    {
+      "site": "Harappa",
+      "type": "inland",
+      "total": 33,
+      "isolated": 0,
+      "compound": 33,
+      "pct_isolated": 0.0
+    },
+    {
+      "site": "Kalibangan",
+      "type": "inland",
+      "total": 13,
+      "isolated": 0,
+      "compound": 13,
+      "pct_isolated": 0.0
+    },
+    {
+      "site": "Lothal",
+      "type": "COASTAL",
+      "total": 6,
+      "isolated": 0,
+      "compound": 6,
+      "pct_isolated": 0.0
+    },
+    {
+      "site": "Mohenjo-daro",
+      "type": "inland",
+      "total": 35,
+      "isolated": 0,
+      "compound": 35,
+      "pct_isolated": 0.0
+    },
+    {
+      "site": "Rakhigarhi",
+      "type": "inland",
+      "total": 3,
+      "isolated": 0,
+      "compound": 3,
+      "pct_isolated": 0.0
+    },
+    {
+      "site": "Surkotada",
+      "type": "inland",
+      "total": 3,
+      "isolated": 0,
+      "compound": 3,
+      "pct_isolated": 0.0
+    }
+  ],
+  "lothal_total": 6,
+  "lothal_isolated": 0,
+  "inland_total": 107,
+  "inland_isolated": 0,
+  "conclusion": "UNTESTABLE: 0 isolated fish signs at Lothal (consistent with Phase-124 Holdat finding)"
+}

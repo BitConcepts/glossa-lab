@@ -3,16 +3,122 @@
   "name": "Prior Ablation Benchmark",
   "description": "Ablation study: how does varying anchor count affect SA solution quality on the NW Semitic corpus? Uses ConstraintSweep to trace consistency across 7 anchor levels [0,1,2,3,5,8,10]. All oracle deltas expected negative (adding correct anchors should improve score).",
   "nodes": [
-    {"id": "corpus", "type": "expNode", "data": {"atomicId": "BuiltinCorpus", "label": "NW Semitic", "params": {"corpus": "nw_semitic"}}, "position": {"x": 60, "y": 200}},
-    {"id": "rtl", "type": "expNode", "data": {"atomicId": "DirectionNormalizer", "label": "RTL", "params": {"direction": "rtl"}}, "position": {"x": 280, "y": 200}},
-    {"id": "lm", "type": "expNode", "data": {"atomicId": "BuiltinLM", "label": "Hebrew LM", "params": {"language": "hebrew"}}, "position": {"x": 60, "y": 380}},
-    {"id": "sweep", "type": "expNode", "data": {"atomicId": "ConstraintSweep", "label": "7-Level Ablation", "params": {"anchor_counts": [0, 1, 2, 3, 5, 8, 10], "n_seeds": 5, "max_iterations": 5000, "restarts": 3}}, "position": {"x": 520, "y": 280}},
-    {"id": "out", "type": "expNode", "data": {"atomicId": "JSONExport", "label": "Save", "params": {"filename": "prior_ablation_benchmark.json"}}, "position": {"x": 780, "y": 280}}
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "NW Semitic",
+        "params": {
+          "corpus": "nw_semitic"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 200
+      }
+    },
+    {
+      "id": "rtl",
+      "type": "expNode",
+      "data": {
+        "atomicId": "DirectionNormalizer",
+        "label": "RTL",
+        "params": {
+          "direction": "rtl"
+        }
+      },
+      "position": {
+        "x": 280,
+        "y": 200
+      }
+    },
+    {
+      "id": "lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Hebrew LM",
+        "params": {
+          "language": "hebrew"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 380
+      }
+    },
+    {
+      "id": "sweep",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConstraintSweep",
+        "label": "7-Level Ablation",
+        "params": {
+          "anchor_counts": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            8,
+            10
+          ],
+          "n_seeds": 5,
+          "max_iterations": 5000,
+          "restarts": 3
+        }
+      },
+      "position": {
+        "x": 520,
+        "y": 280
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save",
+        "params": {
+          "filename": "prior_ablation_benchmark.json"
+        }
+      },
+      "position": {
+        "x": 780,
+        "y": 280
+      }
+    }
   ],
   "edges": [
-    {"id": "e1", "source": "corpus", "target": "rtl", "sourcePort": "sequences", "targetPort": "sequences"},
-    {"id": "e2", "source": "rtl", "target": "sweep", "sourcePort": "sequences", "targetPort": "sequences"},
-    {"id": "e3", "source": "lm", "target": "sweep", "sourcePort": "lm", "targetPort": "lm"},
-    {"id": "e4", "source": "sweep", "target": "out", "sourcePort": "consistency_curve", "targetPort": "data"}
-  ]
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "rtl",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "rtl",
+      "target": "sweep",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "lm",
+      "target": "sweep",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e4",
+      "source": "sweep",
+      "target": "out",
+      "sourcePort": "consistency_curve",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

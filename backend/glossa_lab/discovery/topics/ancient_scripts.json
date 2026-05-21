@@ -1,0 +1,45 @@
+{
+  "id": "ancient_scripts",
+  "label": "Ancient Scripts & Epigraphy",
+  "description": "Undeciphered and early writing systems — Linear A, Proto-Sinaitic, Meroitic, Etruscan, Rongorongo, Zapotec, and related epigraphy.",
+  "keywords": [
+    "ancient script decipherment",
+    "undeciphered writing system",
+    "Linear A decipherment",
+    "Proto-Sinaitic script",
+    "Meroitic script",
+    "Etruscan inscription",
+    "Rongorongo script",
+    "Zapotec writing",
+    "proto-writing",
+    "ancient epigraphy",
+    "corpus linguistics ancient",
+    "computational epigraphy",
+    "sign inventory ancient",
+    "syllabary ancient"
+  ],
+  "exclusions": [
+    "stock market",
+    "font design",
+    "tattoo",
+    "handwriting recognition modern"
+  ],
+  "languages": [
+    "en"
+  ],
+  "source_overrides": {
+    "patentsview": {
+      "enabled": false
+    },
+    "newsapi": {
+      "page_size": 20
+    },
+    "semanticscholar": {
+      "max_results": 20
+    },
+    "arxiv": {
+      "max_results": 20,
+      "categories": ["cs.CL", "cs.CV", "eess.SP"]
+    }
+  }
+}

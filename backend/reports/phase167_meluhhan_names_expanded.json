@@ -1,0 +1,1978 @@
+{
+  "phase": 167,
+  "date": "2026-05-20",
+  "description": "Expanded Meluhhan personal name matching — final experiment without ICIT",
+  "n_names_tested": 25,
+  "n_strong_matches": 25,
+  "n_partial_matches": 0,
+  "strong_threshold": 0.75,
+  "partial_threshold": 0.5,
+  "verdict": "STRONG_MATCH_FOUND",
+  "top_matches": [
+    {
+      "name": "Apil-Adad",
+      "segments": [
+        "a",
+        "pil",
+        "a",
+        "tat"
+      ],
+      "source": "P75",
+      "meaning": "Son of Adad, Meluhhan context",
+      "status": "STRONG",
+      "n_strong": 632,
+      "n_partial": 708,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Danga",
+      "segments": [
+        "tan",
+        "ka"
+      ],
+      "source": "K83",
+      "meaning": "Gulf seal personal name (Kjaerum 1983)",
+      "status": "STRONG",
+      "n_strong": 347,
+      "n_partial": 575,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Magan",
+      "segments": [
+        "ma",
+        "kan"
+      ],
+      "source": "P10",
+      "meaning": "Magan (Oman) = Meluhha contact zone",
+      "status": "STRONG",
+      "n_strong": 243,
+      "n_partial": 490,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Hala",
+      "segments": [
+        "hay",
+        "la"
+      ],
+      "source": "S82",
+      "meaning": "Gulf/Meluhhan personal name",
+      "status": "STRONG",
+      "n_strong": 233,
+      "n_partial": 455,
+      "top_matches": [
+        {
+          "cisi": "M-0001",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kalam",
+            "ay",
+            "kol",
+            "vel"
+          ],
+          "n_decoded": 4,
+          "seal_length": 5
+        },
+        {
+          "cisi": "M-0002",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        }
+      ]
+    },
+    {
+      "name": "Abu-waqar",
+      "segments": [
+        "a",
+        "pu",
+        "wa",
+        "kar"
+      ],
+      "source": "P94",
+      "meaning": "Meluhhan trader Ur III Lagash",
+      "status": "STRONG",
+      "n_strong": 262,
+      "n_partial": 371,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Nanna-a",
+      "segments": [
+        "nan",
+        "na"
+      ],
+      "source": "P75",
+      "meaning": "Moon god gift",
+      "status": "STRONG",
+      "n_strong": 255,
+      "n_partial": 340,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Kata",
+      "segments": [
+        "ka",
+        "tha"
+      ],
+      "source": "P75",
+      "meaning": "Meluhhan name fragment, Lagash",
+      "status": "STRONG",
+      "n_strong": 224,
+      "n_partial": 340,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Ilum-gamil",
+      "segments": [
+        "il",
+        "um",
+        "ka",
+        "mil"
+      ],
+      "source": "P94",
+      "meaning": "Akkadian compound, Meluhhan official",
+      "status": "STRONG",
+      "n_strong": 277,
+      "n_partial": 194,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Kulli",
+      "segments": [
+        "ku",
+        "li"
+      ],
+      "source": "P94",
+      "meaning": "Kulli culture (Baluchistan) name",
+      "status": "STRONG",
+      "n_strong": 226,
+      "n_partial": 232,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Rusa",
+      "segments": [
+        "ru",
+        "ca"
+      ],
+      "source": "P94",
+      "meaning": "Meluhhan personal name, Ur III",
+      "status": "STRONG",
+      "n_strong": 226,
+      "n_partial": 222,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    }
+  ],
+  "all_results": [
+    {
+      "name": "Urgula",
+      "segments": [
+        "ur",
+        "ku",
+        "la"
+      ],
+      "source": "P10",
+      "meaning": "Great Lion (DEDR 674)",
+      "status": "STRONG",
+      "n_strong": 225,
+      "n_partial": 25,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Nanna-a",
+      "segments": [
+        "nan",
+        "na"
+      ],
+      "source": "P75",
+      "meaning": "Moon god gift",
+      "status": "STRONG",
+      "n_strong": 255,
+      "n_partial": 340,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Shu-ilishu",
+      "segments": [
+        "cu",
+        "il",
+        "ay",
+        "cu"
+      ],
+      "source": "P10",
+      "meaning": "Interpreter, attested Ur III",
+      "status": "STRONG",
+      "n_strong": 224,
+      "n_partial": 108,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Lulubu",
+      "segments": [
+        "lu",
+        "lu",
+        "pu"
+      ],
+      "source": "S82",
+      "meaning": "Ethnic name, Zagros region",
+      "status": "STRONG",
+      "n_strong": 224,
+      "n_partial": 4,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Inilaptum",
+      "segments": [
+        "in",
+        "il",
+        "ap",
+        "tu",
+        "um"
+      ],
+      "source": "P94",
+      "meaning": "Meluhhan official Ur III",
+      "status": "STRONG",
+      "n_strong": 224,
+      "n_partial": 22,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 5,
+          "total_slots": 5,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 5,
+          "total_slots": 5,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 5,
+          "total_slots": 5,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Kishapi",
+      "segments": [
+        "ki",
+        "ca",
+        "pi"
+      ],
+      "source": "P75",
+      "meaning": "Meluhhan name, Lagash",
+      "status": "STRONG",
+      "n_strong": 224,
+      "n_partial": 11,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Tamtum",
+      "segments": [
+        "tam",
+        "tu",
+        "um"
+      ],
+      "source": "S82",
+      "meaning": "Drum/Sea (Akkadian loanword context)",
+      "status": "STRONG",
+      "n_strong": 226,
+      "n_partial": 84,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Lamagi",
+      "segments": [
+        "la",
+        "ma",
+        "ki"
+      ],
+      "source": "P75",
+      "meaning": "Meluhhan name, Ur III Lagash",
+      "status": "STRONG",
+      "n_strong": 224,
+      "n_partial": 0,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Ilum-gamil",
+      "segments": [
+        "il",
+        "um",
+        "ka",
+        "mil"
+      ],
+      "source": "P94",
+      "meaning": "Akkadian compound, Meluhhan official",
+      "status": "STRONG",
+      "n_strong": 277,
+      "n_partial": 194,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Amar-ilum",
+      "segments": [
+        "am",
+        "ar",
+        "il",
+        "um"
+      ],
+      "source": "P10",
+      "meaning": "Meluhhan in Ur III administrative text",
+      "status": "STRONG",
+      "n_strong": 235,
+      "n_partial": 124,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Libur-belat",
+      "segments": [
+        "li",
+        "pur",
+        "be",
+        "lat"
+      ],
+      "source": "S82",
+      "meaning": "Meluhhan merchant Ur III",
+      "status": "STRONG",
+      "n_strong": 224,
+      "n_partial": 6,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Pala-ishum",
+      "segments": [
+        "pal",
+        "ay",
+        "cu",
+        "um"
+      ],
+      "source": "P75",
+      "meaning": "Meluhhan name, Akkad period",
+      "status": "STRONG",
+      "n_strong": 226,
+      "n_partial": 68,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Abu-waqar",
+      "segments": [
+        "a",
+        "pu",
+        "wa",
+        "kar"
+      ],
+      "source": "P94",
+      "meaning": "Meluhhan trader Ur III Lagash",
+      "status": "STRONG",
+      "n_strong": 262,
+      "n_partial": 371,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Apil-Adad",
+      "segments": [
+        "a",
+        "pil",
+        "a",
+        "tat"
+      ],
+      "source": "P75",
+      "meaning": "Son of Adad, Meluhhan context",
+      "status": "STRONG",
+      "n_strong": 632,
+      "n_partial": 708,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 4,
+          "total_slots": 4,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Ku-Nanna",
+      "segments": [
+        "ku",
+        "nan",
+        "na"
+      ],
+      "source": "S82",
+      "meaning": "Moon-god name, Meluhhan origin",
+      "status": "STRONG",
+      "n_strong": 231,
+      "n_partial": 68,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Ur-Namma",
+      "segments": [
+        "ur",
+        "nam",
+        "ma"
+      ],
+      "source": "P10",
+      "meaning": "Ur III Meluhhan association",
+      "status": "STRONG",
+      "n_strong": 228,
+      "n_partial": 52,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "En-kidu",
+      "segments": [
+        "en",
+        "ki",
+        "tu"
+      ],
+      "source": "R01",
+      "meaning": "Gilgamesh companion, possible Meluhhan",
+      "status": "STRONG",
+      "n_strong": 224,
+      "n_partial": 3,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Danga",
+      "segments": [
+        "tan",
+        "ka"
+      ],
+      "source": "K83",
+      "meaning": "Gulf seal personal name (Kjaerum 1983)",
+      "status": "STRONG",
+      "n_strong": 347,
+      "n_partial": 575,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Tilmun",
+      "segments": [
+        "til",
+        "mu",
+        "un"
+      ],
+      "source": "K83",
+      "meaning": "Dilmun/Tilmun toponym seal",
+      "status": "STRONG",
+      "n_strong": 224,
+      "n_partial": 25,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 3,
+          "total_slots": 3,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Magan",
+      "segments": [
+        "ma",
+        "kan"
+      ],
+      "source": "P10",
+      "meaning": "Magan (Oman) = Meluhha contact zone",
+      "status": "STRONG",
+      "n_strong": 243,
+      "n_partial": 490,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Rusa",
+      "segments": [
+        "ru",
+        "ca"
+      ],
+      "source": "P94",
+      "meaning": "Meluhhan personal name, Ur III",
+      "status": "STRONG",
+      "n_strong": 226,
+      "n_partial": 222,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Kata",
+      "segments": [
+        "ka",
+        "tha"
+      ],
+      "source": "P75",
+      "meaning": "Meluhhan name fragment, Lagash",
+      "status": "STRONG",
+      "n_strong": 224,
+      "n_partial": 340,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Melu",
+      "segments": [
+        "me",
+        "lu"
+      ],
+      "source": "P10",
+      "meaning": "Meluhha toponym root",
+      "status": "STRONG",
+      "n_strong": 224,
+      "n_partial": 42,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    },
+    {
+      "name": "Hala",
+      "segments": [
+        "hay",
+        "la"
+      ],
+      "source": "S82",
+      "meaning": "Gulf/Meluhhan personal name",
+      "status": "STRONG",
+      "n_strong": 233,
+      "n_partial": 455,
+      "top_matches": [
+        {
+          "cisi": "M-0001",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kalam",
+            "ay",
+            "kol",
+            "vel"
+          ],
+          "n_decoded": 4,
+          "seal_length": 5
+        },
+        {
+          "cisi": "M-0002",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        }
+      ]
+    },
+    {
+      "name": "Kulli",
+      "segments": [
+        "ku",
+        "li"
+      ],
+      "source": "P94",
+      "meaning": "Kulli culture (Baluchistan) name",
+      "status": "STRONG",
+      "n_strong": 226,
+      "n_partial": 232,
+      "top_matches": [
+        {
+          "cisi": "M-0002",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "kōṉ",
+            "ā",
+            "kol",
+            "vil",
+            "tu"
+          ],
+          "n_decoded": 5,
+          "seal_length": 6
+        },
+        {
+          "cisi": "M-0004",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "mu",
+            "ā",
+            "ā"
+          ],
+          "n_decoded": 3,
+          "seal_length": 3
+        },
+        {
+          "cisi": "BN-0001",
+          "matched_slots": 2,
+          "total_slots": 2,
+          "slot_ratio": 1.0,
+          "decoded": [
+            "erumai",
+            "ā",
+            "kol"
+          ],
+          "n_decoded": 3,
+          "seal_length": 4
+        }
+      ]
+    }
+  ],
+  "methodology": "Fuzzy prefix matching of Meluhhan name phonological segments against decoded readings (H+M 161-anchor set). Strong match: ≥75% segments. Partial: ≥50% segments. No SA involved — pure lexical matching.",
+  "ceiling_note": "This is the final personal-name experiment achievable without ICIT corpus. Tested 25 attested Ur III Meluhhan names. ICIT corpus (5,318 texts) is required for personal-name decipherment.",
+  "gpu_device": "cuda",
+  "_citation": "Names: Parpola 1975, Steinkeller 1982, Potts 1994, Reade 2001, Parpola 2010 Deciphering the Indus Script. Anchors: INDUS_FINAL_ANCHORS.json (161 H+M signs)."
+}

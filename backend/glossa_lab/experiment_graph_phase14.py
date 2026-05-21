@@ -18,12 +18,6 @@ new orthogonal layers of analysis:
       (Hierarchical Epistasis Decomposition), EpistaticAnchorRanker
       (rank candidate anchors by their epistatic-centrality score).
 
-  CPSC integration
-      CASHypothesisProjector — load any CAS-YAML model + a corpus's measured
-      DoFs, project through CPSC's IterativeEngine / CellularEngine, and
-      return max_violation + a per-constraint violation breakdown. This is
-      the deterministic hypothesis-comparison node.
-
   Integrative
       LanguageDetectorVerdict — combine all signature tests into a single
       {is_language, confidence, evidence_for, evidence_against, verdict}
@@ -1141,88 +1135,13 @@ def _epistatic_anchor_ranker(inputs: dict, params: dict) -> dict:
     }
 
 
-# ── CPSC integration — CASHypothesisProjector ───────────────────────────
+# ── Constraint projection stub (engine removed) ────
 
 
 def _cas_hypothesis_projector(inputs: dict, params: dict) -> dict:
-    """Project a corpus's measured DoFs through a CAS-YAML constraint model
-    and return max_violation + per-constraint violation breakdown.
-
-    Inputs:
-      dof_values  : list[float] OR dict[str,float] (free variable values)
-      yaml_text   : string containing the CAS-YAML model
-      builtin     : optional name of a built-in CAS model to load
-
-    The DoF dict is unpacked into the order of model.free_variables.
-    Missing values default to 0.0 with a warning included in the output.
-    """
-    yaml_text = str(params.get("yaml_text", "") or inputs.get("yaml_text", ""))
-    builtin = str(params.get("builtin", "") or inputs.get("builtin", ""))
-    dof_input = inputs.get("dof_values") or params.get("dof_values") or {}
-
-    try:
-        from glossa_lab.cpsc_bridge import (  # noqa: PLC0415
-            load_builtin_cas_model, _parse_yaml_to_model,
-            project_cas_model,
-        )
-    except Exception as exc:  # noqa: BLE001
-        return {"error": f"cpsc_bridge import failed: {exc}",
-                "success": False, "max_violation": 1e9}
-
-    model = None
-    source = ""
-    if builtin:
-        try:
-            model = load_builtin_cas_model(builtin)
-            source = f"builtin:{builtin}"
-        except Exception as exc:  # noqa: BLE001
-            return {"error": f"load_builtin_cas_model failed: {exc}",
-                    "success": False}
-    if model is None and yaml_text:
-        try:
-            model = _parse_yaml_to_model(yaml_text)
-            source = "inline_yaml"
-        except Exception as exc:  # noqa: BLE001
-            return {"error": f"YAML parse failed: {exc}", "success": False}
-    if model is None:
-        return {"error": "No CAS model supplied (need yaml_text or builtin).",
-                "success": False, "max_violation": 1e9}
-
-    free_vars = list(getattr(model, "free_variables", []) or [])
-    missing: list[str] = []
-    if isinstance(dof_input, dict):
-        dof_values = []
-        for v in free_vars:
-            if v in dof_input:
-                dof_values.append(float(dof_input[v]))
-            else:
-                dof_values.append(0.0)
-                missing.append(v)
-    elif isinstance(dof_input, (list, tuple)):
-        dof_values = [float(x) for x in dof_input]
-        if len(dof_values) < len(free_vars):
-            missing = list(free_vars[len(dof_values):])
-            dof_values.extend([0.0] * (len(free_vars) - len(dof_values)))
-    else:
-        dof_values = [0.0] * len(free_vars)
-        missing = list(free_vars)
-
-    out = project_cas_model(model, dof_values, engine="auto")
-    out["model_source"] = source
-    out["free_variables"] = free_vars
-    out["dof_values"] = dof_values
-    out["missing_dof_defaulted_to_zero"] = missing
-    # Phase-15: rollup field so MultiHypothesisRanker can wire one port per
-    # hypothesis and still see success / max_violation / model_source.
-    out["json"] = {
-        "success": bool(out.get("success", False)),
-        "max_violation": float(out.get("max_violation", 1e9)),
-        "iterations": int(out.get("iterations", 0)),
-        "strategy_used": out.get("strategy_used", ""),
-        "model_source": source,
-        "reason": out.get("reason"),
-    }
-    return out
+    """Constraint projection not available."""
+    return {"error": "Constraint projection engine not available.",
+            "success": False, "max_violation": 1e9}
 
 
 # ── Integrative — LanguageDetectorVerdict ───────────────────────────────
@@ -1354,7 +1273,7 @@ def _dof_extractor(inputs: dict, params: dict) -> dict:
     """Read multiple profiler outputs and emit a flat dict of DoF values
     keyed by the names that the language_signature CAS model expects.
 
-    Used to feed CASHypothesisProjector. Fields read:
+    Collects measured corpus metrics. Fields read:
       - block_entropies (BlockEntropyProfile)
       - zipf (ZipfMandelbrotFit)
       - mi_decay (MutualInformationDecay)
@@ -1680,41 +1599,10 @@ def _phase14_node_defs() -> list[Any]:
             fn=_epistatic_anchor_ranker,
         ),
         AtomicNodeDef(
-            "CASHypothesisProjector", "CAS Hypothesis Projector (CPSC) (Phase-14)",
-            "Phase-14 / CPSC",
-            "Project a corpus's measured DoFs through a CAS-YAML constraint "
-            "model via CPSC IterativeEngine / CellularEngine. Returns "
-            "max_violation + per-constraint breakdown. Use for "
-            "deterministic hypothesis comparison.",
-            inputs=[
-                {"name": "dof_values", "type": "json", "required": True},
-                {"name": "yaml_text", "type": "text", "required": False},
-                {"name": "builtin", "type": "text", "required": False},
-            ],
-            outputs=[
-                {"name": "success", "type": "any"},
-                {"name": "max_violation", "type": "number"},
-                {"name": "iterations", "type": "number"},
-                {"name": "state", "type": "json"},
-                {"name": "model_source", "type": "text"},
-                {"name": "free_variables", "type": "json"},
-                {"name": "missing_dof_defaulted_to_zero", "type": "json"},
-                {"name": "details", "type": "json"},
-            ],
-            params_schema={
-                "type": "object",
-                "properties": {
-                    "yaml_text": {"type": "string", "default": ""},
-                    "builtin": {"type": "string", "default": ""},
-                },
-            },
-            fn=_cas_hypothesis_projector,
-        ),
-        AtomicNodeDef(
             "DoFExtractor", "DoF Extractor (Phase-14)",
-            "Phase-14 / CPSC",
+            "Phase-14 / Structural",
             "Reads BlockEntropyProfile / Zipf / MI / HED outputs and emits "
-            "a flat DoF dict suitable for CASHypothesisProjector.",
+            "a flat measurement dict.",
             inputs=[
                 {"name": "block_entropies", "type": "json", "required": False},
                 {"name": "zipf", "type": "json", "required": False},
@@ -1731,10 +1619,9 @@ def _phase14_node_defs() -> list[Any]:
         AtomicNodeDef(
             "LanguageDetectorVerdict", "Language Detector Verdict (Phase-14)",
             "Phase-14 / Integrative",
-            "Combine block-entropy plateau, Zipf-Mandelbrot, MI decay, HED, "
-            "and (optional) CAS projection into a single yes/no/maybe "
-            "verdict on whether the corpus is a real natural-language "
-            "writing system. Answers: 'is this corpus a language?'",
+            "Combine block-entropy plateau, Zipf-Mandelbrot, MI decay, HED "
+            "into a single yes/no/maybe verdict on whether the corpus is a real "
+            "natural-language writing system. Answers: 'is this corpus a language?'",
             inputs=[
                 {"name": "zipf", "type": "json", "required": False},
                 {"name": "conditional_entropy", "type": "json", "required": False},
@@ -1776,7 +1663,6 @@ __all__ = [
     "_epistatic_interaction_detector",
     "_epistatic_order_profile",
     "_epistatic_anchor_ranker",
-    "_cas_hypothesis_projector",
     "_dof_extractor",
     "_language_detector_verdict",
     "_phase14_node_defs",

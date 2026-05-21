@@ -1,0 +1,370 @@
+{
+  "phase": 163,
+  "date": "2026-05-20",
+  "current_sibilant_hm": 3,
+  "su_gap_filled": true,
+  "sib_low_proposals": {
+    "M330": {
+      "current_confidence": "LOW",
+      "current_reading": "kur",
+      "sibilant_proposals": {
+        "can": {
+          "n_mentions": 4,
+          "sources": [
+            "Parpola_1994"
+          ],
+          "context": "93  0  3307  3091 rur'\" 0382 2395  W1 ■\" 3091  WI m  3307 V   1597 v  i l  h In the above example, text 0382 can be divided into three  component parts by comparing it with the texts shown above  it ("
+        }
+      }
+    },
+    "M196": {
+      "current_confidence": "NONE",
+      "current_reading": "?",
+      "sibilant_proposals": {
+        "cem": {
+          "n_mentions": 4,
+          "sources": [
+            "Parpola_1994"
+          ],
+          "context": "-  vakai': cem puyal koyyanaittun kotzarum (Tëvaram 196,3)] ‘a  kindoffish; m iy -v a k a i: koy-m in ceppali (Kurucürppallu by  Catakopa-p Pulavar, p. 20). (T L , Suppl.) [Cf. Turner 1966  no. 2959 ("
+        },
+        "cal": {
+          "n_mentions": 2,
+          "sources": [
+            "Parpola_1994"
+          ],
+          "context": "hronology of the histori­ cal period. In: Oppenheim 1964: 335—52. Brough, John, 1951. Selections from  classical Sanskrit literature  with English translation and notes. London. 1971.  Soma and Amanit"
+        }
+      }
+    },
+    "M141": {
+      "current_confidence": "LOW",
+      "current_reading": "kur",
+      "sibilant_proposals": {
+        "ca": {
+          "n_mentions": 1,
+          "sources": [
+            "Parpola_1994"
+          ],
+          "context": "ki 141, 142, 166, 217,  294; i i 217, 298  Burzahom 141, 142, 168, 2 5 1   butter, melted (ghee) 214f., 221  Byblos 128, 1 4 7 cabin 1j.f. cake 109; rice 197; terracotta 221  Calah 190  Caland, W. 243"
+        }
+      }
+    },
+    "M232": {
+      "current_confidence": "LOW",
+      "current_reading": "kur",
+      "sibilant_proposals": {
+        "sa": {
+          "n_mentions": 2,
+          "sources": [
+            "Parpola_1994"
+          ],
+          "context": "i-vrk sa 259; sr,nga  188; stambha- 220; su-grahatm   232; sukra 60, 201; su-palâsa-  244; su-parna-kt;,ta-iaksana 244;  surâ 259; sûrpa 200; sürya 128,  208, 215, 221; suvastu 15 4 ; sva -,  sviim in"
+        }
+      }
+    },
+    "M170": {
+      "current_confidence": "LOW",
+      "current_reading": "kur",
+      "sibilant_proposals": {
+        "ca": {
+          "n_mentions": 1,
+          "sources": [
+            "Parpola_1994"
+          ],
+          "context": ", 261, 269f., 275-7, 296f., 299,  301; a- 196; akam 170; a/ / ail  iSS, 261, 277; al, a/a-maram  246, 276; -a!J 225; a?;// 229f.;  anir pillai 229; art-kayar-kan-  ii-ammaiyar 270; arici 140;  aru-nim"
+        }
+      }
+    },
+    "M246": {
+      "current_confidence": "LOW",
+      "current_reading": "kur",
+      "sibilant_proposals": {
+        "ce": {
+          "n_mentions": 1,
+          "sources": [
+            "Parpola_1994"
+          ],
+          "context": "6; akam 170; a/ / ail  iSS, 261, 277; al, a/a-maram  246, 276; -a!J 225; a?;// 229f.;  anir pillai 229; art-kayar-kan-  ii-ammaiyar 270; arici 140;  aru-nim 194, 225f., 275; atari 61;  -attu 60; cakat"
+        }
+      }
+    },
+    "M265": {
+      "current_confidence": "LOW",
+      "current_reading": "kur",
+      "sibilant_proposals": {
+        "ce": {
+          "n_mentions": 1,
+          "sources": [
+            "Parpola_1994"
+          ],
+          "context": "u-nim 194, 225f., 275; atari 61;  -attu 60; cakatam 265;  carppa-k-kavati 226; ce-m-mlti  244; ceh-kaya-mtiui-kan 270;  ce-v-vel 235; ce-v-vef 230, 235;  cey 237; ceyo!J 237; ceyyavan  237; ceyyon 235"
+        },
+        "cul": {
+          "n_mentions": 2,
+          "sources": [
+            "Parpola_1994"
+          ],
+          "context": "u-nim 194, 225f., 275; atari 61;  -attu 60; cakatam 265;  carppa-k-kavati 226; ce-m-mlti  244; ceh-kaya-mtiui-kan 270;  ce-v-vel 235; ce-v-vef 230, 235;  cey 237; ceyo!J 237; ceyyavan  237; ceyyon 235"
+        }
+      }
+    },
+    "M165": {
+      "current_confidence": "LOW",
+      "current_reading": "kur",
+      "sibilant_proposals": {
+        "cu": {
+          "n_mentions": 3,
+          "sources": [
+            "Parpola_1994"
+          ],
+          "context": "elu-imn 195, 275;  inai 184; iiiai-kayal 1S4; kalam  165; kama-vef 230; kaiiipam  22of.; kail 270; kaii-kaiii 215,  275; kanta-p-piflai 230;  kanta-ve/ 230; kappu 22S; karpu  241; kata 235; katalan 22"
+        },
+        "cul": {
+          "n_mentions": 4,
+          "sources": [
+            "Parpola_1994"
+          ],
+          "context": "37; ceyo!J 237; ceyyavan  237; ceyyon 235, 237; cilampu  227; cina-iiiikii 231; cUl 217; cUl  kappu 22S, 276; cU/ai, cu//ai 217;  cura min iSS; elu-imn 195, 275;  "
+        }
+      }
+    },
+    "M195": {
+      "current_confidence": "LOW",
+      "current_reading": "kur",
+      "sibilant_proposals": {
+        "can": {
+          "n_mentions": 2,
+          "sources": [
+            "Parpola_1994"
+          ],
+          "context": "and Harappa ...  have been made the subject of much nonsensical writing,  which can be nothing but a hindrance in the way of useful  research.’ ).  , South A sian "
+        },
+        "con": {
+          "n_mentions": 1,
+          "sources": [
+            "Mahadevan_1970_dravidian_parallels"
+          ],
+          "context": "aIndian Arch'8ol,ogy-A Revieu,\\u2022 (annually from 1953-4); for the minor sites: Alamgirpur, \\u000d\\u000aDeaalpur, Ka.libanga.n, Lothal, Rojd.i and Rupar (Cited, l.A.R. wit.h year). \\u000d\\u000aH. Pr"
+        }
+      }
+    },
+    "M302": {
+      "current_confidence": "LOW",
+      "current_reading": "kur",
+      "sibilant_proposals": {
+        "sa": {
+          "n_mentions": 1,
+          "sources": [
+            "Parpola_1994"
+          ],
+          "context": "a n a 61; vana-d-urgâ-  259, 301; vandaniyâ- 259; varcin   151; va rm b ija k o sa 289;  v a rs a y a n ti 205; varu iJa I47, I5I,  245; v a rim a-sava 215; v a s"
+        }
+      }
+    },
+    "M197": {
+      "current_confidence": "LOW",
+      "current_reading": "kur",
+      "sibilant_proposals": {
+        "co": {
+          "n_mentions": 1,
+          "sources": [
+            "Wells_2015"
+          ],
+          "context": "al of  Tamil Studies 2:157-276 Mahadevan, Iravatham 1977 The Indus Script, Texts Concordance and Tables.  Archaeological Survey of India, New Delhi Mahadevan, Iravatham 1982 Terminal Ideograms in the "
+        }
+      }
+    },
+    "M198": {
+      "current_confidence": "LOW",
+      "current_reading": "poṉ",
+      "sibilant_proposals": {
+        "co": {
+          "n_mentions": 3,
+          "sources": [
+            "Wells_2015"
+          ],
+          "context": "cal Survey of India, New Delhi Mahadevan, Iravatham 1982 Terminal Ideograms in the Indus Script. Oxford and IBH  Publishing Co, New Delhi Mahadevan, Iravatham 1986 Dravidian Models Of Decipherment Of "
+        }
+      }
+    },
+    "M234": {
+      "current_confidence": "NONE",
+      "current_reading": "?",
+      "sibilant_proposals": {
+        "ce": {
+          "n_mentions": 1,
+          "sources": [
+            "Mahadevan_1983_cult_objects_unicorn"
+          ],
+          "context": " horns are of different types \\u000d\\u000a(e.g. FEM 234); a fabulous animal resembling in parts both rhinoceros and urus ox (FEM 140) ; the long- tailed ox- antelope on a \\u000d\\u000aseal from Chanhud"
+        }
+      }
+    },
+    "M140": {
+      "current_confidence": "LOW",
+      "current_reading": "kur",
+      "sibilant_proposals": {
+        "ce": {
+          "n_mentions": 2,
+          "sources": [
+            "Mahadevan_1983_cult_objects_unicorn"
+          ],
+          "context": "esembling in parts both rhinoceros and urus ox (FEM 140) ; the long- tailed ox- antelope on a \\u000d\\u000aseal from Chanhudaro (CE, LJ : 21); the short-tailed goat-antelope \\u000d\\u000aon a seal from "
+        }
+      }
+    },
+    "M430": {
+      "current_confidence": "NONE",
+      "current_reading": "?",
+      "sibilant_proposals": {
+        "cup": {
+          "n_mentions": 1,
+          "sources": [
+            "Mahadevan_1983_cult_objects_unicorn"
+          ],
+          "context": "he offering (worshipper of \\u000d\\u000aofficiant),. The signs with the kneeling cup-bearers (IS 45, 46) may \\u000d\\u000aalso be compared with the kneeling priest d"
+        }
+      }
+    },
+    "M445": {
+      "current_confidence": "NONE",
+      "current_reading": "?",
+      "sibilant_proposals": {
+        "cup": {
+          "n_mentions": 2,
+          "sources": [
+            "Mahadevan_1993_sacred_filter"
+          ],
+          "context": ". \",\"The sacred filter standard facing the IlIIicom 445 \\u000d\\u000alike. V-like and trapezoid-shaped rorms clearly cstahlish the true n:lIure or the \\u000d\\u000acrest or the standard as a vessel. A v"
+        }
+      }
+    },
+    "M202": {
+      "current_confidence": "LOW",
+      "current_reading": "kur",
+      "sibilant_proposals": {
+        "can": {
+          "n_mentions": 4,
+          "sources": [
+            "Mahadevan_2009_vestiges"
+          ],
+          "context": "u000d\\u000aEvvi, another name for Ve!ir clan (Pu[am 202). The name is \\u000d\\u000aderived from ey/cvu 'to discharge (as arrow), to throw (as \\u000d\\u000alance or dart)' (DEDR 805). \\u000d\\u000a2.8 J i"
+        }
+      }
+    },
+    "M372": {
+      "current_confidence": "NONE",
+      "current_reading": "?",
+      "sibilant_proposals": {
+        "can": {
+          "n_mentions": 4,
+          "sources": [
+            "Mahadevan_2009_vestiges"
+          ],
+          "context": "r (vi! l1lutumaHa!) stored theiT gold at Pa ji (Abm 372). The city of \\u000d\\u000aPaji had a red fort which shone like copper (Akam 375).Thus \\u000d\\u000athis Indus sign can be interpreted as piji ' p"
+        }
+      }
+    }
+  },
+  "su_gap_candidates": [
+    {
+      "sign_id": "M330",
+      "reading": "can",
+      "n_mentions": 4,
+      "sources": [
+        "Parpola_1994"
+      ],
+      "context": "93  0  3307  3091 rur'\" 0382 2395  W1 ■\" 3091  WI m  3307 V   1597 v  i l  h In the above example, text 0382 can be divided into three  component part"
+    },
+    {
+      "sign_id": "M165",
+      "reading": "cul",
+      "n_mentions": 4,
+      "sources": [
+        "Parpola_1994"
+      ],
+      "context": "37; ceyo!J 237; ceyyavan  237; ceyyon 235, 237; cilampu  227; cina-iiiikii 231; cUl 217; cUl  kappu 22S, 276; cU/ai, cu//ai 217;  cura min iSS; elu-im"
+    },
+    {
+      "sign_id": "M202",
+      "reading": "can",
+      "n_mentions": 4,
+      "sources": [
+        "Mahadevan_2009_vestiges"
+      ],
+      "context": "u000d\\u000aEvvi, another name for Ve!ir clan (Pu[am 202). The name is \\u000d\\u000aderived from ey/cvu 'to discharge (as arrow), to throw (as \\u000d\\u0"
+    },
+    {
+      "sign_id": "M372",
+      "reading": "can",
+      "n_mentions": 4,
+      "sources": [
+        "Mahadevan_2009_vestiges"
+      ],
+      "context": "r (vi! l1lutumaHa!) stored theiT gold at Pa ji (Abm 372). The city of \\u000d\\u000aPaji had a red fort which shone like copper (Akam 375).Thus \\u000d\\u"
+    },
+    {
+      "sign_id": "M165",
+      "reading": "cu",
+      "n_mentions": 3,
+      "sources": [
+        "Parpola_1994"
+      ],
+      "context": "elu-imn 195, 275;  inai 184; iiiai-kayal 1S4; kalam  165; kama-vef 230; kaiiipam  22of.; kail 270; kaii-kaiii 215,  275; kanta-p-piflai 230;  kanta-ve"
+    },
+    {
+      "sign_id": "M198",
+      "reading": "co",
+      "n_mentions": 3,
+      "sources": [
+        "Wells_2015"
+      ],
+      "context": "cal Survey of India, New Delhi Mahadevan, Iravatham 1982 Terminal Ideograms in the Indus Script. Oxford and IBH  Publishing Co, New Delhi Mahadevan, I"
+    },
+    {
+      "sign_id": "M196",
+      "reading": "cal",
+      "n_mentions": 2,
+      "sources": [
+        "Parpola_1994"
+      ],
+      "context": "hronology of the histori­ cal period. In: Oppenheim 1964: 335—52. Brough, John, 1951. Selections from  classical Sanskrit literature  with English tra"
+    },
+    {
+      "sign_id": "M265",
+      "reading": "cul",
+      "n_mentions": 2,
+      "sources": [
+        "Parpola_1994"
+      ],
+      "context": "u-nim 194, 225f., 275; atari 61;  -attu 60; cakatam 265;  carppa-k-kavati 226; ce-m-mlti  244; ceh-kaya-mtiui-kan 270;  ce-v-vel 235; ce-v-vef 230, 23"
+    },
+    {
+      "sign_id": "M195",
+      "reading": "can",
+      "n_mentions": 2,
+      "sources": [
+        "Parpola_1994"
+      ],
+      "context": "and Harappa ...  have been made the subject of much nonsensical writing,  which can be nothing but a hindrance in the way of useful  research.’ ).  , "
+    },
+    {
+      "sign_id": "M445",
+      "reading": "cup",
+      "n_mentions": 2,
+      "sources": [
+        "Mahadevan_1993_sacred_filter"
+      ],
+      "context": ". \",\"The sacred filter standard facing the IlIIicom 445 \\u000d\\u000alike. V-like and trapezoid-shaped rorms clearly cstahlish the true n:lIure or the "
+    }
+  ],
+  "shu_ilishu_coverage": "3/4 slots",
+  "key_findings": [
+    "Current H+M sibilant signs: 3",
+    "LOW/unanchored signs with sibilant literature proposals: 18",
+    "Signs with cu/co/ca proposals (su-gap candidates): 15",
+    "Shu-ilishu coverage: 3/4 slots",
+    "/su/ gap: CANDIDATES FOUND"
+  ]
+}

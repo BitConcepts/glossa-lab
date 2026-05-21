@@ -1,0 +1,413 @@
+{
+  "_citation": {
+    "primary": [
+      "A.1",
+      "A.13"
+    ]
+  },
+  "gpu_device": "cuda",
+  "n_newly_mapped": 37,
+  "total_mp_mapped": 115,
+  "top100_sign_coverage": 81,
+  "corpus_coverage_pct": 84.5,
+  "top100_token_coverage": 83.6,
+  "new_mappings": [
+    {
+      "m_number": "M220",
+      "p_number": "220",
+      "corpus_freq": 62,
+      "source": "Parpola 1994 App.B",
+      "note": "abstract compound"
+    },
+    {
+      "m_number": "M079",
+      "p_number": "79",
+      "corpus_freq": 24,
+      "source": "Parpola 1994 App.B",
+      "note": "double-stroke sign"
+    },
+    {
+      "m_number": "M022",
+      "p_number": "22",
+      "corpus_freq": 22,
+      "source": "Parpola 1994 App.B",
+      "note": "jar/pot variant"
+    },
+    {
+      "m_number": "M052",
+      "p_number": "52",
+      "corpus_freq": 22,
+      "source": "Parpola 1994 App.B",
+      "note": "fish+stroke"
+    },
+    {
+      "m_number": "M061",
+      "p_number": "61",
+      "corpus_freq": 22,
+      "source": "Parpola 1994 App.B",
+      "note": "bull+sign"
+    },
+    {
+      "m_number": "M019",
+      "p_number": "19",
+      "corpus_freq": 20,
+      "source": "Parpola 1994 App.B",
+      "note": "arrow/thorn sign"
+    },
+    {
+      "m_number": "M003",
+      "p_number": "3",
+      "corpus_freq": 19,
+      "source": "Parpola 1994 App.B",
+      "note": "pot-stand sign"
+    },
+    {
+      "m_number": "M035",
+      "p_number": "35",
+      "corpus_freq": 19,
+      "source": "Parpola 1994 App.B",
+      "note": "intersecting circles"
+    },
+    {
+      "m_number": "M044",
+      "p_number": "44",
+      "corpus_freq": 19,
+      "source": "Parpola 1994 App.B",
+      "note": "jar+stroke"
+    },
+    {
+      "m_number": "M053",
+      "p_number": "53",
+      "corpus_freq": 19,
+      "source": "Parpola 1994 App.B",
+      "note": "fish variant 2"
+    },
+    {
+      "m_number": "M056",
+      "p_number": "56",
+      "corpus_freq": 19,
+      "source": "Parpola 1994 App.B",
+      "note": "fish+four"
+    },
+    {
+      "m_number": "M025",
+      "p_number": "25",
+      "corpus_freq": 17,
+      "source": "Parpola 1994 App.B",
+      "note": "triangle sign"
+    },
+    {
+      "m_number": "M070",
+      "p_number": "70",
+      "corpus_freq": 17,
+      "source": "Parpola 1994 App.B",
+      "note": "comb sign variant"
+    },
+    {
+      "m_number": "M023",
+      "p_number": "23",
+      "corpus_freq": 16,
+      "source": "Parpola 1994 App.B",
+      "note": "comb-like sign"
+    },
+    {
+      "m_number": "M066",
+      "p_number": "66",
+      "corpus_freq": 16,
+      "source": "Parpola 1994 App.B",
+      "note": "jar variant"
+    },
+    {
+      "m_number": "M071",
+      "p_number": "71",
+      "corpus_freq": 16,
+      "source": "Parpola 1994 App.B",
+      "note": "loop sign"
+    },
+    {
+      "m_number": "M036",
+      "p_number": "36",
+      "corpus_freq": 15,
+      "source": "Parpola 1994 App.B",
+      "note": "three-strokes variant"
+    },
+    {
+      "m_number": "M075",
+      "p_number": "75",
+      "corpus_freq": 14,
+      "source": "Parpola 1994 App.B",
+      "note": "comb variant"
+    },
+    {
+      "m_number": "M024",
+      "p_number": "24",
+      "corpus_freq": 13,
+      "source": "Parpola 1994 App.B",
+      "note": "double-angle"
+    },
+    {
+      "m_number": "M081",
+      "p_number": "81",
+      "corpus_freq": 13,
+      "source": "Parpola 1994 App.B",
+      "note": "kino-tree variant"
+    },
+    {
+      "m_number": "M049",
+      "p_number": "49",
+      "corpus_freq": 13,
+      "source": "Parpola 1994 allograph",
+      "note": "fish + marking, P47 allograph"
+    },
+    {
+      "m_number": "M033",
+      "p_number": "33",
+      "corpus_freq": 12,
+      "source": "Parpola 1994 App.B",
+      "note": "compound sign"
+    },
+    {
+      "m_number": "M054",
+      "p_number": "54",
+      "corpus_freq": 12,
+      "source": "Parpola 1994 App.B",
+      "note": "fish+two"
+    },
+    {
+      "m_number": "M055",
+      "p_number": "55",
+      "corpus_freq": 12,
+      "source": "Parpola 1994 App.B",
+      "note": "fish+three"
+    },
+    {
+      "m_number": "M074",
+      "p_number": "74",
+      "corpus_freq": 12,
+      "source": "Parpola 1994 App.B",
+      "note": "comb + stroke"
+    },
+    {
+      "m_number": "M007",
+      "p_number": "7",
+      "corpus_freq": 11,
+      "source": "Parpola 1994 App.B",
+      "note": "small person variant"
+    },
+    {
+      "m_number": "M043",
+      "p_number": "43",
+      "corpus_freq": 11,
+      "source": "Parpola 1994 App.B",
+      "note": "trident sign"
+    },
+    {
+      "m_number": "M064",
+      "p_number": "64",
+      "corpus_freq": 11,
+      "source": "Parpola 1994 App.B",
+      "note": "wide-mouth sign"
+    },
+    {
+      "m_number": "M076",
+      "p_number": "76",
+      "corpus_freq": 7,
+      "source": "Parpola 1994 App.B",
+      "note": "comb + two"
+    },
+    {
+      "m_number": "M082",
+      "p_number": "82",
+      "corpus_freq": 7,
+      "source": "Parpola 1994 App.B",
+      "note": "plant + stroke"
+    },
+    {
+      "m_number": "M222",
+      "p_number": "222",
+      "corpus_freq": 5,
+      "source": "Parpola 1994 App.B",
+      "note": "hook sign"
+    },
+    {
+      "m_number": "M163",
+      "p_number": "163",
+      "corpus_freq": 5,
+      "source": "Parpola 1994 allograph",
+      "note": "M162 il allograph"
+    },
+    {
+      "m_number": "M107",
+      "p_number": "107",
+      "corpus_freq": 3,
+      "source": "Parpola 1994 allograph",
+      "note": "M099 kol allograph"
+    },
+    {
+      "m_number": "M118",
+      "p_number": "118",
+      "corpus_freq": 3,
+      "source": "Parpola 1994 allograph",
+      "note": "M117 wheel allograph"
+    },
+    {
+      "m_number": "M130",
+      "p_number": "130",
+      "corpus_freq": 3,
+      "source": "Parpola 1994 allograph",
+      "note": "M128 sprout allograph"
+    },
+    {
+      "m_number": "M145",
+      "p_number": "145",
+      "corpus_freq": 3,
+      "source": "Parpola 1994 App.B",
+      "note": "fish+marking = M342 ay"
+    },
+    {
+      "m_number": "M221",
+      "p_number": "221",
+      "corpus_freq": 1,
+      "source": "Parpola 1994 App.B",
+      "note": "abstract compound 2"
+    }
+  ],
+  "still_unmapped_top100": [
+    "M038",
+    "M010",
+    "M078",
+    "M009",
+    "M069",
+    "M021",
+    "M002",
+    "M037",
+    "M067",
+    "M005",
+    "M011",
+    "M015",
+    "M042",
+    "M068",
+    "M072",
+    "M046",
+    "M032",
+    "M347",
+    "M169"
+  ],
+  "mp_map": {
+    "M086": "86",
+    "M087": "87",
+    "M088": "88",
+    "M089": "89",
+    "M090": "90",
+    "M091": "91",
+    "M092": "92",
+    "M093": "93",
+    "M094": "94",
+    "M001": "1",
+    "M006": "6",
+    "M008": "8",
+    "M016": "16",
+    "M028": "28",
+    "M029": "29",
+    "M031": "31",
+    "M040": "40",
+    "M047": "47",
+    "M050": "50",
+    "M059": "59",
+    "M060": "60",
+    "M062": "62",
+    "M099": "99",
+    "M100": "100",
+    "M101": "101",
+    "M117": "117",
+    "M124": "124",
+    "M125": "125",
+    "M128": "128",
+    "M342": "145",
+    "M045": "147",
+    "M162": "162",
+    "M175": "175",
+    "M176": "176",
+    "M202": "202",
+    "M211": "211",
+    "M233": "233",
+    "M249": "249",
+    "M261": "261",
+    "M264": "264",
+    "M267": "267",
+    "M281": "281",
+    "M293": "293",
+    "M305": "305",
+    "M328": "328",
+    "M336": "336",
+    "M367": "367",
+    "M391": "391",
+    "M004": "4",
+    "M012": "12",
+    "M013": "13",
+    "M017": "17",
+    "M018": "18",
+    "M020": "20",
+    "M026": "26",
+    "M027": "27",
+    "M030": "30",
+    "M034": "34",
+    "M039": "039",
+    "M041": "41",
+    "M048": "48",
+    "M051": "51",
+    "M057": "57",
+    "M058": "58",
+    "M063": "63",
+    "M065": "65",
+    "M073": "73",
+    "M077": "77",
+    "M080": "80",
+    "M311": "311",
+    "M014": "14",
+    "M095": "95",
+    "M096": "96",
+    "M097": "97",
+    "M098": "98",
+    "M003": "3",
+    "M007": "7",
+    "M019": "19",
+    "M022": "22",
+    "M023": "23",
+    "M024": "24",
+    "M025": "25",
+    "M033": "33",
+    "M035": "35",
+    "M036": "36",
+    "M043": "43",
+    "M044": "44",
+    "M052": "52",
+    "M053": "53",
+    "M054": "54",
+    "M055": "55",
+    "M056": "56",
+    "M061": "61",
+    "M064": "64",
+    "M066": "66",
+    "M070": "70",
+    "M071": "71",
+    "M074": "74",
+    "M075": "75",
+    "M076": "76",
+    "M079": "79",
+    "M081": "81",
+    "M082": "82",
+    "M083": "83",
+    "M084": "84",
+    "M085": "85",
+    "M220": "220",
+    "M221": "221",
+    "M222": "222",
+    "M049": "49",
+    "M107": "107",
+    "M118": "118",
+    "M130": "130",
+    "M145": "145",
+    "M163": "163"
+  }
+}

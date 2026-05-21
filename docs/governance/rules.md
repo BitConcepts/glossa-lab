@@ -41,7 +41,7 @@ Every loop or blocking wait in agent-written scripts and automation MUST have:
 - A fallback exit path that executes when the deadline is reached.
 - A diagnostic message emitted if the timeout fires (self-diagnosing failures).
 
-Examples of violating patterns: `while True:` / `while ($true)` / `for (;;)` with no deadline guard; serial-port or I/O polling loops with no deadline; `sleep` inside a loop with no termination condition. `validate scripts` checks scripts under `scripts/` for these patterns.
+Examples of violating patterns: `while True:` / `while ($true)` / `for (;;)` with no deadline guard; serial-port or I/O polling loops with no deadline; `sleep` inside a loop with no termination condition. Review all scripts under `scripts/` for these patterns before committing.
 
 ### H12 — Windows multi-step automation via .cmd files
 On Windows, multi-step or heavily-quoted automation sequences MUST be written to a temporary `.cmd` file and executed from there. Do NOT emit these as inline shell invocations or as `.ps1` files unless there is a concrete PowerShell-only requirement. Inline multi-line quoting on Windows is fragile and causes avoidable hangs.
@@ -115,4 +115,4 @@ Agents MUST stop and request clarification if ANY of the following are true:
 - Proposed work would silently expand scope
 - **Logic Knot detected** (conflicting accepted requirements without a resolution path)
 - **P1 belief artifact below MEDIUM confidence** (H13 stop condition)
-- **Trace chain integrity failure** (run `verify ledger chain`)
+- **Trace chain integrity failure** (verify ledger chain manually against git log)

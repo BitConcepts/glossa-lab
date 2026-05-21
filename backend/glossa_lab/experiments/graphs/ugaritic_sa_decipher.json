@@ -1,6 +1,6 @@
 {
   "id": "ugaritic_sa_decipher",
-  "name": "SA Decipherment — Ugaritic → Hebrew (Train/Test Split)",
+  "name": "SA Decipherment \u2014 Ugaritic \u2192 Hebrew (Train/Test Split)",
   "description": "Proper anti-circularity SA benchmark: 75% of Ugaritic Baal Cycle builds the Hebrew LM; 25% is the cipher test set. Runs 5 seeds in parallel (GPU-accelerated via BigramScorer when CuPy is installed).",
   "auto_migrated": true,
   "nodes": [
@@ -136,6 +136,5 @@
       "sourcePort": "consistency_per_sign",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

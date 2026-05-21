@@ -1,10 +1,10 @@
 # glossa-lab
 
-![CI](https://github.com/layer1labs/glossa-lab/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/BitConcepts/glossa-lab/actions/workflows/ci.yml/badge.svg)
 
 Agentic computational linguistics research platform for statistical analysis, decipherment, and hypothesis testing of ancient and unknown writing systems — with a primary focus on the **Indus Script** (Mahadevan corpus, Holdat LLC dataset) using methods developed by Dr. Andreas Fuls (TU Berlin / ICIT).
 
-Built and maintained by **Layer1Labs Silicon, Inc.**
+Built and maintained by **BitConcepts LLC**
 
 ---
 
@@ -76,14 +76,23 @@ Key panels:
 
 Local control surface. Start/stop/restart backend, open UI, quick status.
 
-### Agent-Stack (layer1labs server — separate repo)
+---
 
-Three vLLM services on NVIDIA RTX PRO 5000 Blackwell (48 GB GDDR7):
-- **l1-nexus** (port 8000) — `cpatonn/Qwen3-Coder-30B-A3B-Instruct-AWQ-4bit` — primary coding/agentic
-- **l1-glossa** (port 8001) — `Qwen/Qwen3-14B` — research/long-context reasoning
-- **l1-embed** (port 8002) — `BAAI/bge-m3` — embeddings (RAG)
+## Indus Script Research Outputs
 
-Access via Tailscale (`100.118.107.3`). Repo: `layer1labs/agent-stack`.
+If you are here for the preprint materials, go directly to:
+
+```
+research/indus/
+├── pierson_2026_indus_preprint_v1.pdf   ← preprint PDF
+├── anchor_table.csv                     ← 397-sign table (open in Excel)
+├── anchor_table.json                    ← same table with full metadata
+├── mahadevan_parpola_crosswalk.json     ← M-number ↔ P-number crosswalk
+└── phase_reports/                       ← 35 phase reports (Phases 127–170)
+```
+
+See [`research/indus/README.md`](research/indus/README.md) for full details,
+corpus access notes, and citation.
 
 ---
 
@@ -91,45 +100,47 @@ Access via Tailscale (`100.118.107.3`). Repo: `layer1labs/agent-stack`.
 
 ```text
 glossa-lab/
+├─ LICENSE              ← MIT (source code)
 ├─ AGENTS.md            ← agent operating rules (read first, every session)
 ├─ LEDGER.md            ← session ledger (sole continuity authority)
 ├─ README.md
 ├─ CITATIONS.md         ← citation registry for all research data
-├─ setup-os.cmd         ← canonical start/stop/restart (Windows)
-├─ shell.cmd            ← tool wrapper (pytest, ruff, python — Windows)
-├─ shell.sh             ← tool wrapper (Linux/macOS)
+├─ setup-os.cmd / setup-os.sh  ← start/stop/restart
+├─ shell.cmd / shell.sh        ← tool wrapper (pytest, ruff, python)
 ├─ .github/
-│  └─ workflows/ci.yml  ← GitHub Actions CI (pytest + Playwright + evidence scripts)
-├─ backend/
-│  ├─ glossa_lab/       ← FastAPI app + all Python modules
-│  │  ├─ api/           ← REST route modules
-│  │  │  └─ indus_evidence.py ← Evidence Graph API (library, claims, sweep)
-│  │  ├─ experiments/   ← ExperimentBase subclasses + graph JSONs
-│  │  ├─ experiment_graph_indus_evidence.py ← 7 Evidence Graph atomic nodes
-│  │  ├─ discovery/     ← literature discovery engine + fetchers
-│  │  ├─ data/          ← corpora, anchor sets, LM files (cited per H18)
-│  │  └─ model_intelligence.py ← HF leaderboard sync + scoring
-│  ├─ reports/          ← experiment results, phase syntheses
-│  ├─ data/          ← corpus data files (indus_cisi_corpus.json, dravidian_tamil_lm.json, ...)
-│  └─ scripts/          ← utility and research scripts (phase44_*.py, build_*.py, ...)
-├─ frontend/
-│  ├─ src/              ← React source
-│  │  └─ components/IndusEvidenceView.tsx ← Evidence Graph three-tab workspace
+│  └─ workflows/ci.yml  ← GitHub Actions CI
+├─ backend/             ← Python FastAPI application
+│  ├─ glossa_lab/       ← app modules (api/, experiments/, discovery/, ...)
+│  ├─ scripts/          ← all research and utility scripts
+│  └─ tests/
+├─ frontend/            ← React / TypeScript / Vite
+│  ├─ src/
 │  └─ dist/             ← built artefact (committed for server deploy)
-├─ glossa-indus/        ← Indus Evidence Graph data store
-│  ├─ config/sweep.yaml ← per-project sweep configuration (editable)
-│  ├─ literature/       ← registered papers (JSON metadata)
-│  ├─ claims/           ← extracted claims per document
-│  ├─ hypotheses/       ← hypothesis model YAMLs
-│  ├─ raw/user_uploads/ ← user-uploaded PDFs
-│  └─ scripts/          ← intake + claims extraction pipeline
 ├─ tray/                ← system tray app
+├─ services/            ← systemd / launchd / Windows service definitions
 ├─ docs/
+│  ├─ images/           ← diagrams and sign images
+│  ├─ governance/       ← governance docs
+│  ├─ research/         ← decipherment research docs
 │  ├─ USER_GUIDE.md
-│  ├─ user-manual.md
 │  ├─ architecture.md
-│  └─ research/         ← decipherment research docs
-├─ services/            ← systemd/launchd/Windows service definitions
+│  └─ REQUIREMENTS.md
+├─ data/                ← canonical corpus and reference data
+│  ├─ crosswalks/       ← sign crosswalk CSVs (M-number ↔ Parpola, Yajnadevam)
+│  ├─ raw/              ← raw source corpora
+│  ├─ normalized/       ← cleaned / extracted corpus files
+│  └─ import/           ← staged import artifacts
+├─ outputs/             ← generated computational artifacts
+│  └─ analysis/         ← summary JSON analysis files
+├─ reports/             ← human-readable research reports (PDF, Markdown)
+├─ research/            ← public preprint outputs
+│  └─ indus/            ← preprint PDF, anchor table, phase reports (CC BY 4.0)
+├─ scripts/             ← project-wide utility scripts
+├─ glossa-corpus/       ← internal corpus store
+├─ glossa-indus/        ← Evidence Graph data store
+│  ├─ config/sweep.yaml
+│  ├─ literature/ · claims/ · hypotheses/ · raw/
+│  └─ scripts/
 └─ corpora/             ← external corpus downloads (gitignored, ~3 GB)
 ```
 
@@ -178,8 +189,8 @@ curl.exe -sf http://localhost:8001/ | Select-String 'index-[A-Za-z0-9]+\.js'
 
 - **H18** — Every data file must have `_citation` traceable to `CITATIONS.md`
 - **H19** — Foundation check must PASS before external communication
-- Current: **13 PASS (archived) / 0 FAIL** (`GET /api/v1/research/foundation-check`)
-- V8-V24 decipherment campaign archived 2026-05-17; INDUS_FINAL_ANCHORS.json (137 anchors) preserved
+- Indus Script decipherment: 161 H+M candidate readings, 90.96% token coverage
+- Research outputs: [`research/indus/`](research/indus/)
 
 ---
 
@@ -197,6 +208,7 @@ curl.exe -sf http://localhost:8001/ | Select-String 'index-[A-Za-z0-9]+\.js'
 | `docs/research/` | Decipherment research documents |
 | `docs/guides/` | How-to guides (experiments, pipelines, studies) |
 | `glossa-indus/LEDGER.md` | Evidence Graph batch work log |
+| **`research/indus/`** | **Public research outputs — anchor table, phase reports, preprint PDF** |
 
 ---
 

@@ -82,6 +82,5 @@
       "sourcePort": "result",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

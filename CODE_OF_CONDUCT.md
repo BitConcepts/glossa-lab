@@ -28,3 +28,5 @@ Instances of abusive, harassing, or otherwise unacceptable behavior may be repor
 ## Attribution
 
 This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org), version 2.1.
+
+This project is maintained by **BitConcepts LLC**. Source code is released under the MIT License; research outputs are released under CC BY 4.0.

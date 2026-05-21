@@ -13,11 +13,18 @@
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
   \usepackage{unicode-math} % this also loads fontspec
+  \setmainfont{NotoSerif-Regular.ttf}[
+    BoldFont=NotoSerif-Bold.ttf,
+    ItalicFont=NotoSerif-Italic.ttf,
+    BoldItalicFont=NotoSerif-BoldItalic.ttf
+  ]
   \setmathfont{Latin Modern Math} % ensures proper Unicode math glyph rendering
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-\usepackage{lmodern}
+\ifPDFTeX
+  \usepackage{lmodern}
+\fi
 \ifPDFTeX\else
   % xetex/luatex font selection
 \fi
@@ -137,7 +144,7 @@ Work}\label{prior-computational-work}
 
 Rao et al.~(2009) demonstrated that IVS sign entropy is consistent with
 a linguistic system rather than a random or purely symbolic one.
-Mahadevan (1977) produced the definitive sign concordance and M-number
+Mahadevan (1977) produced the standard sign concordance and M-number
 catalogue. Parpola (1994, 2010) assembled the most comprehensive
 Dravidian rebus decipherment. Wells (2011) produced an independent sign
 list and catalogue. To my knowledge, no prior work has claimed \textgreater90\% token
@@ -145,7 +152,7 @@ coverage with a published sign-by-sign evidence record.
 
 \subsubsection{1.3 This Work}\label{this-work}
 
-We present a computational grammar and candidate anchor model (Glossa-Lab, Phases 1--170) that
+We present a computational grammar and candidate anchor model (Glossa-Lab, Phases 1--170) with the following components and results:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -183,7 +190,7 @@ We present a computational grammar and candidate anchor model (Glossa-Lab, Phase
   Gulf seal validation: fish-sign compound-only pattern corroborated in Laursen (2010) Gulf deposit catalog
 \item
   Sibilant DEDR cross-validation (Phase-166): M330=can, M165=cul,
-  M202=can SUPPORTED\_WITHIN\_MODEL; M198=co PROVISIONAL\_MEDIUM (all 4 have DEDR backing)
+  M202=can (within-model supported); M198=co (provisional) --- all 4 DEDR-backed
 \item
   Expanded Meluhhan name matching (Phase-167): 25 Ur III names tested ---
   no discriminative match; ICIT corpus required for personal names
@@ -216,13 +223,11 @@ assemblage.
 distribution follows Zipf's law (exponent \textasciitilde{} 1.7), consistent with a
 natural language writing system (Rao et al.~2009).
 
-\textbf{Crosswalk}: 45-entry Mahadevan<-->Parpola crosswalk
+\textbf{Crosswalk}: 45-entry Mahadevan\,--\,Parpola crosswalk
 (mahadevan\_parpola\_crosswalk.json) for iconographic anchor validation.
 
-\textbf{Supplementary sources}: Martini (2025) PhD dissertation on
-Arthaśāstra administrative terminology; Crawford (2001) Saar seals;
-Hojlund \& Abu-Laban (2012) Failaka Tell F6; Roif (2025)
-phonetic-mnemonic model; Parpola (1994, 2010) iconographic readings.
+\textbf{Supplementary sources}: Crawford (2001) Saar seals; Hojlund \&
+Abu-Laban (2012) Failaka Tell F6; Parpola (1994, 2010) iconographic readings.
 
 \subsubsection{2.2 Evidence Hierarchy}\label{evidence-hierarchy}
 
@@ -241,7 +246,7 @@ genitive terminal)
 \textbf{MEDIUM (86 signs)}: Single strong evidence source: - DEDR rebus
 match with SA-consistency \textgreater{}= 0.15 from syllabic language model simulation
 - Positional profile matching a known morpheme class (INITIAL=title
-prefix, TERMINAL=case suffix) - Confirmed allograph of a HIGH/MEDIUM
+prefix, TERMINAL=case suffix) - Supported allograph of a HIGH/MEDIUM
 anchor by positional L1 distance \textless{} 0.2
 
 
@@ -379,11 +384,11 @@ M059 & ēḷ & 912 & Seven strokes, Tamil ēḷ (seven) \\
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1538}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2308}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1538}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2821}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1795}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1200}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1600}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.3700}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Sign
@@ -401,9 +406,9 @@ Basis
 \bottomrule\noalign{}
 \endlastfoot
 M374 & kul & 1709 & Munda \emph{kul} (tiger-lord) & MEDIAL between
-authority signs; kulam=clan/lineage \\
+authority signs; kulam (clan/lineage) \\
 M351 & vī & 5388 & Munda \emph{bi} (seed/sprout) & MEDIAL agricultural
-context; bi$\rightarrow$vī bilabial shift \\
+context; bi -\textgreater{} vī bilabial shift \\
 \end{longtable}
 }
 
@@ -411,11 +416,11 @@ context; bi$\rightarrow$vī bilabial shift \\
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1579}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2368}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1579}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2632}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1842}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1200}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1600}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.4200}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Sign
@@ -436,7 +441,7 @@ M072 & mā & 4751 & INITIAL & All 12 tokens INITIAL; mā=great; collocates
 peN/veL \\
 M149 & or & 987 & MEDIAL & MEDIAL between kōṉ and -an; oru=one/a
 certain \\
-M185 & pul & 4336 & MEDIAL & MEDIAL descriptor; pul=humble/grass \\
+M185 & pul & 4336 & MEDIAL & MEDIAL descriptor; pul (humble/grass) \\
 \end{longtable}
 }
 
@@ -457,8 +462,8 @@ of reading frequency alone as a phonetic indicator.
 \subsubsection{3.5 Fish Sign Polysemy
 Test}\label{fish-sign-polysemy-test}
 
-We tested the hypothesis (Roif 2025) that isolated fish signs encode
-commodity units while compound fish signs encode occupational titles.
+We tested the hypothesis, raised in recent mnemonic/commodity interpretations of the fish-sign family,
+that isolated fish signs encode commodity units while compound fish signs encode occupational titles.
 Testing the full fish sign family (M047, M049, M052--M056, M145) across
 all 9 sites:
 
@@ -482,10 +487,9 @@ All others & inland & 28 & 0 (0\%) & 28 (100\%) \\
 
 The fish sign is \textbf{never} isolated in the formal stamp seal
 corpus, at any site, including Lothal (the IVC's primary coastal port
-with documented ancient dock). This result is consistent with the
-suggestion in Martini (2025, unpublished manuscript) that commodity tallies may have been recorded on
-perishable media (wooden tablets, pottery ostraca), not formal stamp
-seals.
+with documented ancient dock). This result is compatible with the
+possibility that commodity tallies were recorded outside the formal stamp-seal corpus,
+but the fish-sign result does not depend on that premise.
 
 Convergent evidence from the Gulf seal tradition: Dilmun-style seals at
 Failaka Island (Hojlund \& Abu-Laban 2012) show fish in compound
@@ -678,7 +682,7 @@ Rakhigarhi (n=33) is distinctively divergent from every other major site
 all five comparisons involving Rakhigarhi have CI lower bounds
 \textgreater{} 0.3. The large-site pairs (Mohenjo-daro vs Harappa, the
 two primary sites) show KL=0.070, consistent with a shared scribal
-tradition. Site divergence is a real, bootstrap-confirmed phenomenon;
+tradition. Site divergence is a real, bootstrap-supported phenomenon;
 Rakhigarhi's distinctiveness is not a small-sample artifact.
 
 \subsubsection{3.15 Shu-ilishu Phonological Test
@@ -712,7 +716,7 @@ low-frequency sign assignments.
 
 Detailed diagnostic of the V12 vowel harmony warning (75.3\% vs 85\%
 threshold) finds two sources of false violations: (1) slash-notation
-alternative readings (e.g., ``ay/ā'' contains both front vowel "ay$\rightarrow$ai"
+alternative readings (e.g., ``ay/ā'' contains both front vowel "ay -\textgreater{} ai"
 and back vowel "ā", generating spurious cross-class conflicts); (2)
 grammatical particles (M267=iN genitive, M342=ay/ā case suffix) that by
 design follow content words of any vowel class --- cross-morpheme vowel
@@ -892,7 +896,7 @@ validity in Proto-Dravidian; (2) positional profile consistency;
 (3) Phase-110 SA evidence where available. \textbf{Results}: 19/19
 blocker LOW readings are phonotactically plausible (all use valid
 Proto-Dravidian initial consonants). Coverage estimate if these 19
-blockers were promoted to MEDIUM: 90.96\% $\rightarrow$ 92.35\%. Note: the full-corpus
+blockers were promoted to MEDIUM: 90.96\% -\textgreater{} 92.35\%. Note: the full-corpus
 SA with 161 pinned anchors could not be executed (surjective constraint
 initialization incompatibility on the available platform); the statistical
 assessment is sufficient to validate plausibility. \textbf{These 19
@@ -960,7 +964,7 @@ analogous to a professional seal or signet ring in later South Asian
 tradition. The Arthaśāstra (4th century BCE, ca. 2,000 years after IVC)
 documents nearly identical guild-superintendent titles:
 \emph{koṣṭhāgārādhyakṣa} (storehouse superintendent), \emph{nāvadhyakṣa}
-(ship superintendent). This interpretation is consistent with later South Asian administrative vocabulary, but the proposed continuity remains speculative (Martini 2025, unpublished manuscript).
+(ship superintendent). This interpretation is consistent with later South Asian administrative vocabulary, but the proposed continuity remains speculative.
 
 \subsubsection{4.2 The Substrate Evidence}\label{the-substrate-evidence}
 
@@ -1042,7 +1046,7 @@ fish-sign compound-only pattern (0/140 tested contexts), and correction
 of the M267 misassignment --- are Tier~1 structural claims that can be
 stated with high confidence. The candidate Proto-Dravidian readings
 (161 H+M signs; 90.96\% token coverage) are Tier~2 claims supported by
-multiple converging tests but not yet externally validated. Speculative
+multiple converging tests but not yet externally reviewed. Speculative
 interpretations --- guild-identity semantics, Munda substrate readings,
 individual seal translations --- are Tier~3 claims requiring expert
 review and explicit caveats.
@@ -1053,13 +1057,13 @@ decipherable linguistic system; the evidence favours a Proto-Dravidian
 reading framework under the tested assumptions. The ICIT corpus
 is the immediate
 priority for testing whether the candidate model generalises to a larger public corpus. All phase
-reports, scripts, and the anchor table will be released in the Glossa-Lab repository before public posting.
+reports, scripts, and the anchor table are available in the Glossa-Lab repository.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{6. Data Availability}\label{data-availability}
 
-All sign readings, confidence levels, DEDR citations, basis statements, analysis scripts, and phase reports will be released in the Glossa-Lab repository at \url{https://github.com/layer1labs/glossa-lab}. The Holdat LLC Indus Corpus v3 is not publicly available at time of writing. Because the Holdat corpus is not yet publicly released, full reproduction of corpus-level counts requires either access to that corpus under agreement or re-running the pipeline on a compatible public corpus after sign-code crosswalking. The public repository provides the anchor table, scripts, and phase reports needed to audit the method and reproduce non-corpus-dependent checks.
+All sign readings, confidence levels, DEDR citations, basis statements, analysis scripts, and phase reports are available in the \href{https://github.com/BitConcepts/glossa-lab}{Glossa-Lab repository}. The Holdat LLC Indus Corpus v3 is not publicly available at time of writing. Because the Holdat corpus is not yet publicly released, full reproduction of corpus-level counts requires either access to that corpus under agreement or re-running the pipeline on a compatible public corpus after sign-code crosswalking. The public repository provides the anchor table, scripts, and phase reports needed to audit the method and reproduce non-corpus-dependent checks.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1067,13 +1071,12 @@ All sign readings, confidence levels, DEDR citations, basis statements, analysis
 
 Mahadevan (1977) for the
 sign catalogue. Parpola (1994, 2010) for the Dravidian decipherment
-framework that grounds all readings. Martini (2025) for the Arthaśāstra
-administrative analysis. Avishai Roif (Ben Gurion University) for
-correspondence on the fish-sign polysemy and shorthand hypotheses.
+framework that grounds all readings. I thank G. Martini for discussion of later South Asian administrative vocabulary.
+I thank Avishai Roif for correspondence on fish-sign polysemy and mnemonic/shorthand interpretations.
 Ashish Nair for the independent replication study (arXiv:2604.17828).
 
 \textbf{AI Disclosure}: This research was conducted with AI-assisted
-computational tooling (Glossa-Lab pipeline, Warp/Oz agent). Analysis scripts, anchor tables, and phase reports will be released in the Glossa-Lab repository before public posting. The Holdat LLC Indus Corpus v3 is not publicly available; full corpus-level replication requires access to that corpus or a compatible public corpus such as ICIT after sign-code crosswalking. Statistical tests were designed,
+computational tooling (Glossa-Lab pipeline, Warp/Oz agent). Analysis scripts, anchor tables, and phase reports are available in the Glossa-Lab repository. The Holdat LLC Indus Corpus v3 is not publicly available; full corpus-level replication requires access to that corpus or a compatible public corpus such as ICIT after sign-code crosswalking. Statistical tests were designed,
 executed, and interpreted by the author; AI tooling was used for
 scripting, data management, and literature search.
 
@@ -1105,10 +1108,6 @@ scripting, data management, and literature search.
   Mahadevan, I. (1977). \emph{The Indus Script: Texts, Concordance and
   Tables}. New Delhi: Archaeological Survey of India.
 \item
-  Martini, G. (2025). \emph{Arthaśāstra Administrative Vocabulary and
-  IVC Seal Inscription Typology}. PhD dissertation.
-  [unpublished manuscript; full bibliographic details to be confirmed before public submission]
-\item
   McAlpin, D.W. (1981). \emph{Proto-Elamo-Dravidian: The Evidence and
   Its Implications}. Philadelphia: American Philosophical Society.
 \item
@@ -1125,12 +1124,6 @@ scripting, data management, and literature search.
 \item
   Rao, R.P.N. et al.~(2009). A Markov model of the Indus Script.
   \emph{PNAS}, 106(33), 13685--13690.
-\item
-  Roif, A. (2025a). The Indus Script as a Mnemonic Framework.
-  Preprint. [manuscript in preparation; URL to be confirmed before public submission]
-\item
-  Roif, A. (2025b). Deciphering the Indus Valley Script: A
-  Phonetic-Mnemonic Akkadian Shorthand Approach. Preprint.
 \item
   Southworth, F. (2005). \emph{Linguistic Archaeology of South Asia}.
   London: Routledge.
@@ -1182,7 +1175,7 @@ M351 & vī & MEDIUM & 5388 & Munda \emph{bi} substrate; DEDR vī=seed;
 agricultural context \\
 M072 & mā & MEDIUM & 4751 & INITIAL-only (12/12 tokens); collocates peN,
 veL, comitative \\
-M149 & or & MEDIUM & 987 & MEDIAL; {[}kōṉ{]}$\rightarrow$or$\rightarrow${[}an{]}; Dravidian
+M149 & or & MEDIUM & 987 & MEDIAL; {[}kōṉ{]} -\textgreater{} or -\textgreater{} {[}an{]}; Dravidian
 oru=one/a certain \\
 M185 & pul & MEDIUM & 4336 & MEDIAL; descriptor before āl/man;
 pul=humble/grass \\

@@ -1,0 +1,162 @@
+{
+  "phase": 154,
+  "date": "2026-05-19",
+  "total_seals_checked": 1154,
+  "skipped": 516,
+  "pass_count": 417,
+  "fail_count": 737,
+  "harmony_rate": 0.3614,
+  "threshold": 0.85,
+  "v12_pass": false,
+  "boundary_violations": 319,
+  "root_violations": 418,
+  "boundary_pct": 43.3,
+  "root_pct": 56.7,
+  "verdict": "V12_ACTIVE_CONCERN",
+  "explanation": "418 root-internal violations suggest some sign readings have incorrect vowel class assignments. Top offending signs should be reviewed.",
+  "top_violation_signs": [
+    {
+      "sign": "M342",
+      "reading": "ay/ā",
+      "vowel_class": "BACK",
+      "pos_class": "MEDIAL",
+      "count": 290
+    },
+    {
+      "sign": "M267",
+      "reading": "iN/in (genitive of)",
+      "vowel_class": "FRONT",
+      "pos_class": "MEDIAL",
+      "count": 270
+    },
+    {
+      "sign": "M099",
+      "reading": "kol/koḷ",
+      "vowel_class": "BACK",
+      "pos_class": "MEDIAL",
+      "count": 211
+    },
+    {
+      "sign": "M176",
+      "reading": "an/aṇ",
+      "vowel_class": "BACK",
+      "pos_class": "MEDIAL",
+      "count": 161
+    },
+    {
+      "sign": "M059",
+      "reading": "ēḷ/eḷ",
+      "vowel_class": "FRONT",
+      "pos_class": "MEDIAL",
+      "count": 145
+    },
+    {
+      "sign": "M162",
+      "reading": "il/iḷ",
+      "vowel_class": "FRONT",
+      "pos_class": "MEDIAL",
+      "count": 140
+    },
+    {
+      "sign": "M328",
+      "reading": "ā/āl",
+      "vowel_class": "BACK",
+      "pos_class": "MEDIAL",
+      "count": 113
+    },
+    {
+      "sign": "M293",
+      "reading": "ta",
+      "vowel_class": "BACK",
+      "pos_class": "MEDIAL",
+      "count": 107
+    },
+    {
+      "sign": "M211",
+      "reading": "kol",
+      "vowel_class": "BACK",
+      "pos_class": "MEDIAL",
+      "count": 106
+    },
+    {
+      "sign": "M336",
+      "reading": "iṉ/locative",
+      "vowel_class": "FRONT",
+      "pos_class": "MEDIAL",
+      "count": 105
+    }
+  ],
+  "top_violation_pairs": [
+    {
+      "pair": "M176×M342",
+      "reading_a": "an/aṇ",
+      "reading_b": "ay/ā",
+      "vc_a": "BACK",
+      "vc_b": "BACK",
+      "count": 105
+    },
+    {
+      "pair": "M099×M267",
+      "reading_a": "kol/koḷ",
+      "reading_b": "iN/in (genitive of)",
+      "vc_a": "BACK",
+      "vc_b": "FRONT",
+      "count": 103
+    },
+    {
+      "pair": "M099×M342",
+      "reading_a": "kol/koḷ",
+      "reading_b": "ay/ā",
+      "vc_a": "BACK",
+      "vc_b": "BACK",
+      "count": 101
+    },
+    {
+      "pair": "M267×M342",
+      "reading_a": "iN/in (genitive of)",
+      "reading_b": "ay/ā",
+      "vc_a": "FRONT",
+      "vc_b": "BACK",
+      "count": 92
+    },
+    {
+      "pair": "M099×M176",
+      "reading_a": "kol/koḷ",
+      "reading_b": "an/aṇ",
+      "vc_a": "BACK",
+      "vc_b": "BACK",
+      "count": 73
+    },
+    {
+      "pair": "M162×M342",
+      "reading_a": "il/iḷ",
+      "reading_b": "ay/ā",
+      "vc_a": "FRONT",
+      "vc_b": "BACK",
+      "count": 72
+    },
+    {
+      "pair": "M099×M162",
+      "reading_a": "kol/koḷ",
+      "reading_b": "il/iḷ",
+      "vc_a": "BACK",
+      "vc_b": "FRONT",
+      "count": 69
+    },
+    {
+      "pair": "M267×M328",
+      "reading_a": "iN/in (genitive of)",
+      "reading_b": "ā/āl",
+      "vc_a": "FRONT",
+      "vc_b": "BACK",
+      "count": 68
+    }
+  ],
+  "key_findings": [
+    "Harmony rate: 36.1% (V12 threshold 85%)",
+    "Boundary violations (expected): 319 (43%)",
+    "Root violations (concern): 418 (57%)",
+    "Verdict: V12_ACTIVE_CONCERN",
+    "418 root-internal violations suggest some sign readings have incorrect vowel class assignments. Top offending signs should be reviewed."
+  ]
+}

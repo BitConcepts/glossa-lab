@@ -1,0 +1,12 @@
+SEAL: Shd-1 | SIGNS: LPIW/LE inscription (uncertain reading direction)
+SEAL: KSS-381 (B’) | SIGNS: LPIW/LE inscription (uncertain reading direction)
+SEAL: KSS-382 (C’) | SIGNS: LPIW/LE inscription (uncertain reading direction)
+SEAL: KSS-383 (D’) | SIGNS: LPIW/LE inscription (uncertain reading direction)
+SEAL: KSS-380 (E’) | SIGNS: LPIW/LE inscription (uncertain reading direction)
+SEAL: V | SIGNS: LPIW/LE inscription (uncertain reading direction, Persian Gulf area)
+SEAL: G’ | SIGNS: LPIW/LE inscription (uncertain reading direction, Central-Asian iconography)
+
+ICONOGRAPHY: V | MOTIF: related to the Persian Gulf area
+ICONOGRAPHY: G’ | MOTIF: Central-Asian iconography
+
+SIGN_REF: M72 | MEANING: used as an element of two anthroponymic sequences in TY 11 (= TY-18), minor graphic variants in numerical signs at Tepe Yahya

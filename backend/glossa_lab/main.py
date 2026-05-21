@@ -20,7 +20,6 @@ from glossa_lab.api.ai_profiles import router as ai_profiles_router
 from glossa_lab.api.ai_tools import router as ai_tools_router
 from glossa_lab.api.analysis import router as analysis_router
 from glossa_lab.api.anchor_sets import router as anchor_sets_router
-from glossa_lab.api.cas_models import router as cas_models_router
 from glossa_lab.api.catalog import router as catalog_router
 from glossa_lab.api.cgsa import router as cgsa_router
 from glossa_lab.api.collab import router as collab_router
@@ -160,12 +159,6 @@ async def lifespan(app: FastAPI):
 
     if _db:
         await seed_projects(_db)
-
-    # Seed built-in CAS-YAML constraint models into DB (idempotent)
-    from glossa_lab.cas_model_seeder import seed_cas_models  # noqa: PLC0415
-
-    if _db:
-        await seed_cas_models(_db)
 
     # Start Ollama in the background (no-op if not installed or already running)
     _log.info("Checking Ollama availability...")
@@ -321,7 +314,6 @@ def create_app() -> FastAPI:
     application.include_router(report_templates_router, prefix="/api/v1")
     application.include_router(anchor_sets_router, prefix="/api/v1")
     application.include_router(corpus_catalogue_router, prefix="/api/v1")
-    application.include_router(cas_models_router, prefix="/api/v1")
     application.include_router(ag2_chat_router, prefix="/api/v1")
     application.include_router(cgsa_router, prefix="/api/v1")
     application.include_router(discovery_router)  # already prefixed at /api/v1/discovery

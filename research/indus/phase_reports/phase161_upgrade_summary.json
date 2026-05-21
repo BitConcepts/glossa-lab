@@ -1,0 +1,50 @@
+{
+  "phase": "161-163 upgrades applied",
+  "date": "2026-05-20",
+  "before": {
+    "high": 75,
+    "medium": 82,
+    "low": 240
+  },
+  "after": {
+    "high": 75,
+    "medium": 86,
+    "low": 236
+  },
+  "delta": {
+    "high": 0,
+    "medium": 4,
+    "low": -4
+  },
+  "n_applied": 0,
+  "n_sibilant": 4,
+  "n_skipped": 0,
+  "new_hm_count": 161,
+  "new_token_coverage": 0.9096,
+  "new_token_coverage_pct": 90.96,
+  "new_fully_decoded_seals": 1165,
+  "new_fully_decoded_pct": 69.8,
+  "applied_upgrades": [],
+  "sibilant_upgrades": [
+    {
+      "sign_id": "M330",
+      "reading": "can",
+      "n_mentions": 4
+    },
+    {
+      "sign_id": "M165",
+      "reading": "cul",
+      "n_mentions": 4
+    },
+    {
+      "sign_id": "M202",
+      "reading": "can",
+      "n_mentions": 4
+    },
+    {
+      "sign_id": "M198",
+      "reading": "co",
+      "n_mentions": 3
+    }
+  ]
+}

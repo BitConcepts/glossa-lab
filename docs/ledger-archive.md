@@ -6152,7 +6152,7 @@ What was done:
    - Logs warning when no hf_api_token configured
    - Added POST /api/v1/model-intelligence/test-hf: validates token via whoami-v2,
      probes datasets-server, returns tier/remaining/dataset_server_ok
-   - Static fallback: replaced l1-nexus alias with HF-matchable substrings
+   - Static fallback: replaced cpatonn/Qwen3-Coder-30B alias with HF-matchable substrings
      (Qwen3-Coder-30B, Qwen3-14B, Qwen3-8B, bge-m3)
    - Static fallback expanded: +16 models (Qwen 2.5, Llama 3.2, DeepSeek extended,
      Mistral 7B, Phi 3/3.5)
@@ -6196,8 +6196,8 @@ What was done:
 9. Deployment infrastructure:
    - frontend/dist tracked in git (added !frontend/dist/** negation to gitignore) so
      server git pull delivers compiled frontend without Node.js
-   - agent-stack docker-compose: removed --served-model-name from l1-nexus, l1-glossa,
-     l1-embed (commit ec79ff1 on layer1labs/agent-stack) → vLLM returns actual HF model IDs
+   - agent-stack docker-compose: removed --served-model-name from cpatonn/Qwen3-Coder-30B, Qwen/Qwen3-14B,
+     BAAI/bge-m3 (commit ec79ff1 on internal-agent-stack) → vLLM returns actual HF model IDs
 
 Files changed:
   frontend/src/components/Settings/ProvidersPanel.tsx
@@ -6234,7 +6234,7 @@ Risks:
   - HF leaderboard scores use normalized V2 scale (10-50 range) vs static fallback
     assumed percentages (60-90 range). Cross-source ranking inconsistency is known and
     accepted for now; all scoring is relative within each source group.
-  - vLLM models still show as "l1-glossa · l1-glossa" until docker-compose is deployed.
+  - vLLM models still show as "Qwen/Qwen3-14B · Qwen/Qwen3-14B" until docker-compose is deployed.
 
 Next step:
   SSH to BitConcepts, `docker compose up -d`, re-test providers, run Phase-32 T4.
@@ -6342,9 +6342,9 @@ Phase-32 T4 — SA M77 → Dravidian Syllable LM (second run):
     syllable-split decoded sequences. Documented as Phase-33 T2.
 
 vLLM providers confirmed:
-  - l1-embed → BAAI/bge-m3 (after docker-compose change + provider re-test)
-  - l1-glossa → Qwen/Qwen3-14B
-  - l1-nexus → cpatonn/Qwen3-Coder-30B-A3B-Instruct-AWQ-4bit
+  - BAAI/bge-m3 → BAAI/bge-m3 (after docker-compose change + provider re-test)
+  - Qwen/Qwen3-14B → Qwen/Qwen3-14B
+  - cpatonn/Qwen3-Coder-30B → cpatonn/Qwen3-Coder-30B-A3B-Instruct-AWQ-4bit
 
 Foundation check: 17 PASS / 0 FAIL / 0 WARN ✓
 

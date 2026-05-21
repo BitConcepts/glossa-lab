@@ -946,9 +946,10 @@ as challenges to Aegean Scripts corpora." Authors from the CREWS team.
 
 ## L. Glossa-Lab project (cite the project itself)
 
-> Tristan & contributors. 2026. *Glossa-Lab: An atomic-node graph framework for
-> the structural analysis and decipherment of ancient writing systems.* GitHub:
-> https://github.com/BitConcepts/glossa-lab. License: ???.
+> Pierson, Tristen Kyle & contributors. 2026. *Glossa-Lab: An agentic computational
+> linguistics research platform for statistical analysis and decipherment of ancient
+> writing systems.* BitConcepts LLC. GitHub: https://github.com/BitConcepts/glossa-lab.
+> License: MIT (source code); CC BY 4.0 (research outputs in research/indus/).
 
 ---
 

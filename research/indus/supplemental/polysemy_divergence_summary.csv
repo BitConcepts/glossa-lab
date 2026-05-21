@@ -1,0 +1,14 @@
+test_parameter,value,note
+n_signs_tested,21,
+n_permutations,1000,
+kl_threshold_bits,0.3,KL divergence threshold for positional distinction
+observed_polysemy_rate,0.6667,Fraction of signs with KL > threshold
+null_mean,0.8069,Mean polysemy rate under null (position shuffle)
+null_sd,0.0875,
+null_p95,0.9524,
+z_score,-1.6,
+p_value,0.955,One-tailed permutation p
+verdict,INCONCLUSIVE,
+interpretation,Observed rate < null mean: tightly constrained positional grammar. Signs have focused position-specific collocate profiles.,See preprint §3.13
+,,
+test_signs,"M342, M267, M099, M176, M211, M328, M293, M059, M162, M391, M367, M233, M089, M051, M336, M048, M065, M012, M125, M087, M305",21 high-frequency H+M signs tested

@@ -8,7 +8,6 @@ fetchers are tested separately in their own offline smoke tests.
 
 from __future__ import annotations
 
-
 # ── Topics + sources + stats (no DB writes required) ─────────────────────
 
 

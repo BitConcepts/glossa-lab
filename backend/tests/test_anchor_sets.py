@@ -1,6 +1,5 @@
 """Tests for user-definable anchor sets API (H16 Phase 4)."""
 
-import pytest
 
 
 def _create_set(client, **overrides):

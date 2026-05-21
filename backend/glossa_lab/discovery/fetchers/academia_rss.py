@@ -98,7 +98,6 @@ def _parse_rss_items(xml_bytes: bytes, source_slug: str) -> list[dict]:
             pub_date = ""
             if hasattr(entry, "published_parsed") and entry.published_parsed:
                 try:
-                    import time  # noqa: PLC0415
                     pub_date = datetime(*entry.published_parsed[:6]).strftime("%Y-%m-%d")
                 except Exception:  # noqa: BLE001
                     pass

@@ -10,7 +10,11 @@ Formal proof package for the Indus decipherment:
 CPU only. Output: reports/phase115_significance_tests.json
 """
 from __future__ import annotations
-import csv, json, math, random
+
+import csv
+import json
+import math
+import random
 from collections import Counter
 from pathlib import Path
 

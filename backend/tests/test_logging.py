@@ -14,8 +14,6 @@ import time
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
-import pytest
-
 from glossa_lab.config import Settings
 from glossa_lab.log_setup import setup_logging
 
@@ -94,7 +92,6 @@ def test_active_log_file_picks_newest_mtime(tmp_path: Path, monkeypatch):
     time.sleep(0.01)                                       # ensure mtime differs
     new_small.write_text("y" * 100, encoding="utf-8")     # 100 bytes, NEW
 
-    from glossa_lab.api.terminal import _active_log_file
     from glossa_lab.config import get_settings
 
     # Patch the candidate list to our two temp files
@@ -103,9 +100,8 @@ def test_active_log_file_picks_newest_mtime(tmp_path: Path, monkeypatch):
     )
     # Override config log_dir to point at a non-existent path so it doesn't
     # accidentally match a real log that happens to be newer.
-    nonexistent = tmp_path / "nodir"
-    settings = get_settings()
-    orig_log_dir = settings.log_dir
+    tmp_path / "nodir"
+    get_settings()
 
     # Directly test the mtime logic without relying on the candidate list:
     existing = [(p.stat().st_mtime, p) for p in [old_big, new_small] if p.exists()]
@@ -118,14 +114,15 @@ def test_active_log_file_picks_newest_mtime(tmp_path: Path, monkeypatch):
 
 def test_active_log_file_fallback_when_none_exist(tmp_path: Path, monkeypatch):
     """TEST-LOG-006: _active_log_file returns the primary candidate path when nothing exists."""
-    from glossa_lab.config import get_settings, Settings
     from unittest.mock import patch
+
+    from glossa_lab.config import get_settings
 
     # Point settings.log_dir to a non-existent sub-dir
     fake_dir = tmp_path / "fake_log_dir"
     assert not fake_dir.exists()
 
-    with patch("glossa_lab.api.terminal._active_log_file") as mock_fn:
+    with patch("glossa_lab.api.terminal._active_log_file"):
         # Verify the real function's fallback by inspecting the candidate logic
         # (we patch _REPO_ROOT and _BACKEND_DIR to ensure no real logs match)
         pass  # The unit-level mtime selection is fully covered by TEST-LOG-005.

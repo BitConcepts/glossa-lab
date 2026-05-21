@@ -1,7 +1,9 @@
 """Deep analysis of CISI corpus: positional profiles, bigrams, top signs."""
-import sys, json
-from pathlib import Path
+import json
+import sys
 from collections import Counter
+from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).parent))
 from glossa_lab.experiment_graph import ATOMIC_NODES
 
@@ -50,16 +52,16 @@ def role(s):
     if p.get("terminal_rate",0) > 0.45 or p.get("pos_class")=="TERMINAL": return "T"
     return "M"
 
-print(f"\nTop 25 bigrams (role annotation: I=initial, M=medial, T=terminal):")
+print("\nTop 25 bigrams (role annotation: I=initial, M=medial, T=terminal):")
 for (a,b), n in bigrams.most_common(25):
     print(f"  {a}({role(a)})->{b}({role(b)})  n={n}")
 
-print(f"\nTop 15 trigrams:")
+print("\nTop 15 trigrams:")
 for (a,b,c), n in trigrams.most_common(15):
     print(f"  {a}({role(a)})->{b}({role(b)})->{c}({role(c)})  n={n}")
 
 # Context for each terminal sign: what precedes it?
-print(f"\nContext of top TERMINAL signs (what immediately precedes them?):")
+print("\nContext of top TERMINAL signs (what immediately precedes them?):")
 for s, d in terminal[:7]:
     pre = Counter()
     for seq in seqs:
@@ -72,7 +74,7 @@ for s, d in terminal[:7]:
 
 # Overall sign frequencies
 freq = Counter(sign for seq in seqs for sign in seq)
-print(f"\nTop 20 most frequent signs:")
+print("\nTop 20 most frequent signs:")
 for s, n in freq.most_common(20):
     p = profiles.get(s, {})
     print(f"  {s}: n={n} T={p.get('terminal_rate',0):.2f} I={p.get('initial_rate',0):.2f} M={p.get('medial_rate',0):.2f} cls={p.get('pos_class','')}")

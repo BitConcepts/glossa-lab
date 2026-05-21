@@ -1,5 +1,7 @@
 """Send Phase-88-90 v2 results email."""
-import sys, os
+import os
+import sys
+
 os.environ['GLOSSA_DATA_DIR'] = r'C:\Users\trist\Development\BitConcepts\glossa-lab\backend\data'
 sys.path.insert(0, r'C:\Users\trist\Development\BitConcepts\glossa-lab\backend')
 from glossa_lab.notifications.resend import ResendConfig, send_mail

@@ -11,9 +11,13 @@ Computes: how many seals unlocked, which LOW signs block the most seals.
 
 Output: reports/phase130_decode_blocker.json
 """
-import sys, json, os, datetime
-from pathlib import Path
+import datetime
+import json
+import os
+import sys
 from collections import Counter, defaultdict
+from pathlib import Path
+
 import pandas as pd
 
 REPO = Path(__file__).resolve().parents[2]
@@ -75,7 +79,7 @@ for _, row in seal_groups[seal_groups["status"] != "FULLY_DECODED"].iterrows():
     for s in row["blockers"]:
         blocker_counts[s] += 1
 
-print(f"\n  Top 30 blocking signs (seals they prevent from being 'fully decoded'):")
+print("\n  Top 30 blocking signs (seals they prevent from being 'fully decoded'):")
 print(f"  {'Sign':<10} {'Freq':<8} {'Conf':<8} {'Reading':<12} {'Seals blocked'}")
 print(f"  {'-'*60}")
 for sign, count in blocker_counts.most_common(30):
@@ -85,7 +89,7 @@ for sign, count in blocker_counts.most_common(30):
     print(f"  {sign:<10} {freq_in_corpus:<8} {conf:<8} {reading:<12} {count}")
 
 # Site breakdown
-print(f"\n  Fully decoded by site:")
+print("\n  Fully decoded by site:")
 for site in sorted(seal_groups["site"].unique()):
     site_df = seal_groups[seal_groups["site"] == site]
     fd = (site_df["status"] == "FULLY_DECODED").sum()
@@ -93,7 +97,7 @@ for site in sorted(seal_groups["site"].unique()):
     print(f"    {site}: {fd}/{tot} ({100*fd/tot:.0f}%)")
 
 # Iconography breakdown for undecoded seals
-print(f"\n  Top iconography types among LOW-blocked seals:")
+print("\n  Top iconography types among LOW-blocked seals:")
 low_blocked_df = seal_groups[seal_groups["status"] == "LOW_CONF"]
 if "iconography" in low_blocked_df.columns:
     icon_counts = low_blocked_df["iconography"].value_counts().head(10)
@@ -101,7 +105,7 @@ if "iconography" in low_blocked_df.columns:
         print(f"    {icon}: {cnt}")
 
 # What would unlock if top N blockers were resolved?
-print(f"\n  Unlock potential: if top blockers were promoted to MEDIUM+")
+print("\n  Unlock potential: if top blockers were promoted to MEDIUM+")
 cumulative_unlocked = set()
 seal_idx_by_blocker = defaultdict(set)
 for idx, row in seal_groups[seal_groups["status"] != "FULLY_DECODED"].iterrows():
@@ -130,7 +134,7 @@ seal_groups["status_pre"] = [
 ]
 pre_fully = (seal_groups["status_pre"] == "FULLY_DECODED").sum()
 post_fully = fully_decoded
-print(f"\n  Phase-128/129 impact:")
+print("\n  Phase-128/129 impact:")
 print(f"    Pre-upgrade fully decoded:  {pre_fully}/{total} ({100*pre_fully/total:.1f}%)")
 print(f"    Post-upgrade fully decoded: {post_fully}/{total} ({100*post_fully/total:.1f}%)")
 print(f"    Net seals unlocked: +{post_fully - pre_fully}")

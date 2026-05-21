@@ -14,8 +14,9 @@ Algorithm:
 CPU only. Output: reports/phase82_seal_translation_pilot.json
 """
 from __future__ import annotations
-import csv, json
-from collections import Counter
+
+import csv
+import json
 from pathlib import Path
 
 REPO    = Path(__file__).parents[2]
@@ -169,7 +170,7 @@ def main():
     cov_above_90 = sum(1 for _, c, _, _ in seal_scores if c >= 90)
     cov_100 = sum(1 for _, c, _, _ in seal_scores if c == 100)
 
-    print(f"\n  Coverage distribution:")
+    print("\n  Coverage distribution:")
     print(f"    100% coverage:  {cov_100} seals")
     print(f"    >=90% coverage: {cov_above_90} seals")
     print(f"    >=70% coverage: {cov_above_70} seals")
@@ -202,25 +203,25 @@ def main():
     high_conf = sum(1 for t in translations if t["translation_confidence"] == "HIGH")
     med_conf  = sum(1 for t in translations if t["translation_confidence"] == "MEDIUM")
 
-    print(f"\n  Translation summary:")
+    print("\n  Translation summary:")
     print(f"    Mean coverage:    {mean_coverage:.1f}%")
     print(f"    HIGH confidence:  {high_conf}/{len(translations)}")
     print(f"    MEDIUM confidence:{med_conf}/{len(translations)}")
 
     # Show a few full gloss examples
-    print(f"\n  Example translations (full gloss):")
+    print("\n  Example translations (full gloss):")
     for t in translations[:5]:
         print(f"    {t['cisi_id']} [{t['site']}]: {t['gloss']}")
         print(f"      -> {t['formula_type']}")
 
-    print(f"\n=== Phase-82 Results ===")
+    print("\n=== Phase-82 Results ===")
     print(f"  Seals translated:   {len(translations)}")
     print(f"  100% coverage:      {cov_100}")
     print(f"  >=90% coverage:     {cov_above_90}")
     print(f"  Mean coverage:      {mean_coverage:.1f}%")
     print(f"  HIGH confidence:    {high_conf} seals fully decoded")
-    print(f"  Key finding: At 79.8% token coverage, many short inscriptions are")
-    print(f"  completely decodable — formula + suffix structure fully readable.")
+    print("  Key finding: At 79.8% token coverage, many short inscriptions are")
+    print("  completely decodable — formula + suffix structure fully readable.")
 
     result = {
         "_citation": {"primary": ["A.1"]},

@@ -1,10 +1,18 @@
 """Run CISI corpus experiments: structural analysis + anchor estimation."""
-import sys, json, time
+import json
+import sys
+import time
 from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).parent))
 sys.path.insert(0, str(Path(__file__).parent / "tests"))
 
-from glossa_lab.experiment_graph import get_graph_experiment, ATOMIC_NODES, _topo_sort, _node_type_and_params
+from glossa_lab.experiment_graph import (
+    ATOMIC_NODES,
+    _node_type_and_params,
+    _topo_sort,
+    get_graph_experiment,
+)
 
 REPORTS = Path(__file__).parent.parent / "reports"
 REPORTS.mkdir(exist_ok=True)

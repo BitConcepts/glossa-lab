@@ -414,7 +414,7 @@ CREATE TABLE IF NOT EXISTS model_scores (
 );
 
 CREATE INDEX IF NOT EXISTS idx_model_scores_name ON model_scores(model_name);
-""";
+"""
 
 _SCHEMA_V12 = """
 CREATE TABLE IF NOT EXISTS canonical_signs (

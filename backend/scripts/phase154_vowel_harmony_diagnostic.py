@@ -27,9 +27,11 @@ have mismatched vowel classes — this suggests a misreading.
 
 Output: backend/reports/phase154_vowel_harmony_diagnostic.json
 """
-import sys, json, re
+import json
+import re
+import sys
+from collections import Counter
 from pathlib import Path
-from collections import Counter, defaultdict
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "backend"))
@@ -216,21 +218,21 @@ if len(root_fails) > 0:
     boundary_rate = len(boundary_fails) / fail_count
     if boundary_rate >= 0.70:
         print(f"\n  INTERPRETATION: {100*boundary_rate:.0f}% of violations are at morpheme boundaries.")
-        print(f"  This is EXPECTED in agglutinative Dravidian — suffixes can have different vowel classes.")
+        print("  This is EXPECTED in agglutinative Dravidian — suffixes can have different vowel classes.")
         print(f"  True 'root' violations: only {len(root_fails)} seals — a small fraction.")
         v12_resolved = True
     else:
         print(f"\n  WARNING: {100*(1-boundary_rate):.0f}% of violations are within content-word slots.")
-        print(f"  This suggests some MEDIAL sign readings may have incorrect vowel class assignments.")
+        print("  This suggests some MEDIAL sign readings may have incorrect vowel class assignments.")
         v12_resolved = False
 else:
-    print(f"\n  All violations are boundary-type — V12 warning can be resolved.")
+    print("\n  All violations are boundary-type — V12 warning can be resolved.")
     v12_resolved = True
 
 # ─── 3. Most frequent violation signs ─────────────────────────────────────
 print("\n3. MOST FREQUENT VIOLATION CONTRIBUTORS")
 print("─"*70)
-print(f"\n  Signs most often in harmony-violating seals:")
+print("\n  Signs most often in harmony-violating seals:")
 print(f"  {'Sign':<8} {'Reading':<20} {'Class':<8} {'Vowel':<7} {'Violations':>10}")
 for sign, count in violation_signs.most_common(12):
     reading = anchors.get(sign,{}).get("reading","?")
@@ -241,7 +243,7 @@ for sign, count in violation_signs.most_common(12):
 # ─── 4. Most conflicting pairs ────────────────────────────────────────────
 print("\n4. MOST CONFLICTING SIGN PAIRS")
 print("─"*70)
-print(f"\n  Sign pairs that most often appear together in violations:")
+print("\n  Sign pairs that most often appear together in violations:")
 print(f"  {'Pair':<20} {'ReadA':<15} {'VCA':<7} {'ReadB':<15} {'VCB':<7} {'Count':>8}")
 for (sa,sb), count in violation_sign_pairs.most_common(10):
     ra = anchors.get(sa,{}).get("reading","?")

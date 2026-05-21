@@ -9,6 +9,7 @@ CPU only. Output: reports/phase120_low_to_medium.json
 Also updates backend/reports/INDUS_FINAL_ANCHORS.json
 """
 from __future__ import annotations
+
 import json
 from pathlib import Path
 

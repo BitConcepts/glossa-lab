@@ -21,6 +21,7 @@ from pathlib import Path
 _REPO = Path(__file__).parent.parent
 _REPORTS = _REPO / "reports"
 import sys as _sys
+
 _sys.path.insert(0, str(_REPO / "backend"))
 from run_decipherment_study import run_positional  # noqa: E402
 
@@ -471,10 +472,10 @@ def main() -> None:
     )
     print(f"  Validated right groups: {vent_val['n_validated_right']}")
     print(f"  Validated left groups:  {vent_val['n_validated_left']}")
-    print(f"  Best right groups (cohesion > 0.5):")
+    print("  Best right groups (cohesion > 0.5):")
     for g in vent_val["best_right_groups"][:5]:
         print(f"    {g['group']}  cohesion={g['cohesion']}")
-    print(f"  Best left groups:")
+    print("  Best left groups:")
     for g in vent_val["best_left_groups"][:5]:
         print(f"    {g['group']}  cohesion={g['cohesion']}")
 
@@ -491,7 +492,7 @@ def main() -> None:
         study, classes_main, suf, pos_full
     )
     print(f"  Built hypothesis table for {len(table)} signs")
-    print(f"\n  Top 20 sign hypotheses:")
+    print("\n  Top 20 sign hypotheses:")
     print(f"  {'Sign':>6} {'Count':>6} {'Function':>14} {'T-rate':>6} {'I-rate':>6} {'S-rate':>6}")
     print("  " + "-" * 62)
     for row in table[:20]:

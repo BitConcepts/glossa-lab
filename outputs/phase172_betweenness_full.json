@@ -1,0 +1,3749 @@
+{
+  "phase": 172,
+  "date": "2026-05-21",
+  "description": "Full H+M×H+M betweenness centrality on M77 corpus (1,669 inscriptions)",
+  "corpus": {
+    "n_inscriptions": 3137,
+    "source": "Mahadevan 1977"
+  },
+  "graph": {
+    "n_nodes": 161,
+    "n_edges": 330,
+    "pmi_threshold": 0.0,
+    "min_seals": 2
+  },
+  "all_hm_bigrams": [
+    {
+      "pair": "M267·M099",
+      "count": 278,
+      "pmi": 3.0102
+    },
+    {
+      "pair": "M342·M176",
+      "count": 179,
+      "pmi": 1.885
+    },
+    {
+      "pair": "M336·M089",
+      "count": 122,
+      "pmi": 3.4096
+    },
+    {
+      "pair": "M089·M328",
+      "count": 120,
+      "pmi": 3.1087
+    },
+    {
+      "pair": "M048·M342",
+      "count": 108,
+      "pmi": 2.1515
+    },
+    {
+      "pair": "M347·M342",
+      "count": 99,
+      "pmi": 2.4149
+    },
+    {
+      "pair": "M008·M342",
+      "count": 89,
+      "pmi": 2.4217
+    },
+    {
+      "pair": "M391·M099",
+      "count": 81,
+      "pmi": 2.4425
+    },
+    {
+      "pair": "M342·M001",
+      "count": 81,
+      "pmi": 2.1205
+    },
+    {
+      "pair": "M087·M328",
+      "count": 74,
+      "pmi": 2.4851
+    },
+    {
+      "pair": "M087·M059",
+      "count": 66,
+      "pmi": 2.26
+    },
+    {
+      "pair": "M099·M067",
+      "count": 64,
+      "pmi": 1.8217
+    },
+    {
+      "pair": "M051·M130",
+      "count": 55,
+      "pmi": 5.0604
+    },
+    {
+      "pair": "M249·M162",
+      "count": 54,
+      "pmi": 3.3214
+    },
+    {
+      "pair": "M059·M211",
+      "count": 52,
+      "pmi": 2.4777
+    },
+    {
+      "pair": "M169·M342",
+      "count": 46,
+      "pmi": 0.9597
+    },
+    {
+      "pair": "M065·M067",
+      "count": 44,
+      "pmi": 2.5984
+    },
+    {
+      "pair": "M089·M211",
+      "count": 42,
+      "pmi": 2.3749
+    },
+    {
+      "pair": "M099·M087",
+      "count": 42,
+      "pmi": 1.1546
+    },
+    {
+      "pair": "M249·M169",
+      "count": 42,
+      "pmi": 2.9712
+    },
+    {
+      "pair": "M059·M342",
+      "count": 41,
+      "pmi": 0.4407
+    },
+    {
+      "pair": "M149·M342",
+      "count": 41,
+      "pmi": 1.7975
+    },
+    {
+      "pair": "M162·M342",
+      "count": 40,
+      "pmi": 0.9189
+    },
+    {
+      "pair": "M087·M342",
+      "count": 40,
+      "pmi": 0.3865
+    },
+    {
+      "pair": "M099·M065",
+      "count": 39,
+      "pmi": 1.6079
+    },
+    {
+      "pair": "M053·M342",
+      "count": 38,
+      "pmi": 1.3556
+    },
+    {
+      "pair": "M130·M149",
+      "count": 36,
+      "pmi": 4.757
+    },
+    {
+      "pair": "M124·M169",
+      "count": 29,
+      "pmi": 3.3515
+    },
+    {
+      "pair": "M067·M072",
+      "count": 26,
+      "pmi": 2.187
+    },
+    {
+      "pair": "M067·M211",
+      "count": 26,
+      "pmi": 2.001
+    },
+    {
+      "pair": "M194·M342",
+      "count": 26,
+      "pmi": 1.7359
+    },
+    {
+      "pair": "M072·M211",
+      "count": 25,
+      "pmi": 2.358
+    },
+    {
+      "pair": "M099·M102",
+      "count": 24,
+      "pmi": 1.5229
+    },
+    {
+      "pair": "M015·M176",
+      "count": 24,
+      "pmi": 2.3233
+    },
+    {
+      "pair": "M067·M342",
+      "count": 22,
+      "pmi": 0.0346
+    },
+    {
+      "pair": "M072·M336",
+      "count": 20,
+      "pmi": 2.1033
+    },
+    {
+      "pair": "M193·M342",
+      "count": 20,
+      "pmi": 2.3559
+    },
+    {
+      "pair": "M102·M059",
+      "count": 20,
+      "pmi": 1.9941
+    },
+    {
+      "pair": "M102·M162",
+      "count": 19,
+      "pmi": 2.4456
+    },
+    {
+      "pair": "M065·M336",
+      "count": 19,
+      "pmi": 1.9373
+    },
+    {
+      "pair": "M099·M072",
+      "count": 19,
+      "pmi": 1.0035
+    },
+    {
+      "pair": "M065·M072",
+      "count": 18,
+      "pmi": 2.1008
+    },
+    {
+      "pair": "M169·M099",
+      "count": 18,
+      "pmi": 0.7407
+    },
+    {
+      "pair": "M155·M211",
+      "count": 17,
+      "pmi": 3.3207
+    },
+    {
+      "pair": "M099·M070",
+      "count": 17,
+      "pmi": 1.8141
+    },
+    {
+      "pair": "M102·M015",
+      "count": 17,
+      "pmi": 2.9065
+    },
+    {
+      "pair": "M099·M048",
+      "count": 17,
+      "pmi": 1.0218
+    },
+    {
+      "pair": "M065·M249",
+      "count": 17,
+      "pmi": 2.1607
+    },
+    {
+      "pair": "M099·M053",
+      "count": 16,
+      "pmi": 1.2098
+    },
+    {
+      "pair": "M053·M067",
+      "count": 16,
+      "pmi": 2.0797
+    },
+    {
+      "pair": "M048·M008",
+      "count": 15,
+      "pmi": 2.7561
+    },
+    {
+      "pair": "M099·M059",
+      "count": 15,
+      "pmi": 0.1544
+    },
+    {
+      "pair": "M065·M059",
+      "count": 14,
+      "pmi": 1.2368
+    },
+    {
+      "pair": "M051·M342",
+      "count": 14,
+      "pmi": 0.6026
+    },
+    {
+      "pair": "M099·M086",
+      "count": 14,
+      "pmi": 1.0368
+    },
+    {
+      "pair": "M293·M342",
+      "count": 14,
+      "pmi": 0.3021
+    },
+    {
+      "pair": "M124·M342",
+      "count": 14,
+      "pmi": 0.8466
+    },
+    {
+      "pair": "M059·M099",
+      "count": 13,
+      "pmi": 0.0113
+    },
+    {
+      "pair": "M087·M060",
+      "count": 13,
+      "pmi": 3.2276
+    },
+    {
+      "pair": "M001·M001",
+      "count": 13,
+      "pmi": 2.6627
+    },
+    {
+      "pair": "M086·M015",
+      "count": 12,
+      "pmi": 2.611
+    },
+    {
+      "pair": "M099·M124",
+      "count": 12,
+      "pmi": 1.4117
+    },
+    {
+      "pair": "M017·M293",
+      "count": 12,
+      "pmi": 2.8892
+    },
+    {
+      "pair": "M062·M342",
+      "count": 12,
+      "pmi": 2.5383
+    },
+    {
+      "pair": "M125·M059",
+      "count": 12,
+      "pmi": 3.5055
+    },
+    {
+      "pair": "M099·M336",
+      "count": 11,
+      "pmi": 0.2393
+    },
+    {
+      "pair": "M087·M249",
+      "count": 11,
+      "pmi": 1.198
+    },
+    {
+      "pair": "M067·M336",
+      "count": 11,
+      "pmi": 1.1092
+    },
+    {
+      "pair": "M059·M067",
+      "count": 11,
+      "pmi": 0.7142
+    },
+    {
+      "pair": "M018·M211",
+      "count": 11,
+      "pmi": 3.6445
+    },
+    {
+      "pair": "M059·M048",
+      "count": 11,
+      "pmi": 1.24
+    },
+    {
+      "pair": "M211·M176",
+      "count": 11,
+      "pmi": 0.8949
+    },
+    {
+      "pair": "M070·M211",
+      "count": 10,
+      "pmi": 2.3636
+    },
+    {
+      "pair": "M099·M175",
+      "count": 10,
+      "pmi": 1.6481
+    },
+    {
+      "pair": "M086·M099",
+      "count": 10,
+      "pmi": 0.7003
+    },
+    {
+      "pair": "M067·M008",
+      "count": 10,
+      "pmi": 1.8248
+    },
+    {
+      "pair": "M328·M328",
+      "count": 10,
+      "pmi": 0.6238
+    },
+    {
+      "pair": "M087·M169",
+      "count": 10,
+      "pmi": 0.7769
+    },
+    {
+      "pair": "M072·M048",
+      "count": 10,
+      "pmi": 1.7573
+    },
+    {
+      "pair": "M149·M249",
+      "count": 10,
+      "pmi": 2.489
+    },
+    {
+      "pair": "M124·M025",
+      "count": 9,
+      "pmi": 3.6968
+    },
+    {
+      "pair": "M293·M051",
+      "count": 9,
+      "pmi": 2.4694
+    },
+    {
+      "pair": "M176·M176",
+      "count": 9,
+      "pmi": 0.2381
+    },
+    {
+      "pair": "M059·M336",
+      "count": 9,
+      "pmi": 0.6921
+    },
+    {
+      "pair": "M336·M051",
+      "count": 9,
+      "pmi": 1.9285
+    },
+    {
+      "pair": "M375·M375",
+      "count": 9,
+      "pmi": 4.0169
+    },
+    {
+      "pair": "M153·M153",
+      "count": 9,
+      "pmi": 5.7373
+    },
+    {
+      "pair": "M162·M099",
+      "count": 9,
+      "pmi": 0.1465
+    },
+    {
+      "pair": "M249·M065",
+      "count": 9,
+      "pmi": 1.5247
+    },
+    {
+      "pair": "M002·M012",
+      "count": 8,
+      "pmi": 4.7488
+    },
+    {
+      "pair": "M391·M391",
+      "count": 8,
+      "pmi": 1.3826
+    },
+    {
+      "pair": "M087·M155",
+      "count": 8,
+      "pmi": 2.1108
+    },
+    {
+      "pair": "M028·M162",
+      "count": 8,
+      "pmi": 2.6432
+    },
+    {
+      "pair": "M176·M211",
+      "count": 8,
+      "pmi": 0.5764
+    },
+    {
+      "pair": "M192·M347",
+      "count": 8,
+      "pmi": 4.0873
+    },
+    {
+      "pair": "M375·M342",
+      "count": 8,
+      "pmi": 0.6665
+    },
+    {
+      "pair": "M067·M070",
+      "count": 8,
+      "pmi": 1.9302
+    },
+    {
+      "pair": "M025·M176",
+      "count": 8,
+      "pmi": 2.0691
+    },
+    {
+      "pair": "M070·M336",
+      "count": 8,
+      "pmi": 2.1088
+    },
+    {
+      "pair": "M211·M087",
+      "count": 8,
+      "pmi": 0.5764
+    }
+  ],
+  "centrality_ranked": [
+    {
+      "sign": "M099",
+      "reading": "kol/koḷ",
+      "confidence": "HIGH",
+      "slot": "medial",
+      "betweenness_w": 0.14603,
+      "betweenness_uw": 0.076762,
+      "out_degree": 31,
+      "in_degree": 16
+    },
+    {
+      "sign": "M059",
+      "reading": "ēḷ/eḷ",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.104835,
+      "betweenness_uw": 0.055448,
+      "out_degree": 19,
+      "in_degree": 10
+    },
+    {
+      "sign": "M162",
+      "reading": "il/iḷ",
+      "confidence": "HIGH",
+      "slot": "medial",
+      "betweenness_w": 0.071541,
+      "betweenness_uw": 0.013688,
+      "out_degree": 8,
+      "in_degree": 10
+    },
+    {
+      "sign": "M012",
+      "reading": "oṉṟu/1",
+      "confidence": "HIGH",
+      "slot": "terminal",
+      "betweenness_w": 0.065448,
+      "betweenness_uw": 0.036665,
+      "out_degree": 2,
+      "in_degree": 10
+    },
+    {
+      "sign": "M328",
+      "reading": "ā/āl",
+      "confidence": "HIGH",
+      "slot": "medial",
+      "betweenness_w": 0.064033,
+      "betweenness_uw": 0.040405,
+      "out_degree": 4,
+      "in_degree": 5
+    },
+    {
+      "sign": "M087",
+      "reading": "veL",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.056525,
+      "betweenness_uw": 0.049341,
+      "out_degree": 11,
+      "in_degree": 6
+    },
+    {
+      "sign": "M051",
+      "reading": "pū/puḷ",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.054442,
+      "betweenness_uw": 0.010508,
+      "out_degree": 6,
+      "in_degree": 7
+    },
+    {
+      "sign": "M342",
+      "reading": "ay/ā",
+      "confidence": "HIGH",
+      "slot": "terminal",
+      "betweenness_w": 0.052673,
+      "betweenness_uw": 0.033228,
+      "out_degree": 3,
+      "in_degree": 27
+    },
+    {
+      "sign": "M336",
+      "reading": "iṉ/locative",
+      "confidence": "HIGH",
+      "slot": "terminal",
+      "betweenness_w": 0.041785,
+      "betweenness_uw": 0.016693,
+      "out_degree": 9,
+      "in_degree": 12
+    },
+    {
+      "sign": "M211",
+      "reading": "kol",
+      "confidence": "HIGH",
+      "slot": "initial",
+      "betweenness_w": 0.037264,
+      "betweenness_uw": 0.039157,
+      "out_degree": 2,
+      "in_degree": 12
+    },
+    {
+      "sign": "M176",
+      "reading": "an/aṇ",
+      "confidence": "HIGH",
+      "slot": "terminal",
+      "betweenness_w": 0.033176,
+      "betweenness_uw": 0.03416,
+      "out_degree": 2,
+      "in_degree": 18
+    },
+    {
+      "sign": "M072",
+      "reading": "mā",
+      "confidence": "MEDIUM",
+      "slot": "initial",
+      "betweenness_w": 0.025079,
+      "betweenness_uw": 0.007855,
+      "out_degree": 15,
+      "in_degree": 6
+    },
+    {
+      "sign": "M053",
+      "reading": "mi",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.015487,
+      "betweenness_uw": 0.002315,
+      "out_degree": 8,
+      "in_degree": 7
+    },
+    {
+      "sign": "M089",
+      "reading": "tu/tū",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.014426,
+      "betweenness_uw": 0.005144,
+      "out_degree": 10,
+      "in_degree": 5
+    },
+    {
+      "sign": "M017",
+      "reading": "kai",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.013247,
+      "betweenness_uw": 0.013893,
+      "out_degree": 9,
+      "in_degree": 5
+    },
+    {
+      "sign": "M067",
+      "reading": "kōṭṭāṉ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.01305,
+      "betweenness_uw": 0.008513,
+      "out_degree": 15,
+      "in_degree": 7
+    },
+    {
+      "sign": "M048",
+      "reading": "mu/muṉ",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.006132,
+      "betweenness_uw": 0.010052,
+      "out_degree": 6,
+      "in_degree": 8
+    },
+    {
+      "sign": "M267",
+      "reading": "iN/in (genitive of)",
+      "confidence": "MEDIUM",
+      "slot": "medial",
+      "betweenness_w": 0.005739,
+      "betweenness_uw": 0.006818,
+      "out_degree": 2,
+      "in_degree": 3
+    },
+    {
+      "sign": "M249",
+      "reading": "tii",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.003498,
+      "betweenness_uw": 0.014407,
+      "out_degree": 6,
+      "in_degree": 10
+    },
+    {
+      "sign": "M293",
+      "reading": "ta",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.003459,
+      "betweenness_uw": 0.002128,
+      "out_degree": 6,
+      "in_degree": 3
+    },
+    {
+      "sign": "M102",
+      "reading": "ni",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.003381,
+      "betweenness_uw": 0.007424,
+      "out_degree": 8,
+      "in_degree": 3
+    },
+    {
+      "sign": "M391",
+      "reading": "ka/kaṇ",
+      "confidence": "HIGH",
+      "slot": "terminal",
+      "betweenness_w": 0.003145,
+      "betweenness_uw": 0.004516,
+      "out_degree": 5,
+      "in_degree": 4
+    },
+    {
+      "sign": "M002",
+      "reading": "kuṉ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.003066,
+      "betweenness_uw": 0.003156,
+      "out_degree": 3,
+      "in_degree": 2
+    },
+    {
+      "sign": "M058",
+      "reading": "ke",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.002752,
+      "betweenness_uw": 0.002752,
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "sign": "M015",
+      "reading": "mā",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.002712,
+      "betweenness_uw": 0.002775,
+      "out_degree": 1,
+      "in_degree": 6
+    },
+    {
+      "sign": "M081",
+      "reading": "ve",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.002712,
+      "betweenness_uw": 0.003246,
+      "out_degree": 3,
+      "in_degree": 2
+    },
+    {
+      "sign": "M127",
+      "reading": "vē",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.002712,
+      "betweenness_uw": 0.002889,
+      "out_degree": 3,
+      "in_degree": 5
+    },
+    {
+      "sign": "M252",
+      "reading": "kur",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.002712,
+      "betweenness_uw": 0.004703,
+      "out_degree": 3,
+      "in_degree": 4
+    },
+    {
+      "sign": "M347",
+      "reading": "ka",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.002673,
+      "betweenness_uw": 0.002727,
+      "out_degree": 1,
+      "in_degree": 8
+    },
+    {
+      "sign": "M028",
+      "reading": "cōḻ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.001887,
+      "betweenness_uw": 0.015707,
+      "out_degree": 9,
+      "in_degree": 4
+    },
+    {
+      "sign": "M169",
+      "reading": "rā",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.001572,
+      "betweenness_uw": 0.006629,
+      "out_degree": 2,
+      "in_degree": 8
+    },
+    {
+      "sign": "M086",
+      "reading": "oru",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.001061,
+      "betweenness_uw": 0.003478,
+      "out_degree": 12,
+      "in_degree": 2
+    },
+    {
+      "sign": "M025",
+      "reading": "cem",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.000865,
+      "betweenness_uw": 0.000432,
+      "out_degree": 3,
+      "in_degree": 3
+    },
+    {
+      "sign": "M065",
+      "reading": "kuTam",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.000708,
+      "betweenness_uw": 0.003898,
+      "out_degree": 12,
+      "in_degree": 6
+    },
+    {
+      "sign": "M001",
+      "reading": "tōḷ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.000472,
+      "betweenness_uw": 7.6e-05,
+      "out_degree": 2,
+      "in_degree": 5
+    },
+    {
+      "sign": "M149",
+      "reading": "or",
+      "confidence": "MEDIUM",
+      "slot": "medial",
+      "betweenness_w": 0.000432,
+      "betweenness_uw": 0.002524,
+      "out_degree": 3,
+      "in_degree": 3
+    },
+    {
+      "sign": "M008",
+      "reading": "erumai",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.000236,
+      "betweenness_uw": 0.002117,
+      "out_degree": 2,
+      "in_degree": 7
+    },
+    {
+      "sign": "M124",
+      "reading": "kuTam",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.000118,
+      "betweenness_uw": 0.000956,
+      "out_degree": 5,
+      "in_degree": 4
+    },
+    {
+      "sign": "M003",
+      "reading": "kalam",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M004",
+      "reading": "kēḷ",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M005",
+      "reading": "kōṉ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M006",
+      "reading": "puli",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M007",
+      "reading": "aaL",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M009",
+      "reading": "āṇ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 3e-05,
+      "out_degree": 2,
+      "in_degree": 1
+    },
+    {
+      "sign": "M010",
+      "reading": "paṭ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M011",
+      "reading": "kaḷiṟu",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M013",
+      "reading": "nakaram",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M014",
+      "reading": "tiru",
+      "confidence": "HIGH",
+      "slot": "initial",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "sign": "M016",
+      "reading": "kaḷiṟu",
+      "confidence": "HIGH",
+      "slot": "initial",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M018",
+      "reading": "nēr",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.000676,
+      "out_degree": 3,
+      "in_degree": 2
+    },
+    {
+      "sign": "M019",
+      "reading": "ampu",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.001234,
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "sign": "M020",
+      "reading": "kuṉ",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M021",
+      "reading": "kō",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M022",
+      "reading": "kalam",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M023",
+      "reading": "vaḷ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M024",
+      "reading": "nē",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M026",
+      "reading": "mā",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M027",
+      "reading": "māṟ",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M029",
+      "reading": "yānai",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M030",
+      "reading": "kō",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M031",
+      "reading": "kai",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M032",
+      "reading": "koL",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M033",
+      "reading": "puli",
+      "confidence": "HIGH",
+      "slot": "initial",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M034",
+      "reading": "tōḷ",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M035",
+      "reading": "po",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M036",
+      "reading": "tiru",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "sign": "M037",
+      "reading": "kēḷ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M038",
+      "reading": "pōr",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "sign": "M039",
+      "reading": "āṉai",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M040",
+      "reading": "ri",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.000109,
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "sign": "M041",
+      "reading": "pēr",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 6.9e-05,
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "sign": "M042",
+      "reading": "vaN",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M043",
+      "reading": "mu",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M044",
+      "reading": "ku",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M045",
+      "reading": "yānai",
+      "confidence": "HIGH",
+      "slot": "initial",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M046",
+      "reading": "kaL",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M047",
+      "reading": "min/mīn",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.000212,
+      "out_degree": 2,
+      "in_degree": 2
+    },
+    {
+      "sign": "M049",
+      "reading": "pu",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M050",
+      "reading": "pār",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M052",
+      "reading": "ta",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M054",
+      "reading": "mi",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 2,
+      "in_degree": 3
+    },
+    {
+      "sign": "M055",
+      "reading": "miN3",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M056",
+      "reading": "miN4",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M057",
+      "reading": "māṭu",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M060",
+      "reading": "kāṇṭāmirukam",
+      "confidence": "HIGH",
+      "slot": "initial",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 4.5e-05,
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "sign": "M061",
+      "reading": "ka",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M062",
+      "reading": "erutu",
+      "confidence": "HIGH",
+      "slot": "initial",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 4.9e-05,
+      "out_degree": 1,
+      "in_degree": 3
+    },
+    {
+      "sign": "M063",
+      "reading": "mutalai",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "sign": "M064",
+      "reading": "va",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M066",
+      "reading": "cōḻ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.000289,
+      "out_degree": 2,
+      "in_degree": 2
+    },
+    {
+      "sign": "M068",
+      "reading": "maṟi",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "sign": "M069",
+      "reading": "nēr",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M070",
+      "reading": "vēl",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.001277,
+      "out_degree": 6,
+      "in_degree": 5
+    },
+    {
+      "sign": "M071",
+      "reading": "nal",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "sign": "M073",
+      "reading": "kōṉ",
+      "confidence": "HIGH",
+      "slot": "initial",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M074",
+      "reading": "ker",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M075",
+      "reading": "māṟ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 4.5e-05,
+      "out_degree": 1,
+      "in_degree": 2
+    },
+    {
+      "sign": "M076",
+      "reading": "naN",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "sign": "M077",
+      "reading": "nal",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M078",
+      "reading": "cēr",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 8e-06,
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "sign": "M079",
+      "reading": "ir",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M080",
+      "reading": "vēṅkai",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M082",
+      "reading": "pa",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M088",
+      "reading": "muu(n)-",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M090",
+      "reading": "aintu",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M091",
+      "reading": "aru",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M092",
+      "reading": "elu",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M093",
+      "reading": "eTTu",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M094",
+      "reading": "onpatu",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.00018,
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "sign": "M100",
+      "reading": "maa",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.001143,
+      "out_degree": 3,
+      "in_degree": 2
+    },
+    {
+      "sign": "M103",
+      "reading": "kol",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "sign": "M107",
+      "reading": "ko",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M108",
+      "reading": "kaL",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M117",
+      "reading": "ar",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M118",
+      "reading": "car",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M125",
+      "reading": "vil",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M128",
+      "reading": "kaṇ",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M130",
+      "reading": "mui",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.000348,
+      "out_degree": 3,
+      "in_degree": 1
+    },
+    {
+      "sign": "M145",
+      "reading": "miṭ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M153",
+      "reading": "pu",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 3e-05,
+      "out_degree": 2,
+      "in_degree": 2
+    },
+    {
+      "sign": "M155",
+      "reading": "ka",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.002574,
+      "out_degree": 6,
+      "in_degree": 5
+    },
+    {
+      "sign": "M163",
+      "reading": "il",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M164",
+      "reading": "il",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M165",
+      "reading": "cul",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M168",
+      "reading": "inci",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M175",
+      "reading": "katir",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.000439,
+      "out_degree": 2,
+      "in_degree": 3
+    },
+    {
+      "sign": "M177",
+      "reading": "na",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M178",
+      "reading": "i",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M185",
+      "reading": "pul",
+      "confidence": "MEDIUM",
+      "slot": "medial",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M192",
+      "reading": "ṇā",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.000151,
+      "out_degree": 2,
+      "in_degree": 1
+    },
+    {
+      "sign": "M193",
+      "reading": "ḷā",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 9e-05,
+      "out_degree": 2,
+      "in_degree": 1
+    },
+    {
+      "sign": "M194",
+      "reading": "kaṭ",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.00183,
+      "out_degree": 5,
+      "in_degree": 4
+    },
+    {
+      "sign": "M198",
+      "reading": "co",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M202",
+      "reading": "can",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M220",
+      "reading": "al",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M221",
+      "reading": "al",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M222",
+      "reading": "kur",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 3
+    },
+    {
+      "sign": "M231",
+      "reading": "kur",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M233",
+      "reading": "ūr",
+      "confidence": "HIGH",
+      "slot": "medial",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.000181,
+      "out_degree": 2,
+      "in_degree": 2
+    },
+    {
+      "sign": "M235",
+      "reading": "vē",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M237",
+      "reading": "ce",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "sign": "M261",
+      "reading": "muruku",
+      "confidence": "HIGH",
+      "slot": "initial",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.003626,
+      "out_degree": 2,
+      "in_degree": 3
+    },
+    {
+      "sign": "M262",
+      "reading": "i",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M264",
+      "reading": "peN",
+      "confidence": "HIGH",
+      "slot": "medial",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M272",
+      "reading": "ma",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M281",
+      "reading": "piLLai",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M305",
+      "reading": "ōṭu/comitative",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M311",
+      "reading": "vaTamiin",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M330",
+      "reading": "can",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M332",
+      "reading": "intu",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M350",
+      "reading": "vē",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M351",
+      "reading": "vī",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M355",
+      "reading": "lu",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M362",
+      "reading": "aṇi",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M367",
+      "reading": "am/neuter",
+      "confidence": "HIGH",
+      "slot": "terminal",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M374",
+      "reading": "kul",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M375",
+      "reading": "taṇ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.00241,
+      "out_degree": 5,
+      "in_degree": 4
+    },
+    {
+      "sign": "M383",
+      "reading": "kol",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M398",
+      "reading": "kuṟi",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M401",
+      "reading": "vē",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M416",
+      "reading": "na",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    }
+  ],
+  "grammar_candidates": [
+    {
+      "sign": "M099",
+      "reading": "kol/koḷ",
+      "confidence": "HIGH",
+      "slot": "medial",
+      "betweenness_w": 0.14603,
+      "betweenness_uw": 0.076762,
+      "out_degree": 31,
+      "in_degree": 16
+    },
+    {
+      "sign": "M059",
+      "reading": "ēḷ/eḷ",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.104835,
+      "betweenness_uw": 0.055448,
+      "out_degree": 19,
+      "in_degree": 10
+    },
+    {
+      "sign": "M162",
+      "reading": "il/iḷ",
+      "confidence": "HIGH",
+      "slot": "medial",
+      "betweenness_w": 0.071541,
+      "betweenness_uw": 0.013688,
+      "out_degree": 8,
+      "in_degree": 10
+    },
+    {
+      "sign": "M012",
+      "reading": "oṉṟu/1",
+      "confidence": "HIGH",
+      "slot": "terminal",
+      "betweenness_w": 0.065448,
+      "betweenness_uw": 0.036665,
+      "out_degree": 2,
+      "in_degree": 10
+    },
+    {
+      "sign": "M328",
+      "reading": "ā/āl",
+      "confidence": "HIGH",
+      "slot": "medial",
+      "betweenness_w": 0.064033,
+      "betweenness_uw": 0.040405,
+      "out_degree": 4,
+      "in_degree": 5
+    },
+    {
+      "sign": "M087",
+      "reading": "veL",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.056525,
+      "betweenness_uw": 0.049341,
+      "out_degree": 11,
+      "in_degree": 6
+    },
+    {
+      "sign": "M051",
+      "reading": "pū/puḷ",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.054442,
+      "betweenness_uw": 0.010508,
+      "out_degree": 6,
+      "in_degree": 7
+    },
+    {
+      "sign": "M342",
+      "reading": "ay/ā",
+      "confidence": "HIGH",
+      "slot": "terminal",
+      "betweenness_w": 0.052673,
+      "betweenness_uw": 0.033228,
+      "out_degree": 3,
+      "in_degree": 27
+    },
+    {
+      "sign": "M336",
+      "reading": "iṉ/locative",
+      "confidence": "HIGH",
+      "slot": "terminal",
+      "betweenness_w": 0.041785,
+      "betweenness_uw": 0.016693,
+      "out_degree": 9,
+      "in_degree": 12
+    },
+    {
+      "sign": "M211",
+      "reading": "kol",
+      "confidence": "HIGH",
+      "slot": "initial",
+      "betweenness_w": 0.037264,
+      "betweenness_uw": 0.039157,
+      "out_degree": 2,
+      "in_degree": 12
+    },
+    {
+      "sign": "M176",
+      "reading": "an/aṇ",
+      "confidence": "HIGH",
+      "slot": "terminal",
+      "betweenness_w": 0.033176,
+      "betweenness_uw": 0.03416,
+      "out_degree": 2,
+      "in_degree": 18
+    },
+    {
+      "sign": "M072",
+      "reading": "mā",
+      "confidence": "MEDIUM",
+      "slot": "initial",
+      "betweenness_w": 0.025079,
+      "betweenness_uw": 0.007855,
+      "out_degree": 15,
+      "in_degree": 6
+    },
+    {
+      "sign": "M053",
+      "reading": "mi",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.015487,
+      "betweenness_uw": 0.002315,
+      "out_degree": 8,
+      "in_degree": 7
+    },
+    {
+      "sign": "M089",
+      "reading": "tu/tū",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.014426,
+      "betweenness_uw": 0.005144,
+      "out_degree": 10,
+      "in_degree": 5
+    },
+    {
+      "sign": "M017",
+      "reading": "kai",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.013247,
+      "betweenness_uw": 0.013893,
+      "out_degree": 9,
+      "in_degree": 5
+    },
+    {
+      "sign": "M067",
+      "reading": "kōṭṭāṉ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.01305,
+      "betweenness_uw": 0.008513,
+      "out_degree": 15,
+      "in_degree": 7
+    },
+    {
+      "sign": "M048",
+      "reading": "mu/muṉ",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.006132,
+      "betweenness_uw": 0.010052,
+      "out_degree": 6,
+      "in_degree": 8
+    },
+    {
+      "sign": "M267",
+      "reading": "iN/in (genitive of)",
+      "confidence": "MEDIUM",
+      "slot": "medial",
+      "betweenness_w": 0.005739,
+      "betweenness_uw": 0.006818,
+      "out_degree": 2,
+      "in_degree": 3
+    },
+    {
+      "sign": "M249",
+      "reading": "tii",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.003498,
+      "betweenness_uw": 0.014407,
+      "out_degree": 6,
+      "in_degree": 10
+    },
+    {
+      "sign": "M293",
+      "reading": "ta",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.003459,
+      "betweenness_uw": 0.002128,
+      "out_degree": 6,
+      "in_degree": 3
+    },
+    {
+      "sign": "M102",
+      "reading": "ni",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.003381,
+      "betweenness_uw": 0.007424,
+      "out_degree": 8,
+      "in_degree": 3
+    },
+    {
+      "sign": "M391",
+      "reading": "ka/kaṇ",
+      "confidence": "HIGH",
+      "slot": "terminal",
+      "betweenness_w": 0.003145,
+      "betweenness_uw": 0.004516,
+      "out_degree": 5,
+      "in_degree": 4
+    },
+    {
+      "sign": "M002",
+      "reading": "kuṉ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.003066,
+      "betweenness_uw": 0.003156,
+      "out_degree": 3,
+      "in_degree": 2
+    },
+    {
+      "sign": "M058",
+      "reading": "ke",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.002752,
+      "betweenness_uw": 0.002752,
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "sign": "M015",
+      "reading": "mā",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.002712,
+      "betweenness_uw": 0.002775,
+      "out_degree": 1,
+      "in_degree": 6
+    },
+    {
+      "sign": "M081",
+      "reading": "ve",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.002712,
+      "betweenness_uw": 0.003246,
+      "out_degree": 3,
+      "in_degree": 2
+    },
+    {
+      "sign": "M127",
+      "reading": "vē",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.002712,
+      "betweenness_uw": 0.002889,
+      "out_degree": 3,
+      "in_degree": 5
+    },
+    {
+      "sign": "M252",
+      "reading": "kur",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.002712,
+      "betweenness_uw": 0.004703,
+      "out_degree": 3,
+      "in_degree": 4
+    },
+    {
+      "sign": "M347",
+      "reading": "ka",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.002673,
+      "betweenness_uw": 0.002727,
+      "out_degree": 1,
+      "in_degree": 8
+    },
+    {
+      "sign": "M028",
+      "reading": "cōḻ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.001887,
+      "betweenness_uw": 0.015707,
+      "out_degree": 9,
+      "in_degree": 4
+    },
+    {
+      "sign": "M169",
+      "reading": "rā",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.001572,
+      "betweenness_uw": 0.006629,
+      "out_degree": 2,
+      "in_degree": 8
+    },
+    {
+      "sign": "M086",
+      "reading": "oru",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.001061,
+      "betweenness_uw": 0.003478,
+      "out_degree": 12,
+      "in_degree": 2
+    },
+    {
+      "sign": "M025",
+      "reading": "cem",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.000865,
+      "betweenness_uw": 0.000432,
+      "out_degree": 3,
+      "in_degree": 3
+    },
+    {
+      "sign": "M065",
+      "reading": "kuTam",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.000708,
+      "betweenness_uw": 0.003898,
+      "out_degree": 12,
+      "in_degree": 6
+    },
+    {
+      "sign": "M001",
+      "reading": "tōḷ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.000472,
+      "betweenness_uw": 7.6e-05,
+      "out_degree": 2,
+      "in_degree": 5
+    },
+    {
+      "sign": "M149",
+      "reading": "or",
+      "confidence": "MEDIUM",
+      "slot": "medial",
+      "betweenness_w": 0.000432,
+      "betweenness_uw": 0.002524,
+      "out_degree": 3,
+      "in_degree": 3
+    },
+    {
+      "sign": "M008",
+      "reading": "erumai",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.000236,
+      "betweenness_uw": 0.002117,
+      "out_degree": 2,
+      "in_degree": 7
+    },
+    {
+      "sign": "M124",
+      "reading": "kuTam",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.000118,
+      "betweenness_uw": 0.000956,
+      "out_degree": 5,
+      "in_degree": 4
+    }
+  ],
+  "name_syllable_candidates": [
+    {
+      "sign": "M003",
+      "reading": "kalam",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M004",
+      "reading": "kēḷ",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M005",
+      "reading": "kōṉ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M006",
+      "reading": "puli",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M007",
+      "reading": "aaL",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M009",
+      "reading": "āṇ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 3e-05,
+      "out_degree": 2,
+      "in_degree": 1
+    },
+    {
+      "sign": "M010",
+      "reading": "paṭ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M011",
+      "reading": "kaḷiṟu",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M013",
+      "reading": "nakaram",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M014",
+      "reading": "tiru",
+      "confidence": "HIGH",
+      "slot": "initial",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "sign": "M016",
+      "reading": "kaḷiṟu",
+      "confidence": "HIGH",
+      "slot": "initial",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M018",
+      "reading": "nēr",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.000676,
+      "out_degree": 3,
+      "in_degree": 2
+    },
+    {
+      "sign": "M019",
+      "reading": "ampu",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.001234,
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "sign": "M020",
+      "reading": "kuṉ",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M021",
+      "reading": "kō",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M022",
+      "reading": "kalam",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M023",
+      "reading": "vaḷ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M024",
+      "reading": "nē",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M026",
+      "reading": "mā",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M027",
+      "reading": "māṟ",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M029",
+      "reading": "yānai",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M030",
+      "reading": "kō",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M031",
+      "reading": "kai",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M032",
+      "reading": "koL",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M033",
+      "reading": "puli",
+      "confidence": "HIGH",
+      "slot": "initial",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M034",
+      "reading": "tōḷ",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M035",
+      "reading": "po",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M036",
+      "reading": "tiru",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "sign": "M037",
+      "reading": "kēḷ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M038",
+      "reading": "pōr",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "sign": "M039",
+      "reading": "āṉai",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M040",
+      "reading": "ri",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.000109,
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "sign": "M041",
+      "reading": "pēr",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 6.9e-05,
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "sign": "M042",
+      "reading": "vaN",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M043",
+      "reading": "mu",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M044",
+      "reading": "ku",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M045",
+      "reading": "yānai",
+      "confidence": "HIGH",
+      "slot": "initial",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M046",
+      "reading": "kaL",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M047",
+      "reading": "min/mīn",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.000212,
+      "out_degree": 2,
+      "in_degree": 2
+    },
+    {
+      "sign": "M049",
+      "reading": "pu",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M050",
+      "reading": "pār",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M052",
+      "reading": "ta",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M054",
+      "reading": "mi",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 2,
+      "in_degree": 3
+    },
+    {
+      "sign": "M055",
+      "reading": "miN3",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M056",
+      "reading": "miN4",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M057",
+      "reading": "māṭu",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M060",
+      "reading": "kāṇṭāmirukam",
+      "confidence": "HIGH",
+      "slot": "initial",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 4.5e-05,
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "sign": "M061",
+      "reading": "ka",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M062",
+      "reading": "erutu",
+      "confidence": "HIGH",
+      "slot": "initial",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 4.9e-05,
+      "out_degree": 1,
+      "in_degree": 3
+    },
+    {
+      "sign": "M063",
+      "reading": "mutalai",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "sign": "M064",
+      "reading": "va",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M066",
+      "reading": "cōḻ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.000289,
+      "out_degree": 2,
+      "in_degree": 2
+    },
+    {
+      "sign": "M068",
+      "reading": "maṟi",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "sign": "M069",
+      "reading": "nēr",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M070",
+      "reading": "vēl",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.001277,
+      "out_degree": 6,
+      "in_degree": 5
+    },
+    {
+      "sign": "M071",
+      "reading": "nal",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "sign": "M073",
+      "reading": "kōṉ",
+      "confidence": "HIGH",
+      "slot": "initial",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M074",
+      "reading": "ker",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M075",
+      "reading": "māṟ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 4.5e-05,
+      "out_degree": 1,
+      "in_degree": 2
+    },
+    {
+      "sign": "M076",
+      "reading": "naN",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "sign": "M077",
+      "reading": "nal",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M078",
+      "reading": "cēr",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 8e-06,
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "sign": "M079",
+      "reading": "ir",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M080",
+      "reading": "vēṅkai",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M082",
+      "reading": "pa",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M088",
+      "reading": "muu(n)-",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M090",
+      "reading": "aintu",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M091",
+      "reading": "aru",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M092",
+      "reading": "elu",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M093",
+      "reading": "eTTu",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M094",
+      "reading": "onpatu",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.00018,
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "sign": "M100",
+      "reading": "maa",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.001143,
+      "out_degree": 3,
+      "in_degree": 2
+    },
+    {
+      "sign": "M103",
+      "reading": "kol",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 1
+    },
+    {
+      "sign": "M107",
+      "reading": "ko",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M108",
+      "reading": "kaL",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M117",
+      "reading": "ar",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M118",
+      "reading": "car",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M125",
+      "reading": "vil",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M128",
+      "reading": "kaṇ",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M130",
+      "reading": "mui",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.000348,
+      "out_degree": 3,
+      "in_degree": 1
+    },
+    {
+      "sign": "M145",
+      "reading": "miṭ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M153",
+      "reading": "pu",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 3e-05,
+      "out_degree": 2,
+      "in_degree": 2
+    },
+    {
+      "sign": "M155",
+      "reading": "ka",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.002574,
+      "out_degree": 6,
+      "in_degree": 5
+    },
+    {
+      "sign": "M163",
+      "reading": "il",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M164",
+      "reading": "il",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M165",
+      "reading": "cul",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M168",
+      "reading": "inci",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M175",
+      "reading": "katir",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.000439,
+      "out_degree": 2,
+      "in_degree": 3
+    },
+    {
+      "sign": "M177",
+      "reading": "na",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M178",
+      "reading": "i",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M185",
+      "reading": "pul",
+      "confidence": "MEDIUM",
+      "slot": "medial",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M192",
+      "reading": "ṇā",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.000151,
+      "out_degree": 2,
+      "in_degree": 1
+    },
+    {
+      "sign": "M193",
+      "reading": "ḷā",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 9e-05,
+      "out_degree": 2,
+      "in_degree": 1
+    },
+    {
+      "sign": "M194",
+      "reading": "kaṭ",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.00183,
+      "out_degree": 5,
+      "in_degree": 4
+    },
+    {
+      "sign": "M198",
+      "reading": "co",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M202",
+      "reading": "can",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M220",
+      "reading": "al",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M221",
+      "reading": "al",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M222",
+      "reading": "kur",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 3
+    },
+    {
+      "sign": "M231",
+      "reading": "kur",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M233",
+      "reading": "ūr",
+      "confidence": "HIGH",
+      "slot": "medial",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.000181,
+      "out_degree": 2,
+      "in_degree": 2
+    },
+    {
+      "sign": "M235",
+      "reading": "vē",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M237",
+      "reading": "ce",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 1
+    },
+    {
+      "sign": "M261",
+      "reading": "muruku",
+      "confidence": "HIGH",
+      "slot": "initial",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.003626,
+      "out_degree": 2,
+      "in_degree": 3
+    },
+    {
+      "sign": "M262",
+      "reading": "i",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M264",
+      "reading": "peN",
+      "confidence": "HIGH",
+      "slot": "medial",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M272",
+      "reading": "ma",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M281",
+      "reading": "piLLai",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M305",
+      "reading": "ōṭu/comitative",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M311",
+      "reading": "vaTamiin",
+      "confidence": "HIGH",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M330",
+      "reading": "can",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M332",
+      "reading": "intu",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M350",
+      "reading": "vē",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M351",
+      "reading": "vī",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M355",
+      "reading": "lu",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M362",
+      "reading": "aṇi",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M367",
+      "reading": "am/neuter",
+      "confidence": "HIGH",
+      "slot": "terminal",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 1,
+      "in_degree": 0
+    },
+    {
+      "sign": "M374",
+      "reading": "kul",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M375",
+      "reading": "taṇ",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.00241,
+      "out_degree": 5,
+      "in_degree": 4
+    },
+    {
+      "sign": "M383",
+      "reading": "kol",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M398",
+      "reading": "kuṟi",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M401",
+      "reading": "vē",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    },
+    {
+      "sign": "M416",
+      "reading": "na",
+      "confidence": "MEDIUM",
+      "slot": "unknown",
+      "betweenness_w": 0.0,
+      "betweenness_uw": 0.0,
+      "out_degree": 0,
+      "in_degree": 0
+    }
+  ],
+  "key_findings": [
+    "M099 rank: 1",
+    "M267 rank: 18",
+    "Grammar candidates (BC>0): 38",
+    "Name-syllable candidates (BC=0): 123"
+  ]
+}

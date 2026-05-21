@@ -1,7 +1,7 @@
 {
   "document_id": "yadav_2010_ngrams",
   "title": "Statistical Analysis of the Indus Script Using n-Grams",
-  "extraction_date": "2026-05-21T12:48:22.323315",
+  "extraction_date": "2026-05-21T13:24:23.427436",
   "total_claims": 2,
   "auto_extracted": 2,
   "manually_curated": 2,
@@ -16,7 +16,7 @@
       "falsification_condition": "If frequency distribution deviates from Zipf-Mandelbrot law.",
       "glossa_lab_evidence": "Phase-43: V3 Zipf exponent ~1.35 (super-Zipfian) [VERIFIED]",
       "confidence_in_source": 0.95,
-      "extracted_at": "2026-05-21T12:48:22.323315"
+      "extracted_at": "2026-05-21T13:24:23.427436"
     },
     {
       "claim_id": "yadav_2010_ngrams_manual_002",
@@ -27,7 +27,7 @@
       "testability": "directly_testable",
       "glossa_lab_evidence": "Phase-43: 20 TERMINAL_STRONG + 40 INITIAL_STRONG signs identified in V3 corpus [VERIFIED]",
       "confidence_in_source": 0.95,
-      "extracted_at": "2026-05-21T12:48:22.323315"
+      "extracted_at": "2026-05-21T13:24:23.427436"
     }
   ],
   "_citation": {

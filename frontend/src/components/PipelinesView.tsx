@@ -212,7 +212,7 @@ const PIPELINES_FALLBACK: Pipeline[] = [
     label: "Kandles Fingerprint",
     group: "Language Model Required",
     description:
-      "Merkur patent (US 2024/0248922) phonological colour fingerprint. Maps signs " +
+      "phonetic distribution (US ) phonological colour fingerprint. Maps signs " +
       "to 8 colour groups by initial sound. Compares grid distributions via cosine similarity. " +
       "Language-specific bias profiles for Luwian, Hurrian, Semitic, Dravidian.",
     inputs: "text_id, mode (color_code|grid|compare), profile",

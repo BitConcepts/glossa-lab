@@ -693,7 +693,7 @@ Test cases for Glossa Lab, linked to requirements in `docs/REQUIREMENTS.md`.
 **Type:** unit
 **Platform:** all
 **Automated:** planned
-**Patent:** [REDACTED-PATENT-PUB]
+**Patent:** 
 
 **Steps:**
 1. Map the word "cat" → expect group 1 (K/G/J/Ch), color Yellow
@@ -715,7 +715,7 @@ Test cases for Glossa Lab, linked to requirements in `docs/REQUIREMENTS.md`.
 **Type:** unit
 **Platform:** all
 **Automated:** planned
-**Patent:** [REDACTED-PATENT-PUB]
+**Patent:** 
 
 **Steps:**
 1. Input: "The cat sat on the mat"
@@ -733,7 +733,7 @@ Test cases for Glossa Lab, linked to requirements in `docs/REQUIREMENTS.md`.
 **Type:** unit
 **Platform:** all
 **Automated:** planned
-**Patent:** [REDACTED-PATENT-PUB]
+**Patent:** 
 
 **Steps:**
 1. Input: a text of 36 words
@@ -752,7 +752,7 @@ Test cases for Glossa Lab, linked to requirements in `docs/REQUIREMENTS.md`.
 **Type:** integration
 **Platform:** all
 **Automated:** planned
-**Patent:** [REDACTED-PATENT-PUB]
+**Patent:** 
 
 **Steps:**
 1. Generate Kandles grid for an English text
@@ -774,7 +774,7 @@ Test cases for Glossa Lab, linked to requirements in `docs/REQUIREMENTS.md`.
 **Type:** unit
 **Platform:** all
 **Automated:** planned
-**Patent:** [REDACTED-PATENT-PUB]
+**Patent:** 
 
 **Steps:**
 1. Upload a multi-section text
@@ -792,7 +792,7 @@ Test cases for Glossa Lab, linked to requirements in `docs/REQUIREMENTS.md`.
 **Type:** unit
 **Platform:** all
 **Automated:** planned
-**Patent:** [REDACTED-PATENT-PUB]
+**Patent:** 
 
 **Steps:**
 1. Create slices with different cluster tags
@@ -814,7 +814,7 @@ Test cases for Glossa Lab, linked to requirements in `docs/REQUIREMENTS.md`.
 **Type:** smoke
 **Platform:** all
 **Automated:** planned
-**Patent:** [REDACTED-PATENT-PUB]
+**Patent:** 
 
 **Steps:**
 1. Query the system for available semantic clusters
@@ -830,7 +830,7 @@ Test cases for Glossa Lab, linked to requirements in `docs/REQUIREMENTS.md`.
 **Type:** unit
 **Platform:** all
 **Automated:** planned
-**Patent:** [REDACTED-PATENT-PUB]
+**Patent:** 
 
 **Steps:**
 1. Upload a text segment

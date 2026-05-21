@@ -466,7 +466,7 @@
 
 ## REQ-KDL — Kandles Phonetic-Visual Analysis
 
-> Patent: [REDACTED-PATENT-PUB]
+> Patent: 
 
 - REQ-KDL-001: The Kandles phonetic mapping MUST assign each English word to the correct consonant group (1–7) and vowel-initial group (0) based on its initial phoneme.
 - REQ-KDL-002: Kandles color-coded text output MUST include the correct color name and hex code for each word.
@@ -477,7 +477,7 @@
 
 ## REQ-HTD — Hierarchical Text Decomposition
 
-> Patent: [REDACTED-PATENT-PUB]
+> Patent: 
 
 - REQ-HTD-001: Text decomposition MUST split a multi-section text into independently addressable slices each with a unique ID; individual slices MUST be retrievable by that ID.
 - REQ-HTD-002: Slice filtering MUST support single-cluster, multi-cluster AND, and multi-cluster OR predicates and return the correct subset in each case.
@@ -486,7 +486,7 @@
 
 ## REQ-SEM — Semantic Cluster Tagging
 
-> Patent: [REDACTED-PATENT-PUB]
+> Patent: 
 
 - REQ-SEM-001: The default semantic taxonomy MUST include at least: Culture, Nations, Nature, Religion, People, Spiritual.
 - REQ-SEM-002: Manual tags applied to a text segment MUST be persisted and returned correctly when the segment is retrieved.

@@ -1,0 +1,160 @@
+{
+  "miin_signs": [
+    "145",
+    "147",
+    "311",
+    "060",
+    "60",
+    "50",
+    "050",
+    "047",
+    "47"
+  ],
+  "miin_overall_rate": 0.101847,
+  "miin_total": 546,
+  "gulf_seals": [
+    {
+      "catalogue_id": "BM_122187_UR_seal_1",
+      "site": "Ur",
+      "n_signs": 5,
+      "real_signs_in_anchor": 0,
+      "coverage_pct": 0.0,
+      "has_miin": false,
+      "miin_count": 0,
+      "readable": false,
+      "phoneme_skeleton": "(all placeholders)"
+    },
+    {
+      "catalogue_id": "GADD_1",
+      "site": "Ur/Gulf",
+      "n_signs": 3,
+      "real_signs_in_anchor": 0,
+      "coverage_pct": 0.0,
+      "has_miin": false,
+      "miin_count": 0,
+      "readable": false,
+      "phoneme_skeleton": "(all placeholders)"
+    },
+    {
+      "catalogue_id": "GADD_2",
+      "site": "Ur/Gulf",
+      "n_signs": 4,
+      "real_signs_in_anchor": 0,
+      "coverage_pct": 0.0,
+      "has_miin": false,
+      "miin_count": 0,
+      "readable": false,
+      "phoneme_skeleton": "(all placeholders)"
+    },
+    {
+      "catalogue_id": "ASMAR_TA",
+      "site": "Eshnunna",
+      "n_signs": 3,
+      "real_signs_in_anchor": 0,
+      "coverage_pct": 0.0,
+      "has_miin": false,
+      "miin_count": 0,
+      "readable": false,
+      "phoneme_skeleton": "(all placeholders)"
+    },
+    {
+      "catalogue_id": "KISH_INDUS_1",
+      "site": "Kish",
+      "n_signs": 3,
+      "real_signs_in_anchor": 0,
+      "coverage_pct": 0.0,
+      "has_miin": false,
+      "miin_count": 0,
+      "readable": false,
+      "phoneme_skeleton": "(all placeholders)"
+    },
+    {
+      "catalogue_id": "SUSA_INDUS_1",
+      "site": "Susa",
+      "n_signs": 4,
+      "real_signs_in_anchor": 0,
+      "coverage_pct": 0.0,
+      "has_miin": false,
+      "miin_count": 0,
+      "readable": false,
+      "phoneme_skeleton": "(all placeholders)"
+    },
+    {
+      "catalogue_id": "LOTHAL_PERSIAN_GULF_SEAL",
+      "site": "Lothal",
+      "n_signs": 2,
+      "real_signs_in_anchor": 0,
+      "coverage_pct": 0.0,
+      "has_miin": false,
+      "miin_count": 0,
+      "readable": false,
+      "phoneme_skeleton": "(all placeholders)"
+    },
+    {
+      "catalogue_id": "FAILAKA_KM_1113",
+      "site": "Failaka",
+      "n_signs": 4,
+      "real_signs_in_anchor": 0,
+      "coverage_pct": 0.0,
+      "has_miin": false,
+      "miin_count": 0,
+      "readable": false,
+      "phoneme_skeleton": "(all placeholders)"
+    },
+    {
+      "catalogue_id": "VA_243_BERLIN",
+      "site": "Berlin/Gulf",
+      "n_signs": 5,
+      "real_signs_in_anchor": 0,
+      "coverage_pct": 0.0,
+      "has_miin": false,
+      "miin_count": 0,
+      "readable": false,
+      "phoneme_skeleton": "(all placeholders)"
+    },
+    {
+      "catalogue_id": "JALALABAD_FARS",
+      "site": "Fars",
+      "n_signs": 4,
+      "real_signs_in_anchor": 0,
+      "coverage_pct": 0.0,
+      "has_miin": false,
+      "miin_count": 0,
+      "readable": false,
+      "phoneme_skeleton": "(all placeholders)"
+    },
+    {
+      "catalogue_id": "JANABIYAH_LAURSEN_10",
+      "site": "Bahrain",
+      "n_signs": 7,
+      "real_signs_in_anchor": 7,
+      "coverage_pct": 100.0,
+      "has_miin": true,
+      "miin_count": 3,
+      "readable": true,
+      "phoneme_skeleton": "uncertain-miin-or (?)-miin-uncertain-uncertain-miin"
+    }
+  ],
+  "janabiyah": {
+    "catalogue_id": "JANABIYAH_LAURSEN_10",
+    "site": "Bahrain",
+    "n_signs": 7,
+    "real_signs_in_anchor": 7,
+    "coverage_pct": 100.0,
+    "has_miin": true,
+    "miin_count": 3,
+    "readable": true,
+    "phoneme_skeleton": "uncertain-miin-or (?)-miin-uncertain-uncertain-miin"
+  },
+  "non_janabiyah_avg_coverage_pct": 0.0,
+  "verdict": "Janabiyah (Bahrain) coverage=100.0%, miin_count=3. Other 10 Gulf seals: avg coverage=0.0%, total miin=0. Janabiyah is the only readable Gulf seal with miin clustering — consistent with Meluhha maritime trade seal hypothesis.",
+  "runtime_seconds": 0.0,
+  "_citation": {
+    "primary": [
+      "A.1",
+      "F.2",
+      "C.2"
+    ],
+    "phase": "Phase-33"
+  }
+}

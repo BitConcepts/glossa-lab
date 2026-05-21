@@ -1,6 +1,0 @@
-{
-  "n_contact_zone_prefixes": 28,
-  "n_seals_total_in_contact_zone": 722,
-  "n_inscriptions_inspected": 178,
-  "verdict": "Shu-ilishu candidate filter: CISI Vol 3 Part 3 contact-zone prefixes total 722 seals across 28 contact-zone sites. The glossa_lab.data.indus_cisi corpus view exposes sign sequences without their CISI catalogue IDs, so we cannot presently filter the 138 Phase-25e candidates by prefix. Phase-26 ingests the find-spot map (sufficient for offline narrowing); a future Phase needs to extend indus_cisi.py to expose catalogue_id alongside the sign sequence."
-}

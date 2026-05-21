@@ -1,6 +1,0 @@
-{
-  "data": {
-    "a": "Mathematica Epigraphica vol. 3 not available at corpora/downloads/fuls_me_vol3_corpus.json. To enable: purchase Amazon paperback ISBN 978-1671804869, OCR text into a JSON file at this path, or request data from Andreas Fuls (andreas.fuls@tu-berlin.de). Phase-29 falls back to Mahadevan 1977 corpus (1,669 inscriptions) which has ~30%% overlap with Fuls vol. 3 (5,509 inscriptions).",
-    "b": "ICIT cache not available at corpora/downloads/icit_cache.json. To enable: request API access from andreas.fuls@tu-berlin.de, then download the database export to corpora/downloads/icit_cache.json. Expected when live: 4,537 objects, 5,509 texts, 19,616 sign occurrences."
-  }
-}

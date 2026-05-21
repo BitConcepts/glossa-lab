@@ -1,0 +1,79 @@
+{
+  "data": {
+    "a": 1462,
+    "b": "CDLI Meluhha audit: 1462 tablets across 21 periods. Dominant period: Ur III (ca. 2100-2000 BC) (850 tablets). Dominant provenience: Girsu (mod. Tello) (789 tablets).",
+    "c__dilmun": 924,
+    "c__gu2-ab-ba": 613,
+    "c__ma2-gan": 371,
+    "c__me-luh-ha": 215,
+    "c__ma-gan": 68,
+    "c__tilmun": 11,
+    "c__shu-ilishu": 2,
+    "c__tukrish": 1,
+    "c__tukris": 1,
+    "d": [
+      [
+        "Ur III (ca. 2100-2000 BC)",
+        850
+      ],
+      [
+        "Ebla (ca. 2350-2250 BC)",
+        141
+      ],
+      [
+        "Old Babylonian (ca. 1900-1600 BC)",
+        130
+      ],
+      [
+        "ED IIIb (ca. 2500-2340 BC)",
+        71
+      ],
+      [
+        "Neo-Assyrian (ca. 911-612 BC)",
+        61
+      ]
+    ],
+    "e": [
+      [
+        "Girsu (mod. Tello)",
+        789
+      ],
+      [
+        "Ebla (mod. Tell Mardikh)",
+        133
+      ],
+      [
+        "Nippur (mod. Nuffar)",
+        96
+      ],
+      [
+        "Ur (mod. Tell Muqayyar)",
+        68
+      ],
+      [
+        "(unknown)",
+        56
+      ],
+      [
+        "Nineveh (mod. Kuyunjik)",
+        56
+      ],
+      [
+        "Puzri\u0161-Dagan (mod. Drehem)",
+        51
+      ],
+      [
+        "Umma (mod. Tell Jokha)",
+        37
+      ],
+      [
+        "uncertain (mod. uncertain)",
+        26
+      ],
+      [
+        "Uruk (mod. Warka)",
+        24
+      ]
+    ]
+  }
+}

@@ -100,45 +100,47 @@ corpus access notes, and citation.
 
 ```text
 glossa-lab/
+├─ LICENSE              ← MIT (source code)
 ├─ AGENTS.md            ← agent operating rules (read first, every session)
 ├─ LEDGER.md            ← session ledger (sole continuity authority)
 ├─ README.md
 ├─ CITATIONS.md         ← citation registry for all research data
-├─ setup-os.cmd         ← canonical start/stop/restart (Windows)
-├─ shell.cmd            ← tool wrapper (pytest, ruff, python — Windows)
-├─ shell.sh             ← tool wrapper (Linux/macOS)
+├─ setup-os.cmd / setup-os.sh  ← start/stop/restart
+├─ shell.cmd / shell.sh        ← tool wrapper (pytest, ruff, python)
 ├─ .github/
-│  └─ workflows/ci.yml  ← GitHub Actions CI (pytest + Playwright + evidence scripts)
-├─ backend/
-│  ├─ glossa_lab/       ← FastAPI app + all Python modules
-│  │  ├─ api/           ← REST route modules
-│  │  │  └─ indus_evidence.py ← Evidence Graph API (library, claims, sweep)
-│  │  ├─ experiments/   ← ExperimentBase subclasses + graph JSONs
-│  │  ├─ experiment_graph_indus_evidence.py ← 7 Evidence Graph atomic nodes
-│  │  ├─ discovery/     ← literature discovery engine + fetchers
-│  │  ├─ data/          ← corpora, anchor sets, LM files (cited per H18)
-│  │  └─ model_intelligence.py ← HF leaderboard sync + scoring
-│  ├─ reports/          ← experiment results, phase syntheses
-│  ├─ data/          ← corpus data files (indus_cisi_corpus.json, dravidian_tamil_lm.json, ...)
-│  └─ scripts/          ← utility and research scripts (phase44_*.py, build_*.py, ...)
-├─ frontend/
-│  ├─ src/              ← React source
-│  │  └─ components/IndusEvidenceView.tsx ← Evidence Graph three-tab workspace
+│  └─ workflows/ci.yml  ← GitHub Actions CI
+├─ backend/             ← Python FastAPI application
+│  ├─ glossa_lab/       ← app modules (api/, experiments/, discovery/, ...)
+│  ├─ scripts/          ← all research and utility scripts
+│  └─ tests/
+├─ frontend/            ← React / TypeScript / Vite
+│  ├─ src/
 │  └─ dist/             ← built artefact (committed for server deploy)
-├─ glossa-indus/        ← Indus Evidence Graph data store
-│  ├─ config/sweep.yaml ← per-project sweep configuration (editable)
-│  ├─ literature/       ← registered papers (JSON metadata)
-│  ├─ claims/           ← extracted claims per document
-│  ├─ hypotheses/       ← hypothesis model YAMLs
-│  ├─ raw/user_uploads/ ← user-uploaded PDFs
-│  └─ scripts/          ← intake + claims extraction pipeline
 ├─ tray/                ← system tray app
+├─ services/            ← systemd / launchd / Windows service definitions
 ├─ docs/
+│  ├─ images/           ← diagrams and sign images
+│  ├─ governance/       ← governance docs
+│  ├─ research/         ← decipherment research docs
 │  ├─ USER_GUIDE.md
-│  ├─ user-manual.md
 │  ├─ architecture.md
-│  └─ research/         ← decipherment research docs
-├─ services/            ← systemd/launchd/Windows service definitions
+│  └─ REQUIREMENTS.md
+├─ data/                ← canonical corpus and reference data
+│  ├─ crosswalks/       ← sign crosswalk CSVs (M-number ↔ Parpola, Yajnadevam)
+│  ├─ raw/              ← raw source corpora
+│  ├─ normalized/       ← cleaned / extracted corpus files
+│  └─ import/           ← staged import artifacts
+├─ outputs/             ← generated computational artifacts
+│  └─ analysis/         ← summary JSON analysis files
+├─ reports/             ← human-readable research reports (PDF, Markdown)
+├─ research/            ← public preprint outputs
+│  └─ indus/            ← preprint PDF, anchor table, phase reports (CC BY 4.0)
+├─ scripts/             ← project-wide utility scripts
+├─ glossa-corpus/       ← internal corpus store
+├─ glossa-indus/        ← Evidence Graph data store
+│  ├─ config/sweep.yaml
+│  ├─ literature/ · claims/ · hypotheses/ · raw/
+│  └─ scripts/
 └─ corpora/             ← external corpus downloads (gitignored, ~3 GB)
 ```
 

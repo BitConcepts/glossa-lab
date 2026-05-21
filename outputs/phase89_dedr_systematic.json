@@ -1,0 +1,151 @@
+{
+  "_citation": {
+    "primary": [
+      "A.1"
+    ]
+  },
+  "gpu_device": "cpu",
+  "n_starting_high_medium": 109,
+  "n_systematic_candidates": 11,
+  "n_new_medium_anchors": 9,
+  "total_high_medium": 118,
+  "new_anchors": [
+    "M042",
+    "M046",
+    "M055",
+    "M056",
+    "M032",
+    "M108",
+    "M118",
+    "M130",
+    "M220"
+  ],
+  "promoted_details": [
+    {
+      "sign": "M042",
+      "reading": "vaN",
+      "dedr_id": "DEDR 5231",
+      "meaning": "arch/bow",
+      "basis": "ICON",
+      "icon_confidence": "MEDIUM",
+      "corpus_freq": 13,
+      "evidence_score": 1.7,
+      "mine_corroborated": false
+    },
+    {
+      "sign": "M046",
+      "reading": "kaL",
+      "dedr_id": "DEDR 1286",
+      "meaning": "leg/stem",
+      "basis": "ICON",
+      "icon_confidence": "MEDIUM",
+      "corpus_freq": 11,
+      "evidence_score": 1.7,
+      "mine_corroborated": false
+    },
+    {
+      "sign": "M055",
+      "reading": "miN3",
+      "dedr_id": "DEDR 4826",
+      "meaning": "fish+3",
+      "basis": "ICON",
+      "icon_confidence": "MEDIUM",
+      "corpus_freq": 12,
+      "evidence_score": 1.7,
+      "mine_corroborated": false
+    },
+    {
+      "sign": "M056",
+      "reading": "miN4",
+      "dedr_id": "DEDR 4826",
+      "meaning": "fish+4",
+      "basis": "ICON",
+      "icon_confidence": "MEDIUM",
+      "corpus_freq": 19,
+      "evidence_score": 1.7,
+      "mine_corroborated": false
+    },
+    {
+      "sign": "M032",
+      "reading": "koL",
+      "dedr_id": "DEDR 2173",
+      "meaning": "take/hold",
+      "basis": "ICON",
+      "icon_confidence": "MEDIUM",
+      "corpus_freq": 9,
+      "evidence_score": 1.6,
+      "mine_corroborated": false
+    },
+    {
+      "sign": "M108",
+      "reading": "kaL",
+      "dedr_id": "DEDR 1286",
+      "meaning": "wheel/circle",
+      "basis": "ICON",
+      "icon_confidence": "MEDIUM",
+      "corpus_freq": 5,
+      "evidence_score": 1.6,
+      "mine_corroborated": false
+    },
+    {
+      "sign": "M118",
+      "reading": "car",
+      "dedr_id": "DEDR 2446",
+      "meaning": "turn/wheel",
+      "basis": "ICON",
+      "icon_confidence": "MEDIUM",
+      "corpus_freq": 3,
+      "evidence_score": 1.6,
+      "mine_corroborated": false
+    },
+    {
+      "sign": "M130",
+      "reading": "mui",
+      "dedr_id": "DEDR 4951",
+      "meaning": "sprout/shoot",
+      "basis": "ICON",
+      "icon_confidence": "MEDIUM",
+      "corpus_freq": 3,
+      "evidence_score": 1.6,
+      "mine_corroborated": false
+    },
+    {
+      "sign": "M220",
+      "reading": "al",
+      "dedr_id": "DEDR 0180",
+      "meaning": "not/without",
+      "basis": "PHON",
+      "icon_confidence": "MEDIUM",
+      "corpus_freq": 62,
+      "evidence_score": 1.6,
+      "mine_corroborated": false
+    }
+  ],
+  "remaining_gap_to_120": 2,
+  "next_targets_if_below_120": [
+    {
+      "sign": "M076",
+      "reading": "naN",
+      "dedr_id": "DEDR 3537",
+      "meaning": "comb+3",
+      "basis": "ICON",
+      "icon_confidence": "LOW",
+      "corpus_freq": 7,
+      "evidence_score": 1.0,
+      "mine_corroborated": false
+    },
+    {
+      "sign": "M221",
+      "reading": "al",
+      "dedr_id": "DEDR 0180",
+      "meaning": "abstract 2",
+      "basis": "PHON",
+      "icon_confidence": "LOW",
+      "corpus_freq": 1,
+      "evidence_score": 0.7,
+      "mine_corroborated": false
+    }
+  ],
+  "mine_proposals_used": 0,
+  "verdict": "Phase-89: Systematic DEDR pass. 11 candidates analysed. 9 promoted to MEDIUM. Total HIGH+MEDIUM: 118. Need 2 more for target 120."
+}

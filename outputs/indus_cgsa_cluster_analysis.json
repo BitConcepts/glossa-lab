@@ -1,0 +1,10 @@
+{
+  "data": {
+    "error": "No cluster_sequences \u2014 connect ClusterMapper.cluster_sequences",
+    "n_assignments": 0,
+    "d__TERMINAL": 6,
+    "d__INITIAL": 11,
+    "d__MEDIAL": 55,
+    "d__MIXED": 8
+  }
+}

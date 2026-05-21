@@ -1,0 +1,70 @@
+{
+  "data": {
+    "a": "Enhanced matcher (Phase-23): 54 length-compatible pairings between 11 inscribed seals and 6 strict-PN candidates (freq>=1, tol=2).",
+    "b": [
+      {
+        "candidate_name": "ab-ba-me-luh-ha",
+        "name_n_segments": 5,
+        "name_occurrences": 7,
+        "is_known_meluhhan": false,
+        "seal_id": "BM_122187_UR_seal_1",
+        "seal_n_signs": 5,
+        "seal_signs_confidence": "length_only",
+        "length_score": 1.0
+      },
+      {
+        "candidate_name": "lu-u",
+        "name_n_segments": 2,
+        "name_occurrences": 4,
+        "is_known_meluhhan": false,
+        "seal_id": "LOTHAL_PERSIAN_GULF_SEAL",
+        "seal_n_signs": 2,
+        "seal_signs_confidence": "length_only",
+        "length_score": 1.0
+      },
+      {
+        "candidate_name": "ba-me-luh-ha",
+        "name_n_segments": 4,
+        "name_occurrences": 3,
+        "is_known_meluhhan": false,
+        "seal_id": "GADD_2",
+        "seal_n_signs": 4,
+        "seal_signs_confidence": "length_only",
+        "length_score": 1.0
+      },
+      {
+        "candidate_name": "e2-duru5-me-luh-ha",
+        "name_n_segments": 5,
+        "name_occurrences": 1,
+        "is_known_meluhhan": false,
+        "seal_id": "BM_122187_UR_seal_1",
+        "seal_n_signs": 5,
+        "seal_signs_confidence": "length_only",
+        "length_score": 1.0
+      },
+      {
+        "candidate_name": "lu2-tukul",
+        "name_n_segments": 2,
+        "name_occurrences": 1,
+        "is_known_meluhhan": false,
+        "seal_id": "LOTHAL_PERSIAN_GULF_SEAL",
+        "seal_n_signs": 2,
+        "seal_signs_confidence": "length_only",
+        "length_score": 1.0
+      },
+      {
+        "candidate_name": "lu2-tu15",
+        "name_n_segments": 2,
+        "name_occurrences": 1,
+        "is_known_meluhhan": false,
+        "seal_id": "LOTHAL_PERSIAN_GULF_SEAL",
+        "seal_n_signs": 2,
+        "seal_signs_confidence": "length_only",
+        "length_score": 1.0
+      }
+    ],
+    "c": 54,
+    "d": "READOUT_NOT_SIGNIFICANT",
+    "e": 1.0
+  }
+}

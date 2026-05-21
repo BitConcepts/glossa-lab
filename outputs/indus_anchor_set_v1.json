@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "total_anchors": 12,
+  "high_confidence": 4,
+  "med_confidence": 8,
+  "anchors": {
+    "817": {
+      "phoneme": "um",
+      "confidence": "HIGH",
+      "source": "Parpola+positional",
+      "evidence": "T=0.90 n=205, Dravidian accusative/neuter suffix -um"
+    },
+    "920": {
+      "phoneme": "an",
+      "confidence": "HIGH",
+      "source": "positional+morphological",
+      "evidence": "T=0.97 n=144, Dravidian masculine suffix -an"
+    },
+    "900": {
+      "phoneme": "al",
+      "confidence": "MED",
+      "source": "positional+morphological",
+      "evidence": "T=0.97 n=109, candidate feminine/abstract suffix"
+    },
+    "740": {
+      "phoneme": "aN",
+      "confidence": "HIGH",
+      "source": "Parpola+positional",
+      "evidence": "I=1.00 n=107, pure determinative (person/deity classifier)"
+    },
+    "700": {
+      "phoneme": "ko",
+      "confidence": "MED",
+      "source": "positional+iconographic",
+      "evidence": "I=0.93 n=213, person-class determinative (ko- prefix)"
+    },
+    "400": {
+      "phoneme": "min",
+      "confidence": "HIGH",
+      "source": "Parpola+iconographic+etymological",
+      "evidence": "n=409, Dravidian min/meen (fish/star), highest frequency"
+    },
+    "32": {
+      "phoneme": "i",
+      "confidence": "MED",
+      "source": "frequency+positional",
+      "evidence": "n=527 most frequent, medial position suggests common vowel"
+    },
+    "220": {
+      "phoneme": "n",
+      "confidence": "MED",
+      "source": "bigram+positional",
+      "evidence": "n=462, high medial rate, common Dravidian nasal"
+    },
+    "520": {
+      "phoneme": "ku",
+      "confidence": "MED",
+      "source": "Parpola+frequency",
+      "evidence": "n=315, Dravidian syllable ku, frequent medial"
+    },
+    "240": {
+      "phoneme": "a",
+      "confidence": "MED",
+      "source": "frequency+positional",
+      "evidence": "n=354, very frequent, likely common vowel a"
+    },
+    "861": {
+      "phoneme": "r",
+      "confidence": "MED",
+      "source": "positional+Dravidian",
+      "evidence": "n=266, medial position consistent with Dravidian -r-"
+    },
+    "752": {
+      "phoneme": "il",
+      "confidence": "MED",
+      "source": "positional+morphological",
+      "evidence": "T=0.86 n=50, candidate Dravidian locative suffix -il"
+    }
+  },
+  "methodology": "Combined positional analysis + Parpola readings + CAS engine + iconographic evidence"
+}

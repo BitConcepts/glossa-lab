@@ -1,7 +1,7 @@
 {
   "document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
   "title": "",
-  "extraction_date": "2026-05-21T13:24:23.420424",
+  "extraction_date": "2026-05-21T14:17:27.798483",
   "total_claims": 9,
   "auto_extracted": 9,
   "manually_curated": 5,
@@ -15,7 +15,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.7,
-      "extracted_at": "2026-05-21T13:24:23.408399"
+      "extracted_at": "2026-05-21T14:17:27.787226"
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002",
@@ -26,7 +26,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-05-21T13:24:23.410906"
+      "extracted_at": "2026-05-21T14:17:27.789738"
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0003",
@@ -37,7 +37,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-05-21T13:24:23.413421"
+      "extracted_at": "2026-05-21T14:17:27.790739"
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0004",
@@ -48,7 +48,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-05-21T13:24:23.413421"
+      "extracted_at": "2026-05-21T14:17:27.791738"
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001",
@@ -61,7 +61,7 @@
       "glossa_lab_evidence": "Phase-43 Batch 5: formula_rate=35.5% vs null 0.6% (59x lift). 20 TERMINAL_STRONG + 40 INITIAL_STRONG signs. [STRUCTURALLY SUPPORTED]",
       "author": "Hunt, Treasure A.",
       "confidence_in_source": 0.75,
-      "extracted_at": "2026-05-21T13:24:23.420424"
+      "extracted_at": "2026-05-21T14:17:27.798483"
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_002",
@@ -72,7 +72,7 @@
       "testability": "indirectly_testable",
       "falsification_condition": "If sign distributions correlate with palatial/royal contexts rather than civic/infrastructure contexts.",
       "confidence_in_source": 0.65,
-      "extracted_at": "2026-05-21T13:24:23.420424"
+      "extracted_at": "2026-05-21T14:17:27.798483"
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003",
@@ -92,7 +92,7 @@
       "falsification_condition": "Faunal signs not enriched in initial position above random baseline.",
       "glossa_lab_evidence": "Phase-43: 40 INITIAL_STRONG signs identified; faunal-initial enrichment not yet sign-classified [STRUCTURAL SUPPORT ONLY]",
       "confidence_in_source": 0.7,
-      "extracted_at": "2026-05-21T13:24:23.420424"
+      "extracted_at": "2026-05-21T14:17:27.798483"
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004",
@@ -109,7 +109,7 @@
       "testability": "directly_testable",
       "falsification_condition": "Celestial signs not enriched in terminal position above random baseline.",
       "confidence_in_source": 0.7,
-      "extracted_at": "2026-05-21T13:24:23.420424"
+      "extracted_at": "2026-05-21T14:17:27.798483"
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_005",
@@ -120,7 +120,7 @@
       "testability": "indirectly_testable",
       "falsification_condition": "If the 24 clusters do not correspond to statistically distinct positional/co-occurrence profiles.",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-05-21T13:24:23.420424"
+      "extracted_at": "2026-05-21T14:17:27.798483"
     }
   ],
   "_citation": {

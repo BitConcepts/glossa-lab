@@ -207,3 +207,11 @@ docs/*.bak
 
 # ChronoMemory ESDB runtime files — regenerated automatically
 .chronomemory/
+
+# LaTeX build artifacts
+*.aux
+*.toc
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz

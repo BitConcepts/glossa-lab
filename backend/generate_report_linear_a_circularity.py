@@ -345,7 +345,7 @@ for ref in [
     "[5] Palmer, L.R. (1958). Luvian and Linear A. Trans. Philological Society.",
     "[6] van Soesbergen, P. (2022). The Decipherment of Minoan Linear A. 8 vols.",
     "[7] Rao et al. (2009). Entropic Evidence for Linguistic Structure. Science 324:1165.",
-    "[8] Merkur, M. (2024). [REDACTED-PATENT-PUB].",
+    
 ]:
     c.append(Paragraph(ref, SMALL))
 

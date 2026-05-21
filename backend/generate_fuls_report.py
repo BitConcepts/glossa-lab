@@ -78,7 +78,7 @@ doc = SimpleDocTemplate(
     leftMargin=3*cm, rightMargin=3*cm,
     topMargin=2.5*cm, bottomMargin=2.5*cm,
     title="Glossa Lab Tier Validation — Report for Dr. Fuls",
-    author=\"Layer1Labs Silicon, Inc.\",
+    author=\"BitConcepts LLC\",
 )
 
 styles = getSampleStyleSheet()
@@ -161,7 +161,7 @@ c.append(Paragraph(
 c.append(sp(0.3))
 c.append(hr())
 c.append(Paragraph("Prepared for: Dr. Andreas Fuls, TU Berlin / ICIT", AUTHORS))
-c.append(Paragraph("Layer1Labs Silicon, Inc. \u00B7 Glossa Lab Research Programme", AUTHORS))
+c.append(Paragraph("BitConcepts LLC \u00B7 Glossa Lab Research Programme", AUTHORS))
 c.append(Paragraph(f"Version 2.0 · {DATE} · git main", VER))
 c.append(hr())
 
@@ -575,7 +575,7 @@ c.append(tbl(
 c.append(sp(0.5))
 c.append(hr())
 c.append(Paragraph(
-    "This report was generated automatically by Glossa Lab (Layer1Labs Silicon, Inc.). "
+    "This report was generated automatically by Glossa Lab (BitConcepts LLC). "
     f"All experiments were run on {DATE} from the current main branch. "
     "Source code and raw experiment output are available on request.",
     NOTE))

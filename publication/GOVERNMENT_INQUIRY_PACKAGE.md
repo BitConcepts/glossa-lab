@@ -1,7 +1,7 @@
 # GOVERNMENT_INQUIRY_PACKAGE
 **Version**: 1.0 (DRAFT — Not yet ready for submission; awaiting HIGH signal)  
 **Date**: 2026-04-23  
-**Owner**: Tristen Pierson / Layer1Labs Silicon, Inc.  
+**Owner**: Tristen Pierson / BitConcepts LLC  
 **Confidentiality**: INTERNAL
 
 ---
@@ -17,7 +17,7 @@ This package is prepared in advance for any official inquiry related to the Tami
 ## 2. Submitter Information
 
 **Researcher**: Tristen Pierson  
-**Organization**: Layer1Labs Silicon, Inc.  
+**Organization**: BitConcepts LLC  
 **Country**: United States  
 **Methodology**: Computational corpus linguistics; Corpus-Grounded Structural Analysis (CGSA)
 
@@ -76,8 +76,8 @@ Tamil Nadu government prize ($1 million USD, announced by CM M.K. Stalin): offer
 
 "To the relevant authority,
 
-We wish to present findings from computational analysis of the Indus script corpus conducted at Layer1Labs Silicon, Inc. using the Glossa-Lab platform. Our analysis has identified a reproducible three-slot positional grammar structure in 2,722 Indus inscriptions across 52 sites, stable across all major Indus Valley Civilization archaeological locations.
+We wish to present findings from computational analysis of the Indus script corpus conducted at BitConcepts LLC using the Glossa-Lab platform. Our analysis has identified a reproducible three-slot positional grammar structure in 2,722 Indus inscriptions across 52 sites, stable across all major Indus Valley Civilization archaeological locations.
 
 We are continuing validation of the Dravidian linguistic hypothesis. We believe our methodology is the most rigorous computational approach yet applied to this problem.
 
-Sincerely, Tristen Pierson / Layer1Labs Silicon, Inc."
+Sincerely, Tristen Pierson / BitConcepts LLC"

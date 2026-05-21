@@ -18,7 +18,10 @@ The Gulf assemblages are critical for Avishai's fish-sign polysemy test:
 CPU only. Output: reports/phase126_icit_corpus_plan.json
 """
 from __future__ import annotations
-import json, os, sys
+
+import json
+import os
+import sys
 from datetime import datetime
 from pathlib import Path
 

@@ -30,9 +30,8 @@ from __future__ import annotations
 
 import random
 import re
-from collections import Counter, defaultdict
+from collections import defaultdict
 from typing import Any
-
 
 # ---------------------------------------------------------------------------
 #  Phase-30b: length-cohort reverse Janabiyah search
@@ -245,9 +244,9 @@ def _length_cohort_reverse_janabiyah(inputs: dict, params: dict) -> dict:
                 f"Concentrated signal: contact-zone hypothesis SURVIVES one DoF."
                 if rises
                 else
-                f"No cohort concentration (all within 5x of each other). "
-                f"Janabiyah miin-pattern signal does NOT track candidate length \u2014 "
-                f"one more DoF eliminated for the contact-zone hypothesis."
+                "No cohort concentration (all within 5x of each other). "
+                "Janabiyah miin-pattern signal does NOT track candidate length \u2014 "
+                "one more DoF eliminated for the contact-zone hypothesis."
             )
         )
     else:
@@ -649,6 +648,7 @@ def _syllable_lm_from_json(data: dict) -> "Any":
     bigram_freq, unigram_freq, size) so SADecipher works correctly.
     """
     import math as _math  # noqa: PLC0415
+
     from glossa_lab.pipelines.decipher import LanguageModel  # noqa: PLC0415
 
     vocab: list[str] = data.get("vocab", [])

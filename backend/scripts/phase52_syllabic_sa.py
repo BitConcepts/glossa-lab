@@ -22,7 +22,13 @@ Output: reports/phase52_syllabic_sa.json
         reports/phase52_full_decipherment_table.json
 """
 from __future__ import annotations
-import csv, json, math, random, sys, time
+
+import csv
+import json
+import math
+import random
+import sys
+import time
 from collections import Counter
 from pathlib import Path
 from types import SimpleNamespace
@@ -294,7 +300,7 @@ def main() -> None:
     n_sa_only = sum(1 for t in table if t["confirmed_confidence"] == "UNREAD")
     n_agree = sum(1 for t in table if t.get("sa_agrees_confirmed"))
 
-    print(f"\n=== Decipherment Table Statistics ===")
+    print("\n=== Decipherment Table Statistics ===")
     print(f"  Total signs: {len(table)}")
     print(f"  HIGH anchor (confirmed): {n_high}")
     print(f"  MEDIUM anchor (probable): {n_medium}")
@@ -302,7 +308,7 @@ def main() -> None:
     if n_high + n_medium > 0:
         print(f"  SA agrees with confirmed: {n_agree}/{n_high+n_medium} = {n_agree/(n_high+n_medium):.0%}")
 
-    print(f"\nTop 20 highest-frequency signs:")
+    print("\nTop 20 highest-frequency signs:")
     for t in table[:20]:
         conf_str = t["confirmed_confidence"]
         sa = t["sa_reading"]

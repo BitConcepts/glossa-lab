@@ -22,7 +22,9 @@ GPU: torch for embedding-style batch text search over publication corpus.
 Output: reports/phase47_t2_publication_mining.json
 """
 from __future__ import annotations
-import json, re
+
+import json
+import re
 from collections import defaultdict
 from pathlib import Path
 
@@ -263,14 +265,14 @@ def main() -> None:
             seen_readings.add(key)
             unique_readings.append(r)
 
-    print(f"\n=== Publication Mining Summary ===")
+    print("\n=== Publication Mining Summary ===")
     print(f"Total publications: {len(all_results)}")
     print(f"Unique phoneme readings found: {len(unique_readings)}")
     print(f"High-value passages (multi-hit): {len(all_high_value)}")
     print(f"Sign mention frequency: {dict(sorted(sign_pub_count.items()))}")
 
     if all_high_value:
-        print(f"\nTop passage:")
+        print("\nTop passage:")
         print(f"  [{all_high_value[0]['source']}] {all_high_value[0]['text'][:150]}…")
 
     result = {

@@ -28,7 +28,6 @@ import asyncio
 import json
 import subprocess
 import sys
-import time
 from pathlib import Path
 from typing import Any, AsyncGenerator
 
@@ -45,7 +44,7 @@ _SYSTEM_PROMPT = """You are Glossa Research Assistant, an expert in:
 - The Glossa Lab experiment platform
 
 CURRENT RESEARCH STATE (key findings):
-- Dravidian phonotactics: SA consistency 0.8166 vs Sanskrit 0.5602 (+25.64pp) on real CISI bigrams [VERIFIED]
+- Dravidian phonotactics: SA 0.8166 vs Sanskrit 0.5602 (+25.64pp) on CISI bigrams [VERIFIED]
 - Optimal anchor set: P385=n, P324=k, P122=a, P086=m, P060=i, P332=o (peak HCI 88.4%)
 - CV pair structure: P324(/k/) + P332(/o/) = 'ko' (king/chief, DEDR 2147)
 - M-148A = royal title formula: 'ko-n' = 'of the king'
@@ -141,7 +140,7 @@ def _tool_query_corpus(corpus_name: str) -> str:
     try:
         sys.path.insert(0, str(_BACKEND_DIR))
         sys.path.insert(0, str(_BACKEND_DIR / "tests"))
-        import math  # noqa: PLC0415
+        import math  # noqa: PLC0415, I001
         from glossa_lab.experiment_graph import ATOMIC_NODES  # noqa: PLC0415
 
         r = ATOMIC_NODES["BuiltinCorpus"].fn({}, {"corpus": corpus_name})
@@ -247,10 +246,14 @@ async def run_ag2_chat(
     llm_config = _get_llm_config()
 
     # Yield status
+    if llm_config:
+        llm_label = "enabled (" + llm_config["config_list"][0]["model"] + ")"
+    else:
+        llm_label = "offline — tool-only mode"
     yield {
         "type": "agent_start",
         "agent": "system",
-        "content": f"AG2 Research Agent starting. LLM: {'enabled (' + (llm_config['config_list'][0]['model'] if llm_config else '') + ')' if llm_config else 'offline — tool-only mode'}",
+        "content": f"AG2 Research Agent starting. LLM: {llm_label}",
     }
 
     # ── Build function_map for the UserProxyAgent ─────────────────────────────
@@ -288,7 +291,6 @@ async def run_ag2_chat(
         return wrapper
 
     for tool_name, (tool_fn, _) in _TOOLS.items():
-        sig_args = _tool_signatures(tool_name, tool_fn)
         function_map[tool_name] = _make_tool_wrapper(tool_name, tool_fn)
 
     # ── Build AG2 agents ──────────────────────────────────────────────────────
@@ -313,7 +315,9 @@ async def run_ag2_chat(
         name="GlossaExecutor",
         human_input_mode="NEVER",
         max_consecutive_auto_reply=6,
-        is_termination_msg=lambda m: isinstance(m.get("content"), str) and "TERMINATE" in m["content"],
+        is_termination_msg=lambda m: (
+            isinstance(m.get("content"), str) and "TERMINATE" in m["content"]
+        ),
         code_execution_config=False,  # We use function tools, not code execution
         function_map=function_map,
     )
@@ -321,7 +325,11 @@ async def run_ag2_chat(
     # ── Register message callback ─────────────────────────────────────────────
     _original_receive = assistant.receive
 
-    def _patched_receive(message: Any, sender: Any, request_reply: bool | None = None, silent: bool | None = False):
+    def _patched_receive(  # type: ignore[override]
+        message: Any, sender: Any,
+        request_reply: bool | None = None,
+        silent: bool | None = False,
+    ):
         content = message.get("content", "") if isinstance(message, dict) else str(message)
         if content and content.strip() and content != "None":
             loop.call_soon_threadsafe(event_queue.put_nowait, {
@@ -353,7 +361,10 @@ async def run_ag2_chat(
             error_flag[0] = str(exc)
         finally:
             done_flag[0] = True
-            loop.call_soon_threadsafe(event_queue.put_nowait, {"type": "done", "agent": "system", "content": ""})
+            loop.call_soon_threadsafe(
+                event_queue.put_nowait,
+                {"type": "done", "agent": "system", "content": ""},
+            )
 
     import threading  # noqa: PLC0415
     thread = threading.Thread(target=_run_conversation, daemon=True)

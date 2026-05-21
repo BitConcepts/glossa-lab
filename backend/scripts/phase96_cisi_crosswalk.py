@@ -15,6 +15,7 @@ Methodology:
 CPU only. Output: reports/phase96_cisi_crosswalk.json
 """
 from __future__ import annotations
+
 import json
 from pathlib import Path
 
@@ -164,7 +165,7 @@ def main():
                 "confidence": m_info.get("confidence",""),
             })
 
-    print(f"\n=== Phase-96 Results ===")
+    print("\n=== Phase-96 Results ===")
     print(f"  Crosswalk entries: {len(existing)} -> {len(cw_data['crosswalk'])}")
     print(f"  CISI mapping: {mapped}/{len(cisi_signs)} ({map_pct:.1f}%)")
     print(f"  Validated anchor readings: {len(validation)}")

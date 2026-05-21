@@ -1,6 +1,7 @@
 """Glossa Lab backend application entrypoint."""
 
 import asyncio
+import logging as _logging
 import shutil
 import subprocess
 import sys
@@ -24,23 +25,27 @@ from glossa_lab.api.catalog import router as catalog_router
 from glossa_lab.api.cgsa import router as cgsa_router
 from glossa_lab.api.collab import router as collab_router
 from glossa_lab.api.corpus_catalogue import router as corpus_catalogue_router
+from glossa_lab.api.correspondences import router as correspondences_router
 from glossa_lab.api.dashboard import router as dashboard_router
 from glossa_lab.api.discovery import router as discovery_router
-from glossa_lab.api.notifications import router as notifications_router
 from glossa_lab.api.env import router as env_router
 from glossa_lab.api.experiment_graphs import router as experiment_graphs_router
 from glossa_lab.api.experiments import router as experiments_router
+from glossa_lab.api.foundation_check import router as foundation_check_router
 from glossa_lab.api.health import router as health_router
+from glossa_lab.api.indus_evidence import router as indus_evidence_router
 from glossa_lab.api.jobs import router as jobs_router
+from glossa_lab.api.model_assignments import router as model_assignments_router
+from glossa_lab.api.notifications import router as notifications_router
 from glossa_lab.api.ollama import router as ollama_router
 from glossa_lab.api.pipelines import router as pipelines_router
 from glossa_lab.api.presets import router as presets_router
+from glossa_lab.api.projects import router as projects_router
+from glossa_lab.api.provider_registry import router as provider_registry_router
 from glossa_lab.api.rag import router as rag_router
 from glossa_lab.api.report_templates import router as report_templates_router
 from glossa_lab.api.reports import router as reports_router
 from glossa_lab.api.research import router as research_router
-from glossa_lab.api.foundation_check import router as foundation_check_router
-from glossa_lab.api.indus_evidence import router as indus_evidence_router
 from glossa_lab.api.results import router as results_router
 from glossa_lab.api.settings import router as settings_router
 from glossa_lab.api.shutdown import router as shutdown_router
@@ -48,19 +53,14 @@ from glossa_lab.api.status import router as status_router
 from glossa_lab.api.studies import router as studies_router
 from glossa_lab.api.system import router as system_router
 from glossa_lab.api.terminal import router as terminal_router
-from glossa_lab.api.projects import router as projects_router
-from glossa_lab.api.correspondences import router as correspondences_router
-from glossa_lab.api.model_assignments import router as model_assignments_router
-from glossa_lab.api.provider_registry import router as provider_registry_router
-from glossa_lab.model_intelligence import router as model_intelligence_router
 from glossa_lab.api.texts import router as texts_router
 from glossa_lab.config import get_settings
 from glossa_lab.database import close_db, init_db
 from glossa_lab.engine import run_engine_loop
 from glossa_lab.log_setup import setup_logging
+from glossa_lab.model_intelligence import router as model_intelligence_router
 from glossa_lab.node_registry import router as node_registry_router
 
-import logging as _logging
 _log = _logging.getLogger("glossa_lab.main")
 
 # Repo root is two levels above this file (backend/glossa_lab/main.py)
@@ -210,7 +210,8 @@ async def lifespan(app: FastAPI):
                             p["base_url"], p["api_key"], p.get("headers"),
                         ),
                     )
-                    from datetime import datetime as _dt, timezone as _tz  # noqa: PLC0415
+                    from datetime import datetime as _dt  # noqa: PLC0415
+                    from datetime import timezone as _tz
                     status = "reachable" if result["valid"] else "unreachable"
                     models = result.get("models", [])
                     await _pdb.update_provider(
@@ -238,7 +239,7 @@ async def lifespan(app: FastAPI):
     # Start model intelligence sync (HF leaderboard → model_scores)
     _log.info("Model intelligence sync: will start in 15s...")
     from glossa_lab.model_intelligence import start_intelligence_sync  # noqa: PLC0415
-    intel_task = asyncio.create_task(start_intelligence_sync())
+    asyncio.create_task(start_intelligence_sync())
 
     _start_time = time.time()
     _log.info("=== Glossa Lab startup complete (%.1fs) ===", time.time() - _start_time)

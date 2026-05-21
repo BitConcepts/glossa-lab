@@ -17,7 +17,6 @@ Strategy (same rank-correlation we used for bigrams):
 from __future__ import annotations
 
 import json
-import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -249,7 +248,7 @@ def main() -> None:
     flat_path.write_text(flat, encoding="utf-8")
     print(f"Flat corpus → {flat_path}")
 
-    print(f"\nTop 10 most frequent decoded signs:")
+    print("\nTop 10 most frequent decoded signs:")
     sign_freq: Counter = Counter()
     for d in decoded:
         for s in d["sequence"]:

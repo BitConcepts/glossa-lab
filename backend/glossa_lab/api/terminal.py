@@ -233,7 +233,6 @@ async def purge_log() -> dict:
        and any legacy date-stamped variants) from the same directory.
     """
     import logging as _logging  # noqa: PLC0415
-    import glob as _glob  # noqa: PLC0415
     from logging.handlers import RotatingFileHandler as _RFH  # noqa: PLC0415
 
     log_file = _active_log_file()

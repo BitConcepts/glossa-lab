@@ -64,7 +64,6 @@ def run_hebrew_self_benchmark(
     from glossa_lab.data.old_hebrew import (  # noqa: I001
         _HEBREW_LINES,
         HEBREW_SIGNS,
-        corpus_statistics,
     )
     from glossa_lab.pipelines.decipher import LanguageModel, decipher, score_accuracy
 
@@ -156,7 +155,7 @@ def run_hebrew_self_benchmark(
     acc = score_accuracy(result["proposed_mapping"], ground_truth)
     pct = acc["accuracy"] * 100
 
-    _print(f"\n  Results:")
+    _print("\n  Results:")
     _print(
         f"    Sign mapping accuracy:  {acc['correct']}/{acc['total']} = {pct:.1f}%"
     )

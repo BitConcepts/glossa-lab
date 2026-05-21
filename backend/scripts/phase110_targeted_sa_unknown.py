@@ -8,7 +8,11 @@ Output: reports/phase110_targeted_sa_unknown.json
 Also updates backend/reports/INDUS_FINAL_ANCHORS.json
 """
 from __future__ import annotations
-import csv, json, os, sys
+
+import csv
+import json
+import os
+import sys
 from collections import Counter
 from pathlib import Path
 
@@ -118,8 +122,8 @@ def main():
     # Build Dravidian LM
     lm = None
     try:
+        from glossa_lab.data.dravidian import get_word_symbols  # noqa: PLC0415
         from glossa_lab.pipelines.decipher import LanguageModel  # noqa: PLC0415
-        from glossa_lab.data.dravidian import get_word_symbols   # noqa: PLC0415
         lm = LanguageModel(get_word_symbols())
         print(f"  LM: Dravidian, {lm.size} signs")
     except Exception as exc:  # noqa: BLE001
@@ -135,8 +139,8 @@ def main():
         # Run SA with all anchors pinned
         if lm:
             try:
-                from glossa_lab.pipelines.decipher import decipher  # noqa: PLC0415
                 from glossa_lab.experiments._parallel import run_seeds_parallel  # noqa: PLC0415
+                from glossa_lab.pipelines.decipher import decipher  # noqa: PLC0415
 
                 def _one(seed: int, a=anchor_map, f=flat) -> dict:
                     r = decipher(f, lm, seed=seed, max_iterations=8000, restarts=5,

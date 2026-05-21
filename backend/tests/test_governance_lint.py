@@ -83,7 +83,7 @@ def test_no_new_hardcoded_anchors_in_experiments():
             hits = _scan_for_patterns(path, _HARDCODED_ANCHOR_PATTERNS)
             violations.extend(hits)
     assert violations == [], (
-        f"H16 violation: hardcoded anchor dicts found in new experiment files:\n"
+        "H16 violation: hardcoded anchor dicts found in new experiment files:\n"
         + "\n".join(violations)
         + "\nMove anchor pairs to an AnchorSet in the database instead."
     )
@@ -97,7 +97,7 @@ def test_no_new_hardcoded_corpus_names_in_experiments():
             hits = _scan_for_patterns(path, _HARDCODED_CORPUS_NAME_PATTERNS)
             violations.extend(hits)
     assert violations == [], (
-        f"H16 violation: hardcoded corpus names found in new experiment files:\n"
+        "H16 violation: hardcoded corpus names found in new experiment files:\n"
         + "\n".join(violations)
         + "\nUse BuiltinCorpus/CorpusLM nodes or CorpusReader with a corpus_id instead."
     )
@@ -111,7 +111,7 @@ def test_no_new_hardcoded_report_titles_in_scripts():
             hits = _scan_for_patterns(path, _HARDCODED_REPORT_TITLE_PATTERNS)
             violations.extend(hits)
     assert violations == [], (
-        f"H16 violation: hardcoded report titles found in new script files:\n"
+        "H16 violation: hardcoded report titles found in new script files:\n"
         + "\n".join(violations)
         + "\nUse a user-defined ReportTemplate from the database instead."
     )
@@ -144,7 +144,7 @@ def test_new_experiment_files_are_not_experiment_base_subclasses():
                             f"{path.name}: class {node.name}(ExperimentBase)"
                         )
     assert violations == [], (
-        f"H15/H16 violation: ExperimentBase subclass in non-whitelisted file:\n"
+        "H15/H16 violation: ExperimentBase subclass in non-whitelisted file:\n"
         + "\n".join(violations)
         + "\nCreate a graph spec in experiments/graphs/<id>.json instead."
     )

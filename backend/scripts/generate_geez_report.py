@@ -29,18 +29,23 @@ _ROOT    = _BACKEND.parent
 _REPORTS = _ROOT / "reports"
 sys.path.insert(0, str(_BACKEND))
 
-from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
-from reportlab.lib.styles import getSampleStyleSheet
-from reportlab.lib.units import cm
 from reportlab.platypus import (
-    HRFlowable, KeepTogether, PageBreak, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle,
+    PageBreak,
+    SimpleDocTemplate,
 )
 
 from glossa_lab.report_utils import (
-    BODY_WIDTH, C_AMBER, C_BLUE, C_GREEN, C_GREY, C_LGREY, C_NAVY, C_RED,
-    MARGIN, PAGE_HEIGHT, PAGE_WIDTH,
-    hr, make_styles, p, pc, safe_tbl, safe_text, sp, sp_text,
+    BODY_WIDTH,
+    MARGIN,
+    hr,
+    make_styles,
+    p,
+    pc,
+    safe_tbl,
+    safe_text,
+    sp,
+    sp_text,
 )
 
 # ── Helpers ───────────────────────────────────────────────────────────────────

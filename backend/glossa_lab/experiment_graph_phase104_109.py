@@ -8,7 +8,10 @@
   IndusAcadSubmit     Phase-109: Academic submission prep for Dr. Fuls
 """
 from __future__ import annotations
-import json, subprocess, sys
+
+import json
+import subprocess
+import sys
 from pathlib import Path
 
 _REPO = Path(__file__).resolve().parent.parent.parent

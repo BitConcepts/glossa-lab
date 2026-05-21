@@ -10,9 +10,9 @@ Also applies sibilant candidates from Phase-163 if n_mentions >= 3.
 Output: Updates INDUS_FINAL_ANCHORS.json in-place (with backup)
         Saves: backend/reports/phase161_upgrade_summary.json
 """
-import sys, json, copy
-from pathlib import Path
+import json
 from datetime import datetime
+from pathlib import Path
 
 REPO         = Path(__file__).resolve().parents[2]
 ANCHORS_PATH = REPO / "backend/reports/INDUS_FINAL_ANCHORS.json"

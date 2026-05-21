@@ -10,7 +10,11 @@ Output: reports/phase108_phon_exhaustion.json
 Also updates backend/reports/INDUS_FINAL_ANCHORS.json
 """
 from __future__ import annotations
-import csv, json, os, sys
+
+import csv
+import json
+import os
+import sys
 from collections import Counter
 from pathlib import Path
 
@@ -229,7 +233,7 @@ def main():
 
     n_after = len({s for s, v in anchors.items() if v.get("confidence") in ("HIGH", "MEDIUM")})
     print(f"\n  Anchors after sprint: {n_after} (+{n_after - len(confirmed)} new)")
-    print(f"  Updated INDUS_FINAL_ANCHORS.json")
+    print("  Updated INDUS_FINAL_ANCHORS.json")
 
     # Estimate decipherment coverage
     total_tokens = sum(flat_freq.values())

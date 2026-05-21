@@ -12,7 +12,10 @@ Target: 90%+ corpus token coverage.
 Output: reports/phase71_crosswalk_complete.json
 """
 from __future__ import annotations
-import csv, json, sys
+
+import csv
+import json
+import sys
 from collections import Counter
 from pathlib import Path
 
@@ -161,7 +164,7 @@ def main():
     # Still-unmapped from top-100
     still_unmapped = [s for s in top100 if s not in new_mp]
 
-    print(f"\n=== Phase-71 Results ===")
+    print("\n=== Phase-71 Results ===")
     print(f"  Previous M->P entries: {len(existing_mp)}")
     print(f"  New mappings added:    {n_newly_mapped}")
     print(f"  Total M->P mapped:     {len(new_mp)}/390")

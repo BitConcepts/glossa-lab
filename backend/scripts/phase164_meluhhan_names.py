@@ -26,9 +26,9 @@ Methodology:
 
 Output: backend/reports/phase164_meluhhan_names.json
 """
-import sys, json, re
+import json
+from collections import Counter, defaultdict
 from pathlib import Path
-from collections import defaultdict, Counter
 
 REPO = Path(__file__).resolve().parents[2]
 ANCHORS_PATH = REPO / "backend/reports/INDUS_FINAL_ANCHORS.json"
@@ -276,11 +276,11 @@ for r in strong_matches:
 if strong_matches:
     best_name = max(strong_matches, key=lambda x: x["best_match"]["slots_matched"])
     print(f"\n  BEST CANDIDATE: {best_name['name']}")
-    print(f"  This would be the first Indus personal name computational decipherment")
-    print(f"  Confidence: EXPLORATORY — requires external validation")
+    print("  This would be the first Indus personal name computational decipherment")
+    print("  Confidence: EXPLORATORY — requires external validation")
 else:
-    print(f"\n  No strong matches found — personal names still require ICIT corpus")
-    print(f"  (larger corpus = more evidence for low-frequency MEDIAL sign sequences)")
+    print("\n  No strong matches found — personal names still require ICIT corpus")
+    print("  (larger corpus = more evidence for low-frequency MEDIAL sign sequences)")
 
 # Save
 output = {

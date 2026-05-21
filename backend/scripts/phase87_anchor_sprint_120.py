@@ -14,8 +14,11 @@ GPU: BigramScorer used for SA consensus check.
 Output: reports/phase87_anchor_sprint_120.json
 """
 from __future__ import annotations
-import csv, json, re
-from collections import Counter, defaultdict
+
+import csv
+import json
+import re
+from collections import Counter
 from pathlib import Path
 
 REPO    = Path(__file__).parents[2]
@@ -126,7 +129,7 @@ def main():
     print(f"  Device: {device}")
 
     # ── Method 1: ENSEMBLE_MEDIUM from Phase-73 + PD valid + freq >= 10 ──────
-    print(f"\n  Method 1: SA consensus upgrade (ENSEMBLE_MEDIUM tier)...")
+    print("\n  Method 1: SA consensus upgrade (ENSEMBLE_MEDIUM tier)...")
     m1_proposals = []
     for entry in p73_table:
         sign = entry.get("sign", "")
@@ -151,7 +154,7 @@ def main():
     print(f"  M1 proposals: {len(m1_proposals)}")
 
     # ── Method 2: Extended DEDR rebus ────────────────────────────────────────
-    print(f"\n  Method 2: Extended DEDR rebus...")
+    print("\n  Method 2: Extended DEDR rebus...")
     m2_proposals = []
     for m_sign, reading, dedr_id, depiction, icon_plaus in EXTENDED_DEDR:
         if m_sign in confirmed: continue
@@ -181,7 +184,7 @@ def main():
     print(f"  M2 proposals: {len(m2_proposals)}")
 
     # ── Method 3: Grammar position promotion ─────────────────────────────────
-    print(f"\n  Method 3: Grammar position...")
+    print("\n  Method 3: Grammar position...")
     m3_proposals = []
     TITLE_SIGNS = {"M099", "M073", "M059", "M030", "M041"}
     SUFFIX_SIGNS = {"M342", "M176", "M367", "M391", "M336", "M089", "M328", "M162"}
@@ -253,9 +256,9 @@ def main():
                     if v.get("confidence") in ("HIGH", "MEDIUM")}) - len(new_medium)
     total_high_medium = n_before + len(new_medium)
 
-    print(f"\n=== Phase-87 Results ===")
+    print("\n=== Phase-87 Results ===")
     print(f"  New MEDIUM anchors: {len(new_medium)}")
-    print(f"  Method breakdown:")
+    print("  Method breakdown:")
     print(f"    SA consensus (M1):    {len(m1_proposals)}")
     print(f"    DEDR rebus (M2):      {len(m2_proposals)}")
     print(f"    Grammar pos (M3):     {len(m3_proposals)}")

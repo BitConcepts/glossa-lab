@@ -16,8 +16,6 @@ the audit log when host/credentials are wrong.
 
 from __future__ import annotations
 
-import os
-
 from glossa_lab.notifications.smtp import mask_email
 from glossa_lab.notifications.templates import (
     format_discovery_digest,
@@ -25,7 +23,6 @@ from glossa_lab.notifications.templates import (
     format_study_complete,
     format_test,
 )
-
 
 # ── Recipients CRUD ─────────────────────────────────────────────────────────
 

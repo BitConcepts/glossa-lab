@@ -9,7 +9,9 @@ Applies confirmed readings to all 1,670 seals. Produces:
 CPU only. Output: reports/phase114_full_seal_translations.json
 """
 from __future__ import annotations
-import csv, json
+
+import csv
+import json
 from collections import Counter, defaultdict
 from pathlib import Path
 

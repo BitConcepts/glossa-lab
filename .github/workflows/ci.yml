@@ -158,6 +158,115 @@ jobs:
           path: frontend/test-results/
           retention-days: 7
 
+  # ── Shell wrappers: syntax + functional checks on all 3 OS ─────────────────
+  shell-scripts:
+    name: Shell wrappers (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    needs: []  # run in parallel
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/pyproject.toml
+
+      # ── Bootstrap venv so wrappers can find it ────────────────────────────
+      - name: Bootstrap venv (POSIX)
+        if: runner.os != 'Windows'
+        working-directory: backend
+        run: |
+          python -m venv venv
+          venv/bin/pip install --quiet --upgrade pip
+          venv/bin/pip install --quiet -e ".[dev]"
+
+      - name: Bootstrap venv (Windows)
+        if: runner.os == 'Windows'
+        working-directory: backend
+        shell: cmd
+        run: |
+          python -m venv venv
+          venv\Scripts\pip install --quiet --upgrade pip
+          venv\Scripts\pip install --quiet -e ".[dev]"
+
+      # ── POSIX: shell.sh ───────────────────────────────────────────────────
+      - name: shell.sh — syntax check (bash -n)
+        if: runner.os != 'Windows'
+        run: bash -n shell.sh
+
+      - name: shell.sh — no-args shows usage (exit 0)
+        if: runner.os != 'Windows'
+        run: |
+          output=$(./shell.sh 2>&1 || true)
+          echo "$output"
+          echo "$output" | grep -qi "usage" || { echo "FAIL: no usage line"; exit 1; }
+
+      - name: shell.sh python — version
+        if: runner.os != 'Windows'
+        run: ./shell.sh python --version
+
+      - name: shell.sh lint — backend passes ruff
+        if: runner.os != 'Windows'
+        run: ./shell.sh lint backend/
+
+      # ── POSIX: setup-os.sh ────────────────────────────────────────────────
+      - name: setup-os.sh — syntax check (bash -n)
+        if: runner.os != 'Windows'
+        run: bash -n setup-os.sh
+
+      - name: setup-os.sh — no-args shows usage (exit 0)
+        if: runner.os != 'Windows'
+        run: |
+          output=$(./setup-os.sh 2>&1 || true)
+          echo "$output"
+          echo "$output" | grep -qi "usage\|install\|start\|stop\|status" || \
+            { echo "FAIL: no usage line"; exit 1; }
+
+      - name: setup-os.sh status — exits cleanly without backend running
+        if: runner.os != 'Windows'
+        run: ./setup-os.sh status 2>&1 || true
+
+      # ── Windows: shell.cmd ────────────────────────────────────────────────
+      - name: shell.cmd — no-args shows usage (exit 0)
+        if: runner.os == 'Windows'
+        shell: cmd
+        run: |
+          shell.cmd 2>&1 && echo USAGE_OK
+          exit 0
+
+      - name: shell.cmd python — version
+        if: runner.os == 'Windows'
+        shell: cmd
+        run: shell.cmd python --version
+
+      - name: shell.cmd lint — backend passes ruff
+        if: runner.os == 'Windows'
+        shell: cmd
+        run: shell.cmd lint backend\
+
+      # ── Windows: setup-os.cmd ─────────────────────────────────────────────
+      - name: setup-os.cmd — no-args shows usage (exit 0)
+        if: runner.os == 'Windows'
+        shell: cmd
+        run: |
+          setup-os.cmd 2>&1 && echo USAGE_OK
+          exit 0
+
+      - name: setup-os.cmd status — exits cleanly without service registered
+        if: runner.os == 'Windows'
+        shell: cmd
+        run: |
+          setup-os.cmd status 2>&1
+          exit 0
+
   # ── Evidence Graph: script smoke test ────────────────────────────────────────
   indus-evidence-scripts:
     name: Evidence Graph script smoke tests

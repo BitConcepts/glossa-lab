@@ -10,7 +10,11 @@ Output: reports/phase122_syllabic_lm_sa.json
 Also updates backend/reports/INDUS_FINAL_ANCHORS.json
 """
 from __future__ import annotations
-import csv, json, os, sys
+
+import csv
+import json
+import os
+import sys
 from collections import Counter
 from pathlib import Path
 
@@ -146,8 +150,8 @@ def main():
     n_promoted = 0
 
     try:
-        from glossa_lab.pipelines.decipher import decipher  # noqa: PLC0415
         from glossa_lab.experiments._parallel import run_seeds_parallel  # noqa: PLC0415
+        from glossa_lab.pipelines.decipher import decipher  # noqa: PLC0415
 
         def _one(seed: int, a=anchor_map, f=flat) -> dict:
             r = decipher(f, lm, seed=seed, max_iterations=8000, restarts=5,

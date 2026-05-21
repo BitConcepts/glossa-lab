@@ -20,7 +20,7 @@ import os
 from datetime import datetime, timezone
 
 from glossa_lab.api.settings import _load_keys, _save_keys, get_key
-from glossa_lab.discovery import mine_pending, store
+from glossa_lab.discovery import mine_pending
 from glossa_lab.discovery.fetchers import run_all
 from glossa_lab.discovery.llm import LLMClient
 from glossa_lab.discovery.notify import send_pending_digest

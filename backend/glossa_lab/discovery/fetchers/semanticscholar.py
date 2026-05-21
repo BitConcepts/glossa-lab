@@ -21,7 +21,6 @@ from glossa_lab.discovery.fetchers.base import (
     Fetcher,
     FetcherError,
     TopicProfile,
-    build_query,
     http_get_json,
     run_in_thread,
 )

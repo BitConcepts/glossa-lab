@@ -26,8 +26,11 @@ GPU: uses torch for contingency matrix construction; CUDA if available.
 Output: reports/phase45_t3_hunt_tripartite.json
 """
 from __future__ import annotations
-import csv, json, math
-from collections import Counter, defaultdict
+
+import csv
+import json
+import math
+from collections import Counter
 from pathlib import Path
 
 try:
@@ -225,7 +228,6 @@ def main() -> None:
             if total_obs > 0 and len([v for v in obs_vec if v > 0]) >= 2:
                 try:
                     # Use goodness-of-fit: observed vs uniform expected
-                    import numpy as _np
                     expected_uniform = [total_obs / len(obs_vec)] * len(obs_vec)
                     from scipy.stats import chisquare
                     chi2_val, p_val = chisquare(obs_vec, f_exp=expected_uniform)
@@ -302,7 +304,7 @@ def main() -> None:
     p3_total = len(terminal_results)
     p3_support = p3_uniform / p3_total if p3_total else 0
 
-    print(f"\n=== Hunt Tripartite Test Results ===")
+    print("\n=== Hunt Tripartite Test Results ===")
     print(f"P1 (INITIAL_STRONG iconog-restricted): {p1_restricted}/{p1_total} = {p1_support:.1%}")
     print(f"P2 (INITIAL_STRONG faunal > 50%):      {p2_faunal_high}/{p1_total} = {p2_support:.1%}")
     print(f"P3 (TERMINAL_STRONG iconog-uniform):   {p3_uniform}/{p3_total} = {p3_support:.1%}")

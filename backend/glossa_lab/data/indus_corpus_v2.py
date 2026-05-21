@@ -258,6 +258,6 @@ if __name__ == "__main__":
         lengths = [len(s) for s in seqs]
         print(f"\n  Mean inscription length: {sum(lengths)/len(lengths):.1f} signs")
         print(f"  Min: {min(lengths)}  Max: {max(lengths)}")
-        print(f"\n  Sample (first 3):")
+        print("\n  Sample (first 3):")
         for s in seqs[:3]:
             print(f"    {s}")

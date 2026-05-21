@@ -23,12 +23,16 @@ Tests:
 Output: reports/phase132_validation_report.json
 Each test returns: PASS / WARN / FAIL + metric + threshold + explanation
 """
-import sys, json, os, datetime
-from pathlib import Path
+import datetime
+import json
+import os
+import sys
 from collections import Counter, defaultdict
-from scipy import stats
-import pandas as pd
+from pathlib import Path
+
 import numpy as np
+import pandas as pd
+from scipy import stats
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "backend"))
@@ -465,7 +469,7 @@ for sign, spec in new_anchors.items():
         challenge_fail += 1
         fail_reasons = []
         if not pos_ok: fail_reasons.append(f"pos={dom_pos} expected={spec['expected_pos']}")
-        if not col_ok: fail_reasons.append(f"collocates mismatch")
+        if not col_ok: fail_reasons.append("collocates mismatch")
         challenge_detail.append(f"{sign}='{spec['reading']}': ✗ {'; '.join(fail_reasons)}")
 
 pass_rate = round(challenge_pass / (challenge_pass + challenge_fail), 3)

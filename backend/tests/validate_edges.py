@@ -6,10 +6,13 @@ Run:  cd backend && python tests/validate_edges.py
 """
 import sys
 from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from glossa_lab.experiment_graph import (
-    ATOMIC_NODES, _build_proper_graph_specs, _node_type_and_params,
+    ATOMIC_NODES,
+    _build_proper_graph_specs,
+    _node_type_and_params,
 )
 
 specs = _build_proper_graph_specs()

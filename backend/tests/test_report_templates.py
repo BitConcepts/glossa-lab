@@ -1,6 +1,5 @@
 """Tests for user-definable report templates API (H16 Phase 2)."""
 
-import pytest
 
 
 # ── helpers ────────────────────────────────────────────────────────────────────

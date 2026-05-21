@@ -1,6 +1,10 @@
 """Phase-58: Phonological Gap Analysis. GPU: torch. Output: reports/phase58_phonological_gap.json"""
 from __future__ import annotations
-import csv, json, re, sys
+
+import csv
+import json
+import re
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -138,7 +142,7 @@ def main():
     violations = analysis["phonotactic_violations"]
     collisions = analysis["sign_collisions"]
     n_valid_initials = analysis["n_distinct_initials"]
-    print(f"\n=== Phase-58 Results ===")
+    print("\n=== Phase-58 Results ===")
     print(f"  Distinct initial phonemes: {n_valid_initials}")
     print(f"  Phonotactic violations: {len(violations)}")
     print(f"  Sign collisions (≥4 signs, same 3-char prefix): {len(collisions)}")

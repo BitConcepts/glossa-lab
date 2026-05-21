@@ -4,7 +4,13 @@ Expected: z > 20, SA agreement with confirmed > 70%.
 GPU: BigramScorer CUDA. Output: reports/phase57_expanded_sa.json
 """
 from __future__ import annotations
-import csv, json, math, random, sys, time
+
+import csv
+import json
+import math
+import random
+import sys
+import time
 from collections import Counter
 from pathlib import Path
 from types import SimpleNamespace
@@ -180,7 +186,7 @@ def main():
     n_confirmed = sum(1 for t in table if t["confirmed_confidence"] in ("HIGH","MEDIUM"))
     n_agree = sum(1 for t in table if t.get("sa_agrees"))
     agree_rate = n_agree / max(n_confirmed, 1)
-    print(f"\n=== Phase-57 Results ===")
+    print("\n=== Phase-57 Results ===")
     print(f"  z={z:.2f}, {len(pinned)} anchors pinned")
     print(f"  SA agrees with confirmed: {n_agree}/{n_confirmed} = {agree_rate:.0%}")
     print(f"  Time: {elapsed:.1f}s")

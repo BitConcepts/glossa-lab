@@ -22,9 +22,13 @@ Tests motivated by the Roif exchange:
 
 Output: backend/reports/phase142_collocate_network.json
 """
-import sys, json, os, datetime, math
-from pathlib import Path
+import datetime
+import json
+import math
+import os
+import sys
 from collections import Counter, defaultdict
+from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "backend"))
@@ -107,7 +111,7 @@ top_hm_bigrams = sorted(hm_bigrams.items(), key=lambda x:-x[1])[:30]
 
 print(f"  Total distinct bigrams: {len(bigrams)}")
 print(f"  H+M × H+M bigrams: {len(hm_bigrams)}")
-print(f"\n  Top 20 H+M bigrams by frequency:")
+print("\n  Top 20 H+M bigrams by frequency:")
 print(f"  {'Bigram':25s} {'Count':>7} {'PMI':>7} {'A_reading':15s} {'B_reading'}")
 for (a,b),c in top_hm_bigrams[:20]:
     p = pmi(a, b, c, sign_freq[a], sign_freq[b], total_bigrams)
@@ -129,7 +133,7 @@ for (a,b),c in bigrams.items():
 high_pmi.sort(key=lambda x:-x["pmi"])
 
 print(f"\n  High-PMI pairs (PMI > 1.5, count ≥ 3): {len(high_pmi)}")
-print(f"  Top 15:")
+print("  Top 15:")
 for pair in high_pmi[:15]:
     print(f"    {pair['a']} · {pair['b']} count={pair['count']} PMI={pair['pmi']:.2f} "
           f"({pair['a_reading']} · {pair['b_reading']})")
@@ -188,7 +192,7 @@ hm_initial = [v for v in initial_vocab if v["confidence"] in ("HIGH","MEDIUM")]
 
 print(f"  Total INITIAL-dominant signs (i_rate ≥ 0.50, freq ≥ 5): {len(initial_vocab)}")
 print(f"  With H+M readings: {len(hm_initial)}")
-print(f"\n  H+M INITIAL signs (title/determinative vocabulary):")
+print("\n  H+M INITIAL signs (title/determinative vocabulary):")
 print(f"  {'Sign':<8} {'Freq':>5} {'I-rate':>7} {'Reading':<15} {'Conf':<8} {'Top right-neighbor'}")
 for v in hm_initial[:25]:
     top_r = v['top_right_neighbors'][0]['sign'] if v['top_right_neighbors'] else "—"
@@ -231,7 +235,7 @@ for form, data in seals.items():
 
 # Focus on frequent INITIAL signs
 print(f"  Distinct INITIAL signs in multi-sign seals: {len(formula_types)}")
-print(f"\n  Top 20 INITIAL signs by seal count:")
+print("\n  Top 20 INITIAL signs by seal count:")
 print(f"  {'Sign':<8} {'Seals':>6} {'Avg_len':>8} {'Reading':<14} {'Top_icon'}")
 
 top_initials = sorted(formula_types.items(), key=lambda x: -len(x[1]["seals"]))
@@ -264,7 +268,7 @@ for sign, data in top_initials[:15]:
         top2 = [i for i,_ in data["icons"].most_common(2)]
         icon_divergence[sign] = top2
 
-print(f"\n  Top iconography per initial sign (formula type probe):")
+print("\n  Top iconography per initial sign (formula type probe):")
 for sign, icons in icon_divergence.items():
     reading = anchors.get(sign,{}).get("reading","?")[:10]
     print(f"    {sign} ({reading}): {' / '.join(icons)}")
@@ -349,7 +353,7 @@ divergent = [p for p in polysemy_candidates if p["is_divergent"]]
 
 print(f"  Multi-slot H+M signs (freq ≥ 10, ≥2 slots with ≥3 occ): {len(polysemy_candidates)}")
 print(f"  Divergent neighbor profiles (≥67% non-overlap): {len(divergent)}")
-print(f"\n  Top divergent signs (strongest Roif polysemy candidates):")
+print("\n  Top divergent signs (strongest Roif polysemy candidates):")
 print(f"  {'Sign':<8} {'Reading':<12} {'Slots':<25} {'Div':>5} {'INIT-right':<20} {'TERM-left'}")
 for p in divergent[:15]:
     print(f"  {p['sign']:<8} {p['reading']:<12} {str(p['slots']):<25} {p['divergence_score']:>5.2f} "
@@ -412,10 +416,10 @@ print(f"  Top left-neighbors: {dict(left_dist.most_common(8))}")
 print(f"  Top right-neighbors: {dict(right_dist.most_common(8))}")
 
 medial_pct = 100*slot_dist.get("MEDIAL",0)/max(len(m267_contexts),1)
-print(f"\n  M267 slot analysis:")
+print("\n  M267 slot analysis:")
 print(f"    MEDIAL: {slot_dist.get('MEDIAL',0)} ({medial_pct:.0f}%) — expected for a particle/connector")
 print(f"    Follows INITIAL signs: {left_initial_count}/{left_total} ({100*left_initial_count/max(left_total,1):.0f}%)")
-print(f"    → Consistent with genitive particle: [TITLE]-M267-[NAME] = '[NAME] of [TITLE]'")
+print("    → Consistent with genitive particle: [TITLE]-M267-[NAME] = '[NAME] of [TITLE]'")
 
 verdict_m267 = (
     "GENITIVE_CONFIRMED" if medial_pct >= 55 and left_initial_count/max(left_total,1) >= 0.35 else

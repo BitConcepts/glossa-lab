@@ -8,7 +8,9 @@ CPU only. Output: reports/phase111_allograph_resolution.json
 Also updates backend/reports/INDUS_FINAL_ANCHORS.json
 """
 from __future__ import annotations
-import csv, json
+
+import csv
+import json
 from collections import Counter
 from pathlib import Path
 

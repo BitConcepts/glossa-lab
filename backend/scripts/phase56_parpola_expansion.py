@@ -23,7 +23,10 @@ Output: reports/phase56_parpola_expansion.json
         updates backend/reports/INDUS_FINAL_ANCHORS.json
 """
 from __future__ import annotations
-import json, re, sys
+
+import json
+import re
+import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parents[1]))  # add backend/ to sys.path
@@ -310,8 +313,8 @@ def main() -> None:
     after_med  = sum(1 for v in anchors_after.values() if v.get("confidence") == "MEDIUM")
     total_tok = 7002  # Holdat tokens
 
-    from collections import Counter
     import csv
+    from collections import Counter
     freq = Counter()
     with open(REPO/"corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv", encoding="utf-8") as f:
         for r in csv.DictReader(f): freq[r["letters"]] += 1
@@ -319,7 +322,7 @@ def main() -> None:
     high_cov = sum(freq.get(s,0) for s,v in anchors_after.items() if v.get("confidence")=="HIGH") / total_tok
     med_cov  = sum(freq.get(s,0) for s,v in anchors_after.items() if v.get("confidence")=="MEDIUM") / total_tok
 
-    print(f"\n=== Phase-56 Results ===")
+    print("\n=== Phase-56 Results ===")
     print(f"  HIGH: {before_high} → {after_high} (+{after_high-before_high})")
     print(f"  MEDIUM: {before_med} → {after_med} (+{after_med-before_med})")
     print(f"  HIGH corpus coverage: {high_cov:.1%}")

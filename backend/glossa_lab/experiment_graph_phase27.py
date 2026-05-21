@@ -21,9 +21,7 @@ Phase-27 builds on Phase-26 with:
 
 from __future__ import annotations
 
-import math
 import random
-import re
 from collections import Counter
 from typing import Any
 
@@ -54,12 +52,16 @@ def _phase27_corpus_loader(inputs: dict, params: dict) -> dict:
     Phase-27 explicit find-spot overrides."""
     try:
         from glossa_lab.data.mesopotamian_contact import (  # noqa: PLC0415
-            get_indus_seals_at_mesopotamia, get_seals_with_inscription,
-            get_meluhhan_persons_v3, get_parpola_phoneme_map,
-            get_janabiyah_seal_reading, get_meluhha_tablets,
-            get_cisi_findspot_map, get_contact_zone_prefix_set,
-            get_phase27_seal_findspot_overrides,
+            get_cisi_findspot_map,
+            get_contact_zone_prefix_set,
             get_iconographic_anchors,
+            get_indus_seals_at_mesopotamia,
+            get_janabiyah_seal_reading,
+            get_meluhha_tablets,
+            get_meluhhan_persons_v3,
+            get_parpola_phoneme_map,
+            get_phase27_seal_findspot_overrides,
+            get_seals_with_inscription,
         )
     except Exception as exc:  # noqa: BLE001
         return {"error": f"data module not available: {exc}"}
@@ -656,7 +658,7 @@ def _shu_ilishu_contact_zone_filter(inputs: dict, params: dict) -> dict:
     """Phase-27: ACTUALLY filter the 138 Phase-25e Shu-ilishu candidate
     inscriptions to those with contact-zone provenience, using the new
     catalogue_id-aware indus_cisi accessor."""
-    contact_zone = set(inputs.get("contact_zone_prefixes") or [])
+    set(inputs.get("contact_zone_prefixes") or [])
     findspot_map = inputs.get("findspot_map") or {}
 
     try:

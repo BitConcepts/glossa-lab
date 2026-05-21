@@ -14,9 +14,11 @@ Prior context:
 - Avishai hypothesis: isolated fish = commodity, compound = occupational
 """
 
-import sys, json, os, datetime
+import datetime
+import json
+import os
+import sys
 from pathlib import Path
-import pandas as pd
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "backend"))
@@ -172,13 +174,13 @@ for cat, data in gulf_catalogues.items():
             print(f"      - {ex}")
 
 print("""
-CRITICAL FINDING: All 3 Gulf catalogues contain DILMUN-type seals (circular, 
-pictorial), not Indus-script seals. The Gulf corpus for Indus-script fish sign 
+CRITICAL FINDING: All 3 Gulf catalogues contain DILMUN-type seals (circular,
+pictorial), not Indus-script seals. The Gulf corpus for Indus-script fish sign
 testing is NOT buildable from these publications alone.
 
-HOWEVER — Dilmun fish iconography also shows fish exclusively in compound 
-pictorial contexts (with humans, staffs, animals), not in isolation. This 
-parallels the Indus script finding and strengthens the compound/occupational 
+HOWEVER — Dilmun fish iconography also shows fish exclusively in compound
+pictorial contexts (with humans, staffs, animals), not in isolation. This
+parallels the Indus script finding and strengthens the compound/occupational
 interpretation across traditions.
 """)
 
@@ -200,11 +202,11 @@ if results_file.exists():
   The fish sign is 0% isolated across ALL 9 sites in the Holdat corpus:
   - Lothal (IVC maritime port, Gujarat coast): 6 fish seals, 0 isolated
   - 8 inland sites: 107 fish seals, 0 isolated
-  
-  This definitively shows that formal stamp seals do not encode fish as 
+
+  This definitively shows that formal stamp seals do not encode fish as
   an isolated commodity tally — at ANY site, coastal or inland.
-  
-  Supported by Martini 2025: commodity tallies used perishable media 
+
+  Supported by Martini 2025: commodity tallies used perishable media
   (wooden pillars, pottery ostraca), not formal stamp seals.
 """)
 
@@ -219,27 +221,27 @@ Subject: Re: Fish Sign Polysemy — Comprehensive Test Results
 
 Dear Avishai,
 
-Thank you for your stimulating polysemy hypothesis and for sharing your papers. 
-I've now run a comprehensive test across multiple lines of evidence. Here is 
+Thank you for your stimulating polysemy hypothesis and for sharing your papers.
+I've now run a comprehensive test across multiple lines of evidence. Here is
 what we found:
 
 ────────────────────────────────────────────────
 1. YOUR AKKADIAN SHORTHAND MODEL — ASSESSMENT
 ────────────────────────────────────────────────
 
-I've carefully read both your papers. Your Akkadian shorthand model (fish = /mi/ 
-mīn, "divine/value marker") is consistent with our Glossa-Lab reading of M047 
-as min/mīn (MEDIUM confidence, DEDR 4897, crosswalk-confirmed). The fish sign's 
-38% frequency in trade seals aligns with its role as a high-frequency compound 
-element. Critically, in all 11 of your sample inscriptions, the fish sign appears 
-in compound sequences — never in isolation. Your own data thus aligns with the 
+I've carefully read both your papers. Your Akkadian shorthand model (fish = /mi/
+mīn, "divine/value marker") is consistent with our Glossa-Lab reading of M047
+as min/mīn (MEDIUM confidence, DEDR 4897, crosswalk-confirmed). The fish sign's
+38% frequency in trade seals aligns with its role as a high-frequency compound
+element. Critically, in all 11 of your sample inscriptions, the fish sign appears
+in compound sequences — never in isolation. Your own data thus aligns with the
 result below.
 
 ────────────────────────────────────────────────
 2. FISH SIGN POLYSEMY TEST — FULL CORPUS RESULTS
 ────────────────────────────────────────────────
 
-We extended the Phase-124 finding (0 isolated in the full formal corpus) to a 
+We extended the Phase-124 finding (0 isolated in the full formal corpus) to a
 site-by-site breakdown across all 9 sites in the Holdat corpus (1,390+ seals):
 
 Fish sign family tested: M047 (plain fish), M049 (fish+mark), M052 (fish+stroke),
@@ -260,49 +262,49 @@ Results:
   ─────────────────────────────────────────────────────────────
   TOTAL                       113          0 (0%)     113 (100%)
 
-This includes Lothal — the IVC's primary Gujarat coastal port with a 
-documented ancient dock, the most likely site for maritime commodity tallies. 
+This includes Lothal — the IVC's primary Gujarat coastal port with a
+documented ancient dock, the most likely site for maritime commodity tallies.
 Even there: 0 isolated fish signs across all 6 fish-sign seals.
 
 ────────────────────────────────────────────────
 3. GULF SEAL CATALOGUES — UNEXPECTED FINDING
 ────────────────────────────────────────────────
 
-To test your polysemy hypothesis on Gulf trade assemblages, we processed the 
-three major Gulf excavation publications you suggested (Saar/Crawford 2001, 
-Failaka Tell F6/Hojlund 2012, Failaka Vol 2/David-Cuny & Neyme 2015 — a 
+To test your polysemy hypothesis on Gulf trade assemblages, we processed the
+three major Gulf excavation publications you suggested (Saar/Crawford 2001,
+Failaka Tell F6/Hojlund 2012, Failaka Vol 2/David-Cuny & Neyme 2015 — a
 combined 551 pages).
 
-Unexpected finding: All three catalogues contain Dilmun-type seals — the 
-circular Gulf stamp seals with pictorial iconography — rather than Indus-script 
-seals. These publications do not include the square Indus stamp seals needed 
+Unexpected finding: All three catalogues contain Dilmun-type seals — the
+circular Gulf stamp seals with pictorial iconography — rather than Indus-script
+seals. These publications do not include the square Indus stamp seals needed
 for M-number sign sequence analysis.
 
-However, there is an intriguing parallel: in the Dilmun seals from Tell F6 
+However, there is an intriguing parallel: in the Dilmun seals from Tell F6
 (Failaka), fish appears exclusively in compound pictorial contexts:
   - E137-X587: "human holds a fish; below it another fish facing downwards"
   - A235-X905: "three fish attached from their mouth to a staff"
   - A221-X766: "a fish attached to a staff held by a nude human"
 
-Fish never appears as a solitary motif on any Dilmun seal in these 
+Fish never appears as a solitary motif on any Dilmun seal in these
 catalogues — the compound pattern holds even in the Gulf pictorial tradition.
 
 ────────────────────────────────────────────────
 4. WHERE THE COMMODITY-TALLY FISH MAY EXIST
 ────────────────────────────────────────────────
 
-The Martini 2025 dissertation offers the key: commodity records in the IVC 
-administrative system were kept on PERISHABLE MEDIA — the Kirari wooden pillar 
-and Egypt ostracon examples show that fish, oil, and textile tallies were 
-recorded on wood and pottery, not on formal stamp seals. Formal stamp seals 
+The Martini 2025 dissertation offers the key: commodity records in the IVC
+administrative system were kept on PERISHABLE MEDIA — the Kirari wooden pillar
+and Egypt ostracon examples show that fish, oil, and textile tallies were
+recorded on wood and pottery, not on formal stamp seals. Formal stamp seals
 encode identities (guild titles, personal names), not quantities.
 
 This means:
 - Your commodity-unit hypothesis may well be correct
-- But the evidence would exist on wooden tablets, potsherd ledgers, and 
+- But the evidence would exist on wooden tablets, potsherd ledgers, and
   similar perishable materials — not in the formal seal corpus
-- The 0/113 isolation result doesn't falsify your hypothesis; it shows 
-  that the commodity function (if it existed) operated in a different 
+- The 0/113 isolation result doesn't falsify your hypothesis; it shows
+  that the commodity function (if it existed) operated in a different
   documentary register than stamp seals
 
 ────────────────────────────────────────────────
@@ -311,18 +313,18 @@ This means:
 
 The hypothesis would be testable if we could find:
 (a) Isolated fish signs on tablets/tags (not stamp seals) from excavations
-(b) Indus-script seals specifically from Gulf trade contexts 
-    (Ur, Bahrain, or Susa deposits) — these exist in smaller numbers 
+(b) Indus-script seals specifically from Gulf trade contexts
+    (Ur, Bahrain, or Susa deposits) — these exist in smaller numbers
     outside the main Holdat dataset
 (c) A bilingual record (Akkadian/Indus) showing fish as a unit marker
 
-If you have access to the Wells catalog or Parpola's full concordance 
-(which includes Gulf-site seals), a targeted search for fish-sign seals 
-from Mesopotamian contexts could still test the hypothesis on a smaller 
+If you have access to the Wells catalog or Parpola's full concordance
+(which includes Gulf-site seals), a targeted search for fish-sign seals
+from Mesopotamian contexts could still test the hypothesis on a smaller
 but more relevant sample.
 
-I'd be happy to share the complete sign-sequence data for all 6 Lothal 
-fish-sign seals, and the full compound-context listings for M047/M049-M056 
+I'd be happy to share the complete sign-sequence data for all 6 Lothal
+fish-sign seals, and the full compound-context listings for M047/M049-M056
 if that would help your analysis.
 
 With collegial regards,

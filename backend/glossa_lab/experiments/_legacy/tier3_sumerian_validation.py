@@ -42,11 +42,13 @@ sys.path.insert(0, _BACKEND)
 
 def run_tier3_sumerian(verbose: bool = True) -> dict[str, Any]:
     from glossa_lab.data.sumerian_ur3 import (
-        get_corpus_symbols as sum_sym,
         get_corpus_inscriptions as sum_ins,
     )
-    from glossa_lab.pipelines.decipher   import LanguageModel, decipher, score_accuracy
+    from glossa_lab.data.sumerian_ur3 import (
+        get_corpus_symbols as sum_sym,
+    )
     from glossa_lab.pipelines.beam_decipher import beam_decipher
+    from glossa_lab.pipelines.decipher import LanguageModel, decipher, score_accuracy
 
     def _pr(*a, **kw):
         if verbose: print(*a, **kw)
@@ -169,7 +171,7 @@ def run_tier3_sumerian(verbose: bool = True) -> dict[str, Any]:
             "before phonological group constraints can be applied."
         )
 
-    _pr(f"\n  TIER 3 SUMMARY:")
+    _pr("\n  TIER 3 SUMMARY:")
     _pr(f"    SA surjective:          {acc_sa['correct']}/{acc_sa['total']} = {acc_sa['accuracy']*100:.1f}%")
     _pr(f"    Beam bijective w=200:   {acc_b1['correct']}/{acc_b1['total']} = {acc_b1['accuracy']*100:.1f}%")
     _pr(f"    Beam bijective w=500:   {acc_b2['correct']}/{acc_b2['total']} = {acc_b2['accuracy']*100:.1f}%")

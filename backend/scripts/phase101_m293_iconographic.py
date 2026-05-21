@@ -19,7 +19,11 @@ name element, not a classifier.
 CPU only. Output: reports/phase101_m293_iconographic.json
 """
 from __future__ import annotations
-import csv, json, re, time
+
+import csv
+import json
+import re
+import time
 from collections import Counter
 from pathlib import Path
 
@@ -127,13 +131,15 @@ def search_semanticscholar_sign293() -> list[dict]:
     """Quick SemanticScholar search for M293/sign 293 papers."""
     results = []
     try:
-        import sys, os
+        import os
+        import sys
         sys.path.insert(0, str(REPO/"backend"))
         os.environ.setdefault("GLOSSA_DATA_DIR", str(REPO/"backend/data"))
         from glossa_lab.api.settings import get_key
         api_key = get_key("semantic_scholar_api_key") or ""
 
         import concurrent.futures as cf
+
         from semanticscholar import SemanticScholar
         sch = SemanticScholar(api_key=api_key or None, timeout=20)
 
@@ -197,7 +203,7 @@ def main():
     t_rate  = n_term / n_occ if n_occ else 0
     m_rate  = n_med  / n_occ if n_occ else 0
 
-    print(f"\n  M293 positional profile:")
+    print("\n  M293 positional profile:")
     print(f"    INITIAL:  {i_rate:.1%} ({n_init})")
     print(f"    MEDIAL:   {m_rate:.1%} ({n_med})")
     print(f"    TERMINAL: {t_rate:.1%} ({n_term})")
@@ -210,13 +216,13 @@ def main():
     n_after_animal = sum(1 for ins in inscriptions for i,s in enumerate(ins)
                          if s == TARGET and i > 0 and ins[i-1] in ANIMAL_CLASSIFIERS)
 
-    print(f"\n  Grammar slot analysis:")
+    print("\n  Grammar slot analysis:")
     print(f"    After genitive (M267):    {n_after_gen} ({n_after_gen/n_occ:.1%})")
     print(f"    Before case suffix:       {n_before_suf} ({n_before_suf/n_occ:.1%})")
     print(f"    After animal classifier:  {n_after_animal} ({n_after_animal/n_occ:.1%})")
 
     # ── 3. Comparanda: M293 vs animal classifiers ────────────────────────────
-    print(f"\n  Comparanda — positional profiles:")
+    print("\n  Comparanda — positional profiles:")
     comp = analyze_comparanda(inscriptions, freq)
     for sign, data in sorted(comp.items(), key=lambda x: -x[1]["freq"]):
         marker = " <-- TARGET" if sign == TARGET else ""
@@ -225,11 +231,11 @@ def main():
               f"-> {data['primary_role']}{marker}")
 
     # ── 4. PDF search ────────────────────────────────────────────────────────
-    print(f"\n  Searching im77intro.pdf for sign 293...")
+    print("\n  Searching im77intro.pdf for sign 293...")
     pdf_findings = search_im77_pdf()
 
     # ── 5. SemanticScholar search ────────────────────────────────────────────
-    print(f"\n  Searching SemanticScholar for 'sign 293 bow'...")
+    print("\n  Searching SemanticScholar for 'sign 293 bow'...")
     s2_results = search_semanticscholar_sign293()
     print(f"  Relevant papers found: {len(s2_results)}")
 
@@ -245,7 +251,7 @@ def main():
     # Personal name criterion: after genitive + before suffix
     personal_name_score = (n_after_gen + n_before_suf) / n_occ if n_occ else 0
 
-    print(f"\n  Decision logic:")
+    print("\n  Decision logic:")
     print(f"    Mean classifier INITIAL rate: {mean_classifier_i:.1%}")
     print(f"    M293 INITIAL rate:            {i_rate:.1%}")
     print(f"    M293 is classifier-like:      {m293_is_classifier_like}")
@@ -288,7 +294,7 @@ def main():
             f"Further iconographic evidence needed."
         )
 
-    print(f"\n=== Phase-101 Results ===")
+    print("\n=== Phase-101 Results ===")
     print(f"  M293 = '{verdict_reading}' ({confidence_verdict})")
     print(f"  Reasoning: {reasoning[:200]}")
     print(f"  PDF contexts found: {pdf_findings.get('n_293_mentions',0)}")

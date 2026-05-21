@@ -18,8 +18,12 @@ GPU: torch for positional entropy matrix over formula corpus.
 Output: reports/phase64_morphological_boundary.json
 """
 from __future__ import annotations
-import csv, json, math, sys
-from collections import Counter, defaultdict
+
+import csv
+import json
+import math
+import sys
+from collections import Counter
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parents[1]))
@@ -281,7 +285,7 @@ def main():
     # Score M267 candidates
     m267_scores = score_m267_candidates(m267_ctx, set(KNOWN_SUFFIX_SIGNS), set(KNOWN_INITIAL_SIGNS))
     top_candidate = m267_scores[0]["reading"] if m267_scores else "?"
-    print(f"\nM267 candidate scores:")
+    print("\nM267 candidate scores:")
     for s in m267_scores:
         print(f"  {s['reading']:6s} ({s['pos']:25s}) score={s['score']:.1f}  {s['notes']}")
 
@@ -289,7 +293,7 @@ def main():
     key_signs = list(KNOWN_SUFFIX_SIGNS.keys()) + ["M267", "M059", "M099", "M211"]
     entropy = compute_positional_entropy_gpu(inscriptions, key_signs)
 
-    print(f"\nPositional entropy (high = variable position, low = fixed role):")
+    print("\nPositional entropy (high = variable position, low = fixed role):")
     for sign in sorted(entropy, key=lambda s: entropy[s]):
         role_hint = "SUFFIX" if sign in KNOWN_SUFFIX_SIGNS else ("ROOT" if sign in KNOWN_INITIAL_SIGNS else "?")
         print(f"  {sign}: H={entropy[sign]:.3f}  {role_hint}  {anchors.get(sign,{}).get('reading','?')}")
@@ -299,7 +303,7 @@ def main():
     n_boundaries = len(boundary_map)
     print(f"\n  Morpheme boundaries detected in {n_boundaries} top formulas")
 
-    print(f"\n=== Phase-64 Results ===")
+    print("\n=== Phase-64 Results ===")
     print(f"  M267 top candidate:        {top_candidate} ({m267_scores[0]['gloss']})")
     print(f"  M267 2nd candidate:        {m267_scores[1]['reading']} ({m267_scores[1]['gloss']})")
     print(f"  Boundaries in top formulas: {n_boundaries}")

@@ -23,7 +23,6 @@ Geographic / temporal metadata:
 from __future__ import annotations
 
 import os
-import sys
 from pathlib import Path
 from typing import Any
 
@@ -197,6 +196,7 @@ def get_syllabic_inventory_filtered(min_freq: int = 3) -> list[str]:
 #          colon ፥ (98), semicolon ፤ (29), question mark ፧ (145).
 
 import re as _re
+
 
 def get_clean_corpus_symbols() -> list[str]:
     """Return syllabic tokens from the punctuation-free Genesis (Dr. Fuls, April 2026).

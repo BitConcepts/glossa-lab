@@ -190,8 +190,9 @@ def _run_affinity_at_fraction(
     verbose: bool = True,
 ) -> dict[str, Any]:
     """Run affinity analysis on a fraction of the corpus and score against ground truth."""
-    from glossa_lab.pipelines.logosyllabic import classify_signs, compute_affinity
     from collections import Counter
+
+    from glossa_lab.pipelines.logosyllabic import classify_signs, compute_affinity
 
     n = max(10, int(len(inscriptions) * fraction))
     subset = inscriptions[:n]

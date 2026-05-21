@@ -291,7 +291,7 @@ def _falsification_battery(inputs: dict, params: dict) -> dict:
     n_pass = result.get("n_pass", 0)
     n_weak = result.get("n_weak", 0)
     n_fail = result.get("n_fail", 0)
-    total  = n_pass + n_weak + n_fail
+    n_pass + n_weak + n_fail
     support = result.get("support_rate", 0)
     return {
         "n_pass": n_pass,

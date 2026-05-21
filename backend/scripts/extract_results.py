@@ -1,6 +1,9 @@
 """Quick extraction: SA consistency scores for South Dravidian, Sanskrit, Pali, Tamil."""
-import sys, json, time
+import json
+import sys
+import time
 from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).parent))
 sys.path.insert(0, str(Path(__file__).parent / "tests"))
 
@@ -66,7 +69,7 @@ out.write_text(json.dumps({
     "wsc_tier": wsc_r.get("tier_classification"),
     "language_results": results,
 }, indent=2))
-print(f"\nSaved to reports/indus_language_comparison.json")
+print("\nSaved to reports/indus_language_comparison.json")
 
 print("\n=== FINAL SUMMARY ===")
 for lang, r in sorted(results.items(), key=lambda x: -x[1]["mean_consistency"]):

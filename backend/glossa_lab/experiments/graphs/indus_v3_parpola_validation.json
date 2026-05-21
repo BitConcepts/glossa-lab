@@ -1,6 +1,6 @@
 {
   "id": "indus_v3_parpola_validation",
-  "name": "Indus V3 \u2014 Parpola Phoneme Map Validation (16 readings)",
+  "name": "Indus V3 — Parpola Phoneme Map Validation (16 readings)",
   "description": "All 16 Parpola readings pass positional validation. Sign 740 deity det confirmed I=100%. Numerals have expected medial distribution.",
   "nodes": [
     {
@@ -62,5 +62,6 @@
       "sourcePort": "result",
       "targetPort": "data"
     }
-  ]
+  ],
+  "graph_type": "experiment"
 }

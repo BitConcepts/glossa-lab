@@ -1,0 +1,2455 @@
+{
+  "_citation": {
+    "primary_sources": [
+      "A.1",
+      "A.2"
+    ],
+    "derivation": "Derived from mayig/indus-valley-script-corpus (GitHub, MIT License). Digitization of Parpola et al. CISI Vols 1-3. Sign IDs are Parpola P-numbers.",
+    "authors": "mcskware (digitization); Parpola, A. et al. 1987-2010 (original corpus)",
+    "date": "2026-05-17"
+  },
+  "n_inscriptions": 179,
+  "n_sign_tokens": 1003,
+  "n_distinct_signs": 182,
+  "sign_numbering": "Parpola (allograph numbers, e.g. P121, P324)",
+  "sites": [
+    "M"
+  ],
+  "inscriptions": [
+    {
+      "id": "M-1A",
+      "site": "M",
+      "description": "unicorn I seal",
+      "signs": [
+        "P121",
+        "P202",
+        "P385",
+        "P073",
+        "P108"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-3A",
+      "site": "M",
+      "description": "unicorn I seal",
+      "signs": [
+        "P320",
+        "P145",
+        "P094"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-4A",
+      "site": "M",
+      "description": "unicorn I seal",
+      "signs": [
+        "P205",
+        "P186",
+        "P147",
+        "P316",
+        "P056",
+        "P122",
+        "P237",
+        "P268",
+        "P268",
+        "P147"
+      ],
+      "n_signs": 10
+    },
+    {
+      "id": "M-5A",
+      "site": "M",
+      "description": "unicorn I seal",
+      "signs": [
+        "P324",
+        "P096",
+        "P062",
+        "P060",
+        "P120",
+        "P256"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-6A",
+      "site": "M",
+      "description": "unicorn I seal",
+      "signs": [
+        "P378",
+        "P384",
+        "P201",
+        "P065"
+      ],
+      "n_signs": 4
+    },
+    {
+      "id": "M-7A",
+      "site": "M",
+      "description": "unicorn I seal",
+      "signs": [
+        "P086",
+        "P352",
+        "P011",
+        "P324",
+        "P154",
+        "P009",
+        "P154",
+        "P175",
+        "P062",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 11
+    },
+    {
+      "id": "M-8A",
+      "site": "M",
+      "description": "unicorn I seal",
+      "signs": [
+        "P316",
+        "P011",
+        "P270"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-9A",
+      "site": "M",
+      "description": "unicorn I seal",
+      "signs": [
+        "P144",
+        "P205",
+        "P327"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-10A",
+      "site": "M",
+      "description": "unicorn I seal",
+      "signs": [
+        "P086",
+        "P204",
+        "P114",
+        "P151",
+        "P316",
+        "P060",
+        "P364",
+        "P122",
+        "P067",
+        "P221"
+      ],
+      "n_signs": 10
+    },
+    {
+      "id": "M-12A",
+      "site": "M",
+      "description": "unicorn II seal",
+      "signs": [
+        "P324",
+        "P086",
+        "P276",
+        "P058",
+        "P122",
+        "P202",
+        "P386",
+        "P182",
+        "P108"
+      ],
+      "n_signs": 9
+    },
+    {
+      "id": "M-13A",
+      "site": "M",
+      "description": "unicorn II seal",
+      "signs": [
+        "P202",
+        "P205",
+        "P035"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-14A",
+      "site": "M",
+      "description": "unicorn II seal",
+      "signs": [
+        "P324",
+        "P117",
+        "P210",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-15A",
+      "site": "M",
+      "description": "unicorn II seal",
+      "signs": [
+        "P013",
+        "P324",
+        "P194",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-16A",
+      "site": "M",
+      "description": "unicorn II seal",
+      "signs": [
+        "P378",
+        "P026",
+        "P151",
+        "P346"
+      ],
+      "n_signs": 4
+    },
+    {
+      "id": "M-17A",
+      "site": "M",
+      "description": "unicorn II seal",
+      "signs": [
+        "P086",
+        "P126",
+        "P122",
+        "P369",
+        "P232"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-18A",
+      "site": "M",
+      "description": "unicorn II seal",
+      "signs": [
+        "P341",
+        "P324",
+        "P142"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-19A",
+      "site": "M",
+      "description": "unicorn II seal",
+      "signs": [
+        "P000",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-20A",
+      "site": "M",
+      "description": "unicorn II seal",
+      "signs": [
+        "P086",
+        "P125",
+        "P122",
+        "P385",
+        "P147",
+        "P147",
+        "P215",
+        "P275"
+      ],
+      "n_signs": 8
+    },
+    {
+      "id": "M-21A",
+      "site": "M",
+      "description": "unicorn II seal",
+      "signs": [
+        "P091",
+        "P121",
+        "P324",
+        "P272",
+        "P256",
+        "P145",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 8
+    },
+    {
+      "id": "M-22A",
+      "site": "M",
+      "description": "unicorn II seal",
+      "signs": [
+        "P324",
+        "P172",
+        "P194",
+        "P050",
+        "P145",
+        "P230",
+        "P000"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-23A",
+      "site": "M",
+      "description": "unicorn II seal",
+      "signs": [
+        "P324",
+        "P197",
+        "P120",
+        "P256",
+        "P217",
+        "P050",
+        "P060",
+        "P121",
+        "P160",
+        "P350",
+        "P390",
+        "P076",
+        "P202"
+      ],
+      "n_signs": 13
+    },
+    {
+      "id": "M-24A",
+      "site": "M",
+      "description": "unicorn II seal",
+      "signs": [
+        "P013",
+        "P324",
+        "P062",
+        "P060",
+        "P122",
+        "P174",
+        "P011"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-25A",
+      "site": "M",
+      "description": "unicorn II seal",
+      "signs": [
+        "P268",
+        "P268",
+        "P050",
+        "P316",
+        "P276"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-26A",
+      "site": "M",
+      "description": "unicorn II seal",
+      "signs": [
+        "P013",
+        "P324",
+        "P228",
+        "P120",
+        "P256"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-27A",
+      "site": "M",
+      "description": "unicorn II seal",
+      "signs": [
+        "P238",
+        "P060",
+        "P364",
+        "P325",
+        "P311",
+        "P154",
+        "P123"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-28A",
+      "site": "M",
+      "description": "unicorn II seal",
+      "signs": [
+        "P000",
+        "P103",
+        "P324",
+        "P332",
+        "P349",
+        "P095",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 8
+    },
+    {
+      "id": "M-29A",
+      "site": "M",
+      "description": "unicorn II seal",
+      "signs": [
+        "P324",
+        "P142",
+        "P062",
+        "P060",
+        "P364",
+        "P122",
+        "P050",
+        "P221",
+        "P210"
+      ],
+      "n_signs": 9
+    },
+    {
+      "id": "M-30A",
+      "site": "M",
+      "description": "unicorn II seal",
+      "signs": [
+        "P324",
+        "P332",
+        "P127",
+        "P210",
+        "P062",
+        "P060",
+        "P364"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-31A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P324",
+        "P067",
+        "P275",
+        "P058",
+        "P120",
+        "P378"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-32A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P086",
+        "P123",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 4
+    },
+    {
+      "id": "M-33A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P324",
+        "P145",
+        "P175",
+        "P111",
+        "P058",
+        "P122",
+        "P041"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-34A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P324",
+        "P309",
+        "P194",
+        "P122",
+        "P086",
+        "P108",
+        "P103"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-35A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P324",
+        "P086",
+        "P276",
+        "P058",
+        "P056",
+        "P122",
+        "P007"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-36A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P324",
+        "P358",
+        "P270",
+        "P050",
+        "P145",
+        "P122",
+        "P202",
+        "P174",
+        "P307"
+      ],
+      "n_signs": 9
+    },
+    {
+      "id": "M-37A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P217",
+        "P050",
+        "P092"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-38A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P324",
+        "P256",
+        "P188",
+        "P073",
+        "P050",
+        "P145",
+        "P062",
+        "P060",
+        "P122",
+        "P086",
+        "P035",
+        "P270",
+        "P145"
+      ],
+      "n_signs": 13
+    },
+    {
+      "id": "M-39A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P000",
+        "P316",
+        "P062",
+        "P060",
+        "P139",
+        "P083",
+        "P303"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-40A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P089",
+        "P122",
+        "P301",
+        "P186",
+        "P125"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-41A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P324",
+        "P270",
+        "P062",
+        "P060",
+        "P122",
+        "P086",
+        "P035",
+        "P378"
+      ],
+      "n_signs": 8
+    },
+    {
+      "id": "M-42A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P301",
+        "P230",
+        "P062",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-43A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P324",
+        "P230",
+        "P056",
+        "P122",
+        "P142",
+        "P360"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-44A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P324",
+        "P332",
+        "P147",
+        "P316",
+        "P364",
+        "P122",
+        "P154",
+        "P296"
+      ],
+      "n_signs": 8
+    },
+    {
+      "id": "M-45A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P268",
+        "P268",
+        "P372",
+        "P139",
+        "P205",
+        "P349",
+        "P145"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-46A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P324",
+        "P230",
+        "P062",
+        "P060",
+        "P122",
+        "P050",
+        "P201",
+        "P353"
+      ],
+      "n_signs": 8
+    },
+    {
+      "id": "M-47A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P324",
+        "P332",
+        "P060",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-48A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P086",
+        "P378",
+        "P215",
+        "P120",
+        "P202",
+        "P154"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-49A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P000",
+        "P230",
+        "P062",
+        "P050",
+        "P145",
+        "P122",
+        "P205",
+        "P091",
+        "P145",
+        "P076"
+      ],
+      "n_signs": 10
+    },
+    {
+      "id": "M-50A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P324",
+        "P288",
+        "P127",
+        "P147",
+        "P316",
+        "P062",
+        "P230",
+        "P122",
+        "P000"
+      ],
+      "n_signs": 9
+    },
+    {
+      "id": "M-51A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P324",
+        "P230",
+        "P215",
+        "P091",
+        "P060",
+        "P324",
+        "P086",
+        "P011"
+      ],
+      "n_signs": 8
+    },
+    {
+      "id": "M-52A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P324",
+        "P172",
+        "P145",
+        "P050",
+        "P092",
+        "P060",
+        "P364",
+        "P122",
+        "P211",
+        "P320"
+      ],
+      "n_signs": 10
+    },
+    {
+      "id": "M-53A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P013",
+        "P324",
+        "P050",
+        "P126",
+        "P122",
+        "P205",
+        "P076",
+        "P154",
+        "P011"
+      ],
+      "n_signs": 9
+    },
+    {
+      "id": "M-54A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P051",
+        "P062",
+        "P147",
+        "P316",
+        "P230",
+        "P122",
+        "P378"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-55A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P000",
+        "P332",
+        "P215",
+        "P275",
+        "P121",
+        "P256"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-56A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P324",
+        "P382",
+        "P145",
+        "P060",
+        "P120",
+        "P230",
+        "P281",
+        "P349"
+      ],
+      "n_signs": 8
+    },
+    {
+      "id": "M-57A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P051",
+        "P145",
+        "P056",
+        "P230",
+        "P122",
+        "P258"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-58A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P324",
+        "P215",
+        "P210",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-59A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P202",
+        "P123",
+        "P326",
+        "P120",
+        "P160"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-60A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P001",
+        "P000"
+      ],
+      "n_signs": 2
+    },
+    {
+      "id": "M-61A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P324",
+        "P251",
+        "P056",
+        "P050",
+        "P221",
+        "P268",
+        "P246"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-62A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P051",
+        "P122",
+        "P325",
+        "P230",
+        "P310",
+        "P234"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-63A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P301",
+        "P230",
+        "P120",
+        "P230"
+      ],
+      "n_signs": 4
+    },
+    {
+      "id": "M-64A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P217",
+        "P147",
+        "P316",
+        "P120",
+        "P050",
+        "P124"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-65A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P217",
+        "P050",
+        "P144",
+        "P121",
+        "P316",
+        "P289"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-66A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P086",
+        "P276",
+        "P060",
+        "P122",
+        "P103",
+        "P206",
+        "P091",
+        "P324"
+      ],
+      "n_signs": 8
+    },
+    {
+      "id": "M-67A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P324",
+        "P342",
+        "P154",
+        "P120",
+        "P040",
+        "P289",
+        "P223"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-68A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P013",
+        "P324",
+        "P194",
+        "P326",
+        "P120",
+        "P160",
+        "P260",
+        "P047"
+      ],
+      "n_signs": 8
+    },
+    {
+      "id": "M-69A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P324",
+        "P364",
+        "P056",
+        "P120",
+        "P256"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-70A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P051",
+        "P145",
+        "P122",
+        "P086",
+        "P256"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-71A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P001",
+        "P108",
+        "P031",
+        "P122",
+        "P086",
+        "P023"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-72A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P324",
+        "P073",
+        "P316",
+        "P011",
+        "P125",
+        "P385"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-73A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P098",
+        "P217",
+        "P181",
+        "P000"
+      ],
+      "n_signs": 4
+    },
+    {
+      "id": "M-74A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P280",
+        "P289",
+        "P316",
+        "P011"
+      ],
+      "n_signs": 4
+    },
+    {
+      "id": "M-75A",
+      "site": "M",
+      "description": "unicorn III seal",
+      "signs": [
+        "P217",
+        "P050",
+        "P124",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-77A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P366",
+        "P086",
+        "P364",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-78A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P043",
+        "P145",
+        "P226"
+      ],
+      "n_signs": 4
+    },
+    {
+      "id": "M-79A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P012",
+        "P062",
+        "P058",
+        "P122",
+        "P385",
+        "P247"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-80A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P004",
+        "P123",
+        "P120",
+        "P202",
+        "P385"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-81A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P301",
+        "P230",
+        "P062",
+        "P122",
+        "P268",
+        "P268",
+        "P217"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-82A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P053",
+        "P122",
+        "P082",
+        "P230",
+        "P086"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-83A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P086",
+        "P128",
+        "P180"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-84A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P335",
+        "P062",
+        "P121",
+        "P202",
+        "P154"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-85A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P217",
+        "P058",
+        "P325",
+        "P251",
+        "P070"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-86A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P217",
+        "P147",
+        "P316",
+        "P056",
+        "P122",
+        "P378",
+        "P310"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-87A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P098",
+        "P178",
+        "P020"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-88A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P301",
+        "P110",
+        "P058"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-89A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P358",
+        "P313",
+        "P145",
+        "P060"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-90A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P349",
+        "P139",
+        "P144",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-91A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P009",
+        "P230",
+        "P050",
+        "P145",
+        "P122",
+        "P385",
+        "P073",
+        "P095"
+      ],
+      "n_signs": 9
+    },
+    {
+      "id": "M-92A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P075",
+        "P215",
+        "P091",
+        "P122",
+        "P369",
+        "P253"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-93A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P004",
+        "P123",
+        "P062",
+        "P325",
+        "P043"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-94A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P086",
+        "P276",
+        "P050",
+        "P123"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-95A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P086",
+        "P123",
+        "P122",
+        "P040",
+        "P342"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-96A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P004",
+        "P124"
+      ],
+      "n_signs": 2
+    },
+    {
+      "id": "M-97A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P004",
+        "P188",
+        "P073"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-98A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P288",
+        "P127"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-99A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P353",
+        "P122",
+        "P202",
+        "P038"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-100A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P013",
+        "P324",
+        "P073",
+        "P316",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-101A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P086",
+        "P210",
+        "P324",
+        "P003",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-102A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P004",
+        "P123",
+        "P154",
+        "P226"
+      ],
+      "n_signs": 4
+    },
+    {
+      "id": "M-103A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P086",
+        "P124",
+        "P122",
+        "P378"
+      ],
+      "n_signs": 4
+    },
+    {
+      "id": "M-104A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P013",
+        "P324",
+        "P050",
+        "P060",
+        "P359"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-105A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P324",
+        "P364",
+        "P056",
+        "P326",
+        "P120",
+        "P154"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-106A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P332",
+        "P000"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-107A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P238",
+        "P058",
+        "P122",
+        "P054",
+        "P071"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-108A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P099",
+        "P378",
+        "P050",
+        "P201",
+        "P075",
+        "P230",
+        "P378"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-109A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P381",
+        "P050",
+        "P092",
+        "P122",
+        "P084",
+        "P011"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-110A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P000",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-111A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P160",
+        "P303",
+        "P058",
+        "P121",
+        "P378",
+        "P378"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-112A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P332",
+        "P056",
+        "P126",
+        "P111",
+        "P325",
+        "P285",
+        "P254"
+      ],
+      "n_signs": 8
+    },
+    {
+      "id": "M-113A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P145",
+        "P349",
+        "P325",
+        "P120",
+        "P156"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-114A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P332",
+        "P283",
+        "P122",
+        "P205",
+        "P095"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-115A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P086",
+        "P352",
+        "P011",
+        "P194",
+        "P364",
+        "P122",
+        "P205",
+        "P076"
+      ],
+      "n_signs": 8
+    },
+    {
+      "id": "M-116A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P009",
+        "P194",
+        "P349",
+        "P139",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-117A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P217",
+        "P147",
+        "P316",
+        "P050",
+        "P364",
+        "P142",
+        "P122",
+        "P378"
+      ],
+      "n_signs": 8
+    },
+    {
+      "id": "M-118A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P096",
+        "P147",
+        "P316",
+        "P058",
+        "P364",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 8
+    },
+    {
+      "id": "M-119A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P001",
+        "P309",
+        "P195",
+        "P122",
+        "P086",
+        "P035",
+        "P270",
+        "P145",
+        "P154",
+        "P230"
+      ],
+      "n_signs": 10
+    },
+    {
+      "id": "M-120A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P009",
+        "P288",
+        "P325",
+        "P349",
+        "P044"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-121A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P154",
+        "P355",
+        "P058",
+        "P075"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-122A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P217",
+        "P147",
+        "P316"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-123A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P098",
+        "P014",
+        "P202",
+        "P114"
+      ],
+      "n_signs": 4
+    },
+    {
+      "id": "M-124A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P175",
+        "P050",
+        "P145"
+      ],
+      "n_signs": 4
+    },
+    {
+      "id": "M-125A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P000",
+        "P144",
+        "P108"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-126A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P000",
+        "P230",
+        "P234",
+        "P120",
+        "P256"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-127A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P238",
+        "P324",
+        "P060",
+        "P324",
+        "P194"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-128A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P175",
+        "P364",
+        "P324",
+        "P208",
+        "P316"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-129A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P217",
+        "P058",
+        "P062",
+        "P060",
+        "P325",
+        "P293"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-130A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P003",
+        "P050",
+        "P145",
+        "P122",
+        "P032"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-131A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P086",
+        "P276",
+        "P325",
+        "P086",
+        "P355"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-132A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P004",
+        "P123",
+        "P226"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-133A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P301",
+        "P230",
+        "P062",
+        "P050",
+        "P073",
+        "P369",
+        "P174",
+        "P110"
+      ],
+      "n_signs": 8
+    },
+    {
+      "id": "M-134A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P390",
+        "P145",
+        "P256"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-135A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P217",
+        "P147",
+        "P316",
+        "P144"
+      ],
+      "n_signs": 4
+    },
+    {
+      "id": "M-136A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P013",
+        "P324",
+        "P050",
+        "P126",
+        "P144",
+        "P177",
+        "P226"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-137A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P379"
+      ],
+      "n_signs": 1
+    },
+    {
+      "id": "M-138A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P154",
+        "P125"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-139A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P147",
+        "P368",
+        "P061",
+        "P325",
+        "P294"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-140A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P309",
+        "P145",
+        "P050",
+        "P201",
+        "P283",
+        "P221"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-141A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P000",
+        "P122",
+        "P000"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-142A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P022",
+        "P011",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 4
+    },
+    {
+      "id": "M-143A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P082",
+        "P122",
+        "P145",
+        "P170",
+        "P349"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-144A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P009",
+        "P092",
+        "P062",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-145A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P098",
+        "P031",
+        "P384"
+      ],
+      "n_signs": 4
+    },
+    {
+      "id": "M-146A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P073",
+        "P160",
+        "P120",
+        "P256"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-147A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P051",
+        "P364",
+        "P122",
+        "P050",
+        "P221",
+        "P217"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-148A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P385",
+        "P231"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-149A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P332",
+        "P283",
+        "P120",
+        "P230"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-150A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P368"
+      ],
+      "n_signs": 2
+    },
+    {
+      "id": "M-151A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P050",
+        "P201",
+        "P393"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-152A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P096",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 4
+    },
+    {
+      "id": "M-153A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P067",
+        "P026",
+        "P076"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-154A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P217",
+        "P050",
+        "P092",
+        "P122",
+        "P300",
+        "P182",
+        "P265"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-155A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P194",
+        "P144"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-157A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P154",
+        "P355",
+        "P058",
+        "P075",
+        "P121",
+        "P378"
+      ],
+      "n_signs": 7
+    },
+    {
+      "id": "M-158A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P086",
+        "P126",
+        "P120",
+        "P230"
+      ],
+      "n_signs": 4
+    },
+    {
+      "id": "M-159A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P136",
+        "P325",
+        "P166",
+        "P290"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-160A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P001",
+        "P048",
+        "P144",
+        "P122",
+        "P378",
+        "P325"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-161A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P268",
+        "P268",
+        "P037",
+        "P123"
+      ],
+      "n_signs": 4
+    },
+    {
+      "id": "M-162A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P332",
+        "P349",
+        "P230",
+        "P234",
+        "P123"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-163A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P217",
+        "P050",
+        "P092",
+        "P120",
+        "P378"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-164A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P031",
+        "P204",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-165A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P332",
+        "P121",
+        "P325",
+        "P086",
+        "P122",
+        "P385",
+        "P324",
+        "P076"
+      ],
+      "n_signs": 9
+    },
+    {
+      "id": "M-166A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P086",
+        "P349",
+        "P062",
+        "P364",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-167A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P000",
+        "P385"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-169A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P289",
+        "P127",
+        "P000",
+        "P145"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-170A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P175",
+        "P086",
+        "P204",
+        "P114",
+        "P145",
+        "P325",
+        "P385"
+      ],
+      "n_signs": 8
+    },
+    {
+      "id": "M-171A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P086",
+        "P204",
+        "P324",
+        "P175",
+        "P058",
+        "P364",
+        "P120",
+        "P256"
+      ],
+      "n_signs": 8
+    },
+    {
+      "id": "M-172A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P086",
+        "P128",
+        "P121",
+        "P050",
+        "P117",
+        "P355"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-173A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P110",
+        "P160",
+        "P303",
+        "P364"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-174A",
+      "site": "M",
+      "description": "unicorn IV seal",
+      "signs": [
+        "P324",
+        "P175",
+        "P050",
+        "P145",
+        "P122",
+        "P378"
+      ],
+      "n_signs": 6
+    },
+    {
+      "id": "M-175A",
+      "site": "M",
+      "description": "unicorn V seal",
+      "signs": [
+        "P000",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 3
+    },
+    {
+      "id": "M-176A",
+      "site": "M",
+      "description": "unicorn V seal",
+      "signs": [
+        "P000",
+        "P255"
+      ],
+      "n_signs": 2
+    },
+    {
+      "id": "M-177A",
+      "site": "M",
+      "description": "unicorn V seal",
+      "signs": [
+        "P086",
+        "P123",
+        "P122",
+        "P385"
+      ],
+      "n_signs": 4
+    },
+    {
+      "id": "M-178A",
+      "site": "M",
+      "description": "unicorn V seal",
+      "signs": [
+        "P086",
+        "P126"
+      ],
+      "n_signs": 2
+    },
+    {
+      "id": "M-179A",
+      "site": "M",
+      "description": "unicorn V seal",
+      "signs": [
+        "P086",
+        "P123"
+      ],
+      "n_signs": 2
+    },
+    {
+      "id": "M-180A",
+      "site": "M",
+      "description": "unicorn V seal",
+      "signs": [
+        "P324",
+        "P265"
+      ],
+      "n_signs": 2
+    },
+    {
+      "id": "M-181A",
+      "site": "M",
+      "description": "unicorn V seal",
+      "signs": [
+        "P217",
+        "P193",
+        "P122",
+        "P205",
+        "P207"
+      ],
+      "n_signs": 5
+    },
+    {
+      "id": "M-182A",
+      "site": "M",
+      "description": "unicorn V seal",
+      "signs": [
+        "P324",
+        "P095"
+      ],
+      "n_signs": 2
+    },
+    {
+      "id": "M-183A",
+      "site": "M",
+      "description": "unicorn V seal",
+      "signs": [
+        "P217",
+        "P058",
+        "P120",
+        "P205"
+      ],
+      "n_signs": 4
+    },
+    {
+      "id": "M-184A",
+      "site": "M",
+      "description": "unicorn V seal",
+      "signs": [
+        "P013",
+        "P324",
+        "P010",
+        "P359"
+      ],
+      "n_signs": 4
+    }
+  ]
+}

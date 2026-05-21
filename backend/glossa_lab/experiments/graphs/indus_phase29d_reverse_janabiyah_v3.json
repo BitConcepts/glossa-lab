@@ -4,15 +4,86 @@
   "description": "Phase-29 #5: re-run Phase-28d ReverseJanabiyahSearchV2 against ePSD2's 1,222 personal names (28x our 44-name persons-v3 corpus).",
   "auto_migrated": false,
   "nodes": [
-    { "id": "load", "type": "expNode", "data": { "atomicId": "Phase29CorpusLoader",        "label": "Load Phase-29", "params": {} }, "position": { "x": 60,  "y": 100 } },
-    { "id": "rev",  "type": "expNode", "data": { "atomicId": "M77ReverseJanabiyahSearchV3", "label": "Reverse v3",    "params": { "top_k": 30, "min_icount": 1 } }, "position": { "x": 360, "y": 100 } },
-    { "id": "out",  "type": "expNode", "data": { "atomicId": "JSONExport",                  "label": "Save",          "params": { "filename": "phase29d_reverse_janabiyah_v3.json" } }, "position": { "x": 660, "y": 100 } }
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Phase29CorpusLoader",
+        "label": "Load Phase-29",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "rev",
+      "type": "expNode",
+      "data": {
+        "atomicId": "M77ReverseJanabiyahSearchV3",
+        "label": "Reverse v3",
+        "params": {
+          "top_k": 30,
+          "min_icount": 1
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save",
+        "params": {
+          "filename": "phase29d_reverse_janabiyah_v3.json"
+        }
+      },
+      "position": {
+        "x": 660,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e1", "source": "load", "target": "rev", "sourcePort": "epsd2_personal_names", "targetPort": "epsd2_personal_names" },
-    { "id": "e2", "source": "load", "target": "rev", "sourcePort": "janabiyah_reading",     "targetPort": "janabiyah_reading" },
-    { "id": "e3", "source": "load", "target": "rev", "sourcePort": "phoneme_map",           "targetPort": "phoneme_map" },
-    { "id": "e4", "source": "load", "target": "rev", "sourcePort": "allograph_families",    "targetPort": "allograph_families" },
-    { "id": "e5", "source": "rev",  "target": "out", "targetPort": "data" }
-  ]
+    {
+      "id": "e1",
+      "source": "load",
+      "target": "rev",
+      "sourcePort": "epsd2_personal_names",
+      "targetPort": "epsd2_personal_names"
+    },
+    {
+      "id": "e2",
+      "source": "load",
+      "target": "rev",
+      "sourcePort": "janabiyah_reading",
+      "targetPort": "janabiyah_reading"
+    },
+    {
+      "id": "e3",
+      "source": "load",
+      "target": "rev",
+      "sourcePort": "phoneme_map",
+      "targetPort": "phoneme_map"
+    },
+    {
+      "id": "e4",
+      "source": "load",
+      "target": "rev",
+      "sourcePort": "allograph_families",
+      "targetPort": "allograph_families"
+    },
+    {
+      "id": "e5",
+      "source": "rev",
+      "target": "out",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

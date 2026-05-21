@@ -1,0 +1,1665 @@
+% Text title            : Rigveda Mandalam 6
+% File name             : r06.itx
+% Category              : veda, rigveda, svara
+% Location              : doc\_veda
+% Author                : Vedic Tradition
+% Transliterated by     : 1. Source: Aufrecht/van Nooten/Holland (Samhita), 2. Final transliteration: Detlef Eichler
+% Proofread by          : Detlef Eichler detlefeichler at googlemail.com
+% Latest update         : July 2, 2013
+% Send corrections to   : detlefeichler@googlemail.com, sanskrit at cheerful dot c om
+%
+% This text is prepared by volunteers and is to be used for personal study 
+% and research. The file is not to be copied or reposted for promotion of 
+% any website or individuals or for commercial purpose without permission. 
+% Please help to maintain respect for volunteer spirit.
+%
+\documentstyle[11pt,multicol,itrans]{article}
+#include=ijag.inc
+#endwordvowel=.h
+\portraitwide
+\parindent=100pt                
+\let\usedvng=\Largedvng      % for 1 column     
+\pagenumbering{itrans} 
+\def\engtitle#1{\hrule\medskip\centerline{\LARGE #1}}
+\def\itxtitle#1{\medskip\centerline{\LARGEdvng #1}\medskip\hrule}
+\def\endtitles{\medskip\obeyspaceslines}
+%%
+\begin{document}
+\engtitle{.. Rigveda Mandala 6 ..}##
+\itxtitle{.. R^igvedaH maNDalaM 6 ..}##\endtitles ##
+tvaM hya\'gne pratha\`mo ma\`notA\`syA dhi\`yo abha\'vo dasma\` hotA\' |
+tvaM sI\'M vR^iShannakR^iNordu\`ShTarI\'tu\` saho\` vishva\'smai\` saha\'se\` saha\'dhyai || 6\.001\.01
+adhA\` hotA\` nya\'sIdo\` yajI\'yAni\`Laspa\`da i\`Shaya\`nnIDya\`H san |
+taM tvA\` nara\'H pratha\`maM de\'va\`yanto\' ma\`ho rA\`ye chi\`taya\'nto\` anu\' gman || 6\.001\.02
+vR^i\`teva\` yanta\'M ba\`hubhi\'rvasa\`vyai\`3\`\'stve ra\`yiM jA\'gR^i\`vAMso\` anu\' gman |
+rusha\'ntama\`gniM da\'rsha\`taM bR^i\`hanta\'M va\`pAva\'ntaM vi\`shvahA\' dIdi\`vAMsa\'m || 6\.001\.03
+pa\`daM de\`vasya\` nama\'sA\` vyanta\'H shrava\`syava\`H shrava\' Apa\`nnamR^i\'ktam |
+nAmA\'ni chiddadhire ya\`j~niyA\'ni bha\`drAyA\'M te raNayanta\` saMdR^i\'ShTau || 6\.001\.04
+tvAM va\'rdhanti kShi\`taya\'H pR^ithi\`vyAM tvAM rAya\' u\`bhayA\'so\` janA\'nAm |
+tvaM trA\`tA ta\'raNe\` chetyo\' bhUH pi\`tA mA\`tA sada\`minmAnu\'ShANAm || 6\.001\.05
+sa\`pa\`ryeNya\`H sa pri\`yo vi\`kShva1\`\'gnirhotA\' ma\`ndro ni Sha\'sAdA\` yajI\'yAn |
+taM tvA\' va\`yaM dama\` A dI\'di\`vAMsa\`mupa\' j~nu\`bAdho\` nama\'sA sadema || 6\.001\.06
+taM tvA\' va\`yaM su\`dhyo\`3\`\' navya\'magne sumnA\`yava\' Imahe deva\`yanta\'H |
+tvaM visho\' anayo\` dIdyA\'no di\`vo a\'gne bR^iha\`tA ro\'cha\`nena\' || 6\.001\.07
+vi\`shAM ka\`viM vi\`shpati\`M shashva\'tInAM ni\`tosha\'naM vR^iSha\`bhaM cha\'rShaNI\`nAm |
+pretI\'ShaNimi\`Shaya\'ntaM pAva\`kaM rAja\'ntama\`gniM ya\'ja\`taM ra\'yI\`NAm || 6\.001\.08
+so a\'gna Ije shasha\`me cha\` marto\` yasta\` Ana\'T sa\`midhA\' ha\`vyadA\'tim |
+ya Ahu\'ti\`M pari\` vedA\` namo\'bhi\`rvishvetsa vA\`mA da\'dhate\` tvota\'H || 6\.001\.09
+a\`smA u\' te\` mahi\' ma\`he vi\'dhema\` namo\'bhiragne sa\`midho\`ta ha\`vyaiH |
+vedI\' sUno sahaso gI\`rbhiru\`kthairA te\' bha\`drAyA\'M suma\`tau ya\'tema || 6\.001\.10
+A yasta\`tantha\` roda\'sI\` vi bhA\`sA shravo\'bhishcha shrava\`sya1\`\'staru\'traH |
+bR^i\`hadbhi\`rvAjai\`H sthavi\'rebhira\`sme re\`vadbhi\'ragne vita\`raM vi bhA\'hi || 6\.001\.11
+nR^i\`vadva\'so\` sada\`middhe\'hya\`sme bhUri\' to\`kAya\` tana\'yAya pa\`shvaH |
+pU\`rvIriSho\' bR^iha\`tIrA\`rea\'ghA a\`sme bha\`drA sau\'shrava\`sAni\' santu || 6\.001\.12
+pu\`rUNya\'gne puru\`dhA tvA\`yA vasU\'ni rAjanva\`sutA\' te ashyAm |
+pu\`rUNi\` hi tve pu\'ruvAra\` santyagne\` vasu\' vidha\`te rAja\'ni\` tve || 6\.001\.13
+
+tvaM hi kShaita\'va\`dyasho.agne\' mi\`tro na patya\'se |
+tvaM vi\'charShaNe\` shravo\` vaso\' pu\`ShTiM na pu\'Shyasi || 6\.002\.01
+tvAM hi ShmA\' charSha\`Nayo\' ya\`j~nebhi\'rgI\`rbhirILa\'te |
+tvAM vA\`jI yA\'tyavR^i\`ko ra\'ja\`stUrvi\`shvacha\'rShaNiH || 6\.002\.02
+sa\`joSha\'stvA di\`vo naro\' ya\`j~nasya\' ke\`tumi\'ndhate |
+yaddha\` sya mAnu\'Sho\` jana\'H sumnA\`yurju\`hve a\'dhva\`re || 6\.002\.03
+R^idha\`dyaste\' su\`dAna\'ve dhi\`yA marta\'H sha\`shama\'te |
+U\`tI Sha bR^i\'ha\`to di\`vo dvi\`Sho aMho\` na ta\'rati || 6\.002\.04
+sa\`midhA\` yasta\` Ahu\'ti\`M nishi\'ti\`M martyo\` nasha\'t |
+va\`yAva\'nta\`M sa pu\'Shyati\` kShaya\'magne sha\`tAyu\'Sham || 6\.002\.05
+tve\`Shaste\' dhU\`ma R^i\'Nvati di\`vi Sha~nChu\`kra Ata\'taH |
+sUro\` na hi dyu\`tA tvaM kR^i\`pA pA\'vaka\` rocha\'se || 6\.002\.06
+adhA\` hi vi\`kShvIDyo.asi\' pri\`yo no\` ati\'thiH |
+ra\`NvaH pu\`rI\'va\` jUrya\'H sU\`nurna tra\'ya\`yAyya\'H || 6\.002\.07
+kratvA\` hi droNe\' a\`jyase.agne\' vA\`jI na kR^itvya\'H |
+pari\'jmeva sva\`dhA gayo.atyo\` na hvA\`ryaH shishu\'H || 6\.002\.08
+tvaM tyA chi\`dachyu\`tAgne\' pa\`shurna yava\'se |
+dhAmA\' ha\` yatte\' ajara\` vanA\' vR^i\`shchanti\` shikva\'saH || 6\.002\.09
+veShi\` hya\'dhvarIya\`tAmagne\` hotA\` dame\' vi\`shAm |
+sa\`mR^idho\' vishpate kR^iNu ju\`Shasva\' ha\`vyama\'~NgiraH || 6\.002\.10
+achChA\' no mitramaho deva de\`vAnagne\` vocha\'H suma\`tiM roda\'syoH |
+vI\`hi sva\`stiM su\'kShi\`tiM di\`vo nR^Indvi\`Sho aMhA\'Msi duri\`tA ta\'rema\` tA ta\'rema\` tavAva\'sA tarema || 6\.002\.11
+
+agne\` sa kShe\'ShadR^ita\`pA R^i\'te\`jA u\`ru jyoti\'rnashate deva\`yuShTe\' |
+yaM tvaM mi\`treNa\` varu\'NaH sa\`joShA\` deva\` pAsi\` tyaja\'sA\` marta\`maMha\'H || 6\.003\.01
+I\`je ya\`j~nebhi\'H shasha\`me shamI\'bhirR^i\`dhadvA\'rAyA\`gnaye\' dadAsha |
+e\`vA cha\`na taM ya\`shasA\`maju\'ShTi\`rnAMho\` marta\'M nashate\` na pradR^i\'ptiH || 6\.003\.02
+sUro\` na yasya\' dR^isha\`tira\'re\`pA bhI\`mA yadeti\' shucha\`tasta\` A dhIH |
+heSha\'svataH shu\`rudho\` nAyama\`ktoH kutrA\' chidra\`Nvo va\'sa\`tirva\'ne\`jAH || 6\.003\.03
+ti\`gmaM chi\`dema\` mahi\` varpo\' asya\` bhasa\`dashvo\` na ya\'masA\`na A\`sA |
+vi\`jeha\'mAnaH para\`shurna ji\`hvAM dra\`virna drA\'vayati\` dAru\` dhakSha\'t || 6\.003\.04
+sa idaste\'va\` prati\' dhAdasi\`Shya~nChishI\'ta\` tejo.aya\'so\` na dhArA\'m |
+chi\`tradhra\'jatirara\`tiryo a\`ktorverna dru\`ShadvA\' raghu\`patma\'jaMhAH || 6\.003\.05
+sa I\'M re\`bho na prati\' vasta u\`srAH sho\`chiShA\' rArapIti mi\`trama\'hAH |
+nakta\`M ya I\'maru\`Sho yo divA\` nR^Inama\'rtyo aru\`Sho yo divA\` nR^In || 6\.003\.06
+di\`vo na yasya\' vidha\`to navI\'no\`dvR^iShA\' ru\`kSha oSha\'dhIShu nUnot |
+ghR^iNA\` na yo dhraja\'sA\` patma\'nA\` yannA roda\'sI\` vasu\'nA\` daM su\`patnI\' || 6\.003\.07
+dhAyo\'bhirvA\` yo yujye\'bhira\`rkairvi\`dyunna da\'vidyo\`tsvebhi\`H shuShmai\'H |
+shardho\' vA\` yo ma\`rutA\'M ta\`takSha\' R^i\`bhurna tve\`Sho ra\'bhasA\`no a\'dyaut || 6\.003\.08
+
+yathA\' hota\`rmanu\'Sho de\`vatA\'tA ya\`j~nebhi\'H sUno sahaso\` yajA\'si |
+e\`vA no\' a\`dya sa\'ma\`nA sa\'mA\`nAnu\`shanna\'gna usha\`to ya\'kShi de\`vAn || 6\.004\.01
+sa no\' vi\`bhAvA\' cha\`kShaNi\`rna vasto\'ra\`gnirva\`ndAru\` vedya\`shchano\' dhAt |
+vi\`shvAyu\`ryo a\`mR^ito\` martye\'ShUSha\`rbhudbhUdati\'thirjA\`tave\'dAH || 6\.004\.02
+dyAvo\` na yasya\' pa\`naya\`ntyabhva\`M bhAsA\'Msi vaste\` sUryo\` na shu\`kraH |
+vi ya i\`notya\`jara\'H pAva\`ko.ashna\'sya chichChishnathatpU\`rvyANi\' || 6\.004\.03
+va\`dmA hi sU\'no\` asya\'dma\`sadvA\' cha\`kre a\`gnirja\`nuShAjmAnna\'m |
+sa tvaM na\' Urjasana\` Urja\'M dhA\` rAje\'va jeravR^i\`ke kShe\'Shya\`ntaH || 6\.004\.04
+niti\'kti\` yo vA\'ra\`Namanna\`matti\' vA\`yurna rAShTryatye\'tya\`ktUn |
+tu\`ryAma\` yasta\' A\`dishA\`marA\'tI\`ratyo\` na hruta\`H pata\'taH pari\`hrut || 6\.004\.05
+A sUryo\` na bhA\'nu\`madbhi\'ra\`rkairagne\' ta\`tantha\` roda\'sI\` vi bhA\`sA |
+chi\`tro na\'ya\`tpari\` tamA\'Msya\`ktaH sho\`chiShA\` patma\'nnaushi\`jo na dIya\'n || 6\.004\.06
+tvAM hi ma\`ndrata\'mamarkasho\`kairva\'vR^i\`mahe\` mahi\' na\`H shroShya\'gne |
+indra\`M na tvA\` shava\'sA de\`vatA\' vA\`yuM pR^i\'Nanti\` rAdha\'sA\` nR^ita\'mAH || 6\.004\.07
+nU no\' agne.avR^i\`kebhi\'H sva\`sti veShi\' rA\`yaH pa\`thibhi\`H parShyaMha\'H |
+tA sU\`ribhyo\' gR^iNa\`te rA\'si su\`mnaM made\'ma sha\`tahi\'mAH su\`vIrA\'H || 6\.004\.08
+
+hu\`ve va\'H sU\`nuM saha\'so\` yuvA\'na\`madro\'ghavAchaM ma\`tibhi\`ryavi\'ShTham |
+ya inva\'ti\` dravi\'NAni\` prache\'tA vi\`shvavA\'rANi puru\`vAro\' a\`dhruk || 6\.005\.01
+tve vasU\'ni purvaNIka hotardo\`ShA vasto\`reri\'re ya\`j~niyA\'saH |
+kShAme\'va\` vishvA\` bhuva\'nAni\` yasmi\`nsaM saubha\'gAni dadhi\`re pA\'va\`ke || 6\.005\.02
+tvaM vi\`kShu pra\`diva\'H sIda A\`su kratvA\' ra\`thIra\'bhavo\` vAryA\'NAm |
+ata\' inoShi vidha\`te chi\'kitvo\` vyA\'nu\`ShagjA\'tavedo\` vasU\'ni || 6\.005\.03
+yo na\`H sanu\'tyo abhi\`dAsa\'dagne\` yo anta\'ro mitramaho vanu\`ShyAt |
+tama\`jare\'bhi\`rvR^iSha\'bhi\`stava\` svaistapA\' tapiShTha\` tapa\'sA\` tapa\'svAn || 6\.005\.04
+yaste\' ya\`j~nena\' sa\`midhA\` ya u\`kthaira\`rkebhi\'H sUno sahaso\` dadA\'shat |
+sa martye\'ShvamR^ita\` prache\'tA rA\`yA dyu\`mnena\` shrava\'sA\` vi bhA\'ti || 6\.005\.05
+sa tatkR^i\'dhIShi\`tastUya\'magne\` spR^idho\' bAdhasva\` saha\'sA\` saha\'svAn |
+yachCha\`syase\` dyubhi\'ra\`kto vacho\'bhi\`stajju\'Shasva jari\`turghoShi\` manma\' || 6\.005\.06
+a\`shyAma\` taM kAma\'magne\` tavo\`tI a\`shyAma\' ra\`yiM ra\'yivaH su\`vIra\'m |
+a\`shyAma\` vAja\'ma\`bhi vA\`jaya\'nto\`.ashyAma\' dyu\`mnama\'jarA\`jara\'M te || 6\.005\.07
+
+pra navya\'sA\` saha\'saH sU\`numachChA\' ya\`j~nena\' gA\`tumava\' i\`chChamA\'naH |
+vR^i\`shchadva\'naM kR^i\`ShNayA\'ma\`M rusha\'ntaM vI\`tI hotA\'raM di\`vyaM ji\'gAti || 6\.006\.01
+sa shvi\'tA\`nasta\'nya\`tU ro\'chana\`sthA a\`jare\'bhi\`rnAna\'dadbhi\`ryavi\'ShThaH |
+yaH pA\'va\`kaH pu\'ru\`tama\'H pu\`rUNi\' pR^i\`thUnya\`gnira\'nu\`yAti\` bharva\'n || 6\.006\.02
+vi te\` viShva\`gvAta\'jUtAso agne\` bhAmA\'saH shuche\` shucha\'yashcharanti |
+tu\`vi\`mra\`kShAso\' di\`vyA nava\'gvA\` vanA\' vananti dhR^iSha\`tA ru\`janta\'H || 6\.006\.03
+ye te\' shu\`krAsa\`H shucha\'yaH shuchiShma\`H kShAM vapa\'nti\` viShi\'tAso\` ashvA\'H |
+adha\' bhra\`masta\' urvi\`yA vi bhA\'ti yA\`taya\'mAno\` adhi\` sAnu\` pR^ishne\'H || 6\.006\.04
+adha\' ji\`hvA pA\'patIti\` pra vR^iShNo\' goShu\`yudho\` nAshani\'H sR^ijA\`nA |
+shUra\'syeva\` prasi\'tiH kShA\`tira\`gnerdu\`rvartu\'rbhI\`mo da\'yate\` vanA\'ni || 6\.006\.05
+A bhA\`nunA\` pArthi\'vAni\` jrayA\'Msi ma\`hasto\`dasya\' dhR^iSha\`tA ta\'tantha |
+sa bA\'dha\`svApa\' bha\`yA saho\'bhi\`H spR^idho\' vanu\`Shyanva\`nuSho\` ni jU\'rva || 6\.006\.06
+sa chi\'tra chi\`traM chi\`taya\'ntama\`sme chitra\'kShatra chi\`trata\'maM vayo\`dhAm |
+cha\`ndraM ra\`yiM pu\'ru\`vIra\'M bR^i\`hanta\`M chandra\' cha\`ndrAbhi\'rgR^iNa\`te yu\'vasva || 6\.006\.07
+
+mU\`rdhAna\'M di\`vo a\'ra\`tiM pR^i\'thi\`vyA vai\'shvAna\`ramR^i\`ta A jA\`tama\`gnim |
+ka\`viM sa\`mrAja\`mati\'thi\`M janA\'nAmA\`sannA pAtra\'M janayanta de\`vAH || 6\.007\.01
+nAbhi\'M ya\`j~nAnA\`M sada\'naM rayI\`NAM ma\`hAmA\'hA\`vama\`bhi saM na\'vanta |
+vai\`shvA\`na\`raM ra\`thya\'madhva\`rANA\'M ya\`j~nasya\' ke\`tuM ja\'nayanta de\`vAH || 6\.007\.02
+tvadvipro\' jAyate vA\`jya\'gne\` tvadvI\`rAso\' abhimAti\`ShAha\'H |
+vaishvA\'nara\` tvama\`smAsu\' dhehi\` vasU\'ni rAjanspR^iha\`yAyyA\'Ni || 6\.007\.03
+tvAM vishve\' amR^ita\` jAya\'mAna\`M shishu\`M na de\`vA a\`bhi saM na\'vante |
+tava\` kratu\'bhiramR^ita\`tvamA\'ya\`nvaishvA\'nara\` yatpi\`troradI\'deH || 6\.007\.04
+vaishvA\'nara\` tava\` tAni\' vra\`tAni\' ma\`hAnya\'gne\` naki\`rA da\'dharSha |
+yajjAya\'mAnaH pi\`troru\`pasthe.avi\'ndaH ke\`tuM va\`yune\`ShvahnA\'m || 6\.007\.05
+vai\`shvA\`na\`rasya\` vimi\'tAni\` chakSha\'sA\` sAnU\'ni di\`vo a\`mR^ita\'sya ke\`tunA\' |
+tasyedu\` vishvA\` bhuva\`nAdhi\' mU\`rdhani\' va\`yA i\'va ruruhuH sa\`pta vi\`sruha\'H || 6\.007\.06
+vi yo rajA\`Msyami\'mIta su\`kratu\'rvaishvAna\`ro vi di\`vo ro\'cha\`nA ka\`viH |
+pari\` yo vishvA\` bhuva\'nAni papra\`the.ada\'bdho go\`pA a\`mR^ita\'sya rakShi\`tA || 6\.007\.07
+
+pR^i\`kShasya\` vR^iShNo\' aru\`Shasya\` nU saha\`H pra nu vo\'chaM vi\`dathA\' jA\`tave\'dasaH |
+vai\`shvA\`na\`rAya\' ma\`tirnavya\'sI\` shuchi\`H soma\' iva pavate\` chAru\'ra\`gnaye\' || 6\.008\.01
+sa jAya\'mAnaH para\`me vyo\'mani vra\`tAnya\`gnirvra\'ta\`pA a\'rakShata |
+vya1\`\'ntari\'kShamamimIta su\`kratu\'rvaishvAna\`ro ma\'hi\`nA nAka\'maspR^ishat || 6\.008\.02
+vya\'stabhnA\`droda\'sI mi\`tro adbhu\'to.anta\`rvAva\'dakR^iNo\`jjyoti\'ShA\` tama\'H |
+vi charma\'NIva dhi\`ShaNe\' avartayadvaishvAna\`ro vishva\'madhatta\` vR^iShNya\'m || 6\.008\.03
+a\`pAmu\`pasthe\' mahi\`ShA a\'gR^ibhNata\` visho\` rAjA\'na\`mupa\' tasthurR^i\`gmiya\'m |
+A dU\`to a\`gnima\'bharadvi\`vasva\'to vaishvAna\`raM mA\'ta\`rishvA\' parA\`vata\'H || 6\.008\.04
+yu\`geyu\'ge vida\`thya\'M gR^i\`Nadbhyo.agne\' ra\`yiM ya\`shasa\'M dhehi\` navya\'sIm |
+pa\`vyeva\' rAjanna\`ghasha\'Msamajara nI\`chA ni vR^i\'shcha va\`nina\`M na teja\'sA || 6\.008\.05
+a\`smAka\'magne ma\`ghava\'tsu dhAra\`yAnA\'mi kSha\`trama\`jara\'M su\`vIrya\'m |
+va\`yaM ja\'yema sha\`tina\'M saha\`sriNa\`M vaishvA\'nara\` vAja\'magne\` tavo\`tibhi\'H || 6\.008\.06
+ada\'bdhebhi\`stava\' go\`pAbhi\'riShTe\`.asmAka\'M pAhi triShadhastha sU\`rIn |
+rakShA\' cha no da\`duShA\`M shardho\' agne\` vaishvA\'nara\` pra cha\' tArI\`H stavA\'naH || 6\.008\.07
+
+aha\'shcha kR^i\`ShNamaha\`rarju\'naM cha\` vi va\'rtete\` raja\'sI ve\`dyAbhi\'H |
+vai\`shvA\`na\`ro jAya\'mAno\` na rAjAvA\'tira\`jjyoti\'ShA\`gnistamA\'Msi || 6\.009\.01
+nAhaM tantu\`M na vi jA\'nA\`myotu\`M na yaM vaya\'nti sama\`re.ata\'mAnAH |
+kasya\' svitpu\`tra i\`ha vaktvA\'ni pa\`ro va\'dA\`tyava\'reNa pi\`trA || 6\.009\.02
+sa ittantu\`M sa vi jA\'nA\`tyotu\`M sa vaktvA\'nyR^itu\`thA va\'dAti |
+ya I\`M chike\'tada\`mR^ita\'sya go\`pA a\`vashchara\'npa\`ro a\`nyena\` pashya\'n || 6\.009\.03
+a\`yaM hotA\' pratha\`maH pashya\'te\`mami\`daM jyoti\'ra\`mR^ita\`M martye\'Shu |
+a\`yaM sa ja\'j~ne dhru\`va A niSha\`tto.ama\'rtyasta\`nvA\`3\`\' vardha\'mAnaH || 6\.009\.04
+dhru\`vaM jyoti\`rnihi\'taM dR^i\`shaye\` kaM mano\` javi\'ShThaM pa\`taya\'tsva\`ntaH |
+vishve\' de\`vAH sama\'nasa\`H sake\'tA\` eka\`M kratu\'ma\`bhi vi ya\'nti sA\`dhu || 6\.009\.05
+vi me\` karNA\' patayato\` vi chakShu\`rvI\`3\`\'daM jyoti\`rhR^ida\'ya\` Ahi\'ta\`M yat |
+vi me\` mana\'shcharati dU\`rA\'dhI\`H kiM svi\'dva\`kShyAmi\` kimu\` nU ma\'niShye || 6\.009\.06
+vishve\' de\`vA a\'namasyanbhiyA\`nAstvAma\'gne\` tama\'si tasthi\`vAMsa\'m |
+vai\`shvA\`na\`ro\'.avatU\`taye\` no.ama\'rtyo.avatU\`taye\' naH || 6\.009\.07
+
+pu\`ro vo\' ma\`ndraM di\`vyaM su\'vR^i\`ktiM pra\'ya\`ti ya\`j~ne a\`gnima\'dhva\`re da\'dhidhvam |
+pu\`ra u\`kthebhi\`H sa hi no\' vi\`bhAvA\' svadhva\`rA ka\'rati jA\`tave\'dAH || 6\.010\.01
+tamu\' dyumaH purvaNIka hota\`ragne\' a\`gnibhi\`rmanu\'Sha idhA\`naH |
+stoma\`M yama\'smai ma\`mate\'va shU\`ShaM ghR^i\`taM na shuchi\' ma\`taya\'H pavante || 6\.010\.02
+pI\`pAya\` sa shrava\'sA\` martye\'Shu\` yo a\`gnaye\' da\`dAsha\` vipra\' u\`kthaiH |
+chi\`trAbhi\`stamU\`tibhi\'shchi\`trasho\'chirvra\`jasya\' sA\`tA goma\'to dadhAti || 6\.010\.03
+A yaH pa\`prau jAya\'mAna u\`rvI dU\'re\`dR^ishA\' bhA\`sA kR^i\`ShNAdhvA\' |
+adha\' ba\`hu chi\`ttama\` UrmyA\'yAsti\`raH sho\`chiShA\' dadR^ishe pAva\`kaH || 6\.010\.04
+nU na\'shchi\`traM pu\'ru\`vAjA\'bhirU\`tI agne\' ra\`yiM ma\`ghava\'dbhyashcha dhehi |
+ye rAdha\'sA\` shrava\'sA\` chAtya\`nyAnsu\`vIrye\'bhishchA\`bhi santi\` janA\'n || 6\.010\.05
+i\`maM ya\`j~naM chano\' dhA agna u\`shanyaM ta\' AsA\`no ju\'hu\`te ha\`viShmA\'n |
+bha\`radvA\'jeShu dadhiShe suvR^i\`ktimavI\`rvAja\'sya\` gadhya\'sya sA\`tau || 6\.010\.06
+vi dveShA\'MsInu\`hi va\`rdhayeLA\`M made\'ma sha\`tahi\'mAH su\`vIrA\'H || 6\.010\.07
+
+yaja\'sva hotariShi\`to yajI\'yA\`nagne\` bAdho\' ma\`rutA\`M na prayu\'kti |
+A no\' mi\`trAvaru\'NA\` nAsa\'tyA\` dyAvA\' ho\`trAya\' pR^ithi\`vI va\'vR^ityAH || 6\.011\.01
+tvaM hotA\' ma\`ndrata\'mo no a\`dhruga\`ntarde\`vo vi\`dathA\` martye\'Shu |
+pA\`va\`kayA\' ju\`hvA\`3\`\' vahni\'rA\`sAgne\` yaja\'sva ta\`nvaM1\`\' tava\` svAm || 6\.011\.02
+dhanyA\' chi\`ddhi tve dhi\`ShaNA\` vaShTi\` pra de\`vA~njanma\' gR^iNa\`te yaja\'dhyai |
+vepi\'ShTho\` a~Ngi\'rasA\`M yaddha\` vipro\` madhu\' chCha\`ndo bhana\'ti re\`bha i\`ShTau || 6\.011\.03
+adi\'dyuta\`tsvapA\'ko vi\`bhAvAgne\` yaja\'sva\` roda\'sI urU\`chI |
+A\`yuM na yaM nama\'sA rA\`taha\'vyA a\`~njanti\' supra\`yasa\`M pa~ncha\` janA\'H || 6\.011\.04
+vR^i\`~nje ha\` yannama\'sA ba\`rhira\`gnAvayA\'mi\` srugghR^i\`tava\'tI suvR^i\`ktiH |
+amya\'kShi\` sadma\` sada\'ne pR^ithi\`vyA ashrA\'yi ya\`j~naH sUrye\` na chakShu\'H || 6\.011\.05
+da\`sha\`syA na\'H purvaNIka hotarde\`vebhi\'ragne a\`gnibhi\'ridhA\`naH |
+rA\`yaH sU\'no sahaso vAvasA\`nA ati\' srasema vR^i\`jana\`M nAMha\'H || 6\.011\.06
+
+madhye\` hotA\' duro\`Ne ba\`rhiSho\` rALa\`gnisto\`dasya\` roda\'sI\` yaja\'dhyai |
+a\`yaM sa sU\`nuH saha\'sa R^i\`tAvA\' dU\`rAtsUryo\` na sho\`chiShA\' tatAna || 6\.012\.01
+A yasmi\`ntve svapA\'ke yajatra\` yakSha\'drAjansa\`rvatA\'teva\` nu dyauH |
+tri\`Sha\`dhastha\'stata\`ruSho\` na jaMho\' ha\`vyA ma\`ghAni\` mAnu\'ShA\` yaja\'dhyai || 6\.012\.02
+teji\'ShThA\` yasyA\'ra\`tirva\'ne\`rAT to\`do adhva\`nna vR^i\'dhasA\`no a\'dyaut |
+a\`dro\`gho na dra\'vi\`tA che\'tati\` tmannama\'rtyo.ava\`rtra oSha\'dhIShu || 6\.012\.03
+sAsmAke\'bhire\`tarI\` na shU\`Shaira\`gniH ShTa\'ve\` dama\` A jA\`tave\'dAH |
+drva\'nno va\`nvankratvA\` nArvo\`sraH pi\`teva\' jAra\`yAyi\' ya\`j~naiH || 6\.012\.04
+adha\' smAsya panayanti\` bhAso\` vR^ithA\` yattakSha\'danu\`yAti\' pR^i\`thvIm |
+sa\`dyo yaH sya\`ndro viShi\'to\` dhavI\'yAnR^i\`No na tA\`yurati\` dhanvA\' rAT || 6\.012\.05
+sa tvaM no\' arva\`nnidA\'yA\` vishve\'bhiragne a\`gnibhi\'ridhA\`naH |
+veShi\' rA\`yo vi yA\'si du\`chChunA\` made\'ma sha\`tahi\'mAH su\`vIrA\'H || 6\.012\.06
+
+tvadvishvA\' subhaga\` saubha\'gA\`nyagne\` vi ya\'nti va\`nino\` na va\`yAH |
+shru\`ShTI ra\`yirvAjo\' vR^itra\`tUrye\' di\`vo vR^i\`ShTirIDyo\' rI\`tira\`pAm || 6\.013\.01
+tvaM bhago\' na\` A hi ratna\'mi\`She pari\'jmeva kShayasi da\`smava\'rchAH |
+agne\' mi\`tro na bR^i\'ha\`ta R^i\`tasyAsi\' kSha\`ttA vA\`masya\' deva\` bhUre\'H || 6\.013\.02
+sa satpa\'ti\`H shava\'sA hanti vR^i\`tramagne\` vipro\` vi pa\`Nerbha\'rti\` vAja\'m |
+yaM tvaM pra\'cheta R^itajAta rA\`yA sa\`joShA\` naptrA\`pAM hi\`noShi\' || 6\.013\.03
+yaste\' sUno sahaso gI\`rbhiru\`kthairya\`j~nairmarto\` nishi\'tiM ve\`dyAna\'T |
+vishva\`M sa de\'va\` prati\` vAra\'magne dha\`tte dhA\`nyaM1\`\' patya\'te vasa\`vyai\'H || 6\.013\.04
+tA nR^ibhya\` A sau\'shrava\`sA su\`vIrAgne\' sUno sahasaH pu\`Shyase\' dhAH |
+kR^i\`NoShi\` yachChava\'sA\` bhUri\' pa\`shvo vayo\` vR^ikA\'yA\`raye\` jasu\'raye || 6\.013\.05
+va\`dmA sU\'no sahaso no\` vihA\'yA\` agne\' to\`kaM tana\'yaM vA\`ji no\' dAH |
+vishvA\'bhirgI\`rbhira\`bhi pU\`rtima\'shyA\`M made\'ma sha\`tahi\'mAH su\`vIrA\'H || 6\.013\.06
+
+a\`gnA yo martyo\` duvo\` dhiya\'M ju\`joSha\' dhI\`tibhi\'H |
+bhasa\`nnu Sha pra pU\`rvya iSha\'M vurI\`tAva\'se || 6\.014\.01
+a\`gniriddhi prache\'tA a\`gnirve\`dhasta\'ma\` R^iShi\'H |
+a\`gniM hotA\'ramILate ya\`j~neShu\` manu\'Sho\` visha\'H || 6\.014\.02
+nAnA\` hya1\`\'gne.ava\'se\` spardha\'nte\` rAyo\' a\`ryaH |
+tUrva\'nto\` dasyu\'mA\`yavo\' vra\`taiH sIkSha\'nto avra\`tam || 6\.014\.03
+a\`gnira\`psAmR^i\'tI\`Shaha\'M vI\`raM da\'dAti\` satpa\'tim |
+yasya\` trasa\'nti\` shava\'saH sa\`MchakShi\` shatra\'vo bhi\`yA || 6\.014\.04
+a\`gnirhi vi\`dmanA\' ni\`do de\`vo marta\'muru\`Shyati\' |
+sa\`hAvA\` yasyAvR^i\'to ra\`yirvAje\`ShvavR^i\'taH || 6\.014\.05
+achChA\' no mitramaho deva de\`vAnagne\` vocha\'H suma\`tiM roda\'syoH |
+vI\`hi sva\`stiM su\'kShi\`tiM di\`vo nR^Indvi\`Sho aMhA\'Msi duri\`tA ta\'rema\` tA ta\'rema\` tavAva\'sA tarema || 6\.014\.06
+
+i\`mamU\` Shu vo\` ati\'thimuSha\`rbudha\`M vishvA\'sAM vi\`shAM pati\'mR^i~njase gi\`rA |
+vetIddi\`vo ja\`nuShA\` kachchi\`dA shuchi\`rjyokchi\'datti\` garbho\` yadachyu\'tam || 6\.015\.01
+mi\`traM na yaM sudhi\'ta\`M bhR^iga\'vo da\`dhurvana\`spatA\`vIDya\'mU\`rdhvasho\'chiSham |
+sa tvaM suprI\'to vI\`taha\'vye adbhuta\` prasha\'stibhirmahayase di\`vedi\'ve || 6\.015\.02
+sa tvaM dakSha\'syAvR^i\`ko vR^i\`dho bhU\'ra\`ryaH para\`syAnta\'rasya\` taru\'ShaH |
+rA\`yaH sU\'no sahaso\` martye\`ShvA Cha\`rdirya\'chCha vI\`taha\'vyAya sa\`pratho\' bha\`radvA\'jAya sa\`pratha\'H || 6\.015\.03
+dyu\`tA\`naM vo\` ati\'thi\`M sva\'rNarama\`gniM hotA\'ra\`M manu\'ShaH svadhva\`ram |
+vipra\`M na dyu\`kShava\'chasaM suvR^i\`ktibhi\'rhavya\`vAha\'mara\`tiM de\`vamR^i\'~njase || 6\.015\.04
+pA\`va\`kayA\` yashchi\`taya\'ntyA kR^i\`pA kShAma\'nruru\`cha u\`Shaso\` na bhA\`nunA\' |
+tUrva\`nna yAma\`nneta\'shasya\` nU raNa\` A yo ghR^i\`Ne na ta\'tR^iShA\`No a\`jara\'H || 6\.015\.05
+a\`gnima\'gniM vaH sa\`midhA\' duvasyata pri\`yampri\'yaM vo\` ati\'thiM gR^iNI\`ShaNi\' |
+upa\' vo gI\`rbhira\`mR^ita\'M vivAsata de\`vo de\`veShu\` vana\'te\` hi vArya\'M de\`vo de\`veShu\` vana\'te\` hi no\` duva\'H || 6\.015\.06
+sami\'ddhama\`gniM sa\`midhA\' gi\`rA gR^i\'Ne\` shuchi\'M pAva\`kaM pu\`ro a\'dhva\`re dhru\`vam |
+vipra\`M hotA\'raM puru\`vAra\'ma\`druha\'M ka\`viM su\`mnairI\'mahe jA\`tave\'dasam || 6\.015\.07
+tvAM dU\`tama\'gne a\`mR^ita\'M yu\`geyu\'ge havya\`vAha\'M dadhire pA\`yumIDya\'m |
+de\`vAsa\'shcha\` martA\'sashcha\` jAgR^i\'viM vi\`bhuM vi\`shpati\`M nama\'sA\` ni She\'dire || 6\.015\.08
+vi\`bhUSha\'nnagna u\`bhayA\`.N anu\' vra\`tA dU\`to de\`vAnA\`M raja\'sI\` samI\'yase |
+yatte\' dhI\`tiM su\'ma\`timA\'vR^iNI\`mahe.adha\' smA nastri\`varU\'thaH shi\`vo bha\'va || 6\.015\.09
+taM su\`pratI\'kaM su\`dR^isha\`M sva~ncha\`mavi\'dvAMso vi\`duShTa\'raM sapema |
+sa ya\'kSha\`dvishvA\' va\`yunA\'ni vi\`dvAnpra ha\`vyama\`gnira\`mR^ite\'Shu vochat || 6\.015\.10
+tama\'gne pAsyu\`ta taM pi\'parShi\` yasta\` Ana\'T ka\`vaye\' shUra dhI\`tim |
+ya\`j~nasya\' vA\` nishi\'ti\`M vodi\'tiM vA\` tamitpR^i\'NakShi\` shava\'so\`ta rA\`yA || 6\.015\.11
+tvama\'gne vanuShya\`to ni pA\'hi\` tvamu\' naH sahasAvannava\`dyAt |
+saM tvA\' dhvasma\`nvada\`bhye\'tu\` pAtha\`H saM ra\`yiH spR^i\'ha\`yAyya\'H saha\`srI || 6\.015\.12
+a\`gnirhotA\' gR^i\`hapa\'ti\`H sa rAjA\` vishvA\' veda\` jani\'mA jA\`tave\'dAH |
+de\`vAnA\'mu\`ta yo martyA\'nA\`M yaji\'ShTha\`H sa pra ya\'jatAmR^i\`tAvA\' || 6\.015\.13
+agne\` yada\`dya vi\`sho a\'dhvarasya hota\`H pAva\'kashoche\` veShTvaM hi yajvA\' |
+R^i\`tA ya\'jAsi mahi\`nA vi yadbhUrha\`vyA va\'ha yaviShTha\` yA te\' a\`dya || 6\.015\.14
+a\`bhi prayA\'Msi\` sudhi\'tAni\` hi khyo ni tvA\' dadhIta\` roda\'sI\` yaja\'dhyai |
+avA\' no maghava\`nvAja\'sAtA\`vagne\` vishvA\'ni duri\`tA ta\'rema\` tA ta\'rema\` tavAva\'sA tarema || 6\.015\.15
+agne\` vishve\'bhiH svanIka de\`vairUrNA\'vantaM pratha\`maH sI\'da\` yoni\'m |
+ku\`lA\`yina\'M ghR^i\`tava\'ntaM savi\`tre ya\`j~naM na\'ya\` yaja\'mAnAya sA\`dhu || 6\.015\.16
+i\`mamu\` tyama\'tharva\`vada\`gniM ma\'nthanti ve\`dhasa\'H |
+yama\'~NkU\`yanta\`mAna\'ya\`nnamU\'raM shyA\`vyA\'bhyaH || 6\.015\.17
+jani\'ShvA de\`vavI\'taye sa\`rvatA\'tA sva\`staye\' |
+A de\`vAnva\'kShya\`mR^itA\'.N R^itA\`vR^idho\' ya\`j~naM de\`veShu\' pispR^ishaH || 6\.015\.18
+va\`yamu\' tvA gR^ihapate janAnA\`magne\` aka\'rma sa\`midhA\' bR^i\`hanta\'m |
+a\`sthU\`ri no\` gArha\'patyAni santu ti\`gmena\' na\`steja\'sA\` saM shi\'shAdhi || 6\.015\.19
+
+tvama\'gne ya\`j~nAnA\`M hotA\` vishve\'ShAM hi\`taH |
+de\`vebhi\`rmAnu\'She\` jane\' || 6\.016\.01
+sa no\' ma\`ndrAbhi\'radhva\`re ji\`hvAbhi\'ryajA ma\`haH |
+A de\`vAnva\'kShi\` yakShi\' cha || 6\.016\.02
+vetthA\` hi ve\'dho\` adhva\'naH pa\`thashcha\' de\`vA~nja\'sA |
+agne\' ya\`j~neShu\' sukrato || 6\.016\.03
+tvAmI\'Le\` adha\' dvi\`tA bha\'ra\`to vA\`jibhi\'H shu\`nam |
+I\`je ya\`j~neShu\' ya\`j~niya\'m || 6\.016\.04
+tvami\`mA vAryA\' pu\`ru divo\'dAsAya sunva\`te |
+bha\`radvA\'jAya dA\`shuShe\' || 6\.016\.05
+tvaM dU\`to ama\'rtya\` A va\'hA\` daivya\`M jana\'m |
+shR^i\`Nvanvipra\'sya suShTu\`tim || 6\.016\.06
+tvAma\'gne svA\`dhyo\`3\`\' martA\'so de\`vavI\'taye |
+ya\`j~neShu\' de\`vamI\'Late || 6\.016\.07
+tava\` pra ya\'kShi sa\`MdR^isha\'mu\`ta kratu\'M su\`dAna\'vaH |
+vishve\' juShanta kA\`mina\'H || 6\.016\.08
+tvaM hotA\` manu\'rhito\` vahni\'rA\`sA vi\`duShTa\'raH |
+agne\` yakShi\' di\`vo visha\'H || 6\.016\.09
+agna\` A yA\'hi vI\`taye\' gR^iNA\`no ha\`vyadA\'taye |
+ni hotA\' satsi ba\`rhiShi\' || 6\.016\.10
+taM tvA\' sa\`midbhi\'ra~Ngiro ghR^i\`tena\' vardhayAmasi |
+bR^i\`hachCho\'chA yaviShThya || 6\.016\.11
+sa na\'H pR^i\`thu shra\`vAyya\`machChA\' deva vivAsasi |
+bR^i\`hada\'gne su\`vIrya\'m || 6\.016\.12
+tvAma\'gne\` puShka\'rA\`dadhyatha\'rvA\` nira\'manthata |
+mU\`rdhno vishva\'sya vA\`ghata\'H || 6\.016\.13
+tamu\' tvA da\`dhya~N~NR^iShi\'H pu\`tra I\'dhe\` atha\'rvaNaH |
+vR^i\`tra\`haNa\'M puraMda\`ram || 6\.016\.14
+tamu\' tvA pA\`thyo vR^iShA\` samI\'dhe dasyu\`hanta\'mam |
+dha\`na\`Mja\`yaM raNe\'raNe || 6\.016\.15
+ehyU\` Shu bravA\'Ni\` te.agna\' i\`ttheta\'rA\` gira\'H |
+e\`bhirva\'rdhAsa\` indu\'bhiH || 6\.016\.16
+yatra\` kva\' cha te\` mano\` dakSha\'M dadhasa\` utta\'ram |
+tatrA\` sada\'H kR^iNavase || 6\.016\.17
+na\`hi te\' pU\`rtama\'kShi\`padbhuva\'nnemAnAM vaso |
+athA\` duvo\' vanavase || 6\.016\.18
+Agnira\'gAmi\` bhAra\'to vR^itra\`hA pu\'ru\`cheta\'naH |
+divo\'dAsasya\` satpa\'tiH || 6\.016\.19
+sa hi vishvAti\` pArthi\'vA ra\`yiM dAsha\'nmahitva\`nA |
+va\`nvannavA\'to\` astR^i\'taH || 6\.016\.20
+sa pra\'tna\`vannavI\'ya\`sAgne\' dyu\`mnena\' sa\`MyatA\' |
+bR^i\`hatta\'tantha bhA\`nunA\' || 6\.016\.21
+pra va\'H sakhAyo a\`gnaye\` stoma\'M ya\`j~naM cha\' dhR^iShNu\`yA |
+archa\` gAya\' cha ve\`dhase\' || 6\.016\.22
+sa hi yo mAnu\'ShA yu\`gA sIda\`ddhotA\' ka\`vikra\'tuH |
+dU\`tashcha\' havya\`vAha\'naH || 6\.016\.23
+tA rAjA\'nA\` shuchi\'vratAdi\`tyAnmAru\'taM ga\`Nam |
+vaso\` yakShI\`ha roda\'sI || 6\.016\.24
+vasvI\' te agne\` saMdR^i\'ShTiriShaya\`te martyA\'ya |
+Urjo\' napAda\`mR^ita\'sya || 6\.016\.25
+kratvA\` dA a\'stu\` shreShTho\`.adya tvA\' va\`nvansu\`rekNA\'H |
+marta\' AnAsha suvR^i\`ktim || 6\.016\.26
+te te\' agne\` tvotA\' i\`Shaya\'nto\` vishva\`mAyu\'H |
+tara\'nto a\`ryo arA\'tIrva\`nvanto\' a\`ryo arA\'tIH || 6\.016\.27
+a\`gnisti\`gmena\' sho\`chiShA\` yAsa\`dvishva\`M nya1\`\'triNa\'m |
+a\`gnirno\' vanate ra\`yim || 6\.016\.28
+su\`vIra\'M ra\`yimA bha\'ra\` jAta\'vedo\` vicha\'rShaNe |
+ja\`hi rakShA\'Msi sukrato || 6\.016\.29
+tvaM na\'H pA\`hyaMha\'so\` jAta\'vedo aghAya\`taH |
+rakShA\' No brahmaNaskave || 6\.016\.30
+yo no\' agne du\`reva\` A marto\' va\`dhAya\` dAsha\'ti |
+tasmA\'nnaH pA\`hyaMha\'saH || 6\.016\.31
+tvaM taM de\'va ji\`hvayA\` pari\' bAdhasva du\`ShkR^ita\'m |
+marto\` yo no\` jighA\'Msati || 6\.016\.32
+bha\`radvA\'jAya sa\`pratha\`H sharma\' yachCha sahantya |
+agne\` vare\'Nya\`M vasu\' || 6\.016\.33
+a\`gnirvR^i\`trANi\' ja~NghanaddraviNa\`syurvi\'pa\`nyayA\' |
+sami\'ddhaH shu\`kra Ahu\'taH || 6\.016\.34
+garbhe\' mA\`tuH pi\`tuShpi\`tA vi\'didyutA\`no a\`kShare\' |
+sIda\'nnR^i\`tasya\` yoni\`mA || 6\.016\.35
+brahma\' pra\`jAva\`dA bha\'ra\` jAta\'vedo\` vicha\'rShaNe |
+agne\` yaddI\`daya\'ddi\`vi || 6\.016\.36
+upa\' tvA ra\`Nvasa\'MdR^isha\`M praya\'svantaH sahaskR^ita |
+agne\' sasR^i\`jmahe\` gira\'H || 6\.016\.37
+upa\' chChA\`yAmi\'va\` ghR^iNe\`raga\'nma\` sharma\' te va\`yam |
+agne\` hira\'NyasaMdR^ishaH || 6\.016\.38
+ya u\`gra i\'va sharya\`hA ti\`gmashR^i\'~Ngo\` na vaMsa\'gaH |
+agne\` puro\' ru\`roji\'tha || 6\.016\.39
+A yaM haste\` na khA\`dina\`M shishu\'M jA\`taM na bibhra\'ti |
+vi\`shAma\`gniM sva\'dhva\`ram || 6\.016\.40
+pra de\`vaM de\`vavI\'taye\` bhara\'tA vasu\`vitta\'mam |
+A sve yonau\` ni ShI\'datu || 6\.016\.41
+A jA\`taM jA\`tave\'dasi pri\`yaM shi\'shI\`tAti\'thim |
+syo\`na A gR^i\`hapa\'tim || 6\.016\.42
+agne\' yu\`kShvA hi ye tavAshvA\'so deva sA\`dhava\'H |
+ara\`M vaha\'nti ma\`nyave\' || 6\.016\.43
+achChA\' no yA\`hyA va\'hA\`bhi prayA\'Msi vI\`taye\' |
+A de\`vAnsoma\'pItaye || 6\.016\.44
+uda\'gne bhArata dyu\`madaja\'sreNa\` davi\'dyutat |
+shochA\` vi bhA\'hyajara || 6\.016\.45
+vI\`tI yo de\`vaM marto\' duva\`syeda\`gnimI\'LItAdhva\`re ha\`viShmA\'n |
+hotA\'raM satya\`yaja\`M roda\'syoruttA\`naha\'sto\` nama\`sA vi\'vAset || 6\.016\.46
+A te\' agna R^i\`chA ha\`virhR^i\`dA ta\`ShTaM bha\'rAmasi |
+te te\' bhavantU\`kShaNa\' R^iSha\`bhAso\' va\`shA u\`ta || 6\.016\.47
+a\`gniM de\`vAso\' agri\`yami\`ndhate\' vR^itra\`hanta\'mam |
+yenA\` vasU\`nyAbhR^i\'tA tR^i\`LhA rakShA\'Msi vA\`jinA\' || 6\.016\.48
+
+pibA\` soma\'ma\`bhi yamu\'gra\` tarda\' U\`rvaM gavya\`M mahi\' gR^iNA\`na i\'ndra |
+vi yo dhR^i\'ShNo\` vadhi\'Sho vajrahasta\` vishvA\' vR^i\`trama\'mi\`triyA\` shavo\'bhiH || 6\.017\.01
+sa I\'M pAhi\` ya R^i\'jI\`ShI taru\'tro\` yaH shipra\'vAnvR^iSha\`bho yo ma\'tI\`nAm |
+yo go\'tra\`bhidva\'jra\`bhR^idyo ha\'ri\`ShThAH sa i\'ndra chi\`trA.N a\`bhi tR^i\'ndhi\` vAjA\'n || 6\.017\.02
+e\`vA pA\'hi pra\`tnathA\` manda\'tu tvA shru\`dhi brahma\' vAvR^i\`dhasvo\`ta gI\`rbhiH |
+A\`viH sUrya\'M kR^iNu\`hi pI\'pi\`hISho\' ja\`hi shatrU\'.Nra\`bhi gA i\'ndra tR^indhi || 6\.017\.03
+te tvA\` madA\' bR^i\`hadi\'ndra svadhAva i\`me pI\`tA u\'kShayanta dyu\`manta\'m |
+ma\`hAmanU\'naM ta\`vasa\`M vibhU\'tiM matsa\`rAso\' jarhR^iShanta pra\`sAha\'m || 6\.017\.04
+yebhi\`H sUrya\'mu\`Shasa\'M mandasA\`no.avA\'sa\`yo.apa\' dR^i\`LhAni\` dardra\'t |
+ma\`hAmadri\`M pari\` gA i\'ndra\` santa\'M nu\`tthA achyu\'ta\`M sada\'sa\`spari\` svAt || 6\.017\.05
+tava\` kratvA\` tava\` tadda\`MsanA\'bhirA\`mAsu\' pa\`kvaM shachyA\` ni dI\'dhaH |
+aurNo\`rdura\' u\`sriyA\'bhyo\` vi dR^i\`LhodU\`rvAdgA a\'sR^ijo\` a~Ngi\'rasvAn || 6\.017\.06
+pa\`prAtha\` kShAM mahi\` daMso\` vyu1\`\'rvImupa\` dyAmR^i\`Shvo bR^i\`hadi\'ndra stabhAyaH |
+adhA\'rayo\` roda\'sI de\`vapu\'tre pra\`tne mA\`tarA\' ya\`hvI R^i\`tasya\' || 6\.017\.07
+adha\' tvA\` vishve\' pu\`ra i\'ndra de\`vA eka\'M ta\`vasa\'M dadhire\` bharA\'ya |
+ade\'vo\` yada\`bhyauhi\'ShTa de\`vAnsva\'rShAtA vR^iNata\` indra\`matra\' || 6\.017\.08
+adha\` dyaushchi\'tte\` apa\` sA nu vajrA\'ddvi\`tAna\'madbhi\`yasA\` svasya\' ma\`nyoH |
+ahi\`M yadindro\' a\`bhyoha\'sAna\`M ni chi\'dvi\`shvAyu\'H sha\`yathe\' ja\`ghAna\' || 6\.017\.09
+adha\` tvaShTA\' te ma\`ha u\'gra\` vajra\'M sa\`hasra\'bhR^iShTiM vavR^itachCha\`tAshri\'m |
+nikA\'mama\`rama\'Nasa\`M yena\` nava\'nta\`mahi\`M saM pi\'NagR^ijIShin || 6\.017\.10
+vardhA\`nyaM vishve\' ma\`ruta\'H sa\`joShA\`H pacha\'chCha\`taM ma\'hi\`ShA.N i\'ndra\` tubhya\'m |
+pU\`ShA viShNu\`strINi\` sarA\'Msi dhAvanvR^itra\`haNa\'M madi\`rama\`Mshuma\'smai || 6\.017\.11
+A kShodo\` mahi\' vR^i\`taM na\`dInA\`M pari\'ShThitamasR^ija U\`rmima\`pAm |
+tAsA\`manu\' pra\`vata\' indra\` panthA\`M prArda\'yo\` nIchI\'ra\`pasa\'H samu\`dram || 6\.017\.12
+e\`vA tA vishvA\' chakR^i\`vAMsa\`mindra\'M ma\`hAmu\`grama\'ju\`ryaM sa\'ho\`dAm |
+su\`vIra\'M tvA svAyu\`dhaM su\`vajra\`mA brahma\` navya\`mava\'se vavR^ityAt || 6\.017\.13
+sa no\` vAjA\'ya\` shrava\'sa i\`She cha\' rA\`ye dhe\'hi dyu\`mata\' indra\` viprA\'n |
+bha\`radvA\'je nR^i\`vata\' indra sU\`rIndi\`vi cha\' smaidhi\` pArye\' na indra || 6\.017\.14
+a\`yA vAja\'M de\`vahi\'taM sanema\` made\'ma sha\`tahi\'mAH su\`vIrA\'H || 6\.017\.15
+
+tamu\' ShTuhi\` yo a\`bhibhU\'tyojA va\`nvannavA\'taH puruhU\`ta indra\'H |
+aShA\'Lhamu\`graM saha\'mAnamA\`bhirgI\`rbhirva\'rdha vR^iSha\`bhaM cha\'rShaNI\`nAm || 6\.018\.01
+sa yu\`dhmaH satvA\' khaja\`kR^itsa\`madvA\' tuvimra\`kSho na\'danu\`mA.N R^i\'jI\`ShI |
+bR^i\`hadre\'Nu\`shchyava\'no\` mAnu\'ShINA\`meka\'H kR^iShTI\`nAma\'bhavatsa\`hAvA\' || 6\.018\.02
+tvaM ha\` nu tyada\'damAyo\` dasyU\`.Nreka\'H kR^i\`ShTIra\'vano\`rAryA\'ya |
+asti\' svi\`nnu vI\`ryaM1\`\' tatta\' indra\` na svi\'dasti\` tadR^i\'tu\`thA vi vo\'chaH || 6\.018\.03
+sadiddhi te\' tuvijA\`tasya\` manye\` saha\'H sahiShTha tura\`tastu\`rasya\' |
+u\`gramu\`grasya\' ta\`vasa\`stavI\`yo.ara\'dhrasya radhra\`turo\' babhUva || 6\.018\.04
+tanna\'H pra\`tnaM sa\`khyama\'stu yu\`Shme i\`tthA vada\'dbhirva\`lama~Ngi\'robhiH |
+hanna\'chyutachyuddasme\`Shaya\'ntamR^i\`NoH puro\` vi duro\' asya\` vishvA\'H || 6\.018\.05
+sa hi dhI\`bhirhavyo\` astyu\`gra I\'shAna\`kR^inma\'ha\`ti vR^i\'tra\`tUrye\' |
+sa to\`kasA\'tA\` tana\'ye\` sa va\`jrI vi\'tanta\`sAyyo\' abhavatsa\`matsu\' || 6\.018\.06
+sa ma\`jmanA\` jani\'ma\` mAnu\'ShANA\`mama\'rtyena\` nAmnAti\` pra sa\'rsre |
+sa dyu\`mnena\` sa shava\'so\`ta rA\`yA sa vI\`rye\'Na\` nR^ita\'ma\`H samo\'kAH || 6\.018\.07
+sa yo na mu\`he na mithU\` jano\` bhUtsu\`mantu\'nAmA\` chumu\'ri\`M dhuni\'M cha |
+vR^i\`Nakpipru\`M shamba\'ra\`M shuShNa\`mindra\'H pu\`rAM chyau\`tnAya\' sha\`yathA\'ya\` nU chi\'t || 6\.018\.08
+u\`dAva\'tA\` tvakSha\'sA\` panya\'sA cha vR^itra\`hatyA\'ya\` ratha\'mindra tiShTha |
+dhi\`Shva vajra\`M hasta\` A da\'kShiNa\`trAbhi pra ma\'nda purudatra mA\`yAH || 6\.018\.09
+a\`gnirna shuShka\`M vana\'mindra he\`tI rakSho\` ni dha\'kShya\`shani\`rna bhI\`mA |
+ga\`mbhI\`raya\' R^i\`ShvayA\` yo ru\`rojAdhvA\'nayadduri\`tA da\`mbhaya\'chcha || 6\.018\.10
+A sa\`hasra\'M pa\`thibhi\'rindra rA\`yA tuvi\'dyumna tuvi\`vAje\'bhira\`rvAk |
+yA\`hi sU\'no sahaso\` yasya\` nU chi\`dade\'va\` Ishe\' puruhUta\` yoto\'H || 6\.018\.11
+pra tu\'vidyu\`mnasya\` sthavi\'rasya\` ghR^iShve\'rdi\`vo ra\'rapshe mahi\`mA pR^i\'thi\`vyAH |
+nAsya\` shatru\`rna pra\'ti\`mAna\'masti\` na pra\'ti\`ShThiH pu\'rumA\`yasya\` sahyo\'H || 6\.018\.12
+pra tatte\' a\`dyA kara\'NaM kR^i\`taM bhU\`tkutsa\`M yadA\`yuma\'tithi\`gvama\'smai |
+pu\`rU sa\`hasrA\` ni shi\'shA a\`bhi kShAmuttUrva\'yANaM dhR^iSha\`tA ni\'netha || 6\.018\.13
+anu\` tvAhi\'ghne\` adha\' deva de\`vA mada\`nvishve\' ka\`vita\'maM kavI\`nAm |
+karo\` yatra\` vari\'vo bAdhi\`tAya\' di\`ve janA\'ya ta\`nve\' gR^iNA\`naH || 6\.018\.14
+anu\` dyAvA\'pR^ithi\`vI tatta\` ojo.ama\'rtyA jihata indra de\`vAH |
+kR^i\`ShvA kR^i\'tno\` akR^i\'ta\`M yatte\` astyu\`kthaM navI\'yo janayasva ya\`j~naiH || 6\.018\.15
+
+ma\`hA.N indro\' nR^i\`vadA cha\'rShaNi\`prA u\`ta dvi\`barhA\' ami\`naH saho\'bhiH |
+a\`sma\`drya\'gvAvR^idhe vI\`ryA\'yo\`ruH pR^i\`thuH sukR^i\'taH ka\`rtR^ibhi\'rbhUt || 6\.019\.01
+indra\'me\`va dhi\`ShaNA\' sA\`taye\' dhAdbR^i\`hanta\'mR^i\`Shvama\`jara\`M yuvA\'nam |
+aShA\'Lhena\` shava\'sA shUshu\`vAMsa\'M sa\`dyashchi\`dyo vA\'vR^i\`dhe asA\'mi || 6\.019\.02
+pR^i\`thU ka\`rasnA\' bahu\`lA gabha\'stI asma\`drya1\`\'ksaM mi\'mIhi\` shravA\'Msi |
+yU\`theva\' pa\`shvaH pa\'shu\`pA damU\'nA a\`smA.N i\'ndrA\`bhyA va\'vR^itsvA\`jau || 6\.019\.03
+taM va\` indra\'M cha\`tina\'masya shA\`kairi\`ha nU\`naM vA\'ja\`yanto\' huvema |
+yathA\' chi\`tpUrve\' jari\`tAra\' A\`surane\'dyA anava\`dyA ari\'ShTAH || 6\.019\.04
+dhR^i\`tavra\'to dhana\`dAH soma\'vR^iddha\`H sa hi vA\`masya\` vasu\'naH puru\`kShuH |
+saM ja\'gmire pa\`thyA\`3\`\' rAyo\' asminsamu\`dre na sindha\'vo\` yAda\'mAnAH || 6\.019\.05
+shavi\'ShThaM na\` A bha\'ra shUra\` shava\` oji\'ShTha\`mojo\' abhibhUta u\`gram |
+vishvA\' dyu\`mnA vR^iShNyA\` mAnu\'ShANAma\`smabhya\'M dA harivo mAda\`yadhyai\' || 6\.019\.06
+yaste\` mada\'H pR^itanA\`ShALamR^i\'dhra\` indra\` taM na\` A bha\'ra shUshu\`vAMsa\'m |
+yena\' to\`kasya\` tana\'yasya sA\`tau ma\'MsI\`mahi\' jigI\`vAMsa\`stvotA\'H || 6\.019\.07
+A no\' bhara\` vR^iSha\'Na\`M shuShma\'mindra dhana\`spR^ita\'M shUshu\`vAMsa\'M su\`dakSha\'m |
+yena\` vaMsA\'ma\` pR^ita\'nAsu\` shatrU\`ntavo\`tibhi\'ru\`ta jA\`mI.NrajA\'mIn || 6\.019\.08
+A te\` shuShmo\' vR^iSha\`bha e\'tu pa\`shchAdotta\`rAda\'dha\`rAdA pu\`rastA\'t |
+A vi\`shvato\' a\`bhi same\'tva\`rvA~Nindra\' dyu\`mnaM sva\'rvaddhehya\`sme || 6\.019\.09
+nR^i\`vatta\' indra\` nR^ita\'mAbhirU\`tI va\'MsI\`mahi\' vA\`maM shroma\'tebhiH |
+IkShe\` hi vasva\' u\`bhaya\'sya rAja\`ndhA ratna\`M mahi\' sthU\`raM bR^i\`hanta\'m || 6\.019\.10
+ma\`rutva\'ntaM vR^iSha\`bhaM vA\'vR^idhA\`namaka\'vAriM di\`vyaM shA\`samindra\'m |
+vi\`shvA\`sAha\`mava\'se\` nUta\'nAyo\`graM sa\'ho\`dAmi\`ha taM hu\'vema || 6\.019\.11
+jana\'M vajri\`nmahi\' chi\`nmanya\'mAname\`bhyo nR^ibhyo\' randhayA\` yeShvasmi\' |
+adhA\` hi tvA\' pR^ithi\`vyAM shUra\'sAtau\` havA\'mahe\` tana\'ye\` goShva\`psu || 6\.019\.12
+va\`yaM ta\' e\`bhiH pu\'ruhUta sa\`khyaiH shatro\'Hshatro\`rutta\'ra\` itsyA\'ma |
+ghnanto\' vR^i\`trANyu\`bhayA\'ni shUra rA\`yA ma\'dema bR^iha\`tA tvotA\'H || 6\.019\.13
+
+dyaurna ya i\'ndrA\`bhi bhUmA\`ryasta\`sthau ra\`yiH shava\'sA pR^i\`tsu janA\'n |
+taM na\'H sa\`hasra\'bharamurvarA\`sAM da\`ddhi sU\'no sahaso vR^itra\`tura\'m || 6\.020\.01
+di\`vo na tubhya\`manvi\'ndra sa\`trAsu\`rya\'M de\`vebhi\'rdhAyi\` vishva\'m |
+ahi\`M yadvR^i\`trama\`po va\'vri\`vAMsa\`M hannR^i\'jIShi\`nviShNu\'nA sachA\`naH || 6\.020\.02
+tUrva\`nnojI\'yAnta\`vasa\`stavI\'yAnkR^i\`tabra\`hmendro\' vR^i\`ddhama\'hAH |
+rAjA\'bhava\`nmadhu\'naH so\`myasya\` vishvA\'sA\`M yatpu\`rAM da\`rtnumAva\'t || 6\.020\.03
+sha\`taira\'padranpa\`Naya\' i\`ndrAtra\` dasho\'Naye ka\`vaye\`.arkasA\'tau |
+va\`dhaiH shuShNa\'syA\`shuSha\'sya mA\`yAH pi\`tvo nAri\'rechI\`tkiM cha\`na pra || 6\.020\.04
+ma\`ho dru\`ho apa\' vi\`shvAyu\' dhAyi\` vajra\'sya\` yatpata\'ne\` pAdi\` shuShNa\'H |
+u\`ru Sha sa\`ratha\`M sAra\'thaye ka\`rindra\`H kutsA\'ya\` sUrya\'sya sA\`tau || 6\.020\.05
+pra shye\`no na ma\'di\`rama\`Mshuma\'smai\` shiro\' dA\`sasya\` namu\'chermathA\`yan |
+prAva\`nnamI\'M sA\`pyaM sa\`santa\'M pR^i\`NagrA\`yA sami\`ShA saM sva\`sti || 6\.020\.06
+vi pipro\`rahi\'mAyasya dR^i\`LhAH puro\' vajri\`~nChava\'sA\` na da\'rdaH |
+sudA\'ma\`ntadrekNo\' apramR^i\`ShyamR^i\`jishva\'ne dA\`traM dA\`shuShe\' dAH || 6\.020\.07
+sa ve\'ta\`suM dasha\'mAya\`M dasho\'Ni\`M tUtu\'ji\`mindra\'H svabhi\`ShTisu\'mnaH |
+A tugra\`M shashva\`dibha\`M dyota\'nAya mA\`turna sI\`mupa\' sR^ijA i\`yadhyai\' || 6\.020\.08
+sa I\`M spR^idho\' vanate\` apra\'tIto\` bibhra\`dvajra\'M vR^itra\`haNa\`M gabha\'stau |
+tiShTha\`ddharI\` adhyaste\'va\` garte\' vacho\`yujA\' vahata\` indra\'mR^i\`Shvam || 6\.020\.09
+sa\`nema\` te.ava\'sA\` navya\' indra\` pra pU\`rava\'H stavanta e\`nA ya\`j~naiH |
+sa\`pta yatpura\`H sharma\` shAra\'dI\`rdarddhandAsI\'H puru\`kutsA\'ya\` shikSha\'n || 6\.020\.10
+tvaM vR^i\`dha i\'ndra pU\`rvyo bhU\'rvariva\`syannu\`shane\' kA\`vyAya\' |
+parA\` nava\'vAstvamanu\`deya\'M ma\`he pi\`tre da\'dAtha\` svaM napA\'tam || 6\.020\.11
+tvaM dhuni\'rindra\` dhuni\'matIrR^i\`Nora\`paH sI\`rA na srava\'ntIH |
+pra yatsa\'mu\`dramati\' shUra\` parShi\' pA\`rayA\' tu\`rvasha\`M yadu\'M sva\`sti || 6\.020\.12
+tava\' ha\` tyadi\'ndra\` vishva\'mA\`jau sa\`sto dhunI\`chumu\'rI\` yA ha\` siShva\'p |
+dI\`daya\`dittubhya\`M some\'bhiH su\`nvanda\`bhIti\'ri\`dhmabhR^i\'tiH pa\`kthya1\`\'rkaiH || 6\.020\.13
+
+i\`mA u\' tvA puru\`tama\'sya kA\`rorhavya\'M vIra\` havyA\' havante |
+dhiyo\' rathe\`ShThAma\`jara\`M navI\'yo ra\`yirvibhU\'tirIyate vacha\`syA || 6\.021\.01
+tamu\' stuSha\` indra\`M yo vidA\'no\` girvA\'hasaM gI\`rbhirya\`j~navR^i\'ddham |
+yasya\` diva\`mati\' ma\`hnA pR^i\'thi\`vyAH pu\'rumA\`yasya\' riri\`che ma\'hi\`tvam || 6\.021\.02
+sa ittamo\'.avayu\`naM ta\'ta\`nvatsUrye\'Na va\`yuna\'vachchakAra |
+ka\`dA te\` martA\' a\`mR^ita\'sya\` dhAmeya\'kShanto\` na mi\'nanti svadhAvaH || 6\.021\.03
+yastA cha\`kAra\` sa kuha\' svi\`dindra\`H kamA jana\'M charati\` kAsu\' vi\`kShu |
+kaste\' ya\`j~no mana\'se\` shaM varA\'ya\` ko a\`rka i\'ndra kata\`maH sa hotA\' || 6\.021\.04
+i\`dA hi te\` vevi\'ShataH purA\`jAH pra\`tnAsa\' A\`suH pu\'rukR^i\`tsakhA\'yaH |
+ye ma\'dhya\`mAsa\' u\`ta nUta\'nAsa u\`tAva\`masya\' puruhUta bodhi || 6\.021\.05
+taM pR^i\`chChanto.ava\'rAsa\`H parA\'Ni pra\`tnA ta\' indra\` shrutyAnu\' yemuH |
+archA\'masi vIra brahmavAho\` yAde\`va vi\`dma tAttvA\' ma\`hAnta\'m || 6\.021\.06
+a\`bhi tvA\` pAjo\' ra\`kShaso\` vi ta\'sthe\` mahi\' jaj~nA\`nama\`bhi tatsu ti\'ShTha |
+tava\' pra\`tnena\` yujye\'na\` sakhyA\` vajre\'Na dhR^iShNo\` apa\` tA nu\'dasva || 6\.021\.07
+sa tu shru\'dhIndra\` nUta\'nasya brahmaNya\`to vI\'ra kArudhAyaH |
+tvaM hyA\`3\`\'piH pra\`divi\' pitR^I\`NAM shashva\'dba\`bhUtha\' su\`hava\` eShTau\' || 6\.021\.08
+protaye\` varu\'NaM mi\`tramindra\'M ma\`ruta\'H kR^i\`ShvAva\'se no a\`dya |
+pra pU\`ShaNa\`M viShNu\'ma\`gniM pura\'MdhiM savi\`tAra\`moSha\'dhI\`H parva\'tA.Nshcha || 6\.021\.09
+i\`ma u\' tvA purushAka prayajyo jari\`tAro\' a\`bhya\'rchantya\`rkaiH |
+shru\`dhI hava\`mA hu\'va\`to hu\'vA\`no na tvAvA\'.N a\`nyo a\'mR^ita\` tvada\'sti || 6\.021\.10
+nU ma\` A vAcha\`mupa\' yAhi vi\`dvAnvishve\'bhiH sUno sahaso\` yaja\'traiH |
+ye a\'gniji\`hvA R^i\'ta\`sApa\' A\`surye manu\'M cha\`krurupa\'ra\`M dasA\'ya || 6\.021\.11
+sa no\' bodhi purae\`tA su\`geShU\`ta du\`rgeShu\' pathi\`kR^idvidA\'naH |
+ye ashra\'mAsa u\`ravo\` vahi\'ShThA\`stebhi\'rna indrA\`bhi va\'kShi\` vAja\'m || 6\.021\.12
+
+ya eka\` iddhavya\'shcharShaNI\`nAmindra\`M taM gI\`rbhira\`bhya\'rcha A\`bhiH |
+yaH patya\'te vR^iSha\`bho vR^iShNyA\'vAnsa\`tyaH satvA\' purumA\`yaH saha\'svAn || 6\.022\.01
+tamu\' na\`H pUrve\' pi\`taro\` nava\'gvAH sa\`pta viprA\'so a\`bhi vA\`jaya\'ntaH |
+na\`kSha\`ddA\`bhaM tatu\'riM parvate\`ShThAmadro\'ghavAchaM ma\`tibhi\`H shavi\'ShTham || 6\.022\.02
+tamI\'maha\` indra\'masya rA\`yaH pu\'ru\`vIra\'sya nR^i\`vata\'H puru\`kShoH |
+yo askR^i\'dhoyura\`jara\`H sva\'rvA\`ntamA bha\'ra harivo mAda\`yadhyai\' || 6\.022\.03
+tanno\` vi vo\'cho\` yadi\' te pu\`rA chi\'jjari\`tAra\' Ana\`shuH su\`mnami\'ndra |
+kaste\' bhA\`gaH kiM vayo\' dudhra khidva\`H puru\'hUta purUvaso.asura\`ghnaH || 6\.022\.04
+taM pR^i\`chChantI\` vajra\'hastaM rathe\`ShThAmindra\`M vepI\` vakva\'rI\` yasya\` nU gIH |
+tu\`vi\`grA\`bhaM tu\'vikU\`rmiM ra\'bho\`dAM gA\`tumi\'She\` nakSha\'te\` tumra\`machCha\' || 6\.022\.05
+a\`yA ha\` tyaM mA\`yayA\' vAvR^idhA\`naM ma\'no\`juvA\' svatava\`H parva\'tena |
+achyu\'tA chidvILi\`tA svo\'jo ru\`jo vi dR^i\`LhA dhR^i\'Sha\`tA vi\'rapshin || 6\.022\.06
+taM vo\' dhi\`yA navya\'syA\` shavi\'ShThaM pra\`tnaM pra\'tna\`vatpa\'ritaMsa\`yadhyai\' |
+sa no\' vakShadanimA\`naH su\`vahmendro\` vishvA\`nyati\' du\`rgahA\'Ni || 6\.022\.07
+A janA\'ya\` druhva\'Ne\` pArthi\'vAni di\`vyAni\' dIpayo\`.antari\'kShA |
+tapA\' vR^iShanvi\`shvata\'H sho\`chiShA\` tAnbra\'hma\`dviShe\' shochaya\` kShAma\`pashcha\' || 6\.022\.08
+bhuvo\` jana\'sya di\`vyasya\` rAjA\` pArthi\'vasya\` jaga\'tastveShasaMdR^ik |
+dhi\`Shva vajra\`M dakShi\'Na indra\` haste\` vishvA\' ajurya dayase\` vi mA\`yAH || 6\.022\.09
+A sa\`Myata\'mindra NaH sva\`stiM sha\'tru\`tUryA\'ya bR^iha\`tImamR^i\'dhrAm |
+yayA\` dAsA\`nyAryA\'Ni vR^i\`trA karo\' vajrinsu\`tukA\` nAhu\'ShANi || 6\.022\.10
+sa no\' ni\`yudbhi\'H puruhUta vedho vi\`shvavA\'rAbhi\`rA ga\'hi prayajyo |
+na yA ade\'vo\` vara\'te\` na de\`va Abhi\'ryAhi\` tUya\`mA ma\'drya\`drik || 6\.022\.11
+
+su\`ta ittvaM nimi\'shla indra\` some\` stome\` brahma\'Ni sha\`syamA\'na u\`kthe |
+yadvA\' yu\`ktAbhyA\'M maghava\`nhari\'bhyA\`M bibhra\`dvajra\'M bA\`hvori\'ndra\` yAsi\' || 6\.023\.01
+yadvA\' di\`vi pArye\` suShvi\'mindra vR^itra\`hatye.ava\'si\` shUra\'sAtau |
+yadvA\` dakSha\'sya bi\`bhyuSho\` abi\'bhya\`dara\'ndhaya\`H shardha\'ta indra\` dasyU\'n || 6\.023\.02
+pAtA\' su\`tamindro\' astu\` soma\'M praNe\`nIru\`gro ja\'ri\`tAra\'mU\`tI |
+kartA\' vI\`rAya\` suShva\'ya u lo\`kaM dAtA\` vasu\' stuva\`te kI\`raye\' chit || 6\.023\.03
+ganteyA\'nti\` sava\'nA\` hari\'bhyAM ba\`bhrirvajra\'M pa\`piH soma\'M da\`dirgAH |
+kartA\' vI\`raM narya\`M sarva\'vIra\`M shrotA\` hava\'M gR^iNa\`taH stoma\'vAhAH || 6\.023\.04
+asmai\' va\`yaM yadvA\`vAna\` tadvi\'viShma\` indrA\'ya\` yo na\'H pra\`divo\` apa\`skaH |
+su\`te some\' stu\`masi\` shaMsa\'du\`kthendrA\'ya\` brahma\` vardha\'na\`M yathAsa\'t || 6\.023\.05
+brahmA\'Ni\` hi cha\'kR^i\`She vardha\'nAni\` tAva\'tta indra ma\`tibhi\'rviviShmaH |
+su\`te some\' sutapA\`H shaMta\'mAni\` rANDyA\' kriyAsma\` vakSha\'NAni ya\`j~naiH || 6\.023\.06
+sa no\' bodhi puro\`LAsha\`M rarA\'Na\`H pibA\` tu soma\`M goR^i\'jIkamindra |
+edaM ba\`rhiryaja\'mAnasya sIdo\`ruM kR^i\'dhi tvAya\`ta u\' lo\`kam || 6\.023\.07
+sa ma\'ndasvA\` hyanu\` joSha\'mugra\` pra tvA\' ya\`j~nAsa\' i\`me a\'shnuvantu |
+preme havA\'saH puruhU\`tama\`sme A tve\`yaM dhIrava\'sa indra yamyAH || 6\.023\.08
+taM va\'H sakhAya\`H saM yathA\' su\`teShu\` some\'bhirIM pR^iNatA bho\`jamindra\'m |
+ku\`vittasmA\` asa\'ti no\` bharA\'ya\` na suShvi\`mindro.ava\'se mR^idhAti || 6\.023\.09
+e\`vedindra\'H su\`te a\'stAvi\` some\' bha\`radvA\'jeShu\` kShaya\`dinma\`ghona\'H |
+asa\`dyathA\' jari\`tra u\`ta sU\`ririndro\' rA\`yo vi\`shvavA\'rasya dA\`tA || 6\.023\.10
+
+vR^iShA\` mada\` indre\` shloka\' u\`kthA sachA\` some\'Shu suta\`pA R^i\'jI\`ShI |
+a\`rcha\`tryo\' ma\`ghavA\` nR^ibhya\' u\`kthairdyu\`kSho rAjA\' gi\`rAmakShi\'totiH || 6\.024\.01
+tatu\'rirvI\`ro naryo\` viche\'tA\`H shrotA\` hava\'M gR^iNa\`ta u\`rvyU\'tiH |
+vasu\`H shaMso\' na\`rAM kA\`rudhA\'yA vA\`jI stu\`to vi\`dathe\' dAti\` vAja\'m || 6\.024\.02
+akSho\` na cha\`kryo\'H shUra bR^i\`hanpra te\' ma\`hnA ri\'riche\` roda\'syoH |
+vR^i\`kShasya\` nu te\' puruhUta va\`yA vyU\`3\`\'tayo\' ruruhurindra pU\`rvIH || 6\.024\.03
+shachI\'vataste purushAka\` shAkA\` gavA\'miva sru\`taya\'H sa\`Mchara\'NIH |
+va\`tsAnA\`M na ta\`ntaya\'sta indra\` dAma\'nvanto adA\`mAna\'H sudAman || 6\.024\.04
+a\`nyada\`dya karva\'rama\`nyadu\` shvo.asa\'chcha\` sanmuhu\'rAcha\`kririndra\'H |
+mi\`tro no\` atra\` varu\'Nashcha pU\`ShAryo vasha\'sya parye\`tAsti\' || 6\.024\.05
+vi tvadApo\` na parva\'tasya pR^i\`ShThAdu\`kthebhi\'rindrAnayanta ya\`j~naiH |
+taM tvA\`bhiH su\'ShTu\`tibhi\'rvA\`jaya\'nta A\`jiM na ja\'gmurgirvAho\` ashvA\'H || 6\.024\.06
+na yaM jara\'nti sha\`rado\` na mAsA\` na dyAva\` indra\'mavaka\`rshaya\'nti |
+vR^i\`ddhasya\' chidvardhatAmasya ta\`nUH stome\'bhiru\`kthaishcha\' sha\`syamA\'nA || 6\.024\.07
+na vI\`Lave\` nama\'te\` na sthi\`rAya\` na shardha\'te\` dasyu\'jUtAya sta\`vAn |
+ajrA\` indra\'sya gi\`raya\'shchidR^i\`ShvA ga\'mbhI\`re chi\'dbhavati gA\`dhama\'smai || 6\.024\.08
+ga\`mbhI\`reNa\' na u\`ruNA\'matri\`npreSho ya\'ndhi sutapAva\`nvAjA\'n |
+sthA U\` Shu U\`rdhva U\`tI ari\'ShaNyanna\`ktorvyu\'ShTau\` pari\'takmyAyAm || 6\.024\.09
+sacha\'sva nA\`yamava\'se a\`bhIka\' i\`to vA\` tami\'ndra pAhi ri\`ShaH |
+a\`mA chai\'na\`mara\'Nye pAhi ri\`Sho made\'ma sha\`tahi\'mAH su\`vIrA\'H || 6\.024\.10
+
+yA ta\' U\`tira\'va\`mA yA pa\'ra\`mA yA ma\'dhya\`mendra\' shuShmi\`nnasti\' |
+tAbhi\'rU\` Shu vR^i\'tra\`hatye\'.avIrna e\`bhishcha\` vAjai\'rma\`hAnna\' ugra || 6\.025\.01
+Abhi\`H spR^idho\' mitha\`tIrari\'ShaNyanna\`mitra\'sya vyathayA ma\`nyumi\'ndra |
+Abhi\`rvishvA\' abhi\`yujo\` viShU\'chI\`rAryA\'ya\` visho.ava\' tArI\`rdAsI\'H || 6\.025\.02
+indra\' jA\`maya\' u\`ta ye.ajA\'mayo.arvAchI\`nAso\' va\`nuSho\' yuyu\`jre |
+tvame\'ShAM vithu\`rA shavA\'Msi ja\`hi vR^iShNyA\'ni kR^iNu\`hI parA\'chaH || 6\.025\.03
+shUro\' vA\` shUra\'M vanate\` sharI\'raistanU\`ruchA\` taru\'Shi\` yatkR^i\`Nvaite\' |
+to\`ke vA\` goShu\` tana\'ye\` yada\`psu vi kranda\'sI u\`rvarA\'su\` bravai\'te || 6\.025\.04
+na\`hi tvA\` shUro\` na tu\`ro na dhR^i\`ShNurna tvA\' yo\`dho manya\'mAno yu\`yodha\' |
+indra\` naki\'ShTvA\` pratya\'styeShA\`M vishvA\' jA\`tAnya\`bhya\'si\` tAni\' || 6\.025\.05
+sa pa\'tyata u\`bhayo\'rnR^i\`mNama\`yoryadI\' ve\`dhasa\'H sami\`the hava\'nte |
+vR^i\`tre vA\' ma\`ho nR^i\`vati\` kShaye\' vA\` vyacha\'svantA\` yadi\' vitanta\`saite\' || 6\.025\.06
+adha\' smA te charSha\`Nayo\` yadejA\`nindra\' trA\`tota bha\'vA varU\`tA |
+a\`smAkA\'so\` ye nR^ita\'mAso a\`rya indra\' sU\`rayo\' dadhi\`re pu\`ro na\'H || 6\.025\.07
+anu\' te dAyi ma\`ha i\'ndri\`yAya\' sa\`trA te\` vishva\`manu\' vR^itra\`hatye\' |
+anu\' kSha\`tramanu\` saho\' yaja\`trendra\' de\`vebhi\`ranu\' te nR^i\`Shahye\' || 6\.025\.08
+e\`vA na\`H spR^idha\`H sama\'jA sa\`matsvindra\' rAra\`ndhi mi\'tha\`tIrade\'vIH |
+vi\`dyAma\` vasto\`rava\'sA gR^i\`Nanto\' bha\`radvA\'jA u\`ta ta\' indra nU\`nam || 6\.025\.09
+
+shru\`dhI na\' indra\` hvayA\'masi tvA ma\`ho vAja\'sya sA\`tau vA\'vR^iShA\`NAH |
+saM yadvisho.aya\'nta\` shUra\'sAtA u\`graM no.ava\`H pArye\` aha\'ndAH || 6\.026\.01
+tvAM vA\`jI ha\'vate vAjine\`yo ma\`ho vAja\'sya\` gadhya\'sya sA\`tau |
+tvAM vR^i\`treShvi\'ndra\` satpa\'ti\`M taru\'tra\`M tvAM cha\'ShTe muShTi\`hA goShu\` yudhya\'n || 6\.026\.02
+tvaM ka\`viM cho\'dayo\`.arkasA\'tau\` tvaM kutsA\'ya\` shuShNa\'M dA\`shuShe\' vark |
+tvaM shiro\' ama\`rmaNa\`H parA\'hannatithi\`gvAya\` shaMsya\'M kari\`Shyan || 6\.026\.03
+tvaM ratha\`M pra bha\'ro yo\`dhamR^i\`ShvamAvo\` yudhya\'ntaM vR^iSha\`bhaM dasha\'dyum |
+tvaM tugra\'M veta\`save\` sachA\'ha\`ntvaM tuji\'M gR^i\`Nanta\'mindra tUtoH || 6\.026\.04
+tvaM tadu\`kthami\'ndra ba\`rhaNA\' ka\`H pra yachCha\`tA sa\`hasrA\' shUra\` darShi\' |
+ava\' gi\`rerdAsa\`M shamba\'raM ha\`nprAvo\` divo\'dAsaM chi\`trAbhi\'rU\`tI || 6\.026\.05
+tvaM shra\`ddhAbhi\'rmandasA\`naH somai\'rda\`bhIta\'ye\` chumu\'rimindra siShvap |
+tvaM ra\`jiM piThI\'nase dasha\`syanSha\`ShTiM sa\`hasrA\` shachyA\` sachA\'han || 6\.026\.06
+a\`haM cha\`na tatsU\`ribhi\'rAnashyA\`M tava\` jyAya\' indra su\`mnamoja\'H |
+tvayA\` yatstava\'nte sadhavIra vI\`rAstri\`varU\'thena\` nahu\'ShA shaviShTha || 6\.026\.07
+va\`yaM te\' a\`syAmi\'ndra dyu\`mnahU\'tau\` sakhA\'yaH syAma mahina\` preShThA\'H |
+prAta\'rdaniH kShatra\`shrIra\'stu\` shreShTho\' gha\`ne vR^i\`trANA\'M sa\`naye\` dhanA\'nAm || 6\.026\.08
+
+kima\'sya\` made\` kimva\'sya pI\`tAvindra\`H kima\'sya sa\`khye cha\'kAra |
+raNA\' vA\` ye ni\`Shadi\` kiM te a\'sya pu\`rA vi\'vidre\` kimu\` nUta\'nAsaH || 6\.027\.01
+sada\'sya\` made\` sadva\'sya pI\`tAvindra\`H sada\'sya sa\`khye cha\'kAra |
+raNA\' vA\` ye ni\`Shadi\` satte a\'sya pu\`rA vi\'vidre\` sadu\` nUta\'nAsaH || 6\.027\.02
+na\`hi nu te\' mahi\`mana\'H samasya\` na ma\'ghavanmaghava\`ttvasya\' vi\`dma |
+na rAdha\'sorAdhaso\` nUta\'na\`syendra\` naki\'rdadR^isha indri\`yaM te\' || 6\.027\.03
+e\`tattyatta\' indri\`yama\'cheti\` yenAva\'dhIrva\`rashi\'khasya\` sheSha\'H |
+vajra\'sya\` yatte\` niha\'tasya\` shuShmA\'tsva\`nAchchi\'dindra para\`mo da\`dAra\' || 6\.027\.04
+vadhI\`dindro\' va\`rashi\'khasya\` sheSho\'.abhyAva\`rtine\' chAyamA\`nAya\` shikSha\'n |
+vR^i\`chIva\'to\` yaddha\'riyU\`pIyA\'yA\`M hanpUrve\` ardhe\' bhi\`yasApa\'ro\` dart || 6\.027\.05
+tri\`MshachCha\'taM va\`rmiNa\' indra sA\`kaM ya\`vyAva\'tyAM puruhUta shrava\`syA |
+vR^i\`chIva\'nta\`H shara\'ve\` patya\'mAnA\`H pAtrA\' bhindA\`nA nya\`rthAnyA\'yan || 6\.027\.06
+yasya\` gAvA\'varu\`ShA sU\'yava\`syU a\`ntarU\` Shu chara\'to\` reri\'hANA |
+sa sR^i~nja\'yAya tu\`rvasha\`M parA\'dAdvR^i\`chIva\'to daivavA\`tAya\` shikSha\'n || 6\.027\.07
+dva\`yA.N a\'gne ra\`thino\' viMsha\`tiM gA va\`dhUma\'to ma\`ghavA\` mahya\'M sa\`mrAT |
+a\`bhyA\`va\`rtI chA\'yamA\`no da\'dAti dU\`NAshe\`yaM dakShi\'NA pArtha\`vAnA\'m || 6\.027\.08
+
+A gAvo\' agmannu\`ta bha\`drama\'kra\`nsIda\'ntu go\`ShThe ra\`Naya\'ntva\`sme |
+pra\`jAva\'tIH puru\`rUpA\' i\`ha syu\`rindrA\'ya pU\`rvIru\`Shaso\` duhA\'nAH || 6\.028\.01
+indro\` yajva\'ne pR^iNa\`te cha\' shikSha\`tyupedda\'dAti\` na svaM mu\'ShAyati |
+bhUyo\'bhUyo ra\`yimida\'sya va\`rdhaya\`nnabhi\'nne khi\`lye ni da\'dhAti deva\`yum || 6\.028\.02
+na tA na\'shanti\` na da\'bhAti\` taska\'ro\` nAsA\'mAmi\`tro vyathi\`rA da\'dharShati |
+de\`vA.Nshcha\` yAbhi\`ryaja\'te\` dadA\'ti cha\` jyogittAbhi\'H sachate\` gopa\'tiH sa\`ha || 6\.028\.03
+na tA arvA\' re\`Nuka\'kATo ashnute\` na sa\'MskR^ita\`tramupa\' yanti\` tA a\`bhi |
+u\`ru\`gA\`yamabha\'ya\`M tasya\` tA anu\` gAvo\` marta\'sya\` vi cha\'ranti\` yajva\'naH || 6\.028\.04
+gAvo\` bhago\` gAva\` indro\' me achChA\`ngAva\`H soma\'sya pratha\`masya\' bha\`kShaH |
+i\`mA yA gAva\`H sa ja\'nAsa\` indra\' i\`chChAmIddhR^i\`dA mana\'sA chi\`dindra\'m || 6\.028\.05
+yU\`yaM gA\'vo medayathA kR^i\`shaM chi\'dashrI\`raM chi\'tkR^iNuthA su\`pratI\'kam |
+bha\`draM gR^i\`haM kR^i\'Nutha bhadravAcho bR^i\`hadvo\` vaya\' uchyate sa\`bhAsu\' || 6\.028\.06
+pra\`jAva\'tIH sU\`yava\'saM ri\`shantI\'H shu\`ddhA a\`paH su\'prapA\`Ne piba\'ntIH |
+mA va\'H ste\`na I\'shata\` mAghasha\'Msa\`H pari\' vo he\`tI ru\`drasya\' vR^ijyAH || 6\.028\.07
+upe\`damu\'pa\`parcha\'namA\`su goShUpa\' pR^ichyatAm |
+upa\' R^iSha\`bhasya\` reta\`syupe\'ndra\` tava\' vI\`rye\' || 6\.028\.08
+
+indra\'M vo\` nara\'H sa\`khyAya\' sepurma\`ho yanta\'H suma\`taye\' chakA\`nAH |
+ma\`ho hi dA\`tA vajra\'hasto\` asti\' ma\`hAmu\' ra\`Nvamava\'se yajadhvam || 6\.029\.01
+A yasmi\`nhaste\` naryA\' mimi\`kShurA rathe\' hira\`Nyaye\' rathe\`ShThAH |
+A ra\`shmayo\` gabha\'styoH sthU\`rayo\`rAdhva\`nnashvA\'so\` vR^iSha\'No yujA\`nAH || 6\.029\.02
+shri\`ye te\` pAdA\` duva\` A mi\'mikShurdhR^i\`ShNurva\`jrI shava\'sA\` dakShi\'NAvAn |
+vasA\'no\` atka\'M sura\`bhiM dR^i\`she kaM sva1\`\'rNa nR^i\'taviShi\`ro ba\'bhUtha || 6\.029\.03
+sa soma\` Ami\'shlatamaH su\`to bhU\`dyasmi\'npa\`ktiH pa\`chyate\` santi\' dhA\`nAH |
+indra\`M nara\'H stu\`vanto\' brahmakA\`rA u\`kthA shaMsa\'nto de\`vavA\'tatamAH || 6\.029\.04
+na te\` anta\`H shava\'so dhAyya\`sya vi tu bA\'badhe\` roda\'sI mahi\`tvA |
+A tA sU\`riH pR^i\'Nati\` tUtu\'jAno yU\`thevA\`psu sa\`mIja\'mAna U\`tI || 6\.029\.05
+e\`vedindra\'H su\`hava\' R^i\`Shvo a\'stU\`tI anU\'tI hirishi\`praH satvA\' |
+e\`vA hi jA\`to asa\'mAtyojAH pu\`rU cha\' vR^i\`trA ha\'nati\` ni dasyU\'n || 6\.029\.06
+
+bhUya\` idvA\'vR^idhe vI\`ryA\'ya\`.N eko\' aju\`ryo da\'yate\` vasU\'ni |
+pra ri\'riche di\`va indra\'H pR^ithi\`vyA a\`rdhamida\'sya\` prati\` roda\'sI u\`bhe || 6\.030\.01
+adhA\' manye bR^i\`hada\'su\`rya\'masya\` yAni\' dA\`dhAra\` naki\`rA mi\'nAti |
+di\`vedi\'ve\` sUryo\' darsha\`to bhU\`dvi sadmA\'nyurvi\`yA su\`kratu\'rdhAt || 6\.030\.02
+a\`dyA chi\`nnU chi\`ttadapo\' na\`dInA\`M yadA\'bhyo\` ara\'do gA\`tumi\'ndra |
+ni parva\'tA adma\`sado\` na se\'du\`stvayA\' dR^i\`LhAni\' sukrato\` rajA\'Msi || 6\.030\.03
+sa\`tyamittanna tvAvA\'.N a\`nyo a\`stIndra\' de\`vo na martyo\` jyAyA\'n |
+aha\`nnahi\'M pari\`shayA\'na\`marNo.avA\'sR^ijo a\`po achChA\' samu\`dram || 6\.030\.04
+tvama\`po vi duro\` viShU\'chI\`rindra\' dR^i\`Lhama\'ruja\`H parva\'tasya |
+rAjA\'bhavo\` jaga\'tashcharShaNI\`nAM sA\`kaM sUrya\'M ja\`naya\`ndyAmu\`ShAsa\'m || 6\.030\.05
+
+abhU\`reko\' rayipate rayI\`NAmA hasta\'yoradhithA indra kR^i\`ShTIH |
+vi to\`ke a\`psu tana\'ye cha\` sUre.avo\'chanta charSha\`Nayo\` vivA\'chaH || 6\.031\.01
+tvadbhi\`yendra\` pArthi\'vAni\` vishvAchyu\'tA chichchyAvayante\` rajA\'Msi |
+dyAvA\`kShAmA\` parva\'tAso\` vanA\'ni\` vishva\'M dR^i\`LhaM bha\'yate\` ajma\`nnA te\' || 6\.031\.02
+tvaM kutse\'nA\`bhi shuShNa\'mindrA\`shuSha\'M yudhya\` kuya\'va\`M gavi\'ShTau |
+dasha\' prapi\`tve adha\` sUrya\'sya muShA\`yashcha\`kramavi\'ve\` rapA\'Msi || 6\.031\.03
+tvaM sha\`tAnyava\` shamba\'rasya\` puro\' jaghanthApra\`tIni\` dasyo\'H |
+ashi\'kSho\` yatra\` shachyA\' shachIvo\` divo\'dAsAya sunva\`te su\'takre bha\`radvA\'jAya gR^iNa\`te vasU\'ni || 6\.031\.04
+sa sa\'tyasatvanmaha\`te raNA\'ya\` ratha\`mA ti\'ShTha tuvinR^imNa bhI\`mam |
+yA\`hi pra\'pathi\`nnava\`sopa\' ma\`drikpra cha\' shruta shrAvaya charSha\`Nibhya\'H || 6\.031\.05
+
+apU\'rvyA puru\`tamA\'nyasmai ma\`he vI\`rAya\' ta\`vase\' tu\`rAya\' |
+vi\`ra\`pshine\' va\`jriNe\` shaMta\'mAni\` vachA\'MsyA\`sA sthavi\'rAya takSham || 6\.032\.01
+sa mA\`tarA\` sUrye\'NA kavI\`nAmavA\'sayadru\`jadadri\'M gR^iNA\`naH |
+svA\`dhIbhi\`rR^ikva\'bhirvAvashA\`na udu\`sriyA\'NAmasR^ijanni\`dAna\'m || 6\.032\.02
+sa vahni\'bhi\`rR^ikva\'bhi\`rgoShu\` shashva\'nmi\`taj~nu\'bhiH puru\`kR^itvA\' jigAya |
+pura\'H puro\`hA sakhi\'bhiH sakhI\`yandR^i\`LhA ru\'roja ka\`vibhi\'H ka\`viH san || 6\.032\.03
+sa nI\`vyA\'bhirjari\`tAra\`machChA\' ma\`ho vAje\'bhirma\`hadbhi\'shcha\` shuShmai\'H |
+pu\`ru\`vIrA\'bhirvR^iShabha kShitI\`nAmA gi\'rvaNaH suvi\`tAya\` pra yA\'hi || 6\.032\.04
+sa sarge\'Na\` shava\'sA ta\`kto atyai\'ra\`pa indro\' dakShiNa\`tastu\'rA\`ShAT |
+i\`tthA sR^i\'jA\`nA ana\'pAvR^i\`dartha\'M di\`vedi\'ve viviShurapramR^i\`Shyam || 6\.032\.05
+
+ya oji\'ShTha indra\` taM su no\' dA\` mado\' vR^iShansvabhi\`ShTirdAsvA\'n |
+sauva\'shvya\`M yo va\`nava\`tsvashvo\' vR^i\`trA sa\`matsu\' sA\`saha\'da\`mitrA\'n || 6\.033\.01
+tvAM hI\`3\`\'ndrAva\'se\` vivA\'cho\` hava\'nte charSha\`Naya\`H shUra\'sAtau |
+tvaM vipre\'bhi\`rvi pa\`NI.Nra\'shAya\`stvota\` itsani\'tA\` vAja\`marvA\' || 6\.033\.02
+tvaM tA.N i\'ndro\`bhayA\'.N a\`mitrA\`ndAsA\' vR^i\`trANyAryA\' cha shUra |
+vadhI\`rvane\'va\` sudhi\'tebhi\`ratkai\`rA pR^i\`tsu da\'rShi nR^i\`NAM nR^i\'tama || 6\.033\.03
+sa tvaM na\' i\`ndrAka\'vAbhirU\`tI sakhA\' vi\`shvAyu\'ravi\`tA vR^i\`dhe bhU\'H |
+sva\'rShAtA\` yaddhvayA\'masi tvA\` yudhya\'nto ne\`madhi\'tA pR^i\`tsu shU\'ra || 6\.033\.04
+nU\`naM na\' indrApa\`rAya\' cha syA\` bhavA\' mR^iLI\`ka u\`ta no\' a\`bhiShTau\' |
+i\`tthA gR^i\`Nanto\' ma\`hina\'sya\` sharma\'ndi\`vi ShyA\'ma\` pArye\' go\`Shata\'mAH || 6\.033\.05
+
+saM cha\` tve ja\`gmurgira\' indra pU\`rvIrvi cha\` tvadya\'nti vi\`bhvo\' manI\`ShAH |
+pu\`rA nU\`naM cha\' stu\`taya\` R^iShI\'NAM paspR^i\`dhra indre\` adhyu\'kthA\`rkA || 6\.034\.01
+pu\`ru\`hU\`to yaH pu\'rugU\`rta R^ibhvA\`.N eka\'H puruprasha\`sto asti\' ya\`j~naiH |
+ratho\` na ma\`he shava\'se yujA\`no\`3\`\'.asmAbhi\`rindro\' anu\`mAdyo\' bhUt || 6\.034\.02
+na yaM hiMsa\'nti dhI\`tayo\` na vANI\`rindra\`M nakSha\`ntIda\`bhi va\`rdhaya\'ntIH |
+yadi\' sto\`tAra\'H sha\`taM yatsa\`hasra\'M gR^i\`Nanti\` girva\'Nasa\`M shaM tada\'smai || 6\.034\.03
+asmA\' e\`taddi\`vya1\`\'rcheva\' mA\`sA mi\'mi\`kSha indre\` nya\'yAmi\` soma\'H |
+jana\`M na dhanva\'nna\`bhi saM yadApa\'H sa\`trA vA\'vR^idhu\`rhava\'nAni ya\`j~naiH || 6\.034\.04
+asmA\' e\`tanmahyA\'~NgU\`Shama\'smA\` indrA\'ya sto\`traM ma\`tibhi\'ravAchi |
+asa\`dyathA\' maha\`ti vR^i\'tra\`tUrya\` indro\' vi\`shvAyu\'ravi\`tA vR^i\`dhashcha\' || 6\.034\.05
+
+ka\`dA bhu\'va\`nratha\'kShayANi\` brahma\' ka\`dA sto\`tre sa\'hasrapo\`Shya\'M dAH |
+ka\`dA stoma\'M vAsayo.asya rA\`yA ka\`dA dhiya\'H karasi\` vAja\'ratnAH || 6\.035\.01
+karhi\' svi\`ttadi\'ndra\` yannR^ibhi\`rnR^InvI\`rairvI\`rAnnI\`LayA\'se\` jayA\`jIn |
+tri\`dhAtu\` gA adhi\' jayAsi\` goShvindra\' dyu\`mnaM sva\'rvaddhehya\`sme || 6\.035\.02
+karhi\' svi\`ttadi\'ndra\` yajja\'ri\`tre vi\`shvapsu\` brahma\' kR^i\`Nava\'H shaviShTha |
+ka\`dA dhiyo\` na ni\`yuto\' yuvAse ka\`dA goma\'ghA\` hava\'nAni gachChAH || 6\.035\.03
+sa goma\'ghA jari\`tre ashva\'shchandrA\` vAja\'shravaso\` adhi\' dhehi\` pR^ikSha\'H |
+pI\`pi\`hISha\'H su\`dughA\'mindra dhe\`nuM bha\`radvA\'jeShu su\`rucho\' ruruchyAH || 6\.035\.04
+tamA nU\`naM vR^i\`jana\'ma\`nyathA\' chi\`chChUro\` yachCha\'kra\` vi duro\' gR^iNI\`She |
+mA nira\'raM shukra\`dugha\'sya dhe\`norA\'~Ngira\`sAnbrahma\'NA vipra jinva || 6\.035\.05
+
+sa\`trA madA\'sa\`stava\' vi\`shvaja\'nyAH sa\`trA rAyo.adha\` ye pArthi\'vAsaH |
+sa\`trA vAjA\'nAmabhavo vibha\`ktA yadde\`veShu\' dhA\`raya\'thA asu\`rya\'m || 6\.036\.01
+anu\` pra ye\'je\` jana\` ojo\' asya sa\`trA da\'dhire\` anu\' vI\`ryA\'ya |
+syU\`ma\`gR^ibhe\` dudha\`ye.arva\'te cha\` kratu\'M vR^i~nja\`ntyapi\' vR^itra\`hatye\' || 6\.036\.02
+taM sa\`dhrIchI\'rU\`tayo\` vR^iShNyA\'ni\` pauMsyA\'ni ni\`yuta\'H sashchu\`rindra\'m |
+sa\`mu\`draM na sindha\'va u\`kthashu\'ShmA uru\`vyacha\'sa\`M gira\` A vi\'shanti || 6\.036\.03
+sa rA\`yaskhAmupa\' sR^ijA gR^iNA\`naH pu\'rushcha\`ndrasya\` tvami\'ndra\` vasva\'H |
+pati\'rbabhU\`thAsa\'mo\` janA\'nA\`meko\` vishva\'sya\` bhuva\'nasya\` rAjA\' || 6\.036\.04
+sa tu shru\'dhi\` shrutyA\` yo du\'vo\`yurdyaurna bhUmA\`bhi rAyo\' a\`ryaH |
+aso\` yathA\' na\`H shava\'sA chakA\`no yu\`geyu\'ge\` vaya\'sA\` cheki\'tAnaH || 6\.036\.05
+
+a\`rvAgratha\'M vi\`shvavA\'raM ta u\`grendra\' yu\`ktAso\` hara\'yo vahantu |
+kI\`rishchi\`ddhi tvA\` hava\'te\` sva\'rvAnR^idhI\`mahi\' sadha\`mAda\'ste a\`dya || 6\.037\.01
+pro droNe\` hara\'ya\`H karmA\'gmanpunA\`nAsa\` R^ijya\'nto abhUvan |
+indro\' no a\`sya pU\`rvyaH pa\'pIyAddyu\`kSho mada\'sya so\`myasya\` rAjA\' || 6\.037\.02
+A\`sa\`srA\`NAsa\'H shavasA\`namachChendra\'M sucha\`kre ra\`thyA\'so\` ashvA\'H |
+a\`bhi shrava\` R^ijya\'nto vaheyu\`rnU chi\`nnu vA\`yora\`mR^ita\`M vi da\'syet || 6\.037\.03
+vari\'ShTho asya\` dakShi\'NAmiya\`rtIndro\' ma\`ghonA\'M tuvikU\`rmita\'maH |
+yayA\' vajrivaH pari\`yAsyaMho\' ma\`ghA cha\' dhR^iShNo\` daya\'se\` vi sU\`rIn || 6\.037\.04
+indro\` vAja\'sya\` sthavi\'rasya dA\`tendro\' gI\`rbhirva\'rdhatAM vR^i\`ddhama\'hAH |
+indro\' vR^i\`traM hani\'ShTho astu\` satvA tA sU\`riH pR^i\'Nati\` tUtu\'jAnaH || 6\.037\.05
+
+apA\'di\`ta udu\' nashchi\`trata\'mo ma\`hIM bha\'rShaddyu\`matI\`mindra\'hUtim |
+panya\'sIM dhI\`tiM daivya\'sya\` yAma\`~njana\'sya rA\`tiM va\'nate su\`dAnu\'H || 6\.038\.01
+dU\`rAchchi\`dA va\'sato asya\` karNA\` ghoShA\`dindra\'sya tanyati bruvA\`NaH |
+eyame\'naM de\`vahU\'tirvavR^ityAnma\`drya1\`\'gindra\'mi\`yamR^i\`chyamA\'nA || 6\.038\.02
+taM vo\' dhi\`yA pa\'ra\`mayA\' purA\`jAma\`jara\`mindra\'ma\`bhya\'nUShya\`rkaiH |
+brahmA\' cha\` giro\' dadhi\`re sama\'sminma\`hA.Nshcha\` stomo\` adhi\' vardha\`dindre\' || 6\.038\.03
+vardhA\`dyaM ya\`j~na u\`ta soma\` indra\`M vardhA\`dbrahma\` gira\' u\`kthA cha\` manma\' |
+vardhAhai\'namu\`Shaso\` yAma\'nna\`ktorvardhA\`nmAsA\'H sha\`rado\` dyAva\` indra\'m || 6\.038\.04
+e\`vA ja\'j~nA\`naM saha\'se\` asA\'mi vAvR^idhA\`naM rAdha\'se cha shru\`tAya\' |
+ma\`hAmu\`gramava\'se vipra nU\`namA vi\'vAsema vR^itra\`tUrye\'Shu || 6\.038\.05
+
+ma\`ndrasya\' ka\`verdi\`vyasya\` vahne\`rvipra\'manmano vacha\`nasya\` madhva\'H |
+apA\' na\`stasya\' sacha\`nasya\' de\`veSho\' yuvasva gR^iNa\`te goa\'grAH || 6\.039\.01
+a\`yamu\'shA\`naH paryadri\'mu\`srA R^i\`tadhI\'tibhirR^ita\`yugyu\'jA\`naH |
+ru\`jadaru\'gNa\`M vi va\`lasya\` sAnu\'M pa\`NI.Nrvacho\'bhira\`bhi yo\'dha\`dindra\'H || 6\.039\.02
+a\`yaM dyo\'tayada\`dyuto\` vya1\`\'ktUndo\`ShA vasto\'H sha\`rada\` indu\'rindra |
+i\`maM ke\`tuma\'dadhu\`rnU chi\`dahnA\`M shuchi\'janmana u\`Shasa\'shchakAra || 6\.039\.03
+a\`yaM ro\'chayada\`rucho\' ruchA\`no\`3\`\'.ayaM vA\'saya\`dvyR^i1\`\'tena\' pU\`rvIH |
+a\`yamI\'yata R^ita\`yugbhi\`rashvai\'H sva\`rvidA\` nAbhi\'nA charShaNi\`prAH || 6\.039\.04
+nU gR^i\'NA\`no gR^i\'Na\`te pra\'tna rAja\`nniSha\'H pinva vasu\`deyA\'ya pU\`rvIH |
+a\`pa oSha\'dhIravi\`ShA vanA\'ni\` gA arva\'to\` nR^InR^i\`chase\' rirIhi || 6\.039\.05
+
+indra\` piba\` tubhya\'M su\`to madA\`yAva\' sya\` harI\` vi mu\'chA\` sakhA\'yA |
+u\`ta pra gA\'ya ga\`Na A ni\`ShadyAthA\' ya\`j~nAya\' gR^iNa\`te vayo\' dhAH || 6\.040\.01
+asya\' piba\` yasya\' jaj~nA\`na i\'ndra\` madA\'ya\` kratve\` api\'bo virapshin |
+tamu\' te\` gAvo\` nara\` Apo\` adri\`rindu\`M sama\'hyanpI\`taye\` sama\'smai || 6\.040\.02
+sami\'ddhe a\`gnau su\`ta i\'ndra\` soma\` A tvA\' vahantu\` hara\'yo\` vahi\'ShThAH |
+tvA\`ya\`tA mana\'sA johavI\`mIndrA yA\'hi suvi\`tAya\' ma\`he na\'H || 6\.040\.03
+A yA\'hi\` shashva\'dusha\`tA ya\'yA\`thendra\' ma\`hA mana\'sA soma\`peya\'m |
+upa\` brahmA\'Ni shR^iNava i\`mA no.athA\' te ya\`j~nasta\`nve\`3\`\' vayo\' dhAt || 6\.040\.04
+yadi\'ndra di\`vi pArye\` yadR^idha\`gyadvA\` sve sada\'ne\` yatra\` vAsi\' |
+ato\' no ya\`j~namava\'se ni\`yutvA\'nsa\`joShA\'H pAhi girvaNo ma\`rudbhi\'H || 6\.040\.05
+
+ahe\'LamAna\` upa\' yAhi ya\`j~naM tubhya\'M pavanta\` inda\'vaH su\`tAsa\'H |
+gAvo\` na va\'jri\`nsvamoko\` achChendrA ga\'hi pratha\`mo ya\`j~niyA\'nAm || 6\.041\.01
+yA te\' kA\`kutsukR^i\'tA\` yA vari\'ShThA\` yayA\` shashva\`tpiba\'si\` madhva\' U\`rmim |
+tayA\' pAhi\` pra te\' adhva\`ryura\'sthA\`tsaM te\` vajro\' vartatAmindra ga\`vyuH || 6\.041\.02
+e\`Sha dra\`pso vR^i\'Sha\`bho vi\`shvarU\'pa\` indrA\'ya\` vR^iShNe\` sama\'kAri\` soma\'H |
+e\`taM pi\'ba harivaH sthAtarugra\` yasyeshi\'She pra\`divi\` yaste\` anna\'m || 6\.041\.03
+su\`taH somo\` asu\'tAdindra\` vasyA\'na\`yaM shreyA\'~nchiki\`tuShe\` raNA\'ya |
+e\`taM ti\'tirva\` upa\' yAhi ya\`j~naM tena\` vishvA\`stavi\'ShI\`rA pR^i\'Nasva || 6\.041\.04
+hvayA\'masi\` tvendra\' yAhya\`rvA~Nara\'M te\` soma\'sta\`nve\' bhavAti |
+shata\'krato mA\`daya\'svA su\`teShu\` prAsmA.N a\'va\` pR^ita\'nAsu\` pra vi\`kShu || 6\.041\.05
+
+pratya\'smai\` pipI\'Shate\` vishvA\'ni vi\`duShe\' bhara |
+a\`ra\`Mga\`mAya\` jagma\`ye.apa\'shchAddaghvane\` nare\' || 6\.042\.01
+eme\'naM pra\`tyeta\'na\` some\'bhiH soma\`pAta\'mam |
+ama\'trebhirR^ijI\`ShiNa\`mindra\'M su\`tebhi\`rindu\'bhiH || 6\.042\.02
+yadI\' su\`tebhi\`rindu\'bhi\`H some\'bhiH prati\`bhUSha\'tha |
+vedA\` vishva\'sya\` medhi\'ro dhR^i\`ShattaMta\`mideSha\'te || 6\.042\.03
+a\`smAa\'smA\` idandha\`so.adhva\'ryo\` pra bha\'rA su\`tam |
+ku\`vitsa\'masya\` jenya\'sya\` shardha\'to\`.abhisha\'sterava\`spara\'t || 6\.042\.04
+
+yasya\` tyachChamba\'ra\`M made\` divo\'dAsAya ra\`ndhaya\'H |
+a\`yaM sa soma\' indra te su\`taH piba\' || 6\.043\.01
+yasya\' tIvra\`suta\`M mada\`M madhya\`manta\'M cha\` rakSha\'se |
+a\`yaM sa soma\' indra te su\`taH piba\' || 6\.043\.02
+yasya\` gA a\`ntarashma\'no\` made\' dR^i\`LhA a\`vAsR^i\'jaH |
+a\`yaM sa soma\' indra te su\`taH piba\' || 6\.043\.03
+yasya\' mandA\`no andha\'so\` mAgho\'naM dadhi\`She shava\'H |
+a\`yaM sa soma\' indra te su\`taH piba\' || 6\.043\.04
+
+yo ra\'yivo ra\`yiMta\'mo\` yo dyu\`mnairdyu\`mnava\'ttamaH |
+soma\'H su\`taH sa i\'ndra\` te.asti\' svadhApate\` mada\'H || 6\.044\.01
+yaH sha\`gmastu\'vishagma te rA\`yo dA\`mA ma\'tI\`nAm |
+soma\'H su\`taH sa i\'ndra\` te.asti\' svadhApate\` mada\'H || 6\.044\.02
+yena\' vR^i\`ddho na shava\'sA tu\`ro na svAbhi\'rU\`tibhi\'H |
+soma\'H su\`taH sa i\'ndra\` te.asti\' svadhApate\` mada\'H || 6\.044\.03
+tyamu\' vo\` apra\'haNaM gR^iNI\`She shava\'sa\`spati\'m |
+indra\'M vishvA\`sAha\`M nara\`M maMhi\'ShThaM vi\`shvacha\'rShaNim || 6\.044\.04
+yaM va\`rdhaya\`ntIdgira\`H pati\'M tu\`rasya\` rAdha\'saH |
+taminnva\'sya\` roda\'sI de\`vI shuShma\'M saparyataH || 6\.044\.05
+tadva\' u\`kthasya\' ba\`rhaNendrA\'yopastR^iNI\`ShaNi\' |
+vipo\` na yasyo\`tayo\` vi yadroha\'nti sa\`kShita\'H || 6\.044\.06
+avi\'da\`ddakSha\'M mi\`tro navI\'yAnpapA\`no de\`vebhyo\` vasyo\' achait |
+sa\`sa\`vAnstau\`lAbhi\'rdhau\`tarI\'bhiruru\`ShyA pA\`yura\'bhava\`tsakhi\'bhyaH || 6\.044\.07
+R^i\`tasya\' pa\`thi ve\`dhA a\'pAyi shri\`ye manA\'Msi de\`vAso\' akran |
+dadhA\'no\` nAma\' ma\`ho vacho\'bhi\`rvapu\'rdR^i\`shaye\' ve\`nyo vyA\'vaH || 6\.044\.08
+dyu\`matta\'ma\`M dakSha\'M dhehya\`sme sedhA\` janA\'nAM pU\`rvIrarA\'tIH |
+varShI\'yo\` vaya\'H kR^iNuhi\` shachI\'bhi\`rdhana\'sya sA\`tAva\`smA.N a\'viDDhi || 6\.044\.09
+indra\` tubhya\`minma\'ghavannabhUma va\`yaM dA\`tre ha\'rivo\` mA vi ve\'naH |
+naki\'rA\`pirda\'dR^ishe martya\`trA kima\`~Nga ra\'dhra\`choda\'naM tvAhuH || 6\.044\.10
+mA jasva\'ne vR^iShabha no rarIthA\` mA te\' re\`vata\'H sa\`khye ri\'ShAma |
+pU\`rvIShTa\' indra ni\`ShShidho\` jane\'Shu ja\`hyasu\'ShvI\`npra vR^i\`hApR^i\'NataH || 6\.044\.11
+uda\`bhrANI\'va sta\`naya\'nniya\`rtIndro\` rAdhA\`MsyashvyA\'ni\` gavyA\' |
+tvama\'si pra\`diva\'H kA\`rudhA\'yA\` mA tvA\'dA\`mAna\` A da\'bhanma\`ghona\'H || 6\.044\.12
+adhva\'ryo vIra\` pra ma\`he su\`tAnA\`mindrA\'ya bhara\` sa hya\'sya\` rAjA\' |
+yaH pU\`rvyAbhi\'ru\`ta nUta\'nAbhirgI\`rbhirvA\'vR^i\`dhe gR^i\'Na\`tAmR^iShI\'NAm || 6\.044\.13
+a\`sya made\' pu\`ru varpA\'Msi vi\`dvAnindro\' vR^i\`trANya\'pra\`tI ja\'ghAna |
+tamu\` pra ho\'Shi\` madhu\'mantamasmai\` soma\'M vI\`rAya\' shi\`priNe\` piba\'dhyai || 6\.044\.14
+pAtA\' su\`tamindro\' astu\` soma\`M hantA\' vR^i\`traM vajre\'Na mandasA\`naH |
+gantA\' ya\`j~naM pa\'rA\`vata\'shchi\`dachChA\` vasu\'rdhI\`nAma\'vi\`tA kA\`rudhA\'yAH || 6\.044\.15
+i\`daM tyatpAtra\'mindra\`pAna\`mindra\'sya pri\`yama\`mR^ita\'mapAyi |
+matsa\`dyathA\' saumana\`sAya\' de\`vaM vya1\`\'smaddveSho\' yu\`yava\`dvyaMha\'H || 6\.044\.16
+e\`nA ma\'ndA\`no ja\`hi shU\'ra\` shatrU\'~njA\`mimajA\'miM maghavanna\`mitrA\'n |
+a\`bhi\`She\`NA.N a\`bhyA\`3\`\'dedi\'shAnA\`nparA\'cha indra\` pra mR^i\'NA ja\`hI cha\' || 6\.044\.17
+A\`su ShmA\' No maghavannindra pR^i\`tsva1\`\'smabhya\`M mahi\` vari\'vaH su\`gaM ka\'H |
+a\`pAM to\`kasya\` tana\'yasya je\`Sha indra\' sU\`rInkR^i\'Nu\`hi smA\' no a\`rdham || 6\.044\.18
+A tvA\` hara\'yo\` vR^iSha\'No yujA\`nA vR^iSha\'rathAso\` vR^iSha\'rashma\`yo.atyA\'H |
+a\`sma\`trA~ncho\` vR^iSha\'No vajra\`vAho\` vR^iShNe\` madA\'ya su\`yujo\' vahantu || 6\.044\.19
+A te\' vR^iSha\`nvR^iSha\'No\` droNa\'masthurghR^ita\`pruSho\` normayo\` mada\'ntaH |
+indra\` pra tubhya\`M vR^iSha\'bhiH su\`tAnA\`M vR^iShNe\' bharanti vR^iSha\`bhAya\` soma\'m || 6\.044\.20
+vR^iShA\'si di\`vo vR^i\'Sha\`bhaH pR^i\'thi\`vyA vR^iShA\` sindhU\'nAM vR^iSha\`bhaH stiyA\'nAm |
+vR^iShNe\' ta\` indu\'rvR^iShabha pIpAya svA\`dU raso\' madhu\`peyo\` varA\'ya || 6\.044\.21
+a\`yaM de\`vaH saha\'sA\` jAya\'mAna\` indre\'Na yu\`jA pa\`Nima\'stabhAyat |
+a\`yaM svasya\' pi\`turAyu\'dhA\`nIndu\'ramuShNA\`dashi\'vasya mA\`yAH || 6\.044\.22
+a\`yama\'kR^iNodu\`Shasa\'H su\`patnI\'ra\`yaM sUrye\' adadhA\`jjyoti\'ra\`ntaH |
+a\`yaM tri\`dhAtu\' di\`vi ro\'cha\`neShu\' tri\`teShu\' vindada\`mR^ita\`M nigU\'Lham || 6\.044\.23
+a\`yaM dyAvA\'pR^ithi\`vI vi Shka\'bhAyada\`yaM ratha\'mayunaksa\`ptara\'shmim |
+a\`yaM goShu\` shachyA\' pa\`kvama\`ntaH somo\' dAdhAra\` dasha\'yantra\`mutsa\'m || 6\.044\.24
+
+ya Ana\'yatparA\`vata\`H sunI\'tI tu\`rvasha\`M yadu\'m |
+indra\`H sa no\` yuvA\` sakhA\' || 6\.045\.01
+a\`vi\`pre chi\`dvayo\` dadha\'danA\`shunA\' chi\`darva\'tA |
+indro\` jetA\' hi\`taM dhana\'m || 6\.045\.02
+ma\`hIra\'sya\` praNI\'tayaH pU\`rvIru\`ta prasha\'stayaH |
+nAsya\' kShIyanta U\`taya\'H || 6\.045\.03
+sakhA\'yo\` brahma\'vAha\`se.archa\'ta\` pra cha\' gAyata |
+sa hi na\`H prama\'tirma\`hI || 6\.045\.04
+tvameka\'sya vR^itrahannavi\`tA dvayo\'rasi |
+u\`tedR^ishe\` yathA\' va\`yam || 6\.045\.05
+naya\`sIdvati\` dviSha\'H kR^i\`NoShyu\'kthasha\`Msina\'H |
+nR^ibhi\'H su\`vIra\' uchyase || 6\.045\.06
+bra\`hmANa\`M brahma\'vAhasaM gI\`rbhiH sakhA\'yamR^i\`gmiya\'m |
+gAM na do\`hase\' huve || 6\.045\.07
+yasya\` vishvA\'ni\` hasta\'yorU\`churvasU\'ni\` ni dvi\`tA |
+vI\`rasya\' pR^itanA\`Shaha\'H || 6\.045\.08
+vi dR^i\`LhAni\' chidadrivo\` janA\'nAM shachIpate |
+vR^i\`ha mA\`yA a\'nAnata || 6\.045\.09
+tamu\' tvA satya somapA\` indra\' vAjAnAM pate |
+ahU\'mahi shrava\`syava\'H || 6\.045\.10
+tamu\' tvA\` yaH pu\`rAsi\'tha\` yo vA\' nU\`naM hi\`te dhane\' |
+havya\`H sa shru\'dhI\` hava\'m || 6\.045\.11
+dhI\`bhirarva\'dbhi\`rarva\'to\` vAjA\'.N indra shra\`vAyyA\'n |
+tvayA\' jeShma hi\`taM dhana\'m || 6\.045\.12
+abhU\'ru vIra girvaNo ma\`hA.N i\'ndra\` dhane\' hi\`te |
+bhare\' vitanta\`sAyya\'H || 6\.045\.13
+yA ta\' U\`tira\'mitrahanma\`kShUja\'vasta\`mAsa\'ti |
+tayA\' no hinuhI\` ratha\'m || 6\.045\.14
+sa rathe\'na ra\`thIta\'mo\`.asmAke\'nAbhi\`yugva\'nA |
+jeShi\' jiShNo hi\`taM dhana\'m || 6\.045\.15
+ya eka\` ittamu\' ShTuhi kR^iShTI\`nAM vicha\'rShaNiH |
+pati\'rja\`j~ne vR^iSha\'kratuH || 6\.045\.16
+yo gR^i\'Na\`tAmidAsi\'thA\`pirU\`tI shi\`vaH sakhA\' |
+sa tvaM na\' indra mR^iLaya || 6\.045\.17
+dhi\`Shva vajra\`M gabha\'styo rakSho\`hatyA\'ya vajrivaH |
+sA\`sa\`hI\`ShThA a\`bhi spR^idha\'H || 6\.045\.18
+pra\`tnaM ra\'yI\`NAM yuja\`M sakhA\'yaM kIri\`choda\'nam |
+brahma\'vAhastamaM huve || 6\.045\.19
+sa hi vishvA\'ni\` pArthi\'vA\`.N eko\` vasU\'ni\` patya\'te |
+girva\'Nastamo\` adhri\'guH || 6\.045\.20
+sa no\' ni\`yudbhi\`rA pR^i\'Na\` kAma\`M vAje\'bhira\`shvibhi\'H |
+goma\'dbhirgopate dhR^i\`Shat || 6\.045\.21
+tadvo\' gAya su\`te sachA\' puruhU\`tAya\` satva\'ne |
+shaM yadgave\` na shA\`kine\' || 6\.045\.22
+na ghA\` vasu\`rni ya\'mate dA\`naM vAja\'sya\` goma\'taH |
+yatsI\`mupa\` shrava\`dgira\'H || 6\.045\.23
+ku\`vitsa\'sya\` pra hi vra\`jaM goma\'ntaM dasyu\`hA gama\'t |
+shachI\'bhi\`rapa\' no varat || 6\.045\.24
+i\`mA u\' tvA shatakrato\`.abhi pra No\'nuvu\`rgira\'H |
+indra\' va\`tsaM na mA\`tara\'H || 6\.045\.25
+dU\`NAsha\'M sa\`khyaM tava\` gaura\'si vIra gavya\`te |
+ashvo\' ashvAya\`te bha\'va || 6\.045\.26
+sa ma\'ndasvA\` hyandha\'so\` rAdha\'se ta\`nvA\' ma\`he |
+na sto\`tAra\'M ni\`de ka\'raH || 6\.045\.27
+i\`mA u\' tvA su\`tesu\'te\` nakSha\'nte girvaNo\` gira\'H |
+va\`tsaM gAvo\` na dhe\`nava\'H || 6\.045\.28
+pu\`rU\`tama\'M purU\`NAM sto\'tR^I\`NAM vivA\'chi |
+vAje\'bhirvAjaya\`tAm || 6\.045\.29
+a\`smAka\'mindra bhUtu te\` stomo\` vAhi\'ShTho\` anta\'maH |
+a\`smAnrA\`ye ma\`he hi\'nu || 6\.045\.30
+adhi\' bR^i\`buH pa\'NI\`nAM varShi\'ShThe mU\`rdhanna\'sthAt |
+u\`ruH kakSho\` na gA\`~NgyaH || 6\.045\.31
+yasya\' vA\`yori\'va dra\`vadbha\`drA rA\`tiH sa\'ha\`sriNI\' |
+sa\`dyo dA\`nAya\` maMha\'te || 6\.045\.32
+tatsu no\` vishve\' a\`rya A sadA\' gR^iNanti kA\`rava\'H |
+bR^i\`buM sa\'hasra\`dAta\'maM sU\`riM sa\'hasra\`sAta\'mam || 6\.045\.33
+
+tvAmiddhi havA\'mahe sA\`tA vAja\'sya kA\`rava\'H |
+tvAM vR^i\`treShvi\'ndra\` satpa\'ti\`M nara\`stvAM kAShThA\`svarva\'taH || 6\.046\.01
+sa tvaM na\'shchitra vajrahasta dhR^iShNu\`yA ma\`haH sta\'vA\`no a\'drivaH |
+gAmashva\'M ra\`thya\'mindra\` saM ki\'ra sa\`trA vAja\`M na ji\`gyuShe\' || 6\.046\.02
+yaH sa\'trA\`hA vicha\'rShaNi\`rindra\`M taM hU\'mahe va\`yam |
+saha\'sramuShka\` tuvi\'nR^imNa\` satpa\'te\` bhavA\' sa\`matsu\' no vR^i\`dhe || 6\.046\.03
+bAdha\'se\` janA\'nvR^iSha\`bheva\' ma\`nyunA\` ghR^iShau\' mI\`Lha R^i\'chIShama |
+a\`smAka\'M bodhyavi\`tA ma\'hAdha\`ne ta\`nUShva\`psu sUrye\' || 6\.046\.04
+indra\` jyeShTha\'M na\` A bha\'ra\`.N oji\'ShTha\`M papu\'ri\` shrava\'H |
+yene\`me chi\'tra vajrahasta\` roda\'sI\` obhe su\'shipra\` prAH || 6\.046\.05
+tvAmu\`gramava\'se charShaNI\`saha\`M rAja\'nde\`veShu\' hUmahe |
+vishvA\` su no\' vithu\`rA pi\'bda\`nA va\'so\`.amitrA\'nsu\`ShahA\'nkR^idhi || 6\.046\.06
+yadi\'ndra\` nAhu\'ShI\`ShvA.N ojo\' nR^i\`mNaM cha\' kR^i\`ShTiShu\' |
+yadvA\` pa~ncha\' kShitI\`nAM dyu\`mnamA bha\'ra sa\`trA vishvA\'ni\` pauMsyA\' || 6\.046\.07
+yadvA\' tR^i\`kShau ma\'ghavandru\`hyAvA jane\` yatpU\`rau kachcha\` vR^iShNya\'m |
+a\`smabhya\`M tadri\'rIhi\` saM nR^i\`ShAhye\`.amitrA\'npR^i\`tsu tu\`rvaNe\' || 6\.046\.08
+indra\' tri\`dhAtu\' shara\`NaM tri\`varU\'thaM svasti\`mat |
+Cha\`rdirya\'chCha ma\`ghava\'dbhyashcha\` mahya\'M cha yA\`vayA\' di\`dyume\'bhyaH || 6\.046\.09
+ye ga\'vya\`tA mana\'sA\` shatru\'mAda\`bhura\'bhipra\`ghnanti\' dhR^iShNu\`yA |
+adha\' smA no maghavannindra girvaNastanU\`pA anta\'mo bhava || 6\.046\.10
+adha\' smA no vR^i\`dhe bha\`vendra\' nA\`yama\'vA yu\`dhi |
+yada\`ntari\'kShe pa\`taya\'nti pa\`rNino\' di\`dyava\'sti\`gmamU\'rdhAnaH || 6\.046\.11
+yatra\` shUrA\'sasta\`nvo\' vitanva\`te pri\`yA sharma\' pitR^I\`NAm |
+adha\' smA yachCha ta\`nve\`3\`\' tane\' cha Cha\`rdira\`chitta\'M yA\`vaya\` dveSha\'H || 6\.046\.12
+yadi\'ndra\` sarge\` arva\'tashcho\`dayA\'se mahAdha\`ne |
+a\`sa\`ma\`ne adhva\'ni vR^iji\`ne pa\`thi shye\`nA.N i\'va shravasya\`taH || 6\.046\.13
+sindhU\'.Nriva prava\`Na A\'shu\`yA ya\`to yadi\` klosha\`manu\` ShvaNi\' |
+A ye vayo\` na varvR^i\'ta\`tyAmi\'Shi gR^ibhI\`tA bA\`hvorgavi\' || 6\.046\.14
+
+svA\`duShkilA\`yaM madhu\'mA.N u\`tAyaM tI\`vraH kilA\`yaM rasa\'vA.N u\`tAyam |
+u\`to nva1\`\'sya pa\'pi\`vAMsa\`mindra\`M na kashcha\`na sa\'hata Aha\`veShu\' || 6\.047\.01
+a\`yaM svA\`duri\`ha madi\'ShTha Asa\` yasyendro\' vR^itra\`hatye\' ma\`mAda\' |
+pu\`rUNi\` yashchyau\`tnA shamba\'rasya\` vi na\'va\`tiM nava\' cha de\`hyo\`3\`\' han || 6\.047\.02
+a\`yaM me\' pI\`ta udi\'yarti\` vAcha\'ma\`yaM ma\'nI\`ShAmu\'sha\`tIma\'jIgaH |
+a\`yaM ShaLu\`rvIra\'mimIta\` dhIro\` na yAbhyo\` bhuva\'na\`M kachcha\`nAre || 6\.047\.03
+a\`yaM sa yo va\'ri\`mANa\'M pR^ithi\`vyA va\`rShmANa\'M di\`vo akR^i\'Noda\`yaM saH |
+a\`yaM pI\`yUSha\'M ti\`sR^iShu\' pra\`vatsu\` somo\' dAdhAro\`rva1\`\'ntari\'kSham || 6\.047\.04
+a\`yaM vi\'dachchitra\`dR^ishI\'ka\`marNa\'H shu\`krasa\'dmanAmu\`ShasA\`manI\'ke |
+a\`yaM ma\`hAnma\'ha\`tA skambha\'ne\`noddyAma\'stabhnAdvR^iSha\`bho ma\`rutvA\'n || 6\.047\.05
+dhR^i\`Shatpi\'ba ka\`lashe\` soma\'mindra vR^itra\`hA shU\'ra sama\`re vasU\'nAm |
+mAdhya\'Mdine\` sava\'na\` A vR^i\'Shasva rayi\`sthAno\' ra\`yima\`smAsu\' dhehi || 6\.047\.06
+indra\` pra Na\'H purae\`teva\' pashya\` pra no\' naya prata\`raM vasyo\` achCha\' |
+bhavA\' supA\`ro a\'tipAra\`yo no\` bhavA\` sunI\'tiru\`ta vA\`manI\'tiH || 6\.047\.07
+u\`ruM no\' lo\`kamanu\' neShi vi\`dvAnsva\'rva\`jjyoti\`rabha\'yaM sva\`sti |
+R^i\`ShvA ta\' indra\` sthavi\'rasya bA\`hU upa\' stheyAma shara\`NA bR^i\`hantA\' || 6\.047\.08
+vari\'ShThe na indra va\`ndhure\' dhA\` vahi\'ShThayoH shatAva\`nnashva\'yo\`rA |
+iSha\`mA va\'kShI\`ShAM varShi\'ShThA\`M mA na\'stArInmaghava\`nrAyo\' a\`ryaH || 6\.047\.09
+indra\' mR^i\`La mahya\'M jI\`vAtu\'michCha cho\`daya\` dhiya\`maya\'so\` na dhArA\'m |
+yatkiM chA\`haM tvA\`yuri\`daM vadA\'mi\` tajju\'Shasva kR^i\`dhi mA\' de\`vava\'ntam || 6\.047\.10
+trA\`tAra\`mindra\'mavi\`tAra\`mindra\`M have\'have su\`hava\`M shUra\`mindra\'m |
+hvayA\'mi sha\`kraM pu\'ruhU\`tamindra\'M sva\`sti no\' ma\`ghavA\' dhA\`tvindra\'H || 6\.047\.11
+indra\'H su\`trAmA\` svavA\`.N avo\'bhiH sumR^iLI\`ko bha\'vatu vi\`shvave\'dAH |
+bAdha\'tA\`M dveSho\` abha\'yaM kR^iNotu su\`vIrya\'sya\` pata\'yaH syAma || 6\.047\.12
+tasya\' va\`yaM su\'ma\`tau ya\`j~niya\`syApi\' bha\`dre sau\'mana\`se syA\'ma |
+sa su\`trAmA\` svavA\`.N indro\' a\`sme A\`rAchchi\`ddveSha\'H sanu\`taryu\'yotu || 6\.047\.13
+ava\` tve i\'ndra pra\`vato\` normirgiro\` brahmA\'Ni ni\`yuto\' dhavante |
+u\`rU na rAdha\`H sava\'nA pu\`rUNya\`po gA va\'jrinyuvase\` samindU\'n || 6\.047\.14
+ka I\'M stava\`tkaH pR^i\'NA\`tko ya\'jAte\` yadu\`graminma\`ghavA\' vi\`shvahAve\'t |
+pAdA\'viva pra\`hara\'nna\`nyama\'nyaM kR^i\`Noti\` pUrva\`mapa\'ra\`M shachI\'bhiH || 6\.047\.15
+shR^i\`Nve vI\`ra u\`gramu\'graM damA\`yanna\`nyama\'nyamatinenI\`yamA\'naH |
+e\`dha\`mA\`na\`dviLu\`bhaya\'sya\` rAjA\' choShkU\`yate\` visha\` indro\' manu\`ShyA\'n || 6\.047\.16
+parA\` pUrve\'ShAM sa\`khyA vR^i\'Nakti vi\`tartu\'rANo\` apa\'rebhireti |
+anA\'nubhUtIravadhUnvA\`naH pU\`rvIrindra\'H sha\`rada\'startarIti || 6\.047\.17
+rU\`paMrU\'pa\`M prati\'rUpo babhUva\` tada\'sya rU\`paM pra\'ti\`chakSha\'NAya |
+indro\' mA\`yAbhi\'H puru\`rUpa\' Iyate yu\`ktA hya\'sya\` hara\'yaH sha\`tA dasha\' || 6\.047\.18
+yu\`jA\`no ha\`ritA\` rathe\` bhUri\` tvaShTe\`ha rA\'jati |
+ko vi\`shvAhA\' dviSha\`taH pakSha\' Asata u\`tAsI\'neShu sU\`riShu\' || 6\.047\.19
+a\`ga\`vyU\`ti kShetra\`mAga\'nma devA u\`rvI sa\`tI bhUmi\'raMhUra\`NAbhU\'t |
+bR^iha\'spate\` pra chi\'kitsA\` gavi\'ShTAvi\`tthA sa\`te ja\'ri\`tra i\'ndra\` panthA\'m || 6\.047\.20
+di\`vedi\'ve sa\`dR^ishI\'ra\`nyamardha\'M kR^i\`ShNA a\'sedha\`dapa\` sadma\'no\` jAH |
+aha\'ndA\`sA vR^i\'Sha\`bho va\'sna\`yanto\`davra\'je va\`rchina\`M shamba\'raM cha || 6\.047\.21
+pra\`sto\`ka innu rAdha\'sasta indra\` dasha\` kosha\'yI\`rdasha\' vA\`jino\'.adAt |
+divo\'dAsAdatithi\`gvasya\` rAdha\'H shAmba\`raM vasu\` pratya\'grabhIShma || 6\.047\.22
+dashAshvA\`ndasha\` koshA\`ndasha\` vastrAdhi\'bhojanA |
+dasho\' hiraNyapi\`NDAndivo\'dAsAdasAniSham || 6\.047\.23
+dasha\` rathA\`npraShTi\'mataH sha\`taM gA atha\'rvabhyaH |
+a\`shva\`thaH pA\`yave\'.adAt || 6\.047\.24
+mahi\` rAdho\' vi\`shvaja\'nya\`M dadhA\'nAnbha\`radvA\'jAnsAr~nja\`yo a\`bhya\'yaShTa || 6\.047\.25
+vana\'spate vI\`Dva\'~Ngo\` hi bhU\`yA a\`smatsa\'khA pra\`tara\'NaH su\`vIra\'H |
+gobhi\`H saMna\'ddho asi vI\`Laya\'svAsthA\`tA te\' jayatu\` jetvA\'ni || 6\.047\.26
+di\`vaspR^i\'thi\`vyAH paryoja\` udbhR^i\'ta\`M vana\`spati\'bhya\`H paryAbhR^i\'ta\`M saha\'H |
+a\`pAmo\`jmAna\`M pari\` gobhi\`rAvR^i\'ta\`mindra\'sya\` vajra\'M ha\`viShA\` ratha\'M yaja || 6\.047\.27
+indra\'sya\` vajro\' ma\`rutA\`manI\'kaM mi\`trasya\` garbho\` varu\'Nasya\` nAbhi\'H |
+semAM no\' ha\`vyadA\'tiM juShA\`No deva\' ratha\` prati\' ha\`vyA gR^i\'bhAya || 6\.047\.28
+upa\' shvAsaya pR^ithi\`vImu\`ta dyAM pu\'ru\`trA te\' manutA\`M viShThi\'ta\`M jaga\'t |
+sa du\'ndubhe sa\`jUrindre\'Na de\`vairdU\`rAddavI\'yo\` apa\' sedha\` shatrU\'n || 6\.047\.29
+A kra\'ndaya\` bala\`mojo\' na\` A dhA\` niH ShTa\'nihi duri\`tA bAdha\'mAnaH |
+apa\' protha dundubhe du\`chChunA\' i\`ta indra\'sya mu\`ShTira\'si vI\`Laya\'sva || 6\.047\.30
+AmUra\'ja pra\`tyAva\'rtaye\`mAH ke\'tu\`maddu\'ndu\`bhirvA\'vadIti |
+samashva\'parNA\`shchara\'nti no\` naro\`.asmAka\'mindra ra\`thino\' jayantu || 6\.047\.31
+
+ya\`j~nAya\'j~nA vo a\`gnaye\' gi\`rAgi\'rA cha\` dakSha\'se |
+prapra\' va\`yama\`mR^ita\'M jA\`tave\'dasaM pri\`yaM mi\`traM na sha\'MsiSham || 6\.048\.01
+U\`rjo napA\'ta\`M sa hi\`nAyama\'sma\`yurdAshe\'ma ha\`vyadA\'taye |
+bhuva\`dvAje\'Shvavi\`tA bhuva\'dvR^i\`dha u\`ta trA\`tA ta\`nUnA\'m || 6\.048\.02
+vR^iShA\` hya\'gne a\`jaro\' ma\`hAnvi\`bhAsya\`rchiShA\' |
+aja\'sreNa sho\`chiShA\` shoshu\'chachChuche sudI\`tibhi\`H su dI\'dihi || 6\.048\.03
+ma\`ho de\`vAnyaja\'si\` yakShyA\'nu\`Shaktava\` kratvo\`ta da\`MsanA\' |
+a\`rvAcha\'H sIM kR^iNuhya\`gne.ava\'se\` rAsva\` vAjo\`ta va\'Msva || 6\.048\.04
+yamApo\` adra\'yo\` vanA\` garbha\'mR^i\`tasya\` pipra\'ti |
+saha\'sA\` yo ma\'thi\`to jAya\'te\` nR^ibhi\'H pR^ithi\`vyA adhi\` sAna\'vi || 6\.048\.05
+A yaH pa\`prau bhA\`nunA\` roda\'sI u\`bhe dhU\`mena\' dhAvate di\`vi |
+ti\`rastamo\' dadR^isha\` UrmyA\`svA shyA\`vAsva\'ru\`Sho vR^iShA shyA\`vA a\'ru\`Sho vR^iShA\' || 6\.048\.06
+bR^i\`hadbhi\'ragne a\`rchibhi\'H shu\`kreNa\' deva sho\`chiShA\' |
+bha\`radvA\'je samidhA\`no ya\'viShThya re\`vanna\'H shukra dIdihi dyu\`matpA\'vaka dIdihi || 6\.048\.07
+vishvA\'sAM gR^i\`hapa\'tirvi\`shAma\'si\` tvama\'gne\` mAnu\'ShINAm |
+sha\`taM pU\`rbhirya\'viShTha pA\`hyaMha\'saH same\`ddhAra\'M sha\`taM himA\'H sto\`tR^ibhyo\` ye cha\` dada\'ti || 6\.048\.08
+tvaM na\'shchi\`tra U\`tyA vaso\` rAdhA\'Msi chodaya |
+a\`sya rA\`yastvama\'gne ra\`thIra\'si vi\`dA gA\`dhaM tu\`che tu na\'H || 6\.048\.09
+parShi\' to\`kaM tana\'yaM pa\`rtR^ibhi\`ShTvamada\'bdhai\`rapra\'yutvabhiH |
+agne\` heLA\'Msi\` daivyA\' yuyodhi\` no.ade\'vAni\` hvarA\'Msi cha || 6\.048\.10
+A sa\'khAyaH saba\`rdughA\'M dhe\`numa\'jadhva\`mupa\` navya\'sA\` vacha\'H |
+sR^i\`jadhva\`mana\'pasphurAm || 6\.048\.11
+yA shardhA\'ya\` mAru\'tAya\` svabhA\'nave\` shravo.amR^i\'tyu\` dhukSha\'ta |
+yA mR^i\'LI\`ke ma\`rutA\'M tu\`rANA\`M yA su\`mnaire\'va\`yAva\'rI || 6\.048\.12
+bha\`radvA\'jA\`yAva\' dhukShata dvi\`tA |
+dhe\`nuM cha\' vi\`shvado\'hasa\`miSha\'M cha vi\`shvabho\'jasam || 6\.048\.13
+taM va\` indra\`M na su\`kratu\`M varu\'Namiva mA\`yina\'m |
+a\`rya\`maNa\`M na ma\`ndraM sR^i\`prabho\'jasa\`M viShNu\`M na stu\'Sha A\`dishe\' || 6\.048\.14
+tve\`ShaM shardho\` na mAru\'taM tuvi\`ShvaNya\'na\`rvANa\'M pU\`ShaNa\`M saM yathA\' sha\`tA |
+saM sa\`hasrA\` kAri\'ShachcharSha\`Nibhya\` A.N A\`virgU\`LhA vasU\' karatsu\`vedA\' no\` vasU\' karat || 6\.048\.15
+A mA\' pUSha\`nnupa\' drava\` shaMsi\'Sha\`M nu te\' apika\`rNa A\'ghR^iNe |
+a\`ghA a\`ryo arA\'tayaH || 6\.048\.16
+mA kA\'ka\`mbIra\`mudvR^i\'ho\` vana\`spati\`masha\'stI\`rvi hi nIna\'shaH |
+mota sUro\` aha\' e\`vA cha\`na grI\`vA A\`dadha\'te\` veH || 6\.048\.17
+dR^ite\'riva te.avR^i\`kama\'stu sa\`khyam |
+achChi\'drasya dadha\`nvata\`H supU\'rNasya dadha\`nvata\'H || 6\.048\.18
+pa\`ro hi martyai\`rasi\' sa\`mo de\`vairu\`ta shri\`yA |
+a\`bhi khya\'H pUSha\`npR^ita\'nAsu na\`stvamavA\' nU\`naM yathA\' pu\`rA || 6\.048\.19
+vA\`mI vA\`masya\' dhUtaya\`H praNI\'tirastu sU\`nR^itA\' |
+de\`vasya\' vA maruto\` martya\'sya vejA\`nasya\' prayajyavaH || 6\.048\.20
+sa\`dyashchi\`dyasya\' charkR^i\`tiH pari\` dyAM de\`vo naiti\` sUrya\'H |
+tve\`ShaM shavo\' dadhire\` nAma\' ya\`j~niya\'M ma\`ruto\' vR^itra\`haM shavo\` jyeShTha\'M vR^itra\`haM shava\'H || 6\.048\.21
+sa\`kR^iddha\` dyaura\'jAyata sa\`kR^idbhUmi\'rajAyata |
+pR^ishnyA\' du\`gdhaM sa\`kR^itpaya\`stada\`nyo nAnu\' jAyate || 6\.048\.22
+
+stu\`She jana\'M suvra\`taM navya\'sIbhirgI\`rbhirmi\`trAvaru\'NA sumna\`yantA\' |
+ta A ga\'mantu\` ta i\`ha shru\'vantu sukSha\`trAso\` varu\'No mi\`tro a\`gniH || 6\.049\.01
+vi\`shovi\'sha\` IDya\'madhva\`reShvadR^i\'ptakratumara\`tiM yu\'va\`tyoH |
+di\`vaH shishu\`M saha\'saH sU\`numa\`gniM ya\`j~nasya\' ke\`tuma\'ru\`ShaM yaja\'dhyai || 6\.049\.02
+a\`ru\`Shasya\' duhi\`tarA\` virU\'pe\` stR^ibhi\'ra\`nyA pi\'pi\`she sUro\' a\`nyA |
+mi\`tha\`sturA\' vi\`chara\'ntI pAva\`ke manma\' shru\`taM na\'kShata R^i\`chyamA\'ne || 6\.049\.03
+pra vA\`yumachChA\' bR^iha\`tI ma\'nI\`ShA bR^i\`hadra\'yiM vi\`shvavA\'raM ratha\`prAm |
+dyu\`tadyA\'mA ni\`yuta\`H patya\'mAnaH ka\`viH ka\`vimi\'yakShasi prayajyo || 6\.049\.04
+sa me\` vapu\'shChadayada\`shvino\`ryo ratho\' vi\`rukmA\`nmana\'sA yujA\`naH |
+yena\' narA nAsatyeSha\`yadhyai\' va\`rtiryA\`thastana\'yAya\` tmane\' cha || 6\.049\.05
+parja\'nyavAtA vR^iShabhA pR^ithi\`vyAH purI\'ShANi jinvata\`mapyA\'ni |
+satya\'shrutaH kavayo\` yasya\' gI\`rbhirjaga\'taH sthAta\`rjaga\`dA kR^i\'Nudhvam || 6\.049\.06
+pAvI\'ravI ka\`nyA\' chi\`trAyu\`H sara\'svatI vI\`rapa\'tnI\` dhiya\'M dhAt |
+gnAbhi\`rachChi\'draM shara\`NaM sa\`joShA\' durA\`dharSha\'M gR^iNa\`te sharma\' yaMsat || 6\.049\.07
+pa\`thaspa\'tha\`H pari\'patiM vacha\`syA kAme\'na kR^i\`to a\`bhyA\'naLa\`rkam |
+sa no\' rAsachChu\`rudha\'shcha\`ndrAgrA\` dhiya\'MdhiyaM sIShadhAti\` pra pU\`ShA || 6\.049\.08
+pra\`tha\`ma\`bhAja\'M ya\`shasa\'M vayo\`dhAM su\'pA\`NiM de\`vaM su\`gabha\'sti\`mR^ibhva\'m |
+hotA\' yakShadyaja\`taM pa\`styA\'nAma\`gnistvaShTA\'raM su\`hava\'M vi\`bhAvA\' || 6\.049\.09
+bhuva\'nasya pi\`tara\'M gI\`rbhirA\`bhI ru\`draM divA\' va\`rdhayA\' ru\`drama\`ktau |
+bR^i\`hanta\'mR^i\`Shvama\`jara\'M suShu\`mnamR^idha\'gghuvema ka\`vine\'Shi\`tAsa\'H || 6\.049\.10
+A yu\'vAnaH kavayo yaj~niyAso\` maru\'to ga\`nta gR^i\'Na\`to va\'ra\`syAm |
+a\`chi\`traM chi\`ddhi jinva\'thA vR^i\`dhanta\' i\`tthA nakSha\'nto naro a~Ngira\`svat || 6\.049\.11
+pra vI\`rAya\` pra ta\`vase\' tu\`rAyAjA\' yU\`theva\' pashu\`rakShi\`rasta\'m |
+sa pi\'spR^ishati ta\`nvi\' shru\`tasya\` stR^ibhi\`rna nAka\'M vacha\`nasya\` vipa\'H || 6\.049\.12
+yo rajA\'Msi vima\`me pArthi\'vAni\` trishchi\`dviShNu\`rmana\'ve bAdhi\`tAya\' |
+tasya\' te\` sharma\'nnupada\`dyamA\'ne rA\`yA ma\'dema ta\`nvA\`3\`\' tanA\' cha || 6\.049\.13
+tanno.ahi\'rbu\`dhnyo\' a\`dbhira\`rkaistatparva\'ta\`statsa\'vi\`tA chano\' dhAt |
+tadoSha\'dhIbhira\`bhi rA\'ti\`ShAcho\` bhaga\`H pura\'Mdhirjinvatu\` pra rA\`ye || 6\.049\.14
+nu no\' ra\`yiM ra\`thya\'M charShaNi\`prAM pu\'ru\`vIra\'M ma\`ha R^i\`tasya\' go\`pAm |
+kShaya\'M dAtA\`jara\`M yena\` janA\`nspR^idho\` ade\'vIra\`bhi cha\` kramA\'ma\` visha\` Ade\'vIra\`bhya1\`\'shnavA\'ma || 6\.049\.15
+
+hu\`ve vo\' de\`vImadi\'ti\`M namo\'bhirmR^iLI\`kAya\` varu\'NaM mi\`trama\`gnim |
+a\`bhi\`kSha\`dAma\'rya\`maNa\'M su\`sheva\'M trA\`tR^Inde\`vAnsa\'vi\`tAra\`M bhaga\'M cha || 6\.050\.01
+su\`jyoti\'ShaH sUrya\` dakSha\'pitR^InanAgA\`stve su\'maho vIhi de\`vAn |
+dvi\`janmA\'no\` ya R^i\'ta\`sApa\'H sa\`tyAH sva\'rvanto yaja\`tA a\'gniji\`hvAH || 6\.050\.02
+u\`ta dyA\'vApR^ithivI kSha\`tramu\`ru bR^i\`hadro\'dasI shara\`NaM su\'Shumne |
+ma\`haska\'ratho\` vari\'vo\` yathA\' no\`.asme kShayA\'ya dhiShaNe ane\`haH || 6\.050\.03
+A no\' ru\`drasya\' sU\`navo\' namantAma\`dyA hU\`tAso\` vasa\`vo.adhR^i\'ShTAH |
+yadI\`marbhe\' maha\`ti vA\' hi\`tAso\' bA\`dhe ma\`ruto\` ahvA\'ma de\`vAn || 6\.050\.04
+mi\`myakSha\` yeShu\' roda\`sI nu de\`vI siSha\'kti pU\`ShA a\'bhyardha\`yajvA\' |
+shru\`tvA hava\'M maruto\` yaddha\' yA\`tha bhUmA\' rejante\` adhva\'ni\` pravi\'kte || 6\.050\.05
+a\`bhi tyaM vI\`raM girva\'Nasama\`rchendra\`M brahma\'NA jarita\`rnave\'na |
+shrava\`diddhava\`mupa\' cha\` stavA\'no\` rAsa\`dvAjA\`.N upa\' ma\`ho gR^i\'NA\`naH || 6\.050\.06
+o\`mAna\'mApo mAnuShI\`ramR^i\'kta\`M dhAta\' to\`kAya\` tana\'yAya\` shaM yoH |
+yU\`yaM hi ShThA bhi\`Shajo\' mA\`tR^ita\'mA\` vishva\'sya sthA\`turjaga\'to\` jani\'trIH || 6\.050\.07
+A no\' de\`vaH sa\'vi\`tA trAya\'mANo\` hira\'NyapANiryaja\`to ja\'gamyAt |
+yo datra\'vA.N u\`Shaso\` na pratI\'kaM vyUrNu\`te dA\`shuShe\` vAryA\'Ni || 6\.050\.08
+u\`ta tvaM sU\'no sahaso no a\`dyA de\`vA.N a\`sminna\'dhva\`re va\'vR^ityAH |
+syAma\`haM te\` sada\`midrA\`tau tava\' syAma\`gne.ava\'sA su\`vIra\'H || 6\.050\.09
+u\`ta tyA me\` hava\`mA ja\'gmyAta\`M nAsa\'tyA dhI\`bhiryu\`vama\`~Nga vi\'prA |
+atri\`M na ma\`hastama\'so.amumukta\`M tUrva\'taM narA duri\`tAda\`bhIke\' || 6\.050\.10
+te no\' rA\`yo dyu\`mato\` vAja\'vato dA\`tAro\' bhUta nR^i\`vata\'H puru\`kShoH |
+da\`sha\`syanto\' di\`vyAH pArthi\'vAso\` gojA\'tA\` apyA\' mR^i\`LatA\' cha devAH || 6\.050\.11
+te no\' ru\`draH sara\'svatI sa\`joShA\' mI\`LhuShma\'nto\` viShNu\'rmR^iLantu vA\`yuH |
+R^i\`bhu\`kShA vAjo\` daivyo\' vidhA\`tA pa\`rjanyA\`vAtA\' pipyatA\`miSha\'M naH || 6\.050\.12
+u\`ta sya de\`vaH sa\'vi\`tA bhago\' no\`.apAM napA\'davatu\` dAnu\` papri\'H |
+tvaShTA\' de\`vebhi\`rjani\'bhiH sa\`joShA\` dyaurde\`vebhi\'H pR^ithi\`vI sa\'mu\`draiH || 6\.050\.13
+u\`ta no.ahi\'rbu\`dhnya\'H shR^iNotva\`ja eka\'pAtpR^ithi\`vI sa\'mu\`draH |
+vishve\' de\`vA R^i\'tA\`vR^idho\' huvA\`nAH stu\`tA mantrA\'H kavisha\`stA a\'vantu || 6\.050\.14
+e\`vA napA\'to\` mama\` tasya\' dhI\`bhirbha\`radvA\'jA a\`bhya\'rchantya\`rkaiH |
+gnA hu\`tAso\` vasa\`vo.adhR^i\'ShTA\` vishve\' stu\`tAso\' bhUtA yajatrAH || 6\.050\.15
+
+udu\` tyachchakShu\`rmahi\' mi\`trayo\`rA.N eti\' pri\`yaM varu\'Nayo\`rada\'bdham |
+R^i\`tasya\` shuchi\' darsha\`tamanI\'kaM ru\`kmo na di\`va udi\'tA\` vya\'dyaut || 6\.051\.01
+veda\` yastrINi\' vi\`dathA\'nyeShAM de\`vAnA\`M janma\' sanu\`tarA cha\` vipra\'H |
+R^i\`ju marte\'Shu vR^iji\`nA cha\` pashya\'nna\`bhi cha\'ShTe\` sUro\' a\`rya evA\'n || 6\.051\.02
+stu\`Sha u\' vo ma\`ha R^i\`tasya\' go\`pAnadi\'tiM mi\`traM varu\'NaM sujA\`tAn |
+a\`rya\`maNa\`M bhaga\`mada\'bdhadhItI\`nachChA\' voche sadha\`nya\'H pAva\`kAn || 6\.051\.03
+ri\`shAda\'sa\`H satpa\'tI\`.Nrada\'bdhAnma\`ho rAj~na\'H suvasa\`nasya\' dA\`tR^In |
+yUna\'H sukSha\`trAnkShaya\'to di\`vo nR^InA\'di\`tyAnyA\`myadi\'tiM duvo\`yu || 6\.051\.04
+dyau\`3\`\'Shpita\`H pR^ithi\'vi\` mAta\`radhru\`gagne\' bhrAtarvasavo mR^i\`LatA\' naH |
+vishva\' AdityA adite sa\`joShA\' a\`smabhya\`M sharma\' bahu\`laM vi ya\'nta || 6\.051\.05
+mA no\` vR^ikA\'ya vR^i\`kye\' samasmA aghAya\`te rI\'radhatA yajatrAH |
+yU\`yaM hi ShThA ra\`thyo\' nasta\`nUnA\'M yU\`yaM dakSha\'sya\` vacha\'so babhU\`va || 6\.051\.06
+mA va\` eno\' a\`nyakR^i\'taM bhujema\` mA tatka\'rma vasavo\` yachchaya\'dhve |
+vishva\'sya\` hi kShaya\'tha vishvadevAH sva\`yaM ri\`pusta\`nva\'M rIriShIShTa || 6\.051\.07
+nama\` idu\`graM nama\` A vi\'vAse\` namo\' dAdhAra pR^ithi\`vImu\`ta dyAm |
+namo\' de\`vebhyo\` nama\' Isha eShAM kR^i\`taM chi\`deno\` nama\`sA vi\'vAse || 6\.051\.08
+R^i\`tasya\' vo ra\`thya\'H pU\`tada\'kShAnR^i\`tasya\' pastya\`sado\` ada\'bdhAn |
+tA.N A namo\'bhiruru\`chakSha\'so\` nR^InvishvA\'nva\` A na\'me ma\`ho ya\'jatrAH || 6\.051\.09
+te hi shreShTha\'varchasa\`sta u\' nasti\`ro vishvA\'ni duri\`tA naya\'nti |
+su\`kSha\`trAso\` varu\'No mi\`tro a\`gnirR^i\`tadhI\'tayo vakma\`rAja\'satyAH || 6\.051\.10
+te na\` indra\'H pR^ithi\`vI kShAma\' vardhanpU\`ShA bhago\` adi\'ti\`H pa~ncha\` janA\'H |
+su\`sharmA\'Na\`H svava\'saH sunI\`thA bhava\'ntu naH sutrA\`trAsa\'H sugo\`pAH || 6\.051\.11
+nU sa\`dmAna\'M di\`vyaM naMshi\' devA\` bhAra\'dvAjaH suma\`tiM yA\'ti\` hotA\' |
+A\`sA\`nebhi\`ryaja\'mAno mi\`yedhai\'rde\`vAnA\`M janma\' vasU\`yurva\'vanda || 6\.051\.12
+apa\` tyaM vR^i\'ji\`naM ri\`puM ste\`nama\'gne durA\`dhya\'m |
+da\`vi\`ShThama\'sya satpate kR^i\`dhI su\`gam || 6\.051\.13
+grAvA\'NaH soma no\` hi ka\'M sakhitva\`nAya\' vAva\`shuH |
+ja\`hI nya1\`\'triNa\'M pa\`NiM vR^iko\` hi ShaH || 6\.051\.14
+yU\`yaM hi ShThA su\'dAnava\` indra\'jyeShThA a\`bhidya\'vaH |
+kartA\' no\` adhva\`nnA su\`gaM go\`pA a\`mA || 6\.051\.15
+api\` panthA\'maganmahi svasti\`gAma\'ne\`hasa\'m |
+yena\` vishvA\`H pari\` dviSho\' vR^i\`Nakti\' vi\`ndate\` vasu\' || 6\.051\.16
+
+na taddi\`vA na pR^i\'thi\`vyAnu\' manye\` na ya\`j~nena\` nota shamI\'bhirA\`bhiH |
+u\`bjantu\` taM su\`bhva1\`\'H parva\'tAso\` ni hI\'yatAmatiyA\`jasya\' ya\`ShTA || 6\.052\.01
+ati\' vA\` yo ma\'ruto\` manya\'te no\` brahma\' vA\` yaH kri\`yamA\'Na\`M nini\'tsAt |
+tapU\'MShi\` tasmai\' vR^iji\`nAni\' santu brahma\`dviSha\'ma\`bhi taM sho\'chatu\` dyauH || 6\.052\.02
+kima\`~Nga tvA\` brahma\'NaH soma go\`pAM kima\`~Nga tvA\'hurabhishasti\`pAM na\'H |
+kima\`~Nga na\'H pashyasi ni\`dyamA\'nAnbrahma\`dviShe\` tapu\'ShiM he\`tima\'sya || 6\.052\.03
+ava\'ntu\` mAmu\`Shaso\` jAya\'mAnA\` ava\'ntu mA\` sindha\'va\`H pinva\'mAnAH |
+ava\'ntu mA\` parva\'tAso dhru\`vAso.ava\'ntu mA pi\`taro\' de\`vahU\'tau || 6\.052\.04
+vi\`shva\`dAnI\'M su\`mana\'saH syAma\` pashye\'ma\` nu sUrya\'mu\`chchara\'ntam |
+tathA\' kara\`dvasu\'pati\`rvasU\'nAM de\`vA.N ohA\`no.ava\`sAga\'miShThaH || 6\.052\.05
+indro\` nedi\'ShTha\`mava\`sAga\'miShTha\`H sara\'svatI\` sindhu\'bhi\`H pinva\'mAnA |
+pa\`rjanyo\' na\` oSha\'dhIbhirmayo\`bhura\`gniH su\`shaMsa\'H su\`hava\'H pi\`teva\' || 6\.052\.06
+vishve\' devAsa\` A ga\'ta shR^iNu\`tA ma\' i\`maM hava\'m |
+edaM ba\`rhirni ShI\'data || 6\.052\.07
+yo vo\' devA ghR^i\`tasnu\'nA ha\`vyena\' prati\`bhUSha\'ti |
+taM vishva\` upa\' gachChatha || 6\.052\.08
+upa\' naH sU\`navo\` gira\'H shR^i\`Nvantva\`mR^ita\'sya\` ye |
+su\`mR^i\`LI\`kA bha\'vantu naH || 6\.052\.09
+vishve\' de\`vA R^i\'tA\`vR^idha\' R^i\`tubhi\'rhavana\`shruta\'H |
+ju\`ShantA\`M yujya\`M paya\'H || 6\.052\.10
+sto\`tramindro\' ma\`rudga\'Na\`stvaShTR^i\'mAnmi\`tro a\'rya\`mA |
+i\`mA ha\`vyA ju\'Shanta naH || 6\.052\.11
+i\`maM no\' agne adhva\`raM hota\'rvayuna\`sho ya\'ja |
+chi\`ki\`tvAndaivya\`M jana\'m || 6\.052\.12
+vishve\' devAH shR^iNu\`temaM hava\'M me\` ye a\`ntari\'kShe\` ya upa\` dyavi\` ShTha |
+ye a\'gniji\`hvA u\`ta vA\` yaja\'trA A\`sadyA\`sminba\`rhiShi\' mAdayadhvam || 6\.052\.13
+vishve\' de\`vA mama\' shR^iNvantu ya\`j~niyA\' u\`bhe roda\'sI a\`pAM napA\'chcha\` manma\' |
+mA vo\` vachA\'Msi pari\`chakShyA\'Ni vochaM su\`mneShvidvo\` anta\'mA madema || 6\.052\.14
+ye ke cha\` jmA ma\`hino\` ahi\'mAyA di\`vo ja\'j~ni\`re a\`pAM sa\`dhasthe\' |
+te a\`smabhya\'mi\`Shaye\` vishva\`mAyu\`H kShapa\' u\`srA va\'rivasyantu de\`vAH || 6\.052\.15
+agnI\'parjanyA\`vava\'ta\`M dhiya\'M me\`.asminhave\' suhavA suShTu\`tiM na\'H |
+iLA\'ma\`nyo ja\`naya\`dgarbha\'ma\`nyaH pra\`jAva\'tI\`riSha\` A dha\'ttama\`sme || 6\.052\.16
+stI\`rNe ba\`rhiShi\' samidhA\`ne a\`gnau sU\`ktena\' ma\`hA nama\`sA vi\'vAse |
+a\`sminno\' a\`dya vi\`dathe\' yajatrA\` vishve\' devA ha\`viShi\' mAdayadhvam || 6\.052\.17
+
+va\`yamu\' tvA pathaspate\` ratha\`M na vAja\'sAtaye |
+dhi\`ye pU\'Shannayujmahi || 6\.053\.01
+a\`bhi no\` narya\`M vasu\' vI\`raM praya\'tadakShiNam |
+vA\`maM gR^i\`hapa\'tiM naya || 6\.053\.02
+adi\'tsantaM chidAghR^iNe\` pUSha\`ndAnA\'ya chodaya |
+pa\`Neshchi\`dvi mra\'dA\` mana\'H || 6\.053\.03
+vi pa\`tho vAja\'sAtaye chinu\`hi vi mR^idho\' jahi |
+sAdha\'ntAmugra no\` dhiya\'H || 6\.053\.04
+pari\' tR^indhi paNI\`nAmAra\'yA\` hR^ida\'yA kave |
+athe\'ma\`smabhya\'M randhaya || 6\.053\.05
+vi pU\'Sha\`nnAra\'yA tuda pa\`Neri\'chCha hR^i\`di pri\`yam |
+athe\'ma\`smabhya\'M randhaya || 6\.053\.06
+A ri\'kha kiki\`rA kR^i\'Nu paNI\`nAM hR^ida\'yA kave |
+athe\'ma\`smabhya\'M randhaya || 6\.053\.07
+yAM pU\'Shanbrahma\`choda\'nI\`mArA\`M bibha\'rShyAghR^iNe |
+tayA\' samasya\` hR^ida\'ya\`mA ri\'kha kiki\`rA kR^i\'Nu || 6\.053\.08
+yA te\` aShTrA\` goo\'pa\`shAghR^i\'Ne pashu\`sAdha\'nI |
+tasyA\'ste su\`mnamI\'mahe || 6\.053\.09
+u\`ta no\' go\`ShaNi\`M dhiya\'mashva\`sAM vA\'ja\`sAmu\`ta |
+nR^i\`vatkR^i\'Nuhi vI\`taye\' || 6\.053\.10
+
+saM pU\'Shanvi\`duShA\' naya\` yo a~nja\'sAnu\`shAsa\'ti |
+ya e\`vedamiti\` brava\'t || 6\.054\.01
+samu\' pU\`ShNA ga\'memahi\` yo gR^i\`hA.N a\'bhi\`shAsa\'ti |
+i\`ma e\`veti\' cha\` brava\'t || 6\.054\.02
+pU\`ShNashcha\`kraM na ri\'Shyati\` na kosho.ava\' padyate |
+no a\'sya vyathate pa\`viH || 6\.054\.03
+yo a\'smai ha\`viShAvi\'dha\`nna taM pU\`ShApi\' mR^iShyate |
+pra\`tha\`mo vi\'ndate\` vasu\' || 6\.054\.04
+pU\`ShA gA anve\'tu naH pU\`ShA ra\'kSha\`tvarva\'taH |
+pU\`ShA vAja\'M sanotu naH || 6\.054\.05
+pUSha\`nnanu\` pra gA i\'hi\` yaja\'mAnasya sunva\`taH |
+a\`smAka\'M stuva\`tAmu\`ta || 6\.054\.06
+mAki\'rnesha\`nmAkI\'M riSha\`nmAkI\`M saM shA\'ri\` keva\'Te |
+athAri\'ShTAbhi\`rA ga\'hi || 6\.054\.07
+shR^i\`Nvanta\'M pU\`ShaNa\'M va\`yamirya\`mana\'ShTavedasam |
+IshA\'naM rA\`ya I\'mahe || 6\.054\.08
+pUSha\`ntava\' vra\`te va\`yaM na ri\'Shyema\` kadA\' cha\`na |
+sto\`tAra\'sta i\`ha sma\'si || 6\.054\.09
+pari\' pU\`ShA pa\`rastA\`ddhasta\'M dadhAtu\` dakShi\'Nam |
+puna\'rno na\`ShTamAja\'tu || 6\.054\.10
+
+ehi\` vAM vi\'mucho napA\`dAghR^i\'Ne\` saM sa\'chAvahai |
+ra\`thIrR^i\`tasya\' no bhava || 6\.055\.01
+ra\`thIta\'maM kapa\`rdina\`mIshA\'na\`M rAdha\'so ma\`haH |
+rA\`yaH sakhA\'yamImahe || 6\.055\.02
+rA\`yo dhArA\'syAghR^iNe\` vaso\' rA\`shira\'jAshva |
+dhIva\'todhIvata\`H sakhA\' || 6\.055\.03
+pU\`ShaNa\`M nva1\`\'jAshva\`mupa\' stoShAma vA\`jina\'m |
+svasu\`ryo jA\`ra u\`chyate\' || 6\.055\.04
+mA\`turdi\'dhi\`Shuma\'brava\`M svasu\'rjA\`raH shR^i\'Notu naH |
+bhrAtendra\'sya\` sakhA\` mama\' || 6\.055\.05
+AjAsa\'H pU\`ShaNa\`M rathe\' nishR^i\`mbhAste ja\'na\`shriya\'m |
+de\`vaM va\'hantu\` bibhra\'taH || 6\.055\.06
+
+ya e\'namA\`dide\'shati kara\`mbhAditi\' pU\`ShaNa\'m |
+na tena\' de\`va A\`dishe\' || 6\.056\.01
+u\`ta ghA\` sa ra\`thIta\'ma\`H sakhyA\` satpa\'tiryu\`jA |
+indro\' vR^i\`trANi\' jighnate || 6\.056\.02
+u\`tAdaH pa\'ru\`She gavi\` sUra\'shcha\`kraM hi\'ra\`Nyaya\'m |
+nyai\'rayadra\`thIta\'maH || 6\.056\.03
+yada\`dya tvA\' puruShTuta\` bravA\'ma dasra mantumaH |
+tatsu no\` manma\' sAdhaya || 6\.056\.04
+i\`maM cha\' no ga\`veSha\'NaM sA\`taye\' sIShadho ga\`Nam |
+A\`rAtpU\'Shannasi shru\`taH || 6\.056\.05
+A te\' sva\`stimI\'maha A\`rea\'ghA\`mupA\'vasum |
+a\`dyA cha\' sa\`rvatA\'taye\` shvashcha\' sa\`rvatA\'taye || 6\.056\.06
+
+indrA\` nu pU\`ShaNA\' va\`yaM sa\`khyAya\' sva\`staye\' |
+hu\`vema\` vAja\'sAtaye || 6\.057\.01
+soma\'ma\`nya upA\'sada\`tpAta\'ve cha\`mvo\'H su\`tam |
+ka\`ra\`mbhama\`nya i\'chChati || 6\.057\.02
+a\`jA a\`nyasya\` vahna\'yo\` harI\' a\`nyasya\` sambhR^i\'tA |
+tAbhyA\'M vR^i\`trANi\' jighnate || 6\.057\.03
+yadindro\` ana\'ya\`drito\' ma\`hIra\`po vR^iSha\'ntamaH |
+tatra\' pU\`ShAbha\'va\`tsachA\' || 6\.057\.04
+tAM pU\`ShNaH su\'ma\`tiM va\`yaM vR^i\`kShasya\` pra va\`yAmi\'va |
+indra\'sya\` chA ra\'bhAmahe || 6\.057\.05
+utpU\`ShaNa\'M yuvAmahe\`.abhIshU\'.Nriva\` sAra\'thiH |
+ma\`hyA indra\'M sva\`staye\' || 6\.057\.06
+
+shu\`kraM te\' a\`nyadya\'ja\`taM te\' a\`nyadviShu\'rUpe\` aha\'nI\` dyauri\'vAsi |
+vishvA\` hi mA\`yA ava\'si svadhAvo bha\`drA te\' pUShanni\`ha rA\`tira\'stu || 6\.058\.01
+a\`jAshva\'H pashu\`pA vAja\'pastyo dhiyaMji\`nvo bhuva\'ne\` vishve\` arpi\'taH |
+aShTrA\'M pU\`ShA shi\'thi\`rAmu\`dvarI\'vR^ijatsa\`MchakShA\'No\` bhuva\'nA de\`va I\'yate || 6\.058\.02
+yAste\' pUSha\`nnAvo\' a\`ntaH sa\'mu\`dre hi\'ra\`NyayI\'ra\`ntari\'kShe\` chara\'nti |
+tAbhi\'ryAsi dU\`tyAM sUrya\'sya\` kAme\'na kR^ita\` shrava\' i\`chChamA\'naH || 6\.058\.03
+pU\`ShA su\`bandhu\'rdi\`va A pR^i\'thi\`vyA i\`Laspati\'rma\`ghavA\' da\`smava\'rchAH |
+yaM de\`vAso\` ada\'duH sU\`ryAyai\` kAme\'na kR^i\`taM ta\`vasa\`M sva~ncha\'m || 6\.058\.04
+
+pra nu vo\'chA su\`teShu\' vAM vI\`ryA\`3\`\' yAni\' cha\`krathu\'H |
+ha\`tAso\' vAM pi\`taro\' de\`vasha\'trava\` indrA\'gnI\` jIva\'tho yu\`vam || 6\.059\.01
+baLi\`tthA ma\'hi\`mA vA\`mindrA\'gnI\` pani\'ShTha\` A |
+sa\`mA\`no vA\'M jani\`tA bhrAta\'rA yu\`vaM ya\`mAvi\`heha\'mAtarA || 6\.059\.02
+o\`ki\`vAMsA\' su\`te sachA\`.N ashvA\` saptI\' i\`vAda\'ne |
+indrA\` nva1\`\'gnI ava\'se\`ha va\`jriNA\' va\`yaM de\`vA ha\'vAmahe || 6\.059\.03
+ya i\'ndrAgnI su\`teShu\' vA\`M stava\`tteShvR^i\'tAvR^idhA |
+jo\`Sha\`vA\`kaM vada\'taH pajrahoShiNA\` na de\'vA bha\`satha\'shcha\`na || 6\.059\.04
+indrA\'gnI\` ko a\`sya vA\`M devau\` marta\'shchiketati |
+viShU\'cho\` ashvA\'nyuyujA\`na I\'yata\` eka\'H samA\`na A rathe\' || 6\.059\.05
+indrA\'gnI a\`pAdi\`yaM pUrvAgA\'tpa\`dvatI\'bhyaH |
+hi\`tvI shiro\' ji\`hvayA\` vAva\'da\`chchara\'ttri\`Mshatpa\`dA nya\'kramIt || 6\.059\.06
+indrA\'gnI\` A hi ta\'nva\`te naro\` dhanvA\'ni bA\`hvoH |
+mA no\' a\`sminma\'hAdha\`ne parA\' varkta\`M gavi\'ShTiShu || 6\.059\.07
+indrA\'gnI\` tapa\'nti mA\`ghA a\`ryo arA\'tayaH |
+apa\` dveShA\`MsyA kR^i\'taM yuyu\`taM sUryA\`dadhi\' || 6\.059\.08
+indrA\'gnI yu\`vorapi\` vasu\' di\`vyAni\` pArthi\'vA |
+A na\' i\`ha pra ya\'chChataM ra\`yiM vi\`shvAyu\'poShasam || 6\.059\.09
+indrA\'gnI ukthavAhasA\` stome\'bhirhavanashrutA |
+vishvA\'bhirgI\`rbhirA ga\'tama\`sya soma\'sya pI\`taye\' || 6\.059\.10
+
+shnatha\'dvR^i\`tramu\`ta sa\'noti\` vAja\`mindrA\` yo a\`gnI sahu\'rI sapa\`ryAt |
+i\`ra\`jyantA\' vasa\`vya\'sya\` bhUre\`H saha\'stamA\` saha\'sA vAja\`yantA\' || 6\.060\.01
+tA yo\'dhiShTama\`bhi gA i\'ndra nU\`nama\`paH sva\'ru\`Shaso\' agna U\`LhAH |
+disha\`H sva\'ru\`Shasa\' indra chi\`trA a\`po gA a\'gne yuvase ni\`yutvA\'n || 6\.060\.02
+A vR^i\'trahaNA vR^itra\`habhi\`H shuShmai\`rindra\' yA\`taM namo\'bhiragne a\`rvAk |
+yu\`vaM rAdho\'bhi\`raka\'vebhiri\`ndrAgne\' a\`sme bha\'vatamutta\`mebhi\'H || 6\.060\.03
+tA hu\'ve\` yayo\'ri\`daM pa\`pne vishva\'M pu\`rA kR^i\`tam |
+i\`ndrA\`gnI na ma\'rdhataH || 6\.060\.04
+u\`grA vi\'gha\`ninA\` mR^idha\' indrA\`gnI ha\'vAmahe |
+tA no\' mR^iLAta I\`dR^ishe\' || 6\.060\.05
+ha\`to vR^i\`trANyAryA\' ha\`to dAsA\'ni\` satpa\'tI |
+ha\`to vishvA\` apa\` dviSha\'H || 6\.060\.06
+indrA\'gnI yu\`vAmi\`me\`3\`\'.abhi stomA\' anUShata |
+piba\'taM shambhuvA su\`tam || 6\.060\.07
+yA vA\`M santi\' puru\`spR^iho\' ni\`yuto\' dA\`shuShe\' narA |
+indrA\'gnI\` tAbhi\`rA ga\'tam || 6\.060\.08
+tAbhi\`rA ga\'chChataM na\`rope\`daM sava\'naM su\`tam |
+indrA\'gnI\` soma\'pItaye || 6\.060\.09
+tamI\'LiShva\` yo a\`rchiShA\` vanA\` vishvA\' pari\`Shvaja\'t |
+kR^i\`ShNA kR^i\`Noti\' ji\`hvayA\' || 6\.060\.10
+ya i\`ddha A\`vivA\'sati su\`mnamindra\'sya\` martya\'H |
+dyu\`mnAya\' su\`tarA\' a\`paH || 6\.060\.11
+tA no\` vAja\'vatI\`riSha\' A\`shUnpi\'pR^ita\`marva\'taH |
+indra\'ma\`gniM cha\` voLha\'ve || 6\.060\.12
+u\`bhA vA\'mindrAgnI Ahu\`vadhyA\' u\`bhA rAdha\'saH sa\`ha mA\'da\`yadhyai\' |
+u\`bhA dA\`tArA\'vi\`ShAM ra\'yI\`NAmu\`bhA vAja\'sya sA\`taye\' huve vAm || 6\.060\.13
+A no\` gavye\'bhi\`rashvyai\'rvasa\`vyai\`3\`\'rupa\' gachChatam |
+sakhA\'yau de\`vau sa\`khyAya\' sha\`mbhuve\'ndrA\`gnI tA ha\'vAmahe || 6\.060\.14
+indrA\'gnI shR^iNu\`taM hava\`M yaja\'mAnasya sunva\`taH |
+vI\`taM ha\`vyAnyA ga\'ta\`M piba\'taM so\`myaM madhu\' || 6\.060\.15
+
+i\`yama\'dadAdrabha\`samR^i\'Na\`chyuta\`M divo\'dAsaM vadhrya\`shvAya\' dA\`shuShe\' |
+yA shashva\'ntamAcha\`khAdA\'va\`saM pa\`NiM tA te\' dA\`trANi\' tavi\`ShA sa\'rasvati || 6\.061\.01
+i\`yaM shuShme\'bhirbisa\`khA i\'vAruja\`tsAnu\' girI\`NAM ta\'vi\`Shebhi\'rU\`rmibhi\'H |
+pA\`rA\`va\`ta\`ghnImava\'se suvR^i\`ktibhi\`H sara\'svatI\`mA vi\'vAsema dhI\`tibhi\'H || 6\.061\.02
+sara\'svati deva\`nido\` ni ba\'rhaya pra\`jAM vishva\'sya\` bR^isa\'yasya mA\`yina\'H |
+u\`ta kShi\`tibhyo\`.avanI\'ravindo vi\`Shame\'bhyo asravo vAjinIvati || 6\.061\.03
+pra No\' de\`vI sara\'svatI\` vAje\'bhirvA\`jinI\'vatI |
+dhI\`nAma\'vi\`trya\'vatu || 6\.061\.04
+yastvA\' devi sarasvatyupabrU\`te dhane\' hi\`te |
+indra\`M na vR^i\'tra\`tUrye\' || 6\.061\.05
+tvaM de\'vi sarasva\`tyavA\` vAje\'Shu vAjini |
+radA\' pU\`Sheva\' naH sa\`nim || 6\.061\.06
+u\`ta syA na\`H sara\'svatI gho\`rA hira\'NyavartaniH |
+vR^i\`tra\`ghnI va\'ShTi suShTu\`tim || 6\.061\.07
+yasyA\' ana\`nto ahru\'tastve\`Shashcha\'ri\`ShNura\'rNa\`vaH |
+ama\`shchara\'ti\` roru\'vat || 6\.061\.08
+sA no\` vishvA\` ati\` dviSha\`H svasR^I\'ra\`nyA R^i\`tAva\'rI |
+ata\`nnahe\'va\` sUrya\'H || 6\.061\.09
+u\`ta na\'H pri\`yA pri\`yAsu\' sa\`ptasva\'sA\` suju\'ShTA |
+sara\'svatI\` stomyA\' bhUt || 6\.061\.10
+A\`pa\`pruShI\` pArthi\'vAnyu\`ru rajo\' a\`ntari\'kSham |
+sara\'svatI ni\`daspA\'tu || 6\.061\.11
+tri\`Sha\`dhasthA\' sa\`ptadhA\'tu\`H pa~ncha\' jA\`tA va\`rdhaya\'ntI |
+vAje\'vAje\` havyA\' bhUt || 6\.061\.12
+pra yA ma\'hi\`mnA ma\`hinA\'su\` cheki\'te dyu\`mnebhi\'ra\`nyA a\`pasA\'ma\`pasta\'mA |
+ratha\' iva bR^iha\`tI vi\`bhvane\' kR^i\`topa\`stutyA\' chiki\`tuShA\` sara\'svatI || 6\.061\.13
+sara\'svatya\`bhi no\' neShi\` vasyo\` mApa\' spharI\`H paya\'sA\` mA na\` A dha\'k |
+ju\`Shasva\' naH sa\`khyA ve\`shyA\' cha\` mA tvatkShetrA\`Nyara\'NAni ganma || 6\.061\.14
+
+stu\`She narA\' di\`vo a\`sya pra\`santA\`shvinA\' huve\` jara\'mANo a\`rkaiH |
+yA sa\`dya u\`srA vyuShi\` jmo antA\`nyuyU\'Shata\`H paryu\`rU varA\'Msi || 6\.062\.01
+tA ya\`j~namA shuchi\'bhishchakramA\`NA ratha\'sya bhA\`nuM ru\'ruchU\` rajo\'bhiH |
+pu\`rU varA\`Msyami\'tA\` mimA\'nA\`po dhanvA\`nyati\' yAtho\` ajrA\'n || 6\.062\.02
+tA ha\` tyadva\`rtiryadara\'dhramugre\`tthA dhiya\' Uhathu\`H shashva\`dashvai\'H |
+mano\'javebhiriShi\`raiH sha\`yadhyai\` pari\` vyathi\'rdA\`shuSho\` martya\'sya || 6\.062\.03
+tA navya\'so\` jara\'mANasya\` manmopa\' bhUShato yuyujA\`nasa\'ptI |
+shubha\`M pR^ikSha\`miSha\`mUrja\`M vaha\'ntA\` hotA\' yakShatpra\`tno a\`dhrugyuvA\'nA || 6\.062\.04
+tA va\`lgU da\`srA pu\'ru\`shAka\'tamA pra\`tnA navya\'sA\` vacha\`sA vi\'vAse |
+yA shaMsa\'te stuva\`te shambha\'viShThA babhU\`vatu\'rgR^iNa\`te chi\`trarA\'tI || 6\.062\.05
+tA bhu\`jyuM vibhi\'ra\`dbhyaH sa\'mu\`drAttugra\'sya sU\`numU\'hathU\` rajo\'bhiH |
+a\`re\`Nubhi\`ryoja\'nebhirbhu\`jantA\' pata\`tribhi\`rarNa\'so\` niru\`pasthA\'t || 6\.062\.06
+vi ja\`yuShA\' rathyA yAta\`madri\'M shru\`taM hava\'M vR^iShaNA vadhrima\`tyAH |
+da\`sha\`syantA\' sha\`yave\' pipyathu\`rgAmiti\' chyavAnA suma\`tiM bhu\'raNyU || 6\.062\.07
+yadro\'dasI pra\`divo\` asti\` bhUmA\` heLo\' de\`vAnA\'mu\`ta ma\'rtya\`trA |
+tadA\'dityA vasavo rudriyAso rakSho\`yuje\` tapu\'ra\`ghaM da\'dhAta || 6\.062\.08
+ya I\`M rAjA\'nAvR^itu\`thA vi\`dadha\`draja\'so mi\`tro varu\'Na\`shchike\'tat |
+ga\`mbhI\`rAya\` rakSha\'se he\`tima\'sya\` droghA\'ya chi\`dvacha\'sa\` Ana\'vAya || 6\.062\.09
+anta\'raishcha\`kraistana\'yAya va\`rtirdyu\`matA yA\'taM nR^i\`vatA\` rathe\'na |
+sanu\'tyena\` tyaja\'sA\` martya\'sya vanuShya\`tAmapi\' shI\`rShA va\'vR^iktam || 6\.062\.10
+A pa\'ra\`mAbhi\'ru\`ta ma\'dhya\`mAbhi\'rni\`yudbhi\'ryAtamava\`mAbhi\'ra\`rvAk |
+dR^i\`Lhasya\' chi\`dgoma\'to\` vi vra\`jasya\` duro\' vartaM gR^iNa\`te chi\'trarAtI || 6\.062\.11
+
+kva1\`\' tyA va\`lgU pu\'ruhU\`tAdya dU\`to na stomo\'.avida\`nnama\'svAn |
+A yo a\`rvA~NnAsa\'tyA va\`varta\` preShThA\` hyasa\'tho asya\` manma\'n || 6\.063\.01
+ara\'M me ganta\`M hava\'nAyA\`smai gR^i\'NA\`nA yathA\` pibA\'tho\` andha\'H |
+pari\' ha\` tyadva\`rtiryA\'tho ri\`Sho na yatparo\` nAnta\'rastutu\`ryAt || 6\.063\.02
+akA\'ri vA\`mandha\'so\` varI\'ma\`nnastA\'ri ba\`rhiH su\'prAya\`Nata\'mam |
+u\`ttA\`naha\'sto yuva\`yurva\'va\`ndA vA\`M nakSha\'nto\` adra\'ya A~njan || 6\.063\.03
+U\`rdhvo vA\'ma\`gnira\'dhva\`reShva\'sthA\`tpra rA\`tire\'ti jU\`rNinI\' ghR^i\`tAchI\' |
+pra hotA\' gU\`rtama\'nA urA\`No.ayu\'kta\` yo nAsa\'tyA\` havI\'man || 6\.063\.04
+adhi\' shri\`ye du\'hi\`tA sUrya\'sya\` ratha\'M tasthau purubhujA sha\`toti\'m |
+pra mA\`yAbhi\'rmAyinA bhUta\`matra\` narA\' nR^itU\` jani\'manya\`j~niyA\'nAm || 6\.063\.05
+yu\`vaM shrI\`bhirda\'rsha\`tAbhi\'rA\`bhiH shu\`bhe pu\`ShTimU\'hathuH sU\`ryAyA\'H |
+pra vA\`M vayo\` vapu\`She.anu\' papta\`nnakSha\`dvANI\` suShTu\'tA dhiShNyA vAm || 6\.063\.06
+A vA\`M vayo.ashvA\'so\` vahi\'ShThA a\`bhi prayo\' nAsatyA vahantu |
+pra vA\`M ratho\` mano\'javA asarjI\`ShaH pR^i\`kSha i\`Shidho\` anu\' pU\`rvIH || 6\.063\.07
+pu\`ru hi vA\'M purubhujA de\`ShNaM dhe\`nuM na\` iSha\'M pinvata\`masa\'krAm |
+stuta\'shcha vAM mAdhvI suShTu\`tishcha\` rasA\'shcha\` ye vA\`manu\' rA\`timagma\'n || 6\.063\.08
+u\`ta ma\' R^i\`jre pura\'yasya ra\`ghvI su\'mI\`Lhe sha\`taM pe\'ru\`ke cha\' pa\`kvA |
+shA\`NDo dA\'ddhira\`Nina\`H smaddi\'ShTI\`ndasha\' va\`shAso\' abhi\`ShAcha\' R^i\`ShvAn || 6\.063\.09
+saM vA\'M sha\`tA nA\'satyA sa\`hasrAshvA\'nAM puru\`panthA\' gi\`re dA\'t |
+bha\`radvA\'jAya vIra\` nU gi\`re dA\'ddha\`tA rakShA\'Msi purudaMsasA syuH || 6\.063\.10
+A vA\'M su\`mne vari\'mansU\`ribhi\'H ShyAm || 6\.063\.11
+
+udu\' shri\`ya u\`Shaso\` rocha\'mAnA\` asthu\'ra\`pAM normayo\` rusha\'ntaH |
+kR^i\`Noti\` vishvA\' su\`pathA\' su\`gAnyabhU\'du\` vasvI\` dakShi\'NA ma\`ghonI\' || 6\.064\.01
+bha\`drA da\'dR^ikSha urvi\`yA vi bhA\`syutte\' sho\`chirbhA\`navo\` dyAma\'paptan |
+A\`virvakSha\'H kR^iNuShe shu\`mbhamA\`noSho\' devi\` rocha\'mAnA\` maho\'bhiH || 6\.064\.02
+vaha\'nti sImaru\`NAso\` rusha\'nto\` gAva\'H su\`bhagA\'murvi\`yA pra\'thA\`nAm |
+ape\'jate\` shUro\` aste\'va\` shatrU\`nbAdha\'te\` tamo\' aji\`ro na voLhA\' || 6\.064\.03
+su\`gota te\' su\`pathA\` parva\'teShvavA\`te a\`pasta\'rasi svabhAno |
+sA na\` A va\'ha pR^ithuyAmannR^iShve ra\`yiM di\'vo duhitariSha\`yadhyai\' || 6\.064\.04
+sA va\'ha\` yokShabhi\`ravA\`toSho\` vara\`M vaha\'si\` joSha\`manu\' |
+tvaM di\'vo duhita\`ryA ha\' de\`vI pU\`rvahU\'tau ma\`MhanA\' darsha\`tA bhU\'H || 6\.064\.05
+utte\` vaya\'shchidvasa\`tera\'papta\`nnara\'shcha\` ye pi\'tu\`bhAjo\` vyu\'ShTau |
+a\`mA sa\`te va\'hasi\` bhUri\' vA\`mamuSho\' devi dA\`shuShe\` martyA\'ya || 6\.064\.06
+
+e\`ShA syA no\' duhi\`tA di\'vo\`jAH kShi\`tIru\`chChantI\` mAnu\'ShIrajIgaH |
+yA bhA\`nunA\` rusha\'tA rA\`myAsvaj~nA\'yi ti\`rastama\'sashchida\`ktUn || 6\.065\.01
+vi tadya\'yuraruNa\`yugbhi\`rashvai\'shchi\`traM bhA\'ntyu\`Shasa\'shcha\`ndrara\'thAH |
+agra\'M ya\`j~nasya\' bR^iha\`to naya\'ntI\`rvi tA bA\'dhante\` tama\` UrmyA\'yAH || 6\.065\.02
+shravo\` vAja\`miSha\`mUrja\`M vaha\'ntI\`rni dA\`shuSha\' uShaso\` martyA\'ya |
+ma\`ghonI\'rvI\`rava\`tpatya\'mAnA\` avo\' dhAta vidha\`te ratna\'ma\`dya || 6\.065\.03
+i\`dA hi vo\' vidha\`te ratna\`mastI\`dA vI\`rAya\' dA\`shuSha\' uShAsaH |
+i\`dA viprA\'ya\` jara\'te\` yadu\`kthA ni Shma\` mAva\'te vahathA pu\`rA chi\'t || 6\.065\.04
+i\`dA hi ta\' uSho adrisAno go\`trA gavA\`ma~Ngi\'raso gR^i\`Nanti\' |
+vya1\`\'rkeNa\' bibhidu\`rbrahma\'NA cha sa\`tyA nR^i\`NAma\'bhavadde\`vahU\'tiH || 6\.065\.05
+u\`chChA di\'vo duhitaH pratna\`vanno\' bharadvAja\`vadvi\'dha\`te ma\'ghoni |
+su\`vIra\'M ra\`yiM gR^i\'Na\`te ri\'rIhyurugA\`yamadhi\' dhehi\` shravo\' naH || 6\.065\.06
+
+vapu\`rnu tachchi\'ki\`tuShe\' chidastu samA\`naM nAma\' dhe\`nu patya\'mAnam |
+marte\'Shva\`nyaddo\`hase\' pI\`pAya\' sa\`kR^ichChu\`kraM du\'duhe\` pR^ishni\`rUdha\'H || 6\.066\.01
+ye a\`gnayo\` na shoshu\'channidhA\`nA dviryattrirma\`ruto\' vAvR^i\`dhanta\' |
+a\`re\`Navo\' hira\`NyayA\'sa eShAM sA\`kaM nR^i\`mNaiH pauMsye\'bhishcha bhUvan || 6\.066\.02
+ru\`drasya\` ye mI\`LhuSha\`H santi\' pu\`trA yA.Nshcho\` nu dAdhR^i\'vi\`rbhara\'dhyai |
+vi\`de hi mA\`tA ma\`ho ma\`hI ShA setpR^ishni\'H su\`bhve\`3\`\' garbha\`mAdhA\'t || 6\.066\.03
+na ya ISha\'nte ja\`nuSho.ayA\` nva1\`\'ntaH santo\'.ava\`dyAni\' punA\`nAH |
+niryaddu\`hre shucha\`yo.anu\` joSha\`manu\' shri\`yA ta\`nva\'mu\`kShamA\'NAH || 6\.066\.04
+ma\`kShU na yeShu\' do\`hase\' chida\`yA A nAma\' dhR^i\`ShNu mAru\'ta\`M dadhA\'nAH |
+na ye stau\`nA a\`yAso\' ma\`hnA nU chi\'tsu\`dAnu\`rava\' yAsadu\`grAn || 6\.066\.05
+ta idu\`grAH shava\'sA dhR^i\`ShNuShe\'NA u\`bhe yu\'janta\` roda\'sI su\`meke\' |
+adha\' smaiShu roda\`sI svasho\'chi\`rAma\'vatsu tasthau\` na roka\'H || 6\.066\.06
+a\`ne\`no vo\' maruto\` yAmo\' astvana\`shvashchi\`dyamaja\`tyara\'thIH |
+a\`na\`va\`so a\'nabhI\`shU ra\'ja\`stUrvi roda\'sI pa\`thyA\' yAti\` sAdha\'n || 6\.066\.07
+nAsya\' va\`rtA na ta\'ru\`tA nva\'sti\` maru\'to\` yamava\'tha\` vAja\'sAtau |
+to\`ke vA\` goShu\` tana\'ye\` yama\`psu sa vra\`jaM dartA\` pArye\` adha\` dyoH || 6\.066\.08
+pra chi\`trama\`rkaM gR^i\'Na\`te tu\`rAya\` mAru\'tAya\` svata\'vase bharadhvam |
+ye sahA\'Msi\` saha\'sA\` saha\'nte\` reja\'te agne pR^ithi\`vI ma\`khebhya\'H || 6\.066\.09
+tviShI\'manto adhva\`rasye\'va di\`dyuttR^i\'Shu\`chyava\'so ju\`hvo\`3\`\' nAgneH |
+a\`rchatra\'yo\` dhuna\'yo\` na vI\`rA bhrAja\'jjanmAno ma\`ruto\` adhR^i\'ShTAH || 6\.066\.10
+taM vR^i\`dhanta\`M mAru\'ta\`M bhrAja\'dR^iShTiM ru\`drasya\' sU\`nuM ha\`vasA vi\'vAse |
+di\`vaH shardhA\'ya\` shucha\'yo manI\`ShA gi\`rayo\` nApa\' u\`grA a\'spR^idhran || 6\.066\.11
+
+vishve\'ShAM vaH sa\`tAM jyeShTha\'tamA gI\`rbhirmi\`trAvaru\'NA vAvR^i\`dhadhyai\' |
+saM yA ra\`shmeva\' ya\`matu\`ryami\'ShThA\` dvA janA\`.N asa\'mA bA\`hubhi\`H svaiH || 6\.067\.01
+i\`yaM madvA\`M pra stR^i\'NIte manI\`Shopa\' pri\`yA nama\'sA ba\`rhirachCha\' |
+ya\`ntaM no\' mitrAvaruNA\`vadhR^i\'ShTaM Cha\`rdiryadvA\'M varU\`thya\'M sudAnU || 6\.067\.02
+A yA\'taM mitrAvaruNA susha\`styupa\' pri\`yA nama\'sA hU\`yamA\'nA |
+saM yAva\'pna\`Hstho a\`pase\'va\` janA\'~nChrudhIya\`tashchi\'dyatatho mahi\`tvA || 6\.067\.03
+ashvA\` na yA vA\`jinA\' pU\`taba\'ndhU R^i\`tA yadgarbha\`madi\'ti\`rbhara\'dhyai |
+pra yA mahi\' ma\`hAntA\` jAya\'mAnA gho\`rA martA\'ya ri\`pave\` ni dI\'dhaH || 6\.067\.04
+vishve\` yadvA\'M ma\`MhanA\` manda\'mAnAH kSha\`traM de\`vAso\` ada\'dhuH sa\`joShA\'H |
+pari\` yadbhU\`tho roda\'sI chidu\`rvI santi\` spasho\` ada\'bdhAso\` amU\'rAH || 6\.067\.05
+tA hi kSha\`traM dhA\`raye\'the\` anu\` dyUndR^i\`Mhethe\` sAnu\'mupa\`mAdi\'va\` dyoH |
+dR^i\`Lho nakSha\'tra u\`ta vi\`shvade\'vo\` bhUmi\`mAtA\`ndyAM dhA\`sinA\`yoH || 6\.067\.06
+tA vi\`graM dhai\'the ja\`Thara\'M pR^i\`NadhyA\` A yatsadma\` sabhR^i\'tayaH pR^i\`Nanti\' |
+na mR^i\'Shyante yuva\`tayo.avA\'tA\` vi yatpayo\' vishvajinvA\` bhara\'nte || 6\.067\.07
+tA ji\`hvayA\` sada\`medaM su\'me\`dhA A yadvA\'M sa\`tyo a\'ra\`tirR^i\`te bhUt |
+tadvA\'M mahi\`tvaM ghR^i\'tAnnAvastu yu\`vaM dA\`shuShe\` vi cha\'yiShTa\`maMha\'H || 6\.067\.08
+pra yadvA\'M mitrAvaruNA spU\`rdhanpri\`yA dhAma\' yu\`vadhi\'tA mi\`nanti\' |
+na ye de\`vAsa\` oha\'sA\` na martA\` aya\'j~nasAcho\` apyo\` na pu\`trAH || 6\.067\.09
+vi yadvAcha\'M kI\`stAso\` bhara\'nte\` shaMsa\'nti\` ke chi\'nni\`vido\' manA\`nAH |
+AdvA\'M bravAma sa\`tyAnyu\`kthA naki\'rde\`vebhi\'ryatatho mahi\`tvA || 6\.067\.10
+a\`vori\`tthA vA\'M Cha\`rdiSho\' a\`bhiShTau\' yu\`vormi\'trAvaruNA\`vaskR^i\'dhoyu |
+anu\` yadgAva\'H sphu\`rAnR^i\'ji\`pyaM dhR^i\`ShNuM yadraNe\` vR^iSha\'NaM yu\`naja\'n || 6\.067\.11
+
+shru\`ShTI vA\'M ya\`j~na udya\'taH sa\`joShA\' manu\`ShvadvR^i\`ktaba\'rhiSho\` yaja\'dhyai |
+A ya indrA\`varu\'NAvi\`She a\`dya ma\`he su\`mnAya\' ma\`ha A\'va\`varta\'t || 6\.068\.01
+tA hi shreShThA\' de\`vatA\'tA tu\`jA shUrA\'NA\`M shavi\'ShThA\` tA hi bhU\`tam |
+ma\`ghonA\`M maMhi\'ShThA tuvi\`shuShma\' R^i\`tena\' vR^itra\`turA\` sarva\'senA || 6\.068\.02
+tA gR^i\'NIhi nama\`sye\'bhiH shU\`ShaiH su\`mnebhi\`rindrA\`varu\'NA chakA\`nA |
+vajre\'NA\`nyaH shava\'sA\` hanti\' vR^i\`traM siSha\'ktya\`nyo vR^i\`jane\'Shu\` vipra\'H || 6\.068\.03
+gnAshcha\` yannara\'shcha vAvR^i\`dhanta\` vishve\' de\`vAso\' na\`rAM svagU\'rtAH |
+praibhya\' indrAvaruNA mahi\`tvA dyaushcha\' pR^ithivi bhUtamu\`rvI || 6\.068\.04
+sa itsu\`dAnu\`H svavA\'.N R^i\`tAvendrA\` yo vA\'M varuNa\` dAsha\'ti\` tman |
+i\`ShA sa dvi\`Shasta\'re\`ddAsvA\`nvaMsa\'dra\`yiM ra\'yi\`vata\'shcha\` janA\'n || 6\.068\.05
+yaM yu\`vaM dA\`shva\'dhvarAya devA ra\`yiM dha\`ttho vasu\'mantaM puru\`kShum |
+a\`sme sa i\'ndrAvaruNA\`vapi\' ShyA\`tpra yo bha\`nakti\' va\`nuShA\`masha\'stIH || 6\.068\.06
+u\`ta na\'H sutrA\`tro de\`vago\'pAH sU\`ribhya\' indrAvaruNA ra\`yiH ShyA\'t |
+yeShA\`M shuShma\`H pR^ita\'nAsu sA\`hvAnpra sa\`dyo dyu\`mnA ti\`rate\` tatu\'riH || 6\.068\.07
+nU na\' indrAvaruNA gR^iNA\`nA pR^i\`~NktaM ra\`yiM sau\'shrava\`sAya\' devA |
+i\`tthA gR^i\`Nanto\' ma\`hina\'sya\` shardho\`.apo na nA\`vA du\'ri\`tA ta\'rema || 6\.068\.08
+pra sa\`mrAje\' bR^iha\`te manma\` nu pri\`yamarcha\' de\`vAya\` varu\'NAya sa\`pratha\'H |
+a\`yaM ya u\`rvI ma\'hi\`nA mahi\'vrata\`H kratvA\' vi\`bhAtya\`jaro\` na sho\`chiShA\' || 6\.068\.09
+indrA\'varuNA sutapAvi\`maM su\`taM soma\'M pibata\`M madya\'M dhR^itavratA |
+yu\`vo ratho\' adhva\`raM de\`vavI\'taye\` prati\` svasa\'ra\`mupa\' yAti pI\`taye\' || 6\.068\.10
+indrA\'varuNA\` madhu\'mattamasya\` vR^iShNa\`H soma\'sya vR^iSha\`NA vR^i\'ShethAm |
+i\`daM vA\`mandha\`H pari\'Shiktama\`sme A\`sadyA\`sminba\`rhiShi\' mAdayethAm || 6\.068\.11
+
+saM vA\`M karma\'NA\` sami\`ShA hi\'no\`mIndrA\'viShNU\` apa\'saspA\`re a\`sya |
+ju\`ShethA\'M ya\`j~naM dravi\'NaM cha dhatta\`mari\'ShTairnaH pa\`thibhi\'H pA\`raya\'ntA || 6\.069\.01
+yA vishvA\'sAM jani\`tArA\' matI\`nAmindrA\`viShNU\' ka\`lashA\' soma\`dhAnA\' |
+pra vA\`M gira\'H sha\`syamA\'nA avantu\` pra stomA\'so gI\`yamA\'nAso a\`rkaiH || 6\.069\.02
+indrA\'viShNU madapatI madAnA\`mA soma\'M yAta\`M dravi\'No\` dadhA\'nA |
+saM vA\'ma~njantva\`ktubhi\'rmatI\`nAM saM stomA\'saH sha\`syamA\'nAsa u\`kthaiH || 6\.069\.03
+A vA\`mashvA\'so abhimAti\`ShAha\` indrA\'viShNU sadha\`mAdo\' vahantu |
+ju\`ShethA\`M vishvA\` hava\'nA matI\`nAmupa\` brahmA\'Ni shR^iNuta\`M giro\' me || 6\.069\.04
+indrA\'viShNU\` tatpa\'na\`yAyya\'M vA\`M soma\'sya\` mada\' u\`ru cha\'kramAthe |
+akR^i\'Nutama\`ntari\'kSha\`M varI\`yo.apra\'thataM jI\`vase\' no\` rajA\'Msi || 6\.069\.05
+indrA\'viShNU ha\`viShA\' vAvR^idhA\`nAgrA\'dvAnA\` nama\'sA rAtahavyA |
+ghR^itA\'sutI\` dravi\'NaM dhattama\`sme sa\'mu\`draH stha\'H ka\`lasha\'H soma\`dhAna\'H || 6\.069\.06
+indrA\'viShNU\` piba\'ta\`M madhvo\' a\`sya soma\'sya dasrA ja\`Thara\'M pR^iNethAm |
+A vA\`mandhA\'Msi madi\`rANya\'gma\`nnupa\` brahmA\'Ni shR^iNuta\`M hava\'M me || 6\.069\.07
+u\`bhA ji\'gyathu\`rna parA\' jayethe\` na parA\' jigye kata\`rashcha\`naino\'H |
+indra\'shcha viShNo\` yadapa\'spR^idhethAM tre\`dhA sa\`hasra\`M vi tadai\'rayethAm || 6\.069\.08
+
+ghR^i\`tava\'tI\` bhuva\'nAnAmabhi\`shriyo\`rvI pR^i\`thvI ma\'dhu\`dughe\' su\`pesha\'sA |
+dyAvA\'pR^ithi\`vI varu\'Nasya\` dharma\'NA\` viShka\'bhite a\`jare\` bhUri\'retasA || 6\.070\.01
+asa\'shchantI\` bhUri\'dhAre\` paya\'svatI ghR^i\`taM du\'hAte su\`kR^ite\` shuchi\'vrate |
+rAja\'ntI a\`sya bhuva\'nasya rodasI a\`sme reta\'H si~nchata\`M yanmanu\'rhitam || 6\.070\.02
+yo vA\'mR^i\`jave\` krama\'NAya rodasI\` marto\' da\`dAsha\' dhiShaNe\` sa sA\'dhati |
+pra pra\`jAbhi\'rjAyate\` dharma\'Na\`spari\' yu\`voH si\`ktA viShu\'rUpANi\` savra\'tA || 6\.070\.03
+ghR^i\`tena\` dyAvA\'pR^ithi\`vI a\`bhIvR^i\'te ghR^ita\`shriyA\' ghR^ita\`pR^ichA\' ghR^itA\`vR^idhA\' |
+u\`rvI pR^i\`thvI ho\'tR^i\`vUrye\' pu\`rohi\'te\` te idviprA\' ILate su\`mnami\`ShTaye\' || 6\.070\.04
+madhu\' no\` dyAvA\'pR^ithi\`vI mi\'mikShatAM madhu\`shchutA\' madhu\`dughe\` madhu\'vrate |
+dadhA\'ne ya\`j~naM dravi\'NaM cha de\`vatA\` mahi\` shravo\` vAja\'ma\`sme su\`vIrya\'m || 6\.070\.05
+Urja\'M no\` dyaushcha\' pR^ithi\`vI cha\' pinvatAM pi\`tA mA\`tA vi\'shva\`vidA\' su\`daMsa\'sA |
+sa\`Mra\`rA\`Ne roda\'sI vi\`shvasha\'mbhuvA sa\`niM vAja\'M ra\`yima\`sme sami\'nvatAm || 6\.070\.06
+
+udu\` Shya de\`vaH sa\'vi\`tA hi\'ra\`NyayA\' bA\`hU a\'yaMsta\` sava\'nAya su\`kratu\'H |
+ghR^i\`tena\' pA\`NI a\`bhi pru\'ShNute ma\`kho yuvA\' su\`dakSho\` raja\'so\` vidha\'rmaNi || 6\.071\.01
+de\`vasya\' va\`yaM sa\'vi\`tuH savI\'mani\` shreShThe\' syAma\` vasu\'nashcha dA\`vane\' |
+yo vishva\'sya dvi\`pado\` yashchatu\'Shpado ni\`vesha\'ne prasa\`ve chAsi\` bhUma\'naH || 6\.071\.02
+ada\'bdhebhiH savitaH pA\`yubhi\`ShTvaM shi\`vebhi\'ra\`dya pari\' pAhi no\` gaya\'m |
+hira\'NyajihvaH suvi\`tAya\` navya\'se\` rakShA\` mAki\'rno a\`ghasha\'Msa Ishata || 6\.071\.03
+udu\` Shya de\`vaH sa\'vi\`tA damU\'nA\` hira\'NyapANiH pratido\`Shama\'sthAt |
+ayo\'hanuryaja\`to ma\`ndraji\'hva\` A dA\`shuShe\' suvati\` bhUri\' vA\`mam || 6\.071\.04
+udU\' ayA.N upava\`kteva\' bA\`hU hi\'ra\`NyayA\' savi\`tA su\`pratI\'kA |
+di\`vo rohA\'MsyaruhatpR^ithi\`vyA arI\'ramatpa\`taya\`tkachchi\`dabhva\'m || 6\.071\.05
+vA\`mama\`dya sa\'vitarvA\`mamu\` shvo di\`vedi\'ve vA\`mama\`smabhya\'M sAvIH |
+vA\`masya\` hi kShaya\'sya deva\` bhUre\'ra\`yA dhi\`yA vA\'ma\`bhAja\'H syAma || 6\.071\.06
+
+indrA\'somA\` mahi\` tadvA\'M mahi\`tvaM yu\`vaM ma\`hAni\' pratha\`mAni\' chakrathuH |
+yu\`vaM sUrya\'M vivi\`dathu\'ryu\`vaM sva1\`\'rvishvA\` tamA\'MsyahataM ni\`dashcha\' || 6\.072\.01
+indrA\'somA vA\`saya\'tha u\`ShAsa\`mutsUrya\'M nayatho\` jyoti\'ShA sa\`ha |
+upa\` dyAM ska\`mbhathu\`H skambha\'ne\`nApra\'thataM pR^ithi\`vIM mA\`tara\`M vi || 6\.072\.02
+indrA\'somA\`vahi\'ma\`paH pa\'ri\`ShThAM ha\`tho vR^i\`tramanu\' vA\`M dyaura\'manyata |
+prArNA\'MsyairayataM na\`dInA\`mA sa\'mu\`drANi\' paprathuH pu\`rUNi\' || 6\.072\.03
+indrA\'somA pa\`kvamA\`mAsva\`ntarni gavA\`midda\'dhathurva\`kShaNA\'su |
+ja\`gR^i\`bhathu\`rana\'pinaddhamAsu\` rusha\'chchi\`trAsu\` jaga\'tIShva\`ntaH || 6\.072\.04
+indrA\'somA yu\`vama\`~Nga taru\'tramapatya\`sAcha\`M shrutya\'M rarAthe |
+yu\`vaM shuShma\`M narya\'M charSha\`Nibhya\`H saM vi\'vyathuH pR^itanA\`ShAha\'mugrA || 6\.072\.05
+
+yo a\'dri\`bhitpra\'thama\`jA R^i\`tAvA\` bR^iha\`spati\'rA~Ngira\`so ha\`viShmA\'n |
+dvi\`barha\'jmA prAgharma\`satpi\`tA na\` A roda\'sI vR^iSha\`bho ro\'ravIti || 6\.073\.01
+janA\'ya chi\`dya Iva\'ta u lo\`kaM bR^iha\`spati\'rde\`vahU\'tau cha\`kAra\' |
+ghnanvR^i\`trANi\` vi puro\' dardarIti\` jaya\`~nChatrU\'.Nra\`mitrA\'npR^i\`tsu sAha\'n || 6\.073\.02
+bR^iha\`spati\`H sama\'jaya\`dvasU\'ni ma\`ho vra\`jAngoma\'to de\`va e\`ShaH |
+a\`paH siShA\'sa\`nsva1\`\'rapra\'tIto\` bR^iha\`spati\`rhantya\`mitra\'ma\`rkaiH || 6\.073\.03
+
+somA\'rudrA dhA\`raye\'thAmasu\`ryaM1\`\' pra vA\'mi\`ShTayo.ara\'mashnuvantu |
+dame\'dame sa\`pta ratnA\` dadhA\'nA\` shaM no\' bhUtaM dvi\`pade\` shaM chatu\'Shpade || 6\.074\.01
+somA\'rudrA\` vi vR^i\'hata\`M viShU\'chI\`mamI\'vA\` yA no\` gaya\'mAvi\`vesha\' |
+A\`re bA\'dhethA\`M nirR^i\'tiM parA\`chaira\`sme bha\`drA sau\'shrava\`sAni\' santu || 6\.074\.02
+somA\'rudrA yu\`vame\`tAnya\`sme vishvA\' ta\`nUShu\' bheSha\`jAni\' dhattam |
+ava\' syataM mu\`~nchata\`M yanno\` asti\' ta\`nUShu\' ba\`ddhaM kR^i\`tameno\' a\`smat || 6\.074\.03
+ti\`gmAyu\'dhau ti\`gmahe\'tI su\`shevau\` somA\'rudrAvi\`ha su mR^i\'LataM naH |
+pra no\' mu~nchata\`M varu\'Nasya\` pAshA\'dgopA\`yata\'M naH sumana\`syamA\'nA || 6\.074\.04
+
+jI\`mUta\'syeva bhavati\` pratI\'ka\`M yadva\`rmI yAti\' sa\`madA\'mu\`pasthe\' |
+anA\'viddhayA ta\`nvA\' jaya\` tvaM sa tvA\` varma\'No mahi\`mA pi\'partu || 6\.075\.01
+dhanva\'nA\` gA dhanva\'nA\`jiM ja\'yema\` dhanva\'nA tI\`vrAH sa\`mado\' jayema |
+dhanu\`H shatro\'rapakA\`maM kR^i\'Noti\` dhanva\'nA\` sarvA\'H pra\`disho\' jayema || 6\.075\.02
+va\`kShyantI\`vedA ga\'nIganti\` karNa\'M pri\`yaM sakhA\'yaM pariShasvajA\`nA |
+yoShe\'va shi~Nkte\` vita\`tAdhi\` dhanva\`~njyA i\`yaM sama\'ne pA\`raya\'ntI || 6\.075\.03
+te A\`chara\'ntI\` sama\'neva\` yoShA\' mA\`teva\' pu\`traM bi\'bhR^itAmu\`pasthe\' |
+apa\` shatrU\'nvidhyatAM saMvidA\`ne ArtnI\' i\`me vi\'Shphu\`rantI\' a\`mitrA\'n || 6\.075\.04
+ba\`hvI\`nAM pi\`tA ba\`hura\'sya pu\`trashchi\`shchA kR^i\'Noti\` sama\'nAva\`gatya\' |
+i\`Shu\`dhiH sa~NkA\`H pR^ita\'nAshcha\` sarvA\'H pR^i\`ShThe nina\'ddho jayati\` prasU\'taH || 6\.075\.05
+rathe\` tiShTha\'nnayati vA\`jina\'H pu\`ro yatra\'yatra kA\`maya\'te suShAra\`thiH |
+a\`bhIshU\'nAM mahi\`mAna\'M panAyata\` mana\'H pa\`shchAdanu\' yachChanti ra\`shmaya\'H || 6\.075\.06
+tI\`vrAnghoShA\'nkR^iNvate\` vR^iSha\'pANa\`yo.ashvA\` rathe\'bhiH sa\`ha vA\`jaya\'ntaH |
+a\`va\`krAma\'nta\`H prapa\'daira\`mitrA\'nkShi\`Nanti\` shatrU\`.Nrana\'pavyayantaH || 6\.075\.07
+ra\`tha\`vAha\'naM ha\`vira\'sya\` nAma\` yatrAyu\'dha\`M nihi\'tamasya\` varma\' |
+tatrA\` ratha\`mupa\' sha\`gmaM sa\'dema vi\`shvAhA\' va\`yaM su\'mana\`syamA\'nAH || 6\.075\.08
+svA\`du\`Sha\`Msada\'H pi\`taro\' vayo\`dhAH kR^i\'chChre\`shrita\`H shaktI\'vanto gabhI\`rAH |
+chi\`trase\'nA\` iShu\'balA\` amR^i\'dhrAH sa\`tovI\'rA u\`ravo\' vrAtasA\`hAH || 6\.075\.09
+brAhma\'NAsa\`H pita\'ra\`H somyA\'saH shi\`ve no\` dyAvA\'pR^ithi\`vI a\'ne\`hasA\' |
+pU\`ShA na\'H pAtu duri\`tAdR^i\'tAvR^idho\` rakShA\` mAki\'rno a\`ghasha\'Msa Ishata || 6\.075\.10
+su\`pa\`rNaM va\'ste mR^i\`go a\'syA\` danto\` gobhi\`H saMna\'ddhA patati\` prasU\'tA |
+yatrA\` nara\`H saM cha\` vi cha\` drava\'nti\` tatrA\`smabhya\`miSha\'va\`H sharma\' yaMsan || 6\.075\.11
+R^ijI\'te\` pari\' vR^i~Ndhi\` no.ashmA\' bhavatu nasta\`nUH |
+somo\` adhi\' bravItu\` no.adi\'ti\`H sharma\' yachChatu || 6\.075\.12
+A ja\'~Nghanti\` sAnve\'ShAM ja\`ghanA\`.N upa\' jighnate |
+ashvA\'jani\` prache\'ta\`so.ashvA\'nsa\`matsu\' chodaya || 6\.075\.13
+ahi\'riva bho\`gaiH parye\'ti bA\`huM jyAyA\' he\`tiM pa\'ri\`bAdha\'mAnaH |
+ha\`sta\`ghno vishvA\' va\`yunA\'ni vi\`dvAnpumA\`npumA\'Msa\`M pari\' pAtu vi\`shvata\'H || 6\.075\.14
+AlA\'ktA\` yA ruru\'shI\`rShNyatho\` yasyA\` ayo\` mukha\'m |
+i\`daM pa\`rjanya\'retasa\` iShvai\' de\`vyai bR^i\`hannama\'H || 6\.075\.15
+ava\'sR^iShTA\` parA\' pata\` shara\'vye\` brahma\'saMshite |
+gachChA\`mitrA\`npra pa\'dyasva\` mAmIShA\`M kaM cha\`nochChi\'ShaH || 6\.075\.16
+yatra\' bA\`NAH sa\`mpata\'nti kumA\`rA vi\'shi\`khA i\'va |
+tatrA\' no\` brahma\'Na\`spati\`radi\'ti\`H sharma\' yachChatu vi\`shvAhA\` sharma\' yachChatu || 6\.075\.17
+marmA\'Ni te\` varma\'NA ChAdayAmi\` soma\'stvA\` rAjA\`mR^ite\`nAnu\' vastAm |
+u\`rorvarI\'yo\` varu\'Naste kR^iNotu\` jaya\'nta\`M tvAnu\' de\`vA ma\'dantu || 6\.075\.18
+yo na\`H svo ara\'No\` yashcha\` niShTyo\` jighA\'Msati |
+de\`vAstaM sarve\' dhUrvantu\` brahma\` varma\` mamAnta\'ram || 6\.075\.19
+
+##
+Last updated July 2, 2013
+
+Special mention : Initial processing and help by Avinash and Shashi Sathaye, 
+Avinash Chopde, Shree Devi Kumar, Sunder Hattangadi, John Gardner.
+Reprocessed from Original in final form by Detlef Eichler with additional corrections.
+See Detlef's site http://www.detlef108.de/Rigveda.htm
+for other details and formats.
+
+The text is shown with accents (Anudattas, dependent Svaritas,
+and independent Svaritas including Kampas). Words are connected (agnimILe). 
+Ch is doubled as in gachChati according to the rules of Rigveda-Pratishakhya. 
+At the end of a word m is replaced by Anusvara M if the initial letter of the
+following word is a labial stop consonant (p, ph, b, bh, m).
+Visarga H before sh, Sh or s followed by a voiceless consonant has been restored.
+
+Source : The Aufrecht/van Nooten/Holland (Samhita) version
+of the Rigveda (http://www.people.fas.harvard.edu/~witzel/onlineRV.htm).
+In this text accented vowels have Udatta or 'independent Svarita' markers.
+Kampas are not shown. Words are separated (agnim ILe). 
+Ch is not doubled as in gaChati. At the end of a word we find m before
+a following labial stop consonant (p, ph, b, bh, m).
+Visarga H before sh, Sh or s followed by a voiceless consonant has 
+been dropped according to a rule of  Rigveda-Pratishakhya.
+
+Send corrections to   : detlefeichler@googlemail.com, sanskrit at cheerful dot c om
+
+\medskip\hrule\obeylines
+
+Please send corrections to sanskrit at cheerful dot c om
+Last updated \today
+https://sanskritdocuments.org
+
+\end{document}
+

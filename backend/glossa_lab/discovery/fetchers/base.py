@@ -32,7 +32,7 @@ _log = logging.getLogger("glossa_lab.discovery.fetchers")
 _TOPICS_DIR = Path(__file__).resolve().parent.parent / "topics"
 
 # Default User-Agent — providers like CrossRef / arXiv prefer a contactable UA.
-_USER_AGENT = "GlossaLab-DiscoveryEngine/0.1 (+https://github.com/layer1labs/glossa-lab)"
+_USER_AGENT = "GlossaLab-DiscoveryEngine/0.1 (+https://github.com/BitConcepts/glossa-lab)"
 
 
 # ── Topic profiles ──────────────────────────────────────────────────────────

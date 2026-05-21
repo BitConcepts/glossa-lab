@@ -1,6 +1,6 @@
 # glossa-lab
 
-![CI](https://github.com/layer1labs/glossa-lab/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/BitConcepts/glossa-lab/actions/workflows/ci.yml/badge.svg)
 
 Agentic computational linguistics research platform for statistical analysis, decipherment, and hypothesis testing of ancient and unknown writing systems — with a primary focus on the **Indus Script** (Mahadevan corpus, Holdat LLC dataset) using methods developed by Dr. Andreas Fuls (TU Berlin / ICIT).
 
@@ -76,14 +76,23 @@ Key panels:
 
 Local control surface. Start/stop/restart backend, open UI, quick status.
 
-### Agent-Stack (BitConcepts server — separate repo)
+---
 
-Three vLLM services on NVIDIA RTX PRO 5000 Blackwell (48 GB GDDR7):
-- **l1-nexus** (port 8000) — `cpatonn/Qwen3-Coder-30B-A3B-Instruct-AWQ-4bit` — primary coding/agentic
-- **l1-glossa** (port 8001) — `Qwen/Qwen3-14B` — research/long-context reasoning
-- **l1-embed** (port 8002) — `BAAI/bge-m3` — embeddings (RAG)
+## Indus Script Research Outputs
 
-Access via Tailscale (`100.118.107.3`). Repo: `layer1labs/agent-stack`.
+If you are here for the preprint materials, go directly to:
+
+```
+research/indus/
+├── pierson_2026_indus_preprint_v1.pdf   ← preprint PDF
+├── anchor_table.csv                     ← 397-sign table (open in Excel)
+├── anchor_table.json                    ← same table with full metadata
+├── mahadevan_parpola_crosswalk.json     ← M-number ↔ P-number crosswalk
+└── phase_reports/                       ← 35 phase reports (Phases 127–170)
+```
+
+See [`research/indus/README.md`](research/indus/README.md) for full details,
+corpus access notes, and citation.
 
 ---
 
@@ -178,8 +187,8 @@ curl.exe -sf http://localhost:8001/ | Select-String 'index-[A-Za-z0-9]+\.js'
 
 - **H18** — Every data file must have `_citation` traceable to `CITATIONS.md`
 - **H19** — Foundation check must PASS before external communication
-- Current: **13 PASS (archived) / 0 FAIL** (`GET /api/v1/research/foundation-check`)
-- V8-V24 decipherment campaign archived 2026-05-17; INDUS_FINAL_ANCHORS.json (137 anchors) preserved
+- Indus Script decipherment: 161 H+M candidate readings, 90.96% token coverage
+- Research outputs: [`research/indus/`](research/indus/)
 
 ---
 
@@ -197,6 +206,7 @@ curl.exe -sf http://localhost:8001/ | Select-String 'index-[A-Za-z0-9]+\.js'
 | `docs/research/` | Decipherment research documents |
 | `docs/guides/` | How-to guides (experiments, pipelines, studies) |
 | `glossa-indus/LEDGER.md` | Evidence Graph batch work log |
+| **`research/indus/`** | **Public research outputs — anchor table, phase reports, preprint PDF** |
 
 ---
 

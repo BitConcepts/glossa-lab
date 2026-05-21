@@ -40,7 +40,7 @@ from glossa_lab.discovery.store import RawItem
 _log = logging.getLogger("glossa_lab.discovery.fetchers.patentsview")
 
 _PPUBS_BASE = "https://ppubs.uspto.gov"
-_UA = "GlossaLab-DiscoveryEngine/0.1 (+https://github.com/layer1labs/glossa-lab)"
+_UA = "GlossaLab-DiscoveryEngine/0.1 (+https://github.com/BitConcepts/glossa-lab)"
 
 # Template derived from axiom's _PPUBS_QUERY_TEMPLATE (patent_mcp_server)
 _QUERY_TEMPLATE: dict[str, Any] = {

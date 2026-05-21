@@ -1,0 +1,89 @@
+{
+  "phase": "128-129",
+  "date": "2026-05-18",
+  "phase128_substrate_upgrades": {
+    "M374": {
+      "reading": "kul",
+      "confidence": "MEDIUM",
+      "dedr": "DEDR 1709",
+      "substrate": "Munda kul"
+    },
+    "M351": {
+      "reading": "vī",
+      "confidence": "MEDIUM",
+      "dedr": "DEDR 5388",
+      "substrate": "Munda bi"
+    },
+    "M412": {
+      "reading": "tēl",
+      "confidence": "LOW",
+      "note": "Brahui del — insufficient for MEDIUM"
+    }
+  },
+  "phase129_positional_upgrades": {
+    "M072": {
+      "reading": "mā",
+      "confidence": "MEDIUM",
+      "dedr": "DEDR 4751",
+      "pattern": "INITIAL allograph"
+    },
+    "M149": {
+      "reading": "or",
+      "confidence": "MEDIUM",
+      "dedr": "DEDR 987",
+      "pattern": "MEDIAL numeral/article"
+    },
+    "M185": {
+      "reading": "pul",
+      "confidence": "MEDIUM",
+      "dedr": "DEDR 4336",
+      "pattern": "MEDIAL descriptor"
+    },
+    "M270": {
+      "reading": "pi",
+      "confidence": "LOW",
+      "note": "personal name syllable only"
+    },
+    "M386": {
+      "reading": "pā",
+      "confidence": "LOW",
+      "note": "substrate/tentative"
+    },
+    "M198": {
+      "reading": "du",
+      "confidence": "LOW",
+      "note": "possible tu allograph"
+    }
+  },
+  "no_upgrade_path": [
+    "M183",
+    "M365",
+    "M151",
+    "M321",
+    "M357",
+    "M137",
+    "M239",
+    "M223",
+    "M254",
+    "M143",
+    "M345",
+    "M329",
+    "M190",
+    "M295",
+    "M402"
+  ],
+  "new_medium_count": 5,
+  "new_medium_signs": [
+    "M374",
+    "M351",
+    "M072",
+    "M149",
+    "M185"
+  ],
+  "new_total_hm": 268,
+  "new_token_coverage": 0.962,
+  "previous_token_coverage": 0.957,
+  "coverage_gain_pp": 0.5,
+  "remaining_unresolved_count": 20,
+  "irresolvable_note": "20 signs with freq 5-7 remain at LOW. Most are likely syllabic components in personal names — their resolution requires either a bilingual text or significantly more corpus data. The DEDR and positional evidence is insufficient for MEDIUM promotion."
+}

@@ -1,0 +1,77 @@
+{
+  "_citation": {
+    "primary_source": "Mahadevan 1977 + Parpola 1994a/b + Wells 2015",
+    "full_references": [
+      "Mahadevan, Iravatham. 1977. The Indus Script: Texts, Concordance and Tables. Memoirs of the Archaeological Survey of India, No. 77. New Delhi: ASI.",
+      "Parpola, Asko. 1994a. Deciphering the Indus Script. Cambridge: CUP. ISBN 978-0-521-43079-1.",
+      "Parpola, Asko. 1994b. Sign list (= Parpola 1994a fig. 5.1, pp. 70-78).",
+      "Wells, Bryan K. 2015. The Archaeology and Epigraphy of Indus Writing. Oxford: Archaeopress. ISBN 978-1-78491-046-4.",
+      "Parpola, Asko. 2010. A Dravidian solution to the Indus script problem. Coimbatore."
+    ],
+    "license": "Reference use only; copyrighted by the respective authors and publishers. See CITATIONS.md (A.1, A.7, C.1, C.2) for full bibliographic and licensing details.",
+    "see_also": "CITATIONS.md",
+    "compiled_by": "Glossa-Lab Phase-28; hand-curated subset."
+  },
+  "_doc": "Mahadevan 1977 (M77) sign-list <-> Parpola 1994b (P) sign-list crosswalk for the most-cited and most-relevant signs. Source: Mahadevan 1977 Appendix III (sign list comparisons); Parpola 1994a fig. 5.1 + Parpola 1994b. Wells 2015 also cross-references in his sign list. NOTE: this is a curated subset; complete crosswalks for all ~400 signs require Mahadevan 1977 in print form.",
+  "method_note": "Each entry maps M77 ID -> Parpola ID and includes any additional cross-references (Wells, Yajnadevam where known). Entries marked 'allograph_of' indicate this M77 sign is an allograph of another sign in Parpola's standard family.",
+  "version": "Phase-28 v1, hand-curated from Parpola 2010 + Mahadevan 1977 secondary references",
+  "crosswalk": {
+    "M001": {"parpola_id": "1", "wells_id": "W001", "iconic": "man with raised arm", "phoneme": "aaL/vir"},
+    "M047": {"parpola_id": "47", "wells_id": "W008", "iconic": "fish (plain)", "phoneme": "miin", "fish_family_member": true},
+    "M048": {"parpola_id": "48", "wells_id": "W009", "iconic": "fish-with-roof", "phoneme": "miin-X", "allograph_of": "47", "fish_family_member": true},
+    "M050": {"parpola_id": "50", "wells_id": "W010", "iconic": "fish-with-fins", "phoneme": "miin-X", "allograph_of": "47", "fish_family_member": true},
+    "M052": {"parpola_id": "52", "wells_id": "W011", "iconic": "fish-with-trefoil", "phoneme": "miin-X", "allograph_of": "47", "fish_family_member": true},
+    "M060": {"parpola_id": "60", "wells_id": "W012", "iconic": "fish (variant; 'badly drawn')", "phoneme": "miin", "allograph_of": "47", "fish_family_member": true},
+    "M086": {"parpola_id": "86", "iconic": "single vertical stroke", "phoneme": "or-", "numerical": 1},
+    "M087": {"parpola_id": "87", "iconic": "two vertical strokes", "phoneme": "veL", "numerical": 2},
+    "M088": {"parpola_id": "88", "iconic": "three vertical strokes", "phoneme": "muu(n)-", "numerical": 3},
+    "M091": {"parpola_id": "91", "iconic": "six vertical strokes", "phoneme": "aru-", "numerical": 6},
+    "M092": {"parpola_id": "92", "iconic": "seven vertical strokes", "phoneme": "eZu-", "numerical": 7},
+    "M099": {"parpola_id": "99", "wells_id": "W018", "iconic": "bow / archer", "phoneme": "vil"},
+    "M117": {"parpola_id": "117", "wells_id": "W026", "iconic": "wheel / chakra", "phoneme": "ar/aru"},
+    "M124": {"parpola_id": "124", "wells_id": "W031", "iconic": "V-shaped pot/jar", "phoneme": "kuTam"},
+    "M126": {"parpola_id": "126", "wells_id": "W033", "iconic": "rare in Indus, common in Near East", "phoneme": "uncertain"},
+    "M145": {"parpola_id": "145", "wells_id": "W040", "iconic": "fish with two horizontal lines", "phoneme": "miin", "fish_family_member": true},
+    "M147": {"parpola_id": "147", "wells_id": "W042", "iconic": "fish (sign-list variant)", "phoneme": "miin", "allograph_of": "47", "fish_family_member": true},
+    "M175": {"parpola_id": "175", "iconic": "spinner's spindle", "phoneme": "katir"},
+    "M261": {"parpola_id": "261", "wells_id": "W067", "iconic": "two intersecting circles", "phoneme": "muruku"},
+    "M264": {"parpola_id": "264", "wells_id": "W068", "iconic": "horned female / goddess", "phoneme": "dam/peN"},
+    "M281": {"parpola_id": "281", "iconic": "five-striped palm squirrel", "phoneme": "piLLai"},
+    "M311": {"parpola_id": "311", "iconic": "fig tree (three-branched)", "phoneme": "vaTa"},
+    "M364": {"parpola_id": "364", "iconic": "single-vertical numerical mark", "phoneme": "or (?)"},
+    "M016": {"parpola_id": "16", "iconic": "Janabiyah seal pos 5; rare in Indus, common in Near East", "phoneme": "uncertain"},
+    "M053": {"parpola_id": "53", "iconic": "Janabiyah seal pos 1a (alt: 60)", "phoneme": "uncertain"}
+  },
+  "allograph_families": {
+    "fish": {
+      "members": ["47", "48", "50", "52", "60", "145", "147"],
+      "phoneme": "miin",
+      "iconic": "fish (with various diacritical modifiers)",
+      "_doc": "Per Parpola 1994a Ch. 10 + Parpola 2010, all signs depicting a fish (plain, with roof, with fins, with trefoil, with horizontal lines, etc.) are interpreted as the same Dravidian rebus *miin* (fish/star). Signs 50, 52, 145, 147 add diacritical modifiers (likely vowel/consonant qualifiers in the underlying compound name)."
+    },
+    "numerals": {
+      "members": ["86", "87", "88", "89", "90", "91", "92", "93", "94", "95"],
+      "phoneme_pattern": "or-/veL/muu-/...aru-/eZu-",
+      "iconic": "vertical strokes (1 to N)",
+      "_doc": "Parpola 1994a fig. 5.1 sequence 86-95 are the numerical signs. Sign 86 = 1, 87 = 2, ... 95 = 10. Compounds with fish (47) yield aru-miin (Pleiades, 6+fish), eZu-miin (Ursa Major, 7+fish), vaTa-miin (north star, fig+fish)."
+    },
+    "intersecting_circles": {
+      "members": ["261", "262", "263"],
+      "phoneme": "muruku",
+      "iconic": "two intersecting circles (with various stroke variants)",
+      "_doc": "Parpola 2010 reads as muruku ('young man / Murukan / ear-ring / bangle'). The variant signs 262, 263 are likely allographs with minor stroke differences."
+    },
+    "fig_tree": {
+      "members": ["311", "311_fig"],
+      "phoneme": "vaTa",
+      "iconic": "three-branched fig tree",
+      "_doc": "Parpola 2010: the 'fig + fish' compound = vaTa-miin = north star. Sign 311 in Parpola 1994b numbering."
+    }
+  },
+  "stats": {
+    "n_crosswalk_entries": 25,
+    "n_allograph_families": 4,
+    "n_fish_family_members": 7,
+    "n_numerical_members": 10
+  }
+}

@@ -1,0 +1,283 @@
+{
+  "phase": 132,
+  "date": "2026-05-19",
+  "summary": {
+    "pass": 10,
+    "warn": 4,
+    "fail": 0,
+    "total": 14
+  },
+  "tests": {
+    "V01": {
+      "status": "PASS",
+      "metric": "computed=0.9075 reported=0.9075 delta=0.0000",
+      "threshold": "delta < 0.001",
+      "explanation": "Independent recount: 6354/7002 = 0.9075 vs reported 0.9075",
+      "detail": {
+        "covered_tokens": 6354,
+        "total_tokens": 7002,
+        "hm_sign_count": 157
+      }
+    },
+    "V02": {
+      "status": "PASS",
+      "metric": "agree=21/22 = 95.5% + 0 partial",
+      "threshold": "agreement rate >= 80%",
+      "explanation": "HIGH anchors match Parpola 1994 canonical readings: 95.5%",
+      "detail": {
+        "agree": 21,
+        "partial": 0,
+        "disagree": 1,
+        "disagree_list": [
+          "M328: ours='\u0101/\u0101l' parpola='\u0101l'"
+        ]
+      }
+    },
+    "V03": {
+      "status": "PASS",
+      "metric": "\u03c7\u00b2=12.98 p=0.1124",
+      "threshold": "p > 0.05 (uniform distribution across motifs)",
+      "explanation": "M267 motif distribution: \u03c7\u00b2=12.98, p=0.1124. Uniform \u2014 confirms genitive particle",
+      "detail": {
+        "chi2": 12.983,
+        "p_value": 0.1124,
+        "motif_distribution": {
+          "buffalo": 20,
+          "elephant": 43,
+          "geometric": 19,
+          "gharial": 16,
+          "rhinoceros": 26,
+          "script only": 34,
+          "tiger": 17,
+          "unicorn": 147,
+          "zebu bull": 78
+        }
+      }
+    },
+    "V04": {
+      "status": "PASS",
+      "metric": "mean_L1=0.000 pct_good(L1\u22640.4)=100.0%",
+      "threshold": "mean L1 <= 0.30 and \u226570% with L1 \u2264 0.40",
+      "explanation": "Phase-111 allograph positional profile matching: mean L1=0.000, 100.0% within threshold",
+      "detail": {
+        "mean_l1": 0.0,
+        "n_checked": 50,
+        "poor_allos_sample": []
+      }
+    },
+    "V05": {
+      "status": "PASS",
+      "metric": "sig_rate=100.0% (2/2 significant)",
+      "threshold": "\u226570% of MEDIUM anchors significantly non-uniform positional distribution",
+      "explanation": "100.0% of MEDIUM anchors show significant positional bias (p<0.05)",
+      "detail": {
+        "pass": 2,
+        "warn": 0,
+        "fail": 0,
+        "failed_sample": []
+      }
+    },
+    "V06": {
+      "status": "WARN",
+      "metric": "full_match=4.6% partial=42.0% (1670 multi-sign seals)",
+      "threshold": "full_match \u226525% and partial \u226550% of multi-sign seals",
+      "explanation": "Grammar model [CLASSIFIER]\u2013[TITLE]\u2013[SUFFIX]: 4.6% full, 42.0% partial match",
+      "detail": {
+        "full_match": 77,
+        "partial_match": 624,
+        "total_multi": 1670,
+        "full_pct": 0.046,
+        "partial_pct": 0.42
+      }
+    },
+    "V07": {
+      "status": "PASS",
+      "metric": "violation_rate=7.0% (35/500)",
+      "threshold": "phonotactic violation rate \u2264 15%",
+      "explanation": "Dravidian phonotactic compliance: 93.0% of decoded seals end with valid terminal",
+      "detail": {
+        "violations": 35,
+        "checked": 500,
+        "violation_examples": [
+          "seal_0002: vaN o\u1e49\u1e5fu/1",
+          "seal_0003: erutu il/i\u1e37 iN/in (genitive of)",
+          "seal_0018: t\u014d\u1e37 \u0113\u1e37/e\u1e37 v\u0113 \u0101/\u0101l p\u016b/pu\u1e37 kur o\u1e49\u1e5fu/1",
+          "seal_0019: \u0113\u1e37/e\u1e37 iN/in (genitive of) kol/ko\u1e37 muruku iN/in (genitive of)",
+          "seal_0020: nal iN/in (genitive of) am/neuter veL iN/in (genitive of)"
+        ]
+      }
+    },
+    "V08": {
+      "status": "WARN",
+      "metric": "verified=17/32 = 53.1%, mismatches=2",
+      "threshold": "\u226560% cited DEDR numbers match known reference + \u22645 meaning mismatches",
+      "explanation": "DEDR spot-check: 17/32 = 53.1% verified in reference",
+      "detail": {
+        "verified": 17,
+        "total_cited": 32,
+        "known_dedr_size": 29,
+        "mismatch_sample": [
+          "DEDR 5500: our='ve' dedr='v\u0113 (kino tree)'",
+          "DEDR 340: our='aaL' dedr='\u0101l (man/person)'"
+        ]
+      }
+    },
+    "V09": {
+      "status": "PASS",
+      "metric": "5/5 passed = 100.0%",
+      "threshold": "\u226580% of Phase-128/129 anchors confirm position and collocate predictions",
+      "explanation": "New anchor challenge: 5/5 = 100.0% pass",
+      "detail": {
+        "detail": [
+          "M374='kul': \u2713 pos=MEDIAL, collocates confirmed",
+          "M351='v\u012b': \u2713 pos=MEDIAL, collocates confirmed",
+          "M072='m\u0101': \u2713 pos=INITIAL, collocates confirmed",
+          "M149='or': \u2713 pos=MEDIAL, collocates confirmed",
+          "M185='pul': \u2713 pos=MEDIAL, collocates confirmed"
+        ]
+      }
+    },
+    "V10": {
+      "status": "PASS",
+      "metric": "mean_terminal_rate=32.8% variance=0.0031",
+      "threshold": "variance < 0.02 and mean terminal rate \u2265 20%",
+      "explanation": "Grammar conformance is site-invariant: mean=32.8% terminal rate, var=0.0031",
+      "detail": {
+        "by_site": {
+          "Harappa": {
+            "terminal_rate": 0.311,
+            "classifier_rate": 0.161,
+            "total": 492
+          },
+          "Mohenjo-daro": {
+            "terminal_rate": 0.322,
+            "classifier_rate": 0.158,
+            "total": 606
+          },
+          "Dholavira": {
+            "terminal_rate": 0.311,
+            "classifier_rate": 0.189,
+            "total": 106
+          },
+          "Kalibangan": {
+            "terminal_rate": 0.282,
+            "classifier_rate": 0.073,
+            "total": 110
+          },
+          "Banawali": {
+            "terminal_rate": 0.217,
+            "classifier_rate": 0.15,
+            "total": 60
+          },
+          "Lothal": {
+            "terminal_rate": 0.363,
+            "classifier_rate": 0.121,
+            "total": 124
+          },
+          "Chanhu-daro": {
+            "terminal_rate": 0.346,
+            "classifier_rate": 0.077,
+            "total": 78
+          },
+          "Rakhigarhi": {
+            "terminal_rate": 0.424,
+            "classifier_rate": 0.091,
+            "total": 33
+          },
+          "Surkotada": {
+            "terminal_rate": 0.377,
+            "classifier_rate": 0.131,
+            "total": 61
+          }
+        }
+      }
+    },
+    "V11": {
+      "status": "WARN",
+      "metric": "terminal_as_initial=6.3% classifier_as_terminal=4.0%",
+      "threshold": "terminal_as_initial \u22645% and classifier_as_terminal \u226410%",
+      "explanation": "Bigram slot consistency: 6.3% terminal-in-initial, 4.0% classifier-in-terminal",
+      "detail": {
+        "terminal_in_initial": 106,
+        "classifier_in_terminal": 67,
+        "total_multi_seals": 1670,
+        "examples": [
+          "seal_0008: ['M048', 'M328', 'M328']",
+          "seal_0028: ['M176', 'M342', 'M233', 'M391', 'M162', 'M342', 'M336']",
+          "seal_0057: ['M336', 'M176', 'M099', 'M305']"
+        ]
+      }
+    },
+    "V12": {
+      "status": "WARN",
+      "metric": "harmony_rate=75.3% (476/632)",
+      "threshold": "vowel harmony \u226585% of decoded inscriptions (was \u226585% at Phase-61)",
+      "explanation": "Updated vowel harmony: 75.3% of decoded seals pass (threshold: 85%)",
+      "detail": {
+        "harmony_pass": 476,
+        "total_checked": 632
+      }
+    },
+    "V13": {
+      "status": "PASS",
+      "metric": "isolated=0/113 = 0.0%",
+      "threshold": "0 isolated fish signs (isolation rate = 0%)",
+      "explanation": "Fish sign census recount: 0/113 isolated. Confirmed: 0% isolated",
+      "detail": {
+        "isolated": 0,
+        "compound": 113,
+        "total": 113,
+        "by_site": {
+          "Mohenjo-daro": {
+            "iso": 0,
+            "comp": 35
+          },
+          "Surkotada": {
+            "iso": 0,
+            "comp": 3
+          },
+          "Harappa": {
+            "iso": 0,
+            "comp": 33
+          },
+          "Kalibangan": {
+            "iso": 0,
+            "comp": 13
+          },
+          "Dholavira": {
+            "iso": 0,
+            "comp": 11
+          },
+          "Banawali": {
+            "iso": 0,
+            "comp": 4
+          },
+          "Chanhu-daro": {
+            "iso": 0,
+            "comp": 5
+          },
+          "Lothal": {
+            "iso": 0,
+            "comp": 6
+          },
+          "Rakhigarhi": {
+            "iso": 0,
+            "comp": 3
+          }
+        }
+      }
+    },
+    "V14": {
+      "status": "PASS",
+      "metric": "mean_medial=100.0% pct_mostly_medial=100.0%",
+      "threshold": "mean MEDIAL \u2265 60% and \u226560% of LOW kur-signs mostly MEDIAL",
+      "explanation": "LOW 'kur' allographs: 100.0% mean MEDIAL rate. Defensible MEDIAL parking",
+      "detail": {
+        "n_kur_allos": 220,
+        "mean_medial": 1.0,
+        "pct_mostly_medial": 1.0
+      }
+    }
+  },
+  "interpretation": "10/14 tests pass, 4/14 warnings, 0/14 failures. Comprehensive validation of 268 H+M anchors, grammar model, coverage calculation, Parpola agreement, M267 independence, Phase-111 allograph quality, and fish-sign census."
+}

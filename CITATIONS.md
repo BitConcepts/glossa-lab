@@ -948,7 +948,7 @@ as challenges to Aegean Scripts corpora." Authors from the CREWS team.
 
 > Tristan & contributors. 2026. *Glossa-Lab: An atomic-node graph framework for
 > the structural analysis and decipherment of ancient writing systems.* GitHub:
-> https://github.com/layer1labs/glossa-lab. License: ???.
+> https://github.com/BitConcepts/glossa-lab. License: ???.
 
 ---
 
@@ -1039,7 +1039,7 @@ pipeline (alphabetical):
 
 *Last updated: 2026-04-30. Maintained as part of the Glossa-Lab Indus
 decipherment pipeline. Any errors of attribution are the project's own.
-Please open an issue at https://github.com/layer1labs/glossa-lab if you find
+Please open an issue at https://github.com/BitConcepts/glossa-lab if you find
 any.*
 
 ---
@@ -1136,7 +1136,7 @@ P30-E1 Sanskrit falsification comparison.
 > Glossa Lab contributors. 2026.
 > *dravidian.py: Old Tamil / Proto-Dravidian phoneme inventory and attested vocabulary.*
 > File: backend/glossa_lab/data/dravidian.py
-> GitHub: https://github.com/layer1labs/glossa-lab
+> GitHub: https://github.com/BitConcepts/glossa-lab
 
 - **Data sources (all credited):**
   - DEDR (Burrow & Emeneau 1984, E.1) — etymological roots and reconstructions

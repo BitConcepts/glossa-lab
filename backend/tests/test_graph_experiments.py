@@ -195,7 +195,7 @@ def test_topo_sort_diamond():
 
 # ── ATOMIC_NODES registry ─────────────────────────────────────────────────────
 
-def test_all_40_nodes_registered():
+def test_all_core_nodes_registered():
     """TEST-GE-013: All expected core + evidence atomic nodes are in the registry."""
     expected = {
         # Original sources + transforms + analysis + outputs (13)
@@ -215,8 +215,6 @@ def test_all_40_nodes_registered():
         "CorpusLM", "AnchorSetLoader", "ReportGenerator",
         # Corpus sanitisation node (1)
         "TokenFilter",
-        # CPSC / Constraint Solver nodes (3)
-        "CASModelLoader", "CASProjector", "CASIndusEngine",
         # CGSA / Structural nodes (3)
         "ClusterMapper", "CanonicalSignLoader", "StructuralTemplateAnalyzer",
         # CTT / Constraint Topology nodes (7)

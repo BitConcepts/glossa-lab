@@ -1,21 +1,116 @@
 {
   "id": "indus_phase23b_refined_persons",
-  "name": "Indus Phase-23b \u2014 refined Meluhhan persons extractor",
+  "name": "Indus Phase-23b — refined Meluhhan persons extractor",
   "description": "Phase-23b: tighten the Phase-22b heuristic with a strict Sumerian-PN regex (lu2-/lu-/dumu- prefix OR -me-luh-ha-ki suffix) and a 100+ entry Akkadian-particle stoplist. Replaces the Phase-22b noise (a-na, i-na, mu-s, etc.) with structurally-validated personal-name candidates. Output: reports/phase23b_refined_persons.json.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "load",     "type": "expNode", "data": { "atomicId": "RefinedSealLoader",              "label": "Load augmented seals + persons",      "params": {} },                                "position": { "x": 60,   "y": 100 } },
-    { "id": "extract",  "type": "expNode", "data": { "atomicId": "RefinedMeluhhanPersonsExtractor","label": "Refined Meluhhan persons extractor",  "params": { "min_freq": 1 } },                  "position": { "x": 360,  "y": 100 } },
-    { "id": "merge",    "type": "expNode", "data": { "atomicId": "Merger",                         "label": "Merge",                                "params": {} },                                "position": { "x": 660,  "y": 100 } },
-    { "id": "out",      "type": "expNode", "data": { "atomicId": "JSONExport",                     "label": "Save Phase-23b results",               "params": { "filename": "phase23b_refined_persons.json" } }, "position": { "x": 960,  "y": 100 } }
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "RefinedSealLoader",
+        "label": "Load augmented seals + persons",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "extract",
+      "type": "expNode",
+      "data": {
+        "atomicId": "RefinedMeluhhanPersonsExtractor",
+        "label": "Refined Meluhhan persons extractor",
+        "params": {
+          "min_freq": 1
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge",
+        "params": {}
+      },
+      "position": {
+        "x": 660,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Phase-23b results",
+        "params": {
+          "filename": "phase23b_refined_persons.json"
+        }
+      },
+      "position": {
+        "x": 960,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e_load_extract",        "source": "load",    "target": "extract", "sourcePort": "strict_persons",     "targetPort": "strict_persons" },
-    { "id": "e_extract_merge_v",     "source": "extract", "target": "merge",   "sourcePort": "verdict",            "targetPort": "a" },
-    { "id": "e_extract_merge_n",     "source": "extract", "target": "merge",   "sourcePort": "n_unique",           "targetPort": "b" },
-    { "id": "e_extract_merge_top",   "source": "extract", "target": "merge",   "sourcePort": "rows_top50",         "targetPort": "c" },
-    { "id": "e_extract_merge_hits",  "source": "extract", "target": "merge",   "sourcePort": "confirmed_hits",     "targetPort": "d" },
-    { "id": "e_extract_merge_p",     "source": "extract", "target": "merge",   "sourcePort": "by_pattern",         "targetPort": "e" },
-    { "id": "e_merge_out",           "source": "merge",   "target": "out",     "sourcePort": "json",               "targetPort": "data" }
-  ]
+    {
+      "id": "e_load_extract",
+      "source": "load",
+      "target": "extract",
+      "sourcePort": "strict_persons",
+      "targetPort": "strict_persons"
+    },
+    {
+      "id": "e_extract_merge_v",
+      "source": "extract",
+      "target": "merge",
+      "sourcePort": "verdict",
+      "targetPort": "a"
+    },
+    {
+      "id": "e_extract_merge_n",
+      "source": "extract",
+      "target": "merge",
+      "sourcePort": "n_unique",
+      "targetPort": "b"
+    },
+    {
+      "id": "e_extract_merge_top",
+      "source": "extract",
+      "target": "merge",
+      "sourcePort": "rows_top50",
+      "targetPort": "c"
+    },
+    {
+      "id": "e_extract_merge_hits",
+      "source": "extract",
+      "target": "merge",
+      "sourcePort": "confirmed_hits",
+      "targetPort": "d"
+    },
+    {
+      "id": "e_extract_merge_p",
+      "source": "extract",
+      "target": "merge",
+      "sourcePort": "by_pattern",
+      "targetPort": "e"
+    },
+    {
+      "id": "e_merge_out",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

@@ -13,7 +13,10 @@
           "corpus": "geez"
         }
       },
-      "position": { "x": 60, "y": 240 }
+      "position": {
+        "x": 60,
+        "y": 240
+      }
     },
     {
       "id": "split",
@@ -25,7 +28,10 @@
           "train_ratio": 0.75
         }
       },
-      "position": { "x": 300, "y": 240 }
+      "position": {
+        "x": 300,
+        "y": 240
+      }
     },
     {
       "id": "lm",
@@ -35,7 +41,10 @@
         "label": "Syllabic LM (train)",
         "params": {}
       },
-      "position": { "x": 560, "y": 100 }
+      "position": {
+        "x": 560,
+        "y": 100
+      }
     },
     {
       "id": "cipher",
@@ -48,7 +57,10 @@
           "max_tokens": 15000
         }
       },
-      "position": { "x": 560, "y": 380 }
+      "position": {
+        "x": 560,
+        "y": 380
+      }
     },
     {
       "id": "benchmark",
@@ -57,7 +69,12 @@
         "atomicId": "AnchorConvergenceBenchmark",
         "label": "Anchor Convergence Sweep",
         "params": {
-          "anchor_counts": [0, 3, 10, 20],
+          "anchor_counts": [
+            0,
+            3,
+            10,
+            20
+          ],
           "n_structured": 3,
           "n_random": 5,
           "n_seeds_base": 5,
@@ -67,7 +84,10 @@
           "sa_restarts": 1
         }
       },
-      "position": { "x": 820, "y": 240 }
+      "position": {
+        "x": 820,
+        "y": 240
+      }
     },
     {
       "id": "out",
@@ -79,7 +99,10 @@
           "filename": "geez_anchor_convergence.json"
         }
       },
-      "position": { "x": 1080, "y": 240 }
+      "position": {
+        "x": 1080,
+        "y": 240
+      }
     }
   ],
   "edges": [
@@ -146,5 +169,6 @@
       "sourcePort": "summary_table",
       "targetPort": "data"
     }
-  ]
+  ],
+  "graph_type": "experiment"
 }

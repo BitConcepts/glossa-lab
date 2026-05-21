@@ -898,7 +898,7 @@ What was done:
 - Extended frontend/src/api.ts: typed CatalogPipeline/Provider/Report/Experiment, updateText, deleteText, clearJobs, catalog/report/preset methods
 - Updated frontend/src/components/JobsView.tsx: clear-all button, live pipeline catalog from backend, auto-prefill params on pipeline select
 - Created governance-tool GitHub issue #59: proactive per-model rate-limit pacing across all provider APIs (with concrete OpenAI TPM failure example)
-- Updated github issue #58: added Windows .cmd script preference for multi-step automation
+- Updated governance-tool issue #58: added Windows .cmd script preference for multi-step automation
 
 Files changed:
 - ocr_mahadevan.py (modified)

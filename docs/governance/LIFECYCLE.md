@@ -24,12 +24,11 @@ inception → architecture → requirements → test_spec → implementation →
 
 ## Advancing Phases
 
-Check readiness: `governance-tool phase show`
-Advance to next: `governance-tool phase next`
-Force-set phase: `governance-tool phase set <phase> --force`
+Check readiness: review the Phase Artifacts checklist below against the current codebase.
+Advance to next: update `scaffold.yml` `current_phase` field and record in `LEDGER.md`.
+Force-advance: add a ledger note explaining the override rationale.
 
-All checks for the current phase must pass before `phase next` will advance.
-Use `--force` to override (e.g. during rapid prototyping).
+All Phase Artifacts for the current phase must exist and be committed before advancing.
 
 ## Phase Artifacts
 

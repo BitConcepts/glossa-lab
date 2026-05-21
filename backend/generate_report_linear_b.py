@@ -375,7 +375,6 @@ refs = [
     "[1] Ventris, M. & Chadwick, J. (1973). Documents in Mycenaean Greek (2nd ed.). Cambridge University Press.",
     "[2] Aurora, F. (2015). DĀMOS (Database of Mycenaean at Oslo). Procedia Social and Behavioral Sciences, 198, 21–31.",
     "[3] Rao et al. (2009). Science, 324, 1165.",
-    "[4] Merkur, M. (2024). .",
     "[5] DĀMOS corpus: https://damos.hf.uio.no/ (CC BY-NC-SA 4.0, University of Oslo).",
 ]
 for r in refs:

@@ -4,7 +4,7 @@
 
 Agentic computational linguistics research platform for statistical analysis, decipherment, and hypothesis testing of ancient and unknown writing systems — with a primary focus on the **Indus Script** (Mahadevan corpus, Holdat LLC dataset) using methods developed by Dr. Andreas Fuls (TU Berlin / ICIT).
 
-Built and maintained by **Layer1Labs Silicon, Inc.**
+Built and maintained by **BitConcepts LLC**
 
 ---
 
@@ -76,7 +76,7 @@ Key panels:
 
 Local control surface. Start/stop/restart backend, open UI, quick status.
 
-### Agent-Stack (layer1labs server — separate repo)
+### Agent-Stack (BitConcepts server — separate repo)
 
 Three vLLM services on NVIDIA RTX PRO 5000 Blackwell (48 GB GDDR7):
 - **l1-nexus** (port 8000) — `cpatonn/Qwen3-Coder-30B-A3B-Instruct-AWQ-4bit` — primary coding/agentic

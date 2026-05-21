@@ -1,7 +1,7 @@
 # DECIPHERMENT_DOSSIER_v1
 **Version**: 1.0 (DRAFT — MODERATE signal; not yet at Section 8 Critical Signal trigger)  
 **Date**: 2026-04-23  
-**Owner**: Tristen Pierson / Layer1Labs Silicon, Inc.  
+**Owner**: Tristen Pierson / BitConcepts LLC  
 **Confidentiality**: STRICTLY INTERNAL — DO NOT DISTRIBUTE
 
 ---

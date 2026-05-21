@@ -50,7 +50,7 @@ OUT.parent.mkdir(exist_ok=True)
 
 doc = SimpleDocTemplate(str(OUT), pagesize=A4,
     leftMargin=3*cm, rightMargin=3*cm, topMargin=2.5*cm, bottomMargin=2.5*cm,
-    title="Glossa Lab Tier Validation v3 - Dr. Fuls", author=\"Layer1Labs Silicon, Inc.\")
+    title="Glossa Lab Tier Validation v3 - Dr. Fuls", author=\"BitConcepts LLC\")
 
 SS = getSampleStyleSheet()
 def s(n,**k):
@@ -106,7 +106,7 @@ c += [sp(0.8),
       P("Beam-Search Decipherment  ·  Phonological Groups  ·  Indus Hypothesis Test", SUB),
       sp(0.3), hr(),
       P("Prepared for: Dr. Andreas Fuls, TU Berlin / ICIT", AUTH),
-      P("Layer1Labs Silicon, Inc.  ·  Glossa Lab Research Programme", AUTH),
+      P("BitConcepts LLC  ·  Glossa Lab Research Programme", AUTH),
       P(f"{DATE}  ·  Glossa Lab", VER), hr()]
 
 # EXECUTIVE SUMMARY
@@ -356,7 +356,7 @@ c += [P("Recommended Next Steps", H2),
            "to reach MODERATE Ventris F1 > 0.30.","LOWER"],
       ], w=[0.8*cm,11.2*cm,3*cm]),
       sp(0.5), hr(),
-      P(f"Glossa Lab (Layer1Labs Silicon, Inc.). All experiments run on {DATE} from git main. "
+      P(f"Glossa Lab (BitConcepts LLC). All experiments run on {DATE} from git main. "
         "Source code and raw output available on request.", NOTE)]
 
 doc.build(c)

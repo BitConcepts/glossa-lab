@@ -399,7 +399,7 @@ Next step: Acquire actual M77 corpus data, implement NSB estimator, build fronte
 Objective: Build the full decipherment pipeline from structural analysis to actual cipher cracking, integrate constraint-projection and patent-external components, prepare for real Indus data.
 
 What was done (major session, ~10 hours):
-- Built 5 new analysis pipelines: Kandles (Merkur patent), positional, sign clustering, paradigm detection, co-occurrence networks
+- Built 5 new analysis pipelines: Kandles (phonetic distribution), positional, sign clustering, paradigm detection, co-occurrence networks
 - Built decipherment engine (hill climbing): 100% on synthetic cipher, 96.7% on Ugaritic (29/30 signs)
 - Improved decipher accuracy: trigram model, positional constraints, Kandles validation, expanded Ugaritic corpus
 - Built constraint-projection engine (separate module)
@@ -409,7 +409,7 @@ What was done (major session, ~10 hours):
 - Built expanded language data: 120+ proto-Dravidian DEDR roots, 120+ Vedic Sanskrit roots, Old Tamil + Rigveda corpora
 - Built numeral identification pipeline
 - Added archaeological context to Indus corpus generator (findspot, object type, iconography)
-- Integrated Merkur patents ([REDACTED-PATENT-PUB]): Kandles, hierarchical decomposition, semantic clustering
+- Integrated phonetic distributions (): Kandles, hierarchical decomposition, semantic clustering
 - Added DEC-007 to architecture, 10 new requirements, 12 new test specs
 - Generated PDF reports: block entropy analysis + decipherment results
 - Built synthetic cipher language + Ugaritic benchmark for decipherment validation
@@ -4666,7 +4666,7 @@ Next step: Acquire multi-site corpus data (CISI Vol.2, updated mayig repo, Fuls 
    - predictions/PREDICTION_REGISTER.md (9 registered predictions, PRED-2026-001 through 009)
    - validation/VALIDATION_PLAN.md (4-tier validation plan)
    - communications/DISCLOSURE_LOG.md (3 Dr. Fuls communications logged; PDF attachment flagged as missing)
-   - ip/IP_OWNERSHIP_NOTE.md (Layer1Labs Silicon, Inc. sole ownership)
+   - ip/IP_OWNERSHIP_NOTE.md (BitConcepts LLC sole ownership)
    - publication/EXPERT_SUMMARY_PACKAGE.md
    - publication/GOVERNMENT_INQUIRY_PACKAGE.md (prize:  USD, Tamil Nadu)
    - publication/PREPRINT_OUTLINE.md
@@ -4815,7 +4815,7 @@ Next step: Use the new observable infrastructure to drive real Indus deciphermen
 
 ## [2026-04-28] Entry — Phase-10: CTT graph nodes + dense-coupling primitives + Indus graph experiment
 
-Objective: Add Constraint Topology Theory (Layer1Labs Silicon, 2026) and dense-cross-sign-coupling primitives to the experiment graph, and build the first H17.7-compliant Phase-10 Indus decipherment experiment as a pure-graph composition.
+Objective: Add Constraint Topology Theory (BitConcepts LLC, 2026) and dense-cross-sign-coupling primitives to the experiment graph, and build the first H17.7-compliant Phase-10 Indus decipherment experiment as a pure-graph composition.
 
 What was done:
 - Created `backend/glossa_lab/experiment_graph_ctt.py` (793 lines) with seven new atomic node implementations:
@@ -6225,7 +6225,7 @@ Results:
   expanded. Log output significantly improved. Model assignment UX fully reworked.
 
 Open TODOs:
-  - Deploy docker-compose on layer1labs: `docker compose up -d` (after git pull)
+  - Deploy docker-compose on BitConcepts: `docker compose up -d` (after git pull)
     then re-test vLLM providers in Glossa Lab to refresh available_models to real HF IDs
   - Phase-32 T4: word-level LM rerun with dravidian_tamil_lm.json (SA experiment)
   - Fuls email not yet sent (foundation check passes; brief ready in reports/)
@@ -6237,7 +6237,7 @@ Risks:
   - vLLM models still show as "l1-glossa · l1-glossa" until docker-compose is deployed.
 
 Next step:
-  SSH to layer1labs, `docker compose up -d`, re-test providers, run Phase-32 T4.
+  SSH to BitConcepts, `docker compose up -d`, re-test providers, run Phase-32 T4.
 
 
 ## [2026-05-11] Entry — Phase-32 T4, Gap Analysis, Docs, Foundation Check

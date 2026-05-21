@@ -1135,12 +1135,12 @@ def _epistatic_anchor_ranker(inputs: dict, params: dict) -> dict:
     }
 
 
-# ── Removed: CASHypothesisProjector (required CPSC engine, now removed) ────
+# ── Constraint projection stub (engine removed) ────
 
 
 def _cas_hypothesis_projector(inputs: dict, params: dict) -> dict:
-    """CAS constraint projection removed (required CPSC engine)."""
-    return {"error": "CASHypothesisProjector is not available (CPSC engine removed).",
+    """Constraint projection not available."""
+    return {"error": "Constraint projection engine not available.",
             "success": False, "max_violation": 1e9}
 
 

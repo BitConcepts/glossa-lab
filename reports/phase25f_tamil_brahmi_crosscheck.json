@@ -1,3 +1,0 @@
-{
-  "data": "Tamil-Brahmi cross-check: Dravidian corpus = 1297 seqs / 8025 tokens; Indus corpus = 178 seqs / 1002 tokens. I/M/T aggregate rates - Dravidian: (0.162, 0.677, 0.162), Indus: (0.178, 0.645, 0.178). KL(Indus||Dravidian) = 0.0033 bits; KL(Dravidian||Indus) = 0.0033 bits. Lower KL = better typological fit."
-}

@@ -1,0 +1,332 @@
+{
+  "exp1_raw_tablet": {
+    "ALL": {
+      "n_tokens": 5379,
+      "scores": {
+        "greek": 56.903,
+        "luwian": 16.987,
+        "semitic": 16.9836,
+        "hurrian": 16.9658
+      },
+      "winner": "greek",
+      "greek_score": 56.903,
+      "greek_rank": 1,
+      "margin_vs_second": 39.916
+    },
+    "ARKH": {
+      "n_tokens": 157,
+      "scores": {
+        "semitic": 9.7952,
+        "hurrian": 9.7376,
+        "luwian": 9.6968,
+        "greek": 8.6063
+      },
+      "winner": "semitic",
+      "greek_score": 8.6063,
+      "greek_rank": 4,
+      "margin_vs_second": 0.058
+    },
+    "HT": {
+      "n_tokens": 3328,
+      "scores": {
+        "greek": 56.9196,
+        "hurrian": 16.8902,
+        "semitic": 16.8574,
+        "luwian": 16.7768
+      },
+      "winner": "greek",
+      "greek_score": 56.9196,
+      "greek_rank": 1,
+      "margin_vs_second": 40.029
+    },
+    "KH": {
+      "n_tokens": 480,
+      "scores": {
+        "greek": 23.4627,
+        "semitic": 15.6806,
+        "hurrian": 15.6665,
+        "luwian": 15.5953
+      },
+      "winner": "greek",
+      "greek_score": 23.4627,
+      "greek_rank": 1,
+      "margin_vs_second": 7.782
+    },
+    "KN": {
+      "n_tokens": 158,
+      "scores": {
+        "greek": 18.5204,
+        "semitic": 9.7783,
+        "luwian": 9.7,
+        "hurrian": 9.6811
+      },
+      "winner": "greek",
+      "greek_score": 18.5204,
+      "greek_rank": 1,
+      "margin_vs_second": 8.742
+    },
+    "MA": {
+      "n_tokens": 67,
+      "scores": {
+        "luwian": 8.0881,
+        "hurrian": 8.0375,
+        "semitic": 7.9391,
+        "greek": 7.4545
+      },
+      "winner": "luwian",
+      "greek_score": 7.4545,
+      "greek_rank": 4,
+      "margin_vs_second": 0.051
+    },
+    "PH": {
+      "n_tokens": 272,
+      "scores": {
+        "greek": 20.3936,
+        "hurrian": 11.8791,
+        "semitic": 11.8062,
+        "luwian": 11.6912
+      },
+      "winner": "greek",
+      "greek_score": 20.3936,
+      "greek_rank": 1,
+      "margin_vs_second": 8.514
+    },
+    "TY": {
+      "n_tokens": 77,
+      "scores": {
+        "hurrian": 8.2103,
+        "semitic": 8.1367,
+        "luwian": 7.9979,
+        "greek": 7.5718
+      },
+      "winner": "hurrian",
+      "greek_score": 7.5718,
+      "greek_rank": 4,
+      "margin_vs_second": 0.074
+    },
+    "ZA": {
+      "n_tokens": 673,
+      "scores": {
+        "greek": 25.8743,
+        "hurrian": 16.9452,
+        "luwian": 16.91,
+        "semitic": 16.7522
+      },
+      "winner": "greek",
+      "greek_score": 25.8743,
+      "greek_rank": 1,
+      "margin_vs_second": 8.929
+    }
+  },
+  "exp2_mapping_ablation": {
+    "10": {
+      "n_signs": 10,
+      "trials": 30,
+      "greek_mean": 16.878,
+      "greek_ci_lo": 16.868,
+      "greek_ci_hi": 16.89,
+      "hurrian_mean": 16.942,
+      "greek_rank_1_fraction": 0.133
+    },
+    "20": {
+      "n_signs": 20,
+      "trials": 30,
+      "greek_mean": 16.896,
+      "greek_ci_lo": 16.881,
+      "greek_ci_hi": 16.91,
+      "hurrian_mean": 16.899,
+      "greek_rank_1_fraction": 0.3
+    },
+    "30": {
+      "n_signs": 30,
+      "trials": 30,
+      "greek_mean": 16.899,
+      "greek_ci_lo": 16.881,
+      "greek_ci_hi": 16.918,
+      "hurrian_mean": 16.818,
+      "greek_rank_1_fraction": 0.567
+    },
+    "40": {
+      "n_signs": 40,
+      "trials": 30,
+      "greek_mean": 16.891,
+      "greek_ci_lo": 16.871,
+      "greek_ci_hi": 16.91,
+      "hurrian_mean": 16.76,
+      "greek_rank_1_fraction": 0.833
+    },
+    "104": {
+      "n_signs": 104,
+      "trials": 30,
+      "greek_mean": 16.903,
+      "greek_ci_lo": 16.903,
+      "greek_ci_hi": 16.903,
+      "hurrian_mean": 16.966,
+      "greek_rank_1_fraction": 0.0
+    }
+  },
+  "exp3_perturbation": {
+    "0.0": {
+      "noise_fraction": 0.0,
+      "trials": 30,
+      "greek_mean": 16.903,
+      "greek_ci_lo": 16.903,
+      "greek_ci_hi": 16.903
+    },
+    "0.05": {
+      "noise_fraction": 0.05,
+      "trials": 30,
+      "greek_mean": 16.901,
+      "greek_ci_lo": 16.892,
+      "greek_ci_hi": 16.909
+    },
+    "0.1": {
+      "noise_fraction": 0.1,
+      "trials": 30,
+      "greek_mean": 16.899,
+      "greek_ci_lo": 16.888,
+      "greek_ci_hi": 16.91
+    },
+    "0.15": {
+      "noise_fraction": 0.15,
+      "trials": 30,
+      "greek_mean": 16.892,
+      "greek_ci_lo": 16.873,
+      "greek_ci_hi": 16.908
+    },
+    "0.2": {
+      "noise_fraction": 0.2,
+      "trials": 30,
+      "greek_mean": 16.885,
+      "greek_ci_lo": 16.869,
+      "greek_ci_hi": 16.9
+    },
+    "0.3": {
+      "noise_fraction": 0.3,
+      "trials": 30,
+      "greek_mean": 16.906,
+      "greek_ci_lo": 16.891,
+      "greek_ci_hi": 16.921
+    }
+  },
+  "exp4_null_distribution": {
+    "real_greek": 16.903,
+    "nulls": {
+      "frequency_matched_random": {
+        "trials": 30,
+        "null_mean": 16.889,
+        "null_std": 16.889,
+        "null_ci_lo": 16.873,
+        "null_ci_hi": 16.907,
+        "real_score": 16.903,
+        "p_value": 0.4,
+        "z_score": 0.292,
+        "pct_exceeding_real": 40.0
+      },
+      "cv_structure_preserving": {
+        "trials": 30,
+        "null_mean": 16.891,
+        "null_std": 16.891,
+        "null_ci_lo": 16.876,
+        "null_ci_hi": 16.906,
+        "real_score": 16.903,
+        "p_value": 0.4,
+        "z_score": 0.269,
+        "pct_exceeding_real": 40.0
+      },
+      "permuted_lb_correspondences": {
+        "trials": 30,
+        "null_mean": 16.889,
+        "null_std": 16.889,
+        "null_ci_lo": 16.873,
+        "null_ci_hi": 16.907,
+        "real_score": 16.903,
+        "p_value": 0.4,
+        "z_score": 0.292,
+        "pct_exceeding_real": 40.0
+      }
+    }
+  },
+  "exp5_scoring_modes": {
+    "full": {
+      "scores": {
+        "greek": 56.903,
+        "luwian": 16.987,
+        "semitic": 16.9836,
+        "hurrian": 16.9658
+      },
+      "winner": "greek",
+      "greek_rank": 1,
+      "greek_score": 56.903
+    },
+    "no_vocab": {
+      "scores": {
+        "luwian": 16.987,
+        "semitic": 16.9836,
+        "hurrian": 16.9658,
+        "greek": 16.903
+      },
+      "winner": "luwian",
+      "greek_rank": 4,
+      "greek_score": 16.903
+    },
+    "kandles_only": {
+      "scores": {
+        "luwian": 9.935,
+        "semitic": 9.918,
+        "hurrian": 9.829,
+        "greek": 9.515
+      },
+      "winner": "luwian",
+      "greek_rank": 4,
+      "greek_score": 9.515
+    }
+  },
+  "exp6_fairness": {
+    "equalized_size": 2000,
+    "baseline": {
+      "scores": {
+        "luwian": 16.987,
+        "semitic": 16.9836,
+        "hurrian": 16.9658,
+        "greek": 16.903
+      },
+      "winner": "luwian",
+      "greek_rank": 4
+    },
+    "equalized": {
+      "scores": {
+        "luwian": 16.987,
+        "semitic": 16.9836,
+        "hurrian": 16.9808,
+        "greek": 16.8806
+      },
+      "winner": "luwian",
+      "greek_rank": 4
+    }
+  },
+  "exp7_null_corpus": {
+    "real": {
+      "null_type": "real",
+      "trials": 30,
+      "greek_mean": 16.903,
+      "greek_ci_lo": 16.903,
+      "greek_ci_hi": 16.903
+    },
+    "shuffled": {
+      "null_type": "shuffled",
+      "trials": 30,
+      "greek_mean": 16.931,
+      "greek_ci_lo": 16.919,
+      "greek_ci_hi": 16.941
+    },
+    "unigram_only": {
+      "null_type": "unigram_only",
+      "trials": 30,
+      "greek_mean": 16.924,
+      "greek_ci_lo": 16.915,
+      "greek_ci_hi": 16.935
+    }
+  },
+  "n_mc_trials": 30
+}

@@ -1,0 +1,48 @@
+{
+  "data": [
+    {
+      "anchor_count": 0,
+      "struct_acc_free": 1.0,
+      "rand_acc_free": 1.0,
+      "struct_consistency": 1.0,
+      "rand_consistency": 1.0,
+      "struct_n_distinct": 1.0,
+      "rand_n_distinct": 1.0,
+      "struct_hci75": 1.0,
+      "rand_hci75": 1.0
+    },
+    {
+      "anchor_count": 3,
+      "struct_acc_free": 1.0,
+      "rand_acc_free": 1.0,
+      "struct_consistency": 1.0,
+      "rand_consistency": 1.0,
+      "struct_n_distinct": 1.0,
+      "rand_n_distinct": 1.0,
+      "struct_hci75": 1.0,
+      "rand_hci75": 1.0
+    },
+    {
+      "anchor_count": 10,
+      "struct_acc_free": 1.0,
+      "rand_acc_free": 1.0,
+      "struct_consistency": 1.0,
+      "rand_consistency": 1.0,
+      "struct_n_distinct": 1.0,
+      "rand_n_distinct": 1.0,
+      "struct_hci75": 1.0,
+      "rand_hci75": 1.0
+    },
+    {
+      "anchor_count": 20,
+      "struct_acc_free": 1.0,
+      "rand_acc_free": 1.0,
+      "struct_consistency": 1.0,
+      "rand_consistency": 1.0,
+      "struct_n_distinct": 1.0,
+      "rand_n_distinct": 1.0,
+      "struct_hci75": 1.0,
+      "rand_hci75": 1.0
+    }
+  ]
+}

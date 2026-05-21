@@ -1,0 +1,12 @@
+{
+  "data": {
+    "a__h1_normalized": 0.826,
+    "a__bigram_consistency": 0.9753,
+    "a__dravidian_score": 0.9454400000000001,
+    "a__indo_aryan_contrast": 0.21074000000000004,
+    "a__classification": 0.8719700000000001,
+    "b": true,
+    "c": 0.0,
+    "d": "iterative"
+  }
+}

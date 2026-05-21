@@ -1,0 +1,191 @@
+{
+  "data": {
+    "a": [
+      {
+        "bin": "L1-1",
+        "n_seqs": 564,
+        "n_tokens": 564,
+        "n_distinct_signs": 46,
+        "mean_length": 1.0
+      },
+      {
+        "bin": "L2-2",
+        "n_seqs": 357,
+        "n_tokens": 714,
+        "n_distinct_signs": 57,
+        "mean_length": 2.0
+      },
+      {
+        "bin": "L3-3",
+        "n_seqs": 270,
+        "n_tokens": 810,
+        "n_distinct_signs": 52,
+        "mean_length": 3.0
+      },
+      {
+        "bin": "L4-4",
+        "n_seqs": 188,
+        "n_tokens": 752,
+        "n_distinct_signs": 52,
+        "mean_length": 4.0
+      },
+      {
+        "bin": "L5-5",
+        "n_seqs": 112,
+        "n_tokens": 560,
+        "n_distinct_signs": 45,
+        "mean_length": 5.0
+      },
+      {
+        "bin": "L6-6",
+        "n_seqs": 73,
+        "n_tokens": 438,
+        "n_distinct_signs": 41,
+        "mean_length": 6.0
+      },
+      {
+        "bin": "L7-8",
+        "n_seqs": 61,
+        "n_tokens": 454,
+        "n_distinct_signs": 40,
+        "mean_length": 7.442622950819672
+      },
+      {
+        "bin": "L9+",
+        "n_seqs": 44,
+        "n_tokens": 1069,
+        "n_distinct_signs": 30,
+        "mean_length": 24.295454545454547
+      }
+    ],
+    "b__L1-1": {
+      "n_seqs": 564,
+      "n_tokens": 564,
+      "n_signs": 0,
+      "spectral_gap": 0.0,
+      "top_eigenvalues": [],
+      "verdict": "highly deterministic / anomalous"
+    },
+    "b__L2-2": {
+      "n_seqs": 357,
+      "n_tokens": 714,
+      "n_signs": 57,
+      "spectral_gap": 0.0,
+      "top_eigenvalues": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "verdict": "highly deterministic / anomalous"
+    },
+    "b__L3-3": {
+      "n_seqs": 270,
+      "n_tokens": 810,
+      "n_signs": 52,
+      "spectral_gap": 0.0,
+      "top_eigenvalues": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "verdict": "highly deterministic / anomalous"
+    },
+    "b__L4-4": {
+      "n_seqs": 188,
+      "n_tokens": 752,
+      "n_signs": 52,
+      "spectral_gap": 0.0,
+      "top_eigenvalues": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "verdict": "highly deterministic / anomalous"
+    },
+    "b__L5-5": {
+      "n_seqs": 112,
+      "n_tokens": 560,
+      "n_signs": 45,
+      "spectral_gap": 0.0,
+      "top_eigenvalues": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.997395,
+        0.965115,
+        0.848592
+      ],
+      "verdict": "highly deterministic / anomalous"
+    },
+    "b__L6-6": {
+      "n_seqs": 73,
+      "n_tokens": 438,
+      "n_signs": 41,
+      "spectral_gap": 0.0,
+      "top_eigenvalues": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.986013,
+        0.970189,
+        0.873466
+      ],
+      "verdict": "highly deterministic / anomalous"
+    },
+    "b__L7-8": {
+      "n_seqs": 61,
+      "n_tokens": 454,
+      "n_signs": 40,
+      "spectral_gap": 0.0,
+      "top_eigenvalues": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.984466,
+        0.894724,
+        0.823271
+      ],
+      "verdict": "highly deterministic / anomalous"
+    },
+    "b__L9+": {
+      "n_seqs": 44,
+      "n_tokens": 1069,
+      "n_signs": 30,
+      "spectral_gap": 0.0,
+      "top_eigenvalues": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.986111,
+        0.975019
+      ],
+      "verdict": "highly deterministic / anomalous"
+    },
+    "c": "PREDICTION 1 NOT CONFIRMED: spectral gap goes from 0.0000 (L1-1) to 0.0000 (L9+) across length bins (min=0.0000, max=0.0000). No length effect.",
+    "d": 1669
+  }
+}

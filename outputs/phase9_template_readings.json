@@ -1,0 +1,726 @@
+{
+  "data": {
+    "a__P121": "MEDIAL",
+    "a__P202": "MEDIAL",
+    "a__P385": "TERMINAL",
+    "a__P073": "MEDIAL",
+    "a__P108": "TERMINAL",
+    "a__P145": "MEDIAL",
+    "a__P205": "MEDIAL",
+    "a__P147": "MEDIAL",
+    "a__P316": "MEDIAL",
+    "a__P056": "MEDIAL",
+    "a__P122": "MEDIAL",
+    "a__P268": "MEDIAL",
+    "a__P324": "INITIAL",
+    "a__P096": "MEDIAL",
+    "a__P062": "MEDIAL",
+    "a__P060": "MEDIAL",
+    "a__P120": "MEDIAL",
+    "a__P256": "TERMINAL",
+    "a__P378": "TERMINAL",
+    "a__P201": "MEDIAL",
+    "a__P086": "INITIAL",
+    "a__P011": "MEDIAL",
+    "a__P154": "MEDIAL",
+    "a__P009": "MEDIAL",
+    "a__P175": "MEDIAL",
+    "a__P270": "MEDIAL",
+    "a__P144": "MEDIAL",
+    "a__P204": "MEDIAL",
+    "a__P114": "MEDIAL",
+    "a__P364": "MEDIAL",
+    "a__P067": "MEDIAL",
+    "a__P221": "MEDIAL",
+    "a__P276": "MEDIAL",
+    "a__P058": "MEDIAL",
+    "a__P035": "MEDIAL",
+    "a__P210": "MEDIAL",
+    "a__P013": "INITIAL",
+    "a__P194": "MEDIAL",
+    "a__P126": "MEDIAL",
+    "a__P369": "MEDIAL",
+    "a__P142": "MEDIAL",
+    "a__P000": "INITIAL",
+    "a__P125": "MEDIAL",
+    "a__P215": "MEDIAL",
+    "a__P275": "MEDIAL",
+    "a__P091": "MEDIAL",
+    "a__P050": "MEDIAL",
+    "a__P230": "MEDIAL",
+    "a__P217": "INITIAL",
+    "a__P160": "MEDIAL",
+    "a__P076": "TERMINAL",
+    "a__P174": "MEDIAL",
+    "a__P238": "INITIAL",
+    "a__P325": "MEDIAL",
+    "a__P123": "MEDIAL",
+    "a__P103": "MEDIAL",
+    "a__P332": "MEDIAL",
+    "a__P349": "MEDIAL",
+    "a__P095": "TERMINAL",
+    "a__P127": "MEDIAL",
+    "a__P309": "MEDIAL",
+    "a__P092": "MEDIAL",
+    "a__P139": "MEDIAL",
+    "a__P303": "MEDIAL",
+    "a__P301": "INITIAL",
+    "a__P288": "MEDIAL",
+    "a__P051": "INITIAL",
+    "a__P326": "MEDIAL",
+    "a__P001": "INITIAL",
+    "a__P234": "MEDIAL",
+    "a__P124": "MEDIAL",
+    "a__P289": "MEDIAL",
+    "a__P031": "MEDIAL",
+    "a__P098": "INITIAL",
+    "a__P226": "TERMINAL",
+    "a__P004": "INITIAL",
+    "a__P110": "MEDIAL",
+    "a__P075": "MEDIAL",
+    "a__P283": "MEDIAL",
+    "a__P355": "MEDIAL",
+    "b__P076": [
+      {
+        "phoneme": "in",
+        "role": "genitive",
+        "score": 0.75,
+        "rationale": "TERMINAL sign; candidate Dravidian case suffix (-in, -vin)"
+      }
+    ],
+    "b__P095": [
+      {
+        "phoneme": "ku",
+        "role": "dative",
+        "score": 0.75,
+        "rationale": "TERMINAL sign; candidate Dravidian case suffix (-ku, -ukku)"
+      }
+    ],
+    "b__P108": [
+      {
+        "phoneme": "al",
+        "role": "instrumental",
+        "score": 0.75,
+        "rationale": "TERMINAL sign; candidate Dravidian case suffix (-\u0101l)"
+      }
+    ],
+    "b__P226": [
+      {
+        "phoneme": "atu",
+        "role": "ablative/nominalize",
+        "score": 0.75,
+        "rationale": "TERMINAL sign; candidate Dravidian case suffix (-atu, -itu)"
+      }
+    ],
+    "b__P256": [
+      {
+        "phoneme": "il",
+        "role": "locative",
+        "score": 0.75,
+        "rationale": "TERMINAL sign; candidate Dravidian case suffix (-il, -u\u1e37)"
+      }
+    ],
+    "b__P378": [
+      {
+        "phoneme": "in",
+        "role": "genitive",
+        "score": 0.75,
+        "rationale": "TERMINAL sign; candidate Dravidian case suffix (-in, -vin)"
+      }
+    ],
+    "b__P385": [
+      {
+        "phoneme": "ku",
+        "role": "dative",
+        "score": 0.75,
+        "rationale": "TERMINAL sign; candidate Dravidian case suffix (-ku, -ukku)"
+      }
+    ],
+    "b__P000": [
+      {
+        "phoneme": "k",
+        "role": "initial_element",
+        "score": 0.6,
+        "rationale": "INITIAL sign; candidate Dravidian word-initial phoneme /k/"
+      }
+    ],
+    "b__P001": [
+      {
+        "phoneme": "m",
+        "role": "initial_element",
+        "score": 0.6,
+        "rationale": "INITIAL sign; candidate Dravidian word-initial phoneme /m/"
+      }
+    ],
+    "b__P004": [
+      {
+        "phoneme": "n",
+        "role": "initial_element",
+        "score": 0.6,
+        "rationale": "INITIAL sign; candidate Dravidian word-initial phoneme /n/"
+      }
+    ],
+    "b__P013": [
+      {
+        "phoneme": "p",
+        "role": "initial_element",
+        "score": 0.6,
+        "rationale": "INITIAL sign; candidate Dravidian word-initial phoneme /p/"
+      }
+    ],
+    "b__P051": [
+      {
+        "phoneme": "t",
+        "role": "initial_element",
+        "score": 0.6,
+        "rationale": "INITIAL sign; candidate Dravidian word-initial phoneme /t/"
+      }
+    ],
+    "b__P086": [
+      {
+        "phoneme": "v",
+        "role": "initial_element",
+        "score": 0.6,
+        "rationale": "INITIAL sign; candidate Dravidian word-initial phoneme /v/"
+      }
+    ],
+    "b__P098": [
+      {
+        "phoneme": "c",
+        "role": "initial_element",
+        "score": 0.6,
+        "rationale": "INITIAL sign; candidate Dravidian word-initial phoneme /c/"
+      }
+    ],
+    "b__P217": [
+      {
+        "phoneme": "a",
+        "role": "initial_element",
+        "score": 0.6,
+        "rationale": "INITIAL sign; candidate Dravidian word-initial phoneme /a/"
+      }
+    ],
+    "b__P238": [
+      {
+        "phoneme": "k",
+        "role": "initial_element",
+        "score": 0.6,
+        "rationale": "INITIAL sign; candidate Dravidian word-initial phoneme /k/"
+      }
+    ],
+    "b__P301": [
+      {
+        "phoneme": "m",
+        "role": "initial_element",
+        "score": 0.6,
+        "rationale": "INITIAL sign; candidate Dravidian word-initial phoneme /m/"
+      }
+    ],
+    "b__P324": [
+      {
+        "phoneme": "n",
+        "role": "initial_element",
+        "score": 0.6,
+        "rationale": "INITIAL sign; candidate Dravidian word-initial phoneme /n/"
+      }
+    ],
+    "b__P009": [
+      {
+        "phoneme": "a",
+        "role": "medial_syllable",
+        "score": 0.2510903426791277,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P011": [
+      {
+        "phoneme": "i",
+        "role": "medial_syllable",
+        "score": 0.08797507788161994,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P031": [
+      {
+        "phoneme": "n",
+        "role": "medial_syllable",
+        "score": 0.08747663551401869,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P035": [
+      {
+        "phoneme": "r",
+        "role": "medial_syllable",
+        "score": 0.08523364485981308,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P050": [
+      {
+        "phoneme": "u",
+        "role": "medial_syllable",
+        "score": 0.07688473520249221,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P056": [
+      {
+        "phoneme": "l",
+        "role": "medial_syllable",
+        "score": 0.07177570093457944,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P058": [
+      {
+        "phoneme": "v",
+        "role": "medial_syllable",
+        "score": 0.048598130841121495,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P060": [
+      {
+        "phoneme": "m",
+        "role": "medial_syllable",
+        "score": 0.045981308411214956,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P062": [
+      {
+        "phoneme": "t",
+        "role": "medial_syllable",
+        "score": 0.0443613707165109,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P067": [
+      {
+        "phoneme": "e",
+        "role": "medial_syllable",
+        "score": 0.03489096573208723,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P073": [
+      {
+        "phoneme": "k",
+        "role": "medial_syllable",
+        "score": 0.03227414330218069,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P075": [
+      {
+        "phoneme": "y",
+        "role": "medial_syllable",
+        "score": 0.03202492211838006,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P091": [
+      {
+        "phoneme": "p",
+        "role": "medial_syllable",
+        "score": 0.03090342679127726,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P092": [
+      {
+        "phoneme": "o",
+        "role": "medial_syllable",
+        "score": 0.018691588785046728,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P096": [
+      {
+        "phoneme": "h",
+        "role": "medial_syllable",
+        "score": 0.017570093457943924,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P103": [
+      {
+        "phoneme": "d",
+        "role": "medial_syllable",
+        "score": 0.010965732087227415,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P110": [
+      {
+        "phoneme": "c",
+        "role": "medial_syllable",
+        "score": 0.00822429906542056,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P114": [
+      {
+        "phoneme": "z",
+        "role": "medial_syllable",
+        "score": 0.007476635514018692,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P120": [
+      {
+        "phoneme": "s",
+        "role": "medial_syllable",
+        "score": 0.0032398753894080996,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P121": [
+      {
+        "phoneme": "b",
+        "role": "medial_syllable",
+        "score": 0.0024922118380062306,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P122": [
+      {
+        "phoneme": "g",
+        "role": "medial_syllable",
+        "score": 0.0017445482866043614,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P123": [
+      {
+        "phoneme": "j",
+        "role": "medial_syllable",
+        "score": 0.00012461059190031152,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P124": [
+      {
+        "phoneme": "a",
+        "role": "medial_syllable",
+        "score": 0.2510903426791277,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P125": [
+      {
+        "phoneme": "i",
+        "role": "medial_syllable",
+        "score": 0.08797507788161994,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P126": [
+      {
+        "phoneme": "n",
+        "role": "medial_syllable",
+        "score": 0.08747663551401869,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P127": [
+      {
+        "phoneme": "r",
+        "role": "medial_syllable",
+        "score": 0.08523364485981308,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P139": [
+      {
+        "phoneme": "u",
+        "role": "medial_syllable",
+        "score": 0.07688473520249221,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P142": [
+      {
+        "phoneme": "l",
+        "role": "medial_syllable",
+        "score": 0.07177570093457944,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P144": [
+      {
+        "phoneme": "v",
+        "role": "medial_syllable",
+        "score": 0.048598130841121495,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P145": [
+      {
+        "phoneme": "m",
+        "role": "medial_syllable",
+        "score": 0.045981308411214956,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P147": [
+      {
+        "phoneme": "t",
+        "role": "medial_syllable",
+        "score": 0.0443613707165109,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P154": [
+      {
+        "phoneme": "e",
+        "role": "medial_syllable",
+        "score": 0.03489096573208723,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P160": [
+      {
+        "phoneme": "k",
+        "role": "medial_syllable",
+        "score": 0.03227414330218069,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P174": [
+      {
+        "phoneme": "y",
+        "role": "medial_syllable",
+        "score": 0.03202492211838006,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P175": [
+      {
+        "phoneme": "p",
+        "role": "medial_syllable",
+        "score": 0.03090342679127726,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P194": [
+      {
+        "phoneme": "o",
+        "role": "medial_syllable",
+        "score": 0.018691588785046728,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P201": [
+      {
+        "phoneme": "h",
+        "role": "medial_syllable",
+        "score": 0.017570093457943924,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P202": [
+      {
+        "phoneme": "d",
+        "role": "medial_syllable",
+        "score": 0.010965732087227415,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P204": [
+      {
+        "phoneme": "c",
+        "role": "medial_syllable",
+        "score": 0.00822429906542056,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P205": [
+      {
+        "phoneme": "z",
+        "role": "medial_syllable",
+        "score": 0.007476635514018692,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P210": [
+      {
+        "phoneme": "s",
+        "role": "medial_syllable",
+        "score": 0.0032398753894080996,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P215": [
+      {
+        "phoneme": "b",
+        "role": "medial_syllable",
+        "score": 0.0024922118380062306,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P221": [
+      {
+        "phoneme": "g",
+        "role": "medial_syllable",
+        "score": 0.0017445482866043614,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P230": [
+      {
+        "phoneme": "j",
+        "role": "medial_syllable",
+        "score": 0.00012461059190031152,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P234": [
+      {
+        "phoneme": "a",
+        "role": "medial_syllable",
+        "score": 0.2510903426791277,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P268": [
+      {
+        "phoneme": "i",
+        "role": "medial_syllable",
+        "score": 0.08797507788161994,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P270": [
+      {
+        "phoneme": "n",
+        "role": "medial_syllable",
+        "score": 0.08747663551401869,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P275": [
+      {
+        "phoneme": "r",
+        "role": "medial_syllable",
+        "score": 0.08523364485981308,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P276": [
+      {
+        "phoneme": "u",
+        "role": "medial_syllable",
+        "score": 0.07688473520249221,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P283": [
+      {
+        "phoneme": "l",
+        "role": "medial_syllable",
+        "score": 0.07177570093457944,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P288": [
+      {
+        "phoneme": "v",
+        "role": "medial_syllable",
+        "score": 0.048598130841121495,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P289": [
+      {
+        "phoneme": "m",
+        "role": "medial_syllable",
+        "score": 0.045981308411214956,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P303": [
+      {
+        "phoneme": "t",
+        "role": "medial_syllable",
+        "score": 0.0443613707165109,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P309": [
+      {
+        "phoneme": "e",
+        "role": "medial_syllable",
+        "score": 0.03489096573208723,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P316": [
+      {
+        "phoneme": "k",
+        "role": "medial_syllable",
+        "score": 0.03227414330218069,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P325": [
+      {
+        "phoneme": "y",
+        "role": "medial_syllable",
+        "score": 0.03202492211838006,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P326": [
+      {
+        "phoneme": "p",
+        "role": "medial_syllable",
+        "score": 0.03090342679127726,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P332": [
+      {
+        "phoneme": "o",
+        "role": "medial_syllable",
+        "score": 0.018691588785046728,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P349": [
+      {
+        "phoneme": "h",
+        "role": "medial_syllable",
+        "score": 0.017570093457943924,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P355": [
+      {
+        "phoneme": "d",
+        "role": "medial_syllable",
+        "score": 0.010965732087227415,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P364": [
+      {
+        "phoneme": "c",
+        "role": "medial_syllable",
+        "score": 0.00822429906542056,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "b__P369": [
+      {
+        "phoneme": "z",
+        "role": "medial_syllable",
+        "score": 0.007476635514018692,
+        "rationale": "MEDIAL sign; most compatible Dravidian syllable by LM unigram frequency"
+      }
+    ],
+    "error": "No cluster_sequences \u2014 connect ClusterMapper.cluster_sequences",
+    "e": "Abjad (consonant alphabet)"
+  }
+}

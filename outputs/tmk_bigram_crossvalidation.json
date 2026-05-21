@@ -1,0 +1,873 @@
+{
+  "total_bigram_tokens": 1052,
+  "total_signs_in_bigrams": 39,
+  "tmk_signs_in_bigrams": 38,
+  "non_tmk_signs_in_bigrams": 1,
+  "tmk_avg_second_rate": 0.6435,
+  "non_tmk_avg_second_rate": 0.5046,
+  "tmk_advantage": 0.1389,
+  "top10_second_position_signs_that_are_tmk": 10,
+  "interpretation": "STRONGLY SUPPORTS agglutinative-suffix hypothesis",
+  "top_second_position_signs": [
+    {
+      "sign_fuls": "169",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 107,
+      "total_appearances": 107,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "203",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 186,
+      "total_appearances": 186,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "256",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 109,
+      "total_appearances": 109,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "375",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 2,
+      "total_appearances": 2,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "394",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 37,
+      "total_appearances": 37,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "506",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 13,
+      "total_appearances": 13,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "526",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 17,
+      "total_appearances": 17,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "708",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 9,
+      "total_appearances": 9,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "712",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 13,
+      "total_appearances": 13,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "719",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 12,
+      "total_appearances": 12,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "723",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 10,
+      "total_appearances": 10,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "748",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 2,
+      "total_appearances": 2,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "782",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 7,
+      "total_appearances": 7,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "841",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 6,
+      "total_appearances": 6,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "855",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 6,
+      "total_appearances": 6,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "872",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 3,
+      "total_appearances": 3,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "876",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 1,
+      "total_appearances": 1,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "781",
+      "is_tmk": true,
+      "as_first": 1,
+      "as_second": 7,
+      "total_appearances": 8,
+      "second_rate": 0.875
+    },
+    {
+      "sign_fuls": "106",
+      "is_tmk": true,
+      "as_first": 21,
+      "as_second": 136,
+      "total_appearances": 157,
+      "second_rate": 0.8662
+    },
+    {
+      "sign_fuls": "866",
+      "is_tmk": true,
+      "as_first": 1,
+      "as_second": 4,
+      "total_appearances": 5,
+      "second_rate": 0.8
+    },
+    {
+      "sign_fuls": "387",
+      "is_tmk": true,
+      "as_first": 2,
+      "as_second": 7,
+      "total_appearances": 9,
+      "second_rate": 0.7778
+    },
+    {
+      "sign_fuls": "157",
+      "is_tmk": true,
+      "as_first": 3,
+      "as_second": 7,
+      "total_appearances": 10,
+      "second_rate": 0.7
+    },
+    {
+      "sign_fuls": "307",
+      "is_tmk": true,
+      "as_first": 4,
+      "as_second": 8,
+      "total_appearances": 12,
+      "second_rate": 0.6667
+    },
+    {
+      "sign_fuls": "173",
+      "is_tmk": true,
+      "as_first": 35,
+      "as_second": 62,
+      "total_appearances": 97,
+      "second_rate": 0.6392
+    },
+    {
+      "sign_fuls": "045",
+      "is_tmk": true,
+      "as_first": 88,
+      "as_second": 102,
+      "total_appearances": 190,
+      "second_rate": 0.5368
+    },
+    {
+      "sign_fuls": "692",
+      "is_tmk": false,
+      "as_first": 54,
+      "as_second": 55,
+      "total_appearances": 109,
+      "second_rate": 0.5046
+    },
+    {
+      "sign_fuls": "718",
+      "is_tmk": true,
+      "as_first": 10,
+      "as_second": 7,
+      "total_appearances": 17,
+      "second_rate": 0.4118
+    },
+    {
+      "sign_fuls": "461",
+      "is_tmk": true,
+      "as_first": 17,
+      "as_second": 6,
+      "total_appearances": 23,
+      "second_rate": 0.2609
+    },
+    {
+      "sign_fuls": "074",
+      "is_tmk": true,
+      "as_first": 16,
+      "as_second": 5,
+      "total_appearances": 21,
+      "second_rate": 0.2381
+    },
+    {
+      "sign_fuls": "047",
+      "is_tmk": true,
+      "as_first": 120,
+      "as_second": 35,
+      "total_appearances": 155,
+      "second_rate": 0.2258
+    }
+  ],
+  "tmk_profiles": [
+    {
+      "sign_fuls": "169",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 107,
+      "total_appearances": 107,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "203",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 186,
+      "total_appearances": 186,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "256",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 109,
+      "total_appearances": 109,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "375",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 2,
+      "total_appearances": 2,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "394",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 37,
+      "total_appearances": 37,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "506",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 13,
+      "total_appearances": 13,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "526",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 17,
+      "total_appearances": 17,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "708",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 9,
+      "total_appearances": 9,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "712",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 13,
+      "total_appearances": 13,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "719",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 12,
+      "total_appearances": 12,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "723",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 10,
+      "total_appearances": 10,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "748",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 2,
+      "total_appearances": 2,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "782",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 7,
+      "total_appearances": 7,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "841",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 6,
+      "total_appearances": 6,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "855",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 6,
+      "total_appearances": 6,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "872",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 3,
+      "total_appearances": 3,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "876",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 1,
+      "total_appearances": 1,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "781",
+      "is_tmk": true,
+      "as_first": 1,
+      "as_second": 7,
+      "total_appearances": 8,
+      "second_rate": 0.875
+    },
+    {
+      "sign_fuls": "106",
+      "is_tmk": true,
+      "as_first": 21,
+      "as_second": 136,
+      "total_appearances": 157,
+      "second_rate": 0.8662
+    },
+    {
+      "sign_fuls": "866",
+      "is_tmk": true,
+      "as_first": 1,
+      "as_second": 4,
+      "total_appearances": 5,
+      "second_rate": 0.8
+    },
+    {
+      "sign_fuls": "387",
+      "is_tmk": true,
+      "as_first": 2,
+      "as_second": 7,
+      "total_appearances": 9,
+      "second_rate": 0.7778
+    },
+    {
+      "sign_fuls": "157",
+      "is_tmk": true,
+      "as_first": 3,
+      "as_second": 7,
+      "total_appearances": 10,
+      "second_rate": 0.7
+    },
+    {
+      "sign_fuls": "307",
+      "is_tmk": true,
+      "as_first": 4,
+      "as_second": 8,
+      "total_appearances": 12,
+      "second_rate": 0.6667
+    },
+    {
+      "sign_fuls": "173",
+      "is_tmk": true,
+      "as_first": 35,
+      "as_second": 62,
+      "total_appearances": 97,
+      "second_rate": 0.6392
+    },
+    {
+      "sign_fuls": "045",
+      "is_tmk": true,
+      "as_first": 88,
+      "as_second": 102,
+      "total_appearances": 190,
+      "second_rate": 0.5368
+    },
+    {
+      "sign_fuls": "718",
+      "is_tmk": true,
+      "as_first": 10,
+      "as_second": 7,
+      "total_appearances": 17,
+      "second_rate": 0.4118
+    },
+    {
+      "sign_fuls": "461",
+      "is_tmk": true,
+      "as_first": 17,
+      "as_second": 6,
+      "total_appearances": 23,
+      "second_rate": 0.2609
+    },
+    {
+      "sign_fuls": "074",
+      "is_tmk": true,
+      "as_first": 16,
+      "as_second": 5,
+      "total_appearances": 21,
+      "second_rate": 0.2381
+    },
+    {
+      "sign_fuls": "047",
+      "is_tmk": true,
+      "as_first": 120,
+      "as_second": 35,
+      "total_appearances": 155,
+      "second_rate": 0.2258
+    },
+    {
+      "sign_fuls": "430",
+      "is_tmk": true,
+      "as_first": 169,
+      "as_second": 40,
+      "total_appearances": 209,
+      "second_rate": 0.1914
+    },
+    {
+      "sign_fuls": "147",
+      "is_tmk": true,
+      "as_first": 123,
+      "as_second": 14,
+      "total_appearances": 137,
+      "second_rate": 0.1022
+    },
+    {
+      "sign_fuls": "138",
+      "is_tmk": true,
+      "as_first": 37,
+      "as_second": 3,
+      "total_appearances": 40,
+      "second_rate": 0.075
+    },
+    {
+      "sign_fuls": "481",
+      "is_tmk": true,
+      "as_first": 207,
+      "as_second": 11,
+      "total_appearances": 218,
+      "second_rate": 0.0505
+    },
+    {
+      "sign_fuls": "874",
+      "is_tmk": true,
+      "as_first": 82,
+      "as_second": 3,
+      "total_appearances": 85,
+      "second_rate": 0.0353
+    },
+    {
+      "sign_fuls": "129",
+      "is_tmk": true,
+      "as_first": 20,
+      "as_second": 0,
+      "total_appearances": 20,
+      "second_rate": 0.0
+    },
+    {
+      "sign_fuls": "237",
+      "is_tmk": true,
+      "as_first": 5,
+      "as_second": 0,
+      "total_appearances": 5,
+      "second_rate": 0.0
+    },
+    {
+      "sign_fuls": "427",
+      "is_tmk": true,
+      "as_first": 19,
+      "as_second": 0,
+      "total_appearances": 19,
+      "second_rate": 0.0
+    },
+    {
+      "sign_fuls": "858",
+      "is_tmk": true,
+      "as_first": 18,
+      "as_second": 0,
+      "total_appearances": 18,
+      "second_rate": 0.0
+    }
+  ],
+  "all_signs": [
+    {
+      "sign_fuls": "169",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 107,
+      "total_appearances": 107,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "203",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 186,
+      "total_appearances": 186,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "256",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 109,
+      "total_appearances": 109,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "375",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 2,
+      "total_appearances": 2,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "394",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 37,
+      "total_appearances": 37,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "506",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 13,
+      "total_appearances": 13,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "526",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 17,
+      "total_appearances": 17,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "708",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 9,
+      "total_appearances": 9,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "712",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 13,
+      "total_appearances": 13,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "719",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 12,
+      "total_appearances": 12,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "723",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 10,
+      "total_appearances": 10,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "748",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 2,
+      "total_appearances": 2,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "782",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 7,
+      "total_appearances": 7,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "841",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 6,
+      "total_appearances": 6,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "855",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 6,
+      "total_appearances": 6,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "872",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 3,
+      "total_appearances": 3,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "876",
+      "is_tmk": true,
+      "as_first": 0,
+      "as_second": 1,
+      "total_appearances": 1,
+      "second_rate": 1.0
+    },
+    {
+      "sign_fuls": "781",
+      "is_tmk": true,
+      "as_first": 1,
+      "as_second": 7,
+      "total_appearances": 8,
+      "second_rate": 0.875
+    },
+    {
+      "sign_fuls": "106",
+      "is_tmk": true,
+      "as_first": 21,
+      "as_second": 136,
+      "total_appearances": 157,
+      "second_rate": 0.8662
+    },
+    {
+      "sign_fuls": "866",
+      "is_tmk": true,
+      "as_first": 1,
+      "as_second": 4,
+      "total_appearances": 5,
+      "second_rate": 0.8
+    },
+    {
+      "sign_fuls": "387",
+      "is_tmk": true,
+      "as_first": 2,
+      "as_second": 7,
+      "total_appearances": 9,
+      "second_rate": 0.7778
+    },
+    {
+      "sign_fuls": "157",
+      "is_tmk": true,
+      "as_first": 3,
+      "as_second": 7,
+      "total_appearances": 10,
+      "second_rate": 0.7
+    },
+    {
+      "sign_fuls": "307",
+      "is_tmk": true,
+      "as_first": 4,
+      "as_second": 8,
+      "total_appearances": 12,
+      "second_rate": 0.6667
+    },
+    {
+      "sign_fuls": "173",
+      "is_tmk": true,
+      "as_first": 35,
+      "as_second": 62,
+      "total_appearances": 97,
+      "second_rate": 0.6392
+    },
+    {
+      "sign_fuls": "045",
+      "is_tmk": true,
+      "as_first": 88,
+      "as_second": 102,
+      "total_appearances": 190,
+      "second_rate": 0.5368
+    },
+    {
+      "sign_fuls": "692",
+      "is_tmk": false,
+      "as_first": 54,
+      "as_second": 55,
+      "total_appearances": 109,
+      "second_rate": 0.5046
+    },
+    {
+      "sign_fuls": "718",
+      "is_tmk": true,
+      "as_first": 10,
+      "as_second": 7,
+      "total_appearances": 17,
+      "second_rate": 0.4118
+    },
+    {
+      "sign_fuls": "461",
+      "is_tmk": true,
+      "as_first": 17,
+      "as_second": 6,
+      "total_appearances": 23,
+      "second_rate": 0.2609
+    },
+    {
+      "sign_fuls": "074",
+      "is_tmk": true,
+      "as_first": 16,
+      "as_second": 5,
+      "total_appearances": 21,
+      "second_rate": 0.2381
+    },
+    {
+      "sign_fuls": "047",
+      "is_tmk": true,
+      "as_first": 120,
+      "as_second": 35,
+      "total_appearances": 155,
+      "second_rate": 0.2258
+    },
+    {
+      "sign_fuls": "430",
+      "is_tmk": true,
+      "as_first": 169,
+      "as_second": 40,
+      "total_appearances": 209,
+      "second_rate": 0.1914
+    },
+    {
+      "sign_fuls": "147",
+      "is_tmk": true,
+      "as_first": 123,
+      "as_second": 14,
+      "total_appearances": 137,
+      "second_rate": 0.1022
+    },
+    {
+      "sign_fuls": "138",
+      "is_tmk": true,
+      "as_first": 37,
+      "as_second": 3,
+      "total_appearances": 40,
+      "second_rate": 0.075
+    },
+    {
+      "sign_fuls": "481",
+      "is_tmk": true,
+      "as_first": 207,
+      "as_second": 11,
+      "total_appearances": 218,
+      "second_rate": 0.0505
+    },
+    {
+      "sign_fuls": "874",
+      "is_tmk": true,
+      "as_first": 82,
+      "as_second": 3,
+      "total_appearances": 85,
+      "second_rate": 0.0353
+    },
+    {
+      "sign_fuls": "129",
+      "is_tmk": true,
+      "as_first": 20,
+      "as_second": 0,
+      "total_appearances": 20,
+      "second_rate": 0.0
+    },
+    {
+      "sign_fuls": "237",
+      "is_tmk": true,
+      "as_first": 5,
+      "as_second": 0,
+      "total_appearances": 5,
+      "second_rate": 0.0
+    },
+    {
+      "sign_fuls": "427",
+      "is_tmk": true,
+      "as_first": 19,
+      "as_second": 0,
+      "total_appearances": 19,
+      "second_rate": 0.0
+    },
+    {
+      "sign_fuls": "858",
+      "is_tmk": true,
+      "as_first": 18,
+      "as_second": 0,
+      "total_appearances": 18,
+      "second_rate": 0.0
+    }
+  ]
+}

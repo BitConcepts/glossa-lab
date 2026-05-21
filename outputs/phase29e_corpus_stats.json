@@ -1,0 +1,33 @@
+{
+  "rows": [
+    {
+      "corpus": "CISI Phase-22 contact-zone seals",
+      "n_inscriptions": 11,
+      "n_tokens": 7,
+      "n_distinct_signs": 6,
+      "mean_length": 0.636
+    },
+    {
+      "corpus": "Mahadevan 1977 (M77)",
+      "n_inscriptions": 1669,
+      "n_tokens": 5361,
+      "n_distinct_signs": 64,
+      "mean_length": 3.212
+    },
+    {
+      "corpus": "Fuls ME vol. 3",
+      "n_inscriptions": 0,
+      "n_tokens": 0,
+      "n_distinct_signs": 0,
+      "mean_length": 0.0,
+      "note": "not bundled (see MathematicaEpigraphicaLoader)"
+    },
+    {
+      "corpus": "ICIT (live)",
+      "n_inscriptions": 0,
+      "note": "API access required (Fuls)"
+    }
+  ],
+  "scale_up_factor_cisi_to_m77": 151.7,
+  "verdict": "Corpus 10x expansion (Phase-29): CISI Phase-22 contact-zone seals (11 inscribed seals) -> Mahadevan 1977 (1669 inscriptions, 151.7x scale-up). Fuls ME vol. 3 + ICIT not yet bundled (would add another ~3.3x and 2.7x respectively when accessible)."
+}

@@ -1,0 +1,277 @@
+{
+  "h_raw_sequence": 10.5268,
+  "h_class_sequence": 10.1366,
+  "entropy_reduction_abs": 0.3901,
+  "entropy_reduction_pct": 3.7,
+  "n_distinct_raw_sequences": 1938,
+  "n_distinct_class_sequences": 1677,
+  "dominant_prefix_clusters": {
+    "35": 942,
+    "10": 508,
+    "-1": 269,
+    "31": 205,
+    "30": 166,
+    "7": 149,
+    "29": 96,
+    "26": 55,
+    "25": 34,
+    "37": 29
+  },
+  "dominant_suffix_clusters": {
+    "-1": 657,
+    "8": 304,
+    "21": 274,
+    "11": 250,
+    "25": 156,
+    "1": 142,
+    "39": 131,
+    "22": 102,
+    "17": 94,
+    "27": 89
+  },
+  "slot_class_occupants": {
+    "0": {
+      "35": 942,
+      "10": 508,
+      "-1": 286,
+      "31": 205,
+      "30": 166,
+      "7": 149,
+      "29": 96,
+      "26": 55
+    },
+    "1": {
+      "-1": 1015,
+      "25": 693,
+      "33": 629,
+      "2": 612,
+      "11": 576,
+      "8": 509,
+      "35": 419,
+      "1": 413
+    },
+    "-1": {
+      "-1": 657,
+      "8": 304,
+      "21": 274,
+      "11": 250,
+      "25": 156,
+      "1": 142,
+      "39": 131,
+      "22": 102
+    }
+  },
+  "recurrent_structural_templates": [
+    {
+      "template": [
+        33,
+        21
+      ],
+      "count": 278
+    },
+    {
+      "template": [
+        35,
+        20
+      ],
+      "count": 216
+    },
+    {
+      "template": [
+        10,
+        35
+      ],
+      "count": 166
+    },
+    {
+      "template": [
+        35,
+        11
+      ],
+      "count": 142
+    },
+    {
+      "template": [
+        8,
+        11
+      ],
+      "count": 132
+    },
+    {
+      "template": [
+        25,
+        8
+      ],
+      "count": 117
+    },
+    {
+      "template": [
+        35,
+        1
+      ],
+      "count": 114
+    },
+    {
+      "template": [
+        25,
+        33
+      ],
+      "count": 114
+    },
+    {
+      "template": [
+        8,
+        33
+      ],
+      "count": 114
+    },
+    {
+      "template": [
+        35,
+        25
+      ],
+      "count": 114
+    },
+    {
+      "template": [
+        31,
+        11
+      ],
+      "count": 103
+    },
+    {
+      "template": [
+        11,
+        8
+      ],
+      "count": 101
+    },
+    {
+      "template": [
+        10,
+        25
+      ],
+      "count": 99
+    },
+    {
+      "template": [
+        7,
+        35
+      ],
+      "count": 95
+    },
+    {
+      "template": [
+        11,
+        2
+      ],
+      "count": 94
+    },
+    {
+      "template": [
+        25,
+        25
+      ],
+      "count": 92
+    },
+    {
+      "template": [
+        11,
+        25
+      ],
+      "count": 88
+    },
+    {
+      "template": [
+        35,
+        13
+      ],
+      "count": 83
+    },
+    {
+      "template": [
+        33,
+        39
+      ],
+      "count": 83
+    },
+    {
+      "template": [
+        35,
+        31
+      ],
+      "count": 82
+    },
+    {
+      "template": [
+        35,
+        31,
+        11
+      ],
+      "count": 79
+    },
+    {
+      "template": [
+        31,
+        17
+      ],
+      "count": 77
+    },
+    {
+      "template": [
+        25,
+        11
+      ],
+      "count": 76
+    },
+    {
+      "template": [
+        8,
+        2
+      ],
+      "count": 72
+    },
+    {
+      "template": [
+        25,
+        2
+      ],
+      "count": 68
+    },
+    {
+      "template": [
+        35,
+        17
+      ],
+      "count": 67
+    },
+    {
+      "template": [
+        25,
+        1
+      ],
+      "count": 64
+    },
+    {
+      "template": [
+        2,
+        2
+      ],
+      "count": 64
+    },
+    {
+      "template": [
+        30,
+        8
+      ],
+      "count": 63
+    },
+    {
+      "template": [
+        11,
+        33
+      ],
+      "count": 59
+    }
+  ]
+}

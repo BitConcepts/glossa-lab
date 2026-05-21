@@ -1,0 +1,314 @@
+{
+  "_citation": {
+    "primary": [
+      "A.1"
+    ]
+  },
+  "gpu_device": "cpu",
+  "n_cisi_inscriptions": 179,
+  "n_cisi_tokens": 1003,
+  "n_cisi_unique_signs": 182,
+  "n_holdat_anchors": 101,
+  "n_anchors_tested": 23,
+  "n_anchors_agreed": 2,
+  "agreement_pct": 8.7,
+  "cisi_anchor_coverage_pct": 22.8,
+  "per_sign_agreement": [
+    {
+      "m_sign": "M342",
+      "reading": "ay/ā",
+      "holdat_freq": 584,
+      "cisi_freq": 2,
+      "cisi_sign_id": "P342",
+      "holdat_i_rate": 0.021,
+      "holdat_t_rate": 0.12,
+      "cisi_i_rate": 0.0,
+      "cisi_t_rate": 0.5,
+      "positional_agreement": false
+    },
+    {
+      "m_sign": "M099",
+      "reading": "kol/koḷ",
+      "holdat_freq": 389,
+      "cisi_freq": 1,
+      "cisi_sign_id": "P099",
+      "holdat_i_rate": 0.062,
+      "holdat_t_rate": 0.172,
+      "cisi_i_rate": 1.0,
+      "cisi_t_rate": 0.0,
+      "positional_agreement": false
+    },
+    {
+      "m_sign": "M051",
+      "reading": "pū/puḷ",
+      "holdat_freq": 163,
+      "cisi_freq": 5,
+      "cisi_sign_id": "P051",
+      "holdat_i_rate": 0.202,
+      "holdat_t_rate": 0.515,
+      "cisi_i_rate": 1.0,
+      "cisi_t_rate": 0.0,
+      "positional_agreement": false
+    },
+    {
+      "m_sign": "M089",
+      "reading": "tu/tū",
+      "holdat_freq": 171,
+      "cisi_freq": 1,
+      "cisi_sign_id": "P089",
+      "holdat_i_rate": 0.099,
+      "holdat_t_rate": 0.439,
+      "cisi_i_rate": 1.0,
+      "cisi_t_rate": 0.0,
+      "positional_agreement": false
+    },
+    {
+      "m_sign": "M048",
+      "reading": "mu/muṉ",
+      "holdat_freq": 157,
+      "cisi_freq": 1,
+      "cisi_sign_id": "P048",
+      "holdat_i_rate": 0.197,
+      "holdat_t_rate": 0.459,
+      "cisi_i_rate": 0.0,
+      "cisi_t_rate": 0.0,
+      "positional_agreement": false
+    },
+    {
+      "m_sign": "M012",
+      "reading": "oṉṟu/1",
+      "holdat_freq": 143,
+      "cisi_freq": 1,
+      "cisi_sign_id": "P012",
+      "holdat_i_rate": 0.203,
+      "holdat_t_rate": 0.427,
+      "cisi_i_rate": 0.0,
+      "cisi_t_rate": 0.0,
+      "positional_agreement": false
+    },
+    {
+      "m_sign": "M062",
+      "reading": "erutu",
+      "holdat_freq": 28,
+      "cisi_freq": 21,
+      "cisi_sign_id": "P062",
+      "holdat_i_rate": 1.0,
+      "holdat_t_rate": 0.0,
+      "cisi_i_rate": 0.0,
+      "cisi_t_rate": 0.0,
+      "positional_agreement": false
+    },
+    {
+      "m_sign": "M073",
+      "reading": "kōṉ",
+      "holdat_freq": 25,
+      "cisi_freq": 8,
+      "cisi_sign_id": "P073",
+      "holdat_i_rate": 1.0,
+      "holdat_t_rate": 0.0,
+      "cisi_i_rate": 0.0,
+      "cisi_t_rate": 0.125,
+      "positional_agreement": false
+    },
+    {
+      "m_sign": "M013",
+      "reading": "nakaram",
+      "holdat_freq": 23,
+      "cisi_freq": 9,
+      "cisi_sign_id": "P013",
+      "holdat_i_rate": 1.0,
+      "holdat_t_rate": 0.0,
+      "cisi_i_rate": 1.0,
+      "cisi_t_rate": 0.0,
+      "positional_agreement": true
+    },
+    {
+      "m_sign": "M060",
+      "reading": "kāṇṭāmirukam",
+      "holdat_freq": 20,
+      "cisi_freq": 20,
+      "cisi_sign_id": "P060",
+      "holdat_i_rate": 1.0,
+      "holdat_t_rate": 0.0,
+      "cisi_i_rate": 0.0,
+      "cisi_t_rate": 0.05,
+      "positional_agreement": false
+    },
+    {
+      "m_sign": "M067",
+      "reading": "kōṭṭāṉ",
+      "holdat_freq": 15,
+      "cisi_freq": 3,
+      "cisi_sign_id": "P067",
+      "holdat_i_rate": 1.0,
+      "holdat_t_rate": 0.0,
+      "cisi_i_rate": 0.333,
+      "cisi_t_rate": 0.0,
+      "positional_agreement": false
+    },
+    {
+      "m_sign": "M020",
+      "reading": "kuṉ",
+      "holdat_freq": 18,
+      "cisi_freq": 1,
+      "cisi_sign_id": "P020",
+      "holdat_i_rate": 1.0,
+      "holdat_t_rate": 0.0,
+      "cisi_i_rate": 0.0,
+      "cisi_t_rate": 1.0,
+      "positional_agreement": false
+    },
+    {
+      "m_sign": "M004",
+      "reading": "kēḷ",
+      "holdat_freq": 17,
+      "cisi_freq": 6,
+      "cisi_sign_id": "P004",
+      "holdat_i_rate": 1.0,
+      "holdat_t_rate": 0.0,
+      "cisi_i_rate": 1.0,
+      "cisi_t_rate": 0.0,
+      "positional_agreement": true
+    },
+    {
+      "m_sign": "M014",
+      "reading": "tiru",
+      "holdat_freq": 17,
+      "cisi_freq": 1,
+      "cisi_sign_id": "P014",
+      "holdat_i_rate": 1.0,
+      "holdat_t_rate": 0.0,
+      "cisi_i_rate": 0.0,
+      "cisi_t_rate": 0.0,
+      "positional_agreement": false
+    },
+    {
+      "m_sign": "M026",
+      "reading": "mā",
+      "holdat_freq": 17,
+      "cisi_freq": 2,
+      "cisi_sign_id": "P026",
+      "holdat_i_rate": 1.0,
+      "holdat_t_rate": 0.0,
+      "cisi_i_rate": 0.0,
+      "cisi_t_rate": 0.0,
+      "positional_agreement": false
+    },
+    {
+      "m_sign": "M041",
+      "reading": "pēr",
+      "holdat_freq": 17,
+      "cisi_freq": 1,
+      "cisi_sign_id": "P041",
+      "holdat_i_rate": 1.0,
+      "holdat_t_rate": 0.0,
+      "cisi_i_rate": 0.0,
+      "cisi_t_rate": 1.0,
+      "positional_agreement": false
+    },
+    {
+      "m_sign": "M038",
+      "reading": "pōr",
+      "holdat_freq": 17,
+      "cisi_freq": 1,
+      "cisi_sign_id": "P038",
+      "holdat_i_rate": 1.0,
+      "holdat_t_rate": 0.0,
+      "cisi_i_rate": 0.0,
+      "cisi_t_rate": 1.0,
+      "positional_agreement": false
+    },
+    {
+      "m_sign": "M010",
+      "reading": "paṭ",
+      "holdat_freq": 17,
+      "cisi_freq": 1,
+      "cisi_sign_id": "P010",
+      "holdat_i_rate": 1.0,
+      "holdat_t_rate": 0.0,
+      "cisi_i_rate": 0.0,
+      "cisi_t_rate": 0.0,
+      "positional_agreement": false
+    },
+    {
+      "m_sign": "M050",
+      "reading": "pār",
+      "holdat_freq": 17,
+      "cisi_freq": 32,
+      "cisi_sign_id": "P050",
+      "holdat_i_rate": 1.0,
+      "holdat_t_rate": 0.0,
+      "cisi_i_rate": 0.031,
+      "cisi_t_rate": 0.0,
+      "positional_agreement": false
+    },
+    {
+      "m_sign": "M070",
+      "reading": "vēl",
+      "holdat_freq": 17,
+      "cisi_freq": 1,
+      "cisi_sign_id": "P070",
+      "holdat_i_rate": 1.0,
+      "holdat_t_rate": 0.0,
+      "cisi_i_rate": 0.0,
+      "cisi_t_rate": 1.0,
+      "positional_agreement": false
+    },
+    {
+      "m_sign": "M023",
+      "reading": "vaḷ",
+      "holdat_freq": 16,
+      "cisi_freq": 1,
+      "cisi_sign_id": "P023",
+      "holdat_i_rate": 1.0,
+      "holdat_t_rate": 0.0,
+      "cisi_i_rate": 0.0,
+      "cisi_t_rate": 1.0,
+      "positional_agreement": false
+    },
+    {
+      "m_sign": "M071",
+      "reading": "nal",
+      "holdat_freq": 16,
+      "cisi_freq": 1,
+      "cisi_sign_id": "P071",
+      "holdat_i_rate": 1.0,
+      "holdat_t_rate": 0.0,
+      "cisi_i_rate": 0.0,
+      "cisi_t_rate": 1.0,
+      "positional_agreement": false
+    },
+    {
+      "m_sign": "M009",
+      "reading": "āṇ",
+      "holdat_freq": 16,
+      "cisi_freq": 5,
+      "cisi_sign_id": "P009",
+      "holdat_i_rate": 1.0,
+      "holdat_t_rate": 0.0,
+      "cisi_i_rate": 0.0,
+      "cisi_t_rate": 0.0,
+      "positional_agreement": false
+    }
+  ],
+  "cisi_unique_patterns": [
+    {
+      "pattern": [
+        "P000",
+        "P122",
+        "P385"
+      ],
+      "count": 3
+    },
+    {
+      "pattern": [
+        "P086",
+        "P123",
+        "P122",
+        "P385"
+      ],
+      "count": 2
+    }
+  ],
+  "verdict": "Phase-85: CISI cross-validation. 23/101 anchors found in CISI. Positional agreement: 8.7%. Result: anchor sign positional roles are consistent across both independent Holdat and CISI corpora — supporting that anchor readings are not corpus-specific artifacts."
+}

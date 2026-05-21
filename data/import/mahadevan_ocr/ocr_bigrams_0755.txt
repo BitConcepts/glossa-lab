@@ -1,0 +1,29 @@
+TABLE II: FREQUENCY OF PAIRWISE COMBINATIONS
+
+|  PAIR | FREQ | PAIR | FREQ | PAIR | FREQ | PAIR | FREQ  |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+|  U^{re} | 1 | III A | 1 | Y O | 1 | A O | 17  |
+|  ♀ | 1 | III A | 1 | Y O | 2 | T O | 26  |
+|  ♂ | 2 | Y A | 6 | R O | 2 | D O | 1  |
+|  ♂♂ | 1 | X A | 6 | H O | 2 | I// O | 6  |
+|  ♂♂ | 1 | H A | 2 | XX O | 1 | II// O | 17  |
+|  ♂♂ | 1 | T A | 1 | T O | 1 | W O | 1  |
+|  ♂♂ | 1 | Δ A | 1 | D O | 1 | D T | 1  |
+|  ♂♂ | 1 | Δ A | 1 | Y O | 1 | Y# | 4  |
+|  ♂♂ | 1 | Y A | 1 | W O | 2 | Q # | 1  |
+|  ♂♂ | 1 | E A | 1 | U O | 21 | A # | 1  |
+|  ♂♂ | 3 | W A | 1 | U O | 1 | ◇ # | 1  |
+|  ♂♂ | 1 | U A | 3 | U O | 1 | U # | 5  |
+|  ♂♂ | 1 | ♂♂ O | 1 | U O | 6 | U I # | 1  |
+|  ♂♂ | 2 | ♂ O | 1 | ♂ O | 1 | U I # | 1  |
+|  ♂♂ | 1 | ♂ O | 1 | ♂ O | 2 | ♂ # | 1  |
+|  ♂♂ | 6 | ♂ O | 1 | ♂ O | 10 | ◇ # | 3  |
+|  ♂♂ | 3 | ♂ O | 34 | ♂ O | 2 |  |   |
+|  ♂♂ | 16 | ♂ O | 3 | ♂ O | 1 |  |   |
+
+NOTES:
+1. Abbreviations: PAIR: Pairwise combinations of signs; FREQ: Frequency.
+2. The pairwise combinations of signs are arranged in the order of the first member and read from right to left.
+3. Pairwise combinations listed in this Table occur within a line of text.
+
+745

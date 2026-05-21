@@ -1,24 +1,152 @@
 {
   "id": "indus_phase21b_site_stratified",
-  "name": "Indus Phase-21b \u2014 site-stratified spectral fingerprint",
+  "name": "Indus Phase-21b — site-stratified spectral fingerprint",
   "description": "Phase-21 follow-up to Phase-20 finding 2 (the 16-sign distributional cluster is enriched 2.5x at site-prefix 510000 = Banawali/Rakhigarhi). This graph stratifies M77 by Mahadevan site_code prefix (Mohenjo-daro / Harappa / Lothal / Kalibangan / Banawali / Other) and computes the bigram-transition spectral gap per site group. If site groups exhibit materially different spectral signatures (spread >= 0.10), the M77 corpus encodes a regional/dialectal component, not a single uniform script grammar. Output: reports/phase21b_site_stratified.json.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "load",     "type": "expNode", "data": { "atomicId": "M77InscriptionLoader", "label": "Load M77 inscriptions",  "params": { "use_raw": false, "label": "indus_m77" } }, "position": { "x": 60,   "y": 100 } },
-    { "id": "site",     "type": "expNode", "data": { "atomicId": "SiteStratifier",       "label": "Stratify by site_code",  "params": { "min_inscriptions": 30 } }, "position": { "x": 360,  "y": 100 } },
-    { "id": "spectral", "type": "expNode", "data": { "atomicId": "BinSpectralFingerprint", "label": "Per-site spectral fingerprint", "params": {} }, "position": { "x": 660,  "y": 100 } },
-    { "id": "summary",  "type": "expNode", "data": { "atomicId": "PerStratumSummary",     "label": "Per-site summary",        "params": {} }, "position": { "x": 960,  "y": 100 } },
-    { "id": "merge",    "type": "expNode", "data": { "atomicId": "Merger",                "label": "Merge results",          "params": {} }, "position": { "x": 1240, "y": 100 } },
-    { "id": "out",      "type": "expNode", "data": { "atomicId": "JSONExport",            "label": "Save Phase-21b results", "params": { "filename": "phase21b_site_stratified.json" } }, "position": { "x": 1520, "y": 100 } }
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "M77InscriptionLoader",
+        "label": "Load M77 inscriptions",
+        "params": {
+          "use_raw": false,
+          "label": "indus_m77"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "site",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SiteStratifier",
+        "label": "Stratify by site_code",
+        "params": {
+          "min_inscriptions": 30
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    },
+    {
+      "id": "spectral",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BinSpectralFingerprint",
+        "label": "Per-site spectral fingerprint",
+        "params": {}
+      },
+      "position": {
+        "x": 660,
+        "y": 100
+      }
+    },
+    {
+      "id": "summary",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PerStratumSummary",
+        "label": "Per-site summary",
+        "params": {}
+      },
+      "position": {
+        "x": 960,
+        "y": 100
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge results",
+        "params": {}
+      },
+      "position": {
+        "x": 1240,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Phase-21b results",
+        "params": {
+          "filename": "phase21b_site_stratified.json"
+        }
+      },
+      "position": {
+        "x": 1520,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e_load_site",       "source": "load",     "target": "site",     "sourcePort": "inscriptions",    "targetPort": "inscriptions" },
-    { "id": "e_site_spectral",   "source": "site",     "target": "spectral", "sourcePort": "stratifications", "targetPort": "stratifications" },
-    { "id": "e_spectral_summary","source": "spectral", "target": "summary",  "sourcePort": "per_bin",         "targetPort": "per_bin" },
-    { "id": "e_site_merge",      "source": "site",     "target": "merge",    "sourcePort": "summary",         "targetPort": "a" },
-    { "id": "e_spectral_merge",  "source": "spectral", "target": "merge",    "sourcePort": "per_bin",         "targetPort": "b" },
-    { "id": "e_summary_merge",   "source": "summary",  "target": "merge",    "sourcePort": "verdict",         "targetPort": "c" },
-    { "id": "e_load_merge",      "source": "load",     "target": "merge",    "sourcePort": "n_inscriptions",  "targetPort": "d" },
-    { "id": "e_merge_out",       "source": "merge",    "target": "out",      "sourcePort": "json",            "targetPort": "data" }
-  ]
+    {
+      "id": "e_load_site",
+      "source": "load",
+      "target": "site",
+      "sourcePort": "inscriptions",
+      "targetPort": "inscriptions"
+    },
+    {
+      "id": "e_site_spectral",
+      "source": "site",
+      "target": "spectral",
+      "sourcePort": "stratifications",
+      "targetPort": "stratifications"
+    },
+    {
+      "id": "e_spectral_summary",
+      "source": "spectral",
+      "target": "summary",
+      "sourcePort": "per_bin",
+      "targetPort": "per_bin"
+    },
+    {
+      "id": "e_site_merge",
+      "source": "site",
+      "target": "merge",
+      "sourcePort": "summary",
+      "targetPort": "a"
+    },
+    {
+      "id": "e_spectral_merge",
+      "source": "spectral",
+      "target": "merge",
+      "sourcePort": "per_bin",
+      "targetPort": "b"
+    },
+    {
+      "id": "e_summary_merge",
+      "source": "summary",
+      "target": "merge",
+      "sourcePort": "verdict",
+      "targetPort": "c"
+    },
+    {
+      "id": "e_load_merge",
+      "source": "load",
+      "target": "merge",
+      "sourcePort": "n_inscriptions",
+      "targetPort": "d"
+    },
+    {
+      "id": "e_merge_out",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

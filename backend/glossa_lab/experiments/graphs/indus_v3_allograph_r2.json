@@ -1,6 +1,6 @@
 {
   "id": "indus_v3_allograph_r2",
-  "name": "Indus V3 \u2014 Allograph Reduction Round 2 (713\u2192266)",
+  "name": "Indus V3 — Allograph Reduction Round 2 (713→266)",
   "description": "Merge 402 rare signs (freq<5) into nearest positional-behavior neighbor. Reduces 713 sign types to 266 effective signs.",
   "nodes": [
     {
@@ -60,5 +60,6 @@
       "sourcePort": "result",
       "targetPort": "data"
     }
-  ]
+  ],
+  "graph_type": "experiment"
 }

@@ -711,6 +711,67 @@ caveated_claims += [
      "NEEDS CAVEAT — ensemble method limited by SA variance"),
 ]
 
+# ── NEW-S: Phase-166 sibilant DEDR validation ──────────────────────────────
+print("\n── CHECK NEW-S: Phase-166 sibilant DEDR cross-validation ─────────────")
+p166_path = BKRPT / "phase166_sibilant_dedr_validation.json"
+if p166_path.exists():
+    p166 = json.loads(p166_path.read_text(encoding="utf-8"))
+    n_rejected = p166.get("n_rejected", 0)
+    n_confirmed = p166.get("n_confirmed", 0)
+    overall = p166.get("overall_verdict", "UNKNOWN")
+    dedr_hits = p166.get("dedr_hit_count", 0)
+    CHECK("Phase-166 sibilant DEDR hits == 4", dedr_hits == 4,
+          f"{dedr_hits}/4 sibilant upgrades have DEDR phonological backing")
+    CHECK("Phase-166 sibilant n_rejected == 0", n_rejected == 0,
+          f"{n_rejected} rejected, {n_confirmed} confirmed, overall={overall}")
+else:
+    WARN("Phase-166 result", "phase166_sibilant_dedr_validation.json not found")
+
+# ── NEW-T: Phase-168 blocker plausibility ───────────────────────────────
+print("\n── CHECK NEW-T: Phase-168 blocker plausibility ─────────────────────")
+p168_path = BKRPT / "phase168_blocker_sa.json"
+if p168_path.exists():
+    p168 = json.loads(p168_path.read_text(encoding="utf-8"))
+    n_tested  = p168.get("n_blockers_tested", 0)
+    n_plaus   = p168.get("n_plausible", p168.get("n_converged_to_low", 0))
+    cov_est   = p168.get("new_coverage_pct", 0)
+    CHECK("Phase-168 blocker plausibility >= 90%", n_plaus >= 0.9 * max(n_tested, 1),
+          f"{n_plaus}/{n_tested} LOW blocker readings phonotactically plausible")
+    CHECK("Phase-168 coverage estimate >= 91%", cov_est >= 91.0,
+          f"Coverage if blockers promoted: {cov_est:.2f}%")
+else:
+    WARN("Phase-168 result", "phase168_blocker_sa.json not found")
+
+# ── NEW-U: Phase-169 master synthesis aggregate confidence ────────────────
+print("\n── CHECK NEW-U: Phase-169 master synthesis ─────────────────────────")
+p169_path = BKRPT / "phase169_master_synthesis.json"
+if p169_path.exists():
+    p169 = json.loads(p169_path.read_text(encoding="utf-8"))
+    agg_conf  = p169.get("aggregate_confidence_pct", 0)
+    n_items   = p169.get("n_evidence_items", 0)
+    n_strong  = p169.get("n_strongly_confirmed", 0)
+    CHECK("Phase-169 aggregate confidence >= 75%", agg_conf >= 75.0,
+          f"{agg_conf:.1f}% aggregate confidence across {n_items} evidence items")
+    CHECK("Phase-169 strongly confirmed >= 15", n_strong >= 15,
+          f"{n_strong} items STRONGLY_SUPPORTED or CERTAIN")
+else:
+    WARN("Phase-169 result", "phase169_master_synthesis.json not found")
+
+# ── NEW-V: Phase-170 grammar variance retest ─────────────────────────────
+print("\n── CHECK NEW-V: Phase-170 grammar variance retest (161 H+M) ─────────")
+p170_path = BKRPT / "phase170_grammar_variance.json"
+if p170_path.exists():
+    p170 = json.loads(p170_path.read_text(encoding="utf-8"))
+    sign_acc = p170.get("sign_accuracy_pct", 0)
+    hm_count = p170.get("hm_count", 0)
+    delta    = p170.get("delta_from_phase133", 0)
+    CHECK("Phase-170 grammar sign accuracy >= 90%", sign_acc >= 90.0,
+          f"{sign_acc:.1f}% sign-level grammar accuracy at {hm_count} H+M anchors")
+    CHECK("Phase-170 H+M count == 161", hm_count == 161,
+          f"{hm_count} H+M signs tested (expected 161)")
+else:
+    WARN("Phase-170 result", "phase170_grammar_variance.json not found")
+
 # ── FINAL VERDICT
 print("\n" + "=" * 70)
 n_fails = len(issues)

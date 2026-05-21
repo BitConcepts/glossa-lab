@@ -3,10 +3,45 @@
   "name": "Transparency Benchmark — Anchor Attribution",
   "description": "Measures what fraction of solution space narrowing is attributable to anchor injection vs the language model alone. Runs Geez anchor-convergence as a sub-experiment and reports attribution: anchors vs LM signal. Validates that anchor propagation is real, not a language model artefact.",
   "nodes": [
-    {"id": "sub", "type": "expNode", "data": {"atomicId": "SubExperiment", "label": "Geez Anchor Convergence", "params": {"experiment_id": "geez_anchor_convergence"}}, "position": {"x": 60, "y": 200}},
-    {"id": "out", "type": "expNode", "data": {"atomicId": "JSONExport", "label": "Attribution Report", "params": {"filename": "transparency_benchmark.json"}}, "position": {"x": 400, "y": 200}}
+    {
+      "id": "sub",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SubExperiment",
+        "label": "Geez Anchor Convergence",
+        "params": {
+          "experiment_id": "geez_anchor_convergence"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 200
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Attribution Report",
+        "params": {
+          "filename": "transparency_benchmark.json"
+        }
+      },
+      "position": {
+        "x": 400,
+        "y": 200
+      }
+    }
   ],
   "edges": [
-    {"id": "e1", "source": "sub", "target": "out", "sourcePort": "summary_table", "targetPort": "data"}
-  ]
+    {
+      "id": "e1",
+      "source": "sub",
+      "target": "out",
+      "sourcePort": "summary_table",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

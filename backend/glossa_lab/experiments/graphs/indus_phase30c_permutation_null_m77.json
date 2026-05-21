@@ -4,14 +4,123 @@
   "description": "Phase-30 #3: tightens the Phase-30a 'gap = 0 in every bin' finding with a positional permutation null. For each of the 8 length bins from Phase-30a, sample N=200 length-matched shuffles of the bin's flat token bag, compute the spectral gap on each shuffle, and report the one-sided empirical p-value P(null >= observed). Bins where the observed gap is indistinguishable from the null have no extra bigram structure beyond unigram frequency. Output: reports/phase30c_permutation_null_m77.json.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "load",  "type": "expNode", "data": { "atomicId": "M77InscriptionLoader",  "label": "Load M77 inscriptions",     "params": { "use_raw": false, "label": "indus_m77" } }, "position": { "x":   60, "y": 100 } },
-    { "id": "strat", "type": "expNode", "data": { "atomicId": "LengthStratifier",      "label": "Length-stratify (8 bins)",  "params": { "bins": [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,8],[9,9999]] } }, "position": { "x":  360, "y": 100 } },
-    { "id": "null",  "type": "expNode", "data": { "atomicId": "ShufflePermutationNull", "label": "Per-bin permutation null",  "params": { "n_permutations": 50,  "seed": 42 } },     "position": { "x":  660, "y": 100 } },
-    { "id": "out",   "type": "expNode", "data": { "atomicId": "JSONExport",             "label": "Save Phase-30c results",    "params": { "filename": "phase30c_permutation_null_m77.json" } }, "position": { "x":  960, "y": 100 } }
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "M77InscriptionLoader",
+        "label": "Load M77 inscriptions",
+        "params": {
+          "use_raw": false,
+          "label": "indus_m77"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "strat",
+      "type": "expNode",
+      "data": {
+        "atomicId": "LengthStratifier",
+        "label": "Length-stratify (8 bins)",
+        "params": {
+          "bins": [
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              3,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              5,
+              5
+            ],
+            [
+              6,
+              6
+            ],
+            [
+              7,
+              8
+            ],
+            [
+              9,
+              9999
+            ]
+          ]
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    },
+    {
+      "id": "null",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ShufflePermutationNull",
+        "label": "Per-bin permutation null",
+        "params": {
+          "n_permutations": 50,
+          "seed": 42
+        }
+      },
+      "position": {
+        "x": 660,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Phase-30c results",
+        "params": {
+          "filename": "phase30c_permutation_null_m77.json"
+        }
+      },
+      "position": {
+        "x": 960,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e1", "source": "load",  "target": "strat", "sourcePort": "sequences",       "targetPort": "sequences" },
-    { "id": "e2", "source": "strat", "target": "null",  "sourcePort": "stratifications", "targetPort": "stratifications" },
-    { "id": "e3", "source": "null",  "target": "out",   "targetPort": "data" }
-  ]
+    {
+      "id": "e1",
+      "source": "load",
+      "target": "strat",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "strat",
+      "target": "null",
+      "sourcePort": "stratifications",
+      "targetPort": "stratifications"
+    },
+    {
+      "id": "e3",
+      "source": "null",
+      "target": "out",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

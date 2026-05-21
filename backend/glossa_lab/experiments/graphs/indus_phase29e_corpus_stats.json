@@ -4,13 +4,69 @@
   "description": "Phase-29 #6: side-by-side corpus statistics across the four available corpora.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "load",  "type": "expNode", "data": { "atomicId": "Phase29CorpusLoader", "label": "Load",  "params": {} }, "position": { "x": 60,  "y": 100 } },
-    { "id": "stats", "type": "expNode", "data": { "atomicId": "Phase29CorpusStats",  "label": "Stats", "params": {} }, "position": { "x": 360, "y": 100 } },
-    { "id": "out",   "type": "expNode", "data": { "atomicId": "JSONExport",          "label": "Save",  "params": { "filename": "phase29e_corpus_stats.json" } }, "position": { "x": 660, "y": 100 } }
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Phase29CorpusLoader",
+        "label": "Load",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "stats",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Phase29CorpusStats",
+        "label": "Stats",
+        "params": {}
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save",
+        "params": {
+          "filename": "phase29e_corpus_stats.json"
+        }
+      },
+      "position": {
+        "x": 660,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e1", "source": "load",  "target": "stats", "sourcePort": "inscribed_seals",        "targetPort": "inscribed_seals" },
-    { "id": "e2", "source": "load",  "target": "stats", "sourcePort": "mahadevan_inscriptions", "targetPort": "mahadevan_inscriptions" },
-    { "id": "e3", "source": "stats", "target": "out",   "targetPort": "data" }
-  ]
+    {
+      "id": "e1",
+      "source": "load",
+      "target": "stats",
+      "sourcePort": "inscribed_seals",
+      "targetPort": "inscribed_seals"
+    },
+    {
+      "id": "e2",
+      "source": "load",
+      "target": "stats",
+      "sourcePort": "mahadevan_inscriptions",
+      "targetPort": "mahadevan_inscriptions"
+    },
+    {
+      "id": "e3",
+      "source": "stats",
+      "target": "out",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

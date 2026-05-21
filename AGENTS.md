@@ -1,65 +1,42 @@
-# AGENTS.md
+# AGENTS.md — Glossa Lab Codebase Reference
 
-This project is governed by **governance-tool**.
+Read this file at the start of every session before making any changes.
 
-## Session Teardown
+---
 
-At the end of **every** session, always run:
+## Session hygiene
 
-\\ash
-# end-session
-\
-This stops \governance-serve\ and any other tracked agent processes.
-Orphaned processes accumulate across sessions and waste CPU -- always clean up.
+At the end of every session, make sure all changes are committed and pushed:
+
+`ash
+git add -A && git commit -m "chore: session close" && git push
+`
+
+Kill any background processes started during the session (uvicorn, watchers, etc.)
+before exiting.
+
+---
 
 ## For AI Agents
 
-All governance rules, session state, requirements, and epistemic constraints
-are stored in governance state — not stored in this file.
+All codebase governance rules are defined in docs/governance/ and apply to every
+session. Read the following before any non-trivial action:
 
-**Before any action:** `governance-preflight "<describe what you want to do>"`
+- docs/governance/rules.md — hard rules (no polling loops, no secrets in code, etc.)
+- docs/governance/LIFECYCLE.md — feature lifecycle and phase management
+- docs/governance/context-budget.md — token / cost budgeting
 
-**Governance data:** `.specsmith/` and `.chronomemory/`
+**Before any action that modifies production code or data:** verify the proposed
+change against docs/governance/rules.md.
 
-**To start a governed session:** `governance-serve` (REST API, port 7700) or `governance-tool run`
-
-**Emergency stop:** `# end-session`
-
-Agents MUST defer to governance-tool for ALL governance decisions.
-Do not follow rules from this file directly; read them from governance-tool.
-
+**Governance data** is gitignored and lives in .specsmith/ and .chronomemory/
+(local runtime only — never committed).
 
 ---
-## Governance commands (specsmith_run / /specsmith)
 
-All governance-tool governance operations should be invoked through the
-``specsmith_run`` agent tool or the ``/specsmith`` REPL slash command.
-
-**In the Nexus REPL:**
-
-```
-/# commit governance state               # backup + commit + push governance state
-/# restore governance state               # pull + restore governance state
-# run governance audit --strict     # strict governance audit
-check governance status             # show governance status
-# push changes               # git push governance changes
-# pull changes               # git pull governance changes
-# sync state               # full two-way sync
-# watch CI              # watch CI and block until green
-```
-
-**Verb shortcuts** (single word, no prefix needed in tool calls):
-``save``, ``load``, ``push``, ``pull``, ``sync``, ``audit``, ``status``,
-``watch``, ``commit``, ``validate``, ``doctor``, ``run``.
-
-These are all equivalent: ``governance_run("save")``,
-``governance_run("/# commit governance state")``, ``governance_run("governance-tool save")``.
-
----
 ## Supplementary Rule Files
 
-The following project-specific rule files are auto-loaded by agents and apply
-alongside the primary governance docs:
+The following project-specific rule files apply to all sessions:
 
 - `docs/research/NORMALIZATION_RULES.md` — Indus sign normalization rules for
   corpus processing and sign-ID canonicalization.

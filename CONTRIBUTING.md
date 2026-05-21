@@ -1,6 +1,6 @@
 # Contributing to glossa-lab
 
-Thank you for your interest in contributing! This project uses the [Agentic AI Development Workflow Specification](https://github.com/BitConcepts/specsmith) for governance.
+Thank you for your interest in contributing! This project follows the governance rules defined in `docs/governance/`.
 
 ## Getting Started
 

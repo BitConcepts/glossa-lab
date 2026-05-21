@@ -2095,7 +2095,7 @@ for _d in [
 ]:
     ATOMIC_NODES[_d.id] = _d
 
-# ── CTT / Constraint Topology nodes (Layer1Labs Silicon, 2026) ─────────────────────────────
+# ── CTT / Constraint Topology nodes (BitConcepts LLC, 2026) ─────────────────────────────
 try:
     from glossa_lab.experiment_graph_ctt import _ctt_node_defs as _ctt_defs  # noqa: PLC0415
     for _d in _ctt_defs():

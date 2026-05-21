@@ -1,7 +1,7 @@
 # EXPERT_SUMMARY_PACKAGE
 **Version**: 1.0 (DRAFT — For controlled disclosure only)  
 **Date**: 2026-04-23  
-**Owner**: Tristen Pierson / Layer1Labs Silicon, Inc.  
+**Owner**: Tristen Pierson / BitConcepts LLC  
 **Confidentiality**: CONTROLLED — Share only per Section 10 protocol
 
 ---
@@ -74,5 +74,5 @@ We have developed a computational methodology — Corpus-Grounded Structural Ana
 ## Contact
 
 Tristen Pierson  
-Layer1Labs Silicon, Inc.  
+BitConcepts LLC  
 [Contact via Dr. Fuls' initial communication channel]

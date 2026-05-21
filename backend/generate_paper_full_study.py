@@ -72,7 +72,7 @@ doc = SimpleDocTemplate(
     leftMargin=3*cm, rightMargin=3*cm,
     topMargin=2.5*cm, bottomMargin=2.5*cm,
     title="Glossa Lab: Computational Decipherment and the Linear A Problem",
-    author=\"Layer1Labs Silicon, Inc.\",
+    author=\"BitConcepts LLC\",
 )
 
 styles = getSampleStyleSheet()
@@ -143,7 +143,7 @@ c.append(Paragraph(
     "Decipherment Validation, Linear A Phonological Analysis, and Anti-Circularity Experiments",SUBTITLE))
 c.append(Spacer(1, 0.3*cm))
 c.append(HRFlowable(width="100%",thickness=0.5,color=MGREY,spaceAfter=8))
-c.append(Paragraph("Layer1Labs Silicon, Inc. \u00B7 Glossa Lab Research Programme · 2026", AUTHORS))
+c.append(Paragraph("BitConcepts LLC \u00B7 Glossa Lab Research Programme · 2026", AUTHORS))
 c.append(Paragraph(
     f"Version 1.0 · {datetime.now(timezone.utc).strftime('%B %Y')} · git main",
     ParagraphStyle("ver",parent=styles["Normal"],fontSize=9,alignment=TA_CENTER,
@@ -761,7 +761,7 @@ c.append(Paragraph("References", H1))
 refs = [
     "Godart, L. & Olivier, J-P. (1976\u20131985). Recueil des inscriptions en Linéaire A (GORILA). 5 vols. Paris: Geuthner.",
     "Mahadevan, I. (1977). The Indus Script: Texts, Concordance and Tables. Memoirs of the Archaeological Survey of India, No. 77.",
-    "Merkur, M. (2024). Kandles phonetic analysis system. US Patent Application [REDACTED-PATENT-PUB].",
+    
     "Packard, D.W. (1974). Minoan Linear A. University of California Press.",
     "Palmer, L.R. (1958). Luvian and Linear A. Transactions of the Philological Society, 75\u2013100.",
     "Parpola, A. (1994). Deciphering the Indus Script. Cambridge University Press.",

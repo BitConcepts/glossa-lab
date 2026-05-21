@@ -15,6 +15,7 @@ from __future__ import annotations
 import asyncio
 import json
 import logging
+import socket
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -271,6 +272,8 @@ def http_get_json(
     except urllib.error.URLError as exc:
         reason = str(exc.reason) if exc.reason else "network error"
         raise FetcherError(f"{reason} — {_short_url(full_url)}") from exc
+    except (TimeoutError, socket.timeout) as exc:
+        raise FetcherError(f"read timeout after {timeout:.0f}s — {_short_url(full_url)}") from exc
     except json.JSONDecodeError as exc:
         raise FetcherError(f"Invalid JSON from {_short_url(full_url)}: {exc.msg}") from exc
 

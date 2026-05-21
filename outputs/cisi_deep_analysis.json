@@ -1,0 +1,842 @@
+{
+  "n_inscriptions": 178,
+  "n_tokens": 1003,
+  "n_distinct": 182,
+  "terminal_signs": [
+    [
+      "P226",
+      {
+        "symbol": "P226",
+        "count": 4,
+        "t_rate": 1.0,
+        "i_rate": 0.0,
+        "m_rate": 0.0,
+        "pos_class": "TERMINAL"
+      }
+    ],
+    [
+      "P385",
+      {
+        "symbol": "P385",
+        "count": 35,
+        "t_rate": 0.829,
+        "i_rate": 0.0,
+        "m_rate": 0.171,
+        "pos_class": "TERMINAL"
+      }
+    ],
+    [
+      "P256",
+      {
+        "symbol": "P256",
+        "count": 12,
+        "t_rate": 0.75,
+        "i_rate": 0.0,
+        "m_rate": 0.25,
+        "pos_class": "TERMINAL"
+      }
+    ],
+    [
+      "P095",
+      {
+        "symbol": "P095",
+        "count": 4,
+        "t_rate": 0.75,
+        "i_rate": 0.0,
+        "m_rate": 0.25,
+        "pos_class": "TERMINAL"
+      }
+    ],
+    [
+      "P076",
+      {
+        "symbol": "P076",
+        "count": 6,
+        "t_rate": 0.667,
+        "i_rate": 0.0,
+        "m_rate": 0.333,
+        "pos_class": "TERMINAL"
+      }
+    ],
+    [
+      "P108",
+      {
+        "symbol": "P108",
+        "count": 5,
+        "t_rate": 0.6,
+        "i_rate": 0.0,
+        "m_rate": 0.4,
+        "pos_class": "TERMINAL"
+      }
+    ]
+  ],
+  "initial_signs": [
+    [
+      "P013",
+      {
+        "symbol": "P013",
+        "count": 9,
+        "t_rate": 0.0,
+        "i_rate": 1.0,
+        "m_rate": 0.0,
+        "pos_class": "INITIAL"
+      }
+    ],
+    [
+      "P004",
+      {
+        "symbol": "P004",
+        "count": 6,
+        "t_rate": 0.0,
+        "i_rate": 1.0,
+        "m_rate": 0.0,
+        "pos_class": "INITIAL"
+      }
+    ],
+    [
+      "P051",
+      {
+        "symbol": "P051",
+        "count": 5,
+        "t_rate": 0.0,
+        "i_rate": 1.0,
+        "m_rate": 0.0,
+        "pos_class": "INITIAL"
+      }
+    ],
+    [
+      "P001",
+      {
+        "symbol": "P001",
+        "count": 4,
+        "t_rate": 0.0,
+        "i_rate": 1.0,
+        "m_rate": 0.0,
+        "pos_class": "INITIAL"
+      }
+    ],
+    [
+      "P301",
+      {
+        "symbol": "P301",
+        "count": 6,
+        "t_rate": 0.0,
+        "i_rate": 0.833,
+        "m_rate": 0.167,
+        "pos_class": "INITIAL"
+      }
+    ],
+    [
+      "P324",
+      {
+        "symbol": "P324",
+        "count": 99,
+        "t_rate": 0.01,
+        "i_rate": 0.778,
+        "m_rate": 0.212,
+        "pos_class": "INITIAL"
+      }
+    ],
+    [
+      "P217",
+      {
+        "symbol": "P217",
+        "count": 18,
+        "t_rate": 0.111,
+        "i_rate": 0.778,
+        "m_rate": 0.111,
+        "pos_class": "INITIAL"
+      }
+    ],
+    [
+      "P098",
+      {
+        "symbol": "P098",
+        "count": 4,
+        "t_rate": 0.0,
+        "i_rate": 0.75,
+        "m_rate": 0.25,
+        "pos_class": "INITIAL"
+      }
+    ],
+    [
+      "P238",
+      {
+        "symbol": "P238",
+        "count": 3,
+        "t_rate": 0.0,
+        "i_rate": 0.667,
+        "m_rate": 0.333,
+        "pos_class": "INITIAL"
+      }
+    ],
+    [
+      "P000",
+      {
+        "symbol": "P000",
+        "count": 19,
+        "t_rate": 0.316,
+        "i_rate": 0.579,
+        "m_rate": 0.105,
+        "pos_class": "INITIAL"
+      }
+    ],
+    [
+      "P086",
+      {
+        "symbol": "P086",
+        "count": 35,
+        "t_rate": 0.029,
+        "i_rate": 0.543,
+        "m_rate": 0.429,
+        "pos_class": "INITIAL"
+      }
+    ]
+  ],
+  "top_bigrams": [
+    {
+      "a": "P122",
+      "b": "P385",
+      "role_a": "M",
+      "role_b": "T",
+      "count": 29
+    },
+    {
+      "a": "P147",
+      "b": "P316",
+      "role_a": "M",
+      "role_b": "M",
+      "count": 10
+    },
+    {
+      "a": "P324",
+      "b": "P332",
+      "role_a": "I",
+      "role_b": "M",
+      "count": 10
+    },
+    {
+      "a": "P062",
+      "b": "P060",
+      "role_a": "M",
+      "role_b": "M",
+      "count": 9
+    },
+    {
+      "a": "P364",
+      "b": "P122",
+      "role_a": "M",
+      "role_b": "M",
+      "count": 9
+    },
+    {
+      "a": "P013",
+      "b": "P324",
+      "role_a": "I",
+      "role_b": "I",
+      "count": 9
+    },
+    {
+      "a": "P050",
+      "b": "P145",
+      "role_a": "M",
+      "role_b": "M",
+      "count": 8
+    },
+    {
+      "a": "P120",
+      "b": "P256",
+      "role_a": "M",
+      "role_b": "T",
+      "count": 7
+    },
+    {
+      "a": "P145",
+      "b": "P122",
+      "role_a": "M",
+      "role_b": "M",
+      "count": 7
+    },
+    {
+      "a": "P217",
+      "b": "P050",
+      "role_a": "I",
+      "role_b": "M",
+      "count": 6
+    },
+    {
+      "a": "P060",
+      "b": "P122",
+      "role_a": "M",
+      "role_b": "M",
+      "count": 6
+    },
+    {
+      "a": "P122",
+      "b": "P086",
+      "role_a": "M",
+      "role_b": "I",
+      "count": 6
+    },
+    {
+      "a": "P122",
+      "b": "P378",
+      "role_a": "M",
+      "role_b": "T",
+      "count": 6
+    },
+    {
+      "a": "P268",
+      "b": "P268",
+      "role_a": "M",
+      "role_b": "M",
+      "count": 5
+    },
+    {
+      "a": "P060",
+      "b": "P364",
+      "role_a": "M",
+      "role_b": "M",
+      "count": 5
+    },
+    {
+      "a": "P324",
+      "b": "P086",
+      "role_a": "I",
+      "role_b": "I",
+      "count": 5
+    },
+    {
+      "a": "P086",
+      "b": "P276",
+      "role_a": "I",
+      "role_b": "M",
+      "count": 5
+    },
+    {
+      "a": "P050",
+      "b": "P092",
+      "role_a": "M",
+      "role_b": "M",
+      "count": 5
+    },
+    {
+      "a": "P230",
+      "b": "P062",
+      "role_a": "M",
+      "role_b": "M",
+      "count": 5
+    },
+    {
+      "a": "P122",
+      "b": "P205",
+      "role_a": "M",
+      "role_b": "M",
+      "count": 5
+    },
+    {
+      "a": "P217",
+      "b": "P147",
+      "role_a": "I",
+      "role_b": "M",
+      "count": 5
+    },
+    {
+      "a": "P324",
+      "b": "P175",
+      "role_a": "I",
+      "role_b": "M",
+      "count": 5
+    },
+    {
+      "a": "P056",
+      "b": "P122",
+      "role_a": "M",
+      "role_b": "M",
+      "count": 4
+    },
+    {
+      "a": "P324",
+      "b": "P154",
+      "role_a": "I",
+      "role_b": "M",
+      "count": 4
+    },
+    {
+      "a": "P062",
+      "b": "P122",
+      "role_a": "M",
+      "role_b": "M",
+      "count": 4
+    },
+    {
+      "a": "P058",
+      "b": "P122",
+      "role_a": "M",
+      "role_b": "M",
+      "count": 4
+    },
+    {
+      "a": "P324",
+      "b": "P194",
+      "role_a": "I",
+      "role_b": "M",
+      "count": 4
+    },
+    {
+      "a": "P000",
+      "b": "P122",
+      "role_a": "I",
+      "role_b": "M",
+      "count": 4
+    },
+    {
+      "a": "P086",
+      "b": "P123",
+      "role_a": "I",
+      "role_b": "M",
+      "count": 4
+    },
+    {
+      "a": "P301",
+      "b": "P230",
+      "role_a": "I",
+      "role_b": "M",
+      "count": 4
+    },
+    {
+      "a": "P050",
+      "b": "P201",
+      "role_a": "M",
+      "role_b": "M",
+      "count": 4
+    },
+    {
+      "a": "P120",
+      "b": "P230",
+      "role_a": "M",
+      "role_b": "M",
+      "count": 4
+    },
+    {
+      "a": "P004",
+      "b": "P123",
+      "role_a": "I",
+      "role_b": "M",
+      "count": 4
+    },
+    {
+      "a": "P324",
+      "b": "P009",
+      "role_a": "I",
+      "role_b": "M",
+      "count": 4
+    },
+    {
+      "a": "P324",
+      "b": "P096",
+      "role_a": "I",
+      "role_b": "M",
+      "count": 3
+    },
+    {
+      "a": "P316",
+      "b": "P011",
+      "role_a": "M",
+      "role_b": "T",
+      "count": 3
+    },
+    {
+      "a": "P086",
+      "b": "P204",
+      "role_a": "I",
+      "role_b": "M",
+      "count": 3
+    },
+    {
+      "a": "P122",
+      "b": "P202",
+      "role_a": "M",
+      "role_b": "M",
+      "count": 3
+    },
+    {
+      "a": "P086",
+      "b": "P126",
+      "role_a": "I",
+      "role_b": "M",
+      "count": 3
+    },
+    {
+      "a": "P122",
+      "b": "P050",
+      "role_a": "M",
+      "role_b": "M",
+      "count": 3
+    }
+  ],
+  "top_trigrams": [
+    {
+      "a": "P050",
+      "b": "P145",
+      "c": "P122",
+      "count": 5
+    },
+    {
+      "a": "P217",
+      "b": "P147",
+      "c": "P316",
+      "count": 5
+    },
+    {
+      "a": "P324",
+      "b": "P086",
+      "c": "P276",
+      "count": 4
+    },
+    {
+      "a": "P062",
+      "b": "P060",
+      "c": "P122",
+      "count": 4
+    },
+    {
+      "a": "P062",
+      "b": "P122",
+      "c": "P385",
+      "count": 3
+    },
+    {
+      "a": "P060",
+      "b": "P364",
+      "c": "P122",
+      "count": 3
+    },
+    {
+      "a": "P000",
+      "b": "P122",
+      "c": "P385",
+      "count": 3
+    },
+    {
+      "a": "P086",
+      "b": "P123",
+      "c": "P122",
+      "count": 3
+    },
+    {
+      "a": "P217",
+      "b": "P050",
+      "c": "P092",
+      "count": 3
+    },
+    {
+      "a": "P122",
+      "b": "P086",
+      "c": "P035",
+      "count": 3
+    },
+    {
+      "a": "P301",
+      "b": "P230",
+      "c": "P062",
+      "count": 3
+    },
+    {
+      "a": "P013",
+      "b": "P324",
+      "c": "P050",
+      "count": 3
+    },
+    {
+      "a": "P364",
+      "b": "P122",
+      "c": "P385",
+      "count": 3
+    },
+    {
+      "a": "P147",
+      "b": "P316",
+      "c": "P056",
+      "count": 2
+    },
+    {
+      "a": "P316",
+      "b": "P056",
+      "c": "P122",
+      "count": 2
+    },
+    {
+      "a": "P086",
+      "b": "P352",
+      "c": "P011",
+      "count": 2
+    },
+    {
+      "a": "P086",
+      "b": "P204",
+      "c": "P114",
+      "count": 2
+    },
+    {
+      "a": "P086",
+      "b": "P276",
+      "c": "P058",
+      "count": 2
+    },
+    {
+      "a": "P210",
+      "b": "P122",
+      "c": "P385",
+      "count": 2
+    },
+    {
+      "a": "P013",
+      "b": "P324",
+      "c": "P194",
+      "count": 2
+    }
+  ],
+  "top_signs": [
+    {
+      "sign": "P324",
+      "count": 99,
+      "terminal_rate": 0.0101,
+      "initial_rate": 0.7778,
+      "medial_rate": 0.2121,
+      "pos_class": "INITIAL"
+    },
+    {
+      "sign": "P122",
+      "count": 76,
+      "terminal_rate": 0.0,
+      "initial_rate": 0.0,
+      "medial_rate": 1.0,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "P385",
+      "count": 35,
+      "terminal_rate": 0.8286,
+      "initial_rate": 0.0,
+      "medial_rate": 0.1714,
+      "pos_class": "TERMINAL"
+    },
+    {
+      "sign": "P086",
+      "count": 35,
+      "terminal_rate": 0.0286,
+      "initial_rate": 0.5429,
+      "medial_rate": 0.4286,
+      "pos_class": "INITIAL"
+    },
+    {
+      "sign": "P050",
+      "count": 32,
+      "terminal_rate": 0.0,
+      "initial_rate": 0.0312,
+      "medial_rate": 0.9688,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "P145",
+      "count": 27,
+      "terminal_rate": 0.1481,
+      "initial_rate": 0.0,
+      "medial_rate": 0.8519,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "P230",
+      "count": 23,
+      "terminal_rate": 0.1739,
+      "initial_rate": 0.0,
+      "medial_rate": 0.8261,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "P120",
+      "count": 22,
+      "terminal_rate": 0.0,
+      "initial_rate": 0.0,
+      "medial_rate": 1.0,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "P062",
+      "count": 21,
+      "terminal_rate": 0.0,
+      "initial_rate": 0.0,
+      "medial_rate": 1.0,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "P060",
+      "count": 20,
+      "terminal_rate": 0.05,
+      "initial_rate": 0.0,
+      "medial_rate": 0.95,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "P316",
+      "count": 19,
+      "terminal_rate": 0.1053,
+      "initial_rate": 0.0526,
+      "medial_rate": 0.8421,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "P000",
+      "count": 19,
+      "terminal_rate": 0.3158,
+      "initial_rate": 0.5789,
+      "medial_rate": 0.1053,
+      "pos_class": "INITIAL"
+    },
+    {
+      "sign": "P217",
+      "count": 18,
+      "terminal_rate": 0.1111,
+      "initial_rate": 0.7778,
+      "medial_rate": 0.1111,
+      "pos_class": "INITIAL"
+    },
+    {
+      "sign": "P378",
+      "count": 17,
+      "terminal_rate": 0.5882,
+      "initial_rate": 0.1176,
+      "medial_rate": 0.2941,
+      "pos_class": "MIXED"
+    },
+    {
+      "sign": "P364",
+      "count": 17,
+      "terminal_rate": 0.1176,
+      "initial_rate": 0.0,
+      "medial_rate": 0.8824,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "P058",
+      "count": 15,
+      "terminal_rate": 0.0667,
+      "initial_rate": 0.0,
+      "medial_rate": 0.9333,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "P147",
+      "count": 14,
+      "terminal_rate": 0.0714,
+      "initial_rate": 0.0714,
+      "medial_rate": 0.8571,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "P154",
+      "count": 14,
+      "terminal_rate": 0.2143,
+      "initial_rate": 0.0,
+      "medial_rate": 0.7857,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "P325",
+      "count": 14,
+      "terminal_rate": 0.0714,
+      "initial_rate": 0.0,
+      "medial_rate": 0.9286,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "P123",
+      "count": 13,
+      "terminal_rate": 0.3846,
+      "initial_rate": 0.0,
+      "medial_rate": 0.6154,
+      "pos_class": "MIXED"
+    },
+    {
+      "sign": "P256",
+      "count": 12,
+      "terminal_rate": 0.75,
+      "initial_rate": 0.0,
+      "medial_rate": 0.25,
+      "pos_class": "TERMINAL"
+    },
+    {
+      "sign": "P202",
+      "count": 11,
+      "terminal_rate": 0.0909,
+      "initial_rate": 0.1818,
+      "medial_rate": 0.7273,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "P268",
+      "count": 11,
+      "terminal_rate": 0.0,
+      "initial_rate": 0.2727,
+      "medial_rate": 0.7273,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "P332",
+      "count": 11,
+      "terminal_rate": 0.0,
+      "initial_rate": 0.0,
+      "medial_rate": 1.0,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "P121",
+      "count": 10,
+      "terminal_rate": 0.0,
+      "initial_rate": 0.1,
+      "medial_rate": 0.9,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "P205",
+      "count": 10,
+      "terminal_rate": 0.1,
+      "initial_rate": 0.1,
+      "medial_rate": 0.8,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "P011",
+      "count": 10,
+      "terminal_rate": 0.5,
+      "initial_rate": 0.0,
+      "medial_rate": 0.5,
+      "pos_class": "MIXED"
+    },
+    {
+      "sign": "P349",
+      "count": 10,
+      "terminal_rate": 0.2,
+      "initial_rate": 0.0,
+      "medial_rate": 0.8,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "P056",
+      "count": 9,
+      "terminal_rate": 0.0,
+      "initial_rate": 0.0,
+      "medial_rate": 1.0,
+      "pos_class": "MEDIAL"
+    },
+    {
+      "sign": "P013",
+      "count": 9,
+      "terminal_rate": 0.0,
+      "initial_rate": 1.0,
+      "medial_rate": 0.0,
+      "pos_class": "INITIAL"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+bigram_pair,sign_a,sign_b,reading_a,reading_b,count,pmi,formula_reading
+M342·M176,M342,M176,ay/ā,an/aṇ,122,2.432,ay/ā + an/aṇ
+M267·M099,M267,M099,iN/in (genitive of),kol/koḷ,84,2.311,iN/in (genitive of) + kol/koḷ
+M099·M342,M099,M342,kol/koḷ,ay/ā,81,1.713,kol/koḷ + ay/ā
+M176·M099,M176,M099,an/aṇ,kol/koḷ,74,2.297,an/aṇ + kol/koḷ
+M211·M342,M211,M342,kol,ay/ā,45,1.509,kol + ay/ā
+M328·M267,M328,M267,ā/āl,iN/in (genitive of),40,1.974,ā/āl + iN/in (genitive of)
+M293·M267,M293,M267,ta,iN/in (genitive of),37,1.874,ta + iN/in (genitive of)
+M342·M342,M342,M342,ay/ā,ay/ā,35,-0.084,ay/ā + ay/ā
+M267·M342,M267,M342,iN/in (genitive of),ay/ā,31,0.287,iN/in (genitive of) + ay/ā
+M059·M267,M059,M267,ēḷ/eḷ,iN/in (genitive of),30,1.635,ēḷ/eḷ + iN/in (genitive of)
+M162·M099,M162,M099,il/iḷ,kol/koḷ,26,1.584,il/iḷ + kol/koḷ
+M342·M162,M342,M162,ay/ā,il/iḷ,25,0.941,ay/ā + il/iḷ
+M342·M211,M342,M211,ay/ā,kol,24,0.602,ay/ā + kol
+M342·M328,M342,M328,ay/ā,ā/āl,24,0.691,ay/ā + ā/āl
+M267·M211,M267,M211,iN/in (genitive of),kol,21,0.955,iN/in (genitive of) + kol
+M267·M328,M267,M328,iN/in (genitive of),ā/āl,18,0.822,iN/in (genitive of) + ā/āl
+M342·M099,M342,M099,ay/ā,kol/koḷ,18,-0.457,ay/ā + kol/koḷ
+M342·M391,M342,M391,ay/ā,ka/kaṇ,17,0.472,ay/ā + ka/kaṇ
+M342·M233,M342,M233,ay/ā,ūr,17,0.646,ay/ā + ūr
+M342·M048,M342,M048,ay/ā,mu/muṉ,17,0.77,ay/ā + mu/muṉ
+M176·M267,M176,M267,an/aṇ,iN/in (genitive of),17,0.135,an/aṇ + iN/in (genitive of)
+M342·M267,M342,M267,ay/ā,iN/in (genitive of),17,-0.58,ay/ā + iN/in (genitive of)
+M342·M367,M342,M367,ay/ā,am/neuter,16,0.407,ay/ā + am/neuter
+M176·M211,M176,M211,an/aṇ,kol,16,0.731,an/aṇ + kol
+M342·M012,M342,M012,ay/ā,oṉṟu/1,16,0.817,ay/ā + oṉṟu/1
+M176·M342,M176,M342,an/aṇ,ay/ā,15,-0.592,an/aṇ + ay/ā
+M328·M342,M328,M342,ā/āl,ay/ā,15,0.013,ā/āl + ay/ā
+M089·M342,M089,M342,tu/tū,ay/ā,15,0.466,tu/tū + ay/ā
+M099·M162,M099,M162,kol/koḷ,il/iḷ,15,0.79,kol/koḷ + il/iḷ
+M342·M087,M342,M087,ay/ā,veL,15,0.861,ay/ā + veL

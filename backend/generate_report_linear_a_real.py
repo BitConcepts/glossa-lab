@@ -153,7 +153,7 @@ c.append(Paragraph("5. Language Family Hypothesis Ranking", H2))
 c.append(Paragraph(
     "Four competing language family hypotheses were tested at the phoneme level. "
     "The hypothesis engine uses bigram log-likelihood, Kandles phonetic fingerprint "
-    "(Merkur patent [REDACTED-PATENT-PUB]), and vocabulary word matching against the "
+    "(phonetic distribution ), and vocabulary word matching against the "
     "Known Linear A words list:",BODY))
 
 hyp_theory = {
@@ -243,7 +243,7 @@ for r in [
     "[5] van Soesbergen, P. (2022). The Decipherment of Minoan Linear A. 8 vols.",
     "[6] Palmer, L.R. (1958). Luvian and Linear A. Transactions of the Philological Society.",
     "[7] Rao et al. (2009). Science 324:1165.",
-    "[8] Merkur, M. (2024). [REDACTED-PATENT-PUB].",
+    
 ]:
     c.append(Paragraph(r, SMALL))
 

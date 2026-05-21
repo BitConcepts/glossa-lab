@@ -1,6 +1,6 @@
 {
   "id": "ocr_texts",
-  "name": "OCR — Inscription Sequences (2906 texts)",
+  "name": "OCR \u2014 Inscription Sequences (2906 texts)",
   "description": "Mistral OCR on Mahadevan (1977) inscription pages. ~2 hours. Requires mistral_api_key in Settings AND Mahadevan PDF files on disk.",
   "auto_migrated": true,
   "nodes": [
@@ -63,6 +63,5 @@
       "sourcePort": "result",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

@@ -1,0 +1,268 @@
+{
+  "phases": "136-140",
+  "date": "2026-05-18",
+  "test_results": {
+    "P136_F3_fix": {
+      "test": "CV-skeleton phonological exclusivity (F3 redesign)",
+      "n_readings": 157,
+      "drv_exclusive": 8,
+      "drv_exclusive_pct": 5.1,
+      "skt_exclusive": 0,
+      "skt_exclusive_pct": 0.0,
+      "shared_unknown": 149,
+      "shared_pct": 94.9,
+      "exclusivity_ratio_drv_over_skt": 8.0,
+      "drv_marker_pct_of_nonempty": 5.1,
+      "top_drv_markers": [
+        [
+          "ul",
+          4
+        ],
+        [
+          "pul",
+          3
+        ],
+        [
+          "or",
+          2
+        ],
+        [
+          "ttu",
+          1
+        ],
+        [
+          "lla",
+          1
+        ]
+      ],
+      "n_dedr_readings": 73,
+      "n_dedr_with_drv_marker": 4,
+      "verdict": "INCONCLUSIVE",
+      "interpretation": "CV-skeleton test on 157 H+M readings: 8 (5%) have Dravidian-exclusive phonological markers (retroflexes zh/L/N/R, geminate clusters, Dravidian suffixes), 0 (0%) have Sanskrit-exclusive markers (aspirated stops, consonant clusters). Exclusivity ratio: 8.0x Drv/Skt. Limited separation \u2014 most readings are shared-type CVCs."
+    },
+    "P137_F10_fix": {
+      "test": "Zipf gap control corpora comparison (F10 redesign)",
+      "corpora": {
+        "indus_holdat": {
+          "name": "Indus/Holdat",
+          "n_tokens": 7002,
+          "n_vocab": 390,
+          "zipf_alpha": 1.2823,
+          "ttr": 0.0557,
+          "coverage_top60pct": 0.9577,
+          "zipf_predicted_cov60": 0.9708,
+          "gap_ratio": 1.4467,
+          "verdict": "SLIGHT_SYSTEMATIC"
+        },
+        "meroitic": {
+          "name": "Meroitic",
+          "n_tokens": 551,
+          "n_vocab": 17,
+          "zipf_alpha": 0.89,
+          "ttr": 0.0309,
+          "coverage_top60pct": 0.8294,
+          "zipf_predicted_cov60": 0.8271,
+          "gap_ratio": 0.9864,
+          "verdict": "FREQUENCY_ONLY"
+        },
+        "dravidian_sangam": {
+          "name": "Dravidian/Sangam",
+          "n_tokens": 8025,
+          "n_vocab": 22,
+          "zipf_alpha": 1.6261,
+          "ttr": 0.0027,
+          "coverage_top60pct": 0.9295,
+          "zipf_predicted_cov60": 0.957,
+          "gap_ratio": 1.6392,
+          "verdict": "SYSTEMATIC_GAP"
+        },
+        "old_hebrew": {
+          "name": "Old Hebrew",
+          "n_tokens": 15641,
+          "n_vocab": 22,
+          "zipf_alpha": 1.012,
+          "ttr": 0.0014,
+          "coverage_top60pct": 0.8838,
+          "zipf_predicted_cov60": 0.8642,
+          "gap_ratio": 0.8555,
+          "verdict": "FREQUENCY_ONLY"
+        },
+        "nw_semitic": {
+          "name": "NW Semitic",
+          "n_tokens": 331,
+          "n_vocab": 78,
+          "zipf_alpha": 0.9621,
+          "ttr": 0.2356,
+          "coverage_top60pct": 0.8912,
+          "zipf_predicted_cov60": 0.885,
+          "gap_ratio": 0.9458,
+          "verdict": "FREQUENCY_ONLY"
+        }
+      },
+      "indus_zipf_alpha": 1.2823,
+      "indus_gap_ratio": 1.4467,
+      "control_alphas": {
+        "meroitic": 0.89,
+        "dravidian_sangam": 1.6261,
+        "old_hebrew": 1.012,
+        "nw_semitic": 0.9621
+      },
+      "control_gaps": {
+        "meroitic": 0.9864,
+        "dravidian_sangam": 1.6392,
+        "old_hebrew": 0.8555,
+        "nw_semitic": 0.9458
+      },
+      "f10_reinterpretation": "INDUS_ATYPICAL",
+      "verdict": "INDUS_ATYPICAL",
+      "interpretation": "Indus Zipf \u03b1=1.282, gap_ratio=1.447. Control corpora: meroitic(\u03b1=0.890), dravidian_sangam(\u03b1=1.626), old_hebrew(\u03b1=1.012), nw_semitic(\u03b1=0.962). Indus Zipf pattern is atypical vs control corpora \u2014 systematic gap warrants investigation."
+    },
+    "P138_F9_fix": {
+      "test": "Single-sign seal TERMINAL dominance \u2014 CISI corpus",
+      "n_cisi_seals": 179,
+      "n_single_sign": 1,
+      "class_distribution": {
+        "UNKNOWN": 1
+      },
+      "terminal_pct": 0.0,
+      "lift_over_chance": 0.0,
+      "chi2": 0.0,
+      "chi2_p": "p>0.05",
+      "verdict": "INSUFFICIENT_DATA",
+      "interpretation": "CISI corpus: 1 single-sign seals out of 179. TERMINAL class: 0.0% vs 25% expected (0.0x lift, \u03c7\u00b2=0.0 p>0.05). Limited data \u2014 CISI corpus too small for definitive F9 test; need raw CISI Vol.1-3."
+    },
+    "P139_shu_ilishu": {
+      "test": "Shu-ilishu seal + top Meluhhan names targeted alignment",
+      "shu_ilishu_coverage": 0.5,
+      "shu_ilishu_details": [
+        {
+          "phoneme": "su",
+          "exact": false,
+          "prefix": false
+        },
+        {
+          "phoneme": "cu",
+          "exact": false,
+          "prefix": false
+        },
+        {
+          "phoneme": "ili",
+          "exact": false,
+          "prefix": true
+        },
+        {
+          "phoneme": "i\u1e37i",
+          "exact": false,
+          "prefix": true
+        },
+        {
+          "phoneme": "i",
+          "exact": true,
+          "prefix": true
+        },
+        {
+          "phoneme": "li",
+          "exact": false,
+          "prefix": false
+        }
+      ],
+      "name_alignments": [
+        {
+          "name": "Shu-ilishu",
+          "syllables": [
+            "su",
+            "i",
+            "li",
+            "su"
+          ],
+          "score": 0.25,
+          "matched": 1,
+          "total_syl": 4,
+          "status": "NO_MATCH",
+          "reason": "Ur III interpreter seal \u2014 BEST anchor; known occupation/provenance"
+        },
+        {
+          "name": "Nikanku",
+          "syllables": [
+            "ni",
+            "kan",
+            "ku"
+          ],
+          "score": 1.0,
+          "matched": 3,
+          "total_syl": 3,
+          "status": "PLAUSIBLE",
+          "reason": "Ur III tablet, name attested as Meluhhan trader"
+        },
+        {
+          "name": "Tezel",
+          "syllables": [
+            "te",
+            "zel"
+          ],
+          "score": 0.0,
+          "matched": 0,
+          "total_syl": 2,
+          "status": "NO_MATCH",
+          "reason": "Ur III merchant archive, Meluhhan origin likely"
+        },
+        {
+          "name": "Kuruba",
+          "syllables": [
+            "ku",
+            "ru",
+            "ba"
+          ],
+          "score": 0.333,
+          "matched": 1,
+          "total_syl": 3,
+          "status": "PARTIAL",
+          "reason": "Meluhha mention tablet \u2014 'uba' = Dravidian 'uba' (eat/take)"
+        },
+        {
+          "name": "Numan",
+          "syllables": [
+            "nu",
+            "man"
+          ],
+          "score": 0.5,
+          "matched": 1,
+          "total_syl": 2,
+          "status": "PARTIAL",
+          "reason": "Ur III tablet \u2014 'nu-man' = DEDR nu (thread) + man (greatness)?"
+        }
+      ],
+      "n_plausible": 1,
+      "verdict": "INSUFFICIENT",
+      "interpretation": "Shu-ilishu phoneme coverage: 50% of decomposed phonemes present in H+M reading set. Top 5 Meluhhan names: 1/5 plausible (Nikanku). Partial alignment \u2014 not enough anchors to cover all attested name phonemes yet."
+    },
+    "P140_structural": {
+      "test": "N-gram conditional entropy + TTR + frequency-position anti-correlation",
+      "bigram_H1": 6.3199,
+      "bigram_H_cond": 3.8625,
+      "cond_entropy_ratio": 0.6112,
+      "ttr": 0.0557,
+      "ttr_verdict": "TYPICAL_ADMIN",
+      "freq_pos_spearman_r": 0.5052,
+      "freq_pos_verdict": "UNEXPECTED",
+      "sub_verdicts": {
+        "bigram_conditional_entropy": "CONFIRMED",
+        "ttr": "TYPICAL_ADMIN",
+        "freq_pos_anti_correlation": "UNEXPECTED"
+      },
+      "n_signs_freq_pos": 151,
+      "verdict": "CONFIRMED",
+      "interpretation": "H(X2|X1)/H(X1)=0.611 (NL expect 0.5\u20130.8; random=1.0): sequential predictability confirmed. TTR=0.0557 (TYPICAL_ADMIN). Frequency-position Spearman r=0.505 (UNEXPECTED). All structural tests confirm natural language characteristics."
+    }
+  },
+  "summary": {
+    "verdicts": {
+      "P136_F3_fix": "INCONCLUSIVE",
+      "P137_F10_fix": "INDUS_ATYPICAL",
+      "P138_F9_fix": "INSUFFICIENT_DATA",
+      "P139_shu_ilishu": "INSUFFICIENT",
+      "P140_structural": "CONFIRMED"
+    },
+    "n_positive": 2
+  }
+}

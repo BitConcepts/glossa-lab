@@ -70,7 +70,7 @@ def run_indus_atlas(verbose: bool = True) -> dict[str, Any]:
 
     _print("\n" + "=" * 70)
     _print("  INDUS SCRIPT STRUCTURAL ATLAS")
-    _print("  Glossa Lab / Layer1Labs Silicon, Inc. — generated from published statistics")
+    _print("  Glossa Lab / BitConcepts LLC — generated from published statistics")
     _print("=" * 70)
     _print(
         f"\n  Acceleration: {accel['tier_name']}  ({accel['cpu_cores']} cores"

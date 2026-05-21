@@ -137,10 +137,21 @@ junit.xml
 services/linux/*.service.local
 services/windows/*.local.json
 
-# ---- Dev mode data/config/logs ----
-data/
+# ---- Dev mode config/logs (data/ is now a project directory, not ignored globally) ----
 config/
 logs/
+
+# ---- Credentials / secrets (never commit) ----
+data/.keys.json
+*.keys.json
+
+# ---- Database files ----
+data/glossa.db
+
+# ---- Backend runtime logs at root ----
+backend/uvicorn_stdout.log
+backend/uvicorn_stderr.log
+backend/rebus_test_output.txt
 
 # ---- Keep placeholders ----
 !backend/glossa_lab/data/
@@ -186,9 +197,11 @@ backend/glossa_lab/data/phase18_corpora/rv_padapatha_stream.txt
 glossa-indus/raw/user_uploads/*.pdf
 
 
-# specsmith migration backups — regeneratable, never commit
+# specsmith — internal agent governance state; not for public repos
+.specsmith/
+
+# specsmith / general backup files — regeneratable, never commit
 *.bak
-.specsmith/*.bak
 docs/governance/*.bak
 docs/*.bak
 

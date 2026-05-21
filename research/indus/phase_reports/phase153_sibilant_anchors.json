@@ -1,0 +1,140 @@
+{
+  "phase": 153,
+  "date": "2026-05-19",
+  "current_sibilant_hm_count": 7,
+  "su_shu_already_covered": false,
+  "dedr_sibilant_roots": [
+    {
+      "phoneme": "ca",
+      "dedr": "2007",
+      "tamil": "cam",
+      "gloss": "to be equal/level",
+      "class": "MEDIAL"
+    },
+    {
+      "phoneme": "ca",
+      "dedr": "2393",
+      "tamil": "cal",
+      "gloss": "to go/move",
+      "class": "MEDIAL"
+    },
+    {
+      "phoneme": "ca",
+      "dedr": "2367",
+      "tamil": "caṭ",
+      "gloss": "to leap/spring",
+      "class": "MEDIAL"
+    },
+    {
+      "phoneme": "ce",
+      "dedr": "2783",
+      "tamil": "cel",
+      "gloss": "to go/reach/succeed",
+      "class": "MEDIAL"
+    },
+    {
+      "phoneme": "ce",
+      "dedr": "2859",
+      "tamil": "ceṉ",
+      "gloss": "to go (archaic)",
+      "class": "MEDIAL"
+    },
+    {
+      "phoneme": "ci",
+      "dedr": "2519",
+      "tamil": "cil",
+      "gloss": "few/some",
+      "class": "MEDIAL"
+    },
+    {
+      "phoneme": "ci",
+      "dedr": "2597",
+      "tamil": "ciṟu",
+      "gloss": "small/little",
+      "class": "MEDIAL"
+    },
+    {
+      "phoneme": "ci",
+      "dedr": "2520",
+      "tamil": "cin",
+      "gloss": "to be angry",
+      "class": "MEDIAL"
+    },
+    {
+      "phoneme": "co",
+      "dedr": "2900",
+      "tamil": "col",
+      "gloss": "to say/word",
+      "class": "MEDIAL"
+    },
+    {
+      "phoneme": "co",
+      "dedr": "2864",
+      "tamil": "coṭi",
+      "gloss": "branch/twig",
+      "class": "MEDIAL"
+    },
+    {
+      "phoneme": "cu",
+      "dedr": "2697",
+      "tamil": "cuṇ",
+      "gloss": "tip/point",
+      "class": "MEDIAL"
+    },
+    {
+      "phoneme": "cu",
+      "dedr": "2684",
+      "tamil": "cup",
+      "gloss": "red/copper-colored",
+      "class": "MEDIAL"
+    },
+    {
+      "phoneme": "su",
+      "dedr": "2641",
+      "tamil": "cul",
+      "gloss": "to turn/revolve",
+      "class": "MEDIAL"
+    },
+    {
+      "phoneme": "su",
+      "dedr": "2660",
+      "tamil": "cum",
+      "gloss": "to carry on head",
+      "class": "MEDIAL"
+    },
+    {
+      "phoneme": "su",
+      "dedr": "2698",
+      "tamil": "cuṭ",
+      "gloss": "to burn/be hot",
+      "class": "MEDIAL"
+    },
+    {
+      "phoneme": "ña",
+      "dedr": "2934",
+      "tamil": "ñāṉ",
+      "gloss": "I/myself (Kota)",
+      "class": "TERMINAL"
+    },
+    {
+      "phoneme": "ja",
+      "dedr": "2474",
+      "tamil": "jaḷ",
+      "gloss": "water (Brahui cognate)",
+      "class": "MEDIAL"
+    }
+  ],
+  "unanchored_medial_signs": 0,
+  "sibilant_candidates": [],
+  "follows_initial_top": [],
+  "su_gap_closeable": false,
+  "shu_ilishu_coverage_if_added": "50%",
+  "key_findings": [
+    "Current H+M sibilant readings: 7",
+    "/su/ or /shu/ phoneme covered in H+M set: False",
+    "Unanchored MEDIAL signs available for sibilant assignment: 0",
+    "If top candidate assigned sibilant reading: Shu-ilishu coverage → 50%",
+    "DEDR: 17 sibilant-initial Dravidian roots with Tamil attestation identified",
+    "Priority: assign ca/cu/co reading to highest-frequency follows-INITIAL unanchored sign"
+  ]
+}

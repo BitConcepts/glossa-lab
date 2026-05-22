@@ -89,7 +89,11 @@ _cookie_jar: http.cookiejar.CookieJar = http.cookiejar.CookieJar()
 _opener: urllib.request.OpenerDirector | None = None
 
 # Circuit breaker — disable PPUBS after consecutive session failures
+import threading as _ppubs_lock_mod  # noqa: E402
 import time as _time_cb  # noqa: E402
+
+# Protects _last_request against concurrent topic fetches (TOCTOU race).
+_ppubs_rate_lock: _ppubs_lock_mod.Lock = _ppubs_lock_mod.Lock()
 
 _ppubs_consecutive_fails: int = 0
 _ppubs_skip_until: float = 0.0
@@ -210,9 +214,14 @@ def _ppubs_search(
         return _do_post()
     except urllib.error.HTTPError as exc:
         if exc.code in (401, 403):
-            # Session expired or unauthorized — re-establish and retry once
+            # Session expired or unauthorized — reset everything and re-establish.
+            # Reusing the stale cookie jar caused HTTP 400 on re-authentication;
+            # a fresh jar ensures Step 1 (GET /pubwebapp/) can set clean cookies.
+            global _ppubs_case_id, _ppubs_token, _cookie_jar, _opener  # noqa: PLW0603
             _ppubs_case_id = None
             _ppubs_token = None
+            _cookie_jar = http.cookiejar.CookieJar()  # fresh — discard stale session cookies
+            _opener = None                             # will be rebuilt in _get_opener()
             try:
                 _establish_session(timeout=timeout)
                 payload["query"]["caseId"] = _ppubs_case_id
@@ -256,12 +265,26 @@ class PatentsViewFetcher(Fetcher):
     async def fetch(
         self, topic: TopicProfile, *, since: datetime | None = None,
     ) -> Iterable[RawItem]:
+        # Check cooldown and circuit breaker BEFORE sleeping for rate_delay.
+        # Previously the sleep happened first, wasting time even when we'd
+        # immediately return [].
+        cooling, remaining = source_is_cooling(self.source)
+        if cooling:
+            _log.debug("patentsview cooldown active — skipping (%.0fs remaining)", remaining)
+            return []
+        if _ppubs_cb_is_open():
+            _log.debug("PPUBS circuit breaker open — skipping topic %s", topic.id)
+            return []
+
+        # Atomically reserve the next request slot inside the lock so concurrent
+        # topic fetches cannot both read the same _last_request and bypass the delay.
         import time as _time  # noqa: PLC0415
-        now = _time.monotonic()
-        wait = self.rate_delay - (now - PatentsViewFetcher._last_request)
+        with _ppubs_rate_lock:
+            now = _time.monotonic()
+            wait = max(0.0, self.rate_delay - (now - PatentsViewFetcher._last_request))
+            PatentsViewFetcher._last_request = now + wait  # reserve slot
         if wait > 0:
             await asyncio.sleep(wait)
-        PatentsViewFetcher._last_request = _time.monotonic()
 
         opts = topic.overrides_for(self.source)
         max_results = int(opts.get("max_results", 25))
@@ -277,15 +300,6 @@ class PatentsViewFetcher(Fetcher):
         if since is not None:
             date_str = since.strftime("%Y%m%d")
             query_text = f"({query_text}) AND ISD/{date_str}->"
-
-        cooling, remaining = source_is_cooling(self.source)
-        if cooling:
-            _log.debug("patentsview cooldown active — skipping (%.0fs remaining)", remaining)
-            return []
-        # Skip if circuit breaker is open
-        if _ppubs_cb_is_open():
-            _log.debug("PPUBS circuit breaker open — skipping topic %s", topic.id)
-            return []
 
         try:
             data = await run_in_thread(

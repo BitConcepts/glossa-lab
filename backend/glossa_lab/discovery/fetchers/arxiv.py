@@ -70,11 +70,11 @@ class ArxivFetcher(Fetcher):
     source = "arxiv"
     requires = ()  # keyless
     # arXiv policy (2024-2025): no more than 1 request per 3 seconds.
-    # We use 10s as our polite inter-request delay to avoid IP-level bans.
+    # We use 20s as our polite inter-request delay to avoid IP-level bans.
     rate_delay: float = 15.0
     _MAX_RETRIES: int = 0     # do not retry inside a scheduler tick; cooldown skips later topics
     _RETRY_BASE: float = 900.0  # 15m cooldown on 429 when no Retry-After is available
-    _TIMEOUT_COOLDOWN: float = 600.0  # 10m cooldown on network/read timeouts
+    _TIMEOUT_COOLDOWN: float = 300.0  # 5m cooldown on network/read timeouts (was 10m — too long)
 
     async def fetch(
         self, topic: TopicProfile, *, since: datetime | None = None,
@@ -110,7 +110,7 @@ class ArxivFetcher(Fetcher):
                 await _asyncio.sleep(wait_secs)
 
             try:
-                raw = await run_in_thread(http_get_json, _ENDPOINT, params=params, timeout=20.0)
+                raw = await run_in_thread(http_get_json, _ENDPOINT, params=params, timeout=30.0)
                 break
             except FetcherError as exc:
                 err_str = str(exc)

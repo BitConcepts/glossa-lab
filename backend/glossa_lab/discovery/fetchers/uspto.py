@@ -35,6 +35,10 @@ _BASE = "https://api.uspto.gov/api/v1/patent/applications/search"
 # ── Fetcher ──────────────────────────────────────────────────────────────────
 
 
+import threading as _uspto_lock_mod  # noqa: E402
+_uspto_rate_lock: _uspto_lock_mod.Lock = _uspto_lock_mod.Lock()
+
+
 class USPTOFetcher(Fetcher):
     source = "uspto"
     requires = ("uspto_api_key",)
@@ -48,13 +52,7 @@ class USPTOFetcher(Fetcher):
     async def fetch(
         self, topic: TopicProfile, *, since: datetime | None = None,
     ) -> Iterable[RawItem]:
-        import time as _time  # noqa: PLC0415
-        now = _time.monotonic()
-        wait = self.rate_delay - (now - USPTOFetcher._last_request)
-        if wait > 0:
-            await asyncio.sleep(wait)
-        USPTOFetcher._last_request = _time.monotonic()
-
+        # Check cooldown BEFORE sleeping for rate_delay.
         from glossa_lab.api.settings import get_key  # noqa: PLC0415
         api_key = get_key("uspto_api_key")
         if not api_key:
@@ -63,6 +61,15 @@ class USPTOFetcher(Fetcher):
         if cooling:
             _log.debug("uspto cooldown active — skipping (%.0fs remaining)", remaining)
             return []
+
+        # Atomically reserve the next request slot.
+        import time as _time  # noqa: PLC0415
+        with _uspto_rate_lock:
+            now = _time.monotonic()
+            wait = max(0.0, self.rate_delay - (now - USPTOFetcher._last_request))
+            USPTOFetcher._last_request = now + wait
+        if wait > 0:
+            await asyncio.sleep(wait)
 
         opts = topic.overrides_for(self.source)
         max_results = int(opts.get("max_results", 25))

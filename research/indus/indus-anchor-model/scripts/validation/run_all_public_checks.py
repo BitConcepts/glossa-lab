@@ -102,11 +102,12 @@ def check_anchor_table_integrity(data_dir: Path) -> CheckResult:
 
     path = _resolve_path(
         data_dir,
+        "anchor_table_397.csv",   # primary name in release package
         "anchor_table.csv",
         "anchor_table_full.csv",
     )
     if path is None:
-        return CheckResult(name, "SKIP", "anchor_table.csv not found in data dir")
+        return CheckResult(name, "SKIP", "anchor_table_397.csv not found in data dir")
 
     rows = _load_csv(path)
     if rows is None:
@@ -257,9 +258,9 @@ def check_positional_profile_sanity(data_dir: Path) -> CheckResult:
     """
     name = "positional_profile_sanity"
 
-    anchor_path = _resolve_path(data_dir, "anchor_table.csv", "anchor_table_full.csv")
+    anchor_path = _resolve_path(data_dir, "anchor_table_397.csv", "anchor_table.csv", "anchor_table_full.csv")
     if anchor_path is None:
-        return CheckResult(name, "SKIP", "anchor_table.csv not found")
+        return CheckResult(name, "SKIP", "anchor_table_397.csv not found")
 
     rows = _load_csv(anchor_path)
     if rows is None:
@@ -365,7 +366,7 @@ def check_coverage_arithmetic(data_dir: Path) -> CheckResult:
     """
     name = "coverage_arithmetic"
 
-    anchor_path = _resolve_path(data_dir, "anchor_table.csv", "anchor_table_full.csv")
+    anchor_path = _resolve_path(data_dir, "anchor_table_397.csv", "anchor_table.csv", "anchor_table_full.csv")
     bigram_path = _resolve_path(
         data_dir,
         "formula_bigram_table.csv",

@@ -47,9 +47,14 @@ import threading as _threading  # noqa: E402
 import time as _time_mod  # noqa: E402
 
 _arxiv_lock = _threading.Lock()
-_arxiv_last_attempt_mono: float = 0.0  # monotonic time of last attempted request
-_arxiv_cooldown_until: float = 0.0   # monotonic time until we are allowed to try again
-_ARXIV_INTER_REQUEST_SECS: float = 20.0   # min 3s per arXiv docs; use 20s to stay clear of IP bans
+# Initialised to now() so the FIRST request after any process restart waits the
+# full inter-request delay.  A restart resets the in-memory cooldown state but
+# arXiv's servers still remember our IP from the previous session.  Forcing a
+# delay on the first post-restart request avoids immediately tripping any
+# lingering IP-level ban from the previous run.
+_arxiv_last_attempt_mono: float = _time_mod.monotonic()
+_arxiv_cooldown_until: float = 0.0
+_ARXIV_INTER_REQUEST_SECS: float = 30.0   # 30s between requests — arXiv enforces 3s but shared IPs need far more margin
 
 
 def _arxiv_cb_trip(cooldown: float) -> None:

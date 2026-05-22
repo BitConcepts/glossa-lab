@@ -16,7 +16,9 @@ This is the complete reference dataset for all further work.
 CPU only. Output: reports/phase100_full_corpus.json
 """
 from __future__ import annotations
-import csv, json
+
+import csv
+import json
 from collections import Counter
 from pathlib import Path
 
@@ -141,15 +143,15 @@ def main():
     mean_cov = sum(t["coverage_pct"] for t in translations) / len(translations)
     n_100 = sum(1 for t in translations if t["coverage_pct"] == 100.0)
 
-    print(f"\n  Formula distribution:")
+    print("\n  Formula distribution:")
     for ft, count in sorted(dist.items(), key=lambda x: -x[1]):
         print(f"    {ft:35s}: {count:4d} ({count/len(seals)*100:.1f}%)")
 
-    print(f"\n  Coverage distribution:")
+    print("\n  Coverage distribution:")
     for bucket in sorted(cov_dist.keys(), reverse=True):
         print(f"    {bucket:3d}-{bucket+9}%: {cov_dist[bucket]:4d} seals")
 
-    print(f"\n=== Phase-100 Results ===")
+    print("\n=== Phase-100 Results ===")
     print(f"  Total seals translated: {len(translations)}")
     print(f"  100% coverage:          {n_100}")
     print(f"  HIGH confidence:        {n_high}")

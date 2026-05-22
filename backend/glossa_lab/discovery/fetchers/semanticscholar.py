@@ -21,7 +21,6 @@ from glossa_lab.discovery.fetchers.base import (
     Fetcher,
     FetcherError,
     TopicProfile,
-    build_query,
     http_get_json,
     run_in_thread,
 )
@@ -39,8 +38,8 @@ _FIELDS_LIST = _FIELDS.split(",")
 # Resets on any SDK success.
 _sdk_consecutive_fails: int = 0
 _sdk_skip_until: float = 0.0
-_SDK_MAX_CONSECUTIVE_FAILS: int = 2  # open circuit after 2 consecutive timeouts
-_SDK_COOLDOWN_SECS: float = 900.0  # 15 minutes
+_SDK_MAX_CONSECUTIVE_FAILS: int = 1  # open circuit after one timeout/hang
+_SDK_COOLDOWN_SECS: float = 3600.0  # 60 minutes
 
 # ── Global S2 endpoint cooldown (mirrors arXiv pattern) ─────────────────
 # Rate limits are per-IP and global — a 429 from ANY task/topic blocks ALL
@@ -48,7 +47,8 @@ _SDK_COOLDOWN_SECS: float = 900.0  # 15 minutes
 # where the SDK exhausts the budget, then the HTTP fallback immediately
 # fires and also gets 429.
 _s2_cooldown_until: float = 0.0
-_S2_DEFAULT_COOLDOWN: float = 120.0  # 2 min default when no Retry-After header
+_S2_DEFAULT_COOLDOWN: float = 900.0  # 15 min default when no Retry-After header
+_S2_TIMEOUT_COOLDOWN: float = 600.0  # 10 min cooldown after read/network timeouts
 
 import time as _time_sdk  # noqa: E402
 
@@ -146,7 +146,7 @@ def _sdk_search(
 class SemanticScholarFetcher(Fetcher):
     source = "semanticscholar"
     requires = ()  # keyless (rate-limited)
-    rate_delay: float = 6.0  # seconds between calls (conservative; 100 req/5 min)
+    rate_delay: float = 10.0  # seconds between calls (very conservative; keyless S2 is shared)
     upgrade_key = "semantic_scholar_api_key"
     upgrade_url = "https://www.semanticscholar.org/product/api#api-key-form"
 
@@ -185,22 +185,23 @@ class SemanticScholarFetcher(Fetcher):
         query = " ".join(topic.keywords[:8]) or topic.label
         year_filter = f"{since.year}-" if since is not None else None
 
-        # Try the PyPI SDK first — it handles pagination automatically, allowing
-        # max_results > 100.  Fall back to a single-page REST call if the package
-        # is not installed or the SDK circuit breaker is open.
+        # Prefer the bounded direct HTTP endpoint.  The PyPI SDK auto-paginates
+        # internally and has repeatedly hung for ~90s in the scheduler; only use
+        # it when a topic explicitly opts in with {"use_sdk": true}.
         papers: list[dict] = []
         _sdk_used = False
+        use_sdk = bool(opts.get("use_sdk", False))
 
-        if _sdk_is_bypassed():
+        if use_sdk and _sdk_is_bypassed():
             _log.debug(
                 "SemanticScholar SDK bypassed (circuit open, %d consecutive failures); "
                 "using direct HTTP for topic %s",
                 _sdk_consecutive_fails, topic.id,
             )
-        else:
+        elif use_sdk:
             # Cap total SDK time — the SDK auto-paginates and can hang for many
             # minutes when the S2 API is slow or returning 5xx errors.
-            _SDK_TOTAL_TIMEOUT = 45.0
+            _SDK_TOTAL_TIMEOUT = 30.0
             try:
                 papers = await asyncio.wait_for(
                     run_in_thread(
@@ -228,12 +229,12 @@ class SemanticScholarFetcher(Fetcher):
                 # Trip circuit breaker AND set a global cooldown before HTTP fallback
                 # so we don't immediately fire another request into a depleted window.
                 _sdk_record_failure()
-                _s2_cooldown_trip(60.0)  # 60s: let the per-IP window partially reset
                 _log.warning(
                     "SemanticScholar SDK timeout (>%.0fs) for topic %s; "
-                    "tripping circuit breaker + 60s global cooldown (consecutive: %d)",
-                    _SDK_TOTAL_TIMEOUT, topic.id, _sdk_consecutive_fails,
+                    "tripping circuit breaker + %.0fs global cooldown (consecutive: %d)",
+                    _SDK_TOTAL_TIMEOUT, topic.id, _S2_TIMEOUT_COOLDOWN, _sdk_consecutive_fails,
                 )
+                _s2_cooldown_trip(_S2_TIMEOUT_COOLDOWN)
                 # papers stays [] — HTTP fallback is SKIPPED because cooldown is now active;
                 # subsequent topics will also skip via the cooldown check at fetch() start.
                 return []
@@ -273,11 +274,12 @@ class SemanticScholarFetcher(Fetcher):
             try:
                 data = await run_in_thread(
                     http_get_json, _ENDPOINT, params=params,
-                    headers=headers, timeout=25.0,
+                    headers=headers, timeout=15.0,
                 )
             except FetcherError as exc:
                 err_str = str(exc)
                 is_429 = "429" in err_str
+                is_timeout = "timed out" in err_str.lower() or "timeout" in err_str.lower()
                 if is_429:
                     # 429 on HTTP fallback — trip global cooldown so all parallel
                     # and subsequent tasks know the IP-wide budget is exhausted.
@@ -285,6 +287,12 @@ class SemanticScholarFetcher(Fetcher):
                     ra_match = _re.search(r"Retry-After:\s*(\d+)", err_str)
                     cooldown = int(ra_match.group(1)) + 5 if ra_match else _S2_DEFAULT_COOLDOWN
                     _s2_cooldown_trip(cooldown)
+                elif is_timeout:
+                    _s2_cooldown_trip(_S2_TIMEOUT_COOLDOWN)
+                    _log.warning(
+                        "SemanticScholar HTTP timeout for topic %s — global cooldown set to %.0fs",
+                        topic.id, _S2_TIMEOUT_COOLDOWN,
+                    )
                 _log.warning("SemanticScholar HTTP error for topic %s: %s", topic.id, exc)
                 return []
             if not isinstance(data, dict):

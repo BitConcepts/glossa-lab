@@ -12,7 +12,9 @@ words in a Dravidian inscription system, or purely syllabic signs.
 CPU only. Output: reports/phase123_munda_substrate.json
 """
 from __future__ import annotations
-import csv, json
+
+import csv
+import json
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -222,7 +224,7 @@ def main():
         for m in a.get("substrate_matches", []):
             by_substrate[m["substrate"]].append(a["sign"])
 
-    print(f"\n  Substrate match summary:")
+    print("\n  Substrate match summary:")
     print(f"    Signs with substrate match: {n_substrate_match}/{len(still_unresolved)}")
     for sub, signs in by_substrate.items():
         print(f"    {sub}: {len(signs)} signs — {', '.join(signs[:5])}")

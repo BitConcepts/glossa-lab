@@ -5,6 +5,7 @@
 3. Build Gulf seal corpus from laursen_2010_table1.json + contact_zone data
 """
 from __future__ import annotations
+
 import json
 import sys
 from collections import defaultdict

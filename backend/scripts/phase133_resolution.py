@@ -7,11 +7,14 @@ Phase-133: Comprehensive resolution of all Phase-132 validation issues.
 133d: Corrected decode audit — 69.1% fully decoded with honest 157 H+M
 133e: V12 vowel harmony — test design mismatch; Phase-61 tests reference language
 """
-import sys, json, os, datetime
+import datetime
+import json
+import os
+import sys
+from collections import Counter
 from pathlib import Path
-from collections import Counter, defaultdict
+
 import pandas as pd
-import numpy as np
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "backend"))
@@ -163,7 +166,7 @@ for form, signs in seal_groups.items():
             correct_pos += 1
 explained = round(correct_pos / total_pos, 3) if total_pos else 0
 
-print(f"  Revised terminal set (pure terminals only: M342, M176, M336):")
+print("  Revised terminal set (pure terminals only: M342, M176, M336):")
 print(f"  Full match [C in 1-2][T in last 2]: {full_relaxed}/{total_multi} = {full_relaxed/total_multi:.1%}")
 print(f"  Partial (one of C or T):             {partial}/{total_multi} = {partial/total_multi:.1%}")
 print(f"  Neither:                             {neither}/{total_multi} = {neither/total_multi:.1%}")
@@ -263,7 +266,7 @@ for signs in seal_groups.values():
 
 print(f"  Fully decoded (H+M=157): {fully_decoded}/{total_seals} = {fd_pct:.1%}")
 print(f"  Not decoded: {total_seals-fully_decoded} seals ({(1-fd_pct)*100:.1f}%)")
-print(f"  By site:")
+print("  By site:")
 for site in sorted(site_stats):
     d = site_stats[site]
     print(f"    {site}: {d['fd']}/{d['total']} = {100*d['fd']/d['total']:.0f}%")
@@ -324,11 +327,11 @@ for sign, v in anchors.items():
 
 within_harmony_rate = round(harmonic_words / total_words, 3) if total_words else 0
 print(f"  Within-reading harmony: {harmonic_words}/{total_words} = {within_harmony_rate:.3f} ({within_harmony_rate*100:.1f}%)")
-print(f"  (This is what Phase-61 effectively tests — Dravidian word-internal harmony)")
-print(f"  Phase-61 result: 94.0% — consistent with within-reading check")
-print(f"  V12 result: 74.6% — tests cross-reading harmony in IVS inscriptions (different)")
-print(f"  133e result: 64.2% — IVS inscription-level harmony (different)")
-print(f"  RESOLUTION: V12 FAIL is a test methodology mismatch, not a real failure.")
+print("  (This is what Phase-61 effectively tests — Dravidian word-internal harmony)")
+print("  Phase-61 result: 94.0% — consistent with within-reading check")
+print("  V12 result: 74.6% — tests cross-reading harmony in IVS inscriptions (different)")
+print("  133e result: 64.2% — IVS inscription-level harmony (different)")
+print("  RESOLUTION: V12 FAIL is a test methodology mismatch, not a real failure.")
 
 harmony_conclusion = (
     f"V12 RESOLVED as test-design mismatch. "
@@ -367,7 +370,7 @@ print(f"\n  Anchors updated → {ANCHORS_PATH}")
 print("\n" + "=" * 60)
 print("PHASE-133 SUMMARY")
 print("=" * 60)
-print(f"""
+print("""
   133a V11: RESOLVED — 6.3% terminal-in-initial = dual-function particles
            M048(muṉ)=20% initial, M367(am)=10.5% initial — legitimate Dravidian use
            Effective violation rate if corrected: ~1-2%

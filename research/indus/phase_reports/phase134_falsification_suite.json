@@ -1,0 +1,323 @@
+{
+  "phase": 134,
+  "date": "2026-05-19",
+  "corpus_stats": {
+    "n_seals": 1670,
+    "n_tokens": 7002,
+    "n_distinct_signs": 390,
+    "n_hm_signs": 157,
+    "n_high_signs": 75
+  },
+  "test_results": {
+    "F1_permutation_null": {
+      "test": "Grammar model permutation null",
+      "observed_r2": 0.9916,
+      "null_mean_r2": 0.4385,
+      "null_std_r2": 0.05347,
+      "null_p95": 0.525,
+      "null_p99": 0.5606,
+      "p_value": 0.0,
+      "z_score": 10.344,
+      "n_permutations": 2000,
+      "verdict": "STRONGLY_CONFIRMED",
+      "interpretation": "Real corpus grammar model R\u00b2=0.992 vs null mean 0.438 (z=10.3, p=0.000). Positional structure is significantly non-random \u2014 grammar model captures real linguistic structure."
+    },
+    "F3_anchor_exclusivity": {
+      "test": "HIGH anchor phonological exclusivity",
+      "n_high_readings": 75,
+      "n_with_dedr": 40,
+      "dedr_coverage_pct": 53.3,
+      "mean_phonological_fit": {
+        "dravidian": 0.8322,
+        "sanskrit": 0.8322,
+        "munda": 0.7993
+      },
+      "dravidian_specific_phoneme_count": 0,
+      "sanskrit_specific_phoneme_count": 0,
+      "dravidian_advantage": 0.0,
+      "verdict": "AMBIGUOUS",
+      "interpretation": "40/75 HIGH readings (53%) have DEDR support. Dravidian phonological fit (0.832) vs Sanskrit (0.832) vs Munda (0.799). Dravidian advantage: +0.000. WARNING: Phonological profile is ambiguous across language families."
+    },
+    "F7_blind_held_out": {
+      "test": "Blind held-out 80/20 site split",
+      "n_train_seals": 1176,
+      "n_held_seals": 494,
+      "n_common_signs": 87,
+      "class_prediction_accuracy": 0.977,
+      "chance_baseline": 0.5754,
+      "lift_over_chance": 1.698,
+      "pearson_r_initial_rate": 0.9986,
+      "pearson_r_terminal_rate": 0.9939,
+      "mean_positional_correlation": 0.9963,
+      "class_agreements": {
+        "INITIAL": {
+          "correct": 64,
+          "total": 64
+        },
+        "MEDIAL": {
+          "correct": 5,
+          "total": 5
+        },
+        "MIXED": {
+          "correct": 13,
+          "total": 15
+        },
+        "TERMINAL": {
+          "correct": 3,
+          "total": 3
+        }
+      },
+      "verdict": "STRONGLY_CONFIRMED",
+      "interpretation": "Trained on 1176 seals (80%), tested on 494 (20%). Sign class prediction accuracy: 97.70% vs chance 57.54% (1.7x lift). Positional rate correlation: r(i_rate)=0.999, r(t_rate)=0.994. Positional model generalises well to unseen seals \u2014 not overfit to training data."
+    },
+    "F9_single_sign_census": {
+      "test": "Single-sign seal TERMINAL dominance",
+      "n_single_sign_seals": 0,
+      "verdict": "SKIPPED_NO_DATA"
+    },
+    "F10_zipf_gap": {
+      "test": "Zipf gap analysis \u2014 coverage vs. frequency model",
+      "zipf_alpha": 1.2823,
+      "actual_hm_token_coverage": 0.9075,
+      "uncovered_token_gap_actual": 0.0925,
+      "uncovered_token_gap_zipf_predicted": 0.0639,
+      "gap_ratio_actual_vs_expected": 1.4484,
+      "n_signs_for_90pct_actual": 141,
+      "n_signs_for_90pct_zipf": 95,
+      "n_non_hm_sign_types": 240,
+      "top_10_uncovered_signs": [
+        {
+          "sign": "M270",
+          "freq": 6,
+          "confidence": "LOW",
+          "reading": "mu\u1e37"
+        },
+        {
+          "sign": "M386",
+          "freq": 6,
+          "confidence": "LOW",
+          "reading": "ma\u1e47"
+        },
+        {
+          "sign": "M198",
+          "freq": 6,
+          "confidence": "LOW",
+          "reading": "po\u1e49"
+        },
+        {
+          "sign": "M183",
+          "freq": 5,
+          "confidence": "LOW",
+          "reading": "v\u0113\u1e37"
+        },
+        {
+          "sign": "M365",
+          "freq": 5,
+          "confidence": "LOW",
+          "reading": "v\u0101\u1e49"
+        },
+        {
+          "sign": "M412",
+          "freq": 5,
+          "confidence": "LOW",
+          "reading": "c\u016b\u1e37"
+        },
+        {
+          "sign": "M151",
+          "freq": 5,
+          "confidence": "LOW",
+          "reading": "vi\u1e37"
+        },
+        {
+          "sign": "M304",
+          "freq": 5,
+          "confidence": "LOW",
+          "reading": "v\u0113\u1e5f"
+        },
+        {
+          "sign": "M321",
+          "freq": 5,
+          "confidence": "LOW",
+          "reading": "kol"
+        },
+        {
+          "sign": "M357",
+          "freq": 5,
+          "confidence": "LOW",
+          "reading": "ku\u1e37"
+        }
+      ],
+      "verdict": "SYSTEMATIC_GAP",
+      "interpretation": "Zipf \u03b1=1.282 (natural lang \u2248 1.0). Uncovered gap: 9.25% actual vs 6.39% Zipf-predicted. Gap ratio: 1.45. Systematic gap detected: frequency model under-predicts coverage gap \u2014 possible sub-system or distinct script stratum."
+    },
+    "F12_sanskrit_ab": {
+      "test": "Sanskrit A/B at 157 H+M anchors",
+      "n_readings_scored": 157,
+      "mean_log_p_dravidian": -5.824,
+      "mean_log_p_sanskrit": -9.9456,
+      "lm_advantage_drv_minus_skt": 4.1217,
+      "dravidian_favored_count": 138,
+      "dravidian_favored_pct": 87.9,
+      "verdict": "STRONGLY_DRAVIDIAN",
+      "top_10_drv_favored": [
+        {
+          "sign": "M355",
+          "reading": "lu",
+          "drv_score": -4.538271227417588,
+          "skt_score": -16.11809565095832,
+          "drv_favored": true
+        },
+        {
+          "sign": "M107",
+          "reading": "ko",
+          "drv_score": -5.028214832447168,
+          "skt_score": -16.11809565095832,
+          "drv_favored": true
+        },
+        {
+          "sign": "M058",
+          "reading": "ke",
+          "drv_score": -5.076654795247236,
+          "skt_score": -16.11809565095832,
+          "drv_favored": true
+        },
+        {
+          "sign": "M034",
+          "reading": "t\u014d\u1e37",
+          "drv_score": -5.301408097397732,
+          "skt_score": -16.11809565095832,
+          "drv_favored": true
+        },
+        {
+          "sign": "M089",
+          "reading": "tu/t\u016b",
+          "drv_score": -5.301408097397732,
+          "skt_score": -16.11809565095832,
+          "drv_favored": true
+        },
+        {
+          "sign": "M001",
+          "reading": "t\u014d\u1e37",
+          "drv_score": -5.301408097397732,
+          "skt_score": -16.11809565095832,
+          "drv_favored": true
+        },
+        {
+          "sign": "M099",
+          "reading": "kol/ko\u1e37",
+          "drv_score": -5.721362013007114,
+          "skt_score": -16.11809565095832,
+          "drv_favored": true
+        },
+        {
+          "sign": "M060",
+          "reading": "k\u0101\u1e47\u1e6d\u0101mirukam",
+          "drv_score": -5.809169758598201,
+          "skt_score": -16.11809565095832,
+          "drv_favored": true
+        },
+        {
+          "sign": "M009",
+          "reading": "\u0101\u1e47",
+          "drv_score": -5.828475377492355,
+          "skt_score": -16.11809565095832,
+          "drv_favored": true
+        },
+        {
+          "sign": "M328",
+          "reading": "\u0101/\u0101l",
+          "drv_score": -5.828475377492355,
+          "skt_score": -16.11809565095832,
+          "drv_favored": true
+        }
+      ],
+      "top_10_skt_favored": [
+        {
+          "sign": "M164",
+          "reading": "il",
+          "drv_score": -7.405312128551056,
+          "skt_score": -6.049733455231958,
+          "drv_favored": false
+        },
+        {
+          "sign": "M163",
+          "reading": "il",
+          "drv_score": -7.405312128551056,
+          "skt_score": -6.049733455231958,
+          "drv_favored": false
+        },
+        {
+          "sign": "M374",
+          "reading": "kul",
+          "drv_score": -7.386619995538904,
+          "skt_score": -6.049733455231958,
+          "drv_favored": false
+        },
+        {
+          "sign": "M264",
+          "reading": "peN",
+          "drv_score": -7.7120423959735325,
+          "skt_score": -6.742880635791903,
+          "drv_favored": false
+        },
+        {
+          "sign": "M087",
+          "reading": "veL",
+          "drv_score": -7.686724587989242,
+          "skt_score": -6.742880635791903,
+          "drv_favored": false
+        },
+        {
+          "sign": "M079",
+          "reading": "ir",
+          "drv_score": -6.98115488743074,
+          "skt_score": -6.049733455231958,
+          "drv_favored": false
+        },
+        {
+          "sign": "M042",
+          "reading": "vaN",
+          "drv_score": -6.944787243259865,
+          "skt_score": -6.049733455231958,
+          "drv_favored": false
+        },
+        {
+          "sign": "M118",
+          "reading": "car",
+          "drv_score": -7.52545644039312,
+          "skt_score": -6.742880635791903,
+          "drv_favored": false
+        },
+        {
+          "sign": "M220",
+          "reading": "al",
+          "drv_score": -6.604919417637514,
+          "skt_score": -6.049733455231958,
+          "drv_favored": false
+        },
+        {
+          "sign": "M221",
+          "reading": "al",
+          "drv_score": -6.604919417637514,
+          "skt_score": -6.049733455231958,
+          "drv_favored": false
+        }
+      ],
+      "interpretation": "88% of 157 H+M readings are better explained by Dravidian LM than Sanskrit. Mean log-P delta: +4.122. Dravidian LM provides systematically better fit for H+M readings."
+    }
+  },
+  "summary": {
+    "verdicts": {
+      "F1_permutation_null": "STRONGLY_CONFIRMED",
+      "F3_anchor_exclusivity": "AMBIGUOUS",
+      "F7_blind_held_out": "STRONGLY_CONFIRMED",
+      "F9_single_sign_census": "SKIPPED_NO_DATA",
+      "F10_zipf_gap": "SYSTEMATIC_GAP",
+      "F12_sanskrit_ab": "STRONGLY_DRAVIDIAN"
+    },
+    "n_confirmed": 3,
+    "n_failed": 0,
+    "overall_verdict": "PARTIALLY_SUPPORTED"
+  },
+  "_note": "Phase-134 comprehensive falsification. All tests designed to FAIL the Dravidian decipherment hypothesis if wrong. Results indicate overall: PARTIALLY_SUPPORTED"
+}

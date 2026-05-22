@@ -14,8 +14,14 @@ GPU: BigramScorer CUDA. ~15 min total (3 runs x 5 seeds).
 Output: reports/phase70_m267_validation.json
 """
 from __future__ import annotations
-import csv, json, math, random, sys, time
-from collections import Counter, defaultdict
+
+import csv
+import json
+import math
+import random
+import sys
+import time
+from collections import Counter
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -222,20 +228,20 @@ def main():
 
     # Run 1: Baseline (no M267 pin) = Phase-63 equivalent
     print(f"\n{'='*60}")
-    print(f"Run 1: BASELINE (no M267 pin)")
+    print("Run 1: BASELINE (no M267 pin)")
     r_base = run_experiment(flat, scorer, bigram_prob, vocab_set, filtered_vocab,
                              None, "Baseline")
 
     # Run 2: M267 = 'in' (genitive)
     print(f"\n{'='*60}")
-    print(f"Run 2: M267='in' (genitive 'of')")
+    print("Run 2: M267='in' (genitive 'of')")
     in_pin = in_token if in_token else "i"
     r_in = run_experiment(flat, scorer, bigram_prob, vocab_set, filtered_vocab,
                           {"M267": in_pin}, "M267=in")
 
     # Run 3: M267 = 'ko' / 'col' proxy (quotative/connective)
     print(f"\n{'='*60}")
-    print(f"Run 3: M267='ko' (col-proxy, quotative/connective)")
+    print("Run 3: M267='ko' (col-proxy, quotative/connective)")
     col_pin = col_token if col_token else "ko"
     r_col = run_experiment(flat, scorer, bigram_prob, vocab_set, filtered_vocab,
                            {"M267": col_pin}, "M267=col-proxy")
@@ -259,7 +265,7 @@ def main():
         verdict = f"M267 UNCERTAIN — both pins degrade SA (in={z_in:.2f}, col={z_col:.2f} vs base={z_base:.2f})"
 
     print(f"\n{'='*60}")
-    print(f"=== Phase-70 Results ===")
+    print("=== Phase-70 Results ===")
     print(f"  Baseline z:  {z_base:.2f}")
     print(f"  z (in):      {z_in:.2f}  ({'+' if z_in >= z_base else ''}{z_in - z_base:.2f} vs baseline)")
     print(f"  z (col):     {z_col:.2f}  ({'+' if z_col >= z_base else ''}{z_col - z_base:.2f} vs baseline)")
@@ -274,9 +280,9 @@ def main():
         data["anchors"]["M267"]["reading"] = "iN/in (genitive)"
         data["anchors"]["M267"]["source"] = "Phase-70 SA validation + Phase-64 grammar analysis"
         ANCHORS.write_text(json.dumps(data, indent=2, ensure_ascii=False), "utf-8")
-        print(f"  ANCHORS updated: M267 promoted to MEDIUM (was UNCERTAIN)")
+        print("  ANCHORS updated: M267 promoted to MEDIUM (was UNCERTAIN)")
     elif winner == "in" and z_in > z_base:
-        print(f"  M267='in' shows improvement but below promotion threshold (need +0.2 z). Keeping UNCERTAIN.")
+        print("  M267='in' shows improvement but below promotion threshold (need +0.2 z). Keeping UNCERTAIN.")
 
     result = {
         "_citation": {"primary": ["A.1"]},

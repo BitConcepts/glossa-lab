@@ -19,7 +19,9 @@ GPU: uses torch for the inscription scanning tensor; CUDA if available.
 Output: reports/phase45_fish_coastal_test.json
 """
 from __future__ import annotations
-import csv, json, math
+
+import csv
+import json
 from collections import Counter
 from pathlib import Path
 
@@ -201,8 +203,8 @@ def main() -> None:
     inland_rate = b / inland_total if inland_total else 0
     relative_risk = coastal_rate / inland_rate if inland_rate > 0 else float("inf")
 
-    print(f"\n2×2 Contingency Table:")
-    print(f"              With M047  Without M047  Total")
+    print("\n2×2 Contingency Table:")
+    print("              With M047  Without M047  Total")
     print(f"  Coastal     {a:9d}  {c:12d}  {coastal_total}")
     print(f"  Inland      {b:9d}  {d:12d}  {inland_total}")
     print(f"\n  Coastal rate: {a}/{coastal_total} = {coastal_rate:.4f}")

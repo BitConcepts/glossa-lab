@@ -186,7 +186,10 @@ def _ppubs_search(
     timeout: float = 25.0,
 ) -> dict[str, Any]:
     """Synchronous PPUBS search.  Establishes session on first call."""
-    global _ppubs_case_id, _ppubs_token  # noqa: PLW0603
+    # Declare all module-level names that may be mutated here or in the
+    # 401-recovery branch.  Python requires global declarations before any
+    # use of the name in the function, and only one declaration per name.
+    global _ppubs_case_id, _ppubs_token, _cookie_jar, _opener  # noqa: PLW0603
     opener = _get_opener()
 
     if _ppubs_case_id is None:
@@ -217,7 +220,6 @@ def _ppubs_search(
             # Session expired or unauthorized — reset everything and re-establish.
             # Reusing the stale cookie jar caused HTTP 400 on re-authentication;
             # a fresh jar ensures Step 1 (GET /pubwebapp/) can set clean cookies.
-            global _ppubs_case_id, _ppubs_token, _cookie_jar, _opener  # noqa: PLW0603
             _ppubs_case_id = None
             _ppubs_token = None
             _cookie_jar = http.cookiejar.CookieJar()  # fresh — discard stale session cookies
@@ -225,6 +227,10 @@ def _ppubs_search(
             try:
                 _establish_session(timeout=timeout)
                 payload["query"]["caseId"] = _ppubs_case_id
+                # _do_post captures `opener` from the outer scope; after resetting
+                # _opener=None the new session uses a fresh opener.  Re-bind the
+                # closure's `opener` reference to the newly-created one.
+                opener = _get_opener()  # noqa: PLW0621
                 result = _do_post()
                 _ppubs_cb_record_success()
                 return result

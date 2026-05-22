@@ -15,6 +15,7 @@ Package contents:
 CPU only. Output: reports/phase99_academic_package.json
 """
 from __future__ import annotations
+
 import json
 from pathlib import Path
 
@@ -148,14 +149,14 @@ def main():
         },
     ]
 
-    print(f"\n  Academic package contents:")
+    print("\n  Academic package contents:")
     print(f"    HIGH anchor table:      {len(high_anchor_table)} entries")
     print(f"    Statistical evidence:   {len(statistical_evidence)} tests")
     print(f"    Scholarly translations: {len(translations_10)}")
     print(f"    Open questions:         {len(open_questions)}")
 
-    print(f"\n=== Phase-99 Results ===")
-    print(f"  Package ready for Dr. Fuls / academic submission")
+    print("\n=== Phase-99 Results ===")
+    print("  Package ready for Dr. Fuls / academic submission")
     print(f"  Key headline: {executive_summary['key_claim'][:80]}...")
 
     result = {

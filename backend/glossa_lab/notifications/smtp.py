@@ -21,13 +21,15 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from email.message import EmailMessage
 from email.utils import make_msgid
-from typing import Any
 
 from glossa_lab.api.settings import get_key
 from glossa_lab.database import get_db
-from glossa_lab.notifications.graph import GraphConfig, send_mail as graph_send_mail
+from glossa_lab.notifications.graph import GraphConfig
+from glossa_lab.notifications.graph import send_mail as graph_send_mail
 from glossa_lab.notifications.resend import (
     ResendConfig,
+)
+from glossa_lab.notifications.resend import (
     send_mail as resend_send_mail,
 )
 
@@ -170,7 +172,6 @@ class Notifier:
         captured in :attr:`SendResult.error` so callers can surface them.
         """
         batch = _SendBatch(subject=subject, kind=kind, item_count=item_count)
-        cfg = self.config
 
         # Resolve recipients
         if recipients is None:

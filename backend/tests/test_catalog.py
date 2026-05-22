@@ -64,7 +64,7 @@ def test_reports_and_providers_catalog_are_exposed(client):
     reports = reports_response.json()
     providers = providers_response.json()
     assert any(
-        report["relative_path"] == "reports/real_indus_catalog_analysis.json" for report in reports
+        report["relative_path"] == "outputs/real_indus_catalog_analysis.json" for report in reports
     )
     assert {provider["id"] for provider in providers} == {
         "openai",

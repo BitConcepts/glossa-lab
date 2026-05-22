@@ -8,7 +8,10 @@
   IndusFullEmail       Phase-121: Comprehensive decipherment email
 """
 from __future__ import annotations
-import json, subprocess, sys
+
+import json
+import subprocess
+import sys
 from pathlib import Path
 
 _REPO    = Path(__file__).resolve().parent.parent.parent

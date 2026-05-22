@@ -35,10 +35,8 @@ actual Indus decipherment. The pipeline is:
 
 from __future__ import annotations
 
-import math
 from collections import Counter
 from typing import Any
-
 
 # ── Helpers ───────────────────────────────────────────────────────────
 
@@ -58,9 +56,12 @@ def _contact_corpus_loader(inputs: dict, params: dict) -> dict:
     Indus-seals-at-Mesopotamia inventory."""
     try:
         from glossa_lab.data.mesopotamian_contact import (  # noqa: PLC0415
-            get_meluhha_tablets, get_meluhha_keyword_counts,
-            get_meluhha_period_counts, get_meluhha_provenience_counts,
-            get_indus_seals_at_mesopotamia, get_meluhhan_persons,
+            get_indus_seals_at_mesopotamia,
+            get_meluhha_keyword_counts,
+            get_meluhha_period_counts,
+            get_meluhha_provenience_counts,
+            get_meluhha_tablets,
+            get_meluhhan_persons,
         )
     except Exception as exc:  # noqa: BLE001
         return {"error": f"data module not available: {exc}"}

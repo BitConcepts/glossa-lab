@@ -21,7 +21,10 @@ GPU: torch used for phonological distance matrix computation.
 Output: reports/phase47_t1_phoneme_assignment.json
 """
 from __future__ import annotations
-import csv, json, math, re
+
+import csv
+import json
+import math
 from collections import Counter
 from pathlib import Path
 
@@ -323,10 +326,10 @@ def main() -> None:
     # = "Fish-Elephant-Tiger's [title] Bull-Calf's [title]"
     # OR reading as compound personal name in Dravidian:
     # min-ya-pul-ay eru-kali-ay = compound of trade affiliations + titles
-    print(f"\n  Candidate phonological name: 'mīn-yā-puli-ay erutu-kaḷi-ay'")
-    print(f"  (= '[fish-elephant-tiger]-suffix [bull-calf]-suffix')")
-    print(f"  Possible interpretation: compound merchant title with multiple")
-    print(f"  guild affiliations, each closed by the -ay honorific suffix")
+    print("\n  Candidate phonological name: 'mīn-yā-puli-ay erutu-kaḷi-ay'")
+    print("  (= '[fish-elephant-tiger]-suffix [bull-calf]-suffix')")
+    print("  Possible interpretation: compound merchant title with multiple")
+    print("  guild affiliations, each closed by the -ay honorific suffix")
 
     # SA consistency check
     print("\nChecking SA/LM consistency for rebus phoneme assignments...")

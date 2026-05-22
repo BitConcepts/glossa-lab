@@ -16,6 +16,7 @@ Why this matters:
   TamilTB has ~12,000 tokens → ~4,000 unique forms → potentially 5,000+ bigrams.
 """
 from __future__ import annotations
+
 import json
 import re
 import sys
@@ -162,7 +163,9 @@ if __name__ == "__main__":
 
     # Also import from dravidian.py directly for comparison
     try:
-        from glossa_lab.data.dravidian import get_corpus_inscriptions, get_attested_words  # type: ignore
+        from glossa_lab.data.dravidian import (  # type: ignore
+            get_corpus_inscriptions,
+        )
         dravidian_seqs = get_corpus_inscriptions()
         dravidian_words_raw = []
         for seq in dravidian_seqs:

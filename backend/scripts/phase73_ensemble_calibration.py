@@ -15,8 +15,14 @@ GPU: BigramScorer CUDA. ~15 min (10 seeds x 2 LMs).
 Output: reports/phase73_ensemble_calibration.json
 """
 from __future__ import annotations
-import csv, json, math, random, sys, time
-from collections import Counter, defaultdict
+
+import csv
+import json
+import math
+import random
+import sys
+import time
+from collections import Counter
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -306,11 +312,11 @@ def main():
 
     high_signs = [e for e in calibrated if e["ensemble_tier"] == "ENSEMBLE_HIGH"]
 
-    print(f"\n=== Phase-73 Results ===")
+    print("\n=== Phase-73 Results ===")
     print(f"  ENSEMBLE_HIGH:   {n_high} (was 2 in Phase-62a)")
     print(f"  ENSEMBLE_MEDIUM: {n_med}")
     print(f"  ENSEMBLE_LOW:    {n_low}")
-    print(f"\n  Top ENSEMBLE_HIGH signs:")
+    print("\n  Top ENSEMBLE_HIGH signs:")
     for e in high_signs[:15]:
         marker = "✓" if e["confirmed_conf"] in ("HIGH","MEDIUM") else "?"
         agree = "✓" if e["confirmed_reading"][:2] == e["syl_modal"][:2] else "x"

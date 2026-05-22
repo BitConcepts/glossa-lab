@@ -26,7 +26,10 @@ GPU: torch for inscription scanning and contingency matrix.
 Output: reports/phase46_t4_fish_expansion.json
 """
 from __future__ import annotations
-import csv, json, math, re
+
+import csv
+import json
+import re
 from collections import Counter
 from pathlib import Path
 
@@ -40,7 +43,7 @@ except ImportError:
     print("[GPU] torch not available — CPU only")
 
 try:
-    from scipy.stats import fisher_exact, chi2_contingency
+    from scipy.stats import chi2_contingency, fisher_exact
     HAS_SCIPY = True
 except ImportError:
     HAS_SCIPY = False
@@ -212,7 +215,7 @@ def approach_b_contact_zone(roles: dict) -> dict:
                 })
                 break
 
-    print(f"\nApproach B Contact Zone:")
+    print("\nApproach B Contact Zone:")
     print(f"  Gulf seals with fish sign (Parpola 53/60): {len(gulf_fish_matches)}")
     print(f"  CDLI tablets with fish cuneiform: {len(fish_mentions)}")
     for m in gulf_fish_matches:
@@ -249,7 +252,7 @@ def approach_c_iconography(inscriptions: list[dict]) -> dict:
     fish_motif_rate_m047   = fish_icon_ctr.get("fish", 0) / total_fish if total_fish else 0
     lift = fish_motif_rate_m047 / fish_motif_rate_corpus if fish_motif_rate_corpus > 0 else 0
 
-    print(f"\nApproach C Iconography:")
+    print("\nApproach C Iconography:")
     print(f"  M047 with 'fish' iconography: {fish_icon_ctr.get('fish',0)}/{total_fish} = {fish_motif_rate_m047:.1%}")
     print(f"  Corpus 'fish' icon rate: {fish_motif_rate_corpus:.1%}")
     print(f"  Lift (M047 on fish motif): {lift:.2f}x")
@@ -288,7 +291,7 @@ def main() -> None:
     gulf_fish = len(result_b.get("gulf_seal_fish_matches", []))
     fish_lift = result_c.get("lift_on_fish_motif", 0)
 
-    print(f"\n=== Fish Sign Expansion Summary ===")
+    print("\n=== Fish Sign Expansion Summary ===")
     print(f"M047 coastal RR: {m047_rr:.2f}x (baseline mean: {mean_rr:.2f}x)")
     print(f"Gulf seals with fish sign: {gulf_fish}")
     print(f"M047 on fish-iconography: {fish_lift:.2f}x lift")

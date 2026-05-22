@@ -17,6 +17,8 @@ from datetime import datetime
 from typing import Iterable
 
 from glossa_lab.discovery import store
+from glossa_lab.discovery.fetchers.academia import AcademiaFetcher
+from glossa_lab.discovery.fetchers.academia_rss import AcademiaRSSFetcher
 from glossa_lab.discovery.fetchers.arxiv import ArxivFetcher
 from glossa_lab.discovery.fetchers.base import (
     Fetcher,
@@ -27,8 +29,6 @@ from glossa_lab.discovery.fetchers.base import (
     now_utc,
     to_iso,
 )
-from glossa_lab.discovery.fetchers.academia import AcademiaFetcher
-from glossa_lab.discovery.fetchers.academia_rss import AcademiaRSSFetcher
 from glossa_lab.discovery.fetchers.brave import BraveFetcher
 from glossa_lab.discovery.fetchers.crossref import CrossrefFetcher
 from glossa_lab.discovery.fetchers.doaj import DOAJFetcher
@@ -74,11 +74,13 @@ _REGISTRY: tuple[type[Fetcher], ...] = (
     AcademiaRSSFetcher,
 )
 
+_RUN_ALL_LOCK = asyncio.Lock()
+
 
 def available_fetchers() -> list[dict[str, object]]:
     """Return a status snapshot for each registered fetcher, including rate-limit health."""
-    from glossa_lab.discovery.fetchers.base import get_rate_tracker  # noqa: PLC0415
     from glossa_lab.api.settings import get_key  # noqa: PLC0415
+    from glossa_lab.discovery.fetchers.base import get_rate_tracker  # noqa: PLC0415
     tracker = get_rate_tracker()
     out: list[dict[str, object]] = []
     for cls in _REGISTRY:
@@ -232,22 +234,34 @@ async def run_all(
     enforces a 60 s inter-call delay itself), so no additional inter-topic
     sleep is needed here.
     """
-    topics = list_topics()
-    if only_topics is not None:
-        wanted = {t.lower() for t in only_topics}
-        topics = [t for t in topics if t.id.lower() in wanted]
-    summaries = []
-    for t in topics:
-        summaries.append(await run_topic(t, since=since, only_sources=only_sources))
-    agg = {
-        "topics_run": [t.id for t in topics],
-        "results": summaries,
-        "fetched": sum(int(s.get("fetched", 0)) for s in summaries),
-        "new": sum(int(s.get("new", 0)) for s in summaries),
-        "merged": sum(int(s.get("merged", 0)) for s in summaries),
-        "errors": sum(int(s.get("errors", 0)) for s in summaries),
-    }
-    return agg
+    if _RUN_ALL_LOCK.locked():
+        _log.warning("discovery run_all skipped: another discovery sweep is already running")
+        return {
+            "topics_run": [],
+            "results": [],
+            "fetched": 0,
+            "new": 0,
+            "merged": 0,
+            "errors": 0,
+            "skipped": "another discovery sweep is already running",
+        }
+    async with _RUN_ALL_LOCK:
+        topics = list_topics()
+        if only_topics is not None:
+            wanted = {t.lower() for t in only_topics}
+            topics = [t for t in topics if t.id.lower() in wanted]
+        summaries = []
+        for t in topics:
+            summaries.append(await run_topic(t, since=since, only_sources=only_sources))
+        agg = {
+            "topics_run": [t.id for t in topics],
+            "results": summaries,
+            "fetched": sum(int(s.get("fetched", 0)) for s in summaries),
+            "new": sum(int(s.get("new", 0)) for s in summaries),
+            "merged": sum(int(s.get("merged", 0)) for s in summaries),
+            "errors": sum(int(s.get("errors", 0)) for s in summaries),
+        }
+        return agg
 
 
 __all__ = [

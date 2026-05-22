@@ -19,7 +19,13 @@ Output: reports/phase55_ensemble.json
         reports/phase55_final_decipherment.json  ← THE main output
 """
 from __future__ import annotations
-import csv, json, math, random, sys, time
+
+import csv
+import json
+import math
+import random
+import sys
+import time
 from collections import Counter, defaultdict
 from pathlib import Path
 from types import SimpleNamespace
@@ -274,12 +280,12 @@ def main():
     n_ens_med  = sum(1 for t in final_table if t["ensemble_confidence"] == "ENSEMBLE_MEDIUM")
     n_ens_low  = sum(1 for t in final_table if "LOW" in t["ensemble_confidence"])
 
-    print(f"\n=== Ensemble Results ===")
+    print("\n=== Ensemble Results ===")
     print(f"  ENSEMBLE_HIGH   (Dravidian agree, Sanskrit differs): {n_ens_high}")
     print(f"  ENSEMBLE_MEDIUM (Dravidian agree, Sanskrit also):    {n_ens_med}")
     print(f"  ENSEMBLE_LOW    (Dravidian disagree):                {n_ens_low}")
 
-    print(f"\nTop ENSEMBLE_HIGH signs:")
+    print("\nTop ENSEMBLE_HIGH signs:")
     for t in [tt for tt in final_table if tt["ensemble_confidence"] == "ENSEMBLE_HIGH"][:15]:
         conf = t["confirmed_reading"]
         print(f"  {t['sign']:6s} n={t['n_corpus']:4d} SA={t['ensemble_reading']!r:10s} confirmed={conf!r}")

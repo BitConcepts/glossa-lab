@@ -1,13 +1,46 @@
 {
   "id": "indus_phase25f_tamil_brahmi_crosscheck",
-  "name": "Indus Phase-25f \u2014 Tamil-Brahmi structural cross-check",
+  "name": "Indus Phase-25f — Tamil-Brahmi structural cross-check",
   "description": "Phase-25f Tier D11: compares I/M/T positional rates between Dravidian (Tamil-Brahmi) and Indus corpora; computes KL divergence. Lower KL = better typological fit for the Dravidian hypothesis. Output: reports/phase25f_tamil_brahmi_crosscheck.json.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "check",  "type": "expNode", "data": { "atomicId": "TamilBrahmiCrosscheck", "label": "Tamil-Brahmi cross-check", "params": {} },                                  "position": { "x": 60,  "y": 100 } },
-    { "id": "out",    "type": "expNode", "data": { "atomicId": "JSONExport",            "label": "Save Phase-25f results",   "params": { "filename": "phase25f_tamil_brahmi_crosscheck.json" } }, "position": { "x": 360, "y": 100 } }
+    {
+      "id": "check",
+      "type": "expNode",
+      "data": {
+        "atomicId": "TamilBrahmiCrosscheck",
+        "label": "Tamil-Brahmi cross-check",
+        "params": {}
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Phase-25f results",
+        "params": {
+          "filename": "phase25f_tamil_brahmi_crosscheck.json"
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e_c_out", "source": "check", "target": "out", "sourcePort": "verdict", "targetPort": "data" }
-  ]
+    {
+      "id": "e_c_out",
+      "source": "check",
+      "target": "out",
+      "sourcePort": "verdict",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

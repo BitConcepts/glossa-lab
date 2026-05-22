@@ -20,7 +20,9 @@ UNCERTAIN seals.
 CPU only. Output: reports/phase103_name_lexicon.json
 """
 from __future__ import annotations
-import csv, json, re
+
+import csv
+import json
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -205,7 +207,7 @@ def main():
         proposals.append(prop)
 
     # Top personal name candidates
-    print(f"\n  Top personal name candidates:")
+    print("\n  Top personal name candidates:")
     print(f"  {'Sign':6s} {'CorpF':5s} {'NameF':5s} {'Score':5s} {'SA':6s} {'Proposed':10s} {'Patterns'}")
     print(f"  {'-'*75}")
     for p in proposals[:20]:
@@ -216,7 +218,7 @@ def main():
     # Check if M293 is in the list
     m293_prop = next((p for p in proposals if p["sign"] == "M293"), None)
     if m293_prop:
-        print(f"\n  M293 personal name analysis:")
+        print("\n  M293 personal name analysis:")
         print(f"    Name slot count:  {m293_prop['name_slot_count']}")
         print(f"    Genitive pattern: {m293_prop['genitive_pattern_count']}")
         print(f"    SA modal:         {m293_prop['sa_modal']}")
@@ -234,7 +236,7 @@ def main():
     top_bigrams = [(pair,cnt) for pair,cnt in name_bigrams.most_common(20)
                    if cnt >= 3 and pair[0] not in confirmed and pair[1] not in confirmed]
 
-    print(f"\n  Top unread sign bigrams (potential compound names):")
+    print("\n  Top unread sign bigrams (potential compound names):")
     for (a,b), cnt in top_bigrams[:10]:
         print(f"    {a}-{b}: {cnt}×")
 
@@ -242,7 +244,7 @@ def main():
     signs_with_high_name_score = sum(1 for p in proposals if p["name_score"] >= 0.5)
     signs_with_sa_modal = sum(1 for p in proposals if p["sa_modal"])
 
-    print(f"\n=== Phase-103 Results ===")
+    print("\n=== Phase-103 Results ===")
     print(f"  Name candidates found:       {len(proposals)}")
     print(f"  High name score (>=0.5):     {signs_with_high_name_score}")
     print(f"  With SA modal reading:       {signs_with_sa_modal}")

@@ -36,7 +36,6 @@ import random
 from collections import Counter
 from typing import Any
 
-
 # ── Helpers ───────────────────────────────────────────────────────────
 
 
@@ -54,8 +53,10 @@ def _refined_seal_loader(inputs: dict, params: dict) -> dict:
     """Load Phase-23 augmented seals + refined persons."""
     try:
         from glossa_lab.data.mesopotamian_contact import (  # noqa: PLC0415
-            get_indus_seals_at_mesopotamia, get_seals_with_inscription,
-            get_seal_sign_metadata, get_meluhhan_persons_strict,
+            get_indus_seals_at_mesopotamia,
+            get_meluhhan_persons_strict,
+            get_seal_sign_metadata,
+            get_seals_with_inscription,
         )
     except Exception as exc:  # noqa: BLE001
         return {"error": f"data module not available: {exc}"}

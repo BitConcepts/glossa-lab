@@ -1,0 +1,30 @@
+"""Quick test to debug the notebooks 500 error."""
+import asyncio
+import sys
+import traceback
+
+sys.path.insert(0, ".")
+
+from pathlib import Path
+
+from glossa_lab.database import get_db, init_db
+
+
+async def main():
+    await init_db(Path("data"))
+    db = get_db()
+    assert db, "DB not initialized"
+    try:
+        result = await db.list_notebooks()
+        print("list_notebooks OK:", result)
+    except Exception:
+        traceback.print_exc()
+    try:
+        result = await db.create_notebook(
+            title="test", content="hello", study_id=None, tags=[], created_at="2026-01-01T00:00:00"
+        )
+        print("create_notebook OK:", result)
+    except Exception:
+        traceback.print_exc()
+
+asyncio.run(main())

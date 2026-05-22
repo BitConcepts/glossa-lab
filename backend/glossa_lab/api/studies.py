@@ -477,8 +477,9 @@ async def _run_rag_node(
     upstream_results: dict[str, Any],
 ) -> dict[str, Any]:
     """Query the RAG index using upstream context or a param override."""
-    from glossa_lab.rag import build_index, index_size, query as rag_query  # noqa: PLC0415
     from glossa_lab.database import get_db  # noqa: PLC0415
+    from glossa_lab.rag import build_index, index_size  # noqa: PLC0415
+    from glossa_lab.rag import query as rag_query
 
     node_params = node.get("params") or {}
     query_override = str(node_params.get("query_override", "")).strip()
@@ -680,7 +681,8 @@ async def _maybe_notify_study(
     """Fire a study_complete email; never raises into the runner."""
     try:
         from glossa_lab.notifications import (  # noqa: PLC0415
-            format_study_complete, get_notifier,
+            format_study_complete,
+            get_notifier,
         )
         notifier = get_notifier()
         if not notifier.is_configured():

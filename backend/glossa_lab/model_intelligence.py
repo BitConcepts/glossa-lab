@@ -413,12 +413,10 @@ _KNOWN_MODELS: dict[str, dict[str, float]] = {
         "Qwen3-14B": {"ifeval": 79.5, "bbh": 73.0, "math": 68.0, "gpqa": 41.5, "musr": 52.0, "mmlu_pro": 64.5},
         "Qwen3-8B":  {"ifeval": 73.0, "bbh": 65.5, "math": 55.0, "gpqa": 32.0, "musr": 41.0, "mmlu_pro": 54.0},
         # Qwen3-Coder series (2025) — code-focused but excellent at structured tasks
-        # cpatonn/Qwen3-Coder-30B-A3B-Instruct-AWQ-4bit is what l1-nexus serves.
         # A3B = Activated 3B (MoE: 30B total params, 3B active) — fast + strong.
         "Qwen3-Coder-30B": {"ifeval": 82.0, "bbh": 76.5, "math": 74.0, "gpqa": 46.0, "musr": 56.0, "mmlu_pro": 68.5},
         "Qwen3-Coder-14B": {"ifeval": 79.0, "bbh": 72.5, "math": 68.5, "gpqa": 40.0, "musr": 51.0, "mmlu_pro": 63.5},
-        # l1-nexus → cpatonn/Qwen3-Coder-30B-A3B-Instruct-AWQ-4bit
-        # The fuzzy matcher will resolve Qwen3-Coder-30B → above.
+        # cpatonn/Qwen3-Coder-30B-A3B-Instruct-AWQ-4bit — fuzzy matcher resolves Qwen3-Coder-30B → above.
         # Also register under partial HF paths for belt-and-suspenders matching.
         "Qwen3-Coder-30B-A3B": {"ifeval": 82.0, "bbh": 76.5, "math": 74.0, "gpqa": 46.0, "musr": 56.0, "mmlu_pro": 68.5},
         # BAAI/bge-m3 — embedding model, not generative (0 scores is correct)
@@ -427,7 +425,7 @@ _KNOWN_MODELS: dict[str, dict[str, float]] = {
         # ── Previously unmatched models (added from auto-configure logs) ──
         # Quantised Ollama instruct variants — same capability tier as base tag
         "mistral:7b-instruct-q4_0": {"ifeval": 60.0, "bbh": 54.0, "math": 28.0, "gpqa": 19.0, "musr": 28.0, "mmlu_pro": 40.0},
-        # l1-glossa custom endpoint models (gpt-oss series ~ GPT-4o-mini tier)
+        # custom vLLM endpoint models (gpt-oss series ~ GPT-4o-mini tier)
         "gpt-oss:20b":     {"ifeval": 80.4, "bbh": 75.1, "math": 62.3, "gpqa": 40.1, "musr": 51.2, "mmlu_pro": 63.5},
         "gpt-oss:20b-64k": {"ifeval": 80.4, "bbh": 75.1, "math": 62.3, "gpqa": 40.1, "musr": 51.2, "mmlu_pro": 63.5},
         # Qwen3-14B (HF org-prefixed form for T1 matching)
@@ -449,8 +447,7 @@ _KNOWN_MODELS: dict[str, dict[str, float]] = {
         "gpt-4.1":      {"ifeval": 88.0, "bbh": 83.0, "math": 79.0, "gpqa": 56.0, "musr": 67.0, "mmlu_pro": 76.0},
         "gpt-4.1-mini": {"ifeval": 83.0, "bbh": 77.0, "math": 66.0, "gpqa": 45.0, "musr": 55.0, "mmlu_pro": 67.0},
         "gpt-4.1-nano": {"ifeval": 72.0, "bbh": 65.0, "math": 48.0, "gpqa": 30.0, "musr": 42.0, "mmlu_pro": 54.0},
-        # gpt-5.4 — high-tier research/enterprise model; listed in governance-tool rpm=60 tpm=500k
-        # Benchmarks estimated at top-of-class tier (exceeds gpt-4.1 on reasoning)
+        # gpt-5.4 — high-tier research/enterprise model (top-of-class tier, exceeds gpt-4.1 on reasoning)
         "gpt-5.4":  {"ifeval": 91.0, "bbh": 87.0, "math": 88.0, "gpqa": 72.0, "musr": 74.0, "mmlu_pro": 84.0},
         # ── Current-generation Google Gemini models ─────────────────────────────
         # gemini-2.5-pro and gemini-2.5-flash already handled by T4 normalisation

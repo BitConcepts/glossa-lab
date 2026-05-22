@@ -14,8 +14,10 @@ CPU only (fast analysis).
 Output: reports/phase79_anchor_gap_analysis.json
 """
 from __future__ import annotations
-import csv, json
-from collections import Counter, defaultdict
+
+import csv
+import json
+from collections import Counter
 from pathlib import Path
 
 REPO    = Path(__file__).parents[2]
@@ -152,19 +154,19 @@ def main():
     priority_signs.sort(key=lambda x: -x["priority_score"])
     n_unread_signs = len(target_signs)
 
-    print(f"\n  Top 20 priority signs to decode next:")
+    print("\n  Top 20 priority signs to decode next:")
     print(f"  {'Sign':6s} {'Freq':5s} {'%tok':5s} {'Ctx':5s} {'Decoded':7s} {'Priority':8s} {'Depiction'}")
     for p in priority_signs[:20]:
         print(f"  {p['sign']:6s} {p['corpus_freq']:5d} {p['freq_pct']:4.1f}% "
               f"{p['context_score']:5.1f} {p['in_decoded_context']:7d} "
               f"{p['priority_score']:8.1f} {p['depiction']}")
 
-    print(f"\n=== Phase-79 Results ===")
+    print("\n=== Phase-79 Results ===")
     print(f"  Unread/LOW signs: {n_unread_signs}")
     print(f"  Top priority:     {priority_signs[0]['sign']} "
           f"(freq={priority_signs[0]['corpus_freq']}, score={priority_signs[0]['priority_score']:.1f})")
-    print(f"  Insight: Prioritise signs with high corpus frequency AND confirmed-sign context")
-    print(f"  Next anchor sprint should target top-20 signs from this list")
+    print("  Insight: Prioritise signs with high corpus frequency AND confirmed-sign context")
+    print("  Next anchor sprint should target top-20 signs from this list")
 
     result = {
         "_citation": {"primary": ["A.1"]},

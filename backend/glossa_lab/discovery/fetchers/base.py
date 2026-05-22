@@ -15,6 +15,7 @@ from __future__ import annotations
 import asyncio
 import json
 import logging
+import socket
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -31,7 +32,7 @@ _log = logging.getLogger("glossa_lab.discovery.fetchers")
 _TOPICS_DIR = Path(__file__).resolve().parent.parent / "topics"
 
 # Default User-Agent — providers like CrossRef / arXiv prefer a contactable UA.
-_USER_AGENT = "GlossaLab-DiscoveryEngine/0.1 (+https://github.com/layer1labs/glossa-lab)"
+_USER_AGENT = "GlossaLab-DiscoveryEngine/0.1 (+https://github.com/BitConcepts/glossa-lab)"
 
 
 # ── Topic profiles ──────────────────────────────────────────────────────────
@@ -134,7 +135,6 @@ class FetcherError(RuntimeError):
 
 def _short_url(url: str) -> str:
     """Return just scheme+host+path, dropping query string (keeps logs readable)."""
-    import re as _re  # noqa: PLC0415
     try:
         parsed = urllib.parse.urlparse(url)
         return f"{parsed.scheme}://{parsed.netloc}{parsed.path}"
@@ -166,6 +166,7 @@ def _clean_body(raw: str) -> str:
 # Thread-local storage for rate-limit headers captured from the last response.
 # Fetchers can read this after http_get_json returns to feed the tracker.
 import threading as _threading
+
 _last_rate_headers = _threading.local()
 
 
@@ -234,7 +235,8 @@ def http_get_json(
         hdrs.update(headers)
     req = urllib.request.Request(full_url, headers=hdrs, method="GET")
     # Allow disabling SSL verification via env var (for corporate proxies/VPNs)
-    import os as _os, ssl as _ssl  # noqa: PLC0415,E401
+    import os as _os  # noqa: PLC0415,E401
+    import ssl as _ssl
     ssl_ctx: _ssl.SSLContext | None = None
     if _os.environ.get("GLOSSA_SSL_VERIFY", "1").strip() in ("0", "false", "no"):
         ssl_ctx = _ssl.create_default_context()
@@ -271,6 +273,8 @@ def http_get_json(
     except urllib.error.URLError as exc:
         reason = str(exc.reason) if exc.reason else "network error"
         raise FetcherError(f"{reason} — {_short_url(full_url)}") from exc
+    except (TimeoutError, socket.timeout) as exc:
+        raise FetcherError(f"read timeout after {timeout:.0f}s — {_short_url(full_url)}") from exc
     except json.JSONDecodeError as exc:
         raise FetcherError(f"Invalid JSON from {_short_url(full_url)}: {exc.msg}") from exc
 

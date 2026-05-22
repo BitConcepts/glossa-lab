@@ -3,28 +3,219 @@
   "name": "Indus Contact Zone Analysis v2 (CISI — awaits multi-site data)",
   "description": "P3: Compares sign usage between Mesopotamian trade-contact sites (Lothal, Dholavira) and Indus heartland (Harappa, Mohenjo-daro) using the CISI corpus. The mayig/indus-valley-script-corpus currently covers only Mohenjo-daro (M-prefix, 179 inscriptions). This graph will run fully once the repo adds Harappa (H-prefix), Lothal (L-prefix), and Dholavira (DK-prefix) files. Current run: structural analysis on Mohenjo-daro only as baseline.",
   "nodes": [
-    {"id": "corpus",   "type": "expNode", "data": {"atomicId": "BuiltinCorpus",          "label": "Indus CISI (Mohenjo-daro baseline)", "params": {"corpus": "indus_cisi"}},  "position": {"x": 60,  "y": 200}},
-    {"id": "freq",     "type": "expNode", "data": {"atomicId": "FreqCounter",             "label": "Sign Frequency Distribution",       "params": {}},                        "position": {"x": 300, "y": 100}},
-    {"id": "entropy",  "type": "expNode", "data": {"atomicId": "EntropyCalc",             "label": "Entropy H1 (site baseline)",        "params": {}},                        "position": {"x": 520, "y": 100}},
-    {"id": "profiler", "type": "expNode", "data": {"atomicId": "PositionalProfiler",      "label": "I/M/T Profiles",                    "params": {"min_count": 3}},         "position": {"x": 300, "y": 240}},
-    {"id": "ngrams",   "type": "expNode", "data": {"atomicId": "NgramCounter",            "label": "Bigrams (n=2)",                      "params": {"n": 2}},                  "position": {"x": 520, "y": 240}},
-    {"id": "wsc",      "type": "expNode", "data": {"atomicId": "WritingSystemClassifier", "label": "Writing System Tier",                "params": {}},                        "position": {"x": 720, "y": 100}},
-    {"id": "note",     "type": "expNode", "data": {"atomicId": "StaticValue",             "label": "Status note",                        "params": {"value": "Contact zone analysis awaits multi-site CISI data. Currently Mohenjo-daro only (179 inscriptions). When Harappa/Lothal/Dholavira added to mayig repo, re-run with site-filtered BuiltinCorpus calls."}}, "position": {"x": 60, "y": 420}},
-    {"id": "merge",    "type": "expNode", "data": {"atomicId": "Merger",                  "label": "Merge Baseline Results",             "params": {}},                        "position": {"x": 960, "y": 240}},
-    {"id": "out",      "type": "expNode", "data": {"atomicId": "JSONExport",              "label": "Save Contact Zone Baseline",         "params": {"filename": "indus_contact_zone_v2.json"}}, "position": {"x": 1200, "y": 240}}
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "Indus CISI (Mohenjo-daro baseline)",
+        "params": {
+          "corpus": "indus_cisi"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 200
+      }
+    },
+    {
+      "id": "freq",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FreqCounter",
+        "label": "Sign Frequency Distribution",
+        "params": {}
+      },
+      "position": {
+        "x": 300,
+        "y": 100
+      }
+    },
+    {
+      "id": "entropy",
+      "type": "expNode",
+      "data": {
+        "atomicId": "EntropyCalc",
+        "label": "Entropy H1 (site baseline)",
+        "params": {}
+      },
+      "position": {
+        "x": 520,
+        "y": 100
+      }
+    },
+    {
+      "id": "profiler",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PositionalProfiler",
+        "label": "I/M/T Profiles",
+        "params": {
+          "min_count": 3
+        }
+      },
+      "position": {
+        "x": 300,
+        "y": 240
+      }
+    },
+    {
+      "id": "ngrams",
+      "type": "expNode",
+      "data": {
+        "atomicId": "NgramCounter",
+        "label": "Bigrams (n=2)",
+        "params": {
+          "n": 2
+        }
+      },
+      "position": {
+        "x": 520,
+        "y": 240
+      }
+    },
+    {
+      "id": "wsc",
+      "type": "expNode",
+      "data": {
+        "atomicId": "WritingSystemClassifier",
+        "label": "Writing System Tier",
+        "params": {}
+      },
+      "position": {
+        "x": 720,
+        "y": 100
+      }
+    },
+    {
+      "id": "note",
+      "type": "expNode",
+      "data": {
+        "atomicId": "StaticValue",
+        "label": "Status note",
+        "params": {
+          "value": "Contact zone analysis awaits multi-site CISI data. Currently Mohenjo-daro only (179 inscriptions). When Harappa/Lothal/Dholavira added to mayig repo, re-run with site-filtered BuiltinCorpus calls."
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 420
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge Baseline Results",
+        "params": {}
+      },
+      "position": {
+        "x": 960,
+        "y": 240
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Contact Zone Baseline",
+        "params": {
+          "filename": "indus_contact_zone_v2.json"
+        }
+      },
+      "position": {
+        "x": 1200,
+        "y": 240
+      }
+    }
   ],
   "edges": [
-    {"id": "e1",  "source": "corpus",   "target": "freq",     "sourcePort": "sequences",          "targetPort": "sequences"},
-    {"id": "e2",  "source": "corpus",   "target": "profiler", "sourcePort": "sequences",          "targetPort": "sequences"},
-    {"id": "e3",  "source": "corpus",   "target": "ngrams",   "sourcePort": "sequences",          "targetPort": "sequences"},
-    {"id": "e4",  "source": "freq",     "target": "entropy",  "sourcePort": "freq_map",           "targetPort": "freq_map"},
-    {"id": "e5",  "source": "freq",     "target": "wsc",      "sourcePort": "distinct_symbols",   "targetPort": "distinct_symbols"},
-    {"id": "e6",  "source": "entropy",  "target": "wsc",      "sourcePort": "h1",                 "targetPort": "h1"},
-    {"id": "e7",  "source": "freq",     "target": "merge",    "sourcePort": "top_10",             "targetPort": "a"},
-    {"id": "e8",  "source": "profiler", "target": "merge",    "sourcePort": "class_summary",      "targetPort": "b"},
-    {"id": "e9",  "source": "ngrams",   "target": "merge",    "sourcePort": "top_10",             "targetPort": "c"},
-    {"id": "e10", "source": "wsc",      "target": "merge",    "sourcePort": "tier_classification","targetPort": "d"},
-    {"id": "e11", "source": "note",     "target": "merge",    "sourcePort": "text",               "targetPort": "e"},
-    {"id": "e12", "source": "merge",    "target": "out",      "sourcePort": "json",               "targetPort": "data"}
-  ]
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "freq",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "corpus",
+      "target": "profiler",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "corpus",
+      "target": "ngrams",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e4",
+      "source": "freq",
+      "target": "entropy",
+      "sourcePort": "freq_map",
+      "targetPort": "freq_map"
+    },
+    {
+      "id": "e5",
+      "source": "freq",
+      "target": "wsc",
+      "sourcePort": "distinct_symbols",
+      "targetPort": "distinct_symbols"
+    },
+    {
+      "id": "e6",
+      "source": "entropy",
+      "target": "wsc",
+      "sourcePort": "h1",
+      "targetPort": "h1"
+    },
+    {
+      "id": "e7",
+      "source": "freq",
+      "target": "merge",
+      "sourcePort": "top_10",
+      "targetPort": "a"
+    },
+    {
+      "id": "e8",
+      "source": "profiler",
+      "target": "merge",
+      "sourcePort": "class_summary",
+      "targetPort": "b"
+    },
+    {
+      "id": "e9",
+      "source": "ngrams",
+      "target": "merge",
+      "sourcePort": "top_10",
+      "targetPort": "c"
+    },
+    {
+      "id": "e10",
+      "source": "wsc",
+      "target": "merge",
+      "sourcePort": "tier_classification",
+      "targetPort": "d"
+    },
+    {
+      "id": "e11",
+      "source": "note",
+      "target": "merge",
+      "sourcePort": "text",
+      "targetPort": "e"
+    },
+    {
+      "id": "e12",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

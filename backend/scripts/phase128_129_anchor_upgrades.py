@@ -11,9 +11,13 @@ Evidence standards:
 All 25 unresolved signs after Phase-122 are addressed.
 Output: updates INDUS_FINAL_ANCHORS.json + reports/phase128_129_anchor_upgrades.json
 """
-import sys, json, os, datetime
-from pathlib import Path
+import datetime
+import json
+import os
+import sys
 from collections import Counter
+from pathlib import Path
+
 import pandas as pd
 
 REPO = Path(__file__).resolve().parents[2]
@@ -291,7 +295,7 @@ for cand in phase129_candidates:
     else:
         if sign in anchors:
             anchors[sign]["phase129_basis"] = cand["basis"]
-        print(f"    → Remains LOW")
+        print("    → Remains LOW")
 
 print(f"\n  Signs with no upgrade path ({len(phase129_no_upgrade)} signs):")
 for sign, modal, note in phase129_no_upgrade:
@@ -311,7 +315,7 @@ new_coverage = covered / total_tokens
 print(f"\n  New MEDIUM+ anchors: {len(medium_plus)}")
 print(f"  Previous: 263 → New H+M count: {len(medium_plus)}")
 print(f"  Token coverage: {new_coverage:.4f} ({new_coverage*100:.2f}%)")
-print(f"  Previous: 95.7%")
+print("  Previous: 95.7%")
 print(f"  Gain: +{(new_coverage - 0.957)*100:.2f}pp")
 
 # Phase-128 added: M374, M351 → MEDIUM
@@ -329,12 +333,12 @@ anchor_data["anchors"] = anchors
 anchor_data["total"] = len(medium_plus)
 anchor_data["corpus_token_coverage"] = round(new_coverage, 4)
 anchor_data["_phase128_129_note"] = (
-    f"Phase-128: M374=kul (MEDIUM, substrate Munda/DEDR 1709), "
-    f"M351=vī (MEDIUM, substrate Munda/DEDR 5388). "
-    f"Phase-129: M072=mā (MEDIUM, INITIAL position/DEDR 4751), "
-    f"M149=or (MEDIUM, MEDIAL/DEDR 987), M185=pul (MEDIUM, MEDIAL/DEDR 4336). "
-    f"Remaining 20 of 25 unresolved signs stay LOW — "
-    f"insufficient DEDR+positional evidence for promotion."
+    "Phase-128: M374=kul (MEDIUM, substrate Munda/DEDR 1709), "
+    "M351=vī (MEDIUM, substrate Munda/DEDR 5388). "
+    "Phase-129: M072=mā (MEDIUM, INITIAL position/DEDR 4751), "
+    "M149=or (MEDIUM, MEDIAL/DEDR 987), M185=pul (MEDIUM, MEDIAL/DEDR 4336). "
+    "Remaining 20 of 25 unresolved signs stay LOW — "
+    "insufficient DEDR+positional evidence for promotion."
 )
 ANCHORS_PATH.write_text(json.dumps(anchor_data, indent=2, ensure_ascii=False), encoding="utf-8")
 print(f"\n  Anchors file updated → {ANCHORS_PATH}")

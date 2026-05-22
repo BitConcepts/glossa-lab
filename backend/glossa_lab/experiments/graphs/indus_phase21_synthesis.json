@@ -1,35 +1,260 @@
 {
   "id": "indus_phase21_synthesis",
-  "name": "Indus Phase-21 \u2014 synthesis (repetition / site / numerical)",
+  "name": "Indus Phase-21 — synthesis (repetition / site / numerical)",
   "description": "Phase-21 master graph: re-runs all three sub-experiments inline (repetition-aware spectral, site-stratified spectral, numerical-weight regression) and aggregates verdicts via Phase21Verdict. Produces the headline yes/partially/no/unknown verdict per Phase-21 prediction (P21a, P21b, P21d). Output: reports/phase21_synthesis.json.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "load",      "type": "expNode", "data": { "atomicId": "M77InscriptionLoader",      "label": "Load M77",                       "params": { "use_raw": false } }, "position": { "x": 60,   "y": 320 } },
-    { "id": "collapse",  "type": "expNode", "data": { "atomicId": "RepetitionCollapser",       "label": "Repetition collapser",            "params": { "min_run": 2 } }, "position": { "x": 360,  "y": 80 } },
-    { "id": "rep_spec",  "type": "expNode", "data": { "atomicId": "BinSpectralFingerprint",    "label": "Spectral original/collapsed",      "params": {} }, "position": { "x": 660,  "y": 80 } },
-    { "id": "site",      "type": "expNode", "data": { "atomicId": "SiteStratifier",            "label": "Site stratifier",                 "params": { "min_inscriptions": 30 } }, "position": { "x": 360,  "y": 240 } },
-    { "id": "site_spec", "type": "expNode", "data": { "atomicId": "BinSpectralFingerprint",    "label": "Spectral per site",                "params": {} }, "position": { "x": 660,  "y": 240 } },
-    { "id": "site_sum",  "type": "expNode", "data": { "atomicId": "PerStratumSummary",          "label": "Per-site summary",                  "params": {} }, "position": { "x": 960,  "y": 240 } },
-    { "id": "fuls",      "type": "expNode", "data": { "atomicId": "FulsPositionalClassifier",   "label": "Fuls positional classifier",       "params": { "min_count": 5, "numerical_rr": 0.20 } }, "position": { "x": 360,  "y": 480 } },
-    { "id": "nwa",       "type": "expNode", "data": { "atomicId": "NumericalWeightAnalyzer",    "label": "Numerical weight analyzer",        "params": { "rep_rate_min": 0.40, "min_block_count": 5 } }, "position": { "x": 660,  "y": 480 } },
-    { "id": "verdict",   "type": "expNode", "data": { "atomicId": "Phase21Verdict",             "label": "Phase-21 verdict aggregator",      "params": {} }, "position": { "x": 1260, "y": 360 } },
-    { "id": "out",       "type": "expNode", "data": { "atomicId": "JSONExport",                  "label": "Save Phase-21 synthesis",          "params": { "filename": "phase21_synthesis.json" } }, "position": { "x": 1560, "y": 360 } }
+    {
+      "id": "load",
+      "type": "expNode",
+      "data": {
+        "atomicId": "M77InscriptionLoader",
+        "label": "Load M77",
+        "params": {
+          "use_raw": false
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 320
+      }
+    },
+    {
+      "id": "collapse",
+      "type": "expNode",
+      "data": {
+        "atomicId": "RepetitionCollapser",
+        "label": "Repetition collapser",
+        "params": {
+          "min_run": 2
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 80
+      }
+    },
+    {
+      "id": "rep_spec",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BinSpectralFingerprint",
+        "label": "Spectral original/collapsed",
+        "params": {}
+      },
+      "position": {
+        "x": 660,
+        "y": 80
+      }
+    },
+    {
+      "id": "site",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SiteStratifier",
+        "label": "Site stratifier",
+        "params": {
+          "min_inscriptions": 30
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 240
+      }
+    },
+    {
+      "id": "site_spec",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BinSpectralFingerprint",
+        "label": "Spectral per site",
+        "params": {}
+      },
+      "position": {
+        "x": 660,
+        "y": 240
+      }
+    },
+    {
+      "id": "site_sum",
+      "type": "expNode",
+      "data": {
+        "atomicId": "PerStratumSummary",
+        "label": "Per-site summary",
+        "params": {}
+      },
+      "position": {
+        "x": 960,
+        "y": 240
+      }
+    },
+    {
+      "id": "fuls",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FulsPositionalClassifier",
+        "label": "Fuls positional classifier",
+        "params": {
+          "min_count": 5,
+          "numerical_rr": 0.2
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 480
+      }
+    },
+    {
+      "id": "nwa",
+      "type": "expNode",
+      "data": {
+        "atomicId": "NumericalWeightAnalyzer",
+        "label": "Numerical weight analyzer",
+        "params": {
+          "rep_rate_min": 0.4,
+          "min_block_count": 5
+        }
+      },
+      "position": {
+        "x": 660,
+        "y": 480
+      }
+    },
+    {
+      "id": "verdict",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Phase21Verdict",
+        "label": "Phase-21 verdict aggregator",
+        "params": {}
+      },
+      "position": {
+        "x": 1260,
+        "y": 360
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Phase-21 synthesis",
+        "params": {
+          "filename": "phase21_synthesis.json"
+        }
+      },
+      "position": {
+        "x": 1560,
+        "y": 360
+      }
+    }
   ],
   "edges": [
-    { "id": "e_load_collapse",    "source": "load",     "target": "collapse",  "sourcePort": "sequences",        "targetPort": "sequences" },
-    { "id": "e_load_collapse_in", "source": "load",     "target": "collapse",  "sourcePort": "inscriptions",     "targetPort": "inscriptions" },
-    { "id": "e_collapse_spec",    "source": "collapse", "target": "rep_spec",  "sourcePort": "stratifications",  "targetPort": "stratifications" },
-    { "id": "e_load_site",        "source": "load",     "target": "site",      "sourcePort": "inscriptions",     "targetPort": "inscriptions" },
-    { "id": "e_site_spec",        "source": "site",     "target": "site_spec", "sourcePort": "stratifications",  "targetPort": "stratifications" },
-    { "id": "e_site_sum",         "source": "site_spec","target": "site_sum",  "sourcePort": "per_bin",          "targetPort": "per_bin" },
-    { "id": "e_load_fuls",        "source": "load",     "target": "fuls",      "sourcePort": "sequences",        "targetPort": "sequences" },
-    { "id": "e_load_nwa",         "source": "load",     "target": "nwa",       "sourcePort": "inscriptions",     "targetPort": "inscriptions" },
-    { "id": "e_fuls_nwa",         "source": "fuls",     "target": "nwa",       "sourcePort": "table",            "targetPort": "table" },
-    { "id": "e_v_rep",            "source": "rep_spec", "target": "verdict",   "sourcePort": "per_bin",          "targetPort": "repetition_spectral" },
-    { "id": "e_v_site",           "source": "site_spec","target": "verdict",   "sourcePort": "per_bin",          "targetPort": "site_spectral" },
-    { "id": "e_v_site_sum",       "source": "site_sum", "target": "verdict",   "sourcePort": "verdict",          "targetPort": "site_summary" },
-    { "id": "e_v_nwa_rows",       "source": "nwa",      "target": "verdict",   "sourcePort": "rows",             "targetPort": "nw_rows" },
-    { "id": "e_v_nwa_pois",       "source": "nwa",      "target": "verdict",   "sourcePort": "n_poisson_regime", "targetPort": "nw_n_poisson" },
-    { "id": "e_verdict_out",      "source": "verdict",  "target": "out",       "sourcePort": "predictions",      "targetPort": "data" }
-  ]
+    {
+      "id": "e_load_collapse",
+      "source": "load",
+      "target": "collapse",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e_load_collapse_in",
+      "source": "load",
+      "target": "collapse",
+      "sourcePort": "inscriptions",
+      "targetPort": "inscriptions"
+    },
+    {
+      "id": "e_collapse_spec",
+      "source": "collapse",
+      "target": "rep_spec",
+      "sourcePort": "stratifications",
+      "targetPort": "stratifications"
+    },
+    {
+      "id": "e_load_site",
+      "source": "load",
+      "target": "site",
+      "sourcePort": "inscriptions",
+      "targetPort": "inscriptions"
+    },
+    {
+      "id": "e_site_spec",
+      "source": "site",
+      "target": "site_spec",
+      "sourcePort": "stratifications",
+      "targetPort": "stratifications"
+    },
+    {
+      "id": "e_site_sum",
+      "source": "site_spec",
+      "target": "site_sum",
+      "sourcePort": "per_bin",
+      "targetPort": "per_bin"
+    },
+    {
+      "id": "e_load_fuls",
+      "source": "load",
+      "target": "fuls",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e_load_nwa",
+      "source": "load",
+      "target": "nwa",
+      "sourcePort": "inscriptions",
+      "targetPort": "inscriptions"
+    },
+    {
+      "id": "e_fuls_nwa",
+      "source": "fuls",
+      "target": "nwa",
+      "sourcePort": "table",
+      "targetPort": "table"
+    },
+    {
+      "id": "e_v_rep",
+      "source": "rep_spec",
+      "target": "verdict",
+      "sourcePort": "per_bin",
+      "targetPort": "repetition_spectral"
+    },
+    {
+      "id": "e_v_site",
+      "source": "site_spec",
+      "target": "verdict",
+      "sourcePort": "per_bin",
+      "targetPort": "site_spectral"
+    },
+    {
+      "id": "e_v_site_sum",
+      "source": "site_sum",
+      "target": "verdict",
+      "sourcePort": "verdict",
+      "targetPort": "site_summary"
+    },
+    {
+      "id": "e_v_nwa_rows",
+      "source": "nwa",
+      "target": "verdict",
+      "sourcePort": "rows",
+      "targetPort": "nw_rows"
+    },
+    {
+      "id": "e_v_nwa_pois",
+      "source": "nwa",
+      "target": "verdict",
+      "sourcePort": "n_poisson_regime",
+      "targetPort": "nw_n_poisson"
+    },
+    {
+      "id": "e_verdict_out",
+      "source": "verdict",
+      "target": "out",
+      "sourcePort": "predictions",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

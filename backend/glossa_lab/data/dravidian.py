@@ -2169,7 +2169,7 @@ OLD_TAMIL_TEXT = (
     "nala nalam nalnalam nalvazhi "
     "arutthu arutku arut arutkku aru "
     # ── Tirukkural — Book 2: Porul (State), Chapters 39–50 ────────────
-    # Ch.39: Royalty  
+    # Ch.39: Royalty
     "aracar aracin araci araci ara "
     "mudalvarkku mudalvar mudal mudal "
     "naattu nalan naattar naattu nal "

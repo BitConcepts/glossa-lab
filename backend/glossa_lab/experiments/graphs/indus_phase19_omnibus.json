@@ -1,13 +1,50 @@
 {
   "id": "indus_phase19_omnibus",
-  "name": "Indus Phase-19 \u2014 omnibus (legacy migration)",
+  "name": "Indus Phase-19 — omnibus (legacy migration)",
   "description": "Retroactive migration of scripts/phase19/omnibus.py. Runs Tier-1 (B/C/E) + Tier-3 (J/L) of the Phase-18 roadmap: 7-DoF / 6-DoF M77 projections, raw M77 OCR DoFs, top epistatic trigrams, per-inscription DoF distributions, spectral fingerprinting. Output: reports/phase19_omnibus.json.",
   "auto_migrated": false,
   "nodes": [
-    { "id": "run", "type": "expNode", "data": { "atomicId": "LegacyPhaseScriptRunner", "label": "Run Phase-19 omnibus", "params": { "script_path": "scripts/phase19/omnibus.py", "output_path": "reports/phase19_omnibus.json", "timeout_s": 1800 } }, "position": { "x": 60, "y": 100 } },
-    { "id": "out", "type": "expNode", "data": { "atomicId": "JSONExport",            "label": "Save run summary", "params": { "filename": "phase19_omnibus.json" } }, "position": { "x": 360, "y": 100 } }
+    {
+      "id": "run",
+      "type": "expNode",
+      "data": {
+        "atomicId": "LegacyPhaseScriptRunner",
+        "label": "Run Phase-19 omnibus",
+        "params": {
+          "script_path": "scripts/phase19/omnibus.py",
+          "output_path": "reports/phase19_omnibus.json",
+          "timeout_s": 1800
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 100
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save run summary",
+        "params": {
+          "filename": "phase19_omnibus.json"
+        }
+      },
+      "position": {
+        "x": 360,
+        "y": 100
+      }
+    }
   ],
   "edges": [
-    { "id": "e_run_out", "source": "run", "target": "out", "sourcePort": "verdict", "targetPort": "data" }
-  ]
+    {
+      "id": "e_run_out",
+      "source": "run",
+      "target": "out",
+      "sourcePort": "verdict",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

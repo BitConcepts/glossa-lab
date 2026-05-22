@@ -23,10 +23,7 @@ TEST-IEA-020  GET /library offset pagination works.
 """
 from __future__ import annotations
 
-import io
-
 import pytest
-
 
 # ── Library ───────────────────────────────────────────────────────────────────
 

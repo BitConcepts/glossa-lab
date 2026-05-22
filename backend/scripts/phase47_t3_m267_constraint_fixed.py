@@ -28,7 +28,13 @@ GPU: BigramScorer (CuPy/NumPy) + torch CUDA.
 Output: reports/phase47_t3_m267_constraint_fixed.json
 """
 from __future__ import annotations
-import csv, json, math, random, sys, time
+
+import csv
+import json
+import math
+import random
+import sys
+import time
 from collections import Counter
 from pathlib import Path
 from types import SimpleNamespace
@@ -247,7 +253,7 @@ def main() -> None:
         baseline_lift = results.get("BASELINE", {}).get("lift", PHASE46_T2_BASELINE_LIFT)
         improvement = (best_lift - baseline_lift) / abs(baseline_lift) if baseline_lift else 0
 
-        print(f"\n=== Fixed M267 Constraint Results ===")
+        print("\n=== Fixed M267 Constraint Results ===")
         print(f"Baseline lift: {baseline_lift:.4f}x")
         print(f"Best: {best_cond} (token={valid[best_cond]['token']!r}) → {best_lift:.4f}x (+{improvement:.1%})")
         print(f"Phase-46 T2 reference best ('e'): {PHASE46_T2_BEST_LIFT:.4f}x")

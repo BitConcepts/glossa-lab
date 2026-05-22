@@ -3,32 +3,277 @@
   "name": "Tier 5 — Indus: Dravidian vs Sanskrit A/B Test",
   "description": "Direct A/B comparison of Dravidian (Tamil) vs Sanskrit (Indo-European) as target language models for Indus Script decipherment. Both tests use the Fuls anti-circularity protocol: TokenFilter(min_freq=8) + SADecipher(3 seeds, GPU). Higher SA consistency = stronger phonotactic match. Adjudicates between the Dravidian hypothesis (Parpola 1994) and the Indo-Aryan/Vedic hypothesis.",
   "nodes": [
-    {"id": "corpus",    "type": "expNode", "data": {"atomicId": "BuiltinCorpus",    "label": "Indus Script",             "params": {"corpus": "indus"}},                                                                              "position": {"x": 60,   "y": 280}},
-    {"id": "filter",    "type": "expNode", "data": {"atomicId": "TokenFilter",      "label": "Filter hapax (min_freq=8)","params": {"min_freq": 8}},                                                                                   "position": {"x": 280,  "y": 280}},
-    {"id": "freq",      "type": "expNode", "data": {"atomicId": "FreqCounter",      "label": "Freq Counter",             "params": {}},                                                                                                "position": {"x": 500,  "y": 100}},
-    {"id": "entropy",   "type": "expNode", "data": {"atomicId": "EntropyCalc",      "label": "Entropy H1",               "params": {}},                                                                                                "position": {"x": 700,  "y": 100}},
-    {"id": "drav_lm",   "type": "expNode", "data": {"atomicId": "BuiltinLM",        "label": "Dravidian LM",             "params": {"language": "dravidian"}},                                                                        "position": {"x": 60,   "y": 500}},
-    {"id": "skt_lm",    "type": "expNode", "data": {"atomicId": "BuiltinLM",        "label": "Sanskrit LM",              "params": {"language": "sanskrit"}},                                                                         "position": {"x": 60,   "y": 660}},
-    {"id": "sa_drav",   "type": "expNode", "data": {"atomicId": "SADecipher",       "label": "SA vs Dravidian",          "params": {"n_seeds": 3, "max_iterations": 5000, "restarts": 3, "surjective": true, "ocp_weight": 0.0}},    "position": {"x": 780,  "y": 460}},
-    {"id": "sa_skt",    "type": "expNode", "data": {"atomicId": "SADecipher",       "label": "SA vs Sanskrit",           "params": {"n_seeds": 3, "max_iterations": 5000, "restarts": 3, "surjective": true, "ocp_weight": 0.0}},    "position": {"x": 780,  "y": 660}},
-    {"id": "cons_drav", "type": "expNode", "data": {"atomicId": "ConsistencyScorer","label": "Consistency (Dravidian)",  "params": {}},                                                                                                "position": {"x": 1040, "y": 460}},
-    {"id": "cons_skt",  "type": "expNode", "data": {"atomicId": "ConsistencyScorer","label": "Consistency (Sanskrit)",   "params": {}},                                                                                                "position": {"x": 1040, "y": 660}},
-    {"id": "merge",     "type": "expNode", "data": {"atomicId": "Merger",           "label": "Merge A/B Results",        "params": {}},                                                                                                "position": {"x": 1300, "y": 380}},
-    {"id": "out",       "type": "expNode", "data": {"atomicId": "JSONExport",        "label": "Save",                     "params": {"filename": "indus_dravidian_vs_sanskrit.json"}},                                               "position": {"x": 1560, "y": 380}}
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "Indus Script",
+        "params": {
+          "corpus": "indus"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 280
+      }
+    },
+    {
+      "id": "filter",
+      "type": "expNode",
+      "data": {
+        "atomicId": "TokenFilter",
+        "label": "Filter hapax (min_freq=8)",
+        "params": {
+          "min_freq": 8
+        }
+      },
+      "position": {
+        "x": 280,
+        "y": 280
+      }
+    },
+    {
+      "id": "freq",
+      "type": "expNode",
+      "data": {
+        "atomicId": "FreqCounter",
+        "label": "Freq Counter",
+        "params": {}
+      },
+      "position": {
+        "x": 500,
+        "y": 100
+      }
+    },
+    {
+      "id": "entropy",
+      "type": "expNode",
+      "data": {
+        "atomicId": "EntropyCalc",
+        "label": "Entropy H1",
+        "params": {}
+      },
+      "position": {
+        "x": 700,
+        "y": 100
+      }
+    },
+    {
+      "id": "drav_lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Dravidian LM",
+        "params": {
+          "language": "dravidian"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 500
+      }
+    },
+    {
+      "id": "skt_lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "Sanskrit LM",
+        "params": {
+          "language": "sanskrit"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 660
+      }
+    },
+    {
+      "id": "sa_drav",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA vs Dravidian",
+        "params": {
+          "n_seeds": 3,
+          "max_iterations": 5000,
+          "restarts": 3,
+          "surjective": true,
+          "ocp_weight": 0.0
+        }
+      },
+      "position": {
+        "x": 780,
+        "y": 460
+      }
+    },
+    {
+      "id": "sa_skt",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "SA vs Sanskrit",
+        "params": {
+          "n_seeds": 3,
+          "max_iterations": 5000,
+          "restarts": 3,
+          "surjective": true,
+          "ocp_weight": 0.0
+        }
+      },
+      "position": {
+        "x": 780,
+        "y": 660
+      }
+    },
+    {
+      "id": "cons_drav",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConsistencyScorer",
+        "label": "Consistency (Dravidian)",
+        "params": {}
+      },
+      "position": {
+        "x": 1040,
+        "y": 460
+      }
+    },
+    {
+      "id": "cons_skt",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConsistencyScorer",
+        "label": "Consistency (Sanskrit)",
+        "params": {}
+      },
+      "position": {
+        "x": 1040,
+        "y": 660
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge A/B Results",
+        "params": {}
+      },
+      "position": {
+        "x": 1300,
+        "y": 380
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save",
+        "params": {
+          "filename": "indus_dravidian_vs_sanskrit.json"
+        }
+      },
+      "position": {
+        "x": 1560,
+        "y": 380
+      }
+    }
   ],
   "edges": [
-    {"id": "e1",  "source": "corpus",    "target": "filter",    "sourcePort": "sequences",        "targetPort": "sequences"},
-    {"id": "e2",  "source": "filter",    "target": "freq",      "sourcePort": "sequences",        "targetPort": "sequences"},
-    {"id": "e3",  "source": "filter",    "target": "sa_drav",   "sourcePort": "sequences",        "targetPort": "sequences"},
-    {"id": "e4",  "source": "filter",    "target": "sa_skt",    "sourcePort": "sequences",        "targetPort": "sequences"},
-    {"id": "e5",  "source": "freq",      "target": "entropy",   "sourcePort": "freq_map",         "targetPort": "freq_map"},
-    {"id": "e6",  "source": "drav_lm",   "target": "sa_drav",   "sourcePort": "lm",               "targetPort": "lm"},
-    {"id": "e7",  "source": "skt_lm",    "target": "sa_skt",    "sourcePort": "lm",               "targetPort": "lm"},
-    {"id": "e8",  "source": "sa_drav",   "target": "cons_drav", "sourcePort": "all_mappings",     "targetPort": "all_mappings"},
-    {"id": "e9",  "source": "sa_skt",    "target": "cons_skt",  "sourcePort": "all_mappings",     "targetPort": "all_mappings"},
-    {"id": "e10", "source": "entropy",   "target": "merge",     "sourcePort": "h1",               "targetPort": "a"},
-    {"id": "e11", "source": "cons_drav", "target": "merge",     "sourcePort": "mean_consistency", "targetPort": "b"},
-    {"id": "e12", "source": "cons_skt",  "target": "merge",     "sourcePort": "mean_consistency", "targetPort": "c"},
-    {"id": "e13", "source": "merge",     "target": "out",       "sourcePort": "json",             "targetPort": "data"}
-  ]
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "filter",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "filter",
+      "target": "freq",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "filter",
+      "target": "sa_drav",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e4",
+      "source": "filter",
+      "target": "sa_skt",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e5",
+      "source": "freq",
+      "target": "entropy",
+      "sourcePort": "freq_map",
+      "targetPort": "freq_map"
+    },
+    {
+      "id": "e6",
+      "source": "drav_lm",
+      "target": "sa_drav",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e7",
+      "source": "skt_lm",
+      "target": "sa_skt",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e8",
+      "source": "sa_drav",
+      "target": "cons_drav",
+      "sourcePort": "all_mappings",
+      "targetPort": "all_mappings"
+    },
+    {
+      "id": "e9",
+      "source": "sa_skt",
+      "target": "cons_skt",
+      "sourcePort": "all_mappings",
+      "targetPort": "all_mappings"
+    },
+    {
+      "id": "e10",
+      "source": "entropy",
+      "target": "merge",
+      "sourcePort": "h1",
+      "targetPort": "a"
+    },
+    {
+      "id": "e11",
+      "source": "cons_drav",
+      "target": "merge",
+      "sourcePort": "mean_consistency",
+      "targetPort": "b"
+    },
+    {
+      "id": "e12",
+      "source": "cons_skt",
+      "target": "merge",
+      "sourcePort": "mean_consistency",
+      "targetPort": "c"
+    },
+    {
+      "id": "e13",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

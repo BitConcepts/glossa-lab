@@ -9,7 +9,9 @@
       "data": {
         "atomicId": "BuiltinCorpus",
         "label": "CISI Corpus",
-        "params": {"corpus": "indus_cisi"}
+        "params": {
+          "corpus": "indus_cisi"
+        }
       }
     },
     {
@@ -18,7 +20,10 @@
       "data": {
         "atomicId": "CanonicalSignLoader",
         "label": "Canonical Sign Registry",
-        "params": {"in_corpus_only": true, "numbering_system": ""}
+        "params": {
+          "in_corpus_only": true,
+          "numbering_system": ""
+        }
       }
     },
     {
@@ -36,7 +41,10 @@
       "data": {
         "atomicId": "StructuralTemplateAnalyzer",
         "label": "Structural Template Analyzer",
-        "params": {"min_count": 3, "max_template_length": 5}
+        "params": {
+          "min_count": 3,
+          "max_template_length": 5
+        }
       }
     },
     {
@@ -45,7 +53,9 @@
       "data": {
         "atomicId": "PositionalProfiler",
         "label": "Positional Profiler",
-        "params": {"min_count": 3}
+        "params": {
+          "min_count": 3
+        }
       }
     },
     {
@@ -63,18 +73,69 @@
       "data": {
         "atomicId": "JSONExport",
         "label": "Export",
-        "params": {"filename": "indus_cgsa_cluster_analysis.json"}
+        "params": {
+          "filename": "indus_cgsa_cluster_analysis.json"
+        }
       }
     }
   ],
   "edges": [
-    {"id": "e1", "source": "n1", "sourcePort": "sequences", "target": "n3", "targetPort": "sequences"},
-    {"id": "e2", "source": "n1", "sourcePort": "sequences", "target": "n5", "targetPort": "sequences"},
-    {"id": "e3", "source": "n3", "sourcePort": "cluster_sequences", "target": "n4", "targetPort": "cluster_sequences"},
-    {"id": "e4", "source": "n2", "sourcePort": "registry", "target": "n6", "targetPort": "a"},
-    {"id": "e5", "source": "n3", "sourcePort": "cluster_sequences", "target": "n6", "targetPort": "b"},
-    {"id": "e6", "source": "n4", "sourcePort": "recurrent_templates", "target": "n6", "targetPort": "c"},
-    {"id": "e7", "source": "n5", "sourcePort": "class_summary", "target": "n6", "targetPort": "d"},
-    {"id": "e8", "source": "n6", "sourcePort": "json", "target": "n7", "targetPort": "data"}
-  ]
+    {
+      "id": "e1",
+      "source": "n1",
+      "sourcePort": "sequences",
+      "target": "n3",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "n1",
+      "sourcePort": "sequences",
+      "target": "n5",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "n3",
+      "sourcePort": "cluster_sequences",
+      "target": "n4",
+      "targetPort": "cluster_sequences"
+    },
+    {
+      "id": "e4",
+      "source": "n2",
+      "sourcePort": "registry",
+      "target": "n6",
+      "targetPort": "a"
+    },
+    {
+      "id": "e5",
+      "source": "n3",
+      "sourcePort": "cluster_sequences",
+      "target": "n6",
+      "targetPort": "b"
+    },
+    {
+      "id": "e6",
+      "source": "n4",
+      "sourcePort": "recurrent_templates",
+      "target": "n6",
+      "targetPort": "c"
+    },
+    {
+      "id": "e7",
+      "source": "n5",
+      "sourcePort": "class_summary",
+      "target": "n6",
+      "targetPort": "d"
+    },
+    {
+      "id": "e8",
+      "source": "n6",
+      "sourcePort": "json",
+      "target": "n7",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

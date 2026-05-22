@@ -21,6 +21,7 @@ Expected result for genitive confirmation:
   - Low cross-site variance (same bigrams at Harappa and Mohenjo-daro)
 """
 from __future__ import annotations
+
 import csv
 import json
 import sys

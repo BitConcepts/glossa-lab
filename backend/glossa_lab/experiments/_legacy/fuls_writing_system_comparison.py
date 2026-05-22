@@ -25,7 +25,6 @@ from __future__ import annotations
 
 import json
 import os
-import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -252,7 +251,7 @@ def run_writing_system_comparison(verbose: bool = True) -> dict:
     distances.sort(key=lambda x: x["combined_dist"])
     nearest = distances[:3]
 
-    _pr(f"\n  NEAREST KNOWN SYSTEMS:")
+    _pr("\n  NEAREST KNOWN SYSTEMS:")
     for d in nearest:
         _pr(f"    {d['name'][:40]:<40}  combined dist = {d['combined_dist']:.4f}")
 

@@ -69,8 +69,8 @@ def compute_device_label() -> str:
     if gpu_available():
         try:
             import cupy as cp
-            props = cp.cuda.Device(0).attributes
-            return f"GPU (CUDA)"
+            cp.cuda.Device(0).attributes
+            return "GPU (CUDA)"
         except Exception:
             return "GPU (CUDA)"
     else:

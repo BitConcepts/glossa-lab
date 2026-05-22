@@ -13,9 +13,9 @@ TEST-DR-008  decipher reading_direction param accepts 'ltr', 'rtl', 'unknown'.
 from __future__ import annotations
 
 import pytest
+
 from glossa_lab.corpus_utils import normalise_sequences
 from glossa_lab.pipelines.decipher import LanguageModel, decipher
-
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
 

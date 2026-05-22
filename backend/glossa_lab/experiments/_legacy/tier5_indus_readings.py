@@ -132,16 +132,18 @@ INDUS_DRAVIDIAN_PHONO_GROUPS: dict[str, frozenset] = {
 
 def run_tier5_readings(verbose: bool = True) -> dict[str, Any]:
     """Proposed Indus sign readings under the Dravidian phonological hypothesis."""
-    from glossa_lab.data.dravidian       import get_corpus_symbols as drav_sym
+    from glossa_lab.data.dravidian import get_corpus_symbols as drav_sym
     from glossa_lab.data.indus_public_corpus import (
-        get_corpus_symbols  as ind_sym,
         get_corpus_inscriptions as ind_ins,
     )
-    from glossa_lab.pipelines.decipher   import LanguageModel, _score_mapping
-    from glossa_lab.pipelines.beam_decipher import beam_decipher
-    from glossa_lab.experiments.tier5_indus_decipherment import (
-        classify_indus_signs, _TERMINAL_BIAS_LOGOGRAM, _INITIAL_BIAS_PREFIX, _MIN_FREQ,
+    from glossa_lab.data.indus_public_corpus import (
+        get_corpus_symbols as ind_sym,
     )
+    from glossa_lab.experiments.tier5_indus_decipherment import (
+        classify_indus_signs,
+    )
+    from glossa_lab.pipelines.beam_decipher import beam_decipher
+    from glossa_lab.pipelines.decipher import LanguageModel
 
     def _pr(*a, **kw):
         if verbose: print(*a, **kw)
@@ -242,7 +244,7 @@ def run_tier5_readings(verbose: bool = True) -> dict[str, Any]:
     # ── Interpretation ─────────────────────────────────────────────────────
     reading_dist = Counter(r["proposed"] for r in readings)
     _pr(f"\n\n  Reading distribution: {dict(reading_dist.most_common(10))}")
-    _pr(f"\n  Top proposed syllables in Proto-Dravidian context:")
+    _pr("\n  Top proposed syllables in Proto-Dravidian context:")
 
     # Group by reading to suggest common words
     by_reading = defaultdict(list)

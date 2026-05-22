@@ -63,7 +63,7 @@ import math
 import os
 import random
 import sys
-from collections import Counter, defaultdict
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -497,7 +497,7 @@ def run_sequence_information_test(verbose: bool = True) -> dict[str, Any]:
             f"under current conditions (4.2 tokens/sign, 78-sign inventory)."
         )
 
-    _pr(f"\n  ══ CONCLUSION ══")
+    _pr("\n  ══ CONCLUSION ══")
     _pr(f"  {conclusion}")
 
     # ── Save ─────────────────────────────────────────────────────────────────

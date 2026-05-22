@@ -15,10 +15,10 @@ if you know (or hypothesise) the language family, you can match
 the statistical fingerprint of the unknown script against the
 known language to propose sound values.
 
-The Kandles system (Merkur patent) assists by providing a cross-
-language phonetic similarity check: if the proposed decipherment
-produces Kandles color patterns similar to the target language,
-confidence increases.
+A phonetic distribution comparison step provides a cross-language
+phonetic similarity check: if the proposed decipherment produces
+phoneme distributions similar to the target language, confidence
+increases.
 """
 
 from __future__ import annotations
@@ -51,8 +51,8 @@ def _xp():
     return None
 
 
-from glossa_lab.engine import register_pipeline
 from glossa_lab.corpus_utils import normalise_sequences
+from glossa_lab.engine import register_pipeline
 
 # ── Vectorised bigram scorer ─────────────────────────────────────────────
 
@@ -583,10 +583,9 @@ def decipher(
             best_score = current_score
             best_mapping = dict(mapping)
 
-    # Stage 3: VALIDATE — apply mapping + Kandles confidence
+    # Stage 3: VALIDATE — apply mapping + phonetic distribution confidence
     deciphered = [best_mapping.get(s, "?") for s in cipher_signs]
 
-    # Kandles validation (Merkur patent)
     kandles_confidence = _kandles_validate(
         deciphered,
         target_model.symbols,
@@ -726,17 +725,16 @@ def _kandles_validate(
     target_symbols: list[str],
     kandles_profile: str | None = None,
 ) -> float:
-    """Kandles cross-validation: compare phonetic color distributions.
+    """Phonetic distribution cross-validation.
 
-    Uses the Merkur patent Kandles system to compare the phonetic
-    fingerprint of the deciphered text against the target text.
-    Returns a confidence score in [0, 1].
+    Compares the phoneme distribution of the deciphered text against
+    the target language corpus. Returns a similarity score in [0, 1].
 
     Args:
         deciphered:      Proposed decipherment as a list of phoneme strings.
         target_symbols:  Target language corpus symbols.
         kandles_profile: Language-specific bias profile name (e.g. 'luwian',
-                         'hurrian'). None uses the default Greek mapping.
+                         'hurrian'). None uses the default mapping.
     """
     try:
         from glossa_lab.pipelines.kandles import compare_grids, generate_grid
@@ -749,19 +747,6 @@ def _kandles_validate(
         return 0.0
 
 
-# ── Auto-dispatch: CPSC if available, hill climbing fallback ──────
-
-
-def _cpsc_available() -> bool:
-    """Check if the CPSC module is installed."""
-    try:
-        from glossa_lab.cpsc import CPSC_AVAILABLE
-
-        return CPSC_AVAILABLE
-    except ImportError:
-        return False
-
-
 def decipher_auto(
     cipher_signs: list[str],
     target_model: LanguageModel,
@@ -772,35 +757,10 @@ def decipher_auto(
     engine: str = "auto",
     kandles_profile: str | None = None,
 ) -> dict[str, Any]:
-    """Decipher with automatic engine selection.
+    """Decipher with hill-climbing engine.
 
-    engine:
-      "auto" — use CPSC if available, hill climbing otherwise
-      "cpsc" — force CPSC (raises if not available)
-      "hillclimb" — force hill climbing
+    engine: 'auto' or 'hillclimb' (only hill-climbing is available).
     """
-    use_cpsc = False
-    if engine == "auto":
-        use_cpsc = _cpsc_available()
-    elif engine == "cpsc":
-        if not _cpsc_available():
-            raise RuntimeError(
-                "CPSC module not available. Install glossa_lab.cpsc or use engine='hillclimb'."
-            )
-        use_cpsc = True
-
-    if use_cpsc:
-        from glossa_lab.cpsc.projection import cpsc_project
-
-        return cpsc_project(
-            cipher_signs,
-            target_model,
-            seed=seed,
-            max_epochs=max_iterations,
-            restarts=restarts,
-        )
-
-    # Fallback: hill climbing
     return decipher(
         cipher_signs,
         target_model,

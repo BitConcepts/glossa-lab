@@ -53,9 +53,17 @@ class PubMedFetcher(Fetcher):
             _log.debug("pubmed cooldown active — skipping (%.0fs remaining)", remaining)
             return []
         try:
-            search = await run_in_thread(http_get_json, _ESEARCH, params=params, timeout=12.0)
+            # 25s: NCBI can be slow; 12s caused frequent timeouts in logs.
+            search = await run_in_thread(http_get_json, _ESEARCH, params=params, timeout=25.0)
         except FetcherError as exc:
-            _429_cooldown(str(exc), self.source)
+            err_str = str(exc)
+            is_timeout = "timed out" in err_str.lower() or "timeout" in err_str.lower()
+            if is_timeout:
+                # Trip a 5-minute cooldown so subsequent topics skip PubMed
+                # rather than each firing a timeout request into a slow NCBI.
+                from glossa_lab.discovery.fetchers.base import source_cooldown_trip  # noqa: PLC0415
+                source_cooldown_trip(self.source, 300.0)
+            _429_cooldown(err_str, self.source)
             _log.warning("PubMed esearch error for topic %s: %s", topic.id, exc)
             return []
         if not isinstance(search, dict):
@@ -70,9 +78,14 @@ class PubMedFetcher(Fetcher):
             "retmode": "json",
         }
         try:
-            summary = await run_in_thread(http_get_json, _ESUMMARY, params=sum_params, timeout=15.0)
+            # 30s for esummary: fetching many PMIDs at once can be slow.
+            summary = await run_in_thread(http_get_json, _ESUMMARY, params=sum_params, timeout=30.0)
         except FetcherError as exc:
-            _429_cooldown(str(exc), self.source)
+            err_str = str(exc)
+            if "timed out" in err_str.lower() or "timeout" in err_str.lower():
+                from glossa_lab.discovery.fetchers.base import source_cooldown_trip  # noqa: PLC0415
+                source_cooldown_trip(self.source, 300.0)
+            _429_cooldown(err_str, self.source)
             _log.warning("PubMed esummary error for topic %s: %s", topic.id, exc)
             return []
         if not isinstance(summary, dict):

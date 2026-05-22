@@ -1,0 +1,140 @@
+{
+  "phase": 173,
+  "date": "2026-05-21",
+  "description": "Betweenness check on 18 irresolvable MEDIAL signs (Phase-168)",
+  "prediction": "Signs irresolvable by DEDR should have betweenness=0 (name syllables, not grammar)",
+  "results": [
+    {
+      "sign": "M183",
+      "reading": "vēḷ",
+      "confidence": "LOW",
+      "betweenness": null,
+      "classification": "NOT_IN_HM_SET"
+    },
+    {
+      "sign": "M190",
+      "reading": "paṉ",
+      "confidence": "LOW",
+      "betweenness": null,
+      "classification": "NOT_IN_HM_SET"
+    },
+    {
+      "sign": "M223",
+      "reading": "muḷ",
+      "confidence": "LOW",
+      "betweenness": null,
+      "classification": "NOT_IN_HM_SET"
+    },
+    {
+      "sign": "M239",
+      "reading": "il",
+      "confidence": "LOW",
+      "betweenness": null,
+      "classification": "NOT_IN_HM_SET"
+    },
+    {
+      "sign": "M254",
+      "reading": "tēṉ",
+      "confidence": "LOW",
+      "betweenness": null,
+      "classification": "NOT_IN_HM_SET"
+    },
+    {
+      "sign": "M270",
+      "reading": "muḷ",
+      "confidence": "LOW",
+      "betweenness": null,
+      "classification": "NOT_IN_HM_SET"
+    },
+    {
+      "sign": "M295",
+      "reading": "paṟ",
+      "confidence": "LOW",
+      "betweenness": null,
+      "classification": "NOT_IN_HM_SET"
+    },
+    {
+      "sign": "M304",
+      "reading": "vēṟ",
+      "confidence": "LOW",
+      "betweenness": null,
+      "classification": "NOT_IN_HM_SET"
+    },
+    {
+      "sign": "M321",
+      "reading": "kol",
+      "confidence": "LOW",
+      "betweenness": null,
+      "classification": "NOT_IN_HM_SET"
+    },
+    {
+      "sign": "M329",
+      "reading": "poṉ",
+      "confidence": "LOW",
+      "betweenness": null,
+      "classification": "NOT_IN_HM_SET"
+    },
+    {
+      "sign": "M345",
+      "reading": "taṭ",
+      "confidence": "LOW",
+      "betweenness": null,
+      "classification": "NOT_IN_HM_SET"
+    },
+    {
+      "sign": "M357",
+      "reading": "kuḷ",
+      "confidence": "LOW",
+      "betweenness": null,
+      "classification": "NOT_IN_HM_SET"
+    },
+    {
+      "sign": "M365",
+      "reading": "vāṉ",
+      "confidence": "LOW",
+      "betweenness": null,
+      "classification": "NOT_IN_HM_SET"
+    },
+    {
+      "sign": "M386",
+      "reading": "maṇ",
+      "confidence": "LOW",
+      "betweenness": null,
+      "classification": "NOT_IN_HM_SET"
+    },
+    {
+      "sign": "M137",
+      "reading": "kuṟ",
+      "confidence": "LOW",
+      "betweenness": null,
+      "classification": "NOT_IN_HM_SET"
+    },
+    {
+      "sign": "M143",
+      "reading": "maṇ",
+      "confidence": "LOW",
+      "betweenness": null,
+      "classification": "NOT_IN_HM_SET"
+    },
+    {
+      "sign": "M151",
+      "reading": "viḷ",
+      "confidence": "LOW",
+      "betweenness": null,
+      "classification": "NOT_IN_HM_SET"
+    },
+    {
+      "sign": "M402",
+      "reading": "vēḷ",
+      "confidence": "LOW",
+      "betweenness": null,
+      "classification": "NOT_IN_HM_SET"
+    }
+  ],
+  "n_name_syllable_candidates": 0,
+  "n_grammar_candidates": 0,
+  "n_not_in_hm": 18,
+  "prediction_confirmed": false,
+  "verdict": "PARTIAL",
+  "interpretation": "0/18 irresolvable signs have betweenness=0, consistent with personal-name-syllable status. These signs cannot be decoded from DEDR because name-syllables are arbitrary phonetic sequences, not vocabulary roots. Decipherment requires matching to attested Meluhhan names in ICIT corpus."
+}

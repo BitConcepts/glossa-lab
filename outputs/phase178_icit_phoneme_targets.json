@@ -1,0 +1,236 @@
+{
+  "phase": 178,
+  "date": "2026-05-22",
+  "description": "ICIT-priority phoneme targeting — maps Phase-174 gaps to upgrade candidates",
+  "absent_phonemes": [
+    "su",
+    "li",
+    "shu",
+    "gu",
+    "ab",
+    "ba",
+    "du",
+    "zi",
+    "ga",
+    "mil",
+    "ni",
+    "gi",
+    "tu",
+    "en",
+    "ki",
+    "man",
+    "sum"
+  ],
+  "phoneme_analysis": {
+    "su": {
+      "phoneme": "su",
+      "n_candidates": 0,
+      "hm_candidates": [],
+      "low_candidates": [],
+      "covered": false
+    },
+    "li": {
+      "phoneme": "li",
+      "n_candidates": 0,
+      "hm_candidates": [],
+      "low_candidates": [],
+      "covered": false
+    },
+    "shu": {
+      "phoneme": "shu",
+      "n_candidates": 0,
+      "hm_candidates": [],
+      "low_candidates": [],
+      "covered": false
+    },
+    "gu": {
+      "phoneme": "gu",
+      "n_candidates": 0,
+      "hm_candidates": [],
+      "low_candidates": [],
+      "covered": false
+    },
+    "ab": {
+      "phoneme": "ab",
+      "n_candidates": 0,
+      "hm_candidates": [],
+      "low_candidates": [],
+      "covered": false
+    },
+    "ba": {
+      "phoneme": "ba",
+      "n_candidates": 0,
+      "hm_candidates": [],
+      "low_candidates": [],
+      "covered": false
+    },
+    "du": {
+      "phoneme": "du",
+      "n_candidates": 0,
+      "hm_candidates": [],
+      "low_candidates": [],
+      "covered": false
+    },
+    "zi": {
+      "phoneme": "zi",
+      "n_candidates": 0,
+      "hm_candidates": [],
+      "low_candidates": [],
+      "covered": false
+    },
+    "ga": {
+      "phoneme": "ga",
+      "n_candidates": 0,
+      "hm_candidates": [],
+      "low_candidates": [],
+      "covered": false
+    },
+    "mil": {
+      "phoneme": "mil",
+      "n_candidates": 0,
+      "hm_candidates": [],
+      "low_candidates": [],
+      "covered": false
+    },
+    "ni": {
+      "phoneme": "ni",
+      "n_candidates": 1,
+      "hm_candidates": [
+        {
+          "sign": "M102",
+          "reading": "ni",
+          "confidence": "MEDIUM",
+          "in_hm": true
+        }
+      ],
+      "low_candidates": [],
+      "covered": true
+    },
+    "gi": {
+      "phoneme": "gi",
+      "n_candidates": 0,
+      "hm_candidates": [],
+      "low_candidates": [],
+      "covered": false
+    },
+    "tu": {
+      "phoneme": "tu",
+      "n_candidates": 1,
+      "hm_candidates": [
+        {
+          "sign": "M089",
+          "reading": "tu/tū",
+          "confidence": "HIGH",
+          "in_hm": true
+        }
+      ],
+      "low_candidates": [],
+      "covered": true
+    },
+    "en": {
+      "phoneme": "en",
+      "n_candidates": 0,
+      "hm_candidates": [],
+      "low_candidates": [],
+      "covered": false
+    },
+    "ki": {
+      "phoneme": "ki",
+      "n_candidates": 0,
+      "hm_candidates": [],
+      "low_candidates": [],
+      "covered": false
+    },
+    "man": {
+      "phoneme": "man",
+      "n_candidates": 2,
+      "hm_candidates": [],
+      "low_candidates": [
+        {
+          "sign": "M386",
+          "reading": "maṇ",
+          "confidence": "LOW",
+          "in_hm": false
+        },
+        {
+          "sign": "M143",
+          "reading": "maṇ",
+          "confidence": "LOW",
+          "in_hm": false
+        }
+      ],
+      "covered": true
+    },
+    "sum": {
+      "phoneme": "sum",
+      "n_candidates": 0,
+      "hm_candidates": [],
+      "low_candidates": [],
+      "covered": false
+    }
+  },
+  "true_gaps": [
+    "su",
+    "li",
+    "shu",
+    "gu",
+    "ab",
+    "ba",
+    "du",
+    "zi",
+    "ga",
+    "mil",
+    "gi",
+    "en",
+    "ki",
+    "sum"
+  ],
+  "low_only_gaps": [
+    "man"
+  ],
+  "hm_covered": [
+    "ni",
+    "tu"
+  ],
+  "upgrade_candidates": [
+    {
+      "sign": "M386",
+      "reading": "maṇ",
+      "confidence": "LOW",
+      "in_hm": false,
+      "target_phoneme": "man"
+    },
+    {
+      "sign": "M143",
+      "reading": "maṇ",
+      "confidence": "LOW",
+      "in_hm": false,
+      "target_phoneme": "man"
+    }
+  ],
+  "icit_request_priority": "Priority 1 (true gaps — no candidate): ['su', 'li', 'shu', 'gu', 'ab', 'ba', 'du', 'zi', 'ga', 'mil', 'gi', 'en', 'ki', 'sum']. Priority 2 (LOW-only — promotion needed): ['man']. Request ICIT site-stratified data for these 2 sign upgrade candidates.",
+  "shu_ilishu_gaps": [
+    {
+      "phoneme": "su",
+      "n_candidates": 0,
+      "hm_candidates": [],
+      "low_candidates": [],
+      "covered": false
+    },
+    {
+      "phoneme": "li",
+      "n_candidates": 0,
+      "hm_candidates": [],
+      "low_candidates": [],
+      "covered": false
+    },
+    {
+      "phoneme": "shu",
+      "n_candidates": 0,
+      "hm_candidates": [],
+      "low_candidates": [],
+      "covered": false
+    }
+  ],
+  "interpretation": "Signs in Priority 1 and 2 represent the phonological frontier of the current H+M set. ICIT corpus access (5,318 inscriptions) provides the sample size needed to identify these signs in repeated MEDIAL-slot sequences adjacent to known H+M grammar signs (M099, M267), enabling upgrade from LOW to MEDIUM."
+}

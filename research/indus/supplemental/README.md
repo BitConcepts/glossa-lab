@@ -21,6 +21,12 @@ Per-seal compound-context listing for M047 and M001 (the primary fish-family sig
 - 0/27 isolated; 0/113 isolated across all fish-family signs in the 9-site corpus
 - Referenced in preprint §3.5, §3.19 and in correspondence with A. Roif (2026)
 
+**Note on M001 rows:** The 14 M001 sequences are representative reconstructions
+from bigram probability data (the Holdat corpus was not directly queried for
+per-seal M001 detail). The aggregate stats (14 occurrences, 100% INITIAL,
+site distribution) are from the corpus. Per-seal sequences will be confirmed
+when ICIT corpus access is obtained.
+
 **Key finding:** Both M047 and M001 are exclusively compound-initial, consistent with a
 professional-title reading (occupational marker) rather than a commodity sign.
 The formula `M047 · M267 · [X]` reads structurally as `[fish-title] of [name]`.
@@ -73,37 +79,6 @@ This table encodes the formula backbone — standardised sign pairs carrying the
 the inscription.
 
 Referenced in preprint §3.9, §3.10, §3.12.
-
----
-
-### `ivs_sign_network.html`
-Interactive co-occurrence network of 22 selected H+M anchors, contributed by Avishai Roif
-(Ben-Gurion University of the Negev / BGU Research Institute for Israel and Zionism Studies).
-
-**Open in any browser — no dependencies required.**
-
-The network applies Roif's betweenness centrality and community detection methodology
-(developed for the Phoenician Spatial Empire study, under review at the *Journal of
-World-Systems Research*) to the IVS co-occurrence data.
-
-Key findings independently produced by the network:
-- The three-slot positional grammar (INITIAL classifier / MEDIAL guild title / TERMINAL suffix)
-  reproduces as three distinct betweenness centrality clusters.
-- MEDIAL signs — in particular **M099=kol/koḷ** and **M267=iN/in (genitive)** — function as
-  **structural bridges** between the classifier and suffix clusters, with markedly higher
-  betweenness than signs in either flanking cluster.
-- In Roif's Phoenician model, precisely this network-frontier high-betweenness medial position
-  is the signature of **protocol-based authority encoding** rather than hierarchical or
-  commodity-based encoding.
-
-**Node encoding:** node size ∝ corpus frequency; edges = confirmed bigrams (PMI > 1.5, ≥ 15 seals).
-Interactive: click any node to see its reading, confidence, and confirmed co-occurrence partners.
-Filter buttons isolate the three grammatical slots.
-
-**Attribution:**
-- Network method: Roif, A. (under review). *Journal of World-Systems Research*.
-  Correspondence: avishai.roif@gmail.com
-- Corpus data: Pierson, T.K. (2026). Preprint v1. BitConcepts LLC / Glossa-Lab.
 
 ---
 

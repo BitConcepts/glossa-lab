@@ -50,7 +50,13 @@ _s2_cooldown_until: float = 0.0
 _S2_DEFAULT_COOLDOWN: float = 900.0  # 15 min default when no Retry-After header
 _S2_TIMEOUT_COOLDOWN: float = 600.0  # 10 min cooldown after read/network timeouts
 
+import threading as _s2_lock_mod  # noqa: E402
 import time as _time_sdk  # noqa: E402
+
+# Protects _last_request so concurrent topic fetches can't both bypass the
+# inter-request delay.  Pattern mirrors arXiv: atomically reserve the next
+# request slot inside the lock, sleep *outside* it.
+_s2_rate_lock: _s2_lock_mod.Lock = _s2_lock_mod.Lock()
 
 
 def _s2_cooldown_trip(secs: float) -> None:
@@ -169,16 +175,21 @@ class SemanticScholarFetcher(Fetcher):
             )
             return []
 
-        # With an API key the limit is 1 req/sec; without it use conservative 6s.
+        # With an API key the limit is 1 req/sec; without it use conservative 15s
+        # (the free tier is ~100 req/5 min shared across all IPs — stay well clear).
         from glossa_lab.api.settings import get_key as _gk  # noqa: PLC0415
         s2_key = _gk("semantic_scholar_api_key")
-        effective_delay = 1.1 if s2_key else self.rate_delay
+        effective_delay = 1.2 if s2_key else self.rate_delay
         import time as _time
-        now = _time.monotonic()
-        wait = effective_delay - (now - SemanticScholarFetcher._last_request)
+        # Atomically reserve the next request slot inside the lock, then sleep
+        # outside — mirrors arXiv pattern to prevent concurrent topics from both
+        # reading the same _last_request value and bypassing the delay.
+        with _s2_rate_lock:
+            now = _time.monotonic()
+            wait = max(0.0, effective_delay - (now - SemanticScholarFetcher._last_request))
+            SemanticScholarFetcher._last_request = now + wait  # reserve slot
         if wait > 0:
             await asyncio.sleep(wait)
-        SemanticScholarFetcher._last_request = _time.monotonic()
 
         opts = topic.overrides_for(self.source)
         max_results = int(opts.get("max_results", 25))

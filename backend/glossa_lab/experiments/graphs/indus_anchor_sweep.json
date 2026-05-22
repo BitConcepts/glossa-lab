@@ -3,22 +3,173 @@
   "name": "Tier 5 — Dravidian LM Anchor Convergence Self-Test",
   "description": "Validates the Dravidian LM's usefulness for Indus Script decipherment via a self-test. The Dravidian (Tamil) corpus is split into train/test; a cipher is constructed from the test set using the LM alphabet; AnchorConvergenceBenchmark sweeps k=0,3,10,20 structured anchors and measures accuracy + consistency. High accuracy at low k = strong Dravidian bigram constraints = trustworthy LM for the Indus decipherment. Word-final anchor priority (Dr. Fuls 2026) used for structured anchor selection.",
   "nodes": [
-    {"id": "corpus",   "type": "expNode", "data": {"atomicId": "BuiltinCorpus",   "label": "Dravidian (Tamil)",        "params": {"corpus": "dravidian"}},                                                                             "position": {"x": 60,   "y": 240}},
-    {"id": "split",    "type": "expNode", "data": {"atomicId": "CorpusSplitter",  "label": "75/25 Split",              "params": {"train_ratio": 0.75}},                                                                               "position": {"x": 280,  "y": 240}},
-    {"id": "lm",       "type": "expNode", "data": {"atomicId": "LMBuilder",       "label": "Build Dravidian LM",       "params": {}},                                                                                                  "position": {"x": 500,  "y": 120}},
-    {"id": "cipher",   "type": "expNode", "data": {"atomicId": "CipherConstructor","label": "Build Cipher (test set)", "params": {"cipher_seed": 42, "max_tokens": 2000}},                                                            "position": {"x": 500,  "y": 360}},
-    {"id": "bench",    "type": "expNode", "data": {"atomicId": "AnchorConvergenceBenchmark", "label": "Anchor Sweep k=0,3,10,20", "params": {"anchor_counts": [0, 3, 10, 20], "n_structured": 2, "n_random": 2, "n_seeds_base": 3, "n_seeds_struct": 2, "n_seeds_rand": 1, "sa_iterations": 2000, "sa_restarts": 1, "use_word_final_anchors": true}}, "position": {"x": 780,  "y": 240}},
-    {"id": "out",      "type": "expNode", "data": {"atomicId": "JSONExport",       "label": "Save Results",             "params": {"filename": "indus_anchor_sweep.json"}},                                                           "position": {"x": 1060, "y": 240}}
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "Dravidian (Tamil)",
+        "params": {
+          "corpus": "dravidian"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 240
+      }
+    },
+    {
+      "id": "split",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CorpusSplitter",
+        "label": "75/25 Split",
+        "params": {
+          "train_ratio": 0.75
+        }
+      },
+      "position": {
+        "x": 280,
+        "y": 240
+      }
+    },
+    {
+      "id": "lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "LMBuilder",
+        "label": "Build Dravidian LM",
+        "params": {}
+      },
+      "position": {
+        "x": 500,
+        "y": 120
+      }
+    },
+    {
+      "id": "cipher",
+      "type": "expNode",
+      "data": {
+        "atomicId": "CipherConstructor",
+        "label": "Build Cipher (test set)",
+        "params": {
+          "cipher_seed": 42,
+          "max_tokens": 2000
+        }
+      },
+      "position": {
+        "x": 500,
+        "y": 360
+      }
+    },
+    {
+      "id": "bench",
+      "type": "expNode",
+      "data": {
+        "atomicId": "AnchorConvergenceBenchmark",
+        "label": "Anchor Sweep k=0,3,10,20",
+        "params": {
+          "anchor_counts": [
+            0,
+            3,
+            10,
+            20
+          ],
+          "n_structured": 2,
+          "n_random": 2,
+          "n_seeds_base": 3,
+          "n_seeds_struct": 2,
+          "n_seeds_rand": 1,
+          "sa_iterations": 2000,
+          "sa_restarts": 1,
+          "use_word_final_anchors": true
+        }
+      },
+      "position": {
+        "x": 780,
+        "y": 240
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Results",
+        "params": {
+          "filename": "indus_anchor_sweep.json"
+        }
+      },
+      "position": {
+        "x": 1060,
+        "y": 240
+      }
+    }
   ],
   "edges": [
-    {"id": "e1", "source": "corpus",  "target": "split",  "sourcePort": "sequences",        "targetPort": "sequences"},
-    {"id": "e2", "source": "split",   "target": "lm",     "sourcePort": "train_sequences",  "targetPort": "sequences"},
-    {"id": "e3", "source": "split",   "target": "cipher", "sourcePort": "test_sequences",   "targetPort": "sequences"},
-    {"id": "e4", "source": "lm",      "target": "cipher", "sourcePort": "lm",               "targetPort": "lm"},
-    {"id": "e5", "source": "cipher",  "target": "bench",  "sourcePort": "cipher_sequences", "targetPort": "cipher_sequences"},
-    {"id": "e6", "source": "lm",      "target": "bench",  "sourcePort": "lm",               "targetPort": "lm"},
-    {"id": "e7", "source": "cipher",  "target": "bench",  "sourcePort": "true_mapping",     "targetPort": "true_mapping"},
-    {"id": "e8", "source": "cipher",  "target": "bench",  "sourcePort": "sign_inventory",   "targetPort": "sign_inventory"},
-    {"id": "e9", "source": "bench",   "target": "out",    "sourcePort": "summary_table",    "targetPort": "data"}
-  ]
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "split",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "split",
+      "target": "lm",
+      "sourcePort": "train_sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "split",
+      "target": "cipher",
+      "sourcePort": "test_sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e4",
+      "source": "lm",
+      "target": "cipher",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e5",
+      "source": "cipher",
+      "target": "bench",
+      "sourcePort": "cipher_sequences",
+      "targetPort": "cipher_sequences"
+    },
+    {
+      "id": "e6",
+      "source": "lm",
+      "target": "bench",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e7",
+      "source": "cipher",
+      "target": "bench",
+      "sourcePort": "true_mapping",
+      "targetPort": "true_mapping"
+    },
+    {
+      "id": "e8",
+      "source": "cipher",
+      "target": "bench",
+      "sourcePort": "sign_inventory",
+      "targetPort": "sign_inventory"
+    },
+    {
+      "id": "e9",
+      "source": "bench",
+      "target": "out",
+      "sourcePort": "summary_table",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

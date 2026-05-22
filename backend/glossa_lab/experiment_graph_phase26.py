@@ -15,10 +15,7 @@ Phase-26 builds on the Phase-25 phonetic-readout pipeline with:
 
 from __future__ import annotations
 
-import math
 import random
-import re
-from collections import Counter
 from typing import Any
 
 
@@ -47,11 +44,15 @@ def _phase26_corpus_loader(inputs: dict, params: dict) -> dict:
     """Load all Phase-26 contact-zone artefacts (extends Phase-25)."""
     try:
         from glossa_lab.data.mesopotamian_contact import (  # noqa: PLC0415
-            get_indus_seals_at_mesopotamia, get_seals_with_inscription,
-            get_meluhhan_persons_v3, get_parpola_phoneme_map,
-            get_janabiyah_seal_reading, get_meluhha_tablets,
-            get_cisi_findspot_map, get_contact_zone_prefix_set,
+            get_cisi_findspot_map,
+            get_contact_zone_prefix_set,
+            get_indus_seals_at_mesopotamia,
+            get_janabiyah_seal_reading,
+            get_meluhha_tablets,
+            get_meluhhan_persons_v3,
             get_miin_renderings,
+            get_parpola_phoneme_map,
+            get_seals_with_inscription,
         )
     except Exception as exc:  # noqa: BLE001
         return {"error": f"data module not available: {exc}"}
@@ -565,7 +566,6 @@ def _shu_ilishu_candidate_filter(inputs: dict, params: dict) -> dict:
                 "n_filtered_candidates": 0}
 
     inscs = _cisi_inscs()
-    contact_zone_inscs: list[dict] = []
     inspected = 0
     for ins in inscs[:5000]:
         inspected += 1

@@ -1,0 +1,118 @@
+{
+  "_citation": {
+    "primary": [
+      "A.1"
+    ],
+    "dedr": "Burrow & Emeneau 1984"
+  },
+  "gpu_device": "cuda",
+  "n_new_anchors": 10,
+  "n_confirmed": 0,
+  "n_skipped": 17,
+  "total_anchors": 166,
+  "high_count": 37,
+  "medium_count": 60,
+  "token_coverage_pct": 79.8,
+  "new_anchors": [
+    {
+      "m_number": "M052",
+      "reading": "ta",
+      "dedr_word": "taNal",
+      "dedr_ref": "DEDR 3036",
+      "depiction": "fish+stroke",
+      "corpus_freq": 22,
+      "consistency": 0.1264,
+      "note": "mark on fish"
+    },
+    {
+      "m_number": "M061",
+      "reading": "ka",
+      "dedr_word": "kaNan",
+      "dedr_ref": "DEDR 1166",
+      "depiction": "bull+sign",
+      "corpus_freq": 22,
+      "consistency": 0.1685,
+      "note": "bull+marker"
+    },
+    {
+      "m_number": "M058",
+      "reading": "ke",
+      "dedr_word": "keeDu",
+      "dedr_ref": "DEDR 1994",
+      "depiction": "cut/section",
+      "corpus_freq": 21,
+      "consistency": 0.0211,
+      "note": "cut/harm sign"
+    },
+    {
+      "m_number": "M053",
+      "reading": "mi",
+      "dedr_word": "miiN",
+      "dedr_ref": "DEDR 4839",
+      "depiction": "fish variant",
+      "corpus_freq": 19,
+      "consistency": 0.0,
+      "note": "fish variant"
+    },
+    {
+      "m_number": "M049",
+      "reading": "pu",
+      "dedr_word": "puL",
+      "dedr_ref": "DEDR 4349",
+      "depiction": "fish+mark",
+      "corpus_freq": 13,
+      "consistency": 0.0421,
+      "note": "bird/mark on fish"
+    },
+    {
+      "m_number": "M081",
+      "reading": "ve",
+      "dedr_word": "veeNkai",
+      "dedr_ref": "DEDR 5500",
+      "depiction": "kino variant",
+      "corpus_freq": 13,
+      "consistency": 0.0,
+      "note": "kino tree variant"
+    },
+    {
+      "m_number": "M054",
+      "reading": "mi",
+      "dedr_word": "miiNDu",
+      "dedr_ref": "DEDR 4855",
+      "depiction": "fish+two",
+      "corpus_freq": 12,
+      "consistency": 0.0,
+      "note": "fish again"
+    },
+    {
+      "m_number": "M064",
+      "reading": "va",
+      "dedr_word": "vaai",
+      "dedr_ref": "DEDR 5243",
+      "depiction": "wide mouth",
+      "corpus_freq": 11,
+      "consistency": 0.0421,
+      "note": "mouth sign"
+    },
+    {
+      "m_number": "M043",
+      "reading": "mu",
+      "dedr_word": "muukku",
+      "dedr_ref": "DEDR 5009",
+      "depiction": "trident",
+      "corpus_freq": 11,
+      "consistency": 0.0421,
+      "note": "three-pronged"
+    },
+    {
+      "m_number": "M082",
+      "reading": "pa",
+      "dedr_word": "pal",
+      "dedr_ref": "DEDR 3966",
+      "depiction": "plant+stroke",
+      "corpus_freq": 7,
+      "consistency": 0.0211,
+      "note": "plant with mark"
+    }
+  ]
+}

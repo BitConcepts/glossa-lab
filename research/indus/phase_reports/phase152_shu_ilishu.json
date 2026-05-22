@@ -1,0 +1,79 @@
+{
+  "phase": 152,
+  "date": "2026-05-19",
+  "subject": "Shu-ilishu interpreter seal phonological test",
+  "external_anchor": {
+    "name": "Shu-ilishu",
+    "title": "interpreter of the Meluhha language",
+    "period": "Ur III, c. 2020 BCE",
+    "provenance": "excavated at Ur, held at British Museum",
+    "akkadian_rendering": "ŠU-i-li-šu",
+    "phonemes_targeted": [
+      "su/shu",
+      "i",
+      "li",
+      "shu/su"
+    ]
+  },
+  "coverage": {
+    "slots_covered": 2,
+    "slots_total": 4,
+    "coverage_pct": 50.0,
+    "slot_detail": {
+      "su": [],
+      "i": [
+        {
+          "sign": "M267",
+          "reading": "iN/in (genitive of)"
+        },
+        {
+          "sign": "M162",
+          "reading": "il/iḷ"
+        },
+        {
+          "sign": "M336",
+          "reading": "iṉ/locative"
+        },
+        {
+          "sign": "M305",
+          "reading": "ōṭu/comitative"
+        },
+        {
+          "sign": "M045",
+          "reading": "yānai"
+        }
+      ],
+      "li": [
+        {
+          "sign": "M016",
+          "reading": "kaḷiṟu"
+        },
+        {
+          "sign": "M006",
+          "reading": "puli"
+        },
+        {
+          "sign": "M011",
+          "reading": "kaḷiṟu"
+        },
+        {
+          "sign": "M033",
+          "reading": "puli"
+        }
+      ],
+      "shu": []
+    }
+  },
+  "candidate_seals_count": 0,
+  "candidate_seals_top5": [],
+  "verdict": "PARTIALLY_SUPPORTED",
+  "e02_prior_status": "INSUFFICIENT",
+  "e02_new_status": "PARTIALLY_SUPPORTED",
+  "key_findings": [
+    "Phoneme coverage: 2/4 slots (50.0%)",
+    "Verdict: PARTIALLY_SUPPORTED",
+    "E02 status: PARTIALLY_SUPPORTED",
+    "Candidate seals with ≥3/4 slots: 0",
+    "Key gap: sibilant /su/ phoneme coverage determines upgrade feasibility"
+  ]
+}

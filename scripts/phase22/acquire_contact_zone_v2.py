@@ -27,7 +27,7 @@ MANIFEST_PATH = TARGET_DIR / "_manifest.json"
 
 UA = (
     "Mozilla/5.0 (compatible; GlossaLab-ContactZoneAcquisition/2.0; "
-    "research; +https://github.com/layer1labs/glossa-lab)"
+    "research; +https://github.com/BitConcepts/glossa-lab)"
 )
 
 

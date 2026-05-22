@@ -260,6 +260,7 @@ class LuwianKLScoring(_EB):
         if corpus_id:
             # Load from the Glossa Lab corpus DB and compute lengths from sequences
             import asyncio  # noqa: PLC0415
+
             from glossa_lab.database import get_db  # noqa: PLC0415
 
             db = get_db()
@@ -282,10 +283,12 @@ class LuwianKLScoring(_EB):
             if not lengths:
                 return {"error": "All sequences are empty."}
 
-            import math  # noqa: PLC0415
             from collections import Counter  # noqa: PLC0415
+
             from glossa_lab.experiments.luwian_kl_scoring import (  # noqa: PLC0415
-                LANGUAGE_PROFILES, kl_divergence, js_divergence,
+                LANGUAGE_PROFILES,
+                js_divergence,
+                kl_divergence,
             )
             length_counter = Counter(lengths)
             observed = {k: v / n for k, v in length_counter.items()}

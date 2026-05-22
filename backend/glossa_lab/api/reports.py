@@ -33,7 +33,8 @@ logger = logging.getLogger("glossa_lab.api.reports")
 _REPO_ROOT    = Path(__file__).resolve().parent.parent.parent.parent
 _BACKEND_DIR  = _REPO_ROOT / "backend"
 _REPORTS_DIR  = _REPO_ROOT / "reports"
-_ALIASES      = {"indus": "real_indus_catalog_analysis.json"}
+_OUTPUTS_DIR  = _REPO_ROOT / "outputs"
+_ALIASES      = {"indus": str(_OUTPUTS_DIR / "real_indus_catalog_analysis.json")}
 
 
 # ── Report template registry ──────────────────────────────────────────────────
@@ -109,7 +110,7 @@ async def list_report_templates() -> list[dict[str, Any]]:
             "category":    t["category"],
             "requires":    t["requires"],
             "ready":       all(
-                bool(list(_REPORTS_DIR.glob(req)))
+                bool(list(_REPORTS_DIR.glob(req)) or list(_OUTPUTS_DIR.glob(req)))
                 for req in t["requires"]
             ),
         }
@@ -147,7 +148,7 @@ async def generate_report(body: GenerateReportBody) -> dict[str, Any]:
     # Check that required input JSON files exist
     missing = [
         req for req in tmpl["requires"]
-        if not list(_REPORTS_DIR.glob(req))
+        if not list(_REPORTS_DIR.glob(req)) and not list(_OUTPUTS_DIR.glob(req))
     ]
     if missing:
         raise HTTPException(
@@ -298,7 +299,13 @@ async def delete_report(report_name: str) -> dict[str, Any]:
 
 def _resolve(report_name: str) -> Path | None:
     name = _ALIASES.get(report_name, report_name)
-    for path in _REPORTS_DIR.rglob("*"):
-        if path.is_file() and (path.name == name or path.stem == name):
-            return path
+    # Check if alias resolved to an absolute path (e.g. outputs/ files)
+    if name != report_name:
+        p = Path(name)
+        if p.is_absolute() and p.is_file():
+            return p
+    for scan_dir in (_REPORTS_DIR, _OUTPUTS_DIR):
+        for path in scan_dir.rglob("*"):
+            if path.is_file() and (path.name == name or path.stem == name):
+                return path
     return None

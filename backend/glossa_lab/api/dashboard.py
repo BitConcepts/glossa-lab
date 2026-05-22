@@ -389,7 +389,22 @@ async def _generate_insight(
                 cleaned = cleaned.rstrip("`").strip()
             return cleaned.startswith("{")
 
-        # ── Attempt 1: reasoning bucket with full JSON schema ────────────
+        # Track provider IDs that have already failed so subsequent attempts
+        # advance to the next slot (bucket-fallback → global-primary → global-
+        # fallback) rather than re-hitting the same dead provider three times.
+        _failed_provider_ids: set[str] = set()
+
+        def _record_resolved_provider(b: str) -> str | None:
+            """Peek at which provider would be used for bucket *b* and return its id."""
+            try:
+                from glossa_lab.ai_utils import _resolve_bucket_sync  # noqa: PLC0415
+                r = _resolve_bucket_sync(b, exclude_provider_ids=_failed_provider_ids)
+                return r["_provider"]["id"] if r else None
+            except Exception:  # noqa: BLE001
+                return None
+
+        # ── Attempt 1: reasoning bucket with full JSON schema ────────────────────
+        _prov_id_1 = _record_resolved_provider("reasoning")
         try:
             raw = await loop.run_in_executor(
                 None,
@@ -411,6 +426,7 @@ async def _generate_insight(
                     json_mode=True,
                     json_schema=_INSIGHT_JSON_SCHEMA,
                     max_tokens=2000, temperature=0.2,
+                    exclude_provider_ids=_failed_provider_ids if _failed_provider_ids else None,
                 ),
             )
         except ValueError as ve:
@@ -431,6 +447,8 @@ async def _generate_insight(
                 "model": "no-provider",
             }
         except Exception as exc:  # noqa: BLE001 — RuntimeError or other LLM error
+            if _prov_id_1:
+                _failed_provider_ids.add(_prov_id_1)
             _log.info(
                 "dashboard insight: reasoning bucket failed (%s), trying conversational",
                 type(exc).__name__,
@@ -443,10 +461,13 @@ async def _generate_insight(
                 "dashboard insight: attempt 1 returned non-JSON prose (%d chars), "
                 "skipping to attempt 2", len(raw),
             )
+            if _prov_id_1:
+                _failed_provider_ids.add(_prov_id_1)
             raw = ""
 
-        # ── Attempt 2: conversational bucket, no json_schema (wider compat) ─
+        # ── Attempt 2: conversational bucket, excluding failed providers ───────
         if not raw or not raw.strip():
+            _prov_id_2 = _record_resolved_provider("conversational")
             try:
                 raw = await loop.run_in_executor(
                     None,
@@ -464,9 +485,12 @@ async def _generate_insight(
                         bucket="conversational",
                         json_mode=True,
                         max_tokens=1800, temperature=0.3,
+                        exclude_provider_ids=_failed_provider_ids if _failed_provider_ids else None,
                     ),
                 )
             except Exception as conv_exc:  # noqa: BLE001
+                if _prov_id_2:
+                    _failed_provider_ids.add(_prov_id_2)
                 _log.info("dashboard insight: conversational bucket failed (%s)", type(conv_exc).__name__)
 
         # Same non-JSON prose check for attempt 2.
@@ -477,7 +501,7 @@ async def _generate_insight(
             )
             raw = ""
 
-        # ── Attempt 3: reasoning bucket, shorter prompt, no schema ──────
+        # ── Attempt 3: reasoning bucket, shorter prompt, excluding all failed providers
         if not raw or not raw.strip():
             short_items = items[:8]  # minimal context to reduce token pressure
             short_prompt = _build_insight_prompt(short_items, studies[:5], experiments[:20], goal=goal)
@@ -496,6 +520,7 @@ async def _generate_insight(
                         bucket="reasoning",
                         json_mode=True,
                         max_tokens=1200, temperature=0.2,
+                        exclude_provider_ids=_failed_provider_ids if _failed_provider_ids else None,
                     ),
                 )
             except Exception as s_exc:  # noqa: BLE001

@@ -172,7 +172,7 @@ T2.1 Top-20 rebus table: full rebus mapping for all 20 most frequent V3 signs do
   - M77/123 (n=187, M=0.904) = LOGOGRAM (unicorn/Pasupati) -- highest confidence logogram.
 
 T3.1 Dr. Fuls email sent:
-  - To: andreas.fuls@tu-berlin.de (Resend id: f33f4c33)
+  - To: [email redacted] (Resend id: f33f4c33)
   - Subject: Phase-43 Update: Dravidian Advantage Confirmed on Independent Corpus
   - Includes: V3 corpus result, terminal sign table, fish disambiguation, title formula
   - Renewed ICIT corpus request with stronger evidence
@@ -180,7 +180,7 @@ T3.1 Dr. Fuls email sent:
 
 T3.2 Penn Museum draft sent for review:
   - To: tpierson@bitconcepts.tech for review (Resend id: 943ddddc)
-  - Draft to send to: photos@pennmuseum.org
+  - Draft to send to: [email redacted]
   - Requesting batch image access for ~7,515 identified Indus seal objects
   - File: reports/phase43_penn_museum_request_draft.txt
 
@@ -909,7 +909,7 @@ with updated 263-anchor inventory.
   - ICIT = Dr. Andreas Fuls' database (our Phase-109 contact!)
   - 4,537 objects, 5,509 texts, 19,616 occurrences
   - Gulf sites: Failaka (400 seals), Saar (200+ seals), Janabiyah
-  - Access: email fuls@epigraphica.de with fish-polysemy context + research offer
+  - Access: email [email redacted] with fish-polysemy context + research offer
   - Required user downloads: Kjaerum 1983, Tell F6 2012, Crawford 1997 (from Academia.edu)
 
 ### Avishai correspondence

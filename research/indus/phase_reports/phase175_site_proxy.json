@@ -1,0 +1,52 @@
+{
+  "phase": 175,
+  "date": "2026-05-22",
+  "description": "Site-stratified grammar/name proportion proxy (5-site Holdat subset)",
+  "prediction": "Peripheral sites (high KL from Mohenjo-daro) show higher grammar-sign proportion in MEDIAL position, consistent with Roif's protocol-encoding principle.",
+  "caveat": "Only 5 sites available in holdatllc_core_symbol_site_distribution.csv. Rakhigarhi (most peripheral, KL=0.509) is absent. Full test requires ICIT corpus with all-site metadata.",
+  "site_stats": {
+    "Mohenjo-daro": {
+      "grammar_tokens": 1,
+      "name_tokens": 45,
+      "total_hm_tokens": 46,
+      "grammar_ratio": 0.0217,
+      "name_ratio": 0.9783,
+      "kl_from_mohenjo": 0.0
+    },
+    "Harappa": {
+      "grammar_tokens": 2,
+      "name_tokens": 46,
+      "total_hm_tokens": 48,
+      "grammar_ratio": 0.0417,
+      "name_ratio": 0.9583,
+      "kl_from_mohenjo": 0.07
+    },
+    "Kalibangan": {
+      "grammar_tokens": 0,
+      "name_tokens": 13,
+      "total_hm_tokens": 13,
+      "grammar_ratio": 0.0,
+      "name_ratio": 1.0,
+      "kl_from_mohenjo": 0.168
+    },
+    "Lothal": {
+      "grammar_tokens": 0,
+      "name_tokens": 7,
+      "total_hm_tokens": 7,
+      "grammar_ratio": 0.0,
+      "name_ratio": 1.0,
+      "kl_from_mohenjo": 0.144
+    },
+    "Chanhu-daro": {
+      "grammar_tokens": 0,
+      "name_tokens": 18,
+      "total_hm_tokens": 18,
+      "grammar_ratio": 0.0,
+      "name_ratio": 1.0,
+      "kl_from_mohenjo": 0.253
+    }
+  },
+  "pearson_r_kl_vs_grammar": -0.7095,
+  "direction": "NEGATIVE",
+  "verdict": "NOT_SUPPORTED"
+}

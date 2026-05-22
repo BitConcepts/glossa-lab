@@ -18,8 +18,10 @@ from glossa_lab.discovery.fetchers.base import (
     Fetcher,
     FetcherError,
     TopicProfile,
+    _429_cooldown,
     http_get_json,
     run_in_thread,
+    source_is_cooling,
 )
 from glossa_lab.discovery.store import RawItem
 
@@ -88,11 +90,20 @@ class RSSFetcher(Fetcher):
         if not feeds:
             return []
 
+        cooling, remaining = source_is_cooling(self.source)
+        if cooling:
+            _log.debug("rss cooldown active — skipping (%.0fs remaining)", remaining)
+            return []
+
         items: list[RawItem] = []
         for feed_url in feeds:
             try:
                 raw = await run_in_thread(http_get_json, feed_url, timeout=20.0)
             except FetcherError as exc:
+                err_str = str(exc)
+                if _429_cooldown(err_str, self.source):
+                    # Rate-limited — stop processing remaining feeds for this topic.
+                    break
                 _log.warning("RSS: error fetching %s for topic %s: %s", feed_url, topic.id, exc)
                 continue
             if not isinstance(raw, (bytes, bytearray)):

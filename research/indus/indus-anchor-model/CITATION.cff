@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: "If you use this software or the research outputs in this repository, please cite both the preprint and the software as below."
+type: software
+title: "Glossa-Lab: AI-Assisted Computational Linguistics Research Platform"
+version: "1.0.0"
+date-released: "2026-05-21"
+license: MIT
+repository-code: "https://github.com/BitConcepts/glossa-lab"
+url: "https://github.com/BitConcepts/glossa-lab"
+authors:
+  - family-names: Pierson
+    given-names: Tristen Kyle
+    affiliation: "BitConcepts LLC"
+    email: tpierson@bitconcepts.tech
+
+abstract: >
+  Glossa-Lab is a computational linguistics research platform for statistical
+  analysis, decipherment, and hypothesis testing of ancient and undeciphered
+  writing systems. It was used to produce the Indus Script decipherment preprint
+  "A Falsifiable Computational Decipherment Hypothesis for the Indus Valley Script"
+  (Pierson 2026).
+
+keywords:
+  - computational linguistics
+  - Indus Valley Script
+  - decipherment
+  - ancient scripts
+  - proto-Dravidian
+  - corpus analysis
+
+references:
+  - type: article
+    title: >
+      A Falsifiable Computational Decipherment Hypothesis for the Indus Valley Script:
+      161 Candidate Proto-Dravidian Anchors and a Three-Slot Positional Grammar
+    authors:
+      - family-names: Pierson
+        given-names: Tristen Kyle
+        affiliation: "BitConcepts LLC"
+    year: 2026
+    notes: "Preprint v1 — Not peer-reviewed"
+    url: "https://github.com/BitConcepts/glossa-lab/tree/main/research/indus"

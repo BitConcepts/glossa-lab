@@ -230,7 +230,7 @@ async def summarize_experiment(experiment_id: str) -> dict[str, Any]:
 async def reload_experiments() -> dict[str, Any]:
     """Invalidate the discovery cache and re-scan."""
     invalidate_cache()
-    experiments = list_discovered_experiments()
+    experiments = list_graph_experiments()
     return {"reloaded": True, "count": len(experiments)}
 
 

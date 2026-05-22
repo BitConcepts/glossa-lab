@@ -23,7 +23,6 @@ from __future__ import annotations
 import json
 import urllib.error
 import urllib.request
-from pathlib import Path
 from typing import Any
 
 # ── Catalog of acquirable corpora ─────────────────────────────────────────────

@@ -80,8 +80,9 @@ def _corpus_reader(inputs: dict, params: dict) -> dict:
     corpus_id = params.get("corpus_id") or ""
     sequences: list[list[str]] = []
     if corpus_id:
-        from glossa_lab.database import get_db  # noqa: PLC0415
         import asyncio  # noqa: PLC0415
+
+        from glossa_lab.database import get_db  # noqa: PLC0415
         db = get_db()
         if db:
             try:
@@ -239,13 +240,22 @@ def _builtin_lm(inputs: dict, params: dict) -> dict:
     lang = params.get("language", "hebrew").lower().strip()
     try:
         if lang in ("hebrew", "old_hebrew"):
-            from glossa_lab.data.old_hebrew import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
+            from glossa_lab.data.old_hebrew import (  # noqa: PLC0415
+                get_corpus_inscriptions,
+                get_corpus_symbols,
+            )
             syms = get_corpus_symbols(); inscs = get_corpus_inscriptions()
         elif lang == "geez":
-            from glossa_lab.data.geez import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
+            from glossa_lab.data.geez import (  # noqa: PLC0415
+                get_corpus_inscriptions,
+                get_corpus_symbols,
+            )
             syms = get_corpus_symbols(); inscs = get_corpus_inscriptions()
         elif lang == "phoenician":
-            from glossa_lab.data.phoenician import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
+            from glossa_lab.data.phoenician import (  # noqa: PLC0415
+                get_corpus_inscriptions,
+                get_corpus_symbols,
+            )
             syms = get_corpus_symbols(); inscs = get_corpus_inscriptions()
         elif lang in ("sumerian", "sumerian_ur3"):
             from glossa_lab.data.sumerian_ur3 import get_corpus_symbols  # noqa: PLC0415
@@ -286,7 +296,8 @@ def _builtin_lm(inputs: dict, params: dict) -> dict:
             syms = _ps(); inscs = None
         elif lang in ("hieroglyphic_luwian", "luwian", "hluwian", "chli"):
             from glossa_lab.data.hieroglyphic_luwian import (  # noqa: PLC0415
-                get_corpus_symbols, get_corpus_inscriptions,
+                get_corpus_inscriptions,
+                get_corpus_symbols,
             )
             syms = get_corpus_symbols(); inscs = get_corpus_inscriptions()
         else:
@@ -310,23 +321,41 @@ def _builtin_corpus(inputs: dict, params: dict) -> dict:
             # Single-token sequences — use CorpusReader for multi-sign inscriptions
             seqs: list = [[s] for s in flat]
         elif name in ("hebrew", "old_hebrew"):
-            from glossa_lab.data.old_hebrew import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
+            from glossa_lab.data.old_hebrew import (  # noqa: PLC0415
+                get_corpus_inscriptions,
+                get_corpus_symbols,
+            )
             flat = get_corpus_symbols(); seqs = get_corpus_inscriptions()
         elif name == "geez":
-            from glossa_lab.data.geez import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
+            from glossa_lab.data.geez import (  # noqa: PLC0415
+                get_corpus_inscriptions,
+                get_corpus_symbols,
+            )
             flat = get_corpus_symbols(); seqs = get_corpus_inscriptions()
         elif name in ("geez_clean", "geez_nopunct", "geez_syllabic"):
             # Dr. Fuls April 2026: punctuation-free corpus (80,221 tokens, 209 signs)
-            from glossa_lab.data.geez import get_clean_corpus_symbols, get_clean_corpus_inscriptions  # noqa: PLC0415
+            from glossa_lab.data.geez import (  # noqa: PLC0415
+                get_clean_corpus_inscriptions,
+                get_clean_corpus_symbols,
+            )
             flat = get_clean_corpus_symbols(); seqs = get_clean_corpus_inscriptions()
         elif name == "phoenician":
-            from glossa_lab.data.phoenician import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
+            from glossa_lab.data.phoenician import (  # noqa: PLC0415
+                get_corpus_inscriptions,
+                get_corpus_symbols,
+            )
             flat = get_corpus_symbols(); seqs = get_corpus_inscriptions()
         elif name in ("nw_semitic", "fuls", "fuls_nw_semitic", "ugaritic"):
-            from glossa_lab.data.nw_semitic import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
+            from glossa_lab.data.nw_semitic import (  # noqa: PLC0415
+                get_corpus_inscriptions,
+                get_corpus_symbols,
+            )
             flat = get_corpus_symbols(); seqs = get_corpus_inscriptions()
         elif name in ("meroitic",):
-            from glossa_lab.data.meroitic import get_corpus_symbols, get_corpus_inscriptions  # noqa: PLC0415
+            from glossa_lab.data.meroitic import (  # noqa: PLC0415
+                get_corpus_inscriptions,
+                get_corpus_symbols,
+            )
             flat = get_corpus_symbols(); seqs = get_corpus_inscriptions()
         elif name in ("sanskrit", "vedic"):
             from glossa_lab.data.sanskrit import get_corpus_symbols  # noqa: PLC0415
@@ -343,23 +372,28 @@ def _builtin_corpus(inputs: dict, params: dict) -> dict:
             from glossa_lab.data.linear_b_language import get_corpus_symbols  # noqa: PLC0415
             flat = get_corpus_symbols(); seqs = [[s] for s in flat]
         elif name in ("dravidian", "tamil"):
-            from glossa_lab.data.dravidian import get_corpus_symbols, get_corpus_inscriptions as _di  # noqa: PLC0415
+            from glossa_lab.data.dravidian import get_corpus_inscriptions as _di
+            from glossa_lab.data.dravidian import get_corpus_symbols  # noqa: PLC0415
             flat = get_corpus_symbols(); seqs = _di()  # word-level char sequences
         elif name in ("indus_cisi", "cisi", "indus_parpola"):
-            from glossa_lab.data.indus_cisi import get_corpus_symbols as _cisi_syms, get_corpus_inscriptions as _cisi_inscs  # noqa: PLC0415
+            from glossa_lab.data.indus_cisi import get_corpus_inscriptions as _cisi_inscs
+            from glossa_lab.data.indus_cisi import get_corpus_symbols as _cisi_syms  # noqa: PLC0415
             flat = _cisi_syms(); seqs = _cisi_inscs()  # real multi-sign Parpola inscriptions
         elif name in ("indus_m77", "m77", "mahadevan", "mahadevan_1977"):
             # Full Mahadevan 1977 concordance: 1669 inscriptions / 5361 tokens.
             # Much larger than the CISI Parpola subset; sign IDs are M77 codes
             # (e.g. "047", "820") rather than Parpola P-codes.
+            from glossa_lab.data.indus_m77 import (
+                get_corpus_inscriptions as _m77_inscs,
+            )
             from glossa_lab.data.indus_m77 import (  # noqa: PLC0415
                 get_corpus_symbols as _m77_syms,
-                get_corpus_inscriptions as _m77_inscs,
             )
             flat = _m77_syms(); seqs = _m77_inscs()
         elif name in ("hieroglyphic_luwian", "luwian", "hluwian", "chli"):
             from glossa_lab.data.hieroglyphic_luwian import (  # noqa: PLC0415
-                get_corpus_symbols, get_corpus_inscriptions,
+                get_corpus_inscriptions,
+                get_corpus_symbols,
             )
             flat = get_corpus_symbols(); seqs = get_corpus_inscriptions()
         else:
@@ -427,7 +461,7 @@ def _sa_decipher(inputs: dict, params: dict) -> dict:
     restarts   = max(1,  int(params.get("restarts", 8)))
     surjective = bool(params.get("surjective", True))
     ocp_w      = float(params.get("ocp_weight", 0.0))  # 0 = GPU fast path
-    pos_w      = float(params.get("positional_weight", 0.005))
+    float(params.get("positional_weight", 0.005))
     anchors    = inputs.get("anchors") or params.get("anchors") or None
     flat = [s for seq in sequences for s in seq]
 
@@ -595,7 +629,7 @@ def _writing_system_classifier(inputs: dict, params: dict) -> dict:
     h1            = float(inputs.get("h1") or inputs.get("number") or params.get("h1", 5.5))
     n_signs       = int(inputs.get("distinct_symbols") or inputs.get("n_signs") or params.get("n_signs", 78))
     avg_word_len  = float(inputs.get("avg_word_len") or params.get("avg_word_len", 3.3))
-    tok_per_sign  = float(inputs.get("tokens_per_sign") or inputs.get("total_tokens", 1) /
+    float(inputs.get("tokens_per_sign") or inputs.get("total_tokens", 1) /
                           max(1, inputs.get("distinct_symbols") or n_signs))
 
     # Literature benchmark table (embedded — no external deps)
@@ -622,7 +656,7 @@ def _writing_system_classifier(inputs: dict, params: dict) -> dict:
 
     ranked = sorted(BENCHMARKS, key=_dist)
     nearest = ranked[:3]
-    dominant_tier = nearest[0]["tier"]
+    nearest[0]["tier"]
 
     # Rule-based tier classification
     if h1 < 4.7 and n_signs < 50:
@@ -661,7 +695,6 @@ def _beam_decipher(inputs: dict, params: dict) -> dict:
     anchors    = inputs.get("anchors") or params.get("anchors") or None
     try:
         from glossa_lab.pipelines.beam_decipher import beam_decipher  # noqa: PLC0415
-        from glossa_lab.pipelines.decipher import score_accuracy      # noqa: PLC0415
         r = beam_decipher(flat, lm, beam_width=beam_width,
                           cipher_inscriptions=sequences or None,
                           surjective=bool(params.get("surjective", True)),
@@ -807,7 +840,7 @@ def _constraint_sweep(inputs: dict, params: dict) -> dict:
     from collections import Counter as _C  # noqa: PLC0415
     sequences  = inputs.get("sequences") or inputs.get("test_sequences") or []
     lm         = inputs.get("lm")
-    freq_map   = inputs.get("freq_map") or {}
+    inputs.get("freq_map") or {}
     if not lm:
         return {"error": "No LM — connect LMBuilder or BuiltinLM."}
     if not sequences:
@@ -852,8 +885,9 @@ def _constraint_sweep(inputs: dict, params: dict) -> dict:
 
 def _comparator_ai(inputs: dict, params: dict) -> dict:
     """Compare two upstream result dicts using Glossa AI."""
-    from glossa_lab.ai_utils import call_llm  # noqa: PLC0415
     import json as _json  # noqa: PLC0415
+
+    from glossa_lab.ai_utils import call_llm  # noqa: PLC0415
 
     a = inputs.get("a") or inputs.get(list(inputs.keys())[0] if inputs else "a", {})
     b = inputs.get("b") or (list(inputs.values())[1] if len(inputs) > 1 else {})
@@ -885,8 +919,9 @@ def _corpus_lm(inputs: dict, params: dict) -> dict:
         return {"error": "No corpus_id param — select a corpus from the dropdown or connect CorpusReader."}
 
     # Load sequences from DB (same pattern as _corpus_reader)
-    from glossa_lab.database import get_db  # noqa: PLC0415
     import asyncio  # noqa: PLC0415
+
+    from glossa_lab.database import get_db  # noqa: PLC0415
     db = get_db()
     if db is None:
         return {"error": "Database not available — is the backend running?"}
@@ -921,181 +956,6 @@ def _corpus_lm(inputs: dict, params: dict) -> dict:
     }
 
 
-def _cas_model_loader(inputs: dict, params: dict) -> dict:
-    """Load a CAS-YAML constraint model from the database or built-in library.
-
-    Users create CAS models in the Models editor (or use the built-in Indus models).
-    The 'model' output is an opaque CasModel object that CASProjector and
-    CASIndusEngine can consume directly — no YAML file path required.
-    """
-    model_id   = params.get("model_id", "").strip()
-    yaml_text  = params.get("yaml_text", "").strip()
-    builtin    = params.get("builtin", "").strip()
-
-    try:
-        from glossa_lab.cpsc_bridge import load_builtin_cas_model, _parse_yaml_to_model  # noqa: PLC0415
-    except ImportError as exc:
-        return {"error": f"CPSC not installed: {exc}"}
-
-    # Priority: builtin name > inline yaml_text > DB model_id
-    model = None
-    source = ""
-
-    if builtin:
-        model = load_builtin_cas_model(builtin)
-        source = f"builtin:{builtin}"
-        if model is None:
-            return {"error": f"Built-in CAS model '{builtin}' not found in data/cas_models/"}
-
-    elif yaml_text:
-        try:
-            model = _parse_yaml_to_model(yaml_text)
-            source = "inline_yaml"
-        except Exception as exc:  # noqa: BLE001
-            return {"error": f"YAML parse error: {exc}"}
-
-    elif model_id:
-        from glossa_lab.database import get_db  # noqa: PLC0415
-        import asyncio  # noqa: PLC0415
-        db = get_db()
-        if db is None:
-            return {"error": "Database not available."}
-        try:
-            loop = asyncio.get_event_loop()
-            record = loop.run_until_complete(db.get_cas_model(model_id))
-        except Exception as exc:  # noqa: BLE001
-            return {"error": f"Failed to load CAS model '{model_id}': {exc}"}
-        if record is None:
-            return {"error": f"CAS model '{model_id}' not found in database."}
-        try:
-            model = _parse_yaml_to_model(record["yaml_text"])
-            source = f"db:{model_id}"
-        except Exception as exc:  # noqa: BLE001
-            return {"error": f"Failed to parse stored CAS-YAML: {exc}"}
-    else:
-        return {"error": "Provide one of: builtin (e.g. 'indus_sign_roles'), yaml_text, or model_id."}
-
-    return {
-        "model":        model,
-        "model_id":     model.model_id,
-        "model_name":   model.model_id,
-        "source":       source,
-        "n_variables":  len(model.variables),
-        "n_constraints":len(model.constraints),
-        "dof_vars":     model.free_variables,
-        "engine_hint":  getattr(model.projection, "strategy", "auto"),
-    }
-
-
-def _cas_projector(inputs: dict, params: dict) -> dict:
-    """Run CPSC constraint projection on a CAS model.
-
-    Connects: CASModelLoader.model → model.
-    Provide DoF values as a JSON list or dict.
-    The CPSC IterativeEngine (or CellularEngine) projects the free variables
-    onto the constraint manifold — returning all derived variable values.
-
-    GPU note: IterativeEngine is pure numpy (CPU). GPU acceleration applies
-    to SADecipher/BigramScorer; CASProjector is constraint-gradient-based.
-    """
-    model    = inputs.get("model")
-    dof_raw  = inputs.get("dof_values") or params.get("dof_values")
-    engine   = str(params.get("engine", "auto"))
-    max_iter = params.get("max_iterations")
-    strategy = params.get("force_strategy", "") or None
-
-    if model is None:
-        return {"error": "No model — connect CASModelLoader to the 'model' port."}
-
-    try:
-        from glossa_lab.cpsc_bridge import project_cas_model  # noqa: PLC0415
-    except ImportError as exc:
-        return {"error": f"CPSC not installed: {exc}"}
-
-    # Parse DoF values — accept list, dict (by name), JSON string, or empty (use zeros)
-    dof_names = model.free_variables
-    # If dof_raw came in as a JSON string from node params, parse it first
-    if isinstance(dof_raw, str) and dof_raw.strip():
-        import json as _json  # noqa: PLC0415
-        try:
-            dof_raw = _json.loads(dof_raw)
-        except (ValueError, _json.JSONDecodeError):
-            dof_raw = None
-
-    if dof_raw is None or dof_raw == []:
-        dof_values = [0.0] * len(dof_names)
-    elif isinstance(dof_raw, dict):
-        dof_values = [float(dof_raw.get(n, 0.0)) for n in dof_names]
-    elif isinstance(dof_raw, list):
-        dof_values = [float(v) for v in dof_raw[:len(dof_names)]]
-        # Pad with zeros if fewer values than DoF vars
-        dof_values += [0.0] * max(0, len(dof_names) - len(dof_values))
-    else:
-        dof_values = [0.0] * len(dof_names)
-
-    result = project_cas_model(
-        model, dof_values,
-        engine=engine,
-        max_iterations=int(max_iter) if max_iter else None,
-        force_strategy=strategy,
-    )
-    return {
-        "state":          result.get("state", {}),
-        "success":        result.get("success", False),
-        "iterations":     result.get("iterations", 0),
-        "max_violation":  result.get("max_violation", float("inf")),
-        "strategy_used":  result.get("strategy_used", engine),
-        "reason":         result.get("reason"),
-        "details":        result.get("details", {}),
-        "dof_vars":       dof_names,
-        "dof_values_used":dof_values,
-    }
-
-
-def _cas_indus_engine(inputs: dict, params: dict) -> dict:
-    """CASIndusEngine — custom CPSC-based Indus sign role classifier.
-
-    Our own engine built on CPSC's IterativeEngine. For each sign in the corpus:
-      1. Observes I/M/T rates from real CISI inscription sequences
-      2. Builds a CasModel dynamically encoding Dravidian morphological constraints
-         (case suffixes terminal-biased, determinatives initial-biased,
-         phonetic syllables medial-biased)
-      3. Runs CPSC IterativeEngine to project observed rates onto the constraint manifold
-      4. Classifies each sign as TERMINAL / INITIAL / MEDIAL based on projected weights
-
-    Connects:
-      BuiltinCorpus(indus_cisi) → sequences
-      PositionalProfiler → profiles
-      BuiltinLM(dravidian) → lm  (optional, used for phoneme candidate matching)
-
-    Unlike SADecipher (black-box SA optimizer), this engine is transparent:
-    users can modify the constraints in the Models editor and re-run.
-    """
-    sequences = inputs.get("sequences") or []
-    profiles  = inputs.get("profiles") or inputs.get("class_summary") or {}
-    lm        = inputs.get("lm")
-
-    t_thresh = float(params.get("terminal_threshold", 0.55))
-    i_thresh = float(params.get("initial_threshold", 0.45))
-    engine   = str(params.get("engine", "iterative"))
-
-    try:
-        from glossa_lab.cpsc_bridge import run_indus_engine  # noqa: PLC0415
-    except ImportError as exc:
-        return {"error": f"CPSC not installed: {exc}"}
-
-    if not sequences and not profiles:
-        return {"error": "Connect BuiltinCorpus(indus_cisi) to sequences and/or PositionalProfiler to profiles."}
-
-    return run_indus_engine(
-        sequences=sequences,
-        profiles=profiles,
-        lm=lm,
-        terminal_threshold=t_thresh,
-        initial_threshold=i_thresh,
-        engine=engine,
-    )
-
 
 def _anchor_set_loader(inputs: dict, params: dict) -> dict:
     """Load a user-defined anchor set from the database (H16).
@@ -1109,8 +969,9 @@ def _anchor_set_loader(inputs: dict, params: dict) -> dict:
     if not anchor_set_id:
         return {"error": "No anchor_set_id param — select an anchor set.", "anchors": {}}
 
-    from glossa_lab.database import get_db  # noqa: PLC0415
     import asyncio  # noqa: PLC0415
+
+    from glossa_lab.database import get_db  # noqa: PLC0415
     db = get_db()
     if db is None:
         return {"error": "Database not available.", "anchors": {}}
@@ -1148,8 +1009,9 @@ def _report_generator(inputs: dict, params: dict) -> dict:
     if not template_id:
         return {"error": "No template_id param — select a report template."}
 
-    from glossa_lab.database import get_db  # noqa: PLC0415
     import asyncio  # noqa: PLC0415
+
+    from glossa_lab.database import get_db  # noqa: PLC0415
     db = get_db()
     if db is None:
         return {"error": "Database not available."}
@@ -1257,8 +1119,9 @@ def _canonical_sign_loader(inputs: dict, params: dict) -> dict:
     filter_in_corpus = bool(params.get("in_corpus_only", True))
     numbering_system = params.get("numbering_system") or None
 
-    from glossa_lab.database import get_db  # noqa: PLC0415
     import asyncio  # noqa: PLC0415
+
+    from glossa_lab.database import get_db  # noqa: PLC0415
     db = get_db()
     if db is None:
         return {"error": "Database not available"}
@@ -1297,8 +1160,8 @@ def _cluster_mapper(inputs: dict, params: dict) -> dict:
     directly from analysis/sign_clusters.json.
     Unmapped signs receive label -1. NO phonetic mapping is performed.
     """
-    import json as _json  # noqa: PLC0415
     import asyncio  # noqa: PLC0415
+    import json as _json  # noqa: PLC0415
     from pathlib import Path as _Path  # noqa: PLC0415
 
     assignments: list = []
@@ -1506,9 +1369,9 @@ def _anchor_convergence_benchmark(inputs: dict, params: dict) -> dict:
     For each anchor count runs structured (frequency-ranked) and random anchor sets,
     reports top-1 accuracy, free-sign accuracy, consistency, and distinct-mappings metrics.
     """
-    import random as _rnd  # noqa: PLC0415
     import math as _math  # noqa: PLC0415
-    from collections import Counter as _C, defaultdict as _dd  # noqa: PLC0415
+    import random as _rnd  # noqa: PLC0415
+    from collections import Counter as _C  # noqa: PLC0415
 
     cipher_seqs  = inputs.get("cipher_sequences") or []
     lm           = inputs.get("lm")
@@ -1549,9 +1412,9 @@ def _anchor_convergence_benchmark(inputs: dict, params: dict) -> dict:
     if not sign_inv:
         return {"error": "Cannot determine sign inventory"}
 
-    inv_set = set(sign_inv)
+    set(sign_inv)
     flat_cipher = [s for seq in cipher_seqs for s in seq]
-    n_total = len(true_mapping)
+    len(true_mapping)
 
     # ── helpers ──────────────────────────────────────────────────────────────
     def _mean(xs): return sum(xs) / len(xs) if xs else float("nan")
@@ -1991,65 +1854,6 @@ for _d in [
             "max_template_length":{"type":"integer","title":"Max Template Length","default":5,"minimum":2,
                                    "description":"Maximum cluster-sequence length to consider as template"}}},
         fn=_structural_template_analyzer),
-    # ── CPSC / Constraint Solver nodes ────────────────────────────────────────
-    AtomicNodeDef("CASModelLoader","CAS Model Loader","CPSC / Constraint Solver",
-        "Load a CAS-YAML constraint model from the database, a built-in template, or inline YAML. "
-        "Outputs a 'model' object for CASProjector or CASIndusEngine. "
-        "Built-in models: 'indus_sign_roles', 'dravidian_phonotactic'. "
-        "Create custom models in the Models editor.",
-        inputs=[],
-        outputs=[{"name":"model","type":"any"},{"name":"model_id","type":"text"},
-                 {"name":"n_variables","type":"number"},{"name":"n_constraints","type":"number"},
-                 {"name":"dof_vars","type":"json"},{"name":"engine_hint","type":"text"}],
-        params_schema={"type":"object","properties":{
-            "builtin":{"type":"string","title":"Built-in Model","default":"indus_sign_roles",
-                       "description":"One of the built-in CAS models: indus_sign_roles | dravidian_phonotactic"},
-            "model_id":{"type":"string","title":"DB Model ID",
-                        "description":"ID of a user-created CAS model (from Models editor). Leave blank to use builtin."},
-            "yaml_text":{"type":"string","title":"Inline CAS-YAML",
-                         "description":"Paste CAS-YAML directly here (highest priority if non-empty)"}}},
-        fn=_cas_model_loader),
-    AtomicNodeDef("CASProjector","CAS Projector (CPSC)","CPSC / Constraint Solver",
-        "Run CPSC constraint projection on a CAS model. "
-        "Connects: CASModelLoader.model → model. "
-        "Provide DoF values as a list [v1,v2,...] or dict {var_name: value}. "
-        "CPSC IterativeEngine projects free variables onto the constraint manifold, "
-        "returning all derived variable values and diagnostics.",
-        inputs=[{"name":"model","type":"any","required":True},
-                {"name":"dof_values","type":"any","required":False}],
-        outputs=[{"name":"state","type":"json"},{"name":"success","type":"number"},
-                 {"name":"iterations","type":"number"},{"name":"max_violation","type":"number"},
-                 {"name":"strategy_used","type":"text"},{"name":"details","type":"json"}],
-        params_schema={"type":"object","properties":{
-            "engine":{"type":"string","title":"Engine","default":"auto",
-                      "description":"auto | iterative | cellular"},
-            "max_iterations":{"type":"integer","title":"Max Iterations","default":200,"minimum":10},
-            "force_strategy":{"type":"string","title":"Force Strategy",
-                              "description":"iterative | cellular (overrides CAS-YAML hint)"},
-            "dof_values":{"type":"string","title":"DoF Values (JSON)",
-                          "description":"Optional: [0.5, 0.3] or {\"terminal_weight\": 0.5}. Leave blank to use zeros or upstream connection."}}},
-        fn=_cas_projector),
-    AtomicNodeDef("CASIndusEngine","CAS Indus Engine","CPSC / Constraint Solver",
-        "Custom constraint-projection engine for Indus sign role classification. "
-        "Built on CPSC IterativeEngine. For each sign: observes I/M/T rates from CISI inscription data, "
-        "builds a CasModel encoding Dravidian morphological constraints (case suffixes terminal-biased, "
-        "determinatives initial-biased, phonetic syllables medial-biased), then projects. "
-        "Connects: BuiltinCorpus(indus_cisi)→sequences, PositionalProfiler→profiles, BuiltinLM(dravidian)→lm.",
-        inputs=[{"name":"sequences","type":"sequences","required":False},
-                {"name":"profiles","type":"any","required":False},
-                {"name":"lm","type":"any","required":False}],
-        outputs=[{"name":"terminal_signs","type":"json"},{"name":"initial_signs","type":"json"},
-                 {"name":"medial_signs","type":"json"},{"name":"sign_roles","type":"json"},
-                 {"name":"phoneme_candidates","type":"json"},{"name":"constraint_summary","type":"json"},
-                 {"name":"projected_weights","type":"json"},{"name":"n_signs_classified","type":"number"}],
-        params_schema={"type":"object","properties":{
-            "terminal_threshold":{"type":"number","title":"Terminal Threshold","default":0.55,"minimum":0.1,"maximum":0.9,
-                                   "description":"Min projected terminal_weight to classify sign as TERMINAL (case suffix candidate)"},
-            "initial_threshold":{"type":"number","title":"Initial Threshold","default":0.45,"minimum":0.1,"maximum":0.9,
-                                  "description":"Min projected initial_weight to classify sign as INITIAL (determinative candidate)"},
-            "engine":{"type":"string","title":"CPSC Engine","default":"iterative",
-                      "description":"iterative (gradient-based, default) | cellular (local-rule propagation)"}}},
-        fn=_cas_indus_engine),
     AtomicNodeDef("AnchorSetLoader","Anchor Set Loader","Decipherment",
         "Load a user-defined anchor set from the database (H16). "
         "Anchor sets are created in the Anchor Set Editor (Corpora tab). "
@@ -2329,7 +2133,7 @@ for _d in [
 ]:
     ATOMIC_NODES[_d.id] = _d
 
-# ── CTT / Constraint Topology nodes (Layer1Labs Silicon, 2026) ─────────────────────────────
+# ── CTT / Constraint Topology nodes (BitConcepts LLC, 2026) ─────────────────────────────
 try:
     from glossa_lab.experiment_graph_ctt import _ctt_node_defs as _ctt_defs  # noqa: PLC0415
     for _d in _ctt_defs():
@@ -2371,7 +2175,9 @@ except Exception as _p21_exc:  # noqa: BLE001
 
 # ── Phase-16/17/18/19 retroactive migration shims (LegacyPhaseScriptRunner) ──
 try:
-    from glossa_lab.experiment_graph_phase_legacy import _phase_legacy_node_defs as _plg_defs  # noqa: PLC0415
+    from glossa_lab.experiment_graph_phase_legacy import (
+        _phase_legacy_node_defs as _plg_defs,  # noqa: PLC0415
+    )
     for _d in _plg_defs():
         ATOMIC_NODES[_d.id] = _d
 except Exception as _plg_exc:  # noqa: BLE001
@@ -2454,7 +2260,9 @@ except Exception as _p30_exc:  # noqa: BLE001
 
 # ── Phase-32 nodes (PermutationTest, MeluhhaCooccurrenceCheck, DravidianSyllableLM) ──
 try:
-    from glossa_lab.experiment_graph_phase30 import _phase30_phase32_node_defs as _p32_defs  # noqa: PLC0415
+    from glossa_lab.experiment_graph_phase30 import (
+        _phase30_phase32_node_defs as _p32_defs,  # noqa: PLC0415
+    )
     for _d in _p32_defs():
         ATOMIC_NODES[_d.id] = _d
 except Exception as _p32_exc:  # noqa: BLE001
@@ -2462,7 +2270,9 @@ except Exception as _p32_exc:  # noqa: BLE001
 
 # ── Evidence Graph nodes (glossa-indus evidence graph operations) ─────────────────────
 try:
-    from glossa_lab.experiment_graph_indus_evidence import _evidence_node_defs as _ev_defs  # noqa: PLC0415
+    from glossa_lab.experiment_graph_indus_evidence import (
+        _evidence_node_defs as _ev_defs,  # noqa: PLC0415
+    )
     for _d in _ev_defs():
         ATOMIC_NODES[_d.id] = _d
 except Exception as _ev_exc:  # noqa: BLE001
@@ -2470,7 +2280,9 @@ except Exception as _ev_exc:  # noqa: BLE001
 
 # ── Phase-48-55 nodes (full Indus decipherment pipeline — GPU mandatory) ──────────────
 try:
-    from glossa_lab.experiment_graph_phase48_55 import _phase48_55_node_defs as _p4855_defs  # noqa: PLC0415
+    from glossa_lab.experiment_graph_phase48_55 import (
+        _phase48_55_node_defs as _p4855_defs,  # noqa: PLC0415
+    )
     for _d in _p4855_defs():
         ATOMIC_NODES[_d.id] = _d
     logger.info("Registered %d Phase-48-55 decipherment nodes (GPU mandatory)", len(list(_p4855_defs())))
@@ -2480,7 +2292,9 @@ except Exception as _p4855_exc:  # noqa: BLE001
 
 # ── Phase-56-61 nodes (expanded Parpola, phonotactic falsification — GPU mandatory) ──
 try:
-    from glossa_lab.experiment_graph_phase56_61 import _phase56_61_node_defs as _p5661_defs  # noqa: PLC0415
+    from glossa_lab.experiment_graph_phase56_61 import (
+        _phase56_61_node_defs as _p5661_defs,  # noqa: PLC0415
+    )
     for _d in _p5661_defs():
         ATOMIC_NODES[_d.id] = _d
     logger.info("Registered %d Phase-56-61 decipherment nodes (GPU mandatory)", len(list(_p5661_defs())))
@@ -2489,7 +2303,9 @@ except Exception as _p5661_exc:  # noqa: BLE001
 
 # ── Phase-62-66 nodes (ensemble fix, phonotactic filter, morph boundary, crosswalk, Sanskrit SA) ──
 try:
-    from glossa_lab.experiment_graph_phase62_66 import _phase62_66_node_defs as _p6266_defs  # noqa: PLC0415
+    from glossa_lab.experiment_graph_phase62_66 import (
+        _phase62_66_node_defs as _p6266_defs,  # noqa: PLC0415
+    )
     for _d in _p6266_defs():
         ATOMIC_NODES[_d.id] = _d
     logger.info("Registered %d Phase-62-66 decipherment nodes (GPU mandatory)", len(list(_p6266_defs())))
@@ -2498,7 +2314,9 @@ except Exception as _p6266_exc:  # noqa: BLE001
 
 # ── Phase-67-73 nodes (Sanskrit norm, formula translation, M267 validation, site strat, crosswalk, parser) ──
 try:
-    from glossa_lab.experiment_graph_phase67_73 import _phase67_73_node_defs as _p6773_defs  # noqa: PLC0415
+    from glossa_lab.experiment_graph_phase67_73 import (
+        _phase67_73_node_defs as _p6773_defs,  # noqa: PLC0415
+    )
     for _d in _p6773_defs():
         ATOMIC_NODES[_d.id] = _d
     logger.info("Registered %d Phase-67-73 decipherment nodes (GPU mandatory)", len(list(_p6773_defs())))
@@ -2507,7 +2325,9 @@ except Exception as _p6773_exc:  # noqa: BLE001
 
 # ── Phase-74-80 nodes (grammar test, Levit, place formula, SA agreement, semantic cluster, gap, DEDR) ──
 try:
-    from glossa_lab.experiment_graph_phase74_80 import _phase74_80_node_defs as _p7480_defs  # noqa: PLC0415
+    from glossa_lab.experiment_graph_phase74_80 import (
+        _phase74_80_node_defs as _p7480_defs,  # noqa: PLC0415
+    )
     for _d in _p7480_defs():
         ATOMIC_NODES[_d.id] = _d
     logger.info("Registered %d Phase-74-80 decipherment nodes", len(list(_p7480_defs())))
@@ -2516,7 +2336,9 @@ except Exception as _p7480_exc:  # noqa: BLE001
 
 # ── Phase-81-87 nodes (M293 deep-dive, seal translation, gap sprint, formula lexicon, CISI crossval, phonology, sprint-120) ──
 try:
-    from glossa_lab.experiment_graph_phase81_87 import _phase81_87_node_defs as _p8187_defs  # noqa: PLC0415
+    from glossa_lab.experiment_graph_phase81_87 import (
+        _phase81_87_node_defs as _p8187_defs,  # noqa: PLC0415
+    )
     for _d in _p8187_defs():
         ATOMIC_NODES[_d.id] = _d
     logger.info("Registered %d Phase-81-87 decipherment nodes", len(list(_p8187_defs())))
@@ -2525,7 +2347,9 @@ except Exception as _p8187_exc:  # noqa: BLE001
 
 # ── Phase-88-90 nodes (literature mine, DEDR systematic expansion to 120, scholarly translations) ──
 try:
-    from glossa_lab.experiment_graph_phase88_90 import _phase88_90_node_defs as _p8890_defs  # noqa: PLC0415
+    from glossa_lab.experiment_graph_phase88_90 import (
+        _phase88_90_node_defs as _p8890_defs,  # noqa: PLC0415
+    )
     for _d in _p8890_defs():
         ATOMIC_NODES[_d.id] = _d
     logger.info("Registered %d Phase-88-90 decipherment nodes", len(list(_p8890_defs())))
@@ -2534,7 +2358,9 @@ except Exception as _p8890_exc:  # noqa: BLE001
 
 # ── Phase-91-100 nodes (anchor-120, uncertain reduce, M293 SA, fulltext, retroflex, crosswalk, trigram, grammar, academic, full-corpus) ──
 try:
-    from glossa_lab.experiment_graph_phase91_100 import _phase91_100_node_defs as _p91100_defs  # noqa: PLC0415
+    from glossa_lab.experiment_graph_phase91_100 import (
+        _phase91_100_node_defs as _p91100_defs,  # noqa: PLC0415
+    )
     for _d in _p91100_defs():
         ATOMIC_NODES[_d.id] = _d
     logger.info("Registered %d Phase-91-100 decipherment nodes", len(list(_p91100_defs())))
@@ -2543,7 +2369,9 @@ except Exception as _p91100_exc:  # noqa: BLE001
 
 # ── Phase-101-103 nodes (M293 iconographic, PDF extraction, personal name lexicon) ──
 try:
-    from glossa_lab.experiment_graph_phase101_103 import _phase101_103_node_defs as _p101103_defs  # noqa: PLC0415
+    from glossa_lab.experiment_graph_phase101_103 import (
+        _phase101_103_node_defs as _p101103_defs,  # noqa: PLC0415
+    )
     for _d in _p101103_defs():
         ATOMIC_NODES[_d.id] = _d
     logger.info("Registered %d Phase-101-103 decipherment nodes", len(list(_p101103_defs())))
@@ -2552,7 +2380,9 @@ except Exception as _p101103_exc:  # noqa: BLE001
 
 # ── Phase-104-109 nodes (OCR, name signs, name SA, TB check, phon exhaustion, academic submit) ──
 try:
-    from glossa_lab.experiment_graph_phase104_109 import _phase104_109_node_defs as _p104109_defs  # noqa: PLC0415
+    from glossa_lab.experiment_graph_phase104_109 import (
+        _phase104_109_node_defs as _p104109_defs,  # noqa: PLC0415
+    )
     for _d in _p104109_defs():
         ATOMIC_NODES[_d.id] = _d
     logger.info("Registered %d Phase-104-109 decipherment nodes", len(list(_p104109_defs())))
@@ -2561,7 +2391,9 @@ except Exception as _p104109_exc:  # noqa: BLE001
 
 # ── Phase-110-115 nodes (targeted SA, allographs, grammar infer, M→H upgrade, seal translations, significance) ──
 try:
-    from glossa_lab.experiment_graph_phase110_115 import _phase110_115_node_defs as _p110115_defs  # noqa: PLC0415
+    from glossa_lab.experiment_graph_phase110_115 import (
+        _phase110_115_node_defs as _p110115_defs,  # noqa: PLC0415
+    )
     for _d in _p110115_defs():
         ATOMIC_NODES[_d.id] = _d
     logger.info("Registered %d Phase-110-115 decipherment nodes", len(list(_p110115_defs())))
@@ -2570,7 +2402,9 @@ except Exception as _p110115_exc:  # noqa: BLE001
 
 # ── Phase-116-121 nodes (SA recal, grammar LOW, site semantics, arXiv, LOW→MED, full email) ──
 try:
-    from glossa_lab.experiment_graph_phase116_121 import _phase116_121_node_defs as _p116121_defs  # noqa: PLC0415
+    from glossa_lab.experiment_graph_phase116_121 import (
+        _phase116_121_node_defs as _p116121_defs,  # noqa: PLC0415
+    )
     for _d in _p116121_defs():
         ATOMIC_NODES[_d.id] = _d
     logger.info("Registered %d Phase-116-121 decipherment nodes", len(list(_p116121_defs())))
@@ -2579,7 +2413,9 @@ except Exception as _p116121_exc:  # noqa: BLE001
 
 # ── Phase-122-123 nodes (syllabic SA, Munda/BMAC substrate) ──
 try:
-    from glossa_lab.experiment_graph_phase122_123 import _phase122_123_node_defs as _p122123_defs  # noqa: PLC0415
+    from glossa_lab.experiment_graph_phase122_123 import (
+        _phase122_123_node_defs as _p122123_defs,  # noqa: PLC0415
+    )
     for _d in _p122123_defs():
         ATOMIC_NODES[_d.id] = _d
     logger.info("Registered %d Phase-122-123 decipherment nodes", len(list(_p122123_defs())))
@@ -2588,13 +2424,98 @@ except Exception as _p122123_exc:  # noqa: BLE001
 
 # ── Phase-124-125 nodes (fish polysemy, Arthasastra mining) ──
 try:
-    from glossa_lab.experiment_graph_phase124_125 import _phase124_125_node_defs as _p124125_defs  # noqa: PLC0415
+    from glossa_lab.experiment_graph_phase124_125 import (
+        _phase124_125_node_defs as _p124125_defs,  # noqa: PLC0415
+    )
     for _d in _p124125_defs():
         ATOMIC_NODES[_d.id] = _d
     logger.info("Registered %d Phase-124-125 decipherment nodes", len(list(_p124125_defs())))
 except Exception as _p124125_exc:  # noqa: BLE001
     logger.warning("Phase-124-125 decipherment nodes not registered: %s", _p124125_exc)
 
+
+# ── Phase-134-141 nodes (falsification suite, advancement, extended battery, master scorecard) ──
+try:
+    from glossa_lab.experiment_graph_phase134_141 import (
+        _phase134_141_node_defs as _p134141_defs,  # noqa: PLC0415
+    )
+    for _d in _p134141_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-134-141 falsification nodes", len(_p134141_defs()))
+except Exception as _p134141_exc:  # noqa: BLE001
+    logger.warning("Phase-134-141 falsification nodes not registered: %s", _p134141_exc)
+
+try:
+    from glossa_lab.experiment_graph_phase126 import (
+        _phase126_node_defs as _p126_defs,  # noqa: PLC0415
+    )
+    for _d in _p126_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-126 ICIT nodes", len(_p126_defs()))
+except Exception as _p126_exc:  # noqa: BLE001
+    logger.warning("Phase-126 ICIT nodes not registered: %s", _p126_exc)
+
+try:
+    from glossa_lab.experiment_graph_phase128_133 import (
+        _phase128_133_node_defs as _p128133_defs,  # noqa: PLC0415
+    )
+    for _d in _p128133_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-128-133 nodes", len(_p128133_defs()))
+except Exception as _p128133_exc:  # noqa: BLE001
+    logger.warning("Phase-128-133 nodes not registered: %s", _p128133_exc)
+
+try:
+    from glossa_lab.experiment_graph_phase142_145 import (
+        _phase142_145_node_defs as _p142145_defs,  # noqa: PLC0415
+    )
+    for _d in _p142145_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-142-145 nodes", len(_p142145_defs()))
+except Exception as _p142145_exc:  # noqa: BLE001
+    logger.warning("Phase-142-145 nodes not registered: %s", _p142145_exc)
+
+try:
+    from glossa_lab.experiment_graph_phase146_155 import (
+        _phase146_155_node_defs as _p146155_defs,  # noqa: PLC0415
+    )
+    for _d in _p146155_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-146-155 nodes", len(_p146155_defs()))
+except Exception as _p146155_exc:  # noqa: BLE001
+    logger.warning("Phase-146-155 nodes not registered: %s", _p146155_exc)
+
+try:
+    from glossa_lab.experiment_graph_phase156_165 import (
+        _phase156_165_node_defs as _p156165_defs,  # noqa: PLC0415
+    )
+    for _d in _p156165_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-156-165 nodes", len(_p156165_defs()))
+except Exception as _p156165_exc:  # noqa: BLE001
+    logger.warning("Phase-156-165 nodes not registered: %s", _p156165_exc)
+
+# ── Phase-166-168 nodes (sibilant validation, Meluhhan expansion, blocker SA) — FINAL PHASE GROUP
+try:
+    from glossa_lab.experiment_graph_phase166_168 import (
+        _phase166_168_node_defs as _p166168_defs,  # noqa: PLC0415
+    )
+    for _d in _p166168_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-166-168 nodes (final pre-ICIT phase group)", len(_p166168_defs()))
+except Exception as _p166168_exc:  # noqa: BLE001
+    logger.warning("Phase-166-168 nodes not registered: %s", _p166168_exc)
+
+# ── Phase-169-170 nodes (master synthesis + grammar variance — FINAL PHASES)
+try:
+    from glossa_lab.experiment_graph_phase169_170 import (
+        _phase169_170_node_defs as _p169170_defs,  # noqa: PLC0415
+    )
+    for _d in _p169170_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-169-170 nodes (computational frontier)", len(_p169170_defs()))
+except Exception as _p169170_exc:  # noqa: BLE001
+    logger.warning("Phase-169-170 nodes not registered: %s", _p169170_exc)
 
 # ── Graph execution
 
@@ -2734,7 +2655,8 @@ def get_graph_experiment(exp_id: str) -> dict[str, Any] | None:
 
 
 def save_graph_experiment(data: dict[str, Any]) -> dict[str, Any]:
-    import re, time  # noqa: PLC0415
+    import re
+    import time  # noqa: PLC0415
     eid = data.get("id") or (
         re.sub(r"[^a-z0-9_]","_",(data.get("name") or "exp").lower())[:24]
         + f"_{int(time.time())%100000}"

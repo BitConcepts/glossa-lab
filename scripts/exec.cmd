@@ -3,9 +3,8 @@ REM glossa-lab — Command Execution Shim (Windows)
 REM Wraps external commands with PID tracking, timeout enforcement, and abort support.
 REM Usage: scripts\exec.cmd "<command>" [timeout_seconds]
 REM
-REM PID files: .specsmith\pids\<pid>.json (for governance-tool ps / governance-tool abort)
-REM Logs:      .specsmith\logs\exec_<timestamp>.stdout/.stderr
-REM Prefer:    governance-tool exec "<command>" --timeout <N>  (Python-based, full tracking)
+REM PID files: logs\pids\<pid>.json
+REM Logs:      logs\exec_<timestamp>.stdout/.stderr
 
 setlocal enabledelayedexpansion
 
@@ -14,8 +13,8 @@ set "TIMEOUT_SEC=%~2"
 if "%TIMEOUT_SEC%"=="" set "TIMEOUT_SEC=120"
 
 set "PROJECT_ROOT=%~dp0.."
-set "PID_DIR=%PROJECT_ROOT%\.specsmith\pids"
-set "LOG_DIR=%PROJECT_ROOT%\.specsmith\logs"
+set "PID_DIR=%PROJECT_ROOT%\logs\pids"
+set "LOG_DIR=%PROJECT_ROOT%\logs\exec"
 if not exist "%PID_DIR%" mkdir "%PID_DIR%"
 if not exist "%LOG_DIR%" mkdir "%LOG_DIR%"
 

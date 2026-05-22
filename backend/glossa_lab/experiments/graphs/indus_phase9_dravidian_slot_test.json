@@ -9,7 +9,9 @@
       "data": {
         "atomicId": "BuiltinCorpus",
         "label": "CISI Corpus",
-        "params": {"corpus": "indus_cisi"}
+        "params": {
+          "corpus": "indus_cisi"
+        }
       }
     },
     {
@@ -18,7 +20,9 @@
       "data": {
         "atomicId": "BuiltinLM",
         "label": "Dravidian Reference LM",
-        "params": {"language": "dravidian"}
+        "params": {
+          "language": "dravidian"
+        }
       }
     },
     {
@@ -36,7 +40,10 @@
       "data": {
         "atomicId": "StructuralTemplateAnalyzer",
         "label": "Find Recurrent Templates",
-        "params": {"min_count": 3, "max_template_length": 5}
+        "params": {
+          "min_count": 3,
+          "max_template_length": 5
+        }
       }
     },
     {
@@ -45,7 +52,9 @@
       "data": {
         "atomicId": "PositionalProfiler",
         "label": "Sign Positional Profiles",
-        "params": {"min_count": 3}
+        "params": {
+          "min_count": 3
+        }
       }
     },
     {
@@ -54,7 +63,10 @@
       "data": {
         "atomicId": "NgramCounter",
         "label": "Bigram / Trigram Stats",
-        "params": {"n": 2, "top_n": 100}
+        "params": {
+          "n": 2,
+          "top_n": 100
+        }
       }
     },
     {
@@ -72,20 +84,83 @@
       "data": {
         "atomicId": "JSONExport",
         "label": "Export Slot Test",
-        "params": {"filename": "phase9_dravidian_slot_test.json"}
+        "params": {
+          "filename": "phase9_dravidian_slot_test.json"
+        }
       }
     }
   ],
   "edges": [
-    {"id": "e1", "source": "n1", "sourcePort": "sequences", "target": "n3", "targetPort": "sequences"},
-    {"id": "e2", "source": "n1", "sourcePort": "sequences", "target": "n5", "targetPort": "sequences"},
-    {"id": "e3", "source": "n1", "sourcePort": "sequences", "target": "n6", "targetPort": "sequences"},
-    {"id": "e4", "source": "n3", "sourcePort": "cluster_sequences", "target": "n4", "targetPort": "cluster_sequences"},
-    {"id": "e5", "source": "n4", "sourcePort": "recurrent_templates", "target": "n7", "targetPort": "a"},
-    {"id": "e6", "source": "n4", "sourcePort": "slot_occupancy", "target": "n7", "targetPort": "b"},
-    {"id": "e7", "source": "n5", "sourcePort": "class_summary", "target": "n7", "targetPort": "c"},
-    {"id": "e8", "source": "n6", "sourcePort": "top_10", "target": "n7", "targetPort": "d"},
-    {"id": "e9", "source": "n2", "sourcePort": "n_tokens", "target": "n7", "targetPort": "e"},
-    {"id": "e10", "source": "n7", "sourcePort": "json", "target": "n8", "targetPort": "data"}
-  ]
+    {
+      "id": "e1",
+      "source": "n1",
+      "sourcePort": "sequences",
+      "target": "n3",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "n1",
+      "sourcePort": "sequences",
+      "target": "n5",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e3",
+      "source": "n1",
+      "sourcePort": "sequences",
+      "target": "n6",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e4",
+      "source": "n3",
+      "sourcePort": "cluster_sequences",
+      "target": "n4",
+      "targetPort": "cluster_sequences"
+    },
+    {
+      "id": "e5",
+      "source": "n4",
+      "sourcePort": "recurrent_templates",
+      "target": "n7",
+      "targetPort": "a"
+    },
+    {
+      "id": "e6",
+      "source": "n4",
+      "sourcePort": "slot_occupancy",
+      "target": "n7",
+      "targetPort": "b"
+    },
+    {
+      "id": "e7",
+      "source": "n5",
+      "sourcePort": "class_summary",
+      "target": "n7",
+      "targetPort": "c"
+    },
+    {
+      "id": "e8",
+      "source": "n6",
+      "sourcePort": "top_10",
+      "target": "n7",
+      "targetPort": "d"
+    },
+    {
+      "id": "e9",
+      "source": "n2",
+      "sourcePort": "n_tokens",
+      "target": "n7",
+      "targetPort": "e"
+    },
+    {
+      "id": "e10",
+      "source": "n7",
+      "sourcePort": "json",
+      "target": "n8",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

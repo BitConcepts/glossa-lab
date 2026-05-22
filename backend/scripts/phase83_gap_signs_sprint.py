@@ -14,7 +14,10 @@ For each sign:
 CPU only. Output: reports/phase83_gap_signs_sprint.json
 """
 from __future__ import annotations
-import csv, json, re
+
+import csv
+import json
+import re
 from collections import Counter
 from pathlib import Path
 
@@ -223,12 +226,12 @@ def main():
     if promoted_to_medium:
         ANCHORS.write_text(json.dumps(anchors_data, indent=2, ensure_ascii=False), "utf-8")
         print(f"\n  ** {len(promoted_to_medium)} signs promoted to MEDIUM: {promoted_to_medium} **")
-        print(f"  INDUS_FINAL_ANCHORS.json updated")
+        print("  INDUS_FINAL_ANCHORS.json updated")
 
     n_new_high_med = len(promoted_to_medium)
     new_total = len(confirmed) + n_new_high_med
 
-    print(f"\n=== Phase-83 Results ===")
+    print("\n=== Phase-83 Results ===")
     print(f"  Signs analysed:     {len(proposals)}")
     print(f"  Promoted to MEDIUM: {n_new_high_med}")
     print(f"  New total HIGH+MEDIUM: {new_total}")

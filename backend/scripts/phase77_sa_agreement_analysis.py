@@ -12,8 +12,9 @@ GPU: uses torch for statistical computation.
 Output: reports/phase77_sa_agreement_analysis.json
 """
 from __future__ import annotations
-import json, sys
-from collections import Counter, defaultdict
+
+import json
+import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parents[1]))
@@ -134,27 +135,27 @@ def main():
     # Sort by priority (consensus * frequency)
     high_trust.sort(key=lambda x: -x["priority"])
 
-    print(f"\n  High-trust SA proposals (consensus>=60%, PD-valid, freq>=10):")
+    print("\n  High-trust SA proposals (consensus>=60%, PD-valid, freq>=10):")
     for p in high_trust[:15]:
         print(f"  {p['sign']:6s} sa={p['sa_reading']:8s} consensus={p['consensus_pct']:.0%} freq={p['n_corpus']}")
 
     # Disagreement pattern
-    print(f"\n  Signs where SA consistently disagrees with confirmed:")
+    print("\n  Signs where SA consistently disagrees with confirmed:")
     disagree_signs.sort(key=lambda x: -(x["n_corpus"] * x["sa_consensus_pct"]))
     for d in disagree_signs[:8]:
         print(f"  {d['sign']:6s} sa={d['sa_reading'][:8]:8s} vs confirmed={d['confirmed_reading'][:8]:8s} "
               f"(consensus={d['sa_consensus_pct']:.0%})")
 
-    print(f"\n=== Phase-77 Results ===")
+    print("\n=== Phase-77 Results ===")
     print(f"  Overall SA agreement:   {agree_rate:.1f}%")
     print(f"  Weighted agreement:     {weighted_agree_rate:.1f}%")
     print(f"  High-trust proposals:   {len(high_trust)}")
     print(f"  Disagree signs:         {len(disagree_signs)}")
     print(f"\n  Key insight: SA agrees with confirmed readings {agree_rate:.0f}% of the time.")
-    print(f"  Signs where SA disagrees may indicate:")
-    print(f"    - Sign is multi-syllabic (like M267 — SA assigns single syllable)")
-    print(f"    - Sign has a reading that's rare in the syllabic LM")
-    print(f"    - Classifier signs (appear initial, SA doesn't know they're classifiers)")
+    print("  Signs where SA disagrees may indicate:")
+    print("    - Sign is multi-syllabic (like M267 — SA assigns single syllable)")
+    print("    - Sign has a reading that's rare in the syllabic LM")
+    print("    - Classifier signs (appear initial, SA doesn't know they're classifiers)")
 
     result = {
         "_citation": {"primary": ["A.1"]},

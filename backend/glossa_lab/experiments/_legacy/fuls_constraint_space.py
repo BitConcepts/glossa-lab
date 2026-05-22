@@ -53,11 +53,12 @@ for _p in (_BACKEND, os.path.join(_BACKEND, "tests")):
         sys.path.insert(0, _p)
 
 import logging
+
 _LOG = logging.getLogger(__name__)
 
 # GPU / parallel-CPU per AGENTS.md H10
 try:
-    import cupy as _xp          # type: ignore
+    import cupy as _xp  # type: ignore
     _GPU = _xp.cuda.is_available()
 except ImportError:
     _GPU = False
@@ -292,7 +293,7 @@ def run_exp_a(words, all_signs, sign_freqs, lm, verbose=True):
 def run_exp_b(words, all_signs, sign_freqs, lm, post_0anchor: dict, verbose=True):
     def _pr(*a): verbose and print(*a)
 
-    _pr(f"\n  EXP B — Anchor Amplification (0→1→2→3→5 anchors)...")
+    _pr("\n  EXP B — Anchor Amplification (0→1→2→3→5 anchors)...")
     from glossa_lab.data.old_hebrew import HEBREW_SIGNS
 
     N_FULL     = 22

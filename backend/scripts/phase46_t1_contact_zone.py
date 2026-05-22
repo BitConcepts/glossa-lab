@@ -21,7 +21,9 @@ GPU: torch used for batched string search over tablet ATF corpus.
 Output: reports/phase46_t1_contact_zone.json
 """
 from __future__ import annotations
-import json, math, re
+
+import json
+import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -348,7 +350,7 @@ def main() -> None:
         verdict = "LIMITED_CONTACT_ZONE_EVIDENCE"
         note = "No direct sign-level match to HIGH anchors in contact zone data."
 
-    print(f"\n=== Contact Zone Summary ===")
+    print("\n=== Contact Zone Summary ===")
     print(f"Verdict: {verdict}")
     print(f"Note: {note}")
     print(f"Ur III Meluhha mentions: {tablets_result['n_tablets']} tablets ({ur3_pct:.0%} Ur III)")

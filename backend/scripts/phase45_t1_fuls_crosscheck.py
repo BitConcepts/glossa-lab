@@ -16,7 +16,9 @@ This script:
 Output: reports/phase45_t1_fuls_crosscheck.json
 """
 from __future__ import annotations
-import csv, json, math
+
+import csv
+import json
 from pathlib import Path
 
 REPO   = Path(__file__).parents[2]

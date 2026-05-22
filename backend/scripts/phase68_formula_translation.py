@@ -11,7 +11,8 @@ No GPU required — pure linguistic analysis.
 Output: reports/phase68_formula_translation.json
 """
 from __future__ import annotations
-import json, sys
+
+import json
 from collections import Counter
 from pathlib import Path
 
@@ -220,9 +221,9 @@ def main():
     # Sort by formula type then frequency
     translations.sort(key=lambda x: (x["formula_type"], -x["count"]))
 
-    print(f"\n=== Phase-68 Results ===")
+    print("\n=== Phase-68 Results ===")
     print(f"  Formulas glossed:     {len(translations)}")
-    print(f"  Formula type breakdown:")
+    print("  Formula type breakdown:")
     for ftype, count in formula_type_counts.most_common():
         print(f"    {ftype:25s}: {count}")
     print(f"\n  DEDR-cited morphemes: {sum(1 for t in translations for s in t['slot_table'] if s['dedr'])}")

@@ -17,8 +17,10 @@ Promotes to VERIFIED if p < 0.05.
 CPU only. Output: reports/phase98_grammar_expansion.json
 """
 from __future__ import annotations
-import csv, json, random
-from collections import Counter, defaultdict
+
+import csv
+import json
+import random
 from pathlib import Path
 
 REPO    = Path(__file__).parents[2]
@@ -158,7 +160,7 @@ def main():
                 f"{r['description']} (rate={r['observed_pct']:.1f}%, p={r['p_value']:.4f})"
             )
 
-    print(f"\n=== Phase-98 Results ===")
+    print("\n=== Phase-98 Results ===")
     print(f"  Patterns tested:    {len(results)}")
     print(f"  Patterns verified:  {n_verified}")
     grammar_pct = 75 + n_verified * 3  # each new pattern adds ~3% grammar understanding

@@ -24,13 +24,34 @@
     "Indus Tower",
     "tourism brochure"
   ],
-  "languages": ["en"],
+  "languages": [
+    "en"
+  ],
   "source_overrides": {
-    "newsapi": {"page_size": 50, "sort_by": "publishedAt", "search_in": "title,description"},
-    "brave":   {"count": 20, "search_endpoint": "news"},
-    "serpapi": {"engine": "google_news", "num": 20},
-    "openalex":{"per_page": 25},
-    "arxiv":   {"max_results": 10},
-    "crossref":{"rows": 25}
+    "newsapi": {
+      "page_size": 50,
+      "sort_by": "publishedAt",
+      "search_in": "title,description"
+    },
+    "brave": {
+      "count": 20,
+      "search_endpoint": "news"
+    },
+    "serpapi": {
+      "engine": "google_news",
+      "num": 20
+    },
+    "openalex": {
+      "per_page": 25
+    },
+    "arxiv": {
+      "max_results": 10
+    },
+    "crossref": {
+      "rows": 25
+    },
+    "patentsview": {
+      "enabled": false
+    }
   }
 }

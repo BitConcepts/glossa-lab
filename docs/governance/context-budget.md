@@ -11,12 +11,13 @@ On session start, load only:
 - Last ~300 lines of `LEDGER.md`
 
 Load on demand:
-- `docs/governance/WORKFLOW.md` — when preparing proposals or ledger entries
+- `docs/governance/SESSION-PROTOCOL.md` — when preparing proposals or ledger entries
+- `docs/governance/LIFECYCLE.md` — when checking phase readiness or advancing
 - `docs/governance/ROLES.md` — when role boundaries are relevant
 - `docs/governance/VERIFICATION.md` — when testing or accepting work
 - `docs/governance/DRIFT-METRICS.md` — when running `audit`
 - `docs/REQUIREMENTS.md` — first ~200 lines, expand by section
-- `docs/TEST_SPEC.md` — first ~200 lines, expand by section
+- `docs/TESTS.md` — first ~200 lines, expand by section
 - `docs/ARCHITECTURE.md` — first ~40 lines, expand by section
 
 ## During a session
@@ -51,11 +52,6 @@ If a cheaper check fails, fix that before running more expensive checks.
 
 ## Credit tracking
 
-This project tracks AI credit spend automatically. At the end of each session:
-
-1. Record usage: `governance-tool credits record --model <model> --provider <provider> --tokens-in <N> --tokens-out <N> --task "<description>"`
-2. Check budget: `governance-tool credits summary`
-3. If budget alerts appear, review with: `governance-tool credits analyze`
-
-Budget configuration: `governance-tool credits budget --cap <USD> --alert-pct 80`
-Credit data stored in `.specsmith/credits.json` (gitignored).
+Track AI credit spend manually in your session ledger entry. At the end of each session,
+record the approximate model, provider, and task description in the LEDGER.md entry.
+Budget thresholds are configured in the local governance state (gitignored).

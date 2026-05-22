@@ -15,8 +15,10 @@ Validation checks:
 CPU only. Output: reports/phase85_cisi_crossval.json
 """
 from __future__ import annotations
-import json, re
-from collections import Counter, defaultdict
+
+import json
+import re
+from collections import Counter
 from pathlib import Path
 
 REPO    = Path(__file__).parents[2]
@@ -191,19 +193,19 @@ def main():
     cisi_unique = [(p, c) for p, c in cisi_seq_patterns.most_common(20)
                    if c >= 2]
 
-    print(f"\n  Top CISI repeated patterns (n>=2):")
+    print("\n  Top CISI repeated patterns (n>=2):")
     for pat, cnt in cisi_unique[:5]:
         print(f"    {' '.join(pat[:5])} ... (count={cnt})")
 
     # CISI coverage of our anchors
     cisi_anchor_coverage = n_tested / len(confirmed) * 100
 
-    print(f"\n=== Phase-85 Results ===")
+    print("\n=== Phase-85 Results ===")
     print(f"  Anchor signs found in CISI: {n_tested}/{len(confirmed)} ({cisi_anchor_coverage:.1f}%)")
     print(f"  Positional agreement: {agreement_pct:.1f}%")
     print(f"  CISI unique patterns (n>=2): {len(cisi_unique)}")
     print(f"  Interpretation: Cross-corpus positional agreement at {agreement_pct:.0f}%")
-    print(f"  confirms anchor sign roles are CORPUS-INDEPENDENT — not Holdat-specific artifact")
+    print("  confirms anchor sign roles are CORPUS-INDEPENDENT — not Holdat-specific artifact")
 
     result = {
         "_citation": {"primary": ["A.1"]},

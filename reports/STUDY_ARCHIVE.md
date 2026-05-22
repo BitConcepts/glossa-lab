@@ -254,7 +254,7 @@ backend/
 If you use Glossa Lab or these study results, please cite:
 
 ```
-Layer1Labs Silicon, Inc. (2026). Glossa Lab: A Computational Toolkit for Ancient Script Analysis.
+BitConcepts LLC (2026). Glossa Lab: A Computational Toolkit for Ancient Script Analysis.
 Decipherment Validation, Linear A Phonological Analysis, and Anti-Circularity Experiments.
 Version 1.0. Available at: github.com/BitConcepts/glossa-lab
 ```
@@ -267,7 +267,7 @@ And acknowledge the data sources listed above, particularly DĀMOS and Younger (
 
 1. The Hurrian, Luwian, and Semitic language models are minimal character-level corpora. The anti-circularity results should be re-run with richer models before final publication claims.
 
-2. The Kandles system ([REDACTED-PATENT-PUB]) uses a phoneme-to-colour mapping calibrated for Greek-family phonology. Its sensitivity to non-IE phonological contrasts has not been validated.
+2. The Kandles system () uses a phoneme-to-colour mapping calibrated for Greek-family phonology. Its sensitivity to non-IE phonological contrasts has not been validated.
 
 3. The Indus Script corpus is a statistical model, not the actual Mahadevan M77 sign inventory. Results should be reconfirmed on the real corpus when available (ICIT database, Dr. Andreas Fuls, TU Berlin).
 
@@ -280,7 +280,7 @@ And acknowledge the data sources listed above, particularly DĀMOS and Younger (
 ## Contact
 
 For questions about data access, methodology, or collaboration:
-**Glossa Lab Research Programme, Layer1Labs Silicon, Inc.**
+**Glossa Lab Research Programme, BitConcepts LLC**
 
 For Indus Script corpus access (ICIT):
 **Dr. Andreas Fuls, Technische Universität Berlin**

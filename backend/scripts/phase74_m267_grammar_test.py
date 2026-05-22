@@ -19,8 +19,12 @@ CPU only. Fast.
 Output: reports/phase74_m267_grammar_test.json
 """
 from __future__ import annotations
-import csv, json, math, random
-from collections import Counter, defaultdict
+
+import csv
+import json
+import math
+import random
+from collections import Counter
 from pathlib import Path
 
 REPO    = Path(__file__).parents[2]
@@ -181,7 +185,7 @@ def main():
             f"Distribution is not strongly constrained. Remain UNCERTAIN."
         )
 
-    print(f"\n=== Phase-74 Results ===")
+    print("\n=== Phase-74 Results ===")
     print(f"  Verdict:  {verdict}")
     print(f"  p-value:  {p_value:.4f}")
     print(f"  z-score:  {z_score:.2f}")
@@ -194,7 +198,7 @@ def main():
         anchors_data["anchors"]["M267"]["reading"]    = "iN/in (genitive 'of')"
         anchors_data["anchors"]["M267"]["source"]     = "Phase-74 grammar constraint test (p<0.05) + Phase-64 positional analysis"
         ANCHORS.write_text(json.dumps(anchors_data, indent=2, ensure_ascii=False), "utf-8")
-        print(f"\n  ANCHORS.json updated: M267 promoted UNCERTAIN -> MEDIUM")
+        print("\n  ANCHORS.json updated: M267 promoted UNCERTAIN -> MEDIUM")
 
     result = {
         "_citation": {"primary": ["A.1"]},

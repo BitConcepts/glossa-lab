@@ -11,7 +11,10 @@ contrasts.
 CPU only. Output: reports/phase95_retroflex_expansion.json
 """
 from __future__ import annotations
-import csv, json, re
+
+import csv
+import json
+import re
 from collections import Counter
 from pathlib import Path
 
@@ -139,7 +142,7 @@ def main():
     print(f"\n  New retroflex-containing anchors: {len([p for p in promoted if p['has_retroflex']])}")
     print(f"  Retroflex phonemes now attested: {new_retro}")
 
-    print(f"\n=== Phase-95 Results ===")
+    print("\n=== Phase-95 Results ===")
     print(f"  Promoted: {len(promoted)} new MEDIUM anchors")
     print(f"  Total HIGH+MEDIUM: {total_hm}")
     for p in promoted:

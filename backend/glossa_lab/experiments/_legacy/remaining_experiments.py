@@ -5,9 +5,13 @@ Usage:
     python -m glossa_lab.experiments.remaining_experiments
 """
 from __future__ import annotations
-import math, os, sys, random, time
+
+import math
+import os
+import random
+import sys
+import time
 from collections import Counter, defaultdict
-from typing import Any
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
 _BACK = os.path.dirname(os.path.dirname(_HERE))
@@ -20,9 +24,10 @@ sys.path.insert(0, _BACK)
 
 def exp_tier3_classified(verbose=True):
     """Sumerian with logogram-exclusion (same classification method as Indus)."""
-    from glossa_lab.data.sumerian_ur3 import get_corpus_symbols as sym, get_corpus_inscriptions as ins
-    from glossa_lab.pipelines.decipher   import LanguageModel, decipher, score_accuracy
+    from glossa_lab.data.sumerian_ur3 import get_corpus_inscriptions as ins
+    from glossa_lab.data.sumerian_ur3 import get_corpus_symbols as sym
     from glossa_lab.pipelines.beam_decipher import beam_decipher
+    from glossa_lab.pipelines.decipher import LanguageModel, score_accuracy
 
     def _pr(*a,**k):
         if verbose: print(*a,**k)
@@ -54,7 +59,7 @@ def exp_tier3_classified(verbose=True):
         else:          sign_classes[sign]="MEDIAL"
 
     by_type = Counter(sign_classes.values())
-    _pr(f"\n  Sumerian sign classification:")
+    _pr("\n  Sumerian sign classification:")
     for t in ("LOGOGRAM","INITIAL","PHONOGRAM","MEDIAL","RARE"):
         signs = [s for s,c in sign_classes.items() if c==t]
         _pr(f"    {t:10}: {len(signs):3}  (top5: {[s for s,_ in freq.most_common() if s in signs][:5]})")
@@ -94,8 +99,8 @@ def exp_tier3_classified(verbose=True):
     _pr(f"  Beam w=500: {acc2['correct']}/{acc2['total']} = {acc2['accuracy']*100:.1f}%  [{time.time()-t0:.1f}s]")
 
     best = max(acc["correct"], acc2["correct"])
-    _pr(f"\n  Tier 3 CLASSIFIED SUMMARY:")
-    _pr(f"    Unclassified (107 signs): 20/107 = 18.7%")
+    _pr("\n  Tier 3 CLASSIFIED SUMMARY:")
+    _pr("    Unclassified (107 signs): 20/107 = 18.7%")
     _pr(f"    Classified subset {len(test_signs)} signs, w=200: {acc['correct']}/{acc['total']} = {acc['accuracy']*100:.1f}%")
     _pr(f"    Classified subset {len(test_signs)} signs, w=500: {acc2['correct']}/{acc2['total']} = {acc2['accuracy']*100:.1f}%")
     _pr(f"    Best:  {best}/{acc['total']} = {best/acc['total']*100:.1f}%")
@@ -110,9 +115,14 @@ def exp_tier3_classified(verbose=True):
 
 def exp_tier3_oracle(verbose=True):
     """Oracle: does the Sumerian LM score the correct mapping higher than beam found?"""
-    from glossa_lab.data.sumerian_ur3 import get_corpus_symbols as sym, get_corpus_inscriptions as ins
-    from glossa_lab.pipelines.decipher import LanguageModel, decipher, score_accuracy, _score_mapping
+    from glossa_lab.data.sumerian_ur3 import get_corpus_inscriptions as ins
+    from glossa_lab.data.sumerian_ur3 import get_corpus_symbols as sym
     from glossa_lab.pipelines.beam_decipher import beam_decipher
+    from glossa_lab.pipelines.decipher import (
+        LanguageModel,
+        _score_mapping,
+        score_accuracy,
+    )
 
     def _pr(*a,**k):
         if verbose: print(*a,**k)
@@ -175,15 +185,18 @@ def exp_tier3_oracle(verbose=True):
 
 def exp_tier5_phonogram_only(verbose=True):
     """Re-run Tier 5 hypothesis test on PHONOGRAM signs only (not MEDIAL)."""
-    from glossa_lab.data.dravidian  import get_corpus_symbols as d
-    from glossa_lab.data.sanskrit   import get_corpus_symbols as sk
-    from glossa_lab.data.sumerian_ur3 import get_corpus_symbols as su, get_corpus_inscriptions as su_ins
-    from glossa_lab.data.old_hebrew  import get_corpus_symbols as heb
-    from glossa_lab.data.indus_public_corpus import get_corpus_symbols as ind, get_corpus_inscriptions as ind_ins
-    from glossa_lab.pipelines.decipher import LanguageModel, _score_mapping
-    from glossa_lab.pipelines.beam_decipher import beam_decipher
-    from glossa_lab.experiments.tier5_indus_decipherment import classify_indus_signs
     from itertools import cycle
+
+    from glossa_lab.data.dravidian import get_corpus_symbols as d
+    from glossa_lab.data.indus_public_corpus import get_corpus_inscriptions as ind_ins
+    from glossa_lab.data.indus_public_corpus import get_corpus_symbols as ind
+    from glossa_lab.data.old_hebrew import get_corpus_symbols as heb
+    from glossa_lab.data.sanskrit import get_corpus_symbols as sk
+    from glossa_lab.data.sumerian_ur3 import get_corpus_inscriptions as su_ins
+    from glossa_lab.data.sumerian_ur3 import get_corpus_symbols as su
+    from glossa_lab.experiments.tier5_indus_decipherment import classify_indus_signs
+    from glossa_lab.pipelines.beam_decipher import beam_decipher
+    from glossa_lab.pipelines.decipher import LanguageModel, _score_mapping
 
     def _pr(*a,**k):
         if verbose: print(*a,**k)
@@ -226,7 +239,7 @@ def exp_tier5_phonogram_only(verbose=True):
         _pr(f"  {label:<22} Z={z:+6.2f}  best={bs:.0f}  rand_mean={mr:.0f}")
 
     ranked=sorted(results,key=lambda x:-x["z"])
-    _pr(f"\n  PHONOGRAM-ONLY SUMMARY:")
+    _pr("\n  PHONOGRAM-ONLY SUMMARY:")
     _pr(f"    Winner: {ranked[0]['label']}  Z={ranked[0]['z']:.2f}  (margin {ranked[0]['z']-ranked[1]['z']:.2f} over {ranked[1]['label']})")
     _pr(f"    Control: {ranked[-1]['label']}  Z={ranked[-1]['z']:.2f}")
     return {"phonogram_signs":sorted(phonogram_signs),"results":ranked}
@@ -240,8 +253,13 @@ def exp_ventris_threshold_sweep(verbose=True):
     """Find the cosine similarity threshold that maximises Ventris F1."""
     import sys; sys.path.insert(0, os.path.join(_BACK, "tests"))
     from pathlib import Path
+
+    from glossa_lab.experiments.ventris_validation import (
+        _score_clusters,
+        _sign_to_col,
+        _sign_to_row,
+    )
     from glossa_lab.pipelines.logosyllabic import classify_signs, compute_affinity
-    from glossa_lab.experiments.ventris_validation import _sign_to_row, _sign_to_col, _score_clusters
 
     def _pr(*a,**k):
         if verbose: print(*a,**k)
@@ -279,7 +297,7 @@ def exp_ventris_threshold_sweep(verbose=True):
 
     _pr(f"\n  BEST: threshold={best_thresh}  avg_F1={best_f1:.4f}  "
         f"row_F1={best_row:.4f}  col_F1={best_col:.4f}")
-    _pr(f"  Previous default (0.15): see above row")
+    _pr("  Previous default (0.15): see above row")
     return {"best_thresh":best_thresh,"best_f1":best_f1,"best_row":best_row,"best_col":best_col,"sweep":results}
 
 

@@ -17,13 +17,6 @@ domain dataclasses, ID hashing, and convenience wrappers that operate against
 the global ``Database`` singleton via ``get_db()``.
 """
 
-from glossa_lab.discovery.store import (
-    DiscoveryItem,
-    RawItem,
-    canonical_url,
-    make_item_id,
-)
-
 # Phase D — mining + LLM client. Re-exported for ergonomic call sites:
 #     from glossa_lab.discovery import LLMClient, mine_pending
 from glossa_lab.discovery.llm import LLMClient, LLMError
@@ -34,6 +27,12 @@ from glossa_lab.discovery.mine import (
     link_entities,
     mine_item,
     mine_pending,
+)
+from glossa_lab.discovery.store import (
+    DiscoveryItem,
+    RawItem,
+    canonical_url,
+    make_item_id,
 )
 
 __all__ = [

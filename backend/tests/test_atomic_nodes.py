@@ -41,7 +41,6 @@ Decipherment:
 """
 from __future__ import annotations
 
-import pytest
 from glossa_lab.experiment_graph import ATOMIC_NODES
 
 

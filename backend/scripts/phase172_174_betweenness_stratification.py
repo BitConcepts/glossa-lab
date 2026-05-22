@@ -54,22 +54,54 @@ def hm_set(anchors: dict) -> set[str]:
 
 # ── Load Holdat corpus ────────────────────────────────────────────────────────
 
+# Path to the Holdat LLC Indus Corpus V3 CSV file
+_HOLDAT_CSV = (
+    REPO_ROOT / "corpora" / "downloads" / "external_repos"
+    / "holdatllc_indus" / "indus_corpus 2.csv"
+)
+
+
 def load_holdat() -> list[dict]:
-    """Load Holdat LLC Indus Corpus v3 (integer M-numbers → 'Mxxx' strings)."""
-    import sys
-    sys.path.insert(0, str(REPO_ROOT / "backend"))
-    from glossa_lab.data.indus_corpus_v3 import load_corpus
-    raw = load_corpus()  # list of list[int], e.g. [[67, 72, 8, 342], ...]
+    """Load Holdat LLC Indus Corpus V3 from the actual CSV file.
+
+    Groups rows by seal form, sorts signs by position within each seal,
+    and returns one unified sequence per seal.  This avoids the sideline-
+    splitting artefact present in the RMRL Firestore corpus (indus_corpus_v3)
+    which caused M267 to appear 81 % INITIAL instead of the correct 81 % MEDIAL.
+
+    Each returned dict has:
+      - ``signs``: list of 'Mxxx' sign labels in position order
+      - ``site``:  site name from the CSV (e.g. 'Harappa')
+    """
+    try:
+        import pandas as pd
+        df = pd.read_csv(_HOLDAT_CSV)
+    except Exception as e:
+        raise FileNotFoundError(
+            f"Holdat LLC CSV not found at {_HOLDAT_CSV}. "
+            "Ensure the corpus file is present before running this script."
+        ) from e
+
+    # Build per-seal position→sign mapping
+    seals: dict[str, dict] = {}
+    for _, row in df.iterrows():
+        form = str(row["form"])
+        pos  = int(row["position"])
+        sign = str(row["letters"])
+        site = str(row.get("site", "unknown"))
+        if form not in seals:
+            seals[form] = {"pos_map": {}, "site": site}
+        seals[form]["pos_map"][pos] = sign
 
     inscs = []
-    for seq in raw:
-        if isinstance(seq, (list, tuple)):
-            # Integer → 'Mxxx' (zero-padded to 3 digits)
-            signs = [f"M{int(s):03d}" for s in seq if s]
-            if signs:
-                inscs.append({"signs": signs, "site": "unknown"})
-    print(f"  Holdat: {len(inscs)} inscriptions, "
-          f"sample[0]: {inscs[0]['signs'][:6] if inscs else []}")
+    for form, data in seals.items():
+        pos_map = data["pos_map"]
+        signs = [pos_map[p] for p in sorted(pos_map)]
+        if signs:
+            inscs.append({"signs": signs, "site": data["site"]})
+
+    print(f"  Holdat LLC CSV: {len(inscs)} seals loaded from {_HOLDAT_CSV.name}")
+    print(f"  Sample seal[0]: {inscs[0]['signs'][:8] if inscs else []}")
     return inscs
 
 
@@ -188,9 +220,18 @@ def run_phase172(anchors, hm, inscriptions) -> dict:
 
     return {
         "phase": 172,
-        "date": "2026-05-21",
-        "description": "Full H+M×H+M betweenness centrality on M77 corpus (1,669 inscriptions)",
-        "corpus": {"n_inscriptions": len(inscriptions), "source": "Mahadevan 1977"},
+        "date": "2026-05-22",
+        "description": "Full H+M×H+M betweenness centrality on Holdat LLC CSV (1,670 unified seal sequences)",
+        "corpus": {
+            "n_inscriptions": len(inscriptions),
+            "source": "Holdat LLC Indus Corpus V3 (Miller 2025) — CSV via position column",
+            "note": (
+                "Corpus loader corrected 2026-05-22: now uses Holdat LLC CSV with unified "
+                "per-seal sequences (sorted by position column). Prior runs used the RMRL "
+                "Firestore corpus (indus_corpus_v3.load_corpus) which split inscriptions "
+                "by sideline, causing M267 to appear 81 % INITIAL instead of 81 % MEDIAL."
+            ),
+        },
         "graph": {"n_nodes": G.number_of_nodes(), "n_edges": G.number_of_edges(),
                   "pmi_threshold": 0.0, "min_seals": 2},
         "all_hm_bigrams": all_bigrams[:100],          # top-100 for report

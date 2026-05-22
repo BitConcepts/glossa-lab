@@ -6,47 +6,47 @@
   "caveat": "Only 5 sites available in holdatllc_core_symbol_site_distribution.csv. Rakhigarhi (most peripheral, KL=0.509) is absent. Full test requires ICIT corpus with all-site metadata.",
   "site_stats": {
     "Mohenjo-daro": {
-      "grammar_tokens": 0,
-      "name_tokens": 46,
-      "total_hm_tokens": 46,
-      "grammar_ratio": 0.0,
-      "name_ratio": 1.0,
+      "grammar_tokens": 1678,
+      "name_tokens": 621,
+      "total_hm_tokens": 2299,
+      "grammar_ratio": 0.7299,
+      "name_ratio": 0.2701,
       "kl_from_mohenjo": 0.0
     },
     "Harappa": {
-      "grammar_tokens": 0,
-      "name_tokens": 48,
-      "total_hm_tokens": 48,
-      "grammar_ratio": 0.0,
-      "name_ratio": 1.0,
+      "grammar_tokens": 1383,
+      "name_tokens": 515,
+      "total_hm_tokens": 1898,
+      "grammar_ratio": 0.7287,
+      "name_ratio": 0.2713,
       "kl_from_mohenjo": 0.07
     },
     "Kalibangan": {
-      "grammar_tokens": 0,
-      "name_tokens": 13,
-      "total_hm_tokens": 13,
-      "grammar_ratio": 0.0,
-      "name_ratio": 1.0,
+      "grammar_tokens": 303,
+      "name_tokens": 125,
+      "total_hm_tokens": 428,
+      "grammar_ratio": 0.7079,
+      "name_ratio": 0.2921,
       "kl_from_mohenjo": 0.168
     },
     "Lothal": {
-      "grammar_tokens": 0,
-      "name_tokens": 7,
-      "total_hm_tokens": 7,
-      "grammar_ratio": 0.0,
-      "name_ratio": 1.0,
+      "grammar_tokens": 347,
+      "name_tokens": 122,
+      "total_hm_tokens": 469,
+      "grammar_ratio": 0.7399,
+      "name_ratio": 0.2601,
       "kl_from_mohenjo": 0.144
     },
     "Chanhu-daro": {
-      "grammar_tokens": 0,
-      "name_tokens": 18,
-      "total_hm_tokens": 18,
-      "grammar_ratio": 0.0,
-      "name_ratio": 1.0,
+      "grammar_tokens": 199,
+      "name_tokens": 85,
+      "total_hm_tokens": 284,
+      "grammar_ratio": 0.7007,
+      "name_ratio": 0.2993,
       "kl_from_mohenjo": 0.253
     }
   },
-  "pearson_r_kl_vs_grammar": 0,
+  "pearson_r_kl_vs_grammar": -0.6854,
   "direction": "NEGATIVE",
   "verdict": "NOT_SUPPORTED"
 }

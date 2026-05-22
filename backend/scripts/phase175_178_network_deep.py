@@ -104,12 +104,23 @@ def load_phase172() -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 def load_site_distribution() -> dict[str, dict[str, int]]:
-    """Return {sign_id: {site: token_count}}."""
-    result = {}
-    with open(SITE_CSV, encoding="utf-8") as f:
-        for row in csv.DictReader(f):
-            sign = row["symbol"].strip()
-            result[sign] = {s: int(row.get(s, 0) or 0) for s in SITES}
+    """Return {sign_id: {site: token_count}} from the Holdat LLC CSV site column.
+
+    The pre-built holdatllc_core_symbol_site_distribution.csv covers only a
+    subset of signs (M100-M416 sparse range) and excludes all 20 grammar
+    candidates (M342, M267, M099, etc.).  The Holdat LLC CSV itself carries a
+    `site` column for every token, so we compute site counts directly.
+    """
+    import pandas as pd
+    df = pd.read_csv(_HOLDAT_CSV)
+    result: dict[str, dict[str, int]] = {}
+    for _, row in df.iterrows():
+        sign = str(row["letters"])
+        site = str(row.get("site", "unknown"))
+        if sign not in result:
+            result[sign] = {s: 0 for s in SITES}
+        if site in SITES:
+            result[sign][site] = result[sign].get(site, 0) + 1
     return result
 
 

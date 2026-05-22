@@ -215,3 +215,6 @@ docs/*.bak
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+
+# Private correspondence — local context only, never pushed
+.correspondence/

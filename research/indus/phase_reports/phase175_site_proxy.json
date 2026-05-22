@@ -6,19 +6,19 @@
   "caveat": "Only 5 sites available in holdatllc_core_symbol_site_distribution.csv. Rakhigarhi (most peripheral, KL=0.509) is absent. Full test requires ICIT corpus with all-site metadata.",
   "site_stats": {
     "Mohenjo-daro": {
-      "grammar_tokens": 1,
-      "name_tokens": 45,
+      "grammar_tokens": 0,
+      "name_tokens": 46,
       "total_hm_tokens": 46,
-      "grammar_ratio": 0.0217,
-      "name_ratio": 0.9783,
+      "grammar_ratio": 0.0,
+      "name_ratio": 1.0,
       "kl_from_mohenjo": 0.0
     },
     "Harappa": {
-      "grammar_tokens": 2,
-      "name_tokens": 46,
+      "grammar_tokens": 0,
+      "name_tokens": 48,
       "total_hm_tokens": 48,
-      "grammar_ratio": 0.0417,
-      "name_ratio": 0.9583,
+      "grammar_ratio": 0.0,
+      "name_ratio": 1.0,
       "kl_from_mohenjo": 0.07
     },
     "Kalibangan": {
@@ -46,7 +46,7 @@
       "kl_from_mohenjo": 0.253
     }
   },
-  "pearson_r_kl_vs_grammar": -0.7095,
+  "pearson_r_kl_vs_grammar": 0,
   "direction": "NEGATIVE",
   "verdict": "NOT_SUPPORTED"
 }

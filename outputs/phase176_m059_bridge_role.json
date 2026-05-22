@@ -4,56 +4,60 @@
   "description": "M059 bridge role analysis — why rank 2 betweenness?",
   "sign": "M059",
   "reading": "ēḷ/eḷ",
-  "total_occurrences": 334,
+  "total_occurrences": 222,
   "positional_rates": {
-    "INITIAL": 0.1018,
-    "MEDIAL": 0.7934,
-    "TERMINAL": 0.1048
+    "INITIAL": 0.1937,
+    "MEDIAL": 0.4685,
+    "TERMINAL": 0.3378
   },
   "top_right_neighbors": [
     [
-      "M211",
-      52
+      "M267",
+      30
+    ],
+    [
+      "M089",
+      10
     ],
     [
       "M342",
-      41
+      10
     ],
     [
-      "M099",
-      13
+      "M176",
+      8
     ],
     [
-      "M067",
-      11
-    ],
-    [
-      "M048",
-      11
-    ],
-    [
-      "M336",
-      9
-    ],
-    [
-      "M127",
+      "M293",
       7
+    ],
+    [
+      "M367",
+      6
+    ],
+    [
+      "M328",
+      6
+    ],
+    [
+      "M065",
+      5
     ],
     [
       "M249",
-      7
+      5
     ],
     [
-      "M059",
-      6
+      "M233",
+      5
     ]
   ],
-  "betweenness_rank": 2,
-  "betweenness": 0.104835,
+  "betweenness_rank": 18,
+  "betweenness": 0.003027,
   "classification": "MIXED_BRIDGE",
   "vs_m099": {
-    "m099_betweenness": 0.14603,
-    "m099_rank": 1,
+    "m099_betweenness": 0.017767,
+    "m099_rank": 10,
     "structural_difference": "M099 is a MEDIAL bridge connecting INITIAL classifiers to TERMINAL suffixes. M059 is an INITIAL hub with many outgoing paths but does not bridge clusters. Both have high betweenness but for different structural reasons."
   },
   "interpretation": "MIXED-SLOT BRIDGE: M059 appears in multiple positional slots, functioning as a structural connector across formula boundaries.",

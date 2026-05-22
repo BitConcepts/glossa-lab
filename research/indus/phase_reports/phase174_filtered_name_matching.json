@@ -3,17 +3,22 @@
   "date": "2026-05-21",
   "description": "Betweenness-filtered Meluhhan personal name phonological matching",
   "method": "Restrict name matching to betweenness=0 MEDIAL signs (name-syllable candidates). Phase-167 tested all MEDIAL signs including grammar, diluting the signal. This test isolates the phonetic register.",
-  "n_bc0_candidates": 114,
+  "n_bc0_candidates": 132,
   "bc0_candidate_signs": [
+    "M001",
+    "M002",
     "M003",
     "M004",
     "M005",
     "M006",
     "M007",
+    "M008",
     "M009",
     "M010",
     "M011",
     "M013",
+    "M015",
+    "M017",
     "M018",
     "M019",
     "M020",
@@ -21,8 +26,10 @@
     "M022",
     "M023",
     "M024",
+    "M025",
     "M026",
     "M027",
+    "M028",
     "M029",
     "M030",
     "M031",
@@ -43,14 +50,17 @@
     "M049",
     "M050",
     "M052",
+    "M053",
     "M054",
     "M055",
     "M056",
     "M057",
+    "M058",
     "M061",
     "M063",
     "M064",
     "M066",
+    "M067",
     "M068",
     "M069",
     "M070",
@@ -62,7 +72,9 @@
     "M078",
     "M079",
     "M080",
+    "M081",
     "M082",
+    "M086",
     "M088",
     "M090",
     "M091",
@@ -70,21 +82,25 @@
     "M093",
     "M094",
     "M100",
+    "M102",
     "M103",
     "M107",
     "M108",
     "M117",
     "M118",
-    "M125",
+    "M124",
+    "M127",
     "M128",
     "M130",
     "M145",
+    "M149",
     "M153",
     "M155",
     "M163",
     "M164",
     "M165",
     "M168",
+    "M169",
     "M175",
     "M177",
     "M178",
@@ -98,9 +114,10 @@
     "M221",
     "M222",
     "M231",
-    "M233",
     "M235",
     "M237",
+    "M249",
+    "M252",
     "M262",
     "M264",
     "M272",
@@ -109,6 +126,7 @@
     "M311",
     "M330",
     "M332",
+    "M347",
     "M350",
     "M351",
     "M355",
@@ -240,6 +258,7 @@
         {
           "phoneme": "ma",
           "candidates": [
+            "M015",
             "M026",
             "M027",
             "M057",
@@ -253,6 +272,7 @@
         {
           "phoneme": "e",
           "candidates": [
+            "M008",
             "M092",
             "M093"
           ],
@@ -343,10 +363,13 @@
         {
           "phoneme": "ku",
           "candidates": [
+            "M002",
             "M020",
             "M044",
+            "M124",
             "M222",
             "M231",
+            "M252",
             "M374",
             "M398"
           ],
@@ -355,14 +378,68 @@
         {
           "phoneme": "ku",
           "candidates": [
+            "M002",
             "M020",
             "M044",
+            "M124",
             "M222",
             "M231",
+            "M252",
             "M374",
             "M398"
           ],
           "covered": true
+        }
+      ]
+    },
+    {
+      "name": "Ta-ra-am-Adad",
+      "n_slots": 5,
+      "n_covered": 4,
+      "coverage": 0.8,
+      "slots": [
+        {
+          "phoneme": "ta",
+          "candidates": [
+            "M052",
+            "M375"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "ra",
+          "candidates": [
+            "M169"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "am",
+          "candidates": [
+            "M019"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "a",
+          "candidates": [
+            "M007",
+            "M009",
+            "M019",
+            "M039",
+            "M090",
+            "M091",
+            "M117",
+            "M220",
+            "M221",
+            "M362"
+          ],
+          "covered": true
+        },
+        {
+          "phoneme": "dad",
+          "candidates": [],
+          "covered": false
         }
       ]
     },
@@ -382,6 +459,7 @@
           "candidates": [
             "M003",
             "M011",
+            "M017",
             "M022",
             "M031",
             "M046",
@@ -390,7 +468,8 @@
             "M128",
             "M155",
             "M175",
-            "M194"
+            "M194",
+            "M347"
           ],
           "covered": true
         },
@@ -404,6 +483,7 @@
         {
           "phoneme": "ma",
           "candidates": [
+            "M015",
             "M026",
             "M027",
             "M057",
@@ -417,92 +497,33 @@
       ]
     },
     {
-      "name": "Urgula",
+      "name": "Niggina",
       "n_slots": 3,
       "n_covered": 2,
       "coverage": 0.667,
       "slots": [
         {
-          "phoneme": "ur",
+          "phoneme": "ni",
           "candidates": [
-            "M233"
+            "M102"
           ],
           "covered": true
         },
         {
-          "phoneme": "gu",
+          "phoneme": "gi",
           "candidates": [],
           "covered": false
         },
         {
-          "phoneme": "la",
+          "phoneme": "na",
           "candidates": [
-            "M193"
-          ],
-          "covered": true
-        }
-      ]
-    },
-    {
-      "name": "Utukku",
-      "n_slots": 3,
-      "n_covered": 2,
-      "coverage": 0.667,
-      "slots": [
-        {
-          "phoneme": "u",
-          "candidates": [
-            "M233"
-          ],
-          "covered": true
-        },
-        {
-          "phoneme": "tu",
-          "candidates": [],
-          "covered": false
-        },
-        {
-          "phoneme": "ku",
-          "candidates": [
-            "M020",
-            "M044",
-            "M222",
-            "M231",
-            "M374",
-            "M398"
-          ],
-          "covered": true
-        }
-      ]
-    },
-    {
-      "name": "Ur-namma",
-      "n_slots": 3,
-      "n_covered": 2,
-      "coverage": 0.667,
-      "slots": [
-        {
-          "phoneme": "ur",
-          "candidates": [
-            "M233"
-          ],
-          "covered": true
-        },
-        {
-          "phoneme": "nam",
-          "candidates": [],
-          "covered": false
-        },
-        {
-          "phoneme": "ma",
-          "candidates": [
-            "M026",
-            "M027",
-            "M057",
-            "M068",
-            "M075",
-            "M100",
-            "M272"
+            "M013",
+            "M071",
+            "M076",
+            "M077",
+            "M177",
+            "M192",
+            "M416"
           ],
           "covered": true
         }
@@ -550,55 +571,6 @@
         },
         {
           "phoneme": "sum",
-          "candidates": [],
-          "covered": false
-        }
-      ]
-    },
-    {
-      "name": "Ta-ra-am-Adad",
-      "n_slots": 5,
-      "n_covered": 3,
-      "coverage": 0.6,
-      "slots": [
-        {
-          "phoneme": "ta",
-          "candidates": [
-            "M052",
-            "M375"
-          ],
-          "covered": true
-        },
-        {
-          "phoneme": "ra",
-          "candidates": [],
-          "covered": false
-        },
-        {
-          "phoneme": "am",
-          "candidates": [
-            "M019"
-          ],
-          "covered": true
-        },
-        {
-          "phoneme": "a",
-          "candidates": [
-            "M007",
-            "M009",
-            "M019",
-            "M039",
-            "M090",
-            "M091",
-            "M117",
-            "M220",
-            "M221",
-            "M362"
-          ],
-          "covered": true
-        },
-        {
-          "phoneme": "dad",
           "candidates": [],
           "covered": false
         }
@@ -702,6 +674,7 @@
           "candidates": [
             "M003",
             "M011",
+            "M017",
             "M022",
             "M031",
             "M046",
@@ -710,7 +683,8 @@
             "M128",
             "M155",
             "M175",
-            "M194"
+            "M194",
+            "M347"
           ],
           "covered": true
         }
@@ -756,7 +730,33 @@
         {
           "phoneme": "ti",
           "candidates": [
-            "M036"
+            "M036",
+            "M249"
+          ],
+          "covered": true
+        }
+      ]
+    },
+    {
+      "name": "Urgula",
+      "n_slots": 3,
+      "n_covered": 1,
+      "coverage": 0.333,
+      "slots": [
+        {
+          "phoneme": "ur",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "gu",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "la",
+          "candidates": [
+            "M193"
           ],
           "covered": true
         }
@@ -797,31 +797,33 @@
       ]
     },
     {
-      "name": "Niggina",
+      "name": "Utukku",
       "n_slots": 3,
       "n_covered": 1,
       "coverage": 0.333,
       "slots": [
         {
-          "phoneme": "ni",
+          "phoneme": "u",
           "candidates": [],
           "covered": false
         },
         {
-          "phoneme": "gi",
+          "phoneme": "tu",
           "candidates": [],
           "covered": false
         },
         {
-          "phoneme": "na",
+          "phoneme": "ku",
           "candidates": [
-            "M013",
-            "M071",
-            "M076",
-            "M077",
-            "M177",
-            "M192",
-            "M416"
+            "M002",
+            "M020",
+            "M044",
+            "M124",
+            "M222",
+            "M231",
+            "M252",
+            "M374",
+            "M398"
           ],
           "covered": true
         }
@@ -855,6 +857,38 @@
           "phoneme": "ba",
           "candidates": [],
           "covered": false
+        }
+      ]
+    },
+    {
+      "name": "Ur-namma",
+      "n_slots": 3,
+      "n_covered": 1,
+      "coverage": 0.333,
+      "slots": [
+        {
+          "phoneme": "ur",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "nam",
+          "candidates": [],
+          "covered": false
+        },
+        {
+          "phoneme": "ma",
+          "candidates": [
+            "M015",
+            "M026",
+            "M027",
+            "M057",
+            "M068",
+            "M075",
+            "M100",
+            "M272"
+          ],
+          "covered": true
         }
       ]
     },
@@ -1141,6 +1175,7 @@
     "su",
     "li",
     "shu",
+    "ur",
     "gu",
     "ab",
     "ba",
@@ -1148,8 +1183,8 @@
     "zi",
     "ga",
     "mil",
-    "ni",
     "gi",
+    "u",
     "tu",
     "en",
     "ki",
@@ -1169,7 +1204,6 @@
     "sham",
     "me",
     "mar",
-    "ra",
     "dad"
   ],
   "shu_ilishu_assessment": {

@@ -5371,7 +5371,7 @@ Key findings [VERIFIED by report research]:
 
 3. ICIT database (indus.epigraphica.de) requires administrator access; live endpoint
    returned 401 Unauthorized in the report's check. Contact: Dr. Andreas Fuls,
-   andreas.fuls@tu-berlin.de. Report confirmed ICIT already has site categories for
+   [email redacted]. Report confirmed ICIT already has site categories for
    Failaka, Janabiyah, Karzakkan, Qala'at al-Bahrain, Saar, Susa, Ur, Girsu, etc.
 
 4. Email template for Fuls ICIT access request: already drafted at
@@ -5418,7 +5418,7 @@ Phase-31 verdict: MIXED-SUPPORTIVE. T3 is the cleanest result. Decipherment prog
 - [ ] Phase-30d/e/f (allograph-aware M77 stratification, joint-corpus ranker).
 
 **Corpus acquisition (CRITICAL path — P30-F/L tasks):**
-- [ ] P30-F2 / P30-L3: Email Andreas Fuls (andreas.fuls@tu-berlin.de) for ICIT access.
+- [ ] P30-F2 / P30-L3: Email Andreas Fuls ([email redacted]) for ICIT access.
       Use reports/fuls_contact_email.md draft. Include western Gulf site list:
       Failaka, Janabiyah, Karzakkan, Qala'at al-Bahrain, Saar, Susa, Luristan,
       Girsu, Ur, Tell Umma, Tello, Kish, Nippur. [BLOCKER: ICIT = +2pp lift]
@@ -8200,7 +8200,7 @@ P6 Dr. Fuls email:
   - Draft sent to tpierson@bitconcepts.tech for review (id: a59366f4-7698-4b92-8397-3c764ff20002)
   - Subject: "Phase-38/41 Update: Dravidian 1.056x Advantage Confirmed at 300K Iterations"
   - Draft: reports/phase41_fuls_email_draft.txt
-  - TO SEND: review draft and send to andreas.fuls@tu-berlin.de
+  - TO SEND: review draft and send to [email redacted]
 
 Sign ID fix in indus_corpus_v2.py:
   - Both _parse_diplomatic_to_ints() and _extract_sequences() now zero-pad all IDs
@@ -8224,7 +8224,7 @@ Open TODOs (Phase-42):
   IMMEDIATE:
   1. Re-run P1 with fixed indus_corpus_v2.py (zero-padded IDs) -- expected to
      show correct V2 SA results now
-  2. Review and send Dr. Fuls email draft to andreas.fuls@tu-berlin.de
+  2. Review and send Dr. Fuls email draft to [email redacted]
   3. Download Penn Museum images -> run CNN inference -> new sequences
 
   ONGOING:
@@ -8327,7 +8327,7 @@ Open TODOs (Phase-43):
      Ask for batch image access for 7,515 identified Indus objects
 
   HIGH:
-  3. Dr. Fuls email: review phase41_fuls_email_draft.txt and send to andreas.fuls@tu-berlin.de
+  3. Dr. Fuls email: review phase41_fuls_email_draft.txt and send to [email redacted]
   4. ICIT corpus (blocked, Dr. Fuls) -- dependent on #3
 
 Risks:
@@ -8411,7 +8411,7 @@ Open TODOs (Batch 3 — core corpus sources):
   3. Create indus_claims.py (claim extraction from uploaded PDFs)
   4. Create indus_analyze.py (run positional/cooccurrence/null-model tests)
   5. Search and download all open Indus script papers (literature sweep)
-  6. Penn Museum image request: draft email to photos@pennmuseum.org (H20 -- do not send)
+  6. Penn Museum image request: draft email to [email redacted] (H20 -- do not send)
   7. Phase-44 T1: V3 SA with 300K iterations to confirm lift ratio
   8. Phase-44 T2: M77/342 bigram context analysis (confirm -n genitive hypothesis)
 

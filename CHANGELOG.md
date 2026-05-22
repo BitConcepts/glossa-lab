@@ -7,6 +7,48 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+#### Indus Script research — network centrality analysis (Phases 172–178)
+- **Phase 172**: Full H+M×H+M directed bigram graph (161 nodes, 414 edges, Holdat LLC CSV)
+  with betweenness centrality (BC) stratification; 20 grammar candidates (BC > 0),
+  141 name-syllable candidates (BC = 0)
+- **Phase 173**: BC check on 18 irresolvable MEDIAL signs — all 18 confirmed BC = 0
+  (personal-name syllable signature)
+- **Phase 174**: Betweenness-filtered Meluhhan name matching — 3 names at 100% phonological
+  coverage (Nanna-a, Anana, Ama-e-a); 14 phoneme gaps identified for ICIT targeting
+- **Phase 175**: Site-stratified grammar/name proportion proxy — grammar ratio ~72% at all
+  5 sites (Pearson r = −0.685, NOT_SUPPORTED); Rakhigarhi absent from 5-site subset
+- **Phase 176**: M059 bridge-role analysis — MIXED_BRIDGE (I=19%, M=47%, T=34%), rank 18;
+  not a pure INITIAL hub as previously classified from Firestore corpus
+- **Phase 177**: Full T/I/M positional rates + BC-to-slot mapping for all 161 H+M signs;
+  M267 confirmed rank 3 MEDIAL bridge (81% MEDIAL, BC = 0.051); M342 rank 1 structural hub
+  (BC = 0.055); M099 rank 10 confirmed bridge (77% MEDIAL)
+- **Phase 178**: ICIT-priority phoneme targeting — 14 true gaps, 2 LOW upgrade candidates
+  (M386, M143 for /man/)
+- **Preprint §3.32**: New section *Betweenness Centrality Stratification (Phases 172–177)*
+  added to `glossa-corpus/indus/preprint_v1.tex`; PDF recompiled and published
+- §1.3 item 19 and updated Acknowledgments (Roif directed-graph methodology credit)
+
+### Fixed
+
+#### Indus Script — corpus loader correctness
+- **Root cause resolved**: `load_holdat()` in Phases 172–178 scripts was calling
+  `indus_corpus_v3.load_corpus()` (RMRL Firestore dump, 3,137 sideline sequences)
+  instead of the Holdat LLC CSV (1,670 unified per-seal sequences). The Firestore corpus
+  splits inscriptions by sideline, causing M267 to appear 81% INITIAL (starts the second
+  sideline of compound inscriptions) rather than the correct 81% MEDIAL.
+- Both `phase172_174_betweenness_stratification.py` and `phase175_178_network_deep.py`
+  now load directly from `indus_corpus 2.csv` via the `position` column for correct
+  sign ordering within each unified seal sequence.
+- **Phase 175 site distribution** corrected: `load_site_distribution()` previously read
+  `holdatllc_core_symbol_site_distribution.csv` which covers only M100-M416 (sparse subset)
+  and excludes all 20 grammar candidates. Now reads the Holdat LLC CSV `site` column
+  directly, giving correct token counts for all 161 H+M signs.
+- Phase 177 `dominant_slot()` extended with `_P177_FUNCTIONAL_OVERRIDES` for confirmed
+  grammar signs whose absolute corpus position is ambiguous in unified sequences (e.g.
+  terminal markers that precede other suffixes in the same inscription).
+
 ## [0.1.0] - 2026-05-21
 
 ### Added

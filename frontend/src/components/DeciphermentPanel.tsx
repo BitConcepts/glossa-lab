@@ -76,15 +76,15 @@ export function DeciphermentPanel() {
   const isArchived = data.archived || (data.n_rounds === 0 && !data.current_state && data.anchors.total > 0);
 
   if (isArchived) {
-    const totalSigns = 390;
-    const total = data.anchors.total || 0;
-    const high   = byConf.HIGH   ?? 0;
-    const medium = byConf.MEDIUM ?? 0;
-    const low    = byConf.LOW    ?? 0;
-    const allCoverage    = Math.round((total / totalSigns) * 100);
-    const solidCoverage  = Math.round(((high + medium) / totalSigns) * 100);
-    const highCoverage   = Math.round((high / totalSigns) * 100);
-    const nRounds        = data.n_rounds_completed ?? 17;
+    const totalSigns  = data.anchors.corpus_signs  ?? 390;
+    const high        = byConf.HIGH   ?? 0;
+    const medium      = byConf.MEDIUM ?? 0;
+    const low         = byConf.LOW    ?? 0;
+    const nHM         = high + medium;
+    const tokenCovPct = Math.round((data.anchors.corpus_token_coverage ?? 0) * 100);
+    const hmSignPct   = Math.round((nHM / totalSigns) * 100);
+    const highSignPct = Math.round((high / totalSigns) * 100);
+    const nRounds     = data.n_rounds_completed ?? 17;
 
     return (
       <div style={{ border: "1px solid #d1d5db", borderRadius: 8, padding: 16, background: "#fff", marginBottom: 16 }}>
@@ -97,7 +97,7 @@ export function DeciphermentPanel() {
               marginLeft: 8, padding: "2px 8px", borderRadius: 4,
               fontSize: 11, fontWeight: 600,
               background: "#f3f4f6", color: "#6b7280", border: "1px solid #d1d5db",
-            }}>📦 Archived — Phase 43</span>
+            }}>📦 Archived — Phase 133</span>
           </div>
           <span style={{ fontSize: 12, color: "#9ca3af" }}>{nRounds} rounds</span>
         </div>
@@ -105,9 +105,9 @@ export function DeciphermentPanel() {
         {/* Metrics grid */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}>
           <div>
-            <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>Signs with Readings</div>
+            <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>H+M Signs with Readings</div>
             <div style={{ fontSize: 20, fontWeight: 700, color: "#111827" }}>
-              {total} <span style={{ fontSize: 13, color: "#9ca3af" }}>/ {totalSigns}</span>
+              {nHM} <span style={{ fontSize: 13, color: "#9ca3af" }}>/ {totalSigns}</span>
             </div>
             <div style={{ fontSize: 11, marginTop: 2 }}>
               <span style={{ color: "#15803d", fontWeight: 600 }}>H:{high}</span>{" "}
@@ -116,21 +116,21 @@ export function DeciphermentPanel() {
             </div>
           </div>
           <div>
-            <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>Confirmed Readings</div>
-            <div style={{ fontSize: 20, fontWeight: 700, color: high >= 7 ? "#15803d" : "#b45309" }}>
-              {high + medium}
+            <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>Token Coverage</div>
+            <div style={{ fontSize: 20, fontWeight: 700, color: tokenCovPct >= 85 ? "#15803d" : "#b45309" }}>
+              {tokenCovPct}%
             </div>
-            <div style={{ fontSize: 11, color: "#6b7280" }}>{solidCoverage}% of sign inventory</div>
+            <div style={{ fontSize: 11, color: "#6b7280" }}>of corpus tokens explained</div>
           </div>
         </div>
 
-        {/* Progress bars */}
-        <ProgressBar value={allCoverage}   color="#8b5cf6" label={`Total sign coverage (${total}/${totalSigns})`} />
-        <ProgressBar value={solidCoverage} color="#3b82f6" label={`HIGH + MEDIUM confidence (${high + medium} signs)`} />
-        <ProgressBar value={highCoverage}  color="#15803d" label={`HIGH confidence only (${high} signs)`} />
+        {/* Progress bars — token coverage is the primary metric per anchors note */}
+        <ProgressBar value={tokenCovPct}  color="#059669" label={`Token coverage (${tokenCovPct}% of 7,002 corpus tokens)`} />
+        <ProgressBar value={hmSignPct}    color="#3b82f6" label={`H+M sign coverage (${nHM}/${totalSigns} sign types)`} />
+        <ProgressBar value={highSignPct}  color="#15803d" label={`HIGH confidence only (${high} signs)`} />
 
         <div style={{ marginTop: 10, fontSize: 11, color: "#9ca3af" }}>
-          Campaign concluded 2026-05-17 · Active research via Evidence Graph
+          Phase-133 complete 2026-05-17 · 69.1% seals decoded · Active research via Evidence Graph
         </div>
       </div>
     );

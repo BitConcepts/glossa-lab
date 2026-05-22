@@ -542,13 +542,12 @@ Glossa Lab is a **local-first application**. All communication is localhost-only
 * **Rationale:** universal, no additional install, lockfile support
 * **Alternatives considered:** pnpm, yarn
 
-### DEC-007 — Analysis framework: Merkur patent integration
+### DEC-007 — Analysis framework: phonetic distribution integration
 
 * **Date:** 2026-04-01
 * **Status:** accepted
-* **Patent:** [REDACTED-PATENT-PUB] (Michael Merkur)
-* **Rationale:** patent provides three analysis dimensions that complement statistical entropy analysis: (1) hierarchical text decomposition for structured corpus navigation, (2) phonetic color-coding (Kandles) for visual pattern detection, (3) semantic cluster tagging for concept-based exploration
-* **Integration:** patent techniques operate as additional pipeline types alongside existing block_entropy and char_freq pipelines
+* **Rationale:** Provides three analysis dimensions that complement statistical entropy analysis: (1) hierarchical text decomposition for structured corpus navigation, (2) phonetic distribution color-coding (Kandles) for visual pattern detection, (3) semantic cluster tagging for concept-based exploration
+* **Integration:** techniques operate as additional pipeline types alongside existing block_entropy and char_freq pipelines
 
 ---
 
@@ -562,13 +561,13 @@ Glossa Lab implements a multi-layer analysis framework combining statistical and
 * Character frequency / Zipf analysis — reveals frequency distribution structure
 * N-gram Markov models — captures sequential dependencies
 
-### Layer 2 — Structural analysis (Merkur patent, [REDACTED-PATENT-PUB])
+### Layer 2 — Structural analysis (phonetic distribution)
 
 * **Hierarchical decomposition** — corpus → volumes → stories → slices → blocks
 * Provides addressable, filterable units at every level
 * Each unit can be independently analysed by Layer 1 and Layer 3 techniques
 
-### Layer 3 — Phonetic-visual analysis (Merkur patent, Kandles system)
+### Layer 3 — Phonetic-visual analysis (phonetic distribution, Kandles system)
 
 * **Kandles color-coding** — maps consonant sound groups to 7 colors/nature elements
 * Words/symbols colour-coded by initial phonetic sound
@@ -576,7 +575,7 @@ Glossa Lab implements a multi-layer analysis framework combining statistical and
 * Cross-language comparison via shared phonetic-to-colour mapping
 * Grid patterns reveal alliterative structure, phonetic clustering, and sound-flow
 
-### Layer 4 — Semantic analysis (Merkur patent, cluster tagging)
+### Layer 4 — Semantic analysis (phonetic distribution, cluster tagging)
 
 * Text segments tagged with semantic categories (configurable taxonomy)
 * Multi-cluster filtering: combine categories to isolate thematic subsets
@@ -585,7 +584,7 @@ Glossa Lab implements a multi-layer analysis framework combining statistical and
 
 ### Kandles phonetic mapping
 
-The Kandles system (derived from extended Soundex, per patent [0109]-[0110]) maps first-consonant sounds to 7 groups:
+The Kandles system (derived from extended Soundex) maps first-consonant sounds to 7 groups:
 
 ```text
 1: K, G, J, Ch  → Yellow  (Sun  / 日)

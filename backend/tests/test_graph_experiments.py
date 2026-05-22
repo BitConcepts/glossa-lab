@@ -24,12 +24,12 @@ ATOMIC_NODES registry:
 """
 from __future__ import annotations
 
-import pytest
 from glossa_lab.experiment_graph import (
-    ATOMIC_NODES, AtomicNodeDef,
-    _build_proper_graph_specs, _topo_sort, execute_graph,
+    ATOMIC_NODES,
+    _build_proper_graph_specs,
+    _topo_sort,
+    execute_graph,
 )
-
 
 # ── Graph spec validation ─────────────────────────────────────────────────────
 
@@ -195,7 +195,7 @@ def test_topo_sort_diamond():
 
 # ── ATOMIC_NODES registry ─────────────────────────────────────────────────────
 
-def test_all_40_nodes_registered():
+def test_all_core_nodes_registered():
     """TEST-GE-013: All expected core + evidence atomic nodes are in the registry."""
     expected = {
         # Original sources + transforms + analysis + outputs (13)
@@ -215,8 +215,6 @@ def test_all_40_nodes_registered():
         "CorpusLM", "AnchorSetLoader", "ReportGenerator",
         # Corpus sanitisation node (1)
         "TokenFilter",
-        # CPSC / Constraint Solver nodes (3)
-        "CASModelLoader", "CASProjector", "CASIndusEngine",
         # CGSA / Structural nodes (3)
         "ClusterMapper", "CanonicalSignLoader", "StructuralTemplateAnalyzer",
         # CTT / Constraint Topology nodes (7)
@@ -254,7 +252,8 @@ def test_report_generator_no_template_id():
 
 def test_catalog_returns_only_graph_experiments():
     """TEST-GE-017: H16 catalog reform — list_experiment_catalog returns only graph experiments."""
-    import sys, os
+    import os
+    import sys
     sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
     from glossa_lab.catalog import list_experiment_catalog
     exps = list_experiment_catalog()

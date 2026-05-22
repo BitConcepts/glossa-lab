@@ -3,20 +3,155 @@
   "name": "Indus CISI: Anchored Decipherment — 6 Anchors, P332='o' (ko bigram vowel)",
   "description": "Extends the optimal 5-anchor set with P332='o' based on critical structural evidence: P332 is 100% MEDIAL and appears after P324 in 91% of cases (10/11). P324(/k/) + P332(/o/) = 'ko' (king/chief) — a CV bigram representation of the royal title sign. P332 is the vowel component completing the 'ko' syllable. This is structurally motivated unlike the failed 10-anchor additions. The 6-anchor set: P385->n (genitive), P324->k (initial consonant), P122->a (medial vowel), P086->m (initial consonant), P060->i (medial vowel), P332->o (ko-completing vowel). Test: does adding P332='o' improve or worsen consistency vs 5-anchor? 'k->o' is a common Dravidian bigram so this should improve. GPU: n_seeds=8, max_iter=12000.",
   "nodes": [
-    {"id": "corpus",  "type": "expNode", "data": {"atomicId": "BuiltinCorpus",    "label": "Indus CISI (178 inscriptions)",  "params": {"corpus": "indus_cisi"}},                                                                                                                                                                                                                            "position": {"x": 60,   "y": 240}},
-    {"id": "drav_lm", "type": "expNode", "data": {"atomicId": "BuiltinLM",        "label": "South Dravidian LM",             "params": {"language": "south_dravidian"}},                                                                                                                                                                                                                    "position": {"x": 60,   "y": 440}},
-    {"id": "sa",      "type": "expNode", "data": {"atomicId": "SADecipher",       "label": "6-Anchor SA (P332=o, GPU)",       "params": {"n_seeds": 8, "max_iterations": 12000, "restarts": 4, "surjective": true, "ocp_weight": 0.0, "anchors": {"P385": "n", "P324": "k", "P122": "a", "P086": "m", "P060": "i", "P332": "o"}}},                                                      "position": {"x": 700,  "y": 320}},
-    {"id": "cons",    "type": "expNode", "data": {"atomicId": "ConsistencyScorer","label": "Consistency + HCI",               "params": {}},                                                                                                                                                                                                                                                "position": {"x": 1040, "y": 320}},
-    {"id": "merge",   "type": "expNode", "data": {"atomicId": "Merger",           "label": "Merge 6-Anchor Results",          "params": {}},                                                                                                                                                                                                                                                "position": {"x": 1300, "y": 320}},
-    {"id": "out",     "type": "expNode", "data": {"atomicId": "JSONExport",       "label": "Save",                            "params": {"filename": "indus_cisi_anchored_6_ko.json"}},                                                                                                                                                                                                      "position": {"x": 1560, "y": 320}}
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "Indus CISI (178 inscriptions)",
+        "params": {
+          "corpus": "indus_cisi"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 240
+      }
+    },
+    {
+      "id": "drav_lm",
+      "type": "expNode",
+      "data": {
+        "atomicId": "BuiltinLM",
+        "label": "South Dravidian LM",
+        "params": {
+          "language": "south_dravidian"
+        }
+      },
+      "position": {
+        "x": 60,
+        "y": 440
+      }
+    },
+    {
+      "id": "sa",
+      "type": "expNode",
+      "data": {
+        "atomicId": "SADecipher",
+        "label": "6-Anchor SA (P332=o, GPU)",
+        "params": {
+          "n_seeds": 8,
+          "max_iterations": 12000,
+          "restarts": 4,
+          "surjective": true,
+          "ocp_weight": 0.0,
+          "anchors": {
+            "P385": "n",
+            "P324": "k",
+            "P122": "a",
+            "P086": "m",
+            "P060": "i",
+            "P332": "o"
+          }
+        }
+      },
+      "position": {
+        "x": 700,
+        "y": 320
+      }
+    },
+    {
+      "id": "cons",
+      "type": "expNode",
+      "data": {
+        "atomicId": "ConsistencyScorer",
+        "label": "Consistency + HCI",
+        "params": {}
+      },
+      "position": {
+        "x": 1040,
+        "y": 320
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "data": {
+        "atomicId": "Merger",
+        "label": "Merge 6-Anchor Results",
+        "params": {}
+      },
+      "position": {
+        "x": 1300,
+        "y": 320
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save",
+        "params": {
+          "filename": "indus_cisi_anchored_6_ko.json"
+        }
+      },
+      "position": {
+        "x": 1560,
+        "y": 320
+      }
+    }
   ],
   "edges": [
-    {"id": "e1", "source": "corpus",  "target": "sa",    "sourcePort": "sequences",        "targetPort": "sequences"},
-    {"id": "e2", "source": "drav_lm", "target": "sa",    "sourcePort": "lm",               "targetPort": "lm"},
-    {"id": "e3", "source": "sa",      "target": "cons",  "sourcePort": "all_mappings",     "targetPort": "all_mappings"},
-    {"id": "e4", "source": "cons",    "target": "merge", "sourcePort": "mean_consistency", "targetPort": "a"},
-    {"id": "e5", "source": "cons",    "target": "merge", "sourcePort": "hci_pct",          "targetPort": "b"},
-    {"id": "e6", "source": "sa",      "target": "merge", "sourcePort": "proposed_mapping", "targetPort": "c"},
-    {"id": "e7", "source": "merge",   "target": "out",   "sourcePort": "json",             "targetPort": "data"}
-  ]
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "sa",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "drav_lm",
+      "target": "sa",
+      "sourcePort": "lm",
+      "targetPort": "lm"
+    },
+    {
+      "id": "e3",
+      "source": "sa",
+      "target": "cons",
+      "sourcePort": "all_mappings",
+      "targetPort": "all_mappings"
+    },
+    {
+      "id": "e4",
+      "source": "cons",
+      "target": "merge",
+      "sourcePort": "mean_consistency",
+      "targetPort": "a"
+    },
+    {
+      "id": "e5",
+      "source": "cons",
+      "target": "merge",
+      "sourcePort": "hci_pct",
+      "targetPort": "b"
+    },
+    {
+      "id": "e6",
+      "source": "sa",
+      "target": "merge",
+      "sourcePort": "proposed_mapping",
+      "targetPort": "c"
+    },
+    {
+      "id": "e7",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ],
+  "graph_type": "experiment"
 }

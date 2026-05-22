@@ -16,8 +16,10 @@ Analysis:
 CPU only. Output: reports/phase86_phonology_recon.json
 """
 from __future__ import annotations
-import json, re
-from collections import Counter, defaultdict
+
+import json
+import re
+from collections import Counter
 from pathlib import Path
 
 REPO    = Path(__file__).parents[2]
@@ -174,7 +176,7 @@ def main():
     has_front_back_vowel = ("e" in attested_v or "ē" in attested_v) and ("o" in attested_v or "ō" in attested_v)
     has_nasal_contrast   = len({"m", "n"} & attested_c_norm) >= 2
 
-    print(f"\n  PD feature contrasts attested:")
+    print("\n  PD feature contrasts attested:")
     print(f"    Dental/retroflex stop contrast: {has_dental_retroflex}")
     print(f"    Lateral contrast (l/ḷ):         {has_lateral_contrast}")
     print(f"    Rhotic contrast (r/ṟ):          {has_rhotic_contrast}")
@@ -200,7 +202,7 @@ def main():
             shape = "other"
         syllable_shapes[shape] += 1
 
-    print(f"\n  Syllable structure distribution:")
+    print("\n  Syllable structure distribution:")
     for shape, count in syllable_shapes.most_common():
         print(f"    {shape:8s}: {count:3d} ({count/len(readings_processed)*100:.1f}%)")
 
@@ -209,12 +211,12 @@ def main():
     n_consonants = len(c_covered)
     n_vowels = len(v_covered)
 
-    print(f"\n=== Phase-86 Results ===")
+    print("\n=== Phase-86 Results ===")
     print(f"  Proto-Dravidian phoneme coverage: {pd_coverage_pct}%")
     print(f"  Consonants attested: {n_consonants}/{len(pd_c_set)}")
     print(f"  Vowels attested:     {n_vowels}/{len(pd_v_set)}")
     print(f"  All basic PD contrasts present: {all([has_dental_retroflex, has_lateral_contrast, has_nasal_contrast, has_long_vowel])}")
-    print(f"  Key gap: retroflexion (ṭ, ṇ, ḷ) attested only sporadically — expect clearer evidence at 120 anchors")
+    print("  Key gap: retroflexion (ṭ, ṇ, ḷ) attested only sporadically — expect clearer evidence at 120 anchors")
 
     result = {
         "_citation": {"primary": ["A.1"]},

@@ -20,7 +20,9 @@ Selection criteria:
 CPU only. Output: reports/phase90_scholarly_translations.json
 """
 from __future__ import annotations
-import csv, json
+
+import csv
+import json
 from collections import Counter
 from pathlib import Path
 
@@ -286,7 +288,7 @@ def main():
     n_high_conf = sum(1 for t in translations if t["translation_confidence"] == "HIGH")
     mean_coverage = sum(t["coverage_pct"] for t in translations) / len(translations) if translations else 0
 
-    print(f"=== Phase-90 Results ===")
+    print("=== Phase-90 Results ===")
     print(f"  Scholarly translations produced: {len(translations)}")
     print(f"  HIGH confidence:                 {n_high_conf}/{len(translations)}")
     print(f"  Mean coverage:                   {mean_coverage:.1f}%")

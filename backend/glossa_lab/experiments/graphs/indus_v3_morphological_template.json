@@ -1,7 +1,7 @@
 {
   "id": "indus_v3_morphological_template",
-  "name": "Indus V3 \u2014 Dravidian Morphological Template Matching (15,423 forms)",
-  "description": "15,423 PDR word forms generated. 201 inscriptions (4.6%) contain 2+ valid PDR words. k\u014dl (scepter/stick) most common root.",
+  "name": "Indus V3 — Dravidian Morphological Template Matching (15,423 forms)",
+  "description": "15,423 PDR word forms generated. 201 inscriptions (4.6%) contain 2+ valid PDR words. kōl (scepter/stick) most common root.",
   "nodes": [
     {
       "id": "corpus",
@@ -60,5 +60,6 @@
       "sourcePort": "result",
       "targetPort": "data"
     }
-  ]
+  ],
+  "graph_type": "experiment"
 }

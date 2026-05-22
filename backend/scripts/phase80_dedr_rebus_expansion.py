@@ -20,7 +20,10 @@ Output: reports/phase80_dedr_rebus_expansion.json
         updates INDUS_FINAL_ANCHORS.json
 """
 from __future__ import annotations
-import csv, json, sys
+
+import csv
+import json
+import sys
 from collections import Counter
 from pathlib import Path
 
@@ -211,7 +214,7 @@ def main():
                         if anchors[m].get("confidence") in ("HIGH","MEDIUM"))
     coverage = mapped_tokens / total_tokens * 100
 
-    print(f"\n=== Phase-80 Results ===")
+    print("\n=== Phase-80 Results ===")
     print(f"  New MEDIUM anchors added:  {n_added}")
     print(f"  Already confirmed:         {n_confirmed}")
     print(f"  Skipped (not in corpus):   {n_skipped}")

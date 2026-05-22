@@ -584,7 +584,7 @@ BENCHMARK SCORE FACTS (use EXACTLY these, never approximate):
 
     lines.append("""
 === DOMAIN KNOWLEDGE: KANDLES SYSTEM ===
-The Kandles system (Merkur patent) assigns each phoneme a colour based on
+The Kandles system (phonetic distribution) assigns each phoneme a colour based on
 the articulatory/acoustic features of the consonant. It provides an
 independent cross-validation channel: if a proposed decipherment maps Indus
 sign frequencies to phoneme frequencies, the Kandles colour distribution of
@@ -828,7 +828,8 @@ async def ai_chat(body: ChatRequest) -> dict[str, Any]:
         context_block = "\n\n" + _build_research_context()
         # Augment with RAG-retrieved chunks relevant to the latest user message
         try:
-            from glossa_lab.rag import query as rag_query, index_size  # noqa: PLC0415
+            from glossa_lab.rag import index_size
+            from glossa_lab.rag import query as rag_query  # noqa: PLC0415
             last_user = next(
                 (m.content for m in reversed(body.messages) if m.role == "user"), ""
             )
@@ -868,7 +869,8 @@ async def ai_chat(body: ChatRequest) -> dict[str, Any]:
                     )
                     # Augment with RAG chunks relevant to the study description
                     try:
-                        from glossa_lab.rag import query as rag_query, index_size  # noqa: PLC0415
+                        from glossa_lab.rag import index_size
+                        from glossa_lab.rag import query as rag_query  # noqa: PLC0415
                         if index_size() > 0:
                             study_query = study.get('description', '') or study['name']
                             rag_chunks = rag_query(study_query, top_k=2)
@@ -876,7 +878,7 @@ async def ai_chat(body: ChatRequest) -> dict[str, Any]:
                                 context_block += "\n\n[Related artifacts: " + " | ".join(
                                     f"{c['source']} ({c['score']:.2f})"
                                     for c in rag_chunks
-                                ) + "]"  
+                                ) + "]"
                     except Exception:  # noqa: BLE001
                         pass
         if body.context_type == "experiment" and body.context_id:
@@ -888,7 +890,6 @@ async def ai_chat(body: ChatRequest) -> dict[str, Any]:
                 )
 
     from glossa_lab.model_profiles import get_profile  # noqa: PLC0415
-    from glossa_lab.experiment_base import discover_experiments  # noqa: PLC0415
 
     profile = get_profile(body.model)
     settings_ctx = _build_settings_context()
@@ -967,7 +968,6 @@ async def execute_action(body: ActionExecuteRequest) -> dict[str, Any]:
 
 async def _execute_action_inner(t: str, p: dict) -> dict[str, Any]:  # noqa: PLR0912,PLR0915
     """Inner handler for execute_action — raises HTTPException on all errors."""
-    from typing import Any as _Any  # already imported above but needed for linter
 
     # ── open_view — client-side navigation, nothing to do on server ────────────
     if t == "open_view":
@@ -977,7 +977,9 @@ async def _execute_action_inner(t: str, p: dict) -> dict[str, Any]:  # noqa: PLR
     if t == "run_experiment":
         from glossa_lab.experiment_base import get_experiment  # noqa: PLC0415
         from glossa_lab.experiment_graph import (  # noqa: PLC0415
-            get_graph_experiment, list_graph_experiments, register_graph_experiments,
+            get_graph_experiment,
+            list_graph_experiments,
+            register_graph_experiments,
         )
         exp_id = p.get("id", "")
         # Always re-register graph experiments — the Python registry cache may have been
@@ -1264,7 +1266,7 @@ async def _execute_action_inner(t: str, p: dict) -> dict[str, Any]:  # noqa: PLR
 
     # ── acquire_corpus ──────────────────────────────────────────────────────────
     if t == "acquire_corpus":
-        from glossa_lab.corpus_acquirer import acquire, get_catalog  # noqa: PLC0415
+        from glossa_lab.corpus_acquirer import acquire  # noqa: PLC0415
         from glossa_lab.database import get_db  # noqa: PLC0415
 
         source_id  = p.get("source_id", "custom_url")
@@ -1358,11 +1360,13 @@ async def ai_chat_stream(body: ChatRequest):
       data: {"delta": "token text"}       — partial token
       data: {"done": true, "actions": [...]}  — final event with parsed actions
     """
-    from fastapi.responses import StreamingResponse  # noqa: PLC0415
-    from glossa_lab.ai_utils import _get_provider_prefs, _call_ollama  # noqa: PLC0415
-    from glossa_lab.model_profiles import get_profile, trim_history  # noqa: PLC0415
-    from glossa_lab.experiment_base import discover_experiments  # noqa: PLC0415
     import urllib.request  # noqa: PLC0415
+
+    from fastapi.responses import StreamingResponse  # noqa: PLC0415
+
+    from glossa_lab.ai_utils import _get_provider_prefs  # noqa: PLC0415
+    from glossa_lab.experiment_base import discover_experiments  # noqa: PLC0415
+    from glossa_lab.model_profiles import get_profile, trim_history  # noqa: PLC0415
 
     # Build the same system prompt as /ai/chat
     context_block = ""

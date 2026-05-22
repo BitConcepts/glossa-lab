@@ -278,22 +278,23 @@ def call_llm(
     temperature: float = 0.3,
     provider_override: str | None = None,
     model_override: str | None = None,
+    exclude_provider_ids: set[str] | None = None,
 ) -> str:
     """Call the configured LLM and return the assistant message text.
 
     Resolution:
       0. If provider_override + model_override are supplied, use those directly.
-      1. If `bucket` is set, resolve via model_assignments table:
+      1. If ``bucket`` is set, resolve via model_assignments table:
          primary → fallback → global primary → global fallback.
-      2. Legacy fallback: old waterfall (Ollama → cloud keys → endpoint).
-
-    Returns (text, ai_meta) when called via call_llm_with_meta(), or just
-    the text string for backward compatibility.
+         Providers in ``exclude_provider_ids`` are skipped so callers that
+         already got a RuntimeError from one provider can advance to the next
+         slot rather than hitting the same dead provider again.
+      2. Legacy waterfall (Ollama → cloud keys → endpoint).
 
     Raises ValueError if no provider is available.
     Raises RuntimeError on API/network error.
     """
-    # ── 0. Explicit override (from AI chat model picker) ───────────────────────
+    # ── 0. Explicit override (from AI chat model picker) ─────────────────────
     if provider_override and model_override:
         return _dispatch_override(
             provider_override, model_override, messages,
@@ -301,9 +302,9 @@ def call_llm(
             max_tokens=max_tokens, temperature=temperature,
         )
 
-    # ── 1. Bucket-based resolution (new system) ────────────────────────────
+    # ── 1. Bucket-based resolution (new system) ──────────────────────
     if bucket:
-        resolved = _resolve_bucket_sync(bucket)
+        resolved = _resolve_bucket_sync(bucket, exclude_provider_ids=exclude_provider_ids)
         if resolved:
             prov = resolved["_provider"]
             model = resolved["model"]
@@ -359,13 +360,24 @@ def call_llm_with_meta(
 # ── Bucket resolution (sync, for use in thread executor) ──────────────────
 
 
-def _resolve_bucket_sync(bucket: str) -> dict[str, Any] | None:
-    """Sync sqlite3 lookup for model_assignments + provider_registry."""
+def _resolve_bucket_sync(
+    bucket: str,
+    exclude_provider_ids: set[str] | None = None,
+) -> dict[str, Any] | None:
+    """Sync sqlite3 lookup for model_assignments + provider_registry.
+
+    Iterates the full resolution chain (bucket-primary → bucket-fallback →
+    global-primary → global-fallback) and returns the first slot whose
+    provider is enabled AND not in *exclude_provider_ids*.  This lets callers
+    that already received a RuntimeError from one provider advance to the next
+    slot automatically rather than re-hitting the same dead provider.
+    """
     from glossa_lab.database import get_db  # noqa: PLC0415
     db = get_db()
     if db is None:
         return None
     db_path = str(db._path)  # noqa: SLF001
+    _excluded = exclude_provider_ids or set()
     try:
         conn = sqlite3.connect(db_path, timeout=3)
         conn.row_factory = sqlite3.Row
@@ -385,6 +397,9 @@ def _resolve_bucket_sync(bucket: str) -> dict[str, Any] | None:
                 )
                 prov = pcur.fetchone()
                 if not prov:
+                    continue
+                # Skip providers that have already failed for this call chain.
+                if prov["id"] in _excluded:
                     continue
                 headers = {}
                 try:

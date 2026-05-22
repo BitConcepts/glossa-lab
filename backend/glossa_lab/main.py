@@ -225,8 +225,19 @@ async def lifespan(app: FastAPI):
                                   prov["name"], len(models))
                         ok += 1
                     else:
-                        _log.warning("Provider probe: '%s' → unreachable: %s",
-                                     prov["name"], result.get("message", ""))
+                        msg = result.get("message", "")
+                        # Connection refused = local service simply not running;
+                        # downgrade to INFO so logs don't fill with false alarms.
+                        _is_conn_refused = any(k in str(msg).lower() for k in (
+                            "connection refused", "actively refused", "10061",
+                            "connection error", "remote end closed",
+                        ))
+                        if _is_conn_refused:
+                            _log.info("Provider probe: '%s' → offline (local service not running)",
+                                      prov["name"])
+                        else:
+                            _log.warning("Provider probe: '%s' → unreachable: %s",
+                                         prov["name"], msg)
                         err += 1
                 except Exception as _exc:  # noqa: BLE001
                     _log.warning("Provider probe: '%s' → error: %s", prov.get("name", "?"), _exc)

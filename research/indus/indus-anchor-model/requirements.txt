@@ -1,0 +1,6 @@
+# Requirements for Indus Anchor Model reproducibility package
+# run_all_public_checks.py and run_fish_sign_test.py require only stdlib
+# run_betweenness.py requires networkx
+
+networkx>=3.0
+pandas>=2.0          # optional — for script extensions; not required by core scripts

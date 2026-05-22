@@ -203,6 +203,12 @@ We present a computational grammar and candidate anchor model (Glossa-Lab, Phase
 \item
   Grammar variance retest (Phase-170): 93.2\% sign-level accuracy at
   161 H+M (stable from Phase-133 baseline)
+\item
+  Betweenness centrality stratification (Phases 172--177): full
+  161-sign H+M directed bigram graph (161 nodes, 414 edges); M267
+  confirmed rank~3 MEDIAL bridge (BC\,=\,0.051, 81\% MEDIAL); M342
+  rank~1 structural hub (BC\,=\,0.055); 141/161 H+M signs with
+  BC\,=\,0 consistent with personal-name syllable candidates
 \end{enumerate}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -938,6 +944,41 @@ methodological definitions (Phase-133 used a `relaxed' full-match
 criterion over tokens; Phase-170 uses strict sign-level accuracy).
 Both results are consistent with the 3-slot grammar model as a good description of the positional behaviour of H+M signs.
 
+\subsubsection{3.32 Betweenness Centrality Stratification
+(Phases 172--177)}\label{betweenness-centrality-stratification-phases-172-177}
+
+We applied betweenness centrality (BC) analysis to the full H+M directed
+bigram network to identify which signs function as structural bridges
+between the INITIAL classifier and TERMINAL suffix clusters. The network
+includes all H+M\texttimes{}H+M adjacent bigrams at \textgreater{}=2 seal tokens
+(161 nodes, 414 directed edges; Holdat LLC Corpus V3, unified per-seal
+sequences). BC was computed as the normalised fraction of shortest paths
+between all node pairs that pass through each node.
+
+Ranked by BC: \textbf{M342} (ay/\={a}, rank~1, BC\,=\,0.055) is the
+highest-betweenness sign. Every inscription formula converges on the
+terminal slot regardless of semantic domain, placing M342 on the
+maximum number of inter-cluster shortest paths and making it the
+structural hub of the full network. \textbf{M267} (iN/in, rank~3, BC\,=\,0.051), at 81\% MEDIAL in the corpus, functions as a
+grammatical junction marker connecting INITIAL classifiers to MEDIAL
+guild-title expressions; this confirms the bridge-node interpretation
+of the genitive particle (\S3.4) on independent network-structural
+evidence. \textbf{M099} (kol/ko\d{l}, rank~10, BC\,=\,0.018) is a
+confirmed bridge node (BC\,\textgreater{}\,0, 77\% MEDIAL). Its rank is
+lower in the full 414-edge graph than in sparser filtered networks
+(high PMI threshold, top-30 bigrams) because denser graphs distribute
+inter-cluster shortest paths across more intermediate medial signs;
+M099 is rank~1 in focused sub-graphs such as the 22-anchor network
+described by Roif (personal communication, 2026).
+
+141 of 161 H+M signs have BC\,=\,0. These signs lie on no shortest
+path between formula clusters and are consistent with personal-name
+syllable candidates: their collocate profiles are idiosyncratic and
+not shared across formula types. This is the network signature expected
+for arbitrary phonetic content (name syllables) rather than grammatical
+structure, and it is consistent with the structural-ceiling finding in
+\S3.9.
+
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{4. Discussion}\label{discussion}
@@ -1072,7 +1113,7 @@ All sign readings, confidence levels, DEDR citations, basis statements, analysis
 Mahadevan (1977) for the
 sign catalogue. Parpola (1994, 2010) for the Dravidian decipherment
 framework that grounds all readings. I thank G. Martini for discussion of later South Asian administrative vocabulary.
-I thank Avishai Roif for correspondence on fish-sign polysemy and mnemonic/shorthand interpretations.
+I thank Avishai Roif for correspondence on fish-sign polysemy, mnemonic/shorthand interpretations, and for the directed-graph betweenness methodology that motivated the analysis in \S3.32.
 Ashish Nair for the independent replication study (arXiv:2604.17828).
 
 \textbf{AI Disclosure}: This research was conducted with AI-assisted

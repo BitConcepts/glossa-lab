@@ -463,21 +463,21 @@ def main() -> None:
     for path in (OUTPUTS / "phase172_betweenness_full.json",
                  REPORTS / "phase172_betweenness_full.json"):
         path.write_text(json.dumps(p172, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"\n  ✓ Phase 172 written")
+    print("\n  ✓ Phase 172 written")
 
     # Phase 173
     p173 = run_phase173(anchors, p172)
     for path in (OUTPUTS / "phase173_irresolvable_check.json",
                  REPORTS / "phase173_irresolvable_check.json"):
         path.write_text(json.dumps(p173, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"  ✓ Phase 173 written")
+    print("  ✓ Phase 173 written")
 
     # Phase 174
     p174 = run_phase174(anchors, p172)
     for path in (OUTPUTS / "phase174_filtered_name_matching.json",
                  REPORTS / "phase174_filtered_name_matching.json"):
         path.write_text(json.dumps(p174, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"  ✓ Phase 174 written")
+    print("  ✓ Phase 174 written")
 
     print("\n" + "="*60)
     print("SUMMARY")
@@ -486,7 +486,7 @@ def main() -> None:
     print(f"           Grammar candidates (BC>0): {len(p172['grammar_candidates'])}")
     print(f"           Name-syl candidates (BC=0): {len(p172['name_syllable_candidates'])}")
     print(f"Phase 173 — {p173['n_name_syllable_candidates']}/18 irresolvable signs → BC=0  [{p173['verdict']}]")
-    print(f"Phase 174 — Shu-ilishu coverage: ", end="")
+    print("Phase 174 — Shu-ilishu coverage: ", end="")
     shu = p174.get("shu_ilishu_assessment")
     print(f"{shu['n_covered']}/{shu['n_slots']} slots" if shu else "not found")
     print(f"           Uncovered phonemes: {p174['phonemes_not_covered'][:10]}")

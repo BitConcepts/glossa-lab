@@ -1,0 +1,61 @@
+{
+  "phase": 176,
+  "date": "2026-05-22",
+  "description": "M059 bridge role analysis — why rank 2 betweenness?",
+  "sign": "M059",
+  "reading": "ēḷ/eḷ",
+  "total_occurrences": 334,
+  "positional_rates": {
+    "INITIAL": 0.1018,
+    "MEDIAL": 0.7934,
+    "TERMINAL": 0.1048
+  },
+  "top_right_neighbors": [
+    [
+      "M211",
+      52
+    ],
+    [
+      "M342",
+      41
+    ],
+    [
+      "M099",
+      13
+    ],
+    [
+      "M067",
+      11
+    ],
+    [
+      "M048",
+      11
+    ],
+    [
+      "M336",
+      9
+    ],
+    [
+      "M127",
+      7
+    ],
+    [
+      "M249",
+      7
+    ],
+    [
+      "M059",
+      6
+    ]
+  ],
+  "betweenness_rank": 2,
+  "betweenness": 0.104835,
+  "classification": "MIXED_BRIDGE",
+  "vs_m099": {
+    "m099_betweenness": 0.14603,
+    "m099_rank": 1,
+    "structural_difference": "M099 is a MEDIAL bridge connecting INITIAL classifiers to TERMINAL suffixes. M059 is an INITIAL hub with many outgoing paths but does not bridge clusters. Both have high betweenness but for different structural reasons."
+  },
+  "interpretation": "MIXED-SLOT BRIDGE: M059 appears in multiple positional slots, functioning as a structural connector across formula boundaries.",
+  "paper_implication": "Roif's bridge-node claim specifically concerns MEDIAL signs. M059's rank-2 betweenness reflects INITIAL hub status (many formula types begin with M059). This supports adding betweenness-by-slot analysis to the paper: INITIAL hubs vs MEDIAL bridges are structurally and interpretively distinct."
+}

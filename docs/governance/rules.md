@@ -87,6 +87,18 @@ Foundation Check NEW-G (`GPU CUDA available`) MUST pass. Silent CPU fallback is 
 
 No commit touching anchor or phase data may be pushed with a failing foundation check. This check is the primary regression guard for the decipherment state.
 
+### H25 — Tray launch/stop must use VBS wrappers — no visible shell
+All start and stop operations for the Glossa Lab tray MUST use `wscript.exe //nologo` with the dedicated VBS wrappers in `scripts/`:
+
+- **Launch:** `wscript.exe //nologo scripts\launch-tray.vbs` (fire-and-forget, no wait)
+- **Stop:** `wscript.exe //nologo scripts\stop-tray.vbs` (waits for kill to complete)
+
+Agents MUST NOT start the tray via `shell.cmd tray`, `start_tray.ps1`, `Start-Process`, or any method that spawns a visible cmd, PowerShell, or console window. The `GlossaLab` scheduled task action MUST target `wscript.exe`, never `cmd.exe` or `powershell.exe`.
+
+Violation is an immediate stop condition.
+
+---
+
 ### H24 — No personal information or private correspondence in the repository
 This is a public open-source repository. Agents and contributors MUST NOT commit, push, or otherwise add to any tracked file:
 

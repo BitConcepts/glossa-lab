@@ -81,10 +81,8 @@ REM ─────────────────────────�
 REM Always stop existing instances first to prevent tray stacking.
 call :do_stop_silent
 timeout /t 2 /nobreak >nul
-REM Start-Process -WindowStyle Hidden fires pythonw.exe in the background
-REM and returns immediately — non-blocking, zero console window.
-powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-  "Start-Process -FilePath '%VENV_PYTHONW%' -ArgumentList '"%ENTRY_POINT%"' -WindowStyle Hidden"
+REM H25: Launch via wscript.exe + launch-tray.vbs — zero visible window.
+wscript.exe //nologo "%REPO_ROOT%\scripts\launch-tray.vbs"
 if errorlevel 1 (
     echo [ERROR] Failed to start GlossaLab.
     exit /b 1

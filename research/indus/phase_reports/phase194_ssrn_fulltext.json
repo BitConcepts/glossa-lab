@@ -1,0 +1,33 @@
+{
+  "phase": 194,
+  "elapsed_s": 4.2,
+  "papers": [
+    {
+      "paper_id": "E17",
+      "doi": "10.2139/ssrn.5079207",
+      "title": "Indus Script's Gemstone and Precious Shiny Commodity Related Fish-Signs",
+      "text_len": 170,
+      "n_proposals": 0,
+      "proposals": [],
+      "new": [],
+      "confirms": [],
+      "conflicts": [],
+      "text_sample": "Indus Script’s Gemstone and Precious Shiny Commodity Related Fish-Signs, and Indus Gemstone-Word “Maṇi”: Ancestral Dravidian Symbolism in Indus Logograms and Language(s)?"
+    },
+    {
+      "paper_id": "E18",
+      "doi": "10.2139/ssrn.5083945",
+      "title": "Pleonastic Compounding, Cults and Dynastic Titles: A Few Clues to the Indus Signs",
+      "text_len": 901,
+      "n_proposals": 0,
+      "proposals": [],
+      "new": [],
+      "confirms": [],
+      "conflicts": [],
+      "text_sample": "Pleonastic Compounding, Cults and Dynastic Titles: A Few Clues to the Indus Signs  Building upon the Indus 'Script' leads of Iravatham Mahadevan and Asko Parpola, this paper presents several internally coherent hypotheses regarding the Indus Signs, Dravidian linguistic phenomena, and historical Tamil dynasties. The connections between Old Tamil and Classical Sanskrit poetic styles and the Indus Signs' potential relationships with a Dravidian language are explored, alongside tentative readings of Indus glyphs and their implications for understanding South Asian history. The iconographical and quasi-linguistic nature of the 'script' proposed by the statistical analyses by Steve Farmer, Richard Sproat and Michael Witzel is very well corroborated by the nature of the results, and is found to not wholly contradict the results built on assumptions of it being a script, by Mahadevan and Parpola."
+    }
+  ],
+  "total_new_proposals": 0,
+  "total_confirms": 0,
+  "verdict": "No sign-phoneme proposals extracted — papers may be paywalled or abstract-only"
+}

@@ -976,3 +976,70 @@ None — no new sign assignments. Results reinforce existing M047=min/mīn (MEDI
 - **REQs affected**: REQ-044,REQ-085
 - **Status**: complete
 - **Chain hash**: `22c0ae3777703952...`
+
+## 2026-05-22 — Tray launch/stop: eliminate visible shell windows (H25)
+
+Objective:
+Fix all tray launch and stop mechanisms to produce zero visible cmd/PS windows.
+Hardcode the correct protocol as governance rule H25.
+
+What was done:
+- Created scripts/launch-tray.vbs: WScript.Shell.Run with venv pythonw.exe and window
+  style 0 (hidden), fire-and-forget. Sets PYTHONPATH to tray/. Zero visible windows.
+- Created scripts/stop-tray.vbs: WScript.Shell.Run PowerShell Stop-Process -Force
+  targeting pythonw.exe processes with CommandLine matching *-m glossa_tray*, window 0,
+  synchronous (True = wait).
+- Updated scripts/register_task.ps1: Task Scheduler action changed from
+  cmd.exe /c shell.cmd tray to wscript.exe //nologo scripts\launch-tray.vbs.
+  Removed auto-start from registration (launch and register are now separate operations).
+- Updated setup-os.cmd :do_start: replaced powershell Start-Process ... with
+  wscript.exe //nologo scripts\launch-tray.vbs (H25 compliant).
+- Removed stale GlossaLab and GlossaLabTray HKCU Run registry keys (duplicate
+  tray launchers; the scheduled task is the sole at-logon startup source).
+- Re-registered GlossaLab scheduled task (elevated) with the new wscript action.
+- Added H25 to docs/governance/rules.md and .specsmith/governance/rules.yaml:
+  agents MUST use VBS wrappers. shell.cmd tray / start_tray.ps1 / Start-Process
+  / cmd.exe actions are forbidden. Violation = immediate stop condition.
+- Investigation finding: venv pythonw.exe is the Python 3.12 py.exe launcher (pyvenv.cfg
+  home = scoop\python312). Spawns scoop pythonw worker as child and waits. TWO pythonw
+  processes per tray launch is EXPECTED and correct — one tray icon.
+
+Files changed:
+- scripts/launch-tray.vbs (new)
+- scripts/stop-tray.vbs (new)
+- scripts/register_task.ps1 (updated)
+- setup-os.cmd (updated)
+- docs/governance/rules.md (H25 added)
+- .specsmith/governance/rules.yaml (H25 added)
+- HKCU Run registry: GlossaLab and GlossaLabTray keys removed
+
+Checks run:
+- Confirmed scheduled task registered with wscript action: PASS
+- Confirmed launch produces no visible shell window: PASS
+- Confirmed two-process pattern is py.exe launcher + scoop worker (not duplicate tray): PASS
+- Confirmed stop-tray.vbs kills both processes cleanly when tray is fully up: PASS
+
+Results:
+- Launch: PASS — no shell window, tray appears in system tray
+- Stop: PASS — wscript.exe //nologo stop-tray.vbs kills both processes cleanly
+- Note: tray takes ~5-8s to fully initialize after fire-and-forget launch
+
+Token estimate: high
+
+Open TODOs:
+- [ ] H11 violation in tray/glossa_tray/main.py _status_poller: while True: loop
+      has no deadline guard — add max_iterations or deadline timestamp
+- [ ] setup-os.cmd install still adds HKCU Run key (GlossaLab) in addition to scheduled
+      task — tray startup code checks for scheduled task, not registry key, so the
+      registry key will be re-added on every first launch. Reconcile or remove.
+- [ ] Evidence sweep re-run pending (from previous session)
+- [ ] CI Playwright job status unknown (in-progress at end of previous session)
+
+Risks:
+- stop-tray.vbs must be called AFTER tray is fully initialized; calling it too early
+  finds no matching processes (processes appear in WMI after ~5-8s)
+- If venv is recreated, pyvenv.cfg home may change; re-register task if it breaks
+
+Next step:
+Fix H11 violation in _status_poller (add max_iterations or deadline), then
+reconcile setup-os.cmd install registry key vs scheduled task autostart check.

@@ -1,0 +1,115 @@
+{
+  "phase": 185,
+  "elapsed_s": 9.6,
+  "m047_current": {
+    "reading": "min/m\u012bn",
+    "confidence": "MEDIUM",
+    "basis": "FACT-CHECK CORRECTION 2026-05-11: Distributional assignment 'par' (LOW, Round 2) overridden by crosswalk evidence. M047 = P47 = 'fish (plain)' per mahadevan_parpola_crosswalk.json (sourced from Parpola 1994a + Mahadevan 1977). Reading 'm\u012bn' (fish/star, DEDR 4897) is the Parpola canonical anchor confirmed by iconographic_anchors.json (fish-in-crocodile-mouth, H-902B offerings tablet, eZu-miin compound). Freq=13 in Holdat corpus. Previous distributional: {'reading': 'p\u0101r', 'confidence': 'LOW', 'basis': 'Round 2: INITIAL position (freq=13), distributional assignment'}"
+  },
+  "fish_sign_proposals": [
+    {
+      "sign": "M047",
+      "phoneme": "min",
+      "confidence": "HIGH",
+      "corpus_freq": 0,
+      "source": "Parpola1994 fish=min/star; DEDR 4897"
+    },
+    {
+      "sign": "M048",
+      "phoneme": "mu",
+      "confidence": "HIGH",
+      "corpus_freq": 0,
+      "source": "Already anchored (existing)"
+    },
+    {
+      "sign": "M090",
+      "phoneme": "ain",
+      "confidence": "MEDIUM",
+      "corpus_freq": 0,
+      "source": "Existing anchor aintu=5 \u2014 recheck fish context"
+    },
+    {
+      "sign": "M169",
+      "phoneme": "rati",
+      "confidence": "CANDIDATE",
+      "corpus_freq": 0,
+      "source": "2022 ratti-paper: Abrus seed weight unit; DEDR parallel rati"
+    },
+    {
+      "sign": "M293",
+      "phoneme": "ta",
+      "confidence": "HIGH",
+      "corpus_freq": 0,
+      "source": "Already anchored"
+    },
+    {
+      "sign": "M056",
+      "phoneme": "min2",
+      "confidence": "CANDIDATE",
+      "corpus_freq": 0,
+      "source": "2025 fish-signs paper: fish variant for gemstone context"
+    },
+    {
+      "sign": "M055",
+      "phoneme": "min3",
+      "confidence": "CANDIDATE",
+      "corpus_freq": 0,
+      "source": "2025 fish-signs paper: compound fish sign"
+    }
+  ],
+  "bigram_analysis": {
+    "fish_sign": "M047",
+    "corpus_freq": 0,
+    "inscriptions_with_fish": 0,
+    "position_distribution": {},
+    "top_preceding_signs": [],
+    "top_following_signs": [],
+    "rebus_test_pairs_found": {
+      "M047-M342": 0,
+      "M047-M046": 0,
+      "M047-M391": 0,
+      "M047-M099": 0,
+      "M047-M048": 0,
+      "M047-M176": 0,
+      "M047-M089": 0
+    }
+  },
+  "fulltext_proposals": [],
+  "sa_baseline": {
+    "label": "baseline_HIGH",
+    "mean_consistency": 0.4271,
+    "n_seeds": 3,
+    "n_signs_mapped": 64
+  },
+  "sa_with_fish": {
+    "label": "with_fish_anchors",
+    "mean_consistency": 0.4271,
+    "n_seeds": 3,
+    "n_signs_mapped": 64
+  },
+  "consistency_delta": 0.0,
+  "verdict": "FISH-SIGN ANCHORS NEUTRAL OR NEGATIVE",
+  "candidate_new_anchors": [
+    {
+      "sign": "M169",
+      "phoneme": "rati",
+      "confidence": "CANDIDATE",
+      "corpus_freq": 0,
+      "source": "2022 ratti-paper: Abrus seed weight unit; DEDR parallel rati"
+    },
+    {
+      "sign": "M056",
+      "phoneme": "min2",
+      "confidence": "CANDIDATE",
+      "corpus_freq": 0,
+      "source": "2025 fish-signs paper: fish variant for gemstone context"
+    },
+    {
+      "sign": "M055",
+      "phoneme": "min3",
+      "confidence": "CANDIDATE",
+      "corpus_freq": 0,
+      "source": "2025 fish-signs paper: compound fish sign"
+    }
+  ]
+}

@@ -2586,11 +2586,10 @@
     },
     "M427": {
       "reading": "en",
-      "confidence": "HIGH",
-      "basis": "Phase-199 TRIPLE-LM CONVERGENCE (Tamil+NorthDr+ProtoDr) at consistency=1.000. Independent evidence: (1) McAlpin 1981 Elamo-Dravidian — Elamite an-=lord/ruler, PDr *an/*an (DEDR 298), STRONG tier. (2) Brahui an (person,lord) — Phase-189 North Dravidian coverage. (3) SA Phase-190 consistency=1.000. (4) Grammar Phase-195: title_formula 100% — /en/ fills last slot. (5) Phase-201: 130 inscriptions use M427 in commodity/place person-marker context. Original Phase-192 basis: absent phoneme fill from Elamo-Dravidian. Upgraded MEDIUM→HIGH 2026-05-23.",
-      "source": "Phase-192 (Elamo-Dravidian) + Phase-199 Triple-LM cons=1.000 + Phase-201 inscription context + McAlpin 1981 TAPS",
-      "_phase192_absent_phoneme": true,
-      "_upgrade_p199": "MEDIUM→HIGH: Triple-LM convergence 2026-05-23"
+      "confidence": "MEDIUM",
+      "basis": "Phase-192 absent phoneme fill. Elamite (STRONG): McAlpin 1974 cognate. Brahui North Dravidian: Phase-189 coverage. SA convergence: Phase-190 delta_b=+0.0250. Grammar validated: Phase-191. Confidence capped at MEDIUM pending ICIT corpus confirmation.",
+      "source": "Phase-190/191/192 Elamo-Dravidian + Brahui + SA (2026-05-23)",
+      "_phase192_absent_phoneme": true
     },
     "M874": {
       "reading": "ki",
@@ -2631,7 +2630,7 @@
     "low_count": 66
   },
   "total_all_entries": 397,
-  "n_high": 76,
+  "n_high": 75,
   "n_medium": 88,
   "n_low": 239,
   "corpus_signs": 390,

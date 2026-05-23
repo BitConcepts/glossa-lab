@@ -1,0 +1,35 @@
+{
+  "_citation": {
+    "primary": [
+      "A.1"
+    ]
+  },
+  "gpu_device": "cpu",
+  "n_papers_fetched": 211,
+  "n_unique_findings": 0,
+  "n_actionable_findings": 0,
+  "n_new_sign_proposals": 0,
+  "n_m293_evidence": 0,
+  "n_new_crosswalk_entries": 0,
+  "n_dedr_entries": 0,
+  "queries_run": [
+    "indus_dravidian_core",
+    "parpola_sign_readings",
+    "dedr_rebus_indus",
+    "mahadevan_crosswalk",
+    "m293_bow_sign",
+    "indus_phoneme_proposals",
+    "indus_grammar_formula",
+    "recent_indus_work"
+  ],
+  "actionable_findings": [],
+  "new_sign_proposals": [],
+  "m293_evidence": [],
+  "new_crosswalk_entries": [],
+  "dedr_entries": [],
+  "paper_source_breakdown": {
+    "semanticscholar": 85,
+    "openalex": 126
+  },
+  "verdict": "Phase-88: 211 papers mined from SemanticScholar/OpenAlex/EuropePMC. 0 unique findings extracted. 0 new sign proposals (not yet in anchor set). 0 M293-specific evidence items found. 0 new P→M crosswalk entries. Top finding actionability: 0.0/5.0."
+}

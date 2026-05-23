@@ -2517,6 +2517,106 @@ try:
 except Exception as _p169170_exc:  # noqa: BLE001
     logger.warning("Phase-169-170 nodes not registered: %s", _p169170_exc)
 
+# ── Phase-171-178 nodes (network centrality, betweenness stratification, network deep dive)
+try:
+    from glossa_lab.experiment_graph_phase171_178 import (
+        _phase171_178_node_defs as _p171178_defs,  # noqa: PLC0415
+    )
+    for _d in _p171178_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-171-178 nodes (network analysis batch)", len(_p171178_defs()))
+except Exception as _p171178_exc:  # noqa: BLE001
+    logger.warning("Phase-171-178 nodes not registered: %s", _p171178_exc)
+
+# ── Phase-179-180 nodes (recent literature mine + Mesopotamian contact mine)
+try:
+    from glossa_lab.experiment_graph_phase179_180 import (
+        _phase179_180_node_defs as _p179180_defs,  # noqa: PLC0415
+    )
+    for _d in _p179180_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-179-180 nodes (mining batch)", len(_p179180_defs()))
+except Exception as _p179180_exc:  # noqa: BLE001
+    logger.warning("Phase-179-180 nodes not registered: %s", _p179180_exc)
+
+# ── Phase-181 node (aDNA archaeogenetics mine)
+try:
+    from glossa_lab.experiment_graph_phase181 import (
+        _phase181_node_defs as _p181_defs,  # noqa: PLC0415
+    )
+    for _d in _p181_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-181 nodes (aDNA archaeogenetics mine)", len(_p181_defs()))
+except Exception as _p181_exc:  # noqa: BLE001
+    logger.warning("Phase-181 nodes not registered: %s", _p181_exc)
+
+# ── Phase-182 node (deep evidence mine)
+try:
+    from glossa_lab.experiment_graph_phase182 import (
+        _phase182_node_defs as _p182_defs,  # noqa: PLC0415
+    )
+    for _d in _p182_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-182 nodes (deep evidence mine)", len(_p182_defs()))
+except Exception as _p182_exc:  # noqa: BLE001
+    logger.warning("Phase-182 nodes not registered: %s", _p182_exc)
+
+# ── Phase-183 node (bulk mine 5000)
+try:
+    from glossa_lab.experiment_graph_phase183 import (
+        _phase183_node_defs as _p183_defs,  # noqa: PLC0415
+    )
+    for _d in _p183_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-183 nodes (bulk mine 5000)", len(_p183_defs()))
+except Exception as _p183_exc:  # noqa: BLE001
+    logger.warning("Phase-183 nodes not registered: %s", _p183_exc)
+
+# ── Phase-184 node (bulk mine 5000 — second run, fresh clusters)
+try:
+    from glossa_lab.experiment_graph_phase184 import (
+        _phase184_node_defs as _p184_defs,  # noqa: PLC0415
+    )
+    for _d in _p184_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-184 nodes (bulk mine 5000 fresh clusters)", len(_p184_defs()))
+except Exception as _p184_exc:  # noqa: BLE001
+    logger.warning("Phase-184 nodes not registered: %s", _p184_exc)
+
+# ── Phase-185-189 nodes (fish-sign battery, Elamo-Dravidian gap, 2026 hypotheses,
+#                      commodity semantic, north Dravidian LM)
+try:
+    from glossa_lab.experiment_graph_phase185_189 import (
+        _phase185_189_node_defs as _p185189_defs,  # noqa: PLC0415
+    )
+    for _d in _p185189_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-185-189 decipherment experiment nodes", len(_p185189_defs()))
+except Exception as _p185189_exc:  # noqa: BLE001
+    logger.warning("Phase-185-189 nodes not registered: %s", _p185189_exc)
+
+# ── Phase-190-192 nodes (Elamo anchor injection, grammar validation, anchor update proposal)
+try:
+    from glossa_lab.experiment_graph_phase190_192 import (
+        _phase190_192_node_defs as _p190192_defs,  # noqa: PLC0415
+    )
+    for _d in _p190192_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-190-192 anchor pipeline nodes", len(_p190192_defs()))
+except Exception as _p190192_exc:  # noqa: BLE001
+    logger.warning("Phase-190-192 nodes not registered: %s", _p190192_exc)
+
+# ── Phase-193-195 nodes (SA rerun, SSRN fetch, grammar revalidation)
+try:
+    from glossa_lab.experiment_graph_phase193_195 import (
+        _phase193_195_node_defs as _p193195_defs,  # noqa: PLC0415
+    )
+    for _d in _p193195_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-193-195 nodes", len(_p193195_defs()))
+except Exception as _p193195_exc:  # noqa: BLE001
+    logger.warning("Phase-193-195 nodes not registered: %s", _p193195_exc)
+
 # ── Graph execution
 
 def _topo_sort(nodes: list[dict], edges: list[dict]) -> list[dict]:

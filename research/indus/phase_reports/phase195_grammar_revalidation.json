@@ -1,0 +1,276 @@
+{
+  "phase": 195,
+  "elapsed_s": 0.0,
+  "positional_validation": [
+    {
+      "sign": "M427",
+      "reading": "en",
+      "actual_dominant": "MEDIAL",
+      "expected_dominant": "MIXED",
+      "consistent": true,
+      "t_rate": 0.279,
+      "i_rate": 0.184,
+      "m_rate": 0.537,
+      "dominant": "MEDIAL",
+      "total_occ": 147
+    },
+    {
+      "sign": "M874",
+      "reading": "ki",
+      "actual_dominant": "MEDIAL",
+      "expected_dominant": "MIXED",
+      "consistent": true,
+      "t_rate": 0.196,
+      "i_rate": 0.132,
+      "m_rate": 0.671,
+      "dominant": "MEDIAL",
+      "total_occ": 219
+    },
+    {
+      "sign": "M740",
+      "reading": "su",
+      "actual_dominant": "MEDIAL",
+      "expected_dominant": "TERMINAL",
+      "consistent": false,
+      "t_rate": 0.046,
+      "i_rate": 0.019,
+      "m_rate": 0.935,
+      "dominant": "MEDIAL",
+      "total_occ": 432
+    },
+    {
+      "sign": "M455",
+      "reading": "zi",
+      "actual_dominant": "INITIAL",
+      "expected_dominant": "MEDIAL",
+      "consistent": false,
+      "t_rate": 0.188,
+      "i_rate": 0.562,
+      "m_rate": 0.25,
+      "dominant": "INITIAL",
+      "total_occ": 48
+    },
+    {
+      "sign": "M868",
+      "reading": "gi",
+      "actual_dominant": "TERMINAL",
+      "expected_dominant": "MIXED",
+      "consistent": true,
+      "t_rate": 0.667,
+      "i_rate": 0.0,
+      "m_rate": 0.333,
+      "dominant": "TERMINAL",
+      "total_occ": 3
+    }
+  ],
+  "bigram_check": {
+    "M427": {
+      "top_predecessors": [
+        [
+          "min",
+          26
+        ],
+        [
+          "en",
+          8
+        ],
+        [
+          "kalam",
+          5
+        ],
+        [
+          "t\u014d\u1e37",
+          5
+        ],
+        [
+          "ki",
+          5
+        ]
+      ],
+      "top_successors": [
+        [
+          "ki",
+          10
+        ],
+        [
+          "en",
+          8
+        ],
+        [
+          "min",
+          5
+        ],
+        [
+          "t\u014d\u1e37",
+          4
+        ],
+        [
+          "kalam",
+          3
+        ]
+      ]
+    },
+    "M874": {
+      "top_predecessors": [
+        [
+          "ki",
+          111
+        ],
+        [
+          "min",
+          11
+        ],
+        [
+          "en",
+          10
+        ],
+        [
+          "t\u014d\u1e37",
+          4
+        ],
+        [
+          "ker",
+          2
+        ]
+      ],
+      "top_successors": [
+        [
+          "ki",
+          111
+        ],
+        [
+          "min",
+          11
+        ],
+        [
+          "en",
+          5
+        ],
+        [
+          "t\u014d\u1e37",
+          3
+        ],
+        [
+          "ce",
+          3
+        ]
+      ]
+    },
+    "M740": {
+      "top_predecessors": [
+        [
+          "min",
+          4
+        ]
+      ],
+      "top_successors": []
+    },
+    "M455": {
+      "top_predecessors": [],
+      "top_successors": []
+    },
+    "M868": {
+      "top_predecessors": [
+        [
+          "min",
+          1
+        ]
+      ],
+      "top_successors": []
+    }
+  },
+  "formula_coverage": {
+    "title_formula": {
+      "expected": [
+        "k\u014d\u1e49",
+        "muruku",
+        "tiru",
+        "en",
+        "an",
+        "\u0101"
+      ],
+      "covered": [
+        "k\u014d\u1e49",
+        "muruku",
+        "tiru",
+        "en",
+        "an",
+        "\u0101"
+      ],
+      "pct": 100.0
+    },
+    "place_formula": {
+      "expected": [
+        "\u016br",
+        "il",
+        "ki"
+      ],
+      "covered": [
+        "\u016br",
+        "il",
+        "ki"
+      ],
+      "pct": 100.0
+    },
+    "person_formula": {
+      "expected": [
+        "an",
+        "\u0101l",
+        "en",
+        "am"
+      ],
+      "covered": [
+        "an",
+        "\u0101l",
+        "en",
+        "am"
+      ],
+      "pct": 100.0
+    },
+    "action_formula": {
+      "expected": [
+        "kol",
+        "tu",
+        "du",
+        "zi"
+      ],
+      "covered": [
+        "kol",
+        "tu",
+        "zi"
+      ],
+      "pct": 75.0
+    },
+    "commodity_formula": {
+      "expected": [
+        "min",
+        "pal",
+        "pon",
+        "to\u1e37",
+        "kol"
+      ],
+      "covered": [
+        "min",
+        "kol"
+      ],
+      "pct": 40.0
+    },
+    "speech_formula": {
+      "expected": [
+        "su",
+        "cu",
+        "c\u016b"
+      ],
+      "covered": [
+        "su",
+        "cu",
+        "c\u016b"
+      ],
+      "pct": 100.0
+    }
+  },
+  "formula_pct": 84.0,
+  "p192_consistent": 3,
+  "p192_total": 5,
+  "verdict": "3/5 entries consistent \u2014 2 need review."
+}

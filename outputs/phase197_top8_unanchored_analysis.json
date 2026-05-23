@@ -1,0 +1,352 @@
+{
+  "phase": 197,
+  "elapsed_s": 13.9,
+  "top8_analysis": [
+    {
+      "sign": "700",
+      "freq": 355,
+      "sa_modal": "aru",
+      "sa_consistency": 0.4,
+      "absent_hits": [],
+      "dedr_info": {},
+      "t_rate": 0.11,
+      "i_rate": 0.056,
+      "m_rate": 0.834,
+      "dominant_pos": "MEDIAL",
+      "top_cooccur": [
+        [
+          "min",
+          9
+        ],
+        [
+          "en",
+          3
+        ],
+        [
+          "ki",
+          2
+        ]
+      ],
+      "upgrade_candidate": false
+    },
+    {
+      "sign": "520",
+      "freq": 196,
+      "sa_modal": "porul",
+      "sa_consistency": 0.3,
+      "absent_hits": [],
+      "dedr_info": {
+        "dedr": "4428",
+        "meaning": "wealth, property, goods",
+        "phoneme_root": "por"
+      },
+      "t_rate": 0.107,
+      "i_rate": 0.082,
+      "m_rate": 0.811,
+      "dominant_pos": "MEDIAL",
+      "top_cooccur": [
+        [
+          "min",
+          24
+        ],
+        [
+          "en",
+          4
+        ],
+        [
+          "kalam",
+          3
+        ],
+        [
+          "ce",
+          2
+        ],
+        [
+          "t\u014d\u1e37",
+          1
+        ]
+      ],
+      "upgrade_candidate": false
+    },
+    {
+      "sign": "481",
+      "freq": 179,
+      "sa_modal": "kur",
+      "sa_consistency": 0.1,
+      "absent_hits": [],
+      "dedr_info": {},
+      "t_rate": 0.028,
+      "i_rate": 0.492,
+      "m_rate": 0.48,
+      "dominant_pos": "INITIAL",
+      "top_cooccur": [
+        [
+          "min",
+          38
+        ],
+        [
+          "en",
+          21
+        ],
+        [
+          "ki",
+          8
+        ],
+        [
+          "kalam",
+          6
+        ],
+        [
+          "po",
+          2
+        ]
+      ],
+      "upgrade_candidate": false
+    },
+    {
+      "sign": "692",
+      "freq": 171,
+      "sa_modal": "nal",
+      "sa_consistency": 0.4,
+      "absent_hits": [],
+      "dedr_info": {
+        "dedr": "3594",
+        "meaning": "good, excellent, fine",
+        "phoneme_root": "nal"
+      },
+      "t_rate": 0.175,
+      "i_rate": 0.456,
+      "m_rate": 0.368,
+      "dominant_pos": "INITIAL",
+      "top_cooccur": [
+        [
+          "min",
+          23
+        ],
+        [
+          "en",
+          8
+        ],
+        [
+          "ki",
+          4
+        ],
+        [
+          "ce",
+          2
+        ],
+        [
+          "ker",
+          1
+        ]
+      ],
+      "upgrade_candidate": true
+    },
+    {
+      "sign": "861",
+      "freq": 138,
+      "sa_modal": "nallavar",
+      "sa_consistency": 0.5,
+      "absent_hits": [],
+      "dedr_info": {
+        "dedr": "3594",
+        "meaning": "good people (honorific)",
+        "phoneme_root": "nal"
+      },
+      "t_rate": 0.312,
+      "i_rate": 0.239,
+      "m_rate": 0.449,
+      "dominant_pos": "MEDIAL",
+      "top_cooccur": [
+        [
+          "min",
+          25
+        ],
+        [
+          "en",
+          2
+        ],
+        [
+          "ker",
+          1
+        ]
+      ],
+      "upgrade_candidate": true
+    },
+    {
+      "sign": "820",
+      "freq": 121,
+      "sa_modal": "porul",
+      "sa_consistency": 0.1,
+      "absent_hits": [],
+      "dedr_info": {
+        "dedr": "4428",
+        "meaning": "wealth, property, goods",
+        "phoneme_root": "por"
+      },
+      "t_rate": 0.223,
+      "i_rate": 0.24,
+      "m_rate": 0.537,
+      "dominant_pos": "MEDIAL",
+      "top_cooccur": [
+        [
+          "min",
+          4
+        ],
+        [
+          "t\u014d\u1e37",
+          1
+        ]
+      ],
+      "upgrade_candidate": false
+    },
+    {
+      "sign": "817",
+      "freq": 107,
+      "sa_modal": "kur",
+      "sa_consistency": 0.2,
+      "absent_hits": [],
+      "dedr_info": {},
+      "t_rate": 0.196,
+      "i_rate": 0.14,
+      "m_rate": 0.664,
+      "dominant_pos": "MEDIAL",
+      "top_cooccur": [
+        [
+          "min",
+          30
+        ],
+        [
+          "en",
+          19
+        ],
+        [
+          "ki",
+          18
+        ],
+        [
+          "t\u014d\u1e37",
+          16
+        ],
+        [
+          "ker",
+          13
+        ]
+      ],
+      "upgrade_candidate": false
+    },
+    {
+      "sign": "858",
+      "freq": 105,
+      "sa_modal": "min",
+      "sa_consistency": 0.2,
+      "absent_hits": [],
+      "dedr_info": {
+        "dedr": "4897",
+        "meaning": "fish; star; shine",
+        "phoneme_root": "min"
+      },
+      "t_rate": 0.248,
+      "i_rate": 0.305,
+      "m_rate": 0.448,
+      "dominant_pos": "MEDIAL",
+      "top_cooccur": [
+        [
+          "min",
+          41
+        ],
+        [
+          "t\u014d\u1e37",
+          23
+        ],
+        [
+          "en",
+          15
+        ],
+        [
+          "ce",
+          12
+        ],
+        [
+          "ki",
+          11
+        ]
+      ],
+      "upgrade_candidate": false
+    }
+  ],
+  "absent_candidates": [],
+  "upgrade_candidates": [
+    {
+      "sign": "692",
+      "freq": 171,
+      "sa_modal": "nal",
+      "sa_consistency": 0.4,
+      "absent_hits": [],
+      "dedr_info": {
+        "dedr": "3594",
+        "meaning": "good, excellent, fine",
+        "phoneme_root": "nal"
+      },
+      "t_rate": 0.175,
+      "i_rate": 0.456,
+      "m_rate": 0.368,
+      "dominant_pos": "INITIAL",
+      "top_cooccur": [
+        [
+          "min",
+          23
+        ],
+        [
+          "en",
+          8
+        ],
+        [
+          "ki",
+          4
+        ],
+        [
+          "ce",
+          2
+        ],
+        [
+          "ker",
+          1
+        ]
+      ],
+      "upgrade_candidate": true
+    },
+    {
+      "sign": "861",
+      "freq": 138,
+      "sa_modal": "nallavar",
+      "sa_consistency": 0.5,
+      "absent_hits": [],
+      "dedr_info": {
+        "dedr": "3594",
+        "meaning": "good people (honorific)",
+        "phoneme_root": "nal"
+      },
+      "t_rate": 0.312,
+      "i_rate": 0.239,
+      "m_rate": 0.449,
+      "dominant_pos": "MEDIAL",
+      "top_cooccur": [
+        [
+          "min",
+          25
+        ],
+        [
+          "en",
+          2
+        ],
+        [
+          "ker",
+          1
+        ]
+      ],
+      "upgrade_candidate": true
+    }
+  ],
+  "verdict": "No top-8 signs match absent phonemes. 2 upgrade candidates."
+}

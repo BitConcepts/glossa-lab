@@ -2617,6 +2617,17 @@ try:
 except Exception as _p193195_exc:  # noqa: BLE001
     logger.warning("Phase-193-195 nodes not registered: %s", _p193195_exc)
 
+# ── Phase-196-201 nodes (mine3, top8 analysis, DEDR lookup, triple-LM, allograph, inscription reading)
+try:
+    from glossa_lab.experiment_graph_phase196_201 import (
+        _phase196_201_node_defs as _p196201_defs,  # noqa: PLC0415
+    )
+    for _d in _p196201_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-196-201 nodes", len(_p196201_defs()))
+except Exception as _p196201_exc:  # noqa: BLE001
+    logger.warning("Phase-196-201 nodes not registered: %s", _p196201_exc)
+
 # ── Graph execution
 
 def _topo_sort(nodes: list[dict], edges: list[dict]) -> list[dict]:

@@ -1,0 +1,328 @@
+{
+  "phase": 198,
+  "elapsed_s": 0.0,
+  "absent_phoneme_analysis": [
+    {
+      "phoneme": "li",
+      "elamite_tier": "MODERATE",
+      "dedr_entries": [
+        {
+          "word": "il",
+          "dedr": "491",
+          "meaning": "place, give, lay down",
+          "freq_class": "COMMON"
+        },
+        {
+          "word": "puli",
+          "dedr": "4333",
+          "meaning": "tiger, tamarind",
+          "freq_class": "COMMON"
+        },
+        {
+          "word": "l\u012b",
+          "dedr": "4562",
+          "meaning": "to play, sport",
+          "freq_class": "MODERATE"
+        }
+      ],
+      "anchor_matches": [
+        {
+          "sign": "006",
+          "reading": "puli",
+          "confidence": "HIGH",
+          "freq": 0
+        },
+        {
+          "sign": "033",
+          "reading": "puli",
+          "confidence": "HIGH",
+          "freq": 0
+        }
+      ],
+      "sa_candidates": [],
+      "best_sign_candidate": null,
+      "best_sign_freq": 0,
+      "total_score": 4
+    },
+    {
+      "phoneme": "shu",
+      "elamite_tier": "CANDIDATE",
+      "dedr_entries": [
+        {
+          "word": "cu",
+          "dedr": "2665",
+          "meaning": "to fall, go down, wash",
+          "freq_class": "COMMON"
+        },
+        {
+          "word": "cur",
+          "dedr": "2694",
+          "meaning": "heat, sun, flame",
+          "freq_class": "COMMON"
+        },
+        {
+          "word": "cul",
+          "dedr": "2685",
+          "meaning": "whirl, gyrate",
+          "freq_class": "MODERATE"
+        }
+      ],
+      "anchor_matches": [],
+      "sa_candidates": [],
+      "best_sign_candidate": null,
+      "best_sign_freq": 0,
+      "total_score": 3
+    },
+    {
+      "phoneme": "gu",
+      "elamite_tier": "MODERATE",
+      "dedr_entries": [
+        {
+          "word": "ku",
+          "dedr": "1687",
+          "meaning": "to say, make sound",
+          "freq_class": "COMMON"
+        },
+        {
+          "word": "ku\u1e37am",
+          "dedr": "1771",
+          "meaning": "pond, tank, pool",
+          "freq_class": "COMMON"
+        },
+        {
+          "word": "kul",
+          "dedr": "1754",
+          "meaning": "clan, family",
+          "freq_class": "COMMON"
+        }
+      ],
+      "anchor_matches": [],
+      "sa_candidates": [],
+      "best_sign_candidate": null,
+      "best_sign_freq": 0,
+      "total_score": 5
+    },
+    {
+      "phoneme": "ab",
+      "elamite_tier": "MODERATE",
+      "dedr_entries": [
+        {
+          "word": "appa",
+          "dedr": "172",
+          "meaning": "father",
+          "freq_class": "COMMON"
+        },
+        {
+          "word": "av",
+          "dedr": "257",
+          "meaning": "that (distal pronoun)",
+          "freq_class": "COMMON"
+        },
+        {
+          "word": "aval",
+          "dedr": "261",
+          "meaning": "she, that woman",
+          "freq_class": "COMMON"
+        }
+      ],
+      "anchor_matches": [],
+      "sa_candidates": [],
+      "best_sign_candidate": null,
+      "best_sign_freq": 0,
+      "total_score": 5
+    },
+    {
+      "phoneme": "ba",
+      "elamite_tier": "MODERATE",
+      "dedr_entries": [
+        {
+          "word": "pa",
+          "dedr": "3927",
+          "meaning": "to protect; snake",
+          "freq_class": "COMMON"
+        },
+        {
+          "word": "pal",
+          "dedr": "4003",
+          "meaning": "tooth, tusk, ivory",
+          "freq_class": "COMMON"
+        },
+        {
+          "word": "pari",
+          "dedr": "3958",
+          "meaning": "horse; spread out",
+          "freq_class": "COMMON"
+        }
+      ],
+      "anchor_matches": [],
+      "sa_candidates": [],
+      "best_sign_candidate": null,
+      "best_sign_freq": 0,
+      "total_score": 5
+    },
+    {
+      "phoneme": "du",
+      "elamite_tier": "STRONG",
+      "dedr_entries": [
+        {
+          "word": "tu",
+          "dedr": "3302",
+          "meaning": "to give, bring, carry",
+          "freq_class": "COMMON"
+        },
+        {
+          "word": "tu\u1e47ai",
+          "dedr": "3316",
+          "meaning": "companion, helper",
+          "freq_class": "COMMON"
+        },
+        {
+          "word": "du",
+          "dedr": "3302",
+          "meaning": "give (Gondi/Brahui form)",
+          "freq_class": "COMMON"
+        }
+      ],
+      "anchor_matches": [],
+      "sa_candidates": [],
+      "best_sign_candidate": null,
+      "best_sign_freq": 0,
+      "total_score": 6
+    },
+    {
+      "phoneme": "ga",
+      "elamite_tier": "STRONG",
+      "dedr_entries": [
+        {
+          "word": "ka",
+          "dedr": "1221",
+          "meaning": "water; eye; go",
+          "freq_class": "COMMON"
+        },
+        {
+          "word": "ka\u1e6dal",
+          "dedr": "1107",
+          "meaning": "sea, ocean",
+          "freq_class": "COMMON"
+        },
+        {
+          "word": "ka\u1e6d\u1e6du",
+          "dedr": "1110",
+          "meaning": "bind, tie, build",
+          "freq_class": "COMMON"
+        }
+      ],
+      "anchor_matches": [],
+      "sa_candidates": [],
+      "best_sign_candidate": null,
+      "best_sign_freq": 0,
+      "total_score": 6
+    },
+    {
+      "phoneme": "mil",
+      "elamite_tier": "MODERATE",
+      "dedr_entries": [
+        {
+          "word": "min",
+          "dedr": "4897",
+          "meaning": "fish; star (min\u2192mil cognate)",
+          "freq_class": "COMMON"
+        },
+        {
+          "word": "mil",
+          "dedr": "5085",
+          "meaning": "brightness, light, rise",
+          "freq_class": "MODERATE"
+        },
+        {
+          "word": "m\u012b\u1e37",
+          "dedr": "5061",
+          "meaning": "return, rise again",
+          "freq_class": "MODERATE"
+        }
+      ],
+      "anchor_matches": [],
+      "sa_candidates": [],
+      "best_sign_candidate": null,
+      "best_sign_freq": 0,
+      "total_score": 3
+    },
+    {
+      "phoneme": "sum",
+      "elamite_tier": "STRONG",
+      "dedr_entries": [
+        {
+          "word": "cum",
+          "dedr": "2689",
+          "meaning": "name/title (Elamite \u0161um)",
+          "freq_class": "STRONG_ELAM"
+        },
+        {
+          "word": "cumma",
+          "dedr": "2694",
+          "meaning": "idly, in vain, silent",
+          "freq_class": "COMMON"
+        },
+        {
+          "word": "cumai",
+          "dedr": "2687",
+          "meaning": "burden, load, cargo",
+          "freq_class": "COMMON"
+        }
+      ],
+      "anchor_matches": [],
+      "sa_candidates": [],
+      "best_sign_candidate": null,
+      "best_sign_freq": 0,
+      "total_score": 6
+    }
+  ],
+  "priority_ranking": [
+    {
+      "phoneme": "du",
+      "score": 6,
+      "sign": null
+    },
+    {
+      "phoneme": "ga",
+      "score": 6,
+      "sign": null
+    },
+    {
+      "phoneme": "sum",
+      "score": 6,
+      "sign": null
+    },
+    {
+      "phoneme": "gu",
+      "score": 5,
+      "sign": null
+    },
+    {
+      "phoneme": "ab",
+      "score": 5,
+      "sign": null
+    },
+    {
+      "phoneme": "ba",
+      "score": 5,
+      "sign": null
+    },
+    {
+      "phoneme": "li",
+      "score": 4,
+      "sign": null
+    },
+    {
+      "phoneme": "shu",
+      "score": 3,
+      "sign": null
+    },
+    {
+      "phoneme": "mil",
+      "score": 3,
+      "sign": null
+    }
+  ],
+  "verdict": "Systematic DEDR lookup complete for 9 blocked absent phonemes. Top priorities: ['du', 'ga', 'sum']. SA candidates found for: []."
+}

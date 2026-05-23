@@ -1,0 +1,2993 @@
+{
+  "phase": 201,
+  "elapsed_s": 0.0,
+  "n_inscs_with_en": 130,
+  "n_fully_readable": 77,
+  "pattern_distribution": {
+    "COMMODITY_SEAL": 68,
+    "UNKNOWN": 53,
+    "PLACE_SEAL": 9
+  },
+  "mean_coverage": 0.547,
+  "fully_readable_all": 753,
+  "sample_transcriptions": [
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "400",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "400",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "003",
+          "reading": "kalam",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "400",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "400",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "003",
+          "reading": "kalam",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "074",
+          "reading": "ker",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "min kur kur kalam en kur kur kalam ker",
+      "coverage": 1.0,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "400",
+        "400",
+        "003",
+        "427",
+        "400",
+        "400",
+        "003",
+        "074"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "106",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "min ki ki ki kur en ki",
+      "coverage": 1.0,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "874",
+        "874",
+        "874",
+        "106",
+        "427",
+        "874"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "034",
+          "reading": "t\u014d\u1e37",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "413",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        }
+      ],
+      "text": "min t\u014d\u1e37 ki ki en en kur",
+      "coverage": 1.0,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "034",
+        "874",
+        "874",
+        "427",
+        "427",
+        "413"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "034",
+          "reading": "t\u014d\u1e37",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "156",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        }
+      ],
+      "text": "min ki ki t\u014d\u1e37 en kur",
+      "coverage": 1.0,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "874",
+        "874",
+        "034",
+        "427",
+        "156"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "034",
+          "reading": "t\u014d\u1e37",
+          "confidence": "HIGH",
+          "anchored": true
+        }
+      ],
+      "text": "ki ki min en en t\u014d\u1e37",
+      "coverage": 1.0,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "874",
+        "874",
+        "047",
+        "427",
+        "427",
+        "034"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "156",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "003",
+          "reading": "kalam",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "413",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "413",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "kur en kalam kur kur en",
+      "coverage": 1.0,
+      "pattern": "UNKNOWN",
+      "pattern_desc": "no recognized pattern",
+      "inscription": [
+        "156",
+        "427",
+        "003",
+        "413",
+        "413",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "035",
+          "reading": "po",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "413",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "413",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "po kur kur en",
+      "coverage": 1.0,
+      "pattern": "UNKNOWN",
+      "pattern_desc": "no recognized pattern",
+      "inscription": [
+        "035",
+        "413",
+        "413",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "034",
+          "reading": "t\u014d\u1e37",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "min t\u014d\u1e37 en en",
+      "coverage": 1.0,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "034",
+        "427",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "034",
+          "reading": "t\u014d\u1e37",
+          "confidence": "HIGH",
+          "anchored": true
+        }
+      ],
+      "text": "min en en t\u014d\u1e37",
+      "coverage": 1.0,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "427",
+        "427",
+        "034"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "min min en ki",
+      "coverage": 1.0,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "047",
+        "427",
+        "874"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "003",
+          "reading": "kalam",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "min en kalam en",
+      "coverage": 1.0,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "427",
+        "003",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "min min en",
+      "coverage": 1.0,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "047",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "156",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "kur en en",
+      "coverage": 1.0,
+      "pattern": "UNKNOWN",
+      "pattern_desc": "no recognized pattern",
+      "inscription": [
+        "156",
+        "427",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "106",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "min kur en",
+      "coverage": 1.0,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "106",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "min min en",
+      "coverage": 1.0,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "047",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "min min en",
+      "coverage": 1.0,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "047",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "400",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "176",
+          "reading": "an",
+          "confidence": "HIGH",
+          "anchored": true
+        }
+      ],
+      "text": "kur en an",
+      "coverage": 1.0,
+      "pattern": "UNKNOWN",
+      "pattern_desc": "no recognized pattern",
+      "inscription": [
+        "400",
+        "427",
+        "176"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "387",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "387",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "kur kur en",
+      "coverage": 1.0,
+      "pattern": "UNKNOWN",
+      "pattern_desc": "no recognized pattern",
+      "inscription": [
+        "387",
+        "387",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "156",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        }
+      ],
+      "text": "min en kur",
+      "coverage": 1.0,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "427",
+        "156"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "413",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "kur en",
+      "coverage": 1.0,
+      "pattern": "UNKNOWN",
+      "pattern_desc": "no recognized pattern",
+      "inscription": [
+        "413",
+        "427"
+      ]
+    }
+  ],
+  "all_en_transcriptions": [
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "817",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        }
+      ],
+      "text": "min min en ?",
+      "coverage": 0.75,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "047",
+        "427",
+        "817"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "817",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        }
+      ],
+      "text": "min min en ?",
+      "coverage": 0.75,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "047",
+        "427",
+        "817"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "858",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "034",
+          "reading": "t\u014d\u1e37",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "237",
+          "reading": "ce",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "min ? en min t\u014d\u1e37 ce",
+      "coverage": 0.83,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "858",
+        "427",
+        "047",
+        "034",
+        "237"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "858",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        }
+      ],
+      "text": "min en ki ?",
+      "coverage": 0.75,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "427",
+        "874",
+        "858"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "min min en",
+      "coverage": 1.0,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "047",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "413",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "kur en",
+      "coverage": 1.0,
+      "pattern": "UNKNOWN",
+      "pattern_desc": "no recognized pattern",
+      "inscription": [
+        "413",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "817",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "ki ki ki ? en min",
+      "coverage": 0.83,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "874",
+        "874",
+        "874",
+        "817",
+        "427",
+        "047"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "400",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "400",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "003",
+          "reading": "kalam",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "400",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "400",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "003",
+          "reading": "kalam",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "074",
+          "reading": "ker",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "min kur kur kalam en kur kur kalam ker",
+      "coverage": 1.0,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "400",
+        "400",
+        "003",
+        "427",
+        "400",
+        "400",
+        "003",
+        "074"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "035",
+          "reading": "po",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "413",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "413",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "po kur kur en",
+      "coverage": 1.0,
+      "pattern": "UNKNOWN",
+      "pattern_desc": "no recognized pattern",
+      "inscription": [
+        "035",
+        "413",
+        "413",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "035",
+          "reading": "po",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "817",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        }
+      ],
+      "text": "po en ?",
+      "coverage": 0.67,
+      "pattern": "UNKNOWN",
+      "pattern_desc": "no recognized pattern",
+      "inscription": [
+        "035",
+        "427",
+        "817"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "481",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "003",
+          "reading": "kalam",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "003",
+          "reading": "kalam",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "413",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "? min kalam kalam kur en",
+      "coverage": 0.83,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "481",
+        "047",
+        "003",
+        "003",
+        "413",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "481",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "003",
+          "reading": "kalam",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "003",
+          "reading": "kalam",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "413",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "? min kalam kalam kur en",
+      "coverage": 0.83,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "481",
+        "047",
+        "003",
+        "003",
+        "413",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "481",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "617",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        }
+      ],
+      "text": "? min en ?",
+      "coverage": 0.5,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "481",
+        "047",
+        "427",
+        "617"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "708",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "817",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        }
+      ],
+      "text": "en ? ?",
+      "coverage": 0.33,
+      "pattern": "UNKNOWN",
+      "pattern_desc": "no recognized pattern",
+      "inscription": [
+        "427",
+        "708",
+        "817"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "712",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "708",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "003",
+          "reading": "kalam",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "003",
+          "reading": "kalam",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "817",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        }
+      ],
+      "text": "? ? en min kalam kalam ?",
+      "coverage": 0.57,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "712",
+        "708",
+        "427",
+        "047",
+        "003",
+        "003",
+        "817"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "173",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "173",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "? ? en",
+      "coverage": 0.33,
+      "pattern": "UNKNOWN",
+      "pattern_desc": "no recognized pattern",
+      "inscription": [
+        "173",
+        "173",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "708",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "413",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "413",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "708",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "817",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "129",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        }
+      ],
+      "text": "min ? kur kur en ? ? kur",
+      "coverage": 0.62,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "708",
+        "413",
+        "413",
+        "427",
+        "708",
+        "817",
+        "129"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "817",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "413",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "003",
+          "reading": "kalam",
+          "confidence": "HIGH",
+          "anchored": true
+        }
+      ],
+      "text": "en ? kur kalam",
+      "coverage": 0.75,
+      "pattern": "UNKNOWN",
+      "pattern_desc": "no recognized pattern",
+      "inscription": [
+        "427",
+        "817",
+        "413",
+        "003"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "035",
+          "reading": "po",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "129",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "708",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "413",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "817",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "129",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        }
+      ],
+      "text": "po kur ? en kur ? kur",
+      "coverage": 0.71,
+      "pattern": "UNKNOWN",
+      "pattern_desc": "no recognized pattern",
+      "inscription": [
+        "035",
+        "129",
+        "708",
+        "427",
+        "413",
+        "817",
+        "129"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "817",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "035",
+          "reading": "po",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "413",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "413",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "817",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "129",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        }
+      ],
+      "text": "min ? po en kur kur ? kur",
+      "coverage": 0.75,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "817",
+        "035",
+        "427",
+        "413",
+        "413",
+        "817",
+        "129"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "866",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "min ? en",
+      "coverage": 0.67,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "866",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "237",
+          "reading": "ce",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "480",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "692",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "718",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "ce ? ? en ? min",
+      "coverage": 0.5,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "237",
+        "480",
+        "692",
+        "427",
+        "718",
+        "047"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "003",
+          "reading": "kalam",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "520",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "156",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        }
+      ],
+      "text": "kalam en ? kur",
+      "coverage": 0.75,
+      "pattern": "UNKNOWN",
+      "pattern_desc": "no recognized pattern",
+      "inscription": [
+        "003",
+        "427",
+        "520",
+        "156"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "817",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "866",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "520",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        }
+      ],
+      "text": "min en ? ? ?",
+      "coverage": 0.4,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "427",
+        "817",
+        "866",
+        "520"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "156",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "kur en en",
+      "coverage": 1.0,
+      "pattern": "UNKNOWN",
+      "pattern_desc": "no recognized pattern",
+      "inscription": [
+        "156",
+        "427",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "106",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "min kur en",
+      "coverage": 1.0,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "106",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "106",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "min ki ki ki kur en ki",
+      "coverage": 1.0,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "874",
+        "874",
+        "874",
+        "106",
+        "427",
+        "874"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "692",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "? en ki ki ki",
+      "coverage": 0.8,
+      "pattern": "PLACE_SEAL",
+      "pattern_desc": "place/territory seal",
+      "inscription": [
+        "692",
+        "427",
+        "874",
+        "874",
+        "874"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "712",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "692",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "156",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        }
+      ],
+      "text": "? ? en ki ki kur",
+      "coverage": 0.67,
+      "pattern": "PLACE_SEAL",
+      "pattern_desc": "place/territory seal",
+      "inscription": [
+        "712",
+        "692",
+        "427",
+        "874",
+        "874",
+        "156"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "855",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "106",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        }
+      ],
+      "text": "min ? en en kur",
+      "coverage": 0.8,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "855",
+        "427",
+        "427",
+        "106"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "692",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "? min en ki ki ki",
+      "coverage": 0.83,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "692",
+        "047",
+        "427",
+        "874",
+        "874",
+        "874"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "034",
+          "reading": "t\u014d\u1e37",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "617",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "034",
+          "reading": "t\u014d\u1e37",
+          "confidence": "HIGH",
+          "anchored": true
+        }
+      ],
+      "text": "min t\u014d\u1e37 ? en ki ki min t\u014d\u1e37",
+      "coverage": 0.88,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "034",
+        "617",
+        "427",
+        "874",
+        "874",
+        "047",
+        "034"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "817",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        }
+      ],
+      "text": "min min en ?",
+      "coverage": 0.75,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "047",
+        "427",
+        "817"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "034",
+          "reading": "t\u014d\u1e37",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "t\u014d\u1e37 en",
+      "coverage": 1.0,
+      "pattern": "UNKNOWN",
+      "pattern_desc": "no recognized pattern",
+      "inscription": [
+        "034",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "413",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "858",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        }
+      ],
+      "text": "min kur en ?",
+      "coverage": 0.75,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "413",
+        "427",
+        "858"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "858",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        }
+      ],
+      "text": "min min en en ?",
+      "coverage": 0.8,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "047",
+        "427",
+        "427",
+        "858"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "034",
+          "reading": "t\u014d\u1e37",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "156",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        }
+      ],
+      "text": "min ki ki t\u014d\u1e37 en kur",
+      "coverage": 1.0,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "874",
+        "874",
+        "034",
+        "427",
+        "156"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "156",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "520",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "413",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        }
+      ],
+      "text": "kur ? en kur",
+      "coverage": 0.75,
+      "pattern": "UNKNOWN",
+      "pattern_desc": "no recognized pattern",
+      "inscription": [
+        "156",
+        "520",
+        "427",
+        "413"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "034",
+          "reading": "t\u014d\u1e37",
+          "confidence": "HIGH",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "413",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        }
+      ],
+      "text": "min t\u014d\u1e37 ki ki en en kur",
+      "coverage": 1.0,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "034",
+        "874",
+        "874",
+        "427",
+        "427",
+        "413"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "520",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "min ? en",
+      "coverage": 0.67,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "520",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "461",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "520",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        }
+      ],
+      "text": "min ? en ?",
+      "coverage": 0.5,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "461",
+        "427",
+        "520"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "min min en",
+      "coverage": 1.0,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "047",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "480",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "480",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "617",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "817",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "718",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        }
+      ],
+      "text": "? ? ? ? en ?",
+      "coverage": 0.17,
+      "pattern": "UNKNOWN",
+      "pattern_desc": "no recognized pattern",
+      "inscription": [
+        "480",
+        "480",
+        "617",
+        "817",
+        "427",
+        "718"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "480",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "817",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "? min ? en",
+      "coverage": 0.5,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "480",
+        "047",
+        "817",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "481",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "? min en",
+      "coverage": 0.67,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "481",
+        "047",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "307",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "817",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        }
+      ],
+      "text": "min kur en ki ?",
+      "coverage": 0.8,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "307",
+        "427",
+        "874",
+        "817"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "817",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "en ? en en",
+      "coverage": 0.75,
+      "pattern": "UNKNOWN",
+      "pattern_desc": "no recognized pattern",
+      "inscription": [
+        "427",
+        "817",
+        "427",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "480",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "874",
+          "reading": "ki",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        }
+      ],
+      "text": "? en ki en",
+      "coverage": 0.75,
+      "pattern": "PLACE_SEAL",
+      "pattern_desc": "place/territory seal",
+      "inscription": [
+        "480",
+        "427",
+        "874",
+        "427"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "858",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "156",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        }
+      ],
+      "text": "min ? en kur",
+      "coverage": 0.75,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "858",
+        "427",
+        "156"
+      ]
+    },
+    {
+      "parts": [
+        {
+          "sign": "047",
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "858",
+          "reading": "?",
+          "confidence": "NONE",
+          "anchored": false
+        },
+        {
+          "sign": "427",
+          "reading": "en",
+          "confidence": "MEDIUM",
+          "anchored": true
+        },
+        {
+          "sign": "156",
+          "reading": "kur",
+          "confidence": "LOW",
+          "anchored": true
+        }
+      ],
+      "text": "min ? en kur",
+      "coverage": 0.75,
+      "pattern": "COMMODITY_SEAL",
+      "pattern_desc": "merchant/commodity seal",
+      "inscription": [
+        "047",
+        "858",
+        "427",
+        "156"
+      ]
+    }
+  ],
+  "verdict": "TITLE FORMULA WORKS: 130 inscriptions contain /en/ (M427). 0 match title formula. Overall mean reading coverage: 54.7%. 753 inscriptions 70%+ readable."
+}

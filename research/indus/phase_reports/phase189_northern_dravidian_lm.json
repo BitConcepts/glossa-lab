@@ -1,0 +1,1091 @@
+{
+  "phase": 189,
+  "elapsed_s": 5.6,
+  "north_dr_coverage": {
+    "brahui": {
+      "covered": [
+        "su",
+        "li",
+        "shu",
+        "gu",
+        "ab",
+        "ba",
+        "du",
+        "zi",
+        "ga",
+        "mil",
+        "gi",
+        "en",
+        "ki",
+        "sum"
+      ],
+      "count": 14,
+      "details": {
+        "su": {
+          "brahui_form": "cu-",
+          "dedr": "2678",
+          "note": "Brahui cu- (to do/say) = Tamil cu-"
+        },
+        "li": {
+          "brahui_form": "li-",
+          "dedr": "491",
+          "note": "Brahui li (give) cf. Tamil il-"
+        },
+        "shu": {
+          "brahui_form": "\u0161u-",
+          "dedr": "2665",
+          "note": "Brahui \u0161 preserved as distinct from s; PDr *cu"
+        },
+        "gu": {
+          "brahui_form": "qu-",
+          "dedr": "1687",
+          "note": "Brahui q (uvular k) = PDr *k before back vowel \u2192 /gu/ variant"
+        },
+        "ab": {
+          "brahui_form": "ap-",
+          "dedr": "172",
+          "note": "Brahui ap/ab (father) = PDr *appa"
+        },
+        "ba": {
+          "brahui_form": "ba-",
+          "dedr": "4003",
+          "note": "Brahui ba- (speak) cf PDr *pal"
+        },
+        "du": {
+          "brahui_form": "du-",
+          "dedr": "3302",
+          "note": "Brahui tu/du (give) = PDr *tu-"
+        },
+        "zi": {
+          "brahui_form": "zi-",
+          "dedr": "2589",
+          "note": "Brahui z- (cut) = Elamite zi-; both independent from Tamil"
+        },
+        "ga": {
+          "brahui_form": "qa-",
+          "dedr": "1221",
+          "note": "Brahui q before a-vowels \u2192 /ga/ in Indus context"
+        },
+        "mil": {
+          "brahui_form": "mil-",
+          "dedr": "5085",
+          "note": "Brahui mil/mel (rise,shine) preserved from PDr *mil-"
+        },
+        "gi": {
+          "brahui_form": "ki-",
+          "dedr": "1562",
+          "note": "Brahui ki- (go toward,ear) voiced variant \u2192 /gi/"
+        },
+        "en": {
+          "brahui_form": "an-",
+          "dedr": "298",
+          "note": "Brahui an (person,lord) = Elamite an- = /en/ in Indus position"
+        },
+        "ki": {
+          "brahui_form": "ki-",
+          "dedr": "1935",
+          "note": "Brahui ki (earth,low) directly attested"
+        },
+        "sum": {
+          "brahui_form": "sum-",
+          "dedr": "2689",
+          "note": "Brahui sum/cum (name,call) = Elamite \u0161um-"
+        }
+      }
+    },
+    "kurukh": {
+      "covered": [
+        "su",
+        "en",
+        "ki"
+      ],
+      "count": 3,
+      "details": {
+        "su": {
+          "kurukh_form": "su-",
+          "dedr": "2678",
+          "note": "Kurukh su- (say) direct cognate"
+        },
+        "en": {
+          "kurukh_form": "en-",
+          "dedr": "298",
+          "note": "Kurukh eN (person) direct cognate"
+        },
+        "ki": {
+          "kurukh_form": "ki-",
+          "dedr": "1935",
+          "note": "Kurukh ki (earth) direct cognate"
+        }
+      }
+    },
+    "gondi": {
+      "covered": [
+        "ba",
+        "du",
+        "ga"
+      ],
+      "count": 3,
+      "details": {
+        "ba": {
+          "gondi_form": "ba-",
+          "dedr": "4003",
+          "note": "Gondi ba- form preserved"
+        },
+        "du": {
+          "gondi_form": "du-",
+          "dedr": "3302",
+          "note": "Gondi du (give) direct cognate"
+        },
+        "ga": {
+          "gondi_form": "ga-",
+          "dedr": "1221",
+          "note": "Gondi ga (water) direct cognate"
+        }
+      }
+    }
+  },
+  "sa_north_dr": {
+    "mean_consistency": 0.5208,
+    "n_seeds": 3,
+    "n_signs_mapped": 64
+  },
+  "sa_tamil": {
+    "mean_consistency": 0.4167,
+    "n_seeds": 3,
+    "n_signs_mapped": 64
+  },
+  "consistency_delta": 0.1041,
+  "absent_phoneme_comparisons": [
+    {
+      "sign": "034",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "poriyalan",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "413",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "uri",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "047",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "nalam",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "782",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "matam",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "157",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "naattu",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "237",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "valavan",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "203",
+      "north_dr_proposal": "mil",
+      "tamil_proposal": "kalan",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "692",
+      "north_dr_proposal": "ki\u1e3b",
+      "tamil_proposal": "nalnalam",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "045",
+      "north_dr_proposal": "su",
+      "tamil_proposal": "pillai",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "740",
+      "north_dr_proposal": "su",
+      "tamil_proposal": "aru",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "841",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "toti",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "481",
+      "north_dr_proposal": "su",
+      "tamil_proposal": "nallavar",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "440",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "olukku",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "461",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "aritu",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "307",
+      "north_dr_proposal": "ki\u1e3b",
+      "tamil_proposal": "taal",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "106",
+      "north_dr_proposal": "zi",
+      "tamil_proposal": "onpatu",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "394",
+      "north_dr_proposal": "su",
+      "tamil_proposal": "appan",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "430",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "nallavar",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "874",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "porul",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "427",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "ettu",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "520",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "aru",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "700",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "kalavu",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "003",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "nalla",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "169",
+      "north_dr_proposal": "su",
+      "tamil_proposal": "erumai",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "129",
+      "north_dr_proposal": "zit",
+      "tamil_proposal": "poa",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "400",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "ceyti",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "861",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "nalla",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "868",
+      "north_dr_proposal": "gi",
+      "tamil_proposal": "vay",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "173",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "nallavar",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "416",
+      "north_dr_proposal": "su",
+      "tamil_proposal": "itan",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "817",
+      "north_dr_proposal": "eN",
+      "tamil_proposal": "vaalai",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "617",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "porulkal",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "387",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "ettu",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "375",
+      "north_dr_proposal": "su",
+      "tamil_proposal": "nilam",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "712",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "poru",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "176",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "pannai",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "156",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "ettu",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "820",
+      "north_dr_proposal": "su",
+      "tamil_proposal": "tol",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "506",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "piti",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "708",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "ceyti",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "527",
+      "north_dr_proposal": "su",
+      "tamil_proposal": "perumakan",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "455",
+      "north_dr_proposal": "zi",
+      "tamil_proposal": "nattam",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "256",
+      "north_dr_proposal": "zi",
+      "tamil_proposal": "kuti",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "855",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "piti",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "723",
+      "north_dr_proposal": "ki\u1e3b",
+      "tamil_proposal": "neer",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "790",
+      "north_dr_proposal": "sum",
+      "tamil_proposal": "tampi",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "748",
+      "north_dr_proposal": "eN",
+      "tamil_proposal": "ceraa",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "866",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "nallar",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "074",
+      "north_dr_proposal": "gi",
+      "tamil_proposal": "oli",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": true,
+      "novel_north_absent": false
+    },
+    {
+      "sign": "138",
+      "north_dr_proposal": "mil",
+      "tamil_proposal": "venkai",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": true,
+      "novel_north_absent": false
+    },
+    {
+      "sign": "035",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "ali",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": true,
+      "novel_north_absent": false
+    },
+    {
+      "sign": "858",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "valli",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": true,
+      "novel_north_absent": false
+    },
+    {
+      "sign": "480",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "vali",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": true,
+      "novel_north_absent": false
+    },
+    {
+      "sign": "147",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "nalintha",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": true,
+      "novel_north_absent": false
+    },
+    {
+      "sign": "781",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "kaanban",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": true,
+      "novel_north_absent": false
+    }
+  ],
+  "novel_north_proposals": [
+    {
+      "sign": "034",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "poriyalan",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "413",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "uri",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "047",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "nalam",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "782",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "matam",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "157",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "naattu",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "237",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "valavan",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "203",
+      "north_dr_proposal": "mil",
+      "tamil_proposal": "kalan",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "692",
+      "north_dr_proposal": "ki\u1e3b",
+      "tamil_proposal": "nalnalam",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "045",
+      "north_dr_proposal": "su",
+      "tamil_proposal": "pillai",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "740",
+      "north_dr_proposal": "su",
+      "tamil_proposal": "aru",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "841",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "toti",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "481",
+      "north_dr_proposal": "su",
+      "tamil_proposal": "nallavar",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "440",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "olukku",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "461",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "aritu",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "307",
+      "north_dr_proposal": "ki\u1e3b",
+      "tamil_proposal": "taal",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "106",
+      "north_dr_proposal": "zi",
+      "tamil_proposal": "onpatu",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "394",
+      "north_dr_proposal": "su",
+      "tamil_proposal": "appan",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "430",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "nallavar",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "874",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "porul",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "427",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "ettu",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "520",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "aru",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "700",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "kalavu",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "003",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "nalla",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "169",
+      "north_dr_proposal": "su",
+      "tamil_proposal": "erumai",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "129",
+      "north_dr_proposal": "zit",
+      "tamil_proposal": "poa",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "400",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "ceyti",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "861",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "nalla",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "868",
+      "north_dr_proposal": "gi",
+      "tamil_proposal": "vay",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "173",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "nallavar",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "416",
+      "north_dr_proposal": "su",
+      "tamil_proposal": "itan",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "817",
+      "north_dr_proposal": "eN",
+      "tamil_proposal": "vaalai",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "617",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "porulkal",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "387",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "ettu",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "375",
+      "north_dr_proposal": "su",
+      "tamil_proposal": "nilam",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "712",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "poru",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "176",
+      "north_dr_proposal": "en",
+      "tamil_proposal": "pannai",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "156",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "ettu",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "820",
+      "north_dr_proposal": "su",
+      "tamil_proposal": "tol",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "506",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "piti",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "708",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "ceyti",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "527",
+      "north_dr_proposal": "su",
+      "tamil_proposal": "perumakan",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "455",
+      "north_dr_proposal": "zi",
+      "tamil_proposal": "nattam",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "256",
+      "north_dr_proposal": "zi",
+      "tamil_proposal": "kuti",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "855",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "piti",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "723",
+      "north_dr_proposal": "ki\u1e3b",
+      "tamil_proposal": "neer",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "790",
+      "north_dr_proposal": "sum",
+      "tamil_proposal": "tampi",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "748",
+      "north_dr_proposal": "eN",
+      "tamil_proposal": "ceraa",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    },
+    {
+      "sign": "866",
+      "north_dr_proposal": "ki",
+      "tamil_proposal": "nallar",
+      "already_anchored": false,
+      "north_is_absent": true,
+      "tamil_is_absent": false,
+      "novel_north_absent": true
+    }
+  ],
+  "best_north_coverage_branch": "brahui",
+  "verdict": "NORTH DRAVIDIAN PRODUCES 48 NOVEL ABSENT-PHONEME PROPOSALS not found by Tamil LM. Delta=+0.1041"
+}

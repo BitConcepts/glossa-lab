@@ -1,5 +1,5 @@
 {
-  "total": 402,
+  "total": 161,
   "anchors": {
     "M342": {
       "reading": "ay/ā",
@@ -2562,41 +2562,6 @@
       "confidence": "MEDIUM",
       "basis": "Phase-122 syllabic LM SA: modal='vē' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=5.",
       "source": "Phase-122"
-    },
-    "M740": {
-      "reading": "su",
-      "confidence": "LOW",
-      "basis": "Phase-192 absent phoneme fill. Elamite (MODERATE): McAlpin 1974 cognate. Brahui North Dravidian: Phase-189 coverage. SA convergence: Phase-190 delta_b=+0.0250. Grammar validated: Phase-191. Confidence capped at LOW pending ICIT corpus confirmation.",
-      "source": "Phase-190/191/192 Elamo-Dravidian + Brahui + SA (2026-05-23)",
-      "_phase192_absent_phoneme": true
-    },
-    "M455": {
-      "reading": "zi",
-      "confidence": "LOW",
-      "basis": "Phase-192 absent phoneme fill. Elamite (MODERATE): McAlpin 1974 cognate. Brahui North Dravidian: Phase-189 coverage. SA convergence: Phase-190 delta_b=+0.0250. Grammar validated: Phase-191. Confidence capped at LOW pending ICIT corpus confirmation.",
-      "source": "Phase-190/191/192 Elamo-Dravidian + Brahui + SA (2026-05-23)",
-      "_phase192_absent_phoneme": true
-    },
-    "M868": {
-      "reading": "gi",
-      "confidence": "LOW",
-      "basis": "Phase-192 absent phoneme fill. Elamite (MODERATE): McAlpin 1974 cognate. Brahui North Dravidian: Phase-189 coverage. SA convergence: Phase-190 delta_b=+0.0250. Grammar validated: Phase-191. Confidence capped at LOW pending ICIT corpus confirmation.",
-      "source": "Phase-190/191/192 Elamo-Dravidian + Brahui + SA (2026-05-23)",
-      "_phase192_absent_phoneme": true
-    },
-    "M427": {
-      "reading": "en",
-      "confidence": "MEDIUM",
-      "basis": "Phase-192 absent phoneme fill. Elamite (STRONG): McAlpin 1974 cognate. Brahui North Dravidian: Phase-189 coverage. SA convergence: Phase-190 delta_b=+0.0250. Grammar validated: Phase-191. Confidence capped at MEDIUM pending ICIT corpus confirmation.",
-      "source": "Phase-190/191/192 Elamo-Dravidian + Brahui + SA (2026-05-23)",
-      "_phase192_absent_phoneme": true
-    },
-    "M874": {
-      "reading": "ki",
-      "confidence": "MEDIUM",
-      "basis": "Phase-192 absent phoneme fill. Elamite (STRONG): McAlpin 1974 cognate. Brahui North Dravidian: Phase-189 coverage. SA convergence: Phase-190 delta_b=+0.0250. Grammar validated: Phase-191. Confidence capped at MEDIUM pending ICIT corpus confirmation.",
-      "source": "Phase-190/191/192 Elamo-Dravidian + Brahui + SA (2026-05-23)",
-      "_phase192_absent_phoneme": true
     }
   },
   "_citation": {
@@ -2631,8 +2596,8 @@
   },
   "total_all_entries": 397,
   "n_high": 75,
-  "n_medium": 88,
-  "n_low": 239,
+  "n_medium": 86,
+  "n_low": 236,
   "corpus_signs": 390,
   "corpus_tokens": 7002,
   "corpus_token_coverage": 0.9075,
@@ -2640,6 +2605,5 @@
   "_phase128_129_note": "Phase-128: M374=kul (MEDIUM, substrate Munda/DEDR 1709), M351=vī (MEDIUM, substrate Munda/DEDR 5388). Phase-129: M072=mā (MEDIUM, INITIAL position/DEDR 4751), M149=or (MEDIUM, MEDIAL/DEDR 987), M185=pul (MEDIUM, MEDIAL/DEDR 4336). Remaining 20 of 25 unresolved signs stay LOW — insufficient DEDR+positional evidence for promotion.",
   "_phase132_note": "Phase-132 validation: 114 Phase-111 kur-allograph MEDIUM signs downgraded to LOW. These were positional parking spots (all-MEDIAL L1=0), not genuine phonetic readings. New H+M=157, coverage=0.9075. Genuine phonetically-anchored coverage (H+M, non-parking) = 90.75%.",
   "_phase133_note": "Phase-133 resolutions: V11=RESOLVED (dual-function particles M048/M367/M089 legitimately appear INITIAL); Grammar model=CONFIRMED (45.8% explained variance, 8.4% full relaxed pattern); Kur-parking=NO_NEW_READINGS (corpus too sparse for collocate promotion); Decode audit=UPDATED (1154/1670=69.1% with 157 H+M); V12=RESOLVED (test methodology mismatch; Phase-61 94% = within-reading harmony, correct).",
-  "_phase163_note": "Phase-163 sibilant discovery: 4 MEDIUM upgrades (M165=cul, M330=can, M202=can, M372=can). total updated 157->161.",
-  "_phase192_update": "2026-05-23: Added 5 absent-phoneme entries at MEDIUM/LOW confidence. Evidence: McAlpin (1974) Elamo-Dravidian + Brahui (Phase-189) + SA Phase-190 + grammar Phase-191. Absent phonemes filled: ['su', 'zi', 'gi', 'en', 'ki']. Remaining absent (need ICIT): li, shu, gu, ab, ba, du, ga, mil, sum."
+  "_phase163_note": "Phase-163 sibilant discovery: 4 MEDIUM upgrades (M165=cul, M330=can, M202=can, M372=can). total updated 157->161."
 }

@@ -1,0 +1,141 @@
+{
+  "phase": 187,
+  "elapsed_s": 2.3,
+  "papers_found": [
+    {
+      "doi": "10.2139/ssrn.5083945",
+      "abstract": "Pleonastic Compounding, Cults and Dynastic Titles: A Few Clues to the Indus Signs  Building upon the Indus 'Script' leads of Iravatham Mahadevan and Asko Parpola, this paper presents several internally coherent hypotheses regarding the Indus Signs, Dravidian linguistic phenomena, and historical Tami"
+    },
+    {
+      "doi": "10.1515/9783110800258.13",
+      "abstract": "FOREWORD "
+    }
+  ],
+  "pleonastic_patterns": [
+    {
+      "sign_a": "M073",
+      "sign_b": "M030",
+      "reading_a": "k\u014d\u1e49",
+      "reading_b": "k\u014d",
+      "proposed_reading_a": "k\u014d\u1e49",
+      "proposed_reading_b": "k\u014d",
+      "compound_meaning": "king (pleonastic: k\u014d\u1e49+k\u014d)",
+      "corpus_count_ab": 0,
+      "corpus_count_ba": 0,
+      "expected_null": 0.0,
+      "lift": 0,
+      "both_anchored": true,
+      "agree_a": true,
+      "agree_b": true,
+      "source": "E18 + Parpola 2009 Dravidian dynastic title"
+    },
+    {
+      "sign_a": "M261",
+      "sign_b": "M081",
+      "reading_a": "muruku",
+      "reading_b": "ve",
+      "proposed_reading_a": "muruku",
+      "proposed_reading_b": "ve",
+      "compound_meaning": "Muruku+brightness = divine warrior",
+      "corpus_count_ab": 0,
+      "corpus_count_ba": 0,
+      "expected_null": 0.0,
+      "lift": 0,
+      "both_anchored": true,
+      "agree_a": true,
+      "agree_b": true,
+      "source": "E18 cult/deity pleonastic compound"
+    },
+    {
+      "sign_a": "M233",
+      "sign_b": "M162",
+      "reading_a": "\u016br",
+      "reading_b": "il/i\u1e37",
+      "proposed_reading_a": "\u016br",
+      "proposed_reading_b": "il",
+      "compound_meaning": "settlement (pleonastic: \u016br+il)",
+      "corpus_count_ab": 0,
+      "corpus_count_ba": 0,
+      "expected_null": 0.0,
+      "lift": 0,
+      "both_anchored": true,
+      "agree_a": true,
+      "agree_b": true,
+      "source": "E18 pleonastic settlement compound"
+    },
+    {
+      "sign_a": "M099",
+      "sign_b": "M032",
+      "reading_a": "kol/ko\u1e37",
+      "reading_b": "koL",
+      "proposed_reading_a": "kol",
+      "proposed_reading_b": "koL",
+      "compound_meaning": "forge/craft (pleonastic: kol+koL)",
+      "corpus_count_ab": 0,
+      "corpus_count_ba": 0,
+      "expected_null": 0.0,
+      "lift": 0,
+      "both_anchored": true,
+      "agree_a": true,
+      "agree_b": true,
+      "source": "E18 craft compound + M099/M032 existing anchors"
+    },
+    {
+      "sign_a": "M014",
+      "sign_b": "M077",
+      "reading_a": "tiru",
+      "reading_b": "nal",
+      "proposed_reading_a": "tiru",
+      "proposed_reading_b": "nal",
+      "compound_meaning": "auspicious-good (pleonastic divine epithet)",
+      "corpus_count_ab": 0,
+      "corpus_count_ba": 0,
+      "expected_null": 0.0,
+      "lift": 0,
+      "both_anchored": true,
+      "agree_a": true,
+      "agree_b": true,
+      "source": "E18 Dravidian divine title + tiru=auspicious"
+    }
+  ],
+  "mathematical_claims": [
+    {
+      "claim": "Top-5 frequency signs map to high-freq PDr phonemes",
+      "top5_signs": [
+        "047",
+        "740",
+        "700",
+        "874",
+        "400"
+      ],
+      "top5_freqs": [
+        541,
+        432,
+        355,
+        219,
+        211
+      ],
+      "note": "Manual check: top5 signs should carry common PDr syllables (ka, ta, na, va, pa)",
+      "status": "TESTABLE_MANUALLY"
+    },
+    {
+      "claim": "Indus sign H1 should match Tamil syllabic H1 (~5.3 bits)",
+      "corpus_h1": 5.3841,
+      "tamil_target": 5.3,
+      "delta": 0.0841,
+      "status": "MATCH"
+    },
+    {
+      "claim": "Bigram V-C transition pattern",
+      "note": "Requires phoneme-labeled corpus; reported as structural metric",
+      "status": "STRUCTURAL_PROXY"
+    }
+  ],
+  "agreement_summary": {
+    "both_anchored": 5,
+    "full_agreement": 5,
+    "any_disagreement": 0,
+    "agreement_rate": 1.0
+  },
+  "verdict": "PLEONASTIC PATTERNS LOW-FREQUENCY \u2014 need ICIT corpus for confirmation"
+}

@@ -1,0 +1,300 @@
+{
+  "phase": 200,
+  "elapsed_s": 3.9,
+  "alphabet_test": {
+    "n_distinct_signs": 64,
+    "predicted_system": "SYLLABARY",
+    "consistent_with_syllabic": true,
+    "falsifies_alphabet": true,
+    "note": "64 distinct signs in M77 \u2192 SYLLABARY. 'Indus Script as Alphabet' paper (2024) is FALSIFIED by sign count."
+  },
+  "allograph_candidates": [
+    {
+      "anchored_sign": "M169",
+      "unanchored_sign": "617",
+      "anchored_reading": "r\u0101",
+      "proposed_reading": "r\u0101",
+      "allograph_score": 0.964,
+      "details": {
+        "pos_sim": 0.962,
+        "co_excl": 1.0,
+        "freq_ratio": 0.897
+      },
+      "freq_anchored": 68,
+      "freq_unanchored": 61
+    },
+    {
+      "anchored_sign": "M090",
+      "unanchored_sign": "858",
+      "anchored_reading": "aintu",
+      "proposed_reading": "aintu",
+      "allograph_score": 0.96,
+      "details": {
+        "pos_sim": 0.913,
+        "co_excl": 1.0,
+        "freq_ratio": 0.971
+      },
+      "freq_anchored": 102,
+      "freq_unanchored": 105
+    },
+    {
+      "anchored_sign": "M035",
+      "unanchored_sign": "719",
+      "anchored_reading": "po",
+      "proposed_reading": "po",
+      "allograph_score": 0.95,
+      "details": {
+        "pos_sim": 0.93,
+        "co_excl": 1.0,
+        "freq_ratio": 0.891
+      },
+      "freq_anchored": 46,
+      "freq_unanchored": 41
+    },
+    {
+      "anchored_sign": "M045",
+      "unanchored_sign": "858",
+      "anchored_reading": "y\u0101nai",
+      "proposed_reading": "y\u0101nai",
+      "allograph_score": 0.949,
+      "details": {
+        "pos_sim": 0.935,
+        "co_excl": 1.0,
+        "freq_ratio": 0.876
+      },
+      "freq_anchored": 92,
+      "freq_unanchored": 105
+    },
+    {
+      "anchored_sign": "M169",
+      "unanchored_sign": "173",
+      "anchored_reading": "r\u0101",
+      "proposed_reading": "r\u0101",
+      "allograph_score": 0.947,
+      "details": {
+        "pos_sim": 0.918,
+        "co_excl": 1.0,
+        "freq_ratio": 0.897
+      },
+      "freq_anchored": 68,
+      "freq_unanchored": 61
+    },
+    {
+      "anchored_sign": "M416",
+      "unanchored_sign": "461",
+      "anchored_reading": "na",
+      "proposed_reading": "na",
+      "allograph_score": 0.946,
+      "details": {
+        "pos_sim": 0.873,
+        "co_excl": 1.0,
+        "freq_ratio": 0.982
+      },
+      "freq_anchored": 55,
+      "freq_unanchored": 56
+    },
+    {
+      "anchored_sign": "M416",
+      "unanchored_sign": "440",
+      "anchored_reading": "na",
+      "proposed_reading": "na",
+      "allograph_score": 0.945,
+      "details": {
+        "pos_sim": 0.89,
+        "co_excl": 1.0,
+        "freq_ratio": 0.945
+      },
+      "freq_anchored": 55,
+      "freq_unanchored": 52
+    },
+    {
+      "anchored_sign": "M375",
+      "unanchored_sign": "841",
+      "anchored_reading": "ta\u1e47",
+      "proposed_reading": "ta\u1e47",
+      "allograph_score": 0.943,
+      "details": {
+        "pos_sim": 0.937,
+        "co_excl": 1.0,
+        "freq_ratio": 0.842
+      },
+      "freq_anchored": 32,
+      "freq_unanchored": 38
+    },
+    {
+      "anchored_sign": "M416",
+      "unanchored_sign": "617",
+      "anchored_reading": "na",
+      "proposed_reading": "na",
+      "allograph_score": 0.936,
+      "details": {
+        "pos_sim": 0.889,
+        "co_excl": 1.0,
+        "freq_ratio": 0.902
+      },
+      "freq_anchored": 55,
+      "freq_unanchored": 61
+    },
+    {
+      "anchored_sign": "M416",
+      "unanchored_sign": "394",
+      "anchored_reading": "na",
+      "proposed_reading": "na",
+      "allograph_score": 0.935,
+      "details": {
+        "pos_sim": 0.911,
+        "co_excl": 1.0,
+        "freq_ratio": 0.855
+      },
+      "freq_anchored": 55,
+      "freq_unanchored": 47
+    },
+    {
+      "anchored_sign": "M427",
+      "unanchored_sign": "820",
+      "anchored_reading": "en",
+      "proposed_reading": "en",
+      "allograph_score": 0.933,
+      "details": {
+        "pos_sim": 0.921,
+        "co_excl": 1.0,
+        "freq_ratio": 0.823
+      },
+      "freq_anchored": 147,
+      "freq_unanchored": 121
+    },
+    {
+      "anchored_sign": "M045",
+      "unanchored_sign": "820",
+      "anchored_reading": "y\u0101nai",
+      "proposed_reading": "y\u0101nai",
+      "allograph_score": 0.932,
+      "details": {
+        "pos_sim": 0.951,
+        "co_excl": 1.0,
+        "freq_ratio": 0.76
+      },
+      "freq_anchored": 92,
+      "freq_unanchored": 121
+    },
+    {
+      "anchored_sign": "M416",
+      "unanchored_sign": "173",
+      "anchored_reading": "na",
+      "proposed_reading": "na",
+      "allograph_score": 0.932,
+      "details": {
+        "pos_sim": 0.88,
+        "co_excl": 1.0,
+        "freq_ratio": 0.902
+      },
+      "freq_anchored": 55,
+      "freq_unanchored": 61
+    },
+    {
+      "anchored_sign": "M416",
+      "unanchored_sign": "430",
+      "anchored_reading": "na",
+      "proposed_reading": "na",
+      "allograph_score": 0.932,
+      "details": {
+        "pos_sim": 0.875,
+        "co_excl": 1.0,
+        "freq_ratio": 0.909
+      },
+      "freq_anchored": 55,
+      "freq_unanchored": 50
+    },
+    {
+      "anchored_sign": "M035",
+      "unanchored_sign": "790",
+      "anchored_reading": "po",
+      "proposed_reading": "po",
+      "allograph_score": 0.931,
+      "details": {
+        "pos_sim": 0.849,
+        "co_excl": 1.0,
+        "freq_ratio": 0.958
+      },
+      "freq_anchored": 46,
+      "freq_unanchored": 48
+    },
+    {
+      "anchored_sign": "M169",
+      "unanchored_sign": "440",
+      "anchored_reading": "r\u0101",
+      "proposed_reading": "r\u0101",
+      "allograph_score": 0.914,
+      "details": {
+        "pos_sim": 0.902,
+        "co_excl": 1.0,
+        "freq_ratio": 0.765
+      },
+      "freq_anchored": 68,
+      "freq_unanchored": 52
+    },
+    {
+      "anchored_sign": "M375",
+      "unanchored_sign": "719",
+      "anchored_reading": "ta\u1e47",
+      "proposed_reading": "ta\u1e47",
+      "allograph_score": 0.914,
+      "details": {
+        "pos_sim": 0.895,
+        "co_excl": 1.0,
+        "freq_ratio": 0.78
+      },
+      "freq_anchored": 32,
+      "freq_unanchored": 41
+    },
+    {
+      "anchored_sign": "M035",
+      "unanchored_sign": "151",
+      "anchored_reading": "po",
+      "proposed_reading": "po",
+      "allograph_score": 0.912,
+      "details": {
+        "pos_sim": 0.92,
+        "co_excl": 1.0,
+        "freq_ratio": 0.719
+      },
+      "freq_anchored": 46,
+      "freq_unanchored": 64
+    },
+    {
+      "anchored_sign": "M874",
+      "unanchored_sign": "520",
+      "anchored_reading": "ki",
+      "proposed_reading": "ki",
+      "allograph_score": 0.91,
+      "details": {
+        "pos_sim": 0.826,
+        "co_excl": 1.0,
+        "freq_ratio": 0.895
+      },
+      "freq_anchored": 219,
+      "freq_unanchored": 196
+    },
+    {
+      "anchored_sign": "M045",
+      "unanchored_sign": "617",
+      "anchored_reading": "y\u0101nai",
+      "proposed_reading": "y\u0101nai",
+      "allograph_score": 0.908,
+      "details": {
+        "pos_sim": 0.938,
+        "co_excl": 1.0,
+        "freq_ratio": 0.663
+      },
+      "freq_anchored": 92,
+      "freq_unanchored": 61
+    }
+  ],
+  "n_allograph_candidates": 2846,
+  "direction_test": {
+    "n_unique_initial": 60,
+    "n_unique_terminal": 61,
+    "direction_evidence": "RTL"
+  },
+  "verdict": "ALPHABET HYPOTHESIS FALSIFIED (64 signs > 35 sign threshold). 2846 allograph candidate pairs found. Direction evidence: RTL."
+}

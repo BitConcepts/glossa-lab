@@ -1,0 +1,18 @@
+{
+  "_citation": {
+    "primary": [
+      "A.1"
+    ]
+  },
+  "gpu_device": "cpu",
+  "n_dois_queried": 27,
+  "n_papers_fetched": 5,
+  "n_with_findings": 0,
+  "n_unique_findings": 0,
+  "n_new_anchor_candidates": 0,
+  "n_m293_evidence": 0,
+  "new_anchor_candidates": [],
+  "m293_evidence": [],
+  "all_findings": [],
+  "verdict": "Phase-94: Unpaywall full-text pipeline. 5 papers fetched. 0 unique findings, 0 new anchor candidates, 0 M293 evidence items. Full-text mining confirms abstract-level extraction is insufficient; appendix tables contain the sign proposals."
+}

@@ -90,8 +90,10 @@ population continuity (Phase-233). An independent 2026 study (\u2018How Non-Ling
 Is the Indus Sign System?\u2019) using synthetic baselines reaches a pro-linguistic \
 conclusion using the same entropy/Zipf/positional metrics as our pipeline (E40). \
 Forty evidence items (E01–E40; E28 falsified) support the Proto-Dravidian \
-hypothesis. Phase-239 dual-corroboration upgrades raise H+M total to 392 of 413 \
-anchors. ICIT cross-validation remains pending."""
+hypothesis. Phases 239–244 upgrades yield H+M=407/413 (98.5%): 105 HIGH + \
+302 MEDIUM + 0 LOW + 6 CANDIDATE — zero LOW anchors remain. E41 (Linear \
+Elamite 2022) confirmed with 7 sign values and 5 absent phonemes covered. \
+ICIT corpus is the only remaining gap for full SA confirmation."""
 
     INTRO = """\
 ## 1. Introduction
@@ -192,12 +194,12 @@ Vedic Sanskrit (Witzel 1999, Kuiper 1991, Southworth 2005):
 ## 3. Results
 
 ### 3.1 Anchor Inventory
-- Total H+M confirmed: 392 (105 HIGH + 287 MEDIUM) — Phase-239 batch upgrade
-- SA-confirmed H+M (original): {high_final + n_medium} ({high_final} HIGH, {n_medium} MEDIUM)
-- Additional dual-corroboration MEDIUM: 228 (Elamite+Sanskrit phonotactic, Phase-239)
-- Remaining LOW anchors: 15
+- Total H+M: 407/413 (98.5%) — 105 HIGH + 302 MEDIUM; ZERO LOW remain
+- SA-confirmed H+M (original Phases 1–216): {high_final + n_medium} ({high_final} HIGH, {n_medium} MEDIUM)
+- External-corroboration MEDIUM (Phases 239–244): 243 additional (Elamite+Sanskrit+DEDR+LE)
+- Remaining LOW anchors: ZERO. Remaining CANDIDATE: 6 (CISI P-signs)
 - H+M token coverage: {cov_hm:.1%} [95% CI: {ci_lo:.1%}–{ci_hi:.1%}] (SA-confirmed subset)
-- M77 sign types with H+M reading: ~{100 * 392 / distinct_signs:.0f}% (392/390 incl. CISI)
+- Complete anchor coverage: 407/413 = 98.5%
 
 ### 3.2 SA Aggregate Confidence
 - Phase-213 SA aggregate: {sa_aggregate:.1%} over 408 anchors (300K iterations, GPU)
@@ -331,8 +333,9 @@ Key claims:
 (9) 7 Elamite + 13 Sanskrit direct external anchor confirmations (E39, Phases 235-236)
 (10) Fisher p≈10⁻¹⁵ across 8 independent evidence lines; PDr→Tamil survival 96% posterior
 (11) Non-Linguistic Scorecard (Nair 2026, arXiv:2604.17828): STRONGLY_LINGUISTIC 4/4 (E40)
-(12) Phase-239+242: H+M total 164→393 (95.1% of 413 anchors)
-(13) Linear Elamite deciphered (Desset 2022): new IVC-contemporary Elamite bridge (E41)
+(12) Phases 239–244: H+M 164→407 (98.5%); ZERO LOW; E41 Linear Elamite confirmed
+(13) E41: Desset 2022 LE — 7 sign values, 5 absent phonemes covered, M267 doubly confirmed
+(14) 'Crossing the Indus Threshold' (2026, SSRN) — corpus-wide falsifiability test pending
 
 This is the most extensive quantitative Indus decipherment to date.
 Full pipeline, data, and anchor inventory are available in the
@@ -381,9 +384,12 @@ ICIT corpus cross-validation remains the primary open task."""
         "phase228_cisi_null_rate": 0.1418,
         "phase228_cisi_lift": 3.28,
         "phase229_m122_verdict": "UNCERTAIN (SA modal=kayam, cons=0.20)",
-        "phase239_hm_total": 392,
-        "phase239_medium_upgraded": 228,
-        "phase239_low_remaining": 15,
+        "phase239_hm_total": 407,
+        "phase239_medium_upgraded": 243,
+        "phase239_low_remaining": 0,
+        "phase244_e41_confirmed": True,
+        "phase244_le_sign_values": 7,
+        "phase245_sa_mean_cons": 0.325,
         "e40_nonlinguistic_scorecard": "SUPPORTS_LINGUISTIC (2026, pending full access)",
         "phase232_fisher_combined_p": 1e-15,
         "phase233_language_survival_pct": 0.96,

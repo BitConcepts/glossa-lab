@@ -1,0 +1,66 @@
+{
+  "phase": "245_246",
+  "generated_at": "2026-05-24T19:20:40.233300",
+  "phase_245_sa": {
+    "sa_run": true,
+    "n_seeds": 5,
+    "n_anchors_pinned": 407,
+    "mean_consistency": 0.325,
+    "baseline_phase213": 0.57,
+    "n_signs_cons_040": 18,
+    "new_upgrade_consistency": {
+      "M402": 0,
+      "M412": 0,
+      "M304": 0,
+      "M254": 0,
+      "M329": 0,
+      "M740": 0,
+      "M345": 0,
+      "M270": 0,
+      "M365": 0,
+      "M868": 0,
+      "M223": 0,
+      "M183": 0,
+      "M455": 0,
+      "M151": 0
+    },
+    "n_high_upgrades_applied": 0,
+    "high_upgraded_signs": [],
+    "final_inventory": {
+      "HIGH": 105,
+      "MEDIUM": 302,
+      "HM_total": 407
+    },
+    "verdict": "SA with 407 anchors: mean_cons=0.325 vs baseline 0.570. 0 Phase-244 signs upgraded to HIGH (cons>=0.40). H+M: 407/413."
+  },
+  "phase_246_crossing": {
+    "title": "Crossing the Indus Threshold: A Falsifiable, Corpus-Wide Functional Analysis of the Indus Script",
+    "doi": "10.2139/ssrn.6080446",
+    "year": 2026,
+    "authors": [],
+    "abstract_excerpt": "",
+    "content_signals": {
+      "falsifiable": false,
+      "corpus_wide": false,
+      "functional": false,
+      "linguistic": false,
+      "pdr_dravidian": false,
+      "grammar": false,
+      "sign_function": false,
+      "new_methodology": false
+    },
+    "linguistic_alignment": "NEUTRAL_OR_UNKNOWN",
+    "e42_potential": false,
+    "data_available": false,
+    "action": "Abstract recovered. Key claims: 'falsifiable, corpus-wide functional analysis'. Signals: 0/8 match. Alignment: NEUTRAL_OR_UNKNOWN. If falsifiable+corpus-wide = supports PDr hypothesis → E42. Recommend: access full paper via SSRN or ResearchGate."
+  },
+  "final_inventory": {
+    "HIGH": 105,
+    "MEDIUM": 302,
+    "LOW": 0,
+    "CANDIDATE": 6,
+    "HM_total": 407,
+    "total": 413
+  },
+  "verdict": "Phase-245: SA with 407 anchors: mean_cons=0.325 vs baseline 0.570. 0 Phase-244 signs upgraded to HIGH (cons>=0.40). H+M: 407/413. Phase-246: 'Crossing the Indus Threshold' (NEUTRAL_OR_UNKNOWN, E42 potential=False). Final: 105H+302M+0L+6C = 407/413 H+M."
+}

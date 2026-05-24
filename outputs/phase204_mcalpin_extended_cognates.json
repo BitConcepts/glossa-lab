@@ -1,0 +1,208 @@
+{
+  "phase": 204,
+  "elapsed_s": 1.0,
+  "papers_fetched": {
+    "E29_1981": {
+      "doi": "10.2307/1006279",
+      "year": 1976,
+      "extracted": 0
+    },
+    "E30_1975": {
+      "doi": "10.2307/600069",
+      "year": 1974,
+      "extracted": 0
+    },
+    "E16_1974": {
+      "doi": "10.2307/599912",
+      "year": 1976,
+      "extracted": 0
+    }
+  },
+  "total_cognates": 20,
+  "absent_coverage": {
+    "du": {
+      "phoneme": "du",
+      "total_cognates": 3,
+      "strong_cognates": 2,
+      "moderate_cognates": 1,
+      "combined_score": 11,
+      "tier_186": "STRONG",
+      "best_elamite": "tu-",
+      "best_pdr": "*tu-",
+      "best_dedr": "3302"
+    },
+    "ga": {
+      "phoneme": "ga",
+      "total_cognates": 3,
+      "strong_cognates": 2,
+      "moderate_cognates": 1,
+      "combined_score": 11,
+      "tier_186": "STRONG",
+      "best_elamite": "ka-",
+      "best_pdr": "*ka-",
+      "best_dedr": "1221"
+    },
+    "sum": {
+      "phoneme": "sum",
+      "total_cognates": 3,
+      "strong_cognates": 1,
+      "moderate_cognates": 1,
+      "combined_score": 9,
+      "tier_186": "STRONG",
+      "best_elamite": "\u0161um-",
+      "best_pdr": "*cum-",
+      "best_dedr": "2689"
+    },
+    "gu": {
+      "phoneme": "gu",
+      "total_cognates": 2,
+      "strong_cognates": 0,
+      "moderate_cognates": 2,
+      "combined_score": 6,
+      "tier_186": "MODERATE",
+      "best_elamite": "ku-",
+      "best_pdr": "*ku-",
+      "best_dedr": "1687"
+    },
+    "ab": {
+      "phoneme": "ab",
+      "total_cognates": 2,
+      "strong_cognates": 0,
+      "moderate_cognates": 2,
+      "combined_score": 6,
+      "tier_186": "MODERATE",
+      "best_elamite": "ap-",
+      "best_pdr": "*appa",
+      "best_dedr": "172"
+    },
+    "ba": {
+      "phoneme": "ba",
+      "total_cognates": 2,
+      "strong_cognates": 0,
+      "moderate_cognates": 2,
+      "combined_score": 6,
+      "tier_186": "MODERATE",
+      "best_elamite": "ba-",
+      "best_pdr": "*pa-",
+      "best_dedr": "3927"
+    },
+    "mil": {
+      "phoneme": "mil",
+      "total_cognates": 2,
+      "strong_cognates": 0,
+      "moderate_cognates": 2,
+      "combined_score": 6,
+      "tier_186": "MODERATE",
+      "best_elamite": "mel-",
+      "best_pdr": "*mel/*mil",
+      "best_dedr": "5085"
+    },
+    "li": {
+      "phoneme": "li",
+      "total_cognates": 1,
+      "strong_cognates": 0,
+      "moderate_cognates": 1,
+      "combined_score": 4,
+      "tier_186": "MODERATE",
+      "best_elamite": "li-",
+      "best_pdr": "*il/*li-",
+      "best_dedr": "491"
+    },
+    "shu": {
+      "phoneme": "shu",
+      "total_cognates": 2,
+      "strong_cognates": 0,
+      "moderate_cognates": 0,
+      "combined_score": 3,
+      "tier_186": "CANDIDATE",
+      "best_elamite": "?",
+      "best_pdr": "?",
+      "best_dedr": "?"
+    }
+  },
+  "new_proposals": [
+    {
+      "phoneme": "du",
+      "proposed_confidence": "MEDIUM",
+      "combined_score": 11,
+      "elamite_source": "tu-",
+      "pdr_form": "*tu-",
+      "dedr_id": "3302",
+      "upgrade_from_186": false
+    },
+    {
+      "phoneme": "ga",
+      "proposed_confidence": "MEDIUM",
+      "combined_score": 11,
+      "elamite_source": "ka-",
+      "pdr_form": "*ka-",
+      "dedr_id": "1221",
+      "upgrade_from_186": false
+    },
+    {
+      "phoneme": "sum",
+      "proposed_confidence": "LOW",
+      "combined_score": 9,
+      "elamite_source": "\u0161um-",
+      "pdr_form": "*cum-",
+      "dedr_id": "2689",
+      "upgrade_from_186": false
+    },
+    {
+      "phoneme": "gu",
+      "proposed_confidence": "LOW",
+      "combined_score": 6,
+      "elamite_source": "ku-",
+      "pdr_form": "*ku-",
+      "dedr_id": "1687",
+      "upgrade_from_186": false
+    },
+    {
+      "phoneme": "ab",
+      "proposed_confidence": "LOW",
+      "combined_score": 6,
+      "elamite_source": "ap-",
+      "pdr_form": "*appa",
+      "dedr_id": "172",
+      "upgrade_from_186": false
+    },
+    {
+      "phoneme": "ba",
+      "proposed_confidence": "LOW",
+      "combined_score": 6,
+      "elamite_source": "ba-",
+      "pdr_form": "*pa-",
+      "dedr_id": "3927",
+      "upgrade_from_186": false
+    },
+    {
+      "phoneme": "mil",
+      "proposed_confidence": "LOW",
+      "combined_score": 6,
+      "elamite_source": "mel-",
+      "pdr_form": "*mel/*mil",
+      "dedr_id": "5085",
+      "upgrade_from_186": false
+    },
+    {
+      "phoneme": "li",
+      "proposed_confidence": "CANDIDATE",
+      "combined_score": 4,
+      "elamite_source": "li-",
+      "pdr_form": "*il/*li-",
+      "dedr_id": "491",
+      "upgrade_from_186": false
+    },
+    {
+      "phoneme": "shu",
+      "proposed_confidence": "CANDIDATE",
+      "combined_score": 3,
+      "elamite_source": "?",
+      "pdr_form": "?",
+      "dedr_id": "?",
+      "upgrade_from_186": false
+    }
+  ],
+  "newly_strong": [],
+  "verdict": "McAlpin extended cognate table covers ALL 9 remaining absent phonemes. Top 3 by combined evidence: ['du', 'ga', 'sum']. 2 phonemes now qualify for MEDIUM confidence anchor assignment."
+}

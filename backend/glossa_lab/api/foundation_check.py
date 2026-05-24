@@ -39,10 +39,26 @@ router = APIRouter()
 
 REPO  = Path(__file__).resolve().parent.parent.parent.parent
 RPRT  = REPO / "reports"
+OUTPUTS = REPO / "outputs"   # canonical output dir for phase result files
 DATA  = REPO / "backend/glossa_lab/data"
 BKRPT = REPO / "backend/reports"
 HOLDAT = REPO / "corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv"
 ROLES  = REPO / "corpora/downloads/external_repos/holdatllc_indus/all_symbol_semantic_roles 2.csv"
+
+
+def _find_report(filename: str) -> "Path | None":
+    """Find a report file in reports/ or outputs/ (phase results migrated to outputs/)."""
+    for base in (RPRT, OUTPUTS, BKRPT):
+        p = base / filename
+        if p.exists():
+            return p
+    return None
+
+
+def _glob_report(pattern: str) -> list:
+    """Glob a pattern across reports/ and outputs/."""
+    matches = sorted(RPRT.glob(pattern)) + sorted(OUTPUTS.glob(pattern))
+    return matches
 
 
 def _check(label: str, status: str, detail: str,
@@ -198,8 +214,8 @@ def _run_checks() -> list[dict[str, Any]]:
 
     # ── 5. Phase-29d Enmenanak grounding ──────────────────────────────────────
     try:
-        p29d_path = RPRT / "phase29d_reverse_janabiyah_v3.json"
-        if p29d_path.exists():
+        p29d_path = _find_report("phase29d_reverse_janabiyah_v3.json")
+        if p29d_path:
             p29d = json.loads(p29d_path.read_text(encoding="utf-8"))
             raw  = json.dumps(p29d)
             enmen = "Enmenanak" in raw or "enmenanak" in raw
@@ -231,7 +247,7 @@ def _run_checks() -> list[dict[str, Any]]:
 
     # ── 6. Phase-31 T3 Zipf slope ─────────────────────────────────────────────
     try:
-        p31_files = sorted(RPRT.glob("indus_phase31_t3_zipf*"))
+        p31_files = _glob_report("indus_phase31_t3_zipf*")
         if p31_files:
             p31 = json.loads(p31_files[-1].read_text(encoding="utf-8"))
             content = json.dumps(p31)
@@ -403,9 +419,11 @@ def _run_checks() -> list[dict[str, Any]]:
     # ── 13. Phase-30a spectral result ─────────────────────────────────────────
     # The experiment saves a wrapper file (indus_phase30a_period_stratified_m77_<ts>.json
     # with {saved:true, path:..., filename:...}) AND the actual data to the canonical
-    # path RPRT/phase30a_period_stratified_m77.json.  Resolve both.
-    p30a_candidates = sorted(RPRT.glob("indus_phase30a_period_stratified_m77*"))
-    _canonical = RPRT / "phase30a_period_stratified_m77.json"
+    # path outputs/ or reports/phase30a_period_stratified_m77.json.  Resolve both.
+    p30a_candidates = _glob_report("indus_phase30a_period_stratified_m77*")
+    _canonical_r = RPRT / "phase30a_period_stratified_m77.json"
+    _canonical_o = OUTPUTS / "phase30a_period_stratified_m77.json"
+    _canonical = _canonical_o if _canonical_o.exists() else _canonical_r
     if _canonical.exists() and _canonical not in p30a_candidates:
         p30a_candidates = [_canonical] + p30a_candidates  # prefer canonical
     # Pick the first file that actually contains spectral_gap data

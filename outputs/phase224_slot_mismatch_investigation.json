@@ -1,0 +1,566 @@
+{
+  "phase": 224,
+  "n_mismatches_investigated": 19,
+  "reading_errors": [
+    "P013",
+    "P004",
+    "P001",
+    "P022"
+  ],
+  "corpus_differences": [
+    "P076",
+    "P108",
+    "P051",
+    "P094",
+    "P041",
+    "P007",
+    "P089",
+    "P047",
+    "P023",
+    "P070",
+    "P020",
+    "P038",
+    "P071",
+    "P044",
+    "P032"
+  ],
+  "actionable_hm_errors": [
+    "P013",
+    "P004",
+    "P001",
+    "P022"
+  ],
+  "investigations": [
+    {
+      "p_sign": "P013",
+      "m_id": "M013",
+      "our_reading": "nakaram",
+      "our_confidence": "HIGH",
+      "expected_slot": "TERMINAL",
+      "cisi_slot": "INITIAL",
+      "holdat_slot": "INITIAL",
+      "cisi_stats": {
+        "freq": 9,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "cisi_slot": "INITIAL"
+      },
+      "holdat_stats": {
+        "freq": 23,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "holdat_slot": "INITIAL"
+      },
+      "classification": {
+        "verdict": "READING_ERROR",
+        "confidence": "HIGH",
+        "note": "Both CISI (INITIAL) and Holdat (INITIAL) agree against our expected slot (TERMINAL). Our reading 'nakaram' may be wrong — the sign behaves as INITIAL in both corpora."
+      }
+    },
+    {
+      "p_sign": "P076",
+      "m_id": "M076",
+      "our_reading": "naN",
+      "our_confidence": "HIGH",
+      "expected_slot": "MEDIAL",
+      "cisi_slot": "TERMINAL",
+      "holdat_slot": "INITIAL",
+      "cisi_stats": {
+        "freq": 6,
+        "initial_rate": 0.0,
+        "medial_rate": 0.333,
+        "terminal_rate": 0.667,
+        "cisi_slot": "TERMINAL"
+      },
+      "holdat_stats": {
+        "freq": 7,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "holdat_slot": "INITIAL"
+      },
+      "classification": {
+        "verdict": "CORPUS_DIFFERENCE",
+        "confidence": "MEDIUM",
+        "note": "CISI slot (TERMINAL) ≠ Holdat slot (INITIAL). Expected: MEDIAL. Different corpus composition or site-specific variation. Not necessarily a reading error."
+      }
+    },
+    {
+      "p_sign": "P004",
+      "m_id": "M004",
+      "our_reading": "kēḷ",
+      "our_confidence": "HIGH",
+      "expected_slot": "MEDIAL",
+      "cisi_slot": "INITIAL",
+      "holdat_slot": "INITIAL",
+      "cisi_stats": {
+        "freq": 6,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "cisi_slot": "INITIAL"
+      },
+      "holdat_stats": {
+        "freq": 17,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "holdat_slot": "INITIAL"
+      },
+      "classification": {
+        "verdict": "READING_ERROR",
+        "confidence": "HIGH",
+        "note": "Both CISI (INITIAL) and Holdat (INITIAL) agree against our expected slot (MEDIAL). Our reading 'kēḷ' may be wrong — the sign behaves as INITIAL in both corpora."
+      }
+    },
+    {
+      "p_sign": "P108",
+      "m_id": "M108",
+      "our_reading": "kaL",
+      "our_confidence": "HIGH",
+      "expected_slot": "MEDIAL",
+      "cisi_slot": "TERMINAL",
+      "holdat_slot": "MEDIAL",
+      "cisi_stats": {
+        "freq": 5,
+        "initial_rate": 0.0,
+        "medial_rate": 0.4,
+        "terminal_rate": 0.6,
+        "cisi_slot": "TERMINAL"
+      },
+      "holdat_stats": {
+        "freq": 5,
+        "initial_rate": 0.0,
+        "medial_rate": 1.0,
+        "terminal_rate": 0.0,
+        "holdat_slot": "MEDIAL"
+      },
+      "classification": {
+        "verdict": "CORPUS_DIFFERENCE",
+        "confidence": "MEDIUM",
+        "note": "CISI slot (TERMINAL) ≠ Holdat slot (MEDIAL). Expected: MEDIAL. Different corpus composition or site-specific variation. Not necessarily a reading error."
+      }
+    },
+    {
+      "p_sign": "P051",
+      "m_id": "M051",
+      "our_reading": "pū/puḷ",
+      "our_confidence": "HIGH",
+      "expected_slot": "MEDIAL",
+      "cisi_slot": "INITIAL",
+      "holdat_slot": "MEDIAL",
+      "cisi_stats": {
+        "freq": 5,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "cisi_slot": "INITIAL"
+      },
+      "holdat_stats": {
+        "freq": 163,
+        "initial_rate": 0.202,
+        "medial_rate": 0.282,
+        "terminal_rate": 0.515,
+        "holdat_slot": "MEDIAL"
+      },
+      "classification": {
+        "verdict": "CORPUS_DIFFERENCE",
+        "confidence": "MEDIUM",
+        "note": "CISI slot (INITIAL) ≠ Holdat slot (MEDIAL). Expected: MEDIAL. Different corpus composition or site-specific variation. Not necessarily a reading error."
+      }
+    },
+    {
+      "p_sign": "P001",
+      "m_id": "M001",
+      "our_reading": "tōḷ",
+      "our_confidence": "MEDIUM",
+      "expected_slot": "MEDIAL",
+      "cisi_slot": "INITIAL",
+      "holdat_slot": "INITIAL",
+      "cisi_stats": {
+        "freq": 4,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "cisi_slot": "INITIAL"
+      },
+      "holdat_stats": {
+        "freq": 14,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "holdat_slot": "INITIAL"
+      },
+      "classification": {
+        "verdict": "READING_ERROR",
+        "confidence": "HIGH",
+        "note": "Both CISI (INITIAL) and Holdat (INITIAL) agree against our expected slot (MEDIAL). Our reading 'tōḷ' may be wrong — the sign behaves as INITIAL in both corpora."
+      }
+    },
+    {
+      "p_sign": "P094",
+      "m_id": "M094",
+      "our_reading": "onpatu",
+      "our_confidence": "MEDIUM",
+      "expected_slot": "MEDIAL",
+      "cisi_slot": "TERMINAL",
+      "holdat_slot": "NO_HOLDAT_DATA",
+      "cisi_stats": {
+        "freq": 1,
+        "initial_rate": 0.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 1.0,
+        "cisi_slot": "TERMINAL"
+      },
+      "holdat_stats": {},
+      "classification": {
+        "verdict": "CORPUS_DIFFERENCE",
+        "confidence": "MEDIUM",
+        "note": "CISI slot (TERMINAL) ≠ Holdat slot (UNKNOWN). Expected: MEDIAL. Different corpus composition or site-specific variation. Not necessarily a reading error."
+      }
+    },
+    {
+      "p_sign": "P041",
+      "m_id": "M041",
+      "our_reading": "pēr",
+      "our_confidence": "HIGH",
+      "expected_slot": "MEDIAL",
+      "cisi_slot": "TERMINAL",
+      "holdat_slot": "INITIAL",
+      "cisi_stats": {
+        "freq": 1,
+        "initial_rate": 0.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 1.0,
+        "cisi_slot": "TERMINAL"
+      },
+      "holdat_stats": {
+        "freq": 17,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "holdat_slot": "INITIAL"
+      },
+      "classification": {
+        "verdict": "CORPUS_DIFFERENCE",
+        "confidence": "MEDIUM",
+        "note": "CISI slot (TERMINAL) ≠ Holdat slot (INITIAL). Expected: MEDIAL. Different corpus composition or site-specific variation. Not necessarily a reading error."
+      }
+    },
+    {
+      "p_sign": "P007",
+      "m_id": "M007",
+      "our_reading": "aaL",
+      "our_confidence": "MEDIUM",
+      "expected_slot": "MEDIAL",
+      "cisi_slot": "TERMINAL",
+      "holdat_slot": "INITIAL",
+      "cisi_stats": {
+        "freq": 1,
+        "initial_rate": 0.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 1.0,
+        "cisi_slot": "TERMINAL"
+      },
+      "holdat_stats": {
+        "freq": 11,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "holdat_slot": "INITIAL"
+      },
+      "classification": {
+        "verdict": "CORPUS_DIFFERENCE",
+        "confidence": "MEDIUM",
+        "note": "CISI slot (TERMINAL) ≠ Holdat slot (INITIAL). Expected: MEDIAL. Different corpus composition or site-specific variation. Not necessarily a reading error."
+      }
+    },
+    {
+      "p_sign": "P089",
+      "m_id": "M089",
+      "our_reading": "tu/tū",
+      "our_confidence": "HIGH",
+      "expected_slot": "TERMINAL",
+      "cisi_slot": "INITIAL",
+      "holdat_slot": "MEDIAL",
+      "cisi_stats": {
+        "freq": 1,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "cisi_slot": "INITIAL"
+      },
+      "holdat_stats": {
+        "freq": 171,
+        "initial_rate": 0.099,
+        "medial_rate": 0.462,
+        "terminal_rate": 0.439,
+        "holdat_slot": "MEDIAL"
+      },
+      "classification": {
+        "verdict": "CORPUS_DIFFERENCE",
+        "confidence": "MEDIUM",
+        "note": "CISI slot (INITIAL) ≠ Holdat slot (MEDIAL). Expected: TERMINAL. Different corpus composition or site-specific variation. Not necessarily a reading error."
+      }
+    },
+    {
+      "p_sign": "P047",
+      "m_id": "M047",
+      "our_reading": "min/mīn",
+      "our_confidence": "MEDIUM",
+      "expected_slot": "MEDIAL",
+      "cisi_slot": "TERMINAL",
+      "holdat_slot": "INITIAL",
+      "cisi_stats": {
+        "freq": 1,
+        "initial_rate": 0.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 1.0,
+        "cisi_slot": "TERMINAL"
+      },
+      "holdat_stats": {
+        "freq": 13,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "holdat_slot": "INITIAL"
+      },
+      "classification": {
+        "verdict": "CORPUS_DIFFERENCE",
+        "confidence": "MEDIUM",
+        "note": "CISI slot (TERMINAL) ≠ Holdat slot (INITIAL). Expected: MEDIAL. Different corpus composition or site-specific variation. Not necessarily a reading error."
+      }
+    },
+    {
+      "p_sign": "P023",
+      "m_id": "M023",
+      "our_reading": "vaḷ",
+      "our_confidence": "MEDIUM",
+      "expected_slot": "MEDIAL",
+      "cisi_slot": "TERMINAL",
+      "holdat_slot": "INITIAL",
+      "cisi_stats": {
+        "freq": 1,
+        "initial_rate": 0.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 1.0,
+        "cisi_slot": "TERMINAL"
+      },
+      "holdat_stats": {
+        "freq": 16,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "holdat_slot": "INITIAL"
+      },
+      "classification": {
+        "verdict": "CORPUS_DIFFERENCE",
+        "confidence": "MEDIUM",
+        "note": "CISI slot (TERMINAL) ≠ Holdat slot (INITIAL). Expected: MEDIAL. Different corpus composition or site-specific variation. Not necessarily a reading error."
+      }
+    },
+    {
+      "p_sign": "P070",
+      "m_id": "M070",
+      "our_reading": "vēl",
+      "our_confidence": "MEDIUM",
+      "expected_slot": "MEDIAL",
+      "cisi_slot": "TERMINAL",
+      "holdat_slot": "INITIAL",
+      "cisi_stats": {
+        "freq": 1,
+        "initial_rate": 0.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 1.0,
+        "cisi_slot": "TERMINAL"
+      },
+      "holdat_stats": {
+        "freq": 17,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "holdat_slot": "INITIAL"
+      },
+      "classification": {
+        "verdict": "CORPUS_DIFFERENCE",
+        "confidence": "MEDIUM",
+        "note": "CISI slot (TERMINAL) ≠ Holdat slot (INITIAL). Expected: MEDIAL. Different corpus composition or site-specific variation. Not necessarily a reading error."
+      }
+    },
+    {
+      "p_sign": "P020",
+      "m_id": "M020",
+      "our_reading": "kuṉ",
+      "our_confidence": "HIGH",
+      "expected_slot": "MEDIAL",
+      "cisi_slot": "TERMINAL",
+      "holdat_slot": "INITIAL",
+      "cisi_stats": {
+        "freq": 1,
+        "initial_rate": 0.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 1.0,
+        "cisi_slot": "TERMINAL"
+      },
+      "holdat_stats": {
+        "freq": 18,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "holdat_slot": "INITIAL"
+      },
+      "classification": {
+        "verdict": "CORPUS_DIFFERENCE",
+        "confidence": "MEDIUM",
+        "note": "CISI slot (TERMINAL) ≠ Holdat slot (INITIAL). Expected: MEDIAL. Different corpus composition or site-specific variation. Not necessarily a reading error."
+      }
+    },
+    {
+      "p_sign": "P038",
+      "m_id": "M038",
+      "our_reading": "pōr",
+      "our_confidence": "MEDIUM",
+      "expected_slot": "MEDIAL",
+      "cisi_slot": "TERMINAL",
+      "holdat_slot": "INITIAL",
+      "cisi_stats": {
+        "freq": 1,
+        "initial_rate": 0.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 1.0,
+        "cisi_slot": "TERMINAL"
+      },
+      "holdat_stats": {
+        "freq": 17,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "holdat_slot": "INITIAL"
+      },
+      "classification": {
+        "verdict": "CORPUS_DIFFERENCE",
+        "confidence": "MEDIUM",
+        "note": "CISI slot (TERMINAL) ≠ Holdat slot (INITIAL). Expected: MEDIAL. Different corpus composition or site-specific variation. Not necessarily a reading error."
+      }
+    },
+    {
+      "p_sign": "P071",
+      "m_id": "M071",
+      "our_reading": "nal",
+      "our_confidence": "HIGH",
+      "expected_slot": "MEDIAL",
+      "cisi_slot": "TERMINAL",
+      "holdat_slot": "INITIAL",
+      "cisi_stats": {
+        "freq": 1,
+        "initial_rate": 0.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 1.0,
+        "cisi_slot": "TERMINAL"
+      },
+      "holdat_stats": {
+        "freq": 16,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "holdat_slot": "INITIAL"
+      },
+      "classification": {
+        "verdict": "CORPUS_DIFFERENCE",
+        "confidence": "MEDIUM",
+        "note": "CISI slot (TERMINAL) ≠ Holdat slot (INITIAL). Expected: MEDIAL. Different corpus composition or site-specific variation. Not necessarily a reading error."
+      }
+    },
+    {
+      "p_sign": "P044",
+      "m_id": "M044",
+      "our_reading": "ku",
+      "our_confidence": "MEDIUM",
+      "expected_slot": "MEDIAL",
+      "cisi_slot": "TERMINAL",
+      "holdat_slot": "INITIAL",
+      "cisi_stats": {
+        "freq": 1,
+        "initial_rate": 0.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 1.0,
+        "cisi_slot": "TERMINAL"
+      },
+      "holdat_stats": {
+        "freq": 19,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "holdat_slot": "INITIAL"
+      },
+      "classification": {
+        "verdict": "CORPUS_DIFFERENCE",
+        "confidence": "MEDIUM",
+        "note": "CISI slot (TERMINAL) ≠ Holdat slot (INITIAL). Expected: MEDIAL. Different corpus composition or site-specific variation. Not necessarily a reading error."
+      }
+    },
+    {
+      "p_sign": "P032",
+      "m_id": "M032",
+      "our_reading": "koL",
+      "our_confidence": "HIGH",
+      "expected_slot": "MEDIAL",
+      "cisi_slot": "TERMINAL",
+      "holdat_slot": "INITIAL",
+      "cisi_stats": {
+        "freq": 1,
+        "initial_rate": 0.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 1.0,
+        "cisi_slot": "TERMINAL"
+      },
+      "holdat_stats": {
+        "freq": 9,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "holdat_slot": "INITIAL"
+      },
+      "classification": {
+        "verdict": "CORPUS_DIFFERENCE",
+        "confidence": "MEDIUM",
+        "note": "CISI slot (TERMINAL) ≠ Holdat slot (INITIAL). Expected: MEDIAL. Different corpus composition or site-specific variation. Not necessarily a reading error."
+      }
+    },
+    {
+      "p_sign": "P022",
+      "m_id": "M022",
+      "our_reading": "kalam",
+      "our_confidence": "HIGH",
+      "expected_slot": "TERMINAL",
+      "cisi_slot": "INITIAL",
+      "holdat_slot": "INITIAL",
+      "cisi_stats": {
+        "freq": 1,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "cisi_slot": "INITIAL"
+      },
+      "holdat_stats": {
+        "freq": 22,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "holdat_slot": "INITIAL"
+      },
+      "classification": {
+        "verdict": "READING_ERROR",
+        "confidence": "HIGH",
+        "note": "Both CISI (INITIAL) and Holdat (INITIAL) agree against our expected slot (TERMINAL). Our reading 'kalam' may be wrong — the sign behaves as INITIAL in both corpora."
+      }
+    }
+  ],
+  "summary": {
+    "READING_ERROR": 4,
+    "CORPUS_DIFFERENCE": 15,
+    "OTHER": 0
+  }
+}

@@ -1,0 +1,825 @@
+{
+  "phase": 231,
+  "elapsed_s": 117.0,
+  "total_papers_fetched": 4050,
+  "n_strong_evidence": 42,
+  "n_moderate_evidence": 34,
+  "n_weak_evidence": 3974,
+  "indirect_bilingual_hits": {
+    "shu_ilishu_refs": {
+      "n": 2,
+      "papers": [
+        {
+          "title": "Shu-ilishu, Commentary",
+          "year": 0
+        },
+        {
+          "title": "The Date Formulae of Shu-Ilishu of Isin",
+          "year": 1951
+        }
+      ]
+    },
+    "gulf_seal_refs": {
+      "n": 11,
+      "papers": [
+        {
+          "title": "Mobility, Exchange, and Tomb Membership in Bronze Age Arabia: A Biogeochemical I",
+          "year": 2011
+        },
+        {
+          "title": "From Dilmun to W\u0101d\u012b al\u2010F\u0101w: A forgotten desert corridor, c. 2000 BC",
+          "year": 2022
+        },
+        {
+          "title": "Identifying pastoral and plant products in local and imported pottery in Early B",
+          "year": 2025
+        },
+        {
+          "title": "The westward transmission of Indus Valley sealing technology: origin and develop",
+          "year": 2010
+        },
+        {
+          "title": "A \u2018Persian Gulf\u2019 Seal from Lothal",
+          "year": 1963
+        }
+      ]
+    },
+    "substrate_loanword_refs": {
+      "n": 5,
+      "papers": [
+        {
+          "title": "Comparing Spoken Languages using Paninian System of Sounds and Finite State Mach",
+          "year": 2023
+        },
+        {
+          "title": "Pre-\u1e5agvedic Convergence Between Indo-Aryan (Sanskrit) and Dravidian? A Survey of",
+          "year": 1996
+        },
+        {
+          "title": "Dravidian Studies VII",
+          "year": 1948
+        },
+        {
+          "title": "Multilingualism in the Evolution of Dravidian Languages",
+          "year": 2025
+        },
+        {
+          "title": "Introduction to\n                    <i>The Oxford Handbook of Dravidian Language",
+          "year": 2025
+        }
+      ]
+    },
+    "elamo_dravidian_refs": {
+      "n": 9,
+      "papers": [
+        {
+          "title": "Elamite and Dravidian: Further evidence of Relationship",
+          "year": 0
+        },
+        {
+          "title": "Elamite and Dravidian: Further Evidence of Relationship [and Comments and Reply]",
+          "year": 1975
+        },
+        {
+          "title": "APPENDIX II. ADDITIONAL WORDS IN COMMON BETWEEN ELAMITE AND DRAVIDIAN",
+          "year": 1981
+        },
+        {
+          "title": "Toward Proto-Elamo-Dravidian",
+          "year": 1974
+        },
+        {
+          "title": "30 South Asia: Dravidian linguistic history",
+          "year": 2013
+        }
+      ]
+    },
+    "rgveda_substrate_refs": {
+      "n": 0,
+      "papers": []
+    },
+    "weight_system_refs": {
+      "n": 1,
+      "papers": [
+        {
+          "title": "Bronze Age Weights from Mesopotamia, Iran &amp; Greater Indus Valley",
+          "year": 2022
+        }
+      ]
+    },
+    "brw_continuity_refs": {
+      "n": 7,
+      "papers": [
+        {
+          "title": "Black and Red Ware",
+          "year": 2021
+        },
+        {
+          "title": "Black-and-Red Ware",
+          "year": 2021
+        },
+        {
+          "title": "Excavated Black and Red ware settlements in Birbhum District of West Bengal",
+          "year": 2023
+        },
+        {
+          "title": "Thinking Through Clay: Cognitive Evolution through Black and Red Ware in Early S",
+          "year": 2025
+        },
+        {
+          "title": "Black-and-Red Ware Settlements in West Bengal",
+          "year": 1993
+        }
+      ]
+    },
+    "keezhadi_refs": {
+      "n": 6,
+      "papers": [
+        {
+          "title": "Genomic, Hydrogeomorphic, and Linguistic Syntaxis in the Indus Valley Civilizati",
+          "year": 2025
+        },
+        {
+          "title": "Archaeological Excavations in Tamil Nadu with Special Reference to Keezhadi - A ",
+          "year": 2020
+        },
+        {
+          "title": "Mathematical Modeling of Archaeological Artefacts from Keezhadi Excavation, Tami",
+          "year": 2025
+        },
+        {
+          "title": "Genomic, Hydrogeomorphic, and Linguistic Syntaxis in the Indus Valley Civilizati",
+          "year": 2025
+        },
+        {
+          "title": "Revival of Keezhadi Civilisation: Impact of Social Media",
+          "year": 2022
+        }
+      ]
+    },
+    "adna_corridor_refs": {
+      "n": 2,
+      "papers": [
+        {
+          "title": "Kukapa haluaisi olla aasi? Aasi symbolina ja samastumiskohteena",
+          "year": 2013
+        },
+        {
+          "title": "Concubine in Sangam Literature",
+          "year": 2025
+        }
+      ]
+    },
+    "tamil_brahmi_onomastic_refs": {
+      "n": 1,
+      "papers": [
+        {
+          "title": "\u0b9a\u0b99\u0bcd\u0b95 \u0b95\u0bbe\u0bb2\u0ba4\u0bcd \u0ba4\u0bae\u0bbf\u0bb4\u0bcd\u0b9a\u0bcd \u0b9a\u0bae\u0bc2\u0b95\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0bb5\u0bbe\u0baf\u0bcd\u0bae\u0bca\u0bb4\u0bbf \u0bae\u0bb0\u0baa\u0bc1\u0bae\u0bcd \u0b8e\u0bb4\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1 \u0bae\u0bb0\u0baa\u0bc1\u0bae\u0bcd",
+          "year": 2026
+        }
+      ]
+    }
+  },
+  "strong_papers": [
+    {
+      "source": "crossref",
+      "id": "10.63300/kijts04052026.08",
+      "title": "\u0b9a\u0b99\u0bcd\u0b95 \u0b95\u0bbe\u0bb2\u0ba4\u0bcd \u0ba4\u0bae\u0bbf\u0bb4\u0bcd\u0b9a\u0bcd \u0b9a\u0bae\u0bc2\u0b95\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0bb5\u0bbe\u0baf\u0bcd\u0bae\u0bca\u0bb4\u0bbf \u0bae\u0bb0\u0baa\u0bc1\u0bae\u0bcd \u0b8e\u0bb4\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1 \u0bae\u0bb0\u0baa\u0bc1\u0bae\u0bcd",
+      "year": 2026,
+      "text": "\u0b9a\u0b99\u0bcd\u0b95 \u0b95\u0bbe\u0bb2\u0ba4\u0bcd \u0ba4\u0bae\u0bbf\u0bb4\u0bcd\u0b9a\u0bcd \u0b9a\u0bae\u0bc2\u0b95\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0bb5\u0bbe\u0baf\u0bcd\u0bae\u0bca\u0bb4\u0bbf \u0bae\u0bb0\u0baa\u0bc1\u0bae\u0bcd \u0b8e\u0bb4\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1 \u0bae\u0bb0\u0baa\u0bc1\u0bae\u0bcd  When investigating the establishment of knowledge structures, cultural values, and social organization within Sangam Tamil society, the nexus between oral and written traditions emerges as a pivotal factor. The nascent intellectual apparatus of Tamil society was predominantly oral-centric; collective social memories, historiographic events, and ethico-social norms were disseminated across generations through performative poetry and oral narratives. Over time, the subsequent emergence of writing\u2014specifically the Tamili or Tamil-Brahmi script\u2014facilitated by burgeoning mercantile networks and socio-political shifts, provided a mechanism to codify and institutionalize this oral knowledge as verifiable historical records. Utilizing the conceptual frameworks of K. Kailasapathy\u2019s 'Oral-Formulaic Theory' and Walter Ong\u2019s 'Psychodynamics of Orality,' this research explores the oral-derived characteristics of Sangam prosody and synthesizes these findings with archaeological data from sites like",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4410527650",
+      "title": "Trade and trade routes of Indus valley civilization",
+      "year": 2025,
+      "text": "Trade and trade routes of Indus valley civilization In this paper, the author has tried to get into a comprehensive examination of the commercial infrastructure and exchange networks that may have existed in the Indus Valley Civilization (IVC) between ca. 2800 BCE and 1900 BCE, tracing their evolution into the early historic period. By integrating archaeological data ranging from sealed weights and caravan encampments to port installations with literary and epigraphic sources spanning Vedic hymns, P\u0101\u1e47inian grammar, Buddhist travelogues, and Greco-Roman accounts, the study reconstructs the roles of caravan leaders (s\u0101rthav\u0101has), caravan routes (Uttarapatha, Va\u1e47nupatha), and maritime corridors (from Tamralipti to Alexandria). It highlights the technical and institutional innovations such as standardized weights, caravan guilds, ritual sanctions, and ship-building lexicon that facilitated long-distance exchange of grains, textiles, metals, spices, and luxury items. The analysis further situates IVC trade within a broader Afro-Eurasian context, revealing its enduring legacy in South Asian economic traditions.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4411203807",
+      "title": "Identifying pastoral and plant products in local and imported pottery in Early Bronze Age southeastern Arabia",
+      "year": 2025,
+      "text": "Identifying pastoral and plant products in local and imported pottery in Early Bronze Age southeastern Arabia The origins of ceramic technology in the Oman Peninsula have a unique history in the context of ancient West Asia. Local pottery production in northern Oman and the United Arab Emirates is not documented until the early to mid-third millennium BC during the Early Bronze Age. This period was characterised by increasing sedentism and the expansion of long-distance exchange networks that operated across the Persian Gulf between Arabia, Mesopotamia, Iran and South Asia, including the exchange of ceramic vessels. In order to explore the links between ceramic technology and type, subsistence practices and sedentism as ceramic production was adopted in the region, we analysed the lipid content of Early Bronze Age pottery (n = 179) in southeastern Arabia from inland and coastal sites. The ceramic assemblage examined includes pottery produced locally at the site level as well as vessels that are distributed regionally. The contents of imported pottery from Mesopotamia and the Indus Civilisation from inland and coastal sites were also studied to determine the organic products that may have been transported as part of long-distance exchange. The results reveal the presence of pastoral products, such as meat and dairy products, in some of the earliest vessels produced in southeastern Arabia, as well as imported Mesopotamian vessels. Plant products are detected in a small minority of vessels in locally-produced and imported vessels, such as Fine Red Omani vessels and Black-Slipped Jars from the Indus Civilisation. Such an investigation demonstrates the importance of using biomolecular methods to study dietary practices and vessel use in southeastern Arabia on a larger scale.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1093/oxfordhb/9780197610411.013.23",
+      "title": "Multilingualism in the Evolution of Dravidian Languages",
+      "year": 2025,
+      "text": "Multilingualism in the Evolution of Dravidian Languages  Abstract \n                   Dravidian languages have benefited from close contact with Sanskrit, Prakrit, and English as well as Marathi, Hindi-Urdu, and Portuguese over many centuries. Multilingualism with these languages has been intensive and extensive, resulting in a veritable flood of words and phrases. It has expanded the sound inventory; introduced new phonological, morphological, and syntactic processes; extended the writing systems; and enhanced their creative potential. The impact of multilingualism also raises many structural and sociolinguistic issues, including the deep impact of language contact on basic vocabulary, its effect on typological structure, derivational productivity, role of loan features in defining a standard variety, qualitative and quantitative reaction to assimilation, nature of bilingual creativity, and purism versus pragmatism in language mixing, among others. The chapter also analyzes how English is used in Dravidian contexts and contributes to the e",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1093/oxfordhb/9780197610411.013.1",
+      "title": "Introduction to\n                    <i>The Oxford Handbook of Dravidian Languages</i>",
+      "year": 2025,
+      "text": "Introduction to\n                    <i>The Oxford Handbook of Dravidian Languages</i>  Abstract \n                   This chapter outlines the circumstances that led to the identification of Dravidian as a language family distinct from Indo-Aryan, and the questions that ensued about the Dravidian peoples and their languages. It concludes with an overview of the themes, parts, and chapters in the volume. The identification of Sanskrit as genetically Indo-European was followed by an orientalist endorsement of a claim for a Sanskrit-based linguistic unity of the Indian subcontinent. Its refutation arose out of the East India Company\u2019s efforts to train its recruits in an administratively useful Indian language for peninsular India, which revealed the South Indian languages to share similarities that collectively differentiated them from Sanskrit. The geographical spread of the Dravidian languages (from Brahui in Baluchistan in the northwest and Kurukh and Malto in Nepal in the northeast to the four literary languages in peninsular India) continues to fuel speculation about t",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.56153/g19088-024-0210-73",
+      "title": "Mathematical Modeling of Archaeological Artefacts from Keezhadi Excavation, Tamil Nadu, South India",
+      "year": 2025,
+      "text": "Mathematical Modeling of Archaeological Artefacts from Keezhadi Excavation, Tamil Nadu, South India  Keezhadi Excavation site is located in the south of Krishna and Tungabhadra rivers in Tamil Nadu, India. The Archaeological Survey of India (ASI) retrieved a lot of artifacts like dice, pottery items, gold coins etc which belongs to the Sangam Period (3rd century B.C. to the 3rd century A.D.) in Southern India. The major geo-archaeological techniques examined in the present study are: 1) discovering archaeological sites and documenting their internal structures, 2) surveying site formation and disturbance processes, 3) analyzing soils and sediments, 4) paleo-environmental reconstruction and the impact of humans (anthropogenic) on the landscape, 5) physical analysis of archaeological materials and 6) integrating geo-archaeology with social archaeology.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.34739/his.2024.13.01",
+      "title": "Investigating the Scenes of Daily Activities on Ancient Elamite seals during the Susa II Period",
+      "year": 2024,
+      "text": "Investigating the Scenes of Daily Activities on Ancient Elamite seals during the Susa II Period  A seal is typically made of stone or mineral material, ivory, shell, metal, wood, clay, or a combination of bitumen, and usually bears an engraved design. In this study, we aim to examine and analyze the scenes related to daily activities depicted on Elamite seals. In this research, 29 seal impressions associated with scenes of daily activities from the Susa II period have been investigated and evaluated. The selection of these seal impressions was based on factors such as the clear location of discovery, precise dating, clarity of the designs and scenes on the seal (lack of damage to the engraving), and the credibility of the source providing information about the seal and its impression. In this study, Elamite seals (Susa II) have been compared in terms of iconography, classification, and then with contemporaneous seals in Mesopotamia. Generally, the motifs observed on Elamite seals of the Susa II period that can be classified within the framework of daily activities include: agricu",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.29321/maj.10.001100",
+      "title": "Review on Nanotechnology Applications in Sericulture",
+      "year": 2024,
+      "text": "Review on Nanotechnology Applications in Sericulture  Recent decades have witnessed the transformative impact ofnanotechnology across various technology and industry sectors, usheringin significant improvements and, in some cases, revolutionary changes.Nanotechnology integrates progress achieved in chemistry, physics,materials science, and biotechnology to craft innovative materials withdistinctive properties attributable to their structuring at the nanometerscale. Sectors such as information technology, energy, environmentalscience, and transportation are all benefiting from nano-technologicaladvancements. The study investigated Spirulina-mediated titanium dioxidenanoparticle\u2019s effects on silkworm economic traits. Characterizationrevealed uniform nanoparticles with a size of 97 nm. Silkworms fed with50 ppm concentration showed improved weight, cocoon traits, silk quality,and reduced renditta. This suggests the potential benefits of nanoparticletreatedmulberry leaves in sericulture.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4318752018",
+      "title": "Comparing Spoken Languages using Paninian System of Sounds and Finite State Machines",
+      "year": 2023,
+      "text": "Comparing Spoken Languages using Paninian System of Sounds and Finite State Machines The study of spoken languages comprises phonology, morphology, and grammar. The languages can be classified as root languages, inflectional languages, and stem languages. In addition, languages continually change over time and space by picking isoglosses, as speakers move from region to/through region. All these factors lead to the formation of vocabulary, which has commonality/similarity across languages as well as distinct and subtle differences among them. Comparison of vocabularies across languages and detailed analysis has led to the hypothesis of language families. In particular, in the view of Western linguists, Vedic Sanskrit is a daughter language, part of the Indo-Iranian branch of the Indo-European Language family, and Dravidian Languages belong to an entirely different family. These and such conclusions are reexamined in this paper. Based on our study and analysis, we propose an Ecosystem Model for Linguistic Development with Sanskrit at the core, in place of the widely accepted family tree model. To that end, we leverage the Paninian system of sounds to construct a phonetic map. Then we represent words across languages as state transitions on the phonetic map and construct corresponding Morphological Finite Automata (MFA) that accept groups of words. Regardless of whether the contribution of this paper is significant or minor, it is an important step in challenging policy-driven research that has plagued this field.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4313642947",
+      "title": "Semantic scope of Indus inscriptions comprising taxation, trade and craft licensing, commodity control and access control: archaeological and script-internal evidence",
+      "year": 2023,
+      "text": "Semantic scope of Indus inscriptions comprising taxation, trade and craft licensing, commodity control and access control: archaeological and script-internal evidence This article studies the semantic scope of the yet undeciphered Indus inscriptions, which are mostly found on tiny seals, sealings, and tablets. Building on previous structural analyses, which reveal that Indus script was semasiographic or logographic in nature, this study analyses the combinatorial patterns of Indus script signs, and the geographical distribution of the inscriptions, to establish that the inscriptions did not encode any proper noun, such as anthroponyms, toponyms, or names of specific organizations. Analysing various archaeological contexts of the inscribed objects \u2014e.g., seals are found concentrated near city gates (e.g., Harappa), craft-workshops (e.g., Chanhu-daro), and public buildings (e.g., Mohenjo-daro), often along with standardized Indus weights which were used for taxation; sealings were attached to various storage containers and locking systems of \u201cwarehouse\u201d chambers as indicated by their reverse side impressions (e.g., the Lothal \u201cwarehouse\u201d sealings); inscribed sealing-pendants of Kanmer are conjectured to be passports/gate-passes by archaeologists; seals with identical inscriptions are often found from distant settlements \u2014 this study claims that the inscribed stamp-seals were used for enforcing certain rules involving taxation, trade/craft control, commodity-control and access control. Considering typological and functional differences between the seals and tablets, and analysing certain numerical and metrological notations ( , , ) typically found at the reverse-sides of many multi-sided tablets whose obverse-sides contain seal-like inscriptions, this study argues that such tablets were possibly trade/craft/commodity specific licenses issued to tax-collectors, traders, and artisans. These reverse-side tablet-inscriptions possibly encoded certain standardized license-fees for three popular license-slabs, whereas their obverse sides specified the commercial activities licensed to the tablet-bearers. These seals/tablets were possibly i",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4308339351",
+      "title": "From Dilmun to W\u0101d\u012b al\u2010F\u0101w: A forgotten desert corridor, c. 2000 BC",
+      "year": 2022,
+      "text": "From Dilmun to W\u0101d\u012b al\u2010F\u0101w: A forgotten desert corridor, c. 2000 BC Abstract There is a lacuna of knowledge on the inland trade routes across Bronze Age central Arabia, which this article seeks to fill based on new evidence from W\u0101d\u012b al\u2010F\u0101w, Saudi Arabia. Contrary to a common belief that interior Southeast Arabia after the Holocene Humid Phase and until the domestication of the dromedary had turned desolate Badlands, this study offers documentation that during the early Bronze Age, a commercial corridor connected the Kingdom of Dilmun on the Arabian Gulf coast with the southern parts of Saudi Arabia, probably Yemen. Seals of Dilmun Type, Dilmun pottery and related burial praxis make up the gist of the evidence from W\u0101d\u012b al\u2010F\u0101w. A dry mummification mound burial custom is possibly identified at al\u2010F\u0101w and probably Taym\u0101\u02be, which contrasts the classic Dilmun mound burial custom. An attempt is made to reconstruct the most likely route that connected Dilmun and W\u0101d\u012b al\u2010F\u0101w. The emergence around 2000 BC of this trade network, likely based on donkey trains, closely coincides with the rise of the Kingdom of Dilmun, but surprisingly also with a time when Arabia witnessed unusually arid conditions. Identification of this unexpected ancient corridor should profoundly affect how upcoming models consider linguistic, ideological, genetic, cultural and technological transmission across Bronze Age Arabia.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4313258009",
+      "title": "Modern Colloquial Eastern Elamite",
+      "year": 2022,
+      "text": "Modern Colloquial Eastern Elamite This paper is a formal demonstration of cognation between Elamite, a major language of the ancient Near East, and Brahui, a language of Balochistan, spoken primarily in Pakistan but also in Iran and Afghanistan. It is identifying Brahui as Modern Colloquial Eastern Elamite. Almost exactly two millennia have elapsed between the last recording of Elamite and the first recorded example of Brahui. While closely related, Brahui is not a descendant of classical Elamite. Rather, it is descended from an unattested eastern branch of Elamite. Part, one deals with a full statement of the Comparative Method focusing on the root syllable. Part Two adds comparative morphology and retailed comparisons of the verb structure.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4283588654",
+      "title": "Gold and \u2018ratti\u2019 signs inscribed on Mohenjo-Daro\u2019s gold-assaying needles, fish-sign inscriptions signifying gemstones concentrated near lapidaries: Indus script\u2019s taxed commodities",
+      "year": 2022,
+      "text": "Gold and \u2018ratti\u2019 signs inscribed on Mohenjo-Daro\u2019s gold-assaying needles, fish-sign inscriptions signifying gemstones concentrated near lapidaries: Indus script\u2019s taxed commodities This article claims a breakthrough in decoding Indus script. It builds on the author\u2019s earlier papers which established Indus script\u2019s use in taxation, and trade/craft licensing, and discussed how different segments of the semasiographic Indus inscriptions encoded different information (tax-types, license-categories, commodity-names, tax-paying modes, tax-rates, tax-receiving entities, etc.). This paper claims that certain inscribed needle-shaped gold artefacts found in a jewelry hoard of Mohenjo-daro, and a similar gold-tipped copper stylus found from Kotada-Bhadli, were gold-assaying needles used with touchstones. Such touchstones, sometimes gold-streaked, are found from Mohenjo-daro, Banawali, etc. Revealingly, the way modern gold-testing needles bear the words \u201cgold\u201d and \u201ckarat\u201d, Mohenjo-Daro\u2019s gold-testing needles bore signs and . This study claims that the frequent Indus sign symbolized a blowpipe inside a crucible , and metonymically signified gold, precious metals ( ) and gold-smithy (sign clearly depicted the fire below crucible). Crucible-blowpipe-based words and symbols have signified metal-smithy in ancient Egypt, Mesopotamia, and India. It also identifies sign , which symbolized Abrus precatorious seeds, and signified the related \u2018ratti\u2019 (raktik\u0101) based weight-system. \u2018Ratti\u2019, India\u2019s traditional gold-measuring and numismatic unit, was the basis of Indus civilization\u2019s weight systems. In certain inscriptions ( ), , a modified \u201cratti\u201d-symbol, occurs as a metrological term related to gold . In Indus inscriptions, fish-like signs (e.g., , , ) occur frequently with precious-metal symbols ( ). Interestingly seals/tablets containing fish-like signs, are mostly found near Indus lapidaries, bead-factories, and jewellers\u2019 shops. This paper argues that fish-like signs signified gemstones, lapidary activities, related precious commodities, and corresponding weight standards. Since ancestral Dravidian languages were spoken across Indus settlements, Indus scribes po",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.54781/abz.v14i1.370",
+      "title": "Modern Colloquial Eastern Elamite",
+      "year": 2022,
+      "text": "Modern Colloquial Eastern Elamite  This paper is a formal demonstration of cognation between Elamite, a major language of the ancient Near East, and Brahui, a language of Balochistan, spoken primarily in Pakistan but also in Iran and Afghanistan. It is identifying Brahui as Modern Colloquial Eastern Elamite.\u00a0 Almost exactly two millennia have elapsed between the last recording of Elamite and the first recorded example of Brahui.\u00a0 While closely related, Brahui is not a descendant of classical Elamite.\u00a0 Rather, it is descended from an unattested eastern branch of Elamite. Part, one deals with a full statement of the Comparative Method focusing on the root syllable.\u00a0 Part Two adds comparative morphology and retailed comparisons of the verb structure.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.23797/9783529035425",
+      "title": "Bronze Age Weights from Mesopotamia, Iran &amp; Greater Indus Valley",
+      "year": 2022,
+      "text": "Bronze Age Weights from Mesopotamia, Iran &amp; Greater Indus Valley  In this volume Enrico Ascalone presents more than 2000 weights, potential weights and other objects \u2013 mostly unpublished so far \u2013 from 20 Bronze Age sites in Iraq, Iran and India. It includes ca. 750 weights from Susa in south-western Iran and nearly 900 weights from Dholavira, Kutch district, in India. The typology, material, archaeological context and metrology of the objects is discussed. For the first time a large number of weights from the Mature Harappan culture is presented in detail. The investigations were made possible by various partners in the Iran, India and France (Louvre) and were funded by the ERC-2014-CoG 'WEIGHTANDVALUE: Weight metrology and its economic and social impact on Bronze Age Europe, West and South Asia' [Grant no. 648055].",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.15713/ins.bhj.97",
+      "title": "IVC thrombectomy in a patient with adrenal tumour with IVC thrombus.",
+      "year": 2022,
+      "text": "IVC thrombectomy in a patient with adrenal tumour with IVC thrombus.  IntroductionAdrenocortical carcinoma (ACC) is a rare malignancy with a poor prognosis, and the association\u00a0with tumour thrombus into the inferior vena cava (IVC) is infrequent. Radical surgery is the best\u00a0treatment.Case ReportWe herein report a case of a large ACC of the left adrenal gland extending into the IVC through\u00a0the left renal vein in a 68-year-old male patient. He presented with pain in the left side of the\u00a0abdomen for one month and significant weight loss (7 kilograms). On examination, a hard\u00a0irregular non-ballotable lump was palpable in the left lumbar region. Ultrasonography, computedtomography, and whole-body PET CT all revealed a large mass over the upper pole of the left\u00a0kidney with tumour thrombus in the IVC. Laboratory tests showed creatinine levels of 0.9 mg/dl\u00a0(normal range: 0.5\u20131.2 mg/dl) while plasma levels of cortisol, free metanephrines were normal.\u00a0A midline laparotomy was performed, and the tumour was completely excised with regionallymphadenectomy, ipsilatera",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "s2",
+      "id": "0623a9b4b1efbb9d7ed8f1dc0b11213130b4e6ac",
+      "title": "Savvadumalaiyil Pallavar Kala Nadukal",
+      "year": 2022,
+      "text": "Savvadumalaiyil Pallavar Kala Nadukal World monster history can be divided into pre-history and post-history. The Stone Age, Stone Age, and New Stone Age are important landmarks of prehistoric nomadic society. The history of the human race became clear after the civilization of the human race and the beginning of the arts such as agriculture, architecture and medicine. The historical period of India starts from the Indus Valley. Archaeological remains parallel to the Indus Valley are widely found in Tamil Nadu. Buried cities include Keezhadi, Kodumanal and Adichanallur (Muthumakkal Thazhigal).\u00a0Ancient man left his fellow human beings who lived and died with him naturally without any burial. Then the stoneworkers set up inscriptions, punches and identified the dead. Its developmental stage is the mediators.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4253448297",
+      "title": "Ancient tax tokens, trade licenses and metrological records?: Making sense of Indus inscribed objects through script-internal, contextual, linguistic, and ethnohistorical lenses.",
+      "year": 2021,
+      "text": "Ancient tax tokens, trade licenses and metrological records?: Making sense of Indus inscribed objects through script-internal, contextual, linguistic, and ethnohistorical lenses. This article argues that most of the inscribed objects (seals, miniature-tablets etc.) of ancient Indus valley civilization were essentially administrative-commercial tools (tax-tokens, trade-licences, metrological records, etc.) used for controlling the complex trading economy spread across the Indus settlements. It also argues that the inscriptions logographically encoded a commercial sublanguage to convey information about kinds of taxes/tithes, tax-receiving entities; tax-rates and modes; and activities (such as cultivation, manufacture, and trading of specific commodities) that these taxes covered and authorized. Building on the functional classification of Indus logograms performed in the author's previous structural analysis of Indus inscriptions and analysing various script-internal, archaeological, historical and linguistic evidence, this article seeks to interpret the semantic functionalities of different sign-classes. It proposes that: i) The numerical and metrological signs were used to represent certain tax-collection rates fixed for certain commodities, whereas the lexeme-signs following them ( ) represented those taxed commodities. ii) The Crop-signs ( ) represented different harvested grain-based taxes. iii) The phrase-final/terminal logograms ( ) encoded certain metrological modes (volumetric, weight-based, reed-measure-based etc.) of tax-collection, and thus metonymically encoded certain broad tax-categories. iv) The lexeme-signs appearing in the initial parts of the grammatically complex inscriptions ( ) represented the tax-collector entities and purpose of tax-payment. v) The signs mostly occurring in pre-phrase-final positions ( ) represented the mode of tax-payments through predefined equivalencies. vi) The bird-like logograms ( ) represented different precious stones including lapis lazuli, cornelian, agate etc.; while the fish-like logograms ( ) signified different apotropaic \"fish-eye-beads\", which were one of the most precious exported Indu",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4206162048",
+      "title": "Metal-smithy, Bead-making, Gemstones, Jeweller\u2019s Weight, Trade-permits, Tax-stamps: Indus Script\u2019s Semasiography Partly Decoded",
+      "year": 2021,
+      "text": "Metal-smithy, Bead-making, Gemstones, Jeweller\u2019s Weight, Trade-permits, Tax-stamps: Indus Script\u2019s Semasiography Partly Decoded This paper claims to have partly decoded the Indus script. It not only explains how the brief formulaic inscriptions found on seals and tablets helped in taxation and trade control, by recording taxed commodity-types, licensed commercial activities, tax-rates, mode of tax-payment, license-issuing entities etc., but also decisively identifies several semasiograms signifying metal-smithy, lapidary-works, related metrology and taxation. It shows how the sign resembling a \u201cblowpipe inside a crucible\u201d, repeatedly occurs in inscribed seals/tablets discovered from workshops of metal-workers, goldsmiths and bead-makers, and directly occurs on certain inscribed gold and copper implements. Crucibles and blowpipes being ancient smelting tools, their ideograms ( , , ) denoted gold-smithy in Egyptian hieroglyphs too. Moreover, certain Indo-Aryan and Dravidian words for metal-smith directly translates to \u201cblowpipe-blower\u201d. Thus archaeological, script-internal and linguistic evidence confirm that sign signified precious metals and metal-smithy in different contexts. Similarly, fish-like signs ( , , etc.), which repeatedly occur in inscriptions discovered from bead-makers\u2019 and jewelers\u2019 workshops across Indus settlements, arguably signified meanings associated with gemstones, bead-making and related metrological standards. Interestingly, in Proto-Dravidian, \u201cm\u012bn\u201d means fish, shining, bright, and gemstone. Moreover, Indus valley\u2019s eye-patterned gemstone beads were famous as \u201cfish-eye beads\u201d in Mesopotamia. The gemstone related fish-signs sometimes co-occur with , possibly because, the bead-makers and goldsmiths, who physically shared same workshops, were part of related trade license and taxation mechanisms. This paper also claims that the frequent terminal signs symbolized different volumetric ( ) and weight-based ( ) metrological units used in revenue collection and thus metonymically signified certain tax categories. Specifically, the terminal arrow-like sign , which mostly co-oc",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W3203865709",
+      "title": "Of boxes in the Bronze Age: exotic imports, skeuomorphs and local crafts from Central Asia to Sumer",
+      "year": 2021,
+      "text": "Of boxes in the Bronze Age: exotic imports, skeuomorphs and local crafts from Central Asia to Sumer This paper briefly reviews some of the excavated evidence for decorated boxes found at sites from Mesopotamia to Central Asia in the late 3rd millennium BC, and concludes that one published from an Akkadian grave at Nippur is a Harappan import. Similar types of box found at Gonur depe were used to contain mirrors, and this also provides a new explanation for the Nippur box. Remains of other types of decorated box are also known from elite graves at Gonur and Ur, some of a size consistent with trunks or chests, but others much smaller and employing iconogra- phy peculiar to their cultural context. This paper draws attention to the fact that the boards for the \u201cGame of Twenty Squares\u201d were originally hollow in order to hold the pieces, and that the so-called \u201cStandard of Ur\u201d was also a box, rather than the solid object it has been reconstructed and known as. In other regions, such as southeast Arabia and Iran, small compartmented boxes were also carved from chlorite but larger examples were probably also made of wood. The fired clay boxes also known from eastern Iran and southwest Central Asia may well have had wooden counterparts which have not survived. In short, a much greater variety of boxes of different types and sizes were used at this period than is generally acknowledged.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/1908.05310v1",
+      "title": "Network Reconnaissance and Vulnerability Excavation of Secure DDS Systems",
+      "year": 2019,
+      "text": "Network Reconnaissance and Vulnerability Excavation of Secure DDS Systems Distribution Service (DDS) is a realtime peer-to-peer protocol that serves as a scalable middleware between distributed networked systems found in many Industrial IoT domains such as automotive, medical, energy, and defense. Since the initial ratification of the standard, specifications have introduced a Security Model and Service Plugin Interface (SPI) architecture, facilitating authenticated encryption and data centric access control while preserving interoperable data exchange. However, as Secure DDS v1.1, the default plugin specifications presently exchanges digitally signed capability lis",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.2307/j.ctv19vbgkc.31",
+      "title": "Dilmun-Meluhhan Relations Revisited in Light of Observations on Early Dilmun Seal Production during the City IIa-c Period (c. 2050-1800 BC)",
+      "year": 2018,
+      "text": "Dilmun-Meluhhan Relations Revisited in Light of Observations on Early Dilmun Seal Production during the City IIa-c Period (c. 2050-1800 BC)",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/1702.00523v1",
+      "title": "Deep Learning the Indus Script",
+      "year": 2017,
+      "text": "Deep Learning the Indus Script Standardized corpora of undeciphered scripts, a necessary starting point for computational epigraphy, requires laborious human effort for their preparation from raw archaeological records. Automating this process through machine learning algorithms can be of significant aid to epigraphical research. Here, we take the first steps in this direction and present a deep learning pipeline that takes as input images of the undeciphered Indus script, as found in archaeological artifacts, and returns as output a string of graphemes, suitable for inclusion in a standard corpus. The image is first decomp",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1002/9781444351071.wbeghm830",
+      "title": "30 South Asia: Dravidian linguistic history",
+      "year": 2013,
+      "text": "30 South Asia: Dravidian linguistic history  Abstract   The ancestral Dravidian languages, related to ancient Elamite of Iran, originated west of the Indus valley and probably spread through there into peninsular India during the 3rd millennium BCE , the period of the Indus Valley civilization. Relationships between the Dravidian and Indo\u2010Aryan languages are also informative about Dravidian prehistory.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/1204.3800v1",
+      "title": "Indus script corpora, archaeo-metallurgy and Meluhha (Mleccha)",
+      "year": 2012,
+      "text": "Indus script corpora, archaeo-metallurgy and Meluhha (Mleccha) Jules Bloch's work on formation of the Marathi language has to be expanded further to provide for a study of evolution and formation of Indian languages in the Indian language union (sprachbund). The paper analyses the stages in the evolution of early writing systems which began with the evolution of counting in the ancient Near East. A stage anterior to the stage of syllabic representation of sounds of a language, is identified. Unique geometric shapes required for tokens to categorize objects became too large to handle to abstract hundreds of categories of goods and metallurgical processes d",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W2282644793",
+      "title": "Mobility, Exchange, and Tomb Membership in Bronze Age Arabia: A Biogeochemical Investigation",
+      "year": 2011,
+      "text": "Mobility, Exchange, and Tomb Membership in Bronze Age Arabia: A Biogeochemical Investigation Major transitions in subsistence, settlement organization, and funerary architecture accompanied the rise and fall of extensive trade complexes between southeastern Arabia and major centers in Mesopotamia, Dilmun, Elam, Central Asia, and the Indus Valley throughout the third and second millennia BC.I address the nature of these transformations, particularly the movements of people accompanying traded goods across this landscape, by analyzing human and faunal skeletal material using stable strontium, oxygen, and carbon isotopes.Stable isotope analysis is a biogeochemical technique utilized to assess patterns of residential mobility and paleodiet in archaeological populations.Individuals interred in monumental communal tombs from the Umm an-Nar (2500-2000 BC) and subsequent Wadi Suq (2000-1300 BC) periods from across the Oman Peninsula were selected, and the enamel of their respective tomb members analyzed to detect (a) how the involvement of this region in burgeoning pan-Gulf exchange networks may have influenced mobility, and (b) how its inhabitants reacted during the succeeding economic collapse of the early second millennium BC.Due to the commingled and fragmentary nature of these remains, the majority of enamel samples came from a single tooth type for each tomb (e.g., LM 1 ) to prevent v Dedicated to my wonderful parents, Larry and Susan, and to my sisters and best friends, Lindsay and Lauren vi ACKNOWLEDGMENTS",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1111/j.1600-0471.2010.00329.x",
+      "title": "The westward transmission of Indus Valley sealing technology: origin and development of the \u2018Gulf Type\u2019 seal and other administrative technologies in Early Dilmun, <i>c.</i>2100\u20132000 BC",
+      "year": 2010,
+      "text": "The westward transmission of Indus Valley sealing technology: origin and development of the \u2018Gulf Type\u2019 seal and other administrative technologies in Early Dilmun, <i>c.</i>2100\u20132000 BC  This paper provides a comprehensive examination of the seals of the so\u2010called \u2018Gulf Type\u2019, which date to the end of the third millennium BC. It is argued that the Gulf Type seals are of key importance to our understanding of the origin of sealing and other administrative technologies within an emerging Early Dilmun \u2018state\u2019. Based on principal component analysis it is demonstrated that the shape of Gulf Type seals with inscriptions in Indus characters is distinct from seals without inscriptions. It is further argued that Gulf Type seals found in the Indus Valley, Iran, Mesopotamia/Bahrain and Bahrain can be connected with relatively discrete morphological groups apparently corresponding to different areas of production. The Indus inscriptions on the seals are investigated with particular emphasis on the abnormal occurrence of prefixed \u2018twins\u2019 signs in the western inscriptions. The hypothesis that a language different from that of the Harappans was used on these seals is reconfirmed on",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "s2",
+      "id": "d7783e41c25af4f0d906fde4987ee244a4717994",
+      "title": "Dilmun and Mesopotamian International Sea-borne Commerce\u2014\u2014Bahrain Island in the Cuneiform Texts and Archaeological Discoveries",
+      "year": 2004,
+      "text": "Dilmun and Mesopotamian International Sea-borne Commerce\u2014\u2014Bahrain Island in the Cuneiform Texts and Archaeological Discoveries",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1080/09720073.2003.11890791",
+      "title": "Black and Red Ware: A Metrical Analysis of Two Different Cultures (Chalcolithic Culture and Megalithic Culture of India)",
+      "year": 2003,
+      "text": "Black and Red Ware: A Metrical Analysis of Two Different Cultures (Chalcolithic Culture and Megalithic Culture of India)",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1524/aofo.1999.26.2.352",
+      "title": "Typological and Quantitative Approach to the Ancient Weight Systems. Susa, Persian Gulf and Indus Valley from the End of the III Mill, to the Beginning of the II Mill. BC",
+      "year": 1999,
+      "text": "Typological and Quantitative Approach to the Ancient Weight Systems. Susa, Persian Gulf and Indus Valley from the End of the III Mill, to the Beginning of the II Mill. BC",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1163/9789004644779_005",
+      "title": "Pre-\u1e5agvedic Convergence Between Indo-Aryan (Sanskrit) and Dravidian? A Survey of the Issues and Controversies",
+      "year": 1996,
+      "text": "Pre-\u1e5agvedic Convergence Between Indo-Aryan (Sanskrit) and Dravidian? A Survey of the Issues and Controversies",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.2307/4200247",
+      "title": "The Dilmun Standard and Its Relationship with Indus and near Eastern Weight Systems",
+      "year": 1986,
+      "text": "The Dilmun Standard and Its Relationship with Indus and near Eastern Weight Systems",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.70249/9798893981803-014",
+      "title": "APPENDIX II. ADDITIONAL WORDS IN COMMON BETWEEN ELAMITE AND DRAVIDIAN",
+      "year": 1981,
+      "text": "APPENDIX II. ADDITIONAL WORDS IN COMMON BETWEEN ELAMITE AND DRAVIDIAN",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "s2",
+      "id": "b1d575d64277d07549eac058a169740716737593",
+      "title": "A Dilmunite seal cutter\u2019s misfortune",
+      "year": 1977,
+      "text": "A Dilmunite seal cutter\u2019s misfortune",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1086/201521",
+      "title": "Elamite and Dravidian: Further Evidence of Relationship [and Comments and Reply]",
+      "year": 1975,
+      "text": "Elamite and Dravidian: Further Evidence of Relationship [and Comments and Reply]",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.2307/412012",
+      "title": "Toward Proto-Elamo-Dravidian",
+      "year": 1974,
+      "text": "Toward Proto-Elamo-Dravidian  It is demonstrated here that the Dravidian family of languages in South Asia is cognate with Elamite, an ancient language of West Asia. This demonstration is based on 57 Elamite words (mostly verb stems) paired with corresponding Dravidian terms. The correspondences are, on the whole, straightforward and interlocking. A beginning is made in reconstructing the phonology of Proto-Elamo-Dravidian.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1017/s0003598x00037194",
+      "title": "A \u2018Persian Gulf\u2019 Seal from Lothal",
+      "year": 1963,
+      "text": "A \u2018Persian Gulf\u2019 Seal from Lothal  Lothal is an important harbour-town of the Indus Civilization at the head of the Gulf of Cambay on the west coast of India (FIG. 1). During the recent excavations there, a circular steatite seal has been found which is neither wholly Indian nor Sumerian in workmanship (PL. IX). On the other hand, it closely resembles the seals from the Persian Gulf islands found by the Danish expedition led by Professor Glob and Dr Bibby. Sir Mortimer Wheeler has named them 'Persian Gulf' seals which, according to him, 'appear to have been made at the various entrep\u00f4ts (such as Bahrain itself) of a cosmopolitan Persian Gulf trade of the kind which has been analyzed by A. L. Oppenheim from Larsa tablets' (note I). Commenting on these seals, the late Col. D. H. Gordon wrote: 'The problem of Bahrain is a very interesting and important one, and it is possible that these seals may help to solve it. Some day such seals may come to light in India, but so far they have not; Bahrain may have been Dilmun and it",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "s2",
+      "id": "3c60ac35fe7fc3290f5a050cf2d6727bf27ac429",
+      "title": "A \u2018Persian Gulf\u2019 Seal from Lothal",
+      "year": 1963,
+      "text": "A \u2018Persian Gulf\u2019 Seal from Lothal",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.2307/3218839",
+      "title": "The Date Formulae of Shu-Ilishu of Isin",
+      "year": 1951,
+      "text": "The Date Formulae of Shu-Ilishu of Isin",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1017/s0041977x00080277",
+      "title": "Dravidian Studies VII",
+      "year": 1948,
+      "text": "Dravidian Studies VII  In two recent articles in the  Transactions of the Philological Society  the problem of Dravidian words in Sanskrit has been discussed, and a considerable number of etymologies have been presented. 1  Roughly 170 Sanskrit words of Dravidian origin are dealt with in the two articles. There remains an even larger amount of material which has not been touched on in the above two articles, and the bulk of this is brought together in the list of etymologies proposed here. The present article contains 315 items, involving a larger number of words since several words may be treated together, bringing the total number of Dravidian words in Sanskrit dealt with in the three articles to well over 500. This is a very considerable number, and shows that the extent of Dravidian influence on Sanskrit has always been underestimated rather than overestimated. It by no means exhausts the field, and another supplementary list will eventually be necessary. When the subject has been fully dealt with, it i",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W2038661208",
+      "title": "Elamite and Dravidian: Further evidence of Relationship",
+      "year": 0,
+      "text": "Elamite and Dravidian: Further evidence of Relationship RECENT WORK with primarily lexical data (McAlpin 1974) has shown that Elamite, a major language of ancient West Asia, is cognate with the Dravidian language family of South Asia. This work was based on the Achaemenid Elamite (AE) glossary of Hallock (1969). When all personal names and obvious loanwords had been excluded, there remained 270 lexical items that could be assumed to be Elamite. A large proportion of these were verb stems, and some had very vague meanings like 'a kind of tool' or 'a kind of fruit.' Of this total, 25% were shown to have good cognates with items in the Dravidian Etymological Dictionary of Burrow and Emeneau (1960, 1968). The phonological correspondences based on these etyma are given in table 1; these phonological statements hold for the root portion (generally at least two syllables) of the lexical pairs with only a handful of exceptions, many of which seem to be isolated special cases. Another 12% were found to have much more doubtful connections with Dravidian or to be obviously internally derived; for example, AE namana 'daytime' is derived from AE nan 'day', which itself is cognate with Dravidian ncil 'day'. Items with no clear cognates with Dravidian accounted for 50% of the total, and the remaining 13% were so uncertain, in form or meaning, as to be virtually unusable. There seem to be no loanwords in this corpus between AE and Proto-Dravidian (PDr), with the notable exception of AE kutira'bearer', appearing in PDr as kutiray 'horse'.' Near perfect phonological correspondence in word roots, with a good semantic fit, for 25% of an arbitrary small sample vocabulary is sufficient proof in itself that these languages are cognate. Here I shall present the correspondences in verbal morphologies that support this relationship. Elamite is attested in several different versions, the most important of which are Achaemenid Elamite (AE) and",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1163/2211-436x_cos_acosb_2_93",
+      "title": "Shu-ilishu, Commentary",
+      "year": 0,
+      "text": "Shu-ilishu, Commentary",
+      "evidence_tier": "STRONG"
+    }
+  ],
+  "moderate_papers": [
+    {
+      "source": "crossref",
+      "id": "10.1016/j.jasrep.2026.105586",
+      "title": "Why change what works? Technological resilience in Harappan pottery from Bagasra (c. 2450\u20131900 BCE), Gujarat",
+      "year": 2026,
+      "text": "Why change what works? Technological resilience in Harappan pottery from Bagasra (c. 2450\u20131900 BCE), Gujarat",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/2604.23582v1",
+      "title": "Evidence for a Scale-Free Commercial Network in the Indus Valley Civilization: A Power Law Analysis of Harappan Seal Data",
+      "year": 2026,
+      "text": "Evidence for a Scale-Free Commercial Network in the Indus Valley Civilization: A Power Law Analysis of Harappan Seal Data We present a quantitative analysis of the frequency distribution of unicorn seal attributes from the Harappan Civilization (c.\\ 2600--1900 BCE), reinterpreting published typological data through the lens of network science. We propose an information architecture for Harappan seals in which the unicorn motif serves as a commercial network marker, the offering stand variant encodes guild identity, and the script conveys transactional and administrative metadata. Under this interpretation, the frequency distribution of offering stand styles -- a proxy for guild size -- is consistent with a power",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1136/bcr-2024-264581",
+      "title": "IVC filter migration causing discitis, psoas abscess and hydronephrosis: improving IVC filter retrieval rates",
+      "year": 2025,
+      "text": "IVC filter migration causing discitis, psoas abscess and hydronephrosis: improving IVC filter retrieval rates  We discuss the complications associated with inferior vena cava (IVC) filters, focusing on a female patient in her mid-30s who presented to the emergency department with a history of hypercoagulable state and recurrent deep vein thrombosis. She had an IVC filter placed, followed by an IVC stent years later. The patient presented with severe lower back pain radiating to her right leg and back spasms. Investigations revealed an IVC filter tine extruding into the L3\u2013L4 disc space, causing discitis-osteomyelitis, an intraosseous abscess and a psoas abscess. Another tine caused mild hydronephrosis by abutting the ureter. Methicillin-resistant  Staphylococcus aureus  was cultured from a disc aspirate. After initial antibiotic treatment, her spinal instability worsened, necessitating complex spinal surgery to remove three filter tines. This case highlights the significant risks of IVC filters, including fracture and organ perforation, and emphasises the critical importance of timely filter r",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.63300/kirjts0404202505",
+      "title": "\u0b9a\u0bc6\u0bb5\u0bbf\u0bb2\u0bbf\u0ba4\u0bcd\u0ba4\u0bbe\u0baf\u0bbf\u0ba9\u0bcd \u0bae\u0bc6\u0baf\u0bcd\u0baa\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1\u0ba3\u0bb0\u0bcd\u0bb5\u0bc1\u0b95\u0bb3\u0bcd",
+      "year": 2025,
+      "text": "\u0b9a\u0bc6\u0bb5\u0bbf\u0bb2\u0bbf\u0ba4\u0bcd\u0ba4\u0bbe\u0baf\u0bbf\u0ba9\u0bcd \u0bae\u0bc6\u0baf\u0bcd\u0baa\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1\u0ba3\u0bb0\u0bcd\u0bb5\u0bc1\u0b95\u0bb3\u0bcd  The foster mother (Ceviliththai) occupies a unique and significant position within classical Tamil Sangam Akam literature. Transcending the status of a mere servant, she is depicted as an integrated and essential member of the family, responsible for nurturing the heroine (Thalaivi) from birth with profound love and unwavering duty. As established by Tolkappiyam, her role is often doubly significant as the mother of the heroine\u2019s companion (Thozhi), thereby establishing deep, interconnected kinship bonds between the Thalaivi, the Thozhi, and the biological mother (Nattray). This article centers on the emotional landscape of the Ceviliththai during a moment of profound crisis: her discovery of the heroine\u2019s elopement (Udanpokku). Drawing extensively upon rules outlined in Tolkappiyam and poetic evidence from various Sangam anthologies, this study investigates the intense psychological distress and emotional turbulence experienced by the Ceviliththai. The primary objective is to meticul",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1093/oxfordhb/9780197610411.013.2",
+      "title": "The Dravidian Languages",
+      "year": 2024,
+      "text": "The Dravidian Languages  Abstract \n                   This chapter provides an overview of Dravidian languages, primarily spoken by millions of people in South Asia. The four major literary languages within the Dravidian language family are Kannada, Malayalam, Tamil, and Telugu, the official languages of five southern states in India. The chapter examines the pioneering studies in historical and comparative linguistics in correlation with findings from archaeology, computational linguistics, and population genetics. The origins of the Dravidian languages and people are shrouded in mystery, but evidence from recent population genetic research, archaeology and computational linguistic studies has unearthed observations of the geographical spread of the languages. The chapter also discusses the phonology and phonotactics of Proto-Dravidian languages alongside the morphology and syntax of Dravidian languages.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4396750221",
+      "title": "Nominations for siblings: Proto-Dravidian reconstruction and borrowability / \u041f\u0440\u0430\u0438\u043d\u0434\u043e\u0435\u0432\u0440\u043e\u043f\u0435\u0439\u0441\u043a\u0438\u0439 \u0438\u043c.-\u0432\u0438\u043d. \u043f\u0430\u0434\u0435\u0436 \u0434\u0432\u043e\u0439\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0433\u043e \u0447\u0438\u0441\u043b\u0430 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0445 \u0438 \u0434\u0432\u043e\u0439\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435 \u0447\u0438\u0441\u043b\u043e \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0445 \u0432 \u0433\u0435\u0440\u043c\u0430\u043d\u0441\u043a\u0438\u0445 \u044f\u0437\u044b\u043a\u0430\u0445",
+      "year": 2023,
+      "text": "Nominations for siblings: Proto-Dravidian reconstruction and borrowability / \u041f\u0440\u0430\u0438\u043d\u0434\u043e\u0435\u0432\u0440\u043e\u043f\u0435\u0439\u0441\u043a\u0438\u0439 \u0438\u043c.-\u0432\u0438\u043d. \u043f\u0430\u0434\u0435\u0436 \u0434\u0432\u043e\u0439\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0433\u043e \u0447\u0438\u0441\u043b\u0430 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0445 \u0438 \u0434\u0432\u043e\u0439\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435 \u0447\u0438\u0441\u043b\u043e \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0445 \u0432 \u0433\u0435\u0440\u043c\u0430\u043d\u0441\u043a\u0438\u0445 \u044f\u0437\u044b\u043a\u0430\u0445 Article Nominations for siblings: Proto-Dravidian reconstruction and borrowability / \u041f\u0440\u0430\u0438\u043d\u0434\u043e\u0435\u0432\u0440\u043e\u043f\u0435\u0439\u0441\u043a\u0438\u0439 \u0438\u043c.-\u0432\u0438\u043d. \u043f\u0430\u0434\u0435\u0436 \u0434\u0432\u043e\u0439\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0433\u043e \u0447\u0438\u0441\u043b\u0430 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0445 \u0438 \u0434\u0432\u043e\u0439\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435 \u0447\u0438\u0441\u043b\u043e \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0445 \u0432 \u0433\u0435\u0440\u043c\u0430\u043d\u0441\u043a\u0438\u0445 \u044f\u0437\u044b\u043a\u0430\u0445 was published on May 1, 2023 in the journal Journal of Language Relationship (volume 21, issue 3-4).",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.31826/jlr-2024-213-406",
+      "title": "Nominations for siblings: Proto-Dravidian reconstruction and borrowability / \u041f\u0440\u0430\u0438\u043d\u0434\u043e\u0435\u0432\u0440\u043e\u043f\u0435\u0439\u0441\u043a\u0438\u0439 \u0438\u043c.-\u0432\u0438\u043d. \u043f\u0430\u0434\u0435\u0436 \u0434\u0432\u043e\u0439\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0433\u043e \u0447\u0438\u0441\u043b\u0430 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0445 \u0438 \u0434\u0432\u043e\u0439\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435 \u0447\u0438\u0441\u043b\u043e \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0445 \u0432 \u0433\u0435\u0440\u043c\u0430\u043d\u0441\u043a\u0438\u0445 \u044f\u0437\u044b\u043a\u0430\u0445",
+      "year": 2023,
+      "text": "Nominations for siblings: Proto-Dravidian reconstruction and borrowability / \u041f\u0440\u0430\u0438\u043d\u0434\u043e\u0435\u0432\u0440\u043e\u043f\u0435\u0439\u0441\u043a\u0438\u0439 \u0438\u043c.-\u0432\u0438\u043d. \u043f\u0430\u0434\u0435\u0436 \u0434\u0432\u043e\u0439\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0433\u043e \u0447\u0438\u0441\u043b\u0430 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0445 \u0438 \u0434\u0432\u043e\u0439\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435 \u0447\u0438\u0441\u043b\u043e \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0445 \u0432 \u0433\u0435\u0440\u043c\u0430\u043d\u0441\u043a\u0438\u0445 \u044f\u0437\u044b\u043a\u0430\u0445",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "de0d77a13071fff4fac9c4b1c7422bda7d993bb7",
+      "title": "Nominations for siblings: Proto-Dravidian reconstruction and borrowability / \u041f\u0440\u0430\u0438\u043d\u0434\u043e\u0435\u0432\u0440\u043e\u043f\u0435\u0439\u0441\u043a\u0438\u0439 \u0438\u043c.-\u0432\u0438\u043d. \u043f\u0430\u0434\u0435\u0436 \u0434\u0432\u043e\u0439\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0433\u043e \u0447\u0438\u0441\u043b\u0430 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0445 \u0438 \u0434\u0432\u043e\u0439\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435 \u0447\u0438\u0441\u043b\u043e \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0445 \u0432 \u0433\u0435\u0440\u043c\u0430\u043d\u0441\u043a\u0438\u0445 \u044f\u0437\u044b\u043a\u0430\u0445",
+      "year": 2023,
+      "text": "Nominations for siblings: Proto-Dravidian reconstruction and borrowability / \u041f\u0440\u0430\u0438\u043d\u0434\u043e\u0435\u0432\u0440\u043e\u043f\u0435\u0439\u0441\u043a\u0438\u0439 \u0438\u043c.-\u0432\u0438\u043d. \u043f\u0430\u0434\u0435\u0436 \u0434\u0432\u043e\u0439\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0433\u043e \u0447\u0438\u0441\u043b\u0430 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0445 \u0438 \u0434\u0432\u043e\u0439\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435 \u0447\u0438\u0441\u043b\u043e \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0445 \u0432 \u0433\u0435\u0440\u043c\u0430\u043d\u0441\u043a\u0438\u0445 \u044f\u0437\u044b\u043a\u0430\u0445 The paper represents a historical analysis of the lexical terms for siblings in Dravidian languages, with special emphasis on the factor of borrowability. It is concluded that borrowings within this lexical subsystem of Dravidian languages must have started primarily from terms for elder siblings (more precisely, from the meaning \u2018elder brother\u2019). The preferred scenario eventually resulted in borrowing the entire subsystem, with its following coexistence along with the original subsystem. However, words denoting younger siblings retained more resistant to borrowing; these were the ones that could, in particular, preserve within themselves some of the most archaic linguistic features, such as prefixes of inalienable possession. The evolution of the system of those prefixes is also explored:",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "1a017be81f4fa82918d55df4e9a1731ba7fe2fe7",
+      "title": "The Pre-Toda Verb\n A Reconstruction",
+      "year": 2023,
+      "text": "The Pre-Toda Verb\n A Reconstruction Toda is a Dravidian language that is well known for its aberrant phonology, namely due to ubiquitous vowel dropping, simplification of consonant clusters, and phonemic diversification. Although efforts have succeeded to some extent in mapping these phonemes to those of related languages, the origins and implications of Toda morphology have not yet been explored in detail. This work aims to reconstruct key aspects of the Pre-Toda verb in order to provide a dataset to be faithfully used in comparative Dravidian linguistics. Here, the formation of the secondary stem and the nonpast suffixes are demonstrated to show more affinity towards Old Kannada rather than Old Tamil. At the same time, the tenseless and dubitative conjugations, along with personal terminations, are found to retain archaic",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4281971206",
+      "title": "Exchange networks of the Early Bronze Age Gulf: The imported ceramics from Kalba 4 (United Arab Emirates)",
+      "year": 2022,
+      "text": "Exchange networks of the Early Bronze Age Gulf: The imported ceramics from Kalba 4 (United Arab Emirates) Abstract Imported ceramics from Early Bronze Age contexts in southeast Arabia illustrate a complex multidirectional network of material and social interactions at this time. Significant socioeconomic changes that occurred in the Hafit (3200\u20132800 B.C.) and Umm an\u2010Nar (2800\u20132000 B.C.) periods have been linked to external demand for copper, which is argued to have stimulated a change in subsistence patterns. Similarly, disruption to long\u2010distance exchange networks by external factors has been cited as driving change at the end of the Umm an\u2010Nar period. Archaeological evidence from the region suggests a shift in the direction of exchange from Mesopotamia to the Indus occurred around the middle of the third millennium B.C. However, a recent analysis of Mesopotamian historical sources has highlighted the scale of state\u2010organised textile production for export to the lower Gulf in the later third millennium B.C. The site of Kalba 4 has a stratified sequence of occupation deposits dating from the Umm an\u2010Nar and Iron Age (1300\u2013300 B.C.). In this study, a typological analysis of imported ceramics is used to locate the Kalba in the chronological framework of the region and discuss the changing networks of long\u2010distance exchange that were operating. The imported pottery at Kalba 4 indicates that the inhabitants of the site were exchanging goods with a range of polities, including southern Mesopotamia, the Indus Valley (Meluhha), southeast Iran (Marhashi) and Bahrain (Dilmun). A significant quantity of Late Akkadian ceramics at the site suggests it became an important location for Mesopotamian trade at this time.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1093/oxfordhb/9780197610411.013.12",
+      "title": "Correlative Structures in Dravidian",
+      "year": 2022,
+      "text": "Correlative Structures in Dravidian  Abstract \n                   This chapter discusses the structure, function, and history of correlative relative clauses (CRCs) in Dravidian and argues (contra prior descriptions of CRCs as borrowings from Indo-Aryan (IA), and limited to the written languages) that apart from North Dravidian borrowings from IA, CRCs are grounded in Dravidian morphosyntax and may be projected to Proto-Dravidian, before IA influence. Some assumptions and consequences of the borrowing hypothesis are contested (e.g. that a language should have just one means of forming relative clauses, stemming from the 19th-century ideology of primitive vs. advanced languages). Multiple, distinct CRCs are used when morphological and syntactic factors disfavour the formation of adnominal relative clauses (ARCs). CRCs may access rungs of the Noun Phrase Accessibility Hierarchy inaccessible to ARCs, penetrate into syntactic islands, or relativise sentences with predicate nominals.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.30687/bhasha/2785-5953/2022/01/004",
+      "title": "Proto-Dravidian Origins of the Ku\u1e5bux-Malto Past Stems",
+      "year": 2022,
+      "text": "Proto-Dravidian Origins of the Ku\u1e5bux-Malto Past Stems  In the closely related Dravidian languages Ku\u1e5bux and Malto, the verbs have lexically determined past stems, formed from the verb bases with various suffixes such as  -y ,  -c ,  -j ,  -s ,  -t ,  -\u1e6d  and  -\u1e0d . There are also past stems with zero, with or without gemination of the final consonant. The past suffixes *-t, *-tt, *-i, *-c, *-cc and *-nt are reconstructed for Proto-Dravidian, and we examined if the Ku\u1e5bux-Malto past stems are explainable from them. We found that some past stems are derived from affixation of Proto-Dravidian *-t. The close distributional resemblance of Ku\u1e5bux-Malto -y to South Dravidian *-i(\u1e49) suggests their common origin. We also confirmed that the suffixes *-c and *-cc need to be posited for Proto-Ku\u1e5bux-Malto, while there are no clear reflexes of the suffixes *-tt and *-nt. Since *-c and *-cc are also found in the converb formation of South-Central Dravidian, they might be a shared innovation. The geminating past, which is probably an innovation of Ku\u1e5bux-Mal",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.3366/edinburgh/9781474493468.003.0003",
+      "title": "Prehistoric Interactions between Oman and the Indus Civilization: Projecting the Past in the Present",
+      "year": 2022,
+      "text": "Prehistoric Interactions between Oman and the Indus Civilization: Projecting the Past in the Present  The Omani Renaissance was a \u201crebirth\u201d of Oman\u2019s past. As such, heritage and preservation of the past were a part of Oman\u2019s development goals. Ancient communities living in the geographical regions encompassed by the Sultanate of Oman have long played a key role in the development of cultural traditions and trade networks that link Eastern Arabia to the regions further to the east and west.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/2207.13333v1",
+      "title": "Knowledge-driven Subword Grammar Modeling for Automatic Speech Recognition in Tamil and Kannada",
+      "year": 2022,
+      "text": "Knowledge-driven Subword Grammar Modeling for Automatic Speech Recognition in Tamil and Kannada In this paper, we present specially designed automatic speech recognition (ASR) systems for the highly agglutinative and inflective languages of Tamil and Kannada that can recognize unlimited vocabulary of words. We use subwords as the basic lexical units for recognition and construct subword grammar weighted finite state transducer (SG-WFST) graphs for word segmentation that captures most of the complex word formation rules of the languages. We have identified the following category of words (i) verbs, (ii) nouns, (ii) pronouns, and (iv) numbers. The prefix, infix and suffix lists of subwords",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W3187209828",
+      "title": "Ancestral Dravidian languages in Indus Civilization: ultraconserved Dravidian tooth-word reveals deep linguistic ancestry and supports genetics",
+      "year": 2021,
+      "text": "Ancestral Dravidian languages in Indus Civilization: ultraconserved Dravidian tooth-word reveals deep linguistic ancestry and supports genetics Abstract Ever since the discovery of Indus valley civilization, scholars have debated the linguistic identities of its people. This study analyzes numerous archaeological, linguistic, archaeogenetic and historical evidences to claim that the words used for elephant (like, \u2018p\u012bri\u2019, \u2018p\u012bru\u2019) in Bronze Age Mesopotamia, the elephant-word used in the Hurrian part of an Amarna letter of ca. 1400 BC, and the ivory-word (\u2018p\u00eeru\u0161\u2019) recorded in certain sixth century BC Old Persian documents, were all originally borrowed from \u2018p\u012blu\u2019, a Proto-Dravidian elephant-word, which was prevalent in the Indus valley civilization, and was etymologically related to the Proto-Dravidian tooth-word \u2018*pal\u2019 and its alternate forms (\u2018*p\u012bl\u2019/\u2018*pi\u1e37\u2019/\u2018*pel\u2019). This paper argues that there is sufficient morphophonemic evidence of an ancient Dravidian \u2018*pi\u1e37\u2019/\u2018*p\u012bl\u2019-based root, which meant \u2018splitting/crushing\u2019, and was semantically related to the meanings \u2018tooth/tusk\u2019. This paper further observes that \u2018p\u012blu\u2019 is among the most ancient and common phytonyms of the toothbrush tree Salvadora persica , which is a characteristic flora of Indus valley, and whose roots and twigs have been widely used as toothbrush in IVC regions since antiquity. This study claims that this phytonym \u2018p\u012blu\u2019 had also originated from the same Proto-Dravidian tooth-word, and argues that since IVC people had named their toothbrush trees and tuskers (elephants) using a Proto-Dravidian tooth-word, and since these names were widely used across IVC regions, a significant population of Indus valley civilization must have used that Proto-Dravidian tooth-word in their daily communication. Since \u2018tooth\u2019 belongs to the core non-borrowable ultraconserved vocabulary of a speech community, its corollary is that a significant population of IVC spoke certain ancestral Dravidian languages. Important insights from recent archaeogenetic studies regarding possible migration of Proto-Dravidian speakers from Indus valley to South India also corroborate the",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W3088792467",
+      "title": "Bilateral Trade Relations Between India and UAE - Historical Perspective",
+      "year": 2020,
+      "text": "Bilateral Trade Relations Between India and UAE - Historical Perspective The bilateral relationship between the two countries are one of the most important index of the strong relationship between two countries. It reflects the strong bond of commercial, industrial and foreign trade and subsequently results in the relationship in versatile manner in other sectors of cooperation including cultural, religious, political and economic. This paper depicts the bilateral relationship between India and Gulf region including the United Arab Emirates in the ancient period. The relationship between India and United Arab Emirates can't trace back exactly but all the literatures, relics and other evidences available showing that India and the countries of the GCC countries are having a strong bilateral trade, commercial and cultural relationship between these countries. The sources of data are mainly secondary in nature and the researcher collected data from the various secondary sources consists of text books, journals, news papers, websites and various published literatures.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "75e4493397308f89ff7737d5df71d4c40005a267",
+      "title": "Viewing Proto-Dravidian from the Northeast",
+      "year": 2020,
+      "text": "Viewing Proto-Dravidian from the Northeast Continuing Pfeiffer 1972, Pfeiffer 2018 examines inherited Dravidian etyma of Kurux, one of the most northerly Dravidian languages. After an overview of the book, we discuss problems involved in Pfeiffer\u2019s arguments, methods, and materials. Then we try to narrow down the conditions of some of the sound changes Pfeiffer proposes, in conformity with the Neogrammarian hypothesis of regularity. We also point out that closer study of word-final phonology would answer some of the pending questions of Kurux-Malto morphology. Finally, we argue that phonological and morphological reconstruction can unveil more features to help revise the subgrouping of Kurux-Malto in the Dravidian family.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "4ab04a08e3ee070a86e09cfc3a37167cd4a9f6d5",
+      "title": "Kin terms in Karitiana and how they may contribute to the reconstruction of Proto-Tupian kin terminology",
+      "year": 2019,
+      "text": "Kin terms in Karitiana and how they may contribute to the reconstruction of Proto-Tupian kin terminology Abstract This paper reports a case study that discusses issues related to the reconstruction of kinship terminology in Proto-Tupi, based on previous work by Ara\u00fajo and Storto (2002) on the Arik\u00e9m and Juruna subfamilies. It also presents the remaining kin terminology of the Karitiana language (Arik\u00e9m branch or subfamily) which was not discussed in the case study. Comparing Karitiana (Landin, 1989) and Juruna (Lima, 1995) kin terminology, Ara\u00fajo and Storto (2002) have shown that some cognates can be found in the two languages and proposed that they reconstruct in Proto-Tupi. These authors claim that these reconstructed items indicate the following hypotheses: (1) the speakers of Proto-Tupi (4500 BP) had a Dravidian kinship system; (2) the speakers of Proto-Tupi had a kinship and naming syste",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1038/srep26555",
+      "title": "Oxygen isotope in archaeological bioapatites from India: Implications to climate change and decline of Bronze Age Harappan civilization",
+      "year": 2016,
+      "text": "Oxygen isotope in archaeological bioapatites from India: Implications to climate change and decline of Bronze Age Harappan civilization  Abstract  The antiquity and decline of the Bronze Age Harappan civilization in the Indus-Ghaggar-Hakra river valleys is an enigma in archaeology. Weakening of the monsoon after ~5\u2009ka BP (and droughts throughout the Asia) is a strong contender for the Harappan collapse, although controversy exists about the synchroneity of climate change and collapse of civilization. One reason for this controversy is lack of a continuous record of cultural levels and palaeomonsoon change in close proximity. We report a high resolution oxygen isotope (\u03b4 18 O) record of animal teeth-bone phosphates from an archaeological trench itself at Bhirrana, NW India, preserving all cultural levels of this civilization. Bhirrana was part of a high concentration of settlements along the dried up mythical Vedic river valley \u2018Saraswati\u2019, an extension of Ghaggar river in the Thar desert. Isotope and archaeological data suggest that the pre-Harappans started inhabiting this area along the mighty Ghaggar-Hakra rivers fe",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W2132406272",
+      "title": "Cultural Remnants of the Indigenous Peoples in the Buddhist Scriptures",
+      "year": 2014,
+      "text": "Cultural Remnants of the Indigenous Peoples in the Buddhist Scriptures While the linguistic influence of India\u2019s indigenous languages on the Indo- Aryan language (IA) is well understood, the cultural impact of the autochthonous Munda, Dravidian and Tibeto-Burman speaking peoples is much harder to evaluate, due to the lack of indigenous coeval records, and later historicization of the Buddha\u2019s life and teachings. Nevertheless, there are cultural remnants of the indigenous belief systems discoverable in the Buddhist scriptures. In this article we examine 1) The longstanding hostility between the IA immigrants and the eastern ethnic groups, especially the Buddha\u2019s Sakya clan. 2) The Sakyas\u2019 socio-political organization, religious and cultural values which differ significantly from those of the immigrants. 3) The concept of the Mah?puru?a which was likely an historicization of an indigenous Indian belief. 4) Indigenous belief structures like serpent- and tree-worship and the culture of sacred groves, and 5) Indigenous funeral rites in the story of the Buddha\u2019s parinibb?na.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W1588579001",
+      "title": "Trade in Mesopotamia from the early dynastic period to the early Achaemenid period with emphasis on the finance of such trade",
+      "year": 2014,
+      "text": "Trade in Mesopotamia from the early dynastic period to the early Achaemenid period with emphasis on the finance of such trade This dissertation considered trade and trade finance in Mesopotamia over a&#13;\\nperiod of 2000 years commencing with Sumeria and ending with Achaemenid&#13;\\nPersia, taking in Ur III and Assyria. A range of financial instruments was&#13;\\nselected together with important business transactions, for instance,&#13;\\nagricultural finance, specifically the brewing industry and the working capital&#13;\\nrequirements of merchants and money lenders. The role of women in private&#13;\\nenterprise was examined, including their role in retail finance. The great&#13;\\nestates of temple and palace had a substantial impact on finance and trade&#13;\\nthroughout the periods. Their interaction with merchants and money lenders&#13;\\nwas important to the study. I used reductionism to facilitate analysis of&#13;\\ncomplex products highlighting the essentials of finance namely, borrowing,&#13;\\nlending and return. The study concludes that, during the era under&#13;\\nconsideration, the evolution and enhancement of the financial instruments and&#13;\\nproducts developed in self-generated, incremental and progressive steps.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.3765/bls.v6i0.2113",
+      "title": "Is Brahui Really Dravidian?",
+      "year": 2014,
+      "text": "Is Brahui Really Dravidian?  Proceedings of the Sixth Annual Meeting of the Berkeley Linguistics Society (1980), pp. 66-72",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/1310.0754v1",
+      "title": "Stemmers for Tamil Language: Performance Analysis",
+      "year": 2013,
+      "text": "Stemmers for Tamil Language: Performance Analysis Stemming is the process of extracting root word from the given inflection word and also plays significant role in numerous application of Natural Language Processing (NLP). Tamil Language raises several challenges to NLP, since it has rich morphological patterns than other languages. The rule based approach light-stemmer is proposed in this paper, to find stem word for given inflection Tamil word. The performance of proposed approach is compared to a rule based suffix removal stemmer based on correctly and incorrectly predicted. The experimental result clearly show that the proposed approach l",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W1971467372",
+      "title": "Were There Commercial Communications between Prehistoric Harappans and African Populations?",
+      "year": 2012,
+      "text": "Were There Commercial Communications between Prehistoric Harappans and African Populations? This paper is an historical and scientific evaluation of Western archaeologists\u2019 theories concerning ancient population movements and commercial contacts between the prehistoric Harappans and African populations during the Indus Age (2500-1900 BC). In this context the human skeletal remains and artifacts from Harappa and Mohenjodaro are relevant. An urnburial from the Indus river site of Chanhudaro has an important bearing upon this subject. The scientific aspect of this study is the provision of hitherto unascertained data to palaeoanthropologists anaylsing the skeletal and dental biology of prehistoric populations of South Asia.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W2021656414",
+      "title": "Rice in Dravidian",
+      "year": 2011,
+      "text": "Rice in Dravidian Abstract The Dravidian languages, now spoken mainly in peninsular India, form one of two main branches of the Zagrosian language family, whose other main branch consists of Elamitic and Brahui. Proto-Dravidian, the oldest reconstructible form of Dravidian, shows a society whose economy is based mainly on herding. While the speakers of Proto-Dravidian had some agricultural knowledge, they do not appear to have brought cereals with them when they moved from western Iran to the borderlands of South Asia in the fourth millennium BCE. Linguistic evidence shows that they had contact with Indo-Iranian speakers, and some groups of Dravidian speakers entered the Indus Valley before or during the period of the Harappan civilization. Dravidian-speaking groups played a significant role in herding and agriculture during that period and later, and may have been the first to cultivate rice on a large scale in the Indus Valley.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/1112.6232v1",
+      "title": "In Square Circle: Geometric Knowledge of the Indus Civilization",
+      "year": 2011,
+      "text": "In Square Circle: Geometric Knowledge of the Indus Civilization The earliest origins of mathematics in the Indian subcontinent is generally dated around 800-500 BCE when the {\\em Sulbasutras} are thought to have been written. In this article we suggest that mathematical thinking in South Asia, in particular, geometry, may have had an even earlier beginning - in the third millenium BCE. We base our hypothesis on the analysis of design patterns, such as complex space-filling tiling, seen on artifacts of the Indus Valley Civilization (also referred to as the Mature Harappan Civilization, 2500-1900 BCE) which speaks of a deep understanding of sophisticated geo",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/1110.1091v3",
+      "title": "A simulation of the Neolithic transition in the Indus valley",
+      "year": 2011,
+      "text": "A simulation of the Neolithic transition in the Indus valley The Indus Valley Civilization (IVC) was one of the first great civilizations in prehistory. This bronze age civilization flourished from the end of the fourth millennium BC. It disintegrated during the second millennium BC; despite much research effort, this decline is not well understood. Less research has been devoted to the emergence of the IVC, which shows continuous cultural precursors since at least the seventh millennium BC. To understand the decline, we believe it is necessary to investigate the rise of the IVC, i.e., the establishment of agriculture and livestock, dense populations an",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1093/oso/9780198241225.003.0017",
+      "title": "The Origin and Evolution of Primary Derivative Suffixes in Dravidian",
+      "year": 2001,
+      "text": "The Origin and Evolution of Primary Derivative Suffixes in Dravidian  Abstract \n                   1. Introduction \n                   In the1950s, when he was still in Czechoslovakia, Ladislav Zgusta wrote several reviews of works on comparative Dravidian linguistics, in collaboration with Kamil Zvelebil. This paper is a tribute to his profound contributions to the comparative method in general and to his early interest in Dravidian linguistics. \n                   The monumental work of this century in comparative Dravidian linguistics, the Dravidian Etymological Dictionary of 1961, extensively revised in 1984, has scores of entries which lead us to reconstruct primary roots as well as extended stems for Proto-Dravidian (mainly of verbs but also of nouns), in which it is possible to assign some meaning to the monosyllabic roots, but no tangible meaning to the derivative suffixes. Consider for instance the data in 1",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1093/oso/9780195063653.003.0010",
+      "title": "Archaeology, Linguistics, and Ancient Dravidian",
+      "year": 1990,
+      "text": "Archaeology, Linguistics, and Ancient Dravidian  Abstract \n                The hypothesis that a Dravidian language was spoken by the Ancient Indus Valley civilization of Mohenjo-Daro and Harappa has long been considered highly plausible, and on several grounds. First, the presence of a modem Dravidian language in the hills to the west of the Indus, namely Brahui, is most easily explained if the Brahui are seen as the linguistic descendants of the ancient Indus Valley people.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.3406/paleo.1984.4350",
+      "title": "The Role of shell in Mesopotamia : evidence for trade exchange with Oman and the Indus Valley",
+      "year": 1984,
+      "text": "The Role of shell in Mesopotamia : evidence for trade exchange with Oman and the Indus Valley  Shell artifacts from major Mesopotamian sites of the 4th and 3rd millennia B.C. are critically reexamined in terms of their role in Mesopotamian contexts and their value as indicators of external trade/exchange contacts. Different shell species used in the manufacture of specific objects are identified along with their possible source areas. The Gulf of Oman and the Indus coast can be identified as source areas on the basis of certain indicator species. The importance of shell as a trade commodity is discussed in terms of Mesopotamian maritime trade with Oman and the Indus Valley Civilization.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.2307/601802",
+      "title": "Brahui Laterals from Proto-Dravidian *\u1e59",
+      "year": 1980,
+      "text": "Brahui Laterals from Proto-Dravidian *\u1e59",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1177/006996677701100202",
+      "title": "Dravidian and non-Dravidian kinship terminologies in Sri Lanka",
+      "year": 1977,
+      "text": "Dravidian and non-Dravidian kinship terminologies in Sri Lanka",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1163/000000071791615472",
+      "title": "Koagu and Brahui developments of Proto-Dravidian *",
+      "year": 1971,
+      "text": "Koagu and Brahui developments of Proto-Dravidian *",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1007/bf00180806",
+      "title": "Ko $$\\underset{\\raise0.3em\\hbox{$\\smash{\\scriptscriptstyle\\cdot}$}}{d} $$ agu and Brahui developments of Proto-Dravidian * $$\\underset{\\raise0.3em\\hbox{$\\smash{\\scriptscriptstyle-}$}}{r} $$",
+      "year": 1971,
+      "text": "Ko $$\\underset{\\raise0.3em\\hbox{$\\smash{\\scriptscriptstyle\\cdot}$}}{d} $$ agu and Brahui developments of Proto-Dravidian * $$\\underset{\\raise0.3em\\hbox{$\\smash{\\scriptscriptstyle-}$}}{r} $$",
+      "evidence_tier": "MODERATE"
+    }
+  ],
+  "target_clusters": [
+    "Shu-ilishu interpreter Meluhhan language cuneiform Ur III",
+    "Meluhha Melukhha personal names cuneiform Akkadian Ur III phonology",
+    "lu2-eme-meluhhaki Meluhhan language speaker Ur III Drehem",
+    "Dilmun Persian Gulf seal Indus cuneiform bilingual Bronze Age",
+    "Bahrain seal Indus derived motif cuneiform inscription",
+    "Tell Abraq UAE Indus seal cuneiform token coexistence",
+    "Gulf Bronze Age trade Indus Mesopotamia Dilmun Magan Oman seal",
+    "Sanskrit Vedic Dravidian substrate loanword non-Indo-European",
+    "Witzel Kuiper Southworth Sanskrit Dravidian substrate",
+    "Vedic Sanskrit loanword Dravidian substrate retroflex phonology",
+    "Indo-Aryan Dravidian contact loanword borrowing substrate ancient",
+    "Elamite Dravidian language family McAlpin cognate phonological",
+    "Elamo-Dravidian relationship new evidence computational 2020 2025",
+    "Proto-Dravidian Elamite comparison morphology vocabulary",
+    "Rigveda substrate non-Indo-European river name toponym pre-Aryan",
+    "Sarasvati river name non-IE substrate Harappan Dravidian",
+    "Rgvedic place names Dravidian substrate Witzel 1999",
+    "Harappan weight standard Mesopotamia Ur Nippur Susa Bronze Age",
+    "Indus metrological system Persian Gulf trade Bronze Age",
+    "Harappan binary weight ratio Akkadian mina trade vocabulary",
+    "Black-and-red ware IVC Iron Age Tamil Nadu cultural continuity",
+    "BRW pottery Deccan Megalithic South India Harappan continuity",
+    "AASI ancestral South Asian Dravidian IVC genetics 2025 2026",
+    "South Asian ancient DNA Rakhigarhi AASI Iranian farmer mixture",
+    "Harappan aDNA population dispersal 1900 BCE genetic continuity",
+    "Keezhadi Tamil excavation 2024 2025 Phase 7 8 Iron Age literacy",
+    "Keezhadi inscription Tamil Brahmi writing 2025 ancient"
+  ],
+  "verdict": "Phase 231 mine: 4050 total papers. 42 STRONG, 34 MODERATE. Targeting: Shu-ilishu (2), Gulf seals (11), Sanskrit substrate (5), Elamo-Dravidian (9), Keezhadi (6)."
+}

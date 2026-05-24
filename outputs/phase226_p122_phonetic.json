@@ -1,0 +1,63 @@
+{
+  "phase": 226,
+  "target": "P122",
+  "freq_cisi": 76,
+  "medial_rate": 1.0,
+  "key_contexts": {
+    "pre_top3": [
+      "P364",
+      "P145=miṭ",
+      "P060=kāṇṭāmirukam"
+    ],
+    "post_top3": [
+      "P385",
+      "P086=oru",
+      "P378"
+    ]
+  },
+  "formula": "[P364=or?][P122][P385=suffix][kōṉ?]",
+  "candidates": [
+    {
+      "reading": "pa",
+      "dedr": "4265",
+      "confidence": "CANDIDATE",
+      "score": 8,
+      "rationale": "pa- is a common Tamil personal name medial element. Frequent in Sangam TB personal names (pa-raN, pa-ya-na). 100% medial in Dravidian corpus. [P364=or?][pa][P385=suffix] = 'Or-pa-suffix' plausible name formula."
+    },
+    {
+      "reading": "ca",
+      "dedr": "2038",
+      "confidence": "CANDIDATE",
+      "score": 7,
+      "rationale": "ca/cha — common Sangam Tamil personal name element. ca-taN, ca-vaN attested in Tamil-Brahmi inscriptions. MEDIAL consistent. No Parpola proposal conflicting."
+    },
+    {
+      "reading": "ku",
+      "dedr": "1863",
+      "confidence": "CANDIDATE",
+      "score": 6,
+      "rationale": "ku — Dravidian root ku- appears in many personal names. ku-maN, ku-raN (Sangam TB). [P364=or?][ku][P385] = 'Or-ku-suffix' plausible."
+    },
+    {
+      "reading": "ko",
+      "dedr": "1570",
+      "confidence": "LOW",
+      "score": 5,
+      "rationale": "ko = king. But ko is mostly INITIAL in our model (M099=kol/koḷ is TERMINAL). P122 being 100% MEDIAL makes ko less likely — but not impossible if ko appears as a medial element in compound names."
+    },
+    {
+      "reading": "va",
+      "dedr": "5231",
+      "confidence": "CANDIDATE",
+      "score": 5,
+      "rationale": "va — strong, Dravidian va-N personal name prefix/medial. va-taN, va-yaN attested. MEDIAL consistent."
+    }
+  ],
+  "top_candidate": {
+    "reading": "pa",
+    "dedr": "4265",
+    "confidence": "CANDIDATE",
+    "score": 8
+  },
+  "verdict": "P122 = 'pa' (CANDIDATE, DEDR 4265). Best supported by MEDIAL positional profile + DEDR personal name evidence. Requires SA calibration (Phase-229) to confirm."
+}

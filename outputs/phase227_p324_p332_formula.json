@@ -1,0 +1,122 @@
+{
+  "phase": 227,
+  "p324_total": 99,
+  "p332_total": 11,
+  "formula_count": 10,
+  "formula_dominance": 0.101,
+  "p324_post_top5": {
+    "P332": 10,
+    "P086": 5,
+    "P175": 5,
+    "P154": 4,
+    "P194": 4
+  },
+  "p332_post_top5": {
+    "P349": 2,
+    "P283": 2,
+    "P127": 1,
+    "P147": 1,
+    "P060": 1
+  },
+  "formula_extensions_top5": {
+    "P349": 2,
+    "P283": 2,
+    "P127": 1,
+    "P147": 1,
+    "P060": 1
+  },
+  "formula_inscriptions_sample": [
+    {
+      "seq": [
+        "P000",
+        "P103",
+        "P324",
+        "P332",
+        "P349",
+        "P095",
+        "P122",
+        "P385"
+      ],
+      "p324_pos": 2,
+      "context": [
+        "P103",
+        "P324",
+        "P332",
+        "P349",
+        "P095"
+      ]
+    },
+    {
+      "seq": [
+        "P324",
+        "P332",
+        "P127",
+        "P210",
+        "P062",
+        "P060",
+        "P364"
+      ],
+      "p324_pos": 0,
+      "context": [
+        "P324",
+        "P332",
+        "P127",
+        "P210"
+      ]
+    },
+    {
+      "seq": [
+        "P324",
+        "P332",
+        "P147",
+        "P316",
+        "P364",
+        "P122",
+        "P154",
+        "P296"
+      ],
+      "p324_pos": 0,
+      "context": [
+        "P324",
+        "P332",
+        "P147",
+        "P316"
+      ]
+    },
+    {
+      "seq": [
+        "P324",
+        "P332",
+        "P060",
+        "P122",
+        "P385"
+      ],
+      "p324_pos": 0,
+      "context": [
+        "P324",
+        "P332",
+        "P060",
+        "P122"
+      ]
+    },
+    {
+      "seq": [
+        "P324",
+        "P332",
+        "P000"
+      ],
+      "p324_pos": 0,
+      "context": [
+        "P324",
+        "P332",
+        "P000"
+      ]
+    }
+  ],
+  "holdat_comparison": {
+    "m267_m099_rate": 0.2159,
+    "p324_p332_rate": 0.101,
+    "note": "Different rates suggest different grammar roles or corpus composition"
+  },
+  "interpretation": "[P324][P332] formula appears 10x (10.1% of P324). P332 follows P324 in 10% of cases. This is a CISI-specific administrative formula. P324=[TITLE_PREFIX], P332=o/ko [CANDIDATE]. Extensions include confirmed signs — further analysis needed."
+}

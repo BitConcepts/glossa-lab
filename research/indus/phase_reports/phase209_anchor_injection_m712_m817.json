@@ -1,0 +1,19 @@
+{
+  "phase": 209,
+  "elapsed_s": 0.0,
+  "old_total": 404,
+  "new_total": 408,
+  "new_entries_added": [
+    "M712",
+    "M817",
+    "M700",
+    "M527"
+  ],
+  "confidence_after": {
+    "HIGH": 76,
+    "MEDIUM": 88,
+    "LOW": 242,
+    "CANDIDATE": 2
+  },
+  "verdict": "Phase 209: Added 4 entries. Total 404 -> 408. M712/M817=nallavar [LOW] (honorific cluster expansion). M700=aru [CANDIDATE] (potential numeral 6 or distal pronoun). M527=katai [CANDIDATE] (terminal marker or trade location)."
+}

@@ -1,0 +1,158 @@
+{
+  "phase": 213,
+  "elapsed_s": 26.9,
+  "baselines": {
+    "p193": 0.503,
+    "p207": 0.5516
+  },
+  "sa_no_anchors": {
+    "mean_c": 0.2938,
+    "hci": 4
+  },
+  "sa_high_only": {
+    "mean_c": 0.3344,
+    "hci": 8,
+    "delta": 0.0406
+  },
+  "sa_high_medium": {
+    "mean_c": 0.375,
+    "hci": 12,
+    "delta": 0.0812
+  },
+  "sa_high_med_low": {
+    "mean_c": 0.525,
+    "hci": 22,
+    "delta": 0.2312
+  },
+  "new_anchor_checks": [
+    {
+      "sign": "M712",
+      "expected": "nallavar",
+      "sa_reading": "nallavar",
+      "sa_cons": 1.0,
+      "agrees": true
+    },
+    {
+      "sign": "M817",
+      "expected": "nallavar",
+      "sa_reading": "nallavar",
+      "sa_cons": 1.0,
+      "agrees": true
+    },
+    {
+      "sign": "M700",
+      "expected": "aru/aRu",
+      "sa_reading": "aru",
+      "sa_cons": 0.4,
+      "agrees": true
+    },
+    {
+      "sign": "M527",
+      "expected": "katai",
+      "sa_reading": "valli",
+      "sa_cons": 0.4,
+      "agrees": false
+    }
+  ],
+  "top_unanchored": [
+    {
+      "sign": "790",
+      "modal": "erumai",
+      "consistency": 0.6,
+      "freq": 48
+    },
+    {
+      "sign": "858",
+      "modal": "nallavar",
+      "consistency": 0.6,
+      "freq": 105
+    },
+    {
+      "sign": "480",
+      "modal": "venni",
+      "consistency": 0.4,
+      "freq": 48
+    },
+    {
+      "sign": "866",
+      "modal": "min",
+      "consistency": 0.4,
+      "freq": 35
+    },
+    {
+      "sign": "520",
+      "modal": "porul",
+      "consistency": 0.4,
+      "freq": 196
+    },
+    {
+      "sign": "700",
+      "modal": "aru",
+      "consistency": 0.4,
+      "freq": 355
+    },
+    {
+      "sign": "920",
+      "modal": "pamp",
+      "consistency": 0.4,
+      "freq": 76
+    },
+    {
+      "sign": "527",
+      "modal": "valli",
+      "consistency": 0.4,
+      "freq": 60
+    },
+    {
+      "sign": "506",
+      "modal": "toti",
+      "consistency": 0.4,
+      "freq": 43
+    },
+    {
+      "sign": "718",
+      "modal": "up",
+      "consistency": 0.2,
+      "freq": 19
+    },
+    {
+      "sign": "526",
+      "modal": "tunmai",
+      "consistency": 0.2,
+      "freq": 46
+    },
+    {
+      "sign": "503",
+      "modal": "vampu",
+      "consistency": 0.2,
+      "freq": 63
+    },
+    {
+      "sign": "872",
+      "modal": "parai",
+      "consistency": 0.2,
+      "freq": 34
+    },
+    {
+      "sign": "173",
+      "modal": "nallavar",
+      "consistency": 0.2,
+      "freq": 61
+    },
+    {
+      "sign": "748",
+      "modal": "nallavar",
+      "consistency": 0.2,
+      "freq": 2
+    }
+  ],
+  "aggregate_confidence": 0.57,
+  "delta_vs_p207": 0.0184,
+  "delta_vs_p193": 0.067,
+  "anchor_counts": {
+    "high": 6,
+    "h_m": 15,
+    "h_m_l": 35
+  },
+  "verdict": "Phase 213 (408 anchors): aggregate=0.5700 (57.0%). Delta vs P207 (55.2%): +0.0184. Delta vs P193 (50.3%): +0.0670. Total improvement since Phase 193: +6.70pp."
+}

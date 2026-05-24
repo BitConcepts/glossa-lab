@@ -1,5 +1,5 @@
 {
-  "total": 410,
+  "total": 413,
   "anchors": {
     "M342": {
       "reading": "ay/ā",
@@ -2677,6 +2677,33 @@
       "basis": "Phase-213 unanchored convergence: SA modal='nallavar' (cons=0.60, highest among unanchored). freq=105. DEDR 3594: nallavar = good people/nobles. 5th member of the nallavar honorific cluster: M077=nal [HIGH], M692=nal/nall [MEDIUM], M712=nallavar [LOW], M817=nallavar [LOW], M861=nallavar [LOW]. HIGH consistency (0.6) justified for LOW entry in well-established cluster. Note: M858 previously had SA modal=min (Phase 197, cons=0.2) -- cons=0.6 in Phase 213 reflects improved convergence from expanded nallavar anchor cluster.",
       "source": "Phase-213 SA unanchored convergence",
       "_phase214_new_entry": true
+    },
+    "P324": {
+      "reading": "[TITLE_PREFIX]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-221: INITIAL-dominant (I=0.78, freq=99 in CISI). Pre-context: nakaram (place), kāṇṭāmirukam (rhinoceros), kaḷiṟu (elephant). Post-context: P332 (ko-vowel candidate), P086=oru. Hypothesis: administrative title prefix or high-status determinative. Function parallel to M267 (genitive prefix) but appears at inscription start. CISI-exclusive sign — not in Holdat M77 corpus. Epistemic status: CANDIDATE (slot clear; phonetic value uncertain).",
+      "source": "Phase-222 CISI injection",
+      "p_sign": "P324",
+      "cisi_freq": 99,
+      "dominant_slot": "INITIAL"
+    },
+    "P385": {
+      "reading": "[TERMINAL_SUFFIX]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-221: TERMINAL-dominant (T=0.83, freq=35 in CISI). Pre-context: P122 (medial syllable), P324 (initial prefix). Post-context: P073=kōṉ (king), P147. Hypothesis: case suffix or personal name terminal marker. Pattern [P122][P385][kōṉ] consistent with [name_syllable][suffix][title]. CISI-exclusive sign. Epistemic status: CANDIDATE (slot very clear).",
+      "source": "Phase-222 CISI injection",
+      "p_sign": "P385",
+      "cisi_freq": 35,
+      "dominant_slot": "TERMINAL"
+    },
+    "P332": {
+      "reading": "o/ko",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-221/old analysis: Post-context of P324 (INITIAL). Pattern [P324][P332] = [title_prefix][ko?] consistent with old Phase-22 hypothesis P332='o' (ko syllable vowel). CISI freq=11 (Phase-220). Also appeared in CISI SA experiments as anchor P332='o'. Epistemic status: CANDIDATE (reading from prior CISI SA experiments).",
+      "source": "Phase-222 CISI injection",
+      "p_sign": "P332",
+      "cisi_freq": 11,
+      "dominant_slot": "MEDIAL"
     }
   },
   "_citation": {
@@ -2700,7 +2727,8 @@
   "by_confidence": {
     "HIGH": 105,
     "MEDIUM": 59,
-    "LOW": 243
+    "LOW": 243,
+    "CANDIDATE": 6
   },
   "_cleanup_note": "2026-05-17: Removed 196 nīr/INIT/TERM/MED placeholder entries from V8-V24 autonomous loops. Retained 137 real anchors.",
   "metadata": {

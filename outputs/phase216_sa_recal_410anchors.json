@@ -1,0 +1,1331 @@
+{
+  "phase": 216,
+  "description": "SA re-calibration with 410-anchor set (covers Phase 193-215 additions)",
+  "n_medium_evaluated": 88,
+  "n_upgraded_to_high": 29,
+  "upgraded_signs": [
+    "M021",
+    "M036",
+    "M024",
+    "M054",
+    "M072",
+    "M055",
+    "M029",
+    "M102",
+    "M272",
+    "M185",
+    "M383",
+    "M375",
+    "M374",
+    "M351",
+    "M168",
+    "M153",
+    "M177",
+    "M155",
+    "M103",
+    "M416",
+    "M008",
+    "M053",
+    "M056",
+    "M145",
+    "M362",
+    "M398",
+    "M165",
+    "M347",
+    "M692"
+  ],
+  "high_before": 76,
+  "high_after": 105,
+  "medium_after": 59,
+  "hm_token_coverage": 0.9096,
+  "total_anchors": 410,
+  "recal_table": {
+    "M267": {
+      "sa_modal": "aru",
+      "consistency": 0.333,
+      "n_seeds": 6
+    },
+    "M067": {
+      "sa_modal": "arutkku",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M068": {
+      "sa_modal": "tontu",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M038": {
+      "sa_modal": "tani",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M010": {
+      "sa_modal": "nalla",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M050": {
+      "sa_modal": "an",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M025": {
+      "sa_modal": "cem",
+      "consistency": 1.0,
+      "n_seeds": 6
+    },
+    "M070": {
+      "sa_modal": "per",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M078": {
+      "sa_modal": "aran",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M023": {
+      "sa_modal": "natrin",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M066": {
+      "sa_modal": "katavul",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M009": {
+      "sa_modal": "utaiyaar",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M069": {
+      "sa_modal": "pakavan",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M021": {
+      "sa_modal": "nannalam",
+      "consistency": 0.667,
+      "n_seeds": 6
+    },
+    "M002": {
+      "sa_modal": "naattu",
+      "consistency": 1.0,
+      "n_seeds": 6
+    },
+    "M037": {
+      "sa_modal": "tin",
+      "consistency": 0.5,
+      "n_seeds": 6
+    },
+    "M005": {
+      "sa_modal": "ukkam",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M036": {
+      "sa_modal": "tiru",
+      "consistency": 1.0,
+      "n_seeds": 6
+    },
+    "M015": {
+      "sa_modal": "porulkal",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M001": {
+      "sa_modal": "nallavar",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M075": {
+      "sa_modal": "kantu",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M040": {
+      "sa_modal": "tiru",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M024": {
+      "sa_modal": "meyppu",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M047": {
+      "sa_modal": "nalvar",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M074": {
+      "sa_modal": "meen",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M054": {
+      "sa_modal": "colvai",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M072": {
+      "sa_modal": "thir",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M055": {
+      "sa_modal": "tittam",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M028": {
+      "sa_modal": "kolla",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M029": {
+      "sa_modal": "allaar",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M007": {
+      "sa_modal": "porulin",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M169": {
+      "sa_modal": "avan",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M237": {
+      "sa_modal": "nal",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M102": {
+      "sa_modal": "icaivu",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M272": {
+      "sa_modal": "tottam",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M082": {
+      "sa_modal": "anbu",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M235": {
+      "sa_modal": "velvi",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M149": {
+      "sa_modal": "naattar",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M185": {
+      "sa_modal": "pul",
+      "consistency": 1.0,
+      "n_seeds": 6
+    },
+    "M383": {
+      "sa_modal": "kol",
+      "consistency": 1.0,
+      "n_seeds": 6
+    },
+    "M375": {
+      "sa_modal": "irutta",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M401": {
+      "sa_modal": "talikkai",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M374": {
+      "sa_modal": "taavi",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M127": {
+      "sa_modal": "pethuva",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M252": {
+      "sa_modal": "kur",
+      "consistency": 1.0,
+      "n_seeds": 6
+    },
+    "M351": {
+      "sa_modal": "tittam",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M198": {
+      "sa_modal": "mul",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M168": {
+      "sa_modal": "inci",
+      "consistency": 1.0,
+      "n_seeds": 6
+    },
+    "M332": {
+      "sa_modal": "intu",
+      "consistency": 1.0,
+      "n_seeds": 6
+    },
+    "M222": {
+      "sa_modal": "kur",
+      "consistency": 1.0,
+      "n_seeds": 6
+    },
+    "M355": {
+      "sa_modal": "viratai",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M178": {
+      "sa_modal": "vantai",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M231": {
+      "sa_modal": "kur",
+      "consistency": 1.0,
+      "n_seeds": 6
+    },
+    "M153": {
+      "sa_modal": "aalval",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M177": {
+      "sa_modal": "annai",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M155": {
+      "sa_modal": "avar",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M103": {
+      "sa_modal": "kol",
+      "consistency": 1.0,
+      "n_seeds": 6
+    },
+    "M262": {
+      "sa_modal": "molai",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M416": {
+      "sa_modal": "tennar",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M124": {
+      "sa_modal": "aran",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M281": {
+      "sa_modal": "thandathu",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M008": {
+      "sa_modal": "erumai",
+      "consistency": 1.0,
+      "n_seeds": 6
+    },
+    "M202": {
+      "sa_modal": "vikkan",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M249": {
+      "sa_modal": "telivai",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M058": {
+      "sa_modal": "inmai",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M065": {
+      "sa_modal": "cey",
+      "consistency": 0.5,
+      "n_seeds": 6
+    },
+    "M220": {
+      "sa_modal": "aru",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M053": {
+      "sa_modal": "ayini",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M044": {
+      "sa_modal": "ku",
+      "consistency": 1.0,
+      "n_seeds": 6
+    },
+    "M056": {
+      "sa_modal": "mul",
+      "consistency": 1.0,
+      "n_seeds": 6
+    },
+    "M118": {
+      "sa_modal": "valai",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M221": {
+      "sa_modal": "celli",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M192": {
+      "sa_modal": "poru",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M193": {
+      "sa_modal": "veendam",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M145": {
+      "sa_modal": "munnu",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M362": {
+      "sa_modal": "teri",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M398": {
+      "sa_modal": "erutu",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M330": {
+      "sa_modal": "ceyya",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M165": {
+      "sa_modal": "neermai",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M347": {
+      "sa_modal": "akka",
+      "consistency": 0.167,
+      "n_seeds": 6
+    },
+    "M350": {
+      "sa_modal": "tetukal",
+      "consistency": 0.167,
+      "n_seeds": 6
+    }
+  },
+  "eval_log": [
+    {
+      "sign": "M267",
+      "reading": "iN/in (genitive of)",
+      "source": "Phase-74 grammar z=8.04 p<0.0001 + Phase-64 score=7.0",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "aru",
+      "new_consistency": 0.333,
+      "all_pass": false
+    },
+    {
+      "sign": "M067",
+      "reading": "kōṭṭāṉ",
+      "source": "",
+      "dedr_ok": true,
+      "cons_ok": false,
+      "new_sa_modal": "arutkku",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M068",
+      "reading": "maṟi",
+      "source": "",
+      "dedr_ok": true,
+      "cons_ok": false,
+      "new_sa_modal": "tontu",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M038",
+      "reading": "pōr",
+      "source": "",
+      "dedr_ok": false,
+      "cons_ok": false,
+      "new_sa_modal": "tani",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M010",
+      "reading": "paṭ",
+      "source": "",
+      "dedr_ok": false,
+      "cons_ok": false,
+      "new_sa_modal": "nalla",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M050",
+      "reading": "pār",
+      "source": "",
+      "dedr_ok": false,
+      "cons_ok": false,
+      "new_sa_modal": "an",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M025",
+      "reading": "cem",
+      "source": "",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "cem",
+      "new_consistency": 1.0,
+      "all_pass": false
+    },
+    {
+      "sign": "M070",
+      "reading": "vēl",
+      "source": "",
+      "dedr_ok": true,
+      "cons_ok": false,
+      "new_sa_modal": "per",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M078",
+      "reading": "cēr",
+      "source": "",
+      "dedr_ok": false,
+      "cons_ok": false,
+      "new_sa_modal": "aran",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M023",
+      "reading": "vaḷ",
+      "source": "",
+      "dedr_ok": true,
+      "cons_ok": false,
+      "new_sa_modal": "natrin",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M066",
+      "reading": "cōḻ",
+      "source": "",
+      "dedr_ok": false,
+      "cons_ok": false,
+      "new_sa_modal": "katavul",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M009",
+      "reading": "āṇ",
+      "source": "",
+      "dedr_ok": false,
+      "cons_ok": false,
+      "new_sa_modal": "utaiyaar",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M069",
+      "reading": "nēr",
+      "source": "",
+      "dedr_ok": true,
+      "cons_ok": false,
+      "new_sa_modal": "pakavan",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M021",
+      "reading": "kō",
+      "source": "",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "nannalam",
+      "new_consistency": 0.667,
+      "all_pass": true
+    },
+    {
+      "sign": "M002",
+      "reading": "kuṉ",
+      "source": "",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "naattu",
+      "new_consistency": 1.0,
+      "all_pass": false
+    },
+    {
+      "sign": "M037",
+      "reading": "kēḷ",
+      "source": "",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "tin",
+      "new_consistency": 0.5,
+      "all_pass": false
+    },
+    {
+      "sign": "M005",
+      "reading": "kōṉ",
+      "source": "",
+      "dedr_ok": true,
+      "cons_ok": false,
+      "new_sa_modal": "ukkam",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M036",
+      "reading": "tiru",
+      "source": "",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "tiru",
+      "new_consistency": 1.0,
+      "all_pass": true
+    },
+    {
+      "sign": "M015",
+      "reading": "mā",
+      "source": "",
+      "dedr_ok": true,
+      "cons_ok": false,
+      "new_sa_modal": "porulkal",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M001",
+      "reading": "tōḷ",
+      "source": "Parpola 1994++Parpola_1994",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "nallavar",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M075",
+      "reading": "māṟ",
+      "source": "",
+      "dedr_ok": true,
+      "cons_ok": false,
+      "new_sa_modal": "kantu",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M040",
+      "reading": "ri",
+      "source": "Phase-122",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "tiru",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M024",
+      "reading": "nē",
+      "source": "Phase-105",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "meyppu",
+      "new_consistency": 0.167,
+      "all_pass": true
+    },
+    {
+      "sign": "M047",
+      "reading": "min/mīn",
+      "source": "",
+      "dedr_ok": true,
+      "cons_ok": false,
+      "new_sa_modal": "nalvar",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M074",
+      "reading": "ker",
+      "source": "Phase-87 DEDR_REBUS_EXTENDED",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "meen",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M054",
+      "reading": "mi",
+      "source": "Phase-80 DEDR rebus (miiNDu = DEDR 4855)",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "colvai",
+      "new_consistency": 0.167,
+      "all_pass": true
+    },
+    {
+      "sign": "M072",
+      "reading": "mā",
+      "source": "Phase-129 positional upgrade",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "thir",
+      "new_consistency": 0.167,
+      "all_pass": true
+    },
+    {
+      "sign": "M055",
+      "reading": "miN3",
+      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "tittam",
+      "new_consistency": 0.167,
+      "all_pass": true
+    },
+    {
+      "sign": "M028",
+      "reading": "cōḻ",
+      "source": "Parpola 1994+",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "kolla",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M029",
+      "reading": "yānai",
+      "source": "Parpola 1994+",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "allaar",
+      "new_consistency": 0.167,
+      "all_pass": true
+    },
+    {
+      "sign": "M007",
+      "reading": "aaL",
+      "source": "Phase-89 systematic DEDR (ICON, HIGH)",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "porulin",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M169",
+      "reading": "rā",
+      "source": "Phase-122",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "avan",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M237",
+      "reading": "ce",
+      "source": "Phase-122",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "nal",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M102",
+      "reading": "ni",
+      "source": "Phase-122",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "icaivu",
+      "new_consistency": 0.167,
+      "all_pass": true
+    },
+    {
+      "sign": "M272",
+      "reading": "ma",
+      "source": "Phase-122",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "tottam",
+      "new_consistency": 0.167,
+      "all_pass": true
+    },
+    {
+      "sign": "M082",
+      "reading": "pa",
+      "source": "Phase-80 DEDR rebus (pal = DEDR 3966)",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "anbu",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M235",
+      "reading": "vē",
+      "source": "Phase-122",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "velvi",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M149",
+      "reading": "or",
+      "source": "Phase-129 positional upgrade",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "naattar",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M185",
+      "reading": "pul",
+      "source": "Phase-129 positional upgrade",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "pul",
+      "new_consistency": 1.0,
+      "all_pass": true
+    },
+    {
+      "sign": "M383",
+      "reading": "kol",
+      "source": "Phase-122",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "kol",
+      "new_consistency": 1.0,
+      "all_pass": true
+    },
+    {
+      "sign": "M375",
+      "reading": "taṇ",
+      "source": "Phase-105",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "irutta",
+      "new_consistency": 0.167,
+      "all_pass": true
+    },
+    {
+      "sign": "M401",
+      "reading": "vē",
+      "source": "Phase-122",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "talikkai",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M374",
+      "reading": "kul",
+      "source": "Phase-128 substrate upgrade",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "taavi",
+      "new_consistency": 0.167,
+      "all_pass": true
+    },
+    {
+      "sign": "M127",
+      "reading": "vē",
+      "source": "Phase-122",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "pethuva",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M252",
+      "reading": "kur",
+      "source": "Phase-122",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "kur",
+      "new_consistency": 1.0,
+      "all_pass": false
+    },
+    {
+      "sign": "M351",
+      "reading": "vī",
+      "source": "Phase-128 substrate upgrade",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "tittam",
+      "new_consistency": 0.167,
+      "all_pass": true
+    },
+    {
+      "sign": "M198",
+      "reading": "co",
+      "source": "",
+      "dedr_ok": false,
+      "cons_ok": false,
+      "new_sa_modal": "mul",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M168",
+      "reading": "inci",
+      "source": "Phase-110",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "inci",
+      "new_consistency": 1.0,
+      "all_pass": true
+    },
+    {
+      "sign": "M332",
+      "reading": "intu",
+      "source": "Phase-108",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "intu",
+      "new_consistency": 1.0,
+      "all_pass": false
+    },
+    {
+      "sign": "M222",
+      "reading": "kur",
+      "source": "Phase-87 DEDR_REBUS_EXTENDED",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "kur",
+      "new_consistency": 1.0,
+      "all_pass": false
+    },
+    {
+      "sign": "M355",
+      "reading": "lu",
+      "source": "Phase-122",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "viratai",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M178",
+      "reading": "i",
+      "source": "Phase-122",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "vantai",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M231",
+      "reading": "kur",
+      "source": "Phase-122",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "kur",
+      "new_consistency": 1.0,
+      "all_pass": false
+    },
+    {
+      "sign": "M153",
+      "reading": "pu",
+      "source": "Phase-122",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "aalval",
+      "new_consistency": 0.167,
+      "all_pass": true
+    },
+    {
+      "sign": "M177",
+      "reading": "na",
+      "source": "Phase-122",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "annai",
+      "new_consistency": 0.167,
+      "all_pass": true
+    },
+    {
+      "sign": "M155",
+      "reading": "ka",
+      "source": "Phase-122",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "avar",
+      "new_consistency": 0.167,
+      "all_pass": true
+    },
+    {
+      "sign": "M103",
+      "reading": "kol",
+      "source": "Phase-122",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "kol",
+      "new_consistency": 1.0,
+      "all_pass": true
+    },
+    {
+      "sign": "M262",
+      "reading": "i",
+      "source": "Phase-122",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "molai",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M416",
+      "reading": "na",
+      "source": "Phase-122",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "tennar",
+      "new_consistency": 0.167,
+      "all_pass": true
+    },
+    {
+      "sign": "M086",
+      "reading": "oru",
+      "source": "Parpola_1994_via_phase51",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "",
+      "new_consistency": 0,
+      "all_pass": false
+    },
+    {
+      "sign": "M092",
+      "reading": "elu",
+      "source": "Parpola_1994_via_phase51",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "",
+      "new_consistency": 0,
+      "all_pass": false
+    },
+    {
+      "sign": "M124",
+      "reading": "kuTam",
+      "source": "Parpola_1994_via_phase51",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "aran",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M281",
+      "reading": "piLLai",
+      "source": "Parpola_1994_via_phase51",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "thandathu",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M090",
+      "reading": "aintu",
+      "source": "Parpola 1994",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "",
+      "new_consistency": 0,
+      "all_pass": false
+    },
+    {
+      "sign": "M093",
+      "reading": "eTTu",
+      "source": "Parpola 1994",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "",
+      "new_consistency": 0,
+      "all_pass": false
+    },
+    {
+      "sign": "M094",
+      "reading": "onpatu",
+      "source": "Parpola 1994",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "",
+      "new_consistency": 0,
+      "all_pass": false
+    },
+    {
+      "sign": "M008",
+      "reading": "erumai",
+      "source": "Parpola 1994",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "erumai",
+      "new_consistency": 1.0,
+      "all_pass": true
+    },
+    {
+      "sign": "M202",
+      "reading": "can",
+      "source": "Phase-111",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "vikkan",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M249",
+      "reading": "tii",
+      "source": "Parpola 1994",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "telivai",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M058",
+      "reading": "ke",
+      "source": "Phase-80 DEDR rebus (keeDu = DEDR 1994)",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "inmai",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M065",
+      "reading": "kuTam",
+      "source": "Phase-50+Parpola",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "cey",
+      "new_consistency": 0.5,
+      "all_pass": false
+    },
+    {
+      "sign": "M220",
+      "reading": "al",
+      "source": "Phase-89 systematic DEDR (PHON, MEDIUM)",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "aru",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M053",
+      "reading": "mi",
+      "source": "Phase-80 DEDR rebus (miiN = DEDR 4839)",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "ayini",
+      "new_consistency": 0.167,
+      "all_pass": true
+    },
+    {
+      "sign": "M044",
+      "reading": "ku",
+      "source": "Phase-83 gap sprint",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "ku",
+      "new_consistency": 1.0,
+      "all_pass": false
+    },
+    {
+      "sign": "M056",
+      "reading": "miN4",
+      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "mul",
+      "new_consistency": 1.0,
+      "all_pass": true
+    },
+    {
+      "sign": "M118",
+      "reading": "car",
+      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "valai",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M221",
+      "reading": "al",
+      "source": "Phase-91 threshold completion",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "celli",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M192",
+      "reading": "ṇā",
+      "source": "Phase-95 retroflex expansion (score=1.90)",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "poru",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M193",
+      "reading": "ḷā",
+      "source": "Phase-95 retroflex expansion (score=1.90)",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "veendam",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M145",
+      "reading": "miṭ",
+      "source": "Phase-95 retroflex expansion (score=1.90)",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "munnu",
+      "new_consistency": 0.167,
+      "all_pass": true
+    },
+    {
+      "sign": "M362",
+      "reading": "aṇi",
+      "source": "Phase-105",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "teri",
+      "new_consistency": 0.167,
+      "all_pass": true
+    },
+    {
+      "sign": "M398",
+      "reading": "kuṟi",
+      "source": "Phase-105",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "erutu",
+      "new_consistency": 0.167,
+      "all_pass": true
+    },
+    {
+      "sign": "M330",
+      "reading": "can",
+      "source": "Phase-111",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "ceyya",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M165",
+      "reading": "cul",
+      "source": "Phase-111",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "neermai",
+      "new_consistency": 0.167,
+      "all_pass": true
+    },
+    {
+      "sign": "M347",
+      "reading": "ka",
+      "source": "Phase-117",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "akka",
+      "new_consistency": 0.167,
+      "all_pass": true
+    },
+    {
+      "sign": "M350",
+      "reading": "vē",
+      "source": "Phase-122",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "tetukal",
+      "new_consistency": 0.167,
+      "all_pass": false
+    },
+    {
+      "sign": "M874",
+      "reading": "ki",
+      "source": "Phase-190/191/192 Elamo-Dravidian + Brahui + SA (2026-05-23)",
+      "dedr_ok": false,
+      "cons_ok": true,
+      "new_sa_modal": "",
+      "new_consistency": 0,
+      "all_pass": false
+    },
+    {
+      "sign": "M692",
+      "reading": "nal/nall",
+      "source": "Phase-197 SA upgrade candidate",
+      "dedr_ok": true,
+      "cons_ok": true,
+      "new_sa_modal": "",
+      "new_consistency": 0,
+      "all_pass": true
+    }
+  ]
+}

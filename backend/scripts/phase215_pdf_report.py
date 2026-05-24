@@ -7,7 +7,7 @@ Uses ReportLab for PDF generation.
 Output: backend/reports/INDUS_DECIPHERMENT_REPORT.pdf
 """
 from __future__ import annotations
-import json, sys, time
+import json, os, sys, time
 from pathlib import Path
 from collections import Counter
 
@@ -27,9 +27,30 @@ from reportlab.platypus import (
     SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak, HRFlowable
 )
 from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_RIGHT, TA_JUSTIFY
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+
+# ── Register Unicode-capable TrueType fonts (Arial, Windows) ─────────────────
+# Helvetica cannot render Latin Extended / combining diacritics (macrons,
+# dot-below, etc.) used in Dravidian romanisation. Arial supports all of them.
+_FONT_DIR  = Path(os.environ.get("WINDIR", "C:/Windows")) / "Fonts"
+_ARIAL     = str(_FONT_DIR / "arial.ttf")
+_ARIAL_BD  = str(_FONT_DIR / "arialbd.ttf")
+_ARIAL_IT  = str(_FONT_DIR / "ariali.ttf")
+
+try:
+    pdfmetrics.registerFont(TTFont("Arial",      _ARIAL))
+    pdfmetrics.registerFont(TTFont("Arial-Bold", _ARIAL_BD))
+    pdfmetrics.registerFont(TTFont("Arial-Italic", _ARIAL_IT))
+    BODY_FONT  = "Arial"
+    BOLD_FONT  = "Arial-Bold"
+except Exception:
+    # Fall back to built-in if Arial is unavailable (non-Windows)
+    BODY_FONT  = BODY_FONT
+    BOLD_FONT  = BOLD_FONT
 
 W, H = A4
-MARGIN = 20 * mm
+MARGIN = 22 * mm
 
 # ── Colour palette ────────────────────────────────────────────────────────────
 C_HEADER   = colors.HexColor("#1e3a5f")   # deep navy
@@ -48,28 +69,31 @@ def styles():
     def sty(name, parent="Normal", **kws):
         return ParagraphStyle(name, parent=S[parent], **kws)
     return {
-        "title":    sty("T", fontSize=24, textColor=C_HEADER, alignment=TA_CENTER,
-                         fontName="Helvetica-Bold", spaceAfter=8),
-        "subtitle": sty("St", fontSize=13, textColor=C_MID, alignment=TA_CENTER,
-                         fontName="Helvetica", spaceAfter=6),
+        # Title 20pt (reduced from 24) — prevents line-wrap collision with subtitle
+        "title":    sty("T",  fontSize=20, textColor=C_HEADER, alignment=TA_CENTER,
+                         fontName=BOLD_FONT, spaceAfter=4, spaceBefore=0, leading=24),
+        "subtitle": sty("St", fontSize=12, textColor=C_MID, alignment=TA_CENTER,
+                         fontName=BODY_FONT, spaceAfter=4, leading=16),
+        "subtitle2": sty("St2", fontSize=10, textColor=C_MID, alignment=TA_CENTER,
+                         fontName=BODY_FONT, spaceAfter=3, leading=14),
         "h1":       sty("H1", fontSize=14, textColor=C_HEADER, spaceBefore=14, spaceAfter=6,
-                         fontName="Helvetica-Bold"),
-        "h2":       sty("H2", fontSize=11, textColor=C_SECTION, spaceBefore=8, spaceAfter=4,
-                         fontName="Helvetica-Bold"),
+                         fontName=BOLD_FONT, leading=18),
+        "h2":       sty("H2", fontSize=10, textColor=C_SECTION, spaceBefore=8, spaceAfter=4,
+                         fontName=BOLD_FONT, leading=14),
         "body":     sty("Bo", fontSize=9, leading=13, textColor=C_DARK,
-                         fontName="Helvetica", spaceAfter=4),
+                         fontName=BODY_FONT, spaceAfter=4),
         "bodys":    sty("Bs", fontSize=8, leading=11, textColor=C_MID,
-                         fontName="Helvetica", spaceAfter=4),
+                         fontName=BODY_FONT, spaceAfter=4),
         "verdict":  sty("V",  fontSize=9, leading=13, textColor=C_DARK,
-                         fontName="Helvetica",
+                         fontName=BODY_FONT,
                          backColor=colors.HexColor("#f0f9ff"),
                          borderPad=4, spaceAfter=8),
         "blocked":  sty("Bl", fontSize=9, leading=13, textColor=C_DARK,
-                         fontName="Helvetica",
+                         fontName=BODY_FONT,
                          backColor=colors.HexColor("#fff7ed"),
                          borderPad=4, spaceAfter=8),
         "meta":     sty("Me", fontSize=8, textColor=C_MID, alignment=TA_CENTER,
-                         fontName="Helvetica", spaceAfter=4),
+                         fontName=BODY_FONT, spaceAfter=4),
     }
 
 
@@ -79,14 +103,14 @@ def HR(): return HRFlowable(width="100%", thickness=0.5, color=C_LIGHT, spaceAft
 
 
 def tbl(data, col_widths=None, header_bg=None, alt_rows=True, font_size=8):
-    """Create a formatted table."""
+    """Create a formatted table with Unicode-capable fonts."""
     header_bg = header_bg or C_HEADER
     style_cmds = [
         ("BACKGROUND", (0, 0), (-1, 0), header_bg),
         ("TEXTCOLOR",  (0, 0), (-1, 0), colors.white),
-        ("FONTNAME",   (0, 0), (-1, 0), "Helvetica-Bold"),
+        ("FONTNAME",   (0, 0), (-1, 0), BOLD_FONT),
         ("FONTSIZE",   (0, 0), (-1, 0), font_size),
-        ("FONTNAME",   (0, 1), (-1, -1), "Helvetica"),
+        ("FONTNAME",   (0, 1), (-1, -1), BODY_FONT),
         ("FONTSIZE",   (0, 1), (-1, -1), font_size - 1),
         ("GRID",       (0, 0), (-1, -1), 0.3, C_LIGHT),
         ("ALIGN",      (0, 0), (-1, -1), "LEFT"),
@@ -144,19 +168,20 @@ def build_report():
         tok_cov = 54.5
 
     # ═══════════════════════════════════════════════════════════════════════════
-    # TITLE PAGE
+    # TITLE PAGE  — fixed layout: title + 14pt gap + subtitle + 6pt gap + meta
     # ═══════════════════════════════════════════════════════════════════════════
     story += [
-        SP(40),
+        SP(60),   # ~21mm top breathing room
         P("INDUS SCRIPT DECIPHERMENT", S["title"]),
+        SP(14),   # deliberate gap between title and subtitle line 1
         P("Evidence Synthesis Report — GlossaLab Research", S["subtitle"]),
-        SP(4),
-        P("Phases 183–214 &nbsp;|&nbsp; Evidence Items E01–E35 &nbsp;|&nbsp; 410 Anchors", S["subtitle"]),
+        SP(6),
+        P("Phases 183–214  |  Evidence Items E01–E35  |  410 Anchors", S["subtitle2"]),
         SP(4),
         P("Computational Decipherment Status: May 2026", S["meta"]),
-        SP(20),
+        SP(28),
         HR(),
-        SP(10),
+        SP(12),
         P("<b>Hypothesis under investigation:</b> The Indus Valley script (2600–1900 BCE) "
           "encodes a Dravidian language — specifically an ancestral form related to the "
           "Proto-Dravidian (PDr) language reconstructed from Tamil, Kannada, Telugu, Brahui, "
@@ -251,9 +276,9 @@ def build_report():
     style_cmds = [
         ("BACKGROUND", (0,0), (-1,0), C_HEADER),
         ("TEXTCOLOR",  (0,0), (-1,0), colors.white),
-        ("FONTNAME",   (0,0), (-1,0), "Helvetica-Bold"),
+        ("FONTNAME",   (0,0), (-1,0), BOLD_FONT),
         ("FONTSIZE",   (0,0), (-1,-1), 7),
-        ("FONTNAME",   (0,1), (-1,-1), "Helvetica"),
+        ("FONTNAME",   (0,1), (-1,-1), BODY_FONT),
         ("GRID",       (0,0), (-1,-1), 0.2, C_LIGHT),
         ("ALIGN",      (0,0), (-1,-1), "LEFT"),
         ("VALIGN",     (0,0), (-1,-1), "TOP"),
@@ -394,9 +419,9 @@ def build_report():
     sc = [
         ("BACKGROUND", (0,0),(-1,0), C_HEADER),
         ("TEXTCOLOR",  (0,0),(-1,0), colors.white),
-        ("FONTNAME",   (0,0),(-1,0), "Helvetica-Bold"),
+        ("FONTNAME",   (0,0),(-1,0), BOLD_FONT),
         ("FONTSIZE",   (0,0),(-1,-1), 7.5),
-        ("FONTNAME",   (0,1),(-1,-1), "Helvetica"),
+        ("FONTNAME",   (0,1),(-1,-1), BODY_FONT),
         ("GRID",       (0,0),(-1,-1), 0.3, C_LIGHT),
         ("ALIGN",      (0,0),(-1,-1), "LEFT"),
         ("VALIGN",     (0,0),(-1,-1), "MIDDLE"),
@@ -637,9 +662,9 @@ def build_report():
     sc = [
         ("BACKGROUND",(0,0),(-1,0), C_HEADER),
         ("TEXTCOLOR",  (0,0),(-1,0), colors.white),
-        ("FONTNAME",   (0,0),(-1,0), "Helvetica-Bold"),
+        ("FONTNAME",   (0,0),(-1,0), BOLD_FONT),
         ("FONTSIZE",   (0,0),(-1,-1), 8),
-        ("FONTNAME",   (0,1),(-1,-1), "Helvetica"),
+        ("FONTNAME",   (0,1),(-1,-1), BODY_FONT),
         ("GRID",       (0,0),(-1,-1), 0.3, C_LIGHT),
         ("ALIGN",      (0,0),(-1,-1), "LEFT"),
         ("VALIGN",     (0,0),(-1,-1), "MIDDLE"),

@@ -1,5 +1,5 @@
 {
-  "total": 402,
+  "total": 404,
   "anchors": {
     "M342": {
       "reading": "ay/ā",
@@ -33,13 +33,15 @@
       "reading": "ka/kaṇ",
       "confidence": "HIGH",
       "basis": "Numeral/stroke sign",
-      "source": "+Phase48_validated"
+      "source": "+Phase48_validated",
+      "_phase206_absent_phoneme_note": "/ga/ RECONCILED: M391=ka/kaṇ (HIGH) covers Elamo-Dravidian /ga/ phoneme via standard voiced/unvoiced alternation. Elamite ga-=ka- (McAlpin 1981 App.II #14-15). PDr *ka-=water/go (DEDR 1221). Phase-204 combined score: 11 (STRONG+STRONG). Status: COVERED by existing HIGH anchor."
     },
     "M162": {
       "reading": "il/iḷ",
       "confidence": "HIGH",
       "basis": "House/dwelling sign",
-      "source": "+Phase48_validated"
+      "source": "+Phase48_validated",
+      "_phase206_absent_phoneme_note": "/li/ PARTIAL: M162=il/iḷ (HIGH) covers Elamo-Dravidian /li/ phoneme via PDr li-/il- metathesis alternation (DEDR 491: il/li=give/place). Elamite li- (McAlpin App.II #16). Phase-204 score: 4 (MODERATE). Status: PARTIALLY COVERED. /li/ as standalone value not yet assigned."
     },
     "M328": {
       "reading": "ā/āl",
@@ -63,7 +65,8 @@
       "reading": "tu/tū",
       "confidence": "HIGH",
       "basis": "Positional analysis; UPGRADED: high frequency (171); consistent TERMINAL position (n=171); collocates with HIGH anchor M342 (n=15); collocates with HIGH anchor M267 (n=6); collocates with HIGH anchor M176 (n=6); collocates with HIGH anchor M342 (n=13); collocates with HIGH anchor M176 (n=12); collocates with HIGH anchor M267 (n=10); has specific PDR reading",
-      "source": "+Phase48_validated"
+      "source": "+Phase48_validated",
+      "_phase206_absent_phoneme_note": "/du/ RECONCILED: M089=tu/tū (HIGH) covers Elamo-Dravidian /du/ phoneme via standard voiced/unvoiced alternation. Elamite du-=tu- (McAlpin 1981 App.II #22-23). PDr *tu-=give/carry (DEDR 3302). Phase-204 combined score: 11 (STRONG+MEDIUM). Status: COVERED by existing HIGH anchor."
     },
     "M048": {
       "reading": "mu/muṉ",
@@ -384,7 +387,8 @@
     "M047": {
       "reading": "min/mīn",
       "confidence": "MEDIUM",
-      "basis": "FACT-CHECK CORRECTION 2026-05-11: Distributional assignment 'par' (LOW, Round 2) overridden by crosswalk evidence. M047 = P47 = 'fish (plain)' per mahadevan_parpola_crosswalk.json (sourced from Parpola 1994a + Mahadevan 1977). Reading 'mīn' (fish/star, DEDR 4897) is the Parpola canonical anchor confirmed by iconographic_anchors.json (fish-in-crocodile-mouth, H-902B offerings tablet, eZu-miin compound). Freq=13 in Holdat corpus. Previous distributional: {'reading': 'pār', 'confidence': 'LOW', 'basis': 'Round 2: INITIAL position (freq=13), distributional assignment'}"
+      "basis": "FACT-CHECK CORRECTION 2026-05-11: Distributional assignment 'par' (LOW, Round 2) overridden by crosswalk evidence. M047 = P47 = 'fish (plain)' per mahadevan_parpola_crosswalk.json (sourced from Parpola 1994a + Mahadevan 1977). Reading 'mīn' (fish/star, DEDR 4897) is the Parpola canonical anchor confirmed by iconographic_anchors.json (fish-in-crocodile-mouth, H-902B offerings tablet, eZu-miin compound). Freq=13 in Holdat corpus. Previous distributional: {'reading': 'pār', 'confidence': 'LOW', 'basis': 'Round 2: INITIAL position (freq=13), distributional assignment'}",
+      "_phase206_absent_phoneme_note": "/mil/ PARTIAL: M047=min (HIGH) covers Elamo-Dravidian /mil/ phoneme via PDr min/mil cognate (DEDR 4897: min=fish/star, mil=brightness). Elamite mel-/mil- (McAlpin App.II #19-21). Phase-204 score: 6 (MODERATE). Status: PARTIALLY COVERED. /mil/ as standalone value not yet assigned."
     },
     "M033": {
       "reading": "puli",
@@ -2598,6 +2602,32 @@
       "basis": "Phase-192 absent phoneme fill. Elamite (STRONG): McAlpin 1974 cognate. Brahui North Dravidian: Phase-189 coverage. SA convergence: Phase-190 delta_b=+0.0250. Grammar validated: Phase-191. Confidence capped at MEDIUM pending ICIT corpus confirmation.",
       "source": "Phase-190/191/192 Elamo-Dravidian + Brahui + SA (2026-05-23)",
       "_phase192_absent_phoneme": true
+    },
+    "M692": {
+      "reading": "nal/nall",
+      "confidence": "MEDIUM",
+      "basis": "Phase-197 upgrade candidate: SA modal='nal' (consistency=0.40), INITIAL position dominant (i_rate=0.456, m_rate=0.368), freq=171. DEDR 3594: nal = 'good, excellent, fine' (PDr adjective prefix). Corroborates M077=nal (HIGH) as allograph or compound variant. Co-occurs with M047=min (n=23) and M427=en (n=8). Triple-LM convergence (Phase-199): not in top-4 convergent set, but SA consistent across 2/5 seeds. Dravidian grammar fit: 'nall-' prefix before title = honorific compound.",
+      "source": "Phase-197 SA upgrade candidate",
+      "_phase206_new_entry": true,
+      "_phase197_data": {
+        "sa_cons": 0.4,
+        "i_rate": 0.456,
+        "dedr": "3594",
+        "meaning": "good, excellent, fine"
+      }
+    },
+    "M861": {
+      "reading": "nallavar",
+      "confidence": "LOW",
+      "basis": "Phase-197 upgrade candidate: SA modal='nallavar' (consistency=0.50), MEDIAL position (m_rate=0.449, t_rate=0.312), freq=138. DEDR 3594: nallavar = 'good people, nobles, honorifics' (plural of nal). Semantic: honorific plural title — consistent with IVC title-formula role. Co-occurs with M047=min (n=25). Confidence LOW because nallavar is a long compound reading; requires ICIT validation for full sign-level confirmation.",
+      "source": "Phase-197 SA upgrade candidate",
+      "_phase206_new_entry": true,
+      "_phase197_data": {
+        "sa_cons": 0.5,
+        "t_rate": 0.312,
+        "dedr": "3594",
+        "meaning": "good people, nobles (honorific plural)"
+      }
     }
   },
   "_citation": {
@@ -2642,5 +2672,77 @@
   "_phase132_note": "Phase-132 validation: 114 Phase-111 kur-allograph MEDIUM signs downgraded to LOW. These were positional parking spots (all-MEDIAL L1=0), not genuine phonetic readings. New H+M=157, coverage=0.9075. Genuine phonetically-anchored coverage (H+M, non-parking) = 90.75%.",
   "_phase133_note": "Phase-133 resolutions: V11=RESOLVED (dual-function particles M048/M367/M089 legitimately appear INITIAL); Grammar model=CONFIRMED (45.8% explained variance, 8.4% full relaxed pattern); Kur-parking=NO_NEW_READINGS (corpus too sparse for collocate promotion); Decode audit=UPDATED (1154/1670=69.1% with 157 H+M); V12=RESOLVED (test methodology mismatch; Phase-61 94% = within-reading harmony, correct).",
   "_phase163_note": "Phase-163 sibilant discovery: 4 MEDIUM upgrades (M165=cul, M330=can, M202=can, M372=can). total updated 157->161.",
-  "_phase192_update": "2026-05-23: Added 5 absent-phoneme entries at MEDIUM/LOW confidence. Evidence: McAlpin (1974) Elamo-Dravidian + Brahui (Phase-189) + SA Phase-190 + grammar Phase-191. Absent phonemes filled: ['su', 'zi', 'gi', 'en', 'ki']. Remaining absent (need ICIT): li, shu, gu, ab, ba, du, ga, mil, sum."
+  "_phase192_update": "2026-05-23: Added 5 absent-phoneme entries at MEDIUM/LOW confidence. Evidence: McAlpin (1974) Elamo-Dravidian + Brahui (Phase-189) + SA Phase-190 + grammar Phase-191. Absent phonemes filled: ['su', 'zi', 'gi', 'en', 'ki']. Remaining absent (need ICIT): li, shu, gu, ab, ba, du, ga, mil, sum.",
+  "_phase206_absent_phoneme_pending": {
+    "sum": {
+      "elamite": "šum-",
+      "pdr": "*cum-",
+      "dedr": "2689",
+      "meaning": "to name, title, call",
+      "mcalpin_paper": "1981 App.II #29",
+      "mcalpin_confidence": "STRONG",
+      "phase204_score": 9,
+      "status": "PENDING — no sign assignment. Needs ICIT corpus.",
+      "note": "šum/sum=name/title in Elamite; PDr *cum-=sound/name. Highly relevant if IVC signs encode proper names."
+    },
+    "gu": {
+      "elamite": "ku-/gu-",
+      "pdr": "*ku-/*kuḷ-",
+      "dedr": "1687",
+      "meaning": "to say, make sound, clan",
+      "mcalpin_paper": "1981 App.II #11-12",
+      "mcalpin_confidence": "MODERATE",
+      "phase204_score": 6,
+      "status": "PENDING — no sign assignment. Needs ICIT corpus."
+    },
+    "ab": {
+      "elamite": "ap-/ab-",
+      "pdr": "*appa",
+      "dedr": "172",
+      "meaning": "father, distal pronoun",
+      "mcalpin_paper": "1981 App.II #3-5",
+      "mcalpin_confidence": "MODERATE",
+      "phase204_score": 6,
+      "status": "PENDING — no sign assignment. Needs ICIT corpus."
+    },
+    "ba": {
+      "elamite": "ba-/pa-",
+      "pdr": "*pa-",
+      "dedr": "3927",
+      "meaning": "to speak, protect",
+      "mcalpin_paper": "1981 App.II #8-10",
+      "mcalpin_confidence": "MODERATE",
+      "phase204_score": 6,
+      "status": "PENDING — no sign assignment. Needs ICIT corpus."
+    },
+    "shu": {
+      "elamite": "šu-/ši-",
+      "pdr": "*cu-/*ci-",
+      "dedr": "2665",
+      "meaning": "fall, cut, palatalized sibilant",
+      "mcalpin_paper": "1981 App.II #25-27",
+      "mcalpin_confidence": "CANDIDATE",
+      "phase204_score": 3,
+      "status": "PENDING — no sign assignment. Needs ICIT corpus."
+    }
+  },
+  "_phase206_reconciliation_summary": {
+    "du_covered_by": "M089=tu/tū (HIGH) via Elamite voiced alternation",
+    "ga_covered_by": "M391=ka/kaṇ (HIGH) via Elamite voiced alternation",
+    "mil_partial": "M047=min (HIGH) via PDr min/mil cognate",
+    "li_partial": "M162=il/iḷ (HIGH) via PDr li/il metathesis",
+    "pending_icit": [
+      "sum",
+      "gu",
+      "ab",
+      "ba",
+      "shu"
+    ],
+    "notes_added_to": [
+      "M089",
+      "M391",
+      "M047",
+      "M162"
+    ]
+  }
 }

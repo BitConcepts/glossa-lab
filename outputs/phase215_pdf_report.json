@@ -1,8 +1,8 @@
 {
   "phase": 215,
-  "elapsed_s": 0.1,
+  "elapsed_s": 0.0,
   "pdf_path": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\backend\\reports\\INDUS_DECIPHERMENT_REPORT.pdf",
-  "pdf_size_kb": 27,
+  "pdf_size_kb": 99,
   "sections": [
     "Title Page + Executive Summary",
     "Evidence Scorecard E01-E35",
@@ -15,5 +15,5 @@
     "Blocked State + Next Steps",
     "Overall Decipherment Conclusion"
   ],
-  "verdict": "PDF report generated: INDUS_DECIPHERMENT_REPORT.pdf (27 KB). Complete decipherment evidence synthesis across 35 evidence items, 410 anchors, blocked state analysis."
+  "verdict": "PDF report generated: INDUS_DECIPHERMENT_REPORT.pdf (99 KB). Complete decipherment evidence synthesis across 35 evidence items, 410 anchors, blocked state analysis."
 }

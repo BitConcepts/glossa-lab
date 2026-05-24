@@ -1,0 +1,19 @@
+{
+  "phase": 215,
+  "elapsed_s": 0.1,
+  "pdf_path": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\backend\\reports\\INDUS_DECIPHERMENT_REPORT.pdf",
+  "pdf_size_kb": 27,
+  "sections": [
+    "Title Page + Executive Summary",
+    "Evidence Scorecard E01-E35",
+    "Anchor Statistics (410 anchors)",
+    "SA Confidence Trajectory (P193\u2192P207\u2192P213)",
+    "Absent Phoneme Status (14 phonemes)",
+    "Grammar Model",
+    "Multi-Domain Evidence Synthesis",
+    "Selected HIGH-Confidence Sign Readings",
+    "Blocked State + Next Steps",
+    "Overall Decipherment Conclusion"
+  ],
+  "verdict": "PDF report generated: INDUS_DECIPHERMENT_REPORT.pdf (27 KB). Complete decipherment evidence synthesis across 35 evidence items, 410 anchors, blocked state analysis."
+}

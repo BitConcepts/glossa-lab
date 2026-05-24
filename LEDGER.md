@@ -1161,3 +1161,9 @@ Risks:
 Next step:
   Acquire ICIT corpus (email Dr. Fuls with Phase 203-215 evidence package).
   Or: begin Parpola/Wells full sign-list cross-reference to expand beyond 64 M77 signs.
+
+## 2026-05-24T09:53 — specsmith migration: 0.11.5 → 0.11.6
+- **Author**: specsmith
+- **Type**: migration
+- **Status**: complete
+- **Chain hash**: `a7840bbb66786410...`

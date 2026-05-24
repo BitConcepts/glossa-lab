@@ -2672,6 +2672,17 @@ try:
 except Exception as _p221225_exc:  # noqa: BLE001
     logger.warning("Phase-221-225 nodes not registered: %s", _p221225_exc)
 
+# ── Phase-226-228 nodes (P122 phonetic, P324 formula, CISI tripartite)
+try:
+    from glossa_lab.experiment_graph_phase226_228 import (
+        _phase226_228_node_defs as _p226228_defs,  # noqa: PLC0415
+    )
+    for _d in _p226228_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-226-228 nodes", len(_p226228_defs()))
+except Exception as _p226228_exc:  # noqa: BLE001
+    logger.warning("Phase-226-228 nodes not registered: %s", _p226228_exc)
+
 # ── Graph execution
 
 def _topo_sort(nodes: list[dict], edges: list[dict]) -> list[dict]:

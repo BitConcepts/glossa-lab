@@ -2694,6 +2694,17 @@ try:
 except Exception as _p229_exc:  # noqa: BLE001
     logger.warning("Phase-229 nodes not registered: %s", _p229_exc)
 
+# ── Phase-230-234 nodes (cross-ref matrix, indirect bilingual mine/score, cultural/demographic, P324)
+try:
+    from glossa_lab.experiment_graph_phase230_234 import (
+        _phase230_234_node_defs as _p230234_defs,  # noqa: PLC0415
+    )
+    for _d in _p230234_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-230-234 nodes", len(_p230234_defs()))
+except Exception as _p230234_exc:  # noqa: BLE001
+    logger.warning("Phase-230-234 nodes not registered: %s", _p230234_exc)
+
 # ── Graph execution
 
 def _topo_sort(nodes: list[dict], edges: list[dict]) -> list[dict]:

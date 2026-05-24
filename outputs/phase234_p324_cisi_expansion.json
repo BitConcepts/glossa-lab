@@ -1,0 +1,136 @@
+{
+  "phase": 234,
+  "generated_at": "2026-05-24T13:49:57.479808",
+  "p324_context_analysis": {
+    "n_inscriptions": 28,
+    "n_occurrences": 28,
+    "n_initial": 24,
+    "n_internal": 4,
+    "initial_rate": 0.857,
+    "top_followers": {
+      "P096": 2,
+      "P117": 2,
+      "P086": 2,
+      "P194": 2,
+      "P341": 2,
+      "P238": 2,
+      "P000": 1,
+      "P089": 1
+    },
+    "precedes_p122_count": 1,
+    "precedes_p385_count": 0,
+    "pct_precedes_p122": 0.036,
+    "pct_precedes_p385": 0.0,
+    "top_trigram_patterns": [
+      {
+        "pattern": [
+          "P324",
+          "P341",
+          "P122"
+        ],
+        "count": 2
+      },
+      {
+        "pattern": [
+          "P324",
+          "P238",
+          "P096"
+        ],
+        "count": 2
+      },
+      {
+        "pattern": [
+          "P324",
+          "P096",
+          "P062"
+        ],
+        "count": 1
+      },
+      {
+        "pattern": [
+          "P324",
+          "P117",
+          "P210"
+        ],
+        "count": 1
+      },
+      {
+        "pattern": [
+          "P324",
+          "P086",
+          "P276"
+        ],
+        "count": 1
+      }
+    ],
+    "slot_classification": "STRONG_INITIAL_TITLE_PREFIX"
+  },
+  "p324_reading_proposal": {
+    "proposed_candidates": [
+      {
+        "reading": "koṟ/kōṟ",
+        "dedr": "DEDR 2161 (koṟu = to give; kōṟu = announce/proclaim)",
+        "rationale": "INITIAL title prefix meaning 'announcer/proclaimer'; parallels M073 kōṉ (king) in initial position. The -ṟ vs -ṉ distinction = active vs static title.",
+        "confidence_proposal": "LOW_CANDIDATE",
+        "score": 6
+      },
+      {
+        "reading": "eṉ",
+        "dedr": "DEDR 0788 (eṉ = said/spoken; first person marker in Tamil)",
+        "rationale": "First-person determinative used as title prefix: 'said by [name]' — common seal function. Parallels Sumerian 'ki-bi-gi4-a' (reply/proclamation) marker.",
+        "confidence_proposal": "LOW_CANDIDATE",
+        "score": 5
+      },
+      {
+        "reading": "taṉ",
+        "dedr": "DEDR 3003 variant (taṉ = self/own; reflexive/possessive)",
+        "rationale": "Reflexive possessive as seal authenticator: 'own/personal seal of [name]'. Would explain why P324 appears before personal name components.",
+        "confidence_proposal": "LOW_CANDIDATE",
+        "score": 5
+      },
+      {
+        "reading": "kuṭi",
+        "dedr": "DEDR 1638 (kuṭi = family/clan/community)",
+        "rationale": "Clan/family classifier = ANIMAL-CLAN equivalent for CISI inscriptions. P324 preceding personal name = 'of the clan of [name]'. Supports INITIAL position and grammatical parallelism with Holdat.",
+        "confidence_proposal": "LOW_CANDIDATE",
+        "score": 7
+      }
+    ],
+    "best_candidate": {
+      "reading": "kuṭi",
+      "dedr": "DEDR 1638 (kuṭi = family/clan/community)",
+      "rationale": "Clan/family classifier = ANIMAL-CLAN equivalent for CISI inscriptions. P324 preceding personal name = 'of the clan of [name]'. Supports INITIAL position and grammatical parallelism with Holdat.",
+      "confidence_proposal": "LOW_CANDIDATE",
+      "score": 7
+    },
+    "holdat_analog": "M267 (iN/in, MEDIUM) — both are INITIAL title/genitive prefixes",
+    "holdat_analog_rate_comparison": {
+      "M267_initial_rate": 0.82,
+      "P324_initial_rate": 0.857,
+      "delta": 0.037
+    },
+    "evidence_chain": [
+      "P324 INITIAL 78% (Phase-221): same rate as M267 (82%) in Holdat",
+      "P324 → P122 → P385 = [INIT][MED][TERM] tripartite (Phase-228)",
+      "P324 freq=99 in CISI: high enough to be functional grammar marker",
+      "P324 not in M77 Holdat: CISI-exclusive → possibly a title used only at CISI sites"
+    ]
+  },
+  "n_low_anchors_total": 243,
+  "n_upgrade_candidates": 0,
+  "n_proposed_medium": 0,
+  "n_proposed_low_strong": 0,
+  "pct_low_with_upgrade_candidate": 0.0,
+  "upgrade_candidates": [],
+  "cisi_p324_summary": {
+    "sign": "P324",
+    "cisi_freq": 99,
+    "initial_rate_cisi_phase221": 0.78,
+    "initial_rate_context_sample": 0.857,
+    "best_reading_proposal": "kuṭi",
+    "best_dedr": "DEDR 1638 (kuṭi = family/clan/community)",
+    "holdat_analog": "M267 (iN/in, MEDIUM) — both are INITIAL title/genitive prefixes",
+    "status": "LOW_CANDIDATE"
+  },
+  "verdict": "Phase-234: P324 analysis — INITIAL 86%, best reading proposal: 'kuṭi' (LOW_CANDIDATE), Holdat analog: M267 (iN/in, MEDIUM) — both are INITIAL title/genitive prefixes. LOW→MEDIUM upgrades: 0 MEDIUM proposals + 0 LOW_STRONG proposals from 243 LOW anchors. CISI cross-corpus corroboration enabled 0/243 (0%) upgrade candidates."
+}

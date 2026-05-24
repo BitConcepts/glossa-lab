@@ -1,0 +1,2747 @@
+{
+  "phase": 220,
+  "description": "Parpola/CISI cross-reference — expansion beyond M77 sign set",
+  "cisi_stats": {
+    "n_inscriptions": 178,
+    "n_distinct_signs": 181,
+    "total_tokens": 1002
+  },
+  "crosswalk_stats": {
+    "n_crosswalk_entries": 179,
+    "n_cisi_signs_in_crosswalk": 84,
+    "n_cisi_signs_outside_crosswalk": 97
+  },
+  "category_a_confirmed": [
+    {
+      "p_sign": "P086",
+      "m_id": "M086",
+      "freq_cisi": 35,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.543,
+      "terminal_rate": 0.029,
+      "our_reading": "oru",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "or-",
+      "parpola_confidence": "medium",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P050",
+      "m_id": "M050",
+      "freq_cisi": 32,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.031,
+      "terminal_rate": 0.0,
+      "our_reading": "pār",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "miin-X",
+      "parpola_confidence": "high",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P145",
+      "m_id": "M145",
+      "freq_cisi": 27,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.148,
+      "our_reading": "miṭ",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "miin",
+      "parpola_confidence": "high",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P060",
+      "m_id": "M060",
+      "freq_cisi": 20,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.05,
+      "our_reading": "kāṇṭāmirukam",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "miin",
+      "parpola_confidence": "high",
+      "slot_cross_validate": {
+        "our_expected_slot": "TERMINAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P058",
+      "m_id": "M058",
+      "freq_cisi": 15,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.067,
+      "our_reading": "ke",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P011",
+      "m_id": "M011",
+      "freq_cisi": 10,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.5,
+      "our_reading": "kaḷiṟu",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P056",
+      "m_id": "M056",
+      "freq_cisi": 9,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "miN4",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P013",
+      "m_id": "M013",
+      "freq_cisi": 9,
+      "dominant_slot": "INITIAL",
+      "initial_rate": 1.0,
+      "terminal_rate": 0.0,
+      "our_reading": "nakaram",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "TERMINAL",
+        "cisi_slot": "INITIAL",
+        "consistent": false
+      }
+    },
+    {
+      "p_sign": "P073",
+      "m_id": "M073",
+      "freq_cisi": 8,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.125,
+      "our_reading": "kōṉ",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "INITIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P175",
+      "m_id": "M175",
+      "freq_cisi": 7,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "katir",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "katir",
+      "parpola_confidence": "medium",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P076",
+      "m_id": "M076",
+      "freq_cisi": 6,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.667,
+      "our_reading": "naN",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "TERMINAL",
+        "consistent": false
+      }
+    },
+    {
+      "p_sign": "P092",
+      "m_id": "M092",
+      "freq_cisi": 6,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.167,
+      "our_reading": "elu",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "eZu-",
+      "parpola_confidence": "high",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P004",
+      "m_id": "M004",
+      "freq_cisi": 6,
+      "dominant_slot": "INITIAL",
+      "initial_rate": 1.0,
+      "terminal_rate": 0.0,
+      "our_reading": "kēḷ",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "INITIAL",
+        "consistent": false
+      }
+    },
+    {
+      "p_sign": "P108",
+      "m_id": "M108",
+      "freq_cisi": 5,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.6,
+      "our_reading": "kaL",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "TERMINAL",
+        "consistent": false
+      }
+    },
+    {
+      "p_sign": "P009",
+      "m_id": "M009",
+      "freq_cisi": 5,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "āṇ",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P091",
+      "m_id": "M091",
+      "freq_cisi": 5,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.2,
+      "terminal_rate": 0.0,
+      "our_reading": "aru",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "aru-",
+      "parpola_confidence": "high",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P051",
+      "m_id": "M051",
+      "freq_cisi": 5,
+      "dominant_slot": "INITIAL",
+      "initial_rate": 1.0,
+      "terminal_rate": 0.0,
+      "our_reading": "pū/puḷ",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "INITIAL",
+        "consistent": false
+      }
+    },
+    {
+      "p_sign": "P035",
+      "m_id": "M035",
+      "freq_cisi": 4,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.25,
+      "our_reading": "po",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P125",
+      "m_id": "M125",
+      "freq_cisi": 4,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.5,
+      "our_reading": "vil",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P127",
+      "m_id": "M127",
+      "freq_cisi": 4,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.25,
+      "our_reading": "vē",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P001",
+      "m_id": "M001",
+      "freq_cisi": 4,
+      "dominant_slot": "INITIAL",
+      "initial_rate": 1.0,
+      "terminal_rate": 0.0,
+      "our_reading": "tōḷ",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "aaL/vir",
+      "parpola_confidence": "medium",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "INITIAL",
+        "consistent": false
+      }
+    },
+    {
+      "p_sign": "P124",
+      "m_id": "M124",
+      "freq_cisi": 4,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.5,
+      "our_reading": "kuTam",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "kuTam",
+      "parpola_confidence": "high",
+      "slot_cross_validate": {
+        "our_expected_slot": "TERMINAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P075",
+      "m_id": "M075",
+      "freq_cisi": 4,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.25,
+      "our_reading": "māṟ",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P067",
+      "m_id": "M067",
+      "freq_cisi": 3,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.333,
+      "terminal_rate": 0.0,
+      "our_reading": "kōṭṭāṉ",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P103",
+      "m_id": "M045",
+      "freq_cisi": 3,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.333,
+      "our_reading": "yānai",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "INITIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P031",
+      "m_id": "M031",
+      "freq_cisi": 3,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "kai",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P117",
+      "m_id": "M117",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "ar",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "ar/aru",
+      "parpola_confidence": "medium",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P026",
+      "m_id": "M026",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "mā",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P342",
+      "m_id": "M342",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.5,
+      "our_reading": "ay/ā",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "TERMINAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P040",
+      "m_id": "M040",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "ri",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P043",
+      "m_id": "M043",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.5,
+      "our_reading": "mu",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P082",
+      "m_id": "M082",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "pa",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P128",
+      "m_id": "M128",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "kaṇ",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P003",
+      "m_id": "M003",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "kalam",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "TERMINAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P094",
+      "m_id": "M094",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "onpatu",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "TERMINAL",
+        "consistent": false
+      }
+    },
+    {
+      "p_sign": "P065",
+      "m_id": "M065",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "kuTam",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "TERMINAL",
+        "cisi_slot": "TERMINAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P311",
+      "m_id": "M311",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "vaTamiin",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "vaTa-miin (?)",
+      "parpola_confidence": "medium",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P041",
+      "m_id": "M041",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "pēr",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "TERMINAL",
+        "consistent": false
+      }
+    },
+    {
+      "p_sign": "P007",
+      "m_id": "M007",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "aaL",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "TERMINAL",
+        "consistent": false
+      }
+    },
+    {
+      "p_sign": "P089",
+      "m_id": "M089",
+      "freq_cisi": 1,
+      "dominant_slot": "INITIAL",
+      "initial_rate": 1.0,
+      "terminal_rate": 0.0,
+      "our_reading": "tu/tū",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "TERMINAL",
+        "cisi_slot": "INITIAL",
+        "consistent": false
+      }
+    },
+    {
+      "p_sign": "P211",
+      "m_id": "M211",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "kol",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P281",
+      "m_id": "M281",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "piLLai",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "piLLai",
+      "parpola_confidence": "medium",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P047",
+      "m_id": "M047",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "min/mīn",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "miin",
+      "parpola_confidence": "high",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "TERMINAL",
+        "consistent": false
+      }
+    },
+    {
+      "p_sign": "P023",
+      "m_id": "M023",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "vaḷ",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "TERMINAL",
+        "consistent": false
+      }
+    },
+    {
+      "p_sign": "P012",
+      "m_id": "M012",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "oṉṟu/1",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P053",
+      "m_id": "M053",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "mi",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "uncertain",
+      "parpola_confidence": "low",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P070",
+      "m_id": "M070",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "vēl",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "TERMINAL",
+        "consistent": false
+      }
+    },
+    {
+      "p_sign": "P020",
+      "m_id": "M020",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "kuṉ",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "TERMINAL",
+        "consistent": false
+      }
+    },
+    {
+      "p_sign": "P038",
+      "m_id": "M038",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "pōr",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "TERMINAL",
+        "consistent": false
+      }
+    },
+    {
+      "p_sign": "P054",
+      "m_id": "M054",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "mi",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P071",
+      "m_id": "M071",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "nal",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "TERMINAL",
+        "consistent": false
+      }
+    },
+    {
+      "p_sign": "P099",
+      "m_id": "M099",
+      "freq_cisi": 1,
+      "dominant_slot": "INITIAL",
+      "initial_rate": 1.0,
+      "terminal_rate": 0.0,
+      "our_reading": "kol/koḷ",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "vil",
+      "parpola_confidence": "medium",
+      "slot_cross_validate": {
+        "our_expected_slot": "INITIAL",
+        "cisi_slot": "INITIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P044",
+      "m_id": "M044",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "ku",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "TERMINAL",
+        "consistent": false
+      }
+    },
+    {
+      "p_sign": "P014",
+      "m_id": "M014",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "tiru",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P032",
+      "m_id": "M032",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "koL",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "TERMINAL",
+        "consistent": false
+      }
+    },
+    {
+      "p_sign": "P061",
+      "m_id": "M061",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "ka",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P022",
+      "m_id": "M022",
+      "freq_cisi": 1,
+      "dominant_slot": "INITIAL",
+      "initial_rate": 1.0,
+      "terminal_rate": 0.0,
+      "our_reading": "kalam",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "TERMINAL",
+        "cisi_slot": "INITIAL",
+        "consistent": false
+      }
+    },
+    {
+      "p_sign": "P048",
+      "m_id": "M048",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "mu/muṉ",
+      "our_confidence": "HIGH",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P037",
+      "m_id": "M037",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "kēḷ",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    },
+    {
+      "p_sign": "P010",
+      "m_id": "M010",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "paṭ",
+      "our_confidence": "MEDIUM",
+      "parpola_phoneme": "",
+      "parpola_confidence": "",
+      "slot_cross_validate": {
+        "our_expected_slot": "MEDIAL",
+        "cisi_slot": "MEDIAL",
+        "consistent": true
+      }
+    }
+  ],
+  "category_b_unread": [
+    {
+      "p_sign": "P122",
+      "m_id": "M122",
+      "freq_cisi": 76,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "kur",
+      "our_confidence": "LOW",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P120",
+      "m_id": "M120",
+      "freq_cisi": 22,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "kur",
+      "our_confidence": "LOW",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P364",
+      "m_id": "M364",
+      "freq_cisi": 17,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.118,
+      "our_reading": "kur",
+      "our_confidence": "LOW",
+      "parpola_phoneme": "or (?)",
+      "parpola_confidence": "low"
+    },
+    {
+      "p_sign": "P147",
+      "m_id": "M147",
+      "freq_cisi": 14,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.071,
+      "terminal_rate": 0.071,
+      "our_reading": "kur",
+      "our_confidence": "LOW",
+      "parpola_phoneme": "miin",
+      "parpola_confidence": "high"
+    },
+    {
+      "p_sign": "P154",
+      "m_id": "M154",
+      "freq_cisi": 14,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.214,
+      "our_reading": "kur",
+      "our_confidence": "LOW",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P123",
+      "m_id": "M123",
+      "freq_cisi": 13,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.385,
+      "our_reading": "kur",
+      "our_confidence": "LOW",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P121",
+      "m_id": "M121",
+      "freq_cisi": 10,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.1,
+      "terminal_rate": 0.0,
+      "our_reading": "kur",
+      "our_confidence": "LOW",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P144",
+      "m_id": "M144",
+      "freq_cisi": 8,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.125,
+      "terminal_rate": 0.25,
+      "our_reading": "kur",
+      "our_confidence": "LOW",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P126",
+      "m_id": "M126",
+      "freq_cisi": 6,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.167,
+      "our_reading": "kur",
+      "our_confidence": "LOW",
+      "parpola_phoneme": "uncertain",
+      "parpola_confidence": "low"
+    },
+    {
+      "p_sign": "P160",
+      "m_id": "M160",
+      "freq_cisi": 6,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.167,
+      "our_reading": "kur",
+      "our_confidence": "LOW",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P142",
+      "m_id": "M142",
+      "freq_cisi": 4,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.25,
+      "our_reading": "kur",
+      "our_confidence": "LOW",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P095",
+      "m_id": "M095",
+      "freq_cisi": 4,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.75,
+      "our_reading": "",
+      "our_confidence": "UNREAD (in crosswalk)",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P139",
+      "m_id": "M139",
+      "freq_cisi": 4,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "kur",
+      "our_confidence": "LOW",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P098",
+      "m_id": "M098",
+      "freq_cisi": 4,
+      "dominant_slot": "INITIAL",
+      "initial_rate": 0.75,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD (in crosswalk)",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P096",
+      "m_id": "M096",
+      "freq_cisi": 3,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD (in crosswalk)",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P114",
+      "m_id": "M114",
+      "freq_cisi": 3,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.333,
+      "our_reading": "kur",
+      "our_confidence": "LOW",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P110",
+      "m_id": "M110",
+      "freq_cisi": 3,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.333,
+      "our_reading": "kur",
+      "our_confidence": "LOW",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P151",
+      "m_id": "M151",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "viḷ",
+      "our_confidence": "LOW",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P111",
+      "m_id": "M111",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "kur",
+      "our_confidence": "LOW",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P083",
+      "m_id": "M083",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD (in crosswalk)",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P084",
+      "m_id": "M084",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD (in crosswalk)",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P156",
+      "m_id": "M156",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "kur",
+      "our_confidence": "LOW",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P136",
+      "m_id": "M136",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "kur",
+      "our_confidence": "LOW",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P166",
+      "m_id": "M166",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "kur",
+      "our_confidence": "LOW",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    }
+  ],
+  "category_c_new": [
+    {
+      "p_sign": "P324",
+      "m_id": "",
+      "freq_cisi": 99,
+      "dominant_slot": "INITIAL",
+      "initial_rate": 0.778,
+      "terminal_rate": 0.01,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P385",
+      "m_id": "",
+      "freq_cisi": 35,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.829,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P230",
+      "m_id": "",
+      "freq_cisi": 23,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.174,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P062",
+      "m_id": "",
+      "freq_cisi": 21,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P316",
+      "m_id": "",
+      "freq_cisi": 19,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.053,
+      "terminal_rate": 0.105,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P000",
+      "m_id": "",
+      "freq_cisi": 19,
+      "dominant_slot": "INITIAL",
+      "initial_rate": 0.579,
+      "terminal_rate": 0.316,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P217",
+      "m_id": "",
+      "freq_cisi": 18,
+      "dominant_slot": "INITIAL",
+      "initial_rate": 0.778,
+      "terminal_rate": 0.111,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P378",
+      "m_id": "",
+      "freq_cisi": 17,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.118,
+      "terminal_rate": 0.588,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P325",
+      "m_id": "",
+      "freq_cisi": 14,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.071,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P256",
+      "m_id": "",
+      "freq_cisi": 12,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.75,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P202",
+      "m_id": "",
+      "freq_cisi": 11,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.182,
+      "terminal_rate": 0.091,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P268",
+      "m_id": "",
+      "freq_cisi": 11,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.273,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P332",
+      "m_id": "",
+      "freq_cisi": 11,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P205",
+      "m_id": "",
+      "freq_cisi": 10,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.1,
+      "terminal_rate": 0.1,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P349",
+      "m_id": "",
+      "freq_cisi": 10,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.2,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P194",
+      "m_id": "",
+      "freq_cisi": 8,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.125,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P276",
+      "m_id": "",
+      "freq_cisi": 6,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.167,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P215",
+      "m_id": "",
+      "freq_cisi": 6,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P301",
+      "m_id": "",
+      "freq_cisi": 6,
+      "dominant_slot": "INITIAL",
+      "initial_rate": 0.833,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P201",
+      "m_id": "",
+      "freq_cisi": 5,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P270",
+      "m_id": "",
+      "freq_cisi": 5,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.2,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P221",
+      "m_id": "",
+      "freq_cisi": 5,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.4,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P210",
+      "m_id": "",
+      "freq_cisi": 5,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.2,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P204",
+      "m_id": "",
+      "freq_cisi": 4,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P289",
+      "m_id": "",
+      "freq_cisi": 4,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.25,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P226",
+      "m_id": "",
+      "freq_cisi": 4,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P355",
+      "m_id": "",
+      "freq_cisi": 4,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.5,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P369",
+      "m_id": "",
+      "freq_cisi": 3,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P275",
+      "m_id": "",
+      "freq_cisi": 3,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.333,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P174",
+      "m_id": "",
+      "freq_cisi": 3,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P238",
+      "m_id": "",
+      "freq_cisi": 3,
+      "dominant_slot": "INITIAL",
+      "initial_rate": 0.667,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P309",
+      "m_id": "",
+      "freq_cisi": 3,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P303",
+      "m_id": "",
+      "freq_cisi": 3,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.333,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P288",
+      "m_id": "",
+      "freq_cisi": 3,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P326",
+      "m_id": "",
+      "freq_cisi": 3,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P234",
+      "m_id": "",
+      "freq_cisi": 3,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.333,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P283",
+      "m_id": "",
+      "freq_cisi": 3,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P320",
+      "m_id": "",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.5,
+      "terminal_rate": 0.5,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P186",
+      "m_id": "",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P384",
+      "m_id": "",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.5,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P352",
+      "m_id": "",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P182",
+      "m_id": "",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P172",
+      "m_id": "",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P390",
+      "m_id": "",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.5,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P358",
+      "m_id": "",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P188",
+      "m_id": "",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P353",
+      "m_id": "",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.5,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P251",
+      "m_id": "",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P310",
+      "m_id": "",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.5,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P359",
+      "m_id": "",
+      "freq_cisi": 2,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P368",
+      "m_id": "",
+      "freq_cisi": 2,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.5,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P265",
+      "m_id": "",
+      "freq_cisi": 2,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P237",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P327",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P386",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P346",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P232",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P341",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "INITIAL",
+      "initial_rate": 1.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P272",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P197",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P350",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P228",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P307",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P360",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P296",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P372",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P382",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P258",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P246",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P206",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P223",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P260",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P181",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P280",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "INITIAL",
+      "initial_rate": 1.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P366",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "INITIAL",
+      "initial_rate": 1.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P247",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P180",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P335",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P178",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P313",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P253",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P381",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P285",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P254",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P195",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P208",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P293",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P177",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P294",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P170",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P231",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P393",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P300",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P290",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P255",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P193",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "MEDIAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 0.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    },
+    {
+      "p_sign": "P207",
+      "m_id": "",
+      "freq_cisi": 1,
+      "dominant_slot": "TERMINAL",
+      "initial_rate": 0.0,
+      "terminal_rate": 1.0,
+      "our_reading": "",
+      "our_confidence": "UNREAD",
+      "parpola_phoneme": "",
+      "parpola_confidence": ""
+    }
+  ],
+  "slot_mismatches": [
+    "P013",
+    "P076",
+    "P004",
+    "P108",
+    "P051",
+    "P001",
+    "P094",
+    "P041",
+    "P007",
+    "P089",
+    "P047",
+    "P023",
+    "P070",
+    "P020",
+    "P038",
+    "P071",
+    "P044",
+    "P032",
+    "P022"
+  ],
+  "new_candidates": {
+    "from_crosswalk_unread": [
+      {
+        "p_sign": "P364",
+        "m_id": "M364",
+        "proposed_reading": "or (?)",
+        "basis": "Parpola (1994 App. B): 'or (?)' [low]. CISI freq=17, slot=MEDIAL.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 17,
+        "dominant_slot": "MEDIAL"
+      },
+      {
+        "p_sign": "P147",
+        "m_id": "M147",
+        "proposed_reading": "miin",
+        "basis": "Parpola (1994 App. B): 'miin' [high]. CISI freq=14, slot=MEDIAL.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 14,
+        "dominant_slot": "MEDIAL"
+      },
+      {
+        "p_sign": "P126",
+        "m_id": "M126",
+        "proposed_reading": "uncertain",
+        "basis": "Parpola (1994 App. B): 'uncertain' [low]. CISI freq=6, slot=MEDIAL.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 6,
+        "dominant_slot": "MEDIAL"
+      }
+    ],
+    "from_cisi_exclusive": [
+      {
+        "p_sign": "P324",
+        "m_id": null,
+        "proposed_reading": "[P324 unread]",
+        "basis": "Phase-220: CISI-only sign, freq=99, slot=INITIAL. No Parpola reading available.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 99,
+        "dominant_slot": "INITIAL",
+        "note": "Not in Holdat/M77 corpus — CISI exclusive sign"
+      },
+      {
+        "p_sign": "P385",
+        "m_id": null,
+        "proposed_reading": "[P385 unread]",
+        "basis": "Phase-220: CISI-only sign, freq=35, slot=TERMINAL. No Parpola reading available.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 35,
+        "dominant_slot": "TERMINAL",
+        "note": "Not in Holdat/M77 corpus — CISI exclusive sign"
+      },
+      {
+        "p_sign": "P230",
+        "m_id": null,
+        "proposed_reading": "[P230 unread]",
+        "basis": "Phase-220: CISI-only sign, freq=23, slot=MEDIAL. No Parpola reading available.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 23,
+        "dominant_slot": "MEDIAL",
+        "note": "Not in Holdat/M77 corpus — CISI exclusive sign"
+      },
+      {
+        "p_sign": "P062",
+        "m_id": null,
+        "proposed_reading": "[P062 unread]",
+        "basis": "Phase-220: CISI-only sign, freq=21, slot=MEDIAL. No Parpola reading available.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 21,
+        "dominant_slot": "MEDIAL",
+        "note": "Not in Holdat/M77 corpus — CISI exclusive sign"
+      },
+      {
+        "p_sign": "P316",
+        "m_id": null,
+        "proposed_reading": "[P316 unread]",
+        "basis": "Phase-220: CISI-only sign, freq=19, slot=MEDIAL. No Parpola reading available.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 19,
+        "dominant_slot": "MEDIAL",
+        "note": "Not in Holdat/M77 corpus — CISI exclusive sign"
+      },
+      {
+        "p_sign": "P000",
+        "m_id": null,
+        "proposed_reading": "[P000 unread]",
+        "basis": "Phase-220: CISI-only sign, freq=19, slot=INITIAL. No Parpola reading available.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 19,
+        "dominant_slot": "INITIAL",
+        "note": "Not in Holdat/M77 corpus — CISI exclusive sign"
+      },
+      {
+        "p_sign": "P217",
+        "m_id": null,
+        "proposed_reading": "[P217 unread]",
+        "basis": "Phase-220: CISI-only sign, freq=18, slot=INITIAL. No Parpola reading available.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 18,
+        "dominant_slot": "INITIAL",
+        "note": "Not in Holdat/M77 corpus — CISI exclusive sign"
+      },
+      {
+        "p_sign": "P378",
+        "m_id": null,
+        "proposed_reading": "[P378 unread]",
+        "basis": "Phase-220: CISI-only sign, freq=17, slot=TERMINAL. No Parpola reading available.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 17,
+        "dominant_slot": "TERMINAL",
+        "note": "Not in Holdat/M77 corpus — CISI exclusive sign"
+      },
+      {
+        "p_sign": "P325",
+        "m_id": null,
+        "proposed_reading": "[P325 unread]",
+        "basis": "Phase-220: CISI-only sign, freq=14, slot=MEDIAL. No Parpola reading available.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 14,
+        "dominant_slot": "MEDIAL",
+        "note": "Not in Holdat/M77 corpus — CISI exclusive sign"
+      },
+      {
+        "p_sign": "P256",
+        "m_id": null,
+        "proposed_reading": "[P256 unread]",
+        "basis": "Phase-220: CISI-only sign, freq=12, slot=TERMINAL. No Parpola reading available.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 12,
+        "dominant_slot": "TERMINAL",
+        "note": "Not in Holdat/M77 corpus — CISI exclusive sign"
+      },
+      {
+        "p_sign": "P202",
+        "m_id": null,
+        "proposed_reading": "[P202 unread]",
+        "basis": "Phase-220: CISI-only sign, freq=11, slot=MEDIAL. No Parpola reading available.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 11,
+        "dominant_slot": "MEDIAL",
+        "note": "Not in Holdat/M77 corpus — CISI exclusive sign"
+      },
+      {
+        "p_sign": "P268",
+        "m_id": null,
+        "proposed_reading": "[P268 unread]",
+        "basis": "Phase-220: CISI-only sign, freq=11, slot=MEDIAL. No Parpola reading available.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 11,
+        "dominant_slot": "MEDIAL",
+        "note": "Not in Holdat/M77 corpus — CISI exclusive sign"
+      },
+      {
+        "p_sign": "P332",
+        "m_id": null,
+        "proposed_reading": "[P332 unread]",
+        "basis": "Phase-220: CISI-only sign, freq=11, slot=MEDIAL. No Parpola reading available.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 11,
+        "dominant_slot": "MEDIAL",
+        "note": "Not in Holdat/M77 corpus — CISI exclusive sign"
+      },
+      {
+        "p_sign": "P205",
+        "m_id": null,
+        "proposed_reading": "[P205 unread]",
+        "basis": "Phase-220: CISI-only sign, freq=10, slot=MEDIAL. No Parpola reading available.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 10,
+        "dominant_slot": "MEDIAL",
+        "note": "Not in Holdat/M77 corpus — CISI exclusive sign"
+      },
+      {
+        "p_sign": "P349",
+        "m_id": null,
+        "proposed_reading": "[P349 unread]",
+        "basis": "Phase-220: CISI-only sign, freq=10, slot=MEDIAL. No Parpola reading available.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 10,
+        "dominant_slot": "MEDIAL",
+        "note": "Not in Holdat/M77 corpus — CISI exclusive sign"
+      },
+      {
+        "p_sign": "P194",
+        "m_id": null,
+        "proposed_reading": "[P194 unread]",
+        "basis": "Phase-220: CISI-only sign, freq=8, slot=MEDIAL. No Parpola reading available.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 8,
+        "dominant_slot": "MEDIAL",
+        "note": "Not in Holdat/M77 corpus — CISI exclusive sign"
+      },
+      {
+        "p_sign": "P276",
+        "m_id": null,
+        "proposed_reading": "[P276 unread]",
+        "basis": "Phase-220: CISI-only sign, freq=6, slot=MEDIAL. No Parpola reading available.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 6,
+        "dominant_slot": "MEDIAL",
+        "note": "Not in Holdat/M77 corpus — CISI exclusive sign"
+      },
+      {
+        "p_sign": "P215",
+        "m_id": null,
+        "proposed_reading": "[P215 unread]",
+        "basis": "Phase-220: CISI-only sign, freq=6, slot=MEDIAL. No Parpola reading available.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 6,
+        "dominant_slot": "MEDIAL",
+        "note": "Not in Holdat/M77 corpus — CISI exclusive sign"
+      },
+      {
+        "p_sign": "P301",
+        "m_id": null,
+        "proposed_reading": "[P301 unread]",
+        "basis": "Phase-220: CISI-only sign, freq=6, slot=INITIAL. No Parpola reading available.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 6,
+        "dominant_slot": "INITIAL",
+        "note": "Not in Holdat/M77 corpus — CISI exclusive sign"
+      },
+      {
+        "p_sign": "P201",
+        "m_id": null,
+        "proposed_reading": "[P201 unread]",
+        "basis": "Phase-220: CISI-only sign, freq=5, slot=MEDIAL. No Parpola reading available.",
+        "confidence": "CANDIDATE",
+        "freq_cisi": 5,
+        "dominant_slot": "MEDIAL",
+        "note": "Not in Holdat/M77 corpus — CISI exclusive sign"
+      }
+    ],
+    "total": 23
+  }
+}

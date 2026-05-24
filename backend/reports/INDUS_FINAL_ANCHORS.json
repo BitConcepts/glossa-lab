@@ -604,9 +604,13 @@
     },
     "M386": {
       "reading": "maṇ",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Round 4: MEDIAL position (freq=6), distributional assignment",
-      "phase129_basis": "Phase-129 positional squeeze: MEDIAL. SA modal 'bā' → Dravidian shift to 'pā'. DEDR 4053 pā = song/poem (Tamil) — culturally plausible in guild inscriptions. Substrate: Munda 'ba' (water) is less likely given collocates. Before M029=yānai (elephant), M267=in (genitive). After M328=āl (man). Pattern: [elephant-of]-M386-[man] — possibly a descriptor. Insufficient frequency and consistency for MEDIUM. Remains LOW."
+      "phase129_basis": "Phase-129 positional squeeze: MEDIAL. SA modal 'bā' → Dravidian shift to 'pā'. DEDR 4053 pā = song/poem (Tamil) — culturally plausible in guild inscriptions. Substrate: Munda 'ba' (water) is less likely given collocates. Before M029=yānai (elephant), M267=in (genitive). After M328=āl (man). Pattern: [elephant-of]-M386-[man] — possibly a descriptor. Insufficient frequency and consistency for MEDIUM. Remains LOW.",
+      "dedr": "5135",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (5135), Sanskrit score=3 (4662). DEDR=5135 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M351": {
       "reading": "vī",
@@ -707,8 +711,12 @@
     },
     "M321": {
       "reading": "kol",
-      "confidence": "LOW",
-      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+      "confidence": "MEDIUM",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment",
+      "dedr": "1570",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1570), Sanskrit score=3 (1570). DEDR=1570 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M153": {
       "reading": "pu",
@@ -724,13 +732,21 @@
     },
     "M357": {
       "reading": "kuḷ",
-      "confidence": "LOW",
-      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+      "confidence": "MEDIUM",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M137": {
       "reading": "kuṟ",
-      "confidence": "LOW",
-      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+      "confidence": "MEDIUM",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M155": {
       "reading": "ka",
@@ -773,8 +789,12 @@
     },
     "M143": {
       "reading": "maṇ",
-      "confidence": "LOW",
-      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+      "confidence": "MEDIUM",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment",
+      "dedr": "5135",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (5135), Sanskrit score=3 (4662). DEDR=5135 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M345": {
       "reading": "taṭ",
@@ -788,13 +808,21 @@
     },
     "M190": {
       "reading": "paṉ",
-      "confidence": "LOW",
-      "basis": "Round 6: MEDIAL position (freq=5), distributional assignment"
+      "confidence": "MEDIUM",
+      "basis": "Round 6: MEDIAL position (freq=5), distributional assignment",
+      "dedr": "4086",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (4086), Sanskrit score=2 (3978). DEDR=4086 (source=elamite). Combined score=5 >= 4 threshold."
     },
     "M295": {
       "reading": "paṟ",
-      "confidence": "LOW",
-      "basis": "Round 6: MEDIAL position (freq=5), distributional assignment"
+      "confidence": "MEDIUM",
+      "basis": "Round 6: MEDIAL position (freq=5), distributional assignment",
+      "dedr": "4086",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (4086), Sanskrit score=2 (3978). DEDR=4086 (source=elamite). Combined score=5 >= 4 threshold."
     },
     "M402": {
       "reading": "vēḷ",
@@ -803,52 +831,80 @@
     },
     "M255": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M251": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M301": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M406": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M387": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M116": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M274": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M086": {
       "reading": "oru",
@@ -964,9 +1020,13 @@
     },
     "M101": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M125": {
       "reading": "vil",
@@ -1194,381 +1254,597 @@
     },
     "M326": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M318": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M346": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M312": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M134": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M129": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M120": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M207": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M280": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M309": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M382": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M324": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M370": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M218": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M186": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M307": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M265": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M106": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M334": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M294": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M245": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M319": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M171": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M227": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M148": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M290": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M138": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M243": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M291": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M209": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M313": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M259": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M278": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M142": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M199": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M140": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M187": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M208": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M109": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M250": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M390": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M277": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M181": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M219": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M379": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M214": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M131": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M380": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M197": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M201": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M413": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M135": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M354": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M341": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M330": {
       "reading": "can",
@@ -1579,357 +1855,561 @@
     },
     "M105": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M146": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M195": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M339": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M359": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M316": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M111": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M224": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M408": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M371": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M396": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M246": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M395": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M229": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M399": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M331": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M410": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M170": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M349": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M388": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M360": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M263": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M320": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M256": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M257": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M338": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M288": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M244": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M247": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M284": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M121": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M381": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M373": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M110": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M104": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M217": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M228": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M356": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M292": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M141": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M188": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M296": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M216": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M348": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M268": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M325": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M289": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M369": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M378": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M226": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M158": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M165": {
       "reading": "cul",
@@ -1939,627 +2419,1043 @@
     },
     "M123": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M397": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M203": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M405": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M240": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M303": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M238": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M276": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M363": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M174": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M384": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M353": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M200": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M156": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M157": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M271": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M204": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M260": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M333": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M285": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M184": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M266": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M258": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M283": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M308": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M154": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M302": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M392": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M385": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M282": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M215": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M210": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M112": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M286": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M327": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M400": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M172": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M403": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M159": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M242": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M344": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M179": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M343": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M147": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M409": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M248": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M415": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M241": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M389": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M287": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M133": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M126": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M297": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M323": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M213": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M322": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M167": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M232": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M394": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M411": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M236": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M182": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M115": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M337": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M300": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M393": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M414": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M161": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M299": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M298": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M132": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M136": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M376": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M269": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M364": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M114": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M310": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M361": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M113": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M315": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M150": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M314": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M139": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M189": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M160": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M230": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M166": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M377": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M407": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M368": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M152": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M273": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M335": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M206": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M122": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M340": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M279": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M404": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M180": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M275": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M253": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M212": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M144": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M119": {
       "reading": "kur",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111"
+      "source": "Phase-111",
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
     },
     "M347": {
       "reading": "ka",
@@ -2624,7 +3520,7 @@
     },
     "M861": {
       "reading": "nallavar",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-197 upgrade candidate: SA modal='nallavar' (consistency=0.50), MEDIAL position (m_rate=0.449, t_rate=0.312), freq=138. DEDR 3594: nallavar = 'good people, nobles, honorifics' (plural of nal). Semantic: honorific plural title — consistent with IVC title-formula role. Co-occurs with M047=min (n=25). Confidence LOW because nallavar is a long compound reading; requires ICIT validation for full sign-level confirmation.",
       "source": "Phase-197 SA upgrade candidate",
       "_phase206_new_entry": true,
@@ -2633,21 +3529,33 @@
         "t_rate": 0.312,
         "dedr": "3594",
         "meaning": "good people, nobles (honorific plural)"
-      }
+      },
+      "dedr": "5135",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=2 (5135), Sanskrit score=2 (3563). DEDR=5135 (source=elamite). Combined score=4 >= 4 threshold."
     },
     "M712": {
       "reading": "nallavar",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-207 unanchored convergence: SA modal='nallavar' (cons=0.40 across 5 seeds). MEDIAL position dominant. freq=43. DEDR 3594: nallavar='good people/nobles'. Corroborates M861=nallavar [LOW] as allograph or inscriptional variant. Honorific plural consistent with title-formula grammar.",
       "source": "Phase-207 SA unanchored convergence",
-      "_phase209_new_entry": true
+      "_phase209_new_entry": true,
+      "dedr": "5135",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=2 (5135), Sanskrit score=2 (3563). DEDR=5135 (source=elamite). Combined score=4 >= 4 threshold."
     },
     "M817": {
       "reading": "nallavar",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-207 unanchored convergence: SA modal='nallavar' (cons=0.40 across 5 seeds). MEDIAL position dominant. freq=107. DEDR 3594: nallavar='good people/nobles'. High frequency (107) suggests core title-formula sign. Third nallavar cluster entry (alongside M861 [LOW] and M712 [LOW]), pointing to nallavar as productive title formula element in IVC epigraphy.",
       "source": "Phase-207 SA unanchored convergence",
-      "_phase209_new_entry": true
+      "_phase209_new_entry": true,
+      "dedr": "5135",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=2 (5135), Sanskrit score=2 (3563). DEDR=5135 (source=elamite). Combined score=4 >= 4 threshold."
     },
     "M700": {
       "reading": "aru/aRu",
@@ -2673,10 +3581,14 @@
     },
     "M858": {
       "reading": "nallavar",
-      "confidence": "LOW",
+      "confidence": "MEDIUM",
       "basis": "Phase-213 unanchored convergence: SA modal='nallavar' (cons=0.60, highest among unanchored). freq=105. DEDR 3594: nallavar = good people/nobles. 5th member of the nallavar honorific cluster: M077=nal [HIGH], M692=nal/nall [MEDIUM], M712=nallavar [LOW], M817=nallavar [LOW], M861=nallavar [LOW]. HIGH consistency (0.6) justified for LOW entry in well-established cluster. Note: M858 previously had SA modal=min (Phase 197, cons=0.2) -- cons=0.6 in Phase 213 reflects improved convergence from expanded nallavar anchor cluster.",
       "source": "Phase-213 SA unanchored convergence",
-      "_phase214_new_entry": true
+      "_phase214_new_entry": true,
+      "dedr": "5135",
+      "dedr_source": "elamite",
+      "phase_upgraded": 239,
+      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=2 (5135), Sanskrit score=2 (3563). DEDR=5135 (source=elamite). Combined score=4 >= 4 threshold."
     },
     "P324": {
       "reading": "kuti",
